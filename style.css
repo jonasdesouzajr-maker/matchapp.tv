@@ -89,13 +89,20 @@
     --font-display: "Outfit", "Segoe UI", system-ui, sans-serif;
     --font-body: "Inter", "Segoe UI", system-ui, sans-serif;
 
-    --fs-hero:  clamp(30px, 6vw,   52px);
-    --fs-h1:    clamp(26px, 4.6vw, 40px);
-    --fs-h2:    clamp(20px, 3vw,   27px);
-    --fs-h3:    clamp(17px, 2.2vw, 20px);
-    --fs-body:  clamp(15px, 1.7vw, 16.5px);
-    --fs-small: clamp(13px, 1.4vw, 14px);
-    --fs-micro: 12px;
+    /* --font-scale is set by the accessibility slider in Profile > Settings
+       (see settings.js). Multiplying the clamp result rather than swapping
+       the sizes keeps every ratio intact: headings stay proportionally
+       larger than body at any scale, and the fluid vw term still works.
+       Default 1 means an untouched install renders exactly as before. */
+    --font-scale: 1;
+
+    --fs-hero:  calc(clamp(30px, 6vw,   52px)   * var(--font-scale));
+    --fs-h1:    calc(clamp(26px, 4.6vw, 40px)   * var(--font-scale));
+    --fs-h2:    calc(clamp(20px, 3vw,   27px)   * var(--font-scale));
+    --fs-h3:    calc(clamp(17px, 2.2vw, 20px)   * var(--font-scale));
+    --fs-body:  calc(clamp(15px, 1.7vw, 16.5px) * var(--font-scale));
+    --fs-small: calc(clamp(13px, 1.4vw, 14px)   * var(--font-scale));
+    --fs-micro: calc(12px * var(--font-scale));
 
     --lh-tight: 1.18;   /* display only — long lines at this height are unreadable */
     --lh-snug:  1.4;
@@ -411,4 +418,90 @@ input:focus, select:focus { outline: none; border-color: var(--gold); box-shadow
 .sound-toggle-btn:hover { border-color: var(--gold); color: var(--gold-glow); }
 @media (max-width: 480px) {
     .install-btn span.install-label { display: none; } /* icon-only on very small screens */
+}
+
+
+/* ===== USER PREFERENCE OVERRIDES (Profile > Settings) ===== */
+
+/* A user-level reduce-motion switch. The OS-level @media query already
+   exists; this adds an in-app equivalent for people whose device setting is
+   on for everything else but who still want MatchApp calm — or the reverse,
+   someone on a shared machine who cannot change system settings. */
+html.reduce-motion *,
+html.reduce-motion *::before,
+html.reduce-motion *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+}
+
+/* Denser result cards for people who would rather see more at once than
+   have things breathe. Spacing only — nothing is hidden. */
+html.compact-cards .premium-card { padding: 16px 14px; margin-bottom: 12px; }
+html.compact-cards .seo-item,
+html.compact-cards .discover-card { padding: 11px 13px; }
+html.compact-cards .marquee-wrapper { padding: 10px 0; }
+
+/* ===== SETTINGS PANEL (Profile) ===== */
+.settings-summary { display: flex; align-items: center; justify-content: space-between; cursor: pointer;
+    list-style: none; padding: 4px 0; font-family: var(--font-display); font-weight: 700;
+    font-size: var(--fs-h3); color: var(--gold-core); }
+.settings-summary::-webkit-details-marker { display: none; }
+.settings-chevron { transition: transform var(--t-base) var(--ease); color: #8f8877; font-size: 18px; }
+details[open] .settings-chevron { transform: rotate(180deg); }
+.settings-body { padding-top: 18px; text-align: left; }
+
+.settings-group { font-family: var(--font-display); font-size: var(--fs-small); font-weight: 700;
+    text-transform: uppercase; letter-spacing: var(--ls-caps); color: var(--gold-mid);
+    margin: 26px 0 12px; padding-bottom: 8px; border-bottom: 1px solid var(--edge-subtle); }
+.settings-group:first-child { margin-top: 0; }
+
+.setting-row { display: flex; align-items: center; gap: 14px; margin-bottom: 6px; flex-wrap: wrap; }
+.setting-row > label { flex: 0 0 auto; min-width: 116px; font-size: var(--fs-small);
+    font-weight: 600; color: #ddd6c4; }
+.setting-control { flex: 1; min-width: 150px; display: flex; align-items: center; gap: 10px; }
+.setting-value { flex: 0 0 auto; min-width: 48px; text-align: right; font-variant-numeric: tabular-nums;
+    font-size: var(--fs-small); font-weight: 700; color: var(--gold-core); }
+.setting-note { margin: 0 0 16px 0; font-size: var(--fs-micro); color: #8f8877; line-height: 1.55; }
+
+/* Range inputs need explicit cross-browser styling or they render as the
+   OS default, which on a dark field is often a near-invisible grey. */
+.setting-control input[type="range"] { flex: 1; -webkit-appearance: none; appearance: none;
+    height: 5px; border-radius: 999px; background: rgba(255,255,255,0.14); outline: none; }
+.setting-control input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none;
+    width: 22px; height: 22px; border-radius: 50%; cursor: pointer;
+    background: linear-gradient(135deg, #E4C06C, #C0843C); border: 2px solid #101010;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.6); }
+.setting-control input[type="range"]::-moz-range-thumb { width: 22px; height: 22px; border-radius: 50%;
+    cursor: pointer; background: linear-gradient(135deg, #E4C06C, #C0843C); border: 2px solid #101010; }
+.setting-control input[type="range"]:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
+
+/* The A/A size hints deliberately ignore --font-scale: they are a fixed
+   reference for what the slider does, so they must not grow with it. */
+.scale-hint { color: #8f8877; font-weight: 700; font-size: 13px; flex-shrink: 0; }
+.scale-hint-lg { font-size: 21px; }
+
+.setting-row-toggle { justify-content: space-between; margin-bottom: 6px; }
+.setting-switch { -webkit-appearance: none; appearance: none; width: 46px; height: 26px; flex-shrink: 0;
+    border-radius: 999px; background: rgba(255,255,255,0.16); position: relative; cursor: pointer;
+    transition: background var(--t-micro); border: none; }
+.setting-switch::after { content: ""; position: absolute; top: 3px; left: 3px; width: 20px; height: 20px;
+    border-radius: 50%; background: #fff; transition: transform var(--t-micro) var(--ease); }
+.setting-switch:checked { background: linear-gradient(135deg, #E4C06C, #C0843C); }
+.setting-switch:checked::after { transform: translateX(20px); }
+.setting-switch:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+.setting-select { flex: 1; min-width: 160px; padding: 11px 13px; border-radius: 11px;
+    background: rgba(0,0,0,0.45); border: 1px solid var(--edge); color: #fff;
+    font-family: inherit; font-size: var(--fs-small); }
+.setting-select:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+.settings-test, .settings-reset { width: auto !important; margin-top: 12px; padding: 11px 20px !important;
+    font-size: var(--fs-small) !important; }
+.settings-reset { margin-top: 26px; opacity: 0.75; }
+
+@media (max-width: 480px) {
+    .setting-row > label { min-width: 0; flex: 1 1 100%; margin-bottom: 2px; }
+    .setting-control { min-width: 0; }
 }

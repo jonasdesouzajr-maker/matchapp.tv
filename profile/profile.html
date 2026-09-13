@@ -568,6 +568,102 @@
                     </details>
                 </div>
 
+
+                <!-- ============================================== -->
+                <!-- SETTINGS — every preference in one place.      -->
+                <!-- Collapsed by default: this is a page people    -->
+                <!-- open to check their Watch Later, not to tune   -->
+                <!-- sliders, so it must not push the portfolios    -->
+                <!-- below the fold.                                -->
+                <!-- ============================================== -->
+                <div class="premium-card" style="margin-top: 20px;">
+                    <details id="settings-panel">
+                        <summary class="settings-summary">
+                            <span data-i18n="set.title">⚙️ Settings &amp; Accessibility</span>
+                            <span class="settings-chevron" aria-hidden="true">⌄</span>
+                        </summary>
+
+                        <div class="settings-body">
+
+                            <!-- READING -->
+                            <h4 class="settings-group" data-i18n="set.reading">📖 Reading</h4>
+
+                            <div class="setting-row">
+                                <label for="set-fontscale" data-i18n="set.fontSize">Text size</label>
+                                <div class="setting-control">
+                                    <span class="scale-hint" aria-hidden="true">A</span>
+                                    <input type="range" id="set-fontscale" min="0.85" max="1.4" step="0.05" value="1"
+                                           aria-describedby="set-fontscale-val">
+                                    <span class="scale-hint scale-hint-lg" aria-hidden="true">A</span>
+                                </div>
+                                <output id="set-fontscale-val" class="setting-value">100%</output>
+                            </div>
+                            <p class="setting-note" data-i18n="set.fontSizeNote">Applies across every page, on this device and any other you sign in on.</p>
+
+                            <div class="setting-row setting-row-toggle">
+                                <label for="set-compact" data-i18n="set.compact">Compact cards</label>
+                                <input type="checkbox" id="set-compact" class="setting-switch">
+                            </div>
+                            <p class="setting-note" data-i18n="set.compactNote">Tighter spacing so more fits on screen. Nothing is hidden.</p>
+
+                            <div class="setting-row setting-row-toggle">
+                                <label for="set-lazy" data-i18n="set.lazyDefault">Start in Lazy Mode</label>
+                                <input type="checkbox" id="set-lazy" class="setting-switch">
+                            </div>
+                            <p class="setting-note" data-i18n="set.lazyNote">Open every visit with sections folded and the match form ready.</p>
+
+                            <!-- VOICE -->
+                            <h4 class="settings-group" data-i18n="set.voice">🔊 AI Voice</h4>
+
+                            <div class="setting-row">
+                                <label for="set-voice" data-i18n="set.voicePick">Voice</label>
+                                <select id="set-voice" class="setting-select">
+                                    <option value="" data-i18n="set.voiceAuto">Automatic (match my language)</option>
+                                </select>
+                            </div>
+                            <p class="setting-note" id="voice-note" data-i18n="set.voiceNote">Voices come from your device, so the list differs by phone, browser and operating system.</p>
+
+                            <div class="setting-row">
+                                <label for="set-rate" data-i18n="set.speed">Speaking speed</label>
+                                <div class="setting-control">
+                                    <span class="scale-hint" aria-hidden="true">🐢</span>
+                                    <input type="range" id="set-rate" min="0.6" max="1.6" step="0.05" value="1">
+                                    <span class="scale-hint" aria-hidden="true">🐇</span>
+                                </div>
+                                <output id="set-rate-val" class="setting-value">1.0×</output>
+                            </div>
+
+                            <div class="setting-row">
+                                <label for="set-pitch" data-i18n="set.pitch">Pitch</label>
+                                <div class="setting-control">
+                                    <span class="scale-hint" aria-hidden="true">▁</span>
+                                    <input type="range" id="set-pitch" min="0.6" max="1.5" step="0.05" value="1">
+                                    <span class="scale-hint" aria-hidden="true">▔</span>
+                                </div>
+                                <output id="set-pitch-val" class="setting-value">1.0</output>
+                            </div>
+
+                            <div class="setting-row setting-row-toggle">
+                                <label for="set-autoread" data-i18n="set.autoRead">Read AI answers aloud</label>
+                                <input type="checkbox" id="set-autoread" class="setting-switch">
+                            </div>
+
+                            <button type="button" class="secondary-btn settings-test" onclick="testVoice()" data-i18n="set.testVoice">▶ Test this voice</button>
+
+                            <!-- MOTION -->
+                            <h4 class="settings-group" data-i18n="set.motion">✨ Motion</h4>
+
+                            <div class="setting-row setting-row-toggle">
+                                <label for="set-motion" data-i18n="set.reduceMotion">Reduce animation</label>
+                                <input type="checkbox" id="set-motion" class="setting-switch">
+                            </div>
+                            <p class="setting-note" data-i18n="set.motionNote">Turns off background movement and transitions. Useful for motion sensitivity, or on an older device.</p>
+
+                            <button type="button" class="secondary-btn settings-reset" onclick="resetSettings()" data-i18n="set.reset">↺ Reset to defaults</button>
+                        </div>
+                    </details>
+                </div>
+
                 <div class="portfolio-tabs">
                     <button id="tab-watchlater" class="portfolio-tab active" onclick="switchPortfolioTab('watchlater')">⭐ Watch Later <span id="count-watchlater" class="tab-count">0</span></button>
                     <button id="tab-seenit" class="portfolio-tab" onclick="switchPortfolioTab('seenit')">👁️ Seen It <span id="count-seenit" class="tab-count">0</span></button>
@@ -600,6 +696,7 @@
         <p><span data-i18n="support.ideas">💌 Got an idea for MatchApp? We read every email —</span> <a href="mailto:support@matchapp.tv">support@matchapp.tv</a> <span class="pf-support-sep">·</span> <a href="https://wa.me/5521974297919" target="_blank" rel="noopener noreferrer" class="pf-support-wa">WhatsApp</a></p>
     </footer>
 
+    <script src="/settings.js?v=171"></script>
     <script src="/i18n.js?v=171"></script>
     <script defer src="/install.js?v=171"></script>
     <script defer src="/avatars.js?v=171"></script>

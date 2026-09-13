@@ -640,3 +640,137 @@ document.addEventListener('DOMContentLoaded', () => {
     const src = (typeof window.resolveUserAvatar === 'function') ? window.resolveUserAvatar() : null;
     if (preview && src) preview.src = src;
 });
+
+/* ============================================================
+   SETTINGS PANEL
+   Wires the controls in Profile > Settings to MatchSettings.
+
+   Sliders fire two kinds of event on purpose: `input` updates the page live
+   so the user sees the change as they drag, but passes sync:false so it does
+   not hit the network forty times; `change` fires once when they let go and
+   is what actually syncs to the account.
+   ============================================================ */
+(function () {
+    'use strict';
+
+    function initSettingsPanel() {
+        if (!window.MatchSettings) return;
+        const S = window.MatchSettings;
+        const $ = id => document.getElementById(id);
+        if (!$('set-fontscale')) return;   // not on this page
+
+        const cur = S.get();
+
+        /* ---- text size ---- */
+        const fs = $('set-fontscale'), fsOut = $('set-fontscale-val');
+        fs.value = cur.fontScale;
+        fsOut.textContent = Math.round(cur.fontScale * 100) + '%';
+        fs.addEventListener('input', () => {
+            const v = parseFloat(fs.value);
+            fsOut.textContent = Math.round(v * 100) + '%';
+            S.set('fontScale', v, { sync: false });   // live preview, no network
+        });
+        fs.addEventListener('change', () => S.set('fontScale', parseFloat(fs.value)));
+
+        /* ---- speaking speed ---- */
+        const rate = $('set-rate'), rateOut = $('set-rate-val');
+        rate.value = cur.voiceRate;
+        rateOut.textContent = parseFloat(cur.voiceRate).toFixed(1) + '×';
+        rate.addEventListener('input', () => {
+            rateOut.textContent = parseFloat(rate.value).toFixed(1) + '×';
+            S.set('voiceRate', parseFloat(rate.value), { sync: false });
+        });
+        rate.addEventListener('change', () => S.set('voiceRate', parseFloat(rate.value)));
+
+        /* ---- pitch ---- */
+        const pitch = $('set-pitch'), pitchOut = $('set-pitch-val');
+        pitch.value = cur.voicePitch;
+        pitchOut.textContent = parseFloat(cur.voicePitch).toFixed(1);
+        pitch.addEventListener('input', () => {
+            pitchOut.textContent = parseFloat(pitch.value).toFixed(1);
+            S.set('voicePitch', parseFloat(pitch.value), { sync: false });
+        });
+        pitch.addEventListener('change', () => S.set('voicePitch', parseFloat(pitch.value)));
+
+        /* ---- toggles ---- */
+        [['set-compact','compactCards'], ['set-lazy','lazyDefault'],
+         ['set-autoread','autoRead'],    ['set-motion','reduceMotion']].forEach(([id, key]) => {
+            const el = $(id);
+            if (!el) return;
+            el.checked = !!cur[key];
+            el.addEventListener('change', () => S.set(key, el.checked));
+        });
+
+        /* ---- voice list ----
+           Populated asynchronously: getVoices() is empty on first call in most
+           browsers and fills in on the voiceschanged event. Grouping by
+           language matters because a device can expose 40+ voices and an
+           ungrouped list is unusable. */
+        S.listVoices().then(voices => {
+            const sel = $('set-voice');
+            if (!sel) return;
+            if (!voices.length) {
+                $('voice-note').textContent = 'No voices are available in this browser.';
+                sel.disabled = true;
+                return;
+            }
+            const byLang = {};
+            voices.forEach(v => { (byLang[v.lang] = byLang[v.lang] || []).push(v); });
+
+            // Surface the user's own language first — that is the group they
+            // almost certainly want, and scrolling past 30 others to find it
+            // is the difference between a usable control and an abandoned one.
+            const mine = (window.MATCH_LANG || 'en').toLowerCase().split('-')[0];
+            const langs = Object.keys(byLang).sort((a, b) => {
+                const am = a.toLowerCase().startsWith(mine), bm = b.toLowerCase().startsWith(mine);
+                if (am !== bm) return am ? -1 : 1;
+                return a.localeCompare(b);
+            });
+
+            langs.forEach(lang => {
+                const group = document.createElement('optgroup');
+                group.label = lang;
+                byLang[lang].forEach(v => {
+                    const o = document.createElement('option');
+                    o.value = v.voiceURI;
+                    o.textContent = v.name.replace(/^(Microsoft|Google)\s+/, '');
+                    group.appendChild(o);
+                });
+                sel.appendChild(group);
+            });
+            sel.value = cur.voiceURI || '';
+            sel.addEventListener('change', () => S.set('voiceURI', sel.value));
+        });
+    }
+
+    window.testVoice = function () {
+        if (!('speechSynthesis' in window)) {
+            if (window.showToast) showToast('Voice playback is not supported in this browser.', true);
+            return;
+        }
+        const S = window.MatchSettings;
+        speechSynthesis.cancel();
+        S.listVoices().then(voices => {
+            const u = new SpeechSynthesisUtterance(
+                "Hi, I'm your MatchApp concierge. Tell me what you're in the mood for.");
+            const v = S.resolveVoice(voices, window.MATCH_LANG || 'en');
+            if (v) { u.voice = v; u.lang = v.lang; }
+            u.rate = S.get('voiceRate');
+            u.pitch = S.get('voicePitch');
+            speechSynthesis.speak(u);
+        });
+    };
+
+    window.resetSettings = function () {
+        if (!window.MatchSettings) return;
+        window.MatchSettings.reset();
+        initSettingsPanel();   // repaint the controls from the restored values
+        if (window.showToast) showToast('Settings reset to defaults.');
+    };
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initSettingsPanel);
+    } else {
+        initSettingsPanel();
+    }
+})();

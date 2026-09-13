@@ -285,11 +285,19 @@ window.readAloud = function(text, btn) {
     speechSynthesis.cancel();
     const utter = new SpeechSynthesisUtterance(text);
     const voices = speechSynthesis.getVoices();
-    const voice = pickVoiceForLang(voices, window.MATCH_LANG || 'en');
+
+    // Honour the user's choices from Profile > Settings. resolveVoice falls
+    // back to language matching when they have not picked one, or when the
+    // voice they picked is no longer installed on this device — an OS voice
+    // can be removed, and a stale voiceURI would otherwise silently mute
+    // playback rather than degrade to a sensible default.
+    const S = window.MatchSettings;
+    const voice = S ? S.resolveVoice(voices, window.MATCH_LANG || 'en')
+                    : pickVoiceForLang(voices, window.MATCH_LANG || 'en');
     if (voice) { utter.voice = voice; utter.lang = voice.lang; }
     else { utter.lang = window.MATCH_LANG || 'en'; }
-    utter.rate = parseFloat(localStorage.getItem('match_voice_rate') || '1');
-    utter.pitch = 1;
+    utter.rate  = S ? S.get('voiceRate')  : parseFloat(localStorage.getItem('match_voice_rate') || '1');
+    utter.pitch = S ? S.get('voicePitch') : 1;
 
     document.querySelectorAll('.discover-speak.speaking').forEach(b => b.classList.remove('speaking'));
     if (btn) btn.classList.add('speaking');
