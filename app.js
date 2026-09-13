@@ -224,6 +224,29 @@ function updateQuotaBadge(status) {
     el.style.display = 'inline-flex';
     el.innerHTML = `⚡ <strong>${status.remaining}</strong>&nbsp;left today`;
     el.classList.toggle('quota-low', status.remaining <= 1);
+
+    // The moment someone notices they are running low is the moment to offer
+    // more — better than letting them hit zero, get blocked, and go hunting
+    // for the pricing page. The source parameter lets pricing lead with
+    // credits for someone mid-session rather than opening on annual plans.
+    if (!el.dataset.linked) {
+        el.dataset.linked = '1';
+        el.setAttribute('role', 'button');
+        el.setAttribute('tabindex', '0');
+        el.style.cursor = 'pointer';
+        const go = () => {
+            if (window.track) window.track('quota_badge_click', { remaining: status.remaining });
+            window.location.href = '/pricing/pricing.html?from=quota';
+        };
+        el.addEventListener('click', go);
+        el.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); }
+        });
+    }
+    el.title = status.remaining <= 1
+        ? 'Almost out — tap for more matches'
+        : 'Tap to get unlimited matches or buy credits';
+    el.setAttribute('aria-label', `${status.remaining} matches left today. ${el.title}`);
 }
 window.updateQuotaBadge = updateQuotaBadge;
 

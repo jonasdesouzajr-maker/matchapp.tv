@@ -148,10 +148,46 @@
     }
   }
 
+  /* WHERE-TO-WATCH LINKS
+     Every non-YouTube title went to justwatch.com/<region>/search, which is
+     not a real path — JustWatch localises it (/br/busca in Brazil), so the
+     Brazilian links 404'd and nobody reached the title.
+
+     Sending someone straight to the search on the service that actually
+     carries it is a better answer than an aggregator anyway: one tap from
+     playing. Kids does not load app.js, so this is a small self-contained
+     map rather than a reach into PLATFORMS. */
+  const KIDS_PLATFORM_SEARCH = {
+    'YouTube':      t => 'https://www.youtube.com/results?search_query=' + encodeURIComponent(t + ' full episode'),
+    'YouTube Kids': t => 'https://www.youtubekids.com/search?q=' + encodeURIComponent(t),
+    'Netflix':      t => 'https://www.netflix.com/search?q=' + encodeURIComponent(t),
+    'Disney+':      t => 'https://www.disneyplus.com/search?q=' + encodeURIComponent(t),
+    'Prime Video':  t => 'https://www.primevideo.com/search?phrase=' + encodeURIComponent(t),
+    'Max':          t => 'https://play.max.com/search?q=' + encodeURIComponent(t),
+    'HBO Max':      t => 'https://play.max.com/search?q=' + encodeURIComponent(t),
+    'Apple TV+':    t => 'https://tv.apple.com/search?term=' + encodeURIComponent(t),
+    'Paramount+':   t => 'https://www.paramountplus.com/search/?q=' + encodeURIComponent(t),
+    'Globoplay':    t => 'https://globoplay.globo.com/busca/?q=' + encodeURIComponent(t),
+    'Crunchyroll':  t => 'https://www.crunchyroll.com/search?q=' + encodeURIComponent(t),
+    'Spotify':      t => 'https://open.spotify.com/search/' + encodeURIComponent(t)
+  };
+
+  // JustWatch's search segment differs by territory. Assuming 'search'
+  // everywhere is what broke Brazil, so the mapping is explicit.
+  const JUSTWATCH_PATH = { br: 'busca', pt: 'busca', es: 'buscar', us: 'search', gb: 'search' };
+
   function watchUrl(item) {
-    if (item.platform === 'YouTube') return 'https://www.youtube.com/results?search_query=' + encodeURIComponent(item.title + ' official kids');
+    const direct = KIDS_PLATFORM_SEARCH[item.platform];
+    if (direct) return direct(item.title);
+
     const country = String(read('match_user_country') || '').toLowerCase();
-    return 'https://www.justwatch.com/' + (/brazil|brasil/.test(country) ? 'br' : 'us') + '/search?q=' + encodeURIComponent(item.title);
+    const region = /brazil|brasil/.test(country) ? 'br'
+                 : /portugal/.test(country) ? 'pt'
+                 : /spain|espa/.test(country) ? 'es'
+                 : /united kingdom|britain|england/.test(country) ? 'gb'
+                 : 'us';
+    return 'https://www.justwatch.com/' + region + '/' + (JUSTWATCH_PATH[region] || 'search')
+         + '?q=' + encodeURIComponent(item.title);
   }
 
   function cardHTML(item, compact, slot) {
