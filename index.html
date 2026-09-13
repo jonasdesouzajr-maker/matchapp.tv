@@ -428,10 +428,10 @@
     <link rel="alternate" hreflang="zh" href="https://matchapp.tv/?lang=zh">
 
     <!-- NATIVE I18N (defer = runs before DOMContentLoaded, no English flash) -->
-    <script defer src="/i18n.js?v=163"></script>
-    <script defer src="/install.js?v=163"></script>
-    <script defer src="/avatars.js?v=163"></script>
-    <script defer src="/ambient.js?v=163"></script>
+    <script defer src="/i18n.js?v=170"></script>
+    <script defer src="/install.js?v=170"></script>
+    <script defer src="/avatars.js?v=170"></script>
+    <script defer src="/ambient.js?v=170"></script>
 
     <!-- GOOGLE ANALYTICS (GTAG) -->
 <!-- GOOGLE ADSENSE SCRIPT ENGINE -->
@@ -450,10 +450,28 @@
         });
     </script>
 
-    <link rel="stylesheet" href="/style.css?v=163">
+    <!-- TYPEFACES
+         Outfit for display, Inter for body. The reasoning, since it is not
+         arbitrary: Netflix Sans is a geometric grotesque with humanist
+         proportions, open apertures and a generous x-height — built to hold
+         at 8px in an app and at 8ft on a billboard. It is proprietary, but
+         the two closest free equivalents are well established. Inter was
+         designed specifically for screen interfaces and is the legibility
+         workhorse; Outfit is geometric with slightly softened terminals,
+         which is where the warmth comes from — closer to Hulu's rounded,
+         friendly register than to a corporate grotesque, and it stops the
+         page reading as a generic dashboard.
+
+         font-display:swap means text paints immediately in the fallback and
+         reflows when the font lands, rather than holding the page blank. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/style.css?v=170">
     <!-- Smart TV stylesheet. Entirely scoped under body.tv-mode, so a
          non-TV visitor pays one small file and sees no change. -->
-    <link rel="stylesheet" href="/tv.css?v=163">
+    <link rel="stylesheet" href="/tv.css?v=170">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
@@ -1002,6 +1020,27 @@
         @media (hover: hover) and (min-width: 760px) { .marquee-arrow { display: flex; } }
         .marquee-item { position: relative; width: 130px; height: 190px; border-radius: 10px; overflow: hidden; border: 1px solid rgba(229,193,88,0.5); cursor: pointer; transition: 0.3s; background: var(--royal-deep); }
         .marquee-item:hover { transform: scale(1.1); border-color: var(--gold-glow); z-index: 10; }
+
+        /* ===== LAZY MODE: COMPACT POSTER RAILS =====
+           Lazy Mode exists to make the page shorter for someone who already
+           knows MatchApp. A 190px poster rail contradicts that — on a 375px
+           screen a single rail is over half the visible height before any
+           text. These sizes apply ONLY in Lazy Mode; normal browsing keeps
+           the full-size art. Aspect ratio is preserved throughout (2:3, the
+           standard poster shape) so nothing distorts. */
+        body.lazy-mode .marquee-item { width: 92px; height: 138px; border-radius: 8px; }
+        body.lazy-mode .marquee-track { gap: 8px; }
+        body.lazy-mode .marquee-wrapper { padding: 10px 0; }
+        body.lazy-mode .marquee-item .marquee-title { font-size: 10.5px; padding: 4px 5px; }
+
+        @media (max-width: 430px) {
+            body.lazy-mode .marquee-item { width: 78px; height: 117px; }
+            body.lazy-mode .marquee-track { gap: 6px; }
+        }
+        @media (max-width: 360px) {
+            body.lazy-mode .marquee-item { width: 70px; height: 105px; }
+        }
+
         .marquee-item img { width: 100%; height: 100%; object-fit: cover; position: relative; z-index: 2; }
         .marquee-title { position: absolute; bottom: 0; width: 100%; background: linear-gradient(transparent, rgba(0,0,0,0.95)); color: #fff; font-size: 11px; padding: 15px 4px 6px 4px; text-align: center; font-weight: bold; z-index: 3; }
         
@@ -2403,7 +2442,7 @@
                         <div class="spotlight-poster" onclick="saveSpotlightTitle()" role="button" tabindex="0"
                              onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();saveSpotlightTitle();}"
                              aria-label="Save American Horror Story: 13 to Watch Later">
-                            <img id="spotlight-poster-img" src="/ahs13-poster.jpg?v=163" alt="American Horror Story: 13 — premieres September 24, 2026 on FX and Hulu">
+                            <img id="spotlight-poster-img" src="/ahs13-poster.jpg?v=170" alt="American Horror Story: 13 — premieres September 24, 2026 on FX and Hulu">
                             <div class="spotlight-ribbon" data-i18n="spotlight.ribbon">COMING THIS MONTH</div>
                         </div>
                         <div class="spotlight-body">
@@ -3019,20 +3058,20 @@
         </div>
     </div>
 
-    <script src="/app.js?v=163"></script>
+    <script src="/app.js?v=170"></script>
     <!-- Loads AFTER app.js so the chips it builds can call straight into the
          matcher, and non-deferred so the form is never briefly interactive as
          a plain single-choice select. -->
-    <script src="/tmdb.js?v=163"></script>
-    <script src="/criteria.js?v=163"></script>
-    <script src="/lazy.js?v=163"></script>
-    <script src="/tv.js?v=163"></script>
-    <script src="/taste.js?v=163"></script>
-    <script src="/contacts.js?v=163"></script>
-    <script src="/share.js?v=163"></script>
-    <script src="/pricing.js?v=163"></script>
-    <script src="/credits-ui.js?v=163"></script>
-    <script src="/voice-input.js?v=163"></script>
+    <script src="/tmdb.js?v=170"></script>
+    <script src="/criteria.js?v=170"></script>
+    <script src="/lazy.js?v=170"></script>
+    <script src="/tv.js?v=170"></script>
+    <script src="/taste.js?v=170"></script>
+    <script src="/contacts.js?v=170"></script>
+    <script src="/share.js?v=170"></script>
+    <script src="/pricing.js?v=170"></script>
+    <script src="/credits-ui.js?v=170"></script>
+    <script src="/voice-input.js?v=170"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             initVoiceInput('specific-search-input', 'mic-btn-index', () => smartSearch());

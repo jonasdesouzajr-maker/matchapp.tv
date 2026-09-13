@@ -66,6 +66,64 @@
     --netflix-red: #E50914; --prime-blue: #00A8E1; --max-purple: #9A5CFF; --disney-blue: #113CCF;
     --spotify-green: #1DB954; --globoplay-orange: #FF5A00;
 }
+/* ===== TYPOGRAPHY =====
+   Two families, each doing the job it was designed for.
+
+   --font-display (Outfit): headings and buttons. Geometric with softened
+   terminals, which is what makes it read as warm rather than corporate.
+   --font-body (Inter): everything read in quantity. Designed for screen UI,
+   with the open apertures and tall x-height that keep 15px legible on a
+   phone at arm's length.
+
+   The old stack was "Segoe UI, Roboto, Helvetica, Arial" — a different font
+   on every OS, none of them chosen, and Arial as the floor. That is the
+   source of the harshness: Arial and Helvetica have closed apertures and a
+   small x-height, so at small sizes on a near-black field the counters fill
+   in and the eye works harder than it should.
+
+   Sizes use clamp() so they scale with the viewport instead of jumping at
+   breakpoints. Line heights are deliberately generous — 1.65 on body copy
+   rather than the 1.4 that looks tight in a mockup and reads badly at
+   length, especially in light-on-dark where glyphs bloom slightly. */
+:root {
+    --font-display: "Outfit", "Segoe UI", system-ui, sans-serif;
+    --font-body: "Inter", "Segoe UI", system-ui, sans-serif;
+
+    --fs-hero:  clamp(30px, 6vw,   52px);
+    --fs-h1:    clamp(26px, 4.6vw, 40px);
+    --fs-h2:    clamp(20px, 3vw,   27px);
+    --fs-h3:    clamp(17px, 2.2vw, 20px);
+    --fs-body:  clamp(15px, 1.7vw, 16.5px);
+    --fs-small: clamp(13px, 1.4vw, 14px);
+    --fs-micro: 12px;
+
+    --lh-tight: 1.18;   /* display only — long lines at this height are unreadable */
+    --lh-snug:  1.4;
+    --lh-body:  1.65;
+
+    /* Large display text needs negative tracking or it looks loose; small
+       text needs slightly positive or it looks cramped. */
+    --ls-display: -0.02em;
+    --ls-body:     0;
+    --ls-caps:     0.06em;
+}
+
+body { font-family: var(--font-body); font-size: var(--fs-body); line-height: var(--lh-body);
+       letter-spacing: var(--ls-body); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+h1, h2, h3, h4, h5,
+.gold-btn, .install-btn, .share-cta, .seo-cta, .w2w-cta, .crit-toggle-label {
+    font-family: var(--font-display); letter-spacing: var(--ls-display);
+}
+h1 { font-size: var(--fs-h1); line-height: var(--lh-tight); font-weight: 800; }
+h2 { font-size: var(--fs-h2); line-height: var(--lh-snug);  font-weight: 700; }
+h3 { font-size: var(--fs-h3); line-height: var(--lh-snug);  font-weight: 700; }
+p  { line-height: var(--lh-body); }
+
+/* Uppercase labels need tracking or the caps collide. */
+.seo-footer-sub, .crit-toggle-label, .w2w-kind { letter-spacing: var(--ls-caps); }
+
+
 
 @media (prefers-reduced-motion: reduce) {
     :root { --t-micro: 0ms; --t-base: 0ms; --t-slow: 0ms; }
