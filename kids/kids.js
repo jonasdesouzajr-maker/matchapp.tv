@@ -90,7 +90,7 @@
   }
 
   function currentAge() { return document.getElementById('kids-age')?.value || localStorage.getItem(AGE_KEY) || 'all'; }
-  function allowedForAge(item, age) { return item.ages.includes('all') || item.ages.includes(age); }
+  function allowedForAge(item, age) { return age === 'all' ? item.ages.includes('all') : item.ages.includes(age); }
   function allowedLibrary(age) { return LIBRARY.filter(item => allowedForAge(item, age)); }
   function normalizeTitle(s) { return String(s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,' ').trim(); }
   const byTitle = new Map(LIBRARY.map(x => [normalizeTitle(x.title), x]));
