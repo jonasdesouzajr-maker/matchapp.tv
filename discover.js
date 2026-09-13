@@ -33,6 +33,10 @@ function getQueryParam(name) {
     catch (e) { return ''; }
 }
 
+function keepConversationAtStart() {
+    return getQueryParam('focus') === 'start';
+}
+
 /* ---------- Intent detection ---------- */
 // Decides whether the question is actually about audio (podcasts, music,
 // playlists, singles, audiobooks) so the fallback never pulls in podcasts
@@ -366,6 +370,12 @@ async function hydrateDiscoverCard(item, idx) {
     const skipLiveLookup = platformIsHighRisk || categoryIsHighRisk;
 
     let meta = item._meta || null;
+    const visualType = !/podcast|album|music|audiobook/i.test(item.type || '');
+    if (!meta && !verified && visualType && typeof window.tmdbLookup === 'function') {
+        const kind = /movie|film/i.test(item.type || '') ? 'movie' : /series|tv|drama|anime|novela|show|documentary/i.test(item.type || '') ? 'tv' : '';
+        const tmdb = await window.tmdbLookup(item.title, { year: item.year || '', kind });
+        if (tmdb && (tmdb.posterLarge || tmdb.poster)) meta = { artwork: tmdb.posterLarge || tmdb.poster, year: tmdb.year || item.year || '', overview: tmdb.overview || '', tmdbId: tmdb.tmdbId, kind: tmdb.kind, source: 'tmdb' };
+    }
     if (!meta && !skipLiveLookup && !verified && typeof getRichMetadata === 'function') {
         // If this AI-chat title happens to also be one of our curated catalog
         // entries, use its real year/country to disambiguate the same way the
@@ -603,7 +613,7 @@ async function askAndRender(question) {
     // Auto-scroll to the loading animation so the user sees work happening.
     if (loadEl) {
         loadEl.style.display = 'block';
-        setTimeout(() => loadEl.scrollIntoView({ behavior: 'smooth', block: 'center' }), 80);
+        if (!keepConversationAtStart()) setTimeout(() => loadEl.scrollIntoView({ behavior: 'smooth', block: 'center' }), 80);
     }
 
     const input = document.getElementById('discover-new-input');
@@ -639,14 +649,19 @@ async function askAndRender(question) {
     const bubble = appendAssistantBubble(payload.answer, payload.results || [], { instant: false });
 
     // Auto-scroll to the response before the typewriter starts.
-    if (bubble && bubble.wrap) {
+    if (bubble && bubble.wrap && !keepConversationAtStart()) {
         setTimeout(() => bubble.wrap.scrollIntoView({ behavior: 'smooth', block: 'center' }), 60);
     }
 
     if (bubble) {
         await typewriterReveal(bubble.textEl, payload.answer, 14);
-        if (localStorage.getItem('match_voice_autoread') === 'true') {
+        const autoReadEnabled = window.MatchSettings ? window.MatchSettings.get('autoRead') !== false : localStorage.getItem('match_voice_autoread') !== 'false';
+        if (autoReadEnabled) {
             window.readAloud(payload.answer, bubble.speakBtn);
+            if (!localStorage.getItem('match_voice_autoread_hint_seen')) {
+                localStorage.setItem('match_voice_autoread_hint_seen','true');
+                if (window.showToast) showToast('🔊 Read-aloud is on. Change it anytime in Profile → Voice & AI Settings.');
+            }
         }
     }
 
@@ -661,7 +676,12 @@ async function askAndRender(question) {
 
     // Keep the follow-up box in view so continuing the conversation is obvious.
     const row = document.querySelector('.newsearch-row');
-    if (row) setTimeout(() => row.scrollIntoView({ behavior: 'smooth', block: 'center' }), 400);
+    if (!keepConversationAtStart()) {
+        if (row) setTimeout(() => row.scrollIntoView({ behavior: 'smooth', block: 'center' }), 400);
+    } else {
+        const log = document.getElementById('chat-log');
+        if (log) setTimeout(() => log.scrollIntoView({ behavior: 'auto', block: 'start' }), 20);
+    }
 }
 
 /* ---------- Auto-growing composer ----------

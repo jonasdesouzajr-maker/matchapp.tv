@@ -570,7 +570,9 @@ window.onVoiceRateChange = function() {
 
 window.onVoiceAutoreadChange = function() {
     const box = document.getElementById('voice-autoread');
-    if (box) localStorage.setItem('match_voice_autoread', box.checked ? 'true' : 'false');
+    if (!box) return;
+    localStorage.setItem('match_voice_autoread', box.checked ? 'true' : 'false');
+    if (window.MatchSettings) window.MatchSettings.set('autoRead', box.checked);
 };
 
 window.testVoiceSample = function() {
@@ -609,7 +611,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const savedRate = localStorage.getItem('match_voice_rate');
         if (savedRate) { rateSlider.value = savedRate; onVoiceRateChange(); }
     }
-    if (autoreadBox) autoreadBox.checked = localStorage.getItem('match_voice_autoread') === 'true';
+    if (autoreadBox) autoreadBox.checked = window.MatchSettings ? window.MatchSettings.get('autoRead') !== false : localStorage.getItem('match_voice_autoread') !== 'false';
 
     populateVoiceList();
     if ('speechSynthesis' in window) speechSynthesis.onvoiceschanged = populateVoiceList;

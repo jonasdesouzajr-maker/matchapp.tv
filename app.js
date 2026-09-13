@@ -1344,7 +1344,7 @@ window.selectMarqueeItem = function(titleName) {
     if (typeof window.track === 'function') {
         window.track('trending_click', { title: titleName });
     }
-    window.location.href = '/discover.html?q=' + encodeURIComponent(question);
+    window.location.href = '/discover.html?q=' + encodeURIComponent(question) + '&focus=start';
 };
 
 // ----------------------------------------------------
@@ -4038,7 +4038,7 @@ function looksLikeQuestion(text) {
 }
 
 window.askAI = function(question) {
-    window.location.href = '/discover.html?q=' + encodeURIComponent(question);
+    window.location.href = '/discover.html?q=' + encodeURIComponent(question) + '&focus=start';
 };
 
 window.smartSearch = function() {

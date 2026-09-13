@@ -22,6 +22,7 @@ const SITE = 'https://matchapp.tv';
 const CORE = [
     { loc: `${SITE}/`,                         freq: 'daily',   pri: '1.0' },
     { loc: `${SITE}/discover.html`,            freq: 'daily',   pri: '0.9' },
+    { loc: `${SITE}/kids/`,                    freq: 'weekly',  pri: '0.9' },
     { loc: `${SITE}/together.html`,            freq: 'weekly',  pri: '0.8' },
     { loc: `${SITE}/pricing/pricing.html`,     freq: 'weekly',  pri: '0.8' },
     { loc: `${SITE}/events-archive.html`,      freq: 'weekly',  pri: '0.6' },
