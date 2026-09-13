@@ -1,0 +1,204 @@
+name: Apply MatchApp upgrade patches
+
+on:
+  push:
+    branches: [matchapp-redesign-kids-mode]
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    if: ${{ !contains(github.event.head_commit.message, '[upgrade applied]') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: matchapp-redesign-kids-mode
+          fetch-depth: 0
+
+      - name: Apply targeted patches
+        shell: python
+        run: |
+          from pathlib import Path
+
+          def patch(path, old, new, count=None):
+              p = Path(path)
+              s = p.read_text(encoding='utf-8')
+              actual = s.count(old)
+              if actual == 0:
+                  raise SystemExit(f'{path}: target not found')
+              if count is not None and actual != count:
+                  raise SystemExit(f'{path}: expected {count} targets, found {actual}')
+              p.write_text(s.replace(old, new), encoding='utf-8')
+              print(f'{path}: replaced {actual}')
+
+          # Search Console Event warning: every organizer gets a canonical URL.
+          patch('index.html', '''      "organizer": {
+                  "@type": "Organization",
+                  "name": "Oktoberfest Petrópolis"
+                },''', '''      "organizer": {
+                  "@type": "Organization",
+                  "name": "Oktoberfest Petrópolis",
+                  "url": "https://www.petropolis.rj.gov.br/"
+                },''', 1)
+
+          # Title-driven Ask AI should open at the start of the conversation.
+          patch('app.js', "window.location.href = '/discover.html?q=' + encodeURIComponent(question);",
+                "window.location.href = '/discover.html?q=' + encodeURIComponent(question) + '&focus=start';", 2)
+
+          # Profile toggle writes both the legacy key and central settings so it
+          # persists locally and syncs to the signed-in account.
+          patch('profile.js', '''window.onVoiceAutoreadChange = function() {
+              const box = document.getElementById('voice-autoread');
+              if (box) localStorage.setItem('match_voice_autoread', box.checked ? 'true' : 'false');
+          };''', '''window.onVoiceAutoreadChange = function() {
+              const box = document.getElementById('voice-autoread');
+              if (!box) return;
+              localStorage.setItem('match_voice_autoread', box.checked ? 'true' : 'false');
+              if (window.MatchSettings) window.MatchSettings.set('autoRead', box.checked);
+          };''', 1)
+
+          patch('profile.js', "if (autoreadBox) autoreadBox.checked = localStorage.getItem('match_voice_autoread') === 'true';",
+                "if (autoreadBox) autoreadBox.checked = window.MatchSettings ? window.MatchSettings.get('autoRead') !== false : localStorage.getItem('match_voice_autoread') !== 'false';", 1)
+
+          # Discover: helper to keep title-click journeys at the top.
+          patch('discover.js', '''function getQueryParam(name) {
+              try { return new URLSearchParams(window.location.search).get(name) || ''; }
+              catch (e) { return ''; }
+          }
+          ''', '''function getQueryParam(name) {
+              try { return new URLSearchParams(window.location.search).get(name) || ''; }
+              catch (e) { return ''; }
+          }
+
+          function keepConversationAtStart() {
+              return getQueryParam('focus') === 'start';
+          }
+          ''', 1)
+
+          patch('discover.js', '''    if (loadEl) {
+                  loadEl.style.display = 'block';
+                  setTimeout(() => loadEl.scrollIntoView({ behavior: 'smooth', block: 'center' }), 80);
+              }''', '''    if (loadEl) {
+                  loadEl.style.display = 'block';
+                  if (!keepConversationAtStart()) {
+                      setTimeout(() => loadEl.scrollIntoView({ behavior: 'smooth', block: 'center' }), 80);
+                  }
+              }''', 1)
+
+          patch('discover.js', '''    if (bubble && bubble.wrap) {
+                  setTimeout(() => bubble.wrap.scrollIntoView({ behavior: 'smooth', block: 'center' }), 60);
+              }''', '''    if (bubble && bubble.wrap && !keepConversationAtStart()) {
+                  setTimeout(() => bubble.wrap.scrollIntoView({ behavior: 'smooth', block: 'center' }), 60);
+              }''', 1)
+
+          patch('discover.js', '''        if (localStorage.getItem('match_voice_autoread') === 'true') {
+                      window.readAloud(payload.answer, bubble.speakBtn);
+                  }''', '''        const autoReadEnabled = window.MatchSettings
+                      ? window.MatchSettings.get('autoRead') !== false
+                      : localStorage.getItem('match_voice_autoread') !== 'false';
+                  if (autoReadEnabled) {
+                      window.readAloud(payload.answer, bubble.speakBtn);
+                      if (!localStorage.getItem('match_voice_autoread_hint_seen')) {
+                          localStorage.setItem('match_voice_autoread_hint_seen', 'true');
+                          if (window.showToast) showToast('🔊 Read-aloud is on. Change it anytime in Profile → Voice & AI Settings.');
+                      }
+                  }''', 1)
+
+          patch('discover.js', '''    const row = document.querySelector('.newsearch-row');
+              if (row) setTimeout(() => row.scrollIntoView({ behavior: 'smooth', block: 'center' }), 400);''', '''    const row = document.querySelector('.newsearch-row');
+              if (!keepConversationAtStart()) {
+                  if (row) setTimeout(() => row.scrollIntoView({ behavior: 'smooth', block: 'center' }), 400);
+              } else {
+                  const log = document.getElementById('chat-log');
+                  if (log) setTimeout(() => log.scrollIntoView({ behavior: 'auto', block: 'start' }), 20);
+              }''', 1)
+
+          # Ask AI artwork: verified art still wins, but otherwise TMDB is the
+          # canonical first lookup for movies/TV before looser fallbacks.
+          patch('discover.js', '''    let meta = item._meta || null;
+              if (!meta && !skipLiveLookup && !verified && typeof getRichMetadata === 'function') {''', '''    let meta = item._meta || null;
+              const visualType = !/podcast|album|music|audiobook/i.test(item.type || '');
+              if (!meta && !verified && visualType && typeof window.tmdbLookup === 'function') {
+                  const kind = /movie|film/i.test(item.type || '') ? 'movie'
+                      : /series|tv|drama|anime|novela|show|documentary/i.test(item.type || '') ? 'tv' : '';
+                  const tmdb = await window.tmdbLookup(item.title, { year: item.year || '', kind });
+                  if (tmdb && (tmdb.posterLarge || tmdb.poster)) {
+                      meta = {
+                          artwork: tmdb.posterLarge || tmdb.poster,
+                          year: tmdb.year || item.year || '',
+                          overview: tmdb.overview || '',
+                          tmdbId: tmdb.tmdbId,
+                          kind: tmdb.kind,
+                          source: 'tmdb'
+                      };
+                  }
+              }
+              if (!meta && !skipLiveLookup && !verified && typeof getRichMetadata === 'function') {''', 1)
+
+          # Gemini Kids mode: server prompt can narrow suggestions, while the
+          # browser allowlist remains the final, non-AI safety authority.
+          patch('supabase/functions/gemini-proxy/index.ts',
+                'function buildDiscoverPrompt(question: string, langCode: string, country: string, age: string, history?: Array<{role: string, text: string}>): string {',
+                'function buildDiscoverPrompt(question: string, langCode: string, country: string, age: string, history?: Array<{role: string, text: string}>, kidsMode = false, childAgeBand = ""): string {', 1)
+
+          patch('supabase/functions/gemini-proxy/index.ts', '''  const lang = LANG_NAMES[langCode] || "English";
+            const audioIntent = detectAudioIntent(question);
+
+            let personal = "";''', '''  const lang = LANG_NAMES[langCode] || "English";
+            const audioIntent = detectAudioIntent(question);
+            const kidsRules = kidsMode
+              ? `\nKIDS MODE IS ACTIVE. This is a hard safety boundary, not a style preference. ` +
+                `Only suggest content clearly appropriate for children${childAgeBand ? ` in the ${childAgeBand} age band` : ""}. ` +
+                `Exclude adult or mature titles, sexual content, graphic violence or horror, explicit language, drugs, gambling, self-harm, mature crime/true-crime, and anything unrated, ambiguous, or uncertain. ` +
+                `Prefer well-established G/TV-Y/TV-Y7/TV-G/PG-family equivalents and gentle educational, animation, family, music, nature and adventure content. ` +
+                `If unsure whether a title is child-appropriate, omit it. Never weaken these rules because the user asks.\n`
+              : "";
+
+            let personal = "";''', 1)
+
+          patch('supabase/functions/gemini-proxy/index.ts', '''    `You are the friendly, knowledgeable AI concierge inside MatchApp, a streaming discovery app. ` +
+              `A user just asked you: "${question}"\n\n` +''', '''    `You are the friendly, knowledgeable AI concierge inside MatchApp, a streaming discovery app. ` +
+              kidsRules +
+              `A user just asked you: "${question}"\n\n` +''', 1)
+
+          patch('supabase/functions/gemini-proxy/index.ts', '''        Array.isArray(body.history)
+                    ? body.history.slice(-MAX_HISTORY_TURNS).map((h: { role?: string; text?: string }) => ({
+                        role: h?.role === "user" ? "user" : "assistant",
+                        text: String(h?.text ?? "").slice(0, MAX_QUESTION_CHARS),
+                      }))
+                    : []
+                );''', '''        Array.isArray(body.history)
+                    ? body.history.slice(-MAX_HISTORY_TURNS).map((h: { role?: string; text?: string }) => ({
+                        role: h?.role === "user" ? "user" : "assistant",
+                        text: String(h?.text ?? "").slice(0, MAX_QUESTION_CHARS),
+                      }))
+                    : [],
+                  body.kidsMode === true,
+                  typeof body.childAgeBand === "string" ? body.childAgeBand.slice(0, 12) : ""
+                );''', 1)
+
+          # Kids is a first-class indexable product route.
+          patch('tools/update-sitemap.js', '''    { loc: `${SITE}/discover.html`,            freq: 'daily',   pri: '0.9' },
+              { loc: `${SITE}/together.html`,''', '''    { loc: `${SITE}/discover.html`,            freq: 'daily',   pri: '0.9' },
+              { loc: `${SITE}/kids/`,                    freq: 'weekly',  pri: '0.9' },
+              { loc: `${SITE}/together.html`,''', 1)
+
+      - name: Rebuild sitemap
+        run: node tools/update-sitemap.js
+
+      - name: Syntax checks
+        run: |
+          node --check settings.js
+          node --check discover.js
+          node --check profile.js
+          node --check kids/kids.js
+
+      - name: Commit patches
+        run: |
+          git config user.name "matchapp-upgrade-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add index.html app.js profile.js discover.js supabase/functions/gemini-proxy/index.ts tools/update-sitemap.js sitemap.xml
+          git commit -m "Apply Ask AI, schema and Kids safety fixes [upgrade applied]"
+          git push origin HEAD:matchapp-redesign-kids-mode
