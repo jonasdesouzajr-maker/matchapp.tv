@@ -1,11 +1,11 @@
 {
   "name": "MatchApp — AI Streaming Concierge",
   "short_name": "MatchApp",
-  "description": "Tell MatchApp your mood and its AI finds the one thing worth watching tonight — plus exactly where to stream it.",
+  "description": "Find what to watch with AI, discover the curated Kids world, and sign in securely with passkeys.",
   "start_url": "/?utm_source=pwa",
   "scope": "/",
   "display": "standalone",
-  "orientation": "portrait",
+  "orientation": "any",
   "background_color": "#101010",
   "theme_color": "#101010",
   "categories": [
@@ -50,6 +50,19 @@
       "name": "My library",
       "short_name": "Library",
       "url": "/profile/profile.html?utm_source=pwa_shortcut"
+    },
+    {
+      "name": "Kids Mode",
+      "short_name": "Kids",
+      "url": "/kids/",
+      "icons": [
+        {
+          "src": "/kids/kids-logo.jpeg",
+          "sizes": "2048x2048",
+          "type": "image/jpeg"
+        }
+      ]
     }
-  ]
+  ],
+  "id": "/"
 }

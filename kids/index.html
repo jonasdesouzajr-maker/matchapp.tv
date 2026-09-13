@@ -5,21 +5,23 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#09061a">
   <title>MatchApp Kids — Safe Movies, Shows & Family Entertainment</title>
-  <meta name="description" content="MatchApp Kids is a family-friendly entertainment discovery mode with age-banded movies, animation, educational shows, music and a kids-safe AI concierge.">
+  <meta name="description" content="Discover handpicked kids movies, cartoons, learning shows and music in MatchApp Kids. Playful, accessible discovery with age groups and beautiful covers on phones, tablets and TVs.">
   <meta name="robots" content="index,follow,max-image-preview:large">
   <link rel="canonical" href="https://matchapp.tv/kids/">
   <link rel="manifest" href="/manifest.json">
-  <link rel="icon" href="/kids/kids-logo.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="/kids/kids-logo.jpeg?v=2">
-  <link rel="apple-touch-icon" href="/logo.jpeg?v=2">
+  <link rel="icon" href="/kids/kids-logo.jpeg" type="image/jpeg">
+  <link rel="apple-touch-icon" href="/kids/kids-logo.jpeg">
 
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="MatchApp Kids">
   <meta property="og:url" content="https://matchapp.tv/kids/">
   <meta property="og:title" content="MatchApp Kids — Safe Entertainment Discovery">
   <meta property="og:description" content="A colorful, age-banded kids mode for finding family movies, animation, educational shows and music with a safety-first AI concierge.">
-  <meta property="og:image" content="https://matchapp.tv/og-image.jpg?v=2">
+  <meta property="og:image" content="https://matchapp.tv/kids/kids-logo.jpeg">
   <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:image:width" content="512">
+  <meta property="og:image:height" content="512">
+  <meta property="og:image:alt" content="MatchApp Kids Mode colorful play and shooting star logo">
 
   <link rel="alternate" hreflang="x-default" href="https://matchapp.tv/kids/">
   <link rel="alternate" hreflang="en" href="https://matchapp.tv/kids/?lang=en">
@@ -63,104 +65,81 @@
   }
   </script>
 
-  <link rel="stylesheet" href="/kids/kids.css?v=1">
+  <link rel="stylesheet" href="/kids/kids.css?v=3">
+<link rel="stylesheet" href="/app-updates.css?v=183">
 </head>
 <body>
+  <a class="kids-skip" href="#browse" data-k="skip">Skip to the picks</a>
+  <div class="kids-universe" aria-hidden="true"><span></span><span></span><span></span></div>
   <header class="kids-header">
     <div class="kids-shell kids-header-inner">
       <a class="kids-brand" href="/kids/" aria-label="MatchApp Kids home">
-        <img src="/kids/kids-logo-sm.jpeg?v=2" alt="MatchApp Kids" width="44" height="44" loading="eager" decoding="async">
-        <span class="kids-brand-copy"><strong>MatchApp Kids</strong><span data-k="safeBrand">Safe discovery</span></span>
+        <img src="/kids/kids-logo-sm.jpeg?v=2" width="72" height="72" alt="MatchApp Kids" decoding="async">
+        <span class="kids-brand-copy"><strong>matchapp<span>.tv</span></strong><span data-k="safeBrand">A little world of wonder</span></span>
       </a>
       <div class="kids-header-actions">
+        <button class="install-btn kids-exit" style="display:none" type="button" onclick="installMatchApp()">Install app</button>
+        <button id="kids-motion" class="kids-motion" type="button" aria-pressed="false" data-k="pauseMotion">Pause magic</button>
         <select id="kids-lang" class="kids-lang" aria-label="Language">
-          <option value="en">EN</option><option value="pt-BR">PT-BR</option><option value="es">ES</option>
-          <option value="fr">FR</option><option value="de">DE</option><option value="it">IT</option>
-          <option value="tr">TR</option><option value="ru">RU</option><option value="ar">AR</option>
-          <option value="hi">HI</option><option value="id">ID</option><option value="ja">JA</option>
-          <option value="ko">KO</option><option value="zh">ZH</option>
+          <option value="en">EN</option><option value="pt-BR">PT-BR</option><option value="es">ES</option><option value="fr">FR</option><option value="de">DE</option><option value="it">IT</option><option value="tr">TR</option><option value="ru">RU</option><option value="ar">AR</option><option value="hi">HI</option><option value="id">ID</option><option value="ja">JA</option><option value="ko">KO</option><option value="zh">ZH</option>
         </select>
-        <button id="kids-exit" class="kids-exit" type="button" data-k="exit">Exit Kids Mode</button>
+        <button id="kids-exit" class="kids-exit" type="button"><span aria-hidden="true">↗</span> <span data-k="exit">Grown-ups</span></button>
       </div>
     </div>
   </header>
-
-  <main>
+  <main id="kids-main">
     <section class="kids-shell kids-hero" aria-labelledby="kids-title">
-      <div>
-        <span class="kids-kicker">🛡️ <span data-k="kicker">Kids-safe by design</span></span>
-        <h1 id="kids-title"><span data-k="heroA">Big fun.</span><br><span data-k="heroB">Small-screen safe.</span></h1>
-        <p data-k="heroText">Find animation, family movies, learning shows and music without mixing in adult entertainment. Kids Mode uses a conservative allowlist and age bands before anything reaches the screen.</p>
-        <div class="kids-safety-list" aria-label="Safety features">
-          <span data-k="safe1">✓ Age-banded picks</span>
-          <span data-k="safe2">✓ No adult titles</span>
-          <span data-k="safe3">✓ Safe AI results only</span>
-          <span data-k="safe4">✓ Parent-friendly exit</span>
-        </div>
+      <div class="kids-hero-copy">
+        <span class="kids-kicker"><span aria-hidden="true">✦</span> <span data-k="kicker">Little people. Big imaginations.</span></span>
+        <h1 id="kids-title"><span data-k="heroA">Press play</span><br><span class="kids-title-color" data-k="heroB">on wonder.</span></h1>
+        <p data-k="heroText">Giggles, brave adventures and amazing discoveries. Find your next favorite in a world made just for kids.</p>
+        <div class="kids-hero-actions"><a class="kids-primary" href="#browse"><span data-k="explore">Let's explore</span> <span aria-hidden="true">→</span></a><button id="kids-surprise" class="kids-secondary" type="button"><span aria-hidden="true">✧</span> <span data-k="surprise">Surprise me</span></button></div>
+        <p class="kids-hero-reassurance"><span aria-hidden="true">✓</span> <span data-k="safe1">Handpicked, age-friendly adventures</span></p>
       </div>
-      <div class="kids-hero-art" aria-hidden="true"><img src="/kids/kids-logo.jpeg?v=2" alt="" width="220" height="220" loading="lazy" decoding="async"></div>
-    </section>
-
-    <section class="kids-shell kids-panel" aria-labelledby="ask-kids-title">
-      <div class="kids-panel-head">
-        <div>
-          <h2 id="ask-kids-title" data-k="askTitle">Ask the Kids Concierge</h2>
-          <p class="kids-panel-sub" data-k="askSub">Tell us what sounds fun. We only surface titles that pass Kids Mode safety checks.</p>
-        </div>
-        <div class="kids-age-wrap">
-          <label for="kids-age" data-k="ageLabel">Age group</label>
-          <select id="kids-age">
-            <option value="all" data-k="ageAll">All-ages safe</option>
-            <option value="3-5" data-k="age35">Ages 3–5</option>
-            <option value="6-8" data-k="age68">Ages 6–8</option>
-            <option value="9-12" data-k="age912">Ages 9–12</option>
-          </select>
-        </div>
-      </div>
-      <form id="kids-ask-form" class="kids-ask-row">
-        <input id="kids-question" maxlength="300" autocomplete="off" data-k-placeholder="askPlaceholder" placeholder="Something funny with animals..." aria-label="Ask MatchApp Kids">
-        <button id="kids-mic" class="kids-voice" type="button" aria-label="Voice input">🎙️</button>
-        <button class="kids-send" type="submit" data-k="askButton">Find safe picks</button>
-      </form>
-      <p class="kids-safe-note" data-k="safeNote">Safety rule: if a title is uncertain, unrated, adult-oriented or outside the selected age band, Kids Mode leaves it out.</p>
-      <div id="kids-chat" class="kids-chat" aria-live="polite">
-        <p id="kids-answer"></p>
-        <div id="kids-chat-results" class="kids-chat-results"></div>
+      <div class="kids-hero-art" aria-hidden="true">
+        <div class="kids-orbit orbit-one"></div><div class="kids-orbit orbit-two"></div>
+        <span class="kids-space-star star-one">✦</span><span class="kids-space-star star-two">✧</span><span class="kids-space-star star-three">✦</span>
+        <span class="kids-planet"><i></i></span>
+        <img class="kids-mascot" src="/kids/kids-logo.jpeg?v=2" width="512" height="512" alt="" fetchpriority="high" decoding="async">
+        <span class="kids-art-label" data-k="artLabel">Your adventure starts here</span>
       </div>
     </section>
-
-    <section class="kids-shell kids-section" aria-labelledby="browse-kids-title">
+    <section class="kids-shell kids-featured" aria-labelledby="featured-title">
+      <div class="kids-section-title-row"><h2 id="featured-title" data-k="featuredTitle">A little inspiration</h2><span class="kids-eyebrow" data-k="featuredSub">Big smiles, tiny explorers</span></div>
+      <div id="kids-featured" class="kids-featured-grid"></div>
+    </section>
+    <section id="browse" class="kids-shell kids-section" aria-labelledby="browse-kids-title">
       <div class="kids-section-title-row">
-        <div><h2 id="browse-kids-title" data-k="browseTitle">Safe picks to start</h2><p data-k="browseSub">Curated first, then artwork is matched against TMDB when available.</p></div>
+        <div><span class="kids-eyebrow" data-k="browseEyebrow">Find your kind of fun</span><h2 id="browse-kids-title" data-k="browseTitle">What shall we discover?</h2></div>
+        <div class="kids-age-wrap"><label for="kids-age" data-k="ageLabel">Age group</label><select id="kids-age"><option value="all" data-k="ageAll">All approved ages</option><option value="3-5" data-k="age35">Ages 3–5</option><option value="6-8" data-k="age68">Ages 6–8</option><option value="9-12" data-k="age912">Ages 9–12</option></select></div>
       </div>
       <div id="kids-chips" class="kids-chips" role="group" aria-label="Kids categories"></div>
+      <p id="kids-grid-status" class="kids-grid-status" role="status"></p>
       <div id="kids-grid" class="kids-grid"></div>
     </section>
-
-    <section class="kids-shell kids-trust" aria-label="How Kids Mode works">
-      <article><strong>🧸 <span data-k="trust1Title">Conservative by default</span></strong><p data-k="trust1Text">Unknown or ambiguous content stays out instead of being guessed safe.</p></article>
-      <article><strong>🎯 <span data-k="trust2Title">Age bands matter</span></strong><p data-k="trust2Text">The library narrows before matching, so older-kid titles do not leak into younger profiles.</p></article>
-      <article><strong>🤖 <span data-k="trust3Title">AI behind a gate</span></strong><p data-k="trust3Text">AI suggestions are checked against the approved Kids library before we display them.</p></article>
+    <section class="kids-shell kids-panel" aria-labelledby="ask-kids-title">
+      <div class="kids-panel-head"><span class="kids-concierge-icon" aria-hidden="true">✦</span><div><span class="kids-eyebrow" data-k="askEyebrow">A little help choosing</span><h2 id="ask-kids-title" data-k="askTitle">Dream it. Discover it.</h2><p class="kids-panel-sub" data-k="askSub">Animals in space? A cozy bedtime story? Tell us what sounds fun.</p></div></div>
+      <form id="kids-ask-form" class="kids-ask-row"><label class="kids-sr" for="kids-question" data-k="askTitle">Tell us what sounds fun</label><input id="kids-question" maxlength="300" autocomplete="off" data-k-placeholder="askPlaceholder" placeholder="Something funny with animals..."><button id="kids-mic" class="kids-voice" type="button" aria-label="Voice input">🎙️</button><button id="kids-send" class="kids-send" type="submit"><span data-k="askButton">Find my adventure</span> <span aria-hidden="true">→</span></button></form>
+      <p class="kids-safe-note"><span aria-hidden="true">✓</span> <span data-k="askSafe">Only picks from our approved Kids collection.</span></p>
+      <div id="kids-chat" class="kids-chat"><p id="kids-answer" role="status" aria-live="polite"></p><div id="kids-chat-results" class="kids-chat-results"></div></div>
     </section>
+    <details class="kids-shell kids-parent-info"><summary data-k="parentInfo">A note for grown-ups</summary><div class="kids-trust"><article><strong data-k="trust1Title">Conservative by default</strong><p data-k="trust1Text">Unknown or ambiguous content stays out instead of being guessed safe.</p></article><article><strong data-k="trust2Title">Age bands matter</strong><p data-k="trust2Text">The library narrows before matching, so older-kid titles do not leak into younger profiles.</p></article><article><strong data-k="trust3Title">AI behind a gate</strong><p data-k="trust3Text">AI suggestions are checked against the approved Kids library before we display them.</p></article></div><p data-k="parentNote">MatchApp helps you discover titles. Availability varies by region. External viewing sites have their own content and controls; a grown-up should help you open them. Kids Mode is a curated filter, not a parental lock.</p></details>
   </main>
-
-  <footer class="kids-footer">
-    <div class="kids-shell kids-footer-inner">
-      <span>© 2026 MatchApp.tv · MatchApp Kids</span>
-      <span><a href="/privacy.html" data-k="privacy">Privacy</a> · <a href="/terms.html" data-k="terms">Terms</a> · <a href="mailto:support@matchapp.tv">support@matchapp.tv</a></span>
-    </div>
-  </footer>
-
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <dialog id="kids-watch-dialog" class="kids-watch-dialog" aria-labelledby="kids-watch-title"><form method="dialog"><button class="kids-dialog-close" aria-label="Close" value="cancel">×</button></form><span class="kids-dialog-symbol" aria-hidden="true">☄</span><h2 id="kids-watch-title" data-k="watchDialogTitle">Bring a grown-up along</h2><p id="kids-watch-description" data-k="watchDialogText">You're heading to another website. Ask a grown-up to help you find this title.</p><strong id="kids-watch-name"></strong><div class="kids-dialog-actions"><a id="kids-watch-continue" class="kids-primary" target="_blank" rel="noopener noreferrer" data-k="watchContinue">Find where to watch</a><form method="dialog"><button class="kids-secondary" value="cancel" data-k="stay">Keep exploring</button></form></div></dialog>
+  <footer class="kids-footer"><div class="kids-shell kids-footer-inner"><a class="kids-footer-brand" href="/kids/"><img src="/kids/kids-logo.jpeg" width="48" height="48" alt=""><span>MatchApp.tv <strong>Kids Mode</strong></span></a><span>© 2026 MatchApp.tv</span><span><a href="/privacy.html" data-k="privacy">Privacy</a> · <a href="/terms.html" data-k="terms">Terms</a></span></div></footer>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.105.0/dist/umd/supabase.js"></script>
   <script>
     window.supabaseClient = window.supabase ? window.supabase.createClient(
       'https://zkymvqrmbabngsqblyye.supabase.co',
       'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpreW12cXJtYmFibmdzcWJseXllIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODY4MDUyNDIsImV4cCI6MjEwMjM4MTI0Mn0._yEVFMfwVU6GBqQ8m3ljfOgA0HSLEDiKMOfYae6ZD8Q'
     ) : null;
   </script>
-  <script src="/settings.js?v=182"></script>
+  <script src="/build-meta.js?v=183"></script>
+  <script defer src="/install.js?v=183"></script>
+  <script src="/settings.js?v=183"></script>
   <script src="/tmdb.js?v=182"></script>
   <script src="/voice-input.js?v=182"></script>
-  <script src="/kids/kids.js?v=1"></script>
+  <script src="/kids/kids.js?v=3"></script>
+<script src="/app-updates.js?v=183"></script>
 </body>
 </html>

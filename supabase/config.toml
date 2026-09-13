@@ -14,3 +14,15 @@ verify_jwt = false
 
 [functions.gemini-proxy]
 verify_jwt = true
+
+[functions.tmdb-proxy]
+verify_jwt = true
+
+# Hosted projects also need these settings enabled in Authentication > Passkeys.
+[auth.passkey]
+enabled = true
+
+[auth.webauthn]
+rp_display_name = "MatchApp.tv"
+rp_id = "matchapp.tv"
+rp_origins = ["https://matchapp.tv", "https://www.matchapp.tv"]

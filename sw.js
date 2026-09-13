@@ -40,7 +40,7 @@
    installability is unaffected.
    ============================================================ */
 
-const SW_VERSION = 'v3-navigation-passthrough';
+const SW_VERSION = 'v4-kids-passkeys-release-notices';
 
 self.addEventListener('install', () => {
     // Activate immediately rather than waiting for old tabs to close. This is

@@ -26,7 +26,7 @@
 // nothing about where to watch. That decision stays with the catalogue.
 // ============================================================
 
-import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2.105.0";
 
 const adminDb = createClient(
   Deno.env.get("SUPABASE_URL") ?? "",
@@ -116,6 +116,7 @@ function normalise(r: Record<string, unknown>, kind: "movie" | "tv"): Record<str
     overview: typeof r.overview === "string" && r.overview.trim() ? r.overview.trim() : null,
     poster: fullImage(r.poster_path as string, "w500"),
     posterLarge: fullImage(r.poster_path as string, "w780"),
+    posterOriginal: fullImage(r.poster_path as string, "original"),
     backdrop: fullImage(r.backdrop_path as string, "w1280"),
     popularity: typeof r.popularity === "number" ? r.popularity : 0,
     voteAverage: typeof r.vote_average === "number" ? r.vote_average : null,

@@ -1,0 +1,12 @@
+{
+  "name": "matchapp-site",
+  "private": true,
+  "scripts": {
+    "test": "node --test --test-isolation=none tests/*.test.cjs",
+    "audit:site": "node tools/audit-site.js",
+    "build:kids-covers": "node tools/build-kids-covers.js"
+  },
+  "devDependencies": {
+    "jsdom": "26.1.0"
+  }
+}

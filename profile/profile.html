@@ -36,7 +36,7 @@
     
     <link rel="stylesheet" href="/style.css?v=181">
     <link rel="stylesheet" href="/tv.css?v=181">
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.105.0/dist/umd/supabase.js"></script>
     <style>
         :root { --gold: #E5C158; --gold-deep: #B8912F; --gold-glow: #FFF3A3; --ink: #14131A; --royal-deep: #130734; --royal: #402562; --royal-lift: #6B3FA0; --royal-glow: #A376B6; --bg-dark: #14131A; --card-bg: rgba(26, 22, 38, 0.90); }
         body { margin: 0; background: var(--bg-dark); color: #fff; font-family: 'Inter', sans-serif; overflow-x: hidden; }
@@ -319,6 +319,8 @@
             .portfolio-panel { padding: 18px 16px !important; }
         }
     </style>
+<link rel="stylesheet" href="/passkeys.css?v=183">
+<link rel="stylesheet" href="/app-updates.css?v=183">
 </head>
 <body>
     <!-- Google Tag Manager (noscript) -->
@@ -703,7 +705,7 @@
                     </details>
                 </div>
 
-                <div class="portfolio-tabs">
+                <div class="premium-card"><section class="passkey-box" aria-labelledby="passkey-title"><h3 id="passkey-title" data-passkey-text="title">Device sign-in</h3><p class="passkey-help" data-passkey-text="help">Use your device unlock to sign in again. MatchApp never receives your biometrics or PIN.</p><button type="button" class="passkey-button" data-passkey-action="add" data-passkey-text="add">Add a passkey</button><a class="passkey-sign-in" data-passkey-sign-in-first href="/?signIn=1" data-passkey-text="signInFirst">Sign in first</a><p class="passkey-status" data-passkey-status role="status" aria-live="polite"></p><div id="passkey-list" class="passkey-list"></div></section></div><div class="portfolio-tabs">
                     <button id="tab-watchlater" class="portfolio-tab active" onclick="switchPortfolioTab('watchlater')">⭐ Watch Later <span id="count-watchlater" class="tab-count">0</span></button>
                     <button id="tab-seenit" class="portfolio-tab" onclick="switchPortfolioTab('seenit')">👁️ Seen It <span id="count-seenit" class="tab-count">0</span></button>
                     <button id="tab-audio" class="portfolio-tab" onclick="switchPortfolioTab('audio')">🎧 Audio Library <span id="count-audio" class="tab-count">0</span></button>
@@ -736,13 +738,16 @@
     </footer>
 
     <script src="/activity.js?v=181"></script>
-    <script src="/settings.js?v=181"></script>
+    <script src="/settings.js?v=183"></script>
     <script src="/i18n.js?v=181"></script>
-    <script defer src="/install.js?v=181"></script>
+    <script src="/build-meta.js?v=183"></script>
+<script defer src="/install.js?v=183"></script>
     <script defer src="/avatars.js?v=181"></script>
-    <script src="/app.js?v=181"></script>
+    <script src="/app.js?v=183"></script>
     <script src="/taste.js?v=181"></script>
     <script src="/profile.js?v=181"></script>
     <script src="/tv.js?v=181"></script>
+<script src="/passkeys.js?v=183"></script>
+<script src="/app-updates.js?v=183"></script>
 </body>
 </html>

@@ -63,7 +63,7 @@ function showInstallButtons() {
     installButtons().forEach(b => { b.style.display = 'inline-flex'; });
 }
 function hideInstallButtons() {
-    installButtons().forEach(b => { b.style.display = 'none'; });
+    installButtons().forEach(b => { b.style.display = window.matchAppUpdatePending ? 'inline-flex' : 'none'; });
 }
 
 // Chrome/Edge/Brave signal real installability by firing this. We stop the
@@ -136,6 +136,7 @@ window.closeInstallModal = function () {
 };
 
 window.installMatchApp = async function () {
+    if (window.matchAppUpdatePending) { await window.updateMatchApp(); return; }
     // Acting on the hint is the strongest possible signal it was seen — clear
     // it immediately so it never sits on top of the native prompt or the iOS
     // instructions modal.
@@ -184,6 +185,7 @@ window.dismissInstallBubble = function () {
 };
 
 function maybeShowInstallHint() {
+    if (platformInfo().isStandalone || window.matchAppUpdatePending) return;
     try { if (localStorage.getItem(INSTALL_HINT_KEY)) return; } catch (e) {}
 
     const bubble = document.getElementById('install-bubble');
@@ -279,11 +281,10 @@ if ('serviceWorker' in navigator) {
             try { reg.update(); } catch (e) {}
         }).catch(() => {});
 
-        let reloading = false;
         navigator.serviceWorker.addEventListener('controllerchange', () => {
-            if (reloading || !hadControllerAtStart) return; // first install: nothing to replace
-            reloading = true;
-            window.location.reload();
+            if (!hadControllerAtStart) return;
+            // Do not interrupt an active form or device sign-in ceremony.
+            window.checkMatchAppRelease?.();
         });
     });
 }

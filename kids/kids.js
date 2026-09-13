@@ -66,6 +66,20 @@
     {title:'SciShow Kids', year:'', type:'series', platform:'YouTube', ages:['all','6-8','9-12'], cats:['learning','animals'], desc:'Friendly science explainers built around kids’ everyday questions.', tmdb:false}
   ];
 
+  Object.assign(UI.en, {
+    safeBrand:'A little world of wonder', exit:'Grown-ups', kicker:'Little people. Big imaginations.', heroA:'Press play', heroB:'on wonder.', heroText:'Giggles, brave adventures and amazing discoveries. Find your next favorite in a world made just for kids.', safe1:'Handpicked, age-friendly adventures', ageAll:'All approved ages', browseTitle:'What shall we discover?', askTitle:'Dream it. Discover it.', askSub:'Animals in space? A cozy bedtime story? Tell us what sounds fun.', askButton:'Find my adventure', explore:"Let’s explore", surprise:'Surprise me', skip:'Skip to the picks', artLabel:'Your adventure starts here', featuredTitle:'A little inspiration', featuredSub:'Big smiles, tiny explorers', browseEyebrow:'Find your kind of fun', askEyebrow:'A little help choosing', askSafe:'Only picks from our approved Kids collection.', parentInfo:'A note for grown-ups', parentNote:'MatchApp helps you discover titles. Availability varies by region. External viewing sites have their own content and controls; a grown-up should help you open them. Kids Mode is a curated filter, not a parental lock.', watch:'Explore this title', watchDialogTitle:'Bring a grown-up along', watchDialogText:'You’re heading to another website. Ask a grown-up to help you find this title.', watchContinue:'Find where to watch', stay:'Keep exploring', pauseMotion:'Pause magic', resumeMotion:'Resume magic', pickCount:'adventures to explore', empty:'Try another category for more adventures.', movie:'Movie', series:'Show', music:'Music', languageLabel:'Language', categoryLabel:'Kids categories', voiceLabel:'Voice input', closeLabel:'Close', waiting:'Finding your adventure…'
+  });
+  Object.assign(UI['pt-BR'], {
+    safeBrand:'Um mundinho de descobertas', exit:'Responsáveis', kicker:'Pequenos exploradores. Grandes ideias.', heroA:'Dê o play', heroB:'na imaginação.', heroText:'Risadas, aventuras e descobertas incríveis. Encontre seu próximo favorito em um mundo feito para crianças.', safe1:'Aventuras escolhidas para cada idade', ageAll:'Todas as idades aprovadas', browseTitle:'O que vamos descobrir?', askTitle:'Sonhe. Descubra.', askSub:'Animais no espaço? Uma história para dormir? Conte o que parece divertido.', askButton:'Encontrar minha aventura', explore:'Vamos explorar', surprise:'Surpreenda-me', skip:'Ir para as sugestões', artLabel:'Sua aventura começa aqui', featuredTitle:'Um pouco de inspiração', featuredSub:'Grandes sorrisos, pequenos exploradores', browseEyebrow:'Encontre sua diversão', askEyebrow:'Uma ajudinha para escolher', askSafe:'Só sugestões da coleção Kids aprovada.', parentInfo:'Um recado para responsáveis', parentNote:'O MatchApp ajuda a descobrir títulos. A disponibilidade varia por região. Sites externos têm conteúdos e controles próprios; um responsável deve ajudar a abri-los. O Modo Kids é um filtro de curadoria, não um bloqueio parental.', watch:'Explorar este título', watchDialogTitle:'Chame um responsável', watchDialogText:'Você vai abrir outro site. Peça ajuda a um responsável para encontrar este título.', watchContinue:'Encontrar onde assistir', stay:'Continuar explorando', pauseMotion:'Pausar magia', resumeMotion:'Retomar magia', pickCount:'aventuras para explorar', empty:'Tente outra categoria para encontrar aventuras.', movie:'Filme', series:'Programa', music:'Música', languageLabel:'Idioma', categoryLabel:'Categorias Kids', voiceLabel:'Entrada por voz', closeLabel:'Fechar', waiting:'Encontrando sua aventura…'
+  });
+  Object.assign(UI.es, {
+    safeBrand:'Un pequeño mundo de maravillas', exit:'Adultos', kicker:'Pequeños exploradores. Grandes ideas.', heroA:'Dale play', heroB:'a la imaginación.', heroText:'Risas, aventuras y descubrimientos increíbles. Encuentra tu próximo favorito en un mundo hecho para niños.', safe1:'Aventuras elegidas para cada edad', ageAll:'Todas las edades aprobadas', browseTitle:'¿Qué vamos a descubrir?', askTitle:'Sueña. Descubre.', askSub:'¿Animales en el espacio? ¿Una historia para dormir? Dinos qué suena divertido.', askButton:'Encontrar mi aventura', explore:'Vamos a explorar', surprise:'Sorpréndeme', skip:'Ir a las recomendaciones', artLabel:'Tu aventura empieza aquí', featuredTitle:'Un poco de inspiración', featuredSub:'Grandes sonrisas, pequeños exploradores', browseEyebrow:'Encuentra tu diversión', askEyebrow:'Una ayuda para elegir', askSafe:'Solo títulos de nuestra colección Kids aprobada.', parentInfo:'Una nota para adultos', parentNote:'MatchApp ayuda a descubrir títulos. La disponibilidad varía por región. Los sitios externos tienen contenidos y controles propios; un adulto debe ayudar a abrirlos. Kids Mode es un filtro de selección, no un bloqueo parental.', watch:'Explorar este título', watchDialogTitle:'Pide ayuda a un adulto', watchDialogText:'Vas a abrir otro sitio. Pide ayuda a un adulto para encontrar este título.', watchContinue:'Ver dónde está disponible', stay:'Seguir explorando', pauseMotion:'Pausar magia', resumeMotion:'Reanudar magia', pickCount:'aventuras para explorar', empty:'Prueba otra categoría para más aventuras.', movie:'Película', series:'Programa', music:'Música', languageLabel:'Idioma', categoryLabel:'Categorías Kids', voiceLabel:'Entrada por voz', closeLabel:'Cerrar', waiting:'Buscando tu aventura…'
+  });
+  const read = (key) => { try { return localStorage.getItem(key); } catch (_) { return null; } };
+  const write = (key, value) => { try { localStorage.setItem(key, value); } catch (_) {} };
+  let requestVersion = 0;
+  let chatPicks = [];
+  let motionPaused = read('match_kids_pause_motion') === 'true';
   let lang = 'en';
   let category = 'all';
 
@@ -80,54 +94,103 @@
 
   function setLanguage(next) {
     lang = normalizeLang(next);
-    localStorage.setItem(LANG_KEY, lang);
+    write(LANG_KEY, lang);
     document.documentElement.lang = lang;
     document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
     document.querySelectorAll('[data-k]').forEach(el => { const v = tr(el.dataset.k); if (v) el.textContent = v; });
     document.querySelectorAll('[data-k-placeholder]').forEach(el => { const v = tr(el.dataset.kPlaceholder); if (v) el.placeholder = v; });
     const picker = document.getElementById('kids-lang'); if (picker) picker.value = lang;
-    renderChips(); renderGrid();
+    window.MATCH_LANG = lang;
+    document.getElementById('kids-lang')?.setAttribute('aria-label', tr('languageLabel'));
+    document.getElementById('kids-chips')?.setAttribute('aria-label', tr('categoryLabel'));
+    document.getElementById('kids-mic')?.setAttribute('aria-label', tr('voiceLabel'));
+    document.querySelector('.kids-dialog-close')?.setAttribute('aria-label', tr('closeLabel'));
+    clearChat(); updateMotion(); renderChips(); renderGrid(); renderFeatured();
   }
 
-  function currentAge() { return document.getElementById('kids-age')?.value || localStorage.getItem(AGE_KEY) || 'all'; }
+  function currentAge() { return document.getElementById('kids-age')?.value || read(AGE_KEY) || 'all'; }
   function allowedForAge(item, age) { return age === 'all' ? item.ages.includes('all') : item.ages.includes(age); }
   function allowedLibrary(age) { return LIBRARY.filter(item => allowedForAge(item, age)); }
   function normalizeTitle(s) { return String(s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,' ').trim(); }
   const byTitle = new Map(LIBRARY.map(x => [normalizeTitle(x.title), x]));
 
-  function makePoster(title) {
-    const safe = String(title).replace(/[&<>"']/g, '');
-    const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="600" height="900"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#6D3DF5"/><stop offset="1" stop-color="#22D3EE"/></linearGradient></defs><rect width="600" height="900" rx="44" fill="#130b2c"/><rect x="26" y="26" width="548" height="848" rx="36" fill="url(#g)" opacity=".9"/><circle cx="300" cy="300" r="120" fill="#F7DC5C" opacity=".95"/><path d="m300 205 28 58 64 9-46 45 11 64-57-30-57 30 11-64-46-45 64-9z" fill="#fff"/><text x="300" y="600" text-anchor="middle" fill="white" font-family="Arial,sans-serif" font-size="42" font-weight="700">${safe.slice(0,22)}</text><text x="300" y="660" text-anchor="middle" fill="#e8ddff" font-family="Arial,sans-serif" font-size="24">MatchApp Kids</text></svg>`;
-    return 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(svg);
+  function escapeHTML(value) {
+    return String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+
+  function slug(item) { return normalizeTitle(item.title).replace(/\s+/g, '-'); }
+  function makePoster(item) { return '/kids/covers/' + slug(item) + '.svg'; }
+  const icons = {all:'✦',animals:'🐾',funny:'☺',learning:'💡',adventure:'🚀',family:'🧸',music:'♫',bedtime:'☾'};
+  const posterRequests = new Map();
+  const posterQueue = [];
+  let activePosters = 0;
+
+  function fetchPoster(item) {
+    if (posterRequests.has(item.title)) return posterRequests.get(item.title);
+    const pending = new Promise(resolve => { posterQueue.push({item, resolve}); pumpPosters(); });
+    posterRequests.set(item.title, pending);
+    return pending;
+  }
+  function pumpPosters() {
+    while (activePosters < 4 && posterQueue.length) {
+      const {item, resolve} = posterQueue.shift(); activePosters++;
+      Promise.resolve().then(async () => {
+        if (typeof window.tmdbLookup !== 'function') return null;
+        const kind = item.type === 'movie' ? 'movie' : 'tv';
+        const r = await window.tmdbLookup(item.title, {year:item.year, kind});
+        if (!r || r.adult === true || r.kind !== kind) return null;
+        if (![r.title,r.originalTitle].some(name => normalizeTitle(name) === normalizeTitle(item.title))) return null;
+        if (item.year && (!r.year || Math.abs(Number(r.year) - Number(item.year)) > 1)) return null;
+        const source = r.posterLarge || r.poster;
+        if (!source || !/^https:\/\/image\.tmdb\.org\/t\/p\//.test(source)) return null;
+        return r;
+      }).catch(() => null).then(resolve).finally(() => { activePosters--; pumpPosters(); });
+    }
   }
 
   function watchUrl(item) {
-    if (item.platform === 'YouTube') return `https://www.youtube.com/results?search_query=${encodeURIComponent(item.title + ' official kids')}`;
-    const country = String(localStorage.getItem('match_user_country') || '').toLowerCase();
-    const region = /brazil|brasil/.test(country) ? 'br' : 'us';
-    return `https://www.justwatch.com/${region}/search?q=${encodeURIComponent(item.title)}`;
+    if (item.platform === 'YouTube') return 'https://www.youtube.com/results?search_query=' + encodeURIComponent(item.title + ' official kids');
+    const country = String(read('match_user_country') || '').toLowerCase();
+    return 'https://www.justwatch.com/' + (/brazil|brasil/.test(country) ? 'br' : 'us') + '/search?q=' + encodeURIComponent(item.title);
   }
 
   function cardHTML(item, compact, slot) {
-    const id = 'kid-' + (slot || 'card') + '-' + normalizeTitle(item.title).replace(/\s+/g,'-');
-    return `<article class="kids-card" data-title="${item.title.replace(/"/g,'&quot;')}">
-      <div class="kids-card-poster"><img id="${id}" src="${makePoster(item.title)}" alt="${item.title.replace(/"/g,'&quot;')}" loading="lazy"><span class="kids-card-badge">${item.ages.includes('all') ? tr('ageAll') : item.ages.filter(x=>x!=='all').join(' · ')}</span></div>
-      <div class="kids-card-body"><h3>${item.title}</h3>${compact ? '' : `<p>${item.desc}</p>`}<div class="kids-card-meta"><span>${item.type}</span><span>${item.platform}</span></div><a href="${watchUrl(item)}" target="_blank" rel="noopener noreferrer">${tr('watch')}</a></div>
-    </article>`;
+    const id = 'kid-' + slot + '-' + slug(item);
+    const title = escapeHTML(item.title);
+    const ages = item.ages.filter(a => a !== 'all').join(' · ');
+    return '<article class="kids-card" data-title="' + title + '"><div class="kids-card-poster"><div class="kids-cover-underlay" aria-hidden="true"><span>' + icons[item.cats[0]] + '</span><strong>' + title + '</strong></div><img id="' + id + '" src="' + makePoster(item) + '" alt="' + title + '" width="600" height="900" loading="lazy" decoding="async"><span class="kids-card-badge">' + ages + '</span></div><div class="kids-card-body"><h3>' + title + '</h3><div class="kids-card-meta"><span>' + escapeHTML(tr(item.type)) + '</span><span>' + escapeHTML(item.year) + '</span></div>' + (compact ? '' : '<p>' + escapeHTML(item.desc) + '</p>') + '<button class="kids-watch" type="button" data-watch="' + slug(item) + '" aria-label="' + escapeHTML(tr('watch') + ': ' + item.title) + '">' + escapeHTML(tr('watch')) + ' <span aria-hidden="true">↗</span></button></div></article>';
   }
 
   async function hydratePoster(item, slot) {
-    if (!item.tmdb || typeof window.tmdbLookup !== 'function') return;
-    const id = 'kid-' + (slot || 'card') + '-' + normalizeTitle(item.title).replace(/\s+/g,'-');
-    const img = document.getElementById(id);
+    const img = document.getElementById('kid-' + slot + '-' + slug(item));
     if (!img) return;
-    const kind = item.type === 'movie' ? 'movie' : 'tv';
-    try {
-      const r = await window.tmdbLookup(item.title, {year:item.year, kind});
-      if (!r || r.adult === true || !(r.posterLarge || r.poster)) return;
-      img.onerror = () => { img.onerror = null; img.src = makePoster(item.title); };
-      img.src = r.posterLarge || r.poster;
-    } catch (_) {}
+    img.onerror = () => { img.onerror = null; img.style.visibility = 'hidden'; };
+    const r = await fetchPoster(item);
+    if (!r || !img.isConnected) return;
+    const source = r.posterLarge || r.poster;
+    const preload = new Image();
+    preload.onload = () => {
+      if (!img.isConnected) return;
+      img.onerror = () => { img.onerror = () => { img.onerror = null; img.style.visibility = 'hidden'; }; img.removeAttribute('srcset'); img.src = makePoster(item); };
+      img.style.visibility = 'visible';
+      img.src = source;
+      // Use the source's actual sizes; 8K layout does not invent 8K movie art.
+      if (r.posterOriginal && /^https:\/\/image\.tmdb\.org\/t\/p\/original\//.test(r.posterOriginal)) {
+        img.srcset = r.poster + ' 500w, ' + r.posterLarge + ' 780w';
+        img.sizes = '(min-width: 6000px) 1000px, (min-width: 3000px) 550px, (min-width: 1920px) 350px, (max-width: 560px) 45vw, 240px';
+        // Originals have different native resolutions; never label them as 8K.
+        if (matchMedia('(min-width: 3000px)').matches) { img.removeAttribute('srcset'); img.src = r.posterOriginal; }
+      }
+    };
+    preload.src = source;
+  }
+
+  function renderFeatured() {
+    const host = document.getElementById('kids-featured'); if (!host) return;
+    const pool = allowedLibrary(currentAge());
+    const picks = [pool[0], pool.find(x => x.cats.includes('learning') && x !== pool[0]), pool.find(x => x.cats.includes('adventure') && x !== pool[0])].filter(Boolean);
+    host.innerHTML = picks.map((x,i) => '<a href="#browse" class="kids-feature" data-feature="' + slug(x) + '"><img id="kid-feature-' + i + '-' + slug(x) + '" src="' + makePoster(x) + '" alt="" width="600" height="900"><span><strong>' + escapeHTML(x.title) + '</strong><small>' + escapeHTML(categoryLabel(x.cats[0])) + ' · ' + escapeHTML(tr(x.type)) + '</small></span><span class="kids-feature-arrow" aria-hidden="true">→</span></a>').join('');
+    picks.forEach((x,i) => hydratePoster(x, 'feature-' + i));
   }
 
   function categoryLabel(cat) {
@@ -152,16 +215,19 @@
 
   function renderChips() {
     const host = document.getElementById('kids-chips'); if (!host) return;
-    host.innerHTML = CATEGORIES.map(c => `<button type="button" class="kids-chip ${c===category?'active':''}" data-cat="${c}">${categoryLabel(c)}</button>`).join('');
+    const hadFocus = host.contains(document.activeElement);
+    host.innerHTML = CATEGORIES.map(c => '<button type="button" class="kids-chip ' + (c === category ? 'active' : '') + '" data-cat="' + c + '" aria-pressed="' + (c === category) + '"><span class="kids-chip-icon" aria-hidden="true">' + icons[c] + '</span>' + escapeHTML(categoryLabel(c)) + '</button>').join('');
     host.querySelectorAll('button').forEach(b => b.addEventListener('click', () => { category = b.dataset.cat; renderChips(); renderGrid(); }));
+    if (hadFocus) host.querySelector('[data-cat="' + category + '"]')?.focus({preventScroll:true});
   }
 
   function renderGrid() {
     const host = document.getElementById('kids-grid'); if (!host) return;
-    const age = currentAge();
-    const items = allowedLibrary(age).filter(x => category === 'all' || x.cats.includes(category));
+    const items = allowedLibrary(currentAge()).filter(x => category === 'all' || x.cats.includes(category));
     host.innerHTML = items.map((x,i) => cardHTML(x, false, 'grid-' + i)).join('');
-    items.slice(0, 24).forEach((x,i) => hydratePoster(x, 'grid-' + i));
+    host.querySelectorAll('.kids-card').forEach((el,i) => el.style.setProperty('--card-order', Math.min(i,7)));
+    document.getElementById('kids-grid-status').textContent = items.length ? items.length + ' ' + tr('pickCount') : tr('empty');
+    items.forEach((x,i) => hydratePoster(x, 'grid-' + i));
   }
 
   function queryTokens(q) {
@@ -193,7 +259,7 @@
     try {
       const { data, error } = await window.supabaseClient.functions.invoke('gemini-proxy', { body: {
         mode:'discover', question, lang, kidsMode:true, childAgeBand:age,
-        country:localStorage.getItem('match_user_country') || '', age:''
+        country:read('match_user_country') || '', age:''
       }});
       if (error || !data?.candidates?.[0]?.content?.parts?.[0]?.text) return [];
       const raw = data.candidates[0].content.parts[0].text;
@@ -207,44 +273,100 @@
     } catch (_) { return []; }
   }
 
+  function clearChat() {
+    requestVersion++; chatPicks = [];
+    document.getElementById('kids-chat')?.classList.remove('show');
+    const results = document.getElementById('kids-chat-results'); if (results) results.replaceChildren();
+    const send = document.getElementById('kids-send'); if (send) send.disabled = false;
+    document.getElementById('kids-ask-form')?.setAttribute('aria-busy', 'false');
+  }
   async function askKids(question) {
     const answer = document.getElementById('kids-answer');
     const results = document.getElementById('kids-chat-results');
     const chat = document.getElementById('kids-chat');
     if (!question.trim() || !answer || !results || !chat) return;
-    chat.classList.add('show');
-    answer.textContent = '…'; results.innerHTML = '';
-    const age = currentAge();
-    const aiApproved = await safeAIRecognise(question.trim(), age);
-    const picks = aiApproved.length ? aiApproved : localMatch(question.trim(), age);
-    answer.textContent = picks.length ? tr('answer') : tr('noMatch');
-    results.innerHTML = picks.map((x,i) => cardHTML(x, true, 'chat-' + i)).join('');
-    picks.forEach((x,i) => hydratePoster(x, 'chat-' + i));
-    chat.scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block:'nearest'});
+    const version = ++requestVersion; const age = currentAge();
+    const send = document.getElementById('kids-send');
+    const form = document.getElementById('kids-ask-form');
+    chat.classList.add('show'); answer.textContent = tr('waiting'); results.replaceChildren();
+    send.disabled = true; form.setAttribute('aria-busy', 'true');
+    let timer;
+    const aiApproved = await Promise.race([safeAIRecognise(question.trim(), age), new Promise(resolve => { timer = setTimeout(() => resolve([]), 18000); })]);
+    clearTimeout(timer);
+    if (version !== requestVersion || age !== currentAge()) return;
+    // Reapply the CURRENT allowlist, even to locally selected fallback results.
+    chatPicks = (aiApproved.length ? aiApproved : localMatch(question.trim(), age)).filter(x => byTitle.get(normalizeTitle(x.title)) === x && allowedForAge(x, currentAge()));
+    answer.textContent = chatPicks.length ? tr('answer') : tr('noMatch');
+    results.innerHTML = chatPicks.map((x,i) => cardHTML(x, true, 'chat-' + i)).join('');
+    chatPicks.forEach((x,i) => hydratePoster(x, 'chat-' + i));
+    send.disabled = false; form.setAttribute('aria-busy', 'false');
+    chat.scrollIntoView({behavior: reducedMotion() ? 'auto' : 'smooth', block:'nearest'});
+  }
+
+  function reducedMotion() { return motionPaused || document.documentElement.classList.contains('reduce-motion') || matchMedia('(prefers-reduced-motion: reduce)').matches; }
+  function updateMotion() {
+    document.body.classList.toggle('kids-paused', motionPaused);
+    const b = document.getElementById('kids-motion');
+    if (b) { b.setAttribute('aria-pressed', String(motionPaused)); b.textContent = tr(motionPaused ? 'resumeMotion' : 'pauseMotion'); }
+  }
+  function highlightTitle(key) {
+    const item = allowedLibrary(currentAge()).find(x => slug(x) === key);
+    if (!item) return;
+    if (category !== 'all') { category = 'all'; renderChips(); renderGrid(); }
+    const card = [...document.querySelectorAll('#kids-grid .kids-card')].find(el => el.dataset.title === item.title);
+    card?.scrollIntoView({behavior:reducedMotion() ? 'auto' : 'smooth', block:'center'});
+    card?.classList.add('is-surprise'); card?.querySelector('button')?.focus({preventScroll:true});
+    setTimeout(() => card?.classList.remove('is-surprise'), 2200);
+  }
+  function openWatch(key) {
+    const item = allowedLibrary(currentAge()).find(x => slug(x) === key); if (!item) return;
+    const dialog = document.getElementById('kids-watch-dialog');
+    document.getElementById('kids-watch-name').textContent = item.title;
+    const link = document.getElementById('kids-watch-continue'); link.href = watchUrl(item);
+    if (typeof dialog.showModal === 'function') dialog.showModal();
+    else { document.getElementById('kids-answer').textContent = tr('watchDialogText'); document.getElementById('kids-chat').classList.add('show'); }
+  }
+  function remoteNavigation(event) {
+    if (!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(event.key) || event.altKey || event.metaKey || event.ctrlKey) return;
+    const active = document.activeElement;
+    if (active?.matches('input,select,textarea') || document.getElementById('kids-watch-dialog')?.open) return;
+    const origin = active?.getBoundingClientRect();
+    const candidates = [...document.querySelectorAll('a,button,select,summary')].filter(el => !el.disabled && el.getClientRects().length && el.getBoundingClientRect().width > 0);
+    if (!origin || active === document.body) { candidates[0]?.focus(); event.preventDefault(); return; }
+    const horizontal = ['ArrowLeft','ArrowRight'].includes(event.key); const sign = ['ArrowRight','ArrowDown'].includes(event.key) ? 1 : -1;
+    const x = origin.x + origin.width/2, y = origin.y + origin.height/2;
+    const ranked = candidates.filter(el => el !== active).map(el => { const r = el.getBoundingClientRect(); const dx = r.x+r.width/2-x, dy = r.y+r.height/2-y; const forward = (horizontal ? dx : dy)*sign; return {el,forward,score:forward+Math.abs(horizontal ? dy : dx)*4}; }).filter(x => x.forward > 4).sort((a,b) => a.score-b.score);
+    if (ranked.length) { event.preventDefault(); ranked[0].el.focus({preventScroll:true}); ranked[0].el.scrollIntoView({block:'nearest',behavior:'auto'}); }
   }
 
   function exitKids() {
-    localStorage.setItem(MODE_KEY, 'false');
+    write(MODE_KEY, 'false');
     location.href = '/';
   }
 
   function boot() {
-    localStorage.setItem(MODE_KEY, 'true');
+    write(MODE_KEY, 'true');
     const params = new URLSearchParams(location.search);
-    const requested = params.get('lang') || localStorage.getItem(LANG_KEY) || navigator.language || 'en';
-    const age = localStorage.getItem(AGE_KEY) || 'all';
+    const requested = params.get('lang') || read(LANG_KEY) || navigator.language || 'en';
+    const age = read(AGE_KEY) || 'all';
     const ageSelect = document.getElementById('kids-age'); if (ageSelect) ageSelect.value = ['all','3-5','6-8','9-12'].includes(age) ? age : 'all';
     setLanguage(requested);
 
     document.getElementById('kids-lang')?.addEventListener('change', e => setLanguage(e.target.value));
     document.getElementById('kids-exit')?.addEventListener('click', exitKids);
-    ageSelect?.addEventListener('change', () => { localStorage.setItem(AGE_KEY, ageSelect.value); renderGrid(); });
+    ageSelect?.addEventListener('change', () => { write(AGE_KEY, ageSelect.value); clearChat(); document.getElementById('kids-watch-dialog')?.close?.(); renderGrid(); renderFeatured(); });
     document.getElementById('kids-ask-form')?.addEventListener('submit', e => { e.preventDefault(); askKids(document.getElementById('kids-question')?.value || ''); });
 
     if (typeof window.initVoiceInput === 'function') {
       try { window.initVoiceInput('kids-question','kids-mic', () => document.getElementById('kids-ask-form')?.requestSubmit()); } catch (_) {}
     }
-    renderChips(); renderGrid();
+    updateMotion();
+    document.getElementById('kids-motion')?.addEventListener('click', () => { motionPaused = !motionPaused; write('match_kids_pause_motion', String(motionPaused)); updateMotion(); });
+    document.getElementById('kids-surprise')?.addEventListener('click', () => { const pool = allowedLibrary(currentAge()); if (pool.length) highlightTitle(slug(pool[Math.floor(Math.random()*pool.length)])); });
+    document.addEventListener('click', event => { const feature = event.target.closest('[data-feature]'); const watch = event.target.closest('[data-watch]'); if (feature) { event.preventDefault(); highlightTitle(feature.dataset.feature); } if (watch) openWatch(watch.dataset.watch); });
+    document.getElementById('kids-watch-continue')?.addEventListener('click', () => document.getElementById('kids-watch-dialog').close());
+    document.addEventListener('keydown', remoteNavigation);
+    document.addEventListener('visibilitychange', () => document.body.classList.toggle('kids-hidden', document.hidden));
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
