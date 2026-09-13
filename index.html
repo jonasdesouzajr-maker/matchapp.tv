@@ -428,10 +428,10 @@
     <link rel="alternate" hreflang="zh" href="https://matchapp.tv/?lang=zh">
 
     <!-- NATIVE I18N (defer = runs before DOMContentLoaded, no English flash) -->
-    <script defer src="/i18n.js?v=170"></script>
-    <script defer src="/install.js?v=170"></script>
-    <script defer src="/avatars.js?v=170"></script>
-    <script defer src="/ambient.js?v=170"></script>
+    <script defer src="/i18n.js?v=171"></script>
+    <script defer src="/install.js?v=171"></script>
+    <script defer src="/avatars.js?v=171"></script>
+    <script defer src="/ambient.js?v=171"></script>
 
     <!-- GOOGLE ANALYTICS (GTAG) -->
 <!-- GOOGLE ADSENSE SCRIPT ENGINE -->
@@ -468,10 +468,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="/style.css?v=170">
+    <link rel="stylesheet" href="/style.css?v=171">
     <!-- Smart TV stylesheet. Entirely scoped under body.tv-mode, so a
          non-TV visitor pays one small file and sees no change. -->
-    <link rel="stylesheet" href="/tv.css?v=170">
+    <link rel="stylesheet" href="/tv.css?v=171">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
@@ -1075,12 +1075,48 @@
         .spotlight-save.saved { background: #25D366 !important; color: #fff !important; }
         .spotlight-ask { background: transparent; border: 1px solid rgba(229,193,88,0.5); color: var(--gold-glow); padding: 13px 22px; border-radius: 12px; font-size: 14px; font-weight: 700; cursor: pointer; transition: 0.25s; font-family: inherit; }
         .spotlight-ask:hover { background: rgba(216,156,72,0.21); border-color: var(--gold); }
+        /* ===== SPOTLIGHT ON PHONES =====
+           The previous rule stacked the poster ABOVE the text with
+           flex-direction:column, which is the usual mobile reflex and is
+           wrong here. A 240px poster plus title, description, four chips, a
+           countdown and two buttons stacks to roughly 654px — about 70% of a
+           6.7" screen — while 430px of width sits empty either side of a
+           centred poster.
+
+           Keeping the row and shrinking the poster uses the width that is
+           already there and roughly halves the height. The poster stays a
+           true 2:3 at every step so the artwork never distorts. */
         @media (max-width: 700px) {
-            .spotlight-inner { flex-direction: column; text-align: center; padding: 22px 18px; }
-            .spotlight-poster { width: 160px; height: 240px; }
-            .spotlight-title { font-size: 24px; }
-            .spotlight-meta, .spotlight-countdown, .spotlight-actions { justify-content: center; }
+            .spotlight-inner { flex-direction: row; text-align: left; padding: 16px 14px; gap: 14px; align-items: flex-start; }
+            .spotlight-poster { width: 118px; height: 177px; border-radius: 11px; border-width: 1px; }
+            .spotlight-title { font-size: clamp(17px, 4.6vw, 21px); margin-bottom: 7px; }
+            .spotlight-desc { font-size: 13px; line-height: 1.5; margin-bottom: 11px;
+                              display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+            .spotlight-eyebrow { font-size: 10.5px; }
+            .spotlight-meta, .spotlight-countdown, .spotlight-actions { justify-content: flex-start; }
+            .spotlight-meta { gap: 5px; margin-bottom: 9px; }
+            .spotlight-chip { font-size: 10px; padding: 3px 8px; }
+            .spotlight-countdown { font-size: 12px; margin-bottom: 11px; }
+            .spotlight-actions { gap: 8px; }
+            .spotlight-save { padding: 10px 15px !important; font-size: 12.5px !important; }
+            .spotlight-ask { padding: 10px 14px; font-size: 12.5px; }
+            .spotlight-ribbon { font-size: 8.5px; padding: 3px 7px; }
+            /* The rotate-on-hover is a pointer affordance; on touch it just
+               leaves the card sitting crooked after a tap. */
+            .spotlight-poster:hover { transform: none; }
         }
+        @media (max-width: 430px) {
+            .spotlight-inner { gap: 11px; padding: 14px 12px; }
+            .spotlight-poster { width: 100px; height: 150px; }
+            .spotlight-desc { -webkit-line-clamp: 3; font-size: 12.5px; }
+            .spotlight-actions { flex-direction: column; align-items: stretch; }
+            .spotlight-save, .spotlight-ask { width: 100%; text-align: center; }
+        }
+        @media (max-width: 360px) {
+            .spotlight-poster { width: 86px; height: 129px; }
+            .spotlight-desc { -webkit-line-clamp: 2; }
+        }
+
         @media (prefers-reduced-motion: reduce) {
             .spotlight-glow, .spotlight-ribbon, .spotlight-title, .countdown-unit, .countdown-live { animation: none !important; }
             .spotlight-title { color: var(--gold); -webkit-text-fill-color: var(--gold); }
@@ -2442,7 +2478,7 @@
                         <div class="spotlight-poster" onclick="saveSpotlightTitle()" role="button" tabindex="0"
                              onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();saveSpotlightTitle();}"
                              aria-label="Save American Horror Story: 13 to Watch Later">
-                            <img id="spotlight-poster-img" src="/ahs13-poster.jpg?v=170" alt="American Horror Story: 13 — premieres September 24, 2026 on FX and Hulu">
+                            <img id="spotlight-poster-img" src="/ahs13-poster.jpg?v=171" alt="American Horror Story: 13 — premieres September 24, 2026 on FX and Hulu">
                             <div class="spotlight-ribbon" data-i18n="spotlight.ribbon">COMING THIS MONTH</div>
                         </div>
                         <div class="spotlight-body">
@@ -3058,20 +3094,20 @@
         </div>
     </div>
 
-    <script src="/app.js?v=170"></script>
+    <script src="/app.js?v=171"></script>
     <!-- Loads AFTER app.js so the chips it builds can call straight into the
          matcher, and non-deferred so the form is never briefly interactive as
          a plain single-choice select. -->
-    <script src="/tmdb.js?v=170"></script>
-    <script src="/criteria.js?v=170"></script>
-    <script src="/lazy.js?v=170"></script>
-    <script src="/tv.js?v=170"></script>
-    <script src="/taste.js?v=170"></script>
-    <script src="/contacts.js?v=170"></script>
-    <script src="/share.js?v=170"></script>
-    <script src="/pricing.js?v=170"></script>
-    <script src="/credits-ui.js?v=170"></script>
-    <script src="/voice-input.js?v=170"></script>
+    <script src="/tmdb.js?v=171"></script>
+    <script src="/criteria.js?v=171"></script>
+    <script src="/lazy.js?v=171"></script>
+    <script src="/tv.js?v=171"></script>
+    <script src="/taste.js?v=171"></script>
+    <script src="/contacts.js?v=171"></script>
+    <script src="/share.js?v=171"></script>
+    <script src="/pricing.js?v=171"></script>
+    <script src="/credits-ui.js?v=171"></script>
+    <script src="/voice-input.js?v=171"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             initVoiceInput('specific-search-input', 'mic-btn-index', () => smartSearch());
