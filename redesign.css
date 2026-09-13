@@ -1,0 +1,248 @@
+/* ============================================================
+   MatchApp.tv — Premium Entertainment UI refresh
+   Layered over the existing product so behavior stays intact.
+   Purple = MatchApp, cyan = AI, gold = premium-only accent.
+   ============================================================ */
+:root {
+  --cosmic-black:#080712;
+  --deep-space:#100c20;
+  --nebula:#241044;
+  --match-violet:#6d3df5;
+  --electric-violet:#8b5cf6;
+  --ai-cyan:#22d3ee;
+  --soft-lavender:#c4b5fd;
+  --text-primary:#f5f3ff;
+  --text-secondary:#a9a3ba;
+  --premium-gold:#f2c94c;
+
+  /* Compatibility with the legacy visual tokens. */
+  --gold:var(--electric-violet) !important;
+  --gold-deep:var(--match-violet) !important;
+  --gold-glow:var(--soft-lavender) !important;
+  --royal-deep:#12072d !important;
+  --royal:#3b1b70 !important;
+  --royal-lift:#6d3df5 !important;
+  --royal-glow:#a78bfa !important;
+  --ink:var(--cosmic-black) !important;
+  --ink-2:var(--deep-space) !important;
+  --bg-dark:var(--cosmic-black) !important;
+  --card-bg:rgba(16,12,32,.86) !important;
+}
+
+html { background:var(--cosmic-black); }
+body {
+  color:var(--text-primary) !important;
+  background:
+    radial-gradient(ellipse 58% 42% at 13% -5%, rgba(109,61,245,.20), transparent 72%),
+    radial-gradient(ellipse 55% 36% at 88% 7%, rgba(34,211,238,.10), transparent 72%),
+    linear-gradient(180deg,#090713 0%,#080712 54%,#0b0817 100%) !important;
+  min-height:100vh;
+}
+body::before {
+  content:"";
+  position:fixed;
+  inset:-18%;
+  pointer-events:none;
+  z-index:-1;
+  opacity:.56;
+  background:
+    radial-gradient(circle at 26% 22%,rgba(139,92,246,.18),transparent 18%),
+    radial-gradient(circle at 69% 31%,rgba(34,211,238,.10),transparent 16%),
+    radial-gradient(circle at 58% 77%,rgba(109,61,245,.12),transparent 22%);
+  filter:blur(34px);
+  animation:matchAurora 20s ease-in-out infinite alternate;
+}
+@keyframes matchAurora { to { transform:translate3d(2.5%,-1.5%,0) scale(1.045); } }
+
+/* Header: lighter chrome, clearer product identity, less gold. */
+.app-header,
+header.app-header {
+  background:rgba(8,7,18,.76) !important;
+  border-bottom:1px solid rgba(196,181,253,.16) !important;
+  box-shadow:0 12px 38px rgba(0,0,0,.24) !important;
+  backdrop-filter:blur(22px) saturate(135%) !important;
+}
+.brand-logo,
+.app-logo,
+.header-logo {
+  border-color:rgba(196,181,253,.62) !important;
+  box-shadow:0 0 26px rgba(109,61,245,.28) !important;
+}
+.app-title-main,
+.brand-name { color:var(--text-primary) !important; }
+
+/* One coherent elevated-surface language across cards and panels. */
+.premium-card,
+.content-card,
+.profile-card,
+.pricing-card,
+.together-card,
+.chat-history-card,
+#questionnaire-box,
+#search-box,
+#result-box,
+#loading-box {
+  background:linear-gradient(155deg,rgba(25,17,50,.91),rgba(12,9,27,.93)) !important;
+  border:1px solid rgba(196,181,253,.18) !important;
+  box-shadow:0 20px 60px rgba(0,0,0,.34), inset 0 1px rgba(255,255,255,.025) !important;
+}
+.premium-card:hover,
+.content-card:hover { border-color:rgba(139,92,246,.35) !important; }
+
+/* Purple is action; cyan marks AI/technology. */
+.gold-btn,
+.btn-main,
+.primary-btn,
+button.primary,
+.match-btn,
+#match-btn,
+#specific-search-btn,
+.composer-send {
+  background:linear-gradient(135deg,var(--match-violet),var(--electric-violet)) !important;
+  border-color:rgba(196,181,253,.36) !important;
+  color:#fff !important;
+  box-shadow:0 10px 30px rgba(109,61,245,.24) !important;
+}
+.gold-btn:hover,
+.btn-main:hover,
+.primary-btn:hover,
+.match-btn:hover,
+#match-btn:hover,
+#specific-search-btn:hover,
+.composer-send:hover {
+  filter:brightness(1.08);
+  transform:translateY(-1px);
+  box-shadow:0 14px 36px rgba(109,61,245,.33) !important;
+}
+
+/* Premium remains gold only where it actually means premium. */
+.vip-badge,
+.premium-badge,
+.plan-premium .plan-name,
+.credit-badge,
+[data-premium="true"] {
+  color:var(--premium-gold) !important;
+}
+
+h1,h2,h3,.section-title { color:var(--text-primary); }
+p,.subtext,.section-subtitle { color:var(--text-secondary); }
+
+/* AI entry points get a cyan signal rather than another gold panel. */
+.top-ask-wrap,
+.concierge-section,
+.ai-concierge,
+.answer-row,
+.chat-assistant {
+  border-color:rgba(34,211,238,.24) !important;
+}
+.top-ask-wrap input,
+.composer,
+#specific-search-input,
+#discover-new-input {
+  border-color:rgba(34,211,238,.34) !important;
+  background:rgba(6,4,16,.70) !important;
+  color:var(--text-primary) !important;
+}
+.top-ask-wrap input:focus,
+.composer:focus-within,
+#specific-search-input:focus,
+#discover-new-input:focus {
+  border-color:var(--ai-cyan) !important;
+  box-shadow:0 0 0 4px rgba(34,211,238,.09),0 0 30px rgba(34,211,238,.08) !important;
+}
+.mic-btn,
+.discover-speak,
+.voice-btn {
+  border-color:rgba(34,211,238,.42) !important;
+  background:rgba(34,211,238,.10) !important;
+  color:#dffcff !important;
+}
+.discover-speak.speaking {
+  background:var(--ai-cyan) !important;
+  color:#07131a !important;
+}
+
+/* Results and content rails feel cinematic rather than dashboard-heavy. */
+.discover-card,
+.result-card,
+.trending-card,
+.platform-card,
+.event-card,
+.poster-card {
+  background:linear-gradient(155deg,rgba(24,17,47,.92),rgba(11,8,26,.96)) !important;
+  border-color:rgba(196,181,253,.15) !important;
+  box-shadow:0 14px 42px rgba(0,0,0,.28) !important;
+  overflow:hidden;
+}
+.discover-card:hover,
+.result-card:hover,
+.trending-card:hover,
+.platform-card:hover,
+.event-card:hover,
+.poster-card:hover {
+  transform:translateY(-4px);
+  border-color:rgba(139,92,246,.44) !important;
+  box-shadow:0 20px 52px rgba(0,0,0,.38) !important;
+}
+
+/* Muted structural borders reduce the old "everything outlined in gold" feel. */
+hr,
+.section-divider,
+.card-divider { border-color:rgba(196,181,253,.10) !important; }
+input,select,textarea { accent-color:var(--electric-violet); }
+:focus-visible { outline:2px solid var(--ai-cyan) !important; outline-offset:3px; }
+
+/* Match Together is a primary product feature, not a footnote. */
+.together-section,
+#match-together {
+  background:linear-gradient(135deg,rgba(109,61,245,.12),rgba(34,211,238,.06)) !important;
+  border-color:rgba(139,92,246,.24) !important;
+}
+
+/* Global Kids entry injected by settings.js. */
+.matchapp-kids-toggle {
+  position:fixed;
+  right:max(14px,env(safe-area-inset-right));
+  bottom:max(14px,env(safe-area-inset-bottom));
+  z-index:2500;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  border:1px solid rgba(247,220,92,.38);
+  border-radius:999px;
+  background:rgba(20,12,47,.92);
+  color:#fff8c5;
+  padding:10px 14px 10px 10px;
+  box-shadow:0 12px 34px rgba(0,0,0,.35),0 0 24px rgba(109,61,245,.18);
+  backdrop-filter:blur(16px);
+  font-weight:800;
+  cursor:pointer;
+}
+.matchapp-kids-toggle img { width:32px;height:32px; }
+.matchapp-kids-toggle:hover { transform:translateY(-2px); border-color:rgba(247,220,92,.72); }
+
+/* Desktop/TV spacing: stronger hierarchy without stretching controls. */
+@media (min-width:1000px) {
+  .premium-card { border-radius:24px !important; }
+  .discover-card,.result-card,.trending-card,.platform-card,.event-card { border-radius:20px !important; }
+}
+@media (min-width:1600px) {
+  body.tv-mode .premium-card,
+  body.tv-mode .discover-card,
+  body.tv-mode .result-card { border-radius:30px !important; }
+  body.tv-mode button,
+  body.tv-mode .gold-btn { min-height:58px; }
+}
+
+@media (max-width:700px) {
+  .app-header { padding-left:14px !important;padding-right:14px !important; }
+  .premium-card { border-radius:20px !important; padding-left:18px !important;padding-right:18px !important; }
+  .matchapp-kids-toggle { padding:8px 11px 8px 8px; font-size:12px; }
+  .matchapp-kids-toggle img { width:28px;height:28px; }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  body::before,* { animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; scroll-behavior:auto !important; }
+}
+html.reduce-motion body::before,
+html.reduce-motion * { animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
