@@ -25,12 +25,16 @@ jobs:
 
       - name: Fetch availability from TMDB
         env:
+          # Both are passed; the script prefers the v4 read token and falls
+          # back to the v3 key, so either alone is enough to run.
           TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
+          TMDB_READ_TOKEN: ${{ secrets.TMDB_READ_TOKEN }}
         run: |
-          if [ -z "$TMDB_API_KEY" ]; then
-            echo "::error::TMDB_API_KEY secret is not set."
-            echo "Add it under Settings -> Secrets and variables -> Actions."
-            echo "Get a free v3 key at https://www.themoviedb.org/settings/api"
+          if [ -z "$TMDB_API_KEY" ] && [ -z "$TMDB_READ_TOKEN" ]; then
+            echo "::error::No TMDB credential is set."
+            echo "Add TMDB_READ_TOKEN (preferred) or TMDB_API_KEY under"
+            echo "Settings -> Secrets and variables -> Actions."
+            echo "Both are available at https://www.themoviedb.org/settings/api"
             exit 1
           fi
           node tools/fetch-availability.js

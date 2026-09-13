@@ -32,6 +32,7 @@ const path = require('path');
 const ROOT = path.join(__dirname, '..');
 const API = 'https://api.themoviedb.org/3';
 const KEY = process.env.TMDB_API_KEY;
+const READ_TOKEN = process.env.TMDB_READ_TOKEN;   // v4 bearer, preferred
 
 // Regions to record. Brazil first — it is MatchApp's primary audience.
 const REGIONS = ['BR', 'US', 'GB', 'PT'];
@@ -52,9 +53,34 @@ function loadCatalog() {
 }
 
 async function tmdb(pathname) {
-    const sep = pathname.includes('?') ? '&' : '?';
-    const res = await fetch(`${API}${pathname}${sep}api_key=${KEY}`);
-    if (!res.ok) return null;
+    // Bearer auth, matching tmdb-proxy. Two reasons to prefer it over the
+    // ?api_key= query parameter: a key in a URL ends up in proxy logs, CDN
+    // logs and referrer headers, whereas a header does not; and using the
+    // same credential style in both places means one less thing to get wrong
+    // when someone later wonders which value goes where.
+    //
+    // Falls back to the v3 query-param key if only that is configured, so an
+    // existing setup keeps working rather than failing on a silent 401.
+    const headers = { Accept: 'application/json' };
+    let url = `${API}${pathname}`;
+
+    if (READ_TOKEN) {
+        headers.Authorization = `Bearer ${READ_TOKEN}`;
+    } else {
+        const sep = pathname.includes('?') ? '&' : '?';
+        url += `${sep}api_key=${KEY}`;
+    }
+
+    const res = await fetch(url, { headers });
+    if (!res.ok) {
+        // 401 here almost always means a v3 key was supplied where a v4 read
+        // token is expected, or vice versa — worth saying so rather than
+        // returning a bare null and letting the caller guess.
+        if (res.status === 401) {
+            console.error('  TMDB returned 401 — check that TMDB_READ_TOKEN is the long eyJ... token, not the short v3 key.');
+        }
+        return null;
+    }
     return res.json();
 }
 
@@ -108,10 +134,11 @@ async function getProviders(id, kind) {
 }
 
 async function main() {
-    if (!KEY) {
-        console.error('TMDB_API_KEY is not set. Add it as a repository secret.');
+    if (!READ_TOKEN && !KEY) {
+        console.error('No TMDB credential found. Set TMDB_READ_TOKEN (preferred) or TMDB_API_KEY as a repository secret.');
         process.exit(1);
     }
+    console.log(READ_TOKEN ? 'Auth: v4 read token (Bearer)' : 'Auth: v3 api_key (query param)');
 
     const catalog = loadCatalog().filter(isEligible);
     console.log(`${catalog.length} eligible titles (of ${loadCatalog().length} total)`);
