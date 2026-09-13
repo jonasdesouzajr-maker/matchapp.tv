@@ -108,17 +108,17 @@
     return `https://www.justwatch.com/${region}/search?q=${encodeURIComponent(item.title)}`;
   }
 
-  function cardHTML(item, compact) {
-    const id = 'kid-' + normalizeTitle(item.title).replace(/\s+/g,'-');
+  function cardHTML(item, compact, slot) {
+    const id = 'kid-' + (slot || 'card') + '-' + normalizeTitle(item.title).replace(/\s+/g,'-');
     return `<article class="kids-card" data-title="${item.title.replace(/"/g,'&quot;')}">
       <div class="kids-card-poster"><img id="${id}" src="${makePoster(item.title)}" alt="${item.title.replace(/"/g,'&quot;')}" loading="lazy"><span class="kids-card-badge">${item.ages.includes('all') ? tr('ageAll') : item.ages.filter(x=>x!=='all').join(' · ')}</span></div>
       <div class="kids-card-body"><h3>${item.title}</h3>${compact ? '' : `<p>${item.desc}</p>`}<div class="kids-card-meta"><span>${item.type}</span><span>${item.platform}</span></div><a href="${watchUrl(item)}" target="_blank" rel="noopener noreferrer">${tr('watch')}</a></div>
     </article>`;
   }
 
-  async function hydratePoster(item) {
+  async function hydratePoster(item, slot) {
     if (!item.tmdb || typeof window.tmdbLookup !== 'function') return;
-    const id = 'kid-' + normalizeTitle(item.title).replace(/\s+/g,'-');
+    const id = 'kid-' + (slot || 'card') + '-' + normalizeTitle(item.title).replace(/\s+/g,'-');
     const img = document.getElementById(id);
     if (!img) return;
     const kind = item.type === 'movie' ? 'movie' : 'tv';
@@ -134,7 +134,18 @@
     const labels = {
       en:{all:'All',animals:'Animals',funny:'Funny',learning:'Learning',adventure:'Adventure',family:'Family',music:'Music',bedtime:'Bedtime'},
       'pt-BR':{all:'Todos',animals:'Animais',funny:'Engraçado',learning:'Aprender',adventure:'Aventura',family:'Família',music:'Música',bedtime:'Hora de dormir'},
-      es:{all:'Todo',animals:'Animales',funny:'Divertido',learning:'Aprender',adventure:'Aventura',family:'Familia',music:'Música',bedtime:'Dormir'}
+      es:{all:'Todo',animals:'Animales',funny:'Divertido',learning:'Aprender',adventure:'Aventura',family:'Familia',music:'Música',bedtime:'Dormir'},
+      fr:{all:'Tout',animals:'Animaux',funny:'Drôle',learning:'Apprendre',adventure:'Aventure',family:'Famille',music:'Musique',bedtime:'Coucher'},
+      de:{all:'Alle',animals:'Tiere',funny:'Lustig',learning:'Lernen',adventure:'Abenteuer',family:'Familie',music:'Musik',bedtime:'Schlafenszeit'},
+      it:{all:'Tutto',animals:'Animali',funny:'Divertente',learning:'Imparare',adventure:'Avventura',family:'Famiglia',music:'Musica',bedtime:'Nanna'},
+      tr:{all:'Tümü',animals:'Hayvanlar',funny:'Komik',learning:'Öğrenme',adventure:'Macera',family:'Aile',music:'Müzik',bedtime:'Uyku zamanı'},
+      ru:{all:'Все',animals:'Животные',funny:'Смешное',learning:'Обучение',adventure:'Приключения',family:'Семья',music:'Музыка',bedtime:'Перед сном'},
+      ar:{all:'الكل',animals:'حيوانات',funny:'مضحك',learning:'تعلّم',adventure:'مغامرة',family:'عائلة',music:'موسيقى',bedtime:'وقت النوم'},
+      hi:{all:'सभी',animals:'जानवर',funny:'मज़ेदार',learning:'सीखना',adventure:'रोमांच',family:'परिवार',music:'संगीत',bedtime:'सोने का समय'},
+      id:{all:'Semua',animals:'Hewan',funny:'Lucu',learning:'Belajar',adventure:'Petualangan',family:'Keluarga',music:'Musik',bedtime:'Waktu tidur'},
+      ja:{all:'すべて',animals:'どうぶつ',funny:'おもしろい',learning:'まなぶ',adventure:'ぼうけん',family:'かぞく',music:'おんがく',bedtime:'おやすみ'},
+      ko:{all:'전체',animals:'동물',funny:'재미',learning:'학습',adventure:'모험',family:'가족',music:'음악',bedtime:'잠자리'},
+      zh:{all:'全部',animals:'动物',funny:'搞笑',learning:'学习',adventure:'冒险',family:'家庭',music:'音乐',bedtime:'睡前'}
     };
     return (labels[lang] && labels[lang][cat]) || labels.en[cat];
   }
@@ -149,8 +160,8 @@
     const host = document.getElementById('kids-grid'); if (!host) return;
     const age = currentAge();
     const items = allowedLibrary(age).filter(x => category === 'all' || x.cats.includes(category));
-    host.innerHTML = items.map(x => cardHTML(x, false)).join('');
-    items.slice(0, 24).forEach(hydratePoster);
+    host.innerHTML = items.map((x,i) => cardHTML(x, false, 'grid-' + i)).join('');
+    items.slice(0, 24).forEach((x,i) => hydratePoster(x, 'grid-' + i));
   }
 
   function queryTokens(q) {
@@ -207,8 +218,8 @@
     const aiApproved = await safeAIRecognise(question.trim(), age);
     const picks = aiApproved.length ? aiApproved : localMatch(question.trim(), age);
     answer.textContent = picks.length ? tr('answer') : tr('noMatch');
-    results.innerHTML = picks.map(x => cardHTML(x, true)).join('');
-    picks.forEach(hydratePoster);
+    results.innerHTML = picks.map((x,i) => cardHTML(x, true, 'chat-' + i)).join('');
+    picks.forEach((x,i) => hydratePoster(x, 'chat-' + i));
     chat.scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block:'nearest'});
   }
 

@@ -29,9 +29,11 @@
         try {
             const raw = localStorage.getItem(KEY);
             if (raw) settings = { ...DEFAULTS, ...JSON.parse(raw) };
-            const legacy = localStorage.getItem(LEGACY_AUTOREAD_KEY);
-            if (legacy === 'false') settings.autoRead = false;
-            else if (legacy === 'true') settings.autoRead = true;
+            if (!raw) {
+                const legacy = localStorage.getItem(LEGACY_AUTOREAD_KEY);
+                if (legacy === 'false') settings.autoRead = false;
+                else if (legacy === 'true') settings.autoRead = true;
+            }
             syncLegacyAutoRead();
         } catch (e) {
             settings = { ...DEFAULTS };
@@ -121,7 +123,7 @@
         if (!enabled || location.pathname.startsWith('/kids/')) return false;
         const p = location.pathname.replace(/\/+$/, '') || '/';
         // Keep settings, account, legal and checkout routes reachable to adults.
-        const kidBoundRoutes = new Set(['/', '/index.html', '/discover.html', '/together.html']);
+        const kidBoundRoutes = new Set(['/', '/index.html', '/discover.html', '/together.html', '/events-archive.html']);
         if (kidBoundRoutes.has(p)) {
             location.replace('/kids/');
             return true;
@@ -154,9 +156,6 @@
                 let local = {};
                 try { local = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) {}
                 settings = { ...DEFAULTS, ...remote, ...local };
-                const legacy = localStorage.getItem(LEGACY_AUTOREAD_KEY);
-                if (legacy === 'false') settings.autoRead = false;
-                else if (legacy === 'true') settings.autoRead = true;
                 persistLocal(); applyAll();
             } catch (e) {}
         },
@@ -194,7 +193,10 @@
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', ready);
     else ready();
     document.addEventListener('matchapp:langchange', () => {
-        const span = document.querySelector('.matchapp-kids-toggle span');
-        if (span) span.textContent = kidsLabel();
+        const btn = document.querySelector('.matchapp-kids-toggle');
+        const span = btn && btn.querySelector('span');
+        const label = kidsLabel();
+        if (span) span.textContent = label;
+        if (btn) btn.setAttribute('aria-label', label);
     });
 })();

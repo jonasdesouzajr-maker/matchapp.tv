@@ -131,7 +131,7 @@ async function askAIConversational(question, history) {
     // exactly the "no output, then it took too long" report. 18s is generous
     // enough for a genuine cold start but bounded, so the worst case is ~36s
     // and then an honest message rather than an open-ended wait.
-    const AI_TIMEOUT_MS = 18000;
+    const AI_TIMEOUT_MS = 30000;
     const withTimeout = (promise) => Promise.race([
         promise,
         new Promise((_, reject) =>
@@ -311,10 +311,19 @@ window.readAloud = function(text, btn) {
 };
 
 /* ---------- Rendering ---------- */
+function escapeDiscoverHtml(value) {
+    return String(value == null ? '' : value)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+}
+
 function discoverCardHTML(item, idx) {
-    const title = item.title;
-    const safe = title.replace(/"/g, '&quot;');
-    const meta = [item.year, item.type].filter(Boolean).join(' · ');
+    const title = String(item.title || '');
+    const safe = escapeDiscoverHtml(title);
+    const meta = escapeDiscoverHtml([item.year, item.type].filter(Boolean).join(' · '));
     const watchLabel = (typeof t === 'function') ? t('res.streamnow') : '▶ Watch / Listen';
     const saveLabel = (typeof t === 'function') ? t('discover.save') : '⭐ Save';
     return `
@@ -326,7 +335,7 @@ function discoverCardHTML(item, idx) {
         <div class="discover-body">
             <h3>${safe}</h3>
             ${meta ? `<div class="discover-meta">${meta}</div>` : ''}
-            <p>${((typeof window.sanitizeDisplayText === 'function' ? window.sanitizeDisplayText(item.synopsis, ['synopsis']) : item.synopsis) || '').replace(/</g, '&lt;')}</p>
+            <p>${escapeDiscoverHtml((typeof window.sanitizeDisplayText === 'function' ? window.sanitizeDisplayText(item.synopsis, ['synopsis']) : item.synopsis) || '')}</p>
             <div class="discover-actions">
                 <a id="dl-${idx}" class="gold-btn discover-play" href="#" target="_blank" rel="noopener">${watchLabel}</a>
                 <button class="discover-save" onclick="saveDiscoverItem(${idx})" id="ds-${idx}">${saveLabel}</button>
@@ -371,7 +380,7 @@ async function hydrateDiscoverCard(item, idx) {
 
     let meta = item._meta || null;
     const visualType = !/podcast|album|music|audiobook/i.test(item.type || '');
-    if (!meta && !verified && visualType && typeof window.tmdbLookup === 'function') {
+    if (!meta && !skipLiveLookup && !verified && visualType && typeof window.tmdbLookup === 'function') {
         const kind = /movie|film/i.test(item.type || '') ? 'movie' : /series|tv|drama|anime|novela|show|documentary/i.test(item.type || '') ? 'tv' : '';
         const tmdb = await window.tmdbLookup(item.title, { year: item.year || '', kind });
         if (tmdb && (tmdb.posterLarge || tmdb.poster)) meta = { artwork: tmdb.posterLarge || tmdb.poster, year: tmdb.year || item.year || '', overview: tmdb.overview || '', tmdbId: tmdb.tmdbId, kind: tmdb.kind, source: 'tmdb' };
