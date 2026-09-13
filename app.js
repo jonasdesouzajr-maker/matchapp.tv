@@ -2023,6 +2023,20 @@ async function hydrateProfileFromAuth(user) {
         if (merged.nickname)  localStorage.setItem('match_user_nickname', merged.nickname);
         if (user.email) localStorage.setItem('match_user_email', user.email);
 
+        // THE LOCK BUG: every other profile field was mirrored here except
+        // profile_locked. Signing out clears localStorage, and signing back in
+        // restored name, country, DOB and star sign but not the lock — so a
+        // profile the user had deliberately sealed came back editable, and the
+        // "locked forever" promise on the page was simply untrue after one
+        // sign-out. The database row was right the whole time; nothing ever
+        // read it back.
+        //
+        // Written as an explicit true/false rather than only-when-true: if the
+        // row says false, localStorage must say false too, otherwise a stale
+        // 'true' from a previous account on a shared device would lock a fresh
+        // profile the user has every right to edit.
+        localStorage.setItem('match_profile_locked', merged.profile_locked === true ? 'true' : 'false');
+
         const missing = REQUIRED_PROFILE_FIELDS.filter(f => {
             const v = merged[f];
             return v === null || v === undefined || String(v).trim() === '';
