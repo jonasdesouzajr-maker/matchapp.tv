@@ -1,0 +1,1699 @@
+{
+  "generated": "2026-09-13T11:44:00.011Z",
+  "source": "TMDB / JustWatch",
+  "titles": {
+    "The Bear": {
+      "tmdbId": 136315,
+      "kind": "tv",
+      "year": 2022,
+      "regions": {
+        "BR": {
+          "stream": [
+            "Disney Plus"
+          ],
+          "link": "https://www.themoviedb.org/tv/136315-the-bear/watch?locale=BR"
+        },
+        "US": {
+          "stream": [
+            "Disney Plus",
+            "Hulu",
+            "YouTube TV"
+          ],
+          "link": "https://www.themoviedb.org/tv/136315-the-bear/watch?locale=US"
+        },
+        "GB": {
+          "stream": [
+            "Disney Plus"
+          ],
+          "link": "https://www.themoviedb.org/tv/136315-the-bear/watch?locale=GB"
+        },
+        "PT": {
+          "stream": [
+            "Disney Plus"
+          ],
+          "link": "https://www.themoviedb.org/tv/136315-the-bear/watch?locale=PT"
+        }
+      }
+    },
+    "Shogun": {
+      "tmdbId": 126308,
+      "kind": "tv",
+      "year": 2024,
+      "regions": {
+        "BR": {
+          "stream": [
+            "Disney Plus"
+          ],
+          "link": "https://www.themoviedb.org/tv/126308-shogun/watch?locale=BR"
+        },
+        "US": {
+          "stream": [
+            "Hulu"
+          ],
+          "link": "https://www.themoviedb.org/tv/126308-shogun/watch?locale=US"
+        },
+        "GB": {
+          "stream": [
+            "Disney Plus"
+          ],
+          "link": "https://www.themoviedb.org/tv/126308-shogun/watch?locale=GB"
+        },
+        "PT": {
+          "stream": [
+            "Disney Plus"
+          ],
+          "link": "https://www.themoviedb.org/tv/126308-shogun/watch?locale=PT"
+        }
+      }
+    },
+    "Dune: Part Two": {
+      "tmdbId": 693134,
+      "kind": "movie",
+      "year": 2024,
+      "regions": {
+        "BR": {
+          "stream": [
+            "HBO Max",
+            "Claro tv+",
+            "HBO Max Amazon Channel",
+            "Universal+ Amazon Channel"
+          ],
+          "rent": [
+            "Apple TV Store",
+            "Amazon Video",
+            "Google Play Movies"
+          ],
+          "buy": [
+            "Apple TV Store",
+            "Amazon Video",
+            "Google Play Movies"
+          ],
+          "link": "https://www.themoviedb.org/movie/693134-dune-part-two/watch?locale=BR"
+        },
+        "US": {
+          "stream": [
+            "HBO Max Amazon Channel",
+            "YouTube TV",
+            "HBO Max"
+          ],
+          "rent": [
+            "Amazon Video",
+            "Apple TV Store",
+            "Google Play Movies",
+            "YouTube",
+            "Fandango At Home",
+            "Spectrum On Demand",
+            "Plex"
+          ],
+          "buy": [
+            "Amazon Video",
+            "Apple TV Store",
+            "Google Play Movies",
+            "YouTube",
+            "Fandango At Home"
+          ],
+          "link": "https://www.themoviedb.org/movie/693134-dune-part-two/watch?locale=US"
+        },
+        "GB": {
+          "stream": [
+            "Netflix",
+            "Amazon Prime Video",
+            "Netflix Standard with Ads",
+            "Amazon Prime Video with Ads"
+          ],
+          "rent": [
+            "Apple TV Store",
+            "Rakuten TV",
+            "Amazon Video"
+          ],
+          "buy": [
+            "Apple TV Store",
+            "Rakuten TV",
+            "Amazon Video",
+            "Google Play Movies",
+            "Sky Store",
+            "YouTube"
+          ],
+          "link": "https://www.themoviedb.org/movie/693134-dune-part-two/watch?locale=GB"
+        },
+        "PT": {
+          "stream": [
+            "Amazon Prime Video",
+            "HBO Max"
+          ],
+          "rent": [
+            "Apple TV Store",
+            "Google Play Movies",
+            "YouTube",
+            "Rakuten TV",
+            "Amazon Video"
+          ],
+          "buy": [
+            "Apple TV Store",
+            "Google Play Movies",
+            "YouTube",
+            "Rakuten TV",
+            "Amazon Video"
+          ],
+          "link": "https://www.themoviedb.org/movie/693134-dune-part-two/watch?locale=PT"
+        }
+      }
+    },
+    "Deadpool & Wolverine": {
+      "tmdbId": 533535,
+      "kind": "movie",
+      "year": 2024,
+      "regions": {
+        "BR": {
+          "stream": [
+            "Disney Plus"
+          ],
+          "link": "https://www.themoviedb.org/movie/533535-deadpool-wolverine/watch?locale=BR"
+        },
+        "US": {
+          "stream": [
+            "Disney Plus"
+          ],
+          "rent": [
+            "Amazon Video",
+            "Apple TV Store",
+            "Google Play Movies",
+            "YouTube",
+            "Fandango At Home"
+          ],
+          "buy": [
+            "Amazon Video",
+            "Apple TV Store",
+            "Google Play Movies",
+            "YouTube",
+            "Fandango At Home"
+          ],
+          "link": "https://www.themoviedb.org/movie/533535-deadpool-wolverine/watch?locale=US"
+        },
+        "GB": {
+          "stream": [
+            "Disney Plus"
+          ],
+          "rent": [
+            "Apple TV Store",
+            "Rakuten TV",
+            "Amazon Video",
+            "Google Play Movies",
+            "YouTube"
+          ],
+          "buy": [
+            "Apple TV Store",
+            "Rakuten TV",
+            "Amazon Video",
+            "Google Play Movies",
+            "Sky Store",
+            "YouTube"
+          ],
+          "link": "https://www.themoviedb.org/movie/533535-deadpool-wolverine/watch?locale=GB"
+        },
+        "PT": {
+          "stream": [
+            "Disney Plus"
+          ],
+          "rent": [
+            "Apple TV Store",
+            "Google Play Movies",
+            "YouTube",
+            "Rakuten TV",
+            "Amazon Video"
+          ],
+          "buy": [
+            "Apple TV Store",
+            "Google Play Movies",
+            "YouTube",
+            "Rakuten TV",
+            "Amazon Video"
+          ],
+          "link": "https://www.themoviedb.org/movie/533535-deadpool-wolverine/watch?locale=PT"
+        }
+      }
+    },
+    "House of the Dragon": {
+      "tmdbId": 94997,
+      "kind": "tv",
+      "year": 2022,
+      "regions": {
+        "BR": {
+          "stream": [
+            "HBO Max",
+            "Claro tv+",
+            "HBO Max Amazon Channel"
+          ],
+          "link": "https://www.themoviedb.org/tv/94997-house-of-the-dragon/watch?locale=BR"
+        },
+        "US": {
+          "stream": [
+            "HBO Max Amazon Channel",
+            "Spectrum On Demand",
+            "HBO Max"
+          ],
+          "buy": [
+            "Apple TV Store",
+            "Google Play Movies",
+            "Fandango At Home"
+          ],
+          "link": "https://www.themoviedb.org/tv/94997-house-of-the-dragon/watch?locale=US"
+        },
+        "GB": {
+          "stream": [
+            "HBO Max Amazon Channel",
+            "Sky Go",
+            "Now TV",
+            "HBO Max"
+          ],
+          "buy": [
+            "Apple TV Store",
+            "Sky Store"
+          ],
+          "link": "https://www.themoviedb.org/tv/94997-house-of-the-dragon/watch?locale=GB"
+        },
+        "PT": {
+          "stream": [
+            "HBO Max"
+          ],
+          "link": "https://www.themoviedb.org/tv/94997-house-of-the-dragon/watch?locale=PT"
+        }
+      }
+    },
+    "Queen of Tears": {
+      "tmdbId": 215720,
+      "kind": "tv",
+      "year": 2024,
+      "regions": {
+        "BR": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/215720/watch?locale=BR"
+        },
+        "US": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/215720/watch?locale=US"
+        },
+        "GB": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/215720/watch?locale=GB"
+        },
+        "PT": {
+          "stream": [
+            "Netflix"
+          ],
+          "link": "https://www.themoviedb.org/tv/215720/watch?locale=PT"
+        }
+      }
+    },
+    "Crash Landing on You": {
+      "tmdbId": 94796,
+      "kind": "tv",
+      "year": 2019,
+      "regions": {
+        "BR": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/94796/watch?locale=BR"
+        },
+        "US": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/94796/watch?locale=US"
+        },
+        "GB": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/94796/watch?locale=GB"
+        },
+        "PT": {
+          "stream": [
+            "Netflix"
+          ],
+          "link": "https://www.themoviedb.org/tv/94796/watch?locale=PT"
+        }
+      }
+    },
+    "Jujutsu Kaisen": {
+      "tmdbId": 95479,
+      "kind": "tv",
+      "year": 2020,
+      "regions": {
+        "BR": {
+          "stream": [
+            "Netflix",
+            "Amazon Prime Video",
+            "Disney Plus",
+            "HBO Max",
+            "Globoplay",
+            "Crunchyroll",
+            "Netflix Standard with Ads",
+            "HBO Max Amazon Channel",
+            "Crunchyroll Amazon Channel",
+            "Amazon Prime Video with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/95479/watch?locale=BR"
+        },
+        "US": {
+          "stream": [
+            "Netflix",
+            "Amazon Prime Video",
+            "Hulu",
+            "Crunchyroll",
+            "Crunchyroll Amazon Channel",
+            "Netflix Standard with Ads",
+            "Amazon Prime Video with Ads"
+          ],
+          "buy": [
+            "Amazon Video",
+            "Apple TV Store",
+            "Google Play Movies"
+          ],
+          "link": "https://www.themoviedb.org/tv/95479/watch?locale=US"
+        },
+        "GB": {
+          "stream": [
+            "Netflix",
+            "Amazon Prime Video",
+            "Disney Plus",
+            "Crunchyroll",
+            "Crunchyroll Amazon Channel",
+            "Netflix Standard with Ads",
+            "Amazon Prime Video with Ads"
+          ],
+          "buy": [
+            "Apple TV Store",
+            "Sky Store"
+          ],
+          "link": "https://www.themoviedb.org/tv/95479/watch?locale=GB"
+        },
+        "PT": {
+          "stream": [
+            "Netflix",
+            "Amazon Prime Video",
+            "Crunchyroll",
+            "Crunchyroll Amazon Channel"
+          ],
+          "link": "https://www.themoviedb.org/tv/95479/watch?locale=PT"
+        }
+      }
+    },
+    "Frieren: Beyond Journey's End": {
+      "tmdbId": 209867,
+      "kind": "tv",
+      "year": 2023,
+      "regions": {
+        "BR": {
+          "stream": [
+            "Netflix",
+            "HBO Max",
+            "Crunchyroll",
+            "Netflix Standard with Ads",
+            "HBO Max Amazon Channel",
+            "Crunchyroll Amazon Channel"
+          ],
+          "link": "https://www.themoviedb.org/tv/209867/watch?locale=BR"
+        },
+        "US": {
+          "stream": [
+            "Netflix",
+            "Hulu",
+            "Crunchyroll",
+            "Crunchyroll Amazon Channel",
+            "Netflix Standard with Ads"
+          ],
+          "buy": [
+            "Amazon Video",
+            "Apple TV Store",
+            "Google Play Movies"
+          ],
+          "link": "https://www.themoviedb.org/tv/209867/watch?locale=US"
+        },
+        "GB": {
+          "stream": [
+            "Netflix",
+            "Crunchyroll",
+            "Crunchyroll Amazon Channel",
+            "Netflix Standard with Ads"
+          ],
+          "buy": [
+            "Apple TV Store"
+          ],
+          "link": "https://www.themoviedb.org/tv/209867/watch?locale=GB"
+        },
+        "PT": {
+          "stream": [
+            "Crunchyroll",
+            "Crunchyroll Amazon Channel"
+          ],
+          "link": "https://www.themoviedb.org/tv/209867/watch?locale=PT"
+        }
+      }
+    },
+    "Vale Tudo": {
+      "tmdbId": 46161,
+      "kind": "tv",
+      "year": null,
+      "regions": {
+        "BR": {
+          "stream": [
+            "Globoplay"
+          ],
+          "link": "https://www.themoviedb.org/tv/46161-vale-tudo/watch?locale=BR"
+        },
+        "US": {
+          "link": "https://www.themoviedb.org/tv/46161-vale-tudo/watch?locale=US"
+        }
+      }
+    },
+    "Baby Reindeer": {
+      "tmdbId": 241259,
+      "kind": "tv",
+      "year": 2024,
+      "regions": {
+        "BR": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/241259-baby-reindeer/watch?locale=BR"
+        },
+        "US": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/241259-baby-reindeer/watch?locale=US"
+        },
+        "GB": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/241259-baby-reindeer/watch?locale=GB"
+        },
+        "PT": {
+          "stream": [
+            "Netflix"
+          ],
+          "link": "https://www.themoviedb.org/tv/241259-baby-reindeer/watch?locale=PT"
+        }
+      }
+    },
+    "Fallout": {
+      "tmdbId": 106379,
+      "kind": "tv",
+      "year": 2024,
+      "regions": {
+        "BR": {
+          "stream": [
+            "Amazon Prime Video",
+            "Amazon Prime Video with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/106379-fallout/watch?locale=BR"
+        },
+        "US": {
+          "stream": [
+            "Amazon Prime Video",
+            "Amazon Prime Video with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/106379-fallout/watch?locale=US"
+        },
+        "GB": {
+          "stream": [
+            "Amazon Prime Video",
+            "Amazon Prime Video with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/106379-fallout/watch?locale=GB"
+        },
+        "PT": {
+          "stream": [
+            "Amazon Prime Video"
+          ],
+          "link": "https://www.themoviedb.org/tv/106379-fallout/watch?locale=PT"
+        }
+      }
+    },
+    "Bluey": {
+      "tmdbId": 82728,
+      "kind": "tv",
+      "year": 2018,
+      "regions": {
+        "BR": {
+          "stream": [
+            "Disney Plus"
+          ],
+          "link": "https://www.themoviedb.org/tv/82728-bluey/watch?locale=BR"
+        },
+        "US": {
+          "stream": [
+            "Disney Plus",
+            "fuboTV",
+            "YouTube TV",
+            "DisneyNOW"
+          ],
+          "buy": [
+            "Amazon Video",
+            "Apple TV Store",
+            "Google Play Movies",
+            "Fandango At Home"
+          ],
+          "link": "https://www.themoviedb.org/tv/82728-bluey/watch?locale=US"
+        },
+        "GB": {
+          "stream": [
+            "Disney Plus",
+            "Sky Go",
+            "BBC iPlayer"
+          ],
+          "buy": [
+            "Apple TV Store",
+            "Amazon Video"
+          ],
+          "link": "https://www.themoviedb.org/tv/82728-bluey/watch?locale=GB"
+        },
+        "PT": {
+          "stream": [
+            "Disney Plus"
+          ],
+          "link": "https://www.themoviedb.org/tv/82728-bluey/watch?locale=PT"
+        }
+      }
+    },
+    "Moana 2": {
+      "tmdbId": 1241982,
+      "kind": "movie",
+      "year": 2024,
+      "regions": {
+        "BR": {
+          "stream": [
+            "Disney Plus"
+          ],
+          "link": "https://www.themoviedb.org/movie/1241982-moana-2/watch?locale=BR"
+        },
+        "US": {
+          "stream": [
+            "Disney Plus"
+          ],
+          "rent": [
+            "Amazon Video",
+            "Apple TV Store",
+            "Google Play Movies",
+            "YouTube",
+            "Fandango At Home"
+          ],
+          "buy": [
+            "Amazon Video",
+            "Apple TV Store",
+            "Google Play Movies",
+            "YouTube",
+            "Fandango At Home"
+          ],
+          "link": "https://www.themoviedb.org/movie/1241982-moana-2/watch?locale=US"
+        },
+        "GB": {
+          "stream": [
+            "Disney Plus"
+          ],
+          "rent": [
+            "Apple TV Store",
+            "Rakuten TV",
+            "Amazon Video",
+            "Google Play Movies",
+            "Sky Store",
+            "YouTube"
+          ],
+          "buy": [
+            "Apple TV Store",
+            "Rakuten TV",
+            "Amazon Video",
+            "Google Play Movies",
+            "Sky Store",
+            "YouTube"
+          ],
+          "link": "https://www.themoviedb.org/movie/1241982-moana-2/watch?locale=GB"
+        },
+        "PT": {
+          "stream": [
+            "Disney Plus"
+          ],
+          "rent": [
+            "Apple TV Store",
+            "Google Play Movies",
+            "YouTube",
+            "Rakuten TV",
+            "Amazon Video"
+          ],
+          "buy": [
+            "Apple TV Store",
+            "Google Play Movies",
+            "YouTube",
+            "Rakuten TV",
+            "Amazon Video"
+          ],
+          "link": "https://www.themoviedb.org/movie/1241982-moana-2/watch?locale=PT"
+        }
+      }
+    },
+    "Nimona": {
+      "tmdbId": 961323,
+      "kind": "movie",
+      "year": 2023,
+      "regions": {
+        "BR": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/movie/961323-nimona/watch?locale=BR"
+        },
+        "US": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/movie/961323-nimona/watch?locale=US"
+        },
+        "GB": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/movie/961323-nimona/watch?locale=GB"
+        },
+        "PT": {
+          "stream": [
+            "Netflix"
+          ],
+          "link": "https://www.themoviedb.org/movie/961323-nimona/watch?locale=PT"
+        }
+      }
+    },
+    "Chef's Table": {
+      "tmdbId": 62391,
+      "kind": "tv",
+      "year": 2015,
+      "regions": {
+        "BR": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/62391-chef-s-table/watch?locale=BR"
+        },
+        "US": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/62391-chef-s-table/watch?locale=US"
+        },
+        "GB": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/62391-chef-s-table/watch?locale=GB"
+        },
+        "PT": {
+          "stream": [
+            "Netflix"
+          ],
+          "link": "https://www.themoviedb.org/tv/62391-chef-s-table/watch?locale=PT"
+        }
+      }
+    },
+    "Alcarràs": {
+      "tmdbId": 804251,
+      "kind": "movie",
+      "year": 2022,
+      "regions": {
+        "BR": {
+          "stream": [
+            "MUBI",
+            "MUBI Amazon Channel"
+          ],
+          "rent": [
+            "Apple TV Store",
+            "Amazon Video"
+          ],
+          "buy": [
+            "Apple TV Store",
+            "Amazon Video"
+          ],
+          "link": "https://www.themoviedb.org/movie/804251-alcarras/watch?locale=BR"
+        },
+        "US": {
+          "stream": [
+            "MUBI",
+            "MUBI Amazon Channel"
+          ],
+          "rent": [
+            "Amazon Video",
+            "Apple TV Store",
+            "Fandango At Home"
+          ],
+          "buy": [
+            "Amazon Video",
+            "Apple TV Store",
+            "Fandango At Home"
+          ],
+          "link": "https://www.themoviedb.org/movie/804251-alcarras/watch?locale=US"
+        },
+        "GB": {
+          "stream": [
+            "MUBI",
+            "MUBI Amazon Channel"
+          ],
+          "rent": [
+            "Apple TV Store",
+            "Rakuten TV",
+            "Amazon Video"
+          ],
+          "buy": [
+            "Apple TV Store",
+            "Rakuten TV",
+            "Amazon Video"
+          ],
+          "link": "https://www.themoviedb.org/movie/804251-alcarras/watch?locale=GB"
+        },
+        "PT": {
+          "stream": [
+            "Filmin"
+          ],
+          "link": "https://www.themoviedb.org/movie/804251-alcarras/watch?locale=PT"
+        }
+      }
+    },
+    "RRR": {
+      "tmdbId": 579974,
+      "kind": "movie",
+      "year": 2022,
+      "regions": {
+        "BR": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/movie/579974/watch?locale=BR"
+        },
+        "US": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/movie/579974/watch?locale=US"
+        },
+        "GB": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/movie/579974/watch?locale=GB"
+        },
+        "PT": {
+          "stream": [
+            "Netflix"
+          ],
+          "link": "https://www.themoviedb.org/movie/579974/watch?locale=PT"
+        }
+      }
+    },
+    "Business Proposal": {
+      "tmdbId": 154825,
+      "kind": "tv",
+      "year": 2022,
+      "regions": {
+        "BR": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/154825/watch?locale=BR"
+        },
+        "US": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/154825/watch?locale=US"
+        },
+        "GB": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/154825/watch?locale=GB"
+        },
+        "PT": {
+          "stream": [
+            "Netflix"
+          ],
+          "link": "https://www.themoviedb.org/tv/154825/watch?locale=PT"
+        }
+      }
+    },
+    "Kingdom": {
+      "tmdbId": 70593,
+      "kind": "tv",
+      "year": 2019,
+      "regions": {
+        "BR": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/70593/watch?locale=BR"
+        },
+        "US": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/70593/watch?locale=US"
+        },
+        "GB": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/70593/watch?locale=GB"
+        },
+        "PT": {
+          "stream": [
+            "Netflix"
+          ],
+          "link": "https://www.themoviedb.org/tv/70593/watch?locale=PT"
+        }
+      }
+    },
+    "Emilia Pérez": {
+      "tmdbId": 974950,
+      "kind": "movie",
+      "year": 2024,
+      "regions": {
+        "BR": {
+          "stream": [
+            "Paramount Plus",
+            "Paramount+ Amazon Channel",
+            "Telecine Amazon Channel",
+            "Paramount Plus Premium"
+          ],
+          "rent": [
+            "Apple TV Store",
+            "Amazon Video"
+          ],
+          "buy": [
+            "Apple TV Store",
+            "Amazon Video"
+          ],
+          "link": "https://www.themoviedb.org/movie/974950-emilia-perez/watch?locale=BR"
+        },
+        "US": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/movie/974950-emilia-perez/watch?locale=US"
+        },
+        "GB": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/movie/974950-emilia-perez/watch?locale=GB"
+        },
+        "PT": {
+          "stream": [
+            "Amazon Prime Video"
+          ],
+          "rent": [
+            "Rakuten TV"
+          ],
+          "buy": [
+            "Rakuten TV"
+          ],
+          "link": "https://www.themoviedb.org/movie/974950-emilia-perez/watch?locale=PT"
+        }
+      }
+    },
+    "The Whisper Man": {
+      "tmdbId": 860508,
+      "kind": "movie",
+      "year": 2026,
+      "regions": {
+        "BR": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/movie/860508-the-whisper-man/watch?locale=BR"
+        },
+        "US": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/movie/860508-the-whisper-man/watch?locale=US"
+        },
+        "GB": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/movie/860508-the-whisper-man/watch?locale=GB"
+        },
+        "PT": {
+          "stream": [
+            "Netflix"
+          ],
+          "link": "https://www.themoviedb.org/movie/860508-the-whisper-man/watch?locale=PT"
+        }
+      }
+    },
+    "The Secret Woman": {
+      "tmdbId": 1631807,
+      "kind": "movie",
+      "year": null,
+      "regions": {
+        "BR": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/movie/1631807-den-hemmelige-kvinde/watch?locale=BR"
+        },
+        "US": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/movie/1631807-den-hemmelige-kvinde/watch?locale=US"
+        },
+        "GB": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/movie/1631807-den-hemmelige-kvinde/watch?locale=GB"
+        },
+        "PT": {
+          "stream": [
+            "Netflix"
+          ],
+          "link": "https://www.themoviedb.org/movie/1631807-den-hemmelige-kvinde/watch?locale=PT"
+        }
+      }
+    },
+    "Alpha": {
+      "tmdbId": 1122030,
+      "kind": "movie",
+      "year": null,
+      "regions": {
+        "BR": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/movie/1122030/watch?locale=BR"
+        },
+        "US": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/movie/1122030/watch?locale=US"
+        },
+        "GB": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/movie/1122030/watch?locale=GB"
+        },
+        "PT": {
+          "stream": [
+            "Netflix"
+          ],
+          "link": "https://www.themoviedb.org/movie/1122030/watch?locale=PT"
+        }
+      }
+    },
+    "Death of the Pastor's Wife": {
+      "tmdbId": 331616,
+      "kind": "tv",
+      "year": 2026,
+      "regions": {
+        "BR": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/331616-death-of-the-pastor-s-wife/watch?locale=BR"
+        },
+        "US": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/331616-death-of-the-pastor-s-wife/watch?locale=US"
+        },
+        "GB": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/331616-death-of-the-pastor-s-wife/watch?locale=GB"
+        },
+        "PT": {
+          "stream": [
+            "Netflix"
+          ],
+          "link": "https://www.themoviedb.org/tv/331616-death-of-the-pastor-s-wife/watch?locale=PT"
+        }
+      }
+    },
+    "Beauty in Black": {
+      "tmdbId": 246246,
+      "kind": "tv",
+      "year": 2024,
+      "regions": {
+        "BR": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/246246-beauty-in-black/watch?locale=BR"
+        },
+        "US": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/246246-beauty-in-black/watch?locale=US"
+        },
+        "GB": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/246246-beauty-in-black/watch?locale=GB"
+        },
+        "PT": {
+          "stream": [
+            "Netflix"
+          ],
+          "link": "https://www.themoviedb.org/tv/246246-beauty-in-black/watch?locale=PT"
+        }
+      }
+    },
+    "Outer Banks": {
+      "tmdbId": 100757,
+      "kind": "tv",
+      "year": 2020,
+      "regions": {
+        "BR": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/100757-outer-banks/watch?locale=BR"
+        },
+        "US": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/100757-outer-banks/watch?locale=US"
+        },
+        "GB": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/100757-outer-banks/watch?locale=GB"
+        },
+        "PT": {
+          "stream": [
+            "Netflix"
+          ],
+          "link": "https://www.themoviedb.org/tv/100757-outer-banks/watch?locale=PT"
+        }
+      }
+    },
+    "Blood Sacrifice": {
+      "tmdbId": 303351,
+      "kind": "tv",
+      "year": null,
+      "regions": {
+        "BR": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/303351-blodsoffer/watch?locale=BR"
+        },
+        "US": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/303351-blodsoffer/watch?locale=US"
+        },
+        "GB": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/303351-blodsoffer/watch?locale=GB"
+        },
+        "PT": {
+          "stream": [
+            "Netflix"
+          ],
+          "link": "https://www.themoviedb.org/tv/303351-blodsoffer/watch?locale=PT"
+        }
+      }
+    },
+    "Mousetrap": {
+      "tmdbId": 290193,
+      "kind": "tv",
+      "year": null,
+      "regions": {
+        "BR": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/290193/watch?locale=BR"
+        },
+        "US": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/290193/watch?locale=US"
+        },
+        "GB": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/290193/watch?locale=GB"
+        },
+        "PT": {
+          "stream": [
+            "Netflix"
+          ],
+          "link": "https://www.themoviedb.org/tv/290193/watch?locale=PT"
+        }
+      }
+    },
+    "Kings and Generals": {
+      "tmdbId": 132057,
+      "kind": "tv",
+      "year": null,
+      "regions": {
+        "US": {
+          "link": "https://www.themoviedb.org/tv/132057-kings-and-generals/watch?locale=US"
+        },
+        "GB": {
+          "link": "https://www.themoviedb.org/tv/132057-kings-and-generals/watch?locale=GB"
+        }
+      }
+    },
+    "Nemesis": {
+      "tmdbId": 285807,
+      "kind": "tv",
+      "year": 2026,
+      "regions": {
+        "BR": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/285807-nemesis/watch?locale=BR"
+        },
+        "US": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/285807-nemesis/watch?locale=US"
+        },
+        "GB": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/285807-nemesis/watch?locale=GB"
+        },
+        "PT": {
+          "stream": [
+            "Netflix"
+          ],
+          "link": "https://www.themoviedb.org/tv/285807-nemesis/watch?locale=PT"
+        }
+      }
+    },
+    "The Gentlemen": {
+      "tmdbId": 236235,
+      "kind": "tv",
+      "year": 2024,
+      "regions": {
+        "BR": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/236235-the-gentlemen/watch?locale=BR"
+        },
+        "US": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/236235-the-gentlemen/watch?locale=US"
+        },
+        "GB": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/236235-the-gentlemen/watch?locale=GB"
+        },
+        "PT": {
+          "stream": [
+            "Netflix"
+          ],
+          "link": "https://www.themoviedb.org/tv/236235-the-gentlemen/watch?locale=PT"
+        }
+      }
+    },
+    "Made in Korea": {
+      "tmdbId": 246473,
+      "kind": "tv",
+      "year": 2025,
+      "regions": {
+        "BR": {
+          "stream": [
+            "Disney Plus"
+          ],
+          "link": "https://www.themoviedb.org/tv/246473/watch?locale=BR"
+        },
+        "US": {
+          "stream": [
+            "Disney Plus",
+            "Hulu"
+          ],
+          "link": "https://www.themoviedb.org/tv/246473/watch?locale=US"
+        },
+        "GB": {
+          "stream": [
+            "Disney Plus"
+          ],
+          "link": "https://www.themoviedb.org/tv/246473/watch?locale=GB"
+        },
+        "PT": {
+          "stream": [
+            "Disney Plus"
+          ],
+          "link": "https://www.themoviedb.org/tv/246473/watch?locale=PT"
+        }
+      }
+    },
+    "Teach You a Lesson": {
+      "tmdbId": 276161,
+      "kind": "tv",
+      "year": 2026,
+      "regions": {
+        "BR": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/276161/watch?locale=BR"
+        },
+        "US": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/276161/watch?locale=US"
+        },
+        "GB": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/276161/watch?locale=GB"
+        },
+        "PT": {
+          "stream": [
+            "Netflix"
+          ],
+          "link": "https://www.themoviedb.org/tv/276161/watch?locale=PT"
+        }
+      }
+    },
+    "Hell's Paradise": {
+      "tmdbId": 117465,
+      "kind": "tv",
+      "year": 2023,
+      "regions": {
+        "BR": {
+          "stream": [
+            "Netflix",
+            "Crunchyroll",
+            "Netflix Standard with Ads",
+            "Crunchyroll Amazon Channel"
+          ],
+          "link": "https://www.themoviedb.org/tv/117465/watch?locale=BR"
+        },
+        "US": {
+          "stream": [
+            "Netflix",
+            "Hulu",
+            "Crunchyroll",
+            "Crunchyroll Amazon Channel",
+            "Netflix Standard with Ads"
+          ],
+          "buy": [
+            "Amazon Video",
+            "Apple TV Store"
+          ],
+          "link": "https://www.themoviedb.org/tv/117465/watch?locale=US"
+        },
+        "GB": {
+          "stream": [
+            "Netflix",
+            "Crunchyroll",
+            "Crunchyroll Amazon Channel",
+            "Netflix Standard with Ads"
+          ],
+          "buy": [
+            "Apple TV Store"
+          ],
+          "link": "https://www.themoviedb.org/tv/117465/watch?locale=GB"
+        },
+        "PT": {
+          "stream": [
+            "Crunchyroll",
+            "Crunchyroll Amazon Channel"
+          ],
+          "link": "https://www.themoviedb.org/tv/117465/watch?locale=PT"
+        }
+      }
+    },
+    "The Last House": {
+      "tmdbId": 1284041,
+      "kind": "movie",
+      "year": 2026,
+      "regions": {
+        "BR": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/movie/1284041-the-last-house/watch?locale=BR"
+        },
+        "US": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/movie/1284041-the-last-house/watch?locale=US"
+        },
+        "GB": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/movie/1284041-the-last-house/watch?locale=GB"
+        },
+        "PT": {
+          "stream": [
+            "Netflix"
+          ],
+          "link": "https://www.themoviedb.org/movie/1284041-the-last-house/watch?locale=PT"
+        }
+      }
+    },
+    "Stranger Things: Tales From '85": {
+      "tmdbId": 224263,
+      "kind": "tv",
+      "year": 2026,
+      "regions": {
+        "BR": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/224263-stranger-things-tales-from-85/watch?locale=BR"
+        },
+        "US": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/224263-stranger-things-tales-from-85/watch?locale=US"
+        },
+        "GB": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/224263-stranger-things-tales-from-85/watch?locale=GB"
+        },
+        "PT": {
+          "stream": [
+            "Netflix"
+          ],
+          "link": "https://www.themoviedb.org/tv/224263-stranger-things-tales-from-85/watch?locale=PT"
+        }
+      }
+    },
+    "Why Did I Get Married Again?": {
+      "tmdbId": 1522689,
+      "kind": "movie",
+      "year": 2026,
+      "regions": {
+        "BR": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/movie/1522689-why-did-i-get-married-again/watch?locale=BR"
+        },
+        "US": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/movie/1522689-why-did-i-get-married-again/watch?locale=US"
+        },
+        "GB": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/movie/1522689-why-did-i-get-married-again/watch?locale=GB"
+        },
+        "PT": {
+          "stream": [
+            "Netflix"
+          ],
+          "link": "https://www.themoviedb.org/movie/1522689-why-did-i-get-married-again/watch?locale=PT"
+        }
+      }
+    },
+    "TÁR": {
+      "tmdbId": 817758,
+      "kind": "movie",
+      "year": 2022,
+      "regions": {
+        "BR": {
+          "rent": [
+            "Claro video",
+            "Apple TV Store",
+            "Amazon Video",
+            "Google Play Movies"
+          ],
+          "buy": [
+            "Apple TV Store",
+            "Amazon Video",
+            "Google Play Movies"
+          ],
+          "link": "https://www.themoviedb.org/movie/817758-tar/watch?locale=BR"
+        },
+        "US": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "rent": [
+            "Amazon Video",
+            "Apple TV Store",
+            "Google Play Movies",
+            "YouTube",
+            "Fandango At Home"
+          ],
+          "buy": [
+            "Amazon Video",
+            "Apple TV Store",
+            "Google Play Movies",
+            "YouTube",
+            "Fandango At Home"
+          ],
+          "link": "https://www.themoviedb.org/movie/817758-tar/watch?locale=US"
+        },
+        "GB": {
+          "rent": [
+            "Apple TV Store",
+            "Rakuten TV",
+            "Amazon Video",
+            "Google Play Movies",
+            "Sky Store",
+            "YouTube"
+          ],
+          "buy": [
+            "Apple TV Store",
+            "Rakuten TV",
+            "Amazon Video",
+            "Google Play Movies",
+            "Sky Store",
+            "YouTube"
+          ],
+          "link": "https://www.themoviedb.org/movie/817758-tar/watch?locale=GB"
+        },
+        "PT": {
+          "rent": [
+            "Apple TV Store",
+            "Google Play Movies",
+            "YouTube",
+            "Rakuten TV",
+            "Amazon Video"
+          ],
+          "buy": [
+            "Apple TV Store",
+            "Google Play Movies",
+            "YouTube",
+            "Rakuten TV",
+            "Amazon Video"
+          ],
+          "link": "https://www.themoviedb.org/movie/817758-tar/watch?locale=PT"
+        }
+      }
+    },
+    "Maestro": {
+      "tmdbId": 523607,
+      "kind": "movie",
+      "year": 2023,
+      "regions": {
+        "BR": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/movie/523607-maestro/watch?locale=BR"
+        },
+        "US": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/movie/523607-maestro/watch?locale=US"
+        },
+        "GB": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/movie/523607-maestro/watch?locale=GB"
+        },
+        "PT": {
+          "stream": [
+            "Netflix"
+          ],
+          "link": "https://www.themoviedb.org/movie/523607-maestro/watch?locale=PT"
+        }
+      }
+    },
+    "Amadeus": {
+      "tmdbId": 279,
+      "kind": "movie",
+      "year": 1984,
+      "regions": {
+        "BR": {
+          "stream": [
+            "Claro tv+"
+          ],
+          "rent": [
+            "Apple TV Store"
+          ],
+          "buy": [
+            "Apple TV Store",
+            "Amazon Video",
+            "Google Play Movies"
+          ],
+          "link": "https://www.themoviedb.org/movie/279-amadeus/watch?locale=BR"
+        },
+        "US": {
+          "rent": [
+            "Amazon Video",
+            "Apple TV Store",
+            "Google Play Movies",
+            "YouTube",
+            "Fandango At Home",
+            "Plex"
+          ],
+          "buy": [
+            "Amazon Video",
+            "Apple TV Store",
+            "Google Play Movies",
+            "YouTube",
+            "Fandango At Home"
+          ],
+          "link": "https://www.themoviedb.org/movie/279-amadeus/watch?locale=US"
+        },
+        "GB": {
+          "buy": [
+            "Apple TV Store",
+            "Rakuten TV",
+            "Amazon Video",
+            "Google Play Movies",
+            "Sky Store",
+            "YouTube"
+          ],
+          "link": "https://www.themoviedb.org/movie/279-amadeus/watch?locale=GB"
+        },
+        "PT": {
+          "stream": [
+            "Filmin"
+          ],
+          "buy": [
+            "Google Play Movies",
+            "YouTube",
+            "Rakuten TV",
+            "Amazon Video"
+          ],
+          "link": "https://www.themoviedb.org/movie/279-amadeus/watch?locale=PT"
+        }
+      }
+    }
+  }
+}
