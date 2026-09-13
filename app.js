@@ -10,7 +10,7 @@ const SUPABASE_URL = 'https://zkymvqrmbabngsqblyye.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpreW12cXJtYmFibmdzcWJseXllIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODY4MDUyNDIsImV4cCI6MjEwMjM4MTI0Mn0._yEVFMfwVU6GBqQ8m3ljfOgA0HSLEDiKMOfYae6ZD8Q';
 
 let supabaseClient = null;
-try { if (window.supabase) supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY); } catch (e) {}
+try { if (window.supabase) supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {auth:{experimental:{passkey:true}}}); } catch (e) {}
 window.supabaseClient = supabaseClient;
 
 let globalMatchTitle = ""; let globalMatchPoster = ""; let globalPlatform = ""; let isUserLoggedIn = false; window.isUserLoggedIn = false;
@@ -1596,21 +1596,43 @@ window.eventMatch = function (query) {
     }, 120));
 })();
 
-window.openAuthModal = function() { document.getElementById('main-auth-modal').style.display = 'flex'; };
+let authReturnFocus = null;
+window.openAuthModal = function() {
+    const modal = document.getElementById('main-auth-modal');
+    if (!modal) { location.href = '/?signIn=1'; return; }
+    authReturnFocus = document.activeElement;
+    modal.style.display = 'flex';
+    modal.querySelector('button:not(:disabled), input')?.focus();
+};
 
 // Anyone redirected here from the retired register.html (old bookmarks,
 // external links) lands straight in the sign-up flow rather than a blank
 // homepage with no obvious next step.
 document.addEventListener('DOMContentLoaded', () => {
     try {
-        if (new URLSearchParams(window.location.search).get('openAuth') === '1') {
+        const authParams = new URLSearchParams(window.location.search);
+        if (authParams.get('openAuth') === '1' || authParams.get('signIn') === '1') {
             window.openAuthModal();
-            if (typeof window.switchAuthTab === 'function') window.switchAuthTab('signup');
+            if (typeof window.switchAuthTab === 'function') window.switchAuthTab(authParams.get('signIn') === '1' ? 'login' : 'signup');
             history.replaceState(null, '', '/index.html'); // clean the URL so a refresh doesn't reopen it
         }
     } catch (e) {}
 });
-window.closeAuthModal = function() { document.getElementById('main-auth-modal').style.display = 'none'; };
+window.closeAuthModal = function() {
+    const modal = document.getElementById('main-auth-modal');
+    if (modal) modal.style.display = 'none';
+    if (authReturnFocus?.isConnected) authReturnFocus.focus();
+};
+document.addEventListener('keydown', event => {
+    const modal = document.getElementById('main-auth-modal');
+    if (!modal || modal.style.display !== 'flex') return;
+    if (event.key === 'Escape') { window.closeAuthModal(); return; }
+    if (event.key !== 'Tab') return;
+    const items = [...modal.querySelectorAll('button:not(:disabled),input,a[href],[tabindex="0"]')].filter(el => el.getClientRects().length);
+    if (!items.length) return;
+    if (event.shiftKey && document.activeElement === items[0]) { event.preventDefault(); items.at(-1).focus(); }
+    else if (!event.shiftKey && document.activeElement === items.at(-1)) { event.preventDefault(); items[0].focus(); }
+});
 window.switchAuthTab = function(tab) {
     // 'forgot' is included so switching back to a tab always clears the reset
     // panel — otherwise it stays visible stacked under the login form.
@@ -2076,7 +2098,7 @@ function promptProfileCompletion(missing) {
 }
 
 if (supabaseClient) {
-    supabaseClient.auth.onAuthStateChange(async (event, session) => {
+    supabaseClient.auth.onAuthStateChange((event, session) => {
         if (session && session.user) {
             isUserLoggedIn = true;
             window.isUserLoggedIn = true;
@@ -2088,11 +2110,21 @@ if (supabaseClient) {
             if (profTab) profTab.style.display = 'inline-flex';
             // Pull Google's data into our own profile row, then refresh quota
             // (which now depends on whether that profile is complete).
-            await hydrateProfileFromAuth(session.user);
-            if (window.refreshQuotaStatus) window.refreshQuotaStatus();
+            // Auth callbacks run under the SDK's session lock. Defer API calls
+            // so native passkey sign-in and session refresh cannot deadlock.
+            setTimeout(async () => {
+                await hydrateProfileFromAuth(session.user);
+                if (window.refreshQuotaStatus) window.refreshQuotaStatus();
+            }, 0);
         } else {
             isUserLoggedIn = false;
             window.isUserLoggedIn = false;
+            const regBtn = document.getElementById('nav-reg-btn');
+            const outBtn = document.getElementById('nav-logout-btn');
+            const profTab = document.getElementById('profile-link-tab');
+            if (regBtn) regBtn.style.display = 'inline-flex';
+            if (outBtn) outBtn.style.display = 'none';
+            if (profTab) profTab.style.display = 'none';
         }
         // Auth resolves after first paint, so anything whose UI depends on
         // membership (Lazy Mode's locked state, the avatar, member-only
