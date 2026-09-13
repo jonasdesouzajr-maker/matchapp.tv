@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320" role="img" aria-labelledby="title desc">
+  <title id="title">MatchApp Kids</title>
+  <desc id="desc">A smiling star inside a colorful rounded television shape.</desc>
+  <defs>
+    <linearGradient id="screen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#6D3DF5"/>
+      <stop offset="0.52" stop-color="#8B5CF6"/>
+      <stop offset="1" stop-color="#22D3EE"/>
+    </linearGradient>
+    <linearGradient id="star" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFF6A3"/>
+      <stop offset="1" stop-color="#F2C94C"/>
+    </linearGradient>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="7" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect x="28" y="54" width="264" height="206" rx="58" fill="#100C20" stroke="#C4B5FD" stroke-width="8"/>
+  <rect x="45" y="71" width="230" height="172" rx="45" fill="url(#screen)"/>
+  <path d="M126 53 101 26M194 53l25-27" fill="none" stroke="#C4B5FD" stroke-width="10" stroke-linecap="round"/>
+  <path d="m160 94 19 39 43 6-31 30 8 43-39-20-39 20 8-43-31-30 43-6z" fill="url(#star)" stroke="#fff" stroke-width="5" stroke-linejoin="round" filter="url(#glow)"/>
+  <circle cx="143" cy="151" r="5" fill="#241044"/>
+  <circle cx="177" cy="151" r="5" fill="#241044"/>
+  <path d="M143 169c10 13 24 13 34 0" fill="none" stroke="#241044" stroke-width="7" stroke-linecap="round"/>
+  <rect x="96" y="266" width="128" height="18" rx="9" fill="#C4B5FD" opacity=".9"/>
+</svg>
