@@ -70,7 +70,9 @@
         if (!isSearchable(hints.cats)) return null;
 
         const kind = hints.kind || kindForCats(hints.cats);
-        const cacheKey = `${title}::${hints.year || ''}::${kind}`;
+        // Kids verifies English catalogue names independently of the UI language.
+        const lang = hints.lang === 'en-US' ? 'en-US' : (window.MATCH_LANG === 'pt-BR' ? 'pt-BR' : 'en-US');
+        const cacheKey = `${title}::${hints.year || ''}::${kind}::${lang}`;
         if (cacheKey in CACHE) return CACHE[cacheKey];
 
         let best = null;
@@ -80,7 +82,7 @@
                     query: title,
                     year: hints.year || '',
                     kind: kind || '',
-                    lang: window.MATCH_LANG === 'pt-BR' ? 'pt-BR' : 'en-US'
+                    lang
                 }
             });
             if (error || !data || !Array.isArray(data.results)) { CACHE[cacheKey] = null; return null; }

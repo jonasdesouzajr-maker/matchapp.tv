@@ -137,7 +137,7 @@
       Promise.resolve().then(async () => {
         if (typeof window.tmdbLookup !== 'function') return null;
         const kind = item.type === 'movie' ? 'movie' : 'tv';
-        const r = await window.tmdbLookup(item.title, {year:item.year, kind});
+        const r = await window.tmdbLookup(item.title, {year:item.year, kind, lang:'en-US'});
         if (!r || r.adult === true || r.kind !== kind) return null;
         if (![r.title,r.originalTitle].some(name => normalizeTitle(name) === normalizeTitle(item.title))) return null;
         if (item.year && (!r.year || Math.abs(Number(r.year) - Number(item.year)) > 1)) return null;
