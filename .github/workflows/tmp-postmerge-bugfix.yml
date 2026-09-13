@@ -1,0 +1,144 @@
+name: Apply post-merge bug fixes
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/tmp-postmerge-bugfix.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Patch verified regressions
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          def rep(path, old, new, expected=1):
+              p = Path(path)
+              s = p.read_text(encoding='utf-8')
+              n = s.count(old)
+              if n != expected:
+                  raise SystemExit(f'{path}: expected {expected}, found {n}: {old[:80]!r}')
+              p.write_text(s.replace(old, new, expected), encoding='utf-8')
+              print('patched', path)
+
+          rep('settings.js', """            const raw = localStorage.getItem(KEY);
+            if (raw) settings = { ...DEFAULTS, ...JSON.parse(raw) };
+            const legacy = localStorage.getItem(LEGACY_AUTOREAD_KEY);
+            if (legacy === 'false') settings.autoRead = false;
+            else if (legacy === 'true') settings.autoRead = true;
+            syncLegacyAutoRead();""", """            const raw = localStorage.getItem(KEY);
+            if (raw) settings = { ...DEFAULTS, ...JSON.parse(raw) };
+            // Legacy storage is migration-only. Once a modern settings object
+            // exists it is authoritative, otherwise a stale legacy value can
+            // overwrite a newer account-synced preference indefinitely.
+            if (!raw) {
+                const legacy = localStorage.getItem(LEGACY_AUTOREAD_KEY);
+                if (legacy === 'false') settings.autoRead = false;
+                else if (legacy === 'true') settings.autoRead = true;
+            }
+            syncLegacyAutoRead();""")
+
+          rep('settings.js', """                settings = { ...DEFAULTS, ...remote, ...local };
+                const legacy = localStorage.getItem(LEGACY_AUTOREAD_KEY);
+                if (legacy === 'false') settings.autoRead = false;
+                else if (legacy === 'true') settings.autoRead = true;
+                persistLocal(); applyAll();""", """                settings = { ...DEFAULTS, ...remote, ...local };
+                // Do not re-apply the legacy key here. load() already migrated
+                // it when needed; modern local values should otherwise win over
+                // remote, and remote should restore correctly on a fresh device.
+                persistLocal(); applyAll();""")
+
+          rep('settings.js', """        const kidBoundRoutes = new Set(['/', '/index.html', '/discover.html', '/together.html']);""", """        const kidBoundRoutes = new Set(['/', '/index.html', '/discover.html', '/together.html', '/events-archive.html']);""")
+
+          rep('settings.js', """    document.addEventListener('matchapp:langchange', () => {
+        const span = document.querySelector('.matchapp-kids-toggle span');
+        if (span) span.textContent = kidsLabel();
+    });""", """    document.addEventListener('matchapp:langchange', () => {
+        const btn = document.querySelector('.matchapp-kids-toggle');
+        const span = btn && btn.querySelector('span');
+        const label = kidsLabel();
+        if (span) span.textContent = label;
+        if (btn) btn.setAttribute('aria-label', label);
+    });""")
+
+          rep('discover.js', """    // Gemini stall, a bad deploy — this waited forever. With two attempts that
+    // meant the page could sit on the loading meter indefinitely, which is
+    // exactly the \"no output, then it took too long\" report. 18s is generous
+    // enough for a genuine cold start but bounded, so the worst case is ~36s
+    // and then an honest message rather than an open-ended wait.
+    const AI_TIMEOUT_MS = 18000;""", """    // Gemini stall, a bad deploy — this waited forever. The Edge Function itself
+    // allows up to 20s for one model before trying its fallback chain, so the
+    // browser timeout must be longer than the first server-side deadline or it
+    // starts a duplicate request while the original is still falling back.
+    // 30s leaves room for one timed-out model plus a healthy fallback.
+    const AI_TIMEOUT_MS = 30000;""")
+
+          rep('discover.js', """function discoverCardHTML(item, idx) {
+    const title = item.title;
+    const safe = title.replace(/\"/g, '&quot;');
+    const meta = [item.year, item.type].filter(Boolean).join(' · ');""", """function escapeDiscoverHtml(value) {
+    return String(value == null ? '' : value)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/\"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+}
+
+function discoverCardHTML(item, idx) {
+    const title = String(item.title || '');
+    const safe = escapeDiscoverHtml(title);
+    const meta = escapeDiscoverHtml([item.year, item.type].filter(Boolean).join(' · '));""")
+
+          rep('discover.js', """            <p>${((typeof window.sanitizeDisplayText === 'function' ? window.sanitizeDisplayText(item.synopsis, ['synopsis']) : item.synopsis) || '').replace(/</g, '&lt;')}</p>""", """            <p>${escapeDiscoverHtml((typeof window.sanitizeDisplayText === 'function' ? window.sanitizeDisplayText(item.synopsis, ['synopsis']) : item.synopsis) || '')}</p>""")
+
+          rep('kids/kids.js', """    const labels = {
+      en:{all:'All',animals:'Animals',funny:'Funny',learning:'Learning',adventure:'Adventure',family:'Family',music:'Music',bedtime:'Bedtime'},
+      'pt-BR':{all:'Todos',animals:'Animais',funny:'Engraçado',learning:'Aprender',adventure:'Aventura',family:'Família',music:'Música',bedtime:'Hora de dormir'},
+      es:{all:'Todo',animals:'Animales',funny:'Divertido',learning:'Aprender',adventure:'Aventura',family:'Familia',music:'Música',bedtime:'Dormir'}
+    };""", """    const labels = {
+      en:{all:'All',animals:'Animals',funny:'Funny',learning:'Learning',adventure:'Adventure',family:'Family',music:'Music',bedtime:'Bedtime'},
+      'pt-BR':{all:'Todos',animals:'Animais',funny:'Engraçado',learning:'Aprender',adventure:'Aventura',family:'Família',music:'Música',bedtime:'Hora de dormir'},
+      es:{all:'Todo',animals:'Animales',funny:'Divertido',learning:'Aprender',adventure:'Aventura',family:'Familia',music:'Música',bedtime:'Dormir'},
+      fr:{all:'Tout',animals:'Animaux',funny:'Drôle',learning:'Apprendre',adventure:'Aventure',family:'Famille',music:'Musique',bedtime:'Coucher'},
+      de:{all:'Alle',animals:'Tiere',funny:'Lustig',learning:'Lernen',adventure:'Abenteuer',family:'Familie',music:'Musik',bedtime:'Schlafenszeit'},
+      it:{all:'Tutto',animals:'Animali',funny:'Divertente',learning:'Imparare',adventure:'Avventura',family:'Famiglia',music:'Musica',bedtime:'Nanna'},
+      tr:{all:'Tümü',animals:'Hayvanlar',funny:'Komik',learning:'Öğrenme',adventure:'Macera',family:'Aile',music:'Müzik',bedtime:'Uyku zamanı'},
+      ru:{all:'Все',animals:'Животные',funny:'Смешное',learning:'Обучение',adventure:'Приключения',family:'Семья',music:'Музыка',bedtime:'Перед сном'},
+      ar:{all:'الكل',animals:'حيوانات',funny:'مضحك',learning:'تعلّم',adventure:'مغامرة',family:'عائلة',music:'موسيقى',bedtime:'وقت النوم'},
+      hi:{all:'सभी',animals:'जानवर',funny:'मज़ेदार',learning:'सीखना',adventure:'रोमांच',family:'परिवार',music:'संगीत',bedtime:'सोने का समय'},
+      id:{all:'Semua',animals:'Hewan',funny:'Lucu',learning:'Belajar',adventure:'Petualangan',family:'Keluarga',music:'Musik',bedtime:'Waktu tidur'},
+      ja:{all:'すべて',animals:'どうぶつ',funny:'おもしろい',learning:'まなぶ',adventure:'ぼうけん',family:'かぞく',music:'おんがく',bedtime:'おやすみ'},
+      ko:{all:'전체',animals:'동물',funny:'재미',learning:'학습',adventure:'모험',family:'가족',music:'음악',bedtime:'잠자리'},
+      zh:{all:'全部',animals:'动物',funny:'搞笑',learning:'学习',adventure:'冒险',family:'家庭',music:'音乐',bedtime:'睡前'}
+    };""")
+          PY
+
+      - name: Validate
+        run: |
+          node --check settings.js
+          node --check discover.js
+          node --check kids/kids.js
+          grep -q 'AI_TIMEOUT_MS = 30000' discover.js
+          grep -q 'escapeDiscoverHtml' discover.js
+          grep -q 'events-archive.html' settings.js
+
+      - name: Commit fixes
+        run: |
+          git config user.name 'matchapp-bugfix-bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add settings.js discover.js kids/kids.js
+          git commit -m 'Fix post-merge settings, AI timeout, escaping and Kids i18n'
+          git push origin main
