@@ -23,15 +23,18 @@
     'use strict';
 
     const KEY = 'match_settings';
+    const LEGACY_AUTOREAD_KEY = 'match_voice_autoread';
 
-    /* Defaults are the current behaviour, so an existing user notices no
-       change until they deliberately move something. */
+    /* Defaults are the current behaviour for visual/accessibility settings.
+       Auto-read is intentionally ON for new users: Ask AI is a concierge and
+       should speak by default until the user explicitly disables it in
+       Profile > Voice & AI Settings. */
     const DEFAULTS = {
         fontScale: 1,          // 0.85 – 1.4
         voiceURI: '',          // '' = pick automatically by language
         voiceRate: 1,          // 0.6 – 1.6
         voicePitch: 1,         // 0.6 – 1.5
-        autoRead: false,       // read AI answers aloud automatically
+        autoRead: true,        // read AI answers aloud automatically
         reduceMotion: false,   // user-level override of the OS setting
         lazyDefault: false,    // start every visit in Lazy Mode
         compactCards: false    // denser result cards
@@ -39,16 +42,34 @@
 
     let settings = { ...DEFAULTS };
 
+    function syncLegacyAutoRead() {
+        try {
+            localStorage.setItem(LEGACY_AUTOREAD_KEY, settings.autoRead === false ? 'false' : 'true');
+        } catch (e) {}
+    }
+
     function load() {
         try {
             const raw = localStorage.getItem(KEY);
             if (raw) settings = { ...DEFAULTS, ...JSON.parse(raw) };
-        } catch (e) { settings = { ...DEFAULTS }; }
+
+            // Migration for the older profile/discover implementation, which
+            // still reads match_voice_autoread directly. An explicit old
+            // 'false' remains false forever; absence means the new default ON.
+            const legacy = localStorage.getItem(LEGACY_AUTOREAD_KEY);
+            if (legacy === 'false') settings.autoRead = false;
+            else if (legacy === 'true') settings.autoRead = true;
+            syncLegacyAutoRead();
+        } catch (e) {
+            settings = { ...DEFAULTS };
+            syncLegacyAutoRead();
+        }
         return settings;
     }
 
     function persistLocal() {
         try { localStorage.setItem(KEY, JSON.stringify(settings)); } catch (e) {}
+        syncLegacyAutoRead();
     }
 
     /* Debounced so dragging a slider writes once when the user stops, not
@@ -127,6 +148,13 @@
                 let local = {};
                 try { local = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) {}
                 settings = { ...DEFAULTS, ...remote, ...local };
+
+                // Preserve a local explicit legacy choice as the strongest
+                // signal during migration; otherwise mirror the hydrated value.
+                const legacy = localStorage.getItem(LEGACY_AUTOREAD_KEY);
+                if (legacy === 'false') settings.autoRead = false;
+                else if (legacy === 'true') settings.autoRead = true;
+
                 persistLocal(); applyAll();
             } catch (e) {}
         },
