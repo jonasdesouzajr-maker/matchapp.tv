@@ -553,3 +553,32 @@ details[open] .settings-chevron { transform: rotate(180deg); }
     .poster-del:hover, .poster-del:active { transform: none; }
     .poster-cell.is-removing { animation-duration: 1ms; }
 }
+
+/* ===== ACTIVITY LOG ===== */
+.activity-toolbar { display: flex; gap: 10px; margin: 14px 0 14px; flex-wrap: wrap; align-items: center; }
+.activity-toolbar .setting-select { flex: 1; min-width: 150px; }
+.activity-clear { width: auto !important; padding: 10px 16px !important; font-size: var(--fs-micro) !important; opacity: 0.8; }
+.activity-list { display: flex; flex-direction: column; gap: 6px; max-height: 420px; overflow-y: auto;
+    scrollbar-width: thin; scrollbar-color: var(--edge-strong) transparent; }
+.activity-row { display: flex; align-items: center; gap: 11px; padding: 11px 12px; border-radius: 10px;
+    background: rgba(255,255,255,0.035); border: 1px solid var(--edge-subtle); }
+.activity-icon { flex-shrink: 0; font-size: 15px; width: 22px; text-align: center; }
+.activity-main { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 1px; }
+.activity-label { font-size: var(--fs-micro); font-weight: 700; color: var(--gold-mid);
+    text-transform: uppercase; letter-spacing: 0.5px; }
+.activity-detail { font-size: var(--fs-small); color: #ddd6c4; overflow: hidden;
+    text-overflow: ellipsis; white-space: nowrap; }
+.activity-time { flex-shrink: 0; font-size: var(--fs-micro); color: #8f8877; font-variant-numeric: tabular-nums; }
+.activity-del { flex-shrink: 0; width: 24px; height: 24px; padding: 0; border: none; border-radius: 6px;
+    background: none; color: #6f6960; font-size: 18px; line-height: 1; cursor: pointer;
+    transition: color var(--t-micro), background var(--t-micro); }
+.activity-del:hover { color: #EF4444; background: rgba(239,68,68,0.12); }
+.activity-del:focus-visible { outline: 2px solid #EF4444; outline-offset: 1px; }
+.activity-empty { color: #8f8877; font-size: var(--fs-small); font-style: italic; padding: 18px 0; text-align: center; }
+.settings-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 22px; align-items: center; }
+.settings-save { width: auto !important; padding: 13px 24px !important; font-size: var(--fs-small) !important; }
+@media (max-width: 480px) {
+    .settings-actions { flex-direction: column; align-items: stretch; }
+    .settings-save, .settings-reset { width: 100% !important; }
+    .activity-detail { white-space: normal; }
+}

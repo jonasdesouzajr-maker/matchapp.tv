@@ -28,14 +28,31 @@ let deferredInstallPrompt = null;
 
 function platformInfo() {
     const ua = navigator.userAgent || '';
-    const isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
+
+    // THE TABLET BUG: since iPadOS 13, Apple deliberately reports "Macintosh"
+    // in the user-agent instead of "iPad", so /iPad/ matches nothing on any
+    // modern iPad and every one of them fell through to the isMac branch.
+    // The reliable tell is that a real Mac has no touch: navigator.maxTouchPoints
+    // is 0 on desktop Safari and 5 on an iPad claiming to be one.
+    const iPadOS = /Macintosh/.test(ua) && navigator.maxTouchPoints > 1;
+    const isIOS = (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) || iPadOS;
     const isMac = /Macintosh/.test(ua) && !isIOS;
+
+    // Android tablets were not detected at all: the old check had no Android
+    // branch, so a Galaxy Tab got neither the native prompt path nor the
+    // manual instructions. Chrome on Android fires beforeinstallprompt on
+    // tablets exactly as it does on phones, so they only needed recognising.
+    const isAndroid = /Android/.test(ua);
+    const isTablet = iPadOS
+        || (/Android/.test(ua) && !/Mobile/.test(ua))   // Android tablets omit "Mobile"
+        || /Tablet|PlayBook|Silk/.test(ua);
+
     // True Safari engine, excluding Chrome/Firefox/Edge on iOS which all
     // report "Safari" in their UA string too since they're WebKit wrappers.
     const isSafari = /^((?!chrome|crios|fxios|edgios|android).)*safari/i.test(ua);
     const isStandalone = window.matchMedia && window.matchMedia('(display-mode: standalone)').matches
         || window.navigator.standalone === true; // iOS's own standalone flag
-    return { isIOS, isMac, isSafari, isStandalone };
+    return { isIOS, isMac, isSafari, isStandalone, isTablet, isAndroid, iPadOS };
 }
 
 function installButtons() {

@@ -34,8 +34,8 @@
         });
     </script>
     
-    <link rel="stylesheet" href="/style.css?v=180">
-    <link rel="stylesheet" href="/tv.css?v=180">
+    <link rel="stylesheet" href="/style.css?v=181">
+    <link rel="stylesheet" href="/tv.css?v=181">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
         :root { --gold: #E5C158; --gold-deep: #B8912F; --gold-glow: #FFF3A3; --ink: #14131A; --royal-deep: #130734; --royal: #402562; --royal-lift: #6B3FA0; --royal-glow: #A376B6; --bg-dark: #14131A; --card-bg: rgba(26, 22, 38, 0.90); }
@@ -659,7 +659,46 @@
                             </div>
                             <p class="setting-note" data-i18n="set.motionNote">Turns off background movement and transitions. Useful for motion sensitivity, or on an older device.</p>
 
-                            <button type="button" class="secondary-btn settings-reset" onclick="resetSettings()" data-i18n="set.reset">↺ Reset to defaults</button>
+                            <div class="settings-actions">
+                                <button type="button" class="gold-btn settings-save" onclick="saveSettings()" data-i18n="set.save">💾 Save settings</button>
+                                <button type="button" class="secondary-btn settings-reset" onclick="resetSettings()" data-i18n="set.reset">↺ Reset to defaults</button>
+                            </div>
+                            <p class="setting-note" data-i18n="set.saveNote">Changes apply as you make them — this button pushes them to your account so they follow you to other devices.</p>
+                        </div>
+                    </details>
+                </div>
+
+
+                <!-- ============================================== -->
+                <!-- ACTIVITY — a rolling 15-day log of what the    -->
+                <!-- user did. Collapsed by default and entirely    -->
+                <!-- local: this never leaves the device, which is  -->
+                <!-- both a privacy decision and the reason it      -->
+                <!-- needs no migration or RLS policy.              -->
+                <!-- ============================================== -->
+                <div class="premium-card" style="margin-top: 20px;">
+                    <details id="activity-panel">
+                        <summary class="settings-summary">
+                            <span data-i18n="act.title">🕘 Your Activity</span>
+                            <span class="settings-chevron" aria-hidden="true">⌄</span>
+                        </summary>
+                        <div class="settings-body">
+                            <p class="setting-note" data-i18n="act.intro">Everything you have done on MatchApp in the last 15 days — matches, searches, saves, shares and purchases. Stored only on this device, never uploaded. Older entries delete themselves automatically.</p>
+
+                            <div class="activity-toolbar">
+                                <select id="activity-filter" class="setting-select" onchange="renderActivity()" aria-label="Filter activity">
+                                    <option value="" data-i18n="act.all">All activity</option>
+                                    <option value="match" data-i18n="act.matches">Matches</option>
+                                    <option value="ai" data-i18n="act.ai">AI questions</option>
+                                    <option value="save" data-i18n="act.saves">Saves &amp; removals</option>
+                                    <option value="share" data-i18n="act.shares">Shares</option>
+                                    <option value="purchase" data-i18n="act.purchases">Purchases</option>
+                                </select>
+                                <button type="button" class="secondary-btn activity-clear" onclick="clearActivity()" data-i18n="act.clearAll">🗑 Clear all</button>
+                            </div>
+
+                            <div id="activity-list" class="activity-list"></div>
+                            <p id="activity-count" class="setting-note"></p>
                         </div>
                     </details>
                 </div>
@@ -696,13 +735,14 @@
         <p><span data-i18n="support.ideas">💌 Got an idea for MatchApp? We read every email —</span> <a href="mailto:support@matchapp.tv">support@matchapp.tv</a> <span class="pf-support-sep">·</span> <a href="https://wa.me/5521974297919" target="_blank" rel="noopener noreferrer" class="pf-support-wa">WhatsApp</a></p>
     </footer>
 
-    <script src="/settings.js?v=180"></script>
-    <script src="/i18n.js?v=180"></script>
-    <script defer src="/install.js?v=180"></script>
-    <script defer src="/avatars.js?v=180"></script>
-    <script src="/app.js?v=180"></script>
-    <script src="/taste.js?v=180"></script>
-    <script src="/profile.js?v=180"></script>
-    <script src="/tv.js?v=180"></script>
+    <script src="/activity.js?v=181"></script>
+    <script src="/settings.js?v=181"></script>
+    <script src="/i18n.js?v=181"></script>
+    <script defer src="/install.js?v=181"></script>
+    <script defer src="/avatars.js?v=181"></script>
+    <script src="/app.js?v=181"></script>
+    <script src="/taste.js?v=181"></script>
+    <script src="/profile.js?v=181"></script>
+    <script src="/tv.js?v=181"></script>
 </body>
 </html>

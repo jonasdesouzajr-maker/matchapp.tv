@@ -168,28 +168,86 @@ function checkAndRenderProfileState() {
 }
 
 window.handleAvatar = function(event) {
-    if (localStorage.getItem('match_profile_locked') === 'true') {
-        alert("Avatar is locked alongside your profile identity.");
-        return;
-    }
+    // The profile lock deliberately does NOT apply here. It exists to freeze
+    // the identity facts the AI matches on — name, country, date of birth,
+    // star sign — so those stay consistent. A profile photo is not one of
+    // those: it feeds nothing, and locking it meant a user who sealed their
+    // identity could never change their picture again, which is a change
+    // they have every right to make and no reason to be denied.
     const file = event.target.files[0];
     if (!file) return;
-    const reader = new FileReader();
-    reader.onload = function(e) {
-        const base64 = e.target.result;
-        document.getElementById('profile-pic-preview').src = base64;
-        localStorage.setItem('match_custom_avatar', base64);
-        
-        const navImg = document.getElementById('nav-avatar-img');
-        if (navImg) { navImg.src = base64; navImg.style.display = 'inline-block'; }
 
-        if (window.supabaseClient) {
-            window.supabaseClient.auth.getUser().then(({ data }) => {
-                if (data && data.user) {
-                    window.supabaseClient.from('profiles').upsert({ id: data.user.id, avatar_url: base64 });
-                }
-            });
-        }
+    if (!/^image\//.test(file.type)) {
+        if (window.showToast) showToast('Please choose an image file.', true);
+        return;
+    }
+    // 8MB ceiling on the ORIGINAL. Anything larger is almost certainly a
+    // RAW or burst capture, and decoding it on a mid-range phone can hang
+    // the tab before we ever get to resize it.
+    if (file.size > 8 * 1024 * 1024) {
+        if (window.showToast) showToast('That image is very large — please pick one under 8MB.', true);
+        return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = function (e) {
+        const img = new Image();
+        img.onload = function () {
+            // RESIZE BEFORE STORING. A modern phone photo is 3-5MB, and
+            // base64 inflates it by roughly a third — so storing the raw
+            // file would push a single avatar past localStorage's ~5MB
+            // budget for the whole origin, silently throwing QuotaExceeded
+            // and taking every other saved preference down with it.
+            // 256px square is more than enough for a 96px display at 2x.
+            const SIZE = 256;
+            const canvas = document.createElement('canvas');
+            canvas.width = canvas.height = SIZE;
+            const ctx = canvas.getContext('2d');
+
+            // Centre-crop to square so portrait and landscape photos are not
+            // squashed into the circular frame.
+            const side = Math.min(img.width, img.height);
+            const sx = (img.width - side) / 2;
+            const sy = (img.height - side) / 2;
+            ctx.drawImage(img, sx, sy, side, side, 0, 0, SIZE, SIZE);
+
+            // JPEG at 0.82 lands a 256px avatar around 15-25KB.
+            const base64 = canvas.toDataURL('image/jpeg', 0.82);
+
+            try {
+                localStorage.setItem('match_custom_avatar', base64);
+            } catch (err) {
+                if (window.showToast) showToast('Could not save the image — your browser storage is full.', true);
+                return;
+            }
+            // A custom photo overrides any preset avatar that was chosen.
+            localStorage.removeItem('match_preset_avatar');
+
+            const preview = document.getElementById('profile-pic-preview');
+            if (preview) preview.src = base64;
+            const navImg = document.getElementById('nav-avatar-img');
+            if (navImg) { navImg.src = base64; navImg.style.display = 'inline-block'; }
+            document.querySelectorAll('.avatar-opt[aria-pressed="true"]')
+                .forEach(b => b.setAttribute('aria-pressed', 'false'));
+
+            if (window.supabaseClient) {
+                window.supabaseClient.auth.getUser().then(({ data }) => {
+                    if (data && data.user) {
+                        window.supabaseClient.from('profiles')
+                            .upsert({ id: data.user.id, avatar_url: base64 }, { onConflict: 'id' });
+                    }
+                });
+            }
+            if (window.showToast) showToast('Profile photo updated.');
+            if (window.track) window.track('avatar_changed', { source: 'upload' });
+        };
+        img.onerror = function () {
+            if (window.showToast) showToast("That file could not be read as an image.", true);
+        };
+        img.src = e.target.result;
+    };
+    reader.onerror = function () {
+        if (window.showToast) showToast('Could not read that file.', true);
     };
     reader.readAsDataURL(file);
 };
@@ -872,3 +930,19 @@ function syncListsToAccount() {
         } catch (e) {}
     }, 800);
 }
+
+/* Explicit save. Settings already persist as they change, but a panel with
+   no save button leaves people unsure whether anything took — so this makes
+   the sync visible and confirms it, rather than adding a state where unsaved
+   changes could be lost. */
+window.saveSettings = function () {
+    if (!window.MatchSettings) return;
+    const btn = document.querySelector('.settings-save');
+    if (btn) { btn.disabled = true; btn.style.opacity = '0.6'; }
+    // Re-setting a value forces the debounced account sync to fire now.
+    window.MatchSettings.set('fontScale', window.MatchSettings.get('fontScale'));
+    setTimeout(() => {
+        if (btn) { btn.disabled = false; btn.style.opacity = '1'; }
+        if (window.showToast) showToast('Settings saved to your account.');
+    }, 700);
+};

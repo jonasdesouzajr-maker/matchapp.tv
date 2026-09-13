@@ -4070,6 +4070,24 @@ function track(event, params) {
     // Kept for the case where gtag.js is ever loaded alongside GTM, so a
     // future change back doesn't silently lose events again.
     if (typeof gtag === 'function') gtag('event', event, params || {});
+
+    // Mirror the user-meaningful events into their own local activity log.
+    // Mapped rather than logged wholesale: analytics fires plenty of events
+    // that mean nothing to a person reading their own history.
+    if (window.MatchActivity) {
+        const MAP = {
+            share:            ['share',    p => p.item_id || 'a match'],
+            ai_search:        ['ai',       p => p.search_term || ''],
+            save_watch_later: ['save',     p => p.title || ''],
+            title_removed:    ['remove',   p => p.title || ''],
+            avatar_changed:   ['settings', () => 'Changed profile photo'],
+            trending_click:   ['platform', p => p.title || ''],
+            match_together_created: ['together', () => 'Started a session'],
+            match_together_joined:  ['together', () => 'Joined a session']
+        };
+        const m = MAP[event];
+        if (m) { try { window.MatchActivity.log(m[0], m[1](params || {})); } catch (e) {} }
+    }
 }
 window.track = track;
 
