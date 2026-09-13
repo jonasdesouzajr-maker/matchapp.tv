@@ -505,3 +505,51 @@ details[open] .settings-chevron { transform: rotate(180deg); }
     .setting-row > label { min-width: 0; flex: 1 1 100%; margin-bottom: 2px; }
     .setting-control { min-width: 0; }
 }
+
+/* ===== REMOVE-FROM-LIST BUTTON =====
+   Sits on the poster-cell, not inside the <a>, so tapping it can never open
+   the streaming link by accident — nesting a button inside an anchor is also
+   invalid HTML and behaves unpredictably across browsers.
+
+   Always visible rather than hover-only: hover does not exist on touch, and
+   these grids are used mostly on phones. */
+.poster-cell { position: relative; }
+
+.poster-del {
+    position: absolute; top: 7px; right: 7px; z-index: 4;
+    width: 30px; height: 30px; padding: 0;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 9px; cursor: pointer;
+    background: rgba(12, 6, 6, 0.82);
+    border: 1px solid rgba(239, 68, 68, 0.55);
+    color: #EF4444;
+    backdrop-filter: blur(4px);
+    transition: background var(--t-micro), border-color var(--t-micro),
+                color var(--t-micro), transform var(--t-micro);
+}
+.poster-del:hover { background: #EF4444; border-color: #EF4444; color: #fff; transform: scale(1.08); }
+.poster-del:active { transform: scale(0.94); }
+.poster-del:focus-visible { outline: 2px solid #EF4444; outline-offset: 2px; }
+
+/* The platform badge also sits top-right; shift it clear of the button. */
+.poster-card > div[style*="top:8px"][style*="right:8px"] { right: 44px !important; }
+
+/* Removal animation. The cell collapses rather than just fading, so the grid
+   closes the gap smoothly instead of leaving a hole until the repaint. */
+.poster-cell.is-removing {
+    animation: posterRemove 220ms var(--ease) forwards;
+    pointer-events: none;
+}
+@keyframes posterRemove {
+    to { opacity: 0; transform: scale(0.9); }
+}
+
+@media (max-width: 480px) {
+    /* Bigger tap target on touch, where precision is lower. */
+    .poster-del { width: 32px; height: 32px; top: 6px; right: 6px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .poster-del { transition: none; }
+    .poster-del:hover, .poster-del:active { transform: none; }
+    .poster-cell.is-removing { animation-duration: 1ms; }
+}

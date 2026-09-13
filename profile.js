@@ -295,8 +295,18 @@ function buildPosterCard(item, accent) {
     const fallbackDisplay = hasPoster ? 'none' : 'flex';
     const cta = isAudio ? '🎧 Listen Now' : '▶ Stream Now';
 
+    // Which list this card belongs to, so the delete button knows what to
+    // remove it from. Audio items can live in either underlying list, so the
+    // remover checks both rather than guessing from the tab.
+    const listKind = isAudio ? 'audio' : (accent === 'var(--gold)' ? 'saved' : 'seen');
+
     return `
       <div class="poster-cell">
+        <button type="button" class="poster-del" data-title="${safeTitle}" data-list="${listKind}"
+                onclick="removeFromList(this)" aria-label="Remove ${safeTitle}"
+                title="Remove from this list">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18"/><path d="M8 6V4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2"/><path d="M19 6v14a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6"/><path d="M10 11v6M14 11v6"/></svg>
+        </button>
         <a class="poster-card" href="${escapeHtml(link)}" target="_blank" rel="noopener noreferrer" title="Open ${safeTitle}"
            style="position:relative; display:block; width:100%; height:230px; border-radius:12px; overflow:hidden; border:1px solid ${accent}; box-shadow:0 5px 20px rgba(0,0,0,0.9); text-decoration:none; transition:transform 0.3s ease, box-shadow 0.3s ease;"
            onmouseover="this.style.transform='translateY(-6px) scale(1.03)'; this.style.boxShadow='0 14px 34px rgba(0,0,0,0.95)'; this.querySelector('.card-cta').style.opacity='1';"
@@ -774,3 +784,91 @@ document.addEventListener('DOMContentLoaded', () => {
         initSettingsPanel();
     }
 })();
+
+/* ============================================================
+   REMOVE A TITLE FROM A SAVED LIST
+
+   Deliberately does more than splice an array: a title sitting in Watch
+   Later or Seen It is also excluded from future matches, so removing it from
+   the visible list without clearing that exclusion would leave the user with
+   a title they can neither see nor ever be matched with again — invisible
+   and permanently suppressed. Both are cleared together.
+   ============================================================ */
+window.removeFromList = function (btn) {
+    const title = btn.getAttribute('data-title');
+    const kind  = btn.getAttribute('data-list');
+    if (!title) return;
+
+    const strip = (key) => {
+        let arr = [];
+        try { arr = JSON.parse(localStorage.getItem(key) || '[]'); } catch (e) { return false; }
+        const before = arr.length;
+        arr = arr.filter(i => (typeof i === 'string' ? i : (i && i.title)) !== title);
+        if (arr.length === before) return false;
+        localStorage.setItem(key, JSON.stringify(arr));
+        return true;
+    };
+
+    // Audio can sit in either list, so clear both for that case.
+    let removed = false;
+    if (kind === 'saved' || kind === 'audio') removed = strip('match_savedList') || removed;
+    if (kind === 'seen'  || kind === 'audio') removed = strip('match_seenList')  || removed;
+
+    // The title is eligible to be matched again now, so drop the private note
+    // too — a note about something no longer on any list is orphaned data the
+    // user has no way to reach or delete.
+    try {
+        const notes = JSON.parse(localStorage.getItem('match_titleNotes') || '{}');
+        if (notes[title]) { delete notes[title]; localStorage.setItem('match_titleNotes', JSON.stringify(notes)); }
+    } catch (e) {}
+
+    // Animate out, then repaint. The cell is removed visually first so the
+    // grid does not visibly jump before the fade finishes.
+    const cell = btn.closest('.poster-cell');
+    if (cell) {
+        cell.classList.add('is-removing');
+        setTimeout(() => { if (window.renderProfileGrids) window.renderProfileGrids(); }, 220);
+    } else if (window.renderProfileGrids) {
+        window.renderProfileGrids();
+    }
+
+    // app.js reads seenList/savedList into module variables once at load, and
+    // the match engine builds its exclusion set from those — not from
+    // localStorage directly. Navigating to the homepage reloads app.js so it
+    // would pick this up anyway, but refreshing them here means the title is
+    // matchable immediately, without depending on a reload happening.
+    try {
+        if (Array.isArray(window.seenList) || typeof seenList !== 'undefined') {
+            const fresh = (k) => { try { return JSON.parse(localStorage.getItem(k) || '[]'); } catch (e) { return []; } };
+            if (typeof window.seenList !== 'undefined')  window.seenList  = fresh('match_seenList');
+            if (typeof window.savedList !== 'undefined') window.savedList = fresh('match_savedList');
+        }
+    } catch (e) {}
+
+    if (window.showToast) {
+        showToast(`Removed "${title}" — it can be matched again.`);
+    }
+    if (window.track) window.track('title_removed', { title: title, list: kind });
+
+    // Mirror to the account so the removal follows the user to other devices.
+    syncListsToAccount();
+};
+
+/* Debounced: deleting several titles in a row should be one write, not one
+   per tap. Silent on failure — a sync problem must never block the UI. */
+let listSyncTimer = null;
+function syncListsToAccount() {
+    clearTimeout(listSyncTimer);
+    listSyncTimer = setTimeout(async () => {
+        const sb = window.supabaseClient;
+        if (!sb) return;
+        try {
+            const { data: { user } } = await sb.auth.getUser();
+            if (!user) return;
+            await sb.auth.updateUser({ data: {
+                match_savedList: JSON.parse(localStorage.getItem('match_savedList') || '[]'),
+                match_seenList:  JSON.parse(localStorage.getItem('match_seenList')  || '[]')
+            }});
+        } catch (e) {}
+    }, 800);
+}
