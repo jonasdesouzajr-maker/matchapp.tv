@@ -95,6 +95,19 @@ const DIAGNOSTIC_PROBE_MODELS = [
 // rate limiter below is for. This closes the drive-by-from-a-web-page vector;
 // the limiter closes the scripted one. Both are needed.
 // ============================================================
+// LEGACY ORIGINS — matchapp.cc entries are intentional and temporary.
+//
+// matchapp.cc 301-redirects to matchapp.tv, so a normal visitor never sends
+// a .cc Origin: the redirect happens before any API call. These two entries
+// exist only for clients that predate the redirect and still run with a .cc
+// origin — a PWA installed from the old domain, or a tab left open. Removing
+// them would make the AI silently fail for those users with a CORS error and
+// no visible reason.
+//
+// SAFE TO DELETE once Search Console and analytics show no .cc traffic for
+// a full month. They are not a security risk in the meantime: both are our
+// own domains, and every other protection (JWT check, rate limit) is
+// unchanged by their presence.
 const ALLOWED_ORIGINS = new Set([
   "https://matchapp.cc",
   "https://www.matchapp.cc",
