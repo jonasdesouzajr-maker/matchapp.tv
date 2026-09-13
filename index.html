@@ -430,7 +430,8 @@
 
     <!-- NATIVE I18N (defer = runs before DOMContentLoaded, no English flash) -->
     <script defer src="/i18n.js?v=181"></script>
-    <script defer src="/install.js?v=181"></script>
+    <script src="/build-meta.js?v=183"></script>
+<script defer src="/install.js?v=183"></script>
     <script defer src="/avatars.js?v=181"></script>
     <script defer src="/ambient.js?v=181"></script>
 
@@ -473,7 +474,7 @@
     <!-- Smart TV stylesheet. Entirely scoped under body.tv-mode, so a
          non-TV visitor pays one small file and sees no change. -->
     <link rel="stylesheet" href="/tv.css?v=181">
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.105.0/dist/umd/supabase.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
     <script type="text/javascript">
@@ -1865,6 +1866,8 @@
             .concierge-section { padding: 15px 12px; }
         }
     </style>
+<link rel="stylesheet" href="/passkeys.css?v=183">
+<link rel="stylesheet" href="/app-updates.css?v=183">
 </head>
 <body>
     <!-- Google Tag Manager (noscript) -->
@@ -2791,7 +2794,7 @@
             <h3 class="seo-footer-sub" data-i18n="footer.audio">🎧 Podcasts, Playlists, Singles &amp; Audio</h3>
             <nav class="streaming-links" aria-label="Audio streaming platforms">
                 <a href="https://open.spotify.com/genre/podcasts-page" target="_blank" rel="noopener noreferrer">🎙️ Spotify Podcasts</a>
-                <a href="https://open.spotify.com/genre/playlists-page" target="_blank" rel="noopener noreferrer">🎵 Spotify Playlists</a>
+                <a href="https://open.spotify.com/genre/0JQ5DAqbMKFzHmL4tf05da" target="_blank" rel="noopener noreferrer">🎵 Spotify Playlists</a>
                 <a href="https://open.spotify.com/genre/new-releases-page" target="_blank" rel="noopener noreferrer">🔥 Spotify New Singles</a>
                 <a href="https://podcasts.apple.com" target="_blank" rel="noopener noreferrer">🍎 Apple Podcasts</a>
                 <a href="https://music.youtube.com" target="_blank" rel="noopener noreferrer">▶️ YouTube Music</a>
@@ -2944,7 +2947,8 @@
                 Availability varies by region and subscription.
             </p>
         </div>
-    </footer>
+    <p style="text-align:center"><a href="/updates.html">What’s new · Kids Mode &amp; device sign-in</a></p>
+</footer>
 
     <!-- SOCIAL SHARE MODAL -->
     <div id="share-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.9); z-index:3200; align-items:center; justify-content:center; padding:18px; overflow-y:auto;">
@@ -3050,9 +3054,9 @@
     </div>
 
     <!-- Hidden Authentication Modals -->
-    <div id="main-auth-modal" style="display:none; position:fixed; top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.95); z-index:9999; justify-content:center; align-items:center; backdrop-filter: blur(15px);">
+    <div role="dialog" aria-modal="true" aria-label="Sign in to MatchApp" id="main-auth-modal" style="display:none; position:fixed; top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.95); z-index:9999; justify-content:center; align-items:center; backdrop-filter: blur(15px);">
         <div class="premium-card" style="width: 90%; max-width: 450px; position:relative;">
-            <span onclick="closeAuthModal()" style="position:absolute; top:15px; right:20px; font-size:36px; cursor:pointer; color:#fff;">×</span>
+            <button type="button" class="auth-close" onclick="closeAuthModal()" aria-label="Close sign-in">×</button>
             <h3 style="text-align: center; color: var(--gold); font-size: 26px; margin-top: 0; text-transform: uppercase;" data-i18n="auth.unlockTitle">Unlock Full Concierge</h3>
 
             <button onclick="loginWithGoogle()" class="google-signin-btn" type="button">
@@ -3070,9 +3074,9 @@
                 <div id="tab-login" class="auth-tab active" onclick="switchAuthTab('login')" data-i18n="auth.login">Log In</div>
                 <div id="tab-signup" class="auth-tab" onclick="switchAuthTab('signup')" data-i18n="auth.signup">Sign Up</div>
             </div>
-            <div id="form-login" class="auth-form-section active">
-                <input type="email" id="login-email" placeholder="Email Address" style="width: 100%; padding: 16px; margin-bottom: 15px; border-radius: 12px; border: 1px solid var(--gold); background: #000; color: #fff;">
-                <input type="password" id="login-password" placeholder="Password" style="width: 100%; padding: 16px; margin-bottom: 25px; border-radius: 12px; border: 1px solid var(--gold); background: #000; color: #fff;">
+            <div id="form-login" class="auth-form-section active"><div class="passkey-box"><button type="button" class="passkey-button" data-passkey-action="signin" data-passkey-text="signIn">Sign in with Face ID / fingerprint / PIN</button><p class="passkey-help" data-passkey-text="help">Use your device unlock to sign in again. MatchApp never receives your biometrics or PIN.</p><p class="passkey-status" data-passkey-status role="status" aria-live="polite"></p></div>
+                <input type="email" id="login-email" autocomplete="username webauthn" placeholder="Email Address" style="width: 100%; padding: 16px; margin-bottom: 15px; border-radius: 12px; border: 1px solid var(--gold); background: #000; color: #fff;">
+                <input type="password" id="login-password" autocomplete="current-password" placeholder="Password" style="width: 100%; padding: 16px; margin-bottom: 25px; border-radius: 12px; border: 1px solid var(--gold); background: #000; color: #fff;">
                 <button onclick="handleEmailLogin()" class="gold-btn" style="width: 100%; padding: 18px; font-size: 20px;">Log In</button>
                 <button type="button" class="auth-link-btn" onclick="showForgotPassword()" data-i18n="auth.forgot">Forgot your password?</button>
             </div>
@@ -3095,8 +3099,8 @@
         </div>
     </div>
 
-    <script src="/settings.js?v=181"></script>
-    <script src="/app.js?v=181"></script>
+    <script src="/settings.js?v=183"></script>
+    <script src="/app.js?v=183"></script>
     <!-- Loads AFTER app.js so the chips it builds can call straight into the
          matcher, and non-deferred so the form is never briefly interactive as
          a plain single-choice select. -->
@@ -3159,5 +3163,7 @@
             <button onclick="closeNotForMeChooser()" class="nfm-cancel" data-i18n="nfm.cancel">Cancel</button>
         </div>
     </div>
+<script src="/passkeys.js?v=183"></script>
+<script src="/app-updates.js?v=183"></script>
 </body>
 </html>
