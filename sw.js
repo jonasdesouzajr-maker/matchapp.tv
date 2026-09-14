@@ -40,7 +40,7 @@
    installability is unaffected.
    ============================================================ */
 
-const SW_VERSION = 'v10-mobile-and-matching-recovery';
+const SW_VERSION = 'v11-header-and-update-recovery';
 
 self.addEventListener('install', () => {
     // Activate immediately rather than waiting for old tabs to close. This is

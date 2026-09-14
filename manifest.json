@@ -1,6 +1,6 @@
 {
-  "name": "MatchApp — AI Streaming Concierge",
-  "short_name": "MatchApp",
+  "name": "MatchApp TV Ai",
+  "short_name": "MatchApp TV Ai",
   "description": "Find what to watch across streaming services including The Roku Channel, discover the curated Kids world and global events, and personalize MatchApp with five themes.",
   "start_url": "/?utm_source=pwa",
   "scope": "/",

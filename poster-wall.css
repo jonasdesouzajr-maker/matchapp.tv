@@ -127,3 +127,12 @@ body:has(.poster-wall)::before,body:has(.poster-wall)::after{display:none!import
   .poster-wall-grid, .poster-wall-tile { animation: none !important; will-change: auto; }
   .poster-wall::before { display: none; }
 }
+
+/* Visible cinema artwork on phones, with a stable, unfiltered layer. The
+   cards retain their own solid surfaces for text contrast. */
+@media(max-width:900px){
+  .poster-wall-grid{inset:-8% -18%;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;opacity:.78;filter:none;transform:rotate(-9deg) scale(1.02);align-content:start}
+  .poster-wall::after{background:linear-gradient(90deg,color-mix(in srgb,var(--theme-bg,#100a23) 28%,transparent),color-mix(in srgb,var(--theme-bg,#100a23) 48%,transparent) 35% 65%,color-mix(in srgb,var(--theme-bg,#100a23) 28%,transparent)),linear-gradient(0deg,color-mix(in srgb,var(--theme-bg,#100a23) 75%,transparent),transparent 85%)}
+  .poster-wall-tile{border-radius:12px;box-shadow:0 5px 15px #0004}
+  body:has(.poster-wall) :is(.hero-lede,.hero-title){text-shadow:0 2px 12px var(--theme-bg,#100a23)}
+}

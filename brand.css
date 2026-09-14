@@ -1,0 +1,30 @@
+/* Original vector lettering stays crisp from a phone to an 8K screen. */
+.matchapp-wordmark{display:block!important;width:clamp(11rem,20vw,17rem)!important;max-width:100%!important;height:auto!important;aspect-ratio:368/66;object-fit:contain!important;border:0!important;border-radius:0!important;box-shadow:none!important;flex:none}
+.matchapp-brand-link{display:inline-flex;align-items:center;gap:.7rem;min-width:0;text-decoration:none;color:var(--theme-accent,#ead8ff)}
+.matchapp-brand-bar{position:relative;z-index:2;max-width:80rem;margin:1rem auto;padding:.65rem 1.25rem;box-sizing:border-box}
+body>header:has(>.matchapp-brand-link):not(.app-header){flex-wrap:wrap;gap:1rem}.matchapp-brand-link>img:not(.matchapp-wordmark){flex-shrink:0}
+.app-title-main:has(.matchapp-wordmark){display:block!important;background:none!important;animation:none!important;line-height:1!important;letter-spacing:normal!important;text-transform:none!important}
+html .app-header{box-sizing:border-box;position:relative!important;z-index:20;width:calc(100% - 2rem);max-width:92rem;margin:1.25rem auto 1rem!important;padding:1rem 1.3rem!important;min-height:5.6rem;border:1px solid color-mix(in srgb,var(--theme-accent,#dcc0ff) 25%,transparent)!important;border-radius:2.4rem 1.35rem 2.4rem 1.35rem!important;background:linear-gradient(125deg,color-mix(in srgb,var(--theme-surface,#241636) 96%,transparent),color-mix(in srgb,var(--theme-panel,#302043) 90%,transparent))!important;box-shadow:0 12px 32px #0003,inset 0 1px 0 #ffffff15!important;backdrop-filter:none!important;overflow:visible!important;gap:1rem!important;animation:headerArrive .55s ease-out both}
+html .app-header .header-brand-area{display:flex;align-items:center;gap:.75rem!important;min-width:0;flex-shrink:1}
+html .app-header .brand-logo{width:3.25rem!important;height:3.25rem!important;border-radius:1.1rem!important;border:1px solid color-mix(in srgb,var(--theme-accent,#dcc0ff) 35%,transparent);box-shadow:0 4px 15px #0003;transition:transform .25s}
+html .app-header .header-brand-area:hover .brand-logo{transform:rotate(-5deg)}
+html .app-header nav{display:flex!important;flex-wrap:wrap!important;align-items:center!important;justify-content:flex-end!important;gap:.45rem!important;min-width:0}
+html .app-header :is(button,select,.quota-badge,.nav-avatar-link,.icon-btn){box-sizing:border-box;min-height:44px!important;border-radius:999px!important;padding:.6rem .8rem!important;border-width:1px!important;font-size:.85rem!important;white-space:nowrap!important;transition:transform .18s,box-shadow .18s!important}
+html .app-header :is(button,.nav-avatar-link,.icon-btn):hover{transform:translateY(-2px);box-shadow:0 5px 14px #0002}
+html .app-header :is(button,select,a):focus-visible{outline:3px solid var(--theme-second,#87eee0)!important;outline-offset:4px}
+html .app-header .sound-toggle-btn{width:44px!important;height:44px!important;min-width:44px!important;flex:none;padding:.55rem!important}
+html .app-header #nav-reg-btn{flex:none!important;padding:.7rem 1rem!important;box-shadow:0 3px 12px color-mix(in srgb,var(--theme-accent,#dcc0ff) 16%,transparent)}
+html .app-header .install-wrap:has(.install-btn[style*="display: none"]){display:none}
+html .app-header .install-wrap:has(.has-app-update),html .app-header .install-wrap:has(.is-app-installed){display:block}
+html .app-header .has-app-update{border-color:var(--theme-second,#87eee0)!important;box-shadow:0 0 0 3px color-mix(in srgb,var(--theme-second,#87eee0) 14%,transparent)!important}
+html .app-header .has-app-update::before{content:'↻';font-size:1.2em;margin-inline-end:.35em}
+.app-release-notice[hidden]{display:none!important}.app-release-notice [aria-busy="true"]{cursor:progress}
+.kids-brand-copy:has(.matchapp-wordmark){min-width:0}.kids-brand-copy .matchapp-wordmark{width:clamp(10rem,18vw,15rem)!important}.kids-header-inner{min-width:0}.kids-brand{min-width:0}
+[data-theme="sunrise"] .matchapp-wordmark{filter:brightness(.38) saturate(1.4)}
+@keyframes headerArrive{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:900px){html .app-header{flex-wrap:wrap!important;max-width:42rem}html .app-header .header-brand-area{width:auto!important;flex:1 1 100%}html .app-header nav{justify-content:flex-start!important;flex:1 1 100%;padding-top:.6rem;border-top:1px solid color-mix(in srgb,var(--theme-accent,#dcc0ff) 16%,transparent)}html .app-header #lang-switcher-host{margin-inline-end:auto}html .app-header .quota-badge{order:5}html .app-header .install-wrap{order:4}html .app-header .nav-avatar-link{margin-inline-start:auto}}
+@media(max-width:480px){html .app-header{width:calc(100% - 1.4rem);margin:.85rem auto 1rem!important;padding:.9rem 1rem!important;border-radius:2rem 1.15rem 2rem 1.15rem!important;gap:.5rem!important}html .app-header .matchapp-wordmark{width:min(65vw,15.5rem)!important}html .app-header nav{gap:.4rem!important}html .app-header :is(button,select,.quota-badge,.nav-avatar-link,.icon-btn){font-size:.8rem!important;padding:.55rem .65rem!important}html .app-header #nav-reg-btn{padding:.65rem .75rem!important}.kids-brand-copy .matchapp-wordmark{width:10rem!important}.kids-header-inner{flex-wrap:wrap}.matchapp-brand-bar{padding-inline:1rem}}
+@media(min-width:2560px){html .app-header{max-width:110rem;padding:1.2rem 2rem!important}.matchapp-wordmark{width:19rem!important}html .app-header :is(button,select,.quota-badge,.nav-avatar-link,.icon-btn){font-size:1rem!important;min-height:3rem!important}}
+@media(prefers-reduced-motion:reduce){html .app-header,html .app-header *{animation:none!important;transition:none!important}}
+.reduce-motion .app-header,.reduce-motion .app-header *{animation:none!important;transition:none!important}
+@media(max-width:480px){html .app-header .matchapp-wordmark{width:min(62vw,15.5rem)!important}.home-h1,.home-sub{color:var(--theme-text,#faf5ff)!important;text-shadow:0 2px 6px var(--theme-bg,#100a23),0 0 18px var(--theme-bg,#100a23)}}

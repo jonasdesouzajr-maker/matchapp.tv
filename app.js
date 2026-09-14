@@ -180,7 +180,7 @@ function updateQuotaBadge(status) {
     const el = document.getElementById('quota-badge');
     if (!el || !status || typeof status.remaining !== 'number') return;
     el.style.display = 'inline-flex';
-    el.innerHTML = `⚡ <strong>${status.remaining}</strong>&nbsp;left today`;
+    el.innerHTML = `⚡ <strong>${status.remaining}</strong>&nbsp;${tSafe('quota.left', 'left today')}`;
     el.classList.toggle('quota-low', status.remaining <= 1);
 
     // The moment someone notices they are running low is the moment to offer
@@ -203,10 +203,8 @@ function updateQuotaBadge(status) {
         });
     }
     el.dataset.remaining=String(status.remaining);
-    el.title = status.remaining <= 1
-        ? 'Almost out — tap for more matches'
-        : 'Tap to get unlimited matches or buy credits';
-    el.setAttribute('aria-label', `${status.remaining} matches left today. ${el.title}`);
+    el.title = tSafe('match.more', 'Get more credits');
+    el.setAttribute('aria-label', `${status.remaining} ${tSafe('quota.left', 'left today')}. ${el.title}`);
 }
 window.updateQuotaBadge = updateQuotaBadge;
 
@@ -3134,10 +3132,10 @@ window.triggerMatch = async function(isSpecificSearch = false) {
         for (let i = 0; i < STAGES.length; i++) if (pct >= STAGES[i].at) next = i;
         if (next !== stageIdx && next >= 0) {
             stageIdx = next;
-            if (headline) headline.innerText = STAGES[next].head;
+            if (headline) headline.innerText = tSafe('match.loading',STAGES[next].head);
             if (substep) {
                 substep.style.opacity = '0';
-                setTimeout(() => { substep.innerText = STAGES[next].sub; substep.style.opacity = '1'; }, 180);
+                setTimeout(() => { substep.innerText = tSafe(['q.mood','q.platform','res.seenit','res.yourPicks','res.trailer','res.streamnow'][next],STAGES[next].sub); substep.style.opacity = '1'; }, 180);
             }
         }
     }, 100);
@@ -3277,7 +3275,7 @@ function renderQuotaCorner() {
     if (left === 0) el.classList.add('qc-out');
     else if (left === 1) el.classList.add('qc-low');
 
-    el.title = `${s.used || 0} of ${s.limit || '?'} daily matches used`;
+    el.title = tSafe('match.used','{used} of {limit} daily matches used').replace('{used}',s.used||0).replace('{limit}',s.limit||'?');
     el.style.display = 'flex';
 }
 
@@ -3292,13 +3290,14 @@ function renderMatchCriteria() {
     const c = window.lastMatchCriteria;
     if (!c) { wrap.style.display = 'none'; return; }
 
-    const pretty = (v) => String(v || '').replace(/\b\w/g, ch => ch.toUpperCase());
+    const fields={cat:'q-category',plat:'q-platform',mood:'q-mood',vibe:'q-vibe',rating:'q-rating',decade:'q-decade'};
+    const pretty = (v,k) => [...(document.getElementById(fields[k])?.options||[])].find(option=>option.value===v)?.textContent || String(v || '').replace(/\b\w/g, ch => ch.toUpperCase());
     // Criteria are sets now, so every ticked value gets its own chip rather
     // than only the first — otherwise the card would quietly claim the user
     // asked for less than they did.
     const parts = [];
-    ['cat', 'plat', 'mood', 'vibe', 'rating'].forEach(k => {
-        normCriteria(c[k]).forEach(v => parts.push(pretty(v)));
+    ['cat', 'plat', 'mood', 'vibe', 'rating', 'decade'].forEach(k => {
+        normCriteria(c[k]).forEach(v => parts.push(pretty(v,k)));
     });
 
     if (!parts.length) {
@@ -3763,7 +3762,7 @@ function updateActionButtonStates() {
     }
     if (seenBtn) {
         const already = inList(seenList, globalMatchTitle);
-        seenBtn.innerText = tSafe(already ? 'polish.seen' : 'res.seen', already ? 'Seen' : 'Seen it');
+        seenBtn.innerText = tSafe(already ? 'polish.seen' : 'res.seenit', already ? 'Seen' : 'Seen it');
         seenBtn.style.opacity = already ? '0.65' : '1';
     }
 }

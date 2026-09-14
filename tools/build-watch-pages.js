@@ -294,3 +294,6 @@ function main() {
 }
 
 main();
+
+// Preserve the shared brand on regenerated guides.
+require('./finalize-brand.js').finalizeBrand();

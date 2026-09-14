@@ -1,21 +1,21 @@
 {
-  "version": "2026.09.14.5",
+  "version": "2026.09.14.6",
   "date": "2026-09-14",
   "functional": true,
   "notes": {
-    "en": "Stability fixes: smoother phone scrolling, corrected poster identities, reliable local cover fallbacks, recovery from damaged browser caches, and synchronized matching filters. Empty exact searches no longer use credits or silently change your choices. Your current layout, themes and Kids safety rules are preserved.",
-    "pt-BR": "Correções de estabilidade: rolagem mais estável no celular, capas corretas, capas locais de reserva, recuperação de dados danificados do navegador e filtros de match sincronizados. Buscas sem resultados exatos não gastam créditos nem alteram suas escolhas. O visual atual, os temas e a proteção do Modo Kids foram preservados.",
-    "es": "Correcciones de estabilidad: desplazamiento estable en móviles, portadas correctas, recuperación de datos del navegador y filtros sincronizados. Las búsquedas sin resultados exactos no gastan créditos ni cambian tus elecciones. Se conservan el diseño, los temas y la protección de Kids.",
-    "fr": "Corrections de stabilité sur mobile, des affiches et des filtres. Une recherche sans résultat exact ne consomme plus de crédit et ne modifie pas vos choix. Présentation, thèmes et protection Kids conservés.",
-    "de": "Stabilitätskorrekturen für Mobilgeräte, Titelbilder und Filter. Suchen ohne genaues Ergebnis verbrauchen keine Credits und ändern Ihre Auswahl nicht. Design, Themen und Kinderschutz bleiben erhalten.",
-    "it": "Correzioni di stabilità su mobile, copertine e filtri. Le ricerche senza risultati esatti non consumano crediti né cambiano le scelte. Design, temi e protezione Kids restano invariati.",
-    "tr": "Mobil kararlılık, kapaklar ve filtreler düzeltildi. Tam eşleşme bulunamayan aramalar kredi harcamaz veya seçimlerinizi değiştirmez. Tasarım, temalar ve çocuk koruması korunur.",
-    "ru": "Исправлена стабильность на телефонах, обложки и фильтры. Поиск без точного результата не тратит кредиты и не меняет ваш выбор. Дизайн, темы и защита детей сохранены.",
-    "ar": "إصلاحات للاستقرار على الهواتف والأغلفة والفلاتر. البحث بلا نتيجة مطابقة لا يستهلك رصيدًا ولا يغيّر اختياراتك. تم الحفاظ على التصميم والسمات وحماية الأطفال.",
-    "hi": "मोबाइल स्थिरता, कवर और फ़िल्टर में सुधार। सटीक परिणाम न मिलने पर क्रेडिट खर्च नहीं होते और आपकी पसंद नहीं बदलती। डिज़ाइन, थीम और बच्चों की सुरक्षा बरकरार हैं।",
-    "id": "Perbaikan stabilitas ponsel, sampul dan filter. Pencarian tanpa hasil yang tepat tidak memakai kredit atau mengubah pilihan. Desain, tema dan perlindungan Kids tetap sama.",
-    "ja": "スマートフォンの安定性、カバー画像、フィルターを修正しました。一致する結果がない検索はクレジットを消費せず、選択条件も変更しません。デザイン、テーマ、キッズ保護は維持しています。",
-    "ko": "모바일 안정성, 표지와 필터를 수정했습니다. 정확한 결과가 없는 검색은 크레딧을 사용하거나 선택을 바꾸지 않습니다. 디자인, 테마와 어린이 보호는 유지됩니다.",
-    "zh": "修复手机稳定性、封面和筛选问题。没有精确结果的搜索不消耗积分，也不会更改您的选择。保留现有设计、主题和儿童保护规则。"
+    "en": "Meet MatchApp TV Ai: a new rounded header, custom lettering, visible phone poster backgrounds and reliable update feedback. Stability fixes: smoother phone scrolling, corrected poster identities, reliable local cover fallbacks, recovery from damaged browser caches, and synchronized matching filters. Empty exact searches no longer use credits or silently change your choices. Your current layout, themes and Kids safety rules are preserved.",
+    "pt-BR": "Conheça o MatchApp TV Ai: novo cabeçalho arredondado, letras exclusivas, capas visíveis no fundo do celular e atualizações com retorno claro. Correções de estabilidade: rolagem mais estável no celular, capas corretas, capas locais de reserva, recuperação de dados danificados do navegador e filtros de match sincronizados. Buscas sem resultados exatos não gastam créditos nem alteram suas escolhas. O visual atual, os temas e a proteção do Modo Kids foram preservados.",
+    "es": "MatchApp TV Ai: nueva cabecera redondeada, letras propias, fondos de portadas visibles en móviles y avisos claros al actualizar. Correcciones de estabilidad: desplazamiento estable en móviles, portadas correctas, recuperación de datos del navegador y filtros sincronizados. Las búsquedas sin resultados exactos no gastan créditos ni cambian tus elecciones. Se conservan el diseño, los temas y la protección de Kids.",
+    "fr": "MatchApp TV Ai : en-tête arrondi, lettrage original, affiches visibles sur mobile et mises à jour avec retour clair. Corrections de stabilité sur mobile, des affiches et des filtres. Une recherche sans résultat exact ne consomme plus de crédit et ne modifie pas vos choix. Présentation, thèmes et protection Kids conservés.",
+    "de": "MatchApp TV Ai: neuer runder Kopfbereich, eigene Schriftzüge, sichtbare Poster auf Mobilgeräten und klare Update-Meldungen. Stabilitätskorrekturen für Mobilgeräte, Titelbilder und Filter. Suchen ohne genaues Ergebnis verbrauchen keine Credits und ändern Ihre Auswahl nicht. Design, Themen und Kinderschutz bleiben erhalten.",
+    "it": "MatchApp TV Ai: intestazione arrotondata, lettere originali, poster visibili su mobile e aggiornamenti con messaggi chiari. Correzioni di stabilità su mobile, copertine e filtri. Le ricerche senza risultati esatti non consumano crediti né cambiano le scelte. Design, temi e protezione Kids restano invariati.",
+    "tr": "MatchApp TV Ai: yuvarlak üst bölüm, özgün yazı, mobil poster arka planları ve anlaşılır güncelleme bildirimleri. Mobil kararlılık, kapaklar ve filtreler düzeltildi. Tam eşleşme bulunamayan aramalar kredi harcamaz veya seçimlerinizi değiştirmez. Tasarım, temalar ve çocuk koruması korunur.",
+    "ru": "MatchApp TV Ai: округлая шапка, оригинальный логотип, видимые постеры на телефоне и понятные сообщения об обновлении. Исправлена стабильность на телефонах, обложки и фильтры. Поиск без точного результата не тратит кредиты и не меняет ваш выбор. Дизайн, темы и защита детей сохранены.",
+    "ar": "MatchApp TV Ai: ترويسة مستديرة وخط أصلي وملصقات خلفية واضحة على الهاتف ورسائل تحديث واضحة. إصلاحات للاستقرار على الهواتف والأغلفة والفلاتر. البحث بلا نتيجة مطابقة لا يستهلك رصيدًا ولا يغيّر اختياراتك. تم الحفاظ على التصميم والسمات وحماية الأطفال.",
+    "hi": "MatchApp TV Ai: नया गोलाकार हेडर, खास अक्षर, फ़ोन पर दिखते पोस्टर और स्पष्ट अपडेट संदेश। मोबाइल स्थिरता, कवर और फ़िल्टर में सुधार। सटीक परिणाम न मिलने पर क्रेडिट खर्च नहीं होते और आपकी पसंद नहीं बदलती। डिज़ाइन, थीम और बच्चों की सुरक्षा बरकरार हैं।",
+    "id": "MatchApp TV Ai: header membulat, tulisan khas, latar poster ponsel terlihat dan pesan pembaruan yang jelas. Perbaikan stabilitas ponsel, sampul dan filter. Pencarian tanpa hasil yang tepat tidak memakai kredit atau mengubah pilihan. Desain, tema dan perlindungan Kids tetap sama.",
+    "ja": "MatchApp TV Ai：丸みのあるヘッダー、独自の文字、スマートフォンのポスター背景、分かりやすい更新表示。 スマートフォンの安定性、カバー画像、フィルターを修正しました。一致する結果がない検索はクレジットを消費せず、選択条件も変更しません。デザイン、テーマ、キッズ保護は維持しています。",
+    "ko": "MatchApp TV Ai: 둥근 헤더, 독자적인 글자 디자인, 선명한 모바일 포스터 배경과 명확한 업데이트 안내. 모바일 안정성, 표지와 필터를 수정했습니다. 정확한 결과가 없는 검색은 크레딧을 사용하거나 선택을 바꾸지 않습니다. 디자인, 테마와 어린이 보호는 유지됩니다.",
+    "zh": "MatchApp TV Ai：圆角页眉、原创字标、清晰的手机海报背景和明确的更新提示。 修复手机稳定性、封面和筛选问题。没有精确结果的搜索不消耗积分，也不会更改您的选择。保留现有设计、主题和儿童保护规则。"
   }
 }

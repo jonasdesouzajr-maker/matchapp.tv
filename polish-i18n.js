@@ -1,4 +1,20 @@
 /* Shared functional-release copy in every supported interface language. */
+(function(){const keys=['match.loading','match.wait','match.savedIn','match.profile','match.more','match.used'],rows={
+en:['Finding your match…','Your next pick is on its way.','Saved titles appear in your','Your profile →','Get more credits','{used} of {limit} daily matches used'],
+'pt-BR':['Encontrando seu match…','Sua próxima indicação está a caminho.','Os títulos salvos aparecem no seu','Seu perfil →','Obter mais créditos','{used} de {limit} matches diários usados'],
+es:['Buscando tu match…','Tu próxima recomendación está en camino.','Los títulos guardados aparecen en tu','Tu perfil →','Obtener más créditos','{used} de {limit} matches diarios usados'],
+fr:['Recherche de votre match…','Votre prochaine suggestion arrive.','Retrouvez les titres enregistrés dans','Votre profil →','Obtenir des crédits','{used} recommandations sur {limit} utilisées aujourd’hui'],
+de:['Dein Match wird gesucht…','Deine nächste Empfehlung kommt gleich.','Gespeicherte Titel findest du in','Deinem Profil →','Mehr Guthaben holen','{used} von {limit} täglichen Matches verwendet'],
+it:['Cerchiamo il tuo match…','Il prossimo suggerimento sta arrivando.','Trovi i titoli salvati nel','Tuo profilo →','Ottieni altri crediti','{used} di {limit} match giornalieri usati'],
+tr:['Eşleşmeniz bulunuyor…','Yeni öneriniz hazırlanıyor.','Kaydedilen içeriklerin yeri:','Profiliniz →','Daha fazla kredi alın','Günlük {limit} eşleşmenin {used} tanesi kullanıldı'],
+ru:['Ищем ваш вариант…','Следующая рекомендация скоро появится.','Сохранённые названия доступны в разделе','Ваш профиль →','Получить ещё кредиты','Использовано {used} из {limit} подборов за день'],
+ar:['جارٍ العثور على اقتراحك…','اقتراحك التالي في الطريق.','تظهر العناوين المحفوظة في','ملفك الشخصي ←','احصل على رصيد إضافي','استُخدم {used} من {limit} اقتراحات يومية'],
+hi:['आपका मैच खोज रहे हैं…','आपका अगला सुझाव आ रहा है।','सहेजे गए शीर्षक यहाँ मिलेंगे:','आपकी प्रोफ़ाइल →','और क्रेडिट पाएँ','रोज़ के {limit} में से {used} मैच इस्तेमाल हुए'],
+id:['Mencari match Anda…','Rekomendasi berikutnya segera hadir.','Judul tersimpan tersedia di','Profil Anda →','Dapatkan kredit lagi','{used} dari {limit} match harian digunakan'],
+ja:['おすすめを探しています…','次のおすすめを準備しています。','保存した作品はこちら：','プロフィール →','クレジットを追加','本日{limit}回中{used}回利用済み'],
+ko:['맞춤 작품을 찾고 있어요…','다음 추천을 준비하고 있어요.','저장한 작품은 여기에서 확인하세요:','내 프로필 →','크레딧 추가','일일 {limit}회 중 {used}회 사용'],
+zh:['正在寻找适合您的作品…','正在准备下一个推荐。','收藏的作品位于','您的个人资料 →','获取更多积分','每日{limit}次推荐已使用{used}次']
+};for(const [locale,row]of Object.entries(rows)){const dict=typeof I18N==='undefined'?null:I18N[locale];if(dict)keys.forEach((key,i)=>dict[key]=row[i]);}})();
 (function(){'use strict';
   const keys=['theme.title','theme.help','theme.previewing','theme.saved','theme.save','theme.cancel','theme.auroraDesc','theme.cinemaDesc','theme.oceanDesc','theme.sunriseDesc','theme.arcadeDesc','global.heading','global.help','global.upcoming','global.live','global.ended','global.guide','global.watch','global.recorded','global.official','global.source','global.art','polish.noFresh','polish.inHistory','polish.savedLater','polish.seen','polish.settingsSaved','polish.settingsReset','polish.voiceSample','polish.noVoices','billing.signin','billing.redirect','billing.error','billing.checking','billing.delivered','billing.pending','billing.failed','billing.continue','billing.retry'];
   const copy={
