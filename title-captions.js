@@ -4,14 +4,18 @@
  async function identities(){if(records)return records;try{const r=await fetch('/data/poster-identities.json');records=r.ok?await r.json():[];}catch(_){records=[];}return records;}
  window.localizedTitle=async function(title,hints={}){
   const language=window.MATCH_LANG||document.documentElement.lang||'en';if(language==='en'||!window.supabaseClient)return title;
-  const key=language+'::'+title+'::'+(hints.year||'');if(cache.has(key))return cache.get(key);
+  const entry=typeof CONTENT_CATALOG!=='undefined'?CONTENT_CATALOG.find(e=>normalized(e.title)===normalized(title)):null;
+  hints={...hints,year:hints.year||entry?.year,cats:hints.cats||entry?.cats};
+  const expectedKind=hints.kind||window.tmdbKindForCats?.(hints.cats)||'';
+  const verified=record=>record&&record.adult!==true&&[record.title,record.originalTitle].some(n=>n&&normalized(n)===normalized(title))&&(!hints.year||String(hints.year)===String(record.year))&&(!expectedKind||record.kind===expectedKind);
+  const key=language+'::'+title+'::'+(hints.year||'')+'::'+expectedKind;if(cache.has(key))return cache.get(key);
   const pending=(async()=>{
-   if(typeof CONTENT_CATALOG!=='undefined'){const entry=CONTENT_CATALOG.find(e=>normalized(e.title)===normalized(title));if(entry&&typeof isHighRiskCategory==='function'&&entry.cats.some(c=>isHighRiskCategory(c,title)))return title;}
+   if(entry&&typeof isHighRiskCategory==='function'&&entry.cats.some(c=>isHighRiskCategory(c,title)))return title;
    const supplied=hints.record;
-   const approved=supplied&&supplied.adult!==true&&[supplied.title,supplied.originalTitle].some(n=>normalized(n)===normalized(title))&&(!hints.year||String(hints.year)===supplied.year)?supplied:(await identities()).find(r=>normalized(r.title)===normalized(title)&&(!hints.year||String(hints.year)===r.year));
+   const approved=verified(supplied)?supplied:(await identities()).find(verified);
    let record=approved;
    if(!record&&window.tmdbLookup)record=await window.tmdbLookup(title,{...hints,lang:'en-US'});
-   if(!record||!Number.isSafeInteger(record.tmdbId)||!['movie','tv'].includes(record.kind))return title;
+   if(!verified(record)||!Number.isSafeInteger(record.tmdbId)||!['movie','tv'].includes(record.kind))return title;
    const locales={en:'en-US','pt-BR':'pt-BR',es:'es-ES',fr:'fr-FR',de:'de-DE',it:'it-IT',tr:'tr-TR',ru:'ru-RU',ar:'ar-SA',hi:'hi-IN',id:'id-ID',ja:'ja-JP',ko:'ko-KR',zh:'zh-CN'};
    try{const body={tmdb_id:record.tmdbId,kind:record.kind,lang:locales[language]||'en-US'}, {data,error}=await (window.requestTMDB?window.requestTMDB(body):window.supabaseClient.functions.invoke('tmdb-proxy',{body})),r=data?.results?.[0];
     if(!error&&r?.tmdbId===record.tmdbId&&r.kind===record.kind&&r.originalTitle===record.originalTitle&&r.year===record.year&&r.adult!==true&&typeof r.title==='string'&&r.title.trim())return r.title.trim();

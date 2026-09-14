@@ -40,7 +40,7 @@
    installability is unaffected.
    ============================================================ */
 
-const SW_VERSION = 'v7-themes-events-roku-confirmed-updates';
+const SW_VERSION = 'v8-verified-title-captions';
 
 self.addEventListener('install', () => {
     // Activate immediately rather than waiting for old tabs to close. This is
