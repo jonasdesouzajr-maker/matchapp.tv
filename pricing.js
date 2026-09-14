@@ -18,16 +18,31 @@ const STRIPE_LINK_VIP_ANNUAL = "https://buy.stripe.com/8x29ATdkB5dcgwCdwtcfK09";
 // so the button can never dead-end on a checkout page that doesn't exist.
 const STRIPE_LINK_BUSINESS = "https://buy.stripe.com/4gM00ja8peNMdkq641cfK0e";
 
+
+/* i18n.js is NOT loaded on the pricing page, so `t` is never defined here.
+   Every bare t() call therefore threw ReferenceError — and because the first
+   one sits inside the try block of startVerifiedCheckout, the catch fired and
+   called t() again, throwing a second time uncaught. The net effect was a
+   purchase button that did absolutely nothing, with no error the user could
+   see. This is why all the buy buttons were dead.
+
+   Resolves at call time so it still uses the real translator on pages that
+   do load i18n, and falls back to readable English where it does not. */
+const pt = (key, fallback) => {
+  try { if (typeof window !== 'undefined' && typeof window.t === 'function') { const v = window.t(key); if (v) return v; } } catch (e) {}
+  return fallback;
+};
+
 async function startVerifiedCheckout(product,button){
  const sb=window.supabaseClient;const original=button?.textContent;
  try{
   const session=sb?await sb.auth.getSession():null;
-  if(!session?.data?.session){window.showToast?.(t('billing.signin'));window.openAuthModal?.();return;}
-  if(button){button.disabled=true;button.textContent=t('billing.redirect');}
+  if(!session?.data?.session){window.showToast?.(pt('billing.signin','Please sign in to continue to checkout.'));window.openAuthModal?.();return;}
+  if(button){button.disabled=true;button.textContent=pt('billing.redirect','Redirecting…');}
   const {data,error}=await sb.functions.invoke('stripe-checkout',{body:{product,lang:window.MATCH_LANG||'en'}});
   if(error||!data?.url||!data.url.startsWith('https://checkout.stripe.com/'))throw new Error('Checkout unavailable');
   window.location.assign(data.url);
- }catch(_){window.showToast?.(t('billing.error'),true);}
+ }catch(_){window.showToast?.(pt('billing.error','Could not start checkout. Please try again.'),true);}
  finally{if(button){button.disabled=false;button.textContent=original;}}
 }
 window.processCheckout=planType=>startVerifiedCheckout(planType,document.getElementById('btn-'+planType));
