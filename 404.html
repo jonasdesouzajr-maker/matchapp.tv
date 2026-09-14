@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script>
+      // Recover the malformed home address without revisiting a cached root redirect.
+      if (/^\/(?:\$|%24)(?:\/index\.html|\/)?$/i.test(location.pathname)) {
+        location.replace('/index.html' + location.search + location.hash);
+      }
+    </script>
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
