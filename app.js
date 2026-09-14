@@ -2074,9 +2074,9 @@ function promptProfileCompletion(missing) {
     const bar = document.createElement('div');
     bar.id = 'profile-nudge';
     bar.className = 'profile-nudge';
-    const label = (window.t && t('profile.nudge')) ||
+    const label = (window.t && tSafe('profile.nudge')) ||
         'Finish your profile to unlock 5 daily AI sessions instead of 3.';
-    const cta = (window.t && t('profile.nudgeCta')) || 'Complete profile';
+    const cta = (window.t && tSafe('profile.nudgeCta')) || 'Complete profile';
     bar.innerHTML = `<span>👤 ${label}</span>
         <a href="/profile/profile.html" class="profile-nudge-btn">${cta}</a>
         <button class="profile-nudge-x" aria-label="Dismiss">✕</button>`;
@@ -2497,6 +2497,25 @@ function platformSearchUrl(platformName, title) {
 // options: platforms that actually carry that format, in the user's country.
 // "Surprise Me" reopens everything.
 // ----------------------------------------------------
+
+// i18n loads AFTER this file, so `t` does not exist while app.js is parsing
+// or during DOMContentLoaded. A bare t() call therefore throws
+// ReferenceError and aborts whatever init chain it is part of — which is
+// exactly how one missing guard took the entire page down. This resolves at
+// CALL time rather than load time, so it picks up the real translator as
+// soon as i18n.js has run, and degrades to the key's last segment before
+// then rather than throwing.
+function tSafe(key, fallback) {
+    if (typeof window !== 'undefined' && typeof window.t === 'function') {
+        const v = window.t(key);
+        if (v) return v;
+    }
+    if (fallback !== undefined) return fallback;
+    // "opt.anyplatform" -> "anyplatform" reads better than a raw key or a crash.
+    return String(key).split('.').pop();
+}
+window.tSafe = tSafe;
+
 window.onCategoryChange = function() {
     const catEl = document.getElementById('q-category');
     const platEl = document.getElementById('q-platform');
@@ -2510,7 +2529,7 @@ window.onCategoryChange = function() {
     platEl.innerHTML = '';
     const anyOpt = document.createElement('option');
     anyOpt.value = 'any';
-    anyOpt.textContent = t(cat === 'any' ? 'opt.anyplatform' : 'opt.anyplatformhas');
+    anyOpt.textContent = tSafe(cat === 'any' ? 'opt.anyplatform' : 'opt.anyplatformhas', 'Any platform');
     platEl.appendChild(anyOpt);
 
     const groups = {};
@@ -2538,7 +2557,7 @@ window.onCategoryChange = function() {
     const hint = document.getElementById('platform-country-hint');
     if (hint) {
         if (country) {
-            hint.textContent = '🌍 ' + t('pf.country') + ': ' + country;
+            hint.textContent = '🌍 ' + tSafe('pf.country') + ': ' + country;
             hint.style.display = 'block';
         } else { hint.style.display = 'none'; }
     }
@@ -2926,7 +2945,7 @@ window.triggerMatch = async function(isSpecificSearch = false) {
     const preflight = isSpecificSearch ? null : pickFromCatalog(requested.cat,requested.plat,requested.mood,requested.vibe,requested.rating,requested.decade);
     const typed = document.getElementById('specific-search-input')?.value || '';
     if ((!isSpecificSearch && !preflight) || (isSpecificSearch && window.matchPolicy?.known().has(window.matchPolicy.key(typed)))) {
-        window.showToast(t('polish.noFresh'));
+        window.showToast(tSafe('polish.noFresh'));
         const form = document.getElementById('questionnaire-box');
         if (form) { form.style.display='block'; form.scrollIntoView({behavior:'smooth',block:'center'}); }
         return;
@@ -3110,7 +3129,7 @@ window.triggerMatch = async function(isSpecificSearch = false) {
         clearInterval(timerInterval);
         if (loadBox) loadBox.style.display='none';
         if (qBox) qBox.style.display='block';
-        window.showToast(t('polish.inHistory'));
+        window.showToast(tSafe('polish.inHistory'));
         return;
     }
     rememberShownTitle(matchResult.title);
@@ -3294,7 +3313,7 @@ window.saveCurrentNote = async function () {
 async function renderResult(selected, isSpecificSearch) {
     await window.matchPolicy?.ready();
     if(!selected?.title || window.matchPolicy?.known().has(window.matchPolicy.key(selected.title))){
-        window.showToast(t('polish.inHistory'));
+        window.showToast(tSafe('polish.inHistory'));
         const form=document.getElementById('questionnaire-box');if(form)form.style.display='block';
         return;
     }
@@ -3435,7 +3454,7 @@ async function renderResult(selected, isSpecificSearch) {
     }
 
     if (audioPick) directBtn.innerText = window.t ? t('res.listennow') : '🎧 Listen Now';
-    else if (selected.platform && selected.platform !== 'any' && pfEntry) directBtn.innerText = t('res.findwhere')+' · '+selected.platform;
+    else if (selected.platform && selected.platform !== 'any' && pfEntry) directBtn.innerText = tSafe('res.findwhere', 'Find where to watch')+' · '+selected.platform;
     else directBtn.innerText = window.t ? t('res.findwhere') : '▶ Find Where To Stream';
 
     // SAFETY NET for every link that isn't a verified per-title deep link.
@@ -3535,9 +3554,9 @@ function productFactsLine() {
     const langs = (typeof I18N_LANGS !== 'undefined') ? Object.keys(I18N_LANGS).length : 14;
 
     const parts = [];
-    if (platforms) parts.push(`<strong>${platforms}</strong> ${t('polish.platforms')}`);
-    if (titles) parts.push(`<strong>${titles}</strong> ${t('polish.titles')}`);
-    if (langs) parts.push(`<strong>${langs}</strong> ${t('polish.languages')}`);
+    if (platforms) parts.push(`<strong>${platforms}</strong> ${tSafe('polish.platforms')}`);
+    if (titles) parts.push(`<strong>${titles}</strong> ${tSafe('polish.titles')}`);
+    if (langs) parts.push(`<strong>${langs}</strong> ${tSafe('polish.languages')}`);
     return parts.join(' · ');
 }
 
@@ -3637,12 +3656,12 @@ function updateActionButtonStates() {
 
     if (saveBtn) {
         const already = inList(savedList, globalMatchTitle);
-        saveBtn.innerText = t(already ? 'polish.savedLater' : 'res.watchlater');
+        saveBtn.innerText = tSafe(already ? 'polish.savedLater' : 'res.watchlater', already ? 'Saved' : 'Watch Later');
         saveBtn.style.opacity = already ? '0.65' : '1';
     }
     if (seenBtn) {
         const already = inList(seenList, globalMatchTitle);
-        seenBtn.innerText = t(already ? 'polish.seen' : 'res.seen');
+        seenBtn.innerText = tSafe(already ? 'polish.seen' : 'res.seen', already ? 'Seen' : 'Seen it');
         seenBtn.style.opacity = already ? '0.65' : '1';
     }
 }
@@ -4139,14 +4158,14 @@ async function syncAfterCheckout(){
  // Older Payment Links may not return a session ID. Refresh actual account state without claiming success.
  params.delete('checkout');params.delete('success');
  history.replaceState(null,'',location.pathname+(params.size?'?'+params:'')+location.hash);
- await window.refreshQuotaStatus?.();window.showToast?.(t('billing.pending'));
+ await window.refreshQuotaStatus?.();window.showToast?.(tSafe('billing.pending', 'Confirming your purchase…'));
 }
 document.addEventListener('DOMContentLoaded',()=>{setTimeout(syncAfterCheckout,1200);});
 
 document.addEventListener('matchapp:langchange',async()=>{
  updateActionButtonStates();const source=window.currentSynopsisSource;
  if(source&&document.getElementById('res-synopsis')){
-  const title=source.title,language=window.MATCH_LANG||'en';document.getElementById('res-synopsis').textContent=t('global.guide');
+  const title=source.title,language=window.MATCH_LANG||'en';document.getElementById('res-synopsis').textContent=tSafe('global.guide');
   window.localizedTitle?.(title).then(name=>{if(window.currentSynopsisSource?.title===title&&(window.MATCH_LANG||'en')===language)document.getElementById('res-title').textContent=name;});
   const text=await window.localizeMatchSynopsis(source.text,source.lang);
   if(window.currentSynopsisSource?.title===title&&(window.MATCH_LANG||'en')===language)document.getElementById('res-synopsis').textContent=text;
