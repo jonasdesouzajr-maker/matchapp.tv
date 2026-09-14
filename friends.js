@@ -93,7 +93,7 @@
   if(!signed){state=null;$('friends-list').replaceChildren();return;}
   await window.matchPolicy?.ready();
   try {await refresh();$('friends-unavailable').hidden=true;}
-  catch (_) {$('friends-signed-in').hidden=true;$('friends-unavailable').hidden=false;note(tr('Private friends are not available yet. Existing solo matches and Match Together remain available.','A lista privada de amigos ainda não está disponível. Matches individuais e Match Together continuam disponíveis.'));return;}
+  catch (_) {$('friends-signed-in').hidden=true;$('friends-unavailable').hidden=false;note(tr('Private friends are temporarily unavailable. Existing solo matches and Match Together remain available.','A lista privada de amigos está temporariamente indisponível. Matches individuais e Match Together continuam disponíveis.'));return;}
   timer=setInterval(()=>{if(!document.hidden)run(async()=>{if(state?.settings?.presence)await rpc('heartbeat');await refresh();});},30000);
   if(state?.settings?.presence)await rpc('heartbeat');
   const query=new URLSearchParams(location.search),token=query.get('add'),code=query.get('match');

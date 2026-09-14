@@ -40,7 +40,7 @@
    installability is unaffected.
    ============================================================ */
 
-const SW_VERSION = 'v4-kids-passkeys-release-notices';
+const SW_VERSION = 'v5-private-friends-passkeys-active';
 
 self.addEventListener('install', () => {
     // Activate immediately rather than waiting for old tabs to close. This is
