@@ -65,7 +65,7 @@ body:has(.poster-wall)::before,body:has(.poster-wall)::after{display:none!import
 .poster-wall::before {
   content: '';
   position: absolute;
-  top: -30%; bottom: -30%; left: -40%;
+  top: -30%; bottom: -30%; left: 0;
   width: 45%;
   pointer-events: none;
   background: linear-gradient(100deg,
@@ -79,11 +79,15 @@ body:has(.poster-wall)::before,body:has(.poster-wall)::after{display:none!import
   animation: posterSweep 28s cubic-bezier(.45, 0, .55, 1) infinite;
   z-index: 1;
 }
+/* Translate rather than animate `left`: animating a position property
+   triggers layout every frame, whereas transform is handled by the
+   compositor on its own thread. Same motion, no reflow. (My own bug from
+   the cinematic-treatment commit.) */
 @keyframes posterSweep {
-  0%        { left: -45%; opacity: 0; }
+  0%        { transform: translateX(-120%) skewX(-12deg); opacity: 0; }
   12%       { opacity: 1; }
   88%       { opacity: 1; }
-  100%      { left: 115%; opacity: 0; }
+  100%      { transform: translateX(320%) skewX(-12deg); opacity: 0; }
 }
 
 /* Gold edge on each tile so the poster grid picks up the brand rather than
@@ -136,3 +140,15 @@ body:has(.poster-wall)::before,body:has(.poster-wall)::after{display:none!import
   .poster-wall-tile{border-radius:12px;box-shadow:0 5px 15px #0004}
   body:has(.poster-wall) :is(.hero-lede,.hero-title){text-shadow:0 2px 12px var(--theme-bg,#100a23)}
 }
+
+
+/* posterGlow animated `filter`, which repaints each of the 32 tiles every
+   frame — filter is not a compositor-only property. Their mobile rules
+   already disable tile animation on phones and touch devices; this makes the
+   desktop path cheap too, by breathing opacity instead. Visually near
+   identical, composited rather than repainted. */
+@keyframes posterGlow {
+  0%   { opacity: .82; }
+  100% { opacity: 1; }
+}
+.poster-wall-tile { will-change: opacity; }
