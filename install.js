@@ -63,7 +63,8 @@ function showInstallButtons() {
     installButtons().forEach(b => { b.style.display = 'inline-flex'; });
 }
 function hideInstallButtons() {
-    installButtons().forEach(b => { b.style.display = window.matchAppUpdatePending ? 'inline-flex' : 'none'; });
+    installButtons().forEach(b => { b.style.display = window.matchAppUpdatePending || window.matchAppInstallState?.isInstalled() ? 'inline-flex' : 'none'; });
+    window.syncMatchAppUpdateButtons?.();
 }
 
 // Chrome/Edge/Brave signal real installability by firing this. We stop the
@@ -109,14 +110,15 @@ function buildInstallModal() {
              ${T('install.genericStep', 'Look for <strong>"Install app"</strong> or <strong>"Add to Home Screen"</strong> in your browser\u2019s menu.')}
            </p>`;
 
-    const wrap = document.createElement('div');
+    const wrap = document.createElement('dialog');
     wrap.id = 'install-modal';
-    wrap.className = 'modal-overlay';
+    wrap.className = 'match-install-dialog';
+    wrap.setAttribute('aria-labelledby','match-install-heading');
     wrap.innerHTML = `
         <div class="modal-content" style="background:linear-gradient(150deg,rgba(40,20,60,0.98),rgba(20,19,26,0.99));border:2px solid var(--gold);border-radius:20px;padding:28px;max-width:400px;">
-            <span class="close-x" onclick="closeInstallModal()">&times;</span>
+            <button type="button" class="match-install-close" onclick="closeInstallModal()" aria-label="Close">&times;</button>
             <div style="font-size:44px;margin-bottom:10px;">📲</div>
-            <h3 style="color:var(--gold-glow);font-size:20px;font-weight:900;margin:0 0 16px 0;text-transform:uppercase;">
+            <h3 id="match-install-heading" style="color:var(--gold-glow);font-size:20px;font-weight:900;margin:0 0 16px 0;text-transform:uppercase;">
                 ${T('install.modalTitle', 'Install MatchApp')}
             </h3>
             <div style="text-align:left;background:rgba(0,0,0,0.35);border-radius:14px;padding:16px 18px;margin-bottom:18px;">
@@ -132,11 +134,17 @@ function buildInstallModal() {
 
 window.closeInstallModal = function () {
     const m = document.getElementById('install-modal');
-    if (m) m.style.display = 'none';
+    if (m) { if(typeof m.close==='function')m.close();else m.removeAttribute('open'); }
 };
 
 window.installMatchApp = async function () {
     if (window.matchAppUpdatePending) { await window.updateMatchApp(); return; }
+    if (window.matchAppInstallState?.isInstalled()) {
+        const code=window.MATCH_LANG||document.documentElement.lang||'en';
+        const text=code.startsWith('pt')?'O MatchApp já foi instalado. Abra pelo ícone na tela inicial ou na lista de aplicativos. Seu dispositivo controla a posição do ícone.':code.startsWith('es')?'MatchApp ya está instalado. Ábrelo desde la pantalla de inicio o la lista de aplicaciones. Tu dispositivo controla la posición del icono.':'MatchApp is installed. Open its icon from your home screen or app launcher. Your device controls where the icon is placed.';
+        let help=document.getElementById('match-installed-help');if(!help){help=document.createElement('dialog');help.id='match-installed-help';help.className='match-install-dialog';const p=document.createElement('p');help.append(p);const form=document.createElement('form');form.method='dialog';const close=document.createElement('button');close.type='submit';close.textContent='OK';form.append(close);help.append(form);document.body.append(help);}
+        help.querySelector('p').textContent=text;if(!help.open){if(typeof help.showModal==='function')help.showModal();else help.setAttribute('open','');}return;
+    }
     // Acting on the hint is the strongest possible signal it was seen — clear
     // it immediately so it never sits on top of the native prompt or the iOS
     // instructions modal.
@@ -144,15 +152,14 @@ window.installMatchApp = async function () {
 
     // Path 1: a real native prompt is available (Chrome/Edge/Android/Desktop).
     if (deferredInstallPrompt) {
-        deferredInstallPrompt.prompt();
-        try { await deferredInstallPrompt.userChoice; } catch (e) {}
+        try { await deferredInstallPrompt.prompt(); await deferredInstallPrompt.userChoice; } catch (e) {}
         deferredInstallPrompt = null;
         return;
     }
     // Path 2/3: no programmatic install exists on this platform — show the
     // real steps instead of a button that quietly does nothing.
     const modal = buildInstallModal();
-    modal.style.display = 'flex';
+    if (!modal.open) { if(typeof modal.showModal==='function')modal.showModal();else modal.setAttribute('open',''); }
 };
 
 // ----------------------------------------------------
@@ -249,7 +256,7 @@ function initInstall() {
     const { isIOS, isMac, isStandalone } = platformInfo();
 
     // Already running as an installed app — nothing to install.
-    if (isStandalone) { hideInstallButtons(); return; }
+    if (isStandalone || window.matchAppInstallState?.isInstalled()) { hideInstallButtons(); return; }
 
     // iOS and desktop Safari have no install event to wait for, but the
     // manual path always exists, so the button is meaningful immediately.

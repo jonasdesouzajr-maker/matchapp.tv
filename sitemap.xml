@@ -2,463 +2,853 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://matchapp.tv/</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/discover.html</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/kids/</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/updates.html</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/together.html</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/pricing/pricing.html</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/events-archive.html</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/privacy.html</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.3</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/terms.html</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.3</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/termos.html</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.3</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/privacidade.html</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.3</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/moods/intense-and-thrilling/</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/moods/dark-and-gritty/</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/moods/epic-and-adventurous/</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/moods/funny/</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/moods/romantic/</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/moods/heartbreaking/</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/moods/light-and-feel-good/</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/moods/cozy-comfort-watch/</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/moods/inspiring/</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/moods/mind-bending/</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/moods/nostalgic/</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/collections/series/</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/collections/movie/</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/collections/podcast/</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/collections/documentary/</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/collections/gospel-and-faith/</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/collections/youtube-channel/</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/collections/youtube-shorts/</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/collections/classical-music/</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/collections/news/</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/collections/sports/</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/platforms/netflix/</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/platforms/spotify/</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/platforms/youtube/</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/where-to-watch/</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/where-to-watch/the-bear/</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/where-to-watch/shogun/</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/where-to-watch/dune-part-two/</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/where-to-watch/deadpool-and-wolverine/</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/where-to-watch/house-of-the-dragon/</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/where-to-watch/queen-of-tears/</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/where-to-watch/crash-landing-on-you/</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/where-to-watch/jujutsu-kaisen/</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/where-to-watch/frieren-beyond-journey-s-end/</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/where-to-watch/vale-tudo/</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/where-to-watch/baby-reindeer/</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/where-to-watch/fallout/</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/where-to-watch/bluey/</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/where-to-watch/moana-2/</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/where-to-watch/nimona/</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/where-to-watch/chef-s-table/</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/where-to-watch/alcarras/</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/where-to-watch/rrr/</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/where-to-watch/business-proposal/</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/where-to-watch/kingdom/</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/where-to-watch/emilia-perez/</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/where-to-watch/the-whisper-man/</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/where-to-watch/the-secret-woman/</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/where-to-watch/alpha/</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/where-to-watch/death-of-the-pastor-s-wife/</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/where-to-watch/beauty-in-black/</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/where-to-watch/outer-banks/</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/where-to-watch/blood-sacrifice/</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/where-to-watch/mousetrap/</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/where-to-watch/kings-and-generals/</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/where-to-watch/nemesis/</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/where-to-watch/the-gentlemen/</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/where-to-watch/made-in-korea/</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/where-to-watch/teach-you-a-lesson/</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/where-to-watch/hell-s-paradise/</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/where-to-watch/the-last-house/</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/where-to-watch/stranger-things-tales-from-85/</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/where-to-watch/why-did-i-get-married-again/</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/where-to-watch/tar/</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/where-to-watch/maestro/</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/where-to-watch/amadeus/</loc>
-        <lastmod>2026-09-13T20:50:00+00:00</lastmod>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/kids/titles/bluey/</loc>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/kids/titles/peppa-pig/</loc>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/kids/titles/daniel-tiger-s-neighborhood/</loc>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/kids/titles/sesame-street/</loc>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/kids/titles/numberblocks/</loc>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/kids/titles/ask-the-storybots/</loc>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/kids/titles/puffin-rock/</loc>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/kids/titles/pocoyo/</loc>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/kids/titles/gabby-s-dollhouse/</loc>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/kids/titles/octonauts/</loc>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/kids/titles/wild-kratts/</loc>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/kids/titles/shaun-the-sheep/</loc>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/kids/titles/my-neighbor-totoro/</loc>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/kids/titles/kiki-s-delivery-service/</loc>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/kids/titles/paddington/</loc>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/kids/titles/paddington-2/</loc>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/kids/titles/winnie-the-pooh/</loc>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/kids/titles/the-peanuts-movie/</loc>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/kids/titles/luca/</loc>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/kids/titles/ratatouille/</loc>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/kids/titles/super-simple-songs/</loc>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/kids/titles/the-wiggles/</loc>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/kids/titles/cosmic-kids-yoga/</loc>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/kids/titles/scishow-kids/</loc>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/kids/titles/the-jetsons/</loc>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/kids/titles/the-yogi-bear-show/</loc>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/kids/titles/the-flintstones/</loc>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/kids/titles/scooby-doo-where-are-you/</loc>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/kids/titles/schoolhouse-rock/</loc>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/kids/titles/the-many-adventures-of-winnie-the-pooh/</loc>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/kids/titles/the-rescuers/</loc>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/kids/titles/the-smurfs/</loc>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/kids/titles/inspector-gadget/</loc>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/kids/titles/ducktales/</loc>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/kids/titles/chip-n-dale-rescue-rangers/</loc>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/kids/titles/disney-s-adventures-of-the-gummi-bears/</loc>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/kids/titles/the-care-bears/</loc>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/kids/titles/arthur/</loc>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/kids/titles/rugrats/</loc>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/kids/titles/the-magic-school-bus/</loc>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/kids/titles/franklin/</loc>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/kids/titles/little-bear/</loc>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/kids/titles/dora-the-explorer/</loc>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/kids/titles/clifford-the-big-red-dog/</loc>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/kids/titles/kim-possible/</loc>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/kids/titles/phineas-and-ferb/</loc>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/kids/titles/the-backyardigans/</loc>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/kids/titles/doc-mcstuffins/</loc>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/kids/titles/sofia-the-first/</loc>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/kids/titles/sarah-duck/</loc>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/kids/titles/hilda/</loc>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/kids/titles/stillwater/</loc>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/kids/titles/ada-twist-scientist/</loc>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/kids/titles/spidey-and-his-amazing-friends/</loc>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/kids/titles/molly-of-denali/</loc>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/kids/titles/the-new-adventures-of-winnie-the-pooh/</loc>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/kids/titles/the-woody-woodpecker-show/</loc>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/kids/titles/the-new-woody-woodpecker-show/</loc>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/kids/titles/garfield-and-friends/</loc>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/kids/titles/doug/</loc>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/kids/titles/recess/</loc>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/kids/titles/hey-arnold/</loc>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/kids/titles/ben-10/</loc>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/kids/titles/lilo-stitch-the-series/</loc>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/kids/nostalgia/</loc>
+        <lastmod>2026-09-14T02:06:01+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
     </url>

@@ -1,0 +1,432 @@
+{
+  "updatedAt": "2026-09-14T02:06:55.090Z",
+  "titles": {
+    "bluey": {
+      "title": "Bluey",
+      "year": "2018",
+      "type": "series",
+      "poster": "https://image.tmdb.org/t/p/w780/9p4pNoGcuyCfHcGWKNrTopqMWtq.jpg",
+      "source": "TMDB"
+    },
+    "peppa-pig": {
+      "title": "Peppa Pig",
+      "year": "2004",
+      "type": "series",
+      "poster": "https://image.tmdb.org/t/p/w780/iwKVo3HlsyVNXCzFEkd0xHz3kGi.jpg",
+      "source": "TMDB"
+    },
+    "daniel-tiger-s-neighborhood": {
+      "title": "Daniel Tiger's Neighborhood",
+      "year": "2012",
+      "type": "series",
+      "poster": "https://image.tmdb.org/t/p/w780/pUbHrEFTWegyhIxFmtpOpAQsbfT.jpg",
+      "source": "TMDB"
+    },
+    "sesame-street": {
+      "title": "Sesame Street",
+      "year": "1969",
+      "type": "series",
+      "poster": "https://image.tmdb.org/t/p/w780/14k9BfZ2p4rQBMeJ5crKTfUZVwD.jpg",
+      "source": "TMDB"
+    },
+    "numberblocks": {
+      "title": "Numberblocks",
+      "year": "2017",
+      "type": "series",
+      "poster": "https://image.tmdb.org/t/p/w780/vt872bR11jYDRSzTSfLuOmb2SMt.jpg",
+      "source": "TMDB"
+    },
+    "ask-the-storybots": {
+      "title": "Ask the StoryBots",
+      "year": "2016",
+      "type": "series",
+      "poster": "https://image.tmdb.org/t/p/w780/6IY8bmJcUGmgcB9ERnx8hLw7Qz5.jpg",
+      "source": "TMDB"
+    },
+    "puffin-rock": {
+      "title": "Puffin Rock",
+      "year": "2015",
+      "type": "series",
+      "poster": "https://image.tmdb.org/t/p/w780/8ZYTNkpubnG8epqlJLjaWbbO30R.jpg",
+      "source": "TMDB"
+    },
+    "pocoyo": {
+      "title": "Pocoyo",
+      "year": "2005",
+      "type": "series",
+      "poster": "https://image.tmdb.org/t/p/w780/1fmaC3t96Napg7TR9SsfOX8q11X.jpg",
+      "source": "TMDB"
+    },
+    "gabby-s-dollhouse": {
+      "title": "Gabby's Dollhouse",
+      "year": "2021",
+      "type": "series",
+      "poster": "https://image.tmdb.org/t/p/w780/lyLvpLsC2WzBFZm2cIEn3VgKwEf.jpg",
+      "source": "TMDB"
+    },
+    "octonauts": {
+      "title": "Octonauts",
+      "year": "2010",
+      "type": "series",
+      "poster": "https://image.tmdb.org/t/p/w780/iYUhUSKWKpSBahaWLUQIPckAy8p.jpg",
+      "source": "TMDB"
+    },
+    "wild-kratts": {
+      "title": "Wild Kratts",
+      "year": "2011",
+      "type": "series",
+      "poster": "https://image.tmdb.org/t/p/w780/7Nn1AZb6LJv0WedeK7o4yU6Aioh.jpg",
+      "source": "TMDB"
+    },
+    "shaun-the-sheep": {
+      "title": "Shaun the Sheep",
+      "year": "2007",
+      "type": "series",
+      "poster": "https://image.tmdb.org/t/p/w780/z2gPfTQd3I0JLWOAEdKYMQRLoun.jpg",
+      "source": "TMDB"
+    },
+    "my-neighbor-totoro": {
+      "title": "My Neighbor Totoro",
+      "year": "1988",
+      "type": "movie",
+      "poster": "https://image.tmdb.org/t/p/w780/rtGDOeG9LzoerkDGZF9dnVeLppL.jpg",
+      "source": "TMDB"
+    },
+    "kiki-s-delivery-service": {
+      "title": "Kiki's Delivery Service",
+      "year": "1989",
+      "type": "movie",
+      "poster": "https://image.tmdb.org/t/p/w780/Aufa4YdZIv4AXpR9rznwVA5SEfd.jpg",
+      "source": "TMDB"
+    },
+    "paddington": {
+      "title": "Paddington",
+      "year": "2014",
+      "type": "movie",
+      "poster": "https://image.tmdb.org/t/p/w780/wpchRGhRhvhtU083PfX2yixXtiw.jpg",
+      "source": "TMDB"
+    },
+    "paddington-2": {
+      "title": "Paddington 2",
+      "year": "2017",
+      "type": "movie",
+      "poster": "https://image.tmdb.org/t/p/w780/1OJ9vkD5xPt3skC6KguyXAgagRZ.jpg",
+      "source": "TMDB"
+    },
+    "winnie-the-pooh": {
+      "title": "Winnie the Pooh",
+      "year": "2011",
+      "type": "movie",
+      "poster": "https://image.tmdb.org/t/p/w780/xlFs85nq62jeR4a9iHNGB113m6x.jpg",
+      "source": "TMDB"
+    },
+    "the-peanuts-movie": {
+      "title": "The Peanuts Movie",
+      "year": "2015",
+      "type": "movie",
+      "poster": "https://image.tmdb.org/t/p/w780/aiwdwnl7RFs1vcBanOKr13ye3wE.jpg",
+      "source": "TMDB"
+    },
+    "luca": {
+      "title": "Luca",
+      "year": "2021",
+      "type": "movie",
+      "poster": "https://image.tmdb.org/t/p/w780/9x4i9uKGXt8IiiIF5Ey0DIoY738.jpg",
+      "source": "TMDB"
+    },
+    "ratatouille": {
+      "title": "Ratatouille",
+      "year": "2007",
+      "type": "movie",
+      "poster": "https://image.tmdb.org/t/p/w780/t3vaWRPSf6WjDSamIkKDs1iQWna.jpg",
+      "source": "TMDB"
+    },
+    "the-wiggles": {
+      "title": "The Wiggles",
+      "year": "1998",
+      "type": "music",
+      "poster": "https://image.tmdb.org/t/p/w780/e4O9IXM3ZmuDsrEICslrwqCl7MT.jpg",
+      "source": "TMDB"
+    },
+    "the-jetsons": {
+      "title": "The Jetsons",
+      "year": "1962",
+      "type": "series",
+      "poster": "https://image.tmdb.org/t/p/w780/9e2wgxZpAu22yR77fRXzHwOtw9z.jpg",
+      "source": "TMDB"
+    },
+    "the-yogi-bear-show": {
+      "title": "The Yogi Bear Show",
+      "year": "1961",
+      "type": "series",
+      "poster": "https://image.tmdb.org/t/p/w780/alDnwQ75JZu3V3aoa4F5w7LoyL7.jpg",
+      "source": "TMDB"
+    },
+    "the-flintstones": {
+      "title": "The Flintstones",
+      "year": "1960",
+      "type": "series",
+      "poster": "https://image.tmdb.org/t/p/w780/30P6ifagQ3fguTsI33KMmDLTAx6.jpg",
+      "source": "TMDB"
+    },
+    "scooby-doo-where-are-you": {
+      "title": "Scooby-Doo, Where Are You!",
+      "year": "1969",
+      "type": "series",
+      "poster": "https://image.tmdb.org/t/p/w780/lTzUSCtXR77CmGmEHcaxpxu2b4h.jpg",
+      "source": "TMDB"
+    },
+    "schoolhouse-rock": {
+      "title": "Schoolhouse Rock!",
+      "year": "1973",
+      "type": "series",
+      "poster": "https://image.tmdb.org/t/p/w780/4HCCVNl90rdcv1SJXCbktmVHTt4.jpg",
+      "source": "TMDB"
+    },
+    "the-many-adventures-of-winnie-the-pooh": {
+      "title": "The Many Adventures of Winnie the Pooh",
+      "year": "1977",
+      "type": "movie",
+      "poster": "https://image.tmdb.org/t/p/w780/nefc61WQGahSWoNRrndoqinrZQu.jpg",
+      "source": "TMDB"
+    },
+    "the-rescuers": {
+      "title": "The Rescuers",
+      "year": "1977",
+      "type": "movie",
+      "poster": "https://image.tmdb.org/t/p/w780/9jpDjrRyvv9Nw0piXOpHHQTfxw9.jpg",
+      "source": "TMDB"
+    },
+    "the-smurfs": {
+      "title": "The Smurfs",
+      "year": "1981",
+      "type": "series",
+      "poster": "https://image.tmdb.org/t/p/w780/cezQyM5cO454vUdLiLOkv78K64D.jpg",
+      "source": "TMDB"
+    },
+    "inspector-gadget": {
+      "title": "Inspector Gadget",
+      "year": "1983",
+      "type": "series",
+      "poster": "https://image.tmdb.org/t/p/w780/1Wcx99T1zbJzJXCqevOL4MNPdKz.jpg",
+      "source": "TMDB"
+    },
+    "ducktales": {
+      "title": "DuckTales",
+      "year": "1987",
+      "type": "series",
+      "poster": "https://image.tmdb.org/t/p/w780/muplnM90daPCQ5Bn1olcwN1EO22.jpg",
+      "source": "TMDB"
+    },
+    "chip-n-dale-rescue-rangers": {
+      "title": "Chip 'n Dale Rescue Rangers",
+      "year": "1989",
+      "type": "series",
+      "poster": "https://image.tmdb.org/t/p/w780/44VE1LaaZq4bZhMDo6Yi29NO4H.jpg",
+      "source": "TMDB"
+    },
+    "disney-s-adventures-of-the-gummi-bears": {
+      "title": "Disney's Adventures of the Gummi Bears",
+      "year": "1985",
+      "type": "series",
+      "poster": "https://image.tmdb.org/t/p/w780/mqbX2l5Te3yMdAjDxvs5kRk0bhN.jpg",
+      "source": "TMDB"
+    },
+    "the-care-bears": {
+      "title": "The Care Bears",
+      "year": "1985",
+      "type": "series",
+      "poster": "https://image.tmdb.org/t/p/w780/cEfqYEzVlnBLnT36GJ3y8Jm5gAO.jpg",
+      "source": "TMDB"
+    },
+    "arthur": {
+      "title": "Arthur",
+      "year": "1996",
+      "type": "series",
+      "poster": "https://image.tmdb.org/t/p/w780/nYN8okmcsmhd4bGVcqifZ5OCumB.jpg",
+      "source": "TMDB"
+    },
+    "rugrats": {
+      "title": "Rugrats",
+      "year": "1991",
+      "type": "series",
+      "poster": "https://image.tmdb.org/t/p/w780/wmsINbZuEBLNP2Z26Xffx5NHJpW.jpg",
+      "source": "TMDB"
+    },
+    "the-magic-school-bus": {
+      "title": "The Magic School Bus",
+      "year": "1994",
+      "type": "series",
+      "poster": "https://image.tmdb.org/t/p/w780/3A70wxUpplD4V3IcL8WmNFBgAbV.jpg",
+      "source": "TMDB"
+    },
+    "franklin": {
+      "title": "Franklin",
+      "year": "1997",
+      "type": "series",
+      "poster": "https://image.tmdb.org/t/p/w780/ep0ol2okz8IB8T0LxhfJMXvJ3Mk.jpg",
+      "source": "TMDB"
+    },
+    "little-bear": {
+      "title": "Little Bear",
+      "year": "1995",
+      "type": "series",
+      "poster": "https://image.tmdb.org/t/p/w780/bLm7pkUAoi2AGsnPXrPnZ3ErlKs.jpg",
+      "source": "TMDB"
+    },
+    "dora-the-explorer": {
+      "title": "Dora the Explorer",
+      "year": "2000",
+      "type": "series",
+      "poster": "https://image.tmdb.org/t/p/w780/iaJNOSpEQgU4yePsbcC6yxneRNF.jpg",
+      "source": "TMDB"
+    },
+    "clifford-the-big-red-dog": {
+      "title": "Clifford the Big Red Dog",
+      "year": "2000",
+      "type": "series",
+      "poster": "https://image.tmdb.org/t/p/w780/tZLS8aT8Iqnbw8oMKIi1WHidCA1.jpg",
+      "source": "TMDB"
+    },
+    "kim-possible": {
+      "title": "Kim Possible",
+      "year": "2002",
+      "type": "series",
+      "poster": "https://image.tmdb.org/t/p/w780/qsDNX8DPwWydDn9oUIhe1WcTuUH.jpg",
+      "source": "TMDB"
+    },
+    "phineas-and-ferb": {
+      "title": "Phineas and Ferb",
+      "year": "2007",
+      "type": "series",
+      "poster": "https://image.tmdb.org/t/p/w780/g6TidT7be954rrzPPBTIXkSmfXj.jpg",
+      "source": "TMDB"
+    },
+    "the-backyardigans": {
+      "title": "The Backyardigans",
+      "year": "2004",
+      "type": "series",
+      "poster": "https://image.tmdb.org/t/p/w780/dIB32UlWZ81M2HDtQVp72LGq8v8.jpg",
+      "source": "TMDB"
+    },
+    "doc-mcstuffins": {
+      "title": "Doc McStuffins",
+      "year": "2012",
+      "type": "series",
+      "poster": "https://image.tmdb.org/t/p/w780/eeGWJaFkxX0vvOFFpNFXrh9QVxl.jpg",
+      "source": "TMDB"
+    },
+    "sofia-the-first": {
+      "title": "Sofia the First",
+      "year": "2013",
+      "type": "series",
+      "poster": "https://image.tmdb.org/t/p/w780/eZHmUO1OQRpVkAOdj9VwYCCyQew.jpg",
+      "source": "TMDB"
+    },
+    "sarah-duck": {
+      "title": "Sarah & Duck",
+      "year": "2013",
+      "type": "series",
+      "poster": "https://image.tmdb.org/t/p/w780/u4SwnXjUFDiyRPPBc4st9TGQefm.jpg",
+      "source": "TMDB"
+    },
+    "hilda": {
+      "title": "Hilda",
+      "year": "2018",
+      "type": "series",
+      "poster": "https://image.tmdb.org/t/p/w780/giWufGBC7uxrmK9ZESdk9D1cyGm.jpg",
+      "source": "TMDB"
+    },
+    "stillwater": {
+      "title": "Stillwater",
+      "year": "2020",
+      "type": "series",
+      "poster": "https://image.tmdb.org/t/p/w780/t6tcFn0LiyKRqR76XwNfErK81cw.jpg",
+      "source": "TMDB"
+    },
+    "ada-twist-scientist": {
+      "title": "Ada Twist, Scientist",
+      "year": "2021",
+      "type": "series",
+      "poster": "https://image.tmdb.org/t/p/w780/vHoHuYdtCkQlj8UtqePjnvUZf80.jpg",
+      "source": "TMDB"
+    },
+    "spidey-and-his-amazing-friends": {
+      "title": "Spidey and His Amazing Friends",
+      "year": "2021",
+      "type": "series",
+      "poster": "https://image.tmdb.org/t/p/w780/etO5jDS5WgR4Y1lTyXhQcilJ6u2.jpg",
+      "source": "TMDB"
+    },
+    "molly-of-denali": {
+      "title": "Molly of Denali",
+      "year": "2019",
+      "type": "series",
+      "poster": "https://image.tmdb.org/t/p/w780/8HdIoG6HHJJaf8M3SAVQrGgCvHp.jpg",
+      "source": "TMDB"
+    },
+    "the-new-adventures-of-winnie-the-pooh": {
+      "title": "The New Adventures of Winnie the Pooh",
+      "year": "1988",
+      "type": "series",
+      "poster": "https://image.tmdb.org/t/p/w780/iJFbF43bN1HX5EZl4OFAVmJDl1u.jpg",
+      "source": "TMDB"
+    },
+    "the-woody-woodpecker-show": {
+      "title": "The Woody Woodpecker Show",
+      "year": "1957",
+      "type": "series",
+      "poster": "https://static.tvmaze.com/uploads/images/original_untouched/25/64879.jpg",
+      "source": "TVMaze"
+    },
+    "the-new-woody-woodpecker-show": {
+      "title": "The New Woody Woodpecker Show",
+      "year": "1999",
+      "type": "series",
+      "poster": "https://image.tmdb.org/t/p/w780/oizXc3SnlSWDqPMmfe4koUj4RRo.jpg",
+      "source": "TMDB"
+    },
+    "garfield-and-friends": {
+      "title": "Garfield and Friends",
+      "year": "1988",
+      "type": "series",
+      "poster": "https://image.tmdb.org/t/p/w780/pE6l6I1ICKOu4pDUXxkl87TTLZx.jpg",
+      "source": "TMDB"
+    },
+    "doug": {
+      "title": "Doug",
+      "year": "1991",
+      "type": "series",
+      "poster": "https://image.tmdb.org/t/p/w780/fEzGDVHsUlOhU59EKSePobldyIf.jpg",
+      "source": "TMDB"
+    },
+    "recess": {
+      "title": "Recess",
+      "year": "1997",
+      "type": "series",
+      "poster": "https://image.tmdb.org/t/p/w780/nRKCxiZROeNaC5H80hVqSqWMYZr.jpg",
+      "source": "TMDB"
+    },
+    "hey-arnold": {
+      "title": "Hey Arnold!",
+      "year": "1996",
+      "type": "series",
+      "poster": "https://image.tmdb.org/t/p/w780/c1Yv042okfvMdT1Ulwlat9Tj70B.jpg",
+      "source": "TMDB"
+    },
+    "ben-10": {
+      "title": "Ben 10",
+      "year": "2005",
+      "type": "series",
+      "poster": "https://image.tmdb.org/t/p/w780/eogRp6oAPK0SEvQmCrQ78LTlSdp.jpg",
+      "source": "TMDB"
+    },
+    "lilo-stitch-the-series": {
+      "title": "Lilo & Stitch: The Series",
+      "year": "2003",
+      "type": "series",
+      "poster": "https://image.tmdb.org/t/p/w780/hmNpwSKZzStqO4bfOFeYNTn2B7.jpg",
+      "source": "TMDB"
+    }
+  }
+}

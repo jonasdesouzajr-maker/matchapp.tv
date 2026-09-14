@@ -62,7 +62,7 @@ async function populateEmail() {
 // PORTFOLIO TAB SWITCHING
 // ----------------------------------------------------
 window.switchPortfolioTab = function(tab) {
-    const tabs = ['watchlater', 'seenit', 'audio'];
+    const tabs = ['watchlater', 'seenit', 'audio', 'history'];
     tabs.forEach(t => {
         const panel = document.getElementById('panel-' + t);
         const btn = document.getElementById('tab-' + t);
@@ -859,6 +859,11 @@ window.removeFromList = function (btn) {
     const kind  = btn.getAttribute('data-list');
     if (!title) return;
 
+    // Removing a queue entry never makes an already handled title eligible again.
+    let archived={title};
+    try{archived=[...JSON.parse(localStorage.getItem('match_savedList')||'[]'),...JSON.parse(localStorage.getItem('match_seenList')||'[]')].find(i=>(i.title||i)===title)||archived;}catch(_){}
+    window.matchPolicy?.remember(typeof archived==='string'?{title:archived}:archived,'removed');
+
     const strip = (key) => {
         let arr = [];
         try { arr = JSON.parse(localStorage.getItem(key) || '[]'); } catch (e) { return false; }
@@ -902,11 +907,13 @@ window.removeFromList = function (btn) {
             const fresh = (k) => { try { return JSON.parse(localStorage.getItem(k) || '[]'); } catch (e) { return []; } };
             if (typeof window.seenList !== 'undefined')  window.seenList  = fresh('match_seenList');
             if (typeof window.savedList !== 'undefined') window.savedList = fresh('match_savedList');
+            if(typeof seenList !== 'undefined')seenList=fresh('match_seenList');
+            if(typeof savedList !== 'undefined')savedList=fresh('match_savedList');
         }
     } catch (e) {}
 
     if (window.showToast) {
-        showToast(`Removed "${title}" — it can be matched again.`);
+        showToast(`Removed "${title}" from this list. It stays excluded from future matches in your history.`);
     }
     if (window.track) window.track('title_removed', { title: title, list: kind });
 
@@ -926,8 +933,10 @@ function syncListsToAccount() {
             const { data: { user } } = await sb.auth.getUser();
             if (!user) return;
             await sb.auth.updateUser({ data: {
-                match_savedList: JSON.parse(localStorage.getItem('match_savedList') || '[]'),
-                match_seenList:  JSON.parse(localStorage.getItem('match_seenList')  || '[]')
+                saved_list: JSON.parse(localStorage.getItem('match_savedList') || '[]'),
+                seen_list:  JSON.parse(localStorage.getItem('match_seenList')  || '[]'),
+                match_exclusion_keys:[...(window.matchPolicy?.known()||[])],
+                match_history:window.matchPolicy?.history()||[]
             }});
         } catch (e) {}
     }, 800);

@@ -14,7 +14,7 @@
     <link rel="manifest" href="/manifest.json">
     <link rel="icon" href="/logo.jpeg?v=2">
     <title>MatchApp VIP | Unlimited AI Streaming Concierge & Ad-Free Pass</title>
-    
+
     <!-- Google Tag & Consent Mode v2 -->
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -27,9 +27,10 @@
       gtag('set', 'ads_data_redaction', true); gtag('set', 'url_passthrough', true);
     </script>
     <!-- NATIVE I18N (defer = runs before DOMContentLoaded, no English flash) -->
-    <script defer src="/i18n.js?v=181"></script>
-    <script src="/build-meta.js?v=184"></script>
-<script defer src="/install.js?v=183"></script>
+    <script defer src="/i18n.js?v=185"></script>
+    <script src="/build-meta.js?v=185"></script>
+<script src="/app-install-state.js?v=185"></script>
+<script defer src="/install.js?v=185"></script>
 
 <!-- Open Graph & Social SEO (Tailored for Pricing) -->
     <meta property="og:type" content="website">
@@ -58,7 +59,7 @@
     <link rel="alternate" hreflang="ja" href="https://matchapp.tv/pricing/pricing.html?lang=ja">
     <link rel="alternate" hreflang="ko" href="https://matchapp.tv/pricing/pricing.html?lang=ko">
     <link rel="alternate" hreflang="zh" href="https://matchapp.tv/pricing/pricing.html?lang=zh">
-    
+
     <!-- Pricing Specific Rich Snippet JSON-LD for Google -->
     <script type="application/ld+json">
     {
@@ -181,7 +182,7 @@
         .how-it-works-glow { background: rgba(20, 5, 5, 0.85); border: 2px solid var(--gold); border-radius: 16px; padding: 25px; margin: 0 0 25px 0; text-align: center; box-shadow: 0 0 20px rgba(212, 175, 55, 0.4); }
         .how-it-works-glow h3 { color: #fff; font-size: 26px; font-weight: 900; margin: 0 0 15px 0; text-transform: uppercase; text-shadow: 0 2px 4px rgba(0,0,0,0.8); }
         .how-it-works-glow p { color: #ddd; font-size: 16px; line-height: 1.6; margin: 0 0 10px 0; }
-        
+
         .stream-flags { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; overflow: hidden; opacity: 0.35; }
         .sf-item { position: absolute; font-size: 14vw; font-weight: 900; color: #fff; white-space: nowrap; opacity: 0.8; text-shadow: 0 0 20px currentColor, 0 0 40px currentColor; }
         .brand-netflix { color: #E50914; } .brand-prime { color: #00A8E1; } .brand-max { color: #8A2BE2; } .brand-disney { color: #113CCF; }
@@ -255,7 +256,8 @@
             .credit-pack-price { font-size: 18px; }
         }
     </style>
-<link rel="stylesheet" href="/app-updates.css?v=183">
+<link rel="stylesheet" href="/app-updates.css?v=185">
+<link rel="stylesheet" href="/app-install-state.css?v=185">
 </head>
 <body style="display: flex; flex-direction: column; min-height: 100vh;">
     <!-- Google Tag Manager (noscript) -->
@@ -263,7 +265,7 @@
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
-    
+
     <div id="real-time-clock" class="real-time-clock fade-in" data-i18n="pr.loading">Loading Time...</div>
     <div class="luxury-bg"><div class="floating-orb orb-1"></div><div class="floating-orb orb-2"></div></div>
 
@@ -273,7 +275,7 @@
         <span class="sf-item brand-max" style="top: 60%; animation: flyPath1 16s linear infinite 4s;">MAX</span>
         <span class="sf-item brand-disney" style="top: 85%; animation: flyPath2 19s linear infinite 1s;">DISNEY+</span>
     </div>
-    
+
     <header class="app-header fade-in">
         <a href="/index.html" class="header-brand-area" aria-label="MatchApp Home">
             <picture><source srcset="/logo.jpeg?v=2" type="image/jpeg"><img width="60" height="60" src="/logo.jpeg?v=2" alt="Logo" class="brand-logo" loading="lazy"></picture>
@@ -281,7 +283,7 @@
         </a>
         <nav id="header-auth-area" style="display: flex; gap: 10px; align-items: center; justify-content: flex-end;">
             <button class="install-btn" style="display:none;" onclick="installMatchApp()" aria-label="Install MatchApp" data-i18n-aria="install.aria">📲 <span class="install-label" data-i18n="install.btn">Install</span></button>
-            
+
             <div id="lang-switcher-host"></div>
             <a href="/index.html" class="icon-btn home-btn" aria-label="Home" title="Home" data-i18n-aria="nav.home"><svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true" focusable="false"><path d="M3 11.2 12 4l9 7.2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.5 9.8V19a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1V9.8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M9.8 20v-5.2h4.4V20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         </nav>
@@ -307,7 +309,7 @@
                 <p style="color: var(--text-muted); font-size: 15px; margin-bottom: 40px;" data-i18n="pricing.subtitle">Choose your plan below to remove ads and unlock infinite matches.</p>
 
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; text-align: left;">
-                    
+
                     <article class="premium-card">
                         <h3 style="color: var(--gold); font-size: 22px; margin-bottom: 5px;" data-i18n="pricing.adfree.name">Ad-Free Pass</h3>
                         <div class="price-badge">$1.99 <span data-i18n="pr.oneTime">/ one-time</span></div>
@@ -416,12 +418,12 @@
         </div>
         <p style="color: #555; font-size: 11px; margin-top: 25px;">© 2026 MatchApp.tv - Support: support@matchapp.tv</p>
     </footer>
-    
-    <script src="/settings.js?v=183"></script>
+
+    <script src="/settings.js?v=185"></script>
     <script src="/app.js"></script>
     <script src="/pricing.js?v=181"></script>
     <script src="/credits-ui.js?v=181"></script>
     <script src="/tv.js?v=181"></script>
-<script src="/app-updates.js?v=183"></script>
+<script src="/app-updates.js?v=185"></script>
 </body>
 </html>

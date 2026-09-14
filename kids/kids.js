@@ -37,6 +37,9 @@
     zh: { safeBrand:'安全发现', exit:'退出儿童模式', kicker:'从设计上保障儿童安全', heroA:'大大的乐趣。', heroB:'小小屏幕，也安心。', heroText:'在不混入成人内容的前提下，发现动画、家庭电影、学习节目和音乐。儿童模式会先应用批准清单和年龄段。', safe1:'✓ 按年龄推荐', safe2:'✓ 不含成人标题', safe3:'✓ 仅显示安全AI结果', safe4:'✓ 家长可轻松退出', askTitle:'问问儿童娱乐管家', askSub:'告诉我们什么听起来有趣。只有通过安全检查的标题才会显示。', ageLabel:'年龄段', ageAll:'全年龄安全', age35:'3–5岁', age68:'6–8岁', age912:'9–12岁', askPlaceholder:'有动物的搞笑内容...', askButton:'寻找安全推荐', safeNote:'安全规则：不确定、未分级、成人向或超出所选年龄段的内容不会显示。', browseTitle:'从安全推荐开始', browseSub:'先人工筛选，再在可用时匹配TMDB海报。', trust1Title:'默认保守', trust1Text:'未知或含糊内容会被排除，而不是被猜测为安全。', trust2Title:'年龄很重要', trust2Text:'匹配前先按年龄缩小内容库。', trust3Title:'AI前有安全闸门', trust3Text:'AI推荐必须已存在于批准的儿童内容库中才能显示。', privacy:'隐私', terms:'条款', all:'全部', watch:'查找观看平台', noMatch:'为了保持严格安全，我没有找到足够确定的匹配。可以试试动物、搞笑、学习、音乐、冒险或睡前。', answer:'以下是批准的儿童内容库中的安全推荐。' }
   };
 
+  Object.assign(UI.en,{nostalgiaTitle:'Nostalgia favorites',nostalgiaSub:'Classic cartoons from the 1950s to the 2000s. Tap a title to open its viewing guide. Ask a grown-up before visiting another site.',nostalgiaYoung:'Our nostalgia picks are for older children. Try Winnie the Pooh, Little Bear or Franklin in the collection below.',dub:'Woody Woodpecker language',nostalgiaGuide:'Explore the classic cartoon guide'});
+  Object.assign(UI['pt-BR'],{nostalgiaTitle:'Clássicos para matar a saudade',nostalgiaSub:'Pica-Pau, DuckTales, Garfield e desenhos dos anos 50 aos 2000. Toque no título para ver onde assistir. Peça ajuda a um adulto ao abrir outro site.',nostalgiaYoung:'Estes clássicos são para crianças maiores. Explore Pooh, Little Bear e Franklin no catálogo.',dub:'Idioma do Pica-Pau',nostalgiaGuide:'Guia de desenhos clássicos'});
+  Object.assign(UI.es,{nostalgiaTitle:'Clásicos para recordar',nostalgiaSub:'El Pájaro Loco, Garfield y dibujos de los años 50 a los 2000. Toca un título para ver dónde verlo. Pide ayuda a un adulto.',nostalgiaYoung:'Estos clásicos son para niños mayores. Explora Pooh, Little Bear y Franklin.',dub:'Idioma del Pájaro Loco',nostalgiaGuide:'Guía de dibujos clásicos'});
   const CATEGORIES = ['all','animals','funny','learning','adventure','family','music','bedtime'];
 
   const LIBRARY = [
@@ -63,7 +66,47 @@
     {title:'Super Simple Songs', year:'', type:'music', platform:'YouTube', ages:['all','3-5'], cats:['music','learning','bedtime'], desc:'Simple sing-alongs for routines, vocabulary and early learning.', tmdb:false},
     {title:'The Wiggles', year:'1998', type:'music', platform:'YouTube', ages:['all','3-5'], cats:['music','learning','funny'], desc:'Bright songs, movement and preschool-friendly learning.', tmdb:true},
     {title:'Cosmic Kids Yoga', year:'', type:'series', platform:'YouTube', ages:['all','3-5','6-8'], cats:['learning','bedtime','adventure'], desc:'Story-led yoga, calm-down sessions and movement for kids.', tmdb:false},
-    {title:'SciShow Kids', year:'', type:'series', platform:'YouTube', ages:['all','6-8','9-12'], cats:['learning','animals'], desc:'Friendly science explainers built around kids’ everyday questions.', tmdb:false}
+    {title:'SciShow Kids', year:'', type:'series', platform:'YouTube', ages:['all','6-8','9-12'], cats:['learning','animals'], desc:'Friendly science explainers built around kids’ everyday questions.', tmdb:false},
+    {"title":"The Jetsons","year":"1962","type":"series","platform":"Regional viewing guide","ages":["all","6-8","9-12"],"cats":["family","funny","adventure"],"desc":"A futuristic family, flying cars and playful space-age mishaps.","tmdb":true,"note":"classic"},
+    {"title":"The Yogi Bear Show","year":"1961","type":"series","platform":"Regional viewing guide","ages":["all","6-8","9-12"],"cats":["animals","funny"],"desc":"Picnic baskets, park adventures and classic bear comedy.","tmdb":true,"note":"classic"},
+    {"title":"The Flintstones","year":"1960","type":"series","platform":"Regional viewing guide","ages":["all","9-12"],"cats":["family","funny"],"desc":"Stone-age family comedy for older kids to enjoy with a grown-up.","tmdb":true,"note":"classic"},
+    {"title":"Scooby-Doo, Where Are You!","year":"1969","type":"series","platform":"Regional viewing guide","ages":["all","9-12"],"cats":["adventure","funny","animals"],"desc":"A friendly dog and a team of young detectives solve spooky mysteries.","tmdb":true,"note":"spooky"},
+    {"title":"Schoolhouse Rock!","year":"1973","type":"series","platform":"Regional viewing guide","ages":["all","6-8","9-12"],"cats":["learning","music"],"desc":"Catchy animated songs introduce numbers, grammar, science and history.","tmdb":true,"note":"classic"},
+    {"title":"The Many Adventures of Winnie the Pooh","year":"1977","type":"movie","platform":"Regional viewing guide","ages":["all","3-5","6-8"],"cats":["family","animals","bedtime"],"desc":"Honey, friendship and little adventures in the Hundred Acre Wood.","tmdb":true,"note":"peril"},
+    {"title":"The Rescuers","year":"1977","type":"movie","platform":"Regional viewing guide","ages":["all","9-12"],"cats":["adventure","animals","family"],"desc":"Two brave mice team up to rescue a child in an adventurous classic.","tmdb":true,"note":"peril"},
+    {"title":"The Smurfs","year":"1981","type":"series","platform":"Regional viewing guide","ages":["all","6-8","9-12"],"cats":["family","adventure"],"desc":"Little blue friends learn teamwork in a magical forest village.","tmdb":true,"note":"peril"},
+    {"title":"Inspector Gadget","year":"1983","type":"series","platform":"Regional viewing guide","ages":["all","6-8","9-12"],"cats":["funny","adventure"],"desc":"A bumbling detective, a clever niece and a helpful dog solve cases.","tmdb":true,"note":"classic"},
+    {"title":"DuckTales","year":"1987","type":"series","platform":"Regional viewing guide","ages":["all","6-8","9-12"],"cats":["adventure","animals","family"],"desc":"A duck family explores treasure stories and faraway adventures.","tmdb":true,"note":"peril"},
+    {"title":"Chip 'n Dale Rescue Rangers","year":"1989","type":"series","platform":"Regional viewing guide","ages":["all","6-8","9-12"],"cats":["animals","adventure","funny"],"desc":"Tiny detectives tackle big mysteries with teamwork and clever inventions.","tmdb":true,"note":"peril"},
+    {"title":"Disney's Adventures of the Gummi Bears","year":"1985","type":"series","platform":"Regional viewing guide","ages":["all","6-8","9-12"],"cats":["adventure","family"],"desc":"Magical bears bounce into medieval adventures and work together.","tmdb":true,"note":"peril"},
+    {"title":"The Care Bears","year":"1985","type":"series","platform":"Regional viewing guide","ages":["all","6-8","9-12"],"cats":["family","adventure"],"desc":"Colorful bears share caring lessons and imaginative adventures.","tmdb":true,"note":"peril"},
+    {"title":"Arthur","year":"1996","type":"series","platform":"Regional viewing guide","ages":["all","6-8","9-12"],"cats":["learning","family","funny"],"desc":"School, friendship and thoughtful everyday lessons with Arthur and friends.","tmdb":true},
+    {"title":"Rugrats","year":"1991","type":"series","platform":"Regional viewing guide","ages":["all","6-8","9-12"],"cats":["funny","family","adventure"],"desc":"Imaginative baby adventures turn ordinary places into big discoveries.","tmdb":true,"note":"peril"},
+    {"title":"The Magic School Bus","year":"1994","type":"series","platform":"Regional viewing guide","ages":["all","6-8","9-12"],"cats":["learning","adventure"],"desc":"A curious class takes extraordinary field trips into science.","tmdb":true},
+    {"title":"Franklin","year":"1997","type":"series","platform":"Regional viewing guide","ages":["all","3-5","6-8"],"cats":["animals","family","learning"],"desc":"A young turtle learns about kindness, friendship and daily routines.","tmdb":true},
+    {"title":"Little Bear","year":"1995","type":"series","platform":"Regional viewing guide","ages":["all","3-5","6-8"],"cats":["animals","bedtime","family"],"desc":"Gentle woodland stories about friendship, family and imagination.","tmdb":true},
+    {"title":"Dora the Explorer","year":"2000","type":"series","platform":"Regional viewing guide","ages":["all","3-5","6-8"],"cats":["learning","adventure"],"desc":"Join Dora and Boots for map-reading, songs and friendly learning adventures.","tmdb":true},
+    {"title":"Clifford the Big Red Dog","year":"2000","type":"series","platform":"Regional viewing guide","ages":["all","3-5","6-8"],"cats":["animals","family","learning"],"desc":"A very big dog and his friends practice kindness and community.","tmdb":true},
+    {"title":"Kim Possible","year":"2002","type":"series","platform":"Regional viewing guide","ages":["all","9-12"],"cats":["adventure","funny"],"desc":"A resourceful teen and her friends tackle action-filled missions.","tmdb":true,"note":"peril"},
+    {"title":"Phineas and Ferb","year":"2007","type":"series","platform":"Regional viewing guide","ages":["all","6-8","9-12"],"cats":["funny","adventure","music"],"desc":"Two inventive brothers fill summer days with spectacular ideas.","tmdb":true},
+    {"title":"The Backyardigans","year":"2004","type":"series","platform":"Regional viewing guide","ages":["all","3-5","6-8"],"cats":["music","adventure","family"],"desc":"Backyard friends dance and sing through make-believe worlds.","tmdb":true},
+    {"title":"Doc McStuffins","year":"2012","type":"series","platform":"Regional viewing guide","ages":["all","3-5","6-8"],"cats":["learning","family"],"desc":"A caring toy doctor helps friends understand health and empathy.","tmdb":true},
+    {"title":"Sofia the First","year":"2013","type":"series","platform":"Regional viewing guide","ages":["all","6-8","9-12"],"cats":["family","adventure","music"],"desc":"A young princess discovers kindness, courage and magical friendships.","tmdb":true,"note":"peril"},
+    {"title":"Sarah & Duck","year":"2013","type":"series","platform":"Regional viewing guide","ages":["all","3-5","6-8"],"cats":["bedtime","animals","funny"],"desc":"Quiet, quirky little adventures with Sarah and her duck friend.","tmdb":true},
+    {"title":"Hilda","year":"2018","type":"series","platform":"Regional viewing guide","ages":["all","9-12"],"cats":["adventure","family"],"desc":"A brave explorer discovers folklore, friendship and magical creatures.","tmdb":true,"note":"spooky"},
+    {"title":"Stillwater","year":"2020","type":"series","platform":"Regional viewing guide","ages":["all","3-5","6-8"],"cats":["bedtime","family","learning"],"desc":"A wise panda helps children find calm, perspective and kindness.","tmdb":true},
+    {"title":"Ada Twist, Scientist","year":"2021","type":"series","platform":"Regional viewing guide","ages":["all","3-5","6-8"],"cats":["learning","adventure"],"desc":"Curious friends ask questions, experiment and explore everyday science.","tmdb":true},
+    {"title":"Spidey and His Amazing Friends","year":"2021","type":"series","platform":"Regional viewing guide","ages":["all","6-8","9-12"],"cats":["adventure","family"],"desc":"Young heroes use teamwork to solve problems and help their community.","tmdb":true,"note":"peril"},
+    {"title":"Molly of Denali","year":"2019","type":"series","platform":"Regional viewing guide","ages":["all","6-8","9-12"],"cats":["learning","adventure","family"],"desc":"An Alaska Native girl explores her community through questions and discovery.","tmdb":true},
+    {"title":"The New Adventures of Winnie the Pooh","year":"1988","type":"series","platform":"Regional viewing guide","ages":["all","3-5","6-8"],"cats":["family","animals","bedtime"],"desc":"Pooh and friends enjoy warm, imaginative adventures together.","tmdb":true,"note":"peril"},
+    {"title":"The Woody Woodpecker Show","year":"1957","type":"series","platform":"Regional viewing guide","ages":["all","9-12"],"cats":["animals","funny"],"desc":"Classic woodpecker slapstick from the original television collection. Older kids should watch selected shorts with a grown-up.","tmdb":true,"note":"classic"},
+    {"title":"The New Woody Woodpecker Show","year":"1999","type":"series","platform":"Regional viewing guide","ages":["all","9-12"],"cats":["animals","funny"],"desc":"Woody, Chilly Willy and their friends cause playful cartoon chaos. Choose Portuguese, Spanish or English viewing links.","tmdb":true,"note":"classic"},
+    {"title":"Garfield and Friends","year":"1988","type":"series","platform":"Regional viewing guide","ages":["all","6-8","9-12"],"cats":["animals","funny"],"desc":"Lasagna-loving Garfield, Odie and farmyard friends turn ordinary days into silly stories.","tmdb":true,"note":"classic"},
+    {"title":"Doug","year":"1991","type":"series","platform":"Regional viewing guide","ages":["all","6-8","9-12"],"cats":["family","funny"],"desc":"An imaginative schoolboy navigates friendship, confidence and everyday school challenges.","tmdb":true,"note":"classic"},
+    {"title":"Recess","year":"1997","type":"series","platform":"Regional viewing guide","ages":["all","9-12"],"cats":["family","funny","adventure"],"desc":"A group of school friends explores teamwork, fairness and playground adventures.","tmdb":true,"note":"classic"},
+    {"title":"Hey Arnold!","year":"1996","type":"series","platform":"Regional viewing guide","ages":["all","9-12"],"cats":["family","funny"],"desc":"A thoughtful city kid learns about friendship, empathy and growing up in his neighborhood.","tmdb":true,"note":"classic"},
+    {"title":"Ben 10","year":"2005","type":"series","platform":"Regional viewing guide","ages":["all","9-12"],"cats":["adventure"],"desc":"An alien-transforming watch turns a summer road trip into superhero rescues. Contains animated fighting.","tmdb":true,"note":"peril"},
+    {"title":"Lilo & Stitch: The Series","year":"2003","type":"series","platform":"Regional viewing guide","ages":["all","9-12"],"cats":["family","adventure","funny"],"desc":"Lilo and Stitch find a home for unusual alien experiments through teamwork and family.","tmdb":true,"note":"peril"}
   ];
 
   Object.assign(UI.en, {
@@ -75,6 +118,9 @@
   Object.assign(UI.es, {
     safeBrand:'Un pequeño mundo de maravillas', exit:'Adultos', kicker:'Pequeños exploradores. Grandes ideas.', heroA:'Dale play', heroB:'a la imaginación.', heroText:'Risas, aventuras y descubrimientos increíbles. Encuentra tu próximo favorito en un mundo hecho para niños.', safe1:'Aventuras elegidas para cada edad', ageAll:'Todas las edades aprobadas', browseTitle:'¿Qué vamos a descubrir?', askTitle:'Sueña. Descubre.', askSub:'¿Animales en el espacio? ¿Una historia para dormir? Dinos qué suena divertido.', askButton:'Encontrar mi aventura', explore:'Vamos a explorar', surprise:'Sorpréndeme', skip:'Ir a las recomendaciones', artLabel:'Tu aventura empieza aquí', featuredTitle:'Un poco de inspiración', featuredSub:'Grandes sonrisas, pequeños exploradores', browseEyebrow:'Encuentra tu diversión', askEyebrow:'Una ayuda para elegir', askSafe:'Solo títulos de nuestra colección Kids aprobada.', parentInfo:'Una nota para adultos', parentNote:'MatchApp ayuda a descubrir títulos. La disponibilidad varía por región. Los sitios externos tienen contenidos y controles propios; un adulto debe ayudar a abrirlos. Kids Mode es un filtro de selección, no un bloqueo parental.', watch:'Explorar este título', watchDialogTitle:'Pide ayuda a un adulto', watchDialogText:'Vas a abrir otro sitio. Pide ayuda a un adulto para encontrar este título.', watchContinue:'Ver dónde está disponible', stay:'Seguir explorando', pauseMotion:'Pausar magia', resumeMotion:'Reanudar magia', pickCount:'aventuras para explorar', empty:'Prueba otra categoría para más aventuras.', movie:'Película', series:'Programa', music:'Música', languageLabel:'Idioma', categoryLabel:'Categorías Kids', voiceLabel:'Entrada por voz', closeLabel:'Cerrar', waiting:'Buscando tu aventura…'
   });
+  Object.assign(UI.en,{matchTitle:'Make a Kids match',matchText:'Pick your kind of fun. We’ll find three age-approved adventures.',mood:'What sounds fun?',format:'What shall we watch?',era:'When is it from?',anyEra:'Every decade',matchButton:'Match my adventure',matchAgain:'Find another match',matchReady:'Your Kids matches are ready!',matchEmpty:'No approved titles fit these choices. Try every decade or another kind of fun.',savedTitle:'My little treasure chest',savedText:'Save favorites on this device. No account needed.',savedEmpty:'Tap a heart to keep a favorite here.',save:'Save favorite',saved:'Saved favorite',search:'Find a title in our Kids collection',searchPlaceholder:'Bluey, Pooh, cartoons…',region:'Viewing region',brazil:'Brazil',usa:'United States',watchGuide:'Open this title’s viewing guide',watchFallback:'Find other viewing options',channel:'Open the official channel',watchHelp:'This guide lists viewing options for the selected region. Availability and subscriptions can change. If it has no option, try the other link.',classic:'Grown-ups: classic cartoons can include dated attitudes or slapstick. Preview together.',peril:'Grown-ups: contains mild action or moments of danger. Preview for sensitive children.',spooky:'Grown-ups: contains spooky creatures or mysteries. Preview for sensitive children.',matchFree:'Kids matching is free. Purchases are handled in the grown-ups area.'});
+  Object.assign(UI['pt-BR'],{matchTitle:'Faça um match Kids',matchText:'Escolha sua diversão. Vamos encontrar três aventuras aprovadas para a idade.',mood:'O que parece divertido?',format:'O que vamos assistir?',era:'De qual época?',anyEra:'Todas as décadas',matchButton:'Encontrar meu match',matchAgain:'Encontrar outro match',matchReady:'Seus matches Kids estão prontos!',matchEmpty:'Nenhum título aprovado combina com essas escolhas. Tente todas as décadas ou outra diversão.',savedTitle:'Meu baú de tesouros',savedText:'Guarde favoritos neste dispositivo. Não precisa de conta.',savedEmpty:'Toque no coração para guardar um favorito aqui.',save:'Guardar favorito',saved:'Favorito guardado',search:'Encontrar um título na coleção Kids',searchPlaceholder:'Bluey, Pooh, desenhos…',region:'Região de exibição',brazil:'Brasil',usa:'Estados Unidos',watchGuide:'Abrir guia deste título',watchFallback:'Encontrar outras opções',channel:'Abrir canal oficial',watchHelp:'O guia mostra opções para a região escolhida. A disponibilidade e as assinaturas podem mudar. Se não houver opções, tente o outro link.',classic:'Responsáveis: desenhos antigos podem ter atitudes datadas ou humor físico. Assistam juntos.',peril:'Responsáveis: contém ação leve ou momentos de perigo. Verifique antes para crianças sensíveis.',spooky:'Responsáveis: contém criaturas ou mistérios assustadores. Verifique antes para crianças sensíveis.',matchFree:'O match Kids é gratuito. Compras ficam na área de responsáveis.'});
+  Object.assign(UI.es,{matchTitle:'Haz un match Kids',matchText:'Elige tu diversión. Encontraremos tres aventuras aprobadas para tu edad.',mood:'¿Qué suena divertido?',format:'¿Qué vamos a ver?',era:'¿De qué época?',anyEra:'Todas las décadas',matchButton:'Encontrar mi match',matchAgain:'Encontrar otro match',matchReady:'¡Tus matches Kids están listos!',matchEmpty:'No hay títulos aprobados para estas opciones. Prueba todas las décadas u otra diversión.',savedTitle:'Mi cofre de tesoros',savedText:'Guarda favoritos en este dispositivo. No necesitas cuenta.',savedEmpty:'Toca un corazón para guardar un favorito.',save:'Guardar favorito',saved:'Favorito guardado',search:'Buscar un título en la colección Kids',searchPlaceholder:'Bluey, Pooh, dibujos…',region:'Región de reproducción',brazil:'Brasil',usa:'Estados Unidos',watchGuide:'Abrir la guía de este título',watchFallback:'Encontrar otras opciones',channel:'Abrir canal oficial',watchHelp:'La guía muestra opciones para la región elegida. La disponibilidad y las suscripciones pueden cambiar. Si no hay opciones, prueba el otro enlace.',classic:'Adultos: los dibujos clásicos pueden tener actitudes anticuadas o humor físico. Mirad juntos.',peril:'Adultos: contiene acción leve o momentos de peligro. Revisa para niños sensibles.',spooky:'Adultos: contiene criaturas o misterios que pueden asustar. Revisa para niños sensibles.',matchFree:'El match Kids es gratuito. Las compras están en la zona de adultos.'});
   const read = (key) => { try { return localStorage.getItem(key); } catch (_) { return null; } };
   const write = (key, value) => { try { localStorage.setItem(key, value); } catch (_) {} };
   let requestVersion = 0;
@@ -82,6 +128,12 @@
   let motionPaused = read('match_kids_pause_motion') === 'true';
   let lang = 'en';
   let category = 'all';
+  let matchPicks = [];
+  let previousMatch = [];
+  const SAVED_KEY = 'match_kids_saved_titles';
+  let savedTitles;
+  try { const raw = JSON.parse(read(SAVED_KEY) || '[]'); savedTitles = new Set(Array.isArray(raw) ? raw.filter(x => typeof x === 'string').slice(0,100) : []); }
+  catch (_) { savedTitles = new Set(); }
 
   function normalizeLang(v) {
     if (!v) return 'en';
@@ -105,7 +157,7 @@
     document.getElementById('kids-chips')?.setAttribute('aria-label', tr('categoryLabel'));
     document.getElementById('kids-mic')?.setAttribute('aria-label', tr('voiceLabel'));
     document.querySelector('.kids-dialog-close')?.setAttribute('aria-label', tr('closeLabel'));
-    clearChat(); updateMotion(); renderChips(); renderGrid(); renderFeatured();
+    clearChat(); updateMotion(); renderChips(); renderGrid(); renderFeatured();renderNostalgia(); renderMatchControls(); renderMatchResults(); renderSaved();
   }
 
   function currentAge() { return document.getElementById('kids-age')?.value || read(AGE_KEY) || 'all'; }
@@ -124,6 +176,7 @@
   const posterRequests = new Map();
   const posterQueue = [];
   let activePosters = 0;
+  let posterWindow = Date.now(), posterCount = 0, posterTimer = null;
 
   function fetchPoster(item) {
     if (posterRequests.has(item.title)) return posterRequests.get(item.title);
@@ -132,10 +185,15 @@
     return pending;
   }
   function pumpPosters() {
-    while (activePosters < 4 && posterQueue.length) {
-      const {item, resolve} = posterQueue.shift(); activePosters++;
+    if (Date.now()-posterWindow >= 60000) { posterWindow=Date.now();posterCount=0; }
+    if (posterCount >= 48 && posterQueue.length) {
+      if(!posterTimer)posterTimer=setTimeout(()=>{posterTimer=null;pumpPosters();},Math.max(1,60000-(Date.now()-posterWindow)));
+      return;
+    }
+    while (activePosters < 4 && posterQueue.length && posterCount < 48) {
+      const {item, resolve} = posterQueue.shift(); activePosters++; if(item.tmdb!==false)posterCount++;
       Promise.resolve().then(async () => {
-        if (typeof window.tmdbLookup !== 'function') return null;
+        if (item.tmdb === false || typeof window.tmdbLookup !== 'function') return null;
         const kind = item.type === 'movie' ? 'movie' : 'tv';
         const r = await window.tmdbLookup(item.title, {year:item.year, kind, lang:'en-US'});
         if (!r || r.adult === true || r.kind !== kind) return null;
@@ -148,61 +206,59 @@
     }
   }
 
-  /* WHERE-TO-WATCH LINKS
-     Every non-YouTube title went to justwatch.com/<region>/search, which is
-     not a real path — JustWatch localises it (/br/busca in Brazil), so the
-     Brazilian links 404'd and nobody reached the title.
-
-     Sending someone straight to the search on the service that actually
-     carries it is a better answer than an aggregator anyway: one tap from
-     playing. Kids does not load app.js, so this is a small self-contained
-     map rather than a reach into PLATFORMS. */
-  const KIDS_PLATFORM_SEARCH = {
-    'YouTube':      t => 'https://www.youtube.com/results?search_query=' + encodeURIComponent(t + ' full episode'),
-    'YouTube Kids': t => 'https://www.youtubekids.com/search?q=' + encodeURIComponent(t),
-    'Netflix':      t => 'https://www.netflix.com/search?q=' + encodeURIComponent(t),
-    'Disney+':      t => 'https://www.disneyplus.com/search?q=' + encodeURIComponent(t),
-    'Prime Video':  t => 'https://www.primevideo.com/search?phrase=' + encodeURIComponent(t),
-    'Max':          t => 'https://play.max.com/search?q=' + encodeURIComponent(t),
-    'HBO Max':      t => 'https://play.max.com/search?q=' + encodeURIComponent(t),
-    'Apple TV+':    t => 'https://tv.apple.com/search?term=' + encodeURIComponent(t),
-    'Paramount+':   t => 'https://www.paramountplus.com/search/?q=' + encodeURIComponent(t),
-    'Globoplay':    t => 'https://globoplay.globo.com/busca/?q=' + encodeURIComponent(t),
-    'Crunchyroll':  t => 'https://www.crunchyroll.com/search?q=' + encodeURIComponent(t),
-    'Spotify':      t => 'https://open.spotify.com/search/' + encodeURIComponent(t)
-  };
-
-  // JustWatch's search segment differs by territory. Assuming 'search'
-  // everywhere is what broke Brazil, so the mapping is explicit.
-  const JUSTWATCH_PATH = { br: 'busca', pt: 'busca', es: 'buscar', us: 'search', gb: 'search' };
-
+  const officialChannels = {'Pocoyo':'https://www.youtube.com/@pocoyo','Super Simple Songs':'https://www.youtube.com/@SuperSimpleSongs','The Wiggles':'https://www.youtube.com/@thewiggles','Cosmic Kids Yoga':'https://www.youtube.com/@CosmicKidsYoga','SciShow Kids':'https://www.youtube.com/@SciShowKids'};
+  const woodyChannels={pt:'https://www.youtube.com/channel/UCiFg-2CjsG_xcSsHNjDeLpw',es:'https://www.youtube.com/channel/UCHtZ2_7hd1zy9aCqrrcaqcQ',en:'https://www.youtube.com/channel/UCB2aeGGPNj7l5Z71bYNqX-Q'};
+  const isWoody=item=>item.title.includes('Woody Woodpecker');
+  let backupArtwork={};
+  const backupArtworkReady=(typeof fetch==='function'?fetch('/kids/artwork.json?v=5'):Promise.resolve(null)).then(r=>r?.ok?r.json():null).then(data=>{backupArtwork=data?.titles||{};}).catch(()=>{});
+  let watchLinks = {};
+  let currentWatchItem = null;
+  let watchOpener = null;
+  (typeof fetch==='function'?fetch('/kids/watch-links.json?v=5'):Promise.resolve(null)).then(r=>r?.ok?r.json():null).then(data=>{watchLinks=data?.titles||{};if(currentWatchItem)renderWatchLinks();updateDirectLinks();}).catch(()=>{});
+  function watchFallback(item) { return 'https://www.google.com/search?q='+encodeURIComponent('where to watch '+item.title+' '+item.year+' '+(document.getElementById('kids-watch-region')?.value==='BR'?'Brasil':'United States')); }
   function watchUrl(item) {
-    const direct = KIDS_PLATFORM_SEARCH[item.platform];
-    if (direct) return direct(item.title);
-
-    const country = String(read('match_user_country') || '').toLowerCase();
-    const region = /brazil|brasil/.test(country) ? 'br'
-                 : /portugal/.test(country) ? 'pt'
-                 : /spain|espa/.test(country) ? 'es'
-                 : /united kingdom|britain|england/.test(country) ? 'gb'
-                 : 'us';
-    return 'https://www.justwatch.com/' + region + '/' + (JUSTWATCH_PATH[region] || 'search')
-         + '?q=' + encodeURIComponent(item.title);
+    if(isWoody(item))return woodyChannels[document.getElementById('kids-watch-dub')?.value] || woodyChannels.en;
+    if (officialChannels[item.title]) return officialChannels[item.title];
+    const region = document.getElementById('kids-watch-region')?.value || 'US';
+    const entry = watchLinks[slug(item)], value = entry?.regions?.[region];
+    if (entry?.title === item.title && String(entry.year) === item.year && entry.type === item.type && typeof value === 'string' && new RegExp('^https://www\\.justwatch\\.com/'+region.toLowerCase()+'/(tv-show|serie|movie|filme)/[a-z0-9-]+$').test(value)) return value;
+    return watchFallback(item);
+  }
+  function renderWatchLinks() {
+    const item=currentWatchItem;if(!item||!allowedForAge(item,currentAge()))return;
+    const link=document.getElementById('kids-watch-continue');link.href=watchUrl(item);link.textContent=tr(officialChannels[item.title]?'channel':link.href.includes('justwatch.com')?'watchGuide':'watchFallback');
+    document.getElementById('kids-watch-fallback').href=watchFallback(item);
+    document.getElementById('kids-watch-note').textContent=item.note?tr(item.note):'';
   }
 
   function cardHTML(item, compact, slot) {
     const id = 'kid-' + slot + '-' + slug(item);
     const title = escapeHTML(item.title);
     const ages = item.ages.filter(a => a !== 'all').join(' · ');
-    return '<article class="kids-card" data-title="' + title + '"><div class="kids-card-poster"><div class="kids-cover-underlay" aria-hidden="true"><span>' + icons[item.cats[0]] + '</span><strong>' + title + '</strong></div><img id="' + id + '" src="' + makePoster(item) + '" alt="' + title + '" width="600" height="900" loading="lazy" decoding="async"><span class="kids-card-badge">' + ages + '</span></div><div class="kids-card-body"><h3>' + title + '</h3><div class="kids-card-meta"><span>' + escapeHTML(tr(item.type)) + '</span><span>' + escapeHTML(item.year) + '</span></div>' + (compact ? '' : '<p>' + escapeHTML(item.desc) + '</p>') + '<button class="kids-watch" type="button" data-watch="' + slug(item) + '" aria-label="' + escapeHTML(tr('watch') + ': ' + item.title) + '">' + escapeHTML(tr('watch')) + ' <span aria-hidden="true">↗</span></button></div></article>';
+    return '<article class="kids-card" data-title="' + title + '"><div class="kids-card-poster"><div class="kids-cover-underlay" aria-hidden="true"><span>' + icons[item.cats[0]] + '</span><strong>' + title + '</strong></div><img id="' + id + '" src="' + makePoster(item) + '" alt="' + title + '" width="600" height="900" loading="lazy" decoding="async"><span class="kids-card-badge">' + ages + '</span></div><div class="kids-card-body"><h3><a class="kids-title-link" data-title-watch="'+slug(item)+'" href="'+escapeHTML(watchUrl(item))+'">' + title + '</a></h3><div class="kids-card-meta"><span>' + escapeHTML(tr(item.type)) + '</span><span>' + escapeHTML(item.year) + '</span><button class="kids-heart" type="button" data-save="'+slug(item)+'" aria-pressed="'+savedTitles.has(slug(item))+'" aria-label="'+escapeHTML(tr(savedTitles.has(slug(item))?'saved':'save')+': '+item.title)+'">'+(savedTitles.has(slug(item))?'♥':'♡')+'</button></div>' + (compact ? '' : '<p>' + escapeHTML(item.desc) + '</p>') + (item.note ? '<p class="kids-title-note">'+escapeHTML(tr(item.note))+'</p>' : '') + '<button class="kids-watch" type="button" data-watch="' + slug(item) + '" aria-label="' + escapeHTML(tr('watch') + ': ' + item.title) + '">' + escapeHTML(tr('watch')) + ' <span aria-hidden="true">↗</span></button></div></article>';
   }
 
   async function hydratePoster(item, slot) {
     const img = document.getElementById('kid-' + slot + '-' + slug(item));
     if (!img) return;
     img.onerror = () => { img.onerror = null; img.style.visibility = 'hidden'; };
-    const r = await fetchPoster(item);
-    if (!r || !img.isConnected) return;
+    const lookup = fetchPoster(item);
+    // The registry was itself built through the secure proxy; it keeps every
+    // verified cover visible while fresh lookups respect the proxy rate limit.
+    await backupArtworkReady;
+    const cached=backupArtwork[slug(item)];
+    if(img.isConnected && cached?.title===item.title && String(cached.year)===item.year && cached.type===item.type && typeof cached.poster==='string' && /^https:\/\/(static\.tvmaze\.com|is[1-5]-ssl\.mzstatic\.com|image\.tmdb\.org)\//.test(cached.poster)){
+      img.onerror=()=>{img.onerror=null;img.src=makePoster(item);};img.src=cached.poster;
+    }
+    const r = await lookup;
+    if (!img.isConnected) return;
+    if (!r) {
+      const entry=backupArtwork[slug(item)];
+      if(entry?.title===item.title && String(entry.year)===item.year && typeof entry.poster==='string' && /^https:\/\/(static\.tvmaze\.com|is[1-5]-ssl\.mzstatic\.com|image\.tmdb\.org)\//.test(entry.poster)) {
+        img.onerror=()=>{img.onerror=null;img.src=makePoster(item);};img.src=entry.poster;
+      }
+      return;
+    }
     const source = r.posterLarge || r.poster;
     const preload = new Image();
     preload.onload = () => {
@@ -221,6 +277,16 @@
     preload.src = source;
   }
 
+  function updateDirectLinks(){
+    document.querySelectorAll('[data-title-watch]').forEach(link=>{const item=LIBRARY.find(x=>slug(x)===link.dataset.titleWatch);if(item && allowedForAge(item,currentAge()))link.href=watchUrl(item);});
+  }
+  function renderNostalgia(){
+    const host=document.getElementById('kids-nostalgia');if(!host)return;
+    const names=['The Woody Woodpecker Show','The New Woody Woodpecker Show','Garfield and Friends','DuckTales','Doug','Recess','Hey Arnold!','Ben 10','Lilo & Stitch: The Series','The Magic School Bus','Chip \'n Dale Rescue Rangers','The Jetsons'];
+    const picks=names.map(name=>LIBRARY.find(i=>i.title===name)).filter(i=>i && allowedForAge(i,currentAge()));
+    host.innerHTML=picks.map(i=>cardHTML(i,false,'nostalgia')).join('') || '<p>'+escapeHTML(tr('nostalgiaYoung'))+'</p>';
+    picks.forEach(i=>hydratePoster(i,'nostalgia'));updateDirectLinks();
+  }
   function renderFeatured() {
     const host = document.getElementById('kids-featured'); if (!host) return;
     const pool = allowedLibrary(currentAge());
@@ -259,11 +325,50 @@
 
   function renderGrid() {
     const host = document.getElementById('kids-grid'); if (!host) return;
-    const items = allowedLibrary(currentAge()).filter(x => category === 'all' || x.cats.includes(category));
+    const search=normalizeTitle(document.getElementById('kids-search')?.value || ''),era=document.getElementById('kids-era')?.value || 'all';
+    const items = allowedLibrary(currentAge()).filter(x => (category === 'all' || x.cats.includes(category)) && normalizeTitle(x.title).includes(search) && (era==='all' || Math.floor(Number(x.year)/10)*10===Number(era)));
     host.innerHTML = items.map((x,i) => cardHTML(x, false, 'grid-' + i)).join('');
     host.querySelectorAll('.kids-card').forEach((el,i) => el.style.setProperty('--card-order', Math.min(i,7)));
     document.getElementById('kids-grid-status').textContent = items.length ? items.length + ' ' + tr('pickCount') : tr('empty');
     items.forEach((x,i) => hydratePoster(x, 'grid-' + i));
+  }
+
+  function renderMatchControls() {
+    const mood=document.getElementById('kids-match-mood');if(mood){const value=mood.value||'all';mood.innerHTML=Object.keys(icons).map(key=>'<option value="'+key+'">'+icons[key]+' '+escapeHTML(categoryLabel(key))+'</option>').join('');mood.value=value;}
+  }
+  function renderCards(hostId,items,slot) {
+    const host=document.getElementById(hostId);if(!host)return;
+    const safe=items.filter(x=>allowedForAge(x,currentAge()));
+    host.innerHTML=safe.map((x,i)=>cardHTML(x,false,slot+'-'+i)).join('');safe.forEach((x,i)=>hydratePoster(x,slot+'-'+i));
+  }
+  function renderMatchResults() {
+    matchPicks=matchPicks.filter(x=>allowedForAge(x,currentAge()));
+    renderCards('kids-match-results',matchPicks,'match');
+    document.getElementById('kids-match-status').textContent=matchPicks.length?tr('matchReady'):'';
+  }
+  function clearMatch() { matchPicks=[];renderMatchResults(); }
+  function makeKidsMatch() {
+    const mood=document.getElementById('kids-match-mood').value,format=document.getElementById('kids-match-format').value,era=document.getElementById('kids-match-era').value;
+    const pool=allowedLibrary(currentAge()).filter(x=>(mood==='all'||x.cats.includes(mood))&&(format==='all'||x.type===format)&&(era==='all'||Math.floor(Number(x.year)/10)*10===Number(era)));
+    // Rotate ties so another tap explores more of the same approved collection.
+    const ranked=pool.map(item=>({item,score:(previousMatch.includes(item.title)?0:2)+Math.random()})).sort((a,b)=>b.score-a.score);
+    matchPicks=ranked.slice(0,3).map(x=>x.item);previousMatch=matchPicks.map(x=>x.title);
+    renderMatchResults();document.getElementById('kids-match-status').textContent=matchPicks.length?tr('matchReady'):tr('matchEmpty');
+    document.getElementById('kids-match-submit').textContent=tr('matchAgain');
+    if(matchPicks.length)document.getElementById('kids-match-results').scrollIntoView({block:'nearest',behavior:reducedMotion()?'auto':'smooth'});
+  }
+  function renderSaved() {
+    const picks=allowedLibrary(currentAge()).filter(x=>savedTitles.has(slug(x)));
+    renderCards('kids-saved-results',picks,'saved');
+    document.getElementById('kids-saved-empty').hidden=picks.length>0;
+  }
+  function toggleSaved(key) {
+    const item=allowedLibrary(currentAge()).find(x=>slug(x)===key);if(!item)return;
+    if(savedTitles.has(key))savedTitles.delete(key);else savedTitles.add(key);
+    // Persist only keys of curated titles, never arbitrary content from storage.
+    savedTitles=new Set(LIBRARY.filter(x=>savedTitles.has(slug(x))).map(slug));write(SAVED_KEY,JSON.stringify([...savedTitles]));
+    document.querySelectorAll('[data-save]').forEach(button=>{const saved=savedTitles.has(button.dataset.save);const entry=LIBRARY.find(x=>slug(x)===button.dataset.save);button.textContent=saved?'♥':'♡';button.setAttribute('aria-pressed',String(saved));button.setAttribute('aria-label',tr(saved?'saved':'save')+': '+entry.title);});
+    const removingFocused=document.activeElement?.closest('#kids-saved-results');renderSaved();if(removingFocused)document.getElementById('kids-saved-title').focus();
   }
 
   function queryTokens(q) {
@@ -348,19 +453,19 @@
   function highlightTitle(key) {
     const item = allowedLibrary(currentAge()).find(x => slug(x) === key);
     if (!item) return;
-    if (category !== 'all') { category = 'all'; renderChips(); renderGrid(); }
+    category='all';document.getElementById('kids-search').value='';document.getElementById('kids-era').value='all';renderChips();renderGrid();
     const card = [...document.querySelectorAll('#kids-grid .kids-card')].find(el => el.dataset.title === item.title);
     card?.scrollIntoView({behavior:reducedMotion() ? 'auto' : 'smooth', block:'center'});
     card?.classList.add('is-surprise'); card?.querySelector('button')?.focus({preventScroll:true});
     setTimeout(() => card?.classList.remove('is-surprise'), 2200);
   }
-  function openWatch(key) {
+  function openWatch(key,opener) {
     const item = allowedLibrary(currentAge()).find(x => slug(x) === key); if (!item) return;
     const dialog = document.getElementById('kids-watch-dialog');
     document.getElementById('kids-watch-name').textContent = item.title;
-    const link = document.getElementById('kids-watch-continue'); link.href = watchUrl(item);
+    currentWatchItem=item;watchOpener=opener;renderWatchLinks();
     if (typeof dialog.showModal === 'function') dialog.showModal();
-    else { document.getElementById('kids-answer').textContent = tr('watchDialogText'); document.getElementById('kids-chat').classList.add('show'); }
+    else { dialog.setAttribute('open','');dialog.scrollIntoView({block:'center'}); }
   }
   function remoteNavigation(event) {
     if (!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(event.key) || event.altKey || event.metaKey || event.ctrlKey) return;
@@ -386,21 +491,33 @@
     const requested = params.get('lang') || read(LANG_KEY) || navigator.language || 'en';
     const age = read(AGE_KEY) || 'all';
     const ageSelect = document.getElementById('kids-age'); if (ageSelect) ageSelect.value = ['all','3-5','6-8','9-12'].includes(age) ? age : 'all';
+    const region=read('match_kids_watch_region');const country=String(read('match_user_country')||'').toLowerCase();
+    document.getElementById('kids-watch-region').value=['BR','US'].includes(region)?region:(/brasil|brazil|^br$/.test(country)||normalizeLang(requested)==='pt-BR'?'BR':'US');
     setLanguage(requested);
 
     document.getElementById('kids-lang')?.addEventListener('change', e => setLanguage(e.target.value));
     document.getElementById('kids-exit')?.addEventListener('click', exitKids);
-    ageSelect?.addEventListener('change', () => { write(AGE_KEY, ageSelect.value); clearChat(); document.getElementById('kids-watch-dialog')?.close?.(); renderGrid(); renderFeatured(); });
+    ageSelect?.addEventListener('change', () => { write(AGE_KEY, ageSelect.value); clearChat();clearMatch(); document.getElementById('kids-watch-dialog')?.close?.(); renderChips();renderGrid(); renderFeatured();renderNostalgia();renderSaved(); });
+    document.getElementById('kids-match-form').addEventListener('submit',event=>{event.preventDefault();makeKidsMatch();});
+    document.querySelectorAll('#kids-match-form select').forEach(select=>select.addEventListener('change',clearMatch));
+    document.getElementById('kids-search').addEventListener('input',renderGrid);
+    document.getElementById('kids-era').addEventListener('change',renderGrid);
+    document.getElementById('kids-watch-region').addEventListener('change',event=>{write('match_kids_watch_region',event.target.value);renderWatchLinks();updateDirectLinks();});
     document.getElementById('kids-ask-form')?.addEventListener('submit', e => { e.preventDefault(); askKids(document.getElementById('kids-question')?.value || ''); });
 
     if (typeof window.initVoiceInput === 'function') {
       try { window.initVoiceInput('kids-question','kids-mic', () => document.getElementById('kids-ask-form')?.requestSubmit()); } catch (_) {}
     }
     updateMotion();
+    document.getElementById('kids-watch-dub')?.addEventListener('change',event=>{write('match_kids_dub',event.target.value);updateDirectLinks();renderWatchLinks();});
+    const residence=(read('match_user_country') || '').toLowerCase();
+    const dub=document.getElementById('kids-watch-dub');
+    if(dub)dub.value=read('match_kids_dub') || (/brasil|brazil|portugal|^br$|^pt$/.test(residence) || lang==='pt-BR'?'pt':/spain|espa|mex|argentin|colomb|chile|peru|uruguay|ecuador|venezuela/.test(residence) || lang==='es'?'es':'en');
+    updateDirectLinks();
     document.getElementById('kids-motion')?.addEventListener('click', () => { motionPaused = !motionPaused; write('match_kids_pause_motion', String(motionPaused)); updateMotion(); });
     document.getElementById('kids-surprise')?.addEventListener('click', () => { const pool = allowedLibrary(currentAge()); if (pool.length) highlightTitle(slug(pool[Math.floor(Math.random()*pool.length)])); });
-    document.addEventListener('click', event => { const feature = event.target.closest('[data-feature]'); const watch = event.target.closest('[data-watch]'); if (feature) { event.preventDefault(); highlightTitle(feature.dataset.feature); } if (watch) openWatch(watch.dataset.watch); });
-    document.getElementById('kids-watch-continue')?.addEventListener('click', () => document.getElementById('kids-watch-dialog').close());
+    document.addEventListener('click', event => { const feature = event.target.closest('[data-feature]'); const watch = event.target.closest('[data-watch]');const save=event.target.closest('[data-save]'); if (feature) { event.preventDefault(); highlightTitle(feature.dataset.feature); } if (watch) openWatch(watch.dataset.watch,watch);if(save)toggleSaved(save.dataset.save); });
+    document.getElementById('kids-watch-dialog').addEventListener('close',()=>{currentWatchItem=null;watchOpener?.focus();});
     document.addEventListener('keydown', remoteNavigation);
     document.addEventListener('visibilitychange', () => document.body.classList.toggle('kids-hidden', document.hidden));
   }

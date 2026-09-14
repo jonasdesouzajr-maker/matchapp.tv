@@ -15,12 +15,19 @@
   const stored = () => { try { return localStorage.getItem(SEEN); } catch (_) { return null; } };
   const markSeen = () => { try { localStorage.setItem(SEEN, release.version); } catch (_) {} };
   const installed = () => (window.matchMedia && matchMedia('(display-mode: standalone)').matches) || navigator.standalone === true;
+  const knownInstalled = () => installed() || !!window.matchAppInstallState?.isInstalled();
+  const installedLabel = () => lang().startsWith('pt') ? '✓ App instalado' : lang().startsWith('es') ? '✓ App instalado' : '✓ App installed';
+  const compare = (a,b) => { const x=a.split('.').map(Number),y=b.split('.').map(Number); for(let i=0;i<4;i++)if(x[i]!==y[i])return x[i]-y[i];return 0; };
   function syncButtons() {
     document.querySelectorAll('.install-btn').forEach(button => {
-      if (!buttonState.has(button)) buttonState.set(button, {html:button.innerHTML, display:button.style.display, aria:button.getAttribute('aria-label')});
-      if (window.matchAppUpdatePending) { button.style.display = 'inline-flex'; button.textContent = tr('update'); button.setAttribute('aria-label',tr('update')); }
+      const pending=!!window.matchAppUpdatePending, isInstalled=knownInstalled();
+      if((pending||isInstalled)&&!buttonState.has(button))buttonState.set(button,{html:button.innerHTML,display:button.style.display,aria:button.getAttribute('aria-label')});
+      button.classList.toggle('has-app-update',pending);button.classList.toggle('is-app-installed',isInstalled&&!pending);
+      if(pending||isInstalled){button.style.display='inline-flex';button.textContent=pending?tr('update'):installedLabel();button.setAttribute('aria-label',pending?tr('ready'):installedLabel());button.title=pending?tr('ready'):installedLabel();}
+      else if(buttonState.has(button)){const old=buttonState.get(button);button.innerHTML=old.html;button.style.display=old.display;if(old.aria)button.setAttribute('aria-label',old.aria);else button.removeAttribute('aria-label');button.removeAttribute('title');buttonState.delete(button);}
     });
   }
+  window.syncMatchAppUpdateButtons=syncButtons;
   function notice(pending) {
     let panel = document.getElementById('app-release-notice');
     if (!panel) {
@@ -44,14 +51,17 @@
       const next = await response.json();
       if (!/^\d{4}\.\d{2}\.\d{2}\.\d+$/.test(next.version || '') || !next.notes?.en || typeof next.functional !== 'boolean') return;
       // Never roll backwards if a deployment is still propagating.
-      const compare = (a,b) => { const x=a.split('.').map(Number),y=b.split('.').map(Number); for(let i=0;i<4;i++)if(x[i]!==y[i])return x[i]-y[i];return 0; };
       if (compare(next.version,window.MATCHAPP_BUILD) < 0) return;
       if (release && compare(next.version,release.version) < 0) return;
       release = next;
-      const pending = compare(release.version,window.MATCHAPP_BUILD) > 0;
+      const lastInstalled=window.matchAppInstallState?.installedBuild();
+      const baseline=knownInstalled()&&!installed()&&/^\d{4}\.\d{2}\.\d{2}\.\d+$/.test(lastInstalled||'')?lastInstalled:window.MATCHAPP_BUILD;
+      const pending = compare(release.version,baseline) > 0;
       window.matchAppUpdatePending = pending ? release : null;
       syncButtons();
-      if (release.functional && dismissedVersion !== release.version && stored() !== release.version && (installed() || pending)) notice(pending);
+      if(knownInstalled()&&typeof navigator.setAppBadge==='function'&&pending)try{await navigator.setAppBadge();}catch(_){}
+      if(installed()&&!pending&&typeof navigator.clearAppBadge==='function')try{await navigator.clearAppBadge();}catch(_){}
+      if (release.functional && dismissedVersion !== release.version && stored() !== release.version && (knownInstalled() || pending)) notice(pending);
     } catch (_) { /* offline: keep the current release and all sign-in methods usable */ }
     finally { clearTimeout(timer); checking = false; }
   };
@@ -65,7 +75,14 @@
       try { response = await fetch(location.pathname || '/', {cache:'reload',signal:controller.signal}); }
       finally { clearTimeout(timer); }
       if (!response.ok) throw new Error('Release unavailable');
+      const buildTimer=setTimeout(()=>controller.abort(),12000);let buildResponse;
+      try{buildResponse=await fetch('/build-meta.js?appUpdate='+encodeURIComponent(release.version),{cache:'no-store',signal:controller.signal});}finally{clearTimeout(buildTimer);}
+      const build=buildResponse.ok?(await buildResponse.text()).match(/MATCHAPP_BUILD\s*=\s*['"]([^'"]+)['"]/)?.[1]:null;
+      if(!build||!/^\d{4}\.\d{2}\.\d{2}\.\d+$/.test(build)||compare(build,release.version)<0)throw new Error('Release still deploying');
       if ('serviceWorker' in navigator) { try { const reg = await navigator.serviceWorker.getRegistration(); if(reg) await reg.update(); } catch (_) {} }
+      // Other open installed windows can apply the same explicit update request.
+      // Never mark a browser-tab reload as proof that the installed app updated.
+      try{localStorage.setItem('match_app_update_requested',JSON.stringify({version:release.version,at:Date.now()}));}catch(_){}
       const url = new URL(location.href); url.searchParams.set('appUpdate', release.version); location.replace(url.href);
     } catch (_) {
       const hint = document.querySelector('.app-release-hint'); if (hint) hint.textContent = tr('retry');
@@ -78,6 +95,8 @@
     setInterval(window.checkMatchAppRelease,15*60*1000);
     window.addEventListener('online',window.checkMatchAppRelease);
     window.addEventListener('appinstalled', () => { if(release) markSeen(); });
+    window.addEventListener('matchapp:installstate',()=>{syncButtons();window.checkMatchAppRelease();});
+    window.addEventListener('storage',async event=>{if(event.key!=='match_app_update_requested'||!installed())return;let request;try{request=JSON.parse(event.newValue);}catch(_){return;}if(!request||Date.now()-request.at>60000||request.at>Date.now()+5000)return;await window.checkMatchAppRelease();if(window.matchAppUpdatePending?.version===request.version)window.updateMatchApp();});
     document.addEventListener('visibilitychange', () => {if(!document.hidden)window.checkMatchAppRelease();});
     document.addEventListener('matchapp:langchange', () => {syncButtons();if(release && document.getElementById('app-release-notice')?.hidden===false)notice(!!window.matchAppUpdatePending);});
   }

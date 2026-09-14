@@ -7,6 +7,7 @@
     "build:kids-covers": "node tools/build-kids-covers.js"
   },
   "devDependencies": {
-    "jsdom": "26.1.0"
+    "jsdom": "26.1.0",
+    "@electric-sql/pglite": "0.5.8"
   }
 }

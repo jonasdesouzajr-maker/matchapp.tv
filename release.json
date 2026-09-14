@@ -1,10 +1,24 @@
 {
-  "version": "2026.09.13.2",
+  "version": "2026.09.13.3",
   "date": "2026-09-13",
   "functional": true,
   "notes": {
-    "en": "A new Kids world with your favorite titles, illustrated cover backups, TV scaling and accessible motion controls. Device sign-in supports passkeys after enrollment in your profile.",
-    "pt-BR": "Um novo mundo Kids com seus títulos favoritos, capas ilustradas de reserva, adaptação para TV e controles de animação acessíveis. Adicione uma chave de acesso no perfil para entrar com seu dispositivo.",
-    "es": "Un nuevo mundo Kids con tus títulos favoritos, portadas ilustradas de respaldo, diseño para TV y controles de animación accesibles. Añade una clave de acceso en tu perfil para entrar con tu dispositivo."
+    "en": [
+      "Kids Mode now includes 64 reviewed titles, classic-cartoon nostalgia and regional viewing links, including official dubbed Woody Woodpecker channels.",
+      "Permanent history exclusions and exact match criteria prevent unwanted repeats. Not for me opens history with clear rematch choices.",
+      "Restored event artwork and official AHS 13 season poster. Installed apps show an update signal and update the existing installation.",
+      "Private friends, optional online status and remote Match Together are available after backend activation, with illustrated avatars and optional personal share cards."
+    ],
+    "pt": [
+      "Kids Mode com 64 títulos revisados, clássicos nostálgicos e links para assistir, incluindo canais oficiais dublados do Pica-Pau.",
+      "Exclusões permanentes do histórico e critérios exatos evitam repetições. Não é para mim abre o histórico com opções para outro match.",
+      "Artes dos eventos restauradas e pôster oficial de AHS 13. Apps instalados mostram aviso de atualização.",
+      "Amigos privados, status online opcional e match juntos à distância após ativação do backend, com avatares ilustrados e cartões para compartilhar."
+    ],
+    "es": [
+      "Kids Mode incluye 64 títulos revisados, clásicos y enlaces regionales para verlos, con canales oficiales del Pájaro Loco.",
+      "El historial excluye títulos permanentemente. Los matches respetan los criterios exactos.",
+      "Se restauraron las imágenes de eventos y el póster oficial de AHS 13. Las apps instaladas muestran actualizaciones."
+    ]
   }
 }

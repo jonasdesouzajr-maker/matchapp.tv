@@ -94,6 +94,8 @@
                 .map(x => String(x || '').trim())
                 .filter(x => x && x !== 'any');
         });
+        const unique = Object.values(state).flat();
+        if(unique.includes('funny'))state.mood=state.mood.filter(v=>v==='funny'||!window.matchPolicy?.incompatible(v,{mood:['funny']}));
         save();
         renderAll();
     };
@@ -113,10 +115,10 @@
     function toggle(key, value, sel) {
         const list = state[key];
         const at = list.indexOf(value);
-        if (at >= 0) list.splice(at, 1); else list.push(value);
+        if (at >= 0) list.splice(at, 1); else if (!window.matchPolicy?.incompatible(value,state)) list.push(value);
         save();
         syncSelect(sel, key);
-        renderField(sel, key);
+        renderAll();
         document.dispatchEvent(new CustomEvent('matchapp:criteriachange', { detail: window.getMatchCriteria() }));
     }
 
@@ -124,7 +126,7 @@
         state[key] = [];
         save();
         syncSelect(sel, key);
-        renderField(sel, key);
+        renderAll();
         document.dispatchEvent(new CustomEvent('matchapp:criteriachange', { detail: window.getMatchCriteria() }));
     }
 
@@ -201,7 +203,7 @@
                 parts.push(
                     '<button type="button" class="crit-chip' + (on ? ' is-on' : '') + (optIn ? ' crit-optin' : '') + '" ' +
                     'data-value="' + escapeHtml(o.value) + '" aria-pressed="' + (on ? 'true' : 'false') + '"' +
-                    (optIn ? ' title="Only ever matches when you tick it — never shows up in a Surprise Me draw."' : '') +
+                    (window.matchPolicy?.incompatible(o.value,state) && !on ? ' disabled aria-disabled="true" title="Conflicts with a mood you selected. Untick that mood first."' : (optIn ? ' title="Only ever matches when you tick it — never shows up in a Surprise Me draw."' : '')) +
                     '>' + escapeHtml(o.label) + '</button>'
                 );
             });
@@ -355,6 +357,12 @@
 
     function init() {
         load();
+    const rematch = new URLSearchParams(location.search).get('rematch');
+    if (rematch === 'new') FIELDS.forEach(f => { state[f.key]=[]; });
+    if (rematch === 'same') {
+        try { const previous=JSON.parse(localStorage.getItem('match_rematch_criteria') || '{}');FIELDS.forEach(f=>{if(Array.isArray(previous[f.key]))state[f.key]=previous[f.key];}); } catch (_) {}
+    }
+    if (rematch) { const form=document.getElementById('questionnaire-box');if(form){form.style.display='block';form.scrollIntoView({behavior:'smooth',block:'start'});} }
         FIELDS.forEach(mountField);
     }
 

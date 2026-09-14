@@ -108,7 +108,7 @@
         btn.type = 'button';
         btn.className = 'matchapp-kids-toggle';
         btn.setAttribute('aria-label', kidsLabel());
-        btn.innerHTML = '<img src="/kids/kids-logo.svg" alt=""><span></span>';
+        btn.innerHTML = '<img src="/kids/kids-logo-sm.jpeg" alt=""><span></span>';
         btn.querySelector('span').textContent = kidsLabel();
         btn.addEventListener('click', () => {
             try { localStorage.setItem(KIDS_MODE_KEY, 'true'); } catch (e) {}

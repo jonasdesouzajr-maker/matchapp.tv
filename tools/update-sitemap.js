@@ -52,7 +52,8 @@ function main() {
         pri: loc.endsWith('/where-to-watch/') ? '0.8' : '0.6'
     }));
 
-    const all = [...CORE, ...seo, ...watch];
+    const kids = readList('kids-urls.json').map(loc => ({loc, freq:'weekly', pri:'0.6'}));
+    const all = [...CORE, ...seo, ...watch, ...kids];
 
     // Guard against a generator ever emitting a duplicate.
     const seen = new Set();

@@ -58,11 +58,19 @@
       "icons": [
         {
           "src": "/kids/kids-logo.jpeg",
-          "sizes": "2048x2048",
+          "sizes": "512x512",
           "type": "image/jpeg"
         }
       ]
     }
   ],
-  "id": "/"
+  "id": "/",
+  "related_applications": [
+    {
+      "platform": "webapp",
+      "id": "https://matchapp.tv/",
+      "url": "https://matchapp.tv/manifest.json"
+    }
+  ],
+  "prefer_related_applications": false
 }

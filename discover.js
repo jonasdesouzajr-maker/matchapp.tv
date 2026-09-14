@@ -592,6 +592,10 @@ function appendAssistantBubble(text, results, opts) {
 }
 
 async function renderResultsInto(grid, items, baseIndex) {
+    await window.matchPolicy?.ready();
+    if(!Array.isArray(items))return;
+    items=items.filter(item=>!window.matchPolicy?.known().has(window.matchPolicy.key(item.title || item.trackName || item.collectionName)));
+    grid.replaceChildren();
     if (!items || !items.length) return;
     grid.innerHTML = items.map((it, i) => discoverCardHTML(it, baseIndex + i)).join('');
     grid.style.display = 'grid';

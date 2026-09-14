@@ -1,0 +1,567 @@
+{
+  "updated": "2026-09-14",
+  "source": "JustWatch public title catalogue; paths identify titles, availability remains regional.",
+  "titles": {
+    "bluey": {
+      "title": "Bluey",
+      "year": "2018",
+      "type": "series",
+      "regions": {
+        "BR": "https://www.justwatch.com/br/serie/bluey",
+        "US": "https://www.justwatch.com/us/tv-show/bluey"
+      }
+    },
+    "peppa-pig": {
+      "title": "Peppa Pig",
+      "year": "2004",
+      "type": "series",
+      "regions": {
+        "BR": "https://www.justwatch.com/br/serie/peppa-pig",
+        "US": "https://www.justwatch.com/us/tv-show/peppa-pig"
+      }
+    },
+    "daniel-tiger-s-neighborhood": {
+      "title": "Daniel Tiger's Neighborhood",
+      "year": "2012",
+      "type": "series",
+      "regions": {
+        "BR": "https://www.justwatch.com/br/serie/daniel-tigre",
+        "US": "https://www.justwatch.com/us/tv-show/daniel-tigers-neighborhood"
+      }
+    },
+    "sesame-street": {
+      "title": "Sesame Street",
+      "year": "1969",
+      "type": "series",
+      "regions": {
+        "BR": "https://www.justwatch.com/br/serie/rua-sesamo",
+        "US": "https://www.justwatch.com/us/tv-show/sesame-street"
+      }
+    },
+    "numberblocks": {
+      "title": "Numberblocks",
+      "year": "2017",
+      "type": "series",
+      "regions": {
+        "BR": "https://www.justwatch.com/br/serie/numberblocks",
+        "US": "https://www.justwatch.com/us/tv-show/numberblocks"
+      }
+    },
+    "ask-the-storybots": {
+      "title": "Ask the StoryBots",
+      "year": "2016",
+      "type": "series",
+      "regions": {
+        "BR": "https://www.justwatch.com/br/serie/ask-the-storybots",
+        "US": "https://www.justwatch.com/us/tv-show/ask-the-storybots"
+      }
+    },
+    "puffin-rock": {
+      "title": "Puffin Rock",
+      "year": "2015",
+      "type": "series",
+      "regions": {
+        "BR": "https://www.justwatch.com/br/serie/puffin-rock",
+        "US": "https://www.justwatch.com/us/tv-show/puffin-rock"
+      }
+    },
+    "pocoyo": {
+      "title": "Pocoyo",
+      "year": "2005",
+      "type": "series",
+      "regions": {
+        "BR": "https://www.justwatch.com/br/serie/pocoyo",
+        "US": "https://www.justwatch.com/us/tv-show/pocoyo"
+      }
+    },
+    "gabby-s-dollhouse": {
+      "title": "Gabby's Dollhouse",
+      "year": "2021",
+      "type": "series",
+      "regions": {
+        "BR": "https://www.justwatch.com/br/serie/gabbys-dollhouse",
+        "US": "https://www.justwatch.com/us/tv-show/gabbys-dollhouse"
+      }
+    },
+    "octonauts": {
+      "title": "Octonauts",
+      "year": "2010",
+      "type": "series",
+      "regions": {
+        "BR": "https://www.justwatch.com/br/serie/os-octonautas",
+        "US": "https://www.justwatch.com/us/tv-show/the-octonauts"
+      }
+    },
+    "wild-kratts": {
+      "title": "Wild Kratts",
+      "year": "2011",
+      "type": "series",
+      "regions": {
+        "BR": "https://www.justwatch.com/br/serie/wild-kratts",
+        "US": "https://www.justwatch.com/us/tv-show/wild-kratts"
+      }
+    },
+    "shaun-the-sheep": {
+      "title": "Shaun the Sheep",
+      "year": "2007",
+      "type": "series",
+      "regions": {
+        "BR": "https://www.justwatch.com/br/serie/shaun-the-sheep",
+        "US": "https://www.justwatch.com/us/tv-show/shaun-the-sheep"
+      }
+    },
+    "my-neighbor-totoro": {
+      "title": "My Neighbor Totoro",
+      "year": "1988",
+      "type": "movie",
+      "regions": {
+        "BR": "https://www.justwatch.com/br/filme/o-meu-vizinho-totoro",
+        "US": "https://www.justwatch.com/us/movie/my-neighbor-totoro"
+      }
+    },
+    "kiki-s-delivery-service": {
+      "title": "Kiki's Delivery Service",
+      "year": "1989",
+      "type": "movie",
+      "regions": {
+        "BR": "https://www.justwatch.com/br/filme/o-servico-de-entregas-da-kiki",
+        "US": "https://www.justwatch.com/us/movie/kikis-delivery-service"
+      }
+    },
+    "paddington": {
+      "title": "Paddington",
+      "year": "2014",
+      "type": "movie",
+      "regions": {
+        "BR": "https://www.justwatch.com/br/filme/as-aventuras-de-paddington",
+        "US": "https://www.justwatch.com/us/movie/paddington"
+      }
+    },
+    "paddington-2": {
+      "title": "Paddington 2",
+      "year": "2017",
+      "type": "movie",
+      "regions": {
+        "BR": "https://www.justwatch.com/br/filme/paddington-2",
+        "US": "https://www.justwatch.com/us/movie/paddington-2"
+      }
+    },
+    "winnie-the-pooh": {
+      "title": "Winnie the Pooh",
+      "year": "2011",
+      "type": "movie",
+      "regions": {
+        "BR": "https://www.justwatch.com/br/filme/o-ursinho-pooh",
+        "US": "https://www.justwatch.com/us/movie/winnie-lourson"
+      }
+    },
+    "the-peanuts-movie": {
+      "title": "The Peanuts Movie",
+      "year": "2015",
+      "type": "movie",
+      "regions": {
+        "BR": "https://www.justwatch.com/br/filme/snoopy-and-charlie-brown-peanuts-o-filme",
+        "US": "https://www.justwatch.com/us/movie/peanuts"
+      }
+    },
+    "luca": {
+      "title": "Luca",
+      "year": "2021",
+      "type": "movie",
+      "regions": {
+        "BR": "https://www.justwatch.com/br/filme/luca",
+        "US": "https://www.justwatch.com/us/movie/luca-2021"
+      }
+    },
+    "ratatouille": {
+      "title": "Ratatouille",
+      "year": "2007",
+      "type": "movie",
+      "regions": {
+        "BR": "https://www.justwatch.com/br/filme/ratatui",
+        "US": "https://www.justwatch.com/us/movie/ratatouille"
+      }
+    },
+    "super-simple-songs": {
+      "title": "Super Simple Songs",
+      "year": "",
+      "type": "music",
+      "regions": {}
+    },
+    "the-wiggles": {
+      "title": "The Wiggles",
+      "year": "1998",
+      "type": "music",
+      "regions": {
+        "US": "https://www.justwatch.com/us/tv-show/the-wiggles"
+      }
+    },
+    "cosmic-kids-yoga": {
+      "title": "Cosmic Kids Yoga",
+      "year": "",
+      "type": "series",
+      "regions": {}
+    },
+    "scishow-kids": {
+      "title": "SciShow Kids",
+      "year": "",
+      "type": "series",
+      "regions": {}
+    },
+    "the-jetsons": {
+      "title": "The Jetsons",
+      "year": "1962",
+      "type": "series",
+      "regions": {
+        "BR": "https://www.justwatch.com/br/serie/os-jetsons",
+        "US": "https://www.justwatch.com/us/tv-show/the-jetsons"
+      }
+    },
+    "the-yogi-bear-show": {
+      "title": "The Yogi Bear Show",
+      "year": "1961",
+      "type": "series",
+      "regions": {
+        "BR": "https://www.justwatch.com/br/serie/o-show-do-ze-colmeia",
+        "US": "https://www.justwatch.com/us/tv-show/the-yogi-bear-show"
+      }
+    },
+    "the-flintstones": {
+      "title": "The Flintstones",
+      "year": "1960",
+      "type": "series",
+      "regions": {
+        "BR": "https://www.justwatch.com/br/serie/os-flintstones",
+        "US": "https://www.justwatch.com/us/tv-show/the-flintstones"
+      }
+    },
+    "scooby-doo-where-are-you": {
+      "title": "Scooby-Doo, Where Are You!",
+      "year": "1969",
+      "type": "series",
+      "regions": {
+        "BR": "https://www.justwatch.com/br/serie/scooby-doo-cade-voce",
+        "US": "https://www.justwatch.com/us/tv-show/scooby-doo-where-are-you"
+      }
+    },
+    "schoolhouse-rock": {
+      "title": "Schoolhouse Rock!",
+      "year": "1973",
+      "type": "series",
+      "regions": {
+        "US": "https://www.justwatch.com/us/tv-show/schoolhouse-rock"
+      }
+    },
+    "the-many-adventures-of-winnie-the-pooh": {
+      "title": "The Many Adventures of Winnie the Pooh",
+      "year": "1977",
+      "type": "movie",
+      "regions": {
+        "BR": "https://www.justwatch.com/br/filme/as-muitas-aventuras-do-ursinho-puff",
+        "US": "https://www.justwatch.com/us/movie/the-many-adventures-of-winnie-the-pooh"
+      }
+    },
+    "the-rescuers": {
+      "title": "The Rescuers",
+      "year": "1977",
+      "type": "movie",
+      "regions": {
+        "BR": "https://www.justwatch.com/br/filme/bernardo-e-bianca",
+        "US": "https://www.justwatch.com/us/movie/the-rescuers"
+      }
+    },
+    "the-smurfs": {
+      "title": "The Smurfs",
+      "year": "1981",
+      "type": "series",
+      "regions": {
+        "BR": "https://www.justwatch.com/br/serie/os-smurfs",
+        "US": "https://www.justwatch.com/us/tv-show/the-smurfs"
+      }
+    },
+    "inspector-gadget": {
+      "title": "Inspector Gadget",
+      "year": "1983",
+      "type": "series",
+      "regions": {
+        "BR": "https://www.justwatch.com/br/serie/inspetor-bugiganga-2015",
+        "US": "https://www.justwatch.com/us/tv-show/inspector-gadget"
+      }
+    },
+    "ducktales": {
+      "title": "DuckTales",
+      "year": "1987",
+      "type": "series",
+      "regions": {
+        "BR": "https://www.justwatch.com/br/serie/ducktales-os-cacadores-de-aventuras",
+        "US": "https://www.justwatch.com/us/tv-show/ducktales"
+      }
+    },
+    "chip-n-dale-rescue-rangers": {
+      "title": "Chip 'n Dale Rescue Rangers",
+      "year": "1989",
+      "type": "series",
+      "regions": {
+        "BR": "https://www.justwatch.com/br/serie/tico-e-teco-e-os-defensores-da-lei",
+        "US": "https://www.justwatch.com/us/tv-show/chip-n-dale-rescue-rangers"
+      }
+    },
+    "disney-s-adventures-of-the-gummi-bears": {
+      "title": "Disney's Adventures of the Gummi Bears",
+      "year": "1985",
+      "type": "series",
+      "regions": {
+        "BR": "https://www.justwatch.com/br/serie/disneys-adventures-of-the-gummi-bears",
+        "US": "https://www.justwatch.com/us/tv-show/disneys-adventures-of-the-gummi-bears"
+      }
+    },
+    "the-care-bears": {
+      "title": "The Care Bears",
+      "year": "1985",
+      "type": "series",
+      "regions": {
+        "BR": "https://www.justwatch.com/br/serie/the-care-bears",
+        "US": "https://www.justwatch.com/us/tv-show/the-care-bears"
+      }
+    },
+    "arthur": {
+      "title": "Arthur",
+      "year": "1996",
+      "type": "series",
+      "regions": {
+        "BR": "https://www.justwatch.com/br/serie/arthur",
+        "US": "https://www.justwatch.com/us/tv-show/arthur"
+      }
+    },
+    "rugrats": {
+      "title": "Rugrats",
+      "year": "1991",
+      "type": "series",
+      "regions": {
+        "BR": "https://www.justwatch.com/br/serie/rugrats-os-anjinhos",
+        "US": "https://www.justwatch.com/us/tv-show/rugrats"
+      }
+    },
+    "the-magic-school-bus": {
+      "title": "The Magic School Bus",
+      "year": "1994",
+      "type": "series",
+      "regions": {
+        "BR": "https://www.justwatch.com/br/serie/the-magic-school-bus",
+        "US": "https://www.justwatch.com/us/tv-show/the-magic-school-bus"
+      }
+    },
+    "franklin": {
+      "title": "Franklin",
+      "year": "1997",
+      "type": "series",
+      "regions": {
+        "US": "https://www.justwatch.com/us/tv-show/franklin"
+      }
+    },
+    "little-bear": {
+      "title": "Little Bear",
+      "year": "1995",
+      "type": "series",
+      "regions": {
+        "BR": "https://www.justwatch.com/br/serie/o-pequeno-urso",
+        "US": "https://www.justwatch.com/us/tv-show/little-bear"
+      }
+    },
+    "dora-the-explorer": {
+      "title": "Dora the Explorer",
+      "year": "2000",
+      "type": "series",
+      "regions": {
+        "BR": "https://www.justwatch.com/br/serie/dora-the-explorer",
+        "US": "https://www.justwatch.com/us/tv-show/dora-the-explorer"
+      }
+    },
+    "clifford-the-big-red-dog": {
+      "title": "Clifford the Big Red Dog",
+      "year": "2000",
+      "type": "series",
+      "regions": {
+        "BR": "https://www.justwatch.com/br/serie/clifford-the-big-red-dog",
+        "US": "https://www.justwatch.com/us/tv-show/clifford-the-big-red-dog"
+      }
+    },
+    "kim-possible": {
+      "title": "Kim Possible",
+      "year": "2002",
+      "type": "series",
+      "regions": {
+        "BR": "https://www.justwatch.com/br/serie/kim-possible",
+        "US": "https://www.justwatch.com/us/tv-show/kim-possible"
+      }
+    },
+    "phineas-and-ferb": {
+      "title": "Phineas and Ferb",
+      "year": "2007",
+      "type": "series",
+      "regions": {
+        "BR": "https://www.justwatch.com/br/serie/disney-phineas-und-ferb",
+        "US": "https://www.justwatch.com/us/tv-show/phineas-and-ferb"
+      }
+    },
+    "the-backyardigans": {
+      "title": "The Backyardigans",
+      "year": "2004",
+      "type": "series",
+      "regions": {
+        "BR": "https://www.justwatch.com/br/serie/the-backyardigans",
+        "US": "https://www.justwatch.com/us/tv-show/the-backyardigans"
+      }
+    },
+    "doc-mcstuffins": {
+      "title": "Doc McStuffins",
+      "year": "2012",
+      "type": "series",
+      "regions": {
+        "BR": "https://www.justwatch.com/br/serie/doutora-brinquedos",
+        "US": "https://www.justwatch.com/us/tv-show/doc-mcstuffins"
+      }
+    },
+    "sofia-the-first": {
+      "title": "Sofia the First",
+      "year": "2013",
+      "type": "series",
+      "regions": {
+        "BR": "https://www.justwatch.com/br/serie/sofia-the-first",
+        "US": "https://www.justwatch.com/us/tv-show/sofia-the-first"
+      }
+    },
+    "sarah-duck": {
+      "title": "Sarah & Duck",
+      "year": "2013",
+      "type": "series",
+      "regions": {
+        "BR": "https://www.justwatch.com/br/serie/sarah-and-duck",
+        "US": "https://www.justwatch.com/us/tv-show/sarah-and-duck"
+      }
+    },
+    "hilda": {
+      "title": "Hilda",
+      "year": "2018",
+      "type": "series",
+      "regions": {
+        "BR": "https://www.justwatch.com/br/serie/hilda",
+        "US": "https://www.justwatch.com/us/tv-show/hilda"
+      }
+    },
+    "stillwater": {
+      "title": "Stillwater",
+      "year": "2020",
+      "type": "series",
+      "regions": {
+        "BR": "https://www.justwatch.com/br/serie/stillwater",
+        "US": "https://www.justwatch.com/us/tv-show/stillwater"
+      }
+    },
+    "ada-twist-scientist": {
+      "title": "Ada Twist, Scientist",
+      "year": "2021",
+      "type": "series",
+      "regions": {
+        "BR": "https://www.justwatch.com/br/serie/ada-twist-scientist",
+        "US": "https://www.justwatch.com/us/tv-show/ada-twist-scientist"
+      }
+    },
+    "spidey-and-his-amazing-friends": {
+      "title": "Spidey and His Amazing Friends",
+      "year": "2021",
+      "type": "series",
+      "regions": {
+        "BR": "https://www.justwatch.com/br/serie/marvels-spidey-and-his-amazing-friends",
+        "US": "https://www.justwatch.com/us/tv-show/spidey-and-his-amazing-friends"
+      }
+    },
+    "molly-of-denali": {
+      "title": "Molly of Denali",
+      "year": "2019",
+      "type": "series",
+      "regions": {
+        "US": "https://www.justwatch.com/us/tv-show/molly-of-denali"
+      }
+    },
+    "the-new-adventures-of-winnie-the-pooh": {
+      "title": "The New Adventures of Winnie the Pooh",
+      "year": "1988",
+      "type": "series",
+      "regions": {
+        "US": "https://www.justwatch.com/us/tv-show/the-new-adventures-of-winnie-the-pooh"
+      }
+    },
+    "the-woody-woodpecker-show": {
+      "title": "The Woody Woodpecker Show",
+      "year": "1957",
+      "type": "series",
+      "regions": {
+        "BR": "https://www.justwatch.com/br/serie/o-pica-pau",
+        "US": "https://www.justwatch.com/us/tv-show/the-woody-woodpecker-show"
+      }
+    },
+    "the-new-woody-woodpecker-show": {
+      "title": "The New Woody Woodpecker Show",
+      "year": "1999",
+      "type": "series",
+      "regions": {
+        "BR": "https://www.justwatch.com/br/serie/o-novo-pica-pau",
+        "US": "https://www.justwatch.com/us/tv-show/the-new-woody-woodpecker-show"
+      }
+    },
+    "garfield-and-friends": {
+      "title": "Garfield and Friends",
+      "year": "1988",
+      "type": "series",
+      "regions": {
+        "US": "https://www.justwatch.com/us/tv-show/garfield-and-friends"
+      }
+    },
+    "doug": {
+      "title": "Doug",
+      "year": "1991",
+      "type": "series",
+      "regions": {
+        "BR": "https://www.justwatch.com/br/serie/doug",
+        "US": "https://www.justwatch.com/us/tv-show/doug"
+      }
+    },
+    "recess": {
+      "title": "Recess",
+      "year": "1997",
+      "type": "series",
+      "regions": {
+        "BR": "https://www.justwatch.com/br/serie/recreio",
+        "US": "https://www.justwatch.com/us/tv-show/recess"
+      }
+    },
+    "hey-arnold": {
+      "title": "Hey Arnold!",
+      "year": "1996",
+      "type": "series",
+      "regions": {
+        "BR": "https://www.justwatch.com/br/serie/ei-arnold",
+        "US": "https://www.justwatch.com/us/tv-show/hey-arnold"
+      }
+    },
+    "ben-10": {
+      "title": "Ben 10",
+      "year": "2005",
+      "type": "series",
+      "regions": {
+        "BR": "https://www.justwatch.com/br/serie/ben-10",
+        "US": "https://www.justwatch.com/us/tv-show/ben-10"
+      }
+    },
+    "lilo-stitch-the-series": {
+      "title": "Lilo & Stitch: The Series",
+      "year": "2003",
+      "type": "series",
+      "regions": {
+        "BR": "https://www.justwatch.com/br/serie/lilo-and-stitch-the-series",
+        "US": "https://www.justwatch.com/us/tv-show/lilo-and-stitch-the-series"
+      }
+    }
+  }
+}

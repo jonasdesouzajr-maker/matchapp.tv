@@ -211,22 +211,15 @@ async function tgTryResolve(participants) {
     if (!participants || participants.length < 2) return;
 
     const merged = tgResolvePrefs(participants);
-
-    // Reuse the exact catalog picker the solo flow uses, so a group pick is
-    // held to the same verification standard (real titles, real platforms).
-    let pick = null;
-    try {
-        if (typeof pickFromCatalog === 'function') {
-            pick = pickFromCatalog(merged.cat, merged.plat, merged.mood, merged.vibe, merged.rating);
-        }
-    } catch (e) { /* fall through */ }
-    if (!pick || !pick.title) return;
-
+    await window.matchPolicy?.ready();
+    const candidates = typeof CONTENT_CATALOG!=='undefined' ? CONTENT_CATALOG.filter(e=>participants.every(p=>window.matchPolicy?.matches(e,p.prefs||{})) && !isBlockedEntry(e) && !SESSION_SHOWN.has(e.title)) : [];
+    const pick=candidates[Math.floor(Math.random()*candidates.length)];
+    if(!pick){const note=tgEl('tg-waiting-note');if(note)note.textContent='No fresh title fits everyone’s exact choices. Start a new match with different criteria, or use private Friends for account-wide exclusions for both users.';return;}
     const payload = {
         title: pick.title,
         synopsis: pick.synopsis,
         platform: pick.platform,
-        platformVerified: !!pick.platformVerified,
+        platformVerified: true,
         watchUrl: pick.watchUrl || null,
         merged: merged
     };
@@ -411,6 +404,7 @@ function tgRenderParticipants(list) {
 }
 
 function tgRenderResult(result, participants) {
+    if(window.matchPolicy?.known().has(window.matchPolicy.key(result.title))){tgError('This shared title is already in your history. Use private Friends for a shared match that excludes both users’ previous titles.');return;}
     tgShow('tg-step-result');
 
     const names = (participants || []).map(p => p.name || 'Guest');
@@ -455,7 +449,8 @@ function tgRenderResult(result, participants) {
     // was being looked up as if neither existed.
     const img = tgEl('tg-result-poster');
     if (img && result.title) {
-        img.src = `https://placehold.co/600x900/1a0505/E5C158?text=${encodeURIComponent(result.title)}`;
+        img.src = generateLocalPosterSVG(result.title,result);
+        img.onerror=()=>{img.onerror=null;img.src=generateLocalPosterSVG(result.title,result);};
         let posterHints = {};
         try {
             if (typeof CONTENT_CATALOG !== 'undefined') {
@@ -468,6 +463,10 @@ function tgRenderResult(result, participants) {
         }
     }
 
+    const shareHost=document.createElement('div');shareHost.id='tg-social-card';
+    document.getElementById('tg-social-card')?.remove();
+    tgEl('tg-step-result')?.append(shareHost);
+    window.matchShareCard?.mount(shareHost,result.title);
     // Watch link — verified deep link if we have one, else platform search.
     const link = tgEl('tg-result-link');
     if (link) {

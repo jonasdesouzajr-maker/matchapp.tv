@@ -1,0 +1,14 @@
+.install-btn.has-app-update{border-color:#ffe18e!important;box-shadow:0 0 0 2px #ffe18e33;color:#ffe18e!important}
+.install-btn.has-app-update::before{content:'●';color:#81eee2;font-size:.75em;margin-inline-end:.45em}
+.install-btn.is-app-installed{opacity:.9}
+.match-install-dialog{position:fixed;inset:0;margin:auto;width:min(27rem,calc(100% - 2rem));max-height:90dvh;overflow:auto;border:1px solid #dfbd6d;border-radius:1.3rem;padding:1.5rem;color:white;background:#211430;box-shadow:0 1rem 4rem #0008;font:1rem/1.6 system-ui,sans-serif}
+.match-install-dialog:not([open]){display:none}.match-install-dialog::backdrop{background:#09061ac9}
+.match-install-dialog>.modal-content{position:relative;max-width:none!important;padding:0!important;border:0!important;background:none!important}
+.match-install-dialog button{min-height:2.8rem;border:1px solid #dfbd6d;border-radius:.7rem;padding:.6rem 1.1rem;background:#dfbd6d;color:#211430;font:800 .95rem system-ui,sans-serif;cursor:pointer}
+.match-install-close{position:absolute;right:-.5rem;top:-.6rem;min-width:2.8rem}
+.match-install-dialog :focus-visible{outline:3px solid #81eee2;outline-offset:4px}
+#quota-badge,#result-quota-corner{text-decoration:none;cursor:pointer}
+#quota-badge:focus-visible,#result-quota-corner:focus-visible{outline:3px solid #81eee2;outline-offset:4px}
+@media(forced-colors:active){.install-btn.has-app-update{outline:3px solid Highlight}.match-install-dialog{border:2px solid CanvasText}}
+
+.crit-chip:disabled{opacity:.45;cursor:not-allowed;border-style:dashed}
