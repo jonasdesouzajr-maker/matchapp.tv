@@ -307,16 +307,18 @@ function soundEnabled() {
 window.toggleSound = function () {
     const next = !soundEnabled();
     try { localStorage.setItem('match_soundEnabled', String(next)); } catch (e) {}
-    document.querySelectorAll('.sound-toggle-btn').forEach(b => { b.textContent = next ? '🔊' : '🔇'; });
+    document.querySelectorAll('.sound-toggle-btn').forEach(b => { b.innerHTML = "<span class=\"sound-star\" aria-hidden=\"true\"><svg viewBox=\"0 0 32 32\" fill=\"none\"><path d=\"m16 2 4 9 10 1-7 7 2 10-9-5-9 5 2-10-7-7 10-1Z\" fill=\"currentColor\" opacity=\".2\"/><path class=\"sound-note\" d=\"M14 20V9l10-2v11M14 12l10-2M14 20c0 2-2 3-4 3s-3-1-3-2 2-3 4-3 3 1 3 2Zm10-2c0 2-2 3-4 3s-3-1-3-2 2-3 4-3 3 1 3 2Z\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linejoin=\"round\"/><path class=\"sound-slash\" d=\"m5 5 23 23\" stroke=\"currentColor\" stroke-width=\"3\" stroke-linecap=\"round\"/></svg></span>"; b.setAttribute('aria-pressed', String(soundEnabled())); b.setAttribute('aria-label', window.t ? t(soundEnabled() ? 'sound.on' : 'sound.off') : 'Sound'); });
+    if (next && window.playPremiumSound) window.playPremiumSound();
     if (window.showToast) {
         showToast(next ? (window.t ? t('sound.on') : '🔊 Sound on')
                        : (window.t ? t('sound.off') : '🔇 Sound off'));
     }
 };
 function initSoundToggle() {
-    document.querySelectorAll('.sound-toggle-btn').forEach(b => { b.textContent = soundEnabled() ? '🔊' : '🔇'; });
+    document.querySelectorAll('.sound-toggle-btn').forEach(b => { b.innerHTML = "<span class=\"sound-star\" aria-hidden=\"true\"><svg viewBox=\"0 0 32 32\" fill=\"none\"><path d=\"m16 2 4 9 10 1-7 7 2 10-9-5-9 5 2-10-7-7 10-1Z\" fill=\"currentColor\" opacity=\".2\"/><path class=\"sound-note\" d=\"M14 20V9l10-2v11M14 12l10-2M14 20c0 2-2 3-4 3s-3-1-3-2 2-3 4-3 3 1 3 2Zm10-2c0 2-2 3-4 3s-3-1-3-2 2-3 4-3 3 1 3 2Z\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linejoin=\"round\"/><path class=\"sound-slash\" d=\"m5 5 23 23\" stroke=\"currentColor\" stroke-width=\"3\" stroke-linecap=\"round\"/></svg></span>"; b.setAttribute('aria-pressed', String(soundEnabled())); b.setAttribute('aria-label', window.t ? t(soundEnabled() ? 'sound.on' : 'sound.off') : 'Sound'); });
 }
 document.addEventListener('DOMContentLoaded', initSoundToggle);
+document.addEventListener('matchapp:langchange', initSoundToggle);
 
 window.playPremiumSound = function() {
     if (!soundEnabled()) return;
@@ -328,9 +330,9 @@ window.playPremiumSound = function() {
         osc.type = 'sine'; 
         osc.frequency.setValueAtTime(600, ctx.currentTime); 
         osc.frequency.exponentialRampToValueAtTime(1200, ctx.currentTime + 0.1); 
-        gain.gain.setValueAtTime(0.3, ctx.currentTime); 
+        gain.gain.setValueAtTime(0.09, ctx.currentTime);
         gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.2); 
-        osc.start(ctx.currentTime); osc.stop(ctx.currentTime + 0.2); 
+        osc.onended=()=>ctx.close(); osc.start(ctx.currentTime); osc.stop(ctx.currentTime + 0.2);
     } catch (e) { console.log("Audio FX skipped"); }
 };
 
@@ -1102,14 +1104,16 @@ async function getRealCoverImage(title, hints) {
 // titles always get correct art.
 // ----------------------------------------------------
 const VERIFIED_POSTERS = {
-    'American Horror Story: 13': '/ahs13-official.png?v=185'
+    'American Horror Story: 13': '/ahs13-official.png?v=187',
+    'A Vida Secreta do Meu Marido Bilionário': '/marido-bilionario-original.jpg?v=187',
+    'Marido Bilionário': '/marido-bilionario-original.jpg?v=187'
 };
 
 function getVerifiedPoster(title) {
     if (!title) return null;
     if (VERIFIED_POSTERS[title]) return VERIFIED_POSTERS[title];
     // Tolerate small punctuation differences between catalog and lookup.
-    const norm = s => String(s).toLowerCase().replace(/[^a-z0-9]/g, '');
+    const norm = s => String(s).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]/g, '');
     const key = norm(title);
     for (const k of Object.keys(VERIFIED_POSTERS)) {
         if (norm(k) === key) return VERIFIED_POSTERS[k];
@@ -1334,7 +1338,7 @@ async function hydrateMarqueeCovers() {
 
         try {
             const rowHints = catalogEntry ? { year: catalogEntry.year, country: catalogEntry.country, countryCode: catalogEntry.countryCode, cats: catalogEntry.cats } : {};
-            const meta = await getRichMetadata(title, 'series', rowHints);
+            const meta = await getRichMetadata(title, catalogEntry?.cats.includes('movie') ? 'movie' : 'series', rowHints);
             const real = (meta && meta.artwork) ? meta.artwork : await getRealCoverImage(title, rowHints);
             if (real) {
                 img.onerror = function() { this.onerror = null; this.src = generatedCover(title); };
@@ -1376,7 +1380,6 @@ window.selectMarqueeItem = function(titleName) {
 // ----------------------------------------------------
 // EVENT STATE — derived from the real date, never hardcoded.
 //
-// Rock in Rio and Oktoberfest both end 13 Sept. With the badge text baked into
 // the HTML, the site would have gone on announcing "● LIVE" for two finished
 // festivals from the 14th onwards — which is exactly the kind of quiet staleness
 // that makes a recommendation site look abandoned. States are now computed from
@@ -1391,7 +1394,6 @@ function eventStateFor(startStr, endStr, now, windowsStr) {
     if (now < start) return 'upcoming';
     if (now > end) return 'ended';
 
-    // Multi-weekend events have gaps. Rock in Rio 2026 runs 4-7 AND 11-13
     // September, so on the 8th-10th nothing is actually happening — but a
     // single start/end range says "LIVE", which reads as broken and made the
     // festival look finished when it had three days still to come. When
@@ -1466,28 +1468,12 @@ function refreshEventStates() {
              .forEach(c => track.appendChild(c));
     }
 
-    // Same treatment for the Rock in Rio spotlight ribbon.
-    const ribbon = document.getElementById('rir-ribbon');
-    if (ribbon) {
-        const st = eventStateFor(ribbon.dataset.start, ribbon.dataset.end, now, ribbon.dataset.windows);
-        if (st === 'intermission') {
-            const nx = nextWindowStart(ribbon.dataset.windows, now);
-            const d = nx ? Math.ceil((nx - now) / 86400000) : 0;
-            ribbon.textContent = d > 0
-                ? (window.t ? t('event.resumesIn').replace('{d}', d) : `BACK IN ${d}D`)
-                : (window.t ? t('event.resumes') : 'RESUMES SOON');
-        }
-        else if (st === 'live') ribbon.textContent = window.t ? t('event.liveNow') : 'LIVE NOW';
-        else if (st === 'upcoming') ribbon.textContent = window.t ? t('event.soon') : 'SOON';
-        else { ribbon.textContent = window.t ? t('event.ended') : 'ENDED'; ribbon.classList.add('ribbon-ended'); }
-    }
 }
 document.addEventListener('DOMContentLoaded', () => setTimeout(refreshEventStates, 150));
 // Re-evaluate if a tab is left open across midnight.
 setInterval(refreshEventStates, 60 * 60 * 1000);
 
 // Tapping an event card runs a real AI lookup for that event — songs to play
-// before Rock in Rio, German folk for Oktoberfest, what to watch before AHS 13.
 // Goes through the direct-search path, so it consumes one match via
 // checkDailyLimit() -> consume_match, exactly like any other AI request.
 window.eventMatch = function (query) {
@@ -2445,6 +2431,15 @@ const CONTENT_CATALOG = [
     { title: "UEFA Champions League", year: 2026, country: "Switzerland", countryCode: "CH", synopsis: "Europe's club competition, midweek from September to the final — the matches the rest of the football calendar is arranged around.", platform: "Paramount+", cats: ["Sports"], moods: ["intense and thrilling","epic and adventurous"], vibes: [], ratings: ["all ages family friendly","any"] },
     { title: "Globo Esporte", year: 2026, country: "Brazil", countryCode: "BR", synopsis: "Brazil's daily sports programme — Brasileirão, the state championships and whichever transfer rumour the country is arguing about today.", platform: "Globoplay", cats: ["Sports"], moods: [], vibes: ["easy background watch"], ratings: ["all ages family friendly","any"] },
     { title: "Sunderland 'Til I Die", year: 2020, country: "United Kingdom", countryCode: "GB", synopsis: "A football club falls down the English leagues while the city that lives for it watches — the anti-Wrexham, and the better documentary.", platform: "Netflix", cats: ["Sports"], moods: ["heartbreaking"], vibes: ["based on a true story","slow burn"], ratings: ["mature adults only R rated","any"] },
+    // ROKU — reviewed regional availability, isolated from the Kids allowlist.
+    {"title":"WEIRD: The Al Yankovic Story","year":2022,"country":"United States","countryCode":"US","synopsis":"A deliberately exaggerated musical parody follows an accordion-playing songwriter into a wildly fictional version of pop stardom.","platform":"Roku Channel","cats":["movie"],"moods":["funny"],"vibes":["guilty pleasure"],"ratings":["mature adults only R rated","any"],"url":"https://therokuchannel.roku.com/watch/066097da82ed5762966888a59b151058","availabilityCountries":["United States","Canada","United Kingdom"],"source":"https://www.weirdal.com/news/weird-the-al-yankovic-story/","checked":"2026-09-14"},
+    {"title":"Die Hart","year":2020,"country":"United States","countryCode":"US","synopsis":"Kevin Hart plays a fictional version of himself training to become an action star, with increasingly ridiculous and dangerous lessons.","platform":"Roku Channel","cats":["series"],"moods":["funny"],"vibes":["fast-paced binge-worthy"],"ratings":["mature adults only R rated","any"],"url":"https://www.roku.com/en-us/whats-on/the-roku-channel/roku-originals/die-hart","availabilityCountries":["United States","Canada","United Kingdom"],"source":"https://www.roku.com/en-us/whats-on/the-roku-channel/roku-originals/die-hart","checked":"2026-09-14"},
+    {"title":"The Great American Baking Show","year":2023,"country":"United States","countryCode":"US","synopsis":"Amateur bakers take on signature, technical and showstopper challenges in the American baking competition hosted by Casey Wilson and Zach Cherry.","platform":"Roku Channel","cats":["series","reality show"],"moods":["light and feel-good","cozy comfort watch"],"vibes":["easy background watch"],"ratings":["teen PG-13","any"],"url":"https://www.roku.com/whats-on/tv-shows/the-great-american-baking-show?id=d2c1397576065492a30b905226d840f4","availabilityCountries":["United States","Canada","United Kingdom"],"source":"https://www.roku.com/whats-on/tv-shows/the-great-american-baking-show?id=d2c1397576065492a30b905226d840f4","checked":"2026-09-14"},
+    {"title":"Honest Renovations","year":2023,"country":"United States","countryCode":"US","synopsis":"Jessica Alba and Lizzy Mathis help families adapt their homes with practical renovations and thoughtful design.","platform":"Roku Channel","cats":["series","reality show"],"moods":["inspiring","cozy comfort watch"],"vibes":["easy background watch"],"ratings":["mature adults only R rated","any"],"url":"https://www.roku.com/whats-on/tv-shows/honest-renovations?id=8b926ff837975aedbf18257557f6358c","availabilityCountries":["United States","Canada","United Kingdom"],"source":"https://www.roku.com/whats-on/tv-shows/honest-renovations?id=8b926ff837975aedbf18257557f6358c","checked":"2026-09-14"},
+    {"title":"Side Hustlers","year":2024,"country":"United States","countryCode":"US","synopsis":"Women entrepreneurs work with investors and mentors to turn their side businesses into full-time ventures.","platform":"Roku Channel","cats":["series","reality show"],"moods":["inspiring"],"vibes":["easy background watch"],"ratings":["teen PG-13","any"],"url":"https://www.roku.com/whats-on/tv-shows/side-hustlers?id=d33f6bfbfdf01893c830c3236d69f6f2","availabilityCountries":["United States","Canada","United Kingdom"],"source":"https://www.roku.com/whats-on/tv-shows/side-hustlers?id=d33f6bfbfdf01893c830c3236d69f6f2","checked":"2026-09-14"},
+    {"title":"Martha Cooks","year":2022,"country":"United States","countryCode":"US","synopsis":"Martha Stewart shares favorite recipes, kitchen techniques and step-by-step cooking lessons from her farm kitchen.","platform":"Roku Channel","cats":["series","reality show"],"moods":["cozy comfort watch","inspiring"],"vibes":["easy background watch"],"ratings":["all ages family friendly","any"],"url":"https://www.roku.com/whats-on/tv-shows/martha-cooks?id=a0919a655327a83bae894a7fc00aa345","availabilityCountries":["United States","Canada","United Kingdom"],"source":"https://www.roku.com/whats-on/tv-shows/martha-cooks?id=a0919a655327a83bae894a7fc00aa345","checked":"2026-09-14"},
+    {"title":"This Old House","year":1979,"country":"United States","countryCode":"US","synopsis":"Expert contractors restore aging houses and explain the craft, planning and technology behind home renovation.","platform":"Roku Channel","cats":["series","reality show"],"moods":["inspiring","cozy comfort watch"],"vibes":["easy background watch"],"ratings":["all ages family friendly","any"],"url":"https://www.roku.com/en-gb/whats-on/tv-shows/this-old-house?id=1651475c82c35b2caffb32e7d52887c8","availabilityCountries":["United States","Canada","United Kingdom"],"source":"https://www.roku.com/en-gb/whats-on/tv-shows/this-old-house?id=1651475c82c35b2caffb32e7d52887c8","checked":"2026-09-14"},
+    {"title":"Ask This Old House","year":2002,"country":"United States","countryCode":"US","synopsis":"Home-improvement experts visit households to solve practical repair, gardening and renovation problems.","platform":"Roku Channel","cats":["series","reality show"],"moods":["inspiring","cozy comfort watch"],"vibes":["easy background watch"],"ratings":["all ages family friendly","any"],"url":"https://www.thisoldhouse.com/this-old-house/ways-to-watch-on-the-roku-channel","availabilityCountries":["United States","Canada","United Kingdom"],"source":"https://www.thisoldhouse.com/this-old-house/ways-to-watch-on-the-roku-channel","checked":"2026-09-14"},
 ];
 
 // Titles genuinely rooted in gospel/faith content, for quick lookup by other
@@ -2556,7 +2551,7 @@ window.onCategoryChange = function() {
     platEl.innerHTML = '';
     const anyOpt = document.createElement('option');
     anyOpt.value = 'any';
-    anyOpt.textContent = cat === 'any' ? 'Any Platform' : 'Any Platform That Has It';
+    anyOpt.textContent = t(cat === 'any' ? 'opt.anyplatform' : 'opt.anyplatformhas');
     platEl.appendChild(anyOpt);
 
     const groups = {};
@@ -2584,9 +2579,7 @@ window.onCategoryChange = function() {
     const hint = document.getElementById('platform-country-hint');
     if (hint) {
         if (country) {
-            hint.textContent = cat === 'any'
-                ? `🌍 Personalized for ${country}.`
-                : `🌍 Showing only platforms available in ${country}.`;
+            hint.textContent = '🌍 ' + t('pf.country') + ': ' + country;
             hint.style.display = 'block';
         } else { hint.style.display = 'none'; }
     }
@@ -2965,7 +2958,7 @@ function pickFromCatalog(cat, plat, mood, vibe, rating, decade) {
         && (normCriteria(cat).length || isSurpriseEligible(e)));
     if (!pool.length) return null;
     const pick = pool[Math.floor(Math.random() * pool.length)];
-    return {title:pick.title,synopsis:pick.synopsis,platform:pick.platform,platformVerified:true,watchUrl:pick.watchUrl||null,source:'catalog'};
+    return {title:pick.title,synopsis:pick.synopsis,platform:pick.platform,platformVerified:true,watchUrl:pick.watchUrl||(pick.platform==='Roku Channel'?pick.url:null)||null,source:'catalog'};
 }
 
 window.triggerMatch = async function(isSpecificSearch = false) {
@@ -2974,7 +2967,7 @@ window.triggerMatch = async function(isSpecificSearch = false) {
     const preflight = isSpecificSearch ? null : pickFromCatalog(requested.cat,requested.plat,requested.mood,requested.vibe,requested.rating,requested.decade);
     const typed = document.getElementById('specific-search-input')?.value || '';
     if ((!isSpecificSearch && !preflight) || (isSpecificSearch && window.matchPolicy?.known().has(window.matchPolicy.key(typed)))) {
-        window.showToast(window.MATCH_LANG === 'pt' ? 'Nenhum título novo atende a todas essas escolhas. Altere os critérios. Nenhum crédito foi usado.' : 'No fresh title matches every choice. Change your criteria. No credit was used.');
+        window.showToast(t('polish.noFresh'));
         const form = document.getElementById('questionnaire-box');
         if (form) { form.style.display='block'; form.scrollIntoView({behavior:'smooth',block:'center'}); }
         return;
@@ -3078,7 +3071,7 @@ window.triggerMatch = async function(isSpecificSearch = false) {
         if (!catalogHit) catalogHit = CONTENT_CATALOG.find(e => isRelevantMatch(typedTitle, e.title));
 
         if (catalogHit) {
-            matchResult = { title: catalogHit.title, synopsis: catalogHit.synopsis, platform: catalogHit.platform, platformVerified: true };
+            matchResult = { ...catalogHit, title: catalogHit.title, synopsis: catalogHit.synopsis, platform: catalogHit.platform, platformVerified: true, watchUrl:catalogHit.watchUrl||(catalogHit.platform==='Roku Channel'?catalogHit.url:null) };
         } else {
             try {
                 matchResult = await fetchGeminiData(promptText);
@@ -3149,30 +3142,16 @@ window.triggerMatch = async function(isSpecificSearch = false) {
         // confident, unverified lie.
         if (!matchResult.platformVerified) matchResult.platform = 'any';
 
-        // Optional, narrow AI use: translate the ALREADY-CHOSEN, ALREADY-REAL
-        // synopsis into the user's language. This never touches title,
-        // platform, or cover — only the descriptive blurb — so it cannot
-        // reintroduce the hallucination risk the old single big prompt had.
-        // If it fails for any reason, the English synopsis is kept rather
-        // than blocking the match.
-        if (window.MATCH_LANG && window.MATCH_LANG !== 'en' && matchResult.synopsis) {
-            try {
-                const lang = LANG_NAMES_FOR_PROMPT[window.MATCH_LANG] || null;
-                if (lang && supabaseClient) {
-                    const translatePrompt = `Translate this movie/show synopsis into natural, fluent ${lang}. ` +
-                        `Do not add or remove any facts. Output ONLY the translated text, nothing else, no quotes:\n\n${matchResult.synopsis}`;
-                    const { data, error } = await supabaseClient.functions.invoke('gemini-proxy', { body: { prompt: translatePrompt } });
-                    const translated = data?.candidates?.[0]?.content?.parts?.[0]?.text?.trim();
-                    if (!error && translated) matchResult.synopsis = translated;
-                }
-            } catch (e) { /* keep the English synopsis — never block the match over this */ }
-        }
+        // Translate only the chosen real description; never substitute an English failure result.
+        matchResult.originalSynopsis=matchResult.synopsis;
+        matchResult.synopsis=await window.localizeMatchSynopsis(matchResult.synopsis,'en');
+        matchResult.synopsisLang=window.MATCH_LANG||'en';
     }
     if (!matchResult || window.matchPolicy?.known().has(window.matchPolicy.key(matchResult.title))) {
         clearInterval(timerInterval);
         if (loadBox) loadBox.style.display='none';
         if (qBox) qBox.style.display='block';
-        window.showToast('This title is already in your history. Choose another match.');
+        window.showToast(t('polish.inHistory'));
         return;
     }
     rememberShownTitle(matchResult.title);
@@ -3299,7 +3278,7 @@ async function hydrateTitleFacts(selected, hints) {
 
     // Prefer a fuller synopsis when the catalog's one-liner is thin, but never
     // replace a written synopsis with something shorter and vaguer.
-    if (synEl && meta.synopsis && meta.synopsis.length > (synEl.textContent || '').length + 40) {
+    if ((window.MATCH_LANG||'en')==='en' && synEl && meta.synopsis && meta.synopsis.length > (synEl.textContent || '').length + 40) {
         synEl.textContent = meta.synopsis.slice(0, 420);
     }
 }
@@ -3356,7 +3335,7 @@ window.saveCurrentNote = async function () {
 async function renderResult(selected, isSpecificSearch) {
     await window.matchPolicy?.ready();
     if(!selected?.title || window.matchPolicy?.known().has(window.matchPolicy.key(selected.title))){
-        window.showToast('This title is already in your history. Choose a fresh match.');
+        window.showToast(t('polish.inHistory'));
         const form=document.getElementById('questionnaire-box');if(form)form.style.display='block';
         return;
     }
@@ -3387,10 +3366,13 @@ async function renderResult(selected, isSpecificSearch) {
 
     // TRIGGER PREMIUM FX
     window.playPremiumSound();
-    if (typeof confetti !== 'undefined') confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 }, colors: ['#E5C158', '#FFF', '#8A2BE2', '#E50914'] });
+    if (!document.documentElement.classList.contains('reduce-motion') && !matchMedia('(prefers-reduced-motion: reduce)').matches && typeof confetti !== 'undefined') confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 }, colors: ['#E5C158', '#FFF', '#8A2BE2', '#E50914'] });
 
     document.getElementById('res-title').innerText = sanitizeDisplayText(selected.title, ['title']);
-    document.getElementById('res-synopsis').innerText = sanitizeDisplayText(selected.synopsis, ['synopsis', 'answer', 'description']);
+    const captionLang=window.MATCH_LANG||'en';window.localizedTitle?.(selected.title,matchHints).then(name=>{if(window.currentSynopsisSource?.title===selected.title&&(window.MATCH_LANG||'en')===captionLang)document.getElementById('res-title').textContent=name;});
+    window.currentSynopsisSource={text:selected.originalSynopsis||selected.synopsis,lang:selected.originalSynopsis?'en':selected.synopsisLang||'en',title:selected.title};
+    const description=await window.localizeMatchSynopsis(selected.synopsis,selected.synopsisLang||'en');
+    document.getElementById('res-synopsis').innerText=sanitizeDisplayText(description,['synopsis','answer','description']);
     document.getElementById('res-platform-badge').innerText =
         (selected.platform && selected.platform !== 'any') ? selected.platform : (window.t ? t('res.multiplatform') : 'Multiple Platforms');
 
@@ -3494,7 +3476,7 @@ async function renderResult(selected, isSpecificSearch) {
     }
 
     if (audioPick) directBtn.innerText = window.t ? t('res.listennow') : '🎧 Listen Now';
-    else if (selected.platform && selected.platform !== 'any' && pfEntry) directBtn.innerText = `▶ Watch on ${selected.platform}`;
+    else if (selected.platform && selected.platform !== 'any' && pfEntry) directBtn.innerText = t('res.findwhere')+' · '+selected.platform;
     else directBtn.innerText = window.t ? t('res.findwhere') : '▶ Find Where To Stream';
 
     // SAFETY NET for every link that isn't a verified per-title deep link.
@@ -3594,9 +3576,9 @@ function productFactsLine() {
     const langs = (typeof I18N_LANGS !== 'undefined') ? Object.keys(I18N_LANGS).length : 14;
 
     const parts = [];
-    if (platforms) parts.push(`<strong>${platforms}</strong> streaming platforms searched`);
-    if (titles) parts.push(`<strong>${titles}</strong> curated titles`);
-    if (langs) parts.push(`<strong>${langs}</strong> languages`);
+    if (platforms) parts.push(`<strong>${platforms}</strong> ${t('polish.platforms')}`);
+    if (titles) parts.push(`<strong>${titles}</strong> ${t('polish.titles')}`);
+    if (langs) parts.push(`<strong>${langs}</strong> ${t('polish.languages')}`);
     return parts.join(' · ');
 }
 
@@ -3684,15 +3666,6 @@ async function hydrateSpotlightPoster() {
 document.addEventListener('DOMContentLoaded', hydrateSpotlightPoster);
 
 // ----------------------------------------------------
-// #ROCKINRIO 2026 — AI PLAYLIST MATCH SHORTCUT
-// ----------------------------------------------------
-window.triggerRockInRioMatch = function() {
-    const input = document.getElementById('specific-search-input');
-    if (input) input.value = "Rock in Rio 2026 Rio de Janeiro festival playlist highlights";
-    const searchBox = document.getElementById('search-box');
-    if (searchBox) searchBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    window.triggerMatch(true);
-};
 
 // ----------------------------------------------------
 // WATCH LATER / SEEN IT ENGINE
@@ -3705,12 +3678,12 @@ function updateActionButtonStates() {
 
     if (saveBtn) {
         const already = inList(savedList, globalMatchTitle);
-        saveBtn.innerText = already ? '⭐ Saved to Watch Later' : '⭐ Watch Later';
+        saveBtn.innerText = t(already ? 'polish.savedLater' : 'res.watchlater');
         saveBtn.style.opacity = already ? '0.65' : '1';
     }
     if (seenBtn) {
         const already = inList(seenList, globalMatchTitle);
-        seenBtn.innerText = already ? '👁️ Marked as Seen' : "👁️ I've Seen It";
+        seenBtn.innerText = t(already ? 'polish.seen' : 'res.seen');
         seenBtn.style.opacity = already ? '0.65' : '1';
     }
 }
@@ -3824,7 +3797,7 @@ window.recordAction = async function(type) {
         userRatings[globalMatchTitle] = 5;
         if (!inList(seenList, globalMatchTitle)) seenList.push(itemObj);
         window.playPremiumSound && window.playPremiumSound();
-        if (typeof confetti === 'function') confetti({ particleCount: 90, spread: 75, origin: { y: 0.7 }, colors: ['#E5C158','#FFF0B3','#ffffff'] });
+        if (!document.documentElement.classList.contains('reduce-motion') && !matchMedia('(prefers-reduced-motion: reduce)').matches && typeof confetti === 'function') confetti({ particleCount: 90, spread: 75, origin: { y: 0.7 }, colors: ['#E5C158','#FFF0B3','#ffffff'] });
         showToast(`❤️ Loved it! We'll find you more like "${globalMatchTitle}".`);
     } else if (type === 'dislike') {
         userRatings[globalMatchTitle] = 1;
@@ -4146,7 +4119,7 @@ window.saveSpotlightTitle = function () {
     localStorage.setItem('match_savedList', JSON.stringify(list));
     if (btn) { btn.textContent = window.t ? t('spotlight.saved') : '✓ Saved to Watch Later'; btn.classList.add('saved'); }
     if (window.showToast) showToast(`⭐ Saved "${SPOTLIGHT.title}" — we'll be here when it drops.`);
-    if (typeof confetti === 'function') confetti({ particleCount: 70, spread: 60, origin: { y: 0.4 }, colors: ['#E5C158','#d32f2f','#ffffff'] });
+    if (!document.documentElement.classList.contains('reduce-motion') && !matchMedia('(prefers-reduced-motion: reduce)').matches && typeof confetti === 'function') confetti({ particleCount: 70, spread: 60, origin: { y: 0.4 }, colors: ['#E5C158','#d32f2f','#ffffff'] });
     track('save_watch_later', { title: SPOTLIGHT.title, source: 'spotlight' });
 };
 
@@ -4199,71 +4172,25 @@ document.addEventListener('matchapp:langchange', renderSpotlightCountdown);
 // So when we return from a checkout, poll match_status() a few times
 // until the new tier appears, then confirm it visibly.
 // ----------------------------------------------------
-async function syncAfterCheckout() {
-    const params = new URLSearchParams(window.location.search);
-    if (!params.has('checkout') && !params.has('success')) return;
-
-    // Clean the URL so a refresh doesn't re-trigger this.
-    const clean = window.location.pathname;
-    history.replaceState(null, '', clean);
-
-    if (!window.isUserLoggedIn || !supabaseClient) return;
-
-    const before = {
-        vip: localStorage.getItem('match_isVIP') === 'true',
-        business: localStorage.getItem('match_isBusiness') === 'true',
-        credits: parseInt(localStorage.getItem('match_credits') || '0', 10)
-    };
-
-    if (window.showToast) showToast('⏳ Confirming your purchase…');
-
-    // Reads the credit balance, which lives on a separate RPC from the plan
-    // status. Without this, a credit top-up could never be confirmed here —
-    // the loop only watched is_vip/is_business, so someone who bought credits
-    // saw "confirming…" and then the vague fallback message, even though
-    // their credits had actually arrived. Silent on failure so a hiccup here
-    // never blocks plan confirmation.
-    async function readCredits() {
-        try {
-            const { data, error } = await supabaseClient.rpc('match_credits');
-            if (error || !data) return null;
-            return typeof data.credits === 'number' ? data.credits : null;
-        } catch (e) { return null; }
-    }
-
-    // Up to ~10s of polling; webhooks are usually far faster than this.
-    for (let attempt = 0; attempt < 6; attempt++) {
-        const status = await window.refreshQuotaStatus();
-        const credits = await readCredits();
-
-        // A credit top-up: balance went up.
-        if (credits !== null && credits > before.credits) {
-            const added = credits - before.credits;
-            localStorage.setItem('match_credits', String(credits));
-            if (window.showToast) showToast(`🎉 ${added} credits added — you now have ${credits}. Thank you!`);
-            if (typeof confetti === 'function') {
-                confetti({ particleCount: 160, spread: 90, origin: { y: 0.6 }, colors: ['#E5C158','#FFF3A3','#6B3FA0','#ffffff'] });
-            }
-            document.dispatchEvent(new CustomEvent('matchapp:creditschanged', { detail: { credits } }));
-            return;
-        }
-
-        // A plan upgrade: tier flags changed.
-        if (status && (status.is_vip !== before.vip || status.is_business !== before.business)) {
-            const tier = status.is_business ? 'Business' : (status.is_vip ? 'VIP' : 'your new plan');
-            if (window.showToast) showToast(`🎉 ${tier} unlocked — thank you! You now have ${status.limit} sessions a day.`);
-            if (typeof confetti === 'function') {
-                confetti({ particleCount: 160, spread: 90, origin: { y: 0.6 }, colors: ['#E5C158','#FFF3A3','#6B3FA0','#ffffff'] });
-            }
-            return;
-        }
-        await new Promise(r => setTimeout(r, 1700));
-    }
-
-    // Payment may still be processing — never imply it failed.
-    if (window.showToast) {
-        showToast('Payment received. Your plan will activate momentarily — refresh in a minute if it hasn\'t.');
-    }
+async function syncAfterCheckout(){
+ const params=new URLSearchParams(location.search);
+ if(!params.has('checkout')&&!params.has('success'))return;
+ const session=params.get('session_id');
+ if(session){location.replace('/purchase.html?session_id='+encodeURIComponent(session)+'&lang='+encodeURIComponent(window.MATCH_LANG||'en'));return;}
+ // Older Payment Links may not return a session ID. Refresh actual account state without claiming success.
+ params.delete('checkout');params.delete('success');
+ history.replaceState(null,'',location.pathname+(params.size?'?'+params:'')+location.hash);
+ await window.refreshQuotaStatus?.();window.showToast?.(t('billing.pending'));
 }
+document.addEventListener('DOMContentLoaded',()=>{setTimeout(syncAfterCheckout,1200);});
 
-document.addEventListener('DOMContentLoaded', () => { setTimeout(syncAfterCheckout, 1200); });
+document.addEventListener('matchapp:langchange',async()=>{
+ updateActionButtonStates();const source=window.currentSynopsisSource;
+ if(source&&document.getElementById('res-synopsis')){
+  const title=source.title,language=window.MATCH_LANG||'en';document.getElementById('res-synopsis').textContent=t('global.guide');
+  window.localizedTitle?.(title).then(name=>{if(window.currentSynopsisSource?.title===title&&(window.MATCH_LANG||'en')===language)document.getElementById('res-title').textContent=name;});
+  const text=await window.localizeMatchSynopsis(source.text,source.lang);
+  if(window.currentSynopsisSource?.title===title&&(window.MATCH_LANG||'en')===language)document.getElementById('res-synopsis').textContent=text;
+ }
+});
+document.addEventListener('click',event=>{if(event.target.closest('.app-header a,.app-header button:not(.sound-toggle-btn),.app-header select'))window.playPremiumSound?.();});
