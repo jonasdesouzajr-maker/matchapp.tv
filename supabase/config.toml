@@ -12,6 +12,9 @@
 [functions.stripe-webhook]
 verify_jwt = false
 
+[functions.stripe-checkout]
+verify_jwt = true
+
 [functions.gemini-proxy]
 verify_jwt = true
 

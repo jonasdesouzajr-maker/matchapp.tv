@@ -1,2 +1,2 @@
-// Release tools must update this and release.json together before publishing.
-window.MATCHAPP_BUILD = '2026.09.14.1';
+// Functional release identifier must match release.json.
+window.MATCHAPP_BUILD = '2026.09.14.2';

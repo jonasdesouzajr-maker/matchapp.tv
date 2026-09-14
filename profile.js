@@ -71,19 +71,13 @@ window.switchPortfolioTab = function(tab) {
     });
 };
 
-function calculateAgeFromDOB(dobString) {
-    let parts = dobString.split('/');
-    if(parts.length !== 3) return null;
-    let day = parseInt(parts[0], 10);
-    let month = parseInt(parts[1], 10) - 1; 
-    let year = parseInt(parts[2], 10);
-    
-    let dob = new Date(year, month, day);
-    if(isNaN(dob.getTime())) return null;
-
-    let diffMs = Date.now() - dob.getTime();
-    let ageDt = new Date(diffMs);
-    return Math.abs(ageDt.getUTCFullYear() - 1970);
+function calculateAgeFromDOB(value) {
+    if (!/^\d{2}\/\d{2}\/\d{4}$/.test(value)) return null;
+    const [day,month,year]=value.split('/').map(Number), birth=new Date(year,month-1,day), now=new Date();
+    if (birth.getFullYear()!==year || birth.getMonth()!==month-1 || birth.getDate()!==day || birth>now) return null;
+    let age=now.getFullYear()-year;
+    if (now.getMonth()<month-1 || (now.getMonth()===month-1 && now.getDate()<day)) age--;
+    return age>=0 && age<=120 ? age : null;
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -150,22 +144,29 @@ function checkAndRenderProfileState() {
             populateEmail();
         }
         if (instructionsText) instructionsText.innerHTML = "Your core identity is locked and permanently guiding your AI Matches.";
-        if (changeBadge) changeBadge.innerText = "Avatar Locked";
+        if (changeBadge) changeBadge.innerText = window.t?.('identity.avatarEditable') || 'Change avatar';
         
         if (saveBtn) {
-            saveBtn.innerText = "🔒 Identity Locked for AI Matching";
+            saveBtn.innerText = window.t?.('identity.locked') || 'Identity saved and locked';
+            saveBtn.disabled=true;
+            saveBtn.setAttribute('data-i18n','identity.locked');
             saveBtn.style.background = "#555";
             saveBtn.style.borderColor = "#555";
             saveBtn.style.boxShadow = "none";
             saveBtn.onclick = () => alert("Core identity fields are permanently locked to maintain consistent AI matching.");
         }
     } else {
+        if (editableSection) editableSection.style.display='';
+        if (lockedCard) lockedCard.style.display='none';
+        if (saveBtn) { saveBtn.disabled=false; saveBtn.onclick=window.saveProfileData; saveBtn.setAttribute('data-i18n','profile.saveIdentity'); saveBtn.innerText=window.t?.('profile.saveIdentity') || 'Save & Lock Identity'; }
         if (savedName) document.getElementById('profile-name').value = savedName;
         if (savedCountry) document.getElementById('profile-country').value = savedCountry;
         if (savedDob) document.getElementById('profile-dob').value = savedDob;
         if (savedSign) document.getElementById('profile-starsign').value = savedSign;
     }
 }
+
+window.checkAndRenderProfileState = checkAndRenderProfileState;
 
 window.handleAvatar = function(event) {
     // The profile lock deliberately does NOT apply here. It exists to freeze
@@ -231,9 +232,9 @@ window.handleAvatar = function(event) {
                 .forEach(b => b.setAttribute('aria-pressed', 'false'));
 
             if (window.supabaseClient) {
-                window.supabaseClient.auth.getUser().then(({ data }) => {
+                window.supabaseClient.auth.getUser().then(async ({ data }) => {
                     if (data && data.user) {
-                        window.supabaseClient.from('profiles')
+                        await window.supabaseClient.from('profiles')
                             .upsert({ id: data.user.id, avatar_url: base64 }, { onConflict: 'id' });
                     }
                 });
@@ -252,51 +253,34 @@ window.handleAvatar = function(event) {
     reader.readAsDataURL(file);
 };
 
-window.saveProfileData = function() {
-    const isLocked = localStorage.getItem('match_profile_locked') === 'true';
-    if(isLocked) return;
-
-    const name = document.getElementById('profile-name').value.trim();
-    const country = document.getElementById('profile-country').value.trim();
-    const dob = document.getElementById('profile-dob').value.trim();
-    const sign = document.getElementById('profile-starsign').value;
-
-    if(!name || !country || !dob || !sign) { 
-        alert("Please complete all fields (Full Name, Country, DOB, and Zodiac Sign)."); 
-        return; 
-    }
-    
-    let age = calculateAgeFromDOB(dob);
-    if (!age) { alert("Please enter a valid Birthdate (DD/MM/YYYY)."); return; }
-
-    const confirmLock = confirm(`⚠️ LOCK IDENTITY CONFIRMATION:\n\nName: ${name}\nCountry: ${country}\nAge: ${age} years old\nSign: ${sign}\n\nThis data will be permanently saved for your AI Concierge. Lock identity now?`);
-    if(!confirmLock) return;
-
-    localStorage.setItem('match_user_name', name);
-    localStorage.setItem('match_user_country', country);
-    localStorage.setItem('match_user_dob', dob);
-    localStorage.setItem('match_user_sign', sign);
-    localStorage.setItem('match_user_age', age);
-    localStorage.setItem('match_profile_locked', 'true');
-
-    if (window.supabaseClient) {
-        window.supabaseClient.auth.getUser().then(({ data }) => {
-            if (data && data.user) {
-                window.supabaseClient.from('profiles').upsert({
-                    id: data.user.id,
-                    full_name: name,
-                    country: country,
-                    dob: dob,
-                    star_sign: sign,
-                    age: age,
-                    profile_locked: true
-                });
-            }
-        });
-    }
-
-    alert("✅ Core Identity Locked! The AI will now generate hyper-personalized matches for you.");
-    window.location.reload();
+window.saveProfileData = async function() {
+    if (localStorage.getItem('match_profile_locked') === 'true') return;
+    const btn = document.getElementById('save-profile-btn');
+    const value = id => document.getElementById(id).value.trim();
+    const name=value('profile-name'), country=value('profile-country'), dob=value('profile-dob'), sign=value('profile-starsign');
+    if (!name || !country || !dob || !sign || calculateAgeFromDOB(dob) === null) { window.showToast?.(window.t?.('identity.complete') || 'Complete every identity field with a valid birthdate.',true); return; }
+    if (btn) btn.disabled=true;
+    try {
+        const sb=window.supabaseClient;
+        if (!sb) throw new Error('Connection unavailable');
+        const {data: auth,error:authError}=await sb.auth.getUser();
+        if (authError || !auth?.user) { window.showToast?.(window.t?.('identity.signIn') || 'Sign in to save and lock your identity across devices.',true); window.openAuthModal?.(); return; }
+        const {data,error}=await sb.rpc('save_locked_identity',{p_name:name,p_country:country,p_dob:dob,p_sign:sign});
+        if (error || !data?.profile_locked) throw error || new Error('Identity was not saved');
+        const current = await sb.auth.getSession();
+        if (current.data?.session?.user?.id !== auth.user.id) throw new Error('Account changed during save');
+        const fields={full_name:'match_user_name',country:'match_user_country',dob:'match_user_dob',star_sign:'match_user_sign',age:'match_user_age'};
+        Object.entries(fields).forEach(([field,key])=>localStorage.setItem(key,String(data[field] ?? '')));
+        localStorage.setItem('match_profile_locked','true');
+        localStorage.setItem('match_portfolio_owner',auth.user.id);
+        // Only paint a permanent lock after the server transaction has committed.
+        await window.hydrateProfileFromAuth?.(auth.user);
+        checkAndRenderProfileState();
+        window.showToast?.(window.t?.('identity.saved') || 'Identity saved and locked to your account.');
+    } catch (e) {
+        console.warn('Identity save failed:',e.message || e);
+        window.showToast?.(window.t?.('identity.failed') || 'Your identity was not saved. Please retry; your fields remain editable.',true);
+    } finally { if(btn)btn.disabled=localStorage.getItem('match_profile_locked')==='true'; }
 };
 
 function escapeHtml(str) {
@@ -780,7 +764,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const sel = $('set-voice');
             if (!sel) return;
             if (!voices.length) {
-                $('voice-note').textContent = 'No voices are available in this browser.';
+                $('voice-note').textContent = t('polish.noVoices');
                 sel.disabled = true;
                 return;
             }
@@ -822,7 +806,7 @@ document.addEventListener('DOMContentLoaded', () => {
         speechSynthesis.cancel();
         S.listVoices().then(voices => {
             const u = new SpeechSynthesisUtterance(
-                "Hi, I'm your MatchApp concierge. Tell me what you're in the mood for.");
+                t('polish.voiceSample'));
             const v = S.resolveVoice(voices, window.MATCH_LANG || 'en');
             if (v) { u.voice = v; u.lang = v.lang; }
             u.rate = S.get('voiceRate');
@@ -835,7 +819,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!window.MatchSettings) return;
         window.MatchSettings.reset();
         initSettingsPanel();   // repaint the controls from the restored values
-        if (window.showToast) showToast('Settings reset to defaults.');
+        if (window.showToast) window.MatchThemes?.cancel(); showToast(t('polish.settingsReset'));
     };
 
     if (document.readyState === 'loading') {
@@ -951,9 +935,10 @@ window.saveSettings = function () {
     const btn = document.querySelector('.settings-save');
     if (btn) { btn.disabled = true; btn.style.opacity = '0.6'; }
     // Re-setting a value forces the debounced account sync to fire now.
+    window.MatchThemes?.save();
     window.MatchSettings.set('fontScale', window.MatchSettings.get('fontScale'));
     setTimeout(() => {
         if (btn) { btn.disabled = false; btn.style.opacity = '1'; }
-        if (window.showToast) showToast('Settings saved to your account.');
+        if (window.showToast) showToast(t('polish.settingsSaved'));
     }, 700);
 };

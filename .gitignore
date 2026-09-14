@@ -1,3 +1,4 @@
 node_modules/
 .npm-cache/
 audit-results.json
+search-audit-results.json

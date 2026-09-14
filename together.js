@@ -104,6 +104,8 @@ window.tgCreateSession = async function () {
 
     tgSetBusy('tg-create-btn', true);
     try {
+        const {data:{user}} = await sb.auth.getUser();
+        if (!user) { tgError(t('polish.hostSignIn')); window.openAuthModal?.(); return; }
         const { data, error } = await sb.rpc('create_match_session', {
             p_name: name.trim() || 'Host',
             p_prefs: tgReadPrefs()
@@ -207,6 +209,7 @@ window.tgManualRefresh = function () {
 /* ---------- resolution ---------- */
 
 async function tgTryResolve(participants) {
+    if (tgState.role !== 'host') return;
     if (tgState.resolved) return;
     if (!participants || participants.length < 2) return;
 

@@ -1,314 +1,57 @@
-// ============================================================
-// MatchApp — stripe-webhook Edge Function
-// ------------------------------------------------------------
-// Grants and revokes paid tiers automatically when Stripe tells us
-// a payment succeeded, a subscription renewed, or a subscription
-// ended. Replaces flipping is_vip / is_business by hand in the
-// Supabase table editor.
-//
-// SECURITY — READ THIS BEFORE CHANGING ANYTHING
-// This endpoint MUST be deployed with JWT verification disabled
-// (Stripe can't send a Supabase JWT), which means the URL is
-// publicly reachable. The ONLY thing standing between that URL and
-// anyone granting themselves a lifetime Business plan is the Stripe
-// signature check below. Never remove it, never "temporarily" skip
-// it to debug, and never trust any field in the body before
-// constructEventAsync() has returned successfully.
-//
-// Note we use constructEventAsync + SubtleCryptoProvider rather than
-// the synchronous constructEvent: the sync version relies on Node's
-// crypto module, which doesn't exist in the Deno edge runtime, and
-// fails at runtime rather than at deploy time.
-// ============================================================
-
-import Stripe from "https://esm.sh/stripe@17.7.0?target=deno";
-import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
-
-const stripe = new Stripe(Deno.env.get("STRIPE_SECRET_KEY") ?? "", {
-  apiVersion: "2025-01-27.acacia",
-  httpClient: Stripe.createFetchHttpClient(),
-});
-
-// Async-capable crypto provider — required in Deno.
-const cryptoProvider = Stripe.createSubtleCryptoProvider();
-
-const supabase = createClient(
-  Deno.env.get("SUPABASE_URL") ?? "",
-  // Service role: needed because the billing columns are deliberately not
-  // writable by anon/authenticated (see migration 003). This key must only
-  // ever live in Edge Function secrets, never in client code.
-  Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? "",
-);
-
-type PlanKey = "ad_free" | "vip_monthly" | "vip_annual" | "business";
-
-// What each plan actually unlocks on the profile row.
-const PLAN_GRANTS: Record<PlanKey, Record<string, boolean>> = {
-  ad_free:     { is_ad_free: true },
-  vip_monthly: { is_vip: true, is_ad_free: true },
-  vip_annual:  { is_vip: true, is_ad_free: true },
-  business:    { is_business: true, is_vip: true, is_ad_free: true },
-};
-
-// ------------------------------------------------------------
-// CREDIT PACKS
-//
-// One-time top-ups. Keyed by amount in cents, exactly like the plans above,
-// because Payment Links do not carry a product key we can trust on the
-// session object.
-//
-// THE AMOUNTS MUST NOT COLLIDE WITH A PLAN AMOUNT. The Ad-Free Pass is 199
-// in `payment` mode, so no credit pack may be priced at $1.99, and credit
-// packs are checked FIRST so a future collision fails loudly in testing
-// rather than silently granting the wrong thing. If a price changes in
-// Stripe, change it here in the same commit.
-// ------------------------------------------------------------
-const CREDIT_PACKS: Record<number, { key: string; credits: number }> = {
-  299:  { key: "credits_25",  credits: 25 },
-  699:  { key: "credits_75",  credits: 75 },
-  1499: { key: "credits_200", credits: 200 },
-  2999: { key: "credits_500", credits: 500 },
-};
-
-function creditPackFromAmount(amountTotal: number | null, mode: string | null) {
-  if (amountTotal == null) return null;
-  // Credit packs are always one-time. A subscription at the same amount is a
-  // plan, not a top-up, and must not be mistaken for one.
-  if (mode === "subscription") return null;
-  return CREDIT_PACKS[amountTotal] ?? null;
+// Public Stripe endpoint: the raw-body Stripe signature is mandatory authentication.
+import Stripe from 'https://esm.sh/stripe@17.7.0?target=deno';
+import {createClient} from 'https://esm.sh/@supabase/supabase-js@2.105.0';
+import {verifiedCheckout,deliver,catalog} from '../_shared/billing.ts';
+const stripe=new Stripe(Deno.env.get('STRIPE_SECRET_KEY')??'',{apiVersion:'2025-01-27.acacia',httpClient:Stripe.createFetchHttpClient()});
+const cryptoProvider=Stripe.createSubtleCryptoProvider();
+const db=createClient(Deno.env.get('SUPABASE_URL')??'',Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')??'');
+async function record(id:string,type:string,user:string|null,plan:string|null){
+ const {error}=await db.from('stripe_events').insert({id,type,user_id:user,plan});
+ if(error&&error.code!=='23505')throw new Error('Audit recording pending');
 }
-
-async function grantCredits(
-  userId: string, amount: number, pack: string, eventId: string,
-): Promise<number | null> {
-  // grant_credits() is idempotent on the Stripe event id — the unique index
-  // on credit_ledger.stripe_event_id is what actually enforces it, so a
-  // retried delivery cannot double someone's balance even if this function
-  // is somehow called twice concurrently.
-  const { data, error } = await supabase.rpc("grant_credits", {
-    p_user_id: userId,
-    p_amount: amount,
-    p_pack: pack,
-    p_stripe_event_id: eventId,
-    p_reason: "purchase",
-  });
-  if (error) throw new Error(`Failed to grant ${amount} credits to ${userId}: ${error.message}`);
-  const balance = (data as { credits?: number } | null)?.credits ?? null;
-  log(`Granted ${amount} credits (${pack}) to user ${userId}; balance now ${balance}`);
-  return balance;
-}
-
-// Identify the plan from the amount paid (in cents) plus the checkout mode.
-// Amounts are unambiguous across MatchApp's current price list. If prices
-// ever change, update this map in the same commit as the Stripe change.
-function planFromAmount(amountTotal: number | null, mode: string | null): PlanKey | null {
-  if (amountTotal == null) return null;
-  if (mode === "payment" && amountTotal === 199) return "ad_free";
-  if (mode === "subscription") {
-    if (amountTotal === 499) return "vip_monthly";
-    if (amountTotal === 3999) return "vip_annual";
-    if (amountTotal === 4900) return "business";
+Deno.serve(async(req:Request)=>{
+ if(req.method!=='POST')return new Response('Method not allowed',{status:405});
+ const signature=req.headers.get('stripe-signature'),secret=Deno.env.get('STRIPE_WEBHOOK_SECRET');
+ if(!signature||!secret)return new Response('Missing signature',{status:400});
+ let event:Stripe.Event;
+ try{event=await stripe.webhooks.constructEventAsync(await req.text(),signature,secret,undefined,cryptoProvider);}
+ catch(_){return new Response('Invalid signature',{status:400});}
+ try{
+  const prior=await db.from('stripe_events').select('id').eq('id',event.id).maybeSingle();
+  if(prior.error)throw new Error('Audit unavailable');
+  if(prior.data)return new Response(JSON.stringify({received:true,duplicate:true}),{headers:{'Content-Type':'application/json'}});
+  let uid:string|null=null,plan:string|null=null;
+  if(['checkout.session.completed','checkout.session.async_payment_succeeded'].includes(event.type)){
+   const session=await stripe.checkout.sessions.retrieve((event.data.object as Stripe.Checkout.Session).id);
+   if(session.payment_status==='paid'){
+    const verified=await verifiedCheckout(stripe,session);
+    if(!verified)throw new Error('Paid checkout requires reconciliation');
+    await deliver(db,session,verified);uid=verified.user;plan=verified.product.key;
+   }
+  }else if(['customer.subscription.updated','customer.subscription.deleted'].includes(event.type)){
+   const id=(event.data.object as Stripe.Subscription).id;
+   const sub=await stripe.subscriptions.retrieve(id);
+   const customer=typeof sub.customer==='string'?sub.customer:sub.customer.id;
+   // Ignore stale notifications belonging to a different subscription.
+   const result=await db.from('profiles').select('id,ad_free_purchased').eq('stripe_customer_id',customer).eq('stripe_subscription_id',sub.id).maybeSingle();
+   if(result.error)throw new Error('Account lookup pending');
+   if(result.data){
+    uid=result.data.id;
+    const dead=['canceled','unpaid','incomplete_expired'].includes(sub.status);
+    const price=sub.items.data[0]?.price?.id;
+    const product=(await catalog(stripe)).find(p=>p.price===price&&p.mode==='subscription');
+    const patch:Record<string,unknown>={subscription_status:sub.status,subscription_updated_at:new Date().toISOString()};
+    if(dead){Object.assign(patch,{is_vip:false,is_business:false,is_ad_free:result.data.ad_free_purchased===true,subscription_plan:null});}
+    else if(sub.status==='active'&&product){Object.assign(patch,{is_vip:true,is_business:product.key==='business',is_ad_free:true,subscription_plan:product.key});}
+    const update=await db.from('profiles').update(patch).eq('id',uid).eq('stripe_subscription_id',sub.id);if(update.error)throw new Error('Subscription delivery pending');
+   }
+  }else if(event.type==='invoice.payment_succeeded'){
+   const invoice=event.data.object as Stripe.Invoice;
+   if(typeof invoice.customer==='string'){
+    const result=await db.from('profiles').select('id').eq('stripe_customer_id',invoice.customer).maybeSingle();if(result.error)throw new Error('Account lookup pending');uid=result.data?.id||null;
+   }
   }
-  // Fall back to amount alone, in case mode is absent on an older event shape.
-  if (amountTotal === 199) return "ad_free";
-  if (amountTotal === 499) return "vip_monthly";
-  if (amountTotal === 3999) return "vip_annual";
-  if (amountTotal === 4900) return "business";
-  return null;
-}
-
-function log(...args: unknown[]) {
-  console.log(`[stripe-webhook]`, ...args);
-}
-
-// Idempotency: Stripe retries deliveries, and a retry must not re-apply.
-// The events table's primary key does the work — a duplicate insert fails,
-// and we treat that failure as "already handled, nothing to do".
-async function alreadyProcessed(eventId: string): Promise<boolean> {
-  const { data } = await supabase
-    .from("stripe_events").select("id").eq("id", eventId).maybeSingle();
-  return !!data;
-}
-
-async function recordEvent(eventId: string, type: string, userId: string | null, plan: string | null) {
-  const { error } = await supabase.from("stripe_events")
-    .insert({ id: eventId, type, user_id: userId, plan });
-  if (error) log("Could not record event (non-fatal):", error.message);
-}
-
-async function grantPlan(userId: string, plan: PlanKey, extra: Record<string, unknown>) {
-  const patch = { ...PLAN_GRANTS[plan], ...extra, subscription_updated_at: new Date().toISOString() };
-  const { error } = await supabase.from("profiles").update(patch).eq("id", userId);
-  if (error) throw new Error(`Failed to grant ${plan} to ${userId}: ${error.message}`);
-  log(`Granted ${plan} to user ${userId}`);
-}
-
-// Revoke recurring entitlements when a subscription ends. Deliberately does
-// NOT clear is_ad_free: the $1.99 Ad-Free Pass is a one-time purchase and a
-// separate, lapsed subscription must never take it away.
-async function revokeSubscription(stripeCustomerId: string, status: string) {
-  const { data: profile } = await supabase
-    .from("profiles").select("id, subscription_plan")
-    .eq("stripe_customer_id", stripeCustomerId).maybeSingle();
-
-  if (!profile) { log(`No profile for customer ${stripeCustomerId}; nothing to revoke`); return null; }
-
-  const { error } = await supabase.from("profiles").update({
-    is_vip: false,
-    is_business: false,
-    subscription_status: status,
-    stripe_subscription_id: null,
-    subscription_plan: null,
-    subscription_updated_at: new Date().toISOString(),
-  }).eq("id", profile.id);
-
-  if (error) throw new Error(`Failed to revoke for ${profile.id}: ${error.message}`);
-  log(`Revoked subscription tiers for user ${profile.id} (status: ${status})`);
-  return profile.id as string;
-}
-
-Deno.serve(async (req: Request) => {
-  if (req.method !== "POST") {
-    return new Response("Method not allowed", { status: 405 });
-  }
-
-  const signature = req.headers.get("stripe-signature");
-  const webhookSecret = Deno.env.get("STRIPE_WEBHOOK_SECRET");
-
-  if (!signature || !webhookSecret) {
-    log("Missing signature header or STRIPE_WEBHOOK_SECRET");
-    return new Response(JSON.stringify({ error: "Not configured" }), { status: 400 });
-  }
-
-  // Raw body is required — parsing it first would break signature verification.
-  const body = await req.text();
-
-  let event: Stripe.Event;
-  try {
-    event = await stripe.webhooks.constructEventAsync(
-      body, signature, webhookSecret, undefined, cryptoProvider,
-    );
-  } catch (err) {
-    // A failure here means the request did not genuinely come from Stripe.
-    log("SIGNATURE VERIFICATION FAILED:", err instanceof Error ? err.message : String(err));
-    return new Response(JSON.stringify({ error: "Invalid signature" }), { status: 400 });
-  }
-
-  // From this point the payload is trusted.
-  try {
-    if (await alreadyProcessed(event.id)) {
-      log(`Event ${event.id} already processed — skipping (Stripe retry)`);
-      return new Response(JSON.stringify({ received: true, duplicate: true }), { status: 200 });
-    }
-
-    switch (event.type) {
-      case "checkout.session.completed": {
-        const session = event.data.object as Stripe.Checkout.Session;
-        const userId = session.client_reference_id;
-
-        if (!userId) {
-          // REQUIRED CONFIG: Stripe Dashboard → Payment Links → each link →
-          // Edit → enable "Client reference ID". Without it, checkout succeeds
-          // but we cannot grant VIP / Ad-Free / Business because we do not
-          // know which profile paid. Check this first if upgrades do not land.
-          log(`No client_reference_id on session ${session.id} — cannot identify the user. ` +
-              `Enable "Client reference ID" on the Stripe Payment Link.`);
-          await recordEvent(event.id, event.type, null, null);
-          break;
-        }
-
-        // Credit packs are checked BEFORE plans. They are one-time purchases
-        // that grant a balance rather than a tier, and must never fall into
-        // planFromAmount's amount-only fallback branch.
-        const pack = creditPackFromAmount(session.amount_total, session.mode);
-        if (pack) {
-          await grantCredits(userId, pack.credits, pack.key, event.id);
-          await recordEvent(event.id, event.type, userId, pack.key);
-          break;
-        }
-
-        const plan = planFromAmount(session.amount_total, session.mode);
-        if (!plan) {
-          log(`Unrecognised amount ${session.amount_total} (mode ${session.mode}) on session ${session.id}`);
-          await recordEvent(event.id, event.type, userId, null);
-          break;
-        }
-
-        await grantPlan(userId, plan, {
-          stripe_customer_id: typeof session.customer === "string" ? session.customer : null,
-          stripe_subscription_id: typeof session.subscription === "string" ? session.subscription : null,
-          subscription_status: session.mode === "subscription" ? "active" : "one_time",
-          subscription_plan: plan,
-        });
-        await recordEvent(event.id, event.type, userId, plan);
-        break;
-      }
-
-      // Renewal succeeded — keep the entitlement alive and refresh status.
-      case "invoice.payment_succeeded": {
-        const invoice = event.data.object as Stripe.Invoice;
-        const customerId = typeof invoice.customer === "string" ? invoice.customer : null;
-        if (customerId) {
-          const { data: profile } = await supabase
-            .from("profiles").select("id").eq("stripe_customer_id", customerId).maybeSingle();
-          if (profile) {
-            await supabase.from("profiles").update({
-              subscription_status: "active",
-              subscription_updated_at: new Date().toISOString(),
-            }).eq("id", profile.id);
-            log(`Renewal confirmed for user ${profile.id}`);
-            await recordEvent(event.id, event.type, profile.id as string, null);
-            break;
-          }
-        }
-        await recordEvent(event.id, event.type, null, null);
-        break;
-      }
-
-      // Subscription ended or lapsed — revoke the recurring tiers.
-      case "customer.subscription.deleted": {
-        const sub = event.data.object as Stripe.Subscription;
-        const customerId = typeof sub.customer === "string" ? sub.customer : null;
-        const uid = customerId ? await revokeSubscription(customerId, "canceled") : null;
-        await recordEvent(event.id, event.type, uid, null);
-        break;
-      }
-
-      case "customer.subscription.updated": {
-        const sub = event.data.object as Stripe.Subscription;
-        const customerId = typeof sub.customer === "string" ? sub.customer : null;
-        // Only revoke on genuinely dead states. past_due keeps access during
-        // Stripe's retry window, so a card blip doesn't lock out a paying user.
-        const dead = ["canceled", "unpaid", "incomplete_expired"];
-        if (customerId && dead.includes(sub.status)) {
-          const uid = await revokeSubscription(customerId, sub.status);
-          await recordEvent(event.id, event.type, uid, null);
-        } else if (customerId) {
-          const { data: profile } = await supabase
-            .from("profiles").select("id").eq("stripe_customer_id", customerId).maybeSingle();
-          if (profile) {
-            await supabase.from("profiles").update({
-              subscription_status: sub.status,
-              subscription_updated_at: new Date().toISOString(),
-            }).eq("id", profile.id);
-          }
-          await recordEvent(event.id, event.type, profile?.id ?? null, null);
-        }
-        break;
-      }
-
-      default:
-        log(`Unhandled event type: ${event.type}`);
-        await recordEvent(event.id, event.type, null, null);
-    }
-
-    return new Response(JSON.stringify({ received: true }), {
-      status: 200, headers: { "Content-Type": "application/json" },
-    });
-  } catch (err) {
-    // Return 500 so Stripe retries — better than silently losing a payment.
-    const msg = err instanceof Error ? err.message : String(err);
-    log("Handler error:", msg);
-    return new Response(JSON.stringify({ error: msg }), { status: 500 });
-  }
+  await record(event.id,event.type,uid,plan);
+  return new Response(JSON.stringify({received:true}),{headers:{'Content-Type':'application/json'}});
+ }catch(_){console.error('[stripe-webhook] Verified event needs retry/reconciliation');return new Response('Delivery pending',{status:500});}
 });

@@ -283,7 +283,7 @@
     }
 
     function start() {
-        if (reduceMotion || rafId !== null) return;
+        if (reduceMotion || rafId !== null || document.querySelector('.poster-wall') || document.documentElement.classList.contains('reduce-motion')) return;
         rafId = requestAnimationFrame(frame);
     }
     function stop() {
@@ -300,6 +300,8 @@
     document.addEventListener('visibilitychange', () => {
         if (document.hidden) stop(); else start();
     });
+    document.addEventListener('matchapp:posterwall', stop);
+    document.addEventListener('matchapp:settingschanged',()=>{if(document.documentElement.classList.contains('reduce-motion'))stop();else start();});
 
     resize();
     start();

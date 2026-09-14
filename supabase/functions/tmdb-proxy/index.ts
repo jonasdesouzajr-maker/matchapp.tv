@@ -149,6 +149,8 @@ async function tmdbFetch(path: string, token: string): Promise<Record<string, un
 }
 
 Deno.serve(async (req: Request) => {
+  const origin = req.headers.get("origin");
+  if (origin && !ALLOWED_ORIGINS.has(origin)) return new Response(JSON.stringify({error:"Origin not allowed"}), {status:403,headers:{"Content-Type":"application/json","Vary":"Origin"}});
   if (req.method === "OPTIONS") return new Response("ok", { headers: corsHeaders(req) });
   if (req.method !== "POST") {
     return new Response(JSON.stringify({ error: "Method not allowed" }), {
@@ -182,7 +184,6 @@ Deno.serve(async (req: Request) => {
 
     const body = await req.json().catch(() => ({}));
     const query = typeof body?.query === "string" ? body.query.trim().slice(0, MAX_QUERY_CHARS) : "";
-    if (!query) return json({ error: "query is required" }, 400);
 
     const year = typeof body?.year === "string" || typeof body?.year === "number"
       ? String(body.year).slice(0, 4) : "";
@@ -192,6 +193,16 @@ Deno.serve(async (req: Request) => {
     // poster.
     const kind = body?.kind === "movie" || body?.kind === "tv" ? body.kind : "";
     const lang = typeof body?.lang === "string" ? body.lang.slice(0, 8) : "en-US";
+
+    // Locale lookup is restricted to a typed numeric TMDB identity. No arbitrary
+    // endpoint/URL can be supplied, and adult records are never returned.
+    if (body?.tmdb_id !== undefined) {
+      if (!Number.isSafeInteger(body.tmdb_id) || body.tmdb_id <= 0 || !kind) return json({error:"Invalid identity"},400);
+      const record = await tmdbFetch(`/${kind}/${body.tmdb_id}?language=${encodeURIComponent(lang)}`, token);
+      if (!record || record.adult === true) return json({results:[]});
+      return json({results:[normalise(record,kind)]},200,true);
+    }
+    if (!query) return json({ error: "query is required" }, 400);
 
     const q = encodeURIComponent(query);
     const langParam = `&language=${encodeURIComponent(lang)}`;

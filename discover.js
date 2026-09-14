@@ -612,7 +612,7 @@ async function askAndRender(question) {
     if (emptyEl) emptyEl.style.display = 'none';
 
     // Every turn costs one from the daily allowance, same as a match.
-    if (typeof checkDailyLimit === 'function' && !(await checkDailyLimit())) {
+    if (typeof checkDailyLimit === 'function' && !(await checkDailyLimit('ask_ai'))) {
         return;
     }
 

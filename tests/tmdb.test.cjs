@@ -1,15 +1,6 @@
 const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
 const {JSDOM}=require('jsdom');
-test('Kids can verify English catalogue identities in a Portuguese UI without reusing localized cache results',async()=>{
-  const dom=new JSDOM('',{url:'https://matchapp.tv/kids/',runScripts:'outside-only'}),w=dom.window,calls=[];
-  w.MATCH_LANG='pt-BR';
-  w.supabaseClient={functions:{invoke:async(name,{body})=>{calls.push(body.lang);return {data:{results:[{title:body.lang==='pt-BR'?'Meu Amigo Totoro':'My Neighbor Totoro',originalTitle:'となりのトトロ',year:'1988',kind:'movie',adult:false,poster:'https://image.tmdb.org/t/p/w500/totoro.jpg'}]}};}}};
-  w.eval(fs.readFileSync(path.join(__dirname,'../tmdb.js'),'utf8'));
-  const hints={year:1988,kind:'movie'};
-  assert.equal(await w.tmdbLookup('My Neighbor Totoro',hints),null);
-  const result=await w.tmdbLookup('My Neighbor Totoro',{...hints,lang:'en-US'});
-  assert.equal(result.title,'My Neighbor Totoro');
-  await w.tmdbLookup('My Neighbor Totoro',{...hints,lang:'en-US'});
-  assert.deepEqual(calls,['pt-BR','en-US']);
-  dom.window.close();
-});
+const english={tmdbId:8392,title:'My Neighbor Totoro',originalTitle:'となりのトトロ',year:'1988',kind:'movie',adult:false,poster:'https://image.tmdb.org/t/p/w500/totoro.jpg'};
+function setup(patch={}){const dom=new JSDOM('',{url:'https://matchapp.tv/kids/',runScripts:'outside-only'}),w=dom.window,calls=[];w.MATCH_LANG='pt-BR';w.supabaseClient={functions:{invoke:async(name,{body})=>{calls.push(body);return {data:{results:[body.tmdb_id?{...english,title:'Meu Amigo Totoro',...patch}:english]}};}}};w.eval(fs.readFileSync(path.join(__dirname,'../tmdb.js'),'utf8'));return {dom,w,calls};}
+test('regional names use a verified identity while Kids keeps its independent English identity cache',async()=>{const {dom,w,calls}=setup(),hints={year:1988,kind:'movie'};assert.equal((await w.tmdbLookup('My Neighbor Totoro',hints)).title,'Meu Amigo Totoro');assert.equal(calls[0].lang,'en-US');assert.equal(calls[1].tmdb_id,8392);assert.equal(calls[1].lang,'pt-BR');assert.equal((await w.tmdbLookup('My Neighbor Totoro',{...hints,lang:'en-US'})).title,'My Neighbor Totoro');await w.tmdbLookup('My Neighbor Totoro',{...hints,lang:'en-US'});assert.equal(calls.length,3);dom.window.close();});
+test('a localized response cannot replace a title with another ID, type, year, original identity or adult work',async()=>{for(const patch of [{tmdbId:1},{kind:'tv'},{year:'2005'},{originalTitle:'Other'},{adult:true}]){const {dom,w}=setup(patch);assert.equal((await w.tmdbLookup('My Neighbor Totoro',{year:1988,kind:'movie'})).title,'My Neighbor Totoro');dom.window.close();}});

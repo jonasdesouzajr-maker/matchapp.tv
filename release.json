@@ -1,22 +1,21 @@
 {
-  "version": "2026.09.14.1",
+  "version": "2026.09.14.2",
   "date": "2026-09-14",
   "functional": true,
   "notes": {
-    "en": [
-      "Device sign-in is now live. Sign in once, confirm your account and add a passkey in your profile. On your next visit, approve Face ID, fingerprint or your device PIN on supported devices.",
-      "Private Friends and remote Match Together are now live, with mutual approval, optional online status and illustrated avatars. Both people’s filters and permanent title exclusions are respected.",
-      "Kids Mode includes 64 reviewed titles, regional viewing links, classic-cartoon nostalgia and reliable covers."
-    ],
-    "pt": [
-      "O acesso com passkey já está disponível. Entre, confirme sua conta e adicione uma passkey no perfil. Nas próximas visitas, use Face ID, impressão digital ou o PIN do dispositivo compatível.",
-      "Amigos privados e Match Together à distância já estão disponíveis, com aprovação mútua, status online opcional e avatares ilustrados. Os critérios e exclusões permanentes dos dois usuários são respeitados.",
-      "Kids Mode com 64 títulos revisados, links regionais para assistir, clássicos nostálgicos e capas sempre disponíveis."
-    ],
-    "es": [
-      "El acceso con passkey ya está disponible. Inicia sesión, confirma tu cuenta y añade una passkey en tu perfil. Después, usa Face ID, huella o el PIN de un dispositivo compatible.",
-      "Amigos privados y Match Together a distancia ya están disponibles, con aprobación mutua, estado opcional y avatares ilustrados. Se respetan los filtros y las exclusiones de ambas personas.",
-      "Kids Mode incluye 64 títulos revisados, clásicos, enlaces regionales y portadas siempre disponibles."
-    ]
+    "en": "Five previewable whole-site themes, a clearer mobile header and update notices, persistent language, three official-source global event guides, original Marido Bilionário artwork, a foldable AHS13 spotlight, and verified account-bound purchase delivery. Also: eight verified Roku titles, clean localized captions below covers, a branded animated poster background, and update signals retained until an installed app confirms the requested release.\n\nOne credit = one match or one Ask AI question. Your free daily allowance is used first. Sign in to save and lock your identity across devices.",
+    "pt-BR": "Cinco temas com prévia para todo o site, cabeçalho e avisos de atualização legíveis no celular, idioma persistente, três guias de eventos mundiais com fontes oficiais, capa original de Marido Bilionário, destaque AHS13 dobrável e entrega de compras verificada na conta. Também: oito títulos Roku verificados, nomes localizados abaixo das capas, fundo animado com pôsteres e avisos mantidos até o app instalado confirmar a atualização solicitada.\n\nUm crédito = um match ou uma pergunta à IA. A cota grátis diária é usada primeiro. Entre para salvar e bloquear seus dados em todos os dispositivos.",
+    "es": "Cinco temas con vista previa, cabecera y avisos legibles en móvil, idioma persistente, tres guías de eventos con fuentes oficiales, portada original de Marido Bilionário, sección AHS13 plegable y entrega de compras verificada. Además: ocho títulos Roku, nombres bajo las portadas, fondo animado de carteles y avisos mantenidos hasta confirmar la actualización.\n\nUn crédito = un match o una pregunta a la IA. Primero se usa la cuota gratuita. Inicia sesión para guardar y bloquear tus datos en todos los dispositivos.",
+    "fr": "Prévisualisez toute la page avant de sauvegarder votre favori. Grands événements mondiaux à venir. Réglages sauvegardés et synchronisés avec votre compte connecté.\n\nUn crédit = un match ou une question à l’IA. Le quota gratuit est utilisé en premier. Connectez-vous pour enregistrer et verrouiller vos données sur tous vos appareils.",
+    "de": "Sieh dir die ganze Seite an, bevor du dein Lieblingsdesign speicherst. Kommende große Weltereignisse. Einstellungen gespeichert und mit deinem angemeldeten Konto synchronisiert.\n\nEin Guthaben = ein Match oder eine KI-Frage. Das kostenlose Tageskontingent wird zuerst verwendet. Melden Sie sich an, um Ihre Angaben geräteübergreifend zu speichern und zu sperren.",
+    "it": "Visualizza tutta la pagina prima di salvare il tuo tema preferito. Prossimi grandi eventi mondiali. Impostazioni salvate e sincronizzate con il tuo account connesso.\n\nUn credito = un match o una domanda all’IA. Prima si usa la quota gratuita. Accedi per salvare e bloccare i dati su tutti i dispositivi.",
+    "tr": "Favorinizi kaydetmeden önce tüm sayfayı önizleyin. Yaklaşan büyük dünya etkinlikleri. Ayarlar kaydedildi ve giriş yaptığınız hesapla eşitlendi.\n\nBir kredi = bir eşleşme veya yapay zekâ sorusu. Önce ücretsiz günlük kota kullanılır. Bilgilerinizi cihazlar arasında kaydetmek ve kilitlemek için giriş yapın.",
+    "ru": "Посмотрите всю страницу перед сохранением любимой темы. Ближайшие крупные мировые события. Настройки сохранены и синхронизированы с вашим аккаунтом.\n\nОдин кредит = один подбор или вопрос ИИ. Сначала используется бесплатный дневной лимит. Войдите, чтобы сохранить и заблокировать данные на всех устройствах.",
+    "ar": "عاين الصفحة كاملة قبل حفظ مظهرك المفضل. أحداث عالمية كبرى قادمة. تم حفظ الإعدادات ومزامنتها مع حسابك المسجل.\n\nرصيد واحد = اختيار واحد أو سؤال للذكاء الاصطناعي. تُستخدم الحصة اليومية المجانية أولًا. سجّل الدخول لحفظ بياناتك وقفلها عبر أجهزتك.",
+    "hi": "पसंदीदा थीम सहेजने से पहले पूरे पेज का पूर्वावलोकन देखें। आने वाले बड़े वैश्विक कार्यक्रम. सेटिंग सहेजी गई और आपके साइन-इन खाते से सिंक की गई।\n\nएक क्रेडिट = एक मैच या एक AI प्रश्न। पहले दैनिक मुफ़्त सीमा इस्तेमाल होती है। सभी डिवाइस पर विवरण सहेजने और लॉक करने के लिए साइन इन करें।",
+    "id": "Pratinjau seluruh halaman sebelum menyimpan tema favorit. Acara global besar mendatang. Pengaturan disimpan dan disinkronkan ke akun yang masuk.\n\nSatu kredit = satu match atau pertanyaan AI. Kuota harian gratis digunakan terlebih dahulu. Masuk untuk menyimpan dan mengunci data di semua perangkat.",
+    "ja": "保存する前にページ全体をプレビューできます。 これからの世界的なイベント. 設定を保存しました。ログイン中のアカウントにも同期します。\n\n1クレジット＝おすすめ1回またはAIへの質問1回。無料の日次枠を先に使用します。 端末間で情報を保存・固定するにはログインしてください。",
+    "ko": "마음에 드는 테마를 저장하기 전에 전체 페이지를 미리 보세요. 다가오는 세계적인 이벤트. 설정을 저장했습니다. 로그인한 계정에도 동기화됩니다.\n\n크레딧 1개 = 매치 1회 또는 AI 질문 1회. 무료 일일 한도를 먼저 사용합니다. 모든 기기에 정보를 저장하고 잠그려면 로그인하세요.",
+    "zh": "保存喜欢的主题之前，可预览整个页面。 即将举行的全球大型活动. 设置已保存，并同步到已登录的账户。\n\n1积分＝1次匹配或1次AI提问。优先使用每日免费额度。 请登录以在所有设备上保存并锁定资料。"
   }
 }

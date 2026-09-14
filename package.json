@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "test": "node --test --test-isolation=none tests/*.test.cjs",
-    "audit:site": "node tools/audit-site.js",
+    "audit:site": "node tools/audit-site.js && node tools/audit-search.js",
     "build:kids-covers": "node tools/build-kids-covers.js"
   },
   "devDependencies": {

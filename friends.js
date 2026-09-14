@@ -78,7 +78,7 @@
   if(data.result){
    clearInterval(matchTimer);matchTimer=null;
    const r=data.result;$('friend-match-form').hidden=true;$('friend-match-result').hidden=false;
-   $('friend-result-title').textContent=r.title;$('friend-result-synopsis').textContent=r.synopsis||'';
+   $('friend-result-title').textContent=r.title;$('friend-result-synopsis').textContent=window.t('global.guide');window.localizeMatchSynopsis(r.synopsis||'').then(text=>{if($('friend-result-title').textContent===r.title)$('friend-result-synopsis').textContent=text;});
    const image=$('friend-result-poster'),fallback=()=>generateLocalPosterSVG(r.title,r);image.src=fallback();image.onerror=()=>{image.onerror=null;image.src=fallback();};
    getRealCoverImage(r.title,r).then(url=>{if(url)image.src=url;}).catch(()=>{});
    const link=$('friend-result-watch');link.href=r.watchUrl || platformSearchUrl(r.platform,r.title);link.textContent=tr('Find where to watch','Onde assistir');

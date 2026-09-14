@@ -16,7 +16,8 @@
         autoRead: true,
         reduceMotion: false,
         lazyDefault: false,
-        compactCards: false
+        compactCards: false,
+        theme: 'aurora'
     };
 
     let settings = { ...DEFAULTS };
@@ -135,6 +136,7 @@
         get(k) { return k ? settings[k] : { ...settings }; },
         set(k, v, opts) {
             if (!(k in DEFAULTS)) return;
+            if (k === 'theme' && !['aurora','cinema','ocean','sunrise','arcade'].includes(v)) return;
             settings[k] = v;
             persistLocal();
             applyAll();
@@ -157,6 +159,7 @@
                 try { local = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) {}
                 settings = { ...DEFAULTS, ...remote, ...local };
                 persistLocal(); applyAll();
+                document.dispatchEvent(new CustomEvent('matchapp:settingschanged', { detail: { key: '*', value: null } }));
             } catch (e) {}
         },
         listVoices() {

@@ -53,7 +53,9 @@ function main() {
     }));
 
     const kids = readList('kids-urls.json').map(loc => ({loc, freq:'weekly', pri:'0.6'}));
-    const all = [...CORE, ...seo, ...watch, ...kids];
+    const events = readList('event-urls.json').map(loc => ({loc, freq:'weekly', pri:'0.7'}));
+    const roku=readList('roku-urls.json').map(loc=>({loc,freq:'weekly',pri:'0.7'}));
+    const all = [...CORE, ...seo, ...watch, ...kids, ...events, ...roku];
 
     // Guard against a generator ever emitting a duplicate.
     const seen = new Set();

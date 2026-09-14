@@ -1,0 +1,65 @@
+[
+  {
+    "slug": "asian-games-2026",
+    "title": "Asian Games Aichi–Nagoya 2026",
+    "start": "2026-09-19T00:00:00+09:00",
+    "end": "2026-10-04T23:59:59+09:00",
+    "location": "Aichi & Nagoya, Japan",
+    "category": "Sports",
+    "synopsis": "Asia's multi-sport festival brings athletes from 45 countries and regions to Japan. The opening ceremony is September 19 and the closing ceremony October 4; some competitions and TBS coverage start earlier.",
+    "watchInfo": "TBS is an official broadcaster in Japan. Its event hub lists television schedules and official video coverage. Other territories have separate rights: check your local broadcaster. A worldwide free live stream is not confirmed.",
+    "official": "https://www.aichi-nagoya2026.org/en/",
+    "watch": "https://www.tbs.co.jp/asiangames/",
+    "recorded": "https://www.youtube.com/@TBSSPORTS6/videos",
+    "source": "https://oca.asia/news/6751-tbs-television-comes-on-board-as-official-broadcaster-for-aichi-nagoya-2026-asian-games.html",
+    "keywords": "Asian Games 2026, Aichi Nagoya 2026, Asian Games opening ceremony, Asian Games live TV, Asian Games highlights, TBS Asian Games",
+    "organizer": "Aichi–Nagoya Asian Games Organising Committee",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Nagoya",
+      "addressRegion": "Aichi",
+      "addressCountry": "JP"
+    }
+  },
+  {
+    "slug": "azerbaijan-gp-2026",
+    "title": "Azerbaijan Grand Prix 2026",
+    "start": "2026-09-24T00:00:00+04:00",
+    "end": "2026-09-26T23:59:59+04:00",
+    "location": "Baku City Circuit, Azerbaijan",
+    "category": "Motorsport",
+    "synopsis": "Formula 1 races through Baku's old-town walls and long Caspian-side straights. Practice starts September 24, qualifying is September 25 and the Grand Prix is Saturday September 26.",
+    "watchInfo": "F1 TV offers live sessions and replays where available, with a subscription. Use Formula 1's country-by-country broadcast guide to find your local rights holder. Official Formula 1 videos offer selected highlights; full free race coverage is not promised.",
+    "official": "https://www.formula1.com/en/racing/2026/azerbaijan",
+    "watch": "https://f1tv.formula1.com/",
+    "recorded": "https://www.youtube.com/@Formula1/videos",
+    "source": "https://www.formula1.com/en/information/f1-broadcast-information.45y3LNsT1D6VoK0ZmX8ciJ",
+    "keywords": "Azerbaijan Grand Prix 2026, Baku GP Saturday race, Azerbaijan GP live stream, F1 TV replays, Baku race highlights, Formula 1 September 2026",
+    "organizer": "Formula 1",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Baku",
+      "addressCountry": "AZ"
+    }
+  },
+  {
+    "slug": "worlds-2026",
+    "title": "League of Legends Worlds 2026",
+    "start": "2026-10-15T00:00:00-05:00",
+    "end": "2026-11-14T23:59:59-05:00",
+    "location": "United States; final in New York",
+    "category": "Esports",
+    "synopsis": "The League of Legends World Championship returns to North America. Riot's 2026 international calendar lists October 15 through November 14, with the championship final in New York. Check the official schedule for each stage and match.",
+    "watchInfo": "LoL Esports is the official live viewing and schedule destination, with regional broadcasts. The official LoL Esports video channel carries selected match replays, highlights and features. Upcoming recordings appear after matches; language and availability can vary.",
+    "official": "https://lolesports.com/en-US/news/season-start-2026-lol-esports",
+    "watch": "https://lolesports.com/en-GB/leagues/worlds",
+    "recorded": "https://www.youtube.com/@lolesports/videos",
+    "source": "https://lolesports.com/en-GB/leagues/worlds",
+    "keywords": "LoL Worlds 2026, League of Legends World Championship live, Worlds 2026 schedule, Worlds New York final, LoL Esports VOD, Worlds highlights",
+    "organizer": "Riot Games",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "US"
+    }
+  }
+]

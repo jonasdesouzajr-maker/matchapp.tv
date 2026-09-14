@@ -34,3 +34,7 @@ and [signed-in](https://supabase.com/docs/guides/database/database-linter?lint=0
 definer advisories concern existing quota/group APIs, not the new invoker RPCs.
 After the policy/index fixes, performance advisors report only unused-index
 information, which is expected for new indexes and empty tables.
+
+## Release 2026.09.14.2
+
+Added eight reviewed Roku entries to the private shared-match catalogue (192 total). Deployed verified, account-bound Stripe checkout and atomic purchase receipts. Purchased credits use one balance for matches and Ask AI, with the free allowance consumed first. Saved identity fields and the permanent lock now commit in one authenticated database transaction and restore across devices. Restrict profile INSERT columns to prevent self-issued credits or subscription flags; enforce immutable locked identity fields. Hosted checks for credit spending, immutable identity, receipt ownership and duplicate delivery all passed in transactions that fully rolled back. No payment was charged and no fixture accounts remain.

@@ -8,7 +8,7 @@
   const standalone=()=>navigator.standalone===true||!!window.matchMedia?.('(display-mode: standalone)').matches;
   let known=standalone()||read(KEY)==='true';
   function notify(){window.dispatchEvent(new Event('matchapp:installstate'));}
-  function remember(){known=true;write(KEY,'true');if(/^\d{4}\.\d{2}\.\d{2}\.\d+$/.test(window.MATCHAPP_BUILD||''))write(BUILD,window.MATCHAPP_BUILD);notify();}
+  function remember(event){known=true;write(KEY,'true');if((!read(BUILD)||event?.type==='appinstalled')&&/^\d{4}\.\d{2}\.\d{2}\.\d+$/.test(window.MATCHAPP_BUILD||''))write(BUILD,window.MATCHAPP_BUILD);notify();}
   function forget(){known=false;write(KEY,null);write(BUILD,null);notify();}
   async function refresh(){
     if(standalone()){remember();return true;}
@@ -19,7 +19,10 @@
     }catch(_){/* Unsupported OS or unavailable manifest: retain confirmed hint. */}
     return known;
   }
-  window.matchAppInstallState=Object.freeze({isInstalled:()=>known||standalone(),isStandalone:standalone,installedBuild:()=>read(BUILD),refresh,remember,forget});
+  // Only an installed window that loaded the explicitly requested release can
+  // acknowledge it. An ordinary website visit cannot dismiss the app update.
+  function confirmUpdate(version){if(!standalone()||version!==window.MATCHAPP_BUILD)return false;write(BUILD,version);notify();return true;}
+  window.matchAppInstallState=Object.freeze({isInstalled:()=>known||standalone(),isStandalone:standalone,installedBuild:()=>read(BUILD),refresh,remember,forget,confirmUpdate});
   window.addEventListener('appinstalled',remember);
   window.addEventListener('beforeinstallprompt',forget);
   window.addEventListener('storage',event=>{if(event.key===KEY||event.key===BUILD){known=standalone()||read(KEY)==='true';notify();}});

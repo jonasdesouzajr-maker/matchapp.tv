@@ -18,63 +18,19 @@ const STRIPE_LINK_VIP_ANNUAL = "https://buy.stripe.com/8x29ATdkB5dcgwCdwtcfK09";
 // so the button can never dead-end on a checkout page that doesn't exist.
 const STRIPE_LINK_BUSINESS = "https://buy.stripe.com/4gM00ja8peNMdkq641cfK0e";
 
-window.processCheckout = async function(planType) {
-    if (!isUserLoggedIn || !supabaseClient) {
-        alert("💎 Please create a free account or log in first so we can securely link this VIP pass to your profile!");
-        if (typeof window.openAuthModal === 'function') window.openAuthModal();
-        return;
-    }
-
-    const btnId = `btn-${planType}`;
-    const btn = document.getElementById(btnId);
-    const originalText = btn ? btn.innerText : 'Processing...';
-    
-    if (btn) {
-        btn.innerText = "Securely redirecting to Stripe...";
-        btn.disabled = true;
-        btn.style.opacity = "0.7";
-    }
-
-    try {
-        const { data: { user } } = await supabaseClient.auth.getUser();
-        
-        if (user) {
-            const userId = user.id;
-            
-            // Build the checkout URL and dynamically append the user ID so you can track it in Stripe webhooks
-            let checkoutUrl = "";
-            if (planType === 'ad_free') {
-                checkoutUrl = `${STRIPE_LINK_AD_FREE}?client_reference_id=${userId}`;
-            } else if (planType === 'vip_monthly') {
-                checkoutUrl = `${STRIPE_LINK_VIP_MONTHLY}?client_reference_id=${userId}`;
-            } else if (planType === 'vip_annual') {
-                checkoutUrl = `${STRIPE_LINK_VIP_ANNUAL}?client_reference_id=${userId}`;
-            } else if (planType === 'business') {
-                // Graceful behaviour before the Stripe link exists: send them to
-                // sales instead of a broken checkout.
-                if (!STRIPE_LINK_BUSINESS || STRIPE_LINK_BUSINESS.startsWith('PASTE_')) {
-                    window.location.href = 'mailto:support@matchapp.tv?subject=' +
-                        encodeURIComponent('MatchApp Business plan enquiry') +
-                        '&body=' + encodeURIComponent("Hi MatchApp team,\n\nI'd like to know more about the Business plan.\n\nCompany:\nExpected monthly volume:\n\nThanks!");
-                    if (btn) { btn.innerText = originalText; btn.disabled = false; btn.style.opacity = "1"; }
-                    return;
-                }
-                checkoutUrl = `${STRIPE_LINK_BUSINESS}?client_reference_id=${userId}`;
-            }
-
-            // Route user directly to Stripe Checkout
-            window.location.href = checkoutUrl;
-            
-        } else {
-            alert("Session expired. Please log in again to purchase.");
-            if (btn) { btn.innerText = originalText; btn.disabled = false; btn.style.opacity = "1"; }
-        }
-    } catch (error) {
-        console.error("Checkout routing error:", error);
-        alert("Payment routing failed. Please check your connection and try again.");
-        if (btn) { btn.innerText = originalText; btn.disabled = false; btn.style.opacity = "1"; }
-    }
-};
+async function startVerifiedCheckout(product,button){
+ const sb=window.supabaseClient;const original=button?.textContent;
+ try{
+  const session=sb?await sb.auth.getSession():null;
+  if(!session?.data?.session){window.showToast?.(t('billing.signin'));window.openAuthModal?.();return;}
+  if(button){button.disabled=true;button.textContent=t('billing.redirect');}
+  const {data,error}=await sb.functions.invoke('stripe-checkout',{body:{product,lang:window.MATCH_LANG||'en'}});
+  if(error||!data?.url||!data.url.startsWith('https://checkout.stripe.com/'))throw new Error('Checkout unavailable');
+  window.location.assign(data.url);
+ }catch(_){window.showToast?.(t('billing.error'),true);}
+ finally{if(button){button.disabled=false;button.textContent=original;}}
+}
+window.processCheckout=planType=>startVerifiedCheckout(planType,document.getElementById('btn-'+planType));
 // ============================================================
 // 🎟️ CREDIT PACKS — one-time top-ups
 //
@@ -131,38 +87,4 @@ const STRIPE_LINK_CREDITS = {
     credits_500: "https://buy.stripe.com/5kQcN50xP35494afEBcfK0d"
 };
 
-window.buyCredits = async function (packKey) {
-    const pack = CREDIT_PACKS.find(p => p.key === packKey);
-    if (!pack) return;
-
-    if (!window.isUserLoggedIn || !window.supabaseClient) {
-        // Credits are granted to an account by the webhook via
-        // client_reference_id. Without a signed-in user there is nothing to
-        // grant them TO, so this has to be a hard stop rather than a nudge.
-        if (window.showToast) showToast('Create a free account first — credits are tied to your profile so they are never lost.');
-        if (typeof window.openAuthModal === 'function') window.openAuthModal();
-        return;
-    }
-
-    const link = STRIPE_LINK_CREDITS[packKey];
-    if (!link || link.startsWith('PASTE_')) {
-        window.location.href = 'mailto:support@matchapp.tv?subject=' +
-            encodeURIComponent(`MatchApp credits — ${pack.credits} pack`) +
-            '&body=' + encodeURIComponent(
-                `Hi MatchApp team,\n\nI'd like to buy the ${pack.credits}-credit pack (${pack.price}).\n\nThanks!`);
-        return;
-    }
-
-    try {
-        const { data: { user } } = await window.supabaseClient.auth.getUser();
-        if (!user) {
-            if (window.showToast) showToast('Session expired — please sign in again.', true);
-            return;
-        }
-        // client_reference_id is how the webhook knows whose balance to top
-        // up. Without it the payment succeeds and the credits go nowhere.
-        window.location.href = `${link}?client_reference_id=${user.id}`;
-    } catch (e) {
-        if (window.showToast) showToast('Could not start checkout — check your connection and try again.', true);
-    }
-};
+window.buyCredits=packKey=>{if(CREDIT_PACKS.some(p=>p.key===packKey))return startVerifiedCheckout(packKey,document.querySelector('[data-credit-pack="'+packKey+'"]'));};

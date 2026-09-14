@@ -1,7 +1,7 @@
 {
   "name": "MatchApp — AI Streaming Concierge",
   "short_name": "MatchApp",
-  "description": "Find what to watch with AI, discover the curated Kids world, and sign in securely with passkeys.",
+  "description": "Find what to watch across streaming services including The Roku Channel, discover the curated Kids world and global events, and personalize MatchApp with five themes.",
   "start_url": "/?utm_source=pwa",
   "scope": "/",
   "display": "standalone",

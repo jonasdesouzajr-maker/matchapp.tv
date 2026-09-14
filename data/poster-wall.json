@@ -1,0 +1,58 @@
+[
+  {
+    "title": "Dune: Part Two",
+    "poster": "https://image.tmdb.org/t/p/w500/6izwz7rsy95ARzTR3poZ8H6c5pp.jpg",
+    "tmdbId": 693134,
+    "kind": "movie",
+    "year": "2024"
+  },
+  {
+    "title": "The Bear",
+    "poster": "https://image.tmdb.org/t/p/w500/eKfVzzEazSIjJMrw9ADa2x8ksLz.jpg",
+    "tmdbId": 136315,
+    "kind": "tv",
+    "year": "2022"
+  },
+  {
+    "title": "Queen of Tears",
+    "poster": "https://image.tmdb.org/t/p/w500/7ZXLZ3KYL3IVvsSHBZaHjcNQzNU.jpg",
+    "tmdbId": 215720,
+    "kind": "tv",
+    "year": "2024"
+  },
+  {
+    "title": "Fallout",
+    "poster": "https://image.tmdb.org/t/p/w500/c15BtJxCXMrISLVmysdsnZUPQft.jpg",
+    "tmdbId": 106379,
+    "kind": "tv",
+    "year": "2024"
+  },
+  {
+    "title": "Stranger Things",
+    "poster": "https://image.tmdb.org/t/p/w500/uOOtwVbSr4QDjAGIifLDwpb2Pdl.jpg",
+    "tmdbId": 66732,
+    "kind": "tv",
+    "year": "2016"
+  },
+  {
+    "title": "Wednesday",
+    "poster": "https://image.tmdb.org/t/p/w500/9PFonBhy4cQy7Jz20NpMygczOkv.jpg",
+    "tmdbId": 119051,
+    "kind": "tv",
+    "year": "2022"
+  },
+  {
+    "title": "Shōgun",
+    "poster": "https://image.tmdb.org/t/p/w500/7O4iVfOMQmdCSxhOg1WnzG1AgYT.jpg",
+    "tmdbId": 126308,
+    "kind": "tv",
+    "year": "2024"
+  },
+  {
+    "title": "House of the Dragon",
+    "poster": "https://image.tmdb.org/t/p/w500/7V0Ebks0GgpKvQ7QbLAIdX5dos4.jpg",
+    "tmdbId": 94997,
+    "kind": "tv",
+    "year": "2022"
+  }
+]

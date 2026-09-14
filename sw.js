@@ -40,7 +40,7 @@
    installability is unaffected.
    ============================================================ */
 
-const SW_VERSION = 'v5-private-friends-passkeys-active';
+const SW_VERSION = 'v7-themes-events-roku-confirmed-updates';
 
 self.addEventListener('install', () => {
     // Activate immediately rather than waiting for old tabs to close. This is

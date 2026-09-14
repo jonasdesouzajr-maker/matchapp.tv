@@ -34,6 +34,23 @@
     'use strict';
 
     const CACHE = Object.create(null);
+    // Share a browser-side budget between covers and localized captions.
+    // The server's independent rate limit remains authoritative.
+    const requests = [], pendingRequests = new Map();
+    let activeRequests = 0, requestCount = 0, windowStarted = Date.now(), requestTimer;
+    function pumpRequests() {
+        if (Date.now() - windowStarted >= 60000) { windowStarted = Date.now(); requestCount = 0; }
+        if (requestCount >= 48 && requests.length && !requestTimer) requestTimer = setTimeout(() => { requestTimer = null; pumpRequests(); }, Math.max(1,60000-(Date.now()-windowStarted)));
+        while (activeRequests < 4 && requests.length && requestCount < 48) {
+            const {body,resolve,key} = requests.shift(); activeRequests++; requestCount++;
+            Promise.resolve().then(() => window.supabaseClient.functions.invoke('tmdb-proxy',{body}))
+                .catch(() => ({data:null,error:true})).then(resolve).finally(() => {activeRequests--;pendingRequests.delete(key);pumpRequests();});
+        }
+    }
+    window.requestTMDB = body => {
+        const key=JSON.stringify(body);if(pendingRequests.has(key))return pendingRequests.get(key);
+        const p=new Promise(resolve=>{requests.push({body,resolve,key});});pendingRequests.set(key,p);pumpRequests();return p;
+    };
 
     // Maps MatchApp's catalogue categories onto TMDB's two indexes. Passing the
     // right one is the single biggest accuracy win available: searching a
@@ -71,19 +88,18 @@
 
         const kind = hints.kind || kindForCats(hints.cats);
         // Kids verifies English catalogue names independently of the UI language.
-        const lang = hints.lang === 'en-US' ? 'en-US' : (window.MATCH_LANG === 'pt-BR' ? 'pt-BR' : 'en-US');
+        const locales = {en:'en-US', 'pt-BR':'pt-BR', es:'es-ES', fr:'fr-FR', de:'de-DE', it:'it-IT', tr:'tr-TR', ru:'ru-RU', ar:'ar-SA', hi:'hi-IN', id:'id-ID', ja:'ja-JP', ko:'ko-KR', zh:'zh-CN'};
+        const lang = hints.lang === 'en-US' ? 'en-US' : (locales[window.MATCH_LANG] || 'en-US');
         const cacheKey = `${title}::${hints.year || ''}::${kind}::${lang}`;
         if (cacheKey in CACHE) return CACHE[cacheKey];
 
         let best = null;
         try {
-            const { data, error } = await window.supabaseClient.functions.invoke('tmdb-proxy', {
-                body: {
+            const { data, error } = await window.requestTMDB({
                     query: title,
                     year: hints.year || '',
                     kind: kind || '',
-                    lang
-                }
+                    lang: 'en-US'
             });
             if (error || !data || !Array.isArray(data.results)) { CACHE[cacheKey] = null; return null; }
 
@@ -93,6 +109,17 @@
                 .sort((a, b) => b.score - a.score);
 
             best = scored.length ? scored[0].r : null;
+            // Establish identity first, then request the same TMDB record in the
+            // selected locale. A translated name must never identify a different work.
+            if (best && lang !== 'en-US' && Number.isSafeInteger(best.tmdbId) && ['tv','movie'].includes(best.kind)) {
+                const original = best;
+                const translated = await window.requestTMDB({tmdb_id: best.tmdbId, kind: best.kind, lang});
+                const r = translated.data?.results?.[0];
+                if (!translated.error && r && r.tmdbId === original.tmdbId && r.kind === original.kind &&
+                    r.originalTitle === original.originalTitle && r.year === original.year && r.adult !== true) {
+                    best = {...original, ...r, poster:r.poster || original.poster};
+                }
+            }
         } catch (e) {
             best = null;
         }
