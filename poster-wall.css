@@ -15,3 +15,107 @@ html .marquee-title{position:static!important;inset:auto!important;box-sizing:bo
 
 body:has(.poster-wall)>:is(main,footer,.main-layout,.container,.content,.app-container,.premium-card,.top-ask-wrap,.live-strip,.upgrade-ribbon){position:relative;z-index:1}
 body:has(.poster-wall)::before,body:has(.poster-wall)::after{display:none!important}
+
+/* ===== POSTER WALL — CINEMATIC TREATMENT =====
+   The wall existed but read as texture rather than as entertainment. Three
+   things were muting it: the grid sat at 40% opacity, the readability veil
+   was 96% opaque straight through the centre where posters actually show,
+   and posterGlow animated TOWARD saturate(.65) brightness(.8) — actively
+   draining colour out of the artwork over 24 seconds.
+
+   These rules come after the originals so they win on cascade order without
+   editing the minified base file. Content still sits on .premium-card
+   surfaces with their own opaque backgrounds, so raising the wall behind
+   them changes atmosphere without touching text contrast. */
+
+/* Real posters, readable as posters. */
+.poster-wall-grid {
+  opacity: .62;
+  filter: saturate(1.15) contrast(1.06);
+}
+
+/* Lift the veil in the centre. 96% -> 86% is the single change that makes the
+   artwork legible; below about 80% text over the gaps starts to suffer. */
+.poster-wall::after {
+  background:
+    linear-gradient(90deg,
+      color-mix(in srgb, var(--theme-bg, #100a23) 52%, transparent),
+      color-mix(in srgb, var(--theme-bg, #100a23) 86%, transparent) 30% 70%,
+      color-mix(in srgb, var(--theme-bg, #100a23) 52%, transparent)),
+    linear-gradient(0deg, var(--theme-bg, #100a23), transparent 78%),
+    /* Vignette: pulls the eye to the centre and gives the wall depth rather
+       than reading as flat wallpaper. */
+    radial-gradient(ellipse 120% 80% at 50% 45%, transparent 30%,
+      color-mix(in srgb, var(--theme-bg, #100a23) 55%, transparent) 100%);
+}
+
+/* Glow now ADDS warmth instead of removing it — the tiles breathe between
+   neutral and slightly richer, which reads as living artwork rather than
+   a static screenshot. */
+@keyframes posterGlow {
+  0%   { filter: saturate(1) brightness(.92); }
+  100% { filter: saturate(1.28) brightness(1.08); }
+}
+
+/* PROJECTOR SWEEP
+   A soft warm beam drifting across the wall, like light moving over a cinema
+   foyer. Deliberately slow (28s) and low-contrast: an effect you notice on
+   the second look, not one that competes with the page. transform/opacity
+   only, so it composites on the GPU and costs nothing in layout. */
+.poster-wall::before {
+  content: '';
+  position: absolute;
+  top: -30%; bottom: -30%; left: -40%;
+  width: 45%;
+  pointer-events: none;
+  background: linear-gradient(100deg,
+    transparent,
+    rgba(240, 216, 120, .07) 35%,
+    rgba(255, 243, 163, .13) 50%,
+    rgba(240, 216, 120, .07) 65%,
+    transparent);
+  filter: blur(22px);
+  transform: skewX(-12deg);
+  animation: posterSweep 28s cubic-bezier(.45, 0, .55, 1) infinite;
+  z-index: 1;
+}
+@keyframes posterSweep {
+  0%        { left: -45%; opacity: 0; }
+  12%       { opacity: 1; }
+  88%       { opacity: 1; }
+  100%      { left: 115%; opacity: 0; }
+}
+
+/* Gold edge on each tile so the poster grid picks up the brand rather than
+   floating as unrelated artwork. */
+.poster-wall-tile {
+  box-shadow: 0 1rem 2rem #0006, inset 0 0 0 1px rgba(228, 192, 108, .18);
+}
+
+/* MOBILE: raised too, but less — a phone screen is mostly content, so the
+   wall has proportionally less room to breathe before it crowds text. */
+@media (max-width: 600px) {
+  .poster-wall-grid { opacity: .46; filter: saturate(1.12) contrast(1.04); }
+  .poster-wall::after {
+    background:
+      linear-gradient(90deg,
+        color-mix(in srgb, var(--theme-bg, #100a23) 72%, transparent),
+        color-mix(in srgb, var(--theme-bg, #100a23) 90%, transparent) 25% 75%,
+        color-mix(in srgb, var(--theme-bg, #100a23) 72%, transparent)),
+      linear-gradient(0deg, var(--theme-bg, #100a23), transparent 82%);
+  }
+  /* The sweep is the first thing to go on a phone: least value, most cost. */
+  .poster-wall::before { display: none; }
+}
+
+/* TV / large screens: the wall is the room's ambience, so let it show. */
+@media (min-width: 2560px) {
+  .poster-wall-grid { opacity: .7; }
+}
+
+/* Every effect here is decoration, so all of it stops. */
+@media (prefers-reduced-motion: reduce) {
+  .poster-wall::before { animation: none; opacity: 0; }
+  .poster-wall-grid { filter: saturate(1.1); }
+}
+.reduce-motion .poster-wall::before { animation: none; opacity: 0; }
