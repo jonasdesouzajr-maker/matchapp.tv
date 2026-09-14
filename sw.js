@@ -40,7 +40,7 @@
    installability is unaffected.
    ============================================================ */
 
-const SW_VERSION = 'v8-verified-title-captions';
+const SW_VERSION = 'v10-mobile-and-matching-recovery';
 
 self.addEventListener('install', () => {
     // Activate immediately rather than waiting for old tabs to close. This is

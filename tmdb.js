@@ -58,6 +58,8 @@
     function kindForCats(cats) {
         if (!Array.isArray(cats) || !cats.length) return '';
         const joined = cats.join(' ').toLowerCase();
+        // Animated films may also carry the broad anime category.
+        if (cats.some(c => /^(movie|short film)$/i.test(c))) return 'movie';
         // Anything episodic.
         if (/series|drama|novela|telenovela|dizi|anime|reality|documentary series/.test(joined)) return 'tv';
         if (/movie|film|cinema|bollywood|nollywood/.test(joined)) return 'movie';
@@ -131,44 +133,42 @@
     /**
      * Scores a candidate. Returns 0 to reject outright.
      *
-     * Reuses isRelevantMatch() from app.js rather than inventing a second
-     * notion of "close enough" — that function already encodes the lessons
-     * from the wrong-cover bugs (a shared common word like "vale" is not a
-     * match), and a competing implementation here would drift away from it.
+     * Artwork requires an exact normalized title, the requested media type
+     * and the known release year. Fuzzy discovery relevance is not proof that
+     * another catalogue result depicts the same work.
      */
     function scoreCandidate(query, hints, r) {
-        if (!r || !r.poster) return 0;
+        if (!r || !r.poster || !Number.isSafeInteger(r.tmdbId) || r.tmdbId <= 0 || !['movie','tv'].includes(r.kind)) return 0;
         if (r.adult === true) return 0;
+        const expectedKind = hints.kind || kindForCats(hints.cats);
+        if (expectedKind && r.kind !== expectedKind) return 0;
+        const artwork = [r.poster, r.posterLarge, r.posterOriginal].filter(Boolean);
+        if (artwork.some(url => typeof url !== 'string' || !/^https:\/\/image\.tmdb\.org\/t\/p\/(?:w[0-9]+|original)\/[A-Za-z0-9_.-]+$/.test(url))) return 0;
 
         const names = [r.title, r.originalTitle].filter(Boolean);
-        const relevant = typeof window.isRelevantMatch === 'function'
-            ? names.some(n => window.isRelevantMatch(query, n))
-            // Fallback if app.js has not loaded yet: exact, case-insensitive.
-            : names.some(n => n.toLowerCase() === String(query).toLowerCase());
+        const identity = value => String(value).normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^\p{L}\p{N}]/gu, '');
+        const relevant = names.some(n => identity(n) === identity(query));
         if (!relevant) return 0;
 
-        if (typeof window.isExplicitResult === 'function') {
-            try {
-                if (window.isExplicitResult({
-                    trackName: r.title, collectionName: r.originalTitle,
-                    longDescription: r.overview, primaryGenreName: ''
-                })) return 0;
-            } catch (e) { /* guard unavailable — TMDB's own adult flag already applied */ }
-        }
+        // TMDB's adult flag describes the work. Synopsis keywords cannot do
+        // that: the verified Beauty in Black synopsis mentions a stripper,
+        // which previously rejected this legitimate Netflix drama and sent
+        // its cover through unrelated music searches. Kids applies its own
+        // reviewed title/age allowlist after this identity check.
 
         let score = 10;
 
         // An exact title match is far stronger evidence than a fuzzy one.
         if (names.some(n => n.toLowerCase() === String(query).toLowerCase())) score += 40;
 
-        // Year agreement. A two-year window absorbs the usual festival-vs-
-        // release and season-premiere discrepancies without accepting a
-        // remake thirty years apart.
-        if (hints.year && r.year) {
+        // A known catalogue year must agree, allowing one year for regional
+        // release differences. Popularity cannot rescue a different edition.
+        if (hints.year) {
+            if (!/^\d{4}$/.test(String(r.year || ''))) return 0;
             const diff = Math.abs(parseInt(r.year, 10) - parseInt(hints.year, 10));
             if (diff === 0) score += 30;
-            else if (diff <= 2) score += 12;
-            else if (diff > 8) return 0;  // almost certainly a different work
+            else if (diff <= 1) score += 12;
+            else return 0;
         }
 
         // Popularity as a tie-break only — never enough on its own to

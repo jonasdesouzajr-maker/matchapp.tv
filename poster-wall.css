@@ -119,3 +119,11 @@ body:has(.poster-wall)::before,body:has(.poster-wall)::after{display:none!import
   .poster-wall-grid { filter: saturate(1.1); }
 }
 .reduce-motion .poster-wall::before { animation: none; opacity: 0; }
+
+/* Keep the current artwork/composition, but avoid repainting a large filtered
+   layer behind every card while mobile browsers resize their address bars. */
+@media (max-width: 900px), (pointer: coarse) {
+  .poster-wall { height: 100vh; height: 100lvh; bottom: auto; contain: strict; }
+  .poster-wall-grid, .poster-wall-tile { animation: none !important; will-change: auto; }
+  .poster-wall::before { display: none; }
+}

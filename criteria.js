@@ -112,6 +112,16 @@
         sel.dispatchEvent(new Event('change', { bubbles: true }));
     }
 
+    // A removed option must not survive in saved state as an invisible filter.
+    // Reconcile in field order: category changes can rebuild platform options.
+    function reconcileField(sel, key) {
+        const allowed = new Set(Array.from(sel.options, option => option.value));
+        const next = [...new Set(state[key].filter(value => value !== 'any' && allowed.has(value)))];
+        const changed = next.length !== state[key].length || next.some((value, i) => value !== state[key][i]);
+        state[key] = next;
+        return changed;
+    }
+
     function toggle(key, value, sel) {
         const list = state[key];
         const at = list.indexOf(value);
@@ -344,15 +354,21 @@
             if (btn.dataset.value != null) toggle(f.key, btn.dataset.value, sel);
         });
 
+        if (reconcileField(sel, f.key)) save();
         renderField(sel, f.key);
         syncSelect(sel, f.key);
     }
 
     function renderAll() {
+        let changed = false;
         FIELDS.forEach(f => {
             const sel = document.getElementById(f.id);
-            if (sel && sel.dataset.critMounted === '1') { renderField(sel, f.key); syncSelect(sel, f.key); }
+            if (sel && sel.dataset.critMounted === '1') {
+                changed = reconcileField(sel, f.key) || changed;
+                renderField(sel, f.key); syncSelect(sel, f.key);
+            }
         });
+        if (changed) save();
     }
 
     function init() {
@@ -372,4 +388,5 @@
     // Labels live in the HTML and are translated in place by i18n.js, so the
     // only correct response to a language change is to re-read them.
     document.addEventListener('matchapp:langchange', renderAll);
+    document.addEventListener('matchapp:optionspruned', renderAll);
 })();

@@ -28,12 +28,21 @@ const LANG_NAMES_FOR_PROMPT = {
 // ----------------------------------------------------
 // PORTFOLIO LISTS (Watch Later / Seen It / Disliked)
 // ----------------------------------------------------
-let seenList = JSON.parse(localStorage.getItem('match_seenList') || '[]');
-let savedList = JSON.parse(localStorage.getItem('match_savedList') || '[]');
-let dislikedList = JSON.parse(localStorage.getItem('match_dislikedList') || '[]');
-let userRatings = JSON.parse(localStorage.getItem('match_userRatings') || '{}');
+// A damaged optional cache must not prevent the app from starting. Keep every
+// valid legacy title and leave stored data untouched until account hydration.
+function readPortfolioCache(name, fallback, validItem = item => typeof item === 'string' ? !!item.trim() : item && typeof item.title === 'string' && !!item.title.trim()) {
+    try {
+        const value = JSON.parse(localStorage.getItem(name));
+        if (Array.isArray(fallback)) return Array.isArray(value) ? value.filter(validItem) : fallback;
+        return value && typeof value === 'object' && !Array.isArray(value) ? value : fallback;
+    } catch (_) { return fallback; }
+}
+let seenList = readPortfolioCache('match_seenList', []);
+let savedList = readPortfolioCache('match_savedList', []);
+let dislikedList = readPortfolioCache('match_dislikedList', []);
+let userRatings = readPortfolioCache('match_userRatings', {});
 // Titles shown recently, so the same result never repeats back-to-back.
-let recentTitles = JSON.parse(localStorage.getItem('match_recentTitles') || '[]');
+let recentTitles = readPortfolioCache('match_recentTitles', [], item => typeof item === 'string' && !!item.trim());
 
 // ----------------------------------------------------
 // THE LIMIT LOGIC (3 Free, 5 Registered, 10 VIP)
@@ -667,6 +676,23 @@ function scoreITunesResult(r, hints) {
     return score;
 }
 
+function artworkTitleKey(title) {
+    return String(title || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^\p{L}\p{N}]/gu, '');
+}
+
+function iTunesArtworkMatches(title, media, hints, record) {
+    const kinds = {movie:['feature-movie'],tvShow:['tv-episode'],podcast:['podcast'],music:['song'],musicTrack:['song'],musicVideo:['music-video'],album:['album'],audiobook:['audiobook']};
+    if (!(kinds[media] || [media]).includes(record.kind || record.wrapperType)) return false;
+    // TV search returns episodes: identify the series by collectionName.
+    const name = media === 'tvShow' ? String(record.collectionName || '').replace(/,?\s+(?:season|series|temporada)\s+\d+.*$/i,'') : record.trackName || record.collectionName;
+    if (!name || artworkTitleKey(title) !== artworkTitleKey(name)) return false;
+    if (hints?.year) {
+        const year = Number(String(record.releaseDate || '').slice(0,4));
+        if (!year || Math.abs(year - Number(hints.year)) > 1) return false;
+    }
+    return !isExplicitResult(record);
+}
+
 async function itunesRichLookup(title, media, hints) {
     if (!title) return null;
     const cacheKey = `${title}::${media}::${hints ? hints.year || '' : ''}${hints ? hints.countryCode || '' : ''}`;
@@ -708,7 +734,7 @@ async function itunesRichLookup(title, media, hints) {
             const viable = raw.filter(r => {
                 const name = r.trackName || r.collectionName || '';
                 if (!(r.artworkUrl100 || r.previewUrl)) return false;
-                if (!isRelevantMatch(title, name)) return false;
+                if (!iTunesArtworkMatches(title, media, hints, r)) return false;
                 // Content gate runs BEFORE scoring — an adult title sharing
                 // the right year and country would otherwise score maximum
                 // points and win outright, which is exactly what happened
@@ -796,9 +822,7 @@ async function getRichMetadata(title, categoryHint, hints) {
         // types stay in the list as fallbacks, so nothing that resolved before
         // stops resolving — it just stops being outranked by the wrong type.
         const primary = mediaForCategory(categoryHint || '');
-        order = primary === 'movie'
-            ? ['movie', 'tvShow', 'shortFilm', 'musicVideo']
-            : ['tvShow', 'movie', 'shortFilm', 'musicVideo'];
+        order = [primary === 'movie' ? 'movie' : 'tvShow'];
     }
 
     // Every media type is fetched concurrently (each individually time-bounded
@@ -944,6 +968,11 @@ window.fetchTitleMeta = fetchTitleMeta;
 
 async function getRealCoverImage(title, hints) {
     if (!title) return generatedCover(title, hints);
+    const verified = getVerifiedPoster(title);
+    if (verified) return verified;
+    const entry = typeof CONTENT_CATALOG !== 'undefined' ? CONTENT_CATALOG.find(e => e.title === title) : null;
+    hints = { ...(entry || {}), ...(hints || {}) };
+    if ((hints.cats || []).some(c => isHighRiskCategory(c, title))) return generatedCover(title, hints);
     // SAFE MODE: never fetch artwork for titles known to collide with adult
     // content by name. No request means no wrong result — the strongest
     // possible guarantee, and cheap.
@@ -984,7 +1013,8 @@ async function getRealCoverImage(title, hints) {
     //    file's own isRelevantMatch/isExplicitResult before accepting anything,
     //    so a miss here falls through to the chain below exactly as before
     //    rather than returning something confident and wrong.
-    if (typeof window.tmdbCover === 'function') {
+    const audioTitle = (hints.cats || []).some(c => /podcast|playlist|music|single|album|audiobook|spotify/i.test(c)) && !(hints.cats || []).includes('movie');
+    if (!audioTitle && typeof window.tmdbCover === 'function') {
         try {
             const tmdbArt = await window.tmdbCover(title, hints);
             if (tmdbArt) return cacheAndReturn(tmdbArt);
@@ -996,7 +1026,9 @@ async function getRealCoverImage(title, hints) {
     //    trusting iTunes' single top-ranked guess outright. Fetched concurrently
     //    (bounded by fetchWithTimeout per-call) instead of sequentially; the
     //    first truthy result in this same order still wins.
-    const arts = await Promise.all(['movie', 'tvShow', 'podcast', 'music'].map(media => itunesLookup(title, media, hints)));
+    const category = hints.cats?.find(c => mediaForCategory(c) !== 'tvShow') || hints.cats?.[0] || 'series';
+    const medium = mediaForCategory(category);
+    const arts = medium === 'none' ? [] : await Promise.all([medium].map(media => itunesLookup(title, media, hints)));
     for (const art of arts) { if (art) return cacheAndReturn(art); }
 
     // 4. TVMaze (strong for international + K-drama series).
@@ -1013,14 +1045,15 @@ async function getRealCoverImage(title, hints) {
     //    premiere year is still a strong enough signal to reject it outright
     //    rather than accept whatever single guess TVMaze made.
     try {
+        if (medium !== 'tvShow') return cacheAndReturn(generatedCover(title, hints));
         const tvRes = await fetchWithTimeout(`https://api.tvmaze.com/singlesearch/shows?q=${encodeURIComponent(title)}`);
         if (tvRes.ok) {
             const tvData = await tvRes.json();
             const img = tvData && tvData.image && (tvData.image.original || tvData.image.medium);
-            if (img && isRelevantMatch(title, tvData.name || '') && !isExplicitResult(tvData)) {
+            if (img && artworkTitleKey(title) === artworkTitleKey(tvData.name || '') && !isExplicitResult(tvData)) {
                 if (hints && hints.year && tvData.premiered) {
                     const tvYear = parseInt(String(tvData.premiered).slice(0, 4), 10);
-                    if (!isNaN(tvYear) && Math.abs(tvYear - hints.year) > 6) {
+                    if (!isNaN(tvYear) && Math.abs(tvYear - hints.year) > 1) {
                         // Wrong era entirely — almost certainly a different
                         // work sharing the name. Fall through to a generated
                         // cover rather than show it.
@@ -1053,6 +1086,7 @@ async function getRealCoverImage(title, hints) {
 // titles always get correct art.
 // ----------------------------------------------------
 const VERIFIED_POSTERS = {
+    'Beauty in Black': 'https://image.tmdb.org/t/p/w780/xKk4bFCCpZ9tvjUykvvMYLSBnjo.jpg',
     'American Horror Story: 13': '/ahs13-official.png?v=187',
     'A Vida Secreta do Meu Marido Bilionário': '/marido-bilionario-original.jpg?v=187',
     'Marido Bilionário': '/marido-bilionario-original.jpg?v=187'
@@ -1093,7 +1127,7 @@ function isHighRiskCategory(categoryHint, title) {
 }
 window.isHighRiskCategory = isHighRiskCategory;
 
-function generateLocalPosterSVG(title, meta) {
+function generateLocalPosterSVG(title, meta = {}) {
     const raw = (title || 'MatchApp').trim();
     const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
@@ -1287,8 +1321,7 @@ async function hydrateMarqueeCovers() {
 
         try {
             const rowHints = catalogEntry ? { year: catalogEntry.year, country: catalogEntry.country, countryCode: catalogEntry.countryCode, cats: catalogEntry.cats } : {};
-            const meta = await getRichMetadata(title, catalogEntry?.cats.includes('movie') ? 'movie' : 'series', rowHints);
-            const real = (meta && meta.artwork) ? meta.artwork : await getRealCoverImage(title, rowHints);
+            const real = await getRealCoverImage(title, rowHints);
             if (real) {
                 img.onerror = function() { this.onerror = null; this.src = generatedCover(title); };
                 img.src = real;
@@ -1467,6 +1500,7 @@ window.eventMatch = function (query) {
 
         // Scoped per rail so two rails can't clobber each other's scroll state.
         const wrap = () => {
+            if (reduced) return; // Native touch scrolling must not wrap itself on every scroll event.
             const half = track.scrollWidth / 2;
             if (half <= 0) return;
             if (vp.scrollLeft >= half) vp.scrollLeft -= half;
@@ -1503,7 +1537,7 @@ window.eventMatch = function (query) {
         }
 
         // Respect people who've asked the OS for less motion.
-        const reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const reduced = window.matchMedia && (window.matchMedia('(prefers-reduced-motion: reduce)').matches || window.matchMedia('(max-width: 900px), (pointer: coarse)').matches);
         if (!reduced) autoTimer = setInterval(tick, TICK_MS);
 
         vp.addEventListener('mouseenter', () => { paused = true; });
@@ -2960,7 +2994,7 @@ function pickFromCatalog(cat, plat, mood, vibe, rating, decade) {
         && (normCriteria(cat).length || isSurpriseEligible(e)));
     if (!pool.length) return null;
     const pick = pool[Math.floor(Math.random() * pool.length)];
-    return {title:pick.title,synopsis:pick.synopsis,platform:pick.platform,platformVerified:true,watchUrl:pick.watchUrl||(pick.platform==='Roku Channel'?pick.url:null)||null,source:'catalog'};
+    return {...pick,title:pick.title,synopsis:pick.synopsis,platform:pick.platform,platformVerified:true,watchUrl:pick.watchUrl||(pick.platform==='Roku Channel'?pick.url:null)||null,source:'catalog'};
 }
 
 
@@ -3014,24 +3048,13 @@ window.triggerMatch = async function(isSpecificSearch = false) {
     const preflight = isSpecificSearch ? null : pickFromCatalog(requested.cat,requested.plat,requested.mood,requested.vibe,requested.rating,requested.decade);
     const typed = document.getElementById('specific-search-input')?.value || '';
 
-    // An empty catalogue preflight is NOT a dead end. The dropdowns offer
-    // options the curated catalogue does not cover — Apple TV+, Tubi, Viu,
-    // C-drama, audiobooks and others are all selectable but match zero
-    // entries — so aborting here told users "no titles match" for perfectly
-    // reasonable choices, when Gemini knows those titles perfectly well and
-    // would have answered.
-    //
-    // The catalogue is a fast path, not the whole product. If it has nothing,
-    // fall through to the AI rather than failing. Only a genuinely exhausted
-    // session (every eligible title already shown) still stops here, because
-    // at that point there is nothing new to offer from either source.
-    const exhaustedSession = !preflight && SESSION_SHOWN.size > 0
-        && CONTENT_CATALOG.every(e => SESSION_SHOWN.has(e.title) || isBlockedEntry(e));
-
-    const alreadySeenSpecific = isSpecificSearch
-        && window.matchPolicy?.known().has(window.matchPolicy.key(typed));
-
-    if (exhaustedSession || alreadySeenSpecific) {
+    const alreadySeenSpecific = isSpecificSearch && window.matchPolicy?.known().has(window.matchPolicy.key(typed));
+    if (isSpecificSearch && !typed.trim()) return;
+    if ((!isSpecificSearch && !preflight) || alreadySeenSpecific) {
+        // A rematch may already have hidden the previous result. Restore the
+        // form before returning so an exhausted selection never strands it.
+        ['questionnaire-box','search-box'].forEach(id => { const el=document.getElementById(id); if(el)el.style.display='block'; });
+        ['loading-box','result-box'].forEach(id => { const el=document.getElementById(id); if(el)el.style.display='none'; });
         window.showToast(tSafe('polish.noFresh'));
         const form = document.getElementById('questionnaire-box');
         if (form) { form.style.display='block'; form.scrollIntoView({behavior:'smooth',block:'center'}); }
@@ -3188,52 +3211,7 @@ window.triggerMatch = async function(isSpecificSearch = false) {
         // legitimately narrows things in ways the user didn't explicitly request.
         window.lastMatchCriteria = { cat, plat, mood, vibe, rating, decade };
 
-        // Null-guarded: the catalogue preflight is now allowed to come back
-        // empty (the dropdowns offer platforms and formats the curated set
-        // does not cover), so this must fall through to live discovery rather
-        // than dereferencing null and throwing mid-match.
-        if (catalogPick && catalogPick.platformVerified) {
-            matchResult = catalogPick;
-        } else {
-            // Tier 2: live iTunes discovery — real titles, real cover art,
-            // but (like every keyless third-party lookup) no way to honestly
-            // confirm availability on a specific streaming service. Skipped
-            // automatically for vertical micro-dramas, which iTunes doesn't
-            // carry at all.
-            const livePick = await discoverFromITunes(cat, mood, vibe, decade, rating);
-            matchResult = livePick || catalogPick;
-        }
-
-        // Both sources can legitimately come back empty now that an empty
-        // preflight is allowed through — the dropdowns offer platforms and
-        // formats the curated set does not cover (Apple TV+, Tubi, Viu,
-        // C-drama, audiobooks), so a perfectly reasonable selection can match
-        // nothing.
-        //
-        // Free-form AI invention is deliberately NOT the fallback here: it was
-        // removed earlier precisely because it produced titles, covers and
-        // platforms that did not agree with each other. Instead the criteria
-        // are relaxed one at a time, least-important first, so the user still
-        // gets a real verified title rather than an error or a fabrication.
-        // Platform is dropped first because it is the most likely to be
-        // unrepresented; category last because it is usually what the person
-        // actually cares about.
-        if (!matchResult) {
-            const relaxOrder = ['plat', 'decade', 'vibe', 'rating', 'mood'];
-            const working = { cat, plat, mood, vibe, rating, decade };
-            for (const drop of relaxOrder) {
-                working[drop] = [];
-                const retry = pickFromCatalog(working.cat, working.plat, working.mood,
-                                              working.vibe, working.rating, working.decade);
-                if (retry) {
-                    matchResult = retry;
-                    // Tell the user what was loosened, so a result that does not
-                    // match what they picked never looks like a bug.
-                    matchResult.relaxedFrom = drop;
-                    break;
-                }
-            }
-        }
+        matchResult = catalogPick;
 
         // Never claim the user's exact requested platform unless the winning
         // source actually verified it. This is the direct fix for a title
@@ -3480,7 +3458,7 @@ async function renderResult(selected, isSpecificSearch) {
 
     // "NEVER FAIL" COVER PULL + TRAILER METADATA (single lookup, cached)
     const posterEl = document.getElementById('res-poster-img');
-    const categoryHint = document.getElementById('q-category')?.value || '';
+    const categoryHint = matchHints.cats?.[0] || document.getElementById('q-category')?.value || '';
 
     // Vertical micro-dramas (ReelShort, DramaBox, ShortMax, Globoplay's line)
     // live entirely inside proprietary apps with no public catalog anywhere —
@@ -3509,11 +3487,11 @@ async function renderResult(selected, isSpecificSearch) {
     if (verified) {
         realCover = verified;
     } else if (skipLiveLookup && !(meta && meta.artwork)) {
-        realCover = generateLocalPosterSVG(selected.title);
+        realCover = generatedCover(selected.title, matchHints);
     } else {
-        realCover = (meta && meta.artwork) ? meta.artwork : await getRealCoverImage(selected.title, matchHints);
+        realCover = selected._meta?.artwork || await getRealCoverImage(selected.title, matchHints);
     }
-    if (!realCover) realCover = generateLocalPosterSVG(selected.title);
+    if (!realCover) realCover = generatedCover(selected.title, matchHints);
 
     // Track the current match globally so Watch Later / Seen It can record it.
     globalMatchTitle = selected.title;
@@ -3551,7 +3529,7 @@ async function renderResult(selected, isSpecificSearch) {
     // before reaching a fallback that needs no network at all.
     posterEl.onerror = function() {
         this.onerror = null;
-        this.src = generateLocalPosterSVG(selected.title);
+        this.src = generatedCover(selected.title, matchHints);
     };
     posterEl.src = realCover; 
 

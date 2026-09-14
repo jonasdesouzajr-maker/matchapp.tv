@@ -5,7 +5,14 @@
   const values = v => (Array.isArray(v) ? v : [v]).filter(x => x && x !== 'any');
   const conflicts = [ ['funny', 'intense and thrilling'], ['funny', 'dark and gritty'], ['funny', 'heartbreaking'], ['funny', 'scary'], ['cozy comfort watch', 'intense and thrilling'], ['cozy comfort watch', 'scary'] ];
   let owner = null, permanent = new Set(), history = [], pending = [], ready = Promise.resolve(), flushing = null;
-  const stored = (name, fallback) => { try { return JSON.parse(localStorage.getItem(name)) || fallback; } catch (_) { return fallback; } };
+  const titleItem = item => typeof item === 'string' ? !!item.trim() : item && typeof item.title === 'string' && !!item.title.trim();
+  const stored = (name, fallback, validItem = titleItem) => {
+    try {
+      const value = JSON.parse(localStorage.getItem(name));
+      if (Array.isArray(fallback)) return Array.isArray(value) ? value.filter(validItem) : fallback;
+      return value && typeof value === 'object' && !Array.isArray(value) ? value : fallback;
+    } catch (_) { return fallback; }
+  };
   function known() {
     const titles = new Set(permanent);
     ['match_seenList','match_savedList','match_dislikedList'].forEach(name => stored(name, []).forEach(i => titles.add(key(i.title || i))));
@@ -33,8 +40,8 @@
   }
   async function attach(user) {
     owner = user ? user.id : null;
-    permanent = new Set(owner ? stored('match_exclusions_' + owner, []) : []);
-    history = owner ? stored('match_history_' + owner, []) : [];
+    permanent = new Set(owner ? stored('match_exclusions_' + owner, [], item => typeof item === 'string' && !!item) : []);
+    history = owner ? stored('match_history_' + owner, [], item => item && typeof item.title === 'string' && !!item.title.trim()) : [];
     pending = [];
     if (!owner) return;
     // The existing owner-only Auth preference flow also preserves exclusions.
