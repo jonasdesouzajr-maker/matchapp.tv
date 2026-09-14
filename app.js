@@ -2477,8 +2477,29 @@ function platformServesCountry(pf, country) {
 }
 
 // Platforms valid for a given format, filtered by the user's country when known.
+// Platforms the catalogue can actually deliver a title on. Built once and
+// cached: PLATFORMS lists every service MatchApp knows how to link to, which
+// is deliberately broader than what the curated catalogue currently stocks,
+// so offering the full list as *filter* options meant ten platforms that
+// always returned nothing.
+let _stockedPlatforms = null;
+function stockedPlatforms() {
+    if (_stockedPlatforms) return _stockedPlatforms;
+    _stockedPlatforms = new Set();
+    if (typeof CONTENT_CATALOG !== 'undefined') {
+        CONTENT_CATALOG.forEach(e => { if (e && e.platform) _stockedPlatforms.add(String(e.platform)); });
+    }
+    return _stockedPlatforms;
+}
+
 function platformsFor(cat, country) {
+    const stocked = stockedPlatforms();
     return Object.entries(PLATFORMS).filter(([name, pf]) => {
+        // A platform with no catalogue titles can never satisfy a filter, so
+        // it must not appear as one. It stays in PLATFORMS for link-building
+        // (a result can still send you to Apple TV+), and reappears here
+        // automatically the moment a title on it is added.
+        if (stocked.size && !stocked.has(name)) return false;
         if (!platformServesCountry(pf, country)) return false;
         if (!cat || cat === 'any') return true;
         return pf.cats.includes(cat);
@@ -2573,6 +2594,9 @@ function applyAudioModeLabels(isAudio) {
 
 document.addEventListener('DOMContentLoaded', () => {
     const catEl = document.getElementById('q-category');
+    // Prune before the platform list is rebuilt, so onCategoryChange never
+    // repopulates an option we just established has no titles behind it.
+    try { pruneUnstockedOptions(); } catch (e) { /* never block init on this */ }
     if (catEl) { catEl.addEventListener('change', window.onCategoryChange); window.onCategoryChange(); }
 });
 
@@ -2939,12 +2963,75 @@ function pickFromCatalog(cat, plat, mood, vibe, rating, decade) {
     return {title:pick.title,synopsis:pick.synopsis,platform:pick.platform,platformVerified:true,watchUrl:pick.watchUrl||(pick.platform==='Roku Channel'?pick.url:null)||null,source:'catalog'};
 }
 
+
+// ----------------------------------------------------
+// PRUNE UNSTOCKED CRITERIA OPTIONS
+//
+// The dropdowns offer 7 categories and 10 platforms that match zero catalogue
+// titles — audiobook, C-drama, Turkish dizi, Nollywood, Apple TV+, Tubi, Viu,
+// Pluto TV and others. Picking any of them guaranteed "no titles match your
+// criteria", which reads as a broken product rather than an empty shelf.
+//
+// Rather than delete them from the markup, they are hidden at runtime based on
+// what the catalogue actually contains. That way the moment a title in one of
+// those categories is added, its option reappears on its own — no markup edit,
+// no chance of the list and the data drifting apart again.
+// ----------------------------------------------------
+function pruneUnstockedOptions() {
+    if (typeof CONTENT_CATALOG === 'undefined' || !CONTENT_CATALOG.length) return;
+
+    const stocked = (prop) => {
+        const set = new Set();
+        CONTENT_CATALOG.forEach(e => {
+            const v = e[prop];
+            (Array.isArray(v) ? v : [v]).forEach(x => { if (x) set.add(String(x)); });
+        });
+        return set;
+    };
+
+    [['q-category', 'cats'], ['q-platform', 'platform'],
+     ['q-mood', 'moods'], ['q-vibe', 'vibes'], ['q-rating', 'ratings']].forEach(([id, prop]) => {
+        const sel = document.getElementById(id);
+        if (!sel) return;
+        const have = stocked(prop);
+        let removed = 0;
+        Array.from(sel.options).forEach(opt => {
+            // 'any' and empty values are controls, not content.
+            if (!opt.value || opt.value === 'any') return;
+            if (!have.has(opt.value)) { opt.remove(); removed++; }
+        });
+        if (removed) console.info('[matchapp] ' + id + ': hid ' + removed + ' option(s) with no titles in stock');
+    });
+
+    // criteria.js mirrors these selects into its chip UI, so it has to rebuild
+    // from the pruned list or the chips would still show the dead options.
+    document.dispatchEvent(new CustomEvent('matchapp:optionspruned'));
+}
+
 window.triggerMatch = async function(isSpecificSearch = false) {
     await window.matchPolicy?.ready();
     const requested = window.getMatchCriteria?.() || {cat:[document.getElementById('q-category')?.value],plat:[document.getElementById('q-platform')?.value],mood:[document.getElementById('q-mood')?.value],vibe:[document.getElementById('q-vibe')?.value],rating:[document.getElementById('q-rating')?.value],decade:[document.getElementById('q-decade')?.value]};
     const preflight = isSpecificSearch ? null : pickFromCatalog(requested.cat,requested.plat,requested.mood,requested.vibe,requested.rating,requested.decade);
     const typed = document.getElementById('specific-search-input')?.value || '';
-    if ((!isSpecificSearch && !preflight) || (isSpecificSearch && window.matchPolicy?.known().has(window.matchPolicy.key(typed)))) {
+
+    // An empty catalogue preflight is NOT a dead end. The dropdowns offer
+    // options the curated catalogue does not cover — Apple TV+, Tubi, Viu,
+    // C-drama, audiobooks and others are all selectable but match zero
+    // entries — so aborting here told users "no titles match" for perfectly
+    // reasonable choices, when Gemini knows those titles perfectly well and
+    // would have answered.
+    //
+    // The catalogue is a fast path, not the whole product. If it has nothing,
+    // fall through to the AI rather than failing. Only a genuinely exhausted
+    // session (every eligible title already shown) still stops here, because
+    // at that point there is nothing new to offer from either source.
+    const exhaustedSession = !preflight && SESSION_SHOWN.size > 0
+        && CONTENT_CATALOG.every(e => SESSION_SHOWN.has(e.title) || isBlockedEntry(e));
+
+    const alreadySeenSpecific = isSpecificSearch
+        && window.matchPolicy?.known().has(window.matchPolicy.key(typed));
+
+    if (exhaustedSession || alreadySeenSpecific) {
         window.showToast(tSafe('polish.noFresh'));
         const form = document.getElementById('questionnaire-box');
         if (form) { form.style.display='block'; form.scrollIntoView({behavior:'smooth',block:'center'}); }
@@ -3101,7 +3188,11 @@ window.triggerMatch = async function(isSpecificSearch = false) {
         // legitimately narrows things in ways the user didn't explicitly request.
         window.lastMatchCriteria = { cat, plat, mood, vibe, rating, decade };
 
-        if (catalogPick.platformVerified) {
+        // Null-guarded: the catalogue preflight is now allowed to come back
+        // empty (the dropdowns offer platforms and formats the curated set
+        // does not cover), so this must fall through to live discovery rather
+        // than dereferencing null and throwing mid-match.
+        if (catalogPick && catalogPick.platformVerified) {
             matchResult = catalogPick;
         } else {
             // Tier 2: live iTunes discovery — real titles, real cover art,
@@ -3113,17 +3204,50 @@ window.triggerMatch = async function(isSpecificSearch = false) {
             matchResult = livePick || catalogPick;
         }
 
+        // Both sources can legitimately come back empty now that an empty
+        // preflight is allowed through — the dropdowns offer platforms and
+        // formats the curated set does not cover (Apple TV+, Tubi, Viu,
+        // C-drama, audiobooks), so a perfectly reasonable selection can match
+        // nothing.
+        //
+        // Free-form AI invention is deliberately NOT the fallback here: it was
+        // removed earlier precisely because it produced titles, covers and
+        // platforms that did not agree with each other. Instead the criteria
+        // are relaxed one at a time, least-important first, so the user still
+        // gets a real verified title rather than an error or a fabrication.
+        // Platform is dropped first because it is the most likely to be
+        // unrepresented; category last because it is usually what the person
+        // actually cares about.
+        if (!matchResult) {
+            const relaxOrder = ['plat', 'decade', 'vibe', 'rating', 'mood'];
+            const working = { cat, plat, mood, vibe, rating, decade };
+            for (const drop of relaxOrder) {
+                working[drop] = [];
+                const retry = pickFromCatalog(working.cat, working.plat, working.mood,
+                                              working.vibe, working.rating, working.decade);
+                if (retry) {
+                    matchResult = retry;
+                    // Tell the user what was loosened, so a result that does not
+                    // match what they picked never looks like a bug.
+                    matchResult.relaxedFrom = drop;
+                    break;
+                }
+            }
+        }
+
         // Never claim the user's exact requested platform unless the winning
         // source actually verified it. This is the direct fix for a title
         // showing up tagged with a platform it isn't really on — the badge
         // now reads "any" (rendered as "Find Where To Stream") instead of a
         // confident, unverified lie.
-        if (!matchResult.platformVerified) matchResult.platform = 'any';
+        if (matchResult && !matchResult.platformVerified) matchResult.platform = 'any';
 
         // Translate only the chosen real description; never substitute an English failure result.
-        matchResult.originalSynopsis=matchResult.synopsis;
-        matchResult.synopsis=await window.localizeMatchSynopsis(matchResult.synopsis,'en');
-        matchResult.synopsisLang=window.MATCH_LANG||'en';
+        if (matchResult) {
+            matchResult.originalSynopsis=matchResult.synopsis;
+            matchResult.synopsis=await window.localizeMatchSynopsis(matchResult.synopsis,'en');
+            matchResult.synopsisLang=window.MATCH_LANG||'en';
+        }
     }
     if (!matchResult || window.matchPolicy?.known().has(window.matchPolicy.key(matchResult.title))) {
         clearInterval(timerInterval);
