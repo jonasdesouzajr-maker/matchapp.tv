@@ -231,18 +231,20 @@ function updateQuotaBadge(status) {
     // credits for someone mid-session rather than opening on annual plans.
     if (!el.dataset.linked) {
         el.dataset.linked = '1';
-        el.setAttribute('role', 'button');
+        el.setAttribute('role', el.tagName==='A'?'link':'button');
         el.setAttribute('tabindex', '0');
         el.style.cursor = 'pointer';
         const go = () => {
             if (window.track) window.track('quota_badge_click', { remaining: status.remaining });
-            window.location.href = '/pricing/pricing.html?from=quota';
+            window.location.href = '/pricing/pricing.html?from=quota#credits';
         };
-        el.addEventListener('click', go);
+        if(el.tagName==='A'){el.href='/pricing/pricing.html?from=quota#credits';el.addEventListener('click',()=>{if(window.track)window.track('quota_badge_click',{remaining:el.dataset.remaining});});}
+        else el.addEventListener('click', go);
         el.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); }
+            if (el.tagName!=='A' && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); go(); }
         });
     }
+    el.dataset.remaining=String(status.remaining);
     el.title = status.remaining <= 1
         ? 'Almost out — tap for more matches'
         : 'Tap to get unlimited matches or buy credits';
@@ -542,7 +544,8 @@ function generatedCover(title, meta) {
     const merged = {
         cats:     (meta && meta.cats)     || (entry && entry.cats)     || [],
         moods:    (meta && meta.moods)    || (entry && entry.moods)    || [],
-        platform: (meta && meta.platform) || (entry && entry.platform) || ''
+        platform: (meta && meta.platform) || (entry && entry.platform) || '',
+        synopsis: (meta && (meta.synopsis || meta.overview)) || (entry && entry.synopsis) || ''
     };
     return generateLocalPosterSVG(title, merged);
 }
@@ -1099,7 +1102,7 @@ async function getRealCoverImage(title, hints) {
 // titles always get correct art.
 // ----------------------------------------------------
 const VERIFIED_POSTERS = {
-    'American Horror Story: 13': '/ahs13-poster.jpg?v=116'
+    'American Horror Story: 13': '/ahs13-official.png?v=185'
 };
 
 function getVerifiedPoster(title) {
@@ -1150,7 +1153,7 @@ function generateLocalPosterSVG(title, meta) {
     const cats = (meta && Array.isArray(meta.cats)) ? meta.cats.join(' ').toLowerCase() : '';
     const moods = (meta && Array.isArray(meta.moods)) ? meta.moods.join(' ').toLowerCase() : '';
     const platform = (meta && meta.platform) ? String(meta.platform) : '';
-    const hay = (cats + ' ' + moods + ' ' + raw).toLowerCase();
+    const hay = (cats + ' ' + moods + ' ' + raw + ' ' + (meta.synopsis || meta.overview || '')).toLowerCase();
 
     // Ordered most-specific first: a "yoga" YouTube channel should read as
     // yoga, not as generic YouTube.
@@ -1787,7 +1790,17 @@ window.loginWithGoogle = async function() {
     // further action needed here; onAuthStateChange picks up the new session.
 };
 
-window.doLogout = async function() { if (supabaseClient) { await supabaseClient.auth.signOut(); } localStorage.clear(); window.location.href = '/index.html'; };
+window.doLogout = async function() {
+    if(isUserLoggedIn)await Promise.race([syncListsToDatabase(),new Promise(resolve=>setTimeout(resolve,6000))]);
+    if(supabaseClient)await supabaseClient.auth.signOut();
+    // Keep confirmed installation, update state and per-account exclusions.
+    // Clear the active account's UI data and let the Auth SDK clear its session.
+    ['match_seenList','match_savedList','match_dislikedList','match_userRatings','match_titleNotes','match_user_name','match_user_email','match_user_avatar','match_custom_avatar','match_user_country','match_user_dob','match_user_sign','match_user_age','match_user_nickname','match_profile_locked','match_portfolio_owner','match_isVIP'].forEach(k=>localStorage.removeItem(k));
+    for(const k of Object.keys(localStorage)){
+        if(k.startsWith('match_')&&!/^(match_app_|match_kids_|match_exclusions_|match_history_|match_settings|match_lang|match_font)/.test(k))localStorage.removeItem(k);
+    }
+    window.location.href='/index.html';
+};
 
 // "Find My Match — It's Free" needs to feel like it obviously did something,
 // not just a scroll that might be a no-op if the form was already in view.
@@ -1986,6 +1999,12 @@ const REQUIRED_PROFILE_FIELDS = ['full_name', 'country', 'dob', 'star_sign', 'ag
 async function hydrateProfileFromAuth(user) {
     if (!supabaseClient || !user) return;
     try {
+        const previousOwner = localStorage.getItem('match_portfolio_owner');
+        if (previousOwner !== user.id) {
+            seenList=[]; savedList=[]; dislikedList=[]; userRatings={}; titleNotes={}; recentTitles=[]; SESSION_SHOWN.clear();
+            ['match_seenList','match_savedList','match_dislikedList','match_userRatings','match_titleNotes'].forEach(k => localStorage.removeItem(k));
+        }
+        localStorage.setItem('match_portfolio_owner',user.id);
         const meta = user.user_metadata || {};
         const googleName = meta.full_name || meta.name || '';
         const googleAvatar = meta.avatar_url || meta.picture || '';
@@ -2036,6 +2055,7 @@ async function hydrateProfileFromAuth(user) {
             localStorage.setItem('match_titleNotes', JSON.stringify(titleNotes));
         } catch (e) { console.warn('Portfolio restore skipped:', e); }
 
+        await window.matchPolicy?.attach(user);
         // Read the existing row first — never overwrite something the user
         // has already filled in themselves with Google's version.
         const { data: existing } = await supabaseClient
@@ -2142,6 +2162,7 @@ if (supabaseClient) {
         } else {
             isUserLoggedIn = false;
             window.isUserLoggedIn = false;
+            window.matchPolicy?.attach(null);
             const regBtn = document.getElementById('nav-reg-btn');
             const outBtn = document.getElementById('nav-logout-btn');
             const profTab = document.getElementById('profile-link-tab');
@@ -2245,7 +2266,7 @@ const CONTENT_CATALOG = [
     // across platforms so a platform-specific filter has more than one option ----
     { title: "Divorced at the Wedding Day", synopsis: "A bride is humiliated and divorced at the altar, then returns transformed — richer, sharper, and done playing nice.", platform: "DramaBox", cats: ["vertical micro-drama"], moods: ["dark and gritty","intense and thrilling"], vibes: ["fast-paced binge-worthy","guilty pleasure"], ratings: ["teen PG-13","any"] },
     { title: "The Double Life of a Billionaire's Daughter", synopsis: "Raised in secret away from her family's empire, a young woman is pulled back into a world of corporate warfare and inheritance schemes.", platform: "ReelShort", cats: ["vertical micro-drama"], moods: ["intense and thrilling","dark and gritty"], vibes: ["fast-paced binge-worthy","guilty pleasure"], ratings: ["teen PG-13","any"] },
-    { title: "American Horror Story: 13", year: 2026, country: "United States", countryCode: "US", synopsis: "The Coven rises again in a 13-episode all-star season. Jessica Lange, Sarah Paulson, Evan Peters, Angela Bassett and Kathy Bates return, joined by Ariana Grande in her franchise debut. Premieres September 24, 2026 on FX and Hulu.", platform: "Hulu", cats: ["series","limited series"], moods: ["scary","dark and gritty","intense and thrilling"], vibes: ["fast-paced binge-worthy","prestige and critically acclaimed","award winning"], ratings: ["mature adults only R rated","any"] , shareRestricted: true },
+    { title: "American Horror Story: 13", year: 2026, country: "United States", countryCode: "US", synopsis: "American Horror Story returns for its thirteenth installment. The official FX premiere is September 24, 2026; check FX, Hulu or your regional Disney+ listing for availability.", platform: "Hulu", cats: ["series","limited series"], moods: ["scary","dark and gritty","intense and thrilling"], vibes: ["fast-paced binge-worthy","prestige and critically acclaimed","award winning"], ratings: ["mature adults only R rated","any"] , shareRestricted: true },
     { title: "Second Chance Mafia Wife", synopsis: "A marriage of convenience to a mafia heir spirals into real danger — and real feelings — as old enemies resurface.", platform: "ShortMax", cats: ["vertical micro-drama"], moods: ["intense and thrilling","romantic"], vibes: ["fast-paced binge-worthy","guilty pleasure"], ratings: ["mature adults only R rated","any"] , shareRestricted: true },
 
     // ---------------- YOUTUBE CREATOR CATALOG ----------------
@@ -2777,12 +2798,12 @@ async function discoverFromITunes(cat, mood, vibe, decade, rating) {
         const data = await res.json();
         if (!data.results || data.results.length === 0) return null;
 
-        const excluded = new Set([...seenList, ...dislikedList, ...SESSION_SHOWN].map(i => i.title || i));
+        const excluded = new Set([...(window.matchPolicy?.known()||[]),...Array.from(SESSION_SHOWN).map(t=>window.matchPolicy?.key(t)||t)]);
         const seenRecently = new Set(recentTitles);
 
         // Only keep entries that actually have artwork, so covers never come back blank.
         let pool = data.results.filter(r => r.artworkUrl100 && (r.trackName || r.collectionName));
-        pool = pool.filter(r => !excluded.has(r.trackName || r.collectionName));
+        pool = pool.filter(r => !excluded.has(window.matchPolicy?.key(r.trackName || r.collectionName)));
 
         // Default gospel exclusion — independent of whether the user has ever
         // blocked anything. isBlockedText() below only fires once a category
@@ -2933,171 +2954,31 @@ function matchesAny(entryValues, wanted) {
     return entryValues.some(v => wanted.includes(v));
 }
 
-function pickFromCatalog(cat, plat, mood, vibe, rating) {
-    const cats    = normCriteria(cat);
-    const plats   = normCriteria(plat);
-    const moods   = normCriteria(mood);
-    const vibes   = normCriteria(vibe);
-    const ratings = normCriteria(rating);
-    const excluded = new Set([...seenList, ...dislikedList, ...SESSION_SHOWN].map(i => i.title || i));
-    const seenRecently = new Set(recentTitles);
-
-    // GOSPEL CONTENT GATING.
-    // Previously gated by mood + a fragile cat.includes('faith') substring
-    // check, with the 12 titles ALSO cross-listed under mainstream cats
-    // (movie, series, documentary, podcast, music album, Spotify playlist)
-    // and mainstream moods (inspiring, heartbreaking, intense and thrilling,
-    // mind-bending, light and feel-good, cozy comfort watch). Checked it: for
-    // "music album" and "Spotify playlist" specifically, 100% of catalog
-    // entries in those categories were gospel — selecting either category
-    // guaranteed a gospel result regardless of gating. Same for the Apple
-    // Music platform (its one catalog entry was gospel) and Pure Flix/Angel
-    // Studios (intentionally, see below).
-    //
-    // Gospel titles are now isolated to a single dedicated category — cats:
-    // ["Gospel & Faith"], moods: [] — so a specific pick of any OTHER
-    // category or mood structurally cannot match them at all; there is
-    // nothing left to gate in that case. The one combination that still
-    // needs an explicit gate is the fully open "surprise me" query (cat=any,
-    // mood=any), where gospel remains part of the general pool unless held
-    // back on purpose.
-    const FAITH_PLATFORMS = ['Pure Flix', 'Angel Studios'];
-    const wantsGospel = cats.includes('Gospel & Faith') || plats.some(p => FAITH_PLATFORMS.includes(p));
-    const isGospelEntry = (e) => e.cats.includes('Gospel & Faith');
-
-    // Tiered relaxation: try a full match first, then progressively relax filters
-    // rather than ever falling back to one hardcoded title. Tier 0 is the only
-    // tier where the platform constraint is actually honored — every other tier
-    // drops it, so the caller must not display it as a confirmed platform.
-    //
-    // Vibe now takes part in the relaxation properly. It was accepted as an
-    // argument and then never used in a single tier test, so ticking "Slow
-    // Burn" changed precisely nothing about the result. It sits one tier below
-    // mood because when both are set and nothing satisfies both, pacing is the
-    // one people forgive being wrong.
-    const tiers = [
-        { platformHonored: true,  test: (e) => matchesAny(e.cats, cats) && matchesAny(e.platform, plats) && matchesAny(e.moods, moods) && matchesAny(e.vibes, vibes) && matchesAny(e.ratings, ratings) },
-        { platformHonored: true,  test: (e) => matchesAny(e.cats, cats) && matchesAny(e.platform, plats) && matchesAny(e.moods, moods) && matchesAny(e.ratings, ratings) },
-        { platformHonored: false, test: (e) => matchesAny(e.cats, cats) && matchesAny(e.moods, moods) && matchesAny(e.vibes, vibes) && matchesAny(e.ratings, ratings) },
-        { platformHonored: false, test: (e) => matchesAny(e.cats, cats) && matchesAny(e.moods, moods) && matchesAny(e.ratings, ratings) },
-        { platformHonored: false, test: (e) => matchesAny(e.cats, cats) && matchesAny(e.ratings, ratings) },
-        { platformHonored: false, test: (e) => matchesAny(e.ratings, ratings) },
-        { platformHonored: false, test: () => true }
-    ];
-
-    for (const tier of tiers) {
-        let pool = CONTENT_CATALOG.filter(e => tier.test(e) && !excluded.has(e.title) && !isBlockedEntry(e));
-
-        // UNCONDITIONAL exclusion — this is the actual fix, not just the data
-        // isolation above. The previous version only narrowed the pool "if
-        // doing so leaves something behind" (`if (nonFaith.length > 0) pool =
-        // nonFaith`), which silently UN-DID the exclusion the moment a tier's
-        // pool happened to be 100% gospel — exactly the guaranteed-leak cases
-        // found above. Excluding unconditionally means a tier that goes empty
-        // because of this correctly falls through to the next, more relaxed
-        // tier instead of quietly keeping gospel content in.
-        if (!wantsGospel) pool = pool.filter(e => !isGospelEntry(e));
-
-        // Opt-in categories only appear when the user actually chose that
-        // category. Keyed off "no category ticked" specifically: an explicit
-        // pick of News, Sports, Classical Music, podcasts or documentaries
-        // must still work normally — the rule is about what arrives
-        // unrequested, not about what is reachable.
-        if (!cats.length) pool = pool.filter(e => isSurpriseEligible(e));
-
-        let freshPool = pool.filter(e => !seenRecently.has(e.title));
-        if (freshPool.length > 0) pool = freshPool;
-
-        // TASTE DNA tie-break. Only narrows when the user left a filter on
-        // 'any' — an explicit choice always wins over inferred history, since
-        // what someone just told you they want beats what they liked last week.
-        if (typeof window.tasteBiasPool === 'function') {
-            try { pool = window.tasteBiasPool(pool, cats[0] || 'any', moods[0] || 'any') || pool; } catch (e) {}
-        }
-        if (pool.length > 0) {
-            const pick = pool[Math.floor(Math.random() * pool.length)];
-            // Only ever display the user's requested platform when this tier
-            // actually filtered on it — never invent/echo it back otherwise.
-            const platformVerified = plats.length === 0 || tier.platformHonored;
-            return { title: pick.title, synopsis: pick.synopsis, platform: pick.platform, platformVerified, watchUrl: pick.watchUrl || null, source: 'catalog' };
-        }
-    }
-    // Absolute last resort: any catalog title not shown in the last 6 results.
-    // No platform request could be honored here, by definition.
-    //
-    // BUG FIX: this path used to ignore `excluded` entirely, so a title the
-    // user had explicitly marked "Not For Me" (or already seen) could come
-    // straight back the moment the earlier tiers ran dry — which is exactly
-    // what made rejections feel like they were being ignored. Rejections are
-    // now respected here too, and only dropped if honouring them would leave
-    // literally nothing to show.
-    // Absolute last resort: any catalog title not shown in the last 6 results.
-    // No platform request could be honored here, by definition.
-    //
-    // Priority order, each stage only reached if the one above came up empty:
-    //   1. Respect everything: not excluded, not blocked, gospel held back.
-    //   2. Gospel allowed back in — we've genuinely run out of everything
-    //      else, which is a legitimate reason to show it, not a leak.
-    //   3. Blocked categories allowed back in too (existing "you've blocked
-    //      everything" case, unrelated to gospel specifically).
-    //   4. The entire catalog, unfiltered — should only ever be reached if
-    //      the user has both seen and disliked nearly all 99 titles.
-    let lastPool = CONTENT_CATALOG.filter(e =>
-        !excluded.has(e.title) && !isBlockedEntry(e) && (wantsGospel || !isGospelEntry(e))
-        && (cats.length > 0 || isSurpriseEligible(e)));
-
-    // Each rung below drops one more constraint. The surprise-eligibility gate
-    // is deliberately the LAST thing dropped rather than the first: running out
-    // of films is not a reason to hand someone a news bulletin they never asked
-    // for. Rejections and blocks give way before it does.
-    if (lastPool.length === 0) {
-        lastPool = CONTENT_CATALOG.filter(e =>
-            !isBlockedEntry(e) && (cats.length > 0 || isSurpriseEligible(e)));
-    }
-    if (lastPool.length === 0) {
-        lastPool = CONTENT_CATALOG.filter(e =>
-            cats.length > 0 || isSurpriseEligible(e));
-    }
-    if (lastPool.length === 0) {
-        lastPool = CONTENT_CATALOG.filter(e => !excluded.has(e.title) && !isBlockedEntry(e));
-    }
-    if (lastPool.length === 0) {
-        lastPool = CONTENT_CATALOG.filter(e => !isBlockedEntry(e));
-    }
-    if (lastPool.length === 0) {
-        lastPool = CONTENT_CATALOG;
-        if (window.showToast) {
-            showToast(window.t ? t('nfm.allBlocked')
-                : "You've blocked every category — showing anything. Unblock some in your Profile.");
-        }
-    }
-    // SESSION_SHOWN is the definitive "never repeat this session" guard.
-    // seenRecently is the softer "prefer something different" guide.
-    // Apply SESSION_SHOWN first — a title shown this session is excluded from
-    // every pool before random selection, even the last-resort one. Only if
-    // that produces literally zero candidates (the user has exhausted every
-    // title MatchApp knows about in this session) do we fall through.
-    const notSeenThisSession = lastPool.filter(e => !SESSION_SHOWN.has(e.title));
-    const withoutRecent = notSeenThisSession.filter(e => !seenRecently.has(e.title));
-    const finalPool = withoutRecent.length ? withoutRecent
-                    : notSeenThisSession.length ? notSeenThisSession
-                    : lastPool;
-
-    // If we genuinely exhausted every unseen title for this criteria set,
-    // tell the user instead of silently repeating — "Why Did I Get Married
-    // Again appeared 4 times" was the report, and it happened because the
-    // pool had only one eligible title after filtering. Transparent is better.
-    if (!notSeenThisSession.length) {
-        if (window.showToast) showToast(
-            window.t ? t('match.allSeen')
-            : "You've seen everything matching those filters! Try different criteria for something fresh."
-        );
-    }
-    const pick = finalPool[Math.floor(Math.random() * finalPool.length)];
-    return { title: pick.title, synopsis: pick.synopsis, platform: pick.platform, platformVerified: (plats.length === 0), watchUrl: pick.watchUrl || null, source: 'catalog' };
+function pickFromCatalog(cat, plat, mood, vibe, rating, decade) {
+    const criteria = {cat, plat, mood, vibe, rating, decade: decade || window.getMatchCriteria?.().decade || []};
+    const policy = window.matchPolicy;
+    if (!policy) return null; // Fail closed if the shared policy did not load.
+    const wantsFaith = normCriteria(cat).includes('Gospel & Faith') || normCriteria(plat).some(p => ['Pure Flix','Angel Studios'].includes(p));
+    const pool = CONTENT_CATALOG.filter(e => policy.matches(e, criteria)
+        && !isBlockedEntry(e) && !SESSION_SHOWN.has(e.title)
+        && (wantsFaith || !e.cats.includes('Gospel & Faith'))
+        && (normCriteria(cat).length || isSurpriseEligible(e)));
+    if (!pool.length) return null;
+    const pick = pool[Math.floor(Math.random() * pool.length)];
+    return {title:pick.title,synopsis:pick.synopsis,platform:pick.platform,platformVerified:true,watchUrl:pick.watchUrl||null,source:'catalog'};
 }
 
 window.triggerMatch = async function(isSpecificSearch = false) {
+    await window.matchPolicy?.ready();
+    const requested = window.getMatchCriteria?.() || {cat:[document.getElementById('q-category')?.value],plat:[document.getElementById('q-platform')?.value],mood:[document.getElementById('q-mood')?.value],vibe:[document.getElementById('q-vibe')?.value],rating:[document.getElementById('q-rating')?.value],decade:[document.getElementById('q-decade')?.value]};
+    const preflight = isSpecificSearch ? null : pickFromCatalog(requested.cat,requested.plat,requested.mood,requested.vibe,requested.rating,requested.decade);
+    const typed = document.getElementById('specific-search-input')?.value || '';
+    if ((!isSpecificSearch && !preflight) || (isSpecificSearch && window.matchPolicy?.known().has(window.matchPolicy.key(typed)))) {
+        window.showToast(window.MATCH_LANG === 'pt' ? 'Nenhum título novo atende a todas essas escolhas. Altere os critérios. Nenhum crédito foi usado.' : 'No fresh title matches every choice. Change your criteria. No credit was used.');
+        const form = document.getElementById('questionnaire-box');
+        if (form) { form.style.display='block'; form.scrollIntoView({behavior:'smooth',block:'center'}); }
+        return;
+    }
     if (!(await checkDailyLimit())) return;
     window.lastMatchWasSpecificSearch = isSpecificSearch;
     
@@ -3241,13 +3122,13 @@ window.triggerMatch = async function(isSpecificSearch = false) {
         // Tier 1: curated catalog. Every title/platform pairing here was
         // hand-verified, so when it can honor the exact platform requested,
         // it's the single most trustworthy source available and wins outright.
-        const catalogPick = pickFromCatalog(cat, plat, mood, vibe, rating);
+        const catalogPick = preflight;
 
         // Remember what the user actually asked for, so the result card can show
         // it back to them. Without this the pick arrives with no explanation and
         // reads as arbitrary — especially after the taste-DNA tie-break, which
         // legitimately narrows things in ways the user didn't explicitly request.
-        window.lastMatchCriteria = { cat, plat, mood, vibe, rating };
+        window.lastMatchCriteria = { cat, plat, mood, vibe, rating, decade };
 
         if (catalogPick.platformVerified) {
             matchResult = catalogPick;
@@ -3286,6 +3167,13 @@ window.triggerMatch = async function(isSpecificSearch = false) {
                 }
             } catch (e) { /* keep the English synopsis — never block the match over this */ }
         }
+    }
+    if (!matchResult || window.matchPolicy?.known().has(window.matchPolicy.key(matchResult.title))) {
+        clearInterval(timerInterval);
+        if (loadBox) loadBox.style.display='none';
+        if (qBox) qBox.style.display='block';
+        window.showToast('This title is already in your history. Choose another match.');
+        return;
     }
     rememberShownTitle(matchResult.title);
     document.dispatchEvent(new CustomEvent('matchapp:newmatch'));
@@ -3466,6 +3354,12 @@ window.saveCurrentNote = async function () {
 };
 
 async function renderResult(selected, isSpecificSearch) {
+    await window.matchPolicy?.ready();
+    if(!selected?.title || window.matchPolicy?.known().has(window.matchPolicy.key(selected.title))){
+        window.showToast('This title is already in your history. Choose a fresh match.');
+        const form=document.getElementById('questionnaire-box');if(form)form.style.display='block';
+        return;
+    }
     const loadBox = document.getElementById('loading-box'); const resultBox = document.getElementById('result-box');
     if (loadBox) loadBox.style.display = 'none';
     resultBox.style.display = 'block'; resultBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -3776,7 +3670,7 @@ async function hydrateSpotlightPoster() {
     const img = document.getElementById('spotlight-poster-img');
     if (!img) return;
     try {
-        const real = await getRealCoverImage('American Horror Story');
+        const real = '/ahs13-official.png?v=185';
         // Only swap for genuine artwork — never downgrade to the generated
         // text placeholder, which would look worse than what we already have.
         if (real && !real.includes('placehold.co') && !real.startsWith('data:')) {
@@ -3892,7 +3786,7 @@ window.notForMeBlockCategories = function() {
     window.recordAction('dislike');
 };
 
-window.recordAction = function(type) {
+window.recordAction = async function(type) {
     if (!globalMatchTitle) return;
     if (!isUserLoggedIn) {
         alert("💎 Join for FREE!\n\nTo save titles to your Portfolio, please create a free account.");
@@ -3937,11 +3831,14 @@ window.recordAction = function(type) {
         if (!inList(dislikedList, globalMatchTitle)) dislikedList.push(itemObj);
         // Drop it from Watch Later too — they don't want to see it again anywhere.
         savedList = savedList.filter(i => (i.title || i) !== globalMatchTitle);
-        syncListsToDatabase();
-        openRematchPrompt(globalMatchTitle);
+        window.matchPolicy?.remember({...itemObj,reason:(getBlockedCategories() || []).join(', ')},'dislike');
+        await Promise.race([syncListsToDatabase(),new Promise(resolve=>setTimeout(resolve,6000))]);
+        localStorage.setItem('match_rematch_criteria',JSON.stringify(window.getMatchCriteria?.() || window.lastMatchCriteria || {}));
+        window.location.href='/profile/profile.html?tab=history&rematch=1';
         return;
     }
 
+    window.matchPolicy?.remember(itemObj,type);
     syncListsToDatabase();
     updateActionButtonStates();
 };
@@ -4005,7 +3902,9 @@ async function syncListsToDatabase() {
                     seen_list: seenList,
                     saved_list: savedList,
                     disliked_list: dislikedList,
-                    user_ratings: userRatings
+                    user_ratings: userRatings,
+                    match_exclusion_keys: [...(window.matchPolicy?.known()||[])],
+                    match_history: window.matchPolicy?.history()||[]
                 }
             });
         } catch (e) { console.warn("Portfolio sync deferred:", e); }
@@ -4038,7 +3937,7 @@ window.openRematchPrompt = function(deadTitle) {
     const modal = document.getElementById('rematch-modal');
     const msg = document.getElementById('rematch-message');
     if (!modal) return;
-    if (msg) msg.innerHTML = `Got it — <strong style="color:var(--gold)">${deadTitle}</strong> won't be suggested to you again.<br><br>Want another match with the same choices, or would you like to change them first?`;
+    if (msg) msg.innerHTML = `Got it — <strong style="color:var(--gold)">${sanitizeDisplayText(deadTitle)}</strong> won't be suggested to you again.<br><br>Want another match with the same choices, or would you like to change them first?`;
     modal.style.display = 'flex';
 };
 
@@ -4197,7 +4096,7 @@ const SPOTLIGHT = {
     // 9pm ET = 01:00 UTC the following day
     premiereUTC: Date.UTC(2026, 8, 25, 1, 0, 0), // month is 0-indexed: 8 = September
     platform: 'Hulu',
-    synopsis: "The Coven rises again. Jessica Lange, Sarah Paulson, Evan Peters, Angela Bassett and Kathy Bates return for a 13-episode all-star season — plus Ariana Grande's franchise debut.",
+    synopsis: "American Horror Story returns for its thirteenth installment. The official FX premiere is September 24, 2026; check FX, Hulu or your regional Disney+ listing for availability.",
     streamUrl: 'https://www.hulu.com/series/american-horror-story-fbf9ee3c-a5f0-4d1c-9de5-fb1f0e63dcbc'
 };
 

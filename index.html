@@ -430,8 +430,9 @@
 
     <!-- NATIVE I18N (defer = runs before DOMContentLoaded, no English flash) -->
     <script defer src="/i18n.js?v=181"></script>
-    <script src="/build-meta.js?v=184"></script>
-<script defer src="/install.js?v=183"></script>
+    <script src="/build-meta.js?v=185"></script>
+<script src="/app-install-state.js?v=185"></script>
+<script defer src="/install.js?v=185"></script>
     <script defer src="/avatars.js?v=181"></script>
     <script defer src="/ambient.js?v=181"></script>
 
@@ -1867,7 +1868,8 @@
         }
     </style>
 <link rel="stylesheet" href="/passkeys.css?v=183">
-<link rel="stylesheet" href="/app-updates.css?v=183">
+<link rel="stylesheet" href="/app-updates.css?v=185">
+<link rel="stylesheet" href="/app-install-state.css?v=185">
 </head>
 <body>
     <!-- Google Tag Manager (noscript) -->
@@ -1922,7 +1924,7 @@
             </div>
             <button class="sound-toggle-btn" onclick="toggleSound()" aria-label="Toggle sound">🔊</button>
             
-            <span id="quota-badge" class="quota-badge" style="display:none;"></span>
+            <a id="quota-badge" class="quota-badge" href="/pricing/pricing.html#credits" aria-label="Buy more match credits or choose a subscription" style="display:none;"></a>
             <div id="lang-switcher-host"></div>
             <!-- Avatar doubles as the profile link: one tap from anywhere on the
                  page straight to profile, with an online dot while signed in.
@@ -2319,10 +2321,10 @@
 
 <article id="result-box" class="premium-card" style="display: none; text-align: left; position: relative;">
                     <!-- REMAINING MATCHES — small corner counter, filled in per match -->
-                    <div id="result-quota-corner" class="quota-corner" style="display:none;">
+                    <a id="result-quota-corner" class="quota-corner" href="/pricing/pricing.html#credits" aria-label="Buy more match credits or choose a subscription" style="display:none;">
                         <span class="qc-num" id="result-quota-num">0</span>
                         <span class="qc-label" id="result-quota-label">left today</span>
-                    </div>
+                    </a>
                     <div class="res-media-row">
                         <div class="res-poster-col">
                             <!-- THIS IMAGE TAG WILL ALWAYS BE VISIBLE, NO MATTER WHAT -->
@@ -2482,7 +2484,7 @@
                         <div class="spotlight-poster" onclick="saveSpotlightTitle()" role="button" tabindex="0"
                              onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();saveSpotlightTitle();}"
                              aria-label="Save American Horror Story: 13 to Watch Later">
-                            <img id="spotlight-poster-img" src="/ahs13-poster.jpg?v=2" alt="American Horror Story: 13 — premieres September 24, 2026 on FX and Hulu">
+                            <img id="spotlight-poster-img" src="/ahs13-official.png?v=185" alt="American Horror Story: 13 — premieres September 24, 2026 on FX and Hulu">
                             <div class="spotlight-ribbon" data-i18n="spotlight.ribbon">COMING THIS MONTH</div>
                         </div>
                         <div class="spotlight-body">
@@ -2528,7 +2530,7 @@
                             </div>
 
                             <div class="event-card" data-start="2026-09-04" data-end="2026-09-13" data-windows="2026-09-04:2026-09-07,2026-09-11:2026-09-13" data-label="Oktoberfest Petrópolis" onclick="eventMatch('Oktoberfest Petrópolis 2026 in Itaipava — German music, folk bands and Bavarian drinking songs to get in the mood')" role="button" tabindex="0" onkeydown="if(event.key===&quot;Enter&quot;){this.click();}">
-                                <img src="/oktoberfest-petropolis-2026.png?v=2" alt="Oktoberfest Petrópolis 2026, Parque Paulo Rattes, Itaipava" loading="lazy">
+                                <img src="/oktoberfest-cover.svg?v=185" alt="Oktoberfest Petrópolis 2026, Parque Paulo Rattes, Itaipava" loading="lazy">
                                 <span class="event-badge event-live">● LIVE</span>
                                 <div class="event-meta">
                                     <strong>Oktoberfest Petrópolis</strong>
@@ -2537,7 +2539,7 @@
                             </div>
 
                             <div class="event-card" data-start="2026-09-24" data-end="2026-12-17" data-label="American Horror Story 13" onclick="eventMatch('American Horror Story season 13 — what to watch before the premiere')" role="button" tabindex="0" onkeydown="if(event.key===&quot;Enter&quot;){this.click();}">
-                                <img src="/ahs13-poster.jpg" alt="American Horror Story 13 premiere" loading="lazy">
+                                <img src="/ahs13-official.png?v=185" alt="American Horror Story 13 premiere" loading="lazy">
                                 <span class="event-badge event-soon">SOON</span>
                                 <div class="event-meta">
                                     <strong>American Horror Story 13</strong>
@@ -2582,7 +2584,7 @@
                         <div class="spotlight-poster" onclick="triggerRockInRioMatch()" role="button" tabindex="0"
                              onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();triggerRockInRioMatch();}"
                              aria-label="Get a Rock in Rio 2026 playlist match">
-                            <img src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22600%22%20height%3D%22900%22%20viewBox%3D%220%200%20600%20900%22%3E%0A%3Cdefs%3E%0A%3ClinearGradient%20id%3D%22sky%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%220%22%20y2%3D%221%22%3E%0A%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%230B0518%22/%3E%3Cstop%20offset%3D%2238%25%22%20stop-color%3D%22%232E1259%22/%3E%0A%3Cstop%20offset%3D%2266%25%22%20stop-color%3D%22%236B2A7A%22/%3E%3Cstop%20offset%3D%2280%25%22%20stop-color%3D%22%23C4487B%22/%3E%3Cstop%20offset%3D%2292%25%22%20stop-color%3D%22%23F0834E%22/%3E%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%233A1230%22/%3E%0A%3C/linearGradient%3E%0A%3CradialGradient%20id%3D%22sunGlow%22%20cx%3D%2250%25%22%20cy%3D%2276%25%22%20r%3D%2242%25%22%3E%0A%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23FFD9A0%22%20stop-opacity%3D%220.95%22/%3E%3Cstop%20offset%3D%2255%25%22%20stop-color%3D%22%23F0834E%22%20stop-opacity%3D%220.35%22/%3E%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23F0834E%22%20stop-opacity%3D%220%22/%3E%0A%3C/radialGradient%3E%0A%3ClinearGradient%20id%3D%22beam%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%220%22%20y2%3D%221%22%3E%0A%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23E5C158%22%20stop-opacity%3D%220.55%22/%3E%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23E5C158%22%20stop-opacity%3D%220%22/%3E%0A%3C/linearGradient%3E%0A%3ClinearGradient%20id%3D%22beam2%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%220%22%20y2%3D%221%22%3E%0A%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%238FD6FF%22%20stop-opacity%3D%220.4%22/%3E%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%238FD6FF%22%20stop-opacity%3D%220%22/%3E%0A%3C/linearGradient%3E%0A%3ClinearGradient%20id%3D%22goldText%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%220%22%20y2%3D%221%22%3E%0A%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23FFF3A3%22/%3E%3Cstop%20offset%3D%2250%25%22%20stop-color%3D%22%23E5C158%22/%3E%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23B8862F%22/%3E%0A%3C/linearGradient%3E%0A%3ClinearGradient%20id%3D%22crowdFade%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%220%22%20y2%3D%221%22%3E%0A%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%230B0518%22%20stop-opacity%3D%220%22/%3E%3Cstop%20offset%3D%2255%25%22%20stop-color%3D%22%230B0518%22%20stop-opacity%3D%220.72%22/%3E%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%230B0518%22%20stop-opacity%3D%221%22/%3E%0A%3C/linearGradient%3E%0A%3C/defs%3E%0A%0A%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22url%28%23sky%29%22/%3E%0A%3Ccircle%20cx%3D%22300%22%20cy%3D%22640%22%20r%3D%22285%22%20fill%3D%22url%28%23sunGlow%29%22/%3E%0A%0A%3Cg%20opacity%3D%220.85%22%3E%0A%3Ccircle%20cx%3D%2288%22%20cy%3D%2296%22%20r%3D%221.6%22%20fill%3D%22%23fff%22/%3E%3Ccircle%20cx%3D%22182%22%20cy%3D%2258%22%20r%3D%221.1%22%20fill%3D%22%23fff%22/%3E%3Ccircle%20cx%3D%22268%22%20cy%3D%22118%22%20r%3D%221.5%22%20fill%3D%22%23fff%22/%3E%0A%3Ccircle%20cx%3D%22392%22%20cy%3D%2272%22%20r%3D%221.2%22%20fill%3D%22%23fff%22/%3E%3Ccircle%20cx%3D%22470%22%20cy%3D%22136%22%20r%3D%221.7%22%20fill%3D%22%23fff%22/%3E%3Ccircle%20cx%3D%22524%22%20cy%3D%2266%22%20r%3D%221.1%22%20fill%3D%22%23fff%22/%3E%0A%3Ccircle%20cx%3D%22132%22%20cy%3D%22168%22%20r%3D%221.2%22%20fill%3D%22%23fff%22/%3E%3Ccircle%20cx%3D%22342%22%20cy%3D%22182%22%20r%3D%221.3%22%20fill%3D%22%23fff%22/%3E%3Ccircle%20cx%3D%22228%22%20cy%3D%2242%22%20r%3D%221.1%22%20fill%3D%22%23fff%22/%3E%0A%3C/g%3E%0A%0A%3Cg%20opacity%3D%220.7%22%3E%0A%3Cpolygon%20points%3D%22120%2C150%2092%2C470%20168%2C470%22%20fill%3D%22url%28%23beam2%29%22/%3E%0A%3Cpolygon%20points%3D%22300%2C120%20250%2C470%20350%2C470%22%20fill%3D%22url%28%23beam%29%22/%3E%0A%3Cpolygon%20points%3D%22480%2C150%20432%2C470%20508%2C470%22%20fill%3D%22url%28%23beam2%29%22/%3E%0A%3C/g%3E%0A%0A%3C%21--%20Sugarloaf-inspired%20skyline%20silhouette%3A%20Rio%2C%20rendered%20as%20simple%20original%20shapes%20--%3E%0A%3Cg%20fill%3D%22%23150A2E%22%20opacity%3D%220.96%22%3E%0A%3Cpath%20d%3D%22M0%2C596%20L52%2C548%20L96%2C596%20Z%22/%3E%0A%3Cpath%20d%3D%22M84%2C600%20C104%2C536%20152%2C516%20186%2C556%20C206%2C580%20210%2C596%20212%2C600%20Z%22/%3E%0A%3Cpath%20d%3D%22M232%2C600%20C250%2C554%20286%2C540%20306%2C570%20C318%2C588%20320%2C596%20322%2C600%20Z%22/%3E%0A%3Cpath%20d%3D%22M338%2C600%20C366%2C506%20428%2C494%20462%2C554%20C478%2C582%20482%2C594%20484%2C600%20Z%22/%3E%0A%3Cpath%20d%3D%22M498%2C600%20L540%2C552%20L600%2C600%20Z%22/%3E%0A%3Crect%20x%3D%220%22%20y%3D%22596%22%20width%3D%22600%22%20height%3D%2224%22/%3E%0A%3C/g%3E%0A%0A%3C%21--%20Stage%20truss%20%2B%20crowd%20--%3E%0A%3Cg%20opacity%3D%220.95%22%3E%0A%3Crect%20x%3D%22150%22%20y%3D%22612%22%20width%3D%22300%22%20height%3D%228%22%20fill%3D%22%23241040%22/%3E%0A%3Crect%20x%3D%22150%22%20y%3D%22620%22%20width%3D%2210%22%20height%3D%2252%22%20fill%3D%22%23241040%22/%3E%3Crect%20x%3D%22440%22%20y%3D%22620%22%20width%3D%2210%22%20height%3D%2252%22%20fill%3D%22%23241040%22/%3E%0A%3Ccircle%20cx%3D%22196%22%20cy%3D%22608%22%20r%3D%225%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.9%22/%3E%3Ccircle%20cx%3D%22264%22%20cy%3D%22608%22%20r%3D%225%22%20fill%3D%22%238FD6FF%22%20opacity%3D%220.85%22/%3E%0A%3Ccircle%20cx%3D%22336%22%20cy%3D%22608%22%20r%3D%225%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.9%22/%3E%3Ccircle%20cx%3D%22404%22%20cy%3D%22608%22%20r%3D%225%22%20fill%3D%22%23C4487B%22%20opacity%3D%220.85%22/%3E%0A%3C/g%3E%0A%3Cg%20fill%3D%22%230B0518%22%20opacity%3D%220.9%22%3E%0A%3Ccircle%20cx%3D%2240%22%20cy%3D%22686%22%20r%3D%2215%22/%3E%3Ccircle%20cx%3D%2286%22%20cy%3D%22694%22%20r%3D%2213%22/%3E%3Ccircle%20cx%3D%22134%22%20cy%3D%22684%22%20r%3D%2216%22/%3E%3Ccircle%20cx%3D%22184%22%20cy%3D%22696%22%20r%3D%2213%22/%3E%0A%3Ccircle%20cx%3D%22232%22%20cy%3D%22686%22%20r%3D%2215%22/%3E%3Ccircle%20cx%3D%22282%22%20cy%3D%22696%22%20r%3D%2214%22/%3E%3Ccircle%20cx%3D%22330%22%20cy%3D%22684%22%20r%3D%2216%22/%3E%3Ccircle%20cx%3D%22380%22%20cy%3D%22694%22%20r%3D%2213%22/%3E%0A%3Ccircle%20cx%3D%22428%22%20cy%3D%22686%22%20r%3D%2215%22/%3E%3Ccircle%20cx%3D%22476%22%20cy%3D%22696%22%20r%3D%2214%22/%3E%3Ccircle%20cx%3D%22524%22%20cy%3D%22684%22%20r%3D%2216%22/%3E%3Ccircle%20cx%3D%22568%22%20cy%3D%22694%22%20r%3D%2213%22/%3E%0A%3Crect%20x%3D%220%22%20y%3D%22694%22%20width%3D%22600%22%20height%3D%2260%22/%3E%0A%3C/g%3E%0A%3Crect%20x%3D%220%22%20y%3D%22628%22%20width%3D%22600%22%20height%3D%22252%22%20fill%3D%22url%28%23crowdFade%29%22/%3E%0A%0A%3C%21--%20Frame%20--%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2220%22%20width%3D%22560%22%20height%3D%22860%22%20fill%3D%22none%22%20stroke%3D%22%23E5C158%22%20stroke-width%3D%222.5%22%20opacity%3D%220.9%22/%3E%0A%3Crect%20x%3D%2231%22%20y%3D%2231%22%20width%3D%22538%22%20height%3D%22838%22%20fill%3D%22none%22%20stroke%3D%22%23E5C158%22%20stroke-width%3D%221%22%20opacity%3D%220.3%22/%3E%0A%0A%3C%21--%20Type%20--%3E%0A%3Ctext%20x%3D%22300%22%20y%3D%22196%22%20font-family%3D%22Arial%20Black%2C%20Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2215%22%20font-weight%3D%22900%22%20fill%3D%22%23FFF3A3%22%20text-anchor%3D%22middle%22%20letter-spacing%3D%227%22%20opacity%3D%220.95%22%3ERIO%20DE%20JANEIRO%3C/text%3E%0A%3Cline%20x1%3D%22196%22%20y1%3D%22216%22%20x2%3D%22404%22%20y2%3D%22216%22%20stroke%3D%22%23E5C158%22%20stroke-width%3D%221%22%20opacity%3D%220.55%22/%3E%0A%0A%3Ctext%20x%3D%22300%22%20y%3D%22296%22%20font-family%3D%22Arial%20Black%2C%20Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2270%22%20font-weight%3D%22900%22%20fill%3D%22url%28%23goldText%29%22%20text-anchor%3D%22middle%22%20letter-spacing%3D%221%22%3EROCK%3C/text%3E%0A%3Ctext%20x%3D%22300%22%20y%3D%22356%22%20font-family%3D%22Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22300%22%20fill%3D%22%23FFF3A3%22%20text-anchor%3D%22middle%22%20letter-spacing%3D%2216%22%20opacity%3D%220.92%22%3EIN%20RIO%3C/text%3E%0A%3Ctext%20x%3D%22300%22%20y%3D%22452%22%20font-family%3D%22Arial%20Black%2C%20Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2282%22%20font-weight%3D%22900%22%20fill%3D%22%23fff%22%20text-anchor%3D%22middle%22%20letter-spacing%3D%224%22%20opacity%3D%220.97%22%3E2026%3C/text%3E%0A%0A%3Cline%20x1%3D%22196%22%20y1%3D%22490%22%20x2%3D%22404%22%20y2%3D%22490%22%20stroke%3D%22%23E5C158%22%20stroke-width%3D%221%22%20opacity%3D%220.55%22/%3E%0A%3Ctext%20x%3D%22300%22%20y%3D%22522%22%20font-family%3D%22Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2217%22%20font-weight%3D%22bold%22%20fill%3D%22%23fff%22%20text-anchor%3D%22middle%22%20letter-spacing%3D%222%22%3ESET%204-7%20%26%23183%3B%2011-13%3C/text%3E%0A%3Ctext%20x%3D%22300%22%20y%3D%22550%22%20font-family%3D%22Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2213%22%20fill%3D%22%23D8C9F0%22%20text-anchor%3D%22middle%22%20letter-spacing%3D%221%22%3ECIDADE%20DO%20ROCK%20%26%23183%3B%20PARQUE%20OL%26%23205%3BMPICO%3C/text%3E%0A%0A%3C%21--%20Live%20badge%20--%3E%0A%3Crect%20x%3D%22222%22%20y%3D%22782%22%20width%3D%22156%22%20height%3D%2230%22%20rx%3D%2215%22%20fill%3D%22%23E5C158%22/%3E%0A%3Ccircle%20cx%3D%22246%22%20cy%3D%22797%22%20r%3D%225%22%20fill%3D%22%23B8241F%22/%3E%0A%3Ctext%20x%3D%22266%22%20y%3D%22802%22%20font-family%3D%22Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2212.5%22%20font-weight%3D%22900%22%20fill%3D%22%2314131A%22%20letter-spacing%3D%221.6%22%3ELIVE%20NOW%3C/text%3E%0A%0A%3Ctext%20x%3D%22300%22%20y%3D%22848%22%20font-family%3D%22Arial%20Black%2C%20Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2217%22%20font-weight%3D%22900%22%20fill%3D%22%23FFF3A3%22%20text-anchor%3D%22middle%22%20letter-spacing%3D%223.5%22%3Ematchapp.tv%3C/text%3E%0A%3C/svg%3E" alt="#RockInRio 2026 — Rio de Janeiro, Brazil">
+                            <img src="/rock-in-rio-cover.svg?v=185" alt="#RockInRio 2026 — Rio de Janeiro, Brazil" loading="lazy" decoding="async">
                             <div class="spotlight-ribbon" id="rir-ribbon" data-start="2026-09-04" data-end="2026-09-13" data-windows="2026-09-04:2026-09-07,2026-09-11:2026-09-13">LIVE NOW</div>
                         </div>
                         <div class="spotlight-body">
@@ -2846,6 +2848,7 @@
 
             <h3 class="seo-footer-sub">🎸 #RockInRio 2026 — Rio de Janeiro</h3>
             <nav class="streaming-links" aria-label="Rock in Rio 2026 quick links">
+                <a href="/friends.html">● Friends &amp; private Match Together</a>
                 <a href="/index.html#rock-in-rio-hub">🔥 Full #RockInRio 2026 Lineup</a>
                 <a href="https://open.spotify.com/search/Rock%20in%20Rio%202026" target="_blank" rel="noopener noreferrer">🎧 Rock in Rio on Spotify</a>
                 <a href="https://rockinrio.com" target="_blank" rel="noopener noreferrer">🎟️ Official Rock in Rio Site</a>
@@ -3099,13 +3102,14 @@
         </div>
     </div>
 
-    <script src="/settings.js?v=183"></script>
-    <script src="/app.js?v=183"></script>
+    <script src="/settings.js?v=185"></script>
+    <script src="/matching-policy.js?v=185"></script>
+    <script src="/app.js?v=185"></script>
     <!-- Loads AFTER app.js so the chips it builds can call straight into the
          matcher, and non-deferred so the form is never briefly interactive as
          a plain single-choice select. -->
     <script src="/tmdb.js?v=184"></script>
-    <script src="/criteria.js?v=181"></script>
+    <script src="/criteria.js?v=185"></script>
     <script src="/lazy.js?v=181"></script>
     <script src="/tv.js?v=181"></script>
     <script src="/taste.js?v=181"></script>
@@ -3164,6 +3168,6 @@
         </div>
     </div>
 <script src="/passkeys.js?v=183"></script>
-<script src="/app-updates.js?v=183"></script>
+<script src="/app-updates.js?v=185"></script>
 </body>
 </html>
