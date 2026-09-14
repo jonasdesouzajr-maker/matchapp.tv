@@ -1965,9 +1965,15 @@ window.matchAgainSameCriteria = function() {
 const REQUIRED_PROFILE_FIELDS = ['full_name', 'country', 'dob', 'star_sign', 'age']; // avatar_url deliberately optional
 
 let profileHydrationEpoch = 0;
+window.matchProfileState = {status:'loading',userId:null};
+function setProfileLoadState(status,userId) {
+    window.matchProfileState = {status,userId};
+    window.checkAndRenderProfileState?.();
+}
 async function hydrateProfileFromAuth(user) {
     const hydrationEpoch = ++profileHydrationEpoch;
     if (!supabaseClient || !user) return;
+    setProfileLoadState('loading',user.id);
     try {
         const previousOwner = localStorage.getItem('match_portfolio_owner');
         if (previousOwner !== user.id) {
@@ -2026,11 +2032,15 @@ async function hydrateProfileFromAuth(user) {
             localStorage.setItem('match_titleNotes', JSON.stringify(titleNotes));
         } catch (e) { console.warn('Portfolio restore skipped:', e); }
 
-        await window.matchPolicy?.attach(user);
+        // History synchronization must not block restoration of the identity lock.
+        Promise.resolve(window.matchPolicy?.attach(user)).catch(e => console.warn('History sync delayed:',e.message));
         // Read the existing row first — never overwrite something the user
         // has already filled in themselves with Google's version.
-        const { data: existing, error: profileReadError } = await supabaseClient
-            .from('profiles').select('*').eq('id', user.id).maybeSingle();
+        let profileReadTimer;
+        const { data: existing, error: profileReadError } = await Promise.race([
+            supabaseClient.from('profiles').select('*').eq('id', user.id).maybeSingle(),
+            new Promise((_,reject)=>{profileReadTimer=setTimeout(()=>reject(new Error('Profile connection timed out')),12000);})
+        ]).finally(()=>clearTimeout(profileReadTimer));
         if (profileReadError) throw profileReadError;
         if (hydrationEpoch !== profileHydrationEpoch) return null;
 
@@ -2075,7 +2085,7 @@ async function hydrateProfileFromAuth(user) {
         // 'true' from a previous account on a shared device would lock a fresh
         // profile the user has every right to edit.
         localStorage.setItem('match_profile_locked', merged.profile_locked === true ? 'true' : 'false');
-        window.checkAndRenderProfileState?.();
+        setProfileLoadState('ready',user.id);
         document.dispatchEvent(new CustomEvent('matchapp:profilehydrated', {detail:{userId:user.id}}));
 
         const missing = REQUIRED_PROFILE_FIELDS.filter(f => {
@@ -2093,6 +2103,7 @@ async function hydrateProfileFromAuth(user) {
         return missing;
     } catch (e) {
         console.warn('Profile hydration skipped:', e.message || e);
+        if (hydrationEpoch === profileHydrationEpoch) setProfileLoadState('error',user.id);
         return null;
     }
 }
@@ -2116,9 +2127,12 @@ function promptProfileCompletion(missing) {
     bar.querySelector('.profile-nudge-x').onclick = () => bar.remove();
 }
 
+let profileAuthEvent = 0;
 if (supabaseClient) {
     supabaseClient.auth.onAuthStateChange((event, session) => {
+        const authEvent=++profileAuthEvent;
         if (session && session.user) {
+            setProfileLoadState('loading',session.user.id);
             isUserLoggedIn = true;
             window.isUserLoggedIn = true;
             const regBtn = document.getElementById('nav-reg-btn');
@@ -2132,11 +2146,13 @@ if (supabaseClient) {
             // Auth callbacks run under the SDK's session lock. Defer API calls
             // so native passkey sign-in and session refresh cannot deadlock.
             setTimeout(async () => {
+                if(authEvent!==profileAuthEvent)return;
                 await hydrateProfileFromAuth(session.user);
                 if (window.refreshQuotaStatus) window.refreshQuotaStatus();
             }, 0);
         } else {
             ++profileHydrationEpoch;
+            setProfileLoadState('signedout',null);
             isUserLoggedIn = false;
             window.isUserLoggedIn = false;
             window.matchPolicy?.attach(null);
@@ -2155,6 +2171,8 @@ if (supabaseClient) {
         }));
     });
 }
+
+if (!supabaseClient) setProfileLoadState('error',null);
 
 // ----------------------------------------------------
 // AI MATCH EXECUTION

@@ -97,7 +97,7 @@ begin
  select * into v_row from public.profiles where id=v_uid for update;
  if v_row.profile_locked is not true then
   p_name:=btrim(p_name);p_country:=btrim(p_country);p_dob:=btrim(p_dob);
-  if p_name is null or length(p_name) not between 1 and 200 or p_country is null or length(p_country) not between 1 and 100 or p_dob is null or p_dob !~ '^\d{2}/\d{2}/\d{4}$' or p_sign is null or p_sign not in ('Aries','Taurus','Gemini','Cancer','Leo','Virgo','Libra','Scorpio','Sagittarius','Capricorn','Aquarius','Pisces') then raise exception 'Complete every identity field'; end if;
+  if p_name is null or length(p_name) not between 1 and 200 or p_country is null or length(p_country) not between 1 and 100 or p_dob is null or p_dob !~ '^[0-9]{2}/[0-9]{2}/[0-9]{4}$' or p_sign is null or p_sign not in ('Aries','Taurus','Gemini','Cancer','Leo','Virgo','Libra','Scorpio','Sagittarius','Capricorn','Aquarius','Pisces') then raise exception 'Complete every identity field'; end if;
   v_birth:=to_date(p_dob,'DD/MM/YYYY');
   if to_char(v_birth,'DD/MM/YYYY')<>p_dob or v_birth>current_date or v_birth<current_date-interval '120 years' then raise exception 'Invalid birthdate'; end if;
   update public.profiles set full_name=p_name,country=p_country,dob=p_dob,star_sign=p_sign,age=extract(year from age(current_date,v_birth))::integer,profile_locked=true where id=v_uid returning * into v_row;

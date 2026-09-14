@@ -221,6 +221,16 @@ input,select,textarea { accent-color:var(--electric-violet); }
 .matchapp-kids-toggle img { width:32px;height:32px; }
 .matchapp-kids-toggle:hover { transform:translateY(-2px); border-color:rgba(247,220,92,.72); }
 
+/* A circular window crops the supplied logo's white canvas without changing the artwork. */
+html .matchapp-kids-toggle{gap:10px;padding:5px 16px 5px 5px;min-height:58px;background:linear-gradient(120deg,#ffe3a1,#ffc4b3 58%,#e5cbff);color:#352052;border:2px solid #fff0c8;box-shadow:0 6px 20px #140d3540,inset 0 1px 0 #fff8;backdrop-filter:none;font:800 17px/1.1 'Trebuchet MS',Verdana,sans-serif;letter-spacing:.2px;transition:transform .22s,box-shadow .22s;animation:kidsButtonHello .65s ease-out both}
+html .matchapp-kids-toggle .kids-toggle-emblem{position:relative;display:block;width:46px;height:46px;flex:none;overflow:hidden;border-radius:50%;background:#442069;box-shadow:0 2px 5px #723c4c40}
+html .matchapp-kids-toggle .kids-toggle-emblem img{position:absolute;width:115%;height:115%;max-width:none;left:-7.5%;top:-7.5%;object-fit:cover;border-radius:50%}
+html .matchapp-kids-toggle .kids-toggle-star{font-size:22px;color:#794ba9;transition:transform .35s}
+html .matchapp-kids-toggle:hover{transform:translateY(-3px);box-shadow:0 9px 25px #140d3545}
+html .matchapp-kids-toggle:hover .kids-toggle-star{transform:rotate(35deg) scale(1.18)}
+html .matchapp-kids-toggle:focus-visible{outline:3px solid #98eee0;outline-offset:4px}
+@keyframes kidsButtonHello{from{opacity:0;transform:translateY(10px) scale(.94)}to{opacity:1;transform:none}}
+
 /* Desktop/TV spacing: stronger hierarchy without stretching controls. */
 @media (min-width:1000px) {
   .premium-card { border-radius:24px !important; }

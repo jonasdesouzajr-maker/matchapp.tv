@@ -118,6 +118,22 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function checkAndRenderProfileState() {
+    const state=window.matchProfileState || {status:'loading'};
+    const pending=state.status!=='ready';
+    const notice=document.getElementById('identity-load-status');
+    const retry=document.getElementById('identity-load-retry');
+    const messages=localStorage.getItem('match_lang')==='pt-BR'
+        ? {loading:'Carregando sua identidade salva…',error:'Não foi possível verificar sua identidade. Seus dados continuam protegidos. Tente novamente.',signedout:'Entre na sua conta para recuperar sua identidade salva.',retry:'Tentar novamente',signin:'Entrar'}
+        : {loading:'Loading your saved identity…',error:'Could not verify your saved identity. Your details remain protected. Please retry.',signedout:'Sign in to restore your saved identity.',retry:'Try again',signin:'Sign in'};
+    if(notice){notice.hidden=!pending;notice.textContent=messages[state.status]||messages.loading;}
+    if(retry){retry.hidden=!['error','signedout'].includes(state.status);retry.textContent=messages[state.status==='signedout'?'signin':'retry'];}
+    document.querySelectorAll('#editable-fields-section input,#editable-fields-section select').forEach(el=>el.disabled=pending);
+    if(pending){
+        const form=document.getElementById('editable-fields-section'),card=document.getElementById('locked-info-card'),save=document.getElementById('save-profile-btn');
+        if(form)form.style.display='none';if(card)card.style.display='none';if(save){save.disabled=true;save.hidden=true;}
+        return;
+    }
+    const save=document.getElementById('save-profile-btn');if(save)save.hidden=false;
     const isLocked = localStorage.getItem('match_profile_locked') === 'true';
     const savedName = localStorage.getItem('match_user_name') || "";
     const savedCountry = localStorage.getItem('match_user_country') || "";
@@ -167,6 +183,20 @@ function checkAndRenderProfileState() {
 }
 
 window.checkAndRenderProfileState = checkAndRenderProfileState;
+window.retryLockedProfile = async function() {
+    if(window.matchProfileState?.status==='signedout'){window.openAuthModal?.();return;}
+    try {
+        window.matchProfileState={status:'loading',userId:null};checkAndRenderProfileState();
+        const result=await window.supabaseClient.auth.getSession();
+        if(result.error)throw result.error;
+        if(result.data?.session?.user)await window.hydrateProfileFromAuth(result.data.session.user);
+        else window.matchProfileState={status:'signedout',userId:null};
+    } catch(_){window.matchProfileState={status:'error',userId:null};}
+    checkAndRenderProfileState();
+};
+document.addEventListener('matchapp:langchange',checkAndRenderProfileState);
+document.addEventListener('matchapp:historychange',()=>window.renderProfileGrids?.());
+document.addEventListener('matchapp:profilehydrated',()=>window.renderProfileGrids?.());
 
 window.handleAvatar = function(event) {
     // The profile lock deliberately does NOT apply here. It exists to freeze
@@ -464,8 +494,15 @@ window.renderTasteDNA = function () {
 };
 
 window.renderProfileGrids = function() {
-    const savedListData = JSON.parse(localStorage.getItem('match_savedList') || '[]');
-    const seenListData = JSON.parse(localStorage.getItem('match_seenList') || '[]');
+    const history=window.matchPolicy?.history()||[];
+    const mergeHistory=(key,actions)=>{
+        let local=[];try{local=JSON.parse(localStorage.getItem(key)||'[]');if(!Array.isArray(local))local=[];}catch(_){}
+        const combined=new Map(local.filter(i=>i&&i.title).map(i=>[i.title,i]));
+        history.filter(i=>actions.includes(i.action)).forEach(i=>combined.set(i.title,i));
+        return [...combined.values()];
+    };
+    const savedListData = mergeHistory('match_savedList',['save']);
+    const seenListData = mergeHistory('match_seenList',['seen','loved']);
 
     const isAudioItem = i => typeof i === 'object' && i.isAudio === true;
 

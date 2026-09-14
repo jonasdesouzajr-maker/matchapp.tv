@@ -1,5 +1,9 @@
 /* Original vector lettering stays crisp from a phone to an 8K screen. */
-.matchapp-wordmark{display:block!important;width:clamp(11rem,20vw,17rem)!important;max-width:100%!important;height:auto!important;aspect-ratio:368/66;object-fit:contain!important;border:0!important;border-radius:0!important;box-shadow:none!important;flex:none}
+.matchapp-wordmark{display:block!important;width:clamp(12rem,23vw,19rem)!important;max-width:100%!important;height:auto!important;aspect-ratio:600/104;object-fit:contain!important;border:0!important;border-radius:0!important;box-shadow:none!important;flex:none;transform-origin:left center;animation:brandReveal .7s cubic-bezier(.2,.8,.2,1) both;transition:transform .25s ease!important}
+.matchapp-brand-link:hover .matchapp-wordmark,.matchapp-brand-link:focus-visible .matchapp-wordmark{transform:translateY(-2px) scale(1.015)}
+@keyframes brandReveal{from{opacity:0;transform:translateY(5px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}
+@media(prefers-reduced-motion:reduce){.matchapp-wordmark{animation:none!important;transition:none!important}}
+.reduce-motion .matchapp-wordmark{animation:none!important;transition:none!important}
 .matchapp-brand-link{display:inline-flex;align-items:center;gap:.7rem;min-width:0;text-decoration:none;color:var(--theme-accent,#ead8ff)}
 .matchapp-brand-bar{position:relative;z-index:2;max-width:80rem;margin:1rem auto;padding:.65rem 1.25rem;box-sizing:border-box}
 body>header:has(>.matchapp-brand-link):not(.app-header){flex-wrap:wrap;gap:1rem}.matchapp-brand-link>img:not(.matchapp-wordmark){flex-shrink:0}

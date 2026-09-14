@@ -80,7 +80,7 @@
         if (document.querySelector('link[data-matchapp-redesign]')) return;
         const link = document.createElement('link');
         link.rel = 'stylesheet';
-        link.href = '/redesign.css?v=1';
+        link.href = '/redesign.css?v=192';
         link.dataset.matchappRedesign = 'true';
         document.head.appendChild(link);
     }
@@ -109,7 +109,7 @@
         btn.type = 'button';
         btn.className = 'matchapp-kids-toggle';
         btn.setAttribute('aria-label', kidsLabel());
-        btn.innerHTML = '<img src="/kids/kids-logo-sm.jpeg" alt=""><span></span>';
+        btn.innerHTML = '<i class="kids-toggle-emblem" aria-hidden="true"><img src="/kids/kids-logo.jpeg" alt=""></i><span></span><b class="kids-toggle-star" aria-hidden="true">✦</b>';
         btn.querySelector('span').textContent = kidsLabel();
         btn.addEventListener('click', () => {
             try { localStorage.setItem(KIDS_MODE_KEY, 'true'); } catch (e) {}

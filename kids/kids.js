@@ -148,6 +148,15 @@
 
   function tr(key) { return (UI[lang] && UI[lang][key]) || UI.en[key] || key; }
 
+  const matchCopy={
+    en:{resultTitle:'Your next adventure',matchFree:'Opening a title uses one match from your account, or your daily guest allowance. Watching, sharing and saving this result do not use another match.',opening:'Getting your adventure ready…',quotaEmpty:'All your matches are used for today. Ask a grown-up to help with your account, or come back tomorrow.',quotaError:'We could not check your matches. Please try again.',quotaUsed:'1 match used',synopsis:'The story',share:'Share this adventure',copy:'Copy link',copied:'Link copied!',saveLater:'Watch later',seenIt:'Seen it',lovedIt:'Loved it',notForMe:'Not for me',historySaved:'Saved to your history.',historyError:'Could not save this choice. Please try again.',sameCriteria:'Another with these choices',newCriteria:'Choose a new adventure',account:'Grown-ups: account & matches'},
+    'pt-BR':{resultTitle:'Sua próxima aventura',matchFree:'Abrir um título usa um match da sua conta ou da cota diária de visitante. Assistir, compartilhar e salvar este resultado não usam outro match.',opening:'Preparando sua aventura…',quotaEmpty:'Seus matches de hoje acabaram. Peça ajuda a um adulto com sua conta ou volte amanhã.',quotaError:'Não foi possível verificar seus matches. Tente novamente.',quotaUsed:'1 match usado',synopsis:'A história',share:'Compartilhar esta aventura',copy:'Copiar link',copied:'Link copiado!',saveLater:'Assistir depois',seenIt:'Já assisti',lovedIt:'Adorei',notForMe:'Não é pra mim',historySaved:'Salvo no seu histórico.',historyError:'Não foi possível salvar. Tente novamente.',sameCriteria:'Outra com estas escolhas',newCriteria:'Escolher uma nova aventura',account:'Adultos: conta e matches'},
+    es:{resultTitle:'Tu próxima aventura',matchFree:'Abrir un título usa un match de tu cuenta o de tu cupo diario de visitante. Ver, compartir y guardar este resultado no usa otro match.',opening:'Preparando tu aventura…',quotaEmpty:'Usaste tus matches de hoy. Pide ayuda a un adulto con tu cuenta o vuelve mañana.',quotaError:'No pudimos comprobar tus matches. Inténtalo de nuevo.',quotaUsed:'1 match usado',synopsis:'La historia',share:'Compartir esta aventura',copy:'Copiar enlace',copied:'¡Enlace copiado!',saveLater:'Ver después',seenIt:'Ya lo vi',lovedIt:'Me encantó',notForMe:'No es para mí',historySaved:'Guardado en tu historial.',historyError:'No se pudo guardar. Inténtalo de nuevo.',sameCriteria:'Otro con estas opciones',newCriteria:'Elegir una nueva aventura',account:'Adultos: cuenta y matches'}
+  };
+  Object.entries(matchCopy).forEach(([locale,copy])=>Object.assign(UI[locale],copy));
+  Object.entries(window.KidsMatchCopy||{}).forEach(([locale,copy])=>Object.assign(UI[locale],copy));
+  let openingMatch=false, matchedUserId=null;
+
   function setLanguage(next) {
     lang = normalizeLang(next);
     write(LANG_KEY, lang);
@@ -162,6 +171,7 @@
     document.getElementById('kids-mic')?.setAttribute('aria-label', tr('voiceLabel'));
     document.querySelector('.kids-dialog-close')?.setAttribute('aria-label', tr('closeLabel'));
     clearChat(); updateMotion(); renderChips(); renderGrid(); renderFeatured();renderNostalgia(); renderMatchControls(); renderMatchResults(); renderSaved();
+    if(currentWatchItem)paintMatch(currentWatchItem);
   }
 
   function currentAge() { return document.getElementById('kids-age')?.value || read(AGE_KEY) || 'all'; }
@@ -239,7 +249,7 @@
     const id = 'kid-' + slot + '-' + slug(item);
     const title = escapeHTML(item.title);
     const ages = item.ages.filter(a => a !== 'all').join(' · ');
-    return '<article class="kids-card" data-title="' + title + '"><div class="kids-card-poster"><div class="kids-cover-underlay" aria-hidden="true"><span>' + icons[item.cats[0]] + '</span><strong>' + title + '</strong></div><img id="' + id + '" src="' + makePoster(item) + '" alt="' + title + '" width="600" height="900" loading="lazy" decoding="async"><span class="kids-card-badge">' + ages + '</span></div><div class="kids-card-body"><h3><a class="kids-title-link" data-title-watch="'+slug(item)+'" href="'+escapeHTML(watchUrl(item))+'">' + title + '</a></h3><div class="kids-card-meta"><span>' + escapeHTML(tr(item.type)) + '</span><span>' + escapeHTML(item.year) + '</span><button class="kids-heart" type="button" data-save="'+slug(item)+'" aria-pressed="'+savedTitles.has(slug(item))+'" aria-label="'+escapeHTML(tr(savedTitles.has(slug(item))?'saved':'save')+': '+item.title)+'">'+(savedTitles.has(slug(item))?'♥':'♡')+'</button></div>' + (compact ? '' : '<p>' + escapeHTML(description(item)) + '</p>') + (item.note ? '<p class="kids-title-note">'+escapeHTML(tr(item.note))+'</p>' : '') + '<button class="kids-watch" type="button" data-watch="' + slug(item) + '" aria-label="' + escapeHTML(tr('watch') + ': ' + item.title) + '">' + escapeHTML(tr('watch')) + ' <span aria-hidden="true">↗</span></button></div></article>';
+    return '<article class="kids-card" data-title="' + title + '"><button type="button" class="kids-card-poster" aria-label="' + title + '"><div class="kids-cover-underlay" aria-hidden="true"><span>' + icons[item.cats[0]] + '</span><strong>' + title + '</strong></div><img id="' + id + '" src="' + makePoster(item) + '" alt="' + title + '" width="600" height="900" loading="lazy" decoding="async"><span class="kids-card-badge">' + ages + '</span></button><div class="kids-card-body"><h3><a class="kids-title-link" data-title-watch="'+slug(item)+'" href="#kids-watch-dialog">' + title + '</a></h3><div class="kids-card-meta"><span>' + escapeHTML(tr(item.type)) + '</span><span>' + escapeHTML(item.year) + '</span><button class="kids-heart" type="button" data-save="'+slug(item)+'" aria-pressed="'+savedTitles.has(slug(item))+'" aria-label="'+escapeHTML(tr(savedTitles.has(slug(item))?'saved':'save')+': '+item.title)+'">'+(savedTitles.has(slug(item))?'♥':'♡')+'</button></div>' + (compact ? '' : '<p>' + escapeHTML(description(item)) + '</p>') + (item.note ? '<p class="kids-title-note">'+escapeHTML(tr(item.note))+'</p>' : '') + '<button class="kids-watch" type="button" data-watch="' + slug(item) + '" aria-label="' + escapeHTML(tr('watch') + ': ' + item.title) + '">' + escapeHTML(tr('watch')) + ' <span aria-hidden="true">↗</span></button></div></article>';
   }
 
   const captionCallbacks = new WeakMap();
@@ -295,7 +305,7 @@
   }
 
   function updateDirectLinks(){
-    document.querySelectorAll('[data-title-watch]').forEach(link=>{const item=LIBRARY.find(x=>slug(x)===link.dataset.titleWatch);if(item && allowedForAge(item,currentAge()))link.href=watchUrl(item);});
+    document.querySelectorAll('[data-title-watch]').forEach(link=>link.href='#kids-watch-dialog');
   }
   function renderNostalgia(){
     const host=document.getElementById('kids-nostalgia');if(!host)return;
@@ -371,15 +381,17 @@
     document.getElementById('kids-match-status').textContent=matchPicks.length?tr('matchReady'):'';
   }
   function clearMatch() { matchPicks=[];renderMatchResults(); }
-  function makeKidsMatch() {
+  async function makeKidsMatch() {
+    if(openingMatch)return;
+    try{await window.KidsAccount?.prepare();}catch(_){document.getElementById('kids-match-status').textContent=tr('quotaError');return;}
     const mood=document.getElementById('kids-match-mood').value,format=document.getElementById('kids-match-format').value,era=document.getElementById('kids-match-era').value;
     const pool=allowedLibrary(currentAge()).filter(x=>(mood==='all'||x.cats.includes(mood))&&(format==='all'||x.type===format)&&(era==='all'||Math.floor(Number(x.year)/10)*10===Number(era)));
     // Rotate ties so another tap explores more of the same approved collection.
-    const ranked=pool.map(item=>({item,score:(previousMatch.includes(item.title)?0:2)+Math.random()})).sort((a,b)=>b.score-a.score);
+    const ranked=pool.filter(item=>!window.matchPolicy?.known().has(window.matchPolicy.key(item.title))).map(item=>({item,score:(previousMatch.includes(item.title)?0:2)+Math.random()})).sort((a,b)=>b.score-a.score);
     matchPicks=ranked.slice(0,3).map(x=>x.item);previousMatch=matchPicks.map(x=>x.title);
     renderMatchResults();document.getElementById('kids-match-status').textContent=matchPicks.length?tr('matchReady'):tr('matchEmpty');
     document.getElementById('kids-match-submit').textContent=tr('matchAgain');
-    if(matchPicks.length)document.getElementById('kids-match-results').scrollIntoView({block:'nearest',behavior:reducedMotion()?'auto':'smooth'});
+    if(matchPicks.length)await openWatch(slug(matchPicks[0]),document.getElementById('kids-match-submit'));
   }
   function renderSaved() {
     const picks=allowedLibrary(currentAge()).filter(x=>savedTitles.has(slug(x)));
@@ -483,13 +495,50 @@
     card?.classList.add('is-surprise'); card?.querySelector('button')?.focus({preventScroll:true});
     setTimeout(() => card?.classList.remove('is-surprise'), 2200);
   }
-  function openWatch(key,opener) {
+  function paintMatch(item){
+    document.getElementById('kids-watch-name').textContent=item.title;
+    document.getElementById('kids-match-detail').innerHTML='<div class="kids-result-art"><img id="kid-detail-'+slug(item)+'" src="'+makePoster(item)+'" width="600" height="900" alt="'+escapeHTML(item.title)+'"></div><div><p class="kids-result-meta">'+escapeHTML(item.year+' · '+tr(item.type)+' · '+tr('quotaUsed'))+'</p><h3>'+escapeHTML(tr('synopsis'))+'</h3><p>'+escapeHTML(description(item))+'</p><p class="kids-title-note">'+escapeHTML(item.note?tr(item.note):'')+'</p></div>';
+    hydratePoster(item,'detail');renderWatchLinks();
+    const shareLink='https://matchapp.tv/kids/?title='+encodeURIComponent(slug(item));
+    document.getElementById('kids-share-link').value=shareLink;
+  }
+  async function openWatch(key,opener) {
     const item = allowedLibrary(currentAge()).find(x => slug(x) === key); if (!item) return;
     const dialog = document.getElementById('kids-watch-dialog');
-    document.getElementById('kids-watch-name').textContent = item.title;
-    currentWatchItem=item;watchOpener=opener;renderWatchLinks();
-    if (typeof dialog.showModal === 'function') dialog.showModal();
-    else { dialog.setAttribute('open','');dialog.scrollIntoView({block:'center'}); }
+    if(openingMatch || (dialog.open && currentWatchItem===item))return;
+    openingMatch=true;const band=currentAge();const status=document.getElementById('kids-match-status');status.textContent=tr('opening');
+    document.getElementById('kids-match-submit').disabled=true;
+    try{
+      if(!window.KidsAccount)throw Error('connection');
+      const result=await window.KidsAccount.consume(()=>band===currentAge());
+      if(!result.allowed){status.textContent=tr('quotaEmpty');document.getElementById('kids-account-help').hidden=false;status.scrollIntoView({block:'center'});return;}
+      if(band!==currentAge() || !allowedForAge(item,currentAge()))return;
+      matchedUserId=result.userId;currentWatchItem=item;watchOpener=opener;paintMatch(item);document.querySelectorAll('[data-match-choice]').forEach(button=>button.disabled=false);
+      document.getElementById('kids-result-status').textContent='';
+      document.getElementById('kids-rematch-actions').hidden=true;
+      status.textContent=tr('quotaUsed');
+      if (typeof dialog.showModal === 'function') dialog.showModal();
+      else { dialog.setAttribute('open','');dialog.scrollIntoView({block:'center'}); }
+    }catch(_){status.textContent=tr('quotaError');status.scrollIntoView({block:'center'});}
+    finally{openingMatch=false;document.getElementById('kids-match-submit').disabled=false;}
+  }
+
+  async function saveMatchChoice(action,button){
+    const item=currentWatchItem;if(!item||button.disabled)return;
+    button.disabled=true;const status=document.getElementById('kids-result-status');
+    try{
+      const poster=document.getElementById('kid-detail-'+slug(item));
+      await window.KidsAccount.remember({title:item.title,posterUrl:poster?.currentSrc||makePoster(item),streamUrl:watchUrl(item)},action,matchedUserId);
+      status.textContent=tr('historySaved');document.getElementById('kids-rematch-actions').hidden=false;
+      if(action==='save'){savedTitles.add(slug(item));write(SAVED_KEY,JSON.stringify([...savedTitles]));renderSaved();}
+    }catch(_){status.textContent=tr('historyError');button.disabled=false;}
+  }
+  async function shareMatch(copyOnly){
+    if(!currentWatchItem)return;
+    const url=document.getElementById('kids-share-link').value;
+    const text=currentWatchItem.title+' · '+description(currentWatchItem)+' #MatchAppTVAi #KidsMode';
+    try{if(!copyOnly&&navigator.share)await navigator.share({title:currentWatchItem.title,text,url});else{await navigator.clipboard.writeText(text+' '+url);document.getElementById('kids-result-status').textContent=tr('copied');}}
+    catch(e){if(e.name!=='AbortError'){const field=document.getElementById('kids-share-link');field.hidden=false;field.focus();field.select();}}
   }
   function remoteNavigation(event) {
     if (!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(event.key) || event.altKey || event.metaKey || event.ctrlKey) return;
@@ -539,8 +588,19 @@
     if(dub)dub.value=read('match_kids_dub') || (/brasil|brazil|portugal|^br$|^pt$/.test(residence) || lang==='pt-BR'?'pt':/spain|espa|mex|argentin|colomb|chile|peru|uruguay|ecuador|venezuela/.test(residence) || lang==='es'?'es':'en');
     updateDirectLinks();
     document.getElementById('kids-motion')?.addEventListener('click', () => { motionPaused = !motionPaused; write('match_kids_pause_motion', String(motionPaused)); updateMotion(); });
-    document.getElementById('kids-surprise')?.addEventListener('click', () => { const pool = allowedLibrary(currentAge()); if (pool.length) highlightTitle(slug(pool[Math.floor(Math.random()*pool.length)])); });
-    document.addEventListener('click', event => { const feature = event.target.closest('[data-feature]'); const watch = event.target.closest('[data-watch]');const save=event.target.closest('[data-save]'); if (feature) { event.preventDefault(); highlightTitle(feature.dataset.feature); } if (watch) openWatch(watch.dataset.watch,watch);if(save)toggleSaved(save.dataset.save); });
+    document.getElementById('kids-surprise')?.addEventListener('click', () => { const pool = allowedLibrary(currentAge()).filter(item=>!window.matchPolicy?.known().has(window.matchPolicy.key(item.title))); if (pool.length)openWatch(slug(pool[Math.floor(Math.random()*pool.length)]),document.getElementById('kids-surprise')); });
+    document.addEventListener('click', event => {
+      const choice=event.target.closest('[data-match-choice]');if(choice){saveMatchChoice(choice.dataset.matchChoice,choice);return;}
+      const save=event.target.closest('[data-save]');if(save){toggleSaved(save.dataset.save);return;}
+      const title=event.target.closest('[data-feature],[data-watch],[data-title-watch],.kids-card-poster');
+      if(title){event.preventDefault();const item=title.closest('.kids-card')?.dataset.title;openWatch(title.dataset.feature||title.dataset.watch||title.dataset.titleWatch||slug(LIBRARY.find(x=>x.title===item)),title);}
+    });
+    document.getElementById('kids-share').addEventListener('click',()=>shareMatch(false));
+    document.getElementById('kids-copy').addEventListener('click',()=>shareMatch(true));
+    document.getElementById('kids-rematch-same').addEventListener('click',()=>{document.getElementById('kids-watch-dialog').close();makeKidsMatch();});
+    document.getElementById('kids-rematch-new').addEventListener('click',()=>{document.getElementById('kids-watch-dialog').close();document.getElementById('kids-match-form').scrollIntoView({block:'center'});document.getElementById('kids-match-mood').focus();});
+    window.KidsAccount?.prepare().catch(()=>{});
+    const sharedTitle=params.get('title');if(sharedTitle)highlightTitle(sharedTitle);
     document.getElementById('kids-watch-dialog').addEventListener('close',()=>{currentWatchItem=null;watchOpener?.focus();});
     document.addEventListener('keydown', remoteNavigation);
     document.addEventListener('visibilitychange', () => document.body.classList.toggle('kids-hidden', document.hidden));

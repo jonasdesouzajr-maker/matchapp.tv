@@ -40,7 +40,7 @@
    installability is unaffected.
    ============================================================ */
 
-const SW_VERSION = 'v11-header-and-update-recovery';
+const SW_VERSION = 'v12-identity-kids-matches';
 
 self.addEventListener('install', () => {
     // Activate immediately rather than waiting for old tabs to close. This is
