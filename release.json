@@ -1,24 +1,22 @@
 {
-  "version": "2026.09.13.3",
-  "date": "2026-09-13",
+  "version": "2026.09.14.1",
+  "date": "2026-09-14",
   "functional": true,
   "notes": {
     "en": [
-      "Kids Mode now includes 64 reviewed titles, classic-cartoon nostalgia and regional viewing links, including official dubbed Woody Woodpecker channels.",
-      "Permanent history exclusions and exact match criteria prevent unwanted repeats. Not for me opens history with clear rematch choices.",
-      "Restored event artwork and official AHS 13 season poster. Installed apps show an update signal and update the existing installation.",
-      "Private friends, optional online status and remote Match Together are available after backend activation, with illustrated avatars and optional personal share cards."
+      "Device sign-in is now live. Sign in once, confirm your account and add a passkey in your profile. On your next visit, approve Face ID, fingerprint or your device PIN on supported devices.",
+      "Private Friends and remote Match Together are now live, with mutual approval, optional online status and illustrated avatars. Both people’s filters and permanent title exclusions are respected.",
+      "Kids Mode includes 64 reviewed titles, regional viewing links, classic-cartoon nostalgia and reliable covers."
     ],
     "pt": [
-      "Kids Mode com 64 títulos revisados, clássicos nostálgicos e links para assistir, incluindo canais oficiais dublados do Pica-Pau.",
-      "Exclusões permanentes do histórico e critérios exatos evitam repetições. Não é para mim abre o histórico com opções para outro match.",
-      "Artes dos eventos restauradas e pôster oficial de AHS 13. Apps instalados mostram aviso de atualização.",
-      "Amigos privados, status online opcional e match juntos à distância após ativação do backend, com avatares ilustrados e cartões para compartilhar."
+      "O acesso com passkey já está disponível. Entre, confirme sua conta e adicione uma passkey no perfil. Nas próximas visitas, use Face ID, impressão digital ou o PIN do dispositivo compatível.",
+      "Amigos privados e Match Together à distância já estão disponíveis, com aprovação mútua, status online opcional e avatares ilustrados. Os critérios e exclusões permanentes dos dois usuários são respeitados.",
+      "Kids Mode com 64 títulos revisados, links regionais para assistir, clássicos nostálgicos e capas sempre disponíveis."
     ],
     "es": [
-      "Kids Mode incluye 64 títulos revisados, clásicos y enlaces regionales para verlos, con canales oficiales del Pájaro Loco.",
-      "El historial excluye títulos permanentemente. Los matches respetan los criterios exactos.",
-      "Se restauraron las imágenes de eventos y el póster oficial de AHS 13. Las apps instaladas muestran actualizaciones."
+      "El acceso con passkey ya está disponible. Inicia sesión, confirma tu cuenta y añade una passkey en tu perfil. Después, usa Face ID, huella o el PIN de un dispositivo compatible.",
+      "Amigos privados y Match Together a distancia ya están disponibles, con aprobación mutua, estado opcional y avatares ilustrados. Se respetan los filtros y las exclusiones de ambas personas.",
+      "Kids Mode incluye 64 títulos revisados, clásicos, enlaces regionales y portadas siempre disponibles."
     ]
   }
 }
