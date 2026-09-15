@@ -118,33 +118,21 @@
         document.body.appendChild(btn);
     }
 
+    // KIDS MODE IS A PLACE, NOT A STICKY REDIRECT.
+    //
+    // This used to send anyone with the Kids flag set from matchapp.tv
+    // straight to /kids/. The flag is written by the Kids toggle and nothing
+    // ever cleared it, so one tap meant every future visit was hijacked —
+    // permanently, and with no way out, because the main page redirected away
+    // before you could reach the toggle to turn it off. Exempting the PWA
+    // launch was not enough: opening matchapp.tv in a browser still bounced.
+    //
+    // The domain now always opens the main app. Kids is reachable by its own
+    // toggle and its own URL, which is how a mode should work — chosen each
+    // time rather than latched forever. The flag is left in place because
+    // purchase.js uses it to return a buyer to whichever side they came from,
+    // and that is a genuinely useful thing for it to remember.
     function maybeRedirectKidsMode() {
-        let enabled = false;
-        try { enabled = localStorage.getItem(KIDS_MODE_KEY) === 'true'; } catch (e) {}
-        if (!enabled || location.pathname.startsWith('/kids/')) return false;
-
-        // A LAUNCH OF THE INSTALLED APP ALWAYS OPENS THE MAIN PAGE.
-        //
-        // The Kids flag is set by the toggle and nothing ever clears it, so
-        // once tapped it redirected every future visit to /kids/ — including
-        // the launch of the installed app, which is why installing appeared
-        // to "lead to Kids mode automatically". There was also no way back
-        // from the main side, because the main page redirected away before
-        // you could reach the toggle.
-        //
-        // The manifest start_url carries utm_source=pwa, so a deliberate app
-        // launch is identifiable and lands on the main page as the user
-        // expects. Kids mode stays one tap away rather than being a trap.
-        try {
-            if (new URLSearchParams(location.search).get('utm_source') === 'pwa') return false;
-        } catch (e) {}
-        const p = location.pathname.replace(/\/+$/, '') || '/';
-        // Keep settings, account, legal and checkout routes reachable to adults.
-        const kidBoundRoutes = new Set(['/', '/index.html', '/discover.html', '/together.html', '/events-archive.html']);
-        if (kidBoundRoutes.has(p)) {
-            location.replace('/kids/');
-            return true;
-        }
         return false;
     }
 
