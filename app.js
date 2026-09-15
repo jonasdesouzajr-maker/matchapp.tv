@@ -3069,7 +3069,18 @@ function pickFromCatalog(cat, plat, mood, vibe, rating, decade) {
     // after a reload. It is a PREFERENCE rather than a hard exclusion: if
     // honouring it empties the pool, a repeat is better than telling someone
     // nothing matches.
-    const recent = new Set(recentTitles);
+    //
+    // Read defensively: the matching tests evaluate this function in isolation
+    // without app.js's module scope, so a bare reference to recentTitles
+    // throws ReferenceError there. Falling back to localStorage keeps the
+    // function self-sufficient and testable.
+    let recentSource = [];
+    try {
+        recentSource = (typeof recentTitles !== 'undefined' && Array.isArray(recentTitles))
+            ? recentTitles
+            : JSON.parse(localStorage.getItem('match_recentTitles') || '[]');
+    } catch (e) { recentSource = []; }
+    const recent = new Set(recentSource);
     const fresh = CONTENT_CATALOG.filter(e => eligible(e) && !recent.has(e.title));
     const pool = fresh.length ? fresh : CONTENT_CATALOG.filter(eligible);
     if (!pool.length) return null;
