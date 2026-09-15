@@ -4,7 +4,11 @@
   "scripts": {
     "test": "node --test --test-isolation=none tests/*.test.cjs",
     "audit:site": "node tools/audit-site.js && node tools/audit-search.js",
-    "build:kids-covers": "node tools/build-kids-covers.js"
+    "build:kids-covers": "node tools/build-kids-covers.js",
+    "build:seo": "node tools/build-seo-pages.js",
+    "build:watch": "node tools/build-watch-pages.js",
+    "refresh:availability": "node tools/fetch-availability.js",
+    "refresh:catalog-seo": "node tools/build-seo-pages.js && node tools/build-watch-pages.js"
   },
   "devDependencies": {
     "jsdom": "26.1.0",
