@@ -1,9 +1,9 @@
 /* Final production wiring: activate already-reviewed hardening modules without duplicating page markup. */
 (function(){
   'use strict';
-  const V='20260915-final2';
+  const V='20260915-final3';
   const path=location.pathname;
-  function js(src){if(document.querySelector(`script[src^="${src}"]`))return;const s=document.createElement('script');s.src=src+'?v='+V;s.defer=true;document.head.appendChild(s);}
+  function js(src){if(document.querySelector(`script[src^="${src}"]`))return;const s=document.createElement('script');s.src=src+'?v='+V;s.async=false;s.defer=true;document.head.appendChild(s);}
   function style(){if(document.getElementById('matchapp-final-wiring-style'))return;const s=document.createElement('style');s.id='matchapp-final-wiring-style';s.textContent=`
     .brand-app-cluster{position:relative;display:inline-flex;align-items:center;overflow:visible}
     .brand-install-corner{position:absolute!important;right:-.5rem;bottom:-.45rem;z-index:40;min-width:0!important;min-height:26px!important;padding:4px 7px!important;border-radius:999px!important;font-size:9px!important;line-height:1!important;white-space:nowrap!important;box-shadow:0 5px 14px rgba(0,0,0,.36),0 0 0 1px rgba(255,255,255,.12) inset!important}
