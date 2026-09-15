@@ -1,41 +1,8 @@
 // Verified MatchApp billing catalog. USD remains the international default; optional BRL Price IDs are server secrets and are never trusted from the browser.
 export const PRODUCTS: Record<string,{url:string;mode:'payment'|'subscription';amount:number;brl:number}> = {
- ad_free:{url:'https://buy.stripe.com/bJe8wP94lfRQfsycspcfK07',mode:'payment',amount:199,brl:490},
- vip_monthly:{url:'https://buy.stripe.com/bJe7sL6WdfRQ94adwtcfK08',mode:'subscription',amount:499,brl:990},
- vip_annual:{url:'https://buy.stripe.com/8x29ATdkB5dcgwCdwtcfK09',mode:'subscription',amount:3999,brl:7990},
- business:{url:'https://buy.stripe.com/4gM00ja8peNMdkq641cfK0e',mode:'subscription',amount:4900,brl:14990},
- credits_25:{url:'https://buy.stripe.com/14A9ATdkB8po4NU641cfK0a',mode:'payment',amount:299,brl:490},
- credits_75:{url:'https://buy.stripe.com/aFaeVdeoF9ts4NU9gdcfK0b',mode:'payment',amount:699,brl:990},
- credits_200:{url:'https://buy.stripe.com/8x2aEXgwN5dc4NUakhcfK0c',mode:'payment',amount:1499,brl:1990},
- credits_500:{url:'https://buy.stripe.com/5kQcN50xP35494afEBcfK0d',mode:'payment',amount:2999,brl:3490},
- matches_5:{url:'https://buy.stripe.com/28EbJ14fwdPT0Lk9s8gEg05',mode:'payment',amount:99,brl:190},
- matches_25:{url:'https://buy.stripe.com/9B65kDdQ67rvdy68o4gEg06',mode:'payment',amount:299,brl:490},
- matches_50:{url:'https://buy.stripe.com/6oU4gzbHY5jn0Lk5bSgEg07',mode:'payment',amount:499,brl:790}
+ ad_free:{url:'https://buy.stripe.com/bJe8wP94lfRQfsycspcfK07',mode:'payment',amount:199,brl:490},vip_monthly:{url:'https://buy.stripe.com/bJe7sL6WdfRQ94adwtcfK08',mode:'subscription',amount:499,brl:990},vip_annual:{url:'https://buy.stripe.com/8x29ATdkB5dcgwCdwtcfK09',mode:'subscription',amount:3999,brl:7990},business:{url:'https://buy.stripe.com/4gM00ja8peNMdkq641cfK0e',mode:'subscription',amount:4900,brl:14990},credits_25:{url:'https://buy.stripe.com/14A9ATdkB8po4NU641cfK0a',mode:'payment',amount:299,brl:490},credits_75:{url:'https://buy.stripe.com/aFaeVdeoF9ts4NU9gdcfK0b',mode:'payment',amount:699,brl:990},credits_200:{url:'https://buy.stripe.com/8x2aEXgwN5dc4NUakhcfK0c',mode:'payment',amount:1499,brl:1990},credits_500:{url:'https://buy.stripe.com/5kQcN50xP35494afEBcfK0d',mode:'payment',amount:2999,brl:3490},matches_5:{url:'https://buy.stripe.com/28EbJ14fwdPT0Lk9s8gEg05',mode:'payment',amount:99,brl:190},matches_25:{url:'https://buy.stripe.com/9B65kDdQ67rvdy68o4gEg06',mode:'payment',amount:299,brl:490},matches_50:{url:'https://buy.stripe.com/6oU4gzbHY5jn0Lk5bSgEg07',mode:'payment',amount:499,brl:790}
 };
-type CatalogEntry={key:string;link:string|null;price:string;currency:'usd'|'brl';mode:'payment'|'subscription';active:boolean};
-let cached:CatalogEntry[]|null=null;let cacheAt=0;
-const envKey=(key:string)=>'STRIPE_BRL_PRICE_'+key.toUpperCase();
-export async function catalog(stripe:any):Promise<CatalogEntry[]> {
- if(cached&&Date.now()-cacheAt<300000)return cached;
- const links=[];let after:string|undefined;
- for(let page=0;page<20;page++){const r=await stripe.paymentLinks.list({limit:100,...(after?{starting_after:after}:{})});links.push(...r.data);if(!r.has_more)break;after=r.data.at(-1)?.id;}
- const result:CatalogEntry[]=[];
- for(const [key,product] of Object.entries(PRODUCTS)){
-  const link=links.find((l:any)=>l.url===product.url);
-  if(link){const items=await stripe.paymentLinks.listLineItems(link.id,{limit:2,expand:['data.price']});if(!items.has_more&&items.data.length===1&&items.data[0].quantity===1){const price=items.data[0].price;if(price&&price.unit_amount===product.amount&&price.currency==='usd'&&((!!price.recurring)===(product.mode==='subscription')))result.push({key,link:link.id,price:price.id,currency:'usd',mode:product.mode,active:link.active!==false&&price.active!==false});}}
-  const brlId=Deno.env.get(envKey(key));
-  if(brlId&&/^price_[A-Za-z0-9]+$/.test(brlId)){try{const price=await stripe.prices.retrieve(brlId);if(price.active!==false&&price.currency==='brl'&&price.unit_amount===product.brl&&((!!price.recurring)===(product.mode==='subscription')))result.push({key,link:null,price:price.id,currency:'brl',mode:product.mode,active:true});}catch(_){console.error('[billing] Invalid BRL price for '+key);}}
- }
- cached=result;cacheAt=Date.now();return result;
-}
-export async function verifiedCheckout(stripe:any,session:any):Promise<{user:string;product:CatalogEntry}|null>{
- if(session.status!=='complete'||session.payment_status!=='paid'||!session.client_reference_id)return null;
- if(!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(session.client_reference_id))return null;
- const allowed=await catalog(stripe);const items=await stripe.checkout.sessions.listLineItems(session.id,{limit:2,expand:['data.price']});if(items.has_more||items.data.length!==1||items.data[0].quantity!==1)return null;
- const price=items.data[0].price;const product=allowed.find(p=>p.price===price?.id&&p.mode===session.mode&&p.currency===price.currency);if(!product)return null;
- const link=typeof session.payment_link==='string'?session.payment_link:session.payment_link?.id;
- if(product.link&&link!==product.link&&!(session.metadata?.matchapp_product===product.key&&session.metadata?.matchapp_user===session.client_reference_id))return null;
- if(!product.link&&!(session.metadata?.matchapp_product===product.key&&session.metadata?.matchapp_user===session.client_reference_id))return null;
- return {user:session.client_reference_id,product};
-}
+type CatalogEntry={key:string;link:string|null;price:string;currency:'usd'|'brl';mode:'payment'|'subscription';active:boolean};let cached:CatalogEntry[]|null=null;let cacheAt=0;const envKey=(key:string)=>'STRIPE_BRL_PRICE_'+key.toUpperCase();const env=(key:string)=>typeof Deno!=='undefined'&&Deno.env?Deno.env.get(key):undefined;
+export async function catalog(stripe:any):Promise<CatalogEntry[]>{if(cached&&Date.now()-cacheAt<300000)return cached;const links=[];let after:string|undefined;for(let page=0;page<20;page++){const r=await stripe.paymentLinks.list({limit:100,...(after?{starting_after:after}:{})});links.push(...r.data);if(!r.has_more)break;after=r.data.at(-1)?.id;}const result:CatalogEntry[]=[];for(const [key,product] of Object.entries(PRODUCTS)){const link=links.find((l:any)=>l.url===product.url);if(link){const items=await stripe.paymentLinks.listLineItems(link.id,{limit:2,expand:['data.price']});if(!items.has_more&&items.data.length===1&&items.data[0].quantity===1){const price=items.data[0].price;if(price&&price.unit_amount===product.amount&&price.currency==='usd'&&((!!price.recurring)===(product.mode==='subscription')))result.push({key,link:link.id,price:price.id,currency:'usd',mode:product.mode,active:link.active!==false&&price.active!==false});}}const brlId=env(envKey(key));if(brlId&&/^price_[A-Za-z0-9]+$/.test(brlId)){try{const price=await stripe.prices.retrieve(brlId);if(price.active!==false&&price.currency==='brl'&&price.unit_amount===product.brl&&((!!price.recurring)===(product.mode==='subscription')))result.push({key,link:null,price:price.id,currency:'brl',mode:product.mode,active:true});}catch(_){console.error('[billing] Invalid BRL price for '+key);}}}cached=result;cacheAt=Date.now();return result;}
+export async function verifiedCheckout(stripe:any,session:any):Promise<{user:string;product:CatalogEntry}|null>{if(session.status!=='complete'||session.payment_status!=='paid'||!session.client_reference_id)return null;if(!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(session.client_reference_id))return null;const allowed=await catalog(stripe);const items=await stripe.checkout.sessions.listLineItems(session.id,{limit:2,expand:['data.price']});if(items.has_more||items.data.length!==1||items.data[0].quantity!==1)return null;const price=items.data[0].price;const product=allowed.find(p=>p.price===price?.id&&p.mode===session.mode&&p.currency===price.currency);if(!product)return null;const link=typeof session.payment_link==='string'?session.payment_link:session.payment_link?.id;if(product.link&&link!==product.link&&!(session.metadata?.matchapp_product===product.key&&session.metadata?.matchapp_user===session.client_reference_id))return null;if(!product.link&&!(session.metadata?.matchapp_product===product.key&&session.metadata?.matchapp_user===session.client_reference_id))return null;return{user:session.client_reference_id,product};}
 export async function deliver(db:any,session:any,verified:{user:string;product:CatalogEntry}){const {data,error}=await db.rpc('fulfill_stripe_checkout',{p_session_id:session.id,p_user_id:verified.user,p_plan:verified.product.key,p_customer_id:typeof session.customer==='string'?session.customer:null,p_subscription_id:typeof session.subscription==='string'?session.subscription:null});if(error||data?.delivered!==true)throw new Error('Delivery pending');return data;}
