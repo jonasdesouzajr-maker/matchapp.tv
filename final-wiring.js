@@ -1,7 +1,7 @@
 /* Final production wiring: activate reviewed hardening modules without duplicating page markup. */
 (function(){
   'use strict';
-  const V='20260915-final5';
+  const V='20260915-final6';
   const path=location.pathname;
   function js(src){if(document.querySelector(`script[src^="${src}"]`))return;const s=document.createElement('script');s.src=src+'?v='+V;s.async=false;s.defer=true;document.head.appendChild(s);}
   function brand(){
@@ -28,7 +28,7 @@
     brand();style();
     js('/install-corner.js');
     const appPages=path==='/'||path==='/index.html'||path==='/discover.html'||path==='/together.html';
-    if(appPages){js('/production-hardening.js');js('/shown-history.js');}
+    if(appPages){js('/production-hardening.js');js('/shown-history.js');js('/match-speed.js');}
     if(path==='/discover.html')js('/human-conversation.js');
     document.addEventListener('click',quotaRoute,true);
     document.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.closest?.('#quota-badge'))quotaRoute(e);},true);
