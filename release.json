@@ -1,11 +1,11 @@
 {
-  "version": "2026.09.15.1",
+  "version": "2026.09.15.2",
   "date": "2026-09-15",
   "functional": true,
   "notes": {
-    "en": "Match and Kids quota routing is now separated from Ask AI credits. Search metadata is clearer and more accurate, Ask AI gains honest application structured data, and the homepage now surfaces a small set of current entertainment search shortcuts without invented popularity claims.",
-    "pt-BR": "A cota de Matches e do Kids agora fica separada dos créditos do Ask AI. Os metadados de busca estão mais claros e precisos, o Ask AI ganhou dados estruturados honestos de aplicativo e a página inicial mostra atalhos de buscas atuais de entretenimento sem inventar popularidade.",
-    "es": "La cuota de Matches y Kids ahora está separada de los créditos de Ask AI. Los metadatos de búsqueda son más claros y precisos, Ask AI incorpora datos estructurados honestos de aplicación y la portada muestra accesos a búsquedas actuales sin inventar popularidad.",
+    "en": "Matching integrity is hardened: displayed titles are remembered, exact media type is protected, Ask AI filters duplicate or wrong-medium results, and the compact install/update control is now wired into production. Match and Kids quota routing remains separate from Ask AI credits, with current search metadata and structured data kept factual.",
+    "pt-BR": "A integridade dos Matches foi reforçada: títulos já exibidos são lembrados, o tipo correto de mídia é protegido, o Ask AI filtra duplicatas ou resultados do tipo errado e o controle compacto de instalar/atualizar agora está ativo em produção. As cotas de Match e Kids continuam separadas dos créditos do Ask AI.",
+    "es": "Se reforzó la integridad de los Matches: los títulos mostrados quedan recordados, se protege el tipo correcto de contenido, Ask AI filtra duplicados o resultados del medio equivocado y el control compacto de instalación/actualización ya está conectado en producción.",
     "fr": "Les quotas Match et Kids sont désormais séparés des crédits Ask AI. Les métadonnées de recherche sont plus précises, Ask AI dispose de données structurées d’application factuelles et l’accueil propose des raccourcis vers des recherches actuelles sans faux classement.",
     "de": "Match- und Kids-Kontingente sind jetzt von Ask-AI-Guthaben getrennt. Suchmetadaten sind klarer, Ask AI erhält sachliche App-Strukturdaten und die Startseite zeigt aktuelle Suchabkürzungen ohne erfundene Popularitätswerte.",
     "it": "Le quote Match e Kids sono ora separate dai crediti Ask AI. I metadati di ricerca sono più precisi, Ask AI usa dati strutturati dell’app verificabili e la home mostra scorciatoie a ricerche attuali senza classifiche inventate.",
