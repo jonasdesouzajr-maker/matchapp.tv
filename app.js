@@ -2008,6 +2008,11 @@ async function hydrateProfileFromAuth(user) {
                 return merged;
             };
 
+            // Legacy metadata copy. The portfolio is written to the profiles
+            // table now; this is merged first as a recovery path for accounts
+            // saved under the old scheme, and the table copy is merged over it
+            // once the row is read below. Merge, never replace, so neither
+            // source can wipe the other.
             if (Array.isArray(meta.seen_list))     { seenList     = mergeList(seenList, meta.seen_list); }
             if (Array.isArray(meta.saved_list))    { savedList    = mergeList(savedList, meta.saved_list); }
             if (Array.isArray(meta.disliked_list)) { dislikedList = mergeList(dislikedList, meta.disliked_list); }
@@ -2043,6 +2048,36 @@ async function hydrateProfileFromAuth(user) {
         ]).finally(()=>clearTimeout(profileReadTimer));
         if (profileReadError) throw profileReadError;
         if (hydrationEpoch !== profileHydrationEpoch) return null;
+
+        // The portfolio now lives in profiles.saved_list / seen_list /
+        // disliked_list / user_ratings. `existing` is the row the select('*')
+        // above already fetched, so this needs no extra round trip — and
+        // merging here rather than in a second query keeps the hydration to a
+        // single read.
+        if (existing) {
+            try {
+                const merge = (localArr, remoteArr) => {
+                    if (!Array.isArray(remoteArr)) return localArr;
+                    const seen = new Set(localArr.map(i => (i && i.title) || i));
+                    const out = localArr.slice();
+                    for (const r of remoteArr) {
+                        const k = (r && r.title) || r;
+                        if (k && !seen.has(k)) { out.push(r); seen.add(k); }
+                    }
+                    return out;
+                };
+                if (Array.isArray(existing.seen_list))     seenList     = merge(seenList, existing.seen_list);
+                if (Array.isArray(existing.saved_list))    savedList    = merge(savedList, existing.saved_list);
+                if (Array.isArray(existing.disliked_list)) dislikedList = merge(dislikedList, existing.disliked_list);
+                if (existing.user_ratings && typeof existing.user_ratings === 'object') {
+                    userRatings = Object.assign({}, existing.user_ratings, userRatings);
+                }
+                localStorage.setItem('match_seenList', JSON.stringify(seenList));
+                localStorage.setItem('match_savedList', JSON.stringify(savedList));
+                localStorage.setItem('match_dislikedList', JSON.stringify(dislikedList));
+                localStorage.setItem('match_userRatings', JSON.stringify(userRatings));
+            } catch (e) { console.warn('[matchapp] Portfolio merge skipped:', e.message); }
+        }
 
         const patch = {};
         if (googleName && !(existing && existing.full_name)) patch.full_name = googleName;
@@ -3966,18 +4001,52 @@ async function syncListsToDatabase() {
     localStorage.setItem('match_userRatings', JSON.stringify(userRatings));
 
     if (isUserLoggedIn && supabaseClient) {
+        // WRITE TO THE PROFILES TABLE, NOT USER METADATA.
+        //
+        // This previously went to auth.updateUser({data:...}), which stores
+        // everything in auth.users.raw_user_meta_data. That field is capped,
+        // and match_history grows without bound — so as a user built up a
+        // portfolio the whole write eventually started failing. The failure
+        // was caught and console.warn'd, so nothing surfaced: the user kept
+        // saving titles, saw them locally, and lost the lot on the next
+        // device. That is the data loss being reported.
+        //
+        // public.profiles already has saved_list, seen_list, disliked_list
+        // and user_ratings as jsonb columns — they were created in migration
+        // 001 and never written to. Using them removes the size ceiling and
+        // puts the data where the rest of the profile already lives.
         try {
+            const { data: { user } } = await supabaseClient.auth.getUser();
+            if (!user) return;
+
+            const { error } = await supabaseClient.from('profiles').upsert({
+                id: user.id,
+                seen_list: seenList,
+                saved_list: savedList,
+                disliked_list: dislikedList,
+                user_ratings: userRatings
+            }, { onConflict: 'id' });
+
+            if (error) {
+                // Surfaced rather than swallowed. Silent failure here is
+                // exactly how a portfolio disappears without anyone noticing.
+                console.error('[matchapp] Portfolio sync FAILED:', error.message);
+                window.showToast?.('Could not save your list to your account. It is still on this device.', true);
+                return;
+            }
+
+            // Exclusion keys and history stay in metadata: they are bounded by
+            // matchPolicy's own cap and are small, so they do not risk the
+            // ceiling that the portfolio arrays did.
             await supabaseClient.auth.updateUser({
                 data: {
-                    seen_list: seenList,
-                    saved_list: savedList,
-                    disliked_list: dislikedList,
-                    user_ratings: userRatings,
-                    match_exclusion_keys: [...(window.matchPolicy?.known()||[])],
-                    match_history: window.matchPolicy?.history()||[]
+                    match_exclusion_keys: [...(window.matchPolicy?.known() || [])].slice(0, 500),
+                    match_history: (window.matchPolicy?.history() || []).slice(0, 200)
                 }
-            });
-        } catch (e) { console.warn("Portfolio sync deferred:", e); }
+            }).catch(e => console.warn('History sync deferred:', e.message));
+        } catch (e) {
+            console.error('[matchapp] Portfolio sync error:', e.message);
+        }
     }
 }
 
