@@ -1,15 +1,21 @@
 name: Refresh sitemap
+
 on:
   push:
     branches: [main]
     paths:
       - release.json
-      - tools/patch-surgical-seo.js
+  schedule:
+    - cron: '17 4 * * *'
+  workflow_dispatch:
+
 permissions:
   contents: write
+
 concurrency:
   group: matchapp-sitemap-refresh
   cancel-in-progress: true
+
 jobs:
   refresh:
     runs-on: ubuntu-latest
@@ -20,15 +26,15 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
-      - run: node tools/patch-surgical-seo.js
-      - name: Commit verified SEO and GTM fixes
+      - run: node tools/update-sitemap.js
+      - name: Commit sitemap refresh
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html privacy.html terms.html register.html kids/index.html kids/titles tools/build-kids-pages.js
+          git add sitemap.xml
           if git diff --staged --quiet; then
-            echo "Requested files already correct"
+            echo "Sitemap already current"
             exit 0
           fi
-          git commit -m "Apply verified SEO and GTM fixes"
+          git commit -m "Refresh sitemap"
           git push
