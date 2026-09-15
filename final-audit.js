@@ -122,8 +122,19 @@
   }
 
   function organizeProfileIcons(){
-    const map=[['#tab-history','history'],['#tab-watchlater','saved'],['#tab-seenit','seen'],['#tab-audio','audio']];
-    map.forEach(([sel,name])=>{const el=$(sel);if(!el||el.dataset.auditIcon)return;el.dataset.auditIcon='1';const txt=el.innerHTML.replace(/^[\s\S]*?(?=[A-Za-z])/,'');el.innerHTML=icon(name)+'<span class="audit-tab-text">'+txt+'</span>';});
+    const config=[
+      ['#tab-history','history','History',null],
+      ['#tab-watchlater','saved','Watch Later','count-watchlater'],
+      ['#tab-seenit','seen','Seen It','count-seenit'],
+      ['#tab-audio','audio','Audio Library','count-audio']
+    ];
+    config.forEach(([sel,name,label,countId])=>{
+      const el=$(sel);if(!el||el.dataset.auditIcon)return;
+      const count=countId?document.getElementById(countId)?.textContent||'0':null;
+      el.dataset.auditIcon='1';
+      el.innerHTML=icon(name)+'<span class="audit-tab-text">'+label+'</span>'+(countId?' <span id="'+countId+'" class="tab-count">'+esc(count)+'</span>':'');
+      el.setAttribute('aria-label',label+(countId?' — '+count+' items':''));
+    });
     const tileIcons=$$('.identity-icon');['user','mail','globe','cake','star','calendar'].forEach((name,i)=>{if(tileIcons[i])tileIcons[i].innerHTML=icon(name);});
     $$('.icon-btn,.install-btn,.sound-toggle-btn').forEach(el=>{const label=el.getAttribute('aria-label')||el.title||el.textContent.trim();if(label&&!el.title)el.title=label;el.classList.add('audit-action-icon');});
   }
@@ -132,7 +143,11 @@
     if(location.pathname!='/profile/profile.html')return;const root=$('.container > .premium-card');if(!root)return;
     let hero=$('#audit-profile-hero');if(!hero){hero=document.createElement('section');hero.id='audit-profile-hero';hero.className='audit-profile-hero';const extras=$('.identity-extras');root.insertBefore(hero,extras||root.firstChild);}
     let name=localStorage.getItem('match_user_name')||'',email='',avatar=$('#profile-pic-preview')?.src||'',locked=localStorage.getItem('match_profile_locked')==='true';
-    try{const {data:{user}}=await window.supabaseClient?.auth.getUser?.()||{data:{}};if(user){email=user.email||'';name=name||user.user_metadata?.full_name||user.user_metadata?.name||'';}}catch(_){}
+    try{
+      const auth=window.supabaseClient?.auth?.getUser?await window.supabaseClient.auth.getUser():null;
+      const user=auth?.data?.user;
+      if(user){email=user.email||'';name=name||user.user_metadata?.full_name||user.user_metadata?.name||'';}
+    }catch(_){}
     hero.innerHTML='<div class="audit-profile-avatar">'+(avatar?'<img src="'+esc(avatar)+'" alt="">':icon('user'))+'</div><div class="audit-profile-copy"><span class="audit-profile-eyebrow">Private MatchApp profile</span><h1>'+esc(name||'Complete your profile')+'</h1><p>'+esc(email||'Sign in to sync your profile across devices')+'</p><div class="audit-profile-badges"><span>'+icon('lock')+(locked?'Identity protected':'Identity setup required')+'</span><span>'+icon('globe')+'Cross-device sync</span></div></div>';
     const save=$('#save-profile-btn');if(save)save.hidden=locked;
     const core=$('.core-identity-card');if(core)core.classList.toggle('is-locked',locked);
