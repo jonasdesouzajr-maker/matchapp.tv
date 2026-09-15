@@ -7,7 +7,7 @@ const source=fs.readFileSync(path.join(__dirname,'..','marquee-autoplay.js'),'ut
 const build=fs.readFileSync(path.join(__dirname,'..','build-meta.js'),'utf8');
 
 test('Top Titles autoplay fallback is loaded on the homepage and does not treat touch screens as reduced motion',()=>{
-  assert.match(build,/marquee-autoplay\.js\?v=20260915a/);
+  assert.match(build,/marquee-autoplay\.js\?v=20260915b/);
   assert.match(source,/prefers-reduced-motion: reduce/);
   assert.doesNotMatch(source,/max-width:\s*900px/);
   assert.doesNotMatch(source,/pointer:\s*coarse/);
