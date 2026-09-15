@@ -44,8 +44,6 @@
     history = owner ? stored('match_history_' + owner, [], item => item && typeof item.title === 'string' && !!item.title.trim()) : [];
     pending = [];
     if (!owner) return;
-    // The existing owner-only Auth preference flow also preserves exclusions.
-    // These are entertainment preferences, never authorization claims.
     const meta=user.user_metadata||{};
     if(Array.isArray(meta.match_exclusion_keys))meta.match_exclusion_keys.filter(k=>typeof k==='string').forEach(k=>permanent.add(k));
     if(Array.isArray(meta.match_history)){
@@ -62,7 +60,6 @@
       (data.history || []).forEach(i => { const old = byKey.get(key(i.title)); if (!old || i.addedAt > old.addedAt) byKey.set(key(i.title),i); });
       history = [...byKey.values()].sort((a,b) => b.addedAt-a.addedAt);
     }
-    // Migrate every saved/seen/rated title, including older account metadata.
     ['match_savedList','match_seenList','match_dislikedList'].forEach((name,n) => stored(name,[]).forEach(i => remember(typeof i === 'string' ? {title:i} : i,['save','seen','dislike'][n],false)));
     Object.keys(stored('match_userRatings',{})).forEach(title => remember({title},'rated',false));
     persist(); await flush();
@@ -96,23 +93,4 @@
     incompatible:(value,state) => conflicts.some(([a,b]) => (value===a && values(state.mood).includes(b)) || (value===b && values(state.mood).includes(a))),
     attach:user => (ready = attach(user).catch(() => {})), flush});
   window.addEventListener('online', () => flush().catch(() => {}));
-
-  // Billing/quota separation hotfix. app.js historically sends both Match and
-  // Ask AI through consume_ai_action(). Migration 008 made those balances
-  // intentionally independent. Patch the shared Supabase client after app.js
-  // initializes it so Match requests use consume_match(), while Ask AI keeps
-  // its existing RPC and credit path. This is deliberately narrow and can be
-  // removed once the large app.js call site is migrated directly.
-  setTimeout(() => {
-    const client = window.supabaseClient;
-    if (!client || typeof client.rpc !== 'function' || client.__matchQuotaSeparated) return;
-    const rpc = client.rpc.bind(client);
-    client.rpc = function (fn, args, options) {
-      if (fn === 'consume_ai_action' && args && args.p_reason === 'match') {
-        return rpc('consume_match', undefined, options);
-      }
-      return rpc(fn, args, options);
-    };
-    Object.defineProperty(client, '__matchQuotaSeparated', {value:true, configurable:false});
-  }, 0);
 })();
