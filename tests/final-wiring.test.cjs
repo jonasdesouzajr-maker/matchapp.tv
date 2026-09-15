@@ -6,15 +6,20 @@ const root=path.join(__dirname,'..');
 const wiring=fs.readFileSync(path.join(root,'final-wiring.js'),'utf8');
 const hardening=fs.readFileSync(path.join(root,'production-hardening.js'),'utf8');
 const history=fs.readFileSync(path.join(root,'shown-history.js'),'utf8');
+const speed=fs.readFileSync(path.join(root,'match-speed.js'),'utf8');
 
-test('final wiring activates title integrity, no-repeat history and human conversation',()=>{
+test('final wiring activates title integrity, no-repeat history, speed guard and human conversation',()=>{
   assert.match(wiring,/production-hardening\.js/);
   assert.match(wiring,/shown-history\.js/);
+  assert.match(wiring,/match-speed\.js/);
   assert.match(wiring,/human-conversation\.js/);
   assert.match(wiring,/match-packs-section/);
   assert.match(hardening,/Kingdom-class fix/);
   assert.match(hardening,/platform:'any'/);
   assert.match(history,/Shown by MatchApp/);
+  assert.match(speed,/18000/,'stalled matches must have a bounded recovery watchdog');
+  assert.match(speed,/Math\.min\(ms,350\)/,'ready results must not wait on the old theatrical delay');
+  assert.match(speed,/activePromise/,'rapid double taps must not launch competing matches');
 });
 
 test('install corner avoids false security claims',()=>{
