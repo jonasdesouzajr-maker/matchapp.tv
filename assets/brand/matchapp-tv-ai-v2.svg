@@ -1,39 +1,115 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 104" width="600" height="104" role="img" aria-label="MatchApp TV Ai">
-  <title>MatchApp TV Ai</title>
+  <title>MatchApp TV Ai — orbital intelligence wordmark</title>
   <defs>
-    <linearGradient id="core" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#fff7d4"/>
-      <stop offset=".34" stop-color="#e5c158"/>
-      <stop offset=".56" stop-color="#fff2a3"/>
-      <stop offset=".82" stop-color="#b990ff"/>
-      <stop offset="1" stop-color="#f2e8ff"/>
+    <linearGradient id="brandFill" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#fff8da"/>
+      <stop offset=".22" stop-color="#f8dc85"/>
+      <stop offset=".45" stop-color="#e5c158"/>
+      <stop offset=".66" stop-color="#fff2a6"/>
+      <stop offset=".84" stop-color="#d8b8ff"/>
+      <stop offset="1" stop-color="#f8efff"/>
     </linearGradient>
-    <linearGradient id="ai" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#7ff7e8"><animate attributeName="stop-color" values="#7ff7e8;#9dd6ff;#cf98ff;#ffd76c;#7ff7e8" dur="4s" repeatCount="indefinite"/></stop>
-      <stop offset=".5" stop-color="#cf98ff"><animate attributeName="stop-color" values="#cf98ff;#ffd76c;#7ff7e8;#9dd6ff;#cf98ff" dur="4s" repeatCount="indefinite"/></stop>
-      <stop offset="1" stop-color="#ffd76c"><animate attributeName="stop-color" values="#ffd76c;#7ff7e8;#9dd6ff;#cf98ff;#ffd76c" dur="4s" repeatCount="indefinite"/></stop>
+    <linearGradient id="brandEdge" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff6c8"/>
+      <stop offset=".36" stop-color="#e5c158"/>
+      <stop offset=".68" stop-color="#ffdf74"/>
+      <stop offset="1" stop-color="#fff8d7"/>
     </linearGradient>
-    <filter id="softGlow" x="-35%" y="-60%" width="170%" height="220%">
-      <feGaussianBlur stdDeviation="3.2" result="blur"/>
-      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    <linearGradient id="aiFill" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#9afff1">
+        <animate attributeName="stop-color" values="#9afff1;#8fc6ff;#c99bff;#ffe17c;#9afff1" dur="5s" repeatCount="indefinite"/>
+      </stop>
+      <stop offset=".48" stop-color="#94bfff">
+        <animate attributeName="stop-color" values="#94bfff;#d4a4ff;#ffe17c;#8ff7e9;#94bfff" dur="5s" repeatCount="indefinite"/>
+      </stop>
+      <stop offset="1" stop-color="#e4a5ff">
+        <animate attributeName="stop-color" values="#e4a5ff;#ffe17c;#8ff7e9;#8fbfff;#e4a5ff" dur="5s" repeatCount="indefinite"/>
+      </stop>
+    </linearGradient>
+    <linearGradient id="orbitStroke" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#7ff7e8" stop-opacity=".18"/>
+      <stop offset=".28" stop-color="#8fbfff" stop-opacity=".76"/>
+      <stop offset=".54" stop-color="#d4a2ff" stop-opacity=".9"/>
+      <stop offset=".78" stop-color="#e5c158" stop-opacity=".94"/>
+      <stop offset="1" stop-color="#fff5c6" stop-opacity=".2"/>
+    </linearGradient>
+    <radialGradient id="aiHalo" cx="50%" cy="50%" r="56%">
+      <stop offset="0" stop-color="#a788ff" stop-opacity=".28"/>
+      <stop offset=".48" stop-color="#4cced5" stop-opacity=".12"/>
+      <stop offset="1" stop-color="#111018" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="brandGlow" x="-20%" y="-50%" width="140%" height="200%">
+      <feGaussianBlur stdDeviation="1.2" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
+    <filter id="aiGlow" x="-45%" y="-75%" width="190%" height="250%">
+      <feGaussianBlur stdDeviation="3.1" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="starGlow" x="-200%" y="-200%" width="500%" height="500%">
+      <feGaussianBlur stdDeviation="1.6" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <style>
+      .brandType{font-family:"Aptos Display","Segoe UI Variable Display","Segoe UI",Inter,Arial,sans-serif;font-weight:850;font-variation-settings:"wght" 850;}
+      .aiType{font-family:"Aptos Display","Segoe UI Variable Display","Segoe UI",Inter,Arial,sans-serif;font-weight:900;font-variation-settings:"wght" 900;}
+      @media (prefers-reduced-motion: reduce){.motion{display:none}.pulse{opacity:.88}}
+    </style>
   </defs>
 
-  <text x="5" y="76" fill="url(#core)" font-family="Arial Rounded MT Bold,Trebuchet MS,Segoe UI Rounded,Arial,sans-serif" font-size="76" font-weight="900" letter-spacing="-5">MatchApp</text>
-
-  <g transform="translate(382 17)">
-    <text x="0" y="55" fill="#ffffff" font-family="Arial Rounded MT Bold,Trebuchet MS,Arial,sans-serif" font-size="48" font-weight="900" letter-spacing="0">TV
-      <animate attributeName="opacity" values="1;.88;1" dur="3.2s" repeatCount="indefinite"/>
+  <!-- MatchApp: modern display lettering with a moving gold rim, not a heavy glow. -->
+  <g filter="url(#brandGlow)">
+    <text class="brandType" x="5" y="75" fill="url(#brandFill)" stroke="#7d5b19" stroke-opacity=".46" stroke-width="1" paint-order="stroke fill" font-size="69" letter-spacing="-3.7">MatchApp</text>
+    <text class="brandType motion" x="5" y="75" fill="none" stroke="url(#brandEdge)" stroke-width="1.55" stroke-linecap="round" stroke-dasharray="22 118" font-size="69" letter-spacing="-3.7" opacity=".9">
+      MatchApp
+      <animate attributeName="stroke-dashoffset" from="0" to="-280" dur="4.4s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values=".48;.98;.62;.9;.48" dur="4.4s" repeatCount="indefinite"/>
     </text>
   </g>
 
-  <g filter="url(#softGlow)">
-    <text x="476" y="73" fill="url(#ai)" font-family="Trebuchet MS,Arial Black,Arial,sans-serif" font-size="52" font-weight="900" font-style="italic" letter-spacing="-4">Ai</text>
-    <g transform="translate(570 25)">
-      <path d="M0 -9 2.7 -2.7 9 0 2.7 2.7 0 9 -2.7 2.7 -9 0 -2.7 -2.7Z" fill="#8ff7e9">
-        <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="2.8s" repeatCount="indefinite"/>
-        <animate attributeName="opacity" values=".72;1;.72" dur="1.35s" repeatCount="indefinite"/>
-      </path>
+  <!-- TV: slightly tighter and brighter so the full name reads as one title. -->
+  <g transform="translate(322 0)" filter="url(#brandGlow)">
+    <text class="brandType" x="0" y="73" fill="#fff8e4" stroke="#d4aa3e" stroke-opacity=".62" stroke-width="1" paint-order="stroke fill" font-size="47" letter-spacing="-.6">TV</text>
+    <text class="brandType motion" x="0" y="73" fill="none" stroke="#ffe588" stroke-width="1.35" stroke-linecap="round" stroke-dasharray="14 66" font-size="47" letter-spacing="-.6" opacity=".72">
+      TV
+      <animate attributeName="stroke-dashoffset" from="0" to="-160" dur="3.6s" repeatCount="indefinite"/>
+    </text>
+  </g>
+
+  <!-- Ai: MatchApp's own orbital mark. The logo star is the satellite. -->
+  <g transform="translate(397 4)">
+    <ellipse class="pulse" cx="101" cy="48" rx="91" ry="44" fill="url(#aiHalo)" opacity=".74">
+      <animate class="motion" attributeName="opacity" values=".48;.82;.55;.74;.48" dur="3.8s" repeatCount="indefinite"/>
+    </ellipse>
+    <ellipse cx="101" cy="48" rx="78" ry="35" fill="none" stroke="url(#orbitStroke)" stroke-width="1.35" stroke-dasharray="3 5" opacity=".74">
+      <animate class="motion" attributeName="stroke-dashoffset" from="0" to="-64" dur="3.2s" repeatCount="indefinite"/>
+    </ellipse>
+    <ellipse cx="101" cy="48" rx="66" ry="29" fill="none" stroke="#a8fff2" stroke-opacity=".17" stroke-width=".8"/>
+
+    <g filter="url(#aiGlow)">
+      <text class="aiType" x="49" y="72" fill="url(#aiFill)" stroke="#e8fff9" stroke-opacity=".28" stroke-width="1" paint-order="stroke fill" font-size="68" letter-spacing="-4.4">Ai</text>
+      <text class="aiType motion" x="49" y="72" fill="none" stroke="#fff3a8" stroke-width="1.25" stroke-linecap="round" stroke-dasharray="10 64" font-size="68" letter-spacing="-4.4" opacity=".62">
+        Ai
+        <animate attributeName="stroke-dashoffset" from="0" to="-148" dur="2.9s" repeatCount="indefinite"/>
+      </text>
     </g>
+
+    <!-- Elliptical satellite path: rotate in a squashed coordinate system, then counter-scale the star. -->
+    <g class="motion" transform="translate(101 48) rotate(-10) scale(1 .56)">
+      <g>
+        <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="3.15s" repeatCount="indefinite"/>
+        <g transform="translate(80 0) scale(1 1.7857)" filter="url(#starGlow)">
+          <path d="M0 -8.2 2.25 -2.25 8.2 0 2.25 2.25 0 8.2 -2.25 2.25 -8.2 0 -2.25 -2.25Z" fill="#e5c158" stroke="#fff7cf" stroke-width=".9">
+            <animate attributeName="opacity" values=".8;1;.84;1;.8" dur="1.45s" repeatCount="indefinite"/>
+          </path>
+          <circle cx="0" cy="0" r="1.6" fill="#ffffff"/>
+        </g>
+      </g>
+    </g>
+
+    <!-- Tiny capability sparks make the Ai feel active without adding another animation loop. -->
+    <circle class="motion" cx="30" cy="22" r="1.6" fill="#8ff7e9"><animate attributeName="opacity" values=".18;1;.18" dur="2.2s" repeatCount="indefinite"/></circle>
+    <circle class="motion" cx="171" cy="73" r="1.35" fill="#d4a2ff"><animate attributeName="opacity" values="1;.2;1" dur="2.7s" repeatCount="indefinite"/></circle>
+    <path class="motion" d="M158 20h7M161.5 16.5v7" stroke="#ffe58c" stroke-width="1.3" stroke-linecap="round"><animate attributeName="opacity" values=".3;1;.3" dur="1.9s" repeatCount="indefinite"/></path>
   </g>
 </svg>
