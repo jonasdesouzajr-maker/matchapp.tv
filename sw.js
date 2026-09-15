@@ -40,7 +40,7 @@
    installability is unaffected.
    ============================================================ */
 
-const SW_VERSION = 'v12-identity-kids-matches';
+const SW_VERSION = 'v13-runtime-orbital-ai';
 
 self.addEventListener('install', () => {
     // Activate immediately rather than waiting for old tabs to close. This is
