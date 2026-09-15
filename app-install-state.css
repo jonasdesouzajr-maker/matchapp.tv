@@ -1,6 +1,7 @@
 .install-btn.has-app-update{border-color:#ffe18e!important;box-shadow:0 0 0 2px #ffe18e33;color:#ffe18e!important}
-.install-btn.has-app-update::before{content:'●';color:#81eee2;font-size:.75em;margin-inline-end:.45em}
-.install-btn.is-app-installed{opacity:.9}
+.install-btn.has-app-update::before{content:'↻';color:#81eee2;font-size:.9em;margin-inline-end:.45em;font-weight:900}
+.install-btn.is-app-installed{opacity:.95}
+.install-btn.is-app-installed::before{content:'✓';display:inline-grid;place-items:center;width:1.05rem;height:1.05rem;margin-inline-end:.42rem;border-radius:50%;background:#24c86a;color:#07150c;font-size:.72rem;font-weight:1000;box-shadow:0 0 0 2px #24c86a33}
 .match-install-dialog{position:fixed;inset:0;margin:auto;width:min(27rem,calc(100% - 2rem));max-height:90dvh;overflow:auto;border:1px solid #dfbd6d;border-radius:1.3rem;padding:1.5rem;color:white;background:#211430;box-shadow:0 1rem 4rem #0008;font:1rem/1.6 system-ui,sans-serif}
 .match-install-dialog:not([open]){display:none}.match-install-dialog::backdrop{background:#09061ac9}
 .match-install-dialog>.modal-content{position:relative;max-width:none!important;padding:0!important;border:0!important;background:none!important}
@@ -9,6 +10,14 @@
 .match-install-dialog :focus-visible{outline:3px solid #81eee2;outline-offset:4px}
 #quota-badge,#result-quota-corner{text-decoration:none;cursor:pointer}
 #quota-badge:focus-visible,#result-quota-corner:focus-visible{outline:3px solid #81eee2;outline-offset:4px}
+/* Every raster app mark is visually clipped to the intended circular icon so
+   square JPEG/PNG canvas backgrounds never leak into headers or Kids Mode. */
+.matchapp-brand-link>img:not(.matchapp-wordmark),.header-brand-area>img:not(.matchapp-wordmark),.kids-brand>img,.kids-mascot{aspect-ratio:1;border-radius:50%!important;object-fit:cover!important;object-position:center!important;clip-path:circle(49.5% at 50% 50%);background:transparent!important}
+/* Update download feedback belongs directly beneath the app identity. */
+.install-progress{z-index:30;max-width:15rem;margin:.35rem 0 0;pointer-events:none}
+.install-progress-track{height:5px!important;border-radius:999px;box-shadow:0 0 0 1px #dfbd6d55}
+.install-progress-fill{box-shadow:0 0 .7rem #ffe18e99}
+.install-progress-label{display:block;margin-top:.28rem;font:800 .68rem/1.2 system-ui,sans-serif;color:#f5dfa7;letter-spacing:.02em}
 @media(forced-colors:active){.install-btn.has-app-update{outline:3px solid Highlight}.match-install-dialog{border:2px solid CanvasText}}
-
+@media(prefers-reduced-motion:reduce){.install-progress,.install-progress-fill{animation:none!important;transition:none!important}}
 .crit-chip:disabled{opacity:.45;cursor:not-allowed;border-style:dashed}
