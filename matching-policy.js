@@ -89,6 +89,18 @@
     if (sync && owner) flush().catch(() => {});
     document.dispatchEvent(new CustomEvent('matchapp:historychange'));
   }
+  async function forget(title) {
+    const titleKey=key(title); if(!titleKey)return false;
+    permanent.delete(titleKey);
+    history=history.filter(i=>key(i.title)!==titleKey);
+    pending=pending.filter(i=>key(i.title)!==titleKey);
+    persist();
+    if(owner&&window.supabaseClient){
+      try{const {error}=await window.supabaseClient.rpc('portfolio_action',{p_action:'forget',p_payload:{title:String(title).slice(0,300)}});if(error)throw error;}catch(_){return false;}
+    }
+    document.dispatchEvent(new CustomEvent('matchapp:historychange'));
+    return true;
+  }
   function matches(entry, criteria, extra = []) {
     if (!entry || !entry.title || known().has(key(entry.title)) || extra.includes(key(entry.title))) return false;
     const mapping = {cat:'cats',plat:'platform',mood:'moods',vibe:'vibes',rating:'ratings'};
@@ -100,7 +112,7 @@
     if (decades.length && !decades.some(d => { const start = Number(String(d).match(/\d{4}/)?.[0]); return start && Number(entry.year) >= start && Number(entry.year) < start + 10; })) return false;
     return true;
   }
-  window.matchPolicy = Object.freeze({key,values,matches,remember,known,history:()=>history.slice(),ready:()=>ready,incompatible:(value,state) => conflicts.some(([a,b]) => (value===a && values(state.mood).includes(b)) || (value===b && values(state.mood).includes(a))),attach:user => (ready = attach(user).catch(() => {})), flush});
+  window.matchPolicy = Object.freeze({key,values,matches,remember,forget,known,history:()=>history.slice(),ready:()=>ready,incompatible:(value,state) => conflicts.some(([a,b]) => (value===a && values(state.mood).includes(b)) || (value===b && values(state.mood).includes(a))),attach:user => (ready = attach(user).catch(() => {})), flush});
   window.addEventListener('online', () => flush().catch(() => {}));
   setTimeout(() => {
     const client = window.supabaseClient;
