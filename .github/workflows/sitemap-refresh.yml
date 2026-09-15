@@ -3,7 +3,7 @@ on:
   push:
     branches: [main]
     paths:
-      - release.json
+      - tools/scope-kids-gtm.js
 permissions:
   contents: write
 concurrency:
@@ -19,15 +19,12 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
-      - run: node tools/update-sitemap.js
-      - name: Commit refreshed sitemap
+      - run: node tools/scope-kids-gtm.js
+      - name: Commit generator scope fix
         run: |
-          if git diff --quiet -- sitemap.xml; then
-            echo "Sitemap already current"
-            exit 0
-          fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add sitemap.xml
-          git commit -m "Refresh sitemap for current release"
+          git add tools/build-kids-pages.js
+          if git diff --staged --quiet; then exit 0; fi
+          git commit -m "Scope Kids GTM generation to title pages"
           git push
