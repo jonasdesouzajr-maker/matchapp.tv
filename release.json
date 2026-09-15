@@ -1,21 +1,21 @@
 {
-  "version": "2026.09.15.7",
+  "version": "2026.09.15.8",
   "date": "2026-09-15",
   "functional": true,
   "notes": {
-    "en": "Cross-device stability fix: removed a document-wide text observer that could repeatedly rescan the page and stall animations, title rails and interactions on phones, tablets, desktops and TVs.",
-    "pt-BR": "Correção de estabilidade em todos os dispositivos: removemos um observador global de texto que podia varrer a página repetidamente e travar animações, trilhos de títulos e interações em celulares, tablets, computadores e TVs.",
-    "es": "Corrección de estabilidad entre dispositivos: se eliminó un observador global de texto que podía volver a escanear la página repetidamente y bloquear animaciones, carruseles de títulos e interacciones en móviles, tabletas, ordenadores y televisores.",
-    "fr": "Correctif de stabilité multi-appareils : suppression d’un observateur global du texte qui pouvait rescanner la page en boucle et bloquer animations, rails de titres et interactions sur téléphones, tablettes, ordinateurs et TV.",
-    "de": "Geräteübergreifende Stabilitätskorrektur: Ein seitenweiter Text-Beobachter wurde entfernt, der wiederholte Vollscans auslösen und Animationen, Titelreihen und Interaktionen auf Handy, Tablet, Desktop und TV blockieren konnte.",
-    "it": "Correzione di stabilità su tutti i dispositivi: rimosso un osservatore globale del testo che poteva riesaminare ripetutamente la pagina e bloccare animazioni, caroselli dei titoli e interazioni su telefoni, tablet, desktop e TV.",
-    "tr": "Cihazlar arası kararlılık düzeltmesi: sayfayı sürekli yeniden tarayarak telefon, tablet, masaüstü ve TV’de animasyonları, başlık akışlarını ve etkileşimleri kilitleyebilen genel metin gözlemcisi kaldırıldı.",
-    "ru": "Исправлена стабильность на всех устройствах: удалён глобальный наблюдатель текста, который мог постоянно пересканировать страницу и зависать анимации, ленты заголовков и взаимодействие на телефонах, планшетах, ПК и ТВ.",
-    "ar": "إصلاح للاستقرار عبر جميع الأجهزة: تمت إزالة مراقب نص عام كان يمكنه إعادة فحص الصفحة باستمرار وتعطيل الرسوم المتحركة ومسارات العناوين والتفاعل على الهواتف والأجهزة اللوحية وأجهزة الكمبيوتر والتلفاز.",
-    "hi": "सभी डिवाइस पर स्थिरता सुधार: पूरे पेज के टेक्स्ट को लगातार देखने वाला observer हटाया गया, जो बार-बार full-page scan करके फोन, टैबलेट, डेस्कटॉप और TV पर animations, title rails और interactions को रोक सकता था।",
-    "id": "Perbaikan stabilitas lintas perangkat: pengamat teks seluruh dokumen yang dapat memindai ulang halaman berulang kali dan membuat animasi, rel judul, serta interaksi macet di ponsel, tablet, desktop, dan TV telah dihapus.",
-    "ja": "全デバイス向けの安定性修正です。ページ全体のテキスト変化を監視して何度も再走査し、スマートフォン・タブレット・PC・TVでアニメーションやタイトルレール、操作を停止させる可能性があった処理を削除しました。",
-    "ko": "모든 기기 안정성 수정: 문서 전체 텍스트 변경을 감시하며 페이지를 반복 스캔해 휴대폰, 태블릿, 데스크톱, TV에서 애니메이션·타이틀 레일·상호작용을 멈출 수 있던 전역 관찰자를 제거했습니다.",
-    "zh": "跨设备稳定性修复：移除了会持续监听整页文本变化并反复扫描页面的观察器，避免手机、平板、桌面和电视上的动画、标题滚动和交互被卡住。"
+    "en": "Emergency startup stability fix: removed the continuous full-screen canvas renderer, replaced the Top Titles 60 FPS fallback with a low-duty controller, and prevented the legacy 16 ms rail driver from repainting the same carousel.",
+    "pt-BR": "Correção urgente de estabilidade na inicialização: removemos o renderizador contínuo de tela inteira, trocamos o carrossel de Top Titles em 60 FPS por um controlador leve e impedimos o driver legado de 16 ms de repintar o mesmo carrossel.",
+    "es": "Corrección urgente de estabilidad al iniciar: se eliminó el renderizado continuo a pantalla completa, se sustituyó el carrusel Top Titles de 60 FPS por un controlador ligero y se bloqueó el controlador heredado de 16 ms que repintaba el mismo carrusel.",
+    "fr": "Correctif urgent de stabilité au démarrage : suppression du rendu continu plein écran, remplacement du rail Top Titles à 60 FPS par un contrôleur léger et blocage de l’ancien pilote 16 ms qui repeignait le même carrousel.",
+    "de": "Dringender Start-Stabilitätsfix: Der kontinuierliche Vollbild-Renderer wurde entfernt, der 60-FPS-Top-Titles-Lauf durch eine leichte Steuerung ersetzt und der alte 16-ms-Treiber daran gehindert, dasselbe Karussell ständig neu zu zeichnen.",
+    "it": "Correzione urgente della stabilità all'avvio: rimosso il renderer continuo a schermo intero, sostituito il carosello Top Titles a 60 FPS con un controller leggero e bloccato il driver legacy da 16 ms che ridisegnava lo stesso carosello.",
+    "tr": "Acil başlangıç kararlılığı düzeltmesi: sürekli tam ekran çizim kaldırıldı, 60 FPS Top Titles akışı düşük yükte bir denetleyiciyle değiştirildi ve eski 16 ms sürücünün aynı karuseli sürekli yeniden çizmesi engellendi.",
+    "ru": "Срочное исправление зависаний при запуске: убран постоянный полноэкранный рендеринг, 60-FPS прокрутка Top Titles заменена лёгким контроллером, а старый 16-мс драйвер больше не перерисовывает тот же карусельный блок.",
+    "ar": "إصلاح عاجل لاستقرار بدء التشغيل: تمت إزالة الرسم المستمر بملء الشاشة، واستبدال تمرير Top Titles بسرعة 60 إطارًا بوحدة تحكم خفيفة، ومنع المشغل القديم كل 16 مللي ثانية من إعادة رسم نفس الشريط باستمرار.",
+    "hi": "तत्काल startup stability सुधार: लगातार full-screen canvas rendering हटाया गया, 60 FPS Top Titles rail को low-duty controller से बदला गया, और पुराने 16 ms rail driver को उसी carousel को लगातार repaint करने से रोका गया।",
+    "id": "Perbaikan darurat stabilitas saat mulai: renderer layar penuh terus-menerus dihapus, Top Titles 60 FPS diganti pengendali ringan, dan driver lama 16 ms dicegah menggambar ulang carousel yang sama terus-menerus.",
+    "ja": "起動時フリーズの緊急修正です。常時動作する全画面描画を停止し、Top Titles の60FPSスクロールを低負荷制御に置き換え、旧16msドライバーが同じカルーセルを連続再描画しないようにしました。",
+    "ko": "긴급 시작 안정성 수정: 지속적인 전체 화면 렌더링을 제거하고 Top Titles 60FPS 스크롤을 저부하 제어기로 교체했으며, 기존 16ms 드라이버가 같은 캐러셀을 계속 다시 그리지 못하도록 했습니다.",
+    "zh": "紧急启动稳定性修复：移除持续运行的全屏渲染，将 Top Titles 的 60 FPS 滚动改为低负载控制器，并阻止旧的 16 毫秒驱动持续重绘同一轮播区。"
   }
 }
