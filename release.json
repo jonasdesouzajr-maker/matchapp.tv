@@ -1,21 +1,21 @@
 {
-  "version": "2026.09.15.5",
+  "version": "2026.09.15.6",
   "date": "2026-09-15",
   "functional": true,
   "notes": {
-    "en": "Faster, steadier MatchApp: fixed a browser-freezing result scan loop, bounded slow title verification, and introduced the larger orbital MatchApp TV Ai wordmark with the MatchApp star circling the Ai mark.",
-    "pt-BR": "MatchApp mais rápido e estável: corrigimos um ciclo de verificação de resultados que podia travar o navegador, limitamos verificações lentas de títulos e lançamos a nova marca MatchApp TV Ai maior, com a estrela do MatchApp orbitando o Ai.",
-    "es": "MatchApp ahora es más rápido y estable: corregimos un bucle de resultados que podía bloquear el navegador, limitamos verificaciones lentas de títulos y estrenamos la marca MatchApp TV Ai más grande con la estrella orbitando el Ai.",
-    "fr": "MatchApp est plus rapide et plus stable : une boucle d’analyse pouvant bloquer le navigateur a été corrigée, les vérifications de titres lentes sont désormais limitées et le nouveau mot-symbole MatchApp TV Ai affiche une étoile en orbite autour de Ai.",
-    "de": "MatchApp ist jetzt schneller und stabiler: Eine Browser-blockierende Prüfschleife wurde behoben, langsame Titelprüfungen sind begrenzt und die größere MatchApp-TV-Ai-Wortmarke zeigt nun den MatchApp-Stern im Orbit um Ai.",
-    "it": "MatchApp è ora più veloce e stabile: corretto un ciclo di scansione che poteva bloccare il browser, limitate le verifiche lente dei titoli e introdotto il nuovo wordmark MatchApp TV Ai più grande con la stella in orbita attorno ad Ai.",
-    "tr": "MatchApp artık daha hızlı ve kararlı: tarayıcıyı kilitleyebilen sonuç tarama döngüsü düzeltildi, yavaş başlık kontrolleri sınırlandı ve MatchApp yıldızının Ai çevresinde döndüğü daha büyük MatchApp TV Ai logosu eklendi.",
-    "ru": "MatchApp стал быстрее и стабильнее: исправлен цикл проверки результатов, способный зависать в браузере, ограничены медленные проверки названий и добавлена увеличенная надпись MatchApp TV Ai со звездой на орбите вокруг Ai.",
-    "ar": "أصبح MatchApp أسرع وأكثر استقرارًا: تم إصلاح حلقة فحص كانت قد تجمد المتصفح، وتم تقييد عمليات التحقق البطيئة من العناوين، وإطلاق شعار MatchApp TV Ai الأكبر مع نجمة MatchApp تدور حول Ai.",
-    "hi": "MatchApp अब तेज़ और अधिक स्थिर है: ब्राउज़र को रोक सकने वाला result-scan loop ठीक किया गया, धीमी title verification को सीमित किया गया, और बड़ा MatchApp TV Ai wordmark जोड़ा गया जिसमें MatchApp का तारा Ai की परिक्रमा करता है।",
-    "id": "MatchApp kini lebih cepat dan stabil: loop pemindaian hasil yang dapat membuat browser macet telah diperbaiki, verifikasi judul yang lambat dibatasi, dan wordmark MatchApp TV Ai yang lebih besar kini menampilkan bintang MatchApp mengorbit Ai.",
-    "ja": "MatchAppを高速・安定化しました。ブラウザーを固まらせる可能性のあった結果スキャンのループを修正し、遅いタイトル確認に上限を設け、MatchAppの星がAiの周囲を回る大型のMatchApp TV Aiワードマークを導入しました。",
-    "ko": "MatchApp이 더 빠르고 안정적으로 개선되었습니다. 브라우저를 멈추게 할 수 있던 결과 스캔 루프를 수정하고 느린 제목 검증 시간을 제한했으며, MatchApp 별이 Ai 주위를 도는 더 큰 MatchApp TV Ai 워드마크를 적용했습니다.",
-    "zh": "MatchApp 现已更快、更稳定：修复了可能导致浏览器卡死的结果扫描循环，限制了慢速片名校验，并启用了更大的 MatchApp TV Ai 动态字标，让 MatchApp 星标环绕 Ai 运转。"
+    "en": "Faster matching: ready results no longer wait on the old 13.5-second presentation timer, rapid double taps are guarded, and an 18-second recovery watchdog returns control if a match stalls.",
+    "pt-BR": "Matching mais rápido: resultados prontos não esperam mais o antigo temporizador de 13,5 segundos, toques duplos rápidos são bloqueados e um watchdog de 18 segundos devolve o controle caso uma busca trave.",
+    "es": "Matching más rápido: los resultados listos ya no esperan el antiguo temporizador de 13,5 segundos, se bloquean los dobles toques rápidos y un watchdog de 18 segundos devuelve el control si una búsqueda se bloquea.",
+    "fr": "Matching plus rapide : les résultats prêts n’attendent plus l’ancien délai de 13,5 secondes, les doubles clics rapides sont bloqués et un watchdog de 18 secondes rend le contrôle si une recherche se bloque.",
+    "de": "Schnelleres Matching: fertige Ergebnisse warten nicht mehr auf die alte 13,5-Sekunden-Anzeige, schnelle Doppelklicks werden abgefangen und ein 18-Sekunden-Watchdog gibt bei einem Hänger die Kontrolle zurück.",
+    "it": "Matching più veloce: i risultati pronti non attendono più il vecchio timer di 13,5 secondi, i doppi tocchi rapidi vengono bloccati e un watchdog di 18 secondi restituisce il controllo se una ricerca si blocca.",
+    "tr": "Daha hızlı eşleştirme: hazır sonuçlar artık eski 13,5 saniyelik sunum beklemesini kullanmıyor, hızlı çift dokunuşlar engelleniyor ve 18 saniyelik watchdog bir eşleşme takılırsa kontrolü geri veriyor.",
+    "ru": "Более быстрый подбор: готовые результаты больше не ждут старый 13,5-секундный таймер, быстрые двойные нажатия блокируются, а 18-секундный watchdog возвращает управление при зависании поиска.",
+    "ar": "مطابقة أسرع: لم تعد النتائج الجاهزة تنتظر مؤقت العرض القديم البالغ 13.5 ثانية، ويتم منع النقرات المزدوجة السريعة، ويعيد مراقب مدته 18 ثانية التحكم إذا علقت عملية المطابقة.",
+    "hi": "Matching अब तेज़ है: तैयार परिणाम पुराने 13.5-सेकंड presentation timer का इंतज़ार नहीं करते, तेज़ double taps रोके जाते हैं, और 18-सेकंड watchdog match अटकने पर UI का नियंत्रण वापस देता है।",
+    "id": "Matching lebih cepat: hasil yang sudah siap tidak lagi menunggu timer presentasi lama 13,5 detik, ketukan ganda cepat dicegah, dan watchdog 18 detik mengembalikan kontrol jika proses match macet.",
+    "ja": "マッチングを高速化しました。結果が準備できた後に旧13.5秒の演出待ちを行わず、連続タップを防止し、処理が止まった場合は18秒のウォッチドッグで画面操作を復帰します。",
+    "ko": "매칭이 더 빨라졌습니다. 준비된 결과는 더 이상 기존 13.5초 연출 타이머를 기다리지 않으며, 빠른 중복 탭을 막고, 매칭이 멈추면 18초 watchdog이 화면 제어를 복구합니다.",
+    "zh": "匹配速度更快：结果就绪后不再等待旧的13.5秒展示计时器，快速重复点击会被拦截；如果匹配卡住，18秒看门狗会恢复页面控制。"
   }
 }
