@@ -1,21 +1,21 @@
 {
-  "version": "2026.09.14.7",
-  "date": "2026-09-14",
+  "version": "2026.09.15.1",
+  "date": "2026-09-15",
   "functional": true,
   "notes": {
-    "en": "Profile identities now save and stay locked across sign-ins. Meet the new MatchApp TV Ai lettering and round Kids button. Kids titles open full matches with synopsis, viewing links, sharing and history. Each opened match uses your account or guest allowance; sharing and saving do not use another match.",
-    "pt-BR": "A identidade do perfil agora é salva e permanece bloqueada após entrar novamente. Novas letras MatchApp TV Ai e botão Kids com logo redondo. Títulos Kids abrem matches completos com sinopse, onde assistir, compartilhamento e histórico. Cada match aberto usa a cota da conta ou de visitante; compartilhar e salvar não gastam outro match.",
-    "es": "La identidad del perfil se guarda y permanece bloqueada al volver a entrar. Nuevo logotipo MatchApp TV Ai y botón Kids redondo. Los títulos Kids abren matches completos con sinopsis, enlaces, compartir e historial. Abrir un match usa tu cupo; compartir y guardar no usa otro.",
-    "fr": "L’identité enregistrée reste verrouillée après reconnexion. Nouveau lettrage MatchApp TV Ai et bouton Kids rond. Les titres Kids ouvrent un match avec résumé, liens, partage et historique. Chaque ouverture utilise un match ; partager et enregistrer n’en utilise pas un autre.",
-    "de": "Gespeicherte Profildaten bleiben nach der Anmeldung gesperrt. Neuer MatchApp TV Ai Schriftzug und runder Kids-Button. Kids-Titel öffnen vollständige Matches mit Inhalt, Streaminglinks, Teilen und Verlauf. Öffnen nutzt ein Match; Teilen und Speichern kein weiteres.",
-    "it": "L’identità salvata resta bloccata dopo il nuovo accesso. Nuova scritta MatchApp TV Ai e pulsante Kids rotondo. I titoli Kids aprono match con trama, link, condivisione e cronologia. Aprire usa un match; condividere e salvare non ne usa un altro.",
-    "tr": "Kaydedilen kimlik tekrar girişte kilitli kalır. Yeni MatchApp TV Ai yazısı ve yuvarlak Kids düğmesi. Çocuk yapımları özet, izleme bağlantıları, paylaşım ve geçmiş içeren eşleşmeler açar. Açmak bir hak kullanır; paylaşmak ve kaydetmek ek hak kullanmaz.",
-    "ru": "Сохранённые данные профиля остаются заблокированными после входа. Новая надпись MatchApp TV Ai и круглая кнопка Kids. Детские подборки содержат описание, ссылки, историю и возможность поделиться. Открытие тратит один подбор; сохранение и отправка — без дополнительных списаний.",
-    "ar": "تبقى هوية الملف المحفوظة مقفلة بعد تسجيل الدخول مجددًا. تصميم جديد لاسم MatchApp TV Ai وزر أطفال دائري. تفتح العناوين ملخصًا وروابط مشاهدة ومشاركة وسجلًا. الفتح يستخدم مطابقة واحدة؛ الحفظ والمشاركة لا يستهلكان مطابقة إضافية.",
-    "hi": "सहेजी गई पहचान दोबारा साइन इन करने पर भी लॉक रहती है। नया MatchApp TV Ai नाम और गोल Kids बटन। बच्चों के शीर्षक कहानी, देखने के लिंक, साझा करने और इतिहास के साथ खुलते हैं। खोलने में एक मैच लगता है; साझा करने और सहेजने में अतिरिक्त मैच नहीं लगता।",
-    "id": "Identitas tersimpan tetap terkunci saat masuk kembali. Tulisan MatchApp TV Ai dan tombol Kids bulat yang baru. Judul Kids membuka sinopsis, tautan tontonan, berbagi dan riwayat. Membuka memakai satu match; berbagi dan menyimpan tidak memakai match tambahan.",
-    "ja": "保存したプロフィールは再ログイン後もロックされます。新しいMatchApp TV Aiの文字と丸いKidsボタン。作品を開くとあらすじ、視聴リンク、共有、履歴が表示されます。開くたびに1マッチを使用し、共有と保存では追加使用しません。",
-    "ko": "저장한 프로필은 다시 로그인해도 잠긴 상태로 유지됩니다. 새 MatchApp TV Ai 글자와 둥근 Kids 버튼. 작품을 열면 줄거리, 시청 링크, 공유와 기록이 표시됩니다. 열 때 매치 1회를 사용하며 공유와 저장에는 추가 차감이 없습니다.",
-    "zh": "保存的身份资料在重新登录后保持锁定。全新MatchApp TV Ai字标和圆形Kids按钮。儿童作品打开后显示剧情、观看链接、分享和历史记录。打开消耗一次匹配；分享和保存不额外消耗。"
+    "en": "Match and Kids quota routing is now separated from Ask AI credits. Search metadata is clearer and more accurate, Ask AI gains honest application structured data, and the homepage now surfaces a small set of current entertainment search shortcuts without invented popularity claims.",
+    "pt-BR": "A cota de Matches e do Kids agora fica separada dos créditos do Ask AI. Os metadados de busca estão mais claros e precisos, o Ask AI ganhou dados estruturados honestos de aplicativo e a página inicial mostra atalhos de buscas atuais de entretenimento sem inventar popularidade.",
+    "es": "La cuota de Matches y Kids ahora está separada de los créditos de Ask AI. Los metadatos de búsqueda son más claros y precisos, Ask AI incorpora datos estructurados honestos de aplicación y la portada muestra accesos a búsquedas actuales sin inventar popularidad.",
+    "fr": "Les quotas Match et Kids sont désormais séparés des crédits Ask AI. Les métadonnées de recherche sont plus précises, Ask AI dispose de données structurées d’application factuelles et l’accueil propose des raccourcis vers des recherches actuelles sans faux classement.",
+    "de": "Match- und Kids-Kontingente sind jetzt von Ask-AI-Guthaben getrennt. Suchmetadaten sind klarer, Ask AI erhält sachliche App-Strukturdaten und die Startseite zeigt aktuelle Suchabkürzungen ohne erfundene Popularitätswerte.",
+    "it": "Le quote Match e Kids sono ora separate dai crediti Ask AI. I metadati di ricerca sono più precisi, Ask AI usa dati strutturati dell’app verificabili e la home mostra scorciatoie a ricerche attuali senza classifiche inventate.",
+    "tr": "Match ve Kids kotası artık Ask AI kredilerinden ayrıdır. Arama meta verileri daha nettir, Ask AI doğrulanabilir uygulama yapılandırılmış verisi kullanır ve ana sayfa uydurma popülerlik iddiaları olmadan güncel arama kısayolları gösterir.",
+    "ru": "Лимиты Match и Kids теперь отделены от кредитов Ask AI. Поисковые метаданные уточнены, Ask AI получил достоверную структурированную разметку приложения, а главная страница показывает актуальные поисковые темы без выдуманных рейтингов.",
+    "ar": "أصبحت حصة Match وKids منفصلة عن أرصدة Ask AI. تم تحسين بيانات البحث، وإضافة بيانات تطبيق منظمة وواقعية إلى Ask AI، وتعرض الصفحة الرئيسية اختصارات لعمليات بحث ترفيهية حالية من دون ادعاءات شعبية مختلقة.",
+    "hi": "Match और Kids कोटा अब Ask AI क्रेडिट से अलग है। खोज मेटाडेटा अधिक स्पष्ट है, Ask AI में तथ्यात्मक ऐप structured data जोड़ा गया है, और होमपेज बिना बनावटी लोकप्रियता दावों के मौजूदा मनोरंजन खोज शॉर्टकट दिखाता है।",
+    "id": "Kuota Match dan Kids kini terpisah dari kredit Ask AI. Metadata pencarian lebih akurat, Ask AI memiliki data terstruktur aplikasi yang faktual, dan beranda menampilkan pintasan pencarian hiburan terkini tanpa klaim popularitas buatan.",
+    "ja": "MatchとKidsの利用枠をAsk AIクレジットから分離しました。検索メタデータをより正確にし、Ask AIに事実ベースのアプリ構造化データを追加。ホームには人気を捏造せず、現在のエンタメ検索ショートカットを表示します。",
+    "ko": "Match 및 Kids 한도가 Ask AI 크레딧과 분리되었습니다. 검색 메타데이터를 더 정확하게 다듬고 Ask AI에 사실 기반 앱 구조화 데이터를 추가했으며, 홈에는 과장된 인기 주장 없이 현재 엔터테인먼트 검색 바로가기를 표시합니다.",
+    "zh": "Match 与 Kids 配额现已和 Ask AI 积分分离。搜索元数据更加准确，Ask AI 增加了真实的应用结构化数据，首页展示当前娱乐搜索快捷入口，不虚构热度或排名。"
   }
 }
