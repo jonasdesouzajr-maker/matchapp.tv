@@ -1,21 +1,14 @@
 name: Refresh sitemap
-
 on:
   push:
     branches: [main]
     paths:
       - release.json
-  schedule:
-    - cron: '17 4 * * *'
-  workflow_dispatch:
-
 permissions:
   contents: write
-
 concurrency:
   group: matchapp-sitemap-refresh
   cancel-in-progress: true
-
 jobs:
   refresh:
     runs-on: ubuntu-latest
@@ -27,14 +20,14 @@ jobs:
         with:
           node-version: '24'
       - run: node tools/update-sitemap.js
-      - name: Commit sitemap refresh
+      - name: Commit refreshed sitemap
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add sitemap.xml
-          if git diff --staged --quiet; then
+          if git diff --quiet -- sitemap.xml; then
             echo "Sitemap already current"
             exit 0
           fi
-          git commit -m "Refresh sitemap"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add sitemap.xml
+          git commit -m "Refresh sitemap for current release"
           git push
