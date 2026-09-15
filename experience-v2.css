@@ -1,0 +1,160 @@
+/* MatchApp experience upgrade: brand, header, install/update emphasis */
+
+/* Remove the square/card treatment around the brand image while keeping the
+   artwork itself intact. The image is clipped to the logo circle, so only the
+   circular mark (play/star artwork inside it) is visible. */
+html .matchapp-circle-logo,
+html .app-header .brand-logo,
+html img[src$="/logo.jpeg"],
+html img[src*="/logo.jpeg?"]{
+  width:3.35rem!important;
+  height:3.35rem!important;
+  object-fit:cover!important;
+  object-position:center!important;
+  border:0!important;
+  border-radius:50%!important;
+  clip-path:circle(49% at 50% 50%)!important;
+  background:transparent!important;
+  box-shadow:0 0 0 1px rgba(229,193,88,.32),0 7px 22px rgba(0,0,0,.32),0 0 24px rgba(229,193,88,.10)!important;
+  transform:none;
+}
+html .matchapp-brand-link picture{background:transparent!important;border:0!important;box-shadow:none!important;border-radius:50%!important;overflow:visible!important}
+html .matchapp-brand-link:hover .matchapp-circle-logo{transform:translateY(-1px) rotate(-3deg) scale(1.035)!important}
+
+/* Replace the static SVG lettering visually with a live entertainment
+   wordmark while retaining the original asset in the DOM for fallback. */
+.matchapp-wordmark-source{display:none!important}
+.app-title-main:has(.matchapp-live-wordmark){display:block!important;overflow:visible!important;line-height:1!important;background:none!important}
+.matchapp-live-wordmark{
+  display:inline-flex;align-items:baseline;gap:.18em;position:relative;white-space:nowrap;
+  font-family:"Arial Rounded MT Bold","Trebuchet MS","Segoe UI Rounded","Aptos Display",system-ui,sans-serif;
+  font-weight:900;letter-spacing:-.045em;line-height:.92;
+  filter:drop-shadow(0 3px 10px rgba(0,0,0,.35));
+  transform-origin:left center;
+  animation:maBrandBreathe 5.2s ease-in-out infinite;
+}
+.ma-core{
+  font-size:clamp(1.72rem,2.35vw,2.48rem);
+  background:linear-gradient(110deg,#fff7d4 0%,#e5c158 34%,#fff2a3 52%,#b990ff 86%,#f2e8ff 100%);
+  background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:maCoreSweep 7s linear infinite;
+}
+.ma-tv{
+  margin-left:.08em;font-size:clamp(1.25rem,1.7vw,1.85rem);letter-spacing:.02em;
+  color:#fff;text-shadow:0 0 7px rgba(255,255,255,.38),0 0 17px rgba(107,63,160,.6);
+  transform:skewX(-7deg) rotate(-1deg);
+  animation:maTvPop 3.2s ease-in-out infinite;
+}
+.ma-ai{
+  position:relative;font-family:"Trebuchet MS","Arial Black","Aptos Display",system-ui,sans-serif;
+  font-size:clamp(1.3rem,1.85vw,1.98rem);font-weight:1000;letter-spacing:-.08em;
+  background:linear-gradient(100deg,#7ff7e8,#9dd6ff,#cf98ff,#ffd76c,#7ff7e8);
+  background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;
+  text-shadow:0 0 14px rgba(126,247,232,.16);
+  animation:maAiFlow 2.4s linear infinite,maAiFloat 2.8s ease-in-out infinite;
+}
+.ma-ai-spark{
+  align-self:flex-start;margin-left:-.06em;margin-top:-.12em;font-size:clamp(.72rem,1vw,1rem);color:#8ff7e9;
+  text-shadow:0 0 8px #8ff7e9,0 0 18px #7e72ff,0 0 28px rgba(229,193,88,.7);
+  transform-origin:50% 155%;animation:maSparkOrbit 2.8s linear infinite,maSparkPulse 1.35s ease-in-out infinite;
+}
+@keyframes maCoreSweep{0%{background-position:210% 0}100%{background-position:-20% 0}}
+@keyframes maBrandBreathe{0%,100%{transform:translateY(0)}50%{transform:translateY(-1.5px)}}
+@keyframes maTvPop{0%,100%{filter:brightness(1);transform:skewX(-7deg) rotate(-1deg) scale(1)}50%{filter:brightness(1.18);transform:skewX(-7deg) rotate(-1deg) scale(1.035)}}
+@keyframes maAiFlow{0%{background-position:0 0}100%{background-position:300% 0}}
+@keyframes maAiFloat{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-2px) rotate(1deg)}}
+@keyframes maSparkOrbit{to{transform:rotate(360deg)}}
+@keyframes maSparkPulse{0%,100%{opacity:.72;filter:brightness(1)}50%{opacity:1;filter:brightness(1.5)}}
+
+/* Header: clear brand zone + calm, evenly-spaced control zone. */
+html .app-header-v2{
+  display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;align-items:center!important;
+  column-gap:1.25rem!important;row-gap:.65rem!important;padding:1rem 1.25rem!important;
+  border-radius:1.6rem!important;
+}
+html .app-header-v2 .header-brand-area{min-width:0!important;max-width:100%;overflow:visible!important}
+html .app-header-v2 .header-controls-v2{
+  display:flex!important;align-items:center!important;justify-content:flex-end!important;flex-wrap:wrap!important;
+  gap:.48rem!important;min-width:0!important;max-width:100%!important;padding:0!important;border:0!important;
+}
+html .app-header-v2 .header-controls-v2>*{margin:0!important;flex:0 0 auto}
+html .app-header-v2 #lang-switcher-host{order:10}
+html .app-header-v2 .home-btn{order:20}
+html .app-header-v2 .sound-toggle-btn{order:30}
+html .app-header-v2 #quota-badge{order:40}
+html .app-header-v2 #nav-reg-btn,html .app-header-v2 .nav-avatar-link{order:50}
+html .app-header-v2 .install-wrap,html .app-header-v2>.header-controls-v2>.install-btn{order:90}
+
+/* A prominent but compact install/update control. */
+html .install-btn.install-prominent-v2{
+  position:relative!important;overflow:visible!important;isolation:isolate;
+  min-height:46px!important;padding:.66rem 1rem!important;
+  color:#17101f!important;border:1px solid rgba(255,232,133,.92)!important;
+  background:linear-gradient(125deg,#fff0a1 0%,#e5c158 42%,#bd84ff 115%)!important;
+  box-shadow:0 7px 20px rgba(0,0,0,.25),0 0 0 1px rgba(255,255,255,.18) inset,0 0 20px rgba(229,193,88,.15)!important;
+  font-weight:900!important;
+}
+html .install-btn.install-prominent-v2:hover{transform:translateY(-2px) scale(1.02)!important;box-shadow:0 10px 26px rgba(0,0,0,.3),0 0 25px rgba(229,193,88,.22)!important}
+html .install-btn.install-prominent-v2::after{
+  content:attr(data-app-hint);position:absolute;z-index:10;top:calc(100% + 4px);left:50%;transform:translateX(-50%);
+  width:max-content;max-width:10.5rem;padding:2px 7px;border-radius:999px;
+  font:800 8px/1.45 system-ui,sans-serif;letter-spacing:.045em;text-transform:lowercase;white-space:nowrap;
+  color:#e7def7;background:rgba(19,12,32,.95);border:1px solid rgba(229,193,88,.3);
+  box-shadow:0 4px 12px rgba(0,0,0,.28);pointer-events:none;
+}
+html .install-btn.install-prominent-v2.has-app-update{
+  color:#071c19!important;background:linear-gradient(120deg,#8bf4e6,#c4fff3 45%,#e5c158)!important;
+  border-color:#8bf4e6!important;animation:maUpdateGlow 1.8s ease-in-out infinite!important;
+}
+html .install-btn.install-prominent-v2.has-app-update::after{color:#bffdf5;border-color:rgba(126,247,232,.58);background:rgba(4,35,31,.96)}
+html .install-btn.install-prominent-v2.is-app-installed:not(.has-app-update){background:rgba(35,31,46,.92)!important;color:#c7bed7!important;border-color:rgba(133,238,224,.28)!important;box-shadow:none!important}
+html .install-btn.install-prominent-v2.is-app-installed:not(.has-app-update)::after{color:#9fe5d9;border-color:rgba(126,247,232,.22)}
+@keyframes maUpdateGlow{0%,100%{box-shadow:0 8px 22px rgba(0,0,0,.28),0 0 0 0 rgba(126,247,232,.35)}50%{box-shadow:0 8px 22px rgba(0,0,0,.28),0 0 0 5px rgba(126,247,232,0)}}
+
+/* Replace the old arrow-style first-visit hint with a tiny text bubble. */
+.install-bubble-v2{
+  width:max-content!important;max-width:11rem!important;padding:4px 9px!important;border-radius:999px!important;
+  font-size:9px!important;line-height:1.35!important;letter-spacing:.04em!important;text-transform:lowercase!important;
+  background:rgba(20,13,33,.97)!important;border:1px solid rgba(229,193,88,.36)!important;color:#efe7ff!important;
+}
+.install-bubble-v2::after,.install-bubble-v2::before{display:none!important}
+.install-bubble-v2 .install-bubble-x{display:none!important}
+.install-bubble-v2 .install-bubble-text{white-space:nowrap!important}
+
+/* Match-packs anchor gets a subtle arrival cue after tapping the quota badge. */
+#match-packs-section:target{scroll-margin-top:2rem;animation:maMatchPackArrival 1.15s ease-out 1}
+@keyframes maMatchPackArrival{0%{box-shadow:0 0 0 0 rgba(229,193,88,.7)}100%{box-shadow:0 0 0 18px rgba(229,193,88,0)}}
+
+@media(max-width:900px){
+  html .app-header-v2{grid-template-columns:1fr!important;padding:.9rem 1rem 1.05rem!important}
+  html .app-header-v2 .header-brand-area{justify-content:center!important;width:100%!important}
+  html .app-header-v2 .header-controls-v2{width:100%!important;justify-content:center!important;gap:.5rem!important;padding-top:.7rem!important;border-top:1px solid rgba(229,193,88,.13)!important}
+  html .app-header-v2 #lang-switcher-host{margin:0!important}
+  html .app-header-v2 .install-wrap,html .app-header-v2>.header-controls-v2>.install-btn{order:5}
+  html .app-header-v2 #lang-switcher-host{order:10}
+  html .app-header-v2 .home-btn{order:20}
+  html .app-header-v2 .sound-toggle-btn{order:30}
+  html .app-header-v2 #quota-badge{order:40}
+  html .app-header-v2 #nav-reg-btn,html .app-header-v2 .nav-avatar-link{order:50}
+  .matchapp-live-wordmark{transform-origin:center center}
+}
+@media(max-width:540px){
+  html .app-header-v2{width:calc(100% - .9rem)!important;margin:.55rem auto .8rem!important;border-radius:1.3rem!important}
+  html .app-header-v2 .header-brand-area{gap:.5rem!important}
+  html .matchapp-circle-logo,html .app-header .brand-logo{width:2.8rem!important;height:2.8rem!important}
+  .ma-core{font-size:clamp(1.35rem,7vw,1.72rem)}
+  .ma-tv{font-size:clamp(1rem,5.1vw,1.28rem)}
+  .ma-ai{font-size:clamp(1.04rem,5.4vw,1.34rem)}
+  html .app-header-v2 .header-controls-v2{gap:.38rem!important}
+  html .app-header-v2 .header-controls-v2 :is(button,select,.quota-badge,.nav-avatar-link,.icon-btn){min-height:42px!important;font-size:.76rem!important;padding:.5rem .62rem!important}
+  html .install-btn.install-prominent-v2::after{font-size:7.5px;top:calc(100% + 3px)}
+}
+@media(min-width:1800px){
+  html .matchapp-circle-logo,html .app-header .brand-logo{width:4rem!important;height:4rem!important}
+  .ma-core{font-size:2.7rem}.ma-tv{font-size:2rem}.ma-ai{font-size:2.15rem}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .matchapp-live-wordmark,.ma-core,.ma-tv,.ma-ai,.ma-ai-spark,.install-btn.install-prominent-v2.has-app-update,#match-packs-section:target{animation:none!important}
+}
+.reduce-motion .matchapp-live-wordmark,.reduce-motion .ma-core,.reduce-motion .ma-tv,.reduce-motion .ma-ai,.reduce-motion .ma-ai-spark,.reduce-motion .install-btn.install-prominent-v2.has-app-update{animation:none!important}
