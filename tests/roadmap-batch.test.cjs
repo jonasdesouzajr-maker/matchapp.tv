@@ -1,0 +1,6 @@
+const test=require('node:test'),assert=require('node:assert/strict'),fs=require('fs'),path=require('path');const root=path.join(__dirname,'..'),read=f=>fs.readFileSync(path.join(root,f),'utf8');
+test('taste personalization preserves explicit choices',()=>{const s=read('taste.js');assert.match(s,/Explicit choices are not up for negotiation/);assert.match(s,/computeTasteDNA/);});
+test('SEO generator refuses thin collection pages',()=>{const s=read('tools/build-seo-pages.js');assert.match(s,/MIN_TITLES = 8/);assert.match(s,/ItemList/);});
+test('TMDB artwork remains canonical and provider claims stay separate',()=>{const s=read('tmdb.js');assert.match(s,/TMDB is the canonical/);assert.match(s,/Streaming availability/);assert.match(s,/image\\\.tmdb\\\.org/);});
+test('roadmap runtime includes zero-result recovery, retention and vitals',()=>{const s=read('roadmap-runtime.js');assert.match(s,/No silent compromises/);assert.match(s,/match_recent_discovery/);assert.match(s,/largest-contentful-paint/);assert.match(s,/layout-shift/);});
+test('catalog and SEO freshness commands are available',()=>{const p=JSON.parse(read('package.json'));assert.ok(p.scripts['build:seo']);assert.ok(p.scripts['refresh:catalog-seo']);});
