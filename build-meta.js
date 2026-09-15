@@ -1,5 +1,5 @@
 // Functional release identifier must match release.json.
-window.MATCHAPP_BUILD = '2026.09.15.1';
+window.MATCHAPP_BUILD = '2026.09.15.2';
 
 /* Search freshness + truthfulness layer.
    Keep this small and evidence-based: it improves discoverability without
@@ -44,11 +44,8 @@ window.MATCHAPP_BUILD = '2026.09.15.1';
 
     if (path === '/' || path === '/index.html') {
       loadHomeRuntimeFixes();
-      // Keep the homepage snippet aligned with what the page actually does.
       document.title = 'What to Watch Tonight | AI Movie & TV Finder | MatchApp';
       upsertMeta('description', 'Find what to watch tonight with MatchApp: mood-based movie and TV picks, Ask AI, verified streaming links, Kids Mode and timely entertainment guides.');
-
-      // Update the existing WebPage freshness only when this release genuinely changed the page.
       document.querySelectorAll('script[type="application/ld+json"]').forEach((node) => {
         try {
           const data = JSON.parse(node.textContent);
@@ -58,9 +55,6 @@ window.MATCHAPP_BUILD = '2026.09.15.1';
           }
         } catch (_) {}
       });
-
-      // A compact, visible freshness block. These are search shortcuts, not
-      // unsupported claims that MatchApp itself measures popularity.
       if (!document.getElementById('current-entertainment-searches')) {
         const footer = document.querySelector('.seo-footer');
         if (footer) {
@@ -89,10 +83,6 @@ window.MATCHAPP_BUILD = '2026.09.15.1';
     if (path === '/discover.html') {
       document.title = 'Ask AI What to Watch | Movie & TV Concierge | MatchApp';
       upsertMeta('description', 'Ask MatchApp what to watch by mood, theme, event or topic. Get entertainment recommendations, real title information and links to continue your search or stream.');
-
-      // Legitimate Application structured data: no fabricated aggregateRating,
-      // review, download count or price claim. This resolves the audit warning
-      // without manufacturing rich-result fields.
       addJsonLd('matchapp-webapp-schema', {
         '@context': 'https://schema.org',
         '@type': 'WebApplication',
@@ -110,4 +100,15 @@ window.MATCHAPP_BUILD = '2026.09.15.1';
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', install, { once: true });
   else install();
+})();
+
+/* Final hardening loader: central entry point so every page that already loads
+   build-meta receives the current integrity/install layer without HTML churn. */
+(function(){
+  if(document.querySelector('script[data-matchapp-final-wiring]'))return;
+  const s=document.createElement('script');
+  s.src='/final-wiring.js?v=20260915-final2';
+  s.defer=true;
+  s.dataset.matchappFinalWiring='1';
+  document.head.appendChild(s);
 })();
