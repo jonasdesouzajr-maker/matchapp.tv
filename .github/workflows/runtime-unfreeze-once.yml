@@ -1,0 +1,30 @@
+name: Runtime unfreeze cache-bust
+on:
+  push:
+    branches: [main]
+    paths:
+      - tools/runtime-unfreeze-cachebust.js
+permissions:
+  contents: write
+concurrency:
+  group: matchapp-runtime-unfreeze-cachebust
+  cancel-in-progress: true
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: node tools/runtime-unfreeze-cachebust.js
+      - name: Commit interactive-page cache bust
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html discover.html together.html
+          if git diff --staged --quiet; then exit 0; fi
+          git commit -m "Cache-bust cross-device runtime fix"
+          git push
