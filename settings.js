@@ -122,6 +122,22 @@
         let enabled = false;
         try { enabled = localStorage.getItem(KIDS_MODE_KEY) === 'true'; } catch (e) {}
         if (!enabled || location.pathname.startsWith('/kids/')) return false;
+
+        // A LAUNCH OF THE INSTALLED APP ALWAYS OPENS THE MAIN PAGE.
+        //
+        // The Kids flag is set by the toggle and nothing ever clears it, so
+        // once tapped it redirected every future visit to /kids/ — including
+        // the launch of the installed app, which is why installing appeared
+        // to "lead to Kids mode automatically". There was also no way back
+        // from the main side, because the main page redirected away before
+        // you could reach the toggle.
+        //
+        // The manifest start_url carries utm_source=pwa, so a deliberate app
+        // launch is identifiable and lands on the main page as the user
+        // expects. Kids mode stays one tap away rather than being a trap.
+        try {
+            if (new URLSearchParams(location.search).get('utm_source') === 'pwa') return false;
+        } catch (e) {}
         const p = location.pathname.replace(/\/+$/, '') || '/';
         // Keep settings, account, legal and checkout routes reachable to adults.
         const kidBoundRoutes = new Set(['/', '/index.html', '/discover.html', '/together.html', '/events-archive.html']);

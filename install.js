@@ -152,7 +152,15 @@ window.installMatchApp = async function () {
 
     // Path 1: a real native prompt is available (Chrome/Edge/Android/Desktop).
     if (deferredInstallPrompt) {
-        try { await deferredInstallPrompt.prompt(); await deferredInstallPrompt.userChoice; } catch (e) {}
+        try {
+            await deferredInstallPrompt.prompt();
+            // Bar starts only once the OS prompt is actually showing, and only
+            // the real appinstalled event finishes it — see install-progress.js
+            // for why it stops short of 100 rather than guessing.
+            window.matchAppInstallProgress?.start();
+            const choice = await deferredInstallPrompt.userChoice;
+            if (choice && choice.outcome === 'dismissed') window.matchAppInstallProgress?.cancel();
+        } catch (e) { window.matchAppInstallProgress?.cancel(); }
         deferredInstallPrompt = null;
         return;
     }

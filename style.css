@@ -582,3 +582,56 @@ details[open] .settings-chevron { transform: rotate(180deg); }
     .settings-save, .settings-reset { width: 100% !important; }
     .activity-detail { white-space: normal; }
 }
+
+/* ===== INSTALL PROGRESS BAR =====
+   Sits under the header logo, where an app store puts it and where the user
+   is already looking after pressing Install. Hidden until there is genuine
+   progress to report — an always-present empty bar is noise. */
+.install-progress {
+    display: none;
+    width: 100%; max-width: 260px;
+    margin: 6px auto 0;
+    padding: 0 2px;
+}
+.install-progress.is-active { display: block; animation: ipFade .25s ease-out; }
+@keyframes ipFade { from { opacity: 0; transform: translateY(-3px); } to { opacity: 1; transform: none; } }
+
+.install-progress-track {
+    height: 4px; border-radius: 999px; overflow: hidden;
+    background: rgba(255,255,255,.12);
+}
+.install-progress-fill {
+    height: 100%; width: 0;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #C0843C, #E4C06C, #F0D878);
+    /* Eased rather than linear: the bar decelerates as it approaches its
+       ceiling, so a slow install reads as "still working" instead of frozen. */
+    transition: width .45s cubic-bezier(.22, 1, .36, 1);
+}
+.install-progress-label {
+    display: block; margin-top: 4px;
+    font-size: 11px; font-weight: 600; text-align: center;
+    color: var(--gold-core, #E4C06C); letter-spacing: .2px;
+}
+
+/* Settled state: the button stops being a call to action and becomes a
+   status. Green because that is the near-universal "done" signal, but the
+   label changes too — colour is never the only cue. */
+.install-btn.is-installed {
+    background: linear-gradient(135deg, #22C55E, #16A34A) !important;
+    box-shadow: 0 3px 14px rgba(34,197,94,.32) !important;
+    cursor: default;
+    opacity: 1 !important;
+}
+.install-btn.is-installed:hover { transform: none; }
+.install-btn.is-installed .install-icon { display: none; }
+.install-btn.is-installed::before {
+    content: '✓';
+    font-weight: 900; font-size: 14px; line-height: 1;
+    margin-right: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .install-progress.is-active { animation: none; }
+    .install-progress-fill { transition: none; }
+}
