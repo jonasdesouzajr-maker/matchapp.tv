@@ -1,5 +1,5 @@
 // Functional release identifier must match release.json.
-window.MATCHAPP_BUILD = '2026.09.15.4';
+window.MATCHAPP_BUILD = '2026.09.15.5';
 
 /* Search freshness + truthfulness layer.
    Keep this small and evidence-based: it improves discoverability without
@@ -103,11 +103,11 @@ window.MATCHAPP_BUILD = '2026.09.15.4';
 })();
 
 /* Final hardening loader: central entry point so every page that already loads
-   build-meta receives the current integrity/install layer without HTML churn. */
+   build-meta receives the current integrity/install/brand layer without HTML churn. */
 (function(){
   if(document.querySelector('script[data-matchapp-final-wiring]'))return;
   const s=document.createElement('script');
-  s.src='/final-wiring.js?v=20260915-final3';
+  s.src='/final-wiring.js?v=20260915-final5';
   s.async=false;
   s.defer=true;
   s.dataset.matchappFinalWiring='1';
