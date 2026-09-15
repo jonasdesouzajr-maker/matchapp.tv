@@ -1,0 +1,21 @@
+/* Final production wiring: compact install affordance + verified match recovery. */
+.brand-app-cluster{position:relative;display:inline-flex;align-items:center;min-width:0;overflow:visible}
+.install-source-suppressed{display:none!important}
+.brand-install-corner{position:absolute!important;right:-.55rem!important;bottom:-.48rem!important;z-index:8!important;display:inline-flex;align-items:center;justify-content:center;min-height:25px!important;max-width:86px;padding:4px 8px!important;border-radius:999px!important;border:1px solid rgba(229,193,88,.72)!important;background:rgba(18,11,31,.96)!important;color:#fff4bd!important;font:800 8.5px/1.15 system-ui,sans-serif!important;letter-spacing:.01em!important;white-space:nowrap;box-shadow:0 5px 14px rgba(0,0,0,.35),0 0 14px rgba(229,193,88,.12)!important;transform:none!important}
+.brand-install-corner:hover,.brand-install-corner:focus-visible{transform:translateY(-1px)!important;border-color:#fff0a1!important;box-shadow:0 7px 18px rgba(0,0,0,.4),0 0 18px rgba(229,193,88,.2)!important}
+.brand-install-corner.has-app-update{color:#061d19!important;border-color:#83f4e5!important;background:linear-gradient(120deg,#8cf3e6,#e7fff9 62%,#ffe394)!important;animation:maFinalUpdatePulse 1.9s ease-in-out infinite!important}
+.brand-install-corner.is-app-installed:not(.has-app-update){opacity:.86;color:#bceee7!important;border-color:rgba(126,247,232,.35)!important;background:rgba(15,29,31,.94)!important}
+.install-safety-mini{position:absolute;left:calc(100% + .65rem);top:50%;transform:translateY(-50%);display:none;max-width:12rem;color:#9088a3;font:600 8px/1.25 system-ui,sans-serif;white-space:normal}
+.brand-app-cluster:hover .install-safety-mini,.brand-app-cluster:focus-within .install-safety-mini{display:block}
+.matchapp-format-badge{display:inline-flex;align-items:center;gap:.3rem;margin:.4rem 0 0 .45rem;padding:.3rem .55rem;border-radius:999px;border:1px solid rgba(126,247,232,.3);background:rgba(126,247,232,.08);color:#aaf7ec;font:800 10px/1.1 system-ui,sans-serif;vertical-align:middle}
+.matchapp-format-badge[data-kind="music"],.matchapp-format-badge[data-kind="podcast"],.matchapp-format-badge[data-kind="audiobook"]{border-color:rgba(207,152,255,.34);background:rgba(207,152,255,.09);color:#e2c3ff}
+.match-fresh-recovery{margin:1rem auto;padding:1rem;border:1px solid rgba(229,193,88,.24);border-radius:1rem;background:linear-gradient(145deg,rgba(28,18,46,.96),rgba(13,10,24,.96));max-width:760px;text-align:center;box-shadow:0 12px 34px rgba(0,0,0,.24)}
+.match-fresh-recovery p{margin:0 0 .75rem;color:#eee8f6;font-size:.92rem;line-height:1.5}
+.match-fresh-recovery>div{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center}
+.match-fresh-recovery button{min-height:40px;padding:.55rem .8rem;border-radius:999px;border:1px solid rgba(229,193,88,.42);background:rgba(229,193,88,.09);color:#f7e8a8;font-weight:800;cursor:pointer}
+.match-fresh-recovery button:hover,.match-fresh-recovery button:focus-visible{background:rgba(229,193,88,.17);border-color:rgba(255,235,154,.75)}
+@keyframes maFinalUpdatePulse{0%,100%{box-shadow:0 5px 14px rgba(0,0,0,.35),0 0 0 0 rgba(126,247,232,.28)}50%{box-shadow:0 6px 18px rgba(0,0,0,.38),0 0 0 5px rgba(126,247,232,0)}}
+@media(max-width:900px){.brand-install-corner{right:-.15rem!important;bottom:-.6rem!important;max-width:76px;font-size:7.8px!important}.install-safety-mini{display:none!important}}
+@media(max-width:540px){.brand-install-corner{right:.1rem!important;bottom:-.62rem!important;min-height:23px!important;padding:3px 6px!important;font-size:7.2px!important}.matchapp-format-badge{margin-left:.25rem}}
+@media(prefers-reduced-motion:reduce){.brand-install-corner.has-app-update{animation:none!important}}
+.reduce-motion .brand-install-corner.has-app-update{animation:none!important}
