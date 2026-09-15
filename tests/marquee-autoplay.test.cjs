@@ -6,13 +6,12 @@ const path=require('node:path');
 const source=fs.readFileSync(path.join(__dirname,'..','marquee-autoplay.js'),'utf8');
 const build=fs.readFileSync(path.join(__dirname,'..','build-meta.js'),'utf8');
 
-test('Top Titles autoplay fallback is loaded on the homepage and does not treat touch screens as reduced motion',()=>{
-  assert.match(build,/marquee-autoplay\.js\?v=20260915b/);
+test('Top Titles uses one low-duty controller instead of competing 60 FPS drivers',()=>{
+  assert.match(build,/marquee-autoplay\.js\?v=20260915c/);
   assert.match(source,/prefers-reduced-motion: reduce/);
-  assert.doesNotMatch(source,/max-width:\s*900px/);
-  assert.doesNotMatch(source,/pointer:\s*coarse/);
-  assert.match(source,/vp\.scrollLeft\+=speed\*dt/);
-  assert.match(source,/moved<3/);
+  assert.doesNotMatch(source,/requestAnimationFrame\(frame\)/);
+  assert.match(source,/Object\.defineProperty\(vp,'_paused'/,'legacy 16ms rail driver must be held paused');
+  assert.match(source,/setTimeout\(step,900\)/,'automatic passing must run at a low duty cycle');
   assert.match(source,/pointerdown/);
   assert.match(source,/touchstart/);
 });
