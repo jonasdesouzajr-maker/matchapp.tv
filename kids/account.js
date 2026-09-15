@@ -20,7 +20,10 @@
   const user=await session();await attach(user);
   if(!isCurrent())throw Error('cancelled');
   if(user){
-   const {data,error}=await window.supabaseClient.rpc('consume_ai_action',{p_reason:'match'});
+   // Kids recommendations are Matches, never Ask AI prompts. Keep the two
+   // balances separate so VIP unlimited Matches and purchased Match packs
+   // behave exactly like they do on the main Match screen.
+   const {data,error}=await window.supabaseClient.rpc('consume_match');
    if(error||!data)throw error||Error('quota');
    const current=await session();if(current?.id!==user.id)throw Error('account_changed');
    return {...data,userId:user.id};
