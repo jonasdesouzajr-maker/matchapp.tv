@@ -1,21 +1,21 @@
 {
-  "version": "2026.09.15.4",
+  "version": "2026.09.15.5",
   "date": "2026-09-15",
   "functional": true,
   "notes": {
-    "en": "Brazil billing is now server-gated: BRL prices appear only when their verified Stripe Prices are active, Checkout keeps card payments working while Stripe decides whether Pix is eligible, and the BRL-aware checkout backend is deployed.",
-    "pt-BR": "O faturamento do Brasil agora é validado pelo servidor: preços em BRL só aparecem quando os respectivos Prices da Stripe estão ativos e verificados, o Checkout mantém pagamentos por cartão funcionando enquanto a Stripe decide se o Pix é elegível, e o backend de checkout em BRL está implantado.",
-    "es": "La facturación de Brasil ahora está validada por el servidor: los precios en BRL solo aparecen cuando sus Prices de Stripe están activos y verificados, Checkout mantiene los pagos con tarjeta mientras Stripe decide si Pix es elegible y el backend BRL ya está desplegado.",
-    "fr": "La facturation Brésil est désormais contrôlée côté serveur : les prix BRL ne s’affichent que lorsque les Prices Stripe vérifiés sont actifs, Checkout conserve le paiement par carte pendant que Stripe décide de l’éligibilité Pix, et le backend BRL est déployé.",
-    "de": "Die Brasilien-Abrechnung ist jetzt serverseitig abgesichert: BRL-Preise erscheinen nur bei aktiven, verifizierten Stripe Prices, Checkout hält Kartenzahlungen verfügbar, während Stripe die Pix-Berechtigung bestimmt, und das BRL-Checkout-Backend ist bereitgestellt.",
-    "it": "La fatturazione Brasile è ora verificata lato server: i prezzi BRL appaiono solo quando i relativi Stripe Prices sono attivi e verificati, Checkout mantiene i pagamenti con carta mentre Stripe decide l’idoneità a Pix e il backend BRL è distribuito.",
-    "tr": "Brezilya faturalandırması artık sunucu tarafından doğrulanıyor: BRL fiyatları yalnızca doğrulanmış Stripe Price kayıtları etkin olduğunda görünür, Checkout kart ödemelerini çalışır tutarken Pix uygunluğunu Stripe belirler ve BRL checkout altyapısı dağıtılmıştır.",
-    "ru": "Оплата для Бразилии теперь проверяется сервером: цены в BRL показываются только при активных подтверждённых Stripe Prices, Checkout сохраняет оплату картой, а доступность Pix определяет Stripe; BRL-бэкенд уже развёрнут.",
-    "ar": "أصبحت فوترة البرازيل محمية بالتحقق من الخادم: لا تظهر أسعار BRL إلا عند تفعيل أسعار Stripe الموثقة، ويستمر Checkout بدعم البطاقات بينما تحدد Stripe أهلية Pix، وتم نشر خلفية الدفع بالريال البرازيلي.",
-    "hi": "Brazil billing अब server-gated है: BRL prices केवल active और verified Stripe Prices होने पर दिखते हैं, Checkout card payments चालू रखता है जबकि Pix eligibility Stripe तय करता है, और BRL checkout backend deploy हो चुका है।",
-    "id": "Penagihan Brasil kini divalidasi server: harga BRL hanya muncul saat Stripe Price yang terverifikasi aktif, Checkout tetap mendukung kartu sementara Stripe menentukan kelayakan Pix, dan backend checkout BRL sudah diterapkan.",
-    "ja": "ブラジル向け決済をサーバー検証方式にしました。BRL価格は検証済みStripe Priceが有効な場合のみ表示され、Checkoutはカード決済を維持しつつPixの対象可否をStripe側で判断します。BRL対応バックエンドもデプロイ済みです。",
-    "ko": "브라질 결제를 서버 검증 방식으로 강화했습니다. 검증된 Stripe Price가 활성화된 경우에만 BRL 가격을 표시하며, Checkout은 카드 결제를 유지한 채 Pix 가능 여부를 Stripe가 판단합니다. BRL 결제 백엔드도 배포되었습니다.",
-    "zh": "巴西结算现已由服务器校验：只有经过验证且启用的 Stripe Price 才会显示 BRL 价格；Checkout 会继续支持银行卡支付，并由 Stripe 判断 Pix 是否可用；BRL 结算后端也已部署。"
+    "en": "Faster, steadier MatchApp: fixed a browser-freezing result scan loop, bounded slow title verification, and introduced the larger orbital MatchApp TV Ai wordmark with the MatchApp star circling the Ai mark.",
+    "pt-BR": "MatchApp mais rápido e estável: corrigimos um ciclo de verificação de resultados que podia travar o navegador, limitamos verificações lentas de títulos e lançamos a nova marca MatchApp TV Ai maior, com a estrela do MatchApp orbitando o Ai.",
+    "es": "MatchApp ahora es más rápido y estable: corregimos un bucle de resultados que podía bloquear el navegador, limitamos verificaciones lentas de títulos y estrenamos la marca MatchApp TV Ai más grande con la estrella orbitando el Ai.",
+    "fr": "MatchApp est plus rapide et plus stable : une boucle d’analyse pouvant bloquer le navigateur a été corrigée, les vérifications de titres lentes sont désormais limitées et le nouveau mot-symbole MatchApp TV Ai affiche une étoile en orbite autour de Ai.",
+    "de": "MatchApp ist jetzt schneller und stabiler: Eine Browser-blockierende Prüfschleife wurde behoben, langsame Titelprüfungen sind begrenzt und die größere MatchApp-TV-Ai-Wortmarke zeigt nun den MatchApp-Stern im Orbit um Ai.",
+    "it": "MatchApp è ora più veloce e stabile: corretto un ciclo di scansione che poteva bloccare il browser, limitate le verifiche lente dei titoli e introdotto il nuovo wordmark MatchApp TV Ai più grande con la stella in orbita attorno ad Ai.",
+    "tr": "MatchApp artık daha hızlı ve kararlı: tarayıcıyı kilitleyebilen sonuç tarama döngüsü düzeltildi, yavaş başlık kontrolleri sınırlandı ve MatchApp yıldızının Ai çevresinde döndüğü daha büyük MatchApp TV Ai logosu eklendi.",
+    "ru": "MatchApp стал быстрее и стабильнее: исправлен цикл проверки результатов, способный зависать в браузере, ограничены медленные проверки названий и добавлена увеличенная надпись MatchApp TV Ai со звездой на орбите вокруг Ai.",
+    "ar": "أصبح MatchApp أسرع وأكثر استقرارًا: تم إصلاح حلقة فحص كانت قد تجمد المتصفح، وتم تقييد عمليات التحقق البطيئة من العناوين، وإطلاق شعار MatchApp TV Ai الأكبر مع نجمة MatchApp تدور حول Ai.",
+    "hi": "MatchApp अब तेज़ और अधिक स्थिर है: ब्राउज़र को रोक सकने वाला result-scan loop ठीक किया गया, धीमी title verification को सीमित किया गया, और बड़ा MatchApp TV Ai wordmark जोड़ा गया जिसमें MatchApp का तारा Ai की परिक्रमा करता है।",
+    "id": "MatchApp kini lebih cepat dan stabil: loop pemindaian hasil yang dapat membuat browser macet telah diperbaiki, verifikasi judul yang lambat dibatasi, dan wordmark MatchApp TV Ai yang lebih besar kini menampilkan bintang MatchApp mengorbit Ai.",
+    "ja": "MatchAppを高速・安定化しました。ブラウザーを固まらせる可能性のあった結果スキャンのループを修正し、遅いタイトル確認に上限を設け、MatchAppの星がAiの周囲を回る大型のMatchApp TV Aiワードマークを導入しました。",
+    "ko": "MatchApp이 더 빠르고 안정적으로 개선되었습니다. 브라우저를 멈추게 할 수 있던 결과 스캔 루프를 수정하고 느린 제목 검증 시간을 제한했으며, MatchApp 별이 Ai 주위를 도는 더 큰 MatchApp TV Ai 워드마크를 적용했습니다.",
+    "zh": "MatchApp 现已更快、更稳定：修复了可能导致浏览器卡死的结果扫描循环，限制了慢速片名校验，并启用了更大的 MatchApp TV Ai 动态字标，让 MatchApp 星标环绕 Ai 运转。"
   }
 }
