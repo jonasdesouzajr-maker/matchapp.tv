@@ -40,7 +40,7 @@
    installability is unaffected.
    ============================================================ */
 
-const SW_VERSION = 'v14-match-speed-recovery';
+const SW_VERSION = 'v15-cross-device-unfreeze';
 
 self.addEventListener('install', () => {
     // Activate immediately rather than waiting for old tabs to close. This is
