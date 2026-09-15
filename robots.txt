@@ -48,4 +48,5 @@ Allow: /
 User-agent: YandexBot
 Allow: /
 
+# Sitemap timestamps are refreshed automatically on functional releases.
 Sitemap: https://matchapp.tv/sitemap.xml
