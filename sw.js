@@ -40,7 +40,7 @@
    installability is unaffected.
    ============================================================ */
 
-const SW_VERSION = 'v13-runtime-orbital-ai';
+const SW_VERSION = 'v14-match-speed-recovery';
 
 self.addEventListener('install', () => {
     // Activate immediately rather than waiting for old tabs to close. This is
