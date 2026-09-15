@@ -1,3 +1,4 @@
+// One-time cache-bust helper for the emergency startup stability release.
 const fs=require('fs');
 const files=['index.html','discover.html','together.html'];
 for(const file of files){
