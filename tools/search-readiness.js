@@ -1,0 +1,12 @@
+#!/usr/bin/env node
+/* Release gate for crawler/search/AdSense hygiene. It deliberately checks technical readiness,
+   not approval or rankings, which remain decisions made by external search/ad systems. */
+const fs=require('fs'),path=require('path'),{JSDOM}=require('jsdom');const root=path.join(__dirname,'..'),errors=[];
+const need=(ok,msg)=>{if(!ok)errors.push(msg)};const read=f=>fs.readFileSync(path.join(root,f),'utf8');
+const robots=read('robots.txt'),ads=read('ads.txt'),sitemap=read('sitemap.xml');
+need(/User-agent:\s*\*/i.test(robots),'robots.txt missing general crawler policy');need(/Allow:\s*\//i.test(robots),'robots.txt does not allow public crawling');need(robots.includes('Sitemap: https://matchapp.tv/sitemap.xml'),'robots.txt missing canonical sitemap');need(!/Disallow:\s*\/$/mi.test(robots),'robots.txt blocks the whole site');
+need(ads.includes('google.com, pub-9541435081010948, DIRECT, f08c47fec0942fa0'),'ads.txt publisher declaration missing');
+const xml=new JSDOM(sitemap,{contentType:'text/xml'}).window.document,locs=[...xml.querySelectorAll('loc')].map(n=>n.textContent.trim());need(locs.length>0,'sitemap is empty');need(locs.every(u=>u.startsWith('https://matchapp.tv/')),'sitemap contains a non-canonical host');need(new Set(locs).size===locs.length,'sitemap contains duplicates');
+for(const u of locs){const url=new URL(u);let p=path.join(root,url.pathname);if(fs.existsSync(p)&&fs.statSync(p).isDirectory())p=path.join(p,'index.html');if(!fs.existsSync(p)){errors.push('sitemap target missing: '+url.pathname);continue;}const d=new JSDOM(fs.readFileSync(p,'utf8')).window.document;need(!/noindex/i.test(d.querySelector('meta[name=robots]')?.content||''),'sitemap target noindexed: '+url.pathname);need(d.querySelector('link[rel=canonical]')?.href===u,'canonical mismatch: '+url.pathname);need((d.querySelector('meta[name=description]')?.content||'').trim().length>=50,'weak/missing description: '+url.pathname);need(d.querySelectorAll('h1').length===1,'page needs exactly one h1: '+url.pathname);}
+const policyFiles=['privacy.html','terms.html'];for(const f of policyFiles)need(fs.existsSync(path.join(root,f)),f+' missing');
+console.log(JSON.stringify({checkedUrls:locs.length,errors},null,2));if(errors.length)process.exit(1);
