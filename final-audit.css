@@ -1,0 +1,59 @@
+/* Final production UX hardening. Scoped, additive rules only. */
+:root{--audit-gold:#e5c158;--audit-ink:#15131c;--audit-panel:rgba(26,22,38,.92);--audit-soft:#afa7c0;--audit-good:#7ff0a8}
+.audit-action-icon{min-width:44px;min-height:44px;display:inline-flex!important;align-items:center;justify-content:center;gap:.5rem;border-radius:12px}
+.audit-action-icon:focus-visible,.portfolio-tab:focus-visible,.history-forget-btn:focus-visible{outline:3px solid var(--audit-gold);outline-offset:3px}
+.portfolio-tab svg,.identity-icon svg,.audit-profile-badges svg,.audit-panel-head svg,.history-forget-btn svg{width:1.15em;height:1.15em;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:0 0 auto}
+.portfolio-tab{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;min-height:48px;white-space:nowrap}
+.audit-auth-note{margin:-8px 2px 14px;color:#aaa;font-size:12px;line-height:1.45}
+.audit-auth-input:focus{outline:2px solid var(--audit-gold);outline-offset:2px}
+.required-mark{color:#ffcc70;font-weight:900}
+
+/* Social-profile style identity header. */
+.profile-audit-ready .container>.premium-card{overflow:visible}
+.audit-profile-hero{display:grid;grid-template-columns:92px minmax(0,1fr);gap:20px;align-items:center;margin:0 0 24px;padding:20px;border:1px solid rgba(229,193,88,.38);border-radius:22px;background:linear-gradient(135deg,rgba(229,193,88,.11),rgba(107,63,160,.12) 55%,rgba(8,8,12,.62));box-shadow:0 16px 50px rgba(0,0,0,.28)}
+.audit-profile-avatar{width:92px;height:92px;border-radius:50%;display:grid;place-items:center;overflow:hidden;border:3px solid var(--audit-gold);box-shadow:0 0 0 5px rgba(229,193,88,.08)}
+.audit-profile-avatar img{width:100%;height:100%;object-fit:cover}.audit-profile-avatar>svg{width:54px;height:54px;fill:none;stroke:var(--audit-gold);stroke-width:1.6}
+.audit-profile-copy{min-width:0}.audit-profile-eyebrow{display:block;color:var(--audit-gold);font-size:11px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;margin-bottom:4px}
+.audit-profile-copy h1{margin:0;color:#fff;font-size:clamp(22px,3vw,34px);line-height:1.05;overflow-wrap:anywhere}.audit-profile-copy>p{margin:7px 0 12px;color:var(--audit-soft);font-size:14px;overflow-wrap:anywhere}
+.audit-profile-badges{display:flex;flex-wrap:wrap;gap:8px}.audit-profile-badges span{display:inline-flex;align-items:center;gap:6px;padding:7px 10px;border-radius:999px;background:rgba(127,240,168,.08);border:1px solid rgba(127,240,168,.25);color:#c9f8d8;font-size:11px;font-weight:800}
+.profile-audit-ready .identity-showcase{border-width:1px;background:linear-gradient(155deg,rgba(229,193,88,.09),rgba(20,19,26,.94));box-shadow:0 12px 36px rgba(0,0,0,.28)}
+.profile-audit-ready .identity-showcase-header h3{text-transform:none;letter-spacing:0;font-size:clamp(20px,3vw,27px)}
+.profile-audit-ready .identity-verified-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(127,240,168,.09);color:var(--audit-good);border-color:rgba(127,240,168,.28)}
+.profile-audit-ready .identity-tile{padding:16px;border-color:rgba(255,255,255,.09);background:rgba(255,255,255,.035);box-shadow:none}.profile-audit-ready .identity-tile:hover{transform:none;border-color:rgba(229,193,88,.45)}
+.profile-audit-ready .identity-icon{display:grid;place-items:center;width:36px;height:36px;border-radius:11px;color:var(--audit-gold);background:rgba(229,193,88,.09)}
+.profile-audit-ready .identity-icon svg{width:20px;height:20px}.profile-audit-ready .identity-label{font-size:10px;color:#a9a3b6}.profile-audit-ready .identity-value{font-size:17px}
+.profile-audit-ready .core-identity-card{border:1px solid rgba(255,255,255,.1)!important;background:rgba(255,255,255,.025)!important}.profile-audit-ready .core-identity-card.is-locked{display:none}
+.profile-audit-ready #save-profile-btn[hidden]{display:none!important}
+
+/* Portfolio navigation and Not For Me. */
+.profile-audit-ready .portfolio-tabs{display:flex;gap:8px;overflow-x:auto;overscroll-behavior-inline:contain;scroll-snap-type:x proximity;padding:5px 2px 12px;scrollbar-width:thin}
+.profile-audit-ready .portfolio-tab{scroll-snap-align:start;flex:0 0 auto;padding:11px 14px;border-radius:12px}
+.audit-notforme-panel{background:rgba(255,82,82,.035);padding:24px;border-radius:20px;border:1px solid rgba(255,112,112,.24);margin-bottom:40px}
+.audit-panel-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:20px}.audit-panel-head h3{margin:0;color:#ffc3c3;font-size:24px}.audit-panel-head p{margin:5px 0 0;color:#aaa;line-height:1.55}.audit-panel-head>svg{width:32px;height:32px;color:#ff9d9d}
+.audit-notforme-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px}
+.audit-notforme-card{display:grid;grid-template-columns:52px minmax(0,1fr);gap:12px;align-items:center;padding:12px;border-radius:15px;border:1px solid rgba(255,255,255,.09);background:rgba(0,0,0,.24)}
+.audit-notforme-card img,.audit-fallback{width:52px;height:74px;border-radius:9px;object-fit:cover;background:linear-gradient(145deg,#35192f,#111);display:grid;place-items:center;font-size:9px;text-align:center;padding:4px;box-sizing:border-box}.audit-notforme-card strong{display:block;color:#fff}.audit-notforme-card span{display:block;color:#9f98ab;font-size:11px;margin-top:4px}.audit-notforme-card .history-forget-btn{grid-column:1/-1}
+
+/* Cross-device match history cards. */
+#history-list{display:grid;gap:10px}.profile-history-card{display:grid;grid-template-columns:66px minmax(0,1fr);gap:14px;align-items:center;padding:13px;border:1px solid rgba(255,255,255,.09);border-radius:16px;background:rgba(255,255,255,.025)}
+.profile-history-poster{width:66px;height:99px;object-fit:cover;border-radius:10px;background:#0b0a0f}.profile-history-copy{min-width:0}.profile-history-copy h3{margin:0 0 5px;color:#fff;font-size:16px}.profile-history-copy p{margin:0 0 10px;color:#aaa;font-size:12px;line-height:1.45}.profile-history-actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center}.profile-history-actions a,.history-forget-btn{min-height:38px;display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:8px 11px;border-radius:10px;font:inherit;font-size:11px;font-weight:800;text-decoration:none;cursor:pointer}.profile-history-actions a{color:#121018;background:var(--audit-gold)}.history-forget-btn{border:1px solid rgba(255,132,132,.34);color:#ffb7b7;background:rgba(255,82,82,.08)}.history-forget-btn:hover{background:rgba(255,82,82,.15)}.history-forget-btn:disabled{opacity:.55;cursor:wait}.history-forget-btn svg{width:15px;height:15px}.history-empty{padding:24px;border:1px dashed rgba(255,255,255,.14);border-radius:16px;text-align:center;color:#aaa}.history-empty strong,.history-empty span{display:block}.history-empty strong{color:#fff;margin-bottom:5px}
+
+/* Purchase confirmation: clear, celebratory, still restrained. */
+.purchase-success-view{position:relative;overflow:hidden;border-color:rgba(127,240,168,.6)!important;box-shadow:0 22px 80px rgba(54,211,120,.14)!important}.purchase-success-view h1{color:#d7ffe4!important}.purchase-orb{display:inline-grid;place-items:center;width:42px;height:42px;border-radius:50%;margin-right:10px;background:rgba(229,193,88,.12);border:1px solid rgba(229,193,88,.35)}.purchase-success-view .purchase-orb{background:rgba(127,240,168,.12);border-color:rgba(127,240,168,.4);animation:auditSuccessPop .6s cubic-bezier(.2,.85,.3,1.3)}
+.purchase-burst{position:absolute;inset:0;pointer-events:none;overflow:hidden}.purchase-burst i{position:absolute;left:50%;top:42%;width:8px;height:14px;border-radius:3px;background:currentColor;opacity:0;animation:auditConfetti 1.35s ease-out forwards;transform:rotate(var(--r)) translateY(0)}.purchase-burst i:nth-child(3n){color:#e5c158}.purchase-burst i:nth-child(3n+1){color:#7ff0a8}.purchase-burst i:nth-child(3n+2){color:#a98cff}
+@keyframes auditSuccessPop{0%{transform:scale(.4);opacity:0}100%{transform:scale(1);opacity:1}}@keyframes auditConfetti{0%{opacity:1;transform:rotate(var(--r)) translateY(0) translateX(0)}100%{opacity:0;transform:rotate(var(--r)) translateY(var(--y)) translateX(var(--x))}}
+
+/* Phones */
+@media(max-width:640px){
+  .app-header{padding:10px 12px!important;gap:8px}.matchapp-wordmark{max-width:min(58vw,230px);height:auto}.audit-action-icon{min-width:46px;min-height:46px}
+  .main-layout{padding-left:10px!important;padding-right:10px!important}.container{min-width:0!important}.premium-card{border-radius:16px!important}
+  .audit-profile-hero{grid-template-columns:70px minmax(0,1fr);gap:14px;padding:15px}.audit-profile-avatar{width:70px;height:70px}.audit-profile-copy>p{font-size:12px}.audit-profile-badges span{font-size:10px}
+  .identity-grid{grid-template-columns:1fr 1fr!important;gap:10px!important}.identity-tile{min-width:0}.identity-hint{display:none}.input-grid{grid-template-columns:1fr!important;gap:14px!important}
+  .portfolio-panel{padding:16px!important}.audit-notforme-grid{grid-template-columns:1fr}.profile-history-card{grid-template-columns:55px minmax(0,1fr)}.profile-history-poster{width:55px;height:82px}.profile-history-actions{align-items:stretch}.profile-history-actions a,.history-forget-btn{flex:1 1 145px}
+  #main-auth-modal>.premium-card{width:calc(100% - 24px)!important;max-height:calc(100dvh - 24px);overflow:auto;padding:20px!important}
+}
+/* Tablets */
+@media(min-width:641px) and (max-width:1100px){.main-layout{padding-left:18px!important;padding-right:18px!important}.identity-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}.audit-notforme-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.premium-card{max-width:100%;box-sizing:border-box}}
+/* TVs / large displays: increase legibility and keep controls spatially grouped. */
+@media(min-width:1600px){body{font-size:18px}.main-layout{max-width:1680px}.container{max-width:1040px!important}.audit-action-icon{min-width:58px;min-height:58px}.portfolio-tab{min-height:58px;padding:14px 20px!important;font-size:16px!important}.premium-card{border-radius:24px!important}.identity-value{font-size:21px!important}.profile-history-copy h3{font-size:20px}.profile-history-copy p,.profile-history-actions a,.history-forget-btn{font-size:14px}}
+@media(prefers-reduced-motion:reduce){.purchase-success-view .purchase-orb,.purchase-burst i{animation:none!important}.purchase-burst{display:none}}
