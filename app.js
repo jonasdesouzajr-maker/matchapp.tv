@@ -2949,13 +2949,33 @@ async function discoverFromITunes(cat, mood, vibe, decade, rating) {
 // from every pool before selection. It only resets on page reload, which is
 // the right granularity: within a single session a title must never repeat.
 // Across sessions the persistent seenList and recentTitles still apply.
-const SESSION_SHOWN = new Set();
+// SESSION_SHOWN was in-memory only, so it emptied on every page load — and
+// since a match navigates and people reload constantly, "this session" in
+// practice meant "until you blink". Backed by sessionStorage it now survives
+// reloads and in-tab navigation while still clearing when the tab closes,
+// which is the behaviour the name always implied.
+const SESSION_SHOWN = new Set((() => {
+    try { return JSON.parse(sessionStorage.getItem('match_sessionShown') || '[]'); }
+    catch (e) { return []; }
+})());
+
+function persistSessionShown() {
+    try {
+        // Capped: an unbounded list would eventually exclude the whole
+        // catalogue and leave the user with nothing to match.
+        sessionStorage.setItem('match_sessionShown',
+            JSON.stringify([...SESSION_SHOWN].slice(-120)));
+    } catch (e) { /* private mode or quota — in-memory still works */ }
+}
 
 function rememberShownTitle(title) {
     if (!title) return;
     SESSION_SHOWN.add(title);
+    persistSessionShown();
     recentTitles.unshift(title);
-    recentTitles = recentTitles.slice(0, 6);
+    // 6 was too short to be felt as variety. 30 still leaves the catalogue
+    // plenty of room while making a repeat genuinely uncommon.
+    recentTitles = [...new Set(recentTitles)].slice(0, 30);
     localStorage.setItem('match_recentTitles', JSON.stringify(recentTitles));
 }
 
@@ -3039,10 +3059,19 @@ function pickFromCatalog(cat, plat, mood, vibe, rating, decade) {
     const policy = window.matchPolicy;
     if (!policy) return null; // Fail closed if the shared policy did not load.
     const wantsFaith = normCriteria(cat).includes('Gospel & Faith') || normCriteria(plat).some(p => ['Pure Flix','Angel Studios'].includes(p));
-    const pool = CONTENT_CATALOG.filter(e => policy.matches(e, criteria)
+    const eligible = e => policy.matches(e, criteria)
         && !isBlockedEntry(e) && !SESSION_SHOWN.has(e.title)
         && (wantsFaith || !e.cats.includes('Gospel & Faith'))
-        && (normCriteria(cat).length || isSurpriseEligible(e)));
+        && (normCriteria(cat).length || isSurpriseEligible(e));
+
+    // recentTitles has been persisted to localStorage all along and never
+    // consulted here, which is why the same title could come back straight
+    // after a reload. It is a PREFERENCE rather than a hard exclusion: if
+    // honouring it empties the pool, a repeat is better than telling someone
+    // nothing matches.
+    const recent = new Set(recentTitles);
+    const fresh = CONTENT_CATALOG.filter(e => eligible(e) && !recent.has(e.title));
+    const pool = fresh.length ? fresh : CONTENT_CATALOG.filter(eligible);
     if (!pool.length) return null;
     const pick = pool[Math.floor(Math.random() * pool.length)];
     return {...pick,title:pick.title,synopsis:pick.synopsis,platform:pick.platform,platformVerified:true,watchUrl:pick.watchUrl||(pick.platform==='Roku Channel'?pick.url:null)||null,source:'catalog'};
