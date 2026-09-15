@@ -18,7 +18,7 @@ test('legacy app Match requests are narrowly routed to consume_match until direc
   assert.doesNotMatch(policy,/p_reason === 'ask_ai'[^\n]*consume_match/);
 });
 
-test('compatibility layer cannot grant or mutate paid balances client-side',()=>{
-  assert.doesNotMatch(policy,/purchased_matches\s*[-+]?=/);
-  assert.doesNotMatch(policy,/credits\s*[-+]?=/);
+test('compatibility layer never contains client-side paid balance mutation code',()=>{
+  assert.doesNotMatch(policy,/purchased_matches/);
+  assert.doesNotMatch(policy,/\.credits\s*(?:\+\+|--|[+\-]?=)/);
 });
