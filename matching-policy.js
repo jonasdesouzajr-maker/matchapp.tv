@@ -96,4 +96,23 @@
     incompatible:(value,state) => conflicts.some(([a,b]) => (value===a && values(state.mood).includes(b)) || (value===b && values(state.mood).includes(a))),
     attach:user => (ready = attach(user).catch(() => {})), flush});
   window.addEventListener('online', () => flush().catch(() => {}));
+
+  // Billing/quota separation hotfix. app.js historically sends both Match and
+  // Ask AI through consume_ai_action(). Migration 008 made those balances
+  // intentionally independent. Patch the shared Supabase client after app.js
+  // initializes it so Match requests use consume_match(), while Ask AI keeps
+  // its existing RPC and credit path. This is deliberately narrow and can be
+  // removed once the large app.js call site is migrated directly.
+  setTimeout(() => {
+    const client = window.supabaseClient;
+    if (!client || typeof client.rpc !== 'function' || client.__matchQuotaSeparated) return;
+    const rpc = client.rpc.bind(client);
+    client.rpc = function (fn, args, options) {
+      if (fn === 'consume_ai_action' && args && args.p_reason === 'match') {
+        return rpc('consume_match', undefined, options);
+      }
+      return rpc(fn, args, options);
+    };
+    Object.defineProperty(client, '__matchQuotaSeparated', {value:true, configurable:false});
+  }, 0);
 })();
