@@ -30,10 +30,20 @@ window.MATCHAPP_BUILD = '2026.09.15.1';
     document.head.appendChild(script);
   }
 
+  function loadHomeRuntimeFixes() {
+    if (document.querySelector('script[data-matchapp-marquee-autoplay]')) return;
+    const script = document.createElement('script');
+    script.src = '/marquee-autoplay.js?v=20260915a';
+    script.defer = true;
+    script.dataset.matchappMarqueeAutoplay = '1';
+    document.head.appendChild(script);
+  }
+
   function install() {
     const path = location.pathname;
 
     if (path === '/' || path === '/index.html') {
+      loadHomeRuntimeFixes();
       // Keep the homepage snippet aligned with what the page actually does.
       document.title = 'What to Watch Tonight | AI Movie & TV Finder | MatchApp';
       upsertMeta('description', 'Find what to watch tonight with MatchApp: mood-based movie and TV picks, Ask AI, verified streaming links, Kids Mode and timely entertainment guides.');
