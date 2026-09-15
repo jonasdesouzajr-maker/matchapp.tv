@@ -8,6 +8,13 @@
 .matchapp-brand-bar{position:relative;z-index:2;max-width:80rem;margin:1rem auto;padding:.65rem 1.25rem;box-sizing:border-box}
 body>header:has(>.matchapp-brand-link):not(.app-header){flex-wrap:wrap;gap:1rem}
 
+/* The animated SVG is the canonical wordmark. If an older experience layer
+   injected its previous text-built wordmark, keep that fallback out of view
+   and restore the real SVG instead. This also removes several redundant CSS
+   animations from the header. */
+html .app-title-main .matchapp-wordmark-source{display:block!important}
+html .app-title-main .matchapp-live-wordmark{display:none!important}
+
 /* The logo asset is a square JPEG, but the actual mark is circular. Never show
    the square backing card: clip every shared brand-logo instance to the mark. */
 .matchapp-brand-link picture{display:inline-grid;place-items:center;flex:none;background:transparent!important;border:0!important;border-radius:50%!important;box-shadow:none!important;overflow:visible!important}
