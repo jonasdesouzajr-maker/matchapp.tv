@@ -17,6 +17,9 @@ test('final wiring activates title integrity, no-repeat history, speed guard and
   assert.match(hardening,/Kingdom-class fix/);
   assert.match(hardening,/platform:'any'/);
   assert.match(history,/Shown by MatchApp/);
+  assert.doesNotMatch(history,/characterData\s*:\s*true/,'history tracking must never observe every text mutation');
+  assert.match(history,/matchapp:newmatch/,'history tracking should use the result event instead of global text observation');
+  assert.match(history,/childList\s*:\s*true/,'dynamic result cards must still be discovered');
   assert.match(speed,/18000/,'stalled matches must have a bounded recovery watchdog');
   assert.match(speed,/Math\.min\(ms,350\)/,'ready results must not wait on the old theatrical delay');
   assert.match(speed,/activePromise/,'rapid double taps must not launch competing matches');
