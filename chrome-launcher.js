@@ -13,13 +13,11 @@
     const ua=navigator.userAgent||navigator.vendor||'';
     const isAndroid=/Android/i.test(ua);
     const isIOS=/iPad|iPhone|iPod/i.test(ua)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
-
     if(isAndroid){
       location.href=androidIntent();
       setTimeout(()=>{if(!document.hidden)location.replace(HOME);launching=false;},1800);
       return;
     }
-
     if(isIOS){
       const timer=setTimeout(()=>{if(!document.hidden)location.replace(HOME);launching=false;},1300);
       const onHidden=()=>{if(document.hidden){clearTimeout(timer);launching=false;document.removeEventListener('visibilitychange',onHidden)}};
@@ -27,7 +25,6 @@
       location.href='googlechromes://matchapp.tv/';
       return;
     }
-
     location.assign(HOME);
   }
 
@@ -50,9 +47,12 @@
     if(!rails.length)return;
     const filled=rails.some(rail=>{
       const iframe=rail.querySelector('iframe');
-      const h=iframe?.offsetHeight||0;
+      const ins=rail.querySelector('ins.adsbygoogle');
+      const h=Math.max(iframe?.offsetHeight||0, ins?.offsetHeight||0);
       return h>80 && getComputedStyle(rail).display!=='none';
     });
+    if(/Googlebot|Mediapartners-Google|AdsBot-Google/i.test(navigator.userAgent||''))return;
+    if(Date.now()-(window.__MATCHAPP_ADS_START|| (window.__MATCHAPP_ADS_START=Date.now()))<12000)return;
     if(!filled)document.documentElement.classList.add('ads-empty');
   }
 
@@ -102,6 +102,7 @@
     if(/pricing/.test(location.pathname)) document.body.classList.add('page-pricing');
     setTimeout(collapseEmptyAdRails,2200);
     setTimeout(collapseEmptyAdRails,6000);
+    setTimeout(collapseEmptyAdRails,13000);
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
   let wiring=false;
