@@ -136,3 +136,26 @@ html.reduce-motion .is-marquee-flowing{animation:none!important;will-change:auto
 .discover-card,.profile-card,.pf-card{
   transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
 }
+
+/* Keep the match ceremony on screen. Click-to-match hid the form; if the
+   meter or result were skipped, only the AHS13 premiere remained. */
+body.match-searching #loading-box{
+  display:block !important;
+  visibility:visible !important;
+  opacity:1 !important;
+}
+body.match-searching #questionnaire-box,
+body.match-searching #search-box{display:none !important}
+#result-box.is-revealed{
+  display:block !important;
+  visibility:visible !important;
+  opacity:1;
+}
+#loading-headline.shimmer-text{
+  background:linear-gradient(100deg, var(--gold) 20%, #fff 42%, var(--royal-glow) 58%, var(--gold) 80%) !important;
+  background-size:240% auto !important;
+  -webkit-background-clip:text !important;
+  background-clip:text !important;
+  color:transparent !important;
+  -webkit-text-fill-color:transparent !important;
+}

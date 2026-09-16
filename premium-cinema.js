@@ -106,8 +106,12 @@
     if (!box || box.dataset.maReveal) return;
     box.dataset.maReveal = '1';
     const mark = function () {
-      const visible = box.style.display !== 'none' && box.offsetParent !== null;
-      box.classList.toggle('is-revealed', visible);
+      const shown = box.style.display === 'block' || (box.style.display !== 'none' && box.offsetParent !== null);
+      box.classList.toggle('is-revealed', shown);
+      if (shown) {
+        box.style.opacity = '';
+        box.style.visibility = 'visible';
+      }
     };
     mark();
     new MutationObserver(mark).observe(box, { attributes: true, attributeFilter: ['style', 'class'] });

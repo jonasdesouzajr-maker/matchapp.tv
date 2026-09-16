@@ -79,8 +79,8 @@
     window.triggerMatch = async function (isSpecific) {
       await orig.apply(this, arguments);
       const box = document.getElementById('result-box');
-      const visible = box && box.style.display !== 'none' && box.offsetHeight > 0;
-      if (visible || isSpecific) return;
+      const visible = box && box.style.display !== 'none' && (box.offsetHeight > 0 || box.classList.contains('is-revealed'));
+      if (visible || isSpecific || document.body.classList.contains('match-searching')) return;
       const pick = await emergencyPick(); if (pick) paintResult(pick);
     };
     window.triggerMatch.__guaranteed = true;

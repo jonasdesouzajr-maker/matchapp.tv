@@ -3165,7 +3165,8 @@ window.triggerMatch = async function(isSpecificSearch = false) {
     if (sBox) sBox.style.display = 'none';
     
     if (loadBox) { 
-        loadBox.style.display = 'block'; 
+        loadBox.style.display = 'block';
+        document.body.classList.add('match-searching');
         setTimeout(() => loadBox.scrollIntoView({ behavior: 'smooth', block: 'center' }), 100);
     }
 
@@ -3321,13 +3322,17 @@ window.triggerMatch = async function(isSpecificSearch = false) {
     }
     if (!matchResult || window.matchPolicy?.known().has(window.matchPolicy.key(matchResult.title))) {
         clearInterval(timerInterval);
+        document.body.classList.remove('match-searching');
         if (loadBox) loadBox.style.display='none';
-        if (qBox) qBox.style.display='block';
+        if (typeof window.goToQuestionnaire === 'function') window.goToQuestionnaire();
+        else if (qBox) qBox.style.display='block';
         window.showToast(tSafe('polish.inHistory'));
         return;
     }
-    rememberShownTitle(matchResult.title);
-    document.dispatchEvent(new CustomEvent('matchapp:newmatch'));
+    // Do not remember the title or fire matchapp:newmatch until the result
+    // card is actually on screen. rememberShownTitle writes match_recentTitles,
+    // which known() reads, and a premature newmatch lets other modules hide
+    // the card — the user then only sees the premiere poster below.
 
     let timeSpent = Date.now() - startTime;
     if (timeSpent < MIN_WAIT_MS) await new Promise(resolve => setTimeout(resolve, MIN_WAIT_MS - timeSpent));
@@ -3335,7 +3340,7 @@ window.triggerMatch = async function(isSpecificSearch = false) {
     if (pBar) pBar.style.width = '100%';
     clearInterval(timerInterval);
     
-    renderResult(matchResult, isSpecificSearch);
+    await renderResult(matchResult, isSpecificSearch);
 };
 
 // ----------------------------------------------------
@@ -3507,14 +3512,34 @@ window.saveCurrentNote = async function () {
 
 async function renderResult(selected, isSpecificSearch) {
     await window.matchPolicy?.ready();
-    if(!selected?.title || window.matchPolicy?.known().has(window.matchPolicy.key(selected.title))){
+    const loadBox = document.getElementById('loading-box');
+    const resultBox = document.getElementById('result-box');
+    const form = document.getElementById('questionnaire-box');
+    const reveal = () => {
+        document.body.classList.remove('match-searching');
+        if (loadBox) loadBox.style.display = 'none';
+    };
+    if(!selected?.title){
         window.showToast(tSafe('polish.inHistory'));
-        const form=document.getElementById('questionnaire-box');if(form)form.style.display='block';
+        reveal();
+        if (typeof window.goToQuestionnaire === 'function') window.goToQuestionnaire();
+        else if (form) form.style.display='block';
         return;
     }
-    const loadBox = document.getElementById('loading-box'); const resultBox = document.getElementById('result-box');
-    if (loadBox) loadBox.style.display = 'none';
-    resultBox.style.display = 'block'; resultBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    // This title was already proven fresh in triggerMatch. known() also
+    // contains match_recentTitles, so re-checking here after a remember
+    // skipped the result card, confetti, and left the premiere poster in view.
+    reveal();
+    if (!resultBox) return;
+    resultBox.style.display = 'block';
+    resultBox.classList.add('is-revealed');
+    resultBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    globalMatchTitle = selected.title;
+    window.globalMatchTitle = selected.title;
+    const titleEl = document.getElementById('res-title');
+    if (titleEl) titleEl.innerText = sanitizeDisplayText(selected.title, ['title']);
+    rememberShownTitle(selected.title);
+    document.dispatchEvent(new CustomEvent('matchapp:newmatch'));
 
     // Computed ONCE and shared by both the poster lookup below and
     // hydrateTitleFacts(). Previously each ran its own separate,

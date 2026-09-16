@@ -66,8 +66,11 @@ html:not([data-kids-mode]) #result-box.is-revealed .res-title-el {
   text-shadow: 0 10px 40px rgba(0,0,0,.45);
 }
 
+html:not([data-kids-mode]) #result-box {
+  opacity: 1;
+}
 html:not([data-kids-mode]) #result-box.is-revealed {
-  animation: maTitleCard var(--ma-slow) var(--ma-ease) both;
+  animation: maTitleCard var(--ma-slow) var(--ma-ease) forwards;
 }
 
 @keyframes maTitleCard {

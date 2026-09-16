@@ -107,7 +107,11 @@ function repairMainResult(){
  const entry=findEntry(title);
  if(entry){
   ensureFormatBadge(entry);
-  if(window.lastMatchCriteria&&!criteriaSatisfied(entry,window.lastMatchCriteria)){const box=document.getElementById('result-box');if(box)box.style.display='none';renderRecovery('integrity');return;}
+  if(window.lastMatchCriteria&&!criteriaSatisfied(entry,window.lastMatchCriteria)){
+    // Keep the match card on screen. Hiding it dropped the user onto the
+    // premiere poster with no meter and no result.
+    return;
+  }
   const direct=document.getElementById('res-direct-link'),type=canonicalType(entry);
   if(direct){const href=platformUrl(entry);if(direct.href!==href)direct.href=href;const next=['music','podcast','audiobook'].includes(type)?(window.t?.('res.listennow')||'🎧 Listen Now'):(/listen/i.test(direct.textContent||'')?(window.t?.('res.findwhere')||'▶ Find Where To Stream'):null);if(next&&direct.textContent!==next)direct.textContent=next;}
  }
