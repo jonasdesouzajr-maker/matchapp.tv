@@ -1,0 +1,45 @@
+name: Deploy MatchApp Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: https://matchapp.tv
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+      - id: deploy
+        uses: actions/deploy-pages@v4
+
+  healthcheck:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Probe live site
+        run: |
+          set -e
+          sleep 20
+          for url in https://matchapp.tv/ https://matchapp.tv/kids/ https://matchapp.tv/discover.html; do
+            echo "Checking $url"
+            code=$(curl -sS -o /tmp/body.html -w "%{http_code}" -L --max-time 30 "$url")
+            echo "HTTP $code"
+            test "$code" = "200"
+            grep -qi "MatchApp" /tmp/body.html
+          done
