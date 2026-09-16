@@ -1,6 +1,7 @@
 /* Emergency production layout recovery: declutter homepage/header without changing product logic. */
 .matchapp-purchase-shortcut{display:none!important}.credit-badge{display:none!important}.brand-logo{clip-path:none!important;object-fit:cover!important;border-radius:1.25rem!important}.main-layout,.page-wrapper,.container{margin-inline:auto!important}.main-layout{align-items:flex-start!important}.container{min-width:0!important;box-sizing:border-box!important}.app-header{box-sizing:border-box!important;width:100%!important}.app-header nav{min-width:0!important}.app-header nav>*{max-width:100%!important}.purchase-hub{box-sizing:border-box!important}
 
+/* Failed AdSense verticals rendered as giant white slabs. Keep the page dark. */
 .sidebar-ad-left,.sidebar-ad-right,.premium-ad-frame{
   background:rgba(14,10,24,.88)!important;
   border:1px solid rgba(196,181,253,.12)!important;
@@ -12,6 +13,7 @@ html.ads-empty .sidebar-ad-left,
 html.ads-empty .sidebar-ad-right{display:none!important}
 html.ads-empty .main-layout{grid-template-columns:minmax(0,1fr)!important;max-width:1180px!important}
 
+/* Kids FAB must not sit on top of the trending title. */
 body{padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))!important}
 .matchapp-kids-toggle{z-index:2400}
 @media(max-width:700px){
@@ -20,10 +22,73 @@ body{padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))!important}
   .marquee-wrapper,.poster-wall-section,#trending-rail{padding-bottom:8px;margin-bottom:12px}
 }
 
+/* Duplicate Installed + app installed chip. */
 html .install-btn.install-prominent-v2.is-app-installed::after,
 html .install-btn.brand-install-corner.is-app-installed::after{display:none!important}
 html .install-btn.install-prominent-v2.is-app-installed{padding:.55rem .9rem!important}
+
+/* Hide the Chrome upsell when the visitor is already in Chrome. */
 html.is-chrome #chrome-notice{display:none!important}
+
+/* Wordmark is a wide SVG. Never clip it to a circle (that left only pp). */
+html img.matchapp-wordmark,
+html .matchapp-wordmark,
+html .app-title-main img.matchapp-wordmark,
+html .matchapp-brand-link img.matchapp-wordmark,
+html .kids-brand-copy img.matchapp-wordmark{
+  clip-path:none!important;
+  border-radius:0!important;
+  object-fit:contain!important;
+  object-position:left center!important;
+  width:clamp(11.5rem,26vw,22rem)!important;
+  max-width:min(72vw,22rem)!important;
+  height:auto!important;
+  max-height:4.25rem!important;
+  aspect-ratio:auto!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  border:0!important;
+}
+
+/* One install control. Kill the extra download app hint chips. */
+html .install-btn.install-prominent-v2::after,
+html .install-btn.is-app-installed::after,
+html .install-btn.has-app-update::after,
+html .install-btn.kids-exit::after,
+html .install-safety-mini,
+html .install-bubble-v2,
+html .brand-install-corner{display:none!important}
+
+/* Empty sponsored / banner slots. */
+html.ads-empty .ad-banner-container,
+html.ads-empty .mobile-ad-bottom,
+html.ads-empty .premium-ad-frame{display:none!important}
+.ad-banner-container{
+  background:rgba(14,10,24,.72)!important;
+  border-color:rgba(196,181,253,.12)!important;
+}
+
+/* Pricing clock should never sit as Loading Time... over the packs. */
+#real-time-clock{
+  position:fixed!important;
+  top:10px!important;
+  right:12px!important;
+  z-index:50!important;
+  max-width:46vw!important;
+  padding:6px 10px!important;
+  border-radius:999px!important;
+  font-size:11px!important;
+  line-height:1.2!important;
+  background:rgba(16,10,28,.88)!important;
+  border:1px solid rgba(229,193,88,.22)!important;
+  color:#efe7ff!important;
+  pointer-events:none!important;
+}
+#real-time-clock.is-pending{opacity:.55}
+
+/* Keep Kids FAB off the last pricing heading / footer CTA. */
+body.page-pricing{padding-bottom:calc(110px + env(safe-area-inset-bottom,0px))!important}
+.poster-wall-section,.marquee-wrapper,#trending-rail{padding-inline-end:.75rem}
 
 @media(max-width:900px){.app-header{flex-wrap:wrap!important;align-items:center!important;gap:.8rem!important;min-height:auto!important;padding:.85rem!important}.app-header>.header-brand-area{width:100%!important;min-width:0!important;flex:1 1 100%!important}.app-header>nav{display:flex!important;width:100%!important;flex:1 1 100%!important;justify-content:flex-start!important;align-items:center!important;flex-wrap:wrap!important;gap:.55rem!important}.app-header>nav>*{flex:0 1 auto!important}.app-header .lang-switcher{max-width:min(12rem,100%)!important}.app-header .install-wrap{max-width:100%!important}.main-layout{display:block!important;width:100%!important}.sidebar-ad-left,.sidebar-ad-right{display:none!important}}
 @media(max-width:600px){.header-brand-area{gap:.65rem!important}.brand-logo{width:44px!important;height:44px!important;flex:none!important}.app-title-main{font-size:1.25rem!important;line-height:1.15!important}.app-title-sub{font-size:.72rem!important;letter-spacing:.05em!important}.app-header>nav{align-items:stretch!important}.app-header>nav button,.app-header>nav select,.app-header>nav a,.app-header>nav .install-wrap{min-width:0!important;max-width:100%!important}.app-header #nav-reg-btn{flex:1 1 10rem!important}.app-header .lang-switcher{flex:1 1 9rem!important}.app-header .sound-toggle-btn,.app-header .icon-btn{flex:0 0 auto!important}.container{padding-inline:.8rem!important}.premium-card{max-width:100%!important;box-sizing:border-box!important}.top-ask,.top-ask-wrap{min-width:0!important;max-width:100%!important}.top-ask input{min-width:0!important;width:100%!important}}
