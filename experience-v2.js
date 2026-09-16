@@ -152,14 +152,14 @@
     const words = hintStrings();
     document.querySelectorAll('.install-btn').forEach(btn=>{
       const text = btn.classList.contains('has-app-update') ? words.update : btn.classList.contains('is-app-installed') ? words.installed : words.download;
-      btn.dataset.appHint = text;
-      btn.classList.add('install-prominent-v2');
+      if(btn.dataset.appHint!==text) btn.dataset.appHint=text;
+      if(!btn.classList.contains('install-prominent-v2')) btn.classList.add('install-prominent-v2');
     });
     const bubble = document.getElementById('install-bubble');
     if(bubble){
-      bubble.classList.add('install-bubble-v2');
+      if(!bubble.classList.contains('install-bubble-v2')) bubble.classList.add('install-bubble-v2');
       const text = bubble.querySelector('.install-bubble-text');
-      if(text) text.textContent = words.download;
+      if(text && text.textContent!==words.download) text.textContent = words.download;
     }
   }
 
@@ -197,14 +197,23 @@
     syncInstallHints();
     scrollToMatchPacks();
 
-    const observer = new MutationObserver(mutations=>{
-      let structure=false, install=false;
-      for(const m of mutations){
-        if(m.type==='childList' && m.addedNodes.length) structure=true;
-        if(m.type==='attributes' && m.target.classList?.contains('install-btn')) install=true;
-      }
+    let pendingStructure=false, pendingInstall=false, observerQueued=false;
+    const flushObservedChanges=()=>{
+      observerQueued=false;
+      const structure=pendingStructure, install=pendingInstall;
+      pendingStructure=false;pendingInstall=false;
       if(structure){ upgradeWordmarks(); normalizeLogoImages(); organizeHeaders(); }
       if(structure||install) syncInstallHints();
+    };
+    const observer = new MutationObserver(mutations=>{
+      for(const m of mutations){
+        if(m.type==='childList' && Array.from(m.addedNodes||[]).some(n=>n.nodeType===1)) pendingStructure=true;
+        if(m.type==='attributes' && m.target.classList?.contains('install-btn')) pendingInstall=true;
+      }
+      if((pendingStructure||pendingInstall)&&!observerQueued){
+        observerQueued=true;
+        setTimeout(flushObservedChanges,0);
+      }
     });
     observer.observe(document.documentElement,{subtree:true,childList:true,attributes:true,attributeFilter:['class']});
   }

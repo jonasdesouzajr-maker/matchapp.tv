@@ -1,41 +1,24 @@
 // Functional release identifier must match release.json.
-window.MATCHAPP_BUILD = '2026.09.15.11';
+window.MATCHAPP_BUILD = '2026.09.16.1';
 
 
-/* HOME STARTUP STABILITY GATE
-   app.js historically registers many DOMContentLoaded jobs. Running all of them
-   in one event turn can monopolize the browser main thread on long home pages.
-   On the homepage only, keep user-facing functionality loaded while suppressing
-   the known automatic heavy jobs and staggering the remaining app.js startup
-   handlers. Other pages and other scripts keep native event behavior. */
+/* HOME STARTUP SCHEDULER
+   app.js registers several DOMContentLoaded jobs. Preserve every one, but
+   spread them over short task boundaries so the first paint stays responsive.
+   Unlike the emergency gate, this never drops poster/event/rail initialization. */
 (function(){
   'use strict';
   const p=location.pathname;
   if(p!=='/'&&p!=='/index.html') return;
-  if(window.__MATCHAPP_HOME_STARTUP_GATE__) return;
-  window.__MATCHAPP_HOME_STARTUP_GATE__=true;
+  if(window.__MATCHAPP_HOME_STARTUP_SCHEDULER__) return;
+  window.__MATCHAPP_HOME_STARTUP_SCHEDULER__=true;
   const nativeAdd=Document.prototype.addEventListener;
   let slot=0;
-  const heavy=[
-    /hydrateMarqueeCovers/,
-    /refreshEventStates/,
-    /initRail\(['"]marquee-viewport/,
-    /initRail\(['"]events-viewport/,
-    /initLiveStrip/,
-    /hydrateSpotlightPoster/,
-    /renderSpotlightCountdown/
-  ];
-  Document.prototype.addEventListener=function(type,listener,options){
+  function patchedAdd(type,listener,options){
     const current=(document.currentScript&&document.currentScript.src)||'';
     const fromApp=type==='DOMContentLoaded'&&/\/app\.js(?:[?#]|$)/.test(current)&&typeof listener==='function';
     if(!fromApp) return nativeAdd.call(this,type,listener,options);
-    let source='';
-    try{source=Function.prototype.toString.call(listener);}catch(_){source='';}
-    if(heavy.some(re=>re.test(source))){
-      window.__MATCHAPP_SKIPPED_HEAVY_STARTUP__=(window.__MATCHAPP_SKIPPED_HEAVY_STARTUP__||0)+1;
-      return;
-    }
-    const delay=Math.min(1200,80+(slot++*70));
+    const delay=Math.min(1500,60+(slot++*85));
     const wrapped=function(ev){
       const self=this;
       setTimeout(function(){
@@ -43,7 +26,11 @@ window.MATCHAPP_BUILD = '2026.09.15.11';
       },delay);
     };
     return nativeAdd.call(this,type,wrapped,options);
-  };
+  }
+  Document.prototype.addEventListener=patchedAdd;
+  window.addEventListener('load',function restoreNativeListener(){
+    if(Document.prototype.addEventListener===patchedAdd) Document.prototype.addEventListener=nativeAdd;
+  },{once:true});
 })();
 
 /* Search freshness + truthfulness layer.
@@ -152,7 +139,7 @@ window.MATCHAPP_BUILD = '2026.09.15.11';
 (function(){
   if(document.querySelector('script[data-matchapp-final-wiring]'))return;
   const s=document.createElement('script');
-  s.src='/final-wiring.js?v=20260915-final11';
+  s.src='/final-wiring.js?v=20260916-final12';
   s.async=false;
   s.defer=true;
   s.dataset.matchappFinalWiring='1';

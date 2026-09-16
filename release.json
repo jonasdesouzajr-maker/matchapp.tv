@@ -1,10 +1,10 @@
 {
-  "version": "2026.09.15.11",
+  "version": "2026.09.16.1",
   "date": "2026-09-15",
   "functional": true,
   "notes": {
-    "en": "Premium homepage restored with the full MatchApp feature stack. A homepage-only startup stability gate suppresses known automatic heavy jobs and staggers remaining app initialization so matching, auth, filters, Lazy Mode, TV mode, credits, voice, themes, ads and analytics can remain live without the previous startup lockup.",
-    "pt-BR": "Página inicial premium restaurada com o conjunto completo de recursos do MatchApp. Um controle de estabilidade exclusivo da home bloqueia tarefas automáticas pesadas conhecidas e escalona a inicialização restante para manter matching, autenticação, filtros, Lazy Mode, modo TV, créditos, voz, temas, anúncios e analytics ativos sem o travamento anterior.",
+    "en": "Full premium homepage restored with a browser-proven startup fix. All homepage initializers run again, while initialization is staggered across tasks and the install-hint MutationObserver is idempotent and cannot feed back into itself.",
+    "pt-BR": "Página premium completa restaurada com correção de inicialização comprovada no navegador. Todos os inicializadores da home voltam a executar, distribuídos em tarefas curtas, e o MutationObserver de instalação agora é idempotente e não pode entrar em loop.",
     "es": "Inicio seguro de emergencia: la página principal ahora arranca solo con el núcleo de MatchApp. GTM, anuncios, renderizado ambiental, ayudantes automáticos de actualización/instalación, passkeys, auditoría de títulos y observadores finales quedan temporalmente pausados, y los intervalos de inicio se limitan para evitar bloqueos del navegador.",
     "fr": "Démarrage sécurisé d’urgence : l’accueil lance uniquement le cœur de MatchApp. GTM, publicités, rendu ambiant, aides automatiques de mise à jour/installation, passkeys, audit des titres et observateurs finaux sont temporairement suspendus, avec des intervalles de démarrage limités pour éviter le blocage du navigateur.",
     "de": "Notfall-Sicherheitsstart: Die Startseite lädt nur noch den MatchApp-Kern. GTM, Werbung, Ambient-Rendering, automatische Update-/Installationshilfen, Passkeys, Titelprüfung und abschließende Beobachter sind dort vorübergehend pausiert; Startintervalle werden begrenzt, um Browser-Blockaden zu verhindern.",

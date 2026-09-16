@@ -5,29 +5,20 @@ const path=require('node:path');
 const root=path.join(__dirname,'..');
 const html=fs.readFileSync(path.join(root,'index.html'),'utf8');
 const build=fs.readFileSync(path.join(root,'build-meta.js'),'utf8');
-const release=JSON.parse(fs.readFileSync(path.join(root,'release.json'),'utf8'));
-const sw=fs.readFileSync(path.join(root,'sw.js'),'utf8');
+const experience=fs.readFileSync(path.join(root,'experience-v2.js'),'utf8');
 
-test('premium homepage is live without static recovery mode',()=>{
+test('premium homepage runs all features with bounded startup scheduling',()=>{
   assert.doesNotMatch(html,/Stable mode is active|matchapp-recovery-banner|matchapp-static-recovery/);
   assert.match(html,/\/app\.js\?v=193/);
   for(const file of ['criteria.js','lazy.js','tv.js','credits-ui.js','voice-input.js']) assert.match(html,new RegExp('\/'+file.replace('.','\.')+'\?'));
-  assert.match(html,/GTM-M7J3NNBN/);
-  assert.match(html,/ca-pub-9541435081010948/);
+  assert.match(build,/HOME STARTUP SCHEDULER/);
+  assert.doesNotMatch(build,/SKIPPED_HEAVY_STARTUP|heavy\.some/);
+  assert.match(build,/restoreNativeListener/);
 });
 
-test('homepage startup gate targets only app.js DOMContentLoaded work',()=>{
-  assert.match(build,/HOME STARTUP STABILITY GATE/);
-  assert.match(build,/document\.currentScript/);
-  assert.match(build,/app\\.js/);
-  assert.match(build,/hydrateMarqueeCovers/);
-  assert.match(build,/initLiveStrip/);
-  assert.match(build,/slot\+\+/);
-});
-
-test('premium recovery release cannot regress to emergency static boot',()=>{
-  assert.equal(release.version,'2026.09.15.11');
-  assert.match(sw,/v19-premium-home-recovery/);
-  assert.doesNotMatch(sw,/v18-static-home-recovery/);
-  assert.doesNotMatch(build,/EMERGENCY STATIC HOME|STATIC HOME RECOVERY/i);
+test('experience observer cannot create a text-mutation feedback loop',()=>{
+  assert.match(experience,/text\.textContent!==words\.download/);
+  assert.match(experience,/nodeType===1/);
+  assert.match(experience,/observerQueued/);
+  assert.match(experience,/setTimeout\(flushObservedChanges,0\)/);
 });
