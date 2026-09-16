@@ -1329,32 +1329,21 @@ async function hydrateMarqueeCovers() {
 }
 document.addEventListener('DOMContentLoaded', hydrateMarqueeCovers);
 
-// Clicking a trending title now goes straight to the full result — streaming
-// link, synopsis, platform, cover — instead of just typing the name into the
-// search box and leaving the user to press another button. It runs the same
-// direct-search path, so it consumes one match via checkDailyLimit() ->
-// consume_match, exactly like any other AI lookup.
+// Clicking a trending title opens that title's Ask AI info card: synopsis,
+// where to watch, when it starts. It does not run a match and does not
+// consume an Ask AI credit until the user asks a follow-up.
 window.selectMarqueeItem = function(titleName) {
     if (!titleName) return;
 
-    // Clicking a trending poster used to run the MATCH engine on it, which is
-    // the wrong tool: matching exists to pick something FOR you, and someone
-    // who tapped a specific poster has already picked. What they actually want
-    // is to find out about that title — what it is, whether it's any good,
-    // where they can watch it.
-    //
-    // So it goes to the AI Concierge with a question phrased to get exactly
-    // that back, which is also the one path that can answer follow-ups
-    // ("is it scary?", "how long is it?") in the same thread.
-    const question =
-        `Tell me about "${titleName}" — a short spoiler-free synopsis, what year it's from ` +
-        `and what genre, roughly how it was received by critics and audiences, ` +
-        `and which streaming platforms I can watch it on. Keep it concise.`;
-
+    // Tapping a trending poster is already a pick. Matching would try to
+    // choose something FOR the user; a long Ask-AI question burned a credit
+    // and often came back with a list instead of THIS title. Land on the
+    // Ask AI info card for the exact title: synopsis, where to watch, when
+    // it starts. No credit until they ask a follow-up.
     if (typeof window.track === 'function') {
         window.track('trending_click', { title: titleName });
     }
-    window.location.href = '/discover.html?q=' + encodeURIComponent(question) + '&focus=start';
+    window.location.href = '/discover.html?title=' + encodeURIComponent(titleName) + '&focus=start';
 };
 
 // ----------------------------------------------------

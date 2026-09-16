@@ -64,3 +64,25 @@ if(typeof I18N==="undefined")return;
 for(const [lang,values] of Object.entries(rows)){const dict=I18N[lang]||(I18N[lang]={});keys.forEach((k,i)=>dict[k]=values[i]);}
 if(document.readyState!=="loading"&&typeof applyTranslations==="function")applyTranslations(window.MATCH_LANG||"en");
 })();
+
+(function(){const keys=["discover.whereToWatch","discover.whenItStarts","discover.nowStreaming","discover.premiered","discover.startsIn","discover.sinceYear","discover.titleCardIntro"];
+const rows={
+en:["Where to watch","When it starts","Now streaming","Premiered {year}","Starts {year}","Since {year}","Here's {title} — spoiler-free synopsis, where to watch it, and when it started. Ask a follow-up if you want more."],
+"pt-BR":["Onde assistir","Quando começa","Já disponível","Estreou em {year}","Estreia em {year}","Desde {year}","Aqui está {title} — sinopse sem spoilers, onde assistir e quando começa. Pergunte mais se quiser."],
+es:["Dónde verlo","Cuándo empieza","Ya disponible","Estreno {year}","Empieza en {year}","Desde {year}","Aquí está {title}: sinopsis sin spoilers, dónde verlo y cuándo empieza. Pregunta si quieres más."],
+fr:["Où le regarder","Quand ça commence","Déjà disponible","Sorti en {year}","Sortie en {year}","Depuis {year}","Voici {title} — synopsis sans spoilers, où le regarder et quand ça commence. Posez une question de suivi."],
+de:["Wo schauen","Wann es startet","Jetzt verfügbar","Premiere {year}","Startet {year}","Seit {year}","Hier ist {title} — spoilerfreie Kurzfassung, wo du es siehst und wann es startet. Frag nach, wenn du mehr willst."],
+it:["Dove vederlo","Quando inizia","Già disponibile","Uscito nel {year}","Inizia nel {year}","Dal {year}","Ecco {title}: sinossi senza spoiler, dove vederlo e quando inizia. Chiedi un seguito se vuoi saperne di più."],
+tr:["Nerede izlenir","Ne zaman başlar","Şimdi yayında","{year} prömiyeri","{year} yılında başlıyor","{year}’den beri","İşte {title} — spoiler’sız özet, nerede izleneceği ve ne zaman başladığı. Daha fazlası için sorun."],
+ru:["Где смотреть","Когда начинается","Уже доступно","Премьера {year}","Старт в {year}","С {year}","Вот {title} — краткое описание без спойлеров, где смотреть и когда началось. Задайте уточняющий вопрос."],
+ar:["أين تشاهد","متى يبدأ","يُعرض الآن","عرض أول {year}","يبدأ في {year}","منذ {year}","إليك {title} — ملخص بلا حرق، أين تشاهده ومتى بدأ. اسأل للمتابعة."],
+hi:["कहाँ देखें","कब शुरू होता है","अभी उपलब्ध","प्रीमियर {year}","शुरू {year}","{year} से","यह रहा {title} — बिना स्पॉइलर सार, कहाँ देखें और कब शुरू हुआ। और जानने के लिए पूछें।"],
+id:["Di mana menonton","Kapan dimulai","Sedang tayang","Tayang {year}","Mulai {year}","Sejak {year}","Ini {title} — sinopsis tanpa spoiler, di mana menonton, dan kapan dimulai. Tanyakan jika ingin lebih."],
+ja:["視聴先","開始時期","配信中","{year}年公開","{year}年開始","{year}年から","{title}です。ネタバレなしのあらすじ、視聴先、開始時期。続きは質問してください。"],
+ko:["어디서 볼까","언제 시작해","지금 시청 가능","{year}년 공개","{year}년 시작","{year}년부터","{title}입니다. 스포일러 없는 줄거리, 시청 위치, 시작 시기. 더 알고 싶으면 질문하세요."],
+zh:["在哪看","何时开播","正在热播","{year}年上映","{year}年开播","自{year}年","这是{title} — 无剧透简介、在哪看、何时开始。想了解更多可以直接追问。"]
+};
+if(typeof I18N==="undefined")return;
+for(const [lang,values] of Object.entries(rows)){const dict=I18N[lang]||(I18N[lang]={});keys.forEach((k,i)=>dict[k]=values[i]);}
+if(document.readyState!=="loading"&&typeof applyTranslations==="function")applyTranslations(window.MATCH_LANG||"en");
+})();

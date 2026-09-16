@@ -398,6 +398,91 @@ function enrichDiscoverItem(item, question) {
     return item;
 }
 
+function itemFromTitle(name) {
+    const wanted = titleKey(name);
+    if (!wanted) return { title: String(name || '').trim(), year: '', type: '', platform: '', synopsis: '' };
+    let entry = null;
+    try {
+        if (typeof CONTENT_CATALOG !== 'undefined' && Array.isArray(CONTENT_CATALOG)) {
+            entry = CONTENT_CATALOG.find(e => e && titleKey(e.title) === wanted) || null;
+        }
+    } catch (err) { entry = null; }
+    if (!entry) return { title: String(name || '').trim(), year: '', type: '', platform: '', synopsis: '' };
+    return {
+        title: entry.title,
+        year: entry.year || '',
+        type: (entry.cats && entry.cats[0]) || '',
+        platform: entry.platform || '',
+        synopsis: entry.synopsis || '',
+        cats: entry.cats,
+        moods: entry.moods,
+        watchUrl: entry.watchUrl || '',
+        _fromCatalog: true
+    };
+}
+
+function discoverIsEpisodic(item) {
+    const blob = [item && item.type].concat((item && item.cats) || []).join(' ').toLowerCase();
+    if (/\b(movie|film|short film)\b/.test(blob) && !/\bseries\b/.test(blob)) return false;
+    return true;
+}
+
+function discoverWhereLabel(item) {
+    const p = item && item.platform && item.platform !== 'any' ? String(item.platform) : '';
+    return p;
+}
+
+function discoverStartLabel(item) {
+    const year = parseInt(item && item.year, 10);
+    if (!year) return '';
+    const nowY = new Date().getFullYear();
+    if (year > nowY) return discoverLabel('discover.startsIn', 'Starts {year}').replace('{year}', String(year));
+    if (year === nowY) return discoverLabel('discover.nowStreaming', 'Now streaming');
+    if (discoverIsEpisodic(item)) return discoverLabel('discover.sinceYear', 'Since {year}').replace('{year}', String(year));
+    return discoverLabel('discover.premiered', 'Premiered {year}').replace('{year}', String(year));
+}
+
+function discoverFactsHTML(item) {
+    const where = discoverWhereLabel(item);
+    const when = discoverStartLabel(item);
+    if (!where && !when) return '';
+    const rows = [];
+    if (where) {
+        rows.push(`<div class="discover-fact"><span class="discover-fact-k">${escapeDiscoverHtml(discoverLabel('discover.whereToWatch', 'Where to watch'))}</span> <span class="discover-where">${escapeDiscoverHtml(where)}</span></div>`);
+    }
+    if (when) {
+        rows.push(`<div class="discover-fact"><span class="discover-fact-k">${escapeDiscoverHtml(discoverLabel('discover.whenItStarts', 'When it starts'))}</span> <span class="discover-when">${escapeDiscoverHtml(when)}</span></div>`);
+    }
+    return `<div class="discover-facts">${rows.join('')}</div>`;
+}
+
+function paintDiscoverFacts(item, idx) {
+    const card = document.querySelector(`[data-discover-idx="${idx}"]`);
+    if (!card) return;
+    const html = discoverFactsHTML(item);
+    let facts = card.querySelector('.discover-facts');
+    if (!html) {
+        if (facts) facts.remove();
+        return;
+    }
+    if (facts) {
+        facts.outerHTML = html;
+        return;
+    }
+    const syn = card.querySelector('.discover-synopsis');
+    const metaEl = card.querySelector('.discover-meta');
+    const wrap = document.createElement('div');
+    wrap.innerHTML = html.trim();
+    const node = wrap.firstElementChild;
+    if (!node) return;
+    if (syn) syn.parentNode.insertBefore(node, syn);
+    else if (metaEl) metaEl.after(node);
+    else {
+        const body = card.querySelector('.discover-body');
+        if (body) body.appendChild(node);
+    }
+}
+
 let lastDiscoverQuestion = '';
 
 function catalogCousins(item, take) {
@@ -456,6 +541,10 @@ function discoverCardHTML(item, idx) {
         ? window.sanitizeDisplayText(item.synopsis, ['synopsis'])
         : item.synopsis) || '');
     const lang = window.MATCH_LANG || 'en';
+    const facts = discoverFactsHTML(item);
+    const metaLine = facts
+        ? (item.type ? `<div class="discover-meta">${escapeDiscoverHtml(item.type)}</div>` : '')
+        : (meta ? `<div class="discover-meta">${meta}</div>` : '');
     return `
     <article class="discover-card${item.why ? ' is-related' : ''}" data-discover-idx="${idx}">
         <div class="discover-poster">
@@ -465,7 +554,8 @@ function discoverCardHTML(item, idx) {
         <div class="discover-body">
             ${whyText ? `<div class="discover-why">${escapeDiscoverHtml(whyText)}</div>` : ''}
             <h3 data-src-text="${escapeDiscoverHtml(item.title || title)}" data-locale-painted="${lang}">${safe}</h3>
-            ${meta ? `<div class="discover-meta">${meta}</div>` : ''}
+            ${metaLine}
+            ${facts}
             <p class="discover-synopsis" data-locale-painted="${lang}">${synopsis}</p>
             <div class="discover-actions">
                 <a id="dl-${idx}" class="gold-btn discover-play" href="#" target="_blank" rel="noopener">${watchLabel}</a>
@@ -584,6 +674,8 @@ async function hydrateDiscoverCard(item, idx) {
         link.textContent = isAudio ? discoverLabel('res.listennow', '🎧 Listen Now') : discoverLabel('discover.watchNow', '▶ Watch Now');
         item._url = url;
     }
+    if (meta && meta.year && !item.year) item.year = meta.year;
+    paintDiscoverFacts(item, idx);
 }
 
 window.saveDiscoverItem = function (idx) {
@@ -739,6 +831,7 @@ function relabelDiscoverCards() {
         const why = card.querySelector('.discover-why');
         if (why && item.why === 'director') why.textContent = discoverLabel('discover.sameDirector', 'Same director') + (item.directorName ? ' · ' + item.directorName : '');
         else if (why && item.why === 'idea') why.textContent = discoverLabel('discover.sameIdea', 'Same idea');
+        paintDiscoverFacts(item, idx);
     });
 }
 document.addEventListener('matchapp:langchange', relabelDiscoverCards);
@@ -1077,11 +1170,63 @@ window.newDiscoverSearch = function () {
 };
 
 /* ---------- Boot ---------- */
+async function showTitleInfoCard(titleName) {
+    titleName = String(titleName || '').trim();
+    if (!titleName) return;
+    await window.matchPolicy?.ready();
+
+    const emptyEl = document.getElementById('discover-empty');
+    const loadEl = document.getElementById('discover-loading');
+    if (emptyEl) emptyEl.style.display = 'none';
+    if (loadEl) loadEl.style.display = 'none';
+
+    const item = enrichDiscoverItem(itemFromTitle(titleName), '') || itemFromTitle(titleName);
+    lastDiscoverQuestion = '';
+    DISCOVER_ITEMS = [];
+
+    if (!currentThread) {
+        currentThread = { id: newThreadId(), title: item.title.slice(0, 60), turns: [], createdAt: Date.now(), updatedAt: Date.now() };
+    }
+
+    const intro = discoverLabel(
+        'discover.titleCardIntro',
+        "Here's {title} — spoiler-free synopsis, where to watch it, and when it started. Ask a follow-up if you want more."
+    ).replace(/\{title\}/g, item.title);
+
+    const bubble = appendAssistantBubble(intro, [item], { instant: true });
+    DISCOVER_ITEMS = [item];
+    if (bubble && bubble.grid) {
+        const grid = bubble.grid;
+        grid.innerHTML = discoverCardHTML(item, 0);
+        grid.style.display = 'grid';
+        await hydrateDiscoverCard(item, 0);
+        await attachRelated(grid, [item], 0);
+    }
+
+    currentThread.turns.push({ role: 'assistant', text: intro, results: [item], ts: Date.now() });
+    currentThread.updatedAt = Date.now();
+    persistCurrentThread();
+
+    if (typeof window.track === 'function') {
+        window.track('title_info_card', { title: item.title, source: 'trending' });
+    }
+    const log = document.getElementById('chat-log');
+    if (log) setTimeout(() => log.scrollIntoView({ behavior: 'auto', block: 'start' }), 20);
+}
+
 async function runDiscovery() {
     renderThreadList();
+    const title = getQueryParam('title').trim();
     const q = getQueryParam('q').trim();
     const loadEl = document.getElementById('discover-loading');
     const emptyEl = document.getElementById('discover-empty');
+
+    if (title) {
+        document.title = `${title} — MatchApp AI Concierge`;
+        if (loadEl) loadEl.style.display = 'none';
+        await showTitleInfoCard(title);
+        return;
+    }
 
     if (!q) {
         if (loadEl) loadEl.style.display = 'none';

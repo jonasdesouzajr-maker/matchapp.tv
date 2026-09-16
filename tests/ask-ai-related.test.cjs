@@ -22,7 +22,7 @@ test('Ask AI cards include watch now, watch later, not for me and synopsis',()=>
   const html=read('discover.html');
   assert.match(html,/discover-nfm/);
   assert.match(html,/discover-related-head/);
-  assert.match(html,/discover\.js\?v=199/);
+  assert.match(html,/discover\.js\?v=200/);
   assert.match(html,/tmdb\.js\?v=191/);
 });
 
@@ -109,4 +109,39 @@ test('stock openings are stripped at runtime',()=>{
   assert.equal(out.answer,'Ted Lasso — An American coach takes a Premier League side.');
   assert.doesNotMatch(out.answer,/Here are titles/);
   assert.doesNotMatch(out.answer,/strongest fit/);
+});
+
+test('trending posters open the pinned Ask AI title card without spending a credit',()=>{
+  const app=read('app.js');
+  const start=app.indexOf('window.selectMarqueeItem');
+  const fn=app.slice(start, app.indexOf('function eventStateFor'));
+  assert.match(fn,/discover\.html\?title=/);
+  assert.match(fn,/encodeURIComponent\(titleName\)/);
+  assert.doesNotMatch(fn,/Tell me about/);
+  assert.doesNotMatch(fn,/checkDailyLimit/);
+  const js=read('discover.js');
+  assert.match(js,/getQueryParam\('title'\)/);
+  assert.match(js,/async function showTitleInfoCard/);
+  assert.match(js,/discoverFactsHTML/);
+  assert.match(js,/discover\.whereToWatch/);
+  assert.match(js,/discover\.whenItStarts/);
+  assert.match(js,/discover\.nowStreaming/);
+  assert.match(js,/titleCardIntro/);
+  const card=js.slice(js.indexOf('async function showTitleInfoCard'), js.indexOf('async function runDiscovery'));
+  assert.doesNotMatch(card,/checkDailyLimit/);
+  assert.doesNotMatch(card,/askAndRender/);
+  assert.match(card,/hydrateDiscoverCard/);
+  const html=read('discover.html');
+  assert.match(html,/discover-facts/);
+  assert.match(html,/discover\.js\?v=200/);
+});
+
+test('title-card copy exists in every supported language',()=>{
+  const polish=read('polish-i18n.js');
+  for(const key of ['discover.whereToWatch','discover.whenItStarts','discover.nowStreaming','discover.premiered','discover.startsIn','discover.sinceYear','discover.titleCardIntro']){
+    assert.match(polish,new RegExp(key.replace('.','\\.')));
+  }
+  for(const lang of ['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh']){
+    assert.match(polish,new RegExp(lang.replace('-','\\-')));
+  }
 });
