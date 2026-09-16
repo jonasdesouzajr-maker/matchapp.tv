@@ -1,4 +1,6 @@
-/* © 2026 MatchApp.tv — billing UI. Every product opens Stripe; Payment Links are the guaranteed path. */
+/* © 2026 MatchApp.tv — billing UI. Every product opens Stripe; Payment Links are the guaranteed path.
+   Hosted Checkout (stripe-checkout) is payment-only: no Organization, tax ID or phone.
+   Dashboard Payment Links must keep Collect business name / tax IDs OFF so the fallback matches. */
 console.log('MatchApp verified payments initialized');
 const pt=(key,fallback)=>{try{if(typeof window.t==='function'){const v=window.t(key);if(v&&v!==key)return v}}catch(_){}return fallback};
 const PENDING_KEY='match_pending_checkout';

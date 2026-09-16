@@ -48,7 +48,16 @@ For each one:
      payment succeeds and we have no idea whose account to credit. It is the
      single most common way this setup fails.
    - ✅ **Allow promotion codes** (optional, useful for launch campaigns)
-5. **After payment:** redirect to `https://matchapp.tv/profile/profile.html`
+   And turn **OFF**:
+   - ❌ **Collect business name / Organization** — never required
+   - ❌ **Collect tax IDs** (CNPJ, VAT, EIN) — never required
+   - ❌ **Require billing address** — leave on Auto
+   - ❌ **Collect phone number**
+   Checkout should ask only for a payment method (card, Pix, wallet). Email is
+   prefilled from the signed-in account. Hosted Checkout created by
+   `stripe-checkout` already disables Organization, tax IDs, phone and
+   automatic tax so this stays in sync.
+5. **After payment:** redirect to `https://matchapp.tv/purchase.html`
 6. Save, then copy the link URL (`https://buy.stripe.com/…`)
 
 ---

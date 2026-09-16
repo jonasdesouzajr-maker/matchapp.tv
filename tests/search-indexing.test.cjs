@@ -54,3 +54,25 @@ test('legacy .cc host is bounced to the canonical .tv host',()=>{
   assert.match(src,/https:\/\/matchapp\.tv/);
  }
 });
+test('core pages carry unique 2026 entertainment keywords and stay ads/search ready',()=>{
+ const home=read('index.html'),discover=read('discover.html'),pricing=read('pricing/pricing.html');
+ const kids=read('kids/index.html'),together=read('together.html');
+ assert.match(home,/name="keywords"[^>]+K-drama 2026/);
+ assert.match(home,/micro-drama/);
+ assert.match(home,/google-adsense-account" content="ca-pub-9541435081010948"/);
+ assert.match(home,/dateModified":"2026-09-16"/);
+ assert.match(discover,/where to stream a title/);
+ assert.match(discover,/micro-drama finder/);
+ assert.match(pricing,/Ask AI credits/);
+ assert.match(pricing,/OfferCatalog/);
+ assert.match(kids,/Kids Mode MatchApp/);
+ assert.match(together,/what should we watch tonight/);
+ assert.match(read('purchase.html'),/noindex/);
+ assert.match(read('ads.txt'),/google.com, pub-9541435081010948, DIRECT, f08c47fec0942fa0/);
+ const llms=read('llms.txt');
+ assert.match(llms,/https:\/\/matchapp\.tv\/discover\.html/);
+ assert.match(llms,/\/purchase\.html/);
+ assert.match(read('robots.txt'),/llms\.txt/);
+ assert.doesNotMatch(read('sitemap.xml'),/llms\.txt/);
+ assert.doesNotMatch(read('sitemap.xml'),/purchase\.html/);
+});
