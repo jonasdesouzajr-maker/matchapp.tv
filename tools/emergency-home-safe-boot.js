@@ -1,3 +1,4 @@
+// One-time emergency homepage safe-boot patcher.
 const fs=require('fs');
 const file='index.html';
 let s=fs.readFileSync(file,'utf8');
