@@ -1,21 +1,21 @@
 {
-  "version": "2026.09.16.1",
-  "date": "2026-09-15",
+  "version": "2026.09.16.2",
+  "date": "2026-09-16",
   "functional": true,
   "notes": {
-    "en": "Full premium homepage restored with a browser-proven startup fix. All homepage initializers run again, while initialization is staggered across tasks and the install-hint MutationObserver is idempotent and cannot feed back into itself.",
-    "pt-BR": "Página premium completa restaurada com correção de inicialização comprovada no navegador. Todos os inicializadores da home voltam a executar, distribuídos em tarefas curtas, e o MutationObserver de instalação agora é idempotente e não pode entrar em loop.",
-    "es": "Inicio seguro de emergencia: la página principal ahora arranca solo con el núcleo de MatchApp. GTM, anuncios, renderizado ambiental, ayudantes automáticos de actualización/instalación, passkeys, auditoría de títulos y observadores finales quedan temporalmente pausados, y los intervalos de inicio se limitan para evitar bloqueos del navegador.",
-    "fr": "Démarrage sécurisé d’urgence : l’accueil lance uniquement le cœur de MatchApp. GTM, publicités, rendu ambiant, aides automatiques de mise à jour/installation, passkeys, audit des titres et observateurs finaux sont temporairement suspendus, avec des intervalles de démarrage limités pour éviter le blocage du navigateur.",
-    "de": "Notfall-Sicherheitsstart: Die Startseite lädt nur noch den MatchApp-Kern. GTM, Werbung, Ambient-Rendering, automatische Update-/Installationshilfen, Passkeys, Titelprüfung und abschließende Beobachter sind dort vorübergehend pausiert; Startintervalle werden begrenzt, um Browser-Blockaden zu verhindern.",
-    "it": "Avvio sicuro d’emergenza: la home ora avvia solo il nucleo di MatchApp. GTM, annunci, rendering ambientale, helper automatici di aggiornamento/installazione, passkey, controllo titoli e observer finali sono temporaneamente sospesi; gli intervalli di avvio sono limitati per evitare blocchi del browser.",
-    "tr": "Acil güvenli başlangıç: ana sayfa artık yalnızca MatchApp çekirdeğini başlatır. GTM, reklamlar, ortam çizimi, otomatik güncelleme/kurulum yardımcıları, passkey, başlık denetimi ve son gözlemciler ana sayfada geçici olarak durduruldu; tarayıcı kilitlenmesini önlemek için başlangıç aralıkları sınırlandı.",
-    "ru": "Аварийный безопасный запуск: главная страница теперь запускает только ядро MatchApp. GTM, реклама, фоновый рендеринг, автоматические помощники обновления/установки, passkeys, проверка заголовков и финальные наблюдатели временно отключены, а интервалы запуска ограничены для предотвращения зависаний браузера.",
-    "ar": "تشغيل آمن للطوارئ: تبدأ الصفحة الرئيسية الآن بنواة MatchApp فقط. تم إيقاف GTM والإعلانات والرسم الخلفي ومساعدات التحديث/التثبيت التلقائية ومفاتيح المرور وتدقيق العناوين والمراقبات النهائية مؤقتًا على الصفحة الرئيسية، مع تقييد فترات التشغيل لمنع تجمد المتصفح.",
-    "hi": "आपात safe boot: होमपेज अब केवल MatchApp core runtime से शुरू होता है। GTM, ads, ambient rendering, auto update/install helpers, passkeys, title auditing और final observers को होमपेज पर अस्थायी रूप से रोका गया है, और browser lockup रोकने के लिए startup intervals को सुरक्षित दर पर सीमित किया गया है।",
-    "id": "Safe boot darurat: beranda kini hanya memulai runtime inti MatchApp. GTM, iklan, rendering ambient, helper pembaruan/pemasangan otomatis, passkey, audit judul, dan observer akhir sementara dihentikan di beranda, sementara interval startup dibatasi agar browser tidak terkunci.",
-    "ja": "緊急セーフブート：ホームページはMatchAppのコア機能だけで起動します。GTM、広告、背景描画、自動更新・インストール補助、パスキー、タイトル監査、最終オブザーバーをホームでは一時停止し、ブラウザーのフリーズを防ぐため起動時の間隔処理も安全な頻度に制限しました。",
-    "ko": "긴급 안전 부팅: 홈페이지는 이제 MatchApp 핵심 런타임만 시작합니다. GTM, 광고, 배경 렌더링, 자동 업데이트/설치 도우미, 패스키, 제목 감사 및 최종 옵저버를 홈페이지에서 일시 중지하고 브라우저 잠김을 막기 위해 시작 타이머 주기를 안전한 수준으로 제한했습니다.",
-    "zh": "紧急安全启动：首页现在只启动 MatchApp 核心运行时。首页暂时停用 GTM、广告、环境渲染、自动更新/安装辅助、Passkey、标题审计和最终观察器，并限制启动定时器频率，以防止浏览器锁死。"
+    "en": "Layout polish: full MatchApp TV Ai wordmark on every page, a single install button, empty ad slots collapsed, and the pricing clock showing the real time.",
+    "pt-BR": "Ajuste de layout: wordmark completo do MatchApp TV Ai em todas as páginas, um único botão de instalar, slots de anúncio vazios recolhidos e o relógio da página de preços com o horário real.",
+    "es": "Mejora de diseño: wordmark completo de MatchApp TV Ai en todas las páginas, un solo botón de instalación, anuncios vacíos ocultos y el reloj de precios con la hora real.",
+    "fr": "Peaufinage : le wordmark MatchApp TV Ai s’affiche en entier, un seul bouton d’installation, les publicités vides sont masquées et l’horloge des tarifs indique l’heure réelle.",
+    "de": "Layout-Politur: vollständiges MatchApp-TV-Ai-Wortmarke auf jeder Seite, nur ein Install-Button, leere Anzeigen ausgeblendet und die Preis-Uhr zeigt die echte Zeit.",
+    "it": "Ritocco layout: wordmark MatchApp TV Ai intero su ogni pagina, un solo pulsante Installa, slot pubblicitari vuoti nascosti e orologio prezzi con l’ora reale.",
+    "tr": "Düzen cilası: her sayfada tam MatchApp TV Ai sözcük işareti, tek yükleme düğmesi, boş reklam alanları gizlendi ve fiyat saati gerçek saati gösteriyor.",
+    "ru": "Полировка вёрстки: полный wordmark MatchApp TV Ai на всех страницах, одна кнопка установки, пустые рекламные блоки скрыты, часы на странице цен показывают реальное время.",
+    "ar": "تحسين التصميم: شعار MatchApp TV Ai كامل في كل الصفحات، زر تثبيت واحد، إخفاء الإعلانات الفارغة، وساعة التسعير تعرض الوقت الفعلي.",
+    "hi": "लेआउट सुधार: हर पेज पर पूरा MatchApp TV Ai वर्डमार्क, एक ही इंस्टॉल बटन, खाली विज्ञापन स्लॉट छिपे, और प्राइसिंग घड़ी वास्तविक समय दिखाती है।",
+    "id": "Perapihan tata letak: wordmark MatchApp TV Ai utuh di setiap halaman, satu tombol pasang, slot iklan kosong disembunyikan, dan jam harga menampilkan waktu nyata.",
+    "ja": "レイアウト調整：全ページでMatchApp TV Aiのワードマークを全文表示し、インストールボタンは1つ、空の広告枠は非表示、料金ページの時計は実時刻を表示します。",
+    "ko": "레이아웃 정리: 모든 페이지에서 MatchApp TV Ai 워드마크 전체 표시, 설치 버튼 하나, 빈 광고 슬롯 숨김, 요금 페이지 시계가 실제 시각을 표시합니다.",
+    "zh": "版式打磨：每页完整显示 MatchApp TV Ai 字标、只保留一个安装按钮、收起空白广告位，定价页时钟显示真实时间。"
   }
 }
