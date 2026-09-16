@@ -7,6 +7,7 @@ const html=fs.readFileSync(path.join(root,'index.html'),'utf8');
 const build=fs.readFileSync(path.join(root,'build-meta.js'),'utf8');
 const experience=fs.readFileSync(path.join(root,'experience-v2.js'),'utf8');
 
+// Production seal for the browser-proven cross-device freeze recovery.
 test('premium homepage runs all features with bounded startup scheduling',()=>{
   assert.doesNotMatch(html,/Stable mode is active|matchapp-recovery-banner|matchapp-static-recovery/);
   assert.match(html,/\/app\.js\?v=193/);
