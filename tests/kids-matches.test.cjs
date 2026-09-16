@@ -2,7 +2,7 @@ const {test}=require('node:test'),assert=require('node:assert/strict'),fs=requir
 const root=path.join(__dirname,'..'),read=f=>fs.readFileSync(path.join(root,f),'utf8'),tick=()=>new Promise(r=>setTimeout(r,20));
 async function boot(auth,quota={allowed:true,remaining:2},url='https://matchapp.tv/kids/'){
  const d=new JSDOM(read('kids/index.html').replace(/<script\b[\s\S]*?<\/script>/g,''),{url,runScripts:'outside-only'}),w=d.window,calls=[];
- w.matchMedia=()=>({matches:false});w.HTMLElement.prototype.scrollIntoView=()=>{};w.HTMLDialogElement.prototype.showModal=function(){this.open=true;};w.HTMLDialogElement.prototype.close=function(){this.open=false;this.dispatchEvent(new w.Event('close'));};
+ w.matchMedia=()=>({matches:true});w.HTMLElement.prototype.scrollIntoView=()=>{};w.HTMLDialogElement.prototype.showModal=function(){this.open=true;};w.HTMLDialogElement.prototype.close=function(){this.open=false;this.dispatchEvent(new w.Event('close'));};
  w.tmdbLookup=async()=>null;w.fetch=async()=>({ok:true,json:async()=>JSON.parse(read('kids/watch-links.json'))});
  w.supabaseClient={auth:{getSession:auth||asyncSession},rpc:async(name,args)=>{calls.push({name,args});return {data:name==='consume_match'?quota:{history:[],keys:[]}};}};
  w.eval(read('matching-policy.js'));w.eval(read('kids/account.js'));w.eval(read('kids/kids.js'));await tick();return {d,w,calls};

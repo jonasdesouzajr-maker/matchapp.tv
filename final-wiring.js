@@ -1,7 +1,7 @@
 /* Final production wiring: activate reviewed hardening modules without duplicating page markup. */
 (function(){
   'use strict';
-  const V='20260916-match2';
+  const V='20260916-perf-safe1';
   const path=location.pathname;
   function js(src){if(document.querySelector(`script[src^="${src}"]`))return;const s=document.createElement('script');s.src=src+'?v='+V;s.async=false;s.defer=true;document.head.appendChild(s);}
   function brand(){
@@ -19,6 +19,8 @@
     .match-fresh-recovery p{margin:.1rem 0 .75rem;color:#e8def7}
     .match-fresh-recovery div{display:flex;flex-wrap:wrap;gap:.5rem}
     .match-fresh-recovery button{border:1px solid rgba(229,193,88,.45);border-radius:999px;padding:.55rem .78rem;background:rgba(229,193,88,.08);color:#fff;cursor:pointer}
+    /* Moving brightness filters repaint every poster on every frame. The rail transform itself stays compositor-only. */
+    .marquee-track.is-marquee-flowing .marquee-item img,#events-track.is-marquee-flowing img{animation:none!important;filter:none!important}
     @keyframes maCornerUpdate{0%,100%{box-shadow:0 5px 14px rgba(0,0,0,.36),0 0 0 0 rgba(126,247,232,.32)}50%{box-shadow:0 5px 14px rgba(0,0,0,.36),0 0 0 5px rgba(126,247,232,0)}}
     @media(max-width:700px){.brand-install-corner{right:-.25rem;bottom:-.35rem;font-size:8px!important}.install-safety-mini{display:none}}
     @media(prefers-reduced-motion:reduce){.brand-install-corner.has-app-update{animation:none!important}}
