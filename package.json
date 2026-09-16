@@ -2,6 +2,7 @@
   "name": "matchapp-site",
   "private": true,
   "scripts": {
+    "build": "node -e \"const fs=require('fs'); for (const f of ['index.html','sitemap.xml','robots.txt']) { if (!fs.existsSync(f)) { console.error('missing '+f); process.exit(1);} } console.log('MatchApp static site ready');\"" ,
     "test": "node --test --test-isolation=none tests/*.test.cjs",
     "audit:site": "node tools/audit-site.js && node tools/audit-search.js && node tools/search-readiness.js",
     "audit:search": "node tools/audit-search.js && node tools/search-readiness.js",
