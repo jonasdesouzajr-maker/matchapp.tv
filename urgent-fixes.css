@@ -99,9 +99,30 @@ html[data-theme] a:is(.marquee-title,.poster-title){
   cursor: default;
 }
 .marquee-viewport.is-marquee-paused .is-marquee-flowing,
-.marquee-wrapper:hover .is-marquee-flowing,
-.events-wrapper:hover .is-marquee-flowing{
+.marquee-track:has(.marquee-item:hover),
+.marquee-track:has(.marquee-item:focus-visible),
+#events-track:has(.events-item:hover),
+#events-track:has(.events-item:focus-visible),
+#events-track:has([role="button"]:hover){
   animation-play-state: paused;
+}
+.marquee-track.is-marquee-flowing .marquee-item img{
+  animation: marqueeGlow 3.2s ease-in-out infinite;
+}
+@keyframes marqueeGlow{
+  0%,100%{filter:brightness(1)}
+  50%{filter:brightness(1.07)}
+}
+.marquee-viewport.is-marquee-paused .marquee-item img,
+.marquee-item:hover img{
+  animation-play-state: paused;
+}
+@media (hover: none){
+  .marquee-track:has(.marquee-item:hover),
+  #events-track:has(.events-item:hover),
+  #events-track:has([role="button"]:hover){
+    animation-play-state: running;
+  }
 }
 @keyframes marqueeFlow{
   from{transform:translate3d(0,0,0)}
@@ -111,10 +132,9 @@ html[data-theme] a:is(.marquee-title,.poster-title){
   .is-marquee-flowing{animation:none!important;will-change:auto}
 }
 html.reduce-motion .is-marquee-flowing{animation:none!important;will-change:auto}
-@media (max-width: 760px), (pointer: coarse){
-  .is-marquee-flowing{animation:none!important;will-change:auto}
+@media (max-width: 760px){
   .marquee-viewport[data-matchapp-autoplay-active="1"],
-  #events-viewport[data-matchapp-autoplay-active="1"]{overflow-x:auto !important; -webkit-overflow-scrolling:touch}
+  #events-viewport[data-matchapp-autoplay-active="1"]{overflow-x:hidden !important}
 }
 
 .marquee-wrapper,.marquee-viewport,#trending-rail{contain:layout}

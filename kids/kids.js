@@ -484,6 +484,44 @@
     chat.scrollIntoView({behavior: reducedMotion() ? 'auto' : 'smooth', block:'nearest'});
   }
 
+  function playKidsCelebrate(){
+    return new Promise(resolve=>{
+      if(reducedMotion()){resolve();return;}
+      document.querySelectorAll('.kids-celebrate').forEach(el=>el.remove());
+      const layer=document.createElement('div');
+      layer.className='kids-celebrate';
+      layer.setAttribute('aria-hidden','true');
+      const confetti=document.createElement('div'); confetti.className='kids-confetti';
+      const colors=['#ffcf72','#9ee8e6','#ffabcb','#ffffff','#b48cff','#7dffb3','#ff8a5c'];
+      for(let i=0;i<52;i++){
+        const bit=document.createElement('i');
+        bit.style.setProperty('--x',(Math.random()*100)+'vw');
+        bit.style.setProperty('--delay',(Math.random()*0.4)+'s');
+        bit.style.setProperty('--rot',(Math.random()*360)+'deg');
+        bit.style.setProperty('--c',colors[i%colors.length]);
+        bit.style.setProperty('--w',(6+Math.random()*8)+'px');
+        bit.style.setProperty('--h',(8+Math.random()*12)+'px');
+        bit.style.setProperty('--dur',(1.15+Math.random()*0.7)+'s');
+        bit.style.setProperty('--drift',((Math.random()*80)-40)+'px');
+        confetti.appendChild(bit);
+      }
+      const balloons=document.createElement('div'); balloons.className='kids-balloons';
+      const balloonColors=['#ff6b9d','#ffcf72','#6ecbff','#b48cff','#7dffb3','#ff8a5c'];
+      for(let i=0;i<8;i++){
+        const b=document.createElement('span');
+        b.className='kids-balloon';
+        b.style.setProperty('--x',(6+i*12+Math.random()*5)+'vw');
+        b.style.setProperty('--delay',(0.06*i)+'s');
+        b.style.setProperty('--c',balloonColors[i%balloonColors.length]);
+        b.innerHTML='<b></b><em></em>';
+        balloons.appendChild(b);
+      }
+      layer.appendChild(confetti); layer.appendChild(balloons);
+      document.body.appendChild(layer);
+      setTimeout(()=>layer.classList.add('is-popping'), 980);
+      setTimeout(()=>{layer.remove(); resolve();}, 1550);
+    });
+  }
   function reducedMotion() { return motionPaused || document.documentElement.classList.contains('reduce-motion') || matchMedia('(prefers-reduced-motion: reduce)').matches; }
   function updateMotion() {
     document.body.classList.toggle('kids-paused', motionPaused);
@@ -521,6 +559,7 @@
       document.getElementById('kids-result-status').textContent='';
       document.getElementById('kids-rematch-actions').hidden=true;
       status.textContent=tr('quotaUsed');
+      await playKidsCelebrate();
       if (typeof dialog.showModal === 'function') dialog.showModal();
       else { dialog.setAttribute('open','');dialog.scrollIntoView({block:'center'}); }
     }catch(_){status.textContent=tr('quotaError');status.scrollIntoView({block:'center'});}
