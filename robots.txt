@@ -1,6 +1,19 @@
 # MatchApp — https://matchapp.tv
 User-agent: *
 Allow: /
+# Account, checkout and diagnostic URLs are not public documents.
+# Blocking them stops Google from spending crawl budget on noindex pages.
+Disallow: /oauth/
+Disallow: /callback.html
+Disallow: /purchase.html
+Disallow: /reset.html
+Disallow: /register.html
+Disallow: /ai-check.html
+Disallow: /billing-check.html
+Disallow: /profile/
+Disallow: /$/
+Disallow: /%24
+Disallow: /404.html
 
 User-agent: GPTBot
 Allow: /

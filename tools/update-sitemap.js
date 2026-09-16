@@ -27,8 +27,11 @@ const CORE = [
     { loc: `${SITE}/together.html`,            freq: 'weekly',  pri: '0.8' },
     { loc: `${SITE}/pricing/pricing.html`,     freq: 'weekly',  pri: '0.8' },
     { loc: `${SITE}/events-archive.html`,      freq: 'weekly',  pri: '0.6' },
+    { loc: `${SITE}/about.html`,               freq: 'monthly', pri: '0.5' },
     { loc: `${SITE}/privacy.html`,             freq: 'monthly', pri: '0.3' },
     { loc: `${SITE}/terms.html`,               freq: 'monthly', pri: '0.3' },
+    { loc: `${SITE}/cookies.html`,             freq: 'monthly', pri: '0.3' },
+    { loc: `${SITE}/copyright.html`,           freq: 'monthly', pri: '0.3' },
     // Portuguese legal pages are real documents at their own URLs, not
     // query-string variants, so they are indexed separately.
     { loc: `${SITE}/termos.html`,              freq: 'monthly', pri: '0.3' },

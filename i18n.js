@@ -3,6 +3,7 @@
    Proprietary source code. Not licensed for reproduction, scraping,
    or reuse in competing products. See /terms.html Section 4.
    ============================================================ */
+(function(){try{var h=location.hostname;if(h==='matchapp.cc'||h==='www.matchapp.cc')location.replace('https://matchapp.tv'+location.pathname+location.search+location.hash);}catch(e){}})();
 
 /* ============================================================
    MatchApp — NATIVE INTERNATIONALIZATION ENGINE
@@ -606,26 +607,23 @@ function t(key, lang) {
 window.t = t;
 
 /**
- * Keeps <link rel="canonical"> consistent with the ?lang= URL actually being
- * viewed.
+ * Language is a display preference, not a separate document.
  *
- * Why this is necessary: every page ships a static canonical pointing at the
- * clean URL. Once ?lang= URLs became crawlable, Google would fetch
- * /?lang=pt-BR, read canonical="https://matchapp.tv/", conclude the Portuguese
- * variant is just a duplicate of the English one, and drop it — silently
- * cancelling the whole hreflang cluster. An hreflang alternate has to be
- * self-canonical to be treated as a real alternate, so when a valid ?lang= is
- * present the canonical is rewritten to match it. With no ?lang= the clean URL
- * stays canonical, which is exactly the x-default.
+ * Query-string ?lang= variants are the same HTML. Advertising them as
+ * hreflang alternates (and rewriting canonical to include ?lang=) made
+ * Google treat each language URL as a duplicate and pick its own
+ * canonical — Search Console: "Duplicate, Google chose different canonical
+ * than user" plus "Alternate page with proper canonical tag".
+ *
+ * Always keep the clean, query-free canonical. ?lang= still switches the
+ * UI for people; it is not a crawlable language version.
  */
 function syncCanonicalToLang() {
     try {
         const link = document.querySelector('link[rel="canonical"]');
         if (!link) return;
-        const qp = new URLSearchParams(window.location.search).get('lang');
-        if (!qp || !I18N[qp]) return;             // no/unknown lang → leave clean canonical
-        const base = link.href.split('?')[0].split('#')[0];
-        link.setAttribute('href', base + '?lang=' + qp);
+        const clean = link.href.split('?')[0].split('#')[0];
+        if (link.getAttribute('href') !== clean) link.setAttribute('href', clean);
     } catch (e) { /* canonical stays as authored */ }
 }
 

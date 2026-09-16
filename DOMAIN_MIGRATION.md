@@ -3,21 +3,28 @@
 `.tv` is the primary, canonical, indexable domain.
 `.cc` must become a permanent 301 redirect that preserves paths and query strings.
 
+A Cloudflare Pages `_redirects` file now lives at the site root:
+
+```
+/*    https://matchapp.tv/:splat    301
+```
+
+GitHub Pages ignores it. If `matchapp.cc` is deployed on Cloudflare Pages from this repo, that rule is the 301. Public pages also bounce `.cc` in JavaScript as a fallback until the HTTP 301 is confirmed with `curl -I`.
+
 ---
 
-## Why this can't be done in this repository
+## Why a real HTTP 301 still has to be confirmed at DNS
 
-This site is served by **GitHub Pages**, not Cloudflare Pages. Evidence: a `CNAME`
-file (the GitHub Pages custom-domain mechanism) and no `wrangler.toml`,
-`_redirects`, `_headers` or `functions/` directory anywhere in the repo.
+`.tv` is served by **GitHub Pages** (`CNAME` → `matchapp.tv`). GitHub Pages has no redirect-rule engine for a second domain, so this repo cannot 301 `matchapp.cc` by itself.
 
-GitHub Pages serves **one custom domain per repository** and has no redirect-rule
-engine. There is no file you can commit here that produces a real HTTP 301 for a
-second domain. It has to be done at the DNS/proxy layer, outside this repo.
+`matchapp.cc` currently answers **HTTP 200** through Cloudflare with the same HTML (canonical tags already point at `.tv`). That is why Search Console lists `.cc` URLs as "Alternate page with proper canonical tag" instead of a domain move.
 
-**Do not** solve this with a second GitHub repo serving `<meta http-equiv="refresh">`.
-That returns **HTTP 200**, not 301. Google treats it as a duplicate page rather
-than a migration signal, which is the exact problem this migration exists to fix.
+What this repo *does* now:
+
+- `_redirects` — Cloudflare Pages 301 of every path to `https://matchapp.tv/:splat` if `.cc` is published from this tree
+- JavaScript host bounce on public pages so visitors do not stay on `.cc` even when the 301 is not live yet
+
+Neither replaces a verified `curl -I https://matchapp.cc/` showing `301 Location: https://matchapp.tv/`. Keep the Cloudflare DNS redirect (Option A) until that check passes.
 
 ---
 

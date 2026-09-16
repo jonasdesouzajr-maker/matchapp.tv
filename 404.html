@@ -3,9 +3,24 @@
 <head>
     <script>
       // Recover the malformed home address without revisiting a cached root redirect.
-      if (/^\/(?:\$|%24)(?:\/index\.html|\/)?$/i.test(location.pathname)) {
-        location.replace('/index.html' + location.search + location.hash);
-      }
+      (function () {
+        var h = location.hostname;
+        if (h === 'matchapp.cc' || h === 'www.matchapp.cc') {
+          location.replace('https://matchapp.tv' + location.pathname + location.search + location.hash);
+          return;
+        }
+        if (/^\/(?:\$|%24)(?:\/index\.html|\/)?$/i.test(location.pathname)) {
+          location.replace('/index.html' + location.search + location.hash);
+          return;
+        }
+        if (/^\/pricing(?:\/index\.html)?$/i.test(location.pathname)) {
+          location.replace('/pricing/pricing.html' + location.search + location.hash);
+          return;
+        }
+        if (/^\/profile(?:\/index\.html)?$/i.test(location.pathname)) {
+          location.replace('/profile/profile.html' + location.search + location.hash);
+        }
+      })();
     </script>
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':

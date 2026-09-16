@@ -159,7 +159,7 @@ function buildPage({ kind, key, title, lede, items, related }) {
 <meta name="twitter:image" content="${SITE}/og-image.jpg?v=2">
 
 <link rel="alternate" hreflang="x-default" href="${url}">
-${LANGS.map(l => `<link rel="alternate" hreflang="${l}" href="${url}?lang=${l}">`).join('\n')}
+<link rel="alternate" hreflang="en" href="${url}">
 
 <script type="application/ld+json">${JSON.stringify(itemListLd)}</script>
 <script type="application/ld+json">${JSON.stringify(breadcrumbLd)}</script>
