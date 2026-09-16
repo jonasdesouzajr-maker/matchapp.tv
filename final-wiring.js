@@ -1,7 +1,7 @@
 /* Final production wiring: activate reviewed hardening modules without duplicating page markup. */
 (function(){
   'use strict';
-  const V='20260916-uxfix1';
+  const V='20260916-uxfix2';
   const path=location.pathname;
   function js(src){if(document.querySelector(`script[src^="${src}"]`))return;const s=document.createElement('script');s.src=src+'?v='+V;s.async=false;s.defer=true;document.head.appendChild(s);}
   function brand(){
