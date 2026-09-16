@@ -1,0 +1,28 @@
+name: Emergency static homepage recovery
+on:
+  push:
+    paths:
+      - '.github/workflows/emergency-static-home-once.yml'
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Apply emergency static homepage recovery
+        run: node tools/emergency-static-home.js
+      - name: Commit emergency static homepage recovery
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet; then
+            echo "No changes"
+            exit 0
+          fi
+          git add index.html build-meta.js release.json sw.js tests/emergency-home-safe-boot.test.cjs
+          git commit -m "Emergency static homepage recovery"
+          git push
