@@ -1,0 +1,33 @@
+name: Incident browser audit
+on:
+  push:
+    branches: [incident/full-home-recovery-20260916]
+concurrency:
+  group: matchapp-incident-browser-audit
+  cancel-in-progress: true
+permissions:
+  contents: read
+jobs:
+  browser-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Browser responsiveness audit (diagnostic, never red)
+        continue-on-error: true
+        shell: bash
+        run: |
+          set +e
+          npm install --no-save --ignore-scripts playwright@1.55.0
+          npx playwright install chromium
+          python3 -m http.server 4173 --bind 127.0.0.1 >/tmp/matchapp-http.log 2>&1 &
+          SERVER_PID=$!
+          sleep 1
+          node tools/browser-home-audit.mjs | tee /tmp/matchapp-browser-audit.log
+          CODE=${PIPESTATUS[0]}
+          kill $SERVER_PID 2>/dev/null || true
+          echo "Browser audit command exit: $CODE"
+          cat /tmp/matchapp-http.log || true
+          exit 0
+      - name: Diagnostic workflow completed
+        run: echo "Incident diagnostics completed without producing a red production check."
