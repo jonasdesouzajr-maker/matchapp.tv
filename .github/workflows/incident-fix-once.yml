@@ -13,6 +13,10 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
       - name: Build, test and browser-prove candidate without red CI
         shell: bash
         run: |
@@ -23,8 +27,6 @@ jobs:
           const read=p=>fs.readFileSync(p,'utf8');
           const write=(p,s)=>fs.writeFileSync(p,s);
 
-          // 1) Restore every homepage initializer. Keep startup smoothing, but
-          // never silently drop feature initialization again.
           let build=read('build-meta.js');
           const start=build.indexOf('/* HOME STARTUP STABILITY GATE');
           const end=build.indexOf('/* Search freshness + truthfulness layer.');
@@ -35,7 +37,6 @@ jobs:
           build=build.replace('/final-wiring.js?v=20260915-final11','/final-wiring.js?v=20260916-final12');
           write('build-meta.js',build);
 
-          // 2) Break the real cross-device MutationObserver feedback loop.
           let exp=read('experience-v2.js');
           const syncStart=exp.indexOf('  function syncInstallHints(){');
           const syncEnd=exp.indexOf('\n\n  function upgradeWordmarks',syncStart);
@@ -51,7 +52,6 @@ jobs:
           exp=exp.slice(0,obsStart)+observer+exp.slice(obsEnd+obsEndNeedle.length);
           write('experience-v2.js',exp);
 
-          // 3) Cache-bust the actual experience loader everywhere it is referenced.
           const skip=new Set(['.git','node_modules']);
           function walk(dir){
             for(const ent of fs.readdirSync(dir,{withFileTypes:true})){
@@ -85,8 +85,7 @@ jobs:
           sw=sw.replace(/const SW_VERSION = '[^']+';/,"const SW_VERSION = 'v20-full-home-recovery';");
           write('sw.js',sw);
 
-          // Replace the emergency recovery assertion with permanent runtime guards.
-          const test=`const test=require('node:test');\nconst assert=require('node:assert/strict');\nconst fs=require('node:fs');\nconst path=require('node:path');\nconst root=path.join(__dirname,'..');\nconst html=fs.readFileSync(path.join(root,'index.html'),'utf8');\nconst build=fs.readFileSync(path.join(root,'build-meta.js'),'utf8');\nconst experience=fs.readFileSync(path.join(root,'experience-v2.js'),'utf8');\n\ntest('premium homepage runs all features with bounded startup scheduling',()=>{\n  assert.doesNotMatch(html,/Stable mode is active|matchapp-recovery-banner|matchapp-static-recovery/);\n  assert.match(html,/\\/app\\.js\\?v=193/);\n  for(const file of ['criteria.js','lazy.js','tv.js','credits-ui.js','voice-input.js']) assert.match(html,new RegExp('\\/'+file.replace('.','\\.')+'\\?'));\n  assert.match(build,/HOME STARTUP SCHEDULER/);\n  assert.doesNotMatch(build,/SKIPPED_HEAVY_STARTUP|heavy\.some/);\n  assert.match(build,/restoreNativeListener/);\n});\n\ntest('experience observer cannot create a text-mutation feedback loop',()=>{\n  assert.match(experience,/text\.textContent!==words\.download/);\n  assert.match(experience,/nodeType===1/);\n  assert.match(experience,/observerQueued/);\n  assert.doesNotMatch(experience,/if\(structure\|\|install\) syncInstallHints\(\);\\n    \}\);\\n    observer\.observe/);\n});\n`;
+          const test=`const test=require('node:test');\nconst assert=require('node:assert/strict');\nconst fs=require('node:fs');\nconst path=require('node:path');\nconst root=path.join(__dirname,'..');\nconst html=fs.readFileSync(path.join(root,'index.html'),'utf8');\nconst build=fs.readFileSync(path.join(root,'build-meta.js'),'utf8');\nconst experience=fs.readFileSync(path.join(root,'experience-v2.js'),'utf8');\n\ntest('premium homepage runs all features with bounded startup scheduling',()=>{\n  assert.doesNotMatch(html,/Stable mode is active|matchapp-recovery-banner|matchapp-static-recovery/);\n  assert.match(html,/\\/app\\.js\\?v=193/);\n  for(const file of ['criteria.js','lazy.js','tv.js','credits-ui.js','voice-input.js']) assert.match(html,new RegExp('\\/'+file.replace('.','\\.')+'\\?'));\n  assert.match(build,/HOME STARTUP SCHEDULER/);\n  assert.doesNotMatch(build,/SKIPPED_HEAVY_STARTUP|heavy\\.some/);\n  assert.match(build,/restoreNativeListener/);\n});\n\ntest('experience observer cannot create a text-mutation feedback loop',()=>{\n  assert.match(experience,/text\\.textContent!==words\\.download/);\n  assert.match(experience,/nodeType===1/);\n  assert.match(experience,/observerQueued/);\n  assert.match(experience,/setTimeout\\(flushObservedChanges,0\\)/);\n});\n`;
           write('tests/premium-home-recovery.test.cjs',test);
           NODE
           PATCH_STATUS=$?
@@ -98,14 +97,14 @@ jobs:
           npm run audit:site
           AUDIT_STATUS=$?
 
-          npm install --no-save --ignore-scripts playwright@1.55.0 >/tmp/pw-install.log 2>&1
+          npm install --no-save --package-lock=false --ignore-scripts playwright@1.55.0 >/tmp/pw-install.log 2>&1
           PW_STATUS=$?
           npx playwright install chromium >>/tmp/pw-install.log 2>&1
           BROWSER_INSTALL_STATUS=$?
           python3 -m http.server 4173 --bind 127.0.0.1 >/tmp/matchapp-http.log 2>&1 &
           SERVER_PID=$!
           sleep 1
-          cat >/tmp/verify-home.mjs <<'NODE'
+          cat >tools/verify-home-ci.mjs <<'NODE'
           import { chromium } from 'playwright';
           const browser=await chromium.launch({headless:true,args:['--disable-dev-shm-usage','--no-sandbox']});
           const page=await browser.newPage({viewport:{width:1440,height:1000}});
@@ -136,10 +135,10 @@ jobs:
             const bad=pageErrors.filter(e=>/TypeError|ReferenceError|SyntaxError|Maximum call stack/i.test(e));
             if(bad.length)throw new Error('page errors '+bad.join(' | '));
             console.log('MATCHAPP_HOME_VERIFY='+JSON.stringify({ok:true,state,pageErrors:bad}));
-            await browser.close();process.exit(0);
+            process.exit(0);
           }catch(e){console.error('MATCHAPP_HOME_VERIFY='+JSON.stringify({ok:false,error:String(e?.stack||e),pageErrors}));process.exit(2);}
           NODE
-          timeout 30s node /tmp/verify-home.mjs | tee /tmp/home-verify.log
+          timeout 30s node tools/verify-home-ci.mjs | tee /tmp/home-verify.log
           BROWSER_STATUS=${PIPESTATUS[0]}
           kill $SERVER_PID 2>/dev/null || true
 
@@ -147,7 +146,7 @@ jobs:
           cat /tmp/home-verify.log || true
 
           if [ "$PATCH_STATUS" -eq 0 ] && [ "$CI_STATUS" -eq 0 ] && [ "$TEST_STATUS" -eq 0 ] && [ "$AUDIT_STATUS" -eq 0 ] && [ "$PW_STATUS" -eq 0 ] && [ "$BROWSER_INSTALL_STATUS" -eq 0 ] && [ "$BROWSER_STATUS" -eq 0 ]; then
-            rm -f .github/workflows/incident-fix-once.yml .github/workflows/incident-browser-audit.yml tools/browser-home-audit.mjs
+            rm -f .github/workflows/incident-fix-once.yml .github/workflows/incident-browser-audit.yml tools/browser-home-audit.mjs tools/verify-home-ci.mjs
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git add -A
@@ -155,6 +154,7 @@ jobs:
             git push origin HEAD:incident/full-home-recovery-20260916
             echo "CANDIDATE_COMMITTED=1"
           else
+            rm -f tools/verify-home-ci.mjs
             echo "CANDIDATE_COMMITTED=0"
             echo "Candidate was NOT committed because one or more gates did not pass."
           fi
