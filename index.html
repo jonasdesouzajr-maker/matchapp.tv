@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Emergency safe boot: GTM paused on homepage -->
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-M7J3NNBN');</script>
+    <!-- End Google Tag Manager -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <link rel="icon" href="/logo-192.jpeg" type="image/jpeg">
@@ -101,19 +107,19 @@
     <link rel="alternate" hreflang="zh" href="https://matchapp.tv/?lang=zh">
 
     <!-- NATIVE I18N (defer = runs before DOMContentLoaded, no English flash) -->
-    
-
-
-
-    
-
-
-
-
+    <script defer src="/i18n.js?v=187"></script>
+<script defer src="/polish-i18n.js?v=191"></script>
+<script defer src="/event-i18n.js?v=187"></script>
+<script defer src="/page-locale.js?v=187"></script>
+    <script src="/build-meta.js?v=196"></script>
+<script src="/app-install-state.js?v=187"></script>
+<script defer src="/install.js?v=187"></script>
+    <script defer src="/avatars.js?v=187"></script>
+    <script defer src="/ambient.js?v=188"></script>
 
     <!-- GOOGLE ANALYTICS (GTAG) -->
 <!-- GOOGLE ADSENSE SCRIPT ENGINE -->
-    <!-- Emergency safe boot: third-party ad engine paused on homepage -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9541435081010948" crossorigin="anonymous"></script>
 
 
     <!-- TYPEFACES
@@ -138,10 +144,11 @@
     <!-- Smart TV stylesheet. Entirely scoped under body.tv-mode, so a
          non-TV visitor pays one small file and sees no change. -->
     <link rel="stylesheet" href="/tv.css?v=187">
-    
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.105.0/dist/umd/supabase.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
-
-    
+    <script type="text/javascript">
+    </script>
 
     <style>
         :root { --gold: #E5C158; --gold-deep: #B8912F; --gold-glow: #FFF3A3; --ink: #14131A; --ink-2: #1A191F; --royal-deep: #130734; --royal: #402562; --royal-lift: #6B3FA0; --royal-glow: #A376B6; --bg-dark: #14131A; --card-bg: rgba(26, 22, 38, 0.90);
@@ -1534,21 +1541,12 @@
 
 <link rel="stylesheet" href="/themes.css?v=187">
 <link rel="stylesheet" href="/app-polish.css?v=187">
-
-<link rel="stylesheet" href="/poster-wall.css?v=191"><script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://matchapp.tv/#organization","name":"MatchApp TV Ai","url":"https://matchapp.tv/","logo":"https://matchapp.tv/logo-512.jpeg","contactPoint":{"@type":"ContactPoint","contactType":"customer support","telephone":"+5521974297919","email":"support@matchapp.tv"},"sameAs":["https://wa.me/5521974297919"]}</script><link rel="stylesheet" href="/brand.css?v=192">
-
-<style id="matchapp-static-recovery">
-  html{scroll-behavior:auto!important}
-  html *,html *::before,html *::after{animation:none!important;transition:none!important}
-  #ambient-bg,.ambient-bg,.ad-banner-container,.side-ad{display:none!important}
-  main>section,main>article,body>section,body>article{content-visibility:auto;contain-intrinsic-size:700px 900px}
-  #matchapp-recovery-banner{position:relative;z-index:10000;margin:10px auto 14px;max-width:1280px;padding:10px 14px;border:1px solid rgba(229,193,88,.45);border-radius:12px;background:#17141f;color:#fff;font:600 14px/1.45 Inter,Arial,sans-serif}
-  #matchapp-recovery-banner a{color:#f3d66f;font-weight:800}
-</style>
+<script src="/themes.js?v=187"></script>
+<link rel="stylesheet" href="/poster-wall.css?v=191"><script defer src="/poster-wall.js?v=187"></script><script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://matchapp.tv/#organization","name":"MatchApp TV Ai","url":"https://matchapp.tv/","logo":"https://matchapp.tv/logo-512.jpeg","contactPoint":{"@type":"ContactPoint","contactType":"customer support","telephone":"+5521974297919","email":"support@matchapp.tv"},"sameAs":["https://wa.me/5521974297919"]}</script><link rel="stylesheet" href="/brand.css?v=192">
 </head>
-<body><div id="matchapp-recovery-banner" role="status"><strong>Stable mode is active.</strong> The homepage is temporarily running without JavaScript so it stays responsive. <a href="/discover.html">Open the AI Concierge →</a></div>
+<body>
     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe loading="lazy" src="https://www.googletagmanager.com/ns.html?id=GTM-M7J3NNBN"
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7J3NNBN"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
@@ -1557,7 +1555,7 @@
     <div id="chrome-notice" onclick="openInChrome()" role="button" tabindex="0" onkeydown="if(event.key==='Enter')openInChrome()">
         <span class="chrome-link">
             <!-- Chrome mark drawn locally rather than hotlinked from Wikimedia.
-                 The old <img loading="lazy" decoding="async"> depended on an external server we don't control,
+                 The old <img> depended on an external server we don't control,
                  and at 22px a remote request for a logo is pure overhead. -->
             <svg class="chrome-mark" viewBox="0 0 48 48" width="14" height="14" aria-hidden="true" focusable="false">
                 <circle cx="24" cy="24" r="21" fill="none" stroke="currentColor" stroke-width="4" opacity="0.5"/>
@@ -1608,7 +1606,7 @@
             <a id="profile-link-tab" href="/profile/profile.html" class="nav-avatar-link"
                style="display:none;" aria-label="Your profile" data-i18n-aria="nav.profile">
                 <span class="avatar-ring" data-avatar-slot>
-                    <img loading="lazy" decoding="async" id="nav-avatar-img" src="" alt="" style="display:none;">
+                    <img id="nav-avatar-img" src="" alt="" style="display:none;">
                     <span class="avatar-empty" aria-hidden="true">
                         <svg viewBox="0 0 24 24" width="15" height="15">
                             <circle cx="12" cy="8.5" r="3.8" fill="none" stroke="currentColor" stroke-width="2"/>
@@ -1930,7 +1928,7 @@
                             onclick="document.body.classList.toggle('lazy-filters-open'); this.textContent = document.body.classList.contains('lazy-filters-open') ? '− Fewer filters' : '+ More filters (platform, vibe, era, age)';"
                             data-i18n="lazy.moreFilters">+ More filters (platform, vibe, era, age)</button>
 
-                    <a href="/discover.html" class="gold-btn" style="margin-top: 30px; width: 100%; font-size: 22px; padding: 22px; text-transform: uppercase; letter-spacing: 2px;" data-i18n="q.submit" style="display:block;text-align:center;text-decoration:none;">⚡ Consult AI Concierge</a>
+                    <button onclick="triggerMatch(false)" class="gold-btn" style="margin-top: 30px; width: 100%; font-size: 22px; padding: 22px; text-transform: uppercase; letter-spacing: 2px;" data-i18n="q.submit">⚡ Consult AI Concierge</button>
                 </article>
 
 <article id="loading-box" class="premium-card" style="display: none; padding: 46px 20px 40px 20px; text-align: center;">
@@ -1989,7 +1987,7 @@
                                 <span class="pulse-ring"></span>
                                 <span class="pulse-ring"></span>
                                 <span class="pulse-ring"></span>
-                                <img loading="lazy" decoding="async" id="res-poster-img" src="" alt="Poster" style="display: none;">
+                                <img id="res-poster-img" src="" alt="Poster" style="display: none;">
                                 <span class="res-zoom-hint" aria-hidden="true">⤢</span>
                             </div>
                         </div>
@@ -2008,7 +2006,7 @@
                          would then need pinching back out, and competes with the
                          drag/swipe gestures the trending rail already uses). -->
                     <div id="poster-zoom-overlay" class="modal-overlay" onclick="closePosterZoom()" role="dialog" aria-modal="true" aria-label="Full-size cover, tap to close">
-                        <img loading="lazy" decoding="async" id="poster-zoom-img" src="" alt="" style="max-width:92vw; max-height:88vh; border-radius:16px; border:2px solid var(--gold); box-shadow:0 20px 60px rgba(0,0,0,0.8);">
+                        <img id="poster-zoom-img" src="" alt="" style="max-width:92vw; max-height:88vh; border-radius:16px; border:2px solid var(--gold); box-shadow:0 20px 60px rgba(0,0,0,0.8);">
                     </div>
 
                     <!-- TRAILER — a single, prominent, always-working link to YouTube.
@@ -2141,7 +2139,7 @@
                         <div class="spotlight-poster" onclick="saveSpotlightTitle()" role="button" tabindex="0"
                              onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();saveSpotlightTitle();}"
                              aria-label="Save American Horror Story: 13 to Watch Later">
-                            <img loading="lazy" decoding="async" id="spotlight-poster-img" src="/ahs13-official.png?v=187" alt="American Horror Story: 13 — premieres September 24, 2026 on FX and Hulu">
+                            <img id="spotlight-poster-img" src="/ahs13-official.png?v=187" alt="American Horror Story: 13 — premieres September 24, 2026 on FX and Hulu">
                             <div class="spotlight-ribbon" data-i18n="spotlight.ribbon">COMING THIS MONTH</div>
                         </div>
                         <div class="spotlight-body">
@@ -2632,26 +2630,56 @@
         </div>
     </div>
 
-    
-    
-    
-
-    
+    <script src="/settings.js?v=192"></script>
+    <script src="/matching-policy.js?v=190"></script>
+    <script src="/match-localization.js?v=187"></script>
+<script src="/app.js?v=193"></script>
+    <script src="/install-progress.js?v=200"></script>
     <!-- Loads AFTER app.js so the chips it builds can call straight into the
          matcher, and non-deferred so the form is never briefly interactive as
          a plain single-choice select. -->
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    <script src="/tmdb.js?v=190"></script>
+    <script src="/criteria.js?v=190"></script>
+    <script src="/lazy.js?v=187"></script>
+    <script src="/tv.js?v=187"></script>
+    <script src="/taste.js?v=187"></script>
+    <script src="/contacts.js?v=187"></script>
+    <script src="/share.js?v=187"></script>
+    <script src="/pricing.js?v=187"></script>
+    <script src="/credits-ui.js?v=187"></script>
+    <script src="/voice-input.js?v=187"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            initVoiceInput('specific-search-input', 'mic-btn-index', () => smartSearch());
+        });
+    </script>
+    <script>
+        // OS-LEVEL CHROME FORCE LAUNCHER
+        function openInChrome() {
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            if (/android/i.test(userAgent)) {
+                window.location.href = "intent://matchapp.tv/#Intent;scheme=https;package=com.android.chrome;end";
+            } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                window.location.href = "googlechrome://navigate?url=matchapp.tv";
+            } else {
+                alert("To open in Chrome on desktop, simply press Ctrl+C to copy the link and open Google Chrome.");
+            }
+        }
+
+        // Floating logos are now handled by ambient.js (canvas + collision physics).
+
+
+        const footerYearEl = document.getElementById('footer-year');
+        if (footerYearEl) footerYearEl.innerText = new Date().getFullYear();
+
+        // PREMIUM SCROLL REVEAL: cards gently fade/rise into view as the user scrolls
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) { entry.target.classList.add('fade-in'); revealObserver.unobserve(entry.target); }
+            });
+        }, { threshold: 0.15 });
+        document.querySelectorAll('.premium-card, .ad-banner-container').forEach(el => revealObserver.observe(el));
+    </script>
 
     <!-- NOT FOR ME CHOOSER -->
     <div id="notforme-modal" class="nfm-backdrop" style="display:none;" role="dialog" aria-modal="true" aria-labelledby="nfm-heading">
@@ -2669,9 +2697,9 @@
             <button onclick="closeNotForMeChooser()" class="nfm-cancel" data-i18n="nfm.cancel">Cancel</button>
         </div>
     </div>
-
-
-
-
-</body>
+<script src="/passkeys.js?v=187"></script>
+<script src="/app-updates.js?v=191"></script>
+<script defer src="/ads-init.js?v=1"></script>
+<script src="/global-events.js?v=187"></script>
+<script src="/title-captions.js?v=190"></script></body>
 </html>

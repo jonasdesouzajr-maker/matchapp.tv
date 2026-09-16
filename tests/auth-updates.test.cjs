@@ -1,11 +1,9 @@
 const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');const {JSDOM}=require('jsdom');const root=path.join(__dirname,'..');const tick=()=>new Promise(r=>setTimeout(r,10));
 async function authDom(auth,signed=true){const dom=new JSDOM('<button data-passkey-action="signin" data-passkey-text="signIn"></button><button data-passkey-action="add" data-passkey-text="add"></button><p data-passkey-status></p><div id="passkey-list"></div>',{url:'https://matchapp.tv',runScripts:'outside-only'}),w=dom.window;Object.defineProperty(w,'isSecureContext',{value:true});w.PublicKeyCredential=class{};w.navigator.credentials={};w.closeAuthModal=()=>{w.closedAuth=true;};w.supabaseClient={auth:{getSession:async()=>({data:{session:signed?{user:{id:'u'}}:null}}),onAuthStateChange:()=>{},passkey:{list:async()=>({data:[]})},...auth}};w.eval(fs.readFileSync(path.join(root,'passkeys.js'),'utf8'));await tick();return dom;}
 
-test('interactive auth pages load the verified passkey-capable SDK while static recovery home stays script-free',()=>{
+test('all auth pages load the verified passkey-capable SDK and the client opts in',()=>{
  const pages=[];function walk(dir){for(const e of fs.readdirSync(dir,{withFileTypes:true})){if(['node_modules','.git'].includes(e.name))continue;const p=path.join(dir,e.name);if(e.isDirectory())walk(p);else if(p.endsWith('.html')){const s=fs.readFileSync(p,'utf8');for(const m of s.matchAll(/supabase-js@([^/]+)\/dist\/umd\/supabase\.js/g)){assert.equal(m[1],'2.105.0',path.relative(root,p)+' uses an incompatible SDK');pages.push(p);}}}}walk(root);
- const home=fs.readFileSync(path.join(root,'index.html'),'utf8');
- assert.match(home,/id="matchapp-static-recovery"/);assert(!pages.includes(path.join(root,'index.html')),'static recovery home must not load the Supabase SDK');
- assert(pages.includes(path.join(root,'profile','profile.html')));assert(pages.includes(path.join(root,'friends.html')));
+ assert(pages.includes(path.join(root,'index.html')));assert(pages.includes(path.join(root,'profile','profile.html')));assert(pages.includes(path.join(root,'friends.html')));
  assert.match(fs.readFileSync(path.join(root,'app.js'),'utf8'),/experimental:\s*\{\s*passkey:\s*true/);
 });
 test('passkey sign-in succeeds only after Supabase returns a verified session',async()=>{const dom=await authDom({signInWithPasskey:async()=>({data:{user:{id:'u'},session:{access_token:'server-verified'}}})});dom.window.document.querySelector('[data-passkey-action=signin]').click();await tick();assert.equal(dom.window.closedAuth,true);assert.equal(dom.window.document.querySelector('[data-passkey-status]').textContent,'Signed in securely.');dom.window.close();});

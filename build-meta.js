@@ -1,41 +1,49 @@
 // Functional release identifier must match release.json.
-window.MATCHAPP_BUILD = '2026.09.15.10';
+window.MATCHAPP_BUILD = '2026.09.15.11';
 
-/* EMERGENCY SAFE BOOT
-   The homepage had accumulated several independent startup enhancement layers.
-   In a browser that is already under load, any forgotten short interval or
-   observer feedback loop can starve the main thread before the user can click.
-   Safe boot keeps the core matcher/auth/i18n runtime but removes continuous
-   presentation work from the home route until each enhancement is reintroduced
-   behind a measured budget. */
+
+/* HOME STARTUP STABILITY GATE
+   app.js historically registers many DOMContentLoaded jobs. Running all of them
+   in one event turn can monopolize the browser main thread on long home pages.
+   On the homepage only, keep user-facing functionality loaded while suppressing
+   the known automatic heavy jobs and staggering the remaining app.js startup
+   handlers. Other pages and other scripts keep native event behavior. */
 (function(){
   'use strict';
-  const path=location.pathname;
-  const home=path==='/'||path==='/index.html';
-  if(!home)return;
-  window.MATCHAPP_SAFE_BOOT=true;
-  document.documentElement.classList.add('matchapp-safe-boot');
-
-  // Clamp every interval created after this point. app.js historically had a
-  // 16ms rail timer and the loading meter uses 100ms ticks; neither needs that
-  // frequency to keep the product functional. One second is intentionally
-  // conservative while we recover frozen tabs across desktop/mobile/TV.
-  const nativeSetInterval=window.setInterval.bind(window);
-  window.setInterval=function(fn,ms,...args){
-    const delay=Math.max(1000,Number(ms)||0);
-    return nativeSetInterval(fn,delay,...args);
+  const p=location.pathname;
+  if(p!=='/'&&p!=='/index.html') return;
+  if(window.__MATCHAPP_HOME_STARTUP_GATE__) return;
+  window.__MATCHAPP_HOME_STARTUP_GATE__=true;
+  const nativeAdd=Document.prototype.addEventListener;
+  let slot=0;
+  const heavy=[
+    /hydrateMarqueeCovers/,
+    /refreshEventStates/,
+    /initRail\(['"]marquee-viewport/,
+    /initRail\(['"]events-viewport/,
+    /initLiveStrip/,
+    /hydrateSpotlightPoster/,
+    /renderSpotlightCountdown/
+  ];
+  Document.prototype.addEventListener=function(type,listener,options){
+    const current=(document.currentScript&&document.currentScript.src)||'';
+    const fromApp=type==='DOMContentLoaded'&&/\/app\.js(?:[?#]|$)/.test(current)&&typeof listener==='function';
+    if(!fromApp) return nativeAdd.call(this,type,listener,options);
+    let source='';
+    try{source=Function.prototype.toString.call(listener);}catch(_){source='';}
+    if(heavy.some(re=>re.test(source))){
+      window.__MATCHAPP_SKIPPED_HEAVY_STARTUP__=(window.__MATCHAPP_SKIPPED_HEAVY_STARTUP__||0)+1;
+      return;
+    }
+    const delay=Math.min(1200,80+(slot++*70));
+    const wrapped=function(ev){
+      const self=this;
+      setTimeout(function(){
+        try{listener.call(self,ev);}catch(err){console.error('[MatchApp startup]',err);}
+      },delay);
+    };
+    return nativeAdd.call(this,type,wrapped,options);
   };
-  window.setInterval.__matchappSafeBoot=true;
-
-  const style=document.createElement('style');
-  style.id='matchapp-safe-boot-style';
-  style.textContent=`
-    html.matchapp-safe-boot *,html.matchapp-safe-boot *::before,html.matchapp-safe-boot *::after{animation:none!important;transition:none!important}
-    html.matchapp-safe-boot #ambient-bg,html.matchapp-safe-boot .ambient-bg{display:none!important}
-    html.matchapp-safe-boot .ad-banner-container,html.matchapp-safe-boot .side-ad{min-height:0!important}
-    html.matchapp-safe-boot .scanner-stage .scan-beam,html.matchapp-safe-boot .eq-bars{animation:none!important}
-  `;
-  document.head.appendChild(style);
 })();
 
 /* Search freshness + truthfulness layer.
@@ -67,10 +75,7 @@ window.MATCHAPP_BUILD = '2026.09.15.10';
     document.head.appendChild(script);
   }
 
-  // Kept for non-safe-boot use and regression coverage. Home safe boot does
-  // not call it, so the old rail cannot start a second autoplay controller.
   function loadHomeRuntimeFixes() {
-    if (window.MATCHAPP_SAFE_BOOT) return;
     if (document.querySelector('script[data-matchapp-marquee-autoplay]')) return;
     const script = document.createElement('script');
     script.src = '/marquee-autoplay.js?v=20260915c';
@@ -142,14 +147,12 @@ window.MATCHAPP_BUILD = '2026.09.15.10';
   else install();
 })();
 
-/* Final hardening loader remains enabled on non-home pages. The home route is
-   deliberately excluded during safe boot so no MutationObserver/runtime repair
-   layer is allowed to start before the core page proves responsive. */
+/* Final hardening loader: central entry point so every page that already loads
+   build-meta receives the current integrity/install/brand/speed layer without HTML churn. */
 (function(){
-  if(window.MATCHAPP_SAFE_BOOT)return;
   if(document.querySelector('script[data-matchapp-final-wiring]'))return;
   const s=document.createElement('script');
-  s.src='/final-wiring.js?v=20260915-final9';
+  s.src='/final-wiring.js?v=20260915-final11';
   s.async=false;
   s.defer=true;
   s.dataset.matchappFinalWiring='1';
