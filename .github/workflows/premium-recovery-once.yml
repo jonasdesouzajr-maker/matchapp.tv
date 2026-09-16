@@ -22,7 +22,7 @@ jobs:
         run: |
           set -euo pipefail
           BASE=e4a7cf45be9396a93c1061578a974542f0f4561e
-          git checkout "$BASE" -- index.html build-meta.js tests/ads.test.cjs
+          git checkout "$BASE" -- index.html build-meta.js tests/ads.test.cjs tests/auth-updates.test.cjs
           rm -f tests/emergency-home-safe-boot.test.cjs
           node <<'NODE'
           const fs=require('node:fs');
