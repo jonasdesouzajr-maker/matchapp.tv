@@ -27,12 +27,13 @@
   function initRail(vpId, trackId){
     const vp=document.getElementById(vpId);
     const track=document.getElementById(trackId);
-    if(!vp||!track||vp.dataset.matchappAutoplayFix==='4')return;
-    vp.dataset.matchappAutoplayFix='4';
+    if(!vp||!track||vp.dataset.matchappAutoplayFix==='5')return;
+    vp.dataset.matchappAutoplayFix='5';
     holdLegacy(vp);
 
     const canFlow=()=>!reduced();
     const held=new Set();
+    const offscreenHold={kind:'offscreen'};
     let resumeTimer=0;
 
     const stopFlow=()=>{
@@ -77,15 +78,29 @@
     bindItems();
     if(window.MutationObserver)new MutationObserver(bindItems).observe(track,{childList:true,subtree:true});
 
-    window.addEventListener('pointerup',()=>{held.clear();resumeSoon(null,280);},{passive:true});
+    /* Keep compositor work limited to rails the visitor can actually see.
+       Pausing, rather than rebuilding, preserves the current rail position. */
+    if(window.IntersectionObserver){
+      const visibilityObserver=new IntersectionObserver(entries=>{
+        const entry=entries[0];
+        if(entry&&entry.isIntersecting&&entry.intersectionRatio>0){
+          resumeSoon(offscreenHold,80);
+        }else{
+          pauseOn(offscreenHold);
+        }
+      },{root:null,rootMargin:'160px 0px',threshold:0.01});
+      visibilityObserver.observe(vp);
+    }
+
+    window.addEventListener('pointerup',()=>{held.delete(offscreenHold);held.clear();resumeSoon(null,280);},{passive:true});
     vp.addEventListener('wheel',()=>{freeze();resumeSoon(null,1200);},{passive:true});
 
     document.addEventListener('visibilitychange',()=>{
       if(document.hidden) stopFlow();
-      else startFlow();
+      else if(!held.has(offscreenHold)) startFlow();
     });
     document.addEventListener('matchapp:settingschanged',()=>{
-      if(reduced())stopFlow();else startFlow();
+      if(reduced())stopFlow();else if(!held.has(offscreenHold))startFlow();
     });
 
     if(window.ResizeObserver){
