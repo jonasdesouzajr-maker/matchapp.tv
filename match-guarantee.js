@@ -1,4 +1,4 @@
-/* Never-empty Match, never-repeat while a fresh title exists, device language. */
+/* Never-empty Match inside the user's criteria. Device language. Never a mismatched genre. */
 (function () {
   'use strict';
   const SUPPORTED = ['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh'];
@@ -31,26 +31,24 @@
     if ((t.avoidCats || []).length && ec.some(c => t.avoidCats.includes(c))) return false;
     return true;
   };
-  function pickFresh(relaxTaste) {
-    const shown = shownSet(), all = catalog();
-    const ok = e => e && e.title && !shown.has(e.title) && (relaxTaste || window.tasteAllowsEntry(e));
-    const preferred = all.filter(e => {
-      if (!ok(e)) return false;
-      const t = window.MATCH_TASTE; if (!t || !t.done) return true;
-      const em = e.moods || [], ev = e.vibes || [], ec = e.cats || [];
-      return (!t.moods?.length || em.some(m => t.moods.includes(m))) || (!t.vibes?.length || ev.some(v => t.vibes.includes(v))) || (!t.cats?.length || !ec.length || ec.some(c => t.cats.includes(c)));
+  function currentCriteria() {
+    try { if (typeof window.getMatchCriteria === 'function') return window.getMatchCriteria(); } catch (_) {}
+    return window.lastMatchCriteria || {};
+  }
+  function pickFreshFitting(criteria) {
+    const shown = shownSet();
+    const policy = window.matchPolicy;
+    const extra = [];
+    shown.forEach(t => extra.push(policy ? policy.key(t) : String(t).toLowerCase()));
+    const pool = catalog().filter(e => {
+      if (!e || !e.title || shown.has(e.title)) return false;
+      if (typeof window.tasteAllowsEntry === 'function' && !window.tasteAllowsEntry(e)) return false;
+      if (policy) return policy.matches(e, criteria || {}, extra);
+      return true;
     });
-    const pool = preferred.length ? preferred : all.filter(ok);
     if (!pool.length) return null;
     const pick = pool[Math.floor(Math.random() * pool.length)];
     return { ...pick, platformVerified: true, source: pick.source || 'catalog' };
-  }
-  async function emergencyPick() {
-    let hit = pickFresh(false) || pickFresh(true);
-    if (hit) return hit;
-    try { if (typeof window.discoverFromITunes === 'function') { hit = await window.discoverFromITunes([], [], [], [], []); if (hit && hit.title && !shownSet().has(hit.title)) return hit; } } catch (_) {}
-    const all = catalog().filter(e => e && e.title);
-    return all.length ? { ...all[Math.floor(Math.random() * all.length)], platformVerified: true, source: 'catalog-last' } : null;
   }
   function paintResult(pick) {
     if (!pick) return false;
@@ -67,10 +65,11 @@
   }
   function wrapPick() {
     const orig = window.pickFromCatalog; if (!orig || orig.__guaranteed) return;
-    window.pickFromCatalog = function () {
+    window.pickFromCatalog = function (cat, plat, mood, vibe, rating, decade) {
+      const criteria = { cat, plat, mood, vibe, rating, decade };
       const hit = orig.apply(this, arguments);
-      if (hit && hit.title && !shownSet().has(hit.title)) return hit;
-      return pickFresh(false) || pickFresh(true) || hit || null;
+      if (hit && hit.title && (!window.matchPolicy || window.matchPolicy.matches(hit, criteria, []))) return hit;
+      return pickFreshFitting(criteria);
     };
     window.pickFromCatalog.__guaranteed = true;
   }
@@ -81,21 +80,10 @@
       const box = document.getElementById('result-box');
       const visible = box && box.style.display !== 'none' && (box.offsetHeight > 0 || box.classList.contains('is-revealed'));
       if (visible || isSpecific || document.body.classList.contains('match-searching')) return;
-      const pick = await emergencyPick(); if (pick) paintResult(pick);
+      const pick = pickFreshFitting(currentCriteria());
+      if (pick) paintResult(pick);
     };
     window.triggerMatch.__guaranteed = true;
-  }
-  function wrapToast() {
-    const orig = window.showToast; if (!orig || orig.__guaranteed) return;
-    window.showToast = function (msg, isErr) {
-      const text = String(msg || '');
-      if (/no title|noFresh|inHistory|nenhum título|nada combina|já (visto|visto)|no match/i.test(text)) {
-        emergencyPick().then(pick => { if (pick) paintResult(pick); });
-        return;
-      }
-      return orig.apply(this, arguments);
-    };
-    window.showToast.__guaranteed = true;
   }
   function wrapAsk() {
     if (typeof window.askAIConversational !== 'function' || window.askAIConversational.__guarantee) return;
@@ -105,14 +93,35 @@
       const steered = lang === 'en' ? String(question || '') : String(question || '') + '\n\nRespond in ' + lang + '. Use localized official titles.';
       let parsed = null;
       try { parsed = await prev(steered, history); } catch (_) { parsed = null; }
-      if (!parsed || (!parsed.answer && !parsed.results?.length)) {
-        parsed = { answer: lang.startsWith('pt') ? 'Aqui vai um ponto de partida. Peça um gênero, um humor ou uma plataforma e eu afino.' : 'Here is a starting point. Name a mood, format or platform and I will tighten it.', results: [] };
-        const pick = pickFresh(true); if (pick) parsed.results = [{ title: pick.title, synopsis: pick.synopsis, platform: pick.platform }];
+      if (!parsed) parsed = { answer: '', results: [] };
+      const policy = window.matchPolicy;
+      const raw = Array.isArray(parsed.results) ? parsed.results : [];
+      let results = raw.filter(item => item && item.title && (!policy || policy.fitsQuestion(item, question)));
+      if (!results.length && policy) {
+        results = catalog()
+          .filter(e => e && e.title && policy.fitsQuestion(e, question) && window.tasteAllowsEntry(e))
+          .slice(0, 6)
+          .map(e => ({
+            title: e.title,
+            year: e.year || '',
+            type: (e.cats && e.cats[0]) || '',
+            platform: e.platform || '',
+            synopsis: e.synopsis || '',
+            cats: e.cats,
+            moods: e.moods,
+            watchUrl: e.watchUrl || ''
+          }));
+      }
+      parsed.results = results;
+      if (!parsed.answer) {
+        parsed.answer = lang.startsWith('pt')
+          ? (results.length ? 'Aqui estão títulos que combinam com o que você pediu.' : 'Não achei um título nesse gênero. Tente outro humor ou formato.')
+          : (results.length ? 'Here are titles that match what you asked for.' : 'No title in that genre turned up. Try another mood or format.');
       }
       return parsed;
     };
     window.askAIConversational.__guarantee = true;
   }
-  function boot() { bootLang(); wrapPick(); wrapTrigger(); wrapToast(); wrapAsk(); setInterval(() => { wrapPick(); wrapTrigger(); wrapToast(); wrapAsk(); }, 2500); }
+  function boot() { bootLang(); wrapPick(); wrapTrigger(); wrapAsk(); setInterval(() => { wrapPick(); wrapTrigger(); wrapAsk(); }, 2500); }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();
 })();

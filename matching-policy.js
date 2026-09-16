@@ -4,6 +4,14 @@
   const key = title => String(title || '').normalize('NFKC').toLowerCase().replace(/[^\p{L}\p{N}]/gu, '');
   const values = v => (Array.isArray(v) ? v : [v]).filter(x => x && x !== 'any');
   const conflicts = [ ['funny', 'intense and thrilling'], ['funny', 'dark and gritty'], ['funny', 'heartbreaking'], ['funny', 'scary'], ['cozy comfort watch', 'intense and thrilling'], ['cozy comfort watch', 'scary'] ];
+  const DRAMA_CATS = new Set(['K-drama','C-drama','J-drama','telenovela','novela brasileira','vertical micro-drama','Turkish dizi','Thai drama']);
+  const COMEDY_CATS = new Set(['stand-up comedy special']);
+  const LIGHT_MOODS = new Set(['funny','light and feel-good','cozy comfort watch','romantic','inspiring']);
+  const HEAVY_MOODS = new Set(['scary','dark and gritty','intense and thrilling','heartbreaking']);
+  const COMEDY_RE = /\b(comed(?:y|ies|ia)|comédia|c[oô]mic[oa]?|funny|hilarious|sitcom|stand-?up|laugh(?:s|ing|ter)?|engraçad\w*|humou?r(?:ous)?|lustig|dr[oô]le|komöd\w*|komedi|комеди|كوميد|喜剧|コメディ|코미디|sketch)\b/i;
+  const DRAMA_RE = /\b(k-?drama|c-?drama|j-?drama|telenovela|novela|dizi|tear-?jerk\w*|melodrama|dram[aá]tic[oa]?)\b|\bdramas?\b/i;
+  const HORROR_RE = /\b(horror|scary|spooky|terror|slasher|pesadelo|ホラー|공포|恐怖)\b/i;
+  const ROMANCE_RE = /\b(romance|romantic|rom-?com|love story|rom[aâ]ntic[oa]?)\b/i;
   const GUEST_ID = 'guest';
   let owner = null, permanent = new Set(), history = [], pending = [], ready = Promise.resolve(), flushing = null;
   const titleItem = item => typeof item === 'string' ? !!item.trim() : item && typeof item.title === 'string' && !!item.title.trim();
@@ -101,6 +109,108 @@
     document.dispatchEvent(new CustomEvent('matchapp:historychange'));
     return true;
   }
+  function catalogList() {
+    try { if (typeof CONTENT_CATALOG !== 'undefined' && Array.isArray(CONTENT_CATALOG)) return CONTENT_CATALOG; } catch (_) {}
+    return [];
+  }
+  function asEntry(item) {
+    if (!item) return item;
+    const titled = typeof item === 'string' ? { title: item } : item;
+    const hit = catalogList().find(e => e && key(e.title) === key(titled.title));
+    if (hit) return hit;
+    const blob = [titled.type, titled.synopsis, titled.title, (titled.cats || []).join(' '), (titled.moods || []).join(' ')].filter(Boolean).join(' ');
+    const cats = values(titled.cats);
+    const moods = values(titled.moods);
+    if (/k-?drama/i.test(blob) && !cats.includes('K-drama')) cats.push('K-drama');
+    if (/c-?drama/i.test(blob) && !cats.includes('C-drama')) cats.push('C-drama');
+    if (/j-?drama/i.test(blob) && !cats.includes('J-drama')) cats.push('J-drama');
+    if (/telenovela|novela brasileira/i.test(blob) && !cats.some(c => c === 'telenovela' || c === 'novela brasileira')) cats.push('telenovela');
+    if (/stand-?up/i.test(blob) && !cats.includes('stand-up comedy special')) cats.push('stand-up comedy special');
+    if (COMEDY_RE.test(blob) && !moods.includes('funny')) moods.push('funny');
+    if (HORROR_RE.test(blob) && !moods.includes('scary')) moods.push('scary');
+    if (DRAMA_RE.test(blob) && !COMEDY_RE.test(blob) && !moods.includes('heartbreaking') && !cats.some(c => DRAMA_CATS.has(c))) moods.push('heartbreaking');
+    return { ...titled, cats, moods, synopsis: titled.synopsis || '', platform: titled.platform || '' };
+  }
+  function intentFromText(text) {
+    const q = String(text || '');
+    const families = new Set();
+    const moods = [];
+    const cats = [];
+    if (COMEDY_RE.test(q)) { families.add('comedy'); moods.push('funny'); }
+    if (/\bk-?drama\b/i.test(q)) { families.add('drama'); cats.push('K-drama'); }
+    else if (/\bc-?drama\b/i.test(q)) { families.add('drama'); cats.push('C-drama'); }
+    else if (/\bj-?drama\b/i.test(q)) { families.add('drama'); cats.push('J-drama'); }
+    else if (/\b(telenovela|novela)\b/i.test(q)) { families.add('drama'); cats.push('telenovela'); }
+    else if (DRAMA_RE.test(q)) { families.add('drama'); }
+    if (HORROR_RE.test(q)) { families.add('horror'); moods.push('scary'); }
+    if (ROMANCE_RE.test(q)) { families.add('romance'); moods.push('romantic'); }
+    if (/\b(documentar(?:y|ies)|documentário)\b/i.test(q)) { families.add('documentary'); cats.push('documentary'); }
+    if (/\b(kids?|children|family|infantil)\b/i.test(q)) { families.add('kids'); cats.push('kids'); }
+    return {
+      families, moods, cats,
+      asCriteria() { return { mood: moods.slice(), cat: cats.slice(), plat: [], vibe: [], rating: [], decade: [] }; }
+    };
+  }
+  function genreFits(entry, criteria, flags) {
+    if (!entry) return false;
+    const wantedMoods = values(criteria && criteria.mood);
+    const wantedCats = values(criteria && criteria.cat);
+    const cats = values(entry.cats);
+    const moods = values(entry.moods);
+    const primaryMood = moods[0] || '';
+    const allowMix = !!(flags && flags.allowMix);
+    const wantsComedy = wantedMoods.includes('funny') || wantedCats.includes('stand-up comedy special');
+    const wantsDramaFormat = wantedCats.some(c => DRAMA_CATS.has(c));
+    const wantsHorror = wantedMoods.includes('scary');
+
+    if (wantsComedy && !wantsDramaFormat && !allowMix) {
+      if (cats.some(c => DRAMA_CATS.has(c))) return false;
+      if (cats.includes('reality show') && !wantedCats.includes('reality show')) return false;
+      if (cats.includes('documentary') && !wantedCats.includes('documentary')) return false;
+      if (!moods.includes('funny') && !cats.some(c => COMEDY_CATS.has(c))) return false;
+      if (HEAVY_MOODS.has(primaryMood) && primaryMood !== 'funny') return false;
+    }
+    if (wantsDramaFormat && !wantsComedy) {
+      if (cats.includes('stand-up comedy special')) return false;
+      if (primaryMood === 'funny' && !cats.some(c => DRAMA_CATS.has(c))) return false;
+    }
+    if (wantsHorror && cats.includes('kids') && !wantedCats.includes('kids')) return false;
+    if (wantedCats.includes('kids') && (moods.includes('scary') || HEAVY_MOODS.has(primaryMood))) return false;
+    if (wantedMoods.length && wantedMoods.every(m => LIGHT_MOODS.has(m))) {
+      if (HEAVY_MOODS.has(primaryMood)) return false;
+      if (cats.some(c => DRAMA_CATS.has(c)) && !wantsDramaFormat && !allowMix) return false;
+    }
+    if (wantedMoods.length && wantedMoods.every(m => HEAVY_MOODS.has(m))) {
+      if (cats.includes('stand-up comedy special') && !wantsComedy) return false;
+      if (primaryMood === 'funny' && !wantedMoods.includes('funny')) return false;
+    }
+    return true;
+  }
+  function fitsQuestion(item, question) {
+    const intent = question && question.families ? question : intentFromText(question);
+    if (!intent.families || !intent.families.size) return !!(item && item.title);
+    const entry = asEntry(item);
+    if (!entry || !entry.title) return false;
+    const allowMix = intent.families.has('comedy') && intent.families.has('drama');
+    return genreFits(entry, intent.asCriteria ? intent.asCriteria() : { mood: intent.moods, cat: intent.cats }, { allowMix });
+  }
+  function sameFamily(a, b) {
+    a = asEntry(a); b = asEntry(b);
+    if (!a || !b) return false;
+    const aCats = values(a.cats), bCats = values(b.cats);
+    const aMoods = values(a.moods), bMoods = values(b.moods);
+    const aDrama = aCats.some(c => DRAMA_CATS.has(c));
+    const bDrama = bCats.some(c => DRAMA_CATS.has(c));
+    const aComedy = aMoods.includes('funny') || aCats.some(c => COMEDY_CATS.has(c));
+    const bComedy = bMoods.includes('funny') || bCats.some(c => COMEDY_CATS.has(c));
+    if (aComedy && !aDrama && !bComedy) return false;
+    if (bComedy && !bDrama && !aComedy) return false;
+    if (aDrama && !aComedy && bComedy && !bDrama) return false;
+    if (bDrama && !bComedy && aComedy && !aDrama) return false;
+    if (aMoods.includes('scary') && bMoods.includes('funny') && !bMoods.includes('scary')) return false;
+    if (bMoods.includes('scary') && aMoods.includes('funny') && !aMoods.includes('scary')) return false;
+    return true;
+  }
   function matches(entry, criteria, extra = []) {
     if (!entry || !entry.title || known().has(key(entry.title)) || extra.includes(key(entry.title))) return false;
     const mapping = {cat:'cats',plat:'platform',mood:'moods',vibe:'vibes',rating:'ratings'};
@@ -110,9 +220,10 @@
     }
     const decades = values(criteria.decade);
     if (decades.length && !decades.some(d => { const start = Number(String(d).match(/\d{4}/)?.[0]); return start && Number(entry.year) >= start && Number(entry.year) < start + 10; })) return false;
+    if (!genreFits(entry, criteria || {})) return false;
     return true;
   }
-  window.matchPolicy = Object.freeze({key,values,matches,remember,forget,known,history:()=>history.slice(),ready:()=>ready,incompatible:(value,state) => conflicts.some(([a,b]) => (value===a && values(state.mood).includes(b)) || (value===b && values(state.mood).includes(a))),attach:user => (ready = attach(user).catch(() => {})), flush});
+  window.matchPolicy = Object.freeze({key,values,matches,remember,forget,known,history:()=>history.slice(),ready:()=>ready,incompatible:(value,state) => conflicts.some(([a,b]) => (value===a && values(state.mood).includes(b)) || (value===b && values(state.mood).includes(a))),genreFits,intentFromText,fitsQuestion,sameFamily,asEntry,attach:user => (ready = attach(user).catch(() => {})), flush});
   window.addEventListener('online', () => flush().catch(() => {}));
   setTimeout(() => {
     const client = window.supabaseClient;

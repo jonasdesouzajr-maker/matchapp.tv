@@ -203,18 +203,21 @@ async function fallbackSearch(question, aiWasDown) {
             (data.results || []).forEach(r => {
                 const title = r.trackName || r.collectionName;
                 if (!title || out.some(o => o.title === title)) return;
-                out.push({
+                const genre = String(r.primaryGenreName || '');
+                const row = {
                     title,
                     year: r.releaseDate ? String(r.releaseDate).substring(0, 4) : '',
                     type: media === 'tvShow' ? 'series' : (media === 'podcast' ? 'podcast' : (media === 'musicTrack' ? 'music' : 'movie')),
                     platform: 'any',
-                    synopsis: r.longDescription || r.shortDescription || `${r.primaryGenreName || ''}${r.artistName ? ' — ' + r.artistName : ''}`.trim(),
+                    synopsis: r.longDescription || r.shortDescription || `${genre}${r.artistName ? ' — ' + r.artistName : ''}`.trim(),
                     _meta: {
                         artwork: (r.artworkUrl100 || '').replace('100x100bb', '600x900bb'),
                         preview: r.previewUrl || null,
                         storeUrl: r.trackViewUrl || r.collectionViewUrl || null
                     }
-                });
+                };
+                if (window.matchPolicy && !window.matchPolicy.fitsQuestion(row, question)) return;
+                out.push(row);
             });
         } catch (e) { /* try next media type */ }
     }
@@ -372,6 +375,31 @@ function isDiscoverDisliked(title) {
     return false;
 }
 
+function enrichDiscoverItem(item, question) {
+    if (!item || !item.title) return null;
+    const policy = window.matchPolicy;
+    if (policy && question && !policy.fitsQuestion(item, question)) return null;
+    try {
+        if (typeof CONTENT_CATALOG !== 'undefined') {
+            const k = policy ? policy.key(item.title) : String(item.title).toLowerCase();
+            const e = CONTENT_CATALOG.find(x => x && (policy ? policy.key(x.title) === k : x.title === item.title));
+            if (e) {
+                item.title = e.title;
+                if (!item.synopsis) item.synopsis = e.synopsis;
+                if (!item.platform || item.platform === 'any') item.platform = e.platform;
+                if (!item.year) item.year = e.year || '';
+                if (!item.type) item.type = (e.cats && e.cats[0]) || item.type || '';
+                item.cats = e.cats;
+                item.moods = e.moods;
+                if (e.watchUrl) item.watchUrl = item.watchUrl || e.watchUrl;
+            }
+        }
+    } catch (err) {}
+    return item;
+}
+
+let lastDiscoverQuestion = '';
+
 function catalogCousins(item, take) {
     take = take || 4;
     if (typeof CONTENT_CATALOG === 'undefined' || !Array.isArray(CONTENT_CATALOG) || !item || !item.title) return [];
@@ -383,6 +411,7 @@ function catalogCousins(item, take) {
     const platform = self?.platform || item.platform;
     return CONTENT_CATALOG
         .filter(e => e && e.title && e.title !== item.title && !isDiscoverDisliked(e.title))
+        .filter(e => !window.matchPolicy || window.matchPolicy.sameFamily(self || item, e))
         .map(e => {
             let s = 0;
             (e.cast || []).forEach(c => { if (cast.has(c)) s += 40; });
@@ -663,6 +692,10 @@ async function attachRelated(grid, seedItems, baseIndex) {
     for (const row of collected) {
         const k = titleKey(row.title);
         if (!k || seen.has(k) || isDiscoverDisliked(row.title)) continue;
+        if (window.matchPolicy) {
+            if (lastDiscoverQuestion && !window.matchPolicy.fitsQuestion(row, lastDiscoverQuestion)) continue;
+            if (seedItems.some(s => s && !window.matchPolicy.sameFamily(s, row))) continue;
+        }
         seen.add(k);
         unique.push(row);
         if (unique.length >= 6) break;
@@ -763,7 +796,10 @@ window.openThread = function (id) {
     if (log) log.innerHTML = '';
     DISCOVER_ITEMS = [];
     t.turns.forEach(turn => {
-        if (turn.role === 'user') appendUserBubble(turn.text);
+        if (turn.role === 'user') {
+            lastDiscoverQuestion = turn.text || lastDiscoverQuestion;
+            appendUserBubble(turn.text);
+        }
         else {
             const bubble = appendAssistantBubble(turn.text, turn.results || [], { instant: true });
             const visible = (turn.results || []).filter(item => item && item.title && !isDiscoverDisliked(item.title));
@@ -847,12 +883,19 @@ function appendAssistantBubble(text, results, opts) {
 async function renderResultsInto(grid, items, baseIndex) {
     await window.matchPolicy?.ready();
     if (!Array.isArray(items)) return;
-    items = items.filter(item => item && item.title && !isDiscoverDisliked(item.title));
+    items = items
+        .map(item => enrichDiscoverItem(item, lastDiscoverQuestion))
+        .filter(item => item && item.title && !isDiscoverDisliked(item.title));
     grid.replaceChildren();
     if (!items || !items.length) return;
     grid.innerHTML = items.map((it, i) => discoverCardHTML(it, baseIndex + i)).join('');
     grid.style.display = 'grid';
     await Promise.all(items.map((it, i) => hydrateDiscoverCard(it, baseIndex + i)));
+    items.forEach((it, i) => {
+        if (it.synopsis) return;
+        const syn = document.querySelector(`[data-discover-idx="${baseIndex + i}"] .discover-synopsis`);
+        if (syn && !syn.textContent.trim()) syn.textContent = it.synopsis || '';
+    });
     await attachRelated(grid, items, baseIndex);
 }
 
@@ -894,6 +937,7 @@ async function askAndRender(question) {
     let payload, source = 'ai';
     try { payload = await askAIConversational(question, history); }
     catch (e) { payload = await fallbackSearch(question, !!e.aiUnavailable); source = 'fallback'; }
+    lastDiscoverQuestion = question;
 
     // Same unconditional safety net as the match engine: no matter which
     // upstream path produced this, raw JSON-looking text can never reach
@@ -954,7 +998,20 @@ async function askAndRender(question) {
     }
 
     const baseIndex = DISCOVER_ITEMS.length;
-    const newItems = (payload.results || []).filter(item => item && item.title && !isDiscoverDisliked(item.title));
+    let newItems = (payload.results || [])
+        .map(item => enrichDiscoverItem(item, question))
+        .filter(item => item && item.title && !isDiscoverDisliked(item.title));
+    if (!newItems.length && window.matchPolicy && typeof CONTENT_CATALOG !== 'undefined') {
+        newItems = CONTENT_CATALOG
+            .filter(e => e && e.title && !isDiscoverDisliked(e.title) && window.matchPolicy.fitsQuestion(e, question))
+            .slice(0, 6)
+            .map(e => enrichDiscoverItem({
+                title: e.title, year: e.year || '', type: (e.cats && e.cats[0]) || '',
+                platform: e.platform || '', synopsis: e.synopsis || '', cats: e.cats, moods: e.moods,
+                watchUrl: e.watchUrl || ''
+            }, question))
+            .filter(Boolean);
+    }
     DISCOVER_ITEMS = DISCOVER_ITEMS.concat(newItems);
     if (bubble && newItems.length) await renderResultsInto(bubble.grid, newItems, baseIndex);
 
