@@ -113,7 +113,10 @@
       if (parsed.answer) parsed.answer = await translateText(parsed.answer, 'synopsis');
       if (Array.isArray(parsed.results)) {
         for (const item of parsed.results) {
-          if (item.title) item.title = await translateText(item.title, 'title');
+          if (item.title) {
+            if (!item.originalTitle) item.originalTitle = item.title;
+            item.displayTitle = await translateText(item.title, 'title');
+          }
           if (item.synopsis) item.synopsis = await translateText(item.synopsis, 'synopsis');
         }
       }

@@ -1,0 +1,78 @@
+const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
+const root=path.join(__dirname,'..');
+const read=f=>fs.readFileSync(path.join(root,f),'utf8');
+
+test('Ask AI cards include watch now, watch later, not for me and synopsis',()=>{
+  const js=read('discover.js');
+  assert.match(js,/discoverWatchUrl/);
+  assert.match(js,/res\.watchlater/);
+  assert.match(js,/res\.notforme/);
+  assert.match(js,/discover-synopsis/);
+  assert.match(js,/notForMeDiscoverItem/);
+  assert.match(js,/attachRelated/);
+  assert.match(js,/tmdbRelated/);
+  assert.match(js,/catalogCousins/);
+  assert.match(js,/justWatchLocale/);
+  assert.match(js,/match_dislikedList/);
+  assert.match(js,/is-hidden/);
+  assert.match(js,/matchapp:langchange/);
+  assert.doesNotMatch(js,/items=items\.filter\(item=>!window\.matchPolicy\?\.known\(\)/);
+  assert.match(js,/why: 'idea'/);
+  assert.doesNotMatch(js,/localizeMatchSynopsis/);
+  const html=read('discover.html');
+  assert.match(html,/discover-nfm/);
+  assert.match(html,/discover-related-head/);
+  assert.match(html,/discover\.js\?v=196/);
+  assert.match(html,/tmdb\.js\?v=191/);
+});
+
+test('related copy exists in every supported language',()=>{
+  const polish=read('polish-i18n.js');
+  for(const key of ['discover.moreLike','discover.sameDirector','discover.sameIdea','discover.hiddenToast']){
+    assert.match(polish,new RegExp(key.replace('.','\\.')));
+  }
+  for(const lang of ['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh']){
+    assert.match(polish,new RegExp(lang.replace('-','\\-')));
+  }
+});
+
+test('TMDB proxy only fetches related for a typed identity and never returns adult works',()=>{
+  const src=read('supabase/functions/tmdb-proxy/index.ts');
+  assert.match(src,/append_to_response=credits,similar,recommendations/);
+  assert.match(src,/combined_credits/);
+  assert.match(src,/body\.related === true/);
+  assert.match(src,/Number\.isSafeInteger\(body\.tmdb_id\)/);
+  assert.doesNotMatch(src,/body\.path/);
+  assert.match(src,/r\.adult !== true/);
+  assert.match(src,/job === "Director"/);
+});
+
+test('tmdbRelated keeps identity, language and adult guards',()=>{
+  const js=read('tmdb.js');
+  assert.match(js,/window\.tmdbRelated = async function/);
+  assert.match(js,/related: true/);
+  assert.match(js,/safeRelatedPoster/);
+  assert.match(js,/r\.adult !== true/);
+  assert.match(js,/image\\.tmdb\\.org/);
+  assert.match(js,/locales\[window\.MATCH_LANG\]/);
+});
+
+test('discover card markup keeps synopsis and the three actions',()=>{
+  const js=read('discover.js');
+  const start=js.indexOf('function discoverCardHTML');
+  const html=js.slice(start, js.indexOf('let DISCOVER_ITEMS'));
+  assert.match(html,/discover-play/);
+  assert.match(html,/discover-save/);
+  assert.match(html,/discover-nfm/);
+  assert.match(html,/discover-synopsis/);
+  assert.match(html,/Watch Later/);
+  assert.match(html,/Not For Me/);
+});
+
+test('Ask AI localization keeps original title identity',()=>{
+  const locale=read('locale-results.js');
+  assert.match(locale,/item\.displayTitle = await translateText\(item\.title, 'title'\)/);
+  assert.doesNotMatch(locale,/item\.title = await translateText\(item\.title/);
+  const settings=read('settings.js');
+  assert.match(settings,/20260916-ask1/);
+});

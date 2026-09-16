@@ -148,6 +148,68 @@ async function tmdbFetch(path: string, token: string): Promise<Record<string, un
   }
 }
 
+function pickDirector(record: Record<string, unknown>, kind: "movie" | "tv"): { id: number; name: string } | null {
+  const credits = record.credits as { crew?: Array<Record<string, unknown>> } | undefined;
+  const crew = Array.isArray(credits?.crew) ? credits!.crew! : [];
+  const dir = crew.find((c) => c && c.job === "Director" && Number.isSafeInteger(c.id) && (c.id as number) > 0);
+  if (dir) return { id: dir.id as number, name: String(dir.name || "") };
+  if (kind === "tv") {
+    const created = Array.isArray(record.created_by) ? record.created_by as Array<Record<string, unknown>> : [];
+    const c = created.find((p) => p && Number.isSafeInteger(p.id) && (p.id as number) > 0);
+    if (c) return { id: c.id as number, name: String(c.name || "") };
+  }
+  return null;
+}
+
+function listFrom(arr: unknown, kind: "movie" | "tv", skipId: number): Record<string, unknown>[] {
+  if (!Array.isArray(arr)) return [];
+  return (arr as Record<string, unknown>[])
+    .slice(0, 12)
+    .map((r) => {
+      const row = normalise(r, kind);
+      row.why = "idea";
+      return row;
+    })
+    .filter((r) => r.adult !== true && r.poster && r.title && r.tmdbId !== skipId);
+}
+
+function directorWorks(credits: Record<string, unknown> | null, skipId: number): Record<string, unknown>[] {
+  if (!credits) return [];
+  const crew = Array.isArray(credits.crew) ? credits.crew as Array<Record<string, unknown>> : [];
+  return crew
+    .filter((w) =>
+      w &&
+      (w.job === "Director" || w.job === "Creator") &&
+      w.adult !== true &&
+      w.id !== skipId &&
+      w.poster_path &&
+      Number.isSafeInteger(w.id)
+    )
+    .sort((a, b) => (Number(b.popularity) || 0) - (Number(a.popularity) || 0))
+    .slice(0, 10)
+    .map((w) => {
+      const thisKind: "movie" | "tv" = w.media_type === "tv" ? "tv" : "movie";
+      const row = normalise(w, thisKind);
+      row.why = "director";
+      return row;
+    })
+    .filter((r) => r.adult !== true && r.poster && r.title);
+}
+
+function mergeRelated(...lists: Record<string, unknown>[][]): Record<string, unknown>[] {
+  const seen = new Set<number>();
+  const out: Record<string, unknown>[] = [];
+  for (const list of lists) {
+    for (const r of list) {
+      const id = r.tmdbId;
+      if (typeof id !== "number" || !Number.isSafeInteger(id) || seen.has(id) || r.adult === true || !r.poster) continue;
+      seen.add(id);
+      out.push(r);
+    }
+  }
+  return out;
+}
+
 Deno.serve(async (req: Request) => {
   const origin = req.headers.get("origin");
   if (origin && !ALLOWED_ORIGINS.has(origin)) return new Response(JSON.stringify({error:"Origin not allowed"}), {status:403,headers:{"Content-Type":"application/json","Vary":"Origin"}});
@@ -198,9 +260,25 @@ Deno.serve(async (req: Request) => {
     // endpoint/URL can be supplied, and adult records are never returned.
     if (body?.tmdb_id !== undefined) {
       if (!Number.isSafeInteger(body.tmdb_id) || body.tmdb_id <= 0 || !kind) return json({error:"Invalid identity"},400);
-      const record = await tmdbFetch(`/${kind}/${body.tmdb_id}?language=${encodeURIComponent(lang)}`, token);
+      const wantRelated = body.related === true;
+      const extra = wantRelated ? "&append_to_response=credits,similar,recommendations" : "";
+      const record = await tmdbFetch(`/${kind}/${body.tmdb_id}?language=${encodeURIComponent(lang)}${extra}`, token);
       if (!record || record.adult === true) return json({results:[]});
-      return json({results:[normalise(record,kind)]},200,true);
+      const primary = normalise(record, kind);
+      if (!wantRelated) return json({results:[primary]},200,true);
+
+      const director = pickDirector(record, kind);
+      let sameDirector: Record<string, unknown>[] = [];
+      if (director && Number.isSafeInteger(director.id) && director.id > 0) {
+        const person = await tmdbFetch(`/person/${director.id}/combined_credits?language=${encodeURIComponent(lang)}`, token);
+        sameDirector = directorWorks(person, body.tmdb_id);
+      }
+      const similarBag = record.similar as { results?: unknown } | undefined;
+      const recBag = record.recommendations as { results?: unknown } | undefined;
+      const similar = listFrom(similarBag?.results, kind, body.tmdb_id);
+      const recs = listFrom(recBag?.results, kind, body.tmdb_id);
+      const related = mergeRelated(sameDirector, similar, recs).slice(0, 8);
+      return json({ results: [primary], director, related }, 200, true);
     }
     if (!query) return json({ error: "query is required" }, 400);
 

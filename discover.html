@@ -50,7 +50,7 @@
     <link rel="icon" href="/logo.jpeg?v=2" type="image/jpeg">
 
     <script defer src="/i18n.js?v=187"></script>
-<script defer src="/polish-i18n.js?v=191"></script>
+<script defer src="/polish-i18n.js?v=192"></script>
 <script defer src="/event-i18n.js?v=187"></script>
 <script defer src="/page-locale.js?v=187"></script>
     <script src="/build-meta.js?v=194"></script>
@@ -161,6 +161,12 @@
         .discover-save { background: transparent; border: 1px solid var(--gold); color: var(--gold-glow); padding: 11px 15px; border-radius: 12px; font-weight: 900; font-size: 13px; cursor: pointer; transition: 0.25s; }
         .discover-save:hover { background: rgba(229,193,88,0.16); }
         .discover-save.saved { background: var(--gold); color: #14131A; }
+        .discover-nfm { background: transparent; border: 1px solid rgba(255,82,82,0.55); color: #ff8a8a; padding: 11px 15px; border-radius: 12px; font-weight: 900; font-size: 13px; cursor: pointer; transition: 0.25s; }
+        .discover-nfm:hover { background: rgba(255,82,82,0.14); }
+        .discover-why { color: var(--gold-glow); font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; margin: 0 0 6px 0; }
+        .discover-related-head { grid-column: 1 / -1; color: var(--gold); font-size: 14px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.8px; margin: 10px 0 0 0; }
+        .discover-card.is-related { border-style: dashed; }
+        .discover-card.is-hidden { display: none !important; }
 
         #discover-loading { text-align: center; padding: 40px 20px; }
         .scan-dots { display: inline-flex; gap: 9px; margin-bottom: 20px; }
@@ -294,12 +300,12 @@
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.105.0/dist/umd/supabase.js"></script>
-    <script src="/settings.js?v=195"></script>
+    <script src="/settings.js?v=197"></script>
     <script src="/matching-policy.js?v=190"></script>
     <script src="/match-localization.js?v=187"></script>
 <script src="/app.js?v=192"></script>
     <script src="/install-progress.js?v=200"></script>
-    <script src="/discover.js?v=194"></script>
+    <script src="/discover.js?v=196"></script>
     <script src="/voice-input.js?v=187"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -307,7 +313,7 @@
         });
     </script>
     <script src="/tv.js?v=187"></script>
-    <script src="/tmdb.js?v=190"></script>
+    <script src="/tmdb.js?v=191"></script>
 <script src="/app-updates.js?v=191"></script>
 <script defer src="/ads-init.js?v=1"></script>
 <script src="/title-captions.js?v=190"></script></body>

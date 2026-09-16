@@ -320,28 +320,127 @@ function escapeDiscoverHtml(value) {
         .replace(/'/g, '&#39;');
 }
 
+function discoverLabel(key, fallback) {
+    return (typeof t === 'function' && t(key)) || fallback;
+}
+
+function justWatchLocale() {
+    const country = (typeof localStorage !== 'undefined' && (localStorage.getItem('match_user_country') || '').trim()) || '';
+    const named = {
+        Brazil: 'br', Brasil: 'br', 'United States': 'us', USA: 'us', 'United Kingdom': 'gb', UK: 'gb',
+        Mexico: 'mx', Spain: 'es', France: 'fr', Germany: 'de', Italy: 'it', Turkey: 'tr', Russia: 'ru',
+        India: 'in', Indonesia: 'id', Japan: 'jp', 'South Korea': 'kr', China: 'cn', Portugal: 'pt',
+        Argentina: 'ar', Canada: 'ca', Australia: 'au'
+    };
+    if (named[country]) return named[country];
+    if (/^[A-Za-z]{2}$/.test(country)) return country.toLowerCase();
+    const lang = window.MATCH_LANG || 'en';
+    return ({ 'pt-BR': 'br', es: 'mx', fr: 'fr', de: 'de', it: 'it', tr: 'tr', ru: 'ru', ar: 'eg', hi: 'in', id: 'id', ja: 'jp', ko: 'kr', zh: 'cn' })[lang] || 'us';
+}
+
+function discoverWatchUrl(item) {
+    if (item && item.watchUrl) return item.watchUrl;
+    const title = (item && (item.title || item.displayTitle)) || '';
+    const isAudio = /podcast|album|music|audiobook/i.test((item && item.type) || '');
+    if (typeof platformSearchUrl === 'function' && item && item.platform && item.platform !== 'any' &&
+        typeof PLATFORMS !== 'undefined' && PLATFORMS[item.platform]) {
+        const url = platformSearchUrl(item.platform, title);
+        if (url && !/justwatch\.com\/us\//i.test(url)) return url;
+    }
+    try {
+        if (typeof CONTENT_CATALOG !== 'undefined') {
+            const e = CONTENT_CATALOG.find(x => x.title === item.title);
+            if (e && e.platform && e.platform !== 'any' && typeof platformSearchUrl === 'function') {
+                const url = platformSearchUrl(e.platform, e.title);
+                if (url && !/justwatch\.com\/us\//i.test(url)) return url;
+            }
+        }
+    } catch (err) {}
+    if (isAudio) return `https://open.spotify.com/search/${encodeURIComponent(title)}`;
+    return `https://www.justwatch.com/${justWatchLocale()}/search?q=${encodeURIComponent(title)}`;
+}
+
+function isDiscoverDisliked(title) {
+    if (!title) return false;
+    try {
+        const list = JSON.parse(localStorage.getItem('match_dislikedList') || '[]');
+        if (list.some(i => (i.title || i) === title)) return true;
+    } catch (e) {}
+    try {
+        if ((window.MATCH_TASTE?.exclude || []).some(x => String(x).toLowerCase() === String(title).toLowerCase())) return true;
+    } catch (e) {}
+    return false;
+}
+
+function catalogCousins(item, take) {
+    take = take || 4;
+    if (typeof CONTENT_CATALOG === 'undefined' || !Array.isArray(CONTENT_CATALOG) || !item || !item.title) return [];
+    let self = null;
+    try { self = CONTENT_CATALOG.find(e => e.title === item.title) || null; } catch (e) { self = null; }
+    const cats = new Set([].concat(self?.cats || [], item.type ? [item.type] : []));
+    const moods = new Set(self?.moods || []);
+    const cast = new Set(self?.cast || []);
+    const platform = self?.platform || item.platform;
+    return CONTENT_CATALOG
+        .filter(e => e && e.title && e.title !== item.title && !isDiscoverDisliked(e.title))
+        .map(e => {
+            let s = 0;
+            (e.cast || []).forEach(c => { if (cast.has(c)) s += 40; });
+            (e.cats || []).forEach(c => { if (cats.has(c)) s += 12; });
+            (e.moods || []).forEach(m => { if (moods.has(m)) s += 10; });
+            if (platform && e.platform === platform) s += 6;
+            if (self?.year && e.year && Math.abs(Number(e.year) - Number(self.year)) <= 5) s += 4;
+            return { e, s };
+        })
+        .filter(x => x.s >= 12)
+        .sort((a, b) => b.s - a.s)
+        .slice(0, take)
+        .map(({ e }) => ({
+            title: e.title,
+            year: e.year || '',
+            type: (e.cats && e.cats[0]) || item.type || '',
+            platform: e.platform || '',
+            synopsis: e.synopsis || '',
+            synopsisLang: 'en',
+            why: 'idea',
+            _fromCatalog: true
+        }));
+}
+
 function discoverCardHTML(item, idx) {
-    const rawTitle = String(item.title || '');
+    const rawTitle = String(item.displayTitle || item.title || '');
     const title = (typeof window.sanitizeDisplayText === 'function')
         ? window.sanitizeDisplayText(rawTitle, ['title'])
         : rawTitle;
     const safe = escapeDiscoverHtml(title);
-    const meta = escapeDiscoverHtml([item.year, item.type].filter(Boolean).join(' · '));
-    const watchLabel = (typeof t === 'function') ? t('res.streamnow') : '▶ Watch / Listen';
-    const saveLabel = (typeof t === 'function') ? t('discover.save') : '⭐ Save';
+    const meta = escapeDiscoverHtml([item.year, item.type, item.platform && item.platform !== 'any' ? item.platform : '']
+        .filter(Boolean).join(' · '));
+    const isAudio = /podcast|album|music|audiobook/i.test(item.type || '');
+    const watchLabel = isAudio ? discoverLabel('res.listennow', '🎧 Listen Now') : discoverLabel('discover.watchNow', '▶ Watch Now');
+    const saveLabel = discoverLabel('res.watchlater', '⭐ Watch Later');
+    const nfmLabel = discoverLabel('res.notforme', '👎 Not For Me');
+    const whyText = item.why === 'director'
+        ? discoverLabel('discover.sameDirector', 'Same director') + (item.directorName ? ' · ' + item.directorName : '')
+        : (item.why === 'idea' ? discoverLabel('discover.sameIdea', 'Same idea') : '');
+    const synopsis = escapeDiscoverHtml((typeof window.sanitizeDisplayText === 'function'
+        ? window.sanitizeDisplayText(item.synopsis, ['synopsis'])
+        : item.synopsis) || '');
+    const lang = window.MATCH_LANG || 'en';
     return `
-    <article class="discover-card" style="animation-delay:${idx * 70}ms">
+    <article class="discover-card${item.why ? ' is-related' : ''}" data-discover-idx="${idx}" style="animation-delay:${idx * 70}ms">
         <div class="discover-poster">
             <img id="dp-${idx}" src="" alt="${safe}" loading="lazy">
-            <div class="discover-rank">#${idx + 1}</div>
+            <div class="discover-rank">${item.why ? '＋' : '#' + (idx + 1)}</div>
         </div>
         <div class="discover-body">
-            <h3>${safe}</h3>
+            ${whyText ? `<div class="discover-why">${escapeDiscoverHtml(whyText)}</div>` : ''}
+            <h3 data-src-text="${escapeDiscoverHtml(item.title || title)}" data-locale-painted="${lang}">${safe}</h3>
             ${meta ? `<div class="discover-meta">${meta}</div>` : ''}
-            <p>${escapeDiscoverHtml((typeof window.sanitizeDisplayText === 'function' ? window.sanitizeDisplayText(item.synopsis, ['synopsis']) : item.synopsis) || '')}</p>
+            <p class="discover-synopsis" data-locale-painted="${lang}">${synopsis}</p>
             <div class="discover-actions">
                 <a id="dl-${idx}" class="gold-btn discover-play" href="#" target="_blank" rel="noopener">${watchLabel}</a>
-                <button class="discover-save" onclick="saveDiscoverItem(${idx})" id="ds-${idx}">${saveLabel}</button>
+                <button type="button" class="discover-save" onclick="saveDiscoverItem(${idx})" id="ds-${idx}">${saveLabel}</button>
+                <button type="button" class="discover-nfm" onclick="notForMeDiscoverItem(${idx})" id="dn-${idx}">${nfmLabel}</button>
             </div>
         </div>
     </article>`;
@@ -386,7 +485,10 @@ async function hydrateDiscoverCard(item, idx) {
     if (!meta && !skipLiveLookup && !verified && visualType && typeof window.tmdbLookup === 'function') {
         const kind = /movie|film/i.test(item.type || '') ? 'movie' : /series|tv|drama|anime|novela|show|documentary/i.test(item.type || '') ? 'tv' : '';
         const tmdb = await window.tmdbLookup(item.title, { year: item.year || '', kind });
-        if (tmdb && (tmdb.posterLarge || tmdb.poster)) meta = { artwork: tmdb.posterLarge || tmdb.poster, year: tmdb.year || item.year || '', overview: tmdb.overview || '', tmdbId: tmdb.tmdbId, kind: tmdb.kind, source: 'tmdb' };
+        if (tmdb && (tmdb.posterLarge || tmdb.poster)) {
+            meta = { artwork: tmdb.posterLarge || tmdb.poster, year: tmdb.year || item.year || '', overview: tmdb.overview || '', tmdbId: tmdb.tmdbId, kind: tmdb.kind, source: 'tmdb', title: tmdb.title };
+            item._tmdb = tmdb;
+        }
     }
     if (!meta && !skipLiveLookup && !verified && typeof getRichMetadata === 'function') {
         // If this AI-chat title happens to also be one of our curated catalog
@@ -427,19 +529,29 @@ async function hydrateDiscoverCard(item, idx) {
     // dependency that could substitute the wrong title's art.
     item._resolved = meta;
 
-    if (link) {
-        const isAudio = /podcast|album|music/i.test(item.type || '');
-        let url;
-        if (typeof platformSearchUrl === 'function' && item.platform && item.platform !== 'any' &&
-            typeof PLATFORMS !== 'undefined' && PLATFORMS[item.platform]) {
-            url = platformSearchUrl(item.platform, item.title);
-        } else if (isAudio) {
-            url = `https://open.spotify.com/search/${encodeURIComponent(item.title)}`;
-        } else {
-            url = `https://www.justwatch.com/us/search?q=${encodeURIComponent(item.title)}`;
+    if (meta && meta.overview) {
+        const lang = window.MATCH_LANG || 'en';
+        const short = !item.synopsis || String(item.synopsis).length < 24;
+        const preferLocalized = lang !== 'en' && meta.source === 'tmdb';
+        if (short || preferLocalized) {
+            item.synopsis = meta.overview;
+            const syn = document.querySelector(`[data-discover-idx="${idx}"] .discover-synopsis`);
+            if (syn) syn.textContent = (typeof window.sanitizeDisplayText === 'function')
+                ? window.sanitizeDisplayText(meta.overview, ['synopsis'])
+                : meta.overview;
         }
+    }
+    if (meta && meta.title && meta.source === 'tmdb') {
+        item.displayTitle = meta.title;
+        const h3 = document.querySelector(`[data-discover-idx="${idx}"] h3`);
+        if (h3) h3.textContent = meta.title;
+    }
+
+    if (link) {
+        const isAudio = /podcast|album|music|audiobook/i.test(item.type || '');
+        const url = discoverWatchUrl(item);
         link.href = url;
-        link.textContent = isAudio ? (typeof t === 'function' ? t('res.listennow') : '🎧 Listen') : (typeof t === 'function' ? t('discover.watchNow') : '▶ Watch Now');
+        link.textContent = isAudio ? discoverLabel('res.listennow', '🎧 Listen Now') : discoverLabel('discover.watchNow', '▶ Watch Now');
         item._url = url;
     }
 }
@@ -466,6 +578,136 @@ window.saveDiscoverItem = function (idx) {
     if (btn) { btn.textContent = '✓'; btn.classList.add('saved'); }
     if (window.showToast) showToast(`⭐ "${item.title}" ${typeof t === 'function' ? t('discover.savedToast') : 'saved to Watch Later'}`);
 };
+
+window.notForMeDiscoverItem = function (idx) {
+    const item = DISCOVER_ITEMS[idx];
+    if (!item || !item.title) return;
+    let list = [];
+    try { list = JSON.parse(localStorage.getItem('match_dislikedList') || '[]'); } catch (e) {}
+    if (!list.some(i => (i.title || i) === item.title)) {
+        list.unshift({
+            title: item.title,
+            posterUrl: (item._resolved && item._resolved.artwork) || '',
+            platform: item.platform && item.platform !== 'any' ? item.platform : '',
+            streamUrl: item._url || '',
+            addedAt: Date.now()
+        });
+        localStorage.setItem('match_dislikedList', JSON.stringify(list));
+    }
+    try {
+        window.matchPolicy?.remember?.({
+            title: item.title,
+            posterUrl: (item._resolved && item._resolved.artwork) || '',
+            streamUrl: item._url || '',
+            reason: 'Ask AI'
+        }, 'dislike');
+    } catch (e) {}
+    const card = document.querySelector(`[data-discover-idx="${idx}"]`);
+    if (card) card.classList.add('is-hidden');
+    if (window.showToast) showToast(discoverLabel('discover.hiddenToast', 'Hidden. You can restore it from History.'));
+};
+
+function titleKey(title) {
+    return String(title || '').normalize('NFKC').toLowerCase().replace(/[^\p{L}\p{N}]/gu, '');
+}
+
+async function localizeRelatedItem(item) {
+    const lang = window.MATCH_LANG || 'en';
+    if (lang === 'en') return item;
+    // TMDB overviews were already requested in MATCH_LANG. Do not spend Ask AI
+    // credits translating related titles — official localized names only.
+    try {
+        if (item.title && typeof window.localizedTitle === 'function') {
+            const named = await window.localizedTitle(item.title, { year: item.year, kind: item.kind || '' });
+            if (named) item.displayTitle = named;
+        }
+    } catch (e) {}
+    return item;
+}
+
+function relatedFromTmdb(pack, source) {
+    if (!pack || !Array.isArray(pack.related)) return [];
+    return pack.related.map(r => ({
+        title: r.originalTitle || r.title,
+        displayTitle: r.title,
+        year: r.year || '',
+        type: r.kind === 'movie' ? 'movie' : 'series',
+        platform: source.platform || '',
+        synopsis: r.overview || '',
+        synopsisLang: window.MATCH_LANG || 'en',
+        why: r.why === 'director' ? 'director' : 'idea',
+        directorName: r.directorName || (pack.director && pack.director.name) || '',
+        _meta: r.poster ? { artwork: r.poster, year: r.year, overview: r.overview, tmdbId: r.tmdbId, kind: r.kind, source: 'tmdb', title: r.title } : null,
+        _tmdb: r
+    }));
+}
+
+async function attachRelated(grid, seedItems, baseIndex) {
+    if (!grid || !seedItems || !seedItems.length) return;
+    const seen = new Set(DISCOVER_ITEMS.map(i => titleKey(i.title)));
+    const collected = [];
+
+    const tmdbSeeds = seedItems.filter(i => i && i._tmdb && Number.isSafeInteger(i._tmdb.tmdbId)).slice(0, 2);
+    if (tmdbSeeds.length && typeof window.tmdbRelated === 'function') {
+        const packs = await Promise.all(tmdbSeeds.map(i => window.tmdbRelated(i._tmdb.tmdbId, i._tmdb.kind || 'movie').catch(() => null)));
+        packs.forEach((pack, i) => {
+            relatedFromTmdb(pack, tmdbSeeds[i]).forEach(row => collected.push(row));
+        });
+    }
+
+    seedItems.slice(0, 3).forEach(item => {
+        catalogCousins(item, 3).forEach(row => collected.push(row));
+    });
+
+    const unique = [];
+    for (const row of collected) {
+        const k = titleKey(row.title);
+        if (!k || seen.has(k) || isDiscoverDisliked(row.title)) continue;
+        seen.add(k);
+        unique.push(row);
+        if (unique.length >= 6) break;
+    }
+    if (!unique.length) return;
+
+    for (const row of unique) await localizeRelatedItem(row);
+
+    const heading = document.createElement('h3');
+    heading.className = 'discover-related-head';
+    heading.textContent = discoverLabel('discover.moreLike', 'More in the same vein');
+    grid.appendChild(heading);
+
+    const start = DISCOVER_ITEMS.length;
+    unique.forEach((row, i) => {
+        DISCOVER_ITEMS.push(row);
+        const wrap = document.createElement('div');
+        wrap.innerHTML = discoverCardHTML(row, start + i).trim();
+        const card = wrap.firstElementChild;
+        if (card) grid.appendChild(card);
+    });
+    await Promise.all(unique.map((row, i) => hydrateDiscoverCard(row, start + i)));
+}
+
+function relabelDiscoverCards() {
+    document.querySelectorAll('.discover-related-head').forEach(el => {
+        el.textContent = discoverLabel('discover.moreLike', 'More in the same vein');
+    });
+    document.querySelectorAll('.discover-card').forEach(card => {
+        const idx = Number(card.getAttribute('data-discover-idx'));
+        const item = DISCOVER_ITEMS[idx];
+        if (!item) return;
+        const isAudio = /podcast|album|music|audiobook/i.test(item.type || '');
+        const play = card.querySelector('.discover-play');
+        if (play) play.textContent = isAudio ? discoverLabel('res.listennow', '🎧 Listen Now') : discoverLabel('discover.watchNow', '▶ Watch Now');
+        const save = card.querySelector('.discover-save');
+        if (save && !save.classList.contains('saved')) save.textContent = discoverLabel('res.watchlater', '⭐ Watch Later');
+        const nfm = card.querySelector('.discover-nfm');
+        if (nfm) nfm.textContent = discoverLabel('res.notforme', '👎 Not For Me');
+        const why = card.querySelector('.discover-why');
+        if (why && item.why === 'director') why.textContent = discoverLabel('discover.sameDirector', 'Same director') + (item.directorName ? ' · ' + item.directorName : '');
+        else if (why && item.why === 'idea') why.textContent = discoverLabel('discover.sameIdea', 'Same idea');
+    });
+}
+document.addEventListener('matchapp:langchange', relabelDiscoverCards);
 
 /* ---------- Boot ---------- */
 /* ============================================================
@@ -522,7 +764,15 @@ window.openThread = function (id) {
     DISCOVER_ITEMS = [];
     t.turns.forEach(turn => {
         if (turn.role === 'user') appendUserBubble(turn.text);
-        else appendAssistantBubble(turn.text, turn.results || [], { instant: true });
+        else {
+            const bubble = appendAssistantBubble(turn.text, turn.results || [], { instant: true });
+            const visible = (turn.results || []).filter(item => item && item.title && !isDiscoverDisliked(item.title));
+            if (bubble && visible.length) {
+                const baseIndex = DISCOVER_ITEMS.length;
+                DISCOVER_ITEMS = DISCOVER_ITEMS.concat(visible);
+                renderResultsInto(bubble.grid, visible, baseIndex);
+            }
+        }
     });
     renderThreadList();
     const log2 = document.getElementById('chat-log');
@@ -596,13 +846,14 @@ function appendAssistantBubble(text, results, opts) {
 
 async function renderResultsInto(grid, items, baseIndex) {
     await window.matchPolicy?.ready();
-    if(!Array.isArray(items))return;
-    items=items.filter(item=>!window.matchPolicy?.known().has(window.matchPolicy.key(item.title || item.trackName || item.collectionName)));
+    if (!Array.isArray(items)) return;
+    items = items.filter(item => item && item.title && !isDiscoverDisliked(item.title));
     grid.replaceChildren();
     if (!items || !items.length) return;
     grid.innerHTML = items.map((it, i) => discoverCardHTML(it, baseIndex + i)).join('');
     grid.style.display = 'grid';
     await Promise.all(items.map((it, i) => hydrateDiscoverCard(it, baseIndex + i)));
+    await attachRelated(grid, items, baseIndex);
 }
 
 /* ---------- The main ask flow ---------- */
@@ -703,7 +954,7 @@ async function askAndRender(question) {
     }
 
     const baseIndex = DISCOVER_ITEMS.length;
-    const newItems = payload.results || [];
+    const newItems = (payload.results || []).filter(item => item && item.title && !isDiscoverDisliked(item.title));
     DISCOVER_ITEMS = DISCOVER_ITEMS.concat(newItems);
     if (bubble && newItems.length) await renderResultsInto(bubble.grid, newItems, baseIndex);
 

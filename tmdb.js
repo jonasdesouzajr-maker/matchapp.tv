@@ -183,4 +183,50 @@
         const r = await window.tmdbLookup(title, hints);
         return r ? (r.posterLarge || r.poster) : null;
     };
+
+    function safeRelatedPoster(url) {
+        return typeof url === 'string' && /^https:\/\/image\.tmdb\.org\/t\/p\/(?:w[0-9]+|original)\/[A-Za-z0-9_.-]+$/.test(url);
+    }
+
+    /**
+     * Same-director and similar titles for an already-verified TMDB identity.
+     * Never used to identify a work — only to suggest more once identity is known.
+     */
+    window.tmdbRelated = async function (tmdbId, kind) {
+        const empty = { director: null, related: [] };
+        if (!Number.isSafeInteger(tmdbId) || tmdbId <= 0 || !['movie', 'tv'].includes(kind) || !window.supabaseClient) return empty;
+        const locales = {en:'en-US', 'pt-BR':'pt-BR', es:'es-ES', fr:'fr-FR', de:'de-DE', it:'it-IT', tr:'tr-TR', ru:'ru-RU', ar:'ar-SA', hi:'hi-IN', id:'id-ID', ja:'ja-JP', ko:'ko-KR', zh:'zh-CN'};
+        const lang = locales[window.MATCH_LANG] || 'en-US';
+        const cacheKey = `related::${tmdbId}::${kind}::${lang}`;
+        if (cacheKey in CACHE) return CACHE[cacheKey];
+        let out = empty;
+        try {
+            const { data, error } = await window.requestTMDB({ tmdb_id: tmdbId, kind, lang, related: true });
+            if (error || !data) { CACHE[cacheKey] = empty; return empty; }
+            const director = data.director && Number.isSafeInteger(data.director.id) && data.director.id > 0
+                ? { id: data.director.id, name: String(data.director.name || '') }
+                : null;
+            const related = (Array.isArray(data.related) ? data.related : [])
+                .filter(r => r && Number.isSafeInteger(r.tmdbId) && r.tmdbId > 0 && r.tmdbId !== tmdbId)
+                .filter(r => ['movie', 'tv'].includes(r.kind) && r.adult !== true && r.title)
+                .filter(r => safeRelatedPoster(r.poster || r.posterLarge))
+                .slice(0, 8)
+                .map(r => ({
+                    tmdbId: r.tmdbId,
+                    kind: r.kind,
+                    title: String(r.title),
+                    originalTitle: String(r.originalTitle || r.title),
+                    year: r.year || '',
+                    overview: typeof r.overview === 'string' ? r.overview : '',
+                    poster: r.posterLarge || r.poster,
+                    why: r.why === 'director' ? 'director' : 'idea',
+                    directorName: director && r.why === 'director' ? director.name : ''
+                }));
+            out = { director, related };
+        } catch (e) {
+            out = empty;
+        }
+        CACHE[cacheKey] = out;
+        return out;
+    };
 })();
