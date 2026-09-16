@@ -146,16 +146,16 @@ async function runDiagnostic() {
     try {
         const res = await fetch('/pricing.js?cachebust=' + Date.now());
         const txt = await res.text();
-        const found = [...txt.matchAll(/const (STRIPE_LINK_\w+) = "([^"]+)"/g)];
+        const found = [...txt.matchAll(/https:\/\/buy\.stripe\.com\/[A-Za-z0-9]+/g)];
+        const unique = [...new Set(found.map(m => m[0]))];
         raw.paymentLinks = {};
-        for (const [, name, url] of found) {
-            const valid = url.startsWith('https://buy.stripe.com/');
-            raw.paymentLinks[name] = url;
-            if (valid) linksOk++;
-            step(`Payment link: ${name.replace('STRIPE_LINK_','')}`, valid ? 'ok' : 'bad',
-                 valid ? url : `Not a valid Stripe link: ${url}`);
-        }
-        linksTotal = found.length;
+        unique.forEach((url, i) => {
+            raw.paymentLinks['link_' + i] = url;
+            linksOk++;
+            step(`Payment link ${i + 1}`, 'ok', url);
+        });
+        linksTotal = Math.max(unique.length, 11);
+        if (unique.length < 11) step('Payment links', 'bad', 'Expected 11 live Stripe links (plans, Ask AI credits, Extra Matches). Found ' + unique.length + '.');
     } catch (e) {
         step('Payment links', 'bad', 'Could not read pricing.js: ' + e.message);
     }
