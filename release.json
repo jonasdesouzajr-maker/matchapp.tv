@@ -1,21 +1,21 @@
 {
-  "version": "2026.09.15.8",
+  "version": "2026.09.15.9",
   "date": "2026-09-15",
   "functional": true,
   "notes": {
-    "en": "Emergency startup stability fix: removed the continuous full-screen canvas renderer, replaced the Top Titles 60 FPS fallback with a low-duty controller, and prevented the legacy 16 ms rail driver from repainting the same carousel.",
-    "pt-BR": "Correção urgente de estabilidade na inicialização: removemos o renderizador contínuo de tela inteira, trocamos o carrossel de Top Titles em 60 FPS por um controlador leve e impedimos o driver legado de 16 ms de repintar o mesmo carrossel.",
-    "es": "Corrección urgente de estabilidad al iniciar: se eliminó el renderizado continuo a pantalla completa, se sustituyó el carrusel Top Titles de 60 FPS por un controlador ligero y se bloqueó el controlador heredado de 16 ms que repintaba el mismo carrusel.",
-    "fr": "Correctif urgent de stabilité au démarrage : suppression du rendu continu plein écran, remplacement du rail Top Titles à 60 FPS par un contrôleur léger et blocage de l’ancien pilote 16 ms qui repeignait le même carrousel.",
-    "de": "Dringender Start-Stabilitätsfix: Der kontinuierliche Vollbild-Renderer wurde entfernt, der 60-FPS-Top-Titles-Lauf durch eine leichte Steuerung ersetzt und der alte 16-ms-Treiber daran gehindert, dasselbe Karussell ständig neu zu zeichnen.",
-    "it": "Correzione urgente della stabilità all'avvio: rimosso il renderer continuo a schermo intero, sostituito il carosello Top Titles a 60 FPS con un controller leggero e bloccato il driver legacy da 16 ms che ridisegnava lo stesso carosello.",
-    "tr": "Acil başlangıç kararlılığı düzeltmesi: sürekli tam ekran çizim kaldırıldı, 60 FPS Top Titles akışı düşük yükte bir denetleyiciyle değiştirildi ve eski 16 ms sürücünün aynı karuseli sürekli yeniden çizmesi engellendi.",
-    "ru": "Срочное исправление зависаний при запуске: убран постоянный полноэкранный рендеринг, 60-FPS прокрутка Top Titles заменена лёгким контроллером, а старый 16-мс драйвер больше не перерисовывает тот же карусельный блок.",
-    "ar": "إصلاح عاجل لاستقرار بدء التشغيل: تمت إزالة الرسم المستمر بملء الشاشة، واستبدال تمرير Top Titles بسرعة 60 إطارًا بوحدة تحكم خفيفة، ومنع المشغل القديم كل 16 مللي ثانية من إعادة رسم نفس الشريط باستمرار.",
-    "hi": "तत्काल startup stability सुधार: लगातार full-screen canvas rendering हटाया गया, 60 FPS Top Titles rail को low-duty controller से बदला गया, और पुराने 16 ms rail driver को उसी carousel को लगातार repaint करने से रोका गया।",
-    "id": "Perbaikan darurat stabilitas saat mulai: renderer layar penuh terus-menerus dihapus, Top Titles 60 FPS diganti pengendali ringan, dan driver lama 16 ms dicegah menggambar ulang carousel yang sama terus-menerus.",
-    "ja": "起動時フリーズの緊急修正です。常時動作する全画面描画を停止し、Top Titles の60FPSスクロールを低負荷制御に置き換え、旧16msドライバーが同じカルーセルを連続再描画しないようにしました。",
-    "ko": "긴급 시작 안정성 수정: 지속적인 전체 화면 렌더링을 제거하고 Top Titles 60FPS 스크롤을 저부하 제어기로 교체했으며, 기존 16ms 드라이버가 같은 캐러셀을 계속 다시 그리지 못하도록 했습니다.",
-    "zh": "紧急启动稳定性修复：移除持续运行的全屏渲染，将 Top Titles 的 60 FPS 滚动改为低负载控制器，并阻止旧的 16 毫秒驱动持续重绘同一轮播区。"
+    "en": "Emergency safe boot: the homepage now starts only the core MatchApp runtime. GTM, ads, ambient rendering, automatic update/install helpers, passkeys, title-caption auditing and final observer hardening are temporarily paused on the homepage, and startup intervals are clamped to a safe rate to stop browser lockups.",
+    "pt-BR": "Inicialização segura de emergência: a página inicial agora carrega somente o núcleo do MatchApp. GTM, anúncios, renderização ambiente, auxiliares automáticos de atualização/instalação, passkeys, auditoria de títulos e observadores finais ficam temporariamente pausados na página inicial, e os intervalos de inicialização foram limitados para impedir travamentos do navegador.",
+    "es": "Inicio seguro de emergencia: la página principal ahora arranca solo con el núcleo de MatchApp. GTM, anuncios, renderizado ambiental, ayudantes automáticos de actualización/instalación, passkeys, auditoría de títulos y observadores finales quedan temporalmente pausados, y los intervalos de inicio se limitan para evitar bloqueos del navegador.",
+    "fr": "Démarrage sécurisé d’urgence : l’accueil lance uniquement le cœur de MatchApp. GTM, publicités, rendu ambiant, aides automatiques de mise à jour/installation, passkeys, audit des titres et observateurs finaux sont temporairement suspendus, avec des intervalles de démarrage limités pour éviter le blocage du navigateur.",
+    "de": "Notfall-Sicherheitsstart: Die Startseite lädt nur noch den MatchApp-Kern. GTM, Werbung, Ambient-Rendering, automatische Update-/Installationshilfen, Passkeys, Titelprüfung und abschließende Beobachter sind dort vorübergehend pausiert; Startintervalle werden begrenzt, um Browser-Blockaden zu verhindern.",
+    "it": "Avvio sicuro d’emergenza: la home ora avvia solo il nucleo di MatchApp. GTM, annunci, rendering ambientale, helper automatici di aggiornamento/installazione, passkey, controllo titoli e observer finali sono temporaneamente sospesi; gli intervalli di avvio sono limitati per evitare blocchi del browser.",
+    "tr": "Acil güvenli başlangıç: ana sayfa artık yalnızca MatchApp çekirdeğini başlatır. GTM, reklamlar, ortam çizimi, otomatik güncelleme/kurulum yardımcıları, passkey, başlık denetimi ve son gözlemciler ana sayfada geçici olarak durduruldu; tarayıcı kilitlenmesini önlemek için başlangıç aralıkları sınırlandı.",
+    "ru": "Аварийный безопасный запуск: главная страница теперь запускает только ядро MatchApp. GTM, реклама, фоновый рендеринг, автоматические помощники обновления/установки, passkeys, проверка заголовков и финальные наблюдатели временно отключены, а интервалы запуска ограничены для предотвращения зависаний браузера.",
+    "ar": "تشغيل آمن للطوارئ: تبدأ الصفحة الرئيسية الآن بنواة MatchApp فقط. تم إيقاف GTM والإعلانات والرسم الخلفي ومساعدات التحديث/التثبيت التلقائية ومفاتيح المرور وتدقيق العناوين والمراقبات النهائية مؤقتًا على الصفحة الرئيسية، مع تقييد فترات التشغيل لمنع تجمد المتصفح.",
+    "hi": "आपात safe boot: होमपेज अब केवल MatchApp core runtime से शुरू होता है। GTM, ads, ambient rendering, auto update/install helpers, passkeys, title auditing और final observers को होमपेज पर अस्थायी रूप से रोका गया है, और browser lockup रोकने के लिए startup intervals को सुरक्षित दर पर सीमित किया गया है।",
+    "id": "Safe boot darurat: beranda kini hanya memulai runtime inti MatchApp. GTM, iklan, rendering ambient, helper pembaruan/pemasangan otomatis, passkey, audit judul, dan observer akhir sementara dihentikan di beranda, sementara interval startup dibatasi agar browser tidak terkunci.",
+    "ja": "緊急セーフブート：ホームページはMatchAppのコア機能だけで起動します。GTM、広告、背景描画、自動更新・インストール補助、パスキー、タイトル監査、最終オブザーバーをホームでは一時停止し、ブラウザーのフリーズを防ぐため起動時の間隔処理も安全な頻度に制限しました。",
+    "ko": "긴급 안전 부팅: 홈페이지는 이제 MatchApp 핵심 런타임만 시작합니다. GTM, 광고, 배경 렌더링, 자동 업데이트/설치 도우미, 패스키, 제목 감사 및 최종 옵저버를 홈페이지에서 일시 중지하고 브라우저 잠김을 막기 위해 시작 타이머 주기를 안전한 수준으로 제한했습니다.",
+    "zh": "紧急安全启动：首页现在只启动 MatchApp 核心运行时。首页暂时停用 GTM、广告、环境渲染、自动更新/安装辅助、Passkey、标题审计和最终观察器，并限制启动定时器频率，以防止浏览器锁死。"
   }
 }
