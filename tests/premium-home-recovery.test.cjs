@@ -5,6 +5,8 @@ const path=require('node:path');
 const root=path.join(__dirname,'..');
 const html=fs.readFileSync(path.join(root,'index.html'),'utf8');
 const build=fs.readFileSync(path.join(root,'build-meta.js'),'utf8');
+const release=JSON.parse(fs.readFileSync(path.join(root,'release.json'),'utf8'));
+const sw=fs.readFileSync(path.join(root,'sw.js'),'utf8');
 
 test('premium homepage is live without static recovery mode',()=>{
   assert.doesNotMatch(html,/Stable mode is active|matchapp-recovery-banner|matchapp-static-recovery/);
@@ -21,4 +23,11 @@ test('homepage startup gate targets only app.js DOMContentLoaded work',()=>{
   assert.match(build,/hydrateMarqueeCovers/);
   assert.match(build,/initLiveStrip/);
   assert.match(build,/slot\+\+/);
+});
+
+test('premium recovery release cannot regress to emergency static boot',()=>{
+  assert.equal(release.version,'2026.09.15.11');
+  assert.match(sw,/v19-premium-home-recovery/);
+  assert.doesNotMatch(sw,/v18-static-home-recovery/);
+  assert.doesNotMatch(build,/EMERGENCY STATIC HOME|STATIC HOME RECOVERY/i);
 });
