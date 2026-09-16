@@ -5,6 +5,7 @@ const path=require('node:path');
 const root=path.join(__dirname,'..');
 const html=fs.readFileSync(path.join(root,'index.html'),'utf8');
 
+// Emergency production gate: homepage must remain a zero-executable-JS static shell.
 test('homepage emergency recovery is static and cannot start a JS freeze loop',()=>{
   assert.match(html,/id="matchapp-static-recovery"/);
   assert.match(html,/id="matchapp-recovery-banner"/);
