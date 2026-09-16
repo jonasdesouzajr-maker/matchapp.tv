@@ -1,0 +1,51 @@
+name: Full live-site QA audit
+on:
+  push:
+    branches: [audit/full-site-qa-20260916]
+    paths:
+      - '.github/workflows/full-site-live-qa.yml'
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - name: Run repository regression suite without red audit notifications
+        shell: bash
+        run: |
+          set +e
+          npm ci --ignore-scripts
+          echo "QA_NPM_CI=$?"
+          npm test
+          echo "QA_NPM_TEST=$?"
+          npm run audit:site
+          echo "QA_SITE_AUDIT=$?"
+          exit 0
+      - name: Install browser QA runtime
+        shell: bash
+        run: |
+          set +e
+          npm install --no-save --package-lock=false --ignore-scripts playwright@1.55.0
+          npx playwright install --with-deps chromium
+          exit 0
+      - name: Audit live mobile, desktop, matching, purchases and performance
+        shell: bash
+        env:
+          QA_SOURCE_SHA: 2816f44aab06bffa15885893e9a0cc64a575bd71
+        run: |
+          set +e
+          timeout 18m node tools/live-full-qa.mjs
+          echo "QA_BROWSER_EXIT=$?"
+          if [ ! -f qa-report.json ]; then echo '{"fatal":"qa-report.json missing"}' > qa-report.json; fi
+          exit 0
+      - uses: actions/upload-artifact@v4
+        with:
+          name: matchapp-full-live-qa-report
+          path: qa-report.json
+          if-no-files-found: warn
