@@ -1,5 +1,5 @@
 // Functional release identifier must match release.json.
-window.MATCHAPP_BUILD = '2026.09.15.9';
+window.MATCHAPP_BUILD = '2026.09.15.10';
 
 /* EMERGENCY SAFE BOOT
    The homepage had accumulated several independent startup enhancement layers.

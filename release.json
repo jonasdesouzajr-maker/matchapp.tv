@@ -1,10 +1,10 @@
 {
-  "version": "2026.09.15.9",
+  "version": "2026.09.15.10",
   "date": "2026-09-15",
   "functional": true,
   "notes": {
-    "en": "Emergency safe boot: the homepage now starts only the core MatchApp runtime. GTM, ads, ambient rendering, automatic update/install helpers, passkeys, title-caption auditing and final observer hardening are temporarily paused on the homepage, and startup intervals are clamped to a safe rate to stop browser lockups.",
-    "pt-BR": "Inicialização segura de emergência: a página inicial agora carrega somente o núcleo do MatchApp. GTM, anúncios, renderização ambiente, auxiliares automáticos de atualização/instalação, passkeys, auditoria de títulos e observadores finais ficam temporariamente pausados na página inicial, e os intervalos de inicialização foram limitados para impedir travamentos do navegador.",
+    "en": "Emergency static-home recovery: the homepage now runs with zero executable JavaScript, no third-party tags, no autoplay, lazy offscreen media, and browser-native scrolling. The AI Concierge remains available on Discover while the homepage runtime is isolated.",
+    "pt-BR": "Recuperação estática de emergência: a página inicial agora roda sem JavaScript executável, sem tags de terceiros, sem autoplay, com mídia fora da tela em lazy-load e rolagem nativa do navegador. O Concierge de IA continua disponível em Descobrir enquanto o runtime da home fica isolado.",
     "es": "Inicio seguro de emergencia: la página principal ahora arranca solo con el núcleo de MatchApp. GTM, anuncios, renderizado ambiental, ayudantes automáticos de actualización/instalación, passkeys, auditoría de títulos y observadores finales quedan temporalmente pausados, y los intervalos de inicio se limitan para evitar bloqueos del navegador.",
     "fr": "Démarrage sécurisé d’urgence : l’accueil lance uniquement le cœur de MatchApp. GTM, publicités, rendu ambiant, aides automatiques de mise à jour/installation, passkeys, audit des titres et observateurs finaux sont temporairement suspendus, avec des intervalles de démarrage limités pour éviter le blocage du navigateur.",
     "de": "Notfall-Sicherheitsstart: Die Startseite lädt nur noch den MatchApp-Kern. GTM, Werbung, Ambient-Rendering, automatische Update-/Installationshilfen, Passkeys, Titelprüfung und abschließende Beobachter sind dort vorübergehend pausiert; Startintervalle werden begrenzt, um Browser-Blockaden zu verhindern.",
