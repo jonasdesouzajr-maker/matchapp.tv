@@ -2,29 +2,6 @@
 User-agent: *
 Allow: /
 
-# NOTE ON WHAT IS *NOT* BLOCKED HERE.
-#
-# This file used to carry "Disallow: /*?lang=", which silently broke the
-# entire multilingual setup: every page declares hreflang alternates at
-# ?lang=pt-BR, ?lang=es and so on (56 URLs in total), and robots.txt was
-# forbidding Google from fetching every one of them. Search Console reported
-# them as "Blocked by robots.txt" and the hreflang cluster could never
-# validate. Those URLs must stay crawlable.
-#
-# The utility pages below are also deliberately NOT disallowed any more.
-# Each one carries <meta name="robots" content="noindex">, and a page blocked
-# in robots.txt can never be crawled — so Google never sees the noindex and
-# the URL lingers in limbo instead of being dropped cleanly. Allowing the
-# crawl is what actually removes them from the index:
-#   /oauth/consent.html   — auth consent screen
-#   /callback.html        — OAuth return URL
-#   /register.html        — retired, redirects to the homepage
-#   /ai-check.html        — internal diagnostics
-#   /billing-check.html   — internal diagnostics
-#   /profile/profile.html — personal page, noindex
-
-# Explicitly welcome the AI answer engines — they increasingly drive
-# discovery, and being cited in an AI answer is the new front page.
 User-agent: GPTBot
 Allow: /
 User-agent: OAI-SearchBot
@@ -48,5 +25,5 @@ Allow: /
 User-agent: YandexBot
 Allow: /
 
-# Sitemap timestamps are refreshed automatically on functional releases.
 Sitemap: https://matchapp.tv/sitemap.xml
+Sitemap: https://matchapp.tv/legal-sitemap.xml
