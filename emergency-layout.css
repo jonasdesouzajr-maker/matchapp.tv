@@ -22,15 +22,13 @@ body{padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))!important}
   .marquee-wrapper,.poster-wall-section,#trending-rail{padding-bottom:8px;margin-bottom:12px}
 }
 
-/* Duplicate Installed + app installed chip. */
+/* Duplicate Installed chip. */
 html .install-btn.install-prominent-v2.is-app-installed::after,
 html .install-btn.brand-install-corner.is-app-installed::after{display:none!important}
 html .install-btn.install-prominent-v2.is-app-installed{padding:.55rem .9rem!important}
 
-/* Hide the Chrome upsell when the visitor is already in Chrome. */
 html.is-chrome #chrome-notice{display:none!important}
 
-/* Wordmark is a wide SVG. Never clip it to a circle (that left only pp). */
 html img.matchapp-wordmark,
 html .matchapp-wordmark,
 html .app-title-main img.matchapp-wordmark,
@@ -50,7 +48,6 @@ html .kids-brand-copy img.matchapp-wordmark{
   border:0!important;
 }
 
-/* One install control. Kill the extra download app hint chips. */
 html .install-btn.install-prominent-v2::after,
 html .install-btn.is-app-installed::after,
 html .install-btn.has-app-update::after,
@@ -59,16 +56,16 @@ html .install-safety-mini,
 html .install-bubble-v2,
 html .brand-install-corner{display:none!important}
 
-/* Empty sponsored / banner slots. */
 html.ads-empty .ad-banner-container,
 html.ads-empty .mobile-ad-bottom,
-html.ads-empty .premium-ad-frame{display:none!important}
+html.ads-empty .premium-ad-frame,
+.ad-banner-container:not(:has(iframe)),
+.mobile-ad-bottom:not(:has(iframe)){display:none!important}
 .ad-banner-container{
   background:rgba(14,10,24,.72)!important;
   border-color:rgba(196,181,253,.12)!important;
 }
 
-/* Pricing clock should never sit as Loading Time... over the packs. */
 #real-time-clock{
   position:fixed!important;
   top:10px!important;
@@ -86,7 +83,6 @@ html.ads-empty .premium-ad-frame{display:none!important}
 }
 #real-time-clock.is-pending{opacity:.55}
 
-/* Keep Kids FAB off the last pricing heading / footer CTA. */
 body.page-pricing{padding-bottom:calc(110px + env(safe-area-inset-bottom,0px))!important}
 .poster-wall-section,.marquee-wrapper,#trending-rail{padding-inline-end:.75rem}
 
