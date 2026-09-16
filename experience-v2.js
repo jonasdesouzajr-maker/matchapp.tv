@@ -35,7 +35,7 @@
     ko:['male','남성','injoon','minsu','hyunwoo'],
     zh:['male','男','yunxi','yunyang','kangkang','xiaoming']
   };
-  const FEMALE_HINTS = ['female','femin','mulher','mujer','femme','weiblich','donna','жен','مرأة','महिला','wanita','女性','여성','女'];
+  const FEMALE_HINTS = ['female','femin','mulher','mujer','femme','weiblich','donna','жен','امرأة','महिला','wanita','女性','여성','女'];
   const NATURAL_HINTS = ['natural','neural','enhanced','premium','online','google','microsoft','siri'];
 
   function localeBase(lang){ return String(lang||'en').toLowerCase().split('-')[0]; }
@@ -149,15 +149,14 @@
     return INSTALL_HINTS[lang] || INSTALL_HINTS[localeBase(lang)] || INSTALL_HINTS.en;
   }
   function syncInstallHints(){
-    const words = hintStrings();
     document.querySelectorAll('.install-btn').forEach(btn=>{
-      const text = btn.classList.contains('has-app-update') ? words.update : btn.classList.contains('is-app-installed') ? words.installed : words.download;
-      if(btn.dataset.appHint!==text) btn.dataset.appHint=text;
+      btn.removeAttribute('data-app-hint');
       if(!btn.classList.contains('install-prominent-v2')) btn.classList.add('install-prominent-v2');
     });
     const bubble = document.getElementById('install-bubble');
     if(bubble){
       if(!bubble.classList.contains('install-bubble-v2')) bubble.classList.add('install-bubble-v2');
+      const words = hintStrings();
       const text = bubble.querySelector('.install-bubble-text');
       if(text && text.textContent!==words.download) text.textContent = words.download;
     }
@@ -178,7 +177,11 @@
   }
 
   function normalizeLogoImages(root=document){
-    root.querySelectorAll?.('img.brand-logo,img[src$="/logo.jpeg"],img[src*="/logo.jpeg?"],.matchapp-brand-link>img').forEach(img=>img.classList.add('matchapp-circle-logo'));
+    root.querySelectorAll?.('img.brand-logo,img[src$="/logo.jpeg"],img[src*="/logo.jpeg?"],.matchapp-brand-link>img').forEach(img=>{
+      if(img.classList.contains('matchapp-wordmark')) return;
+      if(/matchapp-tv-ai-v2\.svg/i.test(img.getAttribute('src')||'')) return;
+      img.classList.add('matchapp-circle-logo');
+    });
   }
 
   function organizeHeaders(root=document){
