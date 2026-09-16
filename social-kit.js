@@ -8,7 +8,7 @@
     const row = document.querySelector('.social-row');
     if (!row || row.dataset.socialKit === '1') return;
     row.dataset.socialKit = '1';
-    [['tiktok','TikTok','https://www.tiktok.com/@matchapp.tv'],['x','X','https://x.com/matchapp_tv'],['youtube','YouTube','https://www.youtube.com/@matchapp.tv'],['facebook','Facebook','https://www.facebook.com/matchapp.tv'],['threads','Threads','https://www.threads.net/@matchapp.tv']].forEach(([cls,label,href]) => {
+    [['tiktok','TikTok','https://www.tiktok.com/@matchapp.tv'],['facebook','Facebook','https://www.facebook.com/matchapp.tv']].forEach(([cls,label,href]) => {
       if (row.querySelector('[href="'+href+'"]')) return;
       const a = document.createElement('a');
       a.className = 'social-btn social-'+cls; a.href = href; a.target = '_blank'; a.rel = 'noopener noreferrer';
