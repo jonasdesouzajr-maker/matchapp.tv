@@ -1,5 +1,5 @@
 // Functional release identifier must match release.json.
-window.MATCHAPP_BUILD = '2026.09.16.1';
+window.MATCHAPP_BUILD = '2026.09.16.2';
 
 
 /* HOME STARTUP SCHEDULER
@@ -38,7 +38,7 @@ window.MATCHAPP_BUILD = '2026.09.16.1';
    inventing ratings, reviews, popularity numbers or streaming availability. */
 (function () {
   'use strict';
-  const TODAY = '2026-09-15';
+  const TODAY = '2026-09-16';
   const TRENDING = [
     'Slow Horses Season 6',
     'Monster: The Lizzie Borden Story',
@@ -139,7 +139,7 @@ window.MATCHAPP_BUILD = '2026.09.16.1';
 (function(){
   if(document.querySelector('script[data-matchapp-final-wiring]'))return;
   const s=document.createElement('script');
-  s.src='/final-wiring.js?v=20260916-final12';
+  s.src='/final-wiring.js?v=20260916-uxfix2';
   s.async=false;
   s.defer=true;
   s.dataset.matchappFinalWiring='1';
