@@ -5,72 +5,29 @@
   "start_url": "/?utm_source=pwa",
   "scope": "/",
   "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
+  "handle_links": "preferred",
+  "launch_handler": { "client_mode": "navigate-existing" },
   "orientation": "any",
   "background_color": "#101010",
   "theme_color": "#101010",
-  "categories": [
-    "entertainment",
-    "lifestyle",
-    "utilities"
-  ],
+  "categories": ["entertainment", "lifestyle", "utilities"],
   "lang": "en",
   "dir": "auto",
   "icons": [
-    {
-      "src": "/logo-192.jpeg",
-      "sizes": "192x192",
-      "type": "image/jpeg",
-      "purpose": "any"
-    },
-    {
-      "src": "/logo.jpeg",
-      "sizes": "512x512",
-      "type": "image/jpeg",
-      "purpose": "any"
-    },
-    {
-      "src": "/logo.jpeg",
-      "sizes": "512x512",
-      "type": "image/jpeg",
-      "purpose": "maskable"
-    }
+    { "src": "/logo-192.jpeg", "sizes": "192x192", "type": "image/jpeg", "purpose": "any" },
+    { "src": "/logo.jpeg", "sizes": "512x512", "type": "image/jpeg", "purpose": "any" },
+    { "src": "/logo.jpeg", "sizes": "512x512", "type": "image/jpeg", "purpose": "maskable" }
   ],
   "shortcuts": [
-    {
-      "name": "Get a match",
-      "short_name": "Match",
-      "url": "/?utm_source=pwa_shortcut#questionnaire-box"
-    },
-    {
-      "name": "Ask the AI",
-      "short_name": "Ask AI",
-      "url": "/discover.html?utm_source=pwa_shortcut"
-    },
-    {
-      "name": "My library",
-      "short_name": "Library",
-      "url": "/profile/profile.html?utm_source=pwa_shortcut"
-    },
-    {
-      "name": "Kids Mode",
-      "short_name": "Kids",
-      "url": "/kids/",
-      "icons": [
-        {
-          "src": "/kids/kids-logo.jpeg",
-          "sizes": "512x512",
-          "type": "image/jpeg"
-        }
-      ]
-    }
+    { "name": "Get a match", "short_name": "Match", "url": "/?utm_source=pwa_shortcut#questionnaire-box" },
+    { "name": "Ask the AI", "short_name": "Ask AI", "url": "/discover.html?utm_source=pwa_shortcut" },
+    { "name": "My library", "short_name": "Library", "url": "/profile/profile.html?utm_source=pwa_shortcut" },
+    { "name": "Kids Mode", "short_name": "Kids", "url": "/kids/", "icons": [{ "src": "/kids/kids-logo.jpeg", "sizes": "512x512", "type": "image/jpeg" }] }
   ],
-  "id": "/",
+  "id": "https://matchapp.tv/",
   "related_applications": [
-    {
-      "platform": "webapp",
-      "id": "https://matchapp.tv/",
-      "url": "https://matchapp.tv/manifest.json"
-    }
+    { "platform": "webapp", "id": "https://matchapp.tv/", "url": "https://matchapp.tv/manifest.json" }
   ],
   "prefer_related_applications": false
 }

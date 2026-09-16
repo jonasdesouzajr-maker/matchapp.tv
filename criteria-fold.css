@@ -1,0 +1,40 @@
+/* Foldable tick lists — no horizontal swipe. */
+.crit-collapsible { display: block; width: 100%; }
+.crit-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-align: left;
+}
+.crit-chips {
+  display: flex !important;
+  flex-direction: column !important;
+  flex-wrap: nowrap !important;
+  overflow-x: hidden !important;
+  overflow-y: auto;
+  max-height: 280px;
+  gap: 6px !important;
+  padding: 8px 2px 12px;
+}
+.crit-chip {
+  display: flex !important;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  border-radius: 10px !important;
+  text-align: left;
+}
+.crit-chip.is-off,
+.crit-chip[disabled] {
+  opacity: .38;
+  pointer-events: none;
+  text-decoration: line-through;
+}
+.crit-group {
+  margin-top: 8px;
+  font-size: 12px;
+  letter-spacing: .04em;
+  opacity: .7;
+}
+.crit-collapsible:not(.crit-open) .crit-chips { display: none !important; }
