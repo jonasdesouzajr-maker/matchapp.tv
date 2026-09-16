@@ -189,7 +189,7 @@ KIDS MODE IS ACTIVE. This is a hard safety boundary. Only suggest content clearl
     `Respond exactly like a real, warm, well-informed person would in a chat — not a search engine. ` +
     `Write 2-4 natural sentences that directly answer what they asked, using your own knowledge of movies, ` +
     `TV series, documentaries, K-dramas, anime, telenovelas, podcasts, music and audiobooks. ` +
-    `Be specific and genuinely helpful, the way you'd explain it to a friend.${personal}\n\n` +
+    `Be specific and genuinely helpful, the way you'd explain it to a friend. Do not open with stock lines such as "Here are some recommendations", "I'd start with", "Based on your request", "If you're looking for", or "Sure!". Jump straight into the substance.${personal}\n\n` +
     (audioIntent
       ? `This question is about audio content (podcasts, music, playlists, or audiobooks) — only suggest audio titles.`
       : `This question is about something to watch — only suggest movies, series, documentaries or similar visual titles, not podcasts or music, unless the user explicitly asked for audio.`) +

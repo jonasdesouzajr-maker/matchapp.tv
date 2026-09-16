@@ -473,7 +473,11 @@
     if (version !== requestVersion || age !== currentAge()) return;
     // Reapply the CURRENT allowlist, even to locally selected fallback results.
     chatPicks = (aiApproved.length ? aiApproved : localMatch(question.trim(), age)).filter(x => byTitle.get(normalizeTitle(x.title)) === x && allowedForAge(x, currentAge()));
-    answer.textContent = chatPicks.length ? tr('answer') : tr('noMatch');
+    const lead = chatPicks[0];
+    const syn = lead && String(lead.synopsis || '').replace(/\s+/g, ' ').trim();
+    answer.textContent = chatPicks.length
+      ? (syn ? lead.title + ' — ' + syn : lead.title)
+      : tr('noMatch');
     results.innerHTML = chatPicks.map((x,i) => cardHTML(x, true, 'chat-' + i)).join('');
     chatPicks.forEach((x,i) => hydratePoster(x, 'chat-' + i));
     send.disabled = false; form.setAttribute('aria-busy', 'false');

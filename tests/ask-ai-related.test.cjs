@@ -74,5 +74,39 @@ test('Ask AI localization keeps original title identity',()=>{
   assert.match(locale,/item\.displayTitle = await translateText\(item\.title, 'title'\)/);
   assert.doesNotMatch(locale,/item\.title = await translateText\(item\.title/);
   const settings=read('settings.js');
-  assert.match(settings,/20260916-genre2/);
+  assert.match(settings,/20260916-genre3/);
+});
+
+test('Ask AI strips stock opening lines instead of appending one',()=>{
+  const human=read('human-conversation.js');
+  assert.match(human,/cleanAskOpening/);
+  assert.match(human,/humanizeAskAI/);
+  assert.doesNotMatch(human,/I.d start with \{title\}/);
+  const guarantee=read('match-guarantee.js');
+  assert.doesNotMatch(guarantee,/Here are titles that match what you asked for/);
+  assert.doesNotMatch(guarantee,/Aqui est[aã]o t[ií]tulos que combinam/);
+  const proxy=read('supabase/functions/gemini-proxy/index.ts');
+  assert.match(proxy,/Do not open with stock lines/);
+});
+
+test('stock openings are stripped at runtime',()=>{
+  const vm=require('node:vm');
+  const window={MATCH_LANG:'en',addEventListener(){},askAIConversational:null};
+  window.window=window;
+  const ctx=vm.createContext({
+    window,
+    document:{readyState:'complete',addEventListener(){},querySelectorAll:()=>[]},
+    localStorage:{getItem:()=>null,setItem(){}},
+    setTimeout(){},
+    speechSynthesis:{cancel(){},getVoices:()=>[],speak(){}}
+  });
+  vm.runInContext(read('human-conversation.js'), ctx);
+  const clean=ctx.window.cleanAskOpening;
+  assert.equal(clean('Here are titles that match what you asked for. Ted Lasso is a warm comedy.'), 'Ted Lasso is a warm comedy.');
+  assert.equal(clean("I'd start with Ted Lasso — it feels like the strongest fit for what you're asking for. A feel-good sitcom."), 'A feel-good sitcom.');
+  assert.equal(clean('Sure! Based on your request, a riotous workplace comedy.'), 'a riotous workplace comedy.');
+  const out=ctx.window.humanizeAskAI({answer:'',results:[{title:'Ted Lasso',synopsis:'An American coach takes a Premier League side.'}]},[]);
+  assert.equal(out.answer,'Ted Lasso — An American coach takes a Premier League side.');
+  assert.doesNotMatch(out.answer,/Here are titles/);
+  assert.doesNotMatch(out.answer,/strongest fit/);
 });

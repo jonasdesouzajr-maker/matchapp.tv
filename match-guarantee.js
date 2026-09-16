@@ -114,9 +114,15 @@
       }
       parsed.results = results;
       if (!parsed.answer) {
-        parsed.answer = lang.startsWith('pt')
-          ? (results.length ? 'Aqui estão títulos que combinam com o que você pediu.' : 'Não achei um título nesse gênero. Tente outro humor ou formato.')
-          : (results.length ? 'Here are titles that match what you asked for.' : 'No title in that genre turned up. Try another mood or format.');
+        const first = results[0];
+        const syn = first && String(first.synopsis || '').replace(/\s+/g, ' ').trim();
+        if (first && first.title) {
+          parsed.answer = syn ? first.title + ' — ' + syn : String(first.title);
+        } else {
+          parsed.answer = lang.startsWith('pt')
+            ? 'Não achei um título nesse gênero. Tente outro humor ou formato.'
+            : 'No title in that genre turned up. Try another mood or format.';
+        }
       }
       return parsed;
     };
