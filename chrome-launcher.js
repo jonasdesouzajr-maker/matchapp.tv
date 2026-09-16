@@ -50,8 +50,7 @@
     if(!rails.length)return;
     const filled=rails.some(rail=>{
       const iframe=rail.querySelector('iframe');
-      const ins=rail.querySelector('ins.adsbygoogle');
-      const h=Math.max(iframe?.offsetHeight||0, ins?.offsetHeight||0);
+      const h=iframe?.offsetHeight||0;
       return h>80 && getComputedStyle(rail).display!=='none';
     });
     if(!filled)document.documentElement.classList.add('ads-empty');
