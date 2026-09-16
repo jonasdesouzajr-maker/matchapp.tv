@@ -124,9 +124,10 @@ jobs:
               marquee:[...document.querySelectorAll('.marquee-item img')].filter(i=>i.getAttribute('src')).length,
               eventCards:document.querySelectorAll('[data-event-date],.event-card').length,
               buttons:[...document.querySelectorAll('button,a,[role="button"]')].filter(el=>{const r=el.getBoundingClientRect();return r.width>0&&r.height>0}).length,
-              height:document.documentElement.scrollHeight
+              height:document.documentElement.scrollHeight,
+              viewportHeight:window.innerHeight
             })),1500);
-            if(state.skipped!==0||!state.scheduler||state.buttons<5||state.height<innerHeight) throw new Error('invalid homepage state '+JSON.stringify(state));
+            if(state.skipped!==0||!state.scheduler||state.buttons<5||state.height<state.viewportHeight) throw new Error('invalid homepage state '+JSON.stringify(state));
             await bounded(page.evaluate(()=>scrollTo(0,Math.max(0,document.documentElement.scrollHeight-innerHeight))),1500);
             await page.waitForTimeout(200);
             await bounded(page.evaluate(()=>scrollTo(0,0)),1500);
