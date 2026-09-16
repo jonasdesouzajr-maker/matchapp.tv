@@ -92,7 +92,10 @@
       visibilityObserver.observe(vp);
     }
 
-    window.addEventListener('pointerup',()=>{held.delete(offscreenHold);held.clear();resumeSoon(null,280);},{passive:true});
+    window.addEventListener('pointerup',()=>{
+      held.forEach(token=>{if(token!==offscreenHold)held.delete(token);});
+      resumeSoon(null,280);
+    },{passive:true});
     vp.addEventListener('wheel',()=>{freeze();resumeSoon(null,1200);},{passive:true});
 
     document.addEventListener('visibilitychange',()=>{
