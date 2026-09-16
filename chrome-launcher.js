@@ -13,11 +13,13 @@
     const ua=navigator.userAgent||navigator.vendor||'';
     const isAndroid=/Android/i.test(ua);
     const isIOS=/iPad|iPhone|iPod/i.test(ua)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+
     if(isAndroid){
       location.href=androidIntent();
       setTimeout(()=>{if(!document.hidden)location.replace(HOME);launching=false;},1800);
       return;
     }
+
     if(isIOS){
       const timer=setTimeout(()=>{if(!document.hidden)location.replace(HOME);launching=false;},1300);
       const onHidden=()=>{if(document.hidden){clearTimeout(timer);launching=false;document.removeEventListener('visibilitychange',onHidden)}};
@@ -25,6 +27,7 @@
       location.href='googlechromes://matchapp.tv/';
       return;
     }
+
     location.assign(HOME);
   }
 
@@ -43,7 +46,7 @@
   }
 
   function collapseEmptyAdRails(){
-    const rails=[...document.querySelectorAll('.sidebar-ad-left,.sidebar-ad-right')];
+    const rails=[...document.querySelectorAll('.sidebar-ad-left,.sidebar-ad-right,.ad-banner-container,.mobile-ad-bottom,.premium-ad-frame')];
     if(!rails.length)return;
     const filled=rails.some(rail=>{
       const iframe=rail.querySelector('iframe');
@@ -52,6 +55,22 @@
       return h>80 && getComputedStyle(rail).display!=='none';
     });
     if(!filled)document.documentElement.classList.add('ads-empty');
+  }
+
+  function fillClock(){
+    const el=document.getElementById('real-time-clock');
+    if(!el)return;
+    const tick=()=>{
+      try{
+        el.classList.remove('is-pending');
+        el.textContent=new Date().toLocaleString(document.documentElement.lang||undefined,{weekday:'short',month:'short',day:'numeric',hour:'numeric',minute:'2-digit'});
+      }catch(_){
+        el.textContent=new Date().toLocaleString();
+      }
+    };
+    if(/loading/i.test(el.textContent||'')) el.classList.add('is-pending');
+    tick();
+    if(!window.__matchappClock){window.__matchappClock=setInterval(tick,30000)}
   }
 
   function wire(root=document){
@@ -80,6 +99,8 @@
   function boot(){
     hideChromeNotice();
     wire();
+    fillClock();
+    if(/pricing/.test(location.pathname)) document.body.classList.add('page-pricing');
     setTimeout(collapseEmptyAdRails,2200);
     setTimeout(collapseEmptyAdRails,6000);
   }
