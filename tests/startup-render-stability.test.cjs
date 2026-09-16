@@ -12,4 +12,5 @@ test('startup visuals do not run full-screen animation-frame loops',()=>{
   assert.match(ambient,/1080\/cssH/,'ambient backing store must be resolution-capped');
   assert.doesNotMatch(marquee,/requestAnimationFrame\s*\(/,'Top Titles fallback must not run a 60 FPS frame loop');
   assert.match(marquee,/Object\.defineProperty\(vp,'_paused'/,'legacy high-frequency rail must be held paused');
+  assert.match(marquee,/is-marquee-flowing/,'Top Titles must glide on the compositor');
 });

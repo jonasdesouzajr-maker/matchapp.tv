@@ -55,8 +55,7 @@ window.MATCHAPP_BUILD = '2026.09.16.4';
   function loadHomeRuntimeFixes() {
     if (document.querySelector('script[data-matchapp-marquee-autoplay]')) return;
     const script = document.createElement('script');
-    script.src = '/marquee-autoplay.js?v=20260915c'; script.defer = true; script.dataset.matchappMarqueeAutoplay = '1';
-    document.head.appendChild(script);
+    script.src = '/marquee-autoplay.js?v=20260916-flow1'; script.defer = true; script.dataset.matchappMarqueeAutoplay = '1';    document.head.appendChild(script);
   }
   function install() {
     const path = location.pathname;
@@ -87,7 +86,7 @@ window.MATCHAPP_BUILD = '2026.09.16.4';
 (function(){
   if(document.querySelector('script[data-matchapp-final-wiring]'))return;
   const s=document.createElement('script');
-  s.src='/final-wiring.js?v=20260916-uxfix2';
+  s.src='/final-wiring.js?v=20260916-flow1';
   s.async=false; s.defer=true; s.dataset.matchappFinalWiring='1';
   document.head.appendChild(s);
 })();

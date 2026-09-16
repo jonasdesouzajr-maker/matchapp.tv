@@ -1534,9 +1534,10 @@ window.eventMatch = function (query) {
             }
         }
 
-        // Respect people who've asked the OS for less motion.
+        // Respect people who've asked the OS for less motion. Phones keep
+        // native swipe only. Desktop auto-advance is CSS-driven in
+        // marquee-autoplay.js so this 16ms scrollLeft loop cannot hitch the rail.
         const reduced = window.matchMedia && (window.matchMedia('(prefers-reduced-motion: reduce)').matches || window.matchMedia('(max-width: 900px), (pointer: coarse)').matches);
-        if (!reduced) autoTimer = setInterval(tick, TICK_MS);
 
         vp.addEventListener('mouseenter', () => { paused = true; });
         vp.addEventListener('mouseleave', () => { paused = false; });
@@ -1576,10 +1577,10 @@ window.eventMatch = function (query) {
         // Manual wheel/trackpad scrolling should also pause the auto-advance.
         vp.addEventListener('scroll', () => { wrap(); }, { passive: true });
 
-        // Stop burning CPU while the tab is hidden.
+        // Stop any leftover JS timer while the tab is hidden. Auto-flow
+        // is CSS; do not restart a scrollLeft interval on return.
         document.addEventListener('visibilitychange', () => {
             if (document.hidden) { clearInterval(autoTimer); autoTimer = null; }
-            else if (!autoTimer && !reduced) autoTimer = setInterval(tick, TICK_MS);
         });
     }
 

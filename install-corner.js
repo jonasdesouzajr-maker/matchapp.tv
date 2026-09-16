@@ -35,14 +35,10 @@ function build(){
  source.title=text().safe;
 }
 function boot(){
-  let queued=false,busy=false;
-  const run=()=>{if(busy){queued=true;return}busy=true;try{build()}finally{busy=false;if(queued){queued=false;requestAnimationFrame(run)}}};
-  run();
-  const header=document.querySelector('.app-header')||document.body;
-  new MutationObserver(()=>{if(!busy)requestAnimationFrame(run)}).observe(header,{subtree:true,childList:true});
-  document.addEventListener('matchapp:langchange',run);
-  window.addEventListener('matchapp:installstate',run);
-  window.addEventListener('appinstalled',run);
+  build();
+  document.addEventListener('matchapp:langchange',build);
+  window.addEventListener('matchapp:installstate',build);
+  window.addEventListener('appinstalled',build);
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
 })();

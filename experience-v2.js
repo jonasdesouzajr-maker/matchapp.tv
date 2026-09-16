@@ -208,17 +208,20 @@
       if(structure){ upgradeWordmarks(); normalizeLogoImages(); organizeHeaders(); }
       if(structure||install) syncInstallHints();
     };
-    const observer = new MutationObserver(mutations=>{
-      for(const m of mutations){
-        if(m.type==='childList' && Array.from(m.addedNodes||[]).some(n=>n.nodeType===1)) pendingStructure=true;
-        if(m.type==='attributes' && m.target.classList?.contains('install-btn')) pendingInstall=true;
-      }
-      if((pendingStructure||pendingInstall)&&!observerQueued){
-        observerQueued=true;
-        setTimeout(flushObservedChanges,0);
-      }
-    });
-    observer.observe(document.documentElement,{subtree:true,childList:true,attributes:true,attributeFilter:['class']});
+    const header = document.querySelector('.app-header');
+    if(header && window.MutationObserver){
+      const observer = new MutationObserver(mutations=>{
+        for(const m of mutations){
+          if(m.type==='childList' && Array.from(m.addedNodes||[]).some(n=>n.nodeType===1)) pendingStructure=true;
+          if(m.type==='attributes' && m.target.classList?.contains('install-btn')) pendingInstall=true;
+        }
+        if((pendingStructure||pendingInstall)&&!observerQueued){
+          observerQueued=true;
+          setTimeout(flushObservedChanges,0);
+        }
+      });
+      observer.observe(header,{subtree:true,childList:true,attributes:true,attributeFilter:['class']});
+    }
   }
 
   document.addEventListener('matchapp:langchange',()=>{ patchVoiceResolver(); syncInstallHints(); });

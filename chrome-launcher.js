@@ -105,10 +105,4 @@
     setTimeout(collapseEmptyAdRails,13000);
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
-  let wiring=false;
-  new MutationObserver(m=>{
-    if(wiring||!m.some(x=>x.addedNodes.length))return;
-    wiring=true;
-    requestAnimationFrame(()=>{try{wire();hideChromeNotice()}finally{wiring=false}});
-  }).observe(document.documentElement,{subtree:true,childList:true});
 })();
