@@ -7,10 +7,10 @@
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>https://matchapp.tv/discover.html</loc>
+        <loc>https://matchapp.tv/android/</loc>
         <lastmod>2026-09-16T21:42:03+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.9</priority>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/kids/</loc>

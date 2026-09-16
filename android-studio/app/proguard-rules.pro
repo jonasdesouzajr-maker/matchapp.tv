@@ -1,0 +1,3 @@
+-keepclassmembers class tv.matchapp.app.** { *; }
+-keepattributes *Annotation*
+-dontwarn android.webkit.**

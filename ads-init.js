@@ -2,6 +2,14 @@
 // for a visible container with a measurable width (including collapsed panels).
 (function(){
  'use strict';
+ if(/MatchAppTVAndroid/i.test(navigator.userAgent||'')){
+  window.MATCHAPP_IS_AD_FREE=true;
+  try{localStorage.setItem('match_ad_free','true')}catch(_){}
+  document.documentElement.classList.add('ads-empty','matchapp-android');
+  return;
+ }
+ try{if(localStorage.getItem('match_ad_free')==='true')return;}catch(_){}
+ if(window.MATCHAPP_IS_AD_FREE===true)return;
  if(window.matchAppAdsInitialized)return;
  window.matchAppAdsInitialized=true;
  function ready(){

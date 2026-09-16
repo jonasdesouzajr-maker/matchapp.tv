@@ -3,11 +3,16 @@
   const HOME='https://matchapp.tv/';
   let launching=false;
 
+  function inAndroidApp(){
+    return /MatchAppTVAndroid/i.test(navigator.userAgent||'');
+  }
+
   function androidIntent(){
     return 'intent://matchapp.tv/#Intent;scheme=https;package=com.android.chrome;S.browser_fallback_url='+encodeURIComponent(HOME)+';end';
   }
 
   function launchChromeHome(){
+    if(inAndroidApp())return;
     if(launching)return;
     launching=true;
     const ua=navigator.userAgent||navigator.vendor||'';
@@ -31,6 +36,7 @@
   window.openInChrome=launchChromeHome;
 
   function alreadyChrome(){
+    if(inAndroidApp())return true;
     const ua=navigator.userAgent||'';
     return /Chrome\//.test(ua) && !/Edg\/|OPR\/|SamsungBrowser|YaBrowser/.test(ua);
   }
@@ -42,7 +48,16 @@
     if(notice)notice.hidden=true;
   }
 
+  function markAndroidAppAdFree(){
+    if(!inAndroidApp())return;
+    window.MATCHAPP_IS_AD_FREE=true;
+    try{localStorage.setItem('match_ad_free','true')}catch(_){}
+    document.documentElement.classList.add('ads-empty','matchapp-android','is-chrome');
+    hideChromeNotice();
+  }
+
   function collapseEmptyAdRails(){
+    if(inAndroidApp()){markAndroidAppAdFree();return;}
     const rails=[...document.querySelectorAll('.sidebar-ad-left,.sidebar-ad-right,.ad-banner-container,.mobile-ad-bottom,.premium-ad-frame')];
     if(!rails.length)return;
     const filled=rails.some(rail=>{
@@ -96,6 +111,7 @@
   },true);
 
   function boot(){
+    markAndroidAppAdFree();
     hideChromeNotice();
     wire();
     fillClock();

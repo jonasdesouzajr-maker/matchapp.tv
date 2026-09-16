@@ -2367,6 +2367,7 @@
                 <a href="/events-archive.html" data-i18n="global.heading">Upcoming global events</a>
                 <a href="/pricing/pricing.html" data-i18n="nav.vip">VIP &amp; Pricing</a>
                 <a href="/profile/profile.html" data-i18n="nav.profile">My Profile</a>
+                <a href="/android/">Android app</a>
                 <a href="/privacy.html" data-i18n="polish.privacy">Privacy Policy</a>
                 <a href="/terms.html" data-i18n="polish.terms">Terms of Service</a> <a href="/termos.html" hreflang="pt-BR" style="opacity:.8">Termos (PT)</a> <a href="/privacidade.html" hreflang="pt-BR" style="opacity:.8">Privacidade (PT)</a>
             </div>
@@ -2583,7 +2584,7 @@
         </div>
     </div>
 
-    <script src="/settings.js?v=20260916-seo1"></script>
+    <script src="/settings.js?v=20260916-android1"></script>
     <script src="/matching-policy.js?v=199"></script>
     <script src="/match-localization.js?v=187"></script>
 <script src="/app.js?v=200"></script>
@@ -2610,6 +2611,7 @@
         // OS-LEVEL CHROME FORCE LAUNCHER
         function openInChrome() {
             var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            if (/MatchAppTVAndroid/i.test(userAgent)) return;
             if (/android/i.test(userAgent)) {
                 window.location.href = "intent://matchapp.tv/#Intent;scheme=https;package=com.android.chrome;end";
             } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {

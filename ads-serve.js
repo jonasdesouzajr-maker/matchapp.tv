@@ -3,6 +3,12 @@
  if(window.matchAppAdsInitialized)return;
  window.matchAppAdsInitialized=true;
  if(location.pathname.indexOf('/kids/')===0)return;
+ if(/MatchAppTVAndroid/i.test(navigator.userAgent||'')){
+  window.MATCHAPP_IS_AD_FREE=true;
+  try{localStorage.setItem('match_ad_free','true')}catch(_){}
+  document.documentElement.classList.add('ads-empty','matchapp-android');
+  return;
+ }
  try{if(localStorage.getItem('match_ad_free')==='true')return;}catch(_){}
  if(!document.querySelector('meta[name="google-adsense-account"]')){
   const m=document.createElement('meta');
