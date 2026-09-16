@@ -409,19 +409,20 @@ function catalogCousins(item, take) {
     const moods = new Set(self?.moods || []);
     const cast = new Set(self?.cast || []);
     const platform = self?.platform || item.platform;
+    const FORMAT_CATS = new Set(['movie','series','limited series','short film','YouTube channel','YouTube Shorts','podcast']);
     return CONTENT_CATALOG
         .filter(e => e && e.title && e.title !== item.title && !isDiscoverDisliked(e.title))
         .filter(e => !window.matchPolicy || window.matchPolicy.sameFamily(self || item, e))
         .map(e => {
             let s = 0;
             (e.cast || []).forEach(c => { if (cast.has(c)) s += 40; });
-            (e.cats || []).forEach(c => { if (cats.has(c)) s += 12; });
-            (e.moods || []).forEach(m => { if (moods.has(m)) s += 10; });
-            if (platform && e.platform === platform) s += 6;
-            if (self?.year && e.year && Math.abs(Number(e.year) - Number(self.year)) <= 5) s += 4;
+            (e.cats || []).forEach(c => { if (cats.has(c)) s += FORMAT_CATS.has(c) ? 4 : 20; });
+            (e.moods || []).forEach(m => { if (moods.has(m)) s += 16; });
+            if (platform && e.platform === platform) s += 4;
+            if (self?.year && e.year && Math.abs(Number(e.year) - Number(self.year)) <= 5) s += 3;
             return { e, s };
         })
-        .filter(x => x.s >= 12)
+        .filter(x => x.s >= 16)
         .sort((a, b) => b.s - a.s)
         .slice(0, take)
         .map(({ e }) => ({

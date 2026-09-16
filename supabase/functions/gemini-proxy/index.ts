@@ -195,7 +195,7 @@ KIDS MODE IS ACTIVE. This is a hard safety boundary. Only suggest content clearl
       : `This question is about something to watch — only suggest movies, series, documentaries or similar visual titles, not podcasts or music, unless the user explicitly asked for audio.`) +
     `\n\nOnly recommend real, existing titles — never invent a film, series or show. Prefer titles that are currently streaming when you know a platform. ` +
     `If you are not sure a title exists, omit it.\n` +
-    `CRITICAL GENRE LOCK: Match the requested genre strictly. If they asked for comedy, funny, sitcom or stand-up, recommend only comedies — never dramas, K-dramas, tearjerkers, thrillers or horror. If they asked for drama, do not recommend stand-up or slapstick comedies. Do not mix mismatched genres to pad the list.\n` +
+    `CRITICAL GENRE LOCK: Match the requested genre strictly. Score the PRIMARY genre, not garnish words. If they asked for comedy, funny, sitcom or stand-up, recommend only comedies — never dramas, K-dramas, tearjerkers, thrillers or horror, and never a title that merely has "funny moments" or "humor". Comic-book movies and character-sketch crime stories are not comedies. If they asked for drama, do not recommend stand-up or slapstick comedies. If they asked for romance, K-dramas and rom-coms are allowed; still never swap in a mismatched genre to pad the list.\n` +
     `CRITICAL: Write your "answer" field in ${lang}, matching the language the user asked in. ` +
     `Then list 3 to ${DISCOVER_MAX} real, existing titles that back up your answer, best match first. ` +
     `Every result must include the exact title, year, platform and a 1-2 sentence synopsis in ${lang}. Never return a title without a synopsis.\n` +

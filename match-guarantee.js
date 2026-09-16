@@ -68,7 +68,7 @@
     window.pickFromCatalog = function (cat, plat, mood, vibe, rating, decade) {
       const criteria = { cat, plat, mood, vibe, rating, decade };
       const hit = orig.apply(this, arguments);
-      if (hit && hit.title && (!window.matchPolicy || window.matchPolicy.matches(hit, criteria, []))) return hit;
+      if (hit && hit.title && (!window.matchPolicy || window.matchPolicy.genreFits(hit, criteria))) return hit;
       return pickFreshFitting(criteria);
     };
     window.pickFromCatalog.__guaranteed = true;

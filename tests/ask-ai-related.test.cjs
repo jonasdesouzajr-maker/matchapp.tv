@@ -22,7 +22,7 @@ test('Ask AI cards include watch now, watch later, not for me and synopsis',()=>
   const html=read('discover.html');
   assert.match(html,/discover-nfm/);
   assert.match(html,/discover-related-head/);
-  assert.match(html,/discover\.js\?v=198/);
+  assert.match(html,/discover\.js\?v=199/);
   assert.match(html,/tmdb\.js\?v=191/);
 });
 
@@ -74,5 +74,5 @@ test('Ask AI localization keeps original title identity',()=>{
   assert.match(locale,/item\.displayTitle = await translateText\(item\.title, 'title'\)/);
   assert.doesNotMatch(locale,/item\.title = await translateText\(item\.title/);
   const settings=read('settings.js');
-  assert.match(settings,/20260916-genre1/);
+  assert.match(settings,/20260916-genre2/);
 });

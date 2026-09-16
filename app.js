@@ -2886,7 +2886,7 @@ async function discoverFromITunes(cat, mood, vibe, decade, rating) {
         let pool = data.results.filter(r => r.artworkUrl100 && (r.trackName || r.collectionName));
         pool = pool.filter(r => !excluded.has(window.matchPolicy?.key(r.trackName || r.collectionName)));
         const ITUNES_GENRE = {
-            funny: /comedy|stand.?up|comic/i,
+            funny: /comedy|stand.?up/i,
             scary: /horror/i,
             romantic: /romance/i,
             'heartbreaking': /drama/i,
@@ -2908,7 +2908,7 @@ async function discoverFromITunes(cat, mood, vibe, decade, rating) {
             pool = pool.filter(r => {
                 const g = String(r.primaryGenreName || '');
                 if (/drama/i.test(g) && !/comedy/i.test(g)) return false;
-                return /comedy|stand.?up|comic/i.test(g);
+                return /comedy|stand.?up/i.test(g);
             });
             if (!pool.length) return null;
         }
