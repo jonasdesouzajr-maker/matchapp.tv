@@ -1,0 +1,10 @@
+#profile-starsign,.identity-tile:has(#lock-val-sign){display:none!important}
+.taste-quiz{margin:28px 0 40px;padding:22px 20px;border-radius:18px}
+.taste-quiz h2{margin:0 0 8px;font-size:1.35rem}
+.taste-lead{opacity:.82;margin:0 0 18px;line-height:1.45}
+.taste-q{border:1px solid rgba(229,193,88,.22);border-radius:14px;padding:12px 14px 8px;margin:0 0 14px}
+.taste-q legend{padding:0 6px;color:var(--gold,#e5c158);font-weight:650}
+.taste-multi{opacity:.7;font-weight:500;font-size:.85em}
+.taste-choice{display:flex;align-items:flex-start;gap:8px;padding:8px 4px;cursor:pointer}
+.taste-status{margin:10px 0;color:var(--gold,#e5c158)}
+#taste-save{width:100%;padding:16px;margin-top:8px}
