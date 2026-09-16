@@ -321,7 +321,10 @@ function escapeDiscoverHtml(value) {
 }
 
 function discoverCardHTML(item, idx) {
-    const title = String(item.title || '');
+    const rawTitle = String(item.title || '');
+    const title = (typeof window.sanitizeDisplayText === 'function')
+        ? window.sanitizeDisplayText(rawTitle, ['title'])
+        : rawTitle;
     const safe = escapeDiscoverHtml(title);
     const meta = escapeDiscoverHtml([item.year, item.type].filter(Boolean).join(' · '));
     const watchLabel = (typeof t === 'function') ? t('res.streamnow') : '▶ Watch / Listen';
@@ -653,6 +656,27 @@ async function askAndRender(question) {
     if (typeof window.track === 'function') {
         window.track('ai_search', { search_term: question, source: source, results: (payload.results || []).length });
     }
+
+    try {
+        window.MatchActivity?.log?.('ai', question);
+        (payload.results || []).forEach(item => {
+            if (!item || !item.title) return;
+            const title = (typeof window.sanitizeDisplayText === 'function')
+                ? window.sanitizeDisplayText(String(item.title), ['title'])
+                : String(item.title);
+            if (!title || /^\s*[{\[]/.test(title)) return;
+            window.MatchActivity?.log?.('ai', title, {
+                source: 'ask-ai',
+                posterUrl: item.posterUrl || item.artwork || ''
+            });
+            window.matchPolicy?.remember?.({
+                title: title,
+                posterUrl: item.posterUrl || item.artwork || '',
+                streamUrl: item.watchUrl || item.url || '',
+                reason: 'Ask AI'
+            }, 'ai');
+        });
+    } catch (_) {}
 
     if (loadEl) loadEl.style.display = 'none';
 

@@ -1,9 +1,10 @@
-#locked-info-card,.identity-showcase{width:100%;max-width:720px;margin:0 auto 22px;padding:18px 16px 16px;border-radius:20px;background:linear-gradient(180deg,rgba(28,18,42,.94),rgba(12,8,18,.96));border:1px solid rgba(229,193,88,.28);box-shadow:0 18px 40px rgba(0,0,0,.35);box-sizing:border-box}
-.identity-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:12px!important}
-.identity-tile{min-width:0;padding:14px 14px 12px!important;border-radius:14px!important;background:rgba(255,255,255,.04)!important;border:1px solid rgba(229,193,88,.18)!important}
+#locked-info-card,.identity-showcase{width:100%;max-width:720px;margin:0 auto 16px;padding:14px 14px 12px;border-radius:16px;background:linear-gradient(180deg,rgba(28,18,42,.94),rgba(12,8,18,.96));border:1px solid rgba(229,193,88,.28);box-shadow:0 18px 40px rgba(0,0,0,.35);box-sizing:border-box}
+.identity-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}
+.identity-tile{min-width:0;padding:12px 12px 10px!important;border-radius:12px!important;background:rgba(255,255,255,.04)!important;border:1px solid rgba(229,193,88,.18)!important}
 .identity-tile .identity-label{font-size:11px;letter-spacing:.08em;text-transform:uppercase;opacity:.72}
-.identity-tile .identity-value{font-size:15px;line-height:1.35;word-break:break-word;color:#f6e7c4}
+.identity-tile .identity-value{font-size:15px;line-height:1.35;word-break:break-word;color:var(--theme-text,#f6e7c4)}
 .identity-tile .identity-hint{font-size:12px;opacity:.7;line-height:1.35}
 .identity-tile:has(#lock-val-sign),#lock-val-sign,#lock-val-sign-trait{display:none!important}
 .core-identity-card,#taste-quiz{max-width:720px;margin-left:auto;margin-right:auto;box-sizing:border-box}
-@media (max-width:640px){.identity-grid{grid-template-columns:1fr!important}#locked-info-card,.identity-showcase{padding:14px 12px}}
+.portfolio-tabs{display:flex;flex-wrap:wrap;gap:8px}
+@media (max-width:640px){.identity-grid{grid-template-columns:1fr!important}#locked-info-card,.identity-showcase{padding:12px 10px}.input-grid{grid-template-columns:1fr!important}}

@@ -54,14 +54,14 @@ html:not([data-kids-mode]) .home-h1-sub {
 
 html:not([data-kids-mode]) #result-box.is-revealed #res-title,
 html:not([data-kids-mode]) #result-box.is-revealed .res-title-el {
-  font-family: var(--font-cinema) !important;
+  font-family: var(--theme-heading, var(--font-cinema)) !important;
   font-optical-sizing: auto;
   font-weight: 650 !important;
   letter-spacing: -0.03em !important;
   text-transform: none !important;
   background: none !important;
-  -webkit-text-fill-color: #fff6e4 !important;
-  color: #fff6e4 !important;
+  -webkit-text-fill-color: var(--theme-text, #fff6e4) !important;
+  color: var(--theme-text, #fff6e4) !important;
   animation: none !important;
   text-shadow: 0 10px 40px rgba(0,0,0,.45);
 }

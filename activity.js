@@ -12,18 +12,16 @@
    Keeping it in localStorage also means no table, no migration, no RLS
    policy, and no breach surface.
 
-   RETENTION is enforced on read as well as on write. A cutoff applied only
-   when new entries arrive would let a user who stops using MatchApp for two
-   months keep a stale log forever; pruning on read means opening the panel
-   is itself enough to clear anything past the window.
+   RETENTION is user-controlled: entries stay until the owner deletes them
+   (or the localStorage ceiling is hit). We never auto-wipe history.
    ============================================================ */
 
 (function () {
     'use strict';
 
     const KEY = 'match_activity';
-    const RETENTION_DAYS = 15;
-    const MAX_ENTRIES = 600;     // a hard ceiling so a heavy user cannot fill the quota
+    const RETENTION_DAYS = 0;    // 0 = keep forever until the user deletes an entry
+    const MAX_ENTRIES = 800;     // a hard ceiling so a heavy user cannot fill the quota
 
     const TYPES = {
         match:    { icon: '🎬', label: 'Match' },
@@ -43,11 +41,8 @@
         try { list = JSON.parse(localStorage.getItem(KEY) || '[]'); } catch (e) { return []; }
         if (!Array.isArray(list)) return [];
 
-        // Prune on every read — see the note above about idle users.
-        const cutoff = Date.now() - RETENTION_DAYS * 86400000;
-        const fresh = list.filter(e => e && e.ts && e.ts >= cutoff);
-        if (fresh.length !== list.length) write(fresh);
-        return fresh;
+        // Keep every entry until the user deletes it. Only drop broken rows.
+        return list.filter(e => e && e.ts);
     }
 
     function write(list) {
@@ -72,6 +67,7 @@
                 meta: meta || null
             });
             write(list);
+            document.dispatchEvent(new CustomEvent('matchapp:historychange'));
             // Repaint only if the panel happens to be open.
             if (document.getElementById('activity-list')) window.renderActivity();
         },
@@ -80,10 +76,12 @@
 
         removeAt(ts) {
             write(read().filter(e => e.ts !== ts));
+            document.dispatchEvent(new CustomEvent('matchapp:historychange'));
         },
 
         clear() {
             try { localStorage.removeItem(KEY); } catch (e) {}
+            document.dispatchEvent(new CustomEvent('matchapp:historychange'));
         },
 
         TYPES,
@@ -120,8 +118,7 @@
 
         const countEl = document.getElementById('activity-count');
         if (!items.length) {
-            box.innerHTML = '<p class="activity-empty">Nothing here yet. Your activity from the last '
-                + window.MatchActivity.RETENTION_DAYS + ' days will appear as you use MatchApp.</p>';
+            box.innerHTML = '<p class="activity-empty">Nothing here yet. Matches, Ask AI titles and saves stay here until you remove them.</p>';
             if (countEl) countEl.textContent = '';
             return;
         }
@@ -141,8 +138,7 @@
         }).join('');
 
         if (countEl) {
-            countEl.textContent = `${items.length} entr${items.length === 1 ? 'y' : 'ies'} · `
-                + `kept for ${window.MatchActivity.RETENTION_DAYS} days, then deleted automatically.`;
+            countEl.textContent = `${items.length} entr${items.length === 1 ? 'y' : 'ies'} · kept until you remove them.`;
         }
     };
 

@@ -112,10 +112,11 @@
     box.innerHTML='<h2>Taste questionnaire</h2><p class="taste-lead">These answers steer Match only. Ask AI stays a free conversation. Required identity stays locked after you save it. Pick one unless the question says otherwise.</p><form id="taste-form"></form><p class="taste-status" hidden></p><button type="button" class="gold-btn" id="taste-save">Save taste profile</button>';
     host.appendChild(box);const form=box.querySelector('#taste-form');
     Q.forEach(q=>{const fs=document.createElement('fieldset');fs.className='taste-q';fs.innerHTML='<legend>'+q.q+(q.multi?' <span class="taste-multi">up to '+q.max+'</span>':'')+'</legend>';
+      const grid=document.createElement('div');grid.className='taste-q-grid';
       q.choices.forEach(c=>{const id='taste-'+q.id+'-'+c.id;const lab=document.createElement('label');lab.className='taste-choice';lab.setAttribute('for',id);
         const input=document.createElement('input');input.type=q.multi?'checkbox':'radio';input.name=q.id;input.id=id;input.value=c.id;
         const picked=state.answers[q.id];if(q.multi&&Array.isArray(picked))input.checked=picked.includes(c.id);else if(picked===c.id)input.checked=true;
-        lab.append(input,document.createTextNode(' '+c.label));fs.appendChild(lab);});form.appendChild(fs);});
+        lab.append(input,document.createTextNode(' '+c.label));grid.appendChild(lab);});fs.appendChild(grid);form.appendChild(fs);});
     box.querySelector('#taste-save').addEventListener('click',async()=>{const next={answers:{},done:false};let missing=false;
       Q.forEach(q=>{const nodes=[...form.querySelectorAll('[name="'+q.id+'"]:checked')].map(n=>n.value);if(!nodes.length)missing=true;if(q.multi&&nodes.length>(q.max||3))nodes.length=q.max;next.answers[q.id]=q.multi?nodes:nodes[0];});
       const status=box.querySelector('.taste-status');if(missing){status.hidden=false;status.textContent='Answer every question to lock your taste.';return;}

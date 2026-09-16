@@ -66,7 +66,13 @@
           }
         });
         const out = data?.candidates?.[0]?.content?.parts?.map(p => p.text || '').join('').trim();
-        if (!error && out && out.length < 400) return out.replace(/^["']|["']$/g, '');
+        if (!error && out && out.length < 400) {
+          const clean = (typeof window.sanitizeDisplayText === 'function')
+            ? window.sanitizeDisplayText(out, kind === 'title' ? ['title'] : ['synopsis', 'answer', 'text'])
+            : out.replace(/^["']|["']$/g, '');
+          if (!clean || /^\s*[{\[]/.test(clean) || /"[a-zA-Z_]+"\s*:/.test(clean)) return text;
+          return clean;
+        }
       } catch (_) {}
       return text;
     })();

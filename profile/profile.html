@@ -311,7 +311,7 @@
 <link rel="stylesheet" href="/app-updates.css?v=187">
 <link rel="stylesheet" href="/app-install-state.css?v=187">
 
-<link rel="stylesheet" href="/themes.css?v=187">
+<link rel="stylesheet" href="/themes.css?v=194">
 <link rel="stylesheet" href="/app-polish.css?v=187">
 <script src="/themes.js?v=187"></script>
 <link rel="stylesheet" href="/poster-wall.css?v=191"><script defer src="/poster-wall.js?v=187"></script><meta property="og:site_name" content="MatchApp TV Ai">
@@ -683,7 +683,7 @@
                             <span class="settings-chevron" aria-hidden="true">⌄</span>
                         </summary>
                         <div class="settings-body">
-                            <p class="setting-note" data-i18n="act.intro">Everything you have done on MatchApp in the last 15 days — matches, searches, saves, shares and purchases. Stored only on this device, never uploaded. Older entries delete themselves automatically.</p>
+                            <p class="setting-note" data-i18n="act.intro">Everything you have done on MatchApp — matches, Ask AI, saves, shares and purchases. Stored on this device. Entries stay until you remove them.</p>
 
                             <div class="activity-toolbar">
                                 <select id="activity-filter" class="setting-select" onchange="renderActivity()" aria-label="Filter activity">
@@ -704,13 +704,13 @@
                 </div>
 
                 <div class="premium-card"><section class="passkey-box" aria-labelledby="passkey-title"><h3 id="passkey-title" data-passkey-text="title">Device sign-in</h3><p class="passkey-help" data-passkey-text="help">Use your device unlock to sign in again. MatchApp never receives your biometrics or PIN.</p><button type="button" class="passkey-button" data-passkey-action="add" data-passkey-text="add">Add a passkey</button><a class="passkey-sign-in" data-passkey-sign-in-first href="/?signIn=1" data-passkey-text="signInFirst">Sign in first</a><p class="passkey-status" data-passkey-status role="status" aria-live="polite"></p><div id="passkey-list" class="passkey-list"></div></section></div><div class="portfolio-tabs">
-                    <button id="tab-history" class="portfolio-tab" onclick="switchPortfolioTab('history')">◷ History</button>
-                    <button id="tab-watchlater" class="portfolio-tab active" onclick="switchPortfolioTab('watchlater')">⭐ Watch Later <span id="count-watchlater" class="tab-count">0</span></button>
+                    <button id="tab-history" class="portfolio-tab active" onclick="switchPortfolioTab('history')">◷ History <span id="count-history" class="tab-count">0</span></button>
+                    <button id="tab-watchlater" class="portfolio-tab" onclick="switchPortfolioTab('watchlater')">⭐ Watch Later <span id="count-watchlater" class="tab-count">0</span></button>
                     <button id="tab-seenit" class="portfolio-tab" onclick="switchPortfolioTab('seenit')">👁️ Seen It <span id="count-seenit" class="tab-count">0</span></button>
                     <button id="tab-audio" class="portfolio-tab" onclick="switchPortfolioTab('audio')">🎧 Audio Library <span id="count-audio" class="tab-count">0</span></button>
                 </div>
 
-                <div id="panel-watchlater" class="portfolio-panel" style="background: rgba(229,193,88,0.05); padding: 30px; border-radius: 20px; border: 2px solid var(--gold); margin-bottom: 40px;">
+                <div id="panel-watchlater" class="portfolio-panel" style="display:none; background: rgba(229,193,88,0.05); padding: 30px; border-radius: 20px; border: 2px solid var(--gold); margin-bottom: 40px;">
                     <h3 style="color: var(--gold); margin: 0 0 8px 0; font-size: 26px; text-transform: uppercase; font-weight: 900;" data-i18n="pf.watchLaterTitle">⭐ Watch Later Portfolio</h3>
                     <p style="color:#999; font-size:13px; margin:0 0 25px 0;" data-i18n="pf.watchLaterSub">Titles you saved to stream later.</p>
                     <div id="portfolio-grid"><p style="color: #aaa; font-size: 15px; font-style: italic;">Your portfolio is empty. Go match!</p></div>
@@ -722,7 +722,7 @@
                     <div id="seen-grid"><p style="color: #aaa; font-size: 15px; font-style: italic;">You haven't marked anything as seen yet.</p></div>
                 </div>
 
-                <div id="panel-history" class="portfolio-panel" style="display:none"><h2>Your match history</h2><p><a href="/friends.html">● Friends &amp; private Match Together</a></p><p>Saved, seen, loved and declined titles are permanently excluded from future recommendations.</p><div id="history-rematch"></div><div id="history-list"></div></div>
+                <div id="panel-history" class="portfolio-panel"><h2>Your history</h2><p>Every title MatchApp has shown you — matches, Ask AI, saves and seen — stays here until you remove it.</p><p><a href="/friends.html">● Friends &amp; private Match Together</a></p><div id="history-rematch"></div><div id="history-list"></div></div>
                 <div id="panel-audio" class="portfolio-panel" style="display:none; background: rgba(29,185,84,0.05); padding: 30px; border-radius: 20px; border: 2px solid #1DB954; margin-bottom: 40px;">
                     <h3 style="color: #1DB954; margin: 0 0 8px 0; font-size: 26px; text-transform: uppercase; font-weight: 900;">🎧 Audio Library</h3>
                     <p style="color:#999; font-size:13px; margin:0 0 25px 0;">Your saved music, playlists, singles, podcasts and audiobooks. Tap any cover to listen.</p>
@@ -737,9 +737,9 @@
         <p><span data-i18n="support.ideas">💌 Got an idea for MatchApp? We read every email —</span> <a href="mailto:support@matchapp.tv">support@matchapp.tv</a> <span class="pf-support-sep">·</span> <a href="https://wa.me/5521974297919" target="_blank" rel="noopener noreferrer" class="pf-support-wa">WhatsApp</a></p>
     </footer>
 
-    <script src="/activity.js?v=187"></script>
-    <script src="/settings.js?v=192"></script>
-    <script src="/i18n.js?v=187"></script>
+    <script src="/activity.js?v=194"></script>
+    <script src="/settings.js?v=194"></script>
+    <script src="/i18n.js?v=194"></script>
 <script defer src="/polish-i18n.js?v=191"></script>
 <script defer src="/event-i18n.js?v=187"></script>
 <script defer src="/page-locale.js?v=187"></script>
@@ -752,8 +752,8 @@
 <script src="/app.js?v=192"></script>
     <script src="/install-progress.js?v=200"></script>
     <script src="/taste.js?v=187"></script>
-    <script src="/profile.js?v=192"></script>
-    <script src="/portfolio-history.js?v=187"></script>
+    <script src="/profile.js?v=194"></script>
+    <script src="/portfolio-history.js?v=194"></script>
     <script src="/tv.js?v=187"></script>
 <script src="/passkeys.js?v=187"></script>
 <script src="/app-updates.js?v=191"></script>

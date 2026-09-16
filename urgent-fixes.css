@@ -1,0 +1,87 @@
+/* Urgent visual recovery: readable titles, compact profile, History first. */
+
+html[data-theme] :is(
+  h1,h2,h3,h4,
+  .marquee-title,.poster-title,.poster-wall-brand,
+  .discover-body h3,.discover-card h3,
+  #res-title,.res-title-el,
+  .chat-answer-text,.chat-history-card h3,
+  .profile-history-copy h3
+){
+  color:var(--theme-text, #faf5ff) !important;
+  -webkit-text-fill-color:var(--theme-text, #faf5ff) !important;
+  font-family:var(--theme-heading, ui-rounded, system-ui, sans-serif) !important;
+  font-variant-ligatures:none;
+  background:none !important;
+  background-image:none !important;
+}
+
+html[data-theme] :is(.marquee-title, .poster-title, .discover-body h3, #res-title, .res-title-el) a,
+html[data-theme] a:is(.marquee-title,.poster-title){
+  color:var(--theme-text, #faf5ff) !important;
+  -webkit-text-fill-color:var(--theme-text, #faf5ff) !important;
+  font-family:var(--theme-heading, ui-rounded, system-ui, sans-serif) !important;
+}
+
+.discover-card{min-width:0}
+.discover-body h3{overflow-wrap:anywhere;word-break:break-word;letter-spacing:normal !important}
+.chat-answer-text{overflow-wrap:anywhere;word-break:break-word;white-space:pre-wrap}
+@media(max-width:640px){
+  .discover-card{flex-direction:column !important;align-items:stretch}
+  .discover-poster{width:100% !important;height:auto !important;aspect-ratio:2/3;max-width:180px;margin:0 auto}
+  .chat-results-grid,#discover-grid{grid-template-columns:1fr !important}
+}
+
+.portfolio-tabs{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px}
+.portfolio-tab{flex:1 1 auto;min-width:calc(50% - 8px);min-height:44px;padding:10px 12px;font-size:13px}
+#tab-history{order:-1}
+#panel-history{padding:18px !important;border:1px solid rgba(229,193,88,.28);border-radius:16px;background:rgba(255,255,255,.03);margin-bottom:28px}
+.profile-history-card{display:grid;grid-template-columns:56px minmax(0,1fr);gap:12px;padding:10px;border:1px solid rgba(255,255,255,.09);border-radius:14px;background:rgba(255,255,255,.03);align-items:center}
+.profile-history-poster{width:56px;height:84px;object-fit:cover;border-radius:8px;background:#0b0a0f}
+.profile-history-copy{min-width:0}
+.profile-history-copy h3{margin:0 0 4px;font-size:15px}
+.profile-history-copy p{margin:0 0 8px;font-size:12px;line-height:1.4;opacity:.85}
+.profile-history-actions{display:flex;flex-wrap:wrap;gap:8px}
+.profile-history-actions a,.history-forget-btn{min-height:38px;display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:8px 11px;border-radius:10px;font:inherit;font-size:12px;font-weight:800;cursor:pointer}
+.profile-history-actions a{color:#121018;background:var(--gold,#e5c158);text-decoration:none}
+.history-forget-btn{border:1px solid rgba(255,132,132,.34);color:#ffb7b7;background:rgba(255,82,82,.08)}
+.history-empty{padding:18px;border:1px dashed rgba(229,193,88,.28);border-radius:12px}
+.history-ai-block{margin:0 0 18px;padding:12px;border:1px dashed rgba(229,193,88,.28);border-radius:12px}
+.history-ai-block h3{margin:0 0 8px;font-size:14px}
+.history-ai-block p{margin:0 0 8px;font-size:13px;line-height:1.4;opacity:.85}
+
+.taste-quiz{margin:16px 0 24px !important;padding:14px 12px !important}
+.taste-quiz h2{font-size:1.15rem !important;margin:0 0 6px !important}
+.taste-lead{font-size:.9rem;margin:0 0 12px !important;line-height:1.4}
+.taste-q{padding:8px 10px 6px !important;margin:0 0 8px !important}
+.taste-q legend{font-size:.92rem}
+.taste-choice{padding:6px 4px !important;font-size:.95rem;line-height:1.3}
+.taste-q-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px 10px}
+#taste-save{min-height:46px}
+
+#questionnaire-box,#search-box{padding:18px 16px !important}
+.q-grid{gap:10px !important}
+.crit-toggle{padding:11px 12px !important}
+.home-hero{padding-bottom:10px}
+.premium-card{box-sizing:border-box}
+
+@media(max-width:560px){
+  .taste-q-grid{grid-template-columns:1fr}
+  .input-grid{grid-template-columns:1fr !important;gap:14px !important}
+  .premium-card{padding:16px 12px !important}
+  .portfolio-tab{min-width:100%}
+  .identity-showcase{padding:16px 12px !important}
+  #questionnaire-box,#search-box,#result-box{padding:14px 12px !important}
+}
+
+@media(max-width:720px){
+  .main-layout{padding:12px 10px 28px !important;gap:12px !important}
+  .container{padding-left:0 !important;padding-right:0 !important}
+  .app-header{padding:10px 12px !important}
+}
+
+@media(min-width:900px){
+  .taste-q-grid{grid-template-columns:1fr 1fr}
+  .portfolio-tab{min-width:140px}
+  .container,.wrap{max-width:860px}
+}

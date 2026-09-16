@@ -62,7 +62,8 @@ async function populateEmail() {
 // PORTFOLIO TAB SWITCHING
 // ----------------------------------------------------
 window.switchPortfolioTab = function(tab) {
-    const tabs = ['watchlater', 'seenit', 'audio', 'history'];
+    const tabs = ['history', 'watchlater', 'seenit', 'audio', 'notforme'];
+    if (!tabs.includes(tab)) tab = 'history';
     tabs.forEach(t => {
         const panel = document.getElementById('panel-' + t);
         const btn = document.getElementById('tab-' + t);
