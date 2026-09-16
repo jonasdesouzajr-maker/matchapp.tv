@@ -13,19 +13,11 @@
     const ua=navigator.userAgent||navigator.vendor||'';
     const isAndroid=/Android/i.test(ua);
     const isIOS=/iPad|iPhone|iPod/i.test(ua)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
-
-    // Android supports an intent with a browser fallback. If Chrome is
-    // installed it opens the MatchApp home page there; otherwise Android
-    // opens the same HTTPS home page instead of doing nothing.
     if(isAndroid){
       location.href=androidIntent();
       setTimeout(()=>{if(!document.hidden)location.replace(HOME);launching=false;},1800);
       return;
     }
-
-    // iOS exposes Chrome through its HTTPS custom scheme but offers no API to
-    // detect whether Chrome is installed. Try Chrome, then guarantee a normal
-    // HTTPS home-page fallback if the app did not take focus.
     if(isIOS){
       const timer=setTimeout(()=>{if(!document.hidden)location.replace(HOME);launching=false;},1300);
       const onHidden=()=>{if(document.hidden){clearTimeout(timer);launching=false;document.removeEventListener('visibilitychange',onHidden)}};
@@ -33,13 +25,34 @@
       location.href='googlechromes://matchapp.tv/';
       return;
     }
-
-    // Desktop browsers do not expose a safe, universal API that can force a
-    // different installed browser. Never dead-end: lead to MatchApp home.
     location.assign(HOME);
   }
 
   window.openInChrome=launchChromeHome;
+
+  function alreadyChrome(){
+    const ua=navigator.userAgent||'';
+    return /Chrome\//.test(ua) && !/Edg\/|OPR\/|SamsungBrowser|YaBrowser/.test(ua);
+  }
+
+  function hideChromeNotice(){
+    if(!alreadyChrome())return;
+    document.documentElement.classList.add('is-chrome');
+    const notice=document.getElementById('chrome-notice');
+    if(notice)notice.hidden=true;
+  }
+
+  function collapseEmptyAdRails(){
+    const rails=[...document.querySelectorAll('.sidebar-ad-left,.sidebar-ad-right')];
+    if(!rails.length)return;
+    const filled=rails.some(rail=>{
+      const iframe=rail.querySelector('iframe');
+      const ins=rail.querySelector('ins.adsbygoogle');
+      const h=Math.max(iframe?.offsetHeight||0, ins?.offsetHeight||0);
+      return h>80 && getComputedStyle(rail).display!=='none';
+    });
+    if(!filled)document.documentElement.classList.add('ads-empty');
+  }
 
   function wire(root=document){
     root.querySelectorAll?.('.chrome-btn').forEach(btn=>{
@@ -64,6 +77,17 @@
     launchChromeHome();
   },true);
 
-  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>wire(),{once:true});else wire();
-  new MutationObserver(m=>{if(m.some(x=>x.addedNodes.length))wire()}).observe(document.documentElement,{subtree:true,childList:true});
+  function boot(){
+    hideChromeNotice();
+    wire();
+    setTimeout(collapseEmptyAdRails,2200);
+    setTimeout(collapseEmptyAdRails,6000);
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
+  let wiring=false;
+  new MutationObserver(m=>{
+    if(wiring||!m.some(x=>x.addedNodes.length))return;
+    wiring=true;
+    requestAnimationFrame(()=>{try{wire();hideChromeNotice()}finally{wiring=false}});
+  }).observe(document.documentElement,{subtree:true,childList:true});
 })();
