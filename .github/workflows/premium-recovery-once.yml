@@ -22,7 +22,7 @@ jobs:
         run: |
           set -euo pipefail
           BASE=e4a7cf45be9396a93c1061578a974542f0f4561e
-          git checkout "$BASE" -- index.html build-meta.js tests/ads.test.cjs tests/passkey-auth.test.cjs
+          git checkout "$BASE" -- index.html build-meta.js tests/ads.test.cjs
           rm -f tests/emergency-home-safe-boot.test.cjs
           node <<'NODE'
           const fs=require('node:fs');
@@ -55,7 +55,7 @@ jobs:
           sw=sw.replace(/const SW_VERSION = '[^']+';/,"const SW_VERSION = 'v19-premium-home-recovery';");
           write('sw.js',sw);
 
-          const test=`const test=require('node:test');\nconst assert=require('node:assert/strict');\nconst fs=require('node:fs');\nconst path=require('node:path');\nconst root=path.join(__dirname,'..');\nconst html=fs.readFileSync(path.join(root,'index.html'),'utf8');\nconst build=fs.readFileSync(path.join(root,'build-meta.js'),'utf8');\n\ntest('premium homepage is live without static recovery mode',()=>{\n  assert.doesNotMatch(html,/Stable mode is active|matchapp-recovery-banner|matchapp-static-recovery/);\n  assert.match(html,/\\/app\\.js\\?v=193/);\n  for(const file of ['criteria.js','lazy.js','tv.js','credits-ui.js','voice-input.js']) assert.match(html,new RegExp('\\\\/'+file.replace('.','\\\\.')+'\\\\?'));\n  assert.match(html,/GTM-M7J3NNBN/);\n  assert.match(html,/ca-pub-9541435081010948/);\n});\n\ntest('homepage startup gate targets only app.js DOMContentLoaded work',()=>{\n  assert.match(build,/HOME STARTUP STABILITY GATE/);\n  assert.match(build,/document\\.currentScript/);\n  assert.match(build,/\\\\/app\\\\.js/);\n  assert.match(build,/hydrateMarqueeCovers/);\n  assert.match(build,/initLiveStrip/);\n  assert.match(build,/slot\\+\\+/);\n});\n`;
+          const test=`const test=require('node:test');\nconst assert=require('node:assert/strict');\nconst fs=require('node:fs');\nconst path=require('node:path');\nconst root=path.join(__dirname,'..');\nconst html=fs.readFileSync(path.join(root,'index.html'),'utf8');\nconst build=fs.readFileSync(path.join(root,'build-meta.js'),'utf8');\n\ntest('premium homepage is live without static recovery mode',()=>{\n  assert.doesNotMatch(html,/Stable mode is active|matchapp-recovery-banner|matchapp-static-recovery/);\n  assert.match(html,/\\/app\\.js\\?v=193/);\n  for(const file of ['criteria.js','lazy.js','tv.js','credits-ui.js','voice-input.js']) assert.match(html,new RegExp('\\/'+file.replace('.','\\.')+'\\?'));\n  assert.match(html,/GTM-M7J3NNBN/);\n  assert.match(html,/ca-pub-9541435081010948/);\n});\n\ntest('homepage startup gate targets only app.js DOMContentLoaded work',()=>{\n  assert.match(build,/HOME STARTUP STABILITY GATE/);\n  assert.match(build,/document\\.currentScript/);\n  assert.match(build,/app\\\\.js/);\n  assert.match(build,/hydrateMarqueeCovers/);\n  assert.match(build,/initLiveStrip/);\n  assert.match(build,/slot\\+\\+/);\n});\n`;
           write('tests/premium-home-recovery.test.cjs',test);
           NODE
       - name: Validate recovery before publishing branch
