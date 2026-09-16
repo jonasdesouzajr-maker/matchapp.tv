@@ -253,7 +253,7 @@
   }
 
   const captionCallbacks = new WeakMap();
-  const captionObserver = typeof IntersectionObserver==='function' ? new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){captionObserver.unobserve(e.target);captionCallbacks.get(e.target)?.();captionCallbacks.delete(e.target);}}),{rootMargin:'100px'}) : null;
+  const captionObserver = typeof IntersectionObserver==='function' ? new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){captionObserver.unobserve(e.target);captionCallbacks.get(e.target)?.();captionCallbacks.delete(e.target);}}),{rootMargin:'900px 200px'}) : null;
   function localizeCaption(item,img,record) {
     if(!record||!window.localizedTitle)return;
     const selectedLanguage=lang;

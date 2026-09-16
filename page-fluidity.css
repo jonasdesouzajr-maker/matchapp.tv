@@ -1,0 +1,139 @@
+/* Sitewide motion: native momentum, no robotic pop-in, compositor-only tweens. */
+html{
+  overflow-x:hidden;
+  overflow-x:clip;
+  scroll-padding-top:5.5rem;
+  -webkit-text-size-adjust:100%;
+}
+body{
+  overflow-x:visible !important;
+  overscroll-behavior-y:contain;
+  -webkit-overflow-scrolling:touch;
+}
+html,body{
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+@media (prefers-reduced-motion:no-preference) and (hover:hover) and (pointer:fine){
+  html:not(.reduce-motion){scroll-behavior:smooth}
+}
+@media (pointer:coarse){
+  html{scroll-behavior:auto !important}
+}
+
+.marquee-viewport,
+#events-viewport,
+.events-viewport,
+.portfolio-tabs,
+.credits-grid,
+.purchase-pack-grid,
+.discover-grid,
+#discover-grid,
+.chat-results-grid,
+.global-event-grid,
+.kids-chat-results{
+  -webkit-overflow-scrolling:touch;
+  overscroll-behavior-x:contain;
+  overscroll-behavior-y:auto;
+  scroll-behavior:auto;
+  touch-action:pan-x pan-y;
+}
+.marquee-viewport,
+#events-viewport{
+  scrollbar-width:none;
+}
+@media (hover:hover) and (pointer:fine){
+  .marquee-viewport,
+  #events-viewport{
+    scroll-snap-type:x proximity;
+  }
+}
+@media (pointer:coarse){
+  .marquee-viewport,
+  #events-viewport{scroll-snap-type:none}
+}
+.marquee-viewport::-webkit-scrollbar,
+#events-viewport::-webkit-scrollbar{display:none}
+.marquee-item,
+.events-track > *,
+.global-event{
+  scroll-snap-align:start;
+  scroll-snap-stop:normal;
+}
+
+img,video,iframe,svg{max-width:100%}
+.marquee-item img,
+.poster-wall-tile img,
+.discover-poster,
+.discover-poster img,
+.kids-card img,
+.global-event img,
+.premium-card img{
+  aspect-ratio:2/3;
+  object-fit:cover;
+  background:rgba(255,255,255,.04);
+}
+
+/* Scroll-reveal used to ADD fade-in when a card entered view, replaying
+   opacity 0 → 1 and looking like the page stalled then popped in. Keep cards painted.
+   Match-result poster keeps its ceremony fade. */
+.premium-card,
+.ad-banner-container,
+.discover-card,
+.purchase-hub,
+.purchase-pack,
+.credit-pack,
+.global-event,
+.kids-card,
+.app-header,
+.main-layout{
+  opacity:1;
+  transform:none;
+}
+.fade-in:not(#res-poster-img){
+  animation:none !important;
+  opacity:1 !important;
+  transform:none !important;
+}
+.discover-card{
+  opacity:1 !important;
+  animation:none !important;
+  animation-delay:0s !important;
+}
+.kids-card:not(.is-surprise){
+  animation:none !important;
+  animation-delay:0s !important;
+  opacity:1;
+}
+
+button,a,.gold-btn,.credit-pack-btn,.purchase-pack button,.cic-pack,.crit-toggle{
+  transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease, background-color .18s ease, color .18s ease;
+}
+@media (hover:hover) and (pointer:fine){
+  button:hover,.gold-btn:hover,.credit-pack-btn:hover{transform:translateY(-1px)}
+  .marquee-item:hover{transform:scale(1.05) !important}
+}
+@media (hover:none){
+  .marquee-item:hover{transform:none !important}
+}
+
+.result-card,.match-result,#result,.continue-discovering,.match-trust-line{
+  content-visibility:visible !important;
+}
+
+.page-wrapper,.container,.main-layout,.purchase-hub{
+  contain:layout;
+}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .marquee-viewport,#events-viewport{scroll-snap-type:none}
+  button,a,.gold-btn,.credit-pack-btn,.purchase-pack button,.cic-pack,.crit-toggle,.marquee-item{
+    transition:none !important
+  }
+}
+html.reduce-motion{
+  scroll-behavior:auto !important;
+}
+html.reduce-motion .marquee-viewport,
+html.reduce-motion #events-viewport{scroll-snap-type:none}

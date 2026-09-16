@@ -146,9 +146,8 @@
         @media (prefers-reduced-motion: reduce) { .mic-btn.mic-listening, .mic-btn.mic-listening::before, .mic-btn.mic-listening::after { animation: none; } }
 
         #discover-grid { display: none; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 22px; }
-        .discover-card { display: flex; gap: 16px; background: linear-gradient(160deg, rgba(32,24,52,0.92), rgba(20,19,26,0.94)); border: 1px solid rgba(229,193,88,0.32); border-radius: 18px; padding: 16px; opacity: 0; animation: cardIn 0.6s cubic-bezier(0.22,1,0.36,1) forwards; transition: transform 0.35s, border-color 0.35s, box-shadow 0.35s; }
+        .discover-card { display: flex; gap: 16px; background: linear-gradient(160deg, rgba(32,24,52,0.92), rgba(20,19,26,0.94)); border: 1px solid rgba(229,193,88,0.32); border-radius: 18px; padding: 16px; opacity: 1; transition: transform 0.35s, border-color 0.35s, box-shadow 0.35s; }
         .discover-card:hover { transform: translateY(-6px); border-color: var(--gold); box-shadow: 0 16px 44px rgba(216,156,72,0.45); }
-        @keyframes cardIn { from { opacity:0; transform: translateY(22px); } to { opacity:1; transform:none; } }
         .discover-poster { position: relative; flex-shrink: 0; width: 104px; height: 156px; border-radius: 11px; overflow: hidden; border: 1px solid var(--gold); background: var(--royal-deep); }
         .discover-poster img { width: 100%; height: 100%; object-fit: cover; display: block; }
         .discover-rank { position: absolute; top: 6px; left: 6px; background: var(--gold); color: #14131A; font-size: 10px; font-weight: 900; padding: 3px 7px; border-radius: 6px; }
@@ -300,12 +299,12 @@
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.105.0/dist/umd/supabase.js"></script>
-    <script src="/settings.js?v=197"></script>
+    <script src="/settings.js?v=20260916-flow3"></script>
     <script src="/matching-policy.js?v=190"></script>
     <script src="/match-localization.js?v=187"></script>
 <script src="/app.js?v=192"></script>
     <script src="/install-progress.js?v=200"></script>
-    <script src="/discover.js?v=196"></script>
+    <script src="/discover.js?v=197"></script>
     <script src="/voice-input.js?v=187"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {

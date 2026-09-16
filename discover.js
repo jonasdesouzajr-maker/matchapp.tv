@@ -427,7 +427,7 @@ function discoverCardHTML(item, idx) {
         : item.synopsis) || '');
     const lang = window.MATCH_LANG || 'en';
     return `
-    <article class="discover-card${item.why ? ' is-related' : ''}" data-discover-idx="${idx}" style="animation-delay:${idx * 70}ms">
+    <article class="discover-card${item.why ? ' is-related' : ''}" data-discover-idx="${idx}">
         <div class="discover-poster">
             <img id="dp-${idx}" src="" alt="${safe}" loading="lazy">
             <div class="discover-rank">${item.why ? '＋' : '#' + (idx + 1)}</div>

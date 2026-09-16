@@ -15,7 +15,7 @@ window.MATCHAPP_BUILD = '2026.09.16.4';
     const current=(document.currentScript&&document.currentScript.src)||'';
     const fromApp=type==='DOMContentLoaded'&&/\/app\.js(?:[?#]|$)/.test(current)&&typeof listener==='function';
     if(!fromApp) return nativeAdd.call(this,type,listener,options);
-    const delay=Math.min(1500,60+(slot++*85));
+    const delay=Math.min(72,slot++*12);
     const wrapped=function(ev){
       const self=this;
       setTimeout(function(){

@@ -2630,7 +2630,7 @@
         </div>
     </div>
 
-    <script src="/settings.js?v=197"></script>
+    <script src="/settings.js?v=20260916-flow3"></script>
     <script src="/matching-policy.js?v=190"></script>
     <script src="/match-localization.js?v=187"></script>
 <script src="/app.js?v=195"></script>
@@ -2677,8 +2677,8 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) { entry.target.classList.add('fade-in'); revealObserver.unobserve(entry.target); }
             });
-        }, { threshold: 0.15 });
-        document.querySelectorAll('.premium-card, .ad-banner-container').forEach(el => revealObserver.observe(el));
+        }, { threshold: 0, rootMargin: '120% 0px' });
+        document.querySelectorAll('.premium-card, .ad-banner-container').forEach(el => { el.classList.add('fade-in'); revealObserver.observe(el); });
     </script>
 
     <!-- NOT FOR ME CHOOSER -->
