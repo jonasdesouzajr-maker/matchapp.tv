@@ -1,0 +1,9 @@
+html .app-header .install-wrap{display:flex!important;align-items:center;gap:8px;order:-1}
+html .app-header .install-btn{display:inline-flex!important;align-items:center;gap:8px;min-height:42px;padding:10px 16px!important;border-radius:999px!important;font-weight:750!important;background:linear-gradient(180deg,#f6dc8a,#c9a046)!important;color:#2a1606!important;border:0!important;box-shadow:0 8px 22px rgba(201,160,70,.28)}
+html .app-header .install-btn.has-app-update{background:linear-gradient(180deg,#ffe08a,#e2a84a)!important}
+html .app-header .install-btn.is-app-installed:not(.has-app-update){background:rgba(255,255,255,.08)!important;color:#efe8ff!important;box-shadow:none}
+html .install-btn.has-app-update .install-dot,html .install-btn.has-app-update::before{content:"";width:9px;height:9px;border-radius:50%;background:#ff4b4b;box-shadow:0 0 0 0 rgba(255,75,75,.7);animation:ma-badge 1.4s ease-out infinite}
+@keyframes ma-badge{0%{box-shadow:0 0 0 0 rgba(255,75,75,.55)}70%{box-shadow:0 0 0 10px rgba(255,75,75,0)}100%{box-shadow:0 0 0 0 rgba(255,75,75,0)}}
+.app-release-notice{position:fixed;z-index:5000;right:16px;bottom:16px;max-width:min(420px,calc(100vw - 24px));padding:18px 18px 16px;border-radius:16px;background:#161022;color:#f4eefe;border:1px solid rgba(229,193,88,.28);box-shadow:0 18px 50px rgba(0,0,0,.4)}
+.app-release-notice .app-release-x{position:absolute;top:8px;right:10px;background:transparent;border:0;color:inherit;font-size:22px;line-height:1;cursor:pointer}
+@media (max-width:700px){html .app-header .install-btn{flex:1 1 auto}}
