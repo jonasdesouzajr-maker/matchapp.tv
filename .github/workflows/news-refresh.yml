@@ -5,7 +5,7 @@ on:
     - cron: '11 * * * *'
   workflow_dispatch:
   push:
-    branches: [main]
+    branches: [main, feature/latest-entertainment-news]
     paths:
       - '.github/workflows/news-refresh.yml'
       - 'tools/fetch-entertainment-news.js'
