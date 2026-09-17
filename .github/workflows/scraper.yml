@@ -17,11 +17,14 @@ on:
       - 'catalog-media.js'
       - 'catalog-media.css'
       - 'tmdb.js'
+      - 'supabase/functions/catalog-media-ingest/**'
+      - 'supabase/config.toml'
       - '.github/workflows/scraper.yml'
       - 'tests/catalog-media-enhancements.test.cjs'
 
 permissions:
   contents: read
+  id-token: write
 
 env:
   SUPABASE_URL: https://zkymvqrmbabngsqblyye.supabase.co
@@ -46,26 +49,34 @@ jobs:
       - name: Validate existing site first
         run: npm test
 
-      - name: Verify required server credentials
+      - name: Verify TMDB source credential
         env:
           TMDB_READ_TOKEN: ${{ secrets.TMDB_READ_TOKEN }}
           TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
-          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
         run: |
           if [ -z "$TMDB_READ_TOKEN" ] && [ -z "$TMDB_API_KEY" ]; then
             echo "::error::Missing TMDB_READ_TOKEN or TMDB_API_KEY GitHub Actions secret."
             exit 1
           fi
-          if [ -z "$SUPABASE_SERVICE_ROLE_KEY" ]; then
-            echo "::error::Missing SUPABASE_SERVICE_ROLE_KEY GitHub Actions secret. Staging will not write with it, but production scheduling requires it."
+
+      - name: Acquire short-lived GitHub OIDC token
+        shell: bash
+        run: |
+          OIDC_TOKEN="$(curl -fsSL \
+            -H "Authorization: bearer ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}" \
+            "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=matchapp-supabase-catalog-media" \
+            | node -e "const fs=require('fs');const j=JSON.parse(fs.readFileSync(0,'utf8'));process.stdout.write(j.value||'')")"
+          if [ -z "$OIDC_TOKEN" ]; then
+            echo "::error::GitHub did not issue an OIDC token."
             exit 1
           fi
+          echo "::add-mask::$OIDC_TOKEN"
+          echo "GITHUB_OIDC_TOKEN=$OIDC_TOKEN" >> "$GITHUB_ENV"
 
       - name: Refresh media cache
         env:
           TMDB_READ_TOKEN: ${{ secrets.TMDB_READ_TOKEN }}
           TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
-          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
         run: |
           # All non-main executions are forced to dry-run so staging cannot mutate production.
           if [ "${GITHUB_REF}" != "refs/heads/main" ] || [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
