@@ -67,14 +67,15 @@ window.MATCHAPP_BUILD = '2026.09.16.4';
     if (path === '/discover.html') {
       document.title = 'Ask AI What to Watch | Movie & TV Concierge | MatchApp';
       upsertMeta('description', 'Ask MatchApp what to watch by mood, theme, event or topic. Get entertainment recommendations, real title information and links to continue your search or stream.');
-      addJsonLd('matchapp-webapp-schema', {
+      // Describe the public page factually. Do not claim Software/WebApplication
+      // rich-result eligibility until MatchApp has genuine review/rating data.
+      addJsonLd('matchapp-discover-page-schema', {
         '@context': 'https://schema.org',
-        '@type': 'WebApplication',
-        name: 'MatchApp AI Concierge',
+        '@type': 'WebPage',
+        name: 'Ask AI What to Watch | MatchApp',
         url: 'https://matchapp.tv/discover.html',
-        applicationCategory: 'EntertainmentApplication',
-        operatingSystem: 'Any',
-        description: 'Voice- and text-enabled entertainment discovery concierge.',
+        description: 'Voice- and text-enabled entertainment discovery concierge for finding real titles and streaming information.',
+        isPartOf: { '@type': 'WebSite', name: 'MatchApp TV Ai', url: 'https://matchapp.tv/' },
         publisher: { '@type': 'Organization', name: 'MatchApp', url: 'https://matchapp.tv/' }
       });
     }
