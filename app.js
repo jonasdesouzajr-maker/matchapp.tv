@@ -3106,6 +3106,78 @@ function pickFromCatalog(cat, plat, mood, vibe, rating, decade) {
 }
 
 
+// Exhaustion recovery: if every exact match has already appeared, recycle the
+// least-recently shown exact match instead of dead-ending. Criteria, age/rating,
+// blocked categories and faith opt-in remain mandatory. This is deliberately a
+// second-tier picker: normal unseen matching and live discovery always win.
+function pickRecycledCatalog(cat, plat, mood, vibe, rating, decade) {
+    const criteria = {cat, plat, mood, vibe, rating, decade: decade || window.getMatchCriteria?.().decade || []};
+    const policy = window.matchPolicy;
+    if (!policy || typeof policy.matchesCriteria !== 'function') return null;
+    const wantsFaith = normCriteria(cat).includes('Gospel & Faith') || normCriteria(plat).some(p => ['Pure Flix','Angel Studios'].includes(p));
+    const eligible = e => policy.matchesCriteria(e, criteria)
+        && !isBlockedEntry(e)
+        && (wantsFaith || !e.cats.includes('Gospel & Faith'))
+        && (normCriteria(cat).length || isSurpriseEligible(e));
+
+    // Explicit Not For Me choices remain hard exclusions even when history is
+    // exhausted. Merely having been shown before is what becomes recyclable.
+    const disliked = new Set();
+    try {
+        const rows = JSON.parse(window.localStorage.getItem('match_dislikedList') || '[]');
+        (Array.isArray(rows) ? rows : []).forEach(item => disliked.add(policy.key(item && item.title ? item.title : item)));
+    } catch (_) {}
+
+    let pool = CONTENT_CATALOG.filter(e => eligible(e) && !disliked.has(policy.key(e.title)));
+    if (!pool.length) return null;
+
+    // Never immediately repeat the card on screen when another exact option exists.
+    let currentTitle = '';
+    try { currentTitle = (typeof globalMatchTitle !== 'undefined' && globalMatchTitle) || window.globalMatchTitle || ''; } catch (_) {}
+    const currentKey = policy.key(currentTitle);
+    const notCurrent = currentKey ? pool.filter(e => policy.key(e.title) !== currentKey) : pool;
+    if (notCurrent.length) pool = notCurrent;
+
+    // Prefer something not yet used in this tab. Only recycle a session title
+    // once every exact alternative has also been used.
+    const outsideSession = pool.filter(e => !SESSION_SHOWN.has(e.title));
+    if (outsideSession.length) pool = outsideSession;
+
+    let recentSource = [];
+    try {
+        recentSource = (typeof recentTitles !== 'undefined' && Array.isArray(recentTitles))
+            ? recentTitles
+            : JSON.parse(window.localStorage.getItem('match_recentTitles') || '[]');
+    } catch (_) { recentSource = []; }
+    const recentKeys = new Set(recentSource.map(t => policy.key(t)));
+    const outsideRecent = pool.filter(e => !recentKeys.has(policy.key(e.title)));
+    if (outsideRecent.length) pool = outsideRecent;
+
+    // Oldest history first, maximising distance between two appearances.
+    const shownAt = new Map();
+    try {
+        for (const item of policy.history?.() || []) {
+            const k = policy.key(item && item.title);
+            const at = Number(item && item.addedAt) || 0;
+            if (k && (!shownAt.has(k) || shownAt.get(k) < at)) shownAt.set(k, at);
+        }
+    } catch (_) {}
+    const recentOrder = new Map(recentSource.map((title,index) => [policy.key(title), index]));
+    pool.sort((a,b) => {
+        const ak=policy.key(a.title), bk=policy.key(b.title);
+        const aa=shownAt.get(ak)||0, ba=shownAt.get(bk)||0;
+        if (aa !== ba) return aa - ba;
+        const ar=recentOrder.has(ak)?recentOrder.get(ak):Number.MAX_SAFE_INTEGER;
+        const br=recentOrder.has(bk)?recentOrder.get(bk):Number.MAX_SAFE_INTEGER;
+        if (ar !== br) return br - ar;
+        return String(a.title).localeCompare(String(b.title));
+    });
+
+    const pick = pool[0];
+    return {...pick,title:pick.title,synopsis:pick.synopsis,platform:pick.platform,platformVerified:true,watchUrl:pick.watchUrl||(pick.platform==='Roku Channel'?pick.url:null)||null,source:'catalog-recycle',_historyFallback:true};
+}
+
+
 // ----------------------------------------------------
 // PRUNE UNSTOCKED CRITERIA OPTIONS
 //
@@ -3153,7 +3225,17 @@ function pruneUnstockedOptions() {
 window.triggerMatch = async function(isSpecificSearch = false) {
     await window.matchPolicy?.ready();
     const requested = window.getMatchCriteria?.() || {cat:[document.getElementById('q-category')?.value],plat:[document.getElementById('q-platform')?.value],mood:[document.getElementById('q-mood')?.value],vibe:[document.getElementById('q-vibe')?.value],rating:[document.getElementById('q-rating')?.value],decade:[document.getElementById('q-decade')?.value]};
-    const preflight = isSpecificSearch ? null : pickFromCatalog(requested.cat,requested.plat,requested.mood,requested.vibe,requested.rating,requested.decade);
+    let preflight = isSpecificSearch ? null : pickFromCatalog(requested.cat,requested.plat,requested.mood,requested.vibe,requested.rating,requested.decade);
+    // When the curated unseen pool is exhausted, try a fresh live title before
+    // recycling history. iTunes cannot verify third-party platform availability,
+    // so live discovery is used only when the platform filter is unconstrained.
+    if (!isSpecificSearch && !preflight) {
+        if (!normCriteria(requested.plat).length) {
+            try { preflight = await discoverFromITunes(requested.cat,requested.mood,requested.vibe,requested.decade,requested.rating); }
+            catch (_) { preflight = null; }
+        }
+        if (!preflight) preflight = pickRecycledCatalog(requested.cat,requested.plat,requested.mood,requested.vibe,requested.rating,requested.decade);
+    }
     const typed = document.getElementById('specific-search-input')?.value || '';
 
     const alreadySeenSpecific = isSpecificSearch && window.matchPolicy?.known().has(window.matchPolicy.key(typed));
@@ -3336,7 +3418,8 @@ window.triggerMatch = async function(isSpecificSearch = false) {
             matchResult.synopsisLang=window.MATCH_LANG||'en';
         }
     }
-    if (!matchResult || window.matchPolicy?.known().has(window.matchPolicy.key(matchResult.title))) {
+    const resultWasKnown = !!(matchResult && window.matchPolicy?.known().has(window.matchPolicy.key(matchResult.title)));
+    if (!matchResult || (resultWasKnown && !matchResult._historyFallback)) {
         clearInterval(timerInterval);
         document.body.classList.remove('match-searching');
         if (loadBox) loadBox.style.display='none';

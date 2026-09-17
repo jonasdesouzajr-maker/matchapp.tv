@@ -275,8 +275,8 @@
     if (bMoods.includes('scary') && aMoods.includes('funny') && !aMoods.includes('scary')) return false;
     return true;
   }
-  function matches(entry, criteria, extra = []) {
-    if (!entry || !entry.title || known().has(key(entry.title)) || extra.includes(key(entry.title))) return false;
+  function matchesCriteria(entry, criteria) {
+    if (!entry || !entry.title) return false;
     const mapping = {cat:'cats',plat:'platform',mood:'moods',vibe:'vibes',rating:'ratings'};
     for (const [field,property] of Object.entries(mapping)) {
       const wanted = values(criteria[field]);
@@ -287,7 +287,11 @@
     if (!genreFits(entry, criteria || {})) return false;
     return true;
   }
-  window.matchPolicy = Object.freeze({key,values,matches,remember,forget,known,history:()=>history.slice(),ready:()=>ready,incompatible:(value,state) => conflicts.some(([a,b]) => (value===a && values(state.mood).includes(b)) || (value===b && values(state.mood).includes(a))),genreFits,intentFromText,fitsQuestion,sameFamily,asEntry,familyScores,comedyLocked,attach:user => (ready = attach(user).catch(() => {})), flush});
+  function matches(entry, criteria, extra = []) {
+    if (!entry || !entry.title || known().has(key(entry.title)) || extra.includes(key(entry.title))) return false;
+    return matchesCriteria(entry, criteria);
+  }
+  window.matchPolicy = Object.freeze({key,values,matches,matchesCriteria,remember,forget,known,history:()=>history.slice(),ready:()=>ready,incompatible:(value,state) => conflicts.some(([a,b]) => (value===a && values(state.mood).includes(b)) || (value===b && values(state.mood).includes(a))),genreFits,intentFromText,fitsQuestion,sameFamily,asEntry,familyScores,comedyLocked,attach:user => (ready = attach(user).catch(() => {})), flush});
   window.addEventListener('online', () => flush().catch(() => {}));
   setTimeout(() => {
     const client = window.supabaseClient;

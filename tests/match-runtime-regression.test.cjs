@@ -10,7 +10,7 @@ function matching(requested,excluded=[]){
  const context=vm.createContext({window:w,document:w.document,CustomEvent:w.CustomEvent,CONTENT_CATALOG:catalog,SESSION_SHOWN:new Set(),isVIP:false,Math,
   isBlockedEntry:()=>false,isSurpriseEligible:entry=>entry.cats.some(c=>['movie','series','limited series','K-drama','novela brasileira','telenovela'].includes(c)),
   tSafe:key=>key,checkDailyLimit:async()=>{state.charges++;return true;},discoverFromITunes:async()=>null,rememberShownTitle:()=>{},renderResult:result=>{state.rendered=result;},setInterval:()=>1,clearInterval:()=>{},setTimeout:fn=>{fn();return 1;},console});
- vm.runInContext(functionSource('normCriteria')+functionSource('pickFromCatalog'),context);
+ vm.runInContext(functionSource('normCriteria')+functionSource('pickFromCatalog')+functionSource('pickRecycledCatalog'),context);
  vm.runInContext(source.slice(source.indexOf('window.triggerMatch = async function'),source.indexOf('// THE RENDER ENGINE')),context);
  return {dom,w,context,state};
 }
@@ -24,15 +24,27 @@ test('exact catalogue choices satisfy their selected category, mood, platform, r
  }}assert(cases>=catalog.length);}finally{dom.window.close();}
 });
 
-test('an exhausted family selection cannot spend a match or silently drop the age restriction',async()=>{
+test('history exhaustion recycles an exact family-safe title without dropping age restriction',async()=>{
  const excluded=catalog.filter(entry=>entry.ratings.includes('all ages family friendly')).map(entry=>entry.title);
  const {dom,w,state}=matching({cat:['movie'],plat:[],mood:[],vibe:[],rating:['all ages family friendly'],decade:[]},excluded);
- try{await w.triggerMatch(false);assert.equal(state.rendered,null,'no result may violate the requested age restriction');assert.equal(state.charges,0,'an empty exact search must not use credits');}finally{dom.window.close();}
+ try{await w.triggerMatch(false);assert(state.rendered,'an exact previously shown title should be recycled instead of dead-ending');const entry=catalog.find(e=>e.title===state.rendered.title);assert(entry&&entry.cats.includes('movie'));assert(entry.ratings.includes('all ages family friendly'),'recovery must preserve the selected age/rating');assert.equal(state.rendered._historyFallback,true);assert.equal(state.charges,1);}finally{dom.window.close();}
 });
 
-test('account history exhaustion cannot consume credits when no new title can be returned',async()=>{
+test('account history exhaustion returns an exact recycled title instead of the no-fresh error',async()=>{
  const {dom,w,state}=matching({cat:['movie'],plat:[],mood:['funny'],vibe:[],rating:[],decade:[]},catalog.map(entry=>entry.title));
- try{await w.triggerMatch(false);assert.equal(state.rendered,null);assert.equal(state.charges,0,'permanent exclusions count toward exhaustion before metering');assert.equal(w.document.getElementById('questionnaire-box').style.display,'block','an empty rematch restores the criteria');assert.equal(w.document.getElementById('search-box').style.display,'block');assert.equal(w.document.getElementById('loading-box').style.display,'none');}finally{dom.window.close();}
+ try{await w.triggerMatch(false);assert(state.rendered,'history exhaustion must still produce a result');const entry=catalog.find(e=>e.title===state.rendered.title);assert(entry&&entry.cats.includes('movie'));assert(entry.moods.includes('funny'));assert.equal(state.rendered._historyFallback,true);assert.equal(state.charges,1);assert(!state.messages.includes('polish.noFresh'));}finally{dom.window.close();}
+});
+
+test('truly impossible criteria still fail closed before spending a match',async()=>{
+ const {dom,w,state}=matching({cat:['movie'],plat:['Impossible service'],mood:['funny'],vibe:[],rating:[],decade:[]},catalog.map(entry=>entry.title));
+ try{await w.triggerMatch(false);assert.equal(state.rendered,null);assert.equal(state.charges,0);assert(state.messages.includes('polish.noFresh'));}finally{dom.window.close();}
+});
+
+test('recycled fallback preserves criteria and avoids the current title when another exact option exists',()=>{
+ const requested={cat:['movie'],plat:[],mood:['funny'],vibe:[],rating:[],decade:[]};
+ const {dom,w,context}=matching(requested,catalog.map(entry=>entry.title));
+ try{const exact=catalog.filter(e=>w.matchPolicy.matchesCriteria(e,requested));assert(exact.length>=2,'test requires at least two funny movies');context.window.globalMatchTitle=exact[0].title;context.SESSION_SHOWN.add(exact[0].title);const pick=context.pickRecycledCatalog(requested.cat,requested.plat,requested.mood,requested.vibe,requested.rating,requested.decade);assert(pick);assert.equal(pick._historyFallback,true);assert(w.matchPolicy.matchesCriteria(catalog.find(e=>e.title===pick.title),requested));assert.notEqual(pick.title,exact[0].title);}
+ finally{dom.window.close();}
 });
 
 test('removed catalogue options cannot remain as invisible saved search constraints',()=>{
