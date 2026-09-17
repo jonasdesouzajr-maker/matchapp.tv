@@ -22,6 +22,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Apply scoped critical hotfixes
+        run: node tools/apply-critical-hotfixes.js
       - uses: actions/upload-pages-artifact@v3
         with:
           path: .
@@ -36,10 +38,18 @@ jobs:
         run: |
           set -e
           sleep 20
-          for url in https://matchapp.tv/ https://matchapp.tv/kids/ https://matchapp.tv/discover.html; do
+          for url in https://matchapp.tv/ https://matchapp.tv/kids/ https://matchapp.tv/discover.html https://matchapp.tv/pricing/pricing.html https://matchapp.tv/android/; do
             echo "Checking $url"
             code=$(curl -sS -o /tmp/body.html -w "%{http_code}" -L --max-time 30 "$url")
             echo "HTTP $code"
             test "$code" = "200"
             grep -qi "MatchApp" /tmp/body.html
           done
+          curl -sS -L --max-time 30 https://matchapp.tv/pricing/pricing.html -o /tmp/pricing.html
+          grep -q "10</strong> AI Matches Daily" /tmp/pricing.html
+          ! grep -q "Unlimited</strong> AI Matches Daily" /tmp/pricing.html
+          curl -sS -L --max-time 30 https://matchapp.tv/android/ -o /tmp/android.html
+          grep -q "Google Play — Coming Soon" /tmp/android.html
+          ! grep -q "play.google.com/store/apps/details?id=tv.matchapp.app" /tmp/android.html
+          curl -sS -L --max-time 30 https://matchapp.tv/kids/ -o /tmp/kids.html
+          ! grep -q "GTM-M7J3NNBN" /tmp/kids.html
