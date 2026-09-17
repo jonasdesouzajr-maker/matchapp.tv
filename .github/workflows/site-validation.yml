@@ -1,7 +1,7 @@
 name: Validate website
 on:
   push:
-    branches: [main, fix/latest-news-layout]
+    branches: [main]
   pull_request:
 permissions:
   contents: read
