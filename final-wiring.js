@@ -1,12 +1,13 @@
 /* Final production wiring: activate reviewed hardening modules without duplicating page markup. */
 (function(){
   'use strict';
-  const V='20260917-adddevice1';
+  const V='20260918-brandseo1';
   const path=location.pathname;
   function js(src){if(document.querySelector(`script[src^="${src}"]`))return;const s=document.createElement('script');s.src=src+'?v='+V;s.async=false;s.defer=true;document.head.appendChild(s);}
   function upsertMeta(name,content){let m=document.querySelector(`meta[name="${name}"]`);if(!m){m=document.createElement('meta');m.name=name;document.head.appendChild(m);}m.content=content;}
   function brand(){
     if(!document.querySelector('link[data-matchapp-orbital-brand]')){const l=document.createElement('link');l.rel='stylesheet';l.href='/brand.css?v='+V;l.dataset.matchappOrbitalBrand='1';document.head.appendChild(l);}
+    if(!document.querySelector('link[data-matchapp-brand-corrections]')){const l=document.createElement('link');l.rel='stylesheet';l.href='/brand-corrections.css?v='+V;l.dataset.matchappBrandCorrections='1';document.head.appendChild(l);}
     document.querySelectorAll('.matchapp-wordmark').forEach(img=>{if(!/matchapp-tv-ai-v2\.svg(?:\?|$)/.test(img.getAttribute('src')||''))return;const next='/assets/brand/matchapp-tv-ai-v2.svg?v='+V;if(img.getAttribute('src')!==next)img.setAttribute('src',next);});
   }
   function pwaIdentity(){
@@ -67,6 +68,7 @@
   function quotaRoute(e){const q=e.target.closest?.('#quota-badge');if(!q)return;e.preventDefault();e.stopImmediatePropagation();location.href='/pricing/pricing.html?from=quota#match-packs-section';}
   function boot(){
     brand();style();pwaIdentity();aiDisclosure();
+    js('/brand-corrections.js');
     js('/install-corner.js');
     js('/install-device-choice.js');
     const appPages=path==='/'||path==='/index.html'||path==='/discover.html'||path==='/together.html';
