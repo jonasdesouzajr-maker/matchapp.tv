@@ -1,0 +1,86 @@
+name: Refresh Catalog Media
+
+on:
+  schedule:
+    - cron: '17 6 * * *'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Fetch and validate without writing Supabase'
+        required: false
+        default: 'false'
+  push:
+    branches:
+      - 'staging/tmdb-freshness-previews-20260917'
+    paths:
+      - 'tools/refresh-catalog-media.js'
+      - 'catalog-media.js'
+      - 'catalog-media.css'
+      - '.github/workflows/scraper.yml'
+      - 'tests/catalog-media-enhancements.test.cjs'
+
+permissions:
+  contents: read
+
+env:
+  SUPABASE_URL: https://zkymvqrmbabngsqblyye.supabase.co
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+
+      - name: Install locked dependencies
+        run: npm ci --ignore-scripts
+
+      - name: Validate existing site first
+        run: npm test
+
+      - name: Verify required source credential
+        env:
+          TMDB_READ_TOKEN: ${{ secrets.TMDB_READ_TOKEN }}
+          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
+        run: |
+          if [ -z "$TMDB_READ_TOKEN" ] && [ -z "$TMDB_API_KEY" ]; then
+            echo "::error::Missing TMDB_READ_TOKEN or TMDB_API_KEY GitHub Actions secret."
+            exit 1
+          fi
+
+      - name: Refresh media cache
+        env:
+          TMDB_READ_TOKEN: ${{ secrets.TMDB_READ_TOKEN }}
+          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: |
+          # All non-main executions are forced to dry-run so staging cannot mutate production.
+          if [ "${GITHUB_REF}" != "refs/heads/main" ] || [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
+            node tools/refresh-catalog-media.js --dry-run
+          else
+            if [ -z "$SUPABASE_SERVICE_ROLE_KEY" ]; then
+              echo "::error::SUPABASE_SERVICE_ROLE_KEY is required for live daily upserts."
+              exit 1
+            fi
+            node tools/refresh-catalog-media.js
+          fi
+
+      - name: Validate generated report
+        run: node -e "const r=require('./data/catalog-media-report.json'); if(!r.rows || r.withPoster<1) process.exit(1); console.log('validated',r.rows,'rows')"
+
+      - name: Upload refresh report
+        uses: actions/upload-artifact@v4
+        with:
+          name: catalog-media-report-${{ github.run_id }}
+          path: data/catalog-media-report.json
+          retention-days: 14
+
+      - name: Final site audit
+        run: npm run audit:site
