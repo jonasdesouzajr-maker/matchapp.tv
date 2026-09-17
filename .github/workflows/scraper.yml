@@ -1,0 +1,78 @@
+name: Refresh Catalog Media Metadata
+
+# This is a metadata/API sync, not an HTML scraper. TMDB's API supplies current
+# trending data and regional watch-provider data; Apple supplies exact-match
+# audio previews. Direct JustWatch/Cromai page scraping is intentionally absent.
+on:
+  schedule:
+    - cron: '17 4 * * *'   # daily, staggered away from the other maintenance jobs
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: catalog-media-refresh
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      SUPABASE_URL: https://zkymvqrmbabngsqblyye.supabase.co
+      SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+      TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
+      TMDB_READ_TOKEN: ${{ secrets.TMDB_READ_TOKEN }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+
+      - name: Install locked dependencies
+        run: npm ci --ignore-scripts
+
+      - name: Validate server credentials
+        shell: bash
+        run: |
+          if [ -z "$TMDB_API_KEY" ] && [ -z "$TMDB_READ_TOKEN" ]; then
+            echo "::error::TMDB_READ_TOKEN or TMDB_API_KEY is required."
+            exit 1
+          fi
+          if [ -z "$SUPABASE_SERVICE_ROLE_KEY" ]; then
+            echo "::error::SUPABASE_SERVICE_ROLE_KEY is required for server-only catalog writes."
+            exit 1
+          fi
+
+      - name: Sync catalog, trending metadata and previews
+        run: npm run sync:catalog-media
+
+      - name: Run media pipeline regression tests
+        run: node --test --test-isolation=none tests/catalog-media-pipeline.test.cjs
+
+      - name: Publish run summary
+        if: always()
+        shell: bash
+        run: |
+          if [ -f data/catalog-media-sync-summary.json ]; then
+            echo '## MatchApp catalog media refresh' >> "$GITHUB_STEP_SUMMARY"
+            echo '```json' >> "$GITHUB_STEP_SUMMARY"
+            cat data/catalog-media-sync-summary.json >> "$GITHUB_STEP_SUMMARY"
+            echo '```' >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo 'Catalog media sync did not produce a summary.' >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Upload sync metrics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: catalog-media-sync-${{ github.run_id }}
+          path: data/catalog-media-sync-summary.json
+          if-no-files-found: ignore
+          retention-days: 30
