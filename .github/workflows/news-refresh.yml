@@ -8,7 +8,7 @@ on:
     branches: [main, feature/latest-entertainment-news]
     paths:
       - '.github/workflows/news-refresh.yml'
-      - 'tools/refresh-news.js'
+      - 'tools/refresh-news-rss.js'
       - 'latest-news.js'
 
 permissions:
@@ -30,7 +30,7 @@ jobs:
         with:
           node-version: '24'
       - name: Fetch trusted entertainment headlines
-        run: node tools/refresh-news.js
+        run: node tools/refresh-news-rss.js
       - name: Refresh sitemap
         run: node tools/update-sitemap.js
       - name: Commit refreshed news
@@ -43,4 +43,5 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add news tools/news-urls.json sitemap.xml
           git commit -m "Refresh hourly entertainment news"
-          git push
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
