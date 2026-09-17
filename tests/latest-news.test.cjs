@@ -7,7 +7,7 @@ const read=p=>fs.readFileSync(path.join(root,p),'utf8');
 
 test('Latest News is homepage-only, folded by default, country-aware and placed after premiere',()=>{
   const wiring=read('final-wiring.js'),src=read('latest-news.js');
-  assert.match(wiring,/path==='\/'\|\|path==='\/index\.html'\)js\('\/latest-news\.js'\)/);
+  assert.match(wiring,/if\(path==='\/'\|\|path==='\/index\.html'\)\{[^}]*js\('\/latest-news\.js'\)/);
   assert.match(src,/document\.createElement\('details'\)/);
   assert.match(src,/section\.open=false/);
   assert.match(src,/document\.getElementById\('premiere-disclosure'\)/);
