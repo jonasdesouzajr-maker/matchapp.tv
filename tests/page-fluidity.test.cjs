@@ -17,7 +17,7 @@ const kidsJs=fs.readFileSync(path.join(root,'kids/kids.js'),'utf8');
 test('every page loads fluidity CSS and JS',()=>{
   assert.match(settings,/page-fluidity\.css/);
   assert.match(settings,/page-fluidity\.js/);
-  assert.match(settings,/20260916-social1/);
+  assert.match(settings,/20260917-social1/);
 });
 
 test('startup no longer staggers home scripts by more than a frame',()=>{
