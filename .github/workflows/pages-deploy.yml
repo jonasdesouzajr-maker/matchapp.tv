@@ -38,7 +38,7 @@ jobs:
         run: |
           set -e
           sleep 20
-          for url in https://matchapp.tv/ https://matchapp.tv/kids/ https://matchapp.tv/discover.html https://matchapp.tv/pricing/pricing.html https://matchapp.tv/android/; do
+          for url in https://matchapp.tv/ https://matchapp.tv/kids/ https://matchapp.tv/kids/titles/bluey/ https://matchapp.tv/discover.html https://matchapp.tv/pricing/pricing.html https://matchapp.tv/android/; do
             echo "Checking $url"
             code=$(curl -sS -o /tmp/body.html -w "%{http_code}" -L --max-time 30 "$url")
             echo "HTTP $code"
@@ -53,3 +53,9 @@ jobs:
           ! grep -q "play.google.com/store/apps/details?id=tv.matchapp.app" /tmp/android.html
           curl -sS -L --max-time 30 https://matchapp.tv/kids/ -o /tmp/kids.html
           ! grep -q "GTM-M7J3NNBN" /tmp/kids.html
+          curl -sS -L --max-time 30 https://matchapp.tv/kids/titles/bluey/ -o /tmp/kids-title.html
+          grep -qi "Bluey" /tmp/kids-title.html
+          grep -q 'isFamilyFriendly' /tmp/kids-title.html
+          ! grep -q "GTM-M7J3NNBN" /tmp/kids-title.html
+          curl -sS -L --max-time 30 https://matchapp.tv/sitemap.xml -o /tmp/sitemap.xml
+          grep -q "https://matchapp.tv/kids/titles/bluey/" /tmp/sitemap.xml
