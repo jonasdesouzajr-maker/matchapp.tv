@@ -7,7 +7,7 @@
    never trap the app on an old or redirected response.
    ============================================================ */
 
-const SW_VERSION = 'v20-full-home-recovery';
+const SW_VERSION = 'v21-brand-delight';
 
 self.addEventListener('install', () => {
     self.skipWaiting();
