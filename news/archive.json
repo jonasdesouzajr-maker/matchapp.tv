@@ -1,8 +1,6 @@
 {
   "generated_at": "2026-09-17T19:15:08.304Z",
-  "feed_version": "b21a5568",
-  "source_policy": "direct-trusted-publisher-rss+google-trends-keyword-signals",
-  "seo_policy": "per-story keyword snapshot at first discovery + source citation + stable archive",
+  "limit": 1000,
   "items": [
     {
       "id": "92a8ece4",
