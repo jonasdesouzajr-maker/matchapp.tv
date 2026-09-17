@@ -191,6 +191,20 @@
     boot();
   }
 
+  /* Any newer rail that auto-advances with native scrollLeft (Latest News is
+     the current example) must remain directly swipeable both ways on phones.
+     Keep this generic so future data-auto-direction="left" rails inherit it. */
+  function enableNativeSwipeRails(){
+    document.querySelectorAll('[data-auto-direction="left"] .ma-news-track').forEach(el=>{
+      if(el.dataset.matchappNativeSwipe==='1')return;
+      el.dataset.matchappNativeSwipe='1';
+      el.style.overflowX='auto';
+      el.style.webkitOverflowScrolling='touch';
+      el.style.touchAction='pan-x pan-y';
+      el.style.overscrollBehaviorX='contain';
+    });
+  }
+
   function wrapNudge(){
     const prev=window.railNudge;
     window.railNudge=function(vpId,dir){
@@ -211,6 +225,8 @@
     if(location.pathname!=='/'&&location.pathname!=='/index.html')return;
     wrapNudge();
     RAILS.forEach(pair=>initRail(pair[0],pair[1]));
+    enableNativeSwipeRails();
+    if(window.MutationObserver)new MutationObserver(enableNativeSwipeRails).observe(document.body,{childList:true,subtree:true});
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
 })();
