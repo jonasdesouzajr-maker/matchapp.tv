@@ -5,15 +5,35 @@ const path=require('node:path');
 const root=path.join(__dirname,'..');
 const read=p=>fs.readFileSync(path.join(root,p),'utf8');
 
-test('Latest News is homepage-only, folded by default and country-aware',()=>{
+test('Latest News is homepage-only, folded by default, country-aware and placed after premiere',()=>{
   const wiring=read('final-wiring.js'),src=read('latest-news.js');
   assert.match(wiring,/path==='\/'\|\|path==='\/index\.html'\)js\('\/latest-news\.js'\)/);
-  assert.match(src,/section\.dataset\.open='false'/);
-  assert.match(src,/aria-expanded=\"false\"/);
+  assert.match(src,/document\.createElement\('details'\)/);
+  assert.match(src,/section\.open=false/);
+  assert.match(src,/document\.getElementById\('premiere-disclosure'\)/);
+  assert.match(src,/premiere\.insertAdjacentElement\('afterend',section\)/);
   assert.match(src,/\/cdn-cgi\/trace/);
-  assert.match(src,/Around \$\{countryName\(country\)\}/);
-  assert.match(src,/Global entertainment/);
-  assert.match(src,/slice\(0,MAX\)/);
+  assert.match(src,/MAX_LOCAL=5/);
+  assert.match(src,/MAX_GLOBAL=5/);
+  assert.match(src,/MAX_TOTAL=10/);
+});
+
+test('Latest News uses one compact ten-story auto-scrolling row with edge arrows',()=>{
+  const src=read('latest-news.js');
+  assert.match(src,/combined:\[/);
+  assert.match(src,/\.slice\(0,MAX_TOTAL\)/);
+  assert.match(src,/content|panel/);
+  assert.match(src,/ma-news-carousel-shell/);
+  assert.match(src,/ma-news-track/);
+  assert.match(src,/flex-wrap:nowrap/);
+  assert.match(src,/flex:0 0 160px/);
+  assert.match(src,/ma-news-arrow-prev/);
+  assert.match(src,/ma-news-arrow-next/);
+  assert.match(src,/AUTO_MS=3600/);
+  assert.match(src,/setInterval\(\(\)=>move\(1\),AUTO_MS\)/);
+  assert.match(src,/scrollIntoView\(\{behavior:'smooth',block:'nearest'\}\)/);
+  assert.match(src,/touchstart/);
+  assert.match(src,/pointerenter/);
 });
 
 test('new-content indicator persists by feed version and clears on unfold',()=>{
@@ -26,17 +46,19 @@ test('new-content indicator persists by feed version and clears on unfold',()=>{
   assert.match(src,/latest_news_new_available/);
 });
 
-test('news cards preserve source security, accessibility, analytics and ad integration',()=>{
+test('news cards open the original source securely and preserve accessibility, analytics and ads',()=>{
   const src=read('latest-news.js');
+  assert.match(src,/a\.href=original\|\|'#'/);
   assert.match(src,/target='_blank'/);
   assert.match(src,/noopener noreferrer/);
   assert.match(src,/img\.alt=/);
-  assert.match(src,/scroll-snap-type:x mandatory/);
+  assert.match(src,/scroll-snap-type:x proximity/);
   assert.match(src,/latest_news_open/);
   assert.match(src,/latest_news_click/);
   assert.match(src,/data-ad-slot=\"2595698117\"/);
   assert.match(src,/fallbackImage/);
   assert.match(src,/primaryKeyword/);
+  assert.doesNotMatch(src,/MatchApp summary/);
 });
 
 test('hourly generator polls trusted feeds, Google Trends and rejects rumor language',()=>{
