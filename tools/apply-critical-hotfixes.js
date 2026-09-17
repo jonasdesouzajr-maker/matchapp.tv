@@ -52,8 +52,9 @@ function replaceRequired(text, from, to, label) {
   write(file, html);
 }
 
-// Kids Mode: enrich static search metadata while keeping this child-directed surface
-// free from the general-site GTM container. No Kids allowlist or entitlement logic changes.
+// Kids Mode: remove only the general-site GTM container.
+// Also enrich static search metadata while keeping this child-directed surface free from general-site tracking.
+// No Kids allowlist, matching, account, artwork, entitlement or navigation logic changes.
 {
   const file = 'kids/index.html';
   let html = read(file);
