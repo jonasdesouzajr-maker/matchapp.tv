@@ -28,21 +28,24 @@ test('news cards preserve source security, accessibility, analytics and ad integ
   assert.match(src,/fallbackImage/);
 });
 
-test('hourly generator uses trusted publishers and rejects rumor language',()=>{
-  const src=read('tools/refresh-news.js');
+test('hourly generator polls direct trusted publisher feeds and rejects rumor language',()=>{
+  const src=read('tools/refresh-news-rss.js');
   for(const d of ['reuters.com','cnn.com','hollywoodreporter.com','bbc.com','g1.globo.com']) assert.match(src,new RegExp(d.replace(/\./g,'\\.')));
+  assert.match(src,/feeds\.bbci\.co\.uk/);
+  assert.match(src,/g1\.globo\.com\/dynamo\/pop-arte\/rss2\.xml/);
   assert.match(src,/RUMOR=/);
   assert.match(src,/reportedly/);
-  assert.match(src,/api\.gdeltproject\.org/);
+  assert.match(src,/isAllowed\(url,r\.feed\)/);
   assert.match(src,/matchapp_url/);
   assert.match(src,/isBasedOn/);
+  assert.doesNotMatch(src,/api\.gdeltproject\.org/);
   assert.doesNotMatch(src,/articleBody/);
 });
 
 test('hourly workflow and sitemap generator publish only generated news URLs',()=>{
   const yml=read('.github/workflows/news-refresh.yml'),sm=read('tools/update-sitemap.js'),urls=JSON.parse(read('tools/news-urls.json'));
   assert.match(yml,/cron: '11 \* \* \* \*'/);
-  assert.match(yml,/node tools\/refresh-news\.js/);
+  assert.match(yml,/node tools\/refresh-news-rss\.js/);
   assert.match(yml,/node tools\/update-sitemap\.js/);
   assert.match(sm,/readList\('news-urls\.json'\)/);
   assert.ok(urls.includes('https://matchapp.tv/news/'));
