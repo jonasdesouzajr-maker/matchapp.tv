@@ -230,3 +230,18 @@
         return out;
     };
 })();
+
+// Catalog-media enrichment is loaded from the same bootstrap already present on
+// the homepage, Discover, Match Together and Kids. This keeps the enhancement
+// additive and avoids editing the working templates or matcher.
+(function loadCatalogMediaEnhancement(){
+    if (typeof document === 'undefined' || document.querySelector('script[data-matchapp-catalog-media]')) return;
+    if (!document.querySelector('link[data-matchapp-catalog-media]')) {
+        const css=document.createElement('link');
+        css.rel='stylesheet'; css.href='/catalog-media.css?v=1'; css.dataset.matchappCatalogMedia='1';
+        document.head.appendChild(css);
+    }
+    const script=document.createElement('script');
+    script.src='/catalog-media.js?v=1'; script.defer=true; script.dataset.matchappCatalogMedia='1';
+    document.head.appendChild(script);
+})();
