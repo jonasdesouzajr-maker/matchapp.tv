@@ -1,7 +1,7 @@
 name: Validate website
 on:
   push:
-    branches: [main]
+    branches: [main, staging/media-enrichment-20260917]
   pull_request:
 permissions:
   contents: read
@@ -18,5 +18,7 @@ jobs:
           node-version: '24'
           cache: npm
       - run: npm ci --ignore-scripts
+      - run: node --check tools/scrape-catalog.js
+      - run: node --check media-enrichment.js
       - run: npm test
       - run: npm run audit:site
