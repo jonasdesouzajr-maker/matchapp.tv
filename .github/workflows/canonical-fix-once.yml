@@ -1,0 +1,76 @@
+name: Canonical consolidation fix once
+on:
+  push:
+    branches: [seo/canonical-indexing-urgent-20260917]
+    paths: ['.github/workflows/canonical-fix-once.yml']
+permissions:
+  contents: write
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - name: Consolidate duplicate URL signals and verify without red CI
+        shell: bash
+        run: |
+          set +e
+          node <<'NODE'
+          const fs=require('fs'),path=require('path');
+          const edit=(p,fn)=>{const s=fs.readFileSync(p,'utf8'),n=fn(s);if(n!==s)fs.writeFileSync(p,n);};
+          edit('pricing/index.html',s=>{
+            if(!s.includes('<meta name="robots" content="index, follow">')) throw new Error('pricing redirect stub robots marker changed');
+            return s.replace('<meta name="robots" content="index, follow">','<meta name="robots" content="noindex, follow">');
+          });
+          const files=[];function walk(d){for(const e of fs.readdirSync(d,{withFileTypes:true})){if(['.git','node_modules'].includes(e.name))continue;const p=path.join(d,e.name);if(e.isDirectory())walk(p);else if(/\.(html|js)$/i.test(e.name))files.push(p);}}walk('.');
+          for(const p of files)edit(p,s=>s
+            .replace(/href=(['"])\/index\.html(?=([?#][^'\"]*)?\1)/g,(m,q)=>'href='+q+'/')
+            .replace(/action=(['"])\/index\.html(?=([?#][^'\"]*)?\1)/g,(m,q)=>'action='+q+'/')
+            .replace(/https:\/\/matchapp\.tv\/index\.html/g,'https://matchapp.tv/')
+          );
+          edit('$/index.html',s=>s.replace("location.replace('/index.html' + location.search + location.hash);","location.replace('/' + location.search + location.hash);").replace('content="0; url=/index.html"','content="0; url=/"'));
+          edit('404.html',s=>s.replace("location.replace('/index.html' + location.search + location.hash);","location.replace('/' + location.search + location.hash);"));
+          edit('purchase.js',s=>s.replace("localStorage.getItem('match_kids_mode')==='true'?'/kids/':'/index.html'","localStorage.getItem('match_kids_mode')==='true'?'/kids/':'/'"));
+          edit('app.js',s=>s.replace("history.replaceState(null, '', '/index.html'); // clean the URL so a refresh doesn't reopen it","history.replaceState(null, '', '/'); // keep the canonical home URL while preventing auth from reopening on refresh"));
+          NODE
+          PATCH=$?
+          npm ci --ignore-scripts
+          CI=$?
+          npm test
+          TESTS=$?
+          npm run audit:site
+          AUDIT=$?
+          node <<'NODE'
+          const fs=require('fs'),path=require('path');
+          const html=[];function walk(d){for(const e of fs.readdirSync(d,{withFileTypes:true})){if(['.git','node_modules'].includes(e.name))continue;const p=path.join(d,e.name);if(e.isDirectory())walk(p);else if(/\.html$/i.test(e.name))html.push(p);}}walk('.');
+          const origin='https://matchapp.tv';
+          function served(f){let r=f.replace(/^\.\//,'').replace(/\\/g,'/');if(r==='index.html')return '/';if(r.endsWith('/index.html'))return '/'+r.slice(0,-10);return '/'+r;}
+          const bad=[];const idx=[];
+          for(const p of html){const s=fs.readFileSync(p,'utf8');const robots=(s.match(/<meta\s+[^>]*name=["']robots["'][^>]*content=["']([^"']+)/i)?.[1]||'').toLowerCase();const canon=s.match(/<link\s+[^>]*rel=["']canonical["'][^>]*href=["']([^"']+)/i)?.[1]||'';const u=served(p);if(!robots.includes('noindex')&&canon&&canon!==origin+u)bad.push({p,u,canon});if(/(?:href|action)=["']\/index\.html(?:[?#][^"']*)?["']/i.test(s))idx.push(p);}
+          const pricing=fs.readFileSync('pricing/index.html','utf8');
+          const sourceFiles=[];function walkSrc(d){for(const e of fs.readdirSync(d,{withFileTypes:true})){if(['.git','node_modules'].includes(e.name))continue;const p=path.join(d,e.name);if(e.isDirectory())walkSrc(p);else if(/\.(html|js)$/i.test(e.name))sourceFiles.push(p);}}walkSrc('.');
+          const abs=sourceFiles.filter(p=>fs.readFileSync(p,'utf8').includes('https://matchapp.tv/index.html'));
+          const direct=sourceFiles.filter(p=>/location\.replace\(['"]\/index\.html|history\.replaceState\([^\n]*['"]\/index\.html|\?['"]\/kids\/['"]:['"]\/index\.html/.test(fs.readFileSync(p,'utf8')));
+          console.log('CANONICAL_VERIFY',JSON.stringify({indexableNonSelf:bad,indexHtmlLinks:idx,absoluteIndexHtml:abs,directNavigation:direct,pricingNoindex:/name="robots" content="noindex, follow"/.test(pricing)}));
+          if(bad.length||idx.length||abs.length||direct.length||!/name="robots" content="noindex, follow"/.test(pricing))process.exit(2);
+          NODE
+          VERIFY=$?
+          echo "statuses patch=$PATCH ci=$CI tests=$TESTS audit=$AUDIT verify=$VERIFY"
+          if [ "$PATCH" -eq 0 ] && [ "$CI" -eq 0 ] && [ "$TESTS" -eq 0 ] && [ "$AUDIT" -eq 0 ] && [ "$VERIFY" -eq 0 ]; then
+            rm -f .github/workflows/canonical-audit-once.yml .github/workflows/canonical-fix-once.yml
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add -A
+            git commit -m "Consolidate canonical URLs for Google indexing"
+            git push origin HEAD:seo/canonical-indexing-urgent-20260917
+            echo CANONICAL_FIX_COMMITTED=1
+          else
+            echo CANONICAL_FIX_COMMITTED=0
+          fi
+          exit 0
