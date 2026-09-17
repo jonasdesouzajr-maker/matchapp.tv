@@ -52,11 +52,40 @@ function replaceRequired(text, from, to, label) {
   write(file, html);
 }
 
-// Kids Mode: remove only the general-site GTM container from this child-directed surface.
-// No Kids UI, catalog, matching, account, artwork or navigation code is changed.
+// Kids Mode: enrich static search metadata while keeping this child-directed surface
+// free from the general-site GTM container. No Kids allowlist or entitlement logic changes.
 {
   const file = 'kids/index.html';
   let html = read(file);
+  html = replaceRequired(html,
+    '<title>MatchApp TV Ai Kids — Safe Movies, Shows &amp; Family Entertainment</title>',
+    '<title>Kids Movie &amp; Show Matcher by Age, Mood &amp; Decade | MatchApp TV</title>',
+    'Kids SEO title');
+  html = replaceRequired(html,
+    'Make a Kids match from 64 handpicked cartoons, family movies and learning shows from the 1950s to today. Age filters, favorite hearts, complete covers and title-specific viewing guides.',
+    'Match safe kids movies, cartoons, family shows and music by age, mood, format and decade. Explore reviewed titles, classic cartoons and regional where-to-watch guides.',
+    'Kids meta description');
+  html = replaceRequired(html,
+    'kids movies streaming, safe cartoons for kids, family movies tonight, classic cartoons 80s 90s, age appropriate kids shows, Kids Mode MatchApp, family entertainment finder, Bluey family watch, Woody Woodpecker kids',
+    'kids movie matcher, kids show matcher, safe cartoons for kids, age appropriate kids shows, family movies for kids, preschool shows ages 3-5, kids shows ages 6-8, family entertainment ages 9-12, educational kids shows, classic cartoons 1950s 1960s 1970s 1980s 1990s 2000s, where to watch kids movies, MatchApp Kids Mode',
+    'Kids meta keywords');
+  html = replaceRequired(html,
+    'MatchApp TV Ai Kids — Safe Entertainment Discovery',
+    'MatchApp Kids — Safe Movie & Show Matcher by Age and Mood',
+    'Kids OG title');
+  html = replaceRequired(html,
+    'A colorful, age-banded kids mode for finding family movies, animation, educational shows and music with a safety-first AI concierge.',
+    'A colorful, age-banded matcher for safe kids movies, cartoons, family shows and music, with reviewed title guides and classic-cartoon discovery.',
+    'Kids OG description');
+  html = replaceRequired(html,
+    'A safety-first entertainment discovery experience for children and families, with age-banded recommendations and a kids-safe AI concierge.',
+    'A safety-first kids entertainment matcher for reviewed movies, cartoons, shows and music, with age bands, moods, decades and family viewing guides.',
+    'Kids JSON-LD description');
+  html = replaceRequired(html,
+    '"dateModified":"2026-09-16"',
+    '"dateModified":"2026-09-17"',
+    'Kids JSON-LD modified date');
+
   const headBlock = /\n?<!-- Google Tag Manager -->\s*<script>[\s\S]*?<\/script>\s*<!-- End Google Tag Manager -->\s*/;
   const noscriptBlock = /\n?<!-- Google Tag Manager \(noscript\) -->\s*<noscript><iframe[\s\S]*?<\/iframe><\/noscript>\s*<!-- End Google Tag Manager \(noscript\) -->\s*/;
   if (headBlock.test(html)) html = html.replace(headBlock, '\n');
@@ -67,4 +96,4 @@ function replaceRequired(text, from, to, label) {
   write(file, html);
 }
 
-console.log('Applied critical deploy hotfixes: VIP copy aligned; Kids GTM removed.');
+console.log('Applied critical deploy hotfixes: VIP copy aligned; Kids SEO enriched and GTM removed.');
