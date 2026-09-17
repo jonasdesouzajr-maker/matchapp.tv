@@ -10,11 +10,13 @@ test('catalog media enrichment is additive and exact-identity only',()=>{
   const src=read('catalog-media.js');
   assert.match(src,/from\(TABLE\)\.select/);
   assert.match(src,/\.eq\('normalized_title',normalise\(title\)\)/);
-  assert.match(src,/opts\.kids\) q=q\.eq\('kids_approved',true\)/);
+  assert.ok(src.includes("if(opts.kids)q=q.eq('kids_approved',true)"),'Kids lookup must require explicit server approval');
   assert.ok(src.includes('youtube-nocookie\\.com\\/embed'),'trusted YouTube privacy embed host is required');
   assert.ok(src.includes('audio-ssl\\.itunes\\.apple\\.com'),'trusted iTunes preview host is required');
   assert.match(src,/generateLocalPosterSVG/);
   assert.match(src,/data:image\/svg\+xml/);
+  assert.match(src,/matchappFallbackStage='metadata'/);
+  assert.match(src,/matchappFallbackStage='local'/);
   assert.doesNotMatch(src,/CONTENT_CATALOG\s*=/);
   assert.doesNotMatch(src,/LIBRARY\s*=/);
 });
