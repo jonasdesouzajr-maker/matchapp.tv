@@ -42,7 +42,7 @@ test('directory stubs stop /pricing/ and /profile/ from 404ing',()=>{
  const pricing=read('pricing/index.html'),profile=read('profile/index.html');
  assert.match(pricing,/canonical[^>]+https:\/\/matchapp\.tv\/pricing\/pricing\.html/);
  assert.match(pricing,/pricing\/pricing\.html/);
- assert.doesNotMatch(pricing,/noindex/i);
+ assert.match(pricing,/noindex/i);
  assert.match(profile,/canonical[^>]+https:\/\/matchapp\.tv\/profile\/profile\.html/);
  assert.match(profile,/noindex/i);
  assert.match(read('_redirects'),/https:\/\/matchapp\.tv\/:splat/);

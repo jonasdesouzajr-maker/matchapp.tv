@@ -1597,7 +1597,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (authParams.get('openAuth') === '1' || authParams.get('signIn') === '1') {
             window.openAuthModal();
             if (typeof window.switchAuthTab === 'function') window.switchAuthTab(authParams.get('signIn') === '1' ? 'login' : 'signup');
-            history.replaceState(null, '', '/index.html'); // clean the URL so a refresh doesn't reopen it
+            history.replaceState(null, '', '/'); // keep the canonical home URL while preventing auth from reopening on refresh
         }
     } catch (e) {}
 });
@@ -1757,7 +1757,7 @@ window.doLogout = async function() {
     for(const k of Object.keys(localStorage)){
         if(k.startsWith('match_')&&!/^(match_app_|match_kids_|match_exclusions_|match_history_|match_settings|match_lang|match_font)/.test(k))localStorage.removeItem(k);
     }
-    window.location.href='/index.html';
+    window.location.href='/';
 };
 
 // "Find My Match — It's Free" needs to feel like it obviously did something,

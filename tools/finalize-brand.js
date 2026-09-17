@@ -8,7 +8,7 @@ function finalizeBrand(){let count=0;for(const file of files(ROOT)){
  let html=fs.readFileSync(file,'utf8');if(!/<body[\s>]/i.test(html)||file.includes('yandex_'))continue;
  const dom=new JSDOM(html,{includeNodeLocations:true}),doc=dom.window.document,edits=[];
  const replace=(el,text)=>{const at=dom.nodeLocation(el);if(at)edits.push([at.startOffset,at.endOffset,text]);};
- const brand=doc.querySelector('body > header a[href="/index.html"],body > header a[href="/"],body > header a[href="/kids/"],.kids-brand');
+ const brand=doc.querySelector('body > header a[href="/"],body > header a[href="/"],body > header a[href="/kids/"],.kids-brand');
  if(brand&&!brand.querySelector('.matchapp-wordmark')){
    const copy=brand.cloneNode(true);copy.removeAttribute('data-i18n');copy.setAttribute('aria-label','MatchApp TV Ai');copy.classList.add('matchapp-brand-link');
    const title=copy.querySelector('.app-title-main,.kids-brand-copy strong');

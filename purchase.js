@@ -31,7 +31,7 @@
    if(!sessionId||!/^cs_(test_|live_)?[A-Za-z0-9]+$/.test(sessionId)){stage('!',tr('failed'));return;}
    for(let attempt=0;attempt<6;attempt++){
     const {data,error}=await sb.functions.invoke('stripe-checkout',{body:{action:'status',session_id:sessionId}});
-    if(!error&&data?.delivered===true){const plan=String(data.plan||'');stage('✓','Payment confirmed — updating your account…');await finalMessage(sb,session,plan,data);const target=localStorage.getItem('match_kids_mode')==='true'?'/kids/':'/index.html';const next=document.getElementById('purchase-continue');if(next){next.href=target+'?purchase=success&lang='+encodeURIComponent(window.MATCH_LANG||'en');next.hidden=false;}if(retry)retry.hidden=true;setTimeout(()=>location.replace(target+'?purchase=success&lang='+encodeURIComponent(window.MATCH_LANG||'en')),5000);return;}
+    if(!error&&data?.delivered===true){const plan=String(data.plan||'');stage('✓','Payment confirmed — updating your account…');await finalMessage(sb,session,plan,data);const target=localStorage.getItem('match_kids_mode')==='true'?'/kids/':'/';const next=document.getElementById('purchase-continue');if(next){next.href=target+'?purchase=success&lang='+encodeURIComponent(window.MATCH_LANG||'en');next.hidden=false;}if(retry)retry.hidden=true;setTimeout(()=>location.replace(target+'?purchase=success&lang='+encodeURIComponent(window.MATCH_LANG||'en')),5000);return;}
     if(!error&&data?.state==='failed'){stage('!',tr('failed'));return;}
     if(attempt<5)await new Promise(r=>setTimeout(r,1700));
    }

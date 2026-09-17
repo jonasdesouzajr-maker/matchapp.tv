@@ -10,7 +10,7 @@
           return;
         }
         if (/^\/(?:\$|%24)(?:\/index\.html|\/)?$/i.test(location.pathname)) {
-          location.replace('/index.html' + location.search + location.hash);
+          location.replace('/' + location.search + location.hash);
           return;
         }
         if (/^\/pricing(?:\/index\.html)?$/i.test(location.pathname)) {

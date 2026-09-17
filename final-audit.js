@@ -48,7 +48,7 @@
       if(!sb){message('Account service is temporarily unavailable. Please try again.',true);return;}
       message('Creating your private MatchApp account…');
       try{
-        const {data,error}=await sb.auth.signUp({email:mail,password,options:{data:{full_name:name,name},emailRedirectTo:'https://matchapp.tv/index.html?openAuth=1'}});
+        const {data,error}=await sb.auth.signUp({email:mail,password,options:{data:{full_name:name,name},emailRedirectTo:'https://matchapp.tv/?openAuth=1'}});
         if(error)throw error;
         if(data?.session?.user){
           await window.hydrateProfileFromAuth?.(data.session.user);window.closeAuthModal?.();

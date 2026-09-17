@@ -8,13 +8,13 @@ function recovery(file,pathname,search='',hash=''){
 }
 test('malformed home addresses recover to the explicit home document without a cached root redirect loop',()=>{
  for(const file of ['404.html','$/index.html'])for(const pathname of ['/$','/$/','/%24','/%24/','/$/index.html','/%24/index.html']){
-  assert.deepEqual(recovery(file,pathname,'?lang=pt-BR&appUpdate=2026.09.14.3','#browse'),['/index.html?lang=pt-BR&appUpdate=2026.09.14.3#browse']);
+  assert.deepEqual(recovery(file,pathname,'?lang=pt-BR&appUpdate=2026.09.14.3','#browse'),['/?lang=pt-BR&appUpdate=2026.09.14.3#browse']);
  }
 });
 test('recovery preserves normal home and genuine missing pages and never accepts a redirect destination from a query',()=>{
  for(const file of ['404.html','$/index.html']){
   for(const pathname of ['/','/index.html','/missing-page','/$/other','/kids/'])assert.deepEqual(recovery(file,pathname),[]);
-  assert.deepEqual(recovery(file,'/$','?next=https://example.invalid'),['/index.html?next=https://example.invalid']);
+  assert.deepEqual(recovery(file,'/$','?next=https://example.invalid'),['/?next=https://example.invalid']);
  }
  assert.deepEqual(recovery('404.html','/pricing'),['/pricing/pricing.html']);
  assert.deepEqual(recovery('404.html','/profile'),['/profile/profile.html']);
