@@ -120,7 +120,7 @@ window.MATCHAPP_BUILD = '2026.09.17.1';
         url: 'https://matchapp.tv/discover.html',
         description: 'Voice- and text-enabled entertainment discovery concierge for finding real titles and streaming information.',
         isPartOf: { '@type': 'WebSite', name: 'MatchApp TV Ai', url: 'https://matchapp.tv/' },
-        publisher: { '@type': 'Organization', name: 'MatchApp', url: 'https://matchapp.tv/' }
+        publisher: { '@type': 'Organization', name: 'MatchApp', url: 'https://matchapp.tv/', logo: { '@type': 'ImageObject', url: 'https://matchapp.tv/assets/brand/matchapp-icon-512.png', width: 512, height: 512 } }
       });
     }
     normalizePricingTruth();
@@ -132,7 +132,7 @@ window.MATCHAPP_BUILD = '2026.09.17.1';
 (function(){
   if(document.querySelector('script[data-matchapp-final-wiring]'))return;
   const s=document.createElement('script');
-  s.src='/final-wiring.js?v=20260917-adddevice1';
+  s.src='/final-wiring.js?v=20260918-brandseo1';
   s.async=false; s.defer=true; s.dataset.matchappFinalWiring='1';
   document.head.appendChild(s);
 })();
