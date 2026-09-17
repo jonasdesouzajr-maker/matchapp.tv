@@ -1,0 +1,84 @@
+name: Daily Catalog Media Enrichment
+
+on:
+  schedule:
+    - cron: '17 7 * * *' # 04:17 America/Sao_Paulo while UTC-3; intentionally away from other jobs
+  workflow_dispatch:
+    inputs:
+      limit:
+        description: 'Optional number of rows to refresh (0 = all)'
+        required: false
+        default: '0'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: matchapp-catalog-media-refresh
+  cancel-in-progress: false
+
+jobs:
+  enrich:
+    # Scheduled workflows execute only from the default branch. Keeping this
+    # workflow on a staging branch lets CI validate it without touching prod.
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    env:
+      SUPABASE_URL: https://zkymvqrmbabngsqblyye.supabase.co
+      SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+      TMDB_READ_TOKEN: ${{ secrets.TMDB_READ_TOKEN }}
+      TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
+      CATALOG_REFRESH_LIMIT: ${{ github.event.inputs.limit || '0' }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+
+      - name: Install locked dependencies
+        run: npm ci --ignore-scripts
+
+      - name: Preflight secrets
+        shell: bash
+        run: |
+          if [ -z "$SUPABASE_SERVICE_ROLE_KEY" ]; then
+            echo "::error::SUPABASE_SERVICE_ROLE_KEY is required in GitHub Actions secrets."
+            exit 1
+          fi
+          # A missing GitHub TMDB secret is allowed: scrape-catalog.js can read
+          # TMDB_BEARER_TOKEN from Supabase runtime_secrets using service-role.
+
+      - name: Refresh posters, metadata, previews, trending and providers
+        id: refresh
+        run: |
+          set -o pipefail
+          node tools/scrape-catalog.js 2>&1 | tee catalog-refresh.log
+          tail -n 1 catalog-refresh.log >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Run regression suite
+        run: npm test
+
+      - name: Run site/search audit
+        run: npm run audit:site
+
+      - name: Upload refresh diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: catalog-refresh-${{ github.run_id }}
+          path: catalog-refresh.log
+          retention-days: 14
+
+      - name: Publish job metrics summary
+        if: always()
+        run: |
+          echo "### Catalog enrichment" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Run: $GITHUB_RUN_ID" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Commit: $GITHUB_SHA" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Source: TMDB + TMDB/JustWatch watch-provider data + iTunes previews" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Production catalogue membership is not modified by this workflow." >> "$GITHUB_STEP_SUMMARY"
