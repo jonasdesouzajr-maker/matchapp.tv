@@ -48,6 +48,8 @@
     if(!vp||!track||vp.dataset.matchappAutoplayFix==='5')return;
     vp.dataset.matchappAutoplayFix='5';
     holdLegacy(vp);
+    vp.style.touchAction='pan-y';
+    vp.style.overscrollBehaviorX='contain';
 
     const canFlow=()=>!reduced();
     const held=new Set();
@@ -99,7 +101,7 @@
     /* Mobile/touch drag: keep the compositor animation as the source of truth
        and scrub its timeline with the finger. That avoids switching between a
        transformed track and scrollLeft (which caused jumps), while allowing
-       natural left AND right swipes. touch-action:pan-y in CSS preserves normal
+       natural left AND right swipes. touch-action:pan-y preserves normal
        vertical page scrolling. */
     vp.addEventListener('pointerdown',e=>{
       if(e.button!=null&&e.button!==0)return;
