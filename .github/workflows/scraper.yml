@@ -1,0 +1,42 @@
+name: Refresh catalog media
+
+on:
+  schedule:
+    # 07:17 UTC = 04:17 in Rio/Sao Paulo while UTC-3.
+    - cron: '17 7 * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/scraper.yml'
+      - 'tools/sync-catalog-media.js'
+      - 'supabase/functions/catalog-sync/**'
+      - 'supabase/migrations/011_catalog_media_metadata.sql'
+
+permissions:
+  contents: read
+  id-token: write
+
+concurrency:
+  group: matchapp-catalog-media-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out MatchApp
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+
+      - name: Validate catalog extraction
+        run: node tools/sync-catalog-media.js --dry-run
+
+      - name: Refresh TMDB, previews and availability
+        run: node tools/sync-catalog-media.js
