@@ -3196,6 +3196,111 @@ function pickRecycledCatalog(cat, plat, mood, vibe, rating, decade) {
 }
 
 
+// Guaranteed recovery for ordinary matching. Exact user choices win first.
+// If an over-specific combination has no result, relax only secondary filters
+// in a predictable order while keeping the selected category anchored as long
+// as the catalogue has an eligible title in that category. Watch Later and
+// Not For Me are always hard exclusions, including cloud-restored history.
+function pickGuaranteedCatalog(cat, plat, mood, vibe, rating, decade) {
+    const policy = window.matchPolicy;
+    if (!policy || typeof policy.matchesCriteria !== 'function') return null;
+    const requested = {
+        cat: normCriteria(cat),
+        plat: normCriteria(plat),
+        mood: normCriteria(mood),
+        vibe: normCriteria(vibe),
+        rating: normCriteria(rating),
+        decade: normCriteria(decade || window.getMatchCriteria?.().decade || [])
+    };
+    const hardExcluded = new Set();
+    const addHard = item => {
+        const title = item && item.title ? item.title : item;
+        const k = policy.key(title);
+        if (k) hardExcluded.add(k);
+    };
+    try { if (typeof savedList !== 'undefined' && Array.isArray(savedList)) savedList.forEach(addHard); } catch (_) {}
+    try { if (typeof dislikedList !== 'undefined' && Array.isArray(dislikedList)) dislikedList.forEach(addHard); } catch (_) {}
+    for (const storageKey of ['match_savedList','match_dislikedList']) {
+        try {
+            const rows = JSON.parse(window.localStorage.getItem(storageKey) || '[]');
+            (Array.isArray(rows) ? rows : []).forEach(addHard);
+        } catch (_) {}
+    }
+    try {
+        (policy.history?.() || []).forEach(item => {
+            if (item && ['save','dislike'].includes(String(item.action || '').toLowerCase())) addHard(item);
+        });
+    } catch (_) {}
+
+    const wantsFaith = requested.cat.includes('Gospel & Faith') || requested.plat.some(p => ['Pure Flix','Angel Studios'].includes(p));
+    const currentTitle = (() => { try { return typeof globalMatchTitle !== 'undefined' ? globalMatchTitle : window.globalMatchTitle; } catch (_) { return ''; } })();
+    const currentKey = policy.key(currentTitle || '');
+    const historyRank = new Map();
+    try {
+        (policy.history?.() || []).forEach((item,index) => { const k=policy.key(item?.title); if(k&&!historyRank.has(k)) historyRank.set(k,index); });
+    } catch (_) {}
+
+    const allowed = entry => {
+        if (!entry || !entry.title) return false;
+        const k = policy.key(entry.title);
+        if (!k || hardExcluded.has(k)) return false;
+        try { if (typeof isBlockedEntry === 'function' && isBlockedEntry(entry)) return false; } catch (_) {}
+        if (!wantsFaith && Array.isArray(entry.cats) && entry.cats.includes('Gospel & Faith')) return false;
+        return true;
+    };
+    const shape = (pick, stage, recycled) => ({
+        ...pick,
+        title: pick.title,
+        synopsis: pick.synopsis,
+        platform: pick.platform,
+        platformVerified: true,
+        watchUrl: pick.watchUrl || (pick.platform === 'Roku Channel' ? pick.url : null) || null,
+        source: recycled ? 'catalog-guaranteed-recycle' : 'catalog-guaranteed',
+        _historyFallback: !!recycled,
+        _relaxedFallback: stage !== 'exact',
+        _relaxedStage: stage
+    });
+    const choose = (criteria, stage) => {
+        let candidates = CONTENT_CATALOG.filter(entry => allowed(entry) && policy.matchesCriteria(entry, criteria));
+        if (!candidates.length) return null;
+        const fresh = candidates.filter(entry => {
+            const k = policy.key(entry.title);
+            const sessionShown = (typeof SESSION_SHOWN !== 'undefined' && SESSION_SHOWN && SESSION_SHOWN.has(entry.title));
+            return !policy.known().has(k) && !sessionShown;
+        });
+        if (fresh.length) return shape(fresh[Math.floor(Math.random()*fresh.length)], stage, false);
+        const notCurrent = candidates.filter(entry => policy.key(entry.title) !== currentKey);
+        if (notCurrent.length) candidates = notCurrent;
+        candidates.sort((a,b) => {
+            const ar = historyRank.has(policy.key(a.title)) ? historyRank.get(policy.key(a.title)) : -1;
+            const br = historyRank.has(policy.key(b.title)) ? historyRank.get(policy.key(b.title)) : -1;
+            if (ar !== br) return br - ar;
+            return String(a.title).localeCompare(String(b.title));
+        });
+        return shape(candidates[0], stage, true);
+    };
+
+    const stages = [
+        ['exact', requested],
+        ['platform', {...requested, plat:[]}],
+        ['decade', {...requested, plat:[], decade:[]}],
+        ['vibe', {...requested, plat:[], decade:[], vibe:[]}],
+        ['mood', {...requested, plat:[], decade:[], vibe:[], mood:[]}],
+        ['rating', {...requested, plat:[], decade:[], vibe:[], mood:[], rating:[]}]
+    ];
+    for (const [stage,criteria] of stages) {
+        const pick = choose(criteria, stage);
+        if (pick) return pick;
+    }
+
+    // Absolute last resort: the selected category itself is exhausted by hard
+    // exclusions. Return another safe catalogue title rather than a dead-end.
+    // Explicit Watch Later / Not For Me exclusions still win over this fallback.
+    const ratingOnly = choose({cat:[],plat:[],mood:[],vibe:[],rating:requested.rating,decade:[]}, 'category-exhausted');
+    if (ratingOnly) return ratingOnly;
+    return choose({cat:[],plat:[],mood:[],vibe:[],rating:[],decade:[]}, 'global');
+}
+
 // ----------------------------------------------------
 // PRUNE UNSTOCKED CRITERIA OPTIONS
 //
@@ -3256,9 +3361,12 @@ window.triggerMatch = async function(isSpecificSearch = false) {
     }
     const typed = document.getElementById('specific-search-input')?.value || '';
 
+    if (!isSpecificSearch && !preflight) {
+        preflight = pickGuaranteedCatalog(requested.cat,requested.plat,requested.mood,requested.vibe,requested.rating,requested.decade);
+    }
     const alreadySeenSpecific = isSpecificSearch && window.matchPolicy?.known().has(window.matchPolicy.key(typed));
     if (isSpecificSearch && !typed.trim()) return;
-    if ((!isSpecificSearch && !preflight) || alreadySeenSpecific) {
+    if (alreadySeenSpecific) {
         // A rematch may already have hidden the previous result. Restore the
         // form before returning so an exhausted selection never strands it.
         ['questionnaire-box','search-box'].forEach(id => { const el=document.getElementById(id); if(el)el.style.display='block'; });
