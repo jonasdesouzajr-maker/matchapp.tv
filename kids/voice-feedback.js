@@ -123,6 +123,7 @@
     enrichHead();
     const stage=positionMatcher();
     wireExplore(stage);
+    if(location.hash==='#kids-match-stage')requestAnimationFrame(()=>stage?.scrollIntoView({behavior:'auto',block:'start'}));
     makeMagic(document.querySelector('.kids-hero-art'));
   }
 
