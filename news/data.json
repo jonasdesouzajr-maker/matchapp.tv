@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-17T16:02:32.617Z",
+  "generated_at": "2026-09-17T16:13:45.983Z",
   "source_policy": "direct-trusted-publisher-rss",
   "items": [
     {
@@ -353,20 +353,6 @@
       "matchapp_url": "https://matchapp.tv/news/articles/pedro-sampaio-sobre-ocupar-lugar-na-cena-lgbt-voces-que-estao-me-colocando-eu-so-7d8f5e/"
     },
     {
-      "id": "be3ff6c5",
-      "title": "Ariana ou Miley no Rock in Rio? A teoria (negada pelo festival) de que último dia seria 'dia delas'",
-      "url": "https://g1.globo.com/pop-arte/musica/rock-in-rio/noticia/2026/09/16/ariana-ou-miley-no-rock-in-rio-a-teoria-negada-pelo-festival-de-que-ultimo-dia-seria-dia-delas.ghtml",
-      "source": "G1",
-      "source_domain": "g1.globo.com",
-      "country": "BR",
-      "published_at": "2026-09-16T07:00:00.000Z",
-      "event_type": "Entertainment",
-      "person": "",
-      "description": "entertainment update covered by G1. Open the original report for full context.",
-      "image": "https://s2-g1.glbimg.com/4Xbp9n_EJuMUr2Z52UXu3ZhAtwM=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/t/o/EuA1FyQAyAwPxXYyBpaw/arianagrande1.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/ariana-ou-miley-no-rock-in-rio-a-teoria-negada-pelo-festival-de-que-ultimo-dia-s-be3ff6/"
-    },
-    {
       "id": "8cac9387",
       "title": "VÍDEO: Passinho do Jamal invade o Rock in Rio e conquista Felix, do Stray Kids, Zara Larsson e mais",
       "url": "https://g1.globo.com/pop-arte/musica/rock-in-rio/noticia/2026/09/16/video-passinho-do-jamal-invade-o-rock-in-rio-e-conquista-felix-do-stray-kids-zara-larsson-e-mais.ghtml",
@@ -423,20 +409,6 @@
       "matchapp_url": "https://matchapp.tv/news/articles/luck-and-timing-matthew-rhys-on-his-historic-emmy-awards-double-win-a5e27a/"
     },
     {
-      "id": "6edc9169",
-      "title": "Morre o documentarista chileno Patricio Guzmán aos 85 anos",
-      "url": "https://g1.globo.com/pop-arte/noticia/2026/09/15/morre-o-documentarista-chileno-patricio-guzman-aos-85-anos.ghtml",
-      "source": "G1",
-      "source_domain": "g1.globo.com",
-      "country": "BR",
-      "published_at": "2026-09-15T21:35:58.000Z",
-      "event_type": "Obituary",
-      "person": "",
-      "description": "obituary update covered by G1. Open the original report for full context.",
-      "image": "https://s2-g1.glbimg.com/tKqU5jT3xSRzw6l1nEwvoWp01ss=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/0/S/EZ3TtqT8WFATaHZQCE3w/fotos-g1-1920-x-1080-px-2026-09-15t183101.654.png",
-      "matchapp_url": "https://matchapp.tv/news/articles/morre-o-documentarista-chileno-patricio-guzman-aos-85-anos-6edc91/"
-    },
-    {
       "id": "c04c01fb",
       "title": "Criolo celebra 15 anos do álbum 'Nó na orelha' com turnê que se estenderá por 2027, abarcando sete capitais do Brasil",
       "url": "https://g1.globo.com/pop-arte/musica/blog/mauro-ferreira/post/2026/09/15/criolo-celebra-15-anos-do-album-no-na-orelha-com-turne-que-se-estendera-por-2027-abarcando-sete-capitais-do-brasil.ghtml",
@@ -491,6 +463,34 @@
       "description": "entertainment update covered by G1. Open the original report for full context.",
       "image": "https://s2-g1.glbimg.com/U34oUjQiv4tfZufjDl80iAOcjK8=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/5/Z/9XswnZROWW1LghNAk0eQ/imagem-5-.png",
       "matchapp_url": "https://matchapp.tv/news/articles/maior-open-de-molhos-do-mundo-entenda-como-hellmann-s-entrou-para-o-guinness-wor-1c6942/"
+    },
+    {
+      "id": "80667793",
+      "title": "Péricles canta Motown é eleito o melhor show nacional do Rock in Rio 2026 pelo g1",
+      "url": "https://g1.globo.com/pop-arte/musica/rock-in-rio/noticia/2026/09/15/pericles-canta-motown-e-eleito-o-melhor-show-nacional-do-rock-in-rio-2026-pelo-g1.ghtml",
+      "source": "G1",
+      "source_domain": "g1.globo.com",
+      "country": "BR",
+      "published_at": "2026-09-15T14:56:03.000Z",
+      "event_type": "Music",
+      "person": "",
+      "description": "music update covered by G1. Open the original report for full context.",
+      "image": "https://s2-g1.glbimg.com/ezXpCm06J6pX7w_CBU_xR24pEr0=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/W/C/jBhJWQQXefTwj5j5FHBQ/1-pericles-fotos-anderson-borde-agnews-16-.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/pericles-canta-motown-e-eleito-o-melhor-show-nacional-do-rock-in-rio-2026-pelo-g-806677/"
+    },
+    {
+      "id": "50538cb5",
+      "title": "Yuri Nakamura, de ‘Românticos Anônimos', morre aos 44 anos",
+      "url": "https://g1.globo.com/pop-arte/noticia/2026/09/15/yuri-nakamura-de-romanticos-anonimos-morre-aos-44-anos.ghtml",
+      "source": "G1",
+      "source_domain": "g1.globo.com",
+      "country": "BR",
+      "published_at": "2026-09-15T13:33:02.000Z",
+      "event_type": "Obituary",
+      "person": "Yuri Nakamura",
+      "description": "Yuri Nakamura: obituary update covered by G1. Open the original report for full context.",
+      "image": "https://s2-g1.glbimg.com/QUywSec2zTIUCyr23M87qzPLiUE=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/W/M/ly2cGISdm1IbTkEumDKQ/yuri.png",
+      "matchapp_url": "https://matchapp.tv/news/articles/yuri-nakamura-de-romanticos-anonimos-morre-aos-44-anos-50538c/"
     },
     {
       "id": "cf1c040f",
