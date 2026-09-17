@@ -20,7 +20,7 @@ test('Latest News is homepage-only, folded by default, country-aware and placed 
 
 test('Latest News visibly auto-swipes left after unfold without hover cancelling it',()=>{
   const src=read('latest-news.js');
-  assert.match(src,/combined:\[/);
+  assert.match(src,/let combined=\[/);
   assert.match(src,/\.slice\(0,MAX_TOTAL\)/);
   assert.match(src,/ma-news-carousel-shell/);
   assert.match(src,/ma-news-track/);
