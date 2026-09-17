@@ -47,6 +47,24 @@ test('recycled fallback preserves criteria and avoids the current title when ano
  finally{dom.window.close();}
 });
 
+test('history recycling never returns Watch Later or Not For Me titles',()=>{
+ const requested={cat:['movie'],plat:[],mood:[],vibe:[],rating:[],decade:[]};
+ const {dom,w,context}=matching(requested,catalog.map(entry=>entry.title));
+ try{
+  const exact=catalog.filter(e=>w.matchPolicy.matchesCriteria(e,requested));
+  assert(exact.length>=3,'test requires at least three matching movies');
+  const saved=exact[0],declined=exact[1];
+  w.localStorage.setItem('match_savedList',JSON.stringify([{title:saved.title}]));
+  w.matchPolicy.remember(declined,'dislike',false);
+  w.localStorage.removeItem('match_dislikedList');
+  const pick=context.pickRecycledCatalog(requested.cat,requested.plat,requested.mood,requested.vibe,requested.rating,requested.decade);
+  assert(pick,'another recyclable exact title should still be available');
+  assert.equal(pick._historyFallback,true);
+  assert.notEqual(w.matchPolicy.key(pick.title),w.matchPolicy.key(saved.title),'Watch Later must remain excluded');
+  assert.notEqual(w.matchPolicy.key(pick.title),w.matchPolicy.key(declined.title),'Not For Me must remain excluded after cloud/history restore');
+ }finally{dom.window.close();}
+});
+
 test('removed catalogue options cannot remain as invisible saved search constraints',()=>{
  const html='<div><label>Category</label><select id="q-category"><option value="any">Any</option><option value="movie">Movies</option></select></div><div><label>Platform</label><select id="q-platform"><option value="any">Any</option><option value="Netflix">Netflix</option></select></div>';
  const dom=new JSDOM(html,{url:'https://matchapp.tv/',runScripts:'outside-only'}),w=dom.window;

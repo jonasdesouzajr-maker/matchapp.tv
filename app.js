@@ -3120,15 +3120,33 @@ function pickRecycledCatalog(cat, plat, mood, vibe, rating, decade) {
         && (wantsFaith || !e.cats.includes('Gospel & Faith'))
         && (normCriteria(cat).length || isSurpriseEligible(e));
 
-    // Explicit Not For Me choices remain hard exclusions even when history is
-    // exhausted. Merely having been shown before is what becomes recyclable.
-    const disliked = new Set();
+    // Watch Later and Not For Me are deliberate user choices, not ordinary
+    // match history. They stay hard exclusions even when we recycle older
+    // shown/seen titles after exhausting unseen exact matches.
+    const hardExcluded = new Set();
+    const addHard = item => {
+        const k = policy.key(item && item.title ? item.title : item);
+        if (k) hardExcluded.add(k);
+    };
     try {
-        const rows = JSON.parse(window.localStorage.getItem('match_dislikedList') || '[]');
-        (Array.isArray(rows) ? rows : []).forEach(item => disliked.add(policy.key(item && item.title ? item.title : item)));
+        if (typeof savedList !== 'undefined' && Array.isArray(savedList)) savedList.forEach(addHard);
+        if (typeof dislikedList !== 'undefined' && Array.isArray(dislikedList)) dislikedList.forEach(addHard);
+    } catch (_) {}
+    for (const storageKey of ['match_savedList','match_dislikedList']) {
+        try {
+            const rows = JSON.parse(window.localStorage.getItem(storageKey) || '[]');
+            (Array.isArray(rows) ? rows : []).forEach(addHard);
+        } catch (_) {}
+    }
+    try {
+        const hardActions = new Set(['save','saved','watchlater','dislike','declined','notforme']);
+        for (const item of policy.history?.() || []) {
+            const action = String(item && item.action || '').toLowerCase().replace(/[^a-z]/g,'');
+            if (hardActions.has(action)) addHard(item);
+        }
     } catch (_) {}
 
-    let pool = CONTENT_CATALOG.filter(e => eligible(e) && !disliked.has(policy.key(e.title)));
+    let pool = CONTENT_CATALOG.filter(e => eligible(e) && !hardExcluded.has(policy.key(e.title)));
     if (!pool.length) return null;
 
     // Never immediately repeat the card on screen when another exact option exists.

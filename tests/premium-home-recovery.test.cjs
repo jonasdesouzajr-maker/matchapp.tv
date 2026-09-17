@@ -10,7 +10,7 @@ const experience=fs.readFileSync(path.join(root,'experience-v2.js'),'utf8');
 // Production seal for the browser-proven cross-device freeze recovery.
 test('premium homepage runs all features with bounded startup scheduling',()=>{
   assert.doesNotMatch(html,/Stable mode is active|matchapp-recovery-banner|matchapp-static-recovery/);
-  assert.match(html,/\/app\.js\?v=201/);
+  assert.match(html,/\/app\.js\?v=202/);
   for(const file of ['criteria.js','lazy.js','tv.js','credits-ui.js','voice-input.js']) assert.match(html,new RegExp('\/'+file.replace('.','\.')+'\?'));
   assert.match(build,/HOME STARTUP SCHEDULER/);
   assert.doesNotMatch(build,/SKIPPED_HEAVY_STARTUP|heavy\.some/);
