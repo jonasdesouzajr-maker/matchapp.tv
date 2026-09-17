@@ -16,6 +16,7 @@ on:
       - 'tools/refresh-catalog-media.js'
       - 'catalog-media.js'
       - 'catalog-media.css'
+      - 'tmdb.js'
       - '.github/workflows/scraper.yml'
       - 'tests/catalog-media-enhancements.test.cjs'
 
