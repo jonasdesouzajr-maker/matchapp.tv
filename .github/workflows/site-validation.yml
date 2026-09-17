@@ -1,7 +1,7 @@
 name: Validate website
 on:
   push:
-    branches: [main]
+    branches: [main, feature/kids-experience-seo]
   pull_request:
 permissions:
   contents: read
@@ -18,5 +18,7 @@ jobs:
           node-version: '24'
           cache: npm
       - run: npm ci --ignore-scripts
+      - run: node tools/build-kids-pages.js
+      - run: node tools/update-sitemap.js
       - run: npm test
       - run: npm run audit:site
