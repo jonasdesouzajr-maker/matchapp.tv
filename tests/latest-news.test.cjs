@@ -16,6 +16,16 @@ test('Latest News is homepage-only, folded by default and country-aware',()=>{
   assert.match(src,/slice\(0,MAX\)/);
 });
 
+test('new-content indicator persists by feed version and clears on unfold',()=>{
+  const src=read('latest-news.js');
+  assert.match(src,/matchapp\.latestNewsSeenVersion/);
+  assert.match(src,/payload\.feed_version/);
+  assert.match(src,/dataset\.hasNew='true'/);
+  assert.match(src,/localStorage\.setItem\(SEEN_KEY,currentVersion\)/);
+  assert.match(src,/ma-news-new/);
+  assert.match(src,/latest_news_new_available/);
+});
+
 test('news cards preserve source security, accessibility, analytics and ad integration',()=>{
   const src=read('latest-news.js');
   assert.match(src,/target='_blank'/);
@@ -26,20 +36,37 @@ test('news cards preserve source security, accessibility, analytics and ad integ
   assert.match(src,/latest_news_click/);
   assert.match(src,/data-ad-slot=\"2595698117\"/);
   assert.match(src,/fallbackImage/);
+  assert.match(src,/primaryKeyword/);
 });
 
-test('hourly generator polls direct trusted publisher feeds and rejects rumor language',()=>{
+test('hourly generator polls trusted feeds, Google Trends and rejects rumor language',()=>{
   const src=read('tools/refresh-news-rss.js');
   for(const d of ['reuters.com','cnn.com','hollywoodreporter.com','bbc.com','g1.globo.com']) assert.match(src,new RegExp(d.replace(/\./g,'\\.')));
-  assert.match(src,/feeds\.bbci\.co\.uk/);
-  assert.match(src,/g1\.globo\.com\/dynamo\/pop-arte\/rss2\.xml/);
+  assert.match(src,/trends\.google\.com\/trending\/rss/);
   assert.match(src,/RUMOR=/);
-  assert.match(src,/reportedly/);
-  assert.match(src,/isAllowed\(url,r\.feed\)/);
-  assert.match(src,/matchapp_url/);
+  assert.match(src,/supostamente/);
+  assert.match(src,/RUMOR\.test\(r\.desc\)/);
+  assert.match(src,/seoFor/);
+  assert.match(src,/short_tail/);
+  assert.match(src,/long_tail/);
+  assert.match(src,/trend_keywords/);
+  assert.match(src,/primary_keyword/);
+  assert.match(src,/meta_title/);
+  assert.match(src,/meta_description/);
+  assert.match(src,/feed_version/);
   assert.match(src,/isBasedOn/);
-  assert.doesNotMatch(src,/api\.gdeltproject\.org/);
   assert.doesNotMatch(src,/articleBody/);
+});
+
+test('generated pages expose unique SEO metadata without copying article bodies',()=>{
+  const src=read('tools/refresh-news-rss.js');
+  assert.match(src,/meta name=\"description\"/);
+  assert.match(src,/meta name=\"keywords\"/);
+  assert.match(src,/property=\"og:title\"/);
+  assert.match(src,/twitter:card/);
+  assert.match(src,/keywords:i\.seo\.keywords\.join/);
+  assert.match(src,/about:uniq/);
+  assert.match(src,/does not republish the article body/);
 });
 
 test('hourly workflow and sitemap generator publish only generated news URLs',()=>{
