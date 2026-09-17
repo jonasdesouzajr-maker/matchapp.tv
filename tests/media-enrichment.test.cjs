@@ -11,6 +11,8 @@ test('daily enrichment never mutates recommendation membership',()=>{
   const s=read('tools/scrape-catalog.js');
   assert.match(s,/is_catalog_title: entry\.isCatalog !== false/);
   assert.match(s,/isCatalog: false, isTrending: true/);
+  assert.match(s,/catalogKeys/);
+  assert.match(s,/trend\.isCatalog = true/);
   assert.doesNotMatch(s,/CONTENT_CATALOG\.(?:push|splice|unshift)/);
   assert.match(s,/kids_approved: kidsApproved/);
   assert.match(s,/const kidsApproved = Boolean\(kid\)/);
@@ -20,7 +22,7 @@ test('catalog refresh uses secure server credentials and approved data sources',
   const s=read('tools/scrape-catalog.js');
   assert.match(s,/SUPABASE_SERVICE_ROLE_KEY/);
   assert.match(s,/TMDB_BEARER_TOKEN/);
-  assert.match(s,/Authorization: `Bearer \$\{TMDB_TOKEN\}`/);
+  assert.match(s,/headers\.Authorization = `Bearer \$\{TMDB_TOKEN\}`/);
   assert.match(s,/\/watch\/providers/);
   assert.match(s,/itunes\.apple\.com\/search/);
   assert.doesNotMatch(s,/apis\.justwatch\.com/);
@@ -38,12 +40,20 @@ test('front end always has a generated cover as the final image fallback',()=>{
   dom.window.close();
 });
 
+test('new image rescue waits for the existing native fallback chain first',()=>{
+  const s=read('media-enrichment.js');
+  assert.match(s,/const failedSrc=img\.currentSrc\|\|img\.src/);
+  assert.match(s,/img\.src!==failedSrc/);
+  assert.match(s,/setTimeout/);
+});
+
 test('preview rendering is allow-listed and Kids requires explicit approval',()=>{
   const s=read('media-enrichment.js');
   assert.match(s,/www\.youtube-nocookie\.com/);
   assert.match(s,/row\.kids_approved!==true/);
   assert.match(s,/preview_kind==='audio'/);
   assert.match(s,/host\.hidden=true/);
+  assert.match(s,/if\(shown&&target\.style\.display==='none'\)target\.style\.display='block'/);
   assert.doesNotMatch(s,/youtube\.com\/embed/);
 });
 
