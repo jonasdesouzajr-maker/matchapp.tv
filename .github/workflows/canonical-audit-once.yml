@@ -35,6 +35,9 @@ jobs:
           edit('404.html',s=>s.replace("location.replace('/index.html' + location.search + location.hash);","location.replace('/' + location.search + location.hash);"));
           edit('purchase.js',s=>s.replace("localStorage.getItem('match_kids_mode')==='true'?'/kids/':'/index.html'","localStorage.getItem('match_kids_mode')==='true'?'/kids/':'/'"));
           edit('app.js',s=>s.replace("history.replaceState(null, '', '/index.html'); // clean the URL so a refresh doesn't reopen it","history.replaceState(null, '', '/'); // keep the canonical home URL while preventing auth from reopening on refresh"));
+          edit('tests/home-routing.test.cjs',s=>s.replaceAll("'/index.html?lang=pt-BR&appUpdate=2026.09.14.3#browse'","'/?lang=pt-BR&appUpdate=2026.09.14.3#browse'").replaceAll("'/index.html?next=https://example.invalid'","'/?next=https://example.invalid'"));
+          edit('tests/matching-policy.test.cjs',s=>s.replace("assert.equal(w.location.href,'/index.html');","assert.equal(w.location.href,'/');"));
+          edit('tests/search-indexing.test.cjs',s=>s.replace("assert.doesNotMatch(pricing,/noindex/i);","assert.match(pricing,/noindex/i);"));
           NODE
           PATCH=$?
           npm ci --ignore-scripts
