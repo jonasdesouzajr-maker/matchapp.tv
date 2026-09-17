@@ -45,8 +45,9 @@ test('Great British Baking Show taxonomy regression stays fixed', () => {
   const needle = '<h3>The Great British Baking Show';
   const start = html.indexOf(needle);
   assert.ok(start >= 0, 'Baking Show rendered entry is missing');
-  const end = html.indexOf('</article>', start);
-  const card = html.slice(start, end > start ? end : start + 2400);
+  const end = html.indexOf('</li>', start);
+  assert.ok(end > start, 'Baking Show rendered list item is malformed');
+  const card = html.slice(start, end);
   assert.match(card, /Netflix/);
   assert.match(card, /reality show/);
   assert.doesNotMatch(card, /Spotify/);
