@@ -11,8 +11,8 @@ test('catalog media enrichment is additive and exact-identity only',()=>{
   assert.match(src,/from\(TABLE\)\.select/);
   assert.match(src,/\.eq\('normalized_title',normalise\(title\)\)/);
   assert.match(src,/opts\.kids\) q=q\.eq\('kids_approved',true\)/);
-  assert.match(src,/youtube-nocookie\.com\/embed/);
-  assert.match(src,/audio-ssl\\\.itunes\\\.apple\\\.com/);
+  assert.ok(src.includes('youtube-nocookie\\.com\\/embed'),'trusted YouTube privacy embed host is required');
+  assert.ok(src.includes('audio-ssl\\.itunes\\.apple\\.com'),'trusted iTunes preview host is required');
   assert.match(src,/generateLocalPosterSVG/);
   assert.match(src,/data:image\/svg\+xml/);
   assert.doesNotMatch(src,/CONTENT_CATALOG\s*=/);
@@ -26,8 +26,8 @@ test('main and Kids surfaces load the same read-only media layer',()=>{
   assert.match(kids,/data-kids-catalog-media/);
 });
 
-test('server sync keeps secrets in Supabase and verifies GitHub OIDC',()=>{
-  const src=read('supabase/functions/catalog-sync/index.ts');
+test('existing ingest function enriches server-side and verifies GitHub OIDC',()=>{
+  const src=read('supabase/functions/catalog-media-ingest/index.ts');
   assert.match(src,/token\.actions\.githubusercontent\.com/);
   assert.match(src,/audience:OIDC_AUDIENCE/);
   assert.match(src,/payload\.repository!==REPOSITORY/);
@@ -43,12 +43,14 @@ test('server sync keeps secrets in Supabase and verifies GitHub OIDC',()=>{
 });
 
 test('daily workflow uses OIDC and contains no long-lived backend secret',()=>{
-  const yml=read('.github/workflows/scraper.yml');
+  const yml=read('.github/workflows/scraper.yml'),client=read('tools/sync-catalog-media.js');
   assert.match(yml,/schedule:/);
   assert.match(yml,/cron: '17 7 \* \* \*'/);
   assert.match(yml,/id-token: write/);
   assert.match(yml,/node tools\/sync-catalog-media\.js/);
   assert.doesNotMatch(yml,/SUPABASE_SERVICE_ROLE_KEY|TMDB_API_KEY|secrets\./);
+  assert.match(client,/catalog-media-ingest/);
+  assert.match(client,/matchapp-supabase-catalog-media/);
 });
 
 test('catalog extraction dry run parses the existing general and Kids catalogues',()=>{
