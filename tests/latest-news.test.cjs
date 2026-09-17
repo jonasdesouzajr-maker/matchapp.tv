@@ -18,39 +18,54 @@ test('Latest News is homepage-only, folded by default, country-aware and placed 
   assert.match(src,/MAX_TOTAL=10/);
 });
 
-test('Latest News uses one compact ten-story auto-scrolling row with edge arrows',()=>{
+test('Latest News visibly auto-swipes left after unfold without hover cancelling it',()=>{
   const src=read('latest-news.js');
   assert.match(src,/combined:\[/);
   assert.match(src,/\.slice\(0,MAX_TOTAL\)/);
-  assert.match(src,/content|panel/);
   assert.match(src,/ma-news-carousel-shell/);
   assert.match(src,/ma-news-track/);
   assert.match(src,/flex-wrap:nowrap/);
   assert.match(src,/flex:0 0 160px/);
   assert.match(src,/ma-news-arrow-prev/);
   assert.match(src,/ma-news-arrow-next/);
-  assert.match(src,/AUTO_MS=3600/);
+  assert.match(src,/AUTO_FIRST_MS=850/);
+  assert.match(src,/AUTO_MS=2800/);
+  assert.match(src,/setTimeout\(\(\)=>\{/);
   assert.match(src,/setInterval\(\(\)=>move\(1\),AUTO_MS\)/);
-  assert.match(src,/scrollIntoView\(\{behavior:'smooth',block:'nearest'\}\)/);
+  assert.match(src,/dataset\.autoDirection='left'/);
   assert.match(src,/touchstart/);
-  assert.match(src,/pointerenter/);
+  assert.match(src,/focusin/);
+  assert.doesNotMatch(src,/pointerenter/);
 });
 
-test('new-content indicator persists by feed version and clears on unfold',()=>{
+test('new-content flag persists by feed version and clears only after unfold',()=>{
   const src=read('latest-news.js');
   assert.match(src,/matchapp\.latestNewsSeenVersion/);
   assert.match(src,/payload\.feed_version/);
   assert.match(src,/dataset\.hasNew='true'/);
   assert.match(src,/localStorage\.setItem\(SEEN_KEY,currentVersion\)/);
   assert.match(src,/ma-news-new/);
+  assert.match(src,/role="status"/);
+  assert.match(src,/M5 3h2v18H5V3/);
   assert.match(src,/latest_news_new_available/);
+});
+
+test('news deep links unfold Latest News and reveal the requested story',()=>{
+  const src=read('latest-news.js');
+  assert.match(src,/new URLSearchParams\(location\.search\)\.get\('news'\)/);
+  assert.match(src,/location\.hash==='#latest-news'/);
+  assert.match(src,/function openAndReveal/);
+  assert.match(src,/section\.open=true/);
+  assert.match(src,/carousel\.reveal/);
+  assert.match(src,/dataset\.newsId/);
+  assert.match(src,/ma-news-card-target/);
 });
 
 test('news cards open the original source securely and preserve accessibility, analytics and ads',()=>{
   const src=read('latest-news.js');
   assert.match(src,/a\.href=original\|\|'#'/);
   assert.match(src,/target='_blank'/);
-  assert.match(src,/noopener noreferrer/);
+  assert.match(src,/noopener noreferrer external/);
   assert.match(src,/img\.alt=/);
   assert.match(src,/scroll-snap-type:x proximity/);
   assert.match(src,/latest_news_open/);
@@ -72,30 +87,53 @@ test('hourly generator polls trusted feeds, Google Trends and rejects rumor lang
   assert.match(src,/short_tail/);
   assert.match(src,/long_tail/);
   assert.match(src,/trend_keywords/);
+  assert.match(src,/entity_keywords/);
+  assert.match(src,/freshness_keywords/);
+  assert.match(src,/source_keywords/);
   assert.match(src,/primary_keyword/);
   assert.match(src,/meta_title/);
   assert.match(src,/meta_description/);
-  assert.match(src,/feed_version/);
-  assert.match(src,/isBasedOn/);
+  assert.match(src,/seo_generated_at/);
+  assert.match(src,/feedVersion/);
+  assert.match(src,/landing_url/);
   assert.doesNotMatch(src,/articleBody/);
 });
 
-test('generated pages expose unique SEO metadata without copying article bodies',()=>{
+test('generated pages expose rich unique metadata, structured source attribution and deep links',()=>{
   const src=read('tools/refresh-news-rss.js');
   assert.match(src,/meta name=\"description\"/);
   assert.match(src,/meta name=\"keywords\"/);
   assert.match(src,/property=\"og:title\"/);
-  assert.match(src,/twitter:card/);
-  assert.match(src,/keywords:i\.seo\.keywords\.join/);
-  assert.match(src,/about:uniq/);
+  assert.match(src,/name=\"twitter:title\"/);
+  assert.match(src,/BreadcrumbList/);
+  assert.match(src,/citation:i\.url/);
+  assert.match(src,/isBasedOn:i\.url/);
+  assert.match(src,/mainEntity:sourceCreativeWork/);
+  assert.match(src,/potentialAction/);
+  assert.match(src,/Verified source:/);
+  assert.match(src,/Open this story inside MatchApp Latest News/);
+  assert.match(src,/rel=\"noopener noreferrer external\"/);
   assert.match(src,/does not republish the article body/);
 });
 
-test('hourly workflow and sitemap generator publish only generated news URLs',()=>{
+test('news archive preserves stable SEO pages and original keyword snapshots over time',()=>{
+  const src=read('tools/refresh-news-rss.js');
+  assert.match(src,/ARCHIVE_LIMIT=1000/);
+  assert.match(src,/readArchive/);
+  assert.match(src,/archive\.json/);
+  assert.match(src,/existing&&existing\.seo\?existing\.seo:seoFor/);
+  assert.match(src,/news-sitemap-meta\.json/);
+  assert.doesNotMatch(src,/rmSync\(ART/);
+});
+
+test('hourly workflow and sitemap generator publish generated news URLs with stable lastmod values',()=>{
   const yml=read('.github/workflows/news-refresh.yml'),sm=read('tools/update-sitemap.js'),urls=JSON.parse(read('tools/news-urls.json'));
   assert.match(yml,/cron: '11 \* \* \* \*'/);
   assert.match(yml,/node tools\/refresh-news-rss\.js/);
   assert.match(yml,/node tools\/update-sitemap\.js/);
+  assert.match(yml,/news-sitemap-meta\.json/);
   assert.match(sm,/readList\('news-urls\.json'\)/);
+  assert.match(sm,/readObject\('news-sitemap-meta\.json'\)/);
+  assert.match(sm,/validLastmod/);
   assert.ok(urls.includes('https://matchapp.tv/news/'));
 });
