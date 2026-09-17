@@ -58,14 +58,21 @@ function replaceRequired(text, from, to, label) {
 {
   const file = 'kids/index.html';
   let html = read(file);
-  html = replaceRequired(html,
-    '<title>MatchApp TV Ai Kids — Safe Movies, Shows &amp; Family Entertainment</title>',
-    '<title>Kids Movie &amp; Show Matcher by Age, Mood &amp; Decade | MatchApp TV</title>',
-    'Kids SEO title');
-  html = replaceRequired(html,
-    'Make a Kids match from 64 handpicked cartoons, family movies and learning shows from the 1950s to today. Age filters, favorite hearts, complete covers and title-specific viewing guides.',
-    'Match safe kids movies, cartoons, family shows and music by age, mood, format and decade. Explore reviewed titles, classic cartoons and regional where-to-watch guides.',
-    'Kids meta description');
+  if (!html.includes('<title>Kids Movies &amp; Shows by Age &amp; Mood | MatchApp TV</title>')) {
+    html = html.replace(
+      /<title>[^<]*Kids[^<]*<\/title>|<title>Kids Movies &amp; Shows by Age &amp; Mood \| MatchApp TV(?: Ai)?(?: TV)?<\/title>/,
+      '<title>Kids Movies &amp; Shows by Age &amp; Mood | MatchApp TV</title>'
+    );
+  }
+  if (!html.includes('<title>Kids Movies &amp; Shows by Age &amp; Mood | MatchApp TV</title>')) {
+    throw new Error('Critical hotfix anchor missing: Kids SEO title');
+  }
+  if (!html.includes('Find age-appropriate kids movies, cartoons and family shows by age, mood and decade, with Kids Mode picks, complete covers and where-to-watch guides.')) {
+    html = replaceRequired(html,
+      'Make a Kids match from 64 handpicked cartoons, family movies and learning shows from the 1950s to today. Age filters, favorite hearts, complete covers and title-specific viewing guides.',
+      'Find age-appropriate kids movies, cartoons and family shows by age, mood and decade, with Kids Mode picks, complete covers and where-to-watch guides.',
+      'Kids meta description');
+  }
   html = replaceRequired(html,
     'kids movies streaming, safe cartoons for kids, family movies tonight, classic cartoons 80s 90s, age appropriate kids shows, Kids Mode MatchApp, family entertainment finder, Bluey family watch, Woody Woodpecker kids',
     'kids movie matcher, kids show matcher, safe cartoons for kids, age appropriate kids shows, family movies for kids, preschool shows ages 3-5, kids shows ages 6-8, family entertainment ages 9-12, educational kids shows, classic cartoons 1950s 1960s 1970s 1980s 1990s 2000s, where to watch kids movies, MatchApp Kids Mode',
