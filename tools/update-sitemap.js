@@ -11,6 +11,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { execFileSync } = require('child_process');
 
 const ROOT = path.join(__dirname, '..');
 const SITE = 'https://matchapp.tv';
@@ -52,6 +53,33 @@ function validLastmod(value, fallback) {
     return d.toISOString().replace(/\.\d{3}Z$/, '+00:00');
 }
 
+function fileForUrl(loc) {
+    try {
+        const u = new URL(loc);
+        let p = decodeURIComponent(u.pathname);
+        if (p === '/') return 'index.html';
+        p = p.replace(/^\//, '');
+        return p.endsWith('/') ? p + 'index.html' : p;
+    } catch (_) {
+        return null;
+    }
+}
+
+function gitLastmodForUrl(loc, fallback) {
+    const rel = fileForUrl(loc);
+    if (!rel) return fallback;
+    const abs = path.join(ROOT, rel);
+    if (!fs.existsSync(abs)) return fallback;
+    try {
+        const dirty = execFileSync('git', ['status', '--porcelain', '--', rel], {cwd:ROOT, encoding:'utf8'}).trim();
+        if (dirty) return fallback;
+        const iso = execFileSync('git', ['log', '-1', '--format=%cI', '--', rel], {cwd:ROOT, encoding:'utf8'}).trim();
+        return validLastmod(iso, fallback);
+    } catch (_) {
+        return fallback;
+    }
+}
+
 function main() {
     const now = new Date().toISOString().replace(/\.\d{3}Z$/, '+00:00');
     const seo   = readList('seo-urls.json').map(loc => ({ loc, freq: 'weekly', pri: '0.7' }));
@@ -80,7 +108,10 @@ function main() {
     const seen = new Set();
     const unique = all.filter(u => (seen.has(u.loc) ? false : seen.add(u.loc)));
 
-    const body = unique.map(u => `    <url>\n        <loc>${u.loc}</loc>\n        <lastmod>${u.lastmod || now}</lastmod>\n        <changefreq>${u.freq}</changefreq>\n        <priority>${u.pri}</priority>\n    </url>`).join('\n');
+    const body = unique.map(u => {
+        const lastmod = u.lastmod || gitLastmodForUrl(u.loc, now);
+        return `    <url>\n        <loc>${u.loc}</loc>\n        <lastmod>${lastmod}</lastmod>\n        <changefreq>${u.freq}</changefreq>\n        <priority>${u.pri}</priority>\n    </url>`;
+    }).join('\n');
 
     const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${body}\n</urlset>\n`;
     fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), xml, 'utf8');
