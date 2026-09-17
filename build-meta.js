@@ -46,6 +46,11 @@ window.MATCHAPP_BUILD = '2026.09.16.4';
     if (!el) { el = document.createElement('meta'); el.name = name; document.head.appendChild(el); }
     el.content = content;
   }
+  function upsertPropertyMeta(property, content) {
+    let el = document.querySelector('meta[property="'+property+'"]');
+    if (!el) { el = document.createElement('meta'); el.setAttribute('property', property); document.head.appendChild(el); }
+    el.content = content;
+  }
   function addJsonLd(id, data) {
     if (document.getElementById(id)) return;
     const script = document.createElement('script');
@@ -56,6 +61,33 @@ window.MATCHAPP_BUILD = '2026.09.16.4';
     if (document.querySelector('script[data-matchapp-marquee-autoplay]')) return;
     const script = document.createElement('script');
     script.src = '/marquee-autoplay.js?v=20260916-flow2'; script.defer = true; script.dataset.matchappMarqueeAutoplay = '1';    document.head.appendChild(script);
+  }
+  function normalizePricingTruth() {
+    const path = (location.pathname || '').replace(/\/+$/, '') || '/';
+    if (path !== '/pricing' && path !== '/pricing/pricing.html') return;
+
+    const vipDaily = 10;
+    document.title = 'MatchApp TV Ai VIP | 10 AI Matches Daily & Ad-Free Pass';
+    upsertMeta('description', 'MatchApp VIP includes 10 AI matches per day, ad-free access and priority routing. Extra Matches and Ask AI credits are available separately.');
+    upsertPropertyMeta('og:title', 'MatchApp VIP — 10 AI Matches Daily');
+    upsertPropertyMeta('og:description', 'VIP includes 10 AI matches per day, zero ads and priority routing. Extra Matches and Ask AI credits are available separately.');
+
+    const heading = document.querySelector('[data-i18n="pricing.title"]');
+    if (heading) heading.textContent = 'Match More With VIP';
+    const subtitle = document.querySelector('[data-i18n="pricing.subtitle"]');
+    if (subtitle) subtitle.textContent = 'Choose VIP for 10 AI matches each day, or buy Extra Matches and Ask AI credits separately.';
+    const monthly = document.querySelector('[data-i18n-html="pricing.vipm.f1"]');
+    if (monthly) monthly.innerHTML = '✔️ <strong>'+vipDaily+'</strong> AI Matches Daily';
+
+    document.querySelectorAll('script[type="application/ld+json"]').forEach(function (script) {
+      try {
+        const data = JSON.parse(script.textContent || '{}');
+        if (data && data['@type'] === 'Product' && data.name === 'MatchApp VIP') {
+          data.description = '10 AI matches per day, no ads, priority routing and prioritised regional content.';
+          script.textContent = JSON.stringify(data);
+        }
+      } catch (_) {}
+    });
   }
   function install() {
     const path = location.pathname;
@@ -79,6 +111,7 @@ window.MATCHAPP_BUILD = '2026.09.16.4';
         publisher: { '@type': 'Organization', name: 'MatchApp', url: 'https://matchapp.tv/' }
       });
     }
+    normalizePricingTruth();
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', install, { once: true });
   else install();
