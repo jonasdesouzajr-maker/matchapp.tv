@@ -1,7 +1,7 @@
 /* Final production wiring: activate reviewed hardening modules without duplicating page markup. */
 (function(){
   'use strict';
-  const V='20260917-brand-delight1';
+  const V='20260917-newsdata1';
   const path=location.pathname;
   function js(src){if(document.querySelector(`script[src^="${src}"]`))return;const s=document.createElement('script');s.src=src+'?v='+V;s.async=false;s.defer=true;document.head.appendChild(s);}
   function upsertMeta(name,content){let m=document.querySelector(`meta[name="${name}"]`);if(!m){m=document.createElement('meta');m.name=name;document.head.appendChild(m);}m.content=content;}
@@ -70,7 +70,7 @@
     js('/install-corner.js');
     const appPages=path==='/'||path==='/index.html'||path==='/discover.html'||path==='/together.html';
     if(appPages){js('/production-hardening.js');js('/shown-history.js');js('/match-speed.js');js('/catalog-media.js');}
-    if(path==='/'||path==='/index.html'){js('/weekly-pick.js');js('/latest-news.js');}
+    if(path==='/'||path==='/index.html'){js('/weekly-pick.js');js('/latest-news.js');js('/live-news-loader.js');}
     if(path==='/discover.html')js('/human-conversation.js');
     document.addEventListener('click',quotaRoute,true);
     document.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.closest?.('#quota-badge'))quotaRoute(e);},true);
