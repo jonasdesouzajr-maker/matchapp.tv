@@ -18,7 +18,7 @@ const SITE = 'https://matchapp.tv';
 const CORE = [
     { loc: `${SITE}/`,                         freq: 'daily',   pri: '1.0' },
     { loc: `${SITE}/discover.html`,            freq: 'daily',   pri: '0.9' },
-    { loc: `${SITE}/kids/`,                    freq: 'weekly',  pri: '0.9' },
+    { loc: `${SITE}/kids/`,                    freq: 'weekly',  pri: '0.9', lastmod: '2026-09-17T00:00:00+00:00' },
     { loc: `${SITE}/updates.html`,              freq: 'monthly', pri: '0.7' },
     { loc: `${SITE}/together.html`,             freq: 'weekly',  pri: '0.8' },
     { loc: `${SITE}/pricing/pricing.html`,      freq: 'weekly',  pri: '0.8' },
@@ -54,7 +54,15 @@ function main() {
     const now = new Date().toISOString().replace(/\.\d{3}Z$/, '+00:00');
     const seo   = readList('seo-urls.json').map(loc => ({ loc, freq: 'weekly', pri: '0.7' }));
     const watch = readList('watch-urls.json').map(loc => ({loc,freq:'weekly',pri:loc.endsWith('/where-to-watch/')?'0.8':'0.6'}));
-    const kids  = readList('kids-urls.json').map(loc => ({loc,freq:'weekly',pri:'0.6'}));
+
+    const kidsMeta = readObject('kids-sitemap-meta.json');
+    const kids  = readList('kids-urls.json').map(loc => ({
+        loc,
+        freq:'weekly',
+        pri:loc.endsWith('/nostalgia/')?'0.7':'0.6',
+        lastmod:validLastmod(kidsMeta[loc], '2026-09-17T00:00:00+00:00')
+    }));
+
     const events= readList('event-urls.json').map(loc => ({loc,freq:'weekly',pri:'0.7'}));
     const roku  = readList('roku-urls.json').map(loc => ({loc,freq:'weekly',pri:'0.7'}));
 
@@ -74,7 +82,7 @@ function main() {
 
     const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${body}\n</urlset>\n`;
     fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), xml, 'utf8');
-    console.log(`sitemap.xml: ${unique.length} URLs (${news.length} news)`);
+    console.log(`sitemap.xml: ${unique.length} URLs (${kids.length} kids, ${news.length} news)`);
 }
 
 main();
