@@ -1,0 +1,125 @@
+/* MatchApp — surgical brand corrections, 2026-09-18.
+   Scope: header logo/wordmark, shared explanatory/news surfaces, logout control. */
+:root{
+  --ma-brand-field:#10100d;
+  --ma-brand-surface:#1b160e;
+  --ma-brand-surface-2:#241a0e;
+  --ma-brand-border:rgba(228,180,94,.38);
+  --ma-brand-gold:#e4b45e;
+  --ma-brand-gold-mid:#d89c48;
+  --ma-brand-gold-light:#fff6d6;
+  --ma-brand-text:#f8f2e5;
+  --ma-brand-muted:#d0c2a3;
+}
+
+/* Header/backgrounds now use the new logo's real warm-black/gold palette. */
+html .app-header{
+  background:linear-gradient(135deg,#21180d 0%,#17130e 54%,#10100d 100%)!important;
+  border-color:var(--ma-brand-border)!important;
+  box-shadow:0 12px 32px rgba(0,0,0,.32),inset 0 1px 0 rgba(255,246,214,.055)!important;
+}
+html .app-header nav{border-color:rgba(228,180,94,.18)!important}
+
+/* The image wordmark had its own animated Ai treatment. The live wordmark is
+   deliberately static so AI/IA/KI/YZ/ИИ etc. can be localized correctly. */
+.ma-wordmark-source-hidden,
+.app-title-main.has-ma-local-wordmark .matchapp-wordmark,
+.app-title-main.has-ma-local-wordmark .matchapp-live-wordmark{display:none!important}
+.matchapp-local-wordmark{
+  display:inline-flex;align-items:baseline;gap:.18em;white-space:nowrap;line-height:.92;
+  font-family:Outfit,Inter,"Segoe UI",system-ui,sans-serif;font-weight:900;
+  letter-spacing:-.035em;animation:none!important;transform:none!important;filter:none!important;
+}
+.matchapp-local-core{font-size:clamp(1.72rem,2.35vw,2.48rem);color:var(--ma-brand-gold);font-weight:900}
+.matchapp-local-tv{font-size:clamp(1.22rem,1.68vw,1.82rem);color:var(--ma-brand-gold-light);font-weight:900;letter-spacing:.01em}
+.matchapp-local-ai{
+  font-size:clamp(1.28rem,1.82vw,1.95rem);color:#f0d890;font-weight:950;letter-spacing:0;
+  background:none!important;background-image:none!important;-webkit-background-clip:border-box!important;
+  -webkit-text-fill-color:currentColor!important;text-shadow:none!important;filter:none!important;
+  animation:none!important;transform:none!important;transition:none!important;
+}
+.matchapp-local-ai[data-long="true"]{font-size:clamp(.86rem,1.18vw,1.15rem);letter-spacing:0}
+
+/* New logo motion: outer ring shines; inner orbit + star actually circles the
+   mark. The picture itself never tilts/spins. */
+.ma-logo-motion-shell{position:relative!important;display:inline-grid!important;place-items:center!important;isolation:isolate;overflow:visible!important;border-radius:50%!important;flex:none}
+.ma-logo-motion-shell>.brand-logo,.ma-logo-motion-shell>img.brand-logo{position:relative;z-index:2;transform:none!important;animation:none!important}
+html .app-header .header-brand-area:hover .brand-logo{transform:none!important}
+.ma-logo-motion-shell::before{
+  content:"";position:absolute;z-index:1;inset:-4px;border-radius:50%;pointer-events:none;
+  background:conic-gradient(from 0deg,rgba(126,78,18,.12),rgba(216,156,72,.2) 34%,#fff6d6 48%,#e4b45e 55%,rgba(126,78,18,.14) 72%,rgba(126,78,18,.12));
+  -webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 3px),#000 calc(100% - 2px));
+  mask:radial-gradient(farthest-side,transparent calc(100% - 3px),#000 calc(100% - 2px));
+  filter:drop-shadow(0 0 5px rgba(228,180,94,.38));
+  animation:maLogoOuterShine 7s linear infinite;
+}
+.ma-logo-inner-orbit{
+  position:absolute;z-index:3;inset:21%;border-radius:50%;pointer-events:none;
+  border:1px solid rgba(240,216,144,.42);box-shadow:inset 0 0 7px rgba(228,180,94,.08);
+  animation:maLogoInnerSwirl 5.6s linear infinite;
+}
+.ma-logo-orbit-star{
+  position:absolute;left:50%;top:-.38rem;transform:translateX(-50%);color:#fff6d6;
+  font:900 .62rem/1 Georgia,serif;text-shadow:0 0 4px rgba(255,246,214,.9),0 0 8px rgba(228,180,94,.5);
+}
+@keyframes maLogoOuterShine{to{transform:rotate(360deg)}}
+@keyframes maLogoInnerSwirl{to{transform:rotate(360deg)}}
+
+/* Shared raised-information color. This is intentionally different from the
+   #10100d app field but remains inside the logo's black/bronze/gold family. */
+.ai-trust-notice,
+.upgrade-ribbon,
+.ma-news.premiere-disclosure,
+.match-fresh-recovery,
+.app-release-notice:not([hidden]),
+.warning-box,.info-box,.explanation-box,.implementation-note{
+  background:linear-gradient(135deg,rgba(36,26,14,.97),rgba(24,19,13,.97))!important;
+  border-color:var(--ma-brand-border)!important;
+  color:var(--ma-brand-text)!important;
+  box-shadow:0 9px 26px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,246,214,.05)!important;
+}
+.ai-trust-copy{
+  color:var(--ma-brand-muted)!important;
+  background:linear-gradient(105deg,#cbbd9e 0%,#cbbd9e 35%,#f0d890 46%,#fff6d6 50%,#f0d890 54%,#cbbd9e 65%,#cbbd9e 100%)!important;
+  background-size:220% 100%!important;-webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important;
+}
+.ai-trust-dot{background:var(--ma-brand-gold)!important;box-shadow:0 0 0 4px rgba(228,180,94,.1),0 0 13px rgba(228,180,94,.45)!important}
+
+/* Latest News popup uses the same raised information surface instead of the
+   purple/cyan treatment. Cards remain separate but in the same tonal family. */
+.ma-news.premiere-disclosure>summary{background:transparent!important;color:var(--ma-brand-text)!important;border-color:rgba(228,180,94,.22)!important}
+.ma-news .ma-news-title,.ma-news .ma-news-event{color:var(--ma-brand-gold)!important}
+.ma-news .ma-news-description,.ma-news .ma-news-source,.ma-news .ma-news-summary,.ma-news .ma-news-meta{color:var(--ma-brand-muted)!important}
+.ma-news .ma-news-panel{background:rgba(16,16,13,.22)!important}
+.ma-news .ma-news-card{background:#17130e!important;border-color:rgba(228,180,94,.18)!important}
+.ma-news .ma-news-card:hover,.ma-news .ma-news-card-target{border-color:rgba(228,180,94,.55)!important;box-shadow:0 0 0 2px rgba(228,180,94,.12),0 10px 25px rgba(0,0,0,.25)!important}
+.ma-news .ma-news-arrow{background:#1b160e!important;border-color:rgba(228,180,94,.45)!important;color:var(--ma-brand-gold-light)!important}
+.ma-news .ma-news-arrow:hover,.ma-news .ma-news-arrow:focus-visible{background:#241a0e!important;border-color:var(--ma-brand-gold)!important}
+.ma-news .ma-news-new{background:rgba(228,180,94,.09)!important;border-color:rgba(228,180,94,.32)!important;color:var(--ma-brand-gold)!important}
+
+/* Logout follows profile, is icon-only and intentionally smaller than it. */
+html .app-header .nav-avatar-link{order:50!important}
+html .app-header #nav-logout-btn{
+  order:51!important;width:32px!important;height:32px!important;min-width:32px!important;min-height:32px!important;
+  padding:0!important;margin:0!important;display:none;place-items:center;border-radius:50%!important;
+  background:rgba(228,180,94,.055)!important;border:1px solid rgba(228,180,94,.28)!important;
+  color:#e7c56f!important;box-shadow:none!important;font-size:0!important;line-height:1!important;
+}
+html .app-header #nav-logout-btn[style*="display: block"],
+html .app-header #nav-logout-btn[style*="display:block"],
+html .app-header #nav-logout-btn[style*="display: inline"],
+html .app-header #nav-logout-btn[style*="display:inline"]{display:grid!important}
+html .app-header #nav-logout-btn svg{width:16px;height:16px;display:block;stroke:currentColor}
+html .app-header #nav-logout-btn:hover{background:rgba(255,123,107,.08)!important;border-color:rgba(255,123,107,.48)!important;color:#ff9b8c!important;transform:translateY(-1px)!important}
+
+@media(max-width:540px){
+  .matchapp-local-core{font-size:clamp(1.32rem,7vw,1.7rem)}
+  .matchapp-local-tv{font-size:clamp(.98rem,5vw,1.25rem)}
+  .matchapp-local-ai{font-size:clamp(1rem,5.2vw,1.3rem)}
+  html .app-header #nav-logout-btn{width:30px!important;height:30px!important;min-width:30px!important;min-height:30px!important}
+}
+@media(prefers-reduced-motion:reduce){
+  .ma-logo-motion-shell::before,.ma-logo-inner-orbit{animation:none!important}
+  .matchapp-local-wordmark,.matchapp-local-ai{animation:none!important;transition:none!important}
+}
+.reduce-motion .ma-logo-motion-shell::before,.reduce-motion .ma-logo-inner-orbit{animation:none!important}
