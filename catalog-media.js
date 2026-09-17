@@ -48,9 +48,8 @@
 
   function hardenImage(img,title,meta){
     if(!img)return;
+    img.__matchappMediaMeta=meta||null;
     if(img.dataset.matchappMediaHardened==='1'){
-      // A result-card image element can be reused for a new title. Reset the
-      // fallback state so the new identity gets its own safe chain.
       if(img.dataset.matchappMediaTitle!==String(title||'')){img.dataset.matchappMediaTitle=String(title||'');img.dataset.matchappFallbackStage='';}
       return;
     }
@@ -60,7 +59,7 @@
       const stage=img.dataset.matchappFallbackStage||'';
       if(stage==='local')return;
       if(stage!=='metadata'){
-        const fromMeta=safePoster(meta||await lookup(img.dataset.matchappMediaTitle||title));
+        const fromMeta=safePoster(img.__matchappMediaMeta||await lookup(img.dataset.matchappMediaTitle||title));
         if(fromMeta&&img.src!==fromMeta){img.dataset.matchappFallbackStage='metadata';img.src=fromMeta;return;}
       }
       img.dataset.matchappFallbackStage='local';img.src=localPoster(img.dataset.matchappMediaTitle||title)||fallback;
