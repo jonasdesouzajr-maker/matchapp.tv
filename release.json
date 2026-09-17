@@ -1,9 +1,9 @@
 {
-  "version": "2026.09.16.4",
-  "date": "2026-09-16",
+  "version": "2026.09.17.1",
+  "date": "2026-09-17",
   "functional": true,
   "notes": {
-    "en": "Download the App stays at the top. Installed copies get an Update App control, a progress bar, and a red dot on the icon when a release lands. Ask AI and match cards follow your language. Criteria lists tick and lock incompatible platforms. Catalog is several times larger. Socials: Instagram, TikTok, Facebook and WhatsApp — @matchapp.tv #MatchApp #WhatToWatch #OQueAssistir.",
-    "pt-BR": "Baixar o app fica no topo. Quem já instalou vê Atualizar app, barra de progresso e um ponto no ícone quando sai versão nova. Ask AI e os cards seguem o idioma. Critérios marcam e bloqueiam plataformas incompatíveis. O catálogo ficou bem maior. Redes: Instagram, TikTok, Facebook e WhatsApp — @matchapp.tv #MatchApp #OQueAssistir #WhatToWatch."
+    "en": "New MatchApp branding is polished across devices, the installable app is named MatchApp Ai with dedicated PWA icons, the homepage has a small dismissible AI disclosure, and interaction motion is richer across the site with extra playful effects in Kids Mode. SEO metadata and indexing signals were refreshed without changing matching, pricing, analytics or catalog logic.",
+    "pt-BR": "A nova identidade visual do MatchApp foi refinada para todos os dispositivos, o app instalável passa a se chamar MatchApp Ai com ícones próprios de PWA, a página inicial ganhou um pequeno aviso de IA que pode ser fechado, e as animações ficaram mais vivas em todo o site, com efeitos extras no Kids Mode. Metadados de SEO e sinais de indexação foram atualizados sem alterar matching, preços, analytics ou lógica de catálogo."
   }
 }
