@@ -42,11 +42,13 @@ test('event status remains date-driven so expired events cannot stay LIVE NOW', 
 
 test('Great British Baking Show taxonomy regression stays fixed', () => {
   const html = read('moods/cozy-comfort-watch/index.html');
-  const start = html.indexOf('The Great British Baking Show');
-  assert.ok(start >= 0, 'Baking Show entry is missing');
-  const window = html.slice(start, start + 1800);
-  assert.match(window, /Netflix/);
-  assert.match(window, /reality show/);
-  assert.doesNotMatch(window, /Spotify/);
-  assert.doesNotMatch(window, /podcast/i);
+  const needle = '<h3>The Great British Baking Show';
+  const start = html.indexOf(needle);
+  assert.ok(start >= 0, 'Baking Show rendered entry is missing');
+  const end = html.indexOf('</article>', start);
+  const card = html.slice(start, end > start ? end : start + 2400);
+  assert.match(card, /Netflix/);
+  assert.match(card, /reality show/);
+  assert.doesNotMatch(card, /Spotify/);
+  assert.doesNotMatch(card, /podcast/i);
 });
