@@ -1,11 +1,11 @@
 {
-  "name": "MatchApp TV Ai",
-  "short_name": "MatchApp TV Ai",
+  "name": "MatchApp Ai",
+  "short_name": "MatchApp Ai",
   "description": "Find what to watch across streaming services including The Roku Channel, discover the curated Kids world and global events, and personalize MatchApp with five themes.",
   "start_url": "/?utm_source=pwa",
   "scope": "/",
   "display": "standalone",
-  "display_override": ["standalone", "minimal-ui"],
+  "display_override": ["standalone"],
   "handle_links": "preferred",
   "launch_handler": { "client_mode": "navigate-existing" },
   "orientation": "any",
@@ -15,8 +15,9 @@
   "lang": "en",
   "dir": "auto",
   "icons": [
-    { "src": "/logo-192.jpeg", "sizes": "192x192", "type": "image/jpeg", "purpose": "any" },
-    { "src": "/logo.jpeg", "sizes": "512x512", "type": "image/jpeg", "purpose": "any" },
+    { "src": "/assets/brand/matchapp-icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/assets/brand/matchapp-icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/assets/brand/matchapp-icon-maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
     { "src": "/assets/brand/matchapp-icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
   ],
   "shortcuts": [
