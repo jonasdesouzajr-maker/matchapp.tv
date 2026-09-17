@@ -21,6 +21,12 @@ verify_jwt = true
 [functions.tmdb-proxy]
 verify_jwt = true
 
+# catalog-media-ingest accepts only GitHub Actions OIDC tokens. Supabase JWT
+# verification is disabled here because the function verifies GitHub's signed
+# token itself (issuer, audience, repository, main ref, workflow and event).
+[functions.catalog-media-ingest]
+verify_jwt = false
+
 # Hosted projects also need these settings enabled in Authentication > Passkeys.
 [auth.passkey]
 enabled = true
