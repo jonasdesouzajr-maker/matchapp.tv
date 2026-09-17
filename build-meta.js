@@ -1,5 +1,5 @@
 // Functional release identifier must match release.json.
-window.MATCHAPP_BUILD = '2026.09.16.4';
+window.MATCHAPP_BUILD = '2026.09.17.1';
 
 
 /* HOME STARTUP SCHEDULER */
@@ -33,7 +33,7 @@ window.MATCHAPP_BUILD = '2026.09.16.4';
 /* Search freshness + truthfulness layer. */
 (function () {
   'use strict';
-  const TODAY = '2026-09-16';
+  const TODAY = '2026-09-17';
   const TRENDING = [
     'Slow Horses Season 6',
     'Monster: The Lizzie Borden Story',
@@ -94,11 +94,23 @@ window.MATCHAPP_BUILD = '2026.09.16.4';
     if (path === '/' || path === '/index.html') {
       loadHomeRuntimeFixes();
       document.title = 'What to Watch Tonight | AI Movie & TV Finder | MatchApp';
-      upsertMeta('description', 'Find what to watch tonight with MatchApp: mood-based movie and TV picks, Ask AI, verified streaming links, Kids Mode and timely entertainment guides.');
+      upsertMeta('description', 'Find what to watch tonight with MatchApp: AI movie, TV, K-drama, anime and Kids Mode picks, Match Together, plus verified links showing where to stream.');
+      upsertMeta('robots', 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1');
+      upsertPropertyMeta('og:description', 'Tell MatchApp your mood and get an AI entertainment match, where to stream it, Kids Mode, Match Together and timely entertainment guides.');
+      addJsonLd('matchapp-organization-schema', {
+        '@context': 'https://schema.org',
+        '@type': 'Organization',
+        name: 'MatchApp',
+        url: 'https://matchapp.tv/',
+        logo: 'https://matchapp.tv/assets/brand/matchapp-icon-512.png',
+        email: 'support@matchapp.tv',
+        description: 'AI entertainment discovery service for movies, series, K-dramas, anime, novelas, micro-dramas, podcasts, music and family viewing.'
+      });
     }
     if (path === '/discover.html') {
       document.title = 'Ask AI What to Watch | Movie & TV Concierge | MatchApp';
       upsertMeta('description', 'Ask MatchApp what to watch by mood, theme, event or topic. Get entertainment recommendations, real title information and links to continue your search or stream.');
+      upsertMeta('robots', 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1');
       // Describe the public page factually. Do not claim Software/WebApplication
       // rich-result eligibility until MatchApp has genuine review/rating data.
       addJsonLd('matchapp-discover-page-schema', {
@@ -120,7 +132,7 @@ window.MATCHAPP_BUILD = '2026.09.16.4';
 (function(){
   if(document.querySelector('script[data-matchapp-final-wiring]'))return;
   const s=document.createElement('script');
-  s.src='/final-wiring.js?v=20260916-perf-safe1';
+  s.src='/final-wiring.js?v=20260917-brand-delight1';
   s.async=false; s.defer=true; s.dataset.matchappFinalWiring='1';
   document.head.appendChild(s);
 })();
