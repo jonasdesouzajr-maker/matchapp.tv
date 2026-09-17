@@ -8,7 +8,7 @@ on:
     branches: [main, feature/latest-entertainment-news]
     paths:
       - '.github/workflows/news-refresh.yml'
-      - 'tools/fetch-entertainment-news.js'
+      - 'tools/refresh-news.js'
       - 'latest-news.js'
 
 permissions:
@@ -30,7 +30,7 @@ jobs:
         with:
           node-version: '24'
       - name: Fetch trusted entertainment headlines
-        run: node tools/fetch-entertainment-news.js
+        run: node tools/refresh-news.js
       - name: Refresh sitemap
         run: node tools/update-sitemap.js
       - name: Commit refreshed news
