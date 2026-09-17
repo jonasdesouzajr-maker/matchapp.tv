@@ -1,3 +1,4 @@
+# Final guarded rerun after cache-version assertion alignment.
 name: Match exhaustion repair candidate
 on:
   push:
