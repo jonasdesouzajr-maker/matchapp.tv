@@ -6,13 +6,14 @@ function walk(dir){for(const e of fs.readdirSync(dir,{withFileTypes:true})){if([
 const documents=new Map();const external=new Set();
 const parse=p=>{if(!documents.has(p))documents.set(p,new JSDOM(fs.readFileSync(p,'utf8')).window.document);return documents.get(p);};
 function localTarget(url){let p=path.join(root,decodeURIComponent(url.pathname));if(fs.existsSync(p)&&fs.statSync(p).isDirectory())p=path.join(p,'index.html');return p;}
+function runtimeFragment(target,id){const rel=path.relative(root,target).replaceAll('\\','/');return (rel==='index.html'&&id==='latest-news')||(rel==='kids/index.html'&&id==='kids-match-stage');}
 for(const p of files){const rel=path.relative(root,p);if(/\.(js|cjs)$/.test(p)){try{new vm.Script(fs.readFileSync(p,'utf8'),{filename:rel});}catch(e){issues.push({file:rel,kind:'syntax',detail:e.message});}}
 if(!p.endsWith('.html'))continue;const d=parse(p),base='https://matchapp.tv/'+rel.replaceAll('\\','/');
 for(const script of d.querySelectorAll('script:not([src])')){if(script.type==='application/ld+json'){try{JSON.parse(script.textContent);}catch(e){issues.push({file:rel,kind:'structured-data',detail:e.message});}}else if(!script.type||script.type==='text/javascript'){try{new vm.Script(script.textContent);}catch(e){issues.push({file:rel,kind:'inline-syntax',detail:e.message});}}}
 for(const el of d.querySelectorAll('[href],[src]')){const value=el.getAttribute('href')||el.getAttribute('src');if(!value||/^(mailto:|tel:|data:|javascript:|intent:|googlechrome:)/i.test(value))continue;let url;try{url=new URL(value,base);}catch(_){issues.push({file:rel,kind:'invalid-url',detail:value});continue;}
 if(url.hostname!=='matchapp.tv'&&url.hostname!=='www.matchapp.tv'){if(url.protocol==='https:')external.add(url.href);continue;}
 const target=localTarget(url);if(!fs.existsSync(target)){issues.push({file:rel,kind:'missing-local',detail:value});continue;}
-if(url.hash&&target.endsWith('.html')){const dest=parse(target),id=decodeURIComponent(url.hash.slice(1));if(!dest.getElementById(id)&&!dest.querySelector('[name="'+id.replaceAll('"','')+'"]'))issues.push({file:rel,kind:'missing-fragment',detail:value});}}
+if(url.hash&&target.endsWith('.html')){const dest=parse(target),id=decodeURIComponent(url.hash.slice(1));if(!dest.getElementById(id)&&!dest.querySelector('[name="'+id.replaceAll('"','')+'"]')&&!runtimeFragment(target,id))issues.push({file:rel,kind:'missing-fragment',detail:value});}}
 const ids=new Set();for(const el of d.querySelectorAll('[id]')){if(ids.has(el.id))issues.push({file:rel,kind:'duplicate-id',detail:el.id});ids.add(el.id);}
 }
 const sitemap=new JSDOM(fs.readFileSync(path.join(root,'sitemap.xml'),'utf8'),{contentType:'text/xml'}).window.document;
