@@ -21,8 +21,8 @@
   if(!isCurrent())throw Error('cancelled');
   if(user){
    // Kids recommendations are Matches, never Ask AI prompts. Keep the two
-   // balances separate so VIP unlimited Matches and purchased Match packs
-   // behave exactly like they do on the main Match screen.
+   // balances separate so paid entitlements and purchased Match packs behave
+   // exactly like they do on the main Match screen.
    const {data,error}=await window.supabaseClient.rpc('consume_match');
    if(error||!data)throw error||Error('quota');
    const current=await session();if(current?.id!==user.id)throw Error('account_changed');
@@ -45,5 +45,10 @@
   let list=[];try{list=JSON.parse(localStorage.getItem(key)||'[]');if(!Array.isArray(list))list=[];}catch(_){}
   localStorage.setItem(key,JSON.stringify([entry,...list.filter(i=>(i.title||i)!==item.title)]));
  }
+ function loadCatalogMedia(){
+  if(document.querySelector('script[data-kids-catalog-media]'))return;
+  const s=document.createElement('script');s.src='/catalog-media.js?v=20260917-catalog-media1';s.defer=true;s.async=false;s.dataset.kidsCatalogMedia='1';document.head.appendChild(s);
+ }
  window.KidsAccount=Object.freeze({consume,remember,prepare:async()=>attach(await session())});
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',loadCatalogMedia,{once:true});else loadCatalogMedia();
 })();
