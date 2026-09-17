@@ -21,10 +21,10 @@ verify_jwt = true
 [functions.tmdb-proxy]
 verify_jwt = true
 
-# catalog-sync is backend-only. Supabase's JWT gate is disabled because the
-# endpoint verifies GitHub Actions' short-lived OIDC JWT itself (issuer,
-# audience, repository, workflow, event and ref) before any database write.
-[functions.catalog-sync]
+# catalog-media-ingest is backend-only. Supabase's JWT gate is disabled because
+# the endpoint validates GitHub Actions' short-lived OIDC JWT itself before any
+# TMDB request or database write.
+[functions.catalog-media-ingest]
 verify_jwt = false
 
 # Hosted projects also need these settings enabled in Authentication > Passkeys.
