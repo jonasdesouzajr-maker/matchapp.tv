@@ -70,10 +70,9 @@ patch('tools/refresh-news-rss.js',src=>{
     '<title>Latest Entertainment News | Actors, Singers, Film & Music | MatchApp TV</title>',
     '<title>Latest Entertainment News | MatchApp TV</title>'
   );
-  src=src.replaceAll(
-    '<link rel="stylesheet" href="/style.css?v=187">',
-    FAV+'\n<link rel="stylesheet" href="/style.css?v=187">'
-  );
+  const newsStyle='<link rel="stylesheet" href="/style.css?v=187">';
+  src=src.replaceAll(FAV+'\n','').replaceAll(FAV,'');
+  src=src.replaceAll(newsStyle,FAV+'\n'+newsStyle);
   return src;
 });
 
