@@ -1,7 +1,7 @@
 name: Validate website
 on:
   push:
-    branches: [main, fix/news-autoswipe-seo]
+    branches: [main]
   pull_request:
 permissions:
   contents: read
