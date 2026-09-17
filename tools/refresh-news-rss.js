@@ -231,7 +231,7 @@ function seoFor(i,trends,generated){
   ]).slice(0,4);
 
   const primary=trend[0]||`${focus} latest news`;
-  const metaTitle=truncateWords(`${i.title} | Latest Entertainment News | MatchApp TV`,68);
+  const metaTitle=truncateWords(`${i.title} | Entertainment News | MatchApp TV`,60);
   const metaDescription=truncateWords(
     `${i.person?i.person+': ':''}${i.event_type} update reported by ${i.source} on ${isoDate}. See verified context, publication time and the original source via MatchApp TV.`,
     158
@@ -299,7 +299,7 @@ function page(i){
         citation:i.url,
         mainEntity:sourceCreativeWork(i),
         potentialAction:{'@type':'ViewAction',target:i.landing_url,name:'Open in MatchApp Latest News'},
-        publisher:{'@type':'Organization',name:'MatchApp TV',url:SITE}
+        publisher:{'@type':'Organization',name:'MatchApp TV',url:SITE,logo:{'@type':'ImageObject',url:`${SITE}/assets/brand/matchapp-icon-512.png`,width:512,height:512}}
       },
       {
         '@type':'BreadcrumbList',
@@ -335,6 +335,7 @@ function page(i){
 <meta name="twitter:description" content="${d}">
 ${imageMeta}
 <script type="application/ld+json">${JSON.stringify(schema)}</script>
+<link rel="icon" href="/assets/brand/matchapp-favicon-32.png" type="image/png">
 <link rel="stylesheet" href="/style.css?v=187">
 </head>
 <body>
@@ -391,7 +392,7 @@ function hub(items,generated){
         description:'Verified entertainment headlines linked to original publishers and refreshed hourly.',
         keywords:hubKeywords.join(', '),
         mainEntity:{'@type':'ItemList',itemListElement:itemList},
-        publisher:{'@type':'Organization',name:'MatchApp TV',url:SITE}
+        publisher:{'@type':'Organization',name:'MatchApp TV',url:SITE,logo:{'@type':'ImageObject',url:`${SITE}/assets/brand/matchapp-icon-512.png`,width:512,height:512}}
       },
       {
         '@type':'BreadcrumbList',
@@ -408,7 +409,7 @@ function hub(items,generated){
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Latest Entertainment News | Actors, Singers, Film & Music | MatchApp TV</title>
+<title>Latest Entertainment News | MatchApp TV</title>
 <meta name="description" content="Verified entertainment headlines about actors, singers, film, TV and music from trusted publishers, refreshed hourly by MatchApp TV.">
 <meta name="keywords" content="${esc(hubKeywords.join(', '))}">
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
@@ -419,6 +420,7 @@ function hub(items,generated){
 <meta property="og:description" content="Verified actor, singer, film, TV and music headlines linked to original trusted publishers and refreshed hourly.">
 <meta property="og:url" content="${SITE}/news/">
 <script type="application/ld+json">${JSON.stringify(schema)}</script>
+<link rel="icon" href="/assets/brand/matchapp-favicon-32.png" type="image/png">
 <link rel="stylesheet" href="/style.css?v=187">
 </head>
 <body>

@@ -96,7 +96,7 @@ const PLAT_COPY = {
 function buildPage({ kind, key, title, lede, items, related }) {
     const s = slug(key);
     const url = `${SITE}/${kind}/${s}/`;
-    const metaDesc = `${lede} ${items.length} hand-picked titles on MatchApp — plus an AI concierge that finds your next watch in seconds.`.slice(0, 158);
+    const metaDesc = `${lede} ${items.length} hand-picked titles on MatchApp — plus an AI concierge that finds your next watch in seconds.`.slice(0, 150).replace(/\s+\S*$/,'').trim();
 
     const cards = items.map((e, i) => `
                 <li class="seo-item">
