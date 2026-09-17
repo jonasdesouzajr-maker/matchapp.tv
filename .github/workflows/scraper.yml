@@ -10,7 +10,7 @@ on:
     paths:
       - '.github/workflows/scraper.yml'
       - 'tools/sync-catalog-media.js'
-      - 'supabase/functions/catalog-sync/**'
+      - 'supabase/functions/catalog-media-ingest/**'
       - 'supabase/migrations/011_catalog_media_metadata.sql'
 
 permissions:
