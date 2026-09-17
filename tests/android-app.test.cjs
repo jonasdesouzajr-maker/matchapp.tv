@@ -20,7 +20,7 @@ test('Android app user agent skips ads and does not bounce into Chrome',()=>{
   assert.match(home,/if \(\/MatchAppTVAndroid\/i\.test\(userAgent\)\) return;/);
 });
 
-test('Android Studio project is ad-free and Play-ready',()=>{
+test('Android Studio project stays ad-free while unpublished store CTA stays hidden',()=>{
   const manifest=read('android-studio/app/src/main/AndroidManifest.xml');
   assert.match(manifest,/tv\.matchapp\.app/);
   assert.match(manifest,/android.permission.INTERNET/);
@@ -38,6 +38,7 @@ test('Android Studio project is ad-free and Play-ready',()=>{
   assert.match(main,/https:\/\/matchapp\.tv\//);
   assert.match(main,/replace\("; wv\)"/);
   const listing=read('android/index.html');
-  assert.match(listing,/tv\.matchapp\.app/);
+  assert.match(listing,/Google Play — Coming Soon/);
+  assert.doesNotMatch(listing,/play\.google\.com\/store\/apps\/details\?id=tv\.matchapp\.app/);
   assert.match(listing,/canonical" href="https:\/\/matchapp\.tv\/android\/"/);
 });
