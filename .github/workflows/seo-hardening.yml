@@ -5,6 +5,8 @@ on:
     branches: [main]
     paths:
       - 'tools/seo-hardening.js'
+      - 'tools/update-sitemap.js'
+      - 'tools/build-seo-pages.js'
       - 'tests/performance-smoothness.test.cjs'
       - '.github/workflows/seo-hardening.yml'
   workflow_dispatch:
