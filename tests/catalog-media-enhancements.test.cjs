@@ -12,7 +12,7 @@ test('catalog media layer is additive and uses the existing public metadata cach
   assert.match(js,/res-trailer-container/);
   assert.match(js,/kids-watch-dialog/);
   assert.match(js,/kids_approved/);
-  assert.match(js,/youtube-nocookie\.com/);
+  assert.match(js,/SAFE_YT_EMBED/);
   assert.match(js,/generatedCover/);
   assert.match(js,/document\.addEventListener\('error'/);
 });
@@ -23,7 +23,7 @@ test('daily refresh is exact-identity, adult-safe, kids-gated and supports audio
   assert.match(js,/row\.adult === true/);
   assert.match(js,/kidsApproved:true/);
   assert.match(js,/itunes\.apple\.com\/search/);
-  assert.match(js,/watch\/providers|watch\/providers/);
+  assert.match(js,/watch\/providers/);
   assert.match(js,/youtube-nocookie\.com\/embed/);
   assert.match(js,/--dry-run/);
   assert.match(js,/SUPABASE_SERVICE_ROLE_KEY/);
