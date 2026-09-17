@@ -1,8 +1,184 @@
 {
-  "generated_at": "2026-09-17T16:19:19.078Z",
-  "feed_version": "2b790714",
+  "generated_at": "2026-09-17T18:55:03.111Z",
+  "feed_version": "5447eb6e",
   "source_policy": "direct-trusted-publisher-rss+google-trends-keyword-signals",
   "items": [
+    {
+      "id": "92a8ece4",
+      "title": "Lady Gaga e Michael Polansky são pais de uma menina, diz site",
+      "url": "https://g1.globo.com/pop-arte/noticia/2026/09/17/lady-gaga-e-michael-polansky-sao-pais-de-uma-menina-diz-site.ghtml",
+      "source": "G1",
+      "source_domain": "g1.globo.com",
+      "country": "BR",
+      "published_at": "2026-09-17T18:31:46.000Z",
+      "event_type": "Entertainment",
+      "person": "Lady Gaga",
+      "description": "Lady Gaga: entertainment update covered by G1. Open the original report for full context.",
+      "image": "https://s2-g1.glbimg.com/ydlsMloydo1ZdVk8Gash8sBDxEE=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/u/i/8vUOG7QAeM0h3vUHTRgw/ap26033027094044.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/lady-gaga-e-michael-polansky-sao-pais-de-uma-menina-diz-site-92a8ec/",
+      "seo": {
+        "primary_keyword": "Lady Gaga latest news",
+        "short_tail": [
+          "Lady Gaga",
+          "entertainment",
+          "entertainment news",
+          "notícias de entretenimento"
+        ],
+        "long_tail": [
+          "Lady Gaga latest news",
+          "Lady Gaga entertainment 2026",
+          "Lady Gaga entertainment update",
+          "últimas notícias sobre Lady Gaga",
+          "Lady Gaga notícias hoje"
+        ],
+        "trend_keywords": [],
+        "meta_title": "Lady Gaga e Michael Polansky são pais de uma menina, diz site | Late",
+        "meta_description": "Lady Gaga: Entertainment update from G1. See the latest verified entertainment news, context and original source on MatchApp TV.",
+        "keywords": [
+          "Lady Gaga latest news",
+          "Lady Gaga",
+          "entertainment",
+          "entertainment news",
+          "notícias de entretenimento",
+          "Lady Gaga entertainment 2026",
+          "Lady Gaga entertainment update",
+          "últimas notícias sobre Lady Gaga",
+          "Lady Gaga notícias hoje"
+        ]
+      }
+    },
+    {
+      "id": "735fdc8f",
+      "title": "Ed Sheeran perde mais de 300 mil seguidores após expulsão de rapper da turnê",
+      "url": "https://g1.globo.com/pop-arte/musica/noticia/2026/09/17/ed-sheeran-perde-mais-de-300-mil-seguidores-apos-expulsao-de-rapper-da-turne.ghtml",
+      "source": "G1",
+      "source_domain": "g1.globo.com",
+      "country": "BR",
+      "published_at": "2026-09-17T17:41:25.000Z",
+      "event_type": "Entertainment",
+      "person": "Ed Sheeran",
+      "description": "Ed Sheeran: entertainment update covered by G1. Open the original report for full context.",
+      "image": "https://s2-g1.glbimg.com/DE6NjmE3BUbaZ10-kzOaCN4MlJQ=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2024/5/B/cHvWk6T9OFFVSvNNMhFg/ed-sheeran-rock-in-rio-2024-ag-2.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/ed-sheeran-perde-mais-de-300-mil-seguidores-apos-expulsao-de-rapper-da-turne-735fdc/",
+      "seo": {
+        "primary_keyword": "Ed Sheeran latest news",
+        "short_tail": [
+          "Ed Sheeran",
+          "entertainment",
+          "entertainment news",
+          "notícias de entretenimento"
+        ],
+        "long_tail": [
+          "Ed Sheeran latest news",
+          "Ed Sheeran entertainment 2026",
+          "Ed Sheeran entertainment update",
+          "últimas notícias sobre Ed Sheeran",
+          "Ed Sheeran notícias hoje"
+        ],
+        "trend_keywords": [],
+        "meta_title": "Ed Sheeran perde mais de 300 mil seguidores após expulsão de rapper ",
+        "meta_description": "Ed Sheeran: Entertainment update from G1. See the latest verified entertainment news, context and original source on MatchApp TV.",
+        "keywords": [
+          "Ed Sheeran latest news",
+          "Ed Sheeran",
+          "entertainment",
+          "entertainment news",
+          "notícias de entretenimento",
+          "Ed Sheeran entertainment 2026",
+          "Ed Sheeran entertainment update",
+          "últimas notícias sobre Ed Sheeran",
+          "Ed Sheeran notícias hoje"
+        ]
+      }
+    },
+    {
+      "id": "122fe9b8",
+      "title": "João Bosco recai com Chico Buarque em samba apresentado há 50 anos",
+      "url": "https://g1.globo.com/pop-arte/musica/blog/mauro-ferreira/post/2026/09/17/joao-bosco-recai-com-chico-buarque-em-samba-apresentado-ha-50-anos.ghtml",
+      "source": "G1",
+      "source_domain": "g1.globo.com",
+      "country": "BR",
+      "published_at": "2026-09-17T16:46:13.000Z",
+      "event_type": "Entertainment",
+      "person": "João Bosco",
+      "description": "João Bosco: entertainment update covered by G1. Open the original report for full context.",
+      "image": "https://s2-g1.glbimg.com/kp3wdtUn36shXwY_IbJIKxdq8iM=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/3/Q/hD4tg0RHG4dnlCiBrNbQ/joao-bosco-e-chico-buarque-c-joaoferro-1-1-.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/joao-bosco-recai-com-chico-buarque-em-samba-apresentado-ha-50-anos-122fe9/",
+      "seo": {
+        "primary_keyword": "João Bosco latest news",
+        "short_tail": [
+          "João Bosco",
+          "entertainment",
+          "entertainment news",
+          "notícias de entretenimento"
+        ],
+        "long_tail": [
+          "João Bosco latest news",
+          "João Bosco entertainment 2026",
+          "João Bosco entertainment update",
+          "últimas notícias sobre João Bosco",
+          "João Bosco notícias hoje"
+        ],
+        "trend_keywords": [],
+        "meta_title": "João Bosco recai com Chico Buarque em samba apresentado há 50 anos |",
+        "meta_description": "João Bosco: Entertainment update from G1. See the latest verified entertainment news, context and original source on MatchApp TV.",
+        "keywords": [
+          "João Bosco latest news",
+          "João Bosco",
+          "entertainment",
+          "entertainment news",
+          "notícias de entretenimento",
+          "João Bosco entertainment 2026",
+          "João Bosco entertainment update",
+          "últimas notícias sobre João Bosco",
+          "João Bosco notícias hoje"
+        ]
+      }
+    },
+    {
+      "id": "34dd83fa",
+      "title": "Millie Bobby Brown e Jake Bongiovi são pais pela segunda vez, diz revista",
+      "url": "https://g1.globo.com/pop-arte/noticia/2026/09/17/millie-bobby-brown-e-jake-bongiovi-sao-pais-pela-segunda-vez-diz-revista.ghtml",
+      "source": "G1",
+      "source_domain": "g1.globo.com",
+      "country": "BR",
+      "published_at": "2026-09-17T16:40:12.000Z",
+      "event_type": "Entertainment",
+      "person": "Millie Bobby Brown",
+      "description": "Millie Bobby Brown: entertainment update covered by G1. Open the original report for full context.",
+      "image": "https://s2-g1.glbimg.com/FwTzIaursgA53fEMvXJCqaMDX5M=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2024/L/e/sEanm0RGee1pU4P3XXwg/photo-by-millie-bobby-brown-on-october-02-2024.-pode-ser-uma-imagem-de-3-pessoas-vestido-de-festa-smoking-e-casamento..jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/millie-bobby-brown-e-jake-bongiovi-sao-pais-pela-segunda-vez-diz-revista-34dd83/",
+      "seo": {
+        "primary_keyword": "Millie Bobby Brown latest news",
+        "short_tail": [
+          "Millie Bobby Brown",
+          "entertainment",
+          "entertainment news",
+          "notícias de entretenimento"
+        ],
+        "long_tail": [
+          "Millie Bobby Brown latest news",
+          "Millie Bobby Brown entertainment 2026",
+          "Millie Bobby Brown entertainment update",
+          "últimas notícias sobre Millie Bobby Brown",
+          "Millie Bobby Brown notícias hoje"
+        ],
+        "trend_keywords": [],
+        "meta_title": "Millie Bobby Brown e Jake Bongiovi são pais pela segunda vez, diz re",
+        "meta_description": "Millie Bobby Brown: Entertainment update from G1. See the latest verified entertainment news, context and original source on MatchApp TV.",
+        "keywords": [
+          "Millie Bobby Brown latest news",
+          "Millie Bobby Brown",
+          "entertainment",
+          "entertainment news",
+          "notícias de entretenimento",
+          "Millie Bobby Brown entertainment 2026",
+          "Millie Bobby Brown entertainment update",
+          "últimas notícias sobre Millie Bobby Brown",
+          "Millie Bobby Brown notícias hoje"
+        ]
+      }
+    },
     {
       "id": "04cbb9c3",
       "title": "Estação de rádio da Irlanda retira músicas de Ed Sheeran da programação após saída de rapper da turnê",
@@ -413,12 +589,13 @@
       "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/b111/live/589eab30-b1b0-11f1-bc1f-3f186ca4140c.jpg",
       "matchapp_url": "https://matchapp.tv/news/articles/boy-13-is-new-voice-of-thomas-the-tank-engine-8cd23c/",
       "seo": {
-        "primary_keyword": "boy new voice latest news",
+        "primary_keyword": "new cat species",
         "short_tail": [
           "boy new voice",
           "entertainment",
           "entertainment news",
-          "celebrity news"
+          "celebrity news",
+          "new cat species"
         ],
         "long_tail": [
           "boy new voice latest news",
@@ -427,15 +604,18 @@
           "latest entertainment news about boy new voice",
           "boy new voice news today"
         ],
-        "trend_keywords": [],
+        "trend_keywords": [
+          "new cat species"
+        ],
         "meta_title": "Boy, 13, is new voice of Thomas the Tank Engine | Latest Entertainme",
         "meta_description": "Entertainment update from BBC. See the latest verified entertainment news, context and original source on MatchApp TV.",
         "keywords": [
-          "boy new voice latest news",
+          "new cat species",
           "boy new voice",
           "entertainment",
           "entertainment news",
           "celebrity news",
+          "boy new voice latest news",
           "boy new voice entertainment 2026",
           "boy new voice entertainment update",
           "latest entertainment news about boy new voice",
@@ -809,15 +989,12 @@
       "image": "https://s2-g1.glbimg.com/pWDEXcMUwx_l5_O21y2ZMSWJS9E=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/C/1/QdZEcVSPKvV7A0PEoidA/fotos-g1-1920-x-1080-px-2026-08-08t212015.386.png",
       "matchapp_url": "https://matchapp.tv/news/articles/grammy-latino-2026-anitta-marina-sena-e-ana-castela-sao-indicadas-veja-brasileir-8debb2/",
       "seo": {
-        "primary_keyword": "paraná pesquisa para presidente 2026",
+        "primary_keyword": "Grammy Latino latest news",
         "short_tail": [
           "Grammy Latino",
           "awards",
           "entertainment news",
-          "notícias de entretenimento",
-          "paraná pesquisa para presidente 2026",
-          "pesquisa eleitoral presidente 2026",
-          "luke bryan farm tour 2026"
+          "notícias de entretenimento"
         ],
         "long_tail": [
           "Grammy Latino latest news",
@@ -826,22 +1003,15 @@
           "últimas notícias sobre Grammy Latino",
           "Grammy Latino notícias hoje"
         ],
-        "trend_keywords": [
-          "paraná pesquisa para presidente 2026",
-          "pesquisa eleitoral presidente 2026",
-          "luke bryan farm tour 2026"
-        ],
+        "trend_keywords": [],
         "meta_title": "Grammy Latino 2026: Anitta, Marina Sena e Ana Castela são indicadas;",
         "meta_description": "Grammy Latino: Awards update from G1. See the latest verified entertainment news, context and original source on MatchApp TV.",
         "keywords": [
-          "paraná pesquisa para presidente 2026",
+          "Grammy Latino latest news",
           "Grammy Latino",
           "awards",
           "entertainment news",
           "notícias de entretenimento",
-          "pesquisa eleitoral presidente 2026",
-          "luke bryan farm tour 2026",
-          "Grammy Latino latest news",
           "Grammy Latino awards 2026",
           "Grammy Latino entertainment update",
           "últimas notícias sobre Grammy Latino",
@@ -1039,13 +1209,12 @@
       "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/16f8/live/3cfae5c0-b128-11f1-b1d1-571ed4d7ff2c.jpg",
       "matchapp_url": "https://matchapp.tv/news/articles/all-support-acts-on-ed-sheeran-s-us-tour-quit-after-macklemore-dropped-10372e/",
       "seo": {
-        "primary_keyword": "luke bryan farm tour 2026",
+        "primary_keyword": "all support acts latest news",
         "short_tail": [
           "all support acts",
           "music",
           "entertainment news",
-          "celebrity news",
-          "luke bryan farm tour 2026"
+          "celebrity news"
         ],
         "long_tail": [
           "all support acts latest news",
@@ -1054,18 +1223,15 @@
           "latest music news about all support acts",
           "all support acts news today"
         ],
-        "trend_keywords": [
-          "luke bryan farm tour 2026"
-        ],
+        "trend_keywords": [],
         "meta_title": "All support acts on Ed Sheeran's US tour quit after Macklemore dropp",
         "meta_description": "Music update from BBC. See the latest verified entertainment news, context and original source on MatchApp TV.",
         "keywords": [
-          "luke bryan farm tour 2026",
+          "all support acts latest news",
           "all support acts",
           "music",
           "entertainment news",
           "celebrity news",
-          "all support acts latest news",
           "all support acts music 2026",
           "all support acts entertainment update",
           "latest music news about all support acts",
@@ -1378,182 +1544,6 @@
           "Com Carminha entertainment update",
           "últimas notícias sobre Com Carminha",
           "Com Carminha notícias hoje"
-        ]
-      }
-    },
-    {
-      "id": "644b61c8",
-      "title": "Ed Sheeran perde todos os artistas que abririam sua turnê após expulsão de rapper por discurso pró-Palestina",
-      "url": "https://g1.globo.com/pop-arte/musica/noticia/2026/09/15/artistas-que-abririam-shows-de-ed-sheeran-cancelam-participacoes-apos-retirada-de-macklemore.ghtml",
-      "source": "G1",
-      "source_domain": "g1.globo.com",
-      "country": "BR",
-      "published_at": "2026-09-15T19:51:17.000Z",
-      "event_type": "Entertainment",
-      "person": "Ed Sheeran",
-      "description": "Ed Sheeran: entertainment update covered by G1. Open the original report for full context.",
-      "image": "https://s2-g1.glbimg.com/_tSGx-R-BO91yHvXx9Hcm394bBE=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2024/K/l/7wr2F2TmeB7dlfivAZ2Q/ed-sheeran-rock-in-rio-2024-4.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/ed-sheeran-perde-todos-os-artistas-que-abririam-sua-turne-apos-expulsao-de-rappe-644b61/",
-      "seo": {
-        "primary_keyword": "Ed Sheeran latest news",
-        "short_tail": [
-          "Ed Sheeran",
-          "entertainment",
-          "entertainment news",
-          "notícias de entretenimento"
-        ],
-        "long_tail": [
-          "Ed Sheeran latest news",
-          "Ed Sheeran entertainment 2026",
-          "Ed Sheeran entertainment update",
-          "últimas notícias sobre Ed Sheeran",
-          "Ed Sheeran notícias hoje"
-        ],
-        "trend_keywords": [],
-        "meta_title": "Ed Sheeran perde todos os artistas que abririam sua turnê após expul",
-        "meta_description": "Ed Sheeran: Entertainment update from G1. See the latest verified entertainment news, context and original source on MatchApp TV.",
-        "keywords": [
-          "Ed Sheeran latest news",
-          "Ed Sheeran",
-          "entertainment",
-          "entertainment news",
-          "notícias de entretenimento",
-          "Ed Sheeran entertainment 2026",
-          "Ed Sheeran entertainment update",
-          "últimas notícias sobre Ed Sheeran",
-          "Ed Sheeran notícias hoje"
-        ]
-      }
-    },
-    {
-      "id": "1c694216",
-      "title": "‘Maior open de molhos do mundo’: entenda como Hellmann’s entrou para o Guinness World Records™ no Rock in Rio 2026",
-      "url": "https://g1.globo.com/pop-arte/especial-publicitario/hellmanns/noticia/2026/09/15/maior-open-de-molhos-do-mundo-entenda-como-hellmanns-entrou-para-o-guinness-world-recordstm-no-rock-in-rio-2026.ghtml",
-      "source": "G1",
-      "source_domain": "g1.globo.com",
-      "country": "BR",
-      "published_at": "2026-09-15T18:46:11.000Z",
-      "event_type": "Entertainment",
-      "person": "",
-      "description": "entertainment update covered by G1. Open the original report for full context.",
-      "image": "https://s2-g1.glbimg.com/U34oUjQiv4tfZufjDl80iAOcjK8=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/5/Z/9XswnZROWW1LghNAk0eQ/imagem-5-.png",
-      "matchapp_url": "https://matchapp.tv/news/articles/maior-open-de-molhos-do-mundo-entenda-como-hellmann-s-entrou-para-o-guinness-wor-1c6942/",
-      "seo": {
-        "primary_keyword": "maior open molhos latest news",
-        "short_tail": [
-          "maior open molhos",
-          "entertainment",
-          "entertainment news",
-          "notícias de entretenimento"
-        ],
-        "long_tail": [
-          "maior open molhos latest news",
-          "maior open molhos entertainment 2026",
-          "maior open molhos entertainment update",
-          "últimas notícias sobre maior open molhos",
-          "maior open molhos notícias hoje"
-        ],
-        "trend_keywords": [],
-        "meta_title": "‘Maior open de molhos do mundo’: entenda como Hellmann’s entrou para",
-        "meta_description": "Entertainment update from G1. See the latest verified entertainment news, context and original source on MatchApp TV.",
-        "keywords": [
-          "maior open molhos latest news",
-          "maior open molhos",
-          "entertainment",
-          "entertainment news",
-          "notícias de entretenimento",
-          "maior open molhos entertainment 2026",
-          "maior open molhos entertainment update",
-          "últimas notícias sobre maior open molhos",
-          "maior open molhos notícias hoje"
-        ]
-      }
-    },
-    {
-      "id": "80667793",
-      "title": "Péricles canta Motown é eleito o melhor show nacional do Rock in Rio 2026 pelo g1",
-      "url": "https://g1.globo.com/pop-arte/musica/rock-in-rio/noticia/2026/09/15/pericles-canta-motown-e-eleito-o-melhor-show-nacional-do-rock-in-rio-2026-pelo-g1.ghtml",
-      "source": "G1",
-      "source_domain": "g1.globo.com",
-      "country": "BR",
-      "published_at": "2026-09-15T14:56:03.000Z",
-      "event_type": "Music",
-      "person": "",
-      "description": "music update covered by G1. Open the original report for full context.",
-      "image": "https://s2-g1.glbimg.com/ezXpCm06J6pX7w_CBU_xR24pEr0=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/W/C/jBhJWQQXefTwj5j5FHBQ/1-pericles-fotos-anderson-borde-agnews-16-.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/pericles-canta-motown-e-eleito-o-melhor-show-nacional-do-rock-in-rio-2026-pelo-g-806677/",
-      "seo": {
-        "primary_keyword": "pericles canta motown latest news",
-        "short_tail": [
-          "pericles canta motown",
-          "music",
-          "entertainment news",
-          "notícias de entretenimento"
-        ],
-        "long_tail": [
-          "pericles canta motown latest news",
-          "pericles canta motown music 2026",
-          "pericles canta motown entertainment update",
-          "últimas notícias sobre pericles canta motown",
-          "pericles canta motown notícias hoje"
-        ],
-        "trend_keywords": [],
-        "meta_title": "Péricles canta Motown é eleito o melhor show nacional do Rock in Rio",
-        "meta_description": "Music update from G1. See the latest verified entertainment news, context and original source on MatchApp TV.",
-        "keywords": [
-          "pericles canta motown latest news",
-          "pericles canta motown",
-          "music",
-          "entertainment news",
-          "notícias de entretenimento",
-          "pericles canta motown music 2026",
-          "pericles canta motown entertainment update",
-          "últimas notícias sobre pericles canta motown",
-          "pericles canta motown notícias hoje"
-        ]
-      }
-    },
-    {
-      "id": "50538cb5",
-      "title": "Yuri Nakamura, de ‘Românticos Anônimos', morre aos 44 anos",
-      "url": "https://g1.globo.com/pop-arte/noticia/2026/09/15/yuri-nakamura-de-romanticos-anonimos-morre-aos-44-anos.ghtml",
-      "source": "G1",
-      "source_domain": "g1.globo.com",
-      "country": "BR",
-      "published_at": "2026-09-15T13:33:02.000Z",
-      "event_type": "Obituary",
-      "person": "Yuri Nakamura",
-      "description": "Yuri Nakamura: obituary update covered by G1. Open the original report for full context.",
-      "image": "https://s2-g1.glbimg.com/QUywSec2zTIUCyr23M87qzPLiUE=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/W/M/ly2cGISdm1IbTkEumDKQ/yuri.png",
-      "matchapp_url": "https://matchapp.tv/news/articles/yuri-nakamura-de-romanticos-anonimos-morre-aos-44-anos-50538c/",
-      "seo": {
-        "primary_keyword": "Yuri Nakamura latest news",
-        "short_tail": [
-          "Yuri Nakamura",
-          "obituary",
-          "entertainment news",
-          "notícias de entretenimento"
-        ],
-        "long_tail": [
-          "Yuri Nakamura latest news",
-          "Yuri Nakamura obituary 2026",
-          "Yuri Nakamura entertainment update",
-          "últimas notícias sobre Yuri Nakamura",
-          "Yuri Nakamura notícias hoje"
-        ],
-        "trend_keywords": [],
-        "meta_title": "Yuri Nakamura, de ‘Românticos Anônimos', morre aos 44 anos | Latest ",
-        "meta_description": "Yuri Nakamura: Obituary update from G1. See the latest verified entertainment news, context and original source on MatchApp TV.",
-        "keywords": [
-          "Yuri Nakamura latest news",
-          "Yuri Nakamura",
-          "obituary",
-          "entertainment news",
-          "notícias de entretenimento",
-          "Yuri Nakamura obituary 2026",
-          "Yuri Nakamura entertainment update",
-          "últimas notícias sobre Yuri Nakamura",
-          "Yuri Nakamura notícias hoje"
         ]
       }
     },
