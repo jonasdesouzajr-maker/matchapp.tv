@@ -10,6 +10,7 @@
     "build:seo": "node tools/build-seo-pages.js",
     "build:watch": "node tools/build-watch-pages.js",
     "refresh:availability": "node tools/fetch-availability.js",
+    "sync:catalog-media": "node tools/sync-catalog-media.js",
     "refresh:catalog-seo": "node tools/build-seo-pages.js && node tools/build-watch-pages.js && node tools/update-sitemap.js && node tools/audit-search.js && node tools/search-readiness.js"
   },
   "devDependencies": {
