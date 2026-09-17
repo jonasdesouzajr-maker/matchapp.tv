@@ -46,13 +46,18 @@ jobs:
       - name: Validate existing site first
         run: npm test
 
-      - name: Verify required source credential
+      - name: Verify required server credentials
         env:
           TMDB_READ_TOKEN: ${{ secrets.TMDB_READ_TOKEN }}
           TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
         run: |
           if [ -z "$TMDB_READ_TOKEN" ] && [ -z "$TMDB_API_KEY" ]; then
             echo "::error::Missing TMDB_READ_TOKEN or TMDB_API_KEY GitHub Actions secret."
+            exit 1
+          fi
+          if [ -z "$SUPABASE_SERVICE_ROLE_KEY" ]; then
+            echo "::error::Missing SUPABASE_SERVICE_ROLE_KEY GitHub Actions secret. Staging will not write with it, but production scheduling requires it."
             exit 1
           fi
 
@@ -66,10 +71,6 @@ jobs:
           if [ "${GITHUB_REF}" != "refs/heads/main" ] || [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
             node tools/refresh-catalog-media.js --dry-run
           else
-            if [ -z "$SUPABASE_SERVICE_ROLE_KEY" ]; then
-              echo "::error::SUPABASE_SERVICE_ROLE_KEY is required for live daily upserts."
-              exit 1
-            fi
             node tools/refresh-catalog-media.js
           fi
 
