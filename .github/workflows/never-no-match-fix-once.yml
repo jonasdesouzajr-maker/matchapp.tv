@@ -1,0 +1,57 @@
+name: Guarded no-dead-end matcher repair
+on:
+  push:
+    branches: [fix/never-no-match-20260917]
+    paths: ['.github/workflows/never-no-match-fix-once.yml']
+permissions:
+  contents: write
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - name: Patch, test and commit only a green candidate
+        shell: bash
+        run: |
+          set +e
+          node tools/never-no-match-fix-ci.cjs
+          PATCH=$?
+          npm ci --ignore-scripts
+          CI=$?
+          npm test
+          TESTS=$?
+          npm run audit:site
+          AUDIT=$?
+          node - <<'NODE'
+          const fs=require('fs');
+          const app=fs.readFileSync('app.js','utf8');
+          const home=fs.readFileSync('index.html','utf8');
+          const ok=app.includes('function pickGuaranteedCatalog(')
+            && app.includes('preflight = pickGuaranteedCatalog(')
+            && app.includes('if (alreadySeenSpecific) {')
+            && app.includes("['match_savedList','match_dislikedList']")
+            && home.includes('/app.js?v=203');
+          console.log('NEVER_NO_MATCH_VERIFY='+ok);
+          process.exit(ok?0:2);
+          NODE
+          VERIFY=$?
+          echo "statuses patch=$PATCH ci=$CI tests=$TESTS audit=$AUDIT verify=$VERIFY"
+          if [ "$PATCH" -eq 0 ] && [ "$CI" -eq 0 ] && [ "$TESTS" -eq 0 ] && [ "$AUDIT" -eq 0 ] && [ "$VERIFY" -eq 0 ]; then
+            rm -f .github/workflows/never-no-match-fix-once.yml tools/never-no-match-fix-ci.cjs
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add -A
+            git commit -m "Guarantee a match without reusing saved or declined titles"
+            git push origin HEAD:fix/never-no-match-20260917
+            echo NEVER_NO_MATCH_FIX_COMMITTED=1
+          else
+            echo NEVER_NO_MATCH_FIX_COMMITTED=0
+          fi
+          exit 0
