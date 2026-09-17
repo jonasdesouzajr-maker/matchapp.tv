@@ -51,5 +51,10 @@ jobs:
             [ -e "$d" ] && git add "$d"
           done
           git commit -m "Harden Search Console metadata and structured data"
+          # Generators can leave cache/runtime residue that is deliberately outside
+          # this scoped SEO commit. Remove only those uncommitted leftovers so the
+          # committed SEO work can rebase and publish cleanly.
+          git reset --hard HEAD
+          git clean -fd
           git pull --rebase origin "${GITHUB_REF_NAME}"
           git push origin "HEAD:${GITHUB_REF_NAME}"
