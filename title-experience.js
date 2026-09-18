@@ -139,7 +139,7 @@
   }
 
   function boot(){
-    installStyles();wireTrending();wireEvents();wireMainResult();wireDiscoverCards();setTimeout(wireMainResult,250);setTimeout(wireDiscoverCards,450);setTimeout(renderEventQuery,500);
+    installStyles();wireTrending();wireEvents();wireMainResult();wireDiscoverCards();setTimeout(wireMainResult,250);setTimeout(wireDiscoverCards,450);setTimeout(()=>{if(!window.__MATCHAPP_EVENT_RENDERED)renderEventQuery();},700);
     const obs=new MutationObserver(()=>{wireMainResult();wireDiscoverCards();});
     obs.observe(document.documentElement,{subtree:true,childList:true});
   }
