@@ -44,3 +44,13 @@ test('homepage Ai shortcut remains isolated from the logo and opens a new concie
   assert.match(js,/const forceNew = getQueryParam\('new'\) === '1'/);
   assert.match(js,/currentThread = null/);
 });
+
+
+test('shared animated logo never overrides Kids image assets',()=>{
+  const shared=read('brand.css');
+  const kids=read('kids/index.html');
+  const nostalgia=read('kids/nostalgia/index.html');
+  assert.match(shared,/:not\(\[src\*="\/kids\/"\]\)/);
+  assert.match(kids,/\/kids\/kids-logo-sm\.jpeg/);
+  assert.match(nostalgia,/\/kids\/kids-logo-sm\.jpeg/);
+});
