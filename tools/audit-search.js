@@ -23,7 +23,7 @@ for(const loc of sm.querySelectorAll('loc')){
  for(const s of d.querySelectorAll('script[type="application/ld+json"]'))try{check(JSON.parse(s.textContent));}catch(e){fail(url,'Invalid JSON-LD: '+e.message);}
 }
 if(new Set(urls).size!==urls.length)fail('sitemap.xml','Duplicate public URL');
-if(!fs.readFileSync(path.join(root,'robots.txt'),'utf8').includes('Sitemap: https://matchapp.tv/sitemap.xml'))fail('robots.txt','Wrong sitemap declaration');
+if(!fs.readFileSync(path.join(root,'robots.txt'),'utf8').includes('Sitemap: https://matchapp.tv/sitemaps.xml'))fail('robots.txt','Wrong sitemap declaration');
 if(!fs.readFileSync(path.join(root,'ads.txt'),'utf8').includes('google.com, pub-9541435081010948, DIRECT, f08c47fec0942fa0'))fail('ads.txt','AdSense publisher record differs from site');
 const index=fs.readFileSync(path.join(root,'index.html'),'utf8');if(!index.includes('0948bb9f3d3a868d'))fail('index.html','Missing existing Yandex verification');
 const report={publicUrls:urls.length,issues,warnings};fs.writeFileSync(path.join(root,'search-audit-results.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report,null,2));if(issues.length)process.exitCode=1;
