@@ -29,16 +29,19 @@ jobs:
           node --check app.js
           node --check discover.js
           node --check catalog-media.js
+          node --check tmdb.js
           node --check title-experience.js
           node --check kids/kids.js
           grep -Fq 'id="q-genre"' index.html
-          grep -Fq '/app.js?v=206' index.html
-          grep -Fq '/catalog-media.js?v=20260918-detail6' index.html
-          grep -Fq '/discover.js?v=205' discover.html
+          grep -Fq '/app.js?v=207' index.html
+          grep -Fq '/catalog-media.js?v=20260918-detail7' index.html
+          grep -Fq '/discover.js?v=206' discover.html
           grep -Fq '/kids/kids.js?v=199' kids/index.html
           grep -Fq 'Final invariant: if any age-approved titles exist' kids/kids.js
           grep -Fq 'item.realGenres = meta.genres' discover.js
           grep -Fq 'Nearby cinemas & showtimes' catalog-media.js
+          grep -Fq 'lookupLive' catalog-media.js
+          grep -Fq 'tmdbDetails' tmdb.js
       - uses: actions/upload-pages-artifact@v3
         with:
           path: .
@@ -69,15 +72,16 @@ jobs:
           grep -q "Google Play — Coming Soon" /tmp/android.html
           ! grep -q "play.google.com/store/apps/details?id=tv.matchapp.app" /tmp/android.html
           curl -sS -L --max-time 30 https://matchapp.tv/ -o /tmp/home.html
-          grep -Fq '/app.js?v=206' /tmp/home.html
-          grep -Fq '/catalog-media.js?v=20260918-detail6' /tmp/home.html
+          grep -Fq '/app.js?v=207' /tmp/home.html
+          grep -Fq '/catalog-media.js?v=20260918-detail7' /tmp/home.html
           curl -sS -L --max-time 30 https://matchapp.tv/discover.html -o /tmp/discover.html
-          grep -Fq '/discover.js?v=205' /tmp/discover.html
-          grep -Fq '/catalog-media.js?v=20260918-detail6' /tmp/discover.html
-          curl -sS -L --max-time 30 'https://matchapp.tv/discover.js?v=205' -o /tmp/discover.js
+          grep -Fq '/discover.js?v=206' /tmp/discover.html
+          grep -Fq '/catalog-media.js?v=20260918-detail7' /tmp/discover.html
+          curl -sS -L --max-time 30 'https://matchapp.tv/discover.js?v=206' -o /tmp/discover.js
           grep -Fq 'item.realGenres = meta.genres' /tmp/discover.js
-          curl -sS -L --max-time 30 'https://matchapp.tv/catalog-media.js?v=20260918-detail6' -o /tmp/catalog-media.js
+          curl -sS -L --max-time 30 'https://matchapp.tv/catalog-media.js?v=20260918-detail7' -o /tmp/catalog-media.js
           grep -Fq 'Nearby cinemas & showtimes' /tmp/catalog-media.js
+          grep -Fq 'lookupLive' /tmp/catalog-media.js
           curl -sS -L --max-time 30 https://matchapp.tv/kids/ -o /tmp/kids.html
           grep -Fq '/kids/kids.js?v=199' /tmp/kids.html
           ! grep -q "GTM-M7J3NNBN" /tmp/kids.html
