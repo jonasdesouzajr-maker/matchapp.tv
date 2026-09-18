@@ -231,6 +231,17 @@ body .top-ai-launch:not(:hover):not(:focus-visible){
   }
 }
 
+/* First-paint size invariant: home-mobile.css is injected later by settings.js.
+   Keep the homepage mark at the intended 4.5rem even if an older cached copy
+   of that late stylesheet still contains the former 3.45rem shrink rule. */
+@media (max-width:600px){
+  html body.page-home #home-brand-lockup .home-brand-home .brand-logo{
+    width:4.5rem!important;
+    height:4.5rem!important;
+    flex-basis:4.5rem!important;
+  }
+}
+
 @media (max-width:720px){
   html body .app-header{
     padding-top:8px!important;
