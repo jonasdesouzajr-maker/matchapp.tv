@@ -35,16 +35,16 @@ window.MATCHAPP_BUILD = '2026.09.17.1';
   'use strict';
   const TODAY = '2026-09-18';
   const TRENDING = [
+    'Antártida',
+    'Era Uma Vez Minha 1ª Vez',
+    'Quem Ama Cuida',
     'Vermelho Sangue',
     'Amor Sob Vigilância',
-    'Infiltrado na Cozinha',
-    '(Des)controle',
-    'Félix de Amor à Vida',
-    'MobLand',
-    'Best of the Best',
-    'Outlander: Blood of My Blood',
-    'American Horror Story: 13',
-    'Youth'
+    'Resident Evil',
+    'Monster: The Lizzie Borden Story',
+    'The Scandal',
+    'Slow Horses',
+    'Outlander: Blood of My Blood'
   ];
   function upsertMeta(name, content) {
     let el = document.querySelector('meta[name="'+name+'"]');

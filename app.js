@@ -1084,6 +1084,16 @@ async function getRealCoverImage(title, hints) {
 // titles always get correct art.
 // ----------------------------------------------------
 const VERIFIED_POSTERS = {
+    "Outlander: Blood of My Blood": "https://image.tmdb.org/t/p/w780/2GAAeJfjHH7QBDVC35cu9RpD8nE.jpg",
+    "Slow Horses": "https://image.tmdb.org/t/p/w780/AdYr4DjOgXvDUMwu6vEhZy1Rnxk.jpg",
+    "The Scandal": "https://image.tmdb.org/t/p/w780/pJsIzlTjmx07ilwEkl0cglrMVa1.jpg",
+    "Monster: The Lizzie Borden Story": "https://image.tmdb.org/t/p/w780/57XScX1aYtKi1LvHYFQLPUxVhTG.jpg",
+    "Resident Evil": "https://image.tmdb.org/t/p/w780/i7UyjfPio0VFHB9rBUZSFyhOoM8.jpg",
+    "Amor Sob Vigilância": "https://image.tmdb.org/t/p/w780/cLpTLE15m4Hcj5dwWNEzrBOM6Ae.jpg",
+    "Vermelho Sangue": "https://image.tmdb.org/t/p/w780/gtUqzLLaarxvNWzKeBepwWfTfm8.jpg",
+    "Quem Ama Cuida": "https://image.tmdb.org/t/p/w780/p97unAJ9n9gpNrICCwEKuZdrb1t.jpg",
+    "Era Uma Vez Minha 1ª Vez": "https://image.tmdb.org/t/p/w780/6byulzTctYTBIvJGS4bsNSnmBof.jpg",
+    "Antártida": "https://image.tmdb.org/t/p/w780/5bg61sH6kqPVWcBoFUDoe6eqfoX.jpg",
     'Beauty in Black': 'https://image.tmdb.org/t/p/w780/xKk4bFCCpZ9tvjUykvvMYLSBnjo.jpg',
     'American Horror Story: 13': '/ahs13-official.png?v=187',
     'A Vida Secreta do Meu Marido Bilionário': '/marido-bilionario-original.jpg?v=187',
