@@ -19,6 +19,8 @@ let metaPromise=null;
 let introFrame=null;
 let introFallbackTimer=0;
 let introHardStopTimer=0;
+let introEndTimer=0;
+let introEnded=false;
 let introMutedFallback=false;
 let introMeta=FALLBACK_META;
 let inerted=[];
@@ -72,6 +74,12 @@ function captionFrom(meta){
 function postPlayer(frame,type,value){
   try{frame?.contentWindow?.postMessage({'x-tiktok-player':true,type,value},TIKTOK_ORIGIN);}catch(_){}
 }
+function trackEngagement(action){
+  try{
+    window.dataLayer=window.dataLayer||[];
+    window.dataLayer.push({event:'tiktok_intro_engagement',action});
+  }catch(_){}
+}
 function setActionStatus(message){
   const el=document.querySelector('[data-tiktok-action-status]');
   if(!el)return;
@@ -81,7 +89,39 @@ function setActionStatus(message){
 function syncIntroEngagement(meta){
   introMeta=meta||FALLBACK_META;
   const like=document.querySelector('[data-tiktok-like-link]');
+  const follow=document.querySelector('[data-tiktok-follow-link]');
   if(like)like.href=introMeta.final_url||FALLBACK_META.final_url;
+  if(follow)follow.href=introMeta.author_url||FALLBACK_META.author_url;
+}
+function hideEndEngagement(){
+  clearTimeout(introEndTimer);
+  introEnded=false;
+  const endcap=document.querySelector('[data-tiktok-endcap]');
+  if(endcap){
+    endcap.hidden=true;
+    endcap.classList.remove('is-visible');
+  }
+  document.querySelector('.matchapp-tiktok-intro-actions')?.classList.remove('is-ended');
+}
+function showEndEngagement(){
+  if(introEnded)return;
+  introEnded=true;
+  markSeen();
+  clearTimeout(introHardStopTimer);
+  const endcap=document.querySelector('[data-tiktok-endcap]');
+  if(endcap){
+    endcap.hidden=false;
+    requestAnimationFrame(()=>endcap.classList.add('is-visible'));
+  }
+  document.querySelector('.matchapp-tiktok-intro-actions')?.classList.add('is-ended');
+  introEndTimer=setTimeout(()=>closeIntro(false),6000);
+}
+function replayIntro(){
+  if(!introFrame)return;
+  trackEngagement('replay');
+  hideEndEngagement();
+  postPlayer(introFrame,'seekTo',0);
+  setTimeout(()=>postPlayer(introFrame,'play'),80);
 }
 async function shareIntroVideo(){
   const url=introMeta?.final_url||FALLBACK_META.final_url;
@@ -89,6 +129,7 @@ async function shareIntroVideo(){
   try{
     if(navigator.share){
       await navigator.share({title,text:'Watch MatchApp TV Ai on TikTok',url});
+      trackEngagement('share');
       setActionStatus('Shared');
       return;
     }
@@ -97,8 +138,10 @@ async function shareIntroVideo(){
   }
   try{
     await navigator.clipboard.writeText(url);
+    trackEngagement('share_copy');
     setActionStatus('TikTok link copied');
   }catch(_){
+    trackEngagement('share_open');
     window.open(url,'_blank','noopener,noreferrer');
   }
 }
@@ -121,6 +164,7 @@ function closeIntro(mark=true){
   const intro=document.getElementById('matchapp-tiktok-intro');
   clearTimeout(introFallbackTimer);
   clearTimeout(introHardStopTimer);
+  clearTimeout(introEndTimer);
   if(mark)markSeen();
   if(introFrame){
     postPlayer(introFrame,'pause');
@@ -178,13 +222,13 @@ function wirePlayerMessages(){
       return;
     }
     if(msg.type==='onStateChange'&&Number(msg.value)===0){
-      closeIntro(true);
+      showEndEngagement();
       return;
     }
     if(msg.type==='onCurrentTime'){
       const current=Number(msg.value?.currentTime);
       const duration=Number(msg.value?.duration);
-      if(duration>0&&current>=duration-.2)closeIntro(true);
+      if(duration>0&&current>=duration-.2)showEndEngagement();
       return;
     }
     if(msg.type==='onPlayerError'){
@@ -232,10 +276,21 @@ function init(){
   wirePlayerMessages();
   document.querySelector('.matchapp-tiktok-intro-close')?.addEventListener('click',()=>closeIntro(true));
   document.querySelector('[data-tiktok-like-link]')?.addEventListener('click',()=>{
+    trackEngagement('like_click');
+    markSeen();
+    setTimeout(()=>closeIntro(false),0);
+  });
+  document.querySelector('[data-tiktok-follow-link]')?.addEventListener('click',()=>{
+    trackEngagement('follow_click');
     markSeen();
     setTimeout(()=>closeIntro(false),0);
   });
   document.querySelector('[data-tiktok-share-button]')?.addEventListener('click',shareIntroVideo);
+  document.querySelector('[data-tiktok-replay]')?.addEventListener('click',replayIntro);
+  document.querySelector('[data-tiktok-continue]')?.addEventListener('click',()=>{
+    trackEngagement('continue');
+    closeIntro(true);
+  });
   document.querySelectorAll('[data-tiktok-short-link]').forEach(a=>a.setAttribute('href',SHORT_URL));
   if(document.documentElement.dataset.tiktokIntro==='1'&&!seen())startIntro();
   else{
