@@ -1525,7 +1525,7 @@
             .concierge-section { padding: 15px 12px; }
         }
     </style>
-<link rel="stylesheet" href="/passkeys.css?v=187">
+<link rel="stylesheet" href="/passkeys.css?v=187"><link rel="stylesheet" href="/phone-auth.css?v=1">
 <link rel="stylesheet" href="/app-updates.css?v=188">
 <link rel="stylesheet" href="/app-install-state.css?v=187">
 
@@ -2672,7 +2672,28 @@
                     <path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.3 4.2-4.2 5.5l6.5 5.4C41.5 35.6 44 30.1 44 24c0-1.2-.1-2.4-.4-3.5z"/>
                 </svg>
                 <span data-i18n="auth.continueGoogle">Continue with Google</span>
-            </button>            <div class="auth-divider"><span data-i18n="auth.orEmail">or continue with email</span></div>
+            </button>
+            <button id="phone-auth-entry" class="phone-auth-entry" type="button" hidden>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M10 18h4"/></svg>
+                <span>Sign up / log in with phone</span>
+            </button>
+            <div id="phone-auth-panel" class="phone-auth-panel" hidden>
+                <h4 id="phone-auth-title">Continue with your phone</h4>
+                <p id="phone-auth-help">Enter your mobile number including the country code.</p>
+                <div id="phone-auth-number-step">
+                    <input id="phone-auth-number" class="phone-auth-field" type="tel" inputmode="tel" autocomplete="tel" placeholder="+55 21 99999 9999" aria-label="Mobile phone number with country code">
+                    <button id="phone-auth-send" class="phone-auth-action" type="button">Send code</button>
+                </div>
+                <div id="phone-auth-code-step" hidden>
+                    <p id="phone-auth-code-help">We sent a 6-digit code by SMS.</p>
+                    <input id="phone-auth-code" class="phone-auth-field phone-auth-code" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="10" placeholder="6-digit code" aria-label="SMS verification code">
+                    <button id="phone-auth-verify" class="phone-auth-action" type="button">Verify &amp; continue</button>
+                    <button id="phone-auth-resend" class="phone-auth-secondary" type="button">Resend code</button>
+                    <button id="phone-auth-change" class="phone-auth-secondary" type="button">Use a different number</button>
+                </div>
+                <p id="phone-auth-status" class="phone-auth-status" role="status" aria-live="polite" hidden></p>
+            </div>
+            <div class="auth-divider"><span data-i18n="auth.orEmail">or continue with email</span></div>
 
             <div class="auth-tabs" style="margin-top: 20px;">
                 <div id="tab-login" class="auth-tab active" onclick="switchAuthTab('login')" data-i18n="auth.login">Log In</div>
@@ -2706,7 +2727,7 @@
     <script src="/settings.js?v=20260918-onboard1"></script>
     <script src="/matching-policy.js?v=200"></script>
     <script src="/match-localization.js?v=187"></script>
-<script src="/app.js?v=210"></script>
+<script src="/app.js?v=210"></script><script src="/phone-auth.js?v=1"></script>
     <script src="/catalog-media.js?v=20260918-notify2"></script>
     <script src="/title-experience.js?v=20260918-notify2"></script>
     <script src="/install-progress.js?v=200"></script>
