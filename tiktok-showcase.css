@@ -215,3 +215,13 @@ button.matchapp-tiktok-action{font:inherit;padding:0}
 @media(prefers-reduced-motion:reduce){
   .matchapp-tiktok-intro-card::before,.matchapp-tiktok-poster::before,.matchapp-tiktok-intro-loader i{animation:none!important}
 }
+/* Clean intro playback: the video is the only visible content over the intro backdrop. */
+.matchapp-tiktok-intro-close,
+.matchapp-tiktok-intro-actions,
+.matchapp-tiktok-endcap,
+.matchapp-tiktok-intro-loader,
+.matchapp-tiktok-intro-fallback{display:none!important}
+.matchapp-tiktok-intro-card{padding:0;background:#000;box-shadow:0 24px 90px rgba(0,0,0,.7)}
+.matchapp-tiktok-intro-card::before,.matchapp-tiktok-intro-card::after{display:none!important}
+.matchapp-tiktok-intro-inner{border-radius:inherit;background:#000}
+.matchapp-tiktok-intro iframe{width:100%;height:100%;object-fit:contain;background:#000}
