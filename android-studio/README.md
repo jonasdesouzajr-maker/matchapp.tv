@@ -33,8 +33,8 @@ This folder is one self-contained Android Studio project with **two separate ins
 
 Both Android modules are synchronized for the current production MatchApp surfaces:
 
-- Release version: **1.1.3**
-- Version code: **5**
+- Release version: **1.1.4**
+- Version code: **6**
 - Standard app launch: `https://matchapp.tv/`
 - Kids app launch: `https://matchapp.tv/kids/`
 - Both apps cold-load production on launch and manual refresh to avoid stale WebView content, then resume normal caching after the page renders.
