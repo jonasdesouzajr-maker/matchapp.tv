@@ -59,6 +59,7 @@
     const poster=card.querySelector('.discover-poster');if(poster){poster.classList.add('ma-title-link');poster.tabIndex=0;poster.setAttribute('role','link');poster.addEventListener('click',e=>{if(e.target.closest('a,button'))return;openTitle(title);});poster.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openTitle(title);}});}
     const api=window.MatchAppCatalogMedia;if(!api?.lookup)return;
     let meta=await api.lookup(title).catch(()=>null);
+    if(meta&&api.refreshExact)meta=await api.refreshExact(meta).catch(()=>meta);
     // AI can surface a real title that is not yet in MatchApp's pre-ingested
     // catalog. Resolve exact TMDB identity as a fallback so we can still offer
     // the actual title page without ever embedding an unverified clip.
