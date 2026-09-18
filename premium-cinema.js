@@ -10,7 +10,7 @@
     'home.h1': 'What should you watch tonight?',
     'home.h1sub': 'Tell us the mood. We bring one title, and where it plays.',
     'topask.placeholder': 'Ask in your own words\u2026',
-    'marquee.title': 'What the world is opening this week',
+    'marquee.title': 'Latest titles trending right now',
     'search.heading': 'Search any title',
     'search.hint': 'Type a title for a direct match \u2014 or ask a full question.',
     'search.voiceHint': 'Or tap the mic. It listens in your language.',
