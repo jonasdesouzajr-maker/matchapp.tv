@@ -135,6 +135,25 @@
     const el=existing||document.createElement('span');el.id='res-media-meta';el.className='matchapp-media-meta';el.textContent=bits.join(' · ');if(!existing)badge.insertAdjacentElement('afterend',el);
   }
 
+  async function enrichTrendingRail(){
+    const cards=[...document.querySelectorAll('#marquee-track .marquee-item')];
+    await Promise.all(cards.map(async card=>{
+      const img=card.querySelector('img[data-title]'),title=img?.dataset?.title||'';
+      if(!title)return;
+      const meta=await lookup(title);
+      const state=availability(meta);
+      let ribbon=card.querySelector('.matchapp-cinema-ribbon');
+      if(state.inCinemas){
+        if(!ribbon){
+          ribbon=document.createElement('span');
+          ribbon.className='matchapp-cinema-ribbon';
+          card.appendChild(ribbon);
+        }
+        ribbon.textContent=(typeof window.t==='function'&&window.t('discover.inCinemas'))||'In cinemas';
+      }else ribbon?.remove();
+    }));
+  }
+
   let mainSerial=0;
   async function enrichMain(){
     const titleEl=document.getElementById('res-title');if(!titleEl)return;const title=titleEl.textContent.trim();if(!title)return;const serial=++mainSerial;
@@ -159,13 +178,17 @@
     .matchapp-media-preview iframe{display:block;width:100%;aspect-ratio:16/9;border:0;border-radius:14px;background:#000}
     .matchapp-media-preview audio{display:block;width:100%;min-height:44px}.matchapp-media-meta{display:inline-flex;margin-left:8px;color:#bdb4ca;font-size:12px}
     #matchapp-kids-preview{max-width:520px;margin-left:auto;margin-right:auto}#matchapp-kids-preview iframe{border-radius:18px}
-    @media(max-width:640px){.matchapp-media-meta{display:block;margin:6px 0 0}.matchapp-media-preview{width:100%}}
+    #marquee-track .marquee-item{position:relative}
+    .matchapp-cinema-ribbon{position:absolute;z-index:8;top:10px;left:-5px;padding:6px 10px 6px 12px;border-radius:4px 8px 8px 4px;background:#d6253f;color:#fff;font:900 10px/1 Inter,Arial,sans-serif;letter-spacing:.06em;text-transform:uppercase;box-shadow:0 5px 14px rgba(214,37,63,.4);pointer-events:none}
+    .matchapp-cinema-ribbon:after{content:"";position:absolute;left:0;bottom:-6px;border-top:6px solid #871427;border-left:6px solid transparent}
+    @media(max-width:640px){.matchapp-media-meta{display:block;margin:6px 0 0}.matchapp-media-preview{width:100%}.matchapp-cinema-ribbon{top:7px;font-size:9px;padding:5px 8px 5px 10px}}
   `;document.head.appendChild(s);}
   function boot(){
     installStyle();document.querySelectorAll('img[data-title],img[data-poster-title],#res-poster-img,.kids-card img').forEach(img=>hardenImage(img,titleForImage(img)));
     const obs=new MutationObserver(records=>{let main=false,kids=false;for(const r of records){const el=r.target.nodeType===1?r.target:r.target.parentElement;if(el?.id==='res-title'||el?.closest?.('#result-card'))main=true;if(el?.id==='kids-watch-name'||el?.closest?.('#kids-watch-dialog'))kids=true;}if(main)queueMicrotask(enrichMain);if(kids)queueMicrotask(enrichKids);document.querySelectorAll('img[data-title]:not([data-matchapp-media-hardened]),img[data-poster-title]:not([data-matchapp-media-hardened]),#res-poster-img:not([data-matchapp-media-hardened]),.kids-card img:not([data-matchapp-media-hardened])').forEach(img=>hardenImage(img,titleForImage(img)));});
-    obs.observe(document.documentElement,{subtree:true,childList:true,characterData:true,attributes:false});enrichMain();enrichKids();
+    obs.observe(document.documentElement,{subtree:true,childList:true,characterData:true,attributes:false});enrichMain();enrichKids();enrichTrendingRail();
+    document.addEventListener('matchapp:langchange',enrichTrendingRail);
   }
-  window.MatchAppCatalogMedia=Object.freeze({lookup,normalise,localPoster,enrichMain,enrichKids,renderPreview,availability,viewingTarget,sourcePage,regionCode});
+  window.MatchAppCatalogMedia=Object.freeze({lookup,normalise,localPoster,enrichMain,enrichKids,enrichTrendingRail,renderPreview,availability,viewingTarget,sourcePage,regionCode});
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
 })();
