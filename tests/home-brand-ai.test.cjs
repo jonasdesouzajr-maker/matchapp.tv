@@ -28,7 +28,7 @@ test('homepage Ai word is localized to iA in pt-BR and only it starts a fresh AI
   const css=read('home-brand.css');
   const js=read('discover.js');
 
-  assert.match(html,/class="home-ai-link" href="\/discover\.html\?focus=start&amp;new=1"/);
+  assert.match(html,/class="home-ai-link" href="\/discover\.html\?focus=start&new=1"/);
   assert.match(html,/home-ai-default"[^>]*>Ai<\/span>/);
   assert.match(html,/home-ai-pt"[^>]*>iA<\/span>/);
   assert.match(css,/html\[lang="pt-BR"\][^\n]*\.home-ai-default\{display:none\}/);
