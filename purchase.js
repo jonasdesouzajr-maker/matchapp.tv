@@ -4,9 +4,9 @@
  const tr=k=>window.t?window.t('billing.'+k):k;
  const labels={
   ad_free:{title:'Lifetime Ad-Free',success:'Lifetime Ad-Free is now active on your account.'},
-  vip_monthly:{title:'VIP Monthly',success:'VIP Monthly is now active — 10 daily Matches and an ad-free experience are unlocked.'},
-  vip_annual:{title:'VIP Annual',success:'VIP Annual is now active for your account.'},
-  business:{title:'Business',success:'Your MatchApp Business plan is now active.'},
+  vip_monthly:{title:'VIP Monthly',success:'VIP Monthly is now active — 10 included AI actions per day and an ad-free experience are unlocked.'},
+  vip_annual:{title:'VIP Annual',success:'VIP Annual is now active — the same 10 included AI actions per day and VIP benefits are unlocked for the year.'},
+  business:{title:'Business',success:'MatchApp Business is now active — 50 included AI actions per day are unlocked on this account.'},
   credits_25:{title:'25 Ask AI credits'},credits_75:{title:'75 Ask AI credits'},credits_200:{title:'200 Ask AI credits'},credits_500:{title:'500 Ask AI credits'},
   matches_5:{title:'5 Extra Matches'},matches_25:{title:'25 Extra Matches'},matches_50:{title:'50 Extra Matches'}
  };
