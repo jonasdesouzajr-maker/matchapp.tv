@@ -29,6 +29,8 @@ test('Android Studio project stays ad-free while unpublished store CTA stays hid
   assert.match(gradle,/applicationId = "tv.matchapp.app"/);
   assert.doesNotMatch(gradle,/play-services-ads/);
   assert.doesNotMatch(gradle,/ads-identifier/);
+  assert.match(gradle,/versionCode = 11/);
+  assert.match(gradle,/versionName = "1\.1\.9"/);
   const blocker=read('android-studio/app/src/main/java/tv/matchapp/app/AdBlocker.kt');
   assert.match(blocker,/googlesyndication/);
   assert.match(blocker,/adsbygoogle/);
@@ -37,6 +39,14 @@ test('Android Studio project stays ad-free while unpublished store CTA stays hid
   assert.match(main,/MatchAppAiAndroid\/\d+\.\d+(?:\.\d+)?/);
   assert.match(main,/MATCHAPP_IS_AD_FREE/);
   assert.match(main,/https:\/\/matchapp\.tv\//);
+  assert.match(main,/appBuild=11/);
+  assert.match(main,/MatchAppAiAndroid\/1\.1\.9/);
+  const kidsGradle=read('android-studio/kidsapp/build.gradle.kts');
+  const kidsMain=read('android-studio/kidsapp/src/main/java/tv/matchapp/kids/MainActivity.kt');
+  assert.match(kidsGradle,/versionCode = 11/);
+  assert.match(kidsGradle,/versionName = "1\.1\.9"/);
+  assert.match(kidsMain,/appBuild=11/);
+  assert.match(kidsMain,/MatchAppAiKidsAndroid\/1\.1\.9/);
   assert.match(main,/replace\("; wv\)"/);
   const listing=read('android/index.html');
   assert.match(listing,/Google Play — Coming Soon/);
