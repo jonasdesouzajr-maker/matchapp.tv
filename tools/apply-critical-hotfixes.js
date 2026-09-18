@@ -39,7 +39,7 @@ function replaceRequired(text, from, to, label) {
     'pricing Product JSON-LD');
   html = replaceRequired(html,
     'data-i18n="pricing.title">Unlock Unlimited AI Concierge</h1>',
-    'data-i18n="pricing.title">Match More With VIP</h1>',
+    'data-i18n="pricing.title">VIP: 10 AI Matches Every Day</h1>',
     'pricing heading');
   html = replaceRequired(html,
     'data-i18n="pricing.subtitle">Choose your plan below to remove ads and unlock infinite matches.</p>',
