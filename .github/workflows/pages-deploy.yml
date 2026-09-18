@@ -34,7 +34,7 @@ jobs:
           node --check kids/kids.js
           node --check settings.js
           node --check profile.js
-          node --test tests/match-runtime-regression.test.cjs
+          node --test tests/match-runtime-regression.test.cjs tests/exclusion-preferences.test.cjs
           grep -Fq 'id="q-genre"' index.html
           grep -Fq '/app.js?v=208' index.html
           grep -Fq '/catalog-media.js?v=20260918-detail8' index.html
