@@ -3096,7 +3096,7 @@ function pickFromCatalog(cat, plat, mood, vibe, rating, decade) {
     if (!policy) return null; // Fail closed if the shared policy did not load.
     const wantsFaith = normCriteria(cat).includes('Gospel & Faith') || normCriteria(plat).some(p => ['Pure Flix','Angel Studios'].includes(p));
     const eligible = e => policy.matches(e, criteria)
-        && titlePassesRealGenre(e)
+        && (typeof titlePassesRealGenre!=='function'||titlePassesRealGenre(e))
         && !isBlockedEntry(e) && !SESSION_SHOWN.has(e.title)
         && (wantsFaith || !e.cats.includes('Gospel & Faith'))
         && (normCriteria(cat).length || isSurpriseEligible(e));
@@ -3136,7 +3136,7 @@ function pickRecycledCatalog(cat, plat, mood, vibe, rating, decade) {
     if (!policy || typeof policy.matchesCriteria !== 'function') return null;
     const wantsFaith = normCriteria(cat).includes('Gospel & Faith') || normCriteria(plat).some(p => ['Pure Flix','Angel Studios'].includes(p));
     const eligible = e => policy.matchesCriteria(e, criteria)
-        && titlePassesRealGenre(e)
+        && (typeof titlePassesRealGenre!=='function'||titlePassesRealGenre(e))
         && !isBlockedEntry(e)
         && (wantsFaith || !e.cats.includes('Gospel & Faith'))
         && (normCriteria(cat).length || isSurpriseEligible(e));
@@ -3263,7 +3263,7 @@ function pickGuaranteedCatalog(cat, plat, mood, vibe, rating, decade) {
 
     const allowed = entry => {
         if (!entry || !entry.title) return false;
-        if (!titlePassesRealGenre(entry)) return false;
+        if (typeof titlePassesRealGenre==='function' && !titlePassesRealGenre(entry)) return false;
         const k = policy.key(entry.title);
         if (!k || hardExcluded.has(k)) return false;
         try { if (typeof isBlockedEntry === 'function' && isBlockedEntry(entry)) return false; } catch (_) {}
