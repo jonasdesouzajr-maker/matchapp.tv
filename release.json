@@ -1,9 +1,9 @@
 {
-  "version": "2026.09.17.1",
-  "date": "2026-09-17",
+  "version": "2026.09.18.1",
+  "date": "2026-09-18",
   "functional": true,
   "notes": {
-    "en": "New MatchApp branding is polished across devices, the installable app is named MatchApp Ai with dedicated PWA icons, the homepage has a small dismissible AI disclosure, and interaction motion is richer across the site with extra playful effects in Kids Mode. SEO metadata and indexing signals were refreshed without changing matching, pricing, analytics or catalog logic. Sitemap and search-engine refresh included.",
-    "pt-BR": "A nova identidade visual do MatchApp foi refinada para todos os dispositivos, o app instalável passa a se chamar MatchApp Ai com ícones próprios de PWA, a página inicial ganhou um pequeno aviso de IA que pode ser fechado, e as animações ficaram mais vivas em todo o site, com efeitos extras no Kids Mode. Metadados de SEO e sinais de indexação foram atualizados sem alterar matching, preços, analytics ou lógica de catálogo. Atualização de sitemap e mecanismos de busca incluída."
+    "en": "Matches now keep every choice exact: a Laugh Out Loud request can no longer fall back to suspense, drama or an unrelated title. Empty local shelves expand through verified source-backed discovery instead of weakening your filters. New Profile → Settings controls let you permanently exclude countries of origin and real genres/categories from normal Matches. Title cards also include the richer verified streaming, cinema, preview and title-page experience from this release, and Kids matching keeps its safe no-dead-end fallback.",
+    "pt-BR": "Os Matches agora mantêm todas as escolhas exatamente: um pedido de 'rir muito' não pode mais cair em suspense, drama ou outro título fora do critério. Quando a prateleira local acaba, o MatchApp amplia a busca com fontes verificadas em vez de enfraquecer seus filtros. Em Perfil → Configurações, agora é possível excluir permanentemente países de origem e gêneros/categorias reais dos Matches normais. Esta versão também inclui a experiência ampliada de streaming, cinema, prévia e página do título, além do fallback seguro sem becos sem saída no Kids."
   }
 }
