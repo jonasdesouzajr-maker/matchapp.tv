@@ -91,7 +91,7 @@
 
 
     <!-- NATIVE I18N (defer = runs before DOMContentLoaded, no English flash) -->
-    <script defer src="/i18n.js?v=201"></script>
+    <script defer src="/i18n.js?v=202"></script>
 <script defer src="/polish-i18n.js?v=191"></script>
 <script defer src="/event-i18n.js?v=187"></script>
 <script defer src="/page-locale.js?v=187"></script>
@@ -807,10 +807,6 @@
         /* ===== GOOGLE SIGN-IN ===== */
         .google-signin-btn { display: flex; align-items: center; justify-content: center; gap: 12px; width: 100%; padding: 15px; margin-top: 22px; background: #fff; color: #3c4043; border: none; border-radius: 12px; font-size: 15px; font-weight: 700; cursor: pointer; transition: 0.25s; font-family: inherit; }
         .google-signin-btn:hover { background: #f4f4f4; box-shadow: 0 4px 14px rgba(255,255,255,0.15); transform: translateY(-1px); }
-        .apple-signin-btn { display:flex; align-items:center; justify-content:center; gap:12px; width:100%; padding:15px; margin-top:10px; background:#000; color:#fff; border:1px solid rgba(255,255,255,.35); border-radius:12px; font-size:15px; font-weight:750; cursor:pointer; transition:.25s; font-family:inherit; }
-        .apple-signin-btn:hover { background:#171717; border-color:#fff; box-shadow:0 4px 18px rgba(255,255,255,.12); transform:translateY(-1px); }
-        .apple-signin-btn[hidden]{display:none!important}
-        .apple-signin-btn:focus-visible{outline:3px solid #E5C158;outline-offset:3px}
         .auth-divider { display: flex; align-items: center; gap: 14px; margin: 20px 0 0 0; color: #8f88a5; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
         .auth-divider::before, .auth-divider::after { content: ""; flex: 1; height: 1px; background: rgba(229,193,88,0.25); }
 
@@ -2620,14 +2616,7 @@
                     <path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.3 4.2-4.2 5.5l6.5 5.4C41.5 35.6 44 30.1 44 24c0-1.2-.1-2.4-.4-3.5z"/>
                 </svg>
                 <span data-i18n="auth.continueGoogle">Continue with Google</span>
-            </button>
-            <button onclick="loginWithApple()" class="apple-signin-btn" type="button" hidden aria-hidden="true">
-                <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
-                    <path fill="currentColor" d="M16.7 12.9c0-2.5 2.1-3.7 2.2-3.8-1.2-1.8-3.1-2-3.8-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.3-.8-1.7 0-3.3 1-4.2 2.5-1.8 3.1-.5 7.8 1.3 10.3.9 1.2 1.9 2.6 3.2 2.5 1.3-.1 1.8-.8 3.4-.8 1.6 0 2 .8 3.4.8 1.4 0 2.3-1.2 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9-.1 0-2.8-1.1-2.8-4.2ZM14.1 5.4c.7-.9 1.2-2.1 1.1-3.3-1.1.1-2.4.7-3.2 1.6-.7.8-1.3 2-1.2 3.2 1.2.1 2.5-.6 3.3-1.5Z"/>
-                </svg>
-                <span data-i18n="auth.continueApple">Continue with Apple</span>
-            </button>
-            <div class="auth-divider"><span data-i18n="auth.orEmail">or continue with email</span></div>
+            </button>            <div class="auth-divider"><span data-i18n="auth.orEmail">or continue with email</span></div>
 
             <div class="auth-tabs" style="margin-top: 20px;">
                 <div id="tab-login" class="auth-tab active" onclick="switchAuthTab('login')" data-i18n="auth.login">Log In</div>
@@ -2661,7 +2650,7 @@
     <script src="/settings.js?v=20260918-onboard1"></script>
     <script src="/matching-policy.js?v=200"></script>
     <script src="/match-localization.js?v=187"></script>
-<script src="/app.js?v=209"></script>
+<script src="/app.js?v=210"></script>
     <script src="/catalog-media.js?v=20260918-notify2"></script>
     <script src="/title-experience.js?v=20260918-notify2"></script>
     <script src="/install-progress.js?v=200"></script>
