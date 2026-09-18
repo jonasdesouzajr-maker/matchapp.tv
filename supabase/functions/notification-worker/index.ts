@@ -4,7 +4,7 @@ import { sendPushNotification, WebPushError } from "npm:@mmmike/web-push@1.0.1/s
 const SUPABASE_URL=Deno.env.get("SUPABASE_URL")??"";
 const SERVICE_KEY=Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")??"";
 const TMDB_TOKEN=Deno.env.get("TMDB_ACCESS_TOKEN")??Deno.env.get("TMDB_API_KEY")??"";
-const RESEND_KEY=Deno.env.get("RESEND_API_KEY")??"";
+let RESEND_KEY="";
 const VAPID_PUBLIC="BKGucCWkS-YsS6g4HnM9DYTmm1Thj-PxxVkz9hM09tGs29uABDXQgYbnF0Zooi7AnHFv7KlbPSbPErE4J76MOZs";
 const db=createClient(SUPABASE_URL,SERVICE_KEY,{auth:{persistSession:false,autoRefreshToken:false}});
 
@@ -152,6 +152,7 @@ async function deliveries(){
 Deno.serve(async(req:Request)=>{
  if(req.method!=="POST")return new Response("Method not allowed",{status:405});
  if(!(await authenticate(req)))return new Response("Unauthorized",{status:401});
+ try{RESEND_KEY=await secret("resend_api_key");}catch{RESEND_KEY="";}
  const releaseRecipients=await broadcastRelease();
  const first=await db.rpc("notification_server_batch",{p_limit:200});
  if(first.error)return new Response("Batch unavailable",{status:500});
