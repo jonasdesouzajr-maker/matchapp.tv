@@ -11,8 +11,8 @@ test('stabilized home preserves canonical VIP 10/day public copy',()=>{
     const s=read(file);
     assert.doesNotMatch(s,/Unlimited AI Matches Daily|Unlimited Matches/i,file);
   }
-  assert.match(read('index.html'),/10 matches every day/i);
-  assert.match(read('pricing/pricing.html'),/10 AI matches per day/i);
+  assert.match(read('index.html'),/10 included AI actions every day/i);
+  assert.match(read('pricing/pricing.html'),/10 AI actions per day/i);
   assert.match(read('build-meta.js'),/const vipDaily = 10/);
 });
 
