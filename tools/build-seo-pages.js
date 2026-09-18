@@ -7,7 +7,7 @@
 
    WHY COLLECTIONS AND NOT ONE PAGE PER TITLE:
 
-   The catalog carries 184 entries, but the average synopsis is 120
+   The catalog is broad and continues to grow, but the average synopsis is 120
    characters — roughly a sentence and a half — and only one entry in the
    whole set has a watch URL. A page per title would therefore be a heading,
    one sentence, a platform name and some tags: the textbook definition of
