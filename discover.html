@@ -79,7 +79,18 @@
         .composer { flex: 1; min-width: 220px; display: flex; align-items: flex-end; gap: 8px;
                     background: rgba(0,0,0,0.6); border: 1px solid var(--gold); border-radius: 16px;
                     padding: 6px 8px 6px 14px; transition: box-shadow 0.25s, border-color 0.25s; }
-        .composer:focus-within { box-shadow: 0 0 22px rgba(229,193,88,0.4); border-color: var(--gold-glow); }
+        .composer { border-color: rgba(142,242,231,.8); background: linear-gradient(135deg, rgba(64,37,98,.74), rgba(19,7,52,.86)); box-shadow: inset 0 0 0 1px rgba(229,193,88,.16), 0 8px 24px rgba(0,0,0,.24); }
+        .composer:focus-within { box-shadow: 0 0 0 2px rgba(142,242,231,.18), 0 0 26px rgba(229,193,88,.42); border-color: var(--gold-glow); }
+        .discover-poster { overflow: visible; }
+        .discover-poster img { border-radius: 11px; }
+        .discover-cinema-ribbon { position:absolute; z-index:4; top:10px; left:-8px; padding:5px 10px 5px 12px; border-radius:4px 8px 8px 4px; background:#d6253f; color:#fff; font-size:10px; line-height:1; font-weight:900; letter-spacing:.06em; text-transform:uppercase; box-shadow:0 5px 14px rgba(214,37,63,.35); }
+        .discover-cinema-ribbon::after { content:""; position:absolute; left:0; bottom:-6px; border-top:6px solid #871427; border-left:7px solid transparent; }
+        .discover-categories { display:flex; flex-wrap:wrap; gap:6px; margin:7px 0 8px; }
+        .discover-category { display:inline-flex; align-items:center; min-height:22px; padding:3px 8px; border:1px solid rgba(168,240,255,.26); border-radius:999px; background:rgba(168,240,255,.08); color:#dffcff; font-size:10.5px; font-weight:700; }
+        .discover-card-preview { margin:10px 0 4px; }
+        .discover-card-preview[hidden] { display:none!important; }
+        .discover-card-preview iframe { display:block; width:100%; aspect-ratio:16/9; border:0; border-radius:12px; background:#000; }
+        .discover-play.is-cinema { background:linear-gradient(135deg,#d6253f,#9f1730)!important; color:#fff!important; border-color:#ff6b7d!important; }
         .composer textarea { flex: 1; background: transparent; border: none; color: #fff; font-size: 16px;
                              font-family: inherit; line-height: 1.55; padding: 11px 0; margin: 0;
                              resize: none; overflow-y: hidden; max-height: 190px; min-height: 24px; }
@@ -399,8 +410,9 @@
     <script src="/matching-policy.js?v=199"></script>
     <script src="/match-localization.js?v=187"></script>
 <script src="/app.js?v=201"></script>
+    <script src="/catalog-media.js?v=20260918-trending1"></script>
     <script src="/install-progress.js?v=200"></script>
-    <script src="/discover.js?v=201"></script>
+    <script src="/discover.js?v=202"></script>
     <script src="/voice-input.js?v=187"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
