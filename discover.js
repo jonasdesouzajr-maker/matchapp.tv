@@ -1245,7 +1245,7 @@ function appendAssistantBubble(text, results, opts) {
 
     const avatar = document.createElement('img');
     avatar.className = 'chat-avatar';
-    avatar.src = '/assets/brand/matchapp-ai-orbit.svg';
+    avatar.src = '/assets/brand/matchapp-ai-orbit-fullbleed.svg?v=1';
     avatar.alt = '';
     avatar.width = 34;
     avatar.height = 34;
