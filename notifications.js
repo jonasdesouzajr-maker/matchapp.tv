@@ -28,9 +28,13 @@ function iconSvg(){
 }
 function mount(){
   if(button||!document.body||location.pathname.startsWith('/kids/'))return;
-  const nav=document.querySelector('.app-header>nav');if(!nav)return;
-  button=document.createElement('button');button.type='button';button.className='matchapp-notification-button';button.setAttribute('aria-label','Notifications');button.setAttribute('aria-expanded','false');button.innerHTML=iconSvg();
-  const before=document.getElementById('profile-link-tab')||document.getElementById('nav-reg-btn')||null;nav.insertBefore(button,before);
+  const nav=document.querySelector('.app-header>nav, header>nav');
+  if(!nav){
+    button=document.createElement('button');button.type='button';button.className='matchapp-notification-button matchapp-notification-floating';button.setAttribute('aria-label','Notifications');button.setAttribute('aria-expanded','false');button.innerHTML=iconSvg();document.body.appendChild(button);
+  }
+  if(!button){button=document.createElement('button');button.type='button';button.className='matchapp-notification-button';button.setAttribute('aria-label','Notifications');button.setAttribute('aria-expanded','false');button.innerHTML=iconSvg();
+    const before=document.getElementById('profile-link-tab')||document.getElementById('nav-reg-btn')||null;nav.insertBefore(button,before);
+  }
   panel=document.createElement('aside');panel.className='matchapp-notification-panel';panel.hidden=true;panel.setAttribute('aria-label','Notifications');
   panel.innerHTML='<header><div><small>YOUR MATCHAPP</small><h2>Notifications</h2></div><button type="button" class="matchapp-notification-close" aria-label="Close">×</button></header><div class="matchapp-notification-toolbar"><button type="button" data-notify-read-all>Mark all read</button><a href="/updates.html">What’s new</a></div><div class="matchapp-notification-list"></div><details class="matchapp-notification-settings"><summary>Notification settings</summary><div class="matchapp-notification-prefs"></div></details>';
   document.body.appendChild(panel);
@@ -132,7 +136,10 @@ async function refresh(){
  if(signed()){try{server=await rpc('list',{});}catch(_){}}
  state={...state,...server};
  const release=await releaseItem();
- if(release)state.notifications=[release,...(state.notifications||[])];
+ if(release){
+   const already=(state.notifications||[]).some(n=>String(n?.payload?.version||'')===String(release.version));
+   if(!already)state.notifications=[release,...(state.notifications||[])];
+ }
  render();
 }
 async function followTitle(meta,region){
@@ -143,7 +150,9 @@ async function followTitle(meta,region){
  try{
    await change('follow_title',{tmdbId:id,kind,title:String(meta.title||''),year:String(meta.year||''),region:code});
    window.showToast?.('🔔 We’ll watch for streaming availability in '+(window.MatchAppCatalogMedia?.countryName?.(code)||code)+'.');
-   open();return true;
+   open();
+   setTimeout(()=>panel?.querySelector('.matchapp-notification-settings')?.setAttribute('open',''),120);
+   return true;
  }catch(_){window.showToast?.('Could not follow this title right now.',true);return false;}
 }
 function authChanged(){refresh();if(poll)clearInterval(poll);poll=setInterval(()=>{if(!document.hidden)refresh();},60000);}
