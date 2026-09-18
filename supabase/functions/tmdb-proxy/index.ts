@@ -173,12 +173,22 @@ function cinemaReleaseDate(record: Record<string, unknown>, region: string): str
 }
 
 function detailRating(record: Record<string, unknown>, kind: "movie" | "tv"): string | null {
-  if (kind !== "tv") return null;
-  const bag = record.content_ratings as { results?: unknown } | undefined;
+  if (kind === "tv") {
+    const bag = record.content_ratings as { results?: unknown } | undefined;
+    const rows = Array.isArray(bag?.results) ? bag!.results as Array<Record<string, unknown>> : [];
+    for (const region of ["US", "BR", "GB", "PT"]) {
+      const row = rows.find((r) => r?.iso_3166_1 === region && String(r?.rating || "").trim());
+      if (row) return String(row.rating).trim().slice(0, 32);
+    }
+    return null;
+  }
+  const bag = record.release_dates as { results?: unknown } | undefined;
   const rows = Array.isArray(bag?.results) ? bag!.results as Array<Record<string, unknown>> : [];
   for (const region of ["US", "BR", "GB", "PT"]) {
-    const row = rows.find((r) => r?.iso_3166_1 === region && String(r?.rating || "").trim());
-    if (row) return String(row.rating).trim().slice(0, 32);
+    const entry = rows.find((r) => r?.iso_3166_1 === region);
+    const dates = Array.isArray(entry?.release_dates) ? entry!.release_dates as Array<Record<string, unknown>> : [];
+    const cert = dates.map((r) => String(r?.certification || "").trim()).find(Boolean);
+    if (cert) return cert.slice(0, 32);
   }
   return null;
 }
@@ -218,6 +228,9 @@ function detailMetadata(record: Record<string, unknown>, kind: "movie" | "tv"): 
       : [],
     runtimeMinutes: Number.isFinite(runtime) && runtime > 0 && runtime <= 1440 ? Math.round(runtime) : null,
     contentRating: detailRating(record, kind),
+    originCountries: Array.isArray(record.production_countries)
+      ? (record.production_countries as Array<Record<string, unknown>>).map((x)=>String(x?.iso_3166_1||"").toUpperCase()).filter(Boolean)
+      : (Array.isArray(record.origin_country) ? (record.origin_country as unknown[]).map((x)=>String(x||"").toUpperCase()).filter(Boolean) : []),
     availability: availabilityFrom(record, kind),
     ...chooseVideo(record),
   };
@@ -386,6 +399,40 @@ Deno.serve(async (req: Request) => {
       const related = mergeRelated(sameDirector, similar, recs).slice(0, 8);
       return json({ results: [primary], director, related }, 200, true);
     }
+    if (body?.discover && typeof body.discover === "object") {
+      const d = body.discover as Record<string, unknown>;
+      const kinds: Array<"movie"|"tv"> = d.kind === "movie" ? ["movie"] : d.kind === "tv" ? ["tv"] : ["movie","tv"];
+      const genreIds = Array.isArray(d.genre_ids) ? (d.genre_ids as unknown[]).map(Number).filter((n)=>Number.isSafeInteger(n)&&n>0) : [];
+      const decade = Number(d.decade_start);
+      const pages = Math.min(2, Math.max(1, Number(d.pages)||1));
+      const out: Record<string, unknown>[] = [];
+      for (const k of kinds) {
+        for (let page=1; page<=pages; page++) {
+          const params = new URLSearchParams();
+          params.set("include_adult","false");
+          params.set("sort_by","popularity.desc");
+          params.set("page",String(page));
+          params.set("vote_count.gte","20");
+          params.set("language",lang);
+          if (genreIds.length) params.set("with_genres",genreIds.join("|"));
+          if (Number.isSafeInteger(decade) && decade >= 1900 && decade <= 2100) {
+            if (k === "movie") {
+              params.set("primary_release_date.gte",decade+"-01-01");
+              params.set("primary_release_date.lte",(decade+9)+"-12-31");
+            } else {
+              params.set("first_air_date.gte",decade+"-01-01");
+              params.set("first_air_date.lte",(decade+9)+"-12-31");
+            }
+          }
+          const data = await tmdbFetch(`/discover/${k}?${params.toString()}`, token);
+          const rows = Array.isArray(data?.results) ? data!.results as Array<Record<string, unknown>> : [];
+          rows.forEach((row)=>{const n=normalise(row,k);if(n.adult!==true&&n.poster&&n.title)out.push(n);});
+        }
+      }
+      out.sort((a,b)=>(Number(b.popularity)||0)-(Number(a.popularity)||0));
+      return json({results:out.slice(0,40)},200,true);
+    }
+
     if (!query) return json({ error: "query is required" }, 400);
 
     const q = encodeURIComponent(query);
