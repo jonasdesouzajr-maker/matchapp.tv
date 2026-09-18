@@ -20,6 +20,7 @@ let introFrame=null;
 let introFallbackTimer=0;
 let introHardStopTimer=0;
 let introMutedFallback=false;
+let introMeta=FALLBACK_META;
 let inerted=[];
 
 function seen(){
@@ -71,6 +72,36 @@ function captionFrom(meta){
 function postPlayer(frame,type,value){
   try{frame?.contentWindow?.postMessage({'x-tiktok-player':true,type,value},TIKTOK_ORIGIN);}catch(_){}
 }
+function setActionStatus(message){
+  const el=document.querySelector('[data-tiktok-action-status]');
+  if(!el)return;
+  el.textContent=message||'';
+  if(message)setTimeout(()=>{if(el.textContent===message)el.textContent='';},2600);
+}
+function syncIntroEngagement(meta){
+  introMeta=meta||FALLBACK_META;
+  const like=document.querySelector('[data-tiktok-like-link]');
+  if(like)like.href=introMeta.final_url||FALLBACK_META.final_url;
+}
+async function shareIntroVideo(){
+  const url=introMeta?.final_url||FALLBACK_META.final_url;
+  const title='MatchApp TV Ai on TikTok';
+  try{
+    if(navigator.share){
+      await navigator.share({title,text:'Watch MatchApp TV Ai on TikTok',url});
+      setActionStatus('Shared');
+      return;
+    }
+  }catch(err){
+    if(err?.name==='AbortError')return;
+  }
+  try{
+    await navigator.clipboard.writeText(url);
+    setActionStatus('TikTok link copied');
+  }catch(_){
+    window.open(url,'_blank','noopener,noreferrer');
+  }
+}
 function lockPage(intro){
   if(!intro)return;
   document.body.classList.add('matchapp-tiktok-intro-open');
@@ -121,6 +152,7 @@ async function startIntro(){
 
   try{
     const meta=await getMeta();
+    syncIntroEngagement(meta);
     introFrame=intro.querySelector('#matchapp-tiktok-intro-player');
     const loader=intro.querySelector('.matchapp-tiktok-intro-loader');
     const fb=intro.querySelector('.matchapp-tiktok-intro-fallback');
@@ -141,6 +173,7 @@ function wirePlayerMessages(){
     const msg=event.data;
     if(!msg||msg['x-tiktok-player']!==true)return;
     if(msg.type==='onPlayerReady'){
+      document.querySelector('.matchapp-tiktok-intro-actions')?.classList.add('is-ready');
       postPlayer(introFrame,'play');
       return;
     }
@@ -198,6 +231,11 @@ function lazyPoster(){
 function init(){
   wirePlayerMessages();
   document.querySelector('.matchapp-tiktok-intro-close')?.addEventListener('click',()=>closeIntro(true));
+  document.querySelector('[data-tiktok-like-link]')?.addEventListener('click',()=>{
+    markSeen();
+    setTimeout(()=>closeIntro(false),0);
+  });
+  document.querySelector('[data-tiktok-share-button]')?.addEventListener('click',shareIntroVideo);
   document.querySelectorAll('[data-tiktok-short-link]').forEach(a=>a.setAttribute('href',SHORT_URL));
   if(document.documentElement.dataset.tiktokIntro==='1'&&!seen())startIntro();
   else{
