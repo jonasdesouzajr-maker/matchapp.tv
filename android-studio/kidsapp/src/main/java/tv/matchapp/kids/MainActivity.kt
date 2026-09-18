@@ -67,7 +67,9 @@ class MainActivity : AppCompatActivity() {
             databaseEnabled = true
             loadsImagesAutomatically = true
             mixedContentMode = WebSettings.MIXED_CONTENT_COMPATIBILITY_MODE
-            cacheMode = WebSettings.LOAD_DEFAULT
+            // Cold-load the current Kids production surface at app start,
+            // then return to normal caching after the page has rendered.
+            cacheMode = WebSettings.LOAD_NO_CACHE
             mediaPlaybackRequiresUserGesture = true
             setSupportMultipleWindows(true)
             javaScriptCanOpenWindowsAutomatically = true
@@ -90,6 +92,7 @@ class MainActivity : AppCompatActivity() {
         refresh.setProgressBackgroundColorSchemeColor(ContextCompat.getColor(this, R.color.royal))
         refresh.setOnRefreshListener {
             if (isOnline()) {
+                web.settings.cacheMode = WebSettings.LOAD_NO_CACHE
                 web.reload()
             } else {
                 refresh.isRefreshing = false
@@ -150,6 +153,7 @@ class MainActivity : AppCompatActivity() {
             return
         }
         showOffline(false)
+        web.settings.cacheMode = WebSettings.LOAD_NO_CACHE
         web.loadUrl(lastUrl.takeIf { isAllowedKidsUrl(it) } ?: HOME)
     }
 
@@ -248,6 +252,7 @@ class MainActivity : AppCompatActivity() {
             if (url != null && !isAllowedKidsUrl(url)) return
             splashKeep = false
             refresh.isRefreshing = false
+            view.settings.cacheMode = WebSettings.LOAD_DEFAULT
             injectKidsShell(view)
             CookieManager.getInstance().flush()
         }
@@ -354,8 +359,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val HOME = "https://matchapp.tv/kids/?utm_source=android_kids_app"
-        const val APP_UA = "MatchAppTVAndroid/1.0 MatchAppAiKidsAndroid/1.0"
+        const val HOME = "https://matchapp.tv/kids/?utm_source=android_kids_app&appBuild=2"
+        const val APP_UA = "MatchAppTVAndroid/1.1 MatchAppAiKidsAndroid/1.1"
 
         private const val KIDS_APP_JS = """
             (function(){
