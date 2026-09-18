@@ -36,13 +36,13 @@ jobs:
         run: node tools/update-sitemap.js
       - name: Commit refreshed news
         run: |
-          if git diff --quiet -- news tools/news-urls.json tools/news-sitemap-meta.json sitemap.xml; then
+          if git diff --quiet -- news tools/news-urls.json tools/news-sitemap-meta.json sitemap.xml sitemaps.xml; then
             echo "Entertainment news already current"
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add news tools/news-urls.json tools/news-sitemap-meta.json sitemap.xml
+          git add news tools/news-urls.json tools/news-sitemap-meta.json sitemap.xml sitemaps.xml
           git commit -m "Refresh hourly entertainment news"
           git pull --rebase origin "${GITHUB_REF_NAME}"
           git push origin "HEAD:${GITHUB_REF_NAME}"
