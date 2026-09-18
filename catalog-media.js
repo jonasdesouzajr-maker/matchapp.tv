@@ -45,6 +45,56 @@
     }catch(_){CACHE.set(key,null);return null;}finally{INFLIGHT.delete(key);}})();INFLIGHT.set(key,p);return p;
   }
   function safePoster(meta){return [meta?.poster_original_url,meta?.poster_large_url,meta?.poster_url].find(u=>TRUSTED_POSTER.test(String(u||'')))||null;}
+  function regionCode(){
+    const saved=String(localStorage.getItem('match_user_country')||'').trim().toLowerCase();
+    if(/^(br|brasil|brazil)$/.test(saved))return 'BR';
+    if(/^(pt|portugal)$/.test(saved))return 'PT';
+    if(/^(gb|uk|united kingdom)$/.test(saved))return 'GB';
+    if(/^(us|usa|united states)$/.test(saved))return 'US';
+    const lang=window.MATCH_LANG||'en';
+    return lang==='pt-BR'?'BR':'US';
+  }
+  function sourcePage(meta){
+    const explicit=String(meta?.availability?.source_page_url||'');
+    if(/^https:\/\/www\.themoviedb\.org\/(movie|tv)\/\d+$/.test(explicit))return explicit;
+    if(Number.isSafeInteger(Number(meta?.tmdb_id))&&['movie','tv'].includes(meta?.media_kind)){
+      return 'https://www.themoviedb.org/'+meta.media_kind+'/'+meta.tmdb_id;
+    }
+    return '';
+  }
+  function availability(meta,region){
+    const code=region||regionCode(),root=meta?.availability||{},row=root?.[code]||{};
+    const streams=Array.isArray(row.stream)?row.stream.filter(Boolean):[];
+    const cinemaDate=/^\d{4}-\d{2}-\d{2}$/.test(String(row.cinema_release_date||''))?String(row.cinema_release_date):'';
+    let inCinemas=false;
+    if(cinemaDate){
+      const start=Date.parse(cinemaDate+'T00:00:00Z'),now=Date.now(),windowMs=120*86400000;
+      inCinemas=Number.isFinite(start)&&now>=start-7*86400000&&now<=start+windowMs&&!streams.length;
+    }
+    return {region:code,streams,cinemaDate,inCinemas,guide:/^https:\/\//.test(String(row.link||''))?String(row.link):'',sourcePage:sourcePage(meta)};
+  }
+  function providerSearch(provider,title){
+    const aliases={
+      'Amazon Prime Video':'Prime Video','Prime Video':'Prime Video','Netflix':'Netflix','Disney Plus':'Disney+',
+      'HBO Max':'Max','Max':'Max','Apple TV':'Apple TV+','Paramount Plus':'Paramount+','Hulu':'Hulu',
+      'Peacock Premium':'Peacock','Peacock Premium Plus':'Peacock','Globoplay':'Globoplay',
+      'Crunchyroll Amazon Channel':'Crunchyroll','Crunchyroll':'Crunchyroll','Rakuten Viki':'Viki'
+    };
+    const mapped=aliases[String(provider||'')]||String(provider||'');
+    try{
+      if(typeof platformSearchUrl==='function'&&mapped)return platformSearchUrl(mapped,title);
+    }catch(_){}
+    return '';
+  }
+  function viewingTarget(meta,title,region){
+    const a=availability(meta,region);
+    if(a.streams.length){
+      const direct=providerSearch(a.streams[0],title);
+      return {mode:'stream',href:direct||a.guide||a.sourcePage,provider:a.streams[0],availability:a};
+    }
+    if(a.inCinemas)return {mode:'cinema',href:a.sourcePage||a.guide,provider:'',availability:a};
+    return {mode:'guide',href:a.guide||a.sourcePage,provider:'',availability:a};
+  }
 
   function hardenImage(img,title,meta){
     if(!img)return;
@@ -71,7 +121,7 @@
   function renderPreview(host,meta,{kids=false,title=''}={}){
     if(!host)return;host.replaceChildren();host.hidden=true;
     if(!meta||(kids&&meta.kids_approved!==true))return;
-    const label=document.createElement('div');label.className='matchapp-media-preview-label';label.textContent='Preview';
+    const label=document.createElement('div');label.className='matchapp-media-preview-label';label.textContent=(typeof window.t==='function'&&window.t('discover.preview'))||'Preview';
     if(meta.preview_kind==='video'&&TRUSTED_EMBED.test(String(meta.preview_embed_url||''))){const frame=document.createElement('iframe');frame.src=meta.preview_embed_url;frame.title=`${title||meta.title} preview`;frame.loading='lazy';frame.allow='accelerometer; autoplay; encrypted-media; picture-in-picture';frame.allowFullscreen=true;frame.referrerPolicy='strict-origin-when-cross-origin';host.append(label,frame);host.hidden=false;return;}
     if(meta.preview_kind==='audio'&&TRUSTED_AUDIO.test(String(meta.preview_url||''))){const audio=document.createElement('audio');audio.controls=true;audio.preload='none';audio.src=meta.preview_url;audio.setAttribute('aria-label',`${title||meta.title} audio preview`);host.append(label,audio);host.hidden=false;}
   }
@@ -116,6 +166,6 @@
     const obs=new MutationObserver(records=>{let main=false,kids=false;for(const r of records){const el=r.target.nodeType===1?r.target:r.target.parentElement;if(el?.id==='res-title'||el?.closest?.('#result-card'))main=true;if(el?.id==='kids-watch-name'||el?.closest?.('#kids-watch-dialog'))kids=true;}if(main)queueMicrotask(enrichMain);if(kids)queueMicrotask(enrichKids);document.querySelectorAll('img[data-title]:not([data-matchapp-media-hardened]),img[data-poster-title]:not([data-matchapp-media-hardened]),#res-poster-img:not([data-matchapp-media-hardened]),.kids-card img:not([data-matchapp-media-hardened])').forEach(img=>hardenImage(img,titleForImage(img)));});
     obs.observe(document.documentElement,{subtree:true,childList:true,characterData:true,attributes:false});enrichMain();enrichKids();
   }
-  window.MatchAppCatalogMedia=Object.freeze({lookup,normalise,localPoster,enrichMain,enrichKids});
+  window.MatchAppCatalogMedia=Object.freeze({lookup,normalise,localPoster,enrichMain,enrichKids,renderPreview,availability,viewingTarget,sourcePage,regionCode});
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
 })();
