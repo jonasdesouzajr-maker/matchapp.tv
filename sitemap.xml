@@ -1290,4 +1290,34 @@
         <changefreq>daily</changefreq>
         <priority>0.6</priority>
     </url>
+    <url>
+        <loc>https://matchapp.tv/news/articles/five-things-you-may-not-know-about-emmy-history-maker-matthew-rhys-cf1c04/</loc>
+        <lastmod>2026-09-18T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/news/articles/home-alone-and-schitt-s-creek-stars-tribute-to-late-on-screen-mom-o-hara-991211/</loc>
+        <lastmod>2026-09-18T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/news/articles/in-pictures-stars-on-red-carpet-at-emmy-awards-in-la-4033f7/</loc>
+        <lastmod>2026-09-18T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/news/articles/memorable-moments-from-the-emmys-and-everything-you-couldn-t-see-on-tv-175bb3/</loc>
+        <lastmod>2026-09-18T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/news/articles/watch-selena-gomez-zendaya-and-other-stars-light-up-emmys-red-carpet-9a5128/</loc>
+        <lastmod>2026-09-18T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
 </urlset>
