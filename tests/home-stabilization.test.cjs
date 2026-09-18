@@ -80,11 +80,11 @@ test('both Android Studio modules point to current live surfaces for AAB build',
   const kids=read('android-studio/kidsapp/src/main/java/tv/matchapp/kids/MainActivity.kt');
 
   for(const gradle of [mainGradle,kidsGradle]){
-    assert.match(gradle,/versionCode = 7/);
-    assert.match(gradle,/versionName = "1\.1\.5"/);
+    assert.match(gradle,/versionCode = 8/);
+    assert.match(gradle,/versionName = "1\.1\.6"/);
   }
-  assert.match(main,/https:\/\/matchapp\.tv\/\?utm_source=android_app&appBuild=7/);
-  assert.match(kids,/https:\/\/matchapp\.tv\/kids\/\?utm_source=android_kids_app&appBuild=7/);
+  assert.match(main,/https:\/\/matchapp\.tv\/\?utm_source=android_app&appBuild=8/);
+  assert.match(kids,/https:\/\/matchapp\.tv\/kids\/\?utm_source=android_kids_app&appBuild=8/);
   assert.match(main,/MATCHAPP_ANDROID_KIDS_DISABLED/);
   assert.match(kids,/MATCHAPP_ANDROID_KIDS_ONLY/);
 });
