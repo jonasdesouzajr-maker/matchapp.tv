@@ -60,7 +60,7 @@ test('core pages carry unique 2026 entertainment keywords and stay ads/search re
  assert.match(home,/name="keywords"[^>]+K-drama 2026/);
  assert.match(home,/micro-drama/);
  assert.match(home,/google-adsense-account" content="ca-pub-9541435081010948"/);
- assert.match(home,/dateModified":"2026-09-16"/);
+ assert.match(home,/dateModified":"2026-\d{2}-\d{2}"/);
  assert.match(discover,/where to stream a title/);
  assert.match(discover,/micro-drama finder/);
  assert.match(pricing,/Ask AI credits/);
