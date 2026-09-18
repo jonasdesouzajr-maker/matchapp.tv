@@ -49,10 +49,16 @@
     vp.dataset.matchappAutoplayFix='5';
     holdLegacy(vp);
     const coarse=!!(window.matchMedia&&window.matchMedia('(pointer: coarse)').matches);
-    vp.style.touchAction=coarse?'pan-y':'pan-x pan-y';
+    vp.style.touchAction='pan-x pan-y';
+    if(coarse){
+      vp.style.overflowX='auto';
+      vp.style.webkitOverflowScrolling='touch';
+      track.classList.remove('is-marquee-flowing');
+      vp.dataset.matchappAutoplayActive='0';
+    }
     vp.style.overscrollBehaviorX='contain';
 
-    const canFlow=()=>!reduced();
+    const canFlow=()=>!reduced()&&!coarse;
     const held=new Set();
     let resumeTimer=0;
     let drag=null;
