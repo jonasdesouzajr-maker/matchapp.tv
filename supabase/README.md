@@ -268,8 +268,9 @@ before writing. `FOR UPDATE` row locks make concurrent requests safe, and
 ## Known limitation: anonymous visitors
 
 Anonymous users have no authenticated identity, so there is nothing to meter
-against server-side. Their **3 free matches remain client-side** and can be
-reset by clearing localStorage.
+against server-side. Their **3 included AI actions remain client-side** and are
+shared by the guest Match / Ask AI flows through the same browser-local daily
+counter. Clearing localStorage can reset that anonymous counter.
 
 This is a deliberate trade-off, not an oversight. Metering anonymous users
 properly would require device fingerprinting or IP rate limiting, both of which
