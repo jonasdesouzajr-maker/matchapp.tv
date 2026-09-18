@@ -160,10 +160,9 @@
   }
 
   function patchVipQuotaPresentation(){
-    if(typeof window.refreshQuotaStatus!=='function'||window.refreshQuotaStatus.__auditWrapped)return;
-    const original=window.refreshQuotaStatus;
-    const wrapped=async function(){const data=await original.apply(this,arguments);if(data?.is_vip&&!data?.is_business){const n=$('#result-quota-num'),l=$('#result-quota-label'),c=$('#result-quota-corner');if(n)n.textContent='∞';if(l)l.textContent='VIP matches';if(c)c.setAttribute('aria-label','Unlimited VIP matches');}return data;};
-    wrapped.__auditWrapped=true;window.refreshQuotaStatus=wrapped;
+    // The live backend is the single source of truth. app.js already renders
+    // the numeric server-returned remaining/limit values, including VIP=10/day.
+    // Do not override that verified state with a synthetic "unlimited" display.
   }
 
   function init(){
