@@ -2,13 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://matchapp.tv/</loc>
-        <lastmod>2026-09-18T12:18:45+00:00</lastmod>
+        <lastmod>2026-09-18T15:47:33+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/discover.html</loc>
-        <lastmod>2026-09-18T12:18:49+00:00</lastmod>
+        <lastmod>2026-09-18T14:33:55+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.9</priority>
     </url>
@@ -38,19 +38,19 @@
     </url>
     <url>
         <loc>https://matchapp.tv/together.html</loc>
-        <lastmod>2026-09-18T12:19:00+00:00</lastmod>
+        <lastmod>2026-09-18T13:57:51+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/pricing/pricing.html</loc>
-        <lastmod>2026-09-18T12:18:56+00:00</lastmod>
+        <lastmod>2026-09-18T13:57:54+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/events-archive.html</loc>
-        <lastmod>2026-09-18T10:51:17+00:00</lastmod>
+        <lastmod>2026-09-18T13:57:44+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
     </url>
@@ -62,7 +62,7 @@
     </url>
     <url>
         <loc>https://matchapp.tv/privacy.html</loc>
-        <lastmod>2026-09-18T12:29:26+00:00</lastmod>
+        <lastmod>2026-09-18T14:20:47+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.3</priority>
     </url>
@@ -493,6 +493,12 @@
         <priority>0.6</priority>
     </url>
     <url>
+        <loc>https://matchapp.tv/where-to-watch/resident-evil-2026/</loc>
+        <lastmod>2026-09-18T12:19:38+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
         <loc>https://matchapp.tv/kids/titles/bluey/</loc>
         <lastmod>2026-09-17T00:00:00+00:00</lastmod>
         <changefreq>weekly</changefreq>
@@ -908,7 +914,7 @@
     </url>
     <url>
         <loc>https://matchapp.tv/news/</loc>
-        <lastmod>2026-09-18T12:55:58+00:00</lastmod>
+        <lastmod>2026-09-18T17:03:36+00:00</lastmod>
         <changefreq>hourly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -937,8 +943,20 @@
         <priority>0.6</priority>
     </url>
     <url>
+        <loc>https://matchapp.tv/news/articles/8216-masc-8217-review-a-neurodivergent-gay-man-navigates-the-world-in-a-striking-a7da13/</loc>
+        <lastmod>2026-09-18T17:03:36+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
         <loc>https://matchapp.tv/news/articles/8216-monster-the-lizzie-borden-story-8217-team-on-painting-a-portrait-of-female--0ec17c/</loc>
         <lastmod>2026-09-17T19:15:08+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/news/articles/8216-once-upon-a-time-in-harlem-8217-wins-library-of-congress-lavine-ken-burns-p-c3fca0/</loc>
+        <lastmod>2026-09-18T17:03:36+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.6</priority>
     </url>
@@ -961,6 +979,18 @@
         <priority>0.6</priority>
     </url>
     <url>
+        <loc>https://matchapp.tv/news/articles/8216-the-traitors-8217-cast-kristin-chenoweth-chloe-kim-rashad-jennings-whitney--c9d818/</loc>
+        <lastmod>2026-09-18T17:03:36+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/news/articles/8216-youth-8217-review-sharon-horgan-8217-s-hbo-comedy-is-a-fun-frisky-bracingly-201dea/</loc>
+        <lastmod>2026-09-18T17:03:36+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
         <loc>https://matchapp.tv/news/articles/8220-this-is-so-uncomfortable-8221-douglas-booth-on-putting-britain-8217-s-polic-a2443a/</loc>
         <lastmod>2026-09-18T12:55:58+00:00</lastmod>
         <changefreq>daily</changefreq>
@@ -969,6 +999,12 @@
     <url>
         <loc>https://matchapp.tv/news/articles/ai-not-a-threat-to-films-say-shaun-the-sheep-creators-95081f/</loc>
         <lastmod>2026-09-18T12:55:58+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/news/articles/alan-ritchson-in-talks-to-star-in-sony-8217-s-8216-helldivers-8217-video-game-ad-4578ed/</loc>
+        <lastmod>2026-09-18T17:03:36+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.6</priority>
     </url>
@@ -1005,6 +1041,12 @@
     <url>
         <loc>https://matchapp.tv/news/articles/carly-rae-jepsen-esta-em-paz-em-ser-da-classe-media-do-pop-encontrei-meu-ponto-i-046e8c/</loc>
         <lastmod>2026-09-18T07:21:43+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/news/articles/carly-rae-jepsen-on-how-sofia-coppola-8217-s-8216-marie-antoinette-8217-and-an-o-007941/</loc>
+        <lastmod>2026-09-18T17:03:36+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.6</priority>
     </url>
@@ -1081,6 +1123,12 @@
         <priority>0.6</priority>
     </url>
     <url>
+        <loc>https://matchapp.tv/news/articles/ex-bbb-milena-estara-na-tv-globinho-jamais-imaginaria-que-faria-parte-de-um-proj-a3a32e/</loc>
+        <lastmod>2026-09-18T17:03:36+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
         <loc>https://matchapp.tv/news/articles/feito-pipa-e-o-filme-escolhido-para-representar-o-brasil-em-disputa-por-vaga-no--74709e/</loc>
         <lastmod>2026-09-17T19:15:08+00:00</lastmod>
         <changefreq>daily</changefreq>
@@ -1131,6 +1179,18 @@
     <url>
         <loc>https://matchapp.tv/news/articles/gta-6-soundtrack-reveal-revives-digital-release-debate-8258a9/</loc>
         <lastmod>2026-09-17T19:15:08+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/news/articles/harry-potter-and-the-goblet-of-no-booze-be05ab/</loc>
+        <lastmod>2026-09-18T17:03:36+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/news/articles/harry-styles-funds-free-coffee-at-two-london-cafes-f5125b/</loc>
+        <lastmod>2026-09-18T17:03:36+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.6</priority>
     </url>
@@ -1279,6 +1339,12 @@
         <priority>0.6</priority>
     </url>
     <url>
+        <loc>https://matchapp.tv/news/articles/nicole-wallace-joins-josh-heuston-in-amazon-mgm-s-throttled-adaptation-b9e15d/</loc>
+        <lastmod>2026-09-18T17:03:36+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
         <loc>https://matchapp.tv/news/articles/novo-resident-evil-acerta-no-terror-e-suspense-mas-exagera-no-humor-g1-ja-viu-34b1e9/</loc>
         <lastmod>2026-09-17T19:15:08+00:00</lastmod>
         <changefreq>daily</changefreq>
@@ -1291,8 +1357,26 @@
         <priority>0.6</priority>
     </url>
     <url>
+        <loc>https://matchapp.tv/news/articles/pitty-serve-rock-voraz-em-sobremesa-mas-falta-um-real-sabor-de-novidade-ao-aperi-1a4ccf/</loc>
+        <lastmod>2026-09-18T17:03:36+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
         <loc>https://matchapp.tv/news/articles/quem-melhor-usou-o-telao-do-rock-in-rio-g1-explica-a-tecnologia-e-lista-os-desta-d14c1f/</loc>
         <lastmod>2026-09-17T19:15:08+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/news/articles/resident-evil-movie-director-says-he-was-not-prepared-for-fan-backlash-3162d7/</loc>
+        <lastmod>2026-09-18T17:03:36+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/news/articles/spring-awakening-composer-duncan-sheik-dies-at-56-3c5423/</loc>
+        <lastmod>2026-09-18T17:03:36+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.6</priority>
     </url>
@@ -1305,6 +1389,12 @@
     <url>
         <loc>https://matchapp.tv/news/articles/survival-tips-from-oldenburg-8217-s-resident-provocateur-edgar-pera-ed8fab/</loc>
         <lastmod>2026-09-17T20:10:24+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/news/articles/tenko-and-coronation-street-actress-stephanie-cole-dies-aged-84-ace867/</loc>
+        <lastmod>2026-09-18T17:03:36+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.6</priority>
     </url>
@@ -1342,12 +1432,6 @@
         <loc>https://matchapp.tv/news/articles/zoe-bell-is-ready-for-round-two-1bf285/</loc>
         <lastmod>2026-09-17T22:49:48+00:00</lastmod>
         <changefreq>daily</changefreq>
-        <priority>0.6</priority>
-    </url>
-    <url>
-        <loc>https://matchapp.tv/where-to-watch/resident-evil-2026/</loc>
-        <lastmod>2026-09-18T00:00:00+00:00</lastmod>
-        <changefreq>weekly</changefreq>
         <priority>0.6</priority>
     </url>
 </urlset>
