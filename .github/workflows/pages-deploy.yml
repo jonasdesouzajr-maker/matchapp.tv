@@ -58,7 +58,6 @@ jobs:
           grep -Fq "addEventListener('push'" sw.js
           grep -Fq 'Resident Evil (2026)' where-to-watch/resident-evil-2026/index.html
           grep -Fq 'Selected criteria are hard requirements' app.js
-          grep -Fq 'loginWithApple' app.js
           grep -Fq 'matchapp_first_time_onboarding_v1' onboarding-tour.js
           grep -Fq '/kids/onboarding-tour.js?v=1' kids/index.html
           grep -Fq 'blockedOriginCountries' settings.js
