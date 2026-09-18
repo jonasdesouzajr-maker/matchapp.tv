@@ -21,7 +21,7 @@
     'q.vibe': 'Pace',
     'q.era': 'When it was made',
     'q.rating': 'Who is watching',
-    'q.submit': 'Find my match',
+    'q.submit': 'Find My Match',
     'opt.surprise': 'I trust you',
     'spotlight.eyebrow': 'Most anticipated premiere',
     'jump.trending': 'See what\u2019s opening',
