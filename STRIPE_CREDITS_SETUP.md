@@ -1,4 +1,4 @@
-# Stripe setup — Credit packs
+# Stripe setup — MatchApp top-up packs
 
 Everything on the MatchApp side is built and deployed-ready. This is the part
 that has to be done inside the Stripe dashboard, in order. Takes about 15
@@ -15,30 +15,28 @@ minutes.
 | Power | 200 | **$14.99** | 7.5¢ |
 | Studio | 500 | **$29.99** | 6¢ |
 
-**1 credit = 1 AI action** — one match or one Ask AI question, beyond the free
-daily allowance. Credits never expire.
+The commercial model is intentionally explicit:
 
-VIP is $4.99/month for 10 matches a day — roughly 300 a month, about **1.7¢
-each**. Credits are priced at 3.5× to 7× that, and that gap is deliberate:
+- Included daily AI actions: **3 Guest / 5 Registered / 10 VIP / 50 Business**.
+- An included action can be used for either one Match or one Ask AI request.
+- After the included allowance is exhausted, **Extra Matches** extend Matches only.
+- After the included allowance is exhausted, **Ask AI credits** extend Ask AI only.
+- Paid top-ups never expire.
+- Business is currently a **single-account high-volume plan**. There is no team-seat entitlement.
 
-- Credits are bought by someone who hit today's limit and wants to keep going
-  **right now**. That is an impulse purchase, priced on the moment.
-- If credits were near the subscription rate they would cannibalise it —
-  someone would buy 300 credits for $5 instead of subscribing, and we would
-  lose the recurring revenue *and* the retention.
-- Because the gap is wide and stated openly on the pricing page, the packs
-  push people **into** VIP rather than away from it. That is the correct job
-  for a one-time SKU sitting next to a subscription.
+The four credit products below are therefore **Ask AI credits only**. They must
+never be granted or consumed as Extra Matches. Extra Match packs are separate
+products and balances.
 
 ---
 
-## Step 1 — Create the four Payment Links
+## Step 1 — Create the four Ask AI credit Payment Links
 
 In Stripe: **Products → Payment Links → + New**, four times.
 
 For each one:
 
-1. **Product name:** `MatchApp — 25 Credits` (then 75, 200, 500)
+1. **Product name:** `MatchApp — 25 Ask AI Credits` (then 75, 200, 500)
 2. **Price:** one-time, USD, the amount from the table above
 3. **Type:** ⚠️ **One-time**, not recurring. This matters — the webhook uses
    checkout mode to tell a top-up from a subscription, and a recurring price
@@ -112,7 +110,7 @@ function and must never be removed.
 Stripe → **Developers → Webhooks** → your MatchApp endpoint.
 
 It needs `checkout.session.completed` enabled. It almost certainly already is
-(the subscriptions use it), but confirm — credits are granted from that event.
+(the subscriptions use it), but confirm — Ask AI credits are granted from that event.
 
 ---
 
