@@ -7,7 +7,7 @@ Designed with a built-in freemium monetization loop, the app utilizes a forced-v
 ## ✨ Core Features
 
 * **Smart Matchmaking Algorithm:** Client-side filtering that matches user input against a categorized content database (cataloging Telenovelas, Movies, and Series).
-* **Monetization Engine:** A built-in 6-second interstitial loading screen designed to maximize Google AdSense viewability and impressions before revealing the result.
+* **Monetization:** Google AdSense is limited to content-rich publisher surfaces and is never used to gate results, authentication, account management, pricing, or other behavioral screens.
 * **Freemium Cooldown Loop:** 
   * Unregistered users receive exactly **1 free match** (tracked via Local Storage).
   * Registered users receive **1 free match every 24 hours**.
