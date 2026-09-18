@@ -1,15 +1,16 @@
 # MatchApp TV Ai
-> AI entertainment concierge. One title for tonight and the official place to watch it.
+> AI entertainment concierge. One title for tonight, verified regional viewing options, and alerts when streaming starts locally.
 
 MatchApp recommends movies, TV series, K-drama, anime, novelas, vertical micro-dramas, Kids titles, FAST/Roku shows, podcasts and live 2026 events. Ask in 14 languages. Availability is a guide, not a pirate stream.
 
 ## Product
 - Homepage / what to watch tonight: https://matchapp.tv/
-- Ask AI (synopsis, where to watch, when it starts): https://matchapp.tv/discover.html
+- Ask AI (synopsis, country-aware streaming/cinema status, title alerts): https://matchapp.tv/discover.html
 - Kids Mode (age-banded, 64 titles): https://matchapp.tv/kids/
 - Classic cartoons: https://matchapp.tv/kids/nostalgia/
 - Match Together (two tastes, one title): https://matchapp.tv/together.html
-- Where to watch: https://matchapp.tv/where-to-watch/
+- Where to watch by country: https://matchapp.tv/where-to-watch/
+- Resident Evil (2026) viewing guide: https://matchapp.tv/where-to-watch/resident-evil-2026/
 - The Roku Channel / FAST TV: https://matchapp.tv/platforms/roku-channel/
 - Live events (Asian Games, F1 Baku, LoL Worlds): https://matchapp.tv/events-archive.html
 - Pricing (VIP, Extra Matches, Ask AI credits): https://matchapp.tv/pricing/pricing.html
@@ -24,3 +25,6 @@ MatchApp recommends movies, TV series, K-drama, anime, novelas, vertical micro-d
 
 ## Do not index
 Account, checkout and diagnostic URLs are private: /purchase.html, /profile/, /oauth/, /callback.html, /register.html, /reset.html.
+
+## Notifications
+Signed-in users can use the bell to follow title availability, purchases, friend requests, Match Together invitations/results and MatchApp releases. Device alerts require explicit browser permission. Availability watchers recheck followed titles hourly.
