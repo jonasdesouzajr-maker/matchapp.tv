@@ -233,7 +233,7 @@
     const existing=document.getElementById('res-media-meta');
     if(!meta){existing?.remove();return;}
     const synopsis=document.getElementById('res-synopsis');if(synopsis&&(!synopsis.textContent||synopsis.textContent.trim().length<24)&&meta.overview)synopsis.textContent=meta.overview;
-    const bits=[];if(meta.year)bits.push(meta.year);if(meta.runtime_minutes)bits.push(`${meta.runtime_minutes} min`);if(meta.content_rating)bits.push(meta.content_rating);if(meta.vote_average)bits.push(`★ ${Number(meta.vote_average).toFixed(1)}`);
+    const bits=[];if(meta.year)bits.push(meta.year);if(meta.runtime_minutes)bits.push(`${meta.runtime_minutes} min`);if(meta.content_rating)bits.push(meta.content_rating);if(meta.vote_average)bits.push(`★ ${Number(meta.vote_average).toFixed(1)}`);(Array.isArray(meta.genres)?meta.genres:[]).slice(0,5).forEach(g=>bits.push(g));
     if(!bits.length){existing?.remove();return;}
     const badge=document.getElementById('res-platform-badge');if(!badge)return;
     const el=existing||document.createElement('span');el.id='res-media-meta';el.className='matchapp-media-meta';el.textContent=bits.join(' · ');if(!existing)badge.insertAdjacentElement('afterend',el);
