@@ -8,7 +8,7 @@ test('homepage brand lockup is scoped, responsive and uses the searched display 
 
   assert.match(html,/id="home-brand-lockup"/);
   assert.match(html,/family=Inter[^"]*Space\+Grotesk/);
-  assert.match(html,/href="\/home-brand\.css\?v=1"/);
+  assert.match(html,/href="\/home-brand\\.css\\?v=\\d+"/);
   assert.match(html,/class="home-brand-match">MatchApp</);
   assert.match(html,/class="home-brand-tv">TV</);
   assert.doesNotMatch(html,/id="home-brand-lockup"[\s\S]{0,800}matchapp-tv-ai-v2\.svg/);
