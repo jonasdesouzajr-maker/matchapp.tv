@@ -23,9 +23,9 @@ test('VIP copy remediation stays tied to the established 10/day entitlement', ()
   const deployFix = read('tools/apply-critical-hotfixes.js');
   const runtime = read('build-meta.js');
   const locale = read('i18n.js');
-  assert.match(deployFix, /10<\/strong> AI Matches Daily/);
+  assert.match(deployFix, /10<\/strong> included AI actions daily/);
   assert.match(runtime, /const vipDaily = 10/);
-  assert.match(read('app.js'), /THE LIMIT LOGIC \(3 Free, 5 Registered, 10 VIP\)/);
+  assert.match(read('app.js'), /INCLUDED DAILY AI ACTIONS \(3 Guest, 5 Registered, 10 VIP, 50 Business\)/);
 
   // The localization layer runs after build-meta.js. Every supported pricing
   // locale must therefore carry the 10/day copy itself or it can restore an
