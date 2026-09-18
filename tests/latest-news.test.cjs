@@ -61,7 +61,7 @@ test('news deep links unfold Latest News and reveal the requested story',()=>{
   assert.match(src,/ma-news-card-target/);
 });
 
-test('news cards open the original source securely and preserve accessibility, analytics and ads',()=>{
+test('news cards open the original source securely and preserve accessibility and analytics without direct ad monetization',()=>{
   const src=read('latest-news.js');
   assert.match(src,/a\.href=original\|\|'#'/);
   assert.match(src,/target='_blank'/);
@@ -70,7 +70,7 @@ test('news cards open the original source securely and preserve accessibility, a
   assert.match(src,/scroll-snap-type:x proximity/);
   assert.match(src,/latest_news_open/);
   assert.match(src,/latest_news_click/);
-  assert.match(src,/data-ad-slot=\"2595698117\"/);
+  assert.doesNotMatch(src,/adsbygoogle|data-ad-slot=/);
   assert.match(src,/fallbackImage/);
   assert.match(src,/primaryKeyword/);
   assert.doesNotMatch(src,/MatchApp summary/);
@@ -99,9 +99,10 @@ test('hourly generator polls trusted feeds, Google Trends and rejects rumor lang
   assert.doesNotMatch(src,/articleBody/);
 });
 
-test('generated pages expose rich unique metadata, structured source attribution and deep links',()=>{
+test('generated source wrappers are noindex and expose structured attribution and deep links',()=>{
   const src=read('tools/refresh-news-rss.js');
   assert.match(src,/meta name=\"description\"/);
+  assert.match(src,/meta name=\"robots\" content=\"noindex,follow\"/);
   assert.match(src,/meta name=\"keywords\"/);
   assert.match(src,/property=\"og:title\"/);
   assert.match(src,/name=\"twitter:title\"/);
@@ -126,13 +127,14 @@ test('news archive preserves stable SEO pages and original keyword snapshots ove
   assert.doesNotMatch(src,/rmSync\(ART/);
 });
 
-test('hourly workflow and sitemap generator publish generated news URLs with stable lastmod values',()=>{
+test('hourly workflow keeps only the curated news hub in the canonical sitemap',()=>{
   const yml=read('.github/workflows/news-refresh.yml'),sm=read('tools/update-sitemap.js'),urls=JSON.parse(read('tools/news-urls.json'));
   assert.match(yml,/cron: '11 \* \* \* \*'/);
   assert.match(yml,/node tools\/refresh-news-rss\.js/);
   assert.match(yml,/node tools\/update-sitemap\.js/);
   assert.match(yml,/news-sitemap-meta\.json/);
   assert.match(sm,/newsUrlsFromDisk\(\)/);
+  assert.match(sm,/Only the curated news hub is indexable/);
   assert.match(sm,/readObject\('news-sitemap-meta\.json'\)/);
   assert.match(sm,/validLastmod/);
   assert.ok(urls.includes('https://matchapp.tv/news/'));
