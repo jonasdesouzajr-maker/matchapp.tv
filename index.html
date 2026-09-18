@@ -1151,6 +1151,19 @@
            is why the form stayed two-up and cramped on phones no matter what.
            As classes they respond properly. */
         .q-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 16px; align-items: start; }
+        .q-grid--primary { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+        .match-more-filters { margin-top: 12px; border: 1px solid rgba(229,193,88,.24); border-radius: 14px; overflow: clip; background: rgba(255,255,255,.018); }
+        .match-more-filters summary { min-height: 46px; box-sizing: border-box; display:flex; align-items:center; justify-content:center; padding:11px 14px; cursor:pointer; color:var(--gold-glow); font-weight:800; font-size:13px; letter-spacing:.35px; list-style:none; }
+        .match-more-filters summary::-webkit-details-marker { display:none; }
+        .match-more-filters summary:focus-visible { outline:3px solid rgba(229,193,88,.5); outline-offset:-3px; }
+        .match-more-filters .more-filters-close { display:none; }
+        .match-more-filters[open] .more-filters-open { display:none; }
+        .match-more-filters[open] .more-filters-close { display:inline; }
+        .match-more-filters .q-grid--advanced { padding:0 14px 14px; }
+        @media (max-width:760px) {
+            .q-grid--primary, .q-grid--advanced { grid-template-columns:1fr; }
+            .match-more-filters .q-grid--advanced { padding:0 10px 10px; }
+        }
         .res-action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px; }
         .res-action-grid--last { margin-bottom: 25px; }
 
@@ -1526,23 +1539,6 @@
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
-<!-- OS-LEVEL CHROME DEEP LINK INJECTOR -->
-    <div id="chrome-notice" onclick="openInChrome()" role="button" tabindex="0" onkeydown="if(event.key==='Enter')openInChrome()">
-        <span class="chrome-link">
-            <!-- Chrome mark drawn locally rather than hotlinked from Wikimedia.
-                 The old external image element depended on a server we don't control,
-                 and at 22px a remote request for a logo is pure overhead. -->
-            <svg class="chrome-mark" viewBox="0 0 48 48" width="14" height="14" aria-hidden="true" focusable="false">
-                <circle cx="24" cy="24" r="21" fill="none" stroke="currentColor" stroke-width="4" opacity="0.5"/>
-                <circle cx="24" cy="24" r="8.5" fill="none" stroke="currentColor" stroke-width="4"/>
-                <line x1="31.5" y1="19.5" x2="45" y2="19.5" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
-                <line x1="19.7" y1="30.9" x2="12.9" y2="42.6" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
-                <line x1="24" y1="15.5" x2="17.2" y2="3.8" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
-            </svg>
-            <span data-i18n="chrome.notice">Open on Google Chrome for the Best Experience</span>
-            <span class="chrome-arrow" aria-hidden="true">→</span>
-        </span>
-    </div>
     <!-- Ambient background: flowing aurora waves + streaming logos with real
          collision physics. See ambient.js. -->
     <canvas id="ambient-bg" aria-hidden="true"></canvas>
@@ -1644,17 +1640,6 @@
         <span class="live-strip-item" id="live-activity">&nbsp;</span>
     </div>
 
-    <!-- UPGRADE RIBBON — sits directly under the status strip, above the fold,
-         so it's seen before anyone hits a rough edge rather than after. -->
-    <div id="upgrade-ribbon" class="upgrade-ribbon" role="status">
-        <span class="ur-pulse" aria-hidden="true"></span>
-        <span class="ur-text">
-            <strong data-i18n="ribbon.title">🚀 Big upgrades rolling out this week</strong>
-            <span data-i18n="ribbon.body">New titles, smarter matching and better covers are landing daily. You may spot the odd rough edge while we build — thanks for being early.</span>
-        </span>
-        <button class="ur-close" onclick="dismissUpgradeRibbon()" aria-label="Dismiss this notice" title="Dismiss">✕</button>
-    </div>
-
     <main class="page-wrapper" style="flex: 1; position: relative;">
         <div class="main-layout">
             <!-- STICKY ADSENSE SIDEBAR AD LEFT -->
@@ -1750,7 +1735,7 @@
 
                 <article id="questionnaire-box" class="premium-card">
                     <h2 style="margin: 0 0 25px 0; font-size: 34px; color: var(--gold); text-align: center; font-weight: 900; text-transform: uppercase;" data-i18n="q.title">Curate Your Perfect Match</h2>
-                    <div class="q-grid">
+                    <div class="q-grid q-grid--primary">
                         <div>
                             <label style="color:#ccc; font-size:14px; font-weight:bold; margin-bottom:8px; display:block; text-transform:uppercase;" data-i18n="q.category">Category / Format</label>
                             <select id="q-category" style="width:100%; padding:18px; border-radius:12px; border: 1px solid rgba(255,255,255,0.2); background: #000; color:#fff; font-size:16px;">
@@ -1810,6 +1795,24 @@
                             </select>
                         </div>
                         <div>
+                            <label style="color:#ccc; font-size:14px; font-weight:bold; margin-bottom:8px; display:block; text-transform:uppercase;" data-i18n="q.mood">Mood</label>
+                            <select id="q-mood" style="width:100%; padding:18px; border-radius:12px; border: 1px solid rgba(255,255,255,0.2); background: #000; color:#fff; font-size:16px;">
+                                <option value="any" data-i18n="opt.anymood">Any Mood</option>
+                                <option value="intense and thrilling" data-i18n="mood.intense">Intense &amp; Thrilling</option>
+                                <option value="light and feel-good" data-i18n="mood.light">Light &amp; Feel-Good</option>
+                                <option value="romantic" data-i18n="mood.romantic">Romantic &amp; Swoony</option>
+                                <option value="heartbreaking" data-i18n="mood.heartbreak">Emotional &amp; Heartbreaking</option>
+                                <option value="funny" data-i18n="mood.funny">Laugh Out Loud</option>
+                                <option value="scary" data-i18n="mood.scary">Scary &amp; Unsettling</option>
+                                <option value="mind-bending" data-i18n="mood.mindbending">Mind-Bending &amp; Twisty</option>
+                                <option value="inspiring" data-i18n="mood.inspiring">Inspiring &amp; Uplifting</option>
+                                <option value="cozy comfort watch" data-i18n="mood.cozy">Cozy Comfort Watch</option>
+                                <option value="dark and gritty" data-i18n="mood.dark">Dark &amp; Gritty</option>
+                                <option value="epic and adventurous" data-i18n="mood.epic">Epic &amp; Adventurous</option>
+                                <option value="nostalgic" data-i18n="mood.nostalgic">Nostalgic Throwback</option>
+                            </select>
+                        </div>
+                        <div>
                             <label style="color:#ccc; font-size:14px; font-weight:bold; margin-bottom:8px; display:block; text-transform:uppercase;" data-i18n="q.platform">Platform</label>
                             <select id="q-platform" style="width:100%; padding:18px; border-radius:12px; border: 1px solid rgba(255,255,255,0.2); background: #000; color:#fff; font-size:16px;">
                                 <option value="any" data-i18n="opt.anyplatform">Any Platform</option>
@@ -1861,25 +1864,14 @@
                             </select>
                             <div id="platform-country-hint"></div>
                         </div>
-                        <div>
-                            <label style="color:#ccc; font-size:14px; font-weight:bold; margin-bottom:8px; display:block; text-transform:uppercase;" data-i18n="q.mood">Mood</label>
-                            <select id="q-mood" style="width:100%; padding:18px; border-radius:12px; border: 1px solid rgba(255,255,255,0.2); background: #000; color:#fff; font-size:16px;">
-                                <option value="any" data-i18n="opt.anymood">Any Mood</option>
-                                <option value="intense and thrilling" data-i18n="mood.intense">Intense &amp; Thrilling</option>
-                                <option value="light and feel-good" data-i18n="mood.light">Light &amp; Feel-Good</option>
-                                <option value="romantic" data-i18n="mood.romantic">Romantic &amp; Swoony</option>
-                                <option value="heartbreaking" data-i18n="mood.heartbreak">Emotional &amp; Heartbreaking</option>
-                                <option value="funny" data-i18n="mood.funny">Laugh Out Loud</option>
-                                <option value="scary" data-i18n="mood.scary">Scary &amp; Unsettling</option>
-                                <option value="mind-bending" data-i18n="mood.mindbending">Mind-Bending &amp; Twisty</option>
-                                <option value="inspiring" data-i18n="mood.inspiring">Inspiring &amp; Uplifting</option>
-                                <option value="cozy comfort watch" data-i18n="mood.cozy">Cozy Comfort Watch</option>
-                                <option value="dark and gritty" data-i18n="mood.dark">Dark &amp; Gritty</option>
-                                <option value="epic and adventurous" data-i18n="mood.epic">Epic &amp; Adventurous</option>
-                                <option value="nostalgic" data-i18n="mood.nostalgic">Nostalgic Throwback</option>
-                            </select>
-                        </div>
-                        <div>
+                    </div>
+                    <details class="match-more-filters">
+                        <summary>
+                            <span class="more-filters-open" data-i18n="filters.more">+ More Filters</span>
+                            <span class="more-filters-close" data-i18n="filters.less">− Fewer Filters</span>
+                        </summary>
+                        <div class="q-grid q-grid--advanced">
+                            <div>
                             <label style="color:#ccc; font-size:14px; font-weight:bold; margin-bottom:8px; display:block; text-transform:uppercase;" data-i18n="q.vibe">Vibe / Pacing</label>
                             <select id="q-vibe" style="width:100%; padding:18px; border-radius:12px; border: 1px solid rgba(255,255,255,0.2); background: #000; color:#fff; font-size:16px;">
                                 <option value="any" data-i18n="opt.anyvibe">Any Vibe</option>
@@ -1895,7 +1887,7 @@
                                 <option value="long running series" data-i18n="vibe.longrunning">Long-Running Series</option>
                             </select>
                         </div>
-                        <div>
+                            <div>
                             <label style="color:#ccc; font-size:14px; font-weight:bold; margin-bottom:8px; display:block; text-transform:uppercase;" data-i18n="q.era">Era / Decade</label>
                             <select id="q-decade" style="width:100%; padding:18px; border-radius:12px; border: 1px solid rgba(255,255,255,0.2); background: #000; color:#fff; font-size:16px;">
                                 <option value="any" data-i18n="opt.anyera">Any Era (1920 – Today)</option>
@@ -1912,7 +1904,7 @@
                                 <option value="1920s" data-i18n="era.1920s">1920s — Silent Era</option>
                             </select>
                         </div>
-                        <div>
+                            <div>
                             <label style="color:#ccc; font-size:14px; font-weight:bold; margin-bottom:8px; display:block; text-transform:uppercase;" data-i18n="q.rating">Age Appropriateness</label>
                             <select id="q-rating" style="width:100%; padding:18px; border-radius:12px; border: 1px solid rgba(255,255,255,0.2); background: #000; color:#fff; font-size:16px;">
                                 <option value="any" data-i18n="rating.anyprofile">Use My Profile Age</option>
@@ -1923,16 +1915,10 @@
                                 <option value="mature adults only R rated" data-i18n="rating.mature">Mature (R / TV-MA)</option>
                             </select>
                         </div>
-                    </div>
-                    <!-- Only ever visible in Lazy Mode, where the last four
-                         criteria are folded away. Outside Lazy Mode all six
-                         fields are on screen and this would be a button that
-                         reveals nothing. -->
-                    <button type="button" class="lazy-more-filters"
-                            onclick="document.body.classList.toggle('lazy-filters-open'); this.textContent = document.body.classList.contains('lazy-filters-open') ? '− Fewer filters' : '+ More filters (platform, vibe, era, age)';"
-                            data-i18n="lazy.moreFilters">+ More filters (platform, vibe, era, age)</button>
+                        </div>
+                    </details>
 
-                    <button onclick="triggerMatch(false)" class="gold-btn" style="margin-top: 30px; width: 100%; font-size: 22px; padding: 22px; text-transform: uppercase; letter-spacing: 2px;" data-i18n="q.submit">⚡ Consult AI Concierge</button>
+                    <button onclick="triggerMatch(false)" class="gold-btn" style="margin-top: 30px; width: 100%; font-size: 22px; padding: 22px; text-transform: uppercase; letter-spacing: 2px;" data-i18n="q.submit">⚡ Find My Match</button>
                 </article>
 
 <article id="loading-box" class="premium-card" style="display: none; padding: 46px 20px 40px 20px; text-align: center;">
@@ -2136,7 +2122,17 @@
 
                 </div>
 
-<details id="premiere-disclosure" class="premiere-disclosure" open><summary><span data-i18n="spotlight.eyebrow">Most anticipated premiere</span></summary><article id="spotlight-ahs13" class="premium-card spotlight-card">
+<details id="premiere-disclosure" class="premiere-disclosure" open><summary><span data-i18n="spotlight.eyebrow">Most anticipated premiere</span></summary><!-- MATCH TOGETHER ENTRY -->
+                <a href="/together.html" class="tg-entry">
+                    <span class="tg-entry-icon">🍿</span>
+                    <span class="tg-entry-body">
+                        <strong data-i18n="tg.eyebrow">Watching with someone? Match Together</strong>
+                        <small data-i18n="tg.prefsSub">You both pick — we find the one title you agree on.</small>
+                    </span>
+                    <span class="tg-entry-arrow">→</span>
+                </a>
+
+<article id="spotlight-ahs13" class="premium-card spotlight-card">
                     <div class="spotlight-glow" aria-hidden="true"></div>
                     <div class="spotlight-inner">
                         <div class="spotlight-poster" onclick="saveSpotlightTitle()" role="button" tabindex="0"
@@ -2178,16 +2174,6 @@
 <!-- ============================================ -->
 
                 <!-- ============================================ -->
-
-<!-- MATCH TOGETHER ENTRY -->
-                <a href="/together.html" class="tg-entry">
-                    <span class="tg-entry-icon">🍿</span>
-                    <span class="tg-entry-body">
-                        <strong data-i18n="tg.eyebrow">Watching with someone? Match Together</strong>
-                        <small data-i18n="tg.prefsSub">You both pick — we find the one title you agree on.</small>
-                    </span>
-                    <span class="tg-entry-arrow">→</span>
-                </a>
 
 <section id="how-it-works" class="premium-card" style="text-align:center; padding: 30px 28px;">
                     <h2 style="margin:0 0 10px 0; font-size:26px; color:var(--gold); font-weight:900; text-transform:uppercase; letter-spacing:1px;" data-i18n="how.title">How MatchApp Works</h2>
