@@ -27,7 +27,8 @@ let introPlaying=false;
 let introEnded=false;
 let introMutedFallback=false;
 let introMeta=FALLBACK_META;
-let inerted=[];
+let pageLocked=false;
+let previousBodyOverflow='';
 
 function seen(){
   try{return localStorage.getItem(SEEN_KEY)==='1';}catch(_){return false;}
@@ -123,7 +124,8 @@ function showEndEngagement(){
     requestAnimationFrame(()=>endcap.classList.add('is-visible'));
   }
   document.querySelector('.matchapp-tiktok-intro-actions')?.classList.add('is-ended');
-  introEndTimer=setTimeout(()=>closeIntro(false),6000);
+  // Return control to MatchApp immediately when playback ends.
+  introEndTimer=setTimeout(()=>closeIntro(false),250);
 }
 function replayIntro(){
   if(!introFrame)return;
@@ -155,22 +157,25 @@ async function shareIntroVideo(){
   }
 }
 function lockPage(intro){
-  if(!intro)return;
+  if(!intro||pageLocked)return;
+  pageLocked=true;
+  previousBodyOverflow=document.body.style.overflow||'';
   document.body.classList.add('matchapp-tiktok-intro-open');
-  inerted=[];
-  Array.from(document.body.children).forEach(el=>{
-    if(el===intro||el.tagName==='SCRIPT'||el.tagName==='STYLE'||el.tagName==='NOSCRIPT')return;
-    if('inert' in el&&!el.inert){el.inert=true;inerted.push(el);}
-  });
+  // Do not inert the application DOM. Some Android WebViews can retain inert
+  // state after the cross-origin TikTok iframe ends, making MatchApp look frozen.
+  document.body.style.overflow='hidden';
   setTimeout(()=>intro.querySelector('.matchapp-tiktok-intro-close')?.focus({preventScroll:true}),80);
 }
 function unlockPage(){
-  inerted.forEach(el=>{try{el.inert=false;}catch(_){}});
-  inerted=[];
   document.body.classList.remove('matchapp-tiktok-intro-open');
+  if(pageLocked) document.body.style.overflow=previousBodyOverflow;
+  pageLocked=false;
+  previousBodyOverflow='';
 }
 function closeIntro(mark=true){
   const intro=document.getElementById('matchapp-tiktok-intro');
+  // Release the host page first. Cleanup below must never be able to strand the UI.
+  unlockPage();
   clearTimeout(introFallbackTimer);
   clearTimeout(introHardStopTimer);
   clearTimeout(introEndTimer);
@@ -182,7 +187,6 @@ function closeIntro(mark=true){
   }
   if(intro)intro.hidden=true;
   delete document.documentElement.dataset.tiktokIntro;
-  unlockPage();
 }
 function introFallback(message){
   const intro=document.getElementById('matchapp-tiktok-intro');
