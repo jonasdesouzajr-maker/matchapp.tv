@@ -9,9 +9,15 @@ test('homepage brand lockup is stable from first paint through late mobile CSS',
   const html=read('index.html');
   const brand=read('home-brand.css');
   const mobile=read('home-mobile.css');
+  const shared=read('brand.css');
+  const corrections=read('brand-corrections.js');
 
   assert.match(html,/href="\/home-brand\.css\?v=\d+"/);
-  assert.match(html,/matchapp-logo-animated\.svg\?v=5/);
+  assert.match(html,/brand-logo-placeholder/);
+  assert.match(shared,/matchapp-logo-new\.avif/);
+  assert.match(shared,/html:not\(\.kids-mode\)/);
+  assert.match(corrections,/matchapp-logo-new\.avif/);
+  assert.match(corrections,/isKidsRoute/);
   assert.match(brand,/#home-brand-lockup \.brand-logo[\s\S]*--home-logo-size:4\.5rem/);
   assert.match(html,/class="brand-logo" style="width:var\(--home-logo-size,4\.5rem\)!important;height:var\(--home-logo-size,4\.5rem\)!important;flex:0 0 var\(--home-logo-size,4\.5rem\)!important"/);
   assert.match(brand,/First-paint size invariant/);
