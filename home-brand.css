@@ -135,6 +135,40 @@ html[lang="pt-BR"] #home-brand-lockup .home-ai-pt{display:inline-block}
 @keyframes homeAiPulse{0%,100%{opacity:.5;transform:scale(.72)}50%{opacity:1;transform:scale(1.18)}}
 @keyframes homeAiShimmer{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
 
+/* Install remains a real call-to-action instead of blending into utility controls. */
+html body .app-header .install-btn:not(.is-app-installed){
+  border:1px solid rgba(255,245,195,.9)!important;
+  background:linear-gradient(135deg,#8ef2e7 0%,#E5C158 58%,#fff0a8 100%)!important;
+  color:#171020!important;
+  font-weight:900!important;
+  box-shadow:0 5px 18px rgba(229,193,88,.24),inset 0 1px 0 rgba(255,255,255,.55)!important;
+}
+html body .app-header .install-btn:not(.is-app-installed):hover,
+html body .app-header .install-btn:not(.is-app-installed):focus-visible{
+  filter:brightness(1.06);
+  transform:translateY(-1px);
+}
+html body .app-header .install-btn.is-app-installed{
+  background:rgba(255,255,255,.06)!important;
+  color:#cfc6dd!important;
+  border-color:rgba(255,255,255,.16)!important;
+  box-shadow:none!important;
+}
+
+/* A brief nudge every few seconds, then stillness. It attracts attention
+   without turning the AI shortcut into a constantly moving distraction. */
+body .top-ai-launch:not(:hover):not(:focus-visible){
+  animation:topAiAttention 9s ease-in-out 3s infinite;
+}
+@keyframes topAiAttention{
+  0%,72%,100%{transform:translate3d(0,0,0) rotate(0)}
+  74%{transform:translate3d(-2px,0,0) rotate(-.45deg)}
+  76%{transform:translate3d(2px,0,0) rotate(.45deg)}
+  78%{transform:translate3d(-1.5px,0,0) rotate(-.3deg)}
+  80%{transform:translate3d(1.5px,0,0) rotate(.3deg)}
+  82%{transform:translate3d(0,0,0) rotate(0)}
+}
+
 /* Tablet: preserve hierarchy without making the header consume the page. */
 @media (max-width:1100px){
   #home-brand-lockup .brand-logo{
@@ -144,40 +178,122 @@ html[lang="pt-BR"] #home-brand-lockup .home-ai-pt{display:inline-block}
   #home-brand-lockup .home-ai-link{font-size:clamp(2.15rem,4.6vw,2.7rem)}
 }
 
-/* Phones: brand gets a clean first row; existing controls stay on their own
-   responsive nav row. The relative size hierarchy remains logo > name, Ai > name. */
+/* Phones/tablets: the brand owns the left side; utilities become a
+   compact right-side grid. The logo stays visibly larger than Ai/iA so the
+   lettering inside the mark remains readable on a real phone. */
 @media (max-width:900px){
-  html .app-header #home-brand-lockup{justify-content:center!important}
+  html body .app-header{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr) auto!important;
+    align-items:center!important;
+    column-gap:.7rem!important;
+  }
+  html body .app-header #home-brand-lockup{
+    width:auto!important;
+    justify-content:flex-start!important;
+    gap:.42rem!important;
+    flex:0 1 auto!important;
+  }
+  html body .app-header>nav{
+    display:grid!important;
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    grid-auto-flow:row!important;
+    align-items:center!important;
+    justify-content:end!important;
+    gap:.38rem!important;
+    width:min(42vw,10.25rem)!important;
+    min-width:8.7rem!important;
+    flex:none!important;
+  }
+  html body .app-header>nav>.install-wrap,
+  html body .app-header>nav>#nav-reg-btn,
+  html body .app-header>nav>#nav-logout-btn{
+    grid-column:1/-1;
+    width:100%!important;
+    max-width:none!important;
+    margin:0!important;
+  }
+  html body .app-header>nav>.install-wrap>.install-btn,
+  html body .app-header>nav>.sound-toggle-btn,
+  html body .app-header>nav>#quota-badge,
+  html body .app-header>nav>#profile-link-tab,
+  html body .app-header>nav>#lang-switcher-host{
+    width:100%!important;
+    min-width:0!important;
+    max-width:none!important;
+    margin:0!important;
+    justify-content:center!important;
+  }
+  html body .app-header>nav>#lang-switcher-host select{
+    width:100%!important;
+    max-width:none!important;
+    min-width:0!important;
+  }
 }
 
 @media (max-width:720px){
-  html .app-header #home-brand-lockup{
-    width:100%!important;
-    justify-content:center!important;
-    gap:.48rem!important;
-    flex:1 1 100%!important;
+  html body .app-header{
+    padding-top:8px!important;
+    padding-bottom:8px!important;
+    row-gap:.45rem!important;
   }
-  #home-brand-lockup .home-brand-home{gap:.52rem}
+  #home-brand-lockup .home-brand-home{gap:.42rem}
   #home-brand-lockup .brand-logo{
-    width:3.25rem!important;height:3.25rem!important;flex-basis:3.25rem!important;
+    width:4.35rem!important;
+    height:4.35rem!important;
+    flex-basis:4.35rem!important;
   }
   #home-brand-lockup .home-brand-name{
-    font-size:clamp(1.28rem,6.1vw,1.68rem);
+    font-size:clamp(1.05rem,4.35vw,1.35rem);
     letter-spacing:-.05em;
   }
   #home-brand-lockup .home-ai-link{
-    font-size:clamp(1.65rem,7.2vw,2.05rem);
-    min-width:2.05em;
+    font-size:clamp(1.35rem,5.2vw,1.65rem);
+    min-width:1.85em;
+    min-height:1.42em;
+    padding:.06em .2em .1em;
+  }
+  html body .app-header>nav{
+    width:min(43vw,9.5rem)!important;
+    min-width:8.15rem!important;
+    gap:.34rem!important;
+  }
+  html body .app-header>nav .sound-toggle-btn,
+  html body .app-header>nav .install-btn,
+  html body .app-header>nav #nav-reg-btn,
+  html body .app-header>nav #nav-logout-btn{
+    min-height:2.25rem!important;
+    padding:6px 7px!important;
+    font-size:10.5px!important;
+  }
+  html body .app-header>nav #lang-switcher-host select{
+    min-height:2.25rem!important;
+    padding:5px 4px!important;
+    font-size:10px!important;
   }
 }
+
 @media (max-width:420px){
-  #home-brand-lockup{gap:.34rem!important}
-  #home-brand-lockup .home-brand-home{gap:.4rem}
+  #home-brand-lockup{gap:.3rem!important}
+  #home-brand-lockup .home-brand-home{gap:.32rem}
   #home-brand-lockup .brand-logo{
-    width:2.8rem!important;height:2.8rem!important;flex-basis:2.8rem!important;
+    width:4rem!important;
+    height:4rem!important;
+    flex-basis:4rem!important;
   }
-  #home-brand-lockup .home-brand-name{font-size:clamp(1.08rem,5.8vw,1.32rem)}
-  #home-brand-lockup .home-ai-link{font-size:clamp(1.42rem,6.9vw,1.7rem)}
+  #home-brand-lockup .home-brand-name{font-size:.98rem}
+  #home-brand-lockup .home-ai-link{font-size:1.28rem;min-width:1.75em}
+  html body .app-header>nav{width:8.35rem!important;min-width:8.35rem!important}
+}
+
+@media (max-width:350px){
+  #home-brand-lockup .home-brand-name{display:none}
+  #home-brand-lockup .brand-logo{
+    width:3.85rem!important;
+    height:3.85rem!important;
+    flex-basis:3.85rem!important;
+  }
+  #home-brand-lockup .home-ai-link{font-size:1.28rem}
 }
 
 /* Desktop/TV browsers: scale the lockup with viewing distance, while leaving
@@ -202,4 +318,5 @@ html[lang="pt-BR"] #home-brand-lockup .home-ai-pt{display:inline-block}
   #home-brand-lockup .home-ai-label{animation:none!important}
   #home-brand-lockup .home-ai-link,
   #home-brand-lockup .brand-logo{transition:none!important}
+  body .top-ai-launch{animation:none!important}
 }
