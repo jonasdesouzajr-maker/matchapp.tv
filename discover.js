@@ -596,7 +596,9 @@ async function hydrateDiscoverCard(item, idx) {
     const link = document.getElementById('dl-' + idx);
     if (!img) return;
 
-    img.src = discoverFallbackPoster(item);
+    const fallbackArtwork = discoverFallbackPoster(item);
+    img.src = fallbackArtwork;
+    item._fallbackArtwork = fallbackArtwork;
 
     // Hand-verified art (parity with app.js's render path) always wins —
     // no lookup can beat a known-correct image.
@@ -646,21 +648,26 @@ async function hydrateDiscoverCard(item, idx) {
     // the remaining risk lived, for a real-cover gain that isn't worth it
     // here.
 
+    let resolvedArtwork = fallbackArtwork;
     if (verified) {
-        img.onerror = function () { this.onerror = null; this.src = discoverFallbackPoster(item); };
+        img.onerror = function () { this.onerror = null; this.src = fallbackArtwork; };
         img.src = verified;
+        resolvedArtwork = verified;
     } else if (meta && meta.artwork) {
         img.onerror = function () {
             this.onerror = null;
-            this.src = discoverFallbackPoster(item);
+            this.src = fallbackArtwork;
         };
         img.src = meta.artwork;
+        resolvedArtwork = meta.artwork;
     }
-    // If none of the above applied, the branded local SVG placeholder set at
-    // the top of this function is what stays showing — always correct,
-    // since it's generated directly from item.title with no external
-    // dependency that could substitute the wrong title's art.
-    item._resolved = meta;
+    // If no external artwork survives the verified lookup chain, keep the
+    // synopsis-aware MatchApp poster and persist that same artwork into
+    // history / Watch Later instead of saving a blank poster URL.
+    item._resolved = Object.assign({}, meta || {}, {
+        artwork: resolvedArtwork,
+        source: verified ? 'verified' : ((meta && meta.source) || 'matchapp-generated')
+    });
 
     if (meta && meta.overview) {
         const lang = window.MATCH_LANG || 'en';
