@@ -29,6 +29,20 @@ This folder is one self-contained Android Studio project with **two separate ins
 - Ads are disabled in the Android shell
 - Uses the existing MatchApp Kids visual identity for launcher/splash presentation
 
+## Current AAB release
+
+Both Android modules are synchronized for the current production MatchApp surfaces:
+
+- Release version: **1.1.0**
+- Version code: **2**
+- Standard app launch: `https://matchapp.tv/`
+- Kids app launch: `https://matchapp.tv/kids/`
+- Both apps cold-load production on launch and manual refresh to avoid stale WebView content, then resume normal caching after the page renders.
+- The standard app still blocks Kids routes.
+- The Kids app still blocks non-Kids MatchApp routes.
+
+Because these apps intentionally render the live web experience, the latest approved MatchApp UI/content/features do **not** need to be copied into Android source. Native Android files are changed only when routing, permissions, WebView behavior, package identity, or Android-specific presentation requires it.
+
 ## Android Studio Quail
 
 The project intentionally keeps the already proven MatchApp Android toolchain:
