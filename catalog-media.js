@@ -216,10 +216,10 @@
       });
       wrap.appendChild(row);
     }
-    if(a.inCinemas){
+    if(a.cinemaDate){
       const row=document.createElement('div');row.className='matchapp-cinema-actions';
-      const when=document.createElement('span');when.textContent='In cinemas'+(a.cinemaDate?' · theatrical release '+a.cinemaDate:'');row.appendChild(when);
-      const nearby=document.createElement('a');nearby.href=showtimesUrl(title||meta.title);nearby.target='_blank';nearby.rel='noopener noreferrer';nearby.textContent='Nearby cinemas & showtimes';row.appendChild(nearby);
+      const when=document.createElement('span');when.textContent=(a.inCinemas?'In cinemas · ':'Cinema release · ')+a.cinemaDate;row.appendChild(when);
+      const nearby=document.createElement('a');nearby.href=showtimesUrl(title||meta.title);nearby.target='_blank';nearby.rel='noopener noreferrer';nearby.textContent=a.inCinemas?'Nearby cinemas & showtimes':'Cinema release & showtimes';row.appendChild(nearby);
       wrap.appendChild(row);
     }
     const page=a.sourcePage;
