@@ -79,3 +79,21 @@ html[data-kids-mode] :where(button,.kids-btn,.kids-chip):not(:disabled):active{t
 @media(max-width:560px){.matchapp-brand-bar .matchapp-wordmark{width:min(84vw,18rem)!important}.app-header .matchapp-brand-link::before,.matchapp-brand-bar .matchapp-brand-link::before{inset:10% -2%;filter:blur(9px)}}
 @media(prefers-reduced-motion:reduce){:where(.premium-card,.discover-card,.trending-card,.global-event,.event-card,.news-card,.weekly-pick-card,.kids-card,.match-card,.spotlight-card),main :where(.premium-card,.discover-card,.global-event,.weekly-pick-card,.spotlight-card),html[data-kids-mode] :where(.kids-panel,.kids-card,.kids-hero,.kids-section,.kids-concierge-icon,.kids-sparkle,.kids-star){animation:none!important;transition:none!important;transform:none!important}.app-header .matchapp-brand-link::before,.matchapp-brand-bar .matchapp-brand-link::before{transition:none!important}}
 .reduce-motion :where(.premium-card,.discover-card,.trending-card,.global-event,.event-card,.news-card,.weekly-pick-card,.kids-card,.match-card,.spotlight-card),.reduce-motion main :where(.premium-card,.discover-card,.global-event,.weekly-pick-card,.spotlight-card),.reduce-motion html[data-kids-mode] :where(.kids-panel,.kids-card,.kids-hero,.kids-section,.kids-concierge-icon,.kids-sparkle,.kids-star){animation:none!important;transition:none!important;transform:none!important}
+
+
+/* 2026-09-18 canonical non-Kids logo. Animated AVIF keeps the user's exact
+   circle/play/stars animation; circular clipping removes the square dark field
+   so the existing header/brand-bar surface is the only surrounding background. */
+html:not(.kids-mode) .matchapp-brand-link>img:not(.matchapp-wordmark),
+html:not(.kids-mode) .matchapp-brand-link picture>img,
+html:not(.kids-mode) .brand-logo:not(.kids-mascot):not([src*="/kids/"]){
+  content:url("/assets/brand/matchapp-logo-new.avif?v=20260918-logo-news2")!important;
+  object-fit:cover!important;object-position:center!important;
+  border:0!important;border-radius:50%!important;clip-path:circle(49.2% at 50% 50%)!important;
+  background:transparent!important;box-shadow:none!important;
+}
+html:not(.kids-mode) .brand-logo-placeholder{
+  background:transparent url("/assets/brand/matchapp-logo-new.avif?v=20260918-logo-news2") center/cover no-repeat!important;
+  border:0!important;border-radius:50%!important;clip-path:circle(49.2% at 50% 50%)!important;
+  box-shadow:none!important;
+}
