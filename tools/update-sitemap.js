@@ -48,17 +48,10 @@ function readObject(file) {
 }
 
 function newsUrlsFromDisk() {
-    const articleRoot = path.join(ROOT, 'news', 'articles');
-    const urls = [`${SITE}/news/`];
-    if (!fs.existsSync(articleRoot)) return urls;
-
-    for (const entry of fs.readdirSync(articleRoot, { withFileTypes: true }).sort((a,b) => a.name.localeCompare(b.name))) {
-        if (!entry.isDirectory()) continue;
-        const indexFile = path.join(articleRoot, entry.name, 'index.html');
-        if (!fs.existsSync(indexFile)) continue;
-        urls.push(`${SITE}/news/articles/${entry.name}/`);
-    }
-    return urls;
+    // Only the curated news hub is indexable. Individual RSS-derived wrapper
+    // pages are intentionally noindex until they contain substantial original
+    // MatchApp editorial content.
+    return [`${SITE}/news/`];
 }
 
 function validLastmod(value, fallback) {
