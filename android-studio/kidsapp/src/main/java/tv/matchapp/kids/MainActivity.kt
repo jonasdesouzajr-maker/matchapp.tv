@@ -1,4 +1,4 @@
-package tv.matchapp.app
+package tv.matchapp.kids
 
 import android.annotation.SuppressLint
 import android.content.ActivityNotFoundException
@@ -13,8 +13,6 @@ import android.os.Message
 import android.view.View
 import android.view.ViewGroup
 import android.webkit.CookieManager
-import android.webkit.URLUtil
-import android.webkit.ValueCallback
 import android.webkit.WebChromeClient
 import android.webkit.WebResourceError
 import android.webkit.WebResourceRequest
@@ -25,7 +23,6 @@ import android.webkit.WebViewClient
 import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
@@ -40,19 +37,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var offline: View
     private lateinit var fullscreenHost: FrameLayout
 
-    private var filePathCallback: ValueCallback<Array<Uri>>? = null
     private var customView: View? = null
     private var customViewCallback: WebChromeClient.CustomViewCallback? = null
     private var splashKeep = true
     private var lastUrl = HOME
-
-    private val fileChooser = registerForActivityResult(
-        ActivityResultContracts.StartActivityForResult()
-    ) { result ->
-        val uris = WebChromeClient.FileChooserParams.parseResult(result.resultCode, result.data)
-        filePathCallback?.onReceiveValue(uris)
-        filePathCallback = null
-    }
 
     @SuppressLint("SetJavaScriptEnabled")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -87,30 +75,23 @@ class MainActivity : AppCompatActivity() {
             loadWithOverviewMode = true
             builtInZoomControls = true
             displayZoomControls = false
-            // Strip WebView's "; wv" marker so Google sign-in is not blocked.
             val chromeUa = userAgentString
                 .replace("; wv)", ")")
                 .replace("; wv ", " ")
                 .replace(" Version/4.0 ", " ")
             userAgentString = "$chromeUa $APP_UA"
         }
-        web.setBackgroundColor(Color.parseColor("#101010"))
-        web.webViewClient = MatchClient()
-        web.webChromeClient = MatchChrome()
-        web.setDownloadListener { url, _, contentDisposition, mime, _ ->
-            val name = URLUtil.guessFileName(url, contentDisposition, mime)
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-            try {
-                startActivity(intent)
-            } catch (_: ActivityNotFoundException) {
-                Toast.makeText(this, name, Toast.LENGTH_SHORT).show()
-            }
-        }
+
+        web.setBackgroundColor(Color.parseColor("#21113E"))
+        web.webViewClient = KidsClient()
+        web.webChromeClient = KidsChrome()
 
         refresh.setColorSchemeColors(ContextCompat.getColor(this, R.color.gold))
         refresh.setProgressBackgroundColorSchemeColor(ContextCompat.getColor(this, R.color.royal))
         refresh.setOnRefreshListener {
-            if (isOnline()) web.reload() else {
+            if (isOnline()) {
+                web.reload()
+            } else {
                 refresh.isRefreshing = false
                 showOffline(true)
             }
@@ -128,7 +109,9 @@ class MainActivity : AppCompatActivity() {
 
         val launch = resolveLaunchUrl(intent)
         lastUrl = launch
-        if (isOnline()) web.loadUrl(launch) else {
+        if (isOnline()) {
+            web.loadUrl(launch)
+        } else {
             splashKeep = false
             showOffline(true)
         }
@@ -167,7 +150,7 @@ class MainActivity : AppCompatActivity() {
             return
         }
         showOffline(false)
-        web.loadUrl(lastUrl)
+        web.loadUrl(lastUrl.takeIf { isAllowedKidsUrl(it) } ?: HOME)
     }
 
     private fun showOffline(show: Boolean) {
@@ -195,18 +178,24 @@ class MainActivity : AppCompatActivity() {
         return path == "/kids" || path.startsWith("/kids/")
     }
 
-    private fun isKidsUrl(url: String?): Boolean {
+    private fun isAllowedKidsUrl(url: String?): Boolean {
         if (url.isNullOrBlank()) return false
         return runCatching { isKidsUri(Uri.parse(url)) }.getOrDefault(false)
     }
 
+    private fun isLegalMatchAppUri(uri: Uri): Boolean {
+        if (!isMatchAppHost(uri.host.orEmpty())) return false
+        val path = uri.path.orEmpty().lowercase()
+        return path == "/privacy.html" ||
+            path == "/terms.html" ||
+            path == "/privacy" ||
+            path == "/terms"
+    }
+
     private fun resolveLaunchUrl(intent: Intent?): String {
         val data = intent?.data
-        if (data != null && (data.scheme == "https" || data.scheme == "http")) {
-            if (isMatchAppHost(data.host.orEmpty())) {
-                if (isKidsUri(data)) return HOME
-                return data.buildUpon().scheme("https").build().toString()
-            }
+        if (data != null && (data.scheme == "https" || data.scheme == "http") && isKidsUri(data)) {
+            return data.buildUpon().scheme("https").build().toString()
         }
         return HOME
     }
@@ -220,11 +209,11 @@ class MainActivity : AppCompatActivity() {
         refresh.visibility = View.VISIBLE
     }
 
-    private fun injectAppMode(view: WebView) {
-        view.evaluateJavascript(APP_MODE_JS, null)
+    private fun injectKidsShell(view: WebView) {
+        view.evaluateJavascript(KIDS_APP_JS, null)
     }
 
-    private inner class MatchClient : WebViewClient() {
+    private inner class KidsClient : WebViewClient() {
         override fun shouldOverrideUrlLoading(view: WebView, request: WebResourceRequest): Boolean {
             return handleUrl(request.url)
         }
@@ -244,22 +233,22 @@ class MainActivity : AppCompatActivity() {
         }
 
         override fun onPageStarted(view: WebView, url: String?, favicon: Bitmap?) {
-            if (isKidsUrl(url)) {
+            val uri = url?.let { runCatching { Uri.parse(it) }.getOrNull() }
+            if (uri != null && isMatchAppHost(uri.host.orEmpty()) && !isKidsUri(uri)) {
                 view.stopLoading()
                 lastUrl = HOME
-                Toast.makeText(this@MainActivity, getString(R.string.kids_separate_app), Toast.LENGTH_SHORT).show()
                 view.loadUrl(HOME)
                 return
             }
             lastUrl = url ?: lastUrl
-            injectAppMode(view)
+            injectKidsShell(view)
         }
 
         override fun onPageFinished(view: WebView, url: String?) {
-            if (isKidsUrl(url)) return
+            if (url != null && !isAllowedKidsUrl(url)) return
             splashKeep = false
             refresh.isRefreshing = false
-            injectAppMode(view)
+            injectKidsShell(view)
             CookieManager.getInstance().flush()
         }
 
@@ -275,25 +264,31 @@ class MainActivity : AppCompatActivity() {
     private fun handleUrl(uri: Uri): Boolean {
         val scheme = uri.scheme.orEmpty().lowercase()
         val host = uri.host.orEmpty().lowercase()
-        if (scheme == "mailto" || scheme == "tel" || scheme == "sms" || scheme == "whatsapp" || scheme == "intent" || scheme == "market") {
+
+        if (scheme == "mailto" || scheme == "tel" || scheme == "sms" ||
+            scheme == "intent" || scheme == "market"
+        ) {
             return openExternal(uri)
         }
-        if (host.endsWith("wa.me") || host.contains("whatsapp.com") || host.contains("play.google.com") || host.contains("t.me")) {
-            return openExternal(uri)
+
+        if (isKidsUri(uri)) return false
+
+        if (isLegalMatchAppUri(uri)) {
+            return openExternal(uri.buildUpon().scheme("https").build())
         }
+
         if (isMatchAppHost(host)) {
-            if (isKidsUri(uri)) {
-                Toast.makeText(this, getString(R.string.kids_separate_app), Toast.LENGTH_SHORT).show()
-                web.loadUrl(HOME)
-                return true
-            }
-            return false
+            web.loadUrl(HOME)
+            return true
         }
-        if (host.endsWith("supabase.co") || host.endsWith("google.com") || host.endsWith("gstatic.com") ||
-            host.endsWith("googleapis.com") || host.endsWith("googleusercontent.com")
+
+        if (host.endsWith("supabase.co") || host.endsWith("google.com") ||
+            host.endsWith("gstatic.com") || host.endsWith("googleapis.com") ||
+            host.endsWith("googleusercontent.com")
         ) {
             return false
         }
+
         return openExternal(uri)
     }
 
@@ -306,39 +301,28 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private inner class MatchChrome : WebChromeClient() {
+    private inner class KidsChrome : WebChromeClient() {
         override fun onProgressChanged(view: WebView?, newProgress: Int) {
             if (newProgress >= 100) refresh.isRefreshing = false
         }
 
-        override fun onShowFileChooser(
-            webView: WebView?,
-            callback: ValueCallback<Array<Uri>>?,
-            params: FileChooserParams?
+        override fun onCreateWindow(
+            view: WebView?,
+            isDialog: Boolean,
+            isUserGesture: Boolean,
+            resultMsg: Message?
         ): Boolean {
-            filePathCallback?.onReceiveValue(null)
-            filePathCallback = callback
-            val intent = params?.createIntent() ?: Intent(Intent.ACTION_GET_CONTENT).apply {
-                addCategory(Intent.CATEGORY_OPENABLE)
-                type = "image/*"
-            }
-            return try {
-                fileChooser.launch(Intent.createChooser(intent, getString(R.string.file_chooser_title)))
-                true
-            } catch (_: ActivityNotFoundException) {
-                filePathCallback = null
-                false
-            }
-        }
-
-        override fun onCreateWindow(view: WebView?, isDialog: Boolean, isUserGesture: Boolean, resultMsg: Message?): Boolean {
             val transport = resultMsg?.obj as? WebView.WebViewTransport ?: return false
             val child = WebView(this@MainActivity)
             child.webViewClient = object : WebViewClient() {
                 override fun shouldOverrideUrlLoading(v: WebView, request: WebResourceRequest): Boolean {
-                    val url = request.url.toString()
-                    web.loadUrl(url)
-                    return true
+                    val uri = request.url
+                    return if (isKidsUri(uri)) {
+                        web.loadUrl(uri.toString())
+                        true
+                    } else {
+                        handleUrl(uri)
+                    }
                 }
             }
             transport.webView = child
@@ -357,7 +341,10 @@ class MainActivity : AppCompatActivity() {
             fullscreenHost.visibility = View.VISIBLE
             fullscreenHost.addView(
                 view,
-                FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
+                FrameLayout.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.MATCH_PARENT
+                )
             )
         }
 
@@ -367,68 +354,70 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val HOME = "https://matchapp.tv/?utm_source=android_app"
-        const val APP_UA = "MatchAppTVAndroid/1.0 MatchAppAiAndroid/1.0"
-        private const val APP_MODE_JS = """
+        const val HOME = "https://matchapp.tv/kids/?utm_source=android_kids_app"
+        const val APP_UA = "MatchAppTVAndroid/1.0 MatchAppAiKidsAndroid/1.0"
+
+        private const val KIDS_APP_JS = """
             (function(){
               window.MATCHAPP_IS_AD_FREE = true;
-              window.MATCHAPP_ANDROID_KIDS_DISABLED = true;
+              window.MATCHAPP_ANDROID_KIDS_ONLY = true;
               try { localStorage.setItem('match_ad_free','true'); } catch (e) {}
-              var root = document.documentElement;
-              root.classList.add('ads-empty','matchapp-android','matchapp-ai-android','is-chrome');
 
-              if (!document.getElementById('matchapp-android-shell')) {
+              var root = document.documentElement;
+              root.classList.add('ads-empty','matchapp-android','matchapp-ai-kids-android','is-chrome');
+
+              if (!document.getElementById('matchapp-kids-android-shell')) {
                 var s = document.createElement('style');
-                s.id = 'matchapp-android-shell';
+                s.id = 'matchapp-kids-android-shell';
                 s.textContent =
                   '.ad-banner-container,.sidebar-ad-left,.sidebar-ad-right,.mobile-ad-bottom,' +
                   '.premium-ad-frame,ins.adsbygoogle,.ma-ad-label,#chrome-notice,.chrome-notice,' +
-                  '.install-btn,a[href^="/kids"],a[href^="kids/"],' +
-                  'a[href^="https://matchapp.tv/kids"],a[href^="https://www.matchapp.tv/kids"],' +
-                  '[data-mode="kids"],[data-view="kids"],[data-route^="/kids"],#kids-mode,#kids-toggle,' +
-                  '.kids-mode-toggle,.kids-mode-entry,.kids-entry,.kids-card,.kids-cta' +
+                  '.install-btn,.kids-install,#kids-exit,.kids-pill-exit' +
                   '{display:none!important;height:0!important;min-height:0!important;overflow:hidden!important;' +
                   'padding:0!important;margin:0!important;border:0!important}';
                 (document.head || root).appendChild(s);
               }
 
-              function isKidsLink(el) {
-                if (!el || !el.getAttribute) return false;
+              function classify(el) {
+                if (!el || !el.getAttribute) return 'none';
                 var href = el.getAttribute('href');
-                if (!href) return false;
+                if (!href) return 'none';
                 try {
                   var u = new URL(href, location.href);
                   var host = u.hostname.toLowerCase();
                   var path = u.pathname.toLowerCase().replace(/\/+$/,'');
                   var own = host === 'matchapp.tv' || host === 'www.matchapp.tv' || host.endsWith('.matchapp.tv');
-                  return own && (path === '/kids' || path.indexOf('/kids/') === 0);
+                  if (!own) return 'external';
+                  if (path === '/kids' || path.indexOf('/kids/') === 0) return 'kids';
+                  if (path === '/privacy.html' || path === '/privacy' ||
+                      path === '/terms.html' || path === '/terms') return 'legal';
+                  return 'blocked';
                 } catch (e) {
-                  return false;
+                  return 'none';
                 }
               }
 
-              function scrubKids() {
-                document.querySelectorAll('a[href]').forEach(function(a){
-                  if (isKidsLink(a)) {
-                    a.style.setProperty('display','none','important');
-                    a.setAttribute('aria-hidden','true');
-                    a.setAttribute('tabindex','-1');
-                  }
+              function scrub() {
+                var exit = document.getElementById('kids-exit');
+                if (exit) exit.style.setProperty('display','none','important');
+                document.querySelectorAll('.kids-pill-exit,.kids-install,.install-btn').forEach(function(el){
+                  el.style.setProperty('display','none','important');
                 });
               }
 
-              scrubKids();
+              scrub();
               document.addEventListener('click', function(ev){
                 var target = ev.target && ev.target.closest ? ev.target.closest('a[href]') : null;
-                if (isKidsLink(target)) {
+                var kind = classify(target);
+                if (kind === 'blocked') {
                   ev.preventDefault();
                   ev.stopImmediatePropagation();
                 }
               }, true);
 
-              if (!window.__matchAppAndroidKidsObserver) {
-                window.__matchAppAndroidKidsObserver = new MutationObserver(scrubKids);
-                window.__matchAppAndroidKidsObserver.observe(document.documentElement, {childList:true,subtree:true});
+              if (!window.__matchAppKidsAndroidObserver) {
+                window.__matchAppKidsAndroidObserver = new MutationObserver(scrub);
+                window.__matchAppKidsAndroidObserver.observe(document.documentElement, {childList:true,subtree:true});
               }
 
               document.querySelectorAll('ins.adsbygoogle,.ad-banner-container').forEach(function(el){ el.remove(); });

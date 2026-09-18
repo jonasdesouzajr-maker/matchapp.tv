@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="ink">#FF21113E</color>
+    <color name="royal">#FF6D3DF5</color>
+    <color name="gold">#FFFFDA8C</color>
+    <color name="gold_deep">#FFA0E9ED</color>
+    <color name="muted">#FFE5D8F1</color>
+    <color name="splash_bg">#FF21113E</color>
+    <color name="launcher_bg">#FF6D3DF5</color>
+</resources>
