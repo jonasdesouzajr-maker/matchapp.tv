@@ -1429,9 +1429,105 @@ async function showTitleInfoCard(titleName) {
     if (log) setTimeout(() => log.scrollIntoView({ behavior: 'auto', block: 'start' }), 20);
 }
 
+
+async function showEventInfoCard(eventPath) {
+    let path = '';
+    try {
+        const u = new URL(String(eventPath || ''), location.origin);
+        if (u.origin === location.origin && u.pathname.startsWith('/events/')) path = u.pathname;
+    } catch (_) {}
+    if (!path) return false;
+
+    const emptyEl = document.getElementById('discover-empty');
+    const loadEl = document.getElementById('discover-loading');
+    if (emptyEl) emptyEl.style.display = 'none';
+    if (loadEl) loadEl.style.display = 'none';
+
+    try {
+        const response = await fetch(path, { credentials: 'same-origin' });
+        if (!response.ok) return false;
+        const doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        const hero = doc.querySelector('.event-detail-hero');
+        const title = (doc.querySelector('h1')?.textContent || 'Event').trim();
+        const image = hero?.querySelector('img')?.getAttribute('src') || '';
+        const paras = [...(hero?.querySelectorAll('p') || [])].map(p => p.textContent.trim()).filter(Boolean);
+        const meta = paras[0] || '';
+        const copy = paras.find(p => p.length > 80) || paras[1] || '';
+        const links = [...doc.querySelectorAll('.global-event-links a[href]')]
+            .map(a => ({ label: a.textContent.trim(), href: a.getAttribute('href') || '' }))
+            .filter(x => /^https:\/\//.test(x.href));
+
+        if (!currentThread) {
+            currentThread = { id: newThreadId(), title: title.slice(0, 60), turns: [], createdAt: Date.now(), updatedAt: Date.now() };
+        }
+
+        const intro = [title, meta, copy].filter(Boolean).join(' — ');
+        const bubble = appendAssistantBubble(intro, [], { instant: true });
+        if (bubble?.grid) {
+            const grid = bubble.grid;
+            grid.style.display = 'grid';
+            grid.innerHTML = `
+                <article class="discover-event-card">
+                    ${image ? `<img src="${escapeDiscoverHtml(image)}" alt="${escapeDiscoverHtml(title)}" loading="eager">` : ''}
+                    <div>
+                        <p style="color:#E5C158;font-weight:900;margin:0 0 8px">EVENT</p>
+                        <h2>${escapeDiscoverHtml(title)}</h2>
+                        ${meta ? `<p class="discover-event-meta">${escapeDiscoverHtml(meta)}</p>` : ''}
+                        ${copy ? `<p class="discover-event-copy">${escapeDiscoverHtml(copy)}</p>` : ''}
+                        <div class="discover-event-actions"></div>
+                    </div>
+                </article>`;
+            const actions = grid.querySelector('.discover-event-actions');
+            if (actions) {
+                const page = document.createElement('a');
+                page.href = path;
+                page.textContent = 'Open event page';
+                actions.appendChild(page);
+                links.slice(0, 8).forEach(link => {
+                    const a = document.createElement('a');
+                    a.href = link.href;
+                    a.target = '_blank';
+                    a.rel = 'noopener noreferrer';
+                    a.textContent = link.label || 'Official link';
+                    actions.appendChild(a);
+                });
+                const save = document.createElement('button');
+                save.type = 'button';
+                save.textContent = 'Save event';
+                save.addEventListener('click', () => {
+                    try {
+                        const key = 'match_savedEvents';
+                        const rows = JSON.parse(localStorage.getItem(key) || '[]');
+                        const list = Array.isArray(rows) ? rows : [];
+                        if (!list.some(x => x && x.path === path)) list.unshift({ title, path, image, savedAt: Date.now() });
+                        localStorage.setItem(key, JSON.stringify(list.slice(0, 100)));
+                        window.showToast?.('Event saved.');
+                    } catch (_) {}
+                });
+                actions.appendChild(save);
+            }
+        }
+
+        currentThread.turns.push({ role: 'assistant', text: intro, results: [], event: { title, path, meta, copy, links }, ts: Date.now() });
+        currentThread.updatedAt = Date.now();
+        persistCurrentThread();
+        refreshAiWorkspaceStatus();
+        window.__MATCHAPP_EVENT_RENDERED = true;
+        document.title = `${title} — MatchApp AI Concierge`;
+        const input = document.getElementById('discover-new-input');
+        if (input) input.placeholder = `Ask a follow-up about ${title}…`;
+        const log = document.getElementById('chat-log');
+        if (log) setTimeout(() => log.scrollIntoView({ behavior: 'auto', block: 'start' }), 20);
+        return true;
+    } catch (_) {
+        return false;
+    }
+}
+
 async function runDiscovery() {
     renderThreadList();
     const title = getQueryParam('title').trim();
+    const eventPath = getQueryParam('event').trim();
     const q = getQueryParam('q').trim();
     const forceNew = getQueryParam('new') === '1';
     const loadEl = document.getElementById('discover-loading');
@@ -1447,6 +1543,14 @@ async function runDiscovery() {
         const log = document.getElementById('chat-log');
         if (log) log.innerHTML = '';
         history.replaceState(null, '', '/discover.html?focus=start');
+    }
+
+    if (eventPath) {
+        if (loadEl) loadEl.style.display = 'none';
+        const shown = await showEventInfoCard(eventPath);
+        if (shown) return;
+        try { location.href = new URL(eventPath, location.origin).pathname; } catch (_) {}
+        return;
     }
 
     if (title) {
