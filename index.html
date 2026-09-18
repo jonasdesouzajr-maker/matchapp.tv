@@ -120,7 +120,7 @@
          reflows when the font lands, rather than holding the page blank. -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="/style.css?v=201">
     <!-- Smart TV stylesheet. Entirely scoped under body.tv-mode, so a
@@ -1517,7 +1517,7 @@
 <link rel="stylesheet" href="/themes.css?v=194">
 <link rel="stylesheet" href="/app-polish.css?v=187">
 <script src="/themes.js?v=187"></script>
-<link rel="stylesheet" href="/poster-wall.css?v=191"><script defer src="/poster-wall.js?v=187"></script><script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://matchapp.tv/#organization","name":"MatchApp TV Ai","url":"https://matchapp.tv/","logo":"https://matchapp.tv/logo-512.jpeg","contactPoint":{"@type":"ContactPoint","contactType":"customer support","telephone":"+5521974297919","email":"support@matchapp.tv"},"sameAs":["https://wa.me/5521974297919"]}</script><link rel="stylesheet" href="/brand.css?v=192">
+<link rel="stylesheet" href="/poster-wall.css?v=191"><script defer src="/poster-wall.js?v=187"></script><script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://matchapp.tv/#organization","name":"MatchApp TV Ai","url":"https://matchapp.tv/","logo":"https://matchapp.tv/logo-512.jpeg","contactPoint":{"@type":"ContactPoint","contactType":"customer support","telephone":"+5521974297919","email":"support@matchapp.tv"},"sameAs":["https://wa.me/5521974297919"]}</script><link rel="stylesheet" href="/brand.css?v=192"><link rel="stylesheet" href="/home-brand.css?v=1">
 </head>
 <body>
     <!-- Google Tag Manager (noscript) -->
@@ -1547,10 +1547,19 @@
     <canvas id="ambient-bg" aria-hidden="true"></canvas>
 
     <header class="app-header">
-        <a href="/" class="header-brand-area matchapp-brand-link" aria-label="MatchApp TV Ai">
-            <img width="60" height="60" src="/assets/brand/matchapp-logo-animated.svg?v=3" alt="MatchApp Logo" class="brand-logo">
-            <div><span class="app-title-main"><img class="matchapp-wordmark" src="/assets/brand/matchapp-tv-ai-v2.svg" alt="MatchApp TV Ai" width="368" height="66" decoding="async"></span></div>
-        </a>
+        <div id="home-brand-lockup" class="header-brand-area">
+            <a href="/" class="matchapp-brand-link home-brand-home" aria-label="MatchApp TV home">
+                <img width="72" height="72" src="/assets/brand/matchapp-logo-animated.svg?v=3" alt="MatchApp Logo" class="brand-logo">
+                <span class="home-brand-name" aria-label="MatchApp TV">
+                    <span class="home-brand-match">MatchApp</span>
+                    <span class="home-brand-tv">TV</span>
+                </span>
+            </a>
+            <a class="home-ai-link" href="/discover.html?focus=start&new=1" aria-label="Start a new MatchApp AI chat" title="Start a new AI chat">
+                <span class="home-ai-label home-ai-default" aria-hidden="true">Ai</span>
+                <span class="home-ai-label home-ai-pt" aria-hidden="true">iA</span>
+            </a>
+        </div>
         <nav style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap; justify-content: flex-end;">
             <!-- Install sits first in the nav and is styled as a real CTA rather
                  than another grey utility icon, because it competes with the
