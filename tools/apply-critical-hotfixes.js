@@ -31,15 +31,15 @@ function replaceRequired(text, from, to, label) {
     'pricing OG description');
   html = replaceRequired(html,
     'MatchApp VIP, Extra Matches and Ask AI credits. Unlimited concierge picks, ad-free pass, and 2026 entertainment recommendations.',
-    'MatchApp VIP, Extra Matches and Ask AI credits. VIP includes 10 AI matches per day, an ad-free experience, and priority routing.',
+    'MatchApp VIP, Business, Extra Matches and Ask AI credits. VIP includes 10 AI actions per day; Business includes 50. Included usage can be a Match or Ask AI, with separate top-ups after the daily allowance.',
     'pricing meta description');
   html = replaceRequired(html,
     '"description":"Unlimited AI matches, no ads, priority routing and prioritised regional content."',
-    '"description":"10 AI matches per day, no ads, priority routing and prioritised regional content."',
+    '"description":"10 included AI actions per day, usable for Matches or Ask AI, with no ads and priority routing."',
     'pricing Product JSON-LD');
   html = replaceRequired(html,
     'data-i18n="pricing.title">Unlock Unlimited AI Concierge</h1>',
-    'data-i18n="pricing.title">VIP: 10 AI Matches Every Day</h1>',
+    'data-i18n="pricing.title">VIP: 10 Included AI Actions Daily</h1>',
     'pricing heading');
   html = replaceRequired(html,
     'data-i18n="pricing.subtitle">Choose your plan below to remove ads and unlock infinite matches.</p>',
