@@ -7,7 +7,7 @@ test('home exposes one branded MatchApp AI launch action instead of the old inli
   const css=read('style.css');
   assert.match(html,/class="top-ai-launch" href="\/discover\.html\?focus=start"/);
   assert.match(html,/assets\/brand\/matchapp-ai-orbit\.svg/);
-  assert.match(html,/Talk to our AI/);
+  assert.match(html,/Talk to our Ai/);
   assert.doesNotMatch(html,/id="top-ask-input"/);
   assert.doesNotMatch(html,/<form class="top-ask"/);
   assert.match(css,/\.top-ai-launch\s*\{/);
