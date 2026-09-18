@@ -2,13 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://matchapp.tv/</loc>
-        <lastmod>2026-09-18T09:00:50+00:00</lastmod>
+        <lastmod>2026-09-18T12:30:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/discover.html</loc>
-        <lastmod>2026-09-18T08:57:13+00:00</lastmod>
+        <lastmod>2026-09-18T12:30:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.9</priority>
     </url>
@@ -32,7 +32,7 @@
     </url>
     <url>
         <loc>https://matchapp.tv/updates.html</loc>
-        <lastmod>2026-09-16T21:45:00+00:00</lastmod>
+        <lastmod>2026-09-18T12:30:00+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
@@ -242,7 +242,7 @@
     </url>
     <url>
         <loc>https://matchapp.tv/where-to-watch/</loc>
-        <lastmod>2026-09-16T21:45:00+00:00</lastmod>
+        <lastmod>2026-09-18T12:30:00+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -1319,5 +1319,11 @@
         <lastmod>2026-09-17T22:49:48+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/where-to-watch/resident-evil-2026/</loc>
+        <lastmod>2026-09-18T12:30:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.9</priority>
     </url>
 </urlset>
