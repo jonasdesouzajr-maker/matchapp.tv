@@ -233,46 +233,48 @@ input:focus, select:focus { outline: none; border-color: var(--gold); box-shadow
 .fade-in { animation: fadeIn 0.6s cubic-bezier(0.25, 0.8, 0.25, 1) forwards; }
 @keyframes fadeIn { 0% { opacity: 0; transform: translateY(15px); } 100% { opacity: 1; transform: translateY(0); } }
 
-/* 🤖 TOP ASK BOX — the zero-effort shortcut.
-   A real input, not a link styled like one: it posts straight to
-   discover.html?q=, so it's tap → type → answer with no intermediate page.
-   Kept deliberately compact and centred so it reads as an invitation rather
-   than a form to fill in. */
-.top-ask-wrap { display: flex; flex-direction: column; align-items: center; gap: 7px;
-                padding: 0 12px; margin-bottom: 12px; }
-.top-ask { display: flex; align-items: center; gap: 9px; width: 100%; max-width: 520px;
-           background: linear-gradient(100deg, rgba(216,156,72,0.42), rgba(30,20,55,0.72), rgba(216,156,72,0.42));
-           background-size: 220% 100%;
-           border: 1px solid rgba(229,193,88,0.5); border-radius: 999px;
-           padding: 6px 6px 6px 16px; box-shadow: 0 4px 18px rgba(0,0,0,0.45);
-           animation: askGlow 6s ease-in-out infinite; transition: border-color 0.25s, box-shadow 0.25s; }
-.top-ask:focus-within { border-color: var(--gold); box-shadow: 0 4px 24px rgba(229,193,88,0.3); animation: none; }
-.top-ask-icon { font-size: 15px; flex-shrink: 0; line-height: 1; }
-/* 16px on the input is deliberate and must not be reduced: anything smaller
-   makes iOS Safari auto-zoom the whole page the moment it's focused, which
-   for a box this prominent would feel like the page broke. */
-.top-ask input { flex: 1; min-width: 0; background: none; border: none; outline: none;
-                 color: #fff; font-family: inherit; font-size: 16px; padding: 8px 0; }
-.top-ask input::placeholder { color: #a99cc4; font-size: 13.5px; }
-.top-ask-go { flex-shrink: 0; width: 34px; height: 34px; border-radius: 50%; border: none;
-              background: linear-gradient(135deg, #FFD700, #FFA500); color: #14131A;
-              font-size: 16px; font-weight: 900; cursor: pointer; line-height: 1;
-              display: flex; align-items: center; justify-content: center; transition: transform 0.2s; }
-.top-ask-go:hover { transform: scale(1.08); }
-.top-ask-alt { color: #a99cc4; font-size: 11.5px; text-decoration: none; font-weight: 600;
-               letter-spacing: 0.2px; transition: color 0.2s; }
-.top-ask-alt:hover { color: var(--gold-glow); }
-/* Slow gold sweep — enough to draw the eye once, not enough to nag. */
-@keyframes askGlow {
-    0%, 100% { background-position: 0% 50%; box-shadow: 0 4px 18px rgba(0,0,0,0.45); }
-    50%      { background-position: 100% 50%; box-shadow: 0 4px 22px rgba(168,108,36,0.39); }
-}
-@media (prefers-reduced-motion: reduce) { .top-ask { animation: none; } }
-@media (max-width: 480px) {
-    .top-ask { padding: 5px 5px 5px 13px; gap: 7px; }
-    .top-ask input::placeholder { font-size: 12.5px; }
-    .top-ask-go { width: 31px; height: 31px; font-size: 15px; }
-    .top-ask-alt { font-size: 11px; }
+/* MATCHAPP AI LAUNCH — a single branded action, not a mini form.
+   The conversation belongs on /discover.html; the home page only needs a
+   confident doorway into it. The Orbit glyph is a MatchApp-owned SVG asset,
+   so this control stays visually ours on every platform. */
+.top-ask-wrap { display:flex; flex-direction:column; align-items:center; gap:9px; padding:0 12px; margin-bottom:12px; }
+.top-ai-launch { position:relative; display:grid; grid-template-columns:auto minmax(0,1fr) auto; align-items:center;
+                 gap:14px; width:min(100%,620px); min-height:76px; box-sizing:border-box; padding:10px 14px 10px 11px;
+                 border-radius:24px; text-decoration:none; color:#fff; overflow:hidden;
+                 border:1px solid rgba(229,193,88,.64);
+                 background:linear-gradient(115deg,rgba(87,43,135,.88),rgba(23,13,48,.96) 46%,rgba(42,25,72,.94));
+                 box-shadow:0 12px 34px rgba(0,0,0,.48),inset 0 1px 0 rgba(255,255,255,.06);
+                 transition:transform .24s cubic-bezier(.2,.8,.2,1),border-color .24s,box-shadow .24s; isolation:isolate; }
+.top-ai-launch::before { content:""; position:absolute; inset:-90% -20%; z-index:-1;
+                         background:conic-gradient(from 90deg,transparent 0 18%,rgba(229,193,88,.18) 27%,transparent 36% 64%,rgba(163,118,182,.2) 73%,transparent 82%);
+                         animation:aiLaunchOrbit 8s linear infinite; }
+.top-ai-launch::after { content:""; position:absolute; inset:1px; border-radius:22px; z-index:-1;
+                        background:linear-gradient(120deg,rgba(255,255,255,.035),transparent 40% 62%,rgba(229,193,88,.055)); }
+.top-ai-launch:hover { transform:translateY(-3px) scale(1.008); border-color:var(--gold);
+                       box-shadow:0 18px 42px rgba(0,0,0,.56),0 0 28px rgba(229,193,88,.18); }
+.top-ai-launch:focus-visible { outline:3px solid var(--gold-glow); outline-offset:4px; }
+.top-ask-icon { width:56px; height:56px; display:grid; place-items:center; border-radius:18px; flex-shrink:0;
+                background:rgba(13,8,30,.68); border:1px solid rgba(229,193,88,.34);
+                box-shadow:inset 0 0 24px rgba(107,63,160,.18),0 8px 20px rgba(0,0,0,.28); }
+.top-ask-icon img { width:48px; height:48px; display:block; filter:drop-shadow(0 0 10px rgba(229,193,88,.22)); }
+.top-ai-copy { min-width:0; display:flex; flex-direction:column; gap:3px; text-align:left; }
+.top-ai-kicker { color:var(--gold); font-size:10.5px; letter-spacing:1.7px; font-weight:900; text-transform:uppercase; }
+.top-ai-title { font-size:clamp(17px,2vw,21px); font-weight:900; line-height:1.1; }
+.top-ai-sub { color:#c9bfdc; font-size:12.5px; line-height:1.35; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.top-ai-arrow { width:38px; height:38px; border-radius:50%; display:grid; place-items:center; color:#17111f;
+                background:linear-gradient(135deg,#FFF3A3,#E5C158); font-size:20px; font-weight:900;
+                box-shadow:0 0 20px rgba(229,193,88,.22); transition:transform .24s; }
+.top-ai-launch:hover .top-ai-arrow { transform:translateX(4px) rotate(-4deg); }
+.top-ask-alt { color:#a99cc4; font-size:11.5px; text-decoration:none; font-weight:700; letter-spacing:.2px; transition:color .2s; }
+.top-ask-alt:hover { color:var(--gold-glow); }
+@keyframes aiLaunchOrbit { to { transform:rotate(360deg); } }
+@media (prefers-reduced-motion:reduce) { .top-ai-launch::before { animation:none; } .top-ai-launch,.top-ai-arrow { transition:none; } }
+@media (max-width:480px) {
+    .top-ai-launch { min-height:68px; gap:10px; padding:8px 10px 8px 8px; border-radius:20px; }
+    .top-ask-icon { width:50px; height:50px; border-radius:16px; }
+    .top-ask-icon img { width:43px; height:43px; }
+    .top-ai-sub { font-size:11.5px; }
+    .top-ai-arrow { width:34px; height:34px; }
 }
 
 /* 📲 INSTALL & 🔊 SOUND TOGGLE — header buttons */
