@@ -23,7 +23,7 @@ test('Ask AI cards include watch now, watch later, not for me and synopsis',()=>
   assert.match(html,/discover-nfm/);
   assert.match(html,/discover-related-head/);
   assert.match(html,/discover\.js\?v=\d+/);
-  assert.match(html,/tmdb\.js\?v=191/);
+  assert.match(html,/tmdb\.js\?v=193/);
 });
 
 test('related copy exists in every supported language',()=>{
@@ -38,7 +38,7 @@ test('related copy exists in every supported language',()=>{
 
 test('TMDB proxy only fetches related for a typed identity and never returns adult works',()=>{
   const src=read('supabase/functions/tmdb-proxy/index.ts');
-  assert.match(src,/append_to_response=credits,similar,recommendations/);
+  assert.match(src,/append_to_response/);\n  assert.match(src,/\["credits", "similar", "recommendations"\]/);
   assert.match(src,/combined_credits/);
   assert.match(src,/body\.related === true/);
   assert.match(src,/Number\.isSafeInteger\(body\.tmdb_id\)/);
@@ -74,7 +74,7 @@ test('Ask AI localization keeps original title identity',()=>{
   assert.match(locale,/item\.displayTitle = await translateText\(item\.title, 'title'\)/);
   assert.doesNotMatch(locale,/item\.title = await translateText\(item\.title/);
   const settings=read('settings.js');
-  assert.match(settings,/20260917-social1/);
+  assert.match(settings,/20260918-onboard1/);
 });
 
 test('Ask AI strips stock opening lines instead of appending one',()=>{
