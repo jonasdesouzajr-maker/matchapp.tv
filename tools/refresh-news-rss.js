@@ -328,7 +328,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="description" content="${d}">
 <meta name="keywords" content="${kw}">
 <meta name="author" content="MatchApp TV">
-<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+<meta name="robots" content="noindex,follow">
 <link rel="canonical" href="${canon}">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="MatchApp TV">
