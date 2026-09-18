@@ -762,6 +762,7 @@ async function itunesRichLookup(title, media, hints) {
                     storeUrl: best.trackViewUrl || best.collectionViewUrl || null,
                     kind: best.kind || media,
                     year: best.releaseDate ? String(best.releaseDate).substring(0, 4) : null,
+                    genre: best.primaryGenreName ? String(best.primaryGenreName).trim() : '',
                     description: best.longDescription || best.shortDescription || null
                 };
                 META_CACHE[cacheKey] = meta;
@@ -3550,6 +3551,7 @@ window.triggerMatch = async function(isSpecificSearch = false) {
             : {
                 cat:    [document.getElementById('q-category')?.value].filter(v => v && v !== 'any'),
                 plat:   [document.getElementById('q-platform')?.value].filter(v => v && v !== 'any'),
+                genre:  [document.getElementById('q-genre')?.value].filter(v => v && v !== 'any'),
                 mood:   [document.getElementById('q-mood')?.value].filter(v => v && v !== 'any'),
                 vibe:   [document.getElementById('q-vibe')?.value].filter(v => v && v !== 'any'),
                 rating: [document.getElementById('q-rating')?.value].filter(v => v && v !== 'any'),
