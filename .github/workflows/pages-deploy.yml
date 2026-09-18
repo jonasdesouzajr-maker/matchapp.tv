@@ -44,7 +44,7 @@ jobs:
           node --check profile.js
           node --test tests/match-runtime-regression.test.cjs tests/exclusion-preferences.test.cjs
           grep -Fq 'id="q-genre"' index.html
-          grep -Fq '/app.js?v=209' index.html
+          grep -Fq '/app.js?v=210' index.html
           grep -Fq '/catalog-media.js?v=20260918-notify2' index.html
           grep -Fq '/discover.js?v=207' discover.html
           grep -Fq '/kids/kids.js?v=199' kids/index.html
@@ -93,7 +93,7 @@ jobs:
           grep -q "Google Play — Coming Soon" /tmp/android.html
           ! grep -q "play.google.com/store/apps/details?id=tv.matchapp.app" /tmp/android.html
           curl -sS -L --max-time 30 https://matchapp.tv/ -o /tmp/home.html
-          grep -Fq '/app.js?v=209' /tmp/home.html
+          grep -Fq '/app.js?v=210' /tmp/home.html
           grep -Fq '/catalog-media.js?v=20260918-notify2' /tmp/home.html
           grep -Fq '/settings.js?v=20260918-onboard1' /tmp/home.html
           grep -Fq '/app-updates.js?v=202' /tmp/home.html
