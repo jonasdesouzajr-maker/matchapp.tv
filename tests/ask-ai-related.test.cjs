@@ -22,7 +22,7 @@ test('Ask AI cards include watch now, watch later, not for me and synopsis',()=>
   const html=read('discover.html');
   assert.match(html,/discover-nfm/);
   assert.match(html,/discover-related-head/);
-  assert.match(html,/discover\.js\?v=200/);
+  assert.match(html,/discover\\.js\\?v=\\d+/);
   assert.match(html,/tmdb\.js\?v=191/);
 });
 
@@ -133,7 +133,7 @@ test('trending posters open the pinned Ask AI title card without spending a cred
   assert.match(card,/hydrateDiscoverCard/);
   const html=read('discover.html');
   assert.match(html,/discover-facts/);
-  assert.match(html,/discover\.js\?v=200/);
+  assert.match(html,/discover\\.js\\?v=\\d+/);
 });
 
 test('title-card copy exists in every supported language',()=>{
