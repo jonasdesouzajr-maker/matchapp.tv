@@ -45,24 +45,22 @@ let userRatings = readPortfolioCache('match_userRatings', {});
 let recentTitles = readPortfolioCache('match_recentTitles', [], item => typeof item === 'string' && !!item.trim());
 
 // ----------------------------------------------------
-// THE LIMIT LOGIC (3 Free, 5 Registered, 10 VIP)
+// INCLUDED DAILY AI ACTIONS (3 Guest, 5 Registered, 10 VIP, 50 Business)
 // ----------------------------------------------------
 // ----------------------------------------------------
-// MATCH QUOTA
-// Registered users are metered server-side in Postgres via the
-// consume_match() RPC — the client can request a match but cannot
-// set its own counter, so devtools tampering does nothing.
-//
-// Anonymous visitors have no server identity to meter against, so
-// their 3 free matches remain client-side. That is deliberate: the
-// enforceable tier is the one worth protecting, and it is also the
-// incentive to register.
+// COMMERCIAL QUOTA
+// The included daily allowance is shared between Matches and Ask AI:
+// 3 guest / 5 registered / 10 VIP / 50 Business.
+// Matches and Ask AI use separate paid top-ups only after that allowance:
+// Extra Matches for Matches; Ask AI credits for Ask AI.
+// Anonymous visitors have no server identity, so their 3 included actions
+// remain client-side.
 // ----------------------------------------------------
 let lastQuotaStatus = null;
 
 const ANON_DAILY_LIMIT = 3;
 
-function anonLimitCheck() {
+function anonLimitCheck(action = 'match') {
     const todayStr = new Date().toLocaleDateString();
     const lastDate = localStorage.getItem('match_lastDate');
     let dailyCount = parseInt(localStorage.getItem('match_dailyCount') || '0');
@@ -74,7 +72,7 @@ function anonLimitCheck() {
         // the majority of first-time traffic. Populate it here too.
         lastQuotaStatus = { allowed: false, used: dailyCount, limit: ANON_DAILY_LIMIT, remaining: 0, anon: true };
         updateQuotaBadge(lastQuotaStatus);
-        showQuotaMessage('anon');
+        showQuotaMessage('anon', lastQuotaStatus, action);
         return false;
     }
 
@@ -85,11 +83,14 @@ function anonLimitCheck() {
     return true;
 }
 
-function showQuotaMessage(kind, status) {
+function showQuotaMessage(kind, status, action = 'match') {
     if (kind === 'anon') {
-        if (window.showToast) showToast("🔒 That's your 3 free matches for today — register free to unlock 5 daily.");
-        else alert("🔒 You've used your 3 free searches today!\n\nRegister for FREE to unlock 5 daily searches.");
+        if (window.showToast) showToast("🔒 That's your 3 included AI actions for today — register free to unlock 5 daily.");
+        else alert("🔒 You've used your 3 included AI actions today!\n\nRegister for FREE to unlock 5 daily.");
         if (window.openAuthModal) window.openAuthModal();
+    } else if (action === 'ask_ai') {
+        if (window.showToast) showToast(`You've used all ${status ? status.limit : 5} included AI actions today. Ask AI credits let you keep asking without changing your Match balance.`);
+        return;
     } else {
         // Used to toast and then hard-redirect to /pricing after 2.6s. That
         // threw the user off the page they were using, gave them no way to
@@ -109,7 +110,7 @@ function openOutOfMatches(kind, status) {
     if (!modal) {
         // No panel on this page — fall back to saying it rather than silently
         // doing nothing.
-        if (window.showToast) showToast(`🔒 You've used all ${status ? status.limit : 5} matches today.`);
+        if (window.showToast) showToast(`🔒 You've used all ${status ? status.limit : 5} included AI actions today.`);
         return;
     }
 
@@ -120,14 +121,16 @@ function openOutOfMatches(kind, status) {
     const vipLine = document.getElementById('oom-vip');
 
     if (headline) {
-        headline.textContent = kind === 'vip'
-            ? `💎 That's all ${limit} VIP matches for today`
-            : `⚡ That's all ${limit} matches for today`;
+        headline.textContent = kind === 'business'
+            ? `💼 That's all ${limit} Business matches for today`
+            : kind === 'vip'
+                ? `💎 That's all ${limit} VIP matches for today`
+                : `⚡ That's all ${limit} matches for today`;
     }
     if (sub) {
-        sub.textContent = kind === 'vip'
-            ? 'Your allowance resets at midnight. Credits carry you past it whenever you need more.'
-            : 'Your allowance resets at midnight — or keep going now.';
+        sub.textContent = kind === 'vip' || kind === 'business'
+            ? 'Your included allowance resets at midnight. Extra Matches let you keep matching without using Ask AI credits.'
+            : 'Your included allowance resets at midnight — or keep going with Extra Matches.';
     }
     if (shareLine) {
         const left = status && status.share_rewards_left;
@@ -136,7 +139,7 @@ function openOutOfMatches(kind, status) {
     }
     // A VIP is already subscribed; offering them VIP is the fastest way to
     // look like nobody is reading the account state.
-    if (vipLine) vipLine.style.display = kind === 'vip' ? 'none' : 'flex';
+    if (vipLine) vipLine.style.display = (kind === 'vip' || kind === 'business') ? 'none' : 'flex';
 
     if (typeof window.injectCreditsCTA === 'function') window.injectCreditsCTA();
     modal.style.display = 'flex';
@@ -153,17 +156,17 @@ async function checkDailyLimit(action = 'match') {
         // Wait for the SDK to restore the session before treating a new page as logged out.
         const sessionResult = await supabaseClient.auth.getSession();
         if (sessionResult.error) throw sessionResult.error;
-        if (!sessionResult.data?.session) return anonLimitCheck();
+        if (!sessionResult.data?.session) return anonLimitCheck(action);
         isUserLoggedIn = true; window.isUserLoggedIn = true;
         const { data, error } = await supabaseClient.rpc('consume_ai_action', {p_reason: action});
         if (error || !data) throw error || new Error('Quota unavailable');
         lastQuotaStatus = data; updateQuotaBadge(data);
         window.renderCreditBadge?.(data.credits);
         if (data.allowed) {
-            if (data.paid_with_credit) window.showToast?.(window.t?.('credits.usedShared') || 'Used 1 credit. Credits work for matches and Ask AI.');
+            if (data.paid_with_credit) window.showToast?.('Used 1 Ask AI credit.');
             return true;
         }
-        if (data.reason === 'limit_reached') showQuotaMessage(data.limit >= 10 ? 'vip' : 'registered', data);
+        if (data.reason === 'limit_reached') showQuotaMessage(data.limit >= 50 ? 'business' : data.limit >= 10 ? 'vip' : 'registered', data, action);
         else window.showToast?.(window.t?.('credits.retry') || 'Could not verify your allowance. Please try again.', true);
         return false;
     } catch (e) {
@@ -175,7 +178,7 @@ async function checkDailyLimit(action = 'match') {
 }
 window.checkDailyLimit = checkDailyLimit;
 
-// Live "matches left today" pill in the header.
+// Live included-actions-left pill in the header.
 function updateQuotaBadge(status) {
     const el = document.getElementById('quota-badge');
     if (!el || !status || typeof status.remaining !== 'number') return;
@@ -194,16 +197,16 @@ function updateQuotaBadge(status) {
         el.style.cursor = 'pointer';
         const go = () => {
             if (window.track) window.track('quota_badge_click', { remaining: status.remaining });
-            window.location.href = '/pricing/pricing.html?from=quota#credits';
+            window.location.href = '/pricing/pricing.html?from=quota';
         };
-        if(el.tagName==='A'){el.href='/pricing/pricing.html?from=quota#credits';el.addEventListener('click',()=>{if(window.track)window.track('quota_badge_click',{remaining:el.dataset.remaining});});}
+        if(el.tagName==='A'){el.href='/pricing/pricing.html?from=quota';el.addEventListener('click',()=>{if(window.track)window.track('quota_badge_click',{remaining:el.dataset.remaining});});}
         else el.addEventListener('click', go);
         el.addEventListener('keydown', (e) => {
             if (el.tagName!=='A' && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); go(); }
         });
     }
     el.dataset.remaining=String(status.remaining);
-    el.title = tSafe('match.more', 'Get more credits');
+    el.title = 'Get more';
     el.setAttribute('aria-label', `${status.remaining} ${tSafe('quota.left', 'left today')}. ${el.title}`);
 }
 window.updateQuotaBadge = updateQuotaBadge;
@@ -237,7 +240,7 @@ window.refreshQuotaStatus = async function() {
             window.isBusiness = data.is_business;
             localStorage.setItem('match_isBusiness', data.is_business ? 'true' : 'false');
         }
-        // Whether the profile is complete, which decides 3 vs 5 daily sessions.
+        // Whether the profile is complete, which decides 3 vs 5 included daily AI actions.
         if (typeof data.profile_complete === 'boolean') {
             window.profileComplete = data.profile_complete;
             localStorage.setItem('match_profileComplete', data.profile_complete ? 'true' : 'false');
