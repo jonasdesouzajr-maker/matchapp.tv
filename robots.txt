@@ -39,7 +39,6 @@ Allow: /
 User-agent: YandexBot
 Allow: /
 
-Sitemap: https://matchapp.tv/sitemap.xml
-Sitemap: https://matchapp.tv/legal-sitemap.xml
+Sitemap: https://matchapp.tv/sitemaps.xml
 # LLM / AI-search site summary (not a sitemap URL)
 # https://matchapp.tv/llms.txt
