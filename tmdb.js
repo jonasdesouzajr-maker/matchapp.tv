@@ -23,6 +23,8 @@
 
    VERIFIED DETAIL LOOKUPS
 
+   Streaming availability is attached only after exact TMDB identity verification.
+
    Search establishes an exact numeric TMDB identity first. Only after that,
    tmdbDetails may request source genres, official preview media, theatrical
    dates and regional provider data supplied by TMDB/JustWatch. No provider is
