@@ -3812,7 +3812,7 @@ function renderQuotaCorner() {
     if (left === 0) el.classList.add('qc-out');
     else if (left === 1) el.classList.add('qc-low');
 
-    el.title = tSafe('match.used','{used} of {limit} daily matches used').replace('{used}',s.used||0).replace('{limit}',s.limit||'?');
+    el.title = tSafe('match.used','{used} of {limit} included AI actions used').replace('{used}',s.used||0).replace('{limit}',s.limit||'?');
     el.style.display = 'flex';
 }
 
