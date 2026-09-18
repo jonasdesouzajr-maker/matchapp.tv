@@ -22,9 +22,24 @@ test('legacy domain stays out of the canonical sitemap and redirects to .tv', ()
 test('VIP copy remediation stays tied to the established 10/day entitlement', () => {
   const deployFix = read('tools/apply-critical-hotfixes.js');
   const runtime = read('build-meta.js');
+  const locale = read('i18n.js');
   assert.match(deployFix, /10<\/strong> AI Matches Daily/);
   assert.match(runtime, /const vipDaily = 10/);
   assert.match(read('app.js'), /THE LIMIT LOGIC \(3 Free, 5 Registered, 10 VIP\)/);
+
+  // The localization layer runs after build-meta.js. Every supported pricing
+  // locale must therefore carry the 10/day copy itself or it can restore an
+  // obsolete "unlimited" claim after the page initially renders correctly.
+  const titleClaims = [...locale.matchAll(/'pricing\.title':\s*'([^']+)'/g)].map(m=>m[1]);
+  const subtitleClaims = [...locale.matchAll(/'pricing\.subtitle':\s*'([^']+)'/g)].map(m=>m[1]);
+  const vipClaims = [...locale.matchAll(/'pricing\.vipm\.f1':\s*'([^']+)'/g)].map(m=>m[1]);
+  assert.equal(titleClaims.length, 14);
+  assert.equal(subtitleClaims.length, 14);
+  assert.equal(vipClaims.length, 14);
+  for (const claim of [...titleClaims, ...subtitleClaims, ...vipClaims]) {
+    assert.doesNotMatch(claim, /unlimited|infinite|ilimitad|illimit|unbegrenz|sınırsız|неогранич|безлимит|غير محدود|असीमित|tanpa batas|無制限|무제한|无限/i);
+  }
+  assert.equal(vipClaims.every(claim => /10/.test(claim)), true);
 });
 
 test('Kids deploy hotfix removes only the general GTM container', () => {
