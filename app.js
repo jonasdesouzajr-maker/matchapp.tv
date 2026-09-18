@@ -3254,7 +3254,7 @@ function pickFromCatalog(cat, plat, mood, vibe, rating, decade) {
     const wantsFaith = normCriteria(cat).includes('Gospel & Faith') || normCriteria(plat).some(p => ['Pure Flix','Angel Studios'].includes(p));
     const eligible = e => policy.matches(e, criteria)
         && (typeof titlePassesRealGenre!=='function'||titlePassesRealGenre(e))
-        && entryPassesPreferenceExclusions(e)
+        && (typeof entryPassesPreferenceExclusions!=='function'||entryPassesPreferenceExclusions(e))
         && !isBlockedEntry(e) && !SESSION_SHOWN.has(e.title)
         && (wantsFaith || !e.cats.includes('Gospel & Faith'))
         && (normCriteria(cat).length || isSurpriseEligible(e));
@@ -3295,7 +3295,7 @@ function pickRecycledCatalog(cat, plat, mood, vibe, rating, decade) {
     const wantsFaith = normCriteria(cat).includes('Gospel & Faith') || normCriteria(plat).some(p => ['Pure Flix','Angel Studios'].includes(p));
     const eligible = e => policy.matchesCriteria(e, criteria)
         && (typeof titlePassesRealGenre!=='function'||titlePassesRealGenre(e))
-        && entryPassesPreferenceExclusions(e)
+        && (typeof entryPassesPreferenceExclusions!=='function'||entryPassesPreferenceExclusions(e))
         && !isBlockedEntry(e)
         && (wantsFaith || !e.cats.includes('Gospel & Faith'))
         && (normCriteria(cat).length || isSurpriseEligible(e));
@@ -3423,7 +3423,7 @@ function pickGuaranteedCatalog(cat, plat, mood, vibe, rating, decade) {
     const allowed = entry => {
         if (!entry || !entry.title) return false;
         if (typeof titlePassesRealGenre==='function' && !titlePassesRealGenre(entry)) return false;
-        if (!entryPassesPreferenceExclusions(entry)) return false;
+        if (typeof entryPassesPreferenceExclusions==='function' && !entryPassesPreferenceExclusions(entry)) return false;
         const k = policy.key(entry.title);
         if (!k || hardExcluded.has(k)) return false;
         try { if (typeof isBlockedEntry === 'function' && isBlockedEntry(entry)) return false; } catch (_) {}
