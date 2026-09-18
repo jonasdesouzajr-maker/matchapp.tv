@@ -95,15 +95,57 @@
     return result;
   }
 
+  async function refreshExact(meta){
+    if(!meta||!Number.isSafeInteger(Number(meta.tmdb_id))||!['movie','tv'].includes(meta.media_kind)||typeof window.tmdbDetails!=='function')return meta;
+    try{
+      const d=await window.tmdbDetails(Number(meta.tmdb_id),meta.media_kind);
+      if(!d)return meta;
+      return {
+        ...meta,
+        title:String(d.title||meta.title||''),
+        year:d.year?Number(d.year):meta.year,
+        poster_url:d.poster||meta.poster_url,
+        poster_large_url:d.posterLarge||d.poster||meta.poster_large_url||meta.poster_url,
+        poster_original_url:d.posterOriginal||meta.poster_original_url,
+        backdrop_url:d.backdrop||meta.backdrop_url,
+        overview:String(d.overview||meta.overview||'').trim()||null,
+        genres:Array.isArray(d.genres)&&d.genres.length?d.genres:meta.genres,
+        runtime_minutes:Number.isFinite(Number(d.runtimeMinutes))?Number(d.runtimeMinutes):meta.runtime_minutes,
+        content_rating:d.contentRating||meta.content_rating,
+        vote_average:Number.isFinite(Number(d.voteAverage))?Number(d.voteAverage):meta.vote_average,
+        original_language:d.originalLanguage||meta.original_language,
+        preview_kind:d.previewKind||meta.preview_kind,
+        preview_provider:d.previewProvider||meta.preview_provider,
+        preview_url:d.previewUrl||meta.preview_url,
+        preview_embed_url:d.previewEmbedUrl||meta.preview_embed_url,
+        availability:d.availability&&typeof d.availability==='object'?d.availability:meta.availability,
+        updated_at:new Date().toISOString()
+      };
+    }catch(_){return meta;}
+  }
+
   function safePoster(meta){return [meta?.poster_original_url,meta?.poster_large_url,meta?.poster_url].find(u=>TRUSTED_POSTER.test(String(u||'')))||null;}
+  const COUNTRY_CODES={
+    argentina:'AR',australia:'AU',belgium:'BE',brazil:'BR',brasil:'BR',canada:'CA',chile:'CL',china:'CN',colombia:'CO',
+    denmark:'DK',egypt:'EG',finland:'FI',france:'FR',germany:'DE',greece:'GR','hong kong':'HK',india:'IN',indonesia:'ID',
+    ireland:'IE',israel:'IL',italy:'IT',japan:'JP','south korea':'KR',korea:'KR',mexico:'MX',netherlands:'NL','new zealand':'NZ',
+    nigeria:'NG',norway:'NO',philippines:'PH',poland:'PL',portugal:'PT',russia:'RU','south africa':'ZA',spain:'ES',sweden:'SE',
+    switzerland:'CH',taiwan:'TW',thailand:'TH',turkey:'TR',ukraine:'UA','united kingdom':'GB',uk:'GB','united states':'US',usa:'US',vietnam:'VN'
+  };
   function regionCode(){
-    const saved=String(localStorage.getItem('match_user_country')||'').trim().toLowerCase();
-    if(/^(br|brasil|brazil)$/.test(saved))return 'BR';
-    if(/^(pt|portugal)$/.test(saved))return 'PT';
-    if(/^(gb|uk|united kingdom)$/.test(saved))return 'GB';
-    if(/^(us|usa|united states)$/.test(saved))return 'US';
+    const preferred=String(localStorage.getItem('match_user_region')||'').trim().toUpperCase();
+    if(/^[A-Z]{2}$/.test(preferred))return preferred;
+    const saved=String(localStorage.getItem('match_user_country')||'').trim();
+    if(/^[A-Za-z]{2}$/.test(saved))return saved.toUpperCase();
+    const mapped=COUNTRY_CODES[saved.toLowerCase()];
+    if(mapped)return mapped;
     const lang=window.MATCH_LANG||'en';
-    return lang==='pt-BR'?'BR':'US';
+    const fallback={'pt-BR':'BR',es:'MX',fr:'FR',de:'DE',it:'IT',tr:'TR',ru:'RU',ar:'EG',hi:'IN',id:'ID',ja:'JP',ko:'KR',zh:'CN'};
+    return fallback[lang]||'US';
+  }
+  function countryName(code){
+    code=String(code||'').toUpperCase();
+    try{const dn=new Intl.DisplayNames([window.MATCH_LANG||'en'],{type:'region'});return dn.of(code)||code;}catch(_){return code;}
   }
   function sourcePage(meta){
     const explicit=String(meta?.availability?.source_page_url||'');
@@ -247,10 +289,20 @@
     const a=availability(meta,region);
     if(a.streams.length){
       const direct=providerSearch(a.streams[0],title);
-      return {mode:'stream',href:direct||a.guide||a.sourcePage,provider:a.streams[0],availability:a};
+      return {mode:'stream',href:direct||a.guide,provider:a.streams[0],availability:a};
     }
-    if(a.inCinemas)return {mode:'cinema',href:a.sourcePage||a.guide,provider:'',availability:a};
-    return {mode:'guide',href:a.guide||a.sourcePage,provider:'',availability:a};
+    if(a.inCinemas)return {mode:'cinema',href:showtimesUrl(title),provider:'',availability:a};
+    return {mode:'guide',href:'',provider:'',availability:a};
+  }
+  function streamingElsewhere(meta,region){
+    const root=meta?.availability||{},here=String(region||regionCode()).toUpperCase(),rows=[];
+    for(const [code,row] of Object.entries(root)){
+      if(!/^[A-Z]{2}$/.test(code)||code===here||!row||typeof row!=='object')continue;
+      const streams=[...new Set([...(Array.isArray(row.stream)?row.stream:[]),...(Array.isArray(row.free)?row.free:[])].map(v=>String(v||'').trim()).filter(Boolean))];
+      if(streams.length)rows.push({region:code,country:countryName(code),providers:streams.slice(0,8),guide:/^https:\/\//.test(String(row.link||''))?String(row.link):''});
+    }
+    rows.sort((a,b)=>a.country.localeCompare(b.country));
+    return rows;
   }
 
   function hardenImage(img,title,meta){
@@ -294,7 +346,7 @@
   function renderAvailability(host,meta,{title='',kids=false}={}){
     if(!host)return;host.replaceChildren();host.hidden=true;
     if(!meta||(kids&&meta.kids_approved!==true))return;
-    const a=availability(meta),links=providerLinks(meta,title||meta.title,a.region);
+    const actualTitle=title||meta.title||'',a=availability(meta),links=providerLinks(meta,actualTitle,a.region);
     const genres=(Array.isArray(meta.genres)?meta.genres:[]).filter(Boolean);
     const wrap=document.createElement('div');wrap.className='matchapp-title-availability';
     if(genres.length){
@@ -303,9 +355,15 @@
       genres.slice(0,8).forEach(g=>{const chip=document.createElement('span');chip.textContent=g;row.appendChild(chip);});
       wrap.appendChild(row);
     }
+    const status=document.createElement('div');status.className='matchapp-availability-status';
+    const regionLabel=countryName(a.region);
+    if(a.streams.length)status.textContent='Streaming in '+regionLabel+' now.';
+    else if(a.inCinemas)status.textContent='In cinemas in '+regionLabel+'. Streaming is not listed there yet.';
+    else status.textContent='Not currently listed for streaming in '+regionLabel+'.';
+    wrap.appendChild(status);
     if(links.length){
       const row=document.createElement('div');row.className='matchapp-provider-actions';
-      const label=document.createElement('strong');label.textContent='Watch options';row.appendChild(label);
+      const label=document.createElement('strong');label.textContent='Watch options in '+regionLabel;row.appendChild(label);
       links.slice(0,16).forEach(link=>{
         const aEl=document.createElement('a');aEl.href=link.href;aEl.target='_blank';aEl.rel='noopener noreferrer';
         const prefix=link.direct?(link.mode==='rent'?'Rent · ':link.mode==='buy'?'Buy · ':'Watch · '):'Availability · ';
@@ -313,16 +371,43 @@
       });
       wrap.appendChild(row);
     }
-    if(a.cinemaDate){
+    if(a.cinemaDate||a.inCinemas){
       const row=document.createElement('div');row.className='matchapp-cinema-actions';
-      const when=document.createElement('span');when.textContent=(a.inCinemas?'In cinemas · ':'Cinema release · ')+a.cinemaDate;row.appendChild(when);
-      const nearby=document.createElement('a');nearby.href=showtimesUrl(title||meta.title);nearby.target='_blank';nearby.rel='noopener noreferrer';nearby.textContent=a.inCinemas?'Nearby cinemas & showtimes':'Cinema release & showtimes';row.appendChild(nearby);
+      const when=document.createElement('span');when.textContent=(a.inCinemas?'In cinemas'+(a.cinemaDate?' · '+a.cinemaDate:''):'Cinema release · '+a.cinemaDate);row.appendChild(when);
+      const nearby=document.createElement('a');nearby.href=showtimesUrl(actualTitle);nearby.target='_blank';nearby.rel='noopener noreferrer';nearby.textContent=a.inCinemas?'Cinemas & showtimes near me':'Cinema release & showtimes';row.appendChild(nearby);
       wrap.appendChild(row);
+    }
+    if(!a.streams.length){
+      const elsewhere=streamingElsewhere(meta,a.region);
+      if(elsewhere.length){
+        const row=document.createElement('div');row.className='matchapp-other-countries';
+        const label=document.createElement('strong');label.textContent='Streaming in other countries';row.appendChild(label);
+        elsewhere.slice(0,18).forEach(item=>{
+          const line=document.createElement('span');line.className='matchapp-country-availability';
+          line.textContent=item.country+' · '+item.providers.join(', ');row.appendChild(line);
+        });
+        wrap.appendChild(row);
+      }
+      if(Number.isSafeInteger(Number(meta.tmdb_id))&&['movie','tv'].includes(meta.media_kind)){
+        const follow=document.createElement('button');follow.type='button';follow.className='matchapp-follow-availability';
+        follow.textContent='🔔 Notify me when it streams in '+regionLabel;
+        follow.addEventListener('click',async()=>{
+          if(!window.MatchNotifications?.followTitle){
+            window.showToast?.('Sign in to follow streaming availability.');
+            window.openAuthModal?.();return;
+          }
+          follow.disabled=true;
+          const ok=await window.MatchNotifications.followTitle(meta,a.region).catch(()=>false);
+          follow.disabled=false;
+          if(ok){follow.textContent='✓ You’ll be notified in '+regionLabel;follow.classList.add('is-following');}
+        });
+        wrap.appendChild(follow);
+      }
     }
     const page=a.sourcePage;
     if(page){
       const row=document.createElement('div');row.className='matchapp-title-page-row';
-      const pageLink=document.createElement('a');pageLink.href=page;pageLink.target='_blank';pageLink.rel='noopener noreferrer';pageLink.textContent='Title page';row.appendChild(pageLink);wrap.appendChild(row);
+      const pageLink=document.createElement('a');pageLink.href=page;pageLink.target='_blank';pageLink.rel='noopener noreferrer';pageLink.textContent='Title details';row.appendChild(pageLink);wrap.appendChild(row);
     }
     if(wrap.childElementCount){host.appendChild(wrap);host.hidden=false;}
   }
@@ -341,7 +426,7 @@
     await Promise.all(cards.map(async card=>{
       const img=card.querySelector('img[data-title]'),title=img?.dataset?.title||'';
       if(!title)return;
-      const meta=await lookup(title);
+      const meta=await refreshExact(await lookup(title));
       const state=availability(meta);
       let ribbon=card.querySelector('.matchapp-cinema-ribbon');
       if(state.inCinemas){
@@ -362,6 +447,7 @@
     const availabilityHost=ensurePlayerHost(anchor,'matchapp-main-availability');
     const host=ensurePlayerHost(availabilityHost||anchor,'matchapp-main-preview');
     let meta=await lookup(title);
+    if(meta)meta=await refreshExact(meta);
     if(!meta){
       let opts={};
       try{
@@ -389,7 +475,7 @@
     .matchapp-media-preview-label{margin:0 0 7px;color:#E5C158;font:800 11px/1.2 Inter,Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase}
     .matchapp-media-preview iframe,.discover-card-preview video{display:block;width:100%;aspect-ratio:16/9;border:0;border-radius:14px;background:#000}
     .matchapp-media-preview audio{display:block;width:100%;min-height:44px}.discover-card-preview video{margin:0 0 9px}.matchapp-title-page-btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 14px;border:1px solid #E5C158;border-radius:999px;color:#E5C158;text-decoration:none;font-weight:800}.matchapp-media-meta{display:inline-flex;margin-left:8px;color:#bdb4ca;font-size:12px}
-    .matchapp-title-availability{display:grid;gap:10px;margin:12px 0}.matchapp-real-genres,.matchapp-provider-actions,.matchapp-cinema-actions,.matchapp-title-page-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}.matchapp-real-genres strong,.matchapp-provider-actions strong{width:100%;color:#E5C158;font-size:12px;text-transform:uppercase;letter-spacing:.06em}.matchapp-real-genres span,.matchapp-title-availability a{padding:7px 10px;border-radius:999px;border:1px solid rgba(229,193,88,.35);background:rgba(229,193,88,.08);color:#f6e8ad;text-decoration:none;font-size:12px;font-weight:800}.matchapp-title-availability a:hover{background:rgba(229,193,88,.16)}.matchapp-cinema-actions span{color:#fff;font-size:13px;font-weight:800}
+    .matchapp-title-availability{display:grid;gap:10px;margin:12px 0}.matchapp-real-genres,.matchapp-provider-actions,.matchapp-cinema-actions,.matchapp-title-page-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}.matchapp-real-genres strong,.matchapp-provider-actions strong,.matchapp-other-countries strong{width:100%;color:#E5C158;font-size:12px;text-transform:uppercase;letter-spacing:.06em}.matchapp-real-genres span,.matchapp-title-availability a{padding:7px 10px;border-radius:999px;border:1px solid rgba(229,193,88,.35);background:rgba(229,193,88,.08);color:#f6e8ad;text-decoration:none;font-size:12px;font-weight:800}.matchapp-title-availability a:hover{background:rgba(229,193,88,.16)}.matchapp-cinema-actions span{color:#fff;font-size:13px;font-weight:800}.matchapp-availability-status{color:#eee;font-size:13px;line-height:1.55;padding:9px 11px;border:1px solid rgba(255,255,255,.09);border-radius:12px;background:rgba(255,255,255,.035)}.matchapp-other-countries{display:grid;gap:6px}.matchapp-country-availability{display:block;color:#cfc6dd;font-size:12px;line-height:1.4}.matchapp-follow-availability{justify-self:start;border:1px solid rgba(229,193,88,.55);background:linear-gradient(135deg,rgba(229,193,88,.18),rgba(117,71,159,.18));color:#ffe9a6;border-radius:999px;padding:10px 14px;font-weight:900;cursor:pointer}.matchapp-follow-availability.is-following{border-color:#48d597;color:#aef7d2}
     #matchapp-kids-preview{max-width:520px;margin-left:auto;margin-right:auto}#matchapp-kids-preview iframe{border-radius:18px}
     #marquee-track .marquee-item{position:relative}
     .matchapp-cinema-ribbon{position:absolute;z-index:8;top:10px;left:-5px;padding:6px 10px 6px 12px;border-radius:4px 8px 8px 4px;background:#d6253f;color:#fff;font:900 10px/1 Inter,Arial,sans-serif;letter-spacing:.06em;text-transform:uppercase;box-shadow:0 5px 14px rgba(214,37,63,.4);pointer-events:none}
@@ -402,6 +488,6 @@
     obs.observe(document.documentElement,{subtree:true,childList:true,characterData:true,attributes:false});enrichMain();enrichKids();enrichTrendingRail();
     document.addEventListener('matchapp:langchange',enrichTrendingRail);
   }
-  window.MatchAppCatalogMedia=Object.freeze({lookup,lookupLive,normalise,localPoster,enrichMain,enrichKids,enrichTrendingRail,renderPreview,renderAvailability,availability,viewingTarget,providerLinks,providerSearch,showtimesUrl,sourcePage,regionCode,titleKeysForGenres,availableGenres,syncGenreFilter});
+  window.MatchAppCatalogMedia=Object.freeze({lookup,lookupLive,refreshExact,normalise,localPoster,enrichMain,enrichKids,enrichTrendingRail,renderPreview,renderAvailability,availability,streamingElsewhere,viewingTarget,providerLinks,providerSearch,showtimesUrl,sourcePage,regionCode,countryName,titleKeysForGenres,availableGenres,syncGenreFilter});
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
 })();
