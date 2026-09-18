@@ -1,5 +1,5 @@
 // Functional release identifier must match release.json.
-window.MATCHAPP_BUILD = '2026.09.17.1';
+window.MATCHAPP_BUILD = '2026.09.18.1';
 
 
 /* HOME STARTUP SCHEDULER */
@@ -65,7 +65,7 @@ window.MATCHAPP_BUILD = '2026.09.17.1';
   function loadHomeRuntimeFixes() {
     if (document.querySelector('script[data-matchapp-marquee-autoplay]')) return;
     const script = document.createElement('script');
-    script.src = '/marquee-autoplay.js?v=20260916-flow2&b=' + encodeURIComponent(window.MATCHAPP_BUILD || '2026.09.17.1'); script.defer = true; script.dataset.matchappMarqueeAutoplay = '1';    document.head.appendChild(script);
+    script.src = '/marquee-autoplay.js?v=20260916-flow2&b=' + encodeURIComponent(window.MATCHAPP_BUILD || '2026.09.18.1'); script.defer = true; script.dataset.matchappMarqueeAutoplay = '1';    document.head.appendChild(script);
   }
   function normalizePricingTruth() {
     const path = (location.pathname || '').replace(/\/+$/, '') || '/';
@@ -99,7 +99,7 @@ window.MATCHAPP_BUILD = '2026.09.17.1';
     if (path === '/' || path === '/index.html') {
       loadHomeRuntimeFixes();
       document.title = 'What to Watch Tonight | AI Movie & TV Finder | MatchApp';
-      upsertMeta('description', 'Find what to watch tonight with MatchApp: AI movie, TV, K-drama, anime and Kids Mode picks, Match Together, plus verified links showing where to stream.');
+      upsertMeta('description', 'Find what to watch tonight with MatchApp: exact mood and genre matching, country/genre exclusion preferences, AI movie and TV discovery, Kids Mode, Match Together, and verified streaming links.');
       upsertMeta('robots', 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1');
       upsertPropertyMeta('og:description', 'Tell MatchApp your mood and get an AI entertainment match, where to stream it, Kids Mode, Match Together and timely entertainment guides.');
       addJsonLd('matchapp-organization-schema', {
