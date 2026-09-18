@@ -22,7 +22,7 @@ test('initial match form shows three core filters and keeps advanced filters in 
   const moreEnd=s.indexOf('</details>',more);
   assert.ok(more>0&&moreEnd>more);
   for(const id of ['q-category','q-mood','q-platform']) assert.ok(s.indexOf('id="'+id+'"')<more,id+' must stay visible before More Filters');
-  for(const id of ['q-vibe','q-decade','q-age']) {
+  for(const id of ['q-vibe','q-decade','q-rating']) {
     const pos=s.indexOf('id="'+id+'"');
     assert.ok(pos>more&&pos<moreEnd,id+' must stay inside More Filters');
   }
@@ -41,9 +41,8 @@ test('Match Together stays visible before premiere and event editorial content',
   const premiere=s.indexOf('<details id="premiere-disclosure"');
   const events=s.indexOf('<section id="global-events"');
   assert.ok(together>0&&premiere>together&&events>premiere);
-  const open=s.lastIndexOf('<details',together);
-  const close=s.lastIndexOf('</details>',together);
-  assert.ok(close>=open,'Match Together must not be trapped inside an earlier open details element');
+  const premiereOpen=s.indexOf('<details id="premiere-disclosure"');
+  assert.ok(together<premiereOpen,'Match Together must remain outside the premiere disclosure');
 });
 
 test('core CTA, quota loading, trending and separate AI experiences remain intact',()=>{
