@@ -1,0 +1,67 @@
+/* Homepage-only mobile stabilization. Loaded after emergency-layout.css. */
+@media(max-width:900px){
+  body.page-home{overflow-x:hidden!important}
+  body.page-home .app-header{
+    display:grid!important;grid-template-columns:1fr!important;gap:.55rem!important;
+    padding:.65rem .75rem!important;align-items:center!important
+  }
+  body.page-home .app-header>#home-brand-lockup{
+    width:100%!important;min-width:0!important;display:flex!important;justify-content:center!important;
+    gap:.42rem!important;margin:0!important
+  }
+  body.page-home .app-header>nav{
+    width:100%!important;min-width:0!important;display:grid!important;
+    grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:.42rem!important;
+    align-items:center!important;justify-content:stretch!important
+  }
+  body.page-home .app-header>nav>*{min-width:0!important;max-width:none!important;margin:0!important}
+  body.page-home .app-header .install-wrap{grid-column:span 2!important;width:100%!important}
+  body.page-home .app-header .install-wrap>.install-btn{width:100%!important;justify-content:center!important}
+  body.page-home .app-header #nav-reg-btn{grid-column:span 2!important;width:100%!important;max-width:none!important;white-space:nowrap!important}
+  body.page-home .app-header #nav-logout-btn{grid-column:span 2!important;width:100%!important}
+  body.page-home .app-header #lang-switcher-host{grid-column:span 2!important;width:100%!important}
+  body.page-home .app-header #lang-switcher-host select{width:100%!important;max-width:none!important}
+  body.page-home .app-header .sound-toggle-btn,
+  body.page-home .app-header #profile-link-tab,
+  body.page-home .app-header #quota-badge,
+  body.page-home .app-header .matchapp-notification-button{width:100%!important;min-width:0!important;justify-content:center!important}
+  body.page-home .top-ask-wrap,
+  body.page-home .live-strip{width:100%!important;box-sizing:border-box!important}
+  body.page-home .main-layout{display:block!important;width:100%!important;max-width:100%!important;padding:16px 12px 0!important}
+  body.page-home .container{width:100%!important;max-width:100%!important;min-width:0!important;padding:0!important}
+  body.page-home .container>*{max-width:100%!important;box-sizing:border-box!important}
+  body.page-home .sidebar-ad-left,body.page-home .sidebar-ad-right{display:none!important}
+  body.page-home .marquee-wrapper,body.page-home #trending-rail{width:100%!important;margin-inline:0!important;padding-inline:0!important;overflow:hidden!important}
+}
+@media(max-width:600px){
+  body.page-home #home-brand-lockup .brand-logo{width:3.45rem!important;height:3.45rem!important;flex-basis:3.45rem!important}
+  body.page-home #home-brand-lockup .home-brand-name{font-size:1.03rem!important}
+  body.page-home #home-brand-lockup .home-ai-link{font-size:1.32rem!important}
+  body.page-home .app-header>nav{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+  body.page-home .app-header>nav button,
+  body.page-home .app-header>nav a,
+  body.page-home .app-header>nav select{min-height:38px!important;font-size:11px!important;box-sizing:border-box!important}
+  body.page-home .top-ask-wrap{padding:10px 12px!important}
+  body.page-home .top-ai-launch{display:grid!important;grid-template-columns:auto minmax(0,1fr) auto!important;gap:10px!important;padding:13px!important}
+  body.page-home .top-ai-copy{min-width:0!important}
+  body.page-home .top-ai-title{font-size:18px!important}
+  body.page-home .top-ai-sub{font-size:11.5px!important;line-height:1.35!important}
+  body.page-home .live-strip{padding:7px 12px!important;gap:6px!important;font-size:10.5px!important;overflow:hidden!important}
+  body.page-home .home-hero{padding-inline:2px!important}
+  body.page-home .home-h1{font-size:clamp(25px,8vw,34px)!important;line-height:1.03!important}
+  body.page-home .home-h1-sub{font-size:14px!important;line-height:1.55!important}
+  body.page-home .premium-card{padding:18px 14px!important;border-radius:18px!important;margin-bottom:16px!important}
+  body.page-home .spotlight-inner{display:grid!important;grid-template-columns:1fr!important;gap:16px!important;padding:16px!important}
+  body.page-home .spotlight-poster{width:145px!important;height:218px!important;margin:auto!important}
+  body.page-home .spotlight-body{text-align:center!important}
+  body.page-home .marquee-item{width:112px!important;height:168px!important}
+  body.page-home .marquee-track{gap:10px!important}
+  body.page-home input,body.page-home select,body.page-home textarea,body.page-home button{max-width:100%!important}
+  body.page-home .matchapp-kids-toggle{max-width:calc(100vw - 24px)!important}
+}
+@media(max-width:380px){
+  body.page-home #home-brand-lockup .home-brand-name{display:none!important}
+  body.page-home .app-header{padding-inline:8px!important}
+  body.page-home .app-header>nav{gap:5px!important}
+  body.page-home .top-ai-sub{display:none!important}
+}
