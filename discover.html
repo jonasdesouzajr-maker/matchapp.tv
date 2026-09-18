@@ -47,7 +47,7 @@
 
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://matchapp.tv/"},{"@type":"ListItem","position":2,"name":"Ask AI","item":"https://matchapp.tv/discover.html"}]}</script>
 
-    <link rel="stylesheet" href="/style.css?v=187">
+    <link rel="stylesheet" href="/style.css?v=201">
     <link rel="stylesheet" href="/tv.css?v=187">
     <style>
         :root { --gold: #E5C158; --gold-deep: #B8912F; --gold-glow: #FFF3A3; --ink: #14131A; --royal-deep: #130734; --royal: #402562; --royal-lift: #6B3FA0; --royal-glow: #A376B6; --bg-dark: #14131A; --card-bg: rgba(26, 22, 38, 0.90); }
@@ -192,6 +192,86 @@
         @media (max-width: 400px) {
             .premium-card { padding: 12px 10px; }
         }
+
+        /* ===== MATCHAPP AI WORKSPACE ===== */
+        body.ai-chat-page { overflow-x:hidden; }
+        .ai-sidebar-toggle { position:fixed; left:14px; top:92px; z-index:1205; width:44px; height:44px; border-radius:14px;
+                             border:1px solid rgba(229,193,88,.48); color:var(--gold-glow); background:rgba(20,13,37,.95);
+                             box-shadow:0 10px 30px rgba(0,0,0,.45); cursor:pointer; display:grid; place-items:center; transition:.22s; }
+        .ai-sidebar-toggle:hover { transform:translateY(-2px); border-color:var(--gold); }
+        .ai-sidebar { position:fixed; inset:84px auto 0 0; z-index:1200; width:290px; box-sizing:border-box; padding:14px 12px 18px;
+                      background:linear-gradient(180deg,rgba(20,12,39,.985),rgba(13,10,25,.985));
+                      border-right:1px solid rgba(229,193,88,.28); box-shadow:18px 0 44px rgba(0,0,0,.35);
+                      display:flex; flex-direction:column; gap:12px; transform:translateX(0); transition:transform .28s cubic-bezier(.2,.8,.2,1); }
+        .ai-sidebar-head { display:flex; align-items:center; gap:10px; padding:6px 4px 2px; }
+        .ai-sidebar-logo { width:38px; height:38px; border-radius:12px; }
+        .ai-sidebar-brand { min-width:0; flex:1; }
+        .ai-sidebar-brand strong { display:block; color:#fff; font-size:14px; line-height:1.1; }
+        .ai-sidebar-brand span { display:block; color:#9388aa; font-size:10px; margin-top:3px; letter-spacing:.4px; }
+        .ai-sidebar-fold { width:32px; height:32px; border-radius:10px; border:1px solid rgba(229,193,88,.22); color:#bfb2d2;
+                           background:rgba(255,255,255,.03); cursor:pointer; }
+        .ai-new-chat { display:flex; align-items:center; gap:10px; width:100%; padding:12px 13px; border-radius:14px; cursor:pointer;
+                       border:1px solid rgba(229,193,88,.48); color:#17111f; font-weight:900; font-family:inherit;
+                       background:linear-gradient(135deg,#FFF3A3,#E5C158); box-shadow:0 8px 20px rgba(229,193,88,.14); }
+        .ai-new-chat:disabled { opacity:.48; cursor:not-allowed; filter:saturate(.45); }
+        .ai-sidebar-section-title { color:#8f84a7; font-size:10px; letter-spacing:1.4px; text-transform:uppercase; font-weight:900; padding:2px 5px 0; }
+        .ai-history-scroll { min-height:90px; max-height:38vh; overflow:auto; padding-right:3px; scrollbar-width:thin; }
+        .ai-sidebar .chat-thread-item { margin-bottom:6px; padding:10px 11px; border-color:rgba(229,193,88,.13); background:rgba(255,255,255,.025); }
+        .ai-sidebar .chat-thread-title { font-size:12.5px; }
+        .ai-usage-card { margin-top:auto; border:1px solid rgba(229,193,88,.2); border-radius:16px; padding:12px;
+                         background:linear-gradient(145deg,rgba(75,42,110,.2),rgba(0,0,0,.22)); }
+        .ai-usage-row { display:flex; justify-content:space-between; gap:10px; align-items:baseline; color:#cfc5df; font-size:11px; }
+        .ai-usage-row strong { color:var(--gold-glow); font-size:12px; }
+        .ai-meter-track { height:8px; margin:8px 0 7px; overflow:hidden; border-radius:999px; background:rgba(255,255,255,.07);
+                          box-shadow:inset 0 1px 4px rgba(0,0,0,.45); }
+        .ai-meter-fill { display:block; height:100%; width:0%; border-radius:inherit;
+                         background:linear-gradient(90deg,#6B3FA0,#A376B6,#E5C158); transition:width .7s cubic-bezier(.2,.8,.2,1);
+                         box-shadow:0 0 14px rgba(229,193,88,.28); }
+        .ai-credit-line { color:#8f84a7; font-size:10.5px; line-height:1.45; }
+        .ai-sidebar-scrim { display:none; position:fixed; inset:84px 0 0; z-index:1190; background:rgba(5,4,10,.62); backdrop-filter:blur(2px); }
+        .ai-chat-page .wrap { max-width:1120px; width:calc(100% - 322px); margin-left:306px; margin-right:auto; box-sizing:border-box; transition:width .28s,margin .28s; }
+        .ai-chat-page.ai-sidebar-collapsed .ai-sidebar { transform:translateX(-100%); }
+        .ai-chat-page.ai-sidebar-collapsed .wrap { width:min(1150px,calc(100% - 76px)); margin-left:64px; }
+        .ai-chat-page.ai-sidebar-collapsed .ai-sidebar-toggle { display:grid; }
+        .ai-chat-page:not(.ai-sidebar-collapsed) .ai-sidebar-toggle { display:none; }
+        .discover-head { overflow:hidden; }
+        .discover-title-row { display:flex; align-items:center; gap:12px; }
+        .discover-ai-mark { width:46px; height:46px; border-radius:15px; flex:none; filter:drop-shadow(0 0 12px rgba(229,193,88,.22)); }
+        .discover-title-copy h1 { margin:0 0 4px!important; }
+        .ai-session-strip { display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin:12px 0 3px; }
+        .ai-session-chip { display:inline-flex; align-items:center; gap:7px; border:1px solid rgba(229,193,88,.22); border-radius:999px;
+                           padding:6px 10px; color:#bfb4d1; background:rgba(255,255,255,.025); font-size:10.5px; font-weight:800; }
+        .ai-session-dot { width:7px; height:7px; border-radius:50%; background:#7DE8A0; box-shadow:0 0 10px rgba(125,232,160,.7); animation:aiStatusPulse 2s ease-in-out infinite; }
+        @keyframes aiStatusPulse { 50% { opacity:.45; transform:scale(.78); } }
+        .ai-thinking { text-align:left!important; padding:20px!important; overflow:hidden; position:relative; }
+        .ai-thinking-head { display:flex; align-items:center; gap:12px; margin-bottom:13px; }
+        .ai-thinking-icon { width:38px; height:38px; border-radius:12px; }
+        .ai-thinking-copy h3 { margin:0!important; color:var(--gold)!important; font-size:16px!important; text-transform:none!important; }
+        .ai-thinking-copy p { margin:3px 0 0!important; color:#9d92b0!important; font-size:12px!important; }
+        .ai-workflow-track { height:9px; border-radius:999px; background:rgba(255,255,255,.06); overflow:hidden; }
+        .ai-workflow-fill { display:block; width:7%; height:100%; border-radius:inherit;
+                            background:linear-gradient(90deg,#6B3FA0,#A376B6,#E5C158,#A8F0FF); background-size:220% 100%;
+                            box-shadow:0 0 16px rgba(229,193,88,.28); transition:width .55s cubic-bezier(.2,.8,.2,1); animation:aiWorkflowGlow 2.4s linear infinite; }
+        .ai-workflow-steps { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-top:10px; color:#756c88; font-size:9.5px; font-weight:800; letter-spacing:.4px; text-transform:uppercase; }
+        .ai-workflow-step.active { color:var(--gold-glow); }
+        @keyframes aiWorkflowGlow { to { background-position:220% 0; } }
+        @media (max-width:980px) {
+            .ai-sidebar { top:76px; transform:translateX(-100%); width:min(86vw,310px); }
+            .ai-chat-page .wrap,.ai-chat-page.ai-sidebar-collapsed .wrap { width:100%; max-width:1150px; margin-left:auto; margin-right:auto; }
+            .ai-chat-page.ai-sidebar-open .ai-sidebar { transform:translateX(0); }
+            .ai-chat-page.ai-sidebar-open .ai-sidebar-scrim { display:block; }
+            .ai-sidebar-toggle { top:84px; display:grid!important; }
+        }
+        @media (max-width:640px) {
+            .discover-title-row { align-items:flex-start; }
+            .discover-ai-mark { width:40px; height:40px; }
+            .ai-session-strip { gap:6px; }
+            .ai-session-chip { font-size:9.5px; }
+        }
+        @media (prefers-reduced-motion:reduce) {
+            .ai-session-dot,.ai-workflow-fill { animation:none; }
+            .ai-sidebar,.ai-chat-page .wrap,.ai-meter-fill { transition:none; }
+        }
     </style>
 
 <link rel="stylesheet" href="/app-updates.css?v=187">
@@ -203,7 +283,7 @@
 <link rel="stylesheet" href="/poster-wall.css?v=191"><script defer src="/poster-wall.js?v=187"></script><link rel="stylesheet" href="/brand.css?v=192">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"MatchApp AI Concierge","applicationCategory":"MultimediaApplication","operatingSystem":"Any (web-based)","url":"https://matchapp.tv/discover.html","description":"Conversational AI that answers natural-language questions about what to watch or listen to, in 14 languages, with real streaming links.","featureList":["Multi-turn conversation with saved history","Voice input in 14 languages","Read-aloud answers","Real streaming links per title"],"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"MatchApp TV Ai","url":"https://matchapp.tv/","logo":{"@type":"ImageObject","url":"https://matchapp.tv/assets/brand/matchapp-icon-512.png","width":512,"height":512}}}</script>
 </head>
-<body>
+<body class="ai-chat-page">
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7J3NNBN"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -224,11 +304,38 @@
             <a href="/" class="gold-btn" style="padding:11px 18px; font-size:13px; width:auto;" data-i18n="discover.newMatch">⚡ New Match</a>
         </nav>
     </header>
+    <button id="ai-sidebar-toggle" class="ai-sidebar-toggle" type="button" onclick="toggleAiSidebar()" aria-label="Open conversation history" title="Conversation history">☰</button>
+    <aside id="ai-sidebar" class="ai-sidebar" aria-label="AI conversation history">
+        <div class="ai-sidebar-head">
+            <img class="ai-sidebar-logo" src="/assets/brand/matchapp-ai-orbit.svg" alt="" width="38" height="38">
+            <div class="ai-sidebar-brand"><strong>MatchApp AI</strong><span>Your entertainment conversation</span></div>
+            <button class="ai-sidebar-fold" type="button" onclick="toggleAiSidebar()" aria-label="Fold conversation history" title="Fold">‹</button>
+        </div>
+        <button id="ai-new-chat" class="ai-new-chat" type="button" onclick="startNewChat()"><span aria-hidden="true">＋</span><span>New chat</span></button>
+        <div class="ai-sidebar-section-title">Recent conversations</div>
+        <div class="ai-history-scroll"><div id="chat-history-list"></div></div>
+        <div class="ai-usage-card" aria-live="polite">
+            <div class="ai-usage-row"><span>AI allowance</span><strong id="ai-usage-value">Checking…</strong></div>
+            <div class="ai-meter-track"><span id="ai-usage-fill" class="ai-meter-fill"></span></div>
+            <div id="ai-credit-line" class="ai-credit-line">Loading your available AI credits…</div>
+        </div>
+    </aside>
+    <div class="ai-sidebar-scrim" onclick="toggleAiSidebar(false)" aria-hidden="true"></div>
 
     <main class="wrap">
         <section class="premium-card discover-head">
-            <h1 data-i18n="discover.title">🤖 Ask Our AI Concierge</h1>
-            <p class="concierge-tagline" data-i18n="discover.conciergeTagline">Your personal AI Concierge for entertainment — ask a question by typing or speaking, in any language.</p>
+            <div class="discover-title-row">
+                <img class="discover-ai-mark" src="/assets/brand/matchapp-ai-orbit.svg" alt="" width="46" height="46">
+                <div class="discover-title-copy">
+                    <h1 data-i18n="discover.title">Ask Our AI Concierge</h1>
+                    <p class="concierge-tagline" data-i18n="discover.conciergeTagline">Your personal AI Concierge for entertainment — ask a question by typing or speaking, in any language.</p>
+                </div>
+            </div>
+            <div class="ai-session-strip">
+                <span class="ai-session-chip"><span class="ai-session-dot" aria-hidden="true"></span>Conversational AI online</span>
+                <span class="ai-session-chip">Context-aware follow-ups</span>
+                <span class="ai-session-chip">14 languages</span>
+            </div>
             <span id="discover-offline-badge" class="offline-badge" style="display:none;" data-i18n="dc.offline">📡 Offline mode — catalog results</span>
 
             <!-- Multi-turn conversation. Each exchange appends here so a user
@@ -263,10 +370,20 @@
 
         </div>
 
-        <div id="discover-loading" class="premium-card" style="display:none;">
-            <div class="scan-dots"><span></span><span></span><span></span></div>
-            <h3 style="color:var(--gold); margin:0 0 8px 0; text-transform:uppercase; font-size:20px;" data-i18n="discover.scanning">Scanning the global catalog…</h3>
-            <p style="color:#b9b1cc; margin:0; font-size:14px;" data-i18n="discover.readingQuestion">Our AI is reading your question and matching it against millions of titles.</p>
+        <div id="discover-loading" class="premium-card ai-thinking" style="display:none;">
+            <div class="ai-thinking-head">
+                <img class="ai-thinking-icon" src="/assets/brand/matchapp-ai-orbit.svg" alt="" width="38" height="38">
+                <div class="ai-thinking-copy">
+                    <h3 id="ai-thinking-label">Understanding your request…</h3>
+                    <p>MatchApp AI is building your answer and checking entertainment sources.</p>
+                </div>
+            </div>
+            <div class="ai-workflow-track"><span id="ai-workflow-fill" class="ai-workflow-fill"></span></div>
+            <div class="ai-workflow-steps">
+                <span id="ai-step-understand" class="ai-workflow-step active">Understand</span>
+                <span id="ai-step-match" class="ai-workflow-step">Match</span>
+                <span id="ai-step-answer" class="ai-workflow-step">Answer</span>
+            </div>
         </div>
 
         <div id="discover-empty" class="premium-card" style="display:none;">
@@ -275,23 +392,16 @@
             <p data-i18n-html="chat.startBody">Try <em data-i18n="dc.ex1">"what should I watch after Breaking Bad?"</em>, <em data-i18n="dc.ex2">"a feel-good movie for a rainy Sunday"</em>, or <em data-i18n="dc.ex3">"documentaries about Antarctic expeditions"</em>. Keep the conversation going with follow-up questions — I'll remember what we've talked about.</p>
         </div>
 
-        <!-- Saved conversations -->
-        <section class="premium-card chat-history-card">
-            <h3 data-i18n="chat.historyTitle">💬 Your Saved Conversations</h3>
-            <p class="chat-history-sub" data-i18n="chat.historySub">Pick up any past conversation right where you left it. Saved on this device only.</p>
-            <div id="chat-history-list"></div>
-        </section>
-
-        <p style="text-align:center; color:#8f85a8; font-size:12.5px; margin:24px 0 4px 0;"><span data-i18n="support.ideas">💌 Got an idea for MatchApp? We read every email —</span> <a href="mailto:support@matchapp.tv" style="color:var(--gold); text-decoration:none; font-weight:bold;">support@matchapp.tv</a> <span style="color:#6f6880;">·</span> <a href="https://wa.me/5521974297919" target="_blank" rel="noopener noreferrer" style="color:#25D366; text-decoration:none; font-weight:bold;">WhatsApp</a></p>
+<p style="text-align:center; color:#8f85a8; font-size:12.5px; margin:24px 0 4px 0;"><span data-i18n="support.ideas">💌 Got an idea for MatchApp? We read every email —</span> <a href="mailto:support@matchapp.tv" style="color:var(--gold); text-decoration:none; font-weight:bold;">support@matchapp.tv</a> <span style="color:#6f6880;">·</span> <a href="https://wa.me/5521974297919" target="_blank" rel="noopener noreferrer" style="color:#25D366; text-decoration:none; font-weight:bold;">WhatsApp</a></p>
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.105.0/dist/umd/supabase.js"></script>
     <script src="/settings.js?v=20260916-social1"></script>
     <script src="/matching-policy.js?v=199"></script>
     <script src="/match-localization.js?v=187"></script>
-<script src="/app.js?v=200"></script>
+<script src="/app.js?v=201"></script>
     <script src="/install-progress.js?v=200"></script>
-    <script src="/discover.js?v=200"></script>
+    <script src="/discover.js?v=201"></script>
     <script src="/voice-input.js?v=187"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
