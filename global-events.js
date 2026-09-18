@@ -20,6 +20,7 @@
       }catch(_){}
     },true);
   }
-  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',render);else render();\n  wireEventHandoff();
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',render);else render();
+  wireEventHandoff();
   document.addEventListener('matchapp:langchange',render);setInterval(render,60000);
 })();
