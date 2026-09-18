@@ -1,63 +1,49 @@
-# Upload MatchApp TV to Google Play Console
+# Upload MatchApp Ai to Google Play Console
 
-## 1. Create the app
+This folder documents the **main Android app only**.
 
-1. Open [Google Play Console](https://play.google.com/console) → Create app.
-2. Name: **MatchApp TV**
-3. Default language: English (United States)
-4. App or game: App
-5. Free
-6. Declarations: this app does **not** contain ads.
+- App name: **MatchApp Ai**
+- Application ID: `tv.matchapp.app`
+- Module: `:app`
+- Kids Mode is **not part of this Android app**. A separate Android app, **MatchApp Ai KIDS**, is built from `:kidsapp`.
 
-## 2. Signed Android App Bundle
+## Build the signed bundle
 
 In Android Studio:
 
-1. Build → Generate Signed App Bundle / APK
-2. Android App Bundle
-3. Create a new keystore (save the file and passwords off this computer)
-4. Key alias: `matchapp`
-5. Build variant: **release**
-6. The file lands at `app/release/app-release.aab`
+1. Open the repository's `android-studio` folder.
+2. Select the `app` module.
+3. Build → Generate Signed App Bundle / APK.
+4. Choose Android App Bundle.
+5. Use your protected release keystore.
+6. Choose the **release** variant.
 
-Upload that AAB in Play Console → Production (or Closed testing first).
+The resulting main-app bundle is generated under the `app/` build output.
 
-## 3. Store listing
+## Main store listing
 
-| Field | Suggested copy |
-| --- | --- |
-| Short description | Find what to watch. Ad-free AI concierge for movies, series, Kids Mode and where to stream. |
-| Full description | MatchApp TV is your ad-free AI concierge for entertainment. Tell it your mood — or tap a trending title — and get one pick plus the official place to watch it. Movies, series, K-dramas, anime, novelas, podcasts and a separate Kids Mode. Sign in to keep Watch Later and history across devices. |
-| App icon | `play/icon-512.png` |
-| Feature graphic | `play/feature-graphic.png` |
-| Phone screenshots | `play/screenshots/` (at least 2, up to 8) |
-| Category | Entertainment |
-| Privacy policy | https://matchapp.tv/privacy.html |
-| Support email | support@matchapp.tv |
+Suggested positioning: MatchApp Ai is an ad-free Android entertainment concierge for movies, series, K-dramas, anime, novelas, podcasts, live entertainment discovery and where-to-watch guidance.
 
-## 4. Ads declaration
+Use:
 
-Play Console → App content → Ads → **No, my app does not contain ads.**
+- `play/icon-512.png` for the current main icon
+- `play/feature-graphic.png` for the current feature graphic
+- appropriate captures from `play/screenshots/`
 
-Do not add the Google Mobile Ads SDK. This project does not include it.
+**Do not use `play/screenshots/04-kids.png` for the MatchApp Ai listing.** Kids now belongs to the separate MatchApp Ai KIDS package.
 
-## 5. Data safety (high level)
+Privacy policy: `https://matchapp.tv/privacy.html`
 
-Complete the form honestly. Typical answers for this build:
+## Ads
 
-- Collected: account email/name if the user signs in (Supabase on matchapp.tv), app activity (pages they open inside the app), optional analytics already on the site (Google Tag Manager).
-- Not collected by the Android package itself: location, contacts, SMS, files beyond a photo they pick for an avatar.
-- Encrypted in transit: yes (HTTPS only).
-- Users can request deletion from the website profile / support email.
+This Android package does not include the Google Mobile Ads SDK. The Android shell blocks ad-network requests and hides leftover web ad slots. Complete the Play ads declaration according to the actual release behavior.
 
-## 6. Content rating
+## Data safety and content declarations
 
-Questionnaire: Entertainment / streaming guide. Not a kids-only app (Kids Mode is a section). Complete IARC.
+Complete Play Console declarations from the behavior of the release you are uploading. MatchApp uses HTTPS and may use account/authentication, profile/history and analytics behavior provided by the MatchApp service. Do not copy old declarations blindly if the app behavior or Play forms have changed.
 
-## 7. Closed testing
+## App Links
 
-New personal developer accounts must run a closed test with at least 12 testers for 14 days before production. Add testers by email, share the opt-in link, have them install.
+After Play App Signing provides the final SHA-256 signing certificate, Digital Asset Links can be updated for `tv.matchapp.app`. That website-side change is intentionally not included in this Android-only branch.
 
-## 8. After the first upload
-
-Play App Signing shows an **App signing key certificate** SHA-256. Paste it into `play/assetlinks.json` **and** `.well-known/assetlinks.json` in the website repo, then publish so Android can verify App Links at https://matchapp.tv/.well-known/assetlinks.json
+For the separate Kids app, follow `../play-kids/PLAY_CONSOLE.md`.
