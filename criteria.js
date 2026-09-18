@@ -37,6 +37,7 @@
     const FIELDS = [
         { id: 'q-category', key: 'cat',    collapseAfter: 8 },
         { id: 'q-platform', key: 'plat',   collapseAfter: 8 },
+        { id: 'q-genre',    key: 'genre',  collapseAfter: 10 },
         { id: 'q-mood',     key: 'mood',   collapseAfter: 12 },
         { id: 'q-vibe',     key: 'vibe',   collapseAfter: 11 },
         { id: 'q-decade',   key: 'decade', collapseAfter: 6 },
@@ -312,7 +313,7 @@
         // an icon lets the eye find the row it wants by shape instead of
         // reading six labels top to bottom every time.
         const FIELD_ICONS = {
-            'q-category': '🎬', 'q-platform': '📺', 'q-mood': '💫',
+            'q-category': '🎬', 'q-platform': '📺', 'q-genre': '🎭', 'q-mood': '💫',
             'q-vibe': '⚡', 'q-decade': '🕰️', 'q-rating': '🔞'
         };
 
