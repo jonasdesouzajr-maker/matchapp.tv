@@ -753,6 +753,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const cur = S.get();
 
+        /* ---- hard Match exclusions ---- */
+        const COUNTRY_OPTIONS = [
+            ['AR','Argentina'],['AU','Australia'],['BE','Belgium'],['BR','Brazil'],['CA','Canada'],['CL','Chile'],
+            ['CN','China'],['CO','Colombia'],['DK','Denmark'],['EG','Egypt'],['FI','Finland'],['FR','France'],
+            ['DE','Germany'],['GR','Greece'],['HK','Hong Kong'],['IN','India'],['ID','Indonesia'],['IE','Ireland'],
+            ['IL','Israel'],['IT','Italy'],['JP','Japan'],['KR','South Korea'],['MX','Mexico'],['NL','Netherlands'],
+            ['NZ','New Zealand'],['NG','Nigeria'],['NO','Norway'],['PH','Philippines'],['PL','Poland'],['PT','Portugal'],
+            ['RU','Russia'],['ZA','South Africa'],['ES','Spain'],['SE','Sweden'],['CH','Switzerland'],['TW','Taiwan'],
+            ['TH','Thailand'],['TR','Turkey'],['UA','Ukraine'],['GB','United Kingdom'],['US','United States'],['VN','Vietnam']
+        ];
+        const GENRE_OPTIONS = ['Action','Action & Adventure','Adventure','Animation','Buddhism','Christian','Comedy','Crime','Documentary','Drama','Family','Fantasy','Fitness','Fitness & Workout','Hip-Hop/Rap','History','Horror','Jazz','Kids','Mental Health','Metal','Music','Mystery','New Age','Pop','Reality','Rock','Romance','Sci-Fi & Fantasy','Science Fiction','Soap','Thriller','War & Politics'];
+        const paintExclusions = (hostId,summaryId,options,key) => {
+            const host=$(hostId),summary=$(summaryId);if(!host)return;
+            const selected=new Set(Array.isArray(S.get(key))?S.get(key):[]);
+            host.replaceChildren();
+            options.forEach(opt=>{
+                const value=Array.isArray(opt)?opt[0]:opt,label=Array.isArray(opt)?opt[1]:opt;
+                const b=document.createElement('button');b.type='button';b.className='matchapp-exclusion-chip';b.textContent=label;
+                b.setAttribute('aria-pressed',selected.has(value)?'true':'false');
+                b.addEventListener('click',()=>{
+                    const next=new Set(Array.isArray(S.get(key))?S.get(key):[]);
+                    if(next.has(value))next.delete(value);else next.add(value);
+                    S.set(key,[...next]);
+                    paintExclusions(hostId,summaryId,options,key);
+                });
+                host.appendChild(b);
+            });
+            if(summary){
+                const chosen=options.filter(opt=>selected.has(Array.isArray(opt)?opt[0]:opt)).map(opt=>Array.isArray(opt)?opt[1]:opt);
+                summary.innerHTML=chosen.length?chosen.map(v=>'<span class="matchapp-exclusion-tag">'+String(v).replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]))+'</span>').join(''):'<span class="matchapp-exclusion-empty">Nothing excluded.</span>';
+            }
+        };
+        paintExclusions('excluded-country-chips','excluded-country-summary',COUNTRY_OPTIONS,'blockedOriginCountries');
+        paintExclusions('excluded-genre-chips','excluded-genre-summary',GENRE_OPTIONS,'blockedGenres');
+
         /* ---- text size ---- */
         const fs = $('set-fontscale'), fsOut = $('set-fontscale-val');
         fs.value = cur.fontScale;
