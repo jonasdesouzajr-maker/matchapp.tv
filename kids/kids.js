@@ -391,11 +391,35 @@
     if(openingMatch)return;
     try{await window.KidsAccount?.prepare();}catch(_){document.getElementById('kids-match-status').textContent=tr('quotaError');return;}
     const mood=document.getElementById('kids-match-mood').value,format=document.getElementById('kids-match-format').value,era=document.getElementById('kids-match-era').value;
-    const pool=allowedLibrary(currentAge()).filter(x=>(mood==='all'||x.cats.includes(mood))&&(format==='all'||x.type===format)&&(era==='all'||Math.floor(Number(x.year)/10)*10===Number(era)));
-    // Rotate ties so another tap explores more of the same approved collection.
-    const ranked=pool.filter(item=>!window.matchPolicy?.known().has(window.matchPolicy.key(item.title))).map(item=>({item,score:(previousMatch.includes(item.title)?0:2)+Math.random()})).sort((a,b)=>b.score-a.score);
-    matchPicks=ranked.slice(0,3).map(x=>x.item);previousMatch=matchPicks.map(x=>x.title);
-    renderMatchResults();document.getElementById('kids-match-status').textContent=matchPicks.length?tr('matchReady'):tr('matchEmpty');
+    const safePool=allowedLibrary(currentAge());
+    const fits=(item,stage)=>{
+      if(stage.mood&&mood!=='all'&&!item.cats.includes(mood))return false;
+      if(stage.format&&format!=='all'&&item.type!==format)return false;
+      if(stage.era&&era!=='all'&&Math.floor(Number(item.year)/10)*10!==Number(era))return false;
+      return true;
+    };
+    // Age approval is NEVER relaxed. Secondary taste constraints are widened
+    // only as needed so a valid Kids selection can never end in a dead-end.
+    const stages=[
+      {mood:true,format:true,era:true},
+      {mood:true,format:true,era:false},
+      {mood:true,format:false,era:false},
+      {mood:false,format:true,era:false},
+      {mood:false,format:false,era:false}
+    ];
+    const chosen=[],seen=new Set();
+    for(const stage of stages){
+      const pool=safePool.filter(item=>fits(item,stage)&&!seen.has(slug(item)));
+      const unseen=pool.filter(item=>!window.matchPolicy?.known().has(window.matchPolicy.key(item.title)));
+      const source=unseen.length?unseen:pool;
+      const ranked=source.map(item=>({item,score:(previousMatch.includes(item.title)?0:2)+Math.random()})).sort((a,b)=>b.score-a.score);
+      for(const row of ranked){
+        const key=slug(row.item);if(seen.has(key))continue;seen.add(key);chosen.push(row.item);if(chosen.length>=3)break;
+      }
+      if(chosen.length>=3)break;
+    }
+    matchPicks=chosen.slice(0,3);previousMatch=matchPicks.map(x=>x.title);
+    renderMatchResults();document.getElementById('kids-match-status').textContent=tr('matchReady');
     document.getElementById('kids-match-submit').textContent=tr('matchAgain');
     if(matchPicks.length)await openWatch(slug(matchPicks[0]),document.getElementById('kids-match-submit'));
   }
