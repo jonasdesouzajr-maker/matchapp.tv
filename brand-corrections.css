@@ -40,30 +40,19 @@ html .app-header nav{border-color:rgba(228,180,94,.18)!important}
 }
 .matchapp-local-ai[data-long="true"]{font-size:clamp(.86rem,1.18vw,1.15rem);letter-spacing:0}
 
-/* New logo motion: outer ring shines; inner orbit + star actually circles the
-   mark. The picture itself never tilts/spins. */
-.ma-logo-motion-shell{position:relative!important;display:inline-grid!important;place-items:center!important;isolation:isolate;overflow:visible!important;border-radius:50%!important;flex:none}
-.ma-logo-motion-shell>.brand-logo,.ma-logo-motion-shell>img.brand-logo{position:relative;z-index:2;transform:none!important;animation:none!important}
-html .app-header .header-brand-area:hover .brand-logo{transform:none!important}
-.ma-logo-motion-shell::before{
-  content:"";position:absolute;z-index:1;inset:-4px;border-radius:50%;pointer-events:none;
-  background:conic-gradient(from 0deg,rgba(126,78,18,.12),rgba(216,156,72,.2) 34%,#fff6d6 48%,#e4b45e 55%,rgba(126,78,18,.14) 72%,rgba(126,78,18,.12));
-  -webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 3px),#000 calc(100% - 2px));
-  mask:radial-gradient(farthest-side,transparent calc(100% - 3px),#000 calc(100% - 2px));
-  filter:drop-shadow(0 0 5px rgba(228,180,94,.38));
-  animation:maLogoOuterShine 7s linear infinite;
+/* The canonical logo asset already contains the requested shine and orbiting-star
+   animation. The page only crops away the square image field so the existing
+   header surface shows right up to the gold circle. */
+html:not(.kids-mode) .matchapp-brand-link :is(.brand-logo,.ma-new-brand-logo),
+html:not(.kids-mode) .matchapp-brand-link>img:not(.matchapp-wordmark){
+  object-fit:cover!important;object-position:center!important;border:0!important;border-radius:50%!important;
+  clip-path:circle(49.2% at 50% 50%)!important;background:transparent!important;box-shadow:none!important;
+  transform:none!important;animation:none!important;
 }
-.ma-logo-inner-orbit{
-  position:absolute;z-index:3;inset:21%;border-radius:50%;pointer-events:none;
-  border:1px solid rgba(240,216,144,.42);box-shadow:inset 0 0 7px rgba(228,180,94,.08);
-  animation:maLogoInnerSwirl 5.6s linear infinite;
-}
-.ma-logo-orbit-star{
-  position:absolute;left:50%;top:-.38rem;transform:translateX(-50%);color:#fff6d6;
-  font:900 .62rem/1 Georgia,serif;text-shadow:0 0 4px rgba(255,246,214,.9),0 0 8px rgba(228,180,94,.5);
-}
-@keyframes maLogoOuterShine{to{transform:rotate(360deg)}}
-@keyframes maLogoInnerSwirl{to{transform:rotate(360deg)}}
+html:not(.kids-mode) .app-header .brand-logo{width:3.25rem!important;height:3.25rem!important}
+html:not(.kids-mode) #home-brand-lockup .brand-logo{width:var(--home-logo-size,4.5rem)!important;height:var(--home-logo-size,4.5rem)!important;flex:0 0 var(--home-logo-size,4.5rem)!important}
+html:not(.kids-mode) .matchapp-brand-bar .brand-logo{width:3.1rem!important;height:3.1rem!important;margin-inline-end:.55rem!important}
+.ma-logo-motion-shell::before,.ma-logo-inner-orbit{display:none!important}
 
 /* Shared raised-information color. This is intentionally different from the
    #10100d app field but remains inside the logo's black/bronze/gold family. */
@@ -119,7 +108,5 @@ html .app-header #nav-logout-btn:hover{background:rgba(255,123,107,.08)!importan
   html .app-header #nav-logout-btn{width:30px!important;height:30px!important;min-width:30px!important;min-height:30px!important}
 }
 @media(prefers-reduced-motion:reduce){
-  .ma-logo-motion-shell::before,.ma-logo-inner-orbit{animation:none!important}
   .matchapp-local-wordmark,.matchapp-local-ai{animation:none!important;transition:none!important}
 }
-.reduce-motion .ma-logo-motion-shell::before,.reduce-motion .ma-logo-inner-orbit{animation:none!important}
