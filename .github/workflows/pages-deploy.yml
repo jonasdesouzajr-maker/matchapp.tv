@@ -63,6 +63,15 @@ jobs:
           grep -Fq 'blockedOriginCountries' settings.js
           grep -Fq 'What I don’t want to see in my matches' profile/profile.html
           grep -Fq '"2026.09.18.4"' release.json
+      - name: Generate bilingual social preview
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends librsvg2-bin
+          rsvg-convert -w 1200 -h 630 assets/brand/matchapp-og.svg -o og-image-v3.png
+          test -s og-image-v3.png
+          grep -Fq 'What to watch tonight, decided by AI' assets/brand/matchapp-og.svg
+          grep -Fq 'brand-logo-placeholder' index.html
+          ! grep -Fq 'matchapp-logo-animated.svg' index.html
       - uses: actions/upload-pages-artifact@v3
         with:
           path: .
