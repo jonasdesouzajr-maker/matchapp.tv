@@ -1371,8 +1371,21 @@ async function runDiscovery() {
     renderThreadList();
     const title = getQueryParam('title').trim();
     const q = getQueryParam('q').trim();
+    const forceNew = getQueryParam('new') === '1';
     const loadEl = document.getElementById('discover-loading');
     const emptyEl = document.getElementById('discover-empty');
+
+    // The homepage Ai/iA wordmark is an explicit "new chat" action.
+    // A fresh page normally starts with currentThread=null anyway, but this
+    // makes that contract deliberate and future-proof if navigation becomes
+    // client-side later. No credit is consumed until the user actually asks.
+    if (forceNew) {
+        currentThread = null;
+        DISCOVER_ITEMS = [];
+        const log = document.getElementById('chat-log');
+        if (log) log.innerHTML = '';
+        history.replaceState(null, '', '/discover.html?focus=start');
+    }
 
     if (title) {
         document.title = `${title} — MatchApp AI Concierge`;
