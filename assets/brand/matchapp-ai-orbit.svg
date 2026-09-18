@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="t d">
+<title id="t">MatchApp AI Orbit</title><desc id="d">A gold play spark surrounded by a cinematic AI orbit.</desc>
+<defs>
+ <linearGradient id="orb" x1="18" y1="18" x2="110" y2="110" gradientUnits="userSpaceOnUse">
+  <stop stop-color="#E5C158"/><stop offset=".52" stop-color="#FFF3A3"/><stop offset="1" stop-color="#8D65C7"/>
+ </linearGradient>
+ <radialGradient id="bg" cx=".38" cy=".28" r=".9"><stop stop-color="#5B2E88"/><stop offset=".48" stop-color="#24113F"/><stop offset="1" stop-color="#100B1D"/></radialGradient>
+ <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<rect x="8" y="8" width="112" height="112" rx="32" fill="url(#bg)" stroke="rgba(229,193,88,.8)" stroke-width="2"/>
+<ellipse cx="64" cy="64" rx="43" ry="24" fill="none" stroke="url(#orb)" stroke-width="3" transform="rotate(-22 64 64)" opacity=".95"/>
+<ellipse cx="64" cy="64" rx="43" ry="24" fill="none" stroke="#7651A5" stroke-width="2.2" transform="rotate(58 64 64)" opacity=".72"/>
+<circle cx="29" cy="47" r="4.5" fill="#A8F0FF" filter="url(#glow)"/>
+<circle cx="99" cy="79" r="4.5" fill="#E5C158" filter="url(#glow)"/>
+<path d="M53 42 86 64 53 86Z" fill="url(#orb)" filter="url(#glow)"/>
+<path d="M42 32l3.8 8.7L55 44.5l-9.2 3.8L42 57l-3.8-8.7L29 44.5l9.2-3.8Z" fill="#FFF3A3"/>
+<path d="M90 25l2.2 5 5.1 2.2-5.1 2.2-2.2 5-2.2-5-5.1-2.2 5.1-2.2Z" fill="#A8F0FF"/>
+<circle cx="64" cy="64" r="11" fill="none" stroke="#FFF3A3" stroke-width="1.8" opacity=".5"/>
+</svg>
