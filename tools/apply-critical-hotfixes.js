@@ -23,11 +23,11 @@ function replaceRequired(text, from, to, label) {
   let html = read(file);
   html = replaceRequired(html,
     '<title>MatchApp TV Ai VIP | Unlimited AI Streaming Concierge &amp; Ad-Free Pass</title>',
-    '<title>MatchApp TV Ai VIP | 10 AI Matches Daily &amp; Ad-Free Pass</title>',
+    '<title>MatchApp TV Ai VIP | 10 Included AI Actions Daily &amp; Ad-Free Pass</title>',
     'pricing title');
   html = replaceRequired(html,
     'Unlock unlimited AI matches, Extra Matches, Ask AI credits or a lifetime Ad-Free pass.',
-    'Unlock 10 AI matches per day with VIP, plus Extra Matches, Ask AI credits or a lifetime Ad-Free pass.',
+    'VIP includes 10 AI actions per day and Business includes 50. Included actions can be Matches or Ask AI, with separate top-ups after the daily allowance.',
     'pricing OG description');
   html = replaceRequired(html,
     'MatchApp VIP, Extra Matches and Ask AI credits. Unlimited concierge picks, ad-free pass, and 2026 entertainment recommendations.',
@@ -43,11 +43,11 @@ function replaceRequired(text, from, to, label) {
     'pricing heading');
   html = replaceRequired(html,
     'data-i18n="pricing.subtitle">Choose your plan below to remove ads and unlock infinite matches.</p>',
-    'data-i18n="pricing.subtitle">Choose VIP for 10 AI matches each day, or buy Extra Matches and Ask AI credits separately.</p>',
+    'data-i18n="pricing.subtitle">VIP includes 10 AI actions per day; Business includes 50. Use the included allowance for Matches or Ask AI. Extra Matches and Ask AI credits are separate top-ups.</p>',
     'pricing subtitle');
   html = replaceRequired(html,
     'data-i18n-html="pricing.vipm.f1">✔️ <strong data-i18n="pr.unlimited">Unlimited</strong> AI Matches Daily</li>',
-    'data-i18n-html="pricing.vipm.f1">✔️ <strong>10</strong> AI Matches Daily</li>',
+    'data-i18n-html="pricing.vipm.f1">✔️ <strong>10</strong> included AI actions daily</li>',
     'VIP monthly allowance');
   write(file, html);
 }
