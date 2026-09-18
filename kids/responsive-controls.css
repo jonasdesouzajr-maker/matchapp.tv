@@ -147,12 +147,87 @@
 }
 
 @media (max-width:560px){
-  .kids-header-inner{display:flex;flex-wrap:wrap;grid-template-columns:none;gap:.35rem;padding-block:.4rem .5rem}
+  .kids-header-inner{
+    display:flex;
+    flex-wrap:wrap;
+    grid-template-columns:none;
+    gap:.55rem;
+    padding-block:.45rem .65rem;
+  }
   .kids-brand{width:auto;flex:1 1 auto}
-  .kids-header-actions{width:100%;justify-content:flex-start}
-  .kids-nav,.kids-tools{flex:0 1 auto}
-  .kids-motion,.kids-exit,.kids-lang,.kids-voice-toggle{
-    font-size:.62rem;padding:0;min-height:2.05rem;border-radius:999px
+  .kids-header-actions{
+    width:100%;
+    display:grid;
+    grid-template-columns:1fr;
+    justify-content:stretch;
+    gap:.55rem;
+  }
+  .kids-nav,.kids-tools{
+    display:grid;
+    width:100%;
+    gap:.55rem;
+  }
+  .kids-nav{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .kids-tools{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .kids-pill,
+  .kids-header-actions .kids-motion,
+  .kids-header-actions .kids-voice-toggle,
+  .kids-header-actions a#kids-exit,
+  .kids-header-actions .install-btn{
+    width:100%!important;
+    min-width:0;
+    min-height:2.7rem!important;
+    height:auto;
+    padding:.52rem .65rem;
+    justify-content:flex-start;
+    gap:.48rem;
+    border-radius:.9rem;
+    font-size:.72rem;
+  }
+  .kids-pill span:not(.kids-pill-ico):not(.kids-sr){
+    position:static;
+    width:auto;
+    height:auto;
+    padding:0;
+    margin:0;
+    overflow:visible;
+    clip:auto;
+    clip-path:none;
+    white-space:nowrap;
+    border:0;
+  }
+  .kids-pill-ico{
+    width:1.25rem;
+    min-width:1.25rem;
+    font-size:1rem;
+    text-align:center;
+  }
+  .kids-lang-wrap{
+    grid-column:1/-1;
+    width:100%!important;
+    min-width:0;
+    padding:.45rem .65rem;
+  }
+  .kids-lang{
+    flex:1 1 auto;
+    width:100%;
+    max-width:none;
+    min-height:1.9rem!important;
+    height:1.9rem;
+    font-size:.7rem;
+  }
+}
+
+@media (max-width:380px){
+  .kids-header-actions{gap:.48rem}
+  .kids-nav,.kids-tools{gap:.48rem}
+  .kids-pill,
+  .kids-header-actions .kids-motion,
+  .kids-header-actions .kids-voice-toggle,
+  .kids-header-actions a#kids-exit,
+  .kids-header-actions .install-btn{
+    padding:.48rem .52rem;
+    font-size:.68rem;
   }
 }
 
