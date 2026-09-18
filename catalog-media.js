@@ -18,6 +18,8 @@
   const TABLE='catalog_media_metadata';
   const CACHE=new Map();
   const INFLIGHT=new Map();
+  let GENRE_INDEX=null;
+  let GENRE_INFLIGHT=null;
   const TRUSTED_POSTER=/^https:\/\/(?:image\.tmdb\.org|is\d+-ssl\.mzstatic\.com)\//i;
   const TRUSTED_AUDIO=/^https:\/\/audio-ssl\.itunes\.apple\.com\//i;
   const TRUSTED_EMBED=/^https:\/\/www\.youtube-nocookie\.com\/embed\/[A-Za-z0-9_-]{6,32}(?:\?|$)/i;
@@ -64,14 +66,17 @@
   }
   function availability(meta,region){
     const code=region||regionCode(),root=meta?.availability||{},row=root?.[code]||{};
-    const streams=Array.isArray(row.stream)?row.stream.filter(Boolean):[];
+    const uniq=list=>[...new Set((Array.isArray(list)?list:[]).map(v=>String(v||'').trim()).filter(Boolean))];
+    const streams=uniq(row.stream),rent=uniq(row.rent),buy=uniq(row.buy);
     const cinemaDate=/^\d{4}-\d{2}-\d{2}$/.test(String(row.cinema_release_date||''))?String(row.cinema_release_date):'';
     let inCinemas=false;
     if(cinemaDate){
       const start=Date.parse(cinemaDate+'T00:00:00Z'),now=Date.now(),windowMs=120*86400000;
-      inCinemas=Number.isFinite(start)&&now>=start-7*86400000&&now<=start+windowMs&&!streams.length;
+      // Theatrical and streaming windows can overlap. Do not hide cinema
+      // availability just because a streaming provider is also present.
+      inCinemas=Number.isFinite(start)&&now>=start-7*86400000&&now<=start+windowMs;
     }
-    return {region:code,streams,cinemaDate,inCinemas,guide:/^https:\/\//.test(String(row.link||''))?String(row.link):'',sourcePage:sourcePage(meta)};
+    return {region:code,streams,rent,buy,cinemaDate,inCinemas,guide:/^https:\/\//.test(String(row.link||''))?String(row.link):'',sourcePage:sourcePage(meta)};
   }
   function providerSearch(provider,title){
     const aliases={
@@ -84,7 +89,63 @@
     try{
       if(typeof platformSearchUrl==='function'&&mapped)return platformSearchUrl(mapped,title);
     }catch(_){}
-    return '';
+    const q=encodeURIComponent(String(title||''));
+    const direct={
+      'Netflix':'https://www.netflix.com/search?q='+q,
+      'Prime Video':'https://www.primevideo.com/search?phrase='+q,
+      'Disney+':'https://www.disneyplus.com/search?q='+q,
+      'Max':'https://www.max.com/search?q='+q,
+      'Apple TV+':'https://tv.apple.com/search?term='+q,
+      'Paramount+':'https://www.paramountplus.com/search/?q='+q,
+      'Hulu':'https://www.hulu.com/search?q='+q,
+      'Peacock':'https://www.peacocktv.com/search?q='+q,
+      'Globoplay':'https://globoplay.globo.com/busca/?q='+q,
+      'Crunchyroll':'https://www.crunchyroll.com/search?q='+q,
+      'Viki':'https://www.viki.com/search?q='+q
+    };
+    return direct[mapped]||'';
+  }
+
+  function showtimesUrl(title){
+    return 'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(String(title||'')+' movie showtimes');
+  }
+
+  function providerLinks(meta,title,region){
+    const a=availability(meta,region),seen=new Set(),out=[];
+    const add=(provider,mode)=>{
+      const name=String(provider||'').trim();if(!name)return;
+      const key=mode+'|'+name.toLowerCase();if(seen.has(key))return;seen.add(key);
+      out.push({provider:name,mode,href:providerSearch(name,title)||a.guide||a.sourcePage});
+    };
+    a.streams.forEach(p=>add(p,'stream'));
+    a.rent.forEach(p=>add(p,'rent'));
+    a.buy.forEach(p=>add(p,'buy'));
+    return out.filter(x=>/^https:\/\//.test(String(x.href||'')));
+  }
+
+  async function titleKeysForGenres(genres){
+    const wanted=[...new Set((Array.isArray(genres)?genres:[genres]).map(g=>String(g||'').trim().toLowerCase()).filter(Boolean))];
+    if(!wanted.length)return null;
+    if(!GENRE_INDEX){
+      if(!GENRE_INFLIGHT)GENRE_INFLIGHT=(async()=>{
+        try{
+          const sb=window.supabaseClient;if(!sb)return new Map();
+          const {data,error}=await sb.from(TABLE).select('normalized_title,genres').eq('is_catalog_title',true).limit(5000);
+          if(error||!Array.isArray(data))return new Map();
+          const idx=new Map();
+          data.forEach(row=>{
+            const key=String(row?.normalized_title||'');if(!key)return;
+            const gs=new Set((Array.isArray(row?.genres)?row.genres:[]).map(g=>String(g||'').trim().toLowerCase()).filter(Boolean));
+            idx.set(key,gs);
+          });
+          return idx;
+        }catch(_){return new Map();}
+      })().then(idx=>{GENRE_INDEX=idx;GENRE_INFLIGHT=null;return idx;});
+      GENRE_INDEX=await GENRE_INFLIGHT;
+    }
+    const keys=new Set();
+    for(const [key,gs] of GENRE_INDEX.entries())if(wanted.some(g=>gs.has(g)))keys.add(key);
+    return keys;
   }
   function viewingTarget(meta,title,region){
     const a=availability(meta,region);
@@ -122,8 +183,51 @@
     if(!host)return;host.replaceChildren();host.hidden=true;
     if(!meta||(kids&&meta.kids_approved!==true))return;
     const label=document.createElement('div');label.className='matchapp-media-preview-label';label.textContent=(typeof window.t==='function'&&window.t('discover.preview'))||'Preview';
-    if(meta.preview_kind==='video'&&TRUSTED_EMBED.test(String(meta.preview_embed_url||''))){const frame=document.createElement('iframe');frame.src=meta.preview_embed_url;frame.title=`${title||meta.title} preview`;frame.loading='lazy';frame.allow='accelerometer; autoplay; encrypted-media; picture-in-picture';frame.allowFullscreen=true;frame.referrerPolicy='strict-origin-when-cross-origin';host.append(label,frame);host.hidden=false;return;}
-    if(meta.preview_kind==='audio'&&TRUSTED_AUDIO.test(String(meta.preview_url||''))){const audio=document.createElement('audio');audio.controls=true;audio.preload='none';audio.src=meta.preview_url;audio.setAttribute('aria-label',`${title||meta.title} audio preview`);host.append(label,audio);host.hidden=false;}
+    if(meta.preview_kind==='video'&&TRUSTED_EMBED.test(String(meta.preview_embed_url||''))){const frame=document.createElement('iframe');frame.src=meta.preview_embed_url;frame.title=`${title||meta.title} preview`;frame.loading='lazy';frame.allow='accelerometer; autoplay; encrypted-media; picture-in-picture; web-share';frame.allowFullscreen=true;frame.referrerPolicy='strict-origin-when-cross-origin';host.append(label,frame);host.hidden=false;return;}
+    if(meta.preview_kind==='audio'&&TRUSTED_AUDIO.test(String(meta.preview_url||''))){const audio=document.createElement('audio');audio.controls=true;audio.preload='none';audio.src=meta.preview_url;audio.setAttribute('aria-label',`${title||meta.title} audio preview`);host.append(label,audio);host.hidden=false;return;}
+    // Never embed a guessed/unrelated preview. If the verified metadata has no
+    // playable preview, show a clean title-page button instead.
+    const page=sourcePage(meta);
+    if(page){
+      const fallback=document.createElement('a');fallback.className='matchapp-title-page-btn';fallback.href=page;fallback.target='_blank';fallback.rel='noopener noreferrer';
+      fallback.textContent=(typeof window.t==='function'&&window.t('discover.titlePage'))||'Open title page';
+      host.append(label,fallback);host.hidden=false;
+    }
+  }
+
+  function renderAvailability(host,meta,{title='',kids=false}={}){
+    if(!host)return;host.replaceChildren();host.hidden=true;
+    if(!meta||(kids&&meta.kids_approved!==true))return;
+    const a=availability(meta),links=providerLinks(meta,title||meta.title,a.region);
+    const genres=(Array.isArray(meta.genres)?meta.genres:[]).filter(Boolean);
+    const wrap=document.createElement('div');wrap.className='matchapp-title-availability';
+    if(genres.length){
+      const row=document.createElement('div');row.className='matchapp-real-genres';
+      const label=document.createElement('strong');label.textContent='Genres';row.appendChild(label);
+      genres.slice(0,8).forEach(g=>{const chip=document.createElement('span');chip.textContent=g;row.appendChild(chip);});
+      wrap.appendChild(row);
+    }
+    if(links.length){
+      const row=document.createElement('div');row.className='matchapp-provider-actions';
+      const label=document.createElement('strong');label.textContent='Watch options';row.appendChild(label);
+      links.slice(0,16).forEach(link=>{
+        const aEl=document.createElement('a');aEl.href=link.href;aEl.target='_blank';aEl.rel='noopener noreferrer';
+        aEl.textContent=(link.mode==='rent'?'Rent · ':link.mode==='buy'?'Buy · ':'Watch · ')+link.provider;row.appendChild(aEl);
+      });
+      wrap.appendChild(row);
+    }
+    if(a.inCinemas){
+      const row=document.createElement('div');row.className='matchapp-cinema-actions';
+      const when=document.createElement('span');when.textContent='In cinemas'+(a.cinemaDate?' · theatrical release '+a.cinemaDate:'');row.appendChild(when);
+      const nearby=document.createElement('a');nearby.href=showtimesUrl(title||meta.title);nearby.target='_blank';nearby.rel='noopener noreferrer';nearby.textContent='Nearby cinemas & showtimes';row.appendChild(nearby);
+      wrap.appendChild(row);
+    }
+    const page=a.sourcePage;
+    if(page){
+      const row=document.createElement('div');row.className='matchapp-title-page-row';
+      const pageLink=document.createElement('a');pageLink.href=page;pageLink.target='_blank';pageLink.rel='noopener noreferrer';pageLink.textContent='Title page';row.appendChild(pageLink);wrap.appendChild(row);
+    }
+    if(wrap.childElementCount){host.appendChild(wrap);host.hidden=false;}
   }
   function applyDetails(meta){
     const existing=document.getElementById('res-media-meta');
@@ -157,11 +261,13 @@
   let mainSerial=0;
   async function enrichMain(){
     const titleEl=document.getElementById('res-title');if(!titleEl)return;const title=titleEl.textContent.trim();if(!title)return;const serial=++mainSerial;
-    const host=ensurePlayerHost(document.getElementById('res-actions')||document.getElementById('res-synopsis')||titleEl,'matchapp-main-preview');
+    const anchor=document.getElementById('res-actions')||document.getElementById('res-synopsis')||titleEl;
+    const availabilityHost=ensurePlayerHost(anchor,'matchapp-main-availability');
+    const host=ensurePlayerHost(availabilityHost||anchor,'matchapp-main-preview');
     const meta=await lookup(title);if(serial!==mainSerial)return;
     if(!meta){applyDetails(null);renderPreview(host,null,{title});const poster=document.getElementById('res-poster-img');if(poster)hardenImage(poster,title,null);return;}
     const poster=document.getElementById('res-poster-img');if(poster){poster.dataset.matchappMediaTitle=title;poster.dataset.matchappFallbackStage='';const p=safePoster(meta);if(p&&(!poster.src||poster.src.startsWith('data:')))poster.src=p;hardenImage(poster,title,meta);}
-    applyDetails(meta);renderPreview(host,meta,{title});
+    applyDetails(meta);renderAvailability(availabilityHost,meta,{title});renderPreview(host,meta,{title});
   }
 
   let kidsSerial=0;
@@ -176,7 +282,8 @@
     .matchapp-media-preview{margin:14px 0 4px;max-width:760px}.matchapp-media-preview[hidden]{display:none!important}
     .matchapp-media-preview-label{margin:0 0 7px;color:#E5C158;font:800 11px/1.2 Inter,Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase}
     .matchapp-media-preview iframe{display:block;width:100%;aspect-ratio:16/9;border:0;border-radius:14px;background:#000}
-    .matchapp-media-preview audio{display:block;width:100%;min-height:44px}.matchapp-media-meta{display:inline-flex;margin-left:8px;color:#bdb4ca;font-size:12px}
+    .matchapp-media-preview audio{display:block;width:100%;min-height:44px}.matchapp-title-page-btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 14px;border:1px solid #E5C158;border-radius:999px;color:#E5C158;text-decoration:none;font-weight:800}.matchapp-media-meta{display:inline-flex;margin-left:8px;color:#bdb4ca;font-size:12px}
+    .matchapp-title-availability{display:grid;gap:10px;margin:12px 0}.matchapp-real-genres,.matchapp-provider-actions,.matchapp-cinema-actions,.matchapp-title-page-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}.matchapp-real-genres strong,.matchapp-provider-actions strong{width:100%;color:#E5C158;font-size:12px;text-transform:uppercase;letter-spacing:.06em}.matchapp-real-genres span,.matchapp-title-availability a{padding:7px 10px;border-radius:999px;border:1px solid rgba(229,193,88,.35);background:rgba(229,193,88,.08);color:#f6e8ad;text-decoration:none;font-size:12px;font-weight:800}.matchapp-title-availability a:hover{background:rgba(229,193,88,.16)}.matchapp-cinema-actions span{color:#fff;font-size:13px;font-weight:800}
     #matchapp-kids-preview{max-width:520px;margin-left:auto;margin-right:auto}#matchapp-kids-preview iframe{border-radius:18px}
     #marquee-track .marquee-item{position:relative}
     .matchapp-cinema-ribbon{position:absolute;z-index:8;top:10px;left:-5px;padding:6px 10px 6px 12px;border-radius:4px 8px 8px 4px;background:#d6253f;color:#fff;font:900 10px/1 Inter,Arial,sans-serif;letter-spacing:.06em;text-transform:uppercase;box-shadow:0 5px 14px rgba(214,37,63,.4);pointer-events:none}
@@ -189,6 +296,6 @@
     obs.observe(document.documentElement,{subtree:true,childList:true,characterData:true,attributes:false});enrichMain();enrichKids();enrichTrendingRail();
     document.addEventListener('matchapp:langchange',enrichTrendingRail);
   }
-  window.MatchAppCatalogMedia=Object.freeze({lookup,normalise,localPoster,enrichMain,enrichKids,enrichTrendingRail,renderPreview,availability,viewingTarget,sourcePage,regionCode});
+  window.MatchAppCatalogMedia=Object.freeze({lookup,normalise,localPoster,enrichMain,enrichKids,enrichTrendingRail,renderPreview,renderAvailability,availability,viewingTarget,providerLinks,providerSearch,showtimesUrl,sourcePage,regionCode,titleKeysForGenres});
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
 })();
