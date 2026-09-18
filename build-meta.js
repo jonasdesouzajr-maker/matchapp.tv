@@ -1,5 +1,5 @@
 // Functional release identifier must match release.json.
-window.MATCHAPP_BUILD = '2026.09.18.2';
+window.MATCHAPP_BUILD = '2026.09.18.3';
 
 
 /* HOME STARTUP SCHEDULER */
@@ -65,7 +65,7 @@ window.MATCHAPP_BUILD = '2026.09.18.2';
   function loadHomeRuntimeFixes() {
     if (document.querySelector('script[data-matchapp-marquee-autoplay]')) return;
     const script = document.createElement('script');
-    script.src = '/marquee-autoplay.js?v=20260916-flow2&b=' + encodeURIComponent(window.MATCHAPP_BUILD || '2026.09.18.2'); script.defer = true; script.dataset.matchappMarqueeAutoplay = '1';    document.head.appendChild(script);
+    script.src = '/marquee-autoplay.js?v=20260916-flow2&b=' + encodeURIComponent(window.MATCHAPP_BUILD || '2026.09.18.3'); script.defer = true; script.dataset.matchappMarqueeAutoplay = '1';    document.head.appendChild(script);
   }
   function normalizePricingTruth() {
     const path = (location.pathname || '').replace(/\/+$/, '') || '/';
