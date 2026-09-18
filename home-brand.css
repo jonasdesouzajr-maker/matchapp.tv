@@ -1,0 +1,201 @@
+/* MatchApp homepage brand lockup.
+   Surgical scope: only #home-brand-lockup on index.html.
+   The mark is intentionally a little taller than the MatchApp TV name;
+   Ai/iA is the largest element and is the only part that opens a fresh chat. */
+
+#home-brand-lockup{
+  display:flex!important;
+  align-items:center!important;
+  gap:.72rem!important;
+  min-width:0;
+  flex:0 1 auto!important;
+}
+#home-brand-lockup .home-brand-home{
+  display:inline-flex;
+  align-items:center;
+  gap:.78rem;
+  min-width:0;
+  text-decoration:none;
+  color:inherit;
+}
+#home-brand-lockup .brand-logo{
+  width:4.4rem!important;
+  height:4.4rem!important;
+  flex:0 0 4.4rem!important;
+  clip-path:circle(49% at 50% 50%)!important;
+  border-radius:50%!important;
+  filter:drop-shadow(0 0 13px rgba(229,193,88,.2));
+  transition:transform .28s cubic-bezier(.2,.8,.2,1),filter .28s ease!important;
+}
+#home-brand-lockup .home-brand-home:hover .brand-logo,
+#home-brand-lockup .home-brand-home:focus-visible .brand-logo{
+  transform:rotate(-4deg) scale(1.045);
+  filter:drop-shadow(0 0 18px rgba(229,193,88,.34));
+}
+
+#home-brand-lockup .home-brand-name{
+  display:inline-flex;
+  align-items:baseline;
+  gap:.22em;
+  min-width:0;
+  font-family:'Space Grotesk','Outfit','Inter',system-ui,sans-serif;
+  font-size:clamp(2rem,2.55vw,2.55rem);
+  line-height:.96;
+  font-weight:700;
+  letter-spacing:-.055em;
+  white-space:nowrap;
+  color:#fff9e8;
+  text-shadow:0 3px 18px rgba(0,0,0,.32);
+}
+#home-brand-lockup .home-brand-match{
+  background:linear-gradient(105deg,#fff 0%,#fff6cf 42%,#E5C158 92%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+#home-brand-lockup .home-brand-tv{
+  font-size:.62em;
+  font-weight:600;
+  letter-spacing:.045em;
+  color:var(--gold,#E5C158);
+  text-transform:uppercase;
+}
+
+#home-brand-lockup .home-ai-link{
+  --ai-accent:#a8f0ff;
+  position:relative;
+  isolation:isolate;
+  display:inline-grid;
+  place-items:center;
+  min-width:2.2em;
+  min-height:1.52em;
+  padding:.08em .28em .13em;
+  border-radius:.55em;
+  color:#f9f5ff;
+  text-decoration:none;
+  font-family:'Space Grotesk','Outfit','Inter',system-ui,sans-serif;
+  font-size:clamp(2.55rem,3.15vw,3.15rem);
+  line-height:.92;
+  font-weight:700;
+  letter-spacing:-.09em;
+  text-shadow:0 0 16px rgba(168,240,255,.2),0 0 28px rgba(163,118,182,.2);
+  transition:transform .22s cubic-bezier(.2,.8,.2,1),filter .22s ease;
+}
+#home-brand-lockup .home-ai-link::before{
+  content:"";
+  position:absolute;
+  inset:-.08em -.10em;
+  z-index:-1;
+  border-radius:.6em;
+  padding:1px;
+  background:conic-gradient(from 10deg,
+    transparent 0 18%,rgba(168,240,255,.82) 24%,rgba(229,193,88,.68) 33%,
+    transparent 42% 66%,rgba(163,118,182,.75) 74%,transparent 84%);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;
+  mask-composite:exclude;
+  opacity:.82;
+  animation:homeAiOrbit 4.8s linear infinite;
+}
+#home-brand-lockup .home-ai-link::after{
+  content:"";
+  position:absolute;
+  width:.14em;
+  height:.14em;
+  top:-.02em;
+  right:.08em;
+  border-radius:50%;
+  background:var(--ai-accent);
+  box-shadow:0 0 .22em var(--ai-accent),0 0 .42em rgba(168,240,255,.78);
+  animation:homeAiPulse 1.8s ease-in-out infinite;
+}
+#home-brand-lockup .home-ai-label{
+  position:relative;
+  display:inline-block;
+  background:linear-gradient(105deg,#fff 0%,#dffcff 35%,#E5C158 62%,#c9a7e8 100%);
+  background-size:220% 100%;
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  animation:homeAiShimmer 3.6s ease-in-out infinite;
+}
+#home-brand-lockup .home-ai-pt{display:none}
+html[lang="pt-BR"] #home-brand-lockup .home-ai-default{display:none}
+html[lang="pt-BR"] #home-brand-lockup .home-ai-pt{display:inline-block}
+#home-brand-lockup .home-ai-link:hover,
+#home-brand-lockup .home-ai-link:focus-visible{
+  transform:translateY(-2px) scale(1.045);
+  filter:brightness(1.12);
+}
+#home-brand-lockup .home-ai-link:focus-visible{
+  outline:3px solid var(--theme-second,#87eee0)!important;
+  outline-offset:5px;
+}
+@keyframes homeAiOrbit{to{transform:rotate(360deg)}}
+@keyframes homeAiPulse{0%,100%{opacity:.5;transform:scale(.72)}50%{opacity:1;transform:scale(1.18)}}
+@keyframes homeAiShimmer{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+
+/* Tablet: preserve hierarchy without making the header consume the page. */
+@media (max-width:1100px){
+  #home-brand-lockup .brand-logo{
+    width:4rem!important;height:4rem!important;flex-basis:4rem!important;
+  }
+  #home-brand-lockup .home-brand-name{font-size:clamp(1.72rem,3.7vw,2.15rem)}
+  #home-brand-lockup .home-ai-link{font-size:clamp(2.15rem,4.6vw,2.7rem)}
+}
+
+/* Phones: brand gets a clean first row; existing controls stay on their own
+   responsive nav row. The relative size hierarchy remains logo > name, Ai > name. */
+@media (max-width:720px){
+  html .app-header #home-brand-lockup{
+    width:100%!important;
+    justify-content:center!important;
+    gap:.48rem!important;
+    flex:1 1 100%!important;
+  }
+  #home-brand-lockup .home-brand-home{gap:.52rem}
+  #home-brand-lockup .brand-logo{
+    width:3.25rem!important;height:3.25rem!important;flex-basis:3.25rem!important;
+  }
+  #home-brand-lockup .home-brand-name{
+    font-size:clamp(1.28rem,6.1vw,1.68rem);
+    letter-spacing:-.05em;
+  }
+  #home-brand-lockup .home-ai-link{
+    font-size:clamp(1.65rem,7.2vw,2.05rem);
+    min-width:2.05em;
+  }
+}
+@media (max-width:420px){
+  #home-brand-lockup{gap:.34rem!important}
+  #home-brand-lockup .home-brand-home{gap:.4rem}
+  #home-brand-lockup .brand-logo{
+    width:2.8rem!important;height:2.8rem!important;flex-basis:2.8rem!important;
+  }
+  #home-brand-lockup .home-brand-name{font-size:clamp(1.08rem,5.8vw,1.32rem)}
+  #home-brand-lockup .home-ai-link{font-size:clamp(1.42rem,6.9vw,1.7rem)}
+}
+
+/* Desktop/TV browsers: scale the lockup with viewing distance, while leaving
+   navigation and every non-brand element untouched. */
+@media (min-width:1600px){
+  #home-brand-lockup .brand-logo{
+    width:5rem!important;height:5rem!important;flex-basis:5rem!important;
+  }
+  #home-brand-lockup .home-brand-name{font-size:2.8rem}
+  #home-brand-lockup .home-ai-link{font-size:3.45rem}
+}
+@media (min-width:2560px){
+  #home-brand-lockup .brand-logo{
+    width:5.65rem!important;height:5.65rem!important;flex-basis:5.65rem!important;
+  }
+  #home-brand-lockup .home-brand-name{font-size:3.1rem}
+  #home-brand-lockup .home-ai-link{font-size:3.85rem}
+}
+@media (prefers-reduced-motion:reduce){
+  #home-brand-lockup .home-ai-link::before,
+  #home-brand-lockup .home-ai-link::after,
+  #home-brand-lockup .home-ai-label{animation:none!important}
+  #home-brand-lockup .home-ai-link,
+  #home-brand-lockup .brand-logo{transition:none!important}
+}
