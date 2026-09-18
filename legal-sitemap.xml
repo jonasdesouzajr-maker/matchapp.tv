@@ -2,10 +2,10 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://matchapp.tv/</loc><lastmod>2026-09-16</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url>
   <url><loc>https://matchapp.tv/about.html</loc><lastmod>2026-09-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://matchapp.tv/privacy.html</loc><lastmod>2026-09-18T12:45:00+00:00</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://matchapp.tv/privacy.html</loc><lastmod>2026-09-18T12:31:00+00:00</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://matchapp.tv/cookies.html</loc><lastmod>2026-09-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://matchapp.tv/terms.html</loc><lastmod>2026-09-18T12:45:00+00:00</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://matchapp.tv/terms.html</loc><lastmod>2026-09-18T12:31:00+00:00</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://matchapp.tv/copyright.html</loc><lastmod>2026-09-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://matchapp.tv/privacidade.html</loc><lastmod>2026-09-18T12:45:00+00:00</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://matchapp.tv/termos.html</loc><lastmod>2026-09-18T12:45:00+00:00</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://matchapp.tv/privacidade.html</loc><lastmod>2026-09-18T12:31:00+00:00</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://matchapp.tv/termos.html</loc><lastmod>2026-09-18T12:31:00+00:00</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
 </urlset>
