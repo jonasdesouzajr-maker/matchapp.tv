@@ -33,7 +33,8 @@ test('Android Studio project stays ad-free while unpublished store CTA stays hid
   assert.match(blocker,/googlesyndication/);
   assert.match(blocker,/adsbygoogle/);
   const main=read('android-studio/app/src/main/java/tv/matchapp/app/MainActivity.kt');
-  assert.match(main,/MatchAppTVAndroid\/1\.0/);
+  assert.match(main,/MatchAppTVAndroid\/\d+\.\d+(?:\.\d+)?/);
+  assert.match(main,/MatchAppAiAndroid\/\d+\.\d+(?:\.\d+)?/);
   assert.match(main,/MATCHAPP_IS_AD_FREE/);
   assert.match(main,/https:\/\/matchapp\.tv\//);
   assert.match(main,/replace\("; wv\)"/);
