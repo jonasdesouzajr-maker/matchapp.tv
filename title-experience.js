@@ -58,7 +58,17 @@
     if(h3){h3.classList.add('ma-title-link');h3.tabIndex=0;h3.setAttribute('role','link');const go=()=>openTitle(title);h3.addEventListener('click',go);h3.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();go();}});}
     const poster=card.querySelector('.discover-poster');if(poster){poster.classList.add('ma-title-link');poster.tabIndex=0;poster.setAttribute('role','link');poster.addEventListener('click',e=>{if(e.target.closest('a,button'))return;openTitle(title);});poster.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openTitle(title);}});}
     const api=window.MatchAppCatalogMedia;if(!api?.lookup)return;
-    const meta=await api.lookup(title).catch(()=>null);if(!meta||!card.isConnected)return;
+    let meta=await api.lookup(title).catch(()=>null);
+    // AI can surface a real title that is not yet in MatchApp's pre-ingested
+    // catalog. Resolve exact TMDB identity as a fallback so we can still offer
+    // the actual title page without ever embedding an unverified clip.
+    if(!meta&&typeof window.tmdbLookup==='function'){
+      const tmdb=await window.tmdbLookup(title,{}).catch(()=>null);
+      if(tmdb&&Number.isSafeInteger(tmdb.tmdbId)&&['movie','tv'].includes(tmdb.kind)){
+        meta={title:tmdb.title||title,tmdb_id:tmdb.tmdbId,media_kind:tmdb.kind,year:tmdb.year||null,genres:Array.isArray(tmdb.genres)?tmdb.genres:[],availability:{source_page_url:'https://www.themoviedb.org/'+tmdb.kind+'/'+tmdb.tmdbId}};
+      }
+    }
+    if(!meta||!card.isConnected)return;
     const cats=card.querySelector('.discover-categories');
     if(Array.isArray(meta.genres)&&meta.genres.length){
       const html='<div class="discover-categories" aria-label="Genres">'+meta.genres.slice(0,8).map(g=>'<span class="discover-category">'+esc(g)+'</span>').join('')+'</div>';
