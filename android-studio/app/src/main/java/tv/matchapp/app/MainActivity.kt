@@ -79,7 +79,9 @@ class MainActivity : AppCompatActivity() {
             databaseEnabled = true
             loadsImagesAutomatically = true
             mixedContentMode = WebSettings.MIXED_CONTENT_COMPATIBILITY_MODE
-            cacheMode = WebSettings.LOAD_DEFAULT
+            // Always cold-load current production HTML/assets when the Android
+            // activity starts; normal caching resumes after the first page finishes.
+            cacheMode = WebSettings.LOAD_NO_CACHE
             mediaPlaybackRequiresUserGesture = true
             setSupportMultipleWindows(true)
             javaScriptCanOpenWindowsAutomatically = true
@@ -110,7 +112,10 @@ class MainActivity : AppCompatActivity() {
         refresh.setColorSchemeColors(ContextCompat.getColor(this, R.color.gold))
         refresh.setProgressBackgroundColorSchemeColor(ContextCompat.getColor(this, R.color.royal))
         refresh.setOnRefreshListener {
-            if (isOnline()) web.reload() else {
+            if (isOnline()) {
+                web.settings.cacheMode = WebSettings.LOAD_NO_CACHE
+                web.reload()
+            } else {
                 refresh.isRefreshing = false
                 showOffline(true)
             }
@@ -167,6 +172,7 @@ class MainActivity : AppCompatActivity() {
             return
         }
         showOffline(false)
+        web.settings.cacheMode = WebSettings.LOAD_NO_CACHE
         web.loadUrl(lastUrl)
     }
 
@@ -259,6 +265,7 @@ class MainActivity : AppCompatActivity() {
             if (isKidsUrl(url)) return
             splashKeep = false
             refresh.isRefreshing = false
+            view.settings.cacheMode = WebSettings.LOAD_DEFAULT
             injectAppMode(view)
             CookieManager.getInstance().flush()
         }
@@ -367,8 +374,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val HOME = "https://matchapp.tv/?utm_source=android_app"
-        const val APP_UA = "MatchAppTVAndroid/1.0 MatchAppAiAndroid/1.0"
+        const val HOME = "https://matchapp.tv/?utm_source=android_app&appBuild=2"
+        const val APP_UA = "MatchAppTVAndroid/1.1 MatchAppAiAndroid/1.1"
         private const val APP_MODE_JS = """
             (function(){
               window.MATCHAPP_IS_AD_FREE = true;
