@@ -128,15 +128,25 @@
     return {region:code,streams,rent,buy,cinemaDate,inCinemas,guide:/^https:\/\//.test(String(row.link||''))?String(row.link):'',sourcePage:sourcePage(meta)};
   }
   function providerSearch(provider,title){
+    const raw=String(provider||'').trim();
     const aliases={
-      'Amazon Prime Video':'Prime Video','Prime Video':'Prime Video','Netflix':'Netflix','Disney Plus':'Disney+',
-      'HBO Max':'Max','Max':'Max','Apple TV':'Apple TV+','Paramount Plus':'Paramount+','Hulu':'Hulu',
-      'Peacock Premium':'Peacock','Peacock Premium Plus':'Peacock','Globoplay':'Globoplay',
-      'Crunchyroll Amazon Channel':'Crunchyroll','Crunchyroll':'Crunchyroll','Rakuten Viki':'Viki'
+      'Amazon Prime Video':'Prime Video','Prime Video':'Prime Video','Amazon Video':'Prime Video',
+      'Netflix':'Netflix','Netflix Kids':'Netflix','Netflix Standard with Ads':'Netflix',
+      'Disney Plus':'Disney+','HBO Max':'Max','Max':'Max','Apple TV':'Apple TV+','Apple TV Store':'Apple TV+',
+      'Paramount Plus':'Paramount+','Paramount Plus Basic with Ads':'Paramount+','Paramount Plus Essential':'Paramount+',
+      'Paramount Plus Premium':'Paramount+','Hulu':'Hulu','Peacock Premium':'Peacock','Peacock Premium Plus':'Peacock',
+      'Globoplay':'Globoplay','Crunchyroll Amazon Channel':'Crunchyroll','Crunchyroll':'Crunchyroll',
+      'Rakuten Viki':'Viki','MUBI':'MUBI','Pure Flix':'Pure Flix','Angel Studios':'Angel Studios'
     };
-    const mapped=aliases[String(provider||'')]||String(provider||'');
+    let mapped=aliases[raw]||raw;
+    if(/amazon prime video|amazon channel|amazon video/i.test(raw))mapped='Prime Video';
+    else if(/netflix/i.test(raw))mapped='Netflix';
+    else if(/hbo max/i.test(raw))mapped='Max';
+    else if(/apple tv/i.test(raw))mapped='Apple TV+';
+    else if(/paramount/i.test(raw))mapped='Paramount+';
+    else if(/crunchyroll/i.test(raw))mapped='Crunchyroll';
     try{
-      if(typeof platformSearchUrl==='function'&&mapped)return platformSearchUrl(mapped,title);
+      if(typeof platformSearchUrl==='function'&&typeof PLATFORMS!=='undefined'&&PLATFORMS[mapped])return platformSearchUrl(mapped,title);
     }catch(_){}
     const q=encodeURIComponent(String(title||''));
     const direct={
@@ -150,9 +160,21 @@
       'Peacock':'https://www.peacocktv.com/search?q='+q,
       'Globoplay':'https://globoplay.globo.com/busca/?q='+q,
       'Crunchyroll':'https://www.crunchyroll.com/search?q='+q,
-      'Viki':'https://www.viki.com/search?q='+q
+      'Viki':'https://www.viki.com/search?q='+q,
+      'MUBI':'https://mubi.com/search/'+q,
+      'Pure Flix':'https://pureflix.com/search?q='+q,
+      'Angel Studios':'https://www.angel.com/search?q='+q,
+      'BBC iPlayer':'https://www.bbc.co.uk/iplayer/search?q='+q,
+      'ITVX':'https://www.itv.com/watch/search?q='+q,
+      'ITVX Premium':'https://www.itv.com/watch/search?q='+q,
+      'Channel 4':'https://www.channel4.com/search?q='+q,
+      'The Roku Channel':'https://www.roku.com/whats-on/search?q='+q,
+      'Tubi TV':'https://tubitv.com/search/'+q,
+      'YouTube':'https://www.youtube.com/results?search_query='+q,
+      'YouTube TV':'https://tv.youtube.com/search/'+q,
+      'Fandango At Home':'https://athome.fandango.com/content/browse/search?searchString='+q
     };
-    return direct[mapped]||'';
+    return direct[mapped]||direct[raw]||'';
   }
 
   function showtimesUrl(title){
@@ -164,7 +186,8 @@
     const add=(provider,mode)=>{
       const name=String(provider||'').trim();if(!name)return;
       const key=mode+'|'+name.toLowerCase();if(seen.has(key))return;seen.add(key);
-      out.push({provider:name,mode,href:providerSearch(name,title)||a.guide||a.sourcePage});
+      const direct=providerSearch(name,title);
+      out.push({provider:name,mode,direct:!!direct,href:direct||a.guide||a.sourcePage});
     };
     a.streams.forEach(p=>add(p,'stream'));
     a.rent.forEach(p=>add(p,'rent'));
@@ -285,7 +308,8 @@
       const label=document.createElement('strong');label.textContent='Watch options';row.appendChild(label);
       links.slice(0,16).forEach(link=>{
         const aEl=document.createElement('a');aEl.href=link.href;aEl.target='_blank';aEl.rel='noopener noreferrer';
-        aEl.textContent=(link.mode==='rent'?'Rent · ':link.mode==='buy'?'Buy · ':'Watch · ')+link.provider;row.appendChild(aEl);
+        const prefix=link.direct?(link.mode==='rent'?'Rent · ':link.mode==='buy'?'Buy · ':'Watch · '):'Availability · ';
+        aEl.textContent=prefix+link.provider;row.appendChild(aEl);
       });
       wrap.appendChild(row);
     }
