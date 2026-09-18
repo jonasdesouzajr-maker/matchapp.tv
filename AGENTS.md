@@ -3,11 +3,11 @@
 These are standing implementation rules for MatchApp work in this repository.
 
 1. **Never-dead-end matching**
-   - Normal MatchApp and Kids Mode must not return an empty-state error merely because a valid user criteria combination has no exact title.
-   - Progressively relax secondary constraints until a result is available.
-   - In Kids Mode, age approval and safety allowlisting are hard boundaries and must never be relaxed.
-   - In normal mode, explicit user exclusions such as Not For Me / blocked content remain hard boundaries.
-   - Prefer unseen titles, but approved/eligible repeats are better than a dead end.
+   - Normal MatchApp and Kids Mode must not return an empty-state error merely because the first local shelf has no fresh title.
+   - **Normal MatchApp:** every criterion the user explicitly selects is a hard requirement. Never relax mood, real genre/category, platform, decade, vibe, rating, origin-country exclusions, genre exclusions, or other explicit choices to fill a result. Expand into verified source-backed discovery or recycle an older exact match instead.
+   - **Kids Mode:** age approval and child-safety allowlisting are hard boundaries and must never be relaxed. Secondary taste constraints may only be widened when the reviewed Kids library genuinely has no exact approved item.
+   - Explicit user exclusions such as Not For Me, blocked categories, excluded genres and excluded origin countries are hard boundaries.
+   - Prefer unseen exact titles, but an eligible exact repeat is better than an off-criteria result.
 
 2. **Verified title metadata**
    - Display real catalog genres/categories from trusted title metadata. Do not present MatchApp mood/vibe/internal taxonomy as official title genres.
