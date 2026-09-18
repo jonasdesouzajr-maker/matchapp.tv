@@ -56,8 +56,11 @@ async function startVerifiedCheckout(product,button){
   if(!user){rememberPending(key);notify(pt('billing.signin','Please sign in to continue to checkout.'));window.openAuthModal?.();return}
   if(el){el.disabled=true;el.setAttribute('aria-busy','true');el.textContent=pt('billing.redirect','Redirecting…')}
   try{
+    try{await window.MatchBillingMarket?.ready}catch(_){}
+    const useBRL=window.MatchBillingMarket?.market==='BR'&&Array.isArray(window.MatchBillingMarket?.activeProducts)&&window.MatchBillingMarket.activeProducts.includes(key);
     if(sb?.functions?.invoke){
-      const {data,error}=await sb.functions.invoke('stripe-checkout',{body:{product:key,lang:window.MATCH_LANG||'en'}});
+      const body={product:key,lang:window.MATCH_LANG||'en',...(useBRL?{market:'BR',currency:'brl'}:{})};
+      const {data,error}=await sb.functions.invoke('stripe-checkout',{body});
       if(!error&&data?.url&&data.url.startsWith('https://checkout.stripe.com/')){window.location.assign(data.url);return}
     }
   }catch(_){}
