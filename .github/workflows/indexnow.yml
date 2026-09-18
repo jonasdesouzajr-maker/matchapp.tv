@@ -15,6 +15,8 @@ on:
     branches: [main]
     paths:
       - 'sitemap.xml'
+      - 'sitemaps.xml'
+      - 'where-to-watch/**'
   workflow_dispatch:
 
 permissions:
@@ -30,13 +32,20 @@ jobs:
 
       - name: Broadcast sitemap URLs to IndexNow (Bing & Yandex)
         env:
-          INDEX_KEY: ${{ secrets.INDEX_NOW_KEY }}
+          INDEX_KEY: ${{ secrets.INDEX_NOW_KEY || 'c8c9d7f9a4c52525bb19d12a5569c838' }}
         run: |
-          # IndexNow is optional and should never break a production push
-          # when the secret is not configured.
-          if [ -z "$INDEX_KEY" ]; then
-            echo "INDEX_NOW_KEY is not configured; skipping optional notification."
-            exit 0
+          set -e
+          KEY_URL="https://matchapp.tv/$INDEX_KEY.txt"
+          echo "Waiting for the public IndexNow verification file at $KEY_URL"
+          ready=0
+          for attempt in 1 2 3 4 5 6 7 8 9 10; do
+            body="$(curl -fsSL --max-time 20 "$KEY_URL" 2>/dev/null || true)"
+            if [ "$body" = "$INDEX_KEY" ]; then ready=1; break; fi
+            sleep 6
+          done
+          if [ "$ready" != "1" ]; then
+            echo "IndexNow verification file is not live yet."
+            exit 1
           fi
 
           node - <<'NODE'
