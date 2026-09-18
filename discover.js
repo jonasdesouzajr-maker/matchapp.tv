@@ -961,6 +961,8 @@ function initAiWorkspace() {
         }
     } catch (_) {}
     refreshAiWorkspaceStatus();
+    setTimeout(refreshAiWorkspaceStatus, 900);
+    setTimeout(refreshAiWorkspaceStatus, 2400);
 }
 document.addEventListener('DOMContentLoaded', initAiWorkspace);
 
@@ -1085,6 +1087,15 @@ function appendAssistantBubble(text, results, opts) {
 
     const row = document.createElement('div');
     row.className = 'chat-answer-row';
+
+    const avatar = document.createElement('img');
+    avatar.className = 'chat-avatar';
+    avatar.src = '/assets/brand/matchapp-ai-orbit.svg';
+    avatar.alt = '';
+    avatar.width = 34;
+    avatar.height = 34;
+    row.appendChild(avatar);
+
     const p = document.createElement('p');
     p.className = 'chat-answer-text';
     row.appendChild(p);
