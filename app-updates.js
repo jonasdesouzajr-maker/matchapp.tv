@@ -71,7 +71,8 @@
       syncButtons();
       if(knownInstalled()&&typeof navigator.setAppBadge==='function'&&pending)try{await navigator.setAppBadge();}catch(_){}
       if(installed()&&!pending&&typeof navigator.clearAppBadge==='function')try{await navigator.clearAppBadge();}catch(_){}
-      if (release.functional && dismissedVersion !== release.version && stored() !== release.version && (knownInstalled() || pending)) notice(pending);
+      const onHome=location.pathname==='/'||location.pathname==='/index.html';
+      if (release.functional && dismissedVersion !== release.version && stored() !== release.version && (knownInstalled() || pending || onHome)) notice(pending);
     } catch (_) { /* offline: keep the current release and all sign-in methods usable */ }
     finally { clearTimeout(timer); checking = false; }
   };
