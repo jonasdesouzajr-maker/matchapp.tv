@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MatchApp Ai KIDS</string>
+    <string name="offline_title">You’re offline</string>
+    <string name="offline_body">MatchApp Ai KIDS needs a connection to find safe, age-appropriate picks. Check your network and try again.</string>
+    <string name="offline_retry">Try again</string>
+</resources>
