@@ -9,6 +9,17 @@
       card.querySelectorAll('[data-event-date]').forEach(el=>{el.textContent=new Intl.DateTimeFormat(document.documentElement.lang||'en',{dateStyle:'medium',timeZone:card.dataset.eventZone||'UTC'}).format(new Date(el.dataset.eventDate));});
     });
   }
-  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',render);else render();
+  function wireEventHandoff(){
+    document.addEventListener('click',event=>{
+      const link=event.target?.closest?.('.global-event a[href^="/events/"]');if(!link)return;
+      try{
+        const url=new URL(link.getAttribute('href'),location.origin);
+        if(url.origin!==location.origin||!url.pathname.startsWith('/events/'))return;
+        event.preventDefault();
+        location.href='/discover.html?event='+encodeURIComponent(url.pathname)+'&focus=start';
+      }catch(_){}
+    },true);
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',render);else render();\n  wireEventHandoff();
   document.addEventListener('matchapp:langchange',render);setInterval(render,60000);
 })();
