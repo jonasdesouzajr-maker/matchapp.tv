@@ -84,8 +84,8 @@ html[data-kids-mode] :where(button,.kids-btn,.kids-chip):not(:disabled):active{t
 /* 2026-09-18 canonical non-Kids logo. Animated AVIF keeps the user's exact
    circle/play/stars animation; circular clipping removes the square dark field
    so the existing header/brand-bar surface is the only surrounding background. */
-html:not(.kids-mode) .matchapp-brand-link>img:not(.matchapp-wordmark),
-html:not(.kids-mode) .matchapp-brand-link picture>img,
+html:not(.kids-mode) .matchapp-brand-link>img:not(.matchapp-wordmark):not([src^="/kids/"]):not([src*="/kids/"]),
+html:not(.kids-mode) .matchapp-brand-link picture>img:not([src^="/kids/"]):not([src*="/kids/"]),
 html:not(.kids-mode) .brand-logo:not(.kids-mascot):not([src*="/kids/"]){
   content:url("/assets/brand/matchapp-logo-new.avif?v=20260918-logo-news2")!important;
   object-fit:cover!important;object-position:center!important;
