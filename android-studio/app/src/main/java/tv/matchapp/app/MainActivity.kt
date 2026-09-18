@@ -182,12 +182,30 @@ class MainActivity : AppCompatActivity() {
         return caps.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
     }
 
+    private fun isMatchAppHost(host: String): Boolean {
+        val normalized = host.lowercase()
+        return normalized == "matchapp.tv" ||
+            normalized == "www.matchapp.tv" ||
+            normalized.endsWith(".matchapp.tv")
+    }
+
+    private fun isKidsUri(uri: Uri): Boolean {
+        if (!isMatchAppHost(uri.host.orEmpty())) return false
+        val path = uri.path.orEmpty().lowercase().trimEnd('/')
+        return path == "/kids" || path.startsWith("/kids/")
+    }
+
+    private fun isKidsUrl(url: String?): Boolean {
+        if (url.isNullOrBlank()) return false
+        return runCatching { isKidsUri(Uri.parse(url)) }.getOrDefault(false)
+    }
+
     private fun resolveLaunchUrl(intent: Intent?): String {
         val data = intent?.data
         if (data != null && (data.scheme == "https" || data.scheme == "http")) {
-            val host = data.host.orEmpty()
-            if (host == "matchapp.tv" || host == "www.matchapp.tv" || host.endsWith(".matchapp.tv")) {
-                return data.toString().replace("http://", "https://")
+            if (isMatchAppHost(data.host.orEmpty())) {
+                if (isKidsUri(data)) return HOME
+                return data.buildUpon().scheme("https").build().toString()
             }
         }
         return HOME
@@ -202,8 +220,8 @@ class MainActivity : AppCompatActivity() {
         refresh.visibility = View.VISIBLE
     }
 
-    private fun injectAdFree(view: WebView) {
-        view.evaluateJavascript(AD_FREE_JS, null)
+    private fun injectAppMode(view: WebView) {
+        view.evaluateJavascript(APP_MODE_JS, null)
     }
 
     private inner class MatchClient : WebViewClient() {
@@ -226,14 +244,22 @@ class MainActivity : AppCompatActivity() {
         }
 
         override fun onPageStarted(view: WebView, url: String?, favicon: Bitmap?) {
+            if (isKidsUrl(url)) {
+                view.stopLoading()
+                lastUrl = HOME
+                Toast.makeText(this@MainActivity, getString(R.string.kids_separate_app), Toast.LENGTH_SHORT).show()
+                view.loadUrl(HOME)
+                return
+            }
             lastUrl = url ?: lastUrl
-            injectAdFree(view)
+            injectAppMode(view)
         }
 
         override fun onPageFinished(view: WebView, url: String?) {
+            if (isKidsUrl(url)) return
             splashKeep = false
             refresh.isRefreshing = false
-            injectAdFree(view)
+            injectAppMode(view)
             CookieManager.getInstance().flush()
         }
 
@@ -255,7 +281,12 @@ class MainActivity : AppCompatActivity() {
         if (host.endsWith("wa.me") || host.contains("whatsapp.com") || host.contains("play.google.com") || host.contains("t.me")) {
             return openExternal(uri)
         }
-        if (host == "matchapp.tv" || host == "www.matchapp.tv" || host.endsWith(".matchapp.tv")) {
+        if (isMatchAppHost(host)) {
+            if (isKidsUri(uri)) {
+                Toast.makeText(this, getString(R.string.kids_separate_app), Toast.LENGTH_SHORT).show()
+                web.loadUrl(HOME)
+                return true
+            }
             return false
         }
         if (host.endsWith("supabase.co") || host.endsWith("google.com") || host.endsWith("gstatic.com") ||
@@ -337,19 +368,69 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
         const val HOME = "https://matchapp.tv/?utm_source=android_app"
-        const val APP_UA = "MatchAppTVAndroid/1.0"
-        private const val AD_FREE_JS = """
+        const val APP_UA = "MatchAppTVAndroid/1.0 MatchAppAiAndroid/1.0"
+        private const val APP_MODE_JS = """
             (function(){
               window.MATCHAPP_IS_AD_FREE = true;
+              window.MATCHAPP_ANDROID_KIDS_DISABLED = true;
               try { localStorage.setItem('match_ad_free','true'); } catch (e) {}
               var root = document.documentElement;
-              root.classList.add('ads-empty','matchapp-android','is-chrome');
-              if (!document.getElementById('matchapp-android-adfree')) {
+              root.classList.add('ads-empty','matchapp-android','matchapp-ai-android','is-chrome');
+
+              if (!document.getElementById('matchapp-android-shell')) {
                 var s = document.createElement('style');
-                s.id = 'matchapp-android-adfree';
-                s.textContent = '.ad-banner-container,.sidebar-ad-left,.sidebar-ad-right,.mobile-ad-bottom,.premium-ad-frame,ins.adsbygoogle,.ma-ad-label,#chrome-notice,.chrome-notice,.install-btn{display:none!important;height:0!important;min-height:0!important;overflow:hidden!important;padding:0!important;margin:0!important;border:0!important}';
+                s.id = 'matchapp-android-shell';
+                s.textContent =
+                  '.ad-banner-container,.sidebar-ad-left,.sidebar-ad-right,.mobile-ad-bottom,' +
+                  '.premium-ad-frame,ins.adsbygoogle,.ma-ad-label,#chrome-notice,.chrome-notice,' +
+                  '.install-btn,a[href^="/kids"],a[href^="kids/"],' +
+                  'a[href^="https://matchapp.tv/kids"],a[href^="https://www.matchapp.tv/kids"],' +
+                  '[data-mode="kids"],[data-view="kids"],[data-route^="/kids"],#kids-mode,#kids-toggle,' +
+                  '.kids-mode-toggle,.kids-mode-entry,.kids-entry,.kids-card,.kids-cta' +
+                  '{display:none!important;height:0!important;min-height:0!important;overflow:hidden!important;' +
+                  'padding:0!important;margin:0!important;border:0!important}';
                 (document.head || root).appendChild(s);
               }
+
+              function isKidsLink(el) {
+                if (!el || !el.getAttribute) return false;
+                var href = el.getAttribute('href');
+                if (!href) return false;
+                try {
+                  var u = new URL(href, location.href);
+                  var host = u.hostname.toLowerCase();
+                  var path = u.pathname.toLowerCase().replace(/\/+$/,'');
+                  var own = host === 'matchapp.tv' || host === 'www.matchapp.tv' || host.endsWith('.matchapp.tv');
+                  return own && (path === '/kids' || path.indexOf('/kids/') === 0);
+                } catch (e) {
+                  return false;
+                }
+              }
+
+              function scrubKids() {
+                document.querySelectorAll('a[href]').forEach(function(a){
+                  if (isKidsLink(a)) {
+                    a.style.setProperty('display','none','important');
+                    a.setAttribute('aria-hidden','true');
+                    a.setAttribute('tabindex','-1');
+                  }
+                });
+              }
+
+              scrubKids();
+              document.addEventListener('click', function(ev){
+                var target = ev.target && ev.target.closest ? ev.target.closest('a[href]') : null;
+                if (isKidsLink(target)) {
+                  ev.preventDefault();
+                  ev.stopImmediatePropagation();
+                }
+              }, true);
+
+              if (!window.__matchAppAndroidKidsObserver) {
+                window.__matchAppAndroidKidsObserver = new MutationObserver(scrubKids);
+                window.__matchAppAndroidKidsObserver.observe(document.documentElement, {childList:true,subtree:true});
+              }
+
               document.querySelectorAll('ins.adsbygoogle,.ad-banner-container').forEach(function(el){ el.remove(); });
             })();
         """
