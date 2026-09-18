@@ -460,6 +460,61 @@ function currentSlugDir(i){
   return path.join(ART,new URL(i.matchapp_url).pathname.split('/').filter(Boolean).pop());
 }
 
+function ensureArticleAnalyticsFile(file){
+  if(!fs.existsSync(file))return false;
+  let html=fs.readFileSync(file,'utf8');
+  let changed=false;
+  if(!html.includes('GTM-M7J3NNBN')){
+    const gtmHead=`<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-M7J3NNBN');</script>
+<!-- End Google Tag Manager -->`;
+    const gtmBody=`<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7J3NNBN"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->`;
+    html=html.replace(/<head>/i,'<head>\n'+gtmHead);
+    html=html.replace(/<body>/i,'<body>\n'+gtmBody);
+    changed=true;
+  }else{
+    if(!html.includes('googletagmanager.com/gtm.js?id=')){
+      const gtmHead=`<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-M7J3NNBN');</script>
+<!-- End Google Tag Manager -->`;
+      html=html.replace(/<head>/i,'<head>\n'+gtmHead);
+      changed=true;
+    }
+    if(!html.includes('googletagmanager.com/ns.html?id=GTM-M7J3NNBN')){
+      const gtmBody=`<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7J3NNBN"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->`;
+      html=html.replace(/<body>/i,'<body>\n'+gtmBody);
+      changed=true;
+    }
+  }
+  if(changed)fs.writeFileSync(file,html);
+  return changed;
+}
+
+function enforceArticleAnalyticsOnDisk(){
+  if(!fs.existsSync(ART))return 0;
+  let changed=0;
+  for(const entry of fs.readdirSync(ART,{withFileTypes:true})){
+    if(!entry.isDirectory())continue;
+    const file=path.join(ART,entry.name,'index.html');
+    if(ensureArticleAnalyticsFile(file))changed++;
+  }
+  return changed;
+}
+
 (async()=>{
   const generated=new Date().toISOString();
   const priorArchive=readArchive();
@@ -547,6 +602,10 @@ function currentSlugDir(i){
     try{fs.rmSync(currentSlugDir(old),{recursive:true,force:true});}catch(_){}
   }
 
+  // Legacy article directories can outlive the archive manifest. Sweep every
+  // public article file on disk so analytics never depends on manifest parity.
+  const analyticsRepaired=enforceArticleAnalyticsOnDisk();
+
   fs.writeFileSync(
     path.join(NEWS,'data.json'),
     JSON.stringify({
@@ -580,7 +639,8 @@ function currentSlugDir(i){
     archived:archive.length,
     feed_version:feedVersion,
     sources:[...new Set(items.map(i=>i.source))],
-    countries:[...new Set(items.map(i=>i.country))]
+    countries:[...new Set(items.map(i=>i.country))],
+    analytics_repaired:analyticsRepaired
   }));
 })().catch(err=>{
   console.error(`[news] ${err.stack||err.message}`);
