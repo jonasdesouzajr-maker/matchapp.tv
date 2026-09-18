@@ -91,7 +91,7 @@ jobs:
           curl -sS -L --max-time 30 https://matchapp.tv/ -o /tmp/home.html
           grep -Fq '/app.js?v=208' /tmp/home.html
           grep -Fq '/catalog-media.js?v=20260918-notify2' /tmp/home.html
-          grep -Fq '/settings.js?v=20260918-notify2' /tmp/home.html
+          grep -Fq '/settings.js?v=20260918-notify3' /tmp/home.html
           grep -Fq '/app-updates.js?v=202' /tmp/home.html
           curl -sS -L --max-time 30 https://matchapp.tv/notifications.js -o /tmp/notifications.js
           grep -Fq 'followTitle' /tmp/notifications.js
