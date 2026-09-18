@@ -36,7 +36,10 @@ test('sitemaps list real public documents on matchapp.tv and never ads.txt',()=>
   assert.match(sm,new RegExp('/'+page.replace('.','\\.')+'</loc>'));
  }
  assert.match(read('robots.txt'),/Disallow:\s*\/oauth\//);
- assert.match(read('robots.txt'),/Sitemap: https:\/\/matchapp\.tv\/sitemap\.xml/);
+ const robots=read('robots.txt');
+ assert.match(robots,/Sitemap: https:\/\/matchapp\.tv\/sitemaps\.xml/);
+ assert.doesNotMatch(robots,/Sitemap: https:\/\/matchapp\.tv\/sitemap\.xml/);
+ assert.doesNotMatch(robots,/Sitemap: https:\/\/matchapp\.tv\/legal-sitemap\.xml/);
 });
 test('directory stubs stop /pricing/ and /profile/ from 404ing',()=>{
  const pricing=read('pricing/index.html'),profile=read('profile/index.html');
