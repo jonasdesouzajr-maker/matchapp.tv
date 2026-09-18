@@ -1,9 +1,9 @@
 {
-  "version": "2026.09.18.1",
+  "version": "2026.09.18.2",
   "date": "2026-09-18",
   "functional": true,
   "notes": {
-    "en": "Matches now keep every choice exact: a Laugh Out Loud request can no longer fall back to suspense, drama or an unrelated title. Empty local shelves expand through verified source-backed discovery instead of weakening your filters. New Profile → Settings controls let you permanently exclude countries of origin and real genres/categories from normal Matches. Title cards also include the richer verified streaming, cinema, preview and title-page experience from this release, and Kids matching keeps its safe no-dead-end fallback.",
-    "pt-BR": "Os Matches agora mantêm todas as escolhas exatamente: um pedido de 'rir muito' não pode mais cair em suspense, drama ou outro título fora do critério. Quando a prateleira local acaba, o MatchApp amplia a busca com fontes verificadas em vez de enfraquecer seus filtros. Em Perfil → Configurações, agora é possível excluir permanentemente países de origem e gêneros/categorias reais dos Matches normais. Esta versão também inclui a experiência ampliada de streaming, cinema, prévia e página do título, além do fallback seguro sem becos sem saída no Kids."
+    "en": "MatchApp now has a unified notification center and country-aware viewing availability. New releases show streaming, rental, purchase and cinema status separately; when a title is not streaming locally, MatchApp can show countries where it is available and let signed-in users follow it. Followed titles are rechecked hourly and can trigger in-app and device alerts when a provider appears. Friend requests, Match Together invitations/results and purchases also appear in the same notification inbox. The mobile homepage header and content spacing were reorganized for smaller screens.",
+    "pt-BR": "O MatchApp agora tem uma central unificada de notificações e disponibilidade por país. Lançamentos novos mostram separadamente streaming, aluguel, compra e cinema; quando um título ainda não está em streaming no seu país, o MatchApp pode mostrar onde ele já está disponível e permitir que usuários conectados acompanhem o título. Os títulos acompanhados são verificados a cada hora e podem gerar alertas no app e no dispositivo quando surgir um serviço. Pedidos de amizade, convites/resultados do Match Together e compras também aparecem na mesma central. O cabeçalho e os espaçamentos da página inicial no celular foram reorganizados para telas menores."
   }
 }
