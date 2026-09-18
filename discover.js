@@ -404,12 +404,25 @@ async function enrichDiscoverMedia(item) {
     try {
         const rawType = String(item.type || '').toLowerCase();
         const kind = /movie|film/.test(rawType) ? 'movie' : (/series|tv|show|drama|anime|novela|documentary/.test(rawType) ? 'tv' : '');
-        const meta = await window.MatchAppCatalogMedia.lookup(item.title, {
+        let meta = await window.MatchAppCatalogMedia.lookup(item.title, {
             year: item.year || '',
             kind: kind || ''
         });
-        if (!meta) return item;
+        if (!meta && window.MatchAppCatalogMedia.lookupLive) {
+            meta = await window.MatchAppCatalogMedia.lookupLive(item.title, {
+                year: item.year || '',
+                kind: kind || '',
+                cats: item.cats || []
+            });
+        }
+        if (!meta) {
+            if (item.platform && item.platform !== 'any') item._aiPlatformHint = item.platform;
+            item.platform = '';
+            item._availabilityVerified = false;
+            return item;
+        }
         item._catalogMedia = meta;
+        item._availabilityVerified = true;
         if (meta.year) item.year = meta.year;
         if (meta.overview) item.synopsis = meta.overview;
         if (Array.isArray(meta.genres) && meta.genres.length) item.realGenres = meta.genres.slice(0, 8);
@@ -557,9 +570,12 @@ function discoverCardHTML(item, idx) {
         .filter(Boolean).join(' · '));
     const isAudio = /podcast|album|music|audiobook/i.test(item.type || '');
     const cinemaOnly = item?._viewing?.mode === 'cinema';
+    const verifiedStream = item?._viewing?.mode === 'stream';
     const watchLabel = cinemaOnly
         ? discoverLabel('discover.titlePage', '🎟️ In Cinemas · Title Page')
-        : (isAudio ? discoverLabel('res.listennow', '🎧 Listen Now') : discoverLabel('discover.watchNow', '▶ Watch Now'));
+        : (verifiedStream
+            ? (isAudio ? discoverLabel('res.listennow', '🎧 Listen Now') : discoverLabel('discover.watchNow', '▶ Watch Now'))
+            : discoverLabel('discover.whereToWatch', 'Where to Watch'));
     const saveLabel = discoverLabel('res.watchlater', '⭐ Watch Later');
     const nfmLabel = discoverLabel('res.notforme', '👎 Not For Me');
     const whyText = item.why === 'director'
@@ -769,9 +785,12 @@ async function hydrateDiscoverCard(item, idx) {
         const url = discoverWatchUrl(item);
         link.href = url || '#';
         const cinemaOnly = item?._viewing?.mode === 'cinema';
+        const verifiedStream = item?._viewing?.mode === 'stream';
         link.textContent = cinemaOnly
             ? discoverLabel('discover.titlePage', '🎟️ In Cinemas · Title Page')
-            : (isAudio ? discoverLabel('res.listennow', '🎧 Listen Now') : discoverLabel('discover.watchNow', '▶ Watch Now'));
+            : (verifiedStream
+                ? (isAudio ? discoverLabel('res.listennow', '🎧 Listen Now') : discoverLabel('discover.watchNow', '▶ Watch Now'))
+                : discoverLabel('discover.whereToWatch', 'Where to Watch'));
         link.classList.toggle('is-cinema', cinemaOnly);
         if (!url) {
             link.setAttribute('aria-disabled', 'true');
