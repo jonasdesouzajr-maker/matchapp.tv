@@ -49,7 +49,8 @@ test('crawlability and AdSense publisher declaration remain correct',()=>{
   const robots=read('robots.txt');
   assert.match(robots,/User-agent: \*/);
   assert.match(robots,/Allow: \/\s/);
-  assert.match(robots,/Sitemap: https:\/\/matchapp\.tv\/sitemap\.xml/);
+  assert.match(robots,/Sitemap: https:\/\/matchapp\.tv\/sitemaps\.xml/);
+  assert.doesNotMatch(robots,/Sitemap: https:\/\/matchapp\.tv\/sitemap\.xml/);
 });
 
 test('functional releases refresh the sitemap',()=>{
