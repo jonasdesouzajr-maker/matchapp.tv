@@ -81,7 +81,7 @@ async function checkWatch(w:Watch){
   if(available){
    const place=country(String(w.region||"").toUpperCase());
    body=`${w.title} is now streaming in ${place} on ${providers.join(", ")}.`;
-   href=safeHttps(row?.link)||`/discover.html?title=${encodeURIComponent(w.title)}&focus=start`;
+   href=`/discover.html?title=${encodeURIComponent(w.title)}&focus=start`;
   }
   await db.rpc("notification_watch_checked",{
    p_id:w.id,p_signature:signature,p_available:available,p_body:body,p_href:href,
