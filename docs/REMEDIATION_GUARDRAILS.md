@@ -57,6 +57,15 @@ This document is an implementation handoff, not a substitute for legal advice.
 - **Primary CTA error rate:** monitored primary CTA requests returning 4xx/5xx / primary CTA requests checked.
 - **SEO index health:** valid indexed `.tv` URLs, residual `.cc` URLs, canonical conflicts and sitemap errors.
 
+## Standing MatchApp release contracts
+
+These are permanent product constraints for future MatchApp work:
+
+- **Matching must not dead-end.** Normal MatchApp and Kids Mode must always return the closest valid result when the exact combination is empty. Relax secondary taste constraints progressively instead of showing a “no titles fit” error. In Kids Mode, age approval and child-safety rules are never relaxed.
+- **Web fixes must reach both Android apps.** MatchApp Ai and MatchApp Ai KIDS are live WebView shells over the production web surfaces. Every compatible product fix must be verified against both Android modules; when a release needs a fresh native package/cache marker, bump both modules together so newly built AABs cold-load the corrected production experience.
+- **Real genres stay distinct from MatchApp taxonomy.** User-visible title genres and the Real Genre filter come from verified source metadata. MatchApp moods, vibes, regional formats and internal matching tags remain internal matching signals and must not be presented as official genres.
+- **Title/event handoff is universal.** Trending cards, event cards, normal match results and AI result cards must all lead to the exact title/event detail experience with verified availability, source links, save actions, and a verified preview when one exists. If no verified preview exists, show the title/event page link instead of embedding a guessed clip.
+
 ## Exit criteria for the freeze
 
 The temporary freeze can be lifted when all of the following are true:
