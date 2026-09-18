@@ -3553,6 +3553,12 @@ window.triggerMatch = async function(isSpecificSearch = false) {
     if (!isSpecificSearch && !preflight) {
         try { preflight = await discoverVerifiedExactTMDB(requested); } catch (_) { preflight = null; }
     }
+    if (!isSpecificSearch && !preflight) {
+        ['questionnaire-box','search-box'].forEach(id=>{const el=document.getElementById(id);if(el)el.style.display='block';});
+        ['loading-box','result-box'].forEach(id=>{const el=document.getElementById(id);if(el)el.style.display='none';});
+        window.showToast?.('Keeping your choices exact — source lookup is temporarily unavailable. Try Match again.');
+        return;
+    }
     const alreadySeenSpecific = isSpecificSearch && window.matchPolicy?.known().has(window.matchPolicy.key(typed));
     if (isSpecificSearch && !typed.trim()) return;
     if (alreadySeenSpecific) {
