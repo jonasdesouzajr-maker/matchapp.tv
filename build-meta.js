@@ -33,13 +33,18 @@ window.MATCHAPP_BUILD = '2026.09.17.1';
 /* Search freshness + truthfulness layer. */
 (function () {
   'use strict';
-  const TODAY = '2026-09-17';
+  const TODAY = '2026-09-18';
   const TRENDING = [
-    'Slow Horses Season 6',
-    'Monster: The Lizzie Borden Story',
-    "Stranger Things: Tales from '85 Season 2",
-    'K-drama Day 2026',
-    'Toy Story 5'
+    'Vermelho Sangue',
+    'Amor Sob Vigilância',
+    'Infiltrado na Cozinha',
+    '(Des)controle',
+    'Félix de Amor à Vida',
+    'MobLand',
+    'Best of the Best',
+    'Outlander: Blood of My Blood',
+    'American Horror Story: 13',
+    'Youth'
   ];
   function upsertMeta(name, content) {
     let el = document.querySelector('meta[name="'+name+'"]');
