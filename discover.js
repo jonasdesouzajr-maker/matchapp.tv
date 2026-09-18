@@ -578,12 +578,25 @@ let DISCOVER_ITEMS = [];
 // already-available signal — no guesswork needed.
 const HIGH_RISK_PLATFORMS_DISCOVER = new Set(['globoplay', 'reelshort', 'dramabox', 'shortmax', 'pure flix', 'angel studios']);
 
+function discoverFallbackPoster(item) {
+    if (!item || !item.title) return '';
+    const meta = {
+        cats: item.type ? [item.type] : [],
+        moods: Array.isArray(item.moods) ? item.moods : [],
+        platform: item.platform || '',
+        synopsis: item.synopsis || item.overview || ''
+    };
+    if (typeof generatedCover === 'function') return generatedCover(item.title, meta);
+    if (typeof generateLocalPosterSVG === 'function') return generateLocalPosterSVG(item.title, meta);
+    return '';
+}
+
 async function hydrateDiscoverCard(item, idx) {
     const img = document.getElementById('dp-' + idx);
     const link = document.getElementById('dl-' + idx);
     if (!img) return;
 
-    img.src = (typeof generateLocalPosterSVG === 'function') ? generateLocalPosterSVG(item.title) : '';
+    img.src = discoverFallbackPoster(item);
 
     // Hand-verified art (parity with app.js's render path) always wins —
     // no lookup can beat a known-correct image.
@@ -634,12 +647,12 @@ async function hydrateDiscoverCard(item, idx) {
     // here.
 
     if (verified) {
-        img.onerror = function () { this.onerror = null; if (typeof generateLocalPosterSVG === 'function') this.src = generateLocalPosterSVG(item.title); };
+        img.onerror = function () { this.onerror = null; this.src = discoverFallbackPoster(item); };
         img.src = verified;
     } else if (meta && meta.artwork) {
         img.onerror = function () {
             this.onerror = null;
-            if (typeof generateLocalPosterSVG === 'function') this.src = generateLocalPosterSVG(item.title);
+            this.src = discoverFallbackPoster(item);
         };
         img.src = meta.artwork;
     }
@@ -838,6 +851,113 @@ document.addEventListener('matchapp:langchange', relabelDiscoverCards);
 
 /* ---------- Boot ---------- */
 /* ============================================================
+   MATCHAPP AI WORKSPACE UI
+   Sidebar state, live quota meters and staged thinking progress.
+   These are presentation helpers around the existing quota/chat engine;
+   they never invent allowance values or bypass checkDailyLimit().
+   ============================================================ */
+let aiWorkflowTimer = null;
+
+window.toggleAiSidebar = function(force) {
+    const body = document.body;
+    if (!body) return;
+    const mobile = window.matchMedia('(max-width: 980px)').matches;
+    if (mobile) {
+        const open = typeof force === 'boolean' ? force : !body.classList.contains('ai-sidebar-open');
+        body.classList.toggle('ai-sidebar-open', open);
+        return;
+    }
+    const collapsed = typeof force === 'boolean' ? !force : !body.classList.contains('ai-sidebar-collapsed');
+    body.classList.toggle('ai-sidebar-collapsed', collapsed);
+    try { localStorage.setItem('match_ai_sidebar_collapsed', collapsed ? '1' : '0'); } catch (_) {}
+};
+
+function localAiQuotaStatus() {
+    const today = new Date().toLocaleDateString();
+    const storedDay = localStorage.getItem('match_lastDate');
+    const used = storedDay === today ? Math.max(0, parseInt(localStorage.getItem('match_dailyCount') || '0', 10) || 0) : 0;
+    const limit = 3;
+    return { authenticated:false, anon:true, used, limit, remaining:Math.max(0, limit - used), credits:0 };
+}
+
+function renderAiQuotaStatus(status) {
+    status = status || localAiQuotaStatus();
+    const value = document.getElementById('ai-usage-value');
+    const fill = document.getElementById('ai-usage-fill');
+    const credits = document.getElementById('ai-credit-line');
+    const newChat = document.getElementById('ai-new-chat');
+    const limit = Math.max(0, Number(status.limit) || 0);
+    const remaining = Math.max(0, Number(status.remaining) || 0);
+    const used = Math.max(0, Number.isFinite(Number(status.used)) ? Number(status.used) : Math.max(0, limit - remaining));
+    const paidCredits = Math.max(0, Number(status.credits) || 0);
+    const pct = limit > 0 ? Math.max(0, Math.min(100, (used / limit) * 100)) : 0;
+
+    if (value) value.textContent = limit ? (remaining + ' of ' + limit + ' daily left') : 'Ready';
+    if (fill) fill.style.width = pct + '%';
+    if (credits) {
+        credits.textContent = status.anon
+            ? (remaining > 0 ? 'Guest allowance · sign in for account-based AI credits.' : 'Guest allowance used · sign in or register to continue.')
+            : (paidCredits + ' Ask AI credit' + (paidCredits === 1 ? '' : 's') + ' available after your included allowance.');
+    }
+    if (newChat) {
+        const locked = remaining <= 0 && paidCredits <= 0;
+        newChat.disabled = locked;
+        newChat.title = locked ? 'No AI allowance or Ask AI credits remaining' : 'Start a new conversation';
+    }
+}
+
+async function refreshAiWorkspaceStatus() {
+    let status = null;
+    try {
+        if (typeof window.refreshQuotaStatus === 'function') status = await window.refreshQuotaStatus();
+    } catch (_) {}
+    renderAiQuotaStatus(status || localAiQuotaStatus());
+    return status;
+}
+window.refreshAiWorkspaceStatus = refreshAiWorkspaceStatus;
+
+function setAiWorkflow(progress, label, activeStep) {
+    const fill = document.getElementById('ai-workflow-fill');
+    const text = document.getElementById('ai-thinking-label');
+    if (fill) fill.style.width = Math.max(4, Math.min(100, progress)) + '%';
+    if (text && label) text.textContent = label;
+    ['understand','match','answer'].forEach(step => {
+        const el = document.getElementById('ai-step-' + step);
+        if (el) el.classList.toggle('active', step === activeStep);
+    });
+}
+
+function startAiWorkflow() {
+    if (aiWorkflowTimer) clearInterval(aiWorkflowTimer);
+    let p = 7;
+    setAiWorkflow(p, 'Understanding your request…', 'understand');
+    aiWorkflowTimer = setInterval(() => {
+        p = Math.min(91, p + (p < 40 ? 7 : p < 72 ? 4 : 2));
+        if (p < 40) setAiWorkflow(p, 'Understanding your request…', 'understand');
+        else if (p < 74) setAiWorkflow(p, 'Matching titles and sources…', 'match');
+        else setAiWorkflow(p, 'Composing your answer…', 'answer');
+    }, 520);
+}
+
+function finishAiWorkflow() {
+    if (aiWorkflowTimer) clearInterval(aiWorkflowTimer);
+    aiWorkflowTimer = null;
+    setAiWorkflow(100, 'Answer ready', 'answer');
+}
+window.startAiWorkflow = startAiWorkflow;
+window.finishAiWorkflow = finishAiWorkflow;
+
+function initAiWorkspace() {
+    try {
+        if (window.matchMedia('(min-width: 981px)').matches && localStorage.getItem('match_ai_sidebar_collapsed') === '1') {
+            document.body.classList.add('ai-sidebar-collapsed');
+        }
+    } catch (_) {}
+    refreshAiWorkspaceStatus();
+}
+document.addEventListener('DOMContentLoaded', initAiWorkspace);
+
+/* ============================================================
    CONVERSATIONAL CHAT ENGINE
    Ask AI is now a real multi-turn conversation rather than a
    one-shot search. Each thread is saved to localStorage so a user
@@ -870,6 +990,11 @@ function persistCurrentThread() {
 function newThreadId() { return 't' + Date.now() + Math.random().toString(36).slice(2, 7); }
 
 window.startNewChat = function () {
+    const btn = document.getElementById('ai-new-chat');
+    if (btn && btn.disabled) {
+        window.location.href = '/pricing/pricing.html?from=ask-ai#credits';
+        return;
+    }
     currentThread = null;
     const log = document.getElementById('chat-log');
     if (log) log.innerHTML = '';
@@ -880,6 +1005,8 @@ window.startNewChat = function () {
     history.replaceState(null, '', '/discover.html');
     document.title = 'Talk to Our AI Concierge — MatchApp';
     renderThreadList();
+    refreshAiWorkspaceStatus();
+    if (window.matchMedia('(max-width: 980px)').matches) window.toggleAiSidebar(false);
 };
 
 window.openThread = function (id) {
@@ -905,6 +1032,7 @@ window.openThread = function (id) {
         }
     });
     renderThreadList();
+    if (window.matchMedia('(max-width: 980px)').matches) window.toggleAiSidebar(false);
     const log2 = document.getElementById('chat-log');
     if (log2) log2.scrollIntoView({ behavior: 'smooth', block: 'start' });
 };
@@ -1004,8 +1132,10 @@ async function askAndRender(question) {
 
     // Every turn costs one from the daily allowance, same as a match.
     if (typeof checkDailyLimit === 'function' && !(await checkDailyLimit('ask_ai'))) {
+        refreshAiWorkspaceStatus();
         return;
     }
+    refreshAiWorkspaceStatus();
 
     if (!currentThread) {
         currentThread = { id: newThreadId(), title: question.slice(0, 60), turns: [], createdAt: Date.now(), updatedAt: Date.now() };
@@ -1017,6 +1147,7 @@ async function askAndRender(question) {
     // Auto-scroll to the loading animation so the user sees work happening.
     if (loadEl) {
         loadEl.style.display = 'block';
+        startAiWorkflow();
         if (!keepConversationAtStart()) setTimeout(() => loadEl.scrollIntoView({ behavior: 'smooth', block: 'center' }), 80);
     }
 
@@ -1067,7 +1198,10 @@ async function askAndRender(question) {
         });
     } catch (_) {}
 
-    if (loadEl) loadEl.style.display = 'none';
+    if (loadEl) {
+        finishAiWorkflow();
+        setTimeout(() => { loadEl.style.display = 'none'; }, 220);
+    }
 
     const offlineBadge = document.getElementById('discover-offline-badge');
     if (offlineBadge) offlineBadge.style.display = payload._live ? 'none' : 'inline-flex';
@@ -1112,6 +1246,7 @@ async function askAndRender(question) {
     currentThread.turns.push({ role: 'assistant', text: payload.answer, results: newItems, ts: Date.now() });
     currentThread.updatedAt = Date.now();
     persistCurrentThread();
+    refreshAiWorkspaceStatus();
 
     // Keep the follow-up box in view so continuing the conversation is obvious.
     const row = document.querySelector('.newsearch-row');
