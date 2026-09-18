@@ -1,0 +1,3 @@
+# Index-quality hardening for generated RSS news wrappers.
+/news/articles/*
+  X-Robots-Tag: noindex, follow
