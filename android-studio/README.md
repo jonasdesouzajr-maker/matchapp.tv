@@ -1,54 +1,69 @@
-# MatchApp TV — Android Studio project
+# MatchApp Ai — Android Studio (Quail-ready)
 
-Ad-free Android app for Google Play. Open this folder in **Android Studio** (File → Open) and wait for Gradle to sync.
+This folder is one self-contained Android Studio project with **two separate installable Android apps**. Both render the current production MatchApp experience through a hardened Android WebView shell, so Android stays aligned with MatchApp without copying or altering the website source.
 
-There is **no AdMob / AdSense SDK**. The app blocks ad networks and tells MatchApp.tv to hide every ad slot.
+## Modules
 
-## What you get
+### MatchApp Ai — `:app`
 
-- Package name: `tv.matchapp.app`
-- App name: MatchApp TV
-- Min Android 7 (API 24), target API 35
-- Full MatchApp: Ask AI, matches, Kids Mode, profile, where to watch
-- Ads stripped (site + in-app blocker)
-- Offline screen, pull-to-refresh, Android back, Google sign-in, photo picker
-- Deep links for `https://matchapp.tv/...`
+- Application ID: `tv.matchapp.app`
+- Installed name: **MatchApp Ai**
+- Opens `https://matchapp.tv/`
+- Keeps the existing Android application ID for upgrade continuity
+- **Kids Mode is not available inside this Android app**
+- Direct links and in-app navigation to `/kids/` are blocked and returned to the standard MatchApp home
+- Kids entry points are hidden inside the Android shell only
+- Ads are disabled in the Android shell
+- Supports authenticated sessions, Android back, pull-to-refresh, fullscreen media, file selection and offline state
 
-## Open in Android Studio
+### MatchApp Ai KIDS — `:kidsapp`
 
-1. Install [Android Studio](https://developer.android.com/studio) (Koala / Ladybug or newer).
-2. File → Open → select this `android-studio` folder (the one that contains `settings.gradle.kts`).
-3. Let it download the Android SDK if asked (Platform 35 + Build-Tools).
-4. Run on a phone or emulator with the green Play button.
+- Application ID: `tv.matchapp.kids`
+- Installed name: **MatchApp Ai KIDS**
+- Opens `https://matchapp.tv/kids/`
+- Uses a separate package so both apps can be installed on the same device
+- MatchApp navigation is restricted to the Kids surface and its child pages
+- The website's **Grown-ups** exit and install/PWA controls are hidden inside this Android shell
+- Non-Kids MatchApp routes are blocked and return to the Kids home
+- Privacy/Terms and third-party viewing destinations open outside the Kids shell
+- Ads are disabled in the Android shell
+- Uses the existing MatchApp Kids visual identity for launcher/splash presentation
 
-## Ship to Google Play Console
+## Android Studio Quail
 
-Follow `play/PLAY_CONSOLE.md`. You will:
+The project intentionally keeps the already proven MatchApp Android toolchain:
 
-1. Build a **signed Android App Bundle** (.aab) — Play no longer accepts APKs for new apps.
-2. Create the app listing, point privacy to https://matchapp.tv/privacy.html
-3. Declare **no ads**
-4. Complete a closed test with 12+ testers before production (current Play rule)
+- Android Gradle Plugin 8.7.3
+- Gradle 8.9
+- Kotlin 2.0.21
+- JDK 17
+- compileSdk 35
+- targetSdk 35
+- minSdk 24 (Android 7.0+)
 
-Store art is in `play/`:
+Open the repository's **`android-studio` folder** in Android Studio Quail. Let Gradle sync, then choose either the `app` or `kidsapp` run configuration.
 
-- `icon-512.png` — high-res icon
-- `feature-graphic.png` — 1024×500 banner
-- `screenshots/` — phone captures (add more from a real device if you can)
+## Build
 
-## Signing
+1. File → Open → choose `android-studio` (the folder containing `settings.gradle.kts`).
+2. Wait for Gradle sync.
+3. Select **app** for MatchApp Ai or **kidsapp** for MatchApp Ai KIDS.
+4. Run on an emulator/device or use Build → Generate Signed App Bundle or APK for release.
+5. Keep signing keystores and passwords outside GitHub.
 
-Never commit a keystore. Create one in Android Studio the first time you generate a signed bundle, and keep the password somewhere safe. After Play App Signing is on, copy the **SHA-256 certificate fingerprint** into `play/assetlinks.json` and publish that file at:
+## Separation rule
 
-`https://matchapp.tv/.well-known/assetlinks.json`
+**Do not move the Android Kids filtering into the production website.**
 
-until then, deep links still open the app from a Play install, they just will not auto-verify.
+The website must continue serving its existing desktop, mobile and TV experiences, including Kids Mode. The separation between MatchApp Ai and MatchApp Ai KIDS is enforced only by these Android modules.
 
-## Ads
+## Google Play later
 
-The website still shows ads in a normal browser. This Android package does not:
+Create separate Play Console apps for:
 
-- User-Agent includes `MatchAppTVAndroid/1.0`
-- MatchApp skips AdSense for that UA
-- The WebView blocks googlesyndication / doubleclick requests
-- Leftover ad slots are hidden with CSS
+- `tv.matchapp.app` — MatchApp Ai
+- `tv.matchapp.kids` — MatchApp Ai KIDS
+
+The existing `play/` folder is for the main MatchApp Ai listing. The old `play/screenshots/04-kids.png` image should **not** be used in the main listing now; it may be reused as reference material for the Kids listing.
+
+After final Play signing certificates exist, Digital Asset Links can be updated to verify both package IDs. That website-side step is intentionally **not performed here**, because this change is Android-only.
