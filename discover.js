@@ -408,6 +408,9 @@ async function enrichDiscoverMedia(item) {
             year: item.year || '',
             kind: kind || ''
         });
+        if (meta && window.MatchAppCatalogMedia.refreshExact) {
+            meta = await window.MatchAppCatalogMedia.refreshExact(meta);
+        }
         if (!meta && window.MatchAppCatalogMedia.lookupLive) {
             meta = await window.MatchAppCatalogMedia.lookupLive(item.title, {
                 year: item.year || '',
@@ -572,7 +575,7 @@ function discoverCardHTML(item, idx) {
     const cinemaOnly = item?._viewing?.mode === 'cinema';
     const verifiedStream = item?._viewing?.mode === 'stream';
     const watchLabel = cinemaOnly
-        ? discoverLabel('discover.titlePage', '🎟️ In Cinemas · Title Page')
+        ? discoverLabel('discover.cinemaShowtimes', '🎟️ Cinemas & showtimes')
         : (verifiedStream
             ? (isAudio ? discoverLabel('res.listennow', '🎧 Listen Now') : discoverLabel('discover.watchNow', '▶ Watch Now'))
             : discoverLabel('discover.whereToWatch', 'Where to Watch'));
@@ -782,19 +785,26 @@ async function hydrateDiscoverCard(item, idx) {
 
     if (link) {
         const isAudio = /podcast|album|music|audiobook/i.test(item.type || '');
-        const url = discoverWatchUrl(item);
-        link.href = url || '#';
         const cinemaOnly = item?._viewing?.mode === 'cinema';
         const verifiedStream = item?._viewing?.mode === 'stream';
+        const url = verifiedStream ? discoverWatchUrl(item) : '';
+        link.href = url || '#discover-availability-' + idx;
         link.textContent = cinemaOnly
-            ? discoverLabel('discover.titlePage', '🎟️ In Cinemas · Title Page')
+            ? discoverLabel('discover.cinemaShowtimes', '🎟️ Cinemas & showtimes')
             : (verifiedStream
                 ? (isAudio ? discoverLabel('res.listennow', '🎧 Listen Now') : discoverLabel('discover.watchNow', '▶ Watch Now'))
                 : discoverLabel('discover.whereToWatch', 'Where to Watch'));
         link.classList.toggle('is-cinema', cinemaOnly);
-        if (!url) {
-            link.setAttribute('aria-disabled', 'true');
-            link.addEventListener('click', e => e.preventDefault(), { once: true });
+        if (!verifiedStream) {
+            link.removeAttribute('target');
+            link.removeAttribute('rel');
+            link.addEventListener('click', e => {
+                e.preventDefault();
+                const host=document.getElementById('discover-availability-' + idx);
+                host?.scrollIntoView({behavior:'smooth',block:'center'});
+                host?.classList.add('is-highlighted');
+                setTimeout(()=>host?.classList.remove('is-highlighted'),1400);
+            });
         }
         item._url = url || '';
     }
