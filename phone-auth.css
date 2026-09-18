@@ -1,0 +1,53 @@
+/* MatchApp phone OTP auth — isolated to the existing auth modal. */
+.phone-auth-entry[hidden],
+.phone-auth-panel[hidden]{display:none!important}
+
+.phone-auth-entry{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  width:100%;min-height:48px;margin-top:10px;padding:12px 14px;
+  border:1px solid rgba(229,193,88,.5);border-radius:12px;
+  background:linear-gradient(180deg,rgba(229,193,88,.12),rgba(229,193,88,.05));
+  color:#f7eed2;font:700 14px/1.2 Inter,system-ui,sans-serif;
+  cursor:pointer;transition:transform .18s ease,border-color .18s ease,background .18s ease,box-shadow .18s ease
+}
+.phone-auth-entry:hover{
+  transform:translateY(-1px);border-color:#E5C158;
+  background:linear-gradient(180deg,rgba(229,193,88,.18),rgba(229,193,88,.08));
+  box-shadow:0 8px 24px rgba(229,193,88,.12)
+}
+.phone-auth-entry:focus-visible{outline:3px solid rgba(229,193,88,.48);outline-offset:3px}
+.phone-auth-entry svg{width:19px;height:19px;flex:0 0 auto}
+
+.phone-auth-panel{
+  margin-top:14px;padding:16px;border:1px solid rgba(229,193,88,.26);
+  border-radius:14px;background:rgba(8,5,16,.58)
+}
+.phone-auth-panel h4{margin:0 0 6px;color:#fff;font:700 18px/1.2 Outfit,Inter,system-ui,sans-serif}
+.phone-auth-panel p{margin:0 0 13px;color:#bfb5cc;font:500 12.5px/1.55 Inter,system-ui,sans-serif}
+.phone-auth-field{
+  width:100%;box-sizing:border-box;padding:14px 15px;margin:0 0 10px;
+  border-radius:11px;border:1px solid rgba(229,193,88,.7);background:#050408;color:#fff;
+  font:600 15px/1.2 Inter,system-ui,sans-serif
+}
+.phone-auth-field:focus{outline:2px solid rgba(229,193,88,.4);outline-offset:1px;border-color:#E5C158}
+.phone-auth-code{font-size:20px;letter-spacing:.22em;text-align:center;font-variant-numeric:tabular-nums}
+.phone-auth-action{
+  width:100%;min-height:46px;border:0;border-radius:11px;padding:12px 14px;
+  background:linear-gradient(180deg,#f1d370,#c99a2d);color:#24152f;
+  font:800 14px/1 Inter,system-ui,sans-serif;cursor:pointer
+}
+.phone-auth-action:disabled{opacity:.55;cursor:wait}
+.phone-auth-secondary{
+  display:block;width:100%;margin-top:8px;padding:8px;border:0;background:transparent;
+  color:#b8aec6;font:650 12.5px/1.3 Inter,system-ui,sans-serif;cursor:pointer
+}
+.phone-auth-secondary:hover{color:#E5C158}
+.phone-auth-status{margin:11px 0 0!important;padding:9px 10px;border-radius:9px;text-align:center}
+.phone-auth-status[data-state="ok"]{color:#8bf3b5;background:rgba(37,211,102,.09)}
+.phone-auth-status[data-state="error"]{color:#ff9ba7;background:rgba(255,82,82,.09)}
+.phone-auth-status[data-state="info"]{color:#efe8f6;background:rgba(229,193,88,.08)}
+
+@media(max-width:560px){
+  .phone-auth-panel{padding:13px}
+  .phone-auth-field{font-size:16px}
+}
