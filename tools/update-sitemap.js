@@ -3,8 +3,9 @@
    Rebuild sitemap.xml from the core pages plus whatever the generators
    actually produced.
 
-   Reads generator-owned URL manifests rather than walking the filesystem, so
-   stale directories cannot leak back into the sitemap.
+   Reads generator-owned URL manifests for catalog sections. News articles are
+   intentionally derived from news/articles/*/index.html so every public article
+   that actually exists on disk is represented and sitemap drift cannot hide it.
 
    Run: node tools/update-sitemap.js
    ============================================================ */
@@ -44,6 +45,20 @@ function readList(file) {
 function readObject(file) {
     const value = readList(file);
     return value && !Array.isArray(value) && typeof value === 'object' ? value : {};
+}
+
+function newsUrlsFromDisk() {
+    const articleRoot = path.join(ROOT, 'news', 'articles');
+    const urls = [`${SITE}/news/`];
+    if (!fs.existsSync(articleRoot)) return urls;
+
+    for (const entry of fs.readdirSync(articleRoot, { withFileTypes: true }).sort((a,b) => a.name.localeCompare(b.name))) {
+        if (!entry.isDirectory()) continue;
+        const indexFile = path.join(articleRoot, entry.name, 'index.html');
+        if (!fs.existsSync(indexFile)) continue;
+        urls.push(`${SITE}/news/articles/${entry.name}/`);
+    }
+    return urls;
 }
 
 function validLastmod(value, fallback) {
@@ -97,11 +112,11 @@ function main() {
     const roku  = readList('roku-urls.json').map(loc => ({loc,freq:'weekly',pri:'0.7'}));
 
     const newsMeta = readObject('news-sitemap-meta.json');
-    const news  = readList('news-urls.json').map(loc => ({
+    const news  = newsUrlsFromDisk().map(loc => ({
         loc,
         freq: loc.endsWith('/news/') ? 'hourly' : 'daily',
         pri: loc.endsWith('/news/') ? '0.8' : '0.6',
-        lastmod: validLastmod(newsMeta[loc], now)
+        lastmod: newsMeta[loc] ? validLastmod(newsMeta[loc], now) : undefined
     }));
 
     const all = [...CORE, ...seo, ...watch, ...kids, ...events, ...roku, ...news];
