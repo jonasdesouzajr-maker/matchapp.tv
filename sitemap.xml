@@ -2,13 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://matchapp.tv/</loc>
-        <lastmod>2026-09-17T22:58:21+00:00</lastmod>
+        <lastmod>2026-09-18T06:57:18+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/discover.html</loc>
-        <lastmod>2026-09-17T22:44:38+00:00</lastmod>
+        <lastmod>2026-09-18T06:57:50+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.9</priority>
     </url>
@@ -908,9 +908,63 @@
     </url>
     <url>
         <loc>https://matchapp.tv/news/</loc>
-        <lastmod>2026-09-18T01:14:52+00:00</lastmod>
+        <lastmod>2026-09-18T07:21:43+00:00</lastmod>
         <changefreq>hourly</changefreq>
         <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/news/articles/8216-resident-evil-8217-what-critics-are-saying-about-zach-cregger-8217-s-new-ho-3636c4/</loc>
+        <lastmod>2026-09-18T07:21:43+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/news/articles/johnny-marr-guitars-sell-for-almost-4m-at-auction-1fe59c/</loc>
+        <lastmod>2026-09-18T07:21:43+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/news/articles/carly-rae-jepsen-esta-em-paz-em-ser-da-classe-media-do-pop-encontrei-meu-ponto-i-046e8c/</loc>
+        <lastmod>2026-09-18T07:21:43+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/news/articles/ana-castela-luan-santana-panda-especialistas-sugerem-atracoes-sertanejas-para-o--2cddc1/</loc>
+        <lastmod>2026-09-18T07:21:43+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/news/articles/uk-s-dismal-eurovision-song-choices-to-be-examined-by-mps-f77d57/</loc>
+        <lastmod>2026-09-18T07:21:43+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/news/articles/8216-bad-lieutenant-tokyo-8217-review-shun-oguri-and-lily-james-in-a-meandering--b05b12/</loc>
+        <lastmod>2026-09-18T07:21:43+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/news/articles/g1-completa-20-anos-saiba-como-tudo-comecou-0de62c/</loc>
+        <lastmod>2026-09-18T07:21:43+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/news/articles/8216-resident-evil-8217-racing-toward-healthy-box-office-haul-for-zach-cregger-8-fb63ca/</loc>
+        <lastmod>2026-09-18T07:21:43+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/news/articles/zara-larsson-criticises-white-house-for-using-her-song-in-deportation-video-ea6f2a/</loc>
+        <lastmod>2026-09-18T07:21:43+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/news/articles/tokyo-film-festival-unveils-gala-and-anime-selections-featuring-cate-blanchett-t-4980b4/</loc>
