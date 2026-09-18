@@ -48,7 +48,7 @@ jobs:
           grep -Fq 'lookupLive' catalog-media.js
           grep -Fq 'tmdbDetails' tmdb.js
           grep -Fq 'tmdbDiscover' tmdb.js
-          grep -Fq "MatchNotifications.followTitle" catalog-media.js
+          grep -Fq "MatchNotifications?.followTitle" catalog-media.js
           grep -Fq "addEventListener('push'" sw.js
           grep -Fq 'Resident Evil (2026)' where-to-watch/resident-evil-2026/index.html
           grep -Fq 'Selected criteria are hard requirements' app.js
