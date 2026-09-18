@@ -130,6 +130,25 @@
     };
 
     /**
+     * Broad source-backed discovery used only when the curated exact shelf is
+     * empty. The server returns real TMDB identities; the caller must still
+     * verify details against every selected MatchApp criterion before use.
+     */
+    window.tmdbDiscover = async function (criteria) {
+        if (!window.supabaseClient) return [];
+        criteria = criteria || {};
+        const key='discover::'+JSON.stringify(criteria);
+        if (key in CACHE) return CACHE[key];
+        let out=[];
+        try {
+            const {data,error}=await window.requestTMDB({discover:criteria,lang:'en-US'});
+            if(!error&&Array.isArray(data?.results))out=data.results.filter(r=>r&&Number.isSafeInteger(r.tmdbId)&&['movie','tv'].includes(r.kind)&&r.adult!==true);
+        } catch (_) { out=[]; }
+        CACHE[key]=out;
+        return out;
+    };
+
+    /**
      * Scores a candidate. Returns 0 to reject outright.
      *
      * Artwork requires an exact normalized title, the requested media type
