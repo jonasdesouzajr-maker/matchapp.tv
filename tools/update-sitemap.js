@@ -3,9 +3,9 @@
    Rebuild sitemap.xml from the core pages plus whatever the generators
    actually produced.
 
-   Reads generator-owned URL manifests for catalog sections. News articles are
-   intentionally derived from news/articles/<slug>/index.html so every public article
-   that actually exists on disk is represented and sitemap drift cannot hide it.
+   Reads generator-owned URL manifests for catalog sections. The curated news hub
+   is indexable; RSS-derived source wrappers stay out of the canonical sitemap until
+   they contain substantial original MatchApp editorial content.
 
    Run: node tools/update-sitemap.js
    ============================================================ */
