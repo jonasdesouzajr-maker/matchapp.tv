@@ -48,7 +48,8 @@
     if(!vp||!track||vp.dataset.matchappAutoplayFix==='5')return;
     vp.dataset.matchappAutoplayFix='5';
     holdLegacy(vp);
-    vp.style.touchAction='pan-y';
+    const coarse=!!(window.matchMedia&&window.matchMedia('(pointer: coarse)').matches);
+    vp.style.touchAction=coarse?'pan-y':'pan-x pan-y';
     vp.style.overscrollBehaviorX='contain';
 
     const canFlow=()=>!reduced();
@@ -104,6 +105,8 @@
        natural left AND right swipes. touch-action:pan-y preserves normal
        vertical page scrolling. */
     vp.addEventListener('pointerdown',e=>{
+      // Native touch scrolling wins on phones. Pointer timeline scrubbing is desktop/stylus only.
+      if(coarse||e.pointerType==='touch')return;
       if(e.button!=null&&e.button!==0)return;
       const anim=runningAnimation(track);
       if(!anim||typeof anim.currentTime!=='number')return;
