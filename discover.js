@@ -715,7 +715,9 @@ async function hydrateDiscoverCard(item, idx) {
         item.realGenres = meta.genres.slice(0, 8);
     } else if (richMeta?.genre) {
         item.realGenres = [String(richMeta.genre)];
-    } else if (!item.realGenres?.length && typeof fetchTitleMeta === 'function' && visualType && !skipLiveLookup) {
+    } else if (!item.realGenres?.length && typeof fetchTitleMeta === 'function' &&
+               /series|tv|show|drama|anime|novela|documentary/i.test(rawType) &&
+               !/movie|film/i.test(rawType) && !skipLiveLookup) {
         try {
             const tvMeta = await fetchTitleMeta(item.title, { year: item.year || '' });
             if (Array.isArray(tvMeta?.genres) && tvMeta.genres.length) item.realGenres = tvMeta.genres.slice(0, 8);
