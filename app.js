@@ -1703,7 +1703,7 @@ window.handleEmailSignup = async function() {
     msgEl.style.display = 'block'; msgEl.style.color = '#fff'; msgEl.style.background = 'rgba(229,193,88,0.2)'; msgEl.innerText = "Creating account...";
     
     try {
-        const { error } = await supabaseClient.auth.signUp({ email, password });
+        const { error } = await supabaseClient.auth.signUp({ email, password, options: { data: { matchapp_first_time_onboarding_v1: true } } });
         if(error) { 
             msgEl.style.color = '#ff5252'; msgEl.style.background = 'rgba(255,0,0,0.1)'; msgEl.innerText = error.message; 
         } else { 
@@ -1741,22 +1741,43 @@ window.handleEmailLogin = async function() {
 // 🔵 GOOGLE OAUTH — restored here because it was never carried over when the
 // auth system was rebuilt directly into app.js; the old implementation still
 // existed in auth.js, but that file isn't loaded by index.html at all anymore.
-window.loginWithGoogle = async function() {
+async function loginWithOAuthProvider(provider, label) {
     const msgEl = document.getElementById('auth-message');
     if (!supabaseClient) {
         if (msgEl) { msgEl.style.display = 'block'; msgEl.style.color = '#ff5252'; msgEl.style.background = 'rgba(255,0,0,0.1)'; msgEl.innerText = "Database connection offline."; }
         return;
     }
     const { error } = await supabaseClient.auth.signInWithOAuth({
-        provider: 'google',
+        provider,
         options: { redirectTo: window.location.origin + '/index.html' }
     });
     if (error && msgEl) {
-        msgEl.style.display = 'block'; msgEl.style.color = '#ff5252'; msgEl.style.background = 'rgba(255,0,0,0.1)'; msgEl.innerText = "Google Login Error: " + error.message;
+        msgEl.style.display = 'block'; msgEl.style.color = '#ff5252'; msgEl.style.background = 'rgba(255,0,0,0.1)'; msgEl.innerText = label + " Login Error: " + error.message;
     }
-    // On success, Supabase redirects the browser to Google and back — no
-    // further action needed here; onAuthStateChange picks up the new session.
-};
+}
+window.loginWithGoogle = () => loginWithOAuthProvider('google','Google');
+window.loginWithApple = () => loginWithOAuthProvider('apple','Apple');
+
+async function syncAppleSigninAvailability() {
+    const button = document.querySelector('.apple-signin-btn');
+    if (!button) return;
+    button.hidden = true;
+    try {
+        const response = await fetch(SUPABASE_URL + '/auth/v1/settings', {
+            headers: { apikey: SUPABASE_ANON_KEY },
+            cache: 'no-store'
+        });
+        const settings = response.ok ? await response.json() : null;
+        const enabled = settings?.external?.apple === true;
+        button.hidden = !enabled;
+        button.disabled = !enabled;
+        button.setAttribute('aria-hidden', enabled ? 'false' : 'true');
+    } catch (_) {
+        button.hidden = true;
+    }
+}
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', syncAppleSigninAvailability);
+else syncAppleSigninAvailability();
 
 window.doLogout = async function() {
     ++profileHydrationEpoch;
