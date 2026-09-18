@@ -609,8 +609,8 @@ function discoverCardHTML(item, idx) {
             ${metaLine}
             ${facts}
             ${categories}
-            <p class="discover-synopsis" data-locale-painted="${lang}">${synopsis}</p>
             <div id="discover-availability-${idx}" class="matchapp-card-availability" hidden></div>
+            <p class="discover-synopsis" data-locale-painted="${lang}">${synopsis}</p>
             <div id="discover-preview-${idx}" class="discover-card-preview" hidden></div>
             <div class="discover-actions">
                 <a id="dl-${idx}" class="gold-btn discover-play${cinemaOnly ? ' is-cinema' : ''}" href="#" target="_blank" rel="noopener">${watchLabel}</a>
