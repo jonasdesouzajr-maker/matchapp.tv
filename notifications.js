@@ -3,7 +3,8 @@
 'use strict';
 const VAPID_PUBLIC='BKGucCWkS-YsS6g4HnM9DYTmm1Thj-PxxVkz9hM09tGs29uABDXQgYbnF0Zooi7AnHFv7KlbPSbPErE4J76MOZs';
 let state={notifications:[],unread:0,preferences:{inApp:true,device:false,email:false,releases:true,purchases:true,friends:true,availability:true},watches:[]};
-let button=null,panel=null,poll=null,busy=false;
+let button=null,panel=null,poll=null,busy=false,markingRead=false;
+const desktopHover=()=>!!window.matchMedia?.('(hover: hover) and (pointer: fine)').matches;
 const $=s=>document.querySelector(s);
 const esc=s=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const signed=()=>window.isUserLoggedIn===true;
@@ -39,8 +40,9 @@ function mount(){
   panel.innerHTML='<header><div><small>YOUR MATCHAPP</small><h2>Notifications</h2></div><button type="button" class="matchapp-notification-close" aria-label="Close">×</button></header><div class="matchapp-notification-toolbar"><button type="button" data-notify-read-all>Mark all read</button><a href="/updates.html">What’s new</a></div><div class="matchapp-notification-list"></div><details class="matchapp-notification-settings"><summary>Notification settings</summary><div class="matchapp-notification-prefs"></div></details>';
   document.body.appendChild(panel);
   button.addEventListener('click',()=>toggle());
+  button.addEventListener('pointerenter',()=>{if(desktopHover()&&state.unread>0)void markAllRead();});
   panel.querySelector('.matchapp-notification-close').addEventListener('click',()=>close());
-  panel.querySelector('[data-notify-read-all]').addEventListener('click',async()=>{if(signed())await change('read_all',{});localReleaseMarkAll();render();});
+  panel.querySelector('[data-notify-read-all]').addEventListener('click',()=>{void markAllRead();});
   document.addEventListener('click',e=>{if(!panel.hidden&&!panel.contains(e.target)&&!button.contains(e.target))close();});
   render();
 }
@@ -57,6 +59,32 @@ function categoryEnabled(kind){
 function fmt(date){try{return new Intl.DateTimeFormat(window.MATCH_LANG||'en',{dateStyle:'medium',timeStyle:'short'}).format(new Date(date));}catch(_){return'';}}
 function localReleaseMark(item){if(item?.localRelease&&item.version)try{localStorage.setItem(releaseSeenKey(item.version),'1')}catch(_){}}
 function localReleaseMarkAll(){state.notifications.filter(n=>n.localRelease).forEach(localReleaseMark);}
+async function markAllRead(){
+ if(markingRead||state.unread<=0)return;
+ markingRead=true;
+ const previous=state.notifications;
+ const now=new Date().toISOString();
+ // Clear the visual unread state immediately. Server truth is reconciled below.
+ localReleaseMarkAll();
+ state.notifications=(state.notifications||[]).map(item=>
+   item.localRelease||item.readAt?item:{...item,readAt:now}
+ );
+ render();
+ try{
+   if(signed()){
+     const data=await rpc('read_all',{});
+     state={...state,...data};
+   }
+ }catch(_){
+   // If persistence fails, restore the previous local state and refresh from server.
+   state.notifications=previous;
+   try{await refresh();}catch(__){render();}
+   window.showToast?.('Could not mark notifications as read right now.',true);
+ }finally{
+   markingRead=false;
+   render();
+ }
+}
 async function clickItem(item){
  localReleaseMark(item);
  if(!item.localRelease&&signed()&&!item.readAt)await change('read',{id:item.id},false);
@@ -68,8 +96,9 @@ function render(){
  const unread=visible.filter(n=>!n.readAt&&!n.localRelease).length+visible.filter(n=>n.localRelease&&localStorage.getItem(releaseSeenKey(n.version))!=='1').length;
  state.unread=unread;
  const count=button.querySelector('.matchapp-notification-count');
- count.hidden=!unread;count.textContent=unread>99?'99+':String(unread||'');
+ count.hidden=unread===0;count.textContent=unread>99?'99+':String(unread||'');
  button.classList.toggle('has-notification',unread>0);
+ button.setAttribute('aria-label',unread?`Notifications, ${unread} unread`:'Notifications');
  const list=panel.querySelector('.matchapp-notification-list');list.replaceChildren();
  if(!visible.length){const empty=document.createElement('p');empty.className='matchapp-notification-empty';empty.textContent=signed()?'You’re all caught up.':'Sign in to follow titles, purchases and Match Together invitations.';list.appendChild(empty);}
  visible.forEach(item=>{
@@ -156,7 +185,7 @@ async function followTitle(meta,region){
  }catch(_){window.showToast?.('Could not follow this title right now.',true);return false;}
 }
 function authChanged(){refresh();if(poll)clearInterval(poll);poll=setInterval(()=>{if(!document.hidden)refresh();},60000);}
-window.MatchNotifications={refresh,open,close,followTitle,enableDevice,savePrefs};
+window.MatchNotifications={refresh,open,close,followTitle,enableDevice,savePrefs,markAllRead};
 document.addEventListener('matchapp:authchange',authChanged);
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)refresh();});
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>{mount();setTimeout(refresh,800);});else{mount();setTimeout(refresh,800);}
