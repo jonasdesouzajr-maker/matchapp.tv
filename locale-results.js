@@ -127,7 +127,7 @@
 
   function decorateCriteria() {
     const state = window.getMatchCriteria?.() || {};
-    const map = { 'q-category': 'cat', 'q-platform': 'plat', 'q-mood': 'mood', 'q-vibe': 'vibe', 'q-decade': 'decade', 'q-rating': 'rating' };
+    const map = { 'q-category': 'cat', 'q-platform': 'plat', 'q-genre': 'genre', 'q-mood': 'mood', 'q-vibe': 'vibe', 'q-decade': 'decade', 'q-rating': 'rating' };
     document.querySelectorAll('.crit-collapsible').forEach(wrap => {
       const sel = wrap.querySelector('select');
       const key = map[sel && sel.id];
