@@ -21,13 +21,12 @@
    tmdb-proxy. That also gets us edge caching, so the same cover is not fetched
    again for every visitor who draws the same title.
 
-   WHAT THIS DELIBERATELY DOES NOT DO
+   VERIFIED DETAIL LOOKUPS
 
-   Streaming availability. TMDB has a providers endpoint and it is regional,
-   frequently stale and licence-dependent. MatchApp only ever shows a platform
-   as verified when a canonical source confirms it, and a maybe-stale third
-   party is not that. Artwork, titles, years, overviews — nothing about where
-   to watch.
+   Search establishes an exact numeric TMDB identity first. Only after that,
+   tmdbDetails may request source genres, official preview media, theatrical
+   dates and regional provider data supplied by TMDB/JustWatch. No provider is
+   inferred from a fuzzy title search or from an AI-generated platform name.
    ============================================================ */
 
 (function () {
@@ -177,6 +176,25 @@
 
         return score;
     }
+
+    /**
+     * Loads verified detail data only after tmdbLookup established the exact
+     * numeric identity. Used for real genres, official preview and regional
+     * viewing/theatrical metadata on titles not pre-ingested yet.
+     */
+    window.tmdbDetails = async function (tmdbId, kind) {
+        if (!Number.isSafeInteger(tmdbId) || tmdbId <= 0 || !['movie','tv'].includes(kind) || !window.supabaseClient) return null;
+        const cacheKey = `details::${tmdbId}::${kind}`;
+        if (cacheKey in CACHE) return CACHE[cacheKey];
+        let out = null;
+        try {
+            const { data, error } = await window.requestTMDB({ tmdb_id: tmdbId, kind, lang: 'en-US', details: true });
+            const r = data?.results?.[0];
+            if (!error && r && r.tmdbId === tmdbId && r.kind === kind && r.adult !== true) out = r;
+        } catch (_) { out = null; }
+        CACHE[cacheKey] = out;
+        return out;
+    };
 
     /** Cover URL only — the common case, and what getRealCoverImage wants. */
     window.tmdbCover = async function (title, hints) {
