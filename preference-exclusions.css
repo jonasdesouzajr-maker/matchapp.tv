@@ -1,0 +1,10 @@
+.matchapp-exclusion-box{margin:26px 0 8px;border:1px solid rgba(229,193,88,.28);border-radius:18px;background:linear-gradient(145deg,rgba(62,35,91,.38),rgba(13,10,27,.72));overflow:hidden}
+.matchapp-exclusion-box>summary{cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:18px 20px;color:#fff;font-weight:900}
+.matchapp-exclusion-box>summary::-webkit-details-marker{display:none}.matchapp-exclusion-box[open]>summary{border-bottom:1px solid rgba(255,255,255,.09)}
+.matchapp-exclusion-copy{padding:16px 20px 2px;color:#bdb4ca;line-height:1.6;margin:0}.matchapp-exclusion-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:16px 20px 22px}
+.matchapp-exclusion-group{background:rgba(0,0,0,.2);border:1px solid rgba(255,255,255,.08);border-radius:15px;padding:15px}.matchapp-exclusion-group h5{margin:0 0 6px;color:#f7e7ae;font-size:14px}.matchapp-exclusion-group p{margin:0 0 12px;color:#8f85a8;font-size:12.5px;line-height:1.5}
+.matchapp-exclusion-chips{display:flex;flex-wrap:wrap;gap:8px;max-height:220px;overflow:auto;padding-right:3px}.matchapp-exclusion-chip{border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.045);color:#d9d3e5;border-radius:999px;padding:8px 11px;font:inherit;font-size:12.5px;font-weight:750;cursor:pointer;transition:.18s ease}
+.matchapp-exclusion-chip:hover{border-color:rgba(229,193,88,.7);transform:translateY(-1px)}.matchapp-exclusion-chip[aria-pressed="true"]{background:rgba(229,193,88,.17);border-color:#e5c158;color:#fff;box-shadow:0 0 0 1px rgba(229,193,88,.13) inset}
+.matchapp-exclusion-summary{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}.matchapp-exclusion-tag{font-size:11.5px;color:#f6df91;background:rgba(229,193,88,.11);border:1px solid rgba(229,193,88,.28);border-radius:999px;padding:5px 8px}
+.matchapp-exclusion-empty{font-size:12px;color:#81778f}.matchapp-exclusion-save-note{padding:0 20px 20px;margin:0;color:#8f85a8;font-size:12.5px}
+@media(max-width:720px){.matchapp-exclusion-grid{grid-template-columns:1fr;padding:14px}.matchapp-exclusion-box>summary{padding:16px}.matchapp-exclusion-copy{padding:14px 16px 0}}
