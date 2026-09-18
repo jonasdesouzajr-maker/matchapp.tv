@@ -1,6 +1,9 @@
-/* MatchApp surgical brand corrections — logo, localized AI label, logout only. */
+/* MatchApp surgical brand corrections — canonical animated logo, localized AI label, logout only. */
 (function(){
   'use strict';
+
+  const LOGO_ASSET='/assets/brand/matchapp-logo-new.avif?v=20260918-logo-news2';
+  const isKidsRoute=()=>{const p=location.pathname.toLowerCase();return p==='/kids'||p.startsWith('/kids/');};
 
   const AI_LABELS={
     en:'AI','pt-BR':'IA',pt:'IA',es:'IA',fr:'IA',de:'KI',it:'IA',tr:'YZ',ru:'ИИ',
@@ -19,6 +22,7 @@
   }
 
   function applyWordmark(){
+    if(isKidsRoute()) return;
     const code=lang();
     document.querySelectorAll('.app-title-main').forEach(host=>{
       host.classList.add('has-ma-local-wordmark');
@@ -39,25 +43,29 @@
     });
   }
 
-  function applyLogoMotion(){
-    document.querySelectorAll('.header-brand-area .brand-logo').forEach(img=>{
-      // Use the current static master mark so the only motion is the requested
-      // outer shine + inner orbit/star, rather than motion baked into the SVG.
-      if(!/\/logo\.jpeg(?:\?|$)/.test(img.getAttribute('src')||'')) img.src='/logo.jpeg?v=20260918-brandfix1';
-      let shell=img.parentElement;
-      if(!shell?.classList.contains('ma-logo-motion-shell')){
-        shell=document.createElement('span');
-        shell.className='ma-logo-motion-shell';
-        img.parentNode.insertBefore(shell,img);
-        shell.appendChild(img);
+  function buildLogo(){
+    const img=document.createElement('img');
+    img.className='brand-logo ma-new-brand-logo';
+    img.src=LOGO_ASSET;
+    img.alt='MatchApp';
+    img.width=96;
+    img.height=96;
+    img.decoding='async';
+    img.setAttribute('data-matchapp-canonical-logo','1');
+    return img;
+  }
+
+  function applyLogoAsset(){
+    if(isKidsRoute()) return;
+    document.querySelectorAll('.matchapp-brand-link').forEach(link=>{
+      let slot=link.querySelector(':scope > .brand-logo-placeholder,:scope > .brand-logo,:scope > picture,:scope > img:not(.matchapp-wordmark)');
+      if(slot?.matches?.('img[data-matchapp-canonical-logo="1"]')){
+        if(slot.getAttribute('src')!==LOGO_ASSET)slot.setAttribute('src',LOGO_ASSET);
+        return;
       }
-      if(!shell.querySelector('.ma-logo-inner-orbit')){
-        const orbit=document.createElement('span');
-        orbit.className='ma-logo-inner-orbit';
-        orbit.setAttribute('aria-hidden','true');
-        orbit.innerHTML='<span class="ma-logo-orbit-star">✦</span>';
-        shell.appendChild(orbit);
-      }
+      const logo=buildLogo();
+      if(slot) slot.replaceWith(logo);
+      else link.prepend(logo);
     });
   }
 
@@ -72,7 +80,7 @@
     btn.innerHTML='<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M10 5H6.8A1.8 1.8 0 0 0 5 6.8v10.4A1.8 1.8 0 0 0 6.8 19H10" stroke-width="1.8" stroke-linecap="round"/><path d="M14 8l4 4-4 4M18 12H9" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
   }
 
-  function apply(){applyWordmark();applyLogoMotion();applyLogout();}
+  function apply(){applyWordmark();applyLogoAsset();applyLogout();}
   document.addEventListener('matchapp:langchange',()=>setTimeout(apply,0));
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',apply,{once:true}); else apply();
 })();
