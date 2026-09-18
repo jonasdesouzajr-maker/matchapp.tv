@@ -1,5 +1,5 @@
 // Functional release identifier must match release.json.
-window.MATCHAPP_BUILD = '2026.09.18.1';
+window.MATCHAPP_BUILD = '2026.09.18.2';
 
 
 /* HOME STARTUP SCHEDULER */
@@ -65,7 +65,7 @@ window.MATCHAPP_BUILD = '2026.09.18.1';
   function loadHomeRuntimeFixes() {
     if (document.querySelector('script[data-matchapp-marquee-autoplay]')) return;
     const script = document.createElement('script');
-    script.src = '/marquee-autoplay.js?v=20260916-flow2&b=' + encodeURIComponent(window.MATCHAPP_BUILD || '2026.09.18.1'); script.defer = true; script.dataset.matchappMarqueeAutoplay = '1';    document.head.appendChild(script);
+    script.src = '/marquee-autoplay.js?v=20260916-flow2&b=' + encodeURIComponent(window.MATCHAPP_BUILD || '2026.09.18.2'); script.defer = true; script.dataset.matchappMarqueeAutoplay = '1';    document.head.appendChild(script);
   }
   function normalizePricingTruth() {
     const path = (location.pathname || '').replace(/\/+$/, '') || '/';
@@ -99,9 +99,9 @@ window.MATCHAPP_BUILD = '2026.09.18.1';
     if (path === '/' || path === '/index.html') {
       loadHomeRuntimeFixes();
       document.title = 'What to Watch Tonight | AI Movie & TV Finder | MatchApp';
-      upsertMeta('description', 'Find what to watch tonight with MatchApp: exact mood and genre matching, country/genre exclusion preferences, AI movie and TV discovery, Kids Mode, Match Together, and verified streaming links.');
+      upsertMeta('description', 'Find what to watch tonight with MatchApp: exact mood matching, verified streaming and cinema availability by country, local streaming alerts, Kids Mode and Match Together.');
       upsertMeta('robots', 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1');
-      upsertPropertyMeta('og:description', 'Tell MatchApp your mood and get an AI entertainment match, where to stream it, Kids Mode, Match Together and timely entertainment guides.');
+      upsertPropertyMeta('og:description', 'Tell MatchApp your mood, get a title, see where it streams or plays in cinemas by country, and follow it for local streaming alerts.');
       addJsonLd('matchapp-organization-schema', {
         '@context': 'https://schema.org',
         '@type': 'Organization',
@@ -114,7 +114,7 @@ window.MATCHAPP_BUILD = '2026.09.18.1';
     }
     if (path === '/discover.html') {
       document.title = 'Ask AI What to Watch | Movie & TV Concierge | MatchApp';
-      upsertMeta('description', 'Ask MatchApp what to watch by mood, theme, event or topic. Get entertainment recommendations, real title information and links to continue your search or stream.');
+      upsertMeta('description', 'Ask MatchApp what to watch, then see verified streaming, rental and cinema options by country. Follow titles and get alerted when streaming starts locally.');
       upsertMeta('robots', 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1');
       // Describe the public page factually. Do not claim Software/WebApplication
       // rich-result eligibility until MatchApp has genuine review/rating data.
@@ -123,7 +123,7 @@ window.MATCHAPP_BUILD = '2026.09.18.1';
         '@type': 'WebPage',
         name: 'Ask AI What to Watch | MatchApp',
         url: 'https://matchapp.tv/discover.html',
-        description: 'Voice- and text-enabled entertainment discovery concierge for finding real titles and streaming information.',
+        description: 'Voice- and text-enabled entertainment concierge with regional streaming, rental and cinema availability plus opt-in title alerts.',
         isPartOf: { '@type': 'WebSite', name: 'MatchApp TV Ai', url: 'https://matchapp.tv/' },
         publisher: { '@type': 'Organization', name: 'MatchApp', url: 'https://matchapp.tv/', logo: { '@type': 'ImageObject', url: 'https://matchapp.tv/assets/brand/matchapp-icon-512.png', width: 512, height: 512 } }
       });
