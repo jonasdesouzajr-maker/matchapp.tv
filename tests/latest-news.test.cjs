@@ -132,7 +132,7 @@ test('hourly workflow and sitemap generator publish generated news URLs with sta
   assert.match(yml,/node tools\/refresh-news-rss\.js/);
   assert.match(yml,/node tools\/update-sitemap\.js/);
   assert.match(yml,/news-sitemap-meta\.json/);
-  assert.match(sm,/readList\('news-urls\.json'\)/);
+  assert.match(sm,/newsUrlsFromDisk\(\)/);
   assert.match(sm,/readObject\('news-sitemap-meta\.json'\)/);
   assert.match(sm,/validLastmod/);
   assert.ok(urls.includes('https://matchapp.tv/news/'));
