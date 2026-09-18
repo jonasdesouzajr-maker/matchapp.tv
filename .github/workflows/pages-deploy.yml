@@ -24,6 +24,21 @@ jobs:
       - uses: actions/checkout@v4
       - name: Apply scoped critical hotfixes
         run: node tools/apply-critical-hotfixes.js
+      - name: Verify title, genre and no-dead-end release
+        run: |
+          node --check app.js
+          node --check discover.js
+          node --check catalog-media.js
+          node --check title-experience.js
+          node --check kids/kids.js
+          grep -Fq 'id="q-genre"' index.html
+          grep -Fq '/app.js?v=206' index.html
+          grep -Fq '/catalog-media.js?v=20260918-detail5' index.html
+          grep -Fq '/discover.js?v=204' discover.html
+          grep -Fq '/kids/kids.js?v=199' kids/index.html
+          grep -Fq 'Final invariant: if any age-approved titles exist' kids/kids.js
+          grep -Fq 'item.realGenres = meta.genres' discover.js
+          grep -Fq 'Nearby cinemas & showtimes' catalog-media.js
       - uses: actions/upload-pages-artifact@v3
         with:
           path: .
@@ -53,7 +68,18 @@ jobs:
           curl -sS -L --max-time 30 https://matchapp.tv/android/ -o /tmp/android.html
           grep -q "Google Play — Coming Soon" /tmp/android.html
           ! grep -q "play.google.com/store/apps/details?id=tv.matchapp.app" /tmp/android.html
+          curl -sS -L --max-time 30 https://matchapp.tv/ -o /tmp/home.html
+          grep -Fq '/app.js?v=206' /tmp/home.html
+          grep -Fq '/catalog-media.js?v=20260918-detail5' /tmp/home.html
+          curl -sS -L --max-time 30 https://matchapp.tv/discover.html -o /tmp/discover.html
+          grep -Fq '/discover.js?v=204' /tmp/discover.html
+          grep -Fq '/catalog-media.js?v=20260918-detail5' /tmp/discover.html
+          curl -sS -L --max-time 30 'https://matchapp.tv/discover.js?v=204' -o /tmp/discover.js
+          grep -Fq 'item.realGenres = meta.genres' /tmp/discover.js
+          curl -sS -L --max-time 30 'https://matchapp.tv/catalog-media.js?v=20260918-detail5' -o /tmp/catalog-media.js
+          grep -Fq 'Nearby cinemas & showtimes' /tmp/catalog-media.js
           curl -sS -L --max-time 30 https://matchapp.tv/kids/ -o /tmp/kids.html
+          grep -Fq '/kids/kids.js?v=199' /tmp/kids.html
           ! grep -q "GTM-M7J3NNBN" /tmp/kids.html
           curl -sS -L --max-time 30 https://matchapp.tv/kids/titles/bluey/ -o /tmp/kids-title.html
           grep -qi "Bluey" /tmp/kids-title.html
