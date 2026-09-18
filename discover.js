@@ -1126,8 +1126,8 @@ document.addEventListener('DOMContentLoaded', initAiWorkspace);
    Ask AI is now a real multi-turn conversation rather than a
    one-shot search. Each thread is saved to localStorage so a user
    can come back and keep going, and each *turn* consumes one from
-   the daily allowance (3 free / 5 registered+complete profile /
-   10 VIP) — the same accounting the match engine uses.
+   the included daily allowance (3 guest / 5 registered+complete profile /
+   10 VIP / 50 Business) — the same accounting the match engine uses.
    ============================================================ */
 
 const CHAT_STORE_KEY = 'match_chatThreads';
