@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.MatchApp" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorPrimary">@color/gold</item>
+        <item name="colorOnPrimary">@color/ink</item>
+        <item name="colorSecondary">@color/gold_deep</item>
+        <item name="android:statusBarColor">@color/ink</item>
+        <item name="android:navigationBarColor">@color/ink</item>
+        <item name="android:windowBackground">@color/ink</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="materialButtonStyle">@style/Widget.MatchApp.Button</item>
+    </style>
+
+    <style name="Theme.MatchApp.Splash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/splash_bg</item>
+        <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_launcher_round</item>
+        <item name="postSplashScreenTheme">@style/Theme.MatchApp</item>
+        <item name="android:statusBarColor">@color/ink</item>
+        <item name="android:navigationBarColor">@color/ink</item>
+    </style>
+
+    <style name="Widget.MatchApp.Button" parent="Widget.Material3.Button">
+        <item name="backgroundTint">@color/gold</item>
+        <item name="android:textColor">@color/ink</item>
+        <item name="cornerRadius">14dp</item>
+    </style>
+</resources>
