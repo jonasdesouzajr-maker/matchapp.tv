@@ -4,7 +4,7 @@
    actually produced.
 
    Reads generator-owned URL manifests for catalog sections. News articles are
-   intentionally derived from news/articles/*/index.html so every public article
+   intentionally derived from news/articles/<slug>/index.html so every public article
    that actually exists on disk is represented and sitemap drift cannot hide it.
 
    Run: node tools/update-sitemap.js
