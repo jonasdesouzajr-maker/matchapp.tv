@@ -297,8 +297,7 @@ class MainActivity : AppCompatActivity() {
             return false
         }
         if (host.endsWith("supabase.co") || host.endsWith("google.com") || host.endsWith("gstatic.com") ||
-            host.endsWith("googleapis.com") || host.endsWith("googleusercontent.com") ||
-            host == "appleid.apple.com" || host == "idmsa.apple.com"
+            host.endsWith("googleapis.com") || host.endsWith("googleusercontent.com")
         ) {
             return false
         }
