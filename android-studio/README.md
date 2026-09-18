@@ -33,8 +33,8 @@ This folder is one self-contained Android Studio project with **two separate ins
 
 Both Android modules are synchronized for the current production MatchApp surfaces:
 
-- Release version: **1.1.2**
-- Version code: **4**
+- Release version: **1.1.3**
+- Version code: **5**
 - Standard app launch: `https://matchapp.tv/`
 - Kids app launch: `https://matchapp.tv/kids/`
 - Both apps cold-load production on launch and manual refresh to avoid stale WebView content, then resume normal caching after the page renders.
@@ -76,7 +76,7 @@ The Android apps intentionally render the live MatchApp web surfaces rather than
 - Kids-site changes must remain inside the Kids-only Android boundary.
 - Do not fork/copy the website HTML/CSS/JS into the Android project merely to “sync” it. The live WebView source is the synchronization mechanism; only native-shell differences belong under `android-studio/`.
 
-Treat this as a standing release rule for future MatchApp changes.
+Treat this as a standing release rule for future MatchApp changes. Every approved MatchApp web fix must be reviewed for both Android modules in the same task; when a fresh AAB is requested, bump both module build markers together so neither app can ship against a stale production snapshot.
 
 ## Separation rule
 
