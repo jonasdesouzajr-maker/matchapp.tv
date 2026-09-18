@@ -84,6 +84,37 @@ function imageFrom(block){
   return null;
 }
 
+function imageFromArticleHtml(html,baseUrl){
+  for(const re of [
+    /<meta\b[^>]*(?:property|name)=["'](?:og:image|og:image:url|twitter:image|twitter:image:src)["'][^>]*content=["']([^"']+)["']/i,
+    /<meta\b[^>]*content=["']([^"']+)["'][^>]*(?:property|name)=["'](?:og:image|og:image:url|twitter:image|twitter:image:src)["']/i,
+    /<link\b[^>]*rel=["']image_src["'][^>]*href=["']([^"']+)["']/i,
+    /<link\b[^>]*href=["']([^"']+)["'][^>]*rel=["']image_src["']/i
+  ]){
+    const m=String(html||'').match(re);
+    if(!m)continue;
+    try{
+      const u=new URL(clean(m[1]),baseUrl);
+      if(u.protocol==='https:')return u.href;
+    }catch(_){}
+  }
+  return null;
+}
+
+async function enrichMissingImages(items){
+  const missing=items.filter(i=>!i.image&&i.url);
+  await Promise.all(missing.map(async i=>{
+    try{
+      const html=await get(i.url,'text/html,application/xhtml+xml;q=0.9,*/*;q=0.5');
+      const image=imageFromArticleHtml(html,i.url);
+      if(image)i.image=image;
+    }catch(e){
+      console.warn('[news-image] '+i.source+': '+e.message);
+    }
+  }));
+  return items;
+}
+
 function parse(xml,feed){
   const blocks=[
     ...(xml.match(/<item\b[\s\S]*?<\/item>/gi)||[]),
@@ -350,6 +381,7 @@ ${imageMeta}
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7J3NNBN"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
+<header class="app-header"><a href="/" class="matchapp-brand-link" aria-label="MatchApp TV Ai"><span class="brand-logo brand-logo-placeholder" aria-hidden="true"></span><span class="app-title-main"><img class="matchapp-wordmark" src="/assets/brand/matchapp-tv-ai-v2.svg" alt="MatchApp TV Ai" width="368" height="66" decoding="async"></span></a></header>
 <main style="max-width:780px;margin:40px auto;padding:20px">
   <article class="premium-card" style="padding:24px">
     <p style="color:#E5C158;font-weight:800">LATEST NEWS · ${esc(i.event_type)}</p>
@@ -365,6 +397,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p><a href="/news/">More entertainment news</a> · <a href="/">Back to MatchApp</a></p>
   </article>
 </main>
+<script src="/build-meta.js?v=203"></script>
 </body>
 </html>`;
 }
@@ -446,12 +479,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7J3NNBN"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
+<header class="app-header"><a href="/" class="matchapp-brand-link" aria-label="MatchApp TV Ai"><span class="brand-logo brand-logo-placeholder" aria-hidden="true"></span><span class="app-title-main"><img class="matchapp-wordmark" src="/assets/brand/matchapp-tv-ai-v2.svg" alt="MatchApp TV Ai" width="368" height="66" decoding="async"></span></a></header>
 <main style="max-width:1120px;margin:36px auto;padding:18px">
   <a href="/#latest-news">← MatchApp Latest News</a>
   <h1>Latest Entertainment News</h1>
   <p>Verified actor, singer, film, TV and music updates from trusted publishers. Updated hourly, with direct links to every original source.</p>
   <section style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px">${cards}</section>
 </main>
+<script src="/build-meta.js?v=203"></script>
 </body>
 </html>`;
 }
@@ -583,6 +618,7 @@ function enforceArticleAnalyticsOnDisk(){
 
   collected.sort((a,b)=>b.published_at.localeCompare(a.published_at));
   const items=collected.slice(0,40);
+  await enrichMissingImages(items);
 
   if(items.length<5)throw new Error(`trusted publisher feeds returned only ${items.length} usable items`);
 
