@@ -34,7 +34,7 @@
   body.page-home .marquee-wrapper,body.page-home #trending-rail{width:100%!important;margin-inline:0!important;padding-inline:0!important;overflow:hidden!important}
 }
 @media(max-width:600px){
-  body.page-home #home-brand-lockup .brand-logo{width:3.45rem!important;height:3.45rem!important;flex-basis:3.45rem!important}
+  /* Logo size is controlled by home-brand.css to prevent late-load shrinking. */
   body.page-home #home-brand-lockup .home-brand-name{font-size:1.03rem!important}
   body.page-home #home-brand-lockup .home-ai-link{font-size:1.32rem!important}
   body.page-home .app-header>nav{grid-template-columns:repeat(4,minmax(0,1fr))!important}
