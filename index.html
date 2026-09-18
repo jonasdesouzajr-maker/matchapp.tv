@@ -75,7 +75,7 @@
     <!-- STRUCTURED DATA: E-E-A-T + RICH SNIPPETS -->
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"MatchApp TV Ai","url":"https://matchapp.tv/","potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://matchapp.tv/discover.html?q={search_term_string}"},"query-input":"required name=search_term_string"},"alternateName":["MatchApp","MatchApp.tv"]}</script>
 
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","url":"https://matchapp.tv/","name":"MatchApp TV Ai","dateModified":"2026-09-16","inLanguage":["en","pt-BR","es","fr","de","it","tr","ru","ar","hi","id","ja","ko","zh"],"speakable":{"@type":"SpeakableSpecification","cssSelector":[".concierge-section h2",".concierge-section p","#spotlight-ahs13 .spotlight-desc","#global-events"]}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","url":"https://matchapp.tv/","name":"MatchApp TV Ai","dateModified":"2026-09-18","inLanguage":["en","pt-BR","es","fr","de","it","tr","ru","ar","hi","id","ja","ko","zh"],"speakable":{"@type":"SpeakableSpecification","cssSelector":[".concierge-section h2",".concierge-section p","#spotlight-ahs13 .spotlight-desc","#global-events"]}}</script>
 
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","serviceType":"AI Concierge for Entertainment","name":"MatchApp AI Concierge","provider":{"@type":"Organization","name":"MatchApp TV Ai","url":"https://matchapp.tv/","logo":{"@type":"ImageObject","url":"https://matchapp.tv/assets/brand/matchapp-icon-512.png","width":512,"height":512}},"areaServed":"Worldwide","availableLanguage":["English","Portuguese","Spanish","French","German","Italian","Turkish","Russian","Arabic","Hindi","Indonesian","Japanese","Korean","Chinese"],"description":"A voice- and text-enabled AI consultant that recommends movies, TV series, K-dramas, anime, novelas, micro-dramas, podcasts and music based on natural-language questions, spoken or typed in any of 14 languages.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD","name":"Free — 3 AI Concierge sessions daily"}}</script>
 
@@ -1610,14 +1610,17 @@
          Trending stays as a small secondary chip rather than an equal-weight
          button, because "ask" is the lower-effort path and should look it. -->
     <div class="top-ask-wrap">
-        <form class="top-ask" onsubmit="return topAskSubmit(event)" role="search">
-            <span class="top-ask-icon" aria-hidden="true">🤖</span>
-            <input id="top-ask-input" type="text" autocomplete="off"
-                   placeholder="Ask our AI — what should I watch tonight?"
-                   data-i18n-placeholder="topask.placeholder"
-                   aria-label="Ask our AI what to watch">
-            <button type="submit" class="top-ask-go" aria-label="Ask" data-i18n-aria="topask.go">→</button>
-        </form>
+        <a class="top-ai-launch" href="/discover.html?focus=start" aria-label="Open MatchApp AI Concierge chat">
+            <span class="top-ask-icon" data-ma-icon="brand" aria-hidden="true">
+                <img src="/assets/brand/matchapp-ai-orbit.svg" alt="" width="48" height="48">
+            </span>
+            <span class="top-ai-copy">
+                <span class="top-ai-kicker">MatchApp AI Concierge</span>
+                <span class="top-ai-title">Talk to our AI</span>
+                <span class="top-ai-sub">Open a real conversation, continue recent chats, or start something new.</span>
+            </span>
+            <span class="top-ai-arrow" aria-hidden="true">→</span>
+        </a>
         <a href="#trending-rail" class="top-ask-alt" data-i18n="jump.trending">🔥 See What's Trending</a>
     </div>
 
