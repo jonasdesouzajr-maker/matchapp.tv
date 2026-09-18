@@ -47,8 +47,8 @@ test('VIP public/runtime copy matches the server-enforced 10 per day rule',()=>{
     assert.doesNotMatch(source,/Unlock Unlimited AI Concierge|unlock infinite matches|Unlimited AI Matches Daily|unlimited Matches|Unlimited VIP matches/i);
   }
   assert.match(pricing,/10 included AI actions daily/);
-  assert.match(pricing,/10 AI actions each day/);
-  assert.match(purchase,/10 daily Matches/);
+  assert.match(pricing,/10 AI actions per day/);
+  assert.match(purchase,/10 included AI actions per day/);
   assert.doesNotMatch(audit,/textContent='∞'/);
 
   const vipClaims=[...locale.matchAll(/'pricing\.vipm\.f1':\s*'([^']+)'/g)].map(m=>m[1]);
