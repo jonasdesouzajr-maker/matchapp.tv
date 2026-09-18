@@ -37,9 +37,11 @@ test('Ask AI credits and Match allowances are separate, identity is immutable an
  const save=(name='Ana')=>db.query("select public.save_locked_identity($1,'Brazil','10/09/1990','Virgo') r",[name]);assert.equal((await save()).rows[0].r.profile_locked,true);assert.equal((await save('Different')).rows[0].r.full_name,'Ana');
  await assert.rejects(db.query("update public.profiles set profile_locked=false where id=$1",[uid]),/locked/);await assert.rejects(db.query("update public.profiles set country='Other' where id=$1",[uid]),/locked/);
  assert.equal((await db.query('select * from public.profiles where id=$1',[other])).rows.length,0);
- const consume=reason=>db.query('select public.consume_ai_action($1) r',[reason]);let r=(await consume('ask_ai')).rows[0].r;assert.equal(r.credits,1);assert.equal((await db.query('select credits from public.profiles where id=$1',[uid])).rows[0].credits,1);
- r=(await consume('match')).rows[0].r;assert.equal(r.allowed,true);assert.equal(r.remaining,1);assert.equal((await db.query('select credits from public.profiles where id=$1',[uid])).rows[0].credits,1);
- r=(await consume('ask_ai')).rows[0].r;assert.equal(r.credits,0);r=(await db.query('select public.consume_match() r')).rows[0].r;assert.equal(r.allowed,true);assert.equal(r.remaining,0);assert.equal((await db.query('select credits from public.profiles where id=$1',[uid])).rows[0].credits,0);assert.equal((await consume('ask_ai')).rows[0].r.allowed,false);
+ const consume=reason=>db.query('select public.consume_ai_action($1) r',[reason]);let r=(await consume('ask_ai')).rows[0].r;assert.equal(r.allowed,true);assert.equal(r.remaining,1);assert.equal(r.credits,2);
+ r=(await consume('match')).rows[0].r;assert.equal(r.allowed,true);assert.equal(r.remaining,0);assert.equal((await db.query('select credits from public.profiles where id=$1',[uid])).rows[0].credits,2);
+ r=(await consume('ask_ai')).rows[0].r;assert.equal(r.allowed,true);assert.equal(r.paid_with_credit,true);assert.equal(r.credits,1);
+ r=(await consume('match')).rows[0].r;assert.equal(r.allowed,false);assert.equal((await db.query('select credits from public.profiles where id=$1',[uid])).rows[0].credits,1);
+ r=(await consume('ask_ai')).rows[0].r;assert.equal(r.allowed,true);assert.equal(r.credits,0);assert.equal((await consume('ask_ai')).rows[0].r.allowed,false);
  await db.exec('reset role');assert.deepEqual((await db.query('select reason from public.credit_ledger')).rows.map(r=>r.reason),['ask_ai','ask_ai']);
  await db.exec(`set role authenticated;set request.jwt.claim.sub='${other}'`);await assert.rejects(db.query("insert into public.profiles(id,credits,is_vip) values('00000000-0000-4000-8000-000000000013',999,true)"),/permission denied/);await assert.rejects(db.query("select public.save_locked_identity('Ana','Brazil','31/02/2000','Virgo')"),/Invalid|date|birthdate/);
  await db.exec('reset role;set role anon');await assert.rejects(save(),/permission denied/);
