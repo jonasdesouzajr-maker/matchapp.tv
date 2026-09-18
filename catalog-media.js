@@ -123,28 +123,52 @@
     return out.filter(x=>/^https:\/\//.test(String(x.href||'')));
   }
 
+  async function ensureGenreIndex(){
+    if(GENRE_INDEX)return GENRE_INDEX;
+    if(!GENRE_INFLIGHT)GENRE_INFLIGHT=(async()=>{
+      try{
+        const sb=window.supabaseClient;if(!sb)return new Map();
+        const {data,error}=await sb.from(TABLE).select('normalized_title,genres').eq('is_catalog_title',true).limit(5000);
+        if(error||!Array.isArray(data))return new Map();
+        const idx=new Map();
+        data.forEach(row=>{
+          const key=String(row?.normalized_title||'');if(!key)return;
+          const gs=new Set((Array.isArray(row?.genres)?row.genres:[]).map(g=>String(g||'').trim()).filter(Boolean));
+          idx.set(key,gs);
+        });
+        return idx;
+      }catch(_){return new Map();}
+    })().then(idx=>{GENRE_INDEX=idx;GENRE_INFLIGHT=null;return idx;});
+    GENRE_INDEX=await GENRE_INFLIGHT;
+    return GENRE_INDEX;
+  }
+
+  async function availableGenres(){
+    const idx=await ensureGenreIndex(),set=new Set();
+    for(const gs of idx.values())for(const g of gs)if(g)set.add(g);
+    return [...set].sort((a,b)=>a.localeCompare(b,undefined,{sensitivity:'base'}));
+  }
+
+  async function syncGenreFilter(){
+    const sel=document.getElementById('q-genre');if(!sel)return;
+    const genres=await availableGenres();if(!genres.length)return;
+    const existing=new Set([...sel.options].map(o=>o.value));
+    const missing=genres.filter(g=>!existing.has(g));if(!missing.length)return;
+    let group=[...sel.querySelectorAll('optgroup')].find(g=>g.dataset.sourceGenres==='1');
+    if(!group){group=document.createElement('optgroup');group.label='More verified source genres';group.dataset.sourceGenres='1';sel.appendChild(group);}
+    missing.forEach(g=>{const o=document.createElement('option');o.value=g;o.textContent=g;group.appendChild(o);});
+    document.dispatchEvent(new CustomEvent('matchapp:optionspruned'));
+  }
+
   async function titleKeysForGenres(genres){
     const wanted=[...new Set((Array.isArray(genres)?genres:[genres]).map(g=>String(g||'').trim().toLowerCase()).filter(Boolean))];
     if(!wanted.length)return null;
-    if(!GENRE_INDEX){
-      if(!GENRE_INFLIGHT)GENRE_INFLIGHT=(async()=>{
-        try{
-          const sb=window.supabaseClient;if(!sb)return new Map();
-          const {data,error}=await sb.from(TABLE).select('normalized_title,genres').eq('is_catalog_title',true).limit(5000);
-          if(error||!Array.isArray(data))return new Map();
-          const idx=new Map();
-          data.forEach(row=>{
-            const key=String(row?.normalized_title||'');if(!key)return;
-            const gs=new Set((Array.isArray(row?.genres)?row.genres:[]).map(g=>String(g||'').trim().toLowerCase()).filter(Boolean));
-            idx.set(key,gs);
-          });
-          return idx;
-        }catch(_){return new Map();}
-      })().then(idx=>{GENRE_INDEX=idx;GENRE_INFLIGHT=null;return idx;});
-      GENRE_INDEX=await GENRE_INFLIGHT;
-    }
+    const idx=await ensureGenreIndex();
     const keys=new Set();
-    for(const [key,gs] of GENRE_INDEX.entries())if(wanted.some(g=>gs.has(g)))keys.add(key);
+    for(const [key,gs] of idx.entries()){
+      const lower=new Set([...gs].map(g=>String(g).toLowerCase()));
+      if(wanted.some(g=>lower.has(g)))keys.add(key);
+    }
     return keys;
   }
   function viewingTarget(meta,title,region){
@@ -291,11 +315,11 @@
     @media(max-width:640px){.matchapp-media-meta{display:block;margin:6px 0 0}.matchapp-media-preview{width:100%}.matchapp-cinema-ribbon{top:7px;font-size:9px;padding:5px 8px 5px 10px}}
   `;document.head.appendChild(s);}
   function boot(){
-    installStyle();document.querySelectorAll('img[data-title],img[data-poster-title],#res-poster-img,.kids-card img').forEach(img=>hardenImage(img,titleForImage(img)));
+    installStyle();syncGenreFilter();document.querySelectorAll('img[data-title],img[data-poster-title],#res-poster-img,.kids-card img').forEach(img=>hardenImage(img,titleForImage(img)));
     const obs=new MutationObserver(records=>{let main=false,kids=false;for(const r of records){const el=r.target.nodeType===1?r.target:r.target.parentElement;if(el?.id==='res-title'||el?.closest?.('#result-card'))main=true;if(el?.id==='kids-watch-name'||el?.closest?.('#kids-watch-dialog'))kids=true;}if(main)queueMicrotask(enrichMain);if(kids)queueMicrotask(enrichKids);document.querySelectorAll('img[data-title]:not([data-matchapp-media-hardened]),img[data-poster-title]:not([data-matchapp-media-hardened]),#res-poster-img:not([data-matchapp-media-hardened]),.kids-card img:not([data-matchapp-media-hardened])').forEach(img=>hardenImage(img,titleForImage(img)));});
     obs.observe(document.documentElement,{subtree:true,childList:true,characterData:true,attributes:false});enrichMain();enrichKids();enrichTrendingRail();
     document.addEventListener('matchapp:langchange',enrichTrendingRail);
   }
-  window.MatchAppCatalogMedia=Object.freeze({lookup,normalise,localPoster,enrichMain,enrichKids,enrichTrendingRail,renderPreview,renderAvailability,availability,viewingTarget,providerLinks,providerSearch,showtimesUrl,sourcePage,regionCode,titleKeysForGenres});
+  window.MatchAppCatalogMedia=Object.freeze({lookup,normalise,localPoster,enrichMain,enrichKids,enrichTrendingRail,renderPreview,renderAvailability,availability,viewingTarget,providerLinks,providerSearch,showtimesUrl,sourcePage,regionCode,titleKeysForGenres,availableGenres,syncGenreFilter});
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
 })();
