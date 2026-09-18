@@ -2902,7 +2902,8 @@ async function discoverFromITunes(cat, mood, vibe, decade, rating) {
         const genreRx = ITUNES_GENRE[mood];
         if (genreRx) {
             const genreHit = pool.filter(r => genreRx.test(String(r.primaryGenreName || '')));
-            if (genreHit.length) pool = genreHit;
+            if (!genreHit.length) return null;
+            pool = genreHit;
         }
         if (mood === 'funny') {
             pool = pool.filter(r => {
@@ -2932,6 +2933,19 @@ async function discoverFromITunes(cat, mood, vibe, decade, rating) {
         pool = pool.filter(r => !isBlockedText(
             [r.trackName, r.collectionName, r.primaryGenreName, r.longDescription, r.shortDescription]
                 .filter(Boolean).join(' ')));
+        if (decade && decade !== 'any' && DECADE_TERMS[decade]) {
+            const start=Number(String(decade).match(/\d{4}/)?.[0]);
+            if(start){pool=pool.filter(r=>{const y=Number(String(r.releaseDate||'').slice(0,4));return y>=start&&y<start+10;});if(!pool.length)return null;}
+        }
+        // iTunes has no authoritative source-country field. If the user has
+        // origin-country exclusions, do not risk returning a title we cannot
+        // prove is allowed.
+        const blockedCountries=Array.isArray(window.MatchSettings?.get?.('blockedOriginCountries'))?window.MatchSettings.get('blockedOriginCountries'):[];
+        if(blockedCountries.length)return null;
+        // Vibe and age-rating are MatchApp-specific semantics here; without a
+        // verified source signal, fail closed rather than pretending the title
+        // satisfied them.
+        if(normCriteria(vibe).length||ratingSet.length)return null;
         const fresh = pool.filter(r => !seenRecently.has(r.trackName || r.collectionName));
         if (fresh.length) pool = fresh;
         if (!pool.length) return null;
@@ -3082,6 +3096,24 @@ function matchesAny(entryValues, wanted) {
     return entryValues.some(v => wanted.includes(v));
 }
 
+function currentPreferenceExclusions(){
+    const S=window.MatchSettings;
+    const countries=Array.isArray(S?.get?.('blockedOriginCountries'))?S.get('blockedOriginCountries'):[];
+    const genres=Array.isArray(S?.get?.('blockedGenres'))?S.get('blockedGenres'):[];
+    return {countries:new Set(countries.map(x=>String(x).toUpperCase())),genres:new Set(genres.map(x=>String(x).toLowerCase()))};
+}
+function entryPassesPreferenceExclusions(entry){
+    const x=currentPreferenceExclusions();
+    const code=String(entry?.countryCode||'').toUpperCase();
+    if(code&&x.countries.has(code))return false;
+    const keys=window.__matchappExcludedGenreKeys;
+    if(keys instanceof Set){
+        const normalise=window.MatchAppCatalogMedia?.normalise||(v=>String(v||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^\p{L}\p{N}]/gu,''));
+        if(keys.has(normalise(entry?.title)))return false;
+    }
+    return true;
+}
+
 function titlePassesRealGenre(entry) {
     if (!window.__matchappGenreFilterActive) return true;
     const keys = window.__matchappGenreKeys;
@@ -3098,6 +3130,7 @@ function pickFromCatalog(cat, plat, mood, vibe, rating, decade) {
     const wantsFaith = normCriteria(cat).includes('Gospel & Faith') || normCriteria(plat).some(p => ['Pure Flix','Angel Studios'].includes(p));
     const eligible = e => policy.matches(e, criteria)
         && (typeof titlePassesRealGenre!=='function'||titlePassesRealGenre(e))
+        && entryPassesPreferenceExclusions(e)
         && !isBlockedEntry(e) && !SESSION_SHOWN.has(e.title)
         && (wantsFaith || !e.cats.includes('Gospel & Faith'))
         && (normCriteria(cat).length || isSurpriseEligible(e));
@@ -3138,6 +3171,7 @@ function pickRecycledCatalog(cat, plat, mood, vibe, rating, decade) {
     const wantsFaith = normCriteria(cat).includes('Gospel & Faith') || normCriteria(plat).some(p => ['Pure Flix','Angel Studios'].includes(p));
     const eligible = e => policy.matchesCriteria(e, criteria)
         && (typeof titlePassesRealGenre!=='function'||titlePassesRealGenre(e))
+        && entryPassesPreferenceExclusions(e)
         && !isBlockedEntry(e)
         && (wantsFaith || !e.cats.includes('Gospel & Faith'))
         && (normCriteria(cat).length || isSurpriseEligible(e));
@@ -3265,6 +3299,7 @@ function pickGuaranteedCatalog(cat, plat, mood, vibe, rating, decade) {
     const allowed = entry => {
         if (!entry || !entry.title) return false;
         if (typeof titlePassesRealGenre==='function' && !titlePassesRealGenre(entry)) return false;
+        if (!entryPassesPreferenceExclusions(entry)) return false;
         const k = policy.key(entry.title);
         if (!k || hardExcluded.has(k)) return false;
         try { if (typeof isBlockedEntry === 'function' && isBlockedEntry(entry)) return false; } catch (_) {}
@@ -3303,25 +3338,9 @@ function pickGuaranteedCatalog(cat, plat, mood, vibe, rating, decade) {
         return shape(candidates[0], stage, true);
     };
 
-    const stages = [
-        ['exact', requested],
-        ['platform', {...requested, plat:[]}],
-        ['decade', {...requested, plat:[], decade:[]}],
-        ['vibe', {...requested, plat:[], decade:[], vibe:[]}],
-        ['mood', {...requested, plat:[], decade:[], vibe:[], mood:[]}],
-        ['rating', {...requested, plat:[], decade:[], vibe:[], mood:[], rating:[]}]
-    ];
-    for (const [stage,criteria] of stages) {
-        const pick = choose(criteria, stage);
-        if (pick) return pick;
-    }
-
-    // Absolute last resort: the selected category itself is exhausted by hard
-    // exclusions. Return another safe catalogue title rather than a dead-end.
-    // Explicit Watch Later / Not For Me exclusions still win over this fallback.
-    const ratingOnly = choose({cat:[],plat:[],mood:[],vibe:[],rating:requested.rating,decade:[]}, 'category-exhausted');
-    if (ratingOnly) return ratingOnly;
-    return choose({cat:[],plat:[],mood:[],vibe:[],rating:[],decade:[]}, 'global');
+    // Selected criteria are hard requirements. Never silently remove mood,
+    // genre, platform, decade, vibe or rating just to fill the card.
+    return choose(requested, 'exact');
 }
 
 // ----------------------------------------------------
@@ -3375,6 +3394,12 @@ window.triggerMatch = async function(isSpecificSearch = false) {
     window.__matchappGenreFilterActive = wantedGenres.length > 0;
     window.__matchappGenreKeys = null;
     window.__matchappGenreRelaxed = false;
+    const blockedGenres=Array.isArray(window.MatchSettings?.get?.('blockedGenres'))?window.MatchSettings.get('blockedGenres'):[];
+    window.__matchappExcludedGenreKeys=null;
+    if(blockedGenres.length){
+        try{const blocked=await window.MatchAppCatalogMedia?.titleKeysForGenres?.(blockedGenres);window.__matchappExcludedGenreKeys=blocked instanceof Set?blocked:new Set();}
+        catch(_){window.__matchappExcludedGenreKeys=new Set();}
+    }
     if (window.__matchappGenreFilterActive) {
         try {
             const keys = await window.MatchAppCatalogMedia?.titleKeysForGenres?.(wantedGenres);
@@ -3399,14 +3424,7 @@ window.triggerMatch = async function(isSpecificSearch = false) {
     if (!isSpecificSearch && !preflight) {
         preflight = pickGuaranteedCatalog(requested.cat,requested.plat,requested.mood,requested.vibe,requested.rating,requested.decade);
     }
-    // A real-genre choice is honoured as long as the verified catalog can
-    // satisfy it. If that exact shelf is exhausted, relax only this final
-    // metadata constraint rather than ever dead-ending the matcher.
-    if (!isSpecificSearch && !preflight && window.__matchappGenreFilterActive) {
-        window.__matchappGenreFilterActive = false;
-        preflight = pickGuaranteedCatalog(requested.cat,requested.plat,requested.mood,requested.vibe,requested.rating,requested.decade);
-        window.__matchappGenreRelaxed = !!preflight;
-    }
+    // Real genre is also a hard requirement. Never disable it as a fallback.
     const alreadySeenSpecific = isSpecificSearch && window.matchPolicy?.known().has(window.matchPolicy.key(typed));
     if (isSpecificSearch && !typed.trim()) return;
     if (alreadySeenSpecific) {
