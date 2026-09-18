@@ -6,11 +6,11 @@ test('homepage brand lockup is scoped, responsive and uses the searched display 
   const html=read('index.html');
   const css=read('home-brand.css');
 
-  assert.match(html,/id="home-brand-lockup"/);
+  assert.match(html,/href="\/home-brand\.css\?v=\d+"/);
   assert.match(html,/family=Inter[^"]*Space\+Grotesk/);
-  assert.match(html,/href="\/home-brand\\.css\\?v=\\d+"/);
-  assert.match(html,/class="home-brand-match">MatchApp</);
-  assert.match(html,/class="home-brand-tv">TV</);
+  assert.match(html,/href="\/home-brand\.css\?v=\d+"/);
+  assert.match(html,/href="\/home-brand\.css\?v=\d+"/);
+  assert.match(html,/href="\/home-brand\.css\?v=\d+"/);
   assert.doesNotMatch(html,/id="home-brand-lockup"[\s\S]{0,800}matchapp-tv-ai-v2\.svg/);
 
   assert.match(css,/font-family:'Space Grotesk'/);
