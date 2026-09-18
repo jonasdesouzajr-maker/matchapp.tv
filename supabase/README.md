@@ -246,7 +246,7 @@ that's what this fixes.
 
 | Object | Purpose |
 |---|---|
-| `profiles.daily_match_count` | Matches consumed today |
+| `profiles.daily_match_count` | Legacy column name: included AI actions consumed today (Match or Ask AI) |
 | `profiles.daily_match_date` | Date the counter refers to (auto-rolls) |
 | `profiles.share_rewards` | Timestamps of granted share bonuses |
 | `consume_match()` | Atomically checks + increments. Returns `allowed` |
