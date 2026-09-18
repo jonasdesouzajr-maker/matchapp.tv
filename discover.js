@@ -1456,6 +1456,16 @@ async function showEventInfoCard(eventPath) {
         const links = [...doc.querySelectorAll('.global-event-links a[href]')]
             .map(a => ({ label: a.textContent.trim(), href: a.getAttribute('href') || '' }))
             .filter(x => /^https:\/\//.test(x.href));
+        let preview = doc.querySelector('iframe[src*="youtube-nocookie.com/embed/"]')?.getAttribute('src') || '';
+        if (!preview) {
+            for (const link of links) {
+                try {
+                    const u = new URL(link.href);
+                    const id = /(?:^|\.)youtube\.com$/.test(u.hostname) ? u.searchParams.get('v') : (u.hostname === 'youtu.be' ? u.pathname.slice(1) : '');
+                    if (/^[A-Za-z0-9_-]{6,32}$/.test(id || '')) { preview = 'https://www.youtube-nocookie.com/embed/' + id; break; }
+                } catch (_) {}
+            }
+        }
 
         if (!currentThread) {
             currentThread = { id: newThreadId(), title: title.slice(0, 60), turns: [], createdAt: Date.now(), updatedAt: Date.now() };
@@ -1474,6 +1484,7 @@ async function showEventInfoCard(eventPath) {
                         <h2>${escapeDiscoverHtml(title)}</h2>
                         ${meta ? `<p class="discover-event-meta">${escapeDiscoverHtml(meta)}</p>` : ''}
                         ${copy ? `<p class="discover-event-copy">${escapeDiscoverHtml(copy)}</p>` : ''}
+                        ${preview ? `<iframe class="discover-event-preview" src="${escapeDiscoverHtml(preview)}" title="${escapeDiscoverHtml(title)} preview" loading="lazy" allow="accelerometer; autoplay; encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe>` : ''}
                         <div class="discover-event-actions"></div>
                     </div>
                 </article>`;
