@@ -1,29 +1,44 @@
-# 🍿 Perfect Match: Movies, Series & Telenovelas
+# 🍿 MatchApp TV Ai
 
-A lightweight, serverless web application that acts as an entertainment matchmaker. Users answer a quick questionnaire about their preferred format and current mood, and the algorithm serves them the perfect recommendation. 
+MatchApp is an AI entertainment concierge for finding movies, series, K-dramas, anime, novelas, micro-dramas, podcasts, music and other supported entertainment based on a user's explicit mood and criteria.
 
-Designed with a built-in freemium monetization loop, the app utilizes a forced-view interstitial ad screen and enforces a 24-hour cooldown on matches to drive user registration and retention.
+The production site is **https://matchapp.tv**. The legacy `matchapp.cc` domain is retained only for migration/redirect purposes.
 
 ## ✨ Core Features
 
-* **Smart Matchmaking Algorithm:** Client-side filtering that matches user input against a categorized content database (cataloging Telenovelas, Movies, and Series).
-* **Monetization:** Google AdSense is limited to content-rich publisher surfaces and is never used to gate results, authentication, account management, pricing, or other behavioral screens.
-* **Freemium Cooldown Loop:** 
-  * Unregistered users receive exactly **1 free match** (tracked via Local Storage).
-  * Registered users receive **1 free match every 24 hours**.
-* **Secure Authentication:** User login, registration, and session management powered by Supabase Auth.
-* **Database Tracking:** PostgreSQL database with Row Level Security (RLS) to safely track the exact timestamp of every user's last match.
+* **Exact matching:** explicit user-selected criteria remain requirements; the matcher never silently swaps them for unrelated content.
+* **Never-dead-end recovery:** duplicate/history pressure is recovered without violating explicit criteria; Kids Mode keeps hard age and safety boundaries.
+* **AI Concierge:** Ask AI shares the included daily allowance with Matches, while paid Ask AI credits and Extra Matches remain separate top-ups.
+* **Current included daily allowance:** Guest **3**, Registered complete profile **5**, VIP **10**, Business **50**.
+* **Where to Watch:** verified title identity and regional provider/cinema information are used when available, with safe fallbacks when availability is unknown.
+* **Kids Mode:** curated independent Kids catalog with conservative safety rules and age-band enforcement.
+* **Match Together / Friends:** private collaborative matching flows for registered users.
+* **Authentication and entitlements:** Supabase Auth/Postgres enforce account state, quota and paid entitlements server-side for signed-in users.
+* **Payments:** Stripe checkout/webhook fulfillment only grants entitlements after verified payment confirmation.
+* **Monetization:** Google AdSense is limited to approved publisher surfaces and never gates authentication, pricing, account management or match results.
 
 ## 🛠️ Tech Stack
 
-* **Frontend:** Vanilla HTML5, CSS3, and JavaScript (No frameworks, ultra-fast load times).
-* **Backend & Auth:** [Supabase](https://supabase.com/) (PostgreSQL & Authentication).
-* **Hosting & CI/CD:** [Cloudflare Pages](https://pages.cloudflare.com/) (Automated deployments directly from the `main` branch).
-* **Monetization:** Google AdSense.
+* **Frontend:** Vanilla HTML, CSS and JavaScript.
+* **Backend/Auth:** Supabase (Postgres, Auth and Edge Functions).
+* **Hosting/CI:** GitHub + Pages deployment workflow for `matchapp.tv`.
+* **Payments:** Stripe.
+* **Entertainment metadata:** TMDB and reviewed MatchApp catalog data.
 
-## 🚀 How It Works
+## 🚀 Quota / Top-up Model
 
-1. **The Form:** User selects their desired format (e.g., Telenovela) and mood (e.g., Drama).
-2. **The Interstitial:** The UI transitions to a "Loading..." screen featuring a display ad for 6 seconds.
-3. **The Logic:** The app queries Supabase to check the user's `last_match_timestamp`. If 24 hours haven't passed, it blocks the result.
-4. **The Result:** If authorized, the algorithm filters the catalog and serves a random matching title to keep recommendations fresh.
+1. Included AI actions are consumed first: **3 Guest / 5 Registered / 10 VIP / 50 Business per day**.
+2. An included AI action may be one Match or one Ask AI request.
+3. Once the included allowance is exhausted, **Extra Matches** extend Matches only.
+4. **Ask AI credits** extend Ask AI only.
+5. Share rewards can grant bonus Matches under the server-enforced reward limits.
+6. Signed-in quota enforcement is server-side; anonymous usage is necessarily browser-local because there is no authenticated identity to meter.
+
+## 📱 Android
+
+The Android Studio project is under `android-studio/` and contains two separate WebView shells:
+
+* `:app` → standard MatchApp experience.
+* `:kidsapp` → Kids-only experience.
+
+Both intentionally render the live production site rather than maintaining a duplicated native copy of the web UI.
