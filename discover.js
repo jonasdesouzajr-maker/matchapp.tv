@@ -651,6 +651,18 @@ async function hydrateDiscoverCard(item, idx) {
     const skipLiveLookup = platformIsHighRisk || categoryIsHighRisk;
 
     let meta = item._meta || null;
+    if (!meta && item._catalogMedia) {
+        const cm = item._catalogMedia;
+        meta = {
+            artwork: cm.poster_large_url || cm.poster_url || '',
+            year: cm.year || item.year || '',
+            overview: cm.overview || '',
+            tmdbId: cm.tmdb_id || null,
+            kind: cm.media_kind || '',
+            source: 'catalog-media',
+            title: cm.title || item.title
+        };
+    }
     const visualType = !/podcast|album|music|audiobook/i.test(item.type || '');
     if (!meta && !skipLiveLookup && !verified && visualType && typeof window.tmdbLookup === 'function') {
         const kind = /movie|film/i.test(item.type || '') ? 'movie' : /series|tv|drama|anime|novela|show|documentary/i.test(item.type || '') ? 'tv' : '';
@@ -725,9 +737,21 @@ async function hydrateDiscoverCard(item, idx) {
     if (link) {
         const isAudio = /podcast|album|music|audiobook/i.test(item.type || '');
         const url = discoverWatchUrl(item);
-        link.href = url;
-        link.textContent = isAudio ? discoverLabel('res.listennow', '🎧 Listen Now') : discoverLabel('discover.watchNow', '▶ Watch Now');
-        item._url = url;
+        link.href = url || '#';
+        const cinemaOnly = item?._viewing?.mode === 'cinema';
+        link.textContent = cinemaOnly
+            ? discoverLabel('discover.titlePage', '🎟️ In Cinemas · Title Page')
+            : (isAudio ? discoverLabel('res.listennow', '🎧 Listen Now') : discoverLabel('discover.watchNow', '▶ Watch Now'));
+        link.classList.toggle('is-cinema', cinemaOnly);
+        if (!url) {
+            link.setAttribute('aria-disabled', 'true');
+            link.addEventListener('click', e => e.preventDefault(), { once: true });
+        }
+        item._url = url || '';
+    }
+    if (item._catalogMedia && window.MatchAppCatalogMedia?.renderPreview) {
+        const host = document.getElementById('discover-preview-' + idx);
+        window.MatchAppCatalogMedia.renderPreview(host, item._catalogMedia, { title: item.title });
     }
     if (meta && meta.year && !item.year) item.year = meta.year;
     paintDiscoverFacts(item, idx);
