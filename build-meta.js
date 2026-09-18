@@ -72,23 +72,23 @@ window.MATCHAPP_BUILD = '2026.09.18.4';
     if (path !== '/pricing' && path !== '/pricing/pricing.html') return;
 
     const vipDaily = 10;
-    document.title = 'MatchApp TV Ai VIP | 10 AI Matches Daily & Ad-Free Pass';
-    upsertMeta('description', 'MatchApp VIP includes 10 AI matches per day, ad-free access and priority routing. Extra Matches and Ask AI credits are available separately.');
-    upsertPropertyMeta('og:title', 'MatchApp VIP — 10 AI Matches Daily');
-    upsertPropertyMeta('og:description', 'VIP includes 10 AI matches per day, zero ads and priority routing. Extra Matches and Ask AI credits are available separately.');
+    document.title = 'MatchApp TV Ai VIP | 10 Included AI Actions Daily & Ad-Free Pass';
+    upsertMeta('description', 'MatchApp VIP includes 10 AI actions per day and Business includes 50. Included actions can be Matches or Ask AI; Extra Matches and Ask AI credits are separate top-ups.');
+    upsertPropertyMeta('og:title', 'MatchApp VIP — 10 Included AI Actions Daily');
+    upsertPropertyMeta('og:description', 'VIP includes 10 AI actions per day; Business includes 50. Included actions can be Matches or Ask AI, with separate top-ups after the daily allowance.');
 
     const heading = document.querySelector('[data-i18n="pricing.title"]');
     if (heading) heading.textContent = 'Match More With VIP';
     const subtitle = document.querySelector('[data-i18n="pricing.subtitle"]');
-    if (subtitle) subtitle.textContent = 'Choose VIP for 10 AI matches each day, or buy Extra Matches and Ask AI credits separately.';
+    if (subtitle) subtitle.textContent = 'VIP includes 10 AI actions per day; Business includes 50. Use the included allowance for Matches or Ask AI, then top up each separately.';
     const monthly = document.querySelector('[data-i18n-html="pricing.vipm.f1"]');
-    if (monthly) monthly.innerHTML = '✔️ <strong>'+vipDaily+'</strong> AI Matches Daily';
+    if (monthly) monthly.innerHTML = '✔️ <strong>'+vipDaily+'</strong> included AI actions daily';
 
     document.querySelectorAll('script[type="application/ld+json"]').forEach(function (script) {
       try {
         const data = JSON.parse(script.textContent || '{}');
         if (data && data['@type'] === 'Product' && data.name === 'MatchApp VIP') {
-          data.description = '10 AI matches per day, no ads, priority routing and prioritised regional content.';
+          data.description = '10 included AI actions per day, usable for Matches or Ask AI, plus no ads, priority routing and prioritised regional content.';
           script.textContent = JSON.stringify(data);
         }
       } catch (_) {}
