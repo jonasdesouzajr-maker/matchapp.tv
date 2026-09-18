@@ -212,7 +212,7 @@ html:not([data-kids-mode]) .top-ask-go:hover {
   transform: translateY(-1px);
 }
 
-html:not([data-kids-mode]) .top-ask-icon { opacity: .7; filter: grayscale(.15); }
+html:not([data-kids-mode]) .top-ask-icon { opacity: 1; filter: none; }
 
 @media (prefers-reduced-motion: reduce) {
   html:not([data-kids-mode]) #result-box.is-revealed,
