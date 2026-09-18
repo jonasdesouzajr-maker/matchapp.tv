@@ -342,6 +342,7 @@ function justWatchLocale() {
 }
 
 function discoverWatchUrl(item) {
+    if (item && item._viewing && item._viewing.href) return item._viewing.href;
     if (item && item.watchUrl) return item.watchUrl;
     const title = (item && (item.title || item.displayTitle)) || '';
     const isAudio = /podcast|album|music|audiobook/i.test((item && item.type) || '');
@@ -398,6 +399,28 @@ function enrichDiscoverItem(item, question) {
     return item;
 }
 
+async function enrichDiscoverMedia(item) {
+    if (!item || !item.title || !window.MatchAppCatalogMedia?.lookup) return item;
+    try {
+        const rawType = String(item.type || '').toLowerCase();
+        const kind = /movie|film/.test(rawType) ? 'movie' : (/series|tv|show|drama|anime|novela|documentary/.test(rawType) ? 'tv' : '');
+        const meta = await window.MatchAppCatalogMedia.lookup(item.title, {
+            year: item.year || '',
+            kind: kind || ''
+        });
+        if (!meta) return item;
+        item._catalogMedia = meta;
+        if (meta.year) item.year = meta.year;
+        if (meta.overview) item.synopsis = meta.overview;
+        if (Array.isArray(meta.genres) && meta.genres.length) item.cats = meta.genres.slice(0, 8);
+        if (!item.type || item.type === 'any') item.type = meta.media_kind === 'tv' ? 'series' : (meta.media_kind || item.type);
+        item._viewing = window.MatchAppCatalogMedia.viewingTarget?.(meta, item.title) || null;
+        if (item._viewing?.provider) item.platform = item._viewing.provider;
+        else if (item._viewing?.mode === 'cinema') item.platform = '';
+    } catch (_) {}
+    return item;
+}
+
 function itemFromTitle(name) {
     const wanted = titleKey(name);
     if (!wanted) return { title: String(name || '').trim(), year: '', type: '', platform: '', synopsis: '' };
@@ -428,6 +451,7 @@ function discoverIsEpisodic(item) {
 }
 
 function discoverWhereLabel(item) {
+    if (item?._viewing?.mode === 'cinema') return discoverLabel('discover.inCinemas', 'In cinemas');
     const p = item && item.platform && item.platform !== 'any' ? String(item.platform) : '';
     return p;
 }
@@ -436,6 +460,7 @@ function discoverStartLabel(item) {
     const year = parseInt(item && item.year, 10);
     if (!year) return '';
     const nowY = new Date().getFullYear();
+    if (item?._viewing?.mode === 'cinema') return discoverLabel('discover.inCinemas', 'In cinemas');
     if (year > nowY) return discoverLabel('discover.startsIn', 'Starts {year}').replace('{year}', String(year));
     if (year === nowY) return discoverLabel('discover.nowStreaming', 'Now streaming');
     if (discoverIsEpisodic(item)) return discoverLabel('discover.sinceYear', 'Since {year}').replace('{year}', String(year));
