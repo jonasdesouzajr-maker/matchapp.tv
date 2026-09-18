@@ -48,7 +48,7 @@ test('Match Together stays visible before premiere and event editorial content',
 test('core CTA, quota loading, trending and separate AI experiences remain intact',()=>{
   const s=read('index.html');
   assert.match(s,/Find My Match/);
-  assert.match(s,/Checking daily matches/i);
+  assert.match(s,/Checking daily allowance/i);
   assert.doesNotMatch(s,/>\s*0 left today\s*</i);
   assert.match(s,/Latest titles trending right now/i);
   assert.match(s,/Talk to our Ai/);
@@ -60,12 +60,12 @@ test('both Android Studio apps carry stabilized release marker without changing 
   const kidsGradle=read('android-studio/kidsapp/build.gradle.kts');
   const main=read('android-studio/app/src/main/java/tv/matchapp/app/MainActivity.kt');
   const kids=read('android-studio/kidsapp/src/main/java/tv/matchapp/kids/MainActivity.kt');
-  assert.match(mainGradle,/versionCode = 9/);
-  assert.match(mainGradle,/versionName = "1\.1\.6"/);
-  assert.match(kidsGradle,/versionCode = 9/);
-  assert.match(kidsGradle,/versionName = "1\.1\.6"/);
-  assert.match(main,/https:\/\/matchapp\.tv\/\?utm_source=android_app&appBuild=9/);
-  assert.match(kids,/https:\/\/matchapp\.tv\/kids\/\?utm_source=android_kids_app&appBuild=9/);
+  assert.match(mainGradle,/versionCode = 10/);
+  assert.match(mainGradle,/versionName = "1\.1\.8"/);
+  assert.match(kidsGradle,/versionCode = 10/);
+  assert.match(kidsGradle,/versionName = "1\.1\.8"/);
+  assert.match(main,/https:\/\/matchapp\.tv\/\?utm_source=android_app&appBuild=10/);
+  assert.match(kids,/https:\/\/matchapp\.tv\/kids\/\?utm_source=android_kids_app&appBuild=10/);
   assert.match(main,/MATCHAPP_ANDROID_KIDS_DISABLED/);
   assert.match(kids,/MATCHAPP_ANDROID_KIDS_ONLY/);
 });
