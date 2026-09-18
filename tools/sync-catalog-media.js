@@ -37,6 +37,21 @@ function kidsKind(entry){
   if(/movie|film/.test(cats))return 'movie';
   return 'tv';
 }
+function homepageTrending(){
+  const html=read('index.html');
+  const rail=html.match(/<div class="marquee-track" id="marquee-track">([\s\S]*?)<\/div>\s*<\/div>\s*<\/div>/)?.[1]||'';
+  const rows=[],seen=new Set();
+  const re=/<div class="marquee-item"[^>]*>[\s\S]*?<img[^>]*data-title="([^"]+)"[^>]*src="([^"]+)"/g;
+  let m;
+  while((m=re.exec(rail))&&rows.length<10){
+    const title=m[1].replace(/&quot;/g,'"').replace(/&amp;/g,'&').trim();
+    const key=normalize(title);if(!key||seen.has(key))continue;seen.add(key);
+    const poster=String(m[2]||'').match(/image\.tmdb\.org\/t\/p\/(?:w\d+|original)(\/[^?"']+)/i)?.[1]||null;
+    rows.push({title,year:null,media_kind:'other',poster_path:poster,homepage_trending:true,kids_approved:false,kids_age_bands:[]});
+  }
+  if(rows.length!==10)throw new Error(`Expected exactly 10 homepage trending titles, found ${rows.length}`);
+  return rows;
+}
 function buildCatalog(){
   const content=parseArray(read('app.js'),/const CONTENT_CATALOG = (\[[\s\S]*?\n\]);/,'CONTENT_CATALOG');
   const kids=parseArray(read('kids/kids.js'),/const LIBRARY = (\[[\s\S]*?\n  \]);/,'Kids LIBRARY');
@@ -47,6 +62,15 @@ function buildCatalog(){
     if(!entry?.title)continue;const kind=mainKind(entry);if(kind==='other')continue;const year=Number.isInteger(Number(entry.year))?Number(entry.year):null,key=`${normalize(entry.title)}::${year||''}::${kind}`;if(seen.has(key))continue;seen.add(key);const ages=kidIndex.get(key)||[];out.push({title:String(entry.title),year,media_kind:kind,kids_approved:ages.length>0,kids_age_bands:ages});
   }
   for(const k of kids){if(!k?.title)continue;const kind=kidsKind(k),year=Number.isInteger(Number(k.year))?Number(k.year):null,key=`${normalize(k.title)}::${year||''}::${kind}`;if(seen.has(key))continue;seen.add(key);out.push({title:String(k.title),year,media_kind:kind,kids_approved:true,kids_age_bands:Array.isArray(k.ages)?k.ages.map(String):[]});}
+  // Grok updates the homepage rail daily. Always feed those exact ten titles
+  // into the same server-side media enrichment so synopsis, genres, preview
+  // and availability can never depend on hand-maintained client links.
+  for(const t of homepageTrending()){
+    const duplicate=[...seen].some(k=>k.startsWith(normalize(t.title)+'::'));
+    if(duplicate)continue;
+    seen.add(`${normalize(t.title)}::::other`);
+    out.push(t);
+  }
   return out;
 }
 async function oidcToken(){
@@ -56,7 +80,7 @@ async function oidcToken(){
 function summaryMarkdown(catalog,result){return `## MatchApp catalog media refresh\n\n- Input titles: ${catalog.length}\n- Catalog attempted: ${result.catalog_attempted??'n/a'}\n- Catalog resolved: ${result.catalog_resolved??'n/a'}\n- Trending resolved: ${result.trending_resolved??'n/a'}\n- Rows upserted: ${result.upserted??'n/a'}\n- Duration: ${result.duration_ms??'n/a'} ms\n`;}
 async function main(){
   const catalog=buildCatalog(),counts=catalog.reduce((m,x)=>(m[x.media_kind]=(m[x.media_kind]||0)+1,m),{});
-  if(dry){console.log(JSON.stringify({ok:true,dry_run:true,titles:catalog.length,kids_approved:catalog.filter(x=>x.kids_approved).length,by_kind:counts},null,2));return;}
+  if(dry){console.log(JSON.stringify({ok:true,dry_run:true,titles:catalog.length,kids_approved:catalog.filter(x=>x.kids_approved).length,homepage_trending:catalog.filter(x=>x.homepage_trending).length,by_kind:counts},null,2));return;}
   const token=await oidcToken(),res=await fetch(SYNC_URL,{method:'POST',headers:{authorization:`Bearer ${token}`,'content-type':'application/json',accept:'application/json'},body:JSON.stringify({catalog,include_trending:true})}),text=await res.text();let result;try{result=JSON.parse(text);}catch{throw new Error(`catalog-media-ingest returned non-JSON (${res.status})`);}if(!res.ok||result?.ok!==true)throw new Error(`catalog-media-ingest failed (${res.status}): ${result?.error||text.slice(0,200)}`);console.log(JSON.stringify(result,null,2));if(process.env.GITHUB_STEP_SUMMARY)fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY,summaryMarkdown(catalog,result));
 }
 main().catch(err=>{console.error(`[catalog-media-sync] ${err?.stack||err}`);process.exitCode=1;});
