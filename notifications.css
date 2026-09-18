@@ -14,3 +14,9 @@
 @keyframes matchBellRing{0%,88%,100%{transform:rotate(0)}90%{transform:rotate(15deg)}92%{transform:rotate(-12deg)}94%{transform:rotate(8deg)}96%{transform:rotate(-5deg)}}@keyframes matchBellGlow{0%,100%{box-shadow:0 0 0 1px rgba(229,193,88,.1),0 0 12px rgba(229,193,88,.13)}50%{box-shadow:0 0 0 1px rgba(229,193,88,.25),0 0 23px rgba(229,193,88,.34)}}@keyframes availabilityHighlight{0%,100%{box-shadow:none}35%{box-shadow:0 0 0 2px rgba(229,193,88,.65),0 0 32px rgba(229,193,88,.22)}}
 @media(max-width:600px){.matchapp-notification-panel{right:8px;left:8px;top:116px;width:auto;max-height:calc(100dvh - 126px);border-radius:18px}.matchapp-notification-delivery{grid-template-columns:1fr}.matchapp-notification-delivery small{grid-column:1}.matchapp-notification-button{width:100%;height:38px;border-radius:12px}}
 @media(prefers-reduced-motion:reduce){.matchapp-notification-button,.matchapp-notification-button svg,.matchapp-card-availability.is-highlighted{animation:none!important}}
+
+.matchapp-notification-floating{position:fixed!important;top:14px;right:14px;z-index:4800!important;width:42px!important;height:42px!important;background:rgba(20,11,38,.96)!important;box-shadow:0 8px 28px rgba(0,0,0,.38)}
+@media(max-width:600px){
+  body.page-home .matchapp-notification-button{border-radius:12px!important}
+  .matchapp-notification-floating{top:10px!important;right:10px!important;width:40px!important;height:40px!important;border-radius:50%!important}
+}
