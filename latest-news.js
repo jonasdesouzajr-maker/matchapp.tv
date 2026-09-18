@@ -280,7 +280,6 @@
       if(chosen.combined.length){carousel=rail(chosen.combined);panel.append(carousel);}else{const e=document.createElement('div');e.className='ma-news-empty';e.textContent='Fresh verified headlines are being prepared. Check back shortly.';panel.append(e);}
 
       const meta=document.createElement('div');meta.className='ma-news-meta';meta.innerHTML=`<span>Updated ${esc(formatDate(payload.generated_at||Date.now()))}</span><span>Tap a story to open its original source</span>`;panel.append(meta);
-      const ad=document.createElement('div');ad.className='ma-news-ad';ad.innerHTML='<span class="ma-news-ad-label">SPONSORED</span><ins class="adsbygoogle" style="display:block;min-height:50px" data-ad-client="ca-pub-9541435081010948" data-ad-slot="2595698117" data-ad-format="auto" data-full-width-responsive="true"></ins>';panel.append(ad);
       if(deep.shouldOpen)openAndReveal(deep.requestedNewsId);else if(section.open&&carousel&&carousel.startAuto)window.setTimeout(()=>carousel.startAuto(),180);
       track('latest_news_ready',{news_country:country,news_local_count:chosen.combined.filter(x=>x.scope==='local').length,news_global_count:chosen.combined.filter(x=>x.scope==='global').length,news_total_count:chosen.combined.length,news_feed_version:currentVersion,news_deep_link:Boolean(deep.requestedNewsId)});
     }catch(_){panel.innerHTML='<div class="ma-news-error">Latest News is temporarily unavailable. The rest of MatchApp is unaffected.</div>';}
