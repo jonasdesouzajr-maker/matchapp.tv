@@ -556,7 +556,10 @@ function discoverCardHTML(item, idx) {
     const meta = escapeDiscoverHtml([item.year, item.type, item.platform && item.platform !== 'any' ? item.platform : '']
         .filter(Boolean).join(' · '));
     const isAudio = /podcast|album|music|audiobook/i.test(item.type || '');
-    const watchLabel = isAudio ? discoverLabel('res.listennow', '🎧 Listen Now') : discoverLabel('discover.watchNow', '▶ Watch Now');
+    const cinemaOnly = item?._viewing?.mode === 'cinema';
+    const watchLabel = cinemaOnly
+        ? discoverLabel('discover.titlePage', '🎟️ In Cinemas · Title Page')
+        : (isAudio ? discoverLabel('res.listennow', '🎧 Listen Now') : discoverLabel('discover.watchNow', '▶ Watch Now'));
     const saveLabel = discoverLabel('res.watchlater', '⭐ Watch Later');
     const nfmLabel = discoverLabel('res.notforme', '👎 Not For Me');
     const whyText = item.why === 'director'
@@ -567,12 +570,17 @@ function discoverCardHTML(item, idx) {
         : item.synopsis) || '');
     const lang = window.MATCH_LANG || 'en';
     const facts = discoverFactsHTML(item);
+    const categories = Array.isArray(item.cats) && item.cats.length
+        ? `<div class="discover-categories" aria-label="${escapeDiscoverHtml(discoverLabel('discover.categories','Categories'))}">${item.cats.slice(0,8).map(c => `<span class="discover-category">${escapeDiscoverHtml(c)}</span>`).join('')}</div>`
+        : '';
+    const ribbon = cinemaOnly ? `<span class="discover-cinema-ribbon">${escapeDiscoverHtml(discoverLabel('discover.inCinemas','In cinemas'))}</span>` : '';
     const metaLine = facts
         ? (item.type ? `<div class="discover-meta">${escapeDiscoverHtml(item.type)}</div>` : '')
         : (meta ? `<div class="discover-meta">${meta}</div>` : '');
     return `
     <article class="discover-card${item.why ? ' is-related' : ''}" data-discover-idx="${idx}">
         <div class="discover-poster">
+            ${ribbon}
             <img id="dp-${idx}" src="" alt="${safe}" loading="lazy">
             <div class="discover-rank">${item.why ? '＋' : '#' + (idx + 1)}</div>
         </div>
@@ -581,9 +589,11 @@ function discoverCardHTML(item, idx) {
             <h3 data-src-text="${escapeDiscoverHtml(item.title || title)}" data-locale-painted="${lang}">${safe}</h3>
             ${metaLine}
             ${facts}
+            ${categories}
             <p class="discover-synopsis" data-locale-painted="${lang}">${synopsis}</p>
+            <div id="discover-preview-${idx}" class="discover-card-preview" hidden></div>
             <div class="discover-actions">
-                <a id="dl-${idx}" class="gold-btn discover-play" href="#" target="_blank" rel="noopener">${watchLabel}</a>
+                <a id="dl-${idx}" class="gold-btn discover-play${cinemaOnly ? ' is-cinema' : ''}" href="#" target="_blank" rel="noopener">${watchLabel}</a>
                 <button type="button" class="discover-save" onclick="saveDiscoverItem(${idx})" id="ds-${idx}">${saveLabel}</button>
                 <button type="button" class="discover-nfm" onclick="notForMeDiscoverItem(${idx})" id="dn-${idx}">${nfmLabel}</button>
             </div>
