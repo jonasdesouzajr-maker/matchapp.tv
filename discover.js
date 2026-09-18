@@ -412,7 +412,7 @@ async function enrichDiscoverMedia(item) {
         item._catalogMedia = meta;
         if (meta.year) item.year = meta.year;
         if (meta.overview) item.synopsis = meta.overview;
-        if (Array.isArray(meta.genres) && meta.genres.length) item.cats = meta.genres.slice(0, 8);
+        if (Array.isArray(meta.genres) && meta.genres.length) item.realGenres = meta.genres.slice(0, 8);
         if (!item.type || item.type === 'any') item.type = meta.media_kind === 'tv' ? 'series' : (meta.media_kind || item.type);
         item._viewing = window.MatchAppCatalogMedia.viewingTarget?.(meta, item.title) || null;
         if (item._viewing?.provider) item.platform = item._viewing.provider;
@@ -570,8 +570,8 @@ function discoverCardHTML(item, idx) {
         : item.synopsis) || '');
     const lang = window.MATCH_LANG || 'en';
     const facts = discoverFactsHTML(item);
-    const categories = Array.isArray(item.cats) && item.cats.length
-        ? `<div class="discover-categories" aria-label="${escapeDiscoverHtml(discoverLabel('discover.categories','Categories'))}">${item.cats.slice(0,8).map(c => `<span class="discover-category">${escapeDiscoverHtml(c)}</span>`).join('')}</div>`
+    const categories = Array.isArray(item.realGenres) && item.realGenres.length
+        ? `<div class="discover-categories" aria-label="${escapeDiscoverHtml(discoverLabel('discover.categories','Genres'))}">${item.realGenres.slice(0,8).map(c => `<span class="discover-category">${escapeDiscoverHtml(c)}</span>`).join('')}</div>`
         : '';
     const ribbon = cinemaOnly ? `<span class="discover-cinema-ribbon">${escapeDiscoverHtml(discoverLabel('discover.inCinemas','In cinemas'))}</span>` : '';
     const metaLine = facts
@@ -591,6 +591,7 @@ function discoverCardHTML(item, idx) {
             ${facts}
             ${categories}
             <p class="discover-synopsis" data-locale-painted="${lang}">${synopsis}</p>
+            <div id="discover-availability-${idx}" class="matchapp-card-availability" hidden></div>
             <div id="discover-preview-${idx}" class="discover-card-preview" hidden></div>
             <div class="discover-actions">
                 <a id="dl-${idx}" class="gold-btn discover-play${cinemaOnly ? ' is-cinema' : ''}" href="#" target="_blank" rel="noopener">${watchLabel}</a>
@@ -599,6 +600,18 @@ function discoverCardHTML(item, idx) {
             </div>
         </div>
     </article>`;
+}
+
+function paintDiscoverGenres(item, idx) {
+    const card = document.querySelector(`[data-discover-idx="${idx}"]`);
+    if (!card) return;
+    const genres = Array.isArray(item?.realGenres) ? item.realGenres.filter(Boolean).slice(0, 8) : [];
+    let host = card.querySelector('.discover-categories');
+    if (!genres.length) { host?.remove(); return; }
+    const html = `<div class="discover-categories" aria-label="${escapeDiscoverHtml(discoverLabel('discover.categories','Genres'))}">${genres.map(g => `<span class="discover-category">${escapeDiscoverHtml(g)}</span>`).join('')}</div>`;
+    if (host) { host.outerHTML = html; return; }
+    const synopsis = card.querySelector('.discover-synopsis');
+    synopsis?.insertAdjacentHTML('beforebegin', html);
 }
 
 let DISCOVER_ITEMS = [];
@@ -660,7 +673,8 @@ async function hydrateDiscoverCard(item, idx) {
             tmdbId: cm.tmdb_id || null,
             kind: cm.media_kind || '',
             source: 'catalog-media',
-            title: cm.title || item.title
+            title: cm.title || item.title,
+            genres: Array.isArray(cm.genres) ? cm.genres.slice(0, 8) : []
         };
     }
     const visualType = !/podcast|album|music|audiobook/i.test(item.type || '');
@@ -668,16 +682,15 @@ async function hydrateDiscoverCard(item, idx) {
         const kind = /movie|film/i.test(item.type || '') ? 'movie' : /series|tv|drama|anime|novela|show|documentary/i.test(item.type || '') ? 'tv' : '';
         const tmdb = await window.tmdbLookup(item.title, { year: item.year || '', kind });
         if (tmdb && (tmdb.posterLarge || tmdb.poster)) {
-            meta = { artwork: tmdb.posterLarge || tmdb.poster, year: tmdb.year || item.year || '', overview: tmdb.overview || '', tmdbId: tmdb.tmdbId, kind: tmdb.kind, source: 'tmdb', title: tmdb.title };
+            meta = { artwork: tmdb.posterLarge || tmdb.poster, year: tmdb.year || item.year || '', overview: tmdb.overview || '', tmdbId: tmdb.tmdbId, kind: tmdb.kind, source: 'tmdb', title: tmdb.title, genres: Array.isArray(tmdb.genres) ? tmdb.genres.slice(0,8) : [] };
             item._tmdb = tmdb;
         }
     }
-    if (!meta && !skipLiveLookup && !verified && typeof getRichMetadata === 'function') {
-        // If this AI-chat title happens to also be one of our curated catalog
-        // entries, use its real year/country to disambiguate the same way the
-        // main match render does. The common case is no catalog hit at all
-        // (most AI answers aren't in it), in which case this is a no-op and
-        // behaviour is unchanged from before.
+    let richMeta = null;
+    if (!item._catalogMedia && !skipLiveLookup && typeof getRichMetadata === 'function') {
+        // Apple metadata is exact-identity guarded in app.js. Keep it separate
+        // from TMDB artwork so it can supply a genuine preview and source genre
+        // even when TMDB already supplied the poster.
         let chatHints = {};
         try {
             if (typeof CONTENT_CATALOG !== 'undefined') {
@@ -685,7 +698,8 @@ async function hydrateDiscoverCard(item, idx) {
                 if (e) chatHints = { year: e.year, country: e.country, countryCode: e.countryCode };
             }
         } catch (err) {}
-        meta = await getRichMetadata(item.title, item.type || '', chatHints);
+        richMeta = await getRichMetadata(item.title, item.type || '', chatHints);
+        if (!meta && !verified && richMeta) meta = richMeta;
     }
     // The TVMaze secondary attempt is deliberately NOT used for AI-chat
     // results at all (unlike the main match render, which does use it for
@@ -694,6 +708,20 @@ async function hydrateDiscoverCard(item, idx) {
     // best guess — stacking a second, looser lookup on top of that is where
     // the remaining risk lived, for a real-cover gain that isn't worth it
     // here.
+
+    if (Array.isArray(item._catalogMedia?.genres) && item._catalogMedia.genres.length) {
+        item.realGenres = item._catalogMedia.genres.slice(0, 8);
+    } else if (Array.isArray(meta?.genres) && meta.genres.length) {
+        item.realGenres = meta.genres.slice(0, 8);
+    } else if (richMeta?.genre) {
+        item.realGenres = [String(richMeta.genre)];
+    } else if (!item.realGenres?.length && typeof fetchTitleMeta === 'function' && visualType && !skipLiveLookup) {
+        try {
+            const tvMeta = await fetchTitleMeta(item.title, { year: item.year || '' });
+            if (Array.isArray(tvMeta?.genres) && tvMeta.genres.length) item.realGenres = tvMeta.genres.slice(0, 8);
+        } catch (_) {}
+    }
+    paintDiscoverGenres(item, idx);
 
     let resolvedArtwork = fallbackArtwork;
     if (verified) {
@@ -749,9 +777,46 @@ async function hydrateDiscoverCard(item, idx) {
         }
         item._url = url || '';
     }
+    const availabilityHost = document.getElementById('discover-availability-' + idx);
+    if (item._catalogMedia && window.MatchAppCatalogMedia?.renderAvailability) {
+        window.MatchAppCatalogMedia.renderAvailability(availabilityHost, item._catalogMedia, { title: item.title });
+    }
+    const previewHost = document.getElementById('discover-preview-' + idx);
     if (item._catalogMedia && window.MatchAppCatalogMedia?.renderPreview) {
-        const host = document.getElementById('discover-preview-' + idx);
-        window.MatchAppCatalogMedia.renderPreview(host, item._catalogMedia, { title: item.title });
+        window.MatchAppCatalogMedia.renderPreview(previewHost, item._catalogMedia, { title: item.title });
+    } else if (previewHost) {
+        previewHost.replaceChildren();
+        previewHost.hidden = true;
+        const previewUrl = String(richMeta?.preview || '');
+        const storeUrl = String(richMeta?.storeUrl || '');
+        const realVideo = richMeta && typeof isVideoPreview === 'function' && isVideoPreview(richMeta) &&
+            /^https:\/\/(?:video-ssl|audio-ssl)\.itunes\.apple\.com\//i.test(previewUrl);
+        if (realVideo) {
+            const label = document.createElement('div');
+            label.className = 'matchapp-media-preview-label';
+            label.textContent = discoverLabel('discover.preview', 'Preview');
+            const video = document.createElement('video');
+            video.controls = true; video.preload = 'metadata'; video.playsInline = true; video.src = previewUrl;
+            video.setAttribute('aria-label', item.title + ' preview');
+            previewHost.append(label, video);
+            if (/^https:\/\//.test(storeUrl)) {
+                const source = document.createElement('a'); source.href = storeUrl; source.target = '_blank'; source.rel = 'noopener noreferrer';
+                source.className = 'matchapp-title-page-btn'; source.textContent = discoverLabel('discover.titlePage','Open title page');
+                previewHost.appendChild(source);
+            }
+            previewHost.hidden = false;
+        } else {
+            let titlePage = '';
+            if (Number.isSafeInteger(Number(meta?.tmdbId)) && ['movie','tv'].includes(meta?.kind)) {
+                titlePage = 'https://www.themoviedb.org/' + meta.kind + '/' + meta.tmdbId;
+            } else if (/^https:\/\//.test(storeUrl)) titlePage = storeUrl;
+            if (titlePage) {
+                const label = document.createElement('div'); label.className = 'matchapp-media-preview-label'; label.textContent = discoverLabel('discover.preview','Preview');
+                const source = document.createElement('a'); source.href = titlePage; source.target = '_blank'; source.rel = 'noopener noreferrer';
+                source.className = 'matchapp-title-page-btn'; source.textContent = discoverLabel('discover.titlePage','Open title page');
+                previewHost.append(label, source); previewHost.hidden = false;
+            }
+        }
     }
     if (meta && meta.year && !item.year) item.year = meta.year;
     paintDiscoverFacts(item, idx);
