@@ -1,5 +1,6 @@
--- MatchApp account identity + separated quota bootstrap.
--- Ask AI credits and Match allowances/purchased Matches are intentionally independent.
+-- MatchApp account identity + commercial quota bootstrap.
+-- Included daily AI actions are shared between Match and Ask AI.
+-- Paid top-ups are intentionally separate: Ask AI credits vs purchased Matches.
 
 alter table public.profiles add column if not exists purchased_matches integer not null default 0;
 do $$ begin
@@ -35,10 +36,6 @@ begin
  select * into v_row from public.profiles where id=v_uid for update;
  v_used:=case when v_row.daily_match_date=current_date then v_row.daily_match_count else 0 end;
  v_complete:=public.profile_is_complete(v_row);
- if coalesce(v_row.is_vip,false) and not coalesce(v_row.is_business,false) then
-  update public.profiles set daily_match_count=v_used+1,daily_match_date=current_date where id=v_uid;
-  return jsonb_build_object('allowed',true,'unlimited',true,'used',v_used+1,'remaining',-1,'purchased_matches',coalesce(v_row.purchased_matches,0),'profile_complete',v_complete);
- end if;
  v_limit:=public.match_daily_limit_v2(coalesce(v_row.is_vip,false),coalesce(v_row.is_business,false),v_complete);
  if v_used < v_limit then
   update public.profiles set daily_match_count=v_used+1,daily_match_date=current_date where id=v_uid;
@@ -54,8 +51,8 @@ end;$$;
 revoke all on function public.consume_match() from public,anon;
 grant execute on function public.consume_match() to authenticated;
 
--- Compatibility entry point for older clients. It dispatches to the separated balances;
--- it never recreates a shared balance.
+-- Compatibility entry point for older clients.
+-- Included daily actions are shared; paid fallback balances remain type-specific.
 create or replace function public.consume_ai_action(p_reason text default 'match')
 returns jsonb
 language plpgsql
