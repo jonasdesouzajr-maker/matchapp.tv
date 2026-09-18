@@ -47,7 +47,7 @@
  }
  function loadCatalogMedia(){
   if(document.querySelector('script[data-kids-catalog-media]'))return;
-  const s=document.createElement('script');s.src='/catalog-media.js?v=20260918-detail5';s.defer=true;s.async=false;s.dataset.kidsCatalogMedia='1';document.head.appendChild(s);
+  const s=document.createElement('script');s.src='/catalog-media.js?v=20260918-detail6';s.defer=true;s.async=false;s.dataset.kidsCatalogMedia='1';document.head.appendChild(s);
  }
  window.KidsAccount=Object.freeze({consume,remember,prepare:async()=>attach(await session())});
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',loadCatalogMedia,{once:true});else loadCatalogMedia();
