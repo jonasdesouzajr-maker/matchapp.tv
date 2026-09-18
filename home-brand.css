@@ -146,6 +146,10 @@ html[lang="pt-BR"] #home-brand-lockup .home-ai-pt{display:inline-block}
 
 /* Phones: brand gets a clean first row; existing controls stay on their own
    responsive nav row. The relative size hierarchy remains logo > name, Ai > name. */
+@media (max-width:900px){
+  html .app-header #home-brand-lockup{justify-content:center!important}
+}
+
 @media (max-width:720px){
   html .app-header #home-brand-lockup{
     width:100%!important;
