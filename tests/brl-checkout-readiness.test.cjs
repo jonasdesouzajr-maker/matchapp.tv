@@ -8,6 +8,8 @@ test('Brazil checkout is server-gated and Stripe manages eligible Pix presentati
   assert.match(ui,/action:'availability'/);
   assert.match(ui,/active\.has\(key\)/);
   assert.match(ui,/PIX aparece no Checkout quando elegível/);
+  assert.match(pricing,/MatchBillingMarket\?\.ready/);
+  assert.match(pricing,/market:'BR',currency:'brl'/);
 });
 test('hosted checkout never requires Organization, tax ID or phone',()=>{
   assert.match(checkout,/name_collection:\{business:\{enabled:false\},individual:\{enabled:false\}\}/);
