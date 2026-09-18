@@ -67,7 +67,7 @@ test('match CTA and neutral quota loading state are localized without merging AI
   const loading=[...locale.matchAll(/'quota\.checking':\s*'([^']+)'/g)].map(m=>m[1]);
   assert.equal(loading.length,14);
   assert.match(html,/id="result-quota-num">…<\/span>/);
-  assert.match(html,/data-i18n="quota\.checking">Checking daily matches…<\/span>/);
+  assert.match(html,/data-i18n="quota\.checking">Checking daily allowance…<\/span>/);
 
   assert.match(html,/Talk to our Ai/);
   assert.match(html,/id="search-box"/);
@@ -80,11 +80,11 @@ test('both Android Studio modules point to current live surfaces for AAB build',
   const kids=read('android-studio/kidsapp/src/main/java/tv/matchapp/kids/MainActivity.kt');
 
   for(const gradle of [mainGradle,kidsGradle]){
-    assert.match(gradle,/versionCode = 9/);
-    assert.match(gradle,/versionName = "1\.1\.6"/);
+    assert.match(gradle,/versionCode = 10/);
+    assert.match(gradle,/versionName = "1\.1\.8"/);
   }
-  assert.match(main,/https:\/\/matchapp\.tv\/\?utm_source=android_app&appBuild=9/);
-  assert.match(kids,/https:\/\/matchapp\.tv\/kids\/\?utm_source=android_kids_app&appBuild=9/);
+  assert.match(main,/https:\/\/matchapp\.tv\/\?utm_source=android_app&appBuild=10/);
+  assert.match(kids,/https:\/\/matchapp\.tv\/kids\/\?utm_source=android_kids_app&appBuild=10/);
   assert.match(main,/MATCHAPP_ANDROID_KIDS_DISABLED/);
   assert.match(kids,/MATCHAPP_ANDROID_KIDS_ONLY/);
 });
