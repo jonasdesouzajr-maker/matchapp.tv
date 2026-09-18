@@ -168,7 +168,13 @@ function lockPage(intro){
 }
 function unlockPage(){
   document.body.classList.remove('matchapp-tiktok-intro-open');
-  if(pageLocked) document.body.style.overflow=previousBodyOverflow;
+  document.documentElement.style.removeProperty('overflow');
+  if(pageLocked){
+    if(previousBodyOverflow) document.body.style.overflow=previousBodyOverflow;
+    else document.body.style.removeProperty('overflow');
+  }else{
+    document.body.style.removeProperty('overflow');
+  }
   pageLocked=false;
   previousBodyOverflow='';
 }
@@ -183,10 +189,24 @@ function closeIntro(mark=true){
   if(mark)markSeen();
   if(introFrame){
     postPlayer(introFrame,'pause');
-    introFrame.src='about:blank';
+    try{introFrame.removeAttribute('src');}catch(_){}
+    try{introFrame.remove();}catch(_){}
+    introFrame=null;
   }
-  if(intro)intro.hidden=true;
   delete document.documentElement.dataset.tiktokIntro;
+  if(intro){
+    intro.hidden=true;
+    intro.style.setProperty('display','none','important');
+    intro.style.setProperty('pointer-events','none','important');
+    try{intro.remove();}catch(_){}
+  }
+  try{if(document.activeElement&&document.activeElement.blur)document.activeElement.blur();}catch(_){}
+  // A final next-frame release protects Android WebView/Chrome compositor state.
+  requestAnimationFrame(()=>{
+    document.documentElement.style.removeProperty('overflow');
+    document.body.style.removeProperty('overflow');
+    document.body.style.removeProperty('pointer-events');
+  });
 }
 function introFallback(message){
   const intro=document.getElementById('matchapp-tiktok-intro');
