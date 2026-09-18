@@ -3532,13 +3532,16 @@ window.triggerMatch = async function(isSpecificSearch = false) {
                 // anything malformed), stringifying it here is what would have
                 // put raw JSON-looking text into the synopsis on screen —
                 // catching it here means that can never happen silently.
+                const aiPlatformHint = matchResult.platform ? String(matchResult.platform).trim() : '';
                 matchResult = {
                     title: String(matchResult.title).trim(),
                     synopsis: matchResult.synopsis ? String(matchResult.synopsis).trim() : '',
-                    platform: matchResult.platform ? String(matchResult.platform).trim() : 'any'
+                    platform: 'any',
+                    platformHint: aiPlatformHint,
+                    platformVerified: false
                 };
             } catch (err) {
-                matchResult = { title: typedTitle, synopsis: "Here's your title — tap Stream Now to find it on your platform of choice.", platform: "Web" };
+                matchResult = { title: typedTitle, synopsis: "Here's your title — verified viewing options will appear below when available.", platform: "any", platformVerified: false };
             }
         }
     } else {
