@@ -19,9 +19,10 @@
   color:inherit;
 }
 #home-brand-lockup .brand-logo{
-  width:4.5rem!important;
-  height:4.5rem!important;
-  flex:0 0 4.5rem!important;
+  --home-logo-size:4.5rem;
+  width:var(--home-logo-size)!important;
+  height:var(--home-logo-size)!important;
+  flex:0 0 var(--home-logo-size)!important;
   clip-path:circle(50% at 50% 50%)!important;
   border-radius:50%!important;
   filter:drop-shadow(0 0 13px rgba(229,193,88,.2));
@@ -311,14 +312,16 @@ body .top-ai-launch:not(:hover):not(:focus-visible){
    navigation and every non-brand element untouched. */
 @media (min-width:1600px){
   #home-brand-lockup .brand-logo{
-    width:5rem!important;height:5rem!important;flex-basis:5rem!important;
+    --home-logo-size:5rem;
+    width:var(--home-logo-size)!important;height:var(--home-logo-size)!important;flex-basis:var(--home-logo-size)!important;
   }
   #home-brand-lockup .home-brand-name{font-size:2.8rem}
   #home-brand-lockup .home-ai-link{font-size:3.45rem}
 }
 @media (min-width:2560px){
   #home-brand-lockup .brand-logo{
-    width:5.65rem!important;height:5.65rem!important;flex-basis:5.65rem!important;
+    --home-logo-size:5.65rem;
+    width:var(--home-logo-size)!important;height:var(--home-logo-size)!important;flex-basis:var(--home-logo-size)!important;
   }
   #home-brand-lockup .home-brand-name{font-size:3.1rem}
   #home-brand-lockup .home-ai-link{font-size:3.85rem}
