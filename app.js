@@ -3081,12 +3081,22 @@ function matchesAny(entryValues, wanted) {
     return entryValues.some(v => wanted.includes(v));
 }
 
+function titlePassesRealGenre(entry) {
+    if (!window.__matchappGenreFilterActive) return true;
+    const keys = window.__matchappGenreKeys;
+    if (!(keys instanceof Set)) return false;
+    const normalise = window.MatchAppCatalogMedia?.normalise ||
+        (v => String(v || '').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^\p{L}\p{N}]/gu,''));
+    return keys.has(normalise(entry?.title));
+}
+
 function pickFromCatalog(cat, plat, mood, vibe, rating, decade) {
     const criteria = {cat, plat, mood, vibe, rating, decade: decade || window.getMatchCriteria?.().decade || []};
     const policy = window.matchPolicy;
     if (!policy) return null; // Fail closed if the shared policy did not load.
     const wantsFaith = normCriteria(cat).includes('Gospel & Faith') || normCriteria(plat).some(p => ['Pure Flix','Angel Studios'].includes(p));
     const eligible = e => policy.matches(e, criteria)
+        && titlePassesRealGenre(e)
         && !isBlockedEntry(e) && !SESSION_SHOWN.has(e.title)
         && (wantsFaith || !e.cats.includes('Gospel & Faith'))
         && (normCriteria(cat).length || isSurpriseEligible(e));
@@ -3126,6 +3136,7 @@ function pickRecycledCatalog(cat, plat, mood, vibe, rating, decade) {
     if (!policy || typeof policy.matchesCriteria !== 'function') return null;
     const wantsFaith = normCriteria(cat).includes('Gospel & Faith') || normCriteria(plat).some(p => ['Pure Flix','Angel Studios'].includes(p));
     const eligible = e => policy.matchesCriteria(e, criteria)
+        && titlePassesRealGenre(e)
         && !isBlockedEntry(e)
         && (wantsFaith || !e.cats.includes('Gospel & Faith'))
         && (normCriteria(cat).length || isSurpriseEligible(e));
@@ -3252,6 +3263,7 @@ function pickGuaranteedCatalog(cat, plat, mood, vibe, rating, decade) {
 
     const allowed = entry => {
         if (!entry || !entry.title) return false;
+        if (!titlePassesRealGenre(entry)) return false;
         const k = policy.key(entry.title);
         if (!k || hardExcluded.has(k)) return false;
         try { if (typeof isBlockedEntry === 'function' && isBlockedEntry(entry)) return false; } catch (_) {}
@@ -3357,13 +3369,25 @@ function pruneUnstockedOptions() {
 
 window.triggerMatch = async function(isSpecificSearch = false) {
     await window.matchPolicy?.ready();
-    const requested = window.getMatchCriteria?.() || {cat:[document.getElementById('q-category')?.value],plat:[document.getElementById('q-platform')?.value],mood:[document.getElementById('q-mood')?.value],vibe:[document.getElementById('q-vibe')?.value],rating:[document.getElementById('q-rating')?.value],decade:[document.getElementById('q-decade')?.value]};
+    const requested = window.getMatchCriteria?.() || {cat:[document.getElementById('q-category')?.value],plat:[document.getElementById('q-platform')?.value],genre:[document.getElementById('q-genre')?.value],mood:[document.getElementById('q-mood')?.value],vibe:[document.getElementById('q-vibe')?.value],rating:[document.getElementById('q-rating')?.value],decade:[document.getElementById('q-decade')?.value]};
+    const wantedGenres = normCriteria(requested.genre);
+    window.__matchappGenreFilterActive = wantedGenres.length > 0;
+    window.__matchappGenreKeys = null;
+    window.__matchappGenreRelaxed = false;
+    if (window.__matchappGenreFilterActive) {
+        try {
+            const keys = await window.MatchAppCatalogMedia?.titleKeysForGenres?.(wantedGenres);
+            window.__matchappGenreKeys = keys instanceof Set ? keys : new Set();
+        } catch (_) {
+            window.__matchappGenreKeys = new Set();
+        }
+    }
     let preflight = isSpecificSearch ? null : pickFromCatalog(requested.cat,requested.plat,requested.mood,requested.vibe,requested.rating,requested.decade);
     // When the curated unseen pool is exhausted, try a fresh live title before
     // recycling history. iTunes cannot verify third-party platform availability,
     // so live discovery is used only when the platform filter is unconstrained.
     if (!isSpecificSearch && !preflight) {
-        if (!normCriteria(requested.plat).length) {
+        if (!normCriteria(requested.plat).length && !wantedGenres.length) {
             try { preflight = await discoverFromITunes(requested.cat,requested.mood,requested.vibe,requested.decade,requested.rating); }
             catch (_) { preflight = null; }
         }
@@ -3373,6 +3397,14 @@ window.triggerMatch = async function(isSpecificSearch = false) {
 
     if (!isSpecificSearch && !preflight) {
         preflight = pickGuaranteedCatalog(requested.cat,requested.plat,requested.mood,requested.vibe,requested.rating,requested.decade);
+    }
+    // A real-genre choice is honoured as long as the verified catalog can
+    // satisfy it. If that exact shelf is exhausted, relax only this final
+    // metadata constraint rather than ever dead-ending the matcher.
+    if (!isSpecificSearch && !preflight && window.__matchappGenreFilterActive) {
+        window.__matchappGenreFilterActive = false;
+        preflight = pickGuaranteedCatalog(requested.cat,requested.plat,requested.mood,requested.vibe,requested.rating,requested.decade);
+        window.__matchappGenreRelaxed = !!preflight;
     }
     const alreadySeenSpecific = isSpecificSearch && window.matchPolicy?.known().has(window.matchPolicy.key(typed));
     if (isSpecificSearch && !typed.trim()) return;
@@ -3524,7 +3556,7 @@ window.triggerMatch = async function(isSpecificSearch = false) {
                 decade: [document.getElementById('q-decade')?.value].filter(v => v && v !== 'any')
               };
 
-        let cat = picked.cat, plat = picked.plat, mood = picked.mood,
+        let cat = picked.cat, plat = picked.plat, genre = picked.genre, mood = picked.mood,
             vibe = picked.vibe, rating = picked.rating, decade = picked.decade;
 
         // Tier 1: curated catalog. Every title/platform pairing here was
@@ -3536,7 +3568,7 @@ window.triggerMatch = async function(isSpecificSearch = false) {
         // it back to them. Without this the pick arrives with no explanation and
         // reads as arbitrary — especially after the taste-DNA tie-break, which
         // legitimately narrows things in ways the user didn't explicitly request.
-        window.lastMatchCriteria = { cat, plat, mood, vibe, rating, decade };
+        window.lastMatchCriteria = { cat, plat, genre, mood, vibe, rating, decade };
 
         matchResult = catalogPick;
 
@@ -3624,13 +3656,13 @@ function renderMatchCriteria() {
     const c = window.lastMatchCriteria;
     if (!c) { wrap.style.display = 'none'; return; }
 
-    const fields={cat:'q-category',plat:'q-platform',mood:'q-mood',vibe:'q-vibe',rating:'q-rating',decade:'q-decade'};
+    const fields={cat:'q-category',plat:'q-platform',genre:'q-genre',mood:'q-mood',vibe:'q-vibe',rating:'q-rating',decade:'q-decade'};
     const pretty = (v,k) => [...(document.getElementById(fields[k])?.options||[])].find(option=>option.value===v)?.textContent || String(v || '').replace(/\b\w/g, ch => ch.toUpperCase());
     // Criteria are sets now, so every ticked value gets its own chip rather
     // than only the first — otherwise the card would quietly claim the user
     // asked for less than they did.
     const parts = [];
-    ['cat', 'plat', 'mood', 'vibe', 'rating', 'decade'].forEach(k => {
+    ['cat', 'genre', 'plat', 'mood', 'vibe', 'rating', 'decade'].forEach(k => {
         normCriteria(c[k]).forEach(v => parts.push(pretty(v,k)));
     });
 
