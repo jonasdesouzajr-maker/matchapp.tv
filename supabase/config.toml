@@ -21,6 +21,10 @@ verify_jwt = true
 [functions.tmdb-proxy]
 verify_jwt = true
 
+# Backend-only hourly notification delivery. It validates a secret stored in Supabase Vault.
+[functions.notification-worker]
+verify_jwt = false
+
 # catalog-media-ingest is backend-only. Supabase's JWT gate is disabled because
 # the endpoint validates GitHub Actions' short-lived OIDC JWT itself before any
 # TMDB request or database write.
