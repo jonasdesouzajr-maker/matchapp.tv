@@ -8,6 +8,7 @@ const read=p=>fs.readFileSync(path.join(root,p),'utf8');
 test('Latest News is homepage-only, folded by default, country-aware and placed after premiere',()=>{
   const wiring=read('final-wiring.js'),src=read('latest-news.js');
   assert.match(wiring,/if\(path==='\/'\|\|path==='\/index\.html'\)\{[^}]*js\('\/latest-news\.js'\)/);
+  assert.match(wiring,/js\('\/latest-news-image-guard\.js'\)/);
   assert.match(src,/document\.createElement\('details'\)/);
   assert.match(src,/section\.open=false/);
   assert.match(src,/document\.getElementById\('premiere-disclosure'\)/);
@@ -72,6 +73,8 @@ test('news cards open the original source securely and preserve accessibility an
   assert.match(src,/latest_news_click/);
   assert.doesNotMatch(src,/adsbygoogle|data-ad-slot=/);
   assert.match(src,/fallbackImage/);
+  assert.match(src,/function newsImage/);
+  assert.match(src,/item\?\.image_url/);
   assert.match(src,/primaryKeyword/);
   assert.doesNotMatch(src,/MatchApp summary/);
 });
@@ -95,6 +98,9 @@ test('hourly generator polls trusted feeds, Google Trends and rejects rumor lang
   assert.match(src,/meta_description/);
   assert.match(src,/seo_generated_at/);
   assert.match(src,/feedVersion/);
+  assert.match(src,/imageFromArticleHtml/);
+  assert.match(src,/enrichMissingImages/);
+  assert.match(src,/og:image/);
   assert.match(src,/landing_url/);
   assert.doesNotMatch(src,/articleBody/);
 });
