@@ -130,6 +130,18 @@ function main() {
 
     const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${body}\n</urlset>\n`;
     fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), xml, 'utf8');
+
+    // Keep the sitemap index freshness signal aligned with the generated
+    // canonical sitemap without touching the independently maintained legal map.
+    const sitemapIndexPath = path.join(ROOT, 'sitemaps.xml');
+    if (fs.existsSync(sitemapIndexPath)) {
+        const indexXml = fs.readFileSync(sitemapIndexPath, 'utf8').replace(
+            /(<loc>https:\/\/matchapp\.tv\/sitemap\.xml<\/loc>\s*<lastmod>)[^<]+(<\/lastmod>)/,
+            `$1${now}$2`
+        );
+        fs.writeFileSync(sitemapIndexPath, indexXml, 'utf8');
+    }
+
     console.log(`sitemap.xml: ${unique.length} URLs (${kids.length} kids, ${news.length} news)`);
 }
 
