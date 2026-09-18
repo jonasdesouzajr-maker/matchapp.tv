@@ -5,6 +5,13 @@
 
 const SHORT_URL='https://vt.tiktok.com/ZSqtbq1j5/';
 const META_URL='https://zkymvqrmbabngsqblyye.supabase.co/functions/v1/tiktok-matchapp-ad';
+const FALLBACK_META={
+  video_id:'7686252800828804360',
+  final_url:'https://www.tiktok.com/@matchapp_ai/video/7686252800828804360',
+  title:"Find what to watch in seconds! and... what to listen to! MatchApp TV Ai is out now! Also with a safe KIDS mode to find specific children's titles to watch or listen to! #TechTok #AITools #artificialintelligence #MatchAppTV #newapp @Jonas Junior",
+  author_name:'MatchApp TV Ai',
+  author_url:'https://www.tiktok.com/@matchapp_ai'
+};
 const SEEN_KEY='matchapp:tiktok-ad-seen:v1';
 const TIKTOK_ORIGIN='https://www.tiktok.com';
 
@@ -43,11 +50,15 @@ function playerUrl(id, intro){
 async function getMeta(){
   if(metaPromise)return metaPromise;
   metaPromise=(async()=>{
-    const res=await fetch(META_URL,{method:'GET',mode:'cors',credentials:'omit',cache:'no-store',headers:{Accept:'application/json'}});
-    if(!res.ok)throw new Error('TikTok metadata unavailable');
-    const data=await res.json();
-    if(!data?.video_id)throw new Error('TikTok video ID unavailable');
-    return data;
+    try{
+      const res=await fetch(META_URL,{method:'GET',mode:'cors',credentials:'omit',cache:'no-store',headers:{Accept:'application/json'}});
+      if(!res.ok)throw new Error('TikTok metadata unavailable');
+      const data=await res.json();
+      if(!data?.video_id)throw new Error('TikTok video ID unavailable');
+      return {...FALLBACK_META,...data};
+    }catch(_){
+      return FALLBACK_META;
+    }
   })();
   return metaPromise;
 }
