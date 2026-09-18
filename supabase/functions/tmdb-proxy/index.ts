@@ -128,8 +128,6 @@ function normalise(r: Record<string, unknown>, kind: "movie" | "tv"): Record<str
   };
 }
 
-const REGIONS = ["BR", "US", "GB", "PT"];
-
 function providerNames(rows: unknown): string[] {
   return Array.isArray(rows)
     ? rows.map((r) => String((r as Record<string, unknown>)?.provider_name || "").trim()).filter(Boolean).slice(0, 24)
@@ -197,12 +195,19 @@ function availabilityFrom(record: Record<string, unknown>, kind: "movie" | "tv")
   const providerBag = record["watch/providers"] as { results?: Record<string, unknown> } | undefined;
   const source = providerBag?.results || {};
   const id = Number(record.id);
+  const releaseBag = record.release_dates as { results?: unknown } | undefined;
+  const releaseRegions = Array.isArray(releaseBag?.results)
+    ? (releaseBag!.results as Array<Record<string, unknown>>).map((r)=>String(r?.iso_3166_1||"").toUpperCase()).filter((r)=>/^[A-Z]{2}$/.test(r))
+    : [];
+  const regions = [...new Set([...Object.keys(source), ...releaseRegions])]
+    .filter((r)=>/^[A-Z]{2}$/.test(r))
+    .sort();
   const out: Record<string, unknown> = {
     source: "tmdb-watch-providers",
     attribution: "JustWatch via TMDB",
     source_page_url: Number.isSafeInteger(id) && id > 0 ? `https://www.themoviedb.org/${kind}/${id}` : null,
   };
-  for (const region of REGIONS) {
+  for (const region of regions) {
     const row = source?.[region] as Record<string, unknown> | undefined;
     const stream = [...providerNames(row?.flatrate), ...providerNames(row?.free), ...providerNames(row?.ads)]
       .filter((v, i, a) => a.indexOf(v) === i);
@@ -218,7 +223,6 @@ function availabilityFrom(record: Record<string, unknown>, kind: "movie" | "tv")
   }
   return out;
 }
-
 function detailMetadata(record: Record<string, unknown>, kind: "movie" | "tv"): Record<string, unknown> {
   const runtime = kind === "movie" ? Number(record.runtime)
     : Number(Array.isArray(record.episode_run_time) ? record.episode_run_time[0] : NaN);
