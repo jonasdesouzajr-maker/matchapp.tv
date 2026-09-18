@@ -1182,8 +1182,10 @@ function appendAssistantBubble(text, results, opts) {
 async function renderResultsInto(grid, items, baseIndex) {
     await window.matchPolicy?.ready();
     if (!Array.isArray(items)) return;
-    items = items
+    items = (await Promise.all(items
         .map(item => enrichDiscoverItem(item, lastDiscoverQuestion))
+        .filter(Boolean)
+        .map(item => enrichDiscoverMedia(item))))
         .filter(item => item && item.title && !isDiscoverDisliked(item.title));
     grid.replaceChildren();
     if (!items || !items.length) return;
@@ -1392,7 +1394,8 @@ async function showTitleInfoCard(titleName) {
     if (emptyEl) emptyEl.style.display = 'none';
     if (loadEl) loadEl.style.display = 'none';
 
-    const item = enrichDiscoverItem(itemFromTitle(titleName), '') || itemFromTitle(titleName);
+    let item = enrichDiscoverItem(itemFromTitle(titleName), '') || itemFromTitle(titleName);
+    item = await enrichDiscoverMedia(item);
     lastDiscoverQuestion = '';
     DISCOVER_ITEMS = [];
 
