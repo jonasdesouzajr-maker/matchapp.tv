@@ -115,6 +115,13 @@ async function finish(skipped){
 }
 async function start(){
  if(active||!await eligible())return;
+ // New accounts get the richer guided tour instead of immediately receiving
+ // a second overlapping release notice for the same features.
+ try{
+  const res=await fetch('/release.json',{cache:'no-store'});
+  if(res.ok){const rel=await res.json();if(rel?.version)localStorage.setItem('match_release_seen',rel.version);}
+  const notice=document.getElementById('app-release-notice');if(notice)notice.hidden=true;
+ }catch(_){}
  // Let dynamic header controls (notification bell/profile) finish mounting.
  await new Promise(r=>setTimeout(r,1400));
  steps=buildSteps();if(!steps.length)return;
