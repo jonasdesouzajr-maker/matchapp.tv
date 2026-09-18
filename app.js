@@ -2977,6 +2977,130 @@ async function discoverFromITunes(cat, mood, vibe, decade, rating) {
     } catch (e) { return null; }
 }
 
+// Verified live expansion for exact normal Matches. This is used only after
+// the curated exact shelf and exact-history recycle are empty. Every candidate
+// is a real TMDB identity and is checked again against ALL selected criteria.
+const TMDB_GENRE_ID_BY_NAME={Action:28,Adventure:12,Animation:16,Comedy:35,Crime:80,Documentary:99,Drama:18,Family:10751,Fantasy:14,History:36,Horror:27,Music:10402,Mystery:9648,Romance:10749,'Science Fiction':878,Thriller:53,War:10752,Western:37};
+const MOOD_SOURCE_GENRES={
+    'funny':['Comedy'],
+    'scary':['Horror'],
+    'romantic':['Romance'],
+    'intense and thrilling':['Thriller','Action','Crime'],
+    'dark and gritty':['Crime','Thriller'],
+    'light and feel-good':['Comedy','Family','Animation'],
+    'cozy comfort watch':['Comedy','Family','Romance'],
+    'mind-bending':['Mystery','Science Fiction','Fantasy'],
+    'inspiring':['Documentary','Drama','Family'],
+    'epic and adventurous':['Adventure','Action','Fantasy'],
+    'heartbreaking':['Drama','Romance']
+};
+const COUNTRY_CATEGORY_CODES={
+    'K-drama':['KR'],'C-drama':['CN'],'J-drama':['JP'],'Turkish dizi':['TR'],
+    'Bollywood':['IN'],'Nollywood':['NG'],'novela brasileira':['BR'],
+    'telenovela':['MX','CO','AR','CL','BR'],'European cinema':['GB','FR','DE','ES','IT','PT','IE','BE','NL','SE','NO','DK','FI','PL','GR','CH']
+};
+function canonicalProviderName(value){
+    const s=String(value||'').toLowerCase();
+    if(s.includes('netflix'))return'netflix';
+    if(s.includes('amazon prime')||s.includes('prime video')||s.includes('amazon video'))return'primevideo';
+    if(s.includes('disney'))return'disney';
+    if(s.includes('hbo max')||s==='max')return'max';
+    if(s.includes('apple tv'))return'appletv';
+    if(s.includes('paramount'))return'paramount';
+    if(s.includes('hulu'))return'hulu';
+    if(s.includes('peacock'))return'peacock';
+    if(s.includes('globoplay'))return'globoplay';
+    if(s.includes('crunchyroll'))return'crunchyroll';
+    if(s.includes('viki'))return'viki';
+    if(s.includes('mubi'))return'mubi';
+    if(s.includes('tubi'))return'tubi';
+    if(s.includes('pluto'))return'pluto';
+    if(s.includes('roku'))return'roku';
+    if(s.includes('youtube'))return'youtube';
+    return s.replace(/[^a-z0-9]/g,'');
+}
+function sourceRatingFits(cert,wanted){
+    const c=String(cert||'').toUpperCase().replace(/\s+/g,'');
+    if(!wanted.length)return true;
+    if(!c)return false;
+    const groups={
+      'all ages family friendly':['G','PG','TV-G','TV-Y','TV-Y7','U','L','0','6','10'],
+      'kids':['G','TV-G','TV-Y','TV-Y7','U','L','0','6'],
+      'tween PG':['PG','TV-PG','10','12','U'],
+      'teen PG-13':['PG-13','TV-14','12','14'],
+      'mature adults only R rated':['R','NC-17','TV-MA','16','18']
+    };
+    return wanted.some(w=>(groups[w]||[]).some(x=>c===x||c.startsWith(x+'/')));
+}
+function categoryFitsVerified(kind,genres,countries,wanted){
+    if(!wanted.length)return true;
+    const gs=new Set(genres),cs=new Set(countries);
+    return wanted.some(cat=>{
+      if(cat==='movie')return kind==='movie';
+      if(cat==='series')return kind==='tv';
+      if(cat==='documentary')return gs.has('Documentary');
+      if(cat==='stand-up comedy special')return kind==='movie'&&gs.has('Comedy');
+      if(cat==='reality show')return kind==='tv'&&gs.has('Reality');
+      if(cat==='short film')return kind==='movie';
+      if(cat==='anime')return gs.has('Animation')&&cs.has('JP');
+      const required=COUNTRY_CATEGORY_CODES[cat];if(required)return required.some(x=>cs.has(x));
+      return false;
+    });
+}
+async function discoverVerifiedExactTMDB(requested){
+    if(typeof window.tmdbDiscover!=='function'||typeof window.tmdbDetails!=='function')return null;
+    const cat=normCriteria(requested.cat),mood=normCriteria(requested.mood),vibe=normCriteria(requested.vibe),
+          rating=normCriteria(requested.rating),decade=normCriteria(requested.decade),platform=normCriteria(requested.plat),
+          realGenres=normCriteria(requested.genre);
+    // These categories/vibes do not have source fields strong enough for a
+    // perfect automated verification; fail closed rather than fake precision.
+    if(vibe.length)return null;
+    const unsupported=cat.some(x=>['limited series','vertical micro-drama','YouTube channel','YouTube Shorts','podcast','Spotify playlist','Spotify single','music album','audiobook','Gospel & Faith','Classical Music','News','Sports'].includes(x));
+    if(unsupported)return null;
+    const mappableMood=mood.flatMap(m=>MOOD_SOURCE_GENRES[m]||[]);
+    if(mood.length&&!mappableMood.length)return null;
+    const sourceGenres=[...new Set([...mappableMood,...realGenres.filter(g=>TMDB_GENRE_ID_BY_NAME[g])])];
+    const genreIds=sourceGenres.map(g=>TMDB_GENRE_ID_BY_NAME[g]).filter(Boolean);
+    let kind='';
+    if(cat.length&&cat.every(x=>['movie','stand-up comedy special','short film','Bollywood','Nollywood','European cinema'].includes(x)))kind='movie';
+    else if(cat.length&&cat.every(x=>['series','reality show','K-drama','C-drama','J-drama','Turkish dizi','novela brasileira','telenovela'].includes(x)))kind='tv';
+    const start=decade.length===1?Number(String(decade[0]).match(/\d{4}/)?.[0]):0;
+    const candidates=await window.tmdbDiscover({kind,genre_ids:genreIds,decade_start:start||0,pages:2});
+    const prefs=currentPreferenceExclusions(),known=window.matchPolicy?.known?.()||new Set();
+    const region=window.MatchAppCatalogMedia?.regionCode?.()||'BR';
+    for(const base of candidates.slice(0,30)){
+      const key=window.matchPolicy?.key?.(base.title)||'';
+      if(!key||known.has(key)||SESSION_SHOWN.has(base.title))continue;
+      const d=await window.tmdbDetails(base.tmdbId,base.kind);if(!d)continue;
+      const genres=Array.isArray(d.genres)?d.genres:[],countries=Array.isArray(d.originCountries)?d.originCountries:[];
+      if(countries.some(x=>prefs.countries.has(String(x).toUpperCase())))continue;
+      if(genres.some(g=>prefs.genres.has(String(g).toLowerCase())))continue;
+      if(realGenres.length&&!genres.some(g=>realGenres.includes(g)))continue;
+      if(mood.length&&!mood.some(m=>(MOOD_SOURCE_GENRES[m]||[]).some(g=>genres.includes(g))))continue;
+      if(!categoryFitsVerified(base.kind,genres,countries,cat))continue;
+      if(decade.length&&!decade.some(dec=>{const s=Number(String(dec).match(/\d{4}/)?.[0]);const y=Number(d.year||base.year);return s&&y>=s&&y<s+10;}))continue;
+      if(!sourceRatingFits(d.contentRating,rating))continue;
+      let verifiedPlatform='any';
+      if(platform.length){
+        const row=d.availability?.[region]||{};
+        const providers=[...(row.stream||[]),...(row.rent||[]),...(row.buy||[])];
+        const wanted=new Set(platform.map(canonicalProviderName));
+        const hit=providers.find(p=>wanted.has(canonicalProviderName(p)));
+        if(!hit)continue;verifiedPlatform=hit;
+      }
+      return {
+        title:String(d.title||base.title),year:Number(d.year||base.year)||null,
+        countryCode:countries[0]||'',country:countries[0]||'',
+        synopsis:String(d.overview||base.overview||'').trim(),
+        platform:verifiedPlatform,platformVerified:platform.length>0,
+        cats:cat.length?cat:[base.kind==='movie'?'movie':'series'],
+        moods:mood,vibes:vibe,ratings:rating,source:'tmdb-exact-live',
+        _tmdbId:base.tmdbId,_tmdbKind:base.kind
+      };
+    }
+    return null;
+}
+
 // SESSION-LEVEL REPEAT PREVENTION.
 //
 // recentTitles (capped at 6, persisted to localStorage) existed to prevent
@@ -3395,6 +3519,7 @@ window.triggerMatch = async function(isSpecificSearch = false) {
     window.__matchappGenreKeys = null;
     window.__matchappGenreRelaxed = false;
     const blockedGenres=Array.isArray(window.MatchSettings?.get?.('blockedGenres'))?window.MatchSettings.get('blockedGenres'):[];
+    const blockedCountries=Array.isArray(window.MatchSettings?.get?.('blockedOriginCountries'))?window.MatchSettings.get('blockedOriginCountries'):[];
     window.__matchappExcludedGenreKeys=null;
     if(blockedGenres.length){
         try{const blocked=await window.MatchAppCatalogMedia?.titleKeysForGenres?.(blockedGenres);window.__matchappExcludedGenreKeys=blocked instanceof Set?blocked:new Set();}
@@ -3413,7 +3538,7 @@ window.triggerMatch = async function(isSpecificSearch = false) {
     // recycling history. iTunes cannot verify third-party platform availability,
     // so live discovery is used only when the platform filter is unconstrained.
     if (!isSpecificSearch && !preflight) {
-        if (!normCriteria(requested.plat).length && !wantedGenres.length) {
+        if (!normCriteria(requested.plat).length && !wantedGenres.length && !blockedGenres.length && !blockedCountries.length) {
             try { preflight = await discoverFromITunes(requested.cat,requested.mood,requested.vibe,requested.decade,requested.rating); }
             catch (_) { preflight = null; }
         }
@@ -3425,6 +3550,9 @@ window.triggerMatch = async function(isSpecificSearch = false) {
         preflight = pickGuaranteedCatalog(requested.cat,requested.plat,requested.mood,requested.vibe,requested.rating,requested.decade);
     }
     // Real genre is also a hard requirement. Never disable it as a fallback.
+    if (!isSpecificSearch && !preflight) {
+        try { preflight = await discoverVerifiedExactTMDB(requested); } catch (_) { preflight = null; }
+    }
     const alreadySeenSpecific = isSpecificSearch && window.matchPolicy?.known().has(window.matchPolicy.key(typed));
     if (isSpecificSearch && !typed.trim()) return;
     if (alreadySeenSpecific) {
