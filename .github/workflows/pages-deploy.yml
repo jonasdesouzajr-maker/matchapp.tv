@@ -86,6 +86,9 @@ jobs:
           done
           curl -sS -L --max-time 30 https://matchapp.tv/pricing/pricing.html -o /tmp/pricing.html
           grep -q 'build-meta.js' /tmp/pricing.html
+          grep -Fq 'VIP: 10 Included AI Actions Daily' /tmp/pricing.html
+          grep -Fq '<strong>50</strong> included AI actions daily' /tmp/pricing.html
+          ! grep -Eqi '5×[[:space:]]*VIP|5x[[:space:]]*VIP|team seats|for every seat' /tmp/pricing.html
           curl -sS -L --max-time 30 https://matchapp.tv/build-meta.js -o /tmp/build-meta.js
           grep -Fq "const vipDaily = 10;" /tmp/build-meta.js
           grep -Fq "monthly.innerHTML = '✔️ <strong>'+vipDaily+'</strong> included AI actions daily';" /tmp/build-meta.js
