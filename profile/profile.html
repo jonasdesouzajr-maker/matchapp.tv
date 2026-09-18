@@ -612,7 +612,31 @@
                             <p class="setting-note" data-i18n="set.lazyNote">Open every visit with sections folded and the match form ready.</p>
 
                             <section aria-labelledby="theme-title"><h4 id="theme-title" class="settings-group" data-i18n="theme.title">Your theme</h4><p data-i18n="theme.help">Preview the whole page, then save your favorite.</p><div class="theme-grid"><button type="button" class="theme-choice" data-theme-choice="aurora" aria-pressed="false"><span class="theme-swatch" aria-hidden="true"><i style="background:#100a23"></i><i style="background:#dcc0ff"></i><i style="background:#87eee0"></i></span><strong>aurora</strong><small></small></button><button type="button" class="theme-choice" data-theme-choice="cinema" aria-pressed="false"><span class="theme-swatch" aria-hidden="true"><i style="background:#17120f"></i><i style="background:#ffd48b"></i><i style="background:#eb9c94"></i></span><strong>cinema</strong><small></small></button><button type="button" class="theme-choice" data-theme-choice="ocean" aria-pressed="false"><span class="theme-swatch" aria-hidden="true"><i style="background:#031d2b"></i><i style="background:#7be8f6"></i><i style="background:#a2f5c8"></i></span><strong>ocean</strong><small></small></button><button type="button" class="theme-choice" data-theme-choice="sunrise" aria-pressed="false"><span class="theme-swatch" aria-hidden="true"><i style="background:#fff4e6"></i><i style="background:#85391c"></i><i style="background:#345b54"></i></span><strong>sunrise</strong><small></small></button><button type="button" class="theme-choice" data-theme-choice="arcade" aria-pressed="false"><span class="theme-swatch" aria-hidden="true"><i style="background:#101522"></i><i style="background:#d8fb8f"></i><i style="background:#ff9ad6"></i></span><strong>arcade</strong><small></small></button></div><p id="theme-preview-status" class="theme-preview-status" role="status" aria-live="polite"></p><div class="theme-actions"><button type="button" class="gold-btn" data-theme-save data-i18n="theme.save">Save theme</button><button type="button" data-theme-cancel data-i18n="theme.cancel">Cancel preview</button></div></section>
-<!-- VOICE -->
+<!-- MATCH EXCLUSIONS -->
+                            <details class="matchapp-exclusion-box" id="match-exclusions-panel">
+                                <summary>
+                                    <span>🚫 What I don’t want to see in my matches</span>
+                                    <span aria-hidden="true">⌄</span>
+                                </summary>
+                                <p class="matchapp-exclusion-copy">Choose countries of origin and real genres/categories you want MatchApp to avoid. These are hard exclusions: selected items will not appear in your normal Matches.</p>
+                                <div class="matchapp-exclusion-grid">
+                                    <section class="matchapp-exclusion-group" aria-labelledby="excluded-countries-title">
+                                        <h5 id="excluded-countries-title">Countries of origin</h5>
+                                        <p>Select as many as you want. Example: selecting Spain hides Spain-made titles.</p>
+                                        <div id="excluded-country-chips" class="matchapp-exclusion-chips" role="group" aria-label="Countries to exclude"></div>
+                                        <div id="excluded-country-summary" class="matchapp-exclusion-summary"></div>
+                                    </section>
+                                    <section class="matchapp-exclusion-group" aria-labelledby="excluded-genres-title">
+                                        <h5 id="excluded-genres-title">Genres &amp; source categories</h5>
+                                        <p>Hide real catalog genres such as Horror, Comedy, Reality, Music or others you do not want matched.</p>
+                                        <div id="excluded-genre-chips" class="matchapp-exclusion-chips" role="group" aria-label="Genres to exclude"></div>
+                                        <div id="excluded-genre-summary" class="matchapp-exclusion-summary"></div>
+                                    </section>
+                                </div>
+                                <p class="matchapp-exclusion-save-note">Selections save instantly and follow your account when you are signed in.</p>
+                            </details>
+
+                            <!-- VOICE -->
                             <h4 class="settings-group" data-i18n="set.voice">🔊 AI Voice</h4>
 
                             <div class="setting-row">
