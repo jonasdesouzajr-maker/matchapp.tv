@@ -62,7 +62,7 @@ jobs:
           grep -Fq '/kids/onboarding-tour.js?v=1' kids/index.html
           grep -Fq 'blockedOriginCountries' settings.js
           grep -Fq 'What I don’t want to see in my matches' profile/profile.html
-          grep -Fq '"2026.09.18.3"' release.json
+          grep -Fq '"2026.09.18.4"' release.json
       - uses: actions/upload-pages-artifact@v3
         with:
           path: .
@@ -104,7 +104,7 @@ jobs:
           curl -sS -L --max-time 30 https://matchapp.tv/profile/profile.html -o /tmp/profile.html
           grep -Fq 'What I don’t want to see in my matches' /tmp/profile.html
           curl -sS -L --max-time 30 https://matchapp.tv/release.json -o /tmp/release.json
-          grep -Fq '"2026.09.18.3"' /tmp/release.json
+          grep -Fq '"2026.09.18.4"' /tmp/release.json
           curl -sS -L --max-time 30 https://matchapp.tv/discover.html -o /tmp/discover.html
           grep -Fq '/discover.js?v=207' /tmp/discover.html
           grep -Fq '/catalog-media.js?v=20260918-notify2' /tmp/discover.html
