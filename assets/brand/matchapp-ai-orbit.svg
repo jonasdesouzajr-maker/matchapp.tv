@@ -1,19 +1,116 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="t d">
-<title id="t">MatchApp AI Orbit</title><desc id="d">A gold play spark surrounded by a cinematic AI orbit.</desc>
+<title id="t">MatchApp Ai</title>
+<desc id="d">A full-bleed gold MatchApp Ai play emblem with orbiting cinematic stars and light trails.</desc>
 <defs>
- <linearGradient id="orb" x1="18" y1="18" x2="110" y2="110" gradientUnits="userSpaceOnUse">
-  <stop stop-color="#E5C158"/><stop offset=".52" stop-color="#FFF3A3"/><stop offset="1" stop-color="#8D65C7"/>
- </linearGradient>
- <radialGradient id="bg" cx=".38" cy=".28" r=".9"><stop stop-color="#5B2E88"/><stop offset=".48" stop-color="#24113F"/><stop offset="1" stop-color="#100B1D"/></radialGradient>
- <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <radialGradient id="disc" cx="46%" cy="40%" r="72%">
+    <stop offset="0" stop-color="#241604"/>
+    <stop offset=".58" stop-color="#120c03"/>
+    <stop offset="1" stop-color="#050402"/>
+  </radialGradient>
+  <linearGradient id="gold" x1="20" y1="12" x2="108" y2="116" gradientUnits="userSpaceOnUse">
+    <stop offset="0" stop-color="#FFFBE8"/>
+    <stop offset=".16" stop-color="#FFF09B"/>
+    <stop offset=".42" stop-color="#F5C64B"/>
+    <stop offset=".68" stop-color="#D89417"/>
+    <stop offset=".86" stop-color="#FFE57A"/>
+    <stop offset="1" stop-color="#A86508"/>
+  </linearGradient>
+  <linearGradient id="goldBright" x1="28" y1="20" x2="98" y2="108" gradientUnits="userSpaceOnUse">
+    <stop stop-color="#FFFFFF"/>
+    <stop offset=".18" stop-color="#FFF9D4"/>
+    <stop offset=".52" stop-color="#FFD55C"/>
+    <stop offset=".8" stop-color="#E49A16"/>
+    <stop offset="1" stop-color="#FFF1A0"/>
+  </linearGradient>
+  <radialGradient id="halo" cx="50%" cy="50%" r="50%">
+    <stop stop-color="#FFE782" stop-opacity=".74"/>
+    <stop offset=".42" stop-color="#E5A52A" stop-opacity=".24"/>
+    <stop offset="1" stop-color="#E5A52A" stop-opacity="0"/>
+  </radialGradient>
+  <filter id="glow" x="-70%" y="-70%" width="240%" height="240%">
+    <feGaussianBlur stdDeviation="2.6" result="blur"/>
+    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <filter id="softGlow" x="-80%" y="-80%" width="260%" height="260%">
+    <feGaussianBlur stdDeviation="5"/>
+  </filter>
+  <filter id="starGlow" x="-180%" y="-180%" width="460%" height="460%">
+    <feGaussianBlur stdDeviation="1.8" result="b"/>
+    <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <style>
+    .ma-orbit-stars{transform-origin:64px 64px;animation:maSpin 8s linear infinite}
+    .ma-orbit-stars.slow{animation-duration:13s;animation-direction:reverse}
+    .ma-sheen{transform-origin:64px 64px;animation:maSpin 6.5s linear infinite}
+    .ma-play{animation:maBreathe 3.6s ease-in-out infinite}
+    .ma-star{animation:maTwinkle 1.9s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+    .ma-star.s2{animation-delay:-.65s}.ma-star.s3{animation-delay:-1.25s}.ma-star.s4{animation-delay:-.3s}
+    @keyframes maSpin{to{transform:rotate(360deg)}}
+    @keyframes maBreathe{0%,100%{filter:drop-shadow(0 0 2px rgba(255,221,96,.4))}50%{filter:drop-shadow(0 0 6px rgba(255,228,115,.95))}}
+    @keyframes maTwinkle{0%,100%{opacity:.48;transform:scale(.72)}50%{opacity:1;transform:scale(1.2)}}
+    @media(prefers-reduced-motion:reduce){.ma-orbit-stars,.ma-orbit-stars.slow,.ma-sheen,.ma-play,.ma-star{animation:none!important}}
+  </style>
 </defs>
-<rect x="8" y="8" width="112" height="112" rx="32" fill="url(#bg)" stroke="rgba(229,193,88,.8)" stroke-width="2"/>
-<ellipse cx="64" cy="64" rx="43" ry="24" fill="none" stroke="url(#orb)" stroke-width="3" transform="rotate(-22 64 64)" opacity=".95"/>
-<ellipse cx="64" cy="64" rx="43" ry="24" fill="none" stroke="#7651A5" stroke-width="2.2" transform="rotate(58 64 64)" opacity=".72"/>
-<circle cx="29" cy="47" r="4.5" fill="#A8F0FF" filter="url(#glow)"/>
-<circle cx="99" cy="79" r="4.5" fill="#E5C158" filter="url(#glow)"/>
-<path d="M53 42 86 64 53 86Z" fill="url(#orb)" filter="url(#glow)"/>
-<path d="M42 32l3.8 8.7L55 44.5l-9.2 3.8L42 57l-3.8-8.7L29 44.5l9.2-3.8Z" fill="#FFF3A3"/>
-<path d="M90 25l2.2 5 5.1 2.2-5.1 2.2-2.2 5-2.2-5-5.1-2.2 5.1-2.2Z" fill="#A8F0FF"/>
-<circle cx="64" cy="64" r="11" fill="none" stroke="#FFF3A3" stroke-width="1.8" opacity=".5"/>
+
+<!-- Full-bleed circular emblem: no unused dark margin around the artwork. -->
+<circle cx="64" cy="64" r="62" fill="url(#halo)" opacity=".62" filter="url(#softGlow)"/>
+<circle cx="64" cy="64" r="61" fill="url(#disc)" stroke="url(#gold)" stroke-width="3.8"/>
+<circle cx="64" cy="64" r="56.8" fill="none" stroke="#FFF1A0" stroke-opacity=".48" stroke-width=".9"/>
+<circle cx="64" cy="64" r="53.8" fill="none" stroke="#B7750D" stroke-opacity=".72" stroke-width=".8"/>
+
+<!-- Gold orbital trails. -->
+<g fill="none" stroke-linecap="round">
+  <ellipse cx="64" cy="59" rx="49" ry="28" transform="rotate(-18 64 59)" stroke="url(#gold)" stroke-width="2.8" opacity=".98" filter="url(#glow)"/>
+  <ellipse cx="64" cy="59" rx="47" ry="25.5" transform="rotate(23 64 59)" stroke="#F6C650" stroke-width="1.1" opacity=".7"/>
+  <ellipse cx="64" cy="60" rx="45" ry="19" transform="rotate(-32 64 60)" stroke="#FFF0A0" stroke-width=".72" opacity=".56"/>
+</g>
+
+<!-- Rotating highlight arc creates the travelling shine on the outer circle. -->
+<g class="ma-sheen">
+  <circle cx="64" cy="64" r="59.2" fill="none" stroke="#FFF8D2" stroke-width="2.7" stroke-linecap="round"
+          stroke-dasharray="20 352" filter="url(#glow)"/>
+</g>
+
+<!-- Glossy looped play mark. -->
+<g class="ma-play">
+  <path d="M45 34.5 91 62.5c2.2 1.4 2.2 4.6 0 6L45 96.5c-2.8 1.7-6.4-.3-6.4-3.6V38.1c0-3.3 3.6-5.3 6.4-3.6Z"
+        fill="none" stroke="url(#goldBright)" stroke-width="7.2" stroke-linejoin="round" stroke-linecap="round" filter="url(#glow)"/>
+  <path d="M43 37 87 63.8" fill="none" stroke="#FFFCE8" stroke-opacity=".8" stroke-width="1.25" stroke-linecap="round"/>
+</g>
+
+<!-- Orbiting stars and glitter. -->
+<g class="ma-orbit-stars">
+  <g class="ma-star" transform="translate(64 5)" fill="#FFF7C7" filter="url(#starGlow)">
+    <path d="M0-6 1.25-1.25 6 0 1.25 1.25 0 6-1.25 1.25-6 0-1.25-1.25Z"/>
+  </g>
+  <circle cx="102" cy="22" r="1.25" fill="#FFE273" filter="url(#starGlow)"/>
+  <circle cx="112" cy="63" r=".9" fill="#FFF3B1"/>
+  <circle cx="96" cy="103" r="1.05" fill="#F7BB38"/>
+  <circle cx="29" cy="99" r=".8" fill="#FFF3B1"/>
+</g>
+<g class="ma-orbit-stars slow">
+  <g class="ma-star s2" transform="translate(18 48)" fill="#FFF8D0" filter="url(#starGlow)">
+    <path d="M0-4.4 .9-.9 4.4 0 .9.9 0 4.4-.9.9-4.4 0-.9-.9Z"/>
+  </g>
+  <g class="ma-star s3" transform="translate(105 84)" fill="#FFD45D" filter="url(#starGlow)">
+    <path d="M0-3.4 .72-.72 3.4 0 .72.72 0 3.4-.72.72-3.4 0-.72-.72Z"/>
+  </g>
+  <circle cx="49" cy="12" r=".72" fill="#FFE998"/>
+  <circle cx="16" cy="79" r=".62" fill="#FFF2B2"/>
+  <circle cx="78" cy="114" r=".72" fill="#EFB83E"/>
+</g>
+
+<!-- Fixed bright lens-flare stars. -->
+<g fill="#FFF8D9" filter="url(#starGlow)">
+  <g class="ma-star s4" transform="translate(94 35)">
+    <path d="M0-7.2 1.25-1.25 7.2 0 1.25 1.25 0 7.2-1.25 1.25-7.2 0-1.25-1.25Z"/>
+  </g>
+  <g class="ma-star s2" transform="translate(30 66)">
+    <path d="M0-4.8 .9-.9 4.8 0 .9.9 0 4.8-.9.9-4.8 0-.9-.9Z"/>
+  </g>
+</g>
+
+<text x="64" y="108.5" text-anchor="middle" fill="url(#goldBright)"
+      font-family="Inter,Arial,sans-serif" font-size="10.3" font-weight="800" letter-spacing=".15"
+      filter="url(#glow)">MatchApp Ai</text>
 </svg>
