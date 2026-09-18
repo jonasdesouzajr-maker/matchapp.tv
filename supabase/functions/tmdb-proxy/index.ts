@@ -17,13 +17,14 @@
 //     schema and can keep its existing fallback chain untouched,
 //   · apply the same origin allow-list and rate limiting as gemini-proxy.
 //
-// WHAT THIS IS *NOT* USED FOR
+// VERIFIED DETAIL MODE
 //
-// Streaming availability. TMDB has a /watch/providers endpoint, and it is
-// regional, frequently stale, and licence-dependent. MatchApp's rule is that
-// a platform is only ever shown as verified when a canonical source confirms
-// it — so this returns artwork, titles, years, overviews and cast, and says
-// nothing about where to watch. That decision stays with the catalogue.
+// Search stays artwork/identity focused. Once an exact TMDB ID has been
+// established, callers may request details for that exact identity. Detail
+// mode returns TMDB genres, official YouTube trailers/teasers, theatrical
+// dates and regional provider data (JustWatch attribution as supplied by
+// TMDB). Availability remains region-qualified and is never inferred from a
+// title name or an AI answer.
 // ============================================================
 
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.105.0";
@@ -124,6 +125,101 @@ function normalise(r: Record<string, unknown>, kind: "movie" | "tv"): Record<str
     // TMDB's own adult flag. MatchApp filters again on the client with its own
     // rules, but discarding what the source already tells us would be careless.
     adult: r.adult === true,
+  };
+}
+
+const REGIONS = ["BR", "US", "GB", "PT"];
+
+function providerNames(rows: unknown): string[] {
+  return Array.isArray(rows)
+    ? rows.map((r) => String((r as Record<string, unknown>)?.provider_name || "").trim()).filter(Boolean).slice(0, 24)
+    : [];
+}
+
+function chooseVideo(record: Record<string, unknown>): Record<string, unknown> {
+  const bag = record.videos as { results?: unknown } | undefined;
+  const rows = Array.isArray(bag?.results) ? bag!.results as Array<Record<string, unknown>> : [];
+  const priorities = ["Trailer", "Teaser", "Clip", "Featurette"];
+  const valid = rows.filter((v) => v?.site === "YouTube" && /^[A-Za-z0-9_-]{6,32}$/.test(String(v?.key || "")));
+  valid.sort((a, b) => {
+    const ai = priorities.indexOf(String(a.type || "")), bi = priorities.indexOf(String(b.type || ""));
+    const ap = ai < 0 ? 99 : ai, bp = bi < 0 ? 99 : bi;
+    if (ap !== bp) return ap - bp;
+    if (Boolean(a.official) !== Boolean(b.official)) return a.official ? -1 : 1;
+    return String(b.published_at || "").localeCompare(String(a.published_at || ""));
+  });
+  const v = valid[0];
+  if (!v) return { previewKind: null, previewProvider: null, previewUrl: null, previewEmbedUrl: null };
+  const key = String(v.key);
+  return {
+    previewKind: "video",
+    previewProvider: "youtube",
+    previewUrl: `https://www.youtube.com/watch?v=${key}`,
+    previewEmbedUrl: `https://www.youtube-nocookie.com/embed/${key}?rel=0&modestbranding=1`,
+  };
+}
+
+function cinemaReleaseDate(record: Record<string, unknown>, region: string): string | null {
+  const bag = record.release_dates as { results?: unknown } | undefined;
+  const rows = Array.isArray(bag?.results) ? bag!.results as Array<Record<string, unknown>> : [];
+  const entry = rows.find((r) => r?.iso_3166_1 === region);
+  const dates = Array.isArray(entry?.release_dates) ? entry!.release_dates as Array<Record<string, unknown>> : [];
+  const theatrical = dates
+    .filter((r) => [2, 3].includes(Number(r?.type)) && typeof r?.release_date === "string")
+    .map((r) => String(r.release_date).slice(0, 10))
+    .filter((v) => /^\d{4}-\d{2}-\d{2}$/.test(v))
+    .sort();
+  return theatrical[0] || null;
+}
+
+function detailRating(record: Record<string, unknown>, kind: "movie" | "tv"): string | null {
+  if (kind !== "tv") return null;
+  const bag = record.content_ratings as { results?: unknown } | undefined;
+  const rows = Array.isArray(bag?.results) ? bag!.results as Array<Record<string, unknown>> : [];
+  for (const region of ["US", "BR", "GB", "PT"]) {
+    const row = rows.find((r) => r?.iso_3166_1 === region && String(r?.rating || "").trim());
+    if (row) return String(row.rating).trim().slice(0, 32);
+  }
+  return null;
+}
+
+function availabilityFrom(record: Record<string, unknown>, kind: "movie" | "tv"): Record<string, unknown> {
+  const providerBag = record["watch/providers"] as { results?: Record<string, unknown> } | undefined;
+  const source = providerBag?.results || {};
+  const id = Number(record.id);
+  const out: Record<string, unknown> = {
+    source: "tmdb-watch-providers",
+    attribution: "JustWatch via TMDB",
+    source_page_url: Number.isSafeInteger(id) && id > 0 ? `https://www.themoviedb.org/${kind}/${id}` : null,
+  };
+  for (const region of REGIONS) {
+    const row = source?.[region] as Record<string, unknown> | undefined;
+    const stream = [...providerNames(row?.flatrate), ...providerNames(row?.free), ...providerNames(row?.ads)]
+      .filter((v, i, a) => a.indexOf(v) === i);
+    const cinema = kind === "movie" ? cinemaReleaseDate(record, region) : null;
+    if (!row && !cinema) continue;
+    out[region] = {
+      link: typeof row?.link === "string" && /^https:\/\//.test(row.link) ? row.link : null,
+      stream,
+      rent: providerNames(row?.rent),
+      buy: providerNames(row?.buy),
+      cinema_release_date: cinema,
+    };
+  }
+  return out;
+}
+
+function detailMetadata(record: Record<string, unknown>, kind: "movie" | "tv"): Record<string, unknown> {
+  const runtime = kind === "movie" ? Number(record.runtime)
+    : Number(Array.isArray(record.episode_run_time) ? record.episode_run_time[0] : NaN);
+  return {
+    genres: Array.isArray(record.genres)
+      ? (record.genres as Array<Record<string, unknown>>).map((g) => String(g?.name || "").trim()).filter(Boolean).slice(0, 24)
+      : [],
+    runtimeMinutes: Number.isFinite(runtime) && runtime > 0 && runtime <= 1440 ? Math.round(runtime) : null,
+    contentRating: detailRating(record, kind),
+    availability: availabilityFrom(record, kind),
+    ...chooseVideo(record),
   };
 }
 
@@ -261,10 +357,20 @@ Deno.serve(async (req: Request) => {
     if (body?.tmdb_id !== undefined) {
       if (!Number.isSafeInteger(body.tmdb_id) || body.tmdb_id <= 0 || !kind) return json({error:"Invalid identity"},400);
       const wantRelated = body.related === true;
-      const extra = wantRelated ? "&append_to_response=credits,similar,recommendations" : "";
+      const wantDetails = body.details === true;
+      const append = new Set<string>();
+      if (wantRelated) ["credits", "similar", "recommendations"].forEach((v) => append.add(v));
+      if (wantDetails) {
+        ["videos", "watch/providers"].forEach((v) => append.add(v));
+        append.add(kind === "movie" ? "release_dates" : "content_ratings");
+      }
+      const extra = append.size ? "&append_to_response=" + encodeURIComponent([...append].join(",")) : "";
       const record = await tmdbFetch(`/${kind}/${body.tmdb_id}?language=${encodeURIComponent(lang)}${extra}`, token);
       if (!record || record.adult === true) return json({results:[]});
-      const primary = normalise(record, kind);
+      const primary = {
+        ...normalise(record, kind),
+        ...(wantDetails ? detailMetadata(record, kind) : {}),
+      };
       if (!wantRelated) return json({results:[primary]},200,true);
 
       const director = pickDirector(record, kind);
