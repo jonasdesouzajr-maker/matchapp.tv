@@ -94,7 +94,8 @@ function imageFromArticleHtml(html,baseUrl){
     const m=String(html||'').match(re);
     if(!m)continue;
     try{
-      const u=new URL(clean(m[1]),baseUrl);
+      const raw=clean(m[1]).replace(/&#0*38;|&#x0*26;/gi,'&');
+      const u=new URL(raw,baseUrl);
       if(u.protocol==='https:')return u.href;
     }catch(_){}
   }
