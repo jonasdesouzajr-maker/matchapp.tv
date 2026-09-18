@@ -81,6 +81,39 @@ button.matchapp-tiktok-action{font:inherit;padding:0}
   font:700 10px/1.25 'Inter',system-ui,sans-serif
 }
 
+.matchapp-tiktok-follow span{color:#7ef6e7;text-shadow:0 0 14px rgba(126,246,231,.28)}
+.matchapp-tiktok-intro-actions.is-ended .matchapp-tiktok-action{
+  border-color:rgba(255,229,132,.5);
+  box-shadow:0 12px 30px rgba(0,0,0,.38),0 0 24px rgba(229,193,88,.22)
+}
+.matchapp-tiktok-endcap{
+  position:absolute;z-index:9;left:12px;right:12px;bottom:12px;
+  padding:15px 14px 13px;border:1px solid rgba(255,236,155,.35);
+  border-radius:18px;background:rgba(10,6,17,.9);backdrop-filter:blur(16px);
+  text-align:center;color:#fff;box-shadow:0 12px 40px rgba(0,0,0,.5);
+  opacity:0;transform:translateY(8px);transition:opacity .2s ease,transform .2s ease
+}
+.matchapp-tiktok-endcap[hidden]{display:none!important}
+.matchapp-tiktok-endcap.is-visible{opacity:1;transform:none}
+.matchapp-tiktok-endcap>strong{display:block;font:800 17px/1.15 'Outfit','Inter',system-ui,sans-serif}
+.matchapp-tiktok-endcap>span{
+  display:block;margin-top:5px;color:#e2d7ea;font:600 12px/1.35 'Inter',system-ui,sans-serif
+}
+.matchapp-tiktok-endcap>span b{color:#ffe493}
+.matchapp-tiktok-endcap-buttons{display:flex;justify-content:center;gap:8px;margin-top:11px}
+.matchapp-tiktok-endcap-buttons button{
+  border:1px solid rgba(255,232,145,.34);border-radius:999px;padding:9px 12px;
+  background:rgba(255,255,255,.06);color:#fff1b8;cursor:pointer;
+  font:750 11px/1 'Inter',system-ui,sans-serif
+}
+.matchapp-tiktok-endcap-buttons button:last-child{
+  background:linear-gradient(135deg,#f4d56e,#bd8119);color:#1a0d02;border-color:transparent
+}
+.matchapp-tiktok-endcap-buttons button:hover,
+.matchapp-tiktok-endcap-buttons button:focus-visible{
+  transform:translateY(-1px);outline:none;filter:brightness(1.08)
+}
+
 .matchapp-tiktok-intro-close{
   position:absolute;z-index:8;top:12px;right:14px;
   width:44px;height:44px;padding:0;border:0;background:transparent;
@@ -167,8 +200,10 @@ button.matchapp-tiktok-action{font:inherit;padding:0}
     flex-direction:row;gap:8px
   }
   .matchapp-tiktok-intro-actions.is-ready{transform:translate(-50%,0)}
-  .matchapp-tiktok-action{width:82px;min-height:54px}
-  .matchapp-tiktok-action-status{position:absolute;top:59px;left:50%;transform:translateX(-50%)}
+  .matchapp-tiktok-action{width:76px;min-height:52px}
+  .matchapp-tiktok-action-status{position:absolute;top:57px;left:50%;transform:translateX(-50%)}
+  .matchapp-tiktok-endcap{left:9px;right:9px;bottom:9px;padding:13px 10px 11px}
+  .matchapp-tiktok-endcap-buttons button{padding:8px 10px}
   .matchapp-tiktok-showcase{margin-top:24px;padding-inline:8px}
 }
 @media(min-width:761px) and (max-width:1180px){
