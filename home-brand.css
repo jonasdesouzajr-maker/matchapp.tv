@@ -19,10 +19,10 @@
   color:inherit;
 }
 #home-brand-lockup .brand-logo{
-  width:4.4rem!important;
-  height:4.4rem!important;
-  flex:0 0 4.4rem!important;
-  clip-path:circle(49% at 50% 50%)!important;
+  width:4.5rem!important;
+  height:4.5rem!important;
+  flex:0 0 4.5rem!important;
+  clip-path:circle(50% at 50% 50%)!important;
   border-radius:50%!important;
   filter:drop-shadow(0 0 13px rgba(229,193,88,.2));
   transition:transform .28s cubic-bezier(.2,.8,.2,1),filter .28s ease!important;
@@ -172,7 +172,7 @@ body .top-ai-launch:not(:hover):not(:focus-visible){
 /* Tablet: preserve hierarchy without making the header consume the page. */
 @media (max-width:1100px){
   #home-brand-lockup .brand-logo{
-    width:4rem!important;height:4rem!important;flex-basis:4rem!important;
+    width:4.5rem!important;height:4.5rem!important;flex-basis:4.5rem!important;
   }
   #home-brand-lockup .home-brand-name{font-size:clamp(1.72rem,3.7vw,2.15rem)}
   #home-brand-lockup .home-ai-link{font-size:clamp(2.15rem,4.6vw,2.7rem)}
@@ -239,9 +239,9 @@ body .top-ai-launch:not(:hover):not(:focus-visible){
   }
   #home-brand-lockup .home-brand-home{gap:.42rem}
   #home-brand-lockup .brand-logo{
-    width:4.35rem!important;
-    height:4.35rem!important;
-    flex-basis:4.35rem!important;
+    width:4.5rem!important;
+    height:4.5rem!important;
+    flex-basis:4.5rem!important;
   }
   #home-brand-lockup .home-brand-name{
     font-size:clamp(1.05rem,4.35vw,1.35rem);
@@ -277,9 +277,9 @@ body .top-ai-launch:not(:hover):not(:focus-visible){
   #home-brand-lockup{gap:.3rem!important}
   #home-brand-lockup .home-brand-home{gap:.32rem}
   #home-brand-lockup .brand-logo{
-    width:4rem!important;
-    height:4rem!important;
-    flex-basis:4rem!important;
+    width:4.5rem!important;
+    height:4.5rem!important;
+    flex-basis:4.5rem!important;
   }
   #home-brand-lockup .home-brand-name{font-size:.98rem}
   #home-brand-lockup .home-ai-link{font-size:1.28rem;min-width:1.75em}
@@ -289,9 +289,9 @@ body .top-ai-launch:not(:hover):not(:focus-visible){
 @media (max-width:350px){
   #home-brand-lockup .home-brand-name{display:none}
   #home-brand-lockup .brand-logo{
-    width:3.85rem!important;
-    height:3.85rem!important;
-    flex-basis:3.85rem!important;
+    width:4.5rem!important;
+    height:4.5rem!important;
+    flex-basis:4.5rem!important;
   }
   #home-brand-lockup .home-ai-link{font-size:1.28rem}
 }
