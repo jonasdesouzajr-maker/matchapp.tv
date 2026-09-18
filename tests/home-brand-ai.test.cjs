@@ -12,7 +12,8 @@ test('homepage brand lockup is stable from first paint through late mobile CSS',
 
   assert.match(html,/href="\/home-brand\.css\?v=\d+"/);
   assert.match(html,/matchapp-logo-animated\.svg\?v=5/);
-  assert.match(brand,/#home-brand-lockup \.brand-logo[\s\S]*width:4\.5rem!important/);
+  assert.match(brand,/#home-brand-lockup \.brand-logo[\s\S]*--home-logo-size:4\.5rem/);
+  assert.match(html,/class="brand-logo" style="width:var\(--home-logo-size,4\.5rem\)!important;height:var\(--home-logo-size,4\.5rem\)!important;flex:0 0 var\(--home-logo-size,4\.5rem\)!important"/);
   assert.match(brand,/First-paint size invariant/);
   assert.match(brand,/html body\.page-home #home-brand-lockup \.home-brand-home \.brand-logo/);
   assert.doesNotMatch(mobile,/brand-logo\{width:3\.45rem/);
