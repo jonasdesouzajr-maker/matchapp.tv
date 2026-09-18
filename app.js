@@ -247,7 +247,6 @@ window.refreshQuotaStatus = async function() {
     } catch (e) { return null; }
 };
 
-
 // ----------------------------------------------------
 // AUDIO & FX ENGINE
 // ----------------------------------------------------
@@ -1756,28 +1755,6 @@ async function loginWithOAuthProvider(provider, label) {
     }
 }
 window.loginWithGoogle = () => loginWithOAuthProvider('google','Google');
-window.loginWithApple = () => loginWithOAuthProvider('apple','Apple');
-
-async function syncAppleSigninAvailability() {
-    const button = document.querySelector('.apple-signin-btn');
-    if (!button) return;
-    button.hidden = true;
-    try {
-        const response = await fetch(SUPABASE_URL + '/auth/v1/settings', {
-            headers: { apikey: SUPABASE_ANON_KEY },
-            cache: 'no-store'
-        });
-        const settings = response.ok ? await response.json() : null;
-        const enabled = settings?.external?.apple === true;
-        button.hidden = !enabled;
-        button.disabled = !enabled;
-        button.setAttribute('aria-hidden', enabled ? 'false' : 'true');
-    } catch (_) {
-        button.hidden = true;
-    }
-}
-if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', syncAppleSigninAvailability);
-else syncAppleSigninAvailability();
 
 window.doLogout = async function() {
     ++profileHydrationEpoch;
@@ -3304,7 +3281,6 @@ function pickFromCatalog(cat, plat, mood, vibe, rating, decade) {
     return {...pick,title:pick.title,synopsis:pick.synopsis,platform:pick.platform,platformVerified:true,watchUrl:pick.watchUrl||(pick.platform==='Roku Channel'?pick.url:null)||null,source:'catalog'};
 }
 
-
 // Exhaustion recovery: if every exact match has already appeared, recycle the
 // least-recently shown exact match instead of dead-ending. Criteria, age/rating,
 // blocked categories and faith opt-in remain mandatory. This is deliberately a
@@ -3395,7 +3371,6 @@ function pickRecycledCatalog(cat, plat, mood, vibe, rating, decade) {
     const pick = pool[0];
     return {...pick,title:pick.title,synopsis:pick.synopsis,platform:pick.platform,platformVerified:true,watchUrl:pick.watchUrl||(pick.platform==='Roku Channel'?pick.url:null)||null,source:'catalog-recycle',_historyFallback:true};
 }
-
 
 // Guaranteed recovery for ordinary matching. Exact user choices win first.
 // If an over-specific combination has no result, relax only secondary filters
