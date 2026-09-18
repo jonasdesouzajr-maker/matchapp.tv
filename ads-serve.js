@@ -2,6 +2,10 @@
  'use strict';
  if(window.matchAppAdsInitialized)return;
  window.matchAppAdsInitialized=true;
+ // AdSense approval hardening: only the publisher-content homepage is ad-enabled.
+ // Account, auth, pricing, AI conversation and other behavioral screens stay ad-free.
+ const adAllowedPath=location.pathname==='/'||location.pathname==='/index.html';
+ if(!adAllowedPath){document.documentElement.classList.add('ads-empty');return;}
  if(location.pathname.indexOf('/kids/')===0)return;
  if(/MatchAppTVAndroid/i.test(navigator.userAgent||'')){
   window.MATCHAPP_IS_AD_FREE=true;
