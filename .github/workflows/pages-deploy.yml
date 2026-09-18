@@ -22,8 +22,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Apply scoped critical hotfixes
-        run: node tools/apply-critical-hotfixes.js
       - name: Verify title, genre and no-dead-end release
         run: |
           node --check app.js
