@@ -14,5 +14,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "MatchAppTV"
+rootProject.name = "MatchAppAiAndroid"
 include(":app")
+include(":kidsapp")
