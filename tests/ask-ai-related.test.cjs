@@ -38,7 +38,8 @@ test('related copy exists in every supported language',()=>{
 
 test('TMDB proxy only fetches related for a typed identity and never returns adult works',()=>{
   const src=read('supabase/functions/tmdb-proxy/index.ts');
-  assert.match(src,/append_to_response/);\n  assert.match(src,/\["credits", "similar", "recommendations"\]/);
+  assert.match(src,/append_to_response/);
+  assert.match(src,/\["credits", "similar", "recommendations"\]/);
   assert.match(src,/combined_credits/);
   assert.match(src,/body\.related === true/);
   assert.match(src,/Number\.isSafeInteger\(body\.tmdb_id\)/);
