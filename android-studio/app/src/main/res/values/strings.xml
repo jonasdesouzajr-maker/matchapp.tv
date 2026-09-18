@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">MatchApp TV</string>
+    <string name="app_name">MatchApp Ai</string>
     <string name="offline_title">You’re offline</string>
     <string name="offline_body">MatchApp needs a connection to find titles and where to watch them. Check your network and try again.</string>
     <string name="offline_retry">Try again</string>
     <string name="file_chooser_title">Choose a photo</string>
+    <string name="kids_separate_app">Kids Mode is available in the separate MatchApp Ai KIDS app.</string>
 </resources>
