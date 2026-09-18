@@ -14,12 +14,16 @@ const FALLBACK_META={
 };
 const SEEN_KEY='matchapp:tiktok-ad-seen:v1';
 const TIKTOK_ORIGIN='https://www.tiktok.com';
+const META_TIMEOUT_MS=4000;
+const PLAYBACK_START_TIMEOUT_MS=12000;
 
 let metaPromise=null;
 let introFrame=null;
 let introFallbackTimer=0;
 let introHardStopTimer=0;
 let introEndTimer=0;
+let introStallTimer=0;
+let introPlaying=false;
 let introEnded=false;
 let introMutedFallback=false;
 let introMeta=FALLBACK_META;
@@ -53,14 +57,19 @@ function playerUrl(id, intro){
 async function getMeta(){
   if(metaPromise)return metaPromise;
   metaPromise=(async()=>{
+    // A slow or unreachable metadata endpoint must never hold the intro (and the page) open.
+    const ctrl=typeof AbortController==='function'?new AbortController():null;
+    const stop=ctrl?setTimeout(()=>ctrl.abort(),META_TIMEOUT_MS):0;
     try{
-      const res=await fetch(META_URL,{method:'GET',mode:'cors',credentials:'omit',cache:'no-store',headers:{Accept:'application/json'}});
+      const res=await fetch(META_URL,{method:'GET',mode:'cors',credentials:'omit',cache:'no-store',headers:{Accept:'application/json'},signal:ctrl?ctrl.signal:undefined});
       if(!res.ok)throw new Error('TikTok metadata unavailable');
       const data=await res.json();
       if(!data?.video_id)throw new Error('TikTok video ID unavailable');
       return {...FALLBACK_META,...data};
     }catch(_){
       return FALLBACK_META;
+    }finally{
+      clearTimeout(stop);
     }
   })();
   return metaPromise;
@@ -165,6 +174,7 @@ function closeIntro(mark=true){
   clearTimeout(introFallbackTimer);
   clearTimeout(introHardStopTimer);
   clearTimeout(introEndTimer);
+  clearTimeout(introStallTimer);
   if(mark)markSeen();
   if(introFrame){
     postPlayer(introFrame,'pause');
@@ -207,6 +217,10 @@ async function startIntro(){
     introFrame.title='MatchApp TV Ai TikTok video ad';
     // Safety net only; the normal close path is TikTok's ended state.
     introHardStopTimer=setTimeout(()=>closeIntro(true),180000);
+    // If playback never starts (autoplay blocked, slow network, in-app browser), release the page.
+    introPlaying=false;
+    clearTimeout(introStallTimer);
+    introStallTimer=setTimeout(()=>{if(!introPlaying)closeIntro(true);},PLAYBACK_START_TIMEOUT_MS);
   }catch(_){
     introFallback('The video could not start here. You can watch it on TikTok; MatchApp will open in a moment.');
   }
@@ -216,6 +230,10 @@ function wirePlayerMessages(){
     if(event.origin!==TIKTOK_ORIGIN||!introFrame||event.source!==introFrame.contentWindow)return;
     const msg=event.data;
     if(!msg||msg['x-tiktok-player']!==true)return;
+    if((msg.type==='onStateChange'&&Number(msg.value)===1)||(msg.type==='onCurrentTime'&&Number(msg.value?.currentTime)>0)){
+      introPlaying=true;
+      clearTimeout(introStallTimer);
+    }
     if(msg.type==='onPlayerReady'){
       document.querySelector('.matchapp-tiktok-intro-actions')?.classList.add('is-ready');
       postPlayer(introFrame,'play');
@@ -275,6 +293,7 @@ function lazyPoster(){
 function init(){
   wirePlayerMessages();
   document.querySelector('.matchapp-tiktok-intro-close')?.addEventListener('click',()=>closeIntro(true));
+  window.__maTikTokIntroReady=true;
   document.querySelector('[data-tiktok-like-link]')?.addEventListener('click',()=>{
     trackEngagement('like_click');
     markSeen();
