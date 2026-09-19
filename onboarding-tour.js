@@ -105,7 +105,7 @@ function show(i){
  panel.querySelector('.matchapp-tour-next').textContent=stepIndex===steps.length-1?t.finish:t.next;
  panel.querySelector('.matchapp-tour-progress span').style.width=((stepIndex+1)/steps.length*100)+'%';
  panel.hidden=false;spot.hidden=false;document.documentElement.classList.add('matchapp-tour-active');
- revealTarget(el);place();
+ if(window.MatchAppScrollGate?.canAutoScroll?.())revealTarget(el);else place();
 }
 async function finish(skipped){
  active=false;panel.hidden=true;spot.hidden=true;document.documentElement.classList.remove('matchapp-tour-active');
