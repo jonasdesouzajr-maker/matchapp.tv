@@ -526,43 +526,49 @@
     chat.scrollIntoView({behavior: reducedMotion() ? 'auto' : 'smooth', block:'nearest'});
   }
 
+  let kidsCelebrateTimer=0,kidsCelebratePopTimer=0;
+  function clearKidsCelebrate(){
+    clearTimeout(kidsCelebrateTimer);clearTimeout(kidsCelebratePopTimer);
+    kidsCelebrateTimer=0;kidsCelebratePopTimer=0;
+    document.querySelectorAll('.kids-celebrate').forEach(el=>el.remove());
+  }
   function playKidsCelebrate(){
-    return new Promise(resolve=>{
-      if(reducedMotion()){resolve();return;}
-      document.querySelectorAll('.kids-celebrate').forEach(el=>el.remove());
-      const layer=document.createElement('div');
-      layer.className='kids-celebrate';
-      layer.setAttribute('aria-hidden','true');
-      const confetti=document.createElement('div'); confetti.className='kids-confetti';
-      const colors=['#ffcf72','#9ee8e6','#ffabcb','#ffffff','#b48cff','#7dffb3','#ff8a5c'];
-      for(let i=0;i<52;i++){
-        const bit=document.createElement('i');
-        bit.style.setProperty('--x',(Math.random()*100)+'vw');
-        bit.style.setProperty('--delay',(Math.random()*0.4)+'s');
-        bit.style.setProperty('--rot',(Math.random()*360)+'deg');
-        bit.style.setProperty('--c',colors[i%colors.length]);
-        bit.style.setProperty('--w',(6+Math.random()*8)+'px');
-        bit.style.setProperty('--h',(8+Math.random()*12)+'px');
-        bit.style.setProperty('--dur',(1.15+Math.random()*0.7)+'s');
-        bit.style.setProperty('--drift',((Math.random()*80)-40)+'px');
-        confetti.appendChild(bit);
-      }
-      const balloons=document.createElement('div'); balloons.className='kids-balloons';
-      const balloonColors=['#ff6b9d','#ffcf72','#6ecbff','#b48cff','#7dffb3','#ff8a5c'];
-      for(let i=0;i<8;i++){
-        const b=document.createElement('span');
-        b.className='kids-balloon';
-        b.style.setProperty('--x',(6+i*12+Math.random()*5)+'vw');
-        b.style.setProperty('--delay',(0.06*i)+'s');
-        b.style.setProperty('--c',balloonColors[i%balloonColors.length]);
-        b.innerHTML='<b></b><em></em>';
-        balloons.appendChild(b);
-      }
-      layer.appendChild(confetti); layer.appendChild(balloons);
-      document.body.appendChild(layer);
-      setTimeout(()=>layer.classList.add('is-popping'), 980);
-      setTimeout(()=>{layer.remove(); resolve();}, 1550);
-    });
+    clearKidsCelebrate();
+    if(reducedMotion())return;
+    const layer=document.createElement('div');
+    layer.className='kids-celebrate';
+    layer.setAttribute('aria-hidden','true');
+    const compact=matchMedia('(max-width: 820px)').matches || document.documentElement.classList.contains('matchapp-android');
+    const confetti=document.createElement('div'); confetti.className='kids-confetti';
+    const colors=['#ffcf72','#9ee8e6','#ffabcb','#ffffff','#b48cff','#7dffb3','#ff8a5c'];
+    const confettiCount=compact?20:32;
+    for(let i=0;i<confettiCount;i++){
+      const bit=document.createElement('i');
+      bit.style.setProperty('--x',(Math.random()*100)+'vw');
+      bit.style.setProperty('--delay',(Math.random()*0.24)+'s');
+      bit.style.setProperty('--rot',(Math.random()*360)+'deg');
+      bit.style.setProperty('--c',colors[i%colors.length]);
+      bit.style.setProperty('--w',(6+Math.random()*6)+'px');
+      bit.style.setProperty('--h',(8+Math.random()*8)+'px');
+      bit.style.setProperty('--dur',(0.85+Math.random()*0.4)+'s');
+      bit.style.setProperty('--drift',((Math.random()*54)-27)+'px');
+      confetti.appendChild(bit);
+    }
+    const balloons=document.createElement('div'); balloons.className='kids-balloons';
+    const balloonColors=['#ff6b9d','#ffcf72','#6ecbff','#b48cff','#7dffb3','#ff8a5c'];
+    const balloonCount=compact?3:5;
+    for(let i=0;i<balloonCount;i++){
+      const b=document.createElement('span');
+      b.className='kids-balloon';
+      b.style.setProperty('--x',(8+i*(84/Math.max(1,balloonCount-1)))+'vw');
+      b.style.setProperty('--delay',(0.05*i)+'s');
+      b.style.setProperty('--c',balloonColors[i%balloonColors.length]);
+      b.innerHTML='<b></b><em></em>';
+      balloons.appendChild(b);
+    }
+    layer.appendChild(confetti);layer.appendChild(balloons);document.body.appendChild(layer);
+    kidsCelebratePopTimer=setTimeout(()=>{if(layer.isConnected)layer.classList.add('is-popping');},700);
+    kidsCelebrateTimer=setTimeout(clearKidsCelebrate,1120);
   }
   function reducedMotion() { return motionPaused || document.documentElement.classList.contains('reduce-motion') || matchMedia('(prefers-reduced-motion: reduce)').matches; }
   function updateMotion() {
@@ -610,10 +616,12 @@
       document.getElementById('kids-result-status').textContent='';
       document.getElementById('kids-rematch-actions').hidden=true;
       status.textContent=tr('quotaUsed');
-      await playKidsCelebrate();
+      // Open the usable result first. Celebration is decorative and must never
+      // block the result, input, timers or Android WebView rendering.
       if (typeof dialog.showModal === 'function') dialog.showModal();
       else { dialog.setAttribute('open','');dialog.scrollIntoView({block:'center'}); }
-    }catch(_){status.textContent=tr('quotaError');status.scrollIntoView({block:'center'});}
+      playKidsCelebrate();
+    }catch(_){clearKidsCelebrate();status.textContent=tr('quotaError');status.scrollIntoView({block:'center'});}
     finally{openingMatch=false;document.getElementById('kids-match-submit').disabled=false;}
   }
 
@@ -694,7 +702,9 @@
     document.getElementById('kids-rematch-new').addEventListener('click',()=>{document.getElementById('kids-watch-dialog').close();document.getElementById('kids-match-form').scrollIntoView({block:'center'});document.getElementById('kids-match-mood').focus();});
     window.KidsAccount?.prepare().catch(()=>{});
     const sharedTitle=params.get('title');if(sharedTitle)highlightTitle(sharedTitle);
-    document.getElementById('kids-watch-dialog').addEventListener('close',()=>{currentWatchItem=null;watchOpener?.focus();});
+    document.getElementById('kids-watch-dialog').addEventListener('close',()=>{clearKidsCelebrate();currentWatchItem=null;watchOpener?.focus({preventScroll:true});});
+    addEventListener('pagehide',clearKidsCelebrate);
+    document.addEventListener('visibilitychange',()=>{if(document.hidden)clearKidsCelebrate();});
     document.addEventListener('keydown', remoteNavigation);
     document.addEventListener('visibilitychange', () => document.body.classList.toggle('kids-hidden', document.hidden));
   }

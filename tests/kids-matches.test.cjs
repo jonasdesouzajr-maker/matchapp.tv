@@ -26,3 +26,24 @@ test('guest Kids matches use the same three-per-day counter and shared links nev
  const {w,d,calls}=await boot(async()=>({data:{session:null}}),undefined,'https://matchapp.tv/kids/?title=bluey');assert.equal(w.localStorage.getItem('match_dailyCount'),null);
  w.localStorage.setItem('match_lastDate',new Date().toLocaleDateString());w.localStorage.setItem('match_dailyCount','2');const title=w.document.querySelector('#kids-grid [data-title-watch=bluey]');title.click();await tick();assert.equal(w.localStorage.getItem('match_dailyCount'),'3');w.document.getElementById('kids-watch-dialog').close();title.click();await tick();assert(!w.document.getElementById('kids-watch-dialog').open);assert.equal(w.localStorage.getItem('match_dailyCount'),'3');assert.equal(calls.length,0);d.window.close();
 });
+
+test('result dialog opens before decorative celebration and cleanup never traps the UI',async()=>{
+ const html=read('kids/index.html').replace(/<script\b[\s\S]*?<\/script>/g,'');
+ const d=new JSDOM(html,{url:'https://matchapp.tv/kids/',runScripts:'outside-only'}),w=d.window;
+ w.matchMedia=q=>({matches:q.includes('max-width')});w.HTMLElement.prototype.scrollIntoView=()=>{};
+ w.HTMLDialogElement.prototype.showModal=function(){this.open=true;};
+ w.HTMLDialogElement.prototype.close=function(){this.open=false;this.dispatchEvent(new w.Event('close'));};
+ w.tmdbLookup=async()=>null;w.fetch=async()=>({ok:true,json:async()=>JSON.parse(read('kids/watch-links.json'))});
+ w.KidsAccount={prepare:async()=>{},consume:async()=>({allowed:true,userId:null}),remember:async()=>{}};
+ w.matchPolicy={known:()=>new Set(),key:t=>t.toLowerCase()};
+ w.eval(read('kids/kids.js'));await tick();
+ const poster=w.document.querySelector('#kids-grid [data-title="Bluey"] .kids-card-poster');poster.click();await tick();
+ const dialog=w.document.getElementById('kids-watch-dialog'),submit=w.document.getElementById('kids-match-submit');
+ assert.equal(dialog.open,true,'usable result dialog must open without waiting on animation');
+ assert.equal(submit.disabled,false,'match input must be released immediately');
+ assert(w.document.querySelectorAll('.kids-celebrate').length<=1,'celebration must be single-owner');
+ dialog.close();
+ assert.equal(w.document.querySelectorAll('.kids-celebrate').length,0,'closing result must synchronously clear decorative overlay');
+ assert.equal(w.document.body.style.overflow,'','celebration must not lock body scrolling');
+ d.window.close();
+});

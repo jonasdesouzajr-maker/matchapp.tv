@@ -33,9 +33,19 @@ test('Kids match celebrates with confetti and popping balloons before the result
   assert.match(kidsJs,/await playKidsCelebrate\(\)/);
   assert.match(kidsJs,/kids-balloon/);
   assert.match(kidsJs,/kids-confetti/);
-  assert.match(kidsJs,/if\(reducedMotion\(\)\)\{resolve\(\);return;\}/);
+  assert.match(kidsJs,/if\(reducedMotion\(\)\)return;/);
   assert.match(kidsCss,/@keyframes kidsConfetti/);
   assert.match(kidsCss,/@keyframes kidsBalloonUp/);
   assert.match(kidsCss,/@keyframes kidsBalloonPop/);
   assert.match(kidsCss,/\.kids-celebrate\.is-popping/);
+});
+
+test('Kids result is usable before celebration and animation load is bounded',()=>{
+ const kidsJs=read('kids/kids.js'),kidsCss=read('kids/kids.css');
+ assert.match(kidsJs,/dialog\.showModal[\s\S]*playKidsCelebrate\(\)/,'result opens before decoration starts');
+ assert.doesNotMatch(kidsJs,/await playKidsCelebrate\(\)/,'celebration must never block result delivery');
+ assert.match(kidsJs,/confettiCount=compact\?20:32/);
+ assert.match(kidsJs,/balloonCount=compact\?3:5/);
+ assert.match(kidsJs,/setTimeout\(clearKidsCelebrate,1120\)/);
+ assert.match(kidsCss,/html\.matchapp-android \.kids-watch-dialog::backdrop\{backdrop-filter:none!important\}/);
 });
