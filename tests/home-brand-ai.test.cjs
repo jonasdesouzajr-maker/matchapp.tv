@@ -61,3 +61,17 @@ test('canonical homepage UI is re-pinned after late legacy CSS',()=>{
   assert.match(settings,/css\('\/preference-exclusions\.css'\)[\s\S]*matchapp-ui-v3\.css\?v=20260919-final6[\s\S]*js\('\/notifications\.js'\)/);
   assert.match(settings,/dataset\.matchappHomeFinal='true'/);
 });
+
+
+test('premium intro aura and compact homepage chrome are shipped',()=>{
+  const html=read('index.html');
+  const home=read('home-premium.css');
+  const intro=read('tiktok-showcase.css');
+  const daily=read('daily-checkin.js');
+  assert.match(html,/home-premium\.css\?v=20260919-premium1/);
+  assert.match(home,/canonical premium homepage shell/);
+  assert.match(home,/matchapp-logo-animated-transparent\.svg/);
+  assert.match(intro,/Premium intro aura v3/);
+  assert.match(intro,/maPremiumAura/);
+  assert.match(daily,/daily-checkin-toggle/);
+});
