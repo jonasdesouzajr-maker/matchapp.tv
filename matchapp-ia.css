@@ -1484,3 +1484,237 @@ html body.page-home #weekly-pick-disclosure{box-sizing:border-box!important}
 @media(prefers-reduced-motion:reduce){
   .ma-global-header .ma-brand-orb{animation:none!important}
 }
+
+
+/* ===== CANONICAL HOME SHELL — SINGLE OWNER =====
+   Legacy Home brand/layout layers are no longer loaded. This block owns the
+   first-paint header, responsive controls, startup anchoring and box containment. */
+
+html.ma-start-at-top,
+html.ma-start-at-top body.page-home{overflow-anchor:none!important}
+
+html body.page-home #mh-topbox.app-header.ma-global-header{
+  position:relative!important;
+  display:flex!important;
+  flex-direction:row!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  gap:18px!important;
+  width:min(calc(100% - 28px),1180px)!important;
+  max-width:1180px!important;
+  min-width:0!important;
+  min-height:116px!important;
+  margin:10px auto 14px!important;
+  padding:10px 18px!important;
+  box-sizing:border-box!important;
+  overflow:visible!important;
+  border:1.5px solid rgba(232,186,64,.38)!important;
+  border-radius:24px!important;
+  background:
+    radial-gradient(620px 170px at 20% 5%,rgba(47,120,197,.12),transparent 72%),
+    linear-gradient(145deg,rgba(20,14,39,.96),rgba(10,18,39,.96))!important;
+  box-shadow:0 18px 52px rgba(0,0,0,.34),inset 0 1px 0 rgba(255,255,255,.05)!important;
+}
+html body.page-home #mh-topbox .mh-head{
+  display:flex!important;
+  flex:1 1 auto!important;
+  min-width:0!important;
+  align-items:center!important;
+  justify-content:flex-start!important;
+  margin:0!important;padding:0!important;
+}
+html body.page-home #mh-topbox .mh-tagline{display:none!important}
+html body.page-home #mh-topbox #home-brand-lockup{
+  display:flex!important;
+  min-width:0!important;
+  width:auto!important;
+  margin:0!important;padding:0!important;
+  overflow:visible!important;
+}
+html body.page-home #mh-topbox .ma-brand-lockup,
+html body.page-home #mh-topbox .ma-brand-home-link{
+  display:flex!important;align-items:center!important;min-width:0!important;overflow:visible!important;
+}
+html body.page-home #mh-topbox .ma-brand-orb-stage{
+  position:relative!important;
+  width:250px!important;height:96px!important;flex:0 0 250px!important;
+  margin-right:-30px!important;overflow:visible!important;
+}
+html body.page-home #mh-topbox .ma-brand-orb{
+  position:absolute!important;left:0!important;top:-24px!important;
+  width:248px!important;height:248px!important;max-width:none!important;
+  object-fit:contain!important;margin:0!important;border-radius:50%!important;
+  z-index:5!important;
+  filter:drop-shadow(0 15px 24px rgba(0,0,0,.48)) drop-shadow(0 0 28px rgba(255,217,95,.34))!important;
+}
+html body.page-home #mh-topbox .ma-brand-copy{
+  display:flex!important;align-items:baseline!important;gap:8px!important;min-width:0!important;
+  margin-left:0!important;transform:none!important;white-space:nowrap!important;
+}
+html body.page-home #mh-topbox .ma-wordmark{
+  font-size:clamp(42px,3.6vw,58px)!important;line-height:.9!important;
+}
+html body.page-home #mh-topbox .ma-tv{font-size:clamp(24px,2vw,32px)!important}
+html body.page-home #mh-topbox .ma-ai-brand-button{
+  min-width:72px!important;width:auto!important;height:66px!important;margin-left:2px!important;flex:0 0 auto!important;
+}
+html body.page-home #mh-topbox .ma-ai-letters{font-size:clamp(46px,3.7vw,60px)!important}
+
+html body.page-home #mh-topbox nav.mh-deck,
+html body.page-home #mh-topbox nav.ma-header-actions{
+  display:flex!important;
+  flex:0 1 auto!important;
+  flex-wrap:wrap!important;
+  align-items:center!important;
+  justify-content:flex-end!important;
+  gap:7px!important;
+  width:auto!important;
+  max-width:52%!important;
+  min-width:0!important;
+  margin:0!important;padding:0!important;
+  overflow:visible!important;
+}
+html body.page-home #mh-topbox nav.mh-deck>*,
+html body.page-home #mh-topbox nav.ma-header-actions>*{
+  flex:0 0 auto!important;
+  max-width:100%!important;
+}
+html body.page-home #mh-topbox .install-wrap,
+html body.page-home #mh-topbox #lang-switcher-host,
+html body.page-home #mh-topbox .ma-menu-wrap{min-width:0!important}
+html body.page-home #mh-topbox button,
+html body.page-home #mh-topbox a,
+html body.page-home #mh-topbox select{
+  box-sizing:border-box!important;
+}
+
+/* Compact desktop fallback: preserve every control instead of clipping it. */
+@media (min-width:900px) and (max-width:1260px){
+  html body.page-home #mh-topbox .ma-brand-orb-stage{
+    width:205px!important;flex-basis:205px!important;margin-right:-25px!important;
+  }
+  html body.page-home #mh-topbox .ma-brand-orb{width:212px!important;height:212px!important;top:-18px!important}
+  html body.page-home #mh-topbox .ma-wordmark{font-size:38px!important}
+  html body.page-home #mh-topbox .ma-tv{font-size:22px!important}
+  html body.page-home #mh-topbox .ma-ai-letters{font-size:44px!important}
+  html body.page-home #mh-topbox nav.mh-deck,
+  html body.page-home #mh-topbox nav.ma-header-actions{max-width:50%!important;gap:5px!important}
+  html body.page-home #mh-topbox .ma-country-link span:last-child,
+  html body.page-home #mh-topbox .ma-menu-button span{display:none!important}
+  html body.page-home #mh-topbox .ma-menu-button{width:44px!important;min-width:44px!important;padding:0!important}
+}
+
+/* Smartphone: brand first, ALL controls on a second visible row. */
+@media (max-width:899px){
+  html body.page-home #mh-topbox.app-header.ma-global-header{
+    flex-direction:column!important;
+    align-items:stretch!important;
+    gap:8px!important;
+    width:calc(100% - 12px)!important;
+    min-height:0!important;
+    margin:6px auto 10px!important;
+    padding:8px 9px 10px!important;
+    border-radius:18px!important;
+    overflow:visible!important;
+  }
+  html body.page-home #mh-topbox .mh-head{
+    width:100%!important;
+    justify-content:center!important;
+    overflow:visible!important;
+  }
+  html body.page-home #mh-topbox #home-brand-lockup{
+    width:100%!important;justify-content:center!important;overflow:visible!important;
+  }
+  html body.page-home #mh-topbox .ma-brand-orb-stage{
+    width:92px!important;height:64px!important;flex-basis:92px!important;margin-right:-7px!important;
+  }
+  html body.page-home #mh-topbox .ma-brand-orb{
+    width:96px!important;height:96px!important;top:-16px!important;left:0!important;
+  }
+  html body.page-home #mh-topbox .ma-wordmark{font-size:clamp(25px,7vw,34px)!important}
+  html body.page-home #mh-topbox .ma-tv{font-size:18px!important}
+  html body.page-home #mh-topbox .ma-ai-brand-button{min-width:52px!important;height:52px!important;padding-inline:4px!important}
+  html body.page-home #mh-topbox .ma-ai-letters{font-size:34px!important}
+  html body.page-home #mh-topbox nav.mh-deck,
+  html body.page-home #mh-topbox nav.ma-header-actions{
+    display:flex!important;
+    width:100%!important;max-width:100%!important;
+    flex-wrap:wrap!important;
+    justify-content:center!important;
+    gap:5px!important;
+    overflow:visible!important;
+  }
+  html body.page-home #mh-topbox nav.mh-deck>*,
+  html body.page-home #mh-topbox nav.ma-header-actions>*{
+    min-width:40px!important;
+    max-width:min(100%,180px)!important;
+    min-height:40px!important;
+  }
+  html body.page-home #mh-topbox #lang-switcher-host select{
+    max-width:112px!important;min-width:72px!important;
+  }
+  html body.page-home #mh-topbox .ma-menu-button{
+    width:44px!important;min-width:44px!important;padding:0!important;
+  }
+  html body.page-home #mh-topbox .ma-menu-button span{display:none!important}
+  html body.page-home #mh-topbox .ma-country-link span:last-child{display:none!important}
+}
+@media (max-width:420px){
+  html body.page-home #mh-topbox .ma-brand-orb-stage{width:76px!important;flex-basis:76px!important}
+  html body.page-home #mh-topbox .ma-brand-orb{width:82px!important;height:82px!important;top:-10px!important}
+  html body.page-home #mh-topbox .ma-wordmark{font-size:23px!important}
+  html body.page-home #mh-topbox .ma-tv{font-size:15px!important}
+  html body.page-home #mh-topbox .ma-ai-brand-button{min-width:43px!important;width:43px!important}
+  html body.page-home #mh-topbox .ma-ai-letters{font-size:29px!important}
+}
+
+/* Box-content containment: no label, title or description may paint outside. */
+html body.page-home :is(
+  .ma-concierge,#trending-rail,#latest-news,#premiere-disclosure,
+  #weekly-pick-disclosure,#global-events,#result-box,#loading-box,
+  .premium-card,.spotlight-card,.crit-collapsible,.crit-toggle,
+  .global-events-summary,.ma-news-card,.marquee-item
+){
+  min-width:0!important;
+  max-width:100%!important;
+  box-sizing:border-box!important;
+}
+html body.page-home :is(
+  .ma-concierge,#latest-news,#premiere-disclosure,#weekly-pick-disclosure,
+  #global-events,#result-box,.premium-card,.spotlight-card,.crit-toggle,
+  .global-events-summary
+) :is(h1,h2,h3,h4,p,span,strong,small,label,a,button){
+  min-width:0!important;
+  max-width:100%!important;
+  overflow-wrap:anywhere!important;
+  word-break:normal!important;
+}
+html body.page-home :is(
+  #premiere-disclosure>summary,#weekly-pick-disclosure>summary,
+  #global-events>.global-events-fold>.global-events-summary,
+  .crit-toggle,.match-more-filters>summary
+){
+  overflow:hidden!important;
+}
+html body.page-home :is(
+  #premiere-disclosure>summary,#weekly-pick-disclosure>summary,
+  #global-events>.global-events-fold>.global-events-summary
+)>*:not(.ge-sum-count){
+  min-width:0!important;
+  overflow:hidden!important;
+  text-overflow:ellipsis!important;
+}
+@media(max-width:600px){
+  html body.page-home :is(
+    #premiere-disclosure>summary,#weekly-pick-disclosure>summary,
+    #global-events>.global-events-fold>.global-events-summary
+  ){
+    font-size:15px!important;
+    line-height:1.2!important;
+  }
+  html body.page-home .ma-tabs{display:grid!important;grid-template-columns:1fr 1fr!important;width:100%!important}
+  html body.page-home .ma-tab{
+    min-width:0!important;white-space:normal!important;line-height:1.15!important;padding:10px 8px!important;
+  }
+}
+
