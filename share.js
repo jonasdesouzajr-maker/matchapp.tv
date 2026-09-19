@@ -287,12 +287,50 @@ window.downloadShareCard = function() {
 window.copyShareText = async function(silent) {
     try {
         await navigator.clipboard.writeText(shareText() + '\n' + SHARE_URL);
-        if (!silent && window.showToast) showToast('📋 Caption + link copied!');
-        if (!silent) afterShare('copy');
+        if (!silent && window.showToast) showToast('📋 Caption + link copied. A copied caption is not counted as a completed share.');
     } catch (e) { if (window.showToast) showToast('Could not copy — select the text manually.', true); }
 };
 
-// Per-network intents. Image-first networks get the card downloaded automatically.
+let pendingExternalShare = null;
+function externalShareStatus(network) {
+    const statusEl = document.getElementById('share-reward-status');
+    const name = network === 'x' ? 'X' : network.charAt(0).toUpperCase() + network.slice(1);
+    if (statusEl) statusEl.innerHTML = `↗ Finish sharing on <strong>${name}</strong>, then return here and confirm it to unlock the bonus. MatchApp cannot read your activity inside another social network.`;
+    let btn = document.getElementById('share-confirm-external');
+    if (!btn) {
+        btn = document.createElement('button');
+        btn.id = 'share-confirm-external';
+        btn.type = 'button';
+        btn.className = 'gold-btn';
+        btn.style.cssText = 'width:100%;margin:10px 0 0;';
+        btn.addEventListener('click', async () => {
+            if (!pendingExternalShare) return;
+            const age = Date.now() - pendingExternalShare.startedAt;
+            if (age < 1200) {
+                if (window.showToast) showToast('Finish the share first, then come back to claim the bonus.');
+                return;
+            }
+            const network = pendingExternalShare.network;
+            pendingExternalShare = null;
+            btn.hidden = true;
+            await afterShare(network + '-confirmed');
+        });
+        const reward = document.getElementById('share-reward-status');
+        reward?.insertAdjacentElement('afterend', btn);
+    }
+    btn.hidden = false;
+    btn.textContent = '✓ I shared it — unlock +1 Match';
+}
+function markExternalShareStarted(network) {
+    pendingExternalShare = {network, startedAt: Date.now()};
+    externalShareStatus(network);
+}
+
+// Per-network web intents can hand the visitor to the social network, but the
+// browser cannot inspect that other origin to prove a post was actually sent.
+// Native Web Share is the only path where completion can be observed directly.
+// Web intents therefore require an explicit confirmation after the visitor
+// returns instead of silently awarding a Match for opening a tab or copying text.
 window.shareTo = function(network) {
     const text = encodeURIComponent(shareText());
     const url = encodeURIComponent(SHARE_URL);
@@ -305,17 +343,17 @@ window.shareTo = function(network) {
         linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${url}`,
         pinterest:`https://pinterest.com/pin/create/button/?url=${url}&description=${text}`
     };
-    // Instagram and TikTok have no web share intent. Copy the caption and let the
-    // user decide whether they want the image — no silent download to their device.
     if (network === 'instagram' || network === 'tiktok') {
         window.copyShareText(true);
-        if (window.showToast) showToast(`📋 Caption copied — paste it into ${network === 'instagram' ? 'Instagram' : 'TikTok'}. Tap Save Image if you want the card too.`);
-        afterShare(network);
+        const dest = network === 'instagram' ? 'https://www.instagram.com/' : 'https://www.tiktok.com/';
+        window.open(dest, '_blank', 'noopener');
+        markExternalShareStarted(network);
+        if (window.showToast) showToast(`📋 Caption copied — finish the post in ${network === 'instagram' ? 'Instagram' : 'TikTok'}, then return to confirm the share.`);
         return;
     }
     if (map[network]) {
         window.open(map[network], '_blank', 'noopener,width=640,height=620');
-        afterShare(network);
+        markExternalShareStarted(network);
     }
 };
 
@@ -487,4 +525,9 @@ async function afterShare(network) {
 }
 
 // A fresh match makes the next share rewardable again.
-document.addEventListener('matchapp:newmatch', () => { _rewardedThisCard = false; });
+document.addEventListener('matchapp:newmatch', () => {
+    _rewardedThisCard = false;
+    pendingExternalShare = null;
+    const confirm = document.getElementById('share-confirm-external');
+    if (confirm) confirm.hidden = true;
+});

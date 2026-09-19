@@ -55,3 +55,16 @@ test('homepage search metadata remains indexable and preview friendly',()=>{
   assert.ok(html.includes('twitter:image" content="https://matchapp.tv/og-image-v3.png?v=2'));
   assert.ok(html.includes('application/ld+json'));
 });
+
+
+test('desktop social rewards never fire merely for opening or copying a social intent',()=>{
+  const share=read('share.js');
+  const html=read('index.html');
+  const copy=share.slice(share.indexOf('window.copyShareText'),share.indexOf('// Per-network web intents'));
+  const intents=share.slice(share.indexOf('window.shareTo = function'),share.indexOf('/* ============================================================\n   SEND TO A PERSON'));
+  assert.doesNotMatch(copy,/afterShare\('copy'\)/);
+  assert.doesNotMatch(intents,/afterShare\(network\)/);
+  assert.match(share,/I shared it — unlock \+1 Match/);
+  assert.match(share,/afterShare\(network \+ '-confirmed'\)/);
+  assert.match(html,/share\.js\?v=20260919-reward3/);
+});
