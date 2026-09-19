@@ -184,8 +184,15 @@
     });
   }
 
+  const canonicalHomeShell=location.pathname==='/'||location.pathname==='/index.html';
+
   function organizeHeaders(root=document){
     root.querySelectorAll?.('.app-header').forEach(header=>{
+      if(canonicalHomeShell && header.id==='mh-topbox'){
+        header.classList.remove('app-header-v2');
+        header.querySelectorAll('.header-controls-v2').forEach(el=>el.classList.remove('header-controls-v2'));
+        return;
+      }
       header.classList.add('app-header-v2');
       const nav = header.querySelector('nav,#header-auth-area');
       if(nav) nav.classList.add('header-controls-v2');
