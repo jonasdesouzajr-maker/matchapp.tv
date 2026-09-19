@@ -11,8 +11,8 @@ android {
         applicationId = "tv.matchapp.kids"
         minSdk = 24
         targetSdk = 35
-        versionCode = 16
-        versionName = "1.1.14"
+        versionCode = 17
+        versionName = "1.1.15"
         resourceConfigurations += listOf("en", "pt", "es", "fr", "de", "it", "tr", "ru", "ar", "hi", "in", "ja", "ko", "zh")
     }
 
