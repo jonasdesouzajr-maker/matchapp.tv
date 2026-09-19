@@ -411,7 +411,8 @@ Deno.serve(async (req: Request) => {
       const kinds: Array<"movie"|"tv"> = d.kind === "movie" ? ["movie"] : d.kind === "tv" ? ["tv"] : ["movie","tv"];
       const genreIds = Array.isArray(d.genre_ids) ? (d.genre_ids as unknown[]).map(Number).filter((n)=>Number.isSafeInteger(n)&&n>0) : [];
       const decade = Number(d.decade_start);
-      const pages = Math.min(2, Math.max(1, Number(d.pages)||1));
+      const pages = Math.min(20, Math.max(1, Number(d.pages)||1));
+      const originalLanguage = typeof d.original_language === "string" && /^[a-z]{2}$/i.test(d.original_language) ? d.original_language.toLowerCase() : "";
       const out: Record<string, unknown>[] = [];
       for (const k of kinds) {
         for (let page=1; page<=pages; page++) {
@@ -421,6 +422,7 @@ Deno.serve(async (req: Request) => {
           params.set("page",String(page));
           params.set("vote_count.gte","20");
           params.set("language",lang);
+          if (originalLanguage) params.set("with_original_language", originalLanguage);
           if (genreIds.length) params.set("with_genres",genreIds.join("|"));
           if (Number.isSafeInteger(decade) && decade >= 1900 && decade <= 2100) {
             if (k === "movie") {
@@ -437,7 +439,7 @@ Deno.serve(async (req: Request) => {
         }
       }
       out.sort((a,b)=>(Number(b.popularity)||0)-(Number(a.popularity)||0));
-      return json({results:out.slice(0,40)},200,true);
+      return json({results:out.slice(0,400)},200,true);
     }
 
     if (!query) return json({ error: "query is required" }, 400);
