@@ -401,8 +401,6 @@ body.page-home .app-header>nav #lang-switcher-host select{padding-left:30px!impo
 
 /* Smartphone compact utility deck — keep controls usable without dominating first paint. */
 @media(max-width:600px){
-  html body.page-home .app-header{gap:.38rem!important;padding:5px 8px 6px!important}
-  html body.page-home .app-header #home-brand-lockup{transform:scale(.92);transform-origin:center}
   html body.page-home .app-header>nav{
     max-width:25rem!important;
     gap:4px!important;
