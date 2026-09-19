@@ -102,21 +102,21 @@ arc, with a sparkle igniting at its edge, inside a gold ring on black.</desc>
                  animation: ma-draw 1.25s cubic-bezier(.22,.61,.36,1) .05s forwards; }
     .ma-ring-in   { opacity: 0; animation: ma-fade .7s ease-out 1.05s forwards; }
     .ma-halo      { opacity: 0; animation: ma-haloIn 1.1s ease-out .75s forwards,
-                                        ma-breathe 7s ease-in-out 2.4s infinite; }
+                                        ma-breathe 11s ease-in-out 2.4s infinite; }
     .ma-play      { opacity: 0; transform-origin: 474px 524px;
                  animation: ma-rise .85s cubic-bezier(.16,.9,.28,1) .5s forwards; }
     .ma-orb-back  { opacity: 0; animation: ma-sweepIn .9s cubic-bezier(.3,.7,.3,1) .95s forwards; }
     .ma-orb-front { opacity: 0; animation: ma-sweepIn .9s cubic-bezier(.3,.7,.3,1) 1.12s forwards; }
-    .ma-orbit     { transform-origin: 500px 548px; animation: ma-tilt 22s ease-in-out 2.2s infinite; }
+    .ma-orbit     { transform-origin: 500px 548px; animation: ma-tilt 34s ease-in-out 2.2s infinite; }
     .ma-star      { opacity: 0; transform-origin: 718px 330px;
                  animation: ma-ignite .75s cubic-bezier(.2,1.5,.4,1) 1.55s forwards,
-                            ma-twinkle 4.6s ease-in-out 2.6s infinite; }
+                            ma-twinkle 7.5s ease-in-out 2.6s infinite; }
     .ma-glints    { opacity: 0; animation: ma-fade .6s ease-out 1.95s forwards,
-                            ma-glintPulse 4.6s ease-in-out 2.6s infinite; }
+                            ma-glintPulse 7.5s ease-in-out 2.6s infinite; }
     .ma-spec-ring { opacity: 0; stroke-dashoffset: 0;
-                 animation: ma-specRing 7s cubic-bezier(.45,0,.55,1) 2.6s infinite; }
+                 animation: ma-specRing 11s cubic-bezier(.45,0,.55,1) 2.6s infinite; }
     .ma-spec-play { opacity: 0; stroke-dashoffset: 0;
-                 animation: ma-specPlay 7s cubic-bezier(.45,0,.55,1) 3.05s infinite; }
+                 animation: ma-specPlay 11s cubic-bezier(.45,0,.55,1) 3.05s infinite; }
 
     @keyframes ma-draw       { to { stroke-dashoffset: 0; } }
     @keyframes ma-fade       { to { opacity: 1; } }
