@@ -45,7 +45,7 @@ jobs:
           node --test tests/match-runtime-regression.test.cjs tests/exclusion-preferences.test.cjs
           grep -Fq 'id="q-genre"' index.html
           grep -Fq '/app.js?v=210' index.html
-          grep -Fq '/catalog-media.js?v=20260918-notify2' index.html
+          grep -Fq '/catalog-media.js?v=20260919-titlecards1' index.html
           grep -Fq '/discover.js?v=207' discover.html
           grep -Fq '/kids/kids.js?v=199' kids/index.html
           grep -Fq 'Final invariant: if any age-approved titles exist' kids/kids.js
@@ -62,7 +62,7 @@ jobs:
           grep -Fq '/kids/onboarding-tour.js?v=1' kids/index.html
           grep -Fq 'blockedOriginCountries' settings.js
           grep -Fq 'What I don’t want to see in my matches' profile/profile.html
-          grep -Fq '"2026.09.18.4"' release.json
+          grep -Fq '"2026.09.19.1"' release.json
       - name: Generate bilingual social preview
         run: |
           sudo apt-get update -qq
