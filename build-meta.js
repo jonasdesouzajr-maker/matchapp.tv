@@ -1,5 +1,5 @@
 // Functional release identifier must match release.json.
-window.MATCHAPP_BUILD = '2026.09.19.1';
+window.MATCHAPP_BUILD = '2026.09.19.2';
 
 
 /* HOME STARTUP SCHEDULER */
@@ -94,8 +94,19 @@ window.MATCHAPP_BUILD = '2026.09.19.1';
       } catch (_) {}
     });
   }
+  function ensurePremiumUi(){
+    const p=(location.pathname||'/').toLowerCase();if(p==='/kids'||p.startsWith('/kids/'))return;
+    if(!document.querySelector('link[data-matchapp-premium-ui]')){const link=document.createElement('link');link.rel='stylesheet';link.href='/premium-ui.css?v=20260919-premium1';link.dataset.matchappPremiumUi='1';document.head.appendChild(link);}
+  }
+  function ensureKidsEntry(){
+    const p=(location.pathname||'/').toLowerCase();if(p==='/kids'||p.startsWith('/kids/'))return;
+    let entry=document.getElementById('matchapp-kids-entry');const header=document.querySelector('header.app-header,.app-header');const host=header?.querySelector('nav,#header-auth-area')||header;
+    if(!entry){entry=document.createElement('a');entry.id='matchapp-kids-entry';entry.className='ma-kids-mode-entry';entry.href='/kids/';entry.setAttribute('aria-label','Open Kids Mode');entry.setAttribute('title','Kids Mode');entry.innerHTML='<img src="/kids/kids-logo-sm.jpeg" alt="" width="23" height="23"><span>Kids Mode</span>';}
+    if(host){entry.classList.remove('ma-kids-floating');if(entry.parentNode!==host)host.appendChild(entry)}else if(document.body&&!entry.isConnected){entry.classList.add('ma-kids-floating');document.body.appendChild(entry)}
+  }
   function install() {
     const path = location.pathname;
+    ensurePremiumUi();ensureKidsEntry();setTimeout(ensureKidsEntry,700);
     if (path === '/' || path === '/index.html') {
       loadHomeRuntimeFixes();
       document.title = 'What to Watch Tonight | AI Movie & TV Finder | MatchApp';

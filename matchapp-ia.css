@@ -1761,3 +1761,90 @@ html body.page-home #mh-topbox.app-header.ma-header-ready{
 @media(prefers-reduced-motion:reduce){
   html body.page-home #mh-topbox.app-header.ma-header-ready{transition:none!important}
 }
+
+
+/* ===== HOME HEADER PREMIUM GRID V2 — 2026-09-19 =====
+   Home deliberately does NOT carry .ma-global-header. This block is the sole
+   final owner of its geometry so no deferred shared-header class can morph it
+   after first paint. */
+html body.page-home #mh-topbox.app-header.ma-home-header{
+  position:relative!important;display:grid!important;
+  grid-template-columns:minmax(330px,.9fr) minmax(520px,1.35fr)!important;
+  align-items:center!important;justify-content:stretch!important;gap:16px!important;
+  width:min(calc(100% - 24px),1180px)!important;max-width:1180px!important;min-width:0!important;
+  min-height:104px!important;margin:10px auto 14px!important;padding:10px 14px!important;box-sizing:border-box!important;
+  overflow:visible!important;border:1px solid rgba(229,193,88,.50)!important;border-radius:24px!important;
+  background:radial-gradient(560px 150px at 14% 0%,rgba(85,33,137,.18),transparent 72%),linear-gradient(145deg,rgba(29,16,50,.97),rgba(12,17,39,.97))!important;
+  box-shadow:0 18px 52px rgba(0,0,0,.34),inset 0 1px 0 rgba(255,255,255,.055)!important;
+}
+html body.page-home #mh-topbox.ma-home-header .mh-head{display:flex!important;align-items:center!important;justify-content:flex-start!important;width:100%!important;min-width:0!important;margin:0!important;padding:0!important;overflow:visible!important}
+html body.page-home #mh-topbox.ma-home-header .mh-tagline{display:none!important}
+html body.page-home #mh-topbox.ma-home-header #home-brand-lockup{display:flex!important;align-items:center!important;justify-content:flex-start!important;width:auto!important;min-width:0!important;margin:0!important;padding:0!important;overflow:visible!important}
+html body.page-home #mh-topbox.ma-home-header .ma-brand-lockup,
+html body.page-home #mh-topbox.ma-home-header .ma-brand-home-link{display:flex!important;align-items:center!important;min-width:0!important;overflow:visible!important}
+html body.page-home #mh-topbox.ma-home-header .ma-brand-orb-stage{position:relative!important;width:92px!important;height:76px!important;flex:0 0 92px!important;margin:0 5px 0 -5px!important;overflow:visible!important}
+html body.page-home #mh-topbox.ma-home-header .ma-brand-orb{position:absolute!important;left:0!important;top:-7px!important;width:90px!important;height:90px!important;max-width:none!important;object-fit:contain!important;margin:0!important;border-radius:50%!important;z-index:2!important;filter:drop-shadow(0 8px 18px rgba(0,0,0,.46)) drop-shadow(0 0 16px rgba(229,193,88,.28))!important;animation:maHomeOrbFloat 4.8s ease-in-out infinite!important}
+html body.page-home #mh-topbox.ma-home-header .ma-brand-copy{display:flex!important;align-items:baseline!important;gap:6px!important;min-width:0!important;margin:0!important;transform:none!important;white-space:nowrap!important}
+html body.page-home #mh-topbox.ma-home-header .ma-wordmark{font-size:clamp(31px,3vw,43px)!important;line-height:.92!important;letter-spacing:-.055em!important}
+html body.page-home #mh-topbox.ma-home-header .ma-tv{font-size:clamp(18px,1.65vw,25px)!important}
+html body.page-home #mh-topbox.ma-home-header .ma-ai-brand-button{min-width:55px!important;width:auto!important;height:52px!important;min-height:52px!important;margin-left:3px!important;padding:0 7px!important;flex:0 0 auto!important;display:grid!important;place-items:center!important}
+html body.page-home #mh-topbox.ma-home-header .ma-ai-letters{font-size:clamp(34px,3.2vw,45px)!important;line-height:1!important}
+html body.page-home #mh-topbox.ma-home-header nav.mh-deck,
+html body.page-home #mh-topbox.ma-home-header nav.ma-header-actions{display:flex!important;flex-flow:row wrap!important;align-items:center!important;align-content:center!important;justify-content:flex-end!important;justify-self:end!important;gap:8px!important;width:100%!important;max-width:690px!important;min-width:0!important;margin:0!important;padding:0!important;overflow:visible!important}
+html body.page-home #mh-topbox.ma-home-header nav>*{flex:0 0 auto!important;margin:0!important;box-sizing:border-box!important}
+html body.page-home #mh-topbox.ma-home-header :is(.sound-toggle-btn,.matchapp-notification-button,#profile-link-tab,#nav-logout-btn){width:44px!important;height:44px!important;min-width:44px!important;min-height:44px!important;padding:0!important;display:grid!important;place-items:center!important;border-radius:13px!important;line-height:1!important}
+html body.page-home #mh-topbox.ma-home-header :is(.sound-toggle-btn,.matchapp-notification-button,#nav-logout-btn)>*{margin:auto!important}
+html body.page-home #mh-topbox.ma-home-header #profile-link-tab{justify-content:center!important;gap:0!important}
+html body.page-home #mh-topbox.ma-home-header #profile-link-tab #nav-profile-text{display:none!important}
+html body.page-home #mh-topbox.ma-home-header #profile-link-tab .avatar-ring{width:30px!important;height:30px!important;margin:0!important;display:grid!important;place-items:center!important}
+html body.page-home #mh-topbox.ma-home-header #nav-logout-btn{font-size:0!important;color:#ff8d83!important;border-color:rgba(255,104,91,.55)!important}
+html body.page-home #mh-topbox.ma-home-header #nav-logout-btn svg{width:18px!important;height:18px!important;stroke:currentColor!important}
+html body.page-home #mh-topbox.ma-home-header .install-wrap{width:auto!important;min-width:0!important}
+html body.page-home #mh-topbox.ma-home-header .install-wrap>.install-btn{width:auto!important;min-width:158px!important;min-height:44px!important;height:44px!important;padding:0 15px!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:9px!important}
+html body.page-home #mh-topbox.ma-home-header #quota-badge{width:auto!important;min-width:124px!important;min-height:44px!important;height:44px!important;padding:0 13px!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:8px!important}
+html body.page-home #mh-topbox.ma-home-header .ma-country-link{width:auto!important;min-width:92px!important;min-height:44px!important;height:44px!important;padding:0 11px!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:7px!important}
+html body.page-home #mh-topbox.ma-home-header #lang-switcher-host{width:auto!important;min-width:0!important;height:44px!important;padding:0!important;display:flex!important;align-items:center!important}
+html body.page-home #mh-topbox.ma-home-header #lang-switcher-host select{width:auto!important;min-width:142px!important;max-width:168px!important;height:44px!important;padding:0 34px 0 12px!important;margin:0!important}
+html body.page-home #mh-topbox.ma-home-header .ma-kids-mode-entry{width:auto!important;min-width:122px!important;height:44px!important;padding:0 12px!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:8px!important;border-radius:13px!important;text-decoration:none!important;color:#fff4c1!important;font-weight:850!important;font-size:12px!important}
+html body.page-home #mh-topbox.ma-home-header .ma-kids-mode-entry img{width:23px!important;height:23px!important;min-width:23px!important;border-radius:50%!important;object-fit:cover!important;border:1px solid rgba(255,229,129,.65)!important}
+html body.page-home #mh-topbox.ma-home-header .ma-menu-wrap{width:auto!important;min-width:0!important}
+html body.page-home #mh-topbox.ma-home-header .ma-menu-button{width:auto!important;min-width:116px!important;height:44px!important;padding:0 13px!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:8px!important}
+html body.page-home #mh-topbox.ma-home-header .ma-menu-button svg{width:20px!important;height:20px!important;flex:0 0 20px!important}
+html body.page-home #mh-topbox.ma-home-header #nav-reg-btn{width:auto!important;min-width:138px!important;min-height:44px!important;height:44px!important;padding:0 14px!important}
+@keyframes maHomeOrbFloat{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-2px) scale(1.012)}}
+@media(min-width:900px) and (max-width:1120px){
+ html body.page-home #mh-topbox.app-header.ma-home-header{grid-template-columns:minmax(285px,.75fr) minmax(500px,1.25fr)!important;gap:10px!important;width:calc(100% - 18px)!important;padding-inline:10px!important}
+ html body.page-home #mh-topbox.ma-home-header .ma-brand-orb-stage{width:76px!important;flex-basis:76px!important;height:66px!important}
+ html body.page-home #mh-topbox.ma-home-header .ma-brand-orb{width:76px!important;height:76px!important;top:-5px!important}
+ html body.page-home #mh-topbox.ma-home-header .ma-wordmark{font-size:30px!important}
+ html body.page-home #mh-topbox.ma-home-header .ma-tv{font-size:18px!important}
+ html body.page-home #mh-topbox.ma-home-header .ma-ai-brand-button{min-width:48px!important;height:48px!important;min-height:48px!important}
+ html body.page-home #mh-topbox.ma-home-header .ma-ai-letters{font-size:34px!important}
+ html body.page-home #mh-topbox.ma-home-header nav.mh-deck,html body.page-home #mh-topbox.ma-home-header nav.ma-header-actions{gap:6px!important;max-width:640px!important}
+ html body.page-home #mh-topbox.ma-home-header .install-wrap>.install-btn{min-width:142px!important}
+ html body.page-home #mh-topbox.ma-home-header .ma-menu-button{min-width:108px!important}
+ html body.page-home #mh-topbox.ma-home-header .ma-kids-mode-entry{min-width:110px!important}
+}
+@media(max-width:899px){
+ html body.page-home #mh-topbox.app-header.ma-home-header{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:9px!important;width:calc(100% - 12px)!important;min-height:0!important;margin:6px auto 10px!important;padding:8px 9px 10px!important;border-radius:19px!important}
+ html body.page-home #mh-topbox.ma-home-header .mh-head{justify-content:center!important}
+ html body.page-home #mh-topbox.ma-home-header #home-brand-lockup{justify-content:center!important}
+ html body.page-home #mh-topbox.ma-home-header .ma-brand-orb-stage{width:70px!important;height:58px!important;flex-basis:70px!important;margin-right:2px!important}
+ html body.page-home #mh-topbox.ma-home-header .ma-brand-orb{width:70px!important;height:70px!important;top:-5px!important}
+ html body.page-home #mh-topbox.ma-home-header .ma-wordmark{font-size:clamp(24px,6vw,31px)!important}
+ html body.page-home #mh-topbox.ma-home-header .ma-tv{font-size:17px!important}
+ html body.page-home #mh-topbox.ma-home-header .ma-ai-brand-button{min-width:46px!important;height:46px!important;min-height:46px!important}
+ html body.page-home #mh-topbox.ma-home-header .ma-ai-letters{font-size:31px!important}
+ html body.page-home #mh-topbox.ma-home-header nav.mh-deck,html body.page-home #mh-topbox.ma-home-header nav.ma-header-actions{width:100%!important;max-width:100%!important;justify-content:center!important;justify-self:stretch!important;gap:6px!important}
+}
+@media(max-width:520px){
+ html body.page-home #mh-topbox.ma-home-header .ma-country-link{min-width:44px!important;width:44px!important;padding:0!important}
+ html body.page-home #mh-topbox.ma-home-header .ma-country-link span:last-child{display:none!important}
+ html body.page-home #mh-topbox.ma-home-header #lang-switcher-host select{min-width:108px!important;max-width:120px!important}
+ html body.page-home #mh-topbox.ma-home-header .install-wrap>.install-btn{min-width:128px!important;padding-inline:10px!important}
+ html body.page-home #mh-topbox.ma-home-header .ma-kids-mode-entry{min-width:94px!important;padding-inline:9px!important}
+ html body.page-home #mh-topbox.ma-home-header .ma-menu-button{min-width:44px!important;width:44px!important;padding:0!important}
+ html body.page-home #mh-topbox.ma-home-header .ma-menu-button span{display:none!important}
+ html body.page-home #mh-topbox.ma-home-header #quota-badge{min-width:106px!important}
+}
+@media(prefers-reduced-motion:reduce){html body.page-home #mh-topbox.ma-home-header .ma-brand-orb{animation:none!important}}

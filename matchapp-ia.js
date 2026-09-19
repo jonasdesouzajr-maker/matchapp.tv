@@ -99,6 +99,19 @@ function brandHeader(){
  }
  const nav=qs('nav',h);if(!nav)return;
  nav.classList.add('ma-header-actions');
+ // Kids Mode is a first-class destination, not a buried Settings action.
+ if(!document.getElementById('matchapp-kids-entry')){
+   const kids=el('a','ma-kids-mode-entry');kids.id='matchapp-kids-entry';kids.href='/kids/';
+   kids.setAttribute('aria-label','Open Kids Mode');kids.setAttribute('title','Kids Mode');
+   kids.innerHTML='<img src="/kids/kids-logo-sm.jpeg" alt="" width="23" height="23"><span>Kids Mode</span>';
+   nav.appendChild(kids);
+ }
+ const logout=qs('#nav-logout-btn',nav);
+ if(logout&&!logout.dataset.maIconized){
+   logout.dataset.maIconized='1';logout.removeAttribute('data-i18n');
+   logout.setAttribute('aria-label','Log out');logout.setAttribute('title','Log out');
+   logout.innerHTML='<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M10 5H6.8A1.8 1.8 0 0 0 5 6.8v10.4A1.8 1.8 0 0 0 6.8 19H10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M14 8l4 4-4 4M18 12H9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+ }
  if(!qs('.ma-country-link',nav)){
    const a=el('a','ma-country-link');a.href='/profile/profile.html';a.title='Viewing country';
    const name=countryName();a.innerHTML='<span aria-hidden="true">🌍</span><span>'+(name||'Country')+'</span>';
