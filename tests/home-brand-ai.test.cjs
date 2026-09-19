@@ -51,10 +51,12 @@ test('premium intro, compact check-in and social preview ship together',()=>{
   assert.match(og,/What to watch tonight, decided by AI/);
 });
 
-test('Lazy Mode is mounted into the premium top app bar',()=>{
+test('Lazy Mode remains functional without mutating the visible Home header',()=>{
   const lazy=read('lazy.js');
-  assert.match(lazy,/document\.querySelector\('#mh-topbox \.mh-deck'\)/);
-  assert.match(lazy,/lazy-bar--header/);
+  assert.doesNotMatch(lazy,/document\.querySelector\('#mh-topbox \.mh-deck'\)/);
+  assert.doesNotMatch(lazy,/lazy-bar--header/);
+  assert.match(lazy,/bar\.hidden = true/);
+  assert.match(lazy,/document\.body\.appendChild\(bar\)/);
 });
 
 test('homepage rails use the reviewed faster, motion-safe cadence',()=>{
