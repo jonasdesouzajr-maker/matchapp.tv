@@ -1,7 +1,7 @@
 /* MatchApp homepage rails — readable automatic glide with touch pause/resume. */
 (()=>{'use strict';
 if(location.pathname!=='/'&&location.pathname!=='/index.html')return;
-const SPEED=.0185; // 18.5px/s: visibly livelier without turning posters into a ticker.
+const SPEED=.022; // 18.5px/s: visibly livelier without turning posters into a ticker.
 const RESUME_MS=2800;
 function reduced(){return document.documentElement.classList.contains('reduce-motion')||matchMedia('(prefers-reduced-motion: reduce)').matches}
 function wireScroller(scroller,track,kind){
