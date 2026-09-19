@@ -1,5 +1,6 @@
 (function(){
   'use strict';
+  const MATCHAPP_HOME_ROUTE=location.pathname==='/'||location.pathname==='/index.html';
 
   const LANGS = new Set(['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh']);
   const INSTALL_HINTS = {
@@ -163,6 +164,7 @@
   }
 
   function upgradeWordmarks(root=document){
+    if(MATCHAPP_HOME_ROUTE)return;
     root.querySelectorAll?.('.app-title-main').forEach(host=>{
       const image = host.querySelector('.matchapp-wordmark');
       if(!image || host.querySelector('.matchapp-live-wordmark')) return;
@@ -177,6 +179,7 @@
   }
 
   function normalizeLogoImages(root=document){
+    if(MATCHAPP_HOME_ROUTE)return;
     root.querySelectorAll?.('img.brand-logo,img[src$="/logo.jpeg"],img[src*="/logo.jpeg?"],.matchapp-brand-link>img').forEach(img=>{
       if(img.classList.contains('matchapp-wordmark')) return;
       if(/matchapp-tv-ai-v2\.svg/i.test(img.getAttribute('src')||'')) return;
@@ -187,6 +190,7 @@
   const canonicalHomeShell=location.pathname==='/'||location.pathname==='/index.html';
 
   function organizeHeaders(root=document){
+    if(MATCHAPP_HOME_ROUTE)return;
     root.querySelectorAll?.('.app-header').forEach(header=>{
       if(canonicalHomeShell && header.id==='mh-topbox'){
         header.classList.remove('app-header-v2');
