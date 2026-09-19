@@ -179,3 +179,40 @@ body.match-searching #search-box{display:none !important}
   color:transparent !important;
   -webkit-text-fill-color:transparent !important;
 }
+
+/* Physical-phone safeguard. Some standalone/WebView shells expose a layout
+   viewport wider than the nominal handset breakpoint. On coarse touch devices,
+   the normal-mode homepage content is always a vertical document stack. */
+@media (hover:none) and (pointer:coarse){
+  body.page-home main.page-wrapper,
+  body.page-home main.page-wrapper>.main-layout,
+  body.page-home main.page-wrapper>.main-layout>.container{
+    display:block!important;
+    width:100%!important;
+    max-width:100%!important;
+    min-width:0!important;
+    grid-template-columns:minmax(0,1fr)!important;
+    grid-auto-flow:row!important;
+    column-count:1!important;
+  }
+  body.page-home main.page-wrapper>.main-layout>.container>*{
+    width:100%!important;
+    max-width:100%!important;
+    min-width:0!important;
+    grid-column:1/-1!important;
+    float:none!important;
+    clear:both!important;
+    box-sizing:border-box!important;
+  }
+  body.page-home main.page-wrapper>.main-layout>.container>.tg-entry{display:flex!important}
+  body.page-home main.page-wrapper>.main-layout>.container>#premiere-disclosure{display:block!important}
+  body.page-home main.page-wrapper>.main-layout>.container>#premiere-disclosure,
+  body.page-home main.page-wrapper>.main-layout>.container>#premiere-disclosure>#spotlight-ahs13{
+    width:100%!important;
+    max-width:100%!important;
+    margin-left:0!important;
+    margin-right:0!important;
+  }
+  body.page-home .sidebar-ad-left,
+  body.page-home .sidebar-ad-right{display:none!important}
+}
