@@ -163,7 +163,7 @@
                 head.setAttribute('aria-expanded', 'false');
                 head.innerHTML =
                     '<span class="lazy-head-label">' + headerFor(cfg, section) + '</span>' +
-                    '<span class="lazy-head-chevron" aria-hidden="true">⌄</span>';
+                    '<span class="lazy-head-chevron" aria-hidden="true"></span>';
 
                 head.addEventListener('click', () => {
                     const open = section.classList.toggle('lazy-open');
