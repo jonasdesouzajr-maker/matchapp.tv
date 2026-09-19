@@ -34,13 +34,15 @@
       const vp=card.closest('.marquee-viewport');if(vp?.classList.contains('is-dragging'))return;
       const title=card.querySelector('img[data-title]')?.dataset?.title||card.querySelector('img')?.alt||'';
       if(!title)return;
-      ev.preventDefault();ev.stopImmediatePropagation();openTitle(title);
+      ev.preventDefault();ev.stopImmediatePropagation();
+      if(window.MatchAppHomeTitleDetails?.open){window.MatchAppHomeTitleDetails.open(title);return;}
+      openTitle(title);
     },true);
     document.addEventListener('keydown',ev=>{
       if(ev.key!=='Enter'&&ev.key!==' ')return;
       const card=ev.target?.closest?.('#marquee-track .marquee-item');if(!card)return;
       const title=card.querySelector('img[data-title]')?.dataset?.title||card.querySelector('img')?.alt||'';
-      if(!title)return;ev.preventDefault();openTitle(title);
+      if(!title)return;ev.preventDefault();if(window.MatchAppHomeTitleDetails?.open){window.MatchAppHomeTitleDetails.open(title);return;}openTitle(title);
     });
   }
 
