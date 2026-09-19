@@ -65,3 +65,44 @@
   body.page-home .app-header>nav{gap:5px!important}
   body.page-home .top-ai-sub{display:none!important}
 }
+
+/* Smartphone content invariant: every direct homepage field/card stacks in one
+   full-width column. Header/nav is intentionally excluded. */
+@media(max-width:700px){
+  body.page-home main.page-wrapper,
+  body.page-home main.page-wrapper .main-layout,
+  body.page-home main.page-wrapper .container{
+    display:block!important;
+    width:100%!important;
+    max-width:100%!important;
+    min-width:0!important;
+    columns:1!important;
+    column-count:1!important;
+  }
+  body.page-home main.page-wrapper .container{
+    grid-template-columns:minmax(0,1fr)!important;
+    grid-auto-flow:row!important;
+  }
+  body.page-home main.page-wrapper .container> :is(
+    header,article,section,details,form,.premium-card,.marquee-wrapper,.tg-entry,
+    .ad-banner-container,.events-wrapper,.concierge-section,.purchase-hub
+  ){
+    display:revert;
+    width:100%!important;
+    max-width:100%!important;
+    min-width:0!important;
+    grid-column:1/-1!important;
+    float:none!important;
+    box-sizing:border-box!important;
+    clear:both!important;
+  }
+  body.page-home main.page-wrapper .container>.tg-entry{display:flex!important}
+  body.page-home main.page-wrapper .container>details{display:block!important}
+  body.page-home main.page-wrapper #premiere-disclosure,
+  body.page-home main.page-wrapper #spotlight-ahs13{
+    width:100%!important;
+    max-width:100%!important;
+    margin-left:0!important;
+    margin-right:0!important;
+  }
+}
