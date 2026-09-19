@@ -1,0 +1,20 @@
+/* Events rail parity + human-readable rightward rail motion. Scoped to homepage rails only. */
+body.page-home #global-events{position:relative;width:100%;overflow:hidden;background:linear-gradient(120deg,rgba(19,7,52,.85),rgba(20,19,26,.92));border:2px solid var(--gold);border-radius:15px;padding:15px 0;margin-bottom:12px!important}
+body.page-home #global-events .global-events-fold{position:relative}
+body.page-home #global-events .global-events-summary{margin:0 14px 10px;padding-right:42px}
+body.page-home #global-events .global-events-body{overflow:hidden}
+body.page-home #global-events .ge-help{margin:0 14px 10px}
+body.page-home #global-events .global-event-grid{display:flex!important;grid-template-columns:none!important;gap:15px!important;width:max-content;overflow:visible!important;padding:0!important;margin:0!important;will-change:scroll-position}
+body.page-home #global-events .global-event{position:relative;flex:0 0 130px!important;width:130px!important;height:190px!important;min-width:130px!important;max-width:130px!important;margin:0!important;padding:0!important;border:1px solid rgba(229,193,88,.5)!important;border-radius:10px!important;overflow:hidden!important;background:var(--royal-deep);box-shadow:none!important}
+body.page-home #global-events .global-event>a:first-child{position:absolute;inset:0;z-index:1;display:block}
+body.page-home #global-events .global-event img{display:block;width:100%!important;height:100%!important;aspect-ratio:auto!important;object-fit:cover!important}
+body.page-home #global-events .global-event h3{position:absolute;z-index:3;left:0;right:0;bottom:0;margin:0!important;padding:20px 5px 7px!important;background:linear-gradient(transparent,rgba(0,0,0,.95));font-size:11px!important;line-height:1.25;text-align:center}
+body.page-home #global-events .global-event h3 a{color:#fff!important;text-decoration:none}
+body.page-home #global-events .global-event>p,body.page-home #global-events .global-event>.gold-btn{display:none!important}
+body.page-home #global-events .event-badge{z-index:4}
+body.page-home #global-events .ge-archive{display:inline-flex;margin:10px 14px 0}
+body.page-home #global-events .ma-fold-toggle{top:8px;right:9px}
+body.page-home #global-events.ma-folded{max-height:58px!important;min-height:58px!important}
+@media(max-width:430px){body.page-home #global-events .global-event{flex-basis:130px!important;width:130px!important;min-width:130px!important;height:190px!important}}
+body.lazy-mode #global-events .global-event{flex-basis:92px!important;width:92px!important;min-width:92px!important;height:138px!important}
+@media(max-width:430px){body.lazy-mode #global-events .global-event{flex-basis:78px!important;width:78px!important;min-width:78px!important;height:117px!important}}
