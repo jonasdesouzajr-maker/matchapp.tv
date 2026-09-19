@@ -10,6 +10,14 @@
     <!-- End Google Tag Manager -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<style id="matchapp-ui-boot-guard">
+html.ma-ui-preparing body{visibility:hidden!important}
+html.ma-ui-preparing body::before{content:"";position:fixed;inset:0;background:#071326;z-index:2147483647}
+</style>
+<script>
+document.documentElement.classList.add('ma-ui-preparing');
+window.__MATCHAPP_UI_FAILSAFE__=setTimeout(function(){document.documentElement.classList.remove('ma-ui-preparing')},2200);
+</script>
 <script src="/page-origin.js?v=20260919-origin2"></script>
 <link rel="icon" href="/assets/brand/brandkit/app-icon.svg?v=20260919-brand1" type="image/svg+xml">
     <meta name="theme-color" content="#101010">
@@ -1555,8 +1563,8 @@
 <link rel="stylesheet" href="/taste-profile.css?v=20260919-stable3" data-home-support="taste">
 <link rel="stylesheet" href="/profile-card.css?v=20260919-stable3" data-home-support="profile-card">
 <link rel="stylesheet" href="/preference-exclusions.css?v=20260919-stable3" data-home-support="preferences">
-<link rel="stylesheet" href="/matchapp-ia.css?v=20260919-ia22" data-matchapp-ia="1">
-<script defer src="/matchapp-ia.js?v=20260919-ia22" data-matchapp-ia="1"></script>
+<link rel="stylesheet" href="/matchapp-ia.css?v=20260919-ia23" data-matchapp-ia="1">
+<script defer src="/matchapp-ia.js?v=20260919-ia23" data-matchapp-ia="1"></script>
 </head>
 <body class="page-home">
     <script>
