@@ -318,6 +318,12 @@ function boot(){
  ensureBrandMeta();brandHeader();
  if(isHome){prepareResponsiveAds();mountHome()}if(isDiscover)mountDiscover();if(isTogether)mountTogether();if(isPricing)mountPricing();
  document.addEventListener('matchapp:langchange',()=>setTimeout(applyLanguage,0));
+ if(isHome){
+   requestAnimationFrame(()=>{
+     document.documentElement.classList.remove('ma-ui-preparing');
+     if(window.__MATCHAPP_UI_FAILSAFE__){clearTimeout(window.__MATCHAPP_UI_FAILSAFE__);window.__MATCHAPP_UI_FAILSAFE__=0}
+   });
+ }
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
 
