@@ -66,7 +66,15 @@ function openAskFromBrand(){
 }
 function brandHeader(){
  const h=qs('header.app-header');if(!h)return;
- h.classList.add('ma-global-header');
+ // Home already ships its canonical header structure in HTML. Never opt it
+ // into the shared runtime header class: that class activates older shared
+ // header generations after first paint and causes the refresh-time morph.
+ if(isHome){
+   h.classList.remove('ma-global-header');
+   h.classList.add('ma-home-header');
+ }else{
+   h.classList.add('ma-global-header');
+ }
  let brand=qs('#home-brand-lockup',h)||qs('.header-brand-area',h)||qs('.matchapp-brand-link',h);
  if(brand&&brand.tagName==='A'){
    const host=el('div',brand.className);if(brand.id)host.id=brand.id;brand.replaceWith(host);brand=host;
@@ -120,7 +128,12 @@ function brandHeader(){
  h.classList.add('ma-header-ready');
  if(!h.dataset.maAuthObserved){
    h.dataset.maAuthObserved='1';
-   new MutationObserver(()=>syncHeaderAuth()).observe(h,{subtree:true,childList:true,attributes:true,attributeFilter:['style','class']});
+   new MutationObserver(()=>{
+     // No later auth/install/theme mutation may put Home back into the shared
+     // legacy header cascade.
+     if(isHome&&h.classList.contains('ma-global-header'))h.classList.remove('ma-global-header');
+     syncHeaderAuth();
+   }).observe(h,{subtree:true,childList:true,attributes:true,attributeFilter:['style','class']});
  }
 }
 function criteria(){return typeof window.getMatchCriteria==='function'?window.getMatchCriteria():{cat:[],plat:[],genre:[],mood:[],vibe:[],rating:[],decade:[]}}
