@@ -78,12 +78,13 @@ test('canonical top box keeps the logo animated and all controls visible',()=>{
   assert.match(lazy,/deck\.insertBefore\(bar,accountAnchor\)/);
 });
 
-test('normal Home refresh starts at the top while intentional deep links are preserved',()=>{
+test('fresh Home loads stay at top until the visitor interacts',()=>{
   const html=read('index.html');
-  assert.match(html,/id="matchapp-home-scroll-origin"/);
-  assert.match(html,/scrollRestoration='manual'/);
-  assert.match(html,/window\.scrollTo\(\{top:0,left:0,behavior:'auto'\}\)/);
-  assert.match(html,/Boolean\(location\.hash\)/);
-  assert.match(html,/q\.get\('ask'\)==='1'/);
-  assert.match(html,/q\.get\('news'\)/);
+  const origin=read('page-origin.js');
+  assert.match(html,/page-origin\.js\?v=20260919-origin3/);
+  assert.match(origin,/scrollRestoration='manual'/);
+  assert.match(origin,/const topTimer=setInterval\(top,50\)/);
+  assert.match(origin,/Element\.prototype\.scrollIntoView=function/);
+  assert.match(origin,/HTMLElement\.prototype\.focus=function/);
+  assert.match(origin,/userInteracted=true/);
 });
