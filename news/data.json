@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-09-19T17:57:52.501Z",
-  "feed_version": "6433a6b5",
+  "generated_at": "2026-09-19T20:00:00.799Z",
+  "feed_version": "cc2547e8",
   "source_policy": "direct-trusted-publisher-rss+google-trends-keyword-signals",
   "seo_policy": "per-story keyword snapshot at first discovery + source citation + stable archive",
   "items": [
@@ -583,103 +583,6 @@
           "8216 murderous 8217 review 2026",
           "The Hollywood Reporter 8216 murderous 8217 review",
           "hollywoodreporter.com 8216 murderous 8217 review",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-09-19T05:49:10.250Z"
-      }
-    },
-    {
-      "id": "8b7ef278",
-      "title": "The Best Films of the Fall Festivals: THR Critics&#8217; Picks",
-      "url": "https://www.hollywoodreporter.com/lists/best-films-fall-festivals-2026-venice-toronto-telluride/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "published_at": "2026-09-19T02:08:26.000Z",
-      "discovered_at": "2026-09-19T05:49:10.250Z",
-      "event_type": "Entertainment",
-      "person": "The Best Films",
-      "description": "The Best Films: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/09/Misty-Green-Possible-Love-You-Can-See-Everything-The-Debut-Split-Publicity-H-2026.jpg?w=1296&h=730&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/the-best-films-of-the-fall-festivals-thr-critics-8217-picks-8b7ef2/",
-      "landing_url": "https://matchapp.tv/?news=8b7ef278#latest-news",
-      "seo": {
-        "primary_keyword": "5",
-        "short_tail": [
-          "The Best Films",
-          "The Best Films news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "5"
-        ],
-        "long_tail": [
-          "The Best Films latest news September 2026",
-          "The Best Films entertainment update 2026",
-          "The Best Films news 2026-09-19",
-          "latest entertainment news about The Best Films",
-          "best films best films fall festivals latest update",
-          "The Hollywood Reporter The Best Films entertainment",
-          "latest news about The Best Films September 2026",
-          "The Best Films entertainment news 2026-09-19",
-          "what happened with The Best Films"
-        ],
-        "trend_keywords": [
-          "5"
-        ],
-        "entity_keywords": [
-          "The Best Films",
-          "best",
-          "films",
-          "fall",
-          "festivals",
-          "thr",
-          "critics"
-        ],
-        "freshness_keywords": [
-          "September 2026",
-          "2026-09-19",
-          "The Best Films 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter The Best Films",
-          "hollywoodreporter.com The Best Films",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "The Best Films of the Fall Festivals: THR Critics&#8217;…",
-        "meta_description": "The Best Films: Entertainment update reported by The Hollywood Reporter on 2026-09-19. See verified context, publication time and the original source via…",
-        "keywords": [
-          "5",
-          "The Best Films",
-          "The Best Films news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "The Best Films latest news September 2026",
-          "The Best Films entertainment update 2026",
-          "The Best Films news 2026-09-19",
-          "latest entertainment news about The Best Films",
-          "best films best films fall festivals latest update",
-          "The Hollywood Reporter The Best Films entertainment",
-          "latest news about The Best Films September 2026",
-          "The Best Films entertainment news 2026-09-19",
-          "what happened with The Best Films",
-          "best",
-          "films",
-          "fall",
-          "festivals",
-          "thr",
-          "critics",
-          "September 2026",
-          "2026-09-19",
-          "The Best Films 2026",
-          "The Hollywood Reporter The Best Films",
-          "hollywoodreporter.com The Best Films",
           "The Hollywood Reporter entertainment news"
         ],
         "seo_generated_at": "2026-09-19T05:49:10.250Z"
@@ -3901,6 +3804,100 @@
           "Ed Sheeran 2026",
           "G1 Ed Sheeran",
           "g1.globo.com Ed Sheeran",
+          "G1 entertainment news"
+        ],
+        "seo_generated_at": "2026-09-17T19:15:08.304Z"
+      }
+    },
+    {
+      "id": "97c337f2",
+      "title": "Morre Peter Max, artista psicodélico símbolo do movimento hippie, aos 88 anos",
+      "url": "https://g1.globo.com/pop-arte/noticia/2026/09/17/morre-peter-max-artista-psicodelico-simbolo-do-movimento-hippie-aos-88-anos.ghtml",
+      "source": "G1",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "BR",
+      "published_at": "2026-09-17T06:02:00.000Z",
+      "discovered_at": "2026-09-17T19:15:08.304Z",
+      "event_type": "Obituary",
+      "person": "Morre Peter Max",
+      "description": "Morre Peter Max: obituary headline reported by G1. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://s2-g1.glbimg.com/sDoUmgLL5YwBIG8tOqwA32g_Ucg=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/w/Q/ft6msfTiG07F7aaWfkPg/ap26259791680684.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/morre-peter-max-artista-psicodelico-simbolo-do-movimento-hippie-aos-88-anos-97c337/",
+      "landing_url": "https://matchapp.tv/?news=97c337f2#latest-news",
+      "seo": {
+        "primary_keyword": "Morre Peter Max latest news",
+        "short_tail": [
+          "Morre Peter Max",
+          "Morre Peter Max news",
+          "obituary",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje"
+        ],
+        "long_tail": [
+          "Morre Peter Max latest news September 2026",
+          "Morre Peter Max obituary update 2026",
+          "Morre Peter Max news 2026-09-17",
+          "latest obituary news about Morre Peter Max",
+          "morre peter max morre peter max latest update",
+          "G1 Morre Peter Max obituary",
+          "últimas notícias sobre Morre Peter Max setembro 2026",
+          "Morre Peter Max notícia de 2026-09-17",
+          "o que aconteceu com Morre Peter Max"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "Morre Peter Max",
+          "morre",
+          "peter",
+          "max",
+          "artista",
+          "psicodelico"
+        ],
+        "freshness_keywords": [
+          "September 2026",
+          "2026-09-17",
+          "setembro 2026",
+          "Morre Peter Max 2026"
+        ],
+        "source_keywords": [
+          "G1 Morre Peter Max",
+          "g1.globo.com Morre Peter Max",
+          "G1 entertainment news"
+        ],
+        "meta_title": "Morre Peter Max, artista psicodélico símbolo do movimento hippie,…",
+        "meta_description": "Morre Peter Max: Obituary update reported by G1 on 2026-09-17. See verified context, publication time and the original source via MatchApp TV.",
+        "keywords": [
+          "Morre Peter Max latest news",
+          "Morre Peter Max",
+          "Morre Peter Max news",
+          "obituary",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje",
+          "Morre Peter Max latest news September 2026",
+          "Morre Peter Max obituary update 2026",
+          "Morre Peter Max news 2026-09-17",
+          "latest obituary news about Morre Peter Max",
+          "morre peter max morre peter max latest update",
+          "G1 Morre Peter Max obituary",
+          "últimas notícias sobre Morre Peter Max setembro 2026",
+          "Morre Peter Max notícia de 2026-09-17",
+          "o que aconteceu com Morre Peter Max",
+          "morre",
+          "peter",
+          "max",
+          "artista",
+          "psicodelico",
+          "September 2026",
+          "2026-09-17",
+          "setembro 2026",
+          "Morre Peter Max 2026",
+          "G1 Morre Peter Max",
+          "g1.globo.com Morre Peter Max",
           "G1 entertainment news"
         ],
         "seo_generated_at": "2026-09-17T19:15:08.304Z"
