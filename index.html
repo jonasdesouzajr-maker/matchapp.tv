@@ -10,46 +10,7 @@
     <!-- End Google Tag Manager -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<script id="matchapp-home-scroll-origin">
-(function(){
-  'use strict';
-  var q;
-  try{q=new URLSearchParams(location.search);}catch(_){q={get:function(){return null;}}}
-  var intentional=Boolean(location.hash)||q.get('ask')==='1'||Boolean(q.get('news'));
-  if(intentional)return;
-  try{if('scrollRestoration' in history)history.scrollRestoration='manual';}catch(_){}
-  var active=true,started=Date.now(),timer=0;
-  document.documentElement.classList.add('ma-start-at-top');
-  function top(){
-    if(!active)return;
-    try{window.scrollTo({top:0,left:0,behavior:'auto'});}catch(_){try{window.scrollTo(0,0)}catch(__){}}
-    try{document.documentElement.scrollTop=0;}catch(_){}
-    try{document.body.scrollTop=0;}catch(_){}
-  }
-  function stop(){
-    if(!active)return;
-    active=false;
-    clearInterval(timer);
-    document.documentElement.classList.remove('ma-start-at-top');
-  }
-  function userIntent(e){
-    if(Date.now()-started<120)return;
-    if(e&&e.type==='keydown'&&!['ArrowDown','ArrowUp','PageDown','PageUp','Home','End',' '].includes(e.key))return;
-    stop();
-  }
-  top();
-  timer=setInterval(function(){
-    top();
-    if(Date.now()-started>1800)stop();
-  },40);
-  ['touchstart','pointerdown','wheel','keydown'].forEach(function(type){
-    addEventListener(type,userIntent,{passive:true,capture:true,once:true});
-  });
-  document.addEventListener('DOMContentLoaded',top,{once:true});
-  addEventListener('load',function(){top();setTimeout(top,60);setTimeout(top,180);},{once:true});
-  addEventListener('pageshow',function(){top();setTimeout(top,60);});
-})();
-</script>
+<script src="/page-origin.js?v=20260919-origin1"></script>
 <link rel="icon" href="/assets/brand/brandkit/app-icon.svg?v=20260919-brand1" type="image/svg+xml">
     <meta name="theme-color" content="#101010">
 
