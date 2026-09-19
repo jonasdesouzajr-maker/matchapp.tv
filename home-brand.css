@@ -434,3 +434,13 @@ body.page-home .app-header>nav #lang-switcher-host select{padding-left:30px!impo
   html body.page-home .app-header>nav .install-btn,
   html body.page-home .app-header>nav #lang-switcher-host select{min-height:34px!important;height:34px!important;font-size:9px!important}
 }
+
+/* Utility color language: subtle functional tints, same compact geometry. */
+body.page-home .app-header>nav .matchapp-notification-button{background:linear-gradient(145deg,rgba(108,79,196,.24),rgba(51,31,91,.22))!important;border-color:rgba(168,139,255,.34)!important}
+body.page-home .app-header>nav .install-btn{background:linear-gradient(145deg,rgba(56,179,151,.25),rgba(25,91,83,.22))!important;border-color:rgba(101,235,207,.38)!important;color:#dffff7!important}
+body.page-home .app-header>nav #lang-switcher-host select{background:linear-gradient(145deg,rgba(43,134,213,.23),rgba(26,67,120,.2))!important;border-color:rgba(103,188,255,.34)!important}
+body.page-home .app-header>nav .sound-toggle-btn{background:linear-gradient(145deg,rgba(229,193,88,.19),rgba(123,88,25,.18))!important;border-color:rgba(255,220,112,.34)!important}
+body.page-home .app-header>nav #quota-badge{background:linear-gradient(145deg,rgba(239,145,58,.22),rgba(123,67,26,.18))!important;border-color:rgba(255,179,91,.38)!important}
+body.page-home .app-header>nav #profile-link-tab{background:linear-gradient(145deg,rgba(131,74,190,.24),rgba(60,35,92,.2))!important;border-color:rgba(190,126,255,.36)!important}
+body.page-home .app-header>nav #nav-logout-btn{background:linear-gradient(145deg,rgba(190,63,82,.2),rgba(92,30,44,.18))!important}
+#home-brand-lockup .ma-new-brand-logo{image-rendering:auto;filter:drop-shadow(0 0 12px rgba(229,193,88,.28)) saturate(1.06)!important}
