@@ -1,10 +1,10 @@
 {
-  "version": "2026.09.18.4",
-  "date": "2026-09-18",
+  "version": "2026.09.19.1",
+  "date": "2026-09-19",
   "functional": true,
   "notes": {
-    "en": "MatchApp now keeps the animated homepage logo at a stable size from first paint, adds phone sign-up and login copy across all 14 supported languages, expands the September 2026 catalog with newly verified Netflix, Prime Video and Disney+ titles, and refreshes search metadata and sitemap coverage for the new catalog and account features.",
-    "pt-BR": "O MatchApp agora mantém o logo animado da página inicial em tamanho estável desde o primeiro carregamento, adiciona textos de cadastro e login por telefone em todos os 14 idiomas compatíveis, amplia o catálogo de setembro de 2026 com novos títulos verificados da Netflix, Prime Video e Disney+ e atualiza os metadados de busca e a cobertura do sitemap para o novo catálogo e recursos de conta.",
+    "en": "New Daily Check-in: check in once each day, keep a 7-day streak and earn 5 Extra Matches. The homepage is more compact and foldable, and trending titles now open verified regional details with synopsis, genres, cast, production country, streaming options and cinema lookup.",
+    "pt-BR": "Novo Check-in Diário: faça check-in uma vez por dia, mantenha uma sequência de 7 dias e ganhe 5 Matches Extras. A página inicial ficou mais compacta e recolhível, e os títulos em alta agora abrem detalhes regionais verificados com sinopse, gêneros, elenco, país de produção, opções de streaming e busca de cinemas.",
     "es": "MatchApp ahora mantiene el logotipo animado de inicio en un tamaño estable desde la primera carga, añade textos de registro e inicio de sesión por teléfono en los 14 idiomas compatibles, amplía el catálogo de septiembre de 2026 con nuevos títulos verificados de Netflix, Prime Video y Disney+ y actualiza los metadatos de búsqueda y la cobertura del sitemap.",
     "fr": "MatchApp conserve désormais le logo animé de l’accueil à une taille stable dès le premier affichage, ajoute l’inscription et la connexion par téléphone dans les 14 langues prises en charge, enrichit le catalogue de septembre 2026 avec de nouveaux titres vérifiés de Netflix, Prime Video et Disney+, et actualise les métadonnées de recherche ainsi que le sitemap.",
     "de": "MatchApp hält das animierte Startseiten-Logo jetzt ab dem ersten Bild stabil, ergänzt Telefon-Registrierung und -Anmeldung in allen 14 unterstützten Sprachen, erweitert den September-2026-Katalog um neu verifizierte Titel von Netflix, Prime Video und Disney+ und aktualisiert Suchmetadaten sowie Sitemap-Abdeckung.",
