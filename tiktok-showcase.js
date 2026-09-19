@@ -3,6 +3,7 @@
 (function(){
 'use strict';
 
+const HOME_ROUTE=location.pathname==='/'||location.pathname==='/index.html';
 const SHORT_URL='https://vt.tiktok.com/ZSqtbq1j5/';
 const META_URL='https://zkymvqrmbabngsqblyye.supabase.co/functions/v1/tiktok-matchapp-ad';
 const FALLBACK_META={
@@ -383,8 +384,21 @@ function init(){
       setActionStatus('TikTok opened. Use TikTok’s Share button to share the video.');
     }
   });
-  if(document.documentElement.dataset.tiktokIntro==='1'&&!seen())startIntro();
+  /* Canonical Home never runs the legacy blocking intro. The current Home CSS
+     intentionally hides that interstitial; letting its old runtime set
+     overflow:hidden underneath an invisible cross-origin player can strand
+     touch scrolling in Chrome/Android WebView. Keep TikTok engagement in the
+     lazy below-page showcase without letting it own the page viewport. */
+  if(HOME_ROUTE){
+    unlockPage();
+    clearTimeout(introFallbackTimer);clearTimeout(introHardStopTimer);clearTimeout(introEndTimer);clearTimeout(introStallTimer);
+    delete document.documentElement.dataset.tiktokIntro;
+    const intro=document.getElementById('matchapp-tiktok-intro');
+    if(intro){intro.hidden=true;intro.style.setProperty('display','none','important');intro.style.setProperty('pointer-events','none','important');}
+    window.__maTikTokIntroReady=true;
+  }else if(document.documentElement.dataset.tiktokIntro==='1'&&!seen())startIntro();
   else{
+    unlockPage();
     const intro=document.getElementById('matchapp-tiktok-intro');
     if(intro)intro.hidden=true;
     delete document.documentElement.dataset.tiktokIntro;
