@@ -1,0 +1,23 @@
+/* MatchApp visual system — main product only. Kids Mode is intentionally excluded. */
+body.page-home:not(.kids-mode){--ma-bg:#14091f;--ma-panel:rgba(39,18,62,.72);--ma-panel2:rgba(26,11,43,.78);--ma-gold:#e5c158;--ma-violet:#9d6bff;--ma-blue:#5bc8ff;--ma-pink:#ff67c7;--ma-green:#48dfb4;--ma-red:#ff647c;--ma-line:rgba(229,193,88,.20);--ma-shadow:0 14px 42px rgba(0,0,0,.28)}
+body.page-home:not(.kids-mode) #mh-topbox{background:linear-gradient(145deg,rgba(45,20,72,.80),rgba(22,9,38,.72))!important;border:1px solid var(--ma-line)!important;box-shadow:0 0 0 1px rgba(157,107,255,.08),0 18px 50px rgba(0,0,0,.34),0 0 36px rgba(157,107,255,.10)!important}
+body.page-home:not(.kids-mode) #mh-topbox .home-brand-home::before{background:url('/assets/brand/matchapp-logo-animated-transparent.svg?v=20260919-ui3') center/contain no-repeat!important;width:clamp(92px,11vw,154px)!important;height:clamp(92px,11vw,154px)!important;filter:drop-shadow(0 0 18px rgba(229,193,88,.24))!important}
+body.page-home:not(.kids-mode) #mh-topbox .home-brand-name{font-size:clamp(1.45rem,3.1vw,2.45rem)!important}
+body.page-home:not(.kids-mode) #mh-topbox .home-ai-link{font-size:clamp(1.6rem,3.5vw,2.8rem)!important}
+body.page-home:not(.kids-mode) #mh-topbox nav.mh-deck>*{border-color:transparent!important;box-shadow:none!important;background:transparent!important}
+body.page-home:not(.kids-mode) #mh-topbox nav.mh-deck>:is(button,a,.install-wrap,#lang-switcher-host,#quota-badge){transition:transform .18s ease,filter .18s ease,text-shadow .18s ease!important}
+body.page-home:not(.kids-mode) #mh-topbox nav.mh-deck>*:hover{transform:translateY(-1px)!important;filter:brightness(1.13)}
+body.page-home:not(.kids-mode) #mh-topbox .matchapp-notification-button{color:var(--ma-pink)!important}
+body.page-home:not(.kids-mode) #mh-topbox .install-btn{color:var(--ma-green)!important}
+body.page-home:not(.kids-mode) #mh-topbox #lang-switcher-host,#mh-topbox #lang-switcher-host select{color:var(--ma-blue)!important}
+body.page-home:not(.kids-mode) #mh-topbox .sound-toggle-btn{color:var(--ma-gold)!important}
+body.page-home:not(.kids-mode) #mh-topbox #quota-badge{color:#d8c6ff!important}
+body.page-home:not(.kids-mode) #mh-topbox #profile-link-tab{color:#b9a0ff!important}
+body.page-home:not(.kids-mode) #mh-topbox #nav-reg-btn{color:var(--ma-green)!important}
+body.page-home:not(.kids-mode) #mh-topbox #nav-logout-btn{color:var(--ma-red)!important}
+body.page-home:not(.kids-mode) :is(.premium-card,.tg-entry,#daily-match-checkin,.marquee-wrapper,.spotlight-card,.ma-news,#latest-news,#how-it-works,#ai-concierge-section,#search-box,#questionnaire-box,.top-ask-wrap>*,.lazy-bar){background:linear-gradient(145deg,var(--ma-panel),var(--ma-panel2))!important;border:1px solid rgba(157,107,255,.14)!important;box-shadow:var(--ma-shadow),0 0 24px rgba(157,107,255,.06)!important}
+body.page-home:not(.kids-mode) :is(button,.btn,.primary-btn,.secondary-btn,[role=button]):focus-visible{outline:2px solid var(--ma-gold)!important;outline-offset:3px!important}
+body.page-home:not(.kids-mode) details>summary{cursor:pointer}
+@media(max-width:559px){body.page-home:not(.kids-mode) #mh-topbox .home-brand-home::before{width:108px!important;height:108px!important}body.page-home:not(.kids-mode) #mh-topbox{padding:10px!important}body.page-home:not(.kids-mode) #mh-topbox nav.mh-deck{gap:5px!important}}
+@media(min-width:560px) and (max-width:999px){body.page-home:not(.kids-mode) #mh-topbox .home-brand-home::before{width:132px!important;height:132px!important}}
+@media(prefers-reduced-motion:reduce){body.page-home:not(.kids-mode) *,body.page-home:not(.kids-mode) *::before,body.page-home:not(.kids-mode) *::after{scroll-behavior:auto!important;animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}}
