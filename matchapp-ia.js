@@ -39,6 +39,12 @@ function qs(s,r=document){return r.querySelector(s)}
 function qsa(s,r=document){return Array.from(r.querySelectorAll(s))}
 function safeClick(target){try{target?.click?.()}catch(_){}}
 function countryName(){try{return String(localStorage.getItem('match_user_country')||'').trim()}catch(_){return''}}
+function syncHeaderAuth(){
+ const profile=qs('#profile-link-tab');
+ const signed=!!(profile&&getComputedStyle(profile).display!=='none');
+ document.body.classList.toggle('ma-guest',!signed);
+ document.body.classList.toggle('ma-signed-in',signed);
+}
 function ensureBrandMeta(){
  let fav=qs('link[rel="icon"]');if(!fav){fav=document.createElement('link');fav.rel='icon';document.head.appendChild(fav)}
  fav.href=ICON;fav.type='image/svg+xml';
@@ -82,6 +88,11 @@ function brandHeader(){
    function close(){menu.hidden=true;btn.setAttribute('aria-expanded','false')}
    document.addEventListener('click',e=>{if(!wrap.contains(e.target))close()});
    wrap.append(btn,menu);nav.appendChild(wrap);
+ }
+ syncHeaderAuth();
+ if(!h.dataset.maAuthObserved){
+   h.dataset.maAuthObserved='1';
+   new MutationObserver(()=>syncHeaderAuth()).observe(h,{subtree:true,childList:true,attributes:true,attributeFilter:['style','class']});
  }
 }
 function criteria(){return typeof window.getMatchCriteria==='function'?window.getMatchCriteria():{cat:[],plat:[],genre:[],mood:[],vibe:[],rating:[],decade:[]}}
@@ -203,7 +214,12 @@ function mountTogether(){
  if(start&&how&&start.parentNode===how.parentNode)how.parentNode.insertBefore(start,how);
  if(hero){const p=qs('p',hero);if(p)p.style.maxWidth='620px'}
 }
-function extractPrice(card){return (qs('.price-badge',card)?.textContent||'').replace(/\s+/g,' ').trim()}
+function extractPrice(card){
+ const badge=(qs('.price-badge',card)?.textContent||'').replace(/\s+/g,' ').trim();if(badge)return badge;
+ const text=(card?.textContent||'').replace(/\s+/g,' ');
+ const m=text.match(/\$\s*\d+(?:\.\d{1,2})?\s*(?:\/\s*(?:mo|month|yr|year))?/i);
+ return m?m[0].replace(/\s+/g,' '):'';
+}
 function mountPricing(){
  document.body.classList.add('ma-ia-pricing');const t=c();
  const monthly=qs('#btn-vip_monthly'),annual=qs('#btn-vip_annual'),adfree=qs('#btn-ad_free'),business=qs('#btn-business');
@@ -220,7 +236,7 @@ function mountPricing(){
  const acct=el('button','ma-plan-cta ghost',t.join);acct.type='button';acct.addEventListener('click',()=>{if(typeof window.openAuthModal==='function')window.openAuthModal();else location.href='/'});account.appendChild(acct);
  const vip=plan('is-vip','Fewer limits',t.vip,'10 '+t.daily,['Included actions can be Matches or Asks','Ad-free while VIP is active','Monthly or annual billing']);
  const toggle=el('div','ma-billing-toggle');const mb=el('button','',t.monthly),ab=el('button','',t.annual);mb.type=ab.type='button';mb.setAttribute('aria-pressed','false');ab.setAttribute('aria-pressed','true');toggle.append(mb,ab);
- const price=el('div','ma-plan-big',extractPrice(annualCard)||'$39.99 / year');
+ const price=el('div','ma-plan-big',extractPrice(annualCard)||extractPrice(monthlyCard)||'');
  monthly.removeAttribute('style');annual.removeAttribute('style');monthly.classList.add('ma-vip-checkout');annual.classList.add('ma-vip-checkout');monthly.hidden=true;annual.hidden=false;
  function bill(mode){const isM=mode==='m';mb.setAttribute('aria-pressed',String(isM));ab.setAttribute('aria-pressed',String(!isM));monthly.hidden=!isM;annual.hidden=isM;price.textContent=extractPrice(isM?monthlyCard:annualCard)}
  mb.addEventListener('click',()=>bill('m'));ab.addEventListener('click',()=>bill('a'));vip.append(toggle,price,monthly,annual);
