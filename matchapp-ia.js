@@ -68,6 +68,9 @@ function brandHeader(){
  const h=qs('header.app-header');if(!h)return;
  h.classList.add('ma-global-header');
  let brand=qs('#home-brand-lockup',h)||qs('.header-brand-area',h)||qs('.matchapp-brand-link',h);
+ if(brand&&brand.tagName==='A'){
+   const host=el('div',brand.className);if(brand.id)host.id=brand.id;brand.replaceWith(host);brand=host;
+ }
  if(brand){
    brand.classList.add('ma-brand-stage');
    brand.innerHTML=
