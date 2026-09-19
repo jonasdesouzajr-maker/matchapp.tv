@@ -31,3 +31,15 @@ These are standing implementation rules for MatchApp work in this repository.
    - Change only the files and behavior required to deliver the requested fix/feature and its necessary tests, SEO/indexing metadata, translations, deployment or Android synchronization.
    - Do not redesign, refactor, rename, remove, or "clean up" unrelated working features while implementing another request.
    - When a necessary dependency would affect unrelated behavior, preserve the existing behavior and make the smallest isolated integration possible.
+
+
+6. **Homepage compactness, folding, and discovery**
+   - Keep smartphone/tablet vertical spacing compact but breathable: fields should be close without touching or overlapping.
+   - Major homepage cards/fields must remain foldable without breaking their controls, animations, accessibility, or vertical scrolling.
+   - The Latest titles rail auto-glides left until the visitor manually interacts/swipes; after manual control, do not fight the visitor with autoplay.
+   - Clicking a Latest title must expose verified title details appropriate to small screens: synopsis, real genres/categories, cast when source-backed, production country, and country-specific watch availability.
+   - Let visitors explicitly choose their viewing country; persist that choice for regional availability.
+   - Never fabricate an exact streaming deep-link. Use an exact provider/title URL when the source supplies one; otherwise clearly use the provider's supported search/title-discovery destination or verified regional guide.
+   - Cinema-only/current-theatrical titles should carry a cinema indicator. Nearby-cinema lookup may request geolocation only after an explicit user action and must degrade safely if permission is denied.
+   - Daily Check-in should stay compact after the day's check-in; explain the 7-day/+5 Extra Matches mechanic through the release/notification experience and first-visit education rather than occupying permanent screen space.
+   - Performance is a product requirement: prefer compositor/native scrolling, lazy/interaction-triggered metadata work, bounded observers, and graceful fallbacks; avoid homepage changes that introduce freezes, crashes, scroll traps, or animation jank.
