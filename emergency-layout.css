@@ -89,3 +89,29 @@ body.page-pricing{padding-bottom:calc(110px + env(safe-area-inset-bottom,0px))!i
 @media(max-width:900px){.app-header{flex-wrap:wrap!important;align-items:center!important;gap:.8rem!important;min-height:auto!important;padding:.85rem!important}.app-header>.header-brand-area{width:100%!important;min-width:0!important;flex:1 1 100%!important}.app-header>nav{display:flex!important;width:100%!important;flex:1 1 100%!important;justify-content:flex-start!important;align-items:center!important;flex-wrap:wrap!important;gap:.55rem!important}.app-header>nav>*{flex:0 1 auto!important}.app-header .lang-switcher{max-width:min(12rem,100%)!important}.app-header .install-wrap{max-width:100%!important}.main-layout{display:block!important;width:100%!important}.sidebar-ad-left,.sidebar-ad-right{display:none!important}}
 @media(max-width:600px){.header-brand-area{gap:.65rem!important}.brand-logo{width:44px!important;height:44px!important;flex:none!important}.app-title-main{font-size:1.25rem!important;line-height:1.15!important}.app-title-sub{font-size:.72rem!important;letter-spacing:.05em!important}.app-header>nav{align-items:stretch!important}.app-header>nav button,.app-header>nav select,.app-header>nav a,.app-header>nav .install-wrap{min-width:0!important;max-width:100%!important}.app-header #nav-reg-btn{flex:1 1 10rem!important}.app-header .lang-switcher{flex:1 1 9rem!important}.app-header .sound-toggle-btn,.app-header .icon-btn{flex:0 0 auto!important}.container{padding-inline:.8rem!important}.premium-card{max-width:100%!important;box-sizing:border-box!important}.top-ask,.top-ask-wrap{min-width:0!important;max-width:100%!important}.top-ask input{min-width:0!important;width:100%!important}}
 @media(min-width:901px){.app-header nav{justify-content:flex-end!important;flex-wrap:wrap!important}.container{width:100%!important}}
+
+
+/* Desktop homepage organization lock: preserve the handset content order as a
+   readable centered desktop stack. Scoped to normal homepage desktop only. */
+@media (min-width:901px) and (hover:hover) and (pointer:fine){
+  body.page-home main.page-wrapper>.main-layout{
+    display:block!important;width:100%!important;max-width:1180px!important;
+    margin-inline:auto!important;padding-inline:clamp(18px,3vw,38px)!important;
+  }
+  body.page-home main.page-wrapper>.main-layout>.container{
+    display:block!important;width:100%!important;max-width:980px!important;min-width:0!important;
+    margin-inline:auto!important;padding-inline:0!important;columns:auto!important;column-count:1!important;
+  }
+  body.page-home main.page-wrapper>.main-layout>.container>*{
+    position:relative!important;left:auto!important;right:auto!important;
+    width:100%!important;max-width:100%!important;min-width:0!important;
+    grid-column:auto!important;grid-row:auto!important;float:none!important;clear:both!important;
+    box-sizing:border-box!important;
+  }
+  body.page-home main.page-wrapper>.main-layout>.container>.tg-entry{display:flex!important}
+  body.page-home main.page-wrapper>.main-layout>.container>#premiere-disclosure{display:block!important}
+  body.page-home main.page-wrapper>.main-layout>.container>#premiere-disclosure>#spotlight-ahs13{
+    width:100%!important;max-width:100%!important;margin-inline:0!important;
+  }
+  body.page-home .sidebar-ad-left,body.page-home .sidebar-ad-right{display:none!important}
+}
