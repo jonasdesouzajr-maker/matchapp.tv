@@ -114,6 +114,8 @@
         content_rating:d.contentRating||meta.content_rating,
         vote_average:Number.isFinite(Number(d.voteAverage))?Number(d.voteAverage):meta.vote_average,
         original_language:d.originalLanguage||meta.original_language,
+        origin_countries:Array.isArray(d.originCountries)?d.originCountries:(meta.origin_countries||[]),
+        cast:Array.isArray(d.cast)?d.cast:(meta.cast||[]),
         preview_kind:d.previewKind||meta.preview_kind,
         preview_provider:d.previewProvider||meta.preview_provider,
         preview_url:d.previewUrl||meta.preview_url,
