@@ -1,34 +1,77 @@
 {
-  "name": "MatchApp Ai",
-  "short_name": "MatchApp Ai",
-  "description": "Find what to watch across streaming services including The Roku Channel, discover the curated Kids world and global events, and personalize MatchApp with five themes.",
+  "name": "MatchApp",
+  "short_name": "MatchApp",
+  "description": "AI streaming concierge: pick a mood, get one title and where it officially plays in your country.",
   "start_url": "/?utm_source=pwa",
   "scope": "/",
   "display": "standalone",
-  "display_override": ["standalone"],
+  "display_override": [
+    "standalone"
+  ],
   "handle_links": "preferred",
-  "launch_handler": { "client_mode": "navigate-existing" },
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  },
   "orientation": "any",
-  "background_color": "#101010",
-  "theme_color": "#101010",
-  "categories": ["entertainment", "lifestyle", "utilities"],
+  "background_color": "#071326",
+  "theme_color": "#071326",
+  "categories": [
+    "entertainment",
+    "lifestyle",
+    "utilities"
+  ],
   "lang": "en",
   "dir": "auto",
   "icons": [
-    { "src": "/assets/brand/matchapp-icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
-    { "src": "/assets/brand/matchapp-icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
-    { "src": "/assets/brand/matchapp-icon-maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
-    { "src": "/assets/brand/matchapp-icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+    {
+      "src": "/assets/brand/brandkit/app-icon.svg?v=20260919-brand1",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/brand/brandkit/app-icon.svg?v=20260919-brand1",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
   ],
   "shortcuts": [
-    { "name": "Get a match", "short_name": "Match", "url": "/?utm_source=pwa_shortcut#questionnaire-box" },
-    { "name": "Ask the AI", "short_name": "Ask AI", "url": "/discover.html?utm_source=pwa_shortcut" },
-    { "name": "My library", "short_name": "Library", "url": "/profile/profile.html?utm_source=pwa_shortcut" },
-    { "name": "Kids Mode", "short_name": "Kids", "url": "/kids/", "icons": [{ "src": "/kids/kids-logo.jpeg", "sizes": "512x512", "type": "image/jpeg" }] }
+    {
+      "name": "Get a match",
+      "short_name": "Match",
+      "url": "/?utm_source=pwa_shortcut#questionnaire-box"
+    },
+    {
+      "name": "Ask the AI",
+      "short_name": "Ask AI",
+      "url": "/discover.html?utm_source=pwa_shortcut"
+    },
+    {
+      "name": "My library",
+      "short_name": "Library",
+      "url": "/profile/profile.html?utm_source=pwa_shortcut"
+    },
+    {
+      "name": "Kids Mode",
+      "short_name": "Kids",
+      "url": "/kids/",
+      "icons": [
+        {
+          "src": "/kids/kids-logo.jpeg",
+          "sizes": "512x512",
+          "type": "image/jpeg"
+        }
+      ]
+    }
   ],
   "id": "https://matchapp.tv/",
   "related_applications": [
-    { "platform": "webapp", "id": "https://matchapp.tv/", "url": "https://matchapp.tv/manifest.json" }
+    {
+      "platform": "webapp",
+      "id": "https://matchapp.tv/",
+      "url": "https://matchapp.tv/manifest.json"
+    }
   ],
   "prefer_related_applications": false
 }
