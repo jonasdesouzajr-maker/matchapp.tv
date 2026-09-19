@@ -890,3 +890,166 @@ html body.page-home :is(#latest-news,#premiere-disclosure,#global-events) {
     .match-more-filters>summary,.crit-toggle,.lazy-head,.seo-fold-summary
   ){animation:none!important}
 }
+
+
+/* ===== GIANT BRAND ORB + SAFE DESKTOP / ADS RAILS ===== */
+html,body{max-width:100%!important}
+body.page-home{overflow-x:clip!important}
+.ma-global-header{
+  box-sizing:border-box!important;
+  max-width:100vw!important;
+  overflow:visible!important;
+}
+.ma-global-header .ma-brand-stage,
+.ma-global-header .ma-brand-lockup,
+.ma-global-header .ma-brand-home-link{overflow:visible!important;min-width:0!important}
+.ma-brand-orb-stage{
+  position:relative!important;display:block!important;flex:0 0 auto!important;
+  pointer-events:none!important;overflow:visible!important;isolation:isolate!important;
+}
+.ma-brand-orb-stage .ma-brand-orb{pointer-events:none!important}
+.ma-orbit,.ma-orb-star{position:absolute!important;pointer-events:none!important}
+.ma-orbit{
+  border-radius:50%!important;border:1px solid rgba(255,218,99,.62)!important;
+  box-shadow:0 0 14px rgba(255,218,99,.34),inset 0 0 12px rgba(84,213,255,.10)!important;
+}
+.ma-orbit-a{inset:8%!important;animation:maOrbOrbitA 5.8s linear infinite!important}
+.ma-orbit-b{inset:18%!important;border-color:rgba(91,220,255,.48)!important;animation:maOrbOrbitB 4.1s linear infinite reverse!important}
+.ma-orb-star{
+  z-index:4!important;color:#fff5b7!important;
+  text-shadow:0 0 8px #fff,0 0 14px #ffd95f,0 0 22px #56ddff!important;
+  animation:maOrbSpark 1.8s ease-in-out infinite!important;
+}
+.ma-orb-star-a{left:11%!important;top:18%!important;font-size:20px!important}
+.ma-orb-star-b{right:10%!important;top:34%!important;font-size:14px!important;animation-delay:.55s!important}
+.ma-orb-star-c{left:36%!important;bottom:7%!important;font-size:12px!important;animation-delay:1.05s!important}
+@keyframes maOrbOrbitA{to{transform:rotate(360deg)}}
+@keyframes maOrbOrbitB{to{transform:rotate(360deg) scale(1.04)}}
+@keyframes maOrbSpark{0%,100%{opacity:.24;transform:scale(.55) rotate(0)}45%{opacity:1;transform:scale(1.35) rotate(155deg)}}
+
+/* Large desktop brand: the icon has roughly a 3x visual footprint while its
+   horizontal space is reserved, so it can POP without being clipped off-screen. */
+@media(min-width:1000px){
+  header.app-header.ma-global-header,
+  html body.page-home #mh-topbox.app-header.ma-global-header{
+    min-height:94px!important;
+    padding:7px clamp(14px,1.5vw,26px)!important;
+  }
+  .ma-global-header .ma-brand-lockup,
+  .ma-global-header .ma-brand-home-link{height:88px!important}
+  .ma-global-header .ma-brand-orb-stage{
+    width:260px!important;height:88px!important;flex-basis:260px!important;
+  }
+  .ma-global-header .ma-brand-orb{
+    position:absolute!important;left:0!important;top:-2px!important;
+    width:260px!important;height:260px!important;max-width:none!important;
+    margin:0!important;transform:none!important;
+    filter:drop-shadow(0 14px 20px rgba(0,0,0,.50)) drop-shadow(0 0 26px rgba(255,217,106,.48))!important;
+    animation:maBrandOrbPop 3.2s ease-in-out infinite!important;
+  }
+  .ma-global-header .ma-brand-copy{margin-left:8px!important}
+  .ma-global-header .ma-wordmark{font-size:clamp(42px,3.4vw,58px)!important}
+  .ma-global-header .ma-tv{font-size:clamp(25px,2vw,34px)!important}
+  .ma-ai-brand-button{min-width:82px!important;height:70px!important}
+  .ma-ai-letters{font-size:clamp(48px,3.8vw,64px)!important}
+}
+/* Keep header controls inside the viewport on laptop-sized desktops. */
+@media(min-width:1000px) and (max-width:1320px){
+  .ma-global-header .ma-brand-orb-stage{width:220px!important;flex-basis:220px!important}
+  .ma-global-header .ma-brand-orb{width:246px!important;height:246px!important}
+  .ma-global-header .ma-wordmark{font-size:40px!important}
+  .ma-global-header .ma-tv{font-size:23px!important}
+  .ma-global-header .ma-country-link{display:none!important}
+  .ma-global-header #lang-switcher-host select{max-width:78px!important}
+  .ma-menu-button{min-width:46px!important;width:46px!important;padding:0!important}
+  .ma-menu-button span{display:none!important}
+}
+
+/* Tablet/phone stays intentionally smaller so the giant desktop emblem does
+   not push controls off-screen. */
+@media(max-width:999px){
+  .ma-brand-orb-stage{width:76px!important;height:58px!important;flex-basis:76px!important}
+  .ma-global-header .ma-brand-orb{
+    position:absolute!important;left:0!important;top:-7px!important;
+    width:82px!important;height:82px!important;max-width:none!important;margin:0!important;
+  }
+  .ma-orbit{display:none!important}
+  .ma-orb-star{font-size:8px!important}
+}
+@media(max-width:560px){
+  .ma-brand-orb-stage{width:58px!important;height:52px!important;flex-basis:58px!important}
+  .ma-global-header .ma-brand-orb{width:64px!important;height:64px!important;top:-4px!important}
+}
+
+/* Desktop: real AdSense rails on BOTH sides. Grid always fits inside the
+   viewport; the center column flexes before anything can be clipped. */
+@media(min-width:1180px) and (hover:hover) and (pointer:fine){
+  html body.page-home main.page-wrapper>.main-layout{
+    --ma-ad-rail:clamp(132px,11vw,160px);
+    --ma-ad-gap:clamp(12px,1.4vw,22px);
+    display:grid!important;
+    grid-template-columns:var(--ma-ad-rail) minmax(0,var(--ma-stage-width)) var(--ma-ad-rail)!important;
+    justify-content:center!important;align-items:start!important;
+    width:100%!important;max-width:1480px!important;
+    margin:0 auto!important;padding:14px clamp(10px,1.3vw,22px) 0!important;
+    gap:var(--ma-ad-gap)!important;box-sizing:border-box!important;
+  }
+  html body.page-home main.page-wrapper>.main-layout>.container{
+    grid-column:2!important;width:100%!important;max-width:var(--ma-stage-width)!important;
+    min-width:0!important;margin:0 auto!important;padding-inline:0!important;
+  }
+  html body.page-home .sidebar-ad-left,
+  html body.page-home .sidebar-ad-right{
+    display:block!important;position:sticky!important;top:118px!important;
+    width:100%!important;min-width:0!important;max-width:160px!important;
+    min-height:600px!important;margin:0!important;padding:8px!important;
+    box-sizing:border-box!important;overflow:hidden!important;
+    border:1px solid rgba(232,186,64,.18)!important;border-radius:18px!important;
+    background:rgba(8,13,29,.70)!important;
+  }
+  html body.page-home .sidebar-ad-left{grid-column:1!important;justify-self:end!important}
+  html body.page-home .sidebar-ad-right{grid-column:3!important;justify-self:start!important}
+  html body.page-home .sidebar-ad-left ins.adsbygoogle,
+  html body.page-home .sidebar-ad-right ins.adsbygoogle{
+    display:block!important;width:100%!important;max-width:100%!important;min-height:600px!important;
+  }
+  html body.page-home .ad-banner-container{display:none!important}
+}
+
+/* Tablet: do not squeeze side rails into the product and do not scatter ads. */
+@media(min-width:768px) and (max-width:1179px){
+  html body.page-home .sidebar-ad-left,
+  html body.page-home .sidebar-ad-right,
+  html body.page-home .ad-banner-container{display:none!important}
+  html body.page-home main.page-wrapper>.main-layout{
+    display:block!important;width:100%!important;max-width:100%!important;
+    margin:0 auto!important;padding-inline:12px!important;box-sizing:border-box!important;
+  }
+}
+
+/* Smartphone: ads are inline only, distributed through the natural scroll.
+   They reserve a safe responsive slot and never overlay matcher/result/auth. */
+@media(max-width:767px){
+  html body.page-home .sidebar-ad-left,
+  html body.page-home .sidebar-ad-right{display:none!important}
+  html body.page-home .ad-banner-container.ma-inline-ad{
+    display:block!important;position:relative!important;
+    width:100%!important;max-width:100%!important;min-height:112px!important;
+    margin:18px auto!important;padding:8px!important;box-sizing:border-box!important;
+    overflow:hidden!important;border:1px solid rgba(232,186,64,.14)!important;
+    border-radius:18px!important;background:rgba(8,13,29,.66)!important;
+  }
+  html body.page-home .ad-banner-container.ma-inline-ad ins.adsbygoogle{
+    display:block!important;width:100%!important;min-height:96px!important;max-width:100%!important;
+  }
+}
+
+/* If AdSense has conclusively returned no inventory, keep the existing
+   collapse behavior instead of displaying dead empty slabs. */
+html.ads-empty body.page-home .sidebar-ad-left,
+html.ads-empty body.page-home .sidebar-ad-right,
+html.ads-empty body.page-home .ad-banner-container{display:none!important}
+
+@media(prefers-reduced-motion:reduce){
+  .ma-orbit,.ma-orb-star,.ma-global-header .ma-brand-orb{animation:none!important}
+}
