@@ -232,6 +232,9 @@ function detailMetadata(record: Record<string, unknown>, kind: "movie" | "tv"): 
       : [],
     runtimeMinutes: Number.isFinite(runtime) && runtime > 0 && runtime <= 1440 ? Math.round(runtime) : null,
     contentRating: detailRating(record, kind),
+    cast: Array.isArray((record.credits as { cast?: unknown } | undefined)?.cast)
+      ? ((record.credits as { cast?: Array<Record<string, unknown>> }).cast || []).filter((p)=>p?.adult!==true&&String(p?.name||"").trim()).slice(0,12).map((p)=>({name:String(p.name||"").trim(),character:String(p.character||"").trim()}))
+      : [],
     originCountries: Array.isArray(record.production_countries)
       ? (record.production_countries as Array<Record<string, unknown>>).map((x)=>String(x?.iso_3166_1||"").toUpperCase()).filter(Boolean)
       : (Array.isArray(record.origin_country) ? (record.origin_country as unknown[]).map((x)=>String(x||"").toUpperCase()).filter(Boolean) : []),
@@ -378,7 +381,7 @@ Deno.serve(async (req: Request) => {
       const append = new Set<string>();
       if (wantRelated) ["credits", "similar", "recommendations"].forEach((v) => append.add(v));
       if (wantDetails) {
-        ["videos", "watch/providers"].forEach((v) => append.add(v));
+        ["videos", "watch/providers", "credits"].forEach((v) => append.add(v));
         append.add(kind === "movie" ? "release_dates" : "content_ratings");
       }
       const extra = append.size ? "&append_to_response=" + encodeURIComponent([...append].join(",")) : "";
