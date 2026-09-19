@@ -1,7 +1,7 @@
 /* Final production wiring: activate reviewed hardening modules without duplicating page markup. */
 (function(){
   'use strict';
-  const V='20260919-fold2';
+  const V='20260919-fold3';
   const path=location.pathname;
   const isKids=path==='/kids'||path.startsWith('/kids/');
   const isHome=path==='/'||path==='/index.html';
