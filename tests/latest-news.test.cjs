@@ -5,12 +5,12 @@ const path=require('node:path');
 const root=path.join(__dirname,'..');
 const read=p=>fs.readFileSync(path.join(root,p),'utf8');
 
-test('Latest News is homepage-only, folded by default, country-aware and placed after premiere',()=>{
+test('Latest News is homepage-only, always open, country-aware and placed after premiere',()=>{
   const wiring=read('final-wiring.js'),src=read('latest-news.js');
   assert.match(wiring,/if\(path==='\/'\|\|path==='\/index\.html'\)\{[^}]*js\('\/latest-news\.js'\)/);
   assert.match(wiring,/js\('\/latest-news-image-guard\.js'\)/);
   assert.match(src,/document\.createElement\('details'\)/);
-  assert.match(src,/section\.open=false/);
+  assert.match(src,/section\.open=true/);
   assert.match(src,/document\.getElementById\('premiere-disclosure'\)/);
   assert.match(src,/premiere\.insertAdjacentElement\('afterend',section\)/);
   assert.match(src,/\/cdn-cgi\/trace/);
@@ -19,7 +19,7 @@ test('Latest News is homepage-only, folded by default, country-aware and placed 
   assert.match(src,/MAX_TOTAL=10/);
 });
 
-test('Latest News visibly auto-swipes left after unfold without hover cancelling it',()=>{
+test('Latest News visibly auto-swipes left while permanently open without hover cancelling it',()=>{
   const src=read('latest-news.js');
   assert.match(src,/let combined=\[/);
   assert.match(src,/\.slice\(0,MAX_TOTAL\)/);
@@ -39,7 +39,7 @@ test('Latest News visibly auto-swipes left after unfold without hover cancelling
   assert.doesNotMatch(src,/pointerenter/);
 });
 
-test('new-content flag persists by feed version and clears only after unfold',()=>{
+test('new-content flag persists by feed version on the always-open news rail',()=>{
   const src=read('latest-news.js');
   assert.match(src,/matchapp\.latestNewsSeenVersion/);
   assert.match(src,/payload\.feed_version/);
@@ -51,7 +51,7 @@ test('new-content flag persists by feed version and clears only after unfold',()
   assert.match(src,/latest_news_new_available/);
 });
 
-test('news deep links unfold Latest News and reveal the requested story',()=>{
+test('news deep links reveal the requested story inside always-open Latest News',()=>{
   const src=read('latest-news.js');
   assert.match(src,/new URLSearchParams\(location\.search\)\.get\('news'\)/);
   assert.match(src,/location\.hash==='#latest-news'/);
