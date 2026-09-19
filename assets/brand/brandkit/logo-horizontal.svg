@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" width="1200" height="360">
+  <defs>
+    <linearGradient id="silver" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/><stop offset="100%" stop-color="#94a0b4"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fff0ba"/><stop offset="100%" stop-color="#c49428"/>
+    </linearGradient>
+    <radialGradient id="navy" cx="38%" cy="30%" r="75%">
+      <stop offset="0%" stop-color="#1c3a66"/><stop offset="100%" stop-color="#030814"/>
+    </radialGradient>
+  </defs>
+  <circle cx="160" cy="180" r="150" fill="url(#gold)"/>
+  <circle cx="160" cy="180" r="128" fill="url(#navy)"/>
+  <circle cx="160" cy="180" r="72" fill="url(#gold)"/>
+  <circle cx="160" cy="180" r="56" fill="#08101c"/>
+  <polygon points="138,148 138,212 208,180" fill="url(#gold)"/>
+  <text x="340" y="200" font-family="Montserrat, Arial Black, sans-serif" font-weight="800" font-size="118">
+    <tspan fill="url(#silver)">Match</tspan><tspan fill="url(#gold)">App</tspan>
+  </text>
+  <text x="348" y="250" font-family="Montserrat, Arial, sans-serif" font-weight="600" font-size="28" fill="#c49428" letter-spacing="6">STREAMING CONCIERGE</text>
+</svg>
