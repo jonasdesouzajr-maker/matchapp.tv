@@ -918,4 +918,10 @@
         <changefreq>hourly</changefreq>
         <priority>0.8</priority>
     </url>
+  <url>
+    <loc>https://matchapp.tv/anime.html</loc>
+    <lastmod>2026-09-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
