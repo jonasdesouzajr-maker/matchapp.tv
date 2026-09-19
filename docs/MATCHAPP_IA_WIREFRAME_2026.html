@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MatchApp IA Wireframe 2026</title>
+<style>
+body{font:15px/1.5 Inter,system-ui,sans-serif;background:#071326;color:#f6f2fb;margin:0;padding:28px}
+main{max-width:1100px;margin:auto}.note{color:#b8aec9}.frame{border:1px solid #e8ba4060;border-radius:22px;padding:18px;margin:20px 0;background:#0d1d35}
+.mobile{max-width:390px}.row{display:flex;gap:8px;flex-wrap:wrap}.chip{border:1px solid #ffffff30;border-radius:999px;padding:8px 12px}.selected{background:#e8ba40;color:#171018}
+button{min-height:44px;border:0;border-radius:14px;padding:10px 16px}.primary{background:#e8ba40;color:#171018;font-weight:800;width:100%}
+header{display:flex;justify-content:space-between;align-items:center;gap:12px}.quiet{font-size:12px;color:#b8aec9}.poster{width:110px;aspect-ratio:2/3;background:#182943;border-radius:14px;display:grid;place-items:center}
+.result{display:grid;grid-template-columns:auto 1fr;gap:16px}.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.plan{border:1px solid #ffffff22;border-radius:20px;padding:16px}.vip{border-color:#e8ba4080}
+@media(max-width:650px){body{padding:12px}.plans{grid-template-columns:1fr}.result{grid-template-columns:90px 1fr}}
+</style>
+</head>
+<body><main>
+<h1>MatchApp — annotated IA wireframe</h1>
+<p class="note">Presentation-only reference. Existing matching, quota, auth, Kids safety, payments, routes and provider verification stay unchanged.</p>
+
+<section class="frame">
+<h2>1. Shared header</h2>
+<header>
+  <a href="/" aria-label="MatchApp"><img src="/assets/brand/brandkit/logo-horizontal.svg" alt="MatchApp — Streaming Concierge" height="46"></a>
+  <nav aria-label="Account and locale">Country · Language · Sign in · ⋯</nav>
+</header>
+<p class="note">Signed in: Country · Bell · Avatar · ⋯. Overflow: Download app, Theme, Lazy Mode, Kids Mode, Check-in, Pricing, Profile.</p>
+</section>
+
+<section class="frame">
+<h2>2. Home — desktop first screen</h2>
+<h1>What should you watch tonight?</h1>
+<p>Pick a mood. Get one title and where it plays.</p>
+<div class="row" role="tablist"><button>Match me</button><button>Ask</button></div>
+<p><strong>Mood</strong> · single select</p>
+<div class="row"><span class="chip selected">Comfort</span><span class="chip">Funny</span><span class="chip">Intense</span><span class="chip">Romance</span><span class="chip">Smart</span><span class="chip">Scary</span><span class="chip">Something short</span><span class="chip">Surprise me</span></div>
+<p><strong>Format</strong> · optional</p>
+<div class="row"><span class="chip selected">Any</span><span class="chip">Movie</span><span class="chip">Series</span><span class="chip">Anime</span><span class="chip">Novela</span><span class="chip">Kids</span><span class="chip">Podcast</span></div>
+<p><strong>Platform</strong> · optional multi-select</p>
+<div class="row"><span class="chip selected">Any</span><span class="chip">Netflix</span><span class="chip">Prime</span><span class="chip">Max</span><span class="chip">Disney+</span><span class="chip">YouTube</span><span class="chip">Free</span></div>
+<p class="quiet">Fine-tune ▾ — decade, official genre, age, exclusions, “not like this”</p>
+<button class="primary">Find something to watch</button>
+<p class="quiet" style="text-align:center">Watching with someone? Match Together</p>
+</section>
+
+<section class="frame mobile">
+<h2>3. Home — 390×844 target</h2>
+<header><strong>MatchApp</strong><span>🌍 · EN · ⋯</span></header>
+<h2>What should you watch tonight?</h2><p class="quiet">Pick a mood. Get one title and where it plays.</p>
+<div class="row"><button>Match me</button><button>Ask</button></div>
+<div class="row"><span class="chip selected">Comfort</span><span class="chip">Funny</span><span class="chip">Intense</span><span class="chip">Romance</span></div>
+<div class="row"><span class="chip">Smart</span><span class="chip">Scary</span><span class="chip">Short</span><span class="chip">Surprise</span></div>
+<div class="row"><span class="chip selected">Any</span><span class="chip">Movie</span><span class="chip">Series</span><span class="chip">Anime</span></div>
+<p class="quiet">Fine-tune ▾</p>
+<button class="primary">Find something to watch</button>
+<p class="quiet">Slim cookie bar may sit below; no changelog/interstitial may cover this CTA.</p>
+</section>
+
+<section class="frame">
+<h2>4. Result card</h2>
+<div class="result"><div class="poster">Poster</div><div><h2>Title</h2><p>Why this fits, in two short sentences.</p><p class="quiet">2026 · 1h 52m · Official genres</p><div class="row"><button>Watch</button><button>Not for me</button><button>Save</button><button>Ask about this</button><button>Share</button></div><p class="quiet">Where to watch shows only verified official sources for the active country.</p></div></div>
+</section>
+
+<section class="frame">
+<h2>5. Pricing — first screen</h2>
+<h1>Watch with fewer limits.</h1>
+<div class="plans"><article class="plan"><h2>Free</h2><p>3 included AI actions/day</p></article><article class="plan"><h2>Account</h2><p>5 included AI actions/day</p></article><article class="plan vip"><h2>VIP</h2><p>10 included AI actions/day</p><p>Monthly / Annual toggle</p></article></div>
+<p class="quiet">A daily action is either a Match or an Ask. Extra Matches and Extra Ask credits remain separate products.</p>
+<p>Secondary row: Extra matches · Extra Ask credits · Ad-free · Business</p>
+</section>
+
+<section class="frame">
+<h2>6. Below-fold order</h2>
+<ol><li>Result region — absent when empty</li><li>Latest titles rail — one row</li><li>This week — one compact editorial card</li><li>Events rail — optional</li><li>Footer — one three-step explanation line</li></ol>
+</section>
+</main></body></html>
