@@ -16,9 +16,10 @@ test('homepage density removes legacy dead-space shell',()=>{
 test('Lazy Mode folds major homepage modules but normal mode stays open',()=>{
   const lazy=read('lazy.js');
   const css=read('home-premium.css');
-  for(const sel of ['#daily-match-checkin','.top-ask-wrap','#swifties-spotify','#questionnaire-box','#search-box','#premiere-disclosure','#global-events','#how-it-works','#ai-concierge-section','#matchapp-tiktok-showcase']){
+  for(const sel of ['#daily-match-checkin','.top-ask-wrap','#swifties-spotify','#questionnaire-box','#search-box','#premiere-disclosure','#how-it-works','#ai-concierge-section','#matchapp-tiktok-showcase']){
     assert.ok(lazy.includes(sel),sel+' must be foldable in Lazy Mode');
   }
+  assert.ok(!lazy.includes("{ sel: '#global-events'"),'Global Events owns its native disclosure and must not get a second Lazy Mode fold control');
   assert.ok(!lazy.includes("{ sel: '#trending-rail'"),'Latest Titles must remain permanently visible');
   assert.ok(!lazy.includes("{ sel: '#latest-news'"),'Latest News must remain permanently visible');
   assert.ok(css.includes('body.page-home:not(.lazy-mode) .lazy-head{display:none!important}'));
