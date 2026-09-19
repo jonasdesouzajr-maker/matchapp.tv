@@ -36,7 +36,7 @@ These are standing implementation rules for MatchApp work in this repository.
 6. **Homepage compactness, folding, and discovery**
    - Keep smartphone/tablet vertical spacing compact but breathable: fields should be close without touching or overlapping.
    - Major homepage cards/fields must remain foldable without breaking their controls, animations, accessibility, or vertical scrolling.
-   - The Latest titles rail auto-glides left until the visitor manually interacts/swipes; after manual control, do not fight the visitor with autoplay.
+   - The Latest titles and Events rails auto-glide to the right at a slow, human-readable pace until the visitor manually interacts/swipes; after manual control, do not fight the visitor with autoplay. Keep Events poster cards the same dimensions and compact visual treatment as Latest titles, and keep both fields foldable.
    - Clicking a Latest title must expose verified title details appropriate to small screens: synopsis, real genres/categories, cast when source-backed, production country, and country-specific watch availability.
    - Let visitors explicitly choose their viewing country; persist that choice for regional availability.
    - Never fabricate an exact streaming deep-link. Use an exact provider/title URL when the source supplies one; otherwise clearly use the provider's supported search/title-discovery destination or verified regional guide.
