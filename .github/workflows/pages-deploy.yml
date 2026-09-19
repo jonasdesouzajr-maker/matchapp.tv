@@ -44,10 +44,15 @@ jobs:
           node --check profile.js
           node --test tests/match-runtime-regression.test.cjs tests/exclusion-preferences.test.cjs
           grep -Fq 'id="q-genre"' index.html
-          grep -Fq '/app.js?v=210' index.html
-          grep -Fq '/catalog-media.js?v=20260919-titlecards1' index.html
-          grep -Fq '/discover.js?v=207' discover.html
-          grep -Fq '/kids/kids.js?v=199' kids/index.html
+          # Assert each asset carries SOME cache-bust version rather than a
+          # literal one. The exact value is the deploy's to choose; pinning it
+          # here meant every bump had to be restated in this file, and when it
+          # was not, the gate failed and skipped the deploy silently.
+          for ref in '/app\.js' '/catalog-media\.js' '/settings\.js' '/app-updates\.js'; do
+            grep -Eq "${ref}\?v=[^\"']+" index.html || { echo "index.html: $ref is not cache-busted"; exit 1; }
+          done
+          grep -Eq "/discover\.js\?v=[^\"']+" discover.html
+          grep -Eq "/kids/kids\.js\?v=[^\"']+" kids/index.html
           grep -Fq 'Final invariant: if any age-approved titles exist' kids/kids.js
           grep -Fq 'item.realGenres = meta.genres' discover.js
           grep -Fq 'Cinemas & showtimes near me' catalog-media.js
@@ -59,10 +64,10 @@ jobs:
           grep -Fq 'Resident Evil (2026)' where-to-watch/resident-evil-2026/index.html
           grep -Fq 'Selected criteria are hard requirements' app.js
           grep -Fq 'matchapp_first_time_onboarding_v1' onboarding-tour.js
-          grep -Fq '/kids/onboarding-tour.js?v=1' kids/index.html
+          grep -Eq "/kids/onboarding-tour\.js\?v=[^\"']+" kids/index.html
           grep -Fq 'blockedOriginCountries' settings.js
           grep -Fq 'What I don’t want to see in my matches' profile/profile.html
-          grep -Fq '"2026.09.19.1"' release.json
+          grep -Eq '"version"[[:space:]]*:[[:space:]]*"[0-9]{4}\.[0-9]{2}\.[0-9]{2}\.[0-9]+"' release.json
       - name: Generate bilingual social preview
         run: |
           sudo apt-get update -qq
@@ -82,9 +87,18 @@ jobs:
     needs: deploy
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
       - name: Probe live site
         run: |
           set -euxo pipefail
+          # Read each expected cache-bust version out of the repo and assert the
+          # live page ships the same one. Nothing here restates a version, so a
+          # bump can never leave this check asserting a stale value.
+          same() {
+            want=$(grep -o "$3?v=[^\"']*" "$1" | head -1)
+            test -n "$want" || { echo "no versioned $3 in $1"; exit 1; }
+            grep -Fq "$want" "$2" || { echo "live $2 is missing $want"; exit 1; }
+          }
           sleep 20
           for url in https://matchapp.tv/ https://matchapp.tv/kids/ https://matchapp.tv/kids/titles/bluey/ https://matchapp.tv/discover.html https://matchapp.tv/pricing/pricing.html https://matchapp.tv/where-to-watch/resident-evil-2026/ https://matchapp.tv/android/; do
             echo "Checking $url"
@@ -105,10 +119,10 @@ jobs:
           grep -q "Google Play — Coming Soon" /tmp/android.html
           ! grep -q "play.google.com/store/apps/details?id=tv.matchapp.app" /tmp/android.html
           curl -sS -L --max-time 30 https://matchapp.tv/ -o /tmp/home.html
-          grep -Fq '/app.js?v=210' /tmp/home.html
-          grep -Fq '/catalog-media.js?v=20260919-titlecards1' /tmp/home.html
-          grep -Fq '/settings.js?v=20260918-onboard1' /tmp/home.html
-          grep -Fq '/app-updates.js?v=202' /tmp/home.html
+          same index.html /tmp/home.html '/app.js'
+          same index.html /tmp/home.html '/catalog-media.js'
+          same index.html /tmp/home.html '/settings.js'
+          same index.html /tmp/home.html '/app-updates.js'
           curl -sS -L --max-time 30 https://matchapp.tv/notifications.js -o /tmp/notifications.js
           grep -Fq 'followTitle' /tmp/notifications.js
           curl -sS -L --max-time 30 https://matchapp.tv/sw.js -o /tmp/sw.js
@@ -116,17 +130,17 @@ jobs:
           curl -sS -L --max-time 30 https://matchapp.tv/profile/profile.html -o /tmp/profile.html
           grep -Fq 'What I don’t want to see in my matches' /tmp/profile.html
           curl -sS -L --max-time 30 https://matchapp.tv/release.json -o /tmp/release.json
-          grep -Fq '"2026.09.19.1"' /tmp/release.json
+          grep -Fq "$(grep -o '"version"[^,]*' release.json | head -1)" /tmp/release.json
           curl -sS -L --max-time 30 https://matchapp.tv/discover.html -o /tmp/discover.html
-          grep -Fq '/discover.js?v=207' /tmp/discover.html
-          grep -Fq '/catalog-media.js?v=20260918-notify2' /tmp/discover.html
-          curl -sS -L --max-time 30 'https://matchapp.tv/discover.js?v=207' -o /tmp/discover.js
+          same discover.html /tmp/discover.html '/discover.js'
+          same discover.html /tmp/discover.html '/catalog-media.js'
+          curl -sS -L --max-time 30 "https://matchapp.tv$(grep -o '/discover\.js?v=[^\"'\'']*' discover.html | head -1)" -o /tmp/discover.js
           grep -Fq 'item.realGenres = meta.genres' /tmp/discover.js
-          curl -sS -L --max-time 30 'https://matchapp.tv/catalog-media.js?v=20260919-titlecards1' -o /tmp/catalog-media.js
+          curl -sS -L --max-time 30 "https://matchapp.tv$(grep -o '/catalog-media\.js?v=[^\"'\'']*' index.html | head -1)" -o /tmp/catalog-media.js
           grep -Fq 'Cinemas & showtimes near me' /tmp/catalog-media.js
           grep -Fq 'lookupLive' /tmp/catalog-media.js
           curl -sS -L --max-time 30 https://matchapp.tv/kids/ -o /tmp/kids.html
-          grep -Fq '/kids/kids.js?v=199' /tmp/kids.html
+          same kids/index.html /tmp/kids.html '/kids/kids.js'
           ! grep -q "GTM-M7J3NNBN" /tmp/kids.html
           curl -sS -L --max-time 30 https://matchapp.tv/kids/titles/bluey/ -o /tmp/kids-title.html
           grep -qi "Bluey" /tmp/kids-title.html
