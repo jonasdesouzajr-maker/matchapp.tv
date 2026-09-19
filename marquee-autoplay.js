@@ -55,6 +55,13 @@
       vp.style.webkitOverflowScrolling='touch';
       track.classList.remove('is-marquee-flowing');
       vp.dataset.matchappAutoplayActive='0';
+      /* Phones/tablets glide left until the visitor takes control. Once they
+         swipe/touch the rail, autoplay stays off for that rail. */
+      let userTookControl=false,last=0,raf=0;
+      const takeControl=()=>{userTookControl=true;if(raf)cancelAnimationFrame(raf);raf=0;vp.dataset.matchappAutoplayActive='0';};
+      const glide=ts=>{if(userTookControl||document.hidden||reduced())return;const half=track.scrollWidth/2;if(half>40){if(last){vp.scrollLeft+=(ts-last)*0.022;if(vp.scrollLeft>=half)vp.scrollLeft-=half;}last=ts;vp.dataset.matchappAutoplayActive='1';}raf=requestAnimationFrame(glide);};
+      ['touchstart','pointerdown','wheel'].forEach(type=>vp.addEventListener(type,takeControl,{passive:true,once:true}));
+      setTimeout(()=>{if(!userTookControl)raf=requestAnimationFrame(glide);},350);
     }
     vp.style.overscrollBehaviorX='contain';
 
