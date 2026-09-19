@@ -73,7 +73,7 @@ function brandHeader(){
  }
  if(brand){
    brand.classList.add('ma-brand-stage');
-   brand.innerHTML=
+   if(!qs('.ma-brand-lockup',brand)) brand.innerHTML=
      '<div class="ma-brand-lockup" aria-label="MatchApp TV Ai">'+
        '<a class="ma-brand-home-link" href="/" aria-label="MatchApp TV home">'+
          '<span class="ma-brand-orb-stage" aria-hidden="true">'+
@@ -87,7 +87,7 @@ function brandHeader(){
          '<span class="ma-ai-letters">Ai</span><span class="ma-ai-star ma-ai-star-one" aria-hidden="true">✦</span><span class="ma-ai-star ma-ai-star-two" aria-hidden="true">✧</span><span class="ma-ai-star ma-ai-star-three" aria-hidden="true">✦</span>'+
        '</button>'+
      '</div>';
-   const ai=qs('.ma-ai-brand-button',brand);if(ai)ai.addEventListener('click',openAskFromBrand);
+   const ai=qs('.ma-ai-brand-button',brand);if(ai&&!ai.dataset.maAskBound){ai.dataset.maAskBound='1';ai.addEventListener('click',openAskFromBrand);}
  }
  const nav=qs('nav',h);if(!nav)return;
  nav.classList.add('ma-header-actions');
