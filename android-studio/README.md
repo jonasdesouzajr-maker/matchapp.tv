@@ -10,9 +10,9 @@ This folder is one self-contained Android Studio project with **two separate ins
 - Installed name: **MatchApp Ai**
 - Opens `https://matchapp.tv/`
 - Keeps the existing Android application ID for upgrade continuity
-- **Kids Mode is not available inside this Android app**
-- Direct links and in-app navigation to `/kids/` are blocked and returned to the standard MatchApp home
-- Kids entry points are hidden inside the Android shell only
+- **Kids Mode is available from the persistent Kids Mode button inside the standard app**
+- Direct links and in-app navigation to `/kids/` stay inside the trusted MatchApp WebView
+- The separate MatchApp Ai KIDS app remains available as a dedicated Kids-only shell
 - Ads are disabled in the Android shell
 - Supports authenticated sessions, Android back, pull-to-refresh, fullscreen media, file selection and offline state
 
@@ -38,7 +38,7 @@ Both Android modules are synchronized for the current production MatchApp surfac
 - Standard app launch: `https://matchapp.tv/`
 - Kids app launch: `https://matchapp.tv/kids/`
 - Both apps cold-load production on launch and manual refresh to avoid stale WebView content, then resume normal caching after the page renders.
-- The standard app still blocks Kids routes.
+- The standard app allows the normal website Kids Mode route.
 - The Kids app still blocks non-Kids MatchApp routes.
 
 Because these apps intentionally render the live web experience, the latest approved MatchApp UI/content/features do **not** need to be copied into Android source. Native Android files are changed only when routing, permissions, WebView behavior, package identity, or Android-specific presentation requires it.
@@ -72,8 +72,8 @@ The Android apps intentionally render the live MatchApp web surfaces rather than
 - **MatchApp Ai (`:app`)** loads the main `https://matchapp.tv/` experience, so approved main-site UI/features such as the AI Concierge automatically appear in Android.
 - **MatchApp Ai KIDS (`:kidsapp`)** loads `https://matchapp.tv/kids/`, so approved Kids UI/features automatically appear in the Kids Android app.
 - When a web change introduces a new route, deep-link behavior, authentication flow, native permission, file-picker behavior, external-app handoff, user-agent rule, or Android-specific restriction, the matching Android module must be reviewed and updated in the same change.
-- Main-site changes must never accidentally expose `/kids/` inside the standard Android app.
-- Kids-site changes must remain inside the Kids-only Android boundary.
+- Main-site Kids entry points should remain available inside the standard Android app.
+- Kids-site changes must remain inside the Kids-only Android boundary when running the dedicated Kids app.
 - Do not fork/copy the website HTML/CSS/JS into the Android project merely to “sync” it. The live WebView source is the synchronization mechanism; only native-shell differences belong under `android-studio/`.
 
 Treat this as a standing release rule for future MatchApp changes. Every approved MatchApp web fix must be reviewed for both Android modules in the same task; when a fresh AAB is requested, bump both module build markers together so neither app can ship against a stale production snapshot.

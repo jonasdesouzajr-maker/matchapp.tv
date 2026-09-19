@@ -210,7 +210,6 @@ class MainActivity : AppCompatActivity() {
         val data = intent?.data
         if (data != null && (data.scheme == "https" || data.scheme == "http")) {
             if (isMatchAppHost(data.host.orEmpty())) {
-                if (isKidsUri(data)) return HOME
                 return data.buildUpon().scheme("https").build().toString()
             }
         }
@@ -250,19 +249,11 @@ class MainActivity : AppCompatActivity() {
         }
 
         override fun onPageStarted(view: WebView, url: String?, favicon: Bitmap?) {
-            if (isKidsUrl(url)) {
-                view.stopLoading()
-                lastUrl = HOME
-                Toast.makeText(this@MainActivity, getString(R.string.kids_separate_app), Toast.LENGTH_SHORT).show()
-                view.loadUrl(HOME)
-                return
-            }
             lastUrl = url ?: lastUrl
             injectAppMode(view)
         }
 
         override fun onPageFinished(view: WebView, url: String?) {
-            if (isKidsUrl(url)) return
             splashKeep = false
             refresh.isRefreshing = false
             view.settings.cacheMode = WebSettings.LOAD_DEFAULT
@@ -289,11 +280,6 @@ class MainActivity : AppCompatActivity() {
             return openExternal(uri)
         }
         if (isMatchAppHost(host)) {
-            if (isKidsUri(uri)) {
-                Toast.makeText(this, getString(R.string.kids_separate_app), Toast.LENGTH_SHORT).show()
-                web.loadUrl(HOME)
-                return true
-            }
             return false
         }
         if (host.endsWith("supabase.co") || host.endsWith("google.com") || host.endsWith("gstatic.com") ||
@@ -374,12 +360,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val HOME = "https://matchapp.tv/?utm_source=android_app&appBuild=18"
-        const val APP_UA = "MatchAppTVAndroid/1.1.16 MatchAppAiAndroid/1.1.16"
+        const val HOME = "https://matchapp.tv/?utm_source=android_app&appBuild=19"
+        const val APP_UA = "MatchAppTVAndroid/1.1.17 MatchAppAiAndroid/1.1.17"
         private const val APP_MODE_JS = """
             (function(){
               window.MATCHAPP_IS_AD_FREE = true;
-              window.MATCHAPP_ANDROID_KIDS_DISABLED = true;
+              window.MATCHAPP_ANDROID_KIDS_AVAILABLE = true;
               try { localStorage.setItem('match_ad_free','true'); } catch (e) {}
               var root = document.documentElement;
               root.classList.add('ads-empty','matchapp-android','matchapp-ai-android','is-chrome');
@@ -389,53 +375,10 @@ class MainActivity : AppCompatActivity() {
                 s.id = 'matchapp-android-shell';
                 s.textContent =
                   '.ad-banner-container,.sidebar-ad-left,.sidebar-ad-right,.mobile-ad-bottom,' +
-                  '.premium-ad-frame,ins.adsbygoogle,.ma-ad-label,#chrome-notice,.chrome-notice,' +
-                  '.install-btn,a[href^="/kids"],a[href^="kids/"],' +
-                  'a[href^="https://matchapp.tv/kids"],a[href^="https://www.matchapp.tv/kids"],' +
-                  '[data-mode="kids"],[data-view="kids"],[data-route^="/kids"],#kids-mode,#kids-toggle,' +
-                  '.kids-mode-toggle,.kids-mode-entry,.kids-entry,.kids-card,.kids-cta' +
+                  '.premium-ad-frame,ins.adsbygoogle,.ma-ad-label,#chrome-notice,.chrome-notice,.install-btn' +
                   '{display:none!important;height:0!important;min-height:0!important;overflow:hidden!important;' +
                   'padding:0!important;margin:0!important;border:0!important}';
                 (document.head || root).appendChild(s);
-              }
-
-              function isKidsLink(el) {
-                if (!el || !el.getAttribute) return false;
-                var href = el.getAttribute('href');
-                if (!href) return false;
-                try {
-                  var u = new URL(href, location.href);
-                  var host = u.hostname.toLowerCase();
-                  var path = u.pathname.toLowerCase().replace(/\/+$/,'');
-                  var own = host === 'matchapp.tv' || host === 'www.matchapp.tv' || host.endsWith('.matchapp.tv');
-                  return own && (path === '/kids' || path.indexOf('/kids/') === 0);
-                } catch (e) {
-                  return false;
-                }
-              }
-
-              function scrubKids() {
-                document.querySelectorAll('a[href]').forEach(function(a){
-                  if (isKidsLink(a)) {
-                    a.style.setProperty('display','none','important');
-                    a.setAttribute('aria-hidden','true');
-                    a.setAttribute('tabindex','-1');
-                  }
-                });
-              }
-
-              scrubKids();
-              document.addEventListener('click', function(ev){
-                var target = ev.target && ev.target.closest ? ev.target.closest('a[href]') : null;
-                if (isKidsLink(target)) {
-                  ev.preventDefault();
-                  ev.stopImmediatePropagation();
-                }
-              }, true);
-
-              if (!window.__matchAppAndroidKidsObserver) {
-                window.__matchAppAndroidKidsObserver = new MutationObserver(scrubKids);
-                window.__matchAppAndroidKidsObserver.observe(document.documentElement, {childList:true,subtree:true});
               }
 
               document.querySelectorAll('ins.adsbygoogle,.ad-banner-container').forEach(function(el){ el.remove(); });
