@@ -50,17 +50,37 @@ function ensureBrandMeta(){
  fav.href=ICON;fav.type='image/svg+xml';
  const tc=qs('meta[name="theme-color"]');if(tc)tc.content='#071326';
 }
+function openAskFromBrand(){
+ if(!isHome){location.href='/?ask=1#ma-concierge';return}
+ const ask=qs('#ma-tab-ask'),card=qs('#ma-concierge');
+ if(ask)safeClick(ask);
+ if(card)card.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'center'});
+ setTimeout(()=>{
+   const input=qs('#specific-search-input');
+   if(input){input.focus({preventScroll:true});input.classList.add('ma-ai-focus-pulse');setTimeout(()=>input.classList.remove('ma-ai-focus-pulse'),2200)}
+   let cue=qs('.ma-ai-prompt-hint');
+   if(!cue&&card){cue=el('div','ma-ai-prompt-hint','Type your request here to start a new chat with MatchApp Ai.');cue.setAttribute('role','status');card.appendChild(cue)}
+   if(cue){cue.hidden=false;cue.classList.remove('is-showing');requestAnimationFrame(()=>cue.classList.add('is-showing'));setTimeout(()=>{cue.classList.remove('is-showing');setTimeout(()=>cue.hidden=true,240)},4200)}
+   if(window.maPlayUISound)window.maPlayUISound('share');
+ },180);
+}
 function brandHeader(){
  const h=qs('header.app-header');if(!h)return;
  h.classList.add('ma-global-header');
  let brand=qs('#home-brand-lockup',h)||qs('.header-brand-area',h)||qs('.matchapp-brand-link',h);
  if(brand){
-   if(brand.id==='home-brand-lockup'){
-     brand.innerHTML='<a class="ma-brand-lockup" href="/" aria-label="MatchApp"><img class="ma-brand-image" src="'+BRAND+'" alt="MatchApp — Streaming Concierge" width="200" height="60"></a>';
-   }else{
-     brand.classList.add('ma-brand-lockup');
-     brand.innerHTML='<img class="ma-brand-image" src="'+BRAND+'" alt="MatchApp — Streaming Concierge" width="200" height="60">';
-   }
+   brand.classList.add('ma-brand-stage');
+   brand.innerHTML=
+     '<div class="ma-brand-lockup" aria-label="MatchApp TV Ai">'+
+       '<a class="ma-brand-home-link" href="/" aria-label="MatchApp TV home">'+
+         '<img class="ma-brand-orb" src="'+ICON+'" alt="" width="104" height="104">'+
+         '<span class="ma-brand-copy"><span class="ma-wordmark"><span class="ma-word-match">Match</span><span class="ma-word-app">App</span></span><span class="ma-tv">TV</span></span>'+
+       '</a>'+
+       '<button type="button" class="ma-ai-brand-button" aria-label="Start a new chat with MatchApp Ai" title="Ask MatchApp Ai">'+
+         '<span class="ma-ai-letters">Ai</span><span class="ma-ai-star ma-ai-star-one" aria-hidden="true">✦</span><span class="ma-ai-star ma-ai-star-two" aria-hidden="true">✧</span><span class="ma-ai-star ma-ai-star-three" aria-hidden="true">✦</span>'+
+       '</button>'+
+     '</div>';
+   const ai=qs('.ma-ai-brand-button',brand);if(ai)ai.addEventListener('click',openAskFromBrand);
  }
  const nav=qs('nav',h);if(!nav)return;
  nav.classList.add('ma-header-actions');
@@ -71,7 +91,7 @@ function brandHeader(){
  }
  if(!qs('.ma-menu-wrap',nav)){
    const wrap=el('div','ma-menu-wrap');
-   const btn=el('button','ma-menu-button','⋯');btn.type='button';btn.setAttribute('aria-label','More');btn.setAttribute('aria-expanded','false');
+   const btn=el('button','ma-menu-button');btn.type='button';btn.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8.2A3.8 3.8 0 1 0 12 15.8 3.8 3.8 0 0 0 12 8.2Zm8.2 4.9v-2.2l-2.3-.8a7 7 0 0 0-.6-1.5l1-2.2-1.6-1.6-2.2 1a7 7 0 0 0-1.5-.6L12.2 3H10l-.8 2.3a7 7 0 0 0-1.5.6l-2.2-1-1.6 1.6 1 2.2a7 7 0 0 0-.6 1.5L2 11v2.2l2.3.8a7 7 0 0 0 .6 1.5l-1 2.2 1.6 1.6 2.2-1a7 7 0 0 0 1.5.6l.8 2.3h2.2l.8-2.3a7 7 0 0 0 1.5-.6l2.2 1 1.6-1.6-1-2.2a7 7 0 0 0 .6-1.5l2.3-.8Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg><span>Settings</span>';btn.setAttribute('aria-label','Settings and preferences');btn.setAttribute('title','Settings and preferences');btn.setAttribute('aria-expanded','false');
    const menu=el('div','ma-menu');menu.hidden=true;menu.setAttribute('role','menu');
    function link(label,href,icon){const a=el('a','',icon+' '+label);a.href=href;a.setAttribute('role','menuitem');return a}
    function action(label,icon,fn){const b=el('button','',icon+' '+label);b.type='button';b.setAttribute('role','menuitem');b.addEventListener('click',()=>{fn();close()});return b}
@@ -186,6 +206,10 @@ function mountHome(){
  const qline=el('div','ma-quota-line');qline.hidden=true;pa.appendChild(qline);syncQuota(qline);
  function tab(which){const ask=which==='ask';bm.setAttribute('aria-selected',String(!ask));ba.setAttribute('aria-selected',String(ask));pm.hidden=ask;pa.hidden=!ask;document.body.classList.toggle('ma-match-tab',!ask);document.body.classList.toggle('ma-ask-tab',ask);if(ask)setTimeout(()=>input?.focus(),80)}
  bm.addEventListener('click',()=>tab('match'));ba.addEventListener('click',()=>tab('ask'));
+ if(new URLSearchParams(location.search).get('ask')==='1'){
+   tab('ask');
+   setTimeout(()=>openAskFromBrand(),220);
+ }
  const loading=qs('#loading-box'),result=qs('#result-box'),trending=qs('#trending-rail'),week=qs('#premiere-disclosure'),events=qs('#global-events');
  let anchor=concierge;[loading,result,trending,week,events].forEach(n=>{if(n){after(anchor,n);anchor=n}});
  const ad=qsa('.container>.ad-banner-container',container)[0];if(ad&&anchor)after(anchor,ad);
