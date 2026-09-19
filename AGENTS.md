@@ -43,3 +43,10 @@ These are standing implementation rules for MatchApp work in this repository.
    - Cinema-only/current-theatrical titles should carry a cinema indicator. Nearby-cinema lookup may request geolocation only after an explicit user action and must degrade safely if permission is denied.
    - Daily Check-in should stay compact after the day's check-in; explain the 7-day/+5 Extra Matches mechanic through the release/notification experience and first-visit education rather than occupying permanent screen space.
    - Performance is a product requirement: prefer compositor/native scrolling, lazy/interaction-triggered metadata work, bounded observers, and graceful fallbacks; avoid homepage changes that introduce freezes, crashes, scroll traps, or animation jank.
+
+7. **Responsive visual parity and Android release parity**
+   - Every approved MatchApp main-product UI/UX change must be designed and verified for desktop, tablet, and smartphone breakpoints in the same task; never ship a desktop-only or mobile-only redesign.
+   - Treat the live responsive web surface as the source of truth for the standard Android WebView app. After an approved production UI release, synchronize the Android Studio `:app` build marker/version so a fresh AAB cold-loads that release. Review `:kidsapp` in the same task and bump it alongside the main app when an AAB refresh is requested, without importing normal-mode branding/content into Kids Mode.
+   - Preserve MatchApp Ai KIDS branding and Kids-only routing. Anime and other adult/normal-mode catalog additions must not leak into Kids Mode.
+   - Prefer responsive CSS and shared web behavior over Android-only visual forks. Verify taps, folds, dialogs, horizontal rails, viewport zoom, external links and back navigation inside Android WebView as well as browsers.
+   - Visual effects must respect `prefers-reduced-motion`, avoid layout-triggering animation loops, and must not introduce scroll traps, freezes, crashes or excessive battery/CPU use.
