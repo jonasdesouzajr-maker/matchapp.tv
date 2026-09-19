@@ -474,3 +474,90 @@ body.page-home .app-header>nav #nav-logout-btn{background:linear-gradient(145deg
  #home-brand-lockup .ma-new-brand-logo{width:clamp(12rem,52vw,20rem)!important}
 }
 @media(prefers-reduced-motion:reduce){#home-brand-lockup .ma-new-brand-logo{animation:none!important}}
+
+
+/* Polished functional header shell using the uploaded MatchApp TV Ai artwork.
+   The artwork is cropped to its brand strip; the real controls remain live below it. */
+body.page-home .app-header{
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr)!important;
+  gap:10px!important;
+  width:calc(100% - 20px)!important;
+  max-width:1240px!important;
+  margin:10px auto 12px!important;
+  padding:10px 12px 12px!important;
+  border:1px solid rgba(196,140,255,.42)!important;
+  border-radius:26px!important;
+  background:linear-gradient(145deg,rgba(39,20,61,.98),rgba(20,12,34,.98))!important;
+  box-shadow:0 16px 44px rgba(0,0,0,.34),inset 0 1px 0 rgba(255,255,255,.05)!important;
+  overflow:hidden!important;
+}
+body.page-home .app-header #home-brand-lockup{
+  display:block!important;
+  width:100%!important;
+  min-width:0!important;
+  margin:0!important;
+}
+body.page-home #home-brand-lockup .home-brand-home{
+  display:block!important;
+  width:100%!important;
+  height:clamp(92px,11vw,132px)!important;
+  overflow:hidden!important;
+  border-radius:18px!important;
+  background:#28183f!important;
+}
+body.page-home #home-brand-lockup .ma-new-brand-logo{
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  max-width:none!important;
+  aspect-ratio:auto!important;
+  object-fit:cover!important;
+  object-position:center 30%!important;
+  clip-path:none!important;
+  border:0!important;
+  border-radius:18px!important;
+  box-shadow:none!important;
+  filter:drop-shadow(0 0 8px rgba(229,193,88,.13)) drop-shadow(0 0 12px rgba(27,158,255,.10))!important;
+  animation:maBannerGlowSlow 14s ease-in-out infinite!important;
+  transform:translateZ(0)!important;
+}
+body.page-home #home-brand-lockup .home-brand-name,
+body.page-home #home-brand-lockup .home-ai-link{display:none!important}
+body.page-home .app-header>nav{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:8px!important;
+  width:100%!important;
+  min-width:0!important;
+  flex-wrap:wrap!important;
+}
+@keyframes maBannerGlowSlow{
+  0%,100%{filter:drop-shadow(0 0 7px rgba(229,193,88,.12)) drop-shadow(0 0 10px rgba(27,158,255,.08))}
+  50%{filter:drop-shadow(0 0 14px rgba(229,193,88,.24)) drop-shadow(0 0 18px rgba(27,158,255,.16))}
+}
+@media(max-width:900px){
+  body.page-home .app-header{width:calc(100% - 12px)!important;margin:6px auto 10px!important;padding:8px 8px 10px!important;border-radius:22px!important}
+  body.page-home #home-brand-lockup .home-brand-home{height:clamp(88px,28vw,118px)!important;border-radius:16px!important}
+  body.page-home #home-brand-lockup .ma-new-brand-logo{border-radius:16px!important;object-position:center 30%!important}
+  body.page-home .app-header>nav{
+    display:grid!important;
+    grid-template-columns:repeat(3,minmax(0,1fr))!important;
+    gap:7px!important;
+    width:100%!important;
+    max-width:none!important;
+  }
+  body.page-home .app-header>nav>*{min-width:0!important;max-width:none!important;margin:0!important}
+  body.page-home .app-header>nav>.install-wrap{grid-column:span 2!important;width:100%!important}
+  body.page-home .app-header>nav>#lang-switcher-host{grid-column:span 1!important;width:100%!important}
+  body.page-home .app-header>nav>.sound-toggle-btn,
+  body.page-home .app-header>nav>#quota-badge,
+  body.page-home .app-header>nav>#profile-link-tab,
+  body.page-home .app-header>nav>.matchapp-notification-button{width:100%!important}
+  body.page-home .app-header>nav>#nav-reg-btn,
+  body.page-home .app-header>nav>#nav-logout-btn{grid-column:1/-1!important;width:100%!important}
+}
+@media(prefers-reduced-motion:reduce){
+  body.page-home #home-brand-lockup .ma-new-brand-logo{animation:none!important}
+}
