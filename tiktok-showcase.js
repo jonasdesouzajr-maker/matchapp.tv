@@ -335,6 +335,16 @@ function init(){
     closeIntro(true);
   });
   document.querySelectorAll('[data-tiktok-short-link]').forEach(a=>a.setAttribute('href',SHORT_URL));
+  document.querySelectorAll('[data-tiktok-video-link]').forEach(a=>a.setAttribute('href',introMeta?.final_url||FALLBACK_META.final_url));
+  document.querySelector('[data-tiktok-showcase-share]')?.addEventListener('click',async()=>{
+    const url=introMeta?.final_url||FALLBACK_META.final_url;
+    const text='Check out MatchApp TV Ai on TikTok #matchapptv #matchapp #whattowatch #tiktokviral #tv';
+    try{
+      if(navigator.share){await navigator.share({title:'MatchApp TV Ai on TikTok',text,url});trackEngagement('showcase_share');return;}
+    }catch(err){if(err?.name==='AbortError')return;}
+    try{await navigator.clipboard.writeText(text+' '+url);setActionStatus('TikTok share caption copied');}
+    catch(_){window.open(url,'_blank','noopener,noreferrer');}
+  });
   if(document.documentElement.dataset.tiktokIntro==='1'&&!seen())startIntro();
   else{
     const intro=document.getElementById('matchapp-tiktok-intro');
