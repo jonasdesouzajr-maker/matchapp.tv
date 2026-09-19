@@ -71,8 +71,7 @@
 
     function buildToggle() {
         const container = document.querySelector('.container');
-        const deck = document.querySelector('#mh-topbox .mh-deck');
-        if ((!container && !deck) || document.getElementById('lazy-toggle-bar')) return;
+        if (!container || document.getElementById('lazy-toggle-bar')) return;
 
         const bar = document.createElement('div');
         bar.id = 'lazy-toggle-bar';
@@ -87,14 +86,11 @@
                 '<span class="lazy-lock" aria-hidden="true">🔒</span>' +
             '</button>';
 
-        if (deck) {
-            const accountAnchor = deck.querySelector('#profile-link-tab,#nav-reg-btn,#nav-logout-btn');
-            if (accountAnchor) deck.insertBefore(bar, accountAnchor);
-            else deck.appendChild(bar);
-            bar.classList.add('lazy-bar--header');
-        } else {
-            container.insertBefore(bar, container.firstChild);
-        }
+        // Keep the real control available to the Settings menu without changing
+        // the visible header or page flow after first paint.
+        bar.hidden = true;
+        bar.setAttribute('aria-hidden','true');
+        document.body.appendChild(bar);
         document.getElementById('lazy-toggle').addEventListener('click', onToggleClick);
     }
 
