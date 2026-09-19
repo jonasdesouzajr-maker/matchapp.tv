@@ -4,6 +4,7 @@
   const V='20260919-fold2';
   const path=location.pathname;
   const isKids=path==='/kids'||path.startsWith('/kids/');
+  const isHome=path==='/'||path==='/index.html';
   function js(src){if(document.querySelector(`script[src^="${src}"]`))return;const s=document.createElement('script');s.src=src+'?v='+V;s.async=false;s.defer=true;document.head.appendChild(s);}
   function upsertMeta(name,content){let m=document.querySelector(`meta[name="${name}"]`);if(!m){m=document.createElement('meta');m.name=name;document.head.appendChild(m);}m.content=content;}
   function brand(){
@@ -70,8 +71,8 @@
   `;document.head.appendChild(s);}
   function quotaRoute(e){const q=e.target.closest?.('#quota-badge');if(!q)return;e.preventDefault();e.stopImmediatePropagation();location.href='/pricing/pricing.html?from=quota#match-packs-section';}
   function boot(){
-    brand();style();pwaIdentity();aiDisclosure();
-    if(!isKids)js('/brand-corrections.js');
+    if(!isHome)brand();style();pwaIdentity();aiDisclosure();
+    if(!isKids&&!isHome)js('/brand-corrections.js');
     js('/install-corner.js');
     js('/install-device-choice.js');
     const appPages=path==='/'||path==='/index.html'||path==='/discover.html'||path==='/together.html';
