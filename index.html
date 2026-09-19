@@ -1667,8 +1667,10 @@
             flex-wrap: nowrap !important;
             gap: clamp(9px, 1vw, 13px) !important;
             position: static !important;
-            width: min(100% - 22px, 1180px) !important;
-            max-width: 1180px !important;
+            /* Same measure as the content below it, so the page has one column
+               edge instead of a header that is wider than everything else. */
+            width: var(--measure) !important;
+            max-width: var(--measure) !important;
             margin: 10px auto 12px !important;
             padding: clamp(12px, 1.3vw, 17px) clamp(12px, 1.6vw, 20px) clamp(11px, 1.2vw, 15px) !important;
             border: 1.5px solid rgba(167, 118, 214, 0.55) !important;
@@ -2019,6 +2021,45 @@
     <style id="mh-compact">
         html body.page-home { --r-lg: 15px; --r-md: 11px; --r-sm: 8px; }
 
+        /* ---------- 0. STACK AND CENTRE ----------
+           style.css lays .page-wrapper out as a centred flex row, and every
+           major section of this page is a direct child of it. Below the
+           desktop breakpoint that turned the whole page into one ~2000px row
+           centred in an 820px viewport, so sections spilled off BOTH edges —
+           which is what read as "everything is on the left". They stack. */
+        html body.page-home main.page-wrapper {
+            display: block !important;
+            width: 100% !important; max-width: none !important;
+            margin: 0 auto !important; padding: 0 !important;
+        }
+        /* One measure for the page, centred. Narrow enough that a line of
+           text is comfortable, wide enough that cards are not stranded in
+           empty space. */
+        html body.page-home { --measure: min(100% - 20px, 900px); }
+        html body.page-home main.page-wrapper > *:not(.main-layout),
+        html body.page-home .main-layout > .container,
+        html body.page-home .container > * {
+            max-width: var(--measure) !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+            box-sizing: border-box !important;
+        }
+        html body.page-home .main-layout {
+            display: block !important;
+            width: 100% !important; max-width: none !important;
+            margin-inline: auto !important;
+        }
+        html body.page-home .sidebar-ad-left, html body.page-home .sidebar-ad-right { display: none !important; }
+        /* One column edge for the whole page: header, content and footer
+           inner all resolve to the same measure. */
+        html body.page-home .main-layout > .container,
+        html body.page-home main.page-wrapper > .main-layout > .container {
+            width: var(--measure) !important;
+            max-width: var(--measure) !important;
+            padding-left: 0 !important; padding-right: 0 !important;
+        }
+        html body.page-home .seo-footer-inner { max-width: var(--measure) !important; }
+
         /* ---------- 1. TOP BOX ----------
            Brand left, controls right, on one row once there is width for it.
            The deck is a flex cluster rather than an equal-column grid: an
@@ -2218,7 +2259,9 @@
             html body.page-home #mh-topbox.app-header > nav.mh-deck > #nav-reg-btn { flex: 1 1 100% !important; }
             /* Let the update/install button absorb the slack on its row
                instead of collapsing to a clipped glyph. */
-            html body.page-home #mh-topbox.app-header > nav.mh-deck > .install-wrap { flex: 1 1 auto !important; min-width: 96px !important; }
+            /* Sharing a row with three icon tiles left this label clipped to
+               its tick, so it takes a row of its own. */
+            html body.page-home #mh-topbox.app-header > nav.mh-deck > .install-wrap { flex: 1 1 100% !important; min-width: 0 !important; }
             html body.page-home #mh-topbox.app-header > nav.mh-deck > .install-wrap > .install-btn {
                 width: 100% !important; padding-left: 9px !important; padding-right: 9px !important; overflow: hidden;
             }
@@ -2266,7 +2309,158 @@
         html body.page-home .lazy-bar { margin: 0 0 6px !important; }
         html body.page-home .top-ask-wrap > * { padding: 10px 13px !important; }
         html body.page-home .tg-entry { padding: 11px 13px !important; }
+        /* ---------- 9. FIT THE BOX TO ITS CONTENT ----------
+           Cards were full-width slabs with their content floating in the
+           middle, which is what reads as stretched. Each card now takes the
+           width its content needs, up to the page measure, and is centred. */
+        html body.page-home :is(.premium-card, .tg-entry, #daily-match-checkin, .marquee-wrapper,
+            .spotlight-card, .ma-news, #latest-news, #how-it-works, #ai-concierge-section,
+            #search-box, #questionnaire-box, .top-ask-wrap > *, .lazy-bar) {
+            width: fit-content !important;
+            max-width: var(--measure) !important;
+            margin-left: auto !important; margin-right: auto !important;
+        }
+        /* Blocks whose whole job is to span the measure keep it. */
+        html body.page-home :is(#questionnaire-box, #daily-match-checkin, .marquee-wrapper, .ma-news, #latest-news) {
+            width: 100% !important;
+        }
+        html body.page-home .premium-card { min-width: min(100%, 320px); }
+
+        /* ---------- 10. ONE GAP EVERYWHERE ----------
+           A different margin per block is what makes a page feel like it
+           rambles. One value, applied once, and nothing overrides it. */
+        html body.page-home main.page-wrapper > *,
+        html body.page-home .container > *,
+        html body.page-home .main-layout > * { margin-bottom: 9px !important; }
+        html body.page-home main.page-wrapper > *:last-child,
+        html body.page-home .container > *:last-child { margin-bottom: 0 !important; }
+        html body.page-home :is(.live-strip, .lazy-bar, .top-ask-wrap, .home-hero) { margin-top: 0 !important; }
+        html body.page-home .home-hero { padding: 2px 8px 4px !important; }
+        html body.page-home .home-h1-sub { margin: 0 auto !important; }
+
+        /* ---------- 11. RAILS: AUTO-ADVANCE PLUS SWIPE ----------
+           marquee-autoplay.js drives scrollLeft, so the viewport has to be a
+           real scroller for a finger to be able to take over mid-drift. Snap
+           points make a swipe land on a poster rather than half of one. */
+        html body.page-home :is(.marquee-viewport, .events-viewport, .ma-news-carousel-shell) {
+            overflow-x: auto !important;
+            overflow-y: hidden !important;
+            -webkit-overflow-scrolling: touch;
+            overscroll-behavior-x: contain;
+            scrollbar-width: none;
+            touch-action: pan-x pinch-zoom;
+            cursor: grab;
+        }
+        html body.page-home :is(.marquee-viewport, .events-viewport, .ma-news-carousel-shell)::-webkit-scrollbar { display: none; }
+        /* Snap belongs on the news carousel, which advances card by card.
+           On the poster rails it fights the continuous drift, yanking the
+           position back to a poster edge every frame. */
+        html body.page-home .ma-news-carousel-shell { scroll-snap-type: x proximity; }
+        html body.page-home .ma-news-card { scroll-snap-align: start; }
+        html body.page-home .marquee-wrapper { padding: 6px 0 !important; }
+        html body.page-home .ma-news-card { min-width: 210px !important; max-width: 260px !important; }
+        html body.page-home .ma-news-track { gap: 8px !important; }
+
+        /* ---------- 12. PER DEVICE ---------- */
+        @media (min-width: 1000px) {
+            html body.page-home { --measure: min(100% - 24px, 900px); }
+            html body.page-home .marquee-item { width: 92px !important; height: 138px !important; }
+        }
+        @media (min-width: 560px) and (max-width: 999px) {
+            html body.page-home { --measure: min(100% - 18px, 700px); }
+            html body.page-home .marquee-item { width: 86px !important; height: 129px !important; }
+            html body.page-home .daily-checkin-days { grid-template-columns: repeat(7, minmax(0, 1fr)) !important; }
+        }
+        @media (max-width: 559px) {
+            html body.page-home { --measure: calc(100% - 12px); }
+            html body.page-home .marquee-item { width: 74px !important; height: 111px !important; }
+            html body.page-home .marquee-track { gap: 6px !important; }
+            /* Seven day tiles across a 350px column is four legible pixels
+               each; two rows of four reads. */
+            html body.page-home .daily-checkin-days { grid-template-columns: repeat(4, minmax(0, 1fr)) !important; }
+            html body.page-home .ma-news-card { min-width: 172px !important; }
+            html body.page-home .premium-card { padding: 10px !important; }
+            html body.page-home main.page-wrapper > *,
+            html body.page-home .container > * { margin-bottom: 7px !important; }
+        }
+        /* ---------- 13. FOLDED FOOTER (see mh-footer-fold) ---------- */
+        html body.page-home .seo-fold { width: 100%; }
+        html body.page-home .seo-fold-summary {
+            cursor: pointer; list-style: none;
+            display: flex; align-items: center; justify-content: center; gap: 7px;
+            margin: 6px auto 0; padding: 9px 14px; max-width: 320px;
+            border: 1px solid rgba(229, 193, 88, 0.34); border-radius: var(--r-md);
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--gold-glow, #FFF3A3); font-size: 12px; font-weight: 800;
+            text-transform: uppercase; letter-spacing: 0.06em;
+        }
+        html body.page-home .seo-fold-summary::-webkit-details-marker { display: none; }
+        html body.page-home .seo-fold-summary::after { content: '▾'; font-size: 13px; }
+        html body.page-home .seo-fold[open] .seo-fold-summary::after { content: '▴'; }
+        html body.page-home .seo-fold[open] .seo-fold-summary { margin-bottom: 8px; }
     </style>
+
+    <script id="mh-footer-fold">
+    /* The SEO footer is fifteen link sections — roughly 3900px on a phone,
+       a third of the whole page. The links earn their place with crawlers,
+       not with someone holding a phone looking for something to watch, so
+       they fold behind one summary at every width. <details> keeps every
+       link in the DOM and in the markup crawlers read, so nothing is lost
+       for search; it just stops being 3900px of scrolling. */
+    (function () {
+      function fold() {
+        var inner = document.querySelector('.seo-footer-inner');
+        if (!inner || inner.querySelector(':scope > details.seo-fold')) return;
+        var lede = inner.querySelector('.seo-footer-lede');
+        var start = lede ? lede.nextElementSibling : inner.firstElementChild;
+        var legal = inner.querySelector('.seo-footer-legal');
+        var move = [];
+        for (var n = start; n && n !== legal; n = n.nextElementSibling) move.push(n);
+        if (!move.length) return;
+        var d = document.createElement('details');
+        d.className = 'seo-fold';
+        var sum = document.createElement('summary');
+        sum.className = 'seo-fold-summary';
+        sum.textContent = (document.documentElement.lang || 'en').indexOf('pt') === 0
+          ? 'Ver todos os guias de streaming'
+          : 'Browse all streaming guides';
+        d.appendChild(sum);
+        move.forEach(function (el) { d.appendChild(el); });
+        inner.insertBefore(d, legal);
+      }
+      if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fold, { once: true });
+      else fold();
+      window.addEventListener('resize', fold);
+    })();
+    </script>
+
+    <script id="mh-pinch">
+    /* Pinch to zoom is on by default (the viewport meta sets no maximum-scale
+       and no user-scalable=no). What browsers do not offer is a way back: a
+       page zoomed to read one poster stays zoomed. This watches the visual
+       viewport and, once the gesture has been still for a moment, pins the
+       scale for one frame to snap it back, then releases it so the next pinch
+       still works. Desktop pointer zoom is left alone. */
+    (function () {
+      var vv = window.visualViewport;
+      var meta = document.querySelector('meta[name="viewport"]');
+      if (!vv || !meta || !window.matchMedia('(pointer: coarse)').matches) return;
+      var base = meta.getAttribute('content');
+      var timer;
+      vv.addEventListener('resize', function () {
+        clearTimeout(timer);
+        if (vv.scale <= 1.02) return;
+        timer = setTimeout(function () {
+          if (vv.scale <= 1.02) return;
+          meta.setAttribute('content', base + ', maximum-scale=1');
+          requestAnimationFrame(function () {
+            setTimeout(function () { meta.setAttribute('content', base); }, 80);
+          });
+        }, 1100);
+      });
+    })();
+    </script>
+
 
     <header id="mh-topbox" class="app-header">
         <div class="mh-head">
