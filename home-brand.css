@@ -561,3 +561,81 @@ body.page-home .app-header>nav{
 @media(prefers-reduced-motion:reduce){
   body.page-home #home-brand-lockup .ma-new-brand-logo{animation:none!important}
 }
+
+
+/* Desktop-only top-box scale correction. Phones/tablets are intentionally untouched. */
+@media (min-width:1100px) and (hover:hover) and (pointer:fine){
+  body.page-home .app-header{
+    width:min(calc(100% - 32px),1040px)!important;
+    max-width:1040px!important;
+    margin:8px auto 10px!important;
+    padding:8px 12px 10px!important;
+    gap:8px!important;
+    border-radius:20px!important;
+  }
+  body.page-home .app-header #home-brand-lockup{
+    display:flex!important;
+    justify-content:center!important;
+    align-items:center!important;
+  }
+  body.page-home #home-brand-lockup .home-brand-home{
+    width:min(100%,620px)!important;
+    height:76px!important;
+    margin:0 auto!important;
+    border-radius:14px!important;
+    background:linear-gradient(145deg,rgba(42,24,62,.98),rgba(27,15,43,.98))!important;
+  }
+  body.page-home #home-brand-lockup .ma-new-brand-logo{
+    width:100%!important;
+    height:100%!important;
+    object-fit:contain!important;
+    object-position:center!important;
+    border-radius:14px!important;
+    animation-duration:18s!important;
+  }
+  body.page-home .app-header>nav{
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    flex-wrap:wrap!important;
+    gap:6px!important;
+    width:min(100%,860px)!important;
+    margin:0 auto!important;
+    padding:6px!important;
+    border:1px solid rgba(229,193,88,.12)!important;
+    border-radius:14px!important;
+    background:rgba(10,8,13,.42)!important;
+    box-shadow:none!important;
+  }
+  body.page-home .app-header>nav>*{
+    flex:0 1 auto!important;
+    width:auto!important;
+    min-width:0!important;
+    max-width:none!important;
+    margin:0!important;
+  }
+  body.page-home .app-header>nav>.install-wrap{
+    width:auto!important;
+    flex:0 1 auto!important;
+  }
+  body.page-home .app-header>nav>:is(.sound-toggle-btn,#quota-badge,#profile-link-tab,.matchapp-notification-button,#nav-reg-btn,#nav-logout-btn),
+  body.page-home .app-header>nav .install-btn,
+  body.page-home .app-header>nav #lang-switcher-host select{
+    min-height:34px!important;
+    height:34px!important;
+    padding:5px 8px!important;
+    border-radius:9px!important;
+    font-size:10.5px!important;
+    line-height:1!important;
+    box-shadow:inset 0 1px rgba(255,255,255,.04),0 2px 8px rgba(0,0,0,.12)!important;
+  }
+  body.page-home .app-header>nav #lang-switcher-host select{padding-left:26px!important}
+  body.page-home .app-header>nav #lang-switcher-host::before{left:7px!important;font-size:12px!important}
+  body.page-home .app-header>nav .sound-toggle-btn::before{font-size:14px!important}
+  body.page-home .app-header>nav .sound-toggle-btn::after,
+  body.page-home .app-header>nav .matchapp-notification-button::after{font-size:9.5px!important}
+  body.page-home .app-header>nav #profile-link-tab .avatar-ring{transform:scale(.78)!important}
+  body.page-home .app-header>nav #nav-profile-text{font-size:9.5px!important}
+  body.page-home .app-header>nav .install-icon{width:12px!important;height:12px!important}
+  body.page-home .app-header>nav .install-label{font-size:9.5px!important}
+}
