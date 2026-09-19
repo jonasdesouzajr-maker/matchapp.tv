@@ -2,3 +2,5 @@
 ins.adsbygoogle{min-height:90px}
 html.ads-empty .sidebar-ad-left,html.ads-empty .sidebar-ad-right,html.ads-empty .ad-banner-container,html.ads-empty .mobile-ad-bottom,html.ads-empty .premium-ad-frame{display:none!important}
 body.page-kids ins.adsbygoogle,body.kids-mode ins.adsbygoogle{display:none!important}
+
+.sidebar-ad-left ins.adsbygoogle,.sidebar-ad-right ins.adsbygoogle{display:block;width:100%;max-width:100%;min-height:600px}
