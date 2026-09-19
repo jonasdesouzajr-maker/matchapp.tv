@@ -2,8 +2,8 @@
    Reuses existing MatchApp functions and DOM ids; no quota/auth/payment/matching rule changes. */
 (function(){
 'use strict';
-const BRAND='/assets/brand/brandkit/logo-horizontal.svg?v=20260919-ia1';
-const ICON='/assets/brand/brandkit/app-icon.svg?v=20260919-ia1';
+const BRAND='/assets/brand/brandkit/logo-horizontal.svg?v=20260919-brand1';
+const ICON='/assets/brand/brandkit/app-icon.svg?v=20260919-brand1';
 const path=(location.pathname||'/').replace(/\/+$/,'')||'/';
 const isHome=path==='/'||path==='/index.html';
 const isDiscover=path==='/discover.html';
