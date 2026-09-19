@@ -84,7 +84,8 @@
 
     function buildToggle() {
         const container = document.querySelector('.container');
-        if (!container || document.getElementById('lazy-toggle-bar')) return;
+        const deck = document.querySelector('#mh-topbox .mh-deck');
+        if ((!container && !deck) || document.getElementById('lazy-toggle-bar')) return;
 
         const bar = document.createElement('div');
         bar.id = 'lazy-toggle-bar';
@@ -99,7 +100,14 @@
                 '<span class="lazy-lock" aria-hidden="true">🔒</span>' +
             '</button>';
 
-        container.insertBefore(bar, container.firstChild);
+        if (deck) {
+            const accountAnchor = deck.querySelector('#profile-link-tab,#nav-reg-btn,#nav-logout-btn');
+            if (accountAnchor) deck.insertBefore(bar, accountAnchor);
+            else deck.appendChild(bar);
+            bar.classList.add('lazy-bar--header');
+        } else {
+            container.insertBefore(bar, container.firstChild);
+        }
         document.getElementById('lazy-toggle').addEventListener('click', onToggleClick);
     }
 
