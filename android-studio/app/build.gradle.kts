@@ -11,8 +11,8 @@ android {
         applicationId = "tv.matchapp.app"
         minSdk = 24
         targetSdk = 35
-        versionCode = 15
-        versionName = "1.1.13"
+        versionCode = 16
+        versionName = "1.1.14"
         resourceConfigurations += listOf("en", "pt", "es", "fr", "de", "it", "tr", "ru", "ar", "hi", "in", "ja", "ko", "zh")
     }
 
