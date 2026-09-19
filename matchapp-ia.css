@@ -668,3 +668,229 @@ html body.page-home .ma-tabs,
 html body.page-home .ma-tab{
   animation:none!important;
 }
+
+
+/* ===== UNIFIED FOLD BARS + CENTERING =====
+   One fold language everywhere on Home: rounded bar, one plus on the right.
+   Open state rotates the same plus into an x — never a minus or chevron. */
+html body.page-home{
+  --ma-stage-width:980px;
+}
+html body.page-home .main-layout>.container,
+html body.page-home section.container{
+  width:min(calc(100% - 28px),var(--ma-stage-width))!important;
+  max-width:var(--ma-stage-width)!important;
+  margin-left:auto!important;margin-right:auto!important;
+  padding-left:0!important;padding-right:0!important;
+  box-sizing:border-box!important;
+}
+html body.page-home :is(
+  .home-hero,.ma-concierge,#loading-box,#result-box,#trending-rail,
+  #latest-news,#premiere-disclosure,#global-events,#how-it-works,
+  #ai-concierge-section,.tg-entry,.marquee-wrapper,.ad-banner-container,
+  #daily-match-checkin
+){
+  width:100%!important;
+  max-width:var(--ma-stage-width)!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+  box-sizing:border-box!important;
+}
+html body.page-home #global-events,
+html body.page-home #global-events>.global-events-fold,
+html body.page-home #global-events .global-events-body,
+html body.page-home #premiere-disclosure,
+html body.page-home #latest-news{
+  padding-left:0!important;padding-right:0!important;
+}
+html body.page-home #global-events>.global-events-fold,
+html body.page-home #premiere-disclosure,
+html body.page-home #latest-news{
+  width:100%!important;max-width:100%!important;margin-left:auto!important;margin-right:auto!important;
+}
+
+/* Shared fold header appearance. */
+html body.page-home :is(
+  #latest-news>summary,
+  #premiere-disclosure>summary,
+  .global-events-summary,
+  .match-more-filters>summary,
+  .crit-toggle,
+  .lazy-head,
+  .seo-fold-summary
+){
+  position:relative!important;
+  display:flex!important;align-items:center!important;justify-content:flex-start!important;
+  gap:12px!important;width:100%!important;max-width:100%!important;min-height:72px!important;
+  margin:0!important;padding:15px 76px 15px 22px!important;box-sizing:border-box!important;
+  border:1px solid rgba(232,186,64,.38)!important;border-radius:24px!important;
+  background:
+    linear-gradient(145deg,rgba(24,15,45,.88),rgba(11,10,28,.92)) padding-box,
+    linear-gradient(110deg,rgba(232,186,64,.22),rgba(255,238,164,.68),rgba(116,77,171,.38),rgba(232,186,64,.22)) border-box!important;
+  background-size:100% 100%,220% 100%!important;
+  color:#eee6fa!important;list-style:none!important;cursor:pointer!important;
+  box-shadow:0 10px 28px rgba(0,0,0,.22)!important;
+  transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease!important;
+  animation:maGoldTravel 7s linear infinite!important;
+}
+html body.page-home :is(
+  #latest-news>summary,
+  #premiere-disclosure>summary,
+  .global-events-summary,
+  .match-more-filters>summary,
+  .seo-fold-summary
+)::-webkit-details-marker{display:none!important}
+html body.page-home :is(
+  #latest-news>summary,
+  #premiere-disclosure>summary,
+  .global-events-summary,
+  .match-more-filters>summary,
+  .seo-fold-summary
+)::marker{content:""!important}
+html body.page-home :is(
+  #latest-news>summary,
+  #premiere-disclosure>summary,
+  .global-events-summary,
+  .match-more-filters>summary,
+  .crit-toggle,
+  .lazy-head,
+  .seo-fold-summary
+):hover{
+  transform:translateY(-2px)!important;
+  border-color:rgba(255,224,125,.72)!important;
+  box-shadow:0 14px 32px rgba(0,0,0,.28),0 0 20px rgba(255,217,106,.12)!important;
+}
+
+/* The one and only fold affordance. */
+html body.page-home :is(
+  #latest-news>summary,
+  #premiere-disclosure>summary,
+  .global-events-summary,
+  .match-more-filters>summary,
+  .crit-toggle,
+  .lazy-head,
+  .seo-fold-summary
+)::after{
+  content:"+"!important;
+  position:absolute!important;right:19px!important;top:50%!important;
+  display:grid!important;place-items:center!important;
+  width:42px!important;height:42px!important;margin:0!important;
+  border:1px solid rgba(255,220,111,.34)!important;border-radius:50%!important;
+  background:rgba(255,255,255,.025)!important;color:#fff0b0!important;
+  font:500 34px/1 Inter,Arial,sans-serif!important;
+  text-shadow:0 0 10px rgba(255,217,106,.45)!important;
+  transform:translateY(-50%) rotate(0deg)!important;
+  transition:transform .22s cubic-bezier(.2,.8,.2,1),background .18s ease,box-shadow .18s ease!important;
+  animation:none!important;
+}
+html body.page-home :is(
+  #latest-news>summary,
+  #premiere-disclosure>summary,
+  .global-events-summary,
+  .match-more-filters>summary,
+  .crit-toggle,
+  .lazy-head,
+  .seo-fold-summary
+):hover::after{
+  background:rgba(232,186,64,.11)!important;
+  box-shadow:0 0 18px rgba(255,217,106,.18)!important;
+}
+html body.page-home :is(
+  #latest-news[open]>summary,
+  #premiere-disclosure[open]>summary,
+  .global-events-fold[open]>.global-events-summary,
+  .match-more-filters[open]>summary,
+  .seo-fold[open]>.seo-fold-summary
+)::after,
+html body.page-home .crit-toggle[aria-expanded="true"]::after,
+html body.page-home .lazy-head[aria-expanded="true"]::after{
+  transform:translateY(-50%) rotate(45deg)!important;
+}
+
+/* Kill every legacy fold glyph so the UI never shows + and arrow/minus together. */
+html body.page-home :is(
+  .ge-sum-chev,.crit-toggle-chevron,.lazy-head-chevron,
+  .more-filters-close,.more-filters-open
+){display:none!important}
+
+/* Restore useful labels after hiding the old + / minus text spans. */
+html body.page-home .match-more-filters>summary::before{
+  content:"More filters"!important;
+  color:#e8dfef!important;font-weight:850!important;font-size:13px!important;
+}
+html body.page-home .match-more-filters[open]>summary::before{content:"Fewer filters"!important}
+
+/* Global Events must be one bar, not a bar inside a second framed box. */
+html body.page-home #global-events{
+  border:0!important;background:transparent!important;box-shadow:none!important;padding:0!important;
+}
+html body.page-home #global-events>.global-events-fold{
+  border:0!important;background:transparent!important;box-shadow:none!important;padding:0!important;
+}
+html body.page-home .global-events-summary{
+  border-radius:24px!important;
+}
+html body.page-home .global-events-body{
+  margin-top:10px!important;padding:14px!important;
+  border:1px solid rgba(232,186,64,.18)!important;border-radius:22px!important;
+  background:rgba(10,14,32,.78)!important;
+}
+
+/* Premiere summary is part of the same system and must remain visible. */
+html body.page-home #premiere-disclosure>summary{display:flex!important}
+html body.page-home #premiere-disclosure>.spotlight-card{
+  margin-top:10px!important;border-radius:22px!important;
+}
+
+/* Latest News already has the right behavior; make its measure identical. */
+html body.page-home #latest-news>summary{border-radius:24px!important}
+html body.page-home #latest-news .ma-news-panel{margin-top:10px!important;border-radius:22px!important}
+
+/* Every advanced matching field is one centered full-width fold bar. */
+html body.page-home .ma-concierge .match-more-filters .q-grid--advanced{
+  grid-template-columns:1fr!important;
+  width:100%!important;max-width:100%!important;gap:10px!important;
+}
+html body.page-home .ma-concierge .crit-collapsible,
+html body.page-home .ma-concierge .crit-toggle,
+html body.page-home .ma-concierge .crit-chips{
+  width:100%!important;max-width:100%!important;margin-left:auto!important;margin-right:auto!important;
+  box-sizing:border-box!important;
+}
+html body.page-home .ma-concierge .crit-toggle{
+  min-height:62px!important;padding-top:11px!important;padding-bottom:11px!important;
+}
+html body.page-home .ma-concierge .crit-toggle-summary{
+  margin-left:auto!important;margin-right:10px!important;text-align:right!important;
+}
+
+/* No nested extra frame around opened sections. */
+html body.page-home :is(#latest-news,#premiere-disclosure,#global-events) {
+  border-radius:24px!important;
+}
+
+@media(max-width:640px){
+  html body.page-home{--ma-stage-width:100%}
+  html body.page-home .main-layout>.container,
+  html body.page-home section.container{width:calc(100% - 12px)!important}
+  html body.page-home :is(
+    #latest-news>summary,#premiere-disclosure>summary,.global-events-summary,
+    .match-more-filters>summary,.crit-toggle,.lazy-head,.seo-fold-summary
+  ){
+    min-height:60px!important;padding:11px 60px 11px 15px!important;border-radius:19px!important;
+  }
+  html body.page-home :is(
+    #latest-news>summary,#premiere-disclosure>summary,.global-events-summary,
+    .match-more-filters>summary,.crit-toggle,.lazy-head,.seo-fold-summary
+  )::after{
+    right:12px!important;width:36px!important;height:36px!important;font-size:29px!important;
+  }
+  html body.page-home .ma-news-summary-main{gap:5px!important}
+  html body.page-home .ma-news-description{font-size:10px!important}
+}
+@media(prefers-reduced-motion:reduce){
+  html body.page-home :is(
+    #latest-news>summary,#premiere-disclosure>summary,.global-events-summary,
+    .match-more-filters>summary,.crit-toggle,.lazy-head,.seo-fold-summary
+  ){animation:none!important}
+}
