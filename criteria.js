@@ -379,7 +379,7 @@
     if (rematch === 'same') {
         try { const previous=JSON.parse(localStorage.getItem('match_rematch_criteria') || '{}');FIELDS.forEach(f=>{if(Array.isArray(previous[f.key]))state[f.key]=previous[f.key];}); } catch (_) {}
     }
-    if (rematch) { const form=document.getElementById('questionnaire-box');if(form){form.style.display='block';form.scrollIntoView({behavior:'smooth',block:'start'});} }
+    if (rematch) { const form=document.getElementById('questionnaire-box');if(form){form.style.display='block';if(window.MatchAppScrollGate?.canAutoScroll?.())form.scrollIntoView({behavior:'smooth',block:'start'});} }
         FIELDS.forEach(mountField);
     }
 
