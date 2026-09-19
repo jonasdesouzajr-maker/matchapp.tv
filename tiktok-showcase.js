@@ -91,10 +91,29 @@ function trackEngagement(action){
   }catch(_){}
 }
 function setActionStatus(message){
-  const el=document.querySelector('[data-tiktok-action-status]');
-  if(!el)return;
-  el.textContent=message||'';
-  if(message)setTimeout(()=>{if(el.textContent===message)el.textContent='';},2600);
+  document.querySelectorAll('[data-tiktok-action-status],[data-tiktok-showcase-status]').forEach(el=>{
+    el.textContent=message||'';
+    if(message)setTimeout(()=>{if(el.textContent===message)el.textContent='';},4200);
+  });
+}
+async function grantTikTokShareReward(){
+  if(typeof window.grantShareReward!=='function'){
+    if(typeof window.refreshQuotaStatus==='function')window.refreshQuotaStatus();
+    setActionStatus('Share completed. Your match counter will refresh shortly.');
+    return;
+  }
+  try{
+    const result=await window.grantShareReward();
+    if(result?.ok){
+      if(typeof window.refreshQuotaStatus==='function')window.refreshQuotaStatus();
+      setActionStatus('🎁 +1 free match unlocked and added to your balance.');
+      if(typeof window.showToast==='function')window.showToast('🎁 TikTok share completed — +1 free match unlocked.');
+      return;
+    }
+    setActionStatus('Share completed. Your bonus limit for this reward window is already reached.');
+  }catch(_){
+    setActionStatus('Share completed. MatchApp could not refresh the bonus right now.');
+  }
 }
 function syncIntroEngagement(meta){
   introMeta=meta||FALLBACK_META;
@@ -141,7 +160,7 @@ async function shareIntroVideo(){
     if(navigator.share){
       await navigator.share({title,text:'Watch MatchApp TV Ai on TikTok',url});
       trackEngagement('share');
-      setActionStatus('Shared');
+      await grantTikTokShareReward();
       return;
     }
   }catch(err){
@@ -150,10 +169,11 @@ async function shareIntroVideo(){
   try{
     await navigator.clipboard.writeText(url);
     trackEngagement('share_copy');
-    setActionStatus('TikTok link copied');
+    setActionStatus('TikTok link copied. Open TikTok and share it there.');
   }catch(_){
     trackEngagement('share_open');
     window.open(url,'_blank','noopener,noreferrer');
+    setActionStatus('TikTok opened. Use TikTok’s Share button to share the video.');
   }
 }
 function lockPage(intro){
@@ -335,15 +355,33 @@ function init(){
     closeIntro(true);
   });
   document.querySelectorAll('[data-tiktok-short-link]').forEach(a=>a.setAttribute('href',SHORT_URL));
-  document.querySelectorAll('[data-tiktok-video-link]').forEach(a=>a.setAttribute('href',introMeta?.final_url||FALLBACK_META.final_url));
+  document.querySelectorAll('[data-tiktok-video-link]').forEach(a=>{
+    a.setAttribute('href',introMeta?.final_url||FALLBACK_META.final_url);
+    a.addEventListener('click',()=>{
+      const action=a.classList.contains('tt-like')?'like':a.classList.contains('tt-comment')?'comment':'video_open';
+      trackEngagement('showcase_'+action);
+      setActionStatus(action==='like'?'TikTok opened — tap Like on the video.':action==='comment'?'TikTok opened — add your comment on the video.':'TikTok opened.');
+    });
+  });
   document.querySelector('[data-tiktok-showcase-share]')?.addEventListener('click',async()=>{
     const url=introMeta?.final_url||FALLBACK_META.final_url;
     const text='Check out MatchApp TV Ai on TikTok #matchapptv #matchapp #whattowatch #tiktokviral #tv';
     try{
-      if(navigator.share){await navigator.share({title:'MatchApp TV Ai on TikTok',text,url});trackEngagement('showcase_share');return;}
+      if(navigator.share){
+        await navigator.share({title:'MatchApp TV Ai on TikTok',text,url});
+        trackEngagement('showcase_share');
+        await grantTikTokShareReward();
+        return;
+      }
     }catch(err){if(err?.name==='AbortError')return;}
-    try{await navigator.clipboard.writeText(text+' '+url);setActionStatus('TikTok share caption copied');}
-    catch(_){window.open(url,'_blank','noopener,noreferrer');}
+    try{
+      await navigator.clipboard.writeText(text+' '+url);
+      trackEngagement('showcase_share_copy');
+      setActionStatus('Share caption copied. Open TikTok and share it there.');
+    }catch(_){
+      window.open(url,'_blank','noopener,noreferrer');
+      setActionStatus('TikTok opened. Use TikTok’s Share button to share the video.');
+    }
   });
   if(document.documentElement.dataset.tiktokIntro==='1'&&!seen())startIntro();
   else{
