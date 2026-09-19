@@ -10,9 +10,16 @@ test('hidden ads wait for layout and a later visible unit is targeted only once'
  assert.deepEqual(calls,[visible]);width=300;resize([{target:hidden},{target:visible}]);assert.deepEqual(calls,[visible,hidden]);
  w.eval(source);resize([{target:hidden},{target:visible}]);assert.equal(calls.length,2);w.close();
 });
-test('manual ad pages have one guarded initializer and no duplicate auto-ad command',()=>{
- for(const p of ['index.html','discover.html','events-archive.html','together.html','profile/profile.html','oauth/consent.html']){
-  const s=fs.readFileSync(path.join(root,p),'utf8');assert(!s.includes('enable_page_level_ads'),p);assert(!/adsbygoogle[^<]*\.push\(\{\}\)/.test(s),p);assert.equal((s.match(/src="\/ads-init\.js/g)||[]).length,1,p);
+test('AdSense initializer is single-owner on the content-rich homepage only',()=>{
+ const home=fs.readFileSync(path.join(root,'index.html'),'utf8');
+ assert(!home.includes('enable_page_level_ads'));
+ assert(!/adsbygoogle[^<]*\.push\(\{\}\)/.test(home));
+ assert.equal((home.match(/src="\/ads-init\.js/g)||[]).length,1,'index.html');
+ for(const p of ['discover.html','events-archive.html','together.html','profile/profile.html','oauth/consent.html']){
+  const s=fs.readFileSync(path.join(root,p),'utf8');
+  assert(!s.includes('enable_page_level_ads'),p);
+  assert(!/adsbygoogle[^<]*\.push\(\{\}\)/.test(s),p);
+  assert.equal((s.match(/src="\/ads-init\.js/g)||[]).length,0,p);
  }
  assert(!fs.readFileSync(path.join(root,'pricing/pricing.html'),'utf8').includes('enable_page_level_ads'));
 });

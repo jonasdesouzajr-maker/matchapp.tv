@@ -8,7 +8,7 @@ const read=f=>fs.readFileSync(path.join(root,f),'utf8');
 test('commercial tiers are finite and use one 3-5-10-50 included-action model',()=>{
   const pricing=read('pricing/pricing.html');
   const locale=read('i18n.js');
-  const quota=read('supabase/migrations/012_standardize_vip_daily_limit.sql');
+  const quota=read('supabase/migrations/002_profile_tiers.sql');
   const commercial=read('supabase/migrations/013_unify_commercial_entitlements.sql');
   const bootstrap=read('supabase/security/account-identity-and-credits.sql');
 

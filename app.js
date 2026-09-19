@@ -2174,7 +2174,7 @@ function promptProfileCompletion(missing) {
 }
 
 let profileAuthEvent = 0;
-if (supabaseClient) {
+if (supabaseClient?.auth && typeof supabaseClient.auth.onAuthStateChange === 'function') {
     supabaseClient.auth.onAuthStateChange((event, session) => {
         const authEvent=++profileAuthEvent;
         if (session && session.user) {
@@ -2218,7 +2218,7 @@ if (supabaseClient) {
     });
 }
 
-if (!supabaseClient) setProfileLoadState('error',null);
+if (!supabaseClient?.auth) setProfileLoadState('error',null);
 
 // ----------------------------------------------------
 // AI MATCH EXECUTION

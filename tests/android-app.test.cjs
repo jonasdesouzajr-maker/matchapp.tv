@@ -46,7 +46,7 @@ test('Android Studio project stays ad-free while unpublished store CTA stays hid
   assert.match(kidsGradle,/versionCode = 19/);
   assert.match(kidsGradle,/versionName = "1\.1\.17"/);
   assert.match(kidsMain,/appBuild=19/);
-  assert.match(kidsMain,/MatchAppAiKidsAndroid\\/1\\.1\\.17/);
+  assert.match(kidsMain,/MatchAppAiKidsAndroid\/1\.1\.17/);
   assert.match(main,/replace\("; wv\)"/);
   const listing=read('android/index.html');
   assert.match(listing,/Google Play — Coming Soon/);

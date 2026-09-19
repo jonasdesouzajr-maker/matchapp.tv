@@ -75,7 +75,8 @@ test('Ask AI localization keeps original title identity',()=>{
   assert.match(locale,/item\.displayTitle = await translateText\(item\.title, 'title'\)/);
   assert.doesNotMatch(locale,/item\.title = await translateText\(item\.title/);
   const settings=read('settings.js');
-  assert.match(settings,/20260918-onboard1/);
+  assert.match(settings,/installKidsModeToggle/);
+  assert.match(settings,/matchapp-ia\.js\?v=20260919-/);
 });
 
 test('Ask AI strips stock opening lines instead of appending one',()=>{
