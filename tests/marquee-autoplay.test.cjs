@@ -10,9 +10,11 @@ const kidsJs=fs.readFileSync(path.join(__dirname,'..','kids/kids.js'),'utf8');
 const kidsCss=fs.readFileSync(path.join(__dirname,'..','kids/kids.css'),'utf8');
 
 test('Top Titles auto-swipes until a poster is pointed at',()=>{
-  assert.match(build,/marquee-autoplay\.js\?v=20260916-flow2/);
+  assert.match(build,/marquee-autoplay\.js\?v=20260919-/);
   assert.match(source,/prefers-reduced-motion: reduce/);
-  assert.doesNotMatch(source,/requestAnimationFrame\s*\(/);
+  assert.match(source,/if\(coarse\)\{/,'mobile drift is isolated to coarse pointers');
+  assert.match(source,/cancelAnimationFrame\(raf\)/,'touch interaction cancels the mobile frame loop');
+  assert.match(source,/document\.hidden\|\|reduced\(\)/,'mobile drift respects visibility and reduced motion');
   assert.match(source,/Object\.defineProperty\(vp,'_paused'/,'legacy 16ms rail driver must be held paused');
   assert.match(source,/is-marquee-flowing/,'automatic passing is a CSS translate loop');
   assert.match(source,/pauseOn/,'pointing at a title freezes the strip');

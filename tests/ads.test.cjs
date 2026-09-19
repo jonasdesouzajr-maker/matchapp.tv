@@ -15,7 +15,10 @@ test('AdSense initializer is single-owner on the content-rich homepage only',()=
  assert(!home.includes('enable_page_level_ads'));
  assert(!/adsbygoogle[^<]*\.push\(\{\}\)/.test(home));
  assert.equal((home.match(/src="\/ads-init\.js/g)||[]).length,1,'index.html');
- for(const p of ['discover.html','events-archive.html','together.html','profile/profile.html','oauth/consent.html']){
+ const events=fs.readFileSync(path.join(root,'events-archive.html'),'utf8');
+ assert.equal((events.match(/src="\/ads-init\.js/g)||[]).length,1,'events-archive.html');
+ assert.equal((events.match(/class="adsbygoogle"/g)||[]).length,1,'events-archive.html');
+ for(const p of ['discover.html','together.html','profile/profile.html','oauth/consent.html']){
   const s=fs.readFileSync(path.join(root,p),'utf8');
   assert(!s.includes('enable_page_level_ads'),p);
   assert(!/adsbygoogle[^<]*\.push\(\{\}\)/.test(s),p);

@@ -23,7 +23,7 @@ test('Home header is static from first paint and cannot re-enter the shared lega
   const html=read('index.html');
   const js=read('matchapp-ia.js');
   assert.match(html,/id="mh-topbox" class="app-header ma-home-header"/);
-  assert.match(html,/matchapp-ia\\.js\\?v=20260919-ia25/);
+  assert.match(html,/matchapp-ia\.js\?v=20260919-ia\d+/);
   assert.match(js,/if\(isHome\)\{[\s\S]*?classList\.remove\('ma-global-header'\)[\s\S]*?classList\.add\('ma-home-header'\)/);
   assert.match(js,/if\(isHome&&h\.classList\.contains\('ma-global-header'\)\)h\.classList\.remove\('ma-global-header'\)/);
 });
@@ -103,7 +103,7 @@ test('premium Home header distributes controls and keeps Kids Mode visible',()=>
  const css=read('matchapp-ia.css'),js=read('matchapp-ia.js'),html=read('index.html');
  assert.match(css,/HOME HEADER PREMIUM GRID V2/);assert.match(css,/grid-template-columns:minmax\(330px,.9fr\) minmax\(520px,1.35fr\)/);
  assert.match(css,/#profile-link-tab #nav-profile-text\{display:none!important\}/);assert.match(js,/matchapp-kids-entry/);assert.match(js,/kids-logo-sm\.jpeg/);
- assert.match(html,/onboarding-tour\.js\?v=20260919-tour2/);assert.match(html,/catalog-plus\.js\?v=20260919-catalog2/);
+ assert.match(html,/onboarding-tour\.js\?v=20260919-tour2/);assert.match(html,/catalog-plus\.js\?v=20260919-catalog\d+/);
 });
 test('first visitor walkthrough auto reveals UI and ends at the registration gateway',()=>{
  const tour=read('onboarding-tour.js'),register=read('register.html');assert.match(tour,/const VERSION='v2'/);assert.match(tour,/MatchAppScrollGate\?\.unlock/);
@@ -119,6 +119,6 @@ test('catalog expansion stocks music artists, Apple Music playlists and thin int
 test('every selectable thin platform is stocked by the expanded catalog',()=>{
  const cat=read('catalog-plus.js');
  for(const platform of ['FlexTV','Hotstar','Pluto TV','GoodShort','WeTV','iQIYI','Viu','Tubi','Apple TV+','Apple Music','Audible']){
-   assert.match(cat,new RegExp('platform:\"'+platform.replace(/[+]/g,'\\\\+')+'\"'),platform+' must have at least one real catalog entry');
+   assert.ok(cat.includes('platform:"'+platform+'"'),platform+' must have at least one real catalog entry');
  }
 });

@@ -29,8 +29,8 @@ test('Latest News visibly auto-swipes left while permanently open without hover 
   assert.match(src,/flex:0 0 160px/);
   assert.match(src,/ma-news-arrow-prev/);
   assert.match(src,/ma-news-arrow-next/);
-  assert.match(src,/AUTO_FIRST_MS=850/);
-  assert.match(src,/AUTO_MS=2800/);
+  assert.match(src,/AUTO_FIRST_MS=500/);
+  assert.match(src,/AUTO_MS=1900/);
   assert.match(src,/setTimeout\(\(\)=>\{/);
   assert.match(src,/setInterval\(\(\)=>move\(1\),AUTO_MS\)/);
   assert.match(src,/dataset\.autoDirection='left'/);

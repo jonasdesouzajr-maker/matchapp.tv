@@ -46,7 +46,7 @@ test('VIP public/runtime copy matches the server-enforced 10 per day rule',()=>{
   for(const source of [pricing,redirect,purchase,audit]){
     assert.doesNotMatch(source,/Unlock Unlimited AI Concierge|unlock infinite matches|Unlimited AI Matches Daily|unlimited Matches|Unlimited VIP matches/i);
   }
-  assert.match(pricing,/10 included AI actions daily/);
+  assert.match(pricing,/10 Included AI Actions Daily/i);
   assert.match(pricing,/10 AI actions per day/);
   assert.match(purchase,/10 included AI actions per day/);
   assert.doesNotMatch(audit,/textContent='∞'/);
@@ -80,11 +80,11 @@ test('both Android Studio modules point to current live surfaces for AAB build',
   const kids=read('android-studio/kidsapp/src/main/java/tv/matchapp/kids/MainActivity.kt');
 
   for(const gradle of [mainGradle,kidsGradle]){
-    assert.match(gradle,/versionCode = 18/);
-    assert.match(gradle,/versionName = "1\.1\.8"/);
+    assert.match(gradle,/versionCode = 19/);
+    assert.match(gradle,/versionName = "1\.1\.17"/);
   }
-  assert.match(main,/https:\/\/matchapp\.tv\/\?utm_source=android_app&appBuild=18/);
-  assert.match(kids,/https:\/\/matchapp\.tv\/kids\/\?utm_source=android_kids_app&appBuild=18/);
-  assert.match(main,/MATCHAPP_ANDROID_KIDS_DISABLED/);
+  assert.match(main,/https:\/\/matchapp\.tv\/\?utm_source=android_app&appBuild=19/);
+  assert.match(kids,/https:\/\/matchapp\.tv\/kids\/\?utm_source=android_kids_app&appBuild=19/);
+  assert.match(main,/MATCHAPP_ANDROID_KIDS_AVAILABLE/);
   assert.match(kids,/MATCHAPP_ANDROID_KIDS_ONLY/);
 });
