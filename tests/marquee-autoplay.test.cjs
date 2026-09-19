@@ -28,9 +28,9 @@ test('Top Titles auto-swipes until a poster is pointed at',()=>{
   assert.doesNotMatch(source,/setTimeout\(step,900\)/);
 });
 
-test('Kids match celebrates with confetti and popping balloons before the result',()=>{
+test('Kids match celebration stays decorative and never blocks the result',()=>{
   assert.match(kidsJs,/playKidsCelebrate/);
-  assert.match(kidsJs,/await playKidsCelebrate\(\)/);
+  assert.doesNotMatch(kidsJs,/await playKidsCelebrate\(\)/);
   assert.match(kidsJs,/kids-balloon/);
   assert.match(kidsJs,/kids-confetti/);
   assert.match(kidsJs,/if\(reducedMotion\(\)\)return;/);
@@ -41,7 +41,7 @@ test('Kids match celebrates with confetti and popping balloons before the result
 });
 
 test('Kids result is usable before celebration and animation load is bounded',()=>{
- const kidsJs=read('kids/kids.js'),kidsCss=read('kids/kids.css');
+ const kidsJs=fs.readFileSync(path.join(__dirname,'..','kids/kids.js'),'utf8'),kidsCss=fs.readFileSync(path.join(__dirname,'..','kids/kids.css'),'utf8');
  assert.match(kidsJs,/dialog\.showModal[\s\S]*playKidsCelebrate\(\)/,'result opens before decoration starts');
  assert.doesNotMatch(kidsJs,/await playKidsCelebrate\(\)/,'celebration must never block result delivery');
  assert.match(kidsJs,/confettiCount=compact\?20:32/);
