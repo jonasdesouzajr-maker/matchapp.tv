@@ -656,3 +656,15 @@ html body.page-home #mh-topbox.app-header.ma-global-header{
 @media(prefers-reduced-motion:reduce){
   .ma-global-header .ma-brand-orb,.ma-ai-letters,.ma-ai-brand-button::before,.ma-ai-brand-button::after,.ma-ai-star,.ma-ai-focus-pulse{animation:none!important}
 }
+
+
+/* ===== CONCIERGE STABILITY FIX =====
+   Keep the premium border travel, but never pulse/flicker the Match me / Ask card. */
+html body.page-home .ma-concierge{
+  animation:maGoldTravel 5.4s linear infinite!important;
+  box-shadow:0 22px 60px rgba(0,0,0,.32),0 0 18px rgba(255,217,106,.10)!important;
+}
+html body.page-home .ma-tabs,
+html body.page-home .ma-tab{
+  animation:none!important;
+}
