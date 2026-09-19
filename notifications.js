@@ -30,12 +30,13 @@ function iconSvg(){
 function mount(){
   if(button||!document.body||location.pathname.startsWith('/kids/'))return;
   const nav=document.querySelector('.app-header>nav, header>nav');
+  button=document.querySelector('.matchapp-notification-button');
   if(!nav){
     button=document.createElement('button');button.type='button';button.className='matchapp-notification-button matchapp-notification-floating';button.setAttribute('aria-label','Notifications');button.setAttribute('aria-expanded','false');button.innerHTML=iconSvg();document.body.appendChild(button);
   }
   if(!button){button=document.createElement('button');button.type='button';button.className='matchapp-notification-button';button.setAttribute('aria-label','Notifications');button.setAttribute('aria-expanded','false');button.innerHTML=iconSvg();
     const before=document.getElementById('profile-link-tab')||document.getElementById('nav-reg-btn')||null;nav.insertBefore(button,before);
-  }
+  }else if(!button.querySelector('svg')){button.innerHTML=iconSvg();}
   panel=document.createElement('aside');panel.className='matchapp-notification-panel';panel.hidden=true;panel.setAttribute('aria-label','Notifications');
   panel.innerHTML='<header><div><small>YOUR MATCHAPP</small><h2>Notifications</h2></div><button type="button" class="matchapp-notification-close" aria-label="Close">×</button></header><div class="matchapp-notification-toolbar"><button type="button" data-notify-read-all>Mark all read</button><a href="/updates.html">What’s new</a></div><div class="matchapp-notification-list"></div><details class="matchapp-notification-settings"><summary>Notification settings</summary><div class="matchapp-notification-prefs"></div></details>';
   document.body.appendChild(panel);
