@@ -913,16 +913,16 @@ body.page-home{overflow-x:clip!important}
   border-radius:50%!important;border:1px solid rgba(255,218,99,.62)!important;
   box-shadow:0 0 14px rgba(255,218,99,.34),inset 0 0 12px rgba(84,213,255,.10)!important;
 }
-.ma-orbit-a{inset:8%!important;animation:maOrbOrbitA 5.8s linear infinite!important}
-.ma-orbit-b{inset:18%!important;border-color:rgba(91,220,255,.48)!important;animation:maOrbOrbitB 4.1s linear infinite reverse!important}
+.ma-orbit-a{left:18px!important;top:18px!important;width:224px!important;height:224px!important;animation:maOrbOrbitA 5.8s linear infinite!important}
+.ma-orbit-b{left:42px!important;top:42px!important;width:176px!important;height:176px!important;border-color:rgba(91,220,255,.48)!important;animation:maOrbOrbitB 4.1s linear infinite reverse!important}
 .ma-orb-star{
   z-index:4!important;color:#fff5b7!important;
   text-shadow:0 0 8px #fff,0 0 14px #ffd95f,0 0 22px #56ddff!important;
   animation:maOrbSpark 1.8s ease-in-out infinite!important;
 }
-.ma-orb-star-a{left:11%!important;top:18%!important;font-size:20px!important}
-.ma-orb-star-b{right:10%!important;top:34%!important;font-size:14px!important;animation-delay:.55s!important}
-.ma-orb-star-c{left:36%!important;bottom:7%!important;font-size:12px!important;animation-delay:1.05s!important}
+.ma-orb-star-a{left:24px!important;top:47px!important;font-size:20px!important}
+.ma-orb-star-b{left:218px!important;top:96px!important;font-size:14px!important;animation-delay:.55s!important}
+.ma-orb-star-c{left:105px!important;top:226px!important;font-size:12px!important;animation-delay:1.05s!important}
 @keyframes maOrbOrbitA{to{transform:rotate(360deg)}}
 @keyframes maOrbOrbitB{to{transform:rotate(360deg) scale(1.04)}}
 @keyframes maOrbSpark{0%,100%{opacity:.24;transform:scale(.55) rotate(0)}45%{opacity:1;transform:scale(1.35) rotate(155deg)}}
