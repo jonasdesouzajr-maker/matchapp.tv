@@ -38,27 +38,19 @@
        Labels fall back to the section's own heading when one exists, so a
        copy change in the HTML does not silently desync from this list. */
     const FOLDABLE = [
-        // The match form itself folds now too. It was previously excluded
-        // because app.js shows/hides it during the match flow and the fold
-        // CSS uses display:none !important, which would win over app.js's
-        // inline display and strand the user with an invisible form. That is
-        // solved at the other end: goToQuestionnaire() in app.js — the single
-        // choke point every "back to the form" path goes through — now clears
-        // the fold before scrolling, so the two systems can't fight.
-        // Folded like everything else. Lazy Mode is for someone who already
-        // knows MatchApp and wants the shortest possible page — showing the
-        // full form expanded defeats that. Tapping the row opens it, and
-        // goToQuestionnaire() opens it automatically whenever the app needs
-        // the form (Match Again, New Criteria, the header jump button), so
-        // nobody can get stranded looking at a collapsed row.
-        { sel: '#questionnaire-box',    label: '🎯 Curate your perfect match', icon: '🎯' },
-        { sel: '#search-box',           label: '🔎 Search a specific title',  icon: '🔎' },
-        { sel: '#trending-rail',        label: '🔥 Trending now',             icon: '🔥' },
-        { sel: '.events-wrapper',       label: '🎪 Events happening now',     icon: '🎪' },
-        { sel: '#how-it-works',         label: '❓ How MatchApp works',        icon: '❓' },
-        { sel: '#ai-concierge-section', label: '🤖 About the AI concierge',   icon: '🤖' }
+        { sel: '#daily-match-checkin',  label: '✨ Daily Match Check-in — streak & bonus matches', icon: '✨' },
+        { sel: '.top-ask-wrap',         label: '🤖 Ask MatchApp Ai — chat about what to watch', icon: '🤖' },
+        { sel: '#trending-rail',        label: '🔥 Latest titles trending right now', icon: '🔥' },
+        { sel: '#swifties-spotify',     label: '🎵 Spotify spotlight — music & video picks', icon: '🎵' },
+        { sel: '#questionnaire-box',    label: '🎯 Find my match — mood, genre, platform & more', icon: '🎯' },
+        { sel: '#search-box',           label: '🔎 Search a specific title', icon: '🔎' },
+        { sel: '#premiere-disclosure',  label: '🎬 Premiere spotlight — featured release', icon: '🎬' },
+        { sel: '#latest-news',          label: '📰 Latest entertainment news', icon: '📰' },
+        { sel: '#global-events',        label: '🎪 Events happening now', icon: '🎪' },
+        { sel: '#how-it-works',         label: '❓ How MatchApp works', icon: '❓' },
+        { sel: '#ai-concierge-section', label: '🤖 About the AI concierge', icon: '🤖' },
+        { sel: '#matchapp-tiktok-showcase', label: '♪ MatchApp on TikTok — watch & share', icon: '♪' }
     ];
-
     /* Panels app.js shows and hides itself as part of the match flow. Folding
        these would fight that — the loading meter and the result card are
        transient states, not sections a user browses. */
@@ -158,47 +150,35 @@
     }
 
     function mountFolds() {
-        if (mounted) return;
         FOLDABLE.forEach(cfg => {
-            const section = document.querySelector(cfg.sel);
-            if (!section || NEVER_FOLD.some(s => section.matches(s))) return;
-            if (section.previousElementSibling && section.previousElementSibling.classList.contains('lazy-head')) return;
+            document.querySelectorAll(cfg.sel).forEach(section => {
+                if (!section || NEVER_FOLD.some(s => section.matches(s))) return;
+                if (section.dataset.lazyFoldMounted === '1') return;
+                section.dataset.lazyFoldMounted = '1';
+                section.classList.add('lazy-foldable');
 
-            section.classList.add('lazy-foldable');
+                const head = document.createElement('button');
+                head.type = 'button';
+                head.className = 'lazy-head';
+                head.setAttribute('aria-expanded', 'false');
+                head.innerHTML =
+                    '<span class="lazy-head-label">' + headerFor(cfg, section) + '</span>' +
+                    '<span class="lazy-head-chevron" aria-hidden="true">⌄</span>';
 
-            const head = document.createElement('button');
-            head.type = 'button';
-            head.className = 'lazy-head';
-            head.setAttribute('aria-expanded', 'false');
-            head.innerHTML =
-                '<span class="lazy-head-label">' + headerFor(cfg, section) + '</span>' +
-                '<span class="lazy-head-chevron" aria-hidden="true">⌄</span>';
+                head.addEventListener('click', () => {
+                    const open = section.classList.toggle('lazy-open');
+                    head.setAttribute('aria-expanded', open ? 'true' : 'false');
+                    head.classList.toggle('is-open', open);
+                    if (open) section.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                });
 
-            head.addEventListener('click', () => {
-                const open = section.classList.toggle('lazy-open');
-                head.setAttribute('aria-expanded', open ? 'true' : 'false');
-                head.classList.toggle('is-open', open);
-                if (open) section.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                section.parentNode.insertBefore(head, section);
             });
-
-            // The match form is the whole point of the page — starting it
-            // collapsed would put the primary action behind an extra tap,
-            // which is the opposite of what Lazy Mode is for. Everything
-            // else starts folded.
-            if (cfg.openByDefault) {
-                section.classList.add('lazy-open');
-                head.setAttribute('aria-expanded', 'true');
-                head.classList.add('is-open');
-            }
-
-            section.parentNode.insertBefore(head, section);
         });
 
         if (FOLD_ADS) {
             document.querySelectorAll('.container .ad-banner-container').forEach(el => el.classList.add('lazy-foldable', 'lazy-ad'));
         }
-
-        // Native <details> spotlights just need closing; they already fold.
         mounted = true;
     }
 
@@ -238,6 +218,10 @@
         buildToggle();
         apply(isOn(), false);
         refreshToggleUI();
+        const foldObserver = new MutationObserver(() => {
+            if (document.body.classList.contains('lazy-mode')) mountFolds();
+        });
+        foldObserver.observe(document.body,{childList:true,subtree:true});
     }
 
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
