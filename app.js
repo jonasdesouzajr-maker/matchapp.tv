@@ -3084,13 +3084,13 @@ async function discoverVerifiedExactTMDB(requested){
     if(unsupported)return null;
     const mappableMood=mood.flatMap(m=>MOOD_SOURCE_GENRES[m]||[]);
     if(mood.length&&!mappableMood.length)return null;
-    const sourceGenres=[...new Set([...mappableMood,...realGenres.filter(g=>TMDB_GENRE_ID_BY_NAME[g])])];
+    const sourceGenres=[...new Set([...mappableMood,...realGenres.filter(g=>TMDB_GENRE_ID_BY_NAME[g]),...(cat.includes('anime')?['Animation']:[])])];
     const genreIds=sourceGenres.map(g=>TMDB_GENRE_ID_BY_NAME[g]).filter(Boolean);
     let kind='';
     if(cat.length&&cat.every(x=>['movie','stand-up comedy special','short film','Bollywood','Nollywood','European cinema'].includes(x)))kind='movie';
     else if(cat.length&&cat.every(x=>['series','reality show','K-drama','C-drama','J-drama','Turkish dizi','novela brasileira','telenovela'].includes(x)))kind='tv';
     const start=decade.length===1?Number(String(decade[0]).match(/\d{4}/)?.[0]):0;
-    const candidates=await window.tmdbDiscover({kind,genre_ids:genreIds,decade_start:start||0,pages:2});
+    const candidates=await window.tmdbDiscover({kind,genre_ids:genreIds,original_language:cat.includes('anime')?'ja':'',decade_start:start||0,pages:2});
     const prefs=currentPreferenceExclusions(),known=window.matchPolicy?.known?.()||new Set();
     const region=window.MatchAppCatalogMedia?.regionCode?.()||'BR';
     for(const base of candidates.slice(0,30)){
