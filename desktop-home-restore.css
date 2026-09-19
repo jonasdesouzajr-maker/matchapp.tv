@@ -1,10 +1,28 @@
-/* Desktop-only homepage recovery. Mirrors the smartphone content sequence without changing mobile, Kids, logic or components. */
-@media (min-width:901px) and (hover:hover) and (pointer:fine){
- body.page-home main.page-wrapper>.main-layout{display:block!important;width:100%!important;max-width:1180px!important;margin-inline:auto!important;padding:26px clamp(18px,3vw,38px) 0!important}
- body.page-home main.page-wrapper>.main-layout>.container{display:block!important;width:100%!important;max-width:980px!important;min-width:0!important;margin-inline:auto!important;padding-inline:0!important;columns:auto!important;column-count:1!important}
- body.page-home main.page-wrapper>.main-layout>.container>*{position:relative!important;left:auto!important;right:auto!important;width:100%!important;max-width:100%!important;min-width:0!important;grid-column:auto!important;grid-row:auto!important;float:none!important;clear:both!important;box-sizing:border-box!important}
- body.page-home main.page-wrapper>.main-layout>.container>.tg-entry{display:flex!important}
- body.page-home main.page-wrapper>.main-layout>.container>#premiere-disclosure{display:block!important}
- body.page-home main.page-wrapper>.main-layout>.container>#premiere-disclosure>#spotlight-ahs13{display:block!important;width:100%!important;max-width:100%!important;margin-inline:0!important}
- body.page-home .sidebar-ad-left,body.page-home .sidebar-ad-right{display:none!important}
+/* Desktop-only homepage layout guard.
+   Intentionally excludes phones/tablets/coarse pointers and Kids Mode.
+   Restores one clean, ordered desktop flow matching the mobile information order. */
+@media (min-width:1100px) and (hover:hover) and (pointer:fine){
+  body.page-home main.page-wrapper{display:block!important;width:100%!important;max-width:none!important;padding:0!important}
+  body.page-home main.page-wrapper>.main-layout{
+    display:block!important;width:100%!important;max-width:1240px!important;min-width:0!important;
+    margin:0 auto!important;padding:28px clamp(28px,4vw,54px) 72px!important;
+  }
+  body.page-home main.page-wrapper>.main-layout>.container{
+    display:flex!important;flex-direction:column!important;align-items:stretch!important;
+    width:100%!important;max-width:1120px!important;min-width:0!important;
+    margin:0 auto!important;padding:0!important;gap:clamp(18px,2vw,28px)!important;
+    columns:auto!important;column-count:1!important;
+  }
+  body.page-home main.page-wrapper>.main-layout>.container>*{
+    position:relative!important;inset:auto!important;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;
+    display:block;order:initial!important;width:100%!important;max-width:100%!important;min-width:0!important;
+    margin-left:0!important;margin-right:0!important;grid-column:auto!important;grid-row:auto!important;
+    float:none!important;clear:both!important;transform:none;box-sizing:border-box!important;
+  }
+  body.page-home main.page-wrapper>.main-layout>.container>.tg-entry{display:flex!important}
+  body.page-home main.page-wrapper>.main-layout>.container>#premiere-disclosure{display:block!important}
+  body.page-home main.page-wrapper>.main-layout>.container>#premiere-disclosure>#spotlight-ahs13{
+    display:block!important;width:100%!important;max-width:100%!important;margin-inline:0!important
+  }
+  body.page-home .sidebar-ad-left,body.page-home .sidebar-ad-right{display:none!important}
 }
