@@ -152,3 +152,65 @@ body:has(.poster-wall)::before,body:has(.poster-wall)::after{display:none!import
   100% { opacity: 1; }
 }
 .poster-wall-tile { will-change: opacity; }
+
+
+/* ===== 2026-09-19 SCALE CORRECTION =====
+   Background posters are atmosphere, not a second content rail. Smaller tiles,
+   tighter gaps and a gentler rotation align the wall with the 960px UI rhythm. */
+.poster-wall-grid{
+  inset:-9% -8%!important;
+  grid-template-columns:repeat(12,minmax(0,1fr))!important;
+  gap:clamp(8px,.72vw,13px)!important;
+  transform:rotate(-6deg) scale(1)!important;
+  opacity:.50!important;
+  align-content:start!important;
+}
+.poster-wall-tile{
+  border-radius:clamp(8px,.55vw,12px)!important;
+  box-shadow:0 8px 24px #0005,inset 0 0 0 1px rgba(240,202,98,.20)!important;
+}
+.poster-wall-brand{display:none!important}
+@keyframes posterDrift{
+  from{transform:rotate(-6deg) translate3d(0,0,0)}
+  to{transform:rotate(-6deg) translate3d(0,-3.5%,0)}
+}
+@media (min-width:901px) and (max-width:1400px){
+  .poster-wall-grid{
+    inset:-8% -10%!important;
+    grid-template-columns:repeat(10,minmax(0,1fr))!important;
+    gap:10px!important;
+  }
+}
+@media (max-width:900px){
+  .poster-wall-grid{
+    inset:-6% -24%!important;
+    grid-template-columns:repeat(6,minmax(0,1fr))!important;
+    gap:8px!important;
+    transform:rotate(-5deg) scale(1)!important;
+    opacity:.44!important;
+  }
+  .poster-wall-tile{border-radius:9px!important}
+  .poster-wall::after{
+    background:
+      linear-gradient(90deg,
+        color-mix(in srgb,var(--theme-bg,#100a23) 64%,transparent),
+        color-mix(in srgb,var(--theme-bg,#100a23) 86%,transparent) 28% 72%,
+        color-mix(in srgb,var(--theme-bg,#100a23) 64%,transparent)),
+      linear-gradient(0deg,color-mix(in srgb,var(--theme-bg,#100a23) 84%,transparent),transparent 82%)!important;
+  }
+}
+@media (max-width:480px){
+  .poster-wall-grid{
+    inset:-4% -34%!important;
+    grid-template-columns:repeat(6,minmax(0,1fr))!important;
+    gap:6px!important;
+    opacity:.40!important;
+  }
+}
+@media (min-width:2560px){
+  .poster-wall-grid{
+    grid-template-columns:repeat(14,minmax(0,1fr))!important;
+    gap:16px!important;
+    opacity:.56!important;
+  }
+}
