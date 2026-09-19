@@ -1,5 +1,5 @@
 // Functional release identifier must match release.json.
-window.MATCHAPP_BUILD = '2026.09.19.2';
+window.MATCHAPP_BUILD = '2026.09.19.3';
 
 
 /* HOME STARTUP SCHEDULER */
@@ -148,7 +148,7 @@ window.MATCHAPP_BUILD = '2026.09.19.2';
 (function(){
   if(document.querySelector('script[data-matchapp-final-wiring]'))return;
   const s=document.createElement('script');
-  s.src='/final-wiring.js?v=20260919-fold2';
+  s.src='/final-wiring.js?v=20260919-fold3';
   s.async=false; s.defer=true; s.dataset.matchappFinalWiring='1';
   document.head.appendChild(s);
 })();
