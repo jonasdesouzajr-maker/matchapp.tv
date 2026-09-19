@@ -55,7 +55,6 @@
   // Catch native browser restoration/hash positioning during the initial layout.
   top();
   const topTimer=setInterval(top,50);
-  setTimeout(()=>{ if(!userInteracted) clearInterval(topTimer); },4000);
 
   document.addEventListener('DOMContentLoaded',()=>{
     try{document.body.style.setProperty('overflow-anchor','none');}catch(_){}
