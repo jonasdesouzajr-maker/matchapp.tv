@@ -621,6 +621,7 @@ html body.page-home .matchapp-tiktok-engagement{margin-top:8px!important}
    This avoids the mirrored-sticky pattern prohibited by AdSense. */
 @media(min-width:1120px){
   html body.page-home .main-layout{
+    display:grid!important;
     grid-template-columns:160px minmax(0,1fr) 160px!important;
     max-width:1440px!important;
     column-gap:18px!important;
