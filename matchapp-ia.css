@@ -1745,3 +1745,19 @@ html body.page-home :is(
     left:0!important;
   }
 }
+
+
+/* ===== HEADER FIRST-PAINT STABILITY =====
+   Never expose intermediate/legacy header states during startup. */
+html body.page-home #mh-topbox.app-header{
+  visibility:hidden!important;
+  opacity:0!important;
+}
+html body.page-home #mh-topbox.app-header.ma-header-ready{
+  visibility:visible!important;
+  opacity:1!important;
+  transition:opacity .16s ease!important;
+}
+@media(prefers-reduced-motion:reduce){
+  html body.page-home #mh-topbox.app-header.ma-header-ready{transition:none!important}
+}
