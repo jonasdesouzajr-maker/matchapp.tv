@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <defs>
+    <radialGradient id="navy" cx="38%" cy="28%" r="75%">
+      <stop offset="0%" stop-color="#1c3a66"/>
+      <stop offset="60%" stop-color="#0a1a36"/>
+      <stop offset="100%" stop-color="#030814"/>
+    </radialGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fff0ba"/>
+      <stop offset="45%" stop-color="#e8ba40"/>
+      <stop offset="100%" stop-color="#785210"/>
+    </linearGradient>
+    <linearGradient id="silver" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#94a0b4"/>
+    </linearGradient>
+    <linearGradient id="ai" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#00e5ff"/>
+      <stop offset="100%" stop-color="#c44dff"/>
+    </linearGradient>
+    <radialGradient id="glass" cx="35%" cy="28%" r="70%">
+      <stop offset="0%" stop-color="#16324e"/>
+      <stop offset="100%" stop-color="#040810"/>
+    </radialGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <circle cx="512" cy="512" r="496" fill="url(#gold)"/>
+  <circle cx="512" cy="512" r="452" fill="url(#navy)"/>
+  <text x="512" y="390" text-anchor="middle" font-family="Montserrat, Arial Black, sans-serif" font-weight="800" font-size="148">
+    <tspan fill="url(#silver)">Match</tspan><tspan fill="url(#gold)">App</tspan>
+  </text>
+  <circle cx="318" cy="620" r="128" fill="url(#gold)"/>
+  <circle cx="318" cy="620" r="100" fill="url(#glass)"/>
+  <polygon points="278,560 278,680 408,620" fill="url(#gold)" stroke="#fff0ba" stroke-width="6" stroke-linejoin="round"/>
+  <polygon points="330,592 336,610 356,612 340,624 344,644 330,632 316,644 320,624 304,612 324,610" fill="#7ce7ff"/>
+  <text x="470" y="650" font-family="Montserrat, Arial, sans-serif" font-weight="700" font-size="64" fill="url(#gold)">TV</text>
+  <text x="590" y="700" font-family="Montserrat, Arial, sans-serif" font-weight="800" font-size="220" fill="url(#ai)" filter="url(#glow)">Ai</text>
+</svg>
