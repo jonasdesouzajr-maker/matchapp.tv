@@ -225,3 +225,13 @@ button.matchapp-tiktok-action{font:inherit;padding:0}
 .matchapp-tiktok-intro-card::before,.matchapp-tiktok-intro-card::after{display:none!important}
 .matchapp-tiktok-intro-inner{border-radius:inherit;background:#000}
 .matchapp-tiktok-intro iframe{width:100%;height:100%;object-fit:contain;background:#000}
+
+/* Permanent TikTok showcase: visible cover/player plus honest outbound engagement. */
+.matchapp-tiktok-poster-placeholder{background:
+ linear-gradient(180deg,rgba(7,3,12,.08),rgba(7,3,12,.74)),
+ url('/assets/brand/matchapp-og.png') center/cover no-repeat!important}
+.matchapp-tiktok-poster-placeholder>div{background:rgba(10,5,17,.74);border:1px solid rgba(255,235,151,.24);border-radius:18px;padding:16px;backdrop-filter:blur(8px)}
+.matchapp-tiktok-engagement{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:12px auto 8px;max-width:520px}
+.matchapp-tiktok-engagement a,.matchapp-tiktok-engagement button{min-height:44px;border:1px solid rgba(255,255,255,.14);border-radius:13px;background:rgba(22,11,34,.88);color:#fff;text-decoration:none;font:800 12px/1 'Inter',system-ui,sans-serif;display:flex;align-items:center;justify-content:center;gap:6px;cursor:pointer}
+.matchapp-tiktok-engagement .tt-like{border-color:rgba(255,74,112,.36);color:#ff9aaf}.matchapp-tiktok-engagement .tt-comment{border-color:rgba(105,201,208,.38);color:#a7f8fb}.matchapp-tiktok-engagement .tt-share{border-color:rgba(229,193,88,.42);color:#ffe89a}
+.matchapp-tiktok-tags{text-align:center;color:#cfc1db;font:650 10.5px/1.45 'Inter',system-ui,sans-serif;margin:6px 0 0}
