@@ -1565,7 +1565,7 @@ window.__MATCHAPP_UI_FAILSAFE__=setTimeout(function(){document.documentElement.c
 <link rel="stylesheet" href="/taste-profile.css?v=20260919-stable3" data-home-support="taste">
 <link rel="stylesheet" href="/profile-card.css?v=20260919-stable3" data-home-support="profile-card">
 <link rel="stylesheet" href="/preference-exclusions.css?v=20260919-stable3" data-home-support="preferences">
-<link rel="stylesheet" href="/matchapp-ia.css?v=20260919-ia29" data-matchapp-ia="1">
+<link rel="stylesheet" href="/matchapp-ia.css?v=20260919-ia30" data-matchapp-ia="1">
 <script defer src="/matchapp-ia.js?v=20260919-ia27" data-matchapp-ia="1"></script>
 </head>
 <body class="page-home">
@@ -3128,7 +3128,7 @@ window.__MATCHAPP_UI_FAILSAFE__=setTimeout(function(){document.documentElement.c
 
 <section id="swifties-spotify" class="marquee-wrapper swifties-spotify swifties-spotify--final" aria-labelledby="swifties-spotify-title">
   <button class="swifties-fold" type="button" aria-expanded="false" aria-controls="swifties-spotify-body"
-    onclick="const b=document.getElementById('swifties-spotify-body');const open=this.getAttribute('aria-expanded')==='true';this.setAttribute('aria-expanded',String(!open));b.hidden=open;this.querySelector('.swifties-fold-icon').textContent=open?'▾':'▴';">
+    onclick="const b=document.getElementById('swifties-spotify-body');const open=this.getAttribute('aria-expanded')==='true';this.setAttribute('aria-expanded',String(!open));b.hidden=open;this.querySelector('.swifties-fold-icon').textContent=open?'▾':'▴';if(!open)b.querySelectorAll('iframe[data-src]').forEach(f=>{if(!f.src)f.src=f.dataset.src});">
     <span id="swifties-spotify-title"><span aria-hidden="true">🎵✨</span> TAYLOR SWIFT ON SPOTIFY — ALL OFFICIAL VIDEOS <strong>#Swifties 🫶</strong></span>
     <span class="swifties-fold-icon" aria-hidden="true">▾</span>
   </button>
@@ -3161,7 +3161,7 @@ window.__MATCHAPP_UI_FAILSAFE__=setTimeout(function(){document.documentElement.c
     <div class="swifties-player-block">
       <h3>Listen to Taylor Swift on Spotify</h3>
       <iframe class="swifties-embed swifties-artist-embed" title="Listen to Taylor Swift on Spotify"
-        src="https://open.spotify.com/embed/artist/06HL4z0CvFAxyc27GXpf02?utm_source=generator&theme=0"
+        data-src="https://open.spotify.com/embed/artist/06HL4z0CvFAxyc27GXpf02?utm_source=generator&theme=0"
         width="100%" height="352" frameborder="0" allowfullscreen=""
         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
     </div>
@@ -3169,7 +3169,7 @@ window.__MATCHAPP_UI_FAILSAFE__=setTimeout(function(){document.documentElement.c
     <div class="swifties-player-block">
       <h3>All official Taylor Swift videos on Spotify</h3>
       <iframe class="swifties-embed swifties-video-embed" title="Taylor Swift - The Videos on Spotify"
-        src="https://open.spotify.com/embed/playlist/37i9dQZF1DXe7fP0uj1s1D?utm_source=generator&theme=0"
+        data-src="https://open.spotify.com/embed/playlist/37i9dQZF1DXe7fP0uj1s1D?utm_source=generator&theme=0"
         width="100%" height="352" frameborder="0" allowfullscreen=""
         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
     </div>

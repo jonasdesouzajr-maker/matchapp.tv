@@ -51,27 +51,15 @@
     const coarse=!!(window.matchMedia&&window.matchMedia('(pointer: coarse)').matches);
     vp.style.touchAction='pan-x pinch-zoom';
     if(coarse){
+      /* Phones/tablets: native swipe only — no continuous main-thread frame loop. */
       vp.style.overflowX='auto';
       vp.style.webkitOverflowScrolling='touch';
+      vp.style.touchAction='pan-x pan-y';
       track.classList.remove('is-marquee-flowing');
+      track.style.removeProperty('animation');
+      track.style.removeProperty('transform');
+      vp.classList.remove('is-marquee-paused');
       vp.dataset.matchappAutoplayActive='0';
-      /* Phones/tablets glide left until the visitor takes control. Once they
-         swipe/touch the rail, autoplay stays off for that rail. */
-      let userTookControl=false,last=0,raf=0,resumeTimer=0;
-      /* A swipe pauses the drift; it does not end it. The listeners are
-         no longer {once:true}, so every interaction re-arms the same
-         pause, and the rail picks the drift back up a few seconds after
-         the visitor stops. */
-      const takeControl=()=>{userTookControl=true;if(raf)cancelAnimationFrame(raf);raf=0;last=0;vp.dataset.matchappAutoplayActive='0';
-        clearTimeout(resumeTimer);resumeTimer=setTimeout(()=>{userTookControl=false;last=0;pos=vp.scrollLeft;raf=requestAnimationFrame(glide);},4000);};
-      /* The drift is ~0.37px per frame. Adding that straight onto
-         scrollLeft loses it to integer rounding every frame, so the rail
-         sat still. The position is accumulated as a float and written
-         once, and re-synced whenever the visitor scrolls it themselves. */
-      let pos=vp.scrollLeft;
-      const glide=ts=>{if(userTookControl||document.hidden||reduced())return;const half=track.scrollWidth/2;if(half>40){if(last){pos+=(ts-last)*0.022;if(pos>=half)pos-=half;vp.scrollLeft=pos;}last=ts;vp.dataset.matchappAutoplayActive='1';}raf=requestAnimationFrame(glide);};
-      ['touchstart','pointerdown','wheel'].forEach(type=>vp.addEventListener(type,takeControl,{passive:true}));
-      setTimeout(()=>{if(!userTookControl)raf=requestAnimationFrame(glide);},350);
     }
     vp.style.overscrollBehaviorX='contain';
 

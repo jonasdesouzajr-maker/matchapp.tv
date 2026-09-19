@@ -16,3 +16,17 @@ html:not(.kids-mode) body :is(button,a,[role="button"]):hover{border-color:rgba(
 .match-relaxed-criteria{border-color:rgba(255,214,106,.55)!important;color:#fff0b6!important;background:rgba(229,193,88,.09)!important}
 @media(max-width:600px){.ma-kids-mode-entry{min-height:40px;padding-inline:10px;font-size:11px}.ma-kids-mode-entry.ma-kids-floating{right:8px;bottom:max(8px,env(safe-area-inset-bottom))}}
 @media(prefers-reduced-motion:reduce){html:not(.kids-mode) body :is(button,input,select,textarea,a.gold-btn,a.install-btn,a.ma-kids-mode-entry,[role="button"],.premium-card,.spotlight-card,.tg-card,.ma-concierge,.crit-toggle,.ma-news-card,.share-sheet,.matchapp-tiktok-showcase,.app-header,.global-events-summary){animation:none!important}}
+
+/* SMARTPHONE PERFORMANCE GUARD — prevent repaint storms on touch devices. */
+@media(max-width:820px){
+  html:not(.kids-mode) body :is(
+    button:not(.matchapp-tour-skip),
+    input:not([type="range"]):not([type="checkbox"]):not([type="radio"]),
+    select,textarea,a.gold-btn,a.install-btn,a.ma-kids-mode-entry,[role="button"],
+    .premium-card,.spotlight-card,.tg-card,.ma-concierge,.crit-toggle,.ma-news-card,
+    .share-sheet,.matchapp-tiktok-showcase,.app-header,.global-events-summary
+  ){
+    animation:none!important;
+    box-shadow:0 5px 14px rgba(0,0,0,.16)!important;
+  }
+}

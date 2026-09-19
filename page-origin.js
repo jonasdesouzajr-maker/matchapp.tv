@@ -26,6 +26,7 @@
     try{document.documentElement.style.removeProperty('overflow-anchor');}catch(_){}
     try{document.body&&document.body.style.removeProperty('overflow-anchor');}catch(_){}
     clearInterval(topTimer);
+    clearTimeout(topTimerFailsafe);
   }
 
   window.MatchAppScrollGate=Object.freeze({
@@ -55,6 +56,7 @@
   // Catch native browser restoration/hash positioning during the initial layout.
   top();
   const topTimer=setInterval(top,50);
+  const topTimerFailsafe=setTimeout(()=>clearInterval(topTimer),1200);
 
   document.addEventListener('DOMContentLoaded',()=>{
     try{document.body.style.setProperty('overflow-anchor','none');}catch(_){}
