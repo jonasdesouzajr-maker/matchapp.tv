@@ -1,9 +1,101 @@
 {
-  "generated_at": "2026-09-19T20:00:00.799Z",
-  "feed_version": "cc2547e8",
+  "generated_at": "2026-09-19T20:34:14.020Z",
+  "feed_version": "6469c53b",
   "source_policy": "direct-trusted-publisher-rss+google-trends-keyword-signals",
   "seo_policy": "per-story keyword snapshot at first discovery + source citation + stable archive",
   "items": [
+    {
+      "id": "9a558471",
+      "title": "AI Actor Tilly Norwood Glitches During Piers Morgan Interview, Suddenly Switches Languages",
+      "url": "https://www.hollywoodreporter.com/news/general-news/tilly-norwood-glitches-piers-morgan-switches-languages-1236706114/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "published_at": "2026-09-19T20:00:07.000Z",
+      "discovered_at": "2026-09-19T20:34:14.020Z",
+      "event_type": "Entertainment",
+      "person": "AI Actor Tilly Norwood",
+      "description": "AI Actor Tilly Norwood: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/09/piers-tilly.jpg?w=1086&h=612&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/ai-actor-tilly-norwood-glitches-during-piers-morgan-interview-suddenly-switches--9a5584/",
+      "landing_url": "https://matchapp.tv/?news=9a558471#latest-news",
+      "seo": {
+        "primary_keyword": "AI Actor Tilly Norwood latest news",
+        "short_tail": [
+          "AI Actor Tilly Norwood",
+          "AI Actor Tilly Norwood news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "AI Actor Tilly Norwood latest news September 2026",
+          "AI Actor Tilly Norwood entertainment update 2026",
+          "AI Actor Tilly Norwood news 2026-09-19",
+          "latest entertainment news about AI Actor Tilly Norwood",
+          "actor tilly norwood actor tilly norwood latest update",
+          "The Hollywood Reporter AI Actor Tilly Norwood entertainment",
+          "latest news about AI Actor Tilly Norwood September 2026",
+          "AI Actor Tilly Norwood entertainment news 2026-09-19",
+          "what happened with AI Actor Tilly Norwood"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "AI Actor Tilly Norwood",
+          "actor",
+          "tilly",
+          "norwood",
+          "glitches",
+          "during"
+        ],
+        "freshness_keywords": [
+          "September 2026",
+          "2026-09-19",
+          "AI Actor Tilly Norwood 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter AI Actor Tilly Norwood",
+          "hollywoodreporter.com AI Actor Tilly Norwood",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "AI Actor Tilly Norwood Glitches During Piers Morgan…",
+        "meta_description": "AI Actor Tilly Norwood: Entertainment update reported by The Hollywood Reporter on 2026-09-19. See verified context, publication time and the original…",
+        "keywords": [
+          "AI Actor Tilly Norwood latest news",
+          "AI Actor Tilly Norwood",
+          "AI Actor Tilly Norwood news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "AI Actor Tilly Norwood latest news September 2026",
+          "AI Actor Tilly Norwood entertainment update 2026",
+          "AI Actor Tilly Norwood news 2026-09-19",
+          "latest entertainment news about AI Actor Tilly Norwood",
+          "actor tilly norwood actor tilly norwood latest update",
+          "The Hollywood Reporter AI Actor Tilly Norwood entertainment",
+          "latest news about AI Actor Tilly Norwood September 2026",
+          "AI Actor Tilly Norwood entertainment news 2026-09-19",
+          "what happened with AI Actor Tilly Norwood",
+          "actor",
+          "tilly",
+          "norwood",
+          "glitches",
+          "during",
+          "September 2026",
+          "2026-09-19",
+          "AI Actor Tilly Norwood 2026",
+          "The Hollywood Reporter AI Actor Tilly Norwood",
+          "hollywoodreporter.com AI Actor Tilly Norwood",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-09-19T20:34:14.020Z"
+      }
+    },
     {
       "id": "15c8f0bf",
       "title": "San Sebastián Chief José Luis Rebordinos on His Final Year at the Helm — and Being the Only Top Film Festival to Take a Political Stance",
@@ -485,104 +577,6 @@
           "Hudson Williams Shares How 2026",
           "The Hollywood Reporter Hudson Williams Shares How",
           "hollywoodreporter.com Hudson Williams Shares How",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-09-19T05:49:10.250Z"
-      }
-    },
-    {
-      "id": "ddfe571f",
-      "title": "&#8216;Murderous&#8217; Review: Neil LaBute&#8217;s New Film Is Undone by Its Overly Familiar Premise and Obvious Plot Machinations",
-      "url": "https://www.hollywoodreporter.com/movies/movie-reviews/murderous-review-neil-labute-thomas-sadoski-1236705377/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "published_at": "2026-09-19T02:57:57.000Z",
-      "discovered_at": "2026-09-19T05:49:10.250Z",
-      "event_type": "Entertainment",
-      "person": "",
-      "description": "entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/09/GIA-TOMMY-H-2026.jpg?w=1296&h=730&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/8216-murderous-8217-review-neil-labute-8217-s-new-film-is-undone-by-its-overly-f-ddfe57/",
-      "landing_url": "https://matchapp.tv/?news=ddfe571f#latest-news",
-      "seo": {
-        "primary_keyword": "5",
-        "short_tail": [
-          "8216 murderous 8217 review",
-          "8216 murderous 8217 review news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "5"
-        ],
-        "long_tail": [
-          "8216 murderous 8217 review latest news September 2026",
-          "8216 murderous 8217 review entertainment update 2026",
-          "8216 murderous 8217 review news 2026-09-19",
-          "latest entertainment news about 8216 murderous 8217 review",
-          "8216 murderous 8217 review neil labute latest update",
-          "The Hollywood Reporter 8216 murderous 8217 review entertainment",
-          "latest news about 8216 murderous 8217 review September 2026",
-          "8216 murderous 8217 review entertainment news 2026-09-19",
-          "what happened with 8216 murderous 8217 review"
-        ],
-        "trend_keywords": [
-          "5"
-        ],
-        "entity_keywords": [
-          "8216",
-          "murderous",
-          "8217",
-          "review",
-          "neil",
-          "labute",
-          "new"
-        ],
-        "freshness_keywords": [
-          "September 2026",
-          "2026-09-19",
-          "8216 murderous 8217 review 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter 8216 murderous 8217 review",
-          "hollywoodreporter.com 8216 murderous 8217 review",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "&#8216;Murderous&#8217; Review: Neil LaBute&#8217;s New…",
-        "meta_description": "Entertainment update reported by The Hollywood Reporter on 2026-09-19. See verified context, publication time and the original source via MatchApp TV.",
-        "keywords": [
-          "5",
-          "8216 murderous 8217 review",
-          "8216 murderous 8217 review news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "8216 murderous 8217 review latest news September 2026",
-          "8216 murderous 8217 review entertainment update 2026",
-          "8216 murderous 8217 review news 2026-09-19",
-          "latest entertainment news about 8216 murderous 8217 review",
-          "8216 murderous 8217 review neil labute latest update",
-          "The Hollywood Reporter 8216 murderous 8217 review entertainment",
-          "latest news about 8216 murderous 8217 review September 2026",
-          "8216 murderous 8217 review entertainment news 2026-09-19",
-          "what happened with 8216 murderous 8217 review",
-          "8216",
-          "murderous",
-          "8217",
-          "review",
-          "neil",
-          "labute",
-          "new",
-          "September 2026",
-          "2026-09-19",
-          "8216 murderous 8217 review 2026",
-          "The Hollywood Reporter 8216 murderous 8217 review",
-          "hollywoodreporter.com 8216 murderous 8217 review",
           "The Hollywood Reporter entertainment news"
         ],
         "seo_generated_at": "2026-09-19T05:49:10.250Z"
