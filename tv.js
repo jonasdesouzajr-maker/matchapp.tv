@@ -149,7 +149,7 @@
     function focus(el) {
         if (!el) return;
         el.focus({ preventScroll: true });
-        el.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+        if(window.MatchAppScrollGate?.canAutoScroll?.())el.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
     }
 
     const DIRS = { ArrowLeft: 'left', ArrowRight: 'right', ArrowUp: 'up', ArrowDown: 'down',
