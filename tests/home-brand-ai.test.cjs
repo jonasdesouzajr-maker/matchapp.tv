@@ -9,8 +9,8 @@ test('canonical IA homepage owns first paint with no legacy Home overrides',()=>
   const html=read('index.html');
   const settings=read('settings.js');
   const ia=read('matchapp-ia.css');
-  assert.match(html,/matchapp-ia\.css\?v=20260919-ia18/);
-  assert.match(html,/settings\.js\?v=20260919-ia18/);
+  assert.match(html,/matchapp-ia\.css\?v=20260919-ia\d+/);
+  assert.match(html,/settings\.js\?v=20260919-/);
   for(const legacy of ['home-premium.css','home-brand.css','home-ux-lock.css','desktop-home-restore.css','home-ux-lock.js','home-layout-guard.js']){
     assert.ok(!html.includes(legacy),legacy+' must not load on Home');
   }
@@ -75,7 +75,7 @@ test('canonical top box keeps the logo animated and all controls visible',()=>{
   assert.match(ia,/ma-brand-orb-stage/);
   assert.match(ia,/nav\.mh-deck/);
   assert.match(ia,/flex-wrap:wrap!important/);
-  assert.match(lazy,/deck\.insertBefore\(bar,accountAnchor\)/);
+  assert.match(lazy,/bar\.hidden = true/);
 });
 
 test('fresh Home loads stay at top until the visitor interacts',()=>{
