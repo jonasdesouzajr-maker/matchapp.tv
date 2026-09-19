@@ -1,5 +1,5 @@
 /* matchapp-page-origin-loader: shared pages must start at scroll origin. */
-(function(){if(window.MatchAppScrollGate||document.querySelector('script[src^="/page-origin.js"]'))return;var s=document.createElement('script');s.src='/page-origin.js?v=20260919-origin2';s.async=false;(document.head||document.documentElement).appendChild(s);})();
+(function(){if(window.MatchAppScrollGate||document.querySelector('script[src^="/page-origin.js"]'))return;var s=document.createElement('script');s.src='/page-origin.js?v=20260919-origin3';s.async=false;(document.head||document.documentElement).appendChild(s);})();
 /* Appearance is a preference only. Preview never writes account/device data. */
 (function () {
   'use strict';
