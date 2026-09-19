@@ -119,7 +119,7 @@ jobs:
           grep -Fq '"2026.09.19.1"' /tmp/release.json
           curl -sS -L --max-time 30 https://matchapp.tv/discover.html -o /tmp/discover.html
           grep -Fq '/discover.js?v=207' /tmp/discover.html
-          grep -Fq '/catalog-media.js?v=20260919-titlecards1' /tmp/discover.html
+          grep -Fq '/catalog-media.js?v=20260918-notify2' /tmp/discover.html
           curl -sS -L --max-time 30 'https://matchapp.tv/discover.js?v=207' -o /tmp/discover.js
           grep -Fq 'item.realGenres = meta.genres' /tmp/discover.js
           curl -sS -L --max-time 30 'https://matchapp.tv/catalog-media.js?v=20260919-titlecards1' -o /tmp/catalog-media.js
