@@ -39,14 +39,10 @@
        copy change in the HTML does not silently desync from this list. */
     const FOLDABLE = [
         { sel: '#daily-match-checkin',  label: '✨ Daily Match Check-in — streak & bonus matches', icon: '✨' },
-        { sel: '.top-ask-wrap',         label: '🤖 Ask MatchApp Ai — chat about what to watch', icon: '🤖' },
-        { sel: '#trending-rail',        label: '🔥 Latest titles trending right now', icon: '🔥' },
-        { sel: '#swifties-spotify',     label: '🎵 Spotify spotlight — music & video picks', icon: '🎵' },
+        { sel: '.top-ask-wrap',         label: '🤖 Ask MatchApp Ai — chat about what to watch', icon: '🤖' },        { sel: '#swifties-spotify',     label: '🎵 Spotify spotlight — music & video picks', icon: '🎵' },
         { sel: '#questionnaire-box',    label: '🎯 Find my match — mood, genre, platform & more', icon: '🎯' },
         { sel: '#search-box',           label: '🔎 Search a specific title', icon: '🔎' },
-        { sel: '#premiere-disclosure',  label: '🎬 Premiere spotlight — featured release', icon: '🎬' },
-        { sel: '#latest-news',          label: '📰 Latest entertainment news', icon: '📰' },
-        { sel: '#global-events',        label: '🎪 Events happening now', icon: '🎪' },
+        { sel: '#premiere-disclosure',  label: '🎬 Premiere spotlight — featured release', icon: '🎬' },        { sel: '#global-events',        label: '🎪 Events happening now', icon: '🎪' },
         { sel: '#how-it-works',         label: '❓ How MatchApp works', icon: '❓' },
         { sel: '#ai-concierge-section', label: '🤖 About the AI concierge', icon: '🤖' },
         { sel: '#matchapp-tiktok-showcase', label: '♪ MatchApp on TikTok — watch & share', icon: '♪' }
