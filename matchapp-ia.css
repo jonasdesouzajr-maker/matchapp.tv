@@ -507,3 +507,152 @@ html body.page-home :is(#trending-rail,#premiere-disclosure,#global-events){anim
   .ma-concierge #questionnaire-box>button[data-i18n="q.submit"]::after,
   .ma-concierge #search-box .gold-btn::after{animation:none!important}
 }
+
+
+/* ===== OVERSIZED BRAND HEADER / CLICKABLE AI ===== */
+header.app-header.ma-global-header,
+html body.page-home #mh-topbox.app-header.ma-global-header{
+  min-height:72px!important;
+  padding-top:5px!important;padding-bottom:5px!important;
+  overflow:visible!important;
+}
+.ma-global-header .ma-brand-stage{
+  position:relative!important;display:flex!important;align-items:center!important;
+  min-width:0!important;overflow:visible!important;z-index:4!important;
+}
+.ma-global-header .ma-brand-lockup{
+  position:relative!important;display:flex!important;align-items:center!important;gap:8px!important;
+  height:68px!important;overflow:visible!important;text-decoration:none!important;
+}
+.ma-global-header .ma-brand-home-link{
+  display:flex!important;align-items:center!important;gap:9px!important;
+  height:68px!important;text-decoration:none!important;color:inherit!important;overflow:visible!important;
+}
+.ma-global-header .ma-brand-orb{
+  width:104px!important;height:104px!important;max-width:none!important;object-fit:contain!important;flex:0 0 104px!important;
+  margin-left:-12px!important;transform:translateY(3px)!important;
+  filter:drop-shadow(0 10px 16px rgba(0,0,0,.42)) drop-shadow(0 0 16px rgba(255,217,106,.42))!important;
+  animation:maBrandOrbPop 3.2s ease-in-out infinite!important;
+}
+.ma-global-header .ma-brand-copy{
+  display:flex!important;align-items:baseline!important;gap:10px!important;white-space:nowrap!important;
+  transform:translateY(-1px)!important;
+}
+.ma-global-header .ma-wordmark{
+  display:inline-flex!important;align-items:baseline!important;
+  font-family:Outfit,Inter,system-ui,sans-serif!important;font-weight:950!important;
+  font-size:clamp(34px,3vw,50px)!important;line-height:.9!important;letter-spacing:-.055em!important;
+  text-shadow:0 4px 16px rgba(0,0,0,.42)!important;
+}
+.ma-global-header .ma-word-match{
+  color:#f5f7fb!important;
+  background:linear-gradient(180deg,#fff 8%,#dce1ea 50%,#9ba8bc 100%)!important;
+  -webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important;
+}
+.ma-global-header .ma-word-app{
+  background:linear-gradient(180deg,#fff0ba 0%,#f2c951 45%,#9e6c17 100%)!important;
+  -webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important;
+}
+.ma-global-header .ma-tv{
+  font-family:Outfit,Inter,system-ui,sans-serif!important;font-size:clamp(22px,2vw,32px)!important;font-weight:900!important;
+  color:var(--ma-gold-hot)!important;text-shadow:0 0 14px rgba(255,217,106,.32)!important;letter-spacing:-.04em!important;
+}
+.ma-ai-brand-button{
+  position:relative!important;display:grid!important;place-items:center!important;min-width:76px!important;height:64px!important;
+  margin-left:2px!important;padding:0 12px!important;border:0!important;background:transparent!important;overflow:visible!important;
+  cursor:pointer!important;isolation:isolate!important;
+}
+.ma-ai-letters{
+  position:relative!important;z-index:2!important;
+  font-family:"Arial Rounded MT Bold",Outfit,Inter,sans-serif!important;font-weight:1000!important;
+  font-size:clamp(39px,3.5vw,58px)!important;line-height:1!important;letter-spacing:-.10em!important;padding-right:.10em!important;
+  background:linear-gradient(105deg,#5ee7ff 0%,#67a8ff 25%,#cf66ff 50%,#fff0ba 70%,#55e8ff 100%)!important;
+  background-size:240% 100%!important;-webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important;
+  filter:drop-shadow(0 0 7px rgba(74,221,255,.66)) drop-shadow(0 0 13px rgba(190,81,255,.40))!important;
+  animation:maAiChromatic 2.3s linear infinite,maAiFloat 2.4s ease-in-out infinite!important;
+}
+.ma-ai-brand-button::before{
+  content:""!important;position:absolute!important;inset:6px 1px!important;border-radius:18px!important;
+  background:radial-gradient(circle at 50% 48%,rgba(64,208,255,.14),rgba(181,77,255,.08) 44%,transparent 72%)!important;
+  opacity:.85!important;filter:blur(2px)!important;animation:maAiAura 2.1s ease-in-out infinite!important;
+}
+.ma-ai-brand-button::after{
+  content:""!important;position:absolute!important;top:8%!important;left:-4%!important;width:35%!important;height:88%!important;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.88),transparent)!important;
+  filter:blur(2px)!important;transform:skewX(-18deg)!important;animation:maAiShine 2.35s ease-in-out infinite!important;pointer-events:none!important;
+}
+.ma-ai-star{
+  position:absolute!important;z-index:3!important;color:#fff4b8!important;
+  text-shadow:0 0 7px #fff,0 0 12px #55e8ff,0 0 18px #b74dff!important;pointer-events:none!important;
+  animation:maAiStarDance 1.9s ease-in-out infinite!important;
+}
+.ma-ai-star-one{font-size:13px!important;left:10px!important;top:6px!important;animation-delay:0s!important}
+.ma-ai-star-two{font-size:10px!important;right:7px!important;top:17px!important;animation-delay:.55s!important}
+.ma-ai-star-three{font-size:8px!important;right:18px!important;bottom:5px!important;animation-delay:1.05s!important}
+.ma-ai-brand-button:hover .ma-ai-letters{filter:drop-shadow(0 0 10px rgba(74,221,255,.9)) drop-shadow(0 0 22px rgba(190,81,255,.65))!important}
+.ma-ai-brand-button:hover{transform:scale(1.08)!important}
+.ma-ai-brand-button:active{transform:scale(.96)!important}
+
+.ma-menu-button{
+  display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:7px!important;
+  width:auto!important;min-width:112px!important;padding:0 12px!important;font-size:12px!important;font-weight:850!important;
+  color:#f7e7ad!important;border-color:rgba(232,186,64,.28)!important;
+}
+.ma-menu-button svg{width:20px!important;height:20px!important;filter:drop-shadow(0 0 5px rgba(255,217,106,.32))!important}
+.ma-menu-button:hover svg{animation:maGearTurn .72s ease!important}
+
+.ma-ai-prompt-hint{
+  position:absolute!important;z-index:80!important;left:50%!important;top:84px!important;transform:translate(-50%,-8px) scale(.96)!important;
+  width:min(520px,calc(100% - 28px))!important;padding:11px 14px!important;border:1px solid rgba(255,217,106,.70)!important;
+  border-radius:14px!important;background:rgba(5,12,27,.97)!important;color:#fff2bf!important;text-align:center!important;
+  box-shadow:0 16px 44px rgba(0,0,0,.46),0 0 24px rgba(255,217,106,.18)!important;
+  opacity:0!important;transition:opacity .22s ease,transform .22s ease!important;pointer-events:none!important;
+}
+.ma-ai-prompt-hint.is-showing{opacity:1!important;transform:translate(-50%,0) scale(1)!important}
+.ma-ai-focus-pulse{animation:maAskFocusPulse 1.05s ease-in-out 2!important}
+
+@keyframes maBrandOrbPop{
+  0%,100%{transform:translateY(3px) scale(1);filter:drop-shadow(0 10px 16px rgba(0,0,0,.42)) drop-shadow(0 0 12px rgba(255,217,106,.32))}
+  50%{transform:translateY(-1px) scale(1.055);filter:drop-shadow(0 12px 20px rgba(0,0,0,.48)) drop-shadow(0 0 25px rgba(255,217,106,.56))}
+}
+@keyframes maAiChromatic{to{background-position:240% 0}}
+@keyframes maAiFloat{0%,100%{transform:translateY(1px) scale(1)}50%{transform:translateY(-3px) scale(1.04)}}
+@keyframes maAiAura{0%,100%{opacity:.45;transform:scale(.88)}50%{opacity:1;transform:scale(1.10)}}
+@keyframes maAiShine{0%,15%{left:-35%;opacity:0}25%{opacity:1}65%{opacity:1}80%,100%{left:115%;opacity:0}}
+@keyframes maAiStarDance{0%,100%{transform:scale(.65) rotate(0);opacity:.35}45%{transform:scale(1.35) rotate(125deg);opacity:1}}
+@keyframes maGearTurn{to{transform:rotate(120deg)}}
+@keyframes maAskFocusPulse{0%,100%{box-shadow:0 0 0 rgba(91,226,255,0)!important}50%{box-shadow:0 0 0 3px rgba(255,217,106,.35),0 0 28px rgba(91,226,255,.34)!important}}
+
+@media(max-width:820px){
+  .ma-global-header .ma-brand-orb{width:76px!important;height:76px!important;flex-basis:76px!important;margin-left:-6px!important}
+  .ma-global-header .ma-wordmark{font-size:clamp(27px,6vw,36px)!important}
+  .ma-global-header .ma-tv{font-size:21px!important}
+  .ma-ai-brand-button{min-width:58px!important;height:54px!important;padding:0 7px!important}
+  .ma-ai-letters{font-size:38px!important}
+  .ma-menu-button{min-width:46px!important;width:46px!important;padding:0!important}
+  .ma-menu-button span{display:none!important}
+}
+@media(max-width:560px){
+  header.app-header.ma-global-header,html body.page-home #mh-topbox.app-header.ma-global-header{min-height:62px!important;padding-left:7px!important;padding-right:7px!important}
+  .ma-global-header .ma-brand-lockup,.ma-global-header .ma-brand-home-link{height:58px!important;gap:4px!important}
+  .ma-global-header .ma-brand-orb{width:66px!important;height:66px!important;flex-basis:66px!important;margin-left:-8px!important}
+  .ma-global-header .ma-brand-copy{gap:5px!important}
+  .ma-global-header .ma-wordmark{font-size:clamp(22px,6.9vw,29px)!important}
+  .ma-global-header .ma-tv{font-size:17px!important}
+  .ma-ai-brand-button{min-width:46px!important;width:46px!important;height:50px!important;padding:0 2px!important;margin-left:-2px!important}
+  .ma-ai-letters{font-size:31px!important}
+  .ma-ai-star-one{left:0!important;top:4px!important}.ma-ai-star-two{right:-1px!important}.ma-ai-star-three{right:5px!important}
+  .ma-global-header nav,.ma-global-header nav.mh-deck{gap:4px!important}
+  .ma-global-header .ma-country-link{display:none!important}
+}
+@media(max-width:420px){
+  .ma-global-header .ma-brand-orb{width:60px!important;height:60px!important;flex-basis:60px!important}
+  .ma-global-header .ma-wordmark{font-size:22px!important}
+  .ma-global-header .ma-tv{font-size:15px!important}
+  .ma-ai-brand-button{min-width:41px!important;width:41px!important}
+  .ma-ai-letters{font-size:28px!important}
+  .ma-global-header #lang-switcher-host{display:none!important}
+}
+@media(prefers-reduced-motion:reduce){
+  .ma-global-header .ma-brand-orb,.ma-ai-letters,.ma-ai-brand-button::before,.ma-ai-brand-button::after,.ma-ai-star,.ma-ai-focus-pulse{animation:none!important}
+}
