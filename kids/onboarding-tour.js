@@ -56,7 +56,7 @@ function show(n){
  i=n;const el=document.querySelector(steps[i]);if(!el){steps.splice(i,1);return steps.length?show(Math.min(i,steps.length-1)):finish();}
  const x=t(),pair=x.steps[selectors().indexOf(steps[i])]||x.steps[i];
  card.querySelector('.kids-tour-top strong').textContent=x.label;card.querySelector('[data-skip]').textContent=x.skip;card.querySelector('[data-count]').textContent=(i+1)+' / '+steps.length;card.querySelector('h2').textContent=pair[0];card.querySelector('[data-copy]').textContent=pair[1];card.querySelector('[data-back]').textContent=x.back;card.querySelector('[data-back]').hidden=i===0;card.querySelector('[data-next]').textContent=i===steps.length-1?x.finish:x.next;
- card.hidden=false;spot.hidden=false;document.documentElement.classList.add('kids-tour-active');el.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'center'});setTimeout(place,380);place();
+ card.hidden=false;spot.hidden=false;document.documentElement.classList.add('kids-tour-active');if(window.MatchAppScrollGate?.canAutoScroll?.())el.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'center'});setTimeout(place,380);place();
 }
 async function finish(){
  active=false;if(card)card.hidden=true;if(spot)spot.hidden=true;document.documentElement.classList.remove('kids-tour-active');
