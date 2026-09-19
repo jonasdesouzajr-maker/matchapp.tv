@@ -1570,33 +1570,12 @@ window.__MATCHAPP_UI_FAILSAFE__=setTimeout(function(){document.documentElement.c
 </head>
 <body class="page-home">
     <script>
-      try {
-        if (localStorage.getItem('matchapp:tiktok-ad-seen:v1') !== '1') {
-          document.documentElement.dataset.tiktokIntro = '1';
-        }
-      } catch (_) {
-        document.documentElement.dataset.tiktokIntro = '1';
-      }
-      /* Freeze guard: the intro covers the page from first paint, but its script
-         loads last. Until tiktok-showcase.js takes over, the close button must
-         still work, and the page must unlock if that script never starts. */
+      /* Canonical Home never allows a hidden legacy intro to own scrolling.
+         The TikTok promotion remains available in its below-page showcase. */
       (function () {
         var root = document.documentElement;
-        if (root.dataset.tiktokIntro !== '1') return;
-        function release(markSeen) {
-          if (window.__maTikTokIntroReady) return;
-          if (markSeen) { try { localStorage.setItem('matchapp:tiktok-ad-seen:v1', '1'); } catch (_) {} }
-          delete root.dataset.tiktokIntro;
-          var intro = document.getElementById('matchapp-tiktok-intro');
-          if (intro) intro.hidden = true;
-        }
-        document.addEventListener('click', function (e) {
-          var t = e.target;
-          if (t && t.closest && t.closest('.matchapp-tiktok-intro-close')) release(true);
-        }, true);
-        document.addEventListener('DOMContentLoaded', function () {
-          setTimeout(function () { release(false); }, 2500);
-        }, { once: true });
+        delete root.dataset.tiktokIntro;
+        root.style.removeProperty('overflow');
       })();
     </script>
     <div id="matchapp-tiktok-intro" class="matchapp-tiktok-intro" role="dialog" aria-modal="true" aria-label="MatchApp TV Ai video introduction">
@@ -3421,7 +3400,7 @@ const footerYearEl = document.getElementById('footer-year');
 <script src="/app-updates.js?v=202"></script>
 <script defer src="/ads-init.js?v=1"></script>
 <script src="/global-events.js?v=189"></script><script src="/right-glide-rails.js?v=2"></script>
-<script src="/title-captions.js?v=20260919-stable1"></script><script src="/tiktok-showcase.js?v=6"></script>
+<script src="/title-captions.js?v=20260919-stable1"></script><script src="/tiktok-showcase.js?v=7"></script>
 <script src="/daily-checkin.js?v=4"></script>
 <script defer src="/onboarding-tour.js?v=20260919-tour2"></script></body>
 </html>
