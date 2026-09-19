@@ -1,21 +1,21 @@
 {
-  "version": "2026.09.19.1",
+  "version": "2026.09.19.2",
   "date": "2026-09-19",
   "functional": true,
   "notes": {
-    "en": "New Daily Check-in: check in once each day, keep a 7-day streak and earn 5 Extra Matches. The homepage is more compact and foldable, and trending titles now open verified regional details with synopsis, genres, cast, production country, streaming options and cinema lookup.",
-    "pt-BR": "Novo Check-in Diário: faça check-in uma vez por dia, mantenha uma sequência de 7 dias e ganhe 5 Matches Extras. A página inicial ficou mais compacta e recolhível, e os títulos em alta agora abrem detalhes regionais verificados com sinopse, gêneros, elenco, país de produção, opções de streaming e busca de cinemas.",
-    "es": "MatchApp ahora mantiene el logotipo animado de inicio en un tamaño estable desde la primera carga, añade textos de registro e inicio de sesión por teléfono en los 14 idiomas compatibles, amplía el catálogo de septiembre de 2026 con nuevos títulos verificados de Netflix, Prime Video y Disney+ y actualiza los metadatos de búsqueda y la cobertura del sitemap.",
-    "fr": "MatchApp conserve désormais le logo animé de l’accueil à une taille stable dès le premier affichage, ajoute l’inscription et la connexion par téléphone dans les 14 langues prises en charge, enrichit le catalogue de septembre 2026 avec de nouveaux titres vérifiés de Netflix, Prime Video et Disney+, et actualise les métadonnées de recherche ainsi que le sitemap.",
-    "de": "MatchApp hält das animierte Startseiten-Logo jetzt ab dem ersten Bild stabil, ergänzt Telefon-Registrierung und -Anmeldung in allen 14 unterstützten Sprachen, erweitert den September-2026-Katalog um neu verifizierte Titel von Netflix, Prime Video und Disney+ und aktualisiert Suchmetadaten sowie Sitemap-Abdeckung.",
-    "it": "MatchApp ora mantiene stabile la dimensione del logo animato della home fin dal primo caricamento, aggiunge registrazione e accesso tramite telefono in tutte le 14 lingue supportate, amplia il catalogo di settembre 2026 con nuovi titoli verificati di Netflix, Prime Video e Disney+ e aggiorna metadati di ricerca e sitemap.",
-    "tr": "MatchApp artık ana sayfadaki animasyonlu logoyu ilk çizimden itibaren sabit boyutta tutuyor, telefonla kayıt ve giriş metinlerini desteklenen 14 dilin tamamına ekliyor, Eylül 2026 kataloğunu doğrulanmış yeni Netflix, Prime Video ve Disney+ içerikleriyle genişletiyor ve arama metadatası ile site haritası kapsamını güncelliyor.",
-    "ru": "MatchApp теперь сохраняет стабильный размер анимированного логотипа на главной странице с первого отображения, добавляет регистрацию и вход по телефону на всех 14 поддерживаемых языках, расширяет каталог сентября 2026 новыми проверенными новинками Netflix, Prime Video и Disney+ и обновляет поисковые метаданные и sitemap.",
-    "ar": "يحافظ MatchApp الآن على حجم ثابت للشعار المتحرك في الصفحة الرئيسية منذ أول عرض، ويضيف نصوص التسجيل وتسجيل الدخول بالهاتف بجميع اللغات الـ14 المدعومة، ويوسّع كتالوج سبتمبر 2026 بعناوين جديدة موثقة من Netflix وPrime Video وDisney+، ويحدّث بيانات البحث وتغطية خريطة الموقع.",
-    "hi": "MatchApp अब होमपेज के एनिमेटेड लोगो का आकार पहली रेंडरिंग से स्थिर रखता है, सभी 14 समर्थित भाषाओं में फ़ोन साइन-अप और लॉगिन टेक्स्ट जोड़ता है, सितंबर 2026 कैटलॉग को Netflix, Prime Video और Disney+ के नए सत्यापित शीर्षकों से बढ़ाता है, और नई सुविधाओं के लिए सर्च मेटाडेटा व साइटमैप कवरेज अपडेट करता है।",
-    "id": "MatchApp kini menjaga ukuran logo animasi beranda tetap stabil sejak tampilan pertama, menambahkan teks pendaftaran dan login lewat telepon dalam seluruh 14 bahasa yang didukung, memperluas katalog September 2026 dengan judul baru terverifikasi dari Netflix, Prime Video, dan Disney+, serta memperbarui metadata pencarian dan cakupan sitemap.",
-    "ja": "MatchApp は、ホーム画面のアニメーションロゴを初回表示から安定したサイズに保ち、対応する14言語すべてで電話番号による登録・ログイン表示を追加しました。さらに、2026年9月のカタログにNetflix、Prime Video、Disney+の検証済み新作を追加し、検索メタデータとサイトマップも更新しています。",
-    "ko": "MatchApp은 이제 홈 화면의 애니메이션 로고 크기를 첫 렌더링부터 안정적으로 유지하고, 지원되는 14개 언어 모두에 전화번호 가입 및 로그인 문구를 추가했습니다. 또한 2026년 9월 카탈로그에 Netflix, Prime Video, Disney+의 새 검증 타이틀을 추가하고 검색 메타데이터와 사이트맵 범위를 갱신했습니다.",
-    "zh": "MatchApp 现在会从首次渲染开始保持首页动画 Logo 尺寸稳定，并为全部 14 种支持语言加入手机号注册和登录文案；同时扩充 2026 年 9 月片库，加入经核实的 Netflix、Prime Video 和 Disney+ 新内容，并更新搜索元数据与站点地图覆盖。"
+    "en": "Premium responsive header, persistent Kids Mode access, first-visitor walkthrough, broader entertainment and music catalog, transparent no-dead-end matching recovery, and refreshed Android app integration.",
+    "pt-BR": "Cabeçalho premium responsivo, acesso persistente ao Kids Mode, tour para novos visitantes, catálogo ampliado de entretenimento e música, recuperação transparente para evitar becos sem saída nos Matches e integração Android atualizada.",
+    "es": "Cabecera premium adaptable, acceso persistente a Kids Mode, recorrido para nuevos visitantes, catálogo ampliado de entretenimiento y música, recuperación transparente para evitar resultados vacíos e integración Android actualizada.",
+    "fr": "En-tête premium adaptatif, accès permanent au Kids Mode, visite guidée pour les nouveaux visiteurs, catalogue musique et divertissement élargi et intégration Android mise à jour.",
+    "de": "Responsiver Premium-Header, dauerhafter Kids-Mode-Zugang, Einführungsrundgang, erweiterter Musik- und Unterhaltungskatalog und aktualisierte Android-Integration.",
+    "it": "Header premium responsive, accesso persistente a Kids Mode, tour per i nuovi visitatori, catalogo musica e intrattenimento ampliato e integrazione Android aggiornata.",
+    "tr": "Premium duyarlı başlık, kalıcı Kids Mode erişimi, ilk ziyaretçi turu, genişletilmiş müzik/eğlence kataloğu ve güncellenmiş Android entegrasyonu.",
+    "ru": "Адаптивная премиальная шапка, постоянный доступ к Kids Mode, тур для новых посетителей, расширенный каталог музыки и развлечений и обновлённая интеграция Android.",
+    "ar": "رأس متجاوب بمظهر مميز، وصول دائم إلى Kids Mode، جولة للزائر الجديد، كتالوج موسيقى وترفيه أوسع، وتكامل Android محدّث.",
+    "hi": "प्रीमियम रिस्पॉन्सिव हेडर, स्थायी Kids Mode पहुँच, नए विज़िटर का वॉकथ्रू, बड़ा संगीत/मनोरंजन कैटलॉग और अपडेटेड Android इंटीग्रेशन।",
+    "id": "Header premium responsif, akses Kids Mode permanen, tur pengunjung baru, katalog musik/hiburan lebih luas, dan integrasi Android yang diperbarui.",
+    "ja": "プレミアムなレスポンシブヘッダー、常設のKids Mode導線、初回ガイド、拡張された音楽・エンタメカタログ、Android連携の更新。",
+    "ko": "프리미엄 반응형 헤더, 상시 Kids Mode 진입, 첫 방문 가이드, 확장된 음악·엔터테인먼트 카탈로그, Android 통합 업데이트.",
+    "zh": "高级响应式页眉、常驻 Kids Mode 入口、首次访问引导、更丰富的音乐与娱乐目录，以及更新后的 Android 集成。"
   }
 }

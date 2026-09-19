@@ -37,6 +37,7 @@ jobs:
           node --check title-experience.js
           node --check notifications.js
           node --check onboarding-tour.js
+          node --check catalog-plus.js
           node --check kids/onboarding-tour.js
           node --check sw.js
           node --check kids/kids.js
@@ -62,8 +63,10 @@ jobs:
           grep -Fq "MatchNotifications?.followTitle" catalog-media.js
           grep -Fq "addEventListener('push'" sw.js
           grep -Fq 'Resident Evil (2026)' where-to-watch/resident-evil-2026/index.html
-          grep -Fq 'Selected criteria are hard requirements' app.js
-          grep -Fq 'matchapp_first_time_onboarding_v1' onboarding-tour.js
+          grep -Fq 'Exact always wins' app.js
+          grep -Fq 'broaden-platform' app.js
+          grep -Fq "const VERSION='v2'" onboarding-tour.js
+          grep -Fq 'register.html?from=tour' onboarding-tour.js
           grep -Eq "/kids/onboarding-tour\.js\?v=[^\"']+" kids/index.html
           grep -Fq 'blockedOriginCountries' settings.js
           grep -Fq 'What I don’t want to see in my matches' profile/profile.html

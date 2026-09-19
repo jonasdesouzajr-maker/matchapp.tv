@@ -5,15 +5,21 @@ const path=require('node:path');
 const root=path.join(__dirname,'..');
 const read=p=>fs.readFileSync(path.join(root,p),'utf8');
 
-test('normal Match criteria never silently relax mood or other selected fields',()=>{
+test('normal Match fallback is progressive, transparent and keeps hard safety/exclusion fields',()=>{
   const app=read('app.js');
   const start=app.indexOf('function pickGuaranteedCatalog(');
   const end=app.indexOf('// ----------------------------------------------------\n// PRUNE UNSTOCKED CRITERIA OPTIONS',start);
   const fn=app.slice(start,end);
-  assert.match(fn,/Selected criteria are hard requirements/);
-  assert.doesNotMatch(fn,/\['mood',/);
-  assert.doesNotMatch(fn,/mood:\[\]/);
-  assert.doesNotMatch(fn,/ratingOnly|category-exhausted/);
+  assert.match(fn,/Exact always wins/);
+  assert.match(fn,/\['exact', requested\]/);
+  assert.match(fn,/\['broaden-vibe'/);
+  assert.match(fn,/\['broaden-era'/);
+  assert.match(fn,/\['broaden-mood'/);
+  assert.match(fn,/\['broaden-platform'/);
+  assert.doesNotMatch(fn,/rating:\[\]/);
+  assert.doesNotMatch(fn,/cat:\[\]/);
+  assert.match(fn,/hardExcluded/);
+  assert.match(app,/Closest available · secondary filters broadened/);
   assert.match(app,/discoverVerifiedExactTMDB/);
 });
 

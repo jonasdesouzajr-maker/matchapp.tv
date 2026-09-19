@@ -35,22 +35,33 @@ test('account history exhaustion returns an exact recycled title instead of the 
  try{await w.triggerMatch(false);assert(state.rendered,'history exhaustion must still produce a result');const entry=catalog.find(e=>e.title===state.rendered.title);assert(entry&&entry.cats.includes('movie'));assert(entry.moods.includes('funny'));assert.equal(state.rendered._historyFallback,true);assert.equal(state.charges,1);assert(!state.messages.includes('polish.noFresh'));}finally{dom.window.close();}
 });
 
-test('impossible criteria are never relaxed into an off-criteria title',()=>{
- const requested={cat:['movie'],plat:['Impossible service'],mood:['funny'],vibe:['nostalgic'],rating:[],decade:['1900s']};
+test('impossible secondary criteria fall back progressively without dropping category or rating',()=>{
+ const requested={cat:['movie'],plat:['Impossible service'],mood:['funny'],vibe:['nostalgic'],rating:['teen PG-13'],decade:['1900s']};
  const {dom,context}=matching(requested,[]);
  try{
   const pick=context.pickGuaranteedCatalog(requested.cat,requested.plat,requested.mood,requested.vibe,requested.rating,requested.decade);
-  assert.equal(pick,null,'guaranteed picker must not drop platform, decade, vibe or funny');
+  assert(pick,'an over-specific combination should recover instead of dead-ending');
+  const entry=catalog.find(e=>e.title===pick.title);
+  assert(entry&&entry.cats.includes('movie'),'category remains hard');
+  assert(entry.ratings.includes('teen PG-13'),'rating remains hard');
+  assert.equal(pick._relaxedFallback,true);
+  assert.equal(pick._relaxedStage,'broaden-platform');
  }finally{dom.window.close();}
 });
 
-test('guaranteed picker keeps every explicit criterion across categories',()=>{
+test('guaranteed picker never relaxes the selected category across category families',()=>{
  const categories=['movie','series','K-drama','anime','telenovela'].filter(cat=>catalog.some(e=>e.cats.includes(cat)));
  assert(categories.length>=3,'catalog needs multiple category families for this regression');
  for(const cat of categories){
   const {dom,context}=matching({cat:[cat],plat:['Impossible service'],mood:['funny'],vibe:[],rating:[],decade:['1900s']},[]);
-  try{assert.equal(context.pickGuaranteedCatalog([cat],['Impossible service'],['funny'],[],[],['1900s']),null);}
-  finally{dom.window.close();}
+  try{
+   const pick=context.pickGuaranteedCatalog([cat],['Impossible service'],['funny'],[],[],['1900s']);
+   if(pick){
+    const entry=catalog.find(e=>e.title===pick.title);
+    assert(entry&&entry.cats.includes(cat),cat+' must remain a hard category boundary');
+    assert.equal(pick._relaxedFallback,true);
+   }
+  }finally{dom.window.close();}
  }
 });
 
