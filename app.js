@@ -1100,7 +1100,16 @@ const VERIFIED_POSTERS = {
     'Beauty in Black': 'https://image.tmdb.org/t/p/w780/xKk4bFCCpZ9tvjUykvvMYLSBnjo.jpg',
     'American Horror Story: 13': '/ahs13-official.png?v=187',
     'A Vida Secreta do Meu Marido Bilionário': '/marido-bilionario-original.jpg?v=187',
-    'Marido Bilionário': '/marido-bilionario-original.jpg?v=187'
+    'Marido Bilionário': '/marido-bilionario-original.jpg?v=187',
+    "Habeas Corpus": "https://image.tmdb.org/t/p/w780/8JP8OXWufxAXFLfOOj4XU2SEhvV.jpg",
+    "Minha Melhor Amiga": "https://image.tmdb.org/t/p/w780/wGfTFVeguXDXYrwPQ8QMFsaSK2M.jpg",
+    "Virtuosas": "https://image.tmdb.org/t/p/w780/v9wSMFf9Ysj40aHHUJ1VeLStZWn.jpg",
+    "Morte e Vida Madalena": "https://image.tmdb.org/t/p/w780/2q6PV1Dl6htx5fqwPXcOwTTahcx.jpg",
+    "Practical Magic 2": "https://image.tmdb.org/t/p/w780/ogwQOLbCfncjvBhFb5l0OmQH8KC.jpg",
+    "Forgotten Island": "https://image.tmdb.org/t/p/w780/Lr0Ng7Gg02RW1AyfYEL6P0WUvd.jpg",
+    "The Love Hypothesis": "https://image.tmdb.org/t/p/w780/vfZxVHextAGC70zrNhS8lsROqP1.jpg",
+    "Neagley": "https://image.tmdb.org/t/p/w780/lKOPmO0ah17ogQ9hWg7lSd40kIr.jpg"
+
 };
 
 function getVerifiedPoster(title) {

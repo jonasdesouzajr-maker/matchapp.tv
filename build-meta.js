@@ -33,18 +33,18 @@ window.MATCHAPP_BUILD = '2026.09.18.6';
 /* Search freshness + truthfulness layer. */
 (function () {
   'use strict';
-  const TODAY = '2026-09-18';
+  const TODAY = '2026-09-19';
   const TRENDING = [
+    'Habeas Corpus',
+    'Minha Melhor Amiga',
+    'Virtuosas',
     'Antártida',
-    'Era Uma Vez Minha 1ª Vez',
-    'Quem Ama Cuida',
-    'Vermelho Sangue',
-    'Amor Sob Vigilância',
+    'Morte e Vida Madalena',
     'Resident Evil',
-    'Monster: The Lizzie Borden Story',
-    'The Scandal',
-    'Slow Horses',
-    'Outlander: Blood of My Blood'
+    'Practical Magic 2',
+    'Forgotten Island',
+    'The Love Hypothesis',
+    'Neagley'
   ];
   function upsertMeta(name, content) {
     let el = document.querySelector('meta[name="'+name+'"]');
