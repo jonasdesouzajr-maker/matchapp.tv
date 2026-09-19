@@ -76,3 +76,13 @@ test('approved reference top box scopes orbit animation to the logo only',()=>{
   assert.match(home,/lazy-bar--header/);
   assert.match(lazy,/deck\.insertBefore\(bar,accountAnchor\)/);
 });
+
+test('normal Home refresh starts at the top while intentional deep links are preserved',()=>{
+  const html=read('index.html');
+  assert.match(html,/id="matchapp-home-scroll-origin"/);
+  assert.match(html,/scrollRestoration='manual'/);
+  assert.match(html,/window\.scrollTo\(0,0\)/);
+  assert.match(html,/Boolean\(location\.hash\)/);
+  assert.match(html,/q\.get\('ask'\)==='1'/);
+  assert.match(html,/q\.get\('news'\)/);
+});
