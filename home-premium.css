@@ -690,3 +690,10 @@ html body.page-home.lazy-mode .lazy-open{margin-block:2px!important}
     padding:8px 4px!important;
   }
 }
+
+/* Canonical AdSense labels */
+html body.page-home .ma-ad-label{
+  display:block!important;margin:0 0 6px!important;text-align:center!important;
+  color:#8f849d!important;font:700 9px/1.2 Inter,Arial,sans-serif!important;
+  letter-spacing:.12em!important;text-transform:uppercase!important;
+}
