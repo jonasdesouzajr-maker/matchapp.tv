@@ -31,6 +31,6 @@ load();loadRedesign();applyAll();const ready=()=>{applyAll();installKidsModeTogg
   while(p.length>1&&p.endsWith('/'))p=p.slice(0,-1);
   var target=p==='/'||p==='/index.html'||p==='/discover.html'||p==='/together.html'||p==='/pricing'||p==='/pricing/pricing.html';
   if(!target)return;
-  if(!document.querySelector('link[data-matchapp-ia]')){var l=document.createElement('link');l.rel='stylesheet';l.href='/matchapp-ia.css?v=20260919-ia7';l.dataset.matchappIa='1';document.head.appendChild(l)}
-  if(!document.querySelector('script[data-matchapp-ia]')){var s=document.createElement('script');s.src='/matchapp-ia.js?v=20260919-ia7';s.defer=true;s.dataset.matchappIa='1';document.head.appendChild(s)}
+  if(!document.querySelector('link[data-matchapp-ia]')){var l=document.createElement('link');l.rel='stylesheet';l.href='/matchapp-ia.css?v=20260919-ia8';l.dataset.matchappIa='1';document.head.appendChild(l)}
+  if(!document.querySelector('script[data-matchapp-ia]')){var s=document.createElement('script');s.src='/matchapp-ia.js?v=20260919-ia8';s.defer=true;s.dataset.matchappIa='1';document.head.appendChild(s)}
 })();
