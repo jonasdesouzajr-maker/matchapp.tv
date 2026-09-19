@@ -271,4 +271,42 @@ function boot(){
  document.addEventListener('matchapp:langchange',()=>setTimeout(applyLanguage,0));
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
+
+/* Fun UI sound palette: synthesized on demand, no audio assets or network dependency. */
+let maAudioCtx=null;
+function maSoundEnabled(){try{return localStorage.getItem('match_soundEnabled')!=='false'}catch(_){return true}}
+function maTone(freq,duration,type='sine',gain=.025,delay=0){
+  if(!maSoundEnabled())return;
+  const AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;
+  maAudioCtx=maAudioCtx||new AC();const ctx=maAudioCtx;
+  const osc=ctx.createOscillator(),g=ctx.createGain(),start=ctx.currentTime+delay;
+  osc.type=type;osc.frequency.setValueAtTime(freq,start);
+  g.gain.setValueAtTime(.0001,start);g.gain.exponentialRampToValueAtTime(Math.max(.001,gain),start+.012);
+  g.gain.exponentialRampToValueAtTime(.0001,start+duration);
+  osc.connect(g);g.connect(ctx.destination);osc.start(start);osc.stop(start+duration+.02);
+}
+function maUISound(kind){
+  if(!maSoundEnabled())return;
+  if(kind==='primary'){maTone(392,.11,'triangle',.028);maTone(659,.14,'sine',.022,.055);maTone(880,.16,'sine',.016,.11);return}
+  if(kind==='select'){maTone(620,.07,'sine',.018);maTone(830,.08,'triangle',.012,.035);return}
+  if(kind==='tab'){maTone(330,.07,'triangle',.016);maTone(494,.08,'triangle',.014,.045);return}
+  if(kind==='open'){maTone(270,.08,'sine',.015);maTone(405,.10,'sine',.012,.045);return}
+  if(kind==='share'){maTone(523,.08,'triangle',.017);maTone(784,.08,'triangle',.016,.05);maTone(1046,.12,'sine',.013,.10);return}
+  maTone(420,.055,'sine',.012);
+}
+window.maPlayUISound=maUISound;
+document.addEventListener('click',e=>{
+  const target=e.target.closest('button,a,[role="button"],summary');if(!target||target.matches('.sound-toggle-btn'))return;
+  let kind='tap';
+  if(target.matches('.ma-primary,.gold-btn,.ma-plan-cta,.composer-send,[data-i18n="q.submit"]'))kind='primary';
+  else if(target.matches('.ma-chip,.crit-chip'))kind='select';
+  else if(target.matches('.ma-tab,.ma-billing-toggle button'))kind='tab';
+  else if(target.matches('summary,.crit-toggle,.ma-menu-button'))kind='open';
+  else if(target.matches('.share-cta,[id*="share"],[data-action="share"]'))kind='share';
+  maUISound(kind);
+  if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&target.animate){
+    target.animate([{transform:'scale(1)'},{transform:'scale(.965)'},{transform:'scale(1.018)'},{transform:'scale(1)'}],{duration:180,easing:'cubic-bezier(.2,.9,.25,1.2)'});
+  }
+},{passive:true});
+
 })();
