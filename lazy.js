@@ -42,8 +42,7 @@
         { sel: '.top-ask-wrap',         label: '🤖 Ask MatchApp Ai — chat about what to watch', icon: '🤖' },        { sel: '#swifties-spotify',     label: '🎵 Spotify spotlight — music & video picks', icon: '🎵' },
         { sel: '#questionnaire-box',    label: '🎯 Find my match — mood, genre, platform & more', icon: '🎯' },
         { sel: '#search-box',           label: '🔎 Search a specific title', icon: '🔎' },
-        { sel: '#premiere-disclosure',  label: '🎬 Premiere spotlight — featured release', icon: '🎬' },        { sel: '#global-events',        label: '🎪 Events happening now', icon: '🎪' },
-        { sel: '#how-it-works',         label: '❓ How MatchApp works', icon: '❓' },
+        { sel: '#premiere-disclosure',  label: '🎬 Premiere spotlight — featured release', icon: '🎬' },        { sel: '#how-it-works',         label: '❓ How MatchApp works', icon: '❓' },
         { sel: '#ai-concierge-section', label: '🤖 About the AI concierge', icon: '🤖' },
         { sel: '#matchapp-tiktok-showcase', label: '♪ MatchApp on TikTok — watch & share', icon: '♪' }
     ];
