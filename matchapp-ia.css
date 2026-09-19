@@ -311,3 +311,199 @@ body.ma-ia-pricing>.matchapp-kids-toggle{display:none!important}
 body.page-home.ma-checkin-open #daily-match-checkin{display:block!important;margin:14px 0!important}
 body.ma-guest .ma-global-header .matchapp-notification-button{display:none!important}
 body.ma-guest .ma-menu [data-signed-only="1"]{display:none!important}
+
+
+/* ===== MATCHAPP FUN / MOTION PASS ===== */
+:root{--ma-stage-width:960px;--ma-gold-hot:#ffd96a;--ma-gold-white:#fff4bd}
+html body.page-home .container{
+  width:min(calc(100% - 24px),var(--ma-stage-width))!important;
+  max-width:var(--ma-stage-width)!important;
+}
+html body.page-home :is(.home-hero,.ma-concierge,#loading-box,#result-box,#trending-rail,#premiere-disclosure,#global-events){
+  width:100%!important;max-width:var(--ma-stage-width)!important;margin-left:auto!important;margin-right:auto!important;box-sizing:border-box!important;
+}
+
+@keyframes maGoldTravel{
+  0%{background-position:0 0,0% 50%}
+  50%{background-position:0 0,100% 50%}
+  100%{background-position:0 0,200% 50%}
+}
+@keyframes maGoldPulse{
+  0%,100%{box-shadow:0 14px 40px rgba(0,0,0,.30),0 0 0 rgba(255,217,106,0)}
+  50%{box-shadow:0 18px 48px rgba(0,0,0,.36),0 0 28px rgba(255,217,106,.20)}
+}
+@keyframes maButtonSweep{
+  0%,20%{transform:translateX(-180%) skewX(-20deg);opacity:0}
+  35%{opacity:.9}
+  60%{opacity:.9}
+  78%,100%{transform:translateX(420%) skewX(-20deg);opacity:0}
+}
+@keyframes maChipPulse{
+  0%,100%{box-shadow:0 0 0 rgba(255,217,106,0)}
+  50%{box-shadow:0 0 18px rgba(255,217,106,.28)}
+}
+@keyframes maChevronBounce{
+  0%,100%{translate:0 -1px}
+  50%{translate:0 3px}
+}
+@keyframes maBrandFloat{
+  0%,100%{transform:translateY(0) scale(1);filter:drop-shadow(0 0 8px rgba(255,217,106,.18))}
+  50%{transform:translateY(-2px) scale(1.018);filter:drop-shadow(0 0 18px rgba(255,217,106,.34))}
+}
+@keyframes maRiseIn{
+  from{opacity:0;transform:translateY(14px) scale(.988)}
+  to{opacity:1;transform:none}
+}
+
+/* Animated gold border on the real product surfaces. */
+html body.page-home .ma-concierge,
+html body.page-home #result-box,
+html body.page-home #trending-rail,
+html body.page-home #premiere-disclosure>.spotlight-card,
+html body.page-home #global-events details,
+body.ai-chat-page .discover-head,
+body.ma-ia-together .premium-card,
+body.ma-ia-pricing .ma-plan,
+body.ma-ia-pricing .ma-secondary-product{
+  border:1.5px solid transparent!important;
+  border-radius:24px!important;
+  background:
+    linear-gradient(155deg,rgba(10,23,45,.96),rgba(27,16,48,.96)) padding-box,
+    linear-gradient(115deg,rgba(120,82,19,.55),var(--ma-gold-hot),var(--ma-gold-white),#c99325,var(--ma-gold-hot),rgba(120,82,19,.55)) border-box!important;
+  background-size:100% 100%,260% 100%!important;
+  animation:maGoldTravel 5.4s linear infinite,maGoldPulse 4.2s ease-in-out infinite!important;
+}
+html body.page-home .ma-concierge,
+body.ai-chat-page .discover-head{animation-name:maGoldTravel,maGoldPulse,maRiseIn!important;animation-duration:5.4s,4.2s,.52s!important;animation-timing-function:linear,ease-in-out,cubic-bezier(.2,.8,.2,1)!important}
+
+/* Fields use the same radius and shimmer language. */
+.ma-concierge :is(.crit-toggle,#specific-search-input,.mic-btn,.search-examples button),
+body.ai-chat-page :is(.composer,.composer-send),
+body.ma-ia-together :is(.tg-field select,.tg-field input,.tg-field textarea,.gold-btn,.secondary-btn),
+body.ma-ia-pricing :is(.ma-plan-cta,.ma-billing-toggle button){
+  border:1px solid transparent!important;
+  border-radius:14px!important;
+  background:
+    linear-gradient(145deg,rgba(5,12,25,.92),rgba(20,12,36,.94)) padding-box,
+    linear-gradient(110deg,rgba(229,193,88,.24),rgba(255,237,159,.88),rgba(176,120,31,.28),rgba(255,217,106,.72)) border-box!important;
+  background-size:100% 100%,240% 100%!important;
+  animation:maGoldTravel 6.6s linear infinite!important;
+  transition:transform .18s ease,box-shadow .18s ease,filter .18s ease!important;
+}
+.ma-concierge :is(.crit-toggle,#specific-search-input,.mic-btn,.search-examples button):hover,
+body.ai-chat-page :is(.composer,.composer-send):hover,
+body.ma-ia-together :is(.tg-field select,.tg-field input,.tg-field textarea,.gold-btn,.secondary-btn):hover,
+body.ma-ia-pricing :is(.ma-plan-cta,.ma-billing-toggle button):hover{
+  transform:translateY(-2px) scale(1.006)!important;
+  box-shadow:0 10px 28px rgba(0,0,0,.28),0 0 22px rgba(255,217,106,.20)!important;
+}
+
+/* Chips are playful and visibly interactive. */
+.ma-chip,.crit-chip{
+  transition:transform .16s cubic-bezier(.2,.9,.25,1.25),box-shadow .18s ease,filter .18s ease!important;
+}
+.ma-chip:hover,.crit-chip:hover{transform:translateY(-2px) scale(1.035)!important;filter:brightness(1.12)!important}
+.ma-chip[aria-pressed="true"],.crit-chip.is-on{
+  animation:maChipPulse 2.1s ease-in-out infinite!important;
+}
+.ma-chip:active,.crit-chip:active{transform:scale(.94)!important}
+
+/* Primary CTA gets an obvious cinema-light sweep. */
+.ma-primary,
+.ma-concierge #questionnaire-box>button[data-i18n="q.submit"],
+.ma-concierge #search-box .gold-btn,
+body.ai-chat-page .composer-send,
+body.ma-ia-together .gold-btn,
+body.ma-ia-pricing .ma-plan-cta{
+  position:relative!important;isolation:isolate!important;overflow:hidden!important;
+  box-shadow:0 12px 30px rgba(229,185,71,.22),0 0 20px rgba(255,217,106,.13)!important;
+  transition:transform .16s cubic-bezier(.2,.9,.25,1.25),box-shadow .18s ease!important;
+}
+.ma-primary::after,
+.ma-concierge #questionnaire-box>button[data-i18n="q.submit"]::after,
+.ma-concierge #search-box .gold-btn::after,
+body.ai-chat-page .composer-send::after,
+body.ma-ia-together .gold-btn::after,
+body.ma-ia-pricing .ma-plan-cta::after{
+  content:""!important;display:block!important;position:absolute!important;top:-30%!important;bottom:-30%!important;left:-35%!important;width:24%!important;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.85),transparent)!important;
+  pointer-events:none!important;animation:maButtonSweep 2.5s ease-in-out infinite!important;
+}
+.ma-primary:hover,
+.ma-concierge #questionnaire-box>button[data-i18n="q.submit"]:hover,
+.ma-concierge #search-box .gold-btn:hover,
+body.ai-chat-page .composer-send:hover,
+body.ma-ia-together .gold-btn:hover,
+body.ma-ia-pricing .ma-plan-cta:hover{
+  transform:translateY(-3px) scale(1.015)!important;
+  box-shadow:0 16px 36px rgba(0,0,0,.32),0 0 30px rgba(255,217,106,.30)!important;
+}
+.ma-primary:active,
+.ma-concierge #questionnaire-box>button[data-i18n="q.submit"]:active,
+.ma-concierge #search-box .gold-btn:active,
+body.ai-chat-page .composer-send:active,
+body.ma-ia-together .gold-btn:active,
+body.ma-ia-pricing .ma-plan-cta:active{transform:scale(.975)!important}
+
+/* One elegant fold indicator: no minus/plus glyphs on fields. */
+.ma-concierge .match-more-filters>summary{position:relative!important;list-style:none!important;padding-right:38px!important}
+.ma-concierge .match-more-filters>summary::-webkit-details-marker{display:none!important}
+.ma-concierge .match-more-filters>summary::marker{content:""}
+.ma-concierge .match-more-filters>summary::after{
+  content:""!important;position:absolute!important;right:14px!important;top:50%!important;width:10px!important;height:10px!important;
+  border-right:2px solid var(--ma-gold-hot)!important;border-bottom:2px solid var(--ma-gold-hot)!important;
+  transform:translateY(-70%) rotate(45deg)!important;filter:drop-shadow(0 0 5px rgba(255,217,106,.65))!important;
+  animation:maChevronBounce 1.5s ease-in-out infinite!important;
+}
+.ma-concierge .match-more-filters[open]>summary::after{transform:translateY(-25%) rotate(225deg)!important}
+.crit-toggle-chevron{font-size:0!important;width:20px!important;height:20px!important;margin-left:auto!important;position:relative!important;flex:0 0 20px!important}
+.crit-toggle-chevron::before{
+  content:""!important;position:absolute!important;left:5px!important;top:3px!important;width:9px!important;height:9px!important;
+  border-right:2px solid var(--ma-gold-hot)!important;border-bottom:2px solid var(--ma-gold-hot)!important;
+  transform:rotate(45deg)!important;filter:drop-shadow(0 0 5px rgba(255,217,106,.60))!important;
+  animation:maChevronBounce 1.5s ease-in-out infinite!important;
+}
+.crit-open .crit-toggle-chevron::before{transform:rotate(225deg)!important;top:8px!important}
+.crit-more{position:relative!important;padding-right:34px!important}
+.crit-more::after{
+  content:""!important;position:absolute!important;right:14px!important;top:50%!important;width:8px!important;height:8px!important;
+  border-right:2px solid currentColor!important;border-bottom:2px solid currentColor!important;transform:translateY(-70%) rotate(45deg)!important;
+}
+.crit-chips[data-expanded="1"] .crit-more::after{transform:translateY(-25%) rotate(225deg)!important}
+
+/* Brand and content entrances carry more life without scroll traps. */
+.ma-global-header .ma-brand-image{animation:maBrandFloat 3.4s ease-in-out infinite!important}
+html body.page-home .home-hero{animation:maRiseIn .48s cubic-bezier(.2,.8,.2,1) both!important}
+html body.page-home :is(#trending-rail,#premiere-disclosure,#global-events){animation:maRiseIn .62s cubic-bezier(.2,.8,.2,1) both!important}
+
+@media(min-width:1000px){
+  html body.page-home .container{max-width:var(--ma-stage-width)!important}
+  html body.page-home .ma-concierge{padding:20px 22px!important}
+  html body.page-home .home-h1{font-size:clamp(38px,3.6vw,52px)!important}
+  .ma-chip{min-height:44px!important;padding:9px 14px!important;font-size:13px!important}
+  .ma-concierge .crit-toggle{min-height:48px!important;padding:11px 14px!important}
+  .ma-concierge #questionnaire-box>button[data-i18n="q.submit"],
+  .ma-concierge #search-box .gold-btn{min-height:56px!important;font-size:16px!important}
+}
+@media(max-width:640px){
+  html body.page-home .container{width:calc(100% - 12px)!important}
+  html body.page-home :is(.home-hero,.ma-concierge,#loading-box,#result-box,#trending-rail,#premiere-disclosure,#global-events){max-width:100%!important}
+  .ma-global-header .ma-brand-image{animation-duration:4.2s!important}
+}
+@media(prefers-reduced-motion:reduce){
+  html body.page-home .ma-concierge,
+  html body.page-home #result-box,
+  html body.page-home #trending-rail,
+  html body.page-home #premiere-disclosure>.spotlight-card,
+  html body.page-home #global-events details,
+  body.ai-chat-page .discover-head,
+  body.ma-ia-together .premium-card,
+  body.ma-ia-pricing .ma-plan,
+  body.ma-ia-pricing .ma-secondary-product,
+  .ma-concierge :is(.crit-toggle,#specific-search-input,.mic-btn,.search-examples button),
+  .ma-chip[aria-pressed="true"],.crit-chip.is-on,
+  .ma-global-header .ma-brand-image,
+  .ma-primary::after,
+  .ma-concierge #questionnaire-box>button[data-i18n="q.submit"]::after,
+  .ma-concierge #search-box .gold-btn::after{animation:none!important}
+}
