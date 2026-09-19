@@ -808,17 +808,13 @@ html body.page-home .lazy-head[aria-expanded="true"]::after{
 }
 
 /* Kill every legacy fold glyph so the UI never shows + and arrow/minus together. */
-html body.page-home :is(
-  .ge-sum-chev,.crit-toggle-chevron,.lazy-head-chevron,
-  .more-filters-close,.more-filters-open
-){display:none!important}
+html body.page-home :is(.ge-sum-chev,.crit-toggle-chevron,.lazy-head-chevron){display:none!important}
 
-/* Restore useful labels after hiding the old + / minus text spans. */
-html body.page-home .match-more-filters>summary::before{
-  content:"More filters"!important;
+/* Keep the translated More/Fewer Filters labels; only the right-side + is visual. */
+html body.page-home .match-more-filters .more-filters-open,
+html body.page-home .match-more-filters .more-filters-close{
   color:#e8dfef!important;font-weight:850!important;font-size:13px!important;
 }
-html body.page-home .match-more-filters[open]>summary::before{content:"Fewer filters"!important}
 
 /* Global Events must be one bar, not a bar inside a second framed box. */
 html body.page-home #global-events{
