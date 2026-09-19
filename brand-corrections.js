@@ -2,7 +2,7 @@
 (function(){
   'use strict';
 
-  const LOGO_ASSET='/assets/brand/matchapp-logo-8k.png?v=20260919-live1';
+  const LOGO_ASSET='/assets/brand/matchapp-logo-8k.png?v=20260919-polished-box2';
   const isKidsRoute=()=>{const p=location.pathname.toLowerCase();return p==='/kids'||p.startsWith('/kids/');};
 
   const AI_LABELS={
