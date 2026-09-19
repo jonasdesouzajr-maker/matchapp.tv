@@ -14,22 +14,18 @@ test('news article generator permanently includes the existing GTM container',()
   assert.match(src,/for\s*\(const i of archive\)/,'all retained articles must be regenerated when the template changes');
 });
 
-test('sitemap news article count exactly matches article index files on disk',()=>{
+test('noindex news source wrappers stay out of the canonical sitemap',()=>{
   const articleRoot=path.join(root,'news','articles');
-  const slugs=fs.readdirSync(articleRoot,{withFileTypes:true})
-    .filter(entry=>entry.isDirectory()&&fs.existsSync(path.join(articleRoot,entry.name,'index.html')))
-    .map(entry=>entry.name)
-    .sort();
-
   const sitemap=read('sitemap.xml');
-  const urls=[...sitemap.matchAll(/<loc>https:\/\/matchapp\.tv\/news\/articles\/([^<\/]+)\/<\/loc>/g)]
-    .map(m=>m[1])
-    .sort();
-
-  assert.equal(urls.length,slugs.length,'every article on disk must have exactly one sitemap URL');
-  assert.deepEqual(urls,slugs);
+  assert.match(sitemap,/<loc>https:\/\/matchapp\.tv\/news\/<\/loc>/);
+  assert.doesNotMatch(sitemap,/https:\/\/matchapp\.tv\/news\/articles\//);
+  for(const entry of fs.readdirSync(articleRoot,{withFileTypes:true})){
+    if(!entry.isDirectory())continue;
+    const file=path.join(articleRoot,entry.name,'index.html');
+    if(!fs.existsSync(file))continue;
+    assert.match(fs.readFileSync(file,'utf8'),/meta name="robots" content="noindex,follow"/);
+  }
 });
-
 test('every generated news article currently carries GTM script and noscript fallback',()=>{
   const articleRoot=path.join(root,'news','articles');
   const missing=[];

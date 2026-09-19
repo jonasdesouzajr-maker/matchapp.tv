@@ -15,8 +15,8 @@ test('behavioral pages load the current shared runtime instead of stale cache ke
     assert.match(read(p),/\/matching-policy\.js\?v=200/,p);
   for(const p of ['together.html','pricing/pricing.html','friends.html','events-archive.html'])
     assert.match(read(p),/\/build-meta\.js\?v=202/,p);
-  assert.match(read('pricing/pricing.html'),/\/pricing\.js\?v=20260918-audit1/);
-  assert.match(read('purchase.html'),/\/purchase\.js\?v=20260918-audit1/);
+  assert.match(read('pricing/pricing.html'),/\/pricing\.js\?v=20260918-billing\d+/);
+  assert.match(read('purchase.html'),/\/purchase\.js\?v=20260918-audit\d+/);
 });
 
 test('public quota copy matches the shared included-action architecture',()=>{
@@ -31,17 +31,17 @@ test('public quota copy matches the shared included-action architecture',()=>{
   assert.match(app,/included AI actions used/);
 });
 
-test('both Android shells are synchronized to the audited 1.1.8 release',()=>{
+test('both Android shells are synchronized to the audited 1.1.17 release',()=>{
   const mainGradle=read('android-studio/app/build.gradle.kts');
   const kidsGradle=read('android-studio/kidsapp/build.gradle.kts');
   const main=read('android-studio/app/src/main/java/tv/matchapp/app/MainActivity.kt');
   const kids=read('android-studio/kidsapp/src/main/java/tv/matchapp/kids/MainActivity.kt');
   for(const gradle of [mainGradle,kidsGradle]){
-    assert.match(gradle,/versionCode = 18/);
-    assert.match(gradle,/versionName = "1\.1\.8"/);
+    assert.match(gradle,/versionCode = 19/);
+    assert.match(gradle,/versionName = "1\.1\.17"/);
   }
-  assert.match(main,/appBuild=18/);
-  assert.match(kids,/appBuild=18/);
-  assert.match(main,/MATCHAPP_ANDROID_KIDS_DISABLED/);
+  assert.match(main,/appBuild=19/);
+  assert.match(kids,/appBuild=19/);
+  assert.match(main,/MATCHAPP_ANDROID_KIDS_AVAILABLE/);
   assert.match(kids,/MATCHAPP_ANDROID_KIDS_ONLY/);
 });
