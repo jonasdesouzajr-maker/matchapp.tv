@@ -40,6 +40,7 @@
    duplicated script tag to every HTML surface; this file is already part of
    the maintained shell on the main, profile, pricing and purchase flows. */
 (function(){'use strict';
- if(!document.querySelector('link[data-final-audit]')){const l=document.createElement('link');l.rel='stylesheet';l.href='/final-audit.css?v=194';l.dataset.finalAudit='1';document.head.appendChild(l);}
+ const isHome=location.pathname==='/'||location.pathname==='/index.html';
+ if(!isHome&&!document.querySelector('link[data-final-audit]')){const l=document.createElement('link');l.rel='stylesheet';l.href='/final-audit.css?v=194';l.dataset.finalAudit='1';document.head.appendChild(l);}
  if(!document.querySelector('script[data-final-audit]')){const s=document.createElement('script');s.src='/final-audit.js?v=194';s.async=false;s.dataset.finalAudit='1';document.head.appendChild(s);}
 })();
