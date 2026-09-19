@@ -359,8 +359,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val HOME = "https://matchapp.tv/kids/?utm_source=android_kids_app&appBuild=13"
-        const val APP_UA = "MatchAppTVAndroid/1.1.11 MatchAppAiKidsAndroid/1.1.11"
+        const val HOME = "https://matchapp.tv/kids/?utm_source=android_kids_app&appBuild=14"
+        const val APP_UA = "MatchAppTVAndroid/1.1.12 MatchAppAiKidsAndroid/1.1.12"
 
         private const val KIDS_APP_JS = """
             (function(){
