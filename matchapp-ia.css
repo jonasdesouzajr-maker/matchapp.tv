@@ -1718,3 +1718,30 @@ html body.page-home :is(
   }
 }
 
+
+
+/* ===== HEADER ORB LEFT-EDGE POSITION FIX =====
+   Position only: keep current logo size/animation, anchor it to the far-left
+   INSIDE edge of the top box, and reserve its full footprint so nothing overlaps it. */
+@media (min-width:1261px){
+  html body.page-home #mh-topbox .ma-brand-orb-stage{
+    width:270px!important;
+    flex-basis:270px!important;
+    margin-left:-10px!important;
+    margin-right:10px!important;
+  }
+  html body.page-home #mh-topbox .ma-brand-orb{
+    left:0!important;
+  }
+}
+@media (min-width:900px) and (max-width:1260px){
+  html body.page-home #mh-topbox .ma-brand-orb-stage{
+    width:232px!important;
+    flex-basis:232px!important;
+    margin-left:-8px!important;
+    margin-right:8px!important;
+  }
+  html body.page-home #mh-topbox .ma-brand-orb{
+    left:0!important;
+  }
+}
