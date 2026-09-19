@@ -302,3 +302,12 @@ body.ma-ia-pricing .main-layout{padding-top:20px!important}
   .ma-cookie p{font-size:9.5px!important}
   .ma-cookie button{min-height:38px!important;padding:6px 8px!important;font-size:9.5px!important}
 }
+
+/* Core-page menu owns Kids/Check-in; no floating mode button in the redesigned shell. */
+body.ma-ia-home>.matchapp-kids-toggle,
+body.ma-ia-discover>.matchapp-kids-toggle,
+body.ma-ia-together>.matchapp-kids-toggle,
+body.ma-ia-pricing>.matchapp-kids-toggle{display:none!important}
+body.page-home.ma-checkin-open #daily-match-checkin{display:block!important;margin:14px 0!important}
+body.ma-guest .ma-global-header .matchapp-notification-button{display:none!important}
+body.ma-guest .ma-menu [data-signed-only="1"]{display:none!important}
