@@ -124,8 +124,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="/style.css?v=202">\n    <link rel="stylesheet" href="/home-ux-lock.css?v=1">
-<link rel="stylesheet" href="/desktop-home-restore.css?v=compact-desktop-3">\n    <link rel="stylesheet" href="/rail-parity.css?v=1">
+    <link rel="stylesheet" href="/style.css?v=202">
+    <link rel="stylesheet" href="/home-ux-lock.css?v=1">
+<link rel="stylesheet" href="/desktop-home-restore.css?v=compact-desktop-3">
+    <link rel="stylesheet" href="/rail-parity.css?v=1">
     <!-- Smart TV stylesheet. Entirely scoped under body.tv-mode, so a
          non-TV visitor pays one small file and sees no change. -->
     <link rel="stylesheet" href="/tv.css?v=187">
@@ -248,7 +250,8 @@
 
 .app-header { display: flex; align-items: center; justify-content: space-between; padding: 15px 25px; background: linear-gradient(135deg, rgba(19,7,52,0.97), rgba(26,25,31,0.97)); border-bottom: 2px solid var(--gold); box-shadow: 0 4px 40px rgba(216,156,72,0.45); flex-wrap: wrap; gap: 15px; position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(15px); }
         .header-brand-area { display: flex; align-items: center; gap: 15px; text-decoration: none; }
-        .brand-logo { width: 60px; height: 60px; border-radius: 50%; border: 2px solid var(--gold); box-shadow: 0 0 25px var(--gold); }\n        .brand-logo-placeholder { display:block; box-sizing:border-box; background:transparent; overflow:hidden; }
+        .brand-logo { width: 60px; height: 60px; border-radius: 50%; border: 2px solid var(--gold); box-shadow: 0 0 25px var(--gold); }
+        .brand-logo-placeholder { display:block; box-sizing:border-box; background:transparent; overflow:hidden; }
         .app-title-main { font-size: 28px; font-weight: 900; color: var(--gold); letter-spacing: 1px; }
 
         /* ===== THE GRID =====
@@ -1549,8 +1552,8 @@
 </style>
     <link rel="stylesheet" href="/home-premium.css?v=20260919-density5">
 
-<link rel="stylesheet" href="/matchapp-ia.css?v=20260919-ia16" data-matchapp-ia="1">
-<script defer src="/matchapp-ia.js?v=20260919-ia16" data-matchapp-ia="1"></script>
+<link rel="stylesheet" href="/matchapp-ia.css?v=20260919-ia17" data-matchapp-ia="1">
+<script defer src="/matchapp-ia.js?v=20260919-ia17" data-matchapp-ia="1"></script>
 </head>
 <body class="page-home">
     <script>
@@ -2468,18 +2471,24 @@
 
     <header id="mh-topbox" class="app-header">
         <div class="mh-head">
-        <div id="home-brand-lockup" class="header-brand-area">
-            <a href="/" class="matchapp-brand-link home-brand-home" aria-label="MatchApp TV home">
-                <span class="brand-logo brand-logo-placeholder" aria-hidden="true" style="width:var(--home-logo-size,4.5rem)!important;height:var(--home-logo-size,4.5rem)!important;flex:0 0 var(--home-logo-size,4.5rem)!important"></span>
-                <span class="home-brand-name" aria-label="MatchApp TV">
-                    <span class="home-brand-match">MatchApp</span>
-                    <span class="home-brand-tv">TV</span>
-                </span>
-            </a>
-            <a class="home-ai-link" href="/discover.html?focus=start&new=1" aria-label="Start a new MatchApp AI chat" title="Start a new AI chat">
-                <span class="home-ai-label home-ai-default" aria-hidden="true">Ai</span>
-                <span class="home-ai-label home-ai-pt" aria-hidden="true">iA</span>
-            </a>
+        <div id="home-brand-lockup" class="header-brand-area ma-brand-stage">
+            <div class="ma-brand-lockup" aria-label="MatchApp TV Ai">
+                <a class="ma-brand-home-link" href="/" aria-label="MatchApp TV home">
+                    <span class="ma-brand-orb-stage" aria-hidden="true">
+                        <img class="ma-brand-orb" src="/assets/brand/brandkit/matchapp-orb-live.svg?v=20260919-orb1" alt="" width="330" height="330">
+                    </span>
+                    <span class="ma-brand-copy">
+                        <span class="ma-wordmark"><span class="ma-word-match">Match</span><span class="ma-word-app">App</span></span>
+                        <span class="ma-tv">TV</span>
+                    </span>
+                </a>
+                <button type="button" class="ma-ai-brand-button" aria-label="Start a new chat with MatchApp Ai" title="Ask MatchApp Ai">
+                    <span class="ma-ai-letters">Ai</span>
+                    <span class="ma-ai-star ma-ai-star-one" aria-hidden="true">✦</span>
+                    <span class="ma-ai-star ma-ai-star-two" aria-hidden="true">✧</span>
+                    <span class="ma-ai-star ma-ai-star-three" aria-hidden="true">✦</span>
+                </button>
+            </div>
         </div>
             <p class="mh-tagline" data-i18n="home.h1">What Should I Watch Tonight?</p>
         </div>
@@ -3662,14 +3671,15 @@
     <script src="/match-localization.js?v=187"></script>
 <script src="/app.js?v=210"></script><script src="/phone-auth-i18n.js?v=1"></script><script src="/phone-auth.js?v=1"></script><script src="/phone-auth-localize.js?v=1"></script>
     <script src="/catalog-media.js?v=20260919-titlecards1"></script>
-    <script src="/home-ux-lock.js?v=1"></script>\n    <script src="/title-experience.js?v=20260919-titlecards1"></script>
+    <script src="/home-ux-lock.js?v=1"></script>
+    <script src="/title-experience.js?v=20260919-titlecards1"></script>
     <script src="/install-progress.js?v=200"></script>
     <!-- Loads AFTER app.js so the chips it builds can call straight into the
          matcher, and non-deferred so the form is never briefly interactive as
          a plain single-choice select. -->
     <script src="/tmdb.js?v=193"></script>
     <script src="/criteria.js?v=191"></script>
-    <script src="/lazy.js?v=20260919-fold2"></script>
+    <script src="/lazy.js?v=20260919-fold3"></script>
     <script src="/tv.js?v=187"></script>
     <script src="/taste.js?v=187"></script>
     <script src="/contacts.js?v=187"></script>
