@@ -137,7 +137,7 @@ window.MATCHAPP_BUILD = '2026.09.19.1';
 (function(){
   if(document.querySelector('script[data-matchapp-final-wiring]'))return;
   const s=document.createElement('script');
-  s.src='/final-wiring.js?v=20260918-logo-news2';
+  s.src='/final-wiring.js?v=20260919-fold2';
   s.async=false; s.defer=true; s.dataset.matchappFinalWiring='1';
   document.head.appendChild(s);
 })();
