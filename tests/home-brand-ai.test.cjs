@@ -97,3 +97,21 @@ test('fresh Home loads stay at top until the visitor interacts',()=>{
   assert.match(origin,/HTMLElement\.prototype\.focus=function/);
   assert.match(origin,/userInteracted=true/);
 });
+
+
+test('premium Home header distributes controls and keeps Kids Mode visible',()=>{
+ const css=read('matchapp-ia.css'),js=read('matchapp-ia.js'),html=read('index.html');
+ assert.match(css,/HOME HEADER PREMIUM GRID V2/);assert.match(css,/grid-template-columns:minmax\(330px,.9fr\) minmax\(520px,1.35fr\)/);
+ assert.match(css,/#profile-link-tab #nav-profile-text\{display:none!important\}/);assert.match(js,/matchapp-kids-entry/);assert.match(js,/kids-logo-sm\.jpeg/);
+ assert.match(html,/onboarding-tour\.js\?v=20260919-tour2/);assert.match(html,/catalog-plus\.js\?v=20260919-catalog2/);
+});
+test('first visitor walkthrough auto reveals UI and ends at the registration gateway',()=>{
+ const tour=read('onboarding-tour.js'),register=read('register.html');assert.match(tour,/const VERSION='v2'/);assert.match(tour,/MatchAppScrollGate\?\.unlock/);
+ assert.match(tour,/scrollIntoView/);assert.match(tour,/crit-open/);assert.match(tour,/finish:'Got it'/);assert.match(tour,/register\.html\?from=tour/);
+ assert.doesNotMatch(register,/http-equiv="refresh"/i);assert.match(register,/href="\/\?openAuth=1"/);assert.match(register,/Back to Home — Match or Ask Ai/);
+});
+test('catalog expansion stocks music artists, Apple Music playlists and thin international shelves',()=>{
+ const cat=read('catalog-plus.js'),html=read('index.html'),app=read('app.js');assert.match(cat,/Apple Music playlist/);assert.match(cat,/music artist/);
+ assert.match(cat,/platform:"GoodShort"/);assert.match(cat,/platform:"WeTV"/);assert.match(cat,/platform:"iQIYI"/);assert.match(cat,/platform:"Viu"/);assert.match(cat,/platform:"Tubi"/);
+ assert.match(html,/value="music artist"/);assert.match(app,/broaden-platform/);assert.match(app,/Closest available · secondary filters broadened/);
+});

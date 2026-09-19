@@ -3485,9 +3485,22 @@ function pickGuaranteedCatalog(cat, plat, mood, vibe, rating, decade) {
         return shape(candidates[0], stage, true);
     };
 
-    // Selected criteria are hard requirements. Never silently remove mood,
-    // genre, platform, decade, vibe or rating just to fill the card.
-    return choose(requested, 'exact');
+    // Exact always wins. If the combination is over-specific, broaden only
+    // secondary discovery preferences in a fixed order. Category, rating,
+    // real-genre gating, taste exclusions, blocked titles/countries and safety
+    // stay hard. The result card labels the relaxation so nothing is hidden.
+    const stages = [
+        ['exact', requested],
+        ['broaden-vibe', {...requested, vibe:[]}],
+        ['broaden-era', {...requested, vibe:[], decade:[]}],
+        ['broaden-mood', {...requested, vibe:[], decade:[], mood:[]}],
+        ['broaden-platform', {...requested, vibe:[], decade:[], mood:[], plat:[]}]
+    ];
+    for (const [stage, criteria] of stages) {
+        const hit = choose(criteria, stage);
+        if (hit) return hit;
+    }
+    return null;
 }
 
 // ----------------------------------------------------
@@ -3751,6 +3764,7 @@ window.triggerMatch = async function(isSpecificSearch = false) {
         window.lastMatchCriteria = { cat, plat, genre, mood, vibe, rating, decade };
 
         matchResult = catalogPick;
+        window.lastMatchRelaxation = matchResult?._relaxedStage || 'exact';
 
         // Never claim the user's exact requested platform unless the winning
         // source actually verified it. This is the direct fix for a title
@@ -3850,6 +3864,11 @@ function renderMatchCriteria() {
         chips.innerHTML = `<span>${window.t ? t('res.surpriseMe') : 'Surprise me — no filters set'}</span>`;
     } else {
         chips.innerHTML = parts.map(p => `<span>${sanitizeDisplayText(p)}</span>`).join('');
+    }
+    const relaxed = window.lastMatchRelaxation;
+    if (relaxed && relaxed !== 'exact') {
+        const labels = {'broaden-vibe':'Closest available · vibe broadened','broaden-era':'Closest available · vibe + era broadened','broaden-mood':'Closest available · vibe + era + mood broadened','broaden-platform':'Closest available · secondary filters broadened'};
+        chips.insertAdjacentHTML('beforeend', `<span class="match-relaxed-criteria">${sanitizeDisplayText(labels[relaxed] || 'Closest available match')}</span>`);
     }
     wrap.style.display = 'block';
 }
