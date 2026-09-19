@@ -76,7 +76,11 @@ function brandHeader(){
    brand.innerHTML=
      '<div class="ma-brand-lockup" aria-label="MatchApp TV Ai">'+
        '<a class="ma-brand-home-link" href="/" aria-label="MatchApp TV home">'+
-         '<img class="ma-brand-orb" src="'+ICON+'" alt="" width="104" height="104">'+
+         '<span class="ma-brand-orb-stage" aria-hidden="true">'+
+           '<img class="ma-brand-orb" src="'+ICON+'" alt="" width="260" height="260">'+
+           '<span class="ma-orbit ma-orbit-a"></span><span class="ma-orbit ma-orbit-b"></span>'+
+           '<span class="ma-orb-star ma-orb-star-a">✦</span><span class="ma-orb-star ma-orb-star-b">✧</span><span class="ma-orb-star ma-orb-star-c">✦</span>'+
+         '</span>'+
          '<span class="ma-brand-copy"><span class="ma-wordmark"><span class="ma-word-match">Match</span><span class="ma-word-app">App</span></span><span class="ma-tv">TV</span></span>'+
        '</a>'+
        '<button type="button" class="ma-ai-brand-button" aria-label="Start a new chat with MatchApp Ai" title="Ask MatchApp Ai">'+
@@ -279,6 +283,22 @@ function mountPricing(){
  wrap.appendChild(secondary);
  const section=grid.closest('section.container')||grid.parentElement;section.insertBefore(wrap,title||grid);
 }
+function prepareResponsiveAds(){
+ if(!isHome)return;
+ const result=qs('#result-box');
+ const resultAd=result?qs('.ad-banner-container',result):null;
+ if(result&&resultAd){
+   resultAd.classList.add('ma-inline-ad','ma-inline-ad-after-result');
+   result.insertAdjacentElement('afterend',resultAd);
+ }
+ qsa('.container .ad-banner-container').forEach((ad,i)=>{
+   ad.classList.add('ma-inline-ad','ma-inline-ad-'+(i+1));
+   ad.setAttribute('data-ma-ad-position',String(i+1));
+ });
+ qsa('.sidebar-ad-left,.sidebar-ad-right').forEach((rail,i)=>{
+   rail.classList.add('ma-desktop-ad-rail',i===0?'ma-desktop-ad-left':'ma-desktop-ad-right');
+ });
+}
 function applyLanguage(){
  const t=c();
  if(isHome&&qs('.ma-concierge')){
@@ -294,7 +314,7 @@ function applyLanguage(){
 function boot(){
  if(!(isHome||isDiscover||isTogether||isPricing))return;
  ensureBrandMeta();brandHeader();
- if(isHome)mountHome();if(isDiscover)mountDiscover();if(isTogether)mountTogether();if(isPricing)mountPricing();
+ if(isHome){prepareResponsiveAds();mountHome()}if(isDiscover)mountDiscover();if(isTogether)mountTogether();if(isPricing)mountPricing();
  document.addEventListener('matchapp:langchange',()=>setTimeout(applyLanguage,0));
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
