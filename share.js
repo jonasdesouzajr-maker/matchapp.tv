@@ -61,6 +61,8 @@ async function grantShareReward() {
     return { ok: true, left: shareRewardsLeft() };
 }
 
+window.grantShareReward = grantShareReward;
+
 /* ---------- Share card renderer ---------- */
 function loadImage(src) {
     return new Promise(resolve => {
