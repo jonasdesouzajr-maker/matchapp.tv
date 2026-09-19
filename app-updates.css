@@ -1,4 +1,38 @@
-.app-release-notice{position:fixed;bottom:1.2rem;right:1.2rem;width:min(36rem,calc(100% - 2.4rem));max-height:min(78dvh,46rem);overflow:auto;z-index:8000;padding:1.65rem;border:2px solid #ffe59a;border-radius:1.35rem;background:linear-gradient(145deg,#741fa5 0%,#4a176f 38%,#231046 68%,#9a4e16 135%);color:#fff;box-shadow:0 1.5rem 5rem #000b,0 0 0 5px #e5c15824,0 0 4rem #a84cff59;font-family:system-ui,sans-serif;isolation:isolate}
-.app-release-notice::before{content:"✦  NEW • IMPORTANT";display:inline-flex;margin:0 0 .75rem;padding:.35rem .65rem;border-radius:999px;background:#ffe493;color:#2a103f;font-size:.68rem;font-weight:950;letter-spacing:.12em;box-shadow:0 0 1.5rem #ffe49355}
-.app-release-notice[hidden]{display:none}.app-release-notice h2{font:900 clamp(1.35rem,3vw,1.8rem)/1.15 system-ui,sans-serif;margin:0 2rem .8rem 0;color:#fff}.app-release-notice .app-release-notes{padding:1rem 1.05rem;border:1px solid #ffffff29;border-radius:1rem;background:#10081f8c;font-size:.96rem;line-height:1.65;color:#f8efff;margin:.7rem 0}.app-release-notice .app-release-hint{font-size:.82rem;font-weight:800;color:#ffe9a8}.app-release-notice>div{display:flex;gap:.7rem;margin-top:1rem}.app-release-notice button{font:800 .9rem system-ui,sans-serif;min-height:46px;padding:.75rem 1.1rem;border:1px solid #ffffff66;border-radius:.85rem;cursor:pointer;background:#ffffff14;color:white}.app-release-notice .app-release-dismiss{flex:1;background:#ffffff17}.app-release-notice .app-release-apply{flex:1;background:#ffe18a;color:#251137;border-color:#fff0b3;box-shadow:0 .5rem 1.5rem #0004}.app-release-notice button:focus-visible{outline:3px solid #9ee8e6;outline-offset:3px}
-@media(max-width:700px){.app-release-notice{left:8px;right:8px;bottom:max(8px,env(safe-area-inset-bottom));width:auto;max-height:72dvh;padding:1.15rem;border-radius:1.1rem}.app-release-notice h2{font-size:1.35rem}.app-release-notice .app-release-notes{font-size:.88rem;line-height:1.55;padding:.85rem}.app-release-notice>div{position:sticky;bottom:-1.15rem;padding:.7rem 0 1.15rem;background:linear-gradient(0deg,#31114e 70%,transparent)}}
+.app-release-notice{
+  position:fixed;right:18px;bottom:18px;z-index:8000;
+  width:min(360px,calc(100% - 24px));max-height:min(52dvh,360px);overflow:auto;
+  padding:14px 14px 13px;border:1px solid rgba(243,207,105,.24);border-radius:18px;
+  background:linear-gradient(145deg,rgba(37,18,58,.94),rgba(18,9,31,.94));
+  color:#f8f3ff;box-shadow:0 20px 58px rgba(0,0,0,.46),0 0 34px rgba(147,84,218,.10);
+  backdrop-filter:blur(18px) saturate(1.08);font-family:system-ui,sans-serif;isolation:isolate
+}
+.app-release-notice::before{
+  content:"✦  NEW";display:inline-flex;margin:0 0 8px;padding:4px 8px;border-radius:999px;
+  background:rgba(243,207,105,.92);color:#28170a;font-size:9px;font-weight:950;letter-spacing:.13em
+}
+.app-release-notice[hidden]{display:none}
+.app-release-notice h2{font:850 18px/1.15 system-ui,sans-serif;margin:0 32px 7px 0;color:#fff}
+.app-release-notice .app-release-notes{
+  margin:6px 0;padding:9px 10px;border:1px solid rgba(255,255,255,.08);border-radius:12px;
+  background:rgba(7,4,12,.26);color:#ddd2e7;font-size:12px;line-height:1.5;
+  max-height:6.1em;overflow:auto
+}
+.app-release-notice .app-release-hint{margin:7px 0 0;color:#f2dda1;font-size:10.5px;font-weight:700;line-height:1.35}
+.app-release-notice>div{display:flex;gap:7px;margin-top:10px}
+.app-release-notice button{
+  min-height:36px;padding:7px 11px;border:1px solid rgba(255,255,255,.13);border-radius:11px;
+  cursor:pointer;background:rgba(255,255,255,.05);color:#fff;font:800 11px/1 system-ui,sans-serif
+}
+.app-release-notice .app-release-dismiss{flex:1}
+.app-release-notice .app-release-apply{
+  flex:1;background:linear-gradient(135deg,#f4d675,#dfb245);color:#241608;border-color:transparent;
+  box-shadow:0 6px 18px rgba(229,193,88,.16)
+}
+.app-release-notice button:focus-visible{outline:2px solid #9ee8e6;outline-offset:2px}
+@media(max-width:700px){
+  .app-release-notice{
+    left:8px;right:8px;bottom:max(8px,env(safe-area-inset-bottom));width:auto;max-height:44dvh;
+    padding:12px;border-radius:15px
+  }
+  .app-release-notice h2{font-size:16px}.app-release-notice .app-release-notes{font-size:11.5px;max-height:5.8em}
+}
