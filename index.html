@@ -1563,7 +1563,7 @@ window.__MATCHAPP_UI_FAILSAFE__=setTimeout(function(){document.documentElement.c
 <link rel="stylesheet" href="/taste-profile.css?v=20260919-stable3" data-home-support="taste">
 <link rel="stylesheet" href="/profile-card.css?v=20260919-stable3" data-home-support="profile-card">
 <link rel="stylesheet" href="/preference-exclusions.css?v=20260919-stable3" data-home-support="preferences">
-<link rel="stylesheet" href="/matchapp-ia.css?v=20260919-ia28" data-matchapp-ia="1">
+<link rel="stylesheet" href="/matchapp-ia.css?v=20260919-ia29" data-matchapp-ia="1">
 <script defer src="/matchapp-ia.js?v=20260919-ia27" data-matchapp-ia="1"></script>
 </head>
 <body class="page-home">
@@ -2321,34 +2321,7 @@ window.__MATCHAPP_UI_FAILSAFE__=setTimeout(function(){document.documentElement.c
                     </div>
                 </div>
 
-                <section id="swifties-spotify" class="marquee-wrapper swifties-spotify" aria-labelledby="swifties-spotify-title">
-                    <button class="swifties-fold" type="button" aria-expanded="true" aria-controls="swifties-spotify-body" onclick="const b=document.getElementById('swifties-spotify-body');const open=this.getAttribute('aria-expanded')==='true';this.setAttribute('aria-expanded',String(!open));b.hidden=open;this.querySelector('.swifties-fold-icon').textContent=open?'▾':'▴';">
-                        <span id="swifties-spotify-title">NEW ON SPOTIFY — TAYLOR SWIFT: THE VIDEOS <strong>#Swifties 🫶</strong></span>
-                        <span class="swifties-fold-icon" aria-hidden="true">▴</span>
-                    </button>
-                    <div id="swifties-spotify-body">
-                        <p class="swifties-copy">All 58 official Taylor Swift music videos are now together on Spotify — from <em>Tim McGraw</em> to the newest era. Pick a video below and use Spotify's <strong>Switch to video</strong> control to watch.</p>
-                        <a class="swifties-official-link" href="https://open.spotify.com/playlist/37i9dQZF1DXe7fP0uj1s1D" target="_blank" rel="noopener noreferrer" aria-label="Open Taylor Swift - The Videos, official Spotify playlist">
-                            <img src="https://i.scdn.co/image/ab67706f000000038b75100c7db8e29a890d68f0" alt="Taylor Swift - The Videos official Spotify playlist cover" loading="lazy">
-                            <span><strong>Taylor Swift – The Videos</strong><small>Official Spotify collection · 58 music videos · tap to open</small></span>
-                        </a>
-                        <iframe class="swifties-embed" title="Taylor Swift - The Videos on Spotify" src="https://open.spotify.com/embed/playlist/37i9dQZF1DXe7fP0uj1s1D?utm_source=generator&theme=0" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-                    </div>
-                </section>
-
-                <style>
-                .swifties-spotify{margin-top:18px;padding:14px 14px 16px}
-                .swifties-fold{width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;border:0;background:transparent;color:var(--gold);font:900 15px/1.35 Outfit,Inter,sans-serif;letter-spacing:1.3px;text-transform:uppercase;cursor:pointer;padding:2px 4px 12px}
-                .swifties-fold strong{color:#fff;text-transform:none;white-space:nowrap}
-                .swifties-fold-icon{font-size:22px;line-height:1}
-                .swifties-copy{max-width:850px;margin:0 auto 12px;color:#ddd;text-align:center;font-size:14px;line-height:1.5}
-                .swifties-official-link{display:flex;align-items:center;gap:12px;max-width:850px;margin:0 auto 12px;padding:10px;border:1px solid rgba(229,193,88,.35);border-radius:14px;background:rgba(0,0,0,.28);color:#fff;text-decoration:none}
-                .swifties-official-link img{width:64px;height:64px;border-radius:10px;object-fit:cover;flex:0 0 auto}
-                .swifties-official-link span{display:flex;flex-direction:column;gap:4px;min-width:0}.swifties-official-link small{color:#bdbdbd;font-size:12px}
-                .swifties-embed{display:block;max-width:850px;margin:0 auto;border-radius:12px;background:#121212}
-                #swifties-spotify-body[hidden]{display:none}
-                @media(max-width:600px){.swifties-spotify{padding:12px 8px}.swifties-fold{font-size:12px;letter-spacing:.8px}.swifties-copy{font-size:12px}.swifties-embed{height:352px}}
-                </style>
+                
 
                 <article id="questionnaire-box" class="premium-card">
                     <h2 style="margin: 0 0 25px 0; font-size: 34px; color: var(--gold); text-align: center; font-weight: 900; text-transform: uppercase;" data-i18n="q.title">Curate Your Perfect Match</h2>
@@ -3149,6 +3122,58 @@ window.__MATCHAPP_UI_FAILSAFE__=setTimeout(function(){document.documentElement.c
   <p class="matchapp-tiktok-action-status" data-tiktok-showcase-status role="status" aria-live="polite"></p>
   <p class="matchapp-tiktok-tags">#matchapptv #matchapp #whattowatch #tiktokviral #tv</p>
   <a class="matchapp-tiktok-open" data-tiktok-short-link href="https://vt.tiktok.com/ZSqtbq1j5/" target="_blank" rel="noopener noreferrer">Watch the original on TikTok ↗</a>
+</section>
+
+<section id="swifties-spotify" class="marquee-wrapper swifties-spotify swifties-spotify--final" aria-labelledby="swifties-spotify-title">
+  <button class="swifties-fold" type="button" aria-expanded="false" aria-controls="swifties-spotify-body"
+    onclick="const b=document.getElementById('swifties-spotify-body');const open=this.getAttribute('aria-expanded')==='true';this.setAttribute('aria-expanded',String(!open));b.hidden=open;this.querySelector('.swifties-fold-icon').textContent=open?'▾':'▴';">
+    <span id="swifties-spotify-title"><span aria-hidden="true">🎵✨</span> TAYLOR SWIFT ON SPOTIFY — ALL OFFICIAL VIDEOS <strong>#Swifties 🫶</strong></span>
+    <span class="swifties-fold-icon" aria-hidden="true">▾</span>
+  </button>
+  <div id="swifties-spotify-body" hidden>
+    <p class="swifties-copy">
+      Spotify now carries Taylor Swift’s complete official music-video catalog: <strong>58 videos</strong>, from
+      <em>Tim McGraw</em> through the newest <em>Opalite</em> era. Premium viewers in supported markets can use
+      Spotify’s <strong>Switch to video</strong> control. Listen right here or open Spotify on your device.
+    </p>
+
+    <div class="swifties-latest" aria-label="Latest Taylor Swift video titles on Spotify">
+      <span class="swifties-latest-label">Latest video titles</span>
+      <a href="https://open.spotify.com/artist/06HL4z0CvFAxyc27GXpf02" target="_blank" rel="noopener noreferrer">Opalite — Official Music Video Extended Version Part 1</a>
+      <a href="https://open.spotify.com/artist/06HL4z0CvFAxyc27GXpf02" target="_blank" rel="noopener noreferrer">Opalite — Official Music Video Extended Version Part 2</a>
+      <a href="https://open.spotify.com/artist/06HL4z0CvFAxyc27GXpf02" target="_blank" rel="noopener noreferrer">Opalite</a>
+      <a href="https://open.spotify.com/artist/06HL4z0CvFAxyc27GXpf02" target="_blank" rel="noopener noreferrer">The Fate of Ophelia</a>
+    </div>
+
+    <div class="swifties-grid">
+      <a class="swifties-official-link" href="https://open.spotify.com/playlist/37i9dQZF1DXe7fP0uj1s1D" target="_blank" rel="noopener noreferrer" aria-label="Open Taylor Swift - The Videos official Spotify playlist">
+        <span class="swifties-spotify-mark" aria-hidden="true">●</span>
+        <span><strong>Taylor Swift – The Videos</strong><small>Official Spotify collection · all 58 music videos</small></span>
+        <b aria-hidden="true">↗</b>
+      </a>
+      <a class="swifties-artist-link" href="https://open.spotify.com/artist/06HL4z0CvFAxyc27GXpf02" target="_blank" rel="noopener noreferrer">
+        <span>Open Taylor Swift on Spotify</span><b aria-hidden="true">↗</b>
+      </a>
+    </div>
+
+    <div class="swifties-player-block">
+      <h3>Listen to Taylor Swift on Spotify</h3>
+      <iframe class="swifties-embed swifties-artist-embed" title="Listen to Taylor Swift on Spotify"
+        src="https://open.spotify.com/embed/artist/06HL4z0CvFAxyc27GXpf02?utm_source=generator&theme=0"
+        width="100%" height="352" frameborder="0" allowfullscreen=""
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </div>
+
+    <div class="swifties-player-block">
+      <h3>All official Taylor Swift videos on Spotify</h3>
+      <iframe class="swifties-embed swifties-video-embed" title="Taylor Swift - The Videos on Spotify"
+        src="https://open.spotify.com/embed/playlist/37i9dQZF1DXe7fP0uj1s1D?utm_source=generator&theme=0"
+        width="100%" height="352" frameborder="0" allowfullscreen=""
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </div>
+
+    <p class="swifties-source-note">Spotify availability, video playback and full-track playback vary by country, account and subscription.</p>
+  </div>
 </section>
 
     <!-- SOCIAL SHARE MODAL -->
