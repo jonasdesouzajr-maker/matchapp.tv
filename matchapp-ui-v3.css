@@ -1,26 +1,174 @@
-/* MatchApp UI v4 — compact cinematic dashboard. Main product only. */
-body.page-home:not(.kids-mode){--ma-gold:#f1cb63;--ma-ink:#10091a;--ma-surface:rgba(25,12,42,.72);--ma-surface-hi:rgba(46,21,73,.64);--ma-stroke:rgba(229,193,88,.16);--ma-violet:#a978ff;--ma-cyan:#61d9ff;--ma-green:#62e6b5;--ma-pink:#ff73cb;--ma-red:#ff7087}
-body.page-home:not(.kids-mode) main{max-width:1180px!important;margin-inline:auto!important}
-body.page-home:not(.kids-mode) #mh-topbox{width:min(1180px,calc(100% - 32px))!important;min-height:116px!important;margin:22px auto 10px!important;padding:14px 20px!important;display:grid!important;grid-template-columns:minmax(280px,1fr) auto!important;align-items:center!important;gap:18px!important;background:linear-gradient(110deg,rgba(35,15,57,.82),rgba(20,9,35,.66))!important;border:1px solid rgba(229,193,88,.18)!important;border-radius:26px!important;box-shadow:0 22px 60px rgba(0,0,0,.28),inset 0 1px rgba(255,255,255,.035)!important;backdrop-filter:blur(18px)}
-body.page-home:not(.kids-mode) #mh-topbox .home-brand-home{min-width:0!important;display:flex!important;align-items:center!important;gap:12px!important}
-body.page-home:not(.kids-mode) #mh-topbox .home-brand-home::before{content:""!important;display:block!important;flex:0 0 auto!important;width:94px!important;height:94px!important;background:url('/assets/brand/matchapp-logo-animated-transparent.svg?v=20260919-v4') center/contain no-repeat!important;filter:drop-shadow(0 0 18px rgba(229,193,88,.30))!important}
-body.page-home:not(.kids-mode) #mh-topbox .home-brand-name{font-size:clamp(1.25rem,2vw,1.85rem)!important;letter-spacing:-.02em!important}
-body.page-home:not(.kids-mode) #mh-topbox .home-ai-link{font-size:clamp(1.3rem,2.1vw,1.95rem)!important}
-body.page-home:not(.kids-mode) #mh-topbox nav.mh-deck{display:flex!important;align-items:center!important;justify-content:flex-end!important;gap:5px!important;flex-wrap:wrap!important}
-body.page-home:not(.kids-mode) #mh-topbox nav.mh-deck>*{min-height:42px!important;margin:0!important;border:0!important;background:transparent!important;box-shadow:none!important;border-radius:14px!important}
-body.page-home:not(.kids-mode) #mh-topbox nav.mh-deck>*:hover{background:rgba(255,255,255,.055)!important;transform:translateY(-1px)}
-body.page-home:not(.kids-mode) #mh-topbox .matchapp-notification-button{color:var(--ma-pink)!important}body.page-home:not(.kids-mode) #mh-topbox .install-btn{color:var(--ma-green)!important}body.page-home:not(.kids-mode) #mh-topbox #lang-switcher-host,#mh-topbox #lang-switcher-host select{color:var(--ma-cyan)!important}body.page-home:not(.kids-mode) #mh-topbox .sound-toggle-btn{color:var(--ma-gold)!important}body.page-home:not(.kids-mode) #mh-topbox #nav-logout-btn{color:var(--ma-red)!important}
-body.page-home:not(.kids-mode) .top-ask-wrap{width:min(760px,calc(100% - 32px))!important;margin:8px auto!important}
-body.page-home:not(.kids-mode) .top-ask-wrap>*{background:linear-gradient(110deg,rgba(38,17,60,.76),rgba(23,11,39,.72))!important;border:1px solid rgba(169,120,255,.16)!important;border-radius:22px!important;box-shadow:0 12px 34px rgba(0,0,0,.24),0 0 28px rgba(169,120,255,.05)!important}
-body.page-home:not(.kids-mode) .marquee-wrapper{width:min(900px,calc(100% - 32px))!important;margin:10px auto!important;background:rgba(24,11,40,.48)!important;border:1px solid rgba(229,193,88,.11)!important;border-radius:999px!important;box-shadow:none!important}
-body.page-home:not(.kids-mode) .lazy-bar{width:max-content!important;max-width:calc(100% - 32px)!important;margin:12px auto!important;padding:8px 14px!important;background:rgba(23,11,39,.56)!important;border:1px solid rgba(169,120,255,.14)!important;border-radius:999px!important;box-shadow:none!important}
-body.page-home:not(.kids-mode) #daily-match-checkin{width:min(760px,calc(100% - 32px))!important;margin:12px auto!important;padding:12px 16px!important;border-radius:20px!important;background:linear-gradient(120deg,rgba(37,16,59,.66),rgba(23,10,39,.58))!important;border:1px solid rgba(169,120,255,.13)!important;box-shadow:0 12px 30px rgba(0,0,0,.18)!important}
-body.page-home:not(.kids-mode) :is(#questionnaire-box,#latest-news,.ma-news,.spotlight-card,.premium-card,#how-it-works,#search-box){border-radius:22px!important;background:linear-gradient(145deg,var(--ma-surface),rgba(18,9,31,.72))!important;border:1px solid rgba(169,120,255,.13)!important;box-shadow:0 16px 42px rgba(0,0,0,.20)!important}
-body.page-home:not(.kids-mode) #questionnaire-box{margin-top:14px!important}
-body.page-home:not(.kids-mode) :is(button,.btn,.primary-btn,.secondary-btn,[role=button]){transition:transform .16s ease,filter .16s ease,background-color .16s ease!important}
-body.page-home:not(.kids-mode) :is(button,.btn,.primary-btn,.secondary-btn,[role=button]):hover{transform:translateY(-1px);filter:brightness(1.08)}
-body.page-home:not(.kids-mode) :is(button,.btn,.primary-btn,.secondary-btn,[role=button]):focus-visible{outline:2px solid var(--ma-gold)!important;outline-offset:3px!important}
-@media(min-width:1000px){body.page-home:not(.kids-mode) #daily-match-checkin{max-height:150px;overflow:hidden}body.page-home:not(.kids-mode) .home-status-strip{margin-block:8px!important}}
-@media(min-width:600px) and (max-width:999px){body.page-home:not(.kids-mode) #mh-topbox{grid-template-columns:1fr!important;width:calc(100% - 28px)!important;margin-top:14px!important;padding:14px 16px!important}body.page-home:not(.kids-mode) #mh-topbox nav.mh-deck{justify-content:center!important}body.page-home:not(.kids-mode) #mh-topbox .home-brand-home{justify-content:center!important}body.page-home:not(.kids-mode) #mh-topbox .home-brand-home::before{width:88px!important;height:88px!important}}
-@media(max-width:599px){body.page-home:not(.kids-mode) main{width:100%!important}body.page-home:not(.kids-mode) #mh-topbox{width:calc(100% - 20px)!important;margin:10px auto 6px!important;padding:10px 12px!important;grid-template-columns:1fr!important;border-radius:20px!important;gap:7px!important}body.page-home:not(.kids-mode) #mh-topbox .home-brand-home{justify-content:center!important;gap:8px!important}body.page-home:not(.kids-mode) #mh-topbox .home-brand-home::before{width:78px!important;height:78px!important}body.page-home:not(.kids-mode) #mh-topbox nav.mh-deck{justify-content:center!important;gap:2px!important}body.page-home:not(.kids-mode) #mh-topbox nav.mh-deck>*{min-height:38px!important}body.page-home:not(.kids-mode) .top-ask-wrap,body.page-home:not(.kids-mode) .marquee-wrapper,body.page-home:not(.kids-mode) #daily-match-checkin{width:calc(100% - 20px)!important}body.page-home:not(.kids-mode) .top-ask-wrap{margin-top:5px!important}body.page-home:not(.kids-mode) .marquee-wrapper{border-radius:16px!important}body.page-home:not(.kids-mode) #daily-match-checkin{padding:10px!important}body.page-home:not(.kids-mode) .lazy-bar{margin:8px auto!important}}
-@media(prefers-reduced-motion:reduce){body.page-home:not(.kids-mode) *,body.page-home:not(.kids-mode) *::before,body.page-home:not(.kids-mode) *::after{scroll-behavior:auto!important;animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}}
+/* MatchApp canonical homepage UI. This file is intentionally loaded twice:
+   once in <head> for first paint and once at the END of settings.js' legacy
+   compatibility CSS stack so late styles cannot visually revert the homepage. */
+html body.page-home{
+  --ma-gold:#f0ca62;--ma-violet:#a874ff;--ma-cyan:#5ed8ff;--ma-pink:#ff70c8;
+  --ma-green:#55deb0;--ma-red:#ff6d83;--ma-bg:#100818;
+}
+
+/* Keep the homepage itself as one centered, compact column. */
+html body.page-home main.page-wrapper{
+  display:block!important;width:100%!important;max-width:none!important;
+  margin:0 auto!important;padding:0!important;
+}
+html body.page-home .main-layout{
+  display:block!important;width:100%!important;max-width:none!important;margin:0!important;padding:0!important;
+}
+html body.page-home .main-layout>.container{
+  width:min(100% - 24px,980px)!important;max-width:980px!important;margin:0 auto!important;padding:0!important;
+}
+html body.page-home .sidebar-ad-left,
+html body.page-home .sidebar-ad-right{display:none!important}
+
+/* Canonical top area. Higher specificity than home-brand.css/redesign.css. */
+html body.page-home #mh-topbox.app-header{
+  width:min(100% - 28px,1120px)!important;max-width:1120px!important;
+  margin:14px auto 10px!important;padding:12px 16px!important;
+  display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;
+  align-items:center!important;gap:16px!important;
+  border:1px solid rgba(229,193,88,.15)!important;border-radius:24px!important;
+  background:linear-gradient(115deg,rgba(36,16,58,.78),rgba(17,8,30,.70))!important;
+  box-shadow:0 18px 52px rgba(0,0,0,.28),inset 0 1px rgba(255,255,255,.035)!important;
+  overflow:visible!important;backdrop-filter:blur(16px)!important;
+}
+html body.page-home #mh-topbox .mh-head{
+  display:flex!important;align-items:center!important;justify-content:flex-start!important;
+  width:auto!important;min-width:0!important;margin:0!important;padding:0!important;
+}
+html body.page-home #mh-topbox #home-brand-lockup{
+  display:flex!important;align-items:center!important;width:auto!important;min-width:0!important;margin:0!important;
+}
+html body.page-home #mh-topbox #home-brand-lockup .home-brand-home{
+  display:flex!important;align-items:center!important;justify-content:flex-start!important;
+  gap:10px!important;width:auto!important;height:auto!important;min-height:0!important;
+  margin:0!important;padding:0!important;overflow:visible!important;
+  border:0!important;border-radius:0!important;background:none!important;box-shadow:none!important;
+}
+html body.page-home #mh-topbox #home-brand-lockup .brand-logo-placeholder{display:none!important}
+html body.page-home #mh-topbox #home-brand-lockup .ma-new-brand-logo{
+  display:block!important;flex:0 0 auto!important;
+  width:clamp(86px,7.5vw,116px)!important;height:clamp(86px,7.5vw,116px)!important;
+  max-width:none!important;aspect-ratio:1/1!important;object-fit:contain!important;object-position:center!important;
+  clip-path:none!important;border:0!important;border-radius:0!important;background:transparent!important;
+  box-shadow:none!important;
+  filter:drop-shadow(0 0 16px rgba(229,193,88,.26)) drop-shadow(0 0 22px rgba(94,216,255,.08))!important;
+  animation:none!important;transform:none!important;
+}
+html body.page-home #mh-topbox #home-brand-lockup .home-brand-name{
+  display:inline-flex!important;align-items:baseline!important;gap:.2em!important;
+  font-size:clamp(1.35rem,2.1vw,2rem)!important;line-height:1!important;
+}
+html body.page-home #mh-topbox #home-brand-lockup .home-ai-link{
+  display:inline-grid!important;font-size:clamp(1.55rem,2.35vw,2.25rem)!important;
+  min-width:1.85em!important;min-height:1.35em!important;
+}
+html body.page-home #mh-topbox .mh-tagline{
+  margin:4px 0 0!important;padding:0!important;font-size:10px!important;
+  letter-spacing:.22em!important;opacity:.72!important;text-align:left!important;
+}
+
+/* Utilities feel like actions, not cards inside a card. */
+html body.page-home #mh-topbox.app-header>nav.mh-deck{
+  display:flex!important;align-items:center!important;justify-content:flex-end!important;
+  flex-wrap:wrap!important;gap:4px!important;width:auto!important;max-width:620px!important;
+  margin:0!important;padding:0!important;border:0!important;background:none!important;box-shadow:none!important;
+}
+html body.page-home #mh-topbox.app-header>nav.mh-deck>*{
+  flex:0 0 auto!important;width:auto!important;min-width:40px!important;max-width:none!important;
+  min-height:40px!important;height:40px!important;margin:0!important;padding:7px 10px!important;
+  border:0!important;border-radius:12px!important;background:transparent!important;box-shadow:none!important;
+}
+html body.page-home #mh-topbox.app-header>nav.mh-deck>*:hover{
+  background:rgba(255,255,255,.055)!important;transform:translateY(-1px)!important;
+}
+html body.page-home #mh-topbox .matchapp-notification-button{color:var(--ma-pink)!important}
+html body.page-home #mh-topbox .install-btn{color:var(--ma-green)!important}
+html body.page-home #mh-topbox #lang-switcher-host,
+html body.page-home #mh-topbox #lang-switcher-host select{color:var(--ma-cyan)!important;background:transparent!important}
+html body.page-home #mh-topbox .sound-toggle-btn{color:var(--ma-gold)!important}
+html body.page-home #mh-topbox #quota-badge{color:#f2d98d!important}
+html body.page-home #mh-topbox #profile-link-tab{color:#cdb8ff!important}
+html body.page-home #mh-topbox #nav-reg-btn{color:var(--ma-green)!important}
+html body.page-home #mh-topbox #nav-logout-btn{color:var(--ma-red)!important}
+
+/* Above-the-fold hierarchy. */
+html body.page-home .top-ask-wrap{
+  width:min(100% - 28px,760px)!important;max-width:760px!important;margin:8px auto!important;padding:0!important;
+}
+html body.page-home .top-ask-wrap>*{
+  border:1px solid rgba(168,116,255,.14)!important;border-radius:20px!important;
+  background:linear-gradient(120deg,rgba(38,17,61,.70),rgba(20,9,34,.64))!important;
+  box-shadow:0 12px 30px rgba(0,0,0,.19)!important;
+}
+html body.page-home .live-strip,
+html body.page-home .marquee-wrapper{
+  width:min(100% - 28px,900px)!important;max-width:900px!important;margin:8px auto!important;
+  border:1px solid rgba(229,193,88,.09)!important;border-radius:16px!important;
+  background:rgba(22,10,37,.46)!important;box-shadow:none!important;
+}
+html body.page-home .lazy-bar{
+  width:max-content!important;max-width:calc(100% - 28px)!important;margin:10px auto!important;
+  padding:7px 12px!important;border:1px solid rgba(168,116,255,.13)!important;
+  border-radius:999px!important;background:rgba(22,10,37,.50)!important;box-shadow:none!important;
+}
+html body.page-home #daily-match-checkin{
+  width:min(100% - 28px,760px)!important;max-width:760px!important;margin:10px auto!important;
+  padding:11px 14px!important;border-radius:18px!important;
+  border:1px solid rgba(168,116,255,.12)!important;
+  background:linear-gradient(120deg,rgba(34,15,55,.60),rgba(19,9,32,.54))!important;
+  box-shadow:0 10px 26px rgba(0,0,0,.16)!important;
+}
+html body.page-home :is(#questionnaire-box,#latest-news,.ma-news,.spotlight-card,.premium-card,#how-it-works,#search-box,.tg-entry){
+  border:1px solid rgba(168,116,255,.12)!important;border-radius:20px!important;
+  background:linear-gradient(145deg,rgba(31,14,50,.66),rgba(17,8,29,.68))!important;
+  box-shadow:0 14px 36px rgba(0,0,0,.18)!important;
+}
+html body.page-home .container>*{margin-bottom:9px!important}
+
+/* Tablet */
+@media (min-width:601px) and (max-width:999px){
+  html body.page-home #mh-topbox.app-header{
+    grid-template-columns:1fr!important;width:calc(100% - 20px)!important;margin-top:10px!important;
+    padding:11px 13px!important;gap:7px!important;
+  }
+  html body.page-home #mh-topbox .mh-head,
+  html body.page-home #mh-topbox #home-brand-lockup,
+  html body.page-home #mh-topbox #home-brand-lockup .home-brand-home{justify-content:center!important}
+  html body.page-home #mh-topbox .mh-tagline{text-align:center!important}
+  html body.page-home #mh-topbox.app-header>nav.mh-deck{justify-content:center!important;max-width:none!important;width:100%!important}
+  html body.page-home #mh-topbox #home-brand-lockup .ma-new-brand-logo{width:94px!important;height:94px!important}
+}
+
+/* Phones */
+@media (max-width:600px){
+  html body.page-home #mh-topbox.app-header{
+    display:flex!important;flex-direction:column!important;width:calc(100% - 14px)!important;
+    margin:7px auto 5px!important;padding:9px 10px!important;gap:5px!important;border-radius:18px!important;
+  }
+  html body.page-home #mh-topbox .mh-head,
+  html body.page-home #mh-topbox #home-brand-lockup,
+  html body.page-home #mh-topbox #home-brand-lockup .home-brand-home{justify-content:center!important;width:100%!important}
+  html body.page-home #mh-topbox #home-brand-lockup .ma-new-brand-logo{width:76px!important;height:76px!important}
+  html body.page-home #mh-topbox #home-brand-lockup .home-brand-name{font-size:1.12rem!important}
+  html body.page-home #mh-topbox #home-brand-lockup .home-ai-link{font-size:1.28rem!important}
+  html body.page-home #mh-topbox .mh-tagline{text-align:center!important;font-size:8.5px!important;letter-spacing:.15em!important}
+  html body.page-home #mh-topbox.app-header>nav.mh-deck{
+    display:flex!important;justify-content:center!important;width:100%!important;max-width:none!important;gap:2px!important;
+  }
+  html body.page-home #mh-topbox.app-header>nav.mh-deck>*{
+    min-width:36px!important;min-height:36px!important;height:36px!important;padding:5px 7px!important;border-radius:10px!important;
+  }
+  html body.page-home .top-ask-wrap,
+  html body.page-home .live-strip,
+  html body.page-home .marquee-wrapper,
+  html body.page-home #daily-match-checkin{width:calc(100% - 14px)!important}
+  html body.page-home .main-layout>.container{width:calc(100% - 14px)!important}
+  html body.page-home .lazy-bar{max-width:calc(100% - 14px)!important;margin:7px auto!important}
+  html body.page-home #daily-match-checkin{padding:9px!important}
+}
+
+@media(prefers-reduced-motion:reduce){
+  html body.page-home *,html body.page-home *::before,html body.page-home *::after{
+    scroll-behavior:auto!important;animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;
+  }
+}
