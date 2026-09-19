@@ -9,9 +9,9 @@ test('premium homepage wins first paint and late runtime cascade',()=>{
   const html=read('index.html');
   const settings=read('settings.js');
   const home=read('home-premium.css');
-  assert.match(html,/home-premium\\.css\\?v=20260919-reference3/);
-  assert.match(html,/settings\\.js\\?v=20260919-premium2/);
-  assert.match(settings,/home-premium\\.css\\?v=20260919-reference3/);
+  assert.match(html,/home-premium\\.css\\?v=20260919-density5/);
+  assert.match(html,/settings\\.js\\?v=20260919-density5/);
+  assert.match(settings,/home-premium\\.css\\?v=20260919-density5/);
   assert.match(settings,/dataset\.matchappHomeFinal='true'/);
   assert.match(home,/Premium density v2/);
   assert.match(home,/maLogoStarOrbit/);
