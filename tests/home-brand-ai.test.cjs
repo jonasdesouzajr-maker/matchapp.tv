@@ -58,6 +58,6 @@ test('shared animated logo never overrides Kids image assets',()=>{
 
 test('canonical homepage UI is re-pinned after late legacy CSS',()=>{
   const settings=read('settings.js');
-  assert.match(settings,/css\('\/preference-exclusions\.css'\)[\s\S]*matchapp-ui-v3\.css\?v=20260919-final5[\s\S]*js\('\/notifications\.js'\)/);
+  assert.match(settings,/css\('\/preference-exclusions\.css'\)[\s\S]*matchapp-ui-v3\.css\?v=20260919-final6[\s\S]*js\('\/notifications\.js'\)/);
   assert.match(settings,/dataset\.matchappHomeFinal='true'/);
 });
