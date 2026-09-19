@@ -37,11 +37,11 @@ test('both Android shells are synchronized to the audited 1.1.8 release',()=>{
   const main=read('android-studio/app/src/main/java/tv/matchapp/app/MainActivity.kt');
   const kids=read('android-studio/kidsapp/src/main/java/tv/matchapp/kids/MainActivity.kt');
   for(const gradle of [mainGradle,kidsGradle]){
-    assert.match(gradle,/versionCode = 10/);
+    assert.match(gradle,/versionCode = 15/);
     assert.match(gradle,/versionName = "1\.1\.8"/);
   }
-  assert.match(main,/appBuild=10/);
-  assert.match(kids,/appBuild=10/);
+  assert.match(main,/appBuild=15/);
+  assert.match(kids,/appBuild=15/);
   assert.match(main,/MATCHAPP_ANDROID_KIDS_DISABLED/);
   assert.match(kids,/MATCHAPP_ANDROID_KIDS_ONLY/);
 });
