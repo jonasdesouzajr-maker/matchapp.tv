@@ -1053,3 +1053,236 @@ html.ads-empty body.page-home .ad-banner-container{display:none!important}
 @media(prefers-reduced-motion:reduce){
   .ma-orbit,.ma-orb-star,.ma-global-header .ma-brand-orb{animation:none!important}
 }
+
+
+/* ===== STATIC TITLES + NEWS / FOLD BAR V2 =====
+   Latest Titles and Latest News are permanently open.
+   Premiere, Weekly Pick and Global Events share one exact fold-bar geometry. */
+
+/* Never let Lazy Mode fold the two always-visible discovery rails. */
+html body.page-home.lazy-mode #trending-rail,
+html body.page-home.lazy-mode #latest-news{
+  display:block!important;
+}
+html body.page-home .lazy-head:has(+ #trending-rail),
+html body.page-home .lazy-head:has(+ #latest-news){
+  display:none!important;
+}
+
+/* Latest Titles: permanently visible and roughly 2x the old compact posters. */
+html body.page-home #trending-rail{
+  display:block!important;
+  width:100%!important;max-width:var(--ma-stage-width)!important;
+  margin:16px auto 22px!important;
+  padding:16px 0 18px!important;
+  border:1px solid rgba(232,186,64,.55)!important;
+  border-radius:24px!important;
+  background:linear-gradient(145deg,rgba(15,22,45,.92),rgba(16,11,34,.92))!important;
+  box-shadow:0 18px 44px rgba(0,0,0,.30)!important;
+  overflow:hidden!important;
+}
+html body.page-home #trending-rail h4{
+  margin:0 22px 14px!important;
+  font-size:18px!important;line-height:1.25!important;
+  text-align:left!important;color:#eee9f7!important;
+  letter-spacing:0!important;text-transform:none!important;
+}
+html body.page-home #trending-rail .marquee-track{
+  gap:16px!important;padding:4px 22px 12px!important;
+}
+html body.page-home #trending-rail .marquee-item{
+  flex:0 0 224px!important;
+  width:224px!important;height:336px!important;
+  border-radius:16px!important;
+  box-shadow:0 15px 34px rgba(0,0,0,.34)!important;
+}
+html body.page-home #trending-rail .marquee-item img{
+  width:100%!important;height:100%!important;object-fit:cover!important;
+}
+html body.page-home #trending-rail::before,
+html body.page-home #trending-rail::after{display:none!important}
+
+/* Latest News: permanently open; summary becomes a static header, not a control. */
+html body.page-home #latest-news{
+  display:block!important;
+  width:100%!important;max-width:var(--ma-stage-width)!important;
+  margin:16px auto 22px!important;
+  border:1px solid rgba(232,186,64,.48)!important;
+  border-radius:24px!important;
+  background:linear-gradient(145deg,rgba(20,14,39,.92),rgba(12,10,27,.94))!important;
+  box-shadow:0 16px 38px rgba(0,0,0,.26)!important;
+  overflow:hidden!important;
+}
+html body.page-home #latest-news>summary{
+  display:flex!important;
+  min-height:84px!important;height:auto!important;
+  padding:18px 24px!important;
+  cursor:default!important;
+  border:0!important;border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  animation:none!important;
+  pointer-events:none!important;
+}
+html body.page-home #latest-news>summary::after,
+html body.page-home #latest-news>summary::before{
+  display:none!important;content:none!important;
+}
+html body.page-home #latest-news .ma-news-title{font-size:22px!important}
+html body.page-home #latest-news .ma-news-description{font-size:13px!important}
+html body.page-home #latest-news .ma-news-panel{
+  display:block!important;
+  margin:0!important;padding:0 10px 14px!important;
+  border:0!important;background:transparent!important;
+}
+html body.page-home #latest-news .ma-news-card{
+  flex:0 0 280px!important;
+  border-radius:16px!important;
+}
+html body.page-home #latest-news .ma-news-card h3{
+  font-size:15px!important;min-height:36px!important;
+}
+html body.page-home #latest-news .ma-news-summary{
+  font-size:11.5px!important;min-height:30px!important;
+}
+html body.page-home #latest-news .ma-news-source{font-size:10.5px!important}
+
+/* Three true foldables: exact same width, height and arrow control. */
+html body.page-home :is(
+  #premiere-disclosure,
+  #weekly-pick-disclosure,
+  #global-events>.global-events-fold
+){
+  width:100%!important;max-width:var(--ma-stage-width)!important;
+  margin:14px auto!important;padding:0!important;
+  border:0!important;background:transparent!important;box-shadow:none!important;
+}
+html body.page-home :is(
+  #premiere-disclosure>summary,
+  #weekly-pick-disclosure>summary,
+  #global-events>.global-events-fold>.global-events-summary
+){
+  position:relative!important;
+  display:flex!important;align-items:center!important;justify-content:flex-start!important;
+  width:100%!important;max-width:100%!important;
+  height:88px!important;min-height:88px!important;
+  margin:0!important;padding:0 86px 0 28px!important;
+  box-sizing:border-box!important;
+  border:1px solid rgba(232,186,64,.54)!important;
+  border-radius:28px!important;
+  background:linear-gradient(145deg,rgba(29,19,48,.94),rgba(18,13,35,.96))!important;
+  color:#eee6f8!important;
+  box-shadow:0 14px 34px rgba(0,0,0,.25)!important;
+  font-size:22px!important;font-weight:850!important;line-height:1.15!important;
+  list-style:none!important;cursor:pointer!important;
+  animation:none!important;
+}
+html body.page-home :is(
+  #premiere-disclosure>summary,
+  #weekly-pick-disclosure>summary,
+  #global-events>.global-events-fold>.global-events-summary
+)::-webkit-details-marker{display:none!important}
+html body.page-home :is(
+  #premiere-disclosure>summary,
+  #weekly-pick-disclosure>summary,
+  #global-events>.global-events-fold>.global-events-summary
+)::marker{content:""!important}
+
+/* New dedicated down-arrow button. No +, minus or old chevrons. */
+html body.page-home :is(
+  #premiere-disclosure>summary,
+  #weekly-pick-disclosure>summary,
+  #global-events>.global-events-fold>.global-events-summary
+)::after{
+  content:""!important;
+  position:absolute!important;right:22px!important;top:50%!important;
+  width:48px!important;height:48px!important;
+  border:1px solid rgba(255,220,111,.42)!important;border-radius:50%!important;
+  background-color:rgba(255,255,255,.035)!important;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 9l6 6 6-6' fill='none' stroke='%23FFE38A' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")!important;
+  background-repeat:no-repeat!important;background-position:center!important;background-size:22px 22px!important;
+  box-shadow:0 0 16px rgba(255,217,106,.14)!important;
+  transform:translateY(-50%) rotate(0deg)!important;
+  transition:transform .24s cubic-bezier(.2,.8,.2,1),background-color .18s ease,box-shadow .18s ease!important;
+}
+html body.page-home :is(
+  #premiere-disclosure[open]>summary,
+  #weekly-pick-disclosure[open]>summary,
+  #global-events>.global-events-fold[open]>.global-events-summary
+)::after{
+  transform:translateY(-50%) rotate(180deg)!important;
+  background-color:rgba(232,186,64,.10)!important;
+  box-shadow:0 0 22px rgba(255,217,106,.22)!important;
+}
+html body.page-home :is(
+  #premiere-disclosure>summary,
+  #weekly-pick-disclosure>summary,
+  #global-events>.global-events-fold>.global-events-summary
+):hover{
+  border-color:rgba(255,227,143,.78)!important;
+  box-shadow:0 16px 38px rgba(0,0,0,.30),0 0 18px rgba(255,217,106,.10)!important;
+}
+
+/* Eliminate every legacy control visible in the screenshot. */
+html body.page-home :is(
+  #premiere-disclosure>summary,
+  #weekly-pick-disclosure>summary,
+  #global-events>.global-events-fold>.global-events-summary
+) .ge-sum-chev,
+html body.page-home #global-events .ge-sum-chev{
+  display:none!important;
+}
+html body.page-home #global-events>.global-events-fold{
+  border:0!important;background:transparent!important;
+}
+html body.page-home #global-events .global-events-body,
+html body.page-home #premiere-disclosure>.spotlight-card,
+html body.page-home #weekly-pick-disclosure>.spotlight-card{
+  margin-top:10px!important;width:100%!important;max-width:100%!important;
+  box-sizing:border-box!important;
+}
+
+/* Keep the event count, but park it consistently before the arrow. */
+html body.page-home #global-events .ge-sum-count{
+  margin-left:auto!important;margin-right:8px!important;
+}
+
+/* Make the weekly dynamically-created disclosure follow the same centered axis. */
+html body.page-home #weekly-pick-disclosure{box-sizing:border-box!important}
+
+/* Mobile preserves the hierarchy without making posters absurdly huge. */
+@media(max-width:700px){
+  html body.page-home #trending-rail{margin:10px auto 16px!important;padding:12px 0 14px!important;border-radius:20px!important}
+  html body.page-home #trending-rail h4{margin:0 14px 10px!important;font-size:15px!important}
+  html body.page-home #trending-rail .marquee-track{gap:10px!important;padding:3px 14px 9px!important}
+  html body.page-home #trending-rail .marquee-item{
+    flex-basis:156px!important;width:156px!important;height:234px!important;border-radius:13px!important;
+  }
+  html body.page-home #latest-news>summary{min-height:70px!important;padding:14px 16px!important}
+  html body.page-home #latest-news .ma-news-title{font-size:18px!important}
+  html body.page-home #latest-news .ma-news-card{flex-basis:220px!important}
+  html body.page-home :is(
+    #premiere-disclosure>summary,
+    #weekly-pick-disclosure>summary,
+    #global-events>.global-events-fold>.global-events-summary
+  ){
+    height:68px!important;min-height:68px!important;
+    padding:0 68px 0 18px!important;
+    border-radius:22px!important;font-size:17px!important;
+  }
+  html body.page-home :is(
+    #premiere-disclosure>summary,
+    #weekly-pick-disclosure>summary,
+    #global-events>.global-events-fold>.global-events-summary
+  )::after{
+    right:14px!important;width:40px!important;height:40px!important;background-size:19px 19px!important;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  html body.page-home :is(
+    #premiere-disclosure>summary,
+    #weekly-pick-disclosure>summary,
+    #global-events>.global-events-fold>.global-events-summary
+  )::after{transition:none!important}
+}
