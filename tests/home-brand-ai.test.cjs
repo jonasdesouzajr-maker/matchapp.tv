@@ -115,3 +115,10 @@ test('catalog expansion stocks music artists, Apple Music playlists and thin int
  assert.match(cat,/platform:"GoodShort"/);assert.match(cat,/platform:"WeTV"/);assert.match(cat,/platform:"iQIYI"/);assert.match(cat,/platform:"Viu"/);assert.match(cat,/platform:"Tubi"/);
  assert.match(html,/value="music artist"/);assert.match(app,/broaden-platform/);assert.match(app,/Closest available · secondary filters broadened/);
 });
+
+test('every selectable thin platform is stocked by the expanded catalog',()=>{
+ const cat=read('catalog-plus.js');
+ for(const platform of ['FlexTV','Hotstar','Pluto TV','GoodShort','WeTV','iQIYI','Viu','Tubi','Apple TV+','Apple Music','Audible']){
+   assert.match(cat,new RegExp('platform:\"'+platform.replace(/[+]/g,'\\\\+')+'\"'),platform+' must have at least one real catalog entry');
+ }
+});
