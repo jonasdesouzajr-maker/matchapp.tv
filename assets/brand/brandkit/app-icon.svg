@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <defs>
+    <radialGradient id="navy" cx="38%" cy="30%" r="75%">
+      <stop offset="0%" stop-color="#1c3a66"/>
+      <stop offset="55%" stop-color="#0a1a36"/>
+      <stop offset="100%" stop-color="#030814"/>
+    </radialGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fff0ba"/>
+      <stop offset="42%" stop-color="#e8ba40"/>
+      <stop offset="100%" stop-color="#785210"/>
+    </linearGradient>
+    <linearGradient id="goldFace" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fff4c2"/>
+      <stop offset="55%" stop-color="#e0a830"/>
+      <stop offset="100%" stop-color="#8a6014"/>
+    </linearGradient>
+    <radialGradient id="glass" cx="35%" cy="28%" r="70%">
+      <stop offset="0%" stop-color="#16324e"/>
+      <stop offset="100%" stop-color="#040810"/>
+    </radialGradient>
+    <linearGradient id="star" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5ad6ff"/>
+      <stop offset="100%" stop-color="#c44dff"/>
+    </linearGradient>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <circle cx="512" cy="512" r="496" fill="url(#gold)"/>
+  <circle cx="512" cy="512" r="452" fill="url(#navy)"/>
+  <circle cx="512" cy="512" r="250" fill="url(#gold)"/>
+  <circle cx="512" cy="512" r="198" fill="url(#glass)"/>
+  <polygon points="430,390 430,634 690,512" fill="url(#goldFace)" stroke="#fff0ba" stroke-width="10" stroke-linejoin="round"/>
+  <polygon points="512,456 524,492 562,496 532,520 540,558 512,536 484,558 492,520 462,496 500,492" fill="url(#star)" filter="url(#soft)"/>
+</svg>
