@@ -12,7 +12,7 @@
    for(let i=0;i<32;i++){
     const tile=document.createElement('div');tile.className='poster-wall-tile';tile.style.setProperty('--poster-delay',-(i%8)*3+'s');
     const img=document.createElement('img');img.src=posters[i%posters.length].poster;img.alt='';img.decoding='async';img.fetchPriority='low';img.onerror=()=>tile.hidden=true;
-    const badge=document.createElement('span');badge.className='poster-wall-brand';const logo=document.createElement('img');logo.src='/logo-192.jpeg';logo.alt='';logo.width=22;logo.height=22;badge.append(logo,document.createTextNode('matchapp.tv'));
+    const badge=document.createElement('span');badge.className='poster-wall-brand';const logo=document.createElement('img');logo.src='/assets/brand/brandkit/app-icon.svg?v=20260919-brand1';logo.alt='';logo.width=22;logo.height=22;badge.append(logo,document.createTextNode('matchapp.tv'));
     tile.append(img,badge);grid.append(tile);
    }
    wall.append(grid);document.body.prepend(wall);document.dispatchEvent(new Event('matchapp:posterwall'));
