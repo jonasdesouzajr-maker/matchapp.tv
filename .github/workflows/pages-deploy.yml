@@ -106,7 +106,7 @@ jobs:
           ! grep -q "play.google.com/store/apps/details?id=tv.matchapp.app" /tmp/android.html
           curl -sS -L --max-time 30 https://matchapp.tv/ -o /tmp/home.html
           grep -Fq '/app.js?v=210' /tmp/home.html
-          grep -Fq '/catalog-media.js?v=20260918-notify2' /tmp/home.html
+          grep -Fq '/catalog-media.js?v=20260919-titlecards1' /tmp/home.html
           grep -Fq '/settings.js?v=20260918-onboard1' /tmp/home.html
           grep -Fq '/app-updates.js?v=202' /tmp/home.html
           curl -sS -L --max-time 30 https://matchapp.tv/notifications.js -o /tmp/notifications.js
@@ -116,13 +116,13 @@ jobs:
           curl -sS -L --max-time 30 https://matchapp.tv/profile/profile.html -o /tmp/profile.html
           grep -Fq 'What I don’t want to see in my matches' /tmp/profile.html
           curl -sS -L --max-time 30 https://matchapp.tv/release.json -o /tmp/release.json
-          grep -Fq '"2026.09.18.4"' /tmp/release.json
+          grep -Fq '"2026.09.19.1"' /tmp/release.json
           curl -sS -L --max-time 30 https://matchapp.tv/discover.html -o /tmp/discover.html
           grep -Fq '/discover.js?v=207' /tmp/discover.html
-          grep -Fq '/catalog-media.js?v=20260918-notify2' /tmp/discover.html
+          grep -Fq '/catalog-media.js?v=20260919-titlecards1' /tmp/discover.html
           curl -sS -L --max-time 30 'https://matchapp.tv/discover.js?v=207' -o /tmp/discover.js
           grep -Fq 'item.realGenres = meta.genres' /tmp/discover.js
-          curl -sS -L --max-time 30 'https://matchapp.tv/catalog-media.js?v=20260918-notify2' -o /tmp/catalog-media.js
+          curl -sS -L --max-time 30 'https://matchapp.tv/catalog-media.js?v=20260919-titlecards1' -o /tmp/catalog-media.js
           grep -Fq 'Cinemas & showtimes near me' /tmp/catalog-media.js
           grep -Fq 'lookupLive' /tmp/catalog-media.js
           curl -sS -L --max-time 30 https://matchapp.tv/kids/ -o /tmp/kids.html

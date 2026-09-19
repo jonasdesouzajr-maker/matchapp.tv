@@ -145,8 +145,8 @@
                remember a magic number — which is exactly how the Chrome pill
                ended up glued to the header with zero bottom padding.
                Change these two values and the whole page re-spaces. */
-            --stack-gap: 18px;      /* between stacked top-level blocks */
-            --stack-gap-tight: 10px;/* inside a group of related controls */
+            --stack-gap: 11px;      /* between stacked top-level blocks */
+            --stack-gap-tight: 7px; /* inside a group of related controls */
 
             /* ===== LAYOUT SHELL =====
                ONE horizontal measure for the entire page. Before this, the
@@ -267,10 +267,10 @@
         .main-layout { display: grid;
                        grid-template-columns: 1fr;
                        width: 100%; max-width: var(--shell-max); margin: 0 auto;
-                       padding: 26px var(--shell-pad) 0 var(--shell-pad);
+                       padding: 14px var(--shell-pad) 0 var(--shell-pad);
                        gap: var(--rail-gap); align-items: start; min-height: 80vh; }
         .sidebar-ad-left, .sidebar-ad-right { display: none; width: var(--rail-w); position: sticky; top: 104px; }
-        .container { max-width: 100%; width: 100%; min-width: 0; padding-bottom: 72px; }
+        .container { max-width: 100%; width: 100%; min-width: 0; padding-bottom: 40px; }
 
         /* Rails appear only when there is genuinely room for BOTH of them plus
            a content column that still reads well. Showing one without the
@@ -649,9 +649,9 @@
             #nav-reg-btn { max-width: 118px; }
         }
 
-        .premium-card { background: linear-gradient(160deg, rgba(32,24,52,0.92), rgba(20,19,26,0.94)); border: 1px solid rgba(168,108,36,0.50); border-radius: 20px; padding: 35px; margin-bottom: 30px; box-shadow: 0 15px 50px rgba(0,0,0,0.9); }
+        .premium-card { background: linear-gradient(160deg, rgba(32,24,52,0.92), rgba(20,19,26,0.94)); border: 1px solid rgba(168,108,36,0.50); border-radius: 20px; padding: 22px 20px; margin-bottom: 14px; box-shadow: 0 15px 50px rgba(0,0,0,0.9); }
 
-        .marquee-wrapper { width: 100%; overflow: hidden; background: linear-gradient(120deg, rgba(19,7,52,0.85), rgba(20,19,26,0.92)); border: 2px solid var(--gold); border-radius: 15px; padding: 15px 0; margin-bottom: 30px; position: relative; }
+        .marquee-wrapper { width: 100%; overflow: hidden; background: linear-gradient(120deg, rgba(19,7,52,0.85), rgba(20,19,26,0.92)); border: 2px solid var(--gold); border-radius: 15px; padding: 10px 0; margin-bottom: 14px; position: relative; }
         /* Scroll is driven by JS on scrollLeft rather than a CSS transform, so
            the rail can auto-advance AND be dragged/swiped back to see titles
            that already passed. A CSS animation can't do both. */
@@ -1258,7 +1258,7 @@
         }
 
         /* ===== HOMEPAGE H1 ===== */
-        .home-hero { text-align: center; padding: 4px 10px 22px 10px; }
+        .home-hero { text-align: center; padding: 2px 10px 10px 10px; }
         .home-h1 { color: var(--gold-glow); font-size: 30px; font-weight: 900; text-transform: uppercase;
                    letter-spacing: 0.5px; margin: 0 0 10px 0; line-height: 1.15; }
         .home-h1-sub { color: #bdb2d4; font-size: 14.5px; line-height: 1.7; margin: 0 auto; max-width: 620px; }
@@ -1665,14 +1665,14 @@
             flex-direction: column !important;
             align-items: stretch !important;
             flex-wrap: nowrap !important;
-            gap: clamp(14px, 2vw, 24px) !important;
+            gap: clamp(9px, 1vw, 13px) !important;
             position: static !important;
             width: min(100% - 22px, 1180px) !important;
             max-width: 1180px !important;
-            margin: 16px auto 22px !important;
-            padding: clamp(20px, 2.8vw, 32px) clamp(14px, 2.8vw, 34px) clamp(16px, 2.2vw, 26px) !important;
+            margin: 10px auto 12px !important;
+            padding: clamp(12px, 1.3vw, 17px) clamp(12px, 1.6vw, 20px) clamp(11px, 1.2vw, 15px) !important;
             border: 1.5px solid rgba(167, 118, 214, 0.55) !important;
-            border-radius: clamp(20px, 2.4vw, 32px) !important;
+            border-radius: clamp(16px, 1.6vw, 22px) !important;
             background:
                 radial-gradient(125% 140% at 50% -25%, rgba(124, 58, 190, 0.42), transparent 62%),
                 linear-gradient(168deg, rgba(58, 27, 98, 0.95) 0%, rgba(42, 19, 73, 0.96) 55%, rgba(33, 14, 58, 0.97) 100%) !important;
@@ -1684,7 +1684,7 @@
         /* ---------- brand row ---------- */
         html body.page-home #mh-topbox .mh-head {
             display: flex; flex-direction: column; align-items: center;
-            gap: 6px; width: 100%; min-width: 0;
+            gap: 3px; width: 100%; min-width: 0;
         }
         html body.page-home #mh-topbox .mh-head #home-brand-lockup {
             display: flex !important;
@@ -1722,8 +1722,8 @@
             left: auto !important; top: auto !important;
             right: auto !important; bottom: auto !important;
             flex: 0 0 auto;
-            width: clamp(58px, 6.6vw, 100px);
-            height: clamp(58px, 6.6vw, 100px);
+            width: clamp(40px, 3.6vw, 54px);
+            height: clamp(40px, 3.6vw, 54px);
             background: url("/assets/brand/matchapp-logo-8k.png?v=20260919-polished-box2") 9.21% 21.24% / 510.8% 351.4% no-repeat;
             filter: drop-shadow(0 0 16px rgba(229, 193, 88, 0.3));
         }
@@ -1735,11 +1735,11 @@
             display: inline-block !important;
         }
         html body.page-home #mh-topbox .mh-head #home-brand-lockup .home-brand-name {
-            font-size: clamp(1.5rem, 4vw, 3.1rem) !important;
+            font-size: clamp(1.1rem, 2.2vw, 1.72rem) !important;
             white-space: nowrap;
         }
         html body.page-home #mh-topbox .mh-head #home-brand-lockup .home-ai-link {
-            font-size: clamp(1.75rem, 4.6vw, 3.5rem) !important;
+            font-size: clamp(1.25rem, 2.5vw, 1.95rem) !important;
         }
         html body.page-home #mh-topbox .mh-head .mh-tagline {
             margin: 0 !important;
@@ -1747,9 +1747,9 @@
                matching left pad keeps the line optically centred. */
             padding-left: 0.4em;
             font-family: 'Outfit', 'Inter', system-ui, sans-serif;
-            font-size: clamp(0.62rem, 1.4vw, 0.98rem);
+            font-size: clamp(0.5rem, 0.8vw, 0.68rem);
             font-weight: 600;
-            letter-spacing: 0.4em;
+            letter-spacing: 0.3em;
             text-transform: uppercase;
             text-align: center;
             line-height: 1.5;
@@ -1762,7 +1762,7 @@
             display: grid !important;
             grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
             grid-auto-flow: row dense !important;
-            gap: clamp(8px, 1.1vw, 15px) !important;
+            gap: clamp(6px, 0.65vw, 9px) !important;
             align-items: stretch !important;
             justify-content: stretch !important;
             width: 100% !important; max-width: none !important; min-width: 0 !important;
@@ -1802,11 +1802,11 @@
             gap: 10px !important;
             width: 100% !important; max-width: none !important; min-width: 0 !important;
             height: auto !important;
-            min-height: clamp(56px, 5.6vw, 74px) !important;
+            min-height: clamp(42px, 3.2vw, 48px) !important;
             margin: 0 !important;
-            padding: 12px 14px !important;
+            padding: 7px 10px !important;
             border: 1px solid rgba(255, 255, 255, 0.14) !important;
-            border-radius: clamp(12px, 1.4vw, 18px) !important;
+            border-radius: clamp(10px, 1vw, 13px) !important;
             background: linear-gradient(160deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.025)) !important;
             box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07), 0 10px 26px rgba(0, 0, 0, 0.3) !important;
             color: #f3ecff !important;
@@ -1837,8 +1837,8 @@
         }
         html body.page-home #mh-topbox.app-header > nav.mh-deck > .matchapp-notification-button::after { display: none !important; }
         html body.page-home #mh-topbox.app-header > nav.mh-deck > .matchapp-notification-button svg {
-            width: clamp(21px, 2.2vw, 27px) !important;
-            height: clamp(21px, 2.2vw, 27px) !important;
+            width: clamp(17px, 1.5vw, 21px) !important;
+            height: clamp(17px, 1.5vw, 21px) !important;
             stroke-width: 1.7 !important;
         }
         html body.page-home #mh-topbox.app-header > nav.mh-deck > .matchapp-notification-button .matchapp-notification-count {
@@ -1897,9 +1897,9 @@
         html body.page-home #mh-topbox.app-header > nav.mh-deck > #lang-switcher-host > select {
             width: 100% !important; max-width: none !important; min-width: 0 !important;
             height: auto !important;
-            min-height: clamp(56px, 5.6vw, 74px) !important;
+            min-height: clamp(42px, 3.2vw, 48px) !important;
             margin: 0 !important;
-            padding: 12px 8px 12px clamp(30px, 3vw, 44px) !important;
+            padding: 7px 6px 7px clamp(26px, 2.4vw, 36px) !important;
             border: 0 !important; border-radius: inherit !important;
             background: transparent !important; box-shadow: none !important;
             color: #eaf2ff !important;
@@ -1917,13 +1917,13 @@
         }
         html body.page-home #mh-topbox.app-header > nav.mh-deck > .sound-toggle-btn::before {
             content: '♪' !important;
-            font-size: clamp(18px, 2vw, 26px) !important;
+            font-size: clamp(15px, 1.4vw, 19px) !important;
             color: #f0cf7a !important; margin: 0 !important; line-height: 1;
         }
         html body.page-home #mh-topbox.app-header > nav.mh-deck > .sound-toggle-btn::after { display: none !important; }
         html body.page-home #mh-topbox.app-header > nav.mh-deck > .sound-toggle-btn .sound-star {
             display: inline-flex !important;
-            width: clamp(24px, 2.6vw, 32px) !important; height: auto !important;
+            width: clamp(19px, 1.8vw, 24px) !important; height: auto !important;
             color: #f0cf7a !important;
         }
         html body.page-home #mh-topbox.app-header > nav.mh-deck > .sound-toggle-btn .sound-star svg {
@@ -1949,8 +1949,8 @@
         }
         html body.page-home #mh-topbox.app-header > nav.mh-deck > #profile-link-tab #nav-profile-text { display: none !important; }
         html body.page-home #mh-topbox.app-header > nav.mh-deck > #profile-link-tab .avatar-ring {
-            width: clamp(34px, 3.6vw, 46px) !important;
-            height: clamp(34px, 3.6vw, 46px) !important;
+            width: clamp(26px, 2.2vw, 32px) !important;
+            height: clamp(26px, 2.2vw, 32px) !important;
             flex: 0 0 auto !important;
         }
 
@@ -1967,16 +1967,16 @@
         /* 8 — sign out, full width. The label stays in the DOM for i18n and
            screen readers but is drawn as a mark at tile size. */
         html body.page-home #mh-topbox.app-header > nav.mh-deck > #nav-logout-btn {
-            order: 8 !important; grid-column: 1 / -1 !important;
-            min-height: clamp(46px, 4.4vw, 60px) !important;
+            order: 8 !important; grid-column: span 1 !important;
+            min-height: clamp(42px, 3.2vw, 48px) !important;
             border-color: rgba(248, 113, 113, 0.42) !important;
             background: linear-gradient(160deg, rgba(92, 26, 38, 0.42), rgba(60, 16, 26, 0.3)) !important;
             color: #ffc9c9 !important;
             font-size: 0 !important;
         }
         html body.page-home #mh-topbox.app-header > nav.mh-deck > #nav-logout-btn > svg {
-            width: clamp(23px, 2.2vw, 29px) !important;
-            height: clamp(23px, 2.2vw, 29px) !important;
+            width: clamp(18px, 1.6vw, 22px) !important;
+            height: clamp(18px, 1.6vw, 22px) !important;
             flex: 0 0 auto;
             stroke: #ffb4b4 !important;
         }
@@ -1993,7 +1993,7 @@
         @media (max-width: 820px) {
             html body.page-home #mh-topbox.app-header {
                 width: min(100% - 14px, 1180px) !important;
-                margin: 10px auto 16px !important;
+                margin: 8px auto 10px !important;
             }
             html body.page-home #mh-topbox.app-header > nav.mh-deck {
                 grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
