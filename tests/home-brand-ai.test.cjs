@@ -5,27 +5,28 @@ const path=require('node:path');
 const root=path.join(__dirname,'..');
 const read=f=>fs.readFileSync(path.join(root,f),'utf8');
 
-test('premium homepage wins first paint and late runtime cascade',()=>{
+test('canonical IA homepage owns first paint with no legacy Home overrides',()=>{
   const html=read('index.html');
   const settings=read('settings.js');
-  const home=read('home-premium.css');
-  assert.match(html,/home-premium\\.css\\?v=20260919-density5/);
-  assert.match(html,/settings\\.js\\?v=20260919-density5/);
-  assert.match(settings,/home-premium\\.css\\?v=20260919-density5/);
-  assert.match(settings,/dataset\.matchappHomeFinal='true'/);
-  assert.match(home,/Premium density v2/);
-  assert.match(home,/maLogoStarOrbit/);
-  assert.match(home,/matchapp-logo-animated-transparent\.svg/);
+  const ia=read('matchapp-ia.css');
+  assert.match(html,/matchapp-ia\.css\?v=20260919-ia18/);
+  assert.match(html,/settings\.js\?v=20260919-ia18/);
+  for(const legacy of ['home-premium.css','home-brand.css','home-ux-lock.css','desktop-home-restore.css','home-ux-lock.js','home-layout-guard.js']){
+    assert.ok(!html.includes(legacy),legacy+' must not load on Home');
+  }
+  assert.ok(!settings.includes('home-premium.css'),'settings must not late-inject legacy Home CSS');
+  assert.match(ia,/CANONICAL HOME SHELL — SINGLE OWNER/);
+  assert.match(html,/matchapp-orb-live\.svg\?v=20260919-orb1/);
 });
 
-test('homepage AI shortcut remains a fresh concierge chat',()=>{
+test('homepage animated Ai brand control opens the canonical Ask panel',()=>{
   const html=read('index.html');
-  const js=read('discover.js');
-  assert.match(html,/class="home-ai-link" href="\/discover\.html\?focus=start&new=1"/);
-  assert.match(html,/home-ai-default"[^>]*>Ai<\/span>/);
-  assert.match(html,/home-ai-pt"[^>]*>iA<\/span>/);
-  assert.match(js,/const forceNew = getQueryParam\('new'\) === '1'/);
-  assert.match(js,/currentThread = null/);
+  const ia=read('matchapp-ia.js');
+  assert.match(html,/class="ma-ai-brand-button"/);
+  assert.match(html,/Start a new chat with MatchApp Ai/);
+  assert.match(ia,/function openAskFromBrand\(\)/);
+  assert.match(ia,/safeClick\(ask\)/);
+  assert.match(ia,/specific-search-input/);
 });
 
 test('Kids assets and routing stay isolated from normal premium branding',()=>{
@@ -65,15 +66,13 @@ test('homepage rails use the reviewed faster, motion-safe cadence',()=>{
 });
 
 
-test('approved reference top box scopes orbit animation to the logo only',()=>{
-  const home=read('home-premium.css');
+test('canonical top box keeps the logo animated and all controls visible',()=>{
+  const ia=read('matchapp-ia.css');
   const lazy=read('lazy.js');
-  assert.match(home,/Reference top box v3/);
-  assert.match(home,/brand-logo-placeholder::after/);
-  assert.match(home,/maReferenceStarOrbit/);
-  assert.match(home,/home-brand-home::before,[\s\S]*home-brand-home::after[\s\S]*content:none!important/);
-  assert.match(home,/matchapp-logo-8k\.png\?v=20260919-reference3/);
-  assert.match(home,/lazy-bar--header/);
+  assert.match(ia,/CANONICAL HOME SHELL — SINGLE OWNER/);
+  assert.match(ia,/ma-brand-orb-stage/);
+  assert.match(ia,/nav\.mh-deck/);
+  assert.match(ia,/flex-wrap:wrap!important/);
   assert.match(lazy,/deck\.insertBefore\(bar,accountAnchor\)/);
 });
 
@@ -81,7 +80,7 @@ test('normal Home refresh starts at the top while intentional deep links are pre
   const html=read('index.html');
   assert.match(html,/id="matchapp-home-scroll-origin"/);
   assert.match(html,/scrollRestoration='manual'/);
-  assert.match(html,/window\.scrollTo\(0,0\)/);
+  assert.match(html,/window\.scrollTo\(\{top:0,left:0,behavior:'auto'\}\)/);
   assert.match(html,/Boolean\(location\.hash\)/);
   assert.match(html,/q\.get\('ask'\)==='1'/);
   assert.match(html,/q\.get\('news'\)/);
