@@ -9,9 +9,9 @@ test('premium homepage wins first paint and late runtime cascade',()=>{
   const html=read('index.html');
   const settings=read('settings.js');
   const home=read('home-premium.css');
-  assert.match(html,/home-premium\.css\?v=20260919-premium2/);
-  assert.match(html,/settings\.js\?v=20260919-premium2/);
-  assert.match(settings,/home-premium\.css\?v=20260919-premium2/);
+  assert.match(html,/home-premium\\.css\\?v=20260919-reference3/);
+  assert.match(html,/settings\\.js\\?v=20260919-premium2/);
+  assert.match(settings,/home-premium\\.css\\?v=20260919-reference3/);
   assert.match(settings,/dataset\.matchappHomeFinal='true'/);
   assert.match(home,/Premium density v2/);
   assert.match(home,/maLogoStarOrbit/);
@@ -62,4 +62,17 @@ test('homepage rails use the reviewed faster, motion-safe cadence',()=>{
   assert.match(rails,/const SPEED=\.022/);
   assert.match(rails,/prefers-reduced-motion/);
   assert.match(news,/const AUTO_MS=1900/);
+});
+
+
+test('approved reference top box scopes orbit animation to the logo only',()=>{
+  const home=read('home-premium.css');
+  const lazy=read('lazy.js');
+  assert.match(home,/Reference top box v3/);
+  assert.match(home,/brand-logo-placeholder::after/);
+  assert.match(home,/maReferenceStarOrbit/);
+  assert.match(home,/home-brand-home::before,[\s\S]*home-brand-home::after[\s\S]*content:none!important/);
+  assert.match(home,/matchapp-logo-8k\.png\?v=20260919-reference3/);
+  assert.match(home,/lazy-bar--header/);
+  assert.match(lazy,/deck\.insertBefore\(bar,accountAnchor\)/);
 });
