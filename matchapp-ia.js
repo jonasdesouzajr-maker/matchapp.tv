@@ -117,6 +117,7 @@ function brandHeader(){
    wrap.append(btn,menu);nav.appendChild(wrap);
  }
  syncHeaderAuth();
+ h.classList.add('ma-header-ready');
  if(!h.dataset.maAuthObserved){
    h.dataset.maAuthObserved='1';
    new MutationObserver(()=>syncHeaderAuth()).observe(h,{subtree:true,childList:true,attributes:true,attributeFilter:['style','class']});
