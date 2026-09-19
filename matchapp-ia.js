@@ -319,10 +319,12 @@ function boot(){
  if(isHome){prepareResponsiveAds();mountHome()}if(isDiscover)mountDiscover();if(isTogether)mountTogether();if(isPricing)mountPricing();
  document.addEventListener('matchapp:langchange',()=>setTimeout(applyLanguage,0));
  if(isHome){
-   requestAnimationFrame(()=>{
+   const revealCanonicalHome=()=>requestAnimationFrame(()=>requestAnimationFrame(()=>setTimeout(()=>{
      document.documentElement.classList.remove('ma-ui-preparing');
      if(window.__MATCHAPP_UI_FAILSAFE__){clearTimeout(window.__MATCHAPP_UI_FAILSAFE__);window.__MATCHAPP_UI_FAILSAFE__=0}
-   });
+   },80)));
+   if(document.readyState==='complete')revealCanonicalHome();
+   else document.addEventListener('DOMContentLoaded',revealCanonicalHome,{once:true});
  }
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
