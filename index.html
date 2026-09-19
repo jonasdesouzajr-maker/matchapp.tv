@@ -10,6 +10,30 @@
     <!-- End Google Tag Manager -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<script id="matchapp-home-scroll-origin">
+(function(){
+  'use strict';
+  var q;
+  try{q=new URLSearchParams(location.search);}catch(_){q={get:function(){return null;}}}
+  var intentional=Boolean(location.hash)||q.get('ask')==='1'||Boolean(q.get('news'));
+  if(intentional)return;
+  try{if('scrollRestoration' in history)history.scrollRestoration='manual';}catch(_){}
+  function top(){
+    try{window.scrollTo(0,0);}catch(_){}
+    try{document.documentElement.scrollTop=0;}catch(_){}
+    try{document.body.scrollTop=0;}catch(_){}
+  }
+  top();
+  document.addEventListener('DOMContentLoaded',function(){
+    top();
+    requestAnimationFrame(function(){top();requestAnimationFrame(top);});
+    setTimeout(top,80);
+    setTimeout(top,260);
+  },{once:true});
+  window.addEventListener('load',function(){top();setTimeout(top,120);},{once:true});
+  window.addEventListener('pageshow',function(e){if(e.persisted||!intentional){top();setTimeout(top,60);}});
+})();
+</script>
 <link rel="icon" href="/assets/brand/brandkit/app-icon.svg?v=20260919-brand1" type="image/svg+xml">
     <meta name="theme-color" content="#101010">
 
@@ -3666,7 +3690,7 @@
         </div>
     </div>
 
-    <script src="/settings.js?v=20260919-density5"></script>
+    <script src="/settings.js?v=20260919-scroll1"></script>
     <script src="/matching-policy.js?v=200"></script>
     <script src="/match-localization.js?v=187"></script>
 <script src="/app.js?v=210"></script><script src="/phone-auth-i18n.js?v=1"></script><script src="/phone-auth.js?v=1"></script><script src="/phone-auth-localize.js?v=1"></script>
