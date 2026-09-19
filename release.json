@@ -1,10 +1,10 @@
 {
-  "version": "2026.09.19.2",
+  "version": "2026.09.19.3",
   "date": "2026-09-19",
   "functional": true,
   "notes": {
-    "en": "Premium responsive header, persistent Kids Mode access, first-visitor walkthrough, broader entertainment and music catalog, transparent no-dead-end matching recovery, and refreshed Android app integration.",
-    "pt-BR": "Cabeçalho premium responsivo, acesso persistente ao Kids Mode, tour para novos visitantes, catálogo ampliado de entretenimento e música, recuperação transparente para evitar becos sem saída nos Matches e integração Android atualizada.",
+    "en": "Smartphone freeze root fix, fully unfolded Home by default, Lazy Mode-only folding, and Taylor Swift on Spotify positioned directly above the weekly MatchApp TV choice.",
+    "pt-BR": "Correção da causa raiz do congelamento em smartphones, Home totalmente aberta por padrão, dobras somente no Lazy Mode e Taylor Swift no Spotify posicionada diretamente acima da escolha semanal do MatchApp TV.",
     "es": "Cabecera premium adaptable, acceso persistente a Kids Mode, recorrido para nuevos visitantes, catálogo ampliado de entretenimiento y música, recuperación transparente para evitar resultados vacíos e integración Android actualizada.",
     "fr": "En-tête premium adaptatif, accès permanent au Kids Mode, visite guidée pour les nouveaux visiteurs, catalogue musique et divertissement élargi et intégration Android mise à jour.",
     "de": "Responsiver Premium-Header, dauerhafter Kids-Mode-Zugang, Einführungsrundgang, erweiterter Musik- und Unterhaltungskatalog und aktualisierte Android-Integration.",
