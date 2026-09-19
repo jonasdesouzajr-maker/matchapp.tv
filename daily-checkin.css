@@ -19,3 +19,46 @@
 @media(min-width:768px){.daily-reward-card{width:min(78vw,430px);padding:34px 28px}.daily-reward-medal{width:126px;height:126px;font-size:31px}.daily-checkin{padding:20px}.daily-day{min-height:60px;font-size:10px}}
 @media(min-width:1200px){.daily-reward-card{width:430px}.daily-checkin{max-width:100%}}
 @media(prefers-reduced-motion:reduce){.daily-reward,.daily-reward::before,.daily-reward::after,.daily-reward-card,.daily-reward-card::before,.daily-reward-medal,.daily-reward-medal::before,.daily-reward-medal::after,.daily-reward-kicker,.daily-reward-title,.daily-reward-message,.daily-reward-card button,.daily-checkin-badge,.daily-checkin-badge::after{animation:none!important}}
+
+/* Compact premium check-in shell */
+body.page-home #daily-match-checkin.daily-checkin{
+  width:min(100%,760px)!important;margin:8px auto!important;padding:9px 11px!important;
+  border:1px solid rgba(255,255,255,.07)!important;border-radius:16px!important;
+  background:linear-gradient(120deg,rgba(33,15,52,.58),rgba(17,8,29,.52))!important;
+  box-shadow:0 10px 26px rgba(0,0,0,.15)!important;
+}
+body.page-home #daily-match-checkin .daily-checkin-head{gap:9px!important}
+body.page-home #daily-match-checkin .daily-checkin-badge{
+  width:36px!important;height:36px!important;border-radius:11px!important;font-size:17px!important;
+  box-shadow:0 0 18px rgba(229,193,88,.12)!important;animation:none!important
+}
+body.page-home #daily-match-checkin .daily-checkin-badge::after{display:none!important}
+body.page-home #daily-match-checkin .daily-checkin-copy h2{
+  margin:0!important;font-size:13px!important;line-height:1.1!important;color:#fff3c2!important
+}
+body.page-home #daily-match-checkin .daily-checkin-copy p{
+  margin:3px 0 0!important;font-size:9.8px!important;line-height:1.25!important;color:#bfb1cb!important
+}
+body.page-home #daily-match-checkin .daily-checkin-toggle{
+  flex:0 0 32px;width:32px!important;height:32px!important;min-height:32px!important;padding:0!important;
+  border:0!important;border-radius:10px!important;background:rgba(255,255,255,.045)!important;color:#e6d9f1!important;
+  box-shadow:none!important;font-size:17px!important;cursor:pointer!important
+}
+body.page-home #daily-match-checkin .daily-checkin-body{display:none!important}
+body.page-home #daily-match-checkin.is-expanded .daily-checkin-body{display:block!important}
+body.page-home #daily-match-checkin .daily-checkin-days{margin:9px 0 7px!important;gap:4px!important}
+body.page-home #daily-match-checkin .daily-day{
+  min-height:44px!important;padding:4px 2px!important;border-radius:9px!important;font-size:8px!important
+}
+body.page-home #daily-match-checkin .daily-checkin-action{
+  width:auto!important;min-width:122px!important;min-height:34px!important;margin:7px 0 0 auto!important;padding:6px 12px!important;
+  display:block!important;border-radius:999px!important;font-size:10px!important;
+  background:linear-gradient(135deg,#f5d976,#dcae3b)!important;box-shadow:0 6px 18px rgba(229,193,88,.13)!important
+}
+body.page-home #daily-match-checkin .daily-checkin-note{font-size:9px!important;margin:4px 0 0!important}
+@media(max-width:600px){
+  body.page-home #daily-match-checkin.daily-checkin{padding:8px 9px!important;border-radius:14px!important}
+  body.page-home #daily-match-checkin .daily-checkin-badge{width:34px!important;height:34px!important}
+  body.page-home #daily-match-checkin .daily-checkin-action{min-height:32px!important}
+  body.page-home #daily-match-checkin .daily-checkin-days{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+}
