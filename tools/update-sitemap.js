@@ -20,6 +20,8 @@ const SITE = 'https://matchapp.tv';
 const CORE = [
     { loc: `${SITE}/`,                         freq: 'daily',   pri: '1.0' },
     { loc: `${SITE}/discover.html`,            freq: 'daily',   pri: '0.9' },
+    { loc: `${SITE}/anime.html`,                freq: 'daily',   pri: '0.8' },
+    { loc: `${SITE}/android/`,                  freq: 'weekly',  pri: '0.6' },
     { loc: `${SITE}/kids/`,                    freq: 'weekly',  pri: '0.9', lastmod: '2026-09-17T00:00:00+00:00' },
     { loc: `${SITE}/featured/a-gata-comeu/`,   freq: 'weekly',  pri: '0.8', lastmod: '2026-09-17T00:00:00+00:00' },
     { loc: `${SITE}/featured/american-horror-story-13/`, freq: 'weekly', pri: '0.8', lastmod: '2026-09-17T00:00:00+00:00' },
