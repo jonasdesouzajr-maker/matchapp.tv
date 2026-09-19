@@ -235,3 +235,12 @@ button.matchapp-tiktok-action{font:inherit;padding:0}
 .matchapp-tiktok-engagement a,.matchapp-tiktok-engagement button{min-height:44px;border:1px solid rgba(255,255,255,.14);border-radius:13px;background:rgba(22,11,34,.88);color:#fff;text-decoration:none;font:800 12px/1 'Inter',system-ui,sans-serif;display:flex;align-items:center;justify-content:center;gap:6px;cursor:pointer}
 .matchapp-tiktok-engagement .tt-like{border-color:rgba(255,74,112,.36);color:#ff9aaf}.matchapp-tiktok-engagement .tt-comment{border-color:rgba(105,201,208,.38);color:#a7f8fb}.matchapp-tiktok-engagement .tt-share{border-color:rgba(229,193,88,.42);color:#ffe89a}
 .matchapp-tiktok-tags{text-align:center;color:#cfc1db;font:650 10.5px/1.45 'Inter',system-ui,sans-serif;margin:6px 0 0}
+
+/* Premium intro aura v3 — clean video, soft cinematic shimmer behind it. */
+.matchapp-tiktok-intro-card{isolation:isolate!important;overflow:visible!important;box-shadow:0 30px 100px rgba(0,0,0,.72),0 0 42px rgba(229,193,88,.22)!important}
+.matchapp-tiktok-intro-card::before{display:block!important;content:""!important;position:absolute!important;inset:-14%!important;z-index:-2!important;border-radius:34px!important;pointer-events:none!important;background:conic-gradient(from 10deg,rgba(255,235,154,.04),rgba(151,82,224,.30),rgba(76,207,255,.16),rgba(255,223,126,.34),rgba(151,82,224,.22),rgba(255,235,154,.04))!important;filter:blur(30px)!important;opacity:.72!important;animation:maPremiumAura 8s ease-in-out infinite,maPremiumSweep 18s linear infinite!important}
+.matchapp-tiktok-intro-card::after{display:block!important;content:""!important;position:absolute!important;inset:-2px!important;z-index:2!important;border-radius:30px!important;pointer-events:none!important;background:linear-gradient(110deg,transparent 0 35%,rgba(255,249,217,.46) 48%,transparent 61%)!important;background-size:240% 100%!important;box-shadow:inset 0 0 0 1px rgba(255,241,181,.28),inset 0 0 28px rgba(229,193,88,.06)!important;animation:maPremiumGlint 6.5s ease-in-out infinite!important}
+@keyframes maPremiumAura{0%,100%{opacity:.48;transform:scale(.96)}50%{opacity:.88;transform:scale(1.04)}}
+@keyframes maPremiumSweep{to{rotate:360deg}}
+@keyframes maPremiumGlint{0%,18%{background-position:180% 0;opacity:.22}50%{opacity:.52}82%,100%{background-position:-80% 0;opacity:.18}}
+@media(prefers-reduced-motion:reduce){.matchapp-tiktok-intro-card::before,.matchapp-tiktok-intro-card::after{animation:none!important;opacity:.5!important}}
