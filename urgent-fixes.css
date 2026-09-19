@@ -216,3 +216,50 @@ body.match-searching #search-box{display:none !important}
   body.page-home .sidebar-ad-left,
   body.page-home .sidebar-ad-right{display:none!important}
 }
+
+/* Deterministic handset layout. This class is set from the real mobile UA,
+   bypassing unreliable standalone/WebView viewport and pointer reporting. */
+html.matchapp-handset body.page-home main.page-wrapper,
+html.matchapp-handset body.page-home main.page-wrapper>.main-layout,
+html.matchapp-handset body.page-home main.page-wrapper>.main-layout>.container{
+  display:block!important;
+  width:100%!important;
+  max-width:100%!important;
+  min-width:0!important;
+  grid-template-columns:none!important;
+  grid-auto-flow:row!important;
+  columns:auto!important;
+  column-count:1!important;
+}
+html.matchapp-handset body.page-home main.page-wrapper>.main-layout>.container>*{
+  position:relative!important;
+  left:auto!important;
+  right:auto!important;
+  width:100%!important;
+  max-width:100%!important;
+  min-width:0!important;
+  grid-column:auto!important;
+  grid-row:auto!important;
+  float:none!important;
+  clear:both!important;
+  box-sizing:border-box!important;
+}
+html.matchapp-handset body.page-home main.page-wrapper>.main-layout>.container>.tg-entry{
+  display:flex!important;
+  margin-left:0!important;
+  margin-right:0!important;
+}
+html.matchapp-handset body.page-home main.page-wrapper>.main-layout>.container>#premiere-disclosure{
+  display:block!important;
+  margin-left:0!important;
+  margin-right:0!important;
+}
+html.matchapp-handset body.page-home main.page-wrapper>.main-layout>.container>#premiere-disclosure>#spotlight-ahs13{
+  display:block!important;
+  width:100%!important;
+  max-width:100%!important;
+  margin-left:0!important;
+  margin-right:0!important;
+}
+html.matchapp-handset body.page-home .sidebar-ad-left,
+html.matchapp-handset body.page-home .sidebar-ad-right{display:none!important}
