@@ -444,3 +444,33 @@ body.page-home .app-header>nav #quota-badge{background:linear-gradient(145deg,rg
 body.page-home .app-header>nav #profile-link-tab{background:linear-gradient(145deg,rgba(131,74,190,.24),rgba(60,35,92,.2))!important;border-color:rgba(190,126,255,.36)!important}
 body.page-home .app-header>nav #nav-logout-btn{background:linear-gradient(145deg,rgba(190,63,82,.2),rgba(92,30,44,.18))!important}
 #home-brand-lockup .ma-new-brand-logo{image-rendering:auto;filter:drop-shadow(0 0 12px rgba(229,193,88,.28)) saturate(1.06)!important}
+
+/* 2026-09-19 uploaded full MatchApp TV Ai lockup — homepage only. */
+#home-brand-lockup .home-brand-home{gap:0!important}
+#home-brand-lockup .ma-new-brand-logo{
+  --home-logo-size:auto;
+  width:clamp(18rem,34vw,34rem)!important;
+  height:auto!important;
+  aspect-ratio:3/1!important;
+  flex:0 1 auto!important;
+  object-fit:contain!important;
+  object-position:left center!important;
+  clip-path:none!important;
+  border:0!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+  filter:drop-shadow(0 0 12px rgba(229,193,88,.22)) drop-shadow(0 0 18px rgba(0,155,255,.12))!important;
+  animation:maBannerGlow 6s ease-in-out infinite!important;
+}
+#home-brand-lockup .home-brand-name,
+#home-brand-lockup .home-ai-link{display:none!important}
+#home-brand-lockup .home-brand-home:hover .ma-new-brand-logo,
+#home-brand-lockup .home-brand-home:focus-visible .ma-new-brand-logo{transform:scale(1.015)!important}
+@keyframes maBannerGlow{
+  0%,100%{filter:drop-shadow(0 0 10px rgba(229,193,88,.18)) drop-shadow(0 0 15px rgba(0,155,255,.10));transform:translateZ(0)}
+  50%{filter:drop-shadow(0 0 18px rgba(229,193,88,.34)) drop-shadow(0 0 24px rgba(0,155,255,.20));transform:translateZ(0) scale(1.008)}
+}
+@media(max-width:700px){
+ #home-brand-lockup .ma-new-brand-logo{width:clamp(12rem,52vw,20rem)!important}
+}
+@media(prefers-reduced-motion:reduce){#home-brand-lockup .ma-new-brand-logo{animation:none!important}}
