@@ -3,7 +3,7 @@
 (function(){
 'use strict';
 const BRAND='/assets/brand/brandkit/logo-horizontal.svg?v=20260919-brand1';
-const ICON='/assets/brand/brandkit/app-icon.svg?v=20260919-brand1';
+const ICON='/assets/brand/brandkit/matchapp-orb-live.svg?v=20260919-orb1';
 const path=(location.pathname||'/').replace(/\/+$/,'')||'/';
 const isHome=path==='/'||path==='/index.html';
 const isDiscover=path==='/discover.html';
