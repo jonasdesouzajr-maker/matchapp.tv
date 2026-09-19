@@ -223,8 +223,8 @@
         if (total > (field ? field.collapseAfter : 10)) {
             parts.push(
                 '<button type="button" class="crit-chip crit-more" data-toggle-more="1">' +
-                (expanded ? '− ' + tr('crit.less', 'Show less')
-                          : '+ ' + tr('crit.more', 'Show all') + ' (' + total + ')') +
+                (expanded ? tr('crit.less', 'Show less')
+                          : tr('crit.more', 'Show all') + ' (' + total + ')') +
                 '</button>'
             );
         }
