@@ -412,10 +412,11 @@ Deno.serve(async (req: Request) => {
       const genreIds = Array.isArray(d.genre_ids) ? (d.genre_ids as unknown[]).map(Number).filter((n)=>Number.isSafeInteger(n)&&n>0) : [];
       const decade = Number(d.decade_start);
       const pages = Math.min(20, Math.max(1, Number(d.pages)||1));
+      const pageStart = Math.min(500, Math.max(1, Number(d.page_start)||1));
       const originalLanguage = typeof d.original_language === "string" && /^[a-z]{2}$/i.test(d.original_language) ? d.original_language.toLowerCase() : "";
       const out: Record<string, unknown>[] = [];
       for (const k of kinds) {
-        for (let page=1; page<=pages; page++) {
+        for (let page=pageStart; page<=Math.min(500,pageStart+pages-1); page++) {
           const params = new URLSearchParams();
           params.set("include_adult","false");
           params.set("sort_by","popularity.desc");
