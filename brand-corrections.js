@@ -2,7 +2,7 @@
 (function(){
   'use strict';
 
-  const LOGO_ASSET='/assets/brand/matchapp-logo-animated-transparent.svg?v=20260919-premium-slow1';
+  const LOGO_ASSET='/assets/brand/matchapp-logo-8k.png?v=20260919-live1';
   const isKidsRoute=()=>{const p=location.pathname.toLowerCase();return p==='/kids'||p.startsWith('/kids/');};
 
   const AI_LABELS={
@@ -48,8 +48,8 @@
     img.className='brand-logo ma-new-brand-logo';
     img.src=LOGO_ASSET;
     img.alt='MatchApp';
-    img.width=96;
-    img.height=96;
+    img.width=1536;
+    img.height=512;
     img.decoding='async';
     img.setAttribute('data-matchapp-canonical-logo','1');
     return img;
