@@ -226,3 +226,115 @@ html body.page-home .matchapp-kids-toggle{
     scroll-behavior:auto!important;animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;
   }
 }
+
+
+/* Premium density v2 — lazy-user first-screen hierarchy */
+html body.page-home #mh-topbox.app-header{
+  min-height:82px!important;margin:8px auto 4px!important;padding:7px 12px!important;
+  gap:10px!important;border-radius:20px!important;
+}
+html body.page-home #mh-topbox #home-brand-lockup .home-brand-home{
+  position:relative!important;isolation:isolate!important;padding-left:4px!important;
+}
+html body.page-home #mh-topbox #home-brand-lockup .home-brand-home::before{
+  width:112px!important;height:112px!important;
+  filter:drop-shadow(0 0 18px rgba(243,207,105,.38)) drop-shadow(0 0 30px rgba(101,221,255,.13))!important;
+  animation:maLogoPremiumBreathe 5.8s ease-in-out infinite!important;
+}
+html body.page-home #mh-topbox #home-brand-lockup .home-brand-home::after{
+  content:"✦"!important;position:absolute!important;left:56px!important;top:50%!important;
+  width:1px!important;height:1px!important;z-index:2!important;pointer-events:none!important;
+  color:transparent!important;font-size:12px!important;line-height:1!important;
+  text-shadow:
+    0 -56px 0 #fff0a8,
+    48px -28px 0 #65ddff,
+    48px 28px 0 #ff79cb,
+    0 56px 0 #f3cf69,
+    -48px 28px 0 #bd8bff,
+    -48px -28px 0 #65ddff!important;
+  filter:drop-shadow(0 0 5px rgba(255,255,255,.7))!important;
+  transform-origin:center!important;animation:maLogoStarOrbit 12s linear infinite!important;
+}
+@keyframes maLogoPremiumBreathe{
+  0%,100%{transform:scale(1);filter:drop-shadow(0 0 15px rgba(243,207,105,.30)) drop-shadow(0 0 24px rgba(101,221,255,.08))}
+  50%{transform:scale(1.035);filter:drop-shadow(0 0 25px rgba(243,207,105,.52)) drop-shadow(0 0 34px rgba(101,221,255,.18))}
+}
+@keyframes maLogoStarOrbit{to{transform:rotate(360deg)}}
+
+html body.page-home #mh-topbox.app-header>nav.mh-deck{gap:2px!important;max-width:720px!important}
+html body.page-home #mh-topbox.app-header>nav.mh-deck>*{
+  min-height:36px!important;height:36px!important;padding:5px 8px!important;border-radius:10px!important;
+}
+html body.page-home #mh-topbox .lazy-bar--header{
+  width:auto!important;max-width:220px!important;margin:0!important;padding:0!important;
+  border:0!important;background:transparent!important;box-shadow:none!important;
+}
+html body.page-home #mh-topbox .lazy-bar--header .lazy-toggle{
+  min-height:36px!important;height:36px!important;padding:4px 8px!important;gap:6px!important;
+  border:1px solid rgba(243,207,105,.10)!important;border-radius:10px!important;
+  background:rgba(255,255,255,.025)!important;box-shadow:none!important;
+}
+html body.page-home #mh-topbox .lazy-bar--header .lazy-title{font-size:9.5px!important;letter-spacing:.04em!important}
+html body.page-home #mh-topbox .lazy-bar--header .lazy-sub{display:none!important}
+html body.page-home #mh-topbox .lazy-bar--header .lazy-switch{transform:scale(.78)!important;transform-origin:left center!important}
+html body.page-home #mh-topbox .lazy-bar--header .lazy-lock{font-size:10px!important}
+
+/* Daily reward + Ask AI are one premium action stack. */
+html body.page-home #daily-match-checkin,
+html body.page-home .top-ask-wrap{
+  width:min(calc(100% - 20px),820px)!important;max-width:820px!important;margin-left:auto!important;margin-right:auto!important;
+}
+html body.page-home #daily-match-checkin{margin-top:4px!important;margin-bottom:3px!important}
+html body.page-home .top-ask-wrap{margin-top:3px!important;margin-bottom:3px!important}
+html body.page-home .top-ai-launch{min-height:78px!important;padding:9px 13px!important;border-radius:18px!important}
+html body.page-home .top-ask-icon{width:54px!important;height:54px!important}
+html body.page-home .top-ai-arrow{width:40px!important;height:40px!important}
+
+/* Status is useful, but it should not consume a whole screen band. */
+html body.page-home .ai-disclaimer,
+html body.page-home .home-ai-disclaimer{
+  margin:2px auto!important;padding:5px 9px!important;font-size:10px!important;line-height:1.25!important;
+}
+html body.page-home .live-strip{
+  margin:2px auto!important;padding:5px 9px!important;font-size:10px!important;min-height:28px!important;
+}
+html body.page-home .home-hero{margin:3px 0 2px!important;padding:0!important}
+html body.page-home .home-h1{margin:4px 0 2px!important;font-size:clamp(1.55rem,2.8vw,2.05rem)!important}
+html body.page-home .home-h1-sub{margin:0!important;font-size:12px!important;line-height:1.35!important}
+html body.page-home .container>*{margin-top:4px!important;margin-bottom:4px!important}
+html body.page-home .marquee-wrapper{margin:4px 0!important}
+
+/* Signed-out first screen should feel like an app, not a long form. */
+html body.page-home #daily-match-checkin.daily-checkin{min-height:0!important}
+html body.page-home #daily-match-checkin .daily-checkin-action{margin-top:4px!important}
+html body.page-home #daily-match-checkin .daily-checkin-head{min-height:36px!important}
+
+@media(min-width:1000px){
+  html body.page-home #mh-topbox #home-brand-lockup .home-brand-name{font-size:clamp(1.65rem,2vw,2.15rem)!important}
+  html body.page-home #mh-topbox #home-brand-lockup .home-ai-link{font-size:clamp(1.8rem,2.2vw,2.35rem)!important}
+}
+@media(min-width:601px) and (max-width:999px){
+  html body.page-home #mh-topbox.app-header{margin:5px auto 3px!important;padding:6px 8px!important}
+  html body.page-home #mh-topbox #home-brand-lockup .home-brand-home::before{width:96px!important;height:96px!important}
+  html body.page-home #mh-topbox #home-brand-lockup .home-brand-home::after{
+    left:48px!important;text-shadow:0 -47px 0 #fff0a8,40px -24px 0 #65ddff,40px 24px 0 #ff79cb,0 47px 0 #f3cf69,-40px 24px 0 #bd8bff,-40px -24px 0 #65ddff!important
+  }
+}
+@media(max-width:600px){
+  html body.page-home #mh-topbox.app-header{margin:3px auto 2px!important;padding:5px 6px!important;gap:2px!important}
+  html body.page-home #mh-topbox #home-brand-lockup .home-brand-home::before{width:82px!important;height:82px!important}
+  html body.page-home #mh-topbox #home-brand-lockup .home-brand-home::after{
+    left:41px!important;font-size:10px!important;
+    text-shadow:0 -40px 0 #fff0a8,34px -20px 0 #65ddff,34px 20px 0 #ff79cb,0 40px 0 #f3cf69,-34px 20px 0 #bd8bff,-34px -20px 0 #65ddff!important
+  }
+  html body.page-home #mh-topbox.app-header>nav.mh-deck>*{min-height:34px!important;height:34px!important;padding:4px 6px!important}
+  html body.page-home #mh-topbox .lazy-bar--header .lazy-toggle{min-height:34px!important;height:34px!important}
+  html body.page-home #daily-match-checkin,
+  html body.page-home .top-ask-wrap{width:calc(100% - 10px)!important}
+  html body.page-home .top-ai-launch{min-height:70px!important;padding:8px!important}
+  html body.page-home .live-strip{font-size:9px!important}
+}
+@media(prefers-reduced-motion:reduce){
+  html body.page-home #mh-topbox #home-brand-lockup .home-brand-home::before,
+  html body.page-home #mh-topbox #home-brand-lockup .home-brand-home::after{animation:none!important}
+}
