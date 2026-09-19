@@ -68,3 +68,16 @@ test('desktop social rewards never fire merely for opening or copying a social i
   assert.match(share,/afterShare\(network \+ '-confirmed'\)/);
   assert.match(html,/share\.js\?v=20260919-reward3/);
 });
+
+test('Taylor Swift Spotify field is the last visible editorial module and carries current SEO metadata',()=>{
+  const html=read('index.html'),css=read('matchapp-ia.css');
+  const swift=html.indexOf('<section id="swifties-spotify"');
+  const tiktok=html.indexOf('<section id="matchapp-tiktok-showcase"');
+  assert(swift>tiktok,'Spotify field must come after TikTok as the final editorial field');
+  assert.match(html,/Taylor Swift official music videos on Spotify/);
+  assert.match(html,/numberOfItems":58/);
+  for(const title of ['Elizabeth Taylor','Opalite','The Fate of Ophelia']) assert.ok(html.includes(title),title+' must be represented in metadata/content');
+  assert.match(html,/open\.spotify\.com\/embed\/artist\/06HL4z0CvFAxyc27GXpf02/);
+  assert.match(html,/open\.spotify\.com\/embed\/playlist\/37i9dQZF1DXe7fP0uj1s1D/);
+  assert.doesNotMatch(css,/html body\.page-home #swifties-spotify,\s*html body\.page-home #how-it-works/,'canonical Home shell must not hide the restored Spotify field');
+});
