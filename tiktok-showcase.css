@@ -244,3 +244,22 @@ button.matchapp-tiktok-action{font:inherit;padding:0}
 @keyframes maPremiumSweep{to{rotate:360deg}}
 @keyframes maPremiumGlint{0%,18%{background-position:180% 0;opacity:.22}50%{opacity:.52}82%,100%{background-position:-80% 0;opacity:.18}}
 @media(prefers-reduced-motion:reduce){.matchapp-tiktok-intro-card::before,.matchapp-tiktok-intro-card::after{animation:none!important;opacity:.5!important}}
+
+/* TikTok reward/status polish */
+.matchapp-tiktok-reward-copy{
+  max-width:620px;margin:10px auto 0;padding:9px 11px;border-radius:12px;
+  background:rgba(229,193,88,.07);border:1px solid rgba(229,193,88,.16);
+  color:#d8cde2;font:600 11.5px/1.45 'Inter',system-ui,sans-serif;text-align:center
+}
+.matchapp-tiktok-reward-copy strong{color:#ffe493}
+.matchapp-tiktok-action-status{
+  min-height:18px;margin:6px auto 0;color:#ffe493;
+  font:750 11px/1.35 'Inter',system-ui,sans-serif;text-align:center
+}
+.matchapp-tiktok-poster iframe{pointer-events:auto!important}
+.matchapp-tiktok-engagement{position:relative;z-index:4}
+@media(max-width:600px){
+  .matchapp-tiktok-reward-copy{font-size:10.5px;padding:8px 9px}
+  .matchapp-tiktok-engagement{gap:5px}
+  .matchapp-tiktok-engagement a,.matchapp-tiktok-engagement button{min-height:42px;font-size:11px}
+}
