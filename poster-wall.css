@@ -451,3 +451,28 @@ html body.page-home .poster-wall-tile:nth-child(16){top:86%;left:35%;transform:r
 @media(min-width:2200px){
   html body.page-home .poster-wall-tile{width:clamp(66px,3.7vw,96px)!important}
 }
+
+
+/* 2026-09-20 final scattered-cover visibility pass.
+   Smaller, clearer real-title covers across the fixed page background.
+   Static only: no animation, filters, observers or promoted compositor layers. */
+html body.page-home .poster-wall-tile{
+  width:clamp(34px,3.9vw,60px)!important;
+  opacity:.98!important;
+  border-radius:7px!important;
+  box-shadow:0 6px 20px rgba(0,0,0,.34),0 0 0 1px rgba(229,193,88,.36)!important;
+  animation:none!important;
+  will-change:auto!important;
+}
+html body.page-home .poster-wall::after{
+  background:linear-gradient(180deg,rgba(8,7,20,.035),rgba(8,7,20,.09))!important;
+}
+@media(max-width:700px){
+  html body.page-home .poster-wall-tile{
+    width:clamp(32px,9vw,46px)!important;
+    opacity:.96!important;
+  }
+  html body.page-home .poster-wall::after{
+    background:linear-gradient(180deg,rgba(8,7,20,.06),rgba(8,7,20,.12))!important;
+  }
+}
