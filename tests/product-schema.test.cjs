@@ -18,3 +18,14 @@ test('digital MatchApp plans use OfferCatalog without fabricated merchant fields
  assert.equal(scripts.some(x=>x['@type']==='Product'),false,'avoid merchant Product markup that creates irrelevant physical-goods warnings');
  assert.doesNotMatch(html,/"aggregateRating"|"review"\s*:/,'do not fabricate ratings or reviews');
 });
+
+
+test('runtime and hotfix guards remove legacy Product markup instead of inventing merchant data',()=>{
+ const build=fs.readFileSync('build-meta.js','utf8');
+ const hotfix=fs.readFileSync('tools/apply-critical-hotfixes.js','utf8');
+ assert.match(build,/script\.remove\(\)/);
+ assert.match(build,/@type'\] === 'Product'/);
+ assert.match(hotfix,/@type'\] === 'Product'/);
+ assert.doesNotMatch(build,/aggregateRating|shippingDetails|hasMerchantReturnPolicy/);
+ assert.doesNotMatch(hotfix,/aggregateRating|shippingDetails|hasMerchantReturnPolicy/);
+});
