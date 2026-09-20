@@ -54,6 +54,15 @@ async function finish(skipped){
 }
 async function waitIntro(){const started=Date.now();while(Date.now()-started<16000){const intro=document.getElementById('matchapp-tiktok-intro');const blocked=document.documentElement.dataset.tiktokIntro==='1'||(intro&&!intro.hidden&&getComputedStyle(intro).display!=='none');if(!blocked)return;await new Promise(r=>setTimeout(r,450))}}
 async function start(){if(active||!await eligible())return;await waitIntro();await new Promise(r=>setTimeout(r,650));steps=buildSteps();if(!steps.length)return;ensureUi();active=true;window.MatchAppScrollGate?.unlock?.();show(0)}
-window.MatchAppOnboarding={start,version:VERSION};addEventListener('resize',place,{passive:true});addEventListener('scroll',place,{passive:true});document.addEventListener('matchapp:authchange',()=>setTimeout(start,600));
-if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>setTimeout(start,1500),{once:true});else setTimeout(start,1500);
+let interactionSeen=false;
+function armAfterInteraction(){
+ if(interactionSeen)return;
+ interactionSeen=true;
+ setTimeout(start,250);
+}
+window.MatchAppOnboarding={start,version:VERSION};
+addEventListener('resize',place,{passive:true});
+addEventListener('scroll',place,{passive:true});
+['pointerdown','keydown','touchstart'].forEach(type=>addEventListener(type,armAfterInteraction,{once:true,passive:true}));
+document.addEventListener('matchapp:authchange',()=>{if(interactionSeen)setTimeout(start,600)});
 })();
