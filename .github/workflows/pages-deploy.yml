@@ -104,7 +104,7 @@ jobs:
           ! grep -q 'matchapp-tiktok-intro' /tmp/home.html
           ! grep -q 'ma-ui-preparing' /tmp/home.html
           grep -q '/page-origin.js?v=20260920-freeze2' /tmp/home.html
-          grep -q '/build-meta.js?v=20260920-freeze2' /tmp/home.html
+          grep -q '/build-meta.js?v=20260920-freeze6' /tmp/home.html
           grep -q 'matchapp-official-icon-512.webp' /tmp/home.html
           grep -q '/matchapp-ia.css?v=20260920-stability5' /tmp/home.html
           curl -fsSL --max-time 30 'https://matchapp.tv/matchapp-ia.css?v=20260920-stability5' -o /tmp/home-stability.css
@@ -140,6 +140,31 @@ jobs:
             echo "Cloudflare purge response did not report success=true."
             exit 1
           }
+      - name: Browser Home startup and scroll smoke
+        shell: bash
+        run: |
+          set -euo pipefail
+          CHROME="$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || command -v chromium-browser || true)"
+          if [ -z "$CHROME" ]; then
+            echo "::error::No Chromium-compatible browser found on runner."
+            exit 1
+          fi
+          "$CHROME" --headless=new --no-sandbox --disable-dev-shm-usage --no-first-run --no-default-browser-check \
+            --remote-debugging-port=9222 --remote-allow-origins='*' --user-data-dir=/tmp/matchapp-chrome \
+            about:blank >/tmp/matchapp-chrome.log 2>&1 &
+          CHROME_PID=$!
+          trap 'kill "$CHROME_PID" 2>/dev/null || true' EXIT
+          ready=0
+          for _ in $(seq 1 75); do
+            if curl -fsS http://127.0.0.1:9222/json/version >/dev/null 2>&1; then ready=1; break; fi
+            sleep 0.2
+          done
+          if [ "$ready" != "1" ]; then
+            cat /tmp/matchapp-chrome.log || true
+            echo "::error::Headless Chrome did not start."
+            exit 1
+          fi
+          timeout 120s node tools/browser-scroll-smoke.mjs https://matchapp.tv/
       - name: Notify phone (success only)
         if: success()
         env:
