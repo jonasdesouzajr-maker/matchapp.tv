@@ -118,7 +118,7 @@ window.MATCHAPP_BUILD = '2026.09.19.3';
         '@type': 'Organization',
         name: 'MatchApp',
         url: 'https://matchapp.tv/',
-        logo: 'https://matchapp.tv/assets/brand/matchapp-icon-512.png',
+        logo: 'https://matchapp.tv/assets/brand/matchapp-official-icon-512.webp',
         email: 'support@matchapp.tv',
         description: 'AI entertainment discovery service for movies, series, K-dramas, anime, novelas, micro-dramas, podcasts, music and family viewing.'
       });
@@ -136,7 +136,7 @@ window.MATCHAPP_BUILD = '2026.09.19.3';
         url: 'https://matchapp.tv/discover.html',
         description: 'Voice- and text-enabled entertainment concierge with regional streaming, rental and cinema availability plus opt-in title alerts.',
         isPartOf: { '@type': 'WebSite', name: 'MatchApp TV Ai', url: 'https://matchapp.tv/' },
-        publisher: { '@type': 'Organization', name: 'MatchApp', url: 'https://matchapp.tv/', logo: { '@type': 'ImageObject', url: 'https://matchapp.tv/assets/brand/matchapp-icon-512.png', width: 512, height: 512 } }
+        publisher: { '@type': 'Organization', name: 'MatchApp', url: 'https://matchapp.tv/', logo: { '@type': 'ImageObject', url: 'https://matchapp.tv/assets/brand/matchapp-official-icon-512.webp', width: 512, height: 512 } }
       });
     }
     normalizePricingTruth();
