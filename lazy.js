@@ -42,9 +42,7 @@
         { sel: '.top-ask-wrap',         label: '🤖 Ask MatchApp Ai — chat about what to watch', icon: '🤖' },        { sel: '#swifties-spotify',     label: '🎵 Spotify spotlight — music & video picks', icon: '🎵' },
         { sel: '#questionnaire-box',    label: '🎯 Find my match — mood, genre, platform & more', icon: '🎯' },
         { sel: '#search-box',           label: '🔎 Search a specific title', icon: '🔎' },
-        { sel: '#premiere-disclosure',  label: '🎬 Premiere spotlight — featured release', icon: '🎬' },
-        { sel: '#weekly-pick-disclosure', label: '⭐ Top MatchApp TV choice this week', icon: '⭐' },
-        { sel: '#how-it-works',         label: '❓ How MatchApp works', icon: '❓' },
+        { sel: '#premiere-disclosure',  label: '🎬 Premiere spotlight — featured release', icon: '🎬' },        { sel: '#how-it-works',         label: '❓ How MatchApp works', icon: '❓' },
         { sel: '#ai-concierge-section', label: '🤖 About the AI concierge', icon: '🤖' },
         { sel: '#matchapp-tiktok-showcase', label: '♪ MatchApp on TikTok — watch & share', icon: '♪' }
     ];
@@ -54,42 +52,6 @@
     const NEVER_FOLD = ['#loading-box', '#result-box'];
 
     let mounted = false;
-
-    /* Normal mode is the full experience: every real content disclosure starts
-       open. Lazy Mode is the only state allowed to collapse them. */
-    const NATIVE_DISCLOSURES = [
-        '#premiere-disclosure',
-        '#weekly-pick-disclosure',
-        '#global-events .global-events-fold'
-    ];
-
-    function setNativeOpen(section, open) {
-        if (!section) return;
-        if (section.tagName === 'DETAILS') section.open = !!open;
-
-        if (section.id === 'swifties-spotify') {
-            const button = section.querySelector('.swifties-fold');
-            const body = section.querySelector('#swifties-spotify-body');
-            if (button) {
-                button.setAttribute('aria-expanded', open ? 'true' : 'false');
-                const icon = button.querySelector('.swifties-fold-icon');
-                if (icon) icon.textContent = open ? '▴' : '▾';
-            }
-            if (body) {
-                body.hidden = !open;
-                if (open) {
-                    body.querySelectorAll('iframe[data-src]').forEach(frame => {
-                        if (!frame.src) frame.src = frame.dataset.src;
-                    });
-                }
-            }
-        }
-    }
-
-    function syncNativeFolds(lazyOn) {
-        document.querySelectorAll(NATIVE_DISCLOSURES.join(',')).forEach(section => setNativeOpen(section, !lazyOn));
-        setNativeOpen(document.getElementById('swifties-spotify'), !lazyOn);
-    }
 
     function isOn() {
         try { return localStorage.getItem(STORE_KEY) === '1'; } catch (e) { return false; }
@@ -198,7 +160,6 @@
                     const open = section.classList.toggle('lazy-open');
                     head.setAttribute('aria-expanded', open ? 'true' : 'false');
                     head.classList.toggle('is-open', open);
-                    setNativeOpen(section, open);
                     if (open) section.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
                 });
 
@@ -223,14 +184,12 @@
 
         if (on) {
             mountFolds();
-            syncNativeFolds(true);
+            document.querySelectorAll('.container details.spotlight-details[open]').forEach(d => d.removeAttribute('open'));
         }
-        // Normal mode is always the fully unfolded page. Any per-section Lazy
-        // state is discarded when Lazy Mode is turned off.
+        // Folding state resets on exit so the page is never left half-folded.
         if (!on) {
             document.querySelectorAll('.lazy-foldable.lazy-open').forEach(s => s.classList.remove('lazy-open'));
             document.querySelectorAll('.lazy-head.is-open').forEach(h => { h.classList.remove('is-open'); h.setAttribute('aria-expanded', 'false'); });
-            syncNativeFolds(false);
         }
 
         refreshToggleUI();
@@ -251,12 +210,7 @@
         apply(isOn(), false);
         refreshToggleUI();
         const foldObserver = new MutationObserver(() => {
-            if (document.body.classList.contains('lazy-mode')) {
-                mountFolds();
-                syncNativeFolds(true);
-            } else {
-                syncNativeFolds(false);
-            }
+            if (document.body.classList.contains('lazy-mode')) mountFolds();
         });
         foldObserver.observe(document.body,{childList:true,subtree:true});
     }
