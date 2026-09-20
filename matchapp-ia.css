@@ -2419,3 +2419,40 @@ html body.page-home #mh-topbox.ma-home-header .ma-brand-orb{
   animation:none!important;
   will-change:auto!important;
 }
+
+
+/* 2026-09-20 Home brand crop and fold cleanup */
+html body.page-home #trending-rail>h4{display:none!important}
+html body.page-home #mh-topbox.ma-home-header .ma-brand-orb-stage{
+  position:relative!important;
+  width:78px!important;
+  height:78px!important;
+  flex:0 0 78px!important;
+  margin:0 8px 0 0!important;
+  overflow:hidden!important;
+  border-radius:50%!important;
+}
+html body.page-home #mh-topbox.ma-home-header .ma-brand-orb{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  max-width:none!important;
+  object-fit:cover!important;
+  object-position:center!important;
+  transform:scale(1.4)!important;
+  transform-origin:center!important;
+  margin:0!important;
+  border-radius:0!important;
+  filter:none!important;
+  animation:none!important;
+  will-change:auto!important;
+}
+@media(max-width:700px){
+  html body.page-home #mh-topbox.ma-home-header .ma-brand-orb-stage{
+    width:64px!important;
+    height:64px!important;
+    flex-basis:64px!important;
+    margin-right:6px!important;
+  }
+}
