@@ -104,7 +104,7 @@ jobs:
           ! grep -q 'matchapp-tiktok-intro' /tmp/home.html
           ! grep -q 'ma-ui-preparing' /tmp/home.html
           grep -q '/page-origin.js?v=20260920-freeze2' /tmp/home.html
-          grep -q '/build-meta.js?v=20260920-design4' /tmp/home.html
+          grep -q '/build-meta.js?v=20260920-design3' /tmp/home.html
           grep -q 'matchapp-home-orb-transparent.webp?v=20260920-homebrand2' /tmp/home.html
           grep -q '/matchapp-ia.css?v=20260920-design4' /tmp/home.html
           curl -fsSL --max-time 30 'https://matchapp.tv/matchapp-ia.css?v=20260920-design4' -o /tmp/home-stability.css
