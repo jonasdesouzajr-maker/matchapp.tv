@@ -56,3 +56,9 @@ body.page-home :is(.lazy-foldable,details> :not(summary)){transition:grid-templa
  .ma-reveal{opacity:1!important;transform:none!important;transition:none!important}
  body.page-home :is(.marquee-item,.ma-news-card,.global-event,.spotlight-card){transform:none!important}
 }
+
+/* Official non-Kids brand asset: preserve squircle proportions on legacy pages. */
+.ma-official-brand-icon{
+ object-fit:contain!important;object-position:center!important;border-radius:22%!important;
+ background:transparent!important;box-shadow:none!important;
+}
