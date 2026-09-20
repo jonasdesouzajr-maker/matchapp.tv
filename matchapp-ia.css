@@ -2523,3 +2523,54 @@ html body.page-home #mh-topbox.ma-home-header .ma-brand-orb{
 }
 /* Never restore the obsolete fold control around the real trending rail. */
 html body.page-home .lazy-head:has(+ #trending-rail){display:none!important}
+
+
+/* 2026-09-20 final Home logo placement lock.
+   The transparent circular app mark must remain visible immediately before
+   MatchApp TV. Static only to preserve the Home freeze/crash guard. */
+html body.page-home #mh-topbox.ma-home-header #home-brand-lockup,
+html body.page-home #mh-topbox.ma-home-header .ma-brand-lockup,
+html body.page-home #mh-topbox.ma-home-header .ma-brand-home-link{
+  display:flex!important;
+  visibility:visible!important;
+  opacity:1!important;
+  align-items:center!important;
+}
+html body.page-home #mh-topbox.ma-home-header .ma-brand-orb-stage{
+  display:block!important;
+  visibility:visible!important;
+  opacity:1!important;
+  width:74px!important;
+  height:74px!important;
+  flex:0 0 74px!important;
+  margin:0 7px 0 0!important;
+  overflow:visible!important;
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+}
+html body.page-home #mh-topbox.ma-home-header .ma-brand-orb{
+  display:block!important;
+  visibility:visible!important;
+  opacity:1!important;
+  width:74px!important;
+  height:74px!important;
+  max-width:none!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  border:0!important;
+  border-radius:0!important;
+  clip-path:none!important;
+  box-shadow:none!important;
+  filter:none!important;
+  animation:none!important;
+  will-change:auto!important;
+}
+@media(max-width:700px){
+  html body.page-home #mh-topbox.ma-home-header .ma-brand-orb-stage,
+  html body.page-home #mh-topbox.ma-home-header .ma-brand-orb{
+    width:60px!important;
+    height:60px!important;
+  }
+  html body.page-home #mh-topbox.ma-home-header .ma-brand-orb-stage{flex-basis:60px!important;margin-right:5px!important}
+}
