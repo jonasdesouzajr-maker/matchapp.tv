@@ -84,7 +84,7 @@
       if(sentinel&&'IntersectionObserver' in window){
         const io=new IntersectionObserver(entries=>{
           if(entries.some(e=>e.isIntersecting)){io.disconnect();loadHomeEditorial();}
-        },{rootMargin:'700px 0px'});
+        },{rootMargin:'0px'});
         io.observe(sentinel);
       }else if(document.readyState==='complete'){
         setTimeout(loadHomeEditorial,1200);
