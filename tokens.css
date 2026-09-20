@@ -1,0 +1,17 @@
+/* MatchApp premium UI tokens — presentation only. */
+:root{
+  color-scheme:dark;
+  --ma-bg:#080916;--ma-bg-2:#10091c;--ma-panel:rgba(15,17,35,.82);--ma-panel-strong:rgba(13,14,29,.94);
+  --ma-text:#f7f4fb;--ma-muted:#b9b1c7;--ma-gold:#E5C158;--ma-gold-soft:rgba(229,193,88,.18);
+  --ma-border:rgba(229,193,88,.18);--ma-shadow:0 18px 48px rgba(0,0,0,.34);--ma-glow:0 0 28px rgba(229,193,88,.14);
+  --ma-radius:20px;--ma-gap:24px;--ma-container:1200px;--ma-z-base:1;--ma-z-header:40;--ma-z-popover:70;--ma-z-modal:90;--ma-z-toast:100;
+  --font-display:"Outfit","Segoe UI",system-ui,sans-serif;--font-body:"Inter","Segoe UI",system-ui,sans-serif;
+}
+html,body{max-width:100%;overflow-x:clip}
+body:not(.page-kids){font-family:var(--font-body);background:radial-gradient(circle at 50% -10%,#24113b 0,#0d0c1d 38%,var(--ma-bg) 72%);color:var(--ma-text)}
+body:not(.page-kids) :is(h1,h2,h3,h4,h5,h6,.home-h1,.tg-h1){font-family:var(--font-display)}
+body:not(.page-kids) :is(button,input,select,textarea,a,summary){font-family:inherit}
+body:not(.page-kids) :is(.container,main>.inner,.page-shell,.ma-shell){width:min(calc(100% - 32px),var(--ma-container));margin-inline:auto}
+@media(max-width:640px){:root{--ma-gap:16px}body:not(.page-kids) :is(.container,main>.inner,.page-shell,.ma-shell){width:min(calc(100% - 20px),var(--ma-container))}}
+@media(min-width:1024px){:root{--ma-gap:24px}}
+@media(min-width:1440px){:root{--ma-container:1200px}}
