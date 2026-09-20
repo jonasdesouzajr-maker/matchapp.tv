@@ -14,13 +14,13 @@
     </url>
     <url>
         <loc>https://matchapp.tv/anime.html</loc>
-        <lastmod>2026-09-20T22:06:54+00:00</lastmod>
+        <lastmod>2026-09-20T11:22:18+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/android/</loc>
-        <lastmod>2026-09-20T22:06:54+00:00</lastmod>
+        <lastmod>2026-09-20T11:22:18+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
     </url>
@@ -50,13 +50,13 @@
     </url>
     <url>
         <loc>https://matchapp.tv/together.html</loc>
-        <lastmod>2026-09-20T22:06:54+00:00</lastmod>
+        <lastmod>2026-09-20T11:22:18+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/pricing/pricing.html</loc>
-        <lastmod>2026-09-20T22:06:54+00:00</lastmod>
+        <lastmod>2026-09-20T10:19:27+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -68,7 +68,7 @@
     </url>
     <url>
         <loc>https://matchapp.tv/about.html</loc>
-        <lastmod>2026-09-20T22:06:54+00:00</lastmod>
+        <lastmod>2026-09-19T21:24:22+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
     </url>
@@ -80,19 +80,19 @@
     </url>
     <url>
         <loc>https://matchapp.tv/terms.html</loc>
-        <lastmod>2026-09-20T22:06:54+00:00</lastmod>
+        <lastmod>2026-09-20T11:22:18+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.3</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/cookies.html</loc>
-        <lastmod>2026-09-20T22:06:54+00:00</lastmod>
+        <lastmod>2026-09-19T21:24:17+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.3</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/copyright.html</loc>
-        <lastmod>2026-09-20T22:06:54+00:00</lastmod>
+        <lastmod>2026-09-17T11:31:33+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.3</priority>
     </url>
@@ -254,7 +254,7 @@
     </url>
     <url>
         <loc>https://matchapp.tv/where-to-watch/</loc>
-        <lastmod>2026-09-20T22:06:54+00:00</lastmod>
+        <lastmod>2026-09-18T12:19:42+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -506,7 +506,7 @@
     </url>
     <url>
         <loc>https://matchapp.tv/where-to-watch/resident-evil-2026/</loc>
-        <lastmod>2026-09-20T22:06:54+00:00</lastmod>
+        <lastmod>2026-09-18T12:19:38+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
     </url>
@@ -902,19 +902,19 @@
     </url>
     <url>
         <loc>https://matchapp.tv/events/asian-games-2026/</loc>
-        <lastmod>2026-09-20T22:06:54+00:00</lastmod>
+        <lastmod>2026-09-17T07:40:00+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/events/azerbaijan-gp-2026/</loc>
-        <lastmod>2026-09-20T22:06:54+00:00</lastmod>
+        <lastmod>2026-09-17T07:40:00+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/events/worlds-2026/</loc>
-        <lastmod>2026-09-20T22:06:54+00:00</lastmod>
+        <lastmod>2026-09-17T07:40:00+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
@@ -926,7 +926,7 @@
     </url>
     <url>
         <loc>https://matchapp.tv/news/</loc>
-        <lastmod>2026-09-20T21:29:46+00:00</lastmod>
+        <lastmod>2026-09-20T22:07:22+00:00</lastmod>
         <changefreq>hourly</changefreq>
         <priority>0.8</priority>
     </url>
