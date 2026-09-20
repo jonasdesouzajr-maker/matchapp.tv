@@ -126,10 +126,47 @@ jobs:
             echo "Cloudflare purge failed: CLOUDFLARE_ZONE_ID must be exactly 32 hexadecimal characters."
             exit 1
           fi
-          curl -fsS -X POST "https://api.cloudflare.com/client/v4/zones/$CF_ZONE_ID/purge_cache" \
+          response="$(curl -sS -w '\n%{http_code}' -X POST "https://api.cloudflare.com/client/v4/zones/$CF_ZONE_ID/purge_cache" \
             -H "Authorization: Bearer $CF_API_TOKEN" \
             -H "Content-Type: application/json" \
-            --data '{"purge_everything":true}'
+            --data '{"purge_everything":true}')"
+          status="${response##*
+      - name: Notify phone (success only)
+        if: success()
+        env:
+          MSG: ${{ github.event.head_commit.message }}
+          TOPIC: ${{ secrets.NTFY_TOPIC }}
+        shell: bash
+        run: |
+          if [ -z "$TOPIC" ]; then
+            echo "Phone notification skipped: NTFY_TOPIC is not configured."
+            exit 0
+          fi
+          curl -fsS -H "Title: matchapp.tv deployed ✅" -d "${MSG:-Deployment validated}" "https://ntfy.sh/$TOPIC"
+\n'}"
+          body="${response%
+      - name: Notify phone (success only)
+        if: success()
+        env:
+          MSG: ${{ github.event.head_commit.message }}
+          TOPIC: ${{ secrets.NTFY_TOPIC }}
+        shell: bash
+        run: |
+          if [ -z "$TOPIC" ]; then
+            echo "Phone notification skipped: NTFY_TOPIC is not configured."
+            exit 0
+          fi
+          curl -fsS -H "Title: matchapp.tv deployed ✅" -d "${MSG:-Deployment validated}" "https://ntfy.sh/$TOPIC"
+\n'*}"
+          printf '%s\n' "$body"
+          if [ "$status" -lt 200 ] || [ "$status" -ge 300 ]; then
+            echo "Cloudflare purge failed with HTTP $status."
+            exit 1
+          fi
+          printf '%s' "$body" | grep -Eq '"success"[[:space:]]*:[[:space:]]*true' || {
+            echo "Cloudflare purge response did not report success=true."
+            exit 1
+          }
       - name: Notify phone (success only)
         if: success()
         env:
