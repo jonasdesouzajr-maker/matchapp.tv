@@ -57,3 +57,10 @@ test('Home header is visible without JavaScript and avoids filtered 8K SVGs',()=
  assert.match(css,/Home compositor stability guard/);
  assert.match(css,/backdrop-filter:none!important/);
 });
+
+test('Home never constructs the decorative fixed poster wall',()=>{
+ const wall=read('poster-wall.js'),html=read('index.html');
+ assert.match(wall,/function home\(\).*location\.pathname==='\/'/s);
+ assert.match(wall,/if\(home\(\)\|\|kids\(\)\|\|document\.querySelector\('\.poster-wall'\)\)return/);
+ assert.match(html,/poster-wall\.js\?v=20260920-homeoff1/);
+});
