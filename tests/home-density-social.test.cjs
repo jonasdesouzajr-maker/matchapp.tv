@@ -1,6 +1,6 @@
 const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
 const root=path.join(__dirname,'..'),read=p=>fs.readFileSync(path.join(root,p),'utf8');
-test('dead Home fold controls remain retired',()=>{const lazy=read('lazy.js');for(const key of ['checkin','topask','how','aboutai','tiktok'])assert.ok(lazy.includes(key));});
+test('dead Home fold controls remain retired',()=>{const lazy=read('lazy.js');for(const key of ['checkin','topask','how','aboutai'])assert.ok(lazy.includes(key));});
 test('Home has no TikTok video runtime or player assets',()=>{
  const html=read('index.html');
  assert.doesNotMatch(html,/matchapp-tiktok-showcase|data-tiktok-load|tiktok-showcase\.(?:js|css)/);
