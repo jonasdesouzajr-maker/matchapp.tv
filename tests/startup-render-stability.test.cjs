@@ -16,7 +16,7 @@ test('premium media motion is bounded and reduced on handhelds',()=>{
 test('Home startup avoids delayed boot locks, stale cache keys and duplicate header owners',()=>{
  const html=read('index.html'),settings=read('settings.js'),wiring=read('final-wiring.js');
  assert.doesNotMatch(html,/ma-ui-preparing|MATCHAPP_UI_FAILSAFE/);
- const versions={'build-meta.js':'20260920-freeze6','settings.js':'20260920-freeze8','catalog-media.js':'20260920-loopfix1'};
+ const versions={'build-meta.js':'20260920-freeze-final1','matchapp-ia.js':'20260920-freeze-final1','settings.js':'20260920-freeze8','catalog-media.js':'20260920-freeze-final1','lazy.js':'20260920-freeze-final1'};
  for(const file of ['page-origin.js','build-meta.js','matchapp-ia.js','settings.js','app.js','catalog-media.js','title-experience.js','lazy.js','app-updates.js']){
   const version=versions[file]||'20260920-freeze2';
   assert.match(html,new RegExp('/'+file.replace('.','\\.')+'\\?v='+version));
@@ -31,12 +31,13 @@ test('Home noncritical enrichment is staggered instead of timing out together',(
  const html=read('index.html'),poster=read('poster-wall.js'),captions=read('title-captions.js'),media=read('catalog-media.js');
  assert.match(html,/\/poster-wall\.js\?v=20260920-homeoff1/);
  assert.match(html,/\/title-captions\.js\?v=20260920-crash4/);
- assert.match(html,/\/catalog-media\.js\?v=20260920-loopfix1/);
+ assert.match(html,/\/catalog-media\.js\?v=20260920-freeze-final1/);
  assert.match(html,/\/poster-wall\.css\?v=20260920-crash4/);
  assert.match(poster,/setTimeout\(\(\)=>\{[\s\S]*requestIdleCallback\(run\)[\s\S]*\},900\)/);
  assert.match(captions,/setTimeout\(\(\)=>\{[\s\S]*requestIdleCallback\(\(\)=>paint\(\)\)[\s\S]*\},2200\)/);
  assert.match(captions,/requestIdleCallback\(loadAudit\)[\s\S]*\},5200\)/);
- assert.match(media,/requestIdleCallback\(later\)[\s\S]*\},3600\)/);
+ assert.match(media,/TRENDING_CONCURRENCY=2/);
+ assert.match(media,/IntersectionObserver[\s\S]*rootMargin:'0px'/);
 });
 
 test('poster wall cannot promote dozens of animated compositor layers',()=>{
@@ -48,7 +49,7 @@ test('poster wall cannot promote dozens of animated compositor layers',()=>{
 
 test('Home header is visible without JavaScript and avoids filtered 8K SVGs',()=>{
  const html=read('index.html'),css=read('matchapp-ia.css');
- assert.match(html,/\/matchapp-ia\.css\?v=20260920-stability6/);
+ assert.match(html,/\/matchapp-ia\.css\?v=20260920-freeze-final1/);
  assert.match(html,/class="ma-brand-orb" src="\/assets\/brand\/matchapp-official-icon-512\.webp\?v=20260920-official1"/);
  assert.doesNotMatch(css,/header-cosmic-8k\.svg/);
  assert.doesNotMatch(css,/#mh-topbox\.app-header\{\s*visibility:hidden!important;\s*opacity:0!important;/);
@@ -77,4 +78,29 @@ test('catalog-media main result does not observe its own render subtree',()=>{
  assert.match(media,/resultRoot\.style\.display==='none'/);
  assert.match(media,/title==='Title'/);
  assert.match(media,/document\.addEventListener\('matchapp:newmatch',[\s\S]*enrichMain\(\)/);
+});
+
+
+test('Home top box cannot run continuous compositor animation or scroll-anchor during DOM rehome',()=>{
+ const css=read('matchapp-ia.css'),ia=read('matchapp-ia.js');
+ assert.match(css,/Home top-box final freeze guard/);
+ assert.match(css,/#mh-topbox :is\(\.ma-brand-orb,\.ma-ai-letters,\.ma-ai-star\)[\s\S]*animation:none!important;[\s\S]*will-change:auto!important/);
+ assert.match(css,/#mh-topbox \.ma-ai-brand-button::before,[\s\S]*#mh-topbox \.ma-ai-brand-button::after\{[\s\S]*filter:none!important/);
+ assert.match(ia,/root\.style\.overflowAnchor='none'/);
+ assert.match(ia,/root\.style\.removeProperty\('overflow-anchor'\)/);
+});
+
+test('Home defers cross-origin Spotify players until the section is near view',()=>{
+ const lazy=read('lazy.js');
+ assert.match(lazy,/function hydrateSwift\(section\)/);
+ assert.match(lazy,/function armSwiftHydration\(section\)/);
+ assert.match(lazy,/IntersectionObserver[\s\S]*rootMargin:'120px 0px'/);
+ assert.doesNotMatch(lazy,/if\(open\)body\.querySelectorAll\('iframe\[data-src\]'\)/);
+});
+
+test('Home editorial scripts do not preload hundreds of pixels before view',()=>{
+ const wiring=read('final-wiring.js'),meta=read('build-meta.js');
+ assert.match(wiring,/rootMargin:'0px'/);
+ assert.doesNotMatch(wiring,/rootMargin:'700px 0px'/);
+ assert.match(meta,/final-wiring\.js\?v=20260920-freeze-final1/);
 });
