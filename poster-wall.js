@@ -20,8 +20,10 @@
  }
  function scheduleBoot(){
   const run=()=>boot();
-  if('requestIdleCallback' in window)requestIdleCallback(run,{timeout:1200});
-  else setTimeout(run,80);
+  setTimeout(()=>{
+    if('requestIdleCallback' in window)requestIdleCallback(run);
+    else run();
+  },900);
  }
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',scheduleBoot,{once:true});else scheduleBoot();
 })();
