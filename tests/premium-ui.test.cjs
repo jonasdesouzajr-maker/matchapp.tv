@@ -37,7 +37,7 @@ test('onboarding waits for first user interaction',()=>{
 });
 
 test('premium UI release does not modify ad, analytics, auth, quota or matching sources',()=>{
-  for(const file of ['ads-serve.js','ads-init.js','auth.js','matching-policy.js','app.js']){
+  for(const file of ['ads-serve.js','ads-init.js','app.js','phone-auth.js','passkeys.js','matching-policy.js']){
     assert.ok(fs.existsSync(path.join(root,file)),file);
   }
 });
