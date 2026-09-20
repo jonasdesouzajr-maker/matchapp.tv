@@ -65,9 +65,22 @@
    },{rootMargin:'180px'});
    slots.forEach(s=>observer.observe(s));
   }
+  function collapse(){
+   document.querySelectorAll('.premium-ad-frame,.ad-banner-container,.sidebar-ad-left,.sidebar-ad-right,.mobile-ad-bottom,.ma-inline-ad').forEach(frame=>{
+    const ins=frame.querySelector('ins.adsbygoogle');
+    const iframe=frame.querySelector('iframe');
+    const status=(ins?.getAttribute('data-ad-status')||'').toLowerCase();
+    const live=status==='filled'||(iframe&&(iframe.offsetHeight||0)>90);
+    frame.classList.toggle('is-ad-empty',!live);
+   });
+   const frames=[...document.querySelectorAll('.premium-ad-frame,.ad-banner-container,.sidebar-ad-left,.sidebar-ad-right,.mobile-ad-bottom,.ma-inline-ad')];
+   if(frames.length&&frames.every(f=>f.classList.contains('is-ad-empty'))) document.documentElement.classList.add('ads-empty');
+  }
   window.addEventListener('resize',scan,{passive:true});
   setTimeout(scan,800);
   setTimeout(scan,4000);
+  setTimeout(collapse,4500);
+  setTimeout(collapse,9000);
  }
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',ready,{once:true});else ready();
 })();

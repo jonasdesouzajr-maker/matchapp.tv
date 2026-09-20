@@ -43,6 +43,7 @@ function mountGeneric(cfg,section){
  head.querySelector('.lazy-head-label').textContent=labelFor(cfg,section);
  head.addEventListener('click',()=>{const open=!section.classList.contains('lazy-open');setGeneric(section,open);if(!lazyOn())remember(cfg.key,open)});
  section.parentNode.insertBefore(head,section);
+ if(cfg.key==='trending'){const title=section.querySelector(':scope > h4');if(title)title.hidden=true;}
 }
 function setNative(el,open){if(el&&el.tagName==='DETAILS'&&el.open!==!!open)el.open=!!open}
 function mountNative(cfg,el){
