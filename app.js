@@ -1095,21 +1095,27 @@ const VERIFIED_POSTERS = {
     "Amor Sob Vigilância": "https://image.tmdb.org/t/p/w780/cLpTLE15m4Hcj5dwWNEzrBOM6Ae.jpg",
     "Vermelho Sangue": "https://image.tmdb.org/t/p/w780/gtUqzLLaarxvNWzKeBepwWfTfm8.jpg",
     "Quem Ama Cuida": "https://image.tmdb.org/t/p/w780/p97unAJ9n9gpNrICCwEKuZdrb1t.jpg",
-    "Era Uma Vez Minha 1ª Vez": "https://image.tmdb.org/t/p/w780/6byulzTctYTBIvJGS4bsNSnmBof.jpg",
     "Antártida": "https://image.tmdb.org/t/p/w780/5bg61sH6kqPVWcBoFUDoe6eqfoX.jpg",
     'Beauty in Black': 'https://image.tmdb.org/t/p/w780/xKk4bFCCpZ9tvjUykvvMYLSBnjo.jpg',
     'American Horror Story: 13': '/ahs13-official.png?v=187',
     'A Vida Secreta do Meu Marido Bilionário': '/marido-bilionario-original.jpg?v=187',
     'Marido Bilionário': '/marido-bilionario-original.jpg?v=187',
-    "Habeas Corpus": "https://image.tmdb.org/t/p/w780/8JP8OXWufxAXFLfOOj4XU2SEhvV.jpg",
     "Minha Melhor Amiga": "https://image.tmdb.org/t/p/w780/wGfTFVeguXDXYrwPQ8QMFsaSK2M.jpg",
-    "Virtuosas": "https://image.tmdb.org/t/p/w780/v9wSMFf9Ysj40aHHUJ1VeLStZWn.jpg",
     "Morte e Vida Madalena": "https://image.tmdb.org/t/p/w780/2q6PV1Dl6htx5fqwPXcOwTTahcx.jpg",
     "Practical Magic 2": "https://image.tmdb.org/t/p/w780/ogwQOLbCfncjvBhFb5l0OmQH8KC.jpg",
     "Forgotten Island": "https://image.tmdb.org/t/p/w780/Lr0Ng7Gg02RW1AyfYEL6P0WUvd.jpg",
     "The Love Hypothesis": "https://image.tmdb.org/t/p/w780/vfZxVHextAGC70zrNhS8lsROqP1.jpg",
-    "Neagley": "https://image.tmdb.org/t/p/w780/lKOPmO0ah17ogQ9hWg7lSd40kIr.jpg"
-
+    "Neagley": "https://image.tmdb.org/t/p/w780/lKOPmO0ah17ogQ9hWg7lSd40kIr.jpg",
+    "Habeas Corpus": "https://image.tmdb.org/t/p/w780/8JP8OXWufxAXFLfOOj4XU2SEhvV.jpg",
+    "Era Uma Vez Minha 1ª Vez": "https://image.tmdb.org/t/p/w780/6byulzTctYTBIvJGS4bsNSnmBof.jpg",
+    "Furnas Fundas": "https://image.tmdb.org/t/p/w780/h37jOsDLNMG7RhSXiQse4oGGqgH.jpg",
+    "Virtuosas": "https://image.tmdb.org/t/p/w780/v9wSMFf9Ysj40aHHUJ1VeLStZWn.jpg",
+    "Viva Marília": "https://image.tmdb.org/t/p/w780/13pzkz6ePwXuYKH0VsVijtRWjUR.jpg",
+    "American Hostage": "https://image.tmdb.org/t/p/w780/dzoPQ13XrRUGl8Yoz1P66V8rRUy.jpg",
+    "Youth": "https://image.tmdb.org/t/p/w780/bk1zbzbu0xaYQuIANv4Pe8HHyAY.jpg",
+    "Stop! That! Train!": "https://image.tmdb.org/t/p/w780/w90dGS6D2lVO4aO5rdQ8QECrUGY.jpg",
+    "How to Live on Earth": "https://image.tmdb.org/t/p/w780/cMnvp0FdUR7T5etiSTfshFHyCk3.jpg",
+    "Lanterns": "https://image.tmdb.org/t/p/w780/gpC7h43xPMEV3goYMQShfJbTtLq.jpg"
 };
 
 function getVerifiedPoster(title) {

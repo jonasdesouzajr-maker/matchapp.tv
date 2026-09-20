@@ -33,18 +33,18 @@ window.MATCHAPP_BUILD = '2026.09.19.3';
 /* Search freshness + truthfulness layer. */
 (function () {
   'use strict';
-  const TODAY = '2026-09-19';
+  const TODAY = '2026-09-20';
   const TRENDING = [
     'Habeas Corpus',
-    'Minha Melhor Amiga',
+    'Era Uma Vez Minha 1ª Vez',
+    'Furnas Fundas',
     'Virtuosas',
-    'Antártida',
-    'Morte e Vida Madalena',
-    'Resident Evil',
-    'Practical Magic 2',
-    'Forgotten Island',
-    'The Love Hypothesis',
-    'Neagley'
+    'Viva Marília',
+    'American Hostage',
+    'Youth',
+    'Stop! That! Train!',
+    'How to Live on Earth',
+    'Lanterns'
   ];
   function upsertMeta(name, content) {
     let el = document.querySelector('meta[name="'+name+'"]');
