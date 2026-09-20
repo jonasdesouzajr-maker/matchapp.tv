@@ -293,8 +293,14 @@
     function openAndReveal(id=''){if(!section.open)section.open=true;window.setTimeout(()=>{const revealed=carousel&&carousel.reveal?carousel.reveal(id):false;if(!revealed){try{section.scrollIntoView({behavior:'smooth',block:'nearest'});}catch(_){}}if(carousel&&carousel.startAuto)carousel.startAuto();},220);}
 
     section.addEventListener('toggle',()=>{
-      if(section.open){if(currentVersion){try{localStorage.setItem(SEEN_KEY,currentVersion);}catch(_){}section.dataset.hasNew='false';}track('latest_news_open',{news_feed_version:currentVersion});window.setTimeout(()=>{try{section.scrollIntoView({behavior:'smooth',block:'nearest'});}catch(_){}if(carousel&&carousel.startAuto)carousel.startAuto();},180);}
-      else if(carousel&&carousel.stopAuto)carousel.stopAuto();
+      if(section.open){
+        if(currentVersion){try{localStorage.setItem(SEEN_KEY,currentVersion);}catch(_){}section.dataset.hasNew='false';}
+        track('latest_news_open',{news_feed_version:currentVersion});
+        // Never move the document just because this dynamically-created <details>
+        // fired its initial/open toggle. Explicit deep links still scroll through
+        // openAndReveal(); ordinary Home startup must keep the user's scroll position.
+        if(carousel&&carousel.startAuto)carousel.startAuto();
+      }else if(carousel&&carousel.stopAuto)carousel.stopAuto();
     });
     window.addEventListener('hashchange',()=>{if(location.hash==='#latest-news')openAndReveal(deepLinkState().requestedNewsId);});
 
