@@ -6,3 +6,8 @@ test('premium Home keeps required product scripts without startup monkey-patchin
  assert.doesNotMatch(build,/Document\.prototype\.addEventListener|HOME STARTUP SCHEDULER/);
 });
 test('premium runtime does not install a document-wide MutationObserver',()=>{assert.doesNotMatch(read('premium-ui.js'),/new MutationObserver/);});
+
+test('Home keeps premium CSS but does not run the redundant premium presentation runtime',()=>{
+ const settings=read('settings.js');
+ assert.match(settings,/if\(!isKids\)\{css\('\/tokens\.css'\);css\('\/components\.css'\);if\(!isHome\)js\('\/premium-ui\.js'\)\}/);
+});
