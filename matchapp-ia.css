@@ -1977,3 +1977,25 @@ html body.page-home #swifties-spotify .swifties-source-note{margin:10px 0 0!impo
   }
   .ma-menu{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
 }
+
+
+/* ===== USER-PERSISTENT HOME FOLDS =====
+   Default state is open. lazy.js persists explicit user folds and Lazy Mode
+   closes every content module without creating a second layout owner. */
+html body.page-home .lazy-head:has(+ #trending-rail){display:flex!important}
+html body.page-home .lazy-foldable:not(.lazy-open){display:none!important}
+html body.page-home #latest-news:not([open])>.ma-news-panel{display:none!important}
+html body.page-home #latest-news[open]>.ma-news-panel{display:block!important}
+html body.page-home #latest-news>summary{
+  pointer-events:auto!important;cursor:pointer!important;
+  position:relative!important;padding-right:72px!important;
+}
+html body.page-home #latest-news>summary::after{
+  display:block!important;content:""!important;
+  position:absolute!important;right:18px!important;top:50%!important;
+  width:40px!important;height:40px!important;border-radius:50%!important;
+  border:1px solid rgba(255,220,111,.42)!important;
+  background:rgba(255,255,255,.035) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 9l6 6 6-6' fill='none' stroke='%23FFE38A' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/19px 19px no-repeat!important;
+  transform:translateY(-50%) rotate(0deg)!important;transition:transform .2s ease!important;
+}
+html body.page-home #latest-news[open]>summary::after{transform:translateY(-50%) rotate(180deg)!important}

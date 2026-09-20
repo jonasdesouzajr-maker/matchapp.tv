@@ -473,23 +473,23 @@ window.__MATCHAPP_UI_FAILSAFE__=setTimeout(function(){document.documentElement.c
         .lazy-toggle.is-locked { border-style: dashed; }
         .lazy-toggle.is-locked .lazy-switch { opacity: 0.45; }
 
-        /* The fold headers only exist inside Lazy Mode. */
-        .lazy-head { display: none; }
-        body.lazy-mode .lazy-head {
+        /* Every major Home module can be folded. Normal mode starts open and
+           remembers each user's explicit fold choice; Lazy Mode closes all. */
+        .lazy-head {
             display: flex; align-items: center; justify-content: space-between; gap: 12px;
             width: 100%; margin-bottom: 9px; padding: 13px 16px; cursor: pointer;
             font: inherit; font-size: 13.5px; font-weight: 700; color: #cdc6dd; text-align: left;
             background: rgba(255,255,255,0.035); border: 1px solid rgba(255,255,255,0.1);
             border-radius: 13px; transition: background 0.16s, border-color 0.16s, color 0.16s; }
-        body.lazy-mode .lazy-head:hover { background: rgba(255,255,255,0.07); border-color: rgba(229,193,88,0.42); color: #fff; }
-        body.lazy-mode .lazy-head:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+        .lazy-head:hover { background: rgba(255,255,255,0.07); border-color: rgba(229,193,88,0.42); color: #fff; }
+        .lazy-head:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
         .lazy-head-label { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
         .lazy-head-chevron { flex-shrink: 0; color: var(--gold); font-size: 17px; line-height: 1;
                              transition: transform 0.22s; }
-        body.lazy-mode .lazy-head.is-open .lazy-head-chevron { transform: rotate(180deg); }
-        body.lazy-mode .lazy-head.is-open { border-color: rgba(229,193,88,0.5); color: #fff; }
+        .lazy-head.is-open .lazy-head-chevron { transform: rotate(180deg); }
+        .lazy-head.is-open { border-color: rgba(229,193,88,0.5); color: #fff; }
 
-        body.lazy-mode .lazy-foldable:not(.lazy-open) { display: none !important; }
+        .lazy-foldable:not(.lazy-open) { display: none !important; }
 
         /* Everything that competes with the form for attention goes quiet.
            The ad rails are deliberately NOT in this list — that is a revenue
@@ -1565,8 +1565,8 @@ window.__MATCHAPP_UI_FAILSAFE__=setTimeout(function(){document.documentElement.c
 <link rel="stylesheet" href="/taste-profile.css?v=20260919-stable3" data-home-support="taste">
 <link rel="stylesheet" href="/profile-card.css?v=20260919-stable3" data-home-support="profile-card">
 <link rel="stylesheet" href="/preference-exclusions.css?v=20260919-stable3" data-home-support="preferences">
-<link rel="stylesheet" href="/matchapp-ia.css?v=20260919-ia30" data-matchapp-ia="1">
-<script defer src="/matchapp-ia.js?v=20260919-ia27" data-matchapp-ia="1"></script>
+<link rel="stylesheet" href="/matchapp-ia.css?v=20260920-ia31" data-matchapp-ia="1">
+<script defer src="/matchapp-ia.js?v=20260920-ia28" data-matchapp-ia="1"></script>
 </head>
 <body class="page-home">
     <script>
@@ -2781,6 +2781,57 @@ window.__MATCHAPP_UI_FAILSAFE__=setTimeout(function(){document.documentElement.c
                         </div>
                     </div>
                 </article></details>
+<section id="swifties-spotify" class="marquee-wrapper swifties-spotify swifties-spotify--final" aria-labelledby="swifties-spotify-title">
+  <button class="swifties-fold" type="button" aria-expanded="true" aria-controls="swifties-spotify-body">
+    <span id="swifties-spotify-title"><span aria-hidden="true">🎵✨</span> TAYLOR SWIFT ON SPOTIFY — ALL OFFICIAL VIDEOS <strong>#Swifties 🫶</strong></span>
+    <span class="swifties-fold-icon" aria-hidden="true">▾</span>
+  </button>
+  <div id="swifties-spotify-body">
+    <p class="swifties-copy">
+      Spotify now carries Taylor Swift’s complete official music-video catalog: <strong>58 videos</strong>, from
+      <em>Tim McGraw</em> through the newest <em>Opalite</em> era. Premium viewers in supported markets can use
+      Spotify’s <strong>Switch to video</strong> control. Listen right here or open Spotify on your device.
+    </p>
+
+    <div class="swifties-latest" aria-label="Latest Taylor Swift video titles on Spotify">
+      <span class="swifties-latest-label">Latest video titles</span>
+      <a href="https://open.spotify.com/artist/06HL4z0CvFAxyc27GXpf02" target="_blank" rel="noopener noreferrer">Elizabeth Taylor</a>
+      <a href="https://open.spotify.com/artist/06HL4z0CvFAxyc27GXpf02" target="_blank" rel="noopener noreferrer">Opalite</a>
+      <a href="https://open.spotify.com/artist/06HL4z0CvFAxyc27GXpf02" target="_blank" rel="noopener noreferrer">The Fate of Ophelia</a>
+      <a href="https://open.spotify.com/artist/06HL4z0CvFAxyc27GXpf02" target="_blank" rel="noopener noreferrer">Opalite — Official Music Video Extended Version Part 2</a>
+    </div>
+
+    <div class="swifties-grid">
+      <a class="swifties-official-link" href="https://open.spotify.com/playlist/37i9dQZF1DXe7fP0uj1s1D" target="_blank" rel="noopener noreferrer" aria-label="Open Taylor Swift - The Videos official Spotify playlist">
+        <span class="swifties-spotify-mark" aria-hidden="true">●</span>
+        <span><strong>Taylor Swift – The Videos</strong><small>Official Spotify collection · all 58 music videos</small></span>
+        <b aria-hidden="true">↗</b>
+      </a>
+      <a class="swifties-artist-link" href="https://open.spotify.com/artist/06HL4z0CvFAxyc27GXpf02" target="_blank" rel="noopener noreferrer">
+        <span>Open Taylor Swift on Spotify</span><b aria-hidden="true">↗</b>
+      </a>
+    </div>
+
+    <div class="swifties-player-block">
+      <h3>Listen to Taylor Swift on Spotify</h3>
+      <iframe class="swifties-embed swifties-artist-embed" title="Listen to Taylor Swift on Spotify"
+        data-src="https://open.spotify.com/embed/artist/06HL4z0CvFAxyc27GXpf02?utm_source=generator&theme=0"
+        width="100%" height="352" frameborder="0" allowfullscreen=""
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </div>
+
+    <div class="swifties-player-block">
+      <h3>All official Taylor Swift videos on Spotify</h3>
+      <iframe class="swifties-embed swifties-video-embed" title="Taylor Swift - The Videos on Spotify"
+        data-src="https://open.spotify.com/embed/playlist/37i9dQZF1DXe7fP0uj1s1D?utm_source=generator&theme=0"
+        width="100%" height="352" frameborder="0" allowfullscreen=""
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </div>
+
+    <p class="swifties-source-note">Spotify availability, video playback and full-track playback vary by country, account and subscription.</p>
+  </div>
+</section>
+
 <section id="global-events" class="events-wrapper"><details class="global-events-fold"><summary class="global-events-summary"><span class="ge-sum-label"><span aria-hidden="true">🌍</span> <span data-i18n="global.heading">Upcoming global events</span></span><span class="ge-sum-count">3</span><span class="ge-sum-chev" aria-hidden="true">⌄</span></summary><div class="global-events-body"><p class="ge-help" data-i18n="global.help">Tap a poster for dates, official live coverage and recorded highlights.</p><div class="global-event-grid"><article class="premium-card global-event" data-event-start="2026-09-19T00:00:00+09:00" data-event-end="2026-10-04T23:59:59+09:00" data-event-zone="Asia/Tokyo"><a href="/events/asian-games-2026/"><img src="/asian-games-2026.jpg?v=187" alt="Asian Games Aichi–Nagoya 2026 — MatchApp original editorial artwork" width="1024" height="1536" loading="lazy" decoding="async"></a><span data-event-status class="event-badge event-soon" data-i18n="global.upcoming">Upcoming</span><h3><a href="/events/asian-games-2026/">Asian Games Aichi–Nagoya 2026</a></h3><p><span data-event-date="2026-09-19T00:00:00+09:00">2026-09-19</span> – <span data-event-date="2026-10-04T23:59:59+09:00">2026-10-04</span><br>Aichi &amp; Nagoya, Japan</p><p data-i18n="global.asian-games-2026.synopsis">Asia&#39;s multi-sport festival brings athletes from 45 countries and regions to Japan. The opening ceremony is September 19 and the closing ceremony October 4; some competitions and TBS coverage start earlier.</p><a class="gold-btn" href="/events/asian-games-2026/" data-i18n="global.guide">Viewing guide</a></article>
 <article class="premium-card global-event" data-event-start="2026-09-24T00:00:00+04:00" data-event-end="2026-09-26T23:59:59+04:00" data-event-zone="Asia/Baku"><a href="/events/azerbaijan-gp-2026/"><img src="/azerbaijan-gp-2026.jpg?v=187" alt="Azerbaijan Grand Prix 2026 — MatchApp original editorial artwork" width="1024" height="1536" loading="lazy" decoding="async"></a><span data-event-status class="event-badge event-soon" data-i18n="global.upcoming">Upcoming</span><h3><a href="/events/azerbaijan-gp-2026/">Azerbaijan Grand Prix 2026</a></h3><p><span data-event-date="2026-09-24T00:00:00+04:00">2026-09-24</span> – <span data-event-date="2026-09-26T23:59:59+04:00">2026-09-26</span><br>Baku City Circuit, Azerbaijan</p><p data-i18n="global.azerbaijan-gp-2026.synopsis">Formula 1 races through Baku&#39;s old-town walls and long Caspian-side straights. Practice starts September 24, qualifying is September 25 and the Grand Prix is Saturday September 26.</p><a class="gold-btn" href="/events/azerbaijan-gp-2026/" data-i18n="global.guide">Viewing guide</a></article>
 <article class="premium-card global-event" data-event-start="2026-10-15T00:00:00-05:00" data-event-end="2026-11-14T23:59:59-05:00" data-event-zone="America/New_York"><a href="/events/worlds-2026/"><img src="/worlds-2026.jpg?v=187" alt="League of Legends Worlds 2026 — MatchApp original editorial artwork" width="1024" height="1536" loading="lazy" decoding="async"></a><span data-event-status class="event-badge event-soon" data-i18n="global.upcoming">Upcoming</span><h3><a href="/events/worlds-2026/">League of Legends Worlds 2026</a></h3><p><span data-event-date="2026-10-15T00:00:00-05:00">2026-10-15</span> – <span data-event-date="2026-11-14T23:59:59-05:00">2026-11-14</span><br>United States; final in New York</p><p data-i18n="global.worlds-2026.synopsis">The League of Legends World Championship returns to North America. Riot&#39;s 2026 international calendar lists October 15 through November 14, with the championship final in New York. Check the official schedule for each stage and match.</p><a class="gold-btn" href="/events/worlds-2026/" data-i18n="global.guide">Viewing guide</a></article></div><a class="ge-archive" href="/events-archive.html" data-i18n="global.guide">Viewing guides</a></div></details></section>
@@ -3104,57 +3155,7 @@ window.__MATCHAPP_UI_FAILSAFE__=setTimeout(function(){document.documentElement.c
   <a class="matchapp-tiktok-open" data-tiktok-short-link href="https://vt.tiktok.com/ZSqtbq1j5/" target="_blank" rel="noopener noreferrer">Watch the original on TikTok ↗</a>
 </section>
 
-<section id="swifties-spotify" class="marquee-wrapper swifties-spotify swifties-spotify--final" aria-labelledby="swifties-spotify-title">
-  <button class="swifties-fold" type="button" aria-expanded="false" aria-controls="swifties-spotify-body"
-    onclick="const b=document.getElementById('swifties-spotify-body');const open=this.getAttribute('aria-expanded')==='true';this.setAttribute('aria-expanded',String(!open));b.hidden=open;this.querySelector('.swifties-fold-icon').textContent=open?'▾':'▴';if(!open)b.querySelectorAll('iframe[data-src]').forEach(f=>{if(!f.src)f.src=f.dataset.src});">
-    <span id="swifties-spotify-title"><span aria-hidden="true">🎵✨</span> TAYLOR SWIFT ON SPOTIFY — ALL OFFICIAL VIDEOS <strong>#Swifties 🫶</strong></span>
-    <span class="swifties-fold-icon" aria-hidden="true">▾</span>
-  </button>
-  <div id="swifties-spotify-body" hidden>
-    <p class="swifties-copy">
-      Spotify now carries Taylor Swift’s complete official music-video catalog: <strong>58 videos</strong>, from
-      <em>Tim McGraw</em> through the newest <em>Opalite</em> era. Premium viewers in supported markets can use
-      Spotify’s <strong>Switch to video</strong> control. Listen right here or open Spotify on your device.
-    </p>
 
-    <div class="swifties-latest" aria-label="Latest Taylor Swift video titles on Spotify">
-      <span class="swifties-latest-label">Latest video titles</span>
-      <a href="https://open.spotify.com/artist/06HL4z0CvFAxyc27GXpf02" target="_blank" rel="noopener noreferrer">Elizabeth Taylor</a>
-      <a href="https://open.spotify.com/artist/06HL4z0CvFAxyc27GXpf02" target="_blank" rel="noopener noreferrer">Opalite</a>
-      <a href="https://open.spotify.com/artist/06HL4z0CvFAxyc27GXpf02" target="_blank" rel="noopener noreferrer">The Fate of Ophelia</a>
-      <a href="https://open.spotify.com/artist/06HL4z0CvFAxyc27GXpf02" target="_blank" rel="noopener noreferrer">Opalite — Official Music Video Extended Version Part 2</a>
-    </div>
-
-    <div class="swifties-grid">
-      <a class="swifties-official-link" href="https://open.spotify.com/playlist/37i9dQZF1DXe7fP0uj1s1D" target="_blank" rel="noopener noreferrer" aria-label="Open Taylor Swift - The Videos official Spotify playlist">
-        <span class="swifties-spotify-mark" aria-hidden="true">●</span>
-        <span><strong>Taylor Swift – The Videos</strong><small>Official Spotify collection · all 58 music videos</small></span>
-        <b aria-hidden="true">↗</b>
-      </a>
-      <a class="swifties-artist-link" href="https://open.spotify.com/artist/06HL4z0CvFAxyc27GXpf02" target="_blank" rel="noopener noreferrer">
-        <span>Open Taylor Swift on Spotify</span><b aria-hidden="true">↗</b>
-      </a>
-    </div>
-
-    <div class="swifties-player-block">
-      <h3>Listen to Taylor Swift on Spotify</h3>
-      <iframe class="swifties-embed swifties-artist-embed" title="Listen to Taylor Swift on Spotify"
-        data-src="https://open.spotify.com/embed/artist/06HL4z0CvFAxyc27GXpf02?utm_source=generator&theme=0"
-        width="100%" height="352" frameborder="0" allowfullscreen=""
-        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-    </div>
-
-    <div class="swifties-player-block">
-      <h3>All official Taylor Swift videos on Spotify</h3>
-      <iframe class="swifties-embed swifties-video-embed" title="Taylor Swift - The Videos on Spotify"
-        data-src="https://open.spotify.com/embed/playlist/37i9dQZF1DXe7fP0uj1s1D?utm_source=generator&theme=0"
-        width="100%" height="352" frameborder="0" allowfullscreen=""
-        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-    </div>
-
-    <p class="swifties-source-note">Spotify availability, video playback and full-track playback vary by country, account and subscription.</p>
-  </div>
-</section>
 
     <!-- SOCIAL SHARE MODAL -->
     <div id="share-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.9); z-index:3200; align-items:center; justify-content:center; padding:18px; overflow-y:auto;">
@@ -3338,7 +3339,7 @@ window.__MATCHAPP_UI_FAILSAFE__=setTimeout(function(){document.documentElement.c
          a plain single-choice select. -->
     <script src="/tmdb.js?v=193"></script>
     <script src="/criteria.js?v=191"></script>
-    <script src="/lazy.js?v=20260919-stable3"></script>
+    <script src="/lazy.js?v=20260920-foldpersist1"></script>
     <script src="/tv.js?v=187"></script>
     <script src="/taste.js?v=187"></script>
     <script src="/contacts.js?v=187"></script>

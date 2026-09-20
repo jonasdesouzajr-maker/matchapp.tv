@@ -244,9 +244,9 @@ function mountHome(){
    tab('ask');
    setTimeout(()=>openAskFromBrand(),220);
  }
- const loading=qs('#loading-box'),result=qs('#result-box'),trending=qs('#trending-rail'),week=qs('#premiere-disclosure'),events=qs('#global-events');
+ const loading=qs('#loading-box'),result=qs('#result-box'),trending=qs('#trending-rail'),week=qs('#premiere-disclosure'),swift=qs('#swifties-spotify'),events=qs('#global-events');
  if(trending){after(hero,trending);after(trending,concierge)}
- let anchor=concierge;[loading,result,week,events].forEach(n=>{if(n){after(anchor,n);anchor=n}});
+ let anchor=concierge;[loading,result,week,swift,events].forEach(n=>{if(n){after(anchor,n);anchor=n}});
  const ad=qsa('.container>.ad-banner-container',container)[0];if(ad&&anchor)after(anchor,ad);
  const tg=qs('.tg-entry');if(tg)tg.hidden=true;
  if(trending){
