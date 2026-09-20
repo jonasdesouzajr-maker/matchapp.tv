@@ -2374,3 +2374,16 @@ html body.page-home #mh-topbox.ma-home-header .ma-brand-orb{
   animation:none!important;
   will-change:auto!important;
 }
+
+
+/* 2026-09-20 Home compositor stability guard.
+   Keep the approved glass colors, borders and shadows, but avoid full-page
+   backdrop rasterization over the fixed poster layer during startup/scroll. */
+html body.page-home #mh-topbox.app-header,
+html body.page-home :is(.premium-card,.spotlight-card,.ma-concierge,.tg-entry,details.premiere-disclosure,details#weekly-pick-disclosure,.ma-news,.global-events-fold,#swifties-spotify),
+html body.page-home .ma-menu,
+html body.page-home .real-time-clock,
+html body.page-home .chrome-banner{
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+}
