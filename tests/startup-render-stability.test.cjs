@@ -16,10 +16,24 @@ test('premium media motion is bounded and reduced on handhelds',()=>{
 test('Home startup avoids delayed boot locks, stale cache keys and duplicate header owners',()=>{
  const html=read('index.html'),settings=read('settings.js'),wiring=read('final-wiring.js');
  assert.doesNotMatch(html,/ma-ui-preparing|MATCHAPP_UI_FAILSAFE/);
+ const versions={'catalog-media.js':'20260920-freeze3'};
  for(const file of ['page-origin.js','build-meta.js','matchapp-ia.js','settings.js','app.js','catalog-media.js','title-experience.js','lazy.js','app-updates.js']){
-  assert.match(html,new RegExp('/'+file.replace('.','\\.')+'\\?v=20260920-freeze2'));
+  const version=versions[file]||'20260920-freeze2';
+  assert.match(html,new RegExp('/'+file.replace('.','\\.')+'\\?v='+version));
  }
  assert.match(settings,/if\(!isHome\)js\('\/experience-v2\.js'\)/);
  assert.match(wiring,/if\(!isHome\)\{js\('\/install-corner\.js'\);js\('\/install-device-choice\.js'\);\}/);
  assert.match(wiring,/IntersectionObserver/);
+});
+
+
+test('Home noncritical enrichment yields to first interaction',()=>{
+ const html=read('index.html'),poster=read('poster-wall.js'),captions=read('title-captions.js'),media=read('catalog-media.js');
+ assert.match(html,/\/poster-wall\.js\?v=20260920-freeze3/);
+ assert.match(html,/\/title-captions\.js\?v=20260920-freeze3/);
+ assert.match(html,/\/catalog-media\.js\?v=20260920-freeze3/);
+ assert.match(poster,/requestIdleCallback\(run,\{timeout:1200\}\)/);
+ assert.match(captions,/requestIdleCallback\(\(\)=>paint\(\),\{timeout:1400\}\)/);
+ assert.match(captions,/requestIdleCallback\(loadAudit,\{timeout:1600\}\)/);
+ assert.match(media,/requestIdleCallback\(later,\{timeout:1500\}\)/);
 });
