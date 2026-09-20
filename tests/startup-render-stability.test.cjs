@@ -64,3 +64,9 @@ test('Home never constructs the decorative fixed poster wall',()=>{
  assert.match(wall,/if\(home\(\)\|\|kids\(\)\|\|document\.querySelector\('\.poster-wall'\)\)return/);
  assert.match(html,/poster-wall\.js\?v=20260920-homeoff1/);
 });
+
+test('Home never rewrites viewport scale from visualViewport resize',()=>{
+ const html=read('index.html');
+ assert.doesNotMatch(html,/id="mh-pinch"/);
+ assert.doesNotMatch(html,/visualViewport[\s\S]{0,900}maximum-scale=1/);
+});
