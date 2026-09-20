@@ -49,16 +49,42 @@ function mountNative(cfg,el){
  el.dataset.foldStateMounted='1';el.dataset.foldKey=cfg.key;
  el.addEventListener('toggle',()=>{if(syncing||lazyOn())return;remember(cfg.key,el.open)});
 }
+function hydrateSwift(section){
+ if(!section||section.dataset.swiftHydrated==='1')return;
+ section.dataset.swiftHydrated='1';
+ section.querySelectorAll('iframe[data-src]').forEach(frame=>{if(!frame.src)frame.src=frame.dataset.src});
+}
+function armSwiftHydration(section){
+ if(!section||section.dataset.swiftHydrationArmed==='1')return;
+ section.dataset.swiftHydrationArmed='1';
+ if('IntersectionObserver' in window){
+  const io=new IntersectionObserver(entries=>{
+   if(entries.some(entry=>entry.isIntersecting)){io.disconnect();hydrateSwift(section)}
+  },{rootMargin:'120px 0px'});
+  io.observe(section);
+ }else{
+  const hydrate=()=>hydrateSwift(section);
+  section.addEventListener('pointerdown',hydrate,{once:true,passive:true});
+  section.addEventListener('touchstart',hydrate,{once:true,passive:true});
+  section.addEventListener('focusin',hydrate,{once:true});
+ }
+}
 function setSwift(open){
  const section=document.getElementById('swifties-spotify');if(!section)return;
  const btn=section.querySelector('.swifties-fold'),body=section.querySelector('#swifties-spotify-body');
  if(btn){btn.setAttribute('aria-expanded',open?'true':'false');const icon=btn.querySelector('.swifties-fold-icon');if(icon)icon.textContent=open?'▴':'▾'}
- if(body){body.hidden=!open;if(open)body.querySelectorAll('iframe[data-src]').forEach(f=>{if(!f.src)f.src=f.dataset.src})}
+ if(body)body.hidden=!open;
 }
 function mountSwift(){
  const section=document.getElementById('swifties-spotify');if(!section||section.dataset.foldStateMounted==='1')return;
  section.dataset.foldStateMounted='1';const btn=section.querySelector('.swifties-fold');if(!btn)return;
- btn.addEventListener('click',()=>{const open=btn.getAttribute('aria-expanded')!=='true';setSwift(open);if(!lazyOn())remember('swifties',open)});
+ armSwiftHydration(section);
+ btn.addEventListener('click',()=>{
+  const open=btn.getAttribute('aria-expanded')!=='true';
+  setSwift(open);
+  if(open)hydrateSwift(section);
+  if(!lazyOn())remember('swifties',open);
+ });
 }
 function cleanupRetiredHeads(){
  document.querySelectorAll('.lazy-head[data-fold-key]').forEach(head=>{
