@@ -8,7 +8,7 @@
   if(kids()||document.querySelector('.poster-wall'))return;
   try{
    const response=await fetch('/data/poster-wall.json',{cache:'force-cache'});if(!response.ok)return;
-   const posters=(await response.json()).filter(p=>/^https:\/\/image\.tmdb\.org\/t\/p\/[a-z0-9]+\/[A-Za-z0-9_.-]+$/.test(p.poster)).slice(0,8);
+   const posters=(await response.json()).filter(p=>/^https:\/\/image\.tmdb\.org\/t\/p\/[a-z0-9]+\/[A-Za-z0-9_.-]+$/.test(p.poster)).slice(0,16);
    if(!posters.length)return;
    const wall=document.createElement('div');wall.className='poster-wall';wall.setAttribute('aria-hidden','true');wall.inert=true;
    const grid=document.createElement('div');grid.className='poster-wall-grid';
