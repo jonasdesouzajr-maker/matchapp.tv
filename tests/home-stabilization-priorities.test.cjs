@@ -61,9 +61,9 @@ test('both Android Studio apps carry stabilized release marker without changing 
   const main=read('android-studio/app/src/main/java/tv/matchapp/app/MainActivity.kt');
   const kids=read('android-studio/kidsapp/src/main/java/tv/matchapp/kids/MainActivity.kt');
   assert.match(mainGradle,/versionCode = 20/);
-  assert.match(mainGradle,/versionName = "1\.1\.17"/);
+  assert.match(mainGradle,/versionName = "1\.1\.18"/);
   assert.match(kidsGradle,/versionCode = 20/);
-  assert.match(kidsGradle,/versionName = "1\.1\.17"/);
+  assert.match(kidsGradle,/versionName = "1\.1\.18"/);
   assert.match(main,/https:\/\/matchapp\.tv\/\?utm_source=android_app&appBuild=20/);
   assert.match(kids,/https:\/\/matchapp\.tv\/kids\/\?utm_source=android_kids_app&appBuild=20/);
   assert.match(main,/MATCHAPP_ANDROID_KIDS_AVAILABLE/);
