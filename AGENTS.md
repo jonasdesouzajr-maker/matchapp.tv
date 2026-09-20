@@ -43,6 +43,7 @@ These are standing implementation rules for MatchApp work in this repository.
    - Cinema-only/current-theatrical titles should carry a cinema indicator. Nearby-cinema lookup may request geolocation only after an explicit user action and must degrade safely if permission is denied.
    - Daily Check-in should stay compact after the day's check-in; explain the 7-day/+5 Extra Matches mechanic through the release/notification experience and first-visit education rather than occupying permanent screen space.
    - Performance is a product requirement: prefer compositor/native scrolling, lazy/interaction-triggered metadata work, bounded observers, and graceful fallbacks; avoid homepage changes that introduce freezes, crashes, scroll traps, or animation jank.
+   - Runtime stability is mandatory for every change: never introduce unbounded render/update loops, layout thrashing, recurring full-page animation, duplicate startup owners, or code paths that can freeze/crash browsers or Android WebViews.
 
 7. **Responsive visual parity and Android release parity**
    - Every approved MatchApp main-product UI/UX change must be designed and verified for desktop, tablet, and smartphone breakpoints in the same task; never ship a desktop-only or mobile-only redesign.
