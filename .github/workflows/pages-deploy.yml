@@ -118,7 +118,7 @@ jobs:
         run: |
           if [ -z "$CF_API_TOKEN" ] || [ -z "$CF_ZONE_ID" ]; then
             echo "Cloudflare purge skipped: add CLOUDFLARE_API_TOKEN and CLOUDFLARE_ZONE_ID Actions secrets."
-            exit 0
+            exit 1
           fi
           curl -fsS -X POST "https://api.cloudflare.com/client/v4/zones/$CF_ZONE_ID/purge_cache"             -H "Authorization: Bearer $CF_API_TOKEN"             -H "Content-Type: application/json"             --data '{"purge_everything":true}'
       - name: Notify phone (success only)
