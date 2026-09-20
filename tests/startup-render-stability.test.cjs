@@ -48,7 +48,7 @@ test('poster wall cannot promote dozens of animated compositor layers',()=>{
 
 
 test('Home header is visible without JavaScript and avoids filtered 8K SVGs',()=>{
- const html=read('index.html'),css=read('matchapp-ia.css');
+ const html=read('index.html'),css=read('matchapp-ia.css'),ia=read('matchapp-ia.js');
  assert.match(html,/\/matchapp-ia\.css\?v=20260920-design3/);
  assert.match(html,/class="ma-brand-orb" src="\/assets\/brand\/matchapp-home-orb-transparent\.webp\?v=20260920-homebrand1"/);
  assert.doesNotMatch(css,/header-cosmic-8k\.svg/);
