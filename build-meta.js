@@ -84,12 +84,14 @@ window.MATCHAPP_BUILD = '2026.09.19.3';
     const monthly = document.querySelector('[data-i18n-html="pricing.vipm.f1"]');
     if (monthly) monthly.innerHTML = '✔️ <strong>'+vipDaily+'</strong> included AI actions daily';
 
+    // MatchApp plans are digital services, not shippable merchant products.
+    // Remove any legacy Product JSON-LD left by an older cached/template release so
+    // Google does not expect physical-goods shipping, returns or fabricated reviews.
     document.querySelectorAll('script[type="application/ld+json"]').forEach(function (script) {
       try {
         const data = JSON.parse(script.textContent || '{}');
-        if (data && data['@type'] === 'Product' && data.name === 'MatchApp VIP') {
-          data.description = '10 included AI actions per day, usable for Matches or Ask AI, plus no ads, priority routing and prioritised regional content.';
-          script.textContent = JSON.stringify(data);
+        if (data && data['@type'] === 'Product' && /^MatchApp\b/i.test(String(data.name || ''))) {
+          script.remove();
         }
       } catch (_) {}
     });
