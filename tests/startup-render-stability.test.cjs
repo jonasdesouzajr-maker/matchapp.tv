@@ -16,7 +16,7 @@ test('premium media motion is bounded and reduced on handhelds',()=>{
 test('Home startup avoids delayed boot locks, stale cache keys and duplicate header owners',()=>{
  const html=read('index.html'),settings=read('settings.js'),wiring=read('final-wiring.js');
  assert.doesNotMatch(html,/ma-ui-preparing|MATCHAPP_UI_FAILSAFE/);
- const versions={'build-meta.js':'20260920-design3','matchapp-ia.js':'20260920-homebrand3','settings.js':'20260920-freeze8','app.js':'20260920-design5','catalog-media.js':'20260920-freeze-final1','lazy.js':'20260920-design3'};
+ const versions={'build-meta.js':'20260920-design4','matchapp-ia.js':'20260920-homebrand4','settings.js':'20260920-freeze8','app.js':'20260920-speed2','catalog-media.js':'20260920-freeze-final1','lazy.js':'20260920-design4'};
  for(const file of ['page-origin.js','build-meta.js','matchapp-ia.js','settings.js','app.js','catalog-media.js','title-experience.js','lazy.js','app-updates.js']){
   const version=versions[file]||'20260920-freeze2';
   assert.match(html,new RegExp('/'+file.replace('.','\\.')+'\\?v='+version));
@@ -29,10 +29,10 @@ test('Home startup avoids delayed boot locks, stale cache keys and duplicate hea
 
 test('Home noncritical enrichment is staggered instead of timing out together',()=>{
  const html=read('index.html'),poster=read('poster-wall.js'),captions=read('title-captions.js'),media=read('catalog-media.js');
- assert.match(html,/\/poster-wall\.js\?v=20260920-home10/);
+ assert.match(html,/\/poster-wall\.js\?v=20260920-home11/);
  assert.match(html,/\/title-captions\.js\?v=20260920-crash4/);
  assert.match(html,/\/catalog-media\.js\?v=20260920-freeze-final1/);
- assert.match(html,/\/poster-wall\.css\?v=20260920-design5/);
+ assert.match(html,/\/poster-wall\.css\?v=20260920-design6/);
  assert.match(poster,/setTimeout\(\(\)=>\{[\s\S]*requestIdleCallback\(run\)[\s\S]*\},900\)/);
  assert.match(captions,/setTimeout\(\(\)=>\{[\s\S]*requestIdleCallback\(\(\)=>paint\(\)\)[\s\S]*\},2200\)/);
  assert.match(captions,/requestIdleCallback\(loadAudit\)[\s\S]*\},5200\)/);
@@ -49,15 +49,15 @@ test('poster wall cannot promote dozens of animated compositor layers',()=>{
 
 test('Home header is visible without JavaScript and avoids filtered 8K SVGs',()=>{
  const html=read('index.html'),css=read('matchapp-ia.css'),ia=read('matchapp-ia.js');
- assert.match(html,/\/matchapp-ia\.css\?v=20260920-design5/);
- assert.match(html,/class="ma-brand-orb" src="\/assets\/brand\/matchapp-official-icon-512\.webp\?v=20260920-homebrand3"/);
+ assert.match(html,/\/matchapp-ia\.css\?v=20260920-design6/);
+ assert.match(html,/class="ma-brand-orb" src="\/assets\/brand\/matchapp-home-orb-transparent\.webp\?v=20260920-homebrand4"/);
  assert.doesNotMatch(css,/header-cosmic-8k\.svg/);
  assert.doesNotMatch(css,/#mh-topbox\.app-header\{\s*visibility:hidden!important;\s*opacity:0!important;/);
  assert.match(css,/2026-09-20 renderer root guard/);
  assert.match(css,/#mh-topbox\.ma-home-header \.ma-brand-orb\{[\s\S]*animation:none!important;[\s\S]*will-change:auto!important/);
  assert.match(css,/Home compositor stability guard/);
  assert.match(css,/\.lazy-head:has\(\+ #trending-rail\)\{display:none!important\}/);
- assert.match(ia,/const HOME_ICON='\/assets\/brand\/matchapp-official-icon-512\.webp\?v=20260920-homebrand3'/);
+ assert.match(ia,/const HOME_ICON='\/assets\/brand\/matchapp-home-orb-transparent\.webp\?v=20260920-homebrand4'/);
  assert.match(css,/backdrop-filter:none!important/);
 });
 
@@ -65,8 +65,8 @@ test('Home poster wall stays lightweight, static and cache-busted',()=>{
  const wall=read('poster-wall.js'),html=read('index.html'),css=read('poster-wall.css');
  assert.match(wall,/if\(kids\(\)\|\|document\.querySelector\('\.poster-wall'\)\)return/);
  assert.match(wall,/for\(let i=0;i<posters\.length;i\+\+\)/);
- assert.match(html,/poster-wall\.js\?v=20260920-home10/);
- assert.match(html,/poster-wall\.css\?v=20260920-design5/);
+ assert.match(html,/poster-wall\.js\?v=20260920-home11/);
+ assert.match(html,/poster-wall\.css\?v=20260920-design6/);
  assert.match(css,/Home poster-wall restore/);
  assert.match(css,/2026-09-20 scattered static poster background/);
  assert.match(css,/final scattered-cover visibility pass/);
@@ -111,7 +111,7 @@ test('Home editorial scripts do not preload hundreds of pixels before view',()=>
  const wiring=read('final-wiring.js'),meta=read('build-meta.js');
  assert.match(wiring,/rootMargin:'0px'/);
  assert.doesNotMatch(wiring,/rootMargin:'700px 0px'/);
- assert.match(meta,/final-wiring\.js\?v=20260920-design3/);
+ assert.match(meta,/final-wiring\.js\?v=20260920-design4/);
 });
 
 
@@ -121,7 +121,9 @@ test('Home removes the nonfunctional trending fold bar and keeps autoplay bounde
  assert.match(lazy,/RETIRED_GENERIC_KEYS=new Set\(\[[^\]]*'trending'/);
  assert.match(lazy,/nextElementSibling[\s\S]*id!=='trending-rail'/);
  assert.match(css,/#trending-rail>h4\{display:none!important\}/);
- assert.match(app,/autoDelay = vp\.id === 'marquee-viewport' \? 1350 : 6500/);
- assert.match(news,/AUTO_FIRST_MS=900/);
- assert.match(news,/AUTO_MS=1350/);
+ assert.match(app,/autoDelay = vp\.id === 'marquee-viewport' \? 1050 : 6500/);
+ assert.match(news,/AUTO_FIRST_MS=700/);
+ assert.match(news,/AUTO_MS=1050/);
+ assert.doesNotMatch(read('index.html'),/data-i18n="marquee\.title"/);
+ assert.match(read('index.html'),/id="trending-rail" aria-label="Latest titles trending right now"/);
 });
