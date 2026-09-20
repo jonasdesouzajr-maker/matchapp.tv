@@ -516,8 +516,10 @@
     const isHome=location.pathname==='/'||location.pathname==='/index.html';
     if(isHome){
       const later=()=>enrichTrendingRail();
-      if('requestIdleCallback' in window)requestIdleCallback(later,{timeout:1500});
-      else setTimeout(later,120);
+      setTimeout(()=>{
+        if('requestIdleCallback' in window)requestIdleCallback(later);
+        else later();
+      },3600);
     }else enrichTrendingRail();
     document.addEventListener('matchapp:newmatch',()=>{hardenWithin(result||document);enrichMain();});
     document.addEventListener('matchapp:kids-result',()=>{hardenWithin(kids||document);enrichKids();});
