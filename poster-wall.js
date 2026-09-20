@@ -14,7 +14,7 @@
    const grid=document.createElement('div');grid.className='poster-wall-grid';
    for(let i=0;i<posters.length;i++){
     const tile=document.createElement('div');tile.className='poster-wall-tile';
-    const img=document.createElement('img');img.src=posters[i].poster;img.alt='';img.decoding='async';img.fetchPriority='low';img.onerror=()=>tile.hidden=true;
+    const img=document.createElement('img');img.src=posters[i].poster;img.alt='';img.loading='lazy';img.decoding='async';img.fetchPriority='low';img.onerror=()=>tile.hidden=true;
     const badge=document.createElement('span');badge.className='poster-wall-brand';const logo=document.createElement('img');logo.src='/assets/brand/brandkit/app-icon.svg?v=20260919-brand1';logo.alt='';logo.width=22;logo.height=22;badge.append(logo,document.createTextNode('matchapp.tv'));
     tile.append(img,badge);grid.append(tile);
    }
