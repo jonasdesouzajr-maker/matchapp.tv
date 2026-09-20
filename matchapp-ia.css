@@ -2413,8 +2413,8 @@ html body.page-home #mh-topbox .ma-ai-letters{
    while preserving the stable lightweight official image file. */
 html body.page-home #mh-topbox.ma-home-header .ma-brand-orb{
   border-radius:50%!important;
-  clip-path:circle(38% at 50% 50%)!important;
-  transform:scale(1.22)!important;
+  clip-path:circle(35.5% at 50% 50%)!important;
+  transform:scale(1.34)!important;
   filter:drop-shadow(0 4px 9px rgba(0,0,0,.22))!important;
   animation:none!important;
   will-change:auto!important;
