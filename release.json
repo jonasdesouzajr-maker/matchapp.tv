@@ -1,10 +1,10 @@
 {
-  "version": "2026.09.20.1",
+  "version": "2026.09.20.2",
   "date": "2026-09-20",
   "functional": true,
   "notes": {
-    "en": "Empty ad rails collapse, one install control, first-run overlays queued, AHS key art restored, mood chips wrap on phones, and Home contrast lifted.",
-    "pt-BR": "Trilhos de an\u00fancio vazios somem, um s\u00f3 controle de instala\u00e7\u00e3o, overlays da primeira visita em fila, arte da estreia AHS restaurada, chips de humor que cabem no celular e contraste da Home mais alto.",
+    "en": "Startup stability: fixed forced scroll jumps, stale mixed assets and duplicate Home install controllers.",
+    "pt-BR": "Estabilidade de inicialização: corrigidos saltos de rolagem, mistura de arquivos em cache e controles duplicados de instalação na Home.",
     "es": "Empty ad rails collapse, one install control, first-run overlays queued, AHS key art restored, mood chips wrap on phones, and Home contrast lifted.",
     "fr": "Empty ad rails collapse, one install control, first-run overlays queued, AHS key art restored, mood chips wrap on phones, and Home contrast lifted.",
     "de": "Empty ad rails collapse, one install control, first-run overlays queued, AHS key art restored, mood chips wrap on phones, and Home contrast lifted.",

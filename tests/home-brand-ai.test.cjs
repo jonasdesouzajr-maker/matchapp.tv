@@ -17,8 +17,8 @@ test('TikTok intro and video showcase are fully absent from Home runtime',()=>{
  assert.equal(fs.existsSync(path.join(root,'tiktok-showcase.js')),false);
  assert.equal(fs.existsSync(path.join(root,'tiktok-showcase.css')),false);
 });
-test('fresh Home navigation uses one event-driven top reset only',()=>{
- const origin=read('page-origin.js');assert.match(origin,/scrollRestoration='manual'/);assert.match(origin,/requestAnimationFrame\(top\)/);assert.doesNotMatch(origin,/setInterval\(|prototype\.scrollIntoView|prototype\.focus/);
+test('fresh Home navigation establishes the top once without delayed scroll correction',()=>{
+ const origin=read('page-origin.js');assert.match(origin,/scrollRestoration='manual'/);assert.match(origin,/getEntriesByType/);assert.doesNotMatch(origin,/DOMContentLoaded|pageshow|requestAnimationFrame\(top\)|setInterval\(|prototype\.scrollIntoView|prototype\.focus/);
 });
 test('walkthrough is launched manually and includes the requested feature order',()=>{
  const tour=read('onboarding-tour.js');

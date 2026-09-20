@@ -1,7 +1,7 @@
 /* Final production wiring: activate reviewed hardening modules without duplicating page markup. */
 (function(){
   'use strict';
-  const V='20260919-fold3';
+  const V='20260920-freeze2';
   const path=location.pathname;
   const isKids=path==='/kids'||path.startsWith('/kids/');
   const isHome=path==='/'||path==='/index.html';
@@ -73,11 +73,25 @@
   function boot(){
     if(!isHome)brand();style();pwaIdentity();aiDisclosure();
     if(!isKids&&!isHome)js('/brand-corrections.js');
-    js('/install-corner.js');
-    js('/install-device-choice.js');
+    if(!isHome){js('/install-corner.js');js('/install-device-choice.js');}
     const appPages=path==='/'||path==='/index.html'||path==='/discover.html'||path==='/together.html';
     if(appPages){js('/production-hardening.js');js('/shown-history.js');js('/match-speed.js');js('/catalog-media.js');}
-    if(path==='/'||path==='/index.html'){js('/weekly-pick.js');js('/latest-news.js');js('/live-news-loader.js');js('/latest-news-image-guard.js');}
+    if(path==='/'||path==='/index.html'){
+      const loadHomeEditorial=()=>{
+        js('/weekly-pick.js');js('/latest-news.js');js('/live-news-loader.js');js('/latest-news-image-guard.js');
+      };
+      const sentinel=document.getElementById('premiere-disclosure')||document.getElementById('swifties-spotify')||document.getElementById('global-events');
+      if(sentinel&&'IntersectionObserver' in window){
+        const io=new IntersectionObserver(entries=>{
+          if(entries.some(e=>e.isIntersecting)){io.disconnect();loadHomeEditorial();}
+        },{rootMargin:'700px 0px'});
+        io.observe(sentinel);
+      }else if(document.readyState==='complete'){
+        setTimeout(loadHomeEditorial,1200);
+      }else{
+        addEventListener('load',()=>setTimeout(loadHomeEditorial,600),{once:true});
+      }
+    }
     if(path==='/discover.html')js('/human-conversation.js');
     document.addEventListener('click',quotaRoute,true);
     document.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.closest?.('#quota-badge'))quotaRoute(e);},true);
