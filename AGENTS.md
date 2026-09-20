@@ -51,3 +51,6 @@ These are standing implementation rules for MatchApp work in this repository.
    - Preserve MatchApp Ai KIDS branding and Kids-only routing. Anime and other adult/normal-mode catalog additions must not leak into Kids Mode.
    - Prefer responsive CSS and shared web behavior over Android-only visual forks. Verify taps, folds, dialogs, horizontal rails, viewport zoom, external links and back navigation inside Android WebView as well as browsers.
    - Visual effects must respect `prefers-reduced-motion`, avoid layout-triggering animation loops, and must not introduce scroll traps, freezes, crashes or excessive battery/CPU use.
+
+### Stability invariant
+- Every change must preserve runtime stability first: do not introduce crashes, freezes, infinite render or mutation loops, layout thrashing, unbounded observers/timers, or expensive continuous compositor work. Keep edits surgical, bounded, responsive, and regression-tested before deployment.
