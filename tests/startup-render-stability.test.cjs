@@ -29,10 +29,10 @@ test('Home startup avoids delayed boot locks, stale cache keys and duplicate hea
 
 test('Home noncritical enrichment is staggered instead of timing out together',()=>{
  const html=read('index.html'),poster=read('poster-wall.js'),captions=read('title-captions.js'),media=read('catalog-media.js');
- assert.match(html,/\/poster-wall\.js\?v=20260920-homeoff1/);
+ assert.match(html,/\/poster-wall\.js\?v=20260920-home8/);
  assert.match(html,/\/title-captions\.js\?v=20260920-crash4/);
  assert.match(html,/\/catalog-media\.js\?v=20260920-freeze-final1/);
- assert.match(html,/\/poster-wall\.css\?v=20260920-crash4/);
+ assert.match(html,/\/poster-wall\.css\?v=20260920-home8/);
  assert.match(poster,/setTimeout\(\(\)=>\{[\s\S]*requestIdleCallback\(run\)[\s\S]*\},900\)/);
  assert.match(captions,/setTimeout\(\(\)=>\{[\s\S]*requestIdleCallback\(\(\)=>paint\(\)\)[\s\S]*\},2200\)/);
  assert.match(captions,/requestIdleCallback\(loadAudit\)[\s\S]*\},5200\)/);
@@ -59,11 +59,16 @@ test('Home header is visible without JavaScript and avoids filtered 8K SVGs',()=
  assert.match(css,/backdrop-filter:none!important/);
 });
 
-test('Home never constructs the decorative fixed poster wall',()=>{
- const wall=read('poster-wall.js'),html=read('index.html');
- assert.match(wall,/function home\(\).*location\.pathname==='\/'/s);
- assert.match(wall,/if\(home\(\)\|\|kids\(\)\|\|document\.querySelector\('\.poster-wall'\)\)return/);
- assert.match(html,/poster-wall\.js\?v=20260920-homeoff1/);
+test('Home poster wall stays lightweight, static and cache-busted',()=>{
+ const wall=read('poster-wall.js'),html=read('index.html'),css=read('poster-wall.css');
+ assert.match(wall,/if\(kids\(\)\|\|document\.querySelector\('\.poster-wall'\)\)return/);
+ assert.match(wall,/for\(let i=0;i<posters\.length;i\+\+\)/);
+ assert.match(html,/poster-wall\.js\?v=20260920-home8/);
+ assert.match(html,/poster-wall\.css\?v=20260920-home8/);
+ assert.match(css,/Home poster-wall restore/);
+ assert.match(css,/grid-template-columns:repeat\(4,minmax\(0,1fr\)\)/);
+ assert.match(css,/@media\(max-width:700px\)/);
+ assert.match(css,/grid-template-columns:repeat\(2,minmax\(0,1fr\)\)/);
 });
 
 test('Home never rewrites viewport scale from visualViewport resize',()=>{
