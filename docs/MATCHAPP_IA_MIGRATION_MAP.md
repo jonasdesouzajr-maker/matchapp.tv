@@ -18,7 +18,6 @@ This redesign is presentation-only. Existing matching policy, Kids age/safety ru
 | Premiere accordion | `#premiere-disclosure` | Open compact “This week” card below Latest titles. |
 | Events stack | `#global-events` | Optional below-fold rail/disclosure with accessible `aria-expanded`. |
 | How it works | `#how-it-works` and duplicate essays | Removed from Home; keep a single three-step footer line. |
-| TikTok first-paint intro | `#matchapp-tiktok-intro`, `.matchapp-tiktok-showcase` | Never blocks Home. Social engagement stays below core product if retained. |
 | Cookie UI | cookie consent banner | Slim bottom bar only; matcher CTA stays visible. |
 | Ads | homepage ad containers / side rails | Desktop side rails or below-fold mobile placements only; never overlay matcher, result, auth or checkout. |
 | Footer | site footer | Keep legal/support links plus one short “Pick mood → Get title → Watch officially” explanation. |

@@ -11,11 +11,11 @@ test('official MatchApp icon and Kids identity stay separated',()=>{
  assert.match(html,/matchapp-official-icon-512\.webp/);
  assert.match(kids,/\/kids\/kids-logo-sm\.jpeg/);
 });
-test('TikTok intro is gone and showcase is click-to-load only',()=>{
- const html=read('index.html'),js=read('tiktok-showcase.js'),css=read('tiktok-showcase.css');
- assert.doesNotMatch(html,/matchapp-tiktok-intro|mobile-scroll-safety/);
- assert.doesNotMatch(css,/matchapp-tiktok-intro/);
- assert.match(js,/data-tiktok-load/);assert.match(js,/autoplay:'0'/);assert.doesNotMatch(js,/autoplay:'1'/);
+test('TikTok intro and video showcase are fully absent from Home runtime',()=>{
+ const html=read('index.html');
+ assert.doesNotMatch(html,/matchapp-tiktok-(?:intro|showcase)|tiktok-showcase\.(?:js|css)|data-tiktok-load|matchapp-tiktok-poster-player/);
+ assert.equal(fs.existsSync(path.join(root,'tiktok-showcase.js')),false);
+ assert.equal(fs.existsSync(path.join(root,'tiktok-showcase.css')),false);
 });
 test('fresh Home navigation uses one event-driven top reset only',()=>{
  const origin=read('page-origin.js');assert.match(origin,/scrollRestoration='manual'/);assert.match(origin,/requestAnimationFrame\(top\)/);assert.doesNotMatch(origin,/setInterval\(|prototype\.scrollIntoView|prototype\.focus/);

@@ -1,10 +1,11 @@
 const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
 const root=path.join(__dirname,'..'),read=p=>fs.readFileSync(path.join(root,p),'utf8');
 test('dead Home fold controls remain retired',()=>{const lazy=read('lazy.js');for(const key of ['checkin','topask','how','aboutai','tiktok'])assert.ok(lazy.includes(key));});
-test('TikTok showcase is static-first and rewards only a completed native share',()=>{
- const js=read('tiktok-showcase.js'),html=read('index.html'),share=read('share.js');
- assert.match(js,/function loadPlayer/);assert.match(js,/navigator\.share/);assert.match(js,/await reward\(\)/);assert.match(js,/window\.grantShareReward/);
- assert.match(html,/data-tiktok-load/);assert.match(html,/data-tiktok-showcase-status/);assert.match(share,/window\.grantShareReward = grantShareReward/);
+test('Home has no TikTok video runtime or player assets',()=>{
+ const html=read('index.html');
+ assert.doesNotMatch(html,/matchapp-tiktok-showcase|data-tiktok-load|tiktok-showcase\.(?:js|css)/);
+ assert.equal(fs.existsSync(path.join(root,'tiktok-showcase.js')),false);
+ assert.equal(fs.existsSync(path.join(root,'tiktok-showcase.css')),false);
 });
 test('AdSense retains five Home slots while single initializer owns requests',()=>{
  const html=read('index.html'),init=read('ads-init.js');

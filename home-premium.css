@@ -603,20 +603,11 @@ html body.page-home .main-layout>.container>*{
 }
 html body.page-home .main-layout>.container>*[hidden],
 html body.page-home [hidden]{display:none!important}
-html body.page-home :is(.premium-card,.marquee-wrapper,.spotlight-card,.events-wrapper,.tg-entry,#daily-match-checkin,.top-ask-wrap,#latest-news,#matchapp-tiktok-showcase){
+html body.page-home :is(.premium-card,.marquee-wrapper,.spotlight-card,.events-wrapper,.tg-entry,#daily-match-checkin,.top-ask-wrap,#latest-news){
   margin-block:3px!important;
 }
 html body.page-home #swifties-spotify{margin-block:3px!important}
 html body.page-home .seo-footer{margin-top:8px!important}
-html body.page-home #matchapp-tiktok-showcase{
-  margin:8px auto 18px!important;
-  padding-top:12px!important;
-  padding-bottom:12px!important;
-}
-html body.page-home .matchapp-tiktok-showcase-copy{margin-bottom:10px!important}
-html body.page-home .matchapp-tiktok-caption{margin-top:9px!important}
-html body.page-home .matchapp-tiktok-engagement{margin-top:8px!important}
-
 /* Desktop AdSense: both side rails are visible but NON-STICKY.
    This avoids the mirrored-sticky pattern prohibited by AdSense. */
 @media(min-width:1120px){
@@ -658,8 +649,8 @@ html body.page-home .sidebar-ad-left,
 html body.page-home .sidebar-ad-right{
   scroll-margin-block:18px!important;
 }
-html body.page-home .ad-banner-container + :is(button,a,.res-action-grid,.matchapp-tiktok-showcase),
-html body.page-home :is(button,a,.res-action-grid,.matchapp-tiktok-showcase) + .ad-banner-container{
+html body.page-home .ad-banner-container + :is(button,a,.res-action-grid),
+html body.page-home :is(button,a,.res-action-grid) + .ad-banner-container{
   margin-top:16px!important;
 }
 
@@ -681,15 +672,10 @@ html body.page-home.lazy-mode .lazy-open{margin-block:2px!important}
     gap:4px!important;
     padding-bottom:4px!important;
   }
-  html body.page-home :is(.premium-card,.marquee-wrapper,.spotlight-card,.events-wrapper,.tg-entry,#daily-match-checkin,.top-ask-wrap,#latest-news,#matchapp-tiktok-showcase,#swifties-spotify){
+  html body.page-home :is(.premium-card,.marquee-wrapper,.spotlight-card,.events-wrapper,.tg-entry,#daily-match-checkin,.top-ask-wrap,#latest-news,#swifties-spotify){
     margin-block:2px!important;
   }
-  html body.page-home #matchapp-tiktok-showcase{
-    width:calc(100% - 8px)!important;
-    margin:4px auto 10px!important;
-    padding:8px 4px!important;
   }
-}
 
 /* Canonical AdSense labels */
 html body.page-home .ma-ad-label{

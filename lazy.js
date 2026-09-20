@@ -10,7 +10,7 @@ const GENERIC=[
 ];
 /* These sections are intentionally hidden/re-homed by the current IA.
    Never generate orphan fold bars for them on Home. */
-const RETIRED_GENERIC_KEYS=new Set(['checkin','topask','how','aboutai','tiktok']);
+const RETIRED_GENERIC_KEYS=new Set(['checkin','topask','how','aboutai']);
 const NATIVE=[
  {sel:'#premiere-disclosure',key:'premiere'},
  {sel:'#weekly-pick-disclosure',key:'weekly'},

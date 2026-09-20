@@ -1545,8 +1545,7 @@ window.__MATCHAPP_UI_FAILSAFE__=setTimeout(function(){document.documentElement.c
 <link rel="stylesheet" href="/app-polish.css?v=187">
 <script src="/themes.js?v=187"></script>
 <link rel="stylesheet" href="/poster-wall.css?v=20260919-wall2"><script defer src="/poster-wall.js?v=20260919-wall2"></script><script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://matchapp.tv/#organization","name":"MatchApp TV Ai","url":"https://matchapp.tv/","logo":"https://matchapp.tv/assets/brand/matchapp-official-icon-512.webp","contactPoint":{"@type":"ContactPoint","contactType":"customer support","telephone":"+5521974297919","email":"support@matchapp.tv"},"sameAs":["https://wa.me/5521974297919","https://instagram.com/matchapp.tv","https://www.tiktok.com/@matchapp_ai"]}</script><link rel="stylesheet" href="/brand.css?v=192">
-<link rel="stylesheet" href="/daily-checkin.css?v=3"><link rel="stylesheet" href="/tiktok-showcase.css?v=6">
-<link rel="stylesheet" href="/notifications.css?v=20260919-stable3" data-home-support="notifications">
+<link rel="stylesheet" href="/daily-checkin.css?v=3"><link rel="stylesheet" href="/notifications.css?v=20260919-stable3" data-home-support="notifications">
 <link rel="stylesheet" href="/onboarding-tour.css?v=20260919-tour2" data-home-support="onboarding">
 <link rel="stylesheet" href="/taste-profile.css?v=20260919-stable3" data-home-support="taste">
 <link rel="stylesheet" href="/profile-card.css?v=20260919-stable3" data-home-support="profile-card">
@@ -1727,8 +1726,7 @@ window.__MATCHAPP_UI_FAILSAFE__=setTimeout(function(){document.documentElement.c
         /* ---------- 3. ONE RADIUS SCALE ----------
            Panels, rails, cards and every input/button the page draws. */
         html body.page-home :is(.premium-card, .marquee-wrapper, .spotlight-card, .info-panel,
-            .ad-placement, .ad-banner-container, .tg-entry, .daily-checkin-card, #daily-match-checkin,
-            .matchapp-tiktok-showcase, .seo-keyword-block, .dc-card, .top-ask-wrap > *, section.container > section) {
+            .ad-placement, .ad-banner-container, .tg-entry, .daily-checkin-card, #daily-match-checkin, .seo-keyword-block, .dc-card, .top-ask-wrap > *, section.container > section) {
             border-radius: var(--r-lg) !important;
         }
         html body.page-home :is(.crit-toggle, .crit-collapsible, .lazy-toggle, .lazy-head,
@@ -1765,8 +1763,7 @@ window.__MATCHAPP_UI_FAILSAFE__=setTimeout(function(){document.documentElement.c
         html body.page-home .seo-keyword-block { padding: 9px 11px !important; margin-top: 11px !important; font-size: 10.5px !important; line-height: 1.5 !important; }
 
         /* ---------- 5. OTHER TALL BLOCKS ---------- */
-        html body.page-home .matchapp-tiktok-showcase { padding: 12px 12px 14px !important; margin-top: 10px !important; }
-        html body.page-home #daily-match-checkin { padding: 11px 12px !important; }
+html body.page-home #daily-match-checkin { padding: 11px 12px !important; }
         html body.page-home .ma-legal-bar { padding: 7px 12px !important; font-size: 10.5px !important; }
 
         /* The poster wall is the fixed background layer, not a scrolling block.
@@ -3049,43 +3046,7 @@ window.__MATCHAPP_UI_FAILSAFE__=setTimeout(function(){document.documentElement.c
     <p style="text-align:center"><a href="/updates.html">What’s new · Kids Mode &amp; device sign-in</a></p>
 </footer>
 
-<section id="matchapp-tiktok-showcase" class="matchapp-tiktok-showcase" aria-labelledby="matchapp-tiktok-showcase-title">
-  <div class="matchapp-tiktok-showcase-copy">
-    <p class="matchapp-tiktok-showcase-kicker" data-tiktok-author>TikTok · MatchApp TV Ai</p>
-    <h2 id="matchapp-tiktok-showcase-title">See MatchApp TV Ai in action</h2>
-    <p class="matchapp-tiktok-showcase-lede">A quick look at MatchApp’s AI entertainment concierge — choose the mood, get a match, and find where to watch movies, series, anime, K-dramas, novelas, podcasts and more.</p>
-  </div>
-  <div class="matchapp-tiktok-poster">
-    <div class="matchapp-tiktok-poster-media">
-      <div class="matchapp-tiktok-poster-placeholder">
-        <div>
-          <strong>Watch us on TikTok</strong>
-          <span>See MatchApp TV Ai in action. The TikTok player loads only after you tap.</span>
-          <button type="button" data-tiktok-load>▶ Watch us on TikTok</button>
-        </div>
-      </div>
-      <iframe id="matchapp-tiktok-poster-player" hidden
-              title="MatchApp TV Ai official TikTok video"
-              loading="lazy"
-              allow="fullscreen; encrypted-media; picture-in-picture"
-              referrerpolicy="strict-origin-when-cross-origin"></iframe>
-    </div>
-  </div>
-  <p id="matchapp-tiktok-caption" class="matchapp-tiktok-caption">Find what to watch in seconds — and what to listen to — with MatchApp TV Ai.</p>
-  <p class="matchapp-tiktok-reward-copy">Open TikTok to like or comment. Share from your device and unlock <strong>+1 free Match</strong> when the share completes.</p>
-  <div class="matchapp-tiktok-engagement" aria-label="Engage with this video on TikTok">
-    <a class="tt-like" data-tiktok-video-link href="https://www.tiktok.com/@matchapp_ai/video/7686252800828804360" target="_blank" rel="noopener noreferrer" aria-label="Like this video on TikTok">♥ <span>Like</span></a>
-    <a class="tt-comment" data-tiktok-video-link href="https://www.tiktok.com/@matchapp_ai/video/7686252800828804360" target="_blank" rel="noopener noreferrer" aria-label="Comment on this video on TikTok">💬 <span>Comment</span></a>
-    <button class="tt-share" type="button" data-tiktok-showcase-share aria-label="Share this TikTok video">↗ <span>Share</span></button>
-  </div>
-  <p class="matchapp-tiktok-action-status" data-tiktok-showcase-status role="status" aria-live="polite"></p>
-  <p class="matchapp-tiktok-tags">#matchapptv #matchapp #whattowatch #tiktokviral #tv</p>
-  <a class="matchapp-tiktok-open" data-tiktok-short-link href="https://vt.tiktok.com/ZSqtbq1j5/" target="_blank" rel="noopener noreferrer">Watch the original on TikTok ↗</a>
-</section>
-
-
-
-    <!-- SOCIAL SHARE MODAL -->
+<!-- SOCIAL SHARE MODAL -->
     <div id="share-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.9); z-index:3200; align-items:center; justify-content:center; padding:18px; overflow-y:auto;">
         <div class="premium-card share-sheet">
             <button onclick="closeShareSheet()" class="share-close" aria-label="Close">✕</button>
@@ -3328,7 +3289,6 @@ const footerYearEl = document.getElementById('footer-year');
 <script src="/app-updates.js?v=202"></script>
 <script defer src="/ads-init.js?v=1"></script>
 <script src="/global-events.js?v=189"></script>
-<script src="/title-captions.js?v=20260919-stable1"></script><script src="/tiktok-showcase.js?v=7"></script>
-<script src="/daily-checkin.js?v=4"></script>
+<script src="/title-captions.js?v=20260919-stable1"></script><script src="/daily-checkin.js?v=4"></script>
 <script defer src="/onboarding-tour.js?v=20260919-tour2"></script></body>
 </html>

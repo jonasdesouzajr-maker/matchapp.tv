@@ -95,13 +95,11 @@ html body.page-home #mh-topbox.app-header.ma-global-header{
 }
 
 /* ---------- no first-paint interstitial / no competing home chrome ---------- */
-html body.page-home #matchapp-tiktok-intro,
 html body.page-home .top-ask-wrap,
 html body.page-home #live-status-strip,
 html body.page-home #how-it-works,
 html body.page-home #ai-concierge-section,
 html body.page-home #daily-match-checkin,
-html body.page-home .matchapp-tiktok-showcase,
 html body.page-home .lazy-bar{display:none!important}
 html body.page-home:not(.ma-ia-ready) #trending-rail{display:none!important}
 html body.page-home .page-wrapper{padding:0!important}
@@ -2177,7 +2175,7 @@ html body.page-home #latest-news[open]>summary::after{transform:translateY(-50%)
     input:not([type="range"]):not([type="checkbox"]):not([type="radio"]),
     select,textarea,a.gold-btn,a.install-btn,a.ma-kids-mode-entry,[role="button"],
     .premium-card,.spotlight-card,.tg-card,.ma-concierge,.crit-toggle,.ma-news-card,
-    .share-sheet,.matchapp-tiktok-showcase,.app-header,.global-events-summary,
+    .share-sheet,.app-header,.global-events-summary,
     .home-hero,#trending-rail,#latest-news,#premiere-disclosure,
     #weekly-pick-disclosure,#global-events
   ),
