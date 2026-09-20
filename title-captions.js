@@ -41,8 +41,10 @@
  document.addEventListener('keydown',event=>{const tile=event.target.closest?.('.marquee-item[role=button]');if(tile&&['Enter',' '].includes(event.key)){event.preventDefault();tile.click();}});
  function schedulePaint(){
   primeTiles();
-  if('requestIdleCallback' in window)requestIdleCallback(()=>paint(),{timeout:1400});
-  else setTimeout(()=>paint(),100);
+  setTimeout(()=>{
+    if('requestIdleCallback' in window)requestIdleCallback(()=>paint());
+    else paint();
+  },2200);
  }
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',schedulePaint,{once:true});else schedulePaint();
 })();
@@ -58,7 +60,10 @@
   const s=document.createElement('script');s.src='/final-audit.js?v=194';s.async=false;s.dataset.finalAudit='1';document.head.appendChild(s);
  }
  if(isHome){
-  const schedule=()=>{'requestIdleCallback' in window?requestIdleCallback(loadAudit,{timeout:1600}):setTimeout(loadAudit,120);};
+  const schedule=()=>setTimeout(()=>{
+    if('requestIdleCallback' in window)requestIdleCallback(loadAudit);
+    else loadAudit();
+  },5200);
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',schedule,{once:true});else schedule();
  }else loadAudit();
 })();
