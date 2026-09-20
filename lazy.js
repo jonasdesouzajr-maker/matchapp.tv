@@ -4,13 +4,12 @@
 const STORE_KEY='match_lazy_mode';
 const FOLD_KEY='match_home_fold_state_v2';
 const GENERIC=[
- {sel:'#trending-rail',key:'trending',label:'🎬 Latest titles trending right now'},
  {sel:'#ma-concierge',key:'concierge',label:'🎯 Match / Ask MatchApp Ai'},
  {sel:'.tg-entry',key:'together',label:'🍿 Match Together'}
 ];
 /* These sections are intentionally hidden/re-homed by the current IA.
    Never generate orphan fold bars for them on Home. */
-const RETIRED_GENERIC_KEYS=new Set(['checkin','topask','how','aboutai']);
+const RETIRED_GENERIC_KEYS=new Set(['checkin','topask','how','aboutai','trending']);
 const NATIVE=[
  {sel:'#premiere-disclosure',key:'premiere'},
  {sel:'#weekly-pick-disclosure',key:'weekly'},
