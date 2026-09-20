@@ -33,7 +33,11 @@
  }
  document.addEventListener('matchapp:langchange',paint);
  document.addEventListener('keydown',event=>{const tile=event.target.closest?.('.marquee-item[role=button]');if(tile&&['Enter',' '].includes(event.key)){event.preventDefault();tile.click();}});
- if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',paint);else paint();
+ function schedulePaint(){
+  if('requestIdleCallback' in window)requestIdleCallback(()=>paint(),{timeout:1400});
+  else setTimeout(()=>paint(),100);
+ }
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',schedulePaint,{once:true});else schedulePaint();
 })();
 
 /* Site-wide final audit layer. Keeping this loader here avoids adding another
@@ -42,5 +46,12 @@
 (function(){'use strict';
  const isHome=location.pathname==='/'||location.pathname==='/index.html';
  if(!isHome&&!document.querySelector('link[data-final-audit]')){const l=document.createElement('link');l.rel='stylesheet';l.href='/final-audit.css?v=194';l.dataset.finalAudit='1';document.head.appendChild(l);}
- if(!document.querySelector('script[data-final-audit]')){const s=document.createElement('script');s.src='/final-audit.js?v=194';s.async=false;s.dataset.finalAudit='1';document.head.appendChild(s);}
+ function loadAudit(){
+  if(document.querySelector('script[data-final-audit]'))return;
+  const s=document.createElement('script');s.src='/final-audit.js?v=194';s.async=false;s.dataset.finalAudit='1';document.head.appendChild(s);
+ }
+ if(isHome){
+  const schedule=()=>{'requestIdleCallback' in window?requestIdleCallback(loadAudit,{timeout:1600}):setTimeout(loadAudit,120);};
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',schedule,{once:true});else schedule();
+ }else loadAudit();
 })();
