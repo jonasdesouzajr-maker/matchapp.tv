@@ -5,14 +5,12 @@ const STORE_KEY='match_lazy_mode';
 const FOLD_KEY='match_home_fold_state_v2';
 const GENERIC=[
  {sel:'#trending-rail',key:'trending',label:'🎬 Latest titles trending right now'},
- {sel:'#daily-match-checkin',key:'checkin',label:'✨ Daily Match Check-in'},
- {sel:'.top-ask-wrap',key:'topask',label:'🤖 Ask MatchApp Ai'},
  {sel:'#ma-concierge',key:'concierge',label:'🎯 Match / Ask MatchApp Ai'},
- {sel:'.tg-entry',key:'together',label:'🍿 Match Together'},
- {sel:'#how-it-works',key:'how',label:'❓ How MatchApp works'},
- {sel:'#ai-concierge-section',key:'aboutai',label:'🤖 About the AI concierge'},
- {sel:'#matchapp-tiktok-showcase',key:'tiktok',label:'♪ MatchApp on TikTok'}
+ {sel:'.tg-entry',key:'together',label:'🍿 Match Together'}
 ];
+/* These sections are intentionally hidden/re-homed by the current IA.
+   Never generate orphan fold bars for them on Home. */
+const RETIRED_GENERIC_KEYS=new Set(['checkin','topask','how','aboutai','tiktok']);
 const NATIVE=[
  {sel:'#premiere-disclosure',key:'premiere'},
  {sel:'#weekly-pick-disclosure',key:'weekly'},
@@ -62,7 +60,20 @@ function mountSwift(){
  section.dataset.foldStateMounted='1';const btn=section.querySelector('.swifties-fold');if(!btn)return;
  btn.addEventListener('click',()=>{const open=btn.getAttribute('aria-expanded')!=='true';setSwift(open);if(!lazyOn())remember('swifties',open)});
 }
+function cleanupRetiredHeads(){
+ document.querySelectorAll('.lazy-head[data-fold-key]').forEach(head=>{
+  if(!RETIRED_GENERIC_KEYS.has(head.dataset.foldKey))return;
+  const section=head.nextElementSibling;
+  if(section?.dataset?.foldKey===head.dataset.foldKey){
+   section.classList.remove('lazy-foldable','lazy-open');
+   delete section.dataset.lazyFoldMounted;
+   delete section.dataset.foldKey;
+  }
+  head.remove();
+ });
+}
 function mountAll(){
+ cleanupRetiredHeads();
  GENERIC.forEach(cfg=>document.querySelectorAll(cfg.sel).forEach(el=>mountGeneric(cfg,el)));
  NATIVE.forEach(cfg=>document.querySelectorAll(cfg.sel).forEach(el=>mountNative(cfg,el)));
  mountSwift();
