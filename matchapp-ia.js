@@ -4,7 +4,7 @@
 'use strict';
 const BRAND='/assets/brand/brandkit/logo-horizontal.svg?v=20260919-brand1';
 const ICON='/assets/brand/matchapp-official-icon-512.webp?v=20260920-official1';
-const HOME_ICON='/assets/brand/matchapp-home-orb-transparent.webp?v=20260920-homebrand2';
+const HOME_ICON='/assets/brand/matchapp-official-icon-512.webp?v=20260920-homebrand3';
 const path=(location.pathname||'/').replace(/\/+$/,'')||'/';
 const isHome=path==='/'||path==='/index.html';
 const isDiscover=path==='/discover.html';
