@@ -512,7 +512,13 @@
     const kids=document.getElementById('kids-watch-dialog');
     observeSurface(result,enrichMain);
     observeSurface(kids,enrichKids);
-    enrichMain();enrichKids();enrichTrendingRail();
+    enrichMain();enrichKids();
+    const isHome=location.pathname==='/'||location.pathname==='/index.html';
+    if(isHome){
+      const later=()=>enrichTrendingRail();
+      if('requestIdleCallback' in window)requestIdleCallback(later,{timeout:1500});
+      else setTimeout(later,120);
+    }else enrichTrendingRail();
     document.addEventListener('matchapp:newmatch',()=>{hardenWithin(result||document);enrichMain();});
     document.addEventListener('matchapp:kids-result',()=>{hardenWithin(kids||document);enrichKids();});
     document.addEventListener('matchapp:langchange',enrichTrendingRail);
