@@ -547,3 +547,34 @@ html body.page-home .poster-wall-tile:nth-child(16){top:95%;right:42%;transform:
 @media(min-width:2200px){
   html body.page-home .poster-wall-tile{width:clamp(46px,2.8vw,72px)!important}
 }
+
+
+/* 2026-09-20 compact full-page poster finish.
+   Smaller all-time-title covers with stronger separation from the page background.
+   Static only: no animation, filters, observers or promoted compositor layers. */
+html body.page-home .poster-wall-tile{
+  width:clamp(28px,3.05vw,48px)!important;
+  opacity:1!important;
+  border-radius:6px!important;
+  box-shadow:
+    0 7px 22px rgba(0,0,0,.42),
+    0 0 0 1px rgba(229,193,88,.58),
+    0 0 14px rgba(229,193,88,.12)!important;
+  animation:none!important;
+  will-change:auto!important;
+}
+html body.page-home .poster-wall::after{
+  background:linear-gradient(180deg,rgba(8,7,20,.008),rgba(8,7,20,.045))!important;
+}
+@media(max-width:700px){
+  html body.page-home .poster-wall-tile{
+    width:clamp(24px,7.2vw,36px)!important;
+    opacity:1!important;
+  }
+  html body.page-home .poster-wall::after{
+    background:linear-gradient(180deg,rgba(8,7,20,.018),rgba(8,7,20,.055))!important;
+  }
+}
+@media(min-width:2200px){
+  html body.page-home .poster-wall-tile{width:clamp(38px,2.4vw,60px)!important}
+}
