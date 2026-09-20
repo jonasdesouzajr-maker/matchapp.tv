@@ -33,6 +33,6 @@ function orderHome(){
  let anchor=hero;
  nodes.forEach(n=>{if(anchor.nextElementSibling!==n)anchor.insertAdjacentElement('afterend',n);anchor=n});
 }
-function init(){fit();orderHome();enhanceMedia();ripples();reveal();tilt();new MutationObserver(()=>enhanceMedia()).observe(document.body,{childList:true,subtree:true})}
+function init(){fit();orderHome();enhanceMedia();ripples();reveal();tilt();let reorderQueued=false;new MutationObserver(()=>{enhanceMedia();if(!reorderQueued){reorderQueued=true;queueMicrotask(()=>{reorderQueued=false;orderHome()})}}).observe(document.body,{childList:true,subtree:true})}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
 })();
