@@ -360,8 +360,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val HOME = "https://matchapp.tv/?utm_source=android_app&appBuild=19"
-        const val APP_UA = "MatchAppTVAndroid/1.1.17 MatchAppAiAndroid/1.1.17"
+        const val HOME = "https://matchapp.tv/?utm_source=android_app&appBuild=20"
+        const val APP_UA = "MatchAppTVAndroid/1.1.18 MatchAppAiAndroid/1.1.18"
         private const val APP_MODE_JS = """
             (function(){
               window.MATCHAPP_IS_AD_FREE = true;
