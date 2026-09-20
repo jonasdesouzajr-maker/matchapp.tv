@@ -404,12 +404,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 }
 
 function hub(items,generated){
-  const hubKeywords=uniq(items.flatMap(i=>[
-    i.seo.primary_keyword,
-    ...i.seo.short_tail.slice(0,3),
-    ...i.seo.trend_keywords.slice(0,2)
-  ])).slice(0,30);
-
   const cards=items.slice(0,24).map(i=>`<article style="padding:16px;border:1px solid rgba(255,255,255,.1);border-radius:14px">
     <p style="font-size:12px;color:#E5C158">${esc(i.source)} · ${esc(i.event_type)} · ${esc(new Date(i.published_at).toLocaleDateString('en-US'))}</p>
     <h2 style="font-size:19px"><a href="${esc(i.matchapp_url)}">${esc(i.title)}</a></h2>
@@ -434,8 +428,13 @@ function hub(items,generated){
         name:'Latest Entertainment News',
         url:`${SITE}/news/`,
         dateModified:generated,
-        description:'Verified entertainment headlines linked to original publishers and refreshed hourly.',
-        keywords:hubKeywords.join(', '),
+        description:'A continuously refreshed MatchApp index of entertainment reporting from named trusted publishers, with direct original-source links and clear source attribution.',
+        isPartOf:{'@type':'WebSite','@id':`${SITE}/#website`,url:`${SITE}/`,name:'MatchApp TV Ai'},
+        about:[
+          {'@type':'Thing',name:'Entertainment news'},
+          {'@type':'Thing',name:'Film and television'},
+          {'@type':'Thing',name:'Music and culture'}
+        ],
         mainEntity:{'@type':'ItemList',itemListElement:itemList},
         publisher:{'@type':'Organization',name:'MatchApp TV',url:SITE,logo:{'@type':'ImageObject',url:`${SITE}/assets/brand/matchapp-official-icon-512.webp`,width:512,height:512}}
       },
@@ -463,7 +462,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Latest Entertainment News | MatchApp TV</title>
 <meta name="description" content="Verified entertainment headlines about actors, singers, film, TV and music from trusted publishers, refreshed hourly by MatchApp TV.">
-<meta name="keywords" content="${esc(hubKeywords.join(', '))}">
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
 <link rel="canonical" href="${SITE}/news/">
 <meta property="og:type" content="website">
@@ -485,7 +483,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <a href="/#latest-news">← MatchApp Latest News</a>
   <h1>Latest Entertainment News</h1>
   <p>Verified actor, singer, film, TV and music updates from trusted publishers. Updated hourly, with direct links to every original source.</p>
-  <section style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px">${cards}</section>
+  <section aria-labelledby="news-guide-title" style="margin:20px 0 28px;padding:20px;border:1px solid rgba(229,193,88,.22);border-radius:14px;background:rgba(24,16,38,.72)">
+    <h2 id="news-guide-title" style="margin-top:0">How MatchApp Latest News works</h2>
+    <p>MatchApp Latest News is a continuously refreshed index of entertainment reporting from named publishers. We do not republish full articles here. Each item identifies the publisher, preserves a direct link to the original report and shows enough context to help you decide what is worth opening.</p>
+    <p>The feed is built from direct trusted-publisher sources and refreshed throughout the day. Automated filters remove obvious rumor-style language and unrelated stories before an item reaches this hub. The original publisher remains the source of record for every headline and claim; MatchApp's role is discovery, organization and a clear path back to that source.</p>
+    <p>When a story points you toward a movie, series, performer or release, continue with <a href="/">MatchApp's entertainment matcher</a>, <a href="/discover.html?focus=start">Ask MatchApp Ai</a>, or check <a href="/where-to-watch/">where to watch</a> for streaming and cinema availability.</p>
+  </section>
+  <section aria-label="Latest verified entertainment headlines" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px">${cards}</section>
 </main>
 <script src="/build-meta.js?v=203"></script>
 </body>
