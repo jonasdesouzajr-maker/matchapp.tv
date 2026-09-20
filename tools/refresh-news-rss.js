@@ -331,7 +331,7 @@ function page(i){
         citation:i.url,
         mainEntity:sourceCreativeWork(i),
         potentialAction:{'@type':'ViewAction',target:i.landing_url,name:'Open in MatchApp Latest News'},
-        publisher:{'@type':'Organization',name:'MatchApp TV',url:SITE,logo:{'@type':'ImageObject',url:`${SITE}/assets/brand/matchapp-icon-512.png`,width:512,height:512}}
+        publisher:{'@type':'Organization',name:'MatchApp TV',url:SITE,logo:{'@type':'ImageObject',url:`${SITE}/assets/brand/matchapp-official-icon-512.webp`,width:512,height:512}}
       },
       {
         '@type':'BreadcrumbList',
@@ -437,7 +437,7 @@ function hub(items,generated){
         description:'Verified entertainment headlines linked to original publishers and refreshed hourly.',
         keywords:hubKeywords.join(', '),
         mainEntity:{'@type':'ItemList',itemListElement:itemList},
-        publisher:{'@type':'Organization',name:'MatchApp TV',url:SITE,logo:{'@type':'ImageObject',url:`${SITE}/assets/brand/matchapp-icon-512.png`,width:512,height:512}}
+        publisher:{'@type':'Organization',name:'MatchApp TV',url:SITE,logo:{'@type':'ImageObject',url:`${SITE}/assets/brand/matchapp-official-icon-512.webp`,width:512,height:512}}
       },
       {
         '@type':'BreadcrumbList',
