@@ -73,6 +73,8 @@ test('homepage rails use the reviewed faster, motion-safe cadence',()=>{
   const news=read('latest-news.js');
   assert.match(rails,/const SPEED=\.022/);
   assert.match(rails,/prefers-reduced-motion/);
+  assert.match(rails,/max-width: 1024px/);
+  assert.match(rails,/setInterval\(tick,1450\)/);
   assert.match(news,/const AUTO_MS=1900/);
 });
 

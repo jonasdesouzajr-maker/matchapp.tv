@@ -13,17 +13,17 @@ test('homepage density removes legacy dead-space shell',()=>{
   assert.ok(css.includes('gap:6px!important'));
 });
 
-test('Lazy Mode folds major homepage modules but normal mode stays open',()=>{
+test('Home folds persist by section and Lazy Mode closes every major content module',()=>{
   const lazy=read('lazy.js');
-  const css=read('home-premium.css');
-  for(const sel of ['#daily-match-checkin','.top-ask-wrap','#swifties-spotify','#questionnaire-box','#search-box','#premiere-disclosure','#how-it-works','#ai-concierge-section','#matchapp-tiktok-showcase']){
-    assert.ok(lazy.includes(sel),sel+' must be foldable in Lazy Mode');
+  const html=read('index.html');
+  const css=read('matchapp-ia.css');
+  for(const sel of ['#trending-rail','#daily-match-checkin','.top-ask-wrap','#ma-concierge','.tg-entry','#premiere-disclosure','#weekly-pick-disclosure','#latest-news','#global-events .global-events-fold','#how-it-works','#ai-concierge-section','#matchapp-tiktok-showcase']){
+    assert.ok(lazy.includes(sel),sel+' must participate in Home folding');
   }
-  assert.ok(!lazy.includes("{ sel: '#global-events'"),'Global Events owns its native disclosure and must not get a second Lazy Mode fold control');
-  assert.ok(!lazy.includes("{ sel: '#trending-rail'"),'Latest Titles must remain permanently visible');
-  assert.ok(!lazy.includes("{ sel: '#latest-news'"),'Latest News must remain permanently visible');
-  assert.ok(css.includes('body.page-home:not(.lazy-mode) .lazy-head{display:none!important}'));
-  assert.ok(css.includes('body.page-home.lazy-mode .lazy-foldable:not(.lazy-open){display:none!important}'));
+  assert.ok(lazy.includes("match_home_fold_state_v2"));
+  assert.ok(lazy.includes("setSwift"));
+  assert.ok(html.includes('.lazy-foldable:not(.lazy-open) { display: none !important; }'));
+  assert.ok(css.includes('#latest-news:not([open])>.ma-news-panel'));
 });
 
 test('TikTok showcase uses outbound actions and completed native share earns bonus',()=>{
@@ -69,11 +69,12 @@ test('desktop social rewards never fire merely for opening or copying a social i
   assert.match(html,/share\.js\?v=20260919-reward3/);
 });
 
-test('Taylor Swift Spotify field is the last visible editorial module and carries current SEO metadata',()=>{
+test('Taylor Swift Spotify field sits directly below the anticipated premiere and carries current SEO metadata',()=>{
   const html=read('index.html'),css=read('matchapp-ia.css');
   const swift=html.indexOf('<section id="swifties-spotify"');
-  const tiktok=html.indexOf('<section id="matchapp-tiktok-showcase"');
-  assert(swift>tiktok,'Spotify field must come after TikTok as the final editorial field');
+  const premiere=html.indexOf('<details id="premiere-disclosure"');
+  const events=html.indexOf('<section id="global-events"');
+  assert(swift>premiere&&events>swift,'Spotify field must sit between Premiere and Global Events');
   assert.match(html,/Taylor Swift official music videos on Spotify/);
   assert.match(html,/numberOfItems":58/);
   for(const title of ['Elizabeth Taylor','Opalite','The Fate of Ophelia']) assert.ok(html.includes(title),title+' must be represented in metadata/content');

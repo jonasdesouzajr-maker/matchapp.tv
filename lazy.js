@@ -76,7 +76,7 @@ function syncAll(forceClosed=false){
 }
 function buildToggle(){
  if(document.getElementById('lazy-toggle-bar'))return;
- const bar=document.createElement('div');bar.id='lazy-toggle-bar';bar.className='lazy-bar';bar.hidden=true;bar.setAttribute('aria-hidden','true');
+ const bar=document.createElement('div');bar.id='lazy-toggle-bar';bar.className='lazy-bar';bar.hidden = true;bar.setAttribute('aria-hidden','true');
  bar.innerHTML='<button type="button" id="lazy-toggle" class="lazy-toggle" role="switch" aria-checked="false"><span class="lazy-switch" aria-hidden="true"><span class="lazy-knob"></span></span><span class="lazy-toggle-text"><strong class="lazy-title">'+tr('lazy.title','Lazy Mode')+'</strong><small class="lazy-sub"></small></span><span class="lazy-lock" aria-hidden="true">🔒</span></button>';
  document.body.appendChild(bar);document.getElementById('lazy-toggle').addEventListener('click',onToggleClick);
 }
