@@ -1,21 +1,21 @@
 {
-  "version": "2026.09.19.3",
-  "date": "2026-09-19",
+  "version": "2026.09.20.1",
+  "date": "2026-09-20",
   "functional": true,
   "notes": {
-    "en": "Smartphone freeze root fix, fully unfolded Home by default, Lazy Mode-only folding, and Taylor Swift on Spotify positioned directly above the weekly MatchApp TV choice.",
-    "pt-BR": "Correção da causa raiz do congelamento em smartphones, Home totalmente aberta por padrão, dobras somente no Lazy Mode e Taylor Swift no Spotify posicionada diretamente acima da escolha semanal do MatchApp TV.",
-    "es": "Cabecera premium adaptable, acceso persistente a Kids Mode, recorrido para nuevos visitantes, catálogo ampliado de entretenimiento y música, recuperación transparente para evitar resultados vacíos e integración Android actualizada.",
-    "fr": "En-tête premium adaptatif, accès permanent au Kids Mode, visite guidée pour les nouveaux visiteurs, catalogue musique et divertissement élargi et intégration Android mise à jour.",
-    "de": "Responsiver Premium-Header, dauerhafter Kids-Mode-Zugang, Einführungsrundgang, erweiterter Musik- und Unterhaltungskatalog und aktualisierte Android-Integration.",
-    "it": "Header premium responsive, accesso persistente a Kids Mode, tour per i nuovi visitatori, catalogo musica e intrattenimento ampliato e integrazione Android aggiornata.",
-    "tr": "Premium duyarlı başlık, kalıcı Kids Mode erişimi, ilk ziyaretçi turu, genişletilmiş müzik/eğlence kataloğu ve güncellenmiş Android entegrasyonu.",
-    "ru": "Адаптивная премиальная шапка, постоянный доступ к Kids Mode, тур для новых посетителей, расширенный каталог музыки и развлечений и обновлённая интеграция Android.",
-    "ar": "رأس متجاوب بمظهر مميز، وصول دائم إلى Kids Mode، جولة للزائر الجديد، كتالوج موسيقى وترفيه أوسع، وتكامل Android محدّث.",
-    "hi": "प्रीमियम रिस्पॉन्सिव हेडर, स्थायी Kids Mode पहुँच, नए विज़िटर का वॉकथ्रू, बड़ा संगीत/मनोरंजन कैटलॉग और अपडेटेड Android इंटीग्रेशन।",
-    "id": "Header premium responsif, akses Kids Mode permanen, tur pengunjung baru, katalog musik/hiburan lebih luas, dan integrasi Android yang diperbarui.",
-    "ja": "プレミアムなレスポンシブヘッダー、常設のKids Mode導線、初回ガイド、拡張された音楽・エンタメカタログ、Android連携の更新。",
-    "ko": "프리미엄 반응형 헤더, 상시 Kids Mode 진입, 첫 방문 가이드, 확장된 음악·엔터테인먼트 카탈로그, Android 통합 업데이트.",
-    "zh": "高级响应式页眉、常驻 Kids Mode 入口、首次访问引导、更丰富的音乐与娱乐目录，以及更新后的 Android 集成。"
+    "en": "Empty ad rails collapse, one install control, first-run overlays queued, AHS key art restored, mood chips wrap on phones, and Home contrast lifted.",
+    "pt-BR": "Trilhos de an\u00fancio vazios somem, um s\u00f3 controle de instala\u00e7\u00e3o, overlays da primeira visita em fila, arte da estreia AHS restaurada, chips de humor que cabem no celular e contraste da Home mais alto.",
+    "es": "Empty ad rails collapse, one install control, first-run overlays queued, AHS key art restored, mood chips wrap on phones, and Home contrast lifted.",
+    "fr": "Empty ad rails collapse, one install control, first-run overlays queued, AHS key art restored, mood chips wrap on phones, and Home contrast lifted.",
+    "de": "Empty ad rails collapse, one install control, first-run overlays queued, AHS key art restored, mood chips wrap on phones, and Home contrast lifted.",
+    "it": "Empty ad rails collapse, one install control, first-run overlays queued, AHS key art restored, mood chips wrap on phones, and Home contrast lifted.",
+    "tr": "Empty ad rails collapse, one install control, first-run overlays queued, AHS key art restored, mood chips wrap on phones, and Home contrast lifted.",
+    "ru": "Empty ad rails collapse, one install control, first-run overlays queued, AHS key art restored, mood chips wrap on phones, and Home contrast lifted.",
+    "ar": "Empty ad rails collapse, one install control, first-run overlays queued, AHS key art restored, mood chips wrap on phones, and Home contrast lifted.",
+    "hi": "Empty ad rails collapse, one install control, first-run overlays queued, AHS key art restored, mood chips wrap on phones, and Home contrast lifted.",
+    "id": "Empty ad rails collapse, one install control, first-run overlays queued, AHS key art restored, mood chips wrap on phones, and Home contrast lifted.",
+    "ja": "Empty ad rails collapse, one install control, first-run overlays queued, AHS key art restored, mood chips wrap on phones, and Home contrast lifted.",
+    "ko": "Empty ad rails collapse, one install control, first-run overlays queued, AHS key art restored, mood chips wrap on phones, and Home contrast lifted.",
+    "zh": "Empty ad rails collapse, one install control, first-run overlays queued, AHS key art restored, mood chips wrap on phones, and Home contrast lifted."
   }
 }

@@ -1,6 +1,7 @@
 .ma-ad-label{display:block;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#8a8198;margin:0 0 6px}
 ins.adsbygoogle{min-height:90px}
-html.ads-empty .sidebar-ad-left,html.ads-empty .sidebar-ad-right,html.ads-empty .ad-banner-container,html.ads-empty .mobile-ad-bottom,html.ads-empty .premium-ad-frame{display:none!important}
+html.ads-empty .sidebar-ad-left,html.ads-empty .sidebar-ad-right,html.ads-empty .ad-banner-container,html.ads-empty .mobile-ad-bottom,html.ads-empty .premium-ad-frame,html.ads-empty .ma-inline-ad{display:none!important}
+.premium-ad-frame.is-ad-empty,.ad-banner-container.is-ad-empty,.sidebar-ad-left.is-ad-empty,.sidebar-ad-right.is-ad-empty,.ma-inline-ad.is-ad-empty,.mobile-ad-bottom.is-ad-empty{display:none!important;min-height:0!important;height:0!important;margin:0!important;padding:0!important;border:0!important}
 body.page-kids ins.adsbygoogle,body.kids-mode ins.adsbygoogle{display:none!important}
 
 .sidebar-ad-left ins.adsbygoogle,.sidebar-ad-right ins.adsbygoogle{display:block;width:100%;max-width:100%;min-height:600px}

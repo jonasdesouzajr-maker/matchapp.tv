@@ -1,0 +1,146 @@
+/* Home UX pass 2026.09.20.1 — collapse dead chrome, one install control, readable cards. */
+html.ads-empty .sidebar-ad-left,
+html.ads-empty .sidebar-ad-right,
+html.ads-empty .ad-banner-container,
+html.ads-empty .mobile-ad-bottom,
+html.ads-empty .premium-ad-frame,
+html.ads-empty .ma-inline-ad,
+.premium-ad-frame.is-ad-empty,
+.ad-banner-container.is-ad-empty,
+.sidebar-ad-left.is-ad-empty,
+.sidebar-ad-right.is-ad-empty,
+.ma-inline-ad.is-ad-empty,
+.mobile-ad-bottom.is-ad-empty{
+  display:none!important;
+  min-height:0!important;
+  height:0!important;
+  margin:0!important;
+  padding:0!important;
+  border:0!important;
+  overflow:hidden!important;
+}
+
+html body.page-home .install-bubble,
+html body.page-home .install-bubble-v2,
+html body.page-home[data-app-installed="1"] .install-wrap,
+html body.page-home[data-app-installed="1"] .install-btn:not(.has-app-update),
+html.ads-empty body.page-home .ma-ad-label{
+  display:none!important;
+}
+
+html body.page-home .install-btn.is-app-installed:not(.has-app-update) .install-label{
+  font-weight:750;
+}
+
+html body.page-home #trending-rail.lazy-foldable>h4,
+html body.page-home #trending-rail.lazy-open>h4{
+  display:none!important;
+}
+
+html body.page-home .ma-concierge .crit-chips,
+html body.page-home .ma-chip-row,
+html body.page-home .ma-moods{
+  display:flex!important;
+  flex-wrap:wrap!important;
+  overflow:visible!important;
+  row-gap:8px!important;
+}
+html body.page-home .ma-chip,
+html body.page-home .crit-chip{
+  flex:0 1 auto!important;
+  max-width:100%!important;
+  white-space:nowrap!important;
+}
+
+html body.page-home #spotlight-ahs13 .spotlight-poster{
+  width:min(100%,18rem)!important;
+  min-height:16rem!important;
+  height:auto!important;
+  aspect-ratio:2/3;
+  background:#140814;
+}
+html body.page-home #spotlight-ahs13 .spotlight-poster img{
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  object-position:center top!important;
+  display:block!important;
+  background:#1a0c14;
+}
+
+html body.page-home #global-events .global-event{
+  height:210px!important;
+}
+html body.page-home #global-events .global-event h3{
+  white-space:normal!important;
+  overflow:hidden!important;
+  display:-webkit-box!important;
+  -webkit-box-orient:vertical!important;
+  -webkit-line-clamp:2!important;
+  line-height:1.2!important;
+  max-height:2.6em!important;
+  font-size:11px!important;
+  padding:18px 6px 8px!important;
+}
+
+html body.page-home .poster-wall-grid{opacity:.34!important;filter:saturate(1.05) brightness(.92)!important}
+html body.page-home .poster-wall::after{
+  background:
+    linear-gradient(90deg,rgba(8,10,22,.55),rgba(8,10,22,.78) 28% 72%,rgba(8,10,22,.55)),
+    linear-gradient(0deg,rgba(8,10,22,.88),transparent 55%)!important;
+}
+html body.page-home .ma-concierge,
+html body.page-home .premium-card,
+html body.page-home .spotlight-card,
+html body.page-home .lazy-head,
+html body.page-home .home-hero{
+  background:rgba(10,16,32,.92)!important;
+}
+html body.page-home .ma-primary,
+html body.page-home button[data-i18n="q.submit"],
+html body.page-home .gold-btn.ma-primary{
+  color:#1a1206!important;
+  opacity:1!important;
+}
+
+html body.page-home.matchapp-tour-active .ma-cookie,
+html body.page-home.matchapp-tour-active .app-release-notice{
+  display:none!important;
+}
+html body.page-home:has(.ma-cookie) .app-release-notice,
+html body.page-home:has(.ma-cookie) .matchapp-tour-card,
+html body.page-home:has(.ma-cookie) .matchapp-tour-spotlight{
+  visibility:hidden!important;
+  pointer-events:none!important;
+}
+
+@media (max-width:860px){
+  html body.page-home #mh-topbox.ma-home-header .ma-country-link{
+    display:none!important;
+  }
+  html body.page-home #mh-topbox.ma-home-header .install-wrap{
+    flex:0 0 auto!important;
+    width:auto!important;
+  }
+  html body.page-home #mh-topbox.ma-home-header .install-btn{
+    min-width:44px!important;
+    width:auto!important;
+    padding:0 12px!important;
+  }
+  html body.page-home #mh-topbox.ma-home-header .ma-menu-button span{
+    display:none!important;
+  }
+  html body.page-home .ma-moods{
+    display:grid!important;
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  }
+  html body.page-home .ma-moods .ma-chip,
+  html body.page-home .crit-chips .crit-chip{
+    width:100%!important;
+    justify-content:center!important;
+  }
+  html body.page-home #spotlight-ahs13 .spotlight-poster{
+    width:min(82%,17rem)!important;
+    margin:0 auto 12px!important;
+  }
+}
