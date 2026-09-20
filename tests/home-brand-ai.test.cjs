@@ -9,21 +9,21 @@ test('canonical IA homepage owns first paint with no legacy Home overrides',()=>
   const html=read('index.html');
   const settings=read('settings.js');
   const ia=read('matchapp-ia.css');
-  assert.match(html,/matchapp-ia\\.css\\?v=20260920-ia\\d+/);
+  assert.match(html,/matchapp-ia\.css\?v=20260920-ia\d+/);
   assert.match(html,/settings\.js\?v=20260919-/);
   for(const legacy of ['home-premium.css','home-brand.css','home-mobile.css','matchapp-ui-v3.css','redesign.css','brand-corrections.css','brand-corrections.js','home-ux-lock.css','desktop-home-restore.css','home-ux-lock.js','home-layout-guard.js']){
     assert.ok(!html.includes(legacy),legacy+' must not load on Home');
   }
   assert.ok(!settings.includes('home-premium.css'),'settings must not late-inject legacy Home CSS');
   assert.match(ia,/CANONICAL HOME SHELL — SINGLE OWNER/);
-  assert.match(html,/matchapp-official-icon-512\\.webp\\?v=20260920-official1/);
+  assert.match(html,/matchapp-official-icon-512\.webp\?v=20260920-official1/);
 });
 
 test('Home header is static from first paint and cannot re-enter the shared legacy cascade',()=>{
   const html=read('index.html');
   const js=read('matchapp-ia.js');
   assert.match(html,/id="mh-topbox" class="app-header ma-home-header"/);
-  assert.match(html,/matchapp-ia\\.js\\?v=20260920-ia\\d+/);
+  assert.match(html,/matchapp-ia\.js\?v=20260920-ia\d+/);
   assert.match(js,/if\(isHome\)\{[\s\S]*?classList\.remove\('ma-global-header'\)[\s\S]*?classList\.add\('ma-home-header'\)/);
   assert.match(js,/if\(isHome&&h\.classList\.contains\('ma-global-header'\)\)h\.classList\.remove\('ma-global-header'\)/);
 });
