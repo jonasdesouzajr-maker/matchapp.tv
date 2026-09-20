@@ -1,7 +1,7 @@
 name: Validate website
 on:
   push:
-    branches: [main, fix/stability-premium-ui]
+    branches: [main, fix/stability-premium-ui, fix/content-bot-retry]
   pull_request:
 permissions:
   contents: read
