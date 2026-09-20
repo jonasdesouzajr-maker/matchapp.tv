@@ -2358,3 +2358,12 @@ html body.page-home #mh-topbox.ma-home-header .ma-brand-orb{
     filter:drop-shadow(0 4px 10px rgba(0,0,0,.22))!important;
   }
 }
+
+/* Official icon on shared non-Kids headers: preserve the approved squircle. */
+.ma-global-header .ma-brand-orb-stage :is(.ma-orbit,.ma-orb-star){display:none!important}
+.ma-global-header .ma-brand-orb{
+  object-fit:contain!important;object-position:center!important;
+  border-radius:22%!important;background:transparent!important;
+  box-shadow:none!important;
+  filter:drop-shadow(0 5px 12px rgba(0,0,0,.24)) drop-shadow(0 0 12px rgba(229,193,88,.18))!important;
+}
