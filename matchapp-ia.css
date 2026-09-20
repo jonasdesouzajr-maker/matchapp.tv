@@ -1999,3 +1999,196 @@ html body.page-home #latest-news>summary::after{
   transform:translateY(-50%) rotate(0deg)!important;transition:transform .2s ease!important;
 }
 html body.page-home #latest-news[open]>summary::after{transform:translateY(-50%) rotate(180deg)!important}
+
+
+/* ===== MOBILE/TABLET FOLD POLISH — 2026-09-20 =====
+   Scoped to <=1024px only. Desktop remains untouched. */
+@media(max-width:1024px){
+
+  /* 1) One arrow language everywhere. Remove every legacy + / x fold glyph. */
+  html body.page-home :is(
+    #latest-news>summary,
+    #premiere-disclosure>summary,
+    #weekly-pick-disclosure>summary,
+    #global-events>.global-events-fold>.global-events-summary,
+    .match-more-filters>summary,
+    .crit-toggle,
+    .lazy-head,
+    .seo-fold-summary
+  )::after{
+    content:""!important;
+    position:absolute!important;
+    right:14px!important;top:50%!important;
+    width:40px!important;height:40px!important;
+    border:1px solid rgba(255,220,111,.42)!important;
+    border-radius:50%!important;
+    background-color:rgba(255,255,255,.035)!important;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 9l6 6 6-6' fill='none' stroke='%23FFE38A' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")!important;
+    background-repeat:no-repeat!important;
+    background-position:center!important;
+    background-size:19px 19px!important;
+    color:transparent!important;
+    font-size:0!important;
+    text-shadow:none!important;
+    transform:translateY(-50%) rotate(0deg)!important;
+    transition:transform .2s ease,background-color .18s ease!important;
+    animation:none!important;
+  }
+  html body.page-home :is(
+    #latest-news[open]>summary,
+    #premiere-disclosure[open]>summary,
+    #weekly-pick-disclosure[open]>summary,
+    #global-events>.global-events-fold[open]>.global-events-summary,
+    .match-more-filters[open]>summary,
+    .seo-fold[open]>.seo-fold-summary
+  )::after,
+  html body.page-home .crit-toggle[aria-expanded="true"]::after,
+  html body.page-home .lazy-head[aria-expanded="true"]::after{
+    transform:translateY(-50%) rotate(180deg)!important;
+  }
+  html body.page-home :is(.ge-sum-chev,.crit-toggle-chevron,.lazy-head-chevron){display:none!important}
+
+  /* 2) Native disclosure = ONE box. Header and body no longer look detached. */
+  html body.page-home :is(
+    #premiere-disclosure,
+    #weekly-pick-disclosure,
+    #latest-news,
+    #global-events>.global-events-fold
+  ){
+    overflow:hidden!important;
+    border:1px solid rgba(232,186,64,.48)!important;
+    border-radius:22px!important;
+    background:linear-gradient(145deg,rgba(24,17,43,.95),rgba(12,16,34,.96))!important;
+    box-shadow:0 10px 26px rgba(0,0,0,.22)!important;
+    padding:0!important;
+  }
+  html body.page-home :is(
+    #premiere-disclosure>summary,
+    #weekly-pick-disclosure>summary,
+    #latest-news>summary,
+    #global-events>.global-events-fold>.global-events-summary
+  ){
+    margin:0!important;
+    border:0!important;
+    border-radius:0!important;
+    background:transparent!important;
+    box-shadow:none!important;
+  }
+  html body.page-home :is(
+    #premiere-disclosure[open]>summary,
+    #weekly-pick-disclosure[open]>summary,
+    #latest-news[open]>summary,
+    #global-events>.global-events-fold[open]>.global-events-summary
+  ){
+    border-bottom:1px solid rgba(232,186,64,.20)!important;
+  }
+  html body.page-home #premiere-disclosure>.spotlight-card,
+  html body.page-home #weekly-pick-disclosure>.spotlight-card,
+  html body.page-home #latest-news>.ma-news-panel,
+  html body.page-home #global-events .global-events-body{
+    margin:0!important;
+    border:0!important;
+    border-radius:0!important;
+    background:transparent!important;
+    box-shadow:none!important;
+  }
+
+  /* 3) Generic fold bar + content also reads as one continuous box. */
+  html body.page-home .lazy-head{
+    position:relative!important;
+    margin-bottom:0!important;
+    border-radius:22px!important;
+    background:linear-gradient(145deg,rgba(24,17,43,.95),rgba(12,16,34,.96))!important;
+    border:1px solid rgba(232,186,64,.48)!important;
+    box-shadow:0 10px 26px rgba(0,0,0,.22)!important;
+  }
+  html body.page-home .lazy-head.is-open{
+    border-radius:22px 22px 0 0!important;
+    border-bottom-color:rgba(232,186,64,.20)!important;
+  }
+  html body.page-home .lazy-head.is-open + .lazy-foldable.lazy-open{
+    margin-top:0!important;
+    border-top:0!important;
+    border-radius:0 0 22px 22px!important;
+    box-shadow:0 10px 26px rgba(0,0,0,.18)!important;
+  }
+
+  /* 4) Remove repeated titles/labels inside an already-labelled open fold. */
+  html body.page-home .lazy-head + #trending-rail>h4,
+  html body.page-home .lazy-head + #how-it-works>h2:first-child,
+  html body.page-home .lazy-head + #ai-concierge-section>h2:first-child,
+  html body.page-home .lazy-head + .tg-entry .tg-entry-body>strong,
+  html body.page-home #premiere-disclosure .spotlight-eyebrow,
+  html body.page-home #weekly-pick-disclosure .spotlight-eyebrow{
+    display:none!important;
+  }
+
+  /* 5) Taylor/spotlight button already lives inside its box; use same arrow treatment. */
+  html body.page-home #swifties-spotify{
+    overflow:hidden!important;
+  }
+  html body.page-home #swifties-spotify .swifties-fold-icon{
+    width:40px!important;height:40px!important;
+    flex:0 0 40px!important;
+    display:grid!important;place-items:center!important;
+    border:1px solid rgba(255,220,111,.42)!important;
+    border-radius:50%!important;
+    font-size:0!important;color:transparent!important;
+    background:rgba(255,255,255,.035) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 9l6 6 6-6' fill='none' stroke='%23FFE38A' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/19px 19px no-repeat!important;
+    transform:rotate(0deg)!important;
+    transition:transform .2s ease!important;
+  }
+  html body.page-home #swifties-spotify .swifties-fold[aria-expanded="true"] .swifties-fold-icon{
+    transform:rotate(180deg)!important;
+  }
+
+  /* 6) Poster/title safety: never crop title artwork on phones/tablets. */
+  html body.page-home :is(
+    .spotlight-poster img,
+    .marquee-item img,
+    .global-event>a>img,
+    #result-box .poster-stage img,
+    #result-box .result-poster,
+    .discover-poster img
+  ){
+    object-fit:contain!important;
+    object-position:center!important;
+    background:#0b1020!important;
+  }
+  html body.page-home :is(
+    .spotlight-title,
+    .marquee-title,
+    .global-event h3,
+    .ma-news-card h3,
+    #res-title
+  ){
+    white-space:normal!important;
+    overflow:visible!important;
+    text-overflow:clip!important;
+    overflow-wrap:anywhere!important;
+    word-break:normal!important;
+    -webkit-line-clamp:unset!important;
+    max-height:none!important;
+  }
+
+  /* 7) Stop the remaining intermittent mobile/tablet shimmer/blink. */
+  html:not(.kids-mode) body.page-home :is(
+    button:not(.matchapp-tour-skip),
+    input:not([type="range"]):not([type="checkbox"]):not([type="radio"]),
+    select,textarea,a.gold-btn,a.install-btn,a.ma-kids-mode-entry,[role="button"],
+    .premium-card,.spotlight-card,.tg-card,.ma-concierge,.crit-toggle,.ma-news-card,
+    .share-sheet,.matchapp-tiktok-showcase,.app-header,.global-events-summary,
+    .home-hero,#trending-rail,#latest-news,#premiere-disclosure,
+    #weekly-pick-disclosure,#global-events
+  ),
+  html:not(.kids-mode) body.page-home :is(
+    .premium-card,.spotlight-card,.ma-concierge,.crit-toggle,.ma-news-card,
+    .global-events-summary,.lazy-head
+  )::before,
+  html:not(.kids-mode) body.page-home :is(
+    .premium-card,.spotlight-card,.ma-concierge,.crit-toggle,.ma-news-card,
+    .global-events-summary,.lazy-head
+  )::after{
+    animation:none!important;
+  }
+}
