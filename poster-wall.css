@@ -390,3 +390,64 @@ html body.page-home .poster-wall::after{
 @media(min-width:2200px){
   .poster-wall-tile{width:clamp(80px,4.4vw,118px)!important}
 }
+
+
+/* 2026-09-20 final scattered all-time title background.
+   Static absolute placement only: no timers, animation, filter or observer work. */
+html body.page-home .poster-wall-grid{
+  inset:0!important;
+  display:block!important;
+  opacity:1!important;
+  transform:none!important;
+  filter:none!important;
+  animation:none!important;
+  will-change:auto!important;
+}
+html body.page-home .poster-wall-tile{
+  position:absolute!important;
+  width:clamp(42px,4.6vw,72px)!important;
+  aspect-ratio:2/3!important;
+  opacity:.94!important;
+  border-radius:8px!important;
+  overflow:hidden!important;
+  animation:none!important;
+  will-change:auto!important;
+  box-shadow:0 5px 16px rgba(0,0,0,.32),0 0 0 1px rgba(229,193,88,.28)!important;
+}
+html body.page-home .poster-wall-tile>img{
+  width:100%!important;height:100%!important;object-fit:cover!important;display:block!important;
+}
+html body.page-home .poster-wall::before{display:none!important}
+html body.page-home .poster-wall::after{
+  background:linear-gradient(180deg,rgba(8,7,20,.06),rgba(8,7,20,.14))!important;
+}
+html body.page-home .poster-wall-tile:nth-child(1){top:2%;left:2%;transform:rotate(-3deg)!important}
+html body.page-home .poster-wall-tile:nth-child(2){top:12%;left:15%;transform:rotate(2deg)!important}
+html body.page-home .poster-wall-tile:nth-child(3){top:3%;left:33%;transform:rotate(-2deg)!important}
+html body.page-home .poster-wall-tile:nth-child(4){top:18%;left:49%;transform:rotate(3deg)!important}
+html body.page-home .poster-wall-tile:nth-child(5){top:4%;right:3%;transform:rotate(-2deg)!important}
+html body.page-home .poster-wall-tile:nth-child(6){top:31%;left:6%;transform:rotate(2deg)!important}
+html body.page-home .poster-wall-tile:nth-child(7){top:43%;left:21%;transform:rotate(-3deg)!important}
+html body.page-home .poster-wall-tile:nth-child(8){top:32%;left:39%;transform:rotate(2deg)!important}
+html body.page-home .poster-wall-tile:nth-child(9){top:47%;left:58%;transform:rotate(-2deg)!important}
+html body.page-home .poster-wall-tile:nth-child(10){top:30%;right:5%;transform:rotate(3deg)!important}
+html body.page-home .poster-wall-tile:nth-child(11){top:62%;left:3%;transform:rotate(-2deg)!important}
+html body.page-home .poster-wall-tile:nth-child(12){top:74%;left:18%;transform:rotate(3deg)!important}
+html body.page-home .poster-wall-tile:nth-child(13){top:59%;left:36%;transform:rotate(-3deg)!important}
+html body.page-home .poster-wall-tile:nth-child(14){top:77%;left:54%;transform:rotate(2deg)!important}
+html body.page-home .poster-wall-tile:nth-child(15){top:63%;right:3%;transform:rotate(-2deg)!important}
+html body.page-home .poster-wall-tile:nth-child(16){top:86%;left:35%;transform:rotate(3deg)!important}
+@media(max-width:700px){
+  html body.page-home .poster-wall-tile{
+    width:clamp(38px,10.5vw,52px)!important;
+    opacity:.90!important;
+    border-radius:7px!important;
+  }
+  html body.page-home .poster-wall-tile:nth-child(n+13){display:none!important}
+  html body.page-home .poster-wall::after{
+    background:linear-gradient(180deg,rgba(8,7,20,.10),rgba(8,7,20,.18))!important;
+  }
+}
+@media(min-width:2200px){
+  html body.page-home .poster-wall-tile{width:clamp(66px,3.7vw,96px)!important}
+}
