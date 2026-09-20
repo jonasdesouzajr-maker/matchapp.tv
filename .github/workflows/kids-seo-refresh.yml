@@ -49,9 +49,10 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           for attempt in 1 2 3; do
             if [ "$attempt" -gt 1 ]; then
-              git reset --hard HEAD
+              git rebase --abort 2>/dev/null || true
+              git fetch origin "${GITHUB_REF_NAME}"
+              git reset --hard "origin/${GITHUB_REF_NAME}"
               git clean -fd
-              git pull --rebase origin "${GITHUB_REF_NAME}"
               node tools/build-kids-pages.js
               node tools/update-sitemap.js
             fi
