@@ -106,6 +106,10 @@ jobs:
           grep -q '/page-origin.js?v=20260920-freeze2' /tmp/home.html
           grep -q '/build-meta.js?v=20260920-freeze2' /tmp/home.html
           grep -q 'matchapp-official-icon-512.webp' /tmp/home.html
+          grep -q '/matchapp-ia.css?v=20260920-stability5' /tmp/home.html
+          curl -fsSL --max-time 30 'https://matchapp.tv/matchapp-ia.css?v=20260920-stability5' -o /tmp/home-stability.css
+          grep -q '2026-09-20 renderer root guard' /tmp/home-stability.css
+          ! grep -q 'header-cosmic-8k.svg' /tmp/home-stability.css
       - name: Purge Cloudflare cache
         env:
           CF_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
