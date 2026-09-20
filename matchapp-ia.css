@@ -2576,16 +2576,19 @@ html body.page-home #mh-topbox.ma-home-header .ma-brand-orb{
 }
 
 
-/* 2026-09-20 Home app-icon crop.
-   Use the exact official app icon, but expose only its circular gold emblem.
-   Static transform only: no animation, filter loop, or layout feedback. */
+/* 2026-09-20 Home transparent-logo guard.
+   The approved asset already contains only the circular gold/purple emblem.
+   Keep it untouched and static so no square background or compositor work returns. */
 html body.page-home #mh-topbox.ma-home-header .ma-brand-orb{
-  -webkit-clip-path:circle(37% at 50% 50%)!important;
-  clip-path:circle(37% at 50% 50%)!important;
-  transform:scale(1.32)!important;
+  -webkit-clip-path:none!important;
+  clip-path:none!important;
+  transform:none!important;
   transform-origin:50% 50%!important;
+  border:0!important;
   border-radius:0!important;
   background:transparent!important;
+  box-shadow:none!important;
+  filter:none!important;
   animation:none!important;
   will-change:auto!important;
 }
