@@ -18,5 +18,10 @@
    wall.append(grid);document.body.prepend(wall);document.dispatchEvent(new Event('matchapp:posterwall'));
   }catch(_){/* The selected theme remains complete when decorative images cannot load. */}
  }
- if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
+ function scheduleBoot(){
+  const run=()=>boot();
+  if('requestIdleCallback' in window)requestIdleCallback(run,{timeout:1200});
+  else setTimeout(run,80);
+ }
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',scheduleBoot,{once:true});else scheduleBoot();
 })();
