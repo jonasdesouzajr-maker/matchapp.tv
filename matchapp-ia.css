@@ -1977,7 +1977,7 @@ html body.page-home #swifties-spotify .swifties-source-note{margin:10px 0 0!impo
 /* ===== USER-PERSISTENT HOME FOLDS =====
    Default state is open. lazy.js persists explicit user folds and Lazy Mode
    closes every content module without creating a second layout owner. */
-html body.page-home .lazy-head:has(+ #trending-rail){display:flex!important}
+html body.page-home .lazy-head:has(+ #trending-rail){display:none!important}
 html body.page-home .lazy-foldable:not(.lazy-open){display:none!important}
 html body.page-home #latest-news:not([open])>.ma-news-panel{display:none!important}
 html body.page-home #latest-news[open]>.ma-news-panel{display:block!important}
@@ -2501,3 +2501,25 @@ html body.page-home #mh-topbox.ma-home-header .ma-brand-orb{
     margin-right:6px!important;
   }
 }
+
+
+/* 2026-09-20 Home-only transparent brand asset.
+   Static presentation only: no animation, filters, borders or promoted layers. */
+html body.page-home #mh-topbox.ma-home-header .ma-brand-orb-stage{
+  overflow:visible!important;
+  border:0!important;
+  box-shadow:none!important;
+  background:transparent!important;
+}
+html body.page-home #mh-topbox.ma-home-header .ma-brand-orb{
+  object-fit:contain!important;
+  object-position:center!important;
+  transform:translate(-50%,-50%) scale(.98)!important;
+  border:0!important;
+  box-shadow:none!important;
+  filter:none!important;
+  animation:none!important;
+  will-change:auto!important;
+}
+/* Never restore the obsolete fold control around the real trending rail. */
+html body.page-home .lazy-head:has(+ #trending-rail){display:none!important}
