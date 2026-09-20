@@ -1511,7 +1511,7 @@ window.eventMatch = function (query) {
         vp.tabIndex = vp.tabIndex >= 0 ? vp.tabIndex : 0;
         const root = vp.closest('.marquee-wrapper,.events-wrapper,.ma-news-carousel-shell,.premium-card') || vp.parentElement;
         let paused = false, visible = true;
-        const autoDelay = vp.id === 'marquee-viewport' ? 3200 : 6500;
+        const autoDelay = vp.id === 'marquee-viewport' ? 2400 : 6500;
 
         root?.querySelectorAll('[data-rail-dir],.marquee-prev,.marquee-next,.events-prev,.events-next,.ma-news-prev,.ma-news-next').forEach(btn => {
             if (btn.dataset.railBound === '1') return;
