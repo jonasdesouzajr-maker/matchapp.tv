@@ -122,20 +122,7 @@ jobs:
           fi
           CF_ZONE_ID="$(printf '%s' "$CF_ZONE_ID" | tr -d '[:space:]')"
           CF_API_TOKEN="$(printf '%s' "$CF_API_TOKEN" | tr -d '\r\n')"
-          if ! printf '%s' "$CF_ZONE_ID" | grep -Eq '^[0-9a-fA-F]{32}
-      - name: Notify phone (success only)
-        if: success()
-        env:
-          MSG: ${{ github.event.head_commit.message }}
-          TOPIC: ${{ secrets.NTFY_TOPIC }}
-        shell: bash
-        run: |
-          if [ -z "$TOPIC" ]; then
-            echo "Phone notification skipped: NTFY_TOPIC is not configured."
-            exit 0
-          fi
-          curl -fsS -H "Title: matchapp.tv deployed ✅" -d "${MSG:-Deployment validated}" "https://ntfy.sh/$TOPIC"
-; then
+          if [ "${#CF_ZONE_ID}" -ne 32 ] || printf '%s' "$CF_ZONE_ID" | grep -q '[^0-9a-fA-F]'; then
             echo "Cloudflare purge failed: CLOUDFLARE_ZONE_ID must be exactly 32 hexadecimal characters."
             exit 1
           fi
