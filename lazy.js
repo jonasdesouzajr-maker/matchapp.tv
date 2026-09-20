@@ -86,6 +86,16 @@ function mountSwift(){
  });
 }
 function cleanupRetiredHeads(){
+ // Remove the obsolete trending fold by position too, so an older saved/runtime
+ // fold node cannot survive just because it lacks the current data-fold-key.
+ document.querySelectorAll('.lazy-head').forEach(head=>{
+  const section=head.nextElementSibling;
+  if(section?.id!=='trending-rail')return;
+  section.classList.remove('lazy-foldable','lazy-open');
+  delete section.dataset.lazyFoldMounted;
+  delete section.dataset.foldKey;
+  head.remove();
+ });
  document.querySelectorAll('.lazy-head[data-fold-key]').forEach(head=>{
   if(!RETIRED_GENERIC_KEYS.has(head.dataset.foldKey))return;
   const section=head.nextElementSibling;
