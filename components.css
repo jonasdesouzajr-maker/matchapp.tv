@@ -49,3 +49,10 @@ body.page-home :is(.lazy-foldable,details> :not(summary)){transition:grid-templa
  *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
  .ma-reveal{opacity:1;transform:none}
 }
+
+/* Handset/tablet stability: avoid continuous shimmer/compositor work. */
+@media(max-width:1024px){
+ .ma-media-shell.is-loading::after{display:none!important;animation:none!important}
+ .ma-reveal{opacity:1!important;transform:none!important;transition:none!important}
+ body.page-home :is(.marquee-item,.ma-news-card,.global-event,.spotlight-card){transform:none!important}
+}
