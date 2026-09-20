@@ -48,7 +48,7 @@
     if(!vp||!track||vp.dataset.matchappAutoplayFix==='5')return;
     vp.dataset.matchappAutoplayFix='5';
     holdLegacy(vp);
-    const coarse=!!(window.matchMedia&&window.matchMedia('(pointer: coarse)').matches);
+    const coarse=!!(window.matchMedia&&(window.matchMedia('(pointer: coarse)').matches||window.matchMedia('(max-width: 1024px)').matches));
     vp.style.touchAction='pan-x pinch-zoom';
     if(coarse){
       /* Phones/tablets: native swipe only — no continuous main-thread frame loop. */
