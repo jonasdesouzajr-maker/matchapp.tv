@@ -3,15 +3,15 @@
  function kids(){return location.pathname.startsWith('/kids/')||document.body.classList.contains('kids-body');}
  function home(){return location.pathname==='/'||location.pathname==='/index.html';}
  async function boot(){
-  // Home uses the same lightweight wall as the rest of the site: eight real
-  // title posters, one node each, with all motion disabled by poster-wall.css.
+  // Home uses a bounded static collage; other pages keep their existing wall.
   if(kids()||document.querySelector('.poster-wall'))return;
   try{
    const response=await fetch('/data/poster-wall.json',{cache:'force-cache'});if(!response.ok)return;
-   const posters=(await response.json()).filter(p=>/^https:\/\/image\.tmdb\.org\/t\/p\/[a-z0-9]+\/[A-Za-z0-9_.-]+$/.test(p.poster)).slice(0,16);
+   let posters=(await response.json()).filter(p=>/^https:\/\/image\.tmdb\.org\/t\/p\/[a-z0-9]+\/[A-Za-z0-9_.-]+$/.test(p.poster)).slice(0,16);
    if(!posters.length)return;
    const wall=document.createElement('div');wall.className='poster-wall';wall.setAttribute('aria-hidden','true');wall.inert=true;
    const grid=document.createElement('div');grid.className='poster-wall-grid';
+   if(home()){const source=posters;posters=Array.from({length:24},(_,i)=>source[i%source.length]);}
    for(let i=0;i<posters.length;i++){
     const tile=document.createElement('div');tile.className='poster-wall-tile';
     const img=document.createElement('img');img.src=posters[i].poster;img.alt='';img.loading='lazy';img.decoding='async';img.fetchPriority='low';img.onerror=()=>tile.hidden=true;

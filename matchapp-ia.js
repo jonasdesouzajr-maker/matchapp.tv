@@ -119,7 +119,7 @@ function brandHeader(){
  }
  if(isHome&&!qs('.ma-how-button',nav)){
    const how=el('button','ma-how-button','✨ How it works');how.type='button';
-   how.setAttribute('aria-label','Open MatchApp guide');
+   how.setAttribute('aria-label','Open MatchApp guide');how.setAttribute('title','How it works');
    how.addEventListener('click',()=>window.MatchAppOnboarding?.start?.());
    nav.appendChild(how);
  }

@@ -578,3 +578,60 @@ html body.page-home .poster-wall::after{
 @media(min-width:2200px){
   html body.page-home .poster-wall-tile{width:clamp(38px,2.4vw,60px)!important}
 }
+
+
+/* Signup-inspired Home backdrop: one static, full-bleed angled cover collage.
+   Scope to Home; preserve Kids and all foreground layout/interaction rules. */
+html body.page-home .poster-wall{
+  position:fixed!important;
+  inset:0!important;
+  height:100vh!important;
+  height:100lvh!important;
+  min-height:0!important;
+  background:#090611;
+  contain:strict!important;
+}
+html body.page-home .poster-wall-grid{
+  inset:auto!important;
+  top:50%!important;
+  left:50%!important;
+  width:max(135vw,160vh)!important;
+  width:max(135vw,160lvh)!important;
+  display:grid!important;
+  grid-template-columns:repeat(6,minmax(0,1fr))!important;
+  grid-template-rows:none!important;
+  gap:clamp(6px,.7vw,14px)!important;
+  transform:translate(-50%,-50%) rotate(10deg) skewX(-10deg)!important;
+  opacity:1!important;
+  filter:none!important;
+  animation:none!important;
+  will-change:auto!important;
+}
+html body.page-home .poster-wall .poster-wall-tile:nth-child(n){
+  position:relative!important;
+  inset:auto!important;
+  width:auto!important;
+  aspect-ratio:2/3!important;
+  display:block!important;
+  transform:none!important;
+  opacity:1!important;
+  border-radius:5px!important;
+  box-shadow:none!important;
+  animation:none!important;
+  will-change:auto!important;
+}
+html body.page-home .poster-wall::after{
+  background:
+    linear-gradient(180deg,rgba(6,3,12,.58),rgba(6,3,12,.28) 35%,rgba(6,3,12,.58)),
+    radial-gradient(ellipse at center,rgba(10,5,20,.42) 15%,rgba(6,3,12,.16) 70%,rgba(6,3,12,.52))!important;
+}
+@media(max-width:700px){
+  html body.page-home .poster-wall-grid{
+    width:max(150vw,90vh)!important;
+    width:max(150vw,90lvh)!important;
+    grid-template-columns:repeat(4,minmax(0,1fr))!important;
+    gap:6px!important;
+  }
+}
+
+html body.page-home .poster-wall .poster-wall-tile[hidden]{visibility:hidden!important}

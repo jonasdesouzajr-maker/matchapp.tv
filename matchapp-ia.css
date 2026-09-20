@@ -2592,3 +2592,159 @@ html body.page-home #mh-topbox.ma-home-header .ma-brand-orb{
   animation:none!important;
   will-change:auto!important;
 }
+
+
+/* 2026-09-20 responsive Home layout: one geometry owner for every breakpoint. */
+html body.page-home #mh-topbox.app-header.ma-home-header{
+  --ma-logo-size:64px;
+  display:grid!important;
+  grid-template-columns:auto minmax(0,1fr)!important;
+  align-items:center!important;
+  gap:16px!important;
+  width:min(1040px,calc(100% - 24px))!important;
+  max-width:1040px!important;
+  min-height:88px!important;
+  margin:12px auto!important;
+  padding:12px 16px!important;
+  border-radius:20px!important;
+}
+html body.page-home #mh-topbox.app-header.ma-home-header :is(.mh-head,#home-brand-lockup,.ma-brand-lockup,.ma-brand-home-link){
+  position:static!important;
+  display:flex!important;
+  flex-direction:row!important;
+  align-items:center!important;
+  justify-content:flex-start!important;
+  width:auto!important;
+  min-width:0!important;
+  margin:0!important;
+  padding:0!important;
+  gap:6px!important;
+  text-decoration:none!important;
+}
+html body.page-home #mh-topbox.app-header.ma-home-header .ma-brand-orb-stage{
+  position:relative!important;
+  width:var(--ma-logo-size)!important;
+  height:var(--ma-logo-size)!important;
+  flex:0 0 var(--ma-logo-size)!important;
+  margin:0!important;
+}
+html body.page-home #mh-topbox.app-header.ma-home-header .ma-brand-orb{
+  position:static!important;
+  inset:auto!important;
+  width:100%!important;
+  height:100%!important;
+  margin:0!important;
+  transform:none!important;
+  object-fit:contain!important;
+}
+html body.page-home #mh-topbox.app-header.ma-home-header .ma-brand-copy{gap:5px!important}
+html body.page-home #mh-topbox.app-header.ma-home-header .ma-wordmark{font-size:29px!important;line-height:1.15!important;letter-spacing:-.04em!important}
+html body.page-home #mh-topbox.app-header.ma-home-header .ma-tv{font-size:17px!important;line-height:1.15!important}
+html body.page-home #mh-topbox.app-header.ma-home-header .ma-ai-brand-button{
+  width:44px!important;min-width:44px!important;height:44px!important;min-height:44px!important;padding:0!important;margin:0!important;
+}
+html body.page-home #mh-topbox.app-header.ma-home-header .ma-ai-letters{font-size:29px!important}
+html body.page-home #mh-topbox.app-header.ma-home-header nav.ma-header-actions{
+  display:flex!important;flex-wrap:wrap!important;justify-content:flex-end!important;align-items:center!important;
+  gap:7px!important;width:100%!important;max-width:none!important;padding:0!important;
+}
+html body.page-home #mh-topbox.app-header.ma-home-header nav.ma-header-actions>*{
+  flex:0 0 auto!important;min-width:0!important;width:44px!important;height:44px!important;min-height:44px!important;
+  margin:0!important;padding:0!important;grid-column:auto!important;order:initial!important;
+}
+html body.page-home #mh-topbox.app-header.ma-home-header nav.ma-header-actions :is(.install-btn,.ma-menu-button,#nav-reg-btn,.ma-kids-mode-entry,.ma-how-button){
+  display:inline-flex!important;align-items:center!important;justify-content:center!important;
+  width:44px!important;min-width:44px!important;height:44px!important;min-height:44px!important;
+  padding:0!important;margin:0!important;gap:0!important;border-radius:12px!important;font-size:0!important;
+}
+html body.page-home #mh-topbox.app-header.ma-home-header :is(.install-label,.ma-menu-button>span,.ma-kids-mode-entry>span){display:none!important}
+html body.page-home #mh-topbox.app-header.ma-home-header nav :is(button,a){box-shadow:none!important;animation:none!important;white-space:normal!important}
+html body.page-home #mh-topbox.app-header.ma-home-header :is(.install-icon,.ma-menu-button svg){width:21px!important;height:21px!important}
+html body.page-home #mh-topbox.app-header.ma-home-header #nav-reg-btn::before{
+  content:'';display:block;width:22px;height:22px;background:currentColor;
+  mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round'%3E%3Ccircle cx='12' cy='8' r='3.5'/%3E%3Cpath d='M5 21v-2a7 7 0 0 1 14 0v2'/%3E%3C/g%3E%3C/svg%3E") center/contain no-repeat;
+}
+html body.page-home #mh-topbox.app-header.ma-home-header .ma-how-button::before{
+  content:'?';display:grid;place-items:center;width:22px;height:22px;border:1.8px solid currentColor;border-radius:50%;font:700 16px/1 system-ui;
+}
+html body.page-home #mh-topbox.app-header.ma-home-header #lang-switcher-host{width:140px!important;flex-basis:140px!important}
+html body.page-home #mh-topbox.app-header.ma-home-header #lang-switcher-host select{
+  width:100%!important;min-width:0!important;max-width:none!important;height:44px!important;
+  padding:0 25px 0 8px!important;font-size:12px!important;text-overflow:clip!important;
+}
+html body.page-home #mh-topbox.app-header.ma-home-header #quota-badge{
+  width:auto!important;min-width:44px!important;height:auto!important;min-height:44px!important;
+  padding:6px 9px!important;font-size:11px!important;white-space:normal!important;
+}
+html body.page-home #mh-topbox.app-header.ma-home-header nav :is([hidden],[style*="display:none"],[style*="display: none"]){display:none!important}
+html body.page-home #mh-topbox.app-header.ma-home-header .ma-menu{
+  right:0!important;left:auto!important;max-width:calc(100vw - 32px)!important;
+}
+/* Consistent content edges, wrap-safe controls and deliberate field groups. */
+html body.page-home .main-layout{padding:0 12px!important;gap:0!important}
+html body.page-home .main-layout>.container{width:100%!important;max-width:1040px!important;min-width:0!important;padding:0!important;box-sizing:border-box!important}
+html body.page-home .container>:is(.ma-concierge,.lazy-head,.premium-card,.premiere-disclosure,.global-events-fold,#swifties-spotify,.ma-news,.tg-entry){
+  width:100%!important;max-width:100%!important;min-width:0!important;box-sizing:border-box!important;margin-inline:0!important;
+}
+html body.page-home .container>.lazy-head{margin-top:12px!important;margin-bottom:0!important;padding:12px 48px 12px 16px!important;min-height:48px!important}
+html body.page-home .lazy-head-label{white-space:normal!important;overflow:visible!important;text-overflow:clip!important;overflow-wrap:anywhere!important;line-height:1.35!important}
+html body.page-home #ma-concierge{padding:16px!important;margin-block:8px 14px!important}
+html body.page-home #ma-concierge .ma-quick{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:16px!important}
+html body.page-home #ma-concierge .ma-mood-block{grid-column:1/-1!important}
+html body.page-home #ma-concierge .ma-filter-row{min-width:0!important;gap:8px!important;align-content:start!important}
+html body.page-home #ma-concierge .ma-chip-row{
+  display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  gap:6px!important;overflow:visible!important;padding:0!important;
+}
+html body.page-home #ma-concierge .ma-moods{grid-template-columns:repeat(8,minmax(0,1fr))!important}
+html body.page-home #ma-concierge :is(.ma-chip,.ma-tab,.crit-chip){
+  min-width:0!important;max-width:100%!important;height:auto!important;min-height:44px!important;
+  padding:8px!important;font-size:12px!important;line-height:1.35!important;
+  white-space:normal!important;overflow:visible!important;text-overflow:clip!important;overflow-wrap:anywhere!important;
+}
+html body.page-home #ma-concierge .ma-chip{border-radius:12px!important;width:100%!important}
+html body.page-home #ma-concierge .ma-tabs{gap:6px!important;margin-bottom:16px!important}
+html body.page-home #ma-concierge .q-grid--advanced{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}
+html body.page-home #ma-concierge :is(.crit-toggle-label,.crit-toggle-summary){
+  white-space:normal!important;overflow:visible!important;text-overflow:clip!important;overflow-wrap:anywhere!important;line-height:1.4!important;
+}
+html body.page-home #ma-concierge .crit-toggle{height:auto!important;min-height:48px!important}
+html body.page-home #ma-concierge :is(.ma-primary,button[data-i18n="q.submit"],.gold-btn){
+  min-height:48px!important;height:auto!important;white-space:normal!important;overflow-wrap:anywhere!important;line-height:1.4!important;
+}
+html body.page-home #ma-concierge :is(input,textarea){min-width:0!important;max-width:100%!important;box-sizing:border-box!important;font-size:16px!important}
+html body.page-home #trending-rail{width:100%!important;max-width:100%!important;margin:12px 0!important;box-sizing:border-box!important}
+html body.page-home #trending-rail .marquee-item{width:148px!important;min-width:148px!important;flex:0 0 148px!important}
+html body.page-home #trending-rail .marquee-item img{height:auto!important;aspect-ratio:2/3!important}
+html body.page-home :is(.spotlight-info,.spotlight-copy,.ma-news-card,.tg-entry-body){min-width:0!important}
+html body.page-home :is(.spotlight-info,.spotlight-copy,.ma-news-card,.tg-entry-body) :is(h2,h3,p,a,button){overflow-wrap:anywhere!important}
+@media(max-width:1023px){
+  html body.page-home #mh-topbox.app-header.ma-home-header{--ma-logo-size:60px;grid-template-columns:1fr!important;gap:10px!important;padding:12px!important}
+  html body.page-home #mh-topbox.app-header.ma-home-header :is(.mh-head,#home-brand-lockup){justify-content:center!important}
+  html body.page-home #mh-topbox.app-header.ma-home-header nav.ma-header-actions{justify-content:center!important}
+  html body.page-home #ma-concierge .ma-moods{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+}
+@media(max-width:600px){
+  html body.page-home #mh-topbox.app-header.ma-home-header{--ma-logo-size:52px;width:calc(100% - 20px)!important;margin:10px auto!important;padding:10px!important;border-radius:18px!important}
+  html body.page-home #mh-topbox.app-header.ma-home-header .ma-wordmark{font-size:26px!important}
+  html body.page-home #mh-topbox.app-header.ma-home-header .ma-tv{font-size:16px!important}
+  html body.page-home #mh-topbox.app-header.ma-home-header nav.ma-header-actions{
+    display:grid!important;grid-template-columns:repeat(6,minmax(0,1fr))!important;gap:6px!important;
+  }
+  html body.page-home #mh-topbox.app-header.ma-home-header nav.ma-header-actions>*{width:100%!important;justify-self:stretch!important}
+  html body.page-home #mh-topbox.app-header.ma-home-header nav.ma-header-actions :is(.install-btn,.ma-menu-button,#nav-reg-btn,.ma-kids-mode-entry,.ma-how-button){width:100%!important;min-width:0!important}
+  html body.page-home #mh-topbox.app-header.ma-home-header #lang-switcher-host{grid-column:span 3!important;width:100%!important}
+  html body.page-home #mh-topbox.app-header.ma-home-header #quota-badge{grid-column:span 3!important;width:100%!important}
+  html body.page-home .main-layout{padding-inline:10px!important}
+  html body.page-home #ma-concierge{padding:12px!important}
+  html body.page-home #ma-concierge .ma-quick{grid-template-columns:1fr!important;gap:14px!important}
+  html body.page-home #ma-concierge .ma-chip-row{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+  html body.page-home #ma-concierge .q-grid--advanced{grid-template-columns:1fr!important}
+  html body.page-home #trending-rail .marquee-item{width:108px!important;min-width:108px!important;flex-basis:108px!important}
+  html body.page-home .home-h1{font-size:clamp(24px,6.4vw,32px)!important;line-height:1.15!important}
+  html body.page-home .home-h1-sub{font-size:13px!important}
+}
+html body.page-home #mh-topbox.app-header.ma-home-header nav :is(#profile-link-tab,#nav-logout-btn,#quota-badge,#nav-reg-btn):is([hidden],[style*="display:none"],[style*="display: none"]){display:none!important}
+@media(max-width:360px){
+  html body.page-home #mh-topbox.app-header.ma-home-header nav.ma-header-actions{grid-template-columns:repeat(5,minmax(0,1fr))!important}
+}
