@@ -68,9 +68,10 @@ jobs:
           changed=0
           for attempt in 1 2 3; do
             if [ "$attempt" -gt 1 ]; then
-              git reset --hard HEAD
+              git rebase --abort 2>/dev/null || true
+              git fetch origin "${GITHUB_REF_NAME}"
+              git reset --hard "origin/${GITHUB_REF_NAME}"
               git clean -fd
-              git pull --rebase origin "${GITHUB_REF_NAME}"
               node tools/fetch-availability.js
               node tools/build-watch-pages.js
               node tools/build-seo-pages.js
@@ -88,7 +89,7 @@ jobs:
               echo "changed=1" >> "$GITHUB_OUTPUT"
               exit 0
             fi
-            echo "Push attempt $attempt failed; rebasing and regenerating."
+            echo "Push attempt $attempt failed; refreshing from remote and regenerating."
           done
           exit 1
       - name: Deploy refreshed content
