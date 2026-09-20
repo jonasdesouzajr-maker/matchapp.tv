@@ -152,9 +152,14 @@
   }
 
   function boot(){
-    installStyles();wireTrending();wireEvents();wireMainResult();wireDiscoverCards();setTimeout(wireMainResult,250);setTimeout(wireDiscoverCards,450);setTimeout(()=>{if(!window.__MATCHAPP_EVENT_RENDERED)renderEventQuery();},700);
-    const obs=new MutationObserver(()=>{wireMainResult();wireDiscoverCards();});
-    obs.observe(document.documentElement,{subtree:true,childList:true});
+    installStyles();wireTrending();wireEvents();wireMainResult();wireDiscoverCards();
+    setTimeout(wireMainResult,250);setTimeout(wireDiscoverCards,450);setTimeout(()=>{if(!window.__MATCHAPP_EVENT_RENDERED)renderEventQuery();},700);
+    const chat=document.getElementById('chat-log');
+    if(chat&&window.MutationObserver){
+      new MutationObserver(()=>wireDiscoverCards()).observe(chat,{childList:true,subtree:true});
+    }
+    document.addEventListener('matchapp:newmatch',wireMainResult);
+    document.addEventListener('matchapp:discover-rendered',wireDiscoverCards);
   }
   window.MatchAppTitleExperience=Object.freeze({openTitle});
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();

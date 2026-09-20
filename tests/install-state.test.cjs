@@ -1,24 +1,46 @@
-const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');const {JSDOM,VirtualConsole}=require('jsdom'),root=path.join(__dirname,'..'),tick=()=>new Promise(r=>setTimeout(r,10));
-const run=(w,file)=>w.eval(fs.readFileSync(path.join(root,file),'utf8'));
-function dom(standalone=false){const d=new JSDOM('<button class="install-btn" style="display:none">Install</button>',{url:'https://matchapp.tv/',runScripts:'outside-only',pretendToBeVisual:true,virtualConsole:new VirtualConsole()}),w=d.window;w.MATCHAPP_BUILD='2026.09.13.3';w.matchMedia=()=>({matches:standalone});w.HTMLDialogElement.prototype.showModal=function(){this.open=true;};w.HTMLDialogElement.prototype.close=function(){this.open=false;};return d;}
-const release={version:'2026.09.13.3',functional:true,notes:{en:'Kids matching'}};
-test('confirmed installation and standalone launch record the app build; a new install prompt clears stale state',async()=>{const d=dom(),w=d.window;run(w,'app-install-state.js');assert.equal(w.matchAppInstallState.isInstalled(),false);w.dispatchEvent(new w.Event('appinstalled'));assert.equal(w.localStorage.getItem('match_app_installed_build'),release.version);w.dispatchEvent(new w.Event('beforeinstallprompt'));assert.equal(w.matchAppInstallState.isInstalled(),false);assert.equal(w.localStorage.getItem('match_app_installed_build'),null);d.window.close();const app=dom(true);run(app.window,'app-install-state.js');assert.equal(app.window.matchAppInstallState.isInstalled(),true);assert.equal(app.window.localStorage.getItem('match_app_installed_build'),release.version);app.window.close();});
-test('supported installed-app detection accepts only MatchApp and reconciles an uninstall',async()=>{const d=dom(),w=d.window;w.navigator.getInstalledRelatedApps=async()=>[{platform:'webapp',id:'https://matchapp.tv/'}];run(w,'app-install-state.js');await w.matchAppInstallState.refresh();assert.equal(w.matchAppInstallState.isInstalled(),true);w.navigator.getInstalledRelatedApps=async()=>[{platform:'webapp',id:'https://another.example/'}];await w.matchAppInstallState.refresh();assert.equal(w.matchAppInstallState.isInstalled(),false);d.window.close();});
-test('a browser visit on an installed device compares against the installed build and shows an update signal',async()=>{const d=dom(),w=d.window;w.localStorage.setItem('match_app_installed','true');w.localStorage.setItem('match_app_installed_build','2026.09.13.2');run(w,'app-install-state.js');w.fetch=async()=>({ok:true,json:async()=>release});run(w,'app-updates.js');await tick();assert.equal(w.matchAppUpdatePending.version,release.version);assert(w.document.querySelector('.install-btn').classList.contains('has-app-update'));assert.equal(w.localStorage.getItem('match_app_installed_build'),'2026.09.13.2');d.window.close();});
-test('an up-to-date installed app shows a checkmark and a real installed-help dialog',async()=>{const d=dom(true),w=d.window;run(w,'app-install-state.js');w.fetch=async()=>({ok:true,json:async()=>release});run(w,'install.js');run(w,'app-updates.js');await tick();assert.match(w.document.querySelector('.install-btn').textContent,/✓ App installed/);await w.installMatchApp();assert.equal(w.document.getElementById('match-installed-help').open,true);assert.match(w.document.querySelector('#match-installed-help p').textContent,/home screen or app launcher/);d.window.close();});
-test('iPhone installation uses a visible native instruction dialog and never falsely records installation',async()=>{const d=dom(),w=d.window;Object.defineProperty(w.navigator,'userAgent',{value:'iPhone Safari'});run(w,'app-install-state.js');run(w,'install.js');await w.installMatchApp();const panel=w.document.getElementById('install-modal');assert.equal(panel.tagName,'DIALOG');assert.equal(panel.open,true);assert.match(panel.textContent,/Add to Home Screen/);assert.equal(w.matchAppInstallState.isInstalled(),false);w.closeInstallModal();assert.equal(panel.open,false);d.window.close();});
-test('updates verify the published build, refresh the existing worker and preserve account storage',async()=>{const d=dom(),w=d.window,requests=[];w.MATCHAPP_BUILD='2026.09.13.2';w.localStorage.setItem('account-state','unchanged');let workerUpdates=0;w.navigator.serviceWorker={getRegistration:async()=>({update:async()=>{workerUpdates++;}})};w.fetch=async url=>{requests.push(String(url));return {ok:true,json:async()=>release,text:async()=>"window.MATCHAPP_BUILD = '2026.09.13.3';"};};run(w,'app-updates.js');await tick();await w.updateMatchApp();assert(requests.some(p=>p.startsWith('/build-meta.js?appUpdate=')));assert.equal(workerUpdates,1);assert.equal(w.localStorage.getItem('account-state'),'unchanged');assert.equal(JSON.parse(w.localStorage.getItem('match_app_update_requested')).version,release.version);assert.equal(w.localStorage.getItem('match_app_installed_build'),null);d.window.close();});
-test('a partially deployed or offline update leaves the existing app usable and does not announce success',async()=>{const d=dom(),w=d.window;w.MATCHAPP_BUILD='2026.09.13.2';w.fetch=async url=>({ok:true,json:async()=>release,text:async()=>"window.MATCHAPP_BUILD = '2026.09.13.2';"});run(w,'app-updates.js');await tick();await w.updateMatchApp();assert.equal(w.document.querySelector('.install-btn').disabled,false);assert.equal(w.localStorage.getItem('match_app_update_requested'),null);assert.match(w.document.querySelector('.app-release-hint').textContent,/try again/);d.window.close();});
-
-test('a visible Update button works without inline wiring and reopens errors after Later',async()=>{
- const d=dom(),w=d.window;w.MATCHAPP_BUILD='2026.09.13.2';w.fetch=async()=>({ok:true,json:async()=>release});run(w,'app-updates.js');await tick();
- w.document.querySelector('.app-release-dismiss').click();assert.equal(w.document.querySelector('.app-release-notice').hidden,true);
- w.fetch=async()=>{throw Error('offline');};w.document.querySelector('.install-btn').click();await tick();
- assert.equal(w.document.querySelector('.app-release-notice').hidden,false);assert.match(w.document.querySelector('.app-release-hint').textContent,/try again/);assert.equal(w.document.querySelector('.install-btn').disabled,false);d.window.close();
+const {test}=require('node:test');
+const assert=require('node:assert/strict');
+const fs=require('node:fs');
+const path=require('node:path');
+const {JSDOM,VirtualConsole}=require('jsdom');
+const root=path.join(__dirname,'..');
+const read=f=>fs.readFileSync(path.join(root,f),'utf8');
+const tick=()=>new Promise(r=>setTimeout(r,15));
+function dom(standalone=false){
+ const d=new JSDOM('<button class="install-btn" style="display:none">Install</button>',{url:'https://matchapp.tv/',runScripts:'outside-only',pretendToBeVisual:true,virtualConsole:new VirtualConsole()});
+ const w=d.window;w.MATCHAPP_BUILD='2026.09.20.1';w.matchMedia=()=>({matches:standalone});return d;
+}
+test('confirmed install state is recorded without inventing an install',()=>{
+ const d=dom(),w=d.window;w.eval(read('app-install-state.js'));
+ assert.equal(w.matchAppInstallState.isInstalled(),false);
+ w.dispatchEvent(new w.Event('appinstalled'));
+ assert.equal(w.matchAppInstallState.isInstalled(),true);
+ assert.equal(w.localStorage.getItem('match_app_installed_build'),'2026.09.20.1');
+ d.window.close();
 });
-test('a stalled service worker cannot trap an explicit update and double taps make one request',async()=>{
- const d=dom(),w=d.window;w.MATCHAPP_BUILD='2026.09.13.2';let updates=0;const realTimeout=w.setTimeout.bind(w);w.setTimeout=(fn,ms,...args)=>realTimeout(fn,ms===2000?5:ms,...args);
- w.navigator.serviceWorker={getRegistration:async()=>({update:()=>{updates++;return new Promise(()=>{});}})};
- w.fetch=async()=>({ok:true,json:async()=>release,text:async()=>"window.MATCHAPP_BUILD = '2026.09.13.3';"});run(w,'app-updates.js');await tick();
- await Promise.all([w.updateMatchApp(),w.updateMatchApp()]);assert.equal(updates,1);assert.equal(JSON.parse(w.localStorage.getItem('match_app_update_requested')).version,release.version);d.window.close();
+test('ordinary browser visitors never receive an update prompt or install-button rewrite',async()=>{
+ const d=dom(false),w=d.window;w.fetch=async()=>({ok:true,json:async()=>({version:'2026.09.20.1'})});
+ w.eval(read('app-updates.js'));await tick();
+ assert.equal(w.document.getElementById('app-release-notice'),null);
+ assert.equal(w.document.getElementById('matchapp-update-toast'),null);
+ assert.equal(w.document.querySelector('.install-btn').textContent,'Install');
+ d.window.close();
+});
+test('standalone installs get one small refresh toast only after live metadata matches',async()=>{
+ const d=dom(true),w=d.window;w.localStorage.setItem('match_app_installed_build','2026.09.19.9');
+ w.fetch=async()=>({ok:true,json:async()=>({version:'2026.09.20.1'})});
+ w.eval(read('app-updates.js'));await tick();
+ assert.equal(w.matchAppUpdatePending.version,'2026.09.20.1');
+ assert.ok(w.document.getElementById('matchapp-update-toast'));
+ assert.equal(w.document.querySelectorAll('#matchapp-update-toast').length,1);
+ assert.equal(w.document.getElementById('app-release-notice'),null);
+ d.window.close();
+});
+test('mismatched deploy metadata never announces a refresh',async()=>{
+ const d=dom(true),w=d.window;w.localStorage.setItem('match_app_installed_build','2026.09.19.9');
+ w.fetch=async()=>({ok:true,json:async()=>({version:'2026.09.20.2'})});
+ w.eval(read('app-updates.js'));await tick();
+ assert.equal(w.matchAppUpdatePending,null);
+ assert.equal(w.document.getElementById('matchapp-update-toast'),null);
+ d.window.close();
 });

@@ -56,29 +56,6 @@
     hideChromeNotice();
   }
 
-  function collapseEmptyAdRails(){
-    if(inAndroidApp()){markAndroidAppAdFree();return;}
-    const rails=[...document.querySelectorAll('.sidebar-ad-left,.sidebar-ad-right,.ad-banner-container,.mobile-ad-bottom,.premium-ad-frame')];
-    if(!rails.length)return;
-    const filled=rails.some(rail=>{
-      const iframe=rail.querySelector('iframe');
-      const ins=rail.querySelector('ins.adsbygoogle');
-      const h=Math.max(iframe?.offsetHeight||0, ins?.offsetHeight||0);
-      return h>80 && getComputedStyle(rail).display!=='none';
-    });
-    if(/Googlebot|Mediapartners-Google|AdsBot-Google/i.test(navigator.userAgent||''))return;
-    rails.forEach(rail=>{
-      const iframe=rail.querySelector('iframe');
-      const ins=rail.querySelector('ins.adsbygoogle');
-      const status=(ins?.getAttribute('data-ad-status')||'').toLowerCase();
-      const h=Math.max(iframe?.offsetHeight||0, ins?.offsetHeight||0);
-      const live=status==='filled'||(iframe&&h>80);
-      rail.classList.toggle('is-ad-empty',!live);
-    });
-    if(Date.now()-(window.__MATCHAPP_ADS_START|| (window.__MATCHAPP_ADS_START=Date.now()))<6000)return;
-    if(!filled)document.documentElement.classList.add('ads-empty');
-  }
-
   function fillClock(){
     const el=document.getElementById('real-time-clock');
     if(!el)return;
@@ -92,7 +69,7 @@
     };
     if(/loading/i.test(el.textContent||'')) el.classList.add('is-pending');
     tick();
-    if(!window.__matchappClock){window.__matchappClock=setInterval(tick,30000)}
+    // Static first-paint time only; no recurring timer on idle pages.
   }
 
   function wire(root=document){
@@ -124,9 +101,6 @@
     wire();
     fillClock();
     if(/pricing/.test(location.pathname)) document.body.classList.add('page-pricing');
-    setTimeout(collapseEmptyAdRails,2200);
-    setTimeout(collapseEmptyAdRails,6000);
-    setTimeout(collapseEmptyAdRails,13000);
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
 })();

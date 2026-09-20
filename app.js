@@ -89,7 +89,7 @@ function showQuotaMessage(kind, status, action = 'match') {
         else alert("🔒 You've used your 3 included AI actions today!\n\nRegister for FREE to unlock 5 daily.");
         if (window.openAuthModal) window.openAuthModal();
     } else if (action === 'ask_ai') {
-        if (window.showToast) showToast(`You've used all ${status ? status.limit : 5} included AI actions today. Ask AI credits let you keep asking without changing your Match balance.`);
+        if (window.showToast) showToast(`You've used all ${status?.limit ?? (isUserLoggedIn ? 5 : ANON_DAILY_LIMIT)} included AI actions today. Ask AI credits let you keep asking without changing your Match balance.`);
         return;
     } else {
         // Used to toast and then hard-redirect to /pricing after 2.6s. That
@@ -110,11 +110,11 @@ function openOutOfMatches(kind, status) {
     if (!modal) {
         // No panel on this page — fall back to saying it rather than silently
         // doing nothing.
-        if (window.showToast) showToast(`🔒 You've used all ${status ? status.limit : 5} included AI actions today.`);
+        if (window.showToast) showToast(`🔒 You've used all ${status?.limit ?? (isUserLoggedIn ? 5 : ANON_DAILY_LIMIT)} included AI actions today.`);
         return;
     }
 
-    const limit = status ? status.limit : 5;
+    const limit = status?.limit ?? (isUserLoggedIn ? 5 : ANON_DAILY_LIMIT);
     const headline = document.getElementById('oom-headline');
     const sub = document.getElementById('oom-sub');
     const shareLine = document.getElementById('oom-share');
@@ -1467,8 +1467,7 @@ function refreshEventStates() {
 
 }
 document.addEventListener('DOMContentLoaded', () => setTimeout(refreshEventStates, 150));
-// Re-evaluate if a tab is left open across midnight.
-setInterval(refreshEventStates, 60 * 60 * 1000);
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)refreshEventStates();});
 
 // Tapping an event card runs a real AI lookup for that event — songs to play
 // Goes through the direct-search path, so it consumes one match via
@@ -1484,127 +1483,100 @@ window.eventMatch = function (query) {
 };
 
 // ----------------------------------------------------
-// TRENDING RAIL
-// Auto-advances, but can be dragged or swiped in either direction to go back
-// to titles that already passed. Loops seamlessly by duplicating the strip and
-// wrapping scrollLeft at the halfway point.
+// SHARED RAIL CONTROLLER — native scroll-snap, no clones, no per-frame writes.
 // ----------------------------------------------------
 (function () {
+    const REDUCED = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
 
-    const AUTO_PX = 0.55;     // px per tick — slow enough to read
-    const TICK_MS = 16;
-    const DRAG_THRESHOLD = 6; // beyond this, treat as a drag and swallow the click
-
-    // Nudge works on any rail by id, so both rails share one implementation.
     window.railNudge = function (vpId, dir) {
         const el = document.getElementById(vpId);
         if (!el) return;
-        el.scrollBy({ left: dir * 320, behavior: 'smooth' });
-        el._paused = true;
-        clearTimeout(el._resumeTimer);
-        el._resumeTimer = setTimeout(() => { el._paused = false; }, 2200);
+        const card = el.querySelector(':scope > * > *') || el.firstElementChild;
+        const step = Math.max(220, (card?.getBoundingClientRect().width || 280) + 16);
+        el.scrollBy({ left: dir * step, behavior: REDUCED ? 'auto' : 'smooth' });
     };
-    // Back-compat for the trending rail's existing arrow handlers.
     window.marqueeNudge = function (dir) { window.railNudge('marquee-viewport', dir); };
 
-    function initRail(vpId, trackId) {
-        const vp = document.getElementById(vpId);
-        const track = document.getElementById(trackId);
-        if (!vp || !track) return;
-        let paused = false, dragging = false, startX = 0, startScroll = 0, moved = 0, autoTimer = null;
-
-        // Scoped per rail so two rails can't clobber each other's scroll state.
-        const wrap = () => {
-            if (reduced) return; // Native touch scrolling must not wrap itself on every scroll event.
-            const half = track.scrollWidth / 2;
-            if (half <= 0) return;
-            if (vp.scrollLeft >= half) vp.scrollLeft -= half;
-            else if (vp.scrollLeft <= 0) vp.scrollLeft += half;
-        };
-        const tick = () => {
-            // railNudge() sets _paused on the element itself, since it has no
-            // access to this closure.
-            if (paused || dragging || vp._paused) return;
-            vp.scrollLeft += AUTO_PX;
-            wrap();
-        };
-
-        // Duplicate the strip once so the loop has somewhere to wrap to.
-        // Cloned tiles are hidden from assistive tech to avoid a duplicate
-        // reading of the same titles.
-        if (!track.dataset.cloned) {
-            const clone = track.cloneNode(true);
-            clone.removeAttribute('id');
-            Array.from(clone.children).forEach(c => {
-                c.setAttribute('aria-hidden', 'true');
-                c.setAttribute('tabindex', '-1');
-            });
-            while (clone.firstChild) track.appendChild(clone.firstChild);
-            track.dataset.cloned = '1';
-
-            // Cloning happens while hydrateMarqueeCovers() is still resolving,
-            // so the copies would otherwise keep whatever empty src they were
-            // cloned with. Re-running is cheap: COVER_CACHE means already
-            // fetched titles resolve without touching the network again.
-            if (typeof hydrateMarqueeCovers === 'function') {
-                setTimeout(() => { hydrateMarqueeCovers().catch(() => {}); }, 400);
-            }
-        }
-
-        // Respect people who've asked the OS for less motion. Phones keep
-        // native swipe only. Desktop auto-advance is CSS-driven in
-        // marquee-autoplay.js so this 16ms scrollLeft loop cannot hitch the rail.
-        const reduced = window.matchMedia && (window.matchMedia('(prefers-reduced-motion: reduce)').matches || window.matchMedia('(max-width: 900px), (pointer: coarse)').matches);
-
-        vp.addEventListener('mouseenter', () => { paused = true; });
-        vp.addEventListener('mouseleave', () => { paused = false; });
-
-        // Pointer drag (mouse + pen). Touch uses native momentum scrolling,
-        // which feels better than anything reimplemented here.
-        vp.addEventListener('pointerdown', (e) => {
-            if (e.pointerType === 'touch') { paused = true; return; }
-            dragging = true; moved = 0;
-            startX = e.clientX;
-            startScroll = vp.scrollLeft;
-            vp.classList.add('is-dragging');
-            vp.setPointerCapture && vp.setPointerCapture(e.pointerId);
-        });
-        vp.addEventListener('pointermove', (e) => {
-            if (!dragging) return;
-            const dx = e.clientX - startX;
-            moved = Math.max(moved, Math.abs(dx));
-            vp.scrollLeft = startScroll - dx;
-            wrap();
-        });
-        const endDrag = (e) => {
-            if (e && e.pointerType === 'touch') { setTimeout(() => { paused = false; }, 1200); }
-            if (!dragging) return;
-            dragging = false;
-            vp.classList.remove('is-dragging');
-        };
-        vp.addEventListener('pointerup', endDrag);
-        vp.addEventListener('pointercancel', endDrag);
-        vp.addEventListener('pointerleave', endDrag);
-
-        // A drag that ends over a tile must not also open that tile.
-        vp.addEventListener('click', (e) => {
-            if (moved > DRAG_THRESHOLD) { e.preventDefault(); e.stopPropagation(); moved = 0; }
-        }, true);
-
-        // Manual wheel/trackpad scrolling should also pause the auto-advance.
-        vp.addEventListener('scroll', () => { wrap(); }, { passive: true });
-
-        // Stop any leftover JS timer while the tab is hidden. Auto-flow
-        // is CSS; do not restart a scrollLeft interval on return.
-        document.addEventListener('visibilitychange', () => {
-            if (document.hidden) { clearInterval(autoTimer); autoTimer = null; }
-        });
+    function updateArrows(vp) {
+        const root = vp.closest('.marquee-wrapper,.events-wrapper,.ma-news-carousel-shell,.premium-card') || vp.parentElement;
+        if (!root) return;
+        const max = Math.max(0, vp.scrollWidth - vp.clientWidth - 2);
+        root.querySelectorAll('[data-rail-dir="-1"],.marquee-prev,.events-prev,.ma-news-prev').forEach(b => { b.disabled = vp.scrollLeft <= 2; });
+        root.querySelectorAll('[data-rail-dir="1"],.marquee-next,.events-next,.ma-news-next').forEach(b => { b.disabled = vp.scrollLeft >= max; });
     }
 
-    document.addEventListener('DOMContentLoaded', () => setTimeout(() => {
-        initRail('marquee-viewport', 'marquee-track');
-        initRail('events-viewport', 'events-track');
-    }, 120));
+    function init(vp) {
+        if (!vp || vp.dataset.railReady === '1') return;
+        vp.dataset.railReady = '1';
+        vp.tabIndex = vp.tabIndex >= 0 ? vp.tabIndex : 0;
+        const root = vp.closest('.marquee-wrapper,.events-wrapper,.ma-news-carousel-shell,.premium-card') || vp.parentElement;
+        let paused = false, visible = true;
+
+        root?.querySelectorAll('[data-rail-dir],.marquee-prev,.marquee-next,.events-prev,.events-next,.ma-news-prev,.ma-news-next').forEach(btn => {
+            if (btn.dataset.railBound === '1') return;
+            btn.dataset.railBound = '1';
+            const dir = Number(btn.dataset.railDir || (btn.matches('.marquee-prev,.events-prev,.ma-news-prev') ? -1 : 1));
+            btn.addEventListener('click', e => {
+                e.preventDefault();
+                const id = vp.id;
+                if (id) window.railNudge(id, dir);
+                else {
+                    const card = vp.querySelector(':scope > * > *') || vp.firstElementChild;
+                    const step = Math.max(220, (card?.getBoundingClientRect().width || 280) + 16);
+                    vp.scrollBy({left:dir*step,behavior:REDUCED?'auto':'smooth'});
+                }
+            });
+        });
+
+        vp.addEventListener('keydown', e => {
+            if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+            e.preventDefault();
+            const dir = e.key === 'ArrowLeft' ? -1 : 1;
+            const card = vp.querySelector(':scope > * > *') || vp.firstElementChild;
+            const step = Math.max(220, (card?.getBoundingClientRect().width || 280) + 16);
+            vp.scrollBy({left:dir*step,behavior:REDUCED?'auto':'smooth'});
+        });
+        vp.addEventListener('scroll', () => updateArrows(vp), { passive:true });
+        ['pointerdown','touchstart','focusin','mouseenter'].forEach(type => vp.addEventListener(type,()=>{paused=true},{passive:true}));
+        ['pointerup','touchend','focusout','mouseleave'].forEach(type => vp.addEventListener(type,()=>{paused=false},{passive:true}));
+
+        if ('IntersectionObserver' in window) {
+            const io = new IntersectionObserver(entries => {
+                visible = !!entries[0]?.isIntersecting;
+                if (visible) scheduleAuto(); else stopAuto();
+            }, { threshold:.15 });
+            io.observe(vp);
+        }
+        let autoTimer=0;
+        const stopAuto=()=>{if(autoTimer){clearTimeout(autoTimer);autoTimer=0;}};
+        const scheduleAuto=()=>{
+            stopAuto();
+            if(REDUCED || paused || !visible || document.hidden || vp.scrollWidth <= vp.clientWidth) return;
+            autoTimer=setTimeout(()=>{
+                autoTimer=0;
+                if(paused || !visible || document.hidden) return;
+                const max = vp.scrollWidth - vp.clientWidth;
+                if (vp.scrollLeft >= max - 4) vp.scrollTo({left:0,behavior:'smooth'});
+                else {
+                    const card = vp.querySelector(':scope > * > *') || vp.firstElementChild;
+                    const step = Math.max(220, (card?.getBoundingClientRect().width || 280) + 16);
+                    vp.scrollBy({left:step,behavior:'smooth'});
+                }
+                scheduleAuto();
+            },6500);
+        };
+        ['pointerdown','touchstart','focusin','mouseenter'].forEach(type => vp.addEventListener(type,stopAuto,{passive:true}));
+        ['pointerup','touchend','focusout','mouseleave'].forEach(type => vp.addEventListener(type,scheduleAuto,{passive:true}));
+        document.addEventListener('visibilitychange',()=>{if(document.hidden)stopAuto();else scheduleAuto();});
+        scheduleAuto();
+        updateArrows(vp);
+    }
+
+    function boot() {
+        ['marquee-viewport','events-viewport'].forEach(id => init(document.getElementById(id)));
+        document.querySelectorAll('.ma-news-carousel-shell,[data-rail-viewport]').forEach(init);
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot, {once:true}); else boot();
 })();
 
 let authReturnFocus = null;
@@ -2170,7 +2142,7 @@ function promptProfileCompletion(missing) {
     bar.id = 'profile-nudge';
     bar.className = 'profile-nudge';
     const label = (window.t && tSafe('profile.nudge')) ||
-        'Finish your profile to unlock 5 daily AI sessions instead of 3.';
+        'Complete your profile to personalize your matches. Your free account includes 5 daily AI actions.';
     const cta = (window.t && tSafe('profile.nudgeCta')) || 'Complete profile';
     bar.innerHTML = `<span>👤 ${label}</span>
         <a href="/profile/profile.html" class="profile-nudge-btn">${cta}</a>
@@ -4235,7 +4207,9 @@ function startLiveClock() {
     };
 
     render();
-    setInterval(render, 1000);
+    const onVisible=()=>{if(!document.hidden)render();};
+    document.addEventListener('visibilitychange',onVisible);
+    window.addEventListener('focus',render);
 }
 
 // Verifiable product facts — used when live numbers aren't available yet.
@@ -4304,8 +4278,14 @@ function _applyActivityStats(el, data) {
 function initLiveStrip() {
     startLiveClock();
     renderLiveActivity();
-    // Refresh real counts periodically without hammering the API.
-    setInterval(renderLiveActivity, 90000);
+    let last=Date.now();
+    const refresh=()=>{
+        if(document.hidden||Date.now()-last<90000)return;
+        last=Date.now();
+        renderLiveActivity();
+    };
+    document.addEventListener('visibilitychange',()=>{if(!document.hidden)refresh();});
+    window.addEventListener('focus',refresh);
 }
 document.addEventListener('DOMContentLoaded', initLiveStrip);
 
@@ -4789,18 +4769,15 @@ function renderSpotlightCountdown() {
     const d = Math.floor(diff / 86400000);
     const h = Math.floor((diff % 86400000) / 3600000);
     const m = Math.floor((diff % 3600000) / 60000);
-    const s = Math.floor((diff % 60000) / 1000);
     const L = {
         d: window.t ? t('spotlight.days') : 'Days',
         h: window.t ? t('spotlight.hours') : 'Hrs',
-        m: window.t ? t('spotlight.mins') : 'Min',
-        s: window.t ? t('spotlight.secs') : 'Sec'
+        m: window.t ? t('spotlight.mins') : 'Min'
     };
     el.innerHTML =
         `<div class="countdown-unit"><span class="countdown-num">${d}</span><span class="countdown-label">${L.d}</span></div>` +
         `<div class="countdown-unit"><span class="countdown-num">${String(h).padStart(2,'0')}</span><span class="countdown-label">${L.h}</span></div>` +
-        `<div class="countdown-unit"><span class="countdown-num">${String(m).padStart(2,'0')}</span><span class="countdown-label">${L.m}</span></div>` +
-        `<div class="countdown-unit"><span class="countdown-num">${String(s).padStart(2,'0')}</span><span class="countdown-label">${L.s}</span></div>`;
+        `<div class="countdown-unit"><span class="countdown-num">${String(m).padStart(2,'0')}</span><span class="countdown-label">${L.m}</span></div>`;
 }
 
 window.saveSpotlightTitle = function () {
@@ -4850,7 +4827,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (document.getElementById('spotlight-countdown')) {
         renderSpotlightCountdown();
-        setInterval(renderSpotlightCountdown, 1000);
+        document.addEventListener('visibilitychange',()=>{if(!document.hidden)renderSpotlightCountdown();});
+        window.addEventListener('focus',renderSpotlightCountdown);
     }
 
     // Reflect already-saved state on load.

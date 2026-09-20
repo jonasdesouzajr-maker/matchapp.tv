@@ -5,14 +5,14 @@ plugins {
 
 android {
     namespace = "tv.matchapp.app"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "tv.matchapp.app"
         minSdk = 24
-        targetSdk = 35
-        versionCode = 22
-        versionName = "1.1.20"
+        targetSdk = 36
+        versionCode = 23
+        versionName = "1.1.21"
         resourceConfigurations += listOf("en", "pt", "es", "fr", "de", "it", "tr", "ru", "ar", "hi", "in", "ja", "ko", "zh")
     }
 

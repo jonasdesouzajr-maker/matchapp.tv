@@ -7,10 +7,8 @@ Disallow: /oauth/
 Disallow: /callback.html
 Disallow: /purchase.html
 Disallow: /reset.html
-Disallow: /register.html
 Disallow: /ai-check.html
 Disallow: /billing-check.html
-Disallow: /profile/
 Disallow: /$/
 Disallow: /%24
 Disallow: /404.html

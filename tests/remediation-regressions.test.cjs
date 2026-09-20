@@ -12,11 +12,12 @@ test('Android page never points to the unpublished Play listing', () => {
   assert.doesNotMatch(html, /play\.google\.com\/store\/apps\/details\?id=tv\.matchapp\.app/);
 });
 
-test('legacy domain stays out of the canonical sitemap and redirects to .tv', () => {
+test('legacy domain stays out of canonical search files and GitHub Pages has no dead redirect config', () => {
   const sitemap = read('sitemap.xml');
-  const redirects = read('_redirects');
   assert.doesNotMatch(sitemap, /https?:\/\/(?:www\.)?matchapp\.cc/i);
-  assert.match(redirects, /https:\/\/matchapp\.tv\/:splat\s+301/);
+  assert.equal(fs.existsSync(path.join(root,'_redirects')), false);
+  assert.equal(fs.existsSync(path.join(root,'_headers')), false);
+  assert.equal(fs.existsSync(path.join(root,'vercel.json')), false);
 });
 
 test('VIP copy remediation stays tied to the established 10/day entitlement', () => {

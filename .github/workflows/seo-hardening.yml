@@ -14,20 +14,21 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
-  group: matchapp-seo-hardening
-  cancel-in-progress: true
+  group: content-bot
+  cancel-in-progress: false
 
 jobs:
   harden:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version: '24'
           cache: npm
@@ -41,23 +42,38 @@ jobs:
         run: node tools/update-sitemap.js
       - name: Validate site
         run: npm test
-      - name: Commit scoped SEO output
+      - name: Commit scoped SEO output with retry
+        id: publish
+        shell: bash
         run: |
-          if git diff --quiet; then
-            echo "SEO output already current"
-            exit 0
-          fi
+          set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html discover.html kids/index.html sitemap.xml sitemaps.xml tools/build-seo-pages.js tools/refresh-news-rss.js tools/seo-urls.json
-          for d in moods collections platforms languages decades; do
-            [ -e "$d" ] && git add "$d"
+          for attempt in 1 2 3; do
+            if [ "$attempt" -gt 1 ]; then
+              git reset --hard HEAD
+              git clean -fd
+              git pull --rebase origin "${GITHUB_REF_NAME}"
+              node tools/seo-hardening.js
+              node tools/build-seo-pages.js
+              node tools/update-sitemap.js
+            fi
+            git add index.html discover.html kids/index.html sitemap.xml sitemaps.xml tools/build-seo-pages.js tools/refresh-news-rss.js tools/seo-urls.json
+            for d in moods collections platforms languages decades; do [ -e "$d" ] && git add "$d"; done
+            if git diff --staged --quiet; then
+              echo "SEO output already current"
+              echo "changed=0" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            git commit -m "Harden Search Console metadata and structured data" || true
+            if git push origin "HEAD:${GITHUB_REF_NAME}"; then
+              echo "changed=1" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
           done
-          git commit -m "Harden Search Console metadata and structured data"
-          # Generators can leave cache/runtime residue that is deliberately outside
-          # this scoped SEO commit. Remove only those uncommitted leftovers so the
-          # committed SEO work can rebase and publish cleanly.
-          git reset --hard HEAD
-          git clean -fd
-          git pull --rebase origin "${GITHUB_REF_NAME}"
-          git push origin "HEAD:${GITHUB_REF_NAME}"
+          exit 1
+      - name: Deploy refreshed content
+        if: steps.publish.outputs.changed == '1'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run pages-deploy.yml --ref main

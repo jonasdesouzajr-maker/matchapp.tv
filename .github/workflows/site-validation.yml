@@ -1,7 +1,7 @@
 name: Validate website
 on:
   push:
-    branches: [main]
+    branches: [main, fix/stability-premium-ui]
   pull_request:
 permissions:
   contents: read
@@ -10,14 +10,19 @@ concurrency:
   cancel-in-progress: true
 jobs:
   validate:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with:
           node-version: '24'
           cache: npm
       - run: npm ci --ignore-scripts
+      - name: Verify release/build metadata match
+        run: |
+          VERSION="$(node -p "require('./release.json').version")"
+          grep -Fq "window.MATCHAPP_BUILD = '$VERSION';" build-meta.js
       - run: node tools/build-kids-pages.js
       - run: node tools/update-sitemap.js
       - run: npm test

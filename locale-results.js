@@ -158,7 +158,13 @@
   document.addEventListener('click', ev => {
     if (ev.target.closest?.('.crit-chip,.crit-toggle')) setTimeout(decorateCriteria, 30);
   });
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
-  else boot();
-  setInterval(wrapAsk, 1500);
+  function retryLateAsk(attempt=0){
+    wrapAsk();
+    if(attempt<8 && !window.askAIConversational?.__locale){
+      setTimeout(()=>retryLateAsk(attempt+1),Math.min(1200,120*(attempt+1)));
+    }
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', ()=>{boot();retryLateAsk();},{once:true});
+  else {boot();retryLateAsk();}
+  document.addEventListener('matchapp:ai-ready',()=>retryLateAsk(0));
 })();

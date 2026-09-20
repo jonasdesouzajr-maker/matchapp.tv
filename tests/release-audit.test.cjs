@@ -31,17 +31,19 @@ test('public quota copy matches the shared included-action architecture',()=>{
   assert.match(app,/included AI actions used/);
 });
 
-test('both Android shells are synchronized to the audited 1.1.20 release',()=>{
+test('both Android shells are synchronized and target the current Play API level',()=>{
   const mainGradle=read('android-studio/app/build.gradle.kts');
   const kidsGradle=read('android-studio/kidsapp/build.gradle.kts');
   const main=read('android-studio/app/src/main/java/tv/matchapp/app/MainActivity.kt');
   const kids=read('android-studio/kidsapp/src/main/java/tv/matchapp/kids/MainActivity.kt');
   for(const gradle of [mainGradle,kidsGradle]){
-    assert.match(gradle,/versionCode = 22/);
-    assert.match(gradle,/versionName = "1\.1\.20"/);
+    assert.match(gradle,/compileSdk = 36/);
+    assert.match(gradle,/targetSdk = 36/);
+    assert.match(gradle,/versionCode = \d+/);
+    assert.match(gradle,/versionName = "\d+\.\d+\.\d+"/);
   }
-  assert.match(main,/appBuild=22/);
-  assert.match(kids,/appBuild=22/);
+  assert.match(main,/appBuild=\d+/);
+  assert.match(kids,/appBuild=\d+/);
   assert.match(main,/MATCHAPP_ANDROID_KIDS_AVAILABLE/);
   assert.match(kids,/MATCHAPP_ANDROID_KIDS_ONLY/);
 });

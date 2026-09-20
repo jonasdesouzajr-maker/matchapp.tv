@@ -14,24 +14,7 @@ self.addEventListener('install', () => {
 });
 
 self.addEventListener('activate', (event) => {
-    event.waitUntil((async () => {
-        try {
-            const names = await caches.keys();
-            await Promise.all(names.map((n) => caches.delete(n)));
-        } catch (e) { /* caches API unavailable — nothing to clean */ }
-
-        await self.clients.claim();
-
-        try {
-            const clients = await self.clients.matchAll({ type: 'window' });
-            clients.forEach((c) => c.postMessage({ type: 'SW_UPDATED', version: SW_VERSION }));
-        } catch (e) { /* non-fatal */ }
-    })());
-});
-
-self.addEventListener('fetch', (event) => {
-    if (event.request.mode === 'navigate') return;
-    return;
+    event.waitUntil(self.clients.claim());
 });
 
 

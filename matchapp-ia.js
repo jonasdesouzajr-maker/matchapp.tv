@@ -44,6 +44,8 @@ function syncHeaderAuth(){
  const signed=!!(profile&&getComputedStyle(profile).display!=='none');
  document.body.classList.toggle('ma-guest',!signed);
  document.body.classList.toggle('ma-signed-in',signed);
+ const logout=qs('#nav-logout-btn');
+ if(logout){logout.hidden=!signed;logout.style.display=signed?'':'none'}
 }
 function ensureBrandMeta(){
  let fav=qs('link[rel="icon"]');if(!fav){fav=document.createElement('link');fav.rel='icon';document.head.appendChild(fav)}
@@ -112,10 +114,11 @@ function brandHeader(){
    logout.setAttribute('aria-label','Log out');logout.setAttribute('title','Log out');
    logout.innerHTML='<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M10 5H6.8A1.8 1.8 0 0 0 5 6.8v10.4A1.8 1.8 0 0 0 6.8 19H10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M14 8l4 4-4 4M18 12H9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
  }
- if(!qs('.ma-country-link',nav)){
-   const a=el('a','ma-country-link');a.href='/profile/profile.html';a.title='Viewing country';
-   const name=countryName();a.innerHTML='<span aria-hidden="true">🌍</span><span>'+(name||'Country')+'</span>';
-   const lang=qs('#lang-switcher-host',nav);nav.insertBefore(a,lang||nav.firstChild);
+ if(isHome&&!qs('.ma-how-button',nav)){
+   const how=el('button','ma-how-button','✨ How it works');how.type='button';
+   how.setAttribute('aria-label','Open MatchApp guide');
+   how.addEventListener('click',()=>window.MatchAppOnboarding?.start?.());
+   nav.appendChild(how);
  }
  if(!qs('.ma-menu-wrap',nav)){
    const wrap=el('div','ma-menu-wrap');
@@ -124,13 +127,16 @@ function brandHeader(){
    function link(label,href,icon){const a=el('a','',icon+' '+label);a.href=href;a.setAttribute('role','menuitem');return a}
    function action(label,icon,fn){const b=el('button','',icon+' '+label);b.type='button';b.setAttribute('role','menuitem');b.addEventListener('click',()=>{fn();close()});return b}
    menu.append(
-     action('Download app','↓',()=>{const b=qs('.install-btn');if(b&&getComputedStyle(b).display!=='none')safeClick(b);else location.href='/android/'}),
-     action('Theme','◐',()=>{const b=qs('[data-theme-toggle],.theme-toggle,.theme-btn');if(b)safeClick(b);else location.href='/profile/profile.html'}),
-     action('Lazy Mode','⚡',()=>{const b=qs('.lazy-toggle');if(b)safeClick(b)}),
-     link('Kids Mode','/kids/','★'),
+     link('Country','/profile/profile.html#country','🌍'),
+     action('Language','文',()=>{const control=qs('#lang-switcher-host select,#lang-switcher-host button,#lang-switcher-host [role="button"]');if(control)safeClick(control);else window.showToast?.('Language options are available from Settings.')}),
+     action('Sound','♪',()=>{const next=!(window.MatchSettings?.get?.('autoRead')!==false);window.MatchSettings?.set?.('autoRead',next);window.showToast?.(next?'Sound on':'Sound off')}),
+     action('Theme','◐',()=>{const themes=['aurora','cinema','ocean','sunrise','arcade'],cur=window.MatchSettings?.get?.('theme')||'aurora',next=themes[(Math.max(0,themes.indexOf(cur))+1)%themes.length];window.MatchSettings?.set?.('theme',next);document.documentElement.dataset.theme=next;window.showToast?.('Theme: '+next)}),
+     action('Lazy Mode','⚡',()=>{if(!document.body.classList.contains('ma-signed-in')){window.showToast?.('Sign in to use Lazy Mode.');return}const lazy=qs('.lazy-toggle');if(lazy)safeClick(lazy);else window.setLazyMode?.(true)}),
      action('Daily check-in','✓',()=>{document.body.classList.add('ma-checkin-open');const box=qs('#daily-match-checkin');if(box){box.style.display='block';box.scrollIntoView({behavior:'smooth',block:'center'})}}),
      link('Pricing','/pricing/pricing.html','♢'),
-     link('Profile','/profile/profile.html','◉')
+     action('Install app','↓',()=>{if(typeof window.installMatchApp==='function')window.installMatchApp();else location.href='/android/'}),
+     link('Settings','/profile/profile.html#settings','⚙'),
+     link("What's new",'/updates.html','•')
    );
    btn.addEventListener('click',()=>{menu.hidden=!menu.hidden;btn.setAttribute('aria-expanded',String(!menu.hidden))});
    function close(){menu.hidden=true;btn.setAttribute('aria-expanded','false')}
@@ -141,12 +147,8 @@ function brandHeader(){
  h.classList.add('ma-header-ready');
  if(!h.dataset.maAuthObserved){
    h.dataset.maAuthObserved='1';
-   new MutationObserver(()=>{
-     // No later auth/install/theme mutation may put Home back into the shared
-     // legacy header cascade.
-     if(isHome&&h.classList.contains('ma-global-header'))h.classList.remove('ma-global-header');
-     syncHeaderAuth();
-   }).observe(h,{subtree:true,childList:true,attributes:true,attributeFilter:['style','class']});
+   document.addEventListener('matchapp:authchange',syncHeaderAuth);
+   window.addEventListener('matchapp:installstate',syncHeaderAuth);
  }
 }
 function criteria(){return typeof window.getMatchCriteria==='function'?window.getMatchCriteria():{cat:[],plat:[],genre:[],mood:[],vibe:[],rating:[],decade:[]}}
@@ -219,10 +221,13 @@ function syncQuota(target){
 function mountHome(){
  document.body.classList.add('ma-ia-home','ma-match-tab');
  try{delete document.documentElement.dataset.tiktokIntro}catch(_){}
- const intro=qs('#matchapp-tiktok-intro');if(intro)intro.hidden=true;
  const container=qs('section.container');const hero=qs('.home-hero');const form=qs('#questionnaire-box');const search=qs('#search-box');
  if(!container||!hero||!form||!search)return;
  const t=c();qs('.home-h1',hero).textContent=t.title;qs('.home-h1-sub',hero).textContent=t.sub;
+ if(!qs('.ma-how-link',hero)){
+   const how=el('button','ma-how-link',langKey()==='pt-BR'?'✨ Como funciona':'✨ How it works');how.type='button';
+   how.addEventListener('click',()=>window.MatchAppOnboarding?.start?.());hero.appendChild(how);
+ }
  const concierge=el('section','ma-concierge');concierge.id='ma-concierge';
  const tabs=el('div','ma-tabs');tabs.setAttribute('role','tablist');
  const bm=el('button','ma-tab',t.match);bm.type='button';bm.id='ma-tab-match';bm.setAttribute('role','tab');bm.setAttribute('aria-selected','true');
@@ -247,7 +252,10 @@ function mountHome(){
  const loading=qs('#loading-box'),result=qs('#result-box'),trending=qs('#trending-rail'),week=qs('#premiere-disclosure'),swift=qs('#swifties-spotify'),events=qs('#global-events');
  if(trending){after(hero,trending);after(trending,concierge)}
  let anchor=concierge;[loading,result,week,swift,events].forEach(n=>{if(n){after(anchor,n);anchor=n}});
- const ad=qsa('.container>.ad-banner-container',container)[0];if(ad&&anchor)after(anchor,ad);
+ const ads=qsa('.container>.ad-banner-container',container);ads.forEach(ad=>ad.classList.add('ma-inline-ad'));
+ if(ads[0]&&trending)after(trending,ads[0]);
+ if(ads[1]&&week)after(week,ads[1]);
+ if(ads[2])after(events||swift||anchor,ads[2]);
  const tg=qs('.tg-entry');if(tg)tg.hidden=true;
  if(trending){
    const h=qs('h4',trending);if(h)h.textContent=t.latest;

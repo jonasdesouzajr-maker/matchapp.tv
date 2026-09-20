@@ -1,17 +1,14 @@
-const test=require('node:test');
-const assert=require('node:assert/strict');
-const fs=require('node:fs');
-const path=require('node:path');
-const root=path.join(__dirname,'..');
-const wiring=fs.readFileSync(path.join(root,'final-wiring.js'),'utf8');
-const build=fs.readFileSync(path.join(root,'build-meta.js'),'utf8');
-const home=fs.readFileSync(path.join(root,'index.html'),'utf8');
-test('moving title rails avoid per-poster filter repaint without changing rail controller',()=>{
- assert.match(wiring,/marquee-track\.is-marquee-flowing \.marquee-item img/);
- assert.match(wiring,/animation:none!important;filter:none!important/);
- assert.match(build,/final-wiring\.js\?v=20260919-/);
- assert.match(home,/build-meta\.js\?v=202/);
- const rail=fs.readFileSync(path.join(root,'marquee-autoplay.js'),'utf8');
- assert.doesNotMatch(rail,/IntersectionObserver/);
- assert.match(rail,/window\.marqueeNudge/);
+const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
+const root=path.join(__dirname,'..'),read=p=>fs.readFileSync(path.join(root,p),'utf8');
+test('rail motion avoids deleted competing autoplay engines',()=>{
+ assert.equal(fs.existsSync(path.join(root,'marquee-autoplay.js')),false);
+ assert.equal(fs.existsSync(path.join(root,'right-glide-rails.js')),false);
+ const components=read('components.css'),app=read('app.js');
+ assert.match(components,/scroll-snap-type:x mandatory/);
+ assert.doesNotMatch(app,/requestAnimationFrame\([^\n]*scrollLeft/);
+});
+test('premium runtime uses bounded observers rather than document mutation loops',()=>{
+ const runtime=read('premium-ui.js');
+ assert.match(runtime,/IntersectionObserver/);
+ assert.doesNotMatch(runtime,/new MutationObserver/);
 });

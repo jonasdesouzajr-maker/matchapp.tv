@@ -51,8 +51,7 @@ function protect(img){
 function scan(root=document){root.querySelectorAll?.('.ma-news-card img').forEach(protect);}
 function boot(){
   ensureStyle();scan();
-  const observer=new MutationObserver(records=>{for(const record of records){for(const node of record.addedNodes){if(node.nodeType!==1)continue;if(node.matches?.('.ma-news-card img'))protect(node);scan(node);}}});
-  observer.observe(document.documentElement,{childList:true,subtree:true});
+  document.addEventListener('matchapp:news-rendered',e=>scan(e.detail?.section||document));
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
 })();

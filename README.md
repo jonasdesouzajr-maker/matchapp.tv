@@ -9,7 +9,7 @@ The production site is **https://matchapp.tv**. The legacy `matchapp.cc` domain 
 * **Exact matching:** explicit user-selected criteria remain requirements; the matcher never silently swaps them for unrelated content.
 * **Never-dead-end recovery:** duplicate/history pressure is recovered without violating explicit criteria; Kids Mode keeps hard age and safety boundaries.
 * **AI Concierge:** Ask AI shares the included daily allowance with Matches, while paid Ask AI credits and Extra Matches remain separate top-ups.
-* **Current included daily allowance:** Guest **3**, Registered complete profile **5**, VIP **10**, Business **50**.
+* **Current included daily allowance:** Guest **3**, Registered **5**, VIP **10**, Business **50**.
 * **Where to Watch:** verified title identity and regional provider/cinema information are used when available, with safe fallbacks when availability is unknown.
 * **Kids Mode:** curated independent Kids catalog with conservative safety rules and age-band enforcement.
 * **Match Together / Friends:** private collaborative matching flows for registered users.

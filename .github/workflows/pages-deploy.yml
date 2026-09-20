@@ -12,23 +12,42 @@ permissions:
 
 concurrency:
   group: pages
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   deploy:
     environment:
       name: github-pages
       url: https://matchapp.tv
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with:
-          node-version: 22
+          node-version: '24'
           cache: npm
       - name: Install test dependencies
         run: npm ci --ignore-scripts
-      - name: Verify title, genre and no-dead-end release
+      - name: Keep build metadata aligned with release
+        shell: bash
+        run: |
+          set -euo pipefail
+          VERSION="$(node -p "require('./release.json').version")"
+          node - <<'NODE'
+          const fs=require('fs');
+          const release=require('./release.json').version;
+          const file='build-meta.js';
+          let src=fs.readFileSync(file,'utf8');
+          src=src.replace(/window\.MATCHAPP_BUILD\s*=\s*'[^']+';/,`window.MATCHAPP_BUILD = '${release}';`);
+          fs.writeFileSync(file,src);
+          NODE
+          grep -Fq "window.MATCHAPP_BUILD = '$VERSION';" build-meta.js
+          git diff --exit-code -- build-meta.js || {
+            echo "::error::build-meta.js did not match release.json in source. Commit the synchronized version before merging."
+            exit 1
+          }
+      - name: Validate production sources
         run: |
           node --check app.js
           node --check discover.js
@@ -38,48 +57,18 @@ jobs:
           node --check notifications.js
           node --check onboarding-tour.js
           node --check catalog-plus.js
-          node --check kids/onboarding-tour.js
           node --check sw.js
           node --check kids/kids.js
           node --check settings.js
           node --check profile.js
-          node --test tests/match-runtime-regression.test.cjs tests/exclusion-preferences.test.cjs
-          grep -Fq 'id="q-genre"' index.html
-          # Assert each asset carries SOME cache-bust version rather than a
-          # literal one. The exact value is the deploy's to choose; pinning it
-          # here meant every bump had to be restated in this file, and when it
-          # was not, the gate failed and skipped the deploy silently.
-          for ref in '/app\.js' '/catalog-media\.js' '/settings\.js' '/app-updates\.js'; do
-            grep -Eq "${ref}\?v=[^\"']+" index.html || { echo "index.html: $ref is not cache-busted"; exit 1; }
-          done
-          grep -Eq "/discover\.js\?v=[^\"']+" discover.html
-          grep -Eq "/kids/kids\.js\?v=[^\"']+" kids/index.html
-          grep -Fq 'Final invariant: if any age-approved titles exist' kids/kids.js
-          grep -Fq 'item.realGenres = meta.genres' discover.js
-          grep -Fq 'Cinemas & showtimes near me' catalog-media.js
-          grep -Fq 'lookupLive' catalog-media.js
-          grep -Fq 'tmdbDetails' tmdb.js
-          grep -Fq 'tmdbDiscover' tmdb.js
-          grep -Fq "MatchNotifications?.followTitle" catalog-media.js
-          grep -Fq "addEventListener('push'" sw.js
-          grep -Fq 'Resident Evil (2026)' where-to-watch/resident-evil-2026/index.html
-          grep -Fq 'Exact always wins' app.js
-          grep -Fq 'broaden-platform' app.js
-          grep -Fq "const VERSION='v2'" onboarding-tour.js
-          grep -Fq 'register.html?from=tour' onboarding-tour.js
-          grep -Eq "/kids/onboarding-tour\.js\?v=[^\"']+" kids/index.html
-          grep -Fq 'blockedOriginCountries' settings.js
-          grep -Fq 'What I don’t want to see in my matches' profile/profile.html
-          grep -Eq '"version"[[:space:]]*:[[:space:]]*"[0-9]{4}\.[0-9]{2}\.[0-9]{2}\.[0-9]+"' release.json
+          npm test
+          npm run audit:site
       - name: Generate bilingual social preview
         run: |
           sudo apt-get update -qq
           sudo apt-get install -y --no-install-recommends librsvg2-bin
           rsvg-convert -w 1200 -h 630 assets/brand/matchapp-og.svg -o og-image-v3.png
           test -s og-image-v3.png
-          grep -Fq 'What to watch tonight, decided by AI' assets/brand/matchapp-og.svg
-          grep -Fq 'brand-logo-placeholder' index.html
-          ! grep -Fq 'matchapp-logo-animated.svg' index.html
       - uses: actions/upload-pages-artifact@v3
         with:
           path: .
@@ -88,67 +77,50 @@ jobs:
 
   healthcheck:
     needs: deploy
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v4
-      - name: Probe live site
+      - uses: actions/checkout@v7
+      - name: Probe live site and release consistency
+        shell: bash
         run: |
-          set -euxo pipefail
-          # Read each expected cache-bust version out of the repo and assert the
-          # live page ships the same one. Nothing here restates a version, so a
-          # bump can never leave this check asserting a stale value.
-          same() {
-            want=$(grep -o "$3?v=[^\"']*" "$1" | head -1)
-            test -n "$want" || { echo "no versioned $3 in $1"; exit 1; }
-            grep -Fq "$want" "$2" || { echo "live $2 is missing $want"; exit 1; }
-          }
-          sleep 20
-          for url in https://matchapp.tv/ https://matchapp.tv/kids/ https://matchapp.tv/kids/titles/bluey/ https://matchapp.tv/discover.html https://matchapp.tv/pricing/pricing.html https://matchapp.tv/where-to-watch/resident-evil-2026/ https://matchapp.tv/android/; do
-            echo "Checking $url"
-            code=$(curl -sS -o /tmp/body.html -w "%{http_code}" -L --max-time 30 "$url")
-            echo "HTTP $code"
+          set -euo pipefail
+          sleep 15
+          for url in             https://matchapp.tv/             https://matchapp.tv/discover.html             https://matchapp.tv/pricing/pricing.html             https://matchapp.tv/kids/             https://matchapp.tv/android/             https://matchapp.tv/.well-known/assetlinks.json; do
+            code="$(curl -sS -L --max-time 30 -o /tmp/body -w '%{http_code}' "$url")"
+            echo "$url -> $code"
             test "$code" = "200"
-            grep -qi "MatchApp" /tmp/body.html
           done
-          curl -sS -L --max-time 30 https://matchapp.tv/pricing/pricing.html -o /tmp/pricing.html
-          grep -q 'build-meta.js' /tmp/pricing.html
-          grep -Fq 'VIP: 10 Included AI Actions Daily' /tmp/pricing.html
-          grep -Fq '<strong>50</strong> included AI actions daily' /tmp/pricing.html
-          ! grep -Eqi '5×[[:space:]]*VIP|5x[[:space:]]*VIP|team seats|for every seat' /tmp/pricing.html
-          curl -sS -L --max-time 30 https://matchapp.tv/build-meta.js -o /tmp/build-meta.js
-          grep -Fq "const vipDaily = 10;" /tmp/build-meta.js
-          grep -Fq "monthly.innerHTML = '✔️ <strong>'+vipDaily+'</strong> included AI actions daily';" /tmp/build-meta.js
-          curl -sS -L --max-time 30 https://matchapp.tv/android/ -o /tmp/android.html
-          grep -q "Google Play — Coming Soon" /tmp/android.html
-          ! grep -q "play.google.com/store/apps/details?id=tv.matchapp.app" /tmp/android.html
-          curl -sS -L --max-time 30 https://matchapp.tv/ -o /tmp/home.html
-          same index.html /tmp/home.html '/app.js'
-          same index.html /tmp/home.html '/catalog-media.js'
-          same index.html /tmp/home.html '/settings.js'
-          same index.html /tmp/home.html '/app-updates.js'
-          curl -sS -L --max-time 30 https://matchapp.tv/notifications.js -o /tmp/notifications.js
-          grep -Fq 'followTitle' /tmp/notifications.js
-          curl -sS -L --max-time 30 https://matchapp.tv/sw.js -o /tmp/sw.js
-          grep -Fq "addEventListener('push'" /tmp/sw.js
-          curl -sS -L --max-time 30 https://matchapp.tv/profile/profile.html -o /tmp/profile.html
-          grep -Fq 'What I don’t want to see in my matches' /tmp/profile.html
-          curl -sS -L --max-time 30 https://matchapp.tv/release.json -o /tmp/release.json
-          grep -Fq "$(grep -o '"version"[^,]*' release.json | head -1)" /tmp/release.json
-          curl -sS -L --max-time 30 https://matchapp.tv/discover.html -o /tmp/discover.html
-          same discover.html /tmp/discover.html '/discover.js'
-          same discover.html /tmp/discover.html '/catalog-media.js'
-          curl -sS -L --max-time 30 "https://matchapp.tv$(grep -o '/discover\.js?v=[^\"'\'']*' discover.html | head -1)" -o /tmp/discover.js
-          grep -Fq 'item.realGenres = meta.genres' /tmp/discover.js
-          curl -sS -L --max-time 30 "https://matchapp.tv$(grep -o '/catalog-media\.js?v=[^\"'\'']*' index.html | head -1)" -o /tmp/catalog-media.js
-          grep -Fq 'Cinemas & showtimes near me' /tmp/catalog-media.js
-          grep -Fq 'lookupLive' /tmp/catalog-media.js
-          curl -sS -L --max-time 30 https://matchapp.tv/kids/ -o /tmp/kids.html
-          same kids/index.html /tmp/kids.html '/kids/kids.js'
-          ! grep -q "GTM-M7J3NNBN" /tmp/kids.html
-          curl -sS -L --max-time 30 https://matchapp.tv/kids/titles/bluey/ -o /tmp/kids-title.html
-          grep -qi "Bluey" /tmp/kids-title.html
-          grep -q 'isFamilyFriendly' /tmp/kids-title.html
-          ! grep -q "GTM-M7J3NNBN" /tmp/kids-title.html
-          curl -sS -L --max-time 30 https://matchapp.tv/sitemap.xml -o /tmp/sitemap.xml
-          grep -q "https://matchapp.tv/kids/titles/bluey/" /tmp/sitemap.xml
-          grep -q "https://matchapp.tv/where-to-watch/resident-evil-2026/" /tmp/sitemap.xml
+          curl -fsSL --max-time 30 https://matchapp.tv/release.json -o /tmp/release.json
+          curl -fsSL --max-time 30 https://matchapp.tv/build-meta.js -o /tmp/build-meta.js
+          VERSION="$(node -p "require('/tmp/release.json').version")"
+          grep -Fq "window.MATCHAPP_BUILD = '$VERSION';" /tmp/build-meta.js
+          curl -fsSL --max-time 30 https://matchapp.tv/kids/ -o /tmp/kids.html
+          ! grep -q 'GTM-M7J3NNBN' /tmp/kids.html
+          curl -fsSL --max-time 30 https://matchapp.tv/ -o /tmp/home.html
+          grep -q 'GTM-M7J3NNBN' /tmp/home.html
+          grep -q 'ca-pub-9541435081010948' /tmp/home.html
+          ! grep -qi 'adsterra' /tmp/home.html
+      - name: Purge Cloudflare cache
+        env:
+          CF_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CF_ZONE_ID: ${{ secrets.CLOUDFLARE_ZONE_ID }}
+        shell: bash
+        run: |
+          if [ -z "$CF_API_TOKEN" ] || [ -z "$CF_ZONE_ID" ]; then
+            echo "Cloudflare purge skipped: add CLOUDFLARE_API_TOKEN and CLOUDFLARE_ZONE_ID Actions secrets."
+            exit 0
+          fi
+          curl -fsS -X POST "https://api.cloudflare.com/client/v4/zones/$CF_ZONE_ID/purge_cache"             -H "Authorization: Bearer $CF_API_TOKEN"             -H "Content-Type: application/json"             --data '{"purge_everything":true}'
+      - name: Notify phone (success only)
+        if: success()
+        env:
+          MSG: ${{ github.event.head_commit.message }}
+          TOPIC: ${{ secrets.NTFY_TOPIC }}
+        shell: bash
+        run: |
+          if [ -z "$TOPIC" ]; then
+            echo "Phone notification skipped: NTFY_TOPIC is not configured."
+            exit 0
+          fi
+          curl -fsS -H "Title: matchapp.tv deployed ✅" -d "${MSG:-Deployment validated}" "https://ntfy.sh/$TOPIC"

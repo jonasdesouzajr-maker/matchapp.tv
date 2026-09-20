@@ -1,45 +1,48 @@
-// Auto ads use the single publisher script in <head>. Manual units must wait
-// for a visible container with a measurable width (including collapsed panels).
+/* MatchApp AdSense manual units — one initializer, fixed slots, no layout polling. */
 (function(){
- 'use strict';
- if(/MatchAppTVAndroid/i.test(navigator.userAgent||'')){
-  window.MATCHAPP_IS_AD_FREE=true;
-  try{localStorage.setItem('match_ad_free','true')}catch(_){}
-  document.documentElement.classList.add('ads-empty','matchapp-android');
-  return;
- }
- try{if(localStorage.getItem('match_ad_free')==='true')return;}catch(_){}
- if(window.MATCHAPP_IS_AD_FREE===true)return;
- if(window.matchAppAdsInitialized)return;
- window.matchAppAdsInitialized=true;
- function ready(){
-  const slots=Array.from(document.querySelectorAll('ins.adsbygoogle'));
-  const requested=new WeakSet();
-  function initialize(slot){
+'use strict';
+const path=location.pathname||'/';
+if(path!=='/'&&path!=='/index.html')return;
+if(/MatchAppTVAndroid/i.test(navigator.userAgent||'')){
+ window.MATCHAPP_IS_AD_FREE=true;try{localStorage.setItem('match_ad_free','true')}catch(_){}
+ document.documentElement.classList.add('matchapp-android');return;
+}
+try{if(localStorage.getItem('match_ad_free')==='true')return}catch(_){}
+if(window.MATCHAPP_IS_AD_FREE===true||window.matchAppAdsInitialized)return;
+window.matchAppAdsInitialized=true;
+function adFreeAccount(){
+ try{return /"is_ad_free"\s*:\s*true/.test(localStorage.getItem('match_profile')||'')}catch(_){return false}
+}
+function hostFor(slot){return slot.closest('.sidebar-ad-left,.sidebar-ad-right,.ad-banner-container,.mobile-ad-bottom,.premium-ad-frame,.ma-inline-ad')||slot.parentElement}
+function label(slot){
+ const host=hostFor(slot);if(!host||host.querySelector('.ma-ad-label'))return;
+ const tag=document.createElement('span');tag.className='ma-ad-label';tag.textContent='Advertisement';host.prepend(tag);
+}
+function monitor(slot){
+ const host=hostFor(slot);if(!host||!window.MutationObserver)return;
+ const paint=()=>{
+   const status=(slot.getAttribute('data-ad-status')||'').toLowerCase();
+   if(status==='unfilled')host.classList.add('is-ad-empty');
+   else if(status==='filled')host.classList.remove('is-ad-empty');
+ };
+ new MutationObserver(paint).observe(slot,{attributes:true,attributeFilter:['data-ad-status']});paint();
+}
+function init(){
+ if(adFreeAccount())return;
+ const slots=[...document.querySelectorAll('ins.adsbygoogle')];
+ const requested=new WeakSet();
+ const request=slot=>{
    if(requested.has(slot)||slot.hasAttribute('data-adsbygoogle-status'))return;
-   const rect=slot.getBoundingClientRect();
-   if(rect.width<=0||!slot.getClientRects().length||rect.top>window.innerHeight+250||rect.bottom< -250)return;
-   requested.add(slot);
-   try{
-    // The publisher SDK accepts an explicit element, so a hidden earlier unit
-    // cannot be selected instead of this visible unit.
-    (window.adsbygoogle=window.adsbygoogle||[]).push({element:slot});
-   }catch(e){console.warn('Ad slot unavailable.',e);}
-  }
-  let scheduled=false;
-  function scan(){if(scheduled)return;scheduled=true;requestAnimationFrame(()=>{scheduled=false;slots.forEach(initialize);});}
-  if(typeof IntersectionObserver==='function'){
-   const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)initialize(e.target);}),{rootMargin:'250px'});
-   slots.forEach(s=>observer.observe(s));
-  }else window.addEventListener('scroll',scan,{passive:true});
-  if(typeof ResizeObserver==='function'){
-   const observer=new ResizeObserver(entries=>entries.forEach(e=>initialize(e.target)));
-   slots.forEach(s=>observer.observe(s));
-  }else if(typeof MutationObserver==='function'){
-   new MutationObserver(scan).observe(document.body,{subtree:true,attributes:true,attributeFilter:['class','style','hidden']});
-  }
-  window.addEventListener('resize',scan,{passive:true});
-  slots.forEach(initialize);
- }
- if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',ready,{once:true});else ready();
+   const r=slot.getBoundingClientRect(),style=getComputedStyle(slot);
+   if(style.display==='none'||style.visibility==='hidden'||r.width<=0||!slot.getClientRects().length)return;
+   requested.add(slot);label(slot);monitor(slot);
+   try{(window.adsbygoogle=window.adsbygoogle||[]).push({element:slot})}
+   catch(err){console.warn('[MatchApp ads] slot request failed',err)}
+ };
+ if('IntersectionObserver' in window){
+   const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)request(e.target)}),{rootMargin:'320px'});
+   slots.forEach(slot=>{label(slot);monitor(slot);io.observe(slot)});
+ }else slots.forEach(request);
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
 })();

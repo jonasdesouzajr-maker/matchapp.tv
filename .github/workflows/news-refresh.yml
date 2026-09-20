@@ -14,35 +14,57 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
-  group: matchapp-entertainment-news
-  cancel-in-progress: true
+  group: content-bot
+  cancel-in-progress: false
 
 jobs:
   refresh:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 12
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version: '24'
       - name: Fetch trusted entertainment headlines
         run: node tools/refresh-news-rss.js
       - name: Refresh sitemap
         run: node tools/update-sitemap.js
-      - name: Commit refreshed news
+      - name: Commit refreshed news with retry
+        id: publish
+        shell: bash
         run: |
-          if git diff --quiet -- news tools/news-urls.json tools/news-sitemap-meta.json sitemap.xml sitemaps.xml; then
-            echo "Entertainment news already current"
-            exit 0
-          fi
+          set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add news tools/news-urls.json tools/news-sitemap-meta.json sitemap.xml sitemaps.xml
-          git commit -m "Refresh hourly entertainment news"
-          git pull --rebase origin "${GITHUB_REF_NAME}"
-          git push origin "HEAD:${GITHUB_REF_NAME}"
+          for attempt in 1 2 3; do
+            if [ "$attempt" -gt 1 ]; then
+              git reset --hard HEAD
+              git clean -fd
+              git pull --rebase origin "${GITHUB_REF_NAME}"
+              node tools/refresh-news-rss.js
+              node tools/update-sitemap.js
+            fi
+            git add news tools/news-urls.json tools/news-sitemap-meta.json sitemap.xml sitemaps.xml
+            if git diff --staged --quiet; then
+              echo "Entertainment news already current"
+              echo "changed=0" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            git commit -m "Refresh hourly entertainment news" || true
+            if git push origin "HEAD:${GITHUB_REF_NAME}"; then
+              echo "changed=1" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+          done
+          exit 1
+      - name: Deploy refreshed content
+        if: steps.publish.outputs.changed == '1'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run pages-deploy.yml --ref main

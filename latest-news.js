@@ -8,8 +8,8 @@
   const MAX_GLOBAL=5;
   const MAX_TOTAL=10;
   const SEEN_KEY='matchapp.latestNewsSeenVersion';
-  const AUTO_FIRST_MS=500;
-  const AUTO_MS=1900;
+  const AUTO_FIRST_MS=3500;
+  const AUTO_MS=6500;
   const TRUSTED_DOMAINS=['reuters.com','reutersagency.com','cnn.com','hollywoodreporter.com','bbc.com','bbc.co.uk','g1.globo.com'];
 
   const esc=s=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -167,43 +167,65 @@
     trackEl.setAttribute('aria-label','Latest entertainment news');
     items.forEach(({item,scope})=>{const c=card(item,scope);c.setAttribute('role','listitem');trackEl.append(c);});
 
-    let interval=0;
-    let firstTimer=0;
+    let autoTimer=0;
     let paused=false;
+    let inView=false;
     const reduced=()=>window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const step=()=>{const first=trackEl.querySelector('.ma-news-card');return first?first.getBoundingClientRect().width+8:168;};
+    const maxScroll=()=>Math.max(0,trackEl.scrollWidth-trackEl.clientWidth);
+    const updateArrows=()=>{
+      const max=maxScroll();
+      prev.disabled=trackEl.scrollLeft<=2;
+      next.disabled=trackEl.scrollLeft>=max-2;
+      prev.setAttribute('aria-disabled',prev.disabled?'true':'false');
+      next.setAttribute('aria-disabled',next.disabled?'true':'false');
+    };
     const move=dir=>{
       if(!trackEl.children.length)return;
-      const nearEnd=trackEl.scrollLeft+trackEl.clientWidth>=trackEl.scrollWidth-step()*.6;
-      const nearStart=trackEl.scrollLeft<=step()*.35;
-      if(dir>0&&nearEnd)trackEl.scrollTo({left:0,behavior:reduced()?'auto':'smooth'});
-      else if(dir<0&&nearStart)trackEl.scrollTo({left:trackEl.scrollWidth,behavior:reduced()?'auto':'smooth'});
-      else trackEl.scrollBy({left:dir*step(),behavior:reduced()?'auto':'smooth'});
+      const target=Math.max(0,Math.min(maxScroll(),trackEl.scrollLeft+dir*step()));
+      trackEl.scrollTo({left:target,behavior:reduced()?'auto':'smooth'});
+      window.setTimeout(updateArrows,reduced()?0:260);
     };
-    const stopAuto=()=>{if(firstTimer){clearTimeout(firstTimer);firstTimer=0;}if(interval){clearInterval(interval);interval=0;}};
-    const startAuto=()=>{
+    const stopAuto=()=>{if(autoTimer){clearTimeout(autoTimer);autoTimer=0;}};
+    const scheduleAuto=(delay=AUTO_MS)=>{
       stopAuto();
-      if(paused||reduced()||items.length<2)return;
-      firstTimer=window.setTimeout(()=>{
-        firstTimer=0;
-        if(paused)return;
-        move(1);
-        interval=window.setInterval(()=>move(1),AUTO_MS);
-      },AUTO_FIRST_MS);
+      if(paused||!inView||document.hidden||reduced()||items.length<2)return;
+      autoTimer=window.setTimeout(()=>{
+        autoTimer=0;
+        if(paused||!inView||document.hidden)return;
+        if(trackEl.scrollLeft>=maxScroll()-2)trackEl.scrollTo({left:0,behavior:'smooth'});
+        else move(1);
+        scheduleAuto(AUTO_MS);
+      },delay);
     };
     const pause=()=>{paused=true;stopAuto();};
-    const resume=()=>{paused=false;startAuto();};
+    const resume=()=>{paused=false;scheduleAuto(AUTO_FIRST_MS);};
 
-    prev.addEventListener('click',()=>{move(-1);if(!paused)startAuto();});
-    next.addEventListener('click',()=>{move(1);if(!paused)startAuto();});
+    prev.addEventListener('click',()=>{move(-1);scheduleAuto(AUTO_FIRST_MS);});
+    next.addEventListener('click',()=>{move(1);scheduleAuto(AUTO_FIRST_MS);});
+    trackEl.addEventListener('scroll',updateArrows,{passive:true});
+    wrap.addEventListener('keydown',e=>{
+      if(e.key==='ArrowLeft'){e.preventDefault();move(-1);}
+      if(e.key==='ArrowRight'){e.preventDefault();move(1);}
+    });
+    wrap.addEventListener('mouseenter',pause);
+    wrap.addEventListener('mouseleave',resume);
     wrap.addEventListener('focusin',pause);
     wrap.addEventListener('focusout',e=>{if(!wrap.contains(e.relatedTarget))resume();});
     wrap.addEventListener('touchstart',pause,{passive:true});
-    wrap.addEventListener('touchend',resume,{passive:true});
-    document.addEventListener('visibilitychange',()=>{if(document.hidden)stopAuto();else if(!paused)startAuto();});
+    wrap.addEventListener('touchend',()=>{paused=false;scheduleAuto(AUTO_FIRST_MS);},{passive:true});
+    document.addEventListener('visibilitychange',()=>{if(document.hidden)stopAuto();else scheduleAuto(AUTO_FIRST_MS);});
+    if('IntersectionObserver' in window){
+      const io=new IntersectionObserver(entries=>{
+        inView=entries.some(entry=>entry.isIntersecting&&entry.intersectionRatio>.15);
+        if(inView)scheduleAuto(AUTO_FIRST_MS);else stopAuto();
+      },{threshold:[0,.15]});
+      io.observe(wrap);
+    }else{inView=true;scheduleAuto(AUTO_FIRST_MS);}
 
     wrap.append(prev,trackEl,next);
-    wrap.startAuto=startAuto;
+    requestAnimationFrame(updateArrows);
+    wrap.startAuto=()=>scheduleAuto(AUTO_FIRST_MS);
     wrap.stopAuto=stopAuto;
     wrap.reveal=id=>{
       if(!id)return false;

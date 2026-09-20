@@ -33,8 +33,8 @@ This folder is one self-contained Android Studio project with **two separate ins
 
 Both Android modules are synchronized for the current production MatchApp surfaces:
 
-- Release version: **1.1.8**
-- Version code: **10**
+- Release version: **1.1.21**
+- Version code: **23**
 - Standard app launch: `https://matchapp.tv/`
 - Kids app launch: `https://matchapp.tv/kids/`
 - Both apps cold-load production on launch and manual refresh to avoid stale WebView content, then resume normal caching after the page renders.
@@ -47,12 +47,12 @@ Because these apps intentionally render the live web experience, the latest appr
 
 The project intentionally keeps the already proven MatchApp Android toolchain:
 
-- Android Gradle Plugin 8.7.3
-- Gradle 8.9
+- Android Gradle Plugin 8.13.2
+- Gradle 8.13
 - Kotlin 2.0.21
 - JDK 17
-- compileSdk 35
-- targetSdk 35
+- compileSdk 36
+- targetSdk 36
 - minSdk 24 (Android 7.0+)
 
 Open the repository's **`android-studio` folder** in Android Studio Quail. Let Gradle sync, then choose either the `app` or `kidsapp` run configuration.

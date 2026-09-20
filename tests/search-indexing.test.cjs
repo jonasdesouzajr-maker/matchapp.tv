@@ -39,7 +39,11 @@ test('sitemaps list real public documents on matchapp.tv and never ads.txt',()=>
  const robots=read('robots.txt');
  assert.match(robots,/Sitemap: https:\/\/matchapp\.tv\/sitemaps\.xml/);
  assert.doesNotMatch(robots,/Sitemap: https:\/\/matchapp\.tv\/sitemap\.xml/);
- assert.doesNotMatch(robots,/Sitemap: https:\/\/matchapp\.tv\/legal-sitemap\.xml/);
+ const index=read('sitemaps.xml');
+ assert.match(index,/https:\/\/matchapp\.tv\/sitemap\.xml/);
+ assert.match(index,/https:\/\/matchapp\.tv\/legal-sitemap\.xml/);
+ assert.doesNotMatch(robots,/Disallow:\s*\/register\.html/);
+ assert.doesNotMatch(robots,/Disallow:\s*\/profile\//);
 });
 test('directory stubs stop /pricing/ and /profile/ from 404ing',()=>{
  const pricing=read('pricing/index.html'),profile=read('profile/index.html');
@@ -48,7 +52,9 @@ test('directory stubs stop /pricing/ and /profile/ from 404ing',()=>{
  assert.match(pricing,/noindex/i);
  assert.match(profile,/canonical[^>]+https:\/\/matchapp\.tv\/profile\/profile\.html/);
  assert.match(profile,/noindex/i);
- assert.match(read('_redirects'),/https:\/\/matchapp\.tv\/:splat/);
+ assert.equal(fs.existsSync(path.join(root,'_redirects')),false);
+ assert.equal(fs.existsSync(path.join(root,'_headers')),false);
+ assert.equal(fs.existsSync(path.join(root,'vercel.json')),false);
 });
 test('legacy .cc host is bounced to the canonical .tv host',()=>{
  const settings=read('settings.js'),i18n=read('i18n.js'),four=read('404.html');

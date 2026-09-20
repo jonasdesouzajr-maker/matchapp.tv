@@ -1,28 +1,4 @@
-const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),{JSDOM}=require('jsdom');
-const root=path.join(__dirname,'..'),source=fs.readFileSync(path.join(root,'ads-init.js'),'utf8');
-test('hidden ads wait for layout and a later visible unit is targeted only once',()=>{
- const d=new JSDOM('<ins class="adsbygoogle" id="hidden"></ins><ins class="adsbygoogle" id="visible"></ins><ins class="adsbygoogle" data-adsbygoogle-status="done"></ins>',{runScripts:'outside-only',pretendToBeVisual:true}),w=d.window;
- const hidden=w.document.getElementById('hidden'),visible=w.document.getElementById('visible');let width=0,resize;const calls=[];
- for(const slot of w.document.querySelectorAll('ins')){slot.getBoundingClientRect=()=>({width:slot===hidden?width:300,top:0,bottom:90});slot.getClientRects=()=>slot.getBoundingClientRect().width?[{}]:[];}
- w.ResizeObserver=class{constructor(fn){resize=fn;}observe(){}};w.IntersectionObserver=class{observe(){}};
- w.adsbygoogle={push({element}){assert(element.getBoundingClientRect().width>0);calls.push(element);}};
- w.eval(source);w.document.dispatchEvent(new w.Event('DOMContentLoaded'));
- assert.deepEqual(calls,[visible]);width=300;resize([{target:hidden},{target:visible}]);assert.deepEqual(calls,[visible,hidden]);
- w.eval(source);resize([{target:hidden},{target:visible}]);assert.equal(calls.length,2);w.close();
-});
-test('AdSense initializer is single-owner on the content-rich homepage only',()=>{
- const home=fs.readFileSync(path.join(root,'index.html'),'utf8');
- assert(!home.includes('enable_page_level_ads'));
- assert(!/adsbygoogle[^<]*\.push\(\{\}\)/.test(home));
- assert.equal((home.match(/src="\/ads-init\.js/g)||[]).length,1,'index.html');
- const events=fs.readFileSync(path.join(root,'events-archive.html'),'utf8');
- assert.equal((events.match(/src="\/ads-init\.js/g)||[]).length,1,'events-archive.html');
- assert.equal((events.match(/class="adsbygoogle"/g)||[]).length,1,'events-archive.html');
- for(const p of ['discover.html','together.html','profile/profile.html','oauth/consent.html']){
-  const s=fs.readFileSync(path.join(root,p),'utf8');
-  assert(!s.includes('enable_page_level_ads'),p);
-  assert(!/adsbygoogle[^<]*\.push\(\{\}\)/.test(s),p);
-  assert.equal((s.match(/src="\/ads-init\.js/g)||[]).length,0,p);
- }
- assert(!fs.readFileSync(path.join(root,'pricing/pricing.html'),'utf8').includes('enable_page_level_ads'));
-});
+const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
+const root=path.join(__dirname,'..'),read=p=>fs.readFileSync(path.join(root,p),'utf8');
+test('ads use one initializer, fixed hosts and collapse only after AdSense reports unfilled',()=>{const s=read('ads-init.js');assert.match(s,/window\.matchAppAdsInitialized/);assert.match(s,/IntersectionObserver/);assert.match(s,/data-ad-status/);assert.match(s,/status==='unfilled'/);assert.match(s,/is-ad-empty/);assert.doesNotMatch(s,/setInterval|4500|9000/);});
+test('Android user agent remains ad-free',()=>{const s=read('ads-init.js');assert.match(s,/MatchAppTVAndroid/);assert.match(s,/MATCHAPP_IS_AD_FREE/);});

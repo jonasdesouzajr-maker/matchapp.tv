@@ -62,3 +62,38 @@ body.page-home :is(.lazy-foldable,details> :not(summary)){transition:grid-templa
  object-fit:contain!important;object-position:center!important;border-radius:22%!important;
  background:transparent!important;box-shadow:none!important;
 }
+
+
+/* Shared rail: native scrolling is the source of truth. */
+:is(.marquee-viewport,.events-viewport,.ma-news-carousel-shell,[data-rail-viewport]){
+  overflow-x:auto;
+  overflow-y:hidden;
+  scroll-snap-type:x mandatory;
+  scroll-behavior:smooth;
+  overscroll-behavior-inline:contain;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+  mask-image:linear-gradient(90deg,transparent 0,#000 24px,#000 calc(100% - 24px),transparent 100%);
+}
+:is(.marquee-viewport,.events-viewport,.ma-news-carousel-shell,[data-rail-viewport])::-webkit-scrollbar{display:none}
+:is(.marquee-track,.events-track,.ma-news-carousel){
+  display:flex;
+  gap:16px;
+  width:max-content;
+}
+:is(.marquee-track,.events-track,.ma-news-carousel)>*{scroll-snap-align:start;scroll-snap-stop:normal}
+:is(.marquee-prev,.marquee-next,.events-prev,.events-next,.ma-news-prev,.ma-news-next,[data-rail-dir]){
+  min-width:44px;
+  min-height:44px;
+  width:44px;
+  height:44px;
+  display:grid;
+  place-items:center;
+}
+:is(.marquee-prev,.marquee-next,.events-prev,.events-next,.ma-news-prev,.ma-news-next,[data-rail-dir]):disabled{
+  opacity:.32;
+  pointer-events:none;
+}
+@media(prefers-reduced-motion:reduce){
+  :is(.marquee-viewport,.events-viewport,.ma-news-carousel-shell,[data-rail-viewport]){scroll-behavior:auto}
+}

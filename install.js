@@ -63,8 +63,7 @@ function showInstallButtons() {
     installButtons().forEach(b => { b.style.display = 'inline-flex'; });
 }
 function hideInstallButtons() {
-    installButtons().forEach(b => { b.style.display = window.matchAppUpdatePending || window.matchAppInstallState?.isInstalled() ? 'inline-flex' : 'none'; });
-    window.syncMatchAppUpdateButtons?.();
+    installButtons().forEach(b => { b.style.display = 'none'; });
 }
 
 // Chrome/Edge/Brave signal real installability by firing this. We stop the
@@ -138,7 +137,6 @@ window.closeInstallModal = function () {
 };
 
 window.installMatchApp = async function () {
-    if (window.matchAppUpdatePending) { await window.updateMatchApp(); return; }
     if (window.matchAppInstallState?.isInstalled()) {
         const code=window.MATCH_LANG||document.documentElement.lang||'en';
         const text=code.startsWith('pt')?'O MatchApp já foi instalado. Abra pelo ícone na tela inicial ou na lista de aplicativos. Seu dispositivo controla a posição do ícone.':code.startsWith('es')?'MatchApp ya está instalado. Ábrelo desde la pantalla de inicio o la lista de aplicaciones. Tu dispositivo controla la posición del icono.':'MatchApp is installed. Open its icon from your home screen or app launcher. Your device controls where the icon is placed.';
@@ -277,31 +275,11 @@ function initInstall() {
 }
 
 if ('serviceWorker' in navigator) {
-    // Registered for installability only — see sw.js for why it deliberately
-    // caches nothing.
-
-    // Captured BEFORE registering. controllerchange fires on first install too
-    // (clients.claim takes control of an uncontrolled page), and checking the
-    // controller inside the handler can't tell the two cases apart because by
-    // then it is set either way. Only a page that already had a controller is
-    // one where a worker is being *replaced* — the case worth reloading for.
-    const hadControllerAtStart = !!navigator.serviceWorker.controller;
-
     window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js').then((reg) => {
-            // Force an update check on every load. Browsers only re-check
-            // sw.js periodically on their own, which meant a user stuck
-            // behind a broken worker could stay stuck for hours. Checking
-            // explicitly makes recovery happen on the next visit instead.
-            try { reg.update(); } catch (e) {}
-        }).catch(() => {});
-
-        navigator.serviceWorker.addEventListener('controllerchange', () => {
-            if (!hadControllerAtStart) return;
-            // Do not interrupt an active form or device sign-in ceremony.
-            window.checkMatchAppRelease?.();
+        navigator.serviceWorker.register('/sw.js').catch((err) => {
+            console.warn('[MatchApp install] service worker registration failed', err);
         });
-    });
+    }, { once: true });
 }
 
 document.addEventListener('DOMContentLoaded', () => setTimeout(initInstall, 100));

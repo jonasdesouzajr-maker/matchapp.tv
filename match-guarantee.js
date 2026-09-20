@@ -128,6 +128,18 @@
     };
     window.askAIConversational.__guarantee = true;
   }
-  function boot() { bootLang(); wrapPick(); wrapTrigger(); wrapAsk(); setInterval(() => { wrapPick(); wrapTrigger(); wrapAsk(); }, 2500); }
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();
+  function installWrappers(){wrapPick();wrapTrigger();wrapAsk();}
+  function boot() {
+    bootLang();installWrappers();
+    let attempt=0;
+    const retry=()=>{
+      if(window.askAIConversational?.__guarantee)return;
+      installWrappers();
+      if(++attempt<8)setTimeout(retry,Math.min(1400,150*attempt));
+    };
+    setTimeout(retry,150);
+    document.addEventListener('matchapp:ai-ready',installWrappers);
+    document.addEventListener('matchapp:langchange',installWrappers);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot,{once:true}); else boot();
 })();

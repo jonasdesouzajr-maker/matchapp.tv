@@ -8,14 +8,13 @@ const read=f=>fs.readFileSync(path.join(root,f),'utf8');
 test('commercial tiers are finite and use one 3-5-10-50 included-action model',()=>{
   const pricing=read('pricing/pricing.html');
   const locale=read('i18n.js');
-  const quota=read('supabase/migrations/002_profile_tiers.sql');
+  const quota=read('supabase/migrations/014_free_accounts_five_daily.sql');
   const commercial=read('supabase/migrations/013_unify_commercial_entitlements.sql');
   const bootstrap=read('supabase/security/account-identity-and-credits.sql');
 
   assert.match(quota,/when p_is_business then 50/i);
   assert.match(quota,/when p_is_vip then 10/i);
-  assert.match(quota,/when p_profile_complete then 5/i);
-  assert.match(quota,/else 3/i);
+  assert.match(quota,/else 5/i);
 
   assert.match(pricing,/10[^\n]*included AI actions/i);
   assert.match(pricing,/50[^\n]*included AI actions/i);

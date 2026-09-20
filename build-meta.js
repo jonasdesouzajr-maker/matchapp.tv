@@ -1,34 +1,6 @@
 // Functional release identifier must match release.json.
-window.MATCHAPP_BUILD = '2026.09.19.3';
+window.MATCHAPP_BUILD = '2026.09.20.1';
 
-
-/* HOME STARTUP SCHEDULER */
-(function(){
-  'use strict';
-  const p=location.pathname;
-  if(p!=='/'&&p!=='/index.html') return;
-  if(window.__MATCHAPP_HOME_STARTUP_SCHEDULER__) return;
-  window.__MATCHAPP_HOME_STARTUP_SCHEDULER__=true;
-  const nativeAdd=Document.prototype.addEventListener;
-  let slot=0;
-  function patchedAdd(type,listener,options){
-    const current=(document.currentScript&&document.currentScript.src)||'';
-    const fromApp=type==='DOMContentLoaded'&&/\/app\.js(?:[?#]|$)/.test(current)&&typeof listener==='function';
-    if(!fromApp) return nativeAdd.call(this,type,listener,options);
-    const delay=Math.min(72,slot++*12);
-    const wrapped=function(ev){
-      const self=this;
-      setTimeout(function(){
-        try{listener.call(self,ev);}catch(err){console.error('[MatchApp startup]',err);}
-      },delay);
-    };
-    return nativeAdd.call(this,type,wrapped,options);
-  }
-  Document.prototype.addEventListener=patchedAdd;
-  window.addEventListener('load',function restoreNativeListener(){
-    if(Document.prototype.addEventListener===patchedAdd) Document.prototype.addEventListener=nativeAdd;
-  },{once:true});
-})();
 
 /* Search freshness + truthfulness layer. */
 (function () {
@@ -62,11 +34,6 @@ window.MATCHAPP_BUILD = '2026.09.19.3';
     script.id = id; script.type = 'application/ld+json'; script.textContent = JSON.stringify(data);
     document.head.appendChild(script);
   }
-  function loadHomeRuntimeFixes() {
-    if (document.querySelector('script[data-matchapp-marquee-autoplay]')) return;
-    const script = document.createElement('script');
-    script.src = '/marquee-autoplay.js?v=20260919-touchglide2&b=' + encodeURIComponent(window.MATCHAPP_BUILD || '2026.09.19.1'); script.defer = true; script.dataset.matchappMarqueeAutoplay = '1';    document.head.appendChild(script);
-  }
   function normalizePricingTruth() {
     const path = (location.pathname || '').replace(/\/+$/, '') || '/';
     if (path !== '/pricing' && path !== '/pricing/pricing.html') return;
@@ -96,10 +63,6 @@ window.MATCHAPP_BUILD = '2026.09.19.3';
       } catch (_) {}
     });
   }
-  function ensurePremiumUi(){
-    const p=(location.pathname||'/').toLowerCase();if(p==='/kids'||p.startsWith('/kids/'))return;
-    if(!document.querySelector('link[data-matchapp-premium-ui]')){const link=document.createElement('link');link.rel='stylesheet';link.href='/premium-ui.css?v=20260919-premium1';link.dataset.matchappPremiumUi='1';document.head.appendChild(link);}
-  }
   function ensureKidsEntry(){
     const p=(location.pathname||'/').toLowerCase();if(p==='/kids'||p.startsWith('/kids/'))return;
     let entry=document.getElementById('matchapp-kids-entry');const header=document.querySelector('header.app-header,.app-header');const host=header?.querySelector('nav,#header-auth-area')||header;
@@ -108,9 +71,8 @@ window.MATCHAPP_BUILD = '2026.09.19.3';
   }
   function install() {
     const path = location.pathname;
-    ensurePremiumUi();ensureKidsEntry();setTimeout(ensureKidsEntry,700);
+    ensureKidsEntry();
     if (path === '/' || path === '/index.html') {
-      loadHomeRuntimeFixes();
       document.title = 'What to Watch Tonight | AI Movie & TV Finder | MatchApp';
       upsertMeta('description', 'Find what to watch tonight with MatchApp: exact mood matching, verified streaming and cinema availability by country, local streaming alerts, Kids Mode and Match Together.');
       upsertMeta('robots', 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1');
