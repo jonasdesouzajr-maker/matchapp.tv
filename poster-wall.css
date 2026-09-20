@@ -330,3 +330,63 @@ html body.page-home .poster-wall::after{
       linear-gradient(0deg,color-mix(in srgb,var(--theme-bg,#100a23) 72%,transparent),transparent 84%)!important;
   }
 }
+
+
+/* 2026-09-20 scattered static poster background */
+.poster-wall-grid{
+  inset:0!important;
+  display:block!important;
+  opacity:1!important;
+  transform:none!important;
+  filter:none!important;
+  animation:none!important;
+  will-change:auto!important;
+}
+.poster-wall-tile{
+  position:absolute!important;
+  width:clamp(64px,7vw,106px)!important;
+  aspect-ratio:2/3!important;
+  opacity:.76!important;
+  border-radius:10px!important;
+  overflow:hidden!important;
+  animation:none!important;
+  will-change:auto!important;
+  box-shadow:0 8px 24px rgba(0,0,0,.34),0 0 0 1px rgba(229,193,88,.18)!important;
+}
+.poster-wall-tile>img{
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  display:block!important;
+}
+.poster-wall-brand{display:none!important}
+.poster-wall::before{display:none!important}
+.poster-wall::after{
+  background:
+    linear-gradient(180deg,rgba(8,7,20,.18),rgba(8,7,20,.30)),
+    radial-gradient(circle at 50% 38%,transparent 0 46%,rgba(8,7,20,.16) 100%)!important;
+}
+.poster-wall-tile:nth-child(1){top:1%;left:2%}
+.poster-wall-tile:nth-child(2){top:9%;left:17%}
+.poster-wall-tile:nth-child(3){top:3%;left:35%}
+.poster-wall-tile:nth-child(4){top:16%;left:53%}
+.poster-wall-tile:nth-child(5){top:5%;right:3%}
+.poster-wall-tile:nth-child(6){top:29%;left:8%}
+.poster-wall-tile:nth-child(7){top:39%;left:25%}
+.poster-wall-tile:nth-child(8){top:27%;left:44%}
+.poster-wall-tile:nth-child(9){top:45%;left:63%}
+.poster-wall-tile:nth-child(10){top:31%;right:5%}
+.poster-wall-tile:nth-child(11){top:58%;left:3%}
+.poster-wall-tile:nth-child(12){top:70%;left:20%}
+.poster-wall-tile:nth-child(13){top:56%;left:39%}
+.poster-wall-tile:nth-child(14){top:75%;left:58%}
+.poster-wall-tile:nth-child(15){top:61%;right:4%}
+.poster-wall-tile:nth-child(16){top:83%;left:34%}
+@media(max-width:700px){
+  .poster-wall-tile{width:clamp(54px,15vw,72px)!important;opacity:.68!important;border-radius:8px!important}
+  .poster-wall-tile:nth-child(n+13){display:none!important}
+  .poster-wall::after{background:linear-gradient(180deg,rgba(8,7,20,.24),rgba(8,7,20,.34))!important}
+}
+@media(min-width:2200px){
+  .poster-wall-tile{width:clamp(96px,5.2vw,138px)!important}
+}
