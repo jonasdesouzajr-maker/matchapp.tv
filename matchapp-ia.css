@@ -2387,3 +2387,23 @@ html body.page-home .chrome-banner{
   backdrop-filter:none!important;
   -webkit-backdrop-filter:none!important;
 }
+
+
+/* 2026-09-20 Home top-box final freeze guard.
+   The approved Ai badge stays visible, but its continuous gradient/blur/star
+   animations are disabled on Home so the header cannot keep a compositor
+   layer repainting while the page is scrolling. */
+html body.page-home #mh-topbox :is(.ma-brand-orb,.ma-ai-letters,.ma-ai-star),
+html body.page-home #mh-topbox .ma-ai-brand-button::before,
+html body.page-home #mh-topbox .ma-ai-brand-button::after{
+  animation:none!important;
+  will-change:auto!important;
+}
+html body.page-home #mh-topbox .ma-ai-brand-button::before,
+html body.page-home #mh-topbox .ma-ai-brand-button::after{
+  filter:none!important;
+}
+html body.page-home #mh-topbox .ma-ai-letters{
+  background-position:50% 50%!important;
+  filter:drop-shadow(0 0 6px rgba(74,221,255,.42)) drop-shadow(0 0 10px rgba(190,81,255,.24))!important;
+}
