@@ -10,7 +10,7 @@ try{
 }catch(_){}
 const KEY='match_settings',LEGACY_AUTOREAD_KEY='match_voice_autoread',KIDS_MODE_KEY='match_kids_mode';
 const DEFAULTS={fontScale:1,voiceURI:'',voiceRate:.96,voicePitch:1,autoRead:true,reduceMotion:false,lazyDefault:false,compactCards:false,theme:'aurora',blockedOriginCountries:[],blockedGenres:[]};let settings={...DEFAULTS},syncTimer=null;
-function syncLegacyAutoRead(){try{localStorage.setItem(LEGACY_AUTOREAD_KEY,settings.autoRead===false?'false':'true')}catch(_){}
+function syncLegacyAutoRead(){try{localStorage.setItem(LEGACY_AUTOREAD_KEY,settings.autoRead===false?'false':'true')}catch(_){}}
 function load(){try{const raw=localStorage.getItem(KEY);if(raw)settings={...DEFAULTS,...JSON.parse(raw)};if(!raw){const legacy=localStorage.getItem(LEGACY_AUTOREAD_KEY);if(legacy==='false')settings.autoRead=false;else if(legacy==='true')settings.autoRead=true}}catch(_){settings={...DEFAULTS}}syncLegacyAutoRead()}
 function persistLocal(){try{localStorage.setItem(KEY,JSON.stringify(settings))}catch(_){}syncLegacyAutoRead()}
 function persistRemote(){clearTimeout(syncTimer);syncTimer=setTimeout(async()=>{const sb=window.supabaseClient;if(!sb)return;try{const {data:{user}}=await sb.auth.getUser();if(user)await sb.auth.updateUser({data:{match_settings:settings}})}catch(_){ }},900)}
