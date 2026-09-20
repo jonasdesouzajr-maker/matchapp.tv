@@ -3,7 +3,7 @@ const assert=require('node:assert/strict');
 const fs=require('node:fs');
 const path=require('node:path');
 const root=path.join(__dirname,'..'),read=p=>fs.readFileSync(path.join(root,p),'utf8');
-test('shown titles remain permanent and merge into signed-in history',()=>{const s=read('matching-policy.js');assert.match(s,/match_recentTitles/);assert.match(s,/remember\(i,'shown',false\)/);});
+test('shown titles remain permanent and merge into signed-in history',()=>{const s=read('matching-policy.js');assert.match(s,/match_recentTitles/);assert.match(s,/stageRestored\(i,'shown'\)/);});
 test('visual title identity wins over incidental music tags',()=>{const s=read('production-hardening.js');assert.match(s,/if\(!audioIntent&&isAudioType\(rawType\)\)return null/);});
 test('install progress exposes no fake byte progress or layout-shifting bar',()=>{const s=read('install-progress.js');assert.match(s,/no layout UI/i);assert.match(s,/const noop/);assert.doesNotMatch(s,/stage\(|progress-bar|setInterval|requestAnimationFrame/);});
 test('crawlability and AdSense publisher declaration remain correct',()=>{assert.equal(read('ads.txt').trim(),'google.com, pub-9541435081010948, DIRECT, f08c47fec0942fa0');const robots=read('robots.txt');assert.match(robots,/Sitemap: https:\/\/matchapp\.tv\/sitemaps\.xml/);assert.doesNotMatch(robots,/Disallow: \/register\.html|Disallow: \/profile\//);});
