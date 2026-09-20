@@ -104,20 +104,23 @@ jobs:
           ! grep -q 'matchapp-tiktok-intro' /tmp/home.html
           ! grep -q 'ma-ui-preparing' /tmp/home.html
           grep -q '/page-origin.js?v=20260920-freeze2' /tmp/home.html
-          grep -q '/build-meta.js?v=20260920-freeze-final1' /tmp/home.html
+          grep -q '/build-meta.js?v=20260920-design1' /tmp/home.html
           grep -q 'matchapp-official-icon-512.webp' /tmp/home.html
-          grep -q '/matchapp-ia.css?v=20260920-freeze-final1' /tmp/home.html
-          curl -fsSL --max-time 30 'https://matchapp.tv/matchapp-ia.css?v=20260920-freeze-final1' -o /tmp/home-stability.css
+          grep -q '/matchapp-ia.css?v=20260920-design1' /tmp/home.html
+          curl -fsSL --max-time 30 'https://matchapp.tv/matchapp-ia.css?v=20260920-design1' -o /tmp/home-stability.css
           grep -q '2026-09-20 renderer root guard' /tmp/home-stability.css
           grep -q '2026-09-20 Home compositor stability guard' /tmp/home-stability.css
           grep -q '2026-09-20 Home top-box final freeze guard' /tmp/home-stability.css
+          grep -q '2026-09-20 Home brand crop and fold cleanup' /tmp/home-stability.css
           ! grep -q 'header-cosmic-8k.svg' /tmp/home-stability.css
           grep -q '/matchapp-ia.js?v=20260920-freeze-final1' /tmp/home.html
           grep -q '/catalog-media.js?v=20260920-freeze-final1' /tmp/home.html
-          grep -q '/lazy.js?v=20260920-freeze-final1' /tmp/home.html
+          grep -q '/app.js?v=20260920-design1' /tmp/home.html
+          grep -q '/poster-wall.css?v=20260920-design1' /tmp/home.html
+          grep -q '/lazy.js?v=20260920-design1' /tmp/home.html
           curl -fsSL --max-time 30 'https://matchapp.tv/matchapp-ia.js?v=20260920-freeze-final1' -o /tmp/home-ia.js
           grep -Fq "root.style.overflowAnchor='none'" /tmp/home-ia.js
-          curl -fsSL --max-time 30 'https://matchapp.tv/lazy.js?v=20260920-freeze-final1' -o /tmp/home-lazy.js
+          curl -fsSL --max-time 30 'https://matchapp.tv/lazy.js?v=20260920-design1' -o /tmp/home-lazy.js
           grep -Fq 'function armSwiftHydration(section)' /tmp/home-lazy.js
           curl -fsSL --max-time 30 'https://matchapp.tv/catalog-media.js?v=20260920-freeze-final1' -o /tmp/home-media.js
           grep -Fq 'TRENDING_CONCURRENCY=2' /tmp/home-media.js
