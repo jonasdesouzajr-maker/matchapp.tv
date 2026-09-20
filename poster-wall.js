@@ -1,8 +1,12 @@
 /* Decorative real-art collage: never shown in the child-safe Kids area. */
 (function(){'use strict';
  function kids(){return location.pathname.startsWith('/kids/')||document.body.classList.contains('kids-body');}
+ function home(){return location.pathname==='/'||location.pathname==='/index.html';}
  async function boot(){
-  if(kids()||document.querySelector('.poster-wall'))return;
+  // Home owns its own stable background. Do not create the fixed 32-image
+  // decorative wall there: real browsers were hanging during the post-load
+  // compositor/raster window even after tile animations were disabled.
+  if(home()||kids()||document.querySelector('.poster-wall'))return;
   try{
    const response=await fetch('/data/poster-wall.json',{cache:'force-cache'});if(!response.ok)return;
    const posters=(await response.json()).filter(p=>/^https:\/\/image\.tmdb\.org\/t\/p\/[a-z0-9]+\/[A-Za-z0-9_.-]+$/.test(p.poster)).slice(0,8);
