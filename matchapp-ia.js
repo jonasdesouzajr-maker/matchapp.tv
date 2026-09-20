@@ -350,7 +350,19 @@ function applyLanguage(){
 function boot(){
  if(!(isHome||isDiscover||isTogether||isPricing))return;
  ensureBrandMeta();brandHeader();
- if(isHome){prepareResponsiveAds();mountHome()}if(isDiscover)mountDiscover();if(isTogether)mountTogether();if(isPricing)mountPricing();
+ if(isHome){
+   // Home re-homes several existing sections during boot. Disable browser
+   // scroll anchoring for those synchronous moves so first paint can never
+   // jump the viewport down to a section that changed position.
+   const root=document.documentElement,previousAnchor=root.style.overflowAnchor;
+   root.style.overflowAnchor='none';
+   prepareResponsiveAds();mountHome();
+   requestAnimationFrame(()=>requestAnimationFrame(()=>{
+     if(previousAnchor)root.style.overflowAnchor=previousAnchor;
+     else root.style.removeProperty('overflow-anchor');
+   }));
+ }
+ if(isDiscover)mountDiscover();if(isTogether)mountTogether();if(isPricing)mountPricing();
  document.addEventListener('matchapp:langchange',()=>setTimeout(applyLanguage,0));
  if(isHome){
    const revealCanonicalHome=()=>requestAnimationFrame(()=>requestAnimationFrame(()=>setTimeout(()=>{
