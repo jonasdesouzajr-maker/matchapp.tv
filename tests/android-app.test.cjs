@@ -38,6 +38,10 @@ test('Android Studio project stays ad-free while unpublished store CTA stays hid
   assert.match(main,/MatchAppTVAndroid\/\d+\.\d+(?:\.\d+)?/);
   assert.match(main,/MatchAppAiAndroid\/\d+\.\d+(?:\.\d+)?/);
   assert.match(main,/MATCHAPP_IS_AD_FREE/);
+  const launcher=read('android-studio/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml');
+  assert.match(launcher,/@drawable\/matchapp_official_icon/);
+  assert.ok(fs.existsSync(path.join(root,'android-studio/app/src/main/res/drawable/matchapp_official_icon.webp')));
+  assert.match(read('manifest.json'),/matchapp-official-icon-512\.webp/);
   assert.match(main,/https:\/\/matchapp\.tv\//);
   assert.match(main,/appBuild=22/);
   assert.match(main,/MatchAppAiAndroid\/1\.1\.20/);
