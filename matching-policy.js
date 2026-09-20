@@ -82,9 +82,33 @@
       (data.history || []).forEach(i => { const old = byKey.get(key(i.title)); if (!old || i.addedAt > old.addedAt) byKey.set(key(i.title),i); });
       history = [...byKey.values()].sort((a,b) => b.addedAt-a.addedAt);
     }
-    ['match_savedList','match_seenList','match_dislikedList'].forEach((name,n) => stored(name,[]).forEach(i => remember(typeof i === 'string' ? {title:i} : i,['save','seen','dislike'][n],false)));
-    Object.keys(stored('match_userRatings',{})).forEach(title => remember({title},'rated',false));
-    guestHistory.forEach(i => { if(i && i.title) remember(i,'shown',false); });
+    // Account restoration can contain hundreds of titles. Calling remember()
+    // for each one used to rewrite the complete history to localStorage and
+    // dispatch matchapp:historychange on every item, locking the main thread
+    // immediately after auth on real returning accounts. Stage the same data
+    // in memory, then persist/flush/paint once.
+    const restoredBaseKeys=history.map(i=>key(i.title));
+    const restoredByKey=new Map(history.map(i=>[key(i.title),i]));
+    const restoredNewKeys=[],restoredNewSet=new Set();
+    const stageRestored=(item,action)=>{
+      const source=typeof item==='string'?{title:item}:item;
+      const itemKey=key(source&&source.title);if(!itemKey)return;
+      const clean={title:String(source.title).slice(0,300),action:String(action||'shown').slice(0,20),addedAt:Number(source.addedAt)||Date.now(),posterUrl:String(source.posterUrl||'').slice(0,1500),streamUrl:String(source.streamUrl||'').slice(0,1500),reason:String(source.reason||'').slice(0,300)};
+      permanent.add(itemKey);
+      if(!restoredByKey.has(itemKey)){
+        restoredByKey.set(itemKey,clean);restoredNewKeys.unshift(itemKey);restoredNewSet.add(itemKey);
+      }else if(clean.action!=='rated'){
+        restoredByKey.set(itemKey,clean);
+      }
+      pending.push(clean);
+    };
+    ['match_savedList','match_seenList','match_dislikedList'].forEach((name,n)=>stored(name,[]).forEach(i=>stageRestored(i,['save','seen','dislike'][n])));
+    Object.keys(stored('match_userRatings',{})).forEach(title=>stageRestored({title},'rated'));
+    guestHistory.forEach(i=>{if(i&&i.title)stageRestored(i,'shown');});
+    history=[
+      ...restoredNewKeys.map(k=>restoredByKey.get(k)).filter(Boolean),
+      ...restoredBaseKeys.filter(k=>!restoredNewSet.has(k)).map(k=>restoredByKey.get(k)).filter(Boolean)
+    ];
     persist();
     await flush();
     document.dispatchEvent(new CustomEvent('matchapp:historychange'));
