@@ -29,7 +29,7 @@ test('Home startup avoids delayed boot locks, stale cache keys and duplicate hea
 
 test('Home noncritical enrichment is staggered instead of timing out together',()=>{
  const html=read('index.html'),poster=read('poster-wall.js'),captions=read('title-captions.js'),media=read('catalog-media.js');
- assert.match(html,/\/poster-wall\.js\?v=20260920-crash4/);
+ assert.match(html,/\/poster-wall\.js\?v=20260920-homeoff1/);
  assert.match(html,/\/title-captions\.js\?v=20260920-crash4/);
  assert.match(html,/\/catalog-media\.js\?v=20260920-crash4/);
  assert.match(html,/\/poster-wall\.css\?v=20260920-crash4/);
