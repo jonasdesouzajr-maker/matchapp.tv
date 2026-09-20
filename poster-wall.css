@@ -476,3 +476,74 @@ html body.page-home .poster-wall::after{
     background:linear-gradient(180deg,rgba(8,7,20,.06),rgba(8,7,20,.12))!important;
   }
 }
+
+
+/* 2026-09-20 full-document Home poster field.
+   Real all-time-title covers are distributed down the whole page rather than
+   repeated in viewport rows. Everything is static to protect scroll stability. */
+html body.page-home{position:relative!important}
+html body.page-home .poster-wall{
+  position:absolute!important;
+  top:0!important;right:0!important;bottom:0!important;left:0!important;
+  height:auto!important;
+  min-height:100%!important;
+  overflow:hidden!important;
+  contain:paint!important;
+}
+html body.page-home .poster-wall-grid{
+  position:absolute!important;
+  inset:0!important;
+  display:block!important;
+  opacity:1!important;
+  transform:none!important;
+  filter:none!important;
+  animation:none!important;
+  will-change:auto!important;
+}
+html body.page-home .poster-wall-tile{
+  position:absolute!important;
+  width:clamp(32px,3.5vw,54px)!important;
+  aspect-ratio:2/3!important;
+  opacity:1!important;
+  border-radius:7px!important;
+  overflow:hidden!important;
+  animation:none!important;
+  will-change:auto!important;
+  box-shadow:0 7px 22px rgba(0,0,0,.38),0 0 0 1px rgba(229,193,88,.42)!important;
+}
+html body.page-home .poster-wall-tile>img{
+  width:100%!important;height:100%!important;object-fit:cover!important;display:block!important;
+}
+html body.page-home .poster-wall::before{display:none!important}
+html body.page-home .poster-wall::after{
+  background:linear-gradient(180deg,rgba(8,7,20,.015),rgba(8,7,20,.065))!important;
+}
+html body.page-home .poster-wall-tile:nth-child(1){top:1.5%;left:2.5%;transform:rotate(-4deg)!important}
+html body.page-home .poster-wall-tile:nth-child(2){top:7%;right:7%;transform:rotate(3deg)!important}
+html body.page-home .poster-wall-tile:nth-child(3){top:13.5%;left:18%;transform:rotate(-2deg)!important}
+html body.page-home .poster-wall-tile:nth-child(4){top:20%;right:23%;transform:rotate(4deg)!important}
+html body.page-home .poster-wall-tile:nth-child(5){top:26.5%;left:4%;transform:rotate(2deg)!important}
+html body.page-home .poster-wall-tile:nth-child(6){top:33%;right:3%;transform:rotate(-3deg)!important}
+html body.page-home .poster-wall-tile:nth-child(7){top:39.5%;left:31%;transform:rotate(3deg)!important}
+html body.page-home .poster-wall-tile:nth-child(8){top:46%;right:34%;transform:rotate(-4deg)!important}
+html body.page-home .poster-wall-tile:nth-child(9){top:52.5%;left:9%;transform:rotate(2deg)!important}
+html body.page-home .poster-wall-tile:nth-child(10){top:59%;right:12%;transform:rotate(-2deg)!important}
+html body.page-home .poster-wall-tile:nth-child(11){top:65.5%;left:39%;transform:rotate(4deg)!important}
+html body.page-home .poster-wall-tile:nth-child(12){top:72%;right:2.5%;transform:rotate(-3deg)!important}
+html body.page-home .poster-wall-tile:nth-child(13){top:78.5%;left:16%;transform:rotate(3deg)!important}
+html body.page-home .poster-wall-tile:nth-child(14){top:84.5%;right:27%;transform:rotate(-4deg)!important}
+html body.page-home .poster-wall-tile:nth-child(15){top:90.5%;left:3%;transform:rotate(2deg)!important}
+html body.page-home .poster-wall-tile:nth-child(16){top:95%;right:42%;transform:rotate(-2deg)!important}
+@media(max-width:700px){
+  html body.page-home .poster-wall-tile{
+    width:clamp(28px,8.2vw,42px)!important;
+    opacity:.98!important;
+    display:block!important;
+  }
+  html body.page-home .poster-wall::after{
+    background:linear-gradient(180deg,rgba(8,7,20,.03),rgba(8,7,20,.085))!important;
+  }
+}
+@media(min-width:2200px){
+  html body.page-home .poster-wall-tile{width:clamp(46px,2.8vw,72px)!important}
+}
