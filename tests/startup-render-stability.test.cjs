@@ -16,7 +16,7 @@ test('premium media motion is bounded and reduced on handhelds',()=>{
 test('Home startup avoids delayed boot locks, stale cache keys and duplicate header owners',()=>{
  const html=read('index.html'),settings=read('settings.js'),wiring=read('final-wiring.js');
  assert.doesNotMatch(html,/ma-ui-preparing|MATCHAPP_UI_FAILSAFE/);
- const versions={'build-meta.js':'20260920-design4','matchapp-ia.js':'20260920-homebrand2','settings.js':'20260920-freeze8','app.js':'20260920-design4','catalog-media.js':'20260920-freeze-final1','lazy.js':'20260920-design2'};
+ const versions={'build-meta.js':'20260920-design3','matchapp-ia.js':'20260920-homebrand2','settings.js':'20260920-freeze8','app.js':'20260920-design4','catalog-media.js':'20260920-freeze-final1','lazy.js':'20260920-design2'};
  for(const file of ['page-origin.js','build-meta.js','matchapp-ia.js','settings.js','app.js','catalog-media.js','title-experience.js','lazy.js','app-updates.js']){
   const version=versions[file]||'20260920-freeze2';
   assert.match(html,new RegExp('/'+file.replace('.','\\.')+'\\?v='+version));
@@ -111,7 +111,7 @@ test('Home editorial scripts do not preload hundreds of pixels before view',()=>
  const wiring=read('final-wiring.js'),meta=read('build-meta.js');
  assert.match(wiring,/rootMargin:'0px'/);
  assert.doesNotMatch(wiring,/rootMargin:'700px 0px'/);
- assert.match(meta,/final-wiring\.js\?v=20260920-design4/);
+ assert.match(meta,/final-wiring\.js\?v=20260920-design3/);
 });
 
 
@@ -119,6 +119,7 @@ test('Home removes the nonfunctional trending fold bar and keeps autoplay bounde
  const lazy=read('lazy.js'),app=read('app.js'),news=read('latest-news.js'),css=read('matchapp-ia.css');
  assert.doesNotMatch(lazy,/key:'trending'/);
  assert.match(lazy,/RETIRED_GENERIC_KEYS=new Set\(\[[^\]]*'trending'/);
+ assert.match(lazy,/nextElementSibling[\s\S]*id!=='trending-rail'/);
  assert.match(css,/#trending-rail>h4\{display:none!important\}/);
  assert.match(app,/autoDelay = vp\.id === 'marquee-viewport' \? 1800 : 6500/);
  assert.match(news,/AUTO_FIRST_MS=1100/);
