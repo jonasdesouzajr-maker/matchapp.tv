@@ -67,7 +67,15 @@
       return h>80 && getComputedStyle(rail).display!=='none';
     });
     if(/Googlebot|Mediapartners-Google|AdsBot-Google/i.test(navigator.userAgent||''))return;
-    if(Date.now()-(window.__MATCHAPP_ADS_START|| (window.__MATCHAPP_ADS_START=Date.now()))<12000)return;
+    rails.forEach(rail=>{
+      const iframe=rail.querySelector('iframe');
+      const ins=rail.querySelector('ins.adsbygoogle');
+      const status=(ins?.getAttribute('data-ad-status')||'').toLowerCase();
+      const h=Math.max(iframe?.offsetHeight||0, ins?.offsetHeight||0);
+      const live=status==='filled'||(iframe&&h>80);
+      rail.classList.toggle('is-ad-empty',!live);
+    });
+    if(Date.now()-(window.__MATCHAPP_ADS_START|| (window.__MATCHAPP_ADS_START=Date.now()))<6000)return;
     if(!filled)document.documentElement.classList.add('ads-empty');
   }
 

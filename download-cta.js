@@ -21,6 +21,8 @@
       if (!label) { label = document.createElement('span'); label.className = 'install-label'; btn.appendChild(label); }
       label.textContent = pending ? t('upd') : installed ? t('done') : t('down');
       btn.setAttribute('aria-label', label.textContent);
+      if (installed && !pending) { btn.style.display = 'none'; }
+      document.querySelectorAll('.install-bubble,.install-bubble-v2').forEach(el => { el.style.display = 'none'; });
       if (pending && !btn.querySelector('.install-dot')) {
         const dot = document.createElement('span'); dot.className = 'install-dot'; dot.setAttribute('aria-hidden', 'true'); btn.insertBefore(dot, btn.firstChild);
       }
@@ -75,6 +77,10 @@
       panel.hidden = false; enhanceNotice();
     } catch (_) {}
   }
-  function boot() { paint(); enhanceNotice(); setTimeout(forceWhatsNew, 1200); setInterval(paint, 8000); }
+  function overlaysClear() {
+    try { if (!localStorage.getItem('match_cookie_choice') && document.querySelector('.ma-cookie')) return false; } catch (_) {}
+    return !document.documentElement.classList.contains('matchapp-tour-active');
+  }
+  function boot() { paint(); enhanceNotice(); setTimeout(() => { if (overlaysClear()) forceWhatsNew(); else setTimeout(forceWhatsNew, 8000); }, 2400); setInterval(paint, 8000); }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();
 })();
