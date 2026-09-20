@@ -181,7 +181,7 @@
   function normalizeLogoImages(root=document){
     if(MATCHAPP_HOME_ROUTE)return;
     root.querySelectorAll?.('img.brand-logo,img[src$="/logo.jpeg"],img[src*="/logo.jpeg?"],.matchapp-brand-link>img').forEach(img=>{
-      if(img.classList.contains('matchapp-wordmark')) return;
+      if(img.classList.contains('matchapp-wordmark')||img.classList.contains('ma-official-brand-icon')) return;
       if(/matchapp-tv-ai-v2\.svg/i.test(img.getAttribute('src')||'')) return;
       img.classList.add('matchapp-circle-logo');
     });
