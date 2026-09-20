@@ -1,31 +1,101 @@
 [
   {
-    "title": "Dune: Part Two",
-    "poster": "https://image.tmdb.org/t/p/w500/6izwz7rsy95ARzTR3poZ8H6c5pp.jpg",
-    "tmdbId": 693134,
+    "title": "The Godfather",
+    "poster": "https://image.tmdb.org/t/p/w500/3bhkrj58Vtu7enYsRolD1fZdja1.jpg",
+    "tmdbId": 238,
     "kind": "movie",
-    "year": "2024"
+    "year": "1972"
   },
   {
-    "title": "The Bear",
-    "poster": "https://image.tmdb.org/t/p/w500/eKfVzzEazSIjJMrw9ADa2x8ksLz.jpg",
-    "tmdbId": 136315,
-    "kind": "tv",
-    "year": "2022"
+    "title": "The Shawshank Redemption",
+    "poster": "https://image.tmdb.org/t/p/w500/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg",
+    "tmdbId": 278,
+    "kind": "movie",
+    "year": "1994"
   },
   {
-    "title": "Queen of Tears",
-    "poster": "https://image.tmdb.org/t/p/w500/7ZXLZ3KYL3IVvsSHBZaHjcNQzNU.jpg",
-    "tmdbId": 215720,
-    "kind": "tv",
-    "year": "2024"
+    "title": "The Dark Knight",
+    "poster": "https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
+    "tmdbId": 155,
+    "kind": "movie",
+    "year": "2008"
   },
   {
-    "title": "Fallout",
-    "poster": "https://image.tmdb.org/t/p/w500/c15BtJxCXMrISLVmysdsnZUPQft.jpg",
-    "tmdbId": 106379,
+    "title": "The Lord of the Rings: The Return of the King",
+    "poster": "https://image.tmdb.org/t/p/w500/rCzpDGLbOoPwLjy3OAm5NUPOTrC.jpg",
+    "tmdbId": 122,
+    "kind": "movie",
+    "year": "2003"
+  },
+  {
+    "title": "The Matrix",
+    "poster": "https://image.tmdb.org/t/p/w500/f89U3ADr1oiB1s9GkdPOEpXUk5H.jpg",
+    "tmdbId": 603,
+    "kind": "movie",
+    "year": "1999"
+  },
+  {
+    "title": "Spirited Away",
+    "poster": "https://image.tmdb.org/t/p/w500/39wmItIWsg5sZMyRUHLkWBcuVCM.jpg",
+    "tmdbId": 129,
+    "kind": "movie",
+    "year": "2001"
+  },
+  {
+    "title": "Inception",
+    "poster": "https://image.tmdb.org/t/p/w500/oYuLEt3zVCKq57qu2F8dT7NIa6f.jpg",
+    "tmdbId": 27205,
+    "kind": "movie",
+    "year": "2010"
+  },
+  {
+    "title": "Interstellar",
+    "poster": "https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg",
+    "tmdbId": 157336,
+    "kind": "movie",
+    "year": "2014"
+  },
+  {
+    "title": "Pulp Fiction",
+    "poster": "https://image.tmdb.org/t/p/w500/d5iIlFn5s0ImszYzBPb8JPIfbXD.jpg",
+    "tmdbId": 680,
+    "kind": "movie",
+    "year": "1994"
+  },
+  {
+    "title": "Parasite",
+    "poster": "https://image.tmdb.org/t/p/w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg",
+    "tmdbId": 496243,
+    "kind": "movie",
+    "year": "2019"
+  },
+  {
+    "title": "Breaking Bad",
+    "poster": "https://image.tmdb.org/t/p/w500/ggFHVNu6YYI5L9pCfOacjizRGt.jpg",
+    "tmdbId": 1396,
     "kind": "tv",
-    "year": "2024"
+    "year": "2008"
+  },
+  {
+    "title": "The Sopranos",
+    "poster": "https://image.tmdb.org/t/p/w500/rTc7ZXdroqjkKivFPvCPX0Ru7uw.jpg",
+    "tmdbId": 1398,
+    "kind": "tv",
+    "year": "1999"
+  },
+  {
+    "title": "Game of Thrones",
+    "poster": "https://image.tmdb.org/t/p/w500/1XS1oqL89opfnbLl8WnZY1O1uJx.jpg",
+    "tmdbId": 1399,
+    "kind": "tv",
+    "year": "2011"
+  },
+  {
+    "title": "Friends",
+    "poster": "https://image.tmdb.org/t/p/w500/2koX1xLkpTQM4IZebYvKysFW1Nh.jpg",
+    "tmdbId": 1668,
+    "kind": "tv",
+    "year": "1994"
   },
   {
     "title": "Stranger Things",
@@ -35,24 +105,10 @@
     "year": "2016"
   },
   {
-    "title": "Wednesday",
-    "poster": "https://image.tmdb.org/t/p/w500/9PFonBhy4cQy7Jz20NpMygczOkv.jpg",
-    "tmdbId": 119051,
-    "kind": "tv",
-    "year": "2022"
-  },
-  {
-    "title": "Shōgun",
-    "poster": "https://image.tmdb.org/t/p/w500/7O4iVfOMQmdCSxhOg1WnzG1AgYT.jpg",
-    "tmdbId": 126308,
-    "kind": "tv",
+    "title": "Dune: Part Two",
+    "poster": "https://image.tmdb.org/t/p/w500/6izwz7rsy95ARzTR3poZ8H6c5pp.jpg",
+    "tmdbId": 693134,
+    "kind": "movie",
     "year": "2024"
-  },
-  {
-    "title": "House of the Dragon",
-    "poster": "https://image.tmdb.org/t/p/w500/7V0Ebks0GgpKvQ7QbLAIdX5dos4.jpg",
-    "tmdbId": 94997,
-    "kind": "tv",
-    "year": "2022"
   }
 ]
