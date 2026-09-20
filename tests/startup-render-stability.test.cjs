@@ -44,3 +44,14 @@ test('poster wall cannot promote dozens of animated compositor layers',()=>{
  assert.match(css,/2026-09-20 renderer crash guard/);
  assert.match(css,/\.poster-wall-grid,[\s\S]*\.poster-wall-tile,[\s\S]*\.poster-wall::before\{[\s\S]*animation:none!important;[\s\S]*will-change:auto!important/);
 });
+
+
+test('Home header is visible without JavaScript and avoids filtered 8K SVGs',()=>{
+ const html=read('index.html'),css=read('matchapp-ia.css');
+ assert.match(html,/\/matchapp-ia\.css\?v=20260920-stability5/);
+ assert.match(html,/class="ma-brand-orb" src="\/assets\/brand\/matchapp-official-icon-512\.webp\?v=20260920-official1"/);
+ assert.doesNotMatch(css,/header-cosmic-8k\.svg/);
+ assert.doesNotMatch(css,/#mh-topbox\.app-header\{\s*visibility:hidden!important;\s*opacity:0!important;/);
+ assert.match(css,/2026-09-20 renderer root guard/);
+ assert.match(css,/#mh-topbox\.ma-home-header \.ma-brand-orb\{[\s\S]*animation:none!important;[\s\S]*will-change:auto!important/);
+});
