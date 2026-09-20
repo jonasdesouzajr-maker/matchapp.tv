@@ -266,3 +266,64 @@ html body.page-home .poster-wall::before{display:none!important}
     opacity:.36!important;
   }
 }
+
+/* 2026-09-20 Home all-time-cover wall.
+   Static only: smaller covers and stronger visibility without animation,
+   filters, blur, backdrop work or promoted compositor layers. */
+html body.page-home .poster-wall-grid{
+  inset:-2% -1%!important;
+  grid-template-columns:repeat(8,minmax(0,1fr))!important;
+  grid-template-rows:repeat(2,minmax(0,1fr))!important;
+  gap:clamp(5px,.45vw,9px)!important;
+  opacity:.58!important;
+  transform:none!important;
+  filter:none!important;
+  animation:none!important;
+  will-change:auto!important;
+}
+html body.page-home .poster-wall-tile{
+  min-width:0!important;
+  min-height:0!important;
+  border-radius:8px!important;
+  animation:none!important;
+  will-change:auto!important;
+}
+html body.page-home .poster-wall-tile>img{
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  object-position:center top!important;
+}
+html body.page-home .poster-wall::after{
+  background:
+    linear-gradient(90deg,
+      color-mix(in srgb,var(--theme-bg,#100a23) 44%,transparent),
+      color-mix(in srgb,var(--theme-bg,#100a23) 68%,transparent) 24% 76%,
+      color-mix(in srgb,var(--theme-bg,#100a23) 44%,transparent)),
+    linear-gradient(0deg,color-mix(in srgb,var(--theme-bg,#100a23) 68%,transparent),transparent 84%)!important;
+}
+@media(min-width:701px) and (max-width:1100px){
+  html body.page-home .poster-wall-grid{
+    grid-template-columns:repeat(6,minmax(0,1fr))!important;
+    grid-template-rows:repeat(3,minmax(0,1fr))!important;
+    inset:-2% -8%!important;
+    opacity:.56!important;
+  }
+}
+@media(max-width:700px){
+  html body.page-home .poster-wall-grid{
+    grid-template-columns:repeat(4,minmax(0,1fr))!important;
+    grid-template-rows:repeat(4,minmax(0,1fr))!important;
+    inset:-1% -10%!important;
+    gap:5px!important;
+    opacity:.54!important;
+  }
+  html body.page-home .poster-wall::after{
+    background:
+      linear-gradient(90deg,
+        color-mix(in srgb,var(--theme-bg,#100a23) 52%,transparent),
+        color-mix(in srgb,var(--theme-bg,#100a23) 70%,transparent) 22% 78%,
+        color-mix(in srgb,var(--theme-bg,#100a23) 52%,transparent)),
+      linear-gradient(0deg,color-mix(in srgb,var(--theme-bg,#100a23) 72%,transparent),transparent 84%)!important;
+  }
+}
