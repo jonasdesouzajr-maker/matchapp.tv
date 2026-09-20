@@ -2407,3 +2407,15 @@ html body.page-home #mh-topbox .ma-ai-letters{
   background-position:50% 50%!important;
   filter:drop-shadow(0 0 6px rgba(74,221,255,.42)) drop-shadow(0 0 10px rgba(190,81,255,.24))!important;
 }
+
+/* 2026-09-20 Home brand-circle crop.
+   Home only: visually remove the dark square around the approved app artwork
+   while preserving the stable lightweight official image file. */
+html body.page-home #mh-topbox.ma-home-header .ma-brand-orb{
+  border-radius:50%!important;
+  clip-path:circle(38% at 50% 50%)!important;
+  transform:scale(1.22)!important;
+  filter:drop-shadow(0 4px 9px rgba(0,0,0,.22))!important;
+  animation:none!important;
+  will-change:auto!important;
+}
