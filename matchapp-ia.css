@@ -2336,3 +2336,25 @@ html body.page-home #swifties-spotify .swifties-fold[aria-expanded="true"] .swif
     font-size:12px!important;
   }
 }
+
+
+/* ===== OFFICIAL BRAND ICON — 2026-09-20 =====
+   Approved purple/gold squircle. Transparent outer pixels blend into the
+   existing premium top-box background on every viewport. */
+html body.page-home #mh-topbox.ma-home-header .ma-brand-orb-stage{
+  isolation:isolate!important;
+  background:transparent!important;
+}
+html body.page-home #mh-topbox.ma-home-header .ma-brand-orb{
+  object-fit:contain!important;
+  object-position:center!important;
+  border-radius:22%!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  filter:drop-shadow(0 7px 16px rgba(0,0,0,.26)) drop-shadow(0 0 14px rgba(229,193,88,.20))!important;
+}
+@media(max-width:1024px){
+  html body.page-home #mh-topbox.ma-home-header .ma-brand-orb{
+    filter:drop-shadow(0 4px 10px rgba(0,0,0,.22))!important;
+  }
+}
