@@ -18,8 +18,10 @@ test('premium UI token and component layers stay presentation-only and responsiv
   assert.match(components,/scroll-snap-type:x mandatory/);
   assert.match(runtime,/svgFallback/);
   assert.match(runtime,/IntersectionObserver/);
-  assert.match(runtime,/function orderHome/);
-  for(const id of ['ma-concierge','trending-rail','premiere-disclosure','weekly-pick-disclosure','latest-news','swifties-spotify']) assert.match(runtime,new RegExp(id));
+  assert.match(runtime,/scheduleMediaRefresh/);
+  assert.doesNotMatch(runtime,/new MutationObserver/);
+  assert.doesNotMatch(runtime,/function orderHome/);
+  assert.match(components,/Handset\/tablet stability/);
   assert.match(runtime,/hover:hover/);
   assert.match(settings,/css\('\/tokens\.css'\)/);
   assert.match(settings,/css\('\/components\.css'\)/);
