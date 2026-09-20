@@ -444,7 +444,12 @@
 
   let mainSerial=0;
   async function enrichMain(){
-    const titleEl=document.getElementById('res-title');if(!titleEl)return;const title=titleEl.textContent.trim();if(!title)return;const serial=++mainSerial;
+    const titleEl=document.getElementById('res-title');
+    const resultRoot=document.getElementById('result-card')||document.getElementById('result-box');
+    if(!titleEl||!resultRoot||resultRoot.hidden||resultRoot.style.display==='none')return;
+    const title=titleEl.textContent.trim();
+    if(!title||title==='Title')return;
+    const serial=++mainSerial;
     const anchor=document.getElementById('res-platform-badge')||document.getElementById('res-synopsis')||document.getElementById('res-actions')||titleEl;
     const availabilityHost=ensurePlayerHost(anchor,'matchapp-main-availability');
     const host=ensurePlayerHost(availabilityHost||anchor,'matchapp-main-preview');
@@ -510,9 +515,12 @@
     installStyle();syncGenreFilter();hardenWithin(document);
     const result=document.getElementById('result-card')||document.getElementById('result-box');
     const kids=document.getElementById('kids-watch-dialog');
-    observeSurface(result,enrichMain);
+    // Main-result enrichment is event-driven. Do not observe the result subtree
+    // and then rewrite that same subtree from enrichMain(): renderAvailability()
+    // and renderPreview() replace children, which would feed the observer forever.
     observeSurface(kids,enrichKids);
-    enrichMain();enrichKids();
+    if(result&&result.style.display!=='none'&&!result.hidden)enrichMain();
+    enrichKids();
     const isHome=location.pathname==='/'||location.pathname==='/index.html';
     if(isHome){
       const later=()=>enrichTrendingRail();
