@@ -214,3 +214,14 @@ body:has(.poster-wall)::before,body:has(.poster-wall)::after{display:none!import
     opacity:.56!important;
   }
 }
+
+/* 2026-09-20 renderer crash guard: keep the exact poster composition, but do not
+   promote 32 decorative tiles (plus sweep/grid) into continuously animated
+   compositor layers. This final cascade intentionally wins over earlier
+   will-change declarations on every viewport. */
+.poster-wall-grid,
+.poster-wall-tile,
+.poster-wall::before{
+  animation:none!important;
+  will-change:auto!important;
+}
