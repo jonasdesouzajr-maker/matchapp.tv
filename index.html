@@ -1984,32 +1984,10 @@ html body.page-home #daily-match-checkin { padding: 11px 12px !important; }
     })();
     </script>
 
-    <script id="mh-pinch">
-    /* Pinch to zoom is on by default (the viewport meta sets no maximum-scale
-       and no user-scalable=no). What browsers do not offer is a way back: a
-       page zoomed to read one poster stays zoomed. This watches the visual
-       viewport and, once the gesture has been still for a moment, pins the
-       scale for one frame to snap it back, then releases it so the next pinch
-       still works. Desktop pointer zoom is left alone. */
-    (function () {
-      var vv = window.visualViewport;
-      var meta = document.querySelector('meta[name="viewport"]');
-      if (!vv || !meta || !window.matchMedia('(pointer: coarse)').matches) return;
-      var base = meta.getAttribute('content');
-      var timer;
-      vv.addEventListener('resize', function () {
-        clearTimeout(timer);
-        if (vv.scale <= 1.02) return;
-        timer = setTimeout(function () {
-          if (vv.scale <= 1.02) return;
-          meta.setAttribute('content', base + ', maximum-scale=1');
-          requestAnimationFrame(function () {
-            setTimeout(function () { meta.setAttribute('content', base); }, 80);
-          });
-        }, 1100);
-      });
-    })();
-    </script>
+    <!-- Native pinch zoom only. Do not rewrite the viewport meta at runtime:
+         changing maximum-scale from visualViewport.resize can feed back into
+         another viewport resize and freeze coarse-pointer/mobile browsers. -->
+
 
 
     <header id="mh-topbox" class="app-header ma-home-header">
