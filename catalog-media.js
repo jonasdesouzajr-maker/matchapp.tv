@@ -425,7 +425,8 @@
 
   async function enrichTrendingRail(){
     const cards=[...document.querySelectorAll('#marquee-track .marquee-item')];
-    await Promise.all(cards.map(async card=>{
+    let next=0;
+    const enrichCard=async card=>{
       const img=card.querySelector('img[data-title]'),title=img?.dataset?.title||'';
       if(!title)return;
       const meta=await refreshExact(await lookup(title));
@@ -439,7 +440,15 @@
         }
         ribbon.textContent=(typeof window.t==='function'&&window.t('discover.inCinemas'))||'In cinemas';
       }else ribbon?.remove();
-    }));
+    };
+    const worker=async()=>{
+      while(next<cards.length){
+        const card=cards[next++];
+        try{await enrichCard(card)}catch(_){}
+      }
+    };
+    const TRENDING_CONCURRENCY=2;
+    await Promise.all(Array.from({length:Math.min(TRENDING_CONCURRENCY,cards.length)},worker));
   }
 
   let mainSerial=0;
@@ -523,11 +532,27 @@
     enrichKids();
     const isHome=location.pathname==='/'||location.pathname==='/index.html';
     if(isHome){
-      const later=()=>enrichTrendingRail();
-      setTimeout(()=>{
+      // Do not start network/media enrichment while Home is still settling.
+      // Arm it after load and only run when the rail is actually near view.
+      const rail=document.getElementById('trending-rail');
+      let started=false;
+      const start=()=>{
+        if(started)return;started=true;
+        const later=()=>enrichTrendingRail();
         if('requestIdleCallback' in window)requestIdleCallback(later);
-        else later();
-      },3600);
+        else setTimeout(later,0);
+      };
+      const arm=()=>{
+        if(!rail){return}
+        if('IntersectionObserver' in window){
+          const io=new IntersectionObserver(entries=>{
+            if(entries.some(entry=>entry.isIntersecting)){io.disconnect();start()}
+          },{rootMargin:'0px'});
+          io.observe(rail);
+        }else setTimeout(start,8000);
+      };
+      if(document.readyState==='complete')setTimeout(arm,800);
+      else window.addEventListener('load',()=>setTimeout(arm,800),{once:true});
     }else enrichTrendingRail();
     document.addEventListener('matchapp:newmatch',()=>{hardenWithin(result||document);enrichMain();});
     document.addEventListener('matchapp:kids-result',()=>{hardenWithin(kids||document);enrichKids();});
