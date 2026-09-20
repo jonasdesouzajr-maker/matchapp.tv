@@ -57,6 +57,7 @@ test('homepage search metadata remains indexable and preview friendly',()=>{
   assert.ok(html.includes('max-image-preview:large, max-snippet:-1, max-video-preview:-1'));
   assert.ok(html.includes('twitter:image" content="https://matchapp.tv/og-image-v3.png?v=2'));
   assert.ok(html.includes('application/ld+json'));
+  assert.doesNotMatch(html,/@type":"(?:SocialMediaPosting|DiscussionForumPosting)"/);
 });
 
 
