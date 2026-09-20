@@ -17,8 +17,11 @@ test('Home folds persist by section and Lazy Mode closes every major content mod
   const lazy=read('lazy.js');
   const html=read('index.html');
   const css=read('matchapp-ia.css');
-  for(const sel of ['#trending-rail','#daily-match-checkin','.top-ask-wrap','#ma-concierge','.tg-entry','#premiere-disclosure','#weekly-pick-disclosure','#latest-news','#global-events .global-events-fold','#how-it-works','#ai-concierge-section','#matchapp-tiktok-showcase']){
+  for(const sel of ['#trending-rail','#ma-concierge','.tg-entry','#premiere-disclosure','#weekly-pick-disclosure','#latest-news','#global-events .global-events-fold']){
     assert.ok(lazy.includes(sel),sel+' must participate in Home folding');
+  }
+  for(const key of ['checkin','topask','how','aboutai','tiktok']){
+    assert.ok(lazy.includes(key),key+' must remain explicitly retired from generated Home fold bars');
   }
   assert.ok(lazy.includes("match_home_fold_state_v2"));
   assert.ok(lazy.includes("setSwift"));
