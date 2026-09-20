@@ -8,7 +8,7 @@
 const fs=require('node:fs');
 const path=require('node:path');
 const ROOT=path.join(__dirname,'..');
-const LOGO='https://matchapp.tv/assets/brand/matchapp-icon-512.png';
+const LOGO='https://matchapp.tv/assets/brand/matchapp-official-icon-512.webp';
 const FAV='<link rel="icon" href="/assets/brand/matchapp-favicon-32.png" type="image/png">';
 
 function read(rel){return fs.readFileSync(path.join(ROOT,rel),'utf8');}
@@ -64,7 +64,7 @@ patch('tools/refresh-news-rss.js',src=>{
   );
   src=src.replaceAll(
     "publisher:{'@type':'Organization',name:'MatchApp TV',url:SITE}",
-    "publisher:{'@type':'Organization',name:'MatchApp TV',url:SITE,logo:{'@type':'ImageObject',url:`${SITE}/assets/brand/matchapp-icon-512.png`,width:512,height:512}}"
+    "publisher:{'@type':'Organization',name:'MatchApp TV',url:SITE,logo:{'@type':'ImageObject',url:`${SITE}/assets/brand/matchapp-official-icon-512.webp`,width:512,height:512}}"
   );
   src=src.replace(
     '<title>Latest Entertainment News | Actors, Singers, Film & Music | MatchApp TV</title>',
