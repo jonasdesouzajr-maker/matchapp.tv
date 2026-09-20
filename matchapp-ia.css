@@ -2456,3 +2456,48 @@ html body.page-home #mh-topbox.ma-home-header .ma-brand-orb{
     margin-right:6px!important;
   }
 }
+
+
+/* 2026-09-20 final Home brand visibility lock */
+html body.page-home #mh-topbox.ma-home-header .ma-brand-orb-stage{
+  display:block!important;
+  visibility:visible!important;
+  opacity:1!important;
+  position:relative!important;
+  width:78px!important;
+  height:78px!important;
+  flex:0 0 78px!important;
+  margin:0 8px 0 0!important;
+  overflow:hidden!important;
+  border-radius:50%!important;
+  background:transparent!important;
+}
+html body.page-home #mh-topbox.ma-home-header .ma-brand-orb{
+  display:block!important;
+  visibility:visible!important;
+  opacity:1!important;
+  position:absolute!important;
+  left:50%!important;
+  top:50%!important;
+  width:100%!important;
+  height:100%!important;
+  max-width:none!important;
+  margin:0!important;
+  object-fit:cover!important;
+  object-position:center!important;
+  clip-path:none!important;
+  border-radius:0!important;
+  transform:translate(-50%,-50%) scale(1.42)!important;
+  transform-origin:center!important;
+  filter:none!important;
+  animation:none!important;
+  will-change:auto!important;
+}
+@media(max-width:700px){
+  html body.page-home #mh-topbox.ma-home-header .ma-brand-orb-stage{
+    width:64px!important;
+    height:64px!important;
+    flex-basis:64px!important;
+    margin-right:6px!important;
+  }
+}
