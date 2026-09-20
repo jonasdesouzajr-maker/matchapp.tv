@@ -2,7 +2,7 @@
 (function(){
   'use strict';
 
-  const LOGO_ASSET='/assets/brand/matchapp-logo-animated-transparent.svg?v=20260919-final5';
+  const LOGO_ASSET='/assets/brand/matchapp-official-icon-512.webp?v=20260920-official1';
   const isKidsRoute=()=>{const p=location.pathname.toLowerCase();return p==='/kids'||p.startsWith('/kids/');};
 
   const AI_LABELS={
@@ -45,9 +45,9 @@
 
   function buildLogo(){
     const img=document.createElement('img');
-    img.className='brand-logo ma-new-brand-logo';
+    img.className='brand-logo ma-new-brand-logo ma-official-brand-icon';
     img.src=LOGO_ASSET;
-    img.alt='MatchApp';
+    img.alt='MatchApp TV Ai official icon';
     img.width=1536;
     img.height=512;
     img.decoding='async';
