@@ -1,7 +1,7 @@
 /* Final production wiring: activate reviewed hardening modules without duplicating page markup. */
 (function(){
   'use strict';
-  const V='20260920-freeze2';
+  const V='20260920-freeze6';
   const path=location.pathname;
   const isKids=path==='/kids'||path.startsWith('/kids/');
   const isHome=path==='/'||path==='/index.html';
