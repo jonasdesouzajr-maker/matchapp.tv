@@ -81,7 +81,7 @@ test('both Android Studio modules point to current live surfaces for AAB build',
 
   for(const gradle of [mainGradle,kidsGradle]){
     assert.match(gradle,/versionCode = 20/);
-    assert.match(gradle,/versionName = "1\.1\.17"/);
+    assert.match(gradle,/versionName = "1\.1\.18"/);
   }
   assert.match(main,/https:\/\/matchapp\.tv\/\?utm_source=android_app&appBuild=20/);
   assert.match(kids,/https:\/\/matchapp\.tv\/kids\/\?utm_source=android_kids_app&appBuild=20/);
