@@ -4,6 +4,7 @@
 'use strict';
 const BRAND='/assets/brand/brandkit/logo-horizontal.svg?v=20260919-brand1';
 const ICON='/assets/brand/matchapp-official-icon-512.webp?v=20260920-official1';
+const HOME_ICON='/assets/brand/matchapp-home-orb-transparent.webp?v=20260920-homebrand1';
 const path=(location.pathname||'/').replace(/\/+$/,'')||'/';
 const isHome=path==='/'||path==='/index.html';
 const isDiscover=path==='/discover.html';
@@ -87,7 +88,7 @@ function brandHeader(){
      '<div class="ma-brand-lockup" aria-label="MatchApp TV Ai">'+
        '<a class="ma-brand-home-link" href="/" aria-label="MatchApp TV home">'+
          '<span class="ma-brand-orb-stage" aria-hidden="true">'+
-           '<img class="ma-brand-orb" src="'+ICON+'" alt="" width="260" height="260">'+
+           '<img class="ma-brand-orb" src="'+(isHome?HOME_ICON:ICON)+'" alt="" width="260" height="260">'+
            '<span class="ma-orbit ma-orbit-a"></span><span class="ma-orbit ma-orbit-b"></span>'+
            '<span class="ma-orb-star ma-orb-star-a">✦</span><span class="ma-orb-star ma-orb-star-b">✧</span><span class="ma-orb-star ma-orb-star-c">✦</span>'+
          '</span>'+
@@ -97,6 +98,8 @@ function brandHeader(){
          '<span class="ma-ai-letters">Ai</span><span class="ma-ai-star ma-ai-star-one" aria-hidden="true">✦</span><span class="ma-ai-star ma-ai-star-two" aria-hidden="true">✧</span><span class="ma-ai-star ma-ai-star-three" aria-hidden="true">✦</span>'+
        '</button>'+
      '</div>';
+   const homeOrb=qs('.ma-brand-orb',brand);
+   if(isHome&&homeOrb&&homeOrb.getAttribute('src')!==HOME_ICON)homeOrb.setAttribute('src',HOME_ICON);
    const ai=qs('.ma-ai-brand-button',brand);if(ai&&!ai.dataset.maAskBound){ai.dataset.maAskBound='1';ai.addEventListener('click',openAskFromBrand);}
  }
  const nav=qs('nav',h);if(!nav)return;
