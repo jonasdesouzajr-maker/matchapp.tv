@@ -56,6 +56,7 @@
       gotWeek: '🎉 +5 Extra Matches!',
       msgDay: 'You collected +1 Extra Match. Come back tomorrow to grow your streak.',
       msgWeek: 'Seven days in a row! +1 for today plus your +5 bonus — six Extra Matches banked.',
+      balance: n => `${n} Extra Match${n === 1 ? '' : 'es'} available.`,
       close: 'Continue'
     },
     'pt-BR': {
@@ -79,6 +80,7 @@
       gotWeek: '🎉 +5 Matches extras!',
       msgDay: 'Você ganhou +1 Match extra. Volte amanhã para aumentar a sequência.',
       msgWeek: 'Sete dias seguidos! +1 de hoje mais o bônus de +5 — seis Matches extras.',
+      balance: n => `${n} Match${n === 1 ? '' : 'es'} extra disponível${n === 1 ? '' : 's'}.`,
       close: 'Continuar'
     },
     es: {
@@ -102,6 +104,7 @@
       gotWeek: '🎉 ¡+5 Matches extra!',
       msgDay: 'Has ganado +1 Match extra. Vuelve mañana para ampliar tu racha.',
       msgWeek: '¡Siete días seguidos! +1 de hoy más tu bono de +5 — seis Matches extra.',
+      balance: n => `${n} Match${n === 1 ? '' : 'es'} extra disponible${n === 1 ? '' : 's'}.`,
       close: 'Continuar'
     }
   };
@@ -208,20 +211,31 @@
     const t = copy();
     const week = !!result?.rewarded;
     const streak = Math.max(1, Math.min(DAYS, Number(result?.streak || 1)));
+    const awarded = Math.max(0, Number(result?.awarded || 0));
+    const balance = Number(result?.matches);
+    const hasBalance = Number.isFinite(balance);
+    const sparks = Array.from({ length: 14 }, (_, i) =>
+      '<i style="--a:' + (i * (360 / 14)) + 'deg;--d:' + (46 + (i % 4) * 10) + 'px;--delay:' + ((i % 5) * 18) + 'ms"></i>'
+    ).join('');
     const overlay = document.createElement('div');
     overlay.className = 'daily-reward';
     overlay.setAttribute('role', 'dialog');
     overlay.setAttribute('aria-modal', 'true');
     overlay.innerHTML =
       '<div class="daily-reward-card">' +
+        '<div class="daily-reward-sparks" aria-hidden="true">' + sparks + '</div>' +
         '<div class="daily-reward-kicker">' + esc(t.congrats) + ' ✨</div>' +
         '<div class="daily-reward-medal"><img src="' + MARK + '" alt="" width="96" height="96" decoding="async">' +
           '<span class="daily-reward-streak">' + streak + '/7</span></div>' +
         '<h3 class="daily-reward-title">' + (week ? esc(t.gotWeek) : esc(t.gotDay)) + '</h3>' +
-        '<p class="daily-reward-message">' + (week ? esc(t.msgWeek) : esc(t.msgDay)) + '</p>' +
+        '<p class="daily-reward-message">' +
+          (week ? esc(t.msgWeek) : esc(t.msgDay)) +
+          (hasBalance ? ' <strong>' + esc(t.balance(balance)) + '</strong>' : '') +
+        '</p>' +
         '<button type="button">' + esc(t.close) + '</button>' +
       '</div>';
     document.body.appendChild(overlay);
+    overlay.dataset.awarded = String(awarded);
     const close = () => overlay.remove();
     overlay.querySelector('button').addEventListener('click', close);
     overlay.addEventListener('click', e => { if (e.target === overlay) close(); });
@@ -252,18 +266,60 @@
     if (!button) return;
     busy = true;
     const t = copy();
+
+    // Give immediate tactile/visual feedback on every surface, including
+    // Android WebView, before the network round-trip begins.
+    try {
+      const reduced = window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches ||
+                      document.documentElement.classList.contains('reduce-motion') ||
+                      document.body.classList.contains('reduce-motion');
+      if (!reduced && button.animate) {
+        button.animate(
+          [{ transform: 'scale(1)' }, { transform: 'scale(.96)' }, { transform: 'scale(1.03)' }, { transform: 'scale(1)' }],
+          { duration: 260, easing: 'cubic-bezier(.2,.9,.25,1.2)' }
+        );
+      }
+    } catch (_) { /* animation is enhancement-only */ }
+
     button.disabled = true;
     button.textContent = t.saving;
     try {
-      const { data, error } = await window.supabaseClient.rpc('daily_match_checkin');
+      const sb = window.supabaseClient;
+      if (!sb) throw new Error('supabase_unavailable');
+      const { data, error } = await sb.rpc('daily_match_checkin');
       if (error) throw error;
-      if (data && data.ok === false) throw new Error(String(data.reason || 'checkin_failed'));
+      if (!data || data.ok !== true) throw new Error(String(data?.reason || 'checkin_failed'));
+
+      const awarded = Math.max(0, Number(data.awarded || 0));
+      const balance = Number(data.matches);
       render({ authenticated: true, streak: data.streak, checked_today: true });
-      celebrate(data);
-      if (typeof window.refreshQuotaStatus === 'function') window.refreshQuotaStatus();
+
+      // The reward balance is separate from the included daily-action quota.
+      // Publish the new server balance immediately so every surface can repaint
+      // without waiting for a navigation or a second request.
+      if (Number.isFinite(balance)) {
+        window.matchExtraMatches = balance;
+        try {
+          document.dispatchEvent(new CustomEvent('matchapp:matchbalancechange', {
+            detail: { matches: balance, awarded }
+          }));
+        } catch (_) { /* old WebViews still get the modal balance text */ }
+      }
+
+      if (awarded > 0) {
+        root?.classList.add('is-claim-success');
+        celebrate(data);
+      }
+
+      if (typeof window.refreshQuotaStatus === 'function') {
+        await window.refreshQuotaStatus();
+      }
     } catch (_) {
-      button.disabled = false;
-      button.textContent = t.retry;
+      const retry = root?.querySelector('.dc-action');
+      if (retry) {
+        retry.disabled = false;
+        retry.textContent = t.retry;
+      }
       if (typeof window.showToast === 'function') window.showToast(t.failed, true);
     } finally {
       busy = false;
