@@ -2994,3 +2994,229 @@ html body.page-home .home-h1-jump:focus-visible{
   html body.page-home .home-h1-jump{transition:none!important}
 }
 html.reduce-motion body.page-home .home-h1-jump{transition:none!important}
+
+
+/* ===== 2026-09-21 coherent Home stage + AdSense placement pass =====
+   Top-level Home folds now use the exact same centered stage width as the
+   Match / Ask panel and Latest Titles. Inner matcher labels and controls keep
+   a tiny but consistent breathing space at every breakpoint. */
+html body.page-home :is(
+  .lazy-head[data-fold-key="concierge"],
+  .lazy-head[data-fold-key="together"],
+  #premiere-disclosure>summary,
+  #weekly-pick-disclosure>summary
+){
+  width:100%!important;
+  max-width:100%!important;
+  min-height:68px!important;
+  height:auto!important;
+  margin:10px auto!important;
+  padding:12px 62px 12px 20px!important;
+  box-sizing:border-box!important;
+  border-radius:20px!important;
+}
+
+html body.page-home :is(
+  .lazy-head[data-fold-key="concierge"],
+  .lazy-head[data-fold-key="together"]
+){
+  margin-left:0!important;
+  margin-right:0!important;
+}
+
+html body.page-home :is(
+  #premiere-disclosure,
+  #weekly-pick-disclosure
+){
+  width:100%!important;
+  max-width:var(--ma-stage-width)!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+  box-sizing:border-box!important;
+}
+
+/* Matcher spacing: labels, chips and containers never touch or cross the
+   inner edge. Keep the gap deliberately small, but always present. */
+html body.page-home .ma-concierge{
+  padding:16px!important;
+  box-sizing:border-box!important;
+  overflow:hidden!important;
+}
+html body.page-home .ma-concierge #questionnaire-box{
+  padding:10px 12px 12px!important;
+  min-width:0!important;
+  max-width:100%!important;
+  box-sizing:border-box!important;
+  overflow:hidden!important;
+}
+html body.page-home .ma-concierge .ma-quick{
+  width:100%!important;
+  min-width:0!important;
+  max-width:100%!important;
+  padding:2px!important;
+  gap:10px!important;
+  box-sizing:border-box!important;
+}
+html body.page-home .ma-concierge .ma-filter-row{
+  width:100%!important;
+  min-width:0!important;
+  max-width:100%!important;
+  padding:3px 2px!important;
+  gap:6px!important;
+  box-sizing:border-box!important;
+}
+html body.page-home .ma-concierge .ma-filter-label{
+  width:100%!important;
+  min-width:0!important;
+  max-width:100%!important;
+  padding:0 4px 2px!important;
+  line-height:1.25!important;
+  box-sizing:border-box!important;
+}
+html body.page-home .ma-concierge .ma-chip-row{
+  width:100%!important;
+  min-width:0!important;
+  max-width:100%!important;
+  padding:2px 4px 4px!important;
+  gap:6px!important;
+  box-sizing:border-box!important;
+}
+html body.page-home .ma-concierge .ma-chip{
+  max-width:100%!important;
+  box-sizing:border-box!important;
+}
+
+/* Desktop web: keep real AdSense-ready rails visible on both sides based on
+   viewport width alone. Touch-capable laptops still count as desktop here. */
+@media(min-width:1180px){
+  html body.page-home main.page-wrapper>.main-layout{
+    --ma-ad-rail:clamp(132px,10.8vw,160px);
+    --ma-ad-gap:clamp(10px,1.25vw,18px);
+    display:grid!important;
+    grid-template-columns:var(--ma-ad-rail) minmax(0,var(--ma-stage-width)) var(--ma-ad-rail)!important;
+    justify-content:center!important;
+    align-items:start!important;
+    width:100%!important;
+    max-width:1480px!important;
+    margin:0 auto!important;
+    padding:14px clamp(8px,1vw,16px) 0!important;
+    gap:var(--ma-ad-gap)!important;
+    box-sizing:border-box!important;
+  }
+  html body.page-home main.page-wrapper>.main-layout>.container{
+    grid-column:2!important;
+    width:100%!important;
+    max-width:var(--ma-stage-width)!important;
+    min-width:0!important;
+    margin:0 auto!important;
+  }
+  html body.page-home .sidebar-ad-left,
+  html body.page-home .sidebar-ad-right{
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:stretch!important;
+    position:sticky!important;
+    top:104px!important;
+    width:100%!important;
+    max-width:160px!important;
+    min-width:0!important;
+    min-height:600px!important;
+    padding:7px!important;
+    margin:0!important;
+    box-sizing:border-box!important;
+    overflow:hidden!important;
+    border:1px solid rgba(232,186,64,.14)!important;
+    border-radius:16px!important;
+    background:rgba(8,13,29,.52)!important;
+  }
+  html body.page-home .sidebar-ad-left{grid-column:1!important;justify-self:end!important}
+  html body.page-home .sidebar-ad-right{grid-column:3!important;justify-self:start!important}
+  html body.page-home .sidebar-ad-left ins.adsbygoogle,
+  html body.page-home .sidebar-ad-right ins.adsbygoogle{
+    display:block!important;
+    width:100%!important;
+    max-width:100%!important;
+    min-height:600px!important;
+  }
+  html body.page-home .ad-banner-container.ma-inline-ad{
+    display:none!important;
+  }
+}
+
+/* Mobile web: the three existing responsive slots stay in the document flow,
+   small and subtle. matchapp-ia.js already distributes them after the
+   discovery/result/editorial sections instead of stacking them together. */
+@media(max-width:767px){
+  html body.page-home .sidebar-ad-left,
+  html body.page-home .sidebar-ad-right{
+    display:none!important;
+  }
+  html body.page-home .ad-banner-container.ma-inline-ad{
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:center!important;
+    justify-content:center!important;
+    width:100%!important;
+    max-width:100%!important;
+    min-height:92px!important;
+    margin:14px auto!important;
+    padding:6px!important;
+    box-sizing:border-box!important;
+    overflow:hidden!important;
+    border:1px solid rgba(232,186,64,.10)!important;
+    border-radius:14px!important;
+    background:rgba(8,13,29,.36)!important;
+    box-shadow:none!important;
+  }
+  html body.page-home .ad-banner-container.ma-inline-ad ins.adsbygoogle{
+    display:block!important;
+    width:100%!important;
+    max-width:100%!important;
+    min-height:78px!important;
+  }
+  html body.page-home .ma-concierge{
+    padding:12px!important;
+  }
+  html body.page-home .ma-concierge #questionnaire-box{
+    padding:8px 8px 10px!important;
+  }
+  html body.page-home .ma-concierge .ma-quick{
+    gap:8px!important;
+  }
+  html body.page-home .ma-concierge .ma-filter-row{
+    padding:3px 1px!important;
+    gap:5px!important;
+  }
+  html body.page-home .ma-concierge .ma-filter-label{
+    padding:0 3px 2px!important;
+  }
+  html body.page-home .ma-concierge .ma-chip-row{
+    padding:2px 3px 3px!important;
+    gap:5px!important;
+  }
+  html body.page-home :is(
+    .lazy-head[data-fold-key="concierge"],
+    .lazy-head[data-fold-key="together"],
+    #premiere-disclosure>summary,
+    #weekly-pick-disclosure>summary
+  ){
+    width:100%!important;
+    max-width:100%!important;
+    min-height:56px!important;
+    margin:7px auto!important;
+    padding:9px 54px 9px 14px!important;
+    border-radius:18px!important;
+  }
+}
+
+html body.page-home .ma-ad-label{
+  display:block;
+  margin:0 0 5px;
+  color:rgba(226,219,236,.58);
+  font-size:9px;
+  font-weight:700;
+  letter-spacing:.08em;
+  line-height:1.2;
+  text-align:center;
+  text-transform:uppercase;
+}
