@@ -30,7 +30,7 @@ test('Home startup avoids delayed boot locks, stale cache keys and duplicate hea
 test('Home noncritical enrichment is staggered instead of timing out together',()=>{
  const html=read('index.html'),poster=read('poster-wall.js'),captions=read('title-captions.js'),media=read('catalog-media.js');
  assert.match(html,/\/poster-wall\.js\?v=20260920-home11/);
- assert.match(html,/\/title-captions\.js\?v=20260920-crash4/);
+ assert.match(html,/\/title-captions\.js\?v=20260921-ui2/);
  assert.match(html,/\/catalog-media\.js\?v=20260920-freeze-final1/);
  assert.match(html,/\/poster-wall\.css\?v=20260921-desktop1/);
  assert.match(poster,/setTimeout\(\(\)=>\{[\s\S]*requestIdleCallback\(run\)[\s\S]*\},900\)/);
@@ -49,7 +49,7 @@ test('poster wall cannot promote dozens of animated compositor layers',()=>{
 
 test('Home header is visible without JavaScript and avoids filtered 8K SVGs',()=>{
  const html=read('index.html'),css=read('matchapp-ia.css'),ia=read('matchapp-ia.js');
- assert.match(html,/\/matchapp-ia\.css\?v=20260921-desktop1/);
+ assert.match(html,/\/matchapp-ia\.css\?v=20260921-ui2/);
  assert.match(html,/class="ma-brand-orb" src="\/assets\/brand\/matchapp-home-orb-transparent\.webp\?v=20260920-homebrand4"/);
  assert.doesNotMatch(css,/header-cosmic-8k\.svg/);
  assert.doesNotMatch(css,/#mh-topbox\.app-header\{\s*visibility:hidden!important;\s*opacity:0!important;/);
@@ -191,4 +191,57 @@ test('2026-09-21 auth-card glass is scoped to the modal and leaves the Home guar
  // Decorative lockup ships hidden so handsets render exactly as before.
  assert.match(html,/class="auth-brand" aria-hidden="true" style="display:none"/);
  assert.match(pass,/prefers-reduced-motion:reduce|reduce-motion/);
+});
+
+test('2026-09-21 rail covers always get a caption element created for them',()=>{
+ const captions=read('title-captions.js');
+ // The original pass only filled an existing .marquee-title, and the rail ships
+ // image-only tiles, so no cover ever showed a title.
+ assert.match(captions,/function captionFor\(tile\)/);
+ assert.match(captions,/createElement\('span'\)[\s\S]*className='marquee-title'/);
+ assert.match(captions,/const caption=captionFor\(tile\)/);
+ assert.doesNotMatch(captions,/const caption=tile\.querySelector\('\.marquee-title'\)/);
+ // Still inside the existing bounded pass: no observer, no polling.
+ assert.doesNotMatch(captions,/MutationObserver|setInterval/);
+});
+
+test('2026-09-21 golden sheen is bounded and never animates the whole page',()=>{
+ const js=read('gold-sheen.js'),css=read('matchapp-ia.css'),html=read('index.html');
+ assert.match(html,/\/gold-sheen\.js\?v=20260921-ui2/);
+ // Hard cap on simultaneously animated elements.
+ assert.match(js,/LIVE_CAP\s*=\s*12\b/);
+ assert.match(js,/live\.slice\(0,LIVE_CAP\)/);
+ // Bounded observation only: no document-wide MutationObserver, no polling.
+ assert.doesNotMatch(js,/new MutationObserver/);
+ assert.doesNotMatch(js,/setInterval/);
+ assert.match(js,/new IntersectionObserver/);
+ // Nothing runs at all under either reduced-motion signal.
+ assert.match(js,/prefers-reduced-motion: reduce/);
+ assert.match(js,/reduce-motion/);
+ assert.match(js,/if\(reduced\(\)\)return/);
+ // Kids is never decorated by this runtime.
+ assert.match(js,/kids-body/);
+ // The ring itself is pure CSS, so it does not depend on the runtime reaching
+ // an element; only the sweep is class-driven.
+ assert.match(css,/\.ma-sheen-live::after\{[\s\S]*animation:maSheenSweep/);
+ assert.match(css,/:is\(\.marquee-item,\.ma-news-card,[^)]*\)::after\{/);
+ // And the sweep stops under both reduced-motion signals.
+ assert.match(css,/@media\(prefers-reduced-motion:reduce\)\{[\s\S]*\.ma-sheen-live::after\{animation:none!important\}/);
+ assert.match(css,/html\.reduce-motion body\.page-home \.ma-sheen-live::after\{animation:none!important\}/);
+});
+
+test('2026-09-21 Home control bar keeps every control and packs it into rows',()=>{
+ const css=read('matchapp-ia.css'),html=read('index.html');
+ assert.match(css,/2026-09-21 Home top-box control bar/);
+ // Every control the header shipped is still present in the markup.
+ for(const id of ['nav-reg-btn','nav-logout-btn','profile-link-tab','quota-badge','lang-switcher-host']){
+  assert.match(html,new RegExp('id="'+id+'"'),'control '+id+' must not be removed from the header');
+ }
+ // Packing is done with order and sizing, never by hiding a control.
+ const bar=css.slice(css.indexOf('2026-09-21 Home top-box control bar'));
+ assert.match(bar,/order:1!important/);
+ assert.match(bar,/order:11!important/);
+ assert.doesNotMatch(bar,/\.ma-kids-mode-entry\{display:none/);
+ // The only thing allowed to disappear is the credits badge while it is empty.
+ assert.match(css,/#quota-badge:empty\{display:none!important\}/);
 });
