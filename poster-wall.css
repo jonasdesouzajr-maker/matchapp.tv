@@ -593,7 +593,7 @@ html body.page-home .poster-wall::after{
    will-change, filter or backdrop-filter. A fixed, unanimated backdrop is also
    cheaper to scroll than a page-height one, because it does not repaint as
    newly exposed page regions come into view. */
-html body.page-home .poster-wall{
+html body:is(.page-home,.page-profile) .poster-wall{
   position:fixed!important;
   top:0!important;right:0!important;bottom:0!important;left:0!important;
   width:auto!important;
@@ -606,7 +606,7 @@ html body.page-home .poster-wall{
 /* One transparency layer on the grid rather than one per tile. Higher
    specificity than the inline compact sheet's .poster-wall-grid{opacity:1},
    which would otherwise win on source order. */
-html body.page-home .poster-wall .poster-wall-grid{
+html body:is(.page-home,.page-profile) .poster-wall .poster-wall-grid{
   position:absolute!important;
   inset:-34% -15%!important;
   display:grid!important;
@@ -619,7 +619,7 @@ html body.page-home .poster-wall .poster-wall-grid{
 }
 
 /* Tiles flow in the grid instead of being individually placed. */
-html body.page-home .poster-wall-tile{
+html body:is(.page-home,.page-profile) .poster-wall-tile{
   position:relative!important;
   top:auto!important;right:auto!important;bottom:auto!important;left:auto!important;
   width:auto!important;
@@ -632,37 +632,37 @@ html body.page-home .poster-wall-tile{
   box-shadow:0 4px 12px rgba(0,0,0,.42)!important;
   background:rgba(12,10,26,.55)!important;
 }
-html body.page-home .poster-wall-tile>img{
+html body:is(.page-home,.page-profile) .poster-wall-tile>img{
   width:100%!important;
   height:100%!important;
   object-fit:cover!important;
   display:block!important;
 }
-html body.page-home .poster-wall-brand{display:none!important}
-html body.page-home .poster-wall::before{display:none!important}
+html body:is(.page-home,.page-profile) .poster-wall-brand{display:none!important}
+html body:is(.page-home,.page-profile) .poster-wall::before{display:none!important}
 
 /* Column count per breakpoint. Tiles must stay large enough to read as key art
    and numerous enough to overfill the rotated grid at every size. */
 @media(max-width:700px){
-  html body.page-home .poster-wall .poster-wall-grid{
+  html body:is(.page-home,.page-profile) .poster-wall .poster-wall-grid{
     grid-template-columns:repeat(4,minmax(0,1fr))!important;
     gap:1.2vw!important;
     opacity:.92!important;
   }
 }
 @media(min-width:701px) and (max-width:1099px){
-  html body.page-home .poster-wall .poster-wall-grid{
+  html body:is(.page-home,.page-profile) .poster-wall .poster-wall-grid{
     grid-template-columns:repeat(7,minmax(0,1fr))!important;
     gap:.8vw!important;
   }
 }
 @media(min-width:1100px){
-  html body.page-home .poster-wall .poster-wall-grid{
+  html body:is(.page-home,.page-profile) .poster-wall .poster-wall-grid{
     grid-template-columns:repeat(11,minmax(0,1fr))!important;
   }
 }
 @media(min-width:1800px){
-  html body.page-home .poster-wall .poster-wall-grid{
+  html body:is(.page-home,.page-profile) .poster-wall .poster-wall-grid{
     grid-template-columns:repeat(14,minmax(0,1fr))!important;
   }
 }
@@ -670,7 +670,7 @@ html body.page-home .poster-wall::before{display:none!important}
 /* The scrim: a deep pool of midnight behind the centre column of UI, fading
    out towards the edges so the collage stays visible all the way to the
    corners, plus top and bottom bands. */
-html body.page-home .poster-wall::after{
+html body:is(.page-home,.page-profile) .poster-wall::after{
   content:''!important;
   position:absolute!important;
   inset:0!important;
@@ -689,7 +689,7 @@ html body.page-home .poster-wall::after{
 @media(max-width:700px){
   /* A handset is almost entirely content, so the pool is tightened and the
      edges are left brighter, otherwise the collage disappears completely. */
-  html body.page-home .poster-wall::after{
+  html body:is(.page-home,.page-profile) .poster-wall::after{
     background:
       radial-gradient(ellipse 96% 22% at 50% 33%,
         rgba(5,4,16,.80) 0%,
