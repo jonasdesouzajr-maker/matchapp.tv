@@ -16,7 +16,7 @@ test('premium media motion is bounded and reduced on handhelds',()=>{
 test('Home startup avoids delayed boot locks, stale cache keys and duplicate header owners',()=>{
  const html=read('index.html'),settings=read('settings.js'),wiring=read('final-wiring.js');
  assert.doesNotMatch(html,/ma-ui-preparing|MATCHAPP_UI_FAILSAFE/);
- const versions={'build-meta.js':'20260920-design4','matchapp-ia.js':'20260921-cta1','matchapp-ia.css':'20260921-cta1','settings.js':'20260920-freeze8','app.js':'20260921-hardening1','catalog-media.js':'20260920-freeze-final1','lazy.js':'20260921-hero1'};
+ const versions={'build-meta.js':'20260921-release2','matchapp-ia.js':'20260921-cta1','matchapp-ia.css':'20260921-cta1','settings.js':'20260920-freeze8','app.js':'20260921-hardening1','catalog-media.js':'20260920-freeze-final1','lazy.js':'20260921-hero1'};
  for(const file of ['page-origin.js','build-meta.js','matchapp-ia.js','settings.js','app.js','catalog-media.js','title-experience.js','lazy.js','app-updates.js']){
   const version=versions[file]||'20260920-freeze2';
   assert.match(html,new RegExp('/'+file.replace('.','\\.')+'\\?v='+version));
