@@ -39,3 +39,23 @@ test('Home keeps two desktop AdSense rails and three subtle tablet/mobile in-flo
   assert.match(ia,/if\(ads\[1\]&&week\)after\(week,ads\[1\]\)/);
   assert.match(ia,/if\(ads\[2\]\)after\(events\|\|swift\|\|anchor,ads\[2\]\)/);
 });
+
+test('screenshot regression: collapsed headers are not capped narrower than opened stage',()=>{
+  const css=read('matchapp-ia.css');
+  const pass=css.slice(css.indexOf('2026-09-21 screenshot geometry correction'));
+  assert.match(pass,/\.lazy-head\[data-fold-key="concierge"\]/);
+  assert.match(pass,/\.lazy-head\[data-fold-key="together"\]/);
+  assert.match(pass,/#premiere-disclosure>summary/);
+  assert.match(pass,/#weekly-pick-disclosure>summary/);
+  assert.match(pass,/max-width:none!important/);
+  assert.doesNotMatch(pass,/720px/);
+});
+
+test('screenshot regression: Mood Format Platform have visible inner inset',()=>{
+  const css=read('matchapp-ia.css');
+  const pass=css.slice(css.indexOf('2026-09-21 screenshot geometry correction'));
+  assert.match(pass,/#questionnaire-box\{[\s\S]*padding:16px 16px 14px!important/);
+  assert.match(pass,/\.ma-filter-label\{[\s\S]*padding:0 6px 2px!important/);
+  assert.match(pass,/\.ma-chip-row\{[\s\S]*padding:2px 6px 4px!important/);
+  assert.match(pass,/\.ma-filter-row:first-child\{[\s\S]*padding-top:6px!important/);
+});
