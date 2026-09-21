@@ -114,7 +114,7 @@ jobs:
           LIVE_IA_CSS="$(grep -oE '/matchapp-ia\\.css\\?v=[^"]+' /tmp/home.html | head -n1)"
           test -n "$EXPECTED_IA_CSS"
           test "$LIVE_IA_CSS" = "$EXPECTED_IA_CSS"
-          curl -fsSL --max-time 30 "https://matchapp.tv\${LIVE_IA_CSS}" -o /tmp/home-stability.css
+          curl -fsSL --max-time 30 "https://matchapp.tv${LIVE_IA_CSS}" -o /tmp/home-stability.css
           grep -q '2026-09-20 renderer root guard' /tmp/home-stability.css
           grep -q '2026-09-20 Home compositor stability guard' /tmp/home-stability.css
           grep -q '2026-09-20 Home top-box final freeze guard' /tmp/home-stability.css
