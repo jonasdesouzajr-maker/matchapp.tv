@@ -535,54 +535,11 @@
     results.innerHTML = chatPicks.map((x,i) => cardHTML(x, true, 'chat-' + i)).join('');
     chatPicks.forEach((x,i) => hydratePoster(x, 'chat-' + i));
     send.disabled = false; form.setAttribute('aria-busy', 'false');
-    chat.scrollIntoView({behavior: reducedMotion() ? 'auto' : 'smooth', block:'nearest'});
+    chat.scrollIntoView({behavior:'auto', block:'nearest'});
   }
 
-  let kidsCelebrateTimer=0,kidsCelebratePopTimer=0;
   function clearKidsCelebrate(){
-    clearTimeout(kidsCelebrateTimer);clearTimeout(kidsCelebratePopTimer);
-    kidsCelebrateTimer=0;kidsCelebratePopTimer=0;
     document.querySelectorAll('.kids-celebrate').forEach(el=>el.remove());
-  }
-  function playKidsCelebrate(){
-    clearKidsCelebrate();
-    if(reducedMotion() || document.visibilityState==='hidden')return;
-    const layer=document.createElement('div');
-    layer.className='kids-celebrate';
-    layer.setAttribute('aria-hidden','true');
-    const lowMemory=Number(navigator.deviceMemory||0)>0 && Number(navigator.deviceMemory)<6;
-    const lowCpu=Number(navigator.hardwareConcurrency||0)>0 && Number(navigator.hardwareConcurrency)<6;
-    const compact=matchMedia('(max-width: 820px)').matches || document.documentElement.classList.contains('matchapp-android') || lowMemory || lowCpu;
-    const confetti=document.createElement('div'); confetti.className='kids-confetti';
-    const colors=['#ffcf72','#9ee8e6','#ffabcb','#ffffff','#b48cff','#7dffb3','#ff8a5c'];
-    const confettiCount=compact?6:10;
-    for(let i=0;i<confettiCount;i++){
-      const bit=document.createElement('i');
-      bit.style.setProperty('--x',(Math.random()*100)+'vw');
-      bit.style.setProperty('--delay',(Math.random()*0.16)+'s');
-      bit.style.setProperty('--rot',(Math.random()*300)+'deg');
-      bit.style.setProperty('--c',colors[i%colors.length]);
-      bit.style.setProperty('--w',(6+Math.random()*5)+'px');
-      bit.style.setProperty('--h',(8+Math.random()*7)+'px');
-      bit.style.setProperty('--dur',(0.68+Math.random()*0.24)+'s');
-      bit.style.setProperty('--drift',((Math.random()*34)-17)+'px');
-      confetti.appendChild(bit);
-    }
-    const balloons=document.createElement('div'); balloons.className='kids-balloons';
-    const balloonColors=['#ff6b9d','#ffcf72','#6ecbff','#b48cff','#7dffb3','#ff8a5c'];
-    const balloonCount=compact?2:3;
-    for(let i=0;i<balloonCount;i++){
-      const b=document.createElement('span');
-      b.className='kids-balloon';
-      b.style.setProperty('--x',(12+i*(76/Math.max(1,balloonCount-1)))+'vw');
-      b.style.setProperty('--delay',(0.045*i)+'s');
-      b.style.setProperty('--c',balloonColors[i%balloonColors.length]);
-      b.innerHTML='<b></b><em></em>';
-      balloons.appendChild(b);
-    }
-    layer.appendChild(confetti);layer.appendChild(balloons);document.body.appendChild(layer);
-    kidsCelebratePopTimer=setTimeout(()=>{if(layer.isConnected)layer.classList.add('is-popping');},520);
-    kidsCelebrateTimer=setTimeout(clearKidsCelebrate,900);
   }
   function reducedMotion() { return motionPaused || document.documentElement.classList.contains('reduce-motion') || matchMedia('(prefers-reduced-motion: reduce)').matches; }
   function updateMotion() {
@@ -604,9 +561,8 @@
     if (!item) return;
     category='all';document.getElementById('kids-search').value='';document.getElementById('kids-era').value='all';renderChips();renderGrid();
     const card = [...document.querySelectorAll('#kids-grid .kids-card')].find(el => el.dataset.title === item.title);
-    card?.scrollIntoView({behavior:reducedMotion() ? 'auto' : 'smooth', block:'center'});
-    card?.classList.add('is-surprise'); card?.querySelector('button')?.focus({preventScroll:true});
-    setTimeout(() => card?.classList.remove('is-surprise'), 2200);
+    card?.scrollIntoView({behavior:'auto', block:'center'});
+    card?.querySelector('button')?.focus({preventScroll:true});
   }
   function paintMatch(item){
     document.getElementById('kids-watch-name').textContent=item.title;
@@ -639,15 +595,13 @@
         dialog.scrollTop=0;
       } else {
         dialog.setAttribute('open','');
-        dialog.scrollIntoView({behavior:reducedMotion()?'auto':'smooth',block:'start'});
+        dialog.scrollIntoView({behavior:'auto',block:'start'});
       }
       // Persist every actual shown Match. Guests keep this locally; signed-in
       // families also sync through the shared private portfolio history.
       window.matchPolicy?.remember({title:item.title,posterUrl:makePoster(item),streamUrl:watchUrl(item)},'shown');
       document.dispatchEvent(new CustomEvent('matchapp:kids-result',{detail:{title:item.title}}));
-      // Wait one paint before decorative effects so the usable result wins the
-      // frame. This avoids stacking modal/backdrop/layout work in one task.
-      requestAnimationFrame(()=>{ if(dialog.open&&currentWatchItem===item) playKidsCelebrate(); });
+      // Kids Mode intentionally runs without decorative result animation.
     }catch(_){clearKidsCelebrate();status.textContent=tr('quotaError');status.scrollIntoView({block:'center'});}
     finally{openingMatch=false;document.getElementById('kids-match-submit').disabled=false;}
   }
