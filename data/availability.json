@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-14T10:10:16.619Z",
+  "generated": "2026-09-21T10:16:03.367Z",
   "source": "TMDB / JustWatch",
   "titles": {
     "The Bear": {
@@ -117,9 +117,7 @@
         "GB": {
           "stream": [
             "Netflix",
-            "Amazon Prime Video",
-            "Netflix Standard with Ads",
-            "Amazon Prime Video with Ads"
+            "Netflix Standard with Ads"
           ],
           "rent": [
             "Apple TV Store",
@@ -1337,6 +1335,40 @@
         }
       }
     },
+    "The Scandal": {
+      "tmdbId": 275102,
+      "kind": "tv",
+      "year": 2026,
+      "regions": {
+        "BR": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/275102/watch?locale=BR"
+        },
+        "US": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/275102/watch?locale=US"
+        },
+        "GB": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/275102/watch?locale=GB"
+        },
+        "PT": {
+          "stream": [
+            "Netflix"
+          ],
+          "link": "https://www.themoviedb.org/tv/275102/watch?locale=PT"
+        }
+      }
+    },
     "Teach You a Lesson": {
       "tmdbId": 276161,
       "kind": "tv",
@@ -1488,6 +1520,40 @@
         }
       }
     },
+    "Monster: The Lizzie Borden Story": {
+      "tmdbId": 299939,
+      "kind": "tv",
+      "year": 2026,
+      "regions": {
+        "BR": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/299939-monster-the-lizzie-borden-story/watch?locale=BR"
+        },
+        "US": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/299939-monster-the-lizzie-borden-story/watch?locale=US"
+        },
+        "GB": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/299939-monster-the-lizzie-borden-story/watch?locale=GB"
+        },
+        "PT": {
+          "stream": [
+            "Netflix"
+          ],
+          "link": "https://www.themoviedb.org/tv/299939-monster-the-lizzie-borden-story/watch?locale=PT"
+        }
+      }
+    },
     "Why Did I Get Married Again?": {
       "tmdbId": 1522689,
       "kind": "movie",
@@ -1519,6 +1585,201 @@
             "Netflix"
           ],
           "link": "https://www.themoviedb.org/movie/1522689-why-did-i-get-married-again/watch?locale=PT"
+        }
+      }
+    },
+    "Go Team!": {
+      "tmdbId": 1558568,
+      "kind": "movie",
+      "year": 2026,
+      "regions": {
+        "BR": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/movie/1558568-gracias-equipo/watch?locale=BR"
+        },
+        "US": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/movie/1558568-gracias-equipo/watch?locale=US"
+        },
+        "GB": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/movie/1558568-gracias-equipo/watch?locale=GB"
+        },
+        "PT": {
+          "stream": [
+            "Netflix"
+          ],
+          "link": "https://www.themoviedb.org/movie/1558568-gracias-equipo/watch?locale=PT"
+        }
+      }
+    },
+    "Best of the Best": {
+      "tmdbId": 1514863,
+      "kind": "movie",
+      "year": 2026,
+      "regions": {
+        "BR": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/movie/1514863-best-of-the-best/watch?locale=BR"
+        },
+        "US": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/movie/1514863-best-of-the-best/watch?locale=US"
+        },
+        "GB": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/movie/1514863-best-of-the-best/watch?locale=GB"
+        },
+        "PT": {
+          "stream": [
+            "Netflix"
+          ],
+          "link": "https://www.themoviedb.org/movie/1514863-best-of-the-best/watch?locale=PT"
+        }
+      }
+    },
+    "Call My Agent! The Movie": {
+      "tmdbId": 1365884,
+      "kind": "movie",
+      "year": 2026,
+      "regions": {
+        "BR": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/movie/1365884-dix-pour-cent-le-film/watch?locale=BR"
+        },
+        "US": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/movie/1365884-dix-pour-cent-le-film/watch?locale=US"
+        },
+        "GB": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/movie/1365884-dix-pour-cent-le-film/watch?locale=GB"
+        },
+        "PT": {
+          "stream": [
+            "Netflix"
+          ],
+          "link": "https://www.themoviedb.org/movie/1365884-dix-pour-cent-le-film/watch?locale=PT"
+        }
+      }
+    },
+    "Neagley": {
+      "tmdbId": 273207,
+      "kind": "tv",
+      "year": 2026,
+      "regions": {
+        "BR": {
+          "stream": [
+            "Amazon Prime Video",
+            "Amazon Prime Video with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/273207-neagley/watch?locale=BR"
+        },
+        "US": {
+          "stream": [
+            "Amazon Prime Video",
+            "Amazon Prime Video with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/273207-neagley/watch?locale=US"
+        },
+        "GB": {
+          "stream": [
+            "Amazon Prime Video",
+            "Amazon Prime Video with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/273207-neagley/watch?locale=GB"
+        },
+        "PT": {
+          "stream": [
+            "Amazon Prime Video"
+          ],
+          "link": "https://www.themoviedb.org/tv/273207-neagley/watch?locale=PT"
+        }
+      }
+    },
+    "The Drop: A Snowfall Saga": {
+      "tmdbId": 304842,
+      "kind": "tv",
+      "year": 2026,
+      "regions": {
+        "US": {
+          "stream": [
+            "Hulu",
+            "fuboTV"
+          ],
+          "link": "https://www.themoviedb.org/tv/304842-the-drop-a-snowfall-saga/watch?locale=US"
+        }
+      }
+    },
+    "Toy Story 5": {
+      "tmdbId": 1084244,
+      "kind": "movie",
+      "year": 2026,
+      "regions": {
+        "US": {
+          "rent": [
+            "Apple TV Store",
+            "Google Play Movies",
+            "YouTube",
+            "Fandango At Home"
+          ],
+          "buy": [
+            "Amazon Video",
+            "Apple TV Store",
+            "Google Play Movies",
+            "YouTube",
+            "Fandango At Home"
+          ],
+          "link": "https://www.themoviedb.org/movie/1084244-toy-story-5/watch?locale=US"
+        },
+        "GB": {
+          "rent": [
+            "Apple TV Store",
+            "Rakuten TV",
+            "Sky Store"
+          ],
+          "buy": [
+            "Apple TV Store",
+            "Rakuten TV",
+            "Amazon Video",
+            "Sky Store"
+          ],
+          "link": "https://www.themoviedb.org/movie/1084244-toy-story-5/watch?locale=GB"
+        },
+        "PT": {
+          "buy": [
+            "Apple TV Store",
+            "Rakuten TV",
+            "Amazon Video"
+          ],
+          "link": "https://www.themoviedb.org/movie/1084244-toy-story-5/watch?locale=PT"
         }
       }
     },
@@ -1693,6 +1954,185 @@
             "Amazon Video"
           ],
           "link": "https://www.themoviedb.org/movie/279-amadeus/watch?locale=PT"
+        }
+      }
+    },
+    "WEIRD: The Al Yankovic Story": {
+      "tmdbId": 928344,
+      "kind": "movie",
+      "year": 2022,
+      "regions": {
+        "US": {
+          "stream": [
+            "Howdy Amazon Channel"
+          ],
+          "rent": [
+            "Amazon Video",
+            "Apple TV Store",
+            "Google Play Movies",
+            "YouTube",
+            "Fandango At Home",
+            "Spectrum On Demand"
+          ],
+          "buy": [
+            "Amazon Video",
+            "Apple TV Store",
+            "Google Play Movies",
+            "YouTube",
+            "Fandango At Home"
+          ],
+          "link": "https://www.themoviedb.org/movie/928344-weird-the-al-yankovic-story/watch?locale=US"
+        },
+        "GB": {
+          "stream": [
+            "Amazon Prime Video",
+            "Amazon Prime Video with Ads"
+          ],
+          "rent": [
+            "Apple TV Store",
+            "Rakuten TV",
+            "Amazon Video",
+            "Google Play Movies",
+            "Sky Store",
+            "YouTube"
+          ],
+          "buy": [
+            "Apple TV Store",
+            "Rakuten TV",
+            "Amazon Video",
+            "Google Play Movies",
+            "Sky Store",
+            "YouTube"
+          ],
+          "link": "https://www.themoviedb.org/movie/928344-weird-the-al-yankovic-story/watch?locale=GB"
+        }
+      }
+    },
+    "Die Hart": {
+      "tmdbId": 99072,
+      "kind": "tv",
+      "year": 2020,
+      "regions": {
+        "US": {
+          "link": "https://www.themoviedb.org/tv/99072-die-hart/watch?locale=US"
+        }
+      }
+    },
+    "The Great American Baking Show": {
+      "tmdbId": 214665,
+      "kind": "tv",
+      "year": 2023,
+      "regions": {
+        "US": {
+          "stream": [
+            "Hulu",
+            "Howdy Amazon Channel"
+          ],
+          "link": "https://www.themoviedb.org/tv/214665-the-great-american-baking-show/watch?locale=US"
+        }
+      }
+    },
+    "Honest Renovations": {
+      "tmdbId": 233010,
+      "kind": "tv",
+      "year": 2023,
+      "regions": {
+        "US": {
+          "stream": [
+            "Howdy Amazon Channel"
+          ],
+          "link": "https://www.themoviedb.org/tv/233010-honest-renovations/watch?locale=US"
+        },
+        "GB": {
+          "link": "https://www.themoviedb.org/tv/233010-honest-renovations/watch?locale=GB"
+        }
+      }
+    },
+    "Side Hustlers": {
+      "tmdbId": 248782,
+      "kind": "tv",
+      "year": 2024,
+      "regions": {
+        "US": {
+          "link": "https://www.themoviedb.org/tv/248782-side-hustlers/watch?locale=US"
+        },
+        "GB": {
+          "stream": [
+            "Sky Go"
+          ],
+          "link": "https://www.themoviedb.org/tv/248782-side-hustlers/watch?locale=GB"
+        }
+      }
+    },
+    "Martha Cooks": {
+      "tmdbId": 215916,
+      "kind": "tv",
+      "year": 2022,
+      "regions": {
+        "US": {
+          "stream": [
+            "Netflix",
+            "Philo",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/215916-martha-cooks/watch?locale=US"
+        }
+      }
+    },
+    "This Old House": {
+      "tmdbId": 2394,
+      "kind": "tv",
+      "year": 1979,
+      "regions": {
+        "US": {
+          "stream": [
+            "Amazon Prime Video",
+            "Philo",
+            "YouTube TV",
+            "Amazon Prime Video with Ads",
+            "Thirteen",
+            "Howdy Amazon Channel"
+          ],
+          "buy": [
+            "Amazon Video",
+            "Apple TV Store"
+          ],
+          "link": "https://www.themoviedb.org/tv/2394-this-old-house/watch?locale=US"
+        },
+        "GB": {
+          "buy": [
+            "Apple TV Store",
+            "Amazon Video"
+          ],
+          "link": "https://www.themoviedb.org/tv/2394-this-old-house/watch?locale=GB"
+        }
+      }
+    },
+    "Ask This Old House": {
+      "tmdbId": 23545,
+      "kind": "tv",
+      "year": 2002,
+      "regions": {
+        "US": {
+          "stream": [
+            "Amazon Prime Video",
+            "YouTube TV",
+            "Amazon Prime Video with Ads",
+            "Thirteen",
+            "WETA+",
+            "Howdy Amazon Channel"
+          ],
+          "buy": [
+            "Amazon Video",
+            "Apple TV Store"
+          ],
+          "link": "https://www.themoviedb.org/tv/23545-ask-this-old-house/watch?locale=US"
+        },
+        "GB": {
+          "buy": [
+            "Apple TV Store"
+          ],
+          "link": "https://www.themoviedb.org/tv/23545-ask-this-old-house/watch?locale=GB"
         }
       }
     }
