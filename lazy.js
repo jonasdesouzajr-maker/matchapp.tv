@@ -142,12 +142,39 @@ function apply(on,announce){
  if(Array.isArray(window.dataLayer))window.dataLayer.push({event:'lazy_mode_toggle',lazy_mode:on?'on':'off'});
 }
 window.setLazyMode=v=>apply(!!v,false);
+/* The hero headline doubles as the way into the matcher: it opens the
+   concierge fold and brings the matching field into view. The fold is opened
+   through its own control rather than by toggling classes here, so lazy.js
+   stays the single fold owner and the remembered state keeps in step.
+   i18n rewrites this heading's textContent on every language change, so the
+   behaviour is bound to the element and never to markup inside it. */
+function mountHeroJump(){
+ const hero=document.querySelector('header.home-hero .home-h1');
+ const section=document.getElementById('ma-concierge');
+ if(!hero||!section||hero.dataset.heroJump==='1')return;
+ hero.dataset.heroJump='1';
+ hero.classList.add('home-h1-jump');
+ hero.tabIndex=0;
+ const jump=()=>{
+  const head=document.querySelector('.lazy-head[data-fold-key="concierge"]');
+  if(!section.classList.contains('lazy-open')&&head)head.click();
+  const target=document.getElementById('questionnaire-box')||section;
+  let smooth=true;
+  try{smooth=!(matchMedia('(prefers-reduced-motion: reduce)').matches||document.documentElement.classList.contains('reduce-motion'));}catch(_){}
+  try{target.scrollIntoView({behavior:smooth?'smooth':'auto',block:'start'});}
+  catch(_){target.scrollIntoView();}
+ };
+ hero.addEventListener('click',jump);
+ hero.addEventListener('keydown',event=>{
+  if(event.key==='Enter'||event.key===' '){event.preventDefault();jump();}
+ });
+}
 function init(){
- buildToggle();mountAll();apply(isOn(),false);
+ buildToggle();mountAll();apply(isOn(),false);mountHeroJump();
  const obs=new MutationObserver(records=>{
   let relevant=false;
   for(const r of records)for(const n of r.addedNodes||[])if(n.nodeType===1&&(n.matches?.('#weekly-pick-disclosure,#latest-news,#ma-concierge')||n.querySelector?.('#weekly-pick-disclosure,#latest-news,#ma-concierge'))){relevant=true;break}
-  if(relevant&&!observerQueued){observerQueued=true;queueMicrotask(()=>{observerQueued=false;mountAll();syncAll(lazyOn())})}
+  if(relevant&&!observerQueued){observerQueued=true;queueMicrotask(()=>{observerQueued=false;mountAll();syncAll(lazyOn());mountHeroJump()})}
  });
  obs.observe(document.body,{childList:true,subtree:true});
 }

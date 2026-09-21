@@ -2966,3 +2966,26 @@ html body.page-home #trending-rail .marquee-item .marquee-title{
 /* The credits badge ships empty and is filled by credits-ui.js. While it has
    no content it should not occupy a pill in the control bar. */
 html body.page-home #mh-topbox.ma-home-header #quota-badge:empty{display:none!important}
+
+/* The hero headline is the shortcut into the matcher (lazy.js binds it), so it
+   advertises itself as one. The fold's own "Curate Your Perfect Match" button
+   remains the primary, fully labelled control. */
+html body.page-home .home-h1-jump{
+  cursor:pointer!important;
+  transition:color .18s ease,text-shadow .18s ease!important;
+}
+@media(hover:hover){
+  html body.page-home .home-h1-jump:hover{
+    color:#fff6d6!important;
+    text-shadow:0 0 24px color-mix(in srgb,var(--gold,#e5c158) 42%,transparent)!important;
+  }
+}
+html body.page-home .home-h1-jump:focus-visible{
+  outline:2px solid var(--gold,#e5c158)!important;
+  outline-offset:6px!important;
+  border-radius:10px!important;
+}
+@media(prefers-reduced-motion:reduce){
+  html body.page-home .home-h1-jump{transition:none!important}
+}
+html.reduce-motion body.page-home .home-h1-jump{transition:none!important}

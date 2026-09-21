@@ -70,6 +70,7 @@ These are standing implementation rules for MatchApp work in this repository.
    - **Top-box control bar.** Every header control stays visible and reachable; the bar is tidied by sizing, ordering and wrapping, never by hiding or removing a control. The only element allowed to collapse is the credits badge while it is genuinely empty.
    - **Cover titles.** Every rail cover shows its title. The caption element is created when the markup does not ship one; `aria-hidden` marquee clones are never captioned and never focusable.
    - **Golden edge.** Covers, boxes and fields carry the gold outline from CSS alone, so it never depends on a runtime reaching them. The travelling sheen is the only animated part and stays capped at a dozen on-screen elements through a bounded IntersectionObserver, off entirely under either reduced-motion signal. Never animate the whole selector set.
+   - **Hero headline is the way in.** Clicking or keyboard-activating the Home headline opens the matching fold and scrolls the matching field into view. It opens the fold through the fold's own control so `lazy.js` stays the single fold owner and the remembered state keeps in step, and it binds to the element rather than to markup inside it, because i18n rewrites that heading's text on every language change.
    - Any change to the Home landing visuals is designed and verified at handset, tablet and desktop widths in the same task, with before/after evidence, and reviewed for both Android modules.
 
 ### Stability invariant
