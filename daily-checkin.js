@@ -215,7 +215,7 @@
     const balance = Number(result?.matches);
     const hasBalance = Number.isFinite(balance);
     const sparks = Array.from({ length: 14 }, (_, i) =>
-      '<i style="--a:' + (i * (360 / 14)) + 'deg;--d:' + (46 + (i % 4) * 10) + 'px;--dy:-' + (46 + (i % 4) * 10) + 'px;--delay:' + ((i % 5) * 18) + 'ms"></i>'
+      '<i style="--a:' + (i * (360 / 14)) + 'deg;--dy:-' + (46 + (i % 4) * 10) + 'px;--delay:' + ((i % 5) * 18) + 'ms"></i>'
     ).join('');
     const overlay = document.createElement('div');
     overlay.className = 'daily-reward';
