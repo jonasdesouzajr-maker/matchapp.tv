@@ -5,18 +5,18 @@ window.MATCHAPP_BUILD = '2026.09.20.2';
 /* Search freshness + truthfulness layer. */
 (function () {
   'use strict';
-  const TODAY = '2026-09-20';
+  const TODAY = '2026-09-21';
   const TRENDING = [
-    'Habeas Corpus',
-    'Era Uma Vez Minha 1ª Vez',
-    'Furnas Fundas',
-    'Virtuosas',
-    'Viva Marília',
-    'American Hostage',
-    'Youth',
-    'Stop! That! Train!',
-    'How to Live on Earth',
-    'Lanterns'
+    "Quem É Você?",
+    "Vermelho Sangue",
+    "Habeas Corpus",
+    "Virtuosas",
+    "(Des)controle",
+    "Line of Fire",
+    "Wicked",
+    "You+Me - Against the World",
+    "The Love Hypothesis",
+    "American Hostage",
   ];
   function upsertMeta(name, content) {
     let el = document.querySelector('meta[name="'+name+'"]');

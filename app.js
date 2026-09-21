@@ -1093,7 +1093,6 @@ const VERIFIED_POSTERS = {
     "Monster: The Lizzie Borden Story": "https://image.tmdb.org/t/p/w780/57XScX1aYtKi1LvHYFQLPUxVhTG.jpg",
     "Resident Evil": "https://image.tmdb.org/t/p/w780/i7UyjfPio0VFHB9rBUZSFyhOoM8.jpg",
     "Amor Sob Vigilância": "https://image.tmdb.org/t/p/w780/cLpTLE15m4Hcj5dwWNEzrBOM6Ae.jpg",
-    "Vermelho Sangue": "https://image.tmdb.org/t/p/w780/gtUqzLLaarxvNWzKeBepwWfTfm8.jpg",
     "Quem Ama Cuida": "https://image.tmdb.org/t/p/w780/p97unAJ9n9gpNrICCwEKuZdrb1t.jpg",
     "Antártida": "https://image.tmdb.org/t/p/w780/5bg61sH6kqPVWcBoFUDoe6eqfoX.jpg",
     'Beauty in Black': 'https://image.tmdb.org/t/p/w780/xKk4bFCCpZ9tvjUykvvMYLSBnjo.jpg',
@@ -1104,18 +1103,24 @@ const VERIFIED_POSTERS = {
     "Morte e Vida Madalena": "https://image.tmdb.org/t/p/w780/2q6PV1Dl6htx5fqwPXcOwTTahcx.jpg",
     "Practical Magic 2": "https://image.tmdb.org/t/p/w780/ogwQOLbCfncjvBhFb5l0OmQH8KC.jpg",
     "Forgotten Island": "https://image.tmdb.org/t/p/w780/Lr0Ng7Gg02RW1AyfYEL6P0WUvd.jpg",
-    "The Love Hypothesis": "https://image.tmdb.org/t/p/w780/vfZxVHextAGC70zrNhS8lsROqP1.jpg",
     "Neagley": "https://image.tmdb.org/t/p/w780/lKOPmO0ah17ogQ9hWg7lSd40kIr.jpg",
-    "Habeas Corpus": "https://image.tmdb.org/t/p/w780/8JP8OXWufxAXFLfOOj4XU2SEhvV.jpg",
     "Era Uma Vez Minha 1ª Vez": "https://image.tmdb.org/t/p/w780/6byulzTctYTBIvJGS4bsNSnmBof.jpg",
     "Furnas Fundas": "https://image.tmdb.org/t/p/w780/h37jOsDLNMG7RhSXiQse4oGGqgH.jpg",
-    "Virtuosas": "https://image.tmdb.org/t/p/w780/v9wSMFf9Ysj40aHHUJ1VeLStZWn.jpg",
     "Viva Marília": "https://image.tmdb.org/t/p/w780/13pzkz6ePwXuYKH0VsVijtRWjUR.jpg",
-    "American Hostage": "https://image.tmdb.org/t/p/w780/dzoPQ13XrRUGl8Yoz1P66V8rRUy.jpg",
     "Youth": "https://image.tmdb.org/t/p/w780/bk1zbzbu0xaYQuIANv4Pe8HHyAY.jpg",
     "Stop! That! Train!": "https://image.tmdb.org/t/p/w780/w90dGS6D2lVO4aO5rdQ8QECrUGY.jpg",
     "How to Live on Earth": "https://image.tmdb.org/t/p/w780/cMnvp0FdUR7T5etiSTfshFHyCk3.jpg",
-    "Lanterns": "https://image.tmdb.org/t/p/w780/gpC7h43xPMEV3goYMQShfJbTtLq.jpg"
+    "Lanterns": "https://image.tmdb.org/t/p/w780/gpC7h43xPMEV3goYMQShfJbTtLq.jpg",
+    "Quem É Você?": "https://image.tmdb.org/t/p/w780/ewelBEOwfr8EIjnrc6Drov67xe1.jpg",
+    "Vermelho Sangue": "https://image.tmdb.org/t/p/w780/gtUqzLLaarxvNWzKeBepwWfTfm8.jpg",
+    "Habeas Corpus": "https://image.tmdb.org/t/p/w780/8JP8OXWufxAXFLfOOj4XU2SEhvV.jpg",
+    "Virtuosas": "https://image.tmdb.org/t/p/w780/v9wSMFf9Ysj40aHHUJ1VeLStZWn.jpg",
+    "(Des)controle": "https://image.tmdb.org/t/p/w780/scl6uVD0YZc46WZHgXbEcaH2zYw.jpg",
+    "Line of Fire": "https://image.tmdb.org/t/p/w780/sodRW36uEDHjv8l1WhYUNDvnIK6.jpg",
+    "Wicked": "https://image.tmdb.org/t/p/w780/xDGbZ0JJ3mYaGKy4Nzd9Kph6M9L.jpg",
+    "You+Me - Against the World": "https://image.tmdb.org/t/p/w780/bAbBNVplg7h79sm94OyHeKk8Phz.jpg",
+    "The Love Hypothesis": "https://image.tmdb.org/t/p/w780/vfZxVHextAGC70zrNhS8lsROqP1.jpg",
+    "American Hostage": "https://image.tmdb.org/t/p/w780/p3Ro0ngezX9aNZY6j3vYbpQqVhr.jpg"
 };
 
 function getVerifiedPoster(title) {
