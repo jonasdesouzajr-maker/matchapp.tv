@@ -1,64 +1,275 @@
-.daily-checkin{margin:14px 0 18px;padding:18px;border:1px solid rgba(229,193,88,.42);border-radius:22px;background:linear-gradient(145deg,rgba(50,25,76,.96),rgba(18,10,31,.97));box-shadow:0 14px 34px rgba(0,0,0,.28);color:#fff}.daily-checkin-head{display:flex;align-items:center;gap:12px}.daily-checkin-badge{display:grid;place-items:center;width:48px;height:48px;border-radius:15px;background:linear-gradient(145deg,#f7d873,#b98a24);color:#251509;font-size:24px}.daily-checkin-copy{flex:1}.daily-checkin h2{font-size:17px;margin:0;color:#ffe9a6}.daily-checkin p{font-size:12px;line-height:1.45;margin:4px 0 0;color:#d6cce5}.daily-checkin-days{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px;margin:15px 0 12px}.daily-day{display:grid;place-items:center;gap:4px;min-height:54px;padding:6px 2px;border:1px solid rgba(255,255,255,.13);border-radius:11px;background:rgba(255,255,255,.045);font-size:9px;color:#c9bddb}.daily-day i{font-style:normal;font-size:16px}.daily-day.done{background:rgba(229,193,88,.16);border-color:rgba(229,193,88,.58);color:#ffe9a6}.daily-day.today{box-shadow:0 0 0 2px rgba(229,193,88,.24)}.daily-checkin-action{width:100%;min-height:43px;border:0;border-radius:13px;background:linear-gradient(135deg,#E5C158,#f7dc82);color:#20150a;font-weight:900}.daily-checkin-action:disabled{opacity:.68}.daily-checkin-note{text-align:center!important;font-size:10.5px!important;margin-top:8px!important}.daily-reward{position:fixed;inset:0;z-index:2147483000;display:grid;place-items:center;padding:22px;background:rgba(5,3,10,.82);backdrop-filter:blur(8px)}.daily-reward-card{width:min(92vw,380px);padding:30px 22px;text-align:center;border:1px solid rgba(229,193,88,.65);border-radius:26px;background:radial-gradient(circle at 50% 25%,rgba(126,73,174,.75),rgba(25,12,43,.98) 62%);box-shadow:0 25px 90px #000}.daily-reward-medal{display:grid;place-items:center;width:112px;height:112px;margin:15px auto;border-radius:34px;background:linear-gradient(145deg,#ffe991,#c6972e);color:#2a1807;font-size:28px;font-weight:1000;box-shadow:0 0 42px rgba(229,193,88,.48)}.daily-reward-card h3{font-size:24px;margin:8px 0}.daily-reward-card p{color:#ddd0ed;line-height:1.5}.daily-reward-card button{margin-top:10px;padding:12px 24px;border:0;border-radius:13px;background:#E5C158;color:#211506;font-weight:900}@media(max-width:600px){.daily-checkin{padding:14px 12px}.daily-checkin-days{gap:3px}.daily-day{min-height:49px;font-size:8px}}
-/* Check-in celebration v2: responsive, motion-safe, isolated to the reward overlay. */
-.daily-reward{overflow:hidden;animation:dailyFadeIn .32s ease-out both}
-.daily-reward::before,.daily-reward::after{content:"";position:absolute;left:50%;top:50%;pointer-events:none;transform:translate(-50%,-50%);border-radius:50%}
-.daily-reward::before{width:min(78vw,520px);aspect-ratio:1;background:conic-gradient(from 0deg,transparent 0 7%,rgba(229,193,88,.2) 8% 10%,transparent 11% 18%,rgba(154,100,255,.18) 19% 21%,transparent 22% 31%,rgba(255,255,255,.13) 32% 33%,transparent 34% 100%);filter:blur(1px);animation:dailyHaloSpin 14s linear infinite}
-.daily-reward::after{width:min(62vw,400px);aspect-ratio:1;background:radial-gradient(circle,rgba(255,235,151,.38) 0,rgba(229,193,88,.17) 26%,rgba(125,74,188,.11) 46%,transparent 70%);animation:dailyGlow 2.8s ease-in-out infinite}
-.daily-reward-card{position:relative;z-index:2;animation:dailyCardRise .58s cubic-bezier(.2,.9,.22,1.2) both}
-.daily-reward-card::before{content:"✦  ✧  ✦  ✧  ✦";position:absolute;left:50%;top:94px;width:130%;transform:translateX(-50%);color:#ffe89a;font-size:20px;letter-spacing:18px;opacity:.85;text-shadow:0 0 16px #E5C158;animation:dailySparkle 2.4s ease-in-out infinite}
-.daily-reward-medal{position:relative;z-index:2;overflow:visible;animation:dailyMedalPop .75s cubic-bezier(.18,.9,.24,1.35) .12s both,dailyMedalFloat 3s ease-in-out 1s infinite}
-.daily-reward-medal::before{content:"";position:absolute;inset:-34px;border-radius:50%;z-index:-1;background:radial-gradient(circle,rgba(255,241,174,.72) 0,rgba(229,193,88,.25) 28%,transparent 66%);animation:dailyBadgeShine 1.9s ease-in-out infinite}
-.daily-reward-medal::after{content:"";position:absolute;inset:-12px;border-radius:42px;border:2px solid rgba(255,239,163,.72);box-shadow:0 0 22px rgba(229,193,88,.7),inset 0 0 16px rgba(255,255,255,.25);animation:dailyBadgeRing 2.2s ease-out infinite}
-.daily-reward-kicker{font-weight:900;color:#ffe9a6;letter-spacing:.02em;animation:dailyTextIn .45s ease-out .18s both}
-.daily-reward-title{animation:dailyTextIn .45s ease-out .3s both}
-.daily-reward-message{animation:dailyTextIn .45s ease-out .4s both}
-.daily-reward-card button{animation:dailyTextIn .45s ease-out .5s both}
-.daily-checkin-badge{position:relative;overflow:visible;animation:dailySmallFloat 4s ease-in-out infinite}
-.daily-checkin-badge::after{content:"";position:absolute;inset:-7px;border-radius:20px;border:1px solid rgba(255,231,145,.36);opacity:.65;animation:dailySmallRing 3s ease-out infinite}
-@keyframes dailyFadeIn{from{opacity:0}to{opacity:1}}@keyframes dailyCardRise{from{opacity:0;transform:translateY(28px) scale(.94)}to{opacity:1;transform:none}}@keyframes dailyMedalPop{0%{opacity:0;transform:scale(.35) rotate(-12deg)}70%{opacity:1;transform:scale(1.1) rotate(2deg)}100%{transform:scale(1)}}@keyframes dailyMedalFloat{50%{transform:translateY(-7px)}}@keyframes dailyBadgeShine{0%,100%{transform:scale(.82);opacity:.45}50%{transform:scale(1.2);opacity:1}}@keyframes dailyBadgeRing{0%{transform:scale(.82);opacity:.9}80%,100%{transform:scale(1.22);opacity:0}}@keyframes dailyHaloSpin{to{transform:translate(-50%,-50%) rotate(360deg)}}@keyframes dailyGlow{50%{transform:translate(-50%,-50%) scale(1.13);opacity:.72}}@keyframes dailySparkle{0%,100%{opacity:.28;transform:translateX(-50%) scale(.94)}50%{opacity:1;transform:translateX(-50%) scale(1.04)}}@keyframes dailyTextIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}@keyframes dailySmallFloat{50%{transform:translateY(-3px)}}@keyframes dailySmallRing{0%{transform:scale(.82);opacity:.7}75%,100%{transform:scale(1.2);opacity:0}}
-@media(min-width:768px){.daily-reward-card{width:min(78vw,430px);padding:34px 28px}.daily-reward-medal{width:126px;height:126px;font-size:31px}.daily-checkin{padding:20px}.daily-day{min-height:60px;font-size:10px}}
-@media(min-width:1200px){.daily-reward-card{width:430px}.daily-checkin{max-width:100%}}
-@media(prefers-reduced-motion:reduce){.daily-reward,.daily-reward::before,.daily-reward::after,.daily-reward-card,.daily-reward-card::before,.daily-reward-medal,.daily-reward-medal::before,.daily-reward-medal::after,.daily-reward-kicker,.daily-reward-title,.daily-reward-message,.daily-reward-card button,.daily-checkin-badge,.daily-checkin-badge::after{animation:none!important}}
+/* MatchApp TV Ai — Daily Check-in field (2026-09-21 rebuild).
 
-/* Compact premium check-in shell */
-body.page-home #daily-match-checkin.daily-checkin{
-  width:min(100%,760px)!important;margin:8px auto!important;padding:9px 11px!important;
-  border:1px solid rgba(255,255,255,.07)!important;border-radius:16px!important;
-  background:linear-gradient(120deg,rgba(33,15,52,.58),rgba(17,8,29,.52))!important;
-  box-shadow:0 10px 26px rgba(0,0,0,.15)!important;
+   A seven-day loyalty track that sits directly under the top box on every
+   surface: the same width as the top box, a shorter box, one cell per day on
+   one line at every breakpoint, and a gold shimmering edge.
+
+   Motion budget: the gold edge is painted by CSS so it never depends on a
+   runtime reaching this element, and the only animated parts are one
+   transform-only sheen bar and the ring on today's cell. Both stop dead under
+   either reduced-motion signal. */
+
+#daily-match-checkin.dc,
+.daily-checkin.dc{
+  --dc-gold:#f3cf69;
+  --dc-gold-deep:#b98428;
+  --dc-gold-hot:#ffe9a6;
+
+  display:block!important;
+  box-sizing:border-box!important;
+  position:relative;
+  isolation:isolate;
+  /* Same width as the top box (which is min(100% - 12px, 1180px)); the field
+     itself is shorter, which is where "a little smaller" lives. */
+  width:min(calc(100% - 12px),1180px)!important;
+  max-width:1180px!important;
+  margin:6px auto 10px!important;
+  padding:10px 14px!important;
+  border:1px solid transparent!important;
+  border-radius:18px!important;
+  background:
+    linear-gradient(118deg,rgba(32,15,51,.92),rgba(16,8,28,.90)) padding-box,
+    linear-gradient(120deg,var(--dc-gold-deep),var(--dc-gold-hot) 28%,var(--dc-gold) 52%,var(--dc-gold-deep) 78%,var(--dc-gold-hot)) border-box!important;
+  box-shadow:0 12px 34px rgba(0,0,0,.30),inset 0 1px rgba(255,255,255,.05)!important;
+  color:#f8f4ff;
+  overflow:hidden;
 }
-body.page-home #daily-match-checkin .daily-checkin-head{gap:9px!important}
-body.page-home #daily-match-checkin .daily-checkin-badge{
-  width:36px!important;height:36px!important;border-radius:11px!important;font-size:17px!important;
-  box-shadow:0 0 18px rgba(229,193,88,.12)!important;animation:none!important
+
+/* The shimmer. One element, one transform, no layout work. */
+#daily-match-checkin.dc::before,
+.daily-checkin.dc::before{
+  content:"";position:absolute;z-index:0;top:0;left:-45%;width:34%;height:100%;
+  pointer-events:none;
+  background:linear-gradient(100deg,transparent,rgba(255,240,190,.14),transparent);
+  transform:skewX(-18deg);
+  animation:dcSheen 6.5s ease-in-out infinite;
 }
-body.page-home #daily-match-checkin .daily-checkin-badge::after{display:none!important}
-body.page-home #daily-match-checkin .daily-checkin-copy h2{
-  margin:0!important;font-size:13px!important;line-height:1.1!important;color:#fff3c2!important
+@keyframes dcSheen{
+  0%{transform:translateX(0) skewX(-18deg)}
+  55%,100%{transform:translateX(430%) skewX(-18deg)}
 }
-body.page-home #daily-match-checkin .daily-checkin-copy p{
-  margin:3px 0 0!important;font-size:9.8px!important;line-height:1.25!important;color:#bfb1cb!important
+
+.dc .dc-inner{position:relative;z-index:1;display:flex;flex-direction:column;gap:8px}
+
+/* ------------------------------- head ------------------------------- */
+
+.dc .dc-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;min-width:0}
+.dc .dc-title{
+  margin:0;font-size:clamp(12.5px,2.5vw,15px);font-weight:900;line-height:1.15;
+  color:var(--dc-gold-hot);letter-spacing:.01em;
 }
-body.page-home #daily-match-checkin .daily-checkin-toggle{
-  flex:0 0 32px;width:32px!important;height:32px!important;min-height:32px!important;padding:0!important;
-  border:0!important;border-radius:10px!important;background:rgba(255,255,255,.045)!important;color:#e6d9f1!important;
-  box-shadow:none!important;font-size:17px!important;cursor:pointer!important
+.dc .dc-sub{
+  margin:0;flex:1 1 auto;min-width:0;
+  font-size:clamp(10px,2.1vw,11.5px);line-height:1.3;color:#c3b6d6;
+  overflow-wrap:break-word;
 }
-body.page-home #daily-match-checkin .daily-checkin-body{display:none!important}
-body.page-home #daily-match-checkin.is-expanded .daily-checkin-body{display:block!important}
-body.page-home #daily-match-checkin .daily-checkin-days{margin:9px 0 7px!important;gap:4px!important}
-body.page-home #daily-match-checkin .daily-day{
-  min-height:44px!important;padding:4px 2px!important;border-radius:9px!important;font-size:8px!important
+
+/* ------------------------------- track ------------------------------- */
+
+.dc .dc-track{position:relative;padding:2px 0 0}
+
+/* The rail runs behind the faces, at the vertical centre of the face row. */
+.dc .dc-rail{
+  position:absolute;left:7%;right:7%;top:calc(var(--dc-face,34px) / 2 + 2px);
+  height:3px;border-radius:999px;background:rgba(255,255,255,.10);
 }
-body.page-home #daily-match-checkin .daily-checkin-action{
-  width:auto!important;min-width:122px!important;min-height:34px!important;margin:7px 0 0 auto!important;padding:6px 12px!important;
-  display:block!important;border-radius:999px!important;font-size:10px!important;
-  background:linear-gradient(135deg,#f5d976,#dcae3b)!important;box-shadow:0 6px 18px rgba(229,193,88,.13)!important
+.dc .dc-rail-fill{
+  display:block;height:100%;border-radius:inherit;
+  background:linear-gradient(90deg,var(--dc-gold-deep),var(--dc-gold-hot));
+  box-shadow:0 0 10px rgba(243,207,105,.35);
+  transition:width .45s cubic-bezier(.2,.8,.3,1);
 }
-body.page-home #daily-match-checkin .daily-checkin-note{font-size:9px!important;margin:4px 0 0!important}
-@media(max-width:600px){
-  body.page-home #daily-match-checkin.daily-checkin{padding:8px 9px!important;border-radius:14px!important}
-  body.page-home #daily-match-checkin .daily-checkin-badge{width:34px!important;height:34px!important}
-  body.page-home #daily-match-checkin .daily-checkin-action{min-height:32px!important}
-  body.page-home #daily-match-checkin .daily-checkin-days{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+
+.dc .dc-days{
+  position:relative;
+  display:grid;grid-template-columns:repeat(7,minmax(0,1fr));
+  gap:2px;margin:0;padding:0;list-style:none;
 }
+.dc .dc-day{
+  display:flex;flex-direction:column;align-items:center;gap:4px;min-width:0;
+  text-align:center;
+}
+.dc .dc-face{
+  --dc-face:clamp(28px,7.6vw,36px);
+  display:grid;place-items:center;
+  width:var(--dc-face);height:var(--dc-face);
+  border-radius:50%;
+  border:1px solid rgba(255,255,255,.16);
+  background:radial-gradient(circle at 50% 35%,rgba(60,34,92,.95),rgba(20,11,34,.95));
+  color:#cbbfe0;font-size:clamp(12px,3vw,15px);font-weight:900;line-height:1;
+  overflow:hidden;
+}
+.dc .dc-label{
+  font-size:clamp(7.5px,1.9vw,9.5px);line-height:1.1;letter-spacing:.04em;
+  color:#a294bb;white-space:nowrap;
+  max-width:100%;overflow:hidden;text-overflow:ellipsis;
+}
+.dc .dc-pip{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.22)}
+
+/* Banked days */
+.dc .dc-day.is-done .dc-face{
+  border-color:rgba(243,207,105,.7);
+  background:linear-gradient(150deg,var(--dc-gold-hot),var(--dc-gold-deep));
+  color:#2a1a06;
+  box-shadow:0 0 14px rgba(243,207,105,.28);
+}
+.dc .dc-day.is-done .dc-label{color:var(--dc-gold-hot)}
+.dc .dc-tick{font-size:1em;line-height:1}
+
+/* Today — the MatchApp mark, in place of a generic token */
+.dc .dc-day.is-today .dc-face{
+  border-color:var(--dc-gold);
+  background:radial-gradient(circle at 50% 35%,rgba(96,54,148,.95),rgba(24,12,40,.98));
+  box-shadow:0 0 0 2px rgba(243,207,105,.28),0 0 18px rgba(243,207,105,.30);
+  animation:dcPulse 2.6s ease-in-out infinite;
+  padding:2px;
+}
+.dc .dc-day.is-today .dc-label{color:#fff1c6;font-weight:800}
+.dc .dc-mark{width:100%;height:100%;object-fit:contain;display:block;border-radius:50%}
+@keyframes dcPulse{
+  0%,100%{box-shadow:0 0 0 2px rgba(243,207,105,.24),0 0 14px rgba(243,207,105,.22)}
+  50%{box-shadow:0 0 0 3px rgba(243,207,105,.42),0 0 22px rgba(243,207,105,.38)}
+}
+
+/* Day 7 — the week's prize */
+.dc .dc-day.is-bonus .dc-face{
+  border-color:rgba(243,207,105,.55);
+  background:linear-gradient(150deg,rgba(243,207,105,.22),rgba(140,86,206,.28));
+  color:var(--dc-gold-hot);
+}
+.dc .dc-day.is-bonus.is-done .dc-face{
+  background:linear-gradient(150deg,var(--dc-gold-hot),var(--dc-gold-deep));
+  color:#2a1a06;
+}
+.dc .dc-bonus{font-size:clamp(9.5px,2.4vw,12px);font-weight:900;letter-spacing:-.02em}
+.dc .dc-day.is-bonus .dc-label{color:var(--dc-gold-hot)}
+
+/* ------------------------------- action ------------------------------- */
+
+.dc .dc-cta{display:flex;justify-content:flex-end}
+.dc .dc-action{
+  box-sizing:border-box;
+  display:inline-flex;align-items:center;justify-content:center;gap:6px;
+  min-height:34px;max-width:100%;
+  padding:7px 16px;
+  border:0;border-radius:999px;
+  background:linear-gradient(135deg,#f5d976,#dcae3b);
+  color:#20150a;font:inherit;font-size:clamp(10.5px,2.4vw,12px);font-weight:900;
+  line-height:1.15;white-space:normal;text-align:center;overflow-wrap:break-word;
+  box-shadow:0 6px 18px rgba(229,193,88,.18);
+  cursor:pointer;
+}
+.dc .dc-action:hover{filter:brightness(1.06)}
+/* The day-7 claim is the one the whole strip is selling. */
+.dc .dc-action.is-bonus-claim{
+  background:linear-gradient(135deg,#fff0b6,#e8b93f 55%,#c98f1f);
+  box-shadow:0 8px 24px rgba(229,193,88,.34);
+}
+.dc .dc-action:disabled{opacity:.66;cursor:progress}
+.dc .dc-action-join{
+  background:linear-gradient(135deg,rgba(243,207,105,.2),rgba(140,86,206,.26));
+  color:var(--dc-gold-hot);
+  border:1px solid rgba(243,207,105,.55);
+}
+
+.dc .dc-lock{
+  margin:0;font-size:clamp(8.5px,1.9vw,10px);line-height:1.2;
+  color:#9b8eb4;text-align:right;letter-spacing:.05em;text-transform:uppercase;
+}
+
+/* Guests see the whole offer, dimmed — not an empty box. */
+.dc.is-locked .dc-track{opacity:.62}
+.dc.is-locked .dc-day.is-today .dc-face{animation:none}
+
+/* After the day is banked the field is at its most compact. */
+.dc.is-complete-today .dc-cta{display:none}
+
+/* --------------------------- breakpoints --------------------------- */
+
+@media (min-width:760px){
+  #daily-match-checkin.dc,.daily-checkin.dc{padding:12px 18px!important}
+  .dc .dc-inner{
+    display:grid;
+    grid-template-columns:minmax(150px,240px) minmax(0,1fr) auto;
+    align-items:center;gap:8px 18px;
+  }
+  .dc .dc-head{flex-direction:column;align-items:flex-start;gap:2px}
+  .dc .dc-cta{justify-content:flex-end}
+  .dc .dc-lock{grid-column:3}
+  .dc .dc-days{gap:4px}
+}
+
+@media (max-width:359px){
+  .dc .dc-label{font-size:7px}
+  .dc .dc-days{gap:1px}
+}
+
+/* Shell routes carry a 10px top-box gutter rather than Home's 6px. */
+body.page-shell #daily-match-checkin.dc{width:min(calc(100% - 20px),1180px)!important}
+
+/* Home: this field owns its own width, wider than the 960px reading stage the
+   rest of the column uses, so it lines up with the top box above it. */
+html body.page-home #daily-match-checkin.dc{
+  display:block!important;
+  width:min(calc(100% - 12px),1180px)!important;
+  max-width:1180px!important;
+  margin:6px auto 10px!important;
+}
+
+/* ----------------------------- celebration ----------------------------- */
+
+.daily-reward{
+  position:fixed;inset:0;z-index:2147483000;
+  display:grid;place-items:center;padding:22px;
+  background:rgba(5,3,10,.82);backdrop-filter:blur(8px);
+  animation:dcFadeIn .28s ease-out both;
+}
+.daily-reward-card{
+  box-sizing:border-box;
+  width:min(92vw,392px);padding:28px 22px;text-align:center;
+  border:1px solid rgba(243,207,105,.6);border-radius:26px;
+  background:radial-gradient(circle at 50% 22%,rgba(126,73,174,.72),rgba(25,12,43,.98) 62%);
+  box-shadow:0 25px 90px #000;
+  animation:dcCardRise .5s cubic-bezier(.2,.9,.22,1.2) both;
+}
+.daily-reward-kicker{font-weight:900;color:var(--dc-gold-hot,#ffe9a6);letter-spacing:.02em}
+.daily-reward-medal{
+  position:relative;display:grid;place-items:center;
+  width:112px;height:112px;margin:16px auto 10px;
+  border-radius:50%;
+  background:radial-gradient(circle at 50% 35%,rgba(96,54,148,.9),rgba(24,12,40,.98));
+  box-shadow:0 0 0 2px rgba(243,207,105,.5),0 0 42px rgba(229,193,88,.35);
+}
+.daily-reward-medal img{width:76px;height:76px;object-fit:contain;display:block}
+.daily-reward-streak{
+  position:absolute;right:-4px;bottom:-4px;
+  padding:3px 9px;border-radius:999px;
+  background:linear-gradient(135deg,#ffe991,#c6972e);
+  color:#2a1807;font-size:12px;font-weight:1000;
+}
+.daily-reward-card h3{margin:8px 0;font-size:clamp(18px,5vw,23px);color:#fff}
+.daily-reward-card p{margin:0;color:#ddd0ed;font-size:clamp(12.5px,3.2vw,14px);line-height:1.55}
+.daily-reward-card button{
+  box-sizing:border-box;margin-top:16px;padding:12px 24px;max-width:100%;
+  border:0;border-radius:13px;background:#E5C158;color:#211506;
+  font:inherit;font-weight:900;cursor:pointer;
+}
+@keyframes dcFadeIn{from{opacity:0}to{opacity:1}}
+@keyframes dcCardRise{from{opacity:0;transform:translateY(24px) scale(.95)}to{opacity:1;transform:none}}
+
+/* --------------------------- motion safety --------------------------- */
+
+@media (prefers-reduced-motion:reduce){
+  #daily-match-checkin.dc::before,.daily-checkin.dc::before,
+  .dc .dc-day.is-today .dc-face,
+  .dc .dc-rail-fill,
+  .daily-reward,.daily-reward-card{animation:none!important;transition:none!important}
+}
+.reduce-motion #daily-match-checkin.dc::before,
+.reduce-motion .daily-checkin.dc::before,
+.reduce-motion .dc .dc-day.is-today .dc-face{animation:none!important}
+
+@media (forced-colors:active){
+  #daily-match-checkin.dc::before,.daily-checkin.dc::before{display:none}
+}
+@media print{#daily-match-checkin.dc,.daily-checkin.dc{display:none!important}}

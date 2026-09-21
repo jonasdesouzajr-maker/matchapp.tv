@@ -95,11 +95,13 @@ html body.page-home #mh-topbox.app-header.ma-global-header{
 }
 
 /* ---------- no first-paint interstitial / no competing home chrome ---------- */
+/* Daily Check-in is no longer in this list: as of the 2026-09-21 release it is
+   a permanent field directly under the top box on every surface, so the offer
+   is visible instead of living behind the Settings menu. */
 html body.page-home .top-ask-wrap,
 html body.page-home #live-status-strip,
 html body.page-home #how-it-works,
 html body.page-home #ai-concierge-section,
-html body.page-home #daily-match-checkin,
 html body.page-home .lazy-bar{display:none!important}
 html body.page-home:not(.ma-ia-ready) #trending-rail{display:none!important}
 html body.page-home .page-wrapper{padding:0!important}

@@ -214,6 +214,13 @@ function buildIndex(titles) {
     return `<!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-M7J3NNBN');</script>
+<!-- End Google Tag Manager -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Where to Watch — Streaming Availability | MatchApp</title>
@@ -238,6 +245,10 @@ function buildIndex(titles) {
 </style>
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7J3NNBN"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 <main class="w2w-wrap">
     <h1>Where to Watch</h1>
     <p class="w2w-lede">Streaming, rental and purchase options for ${titles.length} titles across Brazil, the US, the UK and Portugal — sourced from TMDB and JustWatch rather than guessed at.</p>

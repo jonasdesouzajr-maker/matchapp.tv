@@ -186,9 +186,10 @@
 
 <link rel="stylesheet" href="/matchapp-ia.css?v=20260920-ia35" data-matchapp-ia="1">
 <script defer src="/matchapp-ia.js?v=20260920-ia29" data-matchapp-ia="1"></script>
+    <link rel="stylesheet" href="/page-shell.css?v=20260921-shell1" data-page-shell="1">
+    <link rel="stylesheet" href="/ui-containment.css?v=20260921-ui1" data-ui-containment="1">
 </head>
 <body>
-<a href="/friends.html" style="display:block;padding:16px;text-align:center;color:#ffd78a">● Open your private friends list for remote Match Together</a>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7J3NNBN"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -206,6 +207,11 @@
     </header>
 
     <main class="tg-wrap">
+        <!-- The private-friends shortcut used to sit loose above the header,
+             outside every container. It belongs to this page, so it lives in
+             this page's column now. -->
+        <a href="/friends.html" class="tg-friends-link" data-i18n="tg.friendsList">● Open your private friends list for remote Match Together</a>
+
         <section class="tg-hero">
             <span class="tg-eyebrow" data-i18n="tg.eyebrow">🍿 New — Match Together</span>
             <h1 class="tg-h1" data-i18n-html="tg.h1">Find something you<br>BOTH want to watch</h1>
@@ -482,5 +488,6 @@
 <script src="/together.js?v=187"></script>
     <script src="/tv.js?v=187"></script>
 <script src="/app-updates.js?v=191"></script>
-<script src="/title-captions.js?v=190"></script></body>
+<script src="/title-captions.js?v=190"></script><script defer src="/page-shell.js?v=20260921-shell1" data-page-shell="1"></script>
+</body>
 </html>

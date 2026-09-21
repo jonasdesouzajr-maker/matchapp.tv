@@ -20,6 +20,9 @@
 </style><script defer src="/build-meta.js?v=20260919-release3"></script>
 <meta property="og:site_name" content="MatchApp TV Ai">
 <link rel="stylesheet" href="/brand.css?v=192">
+    <link rel="stylesheet" href="/poster-wall.css?v=20260919-wall2" data-page-shell="wall">
+    <link rel="stylesheet" href="/page-shell.css?v=20260921-shell1" data-page-shell="1">
+    <link rel="stylesheet" href="/ui-containment.css?v=20260921-ui1" data-ui-containment="1">
 </head><body>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7J3NNBN"
@@ -43,8 +46,35 @@
 <div id="status" class="status">Loading anime catalog…</div><section id="grid" class="grid" aria-live="polite"></section><nav id="pager" class="pager" aria-label="Anime catalog pages"></nav></main>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-const sb=supabase.createClient('https://zkymvqrmbabngsqblyye.supabase.co','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpreW12cXJtYmFibmdzcWJseXllIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODY4MDUyNDIsImV4cCI6MjEwMjM4MTI0Mn0._yEVFMfwVU6GBqQ8m3ljfOgA0HSLEDiKMOfYae6ZD8Q');
-const page=Math.max(1,Math.min(500,Number(new URLSearchParams(location.search).get('page'))||1));
-const esc=s=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-(async()=>{const {data,error}=await sb.functions.invoke('tmdb-proxy',{body:{discover:{genre_ids:[16],original_language:'ja',page_start:page,pages:1},lang:'en-US'}});const rows=(data&&Array.isArray(data.results)?data.results:[]).filter(x=>x&&x.poster&&x.title);document.getElementById('status').textContent=error?'Catalog temporarily unavailable. Please try again.':rows.length?('Anime catalog · page '+page):'No titles found on this page.';document.getElementById('grid').innerHTML=rows.map(x=>'<a class="card" href="/discover.html?title='+encodeURIComponent(x.title)+'&focus=start"><img loading="lazy" src="'+esc(x.posterLarge||x.poster)+'" alt="'+esc(x.title)+' anime poster"><div><strong>'+esc(x.title)+'</strong><small>'+esc(x.year||'')+' · '+(x.kind==='movie'?'Anime film':'Anime series')+'</small></div></a>').join('');const p=document.getElementById('pager');p.innerHTML=(page>1?'<a rel="prev" href="/anime.html?page='+(page-1)+'">← Previous</a>':'')+'<a rel="next" href="/anime.html?page='+(page+1)+'">Next →</a>';})();
-</script></body></html>
+// The catalog client comes from a CDN. When that request is blocked or fails,
+// `supabase` is undefined and this whole block used to throw, leaving the page
+// stuck on "Loading anime catalog…" with a console ReferenceError. The lookup
+// is guarded and every failure now ends in a readable status line instead.
+(function(){
+  'use strict';
+  var status=document.getElementById('status');
+  function say(msg){ if(status) status.textContent=msg; }
+  if(typeof supabase==='undefined'||!supabase||typeof supabase.createClient!=='function'){
+    say('Catalog temporarily unavailable. Please refresh in a moment.');
+    return;
+  }
+  var sb=supabase.createClient('https://zkymvqrmbabngsqblyye.supabase.co','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpreW12cXJtYmFibmdzcWJseXllIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODY4MDUyNDIsImV4cCI6MjEwMjM4MTI0Mn0._yEVFMfwVU6GBqQ8m3ljfOgA0HSLEDiKMOfYae6ZD8Q');
+  var page=Math.max(1,Math.min(500,Number(new URLSearchParams(location.search).get('page'))||1));
+  var esc=function(s){return String(s||'').replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});};
+  (async function(){
+    var data=null,error=null;
+    try{
+      var res=await sb.functions.invoke('tmdb-proxy',{body:{discover:{genre_ids:[16],original_language:'ja',page_start:page,pages:1},lang:'en-US'}});
+      data=res&&res.data;error=res&&res.error;
+    }catch(e){error=e;}
+    var rows=(data&&Array.isArray(data.results)?data.results:[]).filter(function(x){return x&&x.poster&&x.title;});
+    say(error?'Catalog temporarily unavailable. Please try again.':rows.length?('Anime catalog \u00b7 page '+page):'No titles found on this page.');
+    var grid=document.getElementById('grid');
+    if(grid)grid.innerHTML=rows.map(function(x){return '<a class="card" href="/discover.html?title='+encodeURIComponent(x.title)+'&focus=start"><img loading="lazy" src="'+esc(x.posterLarge||x.poster)+'" alt="'+esc(x.title)+' anime poster"><div><strong>'+esc(x.title)+'</strong><small>'+esc(x.year||'')+' \u00b7 '+(x.kind==='movie'?'Anime film':'Anime series')+'</small></div></a>';}).join('');
+    var p=document.getElementById('pager');
+    if(p)p.innerHTML=(page>1?'<a rel="prev" href="/anime.html?page='+(page-1)+'">\u2190 Previous</a>':'')+'<a rel="next" href="/anime.html?page='+(page+1)+'">Next \u2192</a>';
+  })();
+})();
+</script><script defer src="/poster-wall.js?v=20260919-wall2" data-page-shell="wall"></script>
+<script defer src="/page-shell.js?v=20260921-shell1" data-page-shell="1"></script>
+</body></html>
