@@ -291,7 +291,7 @@
 <link rel="stylesheet" href="/poster-wall.css?v=20260919-wall2"><script defer src="/poster-wall.js?v=20260919-wall2"></script><link rel="stylesheet" href="/brand.css?v=192">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"MatchApp AI Concierge","applicationCategory":"MultimediaApplication","operatingSystem":"Any (web-based)","url":"https://matchapp.tv/discover.html","description":"Conversational AI that answers natural-language questions about what to watch or listen to, in 14 languages, with real streaming links.","featureList":["Multi-turn conversation with saved history","Voice input in 14 languages","Read-aloud answers","Real streaming links per title"],"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"MatchApp TV Ai","url":"https://matchapp.tv/","logo":{"@type":"ImageObject","url":"https://matchapp.tv/assets/brand/matchapp-icon-512.png","width":512,"height":512}}}</script>
 
-<link rel="stylesheet" href="/matchapp-ia.css?v=20260920-ia35" data-matchapp-ia="1">
+<link rel="stylesheet" href="/matchapp-ia.css?v=20260921-voice1" data-matchapp-ia="1">
 <script defer src="/matchapp-ia.js?v=20260920-ia29" data-matchapp-ia="1"></script>
     <link rel="stylesheet" href="/page-shell.css?v=20260921-shell1" data-page-shell="1">
     <link rel="stylesheet" href="/ui-containment.css?v=20260921-ui1" data-ui-containment="1">
@@ -361,8 +361,8 @@
                     <textarea id="discover-new-input" rows="1"
                               placeholder="Ask anything — e.g. Is there a series about Doctors Without Borders?"
                               data-i18n-placeholder="discover.placeholder"
-                              aria-label="Ask the AI Concierge"></textarea>
-                    <button id="mic-btn-discover" class="mic-btn" type="button" aria-label="Speak your question" title="Speak your question" style="display:none;"><svg viewBox="0 0 48 48" width="30" height="30" aria-hidden="true" focusable="false">
+                              aria-label="Ask the AI Concierge" aria-describedby="discover-compose-help" autocomplete="off" spellcheck="true"></textarea>
+                    <button id="mic-btn-discover" class="mic-btn" type="button" aria-label="Speak your question" title="Speak your question"><svg viewBox="0 0 48 48" width="30" height="30" aria-hidden="true" focusable="false">
                             <path d="M8,20 Q4,24 8,28" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" opacity="0.55"/>
                             <path d="M3,17 Q-3,24 3,31" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" opacity="0.3"/>
                             <path d="M40,20 Q44,24 40,28" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" opacity="0.55"/>
@@ -373,6 +373,7 @@
                             <line x1="17" y1="38" x2="31" y2="38" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
                         </svg></button>
                 </div>
+                <div id="discover-compose-help" class="composer-hint" aria-live="polite">Type your question or tap the microphone. Ask AI can read its answer aloud in your selected language.</div>
                 <button onclick="newDiscoverSearch()" class="gold-btn composer-send" data-i18n="discover.ask">🔍 Ask AI</button>
             </div>
         </section><div id="discover-loading" class="premium-card ai-thinking" style="display:none;">
@@ -408,9 +409,9 @@
 <script src="/catalog-plus.js?v=20260919-catalog3"></script>
     <script src="/catalog-media.js?v=20260918-notify2"></script>
     <script src="/install-progress.js?v=200"></script>
-    <script src="/discover.js?v=207"></script>
+    <script src="/discover.js?v=20260921-voice1"></script>
     <script src="/title-experience.js?v=20260918-notify2"></script>
-    <script src="/voice-input.js?v=187"></script>
+    <script src="/voice-input.js?v=20260921-voice1"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             initVoiceInput('discover-new-input', 'mic-btn-discover', () => newDiscoverSearch());

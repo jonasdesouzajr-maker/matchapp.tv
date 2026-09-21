@@ -16,3 +16,21 @@ test('main Android launcher uses official icon and no Google ads SDK',()=>{
  const manifest=read('android-studio/app/src/main/AndroidManifest.xml'),gradle=read('android-studio/app/build.gradle.kts'),launcher=read('android-studio/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml');
  assert.doesNotMatch(manifest,/com\.google\.android\.gms\.ads/);assert.doesNotMatch(gradle,/play-services-ads|ads-identifier/);assert.match(launcher,/@drawable\/matchapp_official_icon/);
 });
+
+
+test('Android apps expose a same-origin native speech recognizer bridge',()=>{
+ const main=read('android-studio/app/src/main/java/tv/matchapp/app/MainActivity.kt');
+ const kids=read('android-studio/kidsapp/src/main/java/tv/matchapp/kids/MainActivity.kt');
+ const mainManifest=read('android-studio/app/src/main/AndroidManifest.xml');
+ const kidsManifest=read('android-studio/kidsapp/src/main/AndroidManifest.xml');
+ for(const manifest of [mainManifest,kidsManifest]) assert.match(manifest,/android\.speech\.action\.RECOGNIZE_SPEECH/);
+ for(const src of [main,kids]){
+   assert.match(src,/RecognizerIntent\.ACTION_RECOGNIZE_SPEECH/);
+   assert.match(src,/addJavascriptInterface\(NativeVoiceBridge\(\), "MatchAppNativeVoice"\)/);
+   assert.match(src,/matchAppNativeVoiceResult/);
+   assert.match(src,/matchAppNativeVoiceError/);
+   assert.match(src,/@JavascriptInterface/);
+ }
+ assert.match(main,/isMatchAppHost\(current\.host\.orEmpty\(\)\)/);
+ assert.match(kids,/isAllowedKidsUrl\(web\.url\)/);
+});

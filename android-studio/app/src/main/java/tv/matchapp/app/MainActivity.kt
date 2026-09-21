@@ -10,9 +10,11 @@ import android.net.NetworkCapabilities
 import android.net.Uri
 import android.os.Bundle
 import android.os.Message
+import android.speech.RecognizerIntent
 import android.view.View
 import android.view.ViewGroup
 import android.webkit.CookieManager
+import android.webkit.JavascriptInterface
 import android.webkit.URLUtil
 import android.webkit.ValueCallback
 import android.webkit.WebChromeClient
@@ -32,6 +34,7 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.button.MaterialButton
+import org.json.JSONObject
 
 class MainActivity : AppCompatActivity() {
 
@@ -52,6 +55,20 @@ class MainActivity : AppCompatActivity() {
         val uris = WebChromeClient.FileChooserParams.parseResult(result.resultCode, result.data)
         filePathCallback?.onReceiveValue(uris)
         filePathCallback = null
+    }
+
+    private val voiceRecognizer = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        val transcript = result.data
+            ?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS)
+            ?.firstOrNull()
+            ?.trim()
+        if (result.resultCode == android.app.Activity.RESULT_OK && !transcript.isNullOrBlank()) {
+            sendVoiceResult(transcript)
+        } else {
+            sendVoiceError("no-speech")
+        }
     }
 
     @SuppressLint("SetJavaScriptEnabled")
@@ -99,6 +116,7 @@ class MainActivity : AppCompatActivity() {
         web.setBackgroundColor(Color.parseColor("#101010"))
         web.webViewClient = MatchClient()
         web.webChromeClient = MatchChrome()
+        web.addJavascriptInterface(NativeVoiceBridge(), "MatchAppNativeVoice")
         web.setDownloadListener { url, _, contentDisposition, mime, _ ->
             val name = URLUtil.guessFileName(url, contentDisposition, mime)
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
@@ -296,6 +314,48 @@ class MainActivity : AppCompatActivity() {
             true
         } catch (_: ActivityNotFoundException) {
             false
+        }
+    }
+
+    private fun sendVoiceResult(text: String) {
+        val value = JSONObject.quote(text)
+        web.evaluateJavascript(
+            "window.matchAppNativeVoiceResult&&window.matchAppNativeVoiceResult($value);",
+            null
+        )
+    }
+
+    private fun sendVoiceError(code: String) {
+        val value = JSONObject.quote(code)
+        web.evaluateJavascript(
+            "window.matchAppNativeVoiceError&&window.matchAppNativeVoiceError($value);",
+            null
+        )
+    }
+
+    private inner class NativeVoiceBridge {
+        @JavascriptInterface
+        fun start(languageTag: String?) {
+            runOnUiThread {
+                val current = runCatching { Uri.parse(web.url.orEmpty()) }.getOrNull()
+                if (current == null || !isMatchAppHost(current.host.orEmpty())) {
+                    sendVoiceError("not-allowed")
+                    return@runOnUiThread
+                }
+                val lang = languageTag
+                    ?.takeIf { it.matches(Regex("^[A-Za-z]{2,3}(-[A-Za-z]{2,4})?$")) }
+                    ?: "en-US"
+                val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH).apply {
+                    putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
+                    putExtra(RecognizerIntent.EXTRA_LANGUAGE, lang)
+                    putExtra(RecognizerIntent.EXTRA_MAX_RESULTS, 1)
+                }
+                try {
+                    voiceRecognizer.launch(intent)
+                } catch (_: ActivityNotFoundException) {
+                    sendVoiceError("unavailable")
+                }
+            }
         }
     }
 

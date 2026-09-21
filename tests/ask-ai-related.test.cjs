@@ -147,3 +147,27 @@ test('title-card copy exists in every supported language',()=>{
     assert.match(polish,new RegExp(lang.replace('-','\\-')));
   }
 });
+
+
+test('Ask AI composer stays visible and voice works in the active language',()=>{
+  const html=read('discover.html'),css=read('matchapp-ia.css'),voice=read('voice-input.js'),js=read('discover.js');
+  const composer=html.slice(html.indexOf('<div class="newsearch-row">'),html.indexOf('</section>',html.indexOf('<div class="newsearch-row">')));
+  assert.match(composer,/id="discover-new-input"/);
+  assert.match(composer,/aria-describedby="discover-compose-help"/);
+  assert.match(composer,/id="mic-btn-discover"/);
+  assert.doesNotMatch(composer,/mic-btn-discover[^>]+display\s*:\s*none/);
+  assert.match(html,/matchapp-ia\.css\?v=20260921-voice1/);
+  assert.match(html,/discover\.js\?v=20260921-voice1/);
+  assert.match(html,/voice-input\.js\?v=20260921-voice1/);
+  assert.match(css,/body\.ai-chat-page \.composer textarea\{/);
+  assert.match(css,/caret-color:var\(--ma-gold-hot\)!important/);
+  assert.match(css,/body\.ai-chat-page \.composer \.mic-btn\{[\s\S]*display:inline-flex!important/);
+  assert.match(voice,/MatchAppNativeVoice/);
+  assert.match(voice,/SPEECH_LANG_MAP/);
+  assert.match(voice,/aria-disabled/);
+  assert.doesNotMatch(voice,/style\.display\s*=\s*['"]none['"]/);
+  assert.match(js,/const TTS_LANG_MAP/);
+  assert.match(js,/function voiceMatchesLang/);
+  assert.match(js,/utter\.lang = voice\?\.lang \|\| targetLang/);
+  assert.match(js,/autoReadEnabled/);
+});
