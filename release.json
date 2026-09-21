@@ -1,21 +1,21 @@
 {
-  "version": "2026.09.21.1",
+  "version": "2026.09.21.2",
   "date": "2026-09-21",
   "functional": true,
   "notes": {
-    "en": "Daily Check-in now lives under the top box: +1 Extra Match every day, +5 on day 7. Every page shares the home top box with a Home button, today's world day joins the Events rail, and Antártida is the featured film.",
-    "pt-BR": "O Check-in Diário agora fica logo abaixo da caixa do topo: +1 Match extra por dia e +5 no dia 7. Todas as páginas ganharam a caixa do topo com botão Início, a data mundial de hoje entrou nos Eventos e Antártida é o filme em destaque.",
-    "es": "El Check-in Diario ahora está bajo la caja superior: +1 Match extra cada día y +5 el día 7. Todas las páginas comparten la caja superior con botón de Inicio, el día mundial de hoy entra en Eventos y Antártida es la película destacada.",
-    "fr": "Le Check-in quotidien est désormais sous le bandeau supérieur : +1 Match bonus par jour, +5 au 7e jour. Toutes les pages partagent ce bandeau avec un bouton Accueil, la journée mondiale du jour rejoint les Événements et Antártida est le film à la une.",
-    "de": "Der tägliche Check-in sitzt jetzt direkt unter der Kopfleiste: +1 Extra-Match pro Tag, +5 an Tag 7. Alle Seiten teilen sich die Kopfleiste samt Home-Button, der Welttag des Tages kommt zu den Events und Antártida ist der Film der Woche.",
-    "it": "Il Check-in giornaliero ora sta sotto la barra superiore: +1 Match extra al giorno, +5 al settimo. Tutte le pagine condividono quella barra con un tasto Home, la giornata mondiale di oggi entra negli Eventi e Antártida è il film in evidenza.",
-    "tr": "Günlük Check-in artık üst kutunun hemen altında: her gün +1 ekstra Match, 7. günde +5. Tüm sayfalar üst kutuyu ve Ana Sayfa düğmesini paylaşıyor, bugünün dünya günü Etkinlikler'e eklendi ve öne çıkan film Antártida.",
-    "ru": "Ежедневный чек-ин теперь прямо под верхней панелью: +1 дополнительный Match каждый день и +5 на седьмой. Все страницы получили эту панель с кнопкой «Домой», сегодняшний всемирный день добавлен в «События», а фильм недели — «Антарктида».",
-    "ar": "أصبح تسجيل الحضور اليومي أسفل الشريط العلوي مباشرة: ‎+1 مباراة إضافية كل يوم و‎+5 في اليوم السابع. كل الصفحات تشارك الشريط العلوي مع زر الرئيسية، ويوم العالم لهذا اليوم أُضيف إلى الفعاليات، وفيلم الأسبوع هو «أنتارتيدا».",
-    "hi": "डेली चेक-इन अब टॉप बॉक्स के ठीक नीचे है: हर दिन +1 एक्स्ट्रा मैच और 7वें दिन +5। सभी पेजों पर वही टॉप बॉक्स और होम बटन है, आज का विश्व दिवस इवेंट्स में जुड़ा, और फ़ीचर्ड फ़िल्म है अंतार्तिदा।",
-    "id": "Check-in Harian kini tepat di bawah kotak atas: +1 Match ekstra setiap hari, +5 pada hari ke-7. Semua halaman memakai kotak atas yang sama dengan tombol Beranda, hari dunia hari ini masuk ke Events, dan film pilihan adalah Antártida.",
-    "ja": "デイリーチェックインがトップボックスの真下に移動しました。毎日 +1 エクストラマッチ、7日目は +5。全ページが同じトップボックスとホームボタンを共有し、今日の国際デーがイベント欄に追加、注目作品は『アンタルチダ』です。",
-    "ko": "데일리 체크인이 상단 박스 바로 아래로 왔습니다. 매일 +1 엑스트라 매치, 7일째에는 +5. 모든 페이지가 같은 상단 박스와 홈 버튼을 공유하고, 오늘의 세계 기념일이 이벤트에 추가되었으며, 추천 영화는 《안타르티다》입니다.",
-    "zh": "每日签到已移到顶部栏正下方：每天 +1 额外 Match，第 7 天 +5。所有页面共用同一个顶部栏并带有主页按钮，今天的世界日已加入活动栏，本周主推影片为《南极》。"
+    "en": "Kids Mode match results are hardened against freezes: the balloon celebration stays fun but now uses lightweight, bounded animation. Match history, sharing rewards, purchased Matches, result top-scroll and production checkout wiring were re-audited.",
+    "pt-BR": "Os resultados do Modo Kids foram reforçados contra travamentos: a comemoração com balões continua divertida, mas agora usa animação leve e limitada. Histórico, recompensas por compartilhamento, Matches comprados, rolagem ao topo do resultado e checkout foram reauditorados.",
+    "es": "Los resultados del Modo Kids fueron reforzados contra bloqueos: la celebración con globos sigue, pero ahora usa animación ligera y limitada. También revalidamos historial, recompensas por compartir, Matches comprados, desplazamiento al inicio y pagos.",
+    "fr": "Les résultats du mode Kids sont renforcés contre les blocages : les ballons restent, avec une animation désormais légère et limitée. Historique, récompenses de partage, Matches achetés, défilement du résultat et paiements ont été revérifiés.",
+    "de": "Kids-Mode-Ergebnisse wurden gegen Einfrieren gehärtet: Die Ballon-Feier bleibt, läuft jetzt aber leichtgewichtig und begrenzt. Verlauf, Share-Belohnungen, gekaufte Matches, Ergebnis-Scroll und Checkout wurden erneut geprüft.",
+    "it": "I risultati della Modalità Kids sono stati rinforzati contro i blocchi: i palloncini restano, ma con animazioni leggere e limitate. Ricontrollati cronologia, premi condivisione, Match acquistati, scroll del risultato e checkout.",
+    "tr": "Kids Mode sonuçları donmalara karşı güçlendirildi: balon kutlaması korunuyor, ancak artık hafif ve sınırlı animasyon kullanıyor. Geçmiş, paylaşım ödülleri, satın alınan Match'ler, sonuç kaydırması ve ödeme akışı yeniden denetlendi.",
+    "ru": "Результаты Kids Mode защищены от зависаний: праздник с шариками сохранён, но анимация стала лёгкой и ограниченной. Повторно проверены история, награды за публикации, купленные Match, прокрутка к результату и оплата.",
+    "ar": "تم تعزيز نتائج وضع الأطفال ضد التجمّد: احتفال البالونات باقٍ لكن بحركة خفيفة ومحدودة. وأُعيد تدقيق السجل ومكافآت المشاركة وMatches المشتراة والتمرير إلى أعلى النتيجة ومسار الدفع.",
+    "hi": "Kids Mode के मैच परिणामों को फ्रीज़ से बचाने के लिए मजबूत किया गया है: गुब्बारे बने रहते हैं, लेकिन एनीमेशन अब हल्का और सीमित है। इतिहास, शेयर रिवॉर्ड, खरीदे गए Matches, रिज़ल्ट स्क्रोल और पेमेंट फ्लो फिर जाँचे गए।",
+    "id": "Hasil Kids Mode diperkuat agar tidak membeku: perayaan balon tetap ada, tetapi animasinya kini ringan dan terbatas. Riwayat, hadiah berbagi, Match yang dibeli, scroll hasil, dan alur pembayaran diaudit ulang.",
+    "ja": "Kids Mode のマッチ結果をフリーズしにくくしました。風船の演出は残しつつ、軽量で短いアニメーションに変更。履歴、シェア報酬、購入 Match、結果上部へのスクロール、決済導線も再確認しました。",
+    "ko": "Kids Mode 매치 결과의 멈춤 현상을 방지하도록 강화했습니다. 풍선 연출은 유지하되 더 가볍고 제한된 애니메이션으로 바꿨습니다. 기록, 공유 보상, 구매 Match, 결과 상단 스크롤, 결제 흐름도 다시 점검했습니다.",
+    "zh": "Kids Mode 的匹配结果已加强防卡死：保留气球庆祝效果，但改为更轻量、受限的动画。历史记录、分享奖励、购买的 Match、结果顶部滚动和支付流程也已重新核查。"
   }
 }

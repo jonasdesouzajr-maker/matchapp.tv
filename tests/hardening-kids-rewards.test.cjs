@@ -8,10 +8,16 @@ const read=p=>fs.readFileSync(path.join(root,p),'utf8');
 test('Kids result celebration is lightweight and cannot own scroll/compositing',()=>{
   const js=read('kids/kids.js'),css=read('kids/kids.css');
   assert.match(js,/requestAnimationFrame\(\(\)=>\{ if\(dialog\.open&&currentWatchItem===item\) playKidsCelebrate\(\); \}\)/);
-  assert.match(js,/const confettiCount=compact\?10:16/);
+  assert.match(js,/const confettiCount=compact\?6:10/);
+  assert.match(js,/const balloonCount=compact\?2:3/);
+  assert.match(js,/navigator\.deviceMemory/);
+  assert.match(js,/navigator\.hardwareConcurrency/);
   assert.doesNotMatch(css,/\.kids-watch-dialog::backdrop\{[^}]*blur\(/);
   assert.doesNotMatch(css,/\.kids-celebrate\{[^}]*translateZ/);
-  assert.doesNotMatch(css,/\.kids-balloon\{will-change:/);
+  assert.doesNotMatch(css,/translate3d|translateZ/);
+  assert.doesNotMatch(css,/will-change:/);
+  assert.doesNotMatch(css,/backface-visibility:/);
+  assert.doesNotMatch(css,/contain:strict/);
 });
 
 test('main and Kids match paths never recycle a shown title',()=>{
@@ -50,9 +56,9 @@ test('result reveal starts at the top and Kids social choices are restored',()=>
 test('cache keys force the hardening bundle onto every device wrapper',()=>{
   assert.match(read('index.html'),/app\.js\?v=20260921-hardening1/);
   assert.match(read('index.html'),/share\.js\?v=20260921-hardening1/);
-  assert.match(read('kids/index.html'),/kids\.css\?v=20260921-hardening1/);
+  assert.match(read('kids/index.html'),/kids\.css\?v=20260921-freeze3/);
   assert.match(read('kids/index.html'),/kids\/account\.js\?v=20260921-hardening1/);
-  assert.match(read('kids/index.html'),/kids\/kids\.js\?v=20260921-hardening2/);
+  assert.match(read('kids/index.html'),/kids\/kids\.js\?v=20260921-freeze3/);
 });
 
 

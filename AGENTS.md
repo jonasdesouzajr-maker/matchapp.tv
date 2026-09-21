@@ -2,12 +2,13 @@
 
 These are standing implementation rules for MatchApp work in this repository.
 
-1. **Never-dead-end matching**
+1. **Never-dead-end, never-repeat matching**
    - Normal MatchApp and Kids Mode must not return an empty-state error merely because the first local shelf has no fresh title.
-   - **Normal MatchApp:** every criterion the user explicitly selects is a hard requirement. Never relax mood, real genre/category, platform, decade, vibe, rating, origin-country exclusions, genre exclusions, or other explicit choices to fill a result. Expand into verified source-backed discovery or recycle an older exact match instead.
-   - **Kids Mode:** age approval and child-safety allowlisting are hard boundaries and must never be relaxed. Secondary taste constraints may only be widened when the reviewed Kids library genuinely has no exact approved item.
+   - **No displayed Match result may be shown twice to the same browser/profile.** Anonymous history persists locally; signed-in history must also sync to the account. Never recycle a previously shown title as a fallback.
+   - **Normal MatchApp:** every criterion the user explicitly selects is a hard requirement. Never relax mood, real genre/category, platform, decade, vibe, rating, origin-country exclusions, genre exclusions, or other explicit choices to fill a result. Expand into verified source-backed discovery for a new real title instead.
+   - **Kids Mode:** age approval and child-safety allowlisting are hard boundaries and must never be relaxed. Secondary taste constraints may only be widened when the reviewed Kids library genuinely has no exact approved unseen item; widening must still choose a new approved title.
    - Explicit user exclusions such as Not For Me, blocked categories, excluded genres and excluded origin countries are hard boundaries.
-   - Prefer unseen exact titles, but an eligible exact repeat is better than an off-criteria result.
+   - If verified unseen supply is temporarily exhausted, do not invent a title, fabricate availability, or silently repeat one. Continue verified-source discovery where supported and explain any temporary source limitation truthfully.
 
 2. **Verified title metadata**
    - Display real catalog genres/categories from trusted title metadata. Do not present MatchApp mood/vibe/internal taxonomy as official title genres.
@@ -44,6 +45,7 @@ These are standing implementation rules for MatchApp work in this repository.
    - Daily Check-in is a permanent field directly under the top box on Home, Match Together and Ask MatchApp, at the top box's width and shorter than it, on every surface. It is never moved back behind the Settings menu. It stays compact after the day's check-in — the day's action collapses and the seven-day track carries the remaining explanation — and the 7-day/+5 Extra Matches mechanic is reinforced through the release/notification experience and first-visit education rather than by growing the field. Every check-in is worth +1 Extra Match and day 7 adds +5 on top; the reward is registered-accounts-only and is granted server-side.
    - Performance is a product requirement: prefer compositor/native scrolling, lazy/interaction-triggered metadata work, bounded observers, and graceful fallbacks; avoid homepage changes that introduce freezes, crashes, scroll traps, or animation jank.
    - Runtime stability is mandatory for every change: never introduce unbounded render/update loops, layout thrashing, recurring full-page animation, duplicate startup owners, or code paths that can freeze/crash browsers or Android WebViews.
+   - Every implementation or repair must include a regression/stability check for the touched flow. Do not ship browser warnings, uncaught errors, infinite loops, scroll locks, freezes, crashes, or excessive compositor/GPU work on phone, tablet, desktop, TV, or Android WebView.
 
 7. **Responsive visual parity and Android release parity**
    - Every approved MatchApp main-product UI/UX change must be designed and verified for desktop, tablet, and smartphone breakpoints in the same task; never ship a desktop-only or mobile-only redesign.
