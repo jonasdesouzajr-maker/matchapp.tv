@@ -1,0 +1,396 @@
+/* MatchApp TV Ai — shared premium page shell (2026-09-21).
+
+   Every page that is not Home and not Kids Mode used to draw its own header:
+   some shipped `header.app-header`, some shipped nothing at all, and the
+   shared runtime header collapsed into a three-row stack on a handset with
+   control labels spilling outside their own boxes. This stylesheet gives all
+   of those routes the SAME top box the Home landing uses, over the same
+   key-art wall, with a HOME control that always leads back to the landing.
+
+   Scope: `body.page-shell` only. Home (`body.page-home`) and Kids Mode are
+   never given that class, so their settled visuals are untouched.
+
+   Loaded after matchapp-ia.css so it wins over the older flat `.ma-global-header`
+   treatment without editing that file. */
+
+body.page-shell{
+  --ma-gold:#f3cf69;--ma-gold2:#b98428;--ma-purple:#8b57df;--ma-violet:#bd8bff;
+  --ma-cyan:#65ddff;--ma-pink:#ff79cb;--ma-green:#64e3b5;--ma-red:#ff7287;
+  --ma-goldline:rgba(243,207,105,.18);
+  --shell-max:1180px;
+  --shell-gutter:14px;
+  background-color:#0d0714!important;
+  color:#f8f4ff;
+}
+
+/* Same atmospheric wash the landing carries over its key-art wall. Fixed and
+   pointer-transparent, so it never joins the scroll or eats a tap. */
+body.page-shell::before{
+  content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(70vw 34vw at 50% 0%,rgba(111,55,166,.18),transparent 70%),
+    radial-gradient(48vw 30vw at 82% 46%,rgba(91,46,149,.10),transparent 72%),
+    linear-gradient(180deg,rgba(8,4,14,.08),rgba(8,4,14,.38));
+}
+
+/* ============================ TOP BOX ============================ */
+
+body.page-shell header.app-header.mh-topbox,
+body.page-shell header.app-header.mh-topbox.ma-global-header{
+  position:sticky!important;top:0!important;z-index:1600!important;
+  box-sizing:border-box!important;
+  width:min(calc(100% - 20px),var(--shell-max))!important;max-width:var(--shell-max)!important;
+  min-height:0!important;margin:12px auto 10px!important;padding:10px 14px!important;
+  display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;
+  align-items:center!important;gap:12px!important;
+  border:1px solid var(--ma-goldline)!important;border-bottom:1px solid var(--ma-goldline)!important;
+  border-radius:24px!important;
+  background:
+    radial-gradient(460px 120px at 10% 30%,rgba(116,65,172,.18),transparent 72%),
+    linear-gradient(115deg,rgba(35,17,55,.86),rgba(16,8,28,.82))!important;
+  box-shadow:0 18px 55px rgba(0,0,0,.34),inset 0 1px rgba(255,255,255,.04)!important;
+  backdrop-filter:blur(18px) saturate(1.12)!important;
+  overflow:visible!important;
+}
+
+body.page-shell .mh-topbox .mh-head{
+  display:flex!important;flex-direction:column!important;align-items:flex-start!important;
+  justify-content:center!important;min-width:0!important;margin:0!important;padding:0!important;gap:2px!important;
+}
+body.page-shell .mh-topbox .mh-head>*{min-width:0;max-width:100%}
+
+body.page-shell .mh-topbox .header-brand-area,
+body.page-shell .mh-topbox #home-brand-lockup{
+  display:flex!important;align-items:center!important;
+  width:auto!important;min-width:0!important;max-width:100%!important;margin:0!important;padding:0!important;
+}
+
+/* premium-ui.js adds the `.ma-media-shell` loading plate to the parent of every
+   image on the page. Around the brand mark that plate painted an opaque black
+   rectangle behind the whole lockup, which read as a broken image. The mark
+   carries its own drop shadow, so inside the top box the plate is removed
+   rather than the (still useful) loading treatment being changed elsewhere. */
+body.page-shell .mh-topbox .ma-media-shell{
+  background:none!important;box-shadow:none!important;overflow:visible!important;
+}
+body.page-shell .mh-topbox .ma-media-shell.is-loading::after{display:none!important;animation:none!important}
+body.page-shell .mh-topbox .ma-brand-lockup{
+  display:flex!important;align-items:center!important;gap:6px!important;min-width:0!important;max-width:100%!important;
+}
+body.page-shell .mh-topbox .ma-brand-lockup img{
+  display:block!important;width:auto!important;height:46px!important;
+  max-width:min(238px,44vw)!important;object-fit:contain!important;
+}
+/* The mark lives inside the box. Rule 9 of AGENTS.md: never overlapping, never
+   hanging outside, at any width. */
+body.page-shell .mh-topbox .ma-brand-orb-stage{
+  position:relative!important;flex:0 0 auto!important;
+  display:inline-flex!important;align-items:center!important;justify-content:center!important;
+  width:clamp(40px,10vw,56px)!important;height:clamp(40px,10vw,56px)!important;
+  margin:0!important;overflow:visible!important;
+}
+/* The shared header promotes the mark to an absolutely positioned 330px orb at
+   desktop widths (top:-28px), which is exactly the overhang AGENTS.md rule 9
+   forbids. Inside the shell top box the mark is returned to normal flow and
+   sized by its stage, so it sits fully inside the box at every width. The
+   float animation goes with it: a permanently animating header element is
+   continuous compositor work for no product value. */
+body.page-shell .mh-topbox .ma-brand-orb{
+  position:static!important;inset:auto!important;
+  left:auto!important;top:auto!important;right:auto!important;bottom:auto!important;
+  flex:0 0 auto!important;
+  width:100%!important;height:100%!important;max-width:100%!important;
+  margin:0!important;transform:none!important;animation:none!important;
+  object-fit:contain!important;
+}
+body.page-shell .mh-topbox .ma-brand-copy,
+body.page-shell .mh-topbox .ma-brand-home-link{margin-left:0!important}
+body.page-shell .mh-topbox .ma-brand-copy{min-width:0;overflow:hidden}
+body.page-shell .mh-topbox .ma-wordmark{white-space:nowrap}
+/* Wordmark scales with the box rather than with the viewport, so the mark and
+   the lettering stay in proportion from a 320px handset to a 4K desktop. */
+body.page-shell .mh-topbox .ma-brand-lockup,
+body.page-shell .mh-topbox .ma-brand-home-link{
+  height:auto!important;font-size:clamp(1rem,2.1vw,1.45rem)!important;
+}
+body.page-shell .mh-topbox .ma-wordmark,
+body.page-shell .mh-topbox .ma-tv,
+body.page-shell .mh-topbox .ma-ai-letters{font-size:1em!important;line-height:1.1!important}
+body.page-shell .mh-topbox .ma-ai-brand-button{
+  height:auto!important;min-height:0!important;min-width:0!important;width:auto!important;
+  margin-left:2px!important;padding:0 3px!important;
+  background:none!important;border:0!important;
+}
+/* Home already stops the Ai mark's aura/shine loops; off Home they were still
+   running, which painted a white smear over the wordmark and kept a compositor
+   animation alive on every page for no product value. Same treatment here. */
+body.page-shell .mh-topbox .ma-ai-brand-button::before,
+body.page-shell .mh-topbox .ma-ai-brand-button::after,
+body.page-shell .mh-topbox .ma-ai-letters,
+body.page-shell .mh-topbox .ma-orbit,
+body.page-shell .mh-topbox .ma-orb-star{
+  animation:none!important;will-change:auto!important;
+}
+body.page-shell .mh-topbox .ma-ai-brand-button::after{display:none!important}
+body.page-shell .mh-topbox .ma-ai-brand-button::before{filter:none!important;opacity:.6!important}
+body.page-shell .mh-topbox .ma-ai-star{display:none!important}
+body.page-shell .mh-topbox .ma-ai-letters{
+  min-width:0!important;width:auto!important;min-height:0!important;padding:0!important;margin:0!important;
+}
+
+body.page-shell .mh-topbox .mh-tagline{
+  display:block!important;margin:0 0 0 1px!important;padding:0!important;
+  color:#c8bad9!important;font-size:9px!important;line-height:1.25!important;
+  letter-spacing:.18em!important;text-transform:uppercase!important;text-align:left!important;opacity:.72!important;
+  max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+}
+
+/* ---------------------------- control deck ---------------------------- */
+
+body.page-shell .mh-topbox>nav,
+body.page-shell .mh-topbox>nav.mh-deck{
+  display:flex!important;flex:0 1 auto!important;
+  align-items:center!important;justify-content:flex-end!important;flex-wrap:wrap!important;
+  gap:6px!important;width:auto!important;max-width:min(660px,100%)!important;min-width:0!important;
+  margin:0!important;padding:0!important;
+  border:0!important;background:none!important;box-shadow:none!important;
+}
+
+/* One shape for every control. Nothing is hidden or removed to make the bar
+   tidy — it is sized, ordered and wrapped (AGENTS.md rule 9). */
+body.page-shell .mh-topbox>nav>*{
+  box-sizing:border-box!important;
+  flex:0 0 auto!important;width:auto!important;min-width:40px!important;max-width:100%!important;
+  min-height:40px!important;height:auto!important;margin:0!important;padding:7px 10px!important;
+  display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:6px!important;
+  border:1px solid transparent!important;border-radius:12px!important;
+  background:transparent!important;box-shadow:none!important;
+  font-size:12px!important;line-height:1.15!important;white-space:nowrap!important;text-decoration:none!important;
+  transition:background .16s ease,transform .16s ease,filter .16s ease!important;
+}
+body.page-shell .mh-topbox>nav>*:hover{
+  background:rgba(255,255,255,.055)!important;border-color:rgba(255,255,255,.07)!important;
+  transform:translateY(-1px)!important;filter:brightness(1.08)!important;
+}
+/* One height for every control, whatever stylesheet shipped it, so the deck
+   reads as a single row of equal pills instead of a ragged mix. */
+body.page-shell .mh-topbox>nav>.sound-toggle-btn,
+body.page-shell .mh-topbox>nav>.install-btn,
+body.page-shell .mh-topbox>nav>.secondary-btn,
+body.page-shell .mh-topbox>nav>.ma-kids-mode-entry,
+body.page-shell .mh-topbox>nav>.matchapp-notification-button,
+body.page-shell .mh-topbox>nav>.ma-menu-wrap,
+body.page-shell .mh-topbox .ma-menu-button{
+  height:40px!important;min-height:40px!important;align-self:center!important;
+}
+body.page-shell .mh-topbox .ma-menu-button{
+  width:40px!important;min-width:40px!important;padding:0!important;border-radius:12px!important;
+}
+body.page-shell .mh-topbox .ma-menu-button>span{display:none!important}
+body.page-shell .mh-topbox .ma-menu-button>svg{width:20px;height:20px}
+body.page-shell .mh-topbox>nav>.ma-menu-wrap{width:40px!important;min-width:40px!important;padding:0!important}
+
+body.page-shell .mh-topbox .install-wrap{position:relative!important;padding:0!important;min-width:0!important}
+body.page-shell .mh-topbox .install-wrap>.install-btn{
+  min-height:40px!important;padding:7px 10px!important;border-radius:12px!important;
+  display:inline-flex!important;align-items:center!important;gap:6px!important;white-space:nowrap!important;
+}
+body.page-shell .mh-topbox .matchapp-notification-button{color:var(--ma-pink)!important}
+body.page-shell .mh-topbox .install-btn{color:var(--ma-green)!important}
+body.page-shell .mh-topbox #lang-switcher-host{padding:0!important}
+body.page-shell .mh-topbox #lang-switcher-host select{
+  max-width:118px!important;min-height:38px!important;padding:0 8px!important;
+  border:1px solid rgba(255,255,255,.13)!important;border-radius:11px!important;
+  background:rgba(255,255,255,.04)!important;color:var(--ma-cyan)!important;font-size:12px!important;
+}
+body.page-shell .mh-topbox .sound-toggle-btn{color:var(--ma-gold)!important}
+body.page-shell .mh-topbox #quota-badge{color:#ffe299!important}
+body.page-shell .mh-topbox #profile-link-tab{color:#d9c7ff!important}
+body.page-shell .mh-topbox #nav-reg-btn{
+  color:#241609!important;background:linear-gradient(135deg,#f5d978,#e5b947)!important;
+  padding:7px 14px!important;font-weight:800!important;text-transform:none!important;letter-spacing:0!important;
+}
+body.page-shell .mh-topbox #nav-logout-btn{color:var(--ma-red)!important}
+
+/* Kids Mode entry: the label used to sit beside its own pill rather than in
+   it. The icon and the word are one flex line inside one border now. */
+body.page-shell .mh-topbox .ma-kids-mode-entry{
+  display:inline-flex!important;align-items:center!important;gap:6px!important;
+  padding:6px 11px!important;border:1px solid rgba(255,255,255,.12)!important;border-radius:12px!important;
+  color:#ffd9f2!important;font-size:12px!important;font-weight:750!important;white-space:nowrap!important;
+}
+body.page-shell .mh-topbox .ma-kids-mode-entry img{
+  flex:0 0 auto!important;width:20px!important;height:20px!important;border-radius:6px!important;display:block!important;
+}
+body.page-shell .mh-topbox .ma-kids-mode-entry span{display:inline-block!important;line-height:1.15!important}
+
+/* ------------------------------ HOME ------------------------------ */
+
+body.page-shell .mh-home-btn{
+  order:-1!important;
+  display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:7px!important;
+  min-height:40px!important;padding:7px 14px!important;
+  border:1px solid rgba(243,207,105,.55)!important;border-radius:12px!important;
+  background:linear-gradient(135deg,rgba(243,207,105,.16),rgba(185,132,40,.12))!important;
+  color:#ffe6a8!important;font-size:12px!important;font-weight:850!important;
+  letter-spacing:.09em!important;text-transform:uppercase!important;text-decoration:none!important;
+  white-space:nowrap!important;cursor:pointer;
+}
+body.page-shell .mh-home-btn:hover{
+  background:linear-gradient(135deg,rgba(243,207,105,.28),rgba(185,132,40,.20))!important;
+  color:#fff4d4!important;
+}
+body.page-shell .mh-home-btn svg{flex:0 0 auto;width:16px;height:16px;display:block}
+body.page-shell .mh-home-btn .mh-home-label{display:inline-block;line-height:1.15}
+
+/* The old duplicate home icon in page markup steps aside for the labelled one. */
+body.page-shell .mh-topbox .icon-btn.home-btn{display:none!important}
+
+/* ------------------------- page body fitting ------------------------- */
+
+body.page-shell>main,
+body.page-shell>.page-shell-main,
+body.page-shell main.page-wrapper,
+body.page-shell main.tg-wrap{
+  position:relative;z-index:1;
+  box-sizing:border-box;
+  width:min(calc(100% - 20px),var(--shell-max));
+  margin-inline:auto;
+}
+body.page-shell footer{position:relative;z-index:1}
+
+/* Nothing in a shell page may push a horizontal scrollbar. */
+body.page-shell{overflow-x:hidden}
+body.page-shell img,body.page-shell video,body.page-shell iframe,body.page-shell canvas{max-width:100%}
+
+/* Routes that shipped no header of their own centre a single card with a flex
+   body. A new first child would sit BESIDE that card and push the page wider
+   than the viewport, so those bodies become a centred column and the card
+   keeps its vertical centring through auto margins. */
+body.page-shell.page-shell-owns-header{
+  display:flex!important;flex-direction:column!important;
+  align-items:center!important;justify-content:flex-start!important;
+}
+body.page-shell.page-shell-owns-header>header.app-header{width:min(calc(100% - 20px),var(--shell-max))!important}
+body.page-shell.page-shell-owns-header>main,
+body.page-shell.page-shell-owns-header>.box,
+body.page-shell.page-shell-owns-header>.card,
+body.page-shell.page-shell-owns-header>section,
+body.page-shell.page-shell-owns-header>.container{
+  flex:0 1 auto;width:min(100%,var(--shell-max));margin-block:auto;
+}
+
+/* One brand mark per page: the standalone brand bar these routes shipped is a
+   duplicate of the mark now inside the top box. */
+body.page-shell .matchapp-brand-bar{display:none!important}
+
+/* A page's own top-level header becomes the top box, so its inline brand image
+   must not keep its intrinsic width. */
+body.page-shell .mh-topbox>.matchapp-brand-link,
+body.page-shell .mh-topbox .brand.matchapp-brand-link{
+  display:inline-flex!important;align-items:center!important;gap:8px!important;
+  min-width:0!important;max-width:100%!important;text-decoration:none!important;
+}
+body.page-shell .mh-topbox .matchapp-wordmark{
+  width:auto!important;height:clamp(26px,5.2vw,38px)!important;max-width:min(230px,52vw)!important;
+  object-fit:contain!important;
+}
+body.page-shell .mh-topbox .brand-logo,
+body.page-shell .mh-topbox .ma-new-brand-logo{
+  width:clamp(34px,7vw,44px)!important;height:clamp(34px,7vw,44px)!important;
+  max-width:none!important;object-fit:cover!important;border-radius:50%!important;
+}
+
+/* ------------------------ responsive breakpoints ------------------------ */
+
+@media (max-width:1024px){
+  body.page-shell header.app-header.mh-topbox,
+  body.page-shell header.app-header.mh-topbox.ma-global-header{
+    width:min(calc(100% - 16px),var(--shell-max))!important;padding:9px 12px!important;gap:10px!important;
+  }
+  body.page-shell .mh-topbox>nav{max-width:min(520px,100%)!important}
+}
+
+@media (max-width:760px){
+  body.page-shell header.app-header.mh-topbox,
+  body.page-shell header.app-header.mh-topbox.ma-global-header{
+    grid-template-columns:minmax(0,1fr)!important;
+    width:calc(100% - 14px)!important;margin:8px auto!important;padding:9px 10px!important;
+    border-radius:20px!important;gap:8px!important;
+  }
+  body.page-shell .mh-topbox>nav,
+  body.page-shell .mh-topbox>nav.mh-deck{
+    justify-content:flex-start!important;max-width:100%!important;gap:5px!important;
+  }
+  body.page-shell .mh-topbox>nav>*{
+    min-height:38px!important;padding:6px 9px!important;font-size:11.5px!important;
+  }
+  body.page-shell .mh-topbox .ma-brand-lockup img{height:38px!important;max-width:min(170px,42vw)!important}
+  body.page-shell .mh-topbox #lang-switcher-host select{max-width:86px!important;font-size:11px!important}
+  body.page-shell .mh-home-btn{padding:6px 11px!important;font-size:11.5px!important}
+  body.page-shell>main,
+  body.page-shell>.page-shell-main,
+  body.page-shell main.page-wrapper,
+  body.page-shell main.tg-wrap{width:calc(100% - 14px)}
+}
+
+@media (max-width:420px){
+  body.page-shell .mh-topbox .mh-tagline{display:none!important}
+  body.page-shell .mh-topbox .ma-kids-mode-entry span{display:none!important}
+  body.page-shell .mh-topbox .ma-kids-mode-entry{padding:5px 7px!important}
+  /* Tightened so the whole deck still fits without a control being dropped:
+     wrapping is fine, an orphaned single control on its own row is not. */
+  body.page-shell .mh-topbox>nav,
+  body.page-shell .mh-topbox>nav.mh-deck{gap:4px!important}
+  body.page-shell .mh-topbox>nav>*{
+    min-width:36px!important;min-height:36px!important;padding:5px 7px!important;font-size:11px!important;
+  }
+  body.page-shell .mh-home-btn{padding:5px 9px!important;font-size:11px!important;gap:5px!important}
+  body.page-shell .mh-home-btn svg{width:14px;height:14px}
+  body.page-shell .mh-topbox .ma-brand-orb-stage{width:38px!important;height:38px!important}
+  body.page-shell .mh-topbox>nav>.sound-toggle-btn,
+  body.page-shell .mh-topbox>nav>.install-btn,
+  body.page-shell .mh-topbox>nav>.secondary-btn,
+  body.page-shell .mh-topbox>nav>.ma-kids-mode-entry,
+  body.page-shell .mh-topbox>nav>.matchapp-notification-button,
+  body.page-shell .mh-topbox>nav>.ma-menu-wrap,
+  body.page-shell .mh-topbox .ma-menu-button{height:36px!important;min-height:36px!important}
+  body.page-shell .mh-topbox .ma-menu-button,
+  body.page-shell .mh-topbox>nav>.ma-menu-wrap{width:36px!important;min-width:36px!important}
+}
+
+/* ---------------------- Match Together fit-to-screen ---------------------- */
+
+/* The heading was a fixed 34px, which wrapped to four lines on a 360px handset
+   and pushed the first card below the fold. Fluid type keeps the same shape at
+   every width. */
+body.page-shell main.tg-wrap{padding:0 0 70px 0!important;max-width:min(calc(100% - 14px),760px)}
+body.page-shell .tg-hero{padding:22px 0 14px 0}
+body.page-shell .tg-h1{font-size:clamp(23px,5.4vw,34px)!important;line-height:1.16!important;overflow-wrap:break-word}
+body.page-shell .tg-lede{font-size:clamp(13.5px,3.4vw,15px)!important;line-height:1.65!important}
+body.page-shell .tg-eyebrow{max-width:100%;white-space:normal;line-height:1.35}
+body.page-shell .tg-card{padding:clamp(16px,4.4vw,28px)!important;border-radius:20px!important}
+body.page-shell .tg-card h2{font-size:clamp(17px,4.4vw,22px)!important;overflow-wrap:break-word}
+body.page-shell .tg-btn{
+  padding:15px 16px!important;font-size:clamp(14px,3.7vw,17px)!important;
+  line-height:1.2!important;white-space:normal!important;overflow-wrap:break-word;
+  min-height:52px;box-sizing:border-box;
+}
+body.page-shell .tg-link-row{flex-wrap:wrap}
+body.page-shell .tg-link-row input{min-width:0;flex:1 1 180px}
+body.page-shell .tg-share-apps{flex-wrap:wrap}
+body.page-shell .tg-share-apps a,body.page-shell .tg-share-apps button{flex:1 1 30%;min-width:104px}
+body.page-shell .tg-code{font-size:clamp(22px,7vw,30px)!important;letter-spacing:clamp(2px,1.2vw,5px)!important}
+body.page-shell .tg-result-poster{max-width:min(230px,58vw);height:auto}
+
+/* The private-friends shortcut used to sit loose above the header, outside any
+   container. It is a card inside the page now. */
+body.page-shell .tg-friends-link{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  box-sizing:border-box;width:100%;margin:0 0 14px 0;padding:13px 16px;
+  border:1px solid rgba(243,207,105,.34);border-radius:14px;
+  background:linear-gradient(120deg,rgba(35,17,55,.7),rgba(16,8,28,.62));
+  color:#ffd78a;font-size:13px;font-weight:700;text-align:center;text-decoration:none;
+  line-height:1.35;overflow-wrap:break-word;
+}
+body.page-shell .tg-friends-link:hover{border-color:var(--ma-gold);color:#fff0c4}

@@ -1,21 +1,21 @@
 {
-  "version": "2026.09.20.2",
-  "date": "2026-09-20",
+  "version": "2026.09.21.1",
+  "date": "2026-09-21",
   "functional": true,
   "notes": {
-    "en": "Startup stability: fixed forced scroll jumps, stale mixed assets and duplicate Home install controllers.",
-    "pt-BR": "Estabilidade de inicialização: corrigidos saltos de rolagem, mistura de arquivos em cache e controles duplicados de instalação na Home.",
-    "es": "Empty ad rails collapse, one install control, first-run overlays queued, AHS key art restored, mood chips wrap on phones, and Home contrast lifted.",
-    "fr": "Empty ad rails collapse, one install control, first-run overlays queued, AHS key art restored, mood chips wrap on phones, and Home contrast lifted.",
-    "de": "Empty ad rails collapse, one install control, first-run overlays queued, AHS key art restored, mood chips wrap on phones, and Home contrast lifted.",
-    "it": "Empty ad rails collapse, one install control, first-run overlays queued, AHS key art restored, mood chips wrap on phones, and Home contrast lifted.",
-    "tr": "Empty ad rails collapse, one install control, first-run overlays queued, AHS key art restored, mood chips wrap on phones, and Home contrast lifted.",
-    "ru": "Empty ad rails collapse, one install control, first-run overlays queued, AHS key art restored, mood chips wrap on phones, and Home contrast lifted.",
-    "ar": "Empty ad rails collapse, one install control, first-run overlays queued, AHS key art restored, mood chips wrap on phones, and Home contrast lifted.",
-    "hi": "Empty ad rails collapse, one install control, first-run overlays queued, AHS key art restored, mood chips wrap on phones, and Home contrast lifted.",
-    "id": "Empty ad rails collapse, one install control, first-run overlays queued, AHS key art restored, mood chips wrap on phones, and Home contrast lifted.",
-    "ja": "Empty ad rails collapse, one install control, first-run overlays queued, AHS key art restored, mood chips wrap on phones, and Home contrast lifted.",
-    "ko": "Empty ad rails collapse, one install control, first-run overlays queued, AHS key art restored, mood chips wrap on phones, and Home contrast lifted.",
-    "zh": "Empty ad rails collapse, one install control, first-run overlays queued, AHS key art restored, mood chips wrap on phones, and Home contrast lifted."
+    "en": "Daily Check-in now lives under the top box: +1 Extra Match every day, +5 on day 7. Every page shares the home top box with a Home button, today's world day joins the Events rail, and Antártida is the featured film.",
+    "pt-BR": "O Check-in Diário agora fica logo abaixo da caixa do topo: +1 Match extra por dia e +5 no dia 7. Todas as páginas ganharam a caixa do topo com botão Início, a data mundial de hoje entrou nos Eventos e Antártida é o filme em destaque.",
+    "es": "El Check-in Diario ahora está bajo la caja superior: +1 Match extra cada día y +5 el día 7. Todas las páginas comparten la caja superior con botón de Inicio, el día mundial de hoy entra en Eventos y Antártida es la película destacada.",
+    "fr": "Le Check-in quotidien est désormais sous le bandeau supérieur : +1 Match bonus par jour, +5 au 7e jour. Toutes les pages partagent ce bandeau avec un bouton Accueil, la journée mondiale du jour rejoint les Événements et Antártida est le film à la une.",
+    "de": "Der tägliche Check-in sitzt jetzt direkt unter der Kopfleiste: +1 Extra-Match pro Tag, +5 an Tag 7. Alle Seiten teilen sich die Kopfleiste samt Home-Button, der Welttag des Tages kommt zu den Events und Antártida ist der Film der Woche.",
+    "it": "Il Check-in giornaliero ora sta sotto la barra superiore: +1 Match extra al giorno, +5 al settimo. Tutte le pagine condividono quella barra con un tasto Home, la giornata mondiale di oggi entra negli Eventi e Antártida è il film in evidenza.",
+    "tr": "Günlük Check-in artık üst kutunun hemen altında: her gün +1 ekstra Match, 7. günde +5. Tüm sayfalar üst kutuyu ve Ana Sayfa düğmesini paylaşıyor, bugünün dünya günü Etkinlikler'e eklendi ve öne çıkan film Antártida.",
+    "ru": "Ежедневный чек-ин теперь прямо под верхней панелью: +1 дополнительный Match каждый день и +5 на седьмой. Все страницы получили эту панель с кнопкой «Домой», сегодняшний всемирный день добавлен в «События», а фильм недели — «Антарктида».",
+    "ar": "أصبح تسجيل الحضور اليومي أسفل الشريط العلوي مباشرة: ‎+1 مباراة إضافية كل يوم و‎+5 في اليوم السابع. كل الصفحات تشارك الشريط العلوي مع زر الرئيسية، ويوم العالم لهذا اليوم أُضيف إلى الفعاليات، وفيلم الأسبوع هو «أنتارتيدا».",
+    "hi": "डेली चेक-इन अब टॉप बॉक्स के ठीक नीचे है: हर दिन +1 एक्स्ट्रा मैच और 7वें दिन +5। सभी पेजों पर वही टॉप बॉक्स और होम बटन है, आज का विश्व दिवस इवेंट्स में जुड़ा, और फ़ीचर्ड फ़िल्म है अंतार्तिदा।",
+    "id": "Check-in Harian kini tepat di bawah kotak atas: +1 Match ekstra setiap hari, +5 pada hari ke-7. Semua halaman memakai kotak atas yang sama dengan tombol Beranda, hari dunia hari ini masuk ke Events, dan film pilihan adalah Antártida.",
+    "ja": "デイリーチェックインがトップボックスの真下に移動しました。毎日 +1 エクストラマッチ、7日目は +5。全ページが同じトップボックスとホームボタンを共有し、今日の国際デーがイベント欄に追加、注目作品は『アンタルチダ』です。",
+    "ko": "데일리 체크인이 상단 박스 바로 아래로 왔습니다. 매일 +1 엑스트라 매치, 7일째에는 +5. 모든 페이지가 같은 상단 박스와 홈 버튼을 공유하고, 오늘의 세계 기념일이 이벤트에 추가되었으며, 추천 영화는 《안타르티다》입니다.",
+    "zh": "每日签到已移到顶部栏正下方：每天 +1 额外 Match，第 7 天 +5。所有页面共用同一个顶部栏并带有主页按钮，今天的世界日已加入活动栏，本周主推影片为《南极》。"
   }
 }

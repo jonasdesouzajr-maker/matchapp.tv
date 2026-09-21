@@ -5,17 +5,73 @@
 'use strict';
 
 const LANGS=['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh'];
+/* ---------------------------------------------------------------------------
+   THE FEATURED TITLE.
+
+   Everything title-specific lives in this one object plus PICK_COPY below, so
+   swapping the featured title is a data edit and never a component rewrite.
+   The contract for future swaps (and for the bot that will do them) is in
+   docs/DAILY_EVENT_AND_FEATURED_TITLE_CONTRACT.md.
+
+   Artwork: `poster` is intentionally empty. The cover is resolved at runtime
+   from the verified TMDB identity through MatchApp's own tmdb-proxy, the same
+   source the rest of the catalogue uses, so the card never ships a guessed
+   image URL. Until it resolves, a branded plate holds the exact poster shape.
+   --------------------------------------------------------------------------- */
 const PICK={
-  title:'A Gata Comeu',year:1985,country:'Brazil',countryCode:'BR',platform:'Globoplay',episodes:160,rating:'12',
-  author:'Ivani Ribeiro',cast:['Christiane Torloni','Nuno Leal Maia'],
-  poster:'https://cdn.ome.lt/images/tv/95544/poster/pt.webp',
-  watchUrl:'https://globoplay.globo.com/a-gata-comeu/t/ckHsdc6HmP/detalhes/',
-  sourceUrl:'https://memoriaglobo.globo.com/entretenimento/novelas/a-gata-comeu/noticia/a-gata-comeu.ghtml',
-  previewId:'sLCptaI_N-Y',
-  synopsis:'A classic Brazilian romantic comedy-drama about Jô Penteado and teacher Fábio Coutinho, whose relationship changes after a sea excursion leaves their group stranded on an island.',
-  cats:['novela brasileira','telenovela','series'],moods:['romantic','funny','light and feel-good'],
-  vibes:['long running series','slow burn','guilty pleasure'],ratings:['teen PG-13','any']
+  title:'Antártida',year:2026,country:'Brazil',countryCode:'BR',
+  kind:'movie',tmdbId:1401757,imdbId:'tt5691086',
+  director:'Bruno Safadi',author:'Claudia Jouvin',
+  cast:['Andrea Beltrão','Marina Ruy Barbosa','Leandra Leal','Antonio Calloni','Lázaro Ramos','Tatiana Tiburcio','Renan Monteiro'],
+  runtime:94,rating:'16',distributor:'Paris Filmes',releaseDate:'2026-09-17',
+  // Theatrical right now. When the streaming window opens, flip `inCinemas`
+  // to false and fill `streaming` — the card swaps the cinema ribbon and the
+  // showtimes action for a "Where to watch" action on its own, with no other
+  // edit anywhere.
+  inCinemas:true,
+  platform:'Cinemas',
+  streaming:null,
+  poster:'',
+  watchUrl:'',
+  sourceUrl:'https://www.imdb.com/title/tt5691086/',
+  previewId:'VtxQvbsGNIk',
+  synopsis:'A brutal crime inside an isolated Brazilian research station in Antarctica turns a base of scientists and navy personnel into a pressure cooker, and the investigation has to be run from inside it.',
+  cats:['movie'],moods:['intense and thrilling','dark and gritty','mind-bending'],
+  vibes:['prestige and critically acclaimed','slow burn','award winning'],ratings:['mature adults only R rated']
 };
+
+/* Title-specific copy, kept apart from the component's own COPY table so the
+   featured title can change without touching the component's strings (and so
+   the older featured pages that still read those strings keep working). */
+const PICK_COPY={
+'en':{desc:'Antártida (2026) is a Brazilian thriller directed by Bruno Safadi and written by Claudia Jouvin. On the first night of the winter season at a Brazilian research station in Antarctica a young scientist is attacked — and every man stationed there becomes a suspect while the investigation runs inside the base. In cinemas in Brazil from 17 September 2026.',cinema:'🎬 In cinemas now',showtimes:'🏟️ Cinemas near me',where:'▶ Where to watch',eyebrow:'This week’s featured film',director:'Director',runtime:'min',preview:'Official trailer',sourceNote:'Title facts, cast and release checked against IMDb and the distributor’s announcement.'},
+'pt-BR':{desc:'Antártida (2026) é um suspense brasileiro dirigido por Bruno Safadi, com roteiro de Claudia Jouvin. Na primeira noite da temporada de inverno em uma estação de pesquisa brasileira na Antártida, uma jovem cientista é atacada — e todos os homens da base viram suspeitos enquanto a investigação acontece lá dentro. Nos cinemas do Brasil desde 17 de setembro de 2026.',cinema:'🎬 Em cartaz nos cinemas',showtimes:'🏟️ Cinemas perto de mim',where:'▶ Onde assistir',eyebrow:'O filme em destaque desta semana',director:'Direção',runtime:'min',preview:'Trailer oficial',sourceNote:'Ficha, elenco e estreia conferidos no IMDb e no anúncio da distribuidora.'},
+'es':{desc:'Antártida (2026) es un thriller brasileño dirigido por Bruno Safadi y escrito por Claudia Jouvin. En la primera noche de la temporada de invierno en una estación brasileña de investigación en la Antártida una joven científica es atacada, y todos los hombres de la base pasan a ser sospechosos mientras la investigación ocurre dentro. En cines de Brasil desde el 17 de septiembre de 2026.',cinema:'🎬 En cines',showtimes:'🏟️ Cines cerca de mí',where:'▶ Dónde verla',eyebrow:'La película destacada de esta semana',director:'Dirección',runtime:'min',preview:'Tráiler oficial',sourceNote:'Ficha, reparto y estreno verificados en IMDb y en el anuncio de la distribuidora.'},
+'fr':{desc:'Antártida (2026) est un thriller brésilien réalisé par Bruno Safadi et écrit par Claudia Jouvin. La première nuit de la saison d’hiver dans une station de recherche brésilienne en Antarctique, une jeune scientifique est agressée — et tous les hommes de la base deviennent suspects, l’enquête se déroulant à l’intérieur. Au cinéma au Brésil depuis le 17 septembre 2026.',cinema:'🎬 Au cinéma',showtimes:'🏟️ Cinémas près de moi',where:'▶ Où le voir',eyebrow:'Le film à la une cette semaine',director:'Réalisation',runtime:'min',preview:'Bande-annonce officielle',sourceNote:'Fiche, distribution et sortie vérifiées sur IMDb et dans l’annonce du distributeur.'},
+'de':{desc:'Antártida (2026) ist ein brasilianischer Thriller von Bruno Safadi nach einem Drehbuch von Claudia Jouvin. In der ersten Nacht der Wintersaison auf einer brasilianischen Forschungsstation in der Antarktis wird eine junge Wissenschaftlerin angegriffen — und jeder Mann auf der Station wird zum Verdächtigen, während die Ermittlung im Inneren läuft. Seit 17. September 2026 in brasilianischen Kinos.',cinema:'🎬 Jetzt im Kino',showtimes:'🏟️ Kinos in meiner Nähe',where:'▶ Wo zu sehen',eyebrow:'Der Film der Woche',director:'Regie',runtime:'Min.',preview:'Offizieller Trailer',sourceNote:'Angaben, Besetzung und Start gegen IMDb und die Ankündigung des Verleihs geprüft.'},
+'it':{desc:'Antártida (2026) è un thriller brasiliano diretto da Bruno Safadi e scritto da Claudia Jouvin. Nella prima notte della stagione invernale in una stazione di ricerca brasiliana in Antartide una giovane scienziata viene aggredita, e tutti gli uomini della base diventano sospetti mentre l’indagine si svolge là dentro. Nelle sale in Brasile dal 17 settembre 2026.',cinema:'🎬 Al cinema',showtimes:'🏟️ Cinema vicino a me',where:'▶ Dove vederlo',eyebrow:'Il film in evidenza della settimana',director:'Regia',runtime:'min',preview:'Trailer ufficiale',sourceNote:'Scheda, cast e uscita verificati su IMDb e nell’annuncio del distributore.'},
+'tr':{desc:'Antártida (2026), Bruno Safadi’nin yönettiği, Claudia Jouvin’in yazdığı bir Brezilya gerilimi. Antarktika’daki bir Brezilya araştırma istasyonunda kış sezonunun ilk gecesinde genç bir bilim insanı saldırıya uğrar ve üsteki tüm erkekler şüpheli hâline gelir; soruşturma da içeride yürütülür. 17 Eylül 2026’dan beri Brezilya sinemalarında.',cinema:'🎬 Sinemalarda',showtimes:'🏟️ Yakınımdaki sinemalar',where:'▶ Nerede izlenir',eyebrow:'Bu haftanın öne çıkan filmi',director:'Yönetmen',runtime:'dk',preview:'Resmî fragman',sourceNote:'Künye, oyuncular ve vizyon tarihi IMDb ve dağıtımcı duyurusuyla doğrulanmıştır.'},
+'ru':{desc:'«Антарктида» (2026) — бразильский триллер Бруну Сафади по сценарию Клаудии Жовен. В первую ночь зимнего сезона на бразильской станции в Антарктиде нападают на молодую учёную — и каждый мужчина на базе становится подозреваемым, а расследование идёт внутри. В прокате в Бразилии с 17 сентября 2026 года.',cinema:'🎬 В кинотеатрах',showtimes:'🏟️ Кинотеатры рядом',where:'▶ Где смотреть',eyebrow:'Фильм недели',director:'Режиссёр',runtime:'мин',preview:'Официальный трейлер',sourceNote:'Данные, актёры и дата выхода сверены с IMDb и анонсом прокатчика.'},
+'ar':{desc:'«أنتارتيدا» (2026) فيلم إثارة برازيلي من إخراج برونو سافادي وتأليف كلاوديا جوفان. في أول ليلة من موسم الشتاء في محطة أبحاث برازيلية في القطب الجنوبي، تتعرض عالمة شابة لاعتداء، ويصبح كل رجال القاعدة مشتبهًا بهم بينما يجري التحقيق في الداخل. في الصالات البرازيلية منذ 17 سبتمبر 2026.',cinema:'🎬 في دور العرض',showtimes:'🏟️ سينمات قريبة',where:'▶ أين أشاهده',eyebrow:'فيلم الأسبوع',director:'إخراج',runtime:'دقيقة',preview:'الإعلان الرسمي',sourceNote:'تم التحقق من المعلومات والطاقم وموعد العرض عبر IMDb وإعلان الموزع.'},
+'hi':{desc:'अंतार्तिदा (2026) ब्रूनो साफादी द्वारा निर्देशित और क्लॉडिया जुविन द्वारा लिखित एक ब्राज़ीली थ्रिलर है। अंटार्कटिका में ब्राज़ीली शोध केंद्र में सर्दियों की पहली रात एक युवा वैज्ञानिक पर हमला होता है और बेस का हर पुरुष संदिग्ध बन जाता है। 17 सितंबर 2026 से ब्राज़ील के सिनेमाघरों में।',cinema:'🎬 सिनेमाघरों में',showtimes:'🏟️ पास के सिनेमाघर',where:'▶ कहाँ देखें',eyebrow:'इस हफ़्ते की फ़ीचर्ड फ़िल्म',director:'निर्देशक',runtime:'मिनट',preview:'आधिकारिक ट्रेलर',sourceNote:'जानकारी, कलाकार और रिलीज़ IMDb और वितरक की घोषणा से मिलाए गए।'},
+'id':{desc:'Antártida (2026) adalah film thriller Brasil arahan Bruno Safadi dengan naskah Claudia Jouvin. Pada malam pertama musim dingin di stasiun riset Brasil di Antarktika, seorang ilmuwan muda diserang — dan semua pria di pangkalan itu menjadi tersangka sementara penyelidikan berlangsung di dalam. Tayang di bioskop Brasil sejak 17 September 2026.',cinema:'🎬 Sedang tayang di bioskop',showtimes:'🏟️ Bioskop terdekat',where:'▶ Tempat menonton',eyebrow:'Film pilihan minggu ini',director:'Sutradara',runtime:'mnt',preview:'Trailer resmi',sourceNote:'Data, pemeran dan tanggal rilis dicocokkan dengan IMDb dan pengumuman distributor.'},
+'ja':{desc:'『アンタルチダ』（2026）はブルーノ・サファディ監督、クラウディア・ジョヴァン脚本のブラジル製サスペンス。南極のブラジル観測基地で越冬シーズン初日の夜、若い科学者が襲われ、基地の男たち全員が容疑者になる。ブラジルでは2026年9月17日から劇場公開。',cinema:'🎬 劇場公開中',showtimes:'🏟️ 近くの映画館',where:'▶ 視聴方法',eyebrow:'今週の注目作品',director:'監督',runtime:'分',preview:'公式予告編',sourceNote:'作品情報・キャスト・公開日はIMDbと配給元発表で確認。'},
+'ko':{desc:'《안타르티다》(2026)는 브루노 사파디 감독, 클라우디아 주벤 각본의 브라질 스릴러다. 남극의 브라질 연구기지에서 결빙기 첫날 밤 젊은 과학자가 습격당하고, 기지의 모든 남자가 용의자가 된다. 2026년 9월 17일 브라질 극장 개봉.',cinema:'🎬 극장 상영 중',showtimes:'🏟️ 근처 극장',where:'▶ 시청처',eyebrow:'이번 주의 추천 영화',director:'감독',runtime:'분',preview:'공식 예고편',sourceNote:'정보·출연·개봉일은 IMDb와 배급사 발표로 확인했습니다.'},
+'zh':{desc:'《南极》（2026）是布鲁诺·萨法迪执导、克劳迪娅·乔文编剧的巴西悬疑片。南极一座巴西科考站越冬季的第一个夜晚，一名年轻女科学家遭到袭击，站内所有男性都成了嫌疑人。巴西影院自2026年9月17日起上映。',cinema:'🎬 正在影院上映',showtimes:'🏟️ 附近影院',where:'▶ 在哪里看',eyebrow:'本周主推影片',director:'导演',runtime:'分钟',preview:'官方预告片',sourceNote:'资料、演员和上映日期均对照 IMDb 与发行方公告核实。'}
+};
+function pickCopy(){return PICK_COPY[lang()]||PICK_COPY.en;}
+
+/* The AI chat is the detail experience for this title: showtimes near the
+   visitor, synopsis, cast, country of production and IMDb rating, in their
+   own language. Cinema-only titles ask for cinemas; once the streaming window
+   opens the same handoff asks where to stream, rent or buy. */
+function pickAskUrl(){
+  const q=PICK.inCinemas
+    ? 'Tell me about the film '+PICK.title+' ('+PICK.year+', '+PICK.country+', directed by '+PICK.director+
+      '). Which cinemas near me are showing it, and at what times? Also give the full synopsis, the cast, the country of production, the runtime and age rating, and its IMDb rating and reception.'
+    : 'Where can I watch the film '+PICK.title+' ('+PICK.year+', '+PICK.country+')? Give me every streaming, rent and buy option in my country, plus the full synopsis, the cast, the country of production and its IMDb rating and reception.';
+  return '/discover.html?q='+encodeURIComponent(q)+'&focus=start';
+}
 const AHS={title:'American Horror Story: 13',trailerId:'gQf4Vya5PbI',date:'2026-09-24'};
 
 const COPY={
@@ -128,10 +184,44 @@ function reduce(){return matchMedia('(prefers-reduced-motion: reduce)').matches|
 function addCatalogEntry(){
   try{
     if(typeof CONTENT_CATALOG!=='undefined'&&Array.isArray(CONTENT_CATALOG)&&!CONTENT_CATALOG.some(x=>String(x.title).toLowerCase()===PICK.title.toLowerCase())){
-      CONTENT_CATALOG.push({title:PICK.title,year:PICK.year,country:PICK.country,countryCode:PICK.countryCode,cast:PICK.cast.slice(),synopsis:PICK.synopsis,platform:PICK.platform,watchUrl:PICK.watchUrl,cats:PICK.cats.slice(),moods:PICK.moods.slice(),vibes:PICK.vibes.slice(),ratings:PICK.ratings.slice()});
+      // A cinema-only title has no streaming destination to promise, so the
+      // catalogue entry points at the detail experience that can actually
+      // answer "where" — never at a fabricated provider deep link.
+      CONTENT_CATALOG.push({title:PICK.title,year:PICK.year,country:PICK.country,countryCode:PICK.countryCode,cast:PICK.cast.slice(),synopsis:PICK.synopsis,platform:PICK.platform,watchUrl:PICK.watchUrl||(PICK.streaming&&PICK.streaming.url)||pickAskUrl(),cats:PICK.cats.slice(),moods:PICK.moods.slice(),vibes:PICK.vibes.slice(),ratings:PICK.ratings.slice()});
     }
-    if(typeof VERIFIED_POSTERS!=='undefined'&&VERIFIED_POSTERS)VERIFIED_POSTERS[PICK.title]=PICK.poster;
+    if(typeof VERIFIED_POSTERS!=='undefined'&&VERIFIED_POSTERS&&PICK.poster)VERIFIED_POSTERS[PICK.title]=PICK.poster;
   }catch(e){console.warn('Weekly pick catalog registration skipped',e);}
+}
+
+/* The cover comes from the verified TMDB identity through MatchApp's own
+   proxy — one request, cached by tmdb.js, and a silent no-op when the proxy
+   is unavailable so the branded plate simply stays. */
+async function resolveArtwork(){
+  if(PICK.poster||!PICK.tmdbId||typeof window.tmdbDetails!=='function')return;
+  let record=null;
+  try{record=await window.tmdbDetails(PICK.tmdbId,PICK.kind||'movie');}catch(_){record=null;}
+  const url=record&&(record.posterLarge||record.poster);
+  if(!/^https:\/\/image\.tmdb\.org\/t\/p\/(?:w[0-9]+|original)\/[A-Za-z0-9_.-]+$/.test(String(url||'')))return;
+  PICK.poster=url;
+  try{if(typeof VERIFIED_POSTERS!=='undefined'&&VERIFIED_POSTERS)VERIFIED_POSTERS[PICK.title]=url;}catch(_){}
+  const stage=document.querySelector('#weekly-pick .spotlight-poster');
+  if(!stage)return;
+  let img=stage.querySelector('img');
+  if(!img){
+    img=document.createElement('img');
+    img.alt=PICK.title+' ('+PICK.year+') official poster';
+    img.referrerPolicy='no-referrer';
+    img.loading='lazy';img.decoding='async';
+    // Only swap the plate out once the real cover has actually decoded, so a
+    // slow or failed image never leaves an empty frame behind.
+    img.addEventListener('load',()=>{const plate=stage.querySelector('.weekly-pick-plate');if(plate)plate.remove();},{once:true});
+    img.addEventListener('error',()=>{img.remove();},{once:true});
+    stage.appendChild(img);
+  }
+  img.src=url;
+  const schema=document.getElementById('weekly-pick-schema');
+  if(schema)schema.remove();
+  enrichSeo();
 }
 
 function style(){if(document.getElementById('weekly-pick-style'))return;const s=document.createElement('style');s.id='weekly-pick-style';s.textContent=`
@@ -140,7 +230,13 @@ function style(){if(document.getElementById('weekly-pick-style'))return;const s=
 .weekly-pick-video-label{display:flex;align-items:center;gap:7px;margin:0 0 7px;color:var(--gold,#E5C158);font-size:12px;font-weight:800}
 .weekly-pick-video-frame{position:relative;aspect-ratio:16/9;border-radius:14px;overflow:hidden;border:1px solid rgba(229,193,88,.28);background:#08060d;box-shadow:0 12px 30px rgba(0,0,0,.3)}
 .weekly-pick-video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-#weekly-pick .spotlight-poster{cursor:default}
+#weekly-pick .spotlight-poster{display:block;cursor:pointer;position:relative;text-decoration:none}
+#weekly-pick .spotlight-poster img{display:block;width:100%;height:auto}
+.weekly-pick-plate{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;box-sizing:border-box;width:100%;height:100%;min-height:100%;aspect-ratio:2/3;padding:14px 10px;border-radius:16px;background:radial-gradient(120% 70% at 50% 14%,rgba(120,182,255,.20),transparent 60%),linear-gradient(165deg,#0f1b34,#0a1122 60%,#060a14);box-shadow:inset 0 0 0 1px rgba(229,193,88,.26);text-align:center}
+.weekly-pick-plate b{color:#ffe9a6;font-size:clamp(.8rem,2.2vw,1.1rem);line-height:1.2;text-transform:uppercase;letter-spacing:.02em;overflow-wrap:break-word}
+.weekly-pick-plate small{color:#b9aecb;font-size:.78rem}
+.weekly-pick-ribbon{position:absolute;top:10px;left:10px;z-index:2;display:inline-flex;align-items:center;max-width:calc(100% - 20px);padding:6px 11px;border-radius:999px;background:linear-gradient(135deg,#c8202e,#8d121d);color:#fff;font-size:11px;font-weight:900;letter-spacing:.05em;line-height:1.15;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;box-shadow:0 6px 18px rgba(0,0,0,.42)}
+.weekly-pick-ribbon.is-streaming{background:linear-gradient(135deg,#f5d976,#dcae3b);color:#20150a}
 .weekly-pick-source{font-size:11.5px;line-height:1.5;color:#bdb3cc;margin:8px 0 0}.weekly-pick-source a{color:var(--gold,#E5C158)}
 .weekly-pick-actions{display:flex;flex-wrap:wrap;gap:9px;align-items:center}.weekly-pick-actions a,.weekly-pick-actions button{min-height:42px}
 .weekly-pick-dislike{border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.055);color:#eee;border-radius:999px;padding:10px 15px;font-weight:800;cursor:pointer}
@@ -152,7 +248,12 @@ function player(id,label,title){return `<div class="weekly-pick-video"><p class=
 function ensureWeekly(){
   const premiere=document.getElementById('premiere-disclosure');if(!premiere)return;
   let d=document.getElementById('weekly-pick-disclosure');
-  if(!d){d=document.createElement('details');d.id='weekly-pick-disclosure';d.className='premiere-disclosure weekly-pick-disclosure';d.open=true;d.innerHTML=`<summary><span data-weekly="weeklyHeading"></span></summary><article id="weekly-pick" class="premium-card spotlight-card"><div class="spotlight-glow" aria-hidden="true"></div><div class="spotlight-inner"><div class="spotlight-poster"><img src="${PICK.poster}" alt="A Gata Comeu (1985) official poster" referrerpolicy="no-referrer"><div class="spotlight-ribbon">1985 · TV GLOBO</div></div><div class="spotlight-body"><span class="spotlight-eyebrow" data-weekly="weeklyEyebrow"></span><h2 class="spotlight-title">A Gata Comeu</h2><p class="spotlight-desc" data-weekly="agataDesc"></p><div class="spotlight-meta weekly-pick-meta"></div><div class="weekly-pick-preview"></div><div class="weekly-pick-actions"><a class="gold-btn" href="${PICK.watchUrl}" target="_blank" rel="noopener noreferrer" data-weekly="watch"></a><button class="gold-btn weekly-save" type="button" data-weekly="save"></button><button class="weekly-pick-dislike weekly-dislike" type="button" data-weekly="notForMe"></button></div><p class="weekly-pick-source"><strong data-weekly="sources"></strong>: <a href="${PICK.watchUrl}" target="_blank" rel="noopener noreferrer">Globoplay</a> · <a href="${PICK.sourceUrl}" target="_blank" rel="noopener noreferrer">Memória Globo</a>. <span data-weekly="sourceNote"></span></p></div></div></article>`;const swift=document.getElementById('swifties-spotify');(swift||premiere).insertAdjacentElement('afterend',d);
+  if(!d){
+    const ask=pickAskUrl(), px=pickCopy();
+    const ribbon=PICK.inCinemas?px.cinema:(PICK.streaming?px.where:'');
+    d=document.createElement('details');d.id='weekly-pick-disclosure';d.className='premiere-disclosure weekly-pick-disclosure';d.open=true;
+    d.innerHTML=`<summary><span data-weekly="weeklyHeading"></span></summary><article id="weekly-pick" class="premium-card spotlight-card"><div class="spotlight-glow" aria-hidden="true"></div><div class="spotlight-inner"><a class="spotlight-poster" href="${esc(ask)}" aria-label="${esc(PICK.title)} (${PICK.year}) — details, cast and where to watch">${ribbon?`<span class="weekly-pick-ribbon${PICK.inCinemas?'':' is-streaming'}">${esc(ribbon)}</span>`:''}<span class="weekly-pick-plate"><b>${esc(PICK.title)}</b><small>${PICK.year} · ${esc(PICK.country)}</small></span></a><div class="spotlight-body"><span class="spotlight-eyebrow weekly-pick-eyebrow"></span><h2 class="spotlight-title"><a href="${esc(ask)}">${esc(PICK.title)}</a></h2><p class="spotlight-desc weekly-pick-desc"></p><div class="spotlight-meta weekly-pick-meta"></div><div class="weekly-pick-preview"></div><div class="weekly-pick-actions"><a class="gold-btn weekly-pick-primary" href="${esc(ask)}"></a><button class="gold-btn weekly-save" type="button" data-weekly="save"></button><button class="weekly-pick-dislike weekly-dislike" type="button" data-weekly="notForMe"></button></div><p class="weekly-pick-source"><strong data-weekly="sources"></strong>: <a href="${esc(PICK.sourceUrl)}" target="_blank" rel="noopener noreferrer">IMDb</a>. <span class="weekly-pick-sourcenote"></span></p></div></div></article>`;
+    const swift=document.getElementById('swifties-spotify');(swift||premiere).insertAdjacentElement('afterend',d);
     d.querySelector('.weekly-save').addEventListener('click',()=>record('save'));
     d.querySelector('.weekly-dislike').addEventListener('click',()=>record('dislike'));
     d.addEventListener('toggle',()=>{try{window.track?.('weekly_pick_toggle',{open:d.open,title:PICK.title});}catch(_){}});
@@ -181,21 +282,76 @@ function ensureAhsTrailer(){
 
 function apply(){
   const x=c();document.querySelectorAll('[data-weekly]').forEach(el=>{const k=el.dataset.weekly;if(x[k])el.textContent=x[k];});
-  const meta=document.querySelector('#weekly-pick .weekly-pick-meta');if(meta)meta.innerHTML=`<span class="spotlight-chip">📅 <strong>${esc(x.year)} ${PICK.year}</strong></span><span class="spotlight-chip">📺 TV Globo</span><span class="spotlight-chip">🎞️ ${PICK.episodes} ${esc(x.episodes)}</span><span class="spotlight-chip">🔞 ${esc(x.rating)} ${PICK.rating}</span>`;
-  const p=document.querySelector('#weekly-pick .weekly-pick-preview');if(p)p.innerHTML=player(PICK.previewId,x.preview,`${x.preview} — ${PICK.title}`);
+  const px=pickCopy();
+  const eyebrow=document.querySelector('#weekly-pick .weekly-pick-eyebrow');if(eyebrow)eyebrow.textContent=px.eyebrow;
+  const desc=document.querySelector('#weekly-pick .weekly-pick-desc');if(desc)desc.textContent=px.desc;
+  const note=document.querySelector('#weekly-pick .weekly-pick-sourcenote');if(note)note.textContent=px.sourceNote;
+  const primary=document.querySelector('#weekly-pick .weekly-pick-primary');
+  if(primary){
+    // Cinema-only titles offer showtimes; once the streaming window opens the
+    // same button becomes "Where to watch" and points at that provider.
+    if(PICK.inCinemas){primary.textContent=px.showtimes;primary.href=pickAskUrl();primary.removeAttribute('target');primary.removeAttribute('rel');}
+    else if(PICK.streaming&&PICK.streaming.url){primary.textContent=px.where+' · '+PICK.streaming.name;primary.href=PICK.streaming.url;primary.target='_blank';primary.rel='noopener noreferrer';}
+    else{primary.textContent=px.where;primary.href=pickAskUrl();primary.removeAttribute('target');primary.removeAttribute('rel');}
+  }
+  const ribbon=document.querySelector('#weekly-pick .weekly-pick-ribbon');
+  if(ribbon)ribbon.textContent=PICK.inCinemas?px.cinema:(PICK.streaming?px.where:'');
+  const meta=document.querySelector('#weekly-pick .weekly-pick-meta');if(meta)meta.innerHTML=`<span class="spotlight-chip">📅 <strong>${esc(x.year)} ${PICK.year}</strong></span><span class="spotlight-chip">🎬 ${esc(px.director)}: ${esc(PICK.director)}</span><span class="spotlight-chip">🌎 ${esc(PICK.country)}</span><span class="spotlight-chip">⏱️ ${PICK.runtime} ${esc(px.runtime)}</span><span class="spotlight-chip">🔞 ${esc(x.rating)} ${esc(PICK.rating)}</span>`;
+  const p=document.querySelector('#weekly-pick .weekly-pick-preview');if(p&&PICK.previewId)p.innerHTML=player(PICK.previewId,px.preview,`${px.preview} — ${PICK.title}`);
   const ahs=document.querySelector('#spotlight-ahs13');if(ahs){const desc=ahs.querySelector('.spotlight-desc');if(desc)desc.textContent=x.ahsDesc;const m=ahs.querySelector('.spotlight-meta');if(m)m.innerHTML=`<span class="spotlight-chip">📅 <strong>${esc(x.premieres)} ${esc(fmtDate(AHS.date))}</strong></span><span class="spotlight-chip">📺 ${esc(x.us)}</span><span class="spotlight-chip">🌎 ${esc(x.latam)}</span><span class="spotlight-chip">🎞️ ${esc(x.ahsEpisodes)}</span>`;const h=ahs.querySelector('.ahs13-official-trailer');if(h)h.innerHTML=player(AHS.trailerId,x.ahsTrailer,`${x.ahsTrailer} — ${AHS.title}`);const poster=ahs.querySelector('.spotlight-poster');if(poster)poster.setAttribute('aria-label',x.openAhs);}
   const sum=document.querySelector('#weekly-pick-disclosure summary');if(sum)sum.setAttribute('aria-label',x.openWeekly);
   document.querySelectorAll('[data-weekly-page]').forEach(page=>{page.querySelectorAll('[data-weekly-page-key]').forEach(el=>{const k=el.dataset.weeklyPageKey;if(x[k])el.textContent=x[k];});});
 }
 
 function enrichSeo(){
-  const kw=document.querySelector('meta[name="keywords"]');const extra='A Gata Comeu, A Gata Comeu 1985, A Gata Comeu Globoplay, onde assistir A Gata Comeu, novela A Gata Comeu, Ivani Ribeiro, Christiane Torloni, Nuno Leal Maia, American Horror Story 13, AHS13, American Horror Story season 13 trailer, AHS 13 FX Hulu Disney+, September 24 2026';if(kw&&!kw.content.includes('A Gata Comeu'))kw.content+=', '+extra;
-  const desc=document.querySelector('meta[name="description"]');if(desc&&!desc.content.includes('A Gata Comeu'))desc.content=(desc.content.replace(/\s*$/,'')+' Featured this week: A Gata Comeu (1985), plus American Horror Story 13 premiere and official trailer.').slice(0,300);
-  if(!document.getElementById('weekly-pick-schema')){const s=document.createElement('script');s.id='weekly-pick-schema';s.type='application/ld+json';s.textContent=JSON.stringify({'@context':'https://schema.org','@graph':[{'@type':'TVSeries','@id':'https://matchapp.tv/featured/a-gata-comeu/#series',name:PICK.title,datePublished:'1985-04-15',numberOfEpisodes:PICK.episodes,genre:['Romance','Comedy','Drama'],countryOfOrigin:{'@type':'Country',name:'Brazil'},author:{'@type':'Person',name:PICK.author},actor:PICK.cast.map(name=>({'@type':'Person',name})),contentRating:'12',image:PICK.poster,url:'https://matchapp.tv/featured/a-gata-comeu/',sameAs:[PICK.watchUrl,PICK.sourceUrl],potentialAction:{'@type':'WatchAction',target:PICK.watchUrl}},{'@type':'VideoObject',name:'A Gata Comeu — official Globoplay preview',uploadDate:'2026-04-08',thumbnailUrl:`https://i.ytimg.com/vi/${PICK.previewId}/hqdefault.jpg`,contentUrl:`https://www.youtube.com/watch?v=${PICK.previewId}`,embedUrl:`https://www.youtube-nocookie.com/embed/${PICK.previewId}`},{'@type':'VideoObject',name:'American Horror Story: 13 — Official Trailer | FX',uploadDate:'2026-09-10',thumbnailUrl:`https://i.ytimg.com/vi/${AHS.trailerId}/hqdefault.jpg`,contentUrl:`https://www.youtube.com/watch?v=${AHS.trailerId}`,embedUrl:`https://www.youtube-nocookie.com/embed/${AHS.trailerId}`} ]});document.head.appendChild(s);}
+  /* The standalone featured pages own their own metadata; only the homepage
+     card enriches the page it is rendered into. */
+  if(document.querySelector('[data-weekly-page]'))return;
+  /* Long-tail and short terms for the featured title, added once. When the
+     featured title changes, this list changes with PICK — see
+     docs/DAILY_EVENT_AND_FEATURED_TITLE_CONTRACT.md. */
+  const kw=document.querySelector('meta[name="keywords"]');
+  const extra=[
+    'Antártida','Antártida 2026','Antártida filme','Antártida filme 2026','filme Antártida Bruno Safadi',
+    'Antártida onde assistir','Antártida nos cinemas','Antártida sessões','Antártida horários cinema',
+    'Antártida elenco','Antártida sinopse','Antártida Marina Ruy Barbosa','Antártida Andrea Beltrão',
+    'Antártida Lázaro Ramos','Antártida Leandra Leal','Antártida Paris Filmes','Antártida IMDb',
+    'Antártida trailer oficial','suspense brasileiro 2026','filme brasileiro em cartaz',
+    'Antarctic 2026 film','Antarctic Brazilian thriller','where to watch Antártida',
+    'Antártida showtimes near me','new Brazilian movie 2026','thriller set in Antarctica',
+    'American Horror Story 13','AHS13','American Horror Story season 13 trailer','AHS 13 FX Hulu Disney+'
+  ].join(', ');
+  if(kw&&!kw.content.includes('Antártida onde assistir'))kw.content+=', '+extra;
+  const desc=document.querySelector('meta[name="description"]');
+  if(desc&&!desc.content.includes('Featured this week: Antártida'))desc.content=(desc.content.replace(/\s*$/,'')+' Featured this week: Antártida (2026) — in cinemas now, plus American Horror Story 13 and its official trailer.').slice(0,300);
+  if(!document.getElementById('weekly-pick-schema')){
+    const graph=[{
+      '@type':'Movie','@id':'https://matchapp.tv/featured/antartida/#movie',
+      name:PICK.title,alternateName:'Antarctic',
+      datePublished:PICK.releaseDate,
+      genre:['Thriller','Drama','Mystery'],
+      countryOfOrigin:{'@type':'Country',name:PICK.country},
+      director:{'@type':'Person',name:PICK.director},
+      author:{'@type':'Person',name:PICK.author},
+      actor:PICK.cast.map(name=>({'@type':'Person',name})),
+      contentRating:PICK.rating,
+      duration:'PT'+PICK.runtime+'M',
+      description:PICK.synopsis,
+      url:'https://matchapp.tv/featured/antartida/',
+      sameAs:[PICK.sourceUrl,'https://www.themoviedb.org/movie/'+PICK.tmdbId],
+      productionCompany:{'@type':'Organization',name:PICK.distributor}
+    }];
+    if(PICK.poster)graph[0].image=PICK.poster;
+    if(PICK.previewId)graph.push({'@type':'VideoObject',name:PICK.title+' — official trailer',uploadDate:'2026-08-26',thumbnailUrl:'https://i.ytimg.com/vi/'+PICK.previewId+'/hqdefault.jpg',contentUrl:'https://www.youtube.com/watch?v='+PICK.previewId,embedUrl:'https://www.youtube-nocookie.com/embed/'+PICK.previewId});
+    graph.push({'@type':'VideoObject',name:'American Horror Story: 13 — Official Trailer | FX',uploadDate:'2026-09-10',thumbnailUrl:'https://i.ytimg.com/vi/'+AHS.trailerId+'/hqdefault.jpg',contentUrl:'https://www.youtube.com/watch?v='+AHS.trailerId,embedUrl:'https://www.youtube-nocookie.com/embed/'+AHS.trailerId});
+    const node=document.createElement('script');node.id='weekly-pick-schema';node.type='application/ld+json';
+    node.textContent=JSON.stringify({'@context':'https://schema.org','@graph':graph});
+    document.head.appendChild(node);
+  }
 }
 
-function hash(){const h=location.hash.toLowerCase();if(!['#weekly-pick','#a-gata-comeu','#spotlight-ahs13'].includes(h))return;const isAhs=h==='#spotlight-ahs13';const d=document.getElementById(isAhs?'premiere-disclosure':'weekly-pick-disclosure');const target=document.getElementById(isAhs?'spotlight-ahs13':'weekly-pick');if(d)d.open=true;requestAnimationFrame(()=>target?.scrollIntoView({behavior:reduce()?'auto':'smooth',block:'start'}));}
+function hash(){const h=location.hash.toLowerCase();if(!['#weekly-pick','#antartida','#a-gata-comeu','#spotlight-ahs13'].includes(h))return;const isAhs=h==='#spotlight-ahs13';const d=document.getElementById(isAhs?'premiere-disclosure':'weekly-pick-disclosure');const target=document.getElementById(isAhs?'spotlight-ahs13':'weekly-pick');if(d)d.open=true;requestAnimationFrame(()=>target?.scrollIntoView({behavior:reduce()?'auto':'smooth',block:'start'}));}
 
-function boot(){addCatalogEntry();style();ensureWeekly();ensureAhsTrailer();apply();enrichSeo();hash();const mo=new MutationObserver(m=>{if(m.some(x=>x.attributeName==='lang'||x.attributeName==='dir'))apply();});mo.observe(document.documentElement,{attributes:true,attributeFilter:['lang','dir']});window.addEventListener('hashchange',hash);}
+function boot(){addCatalogEntry();style();ensureWeekly();ensureAhsTrailer();apply();enrichSeo();hash();resolveArtwork();const mo=new MutationObserver(m=>{if(m.some(x=>x.attributeName==='lang'||x.attributeName==='dir'))apply();});mo.observe(document.documentElement,{attributes:true,attributeFilter:['lang','dir']});window.addEventListener('hashchange',hash);}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
 })();
