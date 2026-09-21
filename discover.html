@@ -98,8 +98,10 @@
         .composer-hint { color: #7c7391; font-size: 11.5px; margin: 7px 2px 0 2px; }
         .composer-send { width: auto; padding: 16px 26px; flex-shrink: 0; }
         @media (max-width: 620px) {
+            .newsearch-row { width:100%; max-width:100%; }
             .composer-send { width: 100%; }
-            .composer { min-width: 100%; }
+            .composer { min-width:0; width:100%; max-width:100%; box-sizing:border-box; }
+            .composer textarea { min-width:0; width:auto; }
         }
         .newsearch-row input { flex: 1; min-width: 220px; padding: 16px; border-radius: 12px; border: 1px solid var(--gold); background: rgba(0,0,0,0.6); color: #fff; font-size: 16px; }
         .newsearch-row input:focus { outline: none; box-shadow: 0 0 20px rgba(229,193,88,0.4); }
@@ -291,7 +293,7 @@
 <link rel="stylesheet" href="/poster-wall.css?v=20260919-wall2"><script defer src="/poster-wall.js?v=20260919-wall2"></script><link rel="stylesheet" href="/brand.css?v=192">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"MatchApp AI Concierge","applicationCategory":"MultimediaApplication","operatingSystem":"Any (web-based)","url":"https://matchapp.tv/discover.html","description":"Conversational AI that answers natural-language questions about what to watch or listen to, in 14 languages, with real streaming links.","featureList":["Multi-turn conversation with saved history","Voice input in 14 languages","Read-aloud answers","Real streaming links per title"],"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"MatchApp TV Ai","url":"https://matchapp.tv/","logo":{"@type":"ImageObject","url":"https://matchapp.tv/assets/brand/matchapp-icon-512.png","width":512,"height":512}}}</script>
 
-<link rel="stylesheet" href="/matchapp-ia.css?v=20260921-voice1" data-matchapp-ia="1">
+<link rel="stylesheet" href="/matchapp-ia.css?v=20260921-mobile1" data-matchapp-ia="1">
 <script defer src="/matchapp-ia.js?v=20260920-ia29" data-matchapp-ia="1"></script>
     <link rel="stylesheet" href="/page-shell.css?v=20260921-shell1" data-page-shell="1">
     <link rel="stylesheet" href="/ui-containment.css?v=20260921-ui1" data-ui-containment="1">
