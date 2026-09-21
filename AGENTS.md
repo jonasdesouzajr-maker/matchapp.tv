@@ -52,5 +52,20 @@ These are standing implementation rules for MatchApp work in this repository.
    - Prefer responsive CSS and shared web behavior over Android-only visual forks. Verify taps, folds, dialogs, horizontal rails, viewport zoom, external links and back navigation inside Android WebView as well as browsers.
    - Visual effects must respect `prefers-reduced-motion`, avoid layout-triggering animation loops, and must not introduce scroll traps, freezes, crashes or excessive battery/CPU use.
 
+8. **Instructed scope only**
+   - Do exactly what the request asks for, and nothing else. The request is the whole brief and the whole boundary.
+   - Do not add unrequested redesigns, refactors, renames, dependency changes, "improvements", cleanups or adjacent fixes, even when an obvious defect is spotted in passing. Note it, report it as a suggestion, and wait to be asked.
+   - When a request arrives with an implementation brief written for a different stack or a different assumption about this codebase, deliver the requested outcome in this repository's actual stack and say plainly which parts of the brief did not apply and why. Do not silently substitute a different goal.
+   - When an instruction conflicts with a standing rule above, or with a stability guard already in the code, stop and surface the conflict with options instead of resolving it unilaterally in either direction.
+   - Do not push, deploy, open a pull request or bump a release marker unless that was asked for.
+   - This rule binds every agent working in this repository, Claude sessions included, and it stays in force until the repository owner changes it.
+
+9. **Home landing visual contract**
+   - **Brand mark inside the top box.** The MatchApp mark must sit fully inside the Home header box, never overlapping or hanging outside its border, on every surface: smartphone, tablet, desktop and both Android Studio WebView modules. Logo containment is never a breakpoint-specific fix — when it is wrong anywhere it is fixed for all widths at once, at the root cause.
+   - **Full-screen key-art background.** The Netflix-style poster mosaic is a full-screen backdrop on every surface, not a desktop-only treatment and not a scatter of small covers. It is pinned to the viewport so the available posters fill a whole screen on each device, with the content scrolling over it and a cinematic vignette protecting text contrast.
+   - **The background stays static.** No drift, parallax, marquee, sweep or glow on the wall or its tiles. The 2026-09-20 renderer crash guard exists because animating it crashed renderers; it is never relaxed for a visual request.
+   - **Approved sign-in card.** The glassmorphic sign-in card approved on 2026-09-21 is settled. Do not restyle it unless asked.
+   - Any change to the Home landing visuals is designed and verified at handset, tablet and desktop widths in the same task, with before/after evidence, and reviewed for both Android modules.
+
 ### Stability invariant
 - Every change must preserve runtime stability first: do not introduce crashes, freezes, infinite render or mutation loops, layout thrashing, unbounded observers/timers, or expensive continuous compositor work. Keep edits surgical, bounded, responsive, and regression-tested before deployment.

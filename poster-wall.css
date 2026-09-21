@@ -578,3 +578,168 @@ html body.page-home .poster-wall::after{
 @media(min-width:2200px){
   html body.page-home .poster-wall-tile{width:clamp(38px,2.4vw,60px)!important}
 }
+
+/* ===== 2026-09-21 cinematic mosaic — EVERY viewport =====
+   The key-art wall now fills the screen on handsets, tablets, desktop and both
+   Android WebView modules, with a cinematic vignette keeping the centre UI
+   readable.
+
+   The wall is pinned to the viewport again (it was spread down the whole page
+   on 2026-09-20). Sixteen posters cannot fill a 5000px handset page, so a
+   page-height wall reads as scattered confetti on small screens no matter how
+   large the tiles are. Pinned to the viewport, the same sixteen posters tile a
+   full screen on every device and the content scrolls over them.
+
+   Deliberately static at every width: the 2026-09-20 renderer crash guard
+   above stays in force and nothing in this pass declares animation,
+   will-change, filter or backdrop-filter. A fixed, unanimated backdrop is also
+   cheaper to scroll than a page-height one, because it does not repaint as
+   newly exposed page regions come into view. */
+html body.page-home .poster-wall{
+  position:fixed!important;
+  top:0!important;right:0!important;bottom:0!important;left:0!important;
+  width:auto!important;
+  height:auto!important;
+  min-height:0!important;
+  overflow:hidden!important;
+  contain:paint!important;
+}
+
+/* Fade the whole mosaic through one transparency layer on the grid rather than
+   sixteen on the tiles. Higher specificity than the inline compact sheet's
+   .poster-wall-grid{opacity:1}, which would otherwise win on source order. */
+html body.page-home .poster-wall .poster-wall-grid{
+  position:absolute!important;
+  inset:0!important;
+  opacity:.5!important;
+}
+html body.page-home .poster-wall-tile{
+  position:absolute!important;
+  aspect-ratio:2/3!important;
+  opacity:1!important;
+  border-radius:10px!important;
+  transform:none!important;
+  display:block!important;
+  box-shadow:0 6px 16px rgba(0,0,0,.5),0 0 0 1px rgba(229,193,88,.20)!important;
+}
+
+/* ---- Handsets: three columns x five rows fills a phone screen ---- */
+@media(max-width:700px){
+  html body.page-home .poster-wall-tile{
+    width:clamp(96px,30vw,150px)!important;
+    border-radius:8px!important;
+  }
+  html body.page-home .poster-wall-tile:nth-child(1){top:-4%;left:-7%;right:auto}
+  html body.page-home .poster-wall-tile:nth-child(2){top:6%;left:34%;right:auto}
+  html body.page-home .poster-wall-tile:nth-child(3){top:-4%;right:-7%;left:auto}
+  html body.page-home .poster-wall-tile:nth-child(4){top:17%;left:-7%;right:auto}
+  html body.page-home .poster-wall-tile:nth-child(5){top:27%;left:34%;right:auto}
+  html body.page-home .poster-wall-tile:nth-child(6){top:17%;right:-7%;left:auto}
+  html body.page-home .poster-wall-tile:nth-child(7){top:38%;left:-7%;right:auto}
+  html body.page-home .poster-wall-tile:nth-child(8){top:48%;left:34%;right:auto}
+  html body.page-home .poster-wall-tile:nth-child(9){top:38%;right:-7%;left:auto}
+  html body.page-home .poster-wall-tile:nth-child(10){top:59%;left:-7%;right:auto}
+  html body.page-home .poster-wall-tile:nth-child(11){top:69%;left:34%;right:auto}
+  html body.page-home .poster-wall-tile:nth-child(12){top:59%;right:-7%;left:auto}
+  html body.page-home .poster-wall-tile:nth-child(13){top:80%;left:-7%;right:auto}
+  html body.page-home .poster-wall-tile:nth-child(14){top:90%;left:34%;right:auto}
+  html body.page-home .poster-wall-tile:nth-child(15){top:80%;right:-7%;left:auto}
+  html body.page-home .poster-wall-tile:nth-child(16){top:-25%;left:34%;right:auto}
+  /* A handset screen is almost entirely content, so the scrim stays even
+     rather than carving out a dark centre that would hide the mosaic. */
+  html body.page-home .poster-wall::after{
+    background:
+      linear-gradient(180deg,
+        rgba(5,4,16,.62) 0%,
+        rgba(5,4,16,.17) 8%,
+        rgba(5,4,16,.17) 92%,
+        rgba(5,4,16,.64) 100%)!important;
+  }
+  html body.page-home .poster-wall .poster-wall-grid{opacity:.64!important}
+}
+
+/* ---- Tablets: four columns x four rows ---- */
+@media(min-width:701px) and (max-width:1099px){
+  html body.page-home .poster-wall-tile{
+    width:clamp(112px,15vw,190px)!important;
+  }
+  html body.page-home .poster-wall-tile:nth-child(1){top:-3%;left:-2%;right:auto}
+  html body.page-home .poster-wall-tile:nth-child(2){top:9%;left:14%;right:auto}
+  html body.page-home .poster-wall-tile:nth-child(3){top:9%;right:14%;left:auto}
+  html body.page-home .poster-wall-tile:nth-child(4){top:-3%;right:-2%;left:auto}
+  html body.page-home .poster-wall-tile:nth-child(5){top:22%;left:-2%;right:auto}
+  html body.page-home .poster-wall-tile:nth-child(6){top:34%;left:14%;right:auto}
+  html body.page-home .poster-wall-tile:nth-child(7){top:34%;right:14%;left:auto}
+  html body.page-home .poster-wall-tile:nth-child(8){top:22%;right:-2%;left:auto}
+  html body.page-home .poster-wall-tile:nth-child(9){top:47%;left:-2%;right:auto}
+  html body.page-home .poster-wall-tile:nth-child(10){top:59%;left:14%;right:auto}
+  html body.page-home .poster-wall-tile:nth-child(11){top:59%;right:14%;left:auto}
+  html body.page-home .poster-wall-tile:nth-child(12){top:47%;right:-2%;left:auto}
+  html body.page-home .poster-wall-tile:nth-child(13){top:72%;left:-2%;right:auto}
+  html body.page-home .poster-wall-tile:nth-child(14){top:84%;left:14%;right:auto}
+  html body.page-home .poster-wall-tile:nth-child(15){top:84%;right:14%;left:auto}
+  html body.page-home .poster-wall-tile:nth-child(16){top:72%;right:-2%;left:auto}
+  html body.page-home .poster-wall::after{
+    background:
+      linear-gradient(90deg,
+        rgba(5,4,16,.30) 0%,
+        rgba(5,4,16,.08) 7%,
+        rgba(5,4,16,.10) 22%,
+        rgba(5,4,16,.56) 36%,
+        rgba(5,4,16,.78) 50%,
+        rgba(5,4,16,.56) 64%,
+        rgba(5,4,16,.10) 78%,
+        rgba(5,4,16,.08) 93%,
+        rgba(5,4,16,.30) 100%),
+      linear-gradient(180deg,
+        rgba(5,4,16,.66) 0%,
+        rgba(5,4,16,.12) 7%,
+        rgba(5,4,16,.12) 93%,
+        rgba(5,4,16,.68) 100%)!important;
+  }
+  html body.page-home .poster-wall .poster-wall-grid{opacity:.6!important}
+}
+
+/* ---- Desktop: four columns x four rows, outer pair bleeding off each edge ---- */
+@media(min-width:1100px){
+  html body.page-home .poster-wall-tile{
+    width:clamp(132px,11.5vw,205px)!important;
+  }
+  html body.page-home .poster-wall-tile:nth-child(1){top:-5%;left:-1.6%;right:auto}
+  html body.page-home .poster-wall-tile:nth-child(2){top:8%;left:11.5%;right:auto}
+  html body.page-home .poster-wall-tile:nth-child(3){top:8%;right:11.5%;left:auto}
+  html body.page-home .poster-wall-tile:nth-child(4){top:-5%;right:-1.6%;left:auto}
+  html body.page-home .poster-wall-tile:nth-child(5){top:21%;left:-1.6%;right:auto}
+  html body.page-home .poster-wall-tile:nth-child(6){top:34%;left:11.5%;right:auto}
+  html body.page-home .poster-wall-tile:nth-child(7){top:34%;right:11.5%;left:auto}
+  html body.page-home .poster-wall-tile:nth-child(8){top:21%;right:-1.6%;left:auto}
+  html body.page-home .poster-wall-tile:nth-child(9){top:47%;left:-1.6%;right:auto}
+  html body.page-home .poster-wall-tile:nth-child(10){top:60%;left:11.5%;right:auto}
+  html body.page-home .poster-wall-tile:nth-child(11){top:60%;right:11.5%;left:auto}
+  html body.page-home .poster-wall-tile:nth-child(12){top:47%;right:-1.6%;left:auto}
+  html body.page-home .poster-wall-tile:nth-child(13){top:73%;left:-1.6%;right:auto}
+  html body.page-home .poster-wall-tile:nth-child(14){top:86%;left:11.5%;right:auto}
+  html body.page-home .poster-wall-tile:nth-child(15){top:86%;right:11.5%;left:auto}
+  html body.page-home .poster-wall-tile:nth-child(16){top:73%;right:-1.6%;left:auto}
+  /* Deep midnight down the centre column, where the UI lives, and at the outer
+     edges, with a trough wide enough that the four columns sit in the lit band
+     instead of being swallowed by the edge falloff. */
+  html body.page-home .poster-wall::after{
+    background:
+      linear-gradient(90deg,
+        rgba(5,4,16,.34) 0%,
+        rgba(5,4,16,.08) 5%,
+        rgba(5,4,16,.10) 18%,
+        rgba(5,4,16,.68) 32%,
+        rgba(5,4,16,.90) 50%,
+        rgba(5,4,16,.68) 68%,
+        rgba(5,4,16,.10) 82%,
+        rgba(5,4,16,.08) 95%,
+        rgba(5,4,16,.34) 100%),
+      linear-gradient(180deg,
+        rgba(5,4,16,.72) 0%,
+        rgba(5,4,16,.14) 7%,
+        rgba(5,4,16,.14) 93%,
+        rgba(5,4,16,.74) 100%)!important;
+  }
+}

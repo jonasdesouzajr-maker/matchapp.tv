@@ -32,7 +32,7 @@ test('Home noncritical enrichment is staggered instead of timing out together',(
  assert.match(html,/\/poster-wall\.js\?v=20260920-home11/);
  assert.match(html,/\/title-captions\.js\?v=20260920-crash4/);
  assert.match(html,/\/catalog-media\.js\?v=20260920-freeze-final1/);
- assert.match(html,/\/poster-wall\.css\?v=20260920-design6/);
+ assert.match(html,/\/poster-wall\.css\?v=20260921-desktop1/);
  assert.match(poster,/setTimeout\(\(\)=>\{[\s\S]*requestIdleCallback\(run\)[\s\S]*\},900\)/);
  assert.match(captions,/setTimeout\(\(\)=>\{[\s\S]*requestIdleCallback\(\(\)=>paint\(\)\)[\s\S]*\},2200\)/);
  assert.match(captions,/requestIdleCallback\(loadAudit\)[\s\S]*\},5200\)/);
@@ -49,7 +49,7 @@ test('poster wall cannot promote dozens of animated compositor layers',()=>{
 
 test('Home header is visible without JavaScript and avoids filtered 8K SVGs',()=>{
  const html=read('index.html'),css=read('matchapp-ia.css'),ia=read('matchapp-ia.js');
- assert.match(html,/\/matchapp-ia\.css\?v=20260920-design6/);
+ assert.match(html,/\/matchapp-ia\.css\?v=20260921-desktop1/);
  assert.match(html,/class="ma-brand-orb" src="\/assets\/brand\/matchapp-home-orb-transparent\.webp\?v=20260920-homebrand4"/);
  assert.doesNotMatch(css,/header-cosmic-8k\.svg/);
  assert.doesNotMatch(css,/#mh-topbox\.app-header\{\s*visibility:hidden!important;\s*opacity:0!important;/);
@@ -66,7 +66,7 @@ test('Home poster wall stays lightweight, static and cache-busted',()=>{
  assert.match(wall,/if\(kids\(\)\|\|document\.querySelector\('\.poster-wall'\)\)return/);
  assert.match(wall,/for\(let i=0;i<posters\.length;i\+\+\)/);
  assert.match(html,/poster-wall\.js\?v=20260920-home11/);
- assert.match(html,/poster-wall\.css\?v=20260920-design6/);
+ assert.match(html,/poster-wall\.css\?v=20260921-desktop1/);
  assert.match(css,/Home poster-wall restore/);
  assert.match(css,/2026-09-20 scattered static poster background/);
  assert.match(css,/final scattered-cover visibility pass/);
@@ -126,4 +126,69 @@ test('Home removes the nonfunctional trending fold bar and keeps autoplay bounde
  assert.match(news,/AUTO_MS=1050/);
  assert.doesNotMatch(read('index.html'),/data-i18n="marquee\.title"/);
  assert.match(read('index.html'),/id="trending-rail" aria-label="Latest titles trending right now"/);
+});
+test('2026-09-21 mosaic fills every viewport and stays completely static',()=>{
+ const css=read('poster-wall.css');
+ assert.match(css,/2026-09-21 cinematic mosaic — EVERY viewport/);
+ // The 2026-09-20 renderer crash guard must survive the new pass.
+ assert.match(css,/2026-09-20 renderer crash guard/);
+ assert.match(css,/\.poster-wall-tile:nth-child\(16\)/);
+ const pass=css.slice(css.indexOf('2026-09-21 cinematic mosaic'));
+ // Static at every width: no motion, no promoted layers, no rasterising filters.
+ assert.doesNotMatch(pass,/animation\s*:/);
+ assert.doesNotMatch(pass,/will-change\s*:/);
+ assert.doesNotMatch(pass,/backdrop-filter\s*:/);
+ assert.doesNotMatch(pass,/filter\s*:/);
+ // The wall is pinned to the viewport so sixteen posters fill a screen on
+ // every device instead of scattering down a multi-screen page.
+ assert.match(pass,/html body\.page-home \.poster-wall\{[\s\S]*position:fixed!important/);
+ // All three breakpoints must be covered; a desktop-only mosaic is a regression.
+ assert.match(pass,/@media\(max-width:700px\)\{/);
+ assert.match(pass,/@media\(min-width:701px\) and \(max-width:1099px\)\{/);
+ assert.match(pass,/@media\(min-width:1100px\)\{/);
+ for(const bp of ['@media(max-width:700px){','@media(min-width:701px) and (max-width:1099px){','@media(min-width:1100px){']){
+  const block=pass.slice(pass.indexOf(bp));
+  assert.match(block,/\.poster-wall-tile:nth-child\(16\)/,'breakpoint '+bp+' must place all sixteen tiles');
+ }
+});
+
+test('2026-09-21 Home brand mark stays inside the top box on every viewport',()=>{
+ const css=read('matchapp-ia.css');
+ assert.match(css,/2026-09-21 Home logo containment fix/);
+ const fix=css.slice(css.indexOf('2026-09-21 Home logo containment fix'),css.indexOf('2026-09-21 desktop cinematic landing polish'));
+ // Anchored at the stage origin, because the transparent-logo guard forces
+ // transform:none and the old left:50%/top:50% offsets had nothing to cancel them.
+ assert.match(fix,/\.ma-brand-orb\{[\s\S]*left:0!important;[\s\S]*top:0!important/);
+ // Must NOT be gated: the defect reaches handsets, tablets and both Android modules.
+ assert.doesNotMatch(fix,/@media/);
+ // The guard that caused it stays in place rather than being unpicked.
+ assert.match(css,/Home transparent-logo guard/);
+ assert.match(css,/transform:none!important/);
+});
+
+test('2026-09-21 auth-card glass is scoped to the modal and leaves the Home guards intact',()=>{
+ const css=read('matchapp-ia.css'),html=read('index.html');
+ assert.match(css,/2026-09-21 desktop cinematic landing polish/);
+ // The Home compositor guard and the transparent-logo guard are preserved, not lifted.
+ assert.match(css,/Home compositor stability guard/);
+ assert.match(css,/Home transparent-logo guard/);
+ assert.match(css,/html body\.page-home #mh-topbox\.ma-home-header \.ma-brand-orb\{[\s\S]*filter:none!important/);
+ const pass=css.slice(css.indexOf('2026-09-21 desktop cinematic landing polish'));
+ assert.match(pass,/@media\(min-width:1100px\)\{/);
+ // backdrop-filter is re-enabled for the sign-in card and nothing else: walk
+ // every rule in the pass and require that any blur belongs to #main-auth-modal.
+ const rules=pass.match(/[^{}]+\{[^{}]*\}/g)||[];
+ const blurred=rules.filter(r=>/backdrop-filter\s*:\s*blur/.test(r));
+ assert.ok(blurred.length>0,'expected the sign-in card to declare backdrop-filter');
+ for(const rule of blurred){
+  const selector=rule.slice(0,rule.indexOf('{'));
+  assert.match(selector,/#main-auth-modal/,'backdrop-filter escaped the sign-in card: '+selector.trim());
+ }
+ assert.match(pass,/html body\.page-home #main-auth-modal>\.premium-card\{[\s\S]*backdrop-filter:blur\(16px\)/);
+ // The orb glow is painted by the stage, never by a filter on the image.
+ assert.match(pass,/\.ma-brand-orb-stage::before/);
+ assert.doesNotMatch(pass,/\.ma-brand-orb\{[^}]*filter:/);
+ // Decorative lockup ships hidden so handsets render exactly as before.
+ assert.match(html,/class="auth-brand" aria-hidden="true" style="display:none"/);
+ assert.match(pass,/prefers-reduced-motion:reduce|reduce-motion/);
 });
