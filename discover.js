@@ -265,17 +265,34 @@ function typewriterReveal(el, text, speedMs) {
 // Fully client-side via the Web Speech API — no backend needed. Voice and
 // speed come from the user's Profile > Voice & AI settings (localStorage),
 // with a sensible default matched to the current UI language.
+const TTS_LANG_MAP = {
+    'en': 'en-US', 'pt-BR': 'pt-BR', 'es': 'es-ES', 'fr': 'fr-FR', 'de': 'de-DE',
+    'it': 'it-IT', 'tr': 'tr-TR', 'ru': 'ru-RU', 'ar': 'ar-SA', 'hi': 'hi-IN',
+    'id': 'id-ID', 'ja': 'ja-JP', 'ko': 'ko-KR', 'zh': 'zh-CN'
+};
+
+function ttsTargetLang(lang) {
+    return TTS_LANG_MAP[lang] || lang || 'en-US';
+}
+function voiceMatchesLang(voice, lang) {
+    if (!voice || !voice.lang) return false;
+    const target = ttsTargetLang(lang).toLowerCase();
+    const base = target.split('-')[0];
+    const actual = voice.lang.toLowerCase();
+    return actual === target || actual.startsWith(target + '-') || actual.split('-')[0] === base;
+}
 function pickVoiceForLang(voices, lang) {
     const saved = localStorage.getItem('match_voice_name');
     if (saved) {
-        const exact = voices.find(v => v.name === saved);
+        const exact = voices.find(v => v.name === saved && voiceMatchesLang(v, lang));
         if (exact) return exact;
     }
-    const bcp = { 'pt-BR': 'pt-BR', 'zh': 'zh-CN' }[lang] || lang;
-    return voices.find(v => v.lang && v.lang.toLowerCase().startsWith(bcp.toLowerCase()))
-        || voices.find(v => v.lang && v.lang.toLowerCase().startsWith((bcp.split('-')[0] || 'en')))
-        || voices.find(v => v.default)
-        || voices[0] || null;
+    const target = ttsTargetLang(lang).toLowerCase();
+    const base = target.split('-')[0];
+    return voices.find(v => v.lang && v.lang.toLowerCase() === target)
+        || voices.find(v => v.lang && v.lang.toLowerCase().startsWith(target + '-'))
+        || voices.find(v => v.lang && v.lang.toLowerCase().split('-')[0] === base)
+        || null;
 }
 
 window.readAloud = function(text, btn) {
@@ -299,10 +316,11 @@ window.readAloud = function(text, btn) {
     // can be removed, and a stale voiceURI would otherwise silently mute
     // playback rather than degrade to a sensible default.
     const S = window.MatchSettings;
-    const voice = S ? S.resolveVoice(voices, window.MATCH_LANG || 'en')
-                    : pickVoiceForLang(voices, window.MATCH_LANG || 'en');
-    if (voice) { utter.voice = voice; utter.lang = voice.lang; }
-    else { utter.lang = window.MATCH_LANG || 'en'; }
+    const uiLang = window.MATCH_LANG || 'en';
+    const targetLang = ttsTargetLang(uiLang);
+    const voice = pickVoiceForLang(voices, uiLang);
+    if (voice) utter.voice = voice;
+    utter.lang = voice?.lang || targetLang;
     utter.rate  = S ? S.get('voiceRate')  : parseFloat(localStorage.getItem('match_voice_rate') || '1');
     utter.pitch = S ? S.get('voicePitch') : 1;
 
