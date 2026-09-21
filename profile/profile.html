@@ -215,7 +215,7 @@
            around. Everything else is a neutral hairline.
            ============================================================ */
 
-        /* style.css puts 50px/12px padding on <body>, which inset the header
+        /* style.css puts 50px/12px padding on <body class="page-profile">, which inset the header
            from the viewport edge and left dead space above the first element.
            The shell handles gutters now. */
         body { padding: 0 0 20px 0 !important; }
@@ -284,7 +284,19 @@
         .identity-hint { color: #9c93b4; font-style: normal; }
         .premium-ad-frame { border-color: rgba(255,255,255,0.1) !important; }
         .premium-ad-frame::before { animation: none !important; box-shadow: none !important; }
-        #profile-pic-preview { border-color: rgba(255,255,255,0.16) !important; }
+        #profile-pic-preview {
+            display:block!important;
+            width:130px!important;
+            height:130px!important;
+            box-sizing:border-box!important;
+            border:3px solid var(--gold)!important;
+            border-radius:50%!important;
+            clip-path:circle(50% at 50% 50%)!important;
+            object-fit:cover!important;
+            object-position:center!important;
+            background:transparent!important;
+            box-shadow:0 0 0 5px rgba(229,193,88,.10),0 10px 32px rgba(0,0,0,.30)!important;
+        }
 
         /* Core Identity was a red heading on a red-bordered card, which reads
            as an error state rather than as the page's most important section. */
@@ -312,7 +324,7 @@
 <link rel="stylesheet" href="/themes.css?v=194">
 <link rel="stylesheet" href="/app-polish.css?v=187">
 <script src="/themes.js?v=187"></script>
-<link rel="stylesheet" href="/poster-wall.css?v=191"><script defer src="/poster-wall.js?v=187"></script><meta property="og:site_name" content="MatchApp TV Ai">
+<link rel="stylesheet" href="/poster-wall.css?v=20260921-wall4"><script defer src="/poster-wall.js?v=20260921-wall4"></script><meta property="og:site_name" content="MatchApp TV Ai">
 <link rel="stylesheet" href="/brand.css?v=192">
     <link rel="stylesheet" href="/page-shell.css?v=20260921-shell1" data-page-shell="1">
     <link rel="stylesheet" href="/ui-containment.css?v=20260921-ui1" data-ui-containment="1">
