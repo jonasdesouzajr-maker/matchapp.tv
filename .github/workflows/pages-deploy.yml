@@ -174,13 +174,15 @@ jobs:
           grep -q '2026-09-21 coherent Home stage + AdSense placement pass' /tmp/home-stability.css
           grep -q '2026-09-21 screenshot geometry correction' /tmp/home-stability.css
           ! grep -q 'header-cosmic-8k.svg' /tmp/home-stability.css
-          grep -q '/matchapp-ia.js?v=20260920-homebrand4' /tmp/home-post-purge.html
+          grep -q '/matchapp-ia.js?v=20260921-cta1' /tmp/home-post-purge.html
           grep -q '/catalog-media.js?v=20260920-freeze-final1' /tmp/home-post-purge.html
           grep -q '/app.js?v=20260920-speed2' /tmp/home-post-purge.html
           grep -q '/poster-wall.css?v=20260921-wall3' /tmp/home-post-purge.html
           grep -q '/lazy.js?v=20260921-hero1' /tmp/home-post-purge.html
-          curl -fsSL --max-time 30 'https://matchapp.tv/matchapp-ia.js?v=20260920-homebrand4' -o /tmp/home-ia.js
+          curl -fsSL --max-time 30 'https://matchapp.tv/matchapp-ia.js?v=20260921-cta1' -o /tmp/home-ia.js
           grep -Fq "root.style.overflowAnchor='none'" /tmp/home-ia.js
+          grep -Fq "Find My Perfect Match" /tmp/home-ia.js
+          grep -Fq "Ask MatchApp Ai" /tmp/home-ia.js
           curl -fsSL --max-time 30 'https://matchapp.tv/lazy.js?v=20260921-hero1' -o /tmp/home-lazy.js
           grep -Fq 'function armSwiftHydration(section)' /tmp/home-lazy.js
           ! grep -Fq "key:'trending'" /tmp/home-lazy.js
