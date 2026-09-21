@@ -3256,7 +3256,7 @@ html body.page-home .ma-ad-label{
 
 /* ===== 2026-09-21 screenshot geometry correction =====
    These four collapsed headers must span the exact same horizontal stage as
-   their opened content / Latest Titles. Do not reintroduce a 720px/compact cap. */
+   their opened content / Latest Titles. Do not reintroduce a compact-width cap. */
 html body.page-home :is(
   .lazy-head[data-fold-key="concierge"],
   .lazy-head[data-fold-key="together"],
