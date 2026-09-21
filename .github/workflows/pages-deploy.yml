@@ -110,8 +110,11 @@ jobs:
           grep -q '/page-origin.js?v=20260920-freeze2' /tmp/home.html
           grep -q '/build-meta.js?v=20260920-design4' /tmp/home.html
           grep -q 'matchapp-home-orb-transparent.webp?v=20260920-homebrand4' /tmp/home.html
-          grep -q '/matchapp-ia.css?v=20260921-hero1' /tmp/home.html
-          curl -fsSL --max-time 30 'https://matchapp.tv/matchapp-ia.css?v=20260921-hero1' -o /tmp/home-stability.css
+          EXPECTED_IA_CSS="$(grep -oE '/matchapp-ia\\.css\\?v=[^"]+' index.html | head -n1)"
+          LIVE_IA_CSS="$(grep -oE '/matchapp-ia\\.css\\?v=[^"]+' /tmp/home.html | head -n1)"
+          test -n "$EXPECTED_IA_CSS"
+          test "$LIVE_IA_CSS" = "$EXPECTED_IA_CSS"
+          curl -fsSL --max-time 30 "https://matchapp.tv\${LIVE_IA_CSS}" -o /tmp/home-stability.css
           grep -q '2026-09-20 renderer root guard' /tmp/home-stability.css
           grep -q '2026-09-20 Home compositor stability guard' /tmp/home-stability.css
           grep -q '2026-09-20 Home top-box final freeze guard' /tmp/home-stability.css
