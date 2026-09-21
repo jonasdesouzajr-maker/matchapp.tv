@@ -5,13 +5,13 @@ const STEP_KEY='matchapp_onboarding_step_v3';
 let stepIndex=0,steps=[],panel=null,spot=null,active=false,repositionRaf=0,touchX=null;
 const copy={
  en:{
-  pick:['Pick My Night','Start here when you want MatchApp to choose for you.'],
+  pick:['Find My Perfect Match','Use the Match System: choose mood, format and platform, then let MatchApp choose for you.'],
   mood:['Choose your mood','Tell MatchApp how you want the night to feel.'],
   format:['Choose a format','Movie, series and other formats stay explicit.'],
   platform:['Choose a platform','Pick a service, or leave it open to more options.'],
   more:['More filters','Fine-tune genre, vibe, era or rating only when you want to.'],
   find:['Find something to watch','This runs the match using the choices you made.'],
-  ai:['Chat with Ai','Ask naturally when you want a conversational recommendation.'],
+  ai:['Ask MatchApp Ai','Describe what you want naturally when you prefer a conversational recommendation.'],
   latest:['Latest titles','Browse current titles with native swipe or the arrow buttons.'],
   kids:['Kids Mode','Open the separate age-reviewed Kids experience here.'],
   quota:['Daily allowance','This shows how many included AI actions remain today.'],
@@ -19,13 +19,13 @@ const copy={
   next:'Next',back:'Back',finish:'Done',skip:'Close',counter:(a,b)=>a+' of '+b
  },
  'pt-BR':{
-  pick:['Escolha minha noite','Comece aqui quando quiser que o MatchApp escolha por você.'],
+  pick:['Encontre meu Match Perfeito','Use o Sistema de Match: escolha clima, formato e plataforma, e deixe o MatchApp escolher por você.'],
   mood:['Escolha o clima','Diga ao MatchApp como você quer que a noite seja.'],
   format:['Escolha o formato','Filme, série e outros formatos continuam sendo escolhas explícitas.'],
   platform:['Escolha a plataforma','Escolha um serviço ou deixe em aberto para ter mais opções.'],
   more:['Mais filtros','Ajuste gênero, vibe, época ou classificação só quando quiser.'],
   find:['Encontre algo para assistir','Aqui o MatchApp procura usando as escolhas que você fez.'],
-  ai:['Converse com a Ai','Pergunte naturalmente quando quiser uma recomendação em conversa.'],
+  ai:['Pergunte à MatchApp iA','Descreva naturalmente o que quer assistir quando preferir uma recomendação em conversa.'],
   latest:['Títulos em alta','Navegue com gesto nativo ou com as setas.'],
   kids:['Modo Kids','Abra aqui a experiência infantil separada e revisada por idade.'],
   quota:['Limite diário','Aqui você vê quantas ações de IA incluídas ainda restam hoje.'],
