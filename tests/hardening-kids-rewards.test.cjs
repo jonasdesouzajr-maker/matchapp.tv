@@ -58,8 +58,8 @@ test('cache keys force the hardening bundle onto every device wrapper',()=>{
 
 test('Kids share reward and confirmation copy covers all supported languages',()=>{
   const copy=read('kids/match-copy.js');
-  for(const locale of ['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh']){
-    assert.match(copy,new RegExp("[ '\\"]"+locale.replace('-','\\-')+"[ '\\"]?\\s*:|"+locale.replace('-','\\-')+"\\s*:"),locale+' share copy missing');
+  for(const token of ["en:[","'pt-BR':[","es:[","fr:[","de:[","it:[","tr:[","ru:[","ar:[","hi:[","id:[","ja:[","ko:[","zh:["]){
+    assert.ok(copy.includes(token),'share copy missing for '+token);
   }
   for(const key of ['shareConfirm','shareFinish','shareReward','shareLimit']) assert.match(copy,new RegExp(key+':values\\[\\d\\]'));
   assert.match(read('kids/kids.js'),/tr\('shareReward'\)/);
