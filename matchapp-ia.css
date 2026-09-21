@@ -3143,6 +3143,38 @@ html body.page-home .ma-concierge .ma-chip{
   }
 }
 
+/* Tablet web uses the same in-flow strategy as phones, with a slightly
+   larger responsive canvas and no side rails competing with the product. */
+@media(min-width:768px) and (max-width:1179px){
+  html body.page-home .sidebar-ad-left,
+  html body.page-home .sidebar-ad-right{
+    display:none!important;
+  }
+  html body.page-home .ad-banner-container.ma-inline-ad{
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:center!important;
+    justify-content:center!important;
+    width:min(100%,760px)!important;
+    max-width:760px!important;
+    min-height:104px!important;
+    margin:16px auto!important;
+    padding:7px!important;
+    box-sizing:border-box!important;
+    overflow:hidden!important;
+    border:1px solid rgba(232,186,64,.11)!important;
+    border-radius:15px!important;
+    background:rgba(8,13,29,.40)!important;
+    box-shadow:none!important;
+  }
+  html body.page-home .ad-banner-container.ma-inline-ad ins.adsbygoogle{
+    display:block!important;
+    width:100%!important;
+    max-width:100%!important;
+    min-height:88px!important;
+  }
+}
+
 /* Mobile web: the three existing responsive slots stay in the document flow,
    small and subtle. matchapp-ia.js already distributes them after the
    discovery/result/editorial sections instead of stacking them together. */
