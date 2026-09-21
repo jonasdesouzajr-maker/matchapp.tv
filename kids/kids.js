@@ -546,41 +546,43 @@
   }
   function playKidsCelebrate(){
     clearKidsCelebrate();
-    if(reducedMotion())return;
+    if(reducedMotion() || document.visibilityState==='hidden')return;
     const layer=document.createElement('div');
     layer.className='kids-celebrate';
     layer.setAttribute('aria-hidden','true');
-    const compact=matchMedia('(max-width: 820px)').matches || document.documentElement.classList.contains('matchapp-android');
+    const lowMemory=Number(navigator.deviceMemory||0)>0 && Number(navigator.deviceMemory)<6;
+    const lowCpu=Number(navigator.hardwareConcurrency||0)>0 && Number(navigator.hardwareConcurrency)<6;
+    const compact=matchMedia('(max-width: 820px)').matches || document.documentElement.classList.contains('matchapp-android') || lowMemory || lowCpu;
     const confetti=document.createElement('div'); confetti.className='kids-confetti';
     const colors=['#ffcf72','#9ee8e6','#ffabcb','#ffffff','#b48cff','#7dffb3','#ff8a5c'];
-    const confettiCount=compact?10:16;
+    const confettiCount=compact?6:10;
     for(let i=0;i<confettiCount;i++){
       const bit=document.createElement('i');
       bit.style.setProperty('--x',(Math.random()*100)+'vw');
-      bit.style.setProperty('--delay',(Math.random()*0.24)+'s');
-      bit.style.setProperty('--rot',(Math.random()*360)+'deg');
+      bit.style.setProperty('--delay',(Math.random()*0.16)+'s');
+      bit.style.setProperty('--rot',(Math.random()*300)+'deg');
       bit.style.setProperty('--c',colors[i%colors.length]);
-      bit.style.setProperty('--w',(6+Math.random()*6)+'px');
-      bit.style.setProperty('--h',(8+Math.random()*8)+'px');
-      bit.style.setProperty('--dur',(0.85+Math.random()*0.4)+'s');
-      bit.style.setProperty('--drift',((Math.random()*54)-27)+'px');
+      bit.style.setProperty('--w',(6+Math.random()*5)+'px');
+      bit.style.setProperty('--h',(8+Math.random()*7)+'px');
+      bit.style.setProperty('--dur',(0.68+Math.random()*0.24)+'s');
+      bit.style.setProperty('--drift',((Math.random()*34)-17)+'px');
       confetti.appendChild(bit);
     }
     const balloons=document.createElement('div'); balloons.className='kids-balloons';
     const balloonColors=['#ff6b9d','#ffcf72','#6ecbff','#b48cff','#7dffb3','#ff8a5c'];
-    const balloonCount=compact?3:4;
+    const balloonCount=compact?2:3;
     for(let i=0;i<balloonCount;i++){
       const b=document.createElement('span');
       b.className='kids-balloon';
-      b.style.setProperty('--x',(8+i*(84/Math.max(1,balloonCount-1)))+'vw');
-      b.style.setProperty('--delay',(0.05*i)+'s');
+      b.style.setProperty('--x',(12+i*(76/Math.max(1,balloonCount-1)))+'vw');
+      b.style.setProperty('--delay',(0.045*i)+'s');
       b.style.setProperty('--c',balloonColors[i%balloonColors.length]);
       b.innerHTML='<b></b><em></em>';
       balloons.appendChild(b);
     }
     layer.appendChild(confetti);layer.appendChild(balloons);document.body.appendChild(layer);
-    kidsCelebratePopTimer=setTimeout(()=>{if(layer.isConnected)layer.classList.add('is-popping');},700);
-    kidsCelebrateTimer=setTimeout(clearKidsCelebrate,1120);
+    kidsCelebratePopTimer=setTimeout(()=>{if(layer.isConnected)layer.classList.add('is-popping');},520);
+    kidsCelebrateTimer=setTimeout(clearKidsCelebrate,900);
   }
   function reducedMotion() { return motionPaused || document.documentElement.classList.contains('reduce-motion') || matchMedia('(prefers-reduced-motion: reduce)').matches; }
   function updateMotion() {

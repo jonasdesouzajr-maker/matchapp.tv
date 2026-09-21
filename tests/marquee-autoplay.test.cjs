@@ -14,6 +14,6 @@ test('Home rails use native scroll-snap and no dedicated perpetual autoplay engi
 test('Kids celebration remains decorative and bounded',()=>{
  const js=read('kids/kids.js'),css=read('kids/kids.css');
  assert.match(js,/playKidsCelebrate/);assert.doesNotMatch(js,/await playKidsCelebrate\(\)/);
- assert.match(js,/setTimeout\(clearKidsCelebrate,1120\)/);
+ assert.match(js,/setTimeout\(clearKidsCelebrate,900\)/);
  assert.match(css,/prefers-reduced-motion/);
 });
