@@ -11,8 +11,8 @@
 /* Social-profile style identity header. */
 .profile-audit-ready .container>.premium-card{overflow:visible}
 .audit-profile-hero{display:grid;grid-template-columns:92px minmax(0,1fr);gap:20px;align-items:center;margin:0 0 24px;padding:20px;border:1px solid rgba(229,193,88,.38);border-radius:22px;background:linear-gradient(135deg,rgba(229,193,88,.11),rgba(107,63,160,.12) 55%,rgba(8,8,12,.62));box-shadow:0 16px 50px rgba(0,0,0,.28)}
-.audit-profile-avatar{width:92px;height:92px;border-radius:50%;display:grid;place-items:center;overflow:hidden;border:3px solid var(--audit-gold);box-shadow:0 0 0 5px rgba(229,193,88,.08)}
-.audit-profile-avatar img{width:100%;height:100%;object-fit:cover}.audit-profile-avatar>svg{width:54px;height:54px;fill:none;stroke:var(--audit-gold);stroke-width:1.6}
+.audit-profile-avatar{width:92px;height:92px;border-radius:50%;display:grid;place-items:center;overflow:hidden;border:3px solid var(--audit-gold);background:transparent!important;box-shadow:0 0 0 5px rgba(229,193,88,.10),0 10px 28px rgba(0,0,0,.30);isolation:isolate}
+.audit-profile-avatar img{display:block;width:100%;height:100%;object-fit:cover;object-position:center;border-radius:50%;clip-path:circle(50% at 50% 50%);background:transparent!important}.audit-profile-avatar>svg{width:54px;height:54px;fill:none;stroke:var(--audit-gold);stroke-width:1.6}
 .audit-profile-copy{min-width:0}.audit-profile-eyebrow{display:block;color:var(--audit-gold);font-size:11px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;margin-bottom:4px}
 .audit-profile-copy h1{margin:0;color:#fff;font-size:clamp(22px,3vw,34px);line-height:1.05;overflow-wrap:anywhere}.audit-profile-copy>p{margin:7px 0 12px;color:var(--audit-soft);font-size:14px;overflow-wrap:anywhere}
 .audit-profile-badges{display:flex;flex-wrap:wrap;gap:8px}.audit-profile-badges span{display:inline-flex;align-items:center;gap:6px;padding:7px 10px;border-radius:999px;background:rgba(127,240,168,.08);border:1px solid rgba(127,240,168,.25);color:#c9f8d8;font-size:11px;font-weight:800}
