@@ -271,11 +271,12 @@ function mountHome(){
    tab('ask');
    setTimeout(()=>openAskFromBrand(),220);
  }
- const loading=qs('#loading-box'),result=qs('#result-box'),trending=qs('#trending-rail'),week=qs('#premiere-disclosure'),swift=qs('#swifties-spotify'),events=qs('#global-events');
+ const loading=qs('#loading-box'),result=qs('#result-box'),trending=qs('#trending-rail'),week=qs('#premiere-disclosure'),swift=qs('#swifties-spotify'),events=qs('#global-events'),how=qs('#how-it-works'),aiExplainer=qs('#ai-concierge-section');
  if(trending){after(hero,trending);after(trending,concierge)}
- let anchor=concierge;[loading,result,week,swift,events].forEach(n=>{if(n){after(anchor,n);anchor=n}});
+ // Presentation-only journey: titles → primary action → dynamic News → feature banners.
+ // Existing IDs, handlers, matching state and feature logic are preserved.
+ let anchor=concierge;[loading,result,week,swift,events,how,aiExplainer].forEach(n=>{if(n){after(anchor,n);anchor=n}});
  const ads=qsa('.container>.ad-banner-container',container);ads.forEach(ad=>ad.classList.add('ma-inline-ad'));
- if(ads[0]&&trending)after(trending,ads[0]);
  if(ads[1]&&week)after(week,ads[1]);
  if(ads[2])after(events||swift||anchor,ads[2]);
  const tg=qs('.tg-entry');if(tg)tg.hidden=true;
