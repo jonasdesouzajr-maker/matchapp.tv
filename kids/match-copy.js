@@ -16,4 +16,25 @@ window.KidsMatchCopy={};
  zh:['你的下一场冒险','打开作品使用账户或访客额度中的一次匹配。观看、分享和保存本次结果不额外消耗匹配。','正在准备冒险…','今天的匹配用完啦。请向大人求助，或明天再来。','无法检查匹配额度，请重试。','已使用1次匹配','故事简介','分享这场冒险','复制链接','链接已复制！','稍后观看','看过了','很喜欢','不适合我','已保存到历史记录。','无法保存，请重试。','用相同条件再找一个','选择新的冒险','大人专区：账户和匹配']
  };
  for(const [lang,values] of Object.entries(rows))window.KidsMatchCopy[lang]=Object.fromEntries(keys.map((key,i)=>[key,values[i]]));
+ const shareRows={
+  en:['✓ I shared it — unlock +1 Match','↗ Finish sharing, then come back and confirm to unlock +1 Match.','🎁 +1 Match · {count} saved','🎁 Bonus Match limit reached for this 6-hour window.'],
+  'pt-BR':['✓ Compartilhei — liberar +1 Match','↗ Termine de compartilhar, depois volte e confirme para liberar +1 Match.','🎁 +1 Match · {count} guardados','🎁 Limite de Matches bônus atingido nesta janela de 6 horas.'],
+  es:['✓ Ya lo compartí — desbloquear +1 Match','↗ Termina de compartir, vuelve y confirma para desbloquear +1 Match.','🎁 +1 Match · {count} guardados','🎁 Alcanzaste el límite de Matches extra de esta ventana de 6 horas.'],
+  fr:['✓ Je l’ai partagé — débloquer +1 Match','↗ Termine le partage, puis reviens confirmer pour débloquer +1 Match.','🎁 +1 Match · {count} enregistrés','🎁 Limite de Matchs bonus atteinte pour cette période de 6 heures.'],
+  de:['✓ Ich habe geteilt — +1 Match freischalten','↗ Teile fertig, komm zurück und bestätige, um +1 Match freizuschalten.','🎁 +1 Match · {count} gespeichert','🎁 Bonus-Match-Limit für dieses 6-Stunden-Fenster erreicht.'],
+  it:['✓ Ho condiviso — sblocca +1 Match','↗ Completa la condivisione, poi torna e conferma per sbloccare +1 Match.','🎁 +1 Match · {count} salvati','🎁 Limite di Match bonus raggiunto per questa finestra di 6 ore.'],
+  tr:['✓ Paylaştım — +1 eşleşme aç','↗ Paylaşımı tamamla, sonra geri dönüp +1 eşleşmeyi açmak için onayla.','🎁 +1 eşleşme · {count} kayıtlı','🎁 Bu 6 saatlik dönem için bonus eşleşme sınırına ulaştın.'],
+  ru:['✓ Я поделился — получить +1 подбор','↗ Заверши отправку, вернись и подтверди, чтобы получить +1 подбор.','🎁 +1 подбор · сохранено: {count}','🎁 Лимит бонусных подборов на эти 6 часов достигнут.'],
+  ar:['✓ شاركت — افتح مطابقة +1','↗ أكمل المشاركة، ثم عد وأكد لفتح مطابقة +1.','🎁 مطابقة +1 · المحفوظ {count}','🎁 تم بلوغ حد المطابقات الإضافية لفترة الست ساعات هذه.'],
+  hi:['✓ मैंने साझा किया — +1 मैच पाएँ','↗ साझा करना पूरा करें, फिर वापस आकर +1 मैच पाने की पुष्टि करें।','🎁 +1 मैच · {count} सहेजे गए','🎁 इस 6 घंटे की अवधि के बोनस मैच की सीमा पूरी हो गई है।'],
+  id:['✓ Sudah dibagikan — buka +1 Match','↗ Selesaikan berbagi, lalu kembali dan konfirmasi untuk membuka +1 Match.','🎁 +1 Match · {count} tersimpan','🎁 Batas Match bonus untuk periode 6 jam ini sudah tercapai.'],
+  ja:['✓ シェアしました — +1マッチを獲得','↗ シェアを完了したら戻って確認し、+1マッチを獲得してね。','🎁 +1マッチ · 保存済み {count}','🎁 この6時間枠のボーナスマッチ上限に達しました。'],
+  ko:['✓ 공유했어요 — +1 매치 받기','↗ 공유를 마친 뒤 돌아와 확인하면 +1 매치를 받을 수 있어요.','🎁 +1 매치 · {count} 저장됨','🎁 이번 6시간 보너스 매치 한도에 도달했어요.'],
+  zh:['✓ 已分享 — 解锁 +1 次匹配','↗ 完成分享后回来确认，即可解锁 +1 次匹配。','🎁 +1 次匹配 · 已保存 {count}','🎁 已达到本 6 小时周期的奖励匹配上限。']
+ };
+ for(const [locale,values] of Object.entries(shareRows)){
+  window.KidsMatchCopy[locale]=Object.assign(window.KidsMatchCopy[locale]||{},{
+   shareConfirm:values[0],shareFinish:values[1],shareReward:values[2],shareLimit:values[3]
+  });
+ }
 })();

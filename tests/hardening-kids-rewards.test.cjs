@@ -52,5 +52,16 @@ test('cache keys force the hardening bundle onto every device wrapper',()=>{
   assert.match(read('index.html'),/share\.js\?v=20260921-hardening1/);
   assert.match(read('kids/index.html'),/kids\.css\?v=20260921-hardening1/);
   assert.match(read('kids/index.html'),/kids\/account\.js\?v=20260921-hardening1/);
-  assert.match(read('kids/index.html'),/kids\/kids\.js\?v=20260921-hardening1/);
+  assert.match(read('kids/index.html'),/kids\/kids\.js\?v=20260921-hardening2/);
+});
+
+
+test('Kids share reward and confirmation copy covers all supported languages',()=>{
+  const copy=read('kids/match-copy.js');
+  for(const locale of ['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh']){
+    assert.match(copy,new RegExp("[ '\\"]"+locale.replace('-','\\-')+"[ '\\"]?\\s*:|"+locale.replace('-','\\-')+"\\s*:"),locale+' share copy missing');
+  }
+  for(const key of ['shareConfirm','shareFinish','shareReward','shareLimit']) assert.match(copy,new RegExp(key+':values\\[\\d\\]'));
+  assert.match(read('kids/kids.js'),/tr\('shareReward'\)/);
+  assert.match(read('kids/kids.js'),/tr\('shareFinish'\)/);
 });

@@ -24,15 +24,15 @@ test('exact catalogue choices satisfy their selected category, mood, platform, r
  }}assert(cases>=catalog.length);}finally{dom.window.close();}
 });
 
-test('history exhaustion recycles an exact family-safe title without dropping age restriction',async()=>{
+test('history exhaustion never repeats a family-safe title when fresh sources are unavailable',async()=>{
  const excluded=catalog.filter(entry=>entry.ratings.includes('all ages family friendly')).map(entry=>entry.title);
  const {dom,w,state}=matching({cat:['movie'],plat:[],mood:[],vibe:[],rating:['all ages family friendly'],decade:[]},excluded);
- try{await w.triggerMatch(false);assert(state.rendered,'an exact previously shown title should be recycled instead of dead-ending');const entry=catalog.find(e=>e.title===state.rendered.title);assert(entry&&entry.cats.includes('movie'));assert(entry.ratings.includes('all ages family friendly'),'recovery must preserve the selected age/rating');assert.equal(state.rendered._historyFallback,true);assert.equal(state.charges,1);}finally{dom.window.close();}
+ try{await w.triggerMatch(false);assert.equal(state.rendered,null,'a previously shown title must never be recycled');assert.equal(state.charges,0,'source exhaustion must not spend a Match');assert(state.messages.some(message=>/source lookup is temporarily unavailable/i.test(message)));}finally{dom.window.close();}
 });
 
-test('account history exhaustion returns an exact recycled title instead of the no-fresh error',async()=>{
+test('account history exhaustion never returns a recycled title or spends quota',async()=>{
  const {dom,w,state}=matching({cat:['movie'],plat:[],mood:['funny'],vibe:[],rating:[],decade:[]},catalog.map(entry=>entry.title));
- try{await w.triggerMatch(false);assert(state.rendered,'history exhaustion must still produce a result');const entry=catalog.find(e=>e.title===state.rendered.title);assert(entry&&entry.cats.includes('movie'));assert(entry.moods.includes('funny'));assert.equal(state.rendered._historyFallback,true);assert.equal(state.charges,1);assert(!state.messages.includes('polish.noFresh'));}finally{dom.window.close();}
+ try{await w.triggerMatch(false);assert.equal(state.rendered,null,'cross-device account history is a permanent no-repeat boundary');assert.equal(state.charges,0);assert(state.messages.some(message=>/source lookup is temporarily unavailable/i.test(message)));}finally{dom.window.close();}
 });
 
 test('impossible secondary criteria fall back progressively without dropping category or rating',()=>{

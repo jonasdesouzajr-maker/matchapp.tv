@@ -668,9 +668,9 @@
       if(reward?.granted){
         currentWatchShared=true;
         const balance=Math.max(0,Number(reward.purchased_matches??reward.matches)||0);
-        status.textContent='🎁 +1 Match · '+balance+' saved';
+        status.textContent=tr('shareReward').replace('{count}',String(balance));
       }else if(reward?.reason==='window_full'){
-        status.textContent='🎁 Bonus Match limit reached for this 6-hour window.';
+        status.textContent=tr('shareLimit');
       }else status.textContent=tr('quotaError');
     }catch(_){status.textContent=tr('quotaError');}
   }
@@ -707,7 +707,7 @@
     const confirm=document.getElementById('kids-share-confirm');
     if(confirm)confirm.hidden=false;
     const status=document.getElementById('kids-result-status');
-    if(status)status.textContent='↗ Finish sharing, then come back and confirm to unlock +1 Match.';
+    if(status)status.textContent=tr('shareFinish');
   }
   function remoteNavigation(event) {
     if (!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(event.key) || event.altKey || event.metaKey || event.ctrlKey) return;
