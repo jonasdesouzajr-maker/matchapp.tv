@@ -177,7 +177,7 @@ body:has(.poster-wall)::before,body:has(.poster-wall)::after{display:none!import
 @media (min-width:901px) and (max-width:1400px){
   .poster-wall-grid{
     inset:-8% -10%!important;
-    grid-template-columns:repeat(10,minmax(0,1fr))!important;
+    grid-template-columns:repeat(14,minmax(0,1fr))!important;
     gap:10px!important;
   }
 }
@@ -577,4 +577,129 @@ html body.page-home .poster-wall::after{
 }
 @media(min-width:2200px){
   html body.page-home .poster-wall-tile{width:clamp(38px,2.4vw,60px)!important}
+}
+
+/* ===== 2026-09-21 tilted key-art collage — EVERY viewport =====
+   The reference is a streaming-service sign-in wall: a dense grid of key art,
+   rotated a few degrees, bleeding past all four edges, under a heavy scrim so
+   the centre UI stays readable. The artwork is MatchApp's own reviewed
+   catalogue, pooled by poster-wall.js — not another service's line-up.
+
+   The wall is pinned to the viewport, so the grid fills one screen on every
+   device and the page scrolls over it.
+
+   Deliberately static at every width: the 2026-09-20 renderer crash guard
+   above stays in force and nothing in this pass declares animation,
+   will-change, filter or backdrop-filter. A fixed, unanimated backdrop is also
+   cheaper to scroll than a page-height one, because it does not repaint as
+   newly exposed page regions come into view. */
+html body.page-home .poster-wall{
+  position:fixed!important;
+  top:0!important;right:0!important;bottom:0!important;left:0!important;
+  width:auto!important;
+  height:auto!important;
+  min-height:0!important;
+  overflow:hidden!important;
+  contain:paint!important;
+}
+
+/* One transparency layer on the grid rather than one per tile. Higher
+   specificity than the inline compact sheet's .poster-wall-grid{opacity:1},
+   which would otherwise win on source order. */
+html body.page-home .poster-wall .poster-wall-grid{
+  position:absolute!important;
+  inset:-34% -15%!important;
+  display:grid!important;
+  grid-auto-rows:min-content!important;
+  align-content:start!important;
+  gap:0.55vw!important;
+  transform:rotate(-12deg)!important;
+  transform-origin:50% 50%!important;
+  opacity:.76!important;
+}
+
+/* Tiles flow in the grid instead of being individually placed. */
+html body.page-home .poster-wall-tile{
+  position:relative!important;
+  top:auto!important;right:auto!important;bottom:auto!important;left:auto!important;
+  width:auto!important;
+  height:auto!important;
+  aspect-ratio:2/3!important;
+  overflow:hidden!important;
+  border-radius:4px!important;
+  opacity:1!important;
+  transform:none!important;
+  box-shadow:0 4px 12px rgba(0,0,0,.42)!important;
+  background:rgba(12,10,26,.55)!important;
+}
+html body.page-home .poster-wall-tile>img{
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  display:block!important;
+}
+html body.page-home .poster-wall-brand{display:none!important}
+html body.page-home .poster-wall::before{display:none!important}
+
+/* Column count per breakpoint. Tiles must stay large enough to read as key art
+   and numerous enough to overfill the rotated grid at every size. */
+@media(max-width:700px){
+  html body.page-home .poster-wall .poster-wall-grid{
+    grid-template-columns:repeat(4,minmax(0,1fr))!important;
+    gap:1.2vw!important;
+    opacity:.92!important;
+  }
+}
+@media(min-width:701px) and (max-width:1099px){
+  html body.page-home .poster-wall .poster-wall-grid{
+    grid-template-columns:repeat(7,minmax(0,1fr))!important;
+    gap:.8vw!important;
+  }
+}
+@media(min-width:1100px){
+  html body.page-home .poster-wall .poster-wall-grid{
+    grid-template-columns:repeat(11,minmax(0,1fr))!important;
+  }
+}
+@media(min-width:1800px){
+  html body.page-home .poster-wall .poster-wall-grid{
+    grid-template-columns:repeat(14,minmax(0,1fr))!important;
+  }
+}
+
+/* The scrim: a deep pool of midnight behind the centre column of UI, fading
+   out towards the edges so the collage stays visible all the way to the
+   corners, plus top and bottom bands. */
+html body.page-home .poster-wall::after{
+  content:''!important;
+  position:absolute!important;
+  inset:0!important;
+  background:
+    radial-gradient(ellipse 60% 40% at 50% 27%,
+      rgba(5,4,16,.90) 0%,
+      rgba(5,4,16,.70) 44%,
+      rgba(5,4,16,.26) 78%,
+      rgba(5,4,16,0) 100%),
+    linear-gradient(180deg,
+      rgba(5,4,16,.70) 0%,
+      rgba(5,4,16,.22) 13%,
+      rgba(5,4,16,.26) 72%,
+      rgba(5,4,16,.86) 100%)!important;
+}
+@media(max-width:700px){
+  /* A handset is almost entirely content, so the pool is tightened and the
+     edges are left brighter, otherwise the collage disappears completely. */
+  html body.page-home .poster-wall::after{
+    background:
+      radial-gradient(ellipse 96% 22% at 50% 33%,
+        rgba(5,4,16,.80) 0%,
+        rgba(5,4,16,.52) 52%,
+        rgba(5,4,16,.12) 86%,
+        rgba(5,4,16,0) 100%),
+      linear-gradient(180deg,
+        rgba(5,4,16,.52) 0%,
+        rgba(5,4,16,.06) 10%,
+        rgba(5,4,16,.08) 82%,
+        rgba(5,4,16,.66) 100%)!important;
+  }
 }

@@ -52,5 +52,26 @@ These are standing implementation rules for MatchApp work in this repository.
    - Prefer responsive CSS and shared web behavior over Android-only visual forks. Verify taps, folds, dialogs, horizontal rails, viewport zoom, external links and back navigation inside Android WebView as well as browsers.
    - Visual effects must respect `prefers-reduced-motion`, avoid layout-triggering animation loops, and must not introduce scroll traps, freezes, crashes or excessive battery/CPU use.
 
+8. **Instructed scope only**
+   - Do exactly what the request asks for, and nothing else. The request is the whole brief and the whole boundary.
+   - Do not add unrequested redesigns, refactors, renames, dependency changes, "improvements", cleanups or adjacent fixes, even when an obvious defect is spotted in passing. Note it, report it as a suggestion, and wait to be asked.
+   - When a request arrives with an implementation brief written for a different stack or a different assumption about this codebase, deliver the requested outcome in this repository's actual stack and say plainly which parts of the brief did not apply and why. Do not silently substitute a different goal.
+   - When an instruction conflicts with a standing rule above, or with a stability guard already in the code, stop and surface the conflict with options instead of resolving it unilaterally in either direction.
+   - Do not push, deploy, open a pull request or bump a release marker unless that was asked for.
+   - This rule binds every agent working in this repository, Claude sessions included, and it stays in force until the repository owner changes it.
+
+9. **Home landing visual contract**
+   - **Brand mark inside the top box.** The MatchApp mark must sit fully inside the Home header box, never overlapping or hanging outside its border, on every surface: smartphone, tablet, desktop and both Android Studio WebView modules. Logo containment is never a breakpoint-specific fix — when it is wrong anywhere it is fixed for all widths at once, at the root cause.
+   - **Full-screen key-art background.** The landing backdrop is a dense, tilted grid of key art filling the whole screen on every surface — not a desktop-only treatment and not a scatter of small covers. It is pinned to the viewport, rotated once on the grid container, and given a column count per breakpoint so the tiles read as posters at every size, with the content scrolling over it and a scrim protecting text contrast.
+   - **Background artwork is ours.** Tiles are pooled from MatchApp's own reviewed catalogue (the wall and identity lists, the verified poster map and the rail covers). Never reproduce another service's line-up or page artwork; match layout and craft, never their content.
+   - **Background tiles stay cheap.** Request background renditions (w154/w185), never the rail's w500 or w780, size the tile count to the viewport, and insert tiles in bounded idle batches. A dense wall must not cost more at startup than a sparse one — measure it.
+   - **The background stays static.** No drift, parallax, marquee, sweep or glow on the wall or its tiles. The 2026-09-20 renderer crash guard exists because animating it crashed renderers; it is never relaxed for a visual request.
+   - **Approved sign-in card.** The glassmorphic sign-in card approved on 2026-09-21 is settled. Do not restyle it unless asked.
+   - **Top-box control bar.** Every header control stays visible and reachable; the bar is tidied by sizing, ordering and wrapping, never by hiding or removing a control. The only element allowed to collapse is the credits badge while it is genuinely empty.
+   - **Cover titles.** Every rail cover shows its title. The caption element is created when the markup does not ship one; `aria-hidden` marquee clones are never captioned and never focusable.
+   - **Golden edge.** Covers, boxes and fields carry the gold outline from CSS alone, so it never depends on a runtime reaching them. The travelling sheen is the only animated part and stays capped at a dozen on-screen elements through a bounded IntersectionObserver, off entirely under either reduced-motion signal. Never animate the whole selector set.
+   - **Hero headline is the way in.** Clicking or keyboard-activating the Home headline opens the matching fold and scrolls the matching field into view. It opens the fold through the fold's own control so `lazy.js` stays the single fold owner and the remembered state keeps in step, and it binds to the element rather than to markup inside it, because i18n rewrites that heading's text on every language change.
+   - Any change to the Home landing visuals is designed and verified at handset, tablet and desktop widths in the same task, with before/after evidence, and reviewed for both Android modules.
+
 ### Stability invariant
 - Every change must preserve runtime stability first: do not introduce crashes, freezes, infinite render or mutation loops, layout thrashing, unbounded observers/timers, or expensive continuous compositor work. Keep edits surgical, bounded, responsive, and regression-tested before deployment.

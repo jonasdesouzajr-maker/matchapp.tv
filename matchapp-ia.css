@@ -2592,3 +2592,400 @@ html body.page-home #mh-topbox.ma-home-header .ma-brand-orb{
   animation:none!important;
   will-change:auto!important;
 }
+
+/* ===== 2026-09-21 Home logo containment fix — ALL viewports =====
+   The brand mark was escaping the top box on every device, including the
+   Android WebView. Cause: the 2026-09-20 crop pass positions the orb with
+   left:50%/top:50% and re-centres it with transform:translate(-50%,-50%),
+   but the later transparent-logo guard forces transform:none. The offsets
+   survive, the compensating translate does not, so the orb is pushed down and
+   right by half the stage and hangs outside the header.
+
+   Fix at the root: the orb and its stage are the same size at every
+   breakpoint (74px, 60px under 700px), so anchoring the orb at the stage
+   origin is exactly correct and needs no transform. This is deliberately NOT
+   inside a media query — the defect is present at every width and the fix must
+   reach handsets, tablets, desktop and both Android modules alike. */
+html body.page-home #mh-topbox.ma-home-header .ma-brand-orb{
+  left:0!important;
+  top:0!important;
+  right:auto!important;
+  bottom:auto!important;
+}
+
+/* ===== 2026-09-21 desktop cinematic landing polish =====
+   Desktop-only (>=1100px) presentation pass covering the Home brand lockup and
+   the sign-in card. Every rule below is inert under 1100px, so the handset and
+   tablet rendering is unchanged from the previous release.
+
+   Two standing guards are deliberately preserved, not lifted:
+   - the transparent-logo guard keeps filter:none on .ma-brand-orb, so the
+     lockup glow is painted by a sibling layer on the stage instead of by a
+     filter on the image itself;
+   - the Home compositor guard keeps backdrop-filter off every Home surface.
+     Only #main-auth-modal>.premium-card is exempted, by id specificity, and
+     that card exists solely while the modal is open, so no backdrop is
+     rasterised during startup or scrolling. */
+@media(min-width:1100px){
+
+  /* --- 1. Logo positioning and hierarchy --- */
+  html body.page-home #mh-topbox.app-header.ma-home-header{
+    padding:14px 26px!important;
+  }
+  /* Ambient brand glow behind the orb. Static, single small layer, no filter. */
+  html body.page-home #mh-topbox.ma-home-header .ma-brand-orb-stage::before{
+    content:''!important;
+    position:absolute!important;
+    left:-27px!important;top:-34px!important;
+    width:144px!important;height:144px!important;
+    border-radius:50%!important;
+    background:radial-gradient(circle,rgba(229,193,88,.30) 0%,rgba(229,193,88,.13) 38%,rgba(147,86,214,.10) 58%,transparent 72%)!important;
+    z-index:1!important;
+    pointer-events:none!important;
+  }
+  /* The wordmark gradients are only defined under .ma-global-header, and Home
+     runs .ma-home-header, so "Match" and "App" render untreated on the landing
+     page. Restore the same treatment for Home. */
+  html body.page-home #mh-topbox.ma-home-header .ma-word-match{
+    background:linear-gradient(180deg,#fff 8%,#dce1ea 50%,#9ba8bc 100%)!important;
+    -webkit-background-clip:text!important;background-clip:text!important;
+    -webkit-text-fill-color:transparent!important;
+  }
+  html body.page-home #mh-topbox.ma-home-header .ma-word-app{
+    background:linear-gradient(180deg,#fff0ba 0%,#f2c951 45%,#9e6c17 100%)!important;
+    -webkit-background-clip:text!important;background-clip:text!important;
+    -webkit-text-fill-color:transparent!important;
+  }
+  html body.page-home #mh-topbox.ma-home-header .ma-wordmark{
+    font-family:var(--font-display,"Outfit",system-ui,sans-serif)!important;
+    text-shadow:0 2px 18px rgba(8,6,20,.85)!important;
+  }
+
+  /* --- 2. Auth overlay: let the mosaic read behind the card --- */
+  html body.page-home #main-auth-modal{
+    background:rgba(6,5,16,.72)!important;
+  }
+
+  /* --- 3. Glassmorphic auth card (scoped exemption from the Home guard) --- */
+  html body.page-home #main-auth-modal>.premium-card{
+    width:min(92vw,468px)!important;
+    max-width:468px!important;
+    padding:34px 32px 30px!important;
+    border:1px solid rgba(255,255,255,.10)!important;
+    border-radius:22px!important;
+    background:linear-gradient(180deg,rgba(28,21,45,.72),rgba(10,13,27,.86))!important;
+    box-shadow:0 34px 90px rgba(0,0,0,.62),0 0 0 1px rgba(229,193,88,.13),inset 0 1px 0 rgba(255,255,255,.07)!important;
+    backdrop-filter:blur(16px) saturate(118%)!important;
+    -webkit-backdrop-filter:blur(16px) saturate(118%)!important;
+  }
+
+  /* Brand lockup inside the card. Reuses the orb already cached by the header,
+     so it costs no additional request. */
+  html body.page-home #main-auth-modal .auth-brand{
+    display:flex!important;align-items:center!important;justify-content:center!important;
+    gap:9px!important;margin:0 0 16px!important;
+  }
+  html body.page-home #main-auth-modal .auth-brand-orb{
+    width:44px!important;height:44px!important;object-fit:contain!important;display:block!important;
+  }
+  html body.page-home #main-auth-modal .auth-brand-word{
+    font-family:var(--font-display,"Outfit",system-ui,sans-serif)!important;
+    font-size:25px!important;font-weight:800!important;letter-spacing:-.035em!important;
+    line-height:1!important;color:#f5f2fb!important;
+  }
+  html body.page-home #main-auth-modal .auth-brand-word b{
+    font-weight:800!important;
+    background:linear-gradient(180deg,#fff0ba 0%,#f2c951 45%,#c08a20 100%)!important;
+    -webkit-background-clip:text!important;background-clip:text!important;
+    -webkit-text-fill-color:transparent!important;
+  }
+  html body.page-home #main-auth-modal .auth-brand-tv{
+    font-family:var(--font-display,"Outfit",system-ui,sans-serif)!important;
+    font-size:13px!important;font-weight:700!important;letter-spacing:.10em!important;
+    color:rgba(226,218,240,.72)!important;align-self:flex-end!important;padding-bottom:3px!important;
+  }
+
+  /* --- 4. Type pairing: cinematic display heading, legible body --- */
+  html body.page-home #main-auth-modal>.premium-card>h3{
+    font-family:var(--font-display,"Outfit",system-ui,sans-serif)!important;
+    font-size:27px!important;font-weight:800!important;
+    letter-spacing:.005em!important;line-height:1.18!important;
+    margin:0 0 4px!important;
+  }
+  html body.page-home #main-auth-modal :is(input,button,p,label,span,div){
+    font-family:var(--font-body,"Inter",system-ui,sans-serif)!important;
+  }
+  html body.page-home #main-auth-modal :is(.auth-hint,.passkey-help,.phone-auth-status,#phone-auth-help){
+    line-height:1.62!important;
+  }
+
+  /* --- 5. Inputs: border luminance shift and a clear focus ring --- */
+  html body.page-home #main-auth-modal :is(#login-email,#login-password,#reg-email,#reg-password,#forgot-email,.audit-auth-input,.phone-auth-field){
+    background:rgba(6,6,16,.62)!important;
+    border:1px solid rgba(229,193,88,.34)!important;
+    color:#fff!important;
+    transition:border-color .18s ease,box-shadow .18s ease,background-color .18s ease!important;
+  }
+  html body.page-home #main-auth-modal :is(#login-email,#login-password,#reg-email,#reg-password,#forgot-email,.audit-auth-input,.phone-auth-field):hover{
+    border-color:rgba(229,193,88,.56)!important;
+  }
+  html body.page-home #main-auth-modal :is(#login-email,#login-password,#reg-email,#reg-password,#forgot-email,.audit-auth-input,.phone-auth-field):focus-visible,
+  html body.page-home #main-auth-modal :is(#login-email,#login-password,#reg-email,#reg-password,#forgot-email,.audit-auth-input,.phone-auth-field):focus{
+    outline:none!important;
+    border-color:var(--gold,#e5c158)!important;
+    background:rgba(8,8,20,.78)!important;
+    box-shadow:0 0 0 3px color-mix(in srgb,var(--gold,#e5c158) 22%,transparent),0 0 22px color-mix(in srgb,var(--gold,#e5c158) 16%,transparent)!important;
+  }
+
+  /* --- 6. Button micro-interactions --- */
+  html body.page-home #main-auth-modal :is(.gold-btn,.google-signin-btn,.passkey-button,.phone-auth-action,.phone-auth-entry){
+    transition:transform .2s cubic-bezier(.22,1,.36,1),box-shadow .2s ease,border-color .2s ease!important;
+  }
+  html body.page-home #main-auth-modal .gold-btn{
+    border-radius:14px!important;
+    box-shadow:0 10px 26px rgba(0,0,0,.42),0 0 18px color-mix(in srgb,var(--gold,#e5c158) 20%,transparent)!important;
+  }
+  @media(hover:hover){
+    html body.page-home #main-auth-modal :is(.gold-btn,.google-signin-btn,.passkey-button,.phone-auth-action,.phone-auth-entry):hover{
+      transform:scale(1.02)!important;
+    }
+    html body.page-home #main-auth-modal .gold-btn:hover{
+      box-shadow:0 16px 38px rgba(0,0,0,.5),0 0 30px color-mix(in srgb,var(--gold,#e5c158) 38%,transparent)!important;
+    }
+    html body.page-home #main-auth-modal :is(.passkey-button,.phone-auth-entry,.phone-auth-action):hover{
+      border-color:var(--gold,#e5c158)!important;
+      box-shadow:0 12px 30px rgba(0,0,0,.42)!important;
+    }
+  }
+  html body.page-home #main-auth-modal :is(.gold-btn,.google-signin-btn,.passkey-button,.phone-auth-action,.phone-auth-entry):active{
+    transform:scale(.995)!important;
+  }
+  html body.page-home #main-auth-modal .auth-tabs{
+    border-bottom-color:rgba(255,255,255,.10)!important;
+  }
+}
+
+/* Decoration only: every transition above stops under either reduced-motion
+   signal, matching the dual guard used across the rest of the site. */
+@media(prefers-reduced-motion:reduce){
+  html body.page-home #main-auth-modal :is(.gold-btn,.google-signin-btn,.passkey-button,.phone-auth-action,.phone-auth-entry,input){
+    transition:none!important;transform:none!important;
+  }
+}
+html.reduce-motion body.page-home #main-auth-modal :is(.gold-btn,.google-signin-btn,.passkey-button,.phone-auth-action,.phone-auth-entry,input){
+  transition:none!important;transform:none!important;
+}
+
+/* ===== 2026-09-21 Home top-box control bar =====
+   Eleven controls share the header. They previously wrapped into ragged rows —
+   four of them on a handset, with a single orphaned badge on the last row, so
+   the box ate a third of the screen. One consistent control height, even gaps
+   and balanced wrapping fix it without hiding or removing a single control. */
+html body.page-home #mh-topbox.ma-home-header nav:is(.mh-deck,.ma-header-actions){
+  align-content:center!important;
+  row-gap:8px!important;
+  column-gap:8px!important;
+}
+html body.page-home #mh-topbox.ma-home-header nav:is(.mh-deck,.ma-header-actions)>*{
+  box-sizing:border-box!important;
+  align-self:center!important;
+}
+/* Uniform pill height so no control sits proud of its row. */
+html body.page-home #mh-topbox.ma-home-header nav :is(button,a.nav-avatar-link,a.ma-kids-mode-entry,a.quota-badge,.install-wrap,.ma-menu-wrap,#lang-switcher-host){
+  height:44px!important;
+  min-height:44px!important;
+}
+html body.page-home #mh-topbox.ma-home-header nav #lang-switcher-host select{
+  height:44px!important;
+  box-sizing:border-box!important;
+}
+
+@media(min-width:701px) and (max-width:1099px){
+  html body.page-home #mh-topbox.ma-home-header nav:is(.mh-deck,.ma-header-actions){
+    justify-content:center!important;
+    max-width:100%!important;
+    row-gap:7px!important;
+    column-gap:7px!important;
+  }
+  html body.page-home #mh-topbox.ma-home-header nav :is(button,a.nav-avatar-link,a.ma-kids-mode-entry,a.quota-badge,.install-wrap,.ma-menu-wrap,#lang-switcher-host){
+    height:42px!important;
+    min-height:42px!important;
+  }
+  html body.page-home #mh-topbox.ma-home-header nav #lang-switcher-host{width:132px!important;flex:0 0 132px!important}
+  html body.page-home #mh-topbox.ma-home-header nav #lang-switcher-host select{height:42px!important;width:100%!important}
+}
+
+@media(max-width:700px){
+  /* Compact, centred and evenly wrapped: the same eleven controls in three
+     tidy rows instead of four ragged ones. */
+  html body.page-home #mh-topbox.ma-home-header nav:is(.mh-deck,.ma-header-actions){
+    justify-content:center!important;
+    max-width:100%!important;
+    row-gap:6px!important;
+    column-gap:6px!important;
+  }
+  html body.page-home #mh-topbox.ma-home-header nav :is(button,a.nav-avatar-link,a.ma-kids-mode-entry,a.quota-badge,.install-wrap,.ma-menu-wrap,#lang-switcher-host){
+    height:38px!important;
+    min-height:38px!important;
+  }
+  html body.page-home #mh-topbox.ma-home-header nav :is(.sound-toggle-btn,.matchapp-notification-button,#profile-link-tab,#nav-logout-btn){
+    width:38px!important;min-width:38px!important;
+  }
+  html body.page-home #mh-topbox.ma-home-header nav #lang-switcher-host{width:104px!important;flex:0 0 104px!important}
+  html body.page-home #mh-topbox.ma-home-header nav #lang-switcher-host select{
+    height:38px!important;width:100%!important;font-size:12px!important;padding-left:8px!important;padding-right:20px!important;
+  }
+  html body.page-home #mh-topbox.ma-home-header nav #nav-reg-btn{
+    padding:0 14px!important;font-size:12.5px!important;white-space:nowrap!important;
+  }
+  html body.page-home #mh-topbox.ma-home-header nav :is(.ma-kids-mode-entry,.ma-how-button){
+    padding:0 12px!important;font-size:12.5px!important;white-space:nowrap!important;
+  }
+  html body.page-home #mh-topbox.ma-home-header nav .install-wrap .install-btn{
+    height:38px!important;padding:0 12px!important;font-size:12.5px!important;
+  }
+}
+
+/* ===== 2026-09-21 golden sheen =====
+   A gold edge on every cover, box and field, plus a travelling sheen. The
+   outline is painted statically by CSS on all of them; only elements carrying
+   .ma-sheen-live animate, and gold-sheen.js caps that at twelve on-screen
+   elements. None of the selectors below used ::before/::after before this
+   pass, so the ring cannot collide with an existing decoration. */
+/* The ring is applied by selector, not by a class the runtime adds, so every
+   cover and box carries it even if the observer never reaches them. */
+html body.page-home :is(.marquee-item,.ma-news-card,.global-event,.spotlight-card,.premium-card,#questionnaire-box,.ma-news,.tg-entry,.global-events-fold,#daily-match-checkin,.ma-concierge){position:relative}
+html body.page-home :is(.marquee-item,.ma-news-card,.global-event,.spotlight-card,.premium-card,#questionnaire-box,.ma-news,.tg-entry,.global-events-fold,#daily-match-checkin,.ma-concierge)::after{
+  content:''!important;
+  position:absolute!important;
+  inset:0!important;
+  border-radius:inherit!important;
+  padding:1px!important;
+  pointer-events:none!important;
+  z-index:3!important;
+  background:linear-gradient(115deg,
+    rgba(229,193,88,.34) 0%,
+    rgba(229,193,88,.34) 38%,
+    rgba(255,241,190,.96) 50%,
+    rgba(229,193,88,.34) 62%,
+    rgba(229,193,88,.34) 100%)!important;
+  background-size:300% 100%!important;
+  background-position:100% 0!important;
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0)!important;
+  -webkit-mask-composite:xor!important;
+  mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0)!important;
+  mask-composite:exclude!important;
+}
+@keyframes maSheenSweep{
+  0%{background-position:100% 0}
+  100%{background-position:-200% 0}
+}
+html body.page-home .ma-sheen-live::after{
+  animation:maSheenSweep 3.6s linear var(--sheen-delay,0s) infinite!important;
+}
+/* Fields carry the same gold edge, drawn with outline rather than a pseudo
+   element so it never collides with the existing button sweeps. */
+html body.page-home :is(input:not([type=checkbox]):not([type=radio]),select,textarea){
+  outline:1px solid rgba(229,193,88,.26)!important;
+  outline-offset:-1px!important;
+}
+html body.page-home :is(input:not([type=checkbox]):not([type=radio]),select,textarea):focus-visible{
+  outline-color:var(--gold,#e5c158)!important;
+}
+
+/* Cover captions: every rail tile is a framed card with its title under the
+   artwork. title-captions.js creates the caption; this styles it. */
+html body.page-home #trending-rail .marquee-item{
+  display:flex!important;
+  flex-direction:column!important;
+  overflow:hidden!important;
+  background:rgba(12,10,26,.72)!important;
+}
+html body.page-home #trending-rail .marquee-item .marquee-title{
+  position:static!important;
+  display:block!important;
+  width:100%!important;
+  box-sizing:border-box!important;
+  flex:0 0 auto!important;
+  padding:7px 8px 8px!important;
+  background:linear-gradient(180deg,rgba(18,13,34,.96),rgba(10,9,22,.98))!important;
+  color:#f6f2fb!important;
+  font:700 11.5px/1.3 var(--font-body,"Inter",system-ui,sans-serif)!important;
+  text-align:center!important;
+  white-space:normal!important;
+  overflow-wrap:anywhere!important;
+}
+@media(max-width:700px){
+  html body.page-home #trending-rail .marquee-item .marquee-title{
+    font-size:10.5px!important;padding:6px 6px 7px!important;
+  }
+}
+
+/* Decoration only: the sheen stops under either reduced-motion signal, and
+   gold-sheen.js does not even start an observer in that case. */
+@media(prefers-reduced-motion:reduce){
+  html body.page-home .ma-sheen-live::after{animation:none!important}
+}
+html.reduce-motion body.page-home .ma-sheen-live::after{animation:none!important}
+
+/* Handset row packing. Widths and explicit order are chosen together so the
+   eleven controls wrap into three full rows instead of three ragged rows plus
+   a single orphaned badge. Nothing is hidden or removed. */
+@media(max-width:700px){
+  html body.page-home #mh-topbox.ma-home-header nav #lang-switcher-host{order:1!important}
+  html body.page-home #mh-topbox.ma-home-header nav .sound-toggle-btn{order:2!important}
+  html body.page-home #mh-topbox.ma-home-header nav .matchapp-notification-button{order:3!important}
+  html body.page-home #mh-topbox.ma-home-header nav #profile-link-tab{order:4!important}
+  html body.page-home #mh-topbox.ma-home-header nav #nav-logout-btn{order:5!important}
+  html body.page-home #mh-topbox.ma-home-header nav #nav-reg-btn{order:6!important;max-width:150px!important}
+  html body.page-home #mh-topbox.ma-home-header nav .ma-kids-mode-entry{order:7!important}
+  html body.page-home #mh-topbox.ma-home-header nav .quota-badge{order:8!important}
+  html body.page-home #mh-topbox.ma-home-header nav .ma-how-button{order:9!important}
+  html body.page-home #mh-topbox.ma-home-header nav .install-wrap{order:10!important;max-width:118px!important}
+  html body.page-home #mh-topbox.ma-home-header nav .install-wrap .install-btn{max-width:118px!important;padding:0 10px!important}
+  html body.page-home #mh-topbox.ma-home-header nav .ma-menu-wrap{order:11!important}
+}
+
+/* The rail card previously gave the poster 100% of a fixed card height, so the
+   caption title-captions.js writes was pushed past the card's overflow:hidden
+   edge and never rendered. Let the card size to poster + caption instead. */
+html body.page-home #trending-rail .marquee-item{
+  height:auto!important;
+  min-height:0!important;
+}
+html body.page-home #trending-rail .marquee-item img{
+  width:100%!important;
+  height:auto!important;
+  aspect-ratio:2/3!important;
+  flex:0 0 auto!important;
+}
+html body.page-home #trending-rail .marquee-item .marquee-title{
+  flex:0 0 auto!important;
+}
+
+/* The credits badge ships empty and is filled by credits-ui.js. While it has
+   no content it should not occupy a pill in the control bar. */
+html body.page-home #mh-topbox.ma-home-header #quota-badge:empty{display:none!important}
+
+/* The hero headline is the shortcut into the matcher (lazy.js binds it), so it
+   advertises itself as one. The fold's own "Curate Your Perfect Match" button
+   remains the primary, fully labelled control. */
+html body.page-home .home-h1-jump{
+  cursor:pointer!important;
+  transition:color .18s ease,text-shadow .18s ease!important;
+}
+@media(hover:hover){
+  html body.page-home .home-h1-jump:hover{
+    color:#fff6d6!important;
+    text-shadow:0 0 24px color-mix(in srgb,var(--gold,#e5c158) 42%,transparent)!important;
+  }
+}
+html body.page-home .home-h1-jump:focus-visible{
+  outline:2px solid var(--gold,#e5c158)!important;
+  outline-offset:6px!important;
+  border-radius:10px!important;
+}
+@media(prefers-reduced-motion:reduce){
+  html body.page-home .home-h1-jump{transition:none!important}
+}
+html.reduce-motion body.page-home .home-h1-jump{transition:none!important}

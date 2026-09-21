@@ -23,17 +23,26 @@
   })();cache.set(key,pending);return pending;
  };
  let generation=0;
+ /* The caption element is created on demand. Every rail tile ships as image-only
+    markup, so the original "fill it if it exists" pass had nothing to write into
+    and no cover ever showed its title. One span per tile, inside the existing
+    bounded pass — no observer, no repeated work. */
+ function captionFor(tile){
+  let caption=tile.querySelector('.marquee-title');
+  if(!caption){caption=document.createElement('span');caption.className='marquee-title';tile.appendChild(caption);}
+  return caption;
+ }
  function primeTiles(){
   document.querySelectorAll('.marquee-item img[data-title]').forEach(img=>{
    const tile=img.closest('.marquee-item');if(!tile||tile.getAttribute('aria-hidden')==='true')return;
-   const caption=tile.querySelector('.marquee-title'),title=img.dataset.title;
+   const caption=captionFor(tile),title=img.dataset.title;
    if(caption)caption.textContent=title;tile.setAttribute('role','button');tile.tabIndex=0;tile.setAttribute('aria-label',title);
   });
  }
  async function paint(){const version=++generation;
   document.querySelectorAll('.marquee-item img[data-title]').forEach(async img=>{
    const tile=img.closest('.marquee-item');if(!tile||tile.getAttribute('aria-hidden')==='true')return;
-   const caption=tile.querySelector('.marquee-title'),title=img.dataset.title;
+   const caption=captionFor(tile),title=img.dataset.title;
    const name=await window.localizedTitle(title);if(version===generation&&tile.isConnected){if(caption)caption.textContent=name;tile.setAttribute('aria-label',name);}
   });
  }
