@@ -29,10 +29,10 @@ test('Home startup avoids delayed boot locks, stale cache keys and duplicate hea
 
 test('Home noncritical enrichment is staggered instead of timing out together',()=>{
  const html=read('index.html'),poster=read('poster-wall.js'),captions=read('title-captions.js'),media=read('catalog-media.js');
- assert.match(html,/\/poster-wall\.js\?v=20260920-home11/);
+ assert.match(html,/\/poster-wall\.js\?v=20260921-wall3/);
  assert.match(html,/\/title-captions\.js\?v=20260921-ui2/);
  assert.match(html,/\/catalog-media\.js\?v=20260920-freeze-final1/);
- assert.match(html,/\/poster-wall\.css\?v=20260921-desktop1/);
+ assert.match(html,/\/poster-wall\.css\?v=20260921-wall3/);
  assert.match(poster,/setTimeout\(\(\)=>\{[\s\S]*requestIdleCallback\(run\)[\s\S]*\},900\)/);
  assert.match(captions,/setTimeout\(\(\)=>\{[\s\S]*requestIdleCallback\(\(\)=>paint\(\)\)[\s\S]*\},2200\)/);
  assert.match(captions,/requestIdleCallback\(loadAudit\)[\s\S]*\},5200\)/);
@@ -64,9 +64,12 @@ test('Home header is visible without JavaScript and avoids filtered 8K SVGs',()=
 test('Home poster wall stays lightweight, static and cache-busted',()=>{
  const wall=read('poster-wall.js'),html=read('index.html'),css=read('poster-wall.css');
  assert.match(wall,/if\(kids\(\)\|\|document\.querySelector\('\.poster-wall'\)\)return/);
- assert.match(wall,/for\(let i=0;i<posters\.length;i\+\+\)/);
- assert.match(html,/poster-wall\.js\?v=20260920-home11/);
- assert.match(html,/poster-wall\.css\?v=20260921-desktop1/);
+ // Tiles fill in bounded batches rather than one decode-heavy burst.
+ assert.match(wall,/const CHUNK=10;/);
+ assert.match(wall,/requestIdleCallback\(fillChunk\)/);
+ assert.match(wall,/cursor<posters\.length/);
+ assert.match(html,/poster-wall\.js\?v=20260921-wall3/);
+ assert.match(html,/poster-wall\.css\?v=20260921-wall3/);
  assert.match(css,/Home poster-wall restore/);
  assert.match(css,/2026-09-20 scattered static poster background/);
  assert.match(css,/final scattered-cover visibility pass/);
@@ -127,29 +130,40 @@ test('Home removes the nonfunctional trending fold bar and keeps autoplay bounde
  assert.doesNotMatch(read('index.html'),/data-i18n="marquee\.title"/);
  assert.match(read('index.html'),/id="trending-rail" aria-label="Latest titles trending right now"/);
 });
-test('2026-09-21 mosaic fills every viewport and stays completely static',()=>{
- const css=read('poster-wall.css');
- assert.match(css,/2026-09-21 cinematic mosaic — EVERY viewport/);
+test('2026-09-21 tilted collage fills every viewport and stays completely static',()=>{
+ const css=read('poster-wall.css'),js=read('poster-wall.js');
+ assert.match(css,/2026-09-21 tilted key-art collage — EVERY viewport/);
  // The 2026-09-20 renderer crash guard must survive the new pass.
  assert.match(css,/2026-09-20 renderer crash guard/);
- assert.match(css,/\.poster-wall-tile:nth-child\(16\)/);
- const pass=css.slice(css.indexOf('2026-09-21 cinematic mosaic'));
+ const pass=css.slice(css.indexOf('2026-09-21 tilted key-art collage'));
  // Static at every width: no motion, no promoted layers, no rasterising filters.
  assert.doesNotMatch(pass,/animation\s*:/);
  assert.doesNotMatch(pass,/will-change\s*:/);
  assert.doesNotMatch(pass,/backdrop-filter\s*:/);
  assert.doesNotMatch(pass,/filter\s*:/);
- // The wall is pinned to the viewport so sixteen posters fill a screen on
- // every device instead of scattering down a multi-screen page.
+ // Pinned to the viewport, so one screenful of art covers every device.
  assert.match(pass,/html body\.page-home \.poster-wall\{[\s\S]*position:fixed!important/);
- // All three breakpoints must be covered; a desktop-only mosaic is a regression.
- assert.match(pass,/@media\(max-width:700px\)\{/);
- assert.match(pass,/@media\(min-width:701px\) and \(max-width:1099px\)\{/);
- assert.match(pass,/@media\(min-width:1100px\)\{/);
+ // A real grid, tilted once on the container rather than per tile.
+ assert.match(pass,/\.poster-wall-grid\{[\s\S]*display:grid!important/);
+ assert.match(pass,/\.poster-wall-grid\{[\s\S]*transform:rotate\(-12deg\)!important/);
+ // Every breakpoint gets its own column count; a desktop-only wall is a regression.
  for(const bp of ['@media(max-width:700px){','@media(min-width:701px) and (max-width:1099px){','@media(min-width:1100px){']){
   const block=pass.slice(pass.indexOf(bp));
-  assert.match(block,/\.poster-wall-tile:nth-child\(16\)/,'breakpoint '+bp+' must place all sixteen tiles');
+  assert.ok(pass.includes(bp),'missing breakpoint '+bp);
+  assert.match(block,/grid-template-columns:repeat\(\d+,minmax\(0,1fr\)\)!important/,'breakpoint '+bp+' must set a column count');
  }
+ // Artwork is pooled from MatchApp's own reviewed catalogue and requested at
+ // background renditions, never the rail's w500.
+ assert.match(js,/data\/poster-identities\.json/);
+ assert.match(js,/VERIFIED_POSTERS/);
+ assert.match(js,/w154\//);
+ assert.doesNotMatch(js,/w500\/|w780\//);
+ // Tile count is sized to the screen instead of a fixed number.
+ assert.match(js,/function tileTarget\(\)/);
+ assert.match(js,/Math\.min\(cols\*rows,96\)/);
+ // Kids is still never decorated, and the boot stays idle-deferred.
+ assert.match(js,/if\(kids\(\)\|\|document\.querySelector\('\.poster-wall'\)\)return/);
+ assert.doesNotMatch(js,/new MutationObserver|setInterval/);
 });
 
 test('2026-09-21 Home brand mark stays inside the top box on every viewport',()=>{

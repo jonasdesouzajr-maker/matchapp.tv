@@ -177,7 +177,7 @@ body:has(.poster-wall)::before,body:has(.poster-wall)::after{display:none!import
 @media (min-width:901px) and (max-width:1400px){
   .poster-wall-grid{
     inset:-8% -10%!important;
-    grid-template-columns:repeat(10,minmax(0,1fr))!important;
+    grid-template-columns:repeat(14,minmax(0,1fr))!important;
     gap:10px!important;
   }
 }
@@ -579,16 +579,14 @@ html body.page-home .poster-wall::after{
   html body.page-home .poster-wall-tile{width:clamp(38px,2.4vw,60px)!important}
 }
 
-/* ===== 2026-09-21 cinematic mosaic — EVERY viewport =====
-   The key-art wall now fills the screen on handsets, tablets, desktop and both
-   Android WebView modules, with a cinematic vignette keeping the centre UI
-   readable.
+/* ===== 2026-09-21 tilted key-art collage — EVERY viewport =====
+   The reference is a streaming-service sign-in wall: a dense grid of key art,
+   rotated a few degrees, bleeding past all four edges, under a heavy scrim so
+   the centre UI stays readable. The artwork is MatchApp's own reviewed
+   catalogue, pooled by poster-wall.js — not another service's line-up.
 
-   The wall is pinned to the viewport again (it was spread down the whole page
-   on 2026-09-20). Sixteen posters cannot fill a 5000px handset page, so a
-   page-height wall reads as scattered confetti on small screens no matter how
-   large the tiles are. Pinned to the viewport, the same sixteen posters tile a
-   full screen on every device and the content scrolls over them.
+   The wall is pinned to the viewport, so the grid fills one screen on every
+   device and the page scrolls over it.
 
    Deliberately static at every width: the 2026-09-20 renderer crash guard
    above stays in force and nothing in this pass declares animation,
@@ -605,141 +603,103 @@ html body.page-home .poster-wall{
   contain:paint!important;
 }
 
-/* Fade the whole mosaic through one transparency layer on the grid rather than
-   sixteen on the tiles. Higher specificity than the inline compact sheet's
-   .poster-wall-grid{opacity:1}, which would otherwise win on source order. */
+/* One transparency layer on the grid rather than one per tile. Higher
+   specificity than the inline compact sheet's .poster-wall-grid{opacity:1},
+   which would otherwise win on source order. */
 html body.page-home .poster-wall .poster-wall-grid{
   position:absolute!important;
-  inset:0!important;
-  opacity:.5!important;
+  inset:-34% -15%!important;
+  display:grid!important;
+  grid-auto-rows:min-content!important;
+  align-content:start!important;
+  gap:0.55vw!important;
+  transform:rotate(-12deg)!important;
+  transform-origin:50% 50%!important;
+  opacity:.76!important;
 }
+
+/* Tiles flow in the grid instead of being individually placed. */
 html body.page-home .poster-wall-tile{
-  position:absolute!important;
+  position:relative!important;
+  top:auto!important;right:auto!important;bottom:auto!important;left:auto!important;
+  width:auto!important;
+  height:auto!important;
   aspect-ratio:2/3!important;
+  overflow:hidden!important;
+  border-radius:4px!important;
   opacity:1!important;
-  border-radius:10px!important;
   transform:none!important;
+  box-shadow:0 4px 12px rgba(0,0,0,.42)!important;
+  background:rgba(12,10,26,.55)!important;
+}
+html body.page-home .poster-wall-tile>img{
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
   display:block!important;
-  box-shadow:0 6px 16px rgba(0,0,0,.5),0 0 0 1px rgba(229,193,88,.20)!important;
 }
+html body.page-home .poster-wall-brand{display:none!important}
+html body.page-home .poster-wall::before{display:none!important}
 
-/* ---- Handsets: three columns x five rows fills a phone screen ---- */
+/* Column count per breakpoint. Tiles must stay large enough to read as key art
+   and numerous enough to overfill the rotated grid at every size. */
 @media(max-width:700px){
-  html body.page-home .poster-wall-tile{
-    width:clamp(96px,30vw,150px)!important;
-    border-radius:8px!important;
+  html body.page-home .poster-wall .poster-wall-grid{
+    grid-template-columns:repeat(4,minmax(0,1fr))!important;
+    gap:1.2vw!important;
+    opacity:.92!important;
   }
-  html body.page-home .poster-wall-tile:nth-child(1){top:-4%;left:-7%;right:auto}
-  html body.page-home .poster-wall-tile:nth-child(2){top:6%;left:34%;right:auto}
-  html body.page-home .poster-wall-tile:nth-child(3){top:-4%;right:-7%;left:auto}
-  html body.page-home .poster-wall-tile:nth-child(4){top:17%;left:-7%;right:auto}
-  html body.page-home .poster-wall-tile:nth-child(5){top:27%;left:34%;right:auto}
-  html body.page-home .poster-wall-tile:nth-child(6){top:17%;right:-7%;left:auto}
-  html body.page-home .poster-wall-tile:nth-child(7){top:38%;left:-7%;right:auto}
-  html body.page-home .poster-wall-tile:nth-child(8){top:48%;left:34%;right:auto}
-  html body.page-home .poster-wall-tile:nth-child(9){top:38%;right:-7%;left:auto}
-  html body.page-home .poster-wall-tile:nth-child(10){top:59%;left:-7%;right:auto}
-  html body.page-home .poster-wall-tile:nth-child(11){top:69%;left:34%;right:auto}
-  html body.page-home .poster-wall-tile:nth-child(12){top:59%;right:-7%;left:auto}
-  html body.page-home .poster-wall-tile:nth-child(13){top:80%;left:-7%;right:auto}
-  html body.page-home .poster-wall-tile:nth-child(14){top:90%;left:34%;right:auto}
-  html body.page-home .poster-wall-tile:nth-child(15){top:80%;right:-7%;left:auto}
-  html body.page-home .poster-wall-tile:nth-child(16){top:-25%;left:34%;right:auto}
-  /* A handset screen is almost entirely content, so the scrim stays even
-     rather than carving out a dark centre that would hide the mosaic. */
-  html body.page-home .poster-wall::after{
-    background:
-      linear-gradient(180deg,
-        rgba(5,4,16,.62) 0%,
-        rgba(5,4,16,.17) 8%,
-        rgba(5,4,16,.17) 92%,
-        rgba(5,4,16,.64) 100%)!important;
-  }
-  html body.page-home .poster-wall .poster-wall-grid{opacity:.64!important}
 }
-
-/* ---- Tablets: four columns x four rows ---- */
 @media(min-width:701px) and (max-width:1099px){
-  html body.page-home .poster-wall-tile{
-    width:clamp(112px,15vw,190px)!important;
+  html body.page-home .poster-wall .poster-wall-grid{
+    grid-template-columns:repeat(7,minmax(0,1fr))!important;
+    gap:.8vw!important;
   }
-  html body.page-home .poster-wall-tile:nth-child(1){top:-3%;left:-2%;right:auto}
-  html body.page-home .poster-wall-tile:nth-child(2){top:9%;left:14%;right:auto}
-  html body.page-home .poster-wall-tile:nth-child(3){top:9%;right:14%;left:auto}
-  html body.page-home .poster-wall-tile:nth-child(4){top:-3%;right:-2%;left:auto}
-  html body.page-home .poster-wall-tile:nth-child(5){top:22%;left:-2%;right:auto}
-  html body.page-home .poster-wall-tile:nth-child(6){top:34%;left:14%;right:auto}
-  html body.page-home .poster-wall-tile:nth-child(7){top:34%;right:14%;left:auto}
-  html body.page-home .poster-wall-tile:nth-child(8){top:22%;right:-2%;left:auto}
-  html body.page-home .poster-wall-tile:nth-child(9){top:47%;left:-2%;right:auto}
-  html body.page-home .poster-wall-tile:nth-child(10){top:59%;left:14%;right:auto}
-  html body.page-home .poster-wall-tile:nth-child(11){top:59%;right:14%;left:auto}
-  html body.page-home .poster-wall-tile:nth-child(12){top:47%;right:-2%;left:auto}
-  html body.page-home .poster-wall-tile:nth-child(13){top:72%;left:-2%;right:auto}
-  html body.page-home .poster-wall-tile:nth-child(14){top:84%;left:14%;right:auto}
-  html body.page-home .poster-wall-tile:nth-child(15){top:84%;right:14%;left:auto}
-  html body.page-home .poster-wall-tile:nth-child(16){top:72%;right:-2%;left:auto}
-  html body.page-home .poster-wall::after{
-    background:
-      linear-gradient(90deg,
-        rgba(5,4,16,.30) 0%,
-        rgba(5,4,16,.08) 7%,
-        rgba(5,4,16,.10) 22%,
-        rgba(5,4,16,.56) 36%,
-        rgba(5,4,16,.78) 50%,
-        rgba(5,4,16,.56) 64%,
-        rgba(5,4,16,.10) 78%,
-        rgba(5,4,16,.08) 93%,
-        rgba(5,4,16,.30) 100%),
-      linear-gradient(180deg,
-        rgba(5,4,16,.66) 0%,
-        rgba(5,4,16,.12) 7%,
-        rgba(5,4,16,.12) 93%,
-        rgba(5,4,16,.68) 100%)!important;
+}
+@media(min-width:1100px){
+  html body.page-home .poster-wall .poster-wall-grid{
+    grid-template-columns:repeat(11,minmax(0,1fr))!important;
   }
-  html body.page-home .poster-wall .poster-wall-grid{opacity:.6!important}
+}
+@media(min-width:1800px){
+  html body.page-home .poster-wall .poster-wall-grid{
+    grid-template-columns:repeat(14,minmax(0,1fr))!important;
+  }
 }
 
-/* ---- Desktop: four columns x four rows, outer pair bleeding off each edge ---- */
-@media(min-width:1100px){
-  html body.page-home .poster-wall-tile{
-    width:clamp(132px,11.5vw,205px)!important;
-  }
-  html body.page-home .poster-wall-tile:nth-child(1){top:-5%;left:-1.6%;right:auto}
-  html body.page-home .poster-wall-tile:nth-child(2){top:8%;left:11.5%;right:auto}
-  html body.page-home .poster-wall-tile:nth-child(3){top:8%;right:11.5%;left:auto}
-  html body.page-home .poster-wall-tile:nth-child(4){top:-5%;right:-1.6%;left:auto}
-  html body.page-home .poster-wall-tile:nth-child(5){top:21%;left:-1.6%;right:auto}
-  html body.page-home .poster-wall-tile:nth-child(6){top:34%;left:11.5%;right:auto}
-  html body.page-home .poster-wall-tile:nth-child(7){top:34%;right:11.5%;left:auto}
-  html body.page-home .poster-wall-tile:nth-child(8){top:21%;right:-1.6%;left:auto}
-  html body.page-home .poster-wall-tile:nth-child(9){top:47%;left:-1.6%;right:auto}
-  html body.page-home .poster-wall-tile:nth-child(10){top:60%;left:11.5%;right:auto}
-  html body.page-home .poster-wall-tile:nth-child(11){top:60%;right:11.5%;left:auto}
-  html body.page-home .poster-wall-tile:nth-child(12){top:47%;right:-1.6%;left:auto}
-  html body.page-home .poster-wall-tile:nth-child(13){top:73%;left:-1.6%;right:auto}
-  html body.page-home .poster-wall-tile:nth-child(14){top:86%;left:11.5%;right:auto}
-  html body.page-home .poster-wall-tile:nth-child(15){top:86%;right:11.5%;left:auto}
-  html body.page-home .poster-wall-tile:nth-child(16){top:73%;right:-1.6%;left:auto}
-  /* Deep midnight down the centre column, where the UI lives, and at the outer
-     edges, with a trough wide enough that the four columns sit in the lit band
-     instead of being swallowed by the edge falloff. */
+/* The scrim: a deep pool of midnight behind the centre column of UI, fading
+   out towards the edges so the collage stays visible all the way to the
+   corners, plus top and bottom bands. */
+html body.page-home .poster-wall::after{
+  content:''!important;
+  position:absolute!important;
+  inset:0!important;
+  background:
+    radial-gradient(ellipse 60% 40% at 50% 27%,
+      rgba(5,4,16,.90) 0%,
+      rgba(5,4,16,.70) 44%,
+      rgba(5,4,16,.26) 78%,
+      rgba(5,4,16,0) 100%),
+    linear-gradient(180deg,
+      rgba(5,4,16,.70) 0%,
+      rgba(5,4,16,.22) 13%,
+      rgba(5,4,16,.26) 72%,
+      rgba(5,4,16,.86) 100%)!important;
+}
+@media(max-width:700px){
+  /* A handset is almost entirely content, so the pool is tightened and the
+     edges are left brighter, otherwise the collage disappears completely. */
   html body.page-home .poster-wall::after{
     background:
-      linear-gradient(90deg,
-        rgba(5,4,16,.34) 0%,
-        rgba(5,4,16,.08) 5%,
-        rgba(5,4,16,.10) 18%,
-        rgba(5,4,16,.68) 32%,
-        rgba(5,4,16,.90) 50%,
-        rgba(5,4,16,.68) 68%,
-        rgba(5,4,16,.10) 82%,
-        rgba(5,4,16,.08) 95%,
-        rgba(5,4,16,.34) 100%),
+      radial-gradient(ellipse 96% 22% at 50% 33%,
+        rgba(5,4,16,.80) 0%,
+        rgba(5,4,16,.52) 52%,
+        rgba(5,4,16,.12) 86%,
+        rgba(5,4,16,0) 100%),
       linear-gradient(180deg,
-        rgba(5,4,16,.72) 0%,
-        rgba(5,4,16,.14) 7%,
-        rgba(5,4,16,.14) 93%,
-        rgba(5,4,16,.74) 100%)!important;
+        rgba(5,4,16,.52) 0%,
+        rgba(5,4,16,.06) 10%,
+        rgba(5,4,16,.08) 82%,
+        rgba(5,4,16,.66) 100%)!important;
   }
 }
