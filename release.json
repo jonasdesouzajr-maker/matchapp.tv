@@ -1,21 +1,21 @@
 {
-  "version": "2026.09.21.3",
+  "version": "2026.09.21.4",
   "date": "2026-09-21",
   "functional": true,
   "notes": {
-    "en": "Ask AI now keeps the typing composer clearly visible, restores multilingual microphone dictation, and reads answers aloud in the selected language. Android apps also include a native speech-recognizer fallback. Kids Mode remains in static no-animation stability mode.",
-    "pt-BR": "O Ask AI agora mantém o campo de digitação claramente visível, restaura o ditado por microfone em vários idiomas e lê as respostas em voz alta no idioma selecionado. Os apps Android também incluem reconhecimento de voz nativo como alternativa. O Modo Kids continua no modo estático sem animações.",
-    "es": "Ask AI ahora mantiene visible el campo de escritura, restaura el dictado por micrófono multilingüe y lee las respuestas en voz alta en el idioma seleccionado. Las apps Android también incluyen reconocimiento de voz nativo como respaldo. Kids Mode sigue sin animaciones.",
-    "fr": "Ask AI garde désormais le champ de saisie bien visible, rétablit la dictée multilingue au micro et lit les réponses à voix haute dans la langue sélectionnée. Les apps Android disposent aussi d’un secours de reconnaissance vocale native. Le mode Kids reste sans animation.",
-    "de": "Ask AI zeigt das Eingabefeld wieder klar sichtbar, stellt mehrsprachige Spracheingabe per Mikrofon wieder her und liest Antworten in der gewählten Sprache vor. Die Android-Apps haben zusätzlich eine native Spracherkennungs-Alternative. Kids Mode bleibt animationsfrei.",
-    "it": "Ask AI mantiene ora ben visibile il campo di testo, ripristina la dettatura multilingue tramite microfono e legge le risposte ad alta voce nella lingua selezionata. Le app Android includono anche un fallback di riconoscimento vocale nativo. Kids Mode resta senza animazioni.",
-    "tr": "Ask AI yazı alanını artık açıkça görünür tutuyor, çok dilli mikrofon diktesini geri getiriyor ve yanıtları seçili dilde sesli okuyor. Android uygulamalarında ayrıca yerel konuşma tanıma yedeği bulunuyor. Kids Mode animasyonsuz kalıyor.",
-    "ru": "Ask AI теперь явно показывает поле ввода, снова поддерживает многоязычную диктовку через микрофон и озвучивает ответы на выбранном языке. В Android-приложениях также есть нативный резервный распознаватель речи. Kids Mode остаётся без анимаций.",
-    "ar": "أصبح Ask AI يعرض حقل الكتابة بوضوح، ويعيد الإملاء الصوتي متعدد اللغات، ويقرأ الردود بصوت مسموع باللغة المحددة. كما تتضمن تطبيقات Android خيارًا احتياطيًا للتعرّف الصوتي الأصلي. ويظل وضع الأطفال بلا رسوم متحركة.",
-    "hi": "Ask AI अब टाइपिंग फ़ील्ड को स्पष्ट रूप से दिखाता है, बहुभाषी माइक्रोफ़ोन डिक्टेशन वापस लाता है और चुनी गई भाषा में जवाब बोलकर सुनाता है। Android ऐप्स में नेटिव स्पीच रिकग्नाइज़र फॉलबैक भी है। Kids Mode बिना एनीमेशन के बना रहता है।",
-    "id": "Ask AI kini menampilkan kolom ketik dengan jelas, mengembalikan dikte mikrofon multibahasa, dan membacakan jawaban dalam bahasa yang dipilih. Aplikasi Android juga memiliki fallback pengenal suara native. Kids Mode tetap tanpa animasi.",
-    "ja": "Ask AI の入力欄を明確に表示し、多言語のマイク音声入力を復活させ、選択中の言語で回答を読み上げるようにしました。Android アプリにはネイティブ音声認識のフォールバックも追加。Kids Mode は引き続きアニメーションなしです。",
-    "ko": "Ask AI 입력창을 다시 명확하게 표시하고, 다국어 마이크 받아쓰기를 복원했으며, 선택한 언어로 답변을 음성 재생합니다. Android 앱에는 네이티브 음성 인식 대체 경로도 추가했습니다. Kids Mode는 계속 애니메이션 없이 유지됩니다.",
-    "zh": "Ask AI 现在会清晰显示输入框，恢复多语言麦克风听写，并用当前选择的语言朗读回答。Android 应用还增加了原生语音识别备用方案。Kids Mode 继续保持无动画稳定模式。"
+    "en": "Ask AI smartphone layout is hardened so the typing composer and microphone remain visible at handset widths, with the same smartphone guard mirrored into the standard Android app. Tablet, desktop and TV layouts are unchanged.",
+    "pt-BR": "O layout do Ask AI em smartphones foi reforçado para manter o campo de digitação e o microfone visíveis em telas de celular, com a mesma proteção replicada no app Android padrão. Tablet, desktop e TV não foram alterados.",
+    "es": "El diseño de Ask AI en smartphones fue reforzado para mantener visibles el campo de escritura y el micrófono, con la misma protección aplicada a la app Android estándar. Tablet, escritorio y TV no cambian.",
+    "fr": "La mise en page Ask AI sur smartphone a été renforcée afin de garder le champ de saisie et le micro visibles, avec la même protection dans l’app Android standard. Les versions tablette, ordinateur et TV restent inchangées.",
+    "de": "Das Ask-AI-Smartphone-Layout wurde gehärtet, damit Eingabefeld und Mikrofon auf Handys sichtbar bleiben; dieselbe Absicherung ist in der Standard-Android-App gespiegelt. Tablet, Desktop und TV bleiben unverändert.",
+    "it": "Il layout smartphone di Ask AI è stato rinforzato per mantenere visibili il campo di testo e il microfono, con la stessa protezione nell’app Android standard. Tablet, desktop e TV restano invariati.",
+    "tr": "Ask AI akıllı telefon düzeni, yazı alanı ve mikrofonun telefon genişliklerinde görünür kalması için güçlendirildi; aynı koruma standart Android uygulamasına da yansıtıldı. Tablet, masaüstü ve TV değişmedi.",
+    "ru": "Мобильная раскладка Ask AI усилена, чтобы поле ввода и микрофон оставались видимыми на смартфонах; та же защита добавлена в стандартное Android-приложение. Планшеты, десктоп и TV не изменены.",
+    "ar": "تم تعزيز تخطيط Ask AI على الهواتف الذكية لضمان بقاء حقل الكتابة والميكروفون ظاهرين، مع تطبيق الحماية نفسها في تطبيق Android القياسي. لم تتغير واجهات الجهاز اللوحي وسطح المكتب والتلفاز.",
+    "hi": "Ask AI के स्मार्टफोन लेआउट को मजबूत किया गया है ताकि टाइपिंग बॉक्स और माइक्रोफ़ोन फोन स्क्रीन पर दिखाई दें; यही सुरक्षा स्टैंडर्ड Android ऐप में भी जोड़ी गई है। टैबलेट, डेस्कटॉप और TV लेआउट नहीं बदले गए।",
+    "id": "Tata letak Ask AI di smartphone diperkuat agar kolom ketik dan mikrofon tetap terlihat pada layar ponsel, dengan perlindungan yang sama diterapkan di aplikasi Android standar. Tablet, desktop, dan TV tidak berubah.",
+    "ja": "Ask AI のスマートフォン表示を強化し、入力欄とマイクが端末幅でも常に見えるようにしました。同じ保護を標準 Android アプリにも反映しています。タブレット、デスクトップ、TV は変更していません。",
+    "ko": "Ask AI 스마트폰 레이아웃을 보강해 휴대폰 화면에서 입력창과 마이크가 항상 보이도록 했고, 동일한 보호를 표준 Android 앱에도 적용했습니다. 태블릿, 데스크톱, TV는 변경하지 않았습니다.",
+    "zh": "Ask AI 的手机布局已加强，确保输入框和麦克风在手机宽度下始终可见，并将同样的保护同步到标准 Android 应用。平板、桌面和电视布局未改动。"
   }
 }
