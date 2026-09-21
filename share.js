@@ -37,28 +37,47 @@ function nextRewardResetText() {
 }
 
 // Server-enforced when signed in (claim_share_reward RPC), local otherwise.
+// A reward is real Match currency: it accumulates and stays until a Match uses it.
 async function grantShareReward() {
     if (window.isUserLoggedIn && window.supabaseClient) {
         try {
             const { data, error } = await window.supabaseClient.rpc('claim_share_reward');
             if (error) throw error;
             if (data && data.granted) {
-                if (window.refreshQuotaStatus) window.refreshQuotaStatus();
-                return { ok: true, left: data.remaining_rewards };
+                if (window.refreshQuotaStatus) await window.refreshQuotaStatus();
+                return {
+                    ok: true,
+                    left: data.remaining_rewards,
+                    matches: Number(data.purchased_matches ?? data.matches) || 0
+                };
             }
             return { ok: false, left: 0, resetIn: (data && data.reset_in_seconds) || 0 };
         } catch (e) {
-            console.warn('Share reward RPC unavailable, using local grant:', e.message || e);
+            // Never mint a client-side paid/reward balance for a signed-in
+            // account when the authoritative server grant failed.
+            console.warn('Share reward RPC unavailable:', e.message || e);
+            return { ok: false, left: shareRewardsLeft(), serverUnavailable: true };
         }
     }
-    // Anonymous / offline path
+    // Anonymous path: persistent local Match balance, separate from the daily
+    // included-action counter. Copying text is not a completed social share.
     if (shareRewardsLeft() <= 0) return { ok: false, left: 0 };
     const log = getShareLog();
     log.push(Date.now());
     localStorage.setItem('match_shareLog', JSON.stringify(log));
-    const current = parseInt(localStorage.getItem('match_dailyCount') || '0');
-    localStorage.setItem('match_dailyCount', Math.max(0, current - 1).toString());
-    return { ok: true, left: shareRewardsLeft() };
+    const currentBalance = window.MatchAppGuestMatches?.balance?.()
+        ?? Math.max(0, Number.parseInt(localStorage.getItem('match_guestBonusMatches') || '0', 10) || 0);
+    const balance = window.MatchAppGuestMatches?.set?.(currentBalance + 1)
+        ?? (() => { const next=currentBalance+1; localStorage.setItem('match_guestBonusMatches',String(next)); return next; })();
+    const today = new Date().toLocaleDateString();
+    const used = localStorage.getItem('match_lastDate') === today
+        ? Math.max(0, Number.parseInt(localStorage.getItem('match_dailyCount') || '0', 10) || 0)
+        : 0;
+    window.updateQuotaBadge?.({
+        remaining: Math.max(0, 3 - used),
+        used, limit: 3, purchased_matches: balance, anon: true
+    });
+    return { ok: true, left: shareRewardsLeft(), matches: balance };
 }
 
 window.grantShareReward = grantShareReward;
@@ -514,10 +533,17 @@ async function afterShare(network) {
     if (result.ok) {
         _rewardedThisCard = true;
         if (statusEl) statusEl.innerHTML = `🎉 <strong>Bonus match unlocked!</strong> ${result.left} of ${SHARE_MAX_REWARDS} left this window.`;
-        if (window.showToast) showToast('🎁 Thanks for sharing! +1 bonus match unlocked.');
-        if (typeof confetti === 'function') confetti({ particleCount: 130, spread: 88, origin: { y: 0.65 }, colors: ['#E5C158', '#FFF3A3', '#A376B6', '#ffffff'] });
+        if (window.showToast) showToast('🎁 Thanks for sharing! +1 Match saved until you use it.');
+        if (typeof confetti === 'function' && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            const compact = matchMedia('(max-width: 820px)').matches || document.documentElement.classList.contains('matchapp-android');
+            confetti({ particleCount: compact ? 16 : 30, spread: 72, origin: { y: 0.62 }, colors: ['#E5C158', '#FFF3A3', '#A376B6', '#ffffff'], disableForReducedMotion: true });
+        }
         showRewardScreen(result.left);
     } else if (statusEl) {
+        if (result.serverUnavailable) {
+            statusEl.textContent = 'Could not verify the reward right now. Your account balance was not changed — please try sharing again.';
+            return;
+        }
         const mins = result.resetIn ? Math.ceil(result.resetIn / 60) : null;
         const when = mins ? (mins >= 60 ? `${Math.floor(mins/60)}h ${mins%60}m` : `${mins}m`) : nextRewardResetText();
         statusEl.innerHTML = `⏳ All ${SHARE_MAX_REWARDS} bonus matches claimed. Next unlocks in <strong>${when}</strong>. Thanks for sharing!`;

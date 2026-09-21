@@ -59,18 +59,42 @@ let recentTitles = readPortfolioCache('match_recentTitles', [], item => typeof i
 let lastQuotaStatus = null;
 
 const ANON_DAILY_LIMIT = 3;
+const GUEST_MATCH_BALANCE_KEY = 'match_guestBonusMatches';
+
+function guestMatchBalance() {
+    const value = Number.parseInt(localStorage.getItem(GUEST_MATCH_BALANCE_KEY) || '0', 10);
+    return Number.isFinite(value) ? Math.max(0, value) : 0;
+}
+function setGuestMatchBalance(value) {
+    const safe = Math.max(0, Number.parseInt(value, 10) || 0);
+    localStorage.setItem(GUEST_MATCH_BALANCE_KEY, String(safe));
+    return safe;
+}
+window.MatchAppGuestMatches = Object.freeze({ balance: guestMatchBalance, set: setGuestMatchBalance });
 
 function anonLimitCheck(action = 'match') {
     const todayStr = new Date().toLocaleDateString();
     const lastDate = localStorage.getItem('match_lastDate');
     let dailyCount = parseInt(localStorage.getItem('match_dailyCount') || '0');
     if (lastDate !== todayStr) { dailyCount = 0; localStorage.setItem('match_lastDate', todayStr); }
+    const extras = guestMatchBalance();
 
     if (dailyCount >= ANON_DAILY_LIMIT) {
-        // Anonymous visitors previously got no quota status at all, so the
-        // remaining-matches counter simply never appeared for them — which is
-        // the majority of first-time traffic. Populate it here too.
-        lastQuotaStatus = { allowed: false, used: dailyCount, limit: ANON_DAILY_LIMIT, remaining: 0, anon: true };
+        // Extra Matches are Match-only, non-expiring currency. They never pay
+        // for Ask AI, and they are consumed only after the included allowance.
+        if (action === 'match' && extras > 0) {
+            const remainingExtras = setGuestMatchBalance(extras - 1);
+            lastQuotaStatus = {
+                allowed: true, used: dailyCount, limit: ANON_DAILY_LIMIT, remaining: 0,
+                purchased_matches: remainingExtras, paid_with_match_pack: true, anon: true
+            };
+            updateQuotaBadge(lastQuotaStatus);
+            return true;
+        }
+        lastQuotaStatus = {
+            allowed: false, used: dailyCount, limit: ANON_DAILY_LIMIT, remaining: 0,
+            purchased_matches: extras, anon: true
+        };
         updateQuotaBadge(lastQuotaStatus);
         showQuotaMessage('anon', lastQuotaStatus, action);
         return false;
@@ -78,7 +102,10 @@ function anonLimitCheck(action = 'match') {
 
     const used = dailyCount + 1;
     localStorage.setItem('match_dailyCount', used.toString());
-    lastQuotaStatus = { allowed: true, used, limit: ANON_DAILY_LIMIT, remaining: ANON_DAILY_LIMIT - used, anon: true };
+    lastQuotaStatus = {
+        allowed: true, used, limit: ANON_DAILY_LIMIT, remaining: ANON_DAILY_LIMIT - used,
+        purchased_matches: extras, anon: true
+    };
     updateQuotaBadge(lastQuotaStatus);
     return true;
 }
@@ -160,6 +187,12 @@ async function checkDailyLimit(action = 'match') {
         isUserLoggedIn = true; window.isUserLoggedIn = true;
         const { data, error } = await supabaseClient.rpc('consume_ai_action', {p_reason: action});
         if (error || !data) throw error || new Error('Quota unavailable');
+        // consume_ai_action/consume_match may omit the separate Match-pack
+        // balance on some successful included actions. Preserve the last known
+        // server balance until the next read-only match_status refresh.
+        if (typeof data.purchased_matches !== 'number' && typeof lastQuotaStatus?.purchased_matches === 'number') {
+            data.purchased_matches = lastQuotaStatus.purchased_matches;
+        }
         lastQuotaStatus = data; updateQuotaBadge(data);
         window.renderCreditBadge?.(data.credits);
         if (data.allowed) {
@@ -182,9 +215,12 @@ window.checkDailyLimit = checkDailyLimit;
 function updateQuotaBadge(status) {
     const el = document.getElementById('quota-badge');
     if (!el || !status || typeof status.remaining !== 'number') return;
+    const included = Math.max(0, Number(status.remaining) || 0);
+    const extras = Math.max(0, Number(status.purchased_matches) || 0);
+    const usableMatches = included + extras;
     el.style.display = 'inline-flex';
-    el.innerHTML = `⚡ <strong>${status.remaining}</strong>&nbsp;${tSafe('quota.left', 'left today')}`;
-    el.classList.toggle('quota-low', status.remaining <= 1);
+    el.innerHTML = `⚡ <strong>${usableMatches}</strong>&nbsp;${tSafe('quota.left', 'left today')}`;
+    el.classList.toggle('quota-low', usableMatches <= 1);
 
     // The moment someone notices they are running low is the moment to offer
     // more — better than letting them hit zero, get blocked, and go hunting
@@ -196,7 +232,7 @@ function updateQuotaBadge(status) {
         el.setAttribute('tabindex', '0');
         el.style.cursor = 'pointer';
         const go = () => {
-            if (window.track) window.track('quota_badge_click', { remaining: status.remaining });
+            if (window.track) window.track('quota_badge_click', { remaining: usableMatches });
             window.location.href = '/pricing/pricing.html?from=quota';
         };
         if(el.tagName==='A'){el.href='/pricing/pricing.html?from=quota';el.addEventListener('click',()=>{if(window.track)window.track('quota_badge_click',{remaining:el.dataset.remaining});});}
@@ -205,9 +241,11 @@ function updateQuotaBadge(status) {
             if (el.tagName!=='A' && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); go(); }
         });
     }
-    el.dataset.remaining=String(status.remaining);
-    el.title = 'Get more';
-    el.setAttribute('aria-label', `${status.remaining} ${tSafe('quota.left', 'left today')}. ${el.title}`);
+    el.dataset.remaining=String(usableMatches);
+    el.title = extras > 0
+        ? `${included} included + ${extras} Extra Match${extras === 1 ? '' : 'es'}`
+        : 'Get more';
+    el.setAttribute('aria-label', `${usableMatches} ${tSafe('quota.left', 'left today')}. ${el.title}`);
 }
 window.updateQuotaBadge = updateQuotaBadge;
 
@@ -3554,25 +3592,20 @@ window.triggerMatch = async function(isSpecificSearch = false) {
         }
     }
     let preflight = isSpecificSearch ? null : pickFromCatalog(requested.cat,requested.plat,requested.mood,requested.vibe,requested.rating,requested.decade);
-    // When the curated unseen pool is exhausted, try a fresh live title before
-    // recycling history. iTunes cannot verify third-party platform availability,
-    // so live discovery is used only when the platform filter is unconstrained.
-    if (!isSpecificSearch && !preflight) {
-        if (!normCriteria(requested.plat).length && !wantedGenres.length && !blockedGenres.length && !blockedCountries.length) {
-            try { preflight = await discoverFromITunes(requested.cat,requested.mood,requested.vibe,requested.decade,requested.rating); }
-            catch (_) { preflight = null; }
-        }
-        if (!preflight) preflight = pickRecycledCatalog(requested.cat,requested.plat,requested.mood,requested.vibe,requested.rating,requested.decade);
-    }
-    const typed = document.getElementById('specific-search-input')?.value || '';
-
-    if (!isSpecificSearch && !preflight) {
-        preflight = pickGuaranteedCatalog(requested.cat,requested.plat,requested.mood,requested.vibe,requested.rating,requested.decade);
-    }
-    // Real genre is also a hard requirement. Never disable it as a fallback.
+    // Never recycle a previously shown title. If the curated exact pool is
+    // exhausted, ask the verified source layer for a genuinely fresh title.
+    // TMDB gets first chance because it can verify genres/ratings/origin and,
+    // when requested, regional provider availability.
     if (!isSpecificSearch && !preflight) {
         try { preflight = await discoverVerifiedExactTMDB(requested); } catch (_) { preflight = null; }
     }
+    // iTunes is a real-source fallback only when no third-party platform,
+    // source genre or blocked-source filter needs verification.
+    if (!isSpecificSearch && !preflight && !normCriteria(requested.plat).length && !wantedGenres.length && !blockedGenres.length && !blockedCountries.length) {
+        try { preflight = await discoverFromITunes(requested.cat,requested.mood,requested.vibe,requested.decade,requested.rating); }
+        catch (_) { preflight = null; }
+    }
+    const typed = document.getElementById('specific-search-input')?.value || '';
     if (!isSpecificSearch && !preflight) {
         ['questionnaire-box','search-box'].forEach(id=>{const el=document.getElementById(id);if(el)el.style.display='block';});
         ['loading-box','result-box'].forEach(id=>{const el=document.getElementById(id);if(el)el.style.display='none';});
@@ -3765,7 +3798,7 @@ window.triggerMatch = async function(isSpecificSearch = false) {
         }
     }
     const resultWasKnown = !!(matchResult && window.matchPolicy?.known().has(window.matchPolicy.key(matchResult.title)));
-    if (!matchResult || (resultWasKnown && !matchResult._historyFallback)) {
+    if (!matchResult || resultWasKnown) {
         clearInterval(timerInterval);
         document.body.classList.remove('match-searching');
         if (loadBox) loadBox.style.display='none';
@@ -3808,7 +3841,9 @@ function renderQuotaCorner() {
     // nothing rather than invent a number the server might contradict.
     if (!s || typeof s.remaining !== 'number') { el.style.display = 'none'; return; }
 
-    const left = Math.max(0, s.remaining);
+    const included = Math.max(0, Number(s.remaining) || 0);
+    const extras = Math.max(0, Number(s.purchased_matches) || 0);
+    const left = included + extras;
     el.classList.remove('qc-low', 'qc-out', 'qc-unlimited');
 
     numEl.textContent = left;
@@ -3819,7 +3854,8 @@ function renderQuotaCorner() {
     if (left === 0) el.classList.add('qc-out');
     else if (left === 1) el.classList.add('qc-low');
 
-    el.title = tSafe('match.used','{used} of {limit} included AI actions used').replace('{used}',s.used||0).replace('{limit}',s.limit||'?');
+    el.title = tSafe('match.used','{used} of {limit} included AI actions used').replace('{used}',s.used||0).replace('{limit}',s.limit||'?')
+        + (extras ? ` · ${extras} Extra Match${extras===1?'':'es'} saved` : '');
     el.style.display = 'flex';
 }
 
@@ -3872,8 +3908,14 @@ async function hydrateTitleFacts(selected, hints) {
     // Show what the catalog already knows immediately, so the card is never
     // empty while the network call is in flight.
     const facts = [];
-    if (hints.year) facts.push(String(hints.year));
-    if (hints.country) facts.push(hints.country);
+    const addFact = value => {
+        const text = String(value || '').trim();
+        if (text && !facts.some(x => String(x).toLowerCase() === text.toLowerCase())) facts.push(text);
+    };
+    if (hints.year) addFact(String(hints.year));
+    if (hints.country) addFact(hints.country);
+    [...(Array.isArray(hints.cats) ? hints.cats : []), ...(Array.isArray(selected.cats) ? selected.cats : [])]
+        .forEach(cat => addFact(String(cat).replace(/\b\w/g, ch => ch.toUpperCase())));
     if (bar && facts.length) {
         bar.innerHTML = facts.map(f => `<span>${sanitizeDisplayText(f)}</span>`).join('');
         bar.style.display = 'flex';
@@ -3983,7 +4025,10 @@ async function renderResult(selected, isSpecificSearch) {
     if (!resultBox) return;
     resultBox.style.display = 'block';
     resultBox.classList.add('is-revealed');
-    resultBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    resultBox.scrollIntoView({
+        behavior: document.documentElement.classList.contains('reduce-motion') || matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+        block: 'start'
+    });
     globalMatchTitle = selected.title;
     window.globalMatchTitle = selected.title;
     const titleEl = document.getElementById('res-title');
@@ -4014,7 +4059,10 @@ async function renderResult(selected, isSpecificSearch) {
 
     // TRIGGER PREMIUM FX
     window.playPremiumSound();
-    if (!document.documentElement.classList.contains('reduce-motion') && !matchMedia('(prefers-reduced-motion: reduce)').matches && typeof confetti !== 'undefined') confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 }, colors: ['#E5C158', '#FFF', '#8A2BE2', '#E50914'] });
+    if (!document.documentElement.classList.contains('reduce-motion') && !matchMedia('(prefers-reduced-motion: reduce)').matches && typeof confetti !== 'undefined') {
+        const compactFx = matchMedia('(max-width: 820px)').matches || document.documentElement.classList.contains('matchapp-android');
+        confetti({ particleCount: compactFx ? 20 : 38, spread: 64, origin: { y: 0.58 }, colors: ['#E5C158', '#FFF', '#8A2BE2', '#E50914'], disableForReducedMotion: true });
+    }
 
     document.getElementById('res-title').innerText = sanitizeDisplayText(selected.title, ['title']);
     const captionLang=window.MATCH_LANG||'en';window.localizedTitle?.(selected.title,matchHints).then(name=>{if(window.currentSynopsisSource?.title===selected.title&&(window.MATCH_LANG||'en')===captionLang)document.getElementById('res-title').textContent=name;});
@@ -4075,6 +4123,15 @@ async function renderResult(selected, isSpecificSearch) {
     window.globalMatchTitle = globalMatchTitle;
     window.globalMatchPoster = globalMatchPoster;
     window.globalPlatform = globalPlatform;
+
+    // A shown result is permanent history, not merely a short-session hint.
+    // Guests keep it locally; signed-in users also sync it through portfolio_action,
+    // so the same result is excluded across devices.
+    window.matchPolicy?.remember({
+        title: selected.title,
+        posterUrl: realCover,
+        streamUrl: selected.watchUrl || ''
+    }, 'shown');
 
     // Must come AFTER globalMatchTitle is assigned — saveCurrentNote() reads
     // it to know which title the note belongs to.

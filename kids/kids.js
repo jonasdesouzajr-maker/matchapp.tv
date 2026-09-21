@@ -161,7 +161,7 @@
   };
   Object.entries(matchCopy).forEach(([locale,copy])=>Object.assign(UI[locale],copy));
   Object.entries(window.KidsMatchCopy||{}).forEach(([locale,copy])=>Object.assign(UI[locale],copy));
-  let openingMatch=false, matchedUserId=null;
+  let openingMatch=false, matchedUserId=null, currentWatchShared=false, pendingKidsShareNetwork='';
 
   function setLanguage(next) {
     lang = normalizeLang(next);
@@ -409,9 +409,11 @@
     ];
     const chosen=[],seen=new Set();
     for(const stage of stages){
-      const pool=safePool.filter(item=>fits(item,stage)&&!seen.has(slug(item)));
-      const unseen=pool.filter(item=>!window.matchPolicy?.known().has(window.matchPolicy.key(item.title)));
-      const source=unseen.length?unseen:pool;
+      const source=safePool.filter(item=>
+        fits(item,stage) &&
+        !seen.has(slug(item)) &&
+        !window.matchPolicy?.known().has(window.matchPolicy.key(item.title))
+      );
       const ranked=source.map(item=>({item,score:(previousMatch.includes(item.title)?0:2)+Math.random()})).sort((a,b)=>b.score-a.score);
       for(const row of ranked){
         const key=slug(row.item);if(seen.has(key))continue;seen.add(key);chosen.push(row.item);if(chosen.length>=3)break;
@@ -422,7 +424,10 @@
     // from that same safe pool. This is intentionally after the staged search:
     // mood/format/era are preferences; age approval is the hard boundary.
     if(chosen.length<Math.min(3,safePool.length)){
-      const remainder=safePool.filter(item=>!seen.has(slug(item)))
+      const remainder=safePool.filter(item=>
+          !seen.has(slug(item)) &&
+          !window.matchPolicy?.known().has(window.matchPolicy.key(item.title))
+        )
         .map(item=>({item,score:(previousMatch.includes(item.title)?0:2)+Math.random()}))
         .sort((a,b)=>b.score-a.score);
       for(const row of remainder){
@@ -431,7 +436,8 @@
       }
     }
     matchPicks=chosen.slice(0,3);previousMatch=matchPicks.map(x=>x.title);
-    renderMatchResults();document.getElementById('kids-match-status').textContent=tr('matchReady');
+    renderMatchResults();
+    document.getElementById('kids-match-status').textContent=matchPicks.length?tr('matchReady'):tr('noMatch');
     document.getElementById('kids-match-submit').textContent=tr('matchAgain');
     if(matchPicks.length)await openWatch(slug(matchPicks[0]),document.getElementById('kids-match-submit'));
   }
@@ -455,7 +461,8 @@
 
   function localMatch(question, age) {
     const tokens = queryTokens(question);
-    const pool = allowedLibrary(age);
+    const known=window.matchPolicy?.known?.()||new Set();
+    const pool = allowedLibrary(age).filter(item=>!known.has(window.matchPolicy?.key?.(item.title)||normalizeTitle(item.title)));
     const synonyms = {
       animal:['animals'],animais:['animals'],animales:['animals'],funny:['funny'],engraçado:['funny'],divertido:['funny'],comedy:['funny'],learn:['learning'],learning:['learning'],aprender:['learning'],science:['learning'],math:['learning'],music:['music'],música:['music'],song:['music'],songs:['music'],adventure:['adventure'],aventura:['adventure'],family:['family'],família:['family'],familia:['family'],bedtime:['bedtime'],sleep:['bedtime'],dormir:['bedtime'],calm:['bedtime']
     };
@@ -514,7 +521,12 @@
     clearTimeout(timer);
     if (version !== requestVersion || age !== currentAge()) return;
     // Reapply the CURRENT allowlist, even to locally selected fallback results.
-    chatPicks = (aiApproved.length ? aiApproved : localMatch(question.trim(), age)).filter(x => byTitle.get(normalizeTitle(x.title)) === x && allowedForAge(x, currentAge()));
+    const known=window.matchPolicy?.known?.()||new Set();
+    chatPicks = (aiApproved.length ? aiApproved : localMatch(question.trim(), age)).filter(x =>
+      byTitle.get(normalizeTitle(x.title)) === x &&
+      allowedForAge(x, currentAge()) &&
+      !known.has(window.matchPolicy?.key?.(x.title)||normalizeTitle(x.title))
+    );
     const lead = chatPicks[0];
     const syn = lead && String(lead.synopsis || '').replace(/\s+/g, ' ').trim();
     answer.textContent = chatPicks.length
@@ -541,7 +553,7 @@
     const compact=matchMedia('(max-width: 820px)').matches || document.documentElement.classList.contains('matchapp-android');
     const confetti=document.createElement('div'); confetti.className='kids-confetti';
     const colors=['#ffcf72','#9ee8e6','#ffabcb','#ffffff','#b48cff','#7dffb3','#ff8a5c'];
-    const confettiCount=compact?20:32;
+    const confettiCount=compact?10:16;
     for(let i=0;i<confettiCount;i++){
       const bit=document.createElement('i');
       bit.style.setProperty('--x',(Math.random()*100)+'vw');
@@ -556,7 +568,7 @@
     }
     const balloons=document.createElement('div'); balloons.className='kids-balloons';
     const balloonColors=['#ff6b9d','#ffcf72','#6ecbff','#b48cff','#7dffb3','#ff8a5c'];
-    const balloonCount=compact?3:5;
+    const balloonCount=compact?3:4;
     for(let i=0;i<balloonCount;i++){
       const b=document.createElement('span');
       b.className='kids-balloon';
@@ -596,7 +608,8 @@
   }
   function paintMatch(item){
     document.getElementById('kids-watch-name').textContent=item.title;
-    document.getElementById('kids-match-detail').innerHTML='<div class="kids-result-art"><img id="kid-detail-'+slug(item)+'" src="'+makePoster(item)+'" width="600" height="900" alt="'+escapeHTML(item.title)+'"></div><div><p class="kids-result-meta">'+escapeHTML(item.year+' · '+tr(item.type)+' · '+tr('quotaUsed'))+'</p><h3>'+escapeHTML(tr('synopsis'))+'</h3><p>'+escapeHTML(description(item))+'</p><p class="kids-title-note">'+escapeHTML(item.note?tr(item.note):'')+'</p></div>';
+    const sourceCategories=item.cats.map(categoryLabel).filter(Boolean).join(' · ');
+    document.getElementById('kids-match-detail').innerHTML='<div class="kids-result-art"><img id="kid-detail-'+slug(item)+'" src="'+makePoster(item)+'" width="600" height="900" alt="'+escapeHTML(item.title)+'"></div><div><p class="kids-result-meta">'+escapeHTML([item.year,tr(item.type),sourceCategories,tr('quotaUsed')].filter(Boolean).join(' · '))+'</p><h3>'+escapeHTML(tr('synopsis'))+'</h3><p>'+escapeHTML(description(item))+'</p><p class="kids-title-note">'+escapeHTML(item.note?tr(item.note):'')+'</p></div>';
     hydratePoster(item,'detail');renderWatchLinks();
     const shareLink='https://matchapp.tv/kids/?title='+encodeURIComponent(slug(item));
     document.getElementById('kids-share-link').value=shareLink;
@@ -612,15 +625,27 @@
       const result=await window.KidsAccount.consume(()=>band===currentAge());
       if(!result.allowed){status.textContent=tr('quotaEmpty');document.getElementById('kids-account-help').hidden=false;status.scrollIntoView({block:'center'});return;}
       if(band!==currentAge() || !allowedForAge(item,currentAge()))return;
-      matchedUserId=result.userId;currentWatchItem=item;watchOpener=opener;paintMatch(item);document.querySelectorAll('[data-match-choice]').forEach(button=>button.disabled=false);
+      matchedUserId=result.userId;currentWatchItem=item;currentWatchShared=false;pendingKidsShareNetwork='';watchOpener=opener;paintMatch(item);document.querySelectorAll('[data-match-choice]').forEach(button=>button.disabled=false);
+      const shareConfirm=document.getElementById('kids-share-confirm');if(shareConfirm)shareConfirm.hidden=true;
       document.getElementById('kids-result-status').textContent='';
       document.getElementById('kids-rematch-actions').hidden=true;
       status.textContent=tr('quotaUsed');
       // Open the usable result first. Celebration is decorative and must never
       // block the result, input, timers or Android WebView rendering.
-      if (typeof dialog.showModal === 'function') dialog.showModal();
-      else { dialog.setAttribute('open','');dialog.scrollIntoView({block:'center'}); }
-      playKidsCelebrate();
+      if (typeof dialog.showModal === 'function') {
+        dialog.showModal();
+        dialog.scrollTop=0;
+      } else {
+        dialog.setAttribute('open','');
+        dialog.scrollIntoView({behavior:reducedMotion()?'auto':'smooth',block:'start'});
+      }
+      // Persist every actual shown Match. Guests keep this locally; signed-in
+      // families also sync through the shared private portfolio history.
+      window.matchPolicy?.remember({title:item.title,posterUrl:makePoster(item),streamUrl:watchUrl(item)},'shown');
+      document.dispatchEvent(new CustomEvent('matchapp:kids-result',{detail:{title:item.title}}));
+      // Wait one paint before decorative effects so the usable result wins the
+      // frame. This avoids stacking modal/backdrop/layout work in one task.
+      requestAnimationFrame(()=>{ if(dialog.open&&currentWatchItem===item) playKidsCelebrate(); });
     }catch(_){clearKidsCelebrate();status.textContent=tr('quotaError');status.scrollIntoView({block:'center'});}
     finally{openingMatch=false;document.getElementById('kids-match-submit').disabled=false;}
   }
@@ -635,12 +660,54 @@
       if(action==='save'){savedTitles.add(slug(item));write(SAVED_KEY,JSON.stringify([...savedTitles]));renderSaved();}
     }catch(_){status.textContent=tr('historyError');button.disabled=false;}
   }
+  async function awardKidsShareReward(){
+    const status=document.getElementById('kids-result-status');
+    if(currentWatchShared)return;
+    try{
+      const reward=await window.KidsAccount?.claimShareReward?.();
+      if(reward?.granted){
+        currentWatchShared=true;
+        const balance=Math.max(0,Number(reward.purchased_matches??reward.matches)||0);
+        status.textContent='🎁 +1 Match · '+balance+' saved';
+      }else if(reward?.reason==='window_full'){
+        status.textContent='🎁 Bonus Match limit reached for this 6-hour window.';
+      }else status.textContent=tr('quotaError');
+    }catch(_){status.textContent=tr('quotaError');}
+  }
   async function shareMatch(copyOnly){
     if(!currentWatchItem)return;
     const url=document.getElementById('kids-share-link').value;
     const text=currentWatchItem.title+' · '+description(currentWatchItem)+' #MatchAppTVAi #KidsMode';
-    try{if(!copyOnly&&navigator.share)await navigator.share({title:currentWatchItem.title,text,url});else{await navigator.clipboard.writeText(text+' '+url);document.getElementById('kids-result-status').textContent=tr('copied');}}
-    catch(e){if(e.name!=='AbortError'){const field=document.getElementById('kids-share-link');field.hidden=false;field.focus();field.select();}}
+    const status=document.getElementById('kids-result-status');
+    try{
+      if(!copyOnly&&navigator.share){
+        await navigator.share({title:currentWatchItem.title,text,url});
+        await awardKidsShareReward();
+      }else{
+        await navigator.clipboard.writeText(text+' '+url);
+        status.textContent=tr('copied');
+      }
+    }
+    catch(e){if(e.name!=='AbortError'){const field=document.getElementById('kids-share-link');field.hidden=false;field.focus();field.select();status.textContent=tr('quotaError');}}
+  }
+  function shareKidsTo(network){
+    if(!currentWatchItem)return;
+    const url=document.getElementById('kids-share-link').value;
+    const text=currentWatchItem.title+' · '+description(currentWatchItem)+' #MatchAppTVAi #KidsMode';
+    const encodedUrl=encodeURIComponent(url),encodedText=encodeURIComponent(text);
+    const targets={
+      whatsapp:'https://wa.me/?text='+encodeURIComponent(text+' '+url),
+      facebook:'https://www.facebook.com/sharer/sharer.php?u='+encodedUrl,
+      x:'https://twitter.com/intent/tweet?text='+encodedText+'&url='+encodedUrl,
+      telegram:'https://t.me/share/url?url='+encodedUrl+'&text='+encodedText
+    };
+    const target=targets[network];if(!target)return;
+    pendingKidsShareNetwork=network;
+    window.open(target,'_blank','noopener,noreferrer');
+    const confirm=document.getElementById('kids-share-confirm');
+    if(confirm)confirm.hidden=false;
+    const status=document.getElementById('kids-result-status');
+    if(status)status.textContent='↗ Finish sharing, then come back and confirm to unlock +1 Match.';
   }
   function remoteNavigation(event) {
     if (!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(event.key) || event.altKey || event.metaKey || event.ctrlKey) return;
@@ -698,11 +765,18 @@
     });
     document.getElementById('kids-share').addEventListener('click',()=>shareMatch(false));
     document.getElementById('kids-copy').addEventListener('click',()=>shareMatch(true));
+    document.querySelectorAll('[data-kids-social]').forEach(button=>button.addEventListener('click',()=>shareKidsTo(button.dataset.kidsSocial)));
+    document.getElementById('kids-share-confirm')?.addEventListener('click',async()=>{
+      if(!pendingKidsShareNetwork)return;
+      pendingKidsShareNetwork='';
+      document.getElementById('kids-share-confirm').hidden=true;
+      await awardKidsShareReward();
+    });
     document.getElementById('kids-rematch-same').addEventListener('click',()=>{document.getElementById('kids-watch-dialog').close();makeKidsMatch();});
     document.getElementById('kids-rematch-new').addEventListener('click',()=>{document.getElementById('kids-watch-dialog').close();document.getElementById('kids-match-form').scrollIntoView({block:'center'});document.getElementById('kids-match-mood').focus();});
     window.KidsAccount?.prepare().catch(()=>{});
     const sharedTitle=params.get('title');if(sharedTitle)highlightTitle(sharedTitle);
-    document.getElementById('kids-watch-dialog').addEventListener('close',()=>{clearKidsCelebrate();currentWatchItem=null;watchOpener?.focus({preventScroll:true});});
+    document.getElementById('kids-watch-dialog').addEventListener('close',()=>{clearKidsCelebrate();currentWatchItem=null;currentWatchShared=false;pendingKidsShareNetwork='';const confirm=document.getElementById('kids-share-confirm');if(confirm)confirm.hidden=true;watchOpener?.focus({preventScroll:true});});
     addEventListener('pagehide',clearKidsCelebrate);
     document.addEventListener('visibilitychange',()=>{if(document.hidden)clearKidsCelebrate();});
     document.addEventListener('keydown', remoteNavigation);
