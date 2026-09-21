@@ -3,19 +3,19 @@
   "date": "2026-09-21",
   "functional": true,
   "notes": {
-    "en": "Kids Mode match results are hardened against freezes: the balloon celebration stays fun but now uses lightweight, bounded animation. Match history, sharing rewards, purchased Matches, result top-scroll and production checkout wiring were re-audited.",
-    "pt-BR": "Os resultados do Modo Kids foram reforçados contra travamentos: a comemoração com balões continua divertida, mas agora usa animação leve e limitada. Histórico, recompensas por compartilhamento, Matches comprados, rolagem ao topo do resultado e checkout foram reauditorados.",
-    "es": "Los resultados del Modo Kids fueron reforzados contra bloqueos: la celebración con globos sigue, pero ahora usa animación ligera y limitada. También revalidamos historial, recompensas por compartir, Matches comprados, desplazamiento al inicio y pagos.",
-    "fr": "Les résultats du mode Kids sont renforcés contre les blocages : les ballons restent, avec une animation désormais légère et limitée. Historique, récompenses de partage, Matches achetés, défilement du résultat et paiements ont été revérifiés.",
-    "de": "Kids-Mode-Ergebnisse wurden gegen Einfrieren gehärtet: Die Ballon-Feier bleibt, läuft jetzt aber leichtgewichtig und begrenzt. Verlauf, Share-Belohnungen, gekaufte Matches, Ergebnis-Scroll und Checkout wurden erneut geprüft.",
-    "it": "I risultati della Modalità Kids sono stati rinforzati contro i blocchi: i palloncini restano, ma con animazioni leggere e limitate. Ricontrollati cronologia, premi condivisione, Match acquistati, scroll del risultato e checkout.",
-    "tr": "Kids Mode sonuçları donmalara karşı güçlendirildi: balon kutlaması korunuyor, ancak artık hafif ve sınırlı animasyon kullanıyor. Geçmiş, paylaşım ödülleri, satın alınan Match'ler, sonuç kaydırması ve ödeme akışı yeniden denetlendi.",
-    "ru": "Результаты Kids Mode защищены от зависаний: праздник с шариками сохранён, но анимация стала лёгкой и ограниченной. Повторно проверены история, награды за публикации, купленные Match, прокрутка к результату и оплата.",
-    "ar": "تم تعزيز نتائج وضع الأطفال ضد التجمّد: احتفال البالونات باقٍ لكن بحركة خفيفة ومحدودة. وأُعيد تدقيق السجل ومكافآت المشاركة وMatches المشتراة والتمرير إلى أعلى النتيجة ومسار الدفع.",
-    "hi": "Kids Mode के मैच परिणामों को फ्रीज़ से बचाने के लिए मजबूत किया गया है: गुब्बारे बने रहते हैं, लेकिन एनीमेशन अब हल्का और सीमित है। इतिहास, शेयर रिवॉर्ड, खरीदे गए Matches, रिज़ल्ट स्क्रोल और पेमेंट फ्लो फिर जाँचे गए।",
-    "id": "Hasil Kids Mode diperkuat agar tidak membeku: perayaan balon tetap ada, tetapi animasinya kini ringan dan terbatas. Riwayat, hadiah berbagi, Match yang dibeli, scroll hasil, dan alur pembayaran diaudit ulang.",
-    "ja": "Kids Mode のマッチ結果をフリーズしにくくしました。風船の演出は残しつつ、軽量で短いアニメーションに変更。履歴、シェア報酬、購入 Match、結果上部へのスクロール、決済導線も再確認しました。",
-    "ko": "Kids Mode 매치 결과의 멈춤 현상을 방지하도록 강화했습니다. 풍선 연출은 유지하되 더 가볍고 제한된 애니메이션으로 바꿨습니다. 기록, 공유 보상, 구매 Match, 결과 상단 스크롤, 결제 흐름도 다시 점검했습니다.",
-    "zh": "Kids Mode 的匹配结果已加强防卡死：保留气球庆祝效果，但改为更轻量、受限的动画。历史记录、分享奖励、购买的 Match、结果顶部滚动和支付流程也已重新核查。"
+    "en": "Kids Mode now runs with all decorative animation and smooth-scroll effects disabled for maximum stability. Matching, result details, sharing, rewards, covers and safety rules are unchanged.",
+    "pt-BR": "O Modo Kids agora funciona com todas as animações decorativas e rolagens suaves desativadas para máxima estabilidade. Matching, detalhes dos resultados, compartilhamento, recompensas, capas e regras de segurança permanecem inalterados.",
+    "es": "Kids Mode ahora funciona con todas las animaciones decorativas y el desplazamiento suave desactivados para máxima estabilidad. El matching, los detalles, compartir, recompensas, portadas y reglas de seguridad no cambian.",
+    "fr": "Le mode Kids fonctionne désormais sans animations décoratives ni défilement fluide afin de maximiser la stabilité. Le matching, les détails, le partage, les récompenses, les affiches et les règles de sécurité restent inchangés.",
+    "de": "Kids Mode läuft jetzt ohne dekorative Animationen oder weiches Scrollen, um maximale Stabilität zu gewährleisten. Matching, Ergebnisdetails, Teilen, Belohnungen, Cover und Sicherheitsregeln bleiben unverändert.",
+    "it": "Kids Mode ora funziona senza animazioni decorative né scorrimento fluido per massimizzare la stabilità. Matching, dettagli, condivisione, premi, copertine e regole di sicurezza restano invariati.",
+    "tr": "Kids Mode artık maksimum kararlılık için tüm dekoratif animasyonlar ve yumuşak kaydırma kapalı olarak çalışıyor. Eşleştirme, sonuç ayrıntıları, paylaşım, ödüller, kapaklar ve güvenlik kuralları değişmedi.",
+    "ru": "Kids Mode теперь работает без декоративных анимаций и плавной прокрутки для максимальной стабильности. Подбор, данные результатов, публикация, награды, обложки и правила безопасности не изменены.",
+    "ar": "يعمل وضع الأطفال الآن بدون أي رسوم متحركة زخرفية أو تمرير سلس لتحقيق أقصى قدر من الاستقرار. لم تتغير المطابقة وتفاصيل النتائج والمشاركة والمكافآت والأغلفة وقواعد الأمان.",
+    "hi": "Kids Mode अब अधिकतम स्थिरता के लिए सभी सजावटी एनीमेशन और स्मूद स्क्रॉल बंद करके चलता है। मैचिंग, परिणाम विवरण, शेयरिंग, रिवॉर्ड, कवर और सुरक्षा नियम अपरिवर्तित हैं।",
+    "id": "Kids Mode kini berjalan tanpa animasi dekoratif dan smooth scrolling untuk stabilitas maksimal. Pencocokan, detail hasil, berbagi, hadiah, sampul, dan aturan keamanan tidak berubah.",
+    "ja": "Kids Mode は安定性を最優先し、装飾アニメーションとスムーズスクロールをすべて無効化しました。マッチング、結果情報、共有、報酬、カバー、安全ルールは変更していません。",
+    "ko": "Kids Mode는 최대 안정성을 위해 모든 장식 애니메이션과 부드러운 스크롤을 비활성화했습니다. 매칭, 결과 정보, 공유, 보상, 커버 및 안전 규칙은 그대로입니다.",
+    "zh": "Kids Mode 现已关闭所有装饰动画和顺滑滚动，以获得最高稳定性。匹配、结果信息、分享、奖励、封面和安全规则均保持不变。"
   }
 }
