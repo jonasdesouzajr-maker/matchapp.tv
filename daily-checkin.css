@@ -232,6 +232,20 @@ html body.page-home #daily-match-checkin.dc{
   box-shadow:0 25px 90px #000;
   animation:dcCardRise .5s cubic-bezier(.2,.9,.22,1.2) both;
 }
+.daily-reward-sparks{
+  position:absolute;left:50%;top:46%;width:8px;height:8px;
+  pointer-events:none;z-index:0;
+}
+.daily-reward-sparks i{
+  position:absolute;left:0;top:0;width:7px;height:7px;border-radius:50%;
+  background:var(--dc-gold-hot,#ffe9a6);
+  box-shadow:0 0 12px rgba(255,233,166,.72);
+  transform-origin:50% 50%;
+  animation:dcSparkBurst .82s cubic-bezier(.18,.8,.2,1) var(--delay) both;
+}
+.daily-reward-card>*:not(.daily-reward-sparks){position:relative;z-index:1}
+.daily-checkin.is-claim-success .dc-inner{animation:dcClaimSuccess .62s cubic-bezier(.2,.9,.25,1.15) both}
+
 .daily-reward-kicker{font-weight:900;color:var(--dc-gold-hot,#ffe9a6);letter-spacing:.02em}
 .daily-reward-medal{
   position:relative;display:grid;place-items:center;
@@ -256,6 +270,15 @@ html body.page-home #daily-match-checkin.dc{
 }
 @keyframes dcFadeIn{from{opacity:0}to{opacity:1}}
 @keyframes dcCardRise{from{opacity:0;transform:translateY(24px) scale(.95)}to{opacity:1;transform:none}}
+@keyframes dcSparkBurst{
+  0%{opacity:0;transform:rotate(var(--a)) translateY(0) scale(.2)}
+  18%{opacity:1}
+  100%{opacity:0;transform:rotate(var(--a)) translateY(calc(-1 * var(--d))) scale(.45)}
+}
+@keyframes dcClaimSuccess{
+  0%,100%{transform:none}
+  45%{transform:scale(1.012)}
+}
 
 /* --------------------------- motion safety --------------------------- */
 
@@ -263,7 +286,8 @@ html body.page-home #daily-match-checkin.dc{
   #daily-match-checkin.dc::before,.daily-checkin.dc::before,
   .dc .dc-day.is-today .dc-face,
   .dc .dc-rail-fill,
-  .daily-reward,.daily-reward-card{animation:none!important;transition:none!important}
+  .daily-reward,.daily-reward-card,.daily-reward-sparks i,
+  .daily-checkin.is-claim-success .dc-inner{animation:none!important;transition:none!important}
 }
 .reduce-motion #daily-match-checkin.dc::before,
 .reduce-motion .daily-checkin.dc::before,
