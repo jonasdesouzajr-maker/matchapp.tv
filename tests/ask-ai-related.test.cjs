@@ -156,7 +156,7 @@ test('Ask AI composer stays visible and voice works in the active language',()=>
   assert.match(composer,/aria-describedby="discover-compose-help"/);
   assert.match(composer,/id="mic-btn-discover"/);
   assert.doesNotMatch(composer,/mic-btn-discover[^>]+display\s*:\s*none/);
-  assert.match(html,/matchapp-ia\.css\?v=20260921-voice1/);
+  assert.match(html,/matchapp-ia\.css\?v=20260921-mobile1/);
   assert.match(html,/discover\.js\?v=20260921-voice1/);
   assert.match(html,/voice-input\.js\?v=20260921-voice1/);
   assert.match(css,/body\.ai-chat-page \.composer textarea\{/);
@@ -170,4 +170,20 @@ test('Ask AI composer stays visible and voice works in the active language',()=>
   assert.match(js,/function voiceMatchesLang/);
   assert.match(js,/utter\.lang = voice\?\.lang \|\| targetLang/);
   assert.match(js,/autoReadEnabled/);
+});
+
+
+test('Ask AI smartphone composer is forced visible without changing larger breakpoints',()=>{
+  const css=read('matchapp-ia.css'),html=read('discover.html'),agents=read('AGENTS.md');
+  const start=css.indexOf('@media(max-width:640px){',css.indexOf('body.ai-chat-page .composer-hint'));
+  const mobile=css.slice(start,css.indexOf('\n}',start)+2);
+  assert.ok(start>=0,'smartphone Ask AI media query must exist');
+  assert.match(mobile,/grid-template-columns:minmax\(0,1fr\)!important/);
+  assert.match(mobile,/body\.ai-chat-page \.composer\{[\s\S]*width:100%!important[\s\S]*min-width:0!important/);
+  assert.match(mobile,/body\.ai-chat-page \.composer textarea\{[\s\S]*visibility:visible!important[\s\S]*opacity:1!important/);
+  assert.match(mobile,/body\.ai-chat-page \.composer \.mic-btn\{[\s\S]*display:inline-flex!important/);
+  assert.match(html,/matchapp-ia\.css\?v=20260921-mobile1/);
+  assert.match(html,/@media \(max-width: 620px\)[\s\S]*\.composer \{ min-width:0; width:100%; max-width:100%; box-sizing:border-box; \}/);
+  assert.match(agents,/explicitly requests a \*\*smartphone-only\*\* change/);
+  assert.match(agents,/Every approved smartphone-only change must also be carried into the relevant Android Studio WebView module/);
 });
