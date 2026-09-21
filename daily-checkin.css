@@ -225,6 +225,7 @@ html body.page-home #daily-match-checkin.dc{
   animation:dcFadeIn .28s ease-out both;
 }
 .daily-reward-card{
+  position:relative;
   box-sizing:border-box;
   width:min(92vw,392px);padding:28px 22px;text-align:center;
   border:1px solid rgba(243,207,105,.6);border-radius:26px;
@@ -273,7 +274,7 @@ html body.page-home #daily-match-checkin.dc{
 @keyframes dcSparkBurst{
   0%{opacity:0;transform:rotate(var(--a)) translateY(0) scale(.2)}
   18%{opacity:1}
-  100%{opacity:0;transform:rotate(var(--a)) translateY(calc(-1 * var(--d))) scale(.45)}
+  100%{opacity:0;transform:rotate(var(--a)) translateY(var(--dy)) scale(.45)}
 }
 @keyframes dcClaimSuccess{
   0%,100%{transform:none}
