@@ -19,20 +19,14 @@ test("Let's explore scrolls to and focuses the Kids matcher",()=>{
   const src=read('kids/voice-feedback.js');
   assert.match(src,/setAttribute\('href','#kids-match-stage'\)/);
   assert.match(src,/scrollIntoView/);
-  assert.match(src,/first\?\.focus/);
+  assert.match(src,/querySelector\('select,button,input'\)\?\.focus/);
   assert.match(src,/kidsMatchScroll/);
 });
 
-test('Kids hero icon has lightweight playful showtime effects with motion controls respected',()=>{
+test('Kids experience enhancer is static and contains no motion effects',()=>{
   const src=read('kids/voice-feedback.js');
-  assert.match(src,/kidsRainbowPortal/);
-  assert.match(src,/kidsMascotShowtime/);
-  assert.match(src,/kidsConfettiPop/);
-  assert.match(src,/kidsSymbolDance/);
-  assert.match(src,/kids-magic-ribbon/);
-  assert.match(src,/kids-paused/);
-  assert.match(src,/prefers-reduced-motion:reduce/);
-  assert.match(src,/for\(let i=0;i<6;i\+\+\)/);
+  assert.doesNotMatch(src,/@keyframes|animation\s*:|requestAnimationFrame|setTimeout|kids-magic-|will-change/);
+  assert.match(src,/behavior:'auto'/);
 });
 
 test('Kids title generator uses rich title-specific metadata and safe structured data',()=>{

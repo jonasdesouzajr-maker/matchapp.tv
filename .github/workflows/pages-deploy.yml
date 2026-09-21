@@ -156,8 +156,9 @@ jobs:
           grep -Fq "window.MATCHAPP_BUILD = '$VERSION';" /tmp/build-meta.js
           curl -fsSL --max-time 30 https://matchapp.tv/kids/ -o /tmp/kids.html
           ! grep -q 'GTM-M7J3NNBN' /tmp/kids.html
-          grep -q '/kids/kids.css?v=20260921-freeze3' /tmp/kids.html
-          grep -q '/kids/kids.js?v=20260921-freeze3' /tmp/kids.html
+          grep -q '/kids/kids.css?v=20260921-static1' /tmp/kids.html
+          grep -q '/kids/kids.js?v=20260921-static1' /tmp/kids.html
+          grep -q '/kids/voice-feedback.js?v=20260921-static1' /tmp/kids.html
           grep -q 'GTM-M7J3NNBN' /tmp/home-post-purge.html
           grep -q 'ca-pub-9541435081010948' /tmp/home-post-purge.html
           ! grep -qi 'adsterra' /tmp/home-post-purge.html

@@ -5,21 +5,16 @@ const path=require('node:path');
 const root=path.resolve(__dirname,'..');
 const read=p=>fs.readFileSync(path.join(root,p),'utf8');
 
-test('Kids result celebration is lightweight and cannot own scroll/compositing',()=>{
-  const js=read('kids/kids.js'),css=read('kids/kids.css');
-  assert.match(js,/requestAnimationFrame\(\(\)=>\{ if\(dialog\.open&&currentWatchItem===item\) playKidsCelebrate\(\); \}\)/);
-  assert.match(js,/const confettiCount=compact\?6:10/);
-  assert.match(js,/const balloonCount=compact\?2:3/);
-  assert.match(js,/navigator\.deviceMemory/);
-  assert.match(js,/navigator\.hardwareConcurrency/);
-  assert.doesNotMatch(css,/\.kids-watch-dialog::backdrop\{[^}]*blur\(/);
-  assert.doesNotMatch(css,/\.kids-celebrate\{[^}]*translateZ/);
-  assert.doesNotMatch(css,/translate3d|translateZ/);
-  assert.doesNotMatch(css,/will-change:/);
-  assert.doesNotMatch(css,/backface-visibility:/);
-  assert.doesNotMatch(css,/contain:strict/);
+test('Kids Mode runs with no animation or smooth-scroll effects',()=>{
+  const js=read('kids/kids.js'),css=read('kids/kids.css'),voice=read('kids/voice-feedback.js');
+  assert.doesNotMatch(js,/playKidsCelebrate|requestAnimationFrame/);
+  assert.doesNotMatch(js,/behavior\s*:\s*['"]smooth['"]/);
+  assert.doesNotMatch(voice,/animation\s*:|@keyframes|requestAnimationFrame|behavior\s*:\s*['"]smooth['"]|will-change/);
+  assert.match(css,/emergency Kids stability lock/);
+  assert.match(css,/\*,\*::before,\*::after\{animation:none!important;transition:none!important;scroll-behavior:auto!important\}/);
+  assert.match(css,/\.kids-watch-dialog::backdrop\{backdrop-filter:none!important;-webkit-backdrop-filter:none!important\}/);
+  assert.match(css,/\.kids-celebrate\{display:none!important\}/);
 });
-
 test('main and Kids match paths never recycle a shown title',()=>{
   const app=read('app.js'),kids=read('kids/kids.js');
   const start=app.indexOf('window.triggerMatch = async function');
@@ -56,9 +51,10 @@ test('result reveal starts at the top and Kids social choices are restored',()=>
 test('cache keys force the hardening bundle onto every device wrapper',()=>{
   assert.match(read('index.html'),/app\.js\?v=20260921-hardening1/);
   assert.match(read('index.html'),/share\.js\?v=20260921-hardening1/);
-  assert.match(read('kids/index.html'),/kids\.css\?v=20260921-freeze3/);
+  assert.match(read('kids/index.html'),/kids\.css\?v=20260921-static1/);
   assert.match(read('kids/index.html'),/kids\/account\.js\?v=20260921-hardening1/);
-  assert.match(read('kids/index.html'),/kids\/kids\.js\?v=20260921-freeze3/);
+  assert.match(read('kids/index.html'),/kids\/voice-feedback\.js\?v=20260921-static1/);
+  assert.match(read('kids/index.html'),/kids\/kids\.js\?v=20260921-static1/);
 });
 
 

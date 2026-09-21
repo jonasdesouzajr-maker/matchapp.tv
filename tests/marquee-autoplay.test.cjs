@@ -11,9 +11,9 @@ test('Home rails use native scroll-snap and no dedicated perpetual autoplay engi
  assert.match(css,/min-width:44px/);
  assert.doesNotMatch(app,/requestAnimationFrame\([^\n]*scrollLeft/);
 });
-test('Kids celebration remains decorative and bounded',()=>{
- const js=read('kids/kids.js'),css=read('kids/kids.css');
- assert.match(js,/playKidsCelebrate/);assert.doesNotMatch(js,/await playKidsCelebrate\(\)/);
- assert.match(js,/setTimeout\(clearKidsCelebrate,900\)/);
- assert.match(css,/prefers-reduced-motion/);
+test('Kids experience has no decorative animation engine',()=>{
+ const js=read('kids/kids.js'),css=read('kids/kids.css'),voice=read('kids/voice-feedback.js');
+ assert.doesNotMatch(js,/playKidsCelebrate|requestAnimationFrame/);
+ assert.doesNotMatch(voice,/@keyframes|animation\s*:|requestAnimationFrame/);
+ assert.match(css,/animation:none!important;transition:none!important;scroll-behavior:auto!important/);
 });
