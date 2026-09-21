@@ -130,8 +130,8 @@ jobs:
           # otherwise a valid deployment can deadlock on stale Home HTML.
           sleep 5
           curl -fsSL --max-time 30 https://matchapp.tv/ -o /tmp/home-post-purge.html
-          EXPECTED_IA_CSS="$(grep -oE '/matchapp-ia\\.css\\?v=[^"]+' index.html | head -n1)"
-          LIVE_IA_CSS="$(grep -oE '/matchapp-ia\\.css\\?v=[^"]+' /tmp/home-post-purge.html | head -n1)"
+          EXPECTED_IA_CSS="$(grep -oE '/matchapp-ia[.]css[?]v=[^"]+' index.html | head -n1)"
+          LIVE_IA_CSS="$(grep -oE '/matchapp-ia[.]css[?]v=[^"]+' /tmp/home-post-purge.html | head -n1)"
           test -n "$EXPECTED_IA_CSS"
           test "$LIVE_IA_CSS" = "$EXPECTED_IA_CSS"
           # All release/content assertions run against the fresh post-purge edge copy.
