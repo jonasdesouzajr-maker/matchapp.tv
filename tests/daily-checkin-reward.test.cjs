@@ -8,7 +8,7 @@ const checkin=fs.readFileSync(path.join(root,'daily-checkin.js'),'utf8');
 const checkinCss=fs.readFileSync(path.join(root,'daily-checkin.css'),'utf8');
 const iaCss=fs.readFileSync(path.join(root,'matchapp-ia.css'),'utf8');
 const home=fs.readFileSync(path.join(root,'index.html'),'utf8');
-const migration=fs.readFileSync(path.join(root,'supabase','migrations','20260921180605_repair_daily_checkin_claims.sql'),'utf8');
+const migration=fs.readFileSync(path.join(root,'supabase','migrations','20260921181338_repair_daily_checkin_reward_delta.sql'),'utf8');
 
 test('Daily Check-in grants one Extra Match and repairs a missing same-day reward once',()=>{
   assert.match(migration,/v_award int := 1/i);
