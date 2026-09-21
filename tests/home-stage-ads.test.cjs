@@ -24,7 +24,7 @@ test('Home matcher keeps Mood, Format and Platform inside with compact gaps',()=
   assert.match(pass,/\.ma-concierge \.ma-chip-row\{[\s\S]*gap:6px!important/);
 });
 
-test('Home keeps two desktop AdSense rails and three subtle mobile in-flow slots',()=>{
+test('Home keeps two desktop AdSense rails and three subtle tablet/mobile in-flow slots',()=>{
   const html=read('index.html');
   const css=read('matchapp-ia.css');
   const ia=read('matchapp-ia.js');
