@@ -66,6 +66,12 @@
                     border: 1px solid rgba(255,255,255,0.2); border-radius: 11px; color: #fff;
                     font-family: inherit; font-size: 16px; padding: 11px 13px; }
         .pf-input:focus { outline: none; border-color: var(--gold); }
+        .pf-nickname-row { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 9px; align-items: stretch; }
+        .pf-nickname-check { min-width: 92px; min-height: 46px; border-radius: 11px; border: 1px solid var(--gold);
+                             background: rgba(229,193,88,0.12); color: var(--gold-glow); font: 800 13px/1 inherit;
+                             cursor: pointer; padding: 10px 14px; white-space: nowrap; }
+        .pf-nickname-check:hover, .pf-nickname-check:focus-visible { background: rgba(229,193,88,0.22); outline: none; box-shadow: 0 0 0 3px rgba(229,193,88,.14); }
+        .pf-nickname-check.is-saved { border-color: rgba(127,240,168,.65); color: #bff8d2; background: rgba(127,240,168,.09); }
         .pf-note { display: block; color: #9beeb8; font-size: 12px; margin-top: 6px; min-height: 16px; }
 
         /* Note badge + saved note text on history cards */
@@ -89,6 +95,8 @@
             .poster-note-badge { font-size: 9.5px; padding: 3px 5px; top: 6px; left: 6px; }
             .portfolio-tab { min-width: 100%; font-size: 13px; padding: 14px 10px; }
             .identity-grid { grid-template-columns: 1fr 1fr; }
+            .pf-nickname-row { grid-template-columns: minmax(0,1fr) auto; gap: 7px; }
+            .pf-nickname-check { min-width: 82px; padding-inline: 10px; }
         }
         .poster-card { position: relative; width: 100%; height: 230px; border-radius: 12px; overflow: hidden; border: 1px solid var(--gold); }
         .poster-title { position: absolute; bottom: 0; width: 100%; background: linear-gradient(transparent, rgba(0,0,0,0.95)); color: #fff; font-size: 12px; padding: 10px 4px 4px 4px; text-align: center; font-weight: bold; }
