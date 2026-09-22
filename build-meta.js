@@ -1,5 +1,5 @@
 // Functional release identifier must match release.json.
-window.MATCHAPP_BUILD = '2026.09.21.4';
+window.MATCHAPP_BUILD = '2026.09.21.5';
 
 
 /* Search freshness + truthfulness layer. */
@@ -112,7 +112,7 @@ window.MATCHAPP_BUILD = '2026.09.21.4';
 (function(){
   if(document.querySelector('script[data-matchapp-final-wiring]'))return;
   const s=document.createElement('script');
-  s.src='/final-wiring.js?v=20260920-design4';
+  s.src='/final-wiring.js?v=20260921-nickname1';
   s.async=false; s.defer=true; s.dataset.matchappFinalWiring='1';
   document.head.appendChild(s);
 })();
