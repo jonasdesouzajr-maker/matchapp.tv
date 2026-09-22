@@ -16,3 +16,15 @@ test('failed server reads show retry instead of an empty unlocked identity form'
 test('slow history synchronization cannot hold the saved identity lock hostage',async()=>{
  const {d,w}=boot(async()=>({data:{profile_locked:true,full_name:'Saved name'}}));w.matchPolicy={attach:()=>new Promise(()=>{})};await w.hydrateProfileFromAuth({id:'u',user_metadata:{}});assert.equal(w.matchProfileState.status,'ready');assert.equal(w.localStorage.getItem('match_profile_locked'),'true');d.window.close();
 });
+
+
+test('profile photo stays circular with gold outlines and Profile reuses the Home poster backdrop',()=>{
+ const html=read('profile/profile.html'),wall=read('poster-wall.css'),audit=read('final-audit.css');
+ assert.match(html,/<body class="page-profile">/);
+ assert.match(html,/#profile-pic-preview \{[\s\S]*border:3px solid var\(--gold\)!important[\s\S]*clip-path:circle\(50% at 50% 50%\)!important[\s\S]*background:transparent!important/);
+ assert.match(audit,/\.audit-profile-avatar\{[\s\S]*border:3px solid var\(--audit-gold\)[\s\S]*background:transparent!important/);
+ assert.match(audit,/\.audit-profile-avatar img\{[\s\S]*border-radius:50%[\s\S]*clip-path:circle\(50% at 50% 50%\)/);
+ assert.match(wall,/body:is\(\.page-home,\.page-profile\) \.poster-wall/);
+ assert.match(wall,/body:is\(\.page-home,\.page-profile\) \.poster-wall \.poster-wall-grid/);
+ assert.match(wall,/body:is\(\.page-home,\.page-profile\) \.poster-wall::after/);
+});
