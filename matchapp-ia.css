@@ -264,8 +264,27 @@ body.ai-chat-page .composer .mic-btn[aria-disabled="true"]{opacity:.58!important
 body.ai-chat-page .composer-send{order:2!important;align-self:stretch!important;min-height:64px!important}
 body.ai-chat-page .composer-hint{order:3!important;flex:0 0 100%!important;margin:0 4px!important;color:#a99fba!important;font-size:11.5px!important;line-height:1.45!important}
 @media(max-width:640px){
-  body.ai-chat-page .composer{flex-basis:100%!important}
-  body.ai-chat-page .composer-send{width:100%!important;min-height:52px!important}
+  /* On phones the writing surface must read as a real input, not an empty panel. */
+  body.ai-chat-page .composer{
+    position:relative!important; flex-basis:100%!important; min-height:112px!important;
+    padding:31px 10px 10px!important; align-items:stretch!important;
+    background:linear-gradient(145deg,#15102b,#281744)!important;
+  }
+  body.ai-chat-page .composer-input-label{
+    position:absolute!important; top:10px!important; left:16px!important; z-index:1!important;
+    display:block!important; color:#ffe18a!important; font-size:12px!important;
+    font-weight:800!important; letter-spacing:.02em!important; pointer-events:none!important;
+  }
+  body.ai-chat-page .composer textarea{
+    min-height:66px!important; padding:12px!important; border:1px solid rgba(255,225,138,.55)!important;
+    border-radius:12px!important; background:rgba(5,7,20,.72)!important; color:#fff!important;
+  }
+  body.ai-chat-page .composer textarea::placeholder{color:#d7cee5!important;opacity:1!important}
+  body.ai-chat-page .composer .mic-btn{align-self:flex-end!important}
+  body.ai-chat-page .composer-send{
+    width:100%!important; min-height:48px!important; padding:12px 18px!important;
+    font-size:16px!important; border-radius:14px!important;
+  }
 }
 body.ai-chat-page .composer-send{border-radius:14px!important;background:linear-gradient(180deg,#f7d76f,#d9a827)!important;color:#171018!important;box-shadow:none!important;text-transform:none!important}
 body.ai-chat-page .ai-sidebar{background:rgba(6,12,27,.98)!important;border-right:1px solid rgba(255,255,255,.08)!important}
