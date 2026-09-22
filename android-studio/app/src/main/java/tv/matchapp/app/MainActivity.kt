@@ -49,6 +49,10 @@ class MainActivity : AppCompatActivity() {
     private var splashKeep = true
     private var lastUrl = HOME
 
+    // Web UI (including the responsive Avatar Studio) is shared with matchapp.tv.
+    // Keep production pages fresh so phone/tablet WebViews receive approved UI updates immediately.
+    private val sharedUiVersion = "avatar-studio-20260922-3"
+
     private val fileChooser = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) { result ->
