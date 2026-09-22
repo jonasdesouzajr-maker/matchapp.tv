@@ -26,7 +26,7 @@
 
 let deferredInstallPrompt = null;
 
-const MATCHAPP_INSTALL_VERSION = '20260922-install2';
+const MATCHAPP_INSTALL_VERSION = '20260922-install3';
 function matchAppInstallLocale() {
     const primary = String((navigator.languages && navigator.languages[0]) || navigator.language || 'en')
         .replace(/_/g, '-').toLowerCase();
@@ -206,10 +206,38 @@ window.installMatchApp = async function () {
         deferredInstallPrompt = null;
         return;
     }
-    // Path 2/3: no programmatic install exists on this platform — show the
-    // real steps instead of a button that quietly does nothing.
-    const modal = buildInstallModal();
-    if (!modal.open) { if(typeof modal.showModal==='function')modal.showModal();else modal.setAttribute('open',''); }
+    // Chrome/Edge/Brave can sometimes expose installability a moment after
+    // the tap (for example immediately after a fresh service-worker claim).
+    // Give the real native prompt one short chance to arrive before deciding
+    // this browser truly has no programmatic install path.
+    if (!platformInfo().isIOS && !platformInfo().isMac) {
+        for (let i = 0; i < 8 && !deferredInstallPrompt; i++) {
+            await new Promise(resolve => setTimeout(resolve, 125));
+        }
+        if (deferredInstallPrompt) {
+            try {
+                await deferredInstallPrompt.prompt();
+                window.matchAppInstallProgress?.start();
+                const choice = await deferredInstallPrompt.userChoice;
+                if (choice && choice.outcome === 'dismissed') window.matchAppInstallProgress?.cancel();
+            } catch (e) { window.matchAppInstallProgress?.cancel(); }
+            deferredInstallPrompt = null;
+            return;
+        }
+    }
+
+    // Only Safari-family platforms need manual installation instructions.
+    // Android/Chromium must use the browser's native PWA installer.
+    const { isIOS, isMac } = platformInfo();
+    if (isIOS || isMac) {
+        const modal = buildInstallModal();
+        if (!modal.open) { if(typeof modal.showModal==='function')modal.showModal();else modal.setAttribute('open',''); }
+        return;
+    }
+
+    if (window.showToast) {
+        showToast('Preparing the secure app installer… please tap Install again in a moment.');
+    }
 };
 
 // ----------------------------------------------------
