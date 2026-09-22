@@ -25,9 +25,9 @@
       "purpose": "any"
     },
     {
-      "src": "/assets/brand/matchapp-ai-install-512.png?v=20260922-icon3",
+      "src": "/assets/brand/matchapp-ai-install-512.webp?v=20260922-icon3",
       "sizes": "512x512",
-      "type": "image/png",
+      "type": "image/webp",
       "purpose": "any"
     }
   ],
