@@ -161,7 +161,7 @@ test('Ask AI composer stays visible and voice works in the active language',()=>
   assert.match(composer,/id="mic-btn-discover"/);
   assert.doesNotMatch(composer,/mic-btn-discover[^>]+display\s*:\s*none/);
   assert.match(html,/matchapp-ia\.css\?v=20260921-voice1/);
-  assert.match(html,/discover\.js\?v=20260921-voice1/);
+  assert.match(html,/discover\.js\?v=20260922-noautofocus1/);
   assert.match(html,/voice-input\.js\?v=20260921-voice1/);
   assert.match(css,/body\.ai-chat-page \.composer textarea\{/);
   assert.match(css,/caret-color:var\(--ma-gold-hot\)!important/);
