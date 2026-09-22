@@ -27,6 +27,8 @@ import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.biometric.BiometricManager
+import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
@@ -106,6 +108,7 @@ class MainActivity : AppCompatActivity() {
         web.webViewClient = KidsClient()
         web.webChromeClient = KidsChrome()
         web.addJavascriptInterface(NativeVoiceBridge(), "MatchAppNativeVoice")
+        web.addJavascriptInterface(NativeGuardianBridge(), "MatchAppNativeGuardian")
 
         refresh.setColorSchemeColors(ContextCompat.getColor(this, R.color.gold))
         refresh.setProgressBackgroundColorSchemeColor(ContextCompat.getColor(this, R.color.royal))
@@ -437,7 +440,7 @@ class MainActivity : AppCompatActivity() {
                 s.textContent =
                   '.ad-banner-container,.sidebar-ad-left,.sidebar-ad-right,.mobile-ad-bottom,' +
                   '.premium-ad-frame,ins.adsbygoogle,.ma-ad-label,#chrome-notice,.chrome-notice,' +
-                  '.install-btn,.kids-install,#kids-exit,.kids-pill-exit' +
+                  '.install-btn,.kids-install' +
                   '{display:none!important;height:0!important;min-height:0!important;overflow:hidden!important;' +
                   'padding:0!important;margin:0!important;border:0!important}';
                 (document.head || root).appendChild(s);
@@ -463,9 +466,7 @@ class MainActivity : AppCompatActivity() {
               }
 
               function scrub() {
-                var exit = document.getElementById('kids-exit');
-                if (exit) exit.style.setProperty('display','none','important');
-                document.querySelectorAll('.kids-pill-exit,.kids-install,.install-btn').forEach(function(el){
+                document.querySelectorAll('.kids-install,.install-btn').forEach(function(el){
                   el.style.setProperty('display','none','important');
                 });
               }
@@ -473,6 +474,7 @@ class MainActivity : AppCompatActivity() {
               scrub();
               document.addEventListener('click', function(ev){
                 var target = ev.target && ev.target.closest ? ev.target.closest('a[href]') : null;
+                if (target && target.id === 'kids-exit') return;
                 var kind = classify(target);
                 if (kind === 'blocked') {
                   ev.preventDefault();
