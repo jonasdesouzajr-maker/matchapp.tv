@@ -78,3 +78,11 @@ These are standing implementation rules for MatchApp work in this repository.
 ### Stability invariant
 - Every change must preserve runtime stability first: do not introduce crashes, freezes, infinite render or mutation loops, layout thrashing, unbounded observers/timers, or expensive continuous compositor work. Keep edits surgical, bounded, responsive, and regression-tested before deployment.
 - Never attach a MutationObserver to a result subtree if its callback (directly or indirectly) rewrites that same subtree. Main Match and Kids result enrichment must stay event-driven and idempotent; repeated enrichment of the same title/metadata must settle without additional DOM churn.
+
+10. **Kids parent exit and cross-browser fallback**
+   - Leaving Kids Mode is a parent-authenticated action. The three-second press-and-hold hand control is only the deliberate trigger; completing the hold must never unlock grown-up mode by itself.
+   - Desktop web requires a persistent four-digit parent PIN to be created before Kids Mode continues. Every grown-up exit and protected parent control requires that saved PIN.
+   - Smartphone and tablet web should prefer platform user verification through the browser (Face ID, Touch ID, fingerprint or equivalent device verification where the browser/device exposes it). A parent may instead configure a four-digit PIN. If biometric APIs are unsupported or unavailable, the PIN path must remain usable rather than breaking Kids Mode.
+   - `:kidsapp` uses Android's native biometric prompt for supported device biometrics and retains the web PIN alternative. Adult routes must never load inside the Kids-only WebView; after a successful parent check, the grown-up exit hands off outside the Kids shell.
+   - `:app` is the normal grown-up Android application and must not expose or load Kids Mode. Keep `/kids` routes blocked in this module and keep the Kids entry hidden only inside this native shell; the public website continues to offer Kids Mode.
+   - Parent-gate code must remain bounded and progressive: no polling loops, unbounded observers, permanent scroll locks, or unsupported-API failures. Enhancements must degrade to a working PIN flow across current Safari, Chrome, Edge, Firefox and Android WebView families.
