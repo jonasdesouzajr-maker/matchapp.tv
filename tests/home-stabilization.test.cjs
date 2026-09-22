@@ -85,6 +85,6 @@ test('both Android Studio modules point to current live surfaces for AAB build',
   }
   assert.match(main,/https:\/\/matchapp\.tv\/\?utm_source=android_app&appBuild=\d+/);
   assert.match(kids,/https:\/\/matchapp\.tv\/kids\/\?utm_source=android_kids_app&appBuild=\d+/);
-  assert.match(main,/MATCHAPP_ANDROID_KIDS_AVAILABLE/);
+  assert.match(main,/MATCHAPP_ANDROID_KIDS_BLOCKED/);
   assert.match(kids,/MATCHAPP_ANDROID_KIDS_ONLY/);
 });
