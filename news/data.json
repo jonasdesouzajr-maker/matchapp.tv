@@ -1,9 +1,101 @@
 {
-  "generated_at": "2026-09-22T14:23:54.112Z",
-  "feed_version": "108ed375",
+  "generated_at": "2026-09-22T14:46:16.377Z",
+  "feed_version": "bb831e5c",
   "source_policy": "direct-trusted-publisher-rss+google-trends-keyword-signals",
   "seo_policy": "per-story keyword snapshot at first discovery + source citation + stable archive",
   "items": [
+    {
+      "id": "01481263",
+      "title": "Hayden Panettiere Died From Toxic Effects of Fentanyl, Other Drugs",
+      "url": "https://www.hollywoodreporter.com/news/general-news/hayden-panettiere-cause-of-death-1236707486/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "published_at": "2026-09-22T14:30:31.000Z",
+      "discovered_at": "2026-09-22T14:46:16.377Z",
+      "event_type": "Obituary",
+      "person": "Hayden Panettiere Died From",
+      "description": "Hayden Panettiere Died From: obituary headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/08/GettyImages-1438843136.jpg?crop=0px%2C223px%2C5568px%2C3116px&resize=1440%2C810",
+      "matchapp_url": "https://matchapp.tv/news/articles/hayden-panettiere-died-from-toxic-effects-of-fentanyl-other-drugs-014812/",
+      "landing_url": "https://matchapp.tv/?news=01481263#latest-news",
+      "seo": {
+        "primary_keyword": "Hayden Panettiere Died From latest news",
+        "short_tail": [
+          "Hayden Panettiere Died From",
+          "Hayden Panettiere Died From news",
+          "obituary",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "Hayden Panettiere Died From latest news September 2026",
+          "Hayden Panettiere Died From obituary update 2026",
+          "Hayden Panettiere Died From news 2026-09-22",
+          "latest obituary news about Hayden Panettiere Died From",
+          "hayden panettiere died hayden panettiere died latest update",
+          "The Hollywood Reporter Hayden Panettiere Died From obituary",
+          "latest news about Hayden Panettiere Died From September 2026",
+          "Hayden Panettiere Died From entertainment news 2026-09-22",
+          "what happened with Hayden Panettiere Died From"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "Hayden Panettiere Died From",
+          "hayden",
+          "panettiere",
+          "died",
+          "toxic",
+          "effects"
+        ],
+        "freshness_keywords": [
+          "September 2026",
+          "2026-09-22",
+          "Hayden Panettiere Died From 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter Hayden Panettiere Died From",
+          "hollywoodreporter.com Hayden Panettiere Died From",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "Hayden Panettiere Died From Toxic Effects of Fentanyl,…",
+        "meta_description": "Hayden Panettiere Died From: Obituary update reported by The Hollywood Reporter on 2026-09-22. See verified context, publication time and the original…",
+        "keywords": [
+          "Hayden Panettiere Died From latest news",
+          "Hayden Panettiere Died From",
+          "Hayden Panettiere Died From news",
+          "obituary",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "Hayden Panettiere Died From latest news September 2026",
+          "Hayden Panettiere Died From obituary update 2026",
+          "Hayden Panettiere Died From news 2026-09-22",
+          "latest obituary news about Hayden Panettiere Died From",
+          "hayden panettiere died hayden panettiere died latest update",
+          "The Hollywood Reporter Hayden Panettiere Died From obituary",
+          "latest news about Hayden Panettiere Died From September 2026",
+          "Hayden Panettiere Died From entertainment news 2026-09-22",
+          "what happened with Hayden Panettiere Died From",
+          "hayden",
+          "panettiere",
+          "died",
+          "toxic",
+          "effects",
+          "September 2026",
+          "2026-09-22",
+          "Hayden Panettiere Died From 2026",
+          "The Hollywood Reporter Hayden Panettiere Died From",
+          "hollywoodreporter.com Hayden Panettiere Died From",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-09-22T14:46:16.377Z"
+      }
+    },
     {
       "id": "b60bfe77",
       "title": "Cantor Rick estava sem Renner, parceiro de dupla, no helicóptero que caiu em SC; entenda motivo",
@@ -1158,100 +1250,6 @@
       }
     },
     {
-      "id": "31133616",
-      "title": "New Book on MGM Classic &#8216;The Women&#8217; Reveals Extent of Joan Crawford and Norma Shearer&#8217;s Feud (Exclusive Excerpt)",
-      "url": "https://www.hollywoodreporter.com/movies/movie-news/joan-crawford-norma-shearer-feud-illeana-douglas-book-1236706641/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "published_at": "2026-09-22T12:00:00.000Z",
-      "discovered_at": "2026-09-22T14:23:54.112Z",
-      "event_type": "Entertainment",
-      "person": "New Book",
-      "description": "New Book: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/09/GettyImages-1137076206.jpg?w=1440&h=810&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/new-book-on-mgm-classic-8216-the-women-8217-reveals-extent-of-joan-crawford-and--311336/",
-      "landing_url": "https://matchapp.tv/?news=31133616#latest-news",
-      "seo": {
-        "primary_keyword": "New Book latest news",
-        "short_tail": [
-          "New Book",
-          "New Book news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "New Book latest news September 2026",
-          "New Book entertainment update 2026",
-          "New Book news 2026-09-22",
-          "latest entertainment news about New Book",
-          "new book new book mgm classic latest update",
-          "The Hollywood Reporter New Book entertainment",
-          "latest news about New Book September 2026",
-          "New Book entertainment news 2026-09-22",
-          "what happened with New Book"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "New Book",
-          "new",
-          "book",
-          "mgm",
-          "classic",
-          "8216",
-          "women"
-        ],
-        "freshness_keywords": [
-          "September 2026",
-          "2026-09-22",
-          "New Book 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter New Book",
-          "hollywoodreporter.com New Book",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "New Book on MGM Classic &#8216;The Women&#8217; Reveals…",
-        "meta_description": "New Book: Entertainment update reported by The Hollywood Reporter on 2026-09-22. See verified context, publication time and the original source via MatchApp…",
-        "keywords": [
-          "New Book latest news",
-          "New Book",
-          "New Book news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "New Book latest news September 2026",
-          "New Book entertainment update 2026",
-          "New Book news 2026-09-22",
-          "latest entertainment news about New Book",
-          "new book new book mgm classic latest update",
-          "The Hollywood Reporter New Book entertainment",
-          "latest news about New Book September 2026",
-          "New Book entertainment news 2026-09-22",
-          "what happened with New Book",
-          "new",
-          "book",
-          "mgm",
-          "classic",
-          "8216",
-          "women",
-          "September 2026",
-          "2026-09-22",
-          "New Book 2026",
-          "The Hollywood Reporter New Book",
-          "hollywoodreporter.com New Book",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-09-22T14:23:54.112Z"
-      }
-    },
-    {
       "id": "06a28192",
       "title": "Símbolo de liberdade, Ney Matogrosso ganha sucessivos tributos pelo Brasil",
       "url": "https://g1.globo.com/pop-arte/musica/blog/mauro-ferreira/post/2026/09/22/simbolo-de-liberdade-ney-matogrosso-ganha-sucessivos-tributos-pelo-brasil.ghtml",
@@ -1645,100 +1643,6 @@
           "BBC entertainment news"
         ],
         "seo_generated_at": "2026-09-22T09:53:20.614Z"
-      }
-    },
-    {
-      "id": "a4b49f1e",
-      "title": "Elliot Graham, Oscar-Nominated Film Editor on ‘Milk,’ Dies at 50",
-      "url": "https://www.hollywoodreporter.com/movies/movie-news/elliot-graham-dead-film-editor-milk-1236707303/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "published_at": "2026-09-22T03:12:52.000Z",
-      "discovered_at": "2026-09-22T04:46:38.437Z",
-      "event_type": "Obituary",
-      "person": "Elliot Graham",
-      "description": "Elliot Graham: obituary headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/09/Elliot-Graham-Obit-Template-Headshot-Getty-H-2026.jpg?w=1296&h=730&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/elliot-graham-oscar-nominated-film-editor-on-milk-dies-at-50-a4b49f/",
-      "landing_url": "https://matchapp.tv/?news=a4b49f1e#latest-news",
-      "seo": {
-        "primary_keyword": "Elliot Graham latest news",
-        "short_tail": [
-          "Elliot Graham",
-          "Elliot Graham news",
-          "obituary",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "Elliot Graham latest news September 2026",
-          "Elliot Graham obituary update 2026",
-          "Elliot Graham news 2026-09-22",
-          "latest obituary news about Elliot Graham",
-          "elliot graham elliot graham oscar nominated latest update",
-          "The Hollywood Reporter Elliot Graham obituary",
-          "latest news about Elliot Graham September 2026",
-          "Elliot Graham entertainment news 2026-09-22",
-          "what happened with Elliot Graham"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Elliot Graham",
-          "elliot",
-          "graham",
-          "oscar",
-          "nominated",
-          "film",
-          "editor"
-        ],
-        "freshness_keywords": [
-          "September 2026",
-          "2026-09-22",
-          "Elliot Graham 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter Elliot Graham",
-          "hollywoodreporter.com Elliot Graham",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "Elliot Graham, Oscar-Nominated Film Editor on ‘Milk,’ Dies…",
-        "meta_description": "Elliot Graham: Obituary update reported by The Hollywood Reporter on 2026-09-22. See verified context, publication time and the original source via MatchApp…",
-        "keywords": [
-          "Elliot Graham latest news",
-          "Elliot Graham",
-          "Elliot Graham news",
-          "obituary",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "Elliot Graham latest news September 2026",
-          "Elliot Graham obituary update 2026",
-          "Elliot Graham news 2026-09-22",
-          "latest obituary news about Elliot Graham",
-          "elliot graham elliot graham oscar nominated latest update",
-          "The Hollywood Reporter Elliot Graham obituary",
-          "latest news about Elliot Graham September 2026",
-          "Elliot Graham entertainment news 2026-09-22",
-          "what happened with Elliot Graham",
-          "elliot",
-          "graham",
-          "oscar",
-          "nominated",
-          "film",
-          "editor",
-          "September 2026",
-          "2026-09-22",
-          "Elliot Graham 2026",
-          "The Hollywood Reporter Elliot Graham",
-          "hollywoodreporter.com Elliot Graham",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-09-22T04:46:38.437Z"
       }
     },
     {
@@ -4011,6 +3915,105 @@
           "G1 entertainment news"
         ],
         "seo_generated_at": "2026-09-19T17:57:52.501Z"
+      }
+    },
+    {
+      "id": "4ec36067",
+      "title": "'Débi é minha irmã': Fernanda Torres relembra amizade de décadas com Débora Bloch",
+      "url": "https://g1.globo.com/globo-reporter/noticia/2026/09/19/debi-e-minha-irma-fernanda-torres-relembra-amizade-de-decadas-com-debora-bloch.ghtml",
+      "source": "G1",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "BR",
+      "published_at": "2026-09-19T12:26:58.000Z",
+      "discovered_at": "2026-09-19T14:21:10.854Z",
+      "event_type": "Entertainment",
+      "person": "",
+      "description": "entertainment headline reported by G1. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://s2-g1.glbimg.com/tWAEZLF2C9rq67wVf71XglBXJGY=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/k/Z/WRLaoSRpqosefCAOA6Hw/debi-fernanda.01-frame-1818.jpeg",
+      "matchapp_url": "https://matchapp.tv/news/articles/debi-e-minha-irma-fernanda-torres-relembra-amizade-de-decadas-com-debora-bloch-4ec360/",
+      "landing_url": "https://matchapp.tv/?news=4ec36067#latest-news",
+      "seo": {
+        "primary_keyword": "debi minha irma fernanda latest news",
+        "short_tail": [
+          "debi minha irma fernanda",
+          "debi minha irma fernanda news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje"
+        ],
+        "long_tail": [
+          "debi minha irma fernanda latest news September 2026",
+          "debi minha irma fernanda entertainment update 2026",
+          "debi minha irma fernanda news 2026-09-19",
+          "latest entertainment news about debi minha irma fernanda",
+          "debi minha irma fernanda torres relembra latest update",
+          "G1 debi minha irma fernanda entertainment",
+          "últimas notícias sobre debi minha irma fernanda setembro 2026",
+          "debi minha irma fernanda notícia de 2026-09-19",
+          "o que aconteceu com debi minha irma fernanda"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "debi",
+          "minha",
+          "irma",
+          "fernanda",
+          "torres",
+          "relembra",
+          "amizade",
+          "decadas"
+        ],
+        "freshness_keywords": [
+          "September 2026",
+          "2026-09-19",
+          "setembro 2026",
+          "debi minha irma fernanda 2026"
+        ],
+        "source_keywords": [
+          "G1 debi minha irma fernanda",
+          "g1.globo.com debi minha irma fernanda",
+          "G1 entertainment news"
+        ],
+        "meta_title": "'Débi é minha irmã': Fernanda Torres relembra amizade de…",
+        "meta_description": "Entertainment update reported by G1 on 2026-09-19. See verified context, publication time and the original source via MatchApp TV.",
+        "keywords": [
+          "debi minha irma fernanda latest news",
+          "debi minha irma fernanda",
+          "debi minha irma fernanda news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje",
+          "debi minha irma fernanda latest news September 2026",
+          "debi minha irma fernanda entertainment update 2026",
+          "debi minha irma fernanda news 2026-09-19",
+          "latest entertainment news about debi minha irma fernanda",
+          "debi minha irma fernanda torres relembra latest update",
+          "G1 debi minha irma fernanda entertainment",
+          "últimas notícias sobre debi minha irma fernanda setembro 2026",
+          "debi minha irma fernanda notícia de 2026-09-19",
+          "o que aconteceu com debi minha irma fernanda",
+          "debi",
+          "minha",
+          "irma",
+          "fernanda",
+          "torres",
+          "relembra",
+          "amizade",
+          "decadas",
+          "September 2026",
+          "2026-09-19",
+          "setembro 2026",
+          "debi minha irma fernanda 2026",
+          "G1 debi minha irma fernanda",
+          "g1.globo.com debi minha irma fernanda",
+          "G1 entertainment news"
+        ],
+        "seo_generated_at": "2026-09-19T14:21:10.854Z"
       }
     }
   ]
