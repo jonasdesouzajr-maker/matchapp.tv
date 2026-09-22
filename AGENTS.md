@@ -48,7 +48,9 @@ These are standing implementation rules for MatchApp work in this repository.
    - Every implementation or repair must include a regression/stability check for the touched flow. Do not ship browser warnings, uncaught errors, infinite loops, scroll locks, freezes, crashes, or excessive compositor/GPU work on phone, tablet, desktop, TV, or Android WebView.
 
 7. **Responsive visual parity and Android release parity**
-   - Every approved MatchApp main-product UI/UX change must be designed and verified for desktop, tablet, and smartphone breakpoints in the same task; never ship a desktop-only or mobile-only redesign.
+   - By default, approved MatchApp main-product UI/UX changes must be designed and verified for desktop, tablet, and smartphone breakpoints in the same task.
+   - When the repository owner explicitly requests a **smartphone-only** change, keep tablet, desktop and TV layouts unchanged. Scope the CSS/behavior to handset breakpoints only and verify representative smartphone widths.
+   - Every approved smartphone-only change must also be carried into the relevant Android Studio WebView module in the same task: normal-mode smartphone changes go to `:app`; Kids-only smartphone changes go to `:kidsapp`; changes shared by both surfaces are reviewed for both modules.
    - Treat the live responsive web surface as the source of truth for the standard Android WebView app. After an approved production UI release, synchronize the Android Studio `:app` build marker/version so a fresh AAB cold-loads that release. Review `:kidsapp` in the same task and bump it alongside the main app when an AAB refresh is requested, without importing normal-mode branding/content into Kids Mode.
    - Preserve MatchApp Ai KIDS branding and Kids-only routing. Anime and other adult/normal-mode catalog additions must not leak into Kids Mode.
    - Prefer responsive CSS and shared web behavior over Android-only visual forks. Verify taps, folds, dialogs, horizontal rails, viewport zoom, external links and back navigation inside Android WebView as well as browsers.
