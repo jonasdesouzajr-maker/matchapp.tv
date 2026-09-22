@@ -537,49 +537,51 @@
   }
 
   async function askGrownUp() {
-    // Go straight to the device's parent authentication. No intermediate
-    // press-and-hold gate: mobile uses native biometrics/WebAuthn when
-    // configured, with the parent PIN as the fallback.
-    const configured = await ensureGuardianSetup().catch(() => false);
-    if (!configured) return false;
-
+    // Direct parent authentication. Avoid the legacy gate entirely.
+    // Mobile: use an already configured native/WebAuthn credential first.
+    // Otherwise show the explicit parent setup dialog; configured PINs get
+    // the PIN form directly.
     if (!isDesktopGate()) {
       const pref = read(AUTH_PREF_KEY) || '';
       if (pref === 'native' && nativeBridge()) {
         const ok = await nativeAuthenticate().catch(() => false);
         if (ok) return true;
-        // If the native bridge cannot complete authentication, immediately
-        // fall through to the parent PIN instead of leaving the button inert.
       }
       if (pref === 'webauthn' && credentialRecord()) {
         const ok = await verifyPlatformCredential().catch(() => false);
         if (ok) return true;
-        // Cancelled/unsupported biometric authentication falls back to PIN.
       }
     }
 
-    // PIN fallback (and desktop). If no PIN exists yet, open the setup
-    // dialog instead of rendering an empty gate with only Cancel.
     if (!pinRecord()) {
-      const setupOk = await openSetup().catch(() => false);
-      if (!setupOk || !pinRecord()) return false;
+      return !!(await openSetup().catch(() => false));
     }
+
     return new Promise(resolve => {
       if (gateResolve) { const prev = gateResolve; gateResolve = null; prev(false); }
       buildGate();
-      gate.querySelector('#kids-gate-title').textContent = t('gateTitle');
-      gate.querySelector('.kids-gate-text').hidden = true;
-      gate.querySelector('.kids-gate-hold').hidden = true;
+      const title = gate.querySelector('#kids-gate-title');
+      const copy = gate.querySelector('.kids-gate-text');
+      const hold = gate.querySelector('.kids-gate-hold');
+      const form = gate.querySelector('.kids-gate-pin-form');
+      const input = gate.querySelector('#kids-gate-pin');
+      const msg = gate.querySelector('.kids-gate-msg');
+      if (title) title.textContent = t('gateTitle');
+      if (copy) copy.hidden = true;
+      if (hold) hold.hidden = true;
+      if (form) form.hidden = false;
+      if (msg) msg.textContent = '';
       gate.querySelector('.kids-gate-go').textContent = authText('pinGo');
       gate.querySelector('.kids-gate-cancel').textContent = t('cancel');
-      gate.querySelector('.kids-gate-msg').textContent = '';
       stopHold();
       authPending = false;
       gateResolve = resolve;
       openDialog(gate);
-      requestPinVerification().then(ok => {
-        if (ok) finishGate(true);
-      }).catch(() => {});
+      gatePinResolve = ok => { if (ok) finishGate(true); };
+      if (input) {
+        input.value = '';
+        try { input.focus({ preventScroll: true }); } catch (_) {}
+      }
     });
   }
   window.KidsGrownUpCheck = askGrownUp;
