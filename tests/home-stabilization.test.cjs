@@ -88,3 +88,23 @@ test('both Android Studio modules point to current live surfaces for AAB build',
   assert.match(main,/MATCHAPP_ANDROID_KIDS_BLOCKED/);
   assert.match(kids,/MATCHAPP_ANDROID_KIDS_ONLY/);
 });
+
+
+test('hard refresh keeps decorative poster work behind critical page load',()=>{
+  const html=read('index.html');
+  const wall=read('poster-wall.js');
+  const wallCss=read('poster-wall.css');
+  assert.match(html,/defer src="https:\/\/cdn\.jsdelivr\.net\/npm\/canvas-confetti/);
+  assert.match(wall,/window\.addEventListener\('load',queue,\{once:true\}\)/);
+  assert.match(wall,/requestIdleCallback\(run,\{timeout:1600\}\)/);
+  assert.doesNotMatch(wall,/DOMContentLoaded',scheduleBoot/);
+  assert.match(wallCss,/html body\.page-home \.poster-wall \.poster-wall-grid\{[\s\S]*animation:none!important;[\s\S]*will-change:auto!important;/);
+  assert.match(wallCss,/html body\.page-home \.poster-wall-tile\{[\s\S]*animation:none!important;[\s\S]*will-change:auto!important;/);
+});
+
+test('only the Home Match\/Ask Ai concierge card gets the stronger glass surface',()=>{
+  const css=read('home-8k-layout.css');
+  assert.match(css,/#ma-concierge\{[^}]*rgba\(8,10,24,\.76\)!important/);
+  assert.match(css,/#ma-concierge\{[^}]*border-color:rgba\(232,186,64,\.42\)!important/);
+  assert.doesNotMatch(css,/#latest-news\{[^}]*rgba\(8,10,24,\.76\)!important/);
+});

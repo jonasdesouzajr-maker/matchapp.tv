@@ -91,10 +91,14 @@
  }
  function scheduleBoot(){
   const run=()=>boot();
-  setTimeout(()=>{
-    if('requestIdleCallback' in window)requestIdleCallback(run);
-    else run();
-  },900);
+  const queue=()=>setTimeout(()=>{
+    if('requestIdleCallback' in window)requestIdleCallback(run,{timeout:1600});
+    else setTimeout(run,0);
+  },250);
+  // Decorative eager poster requests must never extend or compete with the
+  // critical page load on a cache-bypassing refresh.
+  if(document.readyState==='complete')queue();
+  else window.addEventListener('load',queue,{once:true});
  }
- if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',scheduleBoot,{once:true});else scheduleBoot();
+ scheduleBoot();
 })();
