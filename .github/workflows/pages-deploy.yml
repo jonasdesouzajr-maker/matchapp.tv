@@ -182,7 +182,7 @@ jobs:
           grep -q '/matchapp-ia.js?v=20260921-cta1' /tmp/home-post-purge.html
           grep -q '/catalog-media.js?v=20260920-freeze-final1' /tmp/home-post-purge.html
           grep -q '/app.js?v=20260922-surprise1' /tmp/home-post-purge.html
-          grep -q '/poster-wall.css?v=20260921-wall3' /tmp/home-post-purge.html
+          grep -q '/poster-wall.css?v=20260922-load1' /tmp/home-post-purge.html
           grep -q '/lazy.js?v=20260921-hero1' /tmp/home-post-purge.html
           curl -fsSL --max-time 30 'https://matchapp.tv/matchapp-ia.js?v=20260921-cta1' -o /tmp/home-ia.js
           grep -Fq "root.style.overflowAnchor='none'" /tmp/home-ia.js
