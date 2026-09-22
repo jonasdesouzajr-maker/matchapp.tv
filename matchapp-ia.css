@@ -195,7 +195,7 @@ html body.page-home .home-h1-sub{max-width:640px!important;margin:0 auto!importa
   body.page-home.ma-match-tab .ma-concierge #questionnaire-box>button[data-i18n="q.submit"]{
     position:sticky!important;bottom:70px!important;z-index:40!important
   }
-  body.page-home.ma-ask-tab .ma-concierge #search-box .gold-btn{position:sticky!important;bottom:70px!important;z-index:40!important}
+  body.page-home.ma-ask-tab .ma-concierge #search-box .gold-btn{position:static!important;bottom:auto!important;z-index:auto!important}
 }
 
 /* below-the-fold order and calmer surfaces */
