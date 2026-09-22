@@ -140,9 +140,16 @@
 
   function isMobileLike() {
     const ua = String(navigator.userAgent || '');
+    try {
+      if (navigator.userAgentData && navigator.userAgentData.mobile === true) return true;
+    } catch (_) {}
     if (/Android|iPhone|iPad|iPod|Mobile/i.test(ua)) return true;
     if (/Macintosh/i.test(ua) && Number(navigator.maxTouchPoints || 0) > 1) return true;
-    try { if (window.matchMedia && matchMedia('(pointer:coarse)').matches) return true; } catch (_) {}
+    try {
+      const coarse = window.matchMedia && matchMedia('(pointer:coarse)').matches;
+      const shortest = Math.min(Number(screen.width || 0), Number(screen.height || 0));
+      if (coarse && shortest > 0 && shortest <= 1024) return true;
+    } catch (_) {}
     return false;
   }
   function isDesktopGate() { return !isMobileLike(); }
