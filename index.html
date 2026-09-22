@@ -181,6 +181,9 @@
         body { margin: 0; background: var(--bg-dark); color: #fff; font-family: 'Inter', sans-serif; overflow-x: hidden; position: relative; }
 
 /* CHROME INJECTOR BANNER */
+        /* PROMINENT CHROME PWA INSTALL CARD — Android web only. */
+        #chrome-install-card{display:none;position:relative;z-index:1999;margin:8px auto 10px;width:min(calc(100% - 20px),900px);box-sizing:border-box;padding:12px 14px;border:2px solid var(--gold);border-radius:16px;background:linear-gradient(135deg,rgba(64,37,98,.97),rgba(19,7,52,.98));box-shadow:0 8px 28px rgba(0,0,0,.55),0 0 20px rgba(229,193,88,.22);align-items:center;justify-content:space-between;gap:12px}.chrome-install-copy{min-width:0}.chrome-install-copy strong{display:block;color:#fff;font:800 15px/1.2 'Outfit',sans-serif}.chrome-install-copy span{display:block;color:#d9cdec;font-size:11.5px;line-height:1.35;margin-top:3px}.chrome-install-actions{display:flex;gap:8px;flex-shrink:0}.chrome-install-actions button{min-height:42px;border-radius:11px;padding:9px 13px;font-weight:900;cursor:pointer}.chrome-open-btn{border:1px solid rgba(229,193,88,.7);background:rgba(255,255,255,.07);color:var(--gold-glow)}.chrome-install-now{border:0;background:linear-gradient(135deg,#fff0a0,var(--gold));color:#241400;box-shadow:0 0 16px rgba(229,193,88,.34)}@media(max-width:560px){#chrome-install-card{align-items:stretch;flex-direction:column;padding:11px 12px}.chrome-install-actions{width:100%}.chrome-install-actions button{flex:1}.chrome-install-copy strong{font-size:14px}}@media(display-mode:standalone){#chrome-install-card{display:none!important}}
+
         /* ===== AMBIENT BACKGROUND CANVAS =====
            Fixed behind all content, non-interactive, and below every z-index
            in use so it can never intercept a tap. */
@@ -1551,6 +1554,10 @@
 <link rel="stylesheet" href="/home-8k-layout.css?v=20260922-contrast3">
 <style id="home-avatar-profile-v2">html body.page-home #mh-topbox.app-header #profile-link-tab .avatar-ring{width:34px!important;height:34px!important;min-width:34px!important;border-radius:50%!important;overflow:hidden!important}html body.page-home #mh-topbox.app-header #profile-link-tab .avatar-ring img{width:100%!important;height:100%!important;object-fit:cover!important;border-radius:50%!important}html body.page-home #mh-topbox.app-header #profile-link-tab{padding-left:8px!important;padding-right:9px!important}@media(max-width:600px){html body.page-home #mh-topbox.app-header #profile-link-tab .avatar-ring{width:32px!important;height:32px!important;min-width:32px!important}}</style></head>
 <body class="page-home">
+    <aside id="chrome-install-card" aria-label="Install MatchApp Ai with Google Chrome">
+      <div class="chrome-install-copy"><strong>📲 Get MatchApp Ai on your home screen</strong><span>For the clean app experience on Android, open MatchApp in Google Chrome and tap Install.</span></div>
+      <div class="chrome-install-actions"><button type="button" class="chrome-open-btn" onclick="openInChrome()">Open in Chrome</button><button type="button" class="chrome-install-now" onclick="installMatchApp()">⬇ Install MatchApp</button></div>
+    </aside>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7J3NNBN"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -3229,13 +3236,31 @@ html body.page-home #daily-match-checkin { padding: 11px 12px !important; }
             var userAgent = navigator.userAgent || navigator.vendor || window.opera;
             if (/MatchAppTVAndroid/i.test(userAgent)) return;
             if (/android/i.test(userAgent)) {
-                window.location.href = "intent://matchapp.tv/#Intent;scheme=https;package=com.android.chrome;end";
+                // Explicit Chrome package + HTTPS fallback. Android opens Chrome when installed;
+                // otherwise the fallback keeps the visitor safely on MatchApp.
+                window.location.href = "intent://matchapp.tv/?install=chrome#Intent;scheme=https;package=com.android.chrome;S.browser_fallback_url=https%3A%2F%2Fmatchapp.tv%2F%3Finstall%3Dchrome;end";
             } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-                window.location.href = "googlechrome://navigate?url=matchapp.tv";
+                window.location.href = "googlechrome://navigate?url=https%3A%2F%2Fmatchapp.tv%2F";
             } else {
-                alert("To open in Chrome on desktop, simply press Ctrl+C to copy the link and open Google Chrome.");
+                window.location.href = "https://matchapp.tv/?install=chrome";
             }
         }
+        (function configureChromeInstallCard(){
+            function apply(){
+                var card=document.getElementById('chrome-install-card'); if(!card)return;
+                var ua=navigator.userAgent||'';
+                var android=/Android/i.test(ua), native=/MatchAppTVAndroid/i.test(ua);
+                var standalone=(window.matchMedia&&window.matchMedia('(display-mode: standalone)').matches)||navigator.standalone===true;
+                if(!android||native||standalone){card.style.display='none';return;}
+                card.style.display='flex';
+                var isChrome=/Chrome\\//i.test(ua)&&!/EdgA|OPR\\//i.test(ua);
+                var open=card.querySelector('.chrome-open-btn'), install=card.querySelector('.chrome-install-now');
+                if(isChrome){open.style.display='none';install.style.display='block';}
+                else{install.style.display='none';open.style.display='block';}
+            }
+            if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',apply,{once:true});else apply();
+            window.addEventListener('appinstalled',apply);
+        })();
 
         // Floating logos are now handled by ambient.js (canvas + collision physics).
 
