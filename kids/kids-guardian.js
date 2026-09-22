@@ -558,7 +558,12 @@
       }
     }
 
-    // PIN fallback (and desktop): show only the PIN prompt, never the hand.
+    // PIN fallback (and desktop). If no PIN exists yet, open the setup
+    // dialog instead of rendering an empty gate with only Cancel.
+    if (!pinRecord()) {
+      const setupOk = await openSetup().catch(() => false);
+      if (!setupOk || !pinRecord()) return false;
+    }
     return new Promise(resolve => {
       if (gateResolve) { const prev = gateResolve; gateResolve = null; prev(false); }
       buildGate();
