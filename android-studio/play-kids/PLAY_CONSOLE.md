@@ -23,8 +23,8 @@ The resulting bundle is generated under the `kidsapp/` build output.
 MatchApp Ai KIDS intentionally contains only the MatchApp Kids experience:
 
 - Kids home and Kids title pages stay inside the app.
-- The Grown-ups exit is removed from the Android shell.
-- Non-Kids MatchApp routes are rejected and return to the Kids home.
+- The Grown-ups exit stays visible, but leaving Kids requires the three-second parent gate followed by Android biometric verification or the configured parent PIN.
+- Non-Kids MatchApp routes are rejected inside the Kids WebView; a successful parent exit opens grown-up MatchApp outside the Kids shell.
 - Privacy/Terms and third-party viewing destinations open externally.
 - Ads are disabled in the Android shell.
 
