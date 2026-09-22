@@ -215,7 +215,7 @@
            around. Everything else is a neutral hairline.
            ============================================================ */
 
-        /* style.css puts 50px/12px padding on <body>, which inset the header
+        /* style.css puts 50px/12px padding on <body class="page-home profile-page-v3">, which inset the header
            from the viewport edge and left dead space above the first element.
            The shell handles gutters now. */
         body { padding: 0 0 20px 0 !important; }
@@ -345,6 +345,39 @@ html,body{background:transparent!important}.profile-shell,.profile-main,.profile
 .profile-hub-intro{padding-top:6px}
 }
 @media(min-width:601px) and (max-width:900px){.avatar-maker-sheet{padding:22px}.avatar-option-row{grid-template-columns:120px minmax(0,1fr)}.avatar-choice{min-width:82px!important}.avatar-live-preview{width:170px!important}}
+</style><style id="profile-mobile-v3">
+/* Phone/tablet profile: use the exact home poster-wall composition and a compact avatar entry point. */
+@media(max-width:900px){
+body.profile-page-v3 .main-layout{padding:18px 14px 44px!important;max-width:none!important}
+body.profile-page-v3 .container{max-width:760px!important;padding:0!important}
+body.profile-page-v3 .match-avatar-maker{margin:2px auto 22px!important}
+body.profile-page-v3 .avatar-preview-button{display:grid!important;justify-items:center!important;gap:8px!important;padding:0!important}
+body.profile-page-v3 .avatar-preview-button #match-avatar-preview{width:132px!important;height:132px!important;aspect-ratio:1!important;border-radius:50%!important;border:3px solid #e5c158!important;background:#100a23!important;box-shadow:0 0 0 6px #e5c15816,0 12px 34px #0007!important}
+body.profile-page-v3 .avatar-preview-button span{margin:0!important;font-size:15px!important;color:#f2cb59!important}
+body.profile-page-v3 .profile-hub-intro{padding:0 10px 18px!important}
+body.profile-page-v3 .profile-hub-intro h1{font-size:clamp(34px,9vw,48px)!important;line-height:1.04!important}
+body.profile-page-v3 .profile-hub-menu{gap:10px!important;padding:0 6px!important}
+body.profile-page-v3 .profile-hub-row{min-height:70px!important;border-radius:18px!important;background:color-mix(in srgb,var(--theme-surface,#241636) 94%,transparent)!important;backdrop-filter:none!important}
+body.profile-page-v3 .match-avatar-maker dialog{width:min(94vw,760px)!important;max-width:760px!important;max-height:92dvh!important;height:auto!important;margin:auto!important;border:1px solid #7653aa!important;border-radius:24px!important;background:#100823!important;overflow:auto!important}
+body.profile-page-v3 .avatar-maker-sheet{height:auto!important;min-height:0!important;display:block!important;padding:16px!important}
+body.profile-page-v3 .avatar-maker-sheet header{position:sticky!important;top:0!important;z-index:3!important;display:flex!important;background:#100823!important;padding:2px 0 12px!important;border-bottom:1px solid #7653aa55!important}
+body.profile-page-v3 .avatar-builder{display:block!important;margin:14px 0!important;overflow:visible!important}
+body.profile-page-v3 .avatar-preview-pane{display:grid!important;grid-template-columns:128px minmax(0,1fr)!important;grid-template-rows:auto auto!important;gap:4px 14px!important;align-items:center!important;text-align:left!important;padding:12px!important;margin-bottom:12px!important;border:1px solid #7653aa66!important;border-radius:20px!important;background:#211044!important}
+body.profile-page-v3 .avatar-live-preview{grid-row:1/3!important;width:128px!important;height:138px!important;aspect-ratio:auto!important;margin:0!important;position:static!important;border-radius:50%!important;box-shadow:0 0 0 3px #e5c158,0 0 22px #e5c15832!important}
+body.profile-page-v3 .avatar-controls{display:grid!important;gap:10px!important;max-height:none!important;overflow:visible!important;padding:0!important}
+body.profile-page-v3 .avatar-option-row{display:grid!important;grid-template-columns:92px minmax(0,1fr)!important;align-items:center!important;gap:8px!important;padding:9px!important;border-radius:15px!important;background:#130b2d!important}
+body.profile-page-v3 .avatar-option-row h3{margin:0!important;font-size:11px!important;line-height:1.25!important}
+body.profile-page-v3 .avatar-choices{display:flex!important;gap:7px!important;overflow-x:auto!important;padding:3px!important;scroll-snap-type:x proximity!important}
+body.profile-page-v3 .avatar-choice{min-width:68px!important;min-height:52px!important;padding:7px!important;scroll-snap-align:start!important}
+body.profile-page-v3 .avatar-maker-sheet footer{position:sticky!important;bottom:0!important;z-index:3!important;display:grid!important;grid-template-columns:1fr .72fr 1.35fr!important;gap:7px!important;padding:12px 0 2px!important;background:#100823!important;border-top:1px solid #7653aa55!important}
+body.profile-page-v3 .avatar-maker-sheet footer button{min-height:46px!important;padding:8px 6px!important;font-size:12px!important}
+}
+@media(min-width:601px) and (max-width:900px){
+body.profile-page-v3 .avatar-preview-button #match-avatar-preview{width:148px!important;height:148px!important}
+body.profile-page-v3 .avatar-preview-pane{grid-template-columns:156px minmax(0,1fr)!important}
+body.profile-page-v3 .avatar-live-preview{width:156px!important;height:166px!important}
+body.profile-page-v3 .avatar-option-row{grid-template-columns:120px minmax(0,1fr)!important}
+}
 </style></head>
 <body>
     <!-- Google Tag Manager (noscript) -->
@@ -578,7 +611,7 @@ html,body{background:transparent!important}.profile-shell,.profile-main,.profile
 <script src="/app-install-state.js?v=20260922-install2"></script>
 <script defer src="/install.js?v=20260922-install2"></script>
     <script defer src="/avatars.js?v=187"></script>
-<script defer src="/avatar-builder.js?v=20260922-3"></script>
+<script defer src="/avatar-builder.js?v=20260922-4"></script>
     <script src="/matching-policy.js?v=200"></script>
     <script src="/match-localization.js?v=187"></script>
 <script src="/app.js?v=210"></script>
