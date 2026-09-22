@@ -34,3 +34,13 @@ test('Android apps expose a same-origin native speech recognizer bridge',()=>{
  assert.match(main,/isMatchAppHost\(current\.host\.orEmpty\(\)\)/);
  assert.match(kids,/isAllowedKidsUrl\(web\.url\)/);
 });
+
+
+test('standard Android app mirrors the smartphone-only Ask AI composer guard',()=>{
+ const main=read('android-studio/app/src/main/java/tv/matchapp/app/MainActivity.kt');
+ assert.match(main,/@media\(max-width:640px\)\{body\.ai-chat-page \.newsearch-row/);
+ assert.match(main,/body\.ai-chat-page \.composer\{display:flex!important;/);
+ assert.match(main,/body\.ai-chat-page \.composer textarea\{display:block!important;/);
+ assert.match(main,/visibility:visible!important/);
+ assert.match(main,/body\.ai-chat-page \.composer \.mic-btn\{display:inline-flex!important;/);
+});
