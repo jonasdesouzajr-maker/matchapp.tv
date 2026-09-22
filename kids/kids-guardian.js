@@ -120,7 +120,7 @@
       '.kids-parent-setup>.kids-parent-bio,.kids-parent-setup>.kids-parent-pin-choice{display:block;width:100%;margin:8px 0}',
       '.kids-parent-setup>[hidden]{display:none!important}',
       '.kids-gate button,.kids-timeup button,.kids-time-settings button{min-height:44px;padding:10px 16px;border-radius:14px;border:2px solid #ffd35a;background:#ffd35a;color:#1b1340;font:800 15px/1.2 system-ui,sans-serif;cursor:pointer}',
-      '.kids-gate .kids-gate-hold{background:#2a1f5c;color:#fff}',
+      '.kids-gate .kids-gate-hold{color:#fff}',
       '.kids-gate .kids-gate-cancel,.kids-time-settings .kids-gate-cancel{background:transparent;color:#ffe9a8;margin-top:12px}',
       '.kids-gate-msg{min-height:1.4em;margin:8px 0 0!important;color:#ffb3c7}',
       '.kids-time-settings select{min-height:44px;margin:4px 0 14px;padding:8px 12px;border-radius:12px;border:2px solid #7cd8ff;background:#0f0b26;color:#fff;font-size:17px}',
@@ -135,6 +135,8 @@
   let gate = null, gateResolve = null, gatePinResolve = null, holdFrame = 0, holdStart = 0, authPending = false;
   let setupDialog = null, setupResolve = null, setupPromise = null;
   let nativeResolve = null, nativeTimer = 0;
+  const requestFrame = window.requestAnimationFrame ? cb => window.requestAnimationFrame(cb) : cb => setTimeout(() => cb(Date.now()), 16);
+  const cancelFrame = window.cancelAnimationFrame ? id => window.cancelAnimationFrame(id) : id => clearTimeout(id);
 
   function isMobileLike() {
     const ua = String(navigator.userAgent || '');
@@ -296,7 +298,7 @@
   }
 
   function stopHold(reset) {
-    if (holdFrame) { cancelAnimationFrame(holdFrame); holdFrame = 0; }
+    if (holdFrame) { cancelFrame(holdFrame); holdFrame = 0; }
     const hold = gate && gate.querySelector('.kids-gate-hold');
     if (hold) {
       hold.dataset.holding = '0';
@@ -372,9 +374,9 @@
         }).catch(() => { authPending = false; });
         return;
       }
-      holdFrame = requestAnimationFrame(tickHold);
+      holdFrame = requestFrame(tickHold);
     };
-    holdFrame = requestAnimationFrame(tickHold);
+    holdFrame = requestFrame(tickHold);
   }
   function buildGate() {
     if (gate) return gate;
