@@ -1,21 +1,21 @@
 {
-  "version": "2026.09.21.3",
+  "version": "2026.09.21.4",
   "date": "2026-09-21",
   "functional": true,
   "notes": {
-    "en": "Ask AI now keeps the typing composer clearly visible, restores multilingual microphone dictation, and reads answers aloud in the selected language. Android apps also include a native speech-recognizer fallback. Kids Mode remains in static no-animation stability mode.",
-    "pt-BR": "O Ask AI agora mantém o campo de digitação claramente visível, restaura o ditado por microfone em vários idiomas e lê as respostas em voz alta no idioma selecionado. Os apps Android também incluem reconhecimento de voz nativo como alternativa. O Modo Kids continua no modo estático sem animações.",
-    "es": "Ask AI ahora mantiene visible el campo de escritura, restaura el dictado por micrófono multilingüe y lee las respuestas en voz alta en el idioma seleccionado. Las apps Android también incluyen reconocimiento de voz nativo como respaldo. Kids Mode sigue sin animaciones.",
-    "fr": "Ask AI garde désormais le champ de saisie bien visible, rétablit la dictée multilingue au micro et lit les réponses à voix haute dans la langue sélectionnée. Les apps Android disposent aussi d’un secours de reconnaissance vocale native. Le mode Kids reste sans animation.",
-    "de": "Ask AI zeigt das Eingabefeld wieder klar sichtbar, stellt mehrsprachige Spracheingabe per Mikrofon wieder her und liest Antworten in der gewählten Sprache vor. Die Android-Apps haben zusätzlich eine native Spracherkennungs-Alternative. Kids Mode bleibt animationsfrei.",
-    "it": "Ask AI mantiene ora ben visibile il campo di testo, ripristina la dettatura multilingue tramite microfono e legge le risposte ad alta voce nella lingua selezionata. Le app Android includono anche un fallback di riconoscimento vocale nativo. Kids Mode resta senza animazioni.",
-    "tr": "Ask AI yazı alanını artık açıkça görünür tutuyor, çok dilli mikrofon diktesini geri getiriyor ve yanıtları seçili dilde sesli okuyor. Android uygulamalarında ayrıca yerel konuşma tanıma yedeği bulunuyor. Kids Mode animasyonsuz kalıyor.",
-    "ru": "Ask AI теперь явно показывает поле ввода, снова поддерживает многоязычную диктовку через микрофон и озвучивает ответы на выбранном языке. В Android-приложениях также есть нативный резервный распознаватель речи. Kids Mode остаётся без анимаций.",
-    "ar": "أصبح Ask AI يعرض حقل الكتابة بوضوح، ويعيد الإملاء الصوتي متعدد اللغات، ويقرأ الردود بصوت مسموع باللغة المحددة. كما تتضمن تطبيقات Android خيارًا احتياطيًا للتعرّف الصوتي الأصلي. ويظل وضع الأطفال بلا رسوم متحركة.",
-    "hi": "Ask AI अब टाइपिंग फ़ील्ड को स्पष्ट रूप से दिखाता है, बहुभाषी माइक्रोफ़ोन डिक्टेशन वापस लाता है और चुनी गई भाषा में जवाब बोलकर सुनाता है। Android ऐप्स में नेटिव स्पीच रिकग्नाइज़र फॉलबैक भी है। Kids Mode बिना एनीमेशन के बना रहता है।",
-    "id": "Ask AI kini menampilkan kolom ketik dengan jelas, mengembalikan dikte mikrofon multibahasa, dan membacakan jawaban dalam bahasa yang dipilih. Aplikasi Android juga memiliki fallback pengenal suara native. Kids Mode tetap tanpa animasi.",
-    "ja": "Ask AI の入力欄を明確に表示し、多言語のマイク音声入力を復活させ、選択中の言語で回答を読み上げるようにしました。Android アプリにはネイティブ音声認識のフォールバックも追加。Kids Mode は引き続きアニメーションなしです。",
-    "ko": "Ask AI 입력창을 다시 명확하게 표시하고, 다국어 마이크 받아쓰기를 복원했으며, 선택한 언어로 답변을 음성 재생합니다. Android 앱에는 네이티브 음성 인식 대체 경로도 추가했습니다. Kids Mode는 계속 애니메이션 없이 유지됩니다.",
-    "zh": "Ask AI 现在会清晰显示输入框，恢复多语言麦克风听写，并用当前选择的语言朗读回答。Android 应用还增加了原生语音识别备用方案。Kids Mode 继续保持无动画稳定模式。"
+    "en": "Kids Mode freeze root cause fixed: the result dialog’s media enrichment was observing and rewriting the same subtree, creating a self-feeding post-match loop. Kids result enrichment is now event-driven, deduplicated and covered by a live mobile heartbeat/mutation smoke test.",
+    "pt-BR": "Corrigida a causa raiz do travamento no Modo Kids: o enriquecimento de mídia do resultado observava e reescrevia a mesma área, criando um loop após o match. Agora o enriquecimento é acionado por evento, deduplicado e validado por teste móvel de atividade/mutações.",
+    "es": "Corregida la causa raíz del bloqueo en Kids Mode: el enriquecimiento multimedia del resultado observaba y reescribía el mismo contenido, creando un bucle tras el match. Ahora es dirigido por eventos, deduplicado y validado con una prueba móvil de actividad y mutaciones.",
+    "fr": "La cause racine du blocage de Kids Mode est corrigée : l’enrichissement média du résultat observait puis réécrivait la même zone, créant une boucle après le match. Il est désormais déclenché par événement, dédupliqué et couvert par un test mobile de réactivité.",
+    "de": "Die Ursache des Kids-Mode-Freezes ist behoben: Die Medienanreicherung beobachtete und schrieb denselben Ergebnisbereich neu und erzeugte so eine Endlosschleife nach dem Match. Sie ist jetzt ereignisgesteuert, dedupliziert und durch einen mobilen Reaktions-/Mutationstest abgesichert.",
+    "it": "Corretta la causa principale del blocco di Kids Mode: l’arricchimento media del risultato osservava e riscriveva la stessa area, creando un loop dopo il match. Ora è guidato da eventi, deduplicato e verificato con un test mobile di reattività/mutazioni.",
+    "tr": "Kids Mode donmasının kök nedeni giderildi: sonuç medya zenginleştirmesi aynı alanı gözleyip yeniden yazarak eşleşme sonrası kendi kendini besleyen bir döngü oluşturuyordu. Artık olay tabanlı, yinelenmeyen ve mobil canlılık/mutasyon testiyle doğrulanıyor.",
+    "ru": "Исправлена корневая причина зависания Kids Mode: обогащение медиа результата наблюдало и перезаписывалo тот же участок, создавая цикл после матча. Теперь оно событийное, дедуплицированное и проверяется мобильным тестом активности/мутаций.",
+    "ar": "تم إصلاح السبب الجذري لتجمّد وضع الأطفال: كان إثراء الوسائط يراقب منطقة النتيجة نفسها ثم يعيد كتابتها، مما أنشأ حلقة متكررة بعد المطابقة. أصبح الآن قائمًا على الأحداث مع منع التكرار واختبار استجابة/طفرات على الهاتف.",
+    "hi": "Kids Mode फ्रीज़ का मूल कारण ठीक किया गया: रिज़ल्ट मीडिया एनरिचमेंट उसी DOM हिस्से को देख और फिर से लिख रहा था, जिससे मैच के बाद self-feeding loop बन रहा था। अब यह event-driven, deduplicated और mobile heartbeat/mutation test से सुरक्षित है।",
+    "id": "Penyebab utama Kids Mode membeku telah diperbaiki: pengayaan media hasil mengamati lalu menulis ulang area yang sama sehingga membentuk loop setelah match. Sekarang berbasis event, terdeduplikasi, dan diuji dengan smoke test heartbeat/mutasi mobile.",
+    "ja": "Kids Mode のフリーズ原因を修正しました。結果メディア処理が同じ結果領域を監視しながら書き換え続け、マッチ直後に自己増殖ループを起こしていました。現在はイベント駆動・重複防止となり、モバイルのハートビート/DOM 変化テストで検証されます。",
+    "ko": "Kids Mode 멈춤의 근본 원인을 수정했습니다. 결과 미디어 보강이 같은 결과 영역을 감시하면서 다시 써서 매치 직후 자기 반복 루프를 만들고 있었습니다. 이제 이벤트 기반·중복 방지 방식이며 모바일 heartbeat/DOM mutation 테스트로 검증됩니다.",
+    "zh": "已修复 Kids Mode 卡死的根本原因：结果媒体增强逻辑一边监听结果区域一边反复重写同一区域，导致匹配后形成自循环。现在改为事件驱动、去重处理，并加入移动端心跳/DOM 变更健康检查。"
   }
 }
