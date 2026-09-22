@@ -33,7 +33,7 @@ test('Home noncritical enrichment is staggered instead of timing out together',(
  assert.match(html,/\/title-captions\.js\?v=20260921-ui2/);
  assert.match(html,/\/catalog-media\.js\?v=20260920-freeze-final1/);
  assert.match(html,/\/poster-wall\.css\?v=20260922-load1/);
- assert.match(poster,/setTimeout\(\(\)=>\{[\s\S]*requestIdleCallback\(run\)[\s\S]*\},900\)/);
+ assert.match(poster,/window\.addEventListener\('load',queue,\{once:true\}\)/);\n assert.match(poster,/requestIdleCallback\(run,\{timeout:1600\}\)/);
  assert.match(captions,/setTimeout\(\(\)=>\{[\s\S]*requestIdleCallback\(\(\)=>paint\(\)\)[\s\S]*\},2200\)/);
  assert.match(captions,/requestIdleCallback\(loadAudit\)[\s\S]*\},5200\)/);
  assert.match(media,/TRENDING_CONCURRENCY=2/);
