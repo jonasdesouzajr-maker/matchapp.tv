@@ -26,6 +26,41 @@
 
 let deferredInstallPrompt = null;
 
+const MATCHAPP_INSTALL_VERSION = '20260922-install1';
+function matchAppInstallLocale() {
+    const primary = String((navigator.languages && navigator.languages[0]) || navigator.language || 'en')
+        .replace(/_/g, '-').toLowerCase();
+    return /^pt-br(?:$|-)/.test(primary) ? 'pt-BR' : 'en';
+}
+function matchAppInstallName() {
+    return matchAppInstallLocale() === 'pt-BR' ? 'MatchApp iA' : 'MatchApp Ai';
+}
+function secureInstallContext() {
+    const host = String(location.hostname || '').toLowerCase();
+    const local = host === 'localhost' || host === '127.0.0.1' || host === '[::1]';
+    return local || (window.isSecureContext === true && location.protocol === 'https:' && /(^|\.)matchapp\.tv$/.test(host));
+}
+function configureInstallBrand() {
+    const locale = matchAppInstallLocale();
+    const name = matchAppInstallName();
+    window.MATCHAPP_INSTALL_LOCALE = locale;
+    window.MATCHAPP_INSTALL_NAME = name;
+    let manifest = document.querySelector('link[rel="manifest"]');
+    if (!manifest) { manifest = document.createElement('link'); manifest.rel = 'manifest'; document.head.appendChild(manifest); }
+    manifest.href = (locale === 'pt-BR' ? '/manifest-pt-br.json' : '/manifest.json') + '?v=' + MATCHAPP_INSTALL_VERSION;
+    const setMeta = (metaName) => {
+        let meta = document.querySelector('meta[name="' + metaName + '"]');
+        if (!meta) { meta = document.createElement('meta'); meta.name = metaName; document.head.appendChild(meta); }
+        meta.content = name;
+    };
+    setMeta('application-name');
+    setMeta('apple-mobile-web-app-title');
+    let touch = document.querySelector('link[rel="apple-touch-icon"]');
+    if (!touch) { touch = document.createElement('link'); touch.rel = 'apple-touch-icon'; document.head.appendChild(touch); }
+    touch.href = '/assets/brand/matchapp-ai-install-192.png?v=' + MATCHAPP_INSTALL_VERSION;
+}
+configureInstallBrand();
+
 function platformInfo() {
     const ua = navigator.userAgent || '';
 
@@ -43,6 +78,7 @@ function platformInfo() {
     // manual instructions. Chrome on Android fires beforeinstallprompt on
     // tablets exactly as it does on phones, so they only needed recognising.
     const isAndroid = /Android/.test(ua);
+    const isNativeShell = /MatchAppTVAndroid/i.test(ua);
     const isTablet = iPadOS
         || (/Android/.test(ua) && !/Mobile/.test(ua))   // Android tablets omit "Mobile"
         || /Tablet|PlayBook|Silk/.test(ua);
@@ -52,7 +88,7 @@ function platformInfo() {
     const isSafari = /^((?!chrome|crios|fxios|edgios|android).)*safari/i.test(ua);
     const isStandalone = window.matchMedia && window.matchMedia('(display-mode: standalone)').matches
         || window.navigator.standalone === true; // iOS's own standalone flag
-    return { isIOS, isMac, isSafari, isStandalone, isTablet, isAndroid, iPadOS };
+    return { isIOS, isMac, isSafari, isStandalone, isTablet, isAndroid, iPadOS, isNativeShell };
 }
 
 function installButtons() {
@@ -84,7 +120,11 @@ window.addEventListener('appinstalled', () => {
     if (window.dismissInstallBubble) window.dismissInstallBubble();
     hideInstallButtons();
     if (window.showToast) {
-        showToast(window.t ? t('install.done') : '🎉 MatchApp installed — find it on your home screen.');
+        const name = window.MATCHAPP_INSTALL_NAME || 'MatchApp Ai';
+        const done = window.MATCHAPP_INSTALL_LOCALE === 'pt-BR'
+            ? '🎉 ' + name + ' instalado — abra pelo ícone na tela inicial ou na lista de aplicativos.'
+            : '🎉 ' + name + ' installed — open it from your home screen or app launcher.';
+        showToast(done);
     }
 });
 
@@ -137,6 +177,10 @@ window.closeInstallModal = function () {
 };
 
 window.installMatchApp = async function () {
+    if (!secureInstallContext()) {
+        if (window.showToast) showToast('For your protection, MatchApp can only be installed from the secure matchapp.tv site.');
+        return;
+    }
     if (window.matchAppInstallState?.isInstalled()) {
         const code=window.MATCH_LANG||document.documentElement.lang||'en';
         const text=code.startsWith('pt')?'O MatchApp já foi instalado. Abra pelo ícone na tela inicial ou na lista de aplicativos. Seu dispositivo controla a posição do ícone.':code.startsWith('es')?'MatchApp ya está instalado. Ábrelo desde la pantalla de inicio o la lista de aplicaciones. Tu dispositivo controla la posición del icono.':'MatchApp is installed. Open its icon from your home screen or app launcher. Your device controls where the icon is placed.';
@@ -259,7 +303,10 @@ window.addEventListener('resize', positionInstallBubble);
 window.addEventListener('orientationchange', () => setTimeout(positionInstallBubble, 120));
 
 function initInstall() {
-    const { isIOS, isMac, isStandalone } = platformInfo();
+    const { isIOS, isMac, isStandalone, isNativeShell } = platformInfo();
+
+    // Browser installation is offered only from the secure web origin, never inside the native Android shell.
+    if (!secureInstallContext() || isNativeShell) { hideInstallButtons(); return; }
 
     // Already running as an installed app — nothing to install.
     if (isStandalone || window.matchAppInstallState?.isInstalled()) { hideInstallButtons(); return; }
@@ -274,9 +321,9 @@ function initInstall() {
     // doing nothing when tapped.
 }
 
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && secureInstallContext()) {
     window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js').catch((err) => {
+        navigator.serviceWorker.register('/sw.js', { scope: '/', updateViaCache: 'none' }).catch((err) => {
             console.warn('[MatchApp install] service worker registration failed', err);
         });
     }, { once: true });

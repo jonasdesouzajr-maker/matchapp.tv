@@ -7,7 +7,7 @@
    never trap the app on an old or redirected response.
    ============================================================ */
 
-const SW_VERSION = 'v22-notifications';
+const SW_VERSION = 'v23-pwa-install';
 
 self.addEventListener('install', () => {
     self.skipWaiting();
@@ -16,6 +16,10 @@ self.addEventListener('install', () => {
 self.addEventListener('activate', (event) => {
     event.waitUntil(self.clients.claim());
 });
+
+// Some installability engines still look for a fetch handler. This listener
+// deliberately does not intercept requests, preserving normal HTTPS/network handling.
+self.addEventListener('fetch', () => {});
 
 
 self.addEventListener('push', (event) => {
@@ -32,7 +36,7 @@ self.addEventListener('push', (event) => {
     event.waitUntil(self.registration.showNotification(title, {
         body,
         tag: String(payload.tag || 'matchapp-notification'),
-        icon: '/assets/brand/matchapp-icon-192.png',
+        icon: '/assets/brand/matchapp-ai-install-192.png?v=20260922-install1',
         badge: '/assets/brand/matchapp-icon-192.png',
         data: { url }
     }));

@@ -45,31 +45,31 @@
     }
   ],
   "prefer_related_applications": false,
-  "name": "MatchApp Ai",
-  "short_name": "MatchApp Ai",
-  "description": "AI entertainment concierge: choose a mood, get a title and see where it officially plays in your country.",
-  "start_url": "/?utm_source=pwa",
-  "lang": "en",
+  "name": "MatchApp iA",
+  "short_name": "MatchApp iA",
+  "description": "Concierge de entretenimento com IA: escolha o clima, receba um título e veja onde assistir oficialmente no seu país.",
+  "start_url": "/?utm_source=pwa&lang=pt-BR",
+  "lang": "pt-BR",
   "shortcuts": [
     {
-      "name": "Get a match",
-      "short_name": "Match",
-      "url": "/?utm_source=pwa_shortcut#questionnaire-box"
+      "name": "Encontrar uma combinação",
+      "short_name": "Combinar",
+      "url": "/?utm_source=pwa_shortcut&lang=pt-BR#questionnaire-box"
     },
     {
-      "name": "Ask the AI",
-      "short_name": "Ask AI",
-      "url": "/discover.html?utm_source=pwa_shortcut"
+      "name": "Perguntar à IA",
+      "short_name": "Perguntar",
+      "url": "/discover.html?utm_source=pwa_shortcut&lang=pt-BR"
     },
     {
-      "name": "My library",
-      "short_name": "Library",
-      "url": "/profile/profile.html?utm_source=pwa_shortcut"
+      "name": "Minha biblioteca",
+      "short_name": "Biblioteca",
+      "url": "/profile/profile.html?utm_source=pwa_shortcut&lang=pt-BR"
     },
     {
-      "name": "Kids Mode",
+      "name": "Modo Kids",
       "short_name": "Kids",
-      "url": "/kids/",
+      "url": "/kids/?lang=pt-BR",
       "icons": [
         {
           "src": "/kids/kids-logo.jpeg",

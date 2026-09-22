@@ -14,7 +14,14 @@
     if(standalone()){remember();return true;}
     if(typeof navigator.getInstalledRelatedApps==='function')try{
       const apps=await navigator.getInstalledRelatedApps();
-      const own=apps.some(app=>app.platform==='webapp'&&(app.id==='https://matchapp.tv/'||app.url==='https://matchapp.tv/manifest.json'));
+      const own=apps.some(app=>{
+        if(app.platform!=='webapp')return false;
+        if(app.id==='https://matchapp.tv/')return true;
+        try{
+          const u=new URL(app.url,location.origin);
+          return u.origin===location.origin&&(u.pathname==='/manifest.json'||u.pathname==='/manifest-pt-br.json');
+        }catch(_){return false;}
+      });
       known=own;write(KEY,own?'true':null);if(!own)write(BUILD,null);notify();
     }catch(_){/* Unsupported OS or unavailable manifest: retain confirmed hint. */}
     return known;
