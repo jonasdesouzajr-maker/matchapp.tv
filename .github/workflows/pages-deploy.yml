@@ -70,6 +70,11 @@ jobs:
           sudo apt-get install -y --no-install-recommends librsvg2-bin
           rsvg-convert -w 1200 -h 630 assets/brand/matchapp-og.svg -o og-image-v3.png
           test -s og-image-v3.png
+      - name: Stamp exact deployment identity
+        shell: bash
+        run: |
+          printf '%s\n' "$GITHUB_SHA" > deployment-sha.txt
+          test "$(cat deployment-sha.txt)" = "$GITHUB_SHA"
       - uses: actions/upload-pages-artifact@v3
         with:
           name: github-pages-${{ github.run_attempt }}
@@ -126,30 +131,31 @@ jobs:
             echo "Cloudflare purge response did not report success=true."
             exit 1
           }
-          # GitHub Pages/custom-domain propagation can lag the deploy action by
-          # a few seconds even after Cloudflare has purged successfully. Wait for
-          # the live Home asset key to match this exact checkout instead of
-          # treating normal propagation latency as a failed release.
-          EXPECTED_IA_CSS="$(grep -oE '/matchapp-ia\.css\?v=[^"]+' index.html | head -n1 || true)"
-          echo "Expected Home CSS key: ${EXPECTED_IA_CSS:-missing}"
-          test -n "$EXPECTED_IA_CSS"
-          LIVE_IA_CSS=""
-          for attempt in $(seq 1 12); do
-            curl -fsSL --max-time 30 -H 'Cache-Control: no-cache' \
-              "https://matchapp.tv/?deploy=${GITHUB_SHA}-$attempt" \
-              -o /tmp/home-post-purge.html
-            LIVE_IA_CSS="$(grep -oE '/matchapp-ia\.css\?v=[^"]+' /tmp/home-post-purge.html | head -n1 || true)"
-            echo "Live Home asset check $attempt/12: expected=$EXPECTED_IA_CSS live=${LIVE_IA_CSS:-missing}"
-            if [ "$LIVE_IA_CSS" = "$EXPECTED_IA_CSS" ]; then
+          # GitHub Pages/custom-domain propagation can lag the deploy action even
+          # after Cloudflare purges successfully. Poll a marker generated inside
+          # this exact Pages artifact, so unchanged asset cache keys cannot make an
+          # older release look current.
+          LIVE_DEPLOY_SHA=""
+          for attempt in $(seq 1 18); do
+            LIVE_DEPLOY_SHA="$(curl -fsSL --max-time 30 -H 'Cache-Control: no-cache' \
+              "https://matchapp.tv/deployment-sha.txt?deploy=${GITHUB_SHA}-$attempt" 2>/dev/null | tr -d '[:space:]' || true)"
+            echo "Live deployment check $attempt/18: expected=$GITHUB_SHA live=${LIVE_DEPLOY_SHA:-missing}"
+            if [ "$LIVE_DEPLOY_SHA" = "$GITHUB_SHA" ]; then
               break
             fi
             sleep 5
           done
-          if [ "$LIVE_IA_CSS" != "$EXPECTED_IA_CSS" ]; then
-            echo "Live Home did not reach the deployed CSS key after 12 checks."
+          if [ "$LIVE_DEPLOY_SHA" != "$GITHUB_SHA" ]; then
+            echo "Live site did not reach deployment $GITHUB_SHA after propagation checks."
             exit 1
           fi
-          # All release/content assertions run against the confirmed post-purge copy.
+          curl -fsSL --max-time 30 -H 'Cache-Control: no-cache' \
+            "https://matchapp.tv/?deploy=${GITHUB_SHA}" -o /tmp/home-post-purge.html
+          EXPECTED_IA_CSS="$(grep -oE '/matchapp-ia\.css\?v=[^"]+' index.html | head -n1 || true)"
+          LIVE_IA_CSS="$(grep -oE '/matchapp-ia\.css\?v=[^"]+' /tmp/home-post-purge.html | head -n1 || true)"
+          test -n "$EXPECTED_IA_CSS"
+          test "$LIVE_IA_CSS" = "$EXPECTED_IA_CSS"
+          # All release/content assertions run against the exact deployed checkout.
           curl -fsSL --max-time 30 "https://matchapp.tv/release.json?deploy=${GITHUB_SHA}" -o /tmp/release.json
           curl -fsSL --max-time 30 "https://matchapp.tv/build-meta.js?deploy=${GITHUB_SHA}" -o /tmp/build-meta.js
           VERSION="$(node -p "require('/tmp/release.json').version")"
@@ -174,6 +180,8 @@ jobs:
           grep -Fq '/awareness.js?v=20260922-awareness1' /tmp/home-post-purge.html
           curl -fsSL --max-time 30 "https://matchapp.tv/awareness/current.json?deploy=${GITHUB_SHA}" -o /tmp/awareness-current.json
           node -e "JSON.parse(require('fs').readFileSync('/tmp/awareness-current.json','utf8'))"
+          node -e "const c=JSON.parse(require('fs').readFileSync('/tmp/awareness-current.json','utf8')).campaign; if(!c||c.id!=='world-alzheimers-month-2026') process.exit(1)"
+          grep -Fq 'MatchApp supports World Alzheimer’s Month' /tmp/home-post-purge.html
           grep -q 'matchapp-home-orb-transparent.webp?v=20260920-homebrand4' /tmp/home-post-purge.html
           grep -q 'Find what to watch here' /tmp/home-post-purge.html
           curl -fsSL --max-time 30 "https://matchapp.tv${LIVE_IA_CSS}&deploy=${GITHUB_SHA}" -o /tmp/home-stability.css
