@@ -1,0 +1,113 @@
+name: Midnight content rotation and SEO injection
+
+on:
+  schedule:
+    # 00:00 America/Sao_Paulo (UTC-3; Brazil currently has no DST)
+    - cron: '0 3 * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/midnight-content-rotation.yml'
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: midnight-content-rotation
+  cancel-in-progress: false
+
+jobs:
+  rotate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+
+      - name: Snapshot before rotation
+        run: |
+          git rev-parse HEAD > /tmp/before.sha
+          mkdir -p reports
+
+      - name: Refresh title catalog and media
+        run: node tools/sync-catalog-media.js
+
+      - name: Refresh entertainment and AI news
+        run: node tools/refresh-news-rss.js
+
+      - name: Refresh active and upcoming events
+        run: node tools/build-global-events.js
+
+      - name: Rebuild SEO pages, JSON-LD and watch pages
+        run: |
+          node tools/build-seo-pages.js
+          node tools/build-watch-pages.js
+
+      - name: Refresh sitemap and validate search readiness
+        run: |
+          node tools/update-sitemap.js
+          node tools/audit-site.js
+          node tools/audit-search.js
+          node tools/search-readiness.js
+          npm test
+          npm run build
+
+      - name: Build execution report
+        shell: bash
+        run: |
+          {
+            echo '# Midnight content rotation report'
+            echo
+            echo "Generated: $(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+            echo
+            echo '## Changed content files'
+            git status --short | sed 's/^/- /' || true
+            echo
+            echo '## SEO/indexing checks'
+            echo '- SEO/watch pages rebuilt with their generated metadata and structured data.'
+            echo '- sitemap.xml and sitemaps.xml refreshed.'
+            echo '- Site, search-readiness, test and build checks passed before publication.'
+          } > reports/midnight-latest.md
+          cat reports/midnight-latest.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Publish rotation atomically
+        id: publish
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          if git diff --staged --quiet; then
+            echo 'changed=0' >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git commit -m "Daily midnight content and SEO rotation"
+          git pull --rebase origin main
+          git push origin HEAD:main
+          echo 'changed=1' >> "$GITHUB_OUTPUT"
+
+      - name: Deploy refreshed frontend
+        if: steps.publish.outputs.changed == '1'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run pages-deploy.yml --ref main
+
+      - name: Submit refreshed URLs to IndexNow
+        if: steps.publish.outputs.changed == '1'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run indexnow.yml --ref main
+
+      - name: Preserve report on failure
+        if: failure()
+        run: |
+          echo 'Midnight rotation failed. No success confirmation should be issued until the failing step is corrected.' >> "$GITHUB_STEP_SUMMARY"
