@@ -114,7 +114,7 @@ test('Home editorial scripts do not preload hundreds of pixels before view',()=>
  const wiring=read('final-wiring.js'),meta=read('build-meta.js');
  assert.match(wiring,/rootMargin:'0px'/);
  assert.doesNotMatch(wiring,/rootMargin:'700px 0px'/);
- assert.match(meta,/final-wiring\.js\?v=20260920-design4/);
+ assert.match(meta,/final-wiring\.js\?v=20260921-nickname1/);
 });
 
 
