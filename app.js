@@ -4615,13 +4615,16 @@ async function syncListsToDatabase() {
             const { data: { user } } = await supabaseClient.auth.getUser();
             if (!user) return;
 
-            const { error } = await supabaseClient.from('profiles').upsert({
-                id: user.id,
-                seen_list: seenList,
-                saved_list: savedList,
-                disliked_list: dislikedList,
-                user_ratings: userRatings
-            }, { onConflict: 'id' });
+            // Save through the account-scoped RPC. It runs server-side as a
+            // security definer and derives the profile id from auth.uid(), so
+            // portfolio persistence is not dependent on browser/device table
+            // grants and can never write another user's profile.
+            const { error } = await supabaseClient.rpc('save_portfolio', {
+                p_saved_list: savedList,
+                p_seen_list: seenList,
+                p_disliked_list: dislikedList,
+                p_user_ratings: userRatings
+            });
 
             if (error) {
                 // Surfaced rather than swallowed. Silent failure here is
