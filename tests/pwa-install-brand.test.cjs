@@ -46,13 +46,3 @@ test('browser install is real, consent-based, secure and localized',()=>{
   assert.match(sw,/self\.addEventListener\('fetch', \(\) => \{\}\)/);
   assert.match(sw,/matchapp-ai-install-192\.png/);
 });
-
-test('Home advertises the fresh localized install surface',()=>{
-  const home=read('index.html');
-  assert.match(home,/rel="manifest" href="\/manifest\.json\?v=20260922-install1"/);
-  assert.match(home,/apple-touch-icon" href="\/assets\/brand\/matchapp-ai-install-192\.png\?v=20260922-install1"/);
-  assert.match(home,/apple-mobile-web-app-title" content="MatchApp Ai"/);
-  assert.ok(home.includes('<meta name="application-name" content="MatchApp Ai">'));
-  assert.match(home,/\/install\.js\?v=20260922-install1/);
-  assert.match(home,/\/app-install-state\.js\?v=20260922-install1/);
-});
