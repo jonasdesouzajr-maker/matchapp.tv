@@ -48,8 +48,18 @@
     let answer = cleanGeneric(payload.answer);
     if (!answer) answer = fromFirstResult(payload);
     const name = nickname();
-    const firstTurn = !Array.isArray(history) || history.length === 0;
-    if (firstTurn && name && answer && !answer.toLocaleLowerCase().startsWith(name.toLocaleLowerCase())) {
+    const lower = answer.toLocaleLowerCase();
+    const n = name.toLocaleLowerCase();
+    const alreadyAddressed = !!name && (
+      lower.startsWith(n) ||
+      lower.startsWith('hi ' + n) ||
+      lower.startsWith('hey ' + n) ||
+      lower.startsWith('hello ' + n) ||
+      lower.startsWith('olá ' + n) ||
+      lower.startsWith('hola ' + n) ||
+      lower.startsWith('bonjour ' + n)
+    );
+    if (name && answer && !alreadyAddressed) {
       answer = name + ', ' + answer.charAt(0).toLocaleLowerCase() + answer.slice(1);
     }
     payload.answer = answer;
