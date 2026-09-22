@@ -1183,7 +1183,7 @@ window.startNewChat = function () {
     const empty = document.getElementById('discover-empty');
     if (empty) empty.style.display = 'none';
     const input = document.getElementById('discover-new-input');
-    if (input) { input.value = ''; input.focus(); }
+    if (input) { input.value = ''; window.autoGrowComposer?.(); }
     history.replaceState(null, '', '/discover.html');
     document.title = 'Talk to Our AI Concierge — MatchApp';
     renderThreadList();
@@ -1667,7 +1667,7 @@ async function runDiscovery() {
         DISCOVER_ITEMS = [];
         const log = document.getElementById('chat-log');
         if (log) log.innerHTML = '';
-        history.replaceState(null, '', '/discover.html?focus=start');
+        history.replaceState(null, '', '/discover.html');
     }
 
     if (eventPath) {
