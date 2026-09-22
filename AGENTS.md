@@ -77,3 +77,4 @@ These are standing implementation rules for MatchApp work in this repository.
 
 ### Stability invariant
 - Every change must preserve runtime stability first: do not introduce crashes, freezes, infinite render or mutation loops, layout thrashing, unbounded observers/timers, or expensive continuous compositor work. Keep edits surgical, bounded, responsive, and regression-tested before deployment.
+- Never attach a MutationObserver to a result subtree if its callback (directly or indirectly) rewrites that same subtree. Main Match and Kids result enrichment must stay event-driven and idempotent; repeated enrichment of the same title/metadata must settle without additional DOM churn.
