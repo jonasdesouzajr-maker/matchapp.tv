@@ -156,7 +156,7 @@ test('Ask AI composer stays visible and voice works in the active language',()=>
   assert.match(composer,/for="discover-new-input"/);
   assert.match(composer,/id="discover-new-input"/);
   assert.match(css,/On phones the writing surface must read as a real input/);
-  assert.match(css,/Type your question here/);
+  assert.match(composer,/Type your question here/);
   assert.match(composer,/aria-describedby="discover-compose-help"/);
   assert.match(composer,/id="mic-btn-discover"/);
   assert.doesNotMatch(composer,/mic-btn-discover[^>]+display\s*:\s*none/);
