@@ -2,7 +2,11 @@
 (function(){
   'use strict';
   const V='20260921-release1';
-  const PWA_V='20260922-install2';
+  const PWA_V='20260922-icon3';
+  const INSTALL_MANIFEST_PT='/manifest-pt-br.json';
+  const INSTALL_NAME_PT='MatchApp iA';
+  const INSTALL_NAME_EN='MatchApp Ai';
+  const INSTALL_ICON='/assets/brand/matchapp-ai-install-192.png';
   const path=location.pathname;
   const isKids=path==='/kids'||path.startsWith('/kids/');
   const isHome=path==='/'||path==='/index.html';
@@ -21,13 +25,13 @@
   function pwaIdentity(){
     if(isKids)return;
     const locale=installLocale();
-    const name=locale==='pt-BR'?'MatchApp iA':'MatchApp Ai';
+    const name=locale==='pt-BR'?INSTALL_NAME_PT:INSTALL_NAME_EN;
     let manifest=document.querySelector('link[rel="manifest"]');
     if(!manifest){manifest=document.createElement('link');manifest.rel='manifest';document.head.appendChild(manifest);}
-    manifest.href=(locale==='pt-BR'?'/manifest-pt-br.json':'/manifest.json')+'?v='+PWA_V;
+    manifest.href=(locale==='pt-BR'?INSTALL_MANIFEST_PT:'/manifest.json')+'?v='+PWA_V;
     let apple=document.querySelector('link[rel="apple-touch-icon"]');
     if(!apple){apple=document.createElement('link');apple.rel='apple-touch-icon';document.head.appendChild(apple);}
-    apple.href='/assets/brand/matchapp-ai-install-192.png?v='+PWA_V;
+    apple.href=INSTALL_ICON+'?v='+PWA_V;
     upsertMeta('application-name',name);
     upsertMeta('apple-mobile-web-app-title',name);
     upsertMeta('mobile-web-app-capable','yes');
