@@ -52,7 +52,7 @@ test('Home advertises the fresh localized install surface',()=>{
   assert.match(home,/rel="manifest" href="\/manifest\.json\?v=20260922-install1"/);
   assert.match(home,/apple-touch-icon" href="\/assets\/brand\/matchapp-ai-install-192\.png\?v=20260922-install1"/);
   assert.match(home,/apple-mobile-web-app-title" content="MatchApp Ai"/);
-  assert.match(home,/application-name" content="MatchApp Ai"/);
+  assert.ok(home.includes('<meta name="application-name" content="MatchApp Ai">'));
   assert.match(home,/\/install\.js\?v=20260922-install1/);
   assert.match(home,/\/app-install-state\.js\?v=20260922-install1/);
 });
