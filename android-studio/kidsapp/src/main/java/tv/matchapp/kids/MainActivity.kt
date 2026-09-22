@@ -344,6 +344,64 @@ class MainActivity : AppCompatActivity() {
         )
     }
 
+    private fun sendGuardianResult(ok: Boolean, code: String) {
+        val safeCode = JSONObject.quote(code)
+        web.evaluateJavascript(
+            "window.matchAppNativeGuardianResult&&window.matchAppNativeGuardianResult($ok,$safeCode);",
+            null
+        )
+    }
+
+    private fun authenticateGuardian() {
+        if (!isAllowedKidsUrl(web.url)) {
+            sendGuardianResult(false, "not-allowed")
+            return
+        }
+        val authenticators = BiometricManager.Authenticators.BIOMETRIC_WEAK
+        if (BiometricManager.from(this).canAuthenticate(authenticators) != BiometricManager.BIOMETRIC_SUCCESS) {
+            sendGuardianResult(false, "unavailable")
+            return
+        }
+        val prompt = BiometricPrompt(
+            this,
+            ContextCompat.getMainExecutor(this),
+            object : BiometricPrompt.AuthenticationCallback() {
+                override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {
+                    sendGuardianResult(false, "cancelled")
+                }
+
+                override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
+                    sendGuardianResult(true, "ok")
+                }
+            }
+        )
+        val info = BiometricPrompt.PromptInfo.Builder()
+            .setTitle("Grown-ups only")
+            .setSubtitle("Use fingerprint or face unlock to leave Kids Mode")
+            .setAllowedAuthenticators(authenticators)
+            .setNegativeButtonText("Use parent PIN")
+            .build()
+        prompt.authenticate(info)
+    }
+
+    private inner class NativeGuardianBridge {
+        @JavascriptInterface
+        fun authenticate() {
+            runOnUiThread { authenticateGuardian() }
+        }
+
+        @JavascriptInterface
+        fun openGrownUp() {
+            runOnUiThread {
+                if (!isAllowedKidsUrl(web.url)) {
+                    sendGuardianResult(false, "not-allowed")
+                    return@runOnUiThread
+                }
+                openExternal(Uri.parse("https://matchapp.tv/?utm_source=android_kids_exit"))
+            }
+        }
+    }
+
     private inner class NativeVoiceBridge {
         @JavascriptInterface
         fun start(languageTag: String?) {
