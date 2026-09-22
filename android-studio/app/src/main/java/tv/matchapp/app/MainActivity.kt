@@ -420,8 +420,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val HOME = "https://matchapp.tv/?utm_source=android_app&appBuild=24"
-        const val APP_UA = "MatchAppTVAndroid/1.1.21 MatchAppAiAndroid/1.1.21"
+        const val HOME = "https://matchapp.tv/?utm_source=android_app&appBuild=25"
+        const val APP_UA = "MatchAppTVAndroid/1.1.23 MatchAppAiAndroid/1.1.23"
         private const val APP_MODE_JS = """
             (function(){
               window.MATCHAPP_IS_AD_FREE = true;
@@ -437,7 +437,16 @@ class MainActivity : AppCompatActivity() {
                   '.ad-banner-container,.sidebar-ad-left,.sidebar-ad-right,.mobile-ad-bottom,' +
                   '.premium-ad-frame,ins.adsbygoogle,.ma-ad-label,#chrome-notice,.chrome-notice,.install-btn' +
                   '{display:none!important;height:0!important;min-height:0!important;overflow:hidden!important;' +
-                  'padding:0!important;margin:0!important;border:0!important}';
+                  'padding:0!important;margin:0!important;border:0!important}' +
+                  '@media(max-width:640px){body.ai-chat-page .newsearch-row{display:grid!important;' +
+                  'grid-template-columns:minmax(0,1fr)!important;width:100%!important;max-width:100%!important;' +
+                  'gap:10px!important;overflow:visible!important}body.ai-chat-page .composer{display:flex!important;' +
+                  'width:100%!important;max-width:100%!important;min-width:0!important;box-sizing:border-box!important;' +
+                  'overflow:visible!important}body.ai-chat-page .composer textarea{display:block!important;' +
+                  'flex:1 1 auto!important;width:auto!important;min-width:0!important;visibility:visible!important;' +
+                  'opacity:1!important}body.ai-chat-page .composer .mic-btn{display:inline-flex!important;' +
+                  'flex:0 0 50px!important;width:50px!important;min-width:50px!important}' +
+                  'body.ai-chat-page .composer-send{width:100%!important}}';
                 (document.head || root).appendChild(s);
               }
 
