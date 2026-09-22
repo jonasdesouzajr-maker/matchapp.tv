@@ -152,7 +152,11 @@ test('title-card copy exists in every supported language',()=>{
 test('Ask AI composer stays visible and voice works in the active language',()=>{
   const html=read('discover.html'),css=read('matchapp-ia.css'),voice=read('voice-input.js'),js=read('discover.js');
   const composer=html.slice(html.indexOf('<div class="newsearch-row">'),html.indexOf('</section>',html.indexOf('<div class="newsearch-row">')));
+  assert.match(composer,/class="composer-input-label"/);
+  assert.match(composer,/for="discover-new-input"/);
   assert.match(composer,/id="discover-new-input"/);
+  assert.match(css,/On phones the writing surface must read as a real input/);
+  assert.match(css,/Type your question here/);
   assert.match(composer,/aria-describedby="discover-compose-help"/);
   assert.match(composer,/id="mic-btn-discover"/);
   assert.doesNotMatch(composer,/mic-btn-discover[^>]+display\s*:\s*none/);
