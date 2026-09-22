@@ -215,7 +215,7 @@
            around. Everything else is a neutral hairline.
            ============================================================ */
 
-        /* style.css puts 50px/12px padding on <body>, which inset the header
+        /* style.css puts 50px/12px padding on <body class="page-profile">, which inset the header
            from the viewport edge and left dead space above the first element.
            The shell handles gutters now. */
         body { padding: 0 0 20px 0 !important; }
@@ -284,7 +284,19 @@
         .identity-hint { color: #9c93b4; font-style: normal; }
         .premium-ad-frame { border-color: rgba(255,255,255,0.1) !important; }
         .premium-ad-frame::before { animation: none !important; box-shadow: none !important; }
-        #profile-pic-preview { border-color: rgba(255,255,255,0.16) !important; }
+        #profile-pic-preview {
+            display:block!important;
+            width:130px!important;
+            height:130px!important;
+            box-sizing:border-box!important;
+            border:3px solid var(--gold)!important;
+            border-radius:50%!important;
+            clip-path:circle(50% at 50% 50%)!important;
+            object-fit:cover!important;
+            object-position:center!important;
+            background:transparent!important;
+            box-shadow:0 0 0 5px rgba(229,193,88,.10),0 10px 32px rgba(0,0,0,.30)!important;
+        }
 
         /* Core Identity was a red heading on a red-bordered card, which reads
            as an error state rather than as the page's most important section. */
@@ -312,7 +324,7 @@
 <link rel="stylesheet" href="/themes.css?v=194">
 <link rel="stylesheet" href="/app-polish.css?v=187">
 <script src="/themes.js?v=187"></script>
-<link rel="stylesheet" href="/poster-wall.css?v=191"><script defer src="/poster-wall.js?v=187"></script><meta property="og:site_name" content="MatchApp TV Ai">
+<link rel="stylesheet" href="/poster-wall.css?v=20260921-wall4"><script defer src="/poster-wall.js?v=20260921-wall4"></script><meta property="og:site_name" content="MatchApp TV Ai">
 <link rel="stylesheet" href="/brand.css?v=192">
     <link rel="stylesheet" href="/page-shell.css?v=20260921-shell1" data-page-shell="1">
     <link rel="stylesheet" href="/ui-containment.css?v=20260921-ui1" data-ui-containment="1">
@@ -354,12 +366,17 @@
                         <div id="avatar-preset-grid" class="avatar-grid"></div>
                         <button type="button" class="pf-clear-avatar" onclick="clearPresetAvatar()" data-i18n="pf.clearAvatar">Use my photo instead</button>
                     </details>
-
                     <div class="pf-field">
                         <label for="pf-nickname" class="pf-label" data-i18n="pf.nickname">What should our AI call you?</label>
-                        <input id="pf-nickname" type="text" maxlength="30" class="pf-input"
-                               placeholder="e.g. Jon" data-i18n-placeholder="pf.nicknamePh"
-                               oninput="saveNickname(this.value)">
+                        <div class="pf-nickname-row">
+                            <input id="pf-nickname" type="text" maxlength="30" class="pf-input"
+                                   placeholder="e.g. Jon" data-i18n-placeholder="pf.nicknamePh"
+                                   autocomplete="nickname"
+                                   oninput="markNicknameUnsaved()"
+                                   onkeydown="if(event.key==='Enter'){event.preventDefault();saveNickname();}">
+                            <button type="button" id="pf-nickname-check" class="pf-nickname-check"
+                                    onclick="saveNickname()" aria-label="Save what Ask AI should call you">✓ Check</button>
+                        </div>
                         <span id="pf-nickname-status" class="pf-note" aria-live="polite"></span>
                     </div>
                 </div><!-- ============================================ -->
@@ -753,13 +770,13 @@
     <script src="/build-meta.js?v=20260919-release3"></script>
 <script src="/app-install-state.js?v=187"></script>
 <script defer src="/install.js?v=187"></script>
-    <script defer src="/avatars.js?v=187"></script>
+    <script defer src="/avatars.js?v=20260921-nickname1"></script>
     <script src="/matching-policy.js?v=200"></script>
     <script src="/match-localization.js?v=187"></script>
 <script src="/app.js?v=210"></script>
     <script src="/install-progress.js?v=200"></script>
     <script src="/taste.js?v=187"></script>
-    <script src="/profile.js?v=195"></script>
+    <script src="/profile.js?v=20260921-nickname1"></script>
     <script src="/portfolio-history.js?v=194"></script>
     <script src="/tv.js?v=187"></script>
 <script src="/passkeys.js?v=187"></script>
