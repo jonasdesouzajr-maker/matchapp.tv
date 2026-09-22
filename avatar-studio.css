@@ -1,0 +1,165 @@
+/* MatchApp Avatar Studio v3 — the only stylesheet for the studio dialog and
+   the profile-page entry card. Animations are hover/tap only (transform and
+   opacity), plus one short pop when the avatar changes. */
+:root{--av-gold:#e5c158;--av-gold-hi:#fff0b3;--av-gold-deep:#c8931f;--av-line:#3a2b58;--av-panel:#110a22;--av-text:#efe9fb;--av-muted:#b7aecd}
+html.ma-av-open{overflow:hidden}
+
+/* ---------- dialog shell ---------- */
+.ma-av-dialog{width:min(640px,96vw);max-width:none;max-height:94dvh;height:auto;margin:auto;padding:0;border:1px solid #4a3470;border-radius:28px;color:var(--av-text);background:radial-gradient(120% 60% at 50% 0%,#2a1250 0%,#120824 45%,#07040f 100%);box-shadow:0 30px 100px #000c,0 0 50px #6e36c733;overflow:hidden;font-family:Outfit,Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
+.ma-av-dialog::backdrop{background:#030108e6;backdrop-filter:blur(8px)}
+.ma-av-dialog[open]{display:flex}
+.ma-av-dialog *{box-sizing:border-box}
+.ma-av-dialog button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.ma-av-dialog svg{display:block}
+.ma-av-sheet:focus{outline:none}
+.ma-av-sheet{position:relative;width:100%;max-height:94dvh;overflow-y:auto;overscroll-behavior:contain;padding:20px 22px 0}
+
+/* ---------- header ---------- */
+.ma-av-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.ma-av-brand{display:flex;align-items:center;gap:11px;min-width:0}
+.ma-av-orb{width:52px;height:52px;flex:0 0 auto;filter:drop-shadow(0 0 12px rgba(243,207,105,.3))}
+.ma-av-wordmark{display:block;width:184px;max-width:52vw;height:auto}
+.ma-av-brand span{display:block;margin-top:6px;font-size:9.5px;letter-spacing:.28em;color:#d8d0ea;white-space:nowrap}
+.ma-av-close{flex:0 0 auto;width:46px;height:46px;display:grid;place-items:center;border-radius:14px;border:1px solid #4b3a6c;background:#0d0719;color:var(--av-gold)}
+.ma-av-close svg{width:22px;height:22px}
+.ma-av-close:hover{border-color:var(--av-gold)}
+
+/* ---------- intro ---------- */
+.ma-av-intro{position:relative;margin:18px 0 4px;padding-right:118px;min-height:150px}
+html #avatar-maker-dialog .ma-av-intro #avatar-maker-title{font-family:Outfit,Inter,system-ui,sans-serif!important;margin:0;font-size:clamp(28px,7.4vw,40px);line-height:1.05;font-weight:900;letter-spacing:-.01em;color:#f3d06b!important;-webkit-text-fill-color:#f3d06b!important;background:none!important;text-shadow:0 1px 0 #fff3,0 0 22px #e5c15840}
+html #avatar-maker-dialog .ma-av-intro .ma-av-sub{-webkit-text-fill-color:#f1cb5c!important;margin:8px 0 0;color:#f1cb5c!important;line-height:1.3;font-size:clamp(16px,4.2vw,20px);font-weight:600}
+html #avatar-maker-dialog .ma-av-intro .ma-av-desc{-webkit-text-fill-color:currentColor!important;margin:9px 0 0;color:var(--av-muted)!important;font-size:clamp(13.5px,3.6vw,15.5px);line-height:1.45}
+.ma-av-script{position:absolute;right:-2px;top:34px;margin:0;width:118px;display:grid;justify-items:center;transform:rotate(-9deg);font-family:"Segoe Script","Brush Script MT","Snell Roundhand","Dancing Script",cursive;font-style:italic;color:#f0c85a;font-size:21px;line-height:1.05;text-shadow:0 0 14px #e5c15840}
+.ma-av-script span:nth-child(odd){transform:translateX(-10px)}
+.ma-av-script span:nth-child(even){transform:translateX(8px)}
+.ma-av-script b{position:absolute;right:0;bottom:6px;font-size:18px;font-weight:400}
+
+/* ---------- stage ---------- */
+.ma-av-stage{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:8px;margin-top:6px}
+.ma-av-nav{display:flex;gap:8px;justify-self:start}
+.ma-av-arrow{width:44px;height:44px;display:grid;place-items:center;border-radius:50%;border:1.5px solid #e5c15899;background:#0d0719;color:var(--av-gold);transition:transform .18s,border-color .18s}
+.ma-av-arrow svg{width:20px;height:20px}
+.ma-av-arrow:hover{border-color:var(--av-gold);transform:translateY(-1px)}
+.ma-av-stage-circle{position:relative;width:min(46vw,250px);aspect-ratio:1;border-radius:50%;padding:4px;background:linear-gradient(145deg,#fff1b0,#e5c158 35%,#a8741a 70%,#f5d77a);box-shadow:0 0 0 8px #e5c1580f,0 0 38px #e5b83d66,0 18px 40px #0009;z-index:2}
+.ma-av-stage-circle>img{display:block;width:100%;height:100%;border-radius:50%;background:#1a0c33}
+.ma-av-stage-circle.is-pop{animation:maAvPop .22s ease-out}
+@keyframes maAvPop{from{transform:scale(.97)}to{transform:scale(1)}}
+.ma-av-edit{position:absolute;right:2%;bottom:6%;width:44px;height:44px;display:grid;place-items:center;border-radius:50%;border:2px solid #ffffffd9;background:#120a22;color:#fff;box-shadow:0 6px 16px #0008}
+.ma-av-edit svg{width:20px;height:20px}
+.ma-av-side{justify-self:end}
+.ma-av-random{display:inline-flex;align-items:center;gap:7px;min-height:44px;padding:0 14px;border-radius:999px;border:1.5px solid #e5c158;background:#0d0719;color:#f6dc86;font-weight:700;font-size:14px;white-space:nowrap;transition:box-shadow .18s,transform .18s}
+.ma-av-random:hover{box-shadow:0 0 18px #e5c15855;transform:translateY(-1px)}
+.ma-av-spark{font-size:17px;color:var(--av-gold)}
+
+/* ---------- preset looks ---------- */
+.ma-av-presets{position:relative;z-index:1;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px;margin:-14px 0 16px}
+.ma-av-preset{aspect-ratio:1/1.02;padding:0;border-radius:16px;overflow:hidden;border:1.5px solid #5a3d8a;background:linear-gradient(160deg,#3d2270,#150b2c);transition:transform .18s,border-color .18s,box-shadow .18s}
+.ma-av-preset img{display:block;width:100%;height:100%;object-fit:cover}
+.ma-av-preset:hover{transform:translateY(-2px)}
+.ma-av-preset.is-selected{border:2.5px solid #f2cb5b;box-shadow:0 0 0 3px #e5c15826,0 0 20px #e5c15866}
+
+/* ---------- tabs ---------- */
+.ma-av-tabs{position:sticky;top:-1px;z-index:4;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;padding:4px;border:1px solid var(--av-line);border-radius:18px;background:#0e0820f2;backdrop-filter:blur(6px)}
+.ma-av-tab{display:flex;align-items:center;justify-content:center;gap:7px;min-height:48px;padding:0 6px;border:0;border-radius:14px;background:transparent;color:#d6cdea;font-size:14px;font-weight:600;white-space:nowrap;min-width:0}
+.ma-av-tab+.ma-av-tab{box-shadow:inset 1px 0 0 #3a2b5866}
+.ma-av-tab span{overflow:hidden;text-overflow:ellipsis}
+.ma-av-tabicon{width:19px;height:19px;flex:0 0 auto}
+.ma-av-tab.is-active{background:linear-gradient(135deg,#fbe39a,#e5c158 55%,#cf9b2c);color:#1d1204;box-shadow:0 4px 18px #e5c15840}
+.ma-av-tab.is-active+.ma-av-tab,.ma-av-tab.is-active{box-shadow:none}
+.ma-av-tab:focus-visible,.ma-av-choice:focus-visible,.ma-av-preset:focus-visible,.ma-av-dialog button:focus-visible{outline:2px solid var(--av-gold-hi);outline-offset:2px}
+
+/* ---------- option rows ---------- */
+.ma-av-controls{display:grid;gap:10px;margin:12px 0 14px}
+.ma-av-row{display:grid;grid-template-columns:132px minmax(0,1fr);align-items:center;min-height:82px;border:1px solid var(--av-line);border-radius:18px;background:linear-gradient(100deg,#0f0920,#150c2c)}
+html #avatar-maker-dialog .ma-av-row h3{-webkit-text-fill-color:currentColor!important;color:#f3eefc!important;font-family:inherit!important;display:flex;align-items:center;gap:10px;height:100%;margin:0;padding:10px 12px 10px 16px;border-right:1px solid var(--av-line);color:#f3eefc;font-size:15px;font-weight:600;line-height:1.2}
+.ma-av-rowicon{width:26px;height:26px;flex:0 0 auto;color:var(--av-gold)}
+.ma-av-choices{display:flex;align-items:center;gap:10px;padding:10px 12px;overflow-x:auto;scroll-snap-type:x proximity;scrollbar-width:none}
+.ma-av-choices::-webkit-scrollbar{display:none}
+.ma-av-choice{flex:0 0 auto;scroll-snap-align:start;padding:0;border:1.5px solid #4d3a70;background:#1a1030;transition:transform .15s,border-color .15s,box-shadow .15s}
+.ma-av-choice:hover{transform:translateY(-1px)}
+.ma-av-choice img{display:block;width:100%;height:100%;object-fit:cover}
+.ma-av-choice.is-thumb{width:58px;height:58px;border-radius:14px;overflow:hidden}
+.ma-av-choice.is-eye{width:60px;height:48px;border-radius:12px;overflow:hidden}
+.ma-av-choice.is-swatch{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;border-color:transparent;background:transparent}
+.ma-av-swatch{display:block;width:38px;height:38px;border-radius:50%;box-shadow:inset 0 -3px 6px #0004,0 0 0 1px #ffffff2e}
+.ma-av-choice.is-selected{border:2.5px solid #f2cb5b;box-shadow:0 0 0 2px #e5c15826,0 0 16px #e5c15866}
+.ma-av-choice.is-swatch.is-selected{border:3px solid #f2cb5b}
+
+/* ---------- footer ---------- */
+.ma-av-foot{position:sticky;bottom:0;z-index:5;display:grid;grid-template-columns:1fr 2.1fr 1fr;gap:10px;align-items:center;margin:0 -22px;padding:12px 22px 8px;background:linear-gradient(180deg,#07040f00,#07040ff2 28%)}
+.ma-av-foot button{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:52px;border-radius:16px;font-weight:700;font-size:15px}
+.ma-av-reset{border:1.5px solid #5b3f8e;background:#140b28;color:#e6dcfa}
+.ma-av-dialog .ma-av-reset svg{width:19px;height:19px}
+.ma-av-cancel{border:1.5px solid #3f2f5e;background:#0b0617;color:#e6dcfa}
+.ma-av-save{min-height:58px!important;border:0;background:linear-gradient(180deg,#ffe99e 0%,#efc85d 48%,#d09b2a 100%);color:#1a0f02;font-size:19px!important;font-weight:800!important;box-shadow:0 8px 26px #e5b63d55,inset 0 1px 0 #fff8;transition:transform .15s,box-shadow .15s}
+.ma-av-save svg{width:22px;height:22px}
+.ma-av-save:hover{transform:translateY(-1px);box-shadow:0 10px 30px #e5b63d77,inset 0 1px 0 #fff8}
+.ma-av-save:disabled{opacity:.7;cursor:progress}
+.ma-av-privacy{display:flex;align-items:center;justify-content:center;gap:8px;margin:0;padding:6px 0 max(16px,env(safe-area-inset-bottom));color:var(--av-muted);font-size:13px;text-align:center}
+.ma-av-dialog .ma-av-privacy svg{width:15px;height:15px;flex:0 0 auto}
+
+/* ---------- phones: full screen ---------- */
+@media (max-width:700px){
+  .ma-av-dialog{width:100vw;height:100dvh;max-height:100dvh;border:0;border-radius:0}
+  .ma-av-sheet{max-height:100dvh;padding:max(14px,env(safe-area-inset-top)) 16px 0}
+  .ma-av-foot{margin:0 -16px;padding:12px 16px 8px}
+  .ma-av-intro{padding-right:96px;min-height:0}
+  .ma-av-script{width:96px;font-size:17px;top:40px;right:-4px}
+  .ma-av-orb{width:46px;height:46px}
+  .ma-av-wordmark{width:160px}
+  .ma-av-brand span{font-size:8px;letter-spacing:.22em}
+  .ma-av-row{grid-template-columns:112px minmax(0,1fr);min-height:74px}
+  .ma-av-row h3{font-size:13.5px;gap:8px;padding:8px 8px 8px 12px}
+  .ma-av-rowicon{width:22px;height:22px}
+  .ma-av-choices{gap:8px;padding:9px 10px}
+  .ma-av-choice.is-thumb{width:52px;height:52px}
+  .ma-av-choice.is-eye{width:52px;height:42px}
+  .ma-av-choice.is-swatch{width:44px;height:44px}
+  .ma-av-swatch{width:34px;height:34px}
+  .ma-av-tab{font-size:12.5px;gap:5px;min-height:46px;padding:0 4px}
+  .ma-av-tabicon{width:16px;height:16px}
+  .ma-av-presets{gap:7px}
+  .ma-av-random{padding:0 9px;font-size:12px;gap:4px;min-height:40px}
+  .ma-av-stage-circle{width:40vw}
+  .ma-av-stage{gap:6px}
+  .ma-av-arrow{width:40px;height:40px}
+  .ma-av-nav{gap:6px}
+  .ma-av-foot button{font-size:14px;min-height:50px}
+  .ma-av-save{font-size:17px!important;min-height:56px!important}
+}
+@media (max-width:430px){
+  .ma-av-dialog .ma-av-tabicon{display:none}
+  .ma-av-dialog .ma-av-tab{font-size:12px;padding:0 2px;letter-spacing:-.01em}
+  .ma-av-dialog .ma-av-spark{display:none}
+  .ma-av-tab{font-size:12.5px}
+}
+@media (max-width:399px){
+  html #avatar-maker-dialog .ma-av-row h3{font-size:12.5px!important;min-width:0;overflow-wrap:normal;padding-left:10px!important}
+  .ma-av-row{grid-template-columns:100px minmax(0,1fr)}
+  .ma-av-dialog .ma-av-rowicon{display:none}
+}
+@media (max-width:379px){
+  .ma-av-dialog .ma-av-spark{display:inline}
+  .ma-av-random-label{display:none}
+  .ma-av-random{width:44px;padding:0;justify-content:center}
+  .ma-av-intro{padding-right:84px}
+  .ma-av-script{width:84px;font-size:15px}
+}
+@media (prefers-reduced-motion:reduce){.ma-av-dialog *{transition:none!important;animation:none!important}}
+
+/* ---------- profile page entry card ---------- */
+.match-avatar-maker{display:block;margin:10px 0 20px}
+.ma-av-entry{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:18px;padding:16px 18px;border:1px solid #e5c15866;border-radius:22px;background:linear-gradient(120deg,rgba(48,19,91,.96),rgba(18,8,44,.96));box-shadow:0 12px 34px #0007,0 0 22px #e5c15814}
+.ma-av-entry-circle{width:84px;height:84px;padding:3px;border:0;border-radius:50%;background:linear-gradient(145deg,#fff1b0,#e5c158 40%,#a8741a);box-shadow:0 0 20px #e5b83d55;cursor:pointer;transition:transform .18s}
+.ma-av-entry-circle:hover{transform:scale(1.04)}
+.ma-av-entry-circle img{display:block;width:100%;height:100%;border-radius:50%;background:#1a0c33}
+.ma-av-entry-copy span{color:#f2cb59;font-size:10px;font-weight:900;letter-spacing:.14em}
+.ma-av-entry-copy h2{margin:3px 0 4px;color:#fff;font-size:21px;line-height:1.15}
+.ma-av-entry-copy p{margin:0;color:#c8bfdb;font-size:13px;line-height:1.4}
+.ma-av-entry-btn{min-height:46px;padding:0 18px;border:0;border-radius:14px;background:linear-gradient(135deg,#fff0a0,#e5c158);color:#241400;font-weight:900;white-space:nowrap;cursor:pointer;box-shadow:0 0 18px #e5c15833}
+@media (max-width:640px){
+  .ma-av-entry{grid-template-columns:auto minmax(0,1fr);gap:12px 14px;padding:14px}
+  .ma-av-entry-circle{width:72px;height:72px}
+  .ma-av-entry-copy h2{font-size:18px}
+  .ma-av-entry-btn{grid-column:1/-1;width:100%}
+}

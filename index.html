@@ -1552,7 +1552,18 @@
 <script defer src="/matchapp-ia.js?v=20260921-cta1" data-matchapp-ia="1"></script>
     <link rel="stylesheet" href="/ui-containment.css?v=20260921-ui1" data-ui-containment="1">
 <link rel="stylesheet" href="/home-8k-layout.css?v=20260922-contrast3">
-<style id="home-avatar-profile-v2">html body.page-home #mh-topbox.app-header #profile-link-tab .avatar-ring{width:34px!important;height:34px!important;min-width:34px!important;border-radius:50%!important;overflow:hidden!important}html body.page-home #mh-topbox.app-header #profile-link-tab .avatar-ring img{width:100%!important;height:100%!important;object-fit:cover!important;border-radius:50%!important}html body.page-home #mh-topbox.app-header #profile-link-tab{padding-left:8px!important;padding-right:9px!important}@media(max-width:600px){html body.page-home #mh-topbox.app-header #profile-link-tab .avatar-ring{width:32px!important;height:32px!important;min-width:32px!important}}</style>
+<style id="home-avatar-profile-v2">
+/* Home profile control = the user's avatar in a gold circle, nothing else. */
+html body.page-home #mh-topbox.app-header > nav.mh-deck > a#profile-link-tab.nav-avatar-link{width:48px!important;min-width:48px!important;height:48px!important;min-height:48px!important;padding:0!important;margin:0!important;border:0!important;border-radius:50%!important;background:transparent!important;box-shadow:none!important;display:grid!important;place-items:center!important;align-self:center!important;gap:0!important;overflow:visible!important}
+html body.page-home #mh-topbox.app-header > nav.mh-deck > a#profile-link-tab.nav-avatar-link > #nav-profile-text{display:none!important}
+html body.page-home #mh-topbox.app-header > nav.mh-deck > a#profile-link-tab.nav-avatar-link > .avatar-ring{position:relative!important;width:48px!important;height:48px!important;min-width:48px!important;margin:0!important;padding:2.5px!important;border:0!important;border-radius:50%!important;transform:none!important;box-sizing:border-box!important;display:grid!important;grid-template:100%/100%!important;place-items:center!important;overflow:visible!important;background:linear-gradient(145deg,#fff1b0,#e5c158 40%,#a8741a 75%,#f5d77a)!important;box-shadow:0 0 14px rgba(229,184,61,.45)!important;transition:transform .18s,box-shadow .18s}
+html body.page-home #mh-topbox.app-header > nav.mh-deck > a#profile-link-tab.nav-avatar-link > .avatar-ring img{grid-area:1/1!important;width:100%!important;height:100%!important;border-radius:50%!important;object-fit:cover!important;background:#1a0c33}
+html body.page-home #mh-topbox.app-header > nav.mh-deck > a#profile-link-tab.nav-avatar-link > .avatar-ring .avatar-empty{width:100%!important;height:100%!important;min-width:0!important;border-radius:50%!important;background:#1a0c33!important;color:#e5c158!important;align-items:center!important;justify-content:center!important;grid-area:1/1!important}
+html body.page-home #mh-topbox.app-header > nav.mh-deck > a#profile-link-tab.nav-avatar-link > .avatar-ring .avatar-empty svg{width:24px;height:24px}
+html body.page-home #mh-topbox.app-header > nav.mh-deck > a#profile-link-tab.nav-avatar-link > .avatar-ring .avatar-online-dot{position:absolute!important;right:0!important;bottom:1px!important;width:11px!important;height:11px!important;border-radius:50%!important;background:#39d98a!important;border:2px solid #120824!important}
+html body.page-home #mh-topbox.app-header > nav.mh-deck > a#profile-link-tab.nav-avatar-link:hover > .avatar-ring{transform:scale(1.05)!important;box-shadow:0 0 20px rgba(229,184,61,.6)!important}
+@media(max-width:600px){html body.page-home #mh-topbox.app-header > nav.mh-deck > a#profile-link-tab.nav-avatar-link,html body.page-home #mh-topbox.app-header > nav.mh-deck > a#profile-link-tab.nav-avatar-link > .avatar-ring{width:46px!important;min-width:46px!important;height:46px!important;min-height:46px!important}}
+</style>
 <style id="home-control-grid-final">
 /* The dedicated Chrome install card below the header replaces the old download tile. */
 html body.page-home #mh-topbox .mh-deck{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:8px!important;align-items:stretch!important}
@@ -1707,9 +1718,6 @@ html body.page-home #mh-topbox .mh-deck>.sound-toggle-btn,html body.page-home #m
             border-radius: var(--r-md) !important;
             font-size: 0.8rem !important;
         }
-        html body.page-home #mh-topbox.app-header > nav.mh-deck > #profile-link-tab .avatar-ring {
-            width: 24px !important; height: 24px !important;
-        }
         html body.page-home #mh-topbox.app-header > nav.mh-deck > #quota-badge strong { font-size: 1.25em !important; }
 
         /* ---------- 2. VERTICAL RHYTHM ----------
@@ -1815,9 +1823,6 @@ html body.page-home #daily-match-checkin { padding: 11px 12px !important; }
             html body.page-home #mh-topbox.app-header > nav.mh-deck > #profile-link-tab,
             html body.page-home #mh-topbox.app-header > nav.mh-deck > #nav-logout-btn {
                 width: 34px !important; min-width: 34px !important;
-            }
-            html body.page-home #mh-topbox.app-header > nav.mh-deck > #profile-link-tab .avatar-ring {
-                width: 21px !important; height: 21px !important;
             }
             html body.page-home #mh-topbox.app-header > nav.mh-deck > #lang-switcher-host > select { min-width: 104px !important; }
             /* The one control that should still read as the primary action. */
