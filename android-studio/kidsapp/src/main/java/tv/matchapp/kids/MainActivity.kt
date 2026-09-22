@@ -379,7 +379,7 @@ class MainActivity : AppCompatActivity() {
             .setTitle("Grown-ups only")
             .setSubtitle("Use fingerprint or face unlock to leave Kids Mode")
             .setAllowedAuthenticators(authenticators)
-            .setNegativeButtonText("Use parent PIN")
+            .setNegativeButtonText("Cancel")
             .build()
         prompt.authenticate(info)
     }
