@@ -31,7 +31,7 @@ test('Kids guardian gates adult exits, keeps the timer off by default and syncs 
   const g=read('kids/kids-guardian.js'),kids=read('kids/kids.js'),html=read('kids/index.html');
   assert.match(html,/kids-guardian\.js\?v=/);assert.match(html,/kids-joy\.js\?v=/);
   assert.match(g,/#kids-exit,#kids-account-help/);assert.match(g,/LIMITS\.includes\(n\) \? n : 0/);
-  assert.match(g,/kids_favorites/);assert.doesNotMatch(g,/requestAnimationFrame|MutationObserver\(\(\)/);
+  assert.match(g,/kids_favorites/);assert.match(g,/const requestFrame = window\.requestAnimationFrame/);assert.match(g,/if \(progress >= 1\)/);assert.match(g,/cancelFrame\(holdFrame\)/);assert.doesNotMatch(g,/MutationObserver\(\(\)/);
   assert.match(kids,/allowed\.has\(key\)/);assert.match(kids,/window\.KidsFavorites=Object\.freeze/);
   for(const l of LANGS)assert.ok(g.includes("'"+l+"':"),l);
   const sql=read('supabase/migrations/20260922100000_kids_favorites_sync.sql');
