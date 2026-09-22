@@ -696,37 +696,94 @@ window.clearPresetAvatar = function () {
     renderAvatarPicker();
 };
 
-let nicknameTimer = null;
-window.saveNickname = function (value) {
-    const clean = String(value || '').trim().slice(0, 30);
-    try { localStorage.setItem('match_user_nickname', clean); } catch (e) {}
-
+window.markNicknameUnsaved = function () {
+    const button = document.getElementById('pf-nickname-check');
     const status = document.getElementById('pf-nickname-status');
-    // Debounced so it doesn't write to the database on every keystroke.
-    clearTimeout(nicknameTimer);
-    nicknameTimer = setTimeout(() => {
-        if (window.supabaseClient) {
-            window.supabaseClient.auth.getUser().then(({ data }) => {
-                if (data && data.user) {
-                    window.supabaseClient.from('profiles')
-                        .upsert({ id: data.user.id, nickname: clean }, { onConflict: 'id' })
-                        .then(() => {}, () => {}); // column may not exist yet; local copy still works
-                }
-            }).catch(() => {});
-        }
-        if (status) {
-            status.textContent = clean
-                ? (window.t ? t('pf.nicknameSaved') : `Our AI will call you ${clean}.`).replace('{n}', clean)
-                : '';
-            setTimeout(() => { if (status) status.textContent = ''; }, 2600);
-        }
-    }, 600);
+    if (button) {
+        button.classList.remove('is-saved');
+        button.textContent = '✓ Check';
+    }
+    if (status) status.textContent = '';
 };
 
+function nicknameStatusCopy(clean) {
+    const l = window.MATCH_LANG || document.documentElement.lang || 'en';
+    const saved = {
+        'en': `Saved. Ask AI will call you ${clean}.`,
+        'pt-BR': `Salvo. O Ask AI vai chamar você de ${clean}.`,
+        'es': `Guardado. Ask AI te llamará ${clean}.`,
+        'fr': `Enregistré. Ask AI vous appellera ${clean}.`,
+        'de': `Gespeichert. Ask AI nennt dich ${clean}.`,
+        'it': `Salvato. Ask AI ti chiamerà ${clean}.`,
+        'tr': `Kaydedildi. Ask AI sana ${clean} diye hitap edecek.`,
+        'ru': `Сохранено. Ask AI будет обращаться к вам как ${clean}.`,
+        'ar': `تم الحفظ. سيخاطبك Ask AI باسم ${clean}.`,
+        'hi': `सेव हो गया। Ask AI आपको ${clean} कहेगा।`,
+        'id': `Tersimpan. Ask AI akan memanggil Anda ${clean}.`,
+        'ja': `保存しました。Ask AI はあなたを「${clean}」と呼びます。`,
+        'ko': `저장되었습니다. Ask AI가 ${clean}(으)로 부릅니다.`,
+        'zh': `已保存。Ask AI 会称呼你为 ${clean}。`
+    };
+    const cleared = {
+        'en':'Cleared. Ask AI will no longer use a saved name.',
+        'pt-BR':'Apagado. O Ask AI não usará mais um nome salvo.',
+        'es':'Borrado. Ask AI ya no usará un nombre guardado.',
+        'fr':'Effacé. Ask AI n’utilisera plus de nom enregistré.',
+        'de':'Gelöscht. Ask AI verwendet keinen gespeicherten Namen mehr.',
+        'it':'Cancellato. Ask AI non userà più un nome salvato.',
+        'tr':'Silindi. Ask AI artık kayıtlı bir ad kullanmayacak.',
+        'ru':'Удалено. Ask AI больше не будет использовать сохранённое имя.',
+        'ar':'تم الحذف. لن يستخدم Ask AI اسمًا محفوظًا بعد الآن.',
+        'hi':'हटा दिया गया। Ask AI अब सेव किया हुआ नाम इस्तेमाल नहीं करेगा।',
+        'id':'Dihapus. Ask AI tidak akan lagi memakai nama tersimpan.',
+        'ja':'削除しました。Ask AI は保存された呼び名を使いません。',
+        'ko':'삭제되었습니다. Ask AI가 더 이상 저장된 이름을 사용하지 않습니다.',
+        'zh':'已清除。Ask AI 将不再使用已保存的称呼。'
+    };
+    return clean ? (saved[l] || saved.en) : (cleared[l] || cleared.en);
+}
+
+window.saveNickname = async function () {
+    const input = document.getElementById('pf-nickname');
+    if (!input) return;
+    const clean = String(input.value || '').trim().replace(/\s+/g, ' ').slice(0, 30);
+    input.value = clean;
+
+    try {
+        if (clean) localStorage.setItem('match_user_nickname', clean);
+        else localStorage.removeItem('match_user_nickname');
+    } catch (_) {}
+
+    const button = document.getElementById('pf-nickname-check');
+    const status = document.getElementById('pf-nickname-status');
+    if (button) {
+        button.classList.add('is-saved');
+        button.textContent = '✓ Saved';
+    }
+    if (status) status.textContent = nicknameStatusCopy(clean);
+
+    document.dispatchEvent(new CustomEvent('matchapp:nicknamechange', { detail: { nickname: clean } }));
+
+    // Signed-in users keep the deliberate choice across devices. Local storage
+    // remains the immediate source of truth so a temporary network problem can
+    // never undo a name the user just confirmed.
+    if (window.supabaseClient) {
+        try {
+            const { data } = await window.supabaseClient.auth.getUser();
+            if (data?.user) {
+                await window.supabaseClient.from('profiles')
+                    .upsert({ id: data.user.id, nickname: clean || null }, { onConflict: 'id' });
+            }
+        } catch (_) {}
+    }
+};
 document.addEventListener('DOMContentLoaded', () => {
     renderAvatarPicker();
     const nick = document.getElementById('pf-nickname');
-    if (nick) nick.value = localStorage.getItem('match_user_nickname') || '';
+    const savedNick = localStorage.getItem('match_user_nickname') || '';
+    if (nick) nick.value = savedNick;
+    const nickButton = document.getElementById('pf-nickname-check');
+    if (nickButton && savedNick) nickButton.classList.add('is-saved');
     // Show whatever avatar currently resolves, including the Google photo.
     const preview = document.getElementById('profile-pic-preview');
     const src = (typeof window.resolveUserAvatar === 'function') ? window.resolveUserAvatar() : null;
