@@ -27,8 +27,50 @@
     'ko': { gateTitle: '보호자 전용', gateText: '버튼을 3초 동안 누르고 있거나 덧셈 문제에 답하세요.', hold: '길게 누르기', holding: '계속 누르세요… {s}', sum: '{a} + {b}는 얼마일까요?', go: '계속', wrong: '아쉬워요. 다시 해 보세요.', cancel: '취소', timeBtn: '이용 시간', timeTitle: 'MatchApp Kids 하루 이용 시간', timeText: '이 기기에서 MatchApp Kids를 둘러본 시간을 셉니다. 시간이 다 되면 친근한 휴식 화면이 나타나요.', off: '끄기', min: '{n}분', save: '저장', upTitle: '오늘은 여기까지!', upText: '쉬는 시간이에요. 놀거나 책을 읽거나 쉬어요. 보호자가 시간을 더 줄 수 있어요.', unlock: '보호자: 15분 추가' },
     'zh': { gateTitle: '仅限家长', gateText: '按住按钮 3 秒，或回答算术题。', hold: '按住', holding: '继续按住… {s}', sum: '{a} + {b} 等于多少？', go: '继续', wrong: '差一点——再试一次。', cancel: '取消', timeBtn: '时间限制', timeTitle: '每天在 MatchApp Kids 的时间', timeText: '统计在这台设备上浏览 MatchApp Kids 的时间。时间到了会出现友好的休息画面。', off: '关闭', min: '{n} 分钟', save: '保存', upTitle: '今天就到这里！', upText: '休息一下吧——玩耍、读书或歇一歇。家长可以增加时间。', unlock: '家长：增加 15 分钟' }
   };
+
+  const AUTH_COPY = {
+    'en': {
+      gateText: 'Hold the hand for 3 seconds, then verify with your parent unlock.',
+      holdAria: 'Hold for 3 seconds to start parent verification',
+      checking: 'Checking parent verification…',
+      pinLabel: 'Parent PIN',
+      pinGo: 'Unlock',
+      pinWrong: 'That PIN is not correct.',
+      setupTitle: 'Set up parent unlock',
+      setupText: 'A grown-up must set the unlock method before Kids Mode can continue.',
+      setupBio: 'Use Face ID / fingerprint',
+      setupPin: 'Use a 4-digit PIN',
+      pinCreate: 'Create 4-digit PIN',
+      pinConfirm: 'Confirm PIN',
+      pinSave: 'Save PIN',
+      pinMismatch: 'Enter the same 4-digit PIN twice.',
+      bioFailed: 'Biometric verification was not completed.'
+    },
+    'pt-BR': {
+      gateText: 'Segure a mão por 3 segundos e confirme o acesso do responsável.',
+      holdAria: 'Segure por 3 segundos para iniciar a verificação do responsável',
+      checking: 'Verificando o responsável…',
+      pinLabel: 'PIN do responsável',
+      pinGo: 'Desbloquear',
+      pinWrong: 'Esse PIN não está correto.',
+      setupTitle: 'Configure o acesso do responsável',
+      setupText: 'Um adulto precisa configurar o desbloqueio antes de continuar no Modo Kids.',
+      setupBio: 'Usar Face ID / impressão digital',
+      setupPin: 'Usar PIN de 4 dígitos',
+      pinCreate: 'Crie o PIN de 4 dígitos',
+      pinConfirm: 'Confirme o PIN',
+      pinSave: 'Salvar PIN',
+      pinMismatch: 'Digite o mesmo PIN de 4 dígitos duas vezes.',
+      bioFailed: 'A verificação biométrica não foi concluída.'
+    }
+  };
+  function authText(key) {
+    const pack = AUTH_COPY[lang()] || AUTH_COPY.en;
+    return pack[key] || AUTH_COPY.en[key] || '';
+  }
   const LANGS = Object.keys(STR);
   const LIMIT_KEY = 'match_kids_time_limit', USED_KEY = 'match_kids_time_used', MODE_KEY = 'match_kids_mode';
+  const PIN_KEY = 'match_kids_parent_pin_v1', AUTH_PREF_KEY = 'match_kids_parent_auth_v1', CREDENTIAL_KEY = 'match_kids_parent_credential_v1';
   const LIMITS = [15, 30, 45, 60];
   const read = k => { try { return localStorage.getItem(k); } catch (_) { return null; } };
   const write = (k, v) => { try { localStorage.setItem(k, v); } catch (_) {} };
@@ -68,11 +110,15 @@
       '.kids-gate::backdrop,.kids-timeup::backdrop,.kids-time-settings::backdrop{background:rgba(10,6,30,.74)}',
       '.kids-gate h2,.kids-timeup h2,.kids-time-settings h2{margin:0 0 8px;font-size:22px;line-height:1.25}',
       '.kids-gate p,.kids-timeup p,.kids-time-settings p{margin:0 0 12px}',
-      '.kids-gate-hold{display:block;width:100%;min-height:56px;margin:6px 0 14px;padding:14px;border-radius:16px;border:2px solid #ffd35a;background:#2a1f5c;color:#fff;font:800 17px/1.2 system-ui,sans-serif;cursor:pointer;touch-action:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}',
-      '.kids-gate-hold[data-holding="1"]{background:#3b2c7c}',
-      '.kids-gate-form{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center}',
-      '.kids-gate-form label{flex:1 0 100%;font-weight:700}',
-      '.kids-gate-form input{width:7em;min-height:44px;padding:8px;border-radius:12px;border:2px solid #7cd8ff;background:#0f0b26;color:#fff;font-size:18px;text-align:center}',
+      '.kids-gate-hold{--hold-progress:0;display:grid;place-items:center;width:92px;height:92px;min-height:92px;margin:10px auto 16px;padding:7px;border:0;border-radius:50%;background:conic-gradient(#ffd35a calc(var(--hold-progress) * 1turn),#4a3a74 0);color:#fff;cursor:pointer;touch-action:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;box-shadow:0 8px 24px rgba(0,0,0,.28)}',
+      '.kids-gate-hold[data-holding="1"]{box-shadow:0 8px 28px rgba(255,211,90,.24)}',
+      '.kids-gate-hand{display:grid;place-items:center;width:76px;height:76px;border-radius:50%;background:#2a1f5c;font-size:34px;line-height:1}',
+      '.kids-gate-pin-form,.kids-parent-pin-setup{display:grid;grid-template-columns:1fr;gap:8px;align-items:center;justify-items:center;margin:4px 0 8px}',
+      '.kids-gate-pin-form[hidden],.kids-parent-pin-setup[hidden]{display:none!important}',
+      '.kids-gate-pin-form label,.kids-parent-pin-setup label{font-weight:700}',
+      '.kids-gate-pin-form input,.kids-parent-pin-setup input{width:8em;min-height:48px;padding:8px;border-radius:12px;border:2px solid #7cd8ff;background:#0f0b26;color:#fff;font-size:20px;letter-spacing:.18em;text-align:center}',
+      '.kids-parent-setup>.kids-parent-bio,.kids-parent-setup>.kids-parent-pin-choice{display:block;width:100%;margin:8px 0}',
+      '.kids-parent-setup>[hidden]{display:none!important}',
       '.kids-gate button,.kids-timeup button,.kids-time-settings button{min-height:44px;padding:10px 16px;border-radius:14px;border:2px solid #ffd35a;background:#ffd35a;color:#1b1340;font:800 15px/1.2 system-ui,sans-serif;cursor:pointer}',
       '.kids-gate .kids-gate-hold{background:#2a1f5c;color:#fff}',
       '.kids-gate .kids-gate-cancel,.kids-time-settings .kids-gate-cancel{background:transparent;color:#ffe9a8;margin-top:12px}',
@@ -86,87 +132,416 @@
   }
 
   /* ---------- C3: grown-up check ---------- */
-  let gate = null, gateResolve = null, holdTimer = null, holdStart = 0, answer = 0;
-  function freshSum() {
-    const a = 11 + Math.floor(Math.random() * 9), b = 11 + Math.floor(Math.random() * 9);
-    answer = a + b;
-    const q = gate && gate.querySelector('.kids-gate-sum');
-    if (q) q.textContent = t('sum', { a, b });
-    const input = gate && gate.querySelector('input');
-    if (input) input.value = '';
+  let gate = null, gateResolve = null, gatePinResolve = null, holdFrame = 0, holdStart = 0, authPending = false;
+  let setupDialog = null, setupResolve = null, setupPromise = null;
+  let nativeResolve = null, nativeTimer = 0;
+
+  function isMobileLike() {
+    const ua = String(navigator.userAgent || '');
+    if (/Android|iPhone|iPad|iPod|Mobile/i.test(ua)) return true;
+    if (/Macintosh/i.test(ua) && Number(navigator.maxTouchPoints || 0) > 1) return true;
+    try { if (window.matchMedia && matchMedia('(pointer:coarse)').matches) return true; } catch (_) {}
+    return false;
   }
-  function stopHold() {
-    if (holdTimer) { clearInterval(holdTimer); holdTimer = null; }
+  function isDesktopGate() { return !isMobileLike(); }
+  function bytesToB64Url(value) {
+    const bytes = value instanceof Uint8Array ? value : new Uint8Array(value);
+    let bin = '';
+    for (let i = 0; i < bytes.length; i += 1) bin += String.fromCharCode(bytes[i]);
+    return btoa(bin).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/g, '');
+  }
+  function b64UrlToBytes(value) {
+    const base = String(value || '').replace(/-/g, '+').replace(/_/g, '/');
+    const padded = base + '='.repeat((4 - (base.length % 4 || 4)) % 4);
+    const bin = atob(padded);
+    const out = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; i += 1) out[i] = bin.charCodeAt(i);
+    return out;
+  }
+  function randomBytes(size) {
+    const out = new Uint8Array(size);
+    try {
+      if (window.crypto && crypto.getRandomValues) return crypto.getRandomValues(out);
+    } catch (_) {}
+    for (let i = 0; i < out.length; i += 1) out[i] = Math.floor(Math.random() * 256);
+    return out;
+  }
+  async function pinDigest(pin, salt) {
+    const payload = String(salt || '') + ':' + String(pin || '');
+    try {
+      if (window.crypto && crypto.subtle && window.TextEncoder) {
+        const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(payload));
+        return bytesToB64Url(digest);
+      }
+    } catch (_) {}
+    let h = 2166136261;
+    for (let i = 0; i < payload.length; i += 1) {
+      h ^= payload.charCodeAt(i);
+      h = Math.imul(h, 16777619);
+    }
+    return ('00000000' + (h >>> 0).toString(16)).slice(-8);
+  }
+  function pinRecord() {
+    try {
+      const parsed = JSON.parse(read(PIN_KEY) || 'null');
+      return parsed && parsed.salt && parsed.digest ? parsed : null;
+    } catch (_) { return null; }
+  }
+  async function savePin(pin) {
+    if (!/^\d{4}$/.test(String(pin || ''))) return false;
+    const salt = bytesToB64Url(randomBytes(16));
+    const digest = await pinDigest(pin, salt);
+    write(PIN_KEY, JSON.stringify({ v: 1, salt, digest }));
+    write(AUTH_PREF_KEY, 'pin');
+    return true;
+  }
+  async function verifyPin(pin) {
+    const rec = pinRecord();
+    if (!rec || !/^\d{4}$/.test(String(pin || ''))) return false;
+    return (await pinDigest(pin, rec.salt)) === rec.digest;
+  }
+  function nativeBridge() {
+    const b = window.MatchAppNativeGuardian;
+    return b && typeof b.authenticate === 'function' ? b : null;
+  }
+  window.matchAppNativeGuardianResult = function (ok, code) {
+    if (!nativeResolve) return;
+    const resolve = nativeResolve;
+    nativeResolve = null;
+    if (nativeTimer) { clearTimeout(nativeTimer); nativeTimer = 0; }
+    resolve({ ok: ok === true || ok === 'true', code: String(code || '') });
+  };
+  function nativeAuthenticate() {
+    return new Promise(resolve => {
+      const bridge = nativeBridge();
+      if (!bridge) { resolve(false); return; }
+      if (nativeResolve) { const prior = nativeResolve; nativeResolve = null; prior({ ok: false, code: 'superseded' }); }
+      nativeResolve = result => resolve(!!(result && result.ok));
+      nativeTimer = setTimeout(() => {
+        if (!nativeResolve) return;
+        const done = nativeResolve;
+        nativeResolve = null;
+        nativeTimer = 0;
+        done({ ok: false, code: 'timeout' });
+      }, 45000);
+      try { bridge.authenticate(); } catch (_) {
+        if (nativeTimer) { clearTimeout(nativeTimer); nativeTimer = 0; }
+        nativeResolve = null;
+        resolve(false);
+      }
+    });
+  }
+  async function platformAuthenticatorAvailable() {
+    if (!window.isSecureContext || !window.PublicKeyCredential || !navigator.credentials) return false;
+    try {
+      if (typeof PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable === 'function') {
+        return !!(await PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable());
+      }
+    } catch (_) {}
+    return false;
+  }
+  function credentialRecord() {
+    try {
+      const parsed = JSON.parse(read(CREDENTIAL_KEY) || 'null');
+      return parsed && parsed.id ? parsed : null;
+    } catch (_) { return null; }
+  }
+  async function createPlatformCredential() {
+    if (!(await platformAuthenticatorAvailable())) return false;
+    try {
+      const userId = randomBytes(16);
+      const cred = await navigator.credentials.create({
+        publicKey: {
+          challenge: randomBytes(32),
+          rp: { name: 'MatchApp TV' },
+          user: {
+            id: userId,
+            name: 'matchapp-parent-' + Date.now(),
+            displayName: 'MatchApp parent'
+          },
+          pubKeyCredParams: [
+            { type: 'public-key', alg: -7 },
+            { type: 'public-key', alg: -257 }
+          ],
+          authenticatorSelection: {
+            authenticatorAttachment: 'platform',
+            residentKey: 'discouraged',
+            requireResidentKey: false,
+            userVerification: 'required'
+          },
+          timeout: 60000,
+          attestation: 'none'
+        }
+      });
+      if (!cred || !cred.rawId) return false;
+      write(CREDENTIAL_KEY, JSON.stringify({ v: 1, id: bytesToB64Url(cred.rawId) }));
+      write(AUTH_PREF_KEY, 'webauthn');
+      return true;
+    } catch (_) { return false; }
+  }
+  async function verifyPlatformCredential() {
+    const rec = credentialRecord();
+    if (!rec || !(await platformAuthenticatorAvailable())) return false;
+    try {
+      const assertion = await navigator.credentials.get({
+        publicKey: {
+          challenge: randomBytes(32),
+          allowCredentials: [{ type: 'public-key', id: b64UrlToBytes(rec.id) }],
+          userVerification: 'required',
+          timeout: 60000
+        }
+      });
+      return !!assertion;
+    } catch (_) { return false; }
+  }
+
+  function stopHold(reset) {
+    if (holdFrame) { cancelAnimationFrame(holdFrame); holdFrame = 0; }
     const hold = gate && gate.querySelector('.kids-gate-hold');
-    if (hold) { hold.dataset.holding = '0'; hold.textContent = t('hold'); }
+    if (hold) {
+      hold.dataset.holding = '0';
+      if (reset !== false) hold.style.setProperty('--hold-progress', '0');
+    }
   }
   function finishGate(ok) {
     stopHold();
+    authPending = false;
+    if (gatePinResolve) {
+      const pinResolve = gatePinResolve;
+      gatePinResolve = null;
+      pinResolve(false);
+    }
     const resolve = gateResolve;
     gateResolve = null;
     closeDialog(gate);
     if (resolve) resolve(!!ok);
   }
+  function requestPinVerification() {
+    return new Promise(resolve => {
+      if (!gate || !pinRecord()) { resolve(false); return; }
+      if (gatePinResolve) gatePinResolve(false);
+      gatePinResolve = resolve;
+      const form = gate.querySelector('.kids-gate-pin-form');
+      const input = gate.querySelector('#kids-gate-pin');
+      const msg = gate.querySelector('.kids-gate-msg');
+      form.hidden = false;
+      input.value = '';
+      msg.textContent = '';
+      try { input.focus({ preventScroll: true }); } catch (_) {}
+    });
+  }
+  async function authorizeGuardian() {
+    const msg = gate && gate.querySelector('.kids-gate-msg');
+    if (msg) msg.textContent = authText('checking');
+    if (isDesktopGate()) return requestPinVerification();
+
+    const pref = read(AUTH_PREF_KEY) || '';
+    if (pref === 'native' && nativeBridge()) {
+      const ok = await nativeAuthenticate();
+      if (!ok && msg) msg.textContent = authText('bioFailed');
+      return ok;
+    }
+    if (pref === 'webauthn' && credentialRecord()) {
+      const ok = await verifyPlatformCredential();
+      if (!ok && msg) msg.textContent = authText('bioFailed');
+      return ok;
+    }
+    if (pinRecord()) return requestPinVerification();
+    return false;
+  }
   function startHold(e) {
-    if (holdTimer) return;
+    if (holdFrame || authPending) return;
     if (e && e.type === 'keydown' && (e.repeat || (e.key !== ' ' && e.key !== 'Enter'))) return;
     if (e && e.cancelable) e.preventDefault();
-    const hold = gate.querySelector('.kids-gate-hold');
-    holdStart = Date.now();
+    const hold = gate && gate.querySelector('.kids-gate-hold');
+    if (!hold) return;
+    holdStart = performance.now ? performance.now() : Date.now();
     hold.dataset.holding = '1';
-    holdTimer = setInterval(() => {
-      const left = 3000 - (Date.now() - holdStart);
-      if (left <= 0) { finishGate(true); return; }
-      hold.textContent = t('holding', { s: (left / 1000).toFixed(1) });
-    }, 100);
+    const tickHold = now => {
+      const current = typeof now === 'number' ? now : Date.now();
+      const elapsed = Math.max(0, current - holdStart);
+      const progress = Math.min(1, elapsed / 3000);
+      hold.style.setProperty('--hold-progress', String(progress));
+      if (progress >= 1) {
+        holdFrame = 0;
+        hold.dataset.holding = '0';
+        authPending = true;
+        authorizeGuardian().then(ok => {
+          if (ok === true) finishGate(true);
+          else if (ok === false) authPending = false;
+        }).catch(() => { authPending = false; });
+        return;
+      }
+      holdFrame = requestAnimationFrame(tickHold);
+    };
+    holdFrame = requestAnimationFrame(tickHold);
   }
   function buildGate() {
     if (gate) return gate;
     gate = node('dialog', 'kids-gate');
     gate.setAttribute('aria-labelledby', 'kids-gate-title');
     const h = node('h2', '', t('gateTitle')); h.id = 'kids-gate-title';
-    const p = node('p', 'kids-gate-text', t('gateText'));
-    const hold = node('button', 'kids-gate-hold', t('hold')); hold.type = 'button';
-    const form = node('form', 'kids-gate-form');
-    const label = node('label', 'kids-gate-sum'); label.setAttribute('for', 'kids-gate-answer');
-    const input = node('input'); input.id = 'kids-gate-answer'; input.type = 'text'; input.inputMode = 'numeric'; input.autocomplete = 'off'; input.maxLength = 3;
-    const go = node('button', 'kids-gate-go', t('go')); go.type = 'submit';
+    const p = node('p', 'kids-gate-text', authText('gateText'));
+    const hold = node('button', 'kids-gate-hold'); hold.type = 'button';
+    hold.setAttribute('aria-label', authText('holdAria'));
+    const hand = node('span', 'kids-gate-hand', '✋'); hand.setAttribute('aria-hidden', 'true');
+    hold.appendChild(hand);
+    const form = node('form', 'kids-gate-pin-form'); form.hidden = true;
+    const label = node('label', '', authText('pinLabel')); label.setAttribute('for', 'kids-gate-pin');
+    const input = node('input'); input.id = 'kids-gate-pin'; input.type = 'password'; input.inputMode = 'numeric'; input.autocomplete = 'off'; input.maxLength = 4; input.pattern = '[0-9]{4}';
+    const go = node('button', 'kids-gate-go', authText('pinGo')); go.type = 'submit';
     form.append(label, input, go);
     const msg = node('p', 'kids-gate-msg'); msg.setAttribute('role', 'status'); msg.setAttribute('aria-live', 'polite');
     const cancel = node('button', 'kids-gate-cancel', t('cancel')); cancel.type = 'button';
     gate.append(h, p, hold, form, msg, cancel);
     hold.addEventListener('pointerdown', startHold);
-    ['pointerup', 'pointerleave', 'pointercancel'].forEach(ev => hold.addEventListener(ev, stopHold));
+    ['pointerup', 'pointerleave', 'pointercancel'].forEach(ev => hold.addEventListener(ev, () => stopHold()));
     hold.addEventListener('keydown', startHold);
-    hold.addEventListener('keyup', stopHold);
+    hold.addEventListener('keyup', () => stopHold());
     hold.addEventListener('contextmenu', e => e.preventDefault());
     form.addEventListener('submit', e => {
       e.preventDefault();
-      if (Number.parseInt(String(input.value).trim(), 10) === answer) { finishGate(true); return; }
-      msg.textContent = t('wrong');
-      freshSum();
-      input.focus();
+      if (!gatePinResolve) return;
+      verifyPin(input.value).then(ok => {
+        if (!gatePinResolve) return;
+        if (ok) {
+          const done = gatePinResolve;
+          gatePinResolve = null;
+          done(true);
+          return;
+        }
+        msg.textContent = authText('pinWrong');
+        input.value = '';
+        try { input.focus({ preventScroll: true }); } catch (_) {}
+      }).catch(() => { msg.textContent = authText('pinWrong'); });
     });
     cancel.addEventListener('click', () => finishGate(false));
     gate.addEventListener('cancel', e => { e.preventDefault(); finishGate(false); });
-    gate.addEventListener('close', () => { stopHold(); if (gateResolve) { const r = gateResolve; gateResolve = null; r(false); } });
+    gate.addEventListener('close', () => {
+      stopHold();
+      authPending = false;
+      if (gatePinResolve) { const p = gatePinResolve; gatePinResolve = null; p(false); }
+      if (gateResolve) { const r = gateResolve; gateResolve = null; r(false); }
+    });
     document.body.appendChild(gate);
     return gate;
   }
+
+  function buildSetupDialog() {
+    if (setupDialog) return setupDialog;
+    setupDialog = node('dialog', 'kids-gate kids-parent-setup');
+    setupDialog.setAttribute('aria-labelledby', 'kids-parent-setup-title');
+    const h = node('h2', '', authText('setupTitle')); h.id = 'kids-parent-setup-title';
+    const p = node('p', 'kids-parent-setup-text', authText('setupText'));
+    const bio = node('button', 'kids-parent-bio', authText('setupBio')); bio.type = 'button'; bio.hidden = true;
+    const pinChoice = node('button', 'kids-parent-pin-choice', authText('setupPin')); pinChoice.type = 'button';
+    const form = node('form', 'kids-parent-pin-setup'); form.hidden = true;
+    const label1 = node('label', '', authText('pinCreate')); label1.setAttribute('for', 'kids-parent-pin-one');
+    const one = node('input'); one.id = 'kids-parent-pin-one'; one.type = 'password'; one.inputMode = 'numeric'; one.autocomplete = 'new-password'; one.maxLength = 4; one.pattern = '[0-9]{4}';
+    const label2 = node('label', '', authText('pinConfirm')); label2.setAttribute('for', 'kids-parent-pin-two');
+    const two = node('input'); two.id = 'kids-parent-pin-two'; two.type = 'password'; two.inputMode = 'numeric'; two.autocomplete = 'new-password'; two.maxLength = 4; two.pattern = '[0-9]{4}';
+    const save = node('button', 'kids-parent-pin-save', authText('pinSave')); save.type = 'submit';
+    form.append(label1, one, label2, two, save);
+    const msg = node('p', 'kids-gate-msg'); msg.setAttribute('role', 'status'); msg.setAttribute('aria-live', 'polite');
+    setupDialog.append(h, p, bio, pinChoice, form, msg);
+    setupDialog.addEventListener('cancel', e => e.preventDefault());
+    pinChoice.addEventListener('click', () => {
+      form.hidden = false;
+      pinChoice.hidden = true;
+      try { one.focus({ preventScroll: true }); } catch (_) {}
+    });
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const first = String(one.value || ''), second = String(two.value || '');
+      if (!/^\d{4}$/.test(first) || first !== second) {
+        msg.textContent = authText('pinMismatch');
+        two.value = '';
+        return;
+      }
+      savePin(first).then(ok => {
+        if (!ok) { msg.textContent = authText('pinMismatch'); return; }
+        completeSetup(true);
+      }).catch(() => { msg.textContent = authText('pinMismatch'); });
+    });
+    bio.addEventListener('click', async () => {
+      bio.disabled = true;
+      msg.textContent = authText('checking');
+      let ok = false;
+      if (nativeBridge()) {
+        ok = await nativeAuthenticate();
+        if (ok) write(AUTH_PREF_KEY, 'native');
+      } else {
+        ok = await createPlatformCredential();
+      }
+      bio.disabled = false;
+      if (ok) { completeSetup(true); return; }
+      msg.textContent = authText('bioFailed');
+    });
+    document.body.appendChild(setupDialog);
+    return setupDialog;
+  }
+  function completeSetup(ok) {
+    const resolve = setupResolve;
+    setupResolve = null;
+    setupPromise = null;
+    closeDialog(setupDialog);
+    if (resolve) resolve(!!ok);
+  }
+  async function openSetup() {
+    if (setupPromise) return setupPromise;
+    const d = buildSetupDialog();
+    d.querySelector('#kids-parent-setup-title').textContent = authText('setupTitle');
+    d.querySelector('.kids-parent-setup-text').textContent = authText('setupText');
+    d.querySelector('.kids-parent-bio').textContent = authText('setupBio');
+    d.querySelector('.kids-parent-pin-choice').textContent = authText('setupPin');
+    d.querySelector('.kids-parent-pin-save').textContent = authText('pinSave');
+    d.querySelector('.kids-gate-msg').textContent = '';
+    const form = d.querySelector('.kids-parent-pin-setup');
+    const pinChoice = d.querySelector('.kids-parent-pin-choice');
+    form.hidden = !isDesktopGate();
+    pinChoice.hidden = isDesktopGate();
+    d.querySelector('#kids-parent-pin-one').value = '';
+    d.querySelector('#kids-parent-pin-two').value = '';
+    const bio = d.querySelector('.kids-parent-bio');
+    bio.hidden = true;
+    if (!isDesktopGate()) {
+      try { bio.hidden = !(nativeBridge() || await platformAuthenticatorAvailable()); } catch (_) { bio.hidden = true; }
+    }
+    setupPromise = new Promise(resolve => { setupResolve = resolve; });
+    openDialog(d);
+    if (isDesktopGate()) {
+      try { d.querySelector('#kids-parent-pin-one').focus({ preventScroll: true }); } catch (_) {}
+    }
+    return setupPromise;
+  }
+  async function ensureGuardianSetup() {
+    if (isDesktopGate()) {
+      if (pinRecord()) return true;
+      return openSetup();
+    }
+    const pref = read(AUTH_PREF_KEY) || '';
+    if (pref === 'native' && nativeBridge()) return true;
+    if (pref === 'webauthn' && credentialRecord()) return true;
+    if (pref === 'pin' && pinRecord()) return true;
+    if (pinRecord()) return true;
+    return openSetup();
+  }
+
   function askGrownUp() {
     return new Promise(resolve => {
       if (gateResolve) { const prev = gateResolve; gateResolve = null; prev(false); }
       buildGate();
       gate.querySelector('#kids-gate-title').textContent = t('gateTitle');
-      gate.querySelector('.kids-gate-text').textContent = t('gateText');
-      gate.querySelector('.kids-gate-go').textContent = t('go');
+      gate.querySelector('.kids-gate-text').textContent = authText('gateText');
+      gate.querySelector('.kids-gate-hold').setAttribute('aria-label', authText('holdAria'));
+      gate.querySelector('.kids-gate-go').textContent = authText('pinGo');
       gate.querySelector('.kids-gate-cancel').textContent = t('cancel');
       gate.querySelector('.kids-gate-msg').textContent = '';
+      gate.querySelector('.kids-gate-pin-form').hidden = true;
       stopHold();
-      freshSum();
+      authPending = false;
       gateResolve = resolve;
       openDialog(gate);
-      try { gate.querySelector('input').focus({ preventScroll: true }); } catch (_) {}
     });
   }
   window.KidsGrownUpCheck = askGrownUp;
@@ -178,7 +553,13 @@
     const href = link.getAttribute('href') || '/';
     askGrownUp().then(ok => {
       if (!ok) return;
-      if (link.id === 'kids-exit') write(MODE_KEY, 'false');
+      if (link.id === 'kids-exit') {
+        write(MODE_KEY, 'false');
+        const bridge = window.MatchAppNativeGuardian;
+        if (window.MATCHAPP_ANDROID_KIDS_ONLY && bridge && typeof bridge.openGrownUp === 'function') {
+          try { bridge.openGrownUp(); return; } catch (_) {}
+        }
+      }
       location.href = href;
     }).catch(() => {});
   }
@@ -347,6 +728,7 @@
       }
     } catch (_) {}
     try { new MutationObserver(repaint).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] }); } catch (_) {}
+    setTimeout(() => { ensureGuardianSetup().catch(() => {}); }, 0);
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot, { once: true });
   else boot();
