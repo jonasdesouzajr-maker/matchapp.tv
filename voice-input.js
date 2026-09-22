@@ -51,7 +51,9 @@ function initVoiceInput(inputId,micBtnId,onFinalTranscript){
     input.value=transcript;
     grow();
     finish();
-    input.focus();
+    // Voice is a first-class input path: do not focus the textarea here.
+    // On mobile, focusing it after dictation opens the software keyboard and
+    // covers the conversation even though the user chose the microphone.
     if(onFinalTranscript)onFinalTranscript(transcript);
   }
   function showError(code){
