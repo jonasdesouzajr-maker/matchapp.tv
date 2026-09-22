@@ -79,5 +79,46 @@ await send('Runtime.enable');
 try{await send('Inspector.enable')}catch(_){}
 await scenario('desktop',1440,900,false);
 await scenario('mobile',390,844,true);
+
+async function kidsMatchScenario(){
+  const kidsUrl=new URL('/kids/',targetUrl).href;
+  await send('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:2,mobile:true,screenWidth:390,screenHeight:844});
+  await send('Network.setCacheDisabled',{cacheDisabled:true});
+  await send('Page.navigate',{url:kidsUrl});
+  await waitReady();
+  await sleep(3500);
+
+  // Fresh guest quota for this isolated browser profile, then trigger the
+  // exact flow users reported freezing: a Kids match that opens the result.
+  await evaluate(`localStorage.removeItem('match_lastDate');localStorage.removeItem('match_dailyCount');localStorage.removeItem('match_guestBonusMatches');0`);
+  await evaluate(`document.getElementById('kids-match-submit')?.click();0`);
+
+  const deadline=Date.now()+20000;
+  let opened=false;
+  while(Date.now()<deadline){
+    if(crashed)throw new Error('kids-mobile: renderer crashed while opening result');
+    try{
+      opened=!!(await evaluate(`!!document.getElementById('kids-watch-dialog')?.open`));
+      if(opened)break;
+    }catch(_){}
+    await sleep(250);
+  }
+  if(!opened)throw new Error('kids-mobile: result dialog did not open within 20s');
+
+  // A microtask feedback loop starves timers and CDP execution. Count both a
+  // heartbeat and result-subtree mutations for several seconds: the page must
+  // stay responsive and the result must settle instead of rewriting forever.
+  await evaluate(`(()=>{const d=document.getElementById('kids-watch-dialog');window.__kidsBeat=0;window.__kidsMut=0;window.__kidsBeatTimer=setInterval(()=>window.__kidsBeat++,100);window.__kidsObserver=new MutationObserver(r=>window.__kidsMut+=r.length);window.__kidsObserver.observe(d,{subtree:true,childList:true,characterData:true});return 0})()`);
+  await sleep(4500);
+  const health=await evaluate(`({beat:window.__kidsBeat||0,mut:window.__kidsMut||0,open:!!document.getElementById('kids-watch-dialog')?.open,title:document.getElementById('kids-watch-name')?.textContent||'',previewChildren:document.getElementById('matchapp-kids-preview')?.childElementCount||0})`);
+  await evaluate(`clearInterval(window.__kidsBeatTimer);window.__kidsObserver?.disconnect();0`);
+  if(crashed)throw new Error('kids-mobile: renderer crashed after result opened');
+  if(!health.open||!health.title)throw new Error('kids-mobile: usable result disappeared after opening');
+  if(health.beat<25)throw new Error('kids-mobile: main thread heartbeat starved after result (beat='+health.beat+')');
+  if(health.mut>24)throw new Error('kids-mobile: result subtree kept rewriting after open (mutations='+health.mut+')');
+  console.log('kids-mobile: PASS, heartbeat='+health.beat+', mutations='+health.mut+', title='+health.title+', previewChildren='+health.previewChildren);
+}
+
+await kidsMatchScenario();
 ws.close();
-console.log('MatchApp browser startup/scroll smoke: PASS');
+console.log('MatchApp browser startup/scroll + Kids result smoke: PASS');

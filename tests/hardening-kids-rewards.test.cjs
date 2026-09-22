@@ -67,3 +67,16 @@ test('Kids share reward and confirmation copy covers all supported languages',()
   assert.match(read('kids/kids.js'),/tr\('shareReward'\)/);
   assert.match(read('kids/kids.js'),/tr\('shareFinish'\)/);
 });
+
+
+test('Kids result enrichment cannot observe and rewrite its own dialog subtree',()=>{
+  const media=read('catalog-media.js');
+  assert.doesNotMatch(media,/observeSurface\(kids\s*,\s*enrichKids\)/);
+  assert.doesNotMatch(media,/new MutationObserver[\s\S]{0,1800}kids-watch-dialog/);
+  assert.match(media,/document\.addEventListener\('matchapp:kids-result',queueKidsEnrich\)/);
+  assert.match(media,/if\(!dialog\|\|!dialog\.open\)return/);
+  assert.match(media,/matchappPreviewSignature/);
+  assert.match(media,/if\(kids&&host\.dataset\.matchappPreviewSignature===previewSignature\)return/);
+  assert.match(media,/clearTimeout\(kidsEnrichTimer\)/);
+  assert.match(media,/setTimeout\(\(\)=>\{[\s\S]*enrichKids\(\)\.catch/);
+});

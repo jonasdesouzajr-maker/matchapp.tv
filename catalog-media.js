@@ -330,7 +330,22 @@
 
   function ensurePlayerHost(anchor,id){if(!anchor)return null;let host=document.getElementById(id);if(host)return host;host=document.createElement('section');host.id=id;host.className='matchapp-media-preview';host.hidden=true;anchor.insertAdjacentElement('afterend',host);return host;}
   function renderPreview(host,meta,{kids=false,title=''}={}){
-    if(!host)return;host.replaceChildren();host.hidden=true;
+    if(!host)return;
+    const previewSignature=kids?[
+      normalise(title||meta?.title||''),
+      String(meta?.source_key||''),
+      String(meta?.updated_at||''),
+      String(meta?.preview_kind||''),
+      String(meta?.preview_embed_url||meta?.preview_url||sourcePage(meta)||''),
+      String(window.MATCH_LANG||'en')
+    ].join('|'):'';
+    // Kids result media used to rewrite this host every time its own
+    // MutationObserver noticed the rewrite, creating a self-feeding loop.
+    // Make the render idempotent as a second line of defence even if callers
+    // accidentally request the same enrichment more than once.
+    if(kids&&host.dataset.matchappPreviewSignature===previewSignature)return;
+    host.replaceChildren();host.hidden=true;
+    if(kids)host.dataset.matchappPreviewSignature=previewSignature;
     if(!meta||(kids&&meta.kids_approved!==true))return;
     const label=document.createElement('div');label.className='matchapp-media-preview-label';label.textContent=(typeof window.t==='function'&&window.t('discover.preview'))||'Preview';
     if(meta.preview_kind==='video'&&TRUSTED_EMBED.test(String(meta.preview_embed_url||''))){const frame=document.createElement('iframe');frame.src=meta.preview_embed_url;frame.title=`${title||meta.title} preview`;frame.loading='lazy';frame.allow='accelerometer; autoplay; encrypted-media; picture-in-picture; web-share';frame.allowFullscreen=true;frame.referrerPolicy='strict-origin-when-cross-origin';host.append(label,frame);host.hidden=false;return;}
@@ -478,12 +493,23 @@
     applyDetails(meta);renderAvailability(availabilityHost,meta,{title});renderPreview(host,meta,{title});
   }
 
-  let kidsSerial=0;
+  let kidsSerial=0,kidsEnrichTimer=0;
   async function enrichKids(){
+    const dialog=document.getElementById('kids-watch-dialog');
+    if(!dialog||!dialog.open)return;
     const name=document.getElementById('kids-watch-name');if(!name)return;const title=name.textContent.trim();if(!title)return;const serial=++kidsSerial;
-    const meta=await lookup(title,{kids:true});if(serial!==kidsSerial)return;
-    const dialog=document.getElementById('kids-watch-dialog'),host=ensurePlayerHost(document.getElementById('kids-watch-description')||name,'matchapp-kids-preview');renderPreview(host,meta,{kids:true,title});
-    if(dialog&&meta)dialog.querySelectorAll('img[data-title],img[data-poster-title]').forEach(img=>hardenImage(img,title,meta));
+    const meta=await lookup(title,{kids:true});if(serial!==kidsSerial||!dialog.open)return;
+    const host=ensurePlayerHost(document.getElementById('kids-watch-description')||name,'matchapp-kids-preview');
+    renderPreview(host,meta,{kids:true,title});
+    if(meta)dialog.querySelectorAll('img[data-title],img[data-poster-title]').forEach(img=>hardenImage(img,title,meta));
+  }
+  function queueKidsEnrich(){
+    clearTimeout(kidsEnrichTimer);
+    kidsEnrichTimer=setTimeout(()=>{
+      const dialog=document.getElementById('kids-watch-dialog');
+      hardenWithin(dialog||document);
+      enrichKids().catch(()=>{});
+    },0);
   }
 
   function installStyle(){if(document.getElementById('matchapp-media-style'))return;const s=document.createElement('style');s.id='matchapp-media-style';s.textContent=`
@@ -501,35 +527,15 @@
   function hardenWithin(root){
     root?.querySelectorAll?.('img[data-title]:not([data-matchapp-media-hardened]),img[data-poster-title]:not([data-matchapp-media-hardened]),#res-poster-img:not([data-matchapp-media-hardened]),.kids-card img:not([data-matchapp-media-hardened])').forEach(img=>hardenImage(img,titleForImage(img)));
   }
-  function observeSurface(root,refresh){
-    if(!root||!window.MutationObserver)return;
-    let queued=false;
-    new MutationObserver(records=>{
-      let relevant=false;
-      for(const record of records){
-        for(const node of record.addedNodes||[]){
-          if(node.nodeType!==1)continue;
-          hardenWithin(node);
-          relevant=true;
-        }
-        if(record.type==='characterData')relevant=true;
-      }
-      if(relevant&&!queued){
-        queued=true;
-        queueMicrotask(()=>{queued=false;refresh();});
-      }
-    }).observe(root,{subtree:true,childList:true,characterData:true});
-  }
   function boot(){
     installStyle();syncGenreFilter();hardenWithin(document);
     const result=document.getElementById('result-card')||document.getElementById('result-box');
     const kids=document.getElementById('kids-watch-dialog');
-    // Main-result enrichment is event-driven. Do not observe the result subtree
-    // and then rewrite that same subtree from enrichMain(): renderAvailability()
-    // and renderPreview() replace children, which would feed the observer forever.
-    observeSurface(kids,enrichKids);
+    // Result enrichment is event-driven on BOTH main and Kids surfaces.
+    // Never observe either mutable result subtree and then rewrite it from the
+    // observer callback: renderPreview()/renderAvailability() replace children
+    // and would otherwise feed the observer forever.
     if(result&&result.style.display!=='none'&&!result.hidden)enrichMain();
-    enrichKids();
     const isHome=location.pathname==='/'||location.pathname==='/index.html';
     if(isHome){
       // Do not start network/media enrichment while Home is still settling.
@@ -555,8 +561,13 @@
       else window.addEventListener('load',()=>setTimeout(arm,800),{once:true});
     }else enrichTrendingRail();
     document.addEventListener('matchapp:newmatch',()=>{hardenWithin(result||document);enrichMain();});
-    document.addEventListener('matchapp:kids-result',()=>{hardenWithin(kids||document);enrichKids();});
-    document.addEventListener('matchapp:langchange',enrichTrendingRail);
+    document.addEventListener('matchapp:kids-result',queueKidsEnrich);
+    document.addEventListener('matchapp:langchange',()=>{
+      enrichTrendingRail();
+      const host=document.getElementById('matchapp-kids-preview');
+      if(host)delete host.dataset.matchappPreviewSignature;
+      queueKidsEnrich();
+    });
   }
   window.MatchAppCatalogMedia=Object.freeze({lookup,lookupLive,refreshExact,normalise,localPoster,enrichMain,enrichKids,enrichTrendingRail,renderPreview,renderAvailability,availability,streamingElsewhere,viewingTarget,providerLinks,providerSearch,showtimesUrl,sourcePage,regionCode,countryName,titleKeysForGenres,availableGenres,syncGenreFilter});
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
