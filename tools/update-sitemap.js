@@ -126,21 +126,16 @@ function main() {
     const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${body}\n</urlset>\n`;
     fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), xml, 'utf8');
 
-    // Keep one canonical sitemap index and explicitly include the legal map.
+    // Keep one canonical sitemap index. sitemap.xml already contains the legal
+    // URLs, so nesting legal-sitemap.xml here would duplicate URL inventory in
+    // Search Console. Keep the compatibility file on disk, but do not submit it
+    // through the canonical sitemap index.
     const sitemapIndexPath = path.join(ROOT, 'sitemaps.xml');
-    const legalPath = path.join(ROOT, 'legal-sitemap.xml');
-    const legalLastmod = fs.existsSync(legalPath)
-        ? gitLastmodForUrl('https://matchapp.tv/legal-sitemap.xml', now)
-        : now;
     const indexXml = `<?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <sitemap>
     <loc>https://matchapp.tv/sitemap.xml</loc>
     <lastmod>${now}</lastmod>
-  </sitemap>
-  <sitemap>
-    <loc>https://matchapp.tv/legal-sitemap.xml</loc>
-    <lastmod>${legalLastmod}</lastmod>
   </sitemap>
 </sitemapindex>
 `;

@@ -40,6 +40,7 @@ test('Kids title generator uses rich title-specific metadata and safe structured
   assert.match(src,/PeopleAudience/);
   assert.match(src,/isFamilyFriendly:true/);
   assert.match(src,/potentialAction/);
+  assert.match(src,/logo:\{'@type':'ImageObject',url:/);
   assert.match(src,/Similar family picks/);
   assert.doesNotMatch(src,/AggregateRating|reviewRating|ratingValue/);
 });
@@ -55,7 +56,7 @@ test('Kids generated pages stay free of the general GTM container',()=>{
 test('Kids sitemap uses stable content revision dates instead of fake freshness',()=>{
   const builder=read('tools/build-kids-pages.js');
   const sitemap=read('tools/update-sitemap.js');
-  assert.match(builder,/SEO_REVISION='2026-09-17'/);
+  assert.match(builder,/SEO_REVISION='2026-09-22'/);
   assert.match(builder,/kids-sitemap-meta\.json/);
   assert.match(sitemap,/readObject\('kids-sitemap-meta\.json'\)/);
   assert.match(sitemap,/kidsMeta\[loc\]/);

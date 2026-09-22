@@ -41,7 +41,8 @@ test('sitemaps list real public documents on matchapp.tv and never ads.txt',()=>
  assert.doesNotMatch(robots,/Sitemap: https:\/\/matchapp\.tv\/sitemap\.xml/);
  const index=read('sitemaps.xml');
  assert.match(index,/https:\/\/matchapp\.tv\/sitemap\.xml/);
- assert.match(index,/https:\/\/matchapp\.tv\/legal-sitemap\.xml/);
+ assert.doesNotMatch(index,/https:\/\/matchapp\.tv\/legal-sitemap\.xml/);
+ assert.equal((index.match(/<sitemap>/g)||[]).length,1,'canonical sitemap index must not duplicate URL inventory');
  assert.doesNotMatch(robots,/Disallow:\s*\/register\.html/);
  assert.doesNotMatch(robots,/Disallow:\s*\/profile\//);
 });

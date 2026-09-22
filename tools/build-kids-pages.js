@@ -3,7 +3,7 @@
 const fs=require('fs'),path=require('path'),vm=require('vm');
 const root=path.join(__dirname,'..');
 const SITE='https://matchapp.tv';
-const SEO_REVISION='2026-09-17';
+const SEO_REVISION='2026-09-22';
 const src=fs.readFileSync(path.join(root,'kids/kids.js'),'utf8'),a=src.indexOf('  const LIBRARY = [')+'  const LIBRARY = '.length,b=src.indexOf('\n  ];',a)+4;
 const titles=vm.runInNewContext(src.slice(a,b));
 const links=JSON.parse(fs.readFileSync(path.join(root,'kids/watch-links.json'),'utf8')).titles;
@@ -104,7 +104,7 @@ for(const i of titles){
         mainEntity:creative,
         audience:{'@type':'PeopleAudience',suggestedMinAge:bounds.min,suggestedMaxAge:bounds.max},
         potentialAction:{'@type':'ViewAction',name:'Open the MatchApp Kids matcher',target:`${SITE}/kids/#kids-match-stage`},
-        publisher:{'@type':'Organization',name:'MatchApp TV',url:`${SITE}/`}
+        publisher:{'@type':'Organization',name:'MatchApp TV',url:`${SITE}/`,logo:{'@type':'ImageObject',url:`${SITE}/logo.jpeg`}}
       },
       {
         '@type':'BreadcrumbList',
