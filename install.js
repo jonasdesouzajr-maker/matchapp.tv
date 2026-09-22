@@ -26,7 +26,7 @@
 
 let deferredInstallPrompt = null;
 
-const MATCHAPP_INSTALL_VERSION = '20260922-install3';
+const MATCHAPP_INSTALL_VERSION = '20260922-icon2';
 function matchAppInstallLocale() {
     const primary = String((navigator.languages && navigator.languages[0]) || navigator.language || 'en')
         .replace(/_/g, '-').toLowerCase();
@@ -57,7 +57,7 @@ function configureInstallBrand() {
     setMeta('apple-mobile-web-app-title');
     let touch = document.querySelector('link[rel="apple-touch-icon"]');
     if (!touch) { touch = document.createElement('link'); touch.rel = 'apple-touch-icon'; document.head.appendChild(touch); }
-    touch.href = '/assets/brand/matchapp-ai-install-192.png?v=' + MATCHAPP_INSTALL_VERSION;
+    touch.href = '/assets/brand/matchapp-ai-install-192.jpg?v=' + MATCHAPP_INSTALL_VERSION;
 }
 configureInstallBrand();
 
