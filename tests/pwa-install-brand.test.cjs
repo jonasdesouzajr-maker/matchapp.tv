@@ -46,3 +46,21 @@ test('browser install is real, consent-based, secure and localized',()=>{
   assert.match(sw,/self\.addEventListener\('fetch', \(\) => \{\}\)/);
   assert.match(sw,/matchapp-ai-install-192\.png/);
 });
+
+
+test('final wiring preserves localized install identity and all primary install buttons load fresh code',()=>{
+  const wiring=read('final-wiring.js');
+  const meta=read('build-meta.js');
+  assert.match(wiring,/manifest-pt-br\\.json/);
+  assert.match(wiring,/MatchApp iA/);
+  assert.match(wiring,/MatchApp Ai/);
+  assert.match(wiring,/matchapp-ai-install-192\\.png/);
+  assert.doesNotMatch(wiring,/matchapp-apple-touch-icon\\.png/);
+  assert.match(meta,/\\/final-wiring\\.js\\?v=20260922-install2/);
+  for(const page of ['index.html','friends.html','events-archive.html','kids/index.html','discover.html','together.html','pricing/pricing.html','profile/profile.html']){
+    const html=read(page);
+    assert.match(html,/\\/build-meta\\.js\\?v=20260922-install2/);
+    assert.match(html,/\\/app-install-state\\.js\\?v=20260922-install2/);
+    assert.match(html,/\\/install\\.js\\?v=20260922-install2/);
+  }
+});

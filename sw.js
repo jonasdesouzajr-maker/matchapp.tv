@@ -7,7 +7,7 @@
    never trap the app on an old or redirected response.
    ============================================================ */
 
-const SW_VERSION = 'v23-pwa-install';
+const SW_VERSION = 'v24-pwa-install-localized';
 
 self.addEventListener('install', () => {
     self.skipWaiting();
@@ -36,7 +36,7 @@ self.addEventListener('push', (event) => {
     event.waitUntil(self.registration.showNotification(title, {
         body,
         tag: String(payload.tag || 'matchapp-notification'),
-        icon: '/assets/brand/matchapp-ai-install-192.png?v=20260922-install1',
+        icon: '/assets/brand/matchapp-ai-install-192.png?v=20260922-install2',
         badge: '/assets/brand/matchapp-icon-192.png',
         data: { url }
     }));

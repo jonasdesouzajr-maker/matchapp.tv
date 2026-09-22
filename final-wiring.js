@@ -2,6 +2,7 @@
 (function(){
   'use strict';
   const V='20260921-release1';
+  const PWA_V='20260922-install2';
   const path=location.pathname;
   const isKids=path==='/kids'||path.startsWith('/kids/');
   const isHome=path==='/'||path==='/index.html';
@@ -13,16 +14,22 @@
     if(!document.querySelector('link[data-matchapp-brand-corrections]')){const l=document.createElement('link');l.rel='stylesheet';l.href='/brand-corrections.css?v='+V;l.dataset.matchappBrandCorrections='1';document.head.appendChild(l);}
     document.querySelectorAll('.matchapp-wordmark').forEach(img=>{if(!/matchapp-tv-ai-v2\.svg(?:\?|$)/.test(img.getAttribute('src')||''))return;const next='/assets/brand/matchapp-tv-ai-v2.svg?v='+V;if(img.getAttribute('src')!==next)img.setAttribute('src',next);});
   }
+  function installLocale(){
+    const primary=String((navigator.languages&&navigator.languages[0])||navigator.language||'en').replace(/_/g,'-').toLowerCase();
+    return /^pt-br(?:$|-)/.test(primary)?'pt-BR':'en';
+  }
   function pwaIdentity(){
     if(isKids)return;
+    const locale=installLocale();
+    const name=locale==='pt-BR'?'MatchApp iA':'MatchApp Ai';
     let manifest=document.querySelector('link[rel="manifest"]');
     if(!manifest){manifest=document.createElement('link');manifest.rel='manifest';document.head.appendChild(manifest);}
-    manifest.href='/manifest.json?v='+V;
+    manifest.href=(locale==='pt-BR'?'/manifest-pt-br.json':'/manifest.json')+'?v='+PWA_V;
     let apple=document.querySelector('link[rel="apple-touch-icon"]');
     if(!apple){apple=document.createElement('link');apple.rel='apple-touch-icon';document.head.appendChild(apple);}
-    apple.href='/assets/brand/matchapp-apple-touch-icon.png?v='+V;
-    upsertMeta('application-name','MatchApp Ai');
-    upsertMeta('apple-mobile-web-app-title','MatchApp Ai');
+    apple.href='/assets/brand/matchapp-ai-install-192.png?v='+PWA_V;
+    upsertMeta('application-name',name);
+    upsertMeta('apple-mobile-web-app-title',name);
     upsertMeta('mobile-web-app-capable','yes');
     upsertMeta('apple-mobile-web-app-capable','yes');
   }
