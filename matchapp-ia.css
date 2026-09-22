@@ -3652,3 +3652,15 @@ body.tv-mode.page-home .ma-tab-hint{font-size:13px!important}
     animation:none!important;
   }
 }
+
+/* The matching panel is nested inside the concierge card. Keep only the
+   outer card and the real gold CTA; do not draw a second box under it. */
+html body.page-home #ma-concierge #questionnaire-box{
+  border:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+}
+html body.page-home #ma-concierge #questionnaire-box::after{
+  content:none!important;
+  display:none!important;
+}
