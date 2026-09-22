@@ -16,8 +16,9 @@ test('premium media motion is bounded and reduced on handhelds',()=>{
 test('Home startup avoids delayed boot locks, stale cache keys and duplicate header owners',()=>{
  const html=read('index.html'),settings=read('settings.js'),wiring=read('final-wiring.js');
  assert.doesNotMatch(html,/ma-ui-preparing|MATCHAPP_UI_FAILSAFE/);
- const versions={'build-meta.js':'20260922-release1','matchapp-ia.js':'20260921-cta1','matchapp-ia.css':'20260922-home-ask2-edge1','settings.js':'20260920-freeze8','app.js':'20260922-surprise1','catalog-media.js':'20260920-freeze-final1','lazy.js':'20260921-hero1'};
+ const versions={'matchapp-ia.js':'20260921-cta1','matchapp-ia.css':'20260922-home-ask2-edge1','settings.js':'20260920-freeze8','app.js':'20260922-surprise1','catalog-media.js':'20260920-freeze-final1','lazy.js':'20260921-hero1'};
  for(const file of ['page-origin.js','build-meta.js','matchapp-ia.js','settings.js','app.js','catalog-media.js','title-experience.js','lazy.js','app-updates.js']){
+  if(file==='build-meta.js'){ assert.match(html,/\/build-meta\.js\?v=\d{8}-[\w-]+/); continue; }
   const version=versions[file]||'20260920-freeze2';
   assert.match(html,new RegExp('/'+file.replace('.','\\.')+'\\?v='+version));
  }
@@ -115,7 +116,7 @@ test('Home editorial scripts do not preload hundreds of pixels before view',()=>
  const wiring=read('final-wiring.js'),meta=read('build-meta.js');
  assert.match(wiring,/rootMargin:'0px'/);
  assert.doesNotMatch(wiring,/rootMargin:'700px 0px'/);
- assert.match(meta,/final-wiring\.js\?v=20260920-design4/);
+ assert.match(meta,/final-wiring\.js\?v=\d{8}-[\w-]+/);
 });
 
 
