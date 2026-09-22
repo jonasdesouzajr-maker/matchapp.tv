@@ -536,21 +536,40 @@
     return openSetup();
   }
 
-  function askGrownUp() {
+  async function askGrownUp() {
+    // Go straight to the device's parent authentication. No intermediate
+    // press-and-hold gate: mobile uses native biometrics/WebAuthn when
+    // configured, with the parent PIN as the fallback.
+    const configured = await ensureGuardianSetup().catch(() => false);
+    if (!configured) return false;
+
+    if (!isDesktopGate()) {
+      const pref = read(AUTH_PREF_KEY) || '';
+      if (pref === 'native' && nativeBridge()) {
+        return nativeAuthenticate().catch(() => false);
+      }
+      if (pref === 'webauthn' && credentialRecord()) {
+        return verifyPlatformCredential().catch(() => false);
+      }
+    }
+
+    // PIN fallback (and desktop): show only the PIN prompt, never the hand.
     return new Promise(resolve => {
       if (gateResolve) { const prev = gateResolve; gateResolve = null; prev(false); }
       buildGate();
       gate.querySelector('#kids-gate-title').textContent = t('gateTitle');
-      gate.querySelector('.kids-gate-text').textContent = authText('gateText');
-      gate.querySelector('.kids-gate-hold').setAttribute('aria-label', authText('holdAria'));
+      gate.querySelector('.kids-gate-text').hidden = true;
+      gate.querySelector('.kids-gate-hold').hidden = true;
       gate.querySelector('.kids-gate-go').textContent = authText('pinGo');
       gate.querySelector('.kids-gate-cancel').textContent = t('cancel');
       gate.querySelector('.kids-gate-msg').textContent = '';
-      gate.querySelector('.kids-gate-pin-form').hidden = true;
       stopHold();
       authPending = false;
       gateResolve = resolve;
       openDialog(gate);
+      requestPinVerification().then(ok => {
+        if (ok) finishGate(true);
+      }).catch(() => {});
     });
   }
   window.KidsGrownUpCheck = askGrownUp;
