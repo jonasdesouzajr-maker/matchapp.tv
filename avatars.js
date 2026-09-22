@@ -110,16 +110,15 @@ function renderUserAvatar() {
 }
 window.renderUserAvatar = renderUserAvatar;
 
-/** Nickname the AI should address the user by. Falls back to their real name. */
+/** Deliberately saved nickname the AI should address the user by.
+    Never infer or fall back to the account/legal name: clearing this field
+    means Ask AI must stop using a saved form of address. */
 function getUserNickname() {
     try {
-        const nick = (localStorage.getItem('match_user_nickname') || '').trim();
-        if (nick) return nick;
-        const name = (localStorage.getItem('match_user_name') || '').trim();
-        // First name only — "Hey Jonas" reads better than the full legal name.
-        if (name) return name.split(/\s+/)[0];
-    } catch (e) {}
-    return '';
+        return (localStorage.getItem('match_user_nickname') || '').trim().slice(0, 30);
+    } catch (_) {
+        return '';
+    }
 }
 window.getUserNickname = getUserNickname;
 
