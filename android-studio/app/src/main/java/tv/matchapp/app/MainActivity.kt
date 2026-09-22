@@ -29,8 +29,6 @@ import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import androidx.biometric.BiometricManager
-import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
@@ -119,7 +117,6 @@ class MainActivity : AppCompatActivity() {
         web.webViewClient = MatchClient()
         web.webChromeClient = MatchChrome()
         web.addJavascriptInterface(NativeVoiceBridge(), "MatchAppNativeVoice")
-        web.addJavascriptInterface(NativeGuardianBridge(), "MatchAppNativeGuardian")
         web.setDownloadListener { url, _, contentDisposition, mime, _ ->
             val name = URLUtil.guessFileName(url, contentDisposition, mime)
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
@@ -230,7 +227,7 @@ class MainActivity : AppCompatActivity() {
     private fun resolveLaunchUrl(intent: Intent?): String {
         val data = intent?.data
         if (data != null && (data.scheme == "https" || data.scheme == "http")) {
-            if (isMatchAppHost(data.host.orEmpty())) {
+            if (isMatchAppHost(data.host.orEmpty()) && !isKidsUri(data)) {
                 return data.buildUpon().scheme("https").build().toString()
             }
         }
@@ -270,6 +267,13 @@ class MainActivity : AppCompatActivity() {
         }
 
         override fun onPageStarted(view: WebView, url: String?, favicon: Bitmap?) {
+            val uri = url?.let { runCatching { Uri.parse(it) }.getOrNull() }
+            if (uri != null && isKidsUri(uri)) {
+                view.stopLoading()
+                lastUrl = HOME
+                view.loadUrl(HOME)
+                return
+            }
             lastUrl = url ?: lastUrl
             injectAppMode(view)
         }
@@ -299,6 +303,10 @@ class MainActivity : AppCompatActivity() {
         }
         if (host.endsWith("wa.me") || host.contains("whatsapp.com") || host.contains("play.google.com") || host.contains("t.me")) {
             return openExternal(uri)
+        }
+        if (isKidsUri(uri)) {
+            if (!isKidsUrl(web.url)) web.loadUrl(HOME)
+            return true
         }
         if (isMatchAppHost(host)) {
             return false
@@ -334,64 +342,6 @@ class MainActivity : AppCompatActivity() {
             "window.matchAppNativeVoiceError&&window.matchAppNativeVoiceError($value);",
             null
         )
-    }
-
-    private fun sendGuardianResult(ok: Boolean, code: String) {
-        val safeCode = JSONObject.quote(code)
-        web.evaluateJavascript(
-            "window.matchAppNativeGuardianResult&&window.matchAppNativeGuardianResult($ok,$safeCode);",
-            null
-        )
-    }
-
-    private fun authenticateGuardian() {
-        if (!isKidsUrl(web.url)) {
-            sendGuardianResult(false, "not-allowed")
-            return
-        }
-        val authenticators = BiometricManager.Authenticators.BIOMETRIC_WEAK
-        if (BiometricManager.from(this).canAuthenticate(authenticators) != BiometricManager.BIOMETRIC_SUCCESS) {
-            sendGuardianResult(false, "unavailable")
-            return
-        }
-        val prompt = BiometricPrompt(
-            this,
-            ContextCompat.getMainExecutor(this),
-            object : BiometricPrompt.AuthenticationCallback() {
-                override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {
-                    sendGuardianResult(false, "cancelled")
-                }
-
-                override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
-                    sendGuardianResult(true, "ok")
-                }
-            }
-        )
-        val info = BiometricPrompt.PromptInfo.Builder()
-            .setTitle("Grown-ups only")
-            .setSubtitle("Use fingerprint or face unlock to leave Kids Mode")
-            .setAllowedAuthenticators(authenticators)
-            .setNegativeButtonText("Use parent PIN")
-            .build()
-        prompt.authenticate(info)
-    }
-
-    private inner class NativeGuardianBridge {
-        @JavascriptInterface
-        fun authenticate() {
-            runOnUiThread { authenticateGuardian() }
-        }
-
-        @JavascriptInterface
-        fun openGrownUp() {
-            runOnUiThread {
-                if (!isKidsUrl(web.url)) {
-                    sendGuardianResult(false, "not-allowed")
-                    return@runOnUiThread
-                }
-                web.loadUrl("https://matchapp.tv/")
-            }
-        }
     }
 
     private inner class NativeVoiceBridge {
@@ -486,7 +436,8 @@ class MainActivity : AppCompatActivity() {
         private const val APP_MODE_JS = """
             (function(){
               window.MATCHAPP_IS_AD_FREE = true;
-              window.MATCHAPP_ANDROID_KIDS_AVAILABLE = true;
+              window.MATCHAPP_ANDROID_KIDS_AVAILABLE = false;
+              window.MATCHAPP_ANDROID_KIDS_BLOCKED = true;
               try { localStorage.setItem('match_ad_free','true'); } catch (e) {}
               var root = document.documentElement;
               root.classList.add('ads-empty','matchapp-android','matchapp-ai-android','is-chrome');
@@ -496,7 +447,8 @@ class MainActivity : AppCompatActivity() {
                 s.id = 'matchapp-android-shell';
                 s.textContent =
                   '.ad-banner-container,.sidebar-ad-left,.sidebar-ad-right,.mobile-ad-bottom,' +
-                  '.premium-ad-frame,ins.adsbygoogle,.ma-ad-label,#chrome-notice,.chrome-notice,.install-btn' +
+                  '.premium-ad-frame,ins.adsbygoogle,.ma-ad-label,#chrome-notice,.chrome-notice,.install-btn,' +
+                  '.ma-kids-mode-entry,#matchapp-kids-entry' +
                   '{display:none!important;height:0!important;min-height:0!important;overflow:hidden!important;' +
                   'padding:0!important;margin:0!important;border:0!important}';
                 (document.head || root).appendChild(s);
