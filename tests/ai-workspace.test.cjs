@@ -5,7 +5,7 @@ const read=f=>fs.readFileSync(path.join(root,f),'utf8');
 test('home exposes one branded MatchApp AI launch action instead of the old inline Ask box',()=>{
   const html=read('index.html');
   const css=read('style.css');
-  assert.match(html,/class="top-ai-launch" href="\/discover\.html\?focus=start"/);
+  assert.match(html,/class="top-ai-launch" href="\/discover\.html"/);
   assert.match(html,/assets\/brand\/matchapp-ai-orbit-fullbleed\.svg/);
   assert.match(html,/Talk to our Ai/);
   assert.doesNotMatch(html,/id="top-ask-input"/);
