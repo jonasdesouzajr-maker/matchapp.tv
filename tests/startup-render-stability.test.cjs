@@ -142,7 +142,7 @@ test('2026-09-21 tilted collage fills every viewport and stays completely static
  assert.doesNotMatch(pass,/backdrop-filter\s*:/);
  assert.doesNotMatch(pass,/filter\s*:/);
  // Pinned to the viewport, so one screenful of art covers every device.
- assert.match(pass,/html body\.page-home \.poster-wall\{[\s\S]*position:fixed!important/);
+ assert.match(pass,/html body:is\(\.page-home,\.page-profile\) \.poster-wall\{[\s\S]*position:fixed!important/);
  // A real grid, tilted once on the container rather than per tile.
  assert.match(pass,/\.poster-wall-grid\{[\s\S]*display:grid!important/);
  assert.match(pass,/\.poster-wall-grid\{[\s\S]*transform:rotate\(-12deg\)!important/);
