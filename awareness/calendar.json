@@ -1,0 +1,154 @@
+{
+  "schemaVersion": 1,
+  "timezone": "America/Sao_Paulo",
+  "leadDays": 45,
+  "events": [
+    {
+      "key": "world-braille-day",
+      "name": "World Braille Day",
+      "month": 1,
+      "day": 4,
+      "durationDays": 1,
+      "sourceName": "United Nations",
+      "sourceUrl": "https://www.un.org/en/observances/braille-day",
+      "verifyTerm": "World Braille Day",
+      "ribbonColor": "#7b4db3",
+      "supportLine": "Accessibility and inclusion deserve visibility."
+    },
+    {
+      "key": "world-cancer-day",
+      "name": "World Cancer Day",
+      "month": 2,
+      "day": 4,
+      "durationDays": 1,
+      "sourceName": "World Cancer Day / UICC",
+      "sourceUrl": "https://www.worldcancerday.org/",
+      "verifyTerm": "World Cancer Day",
+      "ribbonColor": "#7b4db3",
+      "supportLine": "Awareness, reliable information and human support matter."
+    },
+    {
+      "key": "world-hearing-day",
+      "name": "World Hearing Day",
+      "month": 3,
+      "day": 3,
+      "durationDays": 1,
+      "sourceName": "World Health Organization",
+      "sourceUrl": "https://www.who.int/campaigns/world-hearing-day",
+      "verifyTerm": "World Hearing Day",
+      "ribbonColor": "#7b4db3",
+      "supportLine": "Better awareness helps make communication more inclusive."
+    },
+    {
+      "key": "world-autism-awareness-day",
+      "name": "World Autism Awareness Day",
+      "month": 4,
+      "day": 2,
+      "durationDays": 1,
+      "sourceName": "United Nations",
+      "sourceUrl": "https://www.un.org/en/observances/autism-day",
+      "verifyTerm": "Autism",
+      "ribbonColor": "#7b4db3",
+      "supportLine": "MatchApp supports respectful awareness, inclusion and reliable information."
+    },
+    {
+      "key": "world-no-tobacco-day",
+      "name": "World No Tobacco Day",
+      "month": 5,
+      "day": 31,
+      "durationDays": 1,
+      "sourceName": "World Health Organization",
+      "sourceUrl": "https://www.who.int/campaigns/world-no-tobacco-day",
+      "verifyTerm": "World No Tobacco Day",
+      "ribbonColor": "#7b4db3",
+      "supportLine": "Evidence-based health information deserves visibility."
+    },
+    {
+      "key": "world-blood-donor-day",
+      "name": "World Blood Donor Day",
+      "month": 6,
+      "day": 14,
+      "durationDays": 1,
+      "sourceName": "World Health Organization",
+      "sourceUrl": "https://www.who.int/campaigns/world-blood-donor-day",
+      "verifyTerm": "World Blood Donor Day",
+      "ribbonColor": "#7b4db3",
+      "supportLine": "Recognizing voluntary blood donors and the importance of safe blood."
+    },
+    {
+      "key": "world-hepatitis-day",
+      "name": "World Hepatitis Day",
+      "month": 7,
+      "day": 28,
+      "durationDays": 1,
+      "sourceName": "World Health Organization",
+      "sourceUrl": "https://www.who.int/campaigns/world-hepatitis-day",
+      "verifyTerm": "World Hepatitis Day",
+      "ribbonColor": "#7b4db3",
+      "supportLine": "Awareness and trustworthy health information can reduce stigma."
+    },
+    {
+      "key": "world-breastfeeding-week",
+      "name": "World Breastfeeding Week",
+      "month": 8,
+      "day": 1,
+      "durationDays": 7,
+      "sourceName": "World Health Organization",
+      "sourceUrl": "https://www.who.int/campaigns/world-breastfeeding-week",
+      "verifyTerm": "World Breastfeeding Week",
+      "ribbonColor": "#7b4db3",
+      "supportLine": "Supporting informed families and respectful public-health awareness."
+    },
+    {
+      "key": "world-alzheimers-month",
+      "name": "World Alzheimer’s Month",
+      "month": 9,
+      "day": 1,
+      "durationDays": 30,
+      "sourceName": "Alzheimer's Disease International",
+      "sourceUrl": "https://www.alzint.org/get-involved/world-alzheimers-month/",
+      "verifyTerm": "World Alzheimer",
+      "ribbonColor": "#7b4db3",
+      "supportLine": "Raising awareness. Challenging stigma. Supporting earlier diagnosis.",
+      "themeByYear": {
+        "2026": "The Earlier You Know, The More You Can Do: A Dementia Diagnosis Matters."
+      }
+    },
+    {
+      "key": "world-mental-health-day",
+      "name": "World Mental Health Day",
+      "month": 10,
+      "day": 10,
+      "durationDays": 1,
+      "sourceName": "World Health Organization",
+      "sourceUrl": "https://www.who.int/campaigns/world-mental-health-day",
+      "verifyTerm": "World Mental Health Day",
+      "ribbonColor": "#7b4db3",
+      "supportLine": "Mental-health awareness deserves compassion and evidence-based information."
+    },
+    {
+      "key": "world-diabetes-day",
+      "name": "World Diabetes Day",
+      "month": 11,
+      "day": 14,
+      "durationDays": 1,
+      "sourceName": "World Health Organization",
+      "sourceUrl": "https://www.who.int/campaigns/world-diabetes-day",
+      "verifyTerm": "World Diabetes Day",
+      "ribbonColor": "#7b4db3",
+      "supportLine": "Public awareness and reliable health information matter."
+    },
+    {
+      "key": "world-aids-day",
+      "name": "World AIDS Day",
+      "month": 12,
+      "day": 1,
+      "durationDays": 1,
+      "sourceName": "World Health Organization",
+      "sourceUrl": "https://www.who.int/campaigns/world-aids-day",
+      "verifyTerm": "World AIDS Day",
+      "ribbonColor": "#7b4db3",
+      "supportLine": "Awareness, dignity and evidence-based information help challenge stigma."
+    }
+  ]
+}

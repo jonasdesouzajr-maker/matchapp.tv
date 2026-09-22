@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "campaign": {
+    "id": "world-alzheimers-month-2026",
+    "key": "world-alzheimers-month",
+    "year": 2026,
+    "name": "World Alzheimer’s Month",
+    "startDate": "2026-09-01",
+    "endExclusive": "2026-10-01",
+    "sourceName": "Alzheimer's Disease International",
+    "sourceUrl": "https://www.alzint.org/get-involved/world-alzheimers-month/",
+    "pageUrl": "/awareness/world-alzheimers-month-2026/",
+    "ribbonColor": "#7b4db3",
+    "theme": "The Earlier You Know, The More You Can Do: A Dementia Diagnosis Matters.",
+    "copy": {
+      "en": {
+        "eyebrow": "SEPTEMBER 2026 · AWARENESS SPOTLIGHT",
+        "title": "MatchApp supports World Alzheimer’s Month",
+        "body": "Raising awareness. Challenging stigma. Supporting earlier dementia diagnosis.",
+        "cta": "Learn about the 2026 campaign"
+      },
+      "pt-BR": {
+        "eyebrow": "SETEMBRO DE 2026 · DESTAQUE DE CONSCIENTIZAÇÃO",
+        "title": "MatchApp apoia o Mês Mundial do Alzheimer",
+        "body": "Conscientizar. Combater o estigma. Apoiar o diagnóstico mais precoce da demência.",
+        "cta": "Conheça a campanha de 2026"
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+/* MatchApp rotating Awareness Spotlight. Lightweight: no layout observers or JS animation loops. */
+#awareness-spotlight{--awareness:#7b4db3;position:relative;z-index:950;width:min(calc(100% - 24px),1248px);margin:8px auto 11px;box-sizing:border-box}
+#awareness-spotlight .awareness-card{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:14px;padding:10px 14px;border:1px solid color-mix(in srgb,var(--awareness) 68%,#fff 12%);border-radius:16px;background:linear-gradient(105deg,rgba(38,19,62,.97),rgba(68,35,103,.94) 48%,rgba(28,15,49,.97));box-shadow:0 7px 28px rgba(66,28,103,.42),inset 0 1px 0 rgba(255,255,255,.09);overflow:hidden}
+#awareness-spotlight .awareness-card::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 12% 50%,color-mix(in srgb,var(--awareness) 32%,transparent),transparent 32%);pointer-events:none}
+#awareness-spotlight .awareness-ribbon{position:relative;width:42px;height:54px;filter:drop-shadow(0 0 10px color-mix(in srgb,var(--awareness) 68%,transparent));animation:awarenessGlow 3.2s ease-in-out infinite}
+#awareness-spotlight .awareness-ribbon svg{width:100%;height:100%;display:block}
+#awareness-spotlight .awareness-copy{position:relative;min-width:0}
+#awareness-spotlight .awareness-eyebrow{display:block;margin:0 0 2px;font-size:9px;font-weight:850;letter-spacing:.12em;color:#d9c8ff;text-transform:uppercase}
+#awareness-spotlight .awareness-title{display:block;margin:0;color:#fff;font:750 clamp(14px,1.8vw,18px)/1.2 'Outfit','Inter',sans-serif}
+#awareness-spotlight .awareness-body{display:block;margin-top:3px;color:#ded5e9;font-size:clamp(11px,1.35vw,13px);line-height:1.3}
+#awareness-spotlight .awareness-cta{position:relative;display:inline-flex;align-items:center;justify-content:center;min-height:36px;padding:7px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.24);background:rgba(255,255,255,.09);color:#fff;text-decoration:none;font-size:11px;font-weight:800;white-space:nowrap;transition:transform .18s ease,background .18s ease,border-color .18s ease}
+#awareness-spotlight .awareness-cta:hover,#awareness-spotlight .awareness-cta:focus-visible{transform:translateY(-1px);background:rgba(255,255,255,.16);border-color:#d7c1ff;outline:none}
+@keyframes awarenessGlow{0%,100%{transform:translateY(0);filter:drop-shadow(0 0 8px color-mix(in srgb,var(--awareness) 55%,transparent))}50%{transform:translateY(-1px);filter:drop-shadow(0 0 15px color-mix(in srgb,var(--awareness) 82%,transparent))}}
+@media(max-width:640px){#awareness-spotlight{width:calc(100% - 16px);margin-top:6px}#awareness-spotlight .awareness-card{grid-template-columns:34px minmax(0,1fr);gap:9px;padding:9px 10px}#awareness-spotlight .awareness-ribbon{width:32px;height:42px}#awareness-spotlight .awareness-cta{grid-column:1/-1;width:100%;min-height:33px;box-sizing:border-box}.awareness-body{max-width:none}}
+@media(prefers-reduced-motion:reduce){#awareness-spotlight .awareness-ribbon{animation:none}#awareness-spotlight .awareness-cta{transition:none}}

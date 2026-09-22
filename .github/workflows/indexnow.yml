@@ -16,7 +16,7 @@ on:
     paths:
       - 'sitemap.xml'
       - 'sitemaps.xml'
-      - 'where-to-watch/**'
+      - 'where-to-watch/**'\n      - 'awareness/**'\n      - 'tools/awareness-urls.json'
   workflow_dispatch:
 
 permissions:
