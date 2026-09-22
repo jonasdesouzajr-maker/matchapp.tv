@@ -1552,7 +1552,14 @@
 <script defer src="/matchapp-ia.js?v=20260921-cta1" data-matchapp-ia="1"></script>
     <link rel="stylesheet" href="/ui-containment.css?v=20260921-ui1" data-ui-containment="1">
 <link rel="stylesheet" href="/home-8k-layout.css?v=20260922-contrast3">
-<style id="home-avatar-profile-v2">html body.page-home #mh-topbox.app-header #profile-link-tab .avatar-ring{width:34px!important;height:34px!important;min-width:34px!important;border-radius:50%!important;overflow:hidden!important}html body.page-home #mh-topbox.app-header #profile-link-tab .avatar-ring img{width:100%!important;height:100%!important;object-fit:cover!important;border-radius:50%!important}html body.page-home #mh-topbox.app-header #profile-link-tab{padding-left:8px!important;padding-right:9px!important}@media(max-width:600px){html body.page-home #mh-topbox.app-header #profile-link-tab .avatar-ring{width:32px!important;height:32px!important;min-width:32px!important}}</style></head>
+<style id="home-avatar-profile-v2">html body.page-home #mh-topbox.app-header #profile-link-tab .avatar-ring{width:34px!important;height:34px!important;min-width:34px!important;border-radius:50%!important;overflow:hidden!important}html body.page-home #mh-topbox.app-header #profile-link-tab .avatar-ring img{width:100%!important;height:100%!important;object-fit:cover!important;border-radius:50%!important}html body.page-home #mh-topbox.app-header #profile-link-tab{padding-left:8px!important;padding-right:9px!important}@media(max-width:600px){html body.page-home #mh-topbox.app-header #profile-link-tab .avatar-ring{width:32px!important;height:32px!important;min-width:32px!important}}</style>
+<style id="home-control-grid-final">
+/* The dedicated Chrome install card below the header replaces the old download tile. */
+html body.page-home #mh-topbox .mh-deck{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:8px!important;align-items:stretch!important}
+html body.page-home #mh-topbox .mh-deck>.sound-toggle-btn,html body.page-home #mh-topbox .mh-deck>#quota-badge,html body.page-home #mh-topbox .mh-deck>#lang-switcher-host,html body.page-home #mh-topbox .mh-deck>.matchapp-notification-button,html body.page-home #mh-topbox .mh-deck>#profile-link-tab,html body.page-home #mh-topbox .mh-deck>#nav-reg-btn,html body.page-home #mh-topbox .mh-deck>#nav-logout-btn{min-width:0!important;width:100%!important;box-sizing:border-box!important;justify-content:center!important}
+@media(max-width:600px){html body.page-home #mh-topbox .mh-deck{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:7px!important}}
+</style>
+</head>
 <body class="page-home">
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7J3NNBN"
@@ -2022,23 +2029,6 @@ html body.page-home #daily-match-checkin { padding: 11px 12px !important; }
             <p class="mh-tagline" data-i18n="home.h1">What Should I Watch Tonight?</p>
         </div>
         <nav class="mh-deck" aria-label="Account and app controls">
-            <!-- Install sits first in the nav and is styled as a real CTA rather
-                 than another grey utility icon, because it competes with the
-                 sound toggle and language switcher for the same corner and was
-                 previously indistinguishable from them. The wrapper is the
-                 positioning context for the attention bubble below it. -->
-            <div class="install-wrap">
-                <button class="install-btn" style="display:none;" onclick="installMatchApp()" aria-label="Install MatchApp" data-i18n-aria="install.aria"><svg class="install-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M4 19h16"/></svg><span class="install-label" data-i18n="install.btn">Install</span></button>
-
-                <!-- Shown once per visitor for 20 seconds, then removed. Points
-                     at the button rather than floating loose, so there is no
-                     ambiguity about what it refers to. Dismissible, and never
-                     shown again once dismissed or once the app is installed. -->
-                <div id="install-bubble" class="install-bubble" role="status" hidden>
-                    <button type="button" class="install-bubble-x" onclick="dismissInstallBubble()" aria-label="Close">&times;</button>
-                    <span class="install-bubble-text" data-i18n="install.bubble">Add MatchApp to your home screen — it opens like a real app.</span>
-                </div>
-            </div>
             <button class="sound-toggle-btn" onclick="toggleSound()" aria-label="Toggle sound">🔊</button>
 
             <a id="quota-badge" class="quota-badge" href="/pricing/pricing.html#credits" data-i18n-aria="match.more" aria-label="Get more credits" style="display:none;"></a>
