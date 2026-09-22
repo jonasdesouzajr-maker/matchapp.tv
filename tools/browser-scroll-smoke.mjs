@@ -50,6 +50,10 @@ async function scenario(name,width,height,mobile=false){
   await waitReady();
   await sleep(6000);
 
+  const awareness=await evaluate(`(async()=>{try{const payload=await fetch('/awareness/current.json?smoke='+Date.now(),{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error('current '+r.status);return r.json()});const c=payload&&payload.campaign;const d=new Date();const today=[d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-');const active=!!(c&&today>=c.startDate&&today<c.endExclusive);const el=document.getElementById('awareness-spotlight');if(!el)return{active,exists:false};const st=getComputedStyle(el),r=el.getBoundingClientRect(),title=(el.querySelector('.awareness-title')?.textContent||'').trim(),href=el.querySelector('.awareness-cta')?.getAttribute('href')||'';return{active,exists:true,visible:st.display!=='none'&&st.visibility!=='hidden'&&Number(st.opacity||1)>0&&r.width>0&&r.height>0,title,href};}catch(e){return{error:String(e)}}})()`);
+  if(awareness?.error)throw new Error(name+': awareness state check failed: '+awareness.error);
+  if(awareness?.active&&(!awareness.exists||!awareness.visible||!awareness.title||!awareness.href))throw new Error(name+': active awareness spotlight is not visibly usable '+JSON.stringify(awareness));
+
   let s=await state();
   if(crashed)throw new Error(name+': renderer crashed after load');
   if(s.y>20)throw new Error(name+': Home auto-scrolled on startup to y='+s.y);
