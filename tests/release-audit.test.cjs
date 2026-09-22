@@ -44,6 +44,6 @@ test('both Android shells are synchronized and target the current Play API level
   }
   assert.match(main,/appBuild=\d+/);
   assert.match(kids,/appBuild=\d+/);
-  assert.match(main,/MATCHAPP_ANDROID_KIDS_AVAILABLE/);
+  assert.match(main,/MATCHAPP_ANDROID_KIDS_BLOCKED/);
   assert.match(kids,/MATCHAPP_ANDROID_KIDS_ONLY/);
 });
