@@ -24,7 +24,7 @@ async function authorize(req:Request){
   const {payload}=await jwtVerify(raw,GITHUB_JWKS,{issuer:GITHUB_ISSUER,audience:OIDC_AUDIENCE});
   if(payload.repository!==REPOSITORY)throw Error("repository claim rejected");
   const event=String(payload.event_name||"");if(!["schedule","workflow_dispatch","push"].includes(event))throw Error("event claim rejected");
-  const workflowRef=String(payload.workflow_ref||"");if(!workflowRef.startsWith(`${REPOSITORY}/.github/workflows/scraper.yml@refs/heads/`))throw Error("workflow claim rejected");
+  const workflowRef=String(payload.workflow_ref||"");const allowedWorkflows=["scraper.yml","midnight-content-rotation.yml"];if(!allowedWorkflows.some(file=>workflowRef.startsWith(`${REPOSITORY}/.github/workflows/${file}@refs/heads/`)))throw Error("workflow claim rejected");
   if(event==="push"&&payload.ref!=="refs/heads/main")throw Error("push ref rejected");
   return payload;
 }
