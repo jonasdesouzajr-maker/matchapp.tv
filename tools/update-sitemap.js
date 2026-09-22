@@ -114,7 +114,9 @@ function main() {
         lastmod: newsMeta[loc] ? validLastmod(newsMeta[loc], now) : undefined
     }));
 
-    const awareness = readList('awareness-urls.json').map(loc => ({loc,freq:'weekly',pri:'0.6'}));\n\n    const all = [...CORE, ...seo, ...watch, ...kids, ...events, ...roku, ...news, ...awareness];
+    const awareness = readList('awareness-urls.json').map(loc => ({loc,freq:'weekly',pri:'0.6'}));
+
+    const all = [...CORE, ...seo, ...watch, ...kids, ...events, ...roku, ...news, ...awareness];
     const seen = new Set();
     const unique = all.filter(u => (seen.has(u.loc) ? false : seen.add(u.loc)));
 

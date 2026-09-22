@@ -167,7 +167,13 @@ jobs:
           ! grep -q 'matchapp-tiktok-intro' /tmp/home-post-purge.html
           ! grep -q 'ma-ui-preparing' /tmp/home-post-purge.html
           grep -q '/page-origin.js?v=20260920-freeze2' /tmp/home-post-purge.html
-          EXPECTED_BUILD_META="$(grep -oE '/build-meta\\.js\\?v=[^"]+' index.html | head -n1 || true)"\n          test -n "$EXPECTED_BUILD_META"\n          grep -Fq "$EXPECTED_BUILD_META" /tmp/home-post-purge.html\n          grep -Fq '/awareness.css?v=20260922-awareness1' /tmp/home-post-purge.html\n          grep -Fq '/awareness.js?v=20260922-awareness1' /tmp/home-post-purge.html\n          curl -fsSL --max-time 30 "https://matchapp.tv/awareness/current.json?deploy=\${GITHUB_SHA}" -o /tmp/awareness-current.json\n          node -e "JSON.parse(require('fs').readFileSync('/tmp/awareness-current.json','utf8'))"
+          EXPECTED_BUILD_META="$(grep -oE '/build-meta\\.js\\?v=[^"]+' index.html | head -n1 || true)"
+          test -n "$EXPECTED_BUILD_META"
+          grep -Fq "$EXPECTED_BUILD_META" /tmp/home-post-purge.html
+          grep -Fq '/awareness.css?v=20260922-awareness1' /tmp/home-post-purge.html
+          grep -Fq '/awareness.js?v=20260922-awareness1' /tmp/home-post-purge.html
+          curl -fsSL --max-time 30 "https://matchapp.tv/awareness/current.json?deploy=${GITHUB_SHA}" -o /tmp/awareness-current.json
+          node -e "JSON.parse(require('fs').readFileSync('/tmp/awareness-current.json','utf8'))"
           grep -q 'matchapp-home-orb-transparent.webp?v=20260920-homebrand4' /tmp/home-post-purge.html
           grep -q 'Find what to watch here' /tmp/home-post-purge.html
           curl -fsSL --max-time 30 "https://matchapp.tv${LIVE_IA_CSS}&deploy=${GITHUB_SHA}" -o /tmp/home-stability.css
