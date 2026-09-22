@@ -1,0 +1,12 @@
+/* MatchApp improvement notice (2026-09-22).
+   A slim static strip at the very top of Home, Ask AI and Kids. The only motion
+   is a 7px dot fading its opacity (compositor-only); it stops for reduced motion,
+   the in-app reduce-motion setting and Kids "pause the magic". */
+.ma-trust{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;gap:.55rem;box-sizing:border-box;width:100%;min-height:32px;margin:0;padding:.42rem max(.9rem,env(safe-area-inset-left,0px));background:linear-gradient(90deg,rgba(9,14,32,.95),rgba(24,18,48,.95) 50%,rgba(9,14,32,.95));border-bottom:1px solid rgba(232,186,64,.28);color:#efe6cc;font:500 12.5px/1.35 Outfit,Inter,"Segoe UI",system-ui,-apple-system,sans-serif;letter-spacing:.01em;text-align:center}
+.ma-trust .ma-trust-text{min-width:0;max-width:62rem}
+html body .ma-trust .ma-trust-dot{flex:0 0 auto;display:inline-block;width:7px;height:7px;border-radius:50%;background:#46e39b;box-shadow:0 0 0 3px rgba(70,227,155,.16);animation:maTrustBlink 1.6s ease-in-out infinite!important}
+@keyframes maTrustBlink{0%,100%{opacity:1}50%{opacity:.25}}
+@media (max-width:640px){.ma-trust{min-height:30px;padding:.38rem .8rem;font-size:11.5px}}
+@media (prefers-reduced-motion:reduce){html body .ma-trust .ma-trust-dot{animation:none!important}}
+html.reduce-motion body .ma-trust .ma-trust-dot,html body.kids-paused .ma-trust .ma-trust-dot{animation:none!important}
+@media print{.ma-trust{display:none!important}}

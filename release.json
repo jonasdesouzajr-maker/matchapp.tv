@@ -1,21 +1,21 @@
 {
-  "version": "2026.09.21.4",
-  "date": "2026-09-21",
+  "version": "2026.09.22.1",
+  "date": "2026-09-22",
   "functional": true,
   "notes": {
-    "en": "Kids Mode freeze root cause fixed: the result dialog’s media enrichment was observing and rewriting the same subtree, creating a self-feeding post-match loop. Kids result enrichment is now event-driven, deduplicated and covered by a live mobile heartbeat/mutation smoke test.",
-    "pt-BR": "Corrigida a causa raiz do travamento no Modo Kids: o enriquecimento de mídia do resultado observava e reescrevia a mesma área, criando um loop após o match. Agora o enriquecimento é acionado por evento, deduplicado e validado por teste móvel de atividade/mutações.",
-    "es": "Corregida la causa raíz del bloqueo en Kids Mode: el enriquecimiento multimedia del resultado observaba y reescribía el mismo contenido, creando un bucle tras el match. Ahora es dirigido por eventos, deduplicado y validado con una prueba móvil de actividad y mutaciones.",
-    "fr": "La cause racine du blocage de Kids Mode est corrigée : l’enrichissement média du résultat observait puis réécrivait la même zone, créant une boucle après le match. Il est désormais déclenché par événement, dédupliqué et couvert par un test mobile de réactivité.",
-    "de": "Die Ursache des Kids-Mode-Freezes ist behoben: Die Medienanreicherung beobachtete und schrieb denselben Ergebnisbereich neu und erzeugte so eine Endlosschleife nach dem Match. Sie ist jetzt ereignisgesteuert, dedupliziert und durch einen mobilen Reaktions-/Mutationstest abgesichert.",
-    "it": "Corretta la causa principale del blocco di Kids Mode: l’arricchimento media del risultato osservava e riscriveva la stessa area, creando un loop dopo il match. Ora è guidato da eventi, deduplicato e verificato con un test mobile di reattività/mutazioni.",
-    "tr": "Kids Mode donmasının kök nedeni giderildi: sonuç medya zenginleştirmesi aynı alanı gözleyip yeniden yazarak eşleşme sonrası kendi kendini besleyen bir döngü oluşturuyordu. Artık olay tabanlı, yinelenmeyen ve mobil canlılık/mutasyon testiyle doğrulanıyor.",
-    "ru": "Исправлена корневая причина зависания Kids Mode: обогащение медиа результата наблюдало и перезаписывалo тот же участок, создавая цикл после матча. Теперь оно событийное, дедуплицированное и проверяется мобильным тестом активности/мутаций.",
-    "ar": "تم إصلاح السبب الجذري لتجمّد وضع الأطفال: كان إثراء الوسائط يراقب منطقة النتيجة نفسها ثم يعيد كتابتها، مما أنشأ حلقة متكررة بعد المطابقة. أصبح الآن قائمًا على الأحداث مع منع التكرار واختبار استجابة/طفرات على الهاتف.",
-    "hi": "Kids Mode फ्रीज़ का मूल कारण ठीक किया गया: रिज़ल्ट मीडिया एनरिचमेंट उसी DOM हिस्से को देख और फिर से लिख रहा था, जिससे मैच के बाद self-feeding loop बन रहा था। अब यह event-driven, deduplicated और mobile heartbeat/mutation test से सुरक्षित है।",
-    "id": "Penyebab utama Kids Mode membeku telah diperbaiki: pengayaan media hasil mengamati lalu menulis ulang area yang sama sehingga membentuk loop setelah match. Sekarang berbasis event, terdeduplikasi, dan diuji dengan smoke test heartbeat/mutasi mobile.",
-    "ja": "Kids Mode のフリーズ原因を修正しました。結果メディア処理が同じ結果領域を監視しながら書き換え続け、マッチ直後に自己増殖ループを起こしていました。現在はイベント駆動・重複防止となり、モバイルのハートビート/DOM 変化テストで検証されます。",
-    "ko": "Kids Mode 멈춤의 근본 원인을 수정했습니다. 결과 미디어 보강이 같은 결과 영역을 감시하면서 다시 써서 매치 직후 자기 반복 루프를 만들고 있었습니다. 이제 이벤트 기반·중복 방지 방식이며 모바일 heartbeat/DOM mutation 테스트로 검증됩니다.",
-    "zh": "已修复 Kids Mode 卡死的根本原因：结果媒体增强逻辑一边监听结果区域一边反复重写同一区域，导致匹配后形成自循环。现在改为事件驱动、去重处理，并加入移动端心跳/DOM 变更健康检查。"
+    "en": "New: an improvement notice at the top, a “Why this pick” line and pool hint on Match, a cost line in Ask AI, a grown-up check and optional daily time limit in Kids Mode, synced Kids favorites and a playful Kids match celebration.",
+    "pt-BR": "Novo: aviso de melhorias no topo, linha “Por que esta escolha” e dica de acervo no Match, custo visível no Ask AI, verificação para adultos e limite diário opcional no Modo Kids, favoritos Kids sincronizados e uma comemoração divertida ao dar match.",
+    "es": "Novedades: aviso de mejoras arriba, línea “Por qué esta elección” y pista del catálogo en Match, costo visible en Ask AI, control para adultos y límite diario opcional en Kids Mode, favoritos Kids sincronizados y una celebración divertida al hacer match.",
+    "fr": "Nouveau : avis d’amélioration en haut, ligne « Pourquoi ce choix » et indication du catalogue dans Match, coût affiché dans Ask AI, vérification adulte et limite quotidienne facultative dans Kids Mode, favoris Kids synchronisés et une célébration ludique à chaque match.",
+    "de": "Neu: Verbesserungshinweis oben, „Warum dieser Tipp“ und Katalog-Hinweis im Match, sichtbare Kosten in Ask AI, Erwachsenen-Check und optionales Tageslimit im Kids-Modus, synchronisierte Kids-Favoriten und eine fröhliche Match-Feier.",
+    "it": "Novità: avviso sui miglioramenti in alto, riga “Perché questa scelta” e suggerimento sul catalogo in Match, costo visibile in Ask AI, verifica per adulti e limite giornaliero facoltativo in Kids Mode, preferiti Kids sincronizzati e una festa giocosa a ogni match.",
+    "tr": "Yeni: üstte iyileştirme bildirimi, Match’te “Neden bu seçim” satırı ve katalog ipucu, Ask AI’da görünür maliyet, Çocuk Modunda yetişkin doğrulaması ve isteğe bağlı günlük süre sınırı, eşitlenen Kids favorileri ve eğlenceli bir eşleşme kutlaması.",
+    "ru": "Новое: уведомление об улучшениях вверху, строка «Почему этот выбор» и подсказка о подборке в Match, видимая стоимость в Ask AI, проверка взрослого и дневной лимит в детском режиме, синхронизация избранного Kids и весёлое празднование совпадения.",
+    "ar": "جديد: إشعار التحسينات في الأعلى، وسطر «لماذا هذا الاختيار» وتلميح عن المجموعة في Match، وتكلفة واضحة في Ask AI، وتحقق للكبار وحد يومي اختياري في وضع الأطفال، ومزامنة مفضلات الأطفال، واحتفال مرح عند المطابقة.",
+    "hi": "नया: ऊपर सुधार सूचना, Match में “यह चुनाव क्यों” लाइन और संग्रह संकेत, Ask AI में लागत, Kids Mode में बड़ों की जाँच और वैकल्पिक दैनिक समय सीमा, सिंक होने वाले Kids फ़ेवरेट और मज़ेदार मैच उत्सव।",
+    "id": "Baru: pemberitahuan pembaruan di atas, baris “Kenapa pilihan ini” dan petunjuk koleksi di Match, biaya terlihat di Ask AI, pemeriksaan orang dewasa dan batas waktu harian opsional di Mode Anak, favorit Kids tersinkron, dan perayaan match yang seru.",
+    "ja": "新機能：上部に改善のお知らせ、Matchに「この作品を選んだ理由」と候補数のヒント、Ask AIに利用コスト表示、キッズモードに保護者チェックと1日の利用時間設定、キッズのお気に入り同期、楽しいマッチ演出を追加。",
+    "ko": "새 기능: 상단 개선 안내, Match의 ‘이 추천의 이유’와 작품 수 안내, Ask AI 비용 표시, 키즈 모드 보호자 확인과 선택형 하루 이용 시간, 키즈 즐겨찾기 동기화, 즐거운 매치 축하 효과.",
+    "zh": "新功能：顶部改进提示，Match 新增“推荐理由”和片库提示，Ask AI 显示消耗，儿童模式新增家长验证和可选的每日时长限制，儿童收藏同步，以及有趣的匹配庆祝动画。"
   }
 }

@@ -14,7 +14,7 @@
     'search.heading': 'Search any title',
     'search.hint': 'Type a title for a direct match \u2014 or ask a full question.',
     'search.voiceHint': 'Or tap the mic. It listens in your language.',
-    'q.title': 'FInd what to watch here',
+    'q.title': 'Find what to watch here',
     'q.category': 'A film, a series, or something short',
     'q.platform': 'What you already have',
     'q.mood': 'Mood',

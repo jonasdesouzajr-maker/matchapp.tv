@@ -49,12 +49,12 @@ test('result reveal starts at the top and Kids social choices are restored',()=>
 });
 
 test('cache keys force the hardening bundle onto every device wrapper',()=>{
-  assert.match(read('index.html'),/app\.js\?v=20260921-hardening1/);
+  assert.match(read('index.html'),/app\.js\?v=20260922-surprise1/);
   assert.match(read('index.html'),/share\.js\?v=20260921-hardening1/);
   assert.match(read('kids/index.html'),/kids\.css\?v=20260921-static1/);
   assert.match(read('kids/index.html'),/kids\/account\.js\?v=20260921-hardening1/);
   assert.match(read('kids/index.html'),/kids\/voice-feedback\.js\?v=20260921-static1/);
-  assert.match(read('kids/index.html'),/kids\/kids\.js\?v=20260921-static1/);
+  assert.match(read('kids/index.html'),/kids\/kids\.js\?v=20260922-guardian1/);
 });
 
 

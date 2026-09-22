@@ -450,7 +450,7 @@
     const item=allowedLibrary(currentAge()).find(x=>slug(x)===key);if(!item)return;
     if(savedTitles.has(key))savedTitles.delete(key);else savedTitles.add(key);
     // Persist only keys of curated titles, never arbitrary content from storage.
-    savedTitles=new Set(LIBRARY.filter(x=>savedTitles.has(slug(x))).map(slug));write(SAVED_KEY,JSON.stringify([...savedTitles]));
+    savedTitles=new Set(LIBRARY.filter(x=>savedTitles.has(slug(x))).map(slug));write(SAVED_KEY,JSON.stringify([...savedTitles]));notifyFavorites();
     document.querySelectorAll('[data-save]').forEach(button=>{const saved=savedTitles.has(button.dataset.save);const entry=LIBRARY.find(x=>slug(x)===button.dataset.save);button.textContent=saved?'♥':'♡';button.setAttribute('aria-pressed',String(saved));button.setAttribute('aria-label',tr(saved?'saved':'save')+': '+entry.title);});
     const removingFocused=document.activeElement?.closest('#kids-saved-results');renderSaved();if(removingFocused)document.getElementById('kids-saved-title').focus();
   }
@@ -613,7 +613,7 @@
       const poster=document.getElementById('kid-detail-'+slug(item));
       await window.KidsAccount.remember({title:item.title,posterUrl:poster?.currentSrc||makePoster(item),streamUrl:watchUrl(item)},action,matchedUserId);
       status.textContent=tr('historySaved');document.getElementById('kids-rematch-actions').hidden=false;
-      if(action==='save'){savedTitles.add(slug(item));write(SAVED_KEY,JSON.stringify([...savedTitles]));renderSaved();}
+      if(action==='save'){savedTitles.add(slug(item));write(SAVED_KEY,JSON.stringify([...savedTitles]));renderSaved();notifyFavorites();}
     }catch(_){status.textContent=tr('historyError');button.disabled=false;}
   }
   async function awardKidsShareReward(){
@@ -738,6 +738,25 @@
     document.addEventListener('keydown', remoteNavigation);
     document.addEventListener('visibilitychange', () => document.body.classList.toggle('kids-hidden', document.hidden));
   }
+
+  function notifyFavorites(){
+    try{document.dispatchEvent(new CustomEvent('matchapp:kids-favorites',{detail:[...savedTitles]}));}catch(_){}
+  }
+  function paintSavedButtons(){
+    document.querySelectorAll('[data-save]').forEach(button=>{const saved=savedTitles.has(button.dataset.save);const entry=LIBRARY.find(x=>slug(x)===button.dataset.save);button.textContent=saved?'♥':'♡';button.setAttribute('aria-pressed',String(saved));button.setAttribute('aria-label',tr(saved?'saved':'save')+': '+(entry?entry.title:''));});
+  }
+  // Account sync (kids-guardian.js) may add favorites saved on another device.
+  // Only reviewed Kids titles are accepted; unknown keys are ignored.
+  window.KidsFavorites=Object.freeze({
+    list:()=>[...savedTitles],
+    merge(keys){
+      if(!Array.isArray(keys))return [...savedTitles];
+      const allowed=new Set(LIBRARY.map(slug));let changed=false;
+      keys.forEach(key=>{if(typeof key==='string'&&allowed.has(key)&&!savedTitles.has(key)&&savedTitles.size<100){savedTitles.add(key);changed=true;}});
+      if(changed){write(SAVED_KEY,JSON.stringify([...savedTitles]));paintSavedButtons();try{renderSaved();}catch(_){}}
+      return [...savedTitles];
+    }
+  });
 
   window.KidsVoiceLabel = function(key){ return tr(key); };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);

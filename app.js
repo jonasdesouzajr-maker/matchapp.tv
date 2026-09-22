@@ -3295,6 +3295,7 @@ function titlePassesRealGenre(entry) {
 }
 
 function pickFromCatalog(cat, plat, mood, vibe, rating, decade) {
+    try { if (typeof window !== 'undefined') window.lastMatchTasteBiased = false; } catch (_) {}
     const criteria = {cat, plat, mood, vibe, rating, decade: decade || window.getMatchCriteria?.().decade || []};
     const policy = window.matchPolicy;
     if (!policy) return null; // Fail closed if the shared policy did not load.
@@ -3324,8 +3325,22 @@ function pickFromCatalog(cat, plat, mood, vibe, rating, decade) {
     } catch (e) { recentSource = []; }
     const recent = new Set(recentSource);
     const fresh = CONTENT_CATALOG.filter(e => eligible(e) && !recent.has(e.title));
-    const pool = fresh.length ? fresh : CONTENT_CATALOG.filter(eligible);
+    let pool = fresh.length ? fresh : CONTENT_CATALOG.filter(eligible);
     if (!pool.length) return null;
+    // Surprise Me with no taste-shaping choice (category, mood, vibe, genre):
+    // let Taste DNA (taste.js) break the tie among titles that already pass
+    // every hard filter. It only ever narrows this eligible pool, never widens it.
+    try {
+        const openTaste = !normCriteria(cat).length && !normCriteria(mood).length && !normCriteria(vibe).length
+            && !(typeof window !== 'undefined' && window.__matchappGenreFilterActive);
+        if (openTaste && typeof window !== 'undefined' && typeof window.tasteBiasPool === 'function') {
+            const biased = window.tasteBiasPool(pool, 'any', 'any');
+            if (Array.isArray(biased) && biased.length && biased.length < pool.length) {
+                pool = biased;
+                window.lastMatchTasteBiased = true;
+            }
+        }
+    } catch (_) {}
     const pick = pool[Math.floor(Math.random() * pool.length)];
     return {...pick,title:pick.title,synopsis:pick.synopsis,platform:pick.platform,platformVerified:true,watchUrl:pick.watchUrl||(pick.platform==='Roku Channel'?pick.url:null)||null,source:'catalog'};
 }

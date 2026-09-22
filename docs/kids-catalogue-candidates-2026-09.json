@@ -1,0 +1,624 @@
+{
+ "status": "staged for owner review — NOT part of the Kids allowlist",
+ "instructions": "Approve by moving reviewed entries into LIBRARY in kids/kids.js, then run node tools/update-kids-watch-links.js, node tools/update-kids-artwork.js, node tools/build-kids-covers.js and node tools/build-kids-pages.js (JustWatch/TMDB access required) and update the Kids catalogue tests.",
+ "existingAllowlistSize": 64,
+ "candidates": [
+  {
+   "title": "Hey Duggee",
+   "year": "2014",
+   "type": "series",
+   "proposedAges": [
+    "all",
+    "3-5",
+    "6-8"
+   ],
+   "cats": [
+    "funny",
+    "learning",
+    "animals"
+   ],
+   "desc": "A kind dog leader and his Squirrel Club earn badges through silly, warm adventures.",
+   "status": "pending-review",
+   "reference": "https://www.commonsensemedia.org/search/hey%20duggee"
+  },
+  {
+   "title": "Tumble Leaf",
+   "year": "2014",
+   "type": "series",
+   "proposedAges": [
+    "all",
+    "3-5"
+   ],
+   "cats": [
+    "learning",
+    "adventure"
+   ],
+   "desc": "A curious fox discovers how the world works through play and gentle experiments.",
+   "status": "pending-review",
+   "reference": "https://www.commonsensemedia.org/search/tumble%20leaf"
+  },
+  {
+   "title": "Blue's Clues & You!",
+   "year": "2019",
+   "type": "series",
+   "proposedAges": [
+    "all",
+    "3-5"
+   ],
+   "cats": [
+    "learning",
+    "animals"
+   ],
+   "desc": "Solve playful puzzles by following the paw prints with Blue.",
+   "status": "pending-review",
+   "reference": "https://www.commonsensemedia.org/search/blue%20s%20clues%20you"
+  },
+  {
+   "title": "Trash Truck",
+   "year": "2020",
+   "type": "series",
+   "proposedAges": [
+    "all",
+    "3-5"
+   ],
+   "cats": [
+    "family",
+    "bedtime"
+   ],
+   "desc": "A boy and his best friend, a giant garbage truck, share slow and tender days.",
+   "status": "pending-review",
+   "reference": "https://www.commonsensemedia.org/search/trash%20truck"
+  },
+  {
+   "title": "Llama Llama",
+   "year": "2018",
+   "type": "series",
+   "proposedAges": [
+    "all",
+    "3-5"
+   ],
+   "cats": [
+    "family",
+    "bedtime",
+    "animals"
+   ],
+   "desc": "A little llama explores feelings, friendship and family routines.",
+   "status": "pending-review",
+   "reference": "https://www.commonsensemedia.org/search/llama%20llama"
+  },
+  {
+   "title": "Spirit Rangers",
+   "year": "2022",
+   "type": "series",
+   "proposedAges": [
+    "all",
+    "6-8"
+   ],
+   "cats": [
+    "adventure",
+    "animals",
+    "learning"
+   ],
+   "desc": "Chumash and Cowlitz siblings protect a national park as animal spirits.",
+   "status": "pending-review",
+   "reference": "https://www.commonsensemedia.org/search/spirit%20rangers"
+  },
+  {
+   "title": "Dino Ranch",
+   "year": "2021",
+   "type": "series",
+   "proposedAges": [
+    "all",
+    "3-5",
+    "6-8"
+   ],
+   "cats": [
+    "adventure",
+    "animals"
+   ],
+   "desc": "A frontier family raises and rescues friendly dinosaurs on their ranch.",
+   "status": "pending-review",
+   "reference": "https://www.commonsensemedia.org/search/dino%20ranch"
+  },
+  {
+   "title": "Masha and the Bear",
+   "year": "2009",
+   "type": "series",
+   "proposedAges": [
+    "all",
+    "3-5",
+    "6-8"
+   ],
+   "cats": [
+    "funny",
+    "animals"
+   ],
+   "desc": "A mischievous girl and a patient bear turn quiet days into slapstick fun.",
+   "status": "pending-review",
+   "reference": "https://www.commonsensemedia.org/search/masha%20and%20the%20bear"
+  },
+  {
+   "title": "Bing",
+   "year": "2014",
+   "type": "series",
+   "proposedAges": [
+    "all",
+    "3-5"
+   ],
+   "cats": [
+    "family",
+    "learning"
+   ],
+   "desc": "A young bunny learns about everyday life with help from his caring friend Flop.",
+   "status": "pending-review",
+   "reference": "https://www.commonsensemedia.org/search/bing"
+  },
+  {
+   "title": "Timmy Time",
+   "year": "2009",
+   "type": "series",
+   "proposedAges": [
+    "all",
+    "3-5"
+   ],
+   "cats": [
+    "animals",
+    "funny"
+   ],
+   "desc": "Wordless preschool stories about sharing and friendship from the makers of Shaun the Sheep.",
+   "status": "pending-review",
+   "reference": "https://www.commonsensemedia.org/search/timmy%20time"
+  },
+  {
+   "title": "Charlie and Lola",
+   "year": "2005",
+   "type": "series",
+   "proposedAges": [
+    "all",
+    "3-5",
+    "6-8"
+   ],
+   "cats": [
+    "family",
+    "funny"
+   ],
+   "desc": "A patient big brother helps his imaginative little sister try new things.",
+   "status": "pending-review",
+   "reference": "https://www.commonsensemedia.org/search/charlie%20and%20lola"
+  },
+  {
+   "title": "In the Night Garden...",
+   "year": "2007",
+   "type": "series",
+   "proposedAges": [
+    "all",
+    "3-5"
+   ],
+   "cats": [
+    "bedtime",
+    "music"
+   ],
+   "desc": "Soft, sing-song bedtime adventures in a dreamy garden.",
+   "status": "pending-review",
+   "reference": "https://www.commonsensemedia.org/search/in%20the%20night%20garden"
+  },
+  {
+   "title": "Curious George",
+   "year": "2006",
+   "type": "series",
+   "proposedAges": [
+    "all",
+    "3-5",
+    "6-8"
+   ],
+   "cats": [
+    "learning",
+    "animals",
+    "funny"
+   ],
+   "desc": "A curious little monkey explores science and problem-solving.",
+   "status": "pending-review",
+   "reference": "https://www.commonsensemedia.org/search/curious%20george"
+  },
+  {
+   "title": "Super Why!",
+   "year": "2007",
+   "type": "series",
+   "proposedAges": [
+    "all",
+    "3-5"
+   ],
+   "cats": [
+    "learning"
+   ],
+   "desc": "Storybook heroes use reading and spelling to solve problems.",
+   "status": "pending-review",
+   "reference": "https://www.commonsensemedia.org/search/super%20why"
+  },
+  {
+   "title": "Word Party",
+   "year": "2016",
+   "type": "series",
+   "proposedAges": [
+    "all",
+    "3-5"
+   ],
+   "cats": [
+    "learning",
+    "music",
+    "animals"
+   ],
+   "desc": "Baby animals learn new words with help from the viewer.",
+   "status": "pending-review",
+   "reference": "https://www.commonsensemedia.org/search/word%20party"
+  },
+  {
+   "title": "The Magic School Bus Rides Again",
+   "year": "2017",
+   "type": "series",
+   "proposedAges": [
+    "all",
+    "6-8"
+   ],
+   "cats": [
+    "learning",
+    "adventure"
+   ],
+   "desc": "A shape-shifting school bus takes a class on science field trips.",
+   "status": "pending-review",
+   "reference": "https://www.commonsensemedia.org/search/the%20magic%20school%20bus%20rides%20again"
+  },
+  {
+   "title": "Cyberchase",
+   "year": "2002",
+   "type": "series",
+   "proposedAges": [
+    "all",
+    "6-8",
+    "9-12"
+   ],
+   "cats": [
+    "learning",
+    "adventure"
+   ],
+   "desc": "Kids use math and teamwork to outsmart a villain in cyberspace.",
+   "status": "pending-review",
+   "reference": "https://www.commonsensemedia.org/search/cyberchase"
+  },
+  {
+   "title": "Odd Squad",
+   "year": "2014",
+   "type": "series",
+   "proposedAges": [
+    "all",
+    "6-8"
+   ],
+   "cats": [
+    "learning",
+    "funny"
+   ],
+   "desc": "Young agents use math to fix oddities around town.",
+   "status": "pending-review",
+   "reference": "https://www.commonsensemedia.org/search/odd%20squad"
+  },
+  {
+   "title": "Zog",
+   "year": "2018",
+   "type": "movie",
+   "proposedAges": [
+    "all",
+    "3-5",
+    "6-8"
+   ],
+   "cats": [
+    "family",
+    "funny",
+    "adventure"
+   ],
+   "desc": "An eager young dragon learns at dragon school, with help from a kind princess.",
+   "note": "peril",
+   "status": "pending-review",
+   "reference": "https://www.commonsensemedia.org/search/zog"
+  },
+  {
+   "title": "Room on the Broom",
+   "year": "2012",
+   "type": "movie",
+   "proposedAges": [
+    "all",
+    "3-5",
+    "6-8"
+   ],
+   "cats": [
+    "family",
+    "adventure",
+    "bedtime"
+   ],
+   "desc": "A kind witch keeps making room on her broom for new animal friends.",
+   "note": "peril",
+   "status": "pending-review",
+   "reference": "https://www.commonsensemedia.org/search/room%20on%20the%20broom"
+  },
+  {
+   "title": "The Gruffalo",
+   "year": "2009",
+   "type": "movie",
+   "proposedAges": [
+    "all",
+    "3-5",
+    "6-8"
+   ],
+   "cats": [
+    "animals",
+    "adventure"
+   ],
+   "desc": "A clever mouse outwits the creatures of the deep dark wood.",
+   "note": "peril",
+   "status": "pending-review",
+   "reference": "https://www.commonsensemedia.org/search/the%20gruffalo"
+  },
+  {
+   "title": "Stick Man",
+   "year": "2015",
+   "type": "movie",
+   "proposedAges": [
+    "all",
+    "3-5",
+    "6-8"
+   ],
+   "cats": [
+    "family",
+    "adventure"
+   ],
+   "desc": "Stick Man journeys far from home to get back to his family tree.",
+   "note": "peril",
+   "status": "pending-review",
+   "reference": "https://www.commonsensemedia.org/search/stick%20man"
+  },
+  {
+   "title": "Shaun the Sheep Movie",
+   "year": "2015",
+   "type": "movie",
+   "proposedAges": [
+    "all",
+    "6-8"
+   ],
+   "cats": [
+    "funny",
+    "animals"
+   ],
+   "desc": "Shaun and the flock head to the big city to rescue their farmer.",
+   "status": "pending-review",
+   "reference": "https://www.commonsensemedia.org/search/shaun%20the%20sheep%20movie"
+  },
+  {
+   "title": "Ponyo",
+   "year": "2008",
+   "type": "movie",
+   "proposedAges": [
+    "all",
+    "6-8"
+   ],
+   "cats": [
+    "family",
+    "adventure"
+   ],
+   "desc": "A goldfish princess longs to become human after befriending a boy.",
+   "note": "peril",
+   "status": "pending-review",
+   "reference": "https://www.commonsensemedia.org/search/ponyo"
+  },
+  {
+   "title": "The Secret World of Arrietty",
+   "year": "2010",
+   "type": "movie",
+   "proposedAges": [
+    "all",
+    "6-8",
+    "9-12"
+   ],
+   "cats": [
+    "family",
+    "adventure"
+   ],
+   "desc": "A tiny girl who lives beneath the floorboards befriends a human boy.",
+   "note": "peril",
+   "status": "pending-review",
+   "reference": "https://www.commonsensemedia.org/search/the%20secret%20world%20of%20arrietty"
+  },
+  {
+   "title": "Toy Story",
+   "year": "1995",
+   "type": "movie",
+   "proposedAges": [
+    "all",
+    "6-8",
+    "9-12"
+   ],
+   "cats": [
+    "funny",
+    "adventure",
+    "family"
+   ],
+   "desc": "A cowboy doll and a space ranger learn to be friends.",
+   "note": "peril",
+   "status": "pending-review",
+   "reference": "https://www.commonsensemedia.org/search/toy%20story"
+  },
+  {
+   "title": "Finding Nemo",
+   "year": "2003",
+   "type": "movie",
+   "proposedAges": [
+    "all",
+    "6-8",
+    "9-12"
+   ],
+   "cats": [
+    "adventure",
+    "animals",
+    "family"
+   ],
+   "desc": "A worried clownfish father crosses the ocean to find his son.",
+   "note": "peril",
+   "status": "pending-review",
+   "reference": "https://www.commonsensemedia.org/search/finding%20nemo"
+  },
+  {
+   "title": "Inside Out",
+   "year": "2015",
+   "type": "movie",
+   "proposedAges": [
+    "all",
+    "6-8",
+    "9-12"
+   ],
+   "cats": [
+    "family",
+    "funny"
+   ],
+   "desc": "The emotions inside a girl’s mind learn to work together during a big move.",
+   "status": "pending-review",
+   "reference": "https://www.commonsensemedia.org/search/inside%20out"
+  },
+  {
+   "title": "Zootopia",
+   "year": "2016",
+   "type": "movie",
+   "proposedAges": [
+    "all",
+    "6-8",
+    "9-12"
+   ],
+   "cats": [
+    "funny",
+    "adventure",
+    "animals"
+   ],
+   "desc": "A rookie bunny officer and a sly fox uncover a city mystery.",
+   "note": "peril",
+   "status": "pending-review",
+   "reference": "https://www.commonsensemedia.org/search/zootopia"
+  },
+  {
+   "title": "Moana",
+   "year": "2016",
+   "type": "movie",
+   "proposedAges": [
+    "all",
+    "6-8",
+    "9-12"
+   ],
+   "cats": [
+    "adventure",
+    "music"
+   ],
+   "desc": "A brave girl sails across the ocean to save her island.",
+   "note": "peril",
+   "status": "pending-review",
+   "reference": "https://www.commonsensemedia.org/search/moana"
+  },
+  {
+   "title": "Encanto",
+   "year": "2021",
+   "type": "movie",
+   "proposedAges": [
+    "all",
+    "6-8",
+    "9-12"
+   ],
+   "cats": [
+    "music",
+    "family"
+   ],
+   "desc": "The only member of a magical family without a gift tries to save their home.",
+   "status": "pending-review",
+   "reference": "https://www.commonsensemedia.org/search/encanto"
+  },
+  {
+   "title": "Klaus",
+   "year": "2019",
+   "type": "movie",
+   "proposedAges": [
+    "all",
+    "6-8",
+    "9-12"
+   ],
+   "cats": [
+    "family",
+    "funny"
+   ],
+   "desc": "A selfish postman and a reclusive toymaker bring joy to a frozen town.",
+   "status": "pending-review",
+   "reference": "https://www.commonsensemedia.org/search/klaus"
+  },
+  {
+   "title": "The Mitchells vs. the Machines",
+   "year": "2021",
+   "type": "movie",
+   "proposedAges": [
+    "all",
+    "9-12"
+   ],
+   "cats": [
+    "funny",
+    "adventure",
+    "family"
+   ],
+   "desc": "A quirky family road trip turns into a mission to save the world from robots.",
+   "note": "peril",
+   "status": "pending-review",
+   "reference": "https://www.commonsensemedia.org/search/the%20mitchells%20vs%20the%20machines"
+  },
+  {
+   "title": "Gravity Falls",
+   "year": "2012",
+   "type": "series",
+   "proposedAges": [
+    "all",
+    "9-12"
+   ],
+   "cats": [
+    "funny",
+    "adventure"
+   ],
+   "desc": "Twins spend a summer uncovering mysteries in a strange Oregon town.",
+   "note": "spooky",
+   "status": "pending-review",
+   "reference": "https://www.commonsensemedia.org/search/gravity%20falls"
+  },
+  {
+   "title": "Avatar: The Last Airbender",
+   "year": "2005",
+   "type": "series",
+   "proposedAges": [
+    "all",
+    "9-12"
+   ],
+   "cats": [
+    "adventure"
+   ],
+   "desc": "A young hero must master the elements to bring balance to the world. Contains fantasy fighting.",
+   "note": "peril",
+   "status": "pending-review",
+   "reference": "https://www.commonsensemedia.org/search/avatar%20the%20last%20airbender"
+  },
+  {
+   "title": "Carmen Sandiego",
+   "year": "2019",
+   "type": "series",
+   "proposedAges": [
+    "all",
+    "9-12"
+   ],
+   "cats": [
+    "adventure",
+    "learning"
+   ],
+   "desc": "A master thief turned hero travels the world stopping a crime syndicate.",
+   "note": "peril",
+   "status": "pending-review",
+   "reference": "https://www.commonsensemedia.org/search/carmen%20sandiego"
+  }
+ ]
+}

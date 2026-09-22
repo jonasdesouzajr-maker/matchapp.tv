@@ -382,6 +382,19 @@ function discoverWatchUrl(item) {
     return `https://www.justwatch.com/${justWatchLocale()}/search?q=${encodeURIComponent(title)}`;
 }
 
+// Hard exclusions for titles MatchApp knows (blocked categories and blocked
+// origin countries) apply to Ask AI suggestions exactly as they do to Matches.
+var discoverCatalogIndex = null, discoverCatalogSize = -1;
+function discoverCatalogEntry(title) {
+    if (typeof CONTENT_CATALOG === 'undefined' || !Array.isArray(CONTENT_CATALOG)) return null;
+    if (!discoverCatalogIndex || discoverCatalogSize !== CONTENT_CATALOG.length) {
+        discoverCatalogIndex = new Map();
+        CONTENT_CATALOG.forEach(e => { if (e && e.title) discoverCatalogIndex.set(String(e.title).toLowerCase(), e); });
+        discoverCatalogSize = CONTENT_CATALOG.length;
+    }
+    return discoverCatalogIndex.get(String(title).toLowerCase()) || null;
+}
+
 function isDiscoverDisliked(title) {
     if (!title) return false;
     try {
@@ -390,6 +403,13 @@ function isDiscoverDisliked(title) {
     } catch (e) {}
     try {
         if ((window.MATCH_TASTE?.exclude || []).some(x => String(x).toLowerCase() === String(title).toLowerCase())) return true;
+    } catch (e) {}
+    try {
+        const entry = discoverCatalogEntry(title);
+        if (entry) {
+            if (typeof window.isBlockedEntry === 'function' && window.isBlockedEntry(entry)) return true;
+            if (typeof entryPassesPreferenceExclusions === 'function' && !entryPassesPreferenceExclusions(entry)) return true;
+        }
     } catch (e) {}
     return false;
 }
@@ -1084,7 +1104,120 @@ function renderAiQuotaStatus(status) {
         newChat.disabled = locked;
         newChat.title = locked ? 'No AI allowance or Ask AI credits remaining' : 'Start a new conversation';
     }
+    lastAiCostState = { remaining, limit, paidCredits };
+    paintAiSendCost();
 }
+
+// Cost line under the Ask AI send button: what one question uses and what is
+// left, in the visitor's language. Display only — quota stays server-side.
+const AI_COST_COPY = {
+ "en": {
+  "left": "Each question uses 1 AI action · {remaining} of {limit} left today",
+  "credits": "Your daily AI actions are used up — each question now uses 1 Ask AI credit ({credits} left)",
+  "none": "No AI actions left today — get Ask AI credits or come back tomorrow"
+ },
+ "pt-BR": {
+  "left": "Cada pergunta usa 1 ação de IA · restam {remaining} de {limit} hoje",
+  "credits": "Suas ações diárias de IA acabaram — cada pergunta agora usa 1 crédito do Ask AI (restam {credits})",
+  "none": "Sem ações de IA hoje — compre créditos do Ask AI ou volte amanhã"
+ },
+ "es": {
+  "left": "Cada pregunta usa 1 acción de IA · te quedan {remaining} de {limit} hoy",
+  "credits": "Tus acciones diarias de IA se agotaron: cada pregunta usa ahora 1 crédito de Ask AI (quedan {credits})",
+  "none": "No te quedan acciones de IA hoy: consigue créditos de Ask AI o vuelve mañana"
+ },
+ "fr": {
+  "left": "Chaque question utilise 1 action IA · il en reste {remaining} sur {limit} aujourd’hui",
+  "credits": "Vos actions IA du jour sont épuisées — chaque question utilise désormais 1 crédit Ask AI ({credits} restants)",
+  "none": "Plus d’actions IA aujourd’hui — obtenez des crédits Ask AI ou revenez demain"
+ },
+ "de": {
+  "left": "Jede Frage nutzt 1 KI-Aktion · heute noch {remaining} von {limit}",
+  "credits": "Deine täglichen KI-Aktionen sind aufgebraucht – jede Frage nutzt jetzt 1 Ask-AI-Guthaben ({credits} übrig)",
+  "none": "Heute keine KI-Aktionen mehr – hol dir Ask-AI-Guthaben oder komm morgen wieder"
+ },
+ "it": {
+  "left": "Ogni domanda usa 1 azione IA · te ne restano {remaining} su {limit} oggi",
+  "credits": "Le azioni IA di oggi sono finite: ogni domanda usa ora 1 credito Ask AI (ne restano {credits})",
+  "none": "Nessuna azione IA rimasta oggi: prendi crediti Ask AI o torna domani"
+ },
+ "tr": {
+  "left": "Her soru 1 yapay zekâ işlemi kullanır · bugün {limit} işlemden {remaining} kaldı",
+  "credits": "Günlük yapay zekâ işlemleriniz bitti — her soru artık 1 Ask AI kredisi kullanır ({credits} kaldı)",
+  "none": "Bugün yapay zekâ işlemi kalmadı — Ask AI kredisi alın ya da yarın tekrar gelin"
+ },
+ "ru": {
+  "left": "Каждый вопрос расходует 1 действие ИИ · сегодня осталось {remaining} из {limit}",
+  "credits": "Дневные действия ИИ закончились — теперь каждый вопрос расходует 1 кредит Ask AI (осталось {credits})",
+  "none": "Сегодня действий ИИ не осталось — купите кредиты Ask AI или возвращайтесь завтра"
+ },
+ "ar": {
+  "left": "كل سؤال يستخدم إجراء ذكاء اصطناعي واحداً · تبقّى لك اليوم {remaining} من {limit}",
+  "credits": "انتهت إجراءات الذكاء الاصطناعي اليومية — كل سؤال يستخدم الآن رصيداً واحداً من Ask AI (المتبقي {credits})",
+  "none": "لا توجد إجراءات ذكاء اصطناعي متبقية اليوم — احصل على رصيد Ask AI أو عد غداً"
+ },
+ "hi": {
+  "left": "हर सवाल 1 AI एक्शन लेता है · आज {limit} में से {remaining} बचे हैं",
+  "credits": "आज के AI एक्शन खत्म हो गए — अब हर सवाल 1 Ask AI क्रेडिट लेगा ({credits} बचे)",
+  "none": "आज कोई AI एक्शन नहीं बचा — Ask AI क्रेडिट लें या कल फिर आएँ"
+ },
+ "id": {
+  "left": "Setiap pertanyaan memakai 1 aksi AI · sisa {remaining} dari {limit} hari ini",
+  "credits": "Aksi AI harianmu sudah habis — setiap pertanyaan kini memakai 1 kredit Ask AI (sisa {credits})",
+  "none": "Aksi AI hari ini sudah habis — dapatkan kredit Ask AI atau kembali besok"
+ },
+ "ja": {
+  "left": "質問1回につきAIアクションを1回使います · 本日の残り {remaining}/{limit}",
+  "credits": "本日のAIアクションを使い切りました。質問1回につきAsk AIクレジットを1つ使います（残り{credits}）",
+  "none": "本日のAIアクションは残っていません。Ask AIクレジットを入手するか、明日またお試しください"
+ },
+ "ko": {
+  "left": "질문 1회에 AI 액션 1회가 사용돼요 · 오늘 {limit}회 중 {remaining}회 남음",
+  "credits": "오늘의 AI 액션을 모두 사용했어요. 이제 질문마다 Ask AI 크레딧 1개가 사용돼요 ({credits}개 남음)",
+  "none": "오늘 남은 AI 액션이 없어요. Ask AI 크레딧을 구매하거나 내일 다시 오세요"
+ },
+ "zh": {
+  "left": "每个问题消耗 1 次 AI 操作 · 今天还剩 {remaining}/{limit} 次",
+  "credits": "今日 AI 操作已用完——现在每个问题消耗 1 个 Ask AI 点数（剩余 {credits} 个）",
+  "none": "今天没有剩余的 AI 操作——请购买 Ask AI 点数或明天再来"
+ }
+};
+var lastAiCostState = null;
+function aiCostLang() {
+    const low = String(window.MATCH_LANG || document.documentElement.getAttribute('lang') || 'en').toLowerCase();
+    if (low.startsWith('pt')) return 'pt-BR';
+    if (low.startsWith('zh')) return 'zh';
+    const keys = Object.keys(AI_COST_COPY);
+    return keys.find(k => k.toLowerCase() === low) || keys.find(k => k.split('-')[0] === low.split('-')[0]) || 'en';
+}
+function paintAiSendCost() {
+    try {
+        const st = lastAiCostState;
+        const send = document.querySelector('.newsearch-row .composer-send');
+        if (!st || !send) return;
+        if (!document.getElementById('ai-send-cost-style')) {
+            const style = document.createElement('style');
+            style.id = 'ai-send-cost-style';
+            style.textContent = '.ai-send-cost{flex:1 0 100%;margin:4px 2px 0;font:500 12.5px/1.4 Inter,"Segoe UI",system-ui,sans-serif;color:#cbbfdc}.ai-send-cost[hidden]{display:none!important}';
+            document.head.appendChild(style);
+        }
+        let el = document.getElementById('ai-send-cost');
+        if (!el) {
+            el = document.createElement('p');
+            el.id = 'ai-send-cost';
+            el.className = 'ai-send-cost';
+            send.insertAdjacentElement('afterend', el);
+        }
+        const copy = AI_COST_COPY[aiCostLang()] || AI_COST_COPY.en;
+        const fill = (text, vars) => Object.keys(vars).reduce((acc, k) => acc.split('{' + k + '}').join(String(vars[k])), text);
+        if (!st.limit && !st.remaining && !st.paidCredits) { el.hidden = true; return; }
+        el.textContent = st.remaining > 0
+            ? fill(copy.left, { remaining: st.remaining, limit: st.limit || st.remaining })
+            : (st.paidCredits > 0 ? fill(copy.credits, { credits: st.paidCredits }) : copy.none);
+        el.hidden = false;
+    } catch (_) {}
+}
+document.addEventListener('matchapp:langchange', () => setTimeout(paintAiSendCost, 0));
 
 async function refreshAiWorkspaceStatus() {
     let status = null;

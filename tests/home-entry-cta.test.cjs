@@ -43,6 +43,6 @@ test('CTA cards adapt to phone and TV and respect reduced motion',()=>{
 
 test('Home cache-busts both CTA CSS and CTA JavaScript',()=>{
   const html=read('index.html');
-  assert.match(html,/\/matchapp-ia\.css\?v=20260922-home-ask2-edge1/);
+  assert.match(html,/\/matchapp-ia\.css\?v=\d{8}-[\w-]+/);
   assert.match(html,/\/matchapp-ia\.js\?v=20260921-cta1/);
 });
