@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://matchapp.tv/</loc>
-        <lastmod>2026-09-22T14:23:32+00:00</lastmod>
+        <lastmod>2026-09-22T14:25:38+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
@@ -1023,6 +1023,12 @@
     <url>
         <loc>https://matchapp.tv/awareness/world-alzheimers-month-2026/</loc>
         <lastmod>2026-09-22T14:22:40+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/awareness/world-mental-health-day-2026/</loc>
+        <lastmod>2026-09-22T14:25:38+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
     </url>
