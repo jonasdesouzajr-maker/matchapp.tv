@@ -107,6 +107,23 @@ function parseAIResponse(data) {
     return parsed;
 }
 
+function addressSavedAiName(text) {
+    let name = '';
+    try { name = String(localStorage.getItem('match_user_nickname') || '').trim().slice(0, 30); } catch (_) {}
+    let answer = String(text || '').trim();
+    if (!name || !answer) return answer;
+    const lower = answer.toLocaleLowerCase();
+    const n = name.toLocaleLowerCase();
+    const already = lower.startsWith(n)
+        || lower.startsWith('hi ' + n)
+        || lower.startsWith('hey ' + n)
+        || lower.startsWith('hello ' + n)
+        || lower.startsWith('olá ' + n)
+        || lower.startsWith('hola ' + n)
+        || lower.startsWith('bonjour ' + n);
+    return already ? answer : name + ', ' + answer.charAt(0).toLocaleLowerCase() + answer.slice(1);
+}
+
 async function askAIConversational(question, history) {
     if (!window.supabaseClient) {
         const err = new Error('No backend');
@@ -121,7 +138,10 @@ async function askAIConversational(question, history) {
     const lang = window.MATCH_LANG || 'en';
     // Nickname so the AI can address the user by name. Optional by design —
     // an empty string simply means the AI stays neutral rather than guessing.
-    const nickname = (typeof window.getUserNickname === 'function') ? window.getUserNickname() : '';
+    const nickname = (() => {
+        try { return String(localStorage.getItem('match_user_nickname') || '').trim().slice(0, 30); }
+        catch (_) { return ''; }
+    })();
     const body = { mode: 'discover', question, lang, country, age, nickname, history: history || [] };
 
     // HARD TIMEOUT PER ATTEMPT. supabase-js's functions.invoke has no timeout
@@ -1355,6 +1375,7 @@ async function askAndRender(question) {
     let payload, source = 'ai';
     try { payload = await askAIConversational(question, history); }
     catch (e) { payload = await fallbackSearch(question, !!e.aiUnavailable); source = 'fallback'; }
+    if (payload && payload.answer) payload.answer = addressSavedAiName(payload.answer);
     lastDiscoverQuestion = question;
 
     // Same unconditional safety net as the match engine: no matter which
