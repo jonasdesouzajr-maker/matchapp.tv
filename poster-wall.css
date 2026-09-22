@@ -1,3 +1,6 @@
+/* 2026-09-22 SITE-WIDE LANDING BACKGROUND CONTRACT
+   Every non-Kids route that loads the shared poster wall uses the exact landing-page
+   composition. Kids Mode is explicitly excluded in poster-wall.js and by .kids-body. */
 body{isolation:isolate}.poster-wall{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;background:var(--theme-bg,#100a23)}
 body:has(.poster-wall) #ambient-bg{display:none!important}
 .poster-wall-grid{position:absolute;inset:-30% -20%;display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:1.1vw;transform:rotate(-12deg) scale(1.05);opacity:.4}
@@ -227,7 +230,7 @@ body:has(.poster-wall)::before,body:has(.poster-wall)::after{display:none!import
    No animation, filters or promoted layers; only the background composition is
    restored. 4x2 on wider screens and 2x4 on phones keeps the wall full-bleed
    without changing any foreground layout. */
-html body.page-home .poster-wall-grid{
+html body:not(.kids-body) .poster-wall-grid{
   inset:0!important;
   display:grid!important;
   grid-template-columns:repeat(4,minmax(0,1fr))!important;
@@ -240,7 +243,7 @@ html body.page-home .poster-wall-grid{
   animation:none!important;
   will-change:auto!important;
 }
-html body.page-home .poster-wall-tile{
+html body:not(.kids-body) .poster-wall-tile{
   aspect-ratio:auto!important;
   min-width:0!important;
   min-height:0!important;
@@ -248,15 +251,15 @@ html body.page-home .poster-wall-tile{
   animation:none!important;
   will-change:auto!important;
 }
-html body.page-home .poster-wall-tile>img{
+html body:not(.kids-body) .poster-wall-tile>img{
   width:100%!important;
   height:100%!important;
   object-fit:contain!important;
   object-position:center top!important;
 }
-html body.page-home .poster-wall::before{display:none!important}
+html body:not(.kids-body) .poster-wall::before{display:none!important}
 @media(max-width:700px){
-  html body.page-home .poster-wall-grid{
+  html body:not(.kids-body) .poster-wall-grid{
     grid-template-columns:repeat(2,minmax(0,1fr))!important;
     grid-template-rows:repeat(4,minmax(0,1fr))!important;
     gap:6px!important;
@@ -267,7 +270,7 @@ html body.page-home .poster-wall::before{display:none!important}
 /* 2026-09-20 Home all-time-cover wall.
    Static only: smaller covers and stronger visibility without animation,
    filters, blur, backdrop work or promoted compositor layers. */
-html body.page-home .poster-wall-grid{
+html body:not(.kids-body) .poster-wall-grid{
   inset:-2% -1%!important;
   grid-template-columns:repeat(8,minmax(0,1fr))!important;
   grid-template-rows:none!important;
@@ -280,7 +283,7 @@ html body.page-home .poster-wall-grid{
   animation:none!important;
   will-change:auto!important;
 }
-html body.page-home .poster-wall-tile{
+html body:not(.kids-body) .poster-wall-tile{
   min-width:0!important;
   min-height:0!important;
   aspect-ratio:2/3!important;
@@ -288,13 +291,13 @@ html body.page-home .poster-wall-tile{
   animation:none!important;
   will-change:auto!important;
 }
-html body.page-home .poster-wall-tile>img{
+html body:not(.kids-body) .poster-wall-tile>img{
   width:100%!important;
   height:100%!important;
   object-fit:cover!important;
   object-position:center top!important;
 }
-html body.page-home .poster-wall::after{
+html body:not(.kids-body) .poster-wall::after{
   background:
     linear-gradient(90deg,
       color-mix(in srgb,var(--theme-bg,#100a23) 44%,transparent),
@@ -303,7 +306,7 @@ html body.page-home .poster-wall::after{
     linear-gradient(0deg,color-mix(in srgb,var(--theme-bg,#100a23) 68%,transparent),transparent 84%)!important;
 }
 @media(min-width:701px) and (max-width:1100px){
-  html body.page-home .poster-wall-grid{
+  html body:not(.kids-body) .poster-wall-grid{
     grid-template-columns:repeat(6,minmax(0,1fr))!important;
     grid-template-rows:none!important;
     inset:-2% -8%!important;
@@ -311,14 +314,14 @@ html body.page-home .poster-wall::after{
   }
 }
 @media(max-width:700px){
-  html body.page-home .poster-wall-grid{
+  html body:not(.kids-body) .poster-wall-grid{
     grid-template-columns:repeat(4,minmax(0,1fr))!important;
     grid-template-rows:none!important;
     inset:-1% -10%!important;
     gap:5px!important;
     opacity:.54!important;
   }
-  html body.page-home .poster-wall::after{
+  html body:not(.kids-body) .poster-wall::after{
     background:
       linear-gradient(90deg,
         color-mix(in srgb,var(--theme-bg,#100a23) 52%,transparent),
@@ -391,7 +394,7 @@ html body.page-home .poster-wall::after{
 
 /* 2026-09-20 final scattered all-time title background.
    Static absolute placement only: no timers, animation, filter or observer work. */
-html body.page-home .poster-wall-grid{
+html body:not(.kids-body) .poster-wall-grid{
   inset:0!important;
   display:block!important;
   opacity:1!important;
@@ -400,7 +403,7 @@ html body.page-home .poster-wall-grid{
   animation:none!important;
   will-change:auto!important;
 }
-html body.page-home .poster-wall-tile{
+html body:not(.kids-body) .poster-wall-tile{
   position:absolute!important;
   width:clamp(42px,4.6vw,72px)!important;
   aspect-ratio:2/3!important;
@@ -411,49 +414,49 @@ html body.page-home .poster-wall-tile{
   will-change:auto!important;
   box-shadow:0 5px 16px rgba(0,0,0,.32),0 0 0 1px rgba(229,193,88,.28)!important;
 }
-html body.page-home .poster-wall-tile>img{
+html body:not(.kids-body) .poster-wall-tile>img{
   width:100%!important;height:100%!important;object-fit:cover!important;display:block!important;
 }
-html body.page-home .poster-wall::before{display:none!important}
-html body.page-home .poster-wall::after{
+html body:not(.kids-body) .poster-wall::before{display:none!important}
+html body:not(.kids-body) .poster-wall::after{
   background:linear-gradient(180deg,rgba(8,7,20,.06),rgba(8,7,20,.14))!important;
 }
-html body.page-home .poster-wall-tile:nth-child(1){top:2%;left:2%;transform:rotate(-3deg)!important}
-html body.page-home .poster-wall-tile:nth-child(2){top:12%;left:15%;transform:rotate(2deg)!important}
-html body.page-home .poster-wall-tile:nth-child(3){top:3%;left:33%;transform:rotate(-2deg)!important}
-html body.page-home .poster-wall-tile:nth-child(4){top:18%;left:49%;transform:rotate(3deg)!important}
-html body.page-home .poster-wall-tile:nth-child(5){top:4%;right:3%;transform:rotate(-2deg)!important}
-html body.page-home .poster-wall-tile:nth-child(6){top:31%;left:6%;transform:rotate(2deg)!important}
-html body.page-home .poster-wall-tile:nth-child(7){top:43%;left:21%;transform:rotate(-3deg)!important}
-html body.page-home .poster-wall-tile:nth-child(8){top:32%;left:39%;transform:rotate(2deg)!important}
-html body.page-home .poster-wall-tile:nth-child(9){top:47%;left:58%;transform:rotate(-2deg)!important}
-html body.page-home .poster-wall-tile:nth-child(10){top:30%;right:5%;transform:rotate(3deg)!important}
-html body.page-home .poster-wall-tile:nth-child(11){top:62%;left:3%;transform:rotate(-2deg)!important}
-html body.page-home .poster-wall-tile:nth-child(12){top:74%;left:18%;transform:rotate(3deg)!important}
-html body.page-home .poster-wall-tile:nth-child(13){top:59%;left:36%;transform:rotate(-3deg)!important}
-html body.page-home .poster-wall-tile:nth-child(14){top:77%;left:54%;transform:rotate(2deg)!important}
-html body.page-home .poster-wall-tile:nth-child(15){top:63%;right:3%;transform:rotate(-2deg)!important}
-html body.page-home .poster-wall-tile:nth-child(16){top:86%;left:35%;transform:rotate(3deg)!important}
+html body:not(.kids-body) .poster-wall-tile:nth-child(1){top:2%;left:2%;transform:rotate(-3deg)!important}
+html body:not(.kids-body) .poster-wall-tile:nth-child(2){top:12%;left:15%;transform:rotate(2deg)!important}
+html body:not(.kids-body) .poster-wall-tile:nth-child(3){top:3%;left:33%;transform:rotate(-2deg)!important}
+html body:not(.kids-body) .poster-wall-tile:nth-child(4){top:18%;left:49%;transform:rotate(3deg)!important}
+html body:not(.kids-body) .poster-wall-tile:nth-child(5){top:4%;right:3%;transform:rotate(-2deg)!important}
+html body:not(.kids-body) .poster-wall-tile:nth-child(6){top:31%;left:6%;transform:rotate(2deg)!important}
+html body:not(.kids-body) .poster-wall-tile:nth-child(7){top:43%;left:21%;transform:rotate(-3deg)!important}
+html body:not(.kids-body) .poster-wall-tile:nth-child(8){top:32%;left:39%;transform:rotate(2deg)!important}
+html body:not(.kids-body) .poster-wall-tile:nth-child(9){top:47%;left:58%;transform:rotate(-2deg)!important}
+html body:not(.kids-body) .poster-wall-tile:nth-child(10){top:30%;right:5%;transform:rotate(3deg)!important}
+html body:not(.kids-body) .poster-wall-tile:nth-child(11){top:62%;left:3%;transform:rotate(-2deg)!important}
+html body:not(.kids-body) .poster-wall-tile:nth-child(12){top:74%;left:18%;transform:rotate(3deg)!important}
+html body:not(.kids-body) .poster-wall-tile:nth-child(13){top:59%;left:36%;transform:rotate(-3deg)!important}
+html body:not(.kids-body) .poster-wall-tile:nth-child(14){top:77%;left:54%;transform:rotate(2deg)!important}
+html body:not(.kids-body) .poster-wall-tile:nth-child(15){top:63%;right:3%;transform:rotate(-2deg)!important}
+html body:not(.kids-body) .poster-wall-tile:nth-child(16){top:86%;left:35%;transform:rotate(3deg)!important}
 @media(max-width:700px){
-  html body.page-home .poster-wall-tile{
+  html body:not(.kids-body) .poster-wall-tile{
     width:clamp(38px,10.5vw,52px)!important;
     opacity:.90!important;
     border-radius:7px!important;
   }
-  html body.page-home .poster-wall-tile:nth-child(n+13){display:none!important}
-  html body.page-home .poster-wall::after{
+  html body:not(.kids-body) .poster-wall-tile:nth-child(n+13){display:none!important}
+  html body:not(.kids-body) .poster-wall::after{
     background:linear-gradient(180deg,rgba(8,7,20,.10),rgba(8,7,20,.18))!important;
   }
 }
 @media(min-width:2200px){
-  html body.page-home .poster-wall-tile{width:clamp(66px,3.7vw,96px)!important}
+  html body:not(.kids-body) .poster-wall-tile{width:clamp(66px,3.7vw,96px)!important}
 }
 
 
 /* 2026-09-20 final scattered-cover visibility pass.
    Smaller, clearer real-title covers across the fixed page background.
    Static only: no animation, filters, observers or promoted compositor layers. */
-html body.page-home .poster-wall-tile{
+html body:not(.kids-body) .poster-wall-tile{
   width:clamp(34px,3.9vw,60px)!important;
   opacity:.98!important;
   border-radius:7px!important;
@@ -461,15 +464,15 @@ html body.page-home .poster-wall-tile{
   animation:none!important;
   will-change:auto!important;
 }
-html body.page-home .poster-wall::after{
+html body:not(.kids-body) .poster-wall::after{
   background:linear-gradient(180deg,rgba(8,7,20,.035),rgba(8,7,20,.09))!important;
 }
 @media(max-width:700px){
-  html body.page-home .poster-wall-tile{
+  html body:not(.kids-body) .poster-wall-tile{
     width:clamp(32px,9vw,46px)!important;
     opacity:.96!important;
   }
-  html body.page-home .poster-wall::after{
+  html body:not(.kids-body) .poster-wall::after{
     background:linear-gradient(180deg,rgba(8,7,20,.06),rgba(8,7,20,.12))!important;
   }
 }
@@ -487,7 +490,7 @@ html body.page-home .poster-wall{
   overflow:hidden!important;
   contain:paint!important;
 }
-html body.page-home .poster-wall-grid{
+html body:not(.kids-body) .poster-wall-grid{
   position:absolute!important;
   inset:0!important;
   display:block!important;
@@ -497,7 +500,7 @@ html body.page-home .poster-wall-grid{
   animation:none!important;
   will-change:auto!important;
 }
-html body.page-home .poster-wall-tile{
+html body:not(.kids-body) .poster-wall-tile{
   position:absolute!important;
   width:clamp(32px,3.5vw,54px)!important;
   aspect-ratio:2/3!important;
@@ -508,48 +511,48 @@ html body.page-home .poster-wall-tile{
   will-change:auto!important;
   box-shadow:0 7px 22px rgba(0,0,0,.38),0 0 0 1px rgba(229,193,88,.42)!important;
 }
-html body.page-home .poster-wall-tile>img{
+html body:not(.kids-body) .poster-wall-tile>img{
   width:100%!important;height:100%!important;object-fit:cover!important;display:block!important;
 }
-html body.page-home .poster-wall::before{display:none!important}
-html body.page-home .poster-wall::after{
+html body:not(.kids-body) .poster-wall::before{display:none!important}
+html body:not(.kids-body) .poster-wall::after{
   background:linear-gradient(180deg,rgba(8,7,20,.015),rgba(8,7,20,.065))!important;
 }
-html body.page-home .poster-wall-tile:nth-child(1){top:1.5%;left:2.5%;transform:rotate(-4deg)!important}
-html body.page-home .poster-wall-tile:nth-child(2){top:7%;right:7%;transform:rotate(3deg)!important}
-html body.page-home .poster-wall-tile:nth-child(3){top:13.5%;left:18%;transform:rotate(-2deg)!important}
-html body.page-home .poster-wall-tile:nth-child(4){top:20%;right:23%;transform:rotate(4deg)!important}
-html body.page-home .poster-wall-tile:nth-child(5){top:26.5%;left:4%;transform:rotate(2deg)!important}
-html body.page-home .poster-wall-tile:nth-child(6){top:33%;right:3%;transform:rotate(-3deg)!important}
-html body.page-home .poster-wall-tile:nth-child(7){top:39.5%;left:31%;transform:rotate(3deg)!important}
-html body.page-home .poster-wall-tile:nth-child(8){top:46%;right:34%;transform:rotate(-4deg)!important}
-html body.page-home .poster-wall-tile:nth-child(9){top:52.5%;left:9%;transform:rotate(2deg)!important}
-html body.page-home .poster-wall-tile:nth-child(10){top:59%;right:12%;transform:rotate(-2deg)!important}
-html body.page-home .poster-wall-tile:nth-child(11){top:65.5%;left:39%;transform:rotate(4deg)!important}
-html body.page-home .poster-wall-tile:nth-child(12){top:72%;right:2.5%;transform:rotate(-3deg)!important}
-html body.page-home .poster-wall-tile:nth-child(13){top:78.5%;left:16%;transform:rotate(3deg)!important}
-html body.page-home .poster-wall-tile:nth-child(14){top:84.5%;right:27%;transform:rotate(-4deg)!important}
-html body.page-home .poster-wall-tile:nth-child(15){top:90.5%;left:3%;transform:rotate(2deg)!important}
-html body.page-home .poster-wall-tile:nth-child(16){top:95%;right:42%;transform:rotate(-2deg)!important}
+html body:not(.kids-body) .poster-wall-tile:nth-child(1){top:1.5%;left:2.5%;transform:rotate(-4deg)!important}
+html body:not(.kids-body) .poster-wall-tile:nth-child(2){top:7%;right:7%;transform:rotate(3deg)!important}
+html body:not(.kids-body) .poster-wall-tile:nth-child(3){top:13.5%;left:18%;transform:rotate(-2deg)!important}
+html body:not(.kids-body) .poster-wall-tile:nth-child(4){top:20%;right:23%;transform:rotate(4deg)!important}
+html body:not(.kids-body) .poster-wall-tile:nth-child(5){top:26.5%;left:4%;transform:rotate(2deg)!important}
+html body:not(.kids-body) .poster-wall-tile:nth-child(6){top:33%;right:3%;transform:rotate(-3deg)!important}
+html body:not(.kids-body) .poster-wall-tile:nth-child(7){top:39.5%;left:31%;transform:rotate(3deg)!important}
+html body:not(.kids-body) .poster-wall-tile:nth-child(8){top:46%;right:34%;transform:rotate(-4deg)!important}
+html body:not(.kids-body) .poster-wall-tile:nth-child(9){top:52.5%;left:9%;transform:rotate(2deg)!important}
+html body:not(.kids-body) .poster-wall-tile:nth-child(10){top:59%;right:12%;transform:rotate(-2deg)!important}
+html body:not(.kids-body) .poster-wall-tile:nth-child(11){top:65.5%;left:39%;transform:rotate(4deg)!important}
+html body:not(.kids-body) .poster-wall-tile:nth-child(12){top:72%;right:2.5%;transform:rotate(-3deg)!important}
+html body:not(.kids-body) .poster-wall-tile:nth-child(13){top:78.5%;left:16%;transform:rotate(3deg)!important}
+html body:not(.kids-body) .poster-wall-tile:nth-child(14){top:84.5%;right:27%;transform:rotate(-4deg)!important}
+html body:not(.kids-body) .poster-wall-tile:nth-child(15){top:90.5%;left:3%;transform:rotate(2deg)!important}
+html body:not(.kids-body) .poster-wall-tile:nth-child(16){top:95%;right:42%;transform:rotate(-2deg)!important}
 @media(max-width:700px){
-  html body.page-home .poster-wall-tile{
+  html body:not(.kids-body) .poster-wall-tile{
     width:clamp(28px,8.2vw,42px)!important;
     opacity:.98!important;
     display:block!important;
   }
-  html body.page-home .poster-wall::after{
+  html body:not(.kids-body) .poster-wall::after{
     background:linear-gradient(180deg,rgba(8,7,20,.03),rgba(8,7,20,.085))!important;
   }
 }
 @media(min-width:2200px){
-  html body.page-home .poster-wall-tile{width:clamp(46px,2.8vw,72px)!important}
+  html body:not(.kids-body) .poster-wall-tile{width:clamp(46px,2.8vw,72px)!important}
 }
 
 
 /* 2026-09-20 compact full-page poster finish.
    Smaller all-time-title covers with stronger separation from the page background.
    Static only: no animation, filters, observers or promoted compositor layers. */
-html body.page-home .poster-wall-tile{
+html body:not(.kids-body) .poster-wall-tile{
   width:clamp(28px,3.05vw,48px)!important;
   opacity:1!important;
   border-radius:6px!important;
@@ -560,20 +563,20 @@ html body.page-home .poster-wall-tile{
   animation:none!important;
   will-change:auto!important;
 }
-html body.page-home .poster-wall::after{
+html body:not(.kids-body) .poster-wall::after{
   background:linear-gradient(180deg,rgba(8,7,20,.008),rgba(8,7,20,.045))!important;
 }
 @media(max-width:700px){
-  html body.page-home .poster-wall-tile{
+  html body:not(.kids-body) .poster-wall-tile{
     width:clamp(24px,7.2vw,36px)!important;
     opacity:1!important;
   }
-  html body.page-home .poster-wall::after{
+  html body:not(.kids-body) .poster-wall::after{
     background:linear-gradient(180deg,rgba(8,7,20,.018),rgba(8,7,20,.055))!important;
   }
 }
 @media(min-width:2200px){
-  html body.page-home .poster-wall-tile{width:clamp(38px,2.4vw,60px)!important}
+  html body:not(.kids-body) .poster-wall-tile{width:clamp(38px,2.4vw,60px)!important}
 }
 
 /* ===== 2026-09-21 tilted key-art collage — EVERY viewport =====
@@ -616,7 +619,7 @@ html body.page-home .poster-wall .poster-wall-grid{
 }
 
 /* Tiles flow in the grid instead of being individually placed. */
-html body.page-home .poster-wall-tile{
+html body:not(.kids-body) .poster-wall-tile{
   position:relative!important;
   top:auto!important;right:auto!important;bottom:auto!important;left:auto!important;
   width:auto!important;
@@ -629,14 +632,14 @@ html body.page-home .poster-wall-tile{
   box-shadow:0 4px 12px rgba(0,0,0,.42)!important;
   background:rgba(12,10,26,.55)!important;
 }
-html body.page-home .poster-wall-tile>img{
+html body:not(.kids-body) .poster-wall-tile>img{
   width:100%!important;
   height:100%!important;
   object-fit:cover!important;
   display:block!important;
 }
 html body.page-home .poster-wall-brand{display:none!important}
-html body.page-home .poster-wall::before{display:none!important}
+html body:not(.kids-body) .poster-wall::before{display:none!important}
 
 /* Column count per breakpoint. Tiles must stay large enough to read as key art
    and numerous enough to overfill the rotated grid at every size. */
@@ -667,7 +670,7 @@ html body.page-home .poster-wall::before{display:none!important}
 /* The scrim: a deep pool of midnight behind the centre column of UI, fading
    out towards the edges so the collage stays visible all the way to the
    corners, plus top and bottom bands. */
-html body.page-home .poster-wall::after{
+html body:not(.kids-body) .poster-wall::after{
   content:''!important;
   position:absolute!important;
   inset:0!important;
@@ -686,7 +689,7 @@ html body.page-home .poster-wall::after{
 @media(max-width:700px){
   /* A handset is almost entirely content, so the pool is tightened and the
      edges are left brighter, otherwise the collage disappears completely. */
-  html body.page-home .poster-wall::after{
+  html body:not(.kids-body) .poster-wall::after{
     background:
       radial-gradient(ellipse 96% 22% at 50% 33%,
         rgba(5,4,16,.80) 0%,
