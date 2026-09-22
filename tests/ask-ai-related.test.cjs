@@ -187,3 +187,44 @@ test('Ask AI smartphone composer is forced visible without changing larger break
   assert.match(agents,/explicitly requests a \*\*smartphone-only\*\* change/);
   assert.match(agents,/Every approved smartphone-only change must also be carried into the relevant Android Studio WebView module/);
 });
+
+
+test('profile Check explicitly saves or clears the exact Ask AI form of address',()=>{
+  const html=read('profile/profile.html'),profile=read('profile.js'),avatars=read('avatars.js'),discover=read('discover.js'),human=read('human-conversation.js');
+  assert.match(html,/id="pf-nickname-check"[\s\S]*>✓ Check<\/button>/);
+  assert.match(html,/oninput="markNicknameUnsaved\(\)"/);
+  assert.doesNotMatch(html,/oninput="saveNickname/);
+  assert.match(profile,/window\.saveNickname = async function \(\)/);
+  assert.match(profile,/if \(clean\) localStorage\.setItem\('match_user_nickname', clean\)/);
+  assert.match(profile,/else localStorage\.removeItem\('match_user_nickname'\)/);
+  assert.match(profile,/nickname: clean \|\| null/);
+  assert.match(profile,/matchapp:nicknamechange/);
+  const nickFn=avatars.slice(avatars.indexOf('function getUserNickname'),avatars.indexOf("document.addEventListener('DOMContentLoaded'",avatars.indexOf('function getUserNickname')));
+  assert.match(nickFn,/match_user_nickname/);
+  assert.doesNotMatch(nickFn,/match_user_name/);
+  assert.match(discover,/function addressSavedAiName/);
+  assert.match(discover,/payload\.answer = addressSavedAiName\(payload\.answer\)/);
+  assert.match(discover,/localStorage\.getItem\('match_user_nickname'\)/);
+  assert.doesNotMatch(human,/const firstTurn/);
+});
+
+test('saved Ask AI form of address is used on follow-up replies and disappears when cleared',()=>{
+  const vm=require('node:vm');
+  let saved='Captain';
+  const window={MATCH_LANG:'en',addEventListener(){},askAIConversational:null};
+  window.window=window;
+  const ctx=vm.createContext({
+    window,
+    document:{readyState:'complete',documentElement:{lang:'en'},addEventListener(){},querySelectorAll:()=>[]},
+    localStorage:{getItem:k=>k==='match_user_nickname'?saved:null,setItem(){},removeItem(){}},
+    setTimeout(){},
+    speechSynthesis:{cancel(){},getVoices:()=>[],speak(){}},
+    SpeechSynthesisUtterance:function(t){this.text=t}
+  });
+  vm.runInContext(read('human-conversation.js'),ctx);
+  let payload=ctx.window.humanizeAskAI({answer:'That comedy is available tonight.',results:[]},[{role:'user',text:'follow up'}]);
+  assert.match(payload.answer,/^Captain,/);
+  saved='';
+  payload=ctx.window.humanizeAskAI({answer:'That comedy is available tonight.',results:[]},[{role:'user',text:'follow up'}]);
+  assert.equal(payload.answer,'That comedy is available tonight.');
+});
