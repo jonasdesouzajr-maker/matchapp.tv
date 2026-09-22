@@ -546,10 +546,15 @@
     if (!isDesktopGate()) {
       const pref = read(AUTH_PREF_KEY) || '';
       if (pref === 'native' && nativeBridge()) {
-        return nativeAuthenticate().catch(() => false);
+        const ok = await nativeAuthenticate().catch(() => false);
+        if (ok) return true;
+        // If the native bridge cannot complete authentication, immediately
+        // fall through to the parent PIN instead of leaving the button inert.
       }
       if (pref === 'webauthn' && credentialRecord()) {
-        return verifyPlatformCredential().catch(() => false);
+        const ok = await verifyPlatformCredential().catch(() => false);
+        if (ok) return true;
+        // Cancelled/unsupported biometric authentication falls back to PIN.
       }
     }
 
