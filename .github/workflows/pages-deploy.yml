@@ -159,13 +159,14 @@ jobs:
           grep -q '/kids/kids.css?v=20260921-static1' /tmp/kids.html
           grep -q '/kids/kids.js?v=20260921-static1' /tmp/kids.html
           grep -q '/kids/voice-feedback.js?v=20260921-static1' /tmp/kids.html
+          grep -q '/catalog-media.js?v=20260921-kidsloop1' /tmp/kids.html
           grep -q 'GTM-M7J3NNBN' /tmp/home-post-purge.html
           grep -q 'ca-pub-9541435081010948' /tmp/home-post-purge.html
           ! grep -qi 'adsterra' /tmp/home-post-purge.html
           ! grep -q 'matchapp-tiktok-intro' /tmp/home-post-purge.html
           ! grep -q 'ma-ui-preparing' /tmp/home-post-purge.html
           grep -q '/page-origin.js?v=20260920-freeze2' /tmp/home-post-purge.html
-          grep -q '/build-meta.js?v=20260921-release3' /tmp/home-post-purge.html
+          grep -q '/build-meta.js?v=20260921-release4' /tmp/home-post-purge.html
           grep -q 'matchapp-home-orb-transparent.webp?v=20260920-homebrand4' /tmp/home-post-purge.html
           grep -q 'FInd what to watch here' /tmp/home-post-purge.html
           curl -fsSL --max-time 30 "https://matchapp.tv${LIVE_IA_CSS}&deploy=${GITHUB_SHA}" -o /tmp/home-stability.css
