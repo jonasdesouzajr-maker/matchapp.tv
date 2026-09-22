@@ -3580,3 +3580,75 @@ body.tv-mode.page-home .ma-tab-hint{font-size:13px!important}
   }
   html body.page-home .ma-tab::after{display:none!important}
 }
+
+/* Homepage Ask Ai: keep all three controls in separate mobile grid cells.
+   No sticky positioning or movement when the keyboard changes the viewport. */
+@media(max-width:640px){
+  html body.page-home #search-box > .home-ask-composer{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr) 50px!important;
+    grid-template-rows:auto auto!important;
+    grid-template-areas:"input mic" "send send"!important;
+    gap:10px!important;
+    align-items:stretch!important;
+    width:100%!important;
+    min-width:0!important;
+    height:auto!important;
+    box-sizing:border-box!important;
+  }
+  html body.page-home #search-box > .home-ask-composer > :is(input,button){
+    position:static!important;
+    inset:auto!important;
+    transform:none!important;
+    translate:none!important;
+    margin:0!important;
+    z-index:auto!important;
+    box-sizing:border-box!important;
+    animation:none!important;
+    transition:none!important;
+  }
+  html body.page-home #search-box > .home-ask-composer > #specific-search-input{
+    grid-area:input!important;
+    display:block!important;
+    width:100%!important;
+    min-width:0!important;
+    height:56px!important;
+    min-height:56px!important;
+    padding:12px!important;
+    color:#fff!important;
+    -webkit-text-fill-color:#fff!important;
+    caret-color:#ffe18a!important;
+    background:#171126!important;
+    border:1px solid #cbb3df!important;
+    opacity:1!important;
+    visibility:visible!important;
+    font-size:16px!important;
+    line-height:1.5!important;
+  }
+  html body.page-home #search-box > .home-ask-composer > #specific-search-input::placeholder{
+    color:#d7cee5!important;
+    -webkit-text-fill-color:#d7cee5!important;
+    opacity:1!important;
+  }
+  html body.page-home #search-box > .home-ask-composer > #mic-btn-index{
+    grid-area:mic!important;
+    width:50px!important;
+    height:56px!important;
+    min-height:56px!important;
+    align-self:start!important;
+  }
+  html body.page-home #search-box > .home-ask-composer > .gold-btn{
+    grid-area:send!important;
+    width:100%!important;
+    min-width:0!important;
+    height:48px!important;
+    min-height:48px!important;
+    padding:10px 16px!important;
+    font-size:16px!important;
+  }
+  html body.page-home #search-box > .home-ask-composer > button::before,
+  html body.page-home #search-box > .home-ask-composer > button::after{
+    display:none!important;
+    animation:none!important;
+  }
+}
