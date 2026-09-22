@@ -13,6 +13,7 @@ on:
 permissions:
   contents: write
   actions: write
+  id-token: write
 
 concurrency:
   group: midnight-content-rotation
@@ -107,7 +108,31 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: gh workflow run indexnow.yml --ref main
 
-      - name: Preserve report on failure
+      - name: Notify phone with execution report
+        if: success()
+        env:
+          TOPIC: ${{ secrets.NTFY_TOPIC }}
+        shell: bash
+        run: |
+          if [ -z "$TOPIC" ]; then
+            echo 'Phone report skipped: NTFY_TOPIC is not configured.' >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          REPORT="$(cat reports/midnight-latest.md 2>/dev/null || printf 'Midnight rotation completed successfully.')"
+          curl -fsS -H 'Title: MatchApp TV midnight rotation ✅' \
+            -H 'Tags: white_check_mark,movie_camera' \
+            --data-binary "$REPORT" "https://ntfy.sh/$TOPIC"
+
+      - name: Preserve report and notify on failure
         if: failure()
+        env:
+          TOPIC: ${{ secrets.NTFY_TOPIC }}
+        shell: bash
         run: |
           echo 'Midnight rotation failed. No success confirmation should be issued until the failing step is corrected.' >> "$GITHUB_STEP_SUMMARY"
+          if [ -n "$TOPIC" ]; then
+            curl -fsS -H 'Title: MatchApp TV midnight rotation FAILED' \
+              -H 'Tags: x,movie_camera' \
+              -d "The midnight content rotation failed. Run: https://github.com/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}" \
+              "https://ntfy.sh/$TOPIC" || true
+          fi
