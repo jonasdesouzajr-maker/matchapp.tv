@@ -29,10 +29,10 @@ test('Home startup avoids delayed boot locks, stale cache keys and duplicate hea
 
 test('Home noncritical enrichment is staggered instead of timing out together',()=>{
  const html=read('index.html'),poster=read('poster-wall.js'),captions=read('title-captions.js'),media=read('catalog-media.js');
- assert.match(html,/\/poster-wall\.js\?v=20260921-wall3/);
+ assert.match(html,/\/poster-wall\.js\?v=20260922-load1/);
  assert.match(html,/\/title-captions\.js\?v=20260921-ui2/);
  assert.match(html,/\/catalog-media\.js\?v=20260920-freeze-final1/);
- assert.match(html,/\/poster-wall\.css\?v=20260921-wall3/);
+ assert.match(html,/\/poster-wall\.css\?v=20260922-load1/);
  assert.match(poster,/setTimeout\(\(\)=>\{[\s\S]*requestIdleCallback\(run\)[\s\S]*\},900\)/);
  assert.match(captions,/setTimeout\(\(\)=>\{[\s\S]*requestIdleCallback\(\(\)=>paint\(\)\)[\s\S]*\},2200\)/);
  assert.match(captions,/requestIdleCallback\(loadAudit\)[\s\S]*\},5200\)/);
@@ -68,8 +68,8 @@ test('Home poster wall stays lightweight, static and cache-busted',()=>{
  assert.match(wall,/const CHUNK=10;/);
  assert.match(wall,/requestIdleCallback\(fillChunk\)/);
  assert.match(wall,/cursor<posters\.length/);
- assert.match(html,/poster-wall\.js\?v=20260921-wall3/);
- assert.match(html,/poster-wall\.css\?v=20260921-wall3/);
+ assert.match(html,/poster-wall\.js\?v=20260922-load1/);
+ assert.match(html,/poster-wall\.css\?v=20260922-load1/);
  assert.match(css,/Home poster-wall restore/);
  assert.match(css,/2026-09-20 scattered static poster background/);
  assert.match(css,/final scattered-cover visibility pass/);
