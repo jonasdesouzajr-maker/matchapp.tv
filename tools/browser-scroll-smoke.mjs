@@ -120,5 +120,41 @@ async function kidsMatchScenario(){
 }
 
 await kidsMatchScenario();
+
+async function askAiSmartphoneScenario(){
+  const url=new URL('/discover.html',targetUrl).href;
+  await send('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:2,mobile:true,screenWidth:390,screenHeight:844});
+  await send('Network.setCacheDisabled',{cacheDisabled:true});
+  await send('Page.navigate',{url});
+  await waitReady();
+  await sleep(3500);
+  const before=await evaluate(`(()=>{const row=document.querySelector('.newsearch-row'),c=document.querySelector('.composer'),t=document.getElementById('discover-new-input'),m=document.getElementById('mic-btn-discover');const rect=e=>{const r=e?.getBoundingClientRect();return r?{x:r.x,y:r.y,w:r.width,h:r.height}:null};const cs=e=>e?getComputedStyle(e):null;return {row:rect(row),composer:rect(c),textarea:rect(t),mic:rect(m),td:cs(t)?.display,tv:cs(t)?.visibility,to:cs(t)?.opacity,md:cs(m)?.display,mv:cs(m)?.visibility,viewport:innerWidth}})()`);
+  if(!before.row||!before.composer||!before.textarea||!before.mic)throw new Error('ask-ai-mobile: composer controls missing');
+  if(before.viewport>640)throw new Error('ask-ai-mobile: smartphone media query not active');
+  if(before.composer.w<280||before.textarea.w<160||before.textarea.h<44)throw new Error('ask-ai-mobile: typing field has unusable geometry '+JSON.stringify(before));
+  if(before.td==='none'||before.tv==='hidden'||Number(before.to)===0)throw new Error('ask-ai-mobile: textarea is hidden');
+  if(before.md==='none'||before.mv==='hidden'||before.mic.w<44||before.mic.h<44)throw new Error('ask-ai-mobile: mic is hidden');
+  const typed=await evaluate(`(()=>{const t=document.getElementById('discover-new-input');t.value='I can see what I am typing';t.dispatchEvent(new Event('input',{bubbles:true}));const r=t.getBoundingClientRect();return {value:t.value,w:r.width,h:r.height,display:getComputedStyle(t).display,visibility:getComputedStyle(t).visibility}})()`);
+  if(typed.value!=='I can see what I am typing'||typed.w<160||typed.h<44||typed.display==='none'||typed.visibility==='hidden')throw new Error('ask-ai-mobile: typed text field did not remain usable');
+  console.log('ask-ai-mobile: PASS, composer='+Math.round(before.composer.w)+'x'+Math.round(before.composer.h)+', textarea='+Math.round(typed.w)+'x'+Math.round(typed.h)+', mic='+Math.round(before.mic.w)+'x'+Math.round(before.mic.h));
+}
+
+async function profileVisualScenario(){
+  const url=new URL('/profile/profile.html',targetUrl).href;
+  await send('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:2,mobile:true,screenWidth:390,screenHeight:844});
+  await send('Network.setCacheDisabled',{cacheDisabled:true});
+  await send('Page.navigate',{url});
+  await waitReady();
+  await sleep(3000);
+  const state=await evaluate(`(()=>{const p=document.getElementById('profile-pic-preview'),wall=document.querySelector('.poster-wall');const ps=p?getComputedStyle(p):null,pr=p?.getBoundingClientRect();return {pageProfile:document.body.classList.contains('page-profile'),wall:!!wall,posterTiles:document.querySelectorAll('.poster-wall-tile').length,pic:pr?{w:pr.width,h:pr.height}:null,borderWidth:ps?.borderTopWidth,borderColor:ps?.borderTopColor,radius:ps?.borderRadius,clip:ps?.clipPath,bg:ps?.backgroundColor}})()`);
+  if(!state.pageProfile)throw new Error('profile-mobile: page-profile body class missing');
+  if(!state.wall||state.posterTiles<1)throw new Error('profile-mobile: Home poster-wall background did not load');
+  if(!state.pic||Math.abs(state.pic.w-state.pic.h)>2||state.pic.w<100)throw new Error('profile-mobile: photo crop is not square/circular geometry');
+  if(state.borderWidth!=='3px'||!state.radius.includes('50%')||state.clip==='none')throw new Error('profile-mobile: photo gold/circular outline is not active '+JSON.stringify(state));
+  console.log('profile-mobile: PASS, wallTiles='+state.posterTiles+', avatar='+Math.round(state.pic.w)+'x'+Math.round(state.pic.h)+', border='+state.borderWidth+', radius='+state.radius);
+}
+
+await askAiSmartphoneScenario();
+await profileVisualScenario();
 ws.close();
-console.log('MatchApp browser startup/scroll + Kids result smoke: PASS');
+console.log('MatchApp browser startup/scroll + Kids + Ask AI mobile + Profile smoke: PASS');
