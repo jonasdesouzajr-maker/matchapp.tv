@@ -11,6 +11,7 @@ html.ma-av-open{overflow:hidden}
 .ma-av-dialog *{box-sizing:border-box}
 .ma-av-dialog button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
 .ma-av-dialog svg{display:block}
+.ma-av-sheet:focus{outline:none}
 .ma-av-sheet{position:relative;width:100%;max-height:94dvh;overflow-y:auto;overscroll-behavior:contain;padding:20px 22px 0}
 
 /* ---------- header ---------- */
