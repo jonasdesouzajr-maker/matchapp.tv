@@ -34,3 +34,22 @@ test('Android apps expose a same-origin native speech recognizer bridge',()=>{
  assert.match(main,/isMatchAppHost\(current\.host\.orEmpty\(\)\)/);
  assert.match(kids,/isAllowedKidsUrl\(web\.url\)/);
 });
+
+
+test('Kids Android app exposes native biometric guardian bridge while main app stays Kids-free',()=>{
+ const main=read('android-studio/app/src/main/java/tv/matchapp/app/MainActivity.kt');
+ const kids=read('android-studio/kidsapp/src/main/java/tv/matchapp/kids/MainActivity.kt');
+ const mainManifest=read('android-studio/app/src/main/AndroidManifest.xml');
+ const kidsManifest=read('android-studio/kidsapp/src/main/AndroidManifest.xml');
+ const mainGradle=read('android-studio/app/build.gradle.kts');
+ const kidsGradle=read('android-studio/kidsapp/build.gradle.kts');
+ assert.doesNotMatch(main,/MatchAppNativeGuardian/);
+ assert.doesNotMatch(mainManifest,/USE_BIOMETRIC/);
+ assert.doesNotMatch(mainGradle,/androidx\.biometric/);
+ assert.match(kids,/addJavascriptInterface\(NativeGuardianBridge\(\), "MatchAppNativeGuardian"\)/);
+ assert.match(kids,/BiometricPrompt/);
+ assert.match(kids,/matchAppNativeGuardianResult/);
+ assert.match(kids,/openGrownUp/);
+ assert.match(kidsManifest,/USE_BIOMETRIC/);
+ assert.match(kidsGradle,/androidx\.biometric:biometric:1\.1\.0/);
+});
