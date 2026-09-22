@@ -29,6 +29,8 @@ import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.biometric.BiometricManager
+import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
@@ -117,6 +119,7 @@ class MainActivity : AppCompatActivity() {
         web.webViewClient = MatchClient()
         web.webChromeClient = MatchChrome()
         web.addJavascriptInterface(NativeVoiceBridge(), "MatchAppNativeVoice")
+        web.addJavascriptInterface(NativeGuardianBridge(), "MatchAppNativeGuardian")
         web.setDownloadListener { url, _, contentDisposition, mime, _ ->
             val name = URLUtil.guessFileName(url, contentDisposition, mime)
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
@@ -331,6 +334,64 @@ class MainActivity : AppCompatActivity() {
             "window.matchAppNativeVoiceError&&window.matchAppNativeVoiceError($value);",
             null
         )
+    }
+
+    private fun sendGuardianResult(ok: Boolean, code: String) {
+        val safeCode = JSONObject.quote(code)
+        web.evaluateJavascript(
+            "window.matchAppNativeGuardianResult&&window.matchAppNativeGuardianResult($ok,$safeCode);",
+            null
+        )
+    }
+
+    private fun authenticateGuardian() {
+        if (!isKidsUrl(web.url)) {
+            sendGuardianResult(false, "not-allowed")
+            return
+        }
+        val authenticators = BiometricManager.Authenticators.BIOMETRIC_WEAK
+        if (BiometricManager.from(this).canAuthenticate(authenticators) != BiometricManager.BIOMETRIC_SUCCESS) {
+            sendGuardianResult(false, "unavailable")
+            return
+        }
+        val prompt = BiometricPrompt(
+            this,
+            ContextCompat.getMainExecutor(this),
+            object : BiometricPrompt.AuthenticationCallback() {
+                override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {
+                    sendGuardianResult(false, "cancelled")
+                }
+
+                override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
+                    sendGuardianResult(true, "ok")
+                }
+            }
+        )
+        val info = BiometricPrompt.PromptInfo.Builder()
+            .setTitle("Grown-ups only")
+            .setSubtitle("Use fingerprint or face unlock to leave Kids Mode")
+            .setAllowedAuthenticators(authenticators)
+            .setNegativeButtonText("Use parent PIN")
+            .build()
+        prompt.authenticate(info)
+    }
+
+    private inner class NativeGuardianBridge {
+        @JavascriptInterface
+        fun authenticate() {
+            runOnUiThread { authenticateGuardian() }
+        }
+
+        @JavascriptInterface
+        fun openGrownUp() {
+            runOnUiThread {
+                if (!isKidsUrl(web.url)) {
+                    sendGuardianResult(false, "not-allowed")
+                    return@runOnUiThread
+                }
+                web.loadUrl("https://matchapp.tv/")
+            }
+        }
     }
 
     private inner class NativeVoiceBridge {
