@@ -613,8 +613,6 @@ html body.page-home .poster-wall .poster-wall-grid{
   transform:rotate(-12deg)!important;
   transform-origin:50% 50%!important;
   opacity:.76!important;
-  animation:none!important;
-  will-change:auto!important;
 }
 
 /* Tiles flow in the grid instead of being individually placed. */
@@ -628,8 +626,6 @@ html body.page-home .poster-wall-tile{
   border-radius:4px!important;
   opacity:1!important;
   transform:none!important;
-  animation:none!important;
-  will-change:auto!important;
   box-shadow:0 4px 12px rgba(0,0,0,.42)!important;
   background:rgba(12,10,26,.55)!important;
 }
