@@ -62,13 +62,15 @@ window.AVATAR_PRESETS = AVATAR_PRESETS;
 /** The image the user should currently see, or null for the empty circle. */
 function resolveUserAvatar() {
     try {
-        const custom = localStorage.getItem('match_custom_avatar');
-        if (custom) return custom;
+        // MatchApp Avatar Studio is canonical. It replaces photo uploads and
+        // is mirrored to profiles.avatar_url for cross-device use.
+        const studio = localStorage.getItem('match_avatar_svg');
+        if (studio) return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(studio);
+        const cloud = localStorage.getItem('match_user_avatar');
+        if (cloud) return cloud;
+        // Legacy values are read-only fallbacks for accounts not migrated yet.
         const preset = localStorage.getItem('match_preset_avatar');
         if (preset && AVATAR_PRESETS[preset]) return avatarSVG(preset, 96);
-        // The Google photo — saved on sign-in and, until now, never read.
-        const google = localStorage.getItem('match_user_avatar');
-        if (google) return google;
     } catch (e) {}
     return null;
 }
@@ -136,6 +138,8 @@ document.addEventListener('DOMContentLoaded', () => {
 // itself is written to localStorage by profile hydration, which can finish
 // after the auth event — belt and braces on the one element that told the
 // user whether they are signed in at all.
+document.addEventListener('matchapp:avatarchange', renderUserAvatar);
+
 document.addEventListener('matchapp:authchange', () => {
     renderUserAvatar();
     setTimeout(renderUserAvatar, 900);
