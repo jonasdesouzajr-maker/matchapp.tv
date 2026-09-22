@@ -98,8 +98,9 @@ test('hard refresh keeps decorative poster work behind critical page load',()=>{
   assert.match(wall,/window\.addEventListener\('load',queue,\{once:true\}\)/);
   assert.match(wall,/requestIdleCallback\(run,\{timeout:1600\}\)/);
   assert.doesNotMatch(wall,/DOMContentLoaded',scheduleBoot/);
-  assert.match(wallCss,/html body\.page-home \.poster-wall \.poster-wall-grid\{[\s\S]*animation:none!important;[\s\S]*will-change:auto!important;/);
-  assert.match(wallCss,/html body\.page-home \.poster-wall-tile\{[\s\S]*animation:none!important;[\s\S]*will-change:auto!important;/);
+  assert.doesNotMatch(wallCss,/animation:posterDrift/);
+  assert.doesNotMatch(wallCss,/animation:posterGlow/);
+  assert.doesNotMatch(wallCss,/animation:\s*posterSweep/);
 });
 
 test('only the Home Match\/Ask Ai concierge card gets the stronger glass surface',()=>{
