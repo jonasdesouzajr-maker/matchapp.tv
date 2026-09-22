@@ -1,4 +1,5 @@
 name: Midnight content rotation and SEO injection
+# Runs the complete daily refresh from a clean main checkout.
 
 on:
   schedule:
