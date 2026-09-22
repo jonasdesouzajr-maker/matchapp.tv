@@ -92,7 +92,7 @@
         addEventListener('load',()=>setTimeout(loadHomeEditorial,600),{once:true});
       }
     }
-    if(path==='/discover.html')js('/human-conversation.js');
+    if(path==='/discover.html')js('/human-conversation.js?v=20260921-nickname1');
     document.addEventListener('click',quotaRoute,true);
     document.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.closest?.('#quota-badge'))quotaRoute(e);},true);
   }
