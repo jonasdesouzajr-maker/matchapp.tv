@@ -366,12 +366,17 @@
                         <div id="avatar-preset-grid" class="avatar-grid"></div>
                         <button type="button" class="pf-clear-avatar" onclick="clearPresetAvatar()" data-i18n="pf.clearAvatar">Use my photo instead</button>
                     </details>
-
                     <div class="pf-field">
                         <label for="pf-nickname" class="pf-label" data-i18n="pf.nickname">What should our AI call you?</label>
-                        <input id="pf-nickname" type="text" maxlength="30" class="pf-input"
-                               placeholder="e.g. Jon" data-i18n-placeholder="pf.nicknamePh"
-                               oninput="saveNickname(this.value)">
+                        <div class="pf-nickname-row">
+                            <input id="pf-nickname" type="text" maxlength="30" class="pf-input"
+                                   placeholder="e.g. Jon" data-i18n-placeholder="pf.nicknamePh"
+                                   autocomplete="nickname"
+                                   oninput="markNicknameUnsaved()"
+                                   onkeydown="if(event.key==='Enter'){event.preventDefault();saveNickname();}">
+                            <button type="button" id="pf-nickname-check" class="pf-nickname-check"
+                                    onclick="saveNickname()" aria-label="Save what Ask AI should call you">✓ Check</button>
+                        </div>
                         <span id="pf-nickname-status" class="pf-note" aria-live="polite"></span>
                     </div>
                 </div><!-- ============================================ -->
@@ -765,13 +770,13 @@
     <script src="/build-meta.js?v=20260919-release3"></script>
 <script src="/app-install-state.js?v=187"></script>
 <script defer src="/install.js?v=187"></script>
-    <script defer src="/avatars.js?v=187"></script>
+    <script defer src="/avatars.js?v=20260921-nickname1"></script>
     <script src="/matching-policy.js?v=200"></script>
     <script src="/match-localization.js?v=187"></script>
 <script src="/app.js?v=210"></script>
     <script src="/install-progress.js?v=200"></script>
     <script src="/taste.js?v=187"></script>
-    <script src="/profile.js?v=195"></script>
+    <script src="/profile.js?v=20260921-nickname1"></script>
     <script src="/portfolio-history.js?v=194"></script>
     <script src="/tv.js?v=187"></script>
 <script src="/passkeys.js?v=187"></script>
