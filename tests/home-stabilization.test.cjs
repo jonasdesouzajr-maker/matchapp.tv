@@ -105,7 +105,7 @@ test('hard refresh keeps decorative poster work behind critical page load',()=>{
 
 test('only the Home Match\/Ask Ai concierge card gets the stronger glass surface',()=>{
   const css=read('home-8k-layout.css');
-  assert.match(css,/#ma-concierge\{[^}]*rgba\(8,10,24,\.76\)!important/);
+  assert.match(css,/#ma-concierge\{[^}]*rgba\(8,10,24,\.88\)!important/);
   assert.match(css,/#ma-concierge\{[^}]*border-color:rgba\(232,186,64,\.42\)!important/);
-  assert.doesNotMatch(css,/#latest-news\{[^}]*rgba\(8,10,24,\.76\)!important/);
+  assert.doesNotMatch(css,/#latest-news\{[^}]*rgba\(8,10,24,\.88\)!important/);
 });
