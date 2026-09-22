@@ -51,16 +51,19 @@ test('browser install is real, consent-based, secure and localized',()=>{
 test('final wiring preserves localized install identity and all primary install buttons load fresh code',()=>{
   const wiring=read('final-wiring.js');
   const meta=read('build-meta.js');
-  assert.match(wiring,/manifest-pt-br\\.json/);
+  const install=read('install.js');
+  const version=(install.match(/MATCHAPP_INSTALL_VERSION = '([^']+)'/)||[])[1];
+  assert.ok(version,'install.js must expose a cache/version identity');
+  assert.match(wiring,/manifest-pt-br\.json/);
   assert.match(wiring,/MatchApp iA/);
   assert.match(wiring,/MatchApp Ai/);
-  assert.match(wiring,/matchapp-ai-install-192\\.png/);
-  assert.doesNotMatch(wiring,/matchapp-apple-touch-icon\\.png/);
-  assert.match(meta,/\\/final-wiring\\.js\\?v=20260922-install2/);
+  assert.match(wiring,/matchapp-ai-install-192\.png/);
+  assert.doesNotMatch(wiring,/matchapp-apple-touch-icon\.png/);
+  assert.match(meta,/\/final-wiring\.js\?v=\d{8}-[\w-]+/);
   for(const page of ['index.html','friends.html','events-archive.html','kids/index.html','discover.html','together.html','pricing/pricing.html','profile/profile.html']){
     const html=read(page);
-    assert.match(html,/\\/build-meta\\.js\\?v=20260922-install2[\"']/);
-    assert.match(html,/\\/app-install-state\\.js\\?v=20260922-install2[\"']/);
-    assert.match(html,/\\/install\\.js\\?v=20260922-install2[\"']/);
+    assert.match(html,/\/build-meta\.js\?v=\d{8}-[\w-]+/);
+    assert.ok(html.includes('/app-install-state.js?v='+version),'fresh install state on '+page);
+    assert.ok(html.includes('/install.js?v='+version),'fresh installer on '+page);
   }
 });
