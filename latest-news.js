@@ -8,8 +8,8 @@
   const MAX_GLOBAL=5;
   const MAX_TOTAL=10;
   const SEEN_KEY='matchapp.latestNewsSeenVersion';
-  const AUTO_FIRST_MS=700;
-  const AUTO_MS=1050;
+  const AUTO_FIRST_MS=2600;
+  const AUTO_MS=4000;
   const TRUSTED_DOMAINS=['reuters.com','reutersagency.com','cnn.com','hollywoodreporter.com','bbc.com','bbc.co.uk','g1.globo.com'];
 
   const esc=s=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));

@@ -127,8 +127,8 @@ test('Home removes the nonfunctional trending fold bar and keeps autoplay bounde
  assert.match(lazy,/nextElementSibling[\s\S]*id!=='trending-rail'/);
  assert.match(css,/#trending-rail>h4\{display:none!important\}/);
  assert.match(app,/autoDelay = vp\.id === 'marquee-viewport' \? 1050 : 6500/);
- assert.match(news,/AUTO_FIRST_MS=700/);
- assert.match(news,/AUTO_MS=1050/);
+ assert.match(news,/AUTO_FIRST_MS=2600/);
+ assert.match(news,/AUTO_MS=4000/);
  assert.doesNotMatch(read('index.html'),/data-i18n="marquee\.title"/);
  assert.match(read('index.html'),/id="trending-rail" aria-label="Latest titles trending right now"/);
 });
