@@ -93,3 +93,9 @@ These are standing implementation rules for MatchApp work in this repository.
     - New or moved public URLs must be added to the sitemap (`node tools/update-sitemap.js` or the existing sitemap workflow) with real 200 targets. Keep GTM `GTM-M7J3NNBN` and AdSense `ca-pub-9541435081010948` on adult pages only — never on Kids.
     - Content/SEO/awareness bots must keep passing Validate and Deploy. Do not change a test contract to make a visual tweak pass; change the implementation to match the contract, or stop and ask.
     - Overlapping publishes: Deploy MatchApp Pages cancels the older in-flight run so GitHub does not emit a failed "in progress deployment" warning. Cancelled is expected; failed is not.
+
+12. **Smartphone, tablet, and Android Studio stay one product**
+    - Any visual or interaction change made for smartphones must be applied in the same task to tablets and both Android Studio WebView apps (`:app` MatchApp Ai and `:kidsapp` MatchApp Ai KIDS, where the surface exists).
+    - Do not ship a phone-only CSS/JS patch that leaves the tablet or Android WebView on the old layout.
+    - Hide duplicate install banners such as the "Get MatchApp Ai on your home screen / Open in Chrome" card once the header Install control exists. One install entry is enough.
+    - The header/home Install control should stay visually emphasized (gold frame, light pop) on phone, tablet, and Android WebView.
