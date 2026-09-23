@@ -1,4 +1,4 @@
-/* Approved Home chrome — 2026-09-23 onetap1. Idempotent overlay only. */
+/* Approved Home chrome — 2026-09-23 installpop2. Idempotent overlay only. */
 (function () {
   'use strict';
   if (!document.getElementById('ma-discover-composer-css')) {
@@ -22,7 +22,7 @@
     approvedLink.rel = 'stylesheet';
     (document.head || document.documentElement).appendChild(approvedLink);
   }
-  approvedLink.href = '/home-approved.css?v=20260923-installpop1';
+  approvedLink.href = '/home-approved.css?v=20260923-installpop2';
   if (!document.getElementById('ma-install-onetap')) {
     var ot=document.createElement('script');
     ot.id='ma-install-onetap';
@@ -86,7 +86,6 @@
       if (gone) gone.remove();
       return;
     }
-    if (window.matchMedia && window.matchMedia('(min-width:1101px)').matches) return;
     var installed = !!(standalone() || nativeShell() || (window.matchAppInstallState && window.matchAppInstallState.isInstalled()));
     var chip = document.getElementById('ma-install-chip');
     if (!chip) {
@@ -128,6 +127,8 @@
   function boot() {
     if (nativeShell()) document.documentElement.classList.add('ma-native-shell');
     if (standalone()) document.documentElement.classList.add('ma-installed');
+    var banner=document.getElementById('chrome-install-card');
+    if(banner){ banner.hidden=true; banner.style.display='none'; }
     mountHero();
     mountInstall();
     mountDock();
