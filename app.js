@@ -3701,6 +3701,32 @@ window.triggerMatch = async function(isSpecificSearch = false) {
             window.__matchappGenreKeys = new Set();
         }
     }
+    // Show the ceremony BEFORE any live-source work. The old order did all
+    // TMDB/iTunes/AI verification while the chooser remained on screen,
+    // making a healthy lookup look frozen on desktop and mobile.
+    const loadBox = document.getElementById('loading-box');
+    const qBox = document.getElementById('questionnaire-box');
+    const sBox = document.getElementById('search-box');
+    const resultBox = document.getElementById('result-box');
+    if (resultBox) resultBox.style.display = 'none';
+    if (qBox) qBox.style.display = 'none';
+    if (sBox) sBox.style.display = 'none';
+    if (loadBox) {
+        loadBox.style.display = 'block';
+        document.body.classList.add('match-searching');
+        requestAnimationFrame(() => loadBox.scrollIntoView({behavior:'auto',block:'center'}));
+    }
+    const startTime = Date.now();
+    // Progress is visual feedback, not a timer. Never hold a verified result
+    // just to finish an animation.
+    const PROGRESS_WINDOW_MS = 5000;
+    const pBar = document.getElementById('ai-progress-bar');
+    const pctLabel = document.getElementById('meter-pct');
+    const headline = document.getElementById('loading-headline');
+    const substep = document.getElementById('loading-substep');
+    const eqBars = document.querySelectorAll('#eq-bars span');
+    if (pBar) pBar.style.width = '0%';
+
     let preflight = isSpecificSearch ? null : pickFromCatalog(requested.cat,requested.plat,requested.mood,requested.vibe,requested.rating,requested.decade);
     // Never recycle a previously shown title. If the curated exact pool is
     // exhausted, ask the verified source layer for a genuinely fresh title.
@@ -3723,7 +3749,8 @@ window.triggerMatch = async function(isSpecificSearch = false) {
     if (!isSpecificSearch && !preflight) {
         ['questionnaire-box','search-box'].forEach(id=>{const el=document.getElementById(id);if(el)el.style.display='block';});
         ['loading-box','result-box'].forEach(id=>{const el=document.getElementById(id);if(el)el.style.display='none';});
-        window.showToast?.('Keeping your choices exact — source lookup is temporarily unavailable. Try Match again.');
+        document.body.classList.remove('match-searching');
+        window.showToast?.('Keeping your choices exact — no verified fresh title was available just now. Try Match again.');
         return;
     }
     const alreadySeenSpecific = isSpecificSearch && window.matchPolicy?.known().has(window.matchPolicy.key(typed));
@@ -3741,21 +3768,6 @@ window.triggerMatch = async function(isSpecificSearch = false) {
     if (!(await checkDailyLimit())) return;
     window.lastMatchWasSpecificSearch = isSpecificSearch;
     
-    const loadBox = document.getElementById('loading-box'); 
-    const qBox = document.getElementById('questionnaire-box'); 
-    const sBox = document.getElementById('search-box');
-    const resultBox = document.getElementById('result-box');
-
-    if (resultBox) resultBox.style.display = 'none';
-    if (qBox) qBox.style.display = 'none'; 
-    if (sBox) sBox.style.display = 'none';
-    
-    if (loadBox) { 
-        loadBox.style.display = 'block';
-        document.body.classList.add('match-searching');
-        setTimeout(() => loadBox.scrollIntoView({ behavior: 'smooth', block: 'center' }), 100);
-    }
-
     let promptText = "";
     if (isSpecificSearch) {
         const input = document.getElementById('specific-search-input');
@@ -3775,16 +3787,6 @@ window.triggerMatch = async function(isSpecificSearch = false) {
         // iTunes discovery), never from free-form AI invention.
     }
 
-    const startTime = Date.now();
-    const MIN_WAIT_MS = (isVIP) ? 3000 : 13500;
-    
-    const pBar = document.getElementById('ai-progress-bar');
-    const pctLabel = document.getElementById('meter-pct');
-    const headline = document.getElementById('loading-headline');
-    const substep = document.getElementById('loading-substep');
-    const eqBars = document.querySelectorAll('#eq-bars span');
-    if (pBar) pBar.style.width = '0%';
-
     // Narrated stages keep the wait feeling purposeful instead of idle.
     const STAGES = [
         { at: 0,  head: 'Scanning the global catalog…', sub: 'Reading your mood profile' },
@@ -3797,7 +3799,7 @@ window.triggerMatch = async function(isSpecificSearch = false) {
     let stageIdx = -1;
 
     let timerInterval = setInterval(() => {
-        const pct = Math.min(((Date.now() - startTime) / MIN_WAIT_MS) * 95, 95);
+        const pct = Math.min(((Date.now() - startTime) / PROGRESS_WINDOW_MS) * 95, 95);
         if (pBar) pBar.style.width = pct + '%';
         if (pctLabel) pctLabel.innerText = Math.round(pct) + '%';
 
@@ -3926,10 +3928,8 @@ window.triggerMatch = async function(isSpecificSearch = false) {
     // which known() reads, and a premature newmatch lets other modules hide
     // the card — the user then only sees the premiere poster below.
 
-    let timeSpent = Date.now() - startTime;
-    if (timeSpent < MIN_WAIT_MS) await new Promise(resolve => setTimeout(resolve, MIN_WAIT_MS - timeSpent));
-
     if (pBar) pBar.style.width = '100%';
+    if (pctLabel) pctLabel.innerText = '100%';
     clearInterval(timerInterval);
     
     await renderResult(matchResult, isSpecificSearch);
