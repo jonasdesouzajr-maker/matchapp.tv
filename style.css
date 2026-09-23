@@ -638,3 +638,158 @@ details[open] .settings-chevron { transform: rotate(180deg); }
     .install-progress.is-active { animation: none; }
     .install-progress-fill { transition: none; }
 }
+
+/* MA-DEPTH-3D:START
+   MatchApp 3D depth system. This exact block lives at the end of both
+   style.css and brand.css (together they cover every page); keep the two
+   copies identical — tests/depth-3d.test.cjs checks it.
+   - Static light + shadow only: no animations, no filters, no JS.
+   - Motion only on hover (mouse devices) and press, transform/box-shadow,
+     180 ms, and none under prefers-reduced-motion.
+   - Lives in a cascade layer so it can win over old !important patch rules
+     without escalating specificity. Inline styles still win, so script-set
+     display/visibility is never overridden. Opt out with .no-depth. */
+@layer ma-depth {
+  :root {
+    --d3-hi: inset 0 1px 0 rgba(255, 255, 255, .3), inset 0 24px 28px -24px rgba(255, 255, 255, .16);
+    --d3-lo: inset 0 -2px 0 rgba(0, 0, 0, .3), inset 0 -18px 24px -18px rgba(0, 0, 0, .55);
+    --d3-raise-1: 0 1px 1px rgba(0, 0, 0, .35), 0 5px 12px -4px rgba(0, 0, 0, .55);
+    --d3-raise-2: 0 2px 3px rgba(0, 0, 0, .35), 0 14px 26px -10px rgba(0, 0, 0, .75), 0 22px 40px -22px rgba(118, 58, 214, .5);
+    --d3-raise-3: 0 4px 8px rgba(0, 0, 0, .35), 0 22px 38px -12px rgba(0, 0, 0, .78), 0 34px 60px -28px rgba(118, 58, 214, .6);
+    --d3-well: inset 0 2px 5px rgba(0, 0, 0, .5), inset 0 -1px 0 rgba(255, 255, 255, .07);
+    --d3-glow: 0 0 0 1px rgba(229, 193, 88, .6), 0 0 16px rgba(229, 193, 88, .3);
+    --d3-gold-rest: inset 0 1px 0 rgba(255, 255, 255, .55), inset 0 -2px 0 rgba(122, 72, 4, .35), 0 4px 0 #8a5a12, 0 7px 14px -3px rgba(0, 0, 0, .6), 0 0 18px rgba(229, 193, 88, .2);
+    --d3-gold-hover: inset 0 1px 0 rgba(255, 255, 255, .6), inset 0 -2px 0 rgba(122, 72, 4, .35), 0 5px 0 #8a5a12, 0 10px 20px -4px rgba(0, 0, 0, .62), 0 0 24px rgba(229, 193, 88, .32);
+    --d3-gold-press: inset 0 2px 4px rgba(122, 72, 4, .45), 0 1px 0 #8a5a12, 0 3px 8px -3px rgba(0, 0, 0, .6);
+    --d3-key-rest: inset 0 1px 0 rgba(255, 255, 255, .35), 0 4px 0 rgba(0, 0, 0, .32), 0 7px 14px -3px rgba(0, 0, 0, .5);
+    --d3-key-press: inset 0 2px 4px rgba(0, 0, 0, .3), 0 1px 0 rgba(0, 0, 0, .32);
+    --d3-t: transform .18s cubic-bezier(.2, .8, .2, 1), box-shadow .18s ease, background-color .18s ease, border-color .18s ease, color .18s ease, opacity .18s ease;
+  }
+
+  /* Raised panels and cards */
+  :where(.app-header, .premium-card, .marquee-wrapper, .ma-concierge, .daily-checkin, .awareness-card,
+    .global-events-fold, .seo-footer, .profile-hub-row, .purchase-pack, .credit-pack, .ma-plan,
+    .ma-secondary-product, .purchase-hub, .w2w-region, .w2w-note, .seo-item, .kids-shell, .kids-match,
+    .kids-age-wrap, .friend-panel, .passkey-box, .portfolio-panel, .matchapp-exclusion-box,
+    .matchapp-exclusion-group, .ai-usage-card, .composer, .ma-cookie, .ma-av-entry):where(:not(.no-depth)) {
+    box-shadow: var(--d3-hi), var(--d3-lo), var(--d3-raise-2) !important;
+  }
+
+  /* Light from above: brighter top edge, darker bottom edge (only where a border exists) */
+  :where(.app-header, .premium-card, .marquee-wrapper, .ma-concierge, .daily-checkin, .awareness-card,
+    .global-events-fold, .seo-footer, .profile-hub-row, .purchase-pack, .credit-pack, .ma-plan,
+    .ma-secondary-product, .purchase-hub, .w2w-region, .w2w-note, .seo-item, .kids-shell, .kids-match,
+    .kids-age-wrap, .friend-panel, .passkey-box, .portfolio-panel, .matchapp-exclusion-box,
+    .matchapp-exclusion-group, .ai-usage-card, .composer, .ma-av-entry, .marquee-item, .spotlight-poster, .kids-card):where(:not(.no-depth)) {
+    border-top-color: rgba(255, 240, 190, .6) !important;
+    border-bottom-color: rgba(0, 0, 0, .6) !important;
+  }
+
+  /* Clickable cards: lift, and tilt toward the viewer on mouse hover */
+  :where(.profile-hub-row, .purchase-pack, .credit-pack, .ma-plan, .ma-secondary-product, .seo-item, .w2w-region):where(:not(.no-depth)) {
+    transition: var(--d3-t) !important;
+  }
+
+  /* Posters: deep shadow + 3D tilt on hover */
+  :where(.marquee-item, .spotlight-poster, .kids-card):where(:not(.no-depth)) {
+    box-shadow: var(--d3-hi), var(--d3-lo), var(--d3-raise-2) !important;
+    transition: var(--d3-t) !important;
+  }
+
+  /* Neutral buttons and header tiles: raised, press in */
+  :where(.secondary-btn, .ma-plan-cta, .credit-pack-btn, .dc-action, .spotlight-ask, .ai-new-chat,
+    .kids-secondary, .kids-pill, .kids-watch, .social-btn, .awareness-cta, .tg-entry, .mh-home-btn,
+    .ma-how-button, .ma-menu-button, .sound-toggle-btn, .matchapp-notification-button, .ma-cookie .ok, .ma-cookie .no,
+    .mh-deck > #nav-reg-btn, .mh-deck > #nav-logout-btn):where(:not(.no-depth, .gold-btn, #avatar-maker-dialog *)) {
+    box-shadow: var(--d3-hi), var(--d3-lo), var(--d3-raise-1) !important;
+    transition: var(--d3-t) !important;
+  }
+
+  /* Gold primary buttons: pressable 3D keycap */
+  :where(.gold-btn, .ma-av-entry-btn):where(:not(.no-depth, #avatar-maker-dialog *)) {
+    box-shadow: var(--d3-gold-rest) !important;
+    transition: var(--d3-t) !important;
+  }
+  /* Kids primary: same keycap, neutral edge so the candy colours stay */
+  :where(.kids-primary):where(:not(.no-depth)) {
+    box-shadow: var(--d3-key-rest) !important;
+    transition: var(--d3-t) !important;
+  }
+
+  /* Chips and tabs */
+  :where(.ma-chip, .kids-chip, .matchapp-exclusion-chip, .theme-choice):where(:not(.no-depth)) {
+    box-shadow: var(--d3-hi), 0 2px 0 rgba(0, 0, 0, .45), 0 5px 10px -4px rgba(0, 0, 0, .55) !important;
+    transition: var(--d3-t) !important;
+  }
+  :where(.ma-tabs, .purchase-tabs):where(:not(.no-depth)) {
+    box-shadow: var(--d3-well) !important;
+  }
+  :where(.ma-tab, .purchase-tab, .portfolio-tab):where(:not(.no-depth)) {
+    transition: var(--d3-t) !important;
+  }
+
+  /* Text fields sit into the surface */
+  :where(input:not([type]), input[type="text"], input[type="search"], input[type="email"], input[type="password"],
+    input[type="tel"], input[type="number"], input[type="url"], textarea, select):where(:not(.no-depth, #avatar-maker-dialog *)) {
+    box-shadow: var(--d3-well) !important;
+  }
+  :where(input:not([type]), input[type="text"], input[type="search"], input[type="email"], input[type="password"],
+    input[type="tel"], input[type="number"], input[type="url"], textarea, select):where(:not(.no-depth, #avatar-maker-dialog *)):focus-visible {
+    box-shadow: var(--d3-well), 0 0 0 2px rgba(229, 193, 88, .55) !important;
+  }
+
+  /* Dialogs float highest */
+  :where(dialog:not(#avatar-maker-dialog), .modal-content):where(:not(.no-depth)) {
+    box-shadow: var(--d3-hi), var(--d3-lo), var(--d3-raise-3) !important;
+  }
+
+  /* ---- selected / active states (after the bases so they win) ---- */
+  :where(.ma-chip, .kids-chip, .matchapp-exclusion-chip, .theme-choice):where(:not(.no-depth)):is(.active, .is-active, .selected, .is-selected, [aria-pressed="true"], [aria-checked="true"], [aria-selected="true"]) {
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, .32), var(--d3-glow) !important;
+  }
+  :where(.ma-tab, .purchase-tab, .portfolio-tab):where(:not(.no-depth)):is(.active, .is-active, .selected, [aria-selected="true"]) {
+    box-shadow: var(--d3-hi), var(--d3-raise-1) !important;
+  }
+
+  /* ---- motion: mouse hover only ---- */
+  @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+    :where(.profile-hub-row, .purchase-pack, .credit-pack, .ma-plan, .ma-secondary-product, .seo-item, .w2w-region):where(:not(.no-depth)):hover {
+      transform: perspective(900px) rotateX(3deg) translateY(-3px) !important;
+      box-shadow: var(--d3-hi), var(--d3-lo), var(--d3-raise-3) !important;
+    }
+    :where(.marquee-item, .spotlight-poster, .kids-card):where(:not(.no-depth)):hover {
+      transform: perspective(700px) rotateY(-6deg) rotateX(3deg) translateY(-4px) !important;
+      box-shadow: var(--d3-hi), var(--d3-lo), -12px 24px 36px -12px rgba(0, 0, 0, .8), 0 0 0 1px rgba(229, 193, 88, .45), 0 0 26px rgba(229, 193, 88, .22) !important;
+    }
+    :where(.secondary-btn, .ma-plan-cta, .credit-pack-btn, .dc-action, .spotlight-ask, .ai-new-chat,
+      .kids-secondary, .kids-pill, .kids-watch, .social-btn, .awareness-cta, .tg-entry, .mh-home-btn,
+      .ma-how-button, .ma-menu-button, .sound-toggle-btn, .matchapp-notification-button, .ma-cookie .ok, .ma-cookie .no,
+      .mh-deck > #nav-reg-btn, .mh-deck > #nav-logout-btn, .ma-chip, .kids-chip, .matchapp-exclusion-chip, .theme-choice):where(:not(.no-depth, .gold-btn, #avatar-maker-dialog *)):hover {
+      transform: translateY(-1px) !important;
+    }
+    :where(.gold-btn, .ma-av-entry-btn):where(:not(.no-depth, #avatar-maker-dialog *)):hover {
+      transform: translateY(-1px) !important;
+      box-shadow: var(--d3-gold-hover) !important;
+    }
+  }
+
+  /* ---- press (touch and mouse) ---- */
+  @media (prefers-reduced-motion: no-preference) {
+    :where(.gold-btn, .ma-av-entry-btn):where(:not(.no-depth, #avatar-maker-dialog *)):active {
+      transform: translateY(3px) !important;
+      box-shadow: var(--d3-gold-press) !important;
+    }
+    :where(.kids-primary):where(:not(.no-depth)):active {
+      transform: translateY(3px) !important;
+      box-shadow: var(--d3-key-press) !important;
+    }
+    :where(.secondary-btn, .ma-plan-cta, .credit-pack-btn, .dc-action, .spotlight-ask, .ai-new-chat,
+      .kids-secondary, .kids-pill, .kids-watch, .social-btn, .awareness-cta, .tg-entry, .mh-home-btn,
+      .ma-how-button, .ma-menu-button, .sound-toggle-btn, .matchapp-notification-button, .ma-cookie .ok, .ma-cookie .no,
+      .mh-deck > #nav-reg-btn, .mh-deck > #nav-logout-btn, .ma-chip, .kids-chip, .matchapp-exclusion-chip, .theme-choice):where(:not(.no-depth, .gold-btn, #avatar-maker-dialog *)):active {
+      transform: translateY(1px) !important;
+      box-shadow: var(--d3-well) !important;
+    }
+  }
+}
+/* MA-DEPTH-3D:END */
