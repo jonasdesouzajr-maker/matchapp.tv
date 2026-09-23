@@ -115,6 +115,12 @@
       }
       if (audioIntent) results = results.filter(item => /podcast|music|song|album|playlist|single|audiobook/i.test(String(item?.type || '') + ' ' + String(item?.platform || '')));
       parsed.results = results;
+      if (audioIntent) {
+        const firstAudio = results[0];
+        parsed.answer = firstAudio
+          ? (String(firstAudio.title) + (firstAudio.synopsis ? ' — ' + String(firstAudio.synopsis).replace(/\s+/g,' ').trim() : ''))
+          : (lang.startsWith('pt') ? 'Não encontrei uma opção de áudio confiável agora. Tente novamente em instantes.' : 'I could not verify a reliable audio result just now. Please try again in a moment.');
+      }
       if (!parsed.answer) {
         const first = results[0];
         const syn = first && String(first.synopsis || '').replace(/\s+/g, ' ').trim();
