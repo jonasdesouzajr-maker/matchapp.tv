@@ -74,3 +74,17 @@ test('screen covers go through typed TMDB lookup before any secondary artwork so
   vm.runInContext(declaration('getRealCoverImage')+'\n'+declaration('hydrateMarqueeCovers'),c);
   await c.hydrateMarqueeCovers();assert.deepEqual(calls,['tmdb']);assert.match(img.src,/correct.jpg$/);
 });
+
+
+test('match result paints a local cover before attempting any remote artwork',()=>{
+  const src=app;
+  const local=src.indexOf('posterEl.src = localCover;');
+  const probe=src.indexOf('const probe = new Image();',local);
+  const remote=src.indexOf('probe.src = realCover;',probe);
+  assert(local>=0,'match renderer must assign the generated local cover');
+  assert(probe>local,'remote artwork must be probed only after local artwork is painted');
+  assert(remote>probe,'remote URL must load through the probe, never directly into the visible poster');
+  const guarded=src.slice(probe,remote+80);
+  assert.match(guarded,/probe\.onload[\s\S]*posterEl\.src = realCover/,'real artwork may replace fallback only after successful load');
+  assert.match(guarded,/probe\.onerror[\s\S]*keep the already-painted local cover/,'failed artwork must preserve the visible fallback');
+});
