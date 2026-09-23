@@ -3133,9 +3133,9 @@ async function discoverVerifiedExactTMDB(requested){
     const start=decade.length===1?Number(String(decade[0]).match(/\d{4}/)?.[0]):0;
     const region=window.MatchAppCatalogMedia?.regionCode?.()||'BR';
     const provider=platform.length===1?platform[0]:'';
-    const candidates=await window.tmdbDiscover({kind,genre_ids:genreIds,original_language:cat.includes('anime')?'ja':'',decade_start:start||0,pages:provider?5:2,provider,region},{priority:true});
+    const candidates=await window.tmdbDiscover({kind,genre_ids:genreIds,original_language:cat.includes('anime')?'ja':'',decade_start:start||0,pages:provider?1:2,provider,region},{priority:true});
     const prefs=currentPreferenceExclusions(),known=window.matchPolicy?.known?.()||new Set();
-    for(const base of candidates.slice(0,provider?100:30)){
+    for(const base of candidates.slice(0,provider?8:20)){
       const key=window.matchPolicy?.key?.(base.title)||'';
       if(!key||known.has(key)||SESSION_SHOWN.has(base.title))continue;
       const d=await window.tmdbDetails(base.tmdbId,base.kind,{priority:true});if(!d)continue;
