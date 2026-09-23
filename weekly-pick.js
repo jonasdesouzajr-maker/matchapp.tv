@@ -196,11 +196,13 @@ function addCatalogEntry(){
 /* The cover comes from the verified TMDB identity through MatchApp's own
    proxy — one request, cached by tmdb.js, and a silent no-op when the proxy
    is unavailable so the branded plate simply stays. */
-async function resolveArtwork(){
-  if(PICK.poster||!PICK.tmdbId||typeof window.tmdbDetails!=='function')return;
+async function resolveArtwork(attempt=0){
+  if(PICK.poster||!PICK.tmdbId)return;
+  if(typeof window.tmdbDetails!=='function'){if(attempt<5)setTimeout(()=>resolveArtwork(attempt+1),350*(attempt+1));return;}
   let record=null;
   try{record=await window.tmdbDetails(PICK.tmdbId,PICK.kind||'movie');}catch(_){record=null;}
   const url=record&&(record.posterLarge||record.poster);
+  if(!url&&attempt<3){setTimeout(()=>resolveArtwork(attempt+1),700*(attempt+1));return;}
   if(!/^https:\/\/image\.tmdb\.org\/t\/p\/(?:w[0-9]+|original)\/[A-Za-z0-9_.-]+$/.test(String(url||'')))return;
   PICK.poster=url;
   try{if(typeof VERIFIED_POSTERS!=='undefined'&&VERIFIED_POSTERS)VERIFIED_POSTERS[PICK.title]=url;}catch(_){}
