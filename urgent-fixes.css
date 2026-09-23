@@ -37,7 +37,7 @@ html[data-theme] a:is(.marquee-title,.poster-title){
 #tab-history{order:-1}
 #panel-history{padding:18px !important;border:1px solid rgba(229,193,88,.28);border-radius:16px;background:rgba(255,255,255,.03);margin-bottom:28px}
 .profile-history-card{display:grid;grid-template-columns:56px minmax(0,1fr);gap:12px;padding:10px;border:1px solid rgba(255,255,255,.09);border-radius:14px;background:rgba(255,255,255,.03);align-items:center}
-.profile-history-poster{width:56px;height:84px;object-fit:cover;border-radius:8px;background:#0b0a0f}
+.profile-history-poster{width:56px;height:84px;object-fit:contain;border-radius:8px;background:#0b0a0f}
 .profile-history-copy{min-width:0}
 .profile-history-copy h3{margin:0 0 4px;font-size:15px}
 .profile-history-copy p{margin:0 0 8px;font-size:12px;line-height:1.4;opacity:.85}
