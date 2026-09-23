@@ -1,7 +1,7 @@
 /* Final production wiring: activate reviewed hardening modules without duplicating page markup. */
 (function(){
   'use strict';
-  const V='20260921-release1';
+  const V='20260923-videoaudit1';
   const PWA_V='20260922-icon3';
   const INSTALL_MANIFEST_PT='/manifest-pt-br.json';
   const INSTALL_NAME_PT='MatchApp iA';
