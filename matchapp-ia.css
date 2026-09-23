@@ -1145,7 +1145,7 @@ html body.page-home #trending-rail .marquee-item{
   box-shadow:0 15px 34px rgba(0,0,0,.34)!important;
 }
 html body.page-home #trending-rail .marquee-item img{
-  width:100%!important;height:100%!important;object-fit:cover!important;
+  width:100%!important;height:100%!important;object-fit:contain!important;object-position:center!important;
 }
 html body.page-home #trending-rail::before,
 html body.page-home #trending-rail::after{display:none!important}
