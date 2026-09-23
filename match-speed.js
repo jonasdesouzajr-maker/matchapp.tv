@@ -29,8 +29,8 @@
     if(activePromise)return activePromise;
 
     let finished=false;
-    // 13.5s meter + artwork fetch. Only fire if the match is genuinely stuck.
-    const watchdog=nativeSetTimeout(()=>{if(!finished)recover();},30000);
+    // Verified-source work should never strand the UI. Recover promptly if it genuinely stalls.
+    const watchdog=nativeSetTimeout(()=>{if(!finished)recover();},12000);
 
     activePromise=(async()=>{
       try{return await original.apply(this,args);}
