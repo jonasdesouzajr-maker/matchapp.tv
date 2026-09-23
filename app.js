@@ -1537,15 +1537,20 @@ window.eventMatch = function (query) {
         const card = el.querySelector(':scope > * > *') || el.firstElementChild;
         const step = Math.max(220, (card?.getBoundingClientRect().width || 280) + 16);
         el.scrollBy({ left: dir * step, behavior: REDUCED ? 'auto' : 'smooth' });
+        // The Home arrows call this from inline onclick, so the autoplay hold
+        // has to start here rather than in a click listener.
+        el.__railHold?.();
     };
     window.marqueeNudge = function (dir) { window.railNudge('marquee-viewport', dir); };
 
     function updateArrows(vp) {
         const root = vp.closest('.marquee-wrapper,.events-wrapper,.ma-news-carousel-shell,.premium-card') || vp.parentElement;
         if (!root) return;
-        const max = Math.max(0, vp.scrollWidth - vp.clientWidth - 2);
-        root.querySelectorAll('[data-rail-dir="-1"],.marquee-prev,.events-prev,.ma-news-prev').forEach(b => { b.disabled = vp.scrollLeft <= 2; });
-        root.querySelectorAll('[data-rail-dir="1"],.marquee-next,.events-next,.ma-news-next').forEach(b => { b.disabled = vp.scrollLeft >= max; });
+        // Snap padding parks the first card a few px in, so the ends use a
+        // small tolerance instead of exact 0 / max.
+        const max = Math.max(0, vp.scrollWidth - vp.clientWidth - 32);
+        root.querySelectorAll('[data-rail-dir="-1"],.marquee-prev,.marquee-arrow--left,.events-prev,.ma-news-prev').forEach(b => { b.disabled = vp.scrollLeft <= 32; });
+        root.querySelectorAll('[data-rail-dir="1"],.marquee-next,.marquee-arrow--right,.events-next,.ma-news-next').forEach(b => { b.disabled = vp.scrollLeft >= max; });
     }
 
     function init(vp) {
@@ -1553,8 +1558,11 @@ window.eventMatch = function (query) {
         vp.dataset.railReady = '1';
         vp.tabIndex = vp.tabIndex >= 0 ? vp.tabIndex : 0;
         const root = vp.closest('.marquee-wrapper,.events-wrapper,.ma-news-carousel-shell,.premium-card') || vp.parentElement;
-        let paused = false, visible = true;
+        // Autoplay runs only while visible, pauses while hovered, and holds
+        // off for a while after any touch, drag, key or arrow press.
+        let hovering = false, holdUntil = 0, visible = true;
         const autoDelay = vp.id === 'marquee-viewport' ? 1050 : 6500;
+        const HOLD_AFTER_TOUCH = 8000;
 
         root?.querySelectorAll('[data-rail-dir],.marquee-prev,.marquee-next,.events-prev,.events-next,.ma-news-prev,.ma-news-next').forEach(btn => {
             if (btn.dataset.railBound === '1') return;
@@ -1580,9 +1588,11 @@ window.eventMatch = function (query) {
             const step = Math.max(220, (card?.getBoundingClientRect().width || 280) + 16);
             vp.scrollBy({left:dir*step,behavior:REDUCED?'auto':'smooth'});
         });
-        vp.addEventListener('scroll', () => updateArrows(vp), { passive:true });
-        ['pointerdown','touchstart','focusin','mouseenter'].forEach(type => vp.addEventListener(type,()=>{paused=true},{passive:true}));
-        ['pointerup','touchend','focusout','mouseleave'].forEach(type => vp.addEventListener(type,()=>{paused=false},{passive:true}));
+        let arrowFrame = 0;
+        vp.addEventListener('scroll', () => {
+            if (arrowFrame) return;
+            arrowFrame = requestAnimationFrame(() => { arrowFrame = 0; updateArrows(vp); });
+        }, { passive:true });
 
         if ('IntersectionObserver' in window) {
             const io = new IntersectionObserver(entries => {
@@ -1593,12 +1603,14 @@ window.eventMatch = function (query) {
         }
         let autoTimer=0;
         const stopAuto=()=>{if(autoTimer){clearTimeout(autoTimer);autoTimer=0;}};
-        const scheduleAuto=()=>{
+        const paused=()=>hovering || vp.contains(document.activeElement) || Date.now() < holdUntil;
+        const scheduleAuto=(delay)=>{
             stopAuto();
-            if(REDUCED || paused || !visible || document.hidden || vp.scrollWidth <= vp.clientWidth) return;
+            if(REDUCED || !visible || document.hidden || vp.scrollWidth <= vp.clientWidth) return;
             autoTimer=setTimeout(()=>{
                 autoTimer=0;
-                if(paused || !visible || document.hidden) return;
+                if(!visible || document.hidden) return;
+                if(paused()) { scheduleAuto(Math.max(600, holdUntil - Date.now())); return; }
                 const max = vp.scrollWidth - vp.clientWidth;
                 if (vp.scrollLeft >= max - 4) vp.scrollTo({left:0,behavior:'smooth'});
                 else {
@@ -1607,10 +1619,17 @@ window.eventMatch = function (query) {
                     vp.scrollBy({left:step,behavior:'smooth'});
                 }
                 scheduleAuto();
-            },autoDelay);
+            },delay || autoDelay);
         };
-        ['pointerdown','touchstart','focusin','mouseenter'].forEach(type => vp.addEventListener(type,stopAuto,{passive:true}));
-        ['pointerup','touchend','focusout','mouseleave'].forEach(type => vp.addEventListener(type,scheduleAuto,{passive:true}));
+        // Mouse hover pauses until the pointer leaves; touches, drags, arrow
+        // clicks and keys hold autoplay off for a while after the last one.
+        const hold=()=>{ holdUntil = Date.now() + HOLD_AFTER_TOUCH; scheduleAuto(HOLD_AFTER_TOUCH); };
+        vp.__railHold = hold;
+        vp.addEventListener('mouseenter',()=>{ hovering = true; stopAuto(); },{passive:true});
+        vp.addEventListener('mouseleave',()=>{ hovering = false; scheduleAuto(); },{passive:true});
+        ['pointerdown','touchstart','wheel','keydown'].forEach(type => vp.addEventListener(type,hold,{passive:true}));
+        root?.querySelectorAll('[data-rail-dir],.marquee-prev,.marquee-next,.events-prev,.events-next,.ma-news-prev,.ma-news-next').forEach(btn => btn.addEventListener('click',hold));
+        vp.addEventListener('focusout',()=>scheduleAuto(),{passive:true});
         document.addEventListener('visibilitychange',()=>{if(document.hidden)stopAuto();else scheduleAuto();});
         scheduleAuto();
         updateArrows(vp);
