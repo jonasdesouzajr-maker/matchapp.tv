@@ -3801,7 +3801,13 @@ window.triggerMatch = async function(isSpecificSearch = false) {
         return;
     }
     const alreadySeenSpecific = isSpecificSearch && window.matchPolicy?.known().has(window.matchPolicy.key(typed));
-    if (isSpecificSearch && !typed.trim()) return;
+    if (isSpecificSearch && !typed.trim()) {
+        clearInterval(timerInterval);
+        document.body.classList.remove('match-searching');
+        if (loadBox) loadBox.style.display='none';
+        if (sBox) { sBox.style.display='block'; sBox.scrollIntoView({behavior:'auto',block:'center'}); }
+        return;
+    }
     if (alreadySeenSpecific) {
         // A rematch may already have hidden the previous result. Restore the
         // form before returning so an exhausted selection never strands it.
