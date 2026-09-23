@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://matchapp.tv/</loc>
-        <lastmod>2026-09-23T08:28:59+00:00</lastmod>
+        <lastmod>2026-09-23T07:04:34+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
@@ -23,6 +23,30 @@
         <lastmod>2026-09-21T10:16:09+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/desktop/windows.html</loc>
+        <lastmod>2026-09-23T10:09:34+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/desktop/macos.html</loc>
+        <lastmod>2026-09-23T10:09:34+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/kids/desktop/windows.html</loc>
+        <lastmod>2026-09-23T10:09:34+00:00</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/kids/desktop/macos.html</loc>
+        <lastmod>2026-09-23T10:09:34+00:00</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.4</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/kids/</loc>
@@ -1022,13 +1046,13 @@
     </url>
     <url>
         <loc>https://matchapp.tv/awareness/world-alzheimers-month-2026/</loc>
-        <lastmod>2026-09-22T14:22:40+00:00</lastmod>
+        <lastmod>2026-09-23T10:09:34+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/awareness/world-mental-health-day-2026/</loc>
-        <lastmod>2026-09-22T14:25:39+00:00</lastmod>
+        <lastmod>2026-09-23T10:09:34+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
     </url>
