@@ -3791,6 +3791,20 @@ window.triggerMatch = async function(isSpecificSearch = false) {
     if (!isSpecificSearch && !preflight && typeof aiProposedVerifiedExact === 'function') {
         try { preflight = await aiProposedVerifiedExact(requested); } catch (_) { preflight = null; }
     }
+    // Never dead-end ordinary matching because every fresh exact candidate has
+    // already been shown or a live source is temporarily unavailable. Recycle
+    // an exact eligible catalogue title first; only then use the existing
+    // guaranteed recovery ladder. User-saved / Not For Me titles remain hard
+    // exclusions in both helpers.
+    if (!isSpecificSearch && !preflight && typeof pickRecycledCatalog === 'function') {
+        try { preflight = pickRecycledCatalog(requested.cat,requested.plat,requested.mood,requested.vibe,requested.rating,requested.decade); } catch (_) { preflight = null; }
+    }
+    if (!isSpecificSearch && !preflight && typeof pickGuaranteedCatalog === 'function') {
+        try {
+            preflight = pickGuaranteedCatalog(requested.cat,requested.plat,requested.mood,requested.vibe,requested.rating,requested.decade);
+            if (preflight?._relaxedStage) window.lastMatchRelaxation = preflight._relaxedStage;
+        } catch (_) { preflight = null; }
+    }
     const typed = document.getElementById('specific-search-input')?.value || '';
     if (!isSpecificSearch && !preflight) {
         ['questionnaire-box','search-box'].forEach(id=>{const el=document.getElementById(id);if(el)el.style.display='block';});
