@@ -420,21 +420,12 @@
       }
       if(chosen.length>=3)break;
     }
-    // Final invariant: if any age-approved titles exist, fill remaining slots
-    // from that same safe pool. This is intentionally after the staged search:
-    // mood/format/era are preferences; age approval is the hard boundary.
-    if(chosen.length<Math.min(3,safePool.length)){
-      const remainder=safePool.filter(item=>
-          !seen.has(slug(item)) &&
-          !window.matchPolicy?.known().has(window.matchPolicy.key(item.title))
-        )
-        .map(item=>({item,score:(previousMatch.includes(item.title)?0:2)+Math.random()}))
-        .sort((a,b)=>b.score-a.score);
-      for(const row of remainder){
-        const key=slug(row.item);if(seen.has(key))continue;seen.add(key);chosen.push(row.item);
-        if(chosen.length>=Math.min(3,safePool.length))break;
-      }
-    }
+    // Never silently discard the child's selected mood/format just to fill
+    // three cards. Era is the only soft preference: after exact matching we
+    // may broaden the decade, but mood and format remain hard boundaries.
+    // If the unseen approved pool is exhausted, show fewer choices/noMatch;
+    // never substitute an unrelated Kids title.
+    const minimumTarget=Math.min(3,safePool.length);
     matchPicks=chosen.slice(0,3);previousMatch=matchPicks.map(x=>x.title);
     renderMatchResults();
     document.getElementById('kids-match-status').textContent=matchPicks.length?tr('matchReady'):tr('noMatch');
