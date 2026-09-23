@@ -39,19 +39,44 @@
     // The server's independent rate limit remains authoritative.
     const requests = [], pendingRequests = new Map();
     let activeRequests = 0, requestCount = 0, windowStarted = Date.now(), requestTimer;
+    // Covers and captions share 44 of the ~60 requests per minute the server
+    // allows; a Match lookup jumps the queue and may use the reserve, so a
+    // page full of posters can never starve the Match itself.
+    const BACKGROUND_BUDGET = 44, PRIORITY_BUDGET = 56;
+    const canStart = job => requestCount < (job.priority ? PRIORITY_BUDGET : BACKGROUND_BUDGET);
     function pumpRequests() {
         if (Date.now() - windowStarted >= 60000) { windowStarted = Date.now(); requestCount = 0; }
-        if (requestCount >= 48 && requests.length && !requestTimer) requestTimer = setTimeout(() => { requestTimer = null; pumpRequests(); }, Math.max(1,60000-(Date.now()-windowStarted)));
-        while (activeRequests < 4 && requests.length && requestCount < 48) {
+        if (requests.length && !canStart(requests[0]) && !requestTimer) requestTimer = setTimeout(() => { requestTimer = null; pumpRequests(); }, Math.max(1,60000-(Date.now()-windowStarted)));
+        while (activeRequests < 4 && requests.length && canStart(requests[0])) {
             const {body,resolve,key} = requests.shift(); activeRequests++; requestCount++;
             Promise.resolve().then(() => window.supabaseClient.functions.invoke('tmdb-proxy',{body}))
                 .catch(() => ({data:null,error:true})).then(resolve).finally(() => {activeRequests--;pendingRequests.delete(key);pumpRequests();});
         }
     }
-    window.requestTMDB = body => {
-        const key=JSON.stringify(body);if(pendingRequests.has(key))return pendingRequests.get(key);
-        const p=new Promise(resolve=>{requests.push({body,resolve,key});});pendingRequests.set(key,p);pumpRequests();return p;
+    window.requestTMDB = (body, opts) => {
+        const priority = !!(opts && opts.priority);
+        const key=JSON.stringify(body);
+        if(pendingRequests.has(key)){
+            // Already queued as a background request: promote it for the Match.
+            const at=priority?requests.findIndex(job=>job.key===key):-1;
+            if(at>0){const [job]=requests.splice(at,1);job.priority=true;requests.unshift(job);pumpRequests();}
+            return pendingRequests.get(key);
+        }
+        const p=new Promise(resolve=>{const job={body,resolve,key,priority};if(priority)requests.unshift(job);else requests.push(job);});
+        pendingRequests.set(key,p);pumpRequests();return p;
     };
+    // Match lookups retry a busy or unreachable source (429, 5xx, network)
+    // twice with a short backoff. A 4xx answer is final and is not retried.
+    const transientError = error => { const status = error && error.context && error.context.status; return !status || status === 429 || status >= 500; };
+    async function requestForMatch(body) {
+        let res = await window.requestTMDB(body, {priority:true});
+        for (let attempt = 1; res && res.error && transientError(res.error) && attempt <= 2; attempt++) {
+            const retryAfter = Number(res.error.context?.headers?.get?.('Retry-After')) || 0;
+            await new Promise(resolve => setTimeout(resolve, Math.min(4000, retryAfter ? retryAfter * 1000 : 900 * attempt)));
+            res = await window.requestTMDB(body, {priority:true});
+        }
+        return res || {data:null,error:true};
+    }
 
     // Maps MatchApp's catalogue categories onto TMDB's two indexes. Passing the
     // right one is the single biggest accuracy win available: searching a
@@ -98,13 +123,16 @@
 
         let best = null;
         try {
-            const { data, error } = await window.requestTMDB({
+            const lookupBody = {
                     query: title,
                     year: hints.year || '',
                     kind: kind || '',
                     lang: 'en-US'
-            });
-            if (error || !data || !Array.isArray(data.results)) { CACHE[cacheKey] = null; return null; }
+            };
+            const { data, error } = hints.priority ? await requestForMatch(lookupBody) : await window.requestTMDB(lookupBody);
+            // A failed request is not an answer: never cache it, or one busy
+            // minute would blank this title for the rest of the visit.
+            if (error || !data || !Array.isArray(data.results)) return null;
 
             let scored = data.results
                 .map(r => ({ r, score: scoreCandidate(title, hints, r) }))
@@ -124,7 +152,7 @@
                 }
             }
         } catch (e) {
-            best = null;
+            return null;
         }
 
         CACHE[cacheKey] = best;
@@ -136,16 +164,20 @@
      * empty. The server returns real TMDB identities; the caller must still
      * verify details against every selected MatchApp criterion before use.
      */
-    window.tmdbDiscover = async function (criteria) {
+    window.tmdbDiscover = async function (criteria, opts) {
         if (!window.supabaseClient) return [];
         criteria = criteria || {};
         const key='discover::'+JSON.stringify(criteria);
         if (key in CACHE) return CACHE[key];
         let out=[];
         try {
-            const {data,error}=await window.requestTMDB({discover:criteria,lang:'en-US'});
-            if(!error&&Array.isArray(data?.results))out=data.results.filter(r=>r&&Number.isSafeInteger(r.tmdbId)&&['movie','tv'].includes(r.kind)&&r.adult!==true);
-        } catch (_) { out=[]; }
+            const body={discover:criteria,lang:'en-US'};
+            const {data,error}=opts&&opts.priority?await requestForMatch(body):await window.requestTMDB(body);
+            // Only a real answer is cached. Caching a failure used to make every
+            // later Match with the same choices fail instantly for the whole visit.
+            if(error||!Array.isArray(data?.results))return [];
+            out=data.results.filter(r=>r&&Number.isSafeInteger(r.tmdbId)&&['movie','tv'].includes(r.kind)&&r.adult!==true);
+        } catch (_) { return []; }
         CACHE[key]=out;
         return out;
     };
@@ -203,16 +235,18 @@
      * numeric identity. Used for real genres, official preview and regional
      * viewing/theatrical metadata on titles not pre-ingested yet.
      */
-    window.tmdbDetails = async function (tmdbId, kind) {
+    window.tmdbDetails = async function (tmdbId, kind, opts) {
         if (!Number.isSafeInteger(tmdbId) || tmdbId <= 0 || !['movie','tv'].includes(kind) || !window.supabaseClient) return null;
         const cacheKey = `details::${tmdbId}::${kind}`;
         if (cacheKey in CACHE) return CACHE[cacheKey];
         let out = null;
         try {
-            const { data, error } = await window.requestTMDB({ tmdb_id: tmdbId, kind, lang: 'en-US', details: true });
+            const body = { tmdb_id: tmdbId, kind, lang: 'en-US', details: true };
+            const { data, error } = opts && opts.priority ? await requestForMatch(body) : await window.requestTMDB(body);
+            if (error) return null; // not an answer: do not cache
             const r = data?.results?.[0];
-            if (!error && r && r.tmdbId === tmdbId && r.kind === kind && r.adult !== true) out = r;
-        } catch (_) { out = null; }
+            if (r && r.tmdbId === tmdbId && r.kind === kind && r.adult !== true) out = r;
+        } catch (_) { return null; }
         CACHE[cacheKey] = out;
         return out;
     };

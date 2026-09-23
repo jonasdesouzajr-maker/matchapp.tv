@@ -3131,13 +3131,13 @@ async function discoverVerifiedExactTMDB(requested){
     if(cat.length&&cat.every(x=>['movie','stand-up comedy special','short film','Bollywood','Nollywood','European cinema'].includes(x)))kind='movie';
     else if(cat.length&&cat.every(x=>['series','reality show','K-drama','C-drama','J-drama','Turkish dizi','novela brasileira','telenovela'].includes(x)))kind='tv';
     const start=decade.length===1?Number(String(decade[0]).match(/\d{4}/)?.[0]):0;
-    const candidates=await window.tmdbDiscover({kind,genre_ids:genreIds,original_language:cat.includes('anime')?'ja':'',decade_start:start||0,pages:2});
+    const candidates=await window.tmdbDiscover({kind,genre_ids:genreIds,original_language:cat.includes('anime')?'ja':'',decade_start:start||0,pages:2},{priority:true});
     const prefs=currentPreferenceExclusions(),known=window.matchPolicy?.known?.()||new Set();
     const region=window.MatchAppCatalogMedia?.regionCode?.()||'BR';
     for(const base of candidates.slice(0,30)){
       const key=window.matchPolicy?.key?.(base.title)||'';
       if(!key||known.has(key)||SESSION_SHOWN.has(base.title))continue;
-      const d=await window.tmdbDetails(base.tmdbId,base.kind);if(!d)continue;
+      const d=await window.tmdbDetails(base.tmdbId,base.kind,{priority:true});if(!d)continue;
       const genres=Array.isArray(d.genres)?d.genres:[],countries=Array.isArray(d.originCountries)?d.originCountries:[];
       if(countries.some(x=>prefs.countries.has(String(x).toUpperCase())))continue;
       if(genres.some(g=>prefs.genres.has(String(g).toLowerCase())))continue;
@@ -3163,6 +3163,81 @@ async function discoverVerifiedExactTMDB(requested){
         moods:mood,vibes:vibe,ratings:rating,source:'tmdb-exact-live',
         _tmdbId:base.tmdbId,_tmdbKind:base.kind
       };
+    }
+    return null;
+}
+
+// ----------------------------------------------------
+// AI-PROPOSED, SOURCE-VERIFIED FRESH TITLE
+//
+// Runs only after the curated shelf, TMDB discovery and iTunes found nothing
+// new. Gemini proposes real titles for the exact choices; each proposal must
+// then be found on TMDB and pass every hard choice there — format, genre,
+// mood genres, platform in the viewer's region, rating, decade, origin and
+// the viewer's exclusions — before it can be shown. The AI never supplies a
+// fact the source did not confirm: only vibe (and moods TMDB has no genre
+// for) rely on its judgement. No Match is spent unless a title is found.
+// ----------------------------------------------------
+async function aiProposedVerifiedExact(requested){
+    if(typeof fetchGeminiData!=='function'||typeof window.tmdbLookup!=='function'||typeof window.tmdbDetails!=='function')return null;
+    const cat=normCriteria(requested.cat),mood=normCriteria(requested.mood),vibe=normCriteria(requested.vibe),
+          rating=normCriteria(requested.rating),decade=normCriteria(requested.decade),platform=normCriteria(requested.plat),
+          realGenres=normCriteria(requested.genre);
+    // Same boundary as discoverVerifiedExactTMDB: TMDB can only verify film and TV.
+    if(cat.some(x=>['limited series','vertical micro-drama','YouTube channel','YouTube Shorts','podcast','Spotify playlist','Spotify single','music album','audiobook','Gospel & Faith','Classical Music','News','Sports'].includes(x)))return null;
+    const region=window.MatchAppCatalogMedia?.regionCode?.()||'BR';
+    const prefs=currentPreferenceExclusions(),known=window.matchPolicy?.known?.()||new Set();
+    const wants=[];
+    if(cat.length)wants.push('format: '+cat.join(' or '));
+    if(realGenres.length)wants.push('genre: '+realGenres.join(' or '));
+    if(mood.length)wants.push('mood: '+mood.join(' or '));
+    if(vibe.length)wants.push('vibe: '+vibe.join(' or '));
+    if(rating.length)wants.push('age rating: '+rating.join(' or '));
+    if(decade.length)wants.push('released in the '+decade.join(' or '));
+    if(platform.length)wants.push('streaming in country '+region+' on '+platform.join(' or '));
+    const avoid=[...SESSION_SHOWN].slice(-40);
+    const prompt='List 8 real, already released movies or TV series that match ALL of these choices: '+(wants.join('; ')||'well reviewed and popular right now')+'. '+
+        (avoid.length?'Do not include any of these titles: '+avoid.join('; ')+'. ':'')+
+        'Use each title\'s original English release title and its first release year. '+
+        'Output valid JSON ONLY: {"results":[{"title":"Exact Title","year":2020,"kind":"movie or tv"}]}';
+    let proposals=[];
+    try{const parsed=await fetchGeminiData(prompt);proposals=Array.isArray(parsed?.results)?parsed.results.slice(0,8):[];}catch(_){return null;}
+    for(const p of proposals){
+        const title=typeof p?.title==='string'?p.title.trim():'';if(!title)continue;
+        const key=window.matchPolicy?.key?.(title)||'';
+        if(!key||known.has(key)||SESSION_SHOWN.has(title))continue;
+        const kindHint=p.kind==='tv'||p.kind==='movie'?p.kind:'';
+        const base=await window.tmdbLookup(title,{year:Number(p.year)||'',kind:kindHint,cats:cat.length?cat:[kindHint==='tv'?'series':'movie'],lang:'en-US',priority:true});
+        if(!base||!Number.isSafeInteger(base.tmdbId)||!['movie','tv'].includes(base.kind))continue;
+        const d=await window.tmdbDetails(base.tmdbId,base.kind,{priority:true});if(!d)continue;
+        const finalKey=window.matchPolicy?.key?.(d.title||base.title)||key;
+        if(known.has(finalKey)||SESSION_SHOWN.has(String(d.title||base.title)))continue;
+        const genres=Array.isArray(d.genres)?d.genres:[],countries=Array.isArray(d.originCountries)?d.originCountries:[];
+        if(countries.some(x=>prefs.countries.has(String(x).toUpperCase())))continue;
+        if(genres.some(g=>prefs.genres.has(String(g).toLowerCase())))continue;
+        if(realGenres.length&&!genres.some(g=>realGenres.includes(g)))continue;
+        const mappable=mood.filter(m=>(MOOD_SOURCE_GENRES[m]||[]).length);
+        if(mappable.length&&!mappable.some(m=>MOOD_SOURCE_GENRES[m].some(g=>genres.includes(g))))continue;
+        if(!categoryFitsVerified(base.kind,genres,countries,cat))continue;
+        if(decade.length&&!decade.some(dec=>{const s=Number(String(dec).match(/\d{4}/)?.[0]);const y=Number(d.year||base.year);return s&&y>=s&&y<s+10;}))continue;
+        if(!sourceRatingFits(d.contentRating,rating))continue;
+        let verifiedPlatform='any';
+        if(platform.length){
+            const row=d.availability?.[region]||{};
+            const providers=[...(row.stream||[]),...(row.rent||[]),...(row.buy||[])];
+            const wanted=new Set(platform.map(canonicalProviderName));
+            const hit=providers.find(x=>wanted.has(canonicalProviderName(x)));
+            if(!hit)continue;verifiedPlatform=hit;
+        }
+        return {
+            title:String(d.title||base.title),year:Number(d.year||base.year)||null,
+            countryCode:countries[0]||'',country:countries[0]||'',
+            synopsis:String(d.overview||base.overview||'').trim(),
+            platform:verifiedPlatform,platformVerified:platform.length>0,
+            cats:cat.length?cat:[base.kind==='movie'?'movie':'series'],
+            moods:mood,vibes:vibe,ratings:rating,source:'tmdb-exact-live',
+            _tmdbId:base.tmdbId,_tmdbKind:base.kind
+        };
     }
     return null;
 }
@@ -3638,6 +3713,10 @@ window.triggerMatch = async function(isSpecificSearch = false) {
     if (!isSpecificSearch && !preflight && !normCriteria(requested.plat).length && !wantedGenres.length && !blockedGenres.length && !blockedCountries.length) {
         try { preflight = await discoverFromITunes(requested.cat,requested.mood,requested.vibe,requested.decade,requested.rating); }
         catch (_) { preflight = null; }
+    }
+    // Last source: AI proposals, each verified on TMDB against every choice.
+    if (!isSpecificSearch && !preflight && typeof aiProposedVerifiedExact === 'function') {
+        try { preflight = await aiProposedVerifiedExact(requested); } catch (_) { preflight = null; }
     }
     const typed = document.getElementById('specific-search-input')?.value || '';
     if (!isSpecificSearch && !preflight) {
