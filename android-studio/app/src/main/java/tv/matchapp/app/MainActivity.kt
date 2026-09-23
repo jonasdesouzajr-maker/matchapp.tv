@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity() {
 
     // Web UI (including the responsive Avatar Studio) is shared with matchapp.tv.
     // Keep production pages fresh so phone/tablet WebViews receive approved UI updates immediately.
-    private val sharedUiVersion = "avatar-studio-20260922-3"
+    private val sharedUiVersion = "cinema-dim-20260923-1"
 
     private val fileChooser = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
@@ -435,8 +435,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val HOME = "https://matchapp.tv/?utm_source=android_app&appBuild=24"
-        const val APP_UA = "MatchAppTVAndroid/1.1.22 MatchAppAiAndroid/1.1.22"
+        const val HOME = "https://matchapp.tv/?utm_source=android_app&appBuild=25"
+        const val APP_UA = "MatchAppTVAndroid/1.1.23 MatchAppAiAndroid/1.1.23"
         private const val APP_MODE_JS = """
             (function(){
               window.MATCHAPP_IS_AD_FREE = true;
@@ -459,6 +459,14 @@ class MainActivity : AppCompatActivity() {
               }
 
               document.querySelectorAll('ins.adsbygoogle,.ad-banner-container').forEach(function(el){ el.remove(); });
+
+              if (!document.querySelector('link[data-cinema-dim]')) {
+                var dim = document.createElement('link');
+                dim.rel = 'stylesheet';
+                dim.href = 'https://matchapp.tv/cinema-dim.css?v=20260923-cinemadim1';
+                dim.setAttribute('data-cinema-dim','1');
+                (document.head || root).appendChild(dim);
+              }
             })();
         """
     }
