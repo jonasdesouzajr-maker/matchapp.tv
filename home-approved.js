@@ -1,4 +1,4 @@
-/* Approved Home chrome — 2026-09-23 installpop1. Idempotent overlay only. */
+/* Approved Home chrome — 2026-09-23 onetap1. Idempotent overlay only. */
 (function () {
   'use strict';
   if (!document.getElementById('ma-discover-composer-css')) {
@@ -23,6 +23,12 @@
     (document.head || document.documentElement).appendChild(approvedLink);
   }
   approvedLink.href = '/home-approved.css?v=20260923-installpop1';
+  if (!document.getElementById('ma-install-onetap')) {
+    var ot=document.createElement('script');
+    ot.id='ma-install-onetap';
+    ot.src='/install-onetap.js?v=20260923-onetap1';
+    (document.head||document.documentElement).appendChild(ot);
+  }
 
   function kids() {
     return location.pathname.indexOf('/kids') === 0 || (document.body && document.body.classList.contains('kids-body'));
