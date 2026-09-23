@@ -3174,7 +3174,14 @@ async function discoverVerifiedExactTMDB(requested){
         platform:verifiedPlatform,platformVerified:platform.length>0,
         cats:cat.length?cat:[base.kind==='movie'?'movie':'series'],
         moods:mood,vibes:vibe,ratings:rating,source:'tmdb-exact-live',
-        _tmdbId:base.tmdbId,_tmdbKind:base.kind
+        _tmdbId:base.tmdbId,_tmdbKind:base.kind,
+        // Discovery already returned artwork for this exact numeric TMDB
+        // identity. Carry it into renderResult so the result never throws
+        // that verified poster away and replaces it with a branded placeholder.
+        _meta:{
+          artwork:(d?.posterLarge||d?.posterOriginal||d?.poster||base.posterLarge||base.posterOriginal||base.poster||null),
+          tmdbId:base.tmdbId,kind:base.kind
+        }
       };
     }
     return null;
