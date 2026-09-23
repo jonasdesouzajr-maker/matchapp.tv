@@ -1,6 +1,13 @@
-/* Approved Home chrome — 2026-09-23 ui2. Idempotent overlay only. */
+/* Approved Home chrome — 2026-09-23 ui3. Idempotent overlay only. */
 (function () {
   'use strict';
+  if (!document.getElementById('ma-discover-composer-css')) {
+    var dc = document.createElement('link');
+    dc.id = 'ma-discover-composer-css';
+    dc.rel = 'stylesheet';
+    dc.href = '/discover-composer.css?v=20260923-composer1';
+    (document.head || document.documentElement).appendChild(dc);
+  }
   if (!document.getElementById('ma-events-cover-css')) {
     var ev = document.createElement('link');
     ev.id = 'ma-events-cover-css';
