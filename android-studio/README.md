@@ -35,10 +35,10 @@ This folder is one self-contained Android Studio project with **two separate ins
 
 Both Android modules remain WebView shells over live production:
 
-- Standard app (`:app`) release version: **1.1.23**
-- Standard app version code: **25**
-- Standard app launch: `https://matchapp.tv/?utm_source=android_app&appBuild=25`
-- Kids app (`:kidsapp`) remains **1.1.22** / version code **24** until a Kids AAB is requested
+- Standard app (`:app`) release version: **1.1.24**
+- Standard app version code: **26**
+- Standard app launch: `https://matchapp.tv/?utm_source=android_app&appBuild=26`
+- Kids app (`:kidsapp`) remains **1.1.23** / version code **25** until a Kids AAB is requested
 - Kids app launch: `https://matchapp.tv/kids/`
 - Both apps cold-load production on launch and manual refresh to avoid stale WebView content, then resume normal caching after the page renders.
 - The standard app blocks Kids routes and hides the Kids entry only inside its native shell.

@@ -1,70 +1,119 @@
-/* Events rail cards use the same 2:3 gold poster frame as Most anticipated. */
-html body .global-event-grid{
-  display:flex!important;
-  gap:14px!important;
-  overflow-x:auto!important;
-  align-items:stretch!important;
-  padding:4px 2px 12px!important;
-  scrollbar-width:thin
+/* Upcoming global events: full 2:3 posters. Never crop, never collapse to a hairline.
+   Specificity stays above cinema-dim and rail-parity (both use !important). */
+html body.page-home #global-events .global-events-body{
+  display:block!important;
+  overflow:visible!important;
+  width:100%!important;
+  max-width:100%!important;
+  padding:12px 14px 16px!important;
+  box-sizing:border-box!important;
 }
-html body article.global-event,
-html body article.global-event.premium-card{
+html body.page-home #global-events .global-event-grid{
+  display:flex!important;
+  flex-flow:row nowrap!important;
+  align-items:flex-start!important;
+  justify-content:flex-start!important;
+  gap:14px!important;
+  width:100%!important;
+  max-width:100%!important;
+  min-height:297px!important;
+  overflow-x:auto!important;
+  overflow-y:visible!important;
+  padding:4px 2px 12px!important;
+  margin:0!important;
+  box-sizing:border-box!important;
+  scrollbar-width:thin;
+}
+html body.page-home #global-events article.global-event{
   position:relative!important;
   flex:0 0 190px!important;
   width:190px!important;
   height:285px!important;
   min-width:190px!important;
   max-width:190px!important;
+  min-height:285px!important;
+  max-height:285px!important;
   margin:0!important;
   padding:0!important;
   border:2px solid #e5c158!important;
   border-radius:14px!important;
   overflow:hidden!important;
   background:#120a24!important;
-  box-shadow:0 12px 40px rgba(0,0,0,.7)!important
+  box-shadow:0 12px 40px rgba(0,0,0,.55)!important;
+  box-sizing:border-box!important;
 }
-html body article.global-event>a:first-child,
-html body article.global-event .id-art{
+html body.page-home #global-events article.global-event>a,
+html body.page-home #global-events article.global-event .id-art{
   position:absolute!important;
   inset:0!important;
   z-index:1!important;
-  display:block!important
-}
-html body article.global-event img,
-html body article.global-event .id-poster{
   display:block!important;
   width:100%!important;
   height:100%!important;
-  object-fit:cover!important;
-  object-position:center!important;
-  aspect-ratio:2/3!important;
+  margin:0!important;
+  padding:0!important;
+}
+html body.page-home #global-events article.global-event img{
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  max-width:none!important;
+  max-height:none!important;
+  object-fit:contain!important;
+  object-position:center center!important;
+  aspect-ratio:auto!important;
   border:0!important;
   border-radius:0!important;
-  box-shadow:none!important
+  box-shadow:none!important;
+  background:#120a24!important;
 }
-html body article.global-event .id-poster{
-  padding:0!important;
-  background-size:cover!important
+html body.page-home #global-events article.global-event .id-poster{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:.55rem!important;
+  box-sizing:border-box!important;
+  width:100%!important;
+  height:100%!important;
+  max-height:none!important;
+  margin:0!important;
+  padding:22px 12px!important;
+  border:0!important;
+  border-radius:0!important;
+  background:
+    radial-gradient(120% 70% at 50% 12%,rgba(243,207,105,.22),transparent 62%),
+    linear-gradient(160deg,#2a1b12,#123021 55%,#0e1b2c)!important;
+  background-size:auto!important;
+  text-align:center!important;
 }
-html body article.global-event h3{
+html body.page-home #global-events article.global-event h3{
   position:absolute!important;
-  left:0!important;right:0!important;bottom:0!important;
+  left:0!important;
+  right:0!important;
+  bottom:0!important;
   z-index:3!important;
   margin:0!important;
   padding:28px 10px 10px!important;
   background:linear-gradient(transparent,rgba(0,0,0,.92))!important;
-  font-size:13px!important;line-height:1.25!important;text-align:center!important
+  font-size:13px!important;
+  line-height:1.25!important;
+  text-align:center!important;
+  max-height:none!important;
 }
-html body article.global-event h3 a{color:#fff!important;text-decoration:none!important}
-html body article.global-event>p,
-html body article.global-event>.gold-btn,
-html body article.global-event .id-summary,
-html body article.global-event .id-cta,
-html body article.global-event .id-official,
-html body article.global-event .id-kicker{
-  display:none!important
+html body.page-home #global-events article.global-event h3 a{
+  color:#fff!important;
+  text-decoration:none!important;
 }
-html body article.global-event .event-badge{
+html body.page-home #global-events article.global-event>p,
+html body.page-home #global-events article.global-event>.gold-btn,
+html body.page-home #global-events article.global-event .id-summary,
+html body.page-home #global-events article.global-event .id-cta,
+html body.page-home #global-events article.global-event .id-official,
+html body.page-home #global-events article.global-event .id-kicker{
+  display:none!important;
+}
+html body.page-home #global-events article.global-event .event-badge{
   position:absolute!important;
   top:16px!important;
   left:-38px!important;
@@ -76,13 +125,29 @@ html body article.global-event .event-badge{
   font-weight:900!important;
   letter-spacing:.6px!important;
   text-transform:uppercase!important;
-  box-shadow:0 3px 10px rgba(0,0,0,.55)!important
+  box-shadow:0 3px 10px rgba(0,0,0,.55)!important;
 }
-html body article.global-event .event-badge.event-live{background:linear-gradient(135deg,#d32f2f,#8b0000)!important;color:#fff!important}
-html body article.global-event .event-badge.event-soon{background:linear-gradient(135deg,#7b5cff,#4b2ea8)!important;color:#fff!important}
+html body.page-home #global-events article.global-event .event-badge.event-live{
+  background:linear-gradient(135deg,#d32f2f,#8b0000)!important;
+  color:#fff!important;
+}
+html body.page-home #global-events article.global-event .event-badge.event-soon{
+  background:linear-gradient(135deg,#7b5cff,#4b2ea8)!important;
+  color:#fff!important;
+}
+html body.page-home #global-events .ge-archive{
+  display:inline-flex!important;
+  margin:12px 0 0!important;
+}
 @media(max-width:430px){
-  html body article.global-event,
-  html body article.global-event.premium-card{
-    flex-basis:168px!important;width:168px!important;min-width:168px!important;height:252px!important
+  html body.page-home #global-events .global-event-grid{min-height:264px!important}
+  html body.page-home #global-events article.global-event{
+    flex-basis:168px!important;
+    width:168px!important;
+    min-width:168px!important;
+    max-width:168px!important;
+    height:252px!important;
+    min-height:252px!important;
+    max-height:252px!important;
   }
 }

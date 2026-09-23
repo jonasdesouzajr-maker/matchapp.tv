@@ -48,26 +48,33 @@ html body.page-home #latest-news .ma-news-title{
   color:#f3ead2!important;
 }
 html body.page-home #global-events .global-events-body{
-  grid-template-columns:minmax(0,1fr)!important;
-  gap:12px!important;
+  display:block!important;
+  overflow:visible!important;
+  width:100%!important;
 }
 html body.page-home #global-events .global-event-grid{
   display:flex!important;
   flex-wrap:nowrap!important;
-  gap:12px!important;
+  align-items:flex-start!important;
+  gap:14px!important;
   width:100%!important;
+  min-height:297px!important;
+  overflow-x:auto!important;
 }
 html body.page-home #global-events .global-event{
-  height:auto!important;
-  min-width:7.5rem;
-  flex:0 0 auto;
+  flex:0 0 190px!important;
+  width:190px!important;
+  min-width:190px!important;
+  height:285px!important;
+  min-height:285px!important;
 }
 html body.page-home #global-events .global-event img,
 html body.page-home #global-events .global-event-grid img{
   object-fit:contain!important;
   object-position:center center!important;
   width:100%!important;
-  height:auto!important;
+  height:100%!important;
+  max-height:none!important;
   background:#120818;
 }
 html body.page-home .seo-footer{

@@ -435,8 +435,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val HOME = "https://matchapp.tv/?utm_source=android_app&appBuild=25"
-        const val APP_UA = "MatchAppTVAndroid/1.1.23 MatchAppAiAndroid/1.1.23"
+        const val HOME = "https://matchapp.tv/?utm_source=android_app&appBuild=26"
+        const val APP_UA = "MatchAppTVAndroid/1.1.24 MatchAppAiAndroid/1.1.24"
         private const val APP_MODE_JS = """
             (function(){
               window.MATCHAPP_IS_AD_FREE = true;
@@ -463,7 +463,7 @@ class MainActivity : AppCompatActivity() {
               if (!document.querySelector('link[data-cinema-dim]')) {
                 var dim = document.createElement('link');
                 dim.rel = 'stylesheet';
-                dim.href = 'https://matchapp.tv/cinema-dim.css?v=20260923-cinemadim1';
+                dim.href = 'https://matchapp.tv/cinema-dim.css?v=20260923-cinemadim2';
                 dim.setAttribute('data-cinema-dim','1');
                 (document.head || root).appendChild(dim);
               }

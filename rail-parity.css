@@ -7,7 +7,7 @@ body.page-home #global-events .ge-help{margin:0 14px 10px}
 body.page-home #global-events .global-event-grid{display:flex!important;grid-template-columns:none!important;gap:15px!important;width:max-content;overflow:visible!important;padding:0!important;margin:0!important;will-change:scroll-position}
 body.page-home #global-events .global-event{position:relative;flex:0 0 130px!important;width:130px!important;height:190px!important;min-width:130px!important;max-width:130px!important;margin:0!important;padding:0!important;border:1px solid rgba(229,193,88,.5)!important;border-radius:10px!important;overflow:hidden!important;background:var(--royal-deep);box-shadow:none!important}
 body.page-home #global-events .global-event>a:first-child{position:absolute;inset:0;z-index:1;display:block}
-body.page-home #global-events .global-event img{display:block;width:100%!important;height:100%!important;aspect-ratio:auto!important;object-fit:cover!important}
+body.page-home #global-events .global-event img{display:block;width:100%!important;height:100%!important;aspect-ratio:auto!important;object-fit:contain!important;object-position:center center!important}
 body.page-home #global-events .global-event h3{position:absolute;z-index:3;left:0;right:0;bottom:0;margin:0!important;padding:20px 5px 7px!important;background:linear-gradient(transparent,rgba(0,0,0,.95));font-size:11px!important;line-height:1.25;text-align:center}
 body.page-home #global-events .global-event h3 a{color:#fff!important;text-decoration:none}
 body.page-home #global-events .global-event>p,body.page-home #global-events .global-event>.gold-btn{display:none!important}

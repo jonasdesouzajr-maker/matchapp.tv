@@ -5,7 +5,7 @@
     var ev = document.createElement('link');
     ev.id = 'ma-events-cover-css';
     ev.rel = 'stylesheet';
-    ev.href = '/events-cover.css?v=20260923-events1';
+    ev.href = '/events-cover.css?v=20260923-events2';
     (document.head || document.documentElement).appendChild(ev);
   }
   if (document.documentElement.getAttribute('data-ma-approved') === '2') return;
