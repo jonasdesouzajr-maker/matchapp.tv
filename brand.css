@@ -252,3 +252,112 @@ html:not(.kids-mode) .brand-logo-placeholder{
   }
 }
 /* MA-DEPTH-3D:END */
+
+/* MA-POSTER-INTEGRITY:START
+   Global title-cover integrity. Title artwork must never stretch, squash,
+   crop, or be cut off on any viewport. Adult covers use the premium gold
+   frame; Kids covers use the thicker playful frame. Keep this surgical:
+   brand marks, avatars, news thumbnails and other non-title imagery are not
+   targeted here. */
+:where(
+  .marquee-item>img,
+  .spotlight-poster>img,
+  .discover-poster:is(img),
+  .discover-poster img,
+  .discover-event-card>img,
+  .global-event>img,
+  .event-card>img,
+  .poster-card>img,
+  .poster-card picture>img,
+  .profile-history-poster,
+  #res-poster-img,
+  #poster-zoom-img,
+  .poster-wall-tile>img,
+  .kids-card img,
+  .kids-result-art img,
+  [data-kids-title]>img
+){
+  object-fit:contain!important;
+  object-position:center center!important;
+  max-width:100%!important;
+  box-sizing:border-box!important;
+}
+
+/* Detail-guide art has no fixed poster frame, so let the source artwork
+   choose its own natural ratio instead of forcing 2:3. */
+[data-kids-title]>img{
+  display:block!important;
+  width:100%!important;
+  height:auto!important;
+  max-height:min(72vh,760px)!important;
+  aspect-ratio:auto!important;
+}
+
+/* Adult title artwork: MatchApp gold frame with a restrained shimmer that is
+   triggered by interaction rather than continuously repainting every card. */
+:where(
+  .marquee-item>img,
+  .spotlight-poster>img,
+  .discover-poster:is(img),
+  .discover-poster img,
+  .discover-event-card>img,
+  .global-event>img,
+  .event-card>img,
+  .poster-card>img,
+  .poster-card picture>img,
+  .profile-history-poster,
+  #res-poster-img,
+  #poster-zoom-img,
+  .poster-wall-tile>img
+){
+  border:2px solid #E5C158!important;
+  background:#120a24!important;
+  box-shadow:0 0 0 1px rgba(255,239,177,.16),0 0 14px rgba(229,193,88,.22)!important;
+  transition:border-color .22s ease,box-shadow .22s ease!important;
+}
+@media(hover:hover) and (pointer:fine){
+  :where(
+    .marquee-item,
+    .spotlight-poster,
+    .discover-poster,
+    .discover-event-card,
+    .global-event,
+    .event-card,
+    .poster-card,
+    .poster-stage,
+    .poster-wall-tile
+  ):hover img{
+    border-color:#f7dc83!important;
+    box-shadow:0 0 0 1px rgba(255,248,207,.32),0 0 22px rgba(229,193,88,.48)!important;
+  }
+}
+
+/* Kids artwork: thick multi-colour frame. Only the single hero cover runs a
+   slow border-colour animation; grid cards animate on interaction. This keeps
+   the playful look without putting dozens of perpetual repaint animations on
+   mobile devices. */
+:where(.kids-card img,.kids-result-art img,[data-kids-title]>img){
+  border:4px solid #ff72c7!important;
+  background:#1a0c34!important;
+  box-shadow:0 0 0 2px #ffd45f,0 0 0 4px #68e4ff,0 8px 24px rgba(0,0,0,.32)!important;
+  border-radius:clamp(14px,2vw,24px)!important;
+  transition:border-color .28s ease,box-shadow .28s ease!important;
+}
+[data-kids-title]>img{
+  animation:maKidsCoverFrame 6s ease-in-out infinite!important;
+}
+@keyframes maKidsCoverFrame{
+  0%,100%{border-color:#ff72c7;box-shadow:0 0 0 2px #ffd45f,0 0 0 4px #68e4ff,0 8px 24px rgba(0,0,0,.32)}
+  33%{border-color:#68e4ff;box-shadow:0 0 0 2px #9cff8b,0 0 0 4px #ffd45f,0 8px 24px rgba(0,0,0,.32)}
+  66%{border-color:#ffd45f;box-shadow:0 0 0 2px #ff72c7,0 0 0 4px #9cff8b,0 8px 24px rgba(0,0,0,.32)}
+}
+:where(.kids-card,.kids-result-art):is(:hover,:focus-within) img{
+  border-color:#68e4ff!important;
+  box-shadow:0 0 0 2px #9cff8b,0 0 0 4px #ffd45f,0 10px 28px rgba(0,0,0,.36)!important;
+}
+@media(prefers-reduced-motion:reduce){
+  [data-kids-title]>img{animation:none!important}
+}
+.reduce-motion [data-kids-title]>img{animation:none!important}
+/* MA-POSTER-INTEGRITY:END */
+
