@@ -14,6 +14,7 @@ This folder is one self-contained Android Studio project with **two separate ins
 - The separate **MatchApp Ai KIDS** app owns the dedicated Kids experience and parental exit flow
 - Ads are disabled in the Android shell
 - Supports authenticated sessions, Android back, pull-to-refresh, fullscreen media, file selection and offline state
+- WebView injects production `cinema-dim.css` on adult pages (same sheet as the website)
 
 ### MatchApp Ai KIDS — `:kidsapp`
 
@@ -28,14 +29,16 @@ This folder is one self-contained Android Studio project with **two separate ins
 - Privacy/Terms and third-party viewing destinations open outside the Kids shell
 - Ads are disabled in the Android shell
 - Uses the existing MatchApp Kids visual identity for launcher/splash presentation
+- Cinema dim is **not** applied in this module
 
 ## Current AAB release
 
-Both Android modules are synchronized for the current production MatchApp surfaces:
+Both Android modules remain WebView shells over live production:
 
-- Release version: **1.1.22**
-- Version code: **24**
-- Standard app launch: `https://matchapp.tv/`
+- Standard app (`:app`) release version: **1.1.23**
+- Standard app version code: **25**
+- Standard app launch: `https://matchapp.tv/?utm_source=android_app&appBuild=25`
+- Kids app (`:kidsapp`) remains **1.1.22** / version code **24** until a Kids AAB is requested
 - Kids app launch: `https://matchapp.tv/kids/`
 - Both apps cold-load production on launch and manual refresh to avoid stale WebView content, then resume normal caching after the page renders.
 - The standard app blocks Kids routes and hides the Kids entry only inside its native shell.
