@@ -200,11 +200,11 @@ window.installMatchApp = async function () {
     // Path 1: a real native prompt is available (Chrome/Edge/Android/Desktop).
     if (deferredInstallPrompt) {
         try {
+            // On smartphones the browser/OS prompt must remain the only modal
+            // layer. Showing our full-screen progress dialog here covered the
+            // native prompt and could leave the page apparently frozen while
+            // userChoice was still pending.
             await deferredInstallPrompt.prompt();
-            // Bar starts only once the OS prompt is actually showing, and only
-            // the real appinstalled event finishes it — see install-progress.js
-            // for why it stops short of 100 rather than guessing.
-            window.matchAppInstallProgress?.start();
             const choice = await deferredInstallPrompt.userChoice;
             if (choice && choice.outcome === 'dismissed') window.matchAppInstallProgress?.cancel();
         } catch (e) { window.matchAppInstallProgress?.cancel(); }
@@ -222,7 +222,6 @@ window.installMatchApp = async function () {
         if (deferredInstallPrompt) {
             try {
                 await deferredInstallPrompt.prompt();
-                window.matchAppInstallProgress?.start();
                 const choice = await deferredInstallPrompt.userChoice;
                 if (choice && choice.outcome === 'dismissed') window.matchAppInstallProgress?.cancel();
             } catch (e) { window.matchAppInstallProgress?.cancel(); }
