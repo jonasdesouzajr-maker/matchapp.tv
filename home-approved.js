@@ -1,6 +1,13 @@
 /* Approved Home chrome — 2026-09-23 ui2. Idempotent overlay only. */
 (function () {
   'use strict';
+  if (!document.getElementById('ma-events-cover-css')) {
+    var ev = document.createElement('link');
+    ev.id = 'ma-events-cover-css';
+    ev.rel = 'stylesheet';
+    ev.href = '/events-cover.css?v=20260923-events1';
+    (document.head || document.documentElement).appendChild(ev);
+  }
   if (document.documentElement.getAttribute('data-ma-approved') === '2') return;
   document.documentElement.setAttribute('data-ma-approved', '2');
   if (!document.getElementById('ma-approved-css')) {
@@ -9,13 +16,6 @@
     link.rel = 'stylesheet';
     link.href = '/home-approved.css?v=20260923-ui2';
     (document.head || document.documentElement).appendChild(link);
-  }
-  if (!document.getElementById('ma-events-cover-css')) {
-    var ev = document.createElement('link');
-    ev.id = 'ma-events-cover-css';
-    ev.rel = 'stylesheet';
-    ev.href = '/events-cover.css?v=20260923-events1';
-    (document.head || document.documentElement).appendChild(ev);
   }
   function kids() {
     return location.pathname.indexOf('/kids') === 0 || (document.body && document.body.classList.contains('kids-body'));
