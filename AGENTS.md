@@ -33,7 +33,6 @@ These are standing implementation rules for MatchApp work in this repository.
    - Do not redesign, refactor, rename, remove, or "clean up" unrelated working features while implementing another request.
    - When a necessary dependency would affect unrelated behavior, preserve the existing behavior and make the smallest isolated integration possible.
 
-
 6. **Homepage compactness, folding, and discovery**
    - Keep smartphone/tablet vertical spacing compact but breathable: fields should be close without touching or overlapping.
    - Major homepage cards/fields must remain foldable without breaking their controls, animations, accessibility, or vertical scrolling.
@@ -80,9 +79,17 @@ These are standing implementation rules for MatchApp work in this repository.
 - Never attach a MutationObserver to a result subtree if its callback (directly or indirectly) rewrites that same subtree. Main Match and Kids result enrichment must stay event-driven and idempotent; repeated enrichment of the same title/metadata must settle without additional DOM churn.
 
 10. **Kids parent exit and cross-browser fallback**
-   - Leaving Kids Mode is a parent-authenticated action. The three-second press-and-hold hand control is only the deliberate trigger; completing the hold must never unlock grown-up mode by itself.
-   - Desktop web requires a persistent four-digit parent PIN to be created before Kids Mode continues. Every grown-up exit and protected parent control requires that saved PIN.
-   - Smartphone and tablet web should prefer platform user verification through the browser (Face ID, Touch ID, fingerprint or equivalent device verification where the browser/device exposes it). A parent may instead configure a four-digit PIN. If biometric APIs are unsupported or unavailable, the PIN path must remain usable rather than breaking Kids Mode.
-   - `:kidsapp` uses Android's native biometric prompt for supported device biometrics and retains the web PIN alternative. Adult routes must never load inside the Kids-only WebView; after a successful parent check, the grown-up exit hands off outside the Kids shell.
-   - `:app` is the normal grown-up Android application and must not expose or load Kids Mode. Keep `/kids` routes blocked in this module and keep the Kids entry hidden only inside this native shell; the public website continues to offer Kids Mode.
-   - Parent-gate code must remain bounded and progressive: no polling loops, unbounded observers, permanent scroll locks, or unsupported-API failures. Enhancements must degrade to a working PIN flow across current Safari, Chrome, Edge, Firefox and Android WebView families.
+    - Leaving Kids Mode is a parent-authenticated action. The three-second press-and-hold hand control is only the deliberate trigger; completing the hold must never unlock grown-up mode by itself.
+    - Desktop web requires a persistent four-digit parent PIN to be created before Kids Mode continues. Every grown-up exit and protected parent control requires that saved PIN.
+    - Smartphone and tablet web should prefer platform user verification through the browser (Face ID, Touch ID, fingerprint or equivalent device verification where the browser/device exposes it). A parent may instead configure a four-digit PIN. If biometric APIs are unsupported or unavailable, the PIN path must remain usable rather than breaking Kids Mode.
+    - `:kidsapp` uses Android's native biometric prompt for supported device biometrics and retains the web PIN alternative. Adult routes must never load inside the Kids-only WebView; after a successful parent check, the grown-up exit hands off outside the Kids shell.
+    - `:app` is the normal grown-up Android application and must not expose or load Kids Mode. Keep `/kids` routes blocked in this module and keep the Kids entry hidden only inside this native shell; the public website continues to offer Kids Mode.
+    - Parent-gate code must remain bounded and progressive: no polling loops, unbounded observers, permanent scroll locks, or unsupported-API failures. Enhancements must degrade to a working PIN flow across current Safari, Chrome, Edge, Firefox and Android WebView families.
+
+11. **Inject-only edits, CI green, SEO intact**
+    - Inject only what the owner asked for. Do not restyle, rewrite, rename, or "improve" neighboring files in the same change.
+    - Before any push to `main`, the change must still satisfy `npm test` and `npm run audit:site`. Locked examples: `poster-wall.js` keeps `Math.min(cols*rows,96)`, idle `CHUNK=10` tiling, no `setInterval` / `MutationObserver` on the wall, and the 2026-09-20 renderer crash guard in `poster-wall.css`.
+    - Do not ship freezes, crashes, duplicate boot owners, broken or empty `href`/`src`, mismatched cache-bust query strings, or Kids/adult leakage.
+    - New or moved public URLs must be added to the sitemap (`node tools/update-sitemap.js` or the existing sitemap workflow) with real 200 targets. Keep GTM `GTM-M7J3NNBN` and AdSense `ca-pub-9541435081010948` on adult pages only — never on Kids.
+    - Content/SEO/awareness bots must keep passing Validate and Deploy. Do not change a test contract to make a visual tweak pass; change the implementation to match the contract, or stop and ask.
+    - Overlapping publishes: Deploy MatchApp Pages cancels the older in-flight run so GitHub does not emit a failed "in progress deployment" warning. Cancelled is expected; failed is not.
