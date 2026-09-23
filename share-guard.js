@@ -3,10 +3,17 @@
   'use strict';
   if (!document.querySelector('script[data-home-approved]')) {
     var h = document.createElement('script');
-    h.src = '/home-approved.js?v=20260923-ui1';
+    h.src = '/home-approved.js?v=20260923-ui2';
     h.defer = true;
     h.setAttribute('data-home-approved', '1');
     (document.body || document.documentElement).appendChild(h);
+  }
+  if (!document.querySelector('script[data-desktop-install]')) {
+    var d = document.createElement('script');
+    d.src = '/desktop-install.js?v=20260923-desk1';
+    d.defer = true;
+    d.setAttribute('data-desktop-install', '1');
+    (document.body || document.documentElement).appendChild(d);
   }
   var orig = window.openShareSheet;
   window.openShareSheet = async function () {
@@ -29,7 +36,7 @@
           if (typeof afterShare === 'function') await afterShare('native');
         } else {
           await navigator.clipboard.writeText(text + '\nhttps://matchapp.tv/');
-          if (window.showToast) window.showToast('Caption copied \u2014 paste it in any app to share this match.');
+          if (window.showToast) window.showToast('Caption copied — paste it in any app to share this match.');
         }
       } catch (_) {}
       return;
