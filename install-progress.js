@@ -72,11 +72,10 @@
 
   function setText(title, body, showDone) {
     const el = panel();
-    const t = copy();
     el.querySelector('h2').textContent = title;
     el.querySelector('p').textContent = body;
     const btn = el.querySelector('button');
-    btn.textContent = t.close;
+    btn.textContent = copy().close;
     btn.hidden = !showDone;
     el.hidden = false;
   }
@@ -149,4 +148,8 @@
     installingUpdate: accepting,
     updated: complete
   };
+
+  window.addEventListener('appinstalled', function () {
+    complete();
+  });
 })();
