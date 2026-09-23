@@ -2,7 +2,7 @@
 html body.page-home{padding-bottom:calc(72px + env(safe-area-inset-bottom,0px))}
 
 #ma-install-chip{
-  position:sticky;top:0;z-index:50;
+  position:relative;top:auto;z-index:2;
   display:flex;align-items:center;gap:10px;
   margin:8px 12px 0;padding:6px 8px 6px 8px;
   min-height:44px;box-sizing:border-box;
