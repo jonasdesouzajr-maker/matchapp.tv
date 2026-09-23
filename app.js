@@ -3716,6 +3716,10 @@ window.triggerMatch = async function(isSpecificSearch = false) {
         document.body.classList.add('match-searching');
         requestAnimationFrame(() => loadBox.scrollIntoView({behavior:'auto',block:'center'}));
     }
+    // Yield one painted frame before any source work. Without this, mobile
+    // WebView can show the loader markup at its static 0% state while JS
+    // immediately enters the verification chain.
+    await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
     const startTime = Date.now();
     // Progress is visual feedback, not a timer. Never hold a verified result
     // just to finish an animation.
