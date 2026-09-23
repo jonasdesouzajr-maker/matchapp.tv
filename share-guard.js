@@ -1,6 +1,13 @@
-/* Share fallback when #share-modal is missing. Loads after share.js. */
+/* Share fallback when #share-modal is missing. Also boots approved Home chrome. */
 (function () {
   'use strict';
+  if (!document.querySelector('script[data-home-approved]')) {
+    var h = document.createElement('script');
+    h.src = '/home-approved.js?v=20260923-ui1';
+    h.defer = true;
+    h.setAttribute('data-home-approved', '1');
+    (document.body || document.documentElement).appendChild(h);
+  }
   var orig = window.openShareSheet;
   window.openShareSheet = async function () {
     var title = window.globalMatchTitle;
