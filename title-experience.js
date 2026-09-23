@@ -6,7 +6,7 @@
   'use strict';
   const titleUrl=title=>'/discover.html?title='+encodeURIComponent(String(title||'').trim())+'&focus=start';
   const eventUrl=path=>'/discover.html?event='+encodeURIComponent(String(path||'').trim())+'&focus=start';
-  const esc=v=>String(v||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const esc=v=>String(v||'').replace(/[&<>"']/g,c=>({'&':'&','<':'<','>':'>','"':'"',"'":'&#39;'}[c]));
 
   function openTitle(title){
     title=String(title||'').trim();if(!title)return;
@@ -20,7 +20,7 @@
       #res-title.ma-title-link:focus-visible,.discover-card h3.ma-title-link:focus-visible{outline:2px solid #E5C158;outline-offset:4px;border-radius:6px}
       .discover-poster.ma-title-link{cursor:pointer}
       .discover-event-card{display:grid;grid-template-columns:minmax(150px,230px) 1fr;gap:22px;padding:20px;border:1px solid rgba(229,193,88,.32);border-radius:22px;background:rgba(27,13,54,.86);margin:14px 0}
-      .discover-event-card img{width:100%;max-width:230px;border-radius:16px;object-fit:cover}
+      .discover-event-card img{width:100%;max-width:230px;border-radius:16px;object-fit:contain;object-position:center}
       .discover-event-card h2{margin:0 0 10px;color:#fff}.discover-event-meta{color:#cfc4dc;margin:0 0 10px}.discover-event-copy{color:#eee;line-height:1.65}
       .discover-event-actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:14px}.discover-event-actions a,.discover-event-actions button{border:1px solid rgba(229,193,88,.45);background:rgba(229,193,88,.1);color:#f6df91;border-radius:999px;padding:9px 13px;text-decoration:none;font-weight:800;cursor:pointer}
       .discover-event-preview{margin-top:14px;aspect-ratio:16/9;width:100%;border:0;border-radius:14px;background:#000}
@@ -145,7 +145,7 @@
       links.slice(0,8).forEach(link=>{const a=document.createElement('a');a.href=link.href;a.target='_blank';a.rel='noopener noreferrer';a.textContent=link.label||'Official link';actions.appendChild(a);});
       const save=document.createElement('button');save.type='button';save.textContent='Save event';save.addEventListener('click',()=>saveEvent({title,path,image}));actions.appendChild(save);
       log.appendChild(wrap);
-      const input=document.getElementById('discover-new-input');if(input)input.placeholder='Ask a follow-up about '+title+'…';
+      const input=document.getElementById('discover-new-input');if(input)input.placeholder='Ask a follow-up about '+title+'\u2026';
     }catch(_){
       location.href=path;
     }
