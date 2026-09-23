@@ -1,0 +1,100 @@
+/* Cinema dim 2026.09.23 — contrast + gold only. No layout rewrite, no Kids. */
+html body.page-home{
+  --ma-cinema-gold:#E5C158;
+  --ma-cinema-ink:rgba(8,6,16,.88);
+}
+html body.page-home .poster-wall-grid{
+  opacity:.22!important;
+  filter:none!important;
+}
+html body.page-home .poster-wall::after{
+  background:
+    radial-gradient(120% 80% at 50% 28%,rgba(8,6,16,.35),rgba(8,6,16,.78) 55%,rgba(8,6,16,.94)),
+    linear-gradient(180deg,rgba(8,6,16,.55),rgba(8,6,16,.92))!important;
+  pointer-events:none;
+}
+html body.page-home .home-h1,
+html body.page-home .home-h1-sub{
+  -webkit-text-fill-color:unset!important;
+  background:none!important;
+  color:var(--ma-cinema-gold)!important;
+  text-shadow:0 2px 18px rgba(8,6,16,.85)!important;
+}
+html body.page-home .home-h1-sub{color:#e8dcc0!important;font-weight:500!important}
+html body.page-home :is(#ma-concierge,#latest-news,#premiere-disclosure>.spotlight-card,#swifties-spotify,#global-events>details,#how-it-works,#ai-concierge-section,#questionnaire-box){
+  background:rgba(10,8,20,.92)!important;
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+  border-color:rgba(229,193,88,.34)!important;
+  animation:none!important;
+  transform:none!important;
+}
+@media(hover:hover) and (pointer:fine){
+  html body.page-home :is(#ma-concierge,#latest-news,#premiere-disclosure>.spotlight-card,#swifties-spotify,#global-events>details,#how-it-works,#ai-concierge-section):hover{
+    transform:none!important;
+    animation:none!important;
+    border-color:rgba(229,193,88,.55)!important;
+    box-shadow:0 16px 40px rgba(0,0,0,.4),0 0 0 1px rgba(229,193,88,.28)!important;
+  }
+}
+html body.page-home #ma-concierge .ma-tab[aria-selected=true]{
+  background:rgba(229,193,88,.16)!important;
+  border-color:rgba(229,193,88,.45)!important;
+  box-shadow:none!important;
+}
+html body.page-home #latest-news .ma-news-title{
+  background:none!important;
+  -webkit-text-fill-color:unset!important;
+  color:#f3ead2!important;
+}
+html body.page-home #global-events .global-events-body{
+  grid-template-columns:minmax(0,1fr)!important;
+  gap:12px!important;
+}
+html body.page-home #global-events .global-event-grid{
+  display:flex!important;
+  flex-wrap:nowrap!important;
+  gap:12px!important;
+  width:100%!important;
+}
+html body.page-home #global-events .global-event{
+  height:auto!important;
+  min-width:7.5rem;
+  flex:0 0 auto;
+}
+html body.page-home #global-events .global-event img,
+html body.page-home #global-events .global-event-grid img{
+  object-fit:contain!important;
+  object-position:center center!important;
+  width:100%!important;
+  height:auto!important;
+  background:#120818;
+}
+html body.page-home .seo-footer{
+  background:linear-gradient(180deg,rgba(8,6,16,0),rgba(8,6,16,.96) 28%,#05040a)!important;
+  border-top:1px solid rgba(229,193,88,.28)!important;
+}
+html body.page-home .seo-footer-h{color:var(--ma-cinema-gold)!important}
+html body.page-home .seo-footer-links a{color:#cbb98a!important}
+html body.page-home .gold-btn,
+html body.page-home .ma-primary,
+html body.page-home button[data-i18n="q.submit"]{
+  background:#E5C158!important;
+  color:#1a1206!important;
+}
+html:not(.kids-mode) body:not(.kids-body):not([data-kids-mode]) .premium-card,
+html:not(.kids-mode) body:not(.kids-body) .ma-concierge{
+  background-color:rgba(12,10,22,.9);
+}
+html:not(.kids-mode) body:not(.kids-body) .seo-footer{
+  border-top-color:rgba(229,193,88,.28);
+}
+@media(pointer:coarse){
+  html body.page-home :is(#ma-concierge,#latest-news,#global-events>details){
+    backdrop-filter:none!important;
+    -webkit-backdrop-filter:none!important;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  html body.page-home *{animation:none!important}
+}
