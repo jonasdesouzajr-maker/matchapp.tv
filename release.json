@@ -1,21 +1,9 @@
 {
-  "version": "2026.09.22.1",
-  "date": "2026-09-22",
+  "version": "2026.09.23.1",
+  "date": "2026-09-23",
   "functional": true,
   "notes": {
-    "en": "New: an improvement notice at the top, a “Why this pick” line and pool hint on Match, a cost line in Ask AI, a grown-up check and optional daily time limit in Kids Mode, synced Kids favorites and a playful Kids match celebration.",
-    "pt-BR": "Novo: aviso de melhorias no topo, linha “Por que esta escolha” e dica de acervo no Match, custo visível no Ask AI, verificação para adultos e limite diário opcional no Modo Kids, favoritos Kids sincronizados e uma comemoração divertida ao dar match.",
-    "es": "Novedades: aviso de mejoras arriba, línea “Por qué esta elección” y pista del catálogo en Match, costo visible en Ask AI, control para adultos y límite diario opcional en Kids Mode, favoritos Kids sincronizados y una celebración divertida al hacer match.",
-    "fr": "Nouveau : avis d’amélioration en haut, ligne « Pourquoi ce choix » et indication du catalogue dans Match, coût affiché dans Ask AI, vérification adulte et limite quotidienne facultative dans Kids Mode, favoris Kids synchronisés et une célébration ludique à chaque match.",
-    "de": "Neu: Verbesserungshinweis oben, „Warum dieser Tipp“ und Katalog-Hinweis im Match, sichtbare Kosten in Ask AI, Erwachsenen-Check und optionales Tageslimit im Kids-Modus, synchronisierte Kids-Favoriten und eine fröhliche Match-Feier.",
-    "it": "Novità: avviso sui miglioramenti in alto, riga “Perché questa scelta” e suggerimento sul catalogo in Match, costo visibile in Ask AI, verifica per adulti e limite giornaliero facoltativo in Kids Mode, preferiti Kids sincronizzati e una festa giocosa a ogni match.",
-    "tr": "Yeni: üstte iyileştirme bildirimi, Match’te “Neden bu seçim” satırı ve katalog ipucu, Ask AI’da görünür maliyet, Çocuk Modunda yetişkin doğrulaması ve isteğe bağlı günlük süre sınırı, eşitlenen Kids favorileri ve eğlenceli bir eşleşme kutlaması.",
-    "ru": "Новое: уведомление об улучшениях вверху, строка «Почему этот выбор» и подсказка о подборке в Match, видимая стоимость в Ask AI, проверка взрослого и дневной лимит в детском режиме, синхронизация избранного Kids и весёлое празднование совпадения.",
-    "ar": "جديد: إشعار التحسينات في الأعلى، وسطر «لماذا هذا الاختيار» وتلميح عن المجموعة في Match، وتكلفة واضحة في Ask AI، وتحقق للكبار وحد يومي اختياري في وضع الأطفال، ومزامنة مفضلات الأطفال، واحتفال مرح عند المطابقة.",
-    "hi": "नया: ऊपर सुधार सूचना, Match में “यह चुनाव क्यों” लाइन और संग्रह संकेत, Ask AI में लागत, Kids Mode में बड़ों की जाँच और वैकल्पिक दैनिक समय सीमा, सिंक होने वाले Kids फ़ेवरेट और मज़ेदार मैच उत्सव।",
-    "id": "Baru: pemberitahuan pembaruan di atas, baris “Kenapa pilihan ini” dan petunjuk koleksi di Match, biaya terlihat di Ask AI, pemeriksaan orang dewasa dan batas waktu harian opsional di Mode Anak, favorit Kids tersinkron, dan perayaan match yang seru.",
-    "ja": "新機能：上部に改善のお知らせ、Matchに「この作品を選んだ理由」と候補数のヒント、Ask AIに利用コスト表示、キッズモードに保護者チェックと1日の利用時間設定、キッズのお気に入り同期、楽しいマッチ演出を追加。",
-    "ko": "새 기능: 상단 개선 안내, Match의 ‘이 추천의 이유’와 작품 수 안내, Ask AI 비용 표시, 키즈 모드 보호자 확인과 선택형 하루 이용 시간, 키즈 즐겨찾기 동기화, 즐거운 매치 축하 효과.",
-    "zh": "新功能：顶部改进提示，Match 新增“推荐理由”和片库提示，Ask AI 显示消耗，儿童模式新增家长验证和可选的每日时长限制，儿童收藏同步，以及有趣的匹配庆祝动画。"
+    "en": "Latest release: polished Ask AI composer, consistent title posters, Home dock, and Install/Update for phones and tablets.",
+    "pt-BR": "Vers\u00e3o mais recente: compositor Ask iA, p\u00f4steres consistentes, dock da Home e Instalar/Atualizar no celular e no tablet."
   }
 }

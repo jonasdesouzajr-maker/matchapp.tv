@@ -7,7 +7,7 @@
    never trap the app on an old or redirected response.
    ============================================================ */
 
-const SW_VERSION = 'v24-pwa-install-localized';
+const SW_VERSION = 'v25-pwa-update-now';
 
 self.addEventListener('install', () => {
     self.skipWaiting();
