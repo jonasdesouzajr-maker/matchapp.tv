@@ -26,7 +26,10 @@
 
 let deferredInstallPrompt = null;
 
-const MATCHAPP_INSTALL_VERSION = '20260923-icon4';
+const MATCHAPP_INSTALL_VERSION = '20260923-kidsinstall1';
+const MATCHAPP_KIDS_INSTALL = location.pathname === '/kids' || location.pathname.startsWith('/kids/');
+const MATCHAPP_KIDS_MANIFEST = '/kids/manifest.json';
+const MATCHAPP_KIDS_NAME = 'MatchApp Ai KIDS';
 function matchAppInstallLocale() {
     const primary = String((navigator.languages && navigator.languages[0]) || navigator.language || 'en')
         .replace(/_/g, '-').toLowerCase();
@@ -47,7 +50,7 @@ function configureInstallBrand() {
     window.MATCHAPP_INSTALL_NAME = name;
     let manifest = document.querySelector('link[rel="manifest"]');
     if (!manifest) { manifest = document.createElement('link'); manifest.rel = 'manifest'; document.head.appendChild(manifest); }
-    manifest.href = (locale === 'pt-BR' ? '/manifest-pt-br.json' : '/manifest.json') + '?v=' + MATCHAPP_INSTALL_VERSION;
+    manifest.href = (MATCHAPP_KIDS_INSTALL ? MATCHAPP_KIDS_MANIFEST : (locale === 'pt-BR' ? '/manifest-pt-br.json' : '/manifest.json')) + '?v=' + MATCHAPP_INSTALL_VERSION;
     const setMeta = (metaName) => {
         let meta = document.querySelector('meta[name="' + metaName + '"]');
         if (!meta) { meta = document.createElement('meta'); meta.name = metaName; document.head.appendChild(meta); }
@@ -57,7 +60,7 @@ function configureInstallBrand() {
     setMeta('apple-mobile-web-app-title');
     let touch = document.querySelector('link[rel="apple-touch-icon"]');
     if (!touch) { touch = document.createElement('link'); touch.rel = 'apple-touch-icon'; document.head.appendChild(touch); }
-    touch.href = '/assets/brand/matchapp-ai-install-192.png?v=' + MATCHAPP_INSTALL_VERSION;
+    touch.href = (MATCHAPP_KIDS_INSTALL ? '/kids/kids-logo.jpeg' : '/assets/brand/matchapp-ai-install-192.png') + '?v=' + MATCHAPP_INSTALL_VERSION;
 }
 configureInstallBrand();
 

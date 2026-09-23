@@ -99,3 +99,8 @@ These are standing implementation rules for MatchApp work in this repository.
     - Do not ship a phone-only CSS/JS patch that leaves the tablet or Android WebView on the old layout.
     - Hide duplicate install banners such as the "Get MatchApp Ai on your home screen / Open in Chrome" card once the header Install control exists. One install entry is enough.
     - The header/home Install control should stay visually emphasized (gold frame, light pop) on phone, tablet, and Android WebView.
+
+
+13. **Kids poster integrity and Kids install identity**
+    - Kids title artwork must always preserve its natural poster aspect ratio and fit completely inside its card/detail box on phone, tablet, desktop, TV and `:kidsapp`. Never stretch, squash, elongate, crop or cut off Kids title artwork. Keep the Kids cover frame visibly colorful and child-friendly; any decorative motion must remain bounded and respect reduced-motion/stability rules.
+    - The public Kids Install control installs the Kids PWA identity, not the adult PWA: **MatchApp Ai KIDS**, Kids start URL/scope, and the approved Kids icon. Adult MatchApp Ai/iA and Kids installation state/identity must remain separate so installing one never masquerades as, renames, or suppresses the other.

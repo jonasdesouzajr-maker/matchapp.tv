@@ -1,0 +1,29 @@
+{
+  "name": "MatchApp Ai KIDS",
+  "short_name": "MatchApp KIDS",
+  "description": "A safety-first MatchApp experience for age-appropriate movies, shows and family entertainment.",
+  "id": "https://matchapp.tv/kids/",
+  "start_url": "/kids/?utm_source=pwa",
+  "scope": "/kids/",
+  "display": "standalone",
+  "display_override": [
+    "standalone"
+  ],
+  "orientation": "any",
+  "background_color": "#09061a",
+  "theme_color": "#09061a",
+  "lang": "en",
+  "categories": [
+    "entertainment",
+    "kids",
+    "family"
+  ],
+  "icons": [
+    {
+      "src": "/kids/kids-logo.jpeg?v=2",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any"
+    }
+  ]
+}

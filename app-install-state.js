@@ -2,7 +2,8 @@
    install/app launch; reconcile with browser detection when it is available. */
 (function(){
   'use strict';
-  const KEY='match_app_installed',BUILD='match_app_installed_build';
+  const KIDS=location.pathname==='/kids'||location.pathname.startsWith('/kids/');
+  const KEY=KIDS?'match_kids_app_installed':'match_app_installed',BUILD=KIDS?'match_kids_app_installed_build':'match_app_installed_build';
   const read=k=>{try{return localStorage.getItem(k);}catch(_){return null;}};
   const write=(k,v)=>{try{if(v===null)localStorage.removeItem(k);else localStorage.setItem(k,v);}catch(_){}};
   const standalone=()=>navigator.standalone===true||!!window.matchMedia?.('(display-mode: standalone)').matches;
@@ -16,10 +17,11 @@
       const apps=await navigator.getInstalledRelatedApps();
       const own=apps.some(app=>{
         if(app.platform!=='webapp')return false;
-        if(app.id==='https://matchapp.tv/')return true;
+        if(KIDS&&app.id==='https://matchapp.tv/kids/')return true;
+        if(!KIDS&&app.id==='https://matchapp.tv/')return true;
         try{
           const u=new URL(app.url,location.origin);
-          return u.origin===location.origin&&(u.pathname==='/manifest.json'||u.pathname==='/manifest-pt-br.json');
+          return u.origin===location.origin&&(KIDS?u.pathname==='/kids/manifest.json':(u.pathname==='/manifest.json'||u.pathname==='/manifest-pt-br.json'));
         }catch(_){return false;}
       });
       known=own;write(KEY,own?'true':null);if(!own)write(BUILD,null);notify();

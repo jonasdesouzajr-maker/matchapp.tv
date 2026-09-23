@@ -67,3 +67,22 @@ test('final wiring preserves localized install identity and all primary install 
     assert.ok(html.includes('/install.js?v='+version),'fresh installer on '+page);
   }
 });
+
+
+test('Kids install uses its own PWA identity, scope, icon and install state',()=>{
+  const kidsManifest=JSON.parse(read('kids/manifest.json'));
+  const kidsPage=read('kids/index.html');
+  const install=read('install.js');
+  const state=read('app-install-state.js');
+  assert.equal(kidsManifest.name,'MatchApp Ai KIDS');
+  assert.equal(kidsManifest.short_name,'MatchApp KIDS');
+  assert.equal(kidsManifest.id,'https://matchapp.tv/kids/');
+  assert.equal(kidsManifest.scope,'/kids/');
+  assert.match(kidsManifest.start_url,/^\/kids\//);
+  assert.ok(kidsManifest.icons.some(i=>/kids-logo\.jpeg/.test(i.src)&&i.sizes==='512x512'));
+  assert.match(kidsPage,/href="\/kids\/manifest\.json\?v=/);
+  assert.match(install,/MATCHAPP_KIDS_MANIFEST = '\/kids\/manifest\.json'/);
+  assert.match(install,/MATCHAPP_KIDS_NAME = 'MatchApp Ai KIDS'/);
+  assert.match(state,/match_kids_app_installed/);
+  assert.match(state,/https:\/\/matchapp\.tv\/kids\//);
+});
