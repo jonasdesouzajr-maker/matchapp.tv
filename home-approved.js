@@ -1,4 +1,4 @@
-/* Approved Home chrome — 2026-09-23 ui3. Idempotent overlay only. */
+/* Approved Home chrome — 2026-09-23 dock1. Idempotent overlay only. */
 (function () {
   'use strict';
   if (!document.getElementById('ma-discover-composer-css')) {
@@ -15,18 +15,32 @@
     ev.href = '/events-cover.css?v=20260923-events2';
     (document.head || document.documentElement).appendChild(ev);
   }
-  if (document.documentElement.getAttribute('data-ma-approved') === '2') return;
-  document.documentElement.setAttribute('data-ma-approved', '2');
-  if (!document.getElementById('ma-approved-css')) {
-    var link = document.createElement('link');
-    link.id = 'ma-approved-css';
-    link.rel = 'stylesheet';
-    link.href = '/home-approved.css?v=20260923-ui2';
-    (document.head || document.documentElement).appendChild(link);
+  var approvedLink = document.getElementById('ma-approved-css');
+  if (!approvedLink) {
+    approvedLink = document.createElement('link');
+    approvedLink.id = 'ma-approved-css';
+    approvedLink.rel = 'stylesheet';
+    (document.head || document.documentElement).appendChild(approvedLink);
   }
+  approvedLink.href = '/home-approved.css?v=20260923-dock1';
+
   function kids() {
     return location.pathname.indexOf('/kids') === 0 || (document.body && document.body.classList.contains('kids-body'));
   }
+  function nativeShell() {
+    return /MatchAppTVAndroid|MatchAppAiAndroid|MatchAppAiKidsAndroid/i.test(navigator.userAgent || '');
+  }
+  function standalone() {
+    return navigator.standalone === true || !!(window.matchMedia && window.matchMedia('(display-mode: standalone)').matches);
+  }
+  function ptBr() {
+    var lang = String(document.documentElement.lang || navigator.language || 'en').toLowerCase();
+    return lang.indexOf('pt') === 0;
+  }
+  function appName() {
+    return ptBr() ? 'MatchApp iA' : 'MatchApp Ai';
+  }
+
   function mountHero() {
     if (kids() || document.getElementById('ma-hero-ctas')) return;
     var host = document.querySelector('.home-hero') || (document.querySelector('h1.home-h1') && document.querySelector('h1.home-h1').parentElement);
@@ -50,20 +64,45 @@
       if (ask) ask.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   }
-  function mountInstall() {
-    if (kids() || document.getElementById('ma-install-chip')) return;
-    if (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) return;
-    if (window.matchMedia && window.matchMedia('(min-width:901px)').matches) return;
-    var chip = document.createElement('div');
-    chip.id = 'ma-install-chip';
-    chip.innerHTML = '<img src="/assets/brand/matchapp-ai-install-192.png" width="28" height="28" alt="">' +
-      '<span>Install app</span><button type="button" class="ma-install-go">Install</button>';
-    document.body.insertBefore(chip, document.body.firstChild);
-    chip.querySelector('.ma-install-go').addEventListener('click', function () {
-      var btn = document.querySelector('.chrome-install-now, .install-btn, #chrome-install-card button');
-      if (btn) btn.click();
-    });
+
+  function triggerInstall() {
+    if (typeof window.installMatchApp === 'function') {
+      window.installMatchApp();
+      return;
+    }
+    var real = document.querySelector('.install-btn:not(.ma-install-go)');
+    if (real) real.click();
   }
+
+  function mountInstall() {
+    if (kids() || nativeShell() || standalone() || (window.matchAppInstallState && window.matchAppInstallState.isInstalled())) {
+      var old = document.getElementById('ma-install-chip');
+      if (old) old.remove();
+      document.documentElement.classList.add(nativeShell() ? 'ma-native-shell' : 'ma-installed');
+      return;
+    }
+    if (window.matchMedia && window.matchMedia('(min-width:1101px)').matches) return;
+    var chip = document.getElementById('ma-install-chip');
+    if (!chip) {
+      chip = document.createElement('div');
+      chip.id = 'ma-install-chip';
+      chip.innerHTML = '<img src="/assets/brand/matchapp-ai-install-192.png?v=20260923-icon4" width="28" height="28" alt="">' +
+        '<span></span><button type="button" class="ma-install-go install-btn">Install</button>';
+      document.body.insertBefore(chip, document.body.firstChild);
+    }
+    var label = chip.querySelector('span');
+    if (label) label.textContent = appName();
+    var go = chip.querySelector('.ma-install-go');
+    if (go && !go.dataset.wired) {
+      go.dataset.wired = '1';
+      go.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        triggerInstall();
+      });
+    }
+  }
+
   function mountDock() {
     if (kids() || document.getElementById('ma-dock')) return;
     if (!document.body || !document.body.classList.contains('page-home')) return;
@@ -72,18 +111,15 @@
     dock.setAttribute('aria-label', 'MatchApp');
     dock.innerHTML =
       '<a class="ma-dock-home is-on" href="/">Home</a>' +
-      '<button type="button" class="ma-dock-ask" id="ma-dock-ask">Ask</button>' +
+      '<a class="ma-dock-ask" href="/discover.html">Ask</a>' +
       '<a class="ma-dock-together" href="/friends.html">Together</a>' +
-      '<a class="ma-dock-you" href="/profile.html" id="ma-dock-you">You</a>';
+      '<a class="ma-dock-you" href="/profile/profile.html">You</a>';
     document.body.appendChild(dock);
-    dock.querySelector('#ma-dock-ask').addEventListener('click', function () {
-      var tab = document.getElementById('ma-tab-ask');
-      if (tab) tab.click();
-      var ask = document.querySelector('.ma-concierge, .top-ask-wrap');
-      if (ask) ask.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
   }
+
   function boot() {
+    if (nativeShell()) document.documentElement.classList.add('ma-native-shell');
+    if (standalone()) document.documentElement.classList.add('ma-installed');
     mountHero();
     mountInstall();
     mountDock();

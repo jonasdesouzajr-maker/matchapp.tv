@@ -1,48 +1,62 @@
-/* Approved Home chrome 2026-09-23 ui2. Presentation overlay only. */
-html body.page-home{padding-bottom:72px}
-@media(max-width:900px){
-  html body.page-home #chrome-install-card{display:none!important}
-}
+/* Approved Home chrome 2026-09-23 dock1. Presentation overlay only. */
+html body.page-home{padding-bottom:calc(72px + env(safe-area-inset-bottom,0px))}
+
 #ma-install-chip{
-  position:sticky;top:0;z-index:40;
-  display:flex;align-items:center;gap:8px;
-  margin:8px 16px 0;padding:4px 8px 4px 6px;
-  height:40px;box-sizing:border-box;
-  border:1px solid rgba(232,197,106,.45);border-radius:14px;
-  background:rgba(16,10,32,.88);color:#fff;
-  font:600 13px/1 system-ui,sans-serif
+  position:sticky;top:0;z-index:50;
+  display:flex;align-items:center;gap:10px;
+  margin:8px 12px 0;padding:6px 8px 6px 8px;
+  min-height:44px;box-sizing:border-box;
+  border:1px solid rgba(229,193,88,.5);border-radius:16px;
+  background:#10081c;color:#fff;
+  font:600 13px/1.2 Outfit,system-ui,sans-serif
 }
-#ma-install-chip img{width:28px;height:28px;border-radius:8px;object-fit:cover}
-#ma-install-chip span{flex:1}
+#ma-install-chip img{width:28px;height:28px;border-radius:8px;object-fit:cover;flex:0 0 28px}
+#ma-install-chip span{flex:1;min-width:0}
 #ma-install-chip .ma-install-go{
-  height:28px;padding:0 12px;border:0;border-radius:999px;
+  height:32px;padding:0 14px;border:0;border-radius:999px;
   background:linear-gradient(180deg,#f3d57a,#d7ad3e);color:#1a1328;font-weight:800
 }
-@media(min-width:901px){#ma-install-chip{display:none}}
+html.ma-installed #ma-install-chip,
+html.ma-native-shell #ma-install-chip{display:none!important}
+@media(display-mode:standalone){#ma-install-chip{display:none!important}}
+@media(min-width:1101px){#ma-install-chip{display:none!important}}
+
 #ma-hero-ctas{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 8px;justify-content:center}
 #ma-hero-match,#ma-hero-ask{
-  min-height:48px;padding:0 18px;border-radius:999px;font:800 15px/1 system-ui,sans-serif;cursor:pointer
+  min-height:48px;padding:0 18px;border-radius:999px;font:800 15px/1 Outfit,system-ui,sans-serif;cursor:pointer
 }
 #ma-hero-match{border:0;background:linear-gradient(180deg,#f3d57a,#d7ad3e);color:#1a1328}
 #ma-hero-ask{border:1px solid rgba(232,197,106,.55);background:rgba(16,10,32,.55);color:#fff}
+
 html body.page-home .home-hero .ma-how-link{margin-top:8px}
 html body.page-home .ma-brand-orb,
 html body.page-home .header-brand-area img:not(.matchapp-wordmark){
   border-radius:50%!important;object-fit:cover!important;clip-path:circle(49.5% at 50% 50%)
 }
+
 #ma-dock{
-  position:fixed;left:12px;right:12px;bottom:10px;z-index:45;
-  display:flex;justify-content:space-around;align-items:center;
-  height:56px;padding:0 6px;
-  border:1px solid rgba(232,197,106,.35);border-radius:22px;
-  background:rgba(12,8,24,.92)
+  position:fixed;left:10px;right:10px;bottom:calc(8px + env(safe-area-inset-bottom,0px));
+  z-index:80;
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+  align-items:stretch;justify-items:stretch;
+  height:58px;padding:4px;
+  box-sizing:border-box;
+  border:1px solid rgba(229,193,88,.45);border-radius:20px;
+  background:#10081c;
+  box-shadow:0 10px 28px rgba(0,0,0,.45);
+  isolation:isolate
 }
 #ma-dock a,#ma-dock button{
-  appearance:none;background:none;border:0;color:#d9d0e4;
-  font:700 11px/1 system-ui,sans-serif;text-decoration:none;min-width:56px;min-height:44px
+  appearance:none;-webkit-appearance:none;
+  display:flex;align-items:center;justify-content:center;
+  margin:0;padding:0;border:0;border-radius:16px;
+  background:transparent;color:#d7cfe4;
+  font:700 12px/1 Outfit,system-ui,sans-serif;
+  text-decoration:none;min-width:0;min-height:0;height:100%;
+  box-shadow:none
 }
-#ma-dock .is-on,#ma-dock-home{color:#e8c56a}
-@media(min-width:901px){#ma-dock{display:none}}
+#ma-dock .is-on{color:#E5C158;background:rgba(229,193,88,.12)}
+@media(min-width:1101px){#ma-dock{display:none!important}}
 @media(prefers-reduced-motion:reduce){
-  #ma-hero-match,#ma-hero-ask{transition:none}
+  #ma-hero-match,#ma-hero-ask,#ma-dock a,#ma-dock button{transition:none}
 }
