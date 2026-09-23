@@ -1,4 +1,4 @@
-/* Approved Home chrome — 2026-09-23 installpop2. Idempotent overlay only. */
+/* Approved Home chrome — 2026-09-23 installpop3. Idempotent overlay only. */
 (function () {
   'use strict';
   if (!document.getElementById('ma-discover-composer-css')) {
@@ -22,7 +22,7 @@
     approvedLink.rel = 'stylesheet';
     (document.head || document.documentElement).appendChild(approvedLink);
   }
-  approvedLink.href = '/home-approved.css?v=20260923-installpop2';
+  approvedLink.href = '/home-approved.css?v=20260923-installpop3';
   if (!document.getElementById('ma-install-onetap')) {
     var ot=document.createElement('script');
     ot.id='ma-install-onetap';
@@ -127,8 +127,22 @@
   function boot() {
     if (nativeShell()) document.documentElement.classList.add('ma-native-shell');
     if (standalone()) document.documentElement.classList.add('ma-installed');
-    var banner=document.getElementById('chrome-install-card');
-    if(banner){ banner.hidden=true; banner.style.display='none'; }
+    function killBanner(){
+      var banner=document.getElementById('chrome-install-card');
+      if(!banner) return;
+      banner.hidden=true;
+      banner.setAttribute('hidden','');
+      banner.style.setProperty('display','none','important');
+      banner.style.setProperty('visibility','hidden','important');
+    }
+    killBanner();
+    [50,200,600,1200,2500].forEach(function(ms){ setTimeout(killBanner, ms); });
+    if(!document.getElementById('ma-install-pop-inline')){
+      var st=document.createElement('style');
+      st.id='ma-install-pop-inline';
+      st.textContent='html body #chrome-install-card,html body aside#chrome-install-card{display:none!important;visibility:hidden!important;height:0!important;margin:0!important;padding:0!important}html body .install-btn,html body .ma-install-go{transform:translateZ(0) scale(1.08);box-shadow:0 0 0 2px rgba(229,193,88,.65),0 10px 26px rgba(229,193,88,.42)!important}';
+      (document.head||document.documentElement).appendChild(st);
+    }
     mountHero();
     mountInstall();
     mountDock();
