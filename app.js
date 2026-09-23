@@ -4131,9 +4131,14 @@ async function renderResult(selected, isSpecificSearch) {
     if (!resultBox) return;
     resultBox.style.display = 'block';
     resultBox.classList.add('is-revealed');
-    resultBox.scrollIntoView({
-        behavior: document.documentElement.classList.contains('reduce-motion') || matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
-        block: 'start'
+    // Scroll to the artwork itself once it is painted; the poster is the
+    // beginning of the result experience on every screen size.
+    requestAnimationFrame(() => {
+        const posterStage = resultBox.querySelector('.poster-stage');
+        (posterStage || resultBox).scrollIntoView({
+            behavior: document.documentElement.classList.contains('reduce-motion') || matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+            block: 'start'
+        });
     });
     globalMatchTitle = selected.title;
     window.globalMatchTitle = selected.title;
