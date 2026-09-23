@@ -234,6 +234,28 @@ async function fallbackSearch(question, aiWasDown) {
     };
 }
 
+function catalogFallbackForQuestion(question) {
+    if (typeof CONTENT_CATALOG === 'undefined' || !Array.isArray(CONTENT_CATALOG)) return [];
+    const policy = window.matchPolicy;
+    return CONTENT_CATALOG
+        .filter(e => {
+            if (!e || !e.title || isDiscoverDisliked(e.title)) return false;
+            if (typeof window.tasteAllowsEntry === 'function' && !window.tasteAllowsEntry(e)) return false;
+            return !policy || policy.fitsQuestion(e, question);
+        })
+        .slice(0, DISCOVER_MAX)
+        .map(e => ({
+            title: e.title,
+            year: e.year || '',
+            type: (e.cats && e.cats[0]) || '',
+            platform: e.platform || '',
+            synopsis: e.synopsis || '',
+            cats: e.cats,
+            moods: e.moods,
+            watchUrl: e.watchUrl || ''
+        }));
+}
+
 /* ---------- Typewriter reveal ---------- */
 // Makes the answer feel spoken/written by a person rather than dumped on
 // screen — mirrors how the loading meter narration already behaves.
@@ -1483,6 +1505,22 @@ async function askAndRender(question) {
     let payload, source = 'ai';
     try { payload = await askAIConversational(question, history); }
     catch (e) { payload = await fallbackSearch(question, !!e.aiUnavailable); source = 'fallback'; }
+
+    // Final bounded recovery: if AI parsing, the Edge Function, or the keyless
+    // provider returns nothing, reuse the reviewed local catalogue under the
+    // exact same policy. This adds no polling/observers and cannot loosen the
+    // user's genre/taste exclusions.
+    if (!Array.isArray(payload?.results) || payload.results.length === 0) {
+        const local = catalogFallbackForQuestion(question);
+        if (local.length) {
+            payload = payload || {};
+            payload.results = local;
+            payload._live = false;
+            source = source === 'ai' ? 'catalog-recovery' : source + '+catalog';
+            const offlineNote = (typeof t === 'function') ? t('discover.offlineNote') : "Our AI concierge is temporarily offline, so here's what our catalog found for you:";
+            payload.answer = `${offlineNote} “${question}”`;
+        }
+    }
     lastDiscoverQuestion = question;
 
     // Same unconditional safety net as the match engine: no matter which
