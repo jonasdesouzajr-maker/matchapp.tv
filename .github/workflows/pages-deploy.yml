@@ -11,9 +11,11 @@ permissions:
   pages: write
   id-token: write
 
+# One live Pages publish at a time. Newest commit wins so overlapping bot
+# and human pushes do not 400 with "in progress deployment".
 concurrency:
   group: pages
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   deploy:
@@ -128,7 +130,7 @@ jobs:
           http_code="$(curl -sS -o /tmp/cloudflare-purge.json -w '%{http_code}' -X POST "https://api.cloudflare.com/client/v4/zones/$CF_ZONE_ID/purge_cache" \
             -H "Authorization: Bearer $CF_API_TOKEN" \
             -H "Content-Type: application/json" \
-            --data '{"purge_everything":true}')"
+            --data '{\"purge_everything\":true}')"
           cat /tmp/cloudflare-purge.json
           echo
           if [ "$http_code" != "200" ]; then
@@ -139,14 +141,10 @@ jobs:
             echo "Cloudflare purge response did not report success=true."
             exit 1
           }
-          # GitHub Pages/custom-domain propagation can lag the deploy action even
-          # after Cloudflare purges successfully. Poll a marker generated inside
-          # this exact Pages artifact, so unchanged asset cache keys cannot make an
-          # older release look current.
           LIVE_DEPLOY_SHA=""
           for attempt in $(seq 1 18); do
             LIVE_DEPLOY_SHA="$(curl -fsSL --max-time 30 -H 'Cache-Control: no-cache' \
-              "https://matchapp.tv/deployment-sha.txt?deploy=${GITHUB_SHA}-$attempt" 2>/dev/null | tr -d '[:space:]' || true)"
+              \"https://matchapp.tv/deployment-sha.txt?deploy=${GITHUB_SHA}-$attempt\" 2>/dev/null | tr -d '[:space:]' || true)"
             echo "Live deployment check $attempt/18: expected=$GITHUB_SHA live=${LIVE_DEPLOY_SHA:-missing}"
             if [ "$LIVE_DEPLOY_SHA" = "$GITHUB_SHA" ]; then
               break
@@ -158,20 +156,19 @@ jobs:
             exit 1
           fi
           curl -fsSL --max-time 30 -H 'Cache-Control: no-cache' \
-            "https://matchapp.tv/?deploy=${GITHUB_SHA}" -o /tmp/home-post-purge.html
-          EXPECTED_IA_CSS="$(grep -oE '/matchapp-ia\.css\?v=[^"]+' index.html | head -n1 || true)"
-          LIVE_IA_CSS="$(grep -oE '/matchapp-ia\.css\?v=[^"]+' /tmp/home-post-purge.html | head -n1 || true)"
+            \"https://matchapp.tv/?deploy=${GITHUB_SHA}\" -o /tmp/home-post-purge.html
+          EXPECTED_IA_CSS="$(grep -oE '/matchapp-ia\\.css\\?v=[^\"]+' index.html | head -n1 || true)"
+          LIVE_IA_CSS="$(grep -oE '/matchapp-ia\\.css\\?v=[^\"]+' /tmp/home-post-purge.html | head -n1 || true)"
           test -n "$EXPECTED_IA_CSS"
           test "$LIVE_IA_CSS" = "$EXPECTED_IA_CSS"
-          # All release/content assertions run against the exact deployed checkout.
           curl -fsSL --max-time 30 "https://matchapp.tv/release.json?deploy=${GITHUB_SHA}" -o /tmp/release.json
           curl -fsSL --max-time 30 "https://matchapp.tv/build-meta.js?deploy=${GITHUB_SHA}" -o /tmp/build-meta.js
-          VERSION="$(node -p "require('/tmp/release.json').version")"
+          VERSION="$(node -p \"require('/tmp/release.json').version\")"
           grep -Fq "window.MATCHAPP_BUILD = '$VERSION';" /tmp/build-meta.js
 
           curl -fsSL --max-time 30 -H 'Cache-Control: no-cache' "https://matchapp.tv/kids/?deploy=${GITHUB_SHA}" -o /tmp/kids.html
           ! grep -q 'GTM-M7J3NNBN' /tmp/kids.html
-          grep -Fq 'id="kids-match-submit"' /tmp/kids.html
+          grep -Fq 'id=\"kids-match-submit\"' /tmp/kids.html
 
           grep -q 'GTM-M7J3NNBN' /tmp/home-post-purge.html
           grep -q 'ca-pub-9541435081010948' /tmp/home-post-purge.html
@@ -180,20 +177,20 @@ jobs:
           ! grep -q 'ma-ui-preparing' /tmp/home-post-purge.html
 
           for asset in page-origin.js build-meta.js matchapp-ia.js catalog-media.js app.js lazy.js awareness.js; do
-            EXPECTED="$(grep -oE "/${asset//./\\.}\\?v=[^\"]+" index.html | head -n1 || true)"
+            EXPECTED="$(grep -oE \"/${asset//./\\\\.}\\\\?v=[^\\\\\"]+\" index.html | head -n1 || true)"
             echo "Home asset $asset -> ${EXPECTED:-missing}"
             test -n "$EXPECTED"
             grep -Fq "$EXPECTED" /tmp/home-post-purge.html
           done
           for asset in matchapp-ia.css poster-wall.css awareness.css; do
-            EXPECTED="$(grep -oE "/${asset//./\\.}\\?v=[^\"]+" index.html | head -n1 || true)"
+            EXPECTED="$(grep -oE \"/${asset//./\\\\.}\\\\?v=[^\\\\\"]+\" index.html | head -n1 || true)"
             echo "Home stylesheet $asset -> ${EXPECTED:-missing}"
             test -n "$EXPECTED"
             grep -Fq "$EXPECTED" /tmp/home-post-purge.html
           done
 
           for asset in kids.css kids.js voice-feedback.js kids-guardian.js; do
-            EXPECTED="$(grep -oE "/kids/${asset//./\\.}\\?v=[^\"]+" kids/index.html | head -n1 || true)"
+            EXPECTED="$(grep -oE \"/kids/${asset//./\\\\.}\\\\?v=[^\\\\\"]+\" kids/index.html | head -n1 || true)"
             echo "Kids asset $asset -> ${EXPECTED:-missing}"
             test -n "$EXPECTED"
             grep -Fq "$EXPECTED" /tmp/kids.html
@@ -204,7 +201,7 @@ jobs:
           curl -fsSL --max-time 30 "https://matchapp.tv/awareness/world-alzheimers-month-2026/?deploy=${GITHUB_SHA}" -o /tmp/awareness-page.html
           grep -Fq 'World Alzheimer’s Month 2026' /tmp/awareness-page.html
 
-          LIVE_IA_CSS="$(grep -oE '/matchapp-ia\.css\?v=[^"]+' /tmp/home-post-purge.html | head -n1 || true)"
+          LIVE_IA_CSS="$(grep -oE '/matchapp-ia\\.css\\?v=[^\"]+' /tmp/home-post-purge.html | head -n1 || true)"
           test -n "$LIVE_IA_CSS"
           curl -fsSL --max-time 30 "https://matchapp.tv${LIVE_IA_CSS}&deploy=${GITHUB_SHA}" -o /tmp/home-stability.css
           grep -q 'renderer root guard' /tmp/home-stability.css
@@ -219,8 +216,8 @@ jobs:
             echo "::error::No Chromium-compatible browser found on runner."
             exit 1
           fi
-          "$CHROME" --headless=new --no-sandbox --disable-dev-shm-usage --no-first-run --no-default-browser-check \
-            --remote-debugging-port=9222 --remote-allow-origins='*' --user-data-dir=/tmp/matchapp-chrome \
+          "$CHROME" --headless=new --no-sandbox --disable-dev-shm-usage --no-first-run --no-default-browser-check \\
+            --remote-debugging-port=9222 --remote-allow-origins='*' --user-data-dir=/tmp/matchapp-chrome \\
             about:blank >/tmp/matchapp-chrome.log 2>&1 &
           CHROME_PID=$!
           trap 'kill "$CHROME_PID" 2>/dev/null || true' EXIT
