@@ -8,7 +8,7 @@ button.kids-card-poster{display:block;width:100%;padding:0;color:inherit;text-al
 #kids-watch-name{font:800 clamp(1.6rem,4vw,2.8rem)/1.15 'Baloo 2',system-ui;display:block;margin:.6rem 0 1.3rem}
 #kids-watch-dialog .kids-dialog-symbol{display:none}
 .kids-match-detail{display:grid;grid-template-columns:minmax(100px,12rem) 1fr;gap:1.5rem;align-items:start}
-.kids-result-art img{display:block;width:100%;height:auto;aspect-ratio:2/3;object-fit:cover;border-radius:1.2rem;background:#382153;box-shadow:0 6px 20px #0004}
+.kids-result-art img{display:block;width:100%;height:auto;aspect-ratio:2/3;object-fit:contain;border-radius:1.2rem;background:#382153;box-shadow:0 6px 20px #0004}
 .kids-result-meta{color:var(--kids-cyan)!important;font-weight:800}.kids-match-detail h3{margin:.5rem 0}
 .kids-result-actions,.kids-result-sharing{display:flex;gap:.65rem;flex-wrap:wrap;margin-top:1.2rem}
 .kids-result-actions button,.kids-result-sharing button{background:#49305f;color:#fff9ed;border:1px solid #ac87c3;border-radius:1rem;padding:.7rem 1rem;font-weight:800;flex:1 1 auto}
