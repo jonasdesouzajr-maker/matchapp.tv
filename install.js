@@ -203,11 +203,18 @@ window.installMatchApp = async function () {
             // Start MatchApp's install animation while the browser performs
             // the real PWA install. It is dismissed only on a rejected prompt;
             // successful completion is driven exclusively by appinstalled.
-            window.matchAppInstallProgress?.start();
-            await deferredInstallPrompt.prompt();
-            const choice = await deferredInstallPrompt.userChoice;
-            if (choice && choice.outcome === 'accepted') window.matchAppInstallProgress?.accepting();
-            else window.matchAppInstallProgress?.cancel();
+            // Preserve the native install gesture: do not render our overlay until
+            // Android has accepted the browser's real PWA prompt.
+            const installEvent = deferredInstallPrompt;
+            deferredInstallPrompt = null;
+            await installEvent.prompt();
+            const choice = await installEvent.userChoice;
+            if (choice && choice.outcome === 'accepted') {
+                window.matchAppInstallProgress?.start();
+                window.matchAppInstallProgress?.accepting();
+            } else {
+                window.matchAppInstallProgress?.cancel();
+            }
         } catch (e) { window.matchAppInstallProgress?.cancel(); }
         deferredInstallPrompt = null;
         return;
@@ -222,11 +229,18 @@ window.installMatchApp = async function () {
         }
         if (deferredInstallPrompt) {
             try {
-                window.matchAppInstallProgress?.start();
-                await deferredInstallPrompt.prompt();
-                const choice = await deferredInstallPrompt.userChoice;
-                if (choice && choice.outcome === 'accepted') window.matchAppInstallProgress?.accepting();
-                else window.matchAppInstallProgress?.cancel();
+                // Preserve the native install gesture: do not render our overlay until
+                // Android has accepted the browser's real PWA prompt.
+                const installEvent = deferredInstallPrompt;
+                deferredInstallPrompt = null;
+                await installEvent.prompt();
+                const choice = await installEvent.userChoice;
+                if (choice && choice.outcome === 'accepted') {
+                    window.matchAppInstallProgress?.start();
+                    window.matchAppInstallProgress?.accepting();
+                } else {
+                    window.matchAppInstallProgress?.cancel();
+                }
             } catch (e) { window.matchAppInstallProgress?.cancel(); }
             deferredInstallPrompt = null;
             return;
