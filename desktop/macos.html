@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-M7J3NNBN');</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Install MatchApp Ai for macOS</title>
+<meta name="description" content="Install MatchApp Ai on Mac from the official matchapp.tv download. HTTPS only.">
+<link rel="canonical" href="https://matchapp.tv/desktop/macos.html">
+<style>body{margin:0;font-family:system-ui,sans-serif;background:#120c1c;color:#f4eefc;padding:32px 20px}main{max-width:640px;margin:0 auto;border:1px solid #e8c56a;border-radius:20px;padding:28px;background:#1a1230}h1{color:#e8c56a;font-size:28px}.btn{display:inline-block;margin:8px 8px 0 0;padding:12px 18px;border-radius:999px;background:linear-gradient(180deg,#f3d57a,#d7ad3e);color:#1a1328;font-weight:800;text-decoration:none;border:0;cursor:pointer}.sec{color:#d9d0e4;line-height:1.6}</style>
+</head>
+<body>
+<main>
+  <p>Official download · https://matchapp.tv</p>
+  <h1>MatchApp Ai for macOS</h1>
+  <p class="sec" id="status">Checking the secure Mac package…</p>
+  <p>
+    <button class="btn" type="button" id="pwa">Install as a Mac app</button>
+    <a class="btn" id="file" hidden href="#">Download macOS installer</a>
+  </p>
+  <p class="sec">Downloads are served only from matchapp.tv over HTTPS. When a signed .dmg is published, its SHA-256 is shown here before you download.</p>
+  <p><a href="/" style="color:#e8c56a">Back to MatchApp</a></p>
+</main>
+<script src="/desktop-install.js?v=20260923-desk1"></script>
+<script>
+fetch('/desktop/packages.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(p){
+  var w=p.adult&&p.adult.macos;
+  var status=document.getElementById('status');
+  var file=document.getElementById('file');
+  if(w&&w.available&&w.url&&w.url.indexOf('https://matchapp.tv/')===0){
+    file.href=w.url; file.hidden=false;
+    status.textContent='Signed macOS installer ready. SHA-256: '+(w.sha256||'listed with the file')+'.';
+  } else {
+    status.textContent='The secure Mac software install today is the official MatchApp Ai app through Chrome or Edge, or Add to Dock in Safari. A signed .dmg will appear here when it is published.';
+  }
+}).catch(function(){});
+document.getElementById('pwa').onclick=function(){
+  if(typeof installMatchApp==='function') installMatchApp();
+  else location.href='/?install=macos';
+};
+</script>
+</body>
+</html>
