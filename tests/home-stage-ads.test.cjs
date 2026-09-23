@@ -60,3 +60,14 @@ test('screenshot regression: Mood Format Platform have visible inner inset',()=>
   assert.match(pass,/\.ma-chip-row\{[\s\S]*padding:2px 6px 4px!important/);
   assert.match(pass,/\.ma-filter-row:first-child\{[\s\S]*padding-top:6px!important/);
 });
+
+test('homepage does not suppress desktop rails and keeps mobile responsive slots unconstrained',()=>{
+  const html=read('index.html');
+  const compact=html.slice(html.indexOf('<style id="mh-compact">'),html.indexOf('</style>',html.indexOf('<style id="mh-compact">')));
+  assert.doesNotMatch(compact,/sidebar-ad-left[^\n]*sidebar-ad-right\s*\{\s*display:\s*none\s*!important;\s*\}/,'desktop rails must not be globally hidden');
+  assert.match(compact,/@media\(max-width:1179px\)[\s\S]*sidebar-ad-left[\s\S]*display:none!important/);
+  const guard=html.slice(html.indexOf('<style id="mobile-ad-blank-guard">'),html.indexOf('</style>',html.indexOf('<style id="mobile-ad-blank-guard">')));
+  assert.doesNotMatch(guard,/min-height:250px/,'mobile AdSense must not be forced into a 250px creative box');
+  assert.match(guard,/ma-inline-ad ins\.adsbygoogle[\s\S]*width:100%/);
+  assert.match(html,/\/ads-init\.js\?v=20260924-ads1/);
+});
