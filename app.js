@@ -4306,17 +4306,31 @@ async function renderResult(selected, isSpecificSearch) {
     posterEl.style.display = 'block';
     posterEl.classList.remove('fade-in'); void posterEl.offsetWidth; posterEl.classList.add('fade-in');
     
-    // In case somehow the browser blocks the valid URL, it falls back to the dynamic generator,
-    // then to a pure local (no-network) SVG so a cover is ALWAYS visible no matter what's blocked.
-    // If the real cover fails to load for any reason, go straight to the local
-    // SVG. There used to be an intermediate hop through placehold.co here, which
-    // added a second chance to fail (blocked by ad-blockers, service downtime)
-    // before reaching a fallback that needs no network at all.
-    posterEl.onerror = function() {
-        this.onerror = null;
-        this.src = generatedCover(selected.title, matchHints);
-    };
-    posterEl.src = realCover; 
+    // A match card is not allowed to expose a missing/broken cover. The local
+    // SVG is generated synchronously and assigned first, so the very first
+    // paint already has artwork even while a remote poster is still loading.
+    // Remote artwork is promoted only after the browser proves it decoded.
+    // This closes the desktop race where a failed/slow provider URL left the
+    // poster area visually blank before onerror completed.
+    const localCover = generatedCover(selected.title, {
+        ...matchHints,
+        platform: selected.platform || matchHints.platform || '',
+        synopsis: selected.synopsis || matchHints.synopsis || ''
+    });
+    posterEl.onerror = null;
+    posterEl.src = localCover;
+    if (realCover && realCover !== localCover) {
+        const probe = new Image();
+        probe.onload = function() {
+            if (window.globalMatchTitle === selected.title) {
+                posterEl.src = realCover;
+                globalMatchPoster = realCover;
+                window.globalMatchPoster = realCover;
+            }
+        };
+        probe.onerror = function() { /* keep the already-painted local cover */ };
+        probe.src = realCover;
+    }
 
     // DIRECT LINK SETUP — routed through the platform catalog so every service
     // gets a real deep link into that service.
