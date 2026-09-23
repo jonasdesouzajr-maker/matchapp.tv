@@ -131,7 +131,7 @@ async function askAIConversational(question, history) {
     // exactly the "no output, then it took too long" report. 18s is generous
     // enough for a genuine cold start but bounded, so the worst case is ~36s
     // and then an honest message rather than an open-ended wait.
-    const AI_TIMEOUT_MS = 30000;
+    const AI_TIMEOUT_MS = 8000;
     const withTimeout = (promise) => Promise.race([
         promise,
         new Promise((_, reject) =>
@@ -149,7 +149,7 @@ async function askAIConversational(question, history) {
     // being asked a conversational question, producing exactly the kind of
     // mismatched, wrong-shaped result that's confusing to look at. Retrying
     // the identical, correct contract removes that collision entirely.
-    for (let attempt = 1; attempt <= 2; attempt++) {
+    for (let attempt = 1; attempt <= 1; attempt++) {
         try {
             const { data, error } = await withTimeout(
                 window.supabaseClient.functions.invoke('gemini-proxy', { body }));
@@ -187,12 +187,15 @@ function stripQuestionWords(q) {
 }
 
 async function fallbackSearch(question, aiWasDown) {
-    const term = stripQuestionWords(question) || question;
     const audioIntent = detectAudioIntent(question);
+    const podcastIntent = /\b(podcast|podcasts|radio show)\b/i.test(question);
+    const musicIntent = audioIntent && !podcastIntent;
+    const trendIntent = /\b(top|trend|trending|popular|hits?|charts?|new music)\b/i.test(question);
+    const term = musicIntent && trendIntent ? 'top hits 2026' : (stripQuestionWords(question) || question);
     // Only the media types that actually match intent are searched — this is
     // the fix for the "only podcasts" bug. A question about a movie will
     // never touch the podcast catalog at all now.
-    const mediaTypes = audioIntent ? ['podcast', 'musicTrack'] : ['movie', 'tvShow'];
+    const mediaTypes = podcastIntent ? ['podcast'] : (musicIntent ? ['musicTrack'] : ['movie', 'tvShow']);
 
     const out = [];
     for (const media of mediaTypes) {
