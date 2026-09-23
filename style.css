@@ -147,7 +147,7 @@ body.ad-free-mode .ad-placement, body.ad-free-mode .sidebar-ad { display: none !
 
 /* 🌍 BACKGROUND */
 .luxury-bg { position: fixed; inset: 0; background: radial-gradient(circle at 18% 28%, rgba(216,156,72,0.45), transparent 58%), radial-gradient(circle at 82% 72%, rgba(64, 37, 98, 0.68), transparent 60%), radial-gradient(circle at 50% 108%, rgba(168,108,36,0.30), transparent 55%), linear-gradient(160deg, #14131A 0%, #1A1526 55%, #14131A 100%); z-index: -2; pointer-events: none; }
-.floating-orb { position: absolute; border-radius: 50%; filter: blur(70px); opacity: 0.65; animation: float 10s infinite alternate cubic-bezier(0.4, 0, 0.2, 1); }
+.floating-orb { position: absolute; border-radius: 50%; filter: blur(70px); opacity: 0.65; animation: float 10s 2 alternate cubic-bezier(0.4, 0, 0.2, 1); }
 .orb-1 { width: 300px; height: 300px; background: rgba(168,108,36,0.39); top: 5%; left: -10%; }
 .orb-2 { width: 350px; height: 350px; background: rgba(216,156,72,0.38); bottom: -10%; right: -10%; animation-delay: -5s; }
 @keyframes float { 0% { transform: translateY(0px) scale(1); } 100% { transform: translateY(50px) scale(1.15); } }

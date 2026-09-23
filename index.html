@@ -36,7 +36,7 @@
     <meta name="google-adsense-account" content="ca-pub-9541435081010948">
     <link rel="canonical" href="https://matchapp.tv/">
     <link rel="manifest" href="/manifest.json?v=20260922-icon3">
-    <link rel="apple-touch-icon" href="/assets/brand/matchapp-ai-install-192.png?v=20260922-icon3">
+    <link rel="apple-touch-icon" href="/assets/brand/matchapp-ai-install-192.png?v=20260923-icon4">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="MatchApp Ai">
@@ -100,8 +100,8 @@
 <script defer src="/event-i18n.js?v=187"></script>
 <script defer src="/page-locale.js?v=187"></script>
     <script src="/build-meta.js?v=20260922-install2"></script>
-<script src="/app-install-state.js?v=20260922-install2"></script>
-<script defer src="/install.js?v=20260922-icon3"></script>
+<script src="/app-install-state.js?v=20260923-icon4"></script>
+<script defer src="/install.js?v=20260923-icon4"></script>
 <link rel="stylesheet" href="/awareness.css?v=20260922-awareness1">
 <script defer src="/awareness.js?v=20260922-awareness1"></script>
     <script defer src="/avatars.js?v=187"></script>
@@ -708,23 +708,23 @@
 
         /* ===== SPOTLIGHT (upcoming premiere) ===== */
         .spotlight-card { position: relative; overflow: hidden; border: 2px solid var(--gold) !important; padding: 0 !important; }
-        .spotlight-glow { position: absolute; inset: -50%; background: conic-gradient(from 0deg, transparent 0deg, rgba(229,193,88,0.16) 60deg, rgba(168,108,36,0.26) 120deg, transparent 180deg); animation: spotlightSweep 9s linear infinite; pointer-events: none; }
+        .spotlight-glow { position: absolute; inset: -50%; background: conic-gradient(from 0deg, transparent 0deg, rgba(229,193,88,0.16) 60deg, rgba(168,108,36,0.26) 120deg, transparent 180deg); animation: spotlightSweep 9s linear 1; pointer-events: none; }
         @keyframes spotlightSweep { to { transform: rotate(360deg); } }
         .spotlight-inner { position: relative; display: flex; gap: 26px; padding: 26px; align-items: center; }
         .spotlight-poster { position: relative; flex-shrink: 0; width: 190px; height: 285px; border-radius: 14px; overflow: hidden; border: 2px solid var(--gold); cursor: pointer; transition: 0.35s cubic-bezier(0.34,1.56,0.64,1); background: var(--royal-deep); box-shadow: 0 12px 40px rgba(0,0,0,0.7); }
         .spotlight-poster:hover { transform: scale(1.04) rotate(-1deg); box-shadow: 0 18px 52px rgba(229,193,88,0.45); }
         .spotlight-poster img { width: 100%; height: 100%; object-fit: cover; display: block; }
-        .spotlight-ribbon { position: absolute; top: 12px; left: -34px; transform: rotate(-45deg); background: linear-gradient(135deg, #d32f2f, #8b0000); color: #fff; font-size: 9.5px; font-weight: 900; letter-spacing: 0.7px; padding: 5px 40px; box-shadow: 0 3px 10px rgba(0,0,0,0.6); animation: ribbonPulse 2.4s ease-in-out infinite; }
+        .spotlight-ribbon { position: absolute; top: 12px; left: -34px; transform: rotate(-45deg); background: linear-gradient(135deg, #d32f2f, #8b0000); color: #fff; font-size: 9.5px; font-weight: 900; letter-spacing: 0.7px; padding: 5px 40px; box-shadow: 0 3px 10px rgba(0,0,0,0.6); animation: ribbonPulse 2.4s ease-in-out 3; }
         @keyframes ribbonPulse { 0%,100% { filter: brightness(1); } 50% { filter: brightness(1.35); } }
         .spotlight-body { flex: 1; min-width: 0; }
         .spotlight-eyebrow { display: inline-block; color: var(--gold); font-size: 11.5px; font-weight: 900; text-transform: uppercase; letter-spacing: 1.4px; margin-bottom: 8px; }
-        .spotlight-title { font-size: 30px; font-weight: 900; margin: 0 0 10px 0; line-height: 1.15; background: linear-gradient(100deg, #fff 20%, var(--gold-glow) 45%, #d32f2f 70%, #fff 90%); background-size: 250% auto; -webkit-background-clip: text; background-clip: text; color: transparent; animation: textShimmer 6s linear infinite; }
+        .spotlight-title { font-size: 30px; font-weight: 900; margin: 0 0 10px 0; line-height: 1.15; background: linear-gradient(100deg, #fff 20%, var(--gold-glow) 45%, #d32f2f 70%, #fff 90%); background-size: 250% auto; -webkit-background-clip: text; background-clip: text; color: transparent; animation: textShimmer 6s linear 2; }
         .spotlight-desc { color: #cfc7e0; font-size: 14.5px; line-height: 1.65; margin: 0 0 16px 0; }
         .spotlight-meta { display: flex; flex-wrap: wrap; gap: 9px; margin-bottom: 16px; }
         .spotlight-chip { background: rgba(216,156,72,0.30); border: 1px solid rgba(168,108,36,0.50); color: #e5deed; font-size: 12.5px; padding: 7px 14px; border-radius: 20px; font-weight: 600; }
         .spotlight-chip strong { color: var(--gold-glow); }
         .spotlight-countdown { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 18px; }
-        .countdown-unit { background: rgba(0,0,0,0.55); border: 1px solid var(--gold); border-radius: 11px; padding: 9px 15px; text-align: center; min-width: 62px; animation: countdownTick 1s ease-in-out infinite alternate; }
+        .countdown-unit { background: rgba(0,0,0,0.55); border: 1px solid var(--gold); border-radius: 11px; padding: 9px 15px; text-align: center; min-width: 62px; animation: countdownTick 1s ease-in-out 2 alternate; }
         @keyframes countdownTick { from { box-shadow: 0 0 0 rgba(229,193,88,0); } to { box-shadow: 0 0 14px rgba(229,193,88,0.28); } }
         .countdown-num { display: block; font-size: 22px; font-weight: 900; color: var(--gold-glow); line-height: 1; }
         .countdown-label { display: block; font-size: 9.5px; color: #9d95b0; text-transform: uppercase; letter-spacing: 0.9px; margin-top: 4px; }
@@ -835,7 +835,7 @@
 
         /* ===== PREMIUM AD FRAME (beautifies AdSense placements) ===== */
         .premium-ad-frame { position: relative; border: 1px solid rgba(168,108,36,0.50) !important; border-radius: 16px; overflow: hidden; }
-        .premium-ad-frame::before { content: ""; position: absolute; inset: 0; border-radius: 16px; box-shadow: inset 0 0 25px rgba(229,193,88,0.08); pointer-events: none; animation: adFrameGlow 4s ease-in-out infinite; }
+        .premium-ad-frame::before { content: ""; position: absolute; inset: 0; border-radius: 16px; box-shadow: inset 0 0 25px rgba(229,193,88,0.08); pointer-events: none; animation: none; }
         @keyframes adFrameGlow { 0%, 100% { box-shadow: inset 0 0 15px rgba(229,193,88,0.06); } 50% { box-shadow: inset 0 0 30px rgba(229,193,88,0.16); } }
 
         /* ===== 8K PREMIUM POLISH: subtle cinematic ambience ===== */
@@ -946,7 +946,7 @@
         .gold-btn { position: relative; overflow: hidden; }
         .gold-btn::after { content: ""; position: absolute; top: 0; left: -60%; width: 40%; height: 100%;
             background: linear-gradient(120deg, transparent, rgba(255,255,255,0.45), transparent);
-            transform: skewX(-20deg); animation: shimmer 4.5s ease-in-out infinite; pointer-events: none; }
+            transform: skewX(-20deg); animation: shimmer 4.5s ease-in-out 2; pointer-events: none; }
         @keyframes shimmer { 0%, 65% { left: -60%; } 100% { left: 130%; } }
 
         /* ===== HOW IT WORKS ===== */
@@ -984,7 +984,7 @@
         @keyframes orbitBob { 0%,100% { opacity:0.5; } 50% { opacity:1; } }
 
         #loading-headline { font-size: 25px; font-weight: 900; text-transform: uppercase; margin: 0 0 8px 0; letter-spacing: 0.6px; }
-        .shimmer-text { background: linear-gradient(100deg, var(--gold) 20%, #fff 42%, var(--royal-glow) 58%, var(--gold) 80%); background-size: 240% auto; -webkit-background-clip: text; background-clip: text; color: transparent; animation: textShimmer 3.4s linear infinite; }
+        .shimmer-text { background: linear-gradient(100deg, var(--gold) 20%, #fff 42%, var(--royal-glow) 58%, var(--gold) 80%); background-size: 240% auto; -webkit-background-clip: text; background-clip: text; color: transparent; animation: textShimmer 3.4s linear 2; }
         @keyframes textShimmer { to { background-position: -240% center; } }
         #loading-substep { color: var(--royal-glow); font-size: 14px; margin: 0 0 26px 0; min-height: 20px; transition: opacity 0.3s; letter-spacing: 0.3px; }
 
@@ -1106,14 +1106,14 @@
         .premium-card { position: relative; }
         #res-platform-badge { animation: badgePop 0.55s cubic-bezier(0.34,1.56,0.64,1); }
         @keyframes badgePop { 0% { transform: scale(0); } 70% { transform: scale(1.18); } 100% { transform: scale(1); } }
-        #res-title { background: linear-gradient(100deg, #fff 30%, var(--gold-glow) 50%, #fff 70%); background-size: 220% auto; -webkit-background-clip: text; background-clip: text; color: transparent; animation: textShimmer 5s linear infinite; }
+        #res-title { background: linear-gradient(100deg, #fff 30%, var(--gold-glow) 50%, #fff 70%); background-size: 220% auto; -webkit-background-clip: text; background-clip: text; color: transparent; animation: textShimmer 5s linear 2; }
         .marquee-item { transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.35s, border-color 0.35s; }
         .marquee-item:hover { transform: scale(1.13) rotate(-1.5deg); box-shadow: 0 14px 34px rgba(229,193,88,0.45); }
         .how-num { animation: numFloat 3.2s ease-in-out infinite; }
         .how-step:nth-child(2) .how-num { animation-delay: 0.4s; }
         .how-step:nth-child(3) .how-num { animation-delay: 0.8s; }
         @keyframes numFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
-        .app-title-main { background: linear-gradient(100deg, var(--gold) 25%, #fff 45%, var(--royal-glow) 60%, var(--gold) 80%); background-size: 250% auto; -webkit-background-clip: text; background-clip: text; color: transparent; animation: textShimmer 6s linear infinite; }
+        .app-title-main { background: linear-gradient(100deg, var(--gold) 25%, #fff 45%, var(--royal-glow) 60%, var(--gold) 80%); background-size: 250% auto; -webkit-background-clip: text; background-clip: text; color: transparent; animation: textShimmer 6s linear 2; }
         .brand-logo { transition: transform 0.5s cubic-bezier(0.34,1.56,0.64,1); }
         .header-brand-area:hover .brand-logo { transform: rotate(-8deg) scale(1.08); }
         @media (prefers-reduced-motion: reduce) {

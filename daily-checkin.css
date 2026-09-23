@@ -42,7 +42,7 @@
   pointer-events:none;
   background:linear-gradient(100deg,transparent,rgba(255,240,190,.14),transparent);
   transform:skewX(-18deg);
-  animation:dcSheen 6.5s ease-in-out infinite;
+  animation:dcSheen 6.5s ease-in-out 2;
 }
 @keyframes dcSheen{
   0%{transform:translateX(0) skewX(-18deg)}

@@ -1,7 +1,7 @@
 .matchapp-notification-button{position:relative;display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;padding:0;border-radius:50%;border:1px solid rgba(229,193,88,.34);background:rgba(255,255,255,.055);color:#efe2ae;cursor:pointer;flex:0 0 auto}
 .matchapp-notification-button svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.matchapp-notification-button.has-notification{border-color:#E5C158;box-shadow:0 0 0 1px rgba(229,193,88,.15),0 0 18px rgba(229,193,88,.22);animation:matchBellGlow 2.4s ease-in-out infinite}
-.matchapp-notification-button.has-notification svg{animation:matchBellRing 4s ease-in-out infinite;transform-origin:50% 10%}
+.matchapp-notification-button.has-notification{border-color:#E5C158;box-shadow:0 0 0 1px rgba(229,193,88,.15),0 0 18px rgba(229,193,88,.22);animation:matchBellGlow 2.4s ease-in-out 3}
+.matchapp-notification-button.has-notification svg{animation:matchBellRing 4s ease-in-out 3;transform-origin:50% 10%}
 .matchapp-notification-count{position:absolute;top:-6px;right:-6px;min-width:18px;height:18px;padding:0 4px;border-radius:999px;display:grid;place-items:center;background:#d94c73;color:#fff;border:2px solid #160c2e;font-size:9px;font-weight:900;line-height:1}
 .matchapp-notification-count[hidden]{display:none!important}
 .matchapp-notification-panel{position:fixed;right:16px;top:84px;z-index:5000;width:min(420px,calc(100vw - 24px));max-height:min(720px,calc(100dvh - 100px));overflow:auto;border:1px solid rgba(229,193,88,.34);border-radius:22px;background:linear-gradient(160deg,rgba(28,15,52,.985),rgba(10,9,18,.99));box-shadow:0 24px 80px rgba(0,0,0,.65);color:#fff;backdrop-filter:blur(22px)}

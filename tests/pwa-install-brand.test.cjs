@@ -20,11 +20,11 @@ test('PWA keeps one localized app identity and uses the uploaded MatchApp icon',
   assert.equal(pt.display,'standalone');
   for(const m of [en,pt]){
     assert.ok(m.icons.some(i=>i.sizes==='192x192'&&/matchapp-ai-install-192\.png/.test(i.src)&&i.purpose==='any'));
-    assert.ok(m.icons.some(i=>i.sizes==='512x512'&&/matchapp-ai-install-512\.webp/.test(i.src)&&i.purpose==='any'));
+    assert.ok(m.icons.some(i=>i.sizes==='512x512'&&/matchapp-ai-install-512\.png/.test(i.src)&&i.type==='image/png'&&i.purpose==='any'));
     assert.equal(m.icons.some(i=>i.purpose==='maskable'),false,'tightly cropped artwork must not be declared maskable');
   }
   assert.ok(fs.statSync(path.join(root,'assets/brand/matchapp-ai-install-192.png')).size>10000);
-  assert.ok(fs.statSync(path.join(root,'assets/brand/matchapp-ai-install-512.webp')).size>20000);
+  assert.ok(fs.statSync(path.join(root,'assets/brand/matchapp-ai-install-512.png')).size>20000);
 });
 
 test('browser install is real, consent-based, secure and localized',()=>{

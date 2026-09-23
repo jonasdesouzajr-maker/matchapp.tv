@@ -419,10 +419,10 @@ body.ma-ia-pricing .ma-secondary-product{
     linear-gradient(155deg,rgba(10,23,45,.96),rgba(27,16,48,.96)) padding-box,
     linear-gradient(115deg,rgba(120,82,19,.55),var(--ma-gold-hot),var(--ma-gold-white),#c99325,var(--ma-gold-hot),rgba(120,82,19,.55)) border-box!important;
   background-size:100% 100%,260% 100%!important;
-  animation:maGoldTravel 5.4s linear infinite,maGoldPulse 4.2s ease-in-out infinite!important;
+  animation:maGoldTravel 5.4s linear 2,maGoldPulse 4.2s ease-in-out 2!important;
 }
 html body.page-home .ma-concierge,
-body.ai-chat-page .discover-head{animation-name:maGoldTravel,maGoldPulse,maRiseIn!important;animation-duration:5.4s,4.2s,.52s!important;animation-timing-function:linear,ease-in-out,cubic-bezier(.2,.8,.2,1)!important}
+body.ai-chat-page .discover-head{animation-name:maGoldTravel,maGoldPulse,maRiseIn!important;animation-duration:5.4s,4.2s,.52s!important;animation-timing-function:linear,ease-in-out,cubic-bezier(.2,.8,.2,1)!important;animation-iteration-count:2,2,1!important}
 
 /* Fields use the same radius and shimmer language. */
 .ma-concierge :is(.crit-toggle,#specific-search-input,.mic-btn,.search-examples button),
@@ -435,7 +435,7 @@ body.ma-ia-pricing :is(.ma-plan-cta,.ma-billing-toggle button){
     linear-gradient(145deg,rgba(5,12,25,.92),rgba(20,12,36,.94)) padding-box,
     linear-gradient(110deg,rgba(229,193,88,.24),rgba(255,237,159,.88),rgba(176,120,31,.28),rgba(255,217,106,.72)) border-box!important;
   background-size:100% 100%,240% 100%!important;
-  animation:maGoldTravel 6.6s linear infinite!important;
+  animation:maGoldTravel 6.6s linear 2!important;
   transition:transform .18s ease,box-shadow .18s ease,filter .18s ease!important;
 }
 .ma-concierge :is(.crit-toggle,#specific-search-input,.mic-btn,.search-examples button):hover,
@@ -452,7 +452,7 @@ body.ma-ia-pricing :is(.ma-plan-cta,.ma-billing-toggle button):hover{
 }
 .ma-chip:hover,.crit-chip:hover{transform:translateY(-2px) scale(1.035)!important;filter:brightness(1.12)!important}
 .ma-chip[aria-pressed="true"],.crit-chip.is-on{
-  animation:maChipPulse 2.1s ease-in-out infinite!important;
+  animation:maChipPulse 2.1s ease-in-out 2!important;
 }
 .ma-chip:active,.crit-chip:active{transform:scale(.94)!important}
 
@@ -475,7 +475,7 @@ body.ma-ia-together .gold-btn::after,
 body.ma-ia-pricing .ma-plan-cta::after{
   content:""!important;display:block!important;position:absolute!important;top:-30%!important;bottom:-30%!important;left:-35%!important;width:24%!important;
   background:linear-gradient(90deg,transparent,rgba(255,255,255,.85),transparent)!important;
-  pointer-events:none!important;animation:maButtonSweep 2.5s ease-in-out infinite!important;
+  pointer-events:none!important;animation:maButtonSweep 2.5s ease-in-out 3!important;
 }
 .ma-primary:hover,
 .ma-concierge #questionnaire-box>button[data-i18n="q.submit"]:hover,
@@ -709,7 +709,7 @@ html body.page-home #mh-topbox.app-header.ma-global-header{
 /* ===== CONCIERGE STABILITY FIX =====
    Keep the premium border travel, but never pulse/flicker the Match me / Ask card. */
 html body.page-home .ma-concierge{
-  animation:maGoldTravel 5.4s linear infinite!important;
+  animation:maGoldTravel 5.4s linear 2!important;
   box-shadow:0 22px 60px rgba(0,0,0,.32),0 0 18px rgba(255,217,106,.10)!important;
 }
 html body.page-home .ma-tabs,
@@ -779,7 +779,7 @@ html body.page-home :is(
   color:#eee6fa!important;list-style:none!important;cursor:pointer!important;
   box-shadow:0 10px 28px rgba(0,0,0,.22)!important;
   transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease!important;
-  animation:maGoldTravel 7s linear infinite!important;
+  animation:maGoldTravel 7s linear 2!important;
 }
 html body.page-home :is(
   #latest-news>summary,
@@ -1913,12 +1913,12 @@ html body.page-home #mh-topbox.ma-home-header .ma-kids-mode-entry{
   background:linear-gradient(118deg,#ffd84d 0%,#ff7bb5 28%,#8e7dff 54%,#56dcff 76%,#79f29a 100%)!important;
   color:#241331!important;text-shadow:0 1px 0 rgba(255,255,255,.58)!important;
   font-weight:950!important;letter-spacing:.035em!important;
-  animation:maKidsCandyGlow 3.4s ease-in-out infinite!important;
+  animation:maKidsCandyGlow 3.4s ease-in-out 2!important;
 }
 html body.page-home #mh-topbox.ma-home-header .ma-kids-mode-entry::before{
   content:""!important;position:absolute!important;inset:-20% auto -20% -38%!important;width:34%!important;
   background:linear-gradient(90deg,transparent,rgba(255,255,255,.78),transparent)!important;
-  transform:translateX(-160%) skewX(-18deg);animation:maKidsCandyShine 3.6s ease-in-out infinite!important;
+  transform:translateX(-160%) skewX(-18deg);animation:maKidsCandyShine 3.6s ease-in-out 2!important;
   z-index:-1!important;pointer-events:none!important;
 }
 html body.page-home #mh-topbox.ma-home-header .ma-kids-mode-entry img{
@@ -2935,7 +2935,7 @@ html body.page-home :is(.marquee-item,.ma-news-card,.global-event,.spotlight-car
   100%{background-position:-200% 0}
 }
 html body.page-home .ma-sheen-live::after{
-  animation:maSheenSweep 3.6s linear var(--sheen-delay,0s) infinite!important;
+  animation:maSheenSweep 3.6s linear var(--sheen-delay,0s) 2!important;
 }
 /* Fields carry the same gold edge, drawn with outline rather than a pseudo
    element so it never collides with the existing button sweeps. */
@@ -3445,13 +3445,13 @@ html body.page-home #ma-tab-match{
   background:linear-gradient(120deg,#ff5d73 0%,#ff8a42 34%,#ffd45f 66%,#a05cff 100%)!important;
   background-size:220% 220%!important;
   box-shadow:0 10px 28px rgba(255,111,78,.24),inset 0 1px 0 rgba(255,255,255,.24)!important;
-  animation:maMatchCtaFlow 7s ease-in-out infinite!important;
+  animation:maMatchCtaFlow 7s ease-in-out 1!important;
 }
 html body.page-home #ma-tab-ask{
   background:linear-gradient(120deg,#00cfee 0%,#4378ff 33%,#9f55ff 68%,#ff61cc 100%)!important;
   background-size:220% 220%!important;
   box-shadow:0 10px 28px rgba(87,103,255,.26),inset 0 1px 0 rgba(255,255,255,.24)!important;
-  animation:maAskCtaFlow 7.8s ease-in-out infinite!important;
+  animation:maAskCtaFlow 7.8s ease-in-out 1!important;
 }
 html body.page-home .ma-tab::before{
   content:""!important;
@@ -3464,7 +3464,7 @@ html body.page-home .ma-tab::before{
     radial-gradient(circle at 72% 58%,rgba(255,255,255,.17),transparent 22%)!important;
   opacity:.64!important;
   transform:scale(.96)!important;
-  animation:maCtaBreath 3.6s ease-in-out infinite!important;
+  animation:maCtaBreath 3.6s ease-in-out 2!important;
 }
 html body.page-home .ma-tab::after{
   content:""!important;
@@ -3478,7 +3478,7 @@ html body.page-home .ma-tab::after{
   background:linear-gradient(90deg,transparent,rgba(255,255,255,.65),transparent)!important;
   filter:blur(1px)!important;
   transform:skewX(-18deg) translateX(-120%)!important;
-  animation:maCtaSweep 4.8s ease-in-out infinite!important;
+  animation:maCtaSweep 4.8s ease-in-out 2!important;
 }
 html body.page-home #ma-tab-ask::after{animation-delay:1.15s!important}
 html body.page-home .ma-tab-title{

@@ -2,7 +2,7 @@
 #awareness-spotlight{--awareness:#7b4db3;position:relative;z-index:950;width:min(calc(100% - 24px),1248px);margin:8px auto 11px;box-sizing:border-box}
 #awareness-spotlight .awareness-card{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:14px;padding:10px 14px;border:1px solid color-mix(in srgb,var(--awareness) 68%,#fff 12%);border-radius:16px;background:linear-gradient(105deg,rgba(38,19,62,.97),rgba(68,35,103,.94) 48%,rgba(28,15,49,.97));box-shadow:0 7px 28px rgba(66,28,103,.42),inset 0 1px 0 rgba(255,255,255,.09);overflow:hidden}
 #awareness-spotlight .awareness-card::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 12% 50%,color-mix(in srgb,var(--awareness) 32%,transparent),transparent 32%);pointer-events:none}
-#awareness-spotlight .awareness-ribbon{position:relative;width:42px;height:54px;filter:drop-shadow(0 0 10px color-mix(in srgb,var(--awareness) 68%,transparent));animation:awarenessGlow 3.2s ease-in-out infinite}
+#awareness-spotlight .awareness-ribbon{position:relative;width:42px;height:54px;filter:drop-shadow(0 0 10px color-mix(in srgb,var(--awareness) 68%,transparent));animation:awarenessGlow 3.2s ease-in-out 2}
 #awareness-spotlight .awareness-ribbon svg{width:100%;height:100%;display:block}
 #awareness-spotlight .awareness-copy{position:relative;min-width:0}
 #awareness-spotlight .awareness-eyebrow{display:block;margin:0 0 2px;font-size:9px;font-weight:850;letter-spacing:.12em;color:#d9c8ff;text-transform:uppercase}

@@ -43,7 +43,7 @@ html .matchapp-brand-link:hover .matchapp-circle-logo{transform:translateY(-1px)
   margin-left:.08em;font-size:clamp(1.25rem,1.7vw,1.85rem);letter-spacing:.02em;
   color:#fff;text-shadow:0 0 7px rgba(255,255,255,.38),0 0 17px rgba(107,63,160,.6);
   transform:skewX(-7deg) rotate(-1deg);
-  animation:maTvPop 3.2s ease-in-out infinite;
+  animation:maTvPop 3.2s ease-in-out 2;
 }
 .ma-ai{
   position:relative;font-family:"Trebuchet MS","Arial Black","Aptos Display",system-ui,sans-serif;

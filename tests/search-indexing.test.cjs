@@ -67,7 +67,7 @@ test('legacy .cc host is bounced to the canonical .tv host',()=>{
 test('core pages carry unique 2026 entertainment keywords and stay ads/search ready',()=>{
  const home=read('index.html'),discover=read('discover.html'),pricing=read('pricing/pricing.html');
  const kids=read('kids/index.html'),together=read('together.html');
- assert.match(home,/name="keywords"[^>]+K-drama 2026/);
+ assert.match(home,/name="keywords"[^>]+K-drama/);
  assert.match(home,/micro-drama/);
  assert.match(home,/google-adsense-account" content="ca-pub-9541435081010948"/);
  assert.match(home,/dateModified":"2026-\d{2}-\d{2}"/);

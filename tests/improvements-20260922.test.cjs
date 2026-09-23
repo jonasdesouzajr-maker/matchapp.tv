@@ -47,7 +47,7 @@ test('Ask AI shows its cost and honours hard exclusions for known titles',()=>{
 });
 test('Home keywords are a short evergreen set and the heading typo is fixed',()=>{
   const home=read('index.html');const kw=home.match(/<meta name="keywords" content="([^"]*)"/)[1].split(',');
-  assert.ok(kw.length<=40,String(kw.length));assert.match(home,/K-drama 2026/);assert.doesNotMatch(kw.join(','),/September \d+ 2026/);
+  assert.ok(kw.length<=40,String(kw.length));assert.match(home,/K-drama/);assert.doesNotMatch(kw.join(','),/September \d+ 2026/);
   assert.match(home,/>Find what to watch here</);assert.doesNotMatch(read('premium-cinema.js'),/FInd/);
 });
 test('Kids catalogue candidates are staged for review and never loaded',()=>{

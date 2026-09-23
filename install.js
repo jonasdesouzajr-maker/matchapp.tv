@@ -26,7 +26,7 @@
 
 let deferredInstallPrompt = null;
 
-const MATCHAPP_INSTALL_VERSION = '20260922-icon3';
+const MATCHAPP_INSTALL_VERSION = '20260923-icon4';
 function matchAppInstallLocale() {
     const primary = String((navigator.languages && navigator.languages[0]) || navigator.language || 'en')
         .replace(/_/g, '-').toLowerCase();
