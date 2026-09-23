@@ -6,7 +6,7 @@
   'use strict';
   const titleUrl=title=>'/discover.html?title='+encodeURIComponent(String(title||'').trim())+'&focus=start';
   const eventUrl=path=>'/discover.html?event='+encodeURIComponent(String(path||'').trim())+'&focus=start';
-  const esc=v=>String(v||'').replace(/[&<>"']/g,c=>({'&':'&','<':'<','>':'>','"':'"',"'":'&#39;'}[c]));
+  const esc=v=>String(v||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
   function openTitle(title){
     title=String(title||'').trim();if(!title)return;
@@ -19,12 +19,19 @@
       #res-title.ma-title-link,.discover-card h3.ma-title-link{cursor:pointer;text-decoration:underline;text-decoration-color:rgba(229,193,88,.35);text-underline-offset:5px}
       #res-title.ma-title-link:focus-visible,.discover-card h3.ma-title-link:focus-visible{outline:2px solid #E5C158;outline-offset:4px;border-radius:6px}
       .discover-poster.ma-title-link{cursor:pointer}
-      .discover-event-card{display:grid;grid-template-columns:minmax(150px,230px) 1fr;gap:22px;padding:20px;border:1px solid rgba(229,193,88,.32);border-radius:22px;background:rgba(27,13,54,.86);margin:14px 0}
-      .discover-event-card img{width:100%;max-width:230px;border-radius:16px;object-fit:contain;object-position:center}
-      .discover-event-card h2{margin:0 0 10px;color:#fff}.discover-event-meta{color:#cfc4dc;margin:0 0 10px}.discover-event-copy{color:#eee;line-height:1.65}
-      .discover-event-actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:14px}.discover-event-actions a,.discover-event-actions button{border:1px solid rgba(229,193,88,.45);background:rgba(229,193,88,.1);color:#f6df91;border-radius:999px;padding:9px 13px;text-decoration:none;font-weight:800;cursor:pointer}
-      .discover-event-preview{margin-top:14px;aspect-ratio:16/9;width:100%;border:0;border-radius:14px;background:#000}
-      @media(max-width:650px){.discover-event-card{grid-template-columns:1fr}.discover-event-card img{margin:auto}}
+      .chat-results-grid.is-event-handoff{display:block!important;grid-template-columns:none!important;width:100%!important}
+      .discover-event-card{display:flex!important;flex-flow:row wrap!important;align-items:flex-start!important;gap:18px!important;width:100%!important;max-width:100%!important;box-sizing:border-box!important;padding:16px 18px!important;border:1px solid rgba(229,193,88,.38)!important;border-radius:18px!important;background:rgba(27,13,54,.92)!important;margin:4px 0 0!important}
+      .discover-event-card .discover-poster{flex:0 0 190px!important;width:190px!important;height:285px!important;min-width:190px!important;max-width:190px!important;min-height:285px!important;max-height:285px!important;border-radius:14px!important;overflow:hidden!important;background:#120a24!important}
+      .discover-event-card .discover-poster img,.discover-event-card>img{display:block!important;width:190px!important;height:285px!important;max-width:190px!important;max-height:285px!important;object-fit:contain!important;object-position:center center!important;border-radius:14px!important;background:#120a24!important}
+      .discover-event-card>div{flex:1 1 220px!important;min-width:0!important}
+      .discover-event-card h2{margin:0 0 8px!important;color:#fff!important;font-size:22px!important;line-height:1.25!important;font-weight:800!important}
+      .discover-event-meta{color:#cfc4dc!important;margin:0 0 10px!important;font-size:14px!important;line-height:1.45!important}
+      .discover-event-copy{color:#eee!important;line-height:1.6!important;font-size:15px!important;margin:0!important}
+      .discover-event-actions{display:flex!important;flex-wrap:wrap!important;gap:8px!important;margin-top:14px!important}
+      .discover-event-actions a,.discover-event-actions button{border:1px solid rgba(229,193,88,.45)!important;background:rgba(229,193,88,.1)!important;color:#f6df91!important;border-radius:999px!important;padding:8px 12px!important;text-decoration:none!important;font-weight:800!important;cursor:pointer!important;font-size:13px!important}
+      .discover-event-preview{margin-top:14px!important;aspect-ratio:16/9!important;width:100%!important;border:0!important;border-radius:14px!important;background:#000!important}
+      .chat-bubble.chat-assistant .chat-answer-text{font-size:15.5px!important;line-height:1.65!important;color:#e7dff4!important}
+      @media(max-width:700px){.discover-event-card{flex-direction:column!important;align-items:center!important;text-align:center}.discover-event-card>div{flex-basis:auto!important}}
     `;document.head.appendChild(s);
   }
 
@@ -62,9 +69,6 @@
     const api=window.MatchAppCatalogMedia;if(!api?.lookup)return;
     let meta=await api.lookup(title).catch(()=>null);
     if(meta&&api.refreshExact)meta=await api.refreshExact(meta).catch(()=>meta);
-    // AI can surface a real title that is not yet in MatchApp's pre-ingested
-    // catalog. Resolve exact TMDB identity as a fallback so we can still offer
-    // the actual title page without ever embedding an unverified clip.
     if(!meta&&typeof window.tmdbLookup==='function'){
       const tmdb=await window.tmdbLookup(title,{}).catch(()=>null);
       if(tmdb&&Number.isSafeInteger(tmdb.tmdbId)&&['movie','tv'].includes(tmdb.kind)){
@@ -116,7 +120,7 @@
   }
 
   async function renderEventQuery(){
-    const raw=new URLSearchParams(location.search).get('event');if(!raw)return;
+    if(window.__MATCHAPP_EVENT_RENDERED)return;const raw=new URLSearchParams(location.search).get('event');if(!raw)return;
     let path='';try{const u=new URL(raw,location.origin);if(u.origin===location.origin&&u.pathname.startsWith('/events/'))path=u.pathname;}catch(_){}
     if(!path)return;
     try{
@@ -125,17 +129,19 @@
       const hero=doc.querySelector('.event-detail-hero'),title=doc.querySelector('h1')?.textContent?.trim()||'Event';
       const image=hero?.querySelector('img')?.getAttribute('src')||'';
       const paras=[...(hero?.querySelectorAll('p')||[])].map(p=>p.textContent.trim()).filter(Boolean);
-      const meta=paras[0]||'',copy=paras.find(p=>p.length>80)||paras[1]||'';
+      const meta=String(paras[0]||'').replace(/(\d{4})([A-Za-zÀ-ÿ])/g,'$1 · $2').replace(/\s+/g,' ').trim();
+      const copy=paras.find(p=>p.length>80&&p!==paras[0])||paras[1]||'';
       const links=[...doc.querySelectorAll('.global-event-links a[href]')].map(a=>({label:a.textContent.trim(),href:a.href})).filter(x=>/^https:\/\//.test(x.href));
       const preview=links.map(x=>youtubeEmbed(x.href)).find(Boolean)||'';
       document.title=title+' — MatchApp AI Concierge';
       document.getElementById('discover-empty')?.style.setProperty('display','none');
       document.getElementById('discover-loading')?.style.setProperty('display','none');
       const log=document.getElementById('chat-log');if(!log)return;
+      window.__MATCHAPP_EVENT_RENDERED=true;
       log.innerHTML='';
       const wrap=document.createElement('section');wrap.className='discover-event-card';wrap.dataset.eventPath=path;
-      wrap.innerHTML=(image?'<img src="'+esc(image)+'" alt="'+esc(title)+'" loading="eager">':'')+
-        '<div><p style="color:#E5C158;font-weight:900;margin:0 0 8px">EVENT</p><h2>'+esc(title)+'</h2>'+
+      wrap.innerHTML=(image?'<div class="discover-poster"><img src="'+esc(image)+'" alt="'+esc(title)+'" loading="eager"></div>':'')+
+        '<div><p style="color:#E5C158;font-weight:900;margin:0 0 8px;letter-spacing:.08em;font-size:12px">EVENT</p><h2>'+esc(title)+'</h2>'+
         (meta?'<p class="discover-event-meta">'+esc(meta)+'</p>':'')+
         (copy?'<p class="discover-event-copy">'+esc(copy)+'</p>':'')+
         (preview?'<iframe class="discover-event-preview" src="'+esc(preview)+'" title="'+esc(title)+' preview" loading="lazy" allow="accelerometer; autoplay; encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe>':'')+
@@ -153,7 +159,7 @@
 
   function boot(){
     installStyles();wireTrending();wireEvents();wireMainResult();wireDiscoverCards();
-    setTimeout(wireMainResult,250);setTimeout(wireDiscoverCards,450);setTimeout(()=>{if(!window.__MATCHAPP_EVENT_RENDERED)renderEventQuery();},700);
+    setTimeout(wireMainResult,250);setTimeout(wireDiscoverCards,450);setTimeout(()=>{if(!window.__MATCHAPP_EVENT_RENDERED)renderEventQuery();},1200);
     const chat=document.getElementById('chat-log');
     if(chat&&window.MutationObserver){
       new MutationObserver(()=>wireDiscoverCards()).observe(chat,{childList:true,subtree:true});
