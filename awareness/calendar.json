@@ -115,6 +115,66 @@
       }
     },
     {
+      "key": "international-day-of-sign-languages",
+      "name": "International Day of Sign Languages",
+      "month": 9,
+      "day": 23,
+      "durationDays": 1,
+      "sourceName": "United Nations",
+      "sourceUrl": "https://www.un.org/en/observances/sign-languages-day",
+      "verifyTerm": "International Day of Sign Languages",
+      "ribbonColor": "#7b4db3",
+      "supportLine": "Sign languages are living languages. Deaf culture belongs in public view."
+    },
+    {
+      "key": "world-maritime-day",
+      "name": "World Maritime Day",
+      "month": 9,
+      "day": 24,
+      "durationDays": 1,
+      "sourceName": "United Nations",
+      "sourceUrl": "https://www.un.org/en/observances/maritime-day",
+      "verifyTerm": "World Maritime Day",
+      "ribbonColor": "#7b4db3",
+      "supportLine": "Safe, clean shipping depends on rules that are actually put into practice."
+    },
+    {
+      "key": "world-tourism-day",
+      "name": "World Tourism Day",
+      "month": 9,
+      "day": 27,
+      "durationDays": 1,
+      "sourceName": "United Nations",
+      "sourceUrl": "https://www.un.org/en/observances/tourism-day",
+      "verifyTerm": "World Tourism Day",
+      "ribbonColor": "#7b4db3",
+      "supportLine": "Travel stories work better when they respect the places and people they visit."
+    },
+    {
+      "key": "international-translation-day",
+      "name": "International Translation Day",
+      "month": 9,
+      "day": 30,
+      "durationDays": 1,
+      "sourceName": "United Nations",
+      "sourceUrl": "https://www.un.org/en/observances/international-translation-day",
+      "verifyTerm": "International Translation Day",
+      "ribbonColor": "#7b4db3",
+      "supportLine": "Languages travel because someone translated the work."
+    },
+    {
+      "key": "breast-cancer-awareness-month",
+      "name": "Breast Cancer Awareness Month",
+      "month": 10,
+      "day": 1,
+      "durationDays": 31,
+      "sourceName": "World Health Organization",
+      "sourceUrl": "https://www.who.int/initiatives/global-breast-cancer-initiative",
+      "verifyTerm": "Breast Cancer Awareness Month",
+      "ribbonColor": "#c45c8a",
+      "supportLine": "Early detection and timely care save lives. Reliable information first."
+    },
+    {
       "key": "world-mental-health-day",
       "name": "World Mental Health Day",
       "month": 10,
@@ -151,5 +211,5 @@
       "supportLine": "Awareness, dignity and evidence-based information help challenge stigma."
     }
   ],
-  "lastReviewed": "2026-09-22"
+  "lastReviewed": "2026-09-23"
 }

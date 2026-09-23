@@ -1,43 +1,45 @@
 {
   "_contract": "docs/DAILY_EVENT_AND_FEATURED_TITLE_CONTRACT.md",
   "_note": "Rewritten once per day by the MatchApp day-of bot. Replace the whole object; never append. Keep every key below.",
-  "updated": "2026-09-21T06:00:00Z",
-  "date": "2026-09-21",
-  "id": "world-tree-day-2026-09-21",
-  "emoji": "🌳",
-  "title": "World Tree Day",
+  "updated": "2026-09-23T14:30:00Z",
+  "date": "2026-09-23",
+  "id": "international-day-of-sign-languages-2026-09-23",
+  "emoji": "🤟",
+  "title": "International Day of Sign Languages",
   "kicker": "International day",
   "place": "Worldwide",
-  "summary": "Tree Day celebrates the forests, city trees and green corridors that keep the planet breathable — marked with plantings, park walks and nature programming. A good night for a documentary about forests, wildlife or the people protecting them.",
-  "prompt": "Today is World Tree Day (Dia da Árvore). Explain what the day is, why it is marked on 21 September, and give me practical tips for enjoying it — plus documentaries, films and series about trees, forests and nature that I could watch tonight and where to watch them.",
-  "officialUrl": "",
+  "summary": "The United Nations marks 23 September as the International Day of Sign Languages — the date the World Federation of the Deaf was founded in 1951. In 2026 the day also marks the WFD's 75th anniversary. A good night for documentaries, films and series that treat Deaf culture and sign languages as living languages, not as a plot device.",
+  "prompt": "Today is the International Day of Sign Languages. Explain what the day is, why it is marked on 23 September, the 2026 theme Declaring Deaf People's Human Rights, and give me practical ways to mark it — plus documentaries, films and series about Deaf culture and sign languages that I could watch tonight and where to watch them.",
+  "officialUrl": "https://www.un.org/en/observances/sign-languages-day",
   "image": "",
   "keywords": [
-    "world tree day",
-    "dia da arvore",
-    "tree day 2026",
-    "what to watch on tree day",
-    "forest documentaries to stream",
-    "nature documentaries tonight",
-    "international day today",
-    "september 21 international day",
-    "tree day activities",
-    "how to celebrate tree day"
+    "international day of sign languages",
+    "sign language day 2026",
+    "dia internacional das linguas de sinais",
+    "dia internacional de las lenguas de senas",
+    "what to watch on sign language day",
+    "deaf culture documentaries to stream",
+    "september 23 international day",
+    "world federation of the deaf 75th anniversary",
+    "how to celebrate sign language day",
+    "international week of the deaf 2026",
+    "onde assistir filmes sobre lingua de sinais",
+    "declaring deaf peoples human rights"
   ],
   "i18n": {
     "pt-BR": {
-      "title": "Dia da Árvore",
+      "title": "Dia Internacional das Línguas de Sinais",
       "kicker": "Data internacional",
       "place": "No mundo todo",
-      "summary": "O Dia da Árvore celebra as florestas, as árvores urbanas e os corredores verdes que mantêm o planeta respirando — com plantios, caminhadas em parques e programação sobre natureza. Boa noite para um documentário sobre florestas, fauna ou quem protege tudo isso.",
-      "prompt": "Hoje é o Dia da Árvore. Explique o que é essa data, por que ela é celebrada em 21 de setembro e dê dicas práticas para aproveitar o dia — além de documentários, filmes e séries sobre árvores, florestas e natureza para assistir hoje à noite e onde assistir."
+      "summary": "A ONU marca 23 de setembro como o Dia Internacional das Línguas de Sinais — a data de fundação da Federação Mundial dos Surdos em 1951. Em 2026 a data também celebra os 75 anos da WFD. Boa noite para documentários, filmes e séries que tratam a cultura surda e as línguas de sinais como línguas vivas.",
+      "prompt": "Hoje é o Dia Internacional das Línguas de Sinais. Explique o que é essa data, por que ela cai em 23 de setembro, o tema de 2026 Declaring Deaf People's Human Rights, e dê formas práticas de marcar o dia — além de documentários, filmes e séries sobre cultura surda e línguas de sinais para assistir hoje à noite e onde assistir."
     },
     "es": {
-      "title": "Día del Árbol",
+      "title": "Día Internacional de las Lenguas de Señas",
       "kicker": "Día internacional",
       "place": "En todo el mundo",
-      "summary": "El Día del Árbol celebra los bosques, los árboles urbanos y los corredores verdes que mantienen el planeta respirando, con plantaciones, paseos por parques y programación sobre naturaleza. Buena noche para un documental sobre bosques, fauna o quienes los protegen.",
-      "prompt": "Hoy es el Día del Árbol. Explica qué es esta fecha, por qué se celebra el 21 de septiembre y dame consejos prácticos para disfrutarla, además de documentales, películas y series sobre árboles, bosques y naturaleza para ver esta noche y dónde verlos."
+      "summary": "La ONU marca el 23 de septiembre como el Día Internacional de las Lenguas de Señas, fecha de fundación de la Federación Mundial de Sordos en 1951. En 2026 la fecha también celebra los 75 años de la WFD. Buena noche para documentales, películas y series que tratan la cultura sorda y las lenguas de señas como lenguas vivas.",
+      "prompt": "Hoy es el Día Internacional de las Lenguas de Señas. Explica qué es esta fecha, por qué se celebra el 23 de septiembre, el tema de 2026 Declaring Deaf People's Human Rights, y dame formas prácticas de marcarla, además de documentales, películas y series sobre cultura sorda y lenguas de señas para ver esta noche y dónde verlos."
     }
   }
 }
