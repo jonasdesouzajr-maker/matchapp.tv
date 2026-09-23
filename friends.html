@@ -12,20 +12,20 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <script src="/page-origin.js?v=20260919-origin3"></script>
-  <title>Private friends &amp; Match Together · MatchApp TV Ai</title>
+  <title>Private friends & Match Together · MatchApp TV Ai</title>
   <meta content="Add approved friends, choose illustrated avatars and find one shared entertainment match remotely. Optional online status, no chat, no public profiles." name="description">
   <meta content="noindex,follow" name="robots"/>
   <link href="https://matchapp.tv/friends.html" rel="canonical"/>
   <link href="/logo-192.jpeg" rel="icon"/>
   <link href="/manifest.json" rel="manifest"/>
-  <link href="/friends.css?v=187" rel="stylesheet"/>
+  <link href="/friends.css?v=20260923-cover1" rel="stylesheet"/>
   <link href="/app-updates.css?v=188" rel="stylesheet"/>
   <link href="/app-install-state.css?v=187" rel="stylesheet"/>
     <link rel="stylesheet" href="/themes.css?v=187">
     <link rel="stylesheet" href="/app-polish.css?v=187">
     <script src="/themes.js?v=187"></script>
     <link rel="stylesheet" href="/poster-wall.css?v=20260922-global1">
-    <script defer="" src="/poster-wall.js?v=20260922-global1"></script>
+    <script defer="" src="/poster-wall.js?v=20260923-cover1"></script>
 <meta property="og:site_name" content="MatchApp TV Ai">
 <link rel="stylesheet" href="/brand.css?v=192">
     <link rel="stylesheet" href="/page-shell.css?v=20260921-shell1" data-page-shell="1">
@@ -80,8 +80,8 @@
           <button id="friend-native-share" type="button">Share invite</button>
           <a href="https://wa.me/" id="friend-wa" rel="noopener noreferrer" target="_blank">WhatsApp</a>
           <a href="https://t.me/" id="friend-telegram" rel="noopener noreferrer" target="_blank">Telegram</a>
-          <a href="https://www.instagram.com/direct/inbox/" rel="noopener noreferrer" target="_blank">Instagram DM</a>
-          <a href="https://www.messenger.com/" rel="noopener noreferrer" target="_blank">Messenger</a>
+          <a href="https://www.instagram.com/direct/inbox/" id="friend-instagram" rel="noopener noreferrer" target="_blank">Instagram DM</a>
+          <a href="https://www.messenger.com/" id="friend-messenger" rel="noopener noreferrer" target="_blank">Messenger</a>
           <p>For Instagram or Messenger, copy the invite and paste it in your friend’s private message.</p>
           <button id="friend-rotate" type="button">Replace invite link</button>
         </div>
@@ -96,7 +96,7 @@
         <div id="friend-requests"></div>
       </section>
       <section>
-        <h2>Friends online &amp; offline</h2>
+        <h2>Friends online & offline</h2>
         <p>Select a fun illustrated avatar for each friend. These are your choices; their real photos are never used.</p>
         <div class="friend-grid" id="friends-list"></div>
       </section>
@@ -116,7 +116,7 @@
           <button type="submit">Choose / request this match</button>
         </form>
         <div id="friend-match-result" hidden>
-          <img alt="Your shared title cover" height="240" id="friend-result-poster" width="160"/>
+          <img alt="Your shared title cover" id="friend-result-poster" width="160"/>
           <h3 id="friend-result-title"></h3>
           <p id="friend-result-synopsis"></p>
           <a href="https://www.justwatch.com/" id="friend-result-watch">Find where to watch</a>
