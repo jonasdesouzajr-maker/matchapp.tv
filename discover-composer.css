@@ -1,0 +1,127 @@
+/* Discover Ask Ai composer — one finished bar, not a box inside a box.
+   Wins over matchapp-ia.css mobile nested-field rules. */
+html body.ai-chat-page .composer-input-label{
+  position:absolute!important;
+  width:1px!important;
+  height:1px!important;
+  padding:0!important;
+  margin:-1px!important;
+  overflow:hidden!important;
+  clip:rect(0,0,0,0)!important;
+  white-space:nowrap!important;
+  border:0!important;
+  top:auto!important;
+  left:auto!important;
+  font-size:0!important;
+}
+html body.ai-chat-page .newsearch-row{
+  display:flex!important;
+  flex-wrap:wrap!important;
+  align-items:center!important;
+  gap:10px!important;
+  margin-top:16px!important;
+}
+html body.ai-chat-page .composer{
+  position:relative!important;
+  display:flex!important;
+  flex-flow:row nowrap!important;
+  align-items:center!important;
+  gap:8px!important;
+  flex:1 1 100%!important;
+  min-width:0!important;
+  min-height:56px!important;
+  max-width:100%!important;
+  padding:6px 6px 6px 16px!important;
+  border:1.5px solid rgba(229,193,88,.55)!important;
+  border-radius:18px!important;
+  background:linear-gradient(180deg,rgba(18,10,36,.96),rgba(12,8,28,.98))!important;
+  box-shadow:inset 0 0 0 1px rgba(229,193,88,.12),0 10px 28px rgba(0,0,0,.28)!important;
+  box-sizing:border-box!important;
+}
+html body.ai-chat-page .composer textarea{
+  flex:1 1 auto!important;
+  width:auto!important;
+  min-width:0!important;
+  min-height:24px!important;
+  max-height:160px!important;
+  margin:0!important;
+  padding:10px 8px!important;
+  border:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  color:#fff!important;
+  -webkit-text-fill-color:#fff!important;
+  font-size:16px!important;
+  line-height:1.45!important;
+  resize:none!important;
+}
+html body.ai-chat-page .composer textarea::placeholder{
+  color:#c9bfd8!important;
+  opacity:.92!important;
+}
+html body.ai-chat-page .composer:focus-within{
+  border-color:#E5C158!important;
+  box-shadow:0 0 0 2px rgba(229,193,88,.22),0 12px 28px rgba(0,0,0,.32)!important;
+}
+html body.ai-chat-page .composer .mic-btn{
+  flex:0 0 44px!important;
+  width:44px!important;
+  height:44px!important;
+  min-width:44px!important;
+  min-height:44px!important;
+  margin:0!important;
+  align-self:center!important;
+  border:1.5px solid rgba(229,193,88,.7)!important;
+  background:rgba(229,193,88,.1)!important;
+  color:#F3D77A!important;
+}
+html body.ai-chat-page .composer .composer-send,
+html body.ai-chat-page .composer-send{
+  order:0!important;
+  flex:0 0 auto!important;
+  align-self:center!important;
+  min-height:44px!important;
+  height:44px!important;
+  margin:0!important;
+  padding:0 18px!important;
+  border:0!important;
+  border-radius:14px!important;
+  background:linear-gradient(180deg,#f3e0a2,#E5C158 55%,#c9a43a)!important;
+  color:#1a1028!important;
+  font-size:14px!important;
+  font-weight:800!important;
+  box-shadow:0 4px 14px rgba(229,193,88,.28)!important;
+  white-space:nowrap!important;
+}
+html body.ai-chat-page .composer-hint{
+  flex:0 0 100%!important;
+  margin:2px 4px 0!important;
+  color:#9d93b0!important;
+  font-size:12px!important;
+  text-align:center!important;
+}
+html body.ai-chat-page .discover-title-copy h1{
+  background:transparent!important;
+  box-shadow:none!important;
+  padding:0!important;
+}
+@media (max-width:640px){
+  html body.ai-chat-page .composer{
+    min-height:56px!important;
+    padding:6px 6px 6px 14px!important;
+    align-items:center!important;
+  }
+  html body.ai-chat-page .composer textarea{
+    min-height:24px!important;
+    padding:10px 6px!important;
+    border:0!important;
+    background:transparent!important;
+  }
+}
+@media (prefers-reduced-motion:reduce){
+  html body.ai-chat-page .composer,
+  html body.ai-chat-page .composer-send{
+    transition:none!important;
+  }
+}
