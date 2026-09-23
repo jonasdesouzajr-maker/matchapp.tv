@@ -3683,3 +3683,10 @@ html body.page-home #result-box #res-factbar{margin:0 0 4px!important}
  html body.page-home #result-box .res-info-col{padding:0 2px!important}
  html body.page-home #result-box #res-title{font-size:25px!important;line-height:1.15!important}
 }
+
+/* Desktop result hierarchy: poster leads, but must not consume multiple viewports. */
+@media(min-width:641px){
+ html body.page-home #result-box .poster-stage{width:min(38vw,380px)!important;max-width:380px!important;margin-inline:auto!important}
+ html body.page-home #result-box #res-poster-img{width:100%!important;height:auto!important;max-height:570px!important;object-fit:contain!important}
+ html body.page-home #result-box .res-info-col{max-width:760px!important;margin-inline:auto!important}
+}
