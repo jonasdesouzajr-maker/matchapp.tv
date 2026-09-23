@@ -210,54 +210,28 @@ window.installMatchApp = async function () {
             await installEvent.prompt();
             const choice = await installEvent.userChoice;
             if (choice && choice.outcome === 'accepted') {
-                window.matchAppInstallProgress?.start();
-                window.matchAppInstallProgress?.accepting();
+                window.matchAppInstallProgress?.start?.();
+                window.matchAppInstallProgress?.accepting?.();
             } else {
-                window.matchAppInstallProgress?.cancel();
+                window.matchAppInstallProgress?.cancel?.();
             }
         } catch (e) { window.matchAppInstallProgress?.cancel(); }
         deferredInstallPrompt = null;
         return;
     }
-    // Chrome/Edge/Brave can sometimes expose installability a moment after
-    // the tap (for example immediately after a fresh service-worker claim).
-    // Give the real native prompt one short chance to arrive before deciding
-    // this browser truly has no programmatic install path.
-    if (!platformInfo().isIOS && !platformInfo().isMac) {
-        for (let i = 0; i < 8 && !deferredInstallPrompt; i++) {
-            await new Promise(resolve => setTimeout(resolve, 125));
-        }
-        if (deferredInstallPrompt) {
-            try {
-                // Preserve the native install gesture: do not render our overlay until
-                // Android has accepted the browser's real PWA prompt.
-                const installEvent = deferredInstallPrompt;
-                deferredInstallPrompt = null;
-                await installEvent.prompt();
-                const choice = await installEvent.userChoice;
-                if (choice && choice.outcome === 'accepted') {
-                    window.matchAppInstallProgress?.start();
-                    window.matchAppInstallProgress?.accepting();
-                } else {
-                    window.matchAppInstallProgress?.cancel();
-                }
-            } catch (e) { window.matchAppInstallProgress?.cancel(); }
-            deferredInstallPrompt = null;
-            return;
-        }
-    }
-
-    // Only Safari-family platforms need manual installation instructions.
-    // Android/Chromium must use the browser's native PWA installer.
+    // No install event was captured. Do NOT wait here: waiting after a tap
+    // consumes Chromium's transient user activation, so a prompt that arrives
+    // later cannot be opened reliably from this gesture.
+    //
+    // iOS/macOS Safari have a real manual install route. Chromium/Android also
+    // has a real browser-menu route when beforeinstallprompt is unavailable
+    // (for example after a prior dismissal or while eligibility is refreshing).
+    // Show those instructions immediately instead of a dead "tap again" loop.
     const { isIOS, isMac } = platformInfo();
-    if (isIOS || isMac) {
-        const modal = buildInstallModal();
-        if (!modal.open) { if(typeof modal.showModal==='function')modal.showModal();else modal.setAttribute('open',''); }
-        return;
-    }
-
-    if (window.showToast) {
-        showToast('Preparing the secure app installer… please tap Install again in a moment.');
+    const modal = buildInstallModal();
+    if (!modal.open) {
+        if (typeof modal.showModal === 'function') modal.showModal();
+        else modal.setAttribute('open','');
     }
 };
 
