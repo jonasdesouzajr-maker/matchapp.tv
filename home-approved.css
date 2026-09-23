@@ -1,0 +1,45 @@
+/* Approved Home chrome 2026-09-23. Presentation only. */
+html body.page-home{padding-bottom:72px}
+#ma-install-chip{
+  position:sticky;top:0;z-index:40;
+  display:flex;align-items:center;gap:8px;
+  margin:8px 16px 0;padding:4px 8px 4px 6px;
+  height:40px;box-sizing:border-box;
+  border:1px solid rgba(232,197,106,.45);border-radius:14px;
+  background:rgba(16,10,32,.88);color:#fff;
+  font:600 13px/1 system-ui,sans-serif
+}
+#ma-install-chip img{width:28px;height:28px;border-radius:8px;object-fit:cover}
+#ma-install-chip span{flex:1}
+#ma-install-chip .ma-install-go{
+  height:28px;padding:0 12px;border:0;border-radius:999px;
+  background:linear-gradient(180deg,#f3d57a,#d7ad3e);color:#1a1328;font-weight:800
+}
+@media(min-width:901px){#ma-install-chip{display:none}}
+#ma-hero-ctas{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 8px;justify-content:center}
+#ma-hero-match,#ma-hero-ask{
+  min-height:48px;padding:0 18px;border-radius:999px;font:800 15px/1 system-ui,sans-serif;cursor:pointer
+}
+#ma-hero-match{border:0;background:linear-gradient(180deg,#f3d57a,#d7ad3e);color:#1a1328}
+#ma-hero-ask{border:1px solid rgba(232,197,106,.55);background:rgba(16,10,32,.55);color:#fff}
+html body.page-home .home-hero .ma-how-link{margin-top:8px}
+html body.page-home .ma-brand-orb,
+html body.page-home .header-brand-area img:not(.matchapp-wordmark){
+  border-radius:50%!important;object-fit:cover!important;clip-path:circle(49.5% at 50% 50%)
+}
+#ma-dock{
+  position:fixed;left:12px;right:12px;bottom:10px;z-index:45;
+  display:flex;justify-content:space-around;align-items:center;
+  height:56px;padding:0 6px;
+  border:1px solid rgba(232,197,106,.35);border-radius:22px;
+  background:rgba(12,8,24,.92);backdrop-filter:blur(12px)
+}
+#ma-dock a,#ma-dock button{
+  appearance:none;background:none;border:0;color:#d9d0e4;
+  font:700 11px/1 system-ui,sans-serif;text-decoration:none;min-width:56px;min-height:44px
+}
+#ma-dock .is-on,#ma-dock-home{color:#e8c56a}
+@media(min-width:901px){#ma-dock{display:none}}
+@media(prefers-reduced-motion:reduce){
+  #ma-hero-match,#ma-hero-ask{transition:none}
+}
