@@ -25,15 +25,15 @@
         wait: 'Confirme na próxima tela do seu dispositivo.',
         work: 'Adicionando à tela inicial…',
         done: name + ' está na sua tela inicial.',
-        close: 'Pronto'
+        close: 'Fechar'
       };
     }
     return {
       title: 'Installing ' + name,
       wait: 'Confirm on the next screen on your device.',
       work: 'Adding to your home screen…',
-      done: name + ' is on your home screen.',
-      close: 'Done'
+      done: name + ' was successfully installed on your device.',
+      close: 'Close'
     };
   }
 
@@ -50,7 +50,10 @@
       '#ma-install-meter p{margin:0 0 14px;color:#d9d0e4;font:500 14px/1.45 Outfit,system-ui,sans-serif}',
       '#ma-install-meter .ma-im-track{height:8px;border-radius:999px;background:rgba(255,255,255,.08);overflow:hidden}',
       '#ma-install-meter .ma-im-fill{height:100%;width:0;border-radius:999px;background:linear-gradient(90deg,#f3e0a2,#E5C158);transform:translateZ(0)}',
-      '#ma-install-meter button{margin-top:16px;min-height:42px;padding:0 18px;border:0;border-radius:12px;background:linear-gradient(180deg,#f3e0a2,#E5C158);color:#1a1328;font:800 14px Outfit,system-ui,sans-serif}',
+      '#ma-install-meter .ma-im-close{position:absolute;top:10px;right:12px;width:36px;height:36px;min-height:0;margin:0;padding:0;border:0;background:transparent;color:#fff;font:700 28px/36px system-ui,sans-serif;cursor:pointer}',
+      '#ma-install-meter .ma-im-card{position:relative}',
+      '#ma-install-meter .ma-im-success{font-size:38px;line-height:1;margin:2px 0 12px}',
+
       '@media(prefers-reduced-motion:reduce){#ma-install-meter .ma-im-fill{transition:none}}'
     ].join('');
     document.head.appendChild(s);
@@ -64,9 +67,9 @@
     el.id = 'ma-install-meter';
     el.setAttribute('role', 'dialog');
     el.setAttribute('aria-modal', 'true');
-    el.innerHTML = '<div class="ma-im-card"><img src="/assets/brand/matchapp-ai-install-192.png?v=20260923-icon4" width="56" height="56" alt=""><h2></h2><p></p><div class="ma-im-track"><div class="ma-im-fill"></div></div><button type="button" hidden></button></div>';
+    el.innerHTML = '<div class="ma-im-card"><button type="button" class="ma-im-close" hidden aria-label="Close">&times;</button><img src="/assets/brand/matchapp-ai-install-192.png?v=20260923-icon4" width="56" height="56" alt=""><div class="ma-im-success" hidden aria-hidden="true">✓</div><h2></h2><p></p><div class="ma-im-track"><div class="ma-im-fill"></div></div></div>';
     document.body.appendChild(el);
-    el.querySelector('button').addEventListener('click', hide);
+    el.querySelector('.ma-im-close').addEventListener('click', hide);
     return el;
   }
 
@@ -74,9 +77,11 @@
     const el = panel();
     el.querySelector('h2').textContent = title;
     el.querySelector('p').textContent = body;
-    const btn = el.querySelector('button');
-    btn.textContent = copy().close;
+    const btn = el.querySelector('.ma-im-close');
+    btn.setAttribute('aria-label', copy().close);
     btn.hidden = !showDone;
+    el.querySelector('.ma-im-success').hidden = !showDone;
+    el.querySelector('.ma-im-track').hidden = !!showDone;
     el.hidden = false;
   }
 
@@ -131,7 +136,8 @@
     setText(t.done, '', true);
     to(100);
     clearTimeout(doneTimer);
-    doneTimer = setTimeout(hide, 3200);
+    // Success remains visible until the user closes it with X. No timer can
+    // make the confirmation disappear before they have seen it.
   }
 
   function cancel() {
