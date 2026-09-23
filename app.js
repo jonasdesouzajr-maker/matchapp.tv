@@ -3727,6 +3727,29 @@ window.triggerMatch = async function(isSpecificSearch = false) {
     const eqBars = document.querySelectorAll('#eq-bars span');
     if (pBar) pBar.style.width = '0%';
 
+    // Start visible progress immediately. Source verification below can take a few seconds;
+    // leaving the meter at 0% during that work made a healthy request look frozen.
+    let stageIdx = -1;
+    const STAGES = [
+        { at: 0,  head: 'Scanning the global catalog…', sub: 'Reading your mood profile' },
+        { at: 18, head: 'Cross-referencing platforms…', sub: 'Checking what streams in your region' },
+        { at: 38, head: 'Filtering the noise…', sub: 'Removing what you have already seen' },
+        { at: 58, head: 'Ranking the contenders…', sub: 'Weighing mood, era and vibe' },
+        { at: 78, head: 'Pulling cover art & trailer…', sub: 'Fetching artwork in high resolution' },
+        { at: 92, head: 'Finalising your match…', sub: 'Almost there' }
+    ];
+    const updateMatchProgress = () => {
+        const pct = Math.min(8 + ((Date.now() - startTime) / PROGRESS_WINDOW_MS) * 87, 95);
+        if (pBar) pBar.style.width = pct + '%';
+        if (pctLabel) pctLabel.innerText = Math.round(pct) + '%';
+        const intensity = 0.35 + (pct / 100) * 0.65;
+        eqBars.forEach((b) => { b.style.animationDuration = (1.15 - intensity * 0.55).toFixed(2) + 's'; b.style.opacity = (0.55 + intensity * 0.45).toFixed(2); });
+        let next = -1; for (let i=0;i<STAGES.length;i++) if(pct>=STAGES[i].at) next=i;
+        if(next!==stageIdx&&next>=0){stageIdx=next;if(headline)headline.innerText=tSafe('match.loading',STAGES[next].head);if(substep){substep.innerText=STAGES[next].sub;substep.style.opacity='1';}}
+    };
+    updateMatchProgress();
+    let timerInterval = setInterval(updateMatchProgress, 100);
+
     let preflight = isSpecificSearch ? null : pickFromCatalog(requested.cat,requested.plat,requested.mood,requested.vibe,requested.rating,requested.decade);
     // Never recycle a previously shown title. If the curated exact pool is
     // exhausted, ask the verified source layer for a genuinely fresh title.
@@ -3788,41 +3811,6 @@ window.triggerMatch = async function(isSpecificSearch = false) {
     }
 
     // Narrated stages keep the wait feeling purposeful instead of idle.
-    const STAGES = [
-        { at: 0,  head: 'Scanning the global catalog…', sub: 'Reading your mood profile' },
-        { at: 18, head: 'Cross-referencing platforms…', sub: 'Checking what streams in your region' },
-        { at: 38, head: 'Filtering the noise…',          sub: 'Removing what you have already seen' },
-        { at: 58, head: 'Ranking the contenders…',       sub: 'Weighing mood, era and vibe' },
-        { at: 78, head: 'Pulling cover art & trailer…',  sub: 'Fetching artwork in high resolution' },
-        { at: 92, head: 'Finalising your match…',        sub: 'Almost there' }
-    ];
-    let stageIdx = -1;
-
-    let timerInterval = setInterval(() => {
-        const pct = Math.min(((Date.now() - startTime) / PROGRESS_WINDOW_MS) * 95, 95);
-        if (pBar) pBar.style.width = pct + '%';
-        if (pctLabel) pctLabel.innerText = Math.round(pct) + '%';
-
-        // Equalizer intensity rises with progress, so the motion reads as "working".
-        const intensity = 0.35 + (pct / 100) * 0.65;
-        eqBars.forEach((b, i) => {
-            b.style.animationDuration = (1.15 - intensity * 0.55).toFixed(2) + 's';
-            b.style.opacity = (0.55 + intensity * 0.45).toFixed(2);
-        });
-
-        // Advance the narration.
-        let next = -1;
-        for (let i = 0; i < STAGES.length; i++) if (pct >= STAGES[i].at) next = i;
-        if (next !== stageIdx && next >= 0) {
-            stageIdx = next;
-            if (headline) headline.innerText = tSafe('match.loading',STAGES[next].head);
-            if (substep) {
-                substep.style.opacity = '0';
-                setTimeout(() => { substep.innerText = tSafe(['q.mood','q.platform','res.seenit','res.yourPicks','res.trailer','res.streamnow'][next],STAGES[next].sub); substep.style.opacity = '1'; }, 180);
-            }
-        }
-    }, 100);
-
     let matchResult = null;
     if (isSpecificSearch) {
         const typedTitle = (document.getElementById('specific-search-input')?.value || '').trim();
