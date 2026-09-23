@@ -139,17 +139,9 @@ async function askAIConversational(question, history) {
     ]);
 
     // Two attempts of the SAME contract, not a fallback to a different one.
-    // This used to retry with a bare {prompt} request on failure — but that
-    // exact wire shape is ALSO what the specific-title-search flow sends
-    // (app.js's fetchGeminiData), for a genuinely different purpose, expecting
-    // a different response schema. The Edge Function can't tell the two
-    // callers apart from an identical bare {prompt}, so a transient failure
-    // on attempt 1 could get the WRONG schema forced onto attempt 2 —
-    // Gemini structurally constrained into {title,synopsis,platform} while
-    // being asked a conversational question, producing exactly the kind of
-    // mismatched, wrong-shaped result that's confusing to look at. Retrying
-    // the identical, correct contract removes that collision entirely.
-    for (let attempt = 1; attempt <= 1; attempt++) {
+    // A transient cold-start/network failure gets one bounded retry, while the
+    // request/response schema remains identical on both attempts.
+    for (let attempt = 1; attempt <= 2; attempt++) {
         try {
             const { data, error } = await withTimeout(
                 window.supabaseClient.functions.invoke('gemini-proxy', { body }));
