@@ -1,13 +1,13 @@
-/* Approved Home chrome — 2026-09-23. Idempotent. Does not replace matching. */
+/* Approved Home chrome — 2026-09-23 ui2. Idempotent overlay only. */
 (function () {
   'use strict';
-  if (document.documentElement.getAttribute('data-ma-approved') === '1') return;
-  document.documentElement.setAttribute('data-ma-approved', '1');
+  if (document.documentElement.getAttribute('data-ma-approved') === '2') return;
+  document.documentElement.setAttribute('data-ma-approved', '2');
   if (!document.getElementById('ma-approved-css')) {
     var link = document.createElement('link');
     link.id = 'ma-approved-css';
     link.rel = 'stylesheet';
-    link.href = '/home-approved.css?v=20260923-ui1';
+    link.href = '/home-approved.css?v=20260923-ui2';
     (document.head || document.documentElement).appendChild(link);
   }
   function kids() {
@@ -15,14 +15,14 @@
   }
   function mountHero() {
     if (kids() || document.getElementById('ma-hero-ctas')) return;
-    var hero = document.querySelector('.home-hero');
-    if (!hero) return;
+    var host = document.querySelector('.home-hero') || (document.querySelector('h1.home-h1') && document.querySelector('h1.home-h1').parentElement);
+    if (!host) return;
     var row = document.createElement('div');
     row.id = 'ma-hero-ctas';
     row.innerHTML = '<button type="button" class="ma-hero-match" id="ma-hero-match">Find my match</button>' +
       '<button type="button" class="ma-hero-ask" id="ma-hero-ask">Ask AI</button>';
-    var sub = hero.querySelector('.home-h1-sub');
-    (sub || hero).insertAdjacentElement('afterend', row);
+    var sub = host.querySelector('.home-h1-sub') || host.querySelector('h1.home-h1');
+    (sub || host).insertAdjacentElement('afterend', row);
     row.querySelector('#ma-hero-match').addEventListener('click', function () {
       var tab = document.getElementById('ma-tab-match');
       if (tab) tab.click();
@@ -46,7 +46,7 @@
       '<span>Install app</span><button type="button" class="ma-install-go">Install</button>';
     document.body.insertBefore(chip, document.body.firstChild);
     chip.querySelector('.ma-install-go').addEventListener('click', function () {
-      var btn = document.querySelector('.chrome-install-now, .install-btn');
+      var btn = document.querySelector('.chrome-install-now, .install-btn, #chrome-install-card button');
       if (btn) btn.click();
     });
   }
@@ -76,4 +76,5 @@
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot, { once: true });
   else boot();
+  window.addEventListener('load', boot, { once: true });
 })();

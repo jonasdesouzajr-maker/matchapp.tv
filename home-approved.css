@@ -1,5 +1,8 @@
-/* Approved Home chrome 2026-09-23. Presentation only. */
+/* Approved Home chrome 2026-09-23 ui2. Presentation overlay only. */
 html body.page-home{padding-bottom:72px}
+@media(max-width:900px){
+  html body.page-home #chrome-install-card{display:none!important}
+}
 #ma-install-chip{
   position:sticky;top:0;z-index:40;
   display:flex;align-items:center;gap:8px;
@@ -32,7 +35,7 @@ html body.page-home .header-brand-area img:not(.matchapp-wordmark){
   display:flex;justify-content:space-around;align-items:center;
   height:56px;padding:0 6px;
   border:1px solid rgba(232,197,106,.35);border-radius:22px;
-  background:rgba(12,8,24,.92);backdrop-filter:blur(12px)
+  background:rgba(12,8,24,.92)
 }
 #ma-dock a,#ma-dock button{
   appearance:none;background:none;border:0;color:#d9d0e4;
