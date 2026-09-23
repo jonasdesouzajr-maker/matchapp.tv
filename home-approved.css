@@ -16,9 +16,6 @@ html body.page-home{padding-bottom:calc(72px + env(safe-area-inset-bottom,0px))}
   height:32px;padding:0 14px;border:0;border-radius:999px;
   background:linear-gradient(180deg,#f3d57a,#d7ad3e);color:#1a1328;font-weight:800
 }
-html.ma-installed #ma-install-chip,
-html.ma-native-shell #ma-install-chip{display:none!important}
-@media(display-mode:standalone){#ma-install-chip{display:none!important}}
 @media(min-width:1101px){#ma-install-chip{display:none!important}}
 
 #ma-hero-ctas{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 8px;justify-content:center}

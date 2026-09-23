@@ -75,13 +75,13 @@
   }
 
   function mountInstall() {
-    if (kids() || nativeShell() || standalone() || (window.matchAppInstallState && window.matchAppInstallState.isInstalled())) {
-      var old = document.getElementById('ma-install-chip');
-      if (old) old.remove();
-      document.documentElement.classList.add(nativeShell() ? 'ma-native-shell' : 'ma-installed');
+    if (kids()) {
+      var gone = document.getElementById('ma-install-chip');
+      if (gone) gone.remove();
       return;
     }
     if (window.matchMedia && window.matchMedia('(min-width:1101px)').matches) return;
+    var installed = !!(standalone() || nativeShell() || (window.matchAppInstallState && window.matchAppInstallState.isInstalled()));
     var chip = document.getElementById('ma-install-chip');
     if (!chip) {
       chip = document.createElement('div');
@@ -93,12 +93,14 @@
     var label = chip.querySelector('span');
     if (label) label.textContent = appName();
     var go = chip.querySelector('.ma-install-go');
+    if (go) go.textContent = installed ? (ptBr() ? 'Atualizar' : 'Update') : (ptBr() ? 'Instalar' : 'Install');
     if (go && !go.dataset.wired) {
       go.dataset.wired = '1';
       go.addEventListener('click', function (e) {
         e.preventDefault();
         e.stopPropagation();
-        triggerInstall();
+        if (installed && typeof window.updateMatchAppNow === 'function') window.updateMatchAppNow();
+        else triggerInstall();
       });
     }
   }
