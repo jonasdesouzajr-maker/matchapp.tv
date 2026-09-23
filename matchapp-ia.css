@@ -22,7 +22,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
 /* ---------- canonical shared header ---------- */
 header.app-header.ma-global-header,
 html body.page-home #mh-topbox.app-header.ma-global-header{
-  position:sticky!important;top:0!important;z-index:1600!important;
+  position:relative!important;top:auto!important;z-index:1600!important;
   display:flex!important;flex-direction:row!important;align-items:center!important;justify-content:space-between!important;
   gap:12px!important;width:100%!important;max-width:none!important;min-height:64px!important;
   margin:0!important;padding:8px max(14px,calc((100vw - var(--ma-max))/2))!important;
