@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Install MatchApp Ai KIDS for macOS</title>
+<meta name="description" content="Official MatchApp Ai KIDS Mac install from matchapp.tv. Child-safe shell only.">
+<link rel="canonical" href="https://matchapp.tv/kids/desktop/macos.html">
+<meta name="robots" content="noindex,follow">
+<style>body{margin:0;font-family:system-ui,sans-serif;background:#0b1b2c;color:#eef8ff;padding:32px 20px}main{max-width:640px;margin:0 auto;border:2px solid #7ad7ff;border-radius:24px;padding:28px;background:#12344a}h1{color:#7ad7ff}.btn{display:inline-block;margin:8px 8px 0 0;padding:12px 18px;border-radius:999px;background:#7ad7ff;color:#072033;font-weight:800;text-decoration:none;border:0;cursor:pointer}</style>
+</head>
+<body>
+<main>
+  <p>Kids Mode · official download</p>
+  <h1>MatchApp Ai KIDS for macOS</h1>
+  <p id="status">Checking the secure Kids Mac package…</p>
+  <p>
+    <a class="btn" href="/kids/">Open Kids Mode</a>
+    <a class="btn" id="file" hidden href="#">Download Kids Mac installer</a>
+  </p>
+  <p>Kids installers are separate from grown-up MatchApp. They only open Kids Mode. Downloads come only from matchapp.tv over HTTPS.</p>
+</main>
+<script>
+fetch('/desktop/packages.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(p){
+  var w=p.kids&&p.kids.macos;
+  if(w&&w.available&&w.url&&w.url.indexOf('https://matchapp.tv/kids/')===0){
+    var file=document.getElementById('file'); file.href=w.url; file.hidden=false;
+    document.getElementById('status').textContent='Signed Kids Mac installer ready. SHA-256: '+(w.sha256||'')+'.';
+  } else {
+    document.getElementById('status').textContent='Use Kids Mode in Chrome or Edge on this Mac until the signed Kids .dmg is published here.';
+  }
+}).catch(function(){});
+</script>
+</body>
+</html>
