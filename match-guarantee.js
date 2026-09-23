@@ -97,7 +97,8 @@
       const policy = window.matchPolicy;
       const raw = Array.isArray(parsed.results) ? parsed.results : [];
       let results = raw.filter(item => item && item.title && (!policy || policy.fitsQuestion(item, question)));
-      if (!results.length && policy) {
+      const audioIntent = /\b(podcast|music|song|songs|album|albums|playlist|single|singles|audiobook|spotify|listen|radio show)\b/i.test(String(question || ''));
+      if (!results.length && policy && !audioIntent) {
         results = catalog()
           .filter(e => e && e.title && policy.fitsQuestion(e, question) && window.tasteAllowsEntry(e))
           .slice(0, 6)
@@ -112,6 +113,7 @@
             watchUrl: e.watchUrl || ''
           }));
       }
+      if (audioIntent) results = results.filter(item => /podcast|music|song|album|playlist|single|audiobook/i.test(String(item?.type || '') + ' ' + String(item?.platform || '')));
       parsed.results = results;
       if (!parsed.answer) {
         const first = results[0];

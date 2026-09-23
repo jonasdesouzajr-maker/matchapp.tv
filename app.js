@@ -3131,10 +3131,11 @@ async function discoverVerifiedExactTMDB(requested){
     if(cat.length&&cat.every(x=>['movie','stand-up comedy special','short film','Bollywood','Nollywood','European cinema'].includes(x)))kind='movie';
     else if(cat.length&&cat.every(x=>['series','reality show','K-drama','C-drama','J-drama','Turkish dizi','novela brasileira','telenovela'].includes(x)))kind='tv';
     const start=decade.length===1?Number(String(decade[0]).match(/\d{4}/)?.[0]):0;
-    const candidates=await window.tmdbDiscover({kind,genre_ids:genreIds,original_language:cat.includes('anime')?'ja':'',decade_start:start||0,pages:2},{priority:true});
-    const prefs=currentPreferenceExclusions(),known=window.matchPolicy?.known?.()||new Set();
     const region=window.MatchAppCatalogMedia?.regionCode?.()||'BR';
-    for(const base of candidates.slice(0,30)){
+    const provider=platform.length===1?platform[0]:'';
+    const candidates=await window.tmdbDiscover({kind,genre_ids:genreIds,original_language:cat.includes('anime')?'ja':'',decade_start:start||0,pages:provider?5:2,provider,region},{priority:true});
+    const prefs=currentPreferenceExclusions(),known=window.matchPolicy?.known?.()||new Set();
+    for(const base of candidates.slice(0,provider?100:30)){
       const key=window.matchPolicy?.key?.(base.title)||'';
       if(!key||known.has(key)||SESSION_SHOWN.has(base.title))continue;
       const d=await window.tmdbDetails(base.tmdbId,base.kind,{priority:true});if(!d)continue;

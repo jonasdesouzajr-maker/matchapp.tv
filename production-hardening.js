@@ -53,9 +53,9 @@ async function verifyAIItem(raw,question){
  if(!raw||!raw.title)return null;
  const title=String(raw.title).trim();if(!title)return null;
  const known=window.matchPolicy?.known?.();if(known?.has(key(title)))return null;
- const exact=findEntry(title);
- if(exact)return {...raw,title:exact.title,year:exact.year||raw.year||'',type:canonicalType(exact),platform:exact.platform||'any',synopsis:exact.synopsis||raw.synopsis||'',_meta:null,_verified:'catalog'};
  const audioIntent=AUDIO.test(question||''),rawType=typeFromRaw(raw.type);
+ const exact=findEntry(title);
+ if(exact){const exactType=canonicalType(exact);if(audioIntent&&!isAudioType(exactType))return null;return {...raw,title:exact.title,year:exact.year||raw.year||'',type:exactType,platform:exact.platform||'any',synopsis:exact.synopsis||raw.synopsis||'',_meta:null,_verified:'catalog'};}
  if(audioIntent&&!isAudioType(rawType))return null;
  let tmdb=null;
  if(!audioIntent&&typeof window.tmdbLookup==='function'){

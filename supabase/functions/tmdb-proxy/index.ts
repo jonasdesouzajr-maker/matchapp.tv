@@ -414,6 +414,10 @@ Deno.serve(async (req: Request) => {
       const pages = Math.min(20, Math.max(1, Number(d.pages)||1));
       const pageStart = Math.min(500, Math.max(1, Number(d.page_start)||1));
       const originalLanguage = typeof d.original_language === "string" && /^[a-z]{2}$/i.test(d.original_language) ? d.original_language.toLowerCase() : "";
+      const region = typeof d.region === "string" && /^[A-Z]{2}$/i.test(d.region) ? d.region.toUpperCase() : "";
+      const provider = typeof d.provider === "string" ? d.provider.toLowerCase().replace(/[^a-z0-9+ ]/g, "").trim() : "";
+      const providerIds: Record<string,string> = { "netflix":"8" };
+      const providerId = providerIds[provider] || "";
       const out: Record<string, unknown>[] = [];
       for (const k of kinds) {
         for (let page=pageStart; page<=Math.min(500,pageStart+pages-1); page++) {
@@ -424,6 +428,7 @@ Deno.serve(async (req: Request) => {
           params.set("vote_count.gte","20");
           params.set("language",lang);
           if (originalLanguage) params.set("with_original_language", originalLanguage);
+          if (providerId && region) { params.set("with_watch_providers", providerId); params.set("watch_region", region); params.set("with_watch_monetization_types", "flatrate|free|ads"); }
           if (genreIds.length) params.set("with_genres",genreIds.join("|"));
           if (Number.isSafeInteger(decade) && decade >= 1900 && decade <= 2100) {
             if (k === "movie") {
