@@ -3184,7 +3184,7 @@ html body.page-home .ma-concierge .ma-chip{
     padding:7px!important;
     margin:0!important;
     box-sizing:border-box!important;
-    overflow:hidden!important;
+    overflow:visible!important;
     border:1px solid rgba(232,186,64,.14)!important;
     border-radius:16px!important;
     background:rgba(8,13,29,.52)!important;
