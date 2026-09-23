@@ -1064,11 +1064,22 @@ body.page-home{overflow-x:clip!important}
   html body.page-home .ad-banner-container{display:none!important}
 }
 
-/* Tablet: do not squeeze side rails into the product and do not scatter ads. */
+/* Tablet: use the same safe in-flow responsive inventory as phones.
+   Side rails stay off so they never squeeze the product, but inline AdSense
+   canvases remain available and reserve space for inventory. */
 @media(min-width:768px) and (max-width:1179px){
   html body.page-home .sidebar-ad-left,
-  html body.page-home .sidebar-ad-right,
-  html body.page-home .ad-banner-container{display:none!important}
+  html body.page-home .sidebar-ad-right{display:none!important}
+  html body.page-home .ad-banner-container.ma-inline-ad{
+    display:block!important;position:relative!important;
+    width:100%!important;max-width:100%!important;min-height:104px!important;
+    margin:18px auto!important;padding:8px!important;box-sizing:border-box!important;
+    overflow:hidden!important;border:1px solid rgba(232,186,64,.12)!important;
+    border-radius:16px!important;background:rgba(8,13,29,.48)!important;
+  }
+  html body.page-home .ad-banner-container.ma-inline-ad ins.adsbygoogle{
+    display:block!important;width:100%!important;max-width:100%!important;min-height:88px!important;
+  }
   html body.page-home main.page-wrapper>.main-layout{
     display:block!important;width:100%!important;max-width:100%!important;
     margin:0 auto!important;padding-inline:12px!important;box-sizing:border-box!important;
