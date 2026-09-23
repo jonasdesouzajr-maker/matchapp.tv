@@ -175,3 +175,14 @@ test('Ask AI composer stays visible and voice works in the active language',()=>
   assert.match(js,/utter\.lang = voice\?\.lang \|\| targetLang/);
   assert.match(js,/autoReadEnabled/);
 });
+
+test('Ask AI has a bounded local catalogue recovery without polling or UI mutation',()=>{
+  const js=read('discover.js');
+  assert.match(js,/function catalogFallbackForQuestion\(question\)/);
+  assert.match(js,/payload\.results = local/);
+  assert.match(js,/catalog-recovery/);
+  const recovery=js.slice(js.indexOf('function catalogFallbackForQuestion'),js.indexOf('\/\* ---------- Typewriter reveal'));
+  assert.doesNotMatch(recovery,/setInterval|MutationObserver|requestAnimationFrame/);
+  assert.match(recovery,/fitsQuestion\(e, question\)/);
+  assert.match(recovery,/isDiscoverDisliked\(e\.title\)/);
+});
