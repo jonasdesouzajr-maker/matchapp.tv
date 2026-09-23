@@ -3133,9 +3133,9 @@ async function discoverVerifiedExactTMDB(requested){
     const start=decade.length===1?Number(String(decade[0]).match(/\d{4}/)?.[0]):0;
     const region=window.MatchAppCatalogMedia?.regionCode?.()||'BR';
     const provider=platform.length===1?platform[0]:'';
-    const candidates=await window.tmdbDiscover({kind,genre_ids:genreIds,original_language:cat.includes('anime')?'ja':'',decade_start:start||0,pages:provider?1:2,provider,region},{priority:true});
+    const candidates=await window.tmdbDiscover({kind,genre_ids:genreIds,original_language:cat.includes('anime')?'ja':'',decade_start:start||0,pages:provider?3:2,provider,region},{priority:true});
     const prefs=currentPreferenceExclusions(),known=window.matchPolicy?.known?.()||new Set();
-    for(const base of candidates.slice(0,provider?8:20)){
+    for(const base of candidates.slice(0,provider?30:20)){
       const key=window.matchPolicy?.key?.(base.title)||'';
       if(!key||known.has(key)||SESSION_SHOWN.has(base.title))continue;
       const d=await window.tmdbDetails(base.tmdbId,base.kind,{priority:true});if(!d)continue;
@@ -3196,13 +3196,13 @@ async function aiProposedVerifiedExact(requested){
     if(rating.length)wants.push('age rating: '+rating.join(' or '));
     if(decade.length)wants.push('released in the '+decade.join(' or '));
     if(platform.length)wants.push('streaming in country '+region+' on '+platform.join(' or '));
-    const avoid=[...SESSION_SHOWN].slice(-40);
-    const prompt='List 8 real, already released movies or TV series that match ALL of these choices: '+(wants.join('; ')||'well reviewed and popular right now')+'. '+
+    const avoid=[...SESSION_SHOWN].slice(-20);
+    const prompt='List 16 real, already released movies or TV series that match ALL of these choices: '+(wants.join('; ')||'well reviewed and popular right now')+'. '+
         (avoid.length?'Do not include any of these titles: '+avoid.join('; ')+'. ':'')+
         'Use each title\'s original English release title and its first release year. '+
         'Output valid JSON ONLY: {"results":[{"title":"Exact Title","year":2020,"kind":"movie or tv"}]}';
     let proposals=[];
-    try{const parsed=await fetchGeminiData(prompt);proposals=Array.isArray(parsed?.results)?parsed.results.slice(0,8):[];}catch(_){return null;}
+    try{const parsed=await fetchGeminiData(prompt);proposals=Array.isArray(parsed?.results)?parsed.results.slice(0,16):[];}catch(_){return null;}
     for(const p of proposals){
         const title=typeof p?.title==='string'?p.title.trim():'';if(!title)continue;
         const key=window.matchPolicy?.key?.(title)||'';
