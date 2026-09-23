@@ -3818,7 +3818,16 @@ window.triggerMatch = async function(isSpecificSearch = false) {
         if (form) { form.style.display='block'; form.scrollIntoView({behavior:'smooth',block:'center'}); }
         return;
     }
-    if (!(await checkDailyLimit())) return;
+    if (!(await checkDailyLimit())) {
+        clearInterval(timerInterval);
+        document.body.classList.remove('match-searching');
+        if (loadBox) loadBox.style.display='none';
+        if (resultBox) resultBox.style.display='none';
+        if (isSpecificSearch) {
+            if (sBox) sBox.style.display='block';
+        } else if (qBox) qBox.style.display='block';
+        return;
+    }
     window.lastMatchWasSpecificSearch = isSpecificSearch;
     
     let promptText = "";
