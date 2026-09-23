@@ -815,6 +815,8 @@ details[open] .settings-chevron { transform: rotate(180deg); }
   #poster-zoom-img,
   .poster-wall-tile>img,
   .kids-card img,
+  .kids-card-poster img,
+  .kids-feature img,
   .kids-result-art img,
   [data-kids-title]>img
 ){
@@ -877,7 +879,7 @@ details[open] .settings-chevron { transform: rotate(180deg); }
    slow border-colour animation; grid cards animate on interaction. This keeps
    the playful look without putting dozens of perpetual repaint animations on
    mobile devices. */
-:where(.kids-card img,.kids-result-art img,[data-kids-title]>img){
+:where(.kids-card img,.kids-card-poster img,.kids-feature img,.kids-result-art img,[data-kids-title]>img){
   border:4px solid #ff72c7!important;
   background:#1a0c34!important;
   box-shadow:0 0 0 2px #ffd45f,0 0 0 4px #68e4ff,0 8px 24px rgba(0,0,0,.32)!important;
@@ -900,5 +902,15 @@ details[open] .settings-chevron { transform: rotate(180deg); }
   [data-kids-title]>img{animation:none!important}
 }
 .reduce-motion [data-kids-title]>img{animation:none!important}
+
+/* Runtime-injected legacy rules can load after this stylesheet. These higher-
+   specificity guards keep title art contained even when those old rules use
+   !important. */
+html body.page-home:not(.kids-body) .poster-wall .poster-wall-tile>img{
+  object-fit:contain!important;object-position:center center!important;
+}
+html body.page-home #spotlight-ahs13 .spotlight-poster>img#spotlight-poster-img{
+  object-fit:contain!important;object-position:center center!important;
+}
 /* MA-POSTER-INTEGRITY:END */
 
