@@ -22,6 +22,10 @@ const CORE = [
     { loc: `${SITE}/discover.html`,            freq: 'daily',   pri: '0.9' },
     { loc: `${SITE}/anime.html`,                freq: 'daily',   pri: '0.8' },
     { loc: `${SITE}/android/`,                  freq: 'weekly',  pri: '0.6' },
+    { loc: `${SITE}/desktop/windows.html`,      freq: 'weekly',  pri: '0.6' },
+    { loc: `${SITE}/desktop/macos.html`,        freq: 'weekly',  pri: '0.6' },
+    { loc: `${SITE}/kids/desktop/windows.html`, freq: 'monthly', pri: '0.4' },
+    { loc: `${SITE}/kids/desktop/macos.html`,   freq: 'monthly', pri: '0.4' },
     { loc: `${SITE}/kids/`,                    freq: 'weekly',  pri: '0.9', lastmod: '2026-09-17T00:00:00+00:00' },
     { loc: `${SITE}/featured/a-gata-comeu/`,   freq: 'weekly',  pri: '0.8', lastmod: '2026-09-17T00:00:00+00:00' },
     { loc: `${SITE}/featured/american-horror-story-13/`, freq: 'weekly', pri: '0.8', lastmod: '2026-09-17T00:00:00+00:00' },
@@ -50,9 +54,6 @@ function readObject(file) {
 }
 
 function newsUrlsFromDisk() {
-    // Only the curated news hub is indexable. Individual RSS-derived wrapper
-    // pages are intentionally noindex until they contain substantial original
-    // MatchApp editorial content.
     return [`${SITE}/news/`];
 }
 
@@ -128,10 +129,6 @@ function main() {
     const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${body}\n</urlset>\n`;
     fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), xml, 'utf8');
 
-    // Keep one canonical sitemap index. sitemap.xml already contains the legal
-    // URLs, so nesting legal-sitemap.xml here would duplicate URL inventory in
-    // Search Console. Keep the compatibility file on disk, but do not submit it
-    // through the canonical sitemap index.
     const sitemapIndexPath = path.join(ROOT, 'sitemaps.xml');
     const indexXml = `<?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
