@@ -200,13 +200,14 @@ window.installMatchApp = async function () {
     // Path 1: a real native prompt is available (Chrome/Edge/Android/Desktop).
     if (deferredInstallPrompt) {
         try {
-            // On smartphones the browser/OS prompt must remain the only modal
-            // layer. Showing our full-screen progress dialog here covered the
-            // native prompt and could leave the page apparently frozen while
-            // userChoice was still pending.
+            // Start MatchApp's install animation while the browser performs
+            // the real PWA install. It is dismissed only on a rejected prompt;
+            // successful completion is driven exclusively by appinstalled.
+            window.matchAppInstallProgress?.start();
             await deferredInstallPrompt.prompt();
             const choice = await deferredInstallPrompt.userChoice;
-            if (choice && choice.outcome === 'dismissed') window.matchAppInstallProgress?.cancel();
+            if (choice && choice.outcome === 'accepted') window.matchAppInstallProgress?.accepting();
+            else window.matchAppInstallProgress?.cancel();
         } catch (e) { window.matchAppInstallProgress?.cancel(); }
         deferredInstallPrompt = null;
         return;
@@ -221,9 +222,11 @@ window.installMatchApp = async function () {
         }
         if (deferredInstallPrompt) {
             try {
+                window.matchAppInstallProgress?.start();
                 await deferredInstallPrompt.prompt();
                 const choice = await deferredInstallPrompt.userChoice;
-                if (choice && choice.outcome === 'dismissed') window.matchAppInstallProgress?.cancel();
+                if (choice && choice.outcome === 'accepted') window.matchAppInstallProgress?.accepting();
+                else window.matchAppInstallProgress?.cancel();
             } catch (e) { window.matchAppInstallProgress?.cancel(); }
             deferredInstallPrompt = null;
             return;
