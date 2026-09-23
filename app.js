@@ -3138,27 +3138,39 @@ async function discoverVerifiedExactTMDB(requested){
     for(const base of candidates.slice(0,provider?30:20)){
       const key=window.matchPolicy?.key?.(base.title)||'';
       if(!key||known.has(key)||SESSION_SHOWN.has(base.title))continue;
-      const d=await window.tmdbDetails(base.tmdbId,base.kind,{priority:true});if(!d)continue;
-      const genres=Array.isArray(d.genres)?d.genres:[],countries=Array.isArray(d.originCountries)?d.originCountries:[];
+      const d=await window.tmdbDetails(base.tmdbId,base.kind,{priority:true});
+      // A provider-filtered TMDB Discover result is already source proof that
+      // this exact identity is on the selected service in this region. Detail
+      // mode enriches it, but a transient detail failure must not turn a valid
+      // desktop/iOS/WebView match into a false "no verified title" error.
+      const discoverGenres=(Array.isArray(base.genreIds)?base.genreIds:[]).map(id=>Object.keys(TMDB_GENRE_ID_BY_NAME).find(name=>TMDB_GENRE_ID_BY_NAME[name]===Number(id))).filter(Boolean);
+      const genres=Array.isArray(d?.genres)&&d.genres.length?d.genres:discoverGenres;
+      const countries=Array.isArray(d?.originCountries)?d.originCountries:[];
+      if(!d && (!provider || !genres.length))continue;
       if(countries.some(x=>prefs.countries.has(String(x).toUpperCase())))continue;
       if(genres.some(g=>prefs.genres.has(String(g).toLowerCase())))continue;
       if(realGenres.length&&!genres.some(g=>realGenres.includes(g)))continue;
       if(mood.length&&!mood.some(m=>(MOOD_SOURCE_GENRES[m]||[]).some(g=>genres.includes(g))))continue;
       if(!categoryFitsVerified(base.kind,genres,countries,cat))continue;
-      if(decade.length&&!decade.some(dec=>{const s=Number(String(dec).match(/\d{4}/)?.[0]);const y=Number(d.year||base.year);return s&&y>=s&&y<s+10;}))continue;
-      if(!sourceRatingFits(d.contentRating,rating))continue;
+      if(decade.length&&!decade.some(dec=>{const s=Number(String(dec).match(/\d{4}/)?.[0]);const y=Number(d?.year||base.year);return s&&y>=s&&y<s+10;}))continue;
+      if(d && !sourceRatingFits(d.contentRating,rating))continue;
+      if(!d && rating.length)continue;
       let verifiedPlatform='any';
       if(platform.length){
-        const row=d.availability?.[region]||{};
-        const providers=[...(row.stream||[]),...(row.rent||[]),...(row.buy||[])];
-        const wanted=new Set(platform.map(canonicalProviderName));
-        const hit=providers.find(p=>wanted.has(canonicalProviderName(p)));
-        if(!hit)continue;verifiedPlatform=hit;
+        if(provider){
+          verifiedPlatform=platform[0];
+        }else{
+          const row=d?.availability?.[region]||{};
+          const providers=[...(row.stream||[]),...(row.rent||[]),...(row.buy||[])];
+          const wanted=new Set(platform.map(canonicalProviderName));
+          const hit=providers.find(p=>wanted.has(canonicalProviderName(p)));
+          if(!hit)continue;verifiedPlatform=hit;
+        }
       }
       return {
-        title:String(d.title||base.title),year:Number(d.year||base.year)||null,
+        title:String(d?.title||base.title),year:Number(d?.year||base.year)||null,
         countryCode:countries[0]||'',country:countries[0]||'',
-        synopsis:String(d.overview||base.overview||'').trim(),
+        synopsis:String(d?.overview||base.overview||'').trim(),
         platform:verifiedPlatform,platformVerified:platform.length>0,
         cats:cat.length?cat:[base.kind==='movie'?'movie':'series'],
         moods:mood,vibes:vibe,ratings:rating,source:'tmdb-exact-live',
@@ -3777,6 +3789,7 @@ window.triggerMatch = async function(isSpecificSearch = false) {
         ['questionnaire-box','search-box'].forEach(id=>{const el=document.getElementById(id);if(el)el.style.display='block';});
         ['loading-box','result-box'].forEach(id=>{const el=document.getElementById(id);if(el)el.style.display='none';});
         document.body.classList.remove('match-searching');
+        clearInterval(timerInterval);
         window.showToast?.('Keeping your choices exact — no verified fresh title was available just now. Try Match again.');
         return;
     }
