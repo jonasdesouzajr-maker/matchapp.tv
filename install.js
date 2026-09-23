@@ -197,7 +197,7 @@ window.installMatchApp = async function () {
     // instructions modal.
     if (window.dismissInstallBubble) window.dismissInstallBubble();
 
-    // Path 1: a real native prompt is available (Chrome/Edge/Android/Desktop).
+    // Path 1: a real native prompt is available (Chrome/Edge/Android/Desktop).\n    // Android tablets share the same gesture-safe path as Android phones;\n    // platformInfo() already detects tablets whose UA omits the Mobile token.
     if (deferredInstallPrompt) {
         try {
             // Start MatchApp's install animation while the browser performs
