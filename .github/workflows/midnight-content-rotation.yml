@@ -14,6 +14,7 @@ on:
 permissions:
   contents: write
   actions: write
+  issues: write
   id-token: write
 
 concurrency:
@@ -62,24 +63,6 @@ jobs:
           npm test
           npm run build
 
-      - name: Build execution report
-        shell: bash
-        run: |
-          {
-            echo '# Midnight content rotation report'
-            echo
-            echo "Generated: $(date -u +'%Y-%m-%dT%H:%M:%SZ')"
-            echo
-            echo '## Changed content files'
-            git status --short | sed 's/^/- /' || true
-            echo
-            echo '## SEO/indexing checks'
-            echo '- SEO/watch pages rebuilt with their generated metadata and structured data.'
-            echo '- sitemap.xml and sitemaps.xml refreshed.'
-            echo '- Site, search-readiness, test and build checks passed before publication.'
-          } > reports/midnight-latest.md
-          cat reports/midnight-latest.md >> "$GITHUB_STEP_SUMMARY"
-
       - name: Publish rotation atomically
         id: publish
         shell: bash
@@ -101,13 +84,41 @@ jobs:
         if: steps.publish.outputs.changed == '1'
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh workflow run pages-deploy.yml --ref main
+        run: |
+          gh workflow run pages-deploy.yml --ref main
+          echo 'DEPLOYED=1' >> "$GITHUB_ENV"
 
       - name: Submit refreshed URLs to IndexNow
         if: steps.publish.outputs.changed == '1'
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh workflow run indexnow.yml --ref main
+        run: |
+          gh workflow run indexnow.yml --ref main
+          echo 'INDEXNOW=1' >> "$GITHUB_ENV"
+
+      - name: Build report and post to issue #1
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CHANGED: ${{ steps.publish.outputs.changed || '0' }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          JOB_STATUS: ${{ job.status }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ -f /tmp/before.sha ]; then
+            export BEFORE_SHA="$(cat /tmp/before.sha)"
+          else
+            export BEFORE_SHA="${GITHUB_SHA}"
+          fi
+          export DEPLOYED="${DEPLOYED:-0}"
+          export INDEXNOW="${INDEXNOW:-0}"
+          if [ "$JOB_STATUS" != "success" ]; then
+            export ROTATION_ERROR="A workflow step failed. See ${RUN_URL}"
+          fi
+          node tools/midnight-report.js
+          cat reports/midnight-latest.md >> "$GITHUB_STEP_SUMMARY"
+          gh issue comment 1 --repo "$GITHUB_REPOSITORY" --body-file reports/midnight-latest.md
 
       - name: Notify phone with execution report
         if: success()
