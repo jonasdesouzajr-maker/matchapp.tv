@@ -99,9 +99,13 @@ test('manual AdSense initializer is byte-for-byte locked',()=>{
 
 test('desktop/tablet/mobile AdSense responsive rules are locked',()=>{
   const css=read('matchapp-ia.css');
-  assert.match(css,/Desktop web: keep real AdSense-ready rails visible on both sides[\s\S]*@media\(min-width:1180px\)[\s\S]*--ma-ad-rail:clamp\(132px,10\.8vw,160px\);[\s\S]*grid-template-columns:var\(--ma-ad-rail\) minmax\(0,var\(--ma-stage-width\)\) var\(--ma-ad-rail\)!important;[\s\S]*\.sidebar-ad-left,[\s\S]*\.sidebar-ad-right\{[\s\S]*display:flex!important;[\s\S]*position:sticky!important;top:104px!important;[\s\S]*max-width:160px!important;[\s\S]*min-height:600px!important;[\s\S]*\.sidebar-ad-left\{grid-column:1!important;justify-self:end!important\}[\s\S]*\.sidebar-ad-right\{grid-column:3!important;justify-self:start!important\}[\s\S]*\.ad-banner-container\.ma-inline-ad\{[\s\S]*display:none!important;/);
-  assert.match(css,/@media\(min-width:768px\) and \(max-width:1179px\)[\s\S]*\.sidebar-ad-left,[\s\S]*\.sidebar-ad-right\{[\s\S]*display:none!important;[\s\S]*\.ad-banner-container\.ma-inline-ad\{[\s\S]*width:min\(100%,760px\)!important;[\s\S]*min-height:104px!important;[\s\S]*ins\.adsbygoogle\{[\s\S]*min-height:88px!important;/);
-  assert.match(css,/@media\(max-width:767px\)[\s\S]*\.sidebar-ad-left,[\s\S]*\.sidebar-ad-right\{[\s\S]*display:none!important;[\s\S]*\.ad-banner-container\.ma-inline-ad\{[\s\S]*width:100%!important;[\s\S]*min-height:92px!important;[\s\S]*ins\.adsbygoogle\{[\s\S]*min-height:78px!important;/);
+  assert.match(css,/Desktop web: keep real AdSense-ready rails visible on both sides[\s\S]*@media\(min-width:1180px\)[\s\S]*--ma-ad-rail:clamp\(132px,10\.8vw,160px\);[\s\S]*grid-template-columns:var\(--ma-ad-rail\) minmax\(0,var\(--ma-stage-width\)\) var\(--ma-ad-rail\)!important;/);
+  assert.match(css,/\.sidebar-ad-left,\s*\n\s*html body\.page-home \.sidebar-ad-right\s*\{[\s\S]*display:flex!important;[\s\S]*position:sticky!important;[\s\S]*top:104px!important;[\s\S]*max-width:160px!important;[\s\S]*min-height:600px!important;/);
+  assert.match(css,/\.sidebar-ad-left\{grid-column:1!important;justify-self:end!important\}/);
+  assert.match(css,/\.sidebar-ad-right\{grid-column:3!important;justify-self:start!important\}/);
+  assert.match(css,/@media\(min-width:1180px\)[\s\S]*\.ad-banner-container\.ma-inline-ad\s*\{[\s\S]*display:none!important;/);
+  assert.match(css,/@media\(min-width:768px\) and \(max-width:1179px\)[\s\S]*\.sidebar-ad-left,\s*\n\s*html body\.page-home \.sidebar-ad-right\s*\{[\s\S]*display:none!important;[\s\S]*\.ad-banner-container\.ma-inline-ad\s*\{[\s\S]*width:min\(100%,760px\)!important;[\s\S]*min-height:104px!important;[\s\S]*ins\.adsbygoogle\s*\{[\s\S]*min-height:88px!important;/);
+  assert.match(css,/@media\(max-width:767px\)[\s\S]*\.sidebar-ad-left,\s*\n\s*html body\.page-home \.sidebar-ad-right\s*\{[\s\S]*display:none!important;[\s\S]*\.ad-banner-container\.ma-inline-ad\s*\{[\s\S]*width:100%!important;[\s\S]*min-height:92px!important;[\s\S]*ins\.adsbygoogle\s*\{[\s\S]*min-height:78px!important;/);
 });
 
 test('Match Together desktop AdSense canvas dimensions are locked',()=>{
