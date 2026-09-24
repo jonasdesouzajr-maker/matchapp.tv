@@ -2,7 +2,7 @@
 (function(){
 'use strict';
 
-const VERSION='v5';
+const VERSION='v6';
 let stepIndex=0,steps=[],panel=null,spot=null,active=false,repositionRaf=0,touchX=null,lastTarget=null;
 let focusGuardInstalled=false;
 
@@ -213,6 +213,21 @@ function place(){
   if(!el)return;
   lastTarget=el;
   const vp=viewport(),r=el.getBoundingClientRect(),pad=7,edge=12,gap=20;
+
+  // Never clamp an off-screen target into a tiny fake spotlight at the edge
+  // of the phone. During smooth scrolling, keep the coachmark invisible and
+  // let the scroll/settle callbacks position it only once the true control is
+  // actually inside the visual viewport.
+  const visibleWidth=Math.max(0,Math.min(r.right,vp.right-edge)-Math.max(r.left,vp.left+edge));
+  const visibleHeight=Math.max(0,Math.min(r.bottom,vp.bottom-edge)-Math.max(r.top,vp.top+edge));
+  const targetReady=visibleWidth>=Math.min(32,r.width*.45)&&visibleHeight>=Math.min(24,r.height*.45);
+  if(!targetReady){
+   spot.hidden=true;
+   panel.hidden=false;
+   panel.style.visibility='hidden';
+   return;
+  }
+  spot.hidden=false;
 
   const sl=clamp(r.left-pad,vp.left+edge,vp.right-edge);
   const st=clamp(r.top-pad,vp.top+edge,vp.bottom-edge);
