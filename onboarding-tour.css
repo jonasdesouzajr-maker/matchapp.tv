@@ -1,4 +1,4 @@
-/* MatchApp premium anchored walkthrough v5 */
+/* MatchApp premium anchored walkthrough v6 */
 .matchapp-tour-spotlight{
   position:fixed;z-index:10010;pointer-events:none;box-sizing:border-box;
   border:2px solid rgba(255,229,128,.98);
@@ -11,7 +11,7 @@
     0 0 34px rgba(255,218,92,.64),
     inset 0 0 24px rgba(255,232,142,.06);
   transition:left .22s ease,top .22s ease,width .22s ease,height .22s ease,border-radius .22s ease;
-  animation:matchappTourSpotV5 2s ease-in-out infinite;
+  animation:matchappTourSpotV6 2s ease-in-out infinite;
 }
 .matchapp-tour-spotlight::after{
   content:"";
@@ -29,8 +29,8 @@
   overflow:auto;
   box-sizing:border-box;
   padding:14px 15px 14px;
-  border:1px solid rgba(255,232,159,.68);
-  border-radius:20px;
+  border:1px solid rgba(255,232,159,.72);
+  border-radius:22px;
   background:
     radial-gradient(circle at 10% 0%,rgba(151,83,255,.24),transparent 38%),
     radial-gradient(circle at 100% 100%,rgba(229,193,88,.11),transparent 38%),
@@ -39,9 +39,10 @@
   -webkit-backdrop-filter:blur(30px) saturate(145%);
   backdrop-filter:blur(30px) saturate(145%);
   box-shadow:
-    0 24px 64px rgba(0,0,0,.56),
-    0 0 0 1px rgba(255,255,255,.055) inset,
-    0 10px 38px rgba(117,72,220,.18);
+    0 26px 72px rgba(0,0,0,.62),
+    0 0 0 1px rgba(255,255,255,.065) inset,
+    0 0 0 4px rgba(229,193,88,.035),
+    0 12px 42px rgba(117,72,220,.20);
   font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
   transform:translateZ(0);
   scrollbar-width:none;
@@ -51,9 +52,14 @@
 .matchapp-tour-card>*:not(.matchapp-tour-pointer){position:relative;z-index:2}
 
 .matchapp-tour-pointer{
-  position:absolute;z-index:1;width:28px;height:20px;
-  background:linear-gradient(145deg,#351653,#1a0c2f 72%);
-  filter:drop-shadow(0 2px 2px rgba(0,0,0,.28)) drop-shadow(0 0 5px rgba(255,224,118,.28));
+  position:absolute;z-index:1;width:30px;height:22px;
+  background:linear-gradient(145deg,#4a1d6d,#201037 72%);
+  filter:drop-shadow(0 3px 3px rgba(0,0,0,.34)) drop-shadow(0 0 7px rgba(255,224,118,.34));
+}
+.matchapp-tour-pointer::after{
+  content:"";position:absolute;inset:4px;
+  background:linear-gradient(145deg,rgba(255,236,161,.34),rgba(229,193,88,.06));
+  clip-path:inherit;
 }
 .matchapp-tour-card[data-side="below"] .matchapp-tour-pointer{
   top:-18px;left:var(--tour-arrow-x);transform:translateX(-50%);
@@ -143,7 +149,7 @@
 html.matchapp-tour-active .app-release-notice{display:none!important}
 html.matchapp-tour-active{scroll-behavior:auto}
 
-@keyframes matchappTourSpotV5{
+@keyframes matchappTourSpotV6{
   0%,100%{
     box-shadow:0 0 0 9999px rgba(4,3,12,.48),0 0 0 7px rgba(229,193,88,.10),0 0 30px rgba(255,218,92,.52),inset 0 0 22px rgba(255,230,139,.05)
   }
