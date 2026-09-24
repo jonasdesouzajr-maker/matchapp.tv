@@ -59,3 +59,12 @@ Every design, layout, structural, or functional change MUST be simultaneously ad
 ### OPERATING PROTOCOL
 
 Whenever I give you a task, acknowledge these instructions, confirm cross-platform compatibility, and deliver complete, production-ready code that works seamlessly across Desktop, Mobile Web, Tablet, and native Android apps.
+
+---
+
+### 7. ADSENSE OPERATING CONSTRAINT
+
+- **Auto ads are enabled in Google AdSense for matchapp.tv.** Treat Auto ads as active at all times.
+- Manual AdSense placements must remain responsive, policy-safe complements to Auto ads. Do not disable, replace, duplicate aggressively, or fight Auto ads unless explicitly instructed.
+- Preserve the existing AdSense publisher/client configuration unless the owner explicitly orders a change.
+

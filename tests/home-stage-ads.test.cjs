@@ -31,6 +31,8 @@ test('Home keeps two desktop AdSense rails and three subtle tablet/mobile in-flo
   assert.equal((html.match(/class="sidebar-ad-left premium-ad-frame"/g)||[]).length,1);
   assert.equal((html.match(/class="sidebar-ad-right premium-ad-frame"/g)||[]).length,1);
   assert.equal((html.match(/class="ad-banner-container premium-ad-frame/g)||[]).length,3);
+  assert.equal((html.match(/class="ad-banner-container premium-ad-frame ma-together-ad"/g)||[]).length,1);
+  assert.match(html,/ma-together-ad[\s\S]*style="display:block; width:100%; min-height:120px;"[\s\S]*data-ad-format="auto"[\s\S]*data-full-width-responsive="true"/);
   const leftAt=html.indexOf('class="sidebar-ad-left premium-ad-frame"');
   const rightAt=html.indexOf('class="sidebar-ad-right premium-ad-frame"');
   const contentAt=html.indexOf('<section class="container">',leftAt);
@@ -77,4 +79,7 @@ test('homepage does not suppress desktop rails and keeps mobile responsive slots
   const init=read('ads-init.js');
   assert.match(init,/\.push\(\{\}\)/,'manual AdSense requests use Google's standard initializer');
   assert.doesNotMatch(init,/push\(\{element:slot\}\)/,'unsupported element-targeted pushes must not return');
+  assert.match(html,/\/home-8k-layout\.css\?v=20260924-adfull1/);
+  const layout=read('home-8k-layout.css');
+  assert.match(layout,/@media\(min-width:1180px\)[\s\S]*\.ad-banner-container\.ma-together-ad\{[\s\S]*min-height:148px!important[\s\S]*ins\.adsbygoogle\{[\s\S]*width:100%!important[\s\S]*min-height:120px!important/);
 });
