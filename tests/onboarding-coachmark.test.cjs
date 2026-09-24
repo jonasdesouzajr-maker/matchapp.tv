@@ -57,15 +57,34 @@ test('spotlight leaves context readable and highlights the actual target',()=>{
   const css=read('onboarding-tour.css');
   assert.match(css,/rgba\(4,3,12,\.48\)/);
   assert.match(css,/border:2px solid rgba\(255,229,128,\.98\)/);
-  assert.match(css,/matchappTourSpotV5/);
+  assert.match(css,/matchappTourSpotV6/);
   assert.match(css,/\.matchapp-tour-spotlight::after/);
 });
 
 test('manual walkthrough ships the new cache key to Home',()=>{
   const js=read('onboarding-tour.js'),html=read('index.html');
   assert.match(js,/function start\(\)[\s\S]*show\(0\)/);
-  assert.match(js,/const VERSION='v5'/);
-  assert.ok(html.includes('/onboarding-tour.css?v=20260924-coach2'));
-  assert.ok(html.includes('/onboarding-tour.js?v=20260924-coach2'));
+  assert.match(js,/const VERSION='v6'/);
+  assert.ok(html.includes('/onboarding-tour.css?v=20260924-coach3'));
+  assert.ok(html.includes('/onboarding-tour.js?v=20260924-coach3'));
   assert.doesNotMatch(html,/20260924-coach1/);
+});
+
+
+test('off-screen controls never become edge-clamped fake spotlights',()=>{
+  const js=read('onboarding-tour.js');
+  assert.match(js,/const visibleWidth=Math\.max\(0/);
+  assert.match(js,/const targetReady=/);
+  assert.match(js,/spot\.hidden=true/);
+  assert.match(js,/panel\.style\.visibility='hidden'/);
+});
+
+test('Home carries a compact in-flow growth disclosure',()=>{
+  const html=read('index.html'),css=read('frontend-polish.css');
+  assert.match(html,/id="matchapp-growth-disclosure"/);
+  assert.match(html,/Always growing\./);
+  assert.match(html,/constantly expanding with new titles, features and experiences/);
+  assert.match(css,/\.matchapp-growth-disclosure\{/);
+  assert.match(css,/position:relative/);
+  assert.doesNotMatch(css,/\.matchapp-growth-disclosure\{[^}]*position:fixed/);
 });
