@@ -14,7 +14,8 @@
   "categories": [
     "entertainment",
     "lifestyle",
-    "utilities"
+    "utilities",
+    "books"
   ],
   "dir": "auto",
   "icons": [
@@ -47,7 +48,7 @@
   "prefer_related_applications": false,
   "name": "MatchApp Ai",
   "short_name": "MatchApp Ai",
-  "description": "AI entertainment concierge: choose a mood, get a title and see where it officially plays in your country.",
+  "description": "AI entertainment concierge: match movies, TV, music or e-books to your mood and open official viewing, listening, legal free-reading or purchase routes.",
   "start_url": "/?utm_source=pwa",
   "lang": "en",
   "shortcuts": [
@@ -55,6 +56,11 @@
       "name": "Get a match",
       "short_name": "Match",
       "url": "/?utm_source=pwa_shortcut#questionnaire-box"
+    },
+    {
+      "name": "Match an e-book",
+      "short_name": "E-book Match",
+      "url": "/?utm_source=pwa_shortcut#ebook-matcher-root"
     },
     {
       "name": "Ask the AI",
