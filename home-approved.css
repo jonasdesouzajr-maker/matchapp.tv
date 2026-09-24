@@ -424,15 +424,15 @@ html.reduce-motion body.page-home :is(.ma-how-link,.ma-how-button){
 
 
 /* 2026-09-24 desktop equal-length top stack.
-   Desktop only: the growth notice and Daily Check-in use the exact horizontal
-   measure of the approved top box. Their height remains content-driven; copy is
-   reorganized onto the existing row so widening never adds another line. */
+   Desktop only: Awareness Spotlight, Always growing and Daily Check-in share
+   one exact horizontal measure. Heights and all product behavior stay intact. */
 @media (min-width:1000px){
+  html body.page-home #awareness-spotlight,
   html body.page-home .matchapp-growth-disclosure,
   html body.page-home #daily-match-checkin.dc,
   html body.page-home .daily-checkin.dc{
-    width:min(calc(100% - 30px),1180px)!important;
-    max-width:1180px!important;
+    width:min(calc(100% - 24px),1248px)!important;
+    max-width:1248px!important;
     margin-left:auto!important;
     margin-right:auto!important;
     box-sizing:border-box!important;
