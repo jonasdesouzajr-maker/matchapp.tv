@@ -4,7 +4,7 @@ const start=source.indexOf('(function () {',source.indexOf('// TRENDING RAIL'));
 const rail=source.slice(start,source.indexOf('let authReturnFocus',start));
 test('phone rails do not auto-scroll or fight native scrolling when reaching the beginning',()=>{
  const d=new JSDOM('<div id="marquee-viewport"><div id="marquee-track"><div><img alt="A"></div></div></div>',{url:'https://matchapp.tv/',runScripts:'outside-only'}),w=d.window;
- let intervals=0;w.matchMedia=q=>({matches:q.includes('max-width')});w.setInterval=()=>{intervals++;return 1;};w.setTimeout=fn=>{fn();return 1;};
+ let intervals=0;w.matchMedia=q=>({matches:q.includes('max-width')});w.setInterval=()=>{intervals++;return 1;};w.setTimeout=fn=>{fn();return 1;};w.requestAnimationFrame=fn=>{fn();return 1;};w.cancelAnimationFrame=()=>{};
  try{w.eval(rail);w.document.dispatchEvent(new w.Event('DOMContentLoaded'));const viewport=w.document.getElementById('marquee-viewport'),track=w.document.getElementById('marquee-track');Object.defineProperty(track,'scrollWidth',{value:2400});viewport.scrollLeft=0;viewport.dispatchEvent(new w.Event('scroll'));assert.equal(viewport.scrollLeft,0);assert.equal(intervals,0);w.document.dispatchEvent(new w.Event('visibilitychange'));assert.equal(intervals,0);}finally{w.close();}
 });
 test('trending covers show their title and stay keyboard reachable, clones excluded',async()=>{
