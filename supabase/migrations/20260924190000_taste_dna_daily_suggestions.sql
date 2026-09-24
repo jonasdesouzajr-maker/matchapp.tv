@@ -153,11 +153,11 @@ begin
   ) and not exists(
     select 1 from public.profiles p
     where p.id=p_uid and (
-      jsonb_array_length(coalesce(p.saved_list,'[]'::jsonb))>0
-      or jsonb_array_length(coalesce(p.seen_list,'[]'::jsonb))>0
-      or jsonb_array_length(coalesce(p.disliked_list,'[]'::jsonb))>0
-      or coalesce(p.user_ratings,'{}'::jsonb)<>'{}'::jsonb
-    )
+      jsonb_array_length(coalesce(p.saved_list,'[]'::jsonb))
+      + jsonb_array_length(coalesce(p.seen_list,'[]'::jsonb))
+      + jsonb_array_length(coalesce(p.disliked_list,'[]'::jsonb))
+      + (select count(*) from jsonb_each(coalesce(p.user_ratings,'{}'::jsonb)))
+    ) >= 4
   ) then
     return 0;
   end if;
