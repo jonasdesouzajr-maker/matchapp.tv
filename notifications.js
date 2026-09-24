@@ -245,6 +245,8 @@ async function followTitle(meta,region){
 function authChanged(){refresh();if(poll)clearInterval(poll);poll=setInterval(()=>{if(!document.hidden)refresh();},60000);}
 window.MatchNotifications={refresh,open,close,followTitle,enableDevice,savePrefs,markAllRead,deleteItem};
 document.addEventListener('matchapp:authchange',authChanged);
+document.addEventListener('matchapp:tastechange',()=>{if(signed())void refresh();});
+document.addEventListener('matchapp:historychange',()=>{if(signed())void refresh();});
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)refresh();});
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>{mount();setTimeout(refresh,800);});else{mount();setTimeout(refresh,800);}
 })();
