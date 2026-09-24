@@ -50,8 +50,8 @@ leave half the object behind. Every key below must be present.
   field or a false "today" claim.
 - English is the base record. Any key missing from an `i18n` block falls back
   to English, so a partial translation still renders a complete card.
-- The current international day is shown first. Finished international days remain visible for **3 full days** with an **ENDED** ribbon and are moved to the **end of the Events row**. After the third full day they disappear from the Home row automatically; their indexed pages/SEO may remain.
-- Before replacing `data/international-day.json`, archive the outgoing record in `data/international-day-history.json` (deduplicated by `id`). The repository archive job also does this automatically.
+- The current international day is shown first. **Do not delete or remove an event when its calendar day ends.** Finished events remain visible for **3 full days (72 hours)** with an **ENDED** ribbon and are moved to the **end of the Events row**. Only after that retention window do they disappear from the Home row automatically; their indexed pages/SEO may remain.
+- Before replacing `data/international-day.json`, archive the outgoing record in `data/international-day-history.json` (deduplicated by `id`). The repository archive workflow does this automatically on every push that replaces the current day record.
 - The card's destination is always the AI chat (`/discover.html?q=…`), which
   is where the explanation and the tips come from. Do not point it at a page
   that does not exist.

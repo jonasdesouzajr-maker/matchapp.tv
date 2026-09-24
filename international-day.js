@@ -4,8 +4,8 @@
 (function () {
   'use strict';
 
-  var SRC='/data/international-day.json';
-  var HISTORY_SRC='/data/international-day-history.json';
+  var SRC='/data/international-day.json?v=20260924-maritime2';
+  var HISTORY_SRC='/data/international-day-history.json?v=20260924-maritime2';
   var DAY=86400000,RETAIN_ENDED_DAYS=3;
 
   function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
@@ -31,7 +31,7 @@
     article.setAttribute('data-international-day',esc(day.id||day.date||'1'));
     article.innerHTML=
       '<a class="id-art" href="'+esc(href)+'" aria-label="'+esc(day.title)+' — ask MatchApp Ai about this day">'+
-      '<img src="'+esc(day.image)+'" alt="'+esc(day.imageAlt||day.title)+'" width="1024" height="1536" loading="lazy" decoding="async"></a>'+
+      '<img src="'+esc(day.image)+'" alt="'+esc(day.imageAlt||day.title)+'" width="900" height="1200" loading="lazy" decoding="async"></a>'+
       '<span class="event-badge '+badgeClass+'">'+esc(label)+'</span>'+
       '<h3><a href="'+esc(href)+'">'+esc(day.emoji?day.emoji+' ':'')+esc(day.title)+'</a></h3>'+
       '<p><span class="id-kicker">'+esc(day.kicker||'International day')+'</span>'+(day.place?'<br>'+esc(day.place):'')+'</p>'+

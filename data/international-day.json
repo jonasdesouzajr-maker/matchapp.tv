@@ -1,7 +1,7 @@
 {
   "_contract": "docs/DAILY_EVENT_AND_FEATURED_TITLE_CONTRACT.md",
   "_note": "Rewritten once per day by the MatchApp day-of bot. Replace the whole object; never append. Keep every key below.",
-  "updated": "2026-09-24T03:30:00Z",
+  "updated": "2026-09-24T22:40:00Z",
   "date": "2026-09-24",
   "id": "world-maritime-day-2026-09-24",
   "emoji": "⚓",
@@ -11,7 +11,7 @@
   "summary": "The International Maritime Organization and the United Nations mark the last Thursday of September as World Maritime Day. In 2026 the theme is From Policy to Practice: Powering Maritime Excellence. A strong night for documentaries, films and series about shipping, ports, ocean trade and the people who keep global supply chains moving.",
   "prompt": "Today is World Maritime Day. Explain what the day is, why it falls on the last Thursday of September, the 2026–2027 theme From Policy to Practice: Powering Maritime Excellence, and give me practical ways to mark it — plus documentaries, films and series about shipping, maritime life and the ocean that I could watch tonight and where to watch them.",
   "officialUrl": "https://www.un.org/en/observances/maritime-day",
-  "image": "/event-posters/world-maritime-day-2026.webp?v=20260924-maritime1",
+  "image": "/event-posters/world-maritime-day-2026.jpg?v=20260924-maritime2",
   "keywords": [
     "world maritime day",
     "world maritime day 2026",
@@ -36,7 +36,17 @@
     "dia mundial marítimo",
     "dia mundial marítimo 2026",
     "documentários marítimos",
-    "onde assistir documentários sobre navegação"
+    "onde assistir documentários sobre navegação",
+    "World Maritime Day activities 2026",
+    "World Maritime Day documentaries",
+    "cargo ship documentaries",
+    "container shipping documentary",
+    "ocean trade documentaries",
+    "maritime life films",
+    "shipping films to watch",
+    "port documentaries",
+    "commercial shipping awareness",
+    "maritime transport awareness"
   ],
   "i18n": {
     "pt-BR": {
@@ -54,6 +64,6 @@
       "prompt": "Hoy es el Día Marítimo Mundial. Explica qué es esta fecha, por qué se celebra el último jueves de septiembre, el tema 2026–2027 From Policy to Practice: Powering Maritime Excellence, y dame formas prácticas de marcarla, además de documentales, películas y series sobre la navegación, la vida marítima y el océano para ver esta noche y dónde verlos."
     }
   },
-  "imageAlt": "World Maritime Day 2026 event cover featuring a cargo ship at sea",
+  "imageAlt": "World Maritime Day 2026 premium event cover featuring a cargo ship at sea",
   "sourceName": "United Nations / International Maritime Organization"
 }
