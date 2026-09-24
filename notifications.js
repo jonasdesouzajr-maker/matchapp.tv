@@ -148,7 +148,8 @@ function render(){
      ?'<img class="matchapp-notification-poster" src="'+esc(poster)+'" alt="'+esc(String(item?.payload?.title||item.title||'Suggested title'))+'" loading="lazy" decoding="async">'
      :'<span class="matchapp-notification-kind">'+(icons[item.kind]||'●')+'</span>';
    const taste=item.kind==='suggestion'?'<small class="matchapp-notification-taste">Taste DNA · today</small>':'';
-   openBtn.innerHTML=media+'<span class="matchapp-notification-copy">'+taste+'<strong>'+esc(item.title)+'</strong><span>'+esc(item.body)+'</span><small>'+esc(fmt(item.createdAt))+'</small></span>';
+   const body=item.kind==='suggestion'?String(item.body||'').slice(0,280):String(item.body||'');
+   openBtn.innerHTML=media+'<span class="matchapp-notification-copy">'+taste+'<strong>'+esc(item.title)+'</strong><span>'+esc(body)+'</span><small>'+esc(fmt(item.createdAt))+'</small></span>';
    openBtn.addEventListener('click',()=>clickItem(item));
    const trash=document.createElement('button');trash.type='button';trash.className='matchapp-notification-delete';trash.setAttribute('aria-label','Remove notification');
    trash.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16"/><path d="M9 7V4h6v3"/><path d="M6.5 7l1 13h9l1-13"/><path d="M10 11v5M14 11v5"/></svg>';
