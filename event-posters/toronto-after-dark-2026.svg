@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1536" role="img" aria-labelledby="t d">
+<title id="t">TORONTO AFTER DARK</title><desc id="d">MatchApp editorial event cover using the official event title and verified dates.</desc>
+<defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0c0719"/><stop offset=".48" stop-color="#26103f"/><stop offset="1" stop-color="#09060f"/></linearGradient>
+ <radialGradient id="glow" cx=".5" cy=".15" r=".75"><stop stop-color="#8154d9" stop-opacity=".5"/><stop offset=".6" stop-color="#2b103e" stop-opacity=".1"/><stop offset="1" stop-opacity="0"/></radialGradient>
+ <linearGradient id="gold" x1="0" x2="1"><stop stop-color="#b98a2f"/><stop offset=".5" stop-color="#f3d878"/><stop offset="1" stop-color="#b98a2f"/></linearGradient>
+ <filter id="shine"><feGaussianBlur stdDeviation="16"/></filter>
+</defs>
+<rect width="1024" height="1536" fill="url(#bg)"/><rect width="1024" height="1536" fill="url(#glow)"/>
+<circle cx="512" cy="292" r="210" fill="none" stroke="#e5c158" stroke-opacity=".12" stroke-width="2"/>
+<circle cx="512" cy="292" r="158" fill="none" stroke="#e5c158" stroke-opacity=".18" stroke-width="2"/>
+<path d="M128 194H896" stroke="url(#gold)" stroke-width="5" stroke-linecap="round"/>
+<path d="M128 1342H896" stroke="url(#gold)" stroke-width="5" stroke-linecap="round"/>
+<text x="512" y="170" fill="#f3d878" font-family="Arial,Helvetica,sans-serif" font-size="28" font-weight="700" letter-spacing="8" text-anchor="middle">FILM FESTIVAL</text>
+<text x="512" y="660" fill="#ffffff" font-family="Arial,Helvetica,sans-serif" font-size="66" font-weight="900" text-anchor="middle">TORONTO</text>
+<text x="512" y="748" fill="#f3d878" font-family="Arial,Helvetica,sans-serif" font-size="54" font-weight="800" text-anchor="middle">AFTER DARK</text>
+<text x="512" y="875" fill="#d8cbe8" font-family="Arial,Helvetica,sans-serif" font-size="30" font-weight="600" letter-spacing="3" text-anchor="middle">OCT 14 — 18 · 2026</text>
+<rect x="250" y="975" width="524" height="78" rx="39" fill="#ffffff" fill-opacity=".05" stroke="#e5c158" stroke-opacity=".55"/>
+<text x="512" y="1027" fill="#ffffff" font-family="Arial,Helvetica,sans-serif" font-size="27" font-weight="700" letter-spacing="4" text-anchor="middle">CANADA</text>
+<text x="512" y="1242" fill="#e5c158" font-family="Arial,Helvetica,sans-serif" font-size="34" font-weight="900" text-anchor="middle">matchapp.tv</text>
+<text x="512" y="1290" fill="#a99ab9" font-family="Arial,Helvetica,sans-serif" font-size="23" text-anchor="middle">VERIFIED EVENT GUIDE</text>
+<rect x="34" y="34" width="956" height="1468" rx="42" fill="none" stroke="#e5c158" stroke-width="4"/>
+<rect x="54" y="54" width="916" height="1428" rx="32" fill="none" stroke="#8d62dc" stroke-opacity=".45" stroke-width="2"/>
+</svg>
