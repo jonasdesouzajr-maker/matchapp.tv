@@ -430,14 +430,71 @@
     }
     if(wrap.childElementCount){host.appendChild(wrap);host.hidden=false;}
   }
+  function renderTitleFacts(meta,{kids=false}={}){
+    const id=kids?'matchapp-kids-title-facts':'res-title-facts';
+    let host=document.getElementById(id);
+    if(!meta){host?.remove();return;}
+    const countries=(Array.isArray(meta.origin_countries)?meta.origin_countries:[])
+      .map(countryName).filter(Boolean).slice(0,6);
+    const cast=(Array.isArray(meta.cast_members)?meta.cast_members:[])
+      .filter(x=>x&&x.name).slice(0,kids?6:10);
+    if(!countries.length&&!cast.length){host?.remove();return;}
+    if(!host){
+      host=document.createElement('div');
+      host.id=id;
+      host.className='matchapp-title-facts';
+      const anchor=kids
+        ? (document.getElementById('kids-watch-description')||document.getElementById('kids-watch-name'))
+        : (document.getElementById('res-synopsis')||document.getElementById('res-media-meta')||document.getElementById('res-title'));
+      if(anchor)anchor.insertAdjacentElement('afterend',host);
+    }
+    if(!host)return;
+    host.replaceChildren();
+    if(countries.length){
+      const row=document.createElement('div');
+      row.className='matchapp-title-fact-row';
+      const label=document.createElement('strong');
+      label.textContent=countries.length>1?'Countries':'Country';
+      const value=document.createElement('span');
+      value.textContent=countries.join(', ');
+      row.append(label,value);
+      host.appendChild(row);
+    }
+    if(cast.length){
+      const row=document.createElement('div');
+      row.className='matchapp-title-fact-row';
+      const label=document.createElement('strong');
+      label.textContent='Cast';
+      const value=document.createElement('span');
+      value.textContent=cast.map(x=>x.character?x.name+' · '+x.character:x.name).join('  •  ');
+      row.append(label,value);
+      host.appendChild(row);
+    }
+  }
+
   function applyDetails(meta){
     const existing=document.getElementById('res-media-meta');
-    if(!meta){existing?.remove();return;}
-    const synopsis=document.getElementById('res-synopsis');if(synopsis&&(!synopsis.textContent||synopsis.textContent.trim().length<24)&&meta.overview)synopsis.textContent=meta.overview;
-    const bits=[];if(meta.year)bits.push(meta.year);if(meta.runtime_minutes)bits.push(`${meta.runtime_minutes} min`);if(meta.content_rating)bits.push(meta.content_rating);if(meta.vote_average)bits.push(`★ ${Number(meta.vote_average).toFixed(1)}`);(Array.isArray(meta.genres)?meta.genres:[]).slice(0,5).forEach(g=>bits.push(g));
-    if(!bits.length){existing?.remove();return;}
-    const badge=document.getElementById('res-platform-badge');if(!badge)return;
-    const el=existing||document.createElement('span');el.id='res-media-meta';el.className='matchapp-media-meta';el.textContent=bits.join(' · ');if(!existing)badge.insertAdjacentElement('afterend',el);
+    if(!meta){existing?.remove();renderTitleFacts(null);return;}
+    const synopsis=document.getElementById('res-synopsis');
+    if(synopsis&&(!synopsis.textContent||synopsis.textContent.trim().length<24)&&meta.overview)synopsis.textContent=meta.overview;
+
+    const bits=[];
+    if(meta.year)bits.push(meta.year);
+    if(meta.runtime_minutes)bits.push(`${meta.runtime_minutes} min`);
+    if(meta.content_rating)bits.push('Rated '+meta.content_rating);
+    if(meta.vote_average)bits.push(`TMDB ★ ${Number(meta.vote_average).toFixed(1)}`);
+    (Array.isArray(meta.genres)?meta.genres:[]).slice(0,5).forEach(g=>bits.push(g));
+
+    const badge=document.getElementById('res-platform-badge');
+    if(bits.length&&badge){
+      const el=existing||document.createElement('span');
+      el.id='res-media-meta';
+      el.className='matchapp-media-meta';
+      el.textContent=bits.join(' · ');
+      if(!existing)badge.insertAdjacentElement('afterend',el);
+    }else existing?.remove();
+
+    renderTitleFacts(meta);
   }
 
   async function enrichTrendingRail(){
@@ -503,6 +560,7 @@
     const meta=await lookup(title,{kids:true});if(serial!==kidsSerial||!dialog.open)return;
     const host=ensurePlayerHost(document.getElementById('kids-watch-description')||name,'matchapp-kids-preview');
     renderPreview(host,meta,{kids:true,title});
+    renderTitleFacts(meta,{kids:true});
     if(meta)dialog.querySelectorAll('img[data-title],img[data-poster-title]').forEach(img=>hardenImage(img,title,meta));
   }
   function queueKidsEnrich(){
