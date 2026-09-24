@@ -236,6 +236,7 @@ function markup(){
  '<div class="ebook-fields">'+field('mood','How should it feel?')+field('genre','Genre')+field('pace','Reading pace')+field('length','Length')+field('era','Era')+field('access','Access')+'</div>'+
  '<div class="ebook-match-row"><button type="button" class="ebook-match-cta" data-ebook-match>📖 '+esc(tr('match'))+'</button><span>'+esc(tr('quota'))+'</span></div>'+
  '<p class="ebook-note" data-ebook-note hidden></p><section class="ebook-result" data-ebook-result hidden aria-live="polite"></section>'+
+ '<section class="ebook-top-section" aria-labelledby="ebook-top-title"><div class="ebook-top-head"><div><small>BOOKWORMS PICKS</small><h3 id="ebook-top-title">'+esc(tr('topTitle'))+'</h3><p>'+esc(tr('topSub'))+'</p></div><span>Updated Sep 24, 2026</span></div><div class="ebook-top-rail" data-ebook-top></div></section>'+
  '<details class="ebook-saved"><summary>★ '+esc(tr('savedBooks'))+' <span data-ebook-saved-count>0</span></summary><div data-ebook-saved-list></div></details>'+
  '<p class="ebook-rights">'+esc(tr('rights'))+'</p></div></details>';
 }
