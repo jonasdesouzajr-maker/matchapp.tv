@@ -2,13 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://matchapp.tv/</loc>
-        <lastmod>2026-09-24T08:16:05+00:00</lastmod>
+        <lastmod>2026-09-24T09:56:54+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/discover.html</loc>
-        <lastmod>2026-09-23T22:14:16+00:00</lastmod>
+        <lastmod>2026-09-24T09:57:30+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.9</priority>
     </url>
@@ -56,7 +56,7 @@
     </url>
     <url>
         <loc>https://matchapp.tv/featured/antartida/</loc>
-        <lastmod>2026-09-24T00:00:00+00:00</lastmod>
+        <lastmod>2026-09-21T15:02:43+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -68,13 +68,13 @@
     </url>
     <url>
         <loc>https://matchapp.tv/together.html</loc>
-        <lastmod>2026-09-23T22:14:19+00:00</lastmod>
+        <lastmod>2026-09-24T09:57:30+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/pricing/pricing.html</loc>
-        <lastmod>2026-09-23T06:44:50+00:00</lastmod>
+        <lastmod>2026-09-24T09:57:30+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -1034,7 +1034,7 @@
     </url>
     <url>
         <loc>https://matchapp.tv/news/</loc>
-        <lastmod>2026-09-24T09:55:51+00:00</lastmod>
+        <lastmod>2026-09-24T09:57:41+00:00</lastmod>
         <changefreq>hourly</changefreq>
         <priority>0.8</priority>
     </url>
