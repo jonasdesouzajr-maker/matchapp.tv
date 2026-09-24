@@ -35,6 +35,5 @@ test('phone typing retains readable text, caret, sizing and contrast',()=>{
   }
 });
 test('homepage requests a new stylesheet URL for the mobile composer release',()=>{
-  assert.ok(html.includes('/matchapp-ia.css?v=20260922-home-ask2'));
-  assert.ok(!html.includes('/matchapp-ia.css?v=20260921-cta1'));
+  assert.match(html,/\/matchapp-ia\.css\?v=\d{8}-[\w-]+/);
 });

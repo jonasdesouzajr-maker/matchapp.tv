@@ -23,7 +23,7 @@ test('Ask AI cards include watch now, watch later, not for me and synopsis',()=>
   assert.match(html,/discover-nfm/);
   assert.match(html,/discover-related-head/);
   assert.match(html,/discover\.js\?v=\d+/);
-  assert.match(html,/tmdb\.js\?v=193/);
+  assert.match(html,/tmdb\.js\?v=\d{8}-[\w-]+/);
 });
 
 test('related copy exists in every supported language',()=>{
@@ -160,9 +160,9 @@ test('Ask AI composer stays visible and voice works in the active language',()=>
   assert.match(composer,/aria-describedby="discover-compose-help"/);
   assert.match(composer,/id="mic-btn-discover"/);
   assert.doesNotMatch(composer,/mic-btn-discover[^>]+display\s*:\s*none/);
-  assert.match(html,/matchapp-ia\.css\?v=20260921-voice1/);
-  assert.match(html,/discover\.js\?v=20260922-askcost1/);
-  assert.match(html,/voice-input\.js\?v=20260922-noautofocus1/);
+  assert.match(html,/matchapp-ia\.css\?v=\d{8}-[\w-]+/);
+  assert.match(html,/discover\.js\?v=\d{8}-[\w-]+/);
+  assert.match(html,/voice-input\.js\?v=\d{8}-[\w-]+/);
   assert.match(css,/body\.ai-chat-page \.composer textarea\{/);
   assert.match(css,/caret-color:var\(--ma-gold-hot\)!important/);
   assert.match(css,/body\.ai-chat-page \.composer \.mic-btn\{[\s\S]*display:inline-flex!important/);

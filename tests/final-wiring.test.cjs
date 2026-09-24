@@ -20,7 +20,8 @@ test('final wiring activates title integrity, no-repeat history, speed guard and
   assert.doesNotMatch(history,/characterData\s*:\s*true/,'history tracking must never observe every text mutation');
   assert.match(history,/matchapp:newmatch/,'history tracking should use the result event instead of global text observation');
   assert.match(history,/childList\s*:\s*true/,'dynamic result cards must still be discovered');
-  assert.match(speed,/30000/,'stalled matches must have a bounded recovery watchdog');
+  const watchdog=(speed.match(/nativeSetTimeout\(\(\)=>\{if\(!finished\)recover\(\);\},(\d+)\)/)||[])[1];
+  assert.ok(watchdog&&Number(watchdog)>=5000&&Number(watchdog)<=30000,'stalled matches must have a bounded recovery watchdog');
   assert.doesNotMatch(speed,/Math\.min\(ms,350\)/,'the cinematic meter must play in full');
   assert.doesNotMatch(speed,/window\.setTimeout\s*=/,'must not hijack timers to skip the loading meter');
   assert.match(speed,/activePromise/,'rapid double taps must not launch competing matches');

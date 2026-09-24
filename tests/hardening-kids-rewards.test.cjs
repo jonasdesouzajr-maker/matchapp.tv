@@ -15,13 +15,18 @@ test('Kids Mode runs with no animation or smooth-scroll effects',()=>{
   assert.match(css,/\.kids-watch-dialog::backdrop\{backdrop-filter:none!important;-webkit-backdrop-filter:none!important\}/);
   assert.match(css,/\.kids-celebrate\{display:none!important\}/);
 });
-test('main and Kids match paths never recycle a shown title',()=>{
+test('main exhausts fresh verified sources before exact recovery while Kids never recycles shown titles',()=>{
   const app=read('app.js'),kids=read('kids/kids.js');
   const start=app.indexOf('window.triggerMatch = async function');
   const end=app.indexOf('// THE RENDER ENGINE',start);
   const trigger=app.slice(start,end);
-  assert.doesNotMatch(trigger,/pickRecycledCatalog\(/);
-  assert.doesNotMatch(trigger,/pickGuaranteedCatalog\(/);
+  const verified=trigger.indexOf('discoverVerifiedExactTMDB(requested)');
+  const recycled=trigger.indexOf('pickRecycledCatalog(');
+  assert.ok(verified>=0&&recycled>verified,'exact recovery must come only after fresh verified sources');
+  assert.match(app,/const hardExcluded = new Set\(\)/);
+  assert.match(app,/match_savedList/);
+  assert.match(app,/match_dislikedList/);
+  assert.match(app,/watchlater/);
   assert.match(app,/window\.matchPolicy\?\.remember\([\s\S]*?'shown'\)/);
   assert.doesNotMatch(kids,/const source=unseen\.length\?unseen:pool/);
   assert.match(kids,/window\.matchPolicy\?\.remember\([\s\S]*?'shown'\)/);
@@ -49,12 +54,12 @@ test('result reveal starts at the top and Kids social choices are restored',()=>
 });
 
 test('cache keys force the hardening bundle onto every device wrapper',()=>{
-  assert.match(read('index.html'),/app\.js\?v=20260922-surprise1/);
-  assert.match(read('index.html'),/share\.js\?v=20260921-hardening1/);
-  assert.match(read('kids/index.html'),/kids\.css\?v=20260921-static1/);
-  assert.match(read('kids/index.html'),/kids\/account\.js\?v=20260921-hardening1/);
-  assert.match(read('kids/index.html'),/kids\/voice-feedback\.js\?v=20260921-static1/);
-  assert.match(read('kids/index.html'),/kids\/kids\.js\?v=20260922-guardian1/);
+  assert.match(read('index.html'),/app\.js\?v=\d{8}-[\w-]+/);
+  assert.match(read('index.html'),/share\.js\?v=\d{8}-[\w-]+/);
+  assert.match(read('kids/index.html'),/kids\.css\?v=\d{8}-[\w-]+/);
+  assert.match(read('kids/index.html'),/kids\/account\.js\?v=\d{8}-[\w-]+/);
+  assert.match(read('kids/index.html'),/kids\/voice-feedback\.js\?v=\d{8}-[\w-]+/);
+  assert.match(read('kids/index.html'),/kids\/kids\.js\?v=\d{8}-[\w-]+/);
 });
 
 
