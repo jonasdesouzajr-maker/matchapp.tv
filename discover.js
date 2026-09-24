@@ -1573,15 +1573,9 @@ async function askAndRender(question) {
     }
 
     if (bubble) {
+        // TTS is user-initiated only. The speaker button rendered with each
+        // assistant answer remains the single playback trigger.
         await typewriterReveal(bubble.textEl, payload.answer, 14);
-        const autoReadEnabled = window.MatchSettings ? window.MatchSettings.get('autoRead') !== false : localStorage.getItem('match_voice_autoread') !== 'false';
-        if (autoReadEnabled) {
-            window.readAloud(payload.answer, bubble.speakBtn);
-            if (!localStorage.getItem('match_voice_autoread_hint_seen')) {
-                localStorage.setItem('match_voice_autoread_hint_seen','true');
-                if (window.showToast) showToast('🔊 Read-aloud is on. Change it anytime in Profile → Voice & AI Settings.');
-            }
-        }
     }
 
     const baseIndex = DISCOVER_ITEMS.length;
