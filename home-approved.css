@@ -311,3 +311,113 @@ html body.page-home :is(.ma-how-link,.ma-how-button):focus-visible{
 html.reduce-motion body.page-home :is(.ma-how-link,.ma-how-button){
   transition:none!important;
 }
+
+
+/* 2026-09-24 desktop video-scan repairs.
+   Desktop-only presentation fixes observed in the supplied production recording.
+   No matching/AI/auth/AdSense markup, slot sizing or ad initialization is changed. */
+@media (min-width:1180px) and (hover:hover) and (pointer:fine){
+
+  /* The two locked AdSense rails appear before the center container in DOM order.
+     Explicitly keep the product column in the same first grid row so the rail
+     height can never create a 600px blank gap before Home content. */
+  html body.page-home main.page-wrapper>.main-layout>.container{
+    grid-column:2!important;
+    grid-row:1!important;
+    align-self:start!important;
+  }
+
+  /* Desktop disclosures were drawing a narrow 720px control inside a wider
+     980px shell, producing unfinished empty wings/double boxes. Make each
+     control own the full module width. */
+  html body.page-home :is(
+    #latest-news>summary,
+    #premiere-disclosure>summary,
+    #weekly-pick-disclosure>summary,
+    #global-events>.global-events-fold>.global-events-summary,
+    #swifties-spotify .swifties-fold
+  ){
+    width:100%!important;
+    max-width:none!important;
+    margin-left:0!important;
+    margin-right:0!important;
+  }
+
+  /* Closed native disclosures are one finished bar, not a bar floating inside
+     another empty outlined rectangle. */
+  html body.page-home #latest-news:not([open]),
+  html body.page-home #global-events>.global-events-fold:not([open]){
+    border-color:transparent!important;
+    background:transparent!important;
+    box-shadow:none!important;
+  }
+
+  /* When open, the parent becomes the card and its header becomes the top edge
+     of that same card, eliminating the doubled outline. */
+  html body.page-home #latest-news[open]>summary,
+  html body.page-home #global-events>.global-events-fold[open]>.global-events-summary{
+    border:0!important;
+    border-bottom:1px solid rgba(232,186,64,.20)!important;
+    border-radius:22px 22px 0 0!important;
+    box-shadow:none!important;
+  }
+
+  /* The Spotify section follows the same single-shell language. */
+  html body.page-home #swifties-spotify:has(.swifties-fold[aria-expanded="false"]){
+    border-color:transparent!important;
+    background:transparent!important;
+    box-shadow:none!important;
+  }
+  html body.page-home #swifties-spotify .swifties-fold[aria-expanded="true"]{
+    border:0!important;
+    border-bottom:1px solid rgba(29,185,84,.24)!important;
+    border-radius:22px 22px 0 0!important;
+    box-shadow:none!important;
+  }
+
+  /* Spotify's desktop embeds were stacked as 830px canvases whose actual
+     player UI occupied only the left third. Two balanced columns remove the
+     huge dead area while preserving both official embeds and all links. */
+  html body.page-home #swifties-spotify-body:not([hidden]){
+    display:grid!important;
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:14px 16px!important;
+    align-items:start!important;
+    padding:14px 16px 16px!important;
+  }
+  html body.page-home #swifties-spotify-body:not([hidden])>
+    :not(.swifties-player-block){
+    grid-column:1 / -1!important;
+  }
+  html body.page-home #swifties-spotify .swifties-player-block{
+    width:100%!important;
+    max-width:none!important;
+    min-width:0!important;
+    margin:0!important;
+  }
+  html body.page-home #swifties-spotify .swifties-embed{
+    display:block!important;
+    width:100%!important;
+    max-width:none!important;
+    height:352px!important;
+  }
+
+  /* Reserve the poster's final footprint before remote/fallback artwork loads.
+     This removes the large result-page jump visible in the recording while
+     keeping every poster fully contained and uncropped. */
+  html body.page-home #result-box .poster-stage{
+    width:min(38vw,380px)!important;
+    max-width:380px!important;
+    aspect-ratio:2 / 3!important;
+    min-height:0!important;
+    margin-inline:auto!important;
+  }
+  html body.page-home #result-box #res-poster-img{
+    width:100%!important;
+    height:100%!important;
+    max-width:100%!important;
+    max-height:100%!important;
+    object-fit:contain!important;
+    object-position:center!important;
+  }
+}
