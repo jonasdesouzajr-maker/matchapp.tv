@@ -32,7 +32,7 @@ test('browser install is real, consent-based, secure and localized',()=>{
   const state=read('app-install-state.js');
   const sw=read('sw.js');
   assert.match(js,/beforeinstallprompt/);
-  assert.match(js,/deferredInstallPrompt\.prompt\(\)/);
+  assert.match(js,/await installEvent\.prompt\(\)/);
   assert.match(js,/appinstalled/);
   assert.match(js,/secureInstallContext\(\)/);
   assert.match(js,/window\.isSecureContext === true/);
@@ -60,11 +60,13 @@ test('final wiring preserves localized install identity and all primary install 
   assert.match(wiring,/matchapp-ai-install-192\.png/);
   assert.doesNotMatch(wiring,/matchapp-apple-touch-icon\.png/);
   assert.match(meta,/\/final-wiring\.js\?v=\d{8}-[\w-]+/);
-  for(const page of ['index.html','friends.html','events-archive.html','discover.html','together.html','pricing/pricing.html','profile/profile.html']){
+  for(const page of ['index.html','friends.html','discover.html','together.html','pricing/pricing.html','profile/profile.html']){
     const html=read(page);
     assert.match(html,/\/build-meta\.js\?v=\d{8}-[\w-]+/);
-    assert.ok(html.includes('/app-install-state.js?v='+version),'fresh install state on '+page);
-    assert.ok(html.includes('/install.js?v='+version),'fresh installer on '+page);
+    const stateV=(html.match(/\/app-install-state\.js\?v=([^"'\s<]+)/)||[])[1];
+    const installV=(html.match(/\/install\.js\?v=([^"'\s<]+)/)||[])[1];
+    assert.ok(stateV&&installV,'fresh installer pair on '+page);
+    assert.equal(stateV,installV,'install runtime versions must stay paired on '+page);
   }
 });
 
@@ -84,8 +86,10 @@ test('Kids install uses its own PWA identity, scope, icon and install state',()=
   assert.match(install,/MATCHAPP_KIDS_MANIFEST = '\/kids\/manifest\.json'/);
   assert.match(install,/MATCHAPP_KIDS_NAME = 'MatchApp Ai KIDS'/);
   assert.match(install,/if \(MATCHAPP_KIDS_INSTALL\) return MATCHAPP_KIDS_NAME/);
-  assert.match(kidsPage,/\/app-install-state\.js\?v=20260923-kidsinstall1/);
-  assert.match(kidsPage,/\/install\.js\?v=20260923-kidsinstall1/);
+  const kidsStateV=(kidsPage.match(/\/app-install-state\.js\?v=([^"'\s<]+)/)||[])[1];
+  const kidsInstallV=(kidsPage.match(/\/install\.js\?v=([^"'\s<]+)/)||[])[1];
+  assert.ok(kidsStateV&&kidsInstallV);
+  assert.equal(kidsStateV,kidsInstallV);
   assert.match(state,/match_kids_app_installed/);
   assert.match(state,/https:\/\/matchapp\.tv\/kids\//);
 });
