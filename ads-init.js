@@ -36,7 +36,7 @@ function init(){
    const r=slot.getBoundingClientRect(),style=getComputedStyle(slot);
    if(style.display==='none'||style.visibility==='hidden'||r.width<=0||!slot.getClientRects().length)return;
    requested.add(slot);label(slot);monitor(slot);
-   try{(window.adsbygoogle=window.adsbygoogle||[]).push({element:slot})}
+   try{(window.adsbygoogle=window.adsbygoogle||[]).push({})}
    catch(err){console.warn('[MatchApp ads] slot request failed',err)}
  };
  if('IntersectionObserver' in window){

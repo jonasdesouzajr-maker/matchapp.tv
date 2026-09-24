@@ -31,6 +31,10 @@ test('Home keeps two desktop AdSense rails and three subtle tablet/mobile in-flo
   assert.equal((html.match(/class="sidebar-ad-left premium-ad-frame"/g)||[]).length,1);
   assert.equal((html.match(/class="sidebar-ad-right premium-ad-frame"/g)||[]).length,1);
   assert.equal((html.match(/class="ad-banner-container premium-ad-frame/g)||[]).length,3);
+  const leftAt=html.indexOf('class="sidebar-ad-left premium-ad-frame"');
+  const rightAt=html.indexOf('class="sidebar-ad-right premium-ad-frame"');
+  const contentAt=html.indexOf('<section class="container">',leftAt);
+  assert.ok(leftAt>=0&&rightAt>leftAt&&contentAt>rightAt,'desktop side rails must be adjacent before in-content ad units so both initialize');
   const pass=css.slice(css.indexOf('2026-09-21 coherent Home stage + AdSense placement pass'));
   assert.match(pass,/@media\(min-width:1180px\)[\s\S]*sidebar-ad-left[\s\S]*sidebar-ad-right[\s\S]*display:flex!important/);
   assert.match(pass,/@media\(max-width:767px\)[\s\S]*ad-banner-container\.ma-inline-ad[\s\S]*min-height:92px!important/);
@@ -69,5 +73,8 @@ test('homepage does not suppress desktop rails and keeps mobile responsive slots
   const guard=html.slice(html.indexOf('<style id="mobile-ad-blank-guard">'),html.indexOf('</style>',html.indexOf('<style id="mobile-ad-blank-guard">')));
   assert.doesNotMatch(guard,/min-height:250px/,'mobile AdSense must not be forced into a 250px creative box');
   assert.match(guard,/ma-inline-ad ins\.adsbygoogle[\s\S]*width:100%/);
-  assert.match(html,/\/ads-init\.js\?v=20260924-ads1/);
+  assert.match(html,/\/ads-init\.js\?v=20260924-ads2/);
+  const init=read('ads-init.js');
+  assert.match(init,/\.push\(\{\}\)/,'manual AdSense requests use Google's standard initializer');
+  assert.doesNotMatch(init,/push\(\{element:slot\}\)/,'unsupported element-targeted pushes must not return');
 });
