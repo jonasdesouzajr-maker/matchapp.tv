@@ -19,6 +19,12 @@
         <priority>0.8</priority>
     </url>
     <url>
+        <loc>https://matchapp.tv/ebooks/</loc>
+        <lastmod>2026-09-24T23:36:00+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
         <loc>https://matchapp.tv/android/</loc>
         <lastmod>2026-09-21T10:16:09+00:00</lastmod>
         <changefreq>weekly</changefreq>
