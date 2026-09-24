@@ -9,7 +9,7 @@ const VAPID_PUBLIC="BKGucCWkS-YsS6g4HnM9DYTmm1Thj-PxxVkz9hM09tGs29uABDXQgYbnF0Zo
 const db=createClient(SUPABASE_URL,SERVICE_KEY,{auth:{persistSession:false,autoRefreshToken:false}});
 
 type Watch={id:string;tmdbId:number;kind:"movie"|"tv";title:string;year?:number|null;region:string;lastSignature?:string};
-type Delivery={id:string;kind:string;title:string;body:string;href:string;pushSentAt?:string|null;emailSentAt?:string|null;emailAddress?:string|null;preferences?:Record<string,boolean>;pushSubscriptions?:Array<{endpoint:string;p256dh:string;auth:string}>};
+type Delivery={id:string;kind:string;title:string;body:string;href:string;payload?:Record<string,unknown>;expiresAt?:string|null;pushSentAt?:string|null;emailSentAt?:string|null;emailAddress?:string|null;preferences?:Record<string,boolean>;pushSubscriptions?:Array<{endpoint:string;p256dh:string;auth:string}>};
 
 function enabled(d:Delivery){
  const p=d.preferences||{};
@@ -17,6 +17,7 @@ function enabled(d:Delivery){
  if(d.kind==="purchase")return p.purchases!==false;
  if(d.kind==="friend_request"||d.kind==="match_together")return p.friends!==false;
  if(d.kind==="system")return p.releases!==false;
+ if(d.kind==="suggestion")return p.suggestions!==false;
  return true;
 }
 function country(code:string){
@@ -30,6 +31,14 @@ function safeHttps(value:unknown){
  const s=String(value||"");return /^https:\/\//i.test(s)?s:"";
 }
 function escapeHtml(v:string){return v.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]||c));}
+
+function deliveryHref(d:Delivery){
+ const title=String(d.payload?.title||"").trim();
+ if(d.kind==="suggestion"&&title){
+  return "/discover.html?title="+encodeURIComponent(title)+"&focus=start&source=taste-dna";
+ }
+ return d.href||"/";
+}
 
 async function secret(name:string){
  const {data,error}=await db.rpc("notification_server_secret",{p_name:name});
@@ -106,7 +115,7 @@ async function pushDelivery(d:Delivery,privateKey:string){
   try{
    const ok=await sendPushNotification(
     {endpoint:s.endpoint,keys:{p256dh:s.p256dh,auth:s.auth}},
-    {title:d.title,body:d.body,url:d.href||"/",tag:"matchapp-"+d.id},
+    {title:d.title,body:d.body,url:deliveryHref(d),tag:"matchapp-"+d.id},
     {subject:"mailto:support@matchapp.tv",publicKey:VAPID_PUBLIC,privateKey},
     {ttl:86400,timeoutMs:15000}
    );
@@ -120,7 +129,7 @@ async function pushDelivery(d:Delivery,privateKey:string){
 async function emailDelivery(d:Delivery){
  if(!RESEND_KEY||!d.preferences?.email||d.emailSentAt||!enabled(d)||!d.emailAddress)return false;
  try{
-  const url=d.href?new URL(d.href,"https://matchapp.tv").href:"https://matchapp.tv/";
+  const url=new URL(deliveryHref(d),"https://matchapp.tv").href;
   const res=await fetch("https://api.resend.com/emails",{
    method:"POST",
    headers:{Authorization:`Bearer ${RESEND_KEY}`,"Content-Type":"application/json"},
@@ -154,6 +163,11 @@ Deno.serve(async(req:Request)=>{
  if(!(await authenticate(req)))return new Response("Unauthorized",{status:401});
  try{RESEND_KEY=await secret("resend_api_key");}catch{RESEND_KEY="";}
  const releaseRecipients=await broadcastRelease();
+ let tasteSuggestions=0;
+ try{
+  const generated=await db.rpc("notification_generate_taste_suggestions");
+  tasteSuggestions=Number(generated.data?.inserted||0);
+ }catch{}
  const first=await db.rpc("notification_server_batch",{p_limit:200});
  if(first.error)return new Response("Batch unavailable",{status:500});
  const watches=(first.data?.watches||[]) as Watch[];
@@ -162,5 +176,5 @@ Deno.serve(async(req:Request)=>{
   const r=await checkWatch(w);if(r.ok)checked++;if(r.available)available++;
  }
  const sent=await deliveries();
- return Response.json({ok:true,releaseRecipients,watchesChecked:checked,newlyAvailable:available,pushSent:sent.push,emailSent:sent.email,emailTransportConfigured:!!RESEND_KEY});
+ return Response.json({ok:true,releaseRecipients,tasteSuggestions,watchesChecked:checked,newlyAvailable:available,pushSent:sent.push,emailSent:sent.email,emailTransportConfigured:!!RESEND_KEY});
 });
