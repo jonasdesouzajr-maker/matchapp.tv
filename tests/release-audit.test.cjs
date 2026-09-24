@@ -5,18 +5,20 @@ const path=require('node:path');
 const root=path.join(__dirname,'..');
 const read=p=>fs.readFileSync(path.join(root,p),'utf8');
 
-test('behavioral pages load the current shared runtime instead of stale cache keys',()=>{
-  const appPages=[
-    'discover.html','profile/profile.html','together.html','pricing/pricing.html',
-    'purchase.html','friends.html','callback.html','oauth/consent.html','events-archive.html'
-  ];
-  for(const p of appPages) assert.match(read(p),/\/app\.js\?v=210/,p);
-  for(const p of ['discover.html','profile/profile.html','together.html','friends.html','kids/index.html'])
-    assert.match(read(p),/\/matching-policy\.js\?v=200/,p);
-  for(const p of ['together.html','pricing/pricing.html','friends.html','events-archive.html'])
-    assert.match(read(p),/\/build-meta\.js\?v=202/,p);
-  assert.match(read('pricing/pricing.html'),/\/pricing\.js\?v=20260918-billing\d+/);
-  assert.match(read('purchase.html'),/\/purchase\.js\?v=20260918-audit\d+/);
+test('behavioral pages load one current shared runtime instead of stale cache keys',()=>{
+  const version=(page,file)=>{
+    const esc=file.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+    const re=new RegExp('/'+esc+'\\?v=([^"\\'\\s<]+)');
+    return (read(page).match(re)||[])[1]||'';
+  };
+  const appPages=['index.html','discover.html','profile/profile.html','together.html','pricing/pricing.html','purchase.html','friends.html','callback.html','oauth/consent.html','events-archive.html'];
+  assert.deepEqual([...new Set(appPages.map(p=>version(p,'app.js')))],['20260924-runtime1']);
+  const policyPages=['index.html','discover.html','profile/profile.html','together.html','friends.html','kids/index.html'];
+  assert.deepEqual([...new Set(policyPages.map(p=>version(p,'matching-policy.js')))],['20260924-runtime1']);
+  const buildPages=['index.html','together.html','pricing/pricing.html','friends.html','events-archive.html'];
+  assert.deepEqual([...new Set(buildPages.map(p=>version(p,'build-meta.js')))],['20260924-runtime1']);
+  assert.match(read('pricing/pricing.html'),/\/pricing\.js\?v=\d{8}-[\w-]+/);
+  assert.match(read('purchase.html'),/\/purchase\.js\?v=\d{8}-[\w-]+/);
 });
 
 test('public quota copy matches the shared included-action architecture',()=>{
