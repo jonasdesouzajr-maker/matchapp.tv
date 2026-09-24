@@ -24,8 +24,8 @@
       "addressRegion": "Aichi",
       "addressCountry": "JP"
     },
-    "poster": "/asian-games-2026.jpg?v=187",
-    "posterCredit": "MatchApp editorial event artwork; event details verified with official sources",
+    "poster": "https://www.recruit.city.nagoya.jp/assets/img/future/asiangames_p01.jpg",
+    "posterCredit": "Official Aichi–Nagoya 2026 event poster — City of Nagoya",
     "featuredTitles": []
   },
   {
@@ -52,8 +52,8 @@
       "addressLocality": "Baku",
       "addressCountry": "AZ"
     },
-    "poster": "/azerbaijan-gp-2026.jpg?v=187",
-    "posterCredit": "MatchApp editorial event artwork; event details verified with official sources",
+    "poster": "https://media.formula1.com/image/upload/c_lfill%2Cw_3392/q_auto/v1740000001/content/dam/fom-website/2018-redesign-assets/Racehub%20header%20images%2016x9/Azerbaijan.webp",
+    "posterCredit": "Official Azerbaijan Grand Prix event artwork — Formula 1",
     "featuredTitles": []
   },
   {
@@ -81,8 +81,8 @@
       "addressRegion": "Alberta",
       "addressCountry": "CA"
     },
-    "poster": "/event-posters/calgary-international-film-festival-2026.svg?v=20260924-event1",
-    "posterCredit": "MatchApp editorial cover using the official event title; dates verified from CIFF",
+    "poster": "https://www.ciffcalgary.ca/assets/Poster-Final.jpg",
+    "posterCredit": "Official CIFF 2026 poster — Calgary International Film Festival",
     "featuredTitles": []
   },
   {
@@ -110,8 +110,8 @@
       "addressRegion": "NY",
       "addressCountry": "US"
     },
-    "poster": "/event-posters/new-york-film-festival-2026.svg?v=20260924-event1",
-    "posterCredit": "MatchApp editorial cover using the official festival title; programme verified with Film at Lincoln Center",
+    "poster": "https://wp.filmlinc.org/wp-content/uploads/2026/07/NYFF64-Poster-by-Marcel-Dzama.png",
+    "posterCredit": "Official NYFF64 poster by Marcel Dzama — Film at Lincoln Center",
     "featuredTitles": [
       "Paper Tiger",
       "Godzilla Minus Zero",
@@ -144,8 +144,8 @@
       "addressRegion": "RJ",
       "addressCountry": "BR"
     },
-    "poster": "/event-posters/festival-do-rio-2026.svg?v=20260924-event1",
-    "posterCredit": "MatchApp editorial cover using the official event title; dates verified by Festival do Rio",
+    "poster": "https://www.centraldoentretenimento.com/wp-content/uploads/2026/02/1770844803151.jpeg",
+    "posterCredit": "Official Festival do Rio 2026 campaign artwork — Festival do Rio",
     "featuredTitles": [
       "Rosebush Pruning",
       "Feito Pipa"
@@ -176,8 +176,8 @@
       "addressRegion": "BC",
       "addressCountry": "CA"
     },
-    "poster": "/event-posters/viff-2026.svg?v=20260924-event1",
-    "posterCredit": "MatchApp editorial cover using the official event title; dates verified by VIFF",
+    "poster": "https://images.viff.org/uploads/2026/07/VIFF-2026-Artwork-2.jpg?gravity=&resize=600%2C337",
+    "posterCredit": "Official VIFF 2026 artwork — Vancouver International Film Festival",
     "featuredTitles": [
       "The Debut"
     ]
@@ -206,8 +206,8 @@
       "addressLocality": "London",
       "addressCountry": "GB"
     },
-    "poster": "/event-posters/bfi-london-film-festival-2026.svg?v=20260924-event1",
-    "posterCredit": "MatchApp editorial cover using the official festival title; programme verified by BFI",
+    "poster": "https://i.ytimg.com/vi/yE0xGvfOuuQ/maxresdefault.jpg",
+    "posterCredit": "Official 70th BFI London Film Festival 2026 trailer artwork — BFI",
     "featuredTitles": [
       "Elsinore",
       "The Debut",
@@ -241,8 +241,8 @@
       "addressRegion": "NY",
       "addressCountry": "US"
     },
-    "poster": "/event-posters/new-york-comic-con-2026.svg?v=20260924-event1",
-    "posterCredit": "MatchApp editorial cover using the official event title; dates verified by NYCC",
+    "poster": "https://www.newyorkcomiccon.com/content/dam/sitebuilder/rna/new-york-comic-con/2026/img/keyart/keyart-no-bg.png/_jcr_content/renditions/original.image_file.406.648.file/774898083/keyart-no-bg.png",
+    "posterCredit": "Official New York Comic Con 2026 key art — ReedPop",
     "featuredTitles": [
       "Crystal Lake",
       "NCIS: New York"
@@ -273,8 +273,8 @@
       "addressRegion": "SP",
       "addressCountry": "BR"
     },
-    "poster": "/event-posters/brasil-game-show-2026.svg?v=20260924-event1",
-    "posterCredit": "MatchApp editorial cover using the official event title; schedule verified by Brasil Game Show",
+    "poster": "https://kraken.ingresse.com/event/posters/91865/large/1775164706.5283916.jpg",
+    "posterCredit": "Official Brasil Game Show 2026 ticket artwork — Brasil Game Show",
     "featuredTitles": []
   },
   {
@@ -302,8 +302,8 @@
       "addressRegion": "ON",
       "addressCountry": "CA"
     },
-    "poster": "/event-posters/toronto-after-dark-2026.svg?v=20260924-event1",
-    "posterCredit": "MatchApp editorial cover using the official event title; dates verified by Toronto After Dark",
+    "poster": "https://images.squarespace-cdn.com/content/v1/5d2bbc16b71bf00001568867/a0b3c6a1-e515-40c0-b8a6-1a0d22c28d9e/TADFF26.jpg",
+    "posterCredit": "Official Toronto After Dark 2026 artwork by Trevor Henderson — Toronto After Dark",
     "featuredTitles": [
       "I Love Paris"
     ]
@@ -333,8 +333,8 @@
       "addressRegion": "SP",
       "addressCountry": "BR"
     },
-    "poster": "/event-posters/mostra-sao-paulo-2026.svg?v=20260924-event1",
-    "posterCredit": "MatchApp editorial cover using the official event title; dates verified by Mostra",
+    "poster": "https://static.mostra.org/_midia/poster/49.jpg",
+    "posterCredit": "Official 50th Mostra 2026 poster by James Gray — Mostra Internacional de Cinema",
     "featuredTitles": [
       "Paper Tiger"
     ]
@@ -362,8 +362,8 @@
       "@type": "PostalAddress",
       "addressCountry": "US"
     },
-    "poster": "/worlds-2026.jpg?v=187",
-    "posterCredit": "MatchApp editorial event artwork; event details verified with official sources",
+    "poster": "https://www.barclayscenter.com/assets/img/BC_26_EV_LeagueOfLegends_656x596-b09776e222.jpg",
+    "posterCredit": "Official Worlds 2026 event artwork — LoL Esports / Barclays Center",
     "featuredTitles": []
   },
   {
@@ -392,8 +392,8 @@
       "postalCode": "E16 1XL",
       "addressCountry": "GB"
     },
-    "poster": "/event-posters/mcm-london-comic-con-2026.svg?v=20260924-event1",
-    "posterCredit": "MatchApp editorial cover using the official event title; dates verified by MCM",
+    "poster": "https://pbs.twimg.com/media/G7F_jZ9WsAA1C4f.jpg",
+    "posterCredit": "Official MCM London Comic Con 2026 date artwork — MCM Comic Con",
     "featuredTitles": []
   },
   {
@@ -422,8 +422,8 @@
       "addressRegion": "SP",
       "addressCountry": "BR"
     },
-    "poster": "/event-posters/ccxp-2026.svg?v=20260924-event1",
-    "posterCredit": "MatchApp editorial cover using the official event title; dates verified by CCXP",
+    "poster": "https://ccxp.com.br/_next/image/?q=95&url=https%3A%2F%2Fccxp-production-files.s3.amazonaws.com%2FEN_f30a4bd713.jpg&w=3840",
+    "posterCredit": "Official CCXP26 date artwork — CCXP",
     "featuredTitles": [
       "The Lord of the Rings: The Fellowship of the Ring"
     ]
