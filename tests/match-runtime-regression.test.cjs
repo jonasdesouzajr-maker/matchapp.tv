@@ -84,6 +84,14 @@ test('exact guaranteed recovery never returns Watch Later or Not For Me titles',
  }finally{dom.window.close();}
 });
 
+test('only internal catalogue recycle results bypass the final known-title guard',()=>{
+ const finalGuard=source.slice(source.indexOf('const intentionalHistoryFallback'),source.indexOf('// Do not remember the title',source.indexOf('const intentionalHistoryFallback')));
+ assert.match(finalGuard,/matchResult\._historyFallback === true/);
+ assert.match(finalGuard,/matchResult\.source === 'catalog-recycle'/);
+ assert.match(finalGuard,/matchResult\.source === 'catalog-guaranteed-recycle'/);
+ assert.match(finalGuard,/!intentionalHistoryFallback/);
+});
+
 test('recycled fallback preserves criteria and avoids the current title when another exact option exists',()=>{
  const requested={cat:['movie'],plat:[],mood:['funny'],vibe:[],rating:[],decade:[]};
  const {dom,w,context}=matching(requested,catalog.map(entry=>entry.title));
