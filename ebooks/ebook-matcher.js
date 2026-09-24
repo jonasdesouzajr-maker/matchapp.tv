@@ -26,10 +26,10 @@ const FIELDS={
  access:[['any','🌐','Free or paid'],['free','🆓','Legal free edition'],['paid','🛍️','Paid stores']]
 };
 const LABELS={
- en:{eyebrow:'FOR BOOKWORMS',title:'Match E-books Ai',intro:'Tell us the reading mood. MatchApp picks one e-book and shows legal free editions or official stores where you can get it.',match:'Match my e-book',another:'Match another',save:'Save book',saved:'Saved',nope:'Not for me',why:'Why this match',where:'Where to get it',free:'Legal free editions',stores:'Official e-book stores',preview:'Book info / preview',rights:'Free-edition availability depends on copyright rules in your country. MatchApp links to source pages and never hosts copyrighted book files.',empty:'No unseen book fits every choice. We kept your access preference and broadened secondary filters.',quota:'Your MatchApp match allowance is used here too.',savedBooks:'Saved e-books',noneSaved:'No saved e-books yet.',remove:'Remove',close:'Close'},
- 'pt-BR':{eyebrow:'PARA BOOKWORMS',title:'Match de E-books iA',intro:'Diga o clima de leitura. O MatchApp escolhe um e-book e mostra edições grátis legais ou lojas oficiais onde encontrá-lo.',match:'Encontrar meu e-book',another:'Outro e-book',save:'Salvar livro',saved:'Salvo',nope:'Não é para mim',why:'Por que combina',where:'Onde encontrar',free:'Edições grátis legais',stores:'Lojas oficiais de e-books',preview:'Informações / prévia',rights:'A disponibilidade gratuita depende das leis de direitos autorais do seu país. O MatchApp só direciona para fontes oficiais e não hospeda arquivos protegidos.',empty:'Nenhum livro ainda não visto combina com tudo. Mantivemos sua preferência de acesso e ampliamos filtros secundários.',quota:'Usa a mesma cota de matches do MatchApp.',savedBooks:'E-books salvos',noneSaved:'Nenhum e-book salvo ainda.',remove:'Remover',close:'Fechar'},
- es:{eyebrow:'PARA BOOKWORMS',title:'Match E-books IA',intro:'Elige el ambiente de lectura. MatchApp encuentra un e-book y muestra ediciones gratuitas legales o tiendas oficiales.',match:'Encontrar mi e-book',another:'Otro e-book',save:'Guardar libro',saved:'Guardado',nope:'No es para mí',why:'Por qué encaja',where:'Dónde conseguirlo',free:'Ediciones gratuitas legales',stores:'Tiendas oficiales',preview:'Información / vista previa',rights:'La disponibilidad gratuita depende del copyright de tu país. MatchApp no aloja archivos protegidos.',empty:'No hay un libro nuevo con todos los filtros. Mantuvimos tu opción de acceso y ampliamos filtros secundarios.',quota:'Usa la misma cuota de matches de MatchApp.',savedBooks:'E-books guardados',noneSaved:'Aún no hay e-books guardados.',remove:'Quitar',close:'Cerrar'},
- ja:{eyebrow:'本好きのために',title:'E-books Ai マッチ',intro:'読みたい気分を選ぶと、MatchApp が1冊を選び、合法的な無料版または公式ストアを案内します。',match:'E-bookをマッチ',another:'別の本',save:'保存',saved:'保存済み',nope:'好みではない',why:'おすすめの理由',where:'入手先',free:'合法的な無料版',stores:'公式E-bookストア',preview:'書籍情報 / プレビュー',rights:'無料で利用できるかは各国の著作権法によって異なります。MatchApp は著作権保護されたファイルをホストしません。',empty:'すべての条件に合う未表示の本がありません。入手方法の希望を維持し、その他の条件を広げました。',quota:'通常のMatchAppマッチ枠を使用します。',savedBooks:'保存したE-book',noneSaved:'保存したE-bookはまだありません。',remove:'削除',close:'閉じる'}
+ en:{eyebrow:'FOR BOOKWORMS',title:'Match E-books Ai',intro:'Tell us the reading mood. MatchApp picks one e-book and shows legal free editions or official stores where you can get it.',match:'Match my e-book',another:'Match another',save:'Save book',saved:'Saved',nope:'Not for me',why:'Why this match',where:'Where to get it',free:'Legal free editions',stores:'Official e-book stores',preview:'Book info / preview',rights:'Free-edition availability depends on copyright rules in your country. MatchApp links to source pages and never hosts copyrighted book files.',empty:'No unseen book fits every choice. We kept your access preference and broadened secondary filters.',quota:'Your MatchApp match allowance is used here too.',savedBooks:'Saved e-books',noneSaved:'No saved e-books yet.',remove:'Remove',close:'Close',topTitle:'Top E-books right now',topSub:'Current reader favorites and chart leaders — open an official store or a legal free-edition source.',topFree:'Free edition',topBuy:'Get this e-book',topSource:'Chart source'},
+ 'pt-BR':{eyebrow:'PARA BOOKWORMS',title:'Match de E-books iA',intro:'Diga o clima de leitura. O MatchApp escolhe um e-book e mostra edições grátis legais ou lojas oficiais onde encontrá-lo.',match:'Encontrar meu e-book',another:'Outro e-book',save:'Salvar livro',saved:'Salvo',nope:'Não é para mim',why:'Por que combina',where:'Onde encontrar',free:'Edições grátis legais',stores:'Lojas oficiais de e-books',preview:'Informações / prévia',rights:'A disponibilidade gratuita depende das leis de direitos autorais do seu país. O MatchApp só direciona para fontes oficiais e não hospeda arquivos protegidos.',empty:'Nenhum livro ainda não visto combina com tudo. Mantivemos sua preferência de acesso e ampliamos filtros secundários.',quota:'Usa a mesma cota de matches do MatchApp.',savedBooks:'E-books salvos',noneSaved:'Nenhum e-book salvo ainda.',remove:'Remover',close:'Fechar',topTitle:'Top E-books agora',topSub:'Favoritos atuais e líderes de listas — abra uma loja oficial ou uma fonte legal de edição gratuita.',topFree:'Edição grátis',topBuy:'Encontrar e-book',topSource:'Fonte da lista'},
+ es:{eyebrow:'PARA BOOKWORMS',title:'Match E-books IA',intro:'Elige el ambiente de lectura. MatchApp encuentra un e-book y muestra ediciones gratuitas legales o tiendas oficiales.',match:'Encontrar mi e-book',another:'Otro e-book',save:'Guardar libro',saved:'Guardado',nope:'No es para mí',why:'Por qué encaja',where:'Dónde conseguirlo',free:'Ediciones gratuitas legales',stores:'Tiendas oficiales',preview:'Información / vista previa',rights:'La disponibilidad gratuita depende del copyright de tu país. MatchApp no aloja archivos protegidos.',empty:'No hay un libro nuevo con todos los filtros. Mantuvimos tu opción de acceso y ampliamos filtros secundarios.',quota:'Usa la misma cuota de matches de MatchApp.',savedBooks:'E-books guardados',noneSaved:'Aún no hay e-books guardados.',remove:'Quitar',close:'Cerrar',topTitle:'Top E-books ahora',topSub:'Favoritos actuales y líderes de listas — abre una tienda oficial o una fuente legal de edición gratuita.',topFree:'Edición gratis',topBuy:'Conseguir e-book',topSource:'Fuente de la lista'},
+ ja:{eyebrow:'本好きのために',title:'E-books Ai マッチ',intro:'読みたい気分を選ぶと、MatchApp が1冊を選び、合法的な無料版または公式ストアを案内します。',match:'E-bookをマッチ',another:'別の本',save:'保存',saved:'保存済み',nope:'好みではない',why:'おすすめの理由',where:'入手先',free:'合法的な無料版',stores:'公式E-bookストア',preview:'書籍情報 / プレビュー',rights:'無料で利用できるかは各国の著作権法によって異なります。MatchApp は著作権保護されたファイルをホストしません。',empty:'すべての条件に合う未表示の本がありません。入手方法の希望を維持し、その他の条件を広げました。',quota:'通常のMatchAppマッチ枠を使用します。',savedBooks:'保存したE-book',noneSaved:'保存したE-bookはまだありません。',remove:'削除',close:'閉じる',topTitle:'今人気のE-book',topSub:'現在の人気作品とランキング上位作品。公式ストアまたは合法的な無料版へ移動できます。',topFree:'無料版',topBuy:'E-bookを入手',topSource:'ランキング出典'}
 };
 function lang(){const raw=String(window.MATCH_LANG||document.documentElement.lang||navigator.language||'en');if(/^pt/i.test(raw))return'pt-BR';if(/^es/i.test(raw))return'es';if(/^ja/i.test(raw))return'ja';return'en';}
 function tr(k){const l=LABELS[lang()]||LABELS.en;return l[k]||LABELS.en[k]||k;}
@@ -145,6 +145,29 @@ async function cloudHydrate(){
 function optionButtons(field,current){
  return FIELDS[field].map(([value,icon,label])=>'<button type="button" class="ebook-chip'+(current===value?' is-on':'')+'" data-ebook-field="'+field+'" data-ebook-value="'+esc(value)+'" aria-pressed="'+(current===value?'true':'false')+'"><span aria-hidden="true">'+icon+'</span>'+esc(label)+'</button>').join('');
 }
+function topBooks(){return Array.isArray(window.MATCHAPP_TOP_EBOOKS)?window.MATCHAPP_TOP_EBOOKS:[];}
+function renderTop(root){
+ const host=root.querySelector('[data-ebook-top]');if(!host)return;
+ const m=market(),items=topBooks().slice().sort((a,b)=>{const av=a.market===m?0:(a.market==='GLOBAL'?1:2),bv=b.market===m?0:(b.market==='GLOBAL'?1:2);return av-bv;});
+ host.innerHTML=items.map((b,i)=>{
+  const free=String(b.access||'').includes('free'),freeUrl=freeLinks({title:b.title,author:b.author,access:free?['free']:['paid']})[0]?.[1]||'';
+  const buy=storeLinks(b)[0]?.[1]||bookInfo(b);
+  return '<article class="ebook-top-card" data-ebook-top-card="'+i+'">'+
+   '<div class="ebook-top-cover"><img data-top-cover alt="" hidden><div data-top-fallback>'+coverFallback(b)+'</div></div>'+
+   '<div class="ebook-top-copy"><span class="ebook-top-badge">'+esc(b.badge||'Top e-book')+'</span><h3>'+esc(b.title)+'</h3><p class="ebook-top-author">'+esc(b.author)+'</p><p class="ebook-top-genre">'+esc(b.genre||'E-book')+'</p>'+
+   '<div class="ebook-top-actions">'+
+    (free&&freeUrl?'<a class="ebook-provider ebook-free" href="'+esc(freeUrl)+'" target="_blank" rel="noopener noreferrer" data-ebook-provider="Legal free edition">'+esc(tr('topFree'))+' ↗</a>':'')+
+    '<a class="ebook-provider" href="'+esc(buy)+'" target="_blank" rel="noopener noreferrer" data-ebook-provider="E-book store">'+esc(tr('topBuy'))+' ↗</a>'+
+    '<a class="ebook-top-source" href="'+esc(b.sourceUrl||'#')+'" target="_blank" rel="noopener noreferrer">'+esc(tr('topSource'))+' · '+esc(b.source||'')+'</a>'+
+   '</div></div></article>';
+ }).join('');
+ const cards=[...host.querySelectorAll('.ebook-top-card')];
+ const hydrate=card=>{if(card.dataset.coverHydrated==='1')return;card.dataset.coverHydrated='1';const i=Number(card.dataset.ebookTopCard),b=items[i];if(!b)return;hydrateCover(b,card.querySelector('[data-top-cover]'),card.querySelector('[data-top-fallback]'));};
+ if('IntersectionObserver'in window){
+  const io=new IntersectionObserver(entries=>entries.forEach(x=>{if(x.isIntersecting){hydrate(x.target);io.unobserve(x.target)}}),{rootMargin:'180px'});
+  cards.forEach(c=>io.observe(c));
+ }else cards.slice(0,6).forEach(hydrate);
+}
 function renderSaved(root){
  const host=root.querySelector('[data-ebook-saved-list]');if(!host)return;
  const ids=read(K.saved),books=ids.map(id=>CAT().find(b=>b.id===id)).filter(Boolean);
@@ -169,7 +192,7 @@ function renderResult(root,book,p,relaxed){
   '</div></div>';
  const img=host.querySelector('[data-ebook-cover]'),fall=host.querySelector('[data-ebook-cover-fallback]');
  hydrateCover(book,img,fall);
- host.scrollIntoView({behavior:(matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)?'auto':'smooth',block:'nearest'});
+ host.scrollIntoView({behavior:(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)?'auto':'smooth',block:'nearest'});
  analytics('ebook_match_reveal',{ebook_id:book.id,ebook_title:book.title,ebook_access:p.access,relaxed:!!relaxed});
 }
 async function doMatch(root){
@@ -224,8 +247,8 @@ async function mount(){
   if(anchor)anchor.insertAdjacentElement('afterend',root);else(document.querySelector('main')||document.body).appendChild(root);
  }
  if(root.dataset.ebookMounted==='1')return;
- root.dataset.ebookMounted='1';root.innerHTML=markup();bind(root);await cloudHydrate();renderSaved(root);
- document.addEventListener('matchapp:langchange',()=>{const open=root.querySelector('.ebook-fold')?.open;root.innerHTML=markup();bind(root);renderSaved(root);const fold=root.querySelector('.ebook-fold');if(fold)fold.open=open!==false;});
+ root.dataset.ebookMounted='1';root.innerHTML=markup();bind(root);renderTop(root);await cloudHydrate();renderSaved(root);
+ document.addEventListener('matchapp:langchange',()=>{const open=root.querySelector('.ebook-fold')?.open;root.innerHTML=markup();bind(root);renderTop(root);renderSaved(root);const fold=root.querySelector('.ebook-fold');if(fold)fold.open=open!==false;});
 }
 window.MatchAppEbooks={match:()=>{const r=document.getElementById('ebook-matcher-root');return r?doMatch(r):null},saved:()=>read(K.saved).slice(),disliked:()=>read(K.disliked).slice()};
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount,{once:true});else mount();
