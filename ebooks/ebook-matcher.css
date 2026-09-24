@@ -110,3 +110,42 @@ body.ebook-page .ebook-fold{margin-top:18px}
 @media(prefers-reduced-motion:reduce){
  #ebook-matcher-root *{scroll-behavior:auto!important;transition:none!important;animation:none!important}
 }
+
+/* Current top e-books — same premium rail language as MatchApp title/event cards. */
+.ebook-top-section{margin-top:22px;padding-top:18px;border-top:1px solid rgba(255,255,255,.07)}
+.ebook-top-head{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;margin-bottom:12px}
+.ebook-top-head small{display:block;color:#bfae83;font-size:9px;font-weight:900;letter-spacing:.16em;margin-bottom:4px}
+.ebook-top-head h3{margin:0;color:#f3d77f;font-size:20px;line-height:1.15}
+.ebook-top-head p{margin:5px 0 0;color:#a99fb0;font-size:12px;line-height:1.45;max-width:760px}
+.ebook-top-head>span{flex:0 0 auto;color:#7f7588;font-size:10px;font-weight:700}
+.ebook-top-rail{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(182px,205px);gap:11px;overflow-x:auto;padding:2px 2px 12px;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;scrollbar-width:thin}
+.ebook-top-card{scroll-snap-align:start;min-width:0;border:1px solid rgba(229,193,88,.2);border-radius:18px;background:linear-gradient(160deg,rgba(36,22,52,.9),rgba(13,14,24,.94));box-shadow:0 11px 25px rgba(0,0,0,.23),inset 0 1px 0 rgba(255,255,255,.035);overflow:hidden;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
+@media(hover:hover) and (pointer:fine){.ebook-top-card:hover{transform:translateY(-3px);border-color:rgba(229,193,88,.45);box-shadow:0 15px 32px rgba(0,0,0,.3),0 0 0 1px rgba(229,193,88,.06)}}
+.ebook-top-cover{aspect-ratio:2/3;background:#0f0a17;border-bottom:1px solid rgba(229,193,88,.12);overflow:hidden;position:relative}
+.ebook-top-cover>img{width:100%;height:100%;object-fit:contain;background:#0c0911;display:block}
+.ebook-top-cover .ebook-cover-fallback{border-radius:0;padding:14px}
+.ebook-top-cover .ebook-cover-fallback>span{font-size:24px;top:14px;right:12px}
+.ebook-top-cover .ebook-cover-fallback strong{font-size:16px}
+.ebook-top-copy{padding:12px}
+.ebook-top-badge{display:inline-flex;max-width:100%;font-size:9px;line-height:1.1;text-transform:uppercase;letter-spacing:.07em;font-weight:900;color:#f0d77f;background:rgba(229,193,88,.08);border:1px solid rgba(229,193,88,.18);border-radius:999px;padding:5px 7px;margin-bottom:8px}
+.ebook-top-copy h3{margin:0;color:#fff;font-size:15px;line-height:1.18}
+.ebook-top-author{margin:5px 0 0;color:#c6bacf;font-size:11px;font-weight:700;line-height:1.3}
+.ebook-top-genre{margin:4px 0 10px;color:#8f8498;font-size:10px;line-height:1.3}
+.ebook-top-actions{display:grid;gap:6px}
+.ebook-top-actions .ebook-provider{width:100%;min-height:35px;padding:7px 8px;font-size:10px;border-radius:9px}
+.ebook-top-source{color:#82778b;text-decoration:none;font-size:9px;line-height:1.35;padding-top:2px}
+.ebook-top-source:hover{color:#d8c98c}
+@media(min-width:1180px){
+ .ebook-top-rail{grid-auto-columns:minmax(190px,1fr)}
+}
+@media(max-width:800px){
+ .ebook-top-head{align-items:flex-start}
+ .ebook-top-head>span{display:none}
+ .ebook-top-rail{grid-auto-columns:minmax(168px,46vw)}
+}
+@media(max-width:520px){
+ .ebook-top-section{margin-top:18px;padding-top:15px}
+ .ebook-top-head h3{font-size:18px}
+ .ebook-top-rail{grid-auto-columns:minmax(155px,72vw);gap:9px}
+ .ebook-top-copy{padding:10px}
+}
