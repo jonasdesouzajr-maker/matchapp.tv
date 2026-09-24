@@ -1011,6 +1011,14 @@ async function getRealCoverImage(title, hints) {
     if (verified) return verified;
     const entry = typeof CONTENT_CATALOG !== 'undefined' ? CONTENT_CATALOG.find(e => e.title === title) : null;
     hints = { ...(entry || {}), ...(hints || {}) };
+
+    // Exact catalogue identity beats every fuzzy title lookup. availability.json
+    // is generated from verified TMDB identities, so alternate/localized names
+    // (for example Call My Agent! The Movie / Dix pour cent, le film) can load
+    // the correct poster without weakening mismatch protections.
+    const exactCatalogPoster = await getExactCatalogPoster(title);
+    if (exactCatalogPoster) return exactCatalogPoster;
+
     if ((hints.cats || []).some(c => isHighRiskCategory(c, title))) return generatedCover(title, hints);
     // SAFE MODE: never fetch artwork for titles known to collide with adult
     // content by name. No request means no wrong result — the strongest
@@ -1172,6 +1180,50 @@ function getVerifiedPoster(title) {
     }
     return null;
 }
+
+
+let CATALOG_TMDB_IDENTITIES_PROMISE = null;
+function catalogIdentityKey(value) {
+    return String(value || '').toLowerCase().normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]/g, '');
+}
+async function getCatalogTmdbIdentity(title) {
+    if (!title || typeof fetch !== 'function') return null;
+    if (!CATALOG_TMDB_IDENTITIES_PROMISE) {
+        CATALOG_TMDB_IDENTITIES_PROMISE = fetch('/data/availability.json', { cache: 'force-cache' })
+            .then(r => r.ok ? r.json() : null)
+            .then(payload => {
+                const index = new Map();
+                const rows = payload && payload.titles && typeof payload.titles === 'object' ? payload.titles : {};
+                for (const [name, row] of Object.entries(rows)) {
+                    const tmdbId = Number(row && row.tmdbId);
+                    const kind = row && row.kind;
+                    if (!Number.isSafeInteger(tmdbId) || tmdbId <= 0 || !['movie','tv'].includes(kind)) continue;
+                    index.set(catalogIdentityKey(name), {
+                        tmdbId, kind,
+                        year: Number.isInteger(Number(row.year)) ? Number(row.year) : null
+                    });
+                }
+                return index;
+            })
+            .catch(() => new Map());
+    }
+    const index = await CATALOG_TMDB_IDENTITIES_PROMISE;
+    return index.get(catalogIdentityKey(title)) || null;
+}
+async function getExactCatalogPoster(title) {
+    if (!title || typeof window.tmdbDetails !== 'function') return null;
+    try {
+        const identity = await getCatalogTmdbIdentity(title);
+        if (!identity) return null;
+        const details = await window.tmdbDetails(identity.tmdbId, identity.kind, { priority: true });
+        if (!details || details.adult === true || Number(details.tmdbId) !== identity.tmdbId || details.kind !== identity.kind) return null;
+        return details.posterLarge || details.poster || null;
+    } catch (_) {
+        return null;
+    }
+}
+window.getCatalogTmdbIdentity = getCatalogTmdbIdentity;
 
 // Categories where a SEPARATE live lookup (searching iTunes/TVMaze for a
 // title we already know from our own curated catalog) carries real mismatch
