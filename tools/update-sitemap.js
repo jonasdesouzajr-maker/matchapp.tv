@@ -27,6 +27,7 @@ const CORE = [
     { loc: `${SITE}/kids/`,                    freq: 'weekly',  pri: '0.9', lastmod: '2026-09-17T00:00:00+00:00' },
     { loc: `${SITE}/featured/a-gata-comeu/`,   freq: 'weekly',  pri: '0.8', lastmod: '2026-09-17T00:00:00+00:00' },
     { loc: `${SITE}/featured/american-horror-story-13/`, freq: 'weekly', pri: '0.8', lastmod: '2026-09-17T00:00:00+00:00' },
+    { loc: `${SITE}/featured/antartida/`,     freq: 'weekly',  pri: '0.8' },
     { loc: `${SITE}/updates.html`,              freq: 'monthly', pri: '0.7' },
     { loc: `${SITE}/together.html`,             freq: 'weekly',  pri: '0.8' },
     { loc: `${SITE}/pricing/pricing.html`,      freq: 'weekly',  pri: '0.8' },

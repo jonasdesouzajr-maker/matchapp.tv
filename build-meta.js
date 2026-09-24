@@ -1,11 +1,11 @@
 // Functional release identifier must match release.json.
-window.MATCHAPP_BUILD = '2026.09.22.1';
+window.MATCHAPP_BUILD = '2026.09.23.1';
 
 
 /* Search freshness + truthfulness layer. */
 (function () {
   'use strict';
-  const TODAY = '2026-09-21';
+  const TODAY = '2026-09-24';
   const TRENDING = [
     "Quem É Você?",
     "Vermelho Sangue",
