@@ -23,24 +23,27 @@ test('ordinary browser visitors never receive an update prompt or install-button
  w.eval(read('app-updates.js'));await tick();
  assert.equal(w.document.getElementById('app-release-notice'),null);
  assert.equal(w.document.getElementById('matchapp-update-toast'),null);
+ assert.equal(w.document.getElementById('matchapp-update-overlay'),null);
  assert.equal(w.document.querySelector('.install-btn').textContent,'Install');
  d.window.close();
 });
-test('standalone installs get one small refresh toast only after live metadata matches',async()=>{
+test('standalone installs record pending metadata without an automatic overlay',async()=>{
  const d=dom(true),w=d.window;w.localStorage.setItem('match_app_installed_build','2026.09.19.9');
  w.fetch=async()=>({ok:true,json:async()=>({version:'2026.09.20.1'})});
  w.eval(read('app-updates.js'));await tick();
  assert.equal(w.matchAppUpdatePending.version,'2026.09.20.1');
- assert.ok(w.document.getElementById('matchapp-update-toast'));
- assert.equal(w.document.querySelectorAll('#matchapp-update-toast').length,1);
+ assert.equal(w.document.getElementById('matchapp-update-toast'),null);
+ assert.equal(w.document.getElementById('matchapp-update-overlay'),null);
  assert.equal(w.document.getElementById('app-release-notice'),null);
+ assert.equal(w.document.querySelector('.install-btn').textContent,'Update');
  d.window.close();
 });
-test('mismatched deploy metadata never announces a refresh',async()=>{
+test('release metadata is recorded even when the remote version differs from the page build',async()=>{
  const d=dom(true),w=d.window;w.localStorage.setItem('match_app_installed_build','2026.09.19.9');
  w.fetch=async()=>({ok:true,json:async()=>({version:'2026.09.20.2'})});
  w.eval(read('app-updates.js'));await tick();
- assert.equal(w.matchAppUpdatePending,null);
+ assert.equal(w.matchAppUpdatePending.version,'2026.09.20.2');
  assert.equal(w.document.getElementById('matchapp-update-toast'),null);
+ assert.equal(w.document.getElementById('matchapp-update-overlay'),null);
  d.window.close();
 });
