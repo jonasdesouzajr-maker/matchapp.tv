@@ -1,5 +1,5 @@
 // Functional release identifier must match release.json.
-window.MATCHAPP_BUILD = '2026.09.23.1';
+window.MATCHAPP_BUILD = '2026.09.24.2';
 
 
 /* Search freshness + truthfulness layer. */
@@ -73,10 +73,10 @@ window.MATCHAPP_BUILD = '2026.09.23.1';
     const path = location.pathname;
     ensureKidsEntry();
     if (path === '/' || path === '/index.html') {
-      document.title = 'What to Watch Tonight | AI Movie & TV Finder | MatchApp';
-      upsertMeta('description', 'Find what to watch tonight with MatchApp: exact mood matching, verified streaming and cinema availability by country, local streaming alerts, Kids Mode and Match Together.');
+      document.title = 'What to Watch Tonight | AI Movie, TV & E-book Finder | MatchApp';
+      upsertMeta('description', 'Find what to watch or read with MatchApp: exact mood matching for movies, TV and e-books, verified streaming and cinema availability, legal free e-book sources, official book stores, Kids Mode and Match Together.');
       upsertMeta('robots', 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1');
-      upsertPropertyMeta('og:description', 'Tell MatchApp your mood, get a title, see where it streams or plays in cinemas by country, and follow it for local streaming alerts.');
+      upsertPropertyMeta('og:description', 'Tell MatchApp your mood, get a movie, series or e-book match, then see verified streaming, cinema or legal book-access routes.');
       addJsonLd('matchapp-organization-schema', {
         '@context': 'https://schema.org',
         '@type': 'Organization',
@@ -84,7 +84,7 @@ window.MATCHAPP_BUILD = '2026.09.23.1';
         url: 'https://matchapp.tv/',
         logo: 'https://matchapp.tv/assets/brand/matchapp-official-icon-512.webp',
         email: 'support@matchapp.tv',
-        description: 'AI entertainment discovery service for movies, series, K-dramas, anime, novelas, micro-dramas, podcasts, music and family viewing.'
+        description: 'AI entertainment discovery service for movies, series, K-dramas, anime, novelas, micro-dramas, podcasts, music, e-books and family viewing.'
       });
     }
     if (path === '/discover.html') {
