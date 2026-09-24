@@ -423,64 +423,16 @@ html.reduce-motion body.page-home :is(.ma-how-link,.ma-how-button){
 }
 
 
-/* 2026-09-24 desktop equal-length top stack.
-   Desktop only: Awareness Spotlight, Always growing and Daily Check-in share
-   one exact horizontal measure. Heights and all product behavior stay intact. */
+/* 2026-09-24 Awareness width alignment.
+   Desktop-only, design-only: make Awareness Spotlight exactly the same
+   horizontal length as the existing Always growing and Daily Check-in cards.
+   Their dimensions and all product behavior remain untouched. */
 @media (min-width:1000px){
-  html body.page-home #awareness-spotlight,
-  html body.page-home .matchapp-growth-disclosure,
-  html body.page-home #daily-match-checkin.dc,
-  html body.page-home .daily-checkin.dc{
-    width:min(calc(100% - 24px),1248px)!important;
-    max-width:1248px!important;
+  html body.page-home #awareness-spotlight{
+    width:min(1180px,calc(100% - 28px))!important;
+    max-width:1180px!important;
     margin-left:auto!important;
     margin-right:auto!important;
     box-sizing:border-box!important;
-  }
-
-  html body.page-home .matchapp-growth-disclosure{
-    display:grid!important;
-    grid-template-columns:28px minmax(0,1fr)!important;
-    align-items:center!important;
-    justify-content:stretch!important;
-    gap:10px!important;
-  }
-  html body.page-home .matchapp-growth-copy{
-    min-width:0!important;
-    white-space:nowrap!important;
-    overflow:hidden!important;
-    text-overflow:ellipsis!important;
-    text-align:center!important;
-    font-size:clamp(11px,.82vw,12px)!important;
-    line-height:1.2!important;
-  }
-
-  html body.page-home #daily-match-checkin.dc .dc-inner,
-  html body.page-home .daily-checkin.dc .dc-inner{
-    grid-template-columns:minmax(320px,390px) minmax(0,1fr) auto!important;
-    align-items:center!important;
-    gap:8px 18px!important;
-  }
-  html body.page-home #daily-match-checkin.dc .dc-head,
-  html body.page-home .daily-checkin.dc .dc-head{
-    display:flex!important;
-    flex-direction:row!important;
-    flex-wrap:nowrap!important;
-    align-items:baseline!important;
-    gap:8px!important;
-    min-width:0!important;
-  }
-  html body.page-home #daily-match-checkin.dc .dc-title,
-  html body.page-home .daily-checkin.dc .dc-title,
-  html body.page-home #daily-match-checkin.dc .dc-sub,
-  html body.page-home .daily-checkin.dc .dc-sub{
-    white-space:nowrap!important;
-  }
-  html body.page-home #daily-match-checkin.dc .dc-sub,
-  html body.page-home .daily-checkin.dc .dc-sub{
-    min-width:0!important;
-    overflow:hidden!important;
-    text-overflow:ellipsis!important;
-    font-size:11px!important;
   }
 }
