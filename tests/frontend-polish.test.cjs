@@ -8,7 +8,7 @@ const read=p=>fs.readFileSync(path.join(root,p),'utf8');
 test('shared frontend polish is loaded last on every affected web surface',()=>{
   for(const page of ['index.html','discover.html','profile/profile.html','together.html','kids/index.html']){
     const html=read(page);
-    const link='/frontend-polish.css?v=20260924-ui1';
+    const link='/frontend-polish.css?v=20260924-ui2';
     assert.ok(html.includes(link),page+' must load the shared polish layer');
     assert.ok(html.indexOf(link)<html.lastIndexOf('</head>'),page+' polish link belongs in head');
   }
