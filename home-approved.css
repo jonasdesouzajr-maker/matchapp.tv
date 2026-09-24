@@ -78,3 +78,55 @@ html body.page-home .header-brand-area img:not(.matchapp-wordmark){
 @media(prefers-reduced-motion:reduce){
   #ma-hero-match,#ma-hero-ask,#ma-dock a,#ma-dock button{transition:none}
 }
+
+
+/* 2026-09-24 continuous perimeter polish.
+   Visual-only correction for the dark-bottom edge created by the shared
+   ma-depth layer. These rules stay inside that same layer so its !important
+   lighting declarations cannot hide the lower perimeter on dark screens. */
+@layer ma-depth {
+  html body.page-home #mh-topbox.app-header{
+    border-color:rgba(229,193,88,.62)!important;
+    box-shadow:
+      inset 0 0 0 1px rgba(229,193,88,.30),
+      var(--d3-hi),var(--d3-lo),var(--d3-raise-2)!important;
+  }
+
+  html body.page-home #awareness-spotlight .awareness-card{
+    border-color:color-mix(in srgb,var(--awareness) 76%,#fff 16%)!important;
+    box-shadow:
+      inset 0 0 0 1px color-mix(in srgb,var(--awareness) 58%,#fff 10%),
+      var(--d3-hi),var(--d3-lo),var(--d3-raise-2)!important;
+  }
+
+  html body.page-home :is(#daily-match-checkin.dc,.daily-checkin.dc){
+    border-color:rgba(243,207,105,.72)!important;
+    box-shadow:
+      inset 0 0 0 1px rgba(243,207,105,.34),
+      var(--d3-hi),var(--d3-lo),var(--d3-raise-2)!important;
+  }
+
+  html body.page-home #awareness-spotlight .awareness-cta{
+    border-color:rgba(255,255,255,.38)!important;
+    box-shadow:
+      inset 0 0 0 1px rgba(255,255,255,.14),
+      var(--d3-hi),var(--d3-lo),var(--d3-raise-1)!important;
+  }
+}
+
+/* These two surfaces are not ma-depth participants, but receive the same
+   finished 360-degree inner edge so the mobile stack reads as one polished UI. */
+html body.page-home .matchapp-growth-disclosure{
+  border-color:rgba(229,193,88,.42)!important;
+  box-shadow:
+    inset 0 0 0 1px rgba(229,193,88,.18),
+    0 10px 28px rgba(0,0,0,.24),
+    inset 0 1px 0 rgba(255,255,255,.045)!important;
+}
+
+html body.page-home #ma-dock{
+  border-color:rgba(229,193,88,.58)!important;
+  box-shadow:
+    inset 0 0 0 1px rgba(229,193,88,.20),
+    0 10px 28px rgba(0,0,0,.45)!important;
+}
