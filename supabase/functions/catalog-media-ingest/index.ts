@@ -54,18 +54,57 @@ function availabilityFrom(record:any,kind:"movie"|"tv"){const source=record?.["w
 const details=(id:number,kind:"movie"|"tv",token:string)=>tmdb(`/${kind}/${id}?language=en-US&append_to_response=videos,watch%2Fproviders,release_dates,content_ratings`,token);
 
 async function resolveTmdb(item:any,token:string,forcedKind?:"movie"|"tv"){
-  const kind:"movie"|"tv"=forcedKind||(item.media_kind==="movie"?"movie":"tv"),q=encodeURIComponent(String(item.title||"").trim());if(!q)return null;
-  const yearKey=kind==="movie"?"year":"first_air_date_year",yearParam=item.year?"&"+yearKey+"="+encodeURIComponent(String(item.year)):"";
-  const search=await tmdb("/search/"+kind+"?query="+q+"&include_adult=false&language=en-US"+yearParam,token),rows=Array.isArray(search?.results)?search.results:[],target=normalise(item.title);
-  const exact=rows.find((r:any)=>{
-    if(r?.adult===true||!Number.isSafeInteger(r?.id))return false;
-    const ok=[titleOf(r,kind),originalTitleOf(r,kind)].some(t=>normalise(t)===target);if(!ok)return false;
-    if(item.poster_path&&String(r?.poster_path||"")!==String(item.poster_path))return false;
-    if(!item.year)return true;const y=yearOf(r,kind);return y!==null&&Math.abs(y-Number(item.year))<=1;
-  });
-  if(!exact)return null;
-  const record=await details(exact.id,kind,token);if(!record||record.adult===true)return null;const runtime=kind==="movie"?Number(record.runtime):Number(record.episode_run_time?.[0]);
-  return {source_key:"tmdb:"+kind+":"+record.id,title:titleOf(record,kind)||item.title,normalized_title:normalise(item.title),year:yearOf(record,kind)||(item.year?Number(item.year):null),media_kind:kind,tmdb_id:record.id,source:"tmdb",is_catalog_title:true,is_trending:item.homepage_trending===true,trending_rank:null,kids_approved:item.kids_approved===true,kids_age_bands:Array.isArray(item.kids_age_bands)?item.kids_age_bands.slice(0,8):[],poster_url:fullImage(record.poster_path,"w500"),poster_large_url:fullImage(record.poster_path,"w780"),poster_original_url:fullImage(record.poster_path,"original"),backdrop_url:fullImage(record.backdrop_path,"w1280"),overview:typeof record.overview==="string"?record.overview.trim().slice(0,4000)||null:null,genres:Array.isArray(record.genres)?record.genres.map((g:any)=>String(g?.name||"").trim()).filter(Boolean).slice(0,20):[],runtime_minutes:Number.isFinite(runtime)&&runtime>0&&runtime<=1440?Math.round(runtime):null,content_rating:chooseRating(record,kind),vote_average:Number.isFinite(Number(record.vote_average))?Math.max(0,Math.min(10,Number(record.vote_average))):null,original_language:typeof record.original_language==="string"?record.original_language.slice(0,16):null,...chooseVideo(record.videos,kind),availability:availabilityFrom(record,kind),source_updated_at:new Date().toISOString(),updated_at:new Date().toISOString()};
+  const kind:"movie"|"tv"=forcedKind||(item.media_kind==="movie"?"movie":"tv");
+  let record:any=null;
+
+  // Prefer the catalogue's already-verified numeric TMDB identity whenever it
+  // exists. This avoids false misses for localized/alternate display titles
+  // while still fetching all current metadata directly from TMDB.
+  const exactId=Number(item.tmdb_id);
+  if(Number.isSafeInteger(exactId)&&exactId>0&&!forcedKind){
+    record=await details(exactId,kind,token);
+    if(!record||record.adult===true||Number(record.id)!==exactId)return null;
+  }else{
+    const q=encodeURIComponent(String(item.title||"").trim());if(!q)return null;
+    const yearKey=kind==="movie"?"year":"first_air_date_year",yearParam=item.year?"&"+yearKey+"="+encodeURIComponent(String(item.year)):"";
+    const search=await tmdb("/search/"+kind+"?query="+q+"&include_adult=false&language=en-US"+yearParam,token),
+      rows=Array.isArray(search?.results)?search.results:[],target=normalise(item.title);
+    const exact=rows.find((r:any)=>{
+      if(r?.adult===true||!Number.isSafeInteger(r?.id))return false;
+      const ok=[titleOf(r,kind),originalTitleOf(r,kind)].some(t=>normalise(t)===target);if(!ok)return false;
+      if(item.poster_path&&String(r?.poster_path||"")!==String(item.poster_path))return false;
+      if(!item.year)return true;
+      const y=yearOf(r,kind);return y!==null&&Math.abs(y-Number(item.year))<=1;
+    });
+    if(!exact)return null;
+    record=await details(exact.id,kind,token);
+    if(!record||record.adult===true)return null;
+  }
+
+  const runtime=kind==="movie"?Number(record.runtime):Number(record.episode_run_time?.[0]);
+  return {
+    source_key:"tmdb:"+kind+":"+record.id,
+    title:titleOf(record,kind)||item.title,
+    normalized_title:normalise(item.title),
+    year:yearOf(record,kind)||(item.year?Number(item.year):null),
+    media_kind:kind,tmdb_id:record.id,source:"tmdb",
+    is_catalog_title:true,is_trending:item.homepage_trending===true,trending_rank:null,
+    kids_approved:item.kids_approved===true,
+    kids_age_bands:Array.isArray(item.kids_age_bands)?item.kids_age_bands.slice(0,8):[],
+    poster_url:fullImage(record.poster_path,"w500"),
+    poster_large_url:fullImage(record.poster_path,"w780"),
+    poster_original_url:fullImage(record.poster_path,"original"),
+    backdrop_url:fullImage(record.backdrop_path,"w1280"),
+    overview:typeof record.overview==="string"?record.overview.trim().slice(0,4000)||null:null,
+    genres:Array.isArray(record.genres)?record.genres.map((g:any)=>String(g?.name||"").trim()).filter(Boolean).slice(0,20):[],
+    runtime_minutes:Number.isFinite(runtime)&&runtime>0&&runtime<=1440?Math.round(runtime):null,
+    content_rating:chooseRating(record,kind),
+    vote_average:Number.isFinite(Number(record.vote_average))?Math.max(0,Math.min(10,Number(record.vote_average))):null,
+    original_language:typeof record.original_language==="string"?record.original_language.slice(0,16):null,
+    ...chooseVideo(record.videos,kind),
+    availability:availabilityFrom(record,kind),
+    source_updated_at:new Date().toISOString(),updated_at:new Date().toISOString()
+  };
 }
 async function resolveUnknownTmdb(item:any,token:string){
   const rows=(await Promise.all([resolveTmdb(item,token,"movie"),resolveTmdb(item,token,"tv")])).filter(Boolean);
@@ -83,7 +122,7 @@ function mergeRows(catalogRows:any[],trendingRows:any[]){const map=new Map<strin
 
 Deno.serve(async(req)=>{
   if(req.method!=="POST")return json({error:"Method not allowed"},405);const started=Date.now();
-  try{const claims=await authorize(req),tmdbToken=Deno.env.get("TMDB_API_KEY");if(!tmdbToken)return json({error:"TMDB_API_KEY is not configured"},503);const body=await req.json().catch(()=>({})),incoming=Array.isArray(body?.catalog)?body.catalog:[],clean=incoming.filter((x:any)=>x&&typeof x.title==="string"&&x.title.trim().length>0&&x.title.length<=240).map((x:any)=>({title:x.title.trim(),year:Number.isInteger(Number(x.year))?Number(x.year):null,media_kind:["movie","tv","music","podcast","audiobook","audio","other"].includes(x.media_kind)?x.media_kind:"other",poster_path:typeof x.poster_path==="string"&&/^\/[A-Za-z0-9_.-]+$/.test(x.poster_path)?x.poster_path:null,homepage_trending:x.homepage_trending===true,kids_approved:x.kids_approved===true,kids_age_bands:Array.isArray(x.kids_age_bands)?x.kids_age_bands.map(String).slice(0,8):[]}));
+  try{const claims=await authorize(req),tmdbToken=Deno.env.get("TMDB_API_KEY");if(!tmdbToken)return json({error:"TMDB_API_KEY is not configured"},503);const body=await req.json().catch(()=>({})),incoming=Array.isArray(body?.catalog)?body.catalog:[],clean=incoming.filter((x:any)=>x&&typeof x.title==="string"&&x.title.trim().length>0&&x.title.length<=240).map((x:any)=>({title:x.title.trim(),year:Number.isInteger(Number(x.year))?Number(x.year):null,media_kind:["movie","tv","music","podcast","audiobook","audio","other"].includes(x.media_kind)?x.media_kind:"other",tmdb_id:Number.isSafeInteger(Number(x.tmdb_id))&&Number(x.tmdb_id)>0?Number(x.tmdb_id):null,poster_path:typeof x.poster_path==="string"&&/^\/[A-Za-z0-9_.-]+$/.test(x.poster_path)?x.poster_path:null,homepage_trending:x.homepage_trending===true,kids_approved:x.kids_approved===true,kids_age_bands:Array.isArray(x.kids_age_bands)?x.kids_age_bands.map(String).slice(0,8):[]}));
     const keys=clean.map((x:any)=>normalise(x.title));let existing:any[]=[];if(keys.length){const result=await admin.from("catalog_media_metadata").select("normalized_title,updated_at").in("normalized_title",keys.slice(0,1000));if(result.error)throw result.error;existing=result.data||[];}
     const last=new Map(existing.map((r:any)=>[r.normalized_title,Date.parse(r.updated_at||0)||0]));clean.sort((a:any,b:any)=>(last.get(normalise(a.title))||0)-(last.get(normalise(b.title))||0));const selected=clean.slice(0,MAX_CATALOG_PER_RUN),resolved=await mapLimit(selected,CONCURRENCY,item=>resolveCatalogItem(item,tmdbToken)),catalogRows=resolved.filter(Boolean) as any[],trendingRows=body?.include_trending===false?[]:await trending(tmdbToken),rows=mergeRows(catalogRows,trendingRows);
     if(trendingRows.length){const {error}=await admin.from("catalog_media_metadata").update({is_trending:false,trending_rank:null}).eq("is_trending",true);if(error)throw error;}if(rows.length){const {error}=await admin.from("catalog_media_metadata").upsert(rows,{onConflict:"source_key"});if(error)throw error;}
