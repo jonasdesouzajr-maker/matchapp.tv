@@ -75,7 +75,7 @@ Open the repository's **`android-studio` folder** in Android Studio Quail. Let G
 
 The Android apps intentionally render the live MatchApp web surfaces rather than maintaining a second copy of the UI:
 
-- **MatchApp Ai (`:app`)** loads the main `https://matchapp.tv/` experience, so approved main-site UI/features such as the AI Concierge automatically appear in Android.
+- **MatchApp Ai (`:app`)** loads the main `https://matchapp.tv/` experience, so approved main-site UI/features such as the AI Concierge and grown-up Match E-books Ai automatically appear in Android. E-book retailer/library links remain external browser handoffs through the existing URL policy.
 - **MatchApp Ai KIDS (`:kidsapp`)** loads `https://matchapp.tv/kids/`, so approved Kids UI/features automatically appear in the Kids Android app.
 - When a web change introduces a new route, deep-link behavior, authentication flow, native permission, file-picker behavior, external-app handoff, user-agent rule, or Android-specific restriction, the matching Android module must be reviewed and updated in the same change.
 - Main-site Kids entry points remain available on the public website, but are hidden and blocked inside the standard Android app.
