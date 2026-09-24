@@ -85,3 +85,24 @@ Whenever I give you a task, acknowledge these instructions, confirm cross-platfo
 
 The canonical locked state is documented in `ADSENSE_LOCK.md` and enforced by automated regression checks.
 
+
+---
+
+### 9. TITLE / TITLES MEAN COMPLETE TITLE CONTENT
+
+Whenever the owner says **"title"** or **"titles"** in a MatchApp request, treat that as shorthand for a **complete title record and presentation**, not merely the title name.
+
+For each applicable title, include and maintain all available title metadata and media, including:
+- synopsis / overview;
+- cast and principal credits where available;
+- release year and release date where available;
+- country / countries of origin;
+- genres and source categories;
+- official cover and poster artwork in appropriate responsive sizes;
+- embedded official preview / trailer video when available, or the safest verified title-page fallback when no playable preview exists;
+- rating / runtime and other useful descriptive metadata when available;
+- country-appropriate viewing / availability information when that surface already supports it.
+
+Use verified, exact title identities and trusted sources. Prefer a correct real poster and verified metadata over generated fallback artwork. Generated branded artwork is a last-resort safety fallback only when no trustworthy title art can be resolved. Never substitute an unrelated poster, trailer, cast, synopsis, or metadata merely to avoid an empty field.
+
+Apply this interpretation consistently across Desktop Web, Smartphone Web, Tablet Web, the Android app, and Kids Mode / the Kids Android app where the title is approved for Kids.
