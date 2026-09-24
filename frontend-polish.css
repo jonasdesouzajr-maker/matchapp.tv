@@ -232,3 +232,22 @@ body.page-kids .kids-primary{
   }
   .matchapp-growth-orb{flex-basis:26px;width:26px;height:26px;font-size:13px}
 }
+
+
+/* 2026-09-24 homepage finished-edge polish.
+   Visual only: restore continuous card/button perimeters that the shared 3D
+   lighting layer intentionally darkens at the bottom edge. No layout or product logic. */
+html body.page-home #mh-topbox.app-header{
+  border-left-color:rgba(229,193,88,.48)!important;
+  border-right-color:rgba(229,193,88,.48)!important;
+  border-bottom-color:rgba(229,193,88,.58)!important;
+}
+html body.page-home #awareness-spotlight .awareness-card{
+  position:relative!important;
+  border-left-color:color-mix(in srgb,var(--awareness) 72%,#fff 14%)!important;
+  border-right-color:color-mix(in srgb,var(--awareness) 72%,#fff 14%)!important;
+  border-bottom-color:color-mix(in srgb,var(--awareness) 72%,#fff 14%)!important;
+}
+html body.page-home #awareness-spotlight .awareness-cta{
+  border-color:rgba(255,255,255,.34)!important;
+}
