@@ -2,6 +2,7 @@ const {test}=require('node:test'),assert=require('node:assert/strict'),fs=requir
 const source=fs.readFileSync(path.join(__dirname,'..','app.js'),'utf8').replace(/\r\n/g,'\n');
 const fn=name=>source.match(new RegExp('(?:async )?function '+name+'\\([\\s\\S]*?\\n}\\n'))[0];
 const moodGenres=source.match(/const MOOD_SOURCE_GENRES=\{[\s\S]*?\n\};/)[0];
+const cozyRules=source.match(/const COZY_BLOCKED_GENRES[\s\S]*?function moodFitsVerified\([\s\S]*?\n}/)[0];
 
 function harness({proposals,lookup,details,known=[],shown=[]}){
   const calls={lookup:[],details:[]};
@@ -14,7 +15,7 @@ function harness({proposals,lookup,details,known=[],shown=[]}){
   const context=vm.createContext({window,console,SESSION_SHOWN:new Set(shown),
     fetchGeminiData:async()=>({results:proposals}),
     currentPreferenceExclusions:()=>({countries:new Set(),genres:new Set()})});
-  vm.runInContext(moodGenres+'\n'+['normCriteria','canonicalProviderName','sourceRatingFits','categoryFitsVerified','moodFitsVerified'].map(fn).join('\n')+'\n'+fn('aiProposedVerifiedExact'),context);
+  vm.runInContext(moodGenres+'\n'+cozyRules+'\n'+['normCriteria','canonicalProviderName','sourceRatingFits','categoryFitsVerified'].map(fn).join('\n')+'\n'+fn('aiProposedVerifiedExact'),context);
   return {run:requested=>context.aiProposedVerifiedExact(requested),calls};
 }
 const movie=(id,title,extra={})=>({tmdbId:id,kind:'movie',title,year:2017,genres:['Comedy','Family'],originCountries:['GB'],contentRating:'PG',availability:{BR:{stream:['Netflix']}},overview:'A bear.',...extra});
