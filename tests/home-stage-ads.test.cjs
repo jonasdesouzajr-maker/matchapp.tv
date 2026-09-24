@@ -67,18 +67,18 @@ test('screenshot regression: Mood Format Platform have visible inner inset',()=>
   assert.match(pass,/\.ma-filter-row:first-child\{[\s\S]*padding-top:6px!important/);
 });
 
-test('homepage does not suppress desktop rails and keeps mobile responsive slots unconstrained',()=>{
+test('homepage keeps the locked desktop rails and responsive mobile slots',()=>{
   const html=read('index.html');
   const compact=html.slice(html.indexOf('<style id="mh-compact">'),html.indexOf('</style>',html.indexOf('<style id="mh-compact">')));
   assert.match(compact,/@media\(max-width:1179px\)[\s\S]*sidebar-ad-left[\s\S]*display:none!important/);
   const guard=html.slice(html.indexOf('<style id="mobile-ad-blank-guard">'),html.indexOf('</style>',html.indexOf('<style id="mobile-ad-blank-guard">')));
-  assert.doesNotMatch(guard,/min-height:250px/,'mobile AdSense must not be forced into a 250px creative box');
+  assert.doesNotMatch(guard,/min-height:250px/);
   assert.match(guard,/ma-inline-ad ins\.adsbygoogle[\s\S]*width:100%/);
-  assert.match(html,/\/ads-init\.js\?v=20260924-ads2/);
+  assert.ok(html.includes('/ads-init.js?v=20260924-ads2'));
   const init=read('ads-init.js');
-  assert.match(init,/\.push\(\{\}\)/,'manual AdSense requests use Google's standard initializer');
-  assert.doesNotMatch(init,/push\(\{element:slot\}\)/,'unsupported element-targeted pushes must not return');
-  assert.match(html,/\/home-8k-layout\.css\?v=20260924-adfull1/);
+  assert.match(init,/\.push\(\{\}\)/);
+  assert.doesNotMatch(init,/push\(\{element:slot\}\)/);
+  assert.ok(html.includes('/home-8k-layout.css?v=20260924-adfull1'));
   const layout=read('home-8k-layout.css');
   assert.match(layout,/@media\(min-width:1180px\)[\s\S]*\.ad-banner-container\.ma-together-ad\{[\s\S]*min-height:148px!important[\s\S]*ins\.adsbygoogle\{[\s\S]*width:100%!important[\s\S]*min-height:120px!important/);
 });
