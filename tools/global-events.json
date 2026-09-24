@@ -249,6 +249,42 @@
     ]
   },
   {
+    "slug": "pax-aus-2026",
+    "title": "PAX Aus 2026",
+    "start": "2026-10-09T10:00:00+11:00",
+    "end": "2026-10-11T18:00:00+11:00",
+    "timezone": "Australia/Melbourne",
+    "location": "Melbourne Convention & Exhibition Centre, Melbourne, Australia",
+    "countryCode": "AU",
+    "countryLabel": "Australia",
+    "flag": "🇦🇺",
+    "category": "Gaming",
+    "synopsis": "PAX Aus returns to Melbourne from October 9 through 11 for three days of playable new releases, indie games, panels, tournaments, esports, cosplay and gaming culture.",
+    "watchInfo": "Use the official PAX Aus schedule and expo pages for live programme updates, playable demos and publisher appearances. MatchApp links highlighted games into Ai for richer title discovery.",
+    "official": "https://aus.paxsite.com/",
+    "watch": "https://aus.paxsite.com/en-us/schedule.html",
+    "recorded": "https://aus.paxsite.com/en-us/gallery.html",
+    "source": "https://aus.paxsite.com/en-us/info/news/2026-expo-floor.html",
+    "keywords": "PAX Aus 2026, PAX Australia 2026, Melbourne gaming festival, PAX Aus games 2026, PAX Aus schedule, games to play at PAX Australia, Total War WARHAMMER 40000 PAX, Alien Isolation 2 PAX, Persona 4 Revival PAX, Stranger Than Heaven PAX",
+    "organizer": "RX Australia / PAX",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "1 Convention Centre Place",
+      "addressLocality": "South Wharf",
+      "addressRegion": "VIC",
+      "postalCode": "3006",
+      "addressCountry": "AU"
+    },
+    "poster": "https://aus.paxsite.com/content/dam/sitebuilder/rxau/pax/aus/metadata/seo/heroes/hero-info-pax-aus.png/_jcr_content/renditions/original./064978182/hero-info-pax-aus.png",
+    "posterCredit": "Official PAX Aus 2026 event artwork — PAX / RX Australia",
+    "featuredTitles": [
+      "Total War: WARHAMMER 40,000",
+      "Alien: Isolation 2",
+      "Stranger Than Heaven",
+      "Persona 4 Revival"
+    ]
+  },
+  {
     "slug": "brasil-game-show-2026",
     "title": "Brasil Game Show 2026",
     "start": "2026-10-09T11:30:00-03:00",
@@ -276,6 +312,41 @@
     "poster": "https://kraken.ingresse.com/event/posters/91865/large/1775164706.5283916.jpg",
     "posterCredit": "Official Brasil Game Show 2026 ticket artwork — Brasil Game Show",
     "featuredTitles": []
+  },
+  {
+    "slug": "adelaide-film-festival-2026",
+    "title": "Adelaide Film Festival 2026",
+    "start": "2026-10-14T00:00:00+10:30",
+    "end": "2026-10-25T23:59:59+10:30",
+    "timezone": "Australia/Adelaide",
+    "location": "Adelaide, South Australia, Australia",
+    "countryCode": "AU",
+    "countryLabel": "Australia",
+    "flag": "🇦🇺",
+    "category": "Film Festival",
+    "synopsis": "Adelaide Film Festival runs October 14 through 25, bringing Australian and international premieres, gala screenings, documentaries, shorts, filmmaker conversations and special events across Adelaide.",
+    "watchInfo": "Use Adelaide Film Festival's official programme and schedule for screenings, venues and ticketing. MatchApp routes highlighted films into Ai for synopsis, cast, preview and verified where-to-watch information when available.",
+    "official": "https://www.adelaidefilmfestival.org/",
+    "watch": "https://www.adelaidefilmfestival.org/program",
+    "recorded": "https://www.adelaidefilmfestival.org/",
+    "source": "https://www.adelaidefilmfestival.org/about",
+    "keywords": "Adelaide Film Festival 2026, AFF 2026, Adelaide movies October 2026, Australian film festival 2026, Wild Horse Nine Adelaide, KUMARANGK Sacred Women's Business, Memory of Princess Mumbi, Australian Shorts Adelaide, films screening Adelaide October 2026, where to watch Adelaide Film Festival titles",
+    "organizer": "Adelaide Film Festival",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Adelaide",
+      "addressRegion": "SA",
+      "addressCountry": "AU"
+    },
+    "poster": "https://cms.adelaidefilmfestival.org/assets/page-content/launch-edm-4.png",
+    "posterCredit": "Official Adelaide Film Festival 2026 campaign artwork — Adelaide Film Festival",
+    "featuredTitles": [
+      "Wild Horse Nine",
+      "KUMARANGK: Sacred Women's Business",
+      "Memory of Princess Mumbi",
+      "On Wild Horse Plains",
+      "Maŋutji"
+    ]
   },
   {
     "slug": "toronto-after-dark-2026",
@@ -395,6 +466,39 @@
     "poster": "https://pbs.twimg.com/media/G7F_jZ9WsAA1C4f.jpg",
     "posterCredit": "Official MCM London Comic Con 2026 date artwork — MCM Comic Con",
     "featuredTitles": []
+  },
+  {
+    "slug": "tokyo-international-film-festival-2026",
+    "title": "39th Tokyo International Film Festival",
+    "start": "2026-10-26T00:00:00+09:00",
+    "end": "2026-11-04T23:59:59+09:00",
+    "timezone": "Asia/Tokyo",
+    "location": "Hibiya, Yurakucho, Marunouchi & Ginza, Tokyo, Japan",
+    "countryCode": "JP",
+    "countryLabel": "Japan",
+    "flag": "🇯🇵",
+    "category": "Film Festival",
+    "synopsis": "The 39th Tokyo International Film Festival runs October 26 through November 4 across central Tokyo, connecting audiences with new Japanese and international cinema, gala screenings, animation and filmmaker events.",
+    "watchInfo": "Use TIFF's official 2026 site for programme, ticketing and screening updates. MatchApp links confirmed highlighted films into Ai for synopsis, cast, preview and verified where-to-watch information as availability appears.",
+    "official": "https://2026.tiff-jp.net/en/",
+    "watch": "https://2026.tiff-jp.net/en/",
+    "recorded": "https://2026.tiff-jp.net/en/",
+    "source": "https://2026.tiff-jp.net/news/en/?p=20657",
+    "keywords": "Tokyo International Film Festival 2026, TIFF 2026, 39th TIFF, Tokyo film festival movies 2026, Sukiyaki film TIFF, Colony film TIFF, Godzilla Minus Zero TIFF, Tokyo cinema October 2026, Japan film festival November 2026, where to watch TIFF films",
+    "organizer": "UNIJAPAN / Tokyo International Film Festival",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Tokyo",
+      "addressRegion": "Tokyo",
+      "addressCountry": "JP"
+    },
+    "poster": "https://2026.tiff-jp.net/news/en/files/2026/09/2026_TIFFPoster.jpg",
+    "posterCredit": "Official 39th Tokyo International Film Festival poster — Tokyo International Film Festival",
+    "featuredTitles": [
+      "Sukiyaki",
+      "Colony",
+      "Godzilla Minus Zero"
+    ]
   },
   {
     "slug": "ccxp-2026",
