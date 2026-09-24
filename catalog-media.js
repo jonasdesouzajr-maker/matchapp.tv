@@ -48,35 +48,54 @@
     }catch(_){CACHE.set(key,null);return null;}finally{INFLIGHT.delete(key);}})();INFLIGHT.set(key,p);return p;
   }
   async function lookupLive(title,opts={}){
-    if(!title||opts.kids||typeof window.tmdbLookup!=='function')return null;
-    const key=[normalise(title),opts.year||'',opts.kind||''].join('::');
-    if(LIVE_CACHE.has(key))return LIVE_CACHE.get(key);
+    if(!title||opts.kids)return null;
+    const requestedId=Number(opts.tmdbId);
+    const requestedKind=['movie','tv'].includes(opts.kind)?opts.kind:'';
+    const canUseExact=Number.isSafeInteger(requestedId)&&requestedId>0&&requestedKind&&typeof window.tmdbDetails==='function';
+    if(typeof window.tmdbLookup!=='function'&&!canUseExact)return null;
+    const key=[normalise(title),opts.year||'',requestedKind,canUseExact?requestedId:''].join('::');
+    if(LIVE_CACHE.has(key))return await LIVE_CACHE.get(key);
     const p=(async()=>{try{
-      const found=await window.tmdbLookup(title,{year:opts.year||'',kind:opts.kind||'',cats:opts.cats||[]});
-      if(!found||found.adult===true||!Number.isSafeInteger(Number(found.tmdbId))||!['movie','tv'].includes(found.kind))return null;
-      const details=typeof window.tmdbDetails==='function' ? (await window.tmdbDetails(Number(found.tmdbId),found.kind)) : null;
+      let found=null,details=null;
+      if(canUseExact){
+        details=await window.tmdbDetails(requestedId,requestedKind,{priority:opts.priority===true});
+        if(details&&details.adult!==true&&Number(details.tmdbId)===requestedId&&details.kind===requestedKind)found=details;
+      }
+      if(!found){
+        found=await window.tmdbLookup(title,{
+          year:opts.year||'',kind:requestedKind,cats:opts.cats||[],
+          priority:opts.priority===true
+        });
+        if(!found||found.adult===true||!Number.isSafeInteger(Number(found.tmdbId))||!['movie','tv'].includes(found.kind))return null;
+        details=typeof window.tmdbDetails==='function'
+          ? await window.tmdbDetails(Number(found.tmdbId),found.kind,{priority:opts.priority===true})
+          : null;
+      }
       const src=details||found;
+      const tmdbId=Number(src?.tmdbId||found?.tmdbId||requestedId);
+      const kind=src?.kind||found?.kind||requestedKind;
+      if(!src||src.adult===true||!Number.isSafeInteger(tmdbId)||!['movie','tv'].includes(kind))return null;
       const availability=(src.availability&&typeof src.availability==='object')?src.availability:{
         source:'tmdb',
-        source_page_url:'https://www.themoviedb.org/'+found.kind+'/'+found.tmdbId
+        source_page_url:'https://www.themoviedb.org/'+kind+'/'+tmdbId
       };
       return {
-        source_key:'tmdb-live:'+found.kind+':'+found.tmdbId,
-        title:String(src.title||found.title||title),
+        source_key:'tmdb-live:'+kind+':'+tmdbId,
+        title:String(src.title||found?.title||title),
         normalized_title:normalise(title),
-        year:src.year?Number(src.year):null,
-        media_kind:found.kind,
-        tmdb_id:Number(found.tmdbId),
-        poster_url:src.poster||found.poster||null,
-        poster_large_url:src.posterLarge||found.posterLarge||src.poster||found.poster||null,
-        poster_original_url:src.posterOriginal||found.posterOriginal||null,
-        backdrop_url:src.backdrop||found.backdrop||null,
-        overview:String(src.overview||found.overview||'').trim()||null,
+        year:src.year?Number(src.year):(found?.year?Number(found.year):null),
+        media_kind:kind,
+        tmdb_id:tmdbId,
+        poster_url:src.poster||found?.poster||null,
+        poster_large_url:src.posterLarge||found?.posterLarge||src.poster||found?.poster||null,
+        poster_original_url:src.posterOriginal||found?.posterOriginal||null,
+        backdrop_url:src.backdrop||found?.backdrop||null,
+        overview:String(src.overview||found?.overview||'').trim()||null,
         genres:Array.isArray(src.genres)?src.genres.filter(Boolean).slice(0,24):[],
         runtime_minutes:Number.isFinite(Number(src.runtimeMinutes))?Number(src.runtimeMinutes):null,
         content_rating:src.contentRating||null,
         vote_average:Number.isFinite(Number(src.voteAverage))?Number(src.voteAverage):null,
-        original_language:src.originalLanguage||found.originalLanguage||null,
+        original_language:src.originalLanguage||found?.originalLanguage||null,
         origin_countries:Array.isArray(src.originCountries)?src.originCountries.filter(Boolean).slice(0,12):[],
         cast_members:Array.isArray(src.cast)?src.cast.filter(x=>x&&x.name).slice(0,12):[],
         preview_kind:src.previewKind||null,
@@ -93,7 +112,7 @@
     }catch(_){return null;}})();
     LIVE_CACHE.set(key,p);
     const result=await p;
-    LIVE_CACHE.set(key,result);
+    if(result)LIVE_CACHE.set(key,result);else LIVE_CACHE.delete(key);
     return result;
   }
 
@@ -309,25 +328,72 @@
     return rows;
   }
 
+  function localLikePoster(img){
+    const raw=String(img?.getAttribute?.('src')||'');
+    return !raw||raw.startsWith('data:image/svg+xml')||raw.includes('/kids/covers/');
+  }
+  function promotePoster(img,url,title){
+    if(!img||!TRUSTED_POSTER.test(String(url||'')))return;
+    const expected=String(title||'');
+    const probe=new Image();
+    probe.onload=()=>{
+      if(!img.isConnected||img.dataset.matchappMediaTitle!==expected)return;
+      img.dataset.matchappFallbackStage='metadata';
+      img.src=url;
+      if(img.id==='res-poster-img')window.globalMatchPoster=url;
+    };
+    probe.onerror=()=>{};
+    probe.src=url;
+  }
   function hardenImage(img,title,meta){
     if(!img)return;
-    img.__matchappMediaMeta=meta||null;
+    const name=String(title||'');
+    const previous=img.dataset.matchappMediaTitle||'';
+    if(meta)img.__matchappMediaMeta=meta;
+    else if(!img.__matchappMediaMeta)img.__matchappMediaMeta=null;
+
     if(img.dataset.matchappMediaHardened==='1'){
-      if(img.dataset.matchappMediaTitle!==String(title||'')){img.dataset.matchappMediaTitle=String(title||'');img.dataset.matchappFallbackStage='';}
+      if(previous!==name){
+        img.dataset.matchappMediaTitle=name;
+        img.dataset.matchappFallbackStage='';
+        img.__matchappMediaMeta=meta||null;
+      }
+      const verified=safePoster(meta);
+      if(verified&&(localLikePoster(img)||img.dataset.matchappFallbackStage==='local'))promotePoster(img,verified,name);
       return;
     }
-    img.dataset.matchappMediaHardened='1';img.dataset.matchappMediaTitle=String(title||'');img.dataset.matchappFallbackStage='';
-    const fallback=localPoster(title);
+
+    img.dataset.matchappMediaHardened='1';
+    img.dataset.matchappMediaTitle=name;
+    img.dataset.matchappFallbackStage='';
+    const fallback=localPoster(name);
     img.addEventListener('error',async()=>{
       const stage=img.dataset.matchappFallbackStage||'';
       if(stage==='local')return;
       if(stage!=='metadata'){
-        const fromMeta=safePoster(img.__matchappMediaMeta||await lookup(img.dataset.matchappMediaTitle||title));
-        if(fromMeta&&img.src!==fromMeta){img.dataset.matchappFallbackStage='metadata';img.src=fromMeta;return;}
+        const fromMeta=safePoster(img.__matchappMediaMeta||await lookup(img.dataset.matchappMediaTitle||name));
+        if(fromMeta&&img.src!==fromMeta){
+          img.dataset.matchappFallbackStage='metadata';
+          img.src=fromMeta;
+          return;
+        }
       }
-      img.dataset.matchappFallbackStage='local';img.src=localPoster(img.dataset.matchappMediaTitle||title)||fallback;
+      img.dataset.matchappFallbackStage='local';
+      img.src=localPoster(img.dataset.matchappMediaTitle||name)||fallback;
     });
-    if(!img.getAttribute('src')){const fromMeta=safePoster(meta);if(fromMeta){img.dataset.matchappFallbackStage='metadata';img.src=fromMeta;}else{img.dataset.matchappFallbackStage='local';img.src=fallback;}}
+
+    const verified=safePoster(meta);
+    if(!img.getAttribute('src')){
+      if(verified){
+        img.dataset.matchappFallbackStage='metadata';
+        img.src=verified;
+      }else{
+        img.dataset.matchappFallbackStage='local';
+        img.src=fallback;
+      }
+    }else if(verified&&localLikePoster(img)){
+      promotePoster(img,verified,name);
+    }
   }
 
   function ensurePlayerHost(anchor,id){if(!anchor)return null;let host=document.getElementById(id);if(host)return host;host=document.createElement('section');host.id=id;host.className='matchapp-media-preview';host.hidden=true;anchor.insertAdjacentElement('afterend',host);return host;}
@@ -525,31 +591,65 @@
     await Promise.all(Array.from({length:Math.min(TRENDING_CONCURRENCY,cards.length)},worker));
   }
 
+  async function resolvePoster(title,opts={}){
+    let meta=await lookup(title,opts);
+    if(meta)meta=await refreshExact(meta);
+    if(!safePoster(meta)){
+      const live=await lookupLive(title,opts);
+      if(live)meta=meta?{...meta,...live}:live;
+    }
+    return {url:safePoster(meta)||'',meta:meta||null};
+  }
+
   let mainSerial=0;
   async function enrichMain(){
     const titleEl=document.getElementById('res-title');
     const resultRoot=document.getElementById('result-card')||document.getElementById('result-box');
     if(!titleEl||!resultRoot||resultRoot.hidden||resultRoot.style.display==='none')return;
-    const title=titleEl.textContent.trim();
+    const title=String(window.globalMatchTitle||titleEl.textContent||'').trim();
     if(!title||title==='Title')return;
     const serial=++mainSerial;
     const anchor=document.getElementById('res-platform-badge')||document.getElementById('res-synopsis')||document.getElementById('res-actions')||titleEl;
     const availabilityHost=ensurePlayerHost(anchor,'matchapp-main-availability');
     const host=ensurePlayerHost(availabilityHost||anchor,'matchapp-main-preview');
-    let meta=await lookup(title);
-    if(meta)meta=await refreshExact(meta);
-    if(!meta){
-      let opts={};
-      try{
-        const entry=typeof CONTENT_CATALOG!=='undefined'?CONTENT_CATALOG.find(e=>e?.title===title):null;
-        opts={year:entry?.year||'',cats:entry?.cats||[],kind:window.tmdbKindForCats?.(entry?.cats||[])||''};
-      }catch(_){}
-      meta=await lookupLive(title,opts);
-    }
+
+    const identity=(window.currentMatchIdentity&&normalise(window.currentMatchIdentity.title)===normalise(title))
+      ? window.currentMatchIdentity:{};
+    let opts={
+      year:identity.year||'',
+      cats:Array.isArray(identity.cats)?identity.cats:[],
+      kind:identity.kind||'',
+      tmdbId:identity.tmdbId||null,
+      priority:true
+    };
+    try{
+      const entry=typeof CONTENT_CATALOG!=='undefined'?CONTENT_CATALOG.find(e=>e?.title===title):null;
+      if(entry)opts={
+        ...opts,
+        year:opts.year||entry.year||'',
+        cats:opts.cats.length?opts.cats:(entry.cats||[]),
+        kind:opts.kind||(window.tmdbKindForCats?.(entry.cats||[])||'')
+      };
+    }catch(_){}
+
+    const resolved=await resolvePoster(title,opts);
     if(serial!==mainSerial)return;
-    if(!meta){applyDetails(null);renderPreview(host,null,{title});const poster=document.getElementById('res-poster-img');if(poster)hardenImage(poster,title,null);return;}
-    const poster=document.getElementById('res-poster-img');if(poster){poster.dataset.matchappMediaTitle=title;poster.dataset.matchappFallbackStage='';const p=safePoster(meta);if(p&&(!poster.src||poster.src.startsWith('data:')))poster.src=p;hardenImage(poster,title,meta);}
-    applyDetails(meta);renderAvailability(availabilityHost,meta,{title});renderPreview(host,meta,{title});
+    const meta=resolved.meta;
+    const poster=document.getElementById('res-poster-img');
+
+    if(poster){
+      poster.dataset.matchappMediaTitle=title;
+      hardenImage(poster,title,meta);
+      if(resolved.url)promotePoster(poster,resolved.url,title);
+    }
+    if(!meta){
+      applyDetails(null);
+      renderPreview(host,null,{title});
+      return;
+    }
+    applyDetails(meta);
+    renderAvailability(availabilityHost,meta,{title});
+    renderPreview(host,meta,{title});
   }
 
   let kidsSerial=0,kidsEnrichTimer=0;
@@ -629,6 +729,6 @@
       queueKidsEnrich();
     });
   }
-  window.MatchAppCatalogMedia=Object.freeze({lookup,lookupLive,refreshExact,normalise,localPoster,enrichMain,enrichKids,enrichTrendingRail,renderPreview,renderAvailability,availability,streamingElsewhere,viewingTarget,providerLinks,providerSearch,showtimesUrl,sourcePage,regionCode,countryName,titleKeysForGenres,availableGenres,syncGenreFilter});
+  window.MatchAppCatalogMedia=Object.freeze({lookup,lookupLive,refreshExact,resolvePoster,normalise,localPoster,enrichMain,enrichKids,enrichTrendingRail,renderPreview,renderAvailability,availability,streamingElsewhere,viewingTarget,providerLinks,providerSearch,showtimesUrl,sourcePage,regionCode,countryName,titleKeysForGenres,availableGenres,syncGenreFilter});
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
 })();
