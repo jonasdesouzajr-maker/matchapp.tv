@@ -21,3 +21,88 @@
   body.page-home .matchapp-notification-button{border-radius:12px!important}
   .matchapp-notification-floating{top:10px!important;right:10px!important;width:40px!important;height:40px!important;border-radius:50%!important}
 }
+
+/* Taste DNA suggestion cards + per-notification delete controls */
+.matchapp-notification-item{
+  position:relative;
+  display:block;
+  padding:0;
+  border:0;
+  border-bottom:1px solid rgba(255,255,255,.055);
+  background:transparent;
+  color:#fff;
+}
+.matchapp-notification-item:hover{background:rgba(255,255,255,.045)}
+.matchapp-notification-item.is-unread{background:linear-gradient(90deg,rgba(229,193,88,.11),transparent)}
+.matchapp-notification-open{
+  width:100%;
+  display:grid;
+  grid-template-columns:34px minmax(0,1fr);
+  gap:10px;
+  align-items:start;
+  text-align:left;
+  padding:14px 52px 14px 16px;
+  border:0;
+  background:transparent;
+  color:inherit;
+  cursor:pointer;
+  font:inherit;
+}
+.matchapp-notification-item.is-suggestion .matchapp-notification-open{
+  grid-template-columns:62px minmax(0,1fr);
+  padding-block:12px;
+}
+.matchapp-notification-poster{
+  width:62px;
+  height:92px;
+  object-fit:contain;
+  object-position:center;
+  border-radius:9px;
+  border:1px solid rgba(229,193,88,.34);
+  background:rgba(255,255,255,.035);
+  box-shadow:0 8px 22px rgba(0,0,0,.28);
+}
+.matchapp-notification-taste{
+  color:#E5C158!important;
+  font-size:9px!important;
+  font-weight:900;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.matchapp-notification-delete{
+  position:absolute;
+  top:9px;
+  right:10px;
+  z-index:1;
+  display:grid;
+  place-items:center;
+  width:31px;
+  height:31px;
+  padding:0;
+  border:1px solid rgba(255,82,82,.34);
+  border-radius:10px;
+  background:rgba(255,82,82,.08);
+  color:#ff5b66;
+  cursor:pointer;
+}
+.matchapp-notification-delete:hover,
+.matchapp-notification-delete:focus-visible{
+  background:rgba(255,82,82,.17);
+  border-color:rgba(255,82,82,.72);
+  outline:none;
+}
+.matchapp-notification-delete svg{
+  width:16px;
+  height:16px;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:1.8;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+@media(max-width:600px){
+  .matchapp-notification-open{padding:13px 48px 13px 13px}
+  .matchapp-notification-item.is-suggestion .matchapp-notification-open{grid-template-columns:56px minmax(0,1fr)}
+  .matchapp-notification-poster{width:56px;height:84px}
+  .matchapp-notification-delete{top:8px;right:8px}
+}
