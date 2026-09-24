@@ -212,3 +212,102 @@ html.matchapp-android body.page-home :is(
 ){
   border-color:rgba(229,193,88,.38)!important;
 }
+
+
+/* 2026-09-24 premium How it works CTA.
+   Visual-only recreation of the approved gold/violet glass pill. The existing
+   onboarding click handler and text stay untouched. Shared Home CSS means the
+   same treatment reaches desktop, phones, tablets and the Android WebView. */
+html body.page-home :is(.ma-how-link,.ma-how-button){
+  --ma-how-gold:#f6d36f;
+  --ma-how-gold-soft:#fff0bd;
+  --ma-how-violet:#a54cff;
+  position:relative!important;
+  isolation:isolate!important;
+  overflow:hidden!important;
+  appearance:none!important;
+  -webkit-appearance:none!important;
+  min-height:52px!important;
+  padding:0 26px!important;
+  border:1px solid transparent!important;
+  border-radius:999px!important;
+  background:
+    linear-gradient(145deg,rgba(74,49,102,.78) 0%,rgba(39,20,67,.90) 48%,rgba(24,10,49,.96) 100%) padding-box,
+    linear-gradient(105deg,#ffe79a 0%,#e7b84c 28%,#f6c96d 46%,#9f55ff 78%,#d678ff 100%) border-box!important;
+  color:#fff3d3!important;
+  font:800 clamp(14px,1.5vw,18px)/1 Outfit,Inter,system-ui,sans-serif!important;
+  letter-spacing:.01em!important;
+  text-shadow:0 1px 1px rgba(31,12,36,.55),0 0 16px rgba(255,235,176,.12)!important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.32),
+    inset 0 -12px 28px rgba(25,7,48,.34),
+    0 10px 28px rgba(0,0,0,.30),
+    -4px 0 18px rgba(235,185,69,.22),
+    4px 0 22px rgba(166,77,255,.24)!important;
+  cursor:pointer!important;
+  transform:translateZ(0)!important;
+  transition:transform .18s ease,box-shadow .18s ease,filter .18s ease!important;
+}
+html body.page-home :is(.ma-how-link,.ma-how-button)::before{
+  content:""!important;
+  position:absolute!important;
+  z-index:-1!important;
+  pointer-events:none!important;
+  left:5%!important;right:5%!important;top:4px!important;
+  height:48%!important;
+  border-radius:999px!important;
+  background:linear-gradient(180deg,rgba(255,255,255,.25),rgba(255,255,255,.07) 55%,transparent)!important;
+  filter:blur(.1px)!important;
+}
+html body.page-home :is(.ma-how-link,.ma-how-button)::after{
+  content:""!important;
+  position:absolute!important;
+  z-index:-2!important;
+  pointer-events:none!important;
+  inset:-10px!important;
+  border-radius:999px!important;
+  background:
+    radial-gradient(circle at 18% 50%,rgba(246,211,111,.28),transparent 38%),
+    radial-gradient(circle at 84% 50%,rgba(165,76,255,.30),transparent 42%)!important;
+  filter:blur(14px)!important;
+  opacity:.82!important;
+}
+@media(hover:hover){
+  html body.page-home :is(.ma-how-link,.ma-how-button):hover{
+    transform:translateY(-2px) scale(1.025)!important;
+    filter:saturate(1.08) brightness(1.05)!important;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.42),
+      inset 0 -12px 30px rgba(25,7,48,.30),
+      0 14px 34px rgba(0,0,0,.34),
+      -5px 0 24px rgba(235,185,69,.34),
+      5px 0 30px rgba(166,77,255,.36)!important;
+  }
+}
+html body.page-home :is(.ma-how-link,.ma-how-button):active{
+  transform:translateY(0) scale(.985)!important;
+}
+html body.page-home :is(.ma-how-link,.ma-how-button):focus-visible{
+  outline:2px solid #fff0bd!important;
+  outline-offset:4px!important;
+  box-shadow:
+    0 0 0 5px rgba(165,76,255,.18),
+    0 12px 32px rgba(0,0,0,.32),
+    -4px 0 20px rgba(235,185,69,.30),
+    4px 0 24px rgba(166,77,255,.30)!important;
+}
+@media(max-width:700px){
+  html body.page-home :is(.ma-how-link,.ma-how-button){
+    min-height:44px!important;
+    padding:0 18px!important;
+    font-size:13.5px!important;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  html body.page-home :is(.ma-how-link,.ma-how-button){
+    transition:none!important;
+  }
+}
+html.reduce-motion body.page-home :is(.ma-how-link,.ma-how-button){
+  transition:none!important;
+}
