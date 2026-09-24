@@ -1,4 +1,4 @@
-/* Approved Home chrome — 2026-09-24 edge2. Idempotent overlay only. */
+/* Approved Home chrome — 2026-09-24 desktopscan1. Idempotent overlay only. */
 (function () {
   'use strict';
   if (!document.getElementById('ma-discover-composer-css')) {
@@ -22,7 +22,7 @@
     approvedLink.rel = 'stylesheet';
     (document.head || document.documentElement).appendChild(approvedLink);
   }
-  approvedLink.href = '/home-approved.css?v=20260924-howcta1';
+  approvedLink.href = '/home-approved.css?v=20260924-desktopscan1';
   if (!document.getElementById('ma-install-onetap')) {
     var ot=document.createElement('script');
     ot.id='ma-install-onetap';
