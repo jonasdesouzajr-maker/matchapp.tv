@@ -3345,7 +3345,15 @@ async function aiProposedVerifiedExact(requested){
             platform:verifiedPlatform,platformVerified:platform.length>0,
             cats:cat.length?cat:[base.kind==='movie'?'movie':'series'],
             moods:mood,vibes:vibe,ratings:rating,source:'tmdb-exact-live',
-            _tmdbId:base.tmdbId,_tmdbKind:base.kind
+            _tmdbId:base.tmdbId,_tmdbKind:base.kind,
+            // This title has already been verified against this exact TMDB
+            // numeric identity. Preserve its real artwork instead of throwing
+            // that proof away and forcing renderResult to identify the work
+            // all over again from title text.
+            _meta:{
+                artwork:(d.posterLarge||d.posterOriginal||d.poster||base.posterLarge||base.posterOriginal||base.poster||null),
+                tmdbId:base.tmdbId,kind:base.kind
+            }
         };
     }
     return null;
@@ -4297,7 +4305,23 @@ async function renderResult(selected, isSpecificSearch) {
     const titleEl = document.getElementById('res-title');
     if (titleEl) titleEl.innerText = sanitizeDisplayText(selected.title, ['title']);
     rememberShownTitle(selected.title);
-    document.dispatchEvent(new CustomEvent('matchapp:newmatch'));
+
+    // Keep the exact identity beside the rendered title. Media enrichment runs
+    // in a separate shared module and previously received only title text, so a
+    // live-discovered title could lose the year/type/TMDB identity that had
+    // already been source-verified by the matcher. That is how real posters
+    // fell back to branded placeholders even though TMDB had the artwork.
+    window.currentMatchIdentity = {
+        title:selected.title,
+        year:selected.year||'',
+        country:selected.country||'',
+        countryCode:selected.countryCode||'',
+        cats:Array.isArray(selected.cats)?selected.cats:[],
+        tmdbId:Number(selected._tmdbId||selected._meta?.tmdbId)||null,
+        kind:selected._tmdbKind||selected._meta?.kind||'',
+        artwork:selected._meta?.artwork||''
+    };
+    document.dispatchEvent(new CustomEvent('matchapp:newmatch',{detail:window.currentMatchIdentity}));
 
     // Computed ONCE and shared by both the poster lookup below and
     // hydrateTitleFacts(). Previously each ran its own separate,
@@ -4308,11 +4332,29 @@ async function renderResult(selected, isSpecificSearch) {
     // thrown away. The poster and the "2023 · Japan" caption under it could
     // therefore each be right about a DIFFERENT show. One shared hints object
     // closes that gap at the source rather than patching either lookup alone.
-    let matchHints = {};
+    let matchHints = {
+        year:selected.year||'',
+        country:selected.country||'',
+        countryCode:selected.countryCode||'',
+        cats:Array.isArray(selected.cats)?selected.cats:[],
+        kind:selected._tmdbKind||selected._meta?.kind||'',
+        // Poster resolution is a user-visible result path. Let the TMDB proxy
+        // use its bounded transient retry instead of turning one busy request
+        // into a branded placeholder for a title that has real artwork.
+        priority:true
+    };
     try {
         if (typeof CONTENT_CATALOG !== 'undefined') {
             const e = CONTENT_CATALOG.find(x => x.title === selected.title);
-            if (e) matchHints = { year: e.year, country: e.country, countryCode: e.countryCode, cast: e.cast, cats: e.cats };
+            if (e) matchHints = {
+                ...matchHints,
+                year:matchHints.year||e.year||'',
+                country:matchHints.country||e.country||'',
+                countryCode:matchHints.countryCode||e.countryCode||'',
+                cast:e.cast,
+                cats:matchHints.cats.length?matchHints.cats:(e.cats||[]),
+                kind:matchHints.kind||(window.tmdbKindForCats?.(e.cats||[])||'')
+            };
         }
     } catch (err) {}
 
