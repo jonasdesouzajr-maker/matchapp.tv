@@ -3954,7 +3954,15 @@ window.triggerMatch = async function(isSpecificSearch = false) {
             matchResult.synopsisLang=window.MATCH_LANG||'en';
         }
     }
-    const resultWasKnown = !!(matchResult && window.matchPolicy?.known().has(window.matchPolicy.key(matchResult.title)));
+    // An intentional exhaustion recovery is allowed to reuse an older exact
+    // catalogue title. Only our internal recycle pickers can set this escape;
+    // every ordinary result still obeys the permanent history boundary.
+    const intentionalHistoryFallback = !!(matchResult
+        && matchResult._historyFallback === true
+        && (matchResult.source === 'catalog-recycle' || matchResult.source === 'catalog-guaranteed-recycle'));
+    const resultWasKnown = !!(matchResult
+        && !intentionalHistoryFallback
+        && window.matchPolicy?.known().has(window.matchPolicy.key(matchResult.title)));
     if (!matchResult || resultWasKnown) {
         clearInterval(timerInterval);
         document.body.classList.remove('match-searching');
