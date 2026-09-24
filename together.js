@@ -461,8 +461,25 @@ function tgRenderResult(result, participants) {
                 if (e) posterHints = { year: e.year, country: e.country, countryCode: e.countryCode, cats: e.cats };
             }
         } catch (err) {}
-        if (typeof getRealCoverImage === 'function') {
-            getRealCoverImage(result.title, posterHints).then(url => { if (url) img.src = url; }).catch(() => {});
+        const promote = url => {
+            if (!url) return;
+            const probe = new Image();
+            probe.onload = () => { if (img.isConnected) img.src = url; };
+            probe.onerror = () => {};
+            probe.src = url;
+        };
+        if (window.MatchAppCatalogMedia?.resolvePoster) {
+            const cat = result?.merged?.cat && result.merged.cat !== 'any' ? [result.merged.cat] : [];
+            const kind = window.tmdbKindForCats?.(cat) || '';
+            window.MatchAppCatalogMedia.resolvePoster(result.title,{
+                year:result.year||'',cats:cat,kind,priority:true
+            }).then(r => promote(r?.url)).catch(() => {
+                if (typeof getRealCoverImage === 'function') {
+                    getRealCoverImage(result.title, posterHints).then(promote).catch(() => {});
+                }
+            });
+        } else if (typeof getRealCoverImage === 'function') {
+            getRealCoverImage(result.title, posterHints).then(promote).catch(() => {});
         }
     }
 
