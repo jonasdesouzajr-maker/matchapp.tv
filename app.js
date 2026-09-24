@@ -3220,9 +3220,9 @@ async function discoverVerifiedExactTMDB(requested){
     // exclusions still win, and every candidate is fully verified below.
     const candidateWindow=candidates.slice(0,provider?60:40);
     const head=Math.min(candidateWindow.length,12);
-    const start=head>1?Math.floor(Math.random()*head):0;
-    const orderedCandidates=start
-      ? candidateWindow.slice(start).concat(candidateWindow.slice(0,start))
+    const rotationStart=head>1?Math.floor(Math.random()*head):0;
+    const orderedCandidates=rotationStart
+      ? candidateWindow.slice(rotationStart).concat(candidateWindow.slice(0,rotationStart))
       : candidateWindow;
     for(const base of orderedCandidates){
       const key=window.matchPolicy?.key?.(base.title)||'';
