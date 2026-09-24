@@ -190,3 +190,45 @@ body.page-kids .kids-primary{
   .ma-confirm-actions{display:grid;grid-template-columns:1fr 1fr}
   .ma-confirm-actions button{width:100%}
 }
+
+
+/* Compact top disclosure: server-rendered in normal flow, so it cannot cause CLS. */
+.matchapp-growth-disclosure{
+  position:relative;
+  width:min(1180px,calc(100% - 28px));
+  margin:10px auto 12px;
+  padding:10px 14px;
+  box-sizing:border-box;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  border:1px solid rgba(229,193,88,.28);
+  border-radius:16px;
+  background:
+    radial-gradient(circle at 8% 50%,rgba(124,58,237,.14),transparent 32%),
+    linear-gradient(90deg,rgba(14,10,25,.88),rgba(25,16,44,.78),rgba(14,10,25,.88));
+  -webkit-backdrop-filter:blur(18px) saturate(135%);
+  backdrop-filter:blur(18px) saturate(135%);
+  box-shadow:0 10px 28px rgba(0,0,0,.24),inset 0 1px 0 rgba(255,255,255,.045);
+  color:#ddd5e8;
+  font:650 12px/1.45 Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  text-align:center;
+}
+.matchapp-growth-orb{
+  display:grid;place-items:center;flex:0 0 28px;width:28px;height:28px;
+  border-radius:50%;border:1px solid rgba(255,231,132,.55);
+  background:linear-gradient(145deg,rgba(124,58,237,.42),rgba(229,193,88,.16));
+  color:#ffe681;font-size:14px;
+  box-shadow:0 0 18px rgba(229,193,88,.18),inset 0 1px 0 rgba(255,255,255,.10)
+}
+.matchapp-growth-copy{min-width:0}
+.matchapp-growth-copy strong{color:#fff4bd;font-weight:900}
+.matchapp-growth-copy span{color:#f0cfff}
+@media(max-width:640px){
+  .matchapp-growth-disclosure{
+    width:calc(100% - 20px);margin:8px auto 10px;padding:9px 11px;
+    justify-content:flex-start;text-align:left;border-radius:14px;font-size:11.5px
+  }
+  .matchapp-growth-orb{flex-basis:26px;width:26px;height:26px;font-size:13px}
+}
