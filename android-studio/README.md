@@ -42,7 +42,7 @@ Both Android modules remain WebView shells over live production:
 - Kids app launch: `https://matchapp.tv/kids/?utm_source=android_kids_app&appBuild=27`
 - Both apps cold-load production on launch and manual refresh to avoid stale WebView content, then resume normal caching after the page renders.
 - The standard app receives the new Taste DNA daily suggestion notifications, poster/synopsis cards and per-notification delete controls directly from the live shared web runtime.
-- Expanded grown-up Global Events (US, UK, Canada, Brazil and existing verified events) are delivered through the same production WebView, with countdowns, premium covers, MatchApp Ai handoff and official-source guides. The Kids app remains excluded from this adult event surface.
+- Expanded grown-up Global Events (US, UK, Canada, Brazil, Australia, Japan and existing verified events) are delivered through the same production WebView, with countdowns, premium covers, MatchApp Ai handoff and official-source guides. The Kids app remains excluded from this adult event surface.
 - The dedicated Kids app remains inside the Kids-only surface and does not expose adult Taste DNA suggestions; its native build markers are advanced in the same release so both Android Studio modules stay synchronized.
 - The standard app blocks Kids routes and hides the Kids entry only inside its native shell.
 - The Kids app blocks non-Kids routes internally and exposes only the guarded parent handoff to grown-up mode.
