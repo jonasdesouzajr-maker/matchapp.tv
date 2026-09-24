@@ -590,12 +590,6 @@ window.onVoiceRateChange = function() {
     localStorage.setItem('match_voice_rate', rate);
 };
 
-window.onVoiceAutoreadChange = function() {
-    const box = document.getElementById('voice-autoread');
-    if (!box) return;
-    localStorage.setItem('match_voice_autoread', box.checked ? 'true' : 'false');
-    if (window.MatchSettings) window.MatchSettings.set('autoRead', box.checked);
-};
 
 window.testVoiceSample = function() {
     if (!('speechSynthesis' in window)) return;
@@ -628,12 +622,10 @@ window.testVoiceSample = function() {
 
 document.addEventListener('DOMContentLoaded', () => {
     const rateSlider = document.getElementById('voice-rate');
-    const autoreadBox = document.getElementById('voice-autoread');
     if (rateSlider) {
         const savedRate = localStorage.getItem('match_voice_rate');
         if (savedRate) { rateSlider.value = savedRate; onVoiceRateChange(); }
     }
-    if (autoreadBox) autoreadBox.checked = window.MatchSettings ? window.MatchSettings.get('autoRead') !== false : localStorage.getItem('match_voice_autoread') !== 'false';
 
     populateVoiceList();
     if ('speechSynthesis' in window) speechSynthesis.onvoiceschanged = populateVoiceList;
@@ -821,7 +813,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         /* ---- toggles ---- */
         [['set-compact','compactCards'], ['set-lazy','lazyDefault'],
-         ['set-autoread','autoRead'],    ['set-motion','reduceMotion']].forEach(([id, key]) => {
+         ['set-motion','reduceMotion']].forEach(([id, key]) => {
             const el = $(id);
             if (!el) return;
             el.checked = !!cur[key];
