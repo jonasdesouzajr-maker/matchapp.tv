@@ -3106,7 +3106,11 @@ const MOOD_SOURCE_GENRES={
     'intense and thrilling':['Thriller','Action','Crime'],
     'dark and gritty':['Crime','Thriller'],
     'light and feel-good':['Comedy','Family','Animation'],
-    'cozy comfort watch':['Comedy','Family','Romance'],
+    // Comfort must not collapse into "anything romantic". Pure Romance/Drama
+    // was admitting emotionally heavy films (including illness/grief stories)
+    // as "cozy" just because TMDB tagged them Romance. Rom-coms still qualify
+    // through Comedy; family comfort qualifies through Family.
+    'cozy comfort watch':['Comedy','Family'],
     'mind-bending':['Mystery','Science Fiction','Fantasy'],
     'inspiring':['Documentary','Drama','Family'],
     'epic and adventurous':['Adventure','Action','Fantasy'],
@@ -3117,6 +3121,27 @@ const COUNTRY_CATEGORY_CODES={
     'Bollywood':['IN'],'Nollywood':['NG'],'novela brasileira':['BR'],
     'telenovela':['MX','CO','AR','CL','BR'],'European cinema':['GB','FR','DE','ES','IT','PT','IE','BE','NL','SE','NO','DK','FI','PL','GR','CH']
 };
+
+// Live TMDB discovery can verify genres, but a genre alone is not always enough
+// to prove a MatchApp mood. Keep this gate source-backed and conservative.
+// In particular, "cozy comfort watch" must not accept a heavy Drama/Romance
+// merely because Romance appears in its genre list.
+const COZY_BLOCKED_GENRES=new Set(['Horror','Thriller','War']);
+const COZY_HEAVY_TEXT=/\b(?:murder(?:ed|er)?|serial killer|kidnap(?:ped|ping)?|hostage|tortur(?:e|ed)|terminal(?:ly)?|cancer|dying|death|funeral|grief|organ donor|organ transplant|sick child|critically ill|life[- ]threatening|war zone|revenge killing)\b/i;
+function moodFitsVerified(wanted,genres,overview){
+    if(!wanted.length)return true;
+    const gs=Array.isArray(genres)?genres:[];
+    const text=String(overview||'');
+    return wanted.some(m=>{
+      const mapped=MOOD_SOURCE_GENRES[m]||[];
+      if(!mapped.length||!mapped.some(g=>gs.includes(g)))return false;
+      if(m==='cozy comfort watch'){
+        if(gs.some(g=>COZY_BLOCKED_GENRES.has(g)))return false;
+        if(COZY_HEAVY_TEXT.test(text))return false;
+      }
+      return true;
+    });
+}
 function canonicalProviderName(value){
     const s=String(value||'').toLowerCase();
     if(s.includes('netflix'))return'netflix';
@@ -3187,7 +3212,19 @@ async function discoverVerifiedExactTMDB(requested){
     const provider=platform.length===1?platform[0]:'';
     const candidates=await window.tmdbDiscover({kind,genre_ids:genreIds,original_language:cat.includes('anime')?'ja':'',decade_start:start||0,pages:provider?3:2,provider,region},{priority:true});
     const prefs=currentPreferenceExclusions(),known=window.matchPolicy?.known?.()||new Set();
-    for(const base of candidates.slice(0,provider?30:20)){
+
+    // TMDB Discover is popularity-sorted. Starting at row 0 on every device
+    // made the same first qualifying title become the de-facto "only" answer
+    // for a filter combination (the reported Comfort + Movie + Netflix case).
+    // Rotate within the highest-quality slice before verification. History
+    // exclusions still win, and every candidate is fully verified below.
+    const candidateWindow=candidates.slice(0,provider?60:40);
+    const head=Math.min(candidateWindow.length,12);
+    const start=head>1?Math.floor(Math.random()*head):0;
+    const orderedCandidates=start
+      ? candidateWindow.slice(start).concat(candidateWindow.slice(0,start))
+      : candidateWindow;
+    for(const base of orderedCandidates){
       const key=window.matchPolicy?.key?.(base.title)||'';
       if(!key||known.has(key)||SESSION_SHOWN.has(base.title))continue;
       const d=await window.tmdbDetails(base.tmdbId,base.kind,{priority:true});
@@ -3202,7 +3239,7 @@ async function discoverVerifiedExactTMDB(requested){
       if(countries.some(x=>prefs.countries.has(String(x).toUpperCase())))continue;
       if(genres.some(g=>prefs.genres.has(String(g).toLowerCase())))continue;
       if(realGenres.length&&!genres.some(g=>realGenres.includes(g)))continue;
-      if(mood.length&&!mood.some(m=>(MOOD_SOURCE_GENRES[m]||[]).some(g=>genres.includes(g))))continue;
+      if(!moodFitsVerified(mood,genres,d?.overview||base.overview||''))continue;
       if(!categoryFitsVerified(base.kind,genres,countries,cat))continue;
       if(decade.length&&!decade.some(dec=>{const s=Number(String(dec).match(/\d{4}/)?.[0]);const y=Number(d?.year||base.year);return s&&y>=s&&y<s+10;}))continue;
       if(d && !sourceRatingFits(d.contentRating,rating))continue;
@@ -3289,7 +3326,7 @@ async function aiProposedVerifiedExact(requested){
         if(genres.some(g=>prefs.genres.has(String(g).toLowerCase())))continue;
         if(realGenres.length&&!genres.some(g=>realGenres.includes(g)))continue;
         const mappable=mood.filter(m=>(MOOD_SOURCE_GENRES[m]||[]).length);
-        if(mappable.length&&!mappable.some(m=>MOOD_SOURCE_GENRES[m].some(g=>genres.includes(g))))continue;
+        if(mappable.length&&!moodFitsVerified(mappable,genres,d.overview||base.overview||''))continue;
         if(!categoryFitsVerified(base.kind,genres,countries,cat))continue;
         if(decade.length&&!decade.some(dec=>{const s=Number(String(dec).match(/\d{4}/)?.[0]);const y=Number(d.year||base.year);return s&&y>=s&&y<s+10;}))continue;
         if(!sourceRatingFits(d.contentRating,rating))continue;
@@ -3356,6 +3393,12 @@ function rememberShownTitle(title) {
     // plenty of room while making a repeat genuinely uncommon.
     recentTitles = [...new Set(recentTitles)].slice(0, 30);
     localStorage.setItem('match_recentTitles', JSON.stringify(recentTitles));
+
+    // Also use the shared history policy. Local recentTitles protects this
+    // browser; matchPolicy.remember persists signed-in history so the same
+    // live-discovered title is excluded on desktop, phone, tablet and Android
+    // WebView instead of becoming "fresh" again on every device.
+    try { window.matchPolicy?.remember?.({title}, 'shown'); } catch (_) {}
 }
 
 // ----------------------------------------------------
