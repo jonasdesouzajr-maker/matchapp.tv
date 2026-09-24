@@ -558,7 +558,7 @@
   function paintMatch(item){
     document.getElementById('kids-watch-name').textContent=item.title;
     const sourceCategories=item.cats.map(categoryLabel).filter(Boolean).join(' · ');
-    document.getElementById('kids-match-detail').innerHTML='<div class="kids-result-art"><img id="kid-detail-'+slug(item)+'" src="'+makePoster(item)+'" width="600" height="900" alt="'+escapeHTML(item.title)+'"></div><div><p class="kids-result-meta">'+escapeHTML([item.year,tr(item.type),sourceCategories,tr('quotaUsed')].filter(Boolean).join(' · '))+'</p><h3>'+escapeHTML(tr('synopsis'))+'</h3><p>'+escapeHTML(description(item))+'</p><p class="kids-title-note">'+escapeHTML(item.note?tr(item.note):'')+'</p></div>';
+    document.getElementById('kids-match-detail').innerHTML='<div class="kids-result-art"><img id="kid-detail-'+slug(item)+'" data-poster-title="'+escapeHTML(item.title)+'" src="'+makePoster(item)+'" width="600" height="900" alt="'+escapeHTML(item.title)+'"></div><div><p class="kids-result-meta">'+escapeHTML([item.year,tr(item.type),sourceCategories,tr('quotaUsed')].filter(Boolean).join(' · '))+'</p><h3>'+escapeHTML(tr('synopsis'))+'</h3><p>'+escapeHTML(description(item))+'</p><p class="kids-title-note">'+escapeHTML(item.note?tr(item.note):'')+'</p></div>';
     hydratePoster(item,'detail');renderWatchLinks();
     const shareLink='https://matchapp.tv/kids/?title='+encodeURIComponent(slug(item));
     document.getElementById('kids-share-link').value=shareLink;
