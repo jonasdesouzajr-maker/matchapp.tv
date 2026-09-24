@@ -70,7 +70,7 @@ test('local poster fallback succeeds without optional metadata, including failed
 
 test('screen covers go through typed TMDB lookup before any secondary artwork source',async()=>{
   const calls=[],img={src:'',getAttribute:key=>key==='src'?img.src:key==='data-title'?'A Known Series':''};
-  const c=vm.createContext({window:{tmdbCover:async()=>{calls.push('tmdb');return 'https://image.tmdb.org/t/p/w500/correct.jpg';}},document:{querySelectorAll:()=>[img]},CONTENT_CATALOG:[{title:'A Known Series',cats:['series'],year:2024}],COVER_SAFE_MODE:new Set(),COVER_CACHE:{},OFFLINE_COVERS:{},generatedCover:t=>'data:image/svg+xml,'+t,getVerifiedPoster:()=>null,isHighRiskCategory:()=>false,getRichMetadata:async()=>{throw Error('Wrong lookup path');}});
+  const c=vm.createContext({window:{tmdbCover:async()=>{calls.push('tmdb');return 'https://image.tmdb.org/t/p/w500/correct.jpg';}},document:{querySelectorAll:()=>[img]},CONTENT_CATALOG:[{title:'A Known Series',cats:['series'],year:2024}],COVER_SAFE_MODE:new Set(),COVER_CACHE:{},OFFLINE_COVERS:{},generatedCover:t=>'data:image/svg+xml,'+t,getVerifiedPoster:()=>null,getExactCatalogPoster:async()=>null,isHighRiskCategory:()=>false,getRichMetadata:async()=>{throw Error('Wrong lookup path');}});
   vm.runInContext(declaration('getRealCoverImage')+'\n'+declaration('hydrateMarqueeCovers'),c);
   await c.hydrateMarqueeCovers();assert.deepEqual(calls,['tmdb']);assert.match(img.src,/correct.jpg$/);
 });
