@@ -68,3 +68,20 @@ Whenever I give you a task, acknowledge these instructions, confirm cross-platfo
 - Manual AdSense placements must remain responsive, policy-safe complements to Auto ads. Do not disable, replace, duplicate aggressively, or fight Auto ads unless explicitly instructed.
 - Preserve the existing AdSense publisher/client configuration unless the owner explicitly orders a change.
 
+---
+
+### 8. ABSOLUTE ADSENSE IMMUTABILITY LOCK — OWNER-ONLY
+
+**LOCK ESTABLISHED: 2026-09-24. The current AdSense configuration is production infrastructure and is immutable.**
+
+- **Auto ads remain ON:** Google AdSense Auto ads are enabled for matchapp.tv and this must never be disabled, substituted, suppressed, or worked around by repository code.
+- **Current placements are frozen:** Existing manual AdSense placements, their DOM positions/order, responsive formats, labels, desktop side rails, in-flow tablet/mobile units, Match Together full-width sponsored unit, spacing/reserved dimensions, breakpoints, and initialization behavior MUST NOT be modified, moved, removed, duplicated, resized, reformatted, refactored, or "optimized."
+- **Identifiers are frozen:** The current AdSense publisher/client ID `ca-pub-9541435081010948` and manual slot ID `2595698117` MUST NOT be changed.
+- **Protected runtime behavior:** Do not change the AdSense engine script in `index.html`, the manual unit markup, `ads-init.js`, or the active AdSense layout rules in `matchapp-ia.css` / `home-8k-layout.css`. Do not alter the current Android ad-free shell behavior as a side effect.
+- **No automated rewrite:** Bots, AI assistants, formatters, cleanup jobs, SEO jobs, UI redesigns, responsive passes, monetization experiments, and dependency upgrades must work around the locked AdSense contract rather than changing it.
+- **Do not weaken the guard:** `ADSENSE_LOCK.md`, `tests/adsense-lock.test.cjs`, `.github/workflows/adsense-lock.yml`, and the AdSense-lock steps in validation/deployment workflows are themselves protected infrastructure. Automated agents MUST NOT edit, remove, bypass, skip, regenerate, or update them to make a changed ad layout pass.
+- **Conflict protocol:** If any requested future change would touch the protected AdSense contract, leave AdSense unchanged and report the conflict instead of editing it.
+- **Only the owner can unlock it:** This lock may be changed only after a new direct instruction from the repository owner explicitly revokes or alters the AdSense lock. General requests such as "redesign the page," "optimize ads," "fix layout," or "clean up code" do NOT revoke it.
+
+The canonical locked state is documented in `ADSENSE_LOCK.md` and enforced by automated regression checks.
+

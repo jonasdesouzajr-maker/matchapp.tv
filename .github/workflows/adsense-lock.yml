@@ -1,0 +1,26 @@
+name: AdSense Immutable Lock
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: adsense-lock-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify-adsense-lock:
+    name: Verify immutable AdSense contract
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+      - name: Enforce locked production AdSense configuration
+        run: node --test --test-isolation=none tests/adsense-lock.test.cjs

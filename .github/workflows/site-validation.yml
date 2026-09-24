@@ -18,6 +18,8 @@ jobs:
         with:
           node-version: '24'
           cache: npm
+      - name: Verify immutable AdSense contract
+        run: node --test --test-isolation=none tests/adsense-lock.test.cjs
       - run: npm ci --ignore-scripts
       - name: Verify release/build metadata match
         run: |

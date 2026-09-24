@@ -1,0 +1,9 @@
+# MatchApp owner-only protection for the AdSense lock infrastructure.
+# Enforcement depends on repository branch/ruleset settings; the CI guards
+# below still run independently on every push and pull request.
+/AGENTS.md @jonasdesouzajr-maker
+/ADSENSE_LOCK.md @jonasdesouzajr-maker
+/tests/adsense-lock.test.cjs @jonasdesouzajr-maker
+/.github/workflows/adsense-lock.yml @jonasdesouzajr-maker
+/.github/workflows/pages-deploy.yml @jonasdesouzajr-maker
+/.github/workflows/site-validation.yml @jonasdesouzajr-maker
