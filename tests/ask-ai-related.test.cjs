@@ -173,7 +173,9 @@ test('Ask AI composer stays visible and voice works in the active language',()=>
   assert.match(js,/const TTS_LANG_MAP/);
   assert.match(js,/function voiceMatchesLang/);
   assert.match(js,/utter\.lang = voice\?\.lang \|\| targetLang/);
-  assert.match(js,/autoReadEnabled/);
+  assert.doesNotMatch(js,/autoReadEnabled|match_voice_autoread/);
+  assert.match(js,/speak\.onclick = \(\) => window\.readAloud\(text, speak\)/);
+  assert.match(js,/TTS is user-initiated only/);
 });
 
 test('Ask AI has a bounded local catalogue recovery without polling or UI mutation',()=>{
