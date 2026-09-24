@@ -1,8 +1,10 @@
 /* MatchApp unified notification center */
 (function(){
 'use strict';
+if(window.__MATCHAPP_NOTIFICATIONS_V2)return;
+window.__MATCHAPP_NOTIFICATIONS_V2=true;
 const VAPID_PUBLIC='BKGucCWkS-YsS6g4HnM9DYTmm1Thj-PxxVkz9hM09tGs29uABDXQgYbnF0Zooi7AnHFv7KlbPSbPErE4J76MOZs';
-let state={notifications:[],unread:0,preferences:{inApp:true,device:false,email:false,releases:true,purchases:true,friends:true,availability:true},watches:[]};
+let state={notifications:[],unread:0,preferences:{inApp:true,device:false,email:false,releases:true,purchases:true,friends:true,availability:true,suggestions:true,timezone:'UTC'},watches:[]};
 let button=null,panel=null,poll=null,busy=false,markingRead=false;
 const desktopHover=()=>!!window.matchMedia?.('(hover: hover) and (pointer: fine)').matches;
 const $=s=>document.querySelector(s);
@@ -55,9 +57,19 @@ function categoryEnabled(kind){
  if(kind==='friend_request'||kind==='match_together')return state.preferences.friends!==false;
  if(kind==='availability')return state.preferences.availability!==false;
  if(kind==='system')return state.preferences.releases!==false;
+ if(kind==='suggestion')return state.preferences.suggestions!==false;
  return true;
 }
 function fmt(date){try{return new Intl.DateTimeFormat(window.MATCH_LANG||'en',{dateStyle:'medium',timeStyle:'short'}).format(new Date(date));}catch(_){return'';}}
+
+function currentTimezone(){try{return Intl.DateTimeFormat().resolvedOptions().timeZone||'UTC';}catch(_){return'UTC';}}
+function suggestionHref(item){
+ const title=String(item?.payload?.title||'').trim();
+ return title?'/discover.html?title='+encodeURIComponent(title)+'&focus=start&source=taste-dna':(item?.href||'/discover.html');
+}
+function isExpiredSuggestion(item){
+ return item?.kind==='suggestion'&&!item?.clickedAt&&item?.expiresAt&&new Date(item.expiresAt).getTime()<=Date.now();
+}
 function localReleaseMark(item){if(item?.localRelease&&item.version)try{localStorage.setItem(releaseSeenKey(item.version),'1')}catch(_){}}
 function localReleaseMarkAll(){state.notifications.filter(n=>n.localRelease).forEach(localReleaseMark);}
 async function markAllRead(){
@@ -88,12 +100,36 @@ async function markAllRead(){
 }
 async function clickItem(item){
  localReleaseMark(item);
- if(!item.localRelease&&signed()&&!item.readAt)await change('read',{id:item.id},false);
- if(item.href)location.href=item.href;else render();
+ if(!item.localRelease&&signed()){
+   try{await change('clicked',{id:item.id},false);}catch(_){}
+ }
+ const href=item?.kind==='suggestion'?suggestionHref(item):item.href;
+ if(href)location.href=href;else render();
+}
+async function deleteItem(item){
+ if(!item)return;
+ if(item.localRelease){
+   localReleaseMark(item);
+   state.notifications=(state.notifications||[]).filter(n=>n!==item);
+   render();
+   return;
+ }
+ const previous=state.notifications;
+ state.notifications=(state.notifications||[]).filter(n=>String(n?.id)!==String(item.id));
+ render();
+ if(!signed())return;
+ try{
+   const data=await rpc('delete',{id:item.id});
+   state={...state,...data};
+ }catch(_){
+   state.notifications=previous;
+   window.showToast?.('Could not remove that notification right now.',true);
+ }
+ render();
 }
 function render(){
  if(!button||!panel)return;
- const visible=(state.notifications||[]).filter(n=>categoryEnabled(n.kind));
+ const visible=(state.notifications||[]).filter(n=>categoryEnabled(n.kind)&&!isExpiredSuggestion(n));
  const unread=visible.filter(n=>!n.readAt&&!n.localRelease).length+visible.filter(n=>n.localRelease&&localStorage.getItem(releaseSeenKey(n.version))!=='1').length;
  state.unread=unread;
  const count=button.querySelector('.matchapp-notification-count');
@@ -103,10 +139,22 @@ function render(){
  const list=panel.querySelector('.matchapp-notification-list');list.replaceChildren();
  if(!visible.length){const empty=document.createElement('p');empty.className='matchapp-notification-empty';empty.textContent=signed()?'You’re all caught up.':'Sign in to follow titles, purchases and Match Together invitations.';list.appendChild(empty);}
  visible.forEach(item=>{
-   const row=document.createElement('button');row.type='button';row.className='matchapp-notification-item'+((!item.readAt&&!item.localRelease)||item.localRelease&&localStorage.getItem(releaseSeenKey(item.version))!=='1'?' is-unread':'');
-   const icons={availability:'▶',purchase:'✓',friend_request:'♡',match_together:'✦',system:'★',account:'●'};
-   row.innerHTML='<span class="matchapp-notification-kind">'+(icons[item.kind]||'●')+'</span><span class="matchapp-notification-copy"><strong>'+esc(item.title)+'</strong><span>'+esc(item.body)+'</span><small>'+esc(fmt(item.createdAt))+'</small></span>';
-   row.addEventListener('click',()=>clickItem(item));list.appendChild(row);
+   const row=document.createElement('article');
+   row.className='matchapp-notification-item'+((!item.readAt&&!item.localRelease)||item.localRelease&&localStorage.getItem(releaseSeenKey(item.version))!=='1'?' is-unread':'')+(item.kind==='suggestion'?' is-suggestion':'');
+   const openBtn=document.createElement('button');openBtn.type='button';openBtn.className='matchapp-notification-open';
+   const icons={availability:'▶',purchase:'✓',friend_request:'♡',match_together:'✦',system:'★',account:'●',suggestion:'✦'};
+   const poster=String(item?.payload?.posterUrl||'');
+   const media=item.kind==='suggestion'&&/^https:\/\//i.test(poster)
+     ?'<img class="matchapp-notification-poster" src="'+esc(poster)+'" alt="'+esc(String(item?.payload?.title||item.title||'Suggested title'))+'" loading="lazy" decoding="async">'
+     :'<span class="matchapp-notification-kind">'+(icons[item.kind]||'●')+'</span>';
+   const taste=item.kind==='suggestion'?'<small class="matchapp-notification-taste">Taste DNA · today</small>':'';
+   openBtn.innerHTML=media+'<span class="matchapp-notification-copy">'+taste+'<strong>'+esc(item.title)+'</strong><span>'+esc(item.body)+'</span><small>'+esc(fmt(item.createdAt))+'</small></span>';
+   openBtn.addEventListener('click',()=>clickItem(item));
+   const trash=document.createElement('button');trash.type='button';trash.className='matchapp-notification-delete';trash.setAttribute('aria-label','Remove notification');
+   trash.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16"/><path d="M9 7V4h6v3"/><path d="M6.5 7l1 13h9l1-13"/><path d="M10 11v5M14 11v5"/></svg>';
+   trash.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();void deleteItem(item);});
+   row.append(openBtn,trash);list.appendChild(row);
+   row.querySelector('.matchapp-notification-poster')?.addEventListener('error',e=>{e.currentTarget.style.display='none';});
  });
  renderPrefs();
 }
@@ -124,6 +172,7 @@ function renderPrefs(){
    prefRow('Purchases & account changes','purchases',p.purchases!==false)+
    prefRow('Friends & Match Together','friends',p.friends!==false)+
    prefRow('Streaming availability I follow','availability',p.availability!==false)+
+   prefRow('Two daily Taste DNA suggestions','suggestions',p.suggestions!==false)+
    '<div class="matchapp-notification-delivery"><button type="button" data-enable-device>'+(p.device?'✓ Device notifications enabled':'Enable device notifications')+'</button><button type="button" data-enable-email>'+(p.email?'✓ Email notifications enabled':'Enable email notifications')+'</button><small>Device and email alerts are optional. In-app notifications stay available here.</small></div>';
  host.querySelectorAll('[data-notify-pref]').forEach(input=>input.addEventListener('change',()=>savePrefs({[input.dataset.notifyPref]:input.checked})));
  host.querySelector('[data-enable-device]')?.addEventListener('click',enableDevice);
@@ -163,7 +212,15 @@ async function change(action,payload,rerender=true){
 async function refresh(){
  mount();
  let server={notifications:[],unread:0,preferences:state.preferences,watches:[]};
- if(signed()){try{server=await rpc('list',{});}catch(_){}}
+ if(signed()){
+   try{
+     server=await rpc('list',{});
+     const tz=currentTimezone();
+     if(tz&&server?.preferences?.timezone!==tz){
+       server=await rpc('preferences',{timezone:tz});
+     }
+   }catch(_){}
+ }
  state={...state,...server};
  const release=await releaseItem();
  if(release){
@@ -186,7 +243,7 @@ async function followTitle(meta,region){
  }catch(_){window.showToast?.('Could not follow this title right now.',true);return false;}
 }
 function authChanged(){refresh();if(poll)clearInterval(poll);poll=setInterval(()=>{if(!document.hidden)refresh();},60000);}
-window.MatchNotifications={refresh,open,close,followTitle,enableDevice,savePrefs,markAllRead};
+window.MatchNotifications={refresh,open,close,followTitle,enableDevice,savePrefs,markAllRead,deleteItem};
 document.addEventListener('matchapp:authchange',authChanged);
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)refresh();});
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>{mount();setTimeout(refresh,800);});else{mount();setTimeout(refresh,800);}
