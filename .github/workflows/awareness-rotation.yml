@@ -8,6 +8,8 @@ on:
     paths:
       - 'awareness/calendar.json'
       - 'tools/awareness-bot.mjs'
+      - 'tools/archive-international-day.mjs'
+      - 'data/international-day.json'
   workflow_dispatch:
 
 permissions:
@@ -30,6 +32,7 @@ jobs:
           node-version: '24'
       - name: Verify official sources and rotate campaign
         run: |
+          node tools/archive-international-day.mjs
           node tools/awareness-bot.mjs
           node tools/update-sitemap.js
           node --test tests/awareness-campaign.test.cjs
@@ -44,11 +47,12 @@ jobs:
               git fetch origin main
               git reset --hard origin/main
               git clean -fd
+              node tools/archive-international-day.mjs
               node tools/awareness-bot.mjs
               node tools/update-sitemap.js
               node --test tests/awareness-campaign.test.cjs
             fi
-            git add awareness/current.json awareness/*/index.html tools/awareness-urls.json sitemap.xml sitemaps.xml
+            git add awareness/current.json awareness/*/index.html tools/awareness-urls.json data/international-day-history.json sitemap.xml sitemaps.xml
             if git diff --staged --quiet; then
               echo "Awareness state already current."
               exit 0

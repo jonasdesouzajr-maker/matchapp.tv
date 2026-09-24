@@ -7,7 +7,7 @@ Two fields on the MatchApp home page are editorial and change on a schedule:
 
 | Field | Where it lives | Who changes it |
 | --- | --- | --- |
-| **International day of…** (Events field) | `data/international-day.json` | the day-of bot, once per day |
+| **International day of…** (Events field) | `data/international-day.json` + `data/international-day-history.json` | the day-of bot + archive step |
 | **Featured title** (homepage spotlight) | the `PICK` / `PICK_COPY` objects at the top of `weekly-pick.js` | a human or a release bot, whenever the pick changes |
 
 Neither of them needs a component change. Both are data.
@@ -33,7 +33,7 @@ leave half the object behind. Every key below must be present.
   "summary": "Two or three sentences: what the day is, and the watching angle.",
   "prompt":  "The question sent to MatchApp Ai when the card is tapped. Ask for what the day is, why it falls on this date, practical tips to enjoy it, AND titles to watch tonight plus where to watch them.",
   "officialUrl": "",                   // official page if one exists, else ""
-  "image": "",                         // poster image path if one exists, else "" (a CSS plate is drawn instead)
+  "image": "/event-posters/<event>.webp", // REQUIRED: official art when available; otherwise an original event-specific cover
   "keywords": [ "…", "…" ],            // 8-12 terms, see §3
   "i18n": {
     "pt-BR": { "title": "…", "kicker": "…", "place": "…", "summary": "…", "prompt": "…" },
@@ -50,19 +50,17 @@ leave half the object behind. Every key below must be present.
   field or a false "today" claim.
 - English is the base record. Any key missing from an `i18n` block falls back
   to English, so a partial translation still renders a complete card.
-- Only one international day is shown at a time, always first in the Events
-  rail. The count chip next to "Upcoming global events" updates itself.
+- The current international day is shown first. Finished international days remain visible for **3 full days** with an **ENDED** ribbon and are moved to the **end of the Events row**. After the third full day they disappear from the Home row automatically; their indexed pages/SEO may remain.
+- Before replacing `data/international-day.json`, archive the outgoing record in `data/international-day-history.json` (deduplicated by `id`). The repository archive job also does this automatically.
 - The card's destination is always the AI chat (`/discover.html?q=…`), which
   is where the explanation and the tips come from. Do not point it at a page
   that does not exist.
-- Never invent an `officialUrl`. Empty is correct when there is no official
-  page.
+- Never invent an `officialUrl`. Empty is correct when there is no official page.
+- **Poster rule (standing instruction): never publish a blank, text-only, emoji-only, gradient-only or generic placeholder event poster anywhere on MatchApp.** Use real official event artwork whenever it is available. If no suitable official artwork exists, create a polished original cover that visually depicts that specific event only. If a required image fails to load, suppress the card rather than falling back to a text-only poster.
 
 ### What the site does with it
 
-`international-day.js` fetches the file, localizes it, inserts the card, emits
-a `schema.org/Event` JSON-LD block for it, and merges its `keywords` into the
-page's `keywords` meta. No code change is needed for a new day.
+`international-day.js` loads the current record plus the archived records, localizes them, inserts the current card first and retained ended cards last, emits `schema.org/Event` JSON-LD, and merges each visible card's `keywords` into the page keywords. Cards older than three days are not rendered on Home.
 
 ---
 

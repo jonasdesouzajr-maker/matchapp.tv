@@ -151,3 +151,19 @@ html body.page-home #global-events .ge-archive{
     max-height:252px!important;
   }
 }
+
+/* Retained ended events: visible for 3 days at the row end, then hidden by global-events.js. */
+html body.page-home #global-events article.global-event .event-badge.event-ended{
+  background:linear-gradient(135deg,#4b4652,#211e26)!important;
+  color:#f3eef6!important;
+  border-top:1px solid rgba(255,255,255,.18)!important;
+  box-shadow:0 3px 12px rgba(0,0,0,.62)!important;
+}
+html body.page-home #global-events article.international-day.id-ended-retained .event-badge.event-ended{
+  top:20px!important;
+  left:-54px!important;
+  padding:7px 60px!important;
+  background:linear-gradient(135deg,#5c5664,#25212b)!important;
+  color:#fff!important;
+  z-index:8!important;
+}

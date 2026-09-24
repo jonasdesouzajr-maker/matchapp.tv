@@ -1,6 +1,6 @@
-/* Date-aware verified entertainment events. Home hides ended cards; archive keeps history. */
+/* Date-aware verified entertainment events. Home retains ended cards for 3 days at the row end; archive keeps history. */
 (function(){'use strict';
-  const DAY=86400000;
+  const DAY=86400000,RETAIN_ENDED_DAYS=3,RETAIN_ENDED_MS=RETAIN_ENDED_DAYS*DAY;
   function labelFor(state,start,end,now){
     if(state==='upcoming'){
       const ms=Math.max(0,start-now),days=Math.ceil(ms/DAY);
@@ -15,7 +15,7 @@
     return 'Ended';
   }
   function render(){
-    const now=Date.now();
+    const now=Date.now(),retainedEnded=[];
     document.querySelectorAll('[data-event-start]').forEach(card=>{
       const start=Date.parse(card.dataset.eventStart),end=Date.parse(card.dataset.eventEnd);
       if(!Number.isFinite(start)||!Number.isFinite(end))return;
@@ -33,12 +33,15 @@
           el.textContent=new Intl.DateTimeFormat(document.documentElement.lang||'en',{dateStyle:'medium',timeZone:card.dataset.eventZone||'UTC'}).format(new Date(el.dataset.eventDate));
         }catch(_){el.textContent=String(el.dataset.eventDate||'').slice(0,10);}
       });
-      // The Home rail is strictly current/upcoming. Public event guides stay indexed.
-      const homeCard=card.closest('#global-events');
-      if(homeCard)card.hidden=state==='ended';
+      // Home keeps a finished event for 3 full days, marked Ended, then removes it from the row.
+      // Public event guides remain indexed after the Home card disappears.
+      const homeCard=card.closest('#global-events'),expired=state==='ended'&&now>end+RETAIN_ENDED_MS;
+      if(homeCard){card.hidden=expired;if(state==='ended'&&!expired)retainedEnded.push(card);}
     });
     const home=document.getElementById('global-events');
     if(home){
+      const grid=home.querySelector('.global-event-grid');
+      if(grid)retainedEnded.sort((a,b)=>Date.parse(b.dataset.eventEnd)-Date.parse(a.dataset.eventEnd)).forEach(card=>grid.appendChild(card));
       const visible=[...home.querySelectorAll('article.global-event')].filter(x=>!x.hidden).length;
       const count=home.querySelector('.ge-sum-count');if(count)count.textContent=String(visible);
     }
