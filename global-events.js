@@ -1,13 +1,47 @@
-/* Date-aware editorial viewing guides. Their explicit official routes never use AI guesses. */
+/* Date-aware verified entertainment events. Home hides ended cards; archive keeps history. */
 (function(){'use strict';
+  const DAY=86400000;
+  function labelFor(state,start,end,now){
+    if(state==='upcoming'){
+      const ms=Math.max(0,start-now),days=Math.ceil(ms/DAY);
+      if(ms<3600000)return 'Starts in <1h';
+      if(ms<DAY)return 'Starts today';
+      return 'Starts in '+days+' day'+(days===1?'':'s');
+    }
+    if(state==='live'){
+      const days=Math.max(1,Math.ceil((end-now)/DAY));
+      return 'Happening now · '+days+' day'+(days===1?'':'s')+' left';
+    }
+    return 'Ended';
+  }
   function render(){
+    const now=Date.now();
     document.querySelectorAll('[data-event-start]').forEach(card=>{
-      const now=Date.now(),start=Date.parse(card.dataset.eventStart),end=Date.parse(card.dataset.eventEnd);
+      const start=Date.parse(card.dataset.eventStart),end=Date.parse(card.dataset.eventEnd);
+      if(!Number.isFinite(start)||!Number.isFinite(end))return;
       const state=now<start?'upcoming':now>end?'ended':'live';
       const badge=card.querySelector('[data-event-status]');
-      if(badge){badge.textContent=window.t?window.t('global.'+state):state;badge.className='event-badge event-'+(state==='upcoming'?'soon':state);}
-      card.querySelectorAll('[data-event-date]').forEach(el=>{el.textContent=new Intl.DateTimeFormat(document.documentElement.lang||'en',{dateStyle:'medium',timeZone:card.dataset.eventZone||'UTC'}).format(new Date(el.dataset.eventDate));});
+      if(badge){
+        const fallback=state==='live'?'LIVE NOW':state==='ended'?'Ended':'Upcoming';
+        badge.textContent=window.t?window.t('global.'+state)||fallback:fallback;
+        badge.className='event-badge event-'+(state==='upcoming'?'soon':state);
+      }
+      const countdown=card.querySelector('[data-event-countdown]');
+      if(countdown)countdown.textContent=labelFor(state,start,end,now);
+      card.querySelectorAll('[data-event-date]').forEach(el=>{
+        try{
+          el.textContent=new Intl.DateTimeFormat(document.documentElement.lang||'en',{dateStyle:'medium',timeZone:card.dataset.eventZone||'UTC'}).format(new Date(el.dataset.eventDate));
+        }catch(_){el.textContent=String(el.dataset.eventDate||'').slice(0,10);}
+      });
+      // The Home rail is strictly current/upcoming. Public event guides stay indexed.
+      const homeCard=card.closest('#global-events');
+      if(homeCard)card.hidden=state==='ended';
     });
+    const home=document.getElementById('global-events');
+    if(home){
+      const visible=[...home.querySelectorAll('article.global-event')].filter(x=>!x.hidden).length;
+      const count=home.querySelector('.ge-sum-count');if(count)count.textContent=String(visible);
+    }
   }
   function wireEventHandoff(){
     document.addEventListener('click',event=>{
@@ -16,11 +50,12 @@
         const url=new URL(link.getAttribute('href'),location.origin);
         if(url.origin!==location.origin||!url.pathname.startsWith('/events/'))return;
         event.preventDefault();
-        location.href='/discover.html?event='+encodeURIComponent(url.pathname)+'&focus=start';
+        location.href='/discover.html?event='+encodeURIComponent(url.pathname)+'&focus=start&source=events';
       }catch(_){}
     },true);
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',render);else render();
   wireEventHandoff();
-  document.addEventListener('matchapp:langchange',render);setInterval(render,60000);
+  document.addEventListener('matchapp:langchange',render);
+  setInterval(render,60000);
 })();
