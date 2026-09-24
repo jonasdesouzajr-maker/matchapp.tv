@@ -14,7 +14,7 @@ function harness({proposals,lookup,details,known=[],shown=[]}){
   const context=vm.createContext({window,console,SESSION_SHOWN:new Set(shown),
     fetchGeminiData:async()=>({results:proposals}),
     currentPreferenceExclusions:()=>({countries:new Set(),genres:new Set()})});
-  vm.runInContext(moodGenres+'\n'+['normCriteria','canonicalProviderName','sourceRatingFits','categoryFitsVerified'].map(fn).join('\n')+'\n'+fn('aiProposedVerifiedExact'),context);
+  vm.runInContext(moodGenres+'\n'+['normCriteria','canonicalProviderName','sourceRatingFits','categoryFitsVerified','moodFitsVerified'].map(fn).join('\n')+'\n'+fn('aiProposedVerifiedExact'),context);
   return {run:requested=>context.aiProposedVerifiedExact(requested),calls};
 }
 const movie=(id,title,extra={})=>({tmdbId:id,kind:'movie',title,year:2017,genres:['Comedy','Family'],originCountries:['GB'],contentRating:'PG',availability:{BR:{stream:['Netflix']}},overview:'A bear.',...extra});
@@ -48,4 +48,29 @@ test('formats TMDB cannot verify never reach the AI stage',async()=>{
   const {run}=harness({proposals:[],lookup:{},details:{}});
   const pick=await run({cat:['podcast'],plat:[],mood:[],vibe:[],rating:[],decade:[],genre:[]});
   assert.equal(pick,null);assert.equal(asked,false);
+});
+
+
+test('cozy live verification rejects heavy romance/drama and accepts genuine comfort genres',async()=>{
+  const {run}=harness({
+    proposals:[
+      {title:'Heavy Romance',year:2024,kind:'movie'},
+      {title:'Warm Family Film',year:2023,kind:'movie'}
+    ],
+    lookup:{
+      'Heavy Romance':{tmdbId:7,kind:'movie',title:'Heavy Romance'},
+      'Warm Family Film':{tmdbId:8,kind:'movie',title:'Warm Family Film'}
+    },
+    details:{
+      7:movie(7,'Heavy Romance',{genres:['Drama','Romance'],overview:'A parent travels abroad looking for an organ donor for a critically ill child.'}),
+      8:movie(8,'Warm Family Film',{genres:['Comedy','Family'],overview:'A family reconnects over a gentle holiday weekend.'})
+    }
+  });
+  const pick=await run({cat:['movie'],plat:['Netflix'],mood:['cozy comfort watch'],vibe:[],rating:[],decade:[],genre:[]});
+  assert.equal(pick?.title,'Warm Family Film');
+});
+
+test('shown results are promoted into shared match history for cross-device repeat prevention',()=>{
+  const block=source.match(/function rememberShownTitle\(title\)[\s\S]*?\n}/)?.[0]||'';
+  assert.match(block,/matchPolicy\?\.remember\?\.\(\{title\}, 'shown'\)/);
 });
