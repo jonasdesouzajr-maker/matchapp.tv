@@ -1,0 +1,192 @@
+/* MatchApp shared frontend polish — visual/layout only, no product or matching logic. */
+
+/* Root guard: prevent accidental top-edge outlines from becoming a floating viewport rule. */
+html,body{border-top:0!important;outline:0}
+html body.page-home #mh-topbox{outline:0!important}
+
+/* Dark underlay + stronger frost so poster artwork never overwhelms foreground content. */
+body:not(.page-kids){
+  background-color:#050509!important;
+  background-image:linear-gradient(180deg,rgba(5,5,9,.78) 0%,rgba(5,5,9,.88) 48%,rgba(5,5,9,.96) 100%)!important;
+}
+body:not(.page-kids) :is(
+  .premium-card,.spotlight-card,.ma-concierge,.tg-entry,.ma-news,.global-events-fold,
+  details.premiere-disclosure,details#weekly-pick-disclosure,#swifties-spotify,
+  .chat-bubble,.chat-history-card,.portfolio-panel,.settings-panel,.tg-card
+){
+  background-color:rgba(9,9,11,.78)!important;
+  border-color:rgba(255,255,255,.10)!important;
+  -webkit-backdrop-filter:blur(24px)!important;
+  backdrop-filter:blur(24px)!important;
+}
+
+/* Ad visual shell only. Inventory, slots, breakpoints, dimensions and initialization remain locked. */
+body:not(.page-kids) :is(.premium-ad-frame,.ad-banner-container){
+  overflow:hidden!important;
+  background-color:rgba(24,24,27,.50)!important;
+}
+body:not(.page-kids) ins.adsbygoogle{
+  background-color:rgba(24,24,27,.50)!important;
+  overflow:hidden!important;
+}
+body:not(.page-kids) ins.adsbygoogle:not([data-ad-status="filled"]){
+  background-image:linear-gradient(110deg,rgba(39,39,42,.38),rgba(63,63,70,.55),rgba(39,39,42,.38))!important;
+  background-size:200% 100%!important;
+  animation:maAdFallbackPulse 1.8s ease-in-out infinite!important;
+}
+@keyframes maAdFallbackPulse{
+  0%,100%{background-position:0 50%;opacity:.82}
+  50%{background-position:100% 50%;opacity:1}
+}
+@media(prefers-reduced-motion:reduce){
+  body:not(.page-kids) ins.adsbygoogle:not([data-ad-status="filled"]){animation:none!important}
+}
+
+/* Global toast overlay: never consumes document flow or overlaps the next section boundary. */
+#toast-host{
+  position:fixed!important;
+  left:auto!important;
+  right:24px!important;
+  bottom:max(24px,env(safe-area-inset-bottom))!important;
+  transform:none!important;
+  z-index:5000!important;
+  width:min(92vw,420px)!important;
+  align-items:flex-end!important;
+  pointer-events:none!important;
+}
+#toast-host .match-toast{max-width:100%;box-sizing:border-box}
+@media(max-width:640px){
+  #toast-host{
+    left:12px!important;
+    right:12px!important;
+    bottom:max(14px,env(safe-area-inset-bottom))!important;
+    width:auto!important;
+    align-items:stretch!important;
+  }
+}
+
+/* Session-state layout reservation: signed-in controls can appear without shifting page content. */
+body.page-home #mh-topbox .mh-deck{min-height:96px!important;align-content:center!important}
+@media(max-width:700px){
+  body.page-home #mh-topbox .mh-deck{min-height:146px!important}
+}
+@media(min-width:701px) and (max-width:900px){
+  body.page-home #mh-topbox .mh-deck{min-height:102px!important}
+}
+
+/* Home fold chrome becomes a calm vertical feed rather than a ladder of heavy bars. */
+html body.page-home :is(
+  .lazy-head[data-fold-key="concierge"],
+  .lazy-head[data-fold-key="together"],
+  #premiere-disclosure>summary,
+  #weekly-pick-disclosure>summary,
+  #latest-news>summary,
+  #global-events .global-events-summary
+){
+  min-height:50px!important;
+  margin:6px 0!important;
+  padding:10px 14px!important;
+  border:1px solid rgba(255,255,255,.08)!important;
+  border-radius:14px!important;
+  background:rgba(9,9,11,.58)!important;
+  box-shadow:none!important;
+}
+html body.page-home .lazy-head[data-fold-key="together"] .lazy-head-chevron{display:none!important}
+
+/* Event posters fill the available desktop/tablet row evenly; phones retain native horizontal scrolling. */
+@media(min-width:768px){
+  html body.page-home #global-events .global-event-grid{
+    display:grid!important;
+    grid-template-columns:repeat(auto-fit,minmax(160px,1fr))!important;
+    align-items:start!important;
+    justify-content:stretch!important;
+    gap:14px!important;
+    width:100%!important;
+    min-height:0!important;
+    overflow:visible!important;
+  }
+  html body.page-home #global-events article.global-event{
+    width:100%!important;
+    min-width:0!important;
+    max-width:none!important;
+    height:auto!important;
+    min-height:0!important;
+    max-height:none!important;
+    aspect-ratio:2/3!important;
+    flex:none!important;
+  }
+}
+
+/* News and AI/result cards: breathing room, wrapped metadata, bounded titles. */
+.ma-news-card-body{padding:16px!important}
+.ma-news-card h3,
+.discover-body h3{
+  display:-webkit-box!important;
+  -webkit-box-orient:vertical!important;
+  -webkit-line-clamp:2!important;
+  overflow:hidden!important;
+}
+.ma-news-event,
+.discover-meta,
+.discover-categories,
+.discover-actions{
+  max-width:100%!important;
+}
+.discover-card{padding:20px!important}
+.discover-categories{display:flex!important;flex-wrap:wrap!important;gap:8px!important}
+.discover-actions{display:flex!important;flex-wrap:wrap!important;gap:10px!important}
+.chat-bubble{padding:20px!important}
+.chat-answer-row{min-width:0!important}
+.chat-answer-text{min-width:0!important;overflow-wrap:anywhere!important}
+@media(max-width:620px){
+  .discover-card{padding:16px!important}
+  .ma-news-card-body{padding:12px!important}
+  .chat-bubble{padding:16px!important}
+}
+
+/* One luminous primary language across adult surfaces. Cinema-specific red remains semantic. */
+body:not(.page-kids) :is(
+  .gold-btn,.ma-primary,.tg-btn-gold,.ai-new-chat,.composer-send,
+  button[data-i18n="q.submit"],.settings-save
+):not(.is-cinema){
+  background:linear-gradient(90deg,#7c3aed 0%,#6366f1 100%)!important;
+  border-color:transparent!important;
+  color:#fff!important;
+  text-shadow:none!important;
+  box-shadow:0 10px 28px rgba(99,102,241,.28)!important;
+}
+body:not(.page-kids) :is(
+  .gold-btn,.ma-primary,.tg-btn-gold,.ai-new-chat,.composer-send,
+  button[data-i18n="q.submit"],.settings-save
+):not(.is-cinema):hover{
+  filter:brightness(1.10)!important;
+}
+/* Kids keeps its own typography/shape but shares the same primary action hierarchy. */
+body.page-kids .kids-primary{
+  background:linear-gradient(90deg,#7c3aed 0%,#6366f1 100%)!important;
+  color:#fff!important;
+  box-shadow:0 .3rem 0 #4338ca,0 .6rem 1.6rem rgba(99,102,241,.22)!important;
+}
+
+/* Accessible premium confirmation dialog replacing native browser confirms. */
+.ma-confirm-overlay{
+  position:fixed;inset:0;z-index:6500;display:grid;place-items:center;padding:20px;
+  background:rgba(3,3,8,.72);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)
+}
+.ma-confirm-overlay[hidden]{display:none!important}
+.ma-confirm-dialog{
+  width:min(92vw,430px);box-sizing:border-box;padding:22px;border-radius:22px;
+  border:1px solid rgba(255,255,255,.12);background:rgba(9,9,11,.94);
+  box-shadow:0 28px 80px rgba(0,0,0,.65);color:#fff
+}
+.ma-confirm-dialog h2{margin:0 0 8px;font-size:20px;line-height:1.25}
+.ma-confirm-dialog p{margin:0;color:#cfc8dc;line-height:1.55;overflow-wrap:anywhere}
+.ma-confirm-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:20px;flex-wrap:wrap}
+.ma-confirm-actions button{min-height:44px;padding:10px 16px;border-radius:12px;font:inherit;font-weight:800;cursor:pointer}
+.ma-confirm-cancel{border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);color:#fff}
+.ma-confirm-danger{border:1px solid rgba(255,82,82,.62);background:rgba(160,24,40,.32);color:#ffb1b1}
+.ma-confirm-actions button:focus-visible{outline:2px solid #a78bfa;outline-offset:3px}
+@media(max-width:520px){
+  .ma-confirm-actions{display:grid;grid-template-columns:1fr 1fr}
+  .ma-confirm-actions button{width:100%}
+}
