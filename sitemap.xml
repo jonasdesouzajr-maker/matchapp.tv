@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://matchapp.tv/</loc>
-        <lastmod>2026-09-24T22:45:00+00:00</lastmod>
+        <lastmod>2026-09-24T23:54:12+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
@@ -20,7 +20,7 @@
     </url>
     <url>
         <loc>https://matchapp.tv/ebooks/</loc>
-        <lastmod>2026-09-24T23:36:00+00:00</lastmod>
+        <lastmod>2026-09-24T23:54:03+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -86,7 +86,7 @@
     </url>
     <url>
         <loc>https://matchapp.tv/events-archive.html</loc>
-        <lastmod>2026-09-24T22:20:05+00:00</lastmod>
+        <lastmod>2026-09-24T23:39:57+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
     </url>
@@ -116,7 +116,7 @@
     </url>
     <url>
         <loc>https://matchapp.tv/copyright.html</loc>
-        <lastmod>2026-09-24T09:59:13+00:00</lastmod>
+        <lastmod>2026-09-24T23:56:09+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.3</priority>
     </url>
@@ -1063,8 +1063,20 @@
         <priority>0.7</priority>
     </url>
     <url>
+        <loc>https://matchapp.tv/events/pax-aus-2026/</loc>
+        <lastmod>2026-09-24T23:40:57+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
         <loc>https://matchapp.tv/events/brasil-game-show-2026/</loc>
         <lastmod>2026-09-24T22:12:25+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/events/adelaide-film-festival-2026/</loc>
+        <lastmod>2026-09-24T23:40:59+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
@@ -1089,6 +1101,12 @@
     <url>
         <loc>https://matchapp.tv/events/mcm-london-comic-con-2026/</loc>
         <lastmod>2026-09-24T22:12:25+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/events/tokyo-international-film-festival-2026/</loc>
+        <lastmod>2026-09-24T23:41:00+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
@@ -1139,23 +1157,5 @@
         <lastmod>2026-09-22T14:25:39+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
-    </url>
-    <url>
-        <loc>https://matchapp.tv/events/pax-aus-2026/</loc>
-        <lastmod>2026-09-24T23:36:00+00:00</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>https://matchapp.tv/events/adelaide-film-festival-2026/</loc>
-        <lastmod>2026-09-24T23:36:00+00:00</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>https://matchapp.tv/events/tokyo-international-film-festival-2026/</loc>
-        <lastmod>2026-09-24T23:36:00+00:00</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.7</priority>
     </url>
 </urlset>
