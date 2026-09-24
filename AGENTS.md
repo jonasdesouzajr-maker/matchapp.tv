@@ -100,7 +100,7 @@ For each applicable title, include and maintain all available title metadata and
 - genres and source categories;
 - official cover and poster artwork in appropriate responsive sizes;
 - embedded official preview / trailer video when available, or the safest verified title-page fallback when no playable preview exists;
-- rating / runtime and other useful descriptive metadata when available;
+- ratings, including content/age classification and trustworthy audience/critic/user scores when available, plus runtime and other useful descriptive metadata;
 - country-appropriate viewing / availability information when that surface already supports it.
 
 Use verified, exact title identities and trusted sources. Prefer a correct real poster and verified metadata over generated fallback artwork. Generated branded artwork is a last-resort safety fallback only when no trustworthy title art can be resolved. Never substitute an unrelated poster, trailer, cast, synopsis, or metadata merely to avoid an empty field.
