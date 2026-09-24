@@ -2,13 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://matchapp.tv/</loc>
-        <lastmod>2026-09-24T16:53:58+00:00</lastmod>
+        <lastmod>2026-09-24T18:59:06+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/discover.html</loc>
-        <lastmod>2026-09-24T13:07:54+00:00</lastmod>
+        <lastmod>2026-09-24T18:03:35+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.9</priority>
     </url>
@@ -68,7 +68,7 @@
     </url>
     <url>
         <loc>https://matchapp.tv/together.html</loc>
-        <lastmod>2026-09-24T13:07:58+00:00</lastmod>
+        <lastmod>2026-09-24T18:03:52+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -1034,7 +1034,7 @@
     </url>
     <url>
         <loc>https://matchapp.tv/news/</loc>
-        <lastmod>2026-09-24T14:59:13+00:00</lastmod>
+        <lastmod>2026-09-24T19:04:43+00:00</lastmod>
         <changefreq>hourly</changefreq>
         <priority>0.8</priority>
     </url>
