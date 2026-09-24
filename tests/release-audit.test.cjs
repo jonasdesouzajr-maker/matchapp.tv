@@ -7,9 +7,10 @@ const read=p=>fs.readFileSync(path.join(root,p),'utf8');
 
 test('behavioral pages load one current shared runtime instead of stale cache keys',()=>{
   const version=(page,file)=>{
-    const esc=file.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
-    const re=new RegExp('/'+esc+'\\?v=([^"\\'\\s<]+)');
-    return (read(page).match(re)||[])[1]||'';
+    const html=read(page),marker='/'+file+'?v=';
+    const at=html.indexOf(marker);
+    if(at<0)return '';
+    return html.slice(at+marker.length).split(/["'\s<]/,1)[0];
   };
   const appPages=['index.html','discover.html','profile/profile.html','together.html','pricing/pricing.html','purchase.html','friends.html','callback.html','oauth/consent.html','events-archive.html'];
   assert.deepEqual([...new Set(appPages.map(p=>version(p,'app.js')))],['20260924-runtime1']);
