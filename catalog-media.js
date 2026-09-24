@@ -40,7 +40,7 @@
     const key=[normalise(title),opts.year||'',opts.kind||'',opts.kids?'kids':'all'].join('::');
     if(CACHE.has(key))return CACHE.get(key);if(INFLIGHT.has(key))return INFLIGHT.get(key);
     const p=(async()=>{try{
-      let q=sb.from(TABLE).select('source_key,title,year,media_kind,tmdb_id,poster_url,poster_large_url,poster_original_url,backdrop_url,overview,genres,runtime_minutes,content_rating,vote_average,original_language,preview_kind,preview_provider,preview_url,preview_embed_url,availability,kids_approved,kids_age_bands,is_catalog_title,is_trending,updated_at').eq('normalized_title',normalise(title));
+      let q=sb.from(TABLE).select('source_key,title,year,media_kind,tmdb_id,poster_url,poster_large_url,poster_original_url,backdrop_url,overview,genres,runtime_minutes,content_rating,vote_average,original_language,origin_countries,cast_members,preview_kind,preview_provider,preview_url,preview_embed_url,availability,kids_approved,kids_age_bands,is_catalog_title,is_trending,updated_at').eq('normalized_title',normalise(title));
       if(opts.year)q=q.eq('year',Number(opts.year));if(opts.kind)q=q.eq('media_kind',opts.kind);if(opts.kids)q=q.eq('kids_approved',true);
       const {data,error}=await q.order('is_catalog_title',{ascending:false}).order('updated_at',{ascending:false}).limit(4);
       if(error||!Array.isArray(data)||!data.length){CACHE.set(key,null);return null;}
@@ -77,6 +77,8 @@
         content_rating:src.contentRating||null,
         vote_average:Number.isFinite(Number(src.voteAverage))?Number(src.voteAverage):null,
         original_language:src.originalLanguage||found.originalLanguage||null,
+        origin_countries:Array.isArray(src.originCountries)?src.originCountries.filter(Boolean).slice(0,12):[],
+        cast_members:Array.isArray(src.cast)?src.cast.filter(x=>x&&x.name).slice(0,12):[],
         preview_kind:src.previewKind||null,
         preview_provider:src.previewProvider||null,
         preview_url:src.previewUrl||null,
@@ -114,8 +116,8 @@
         content_rating:d.contentRating||meta.content_rating,
         vote_average:Number.isFinite(Number(d.voteAverage))?Number(d.voteAverage):meta.vote_average,
         original_language:d.originalLanguage||meta.original_language,
-        origin_countries:Array.isArray(d.originCountries)?d.originCountries:(meta.origin_countries||[]),
-        cast:Array.isArray(d.cast)?d.cast:(meta.cast||[]),
+        origin_countries:Array.isArray(d.originCountries)&&d.originCountries.length?d.originCountries:(meta.origin_countries||[]),
+        cast_members:Array.isArray(d.cast)&&d.cast.length?d.cast:(meta.cast_members||[]),
         preview_kind:d.previewKind||meta.preview_kind,
         preview_provider:d.previewProvider||meta.preview_provider,
         preview_url:d.previewUrl||meta.preview_url,
