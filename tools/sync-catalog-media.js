@@ -55,20 +55,57 @@ function homepageTrending(){
 function buildCatalog(){
   const content=parseArray(read('app.js'),/const CONTENT_CATALOG = (\[[\s\S]*?\n\]);/,'CONTENT_CATALOG');
   const kids=parseArray(read('kids/kids.js'),/const LIBRARY = (\[[\s\S]*?\n  \]);/,'Kids LIBRARY');
+  const availability=JSON.parse(read('data/availability.json'));
+  const exactIds=new Map();
+  for(const [title,row] of Object.entries(availability?.titles||{})){
+    const tmdbId=Number(row?.tmdbId),kind=row?.kind;
+    if(Number.isSafeInteger(tmdbId)&&tmdbId>0&&['movie','tv'].includes(kind)){
+      exactIds.set(normalize(title),{tmdb_id:tmdbId,media_kind:kind,year:Number.isInteger(Number(row?.year))?Number(row.year):null});
+    }
+  }
   const kidIndex=new Map();
   for(const k of kids){if(!k?.title)continue;const kind=kidsKind(k),year=Number.isInteger(Number(k.year))?Number(k.year):null,ages=Array.isArray(k.ages)?k.ages.map(String):[];kidIndex.set(`${normalize(k.title)}::${year||''}::${kind}`,ages);}
   const out=[],seen=new Set();
   for(const entry of content){
-    if(!entry?.title)continue;const kind=mainKind(entry);if(kind==='other')continue;const year=Number.isInteger(Number(entry.year))?Number(entry.year):null,key=`${normalize(entry.title)}::${year||''}::${kind}`;if(seen.has(key))continue;seen.add(key);const ages=kidIndex.get(key)||[];out.push({title:String(entry.title),year,media_kind:kind,kids_approved:ages.length>0,kids_age_bands:ages});
+    if(!entry?.title)continue;
+    let kind=mainKind(entry);
+    const exact=exactIds.get(normalize(entry.title));
+    if(exact&&['movie','tv'].includes(exact.media_kind))kind=exact.media_kind;
+    if(kind==='other')continue;
+    const year=Number.isInteger(Number(entry.year))?Number(entry.year):(exact?.year||null);
+    const key=`${normalize(entry.title)}::${year||''}::${kind}`;
+    if(seen.has(key))continue;
+    seen.add(key);
+    const ages=kidIndex.get(key)||[];
+    out.push({
+      title:String(entry.title),year,media_kind:kind,
+      tmdb_id:exact?.tmdb_id||null,
+      kids_approved:ages.length>0,kids_age_bands:ages
+    });
   }
-  for(const k of kids){if(!k?.title)continue;const kind=kidsKind(k),year=Number.isInteger(Number(k.year))?Number(k.year):null,key=`${normalize(k.title)}::${year||''}::${kind}`;if(seen.has(key))continue;seen.add(key);out.push({title:String(k.title),year,media_kind:kind,kids_approved:true,kids_age_bands:Array.isArray(k.ages)?k.ages.map(String):[]});}
-  // Grok updates the homepage rail daily. Always feed those exact ten titles
-  // into the same server-side media enrichment so synopsis, genres, preview
-  // and availability can never depend on hand-maintained client links.
+  for(const k of kids){
+    if(!k?.title)continue;
+    let kind=kidsKind(k);
+    const exact=exactIds.get(normalize(k.title));
+    if(exact&&['movie','tv'].includes(exact.media_kind))kind=exact.media_kind;
+    const year=Number.isInteger(Number(k.year))?Number(k.year):(exact?.year||null);
+    const key=`${normalize(k.title)}::${year||''}::${kind}`;
+    if(seen.has(key))continue;
+    seen.add(key);
+    out.push({
+      title:String(k.title),year,media_kind:kind,
+      tmdb_id:exact?.tmdb_id||null,
+      kids_approved:true,kids_age_bands:Array.isArray(k.ages)?k.ages.map(String):[]
+    });
+  }
+  // Daily homepage titles join the same enrichment stream. When one already
+  // has a verified availability identity, carry the numeric ID through too.
   for(const t of homepageTrending()){
     const duplicate=[...seen].some(k=>k.startsWith(normalize(t.title)+'::'));
     if(duplicate)continue;
-    seen.add(`${normalize(t.title)}::::other`);
+    const exact=exactIds.get(normalize(t.title));
+    if(exact){t.tmdb_id=exact.tmdb_id;t.media_kind=exact.media_kind;t.year=t.year||exact.year;}
+    seen.add(`${normalize(t.title)}::${t.year||''}::${t.media_kind}`);
     out.push(t);
   }
   return out;
