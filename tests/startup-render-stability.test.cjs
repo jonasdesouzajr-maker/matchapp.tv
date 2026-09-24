@@ -17,10 +17,10 @@ test('Home startup avoids delayed boot locks, stale cache keys and duplicate hea
  const html=read('index.html'),settings=read('settings.js'),wiring=read('final-wiring.js');
  assert.doesNotMatch(html,/ma-ui-preparing|MATCHAPP_UI_FAILSAFE/);
  for(const file of ['page-origin.js','build-meta.js','matchapp-ia.js','settings.js','app.js','catalog-media.js','title-experience.js','lazy.js','app-updates.js']){
-  assert.match(html,new RegExp('/'+file.replace('.','\\\\.')+'\\\\?v=[^"\\'\\s<]+'));
+  assert.ok(html.includes('/'+file+'?v='),'missing cache-busted '+file);
  }
  for(const file of ['build-meta.js','settings.js','app.js','catalog-media.js']){
-  assert.match(html,new RegExp('/'+file.replace('.','\\\\.')+'\\\\?v=20260924-runtime1'));
+  assert.ok(html.includes('/'+file+'?v=20260924-runtime1'),'stale shared runtime '+file);
  }
  assert.match(settings,/if\(!isHome\)js\('\/experience-v2\.js'\)/);
  assert.match(wiring,/if\(!isHome\)\{js\('\/install-corner\.js'\);js\('\/install-device-choice\.js'\);\}/);
