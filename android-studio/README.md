@@ -35,12 +35,14 @@ This folder is one self-contained Android Studio project with **two separate ins
 
 Both Android modules remain WebView shells over live production:
 
-- Standard app (`:app`) release version: **1.1.24**
-- Standard app version code: **26**
-- Standard app launch: `https://matchapp.tv/?utm_source=android_app&appBuild=26`
-- Kids app (`:kidsapp`) remains **1.1.23** / version code **25** until a Kids AAB is requested
-- Kids app launch: `https://matchapp.tv/kids/`
+- Standard app (`:app`) release version: **1.1.26**
+- Standard app version code: **28**
+- Standard app launch: `https://matchapp.tv/?utm_source=android_app&appBuild=28`
+- Kids app (`:kidsapp`) release version: **1.1.25** / version code **27**
+- Kids app launch: `https://matchapp.tv/kids/?utm_source=android_kids_app&appBuild=27`
 - Both apps cold-load production on launch and manual refresh to avoid stale WebView content, then resume normal caching after the page renders.
+- The standard app receives the new Taste DNA daily suggestion notifications, poster/synopsis cards and per-notification delete controls directly from the live shared web runtime.
+- The dedicated Kids app remains inside the Kids-only surface and does not expose adult Taste DNA suggestions; its native build markers are advanced in the same release so both Android Studio modules stay synchronized.
 - The standard app blocks Kids routes and hides the Kids entry only inside its native shell.
 - The Kids app blocks non-Kids routes internally and exposes only the guarded parent handoff to grown-up mode.
 
