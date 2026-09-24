@@ -242,3 +242,290 @@ html[dir="rtl"] .kids-header-actions{direction:rtl}
   .kids-pill,.kids-pill .kids-pill-ico,.kids-pill:hover .kids-pill-ico{animation:none!important;transition:none}
 }
 body.kids-paused .kids-pill,body.kids-paused .kids-pill-ico{animation:none!important}
+
+
+/* 2026-09-24 Kids header polish.
+   Presentation only: compact, balanced, complete top-box controls with no
+   clipped labels. Existing links, install, sound, motion, guardian and
+   language behavior are untouched. */
+.kids-header{
+  border-bottom-color:rgba(255,255,255,.10)!important;
+  box-shadow:0 12px 30px rgba(5,2,18,.28)!important;
+}
+.kids-header .kids-header-inner{
+  width:min(calc(100% - 1.5rem),90rem)!important;
+  min-height:0!important;
+  padding:.55rem 0!important;
+  gap:.7rem!important;
+}
+.kids-header .kids-brand{
+  flex:0 1 auto!important;
+  gap:.65rem!important;
+  min-width:0!important;
+}
+.kids-header .kids-brand>img{
+  width:3.35rem!important;
+  height:3.35rem!important;
+  flex:0 0 3.35rem!important;
+  border:2px solid rgba(255,215,122,.82)!important;
+  box-shadow:0 7px 18px rgba(0,0,0,.28),0 0 0 1px rgba(255,255,255,.10)!important;
+}
+.kids-header .kids-brand-copy{
+  min-width:0!important;
+}
+.kids-header .kids-brand-copy .matchapp-wordmark{
+  display:block!important;
+  width:min(15rem,31vw)!important;
+  height:auto!important;
+  max-width:100%!important;
+}
+.kids-header .kids-brand-copy>span{
+  margin-top:.18rem!important;
+  font-size:.66rem!important;
+  line-height:1.15!important;
+}
+.kids-header .kids-header-actions{
+  flex:1 1 auto!important;
+  display:flex!important;
+  flex-wrap:wrap!important;
+  justify-content:flex-end!important;
+  align-items:center!important;
+  gap:.4rem!important;
+  min-width:0!important;
+}
+.kids-header .kids-nav,
+.kids-header .kids-tools{
+  display:flex!important;
+  flex-wrap:wrap!important;
+  align-items:center!important;
+  justify-content:flex-end!important;
+  gap:.38rem!important;
+  min-width:0!important;
+}
+.kids-header .kids-pill,
+.kids-header .kids-header-actions .kids-motion,
+.kids-header .kids-header-actions .kids-voice-toggle,
+.kids-header .kids-header-actions .install-btn,
+.kids-header .kids-time-pill,
+.kids-header .kids-lang-wrap{
+  min-width:0!important;
+  min-height:2.25rem!important;
+  height:2.25rem!important;
+  padding:0 .72rem!important;
+  gap:.38rem!important;
+  border:1px solid transparent!important;
+  border-radius:.9rem!important;
+  background:
+    linear-gradient(180deg,rgba(58,36,86,.97),rgba(35,20,58,.98)) padding-box,
+    linear-gradient(135deg,rgba(255,255,255,.30),rgba(149,112,190,.48),rgba(255,255,255,.12)) border-box!important;
+  color:#fff9f2!important;
+  font:800 .73rem/1.05 Nunito,system-ui,sans-serif!important;
+  letter-spacing:.005em!important;
+  white-space:normal!important;
+  text-align:center!important;
+  overflow:visible!important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.10),
+    0 3px 0 rgba(12,5,24,.76),
+    0 7px 16px rgba(0,0,0,.20)!important;
+}
+.kids-header .kids-pill-ico{
+  width:1.15rem!important;
+  min-width:1.15rem!important;
+  font-size:.95rem!important;
+}
+.kids-header .kids-pill svg{
+  width:1rem!important;
+  height:1rem!important;
+}
+.kids-header .kids-pill[href="/kids/"]{
+  background:
+    linear-gradient(180deg,#56377b,#3b235d) padding-box,
+    linear-gradient(135deg,#a6fbf2,#75d8e2,#c8a6ff) border-box!important;
+}
+.kids-header .kids-pill[href="/kids/#browse"]{
+  background:
+    linear-gradient(180deg,#245469,#173849) padding-box,
+    linear-gradient(135deg,#9ef4ec,#62cad5,#8bb9e8) border-box!important;
+}
+.kids-header .kids-pill[href="/kids/nostalgia/"]{
+  background:
+    linear-gradient(180deg,#68402b,#452819) padding-box,
+    linear-gradient(135deg,#f5bf78,#c97f52,#8d5e91) border-box!important;
+}
+.kids-header .kids-pill-exit,
+.kids-header a#kids-exit{
+  background:
+    linear-gradient(180deg,#ffd979,#efb94e) padding-box,
+    linear-gradient(135deg,#fff3bd,#ffd36b,#d99536) border-box!important;
+  color:#3b214c!important;
+}
+.kids-header .kids-time-pill{
+  background:
+    linear-gradient(180deg,#463064,#2e1b4a) padding-box,
+    linear-gradient(135deg,#bf9de5,#7fdde6,#6b4a8e) border-box!important;
+  color:#f8f0ff!important;
+}
+.kids-header .kids-install{
+  background:
+    linear-gradient(120deg,#ffe36f,#f1c665 52%,#d8a7dc) padding-box,
+    linear-gradient(135deg,#fff5ba,#ffda68,#e5b7ed) border-box!important;
+  color:#2d1b40!important;
+}
+.kids-header .kids-motion,
+.kids-header .kids-voice-toggle,
+.kids-header .kids-lang-wrap{
+  background:
+    linear-gradient(180deg,#422763,#2d184c) padding-box,
+    linear-gradient(135deg,#8165a3,#5c456f,#8a6baa) border-box!important;
+}
+.kids-header .kids-lang-wrap{
+  padding:0 .48rem!important;
+}
+.kids-header .kids-lang{
+  width:100%!important;
+  max-width:none!important;
+  min-width:0!important;
+  height:1.85rem!important;
+  min-height:1.85rem!important;
+  padding:0 .2rem!important;
+  border:0!important;
+  outline:0!important;
+  background:transparent!important;
+  color:#fff9f2!important;
+  font:900 .72rem/1 Nunito,system-ui,sans-serif!important;
+}
+.kids-header .kids-pill[aria-current="page"]{
+  outline:2px solid #9ee8e6!important;
+  outline-offset:2px!important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.16),
+    0 0 0 3px rgba(158,232,230,.10),
+    0 4px 0 rgba(12,5,24,.72),
+    0 8px 18px rgba(0,0,0,.20)!important;
+}
+
+/* Tablet: brand stays readable while controls pack into two tidy groups. */
+@media (max-width:900px){
+  .kids-header .kids-header-inner{
+    flex-wrap:wrap!important;
+  }
+  .kids-header .kids-brand{
+    flex:1 1 100%!important;
+    justify-content:center!important;
+  }
+  .kids-header .kids-brand-copy .matchapp-wordmark{
+    width:min(14rem,46vw)!important;
+  }
+  .kids-header .kids-brand-copy>span{
+    display:none!important;
+  }
+  .kids-header .kids-header-actions{
+    flex:1 1 100%!important;
+    justify-content:center!important;
+  }
+  .kids-header .kids-nav,
+  .kids-header .kids-tools{
+    justify-content:center!important;
+  }
+}
+
+/* Phone: deliberate compact grid. No orphaned Time limit / Hear / Language
+   controls and no text is visually clipped. */
+@media (max-width:560px){
+  .kids-header .kids-header-inner{
+    width:calc(100% - .8rem)!important;
+    padding:.42rem 0 .52rem!important;
+    gap:.46rem!important;
+  }
+  .kids-header .kids-brand{
+    min-height:3.15rem!important;
+  }
+  .kids-header .kids-brand>img{
+    width:2.9rem!important;
+    height:2.9rem!important;
+    flex-basis:2.9rem!important;
+  }
+  .kids-header .kids-brand-copy .matchapp-wordmark{
+    width:min(12rem,62vw)!important;
+  }
+  .kids-header .kids-header-actions{
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    gap:.42rem!important;
+    width:100%!important;
+  }
+  .kids-header .kids-nav,
+  .kids-header .kids-tools{
+    display:grid!important;
+    grid-template-columns:repeat(6,minmax(0,1fr))!important;
+    gap:.38rem!important;
+    width:100%!important;
+  }
+  .kids-header .kids-nav>.kids-pill:nth-child(1),
+  .kids-header .kids-nav>.kids-pill:nth-child(2),
+  .kids-header .kids-nav>.kids-pill:nth-child(3){
+    grid-column:span 2!important;
+  }
+  .kids-header .kids-nav>.kids-pill:nth-child(4),
+  .kids-header .kids-nav>.kids-time-pill{
+    grid-column:span 3!important;
+  }
+  .kids-header .kids-tools>.kids-install,
+  .kids-header .kids-tools>.kids-motion,
+  .kids-header .kids-tools>.kids-voice-toggle,
+  .kids-header .kids-tools>.kids-lang-wrap{
+    grid-column:span 3!important;
+  }
+  .kids-header .kids-pill,
+  .kids-header .kids-header-actions .kids-motion,
+  .kids-header .kids-header-actions .kids-voice-toggle,
+  .kids-header .kids-header-actions .install-btn,
+  .kids-header .kids-time-pill,
+  .kids-header .kids-lang-wrap{
+    width:100%!important;
+    max-width:100%!important;
+    min-width:0!important;
+    min-height:2.55rem!important;
+    height:auto!important;
+    padding:.5rem .52rem!important;
+    justify-content:center!important;
+    border-radius:.82rem!important;
+    font-size:clamp(.64rem,2.7vw,.72rem)!important;
+    line-height:1.06!important;
+  }
+  .kids-header .kids-pill span:not(.kids-pill-ico):not(.kids-sr){
+    position:static!important;
+    width:auto!important;
+    height:auto!important;
+    margin:0!important;
+    padding:0!important;
+    overflow:visible!important;
+    clip:auto!important;
+    clip-path:none!important;
+    white-space:normal!important;
+  }
+  .kids-header .kids-pill-ico{
+    width:1.05rem!important;
+    min-width:1.05rem!important;
+    font-size:.9rem!important;
+  }
+  .kids-header .kids-lang{
+    text-align:center!important;
+    text-align-last:center!important;
+  }
+}
+
+@media (max-width:360px){
+  .kids-header .kids-header-inner{width:calc(100% - .55rem)!important}
+  .kids-header .kids-brand-copy .matchapp-wordmark{width:min(10.8rem,60vw)!important}
+  .kids-header .kids-pill,
+  .kids-header .kids-time-pill,
+  .kids-header .kids-header-actions .kids-motion,
+  .kids-header .kids-header-actions .kids-voice-toggle,
+  .kids-header .kids-header-actions .install-btn,
+  .kids-header .kids-lang-wrap{
+    padding:.46rem .38rem!important;
+    font-size:.62rem!important;
+  }
+}
