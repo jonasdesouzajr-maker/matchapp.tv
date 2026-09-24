@@ -130,3 +130,85 @@ html body.page-home #ma-dock{
     inset 0 0 0 1px rgba(229,193,88,.20),
     0 10px 28px rgba(0,0,0,.45)!important;
 }
+
+
+/* 2026-09-24 phone/tablet perimeter coherence.
+   Presentation only. Extends the finished 360-degree perimeter used by the
+   Home header/check-in/awareness cards to the remaining adult Home surfaces.
+   Web scope stops at 1100px so the independently handled desktop treatment is
+   untouched. Android WebViews also receive this at any logical width through
+   the existing html.matchapp-android shell class. No ad surfaces are included. */
+
+@media (max-width:1100px){
+  @layer ma-depth{
+    html body.page-home :is(
+      .premium-card,
+      .marquee-wrapper,
+      .ma-concierge,
+      .global-events-fold
+    ){
+      border-color:rgba(229,193,88,.46)!important;
+      box-shadow:
+        inset 0 0 0 1px rgba(229,193,88,.18),
+        var(--d3-hi),var(--d3-lo),var(--d3-raise-2)!important;
+    }
+
+    html body.page-home .tg-entry{
+      border-color:rgba(229,193,88,.46)!important;
+      box-shadow:
+        inset 0 0 0 1px rgba(229,193,88,.18),
+        var(--d3-hi),var(--d3-lo),var(--d3-raise-1)!important;
+    }
+  }
+
+  html body.page-home :is(
+    .lazy-head,
+    #premiere-disclosure>summary,
+    #weekly-pick-disclosure>summary,
+    #latest-news>summary,
+    #global-events .global-events-summary,
+    .ma-news,
+    #swifties-spotify,
+    .live-strip,
+    .info-panel
+  ){
+    border-color:rgba(229,193,88,.38)!important;
+  }
+}
+
+/* Native Android shell parity. The normal Android Studio app renders the same
+   production Home in a WebView and injects matchapp-android on <html>. */
+@layer ma-depth{
+  html.matchapp-android body.page-home :is(
+    .premium-card,
+    .marquee-wrapper,
+    .ma-concierge,
+    .global-events-fold
+  ){
+    border-color:rgba(229,193,88,.46)!important;
+    box-shadow:
+      inset 0 0 0 1px rgba(229,193,88,.18),
+      var(--d3-hi),var(--d3-lo),var(--d3-raise-2)!important;
+  }
+
+  html.matchapp-android body.page-home .tg-entry{
+    border-color:rgba(229,193,88,.46)!important;
+    box-shadow:
+      inset 0 0 0 1px rgba(229,193,88,.18),
+      var(--d3-hi),var(--d3-lo),var(--d3-raise-1)!important;
+  }
+}
+
+html.matchapp-android body.page-home :is(
+  .lazy-head,
+  #premiere-disclosure>summary,
+  #weekly-pick-disclosure>summary,
+  #latest-news>summary,
+  #global-events .global-events-summary,
+  .ma-news,
+  #swifties-spotify,
+  .live-strip,
+  .info-panel
+){
+  border-color:rgba(229,193,88,.38)!important;
+}
