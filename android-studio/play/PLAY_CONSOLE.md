@@ -50,4 +50,4 @@ For the separate Kids app, follow `../play-kids/PLAY_CONSOLE.md`.
 
 ## First Play listing — 2026-09-25
 
-Confirm Play package `com.jonas.papercup`; target SDK 36; version 1.1.30 (code 32). The owner-provided fingerprints are documented, not hardcoded signing credentials: see `RELEASE_PREFLIGHT.md`. Do not use any Kids listing screenshot or the `kidsapp` module. Confirm a release-signed AAB on a physical device before submitting to Play.
+Confirm Play package `com.jonas.papercup`; target SDK 36; version 1.1.31 (code 33). The owner-provided fingerprints are documented, not hardcoded signing credentials: see `RELEASE_PREFLIGHT.md`. Do not use any Kids listing screenshot or the `kidsapp` module. Confirm a release-signed AAB on a physical device before submitting to Play.
