@@ -361,23 +361,30 @@
     if(state.repairing)return;
     state.repairing=true;
     const title=state.title,identity=state;
-    try{
-      // If the curated rail's hard-coded source failed, an exact database
-      // title is the only extra identity source; do not fall back to fuzzy AI.
-      if(!state.meta){
-        const found=await lookup(title);
-        if(img.__matchappAdultPoster!==identity)return;
-        if(found&&normalise(found.title)===normalise(title))state.meta=found;
-      }
+    const attempt=async()=>{
       for(const url of exactPosterCandidates(state)){
         if(state.failed.has(url))continue;
         state.failed.add(url);
         if(!(await posterImageLoads(url)))continue;
-        if(img.__matchappAdultPoster!==identity||!img.isConnected)return;
+        if(img.__matchappAdultPoster!==identity||!img.isConnected)return true;
         img.dataset.matchappFallbackStage='verified';
         img.src=url;
         if(img.id==='res-poster-img'&&window.globalMatchTitle===title)window.globalMatchPoster=url;
-        return;
+        return true;
+      }
+      return false;
+    };
+    try{
+      // First try the already verified artwork at alternate TMDB sizes.
+      // Do not delay every matching result or Top Titles tile with SQL calls.
+      if(await attempt()||img.__matchappAdultPoster!==identity)return;
+      // Only if every known variant failed, query an exact same-title DB row.
+      // Never perform a fuzzy search that might return another film's poster.
+      if(!state.meta){
+        const found=await lookup(title);
+        if(img.__matchappAdultPoster!==identity)return;
+        if(found&&normalise(found.title)===normalise(title))state.meta=found;
+        if(await attempt())return;
       }
     }finally{
       if(img.__matchappAdultPoster===identity)state.repairing=false;
