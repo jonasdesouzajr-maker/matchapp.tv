@@ -1634,7 +1634,8 @@ window.eventMatch = function (query) {
         // Autoplay runs only while visible, pauses while hovered, and holds
         // off for a while after any touch, drag, key or arrow press.
         let hovering = false, holdUntil = 0, visible = true;
-        const autoDelay = vp.id === 'marquee-viewport' ? 1050 : vp.id === 'events-viewport' ? 4000 : 6500;
+        const autoDelay = vp.id === 'marquee-viewport' ? 1050 : 6500;
+        const railDelay = vp.id === 'events-viewport' ? 4000 : autoDelay;
         const HOLD_AFTER_TOUCH = 8000;
 
         root?.querySelectorAll('[data-rail-dir],.marquee-prev,.marquee-next,.events-prev,.events-next,.ma-news-prev,.ma-news-next').forEach(btn => {
@@ -1692,7 +1693,7 @@ window.eventMatch = function (query) {
                     vp.scrollBy({left:step,behavior:'smooth'});
                 }
                 scheduleAuto();
-            },delay || autoDelay);
+            },delay || railDelay);
         };
         // Mouse hover pauses until the pointer leaves; touches, drags, arrow
         // clicks and keys hold autoplay off for a while after the last one.
