@@ -25,6 +25,7 @@
   function domainOf(u){try{return new URL(u,location.origin).hostname.toLowerCase().replace(/^www\./,'');}catch(_){return'';}}
   function trustedDomain(d){return TRUSTED_DOMAINS.some(x=>d===x||d.endsWith('.'+x));}
   function trustedItem(item){
+    if(window.MatchAppContentSafety?.isExplicit?.(item))return false;
     const declared=String(item?.source_domain||'').toLowerCase().replace(/^www\./,'');
     const linked=domainOf(item?.url||'');
     return Boolean(declared&&linked&&trustedDomain(declared)&&trustedDomain(linked));

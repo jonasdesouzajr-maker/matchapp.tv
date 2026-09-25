@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity() {
 
     // Web UI (including the responsive Avatar Studio) is shared with matchapp.tv.
     // Keep production pages fresh so phone/tablet WebViews receive approved UI updates immediately.
-    private val sharedUiVersion = "events-global-20260924-1"
+    private val sharedUiVersion = "adult-reading-magazines-20260925-1"
 
     private val fileChooser = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
@@ -435,8 +435,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val HOME = "https://matchapp.tv/?utm_source=android_app&appBuild=30"
-        const val APP_UA = "MatchAppTVAndroid/1.1.28 MatchAppAiAndroid/1.1.28"
+        const val HOME = "https://matchapp.tv/?utm_source=android_app&appBuild=31"
+        const val APP_UA = "MatchAppTVAndroid/1.1.29 MatchAppAiAndroid/1.1.29"
         private const val APP_MODE_JS = """
             (function(){
               window.MATCHAPP_IS_AD_FREE = true;
