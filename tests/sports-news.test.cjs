@@ -47,7 +47,7 @@ test('sports reuse existing homepage click flow, real source links, semantic met
  assert.match(front,/sports_updated_at/);assert.match(news,/seoFor\(item,\[\],generated\)/);
  assert.match(news,/i\.category==='sports'/);assert.match(news,/itemListElement/);
  assert.doesNotMatch(news.split('const feedVersion=')[1].split(';')[0],/sportsSnapshot\.updated_at/);
- assert.match(news,/sports dates indicate when a story was indexed for discovery/i);
+ assert.match(news,/sports timestamps come from the named discovery index and may not equal the original first-publication time/i);
  assert.doesNotMatch(sports,/feeds\.bbci|sports\/rss\.xml|rss\.cnn/);
  assert.match(sports,/image:null/);
  assert.match(sports,/fetchGdelt/);
