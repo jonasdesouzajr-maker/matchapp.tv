@@ -92,5 +92,5 @@ test('Ask AI verified provider data and TV genre hydration stay regression-guard
  assert.match(hydrate,/const rawType=String\(item\?\.type\|\|''\)\.toLowerCase\(\)/);
  assert.match(src,/item\._availabilityVerified=Boolean/);
  assert.match(src,/verifiedModes=new Set\(\['stream','rent','buy','cinema'\]\)/);
- assert.match(page,/discover\.js\?v=20260925-verify1/);
+ assert.match(page,/discover\.js\?v=20260925-provfail2/);
 });
