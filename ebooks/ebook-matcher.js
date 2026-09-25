@@ -60,10 +60,12 @@ function q(book){return encodeURIComponent(book.title+' '+book.author);}
 function storeLinks(book){
  const m=market(), query=q(book);
  const amazon={BR:'amazon.com.br',GB:'amazon.co.uk',CA:'amazon.ca',AU:'amazon.com.au',JP:'amazon.co.jp',PT:'amazon.es',US:'amazon.com'}[m]||'amazon.com';
+ const affiliate=window.MatchAppEbookAffiliate;
+ const kindle=affiliate?affiliate.amazonSearchUrl(book,m):'https://www.'+amazon+'/s?k='+query+'&i=digital-text';
  const apple={BR:'br',GB:'gb',CA:'ca',AU:'au',JP:'jp',PT:'pt',US:'us'}[m]||'us';
  const kobo={BR:'br/pt',GB:'gb/en',CA:'ca/en',AU:'au/en',JP:'jp/ja',PT:'pt/pt',US:'us/en'}[m]||'us/en';
  const links=[
-  ['Kindle','https://www.'+amazon+'/s?k='+query+'&i=digital-text'],
+  ['Kindle',kindle],
   ['Apple Books','https://books.apple.com/'+apple+'/search?term='+query],
   ['Google Play Books','https://play.google.com/store/search?q='+query+'&c=books'],
   ['Kobo','https://www.kobo.com/'+kobo+'/search?query='+query]
@@ -158,12 +160,14 @@ function renderTop(root){
  host.innerHTML=items.map((b,i)=>{
   const free=String(b.access||'').includes('free'),freeUrl=freeLinks({title:b.title,author:b.author,access:free?['free']:['paid']})[0]?.[1]||'';
   const buy=storeLinks(b)[0]?.[1]||bookInfo(b);
+  const aff=window.MatchAppEbookAffiliate,paid=!!(aff&&aff.isAffiliateLink(buy));
   return '<article class="ebook-top-card" data-ebook-top-card="'+i+'">'+
    '<div class="ebook-top-cover"><img data-top-cover alt="" hidden><div data-top-fallback>'+coverFallback(b)+'</div></div>'+
    '<div class="ebook-top-copy"><span class="ebook-top-badge">'+esc(b.badge||'Top e-book')+'</span><h3>'+esc(b.title)+'</h3><p class="ebook-top-author">'+esc(b.author)+'</p><p class="ebook-top-genre">'+esc(b.genre||'E-book')+'</p>'+
    '<div class="ebook-top-actions">'+
     (free&&freeUrl?'<a class="ebook-provider ebook-free" href="'+esc(freeUrl)+'" target="_blank" rel="noopener noreferrer" data-ebook-provider="Legal free edition">'+esc(tr('topFree'))+' ↗</a>':'')+
-    '<a class="ebook-provider" href="'+esc(buy)+'" target="_blank" rel="noopener noreferrer" data-ebook-provider="E-book store">'+esc(tr('topBuy'))+' ↗</a>'+
+    '<a class="ebook-provider" href="'+esc(buy)+'" target="_blank" rel="'+(paid?'sponsored ':'')+'noopener noreferrer" data-ebook-provider="E-book store"'+(paid?' data-ebook-affiliate="amazon-br"':'')+'>'+esc(tr('topBuy'))+(paid?' · '+esc(aff.paidLabel(lang())):'')+' ↗</a>'+
+    (paid?'<small class="ebook-rights">'+esc(aff.disclosure(lang()))+'</small>':'')+
     '<a class="ebook-top-source" href="'+esc(b.sourceUrl||'#')+'" target="_blank" rel="noopener noreferrer">'+esc(tr('topSource'))+' · '+esc(b.source||'')+'</a>'+
    '</div></div></article>';
  }).join('');
@@ -183,6 +187,7 @@ function renderSaved(root){
 function renderResult(root,book,p,relaxed){
  const host=root.querySelector('[data-ebook-result]');
  const free=freeLinks(book),stores=storeLinks(book);
+ const aff=window.MatchAppEbookAffiliate,paid=!!(aff&&stores.some(([,u])=>aff.isAffiliateLink(u)));
  host.hidden=false;
  host.innerHTML='<div class="ebook-result-grid">'+
   '<div class="ebook-cover"><img data-ebook-cover alt="" hidden><div data-ebook-cover-fallback>'+coverFallback(book)+'</div></div>'+
@@ -191,7 +196,7 @@ function renderResult(root,book,p,relaxed){
   '<div class="ebook-meta"><span>'+esc(book.length)+' read</span><span>'+esc(book.pace)+' pace</span><span>'+(book.access.includes('free')?'free option + stores':'paid stores')+'</span></div>'+
   '<div class="ebook-source-groups">'+
    (free.length?'<div><h4>'+esc(tr('free'))+'</h4><div class="ebook-provider-row">'+free.map(([n,u])=>'<a class="ebook-provider ebook-free" href="'+esc(u)+'" target="_blank" rel="noopener noreferrer" data-ebook-provider="'+esc(n)+'">'+esc(n)+' ↗</a>').join('')+'</div></div>':'')+
-   '<div><h4>'+esc(tr('stores'))+'</h4><div class="ebook-provider-row">'+stores.map(([n,u])=>'<a class="ebook-provider" href="'+esc(u)+'" target="_blank" rel="noopener noreferrer" data-ebook-provider="'+esc(n)+'">'+esc(n)+' ↗</a>').join('')+'</div></div>'+
+   '<div><h4>'+esc(tr('stores'))+'</h4><div class="ebook-provider-row">'+stores.map(([n,u])=>{const tagged=!!(aff&&aff.isAffiliateLink(u));return '<a class="ebook-provider" href="'+esc(u)+'" target="_blank" rel="'+(tagged?'sponsored ':'')+'noopener noreferrer" data-ebook-provider="'+esc(n)+'"'+(tagged?' data-ebook-affiliate="amazon-br"':'')+'>'+esc(n)+(tagged?' · '+esc(aff.paidLabel(lang())):'')+' ↗</a>'}).join('')+'</div>'+(paid?'<p class="ebook-rights">'+esc(aff.disclosure(lang()))+'</p>':'')+'</div>'+
    '<a class="ebook-preview-link" href="'+esc(bookInfo(book))+'" target="_blank" rel="noopener noreferrer" data-ebook-provider="Google Books">'+esc(tr('preview'))+' ↗</a>'+
   '</div>'+
   '<div class="ebook-result-actions"><button type="button" class="ebook-save" data-ebook-save="'+esc(book.id)+'">☆ '+esc(tr('save'))+'</button><button type="button" class="ebook-nope" data-ebook-nope="'+esc(book.id)+'">× '+esc(tr('nope'))+'</button><button type="button" class="ebook-rematch" data-ebook-rematch>↻ '+esc(tr('another'))+'</button></div>'+
@@ -233,7 +238,10 @@ function bind(root){
   const rm=e.target.closest('[data-ebook-remove]');
   if(rm){write(K.saved,read(K.saved).filter(x=>x!==rm.dataset.ebookRemove));renderSaved(root);cloudSync();return;}
   const provider=e.target.closest('[data-ebook-provider]');
-  if(provider)analytics('ebook_provider_click',{provider:provider.dataset.ebookProvider});
+  if(provider){
+   analytics('ebook_provider_click',{provider:provider.dataset.ebookProvider});
+   if(provider.dataset.ebookAffiliate==='amazon-br')analytics('ebook_affiliate_click',{provider:'Amazon Brazil',surface:provider.closest('.ebook-top-card')?'top_ebooks':'ebook_match'});
+  }
  });
 }
 function markup(){
