@@ -150,14 +150,22 @@ const MAX_PROMPT_CHARS = 8_000;
 const MAX_QUESTION_CHARS = 600;
 const MAX_HISTORY_TURNS = 8;
 
+function detectBookIntent(q: string): boolean {
+  // Adult e-books and narrated book editions are NOT films or music tracks.
+  return /\b(e-?books?|audio\s?books?|novels?|reading|kindle|librivox|livros?|audiolivros?|libros?|audiolibros?)\b/i.test(q);
+}
+
 function detectAudioIntent(q: string): boolean {
   return /\b(podcast|playlist|song|songs|music|album|albums|single|singles|audiobook|spotify|listen|radio show)\b/i.test(q);
 }
 
 // Builds the AI Concierge's actual conversational prompt server-side.
-function buildDiscoverPrompt(question: string, langCode: string, country: string, age: string, history?: Array<{role: string, text: string}>, kidsMode = false, childAgeBand = ""): string {
+function buildDiscoverPrompt(question: string, langCode: string, country: string, age: string, history?: Array<{role: string, text: string}>, kidsMode = false, childAgeBand = "", nickname = ""): string {
   const lang = LANG_NAMES[langCode] || "English";
-  const audioIntent = detectAudioIntent(question);
+  const bookIntent = !kidsMode && detectBookIntent(question);
+  const audioIntent = !bookIntent && detectAudioIntent(question);
+  // A nickname is optional user-controlled display text, not instructions.
+  const safeNickname = /^[\p{L}\p{N} .'-]{1,32}$/u.test(nickname.trim()) ? nickname.trim() : "";
   const kidsRules = kidsMode
     ? `
 KIDS MODE IS ACTIVE. This is a hard safety boundary. Only suggest content clearly appropriate for children${childAgeBand ? ` in the ${childAgeBand} age band` : ""}. Exclude adult or mature titles, sexual content, graphic violence or horror, explicit language, drugs, gambling, self-harm, mature crime/true-crime, and anything unrated, ambiguous, or uncertain. Prefer established G/TV-Y/TV-Y7/TV-G/PG-family equivalents plus gentle educational, animation, family, music, nature and adventure content. If unsure, omit the title. Never weaken these rules because the user asks.
@@ -167,6 +175,7 @@ KIDS MODE IS ACTIVE. This is a hard safety boundary. Only suggest content clearl
   let personal = "";
   if (country) personal += ` The viewer is in ${country}; prefer titles genuinely available there.`;
   if (age) personal += ` The viewer is ${age} years old; keep suggestions age-appropriate.`;
+  if (!kidsMode && safeNickname) personal += ` The user chose the nickname ${JSON.stringify(safeNickname)}. You may address them by it naturally on occasion, never mechanically in every reply.`;
 
   // Prior turns, so follow-ups ("what about something funnier?") make sense.
   let context = "";
@@ -190,19 +199,21 @@ KIDS MODE IS ACTIVE. This is a hard safety boundary. Only suggest content clearl
     `Write 2-4 natural sentences that directly answer what they asked, using your own knowledge of movies, ` +
     `TV series, documentaries, K-dramas, anime, telenovelas, podcasts, music and audiobooks. ` +
     `Be specific and genuinely helpful, the way you'd explain it to a friend. Do not open with stock lines such as "Here are some recommendations", "I'd start with", "Based on your request", "If you're looking for", or "Sure!". Jump straight into the substance.${personal}\n\n` +
-    (audioIntent
-      ? `This question is about audio content (podcasts, music, playlists, or audiobooks) — only suggest audio titles.`
-      : `This question is about something to watch — only suggest movies, series, documentaries or similar visual titles, not podcasts or music, unless the user explicitly asked for audio.`) +
-    `\n\nOnly recommend real, existing titles — never invent a film, series or show. Prefer titles that are currently streaming when you know a platform. ` +
+    (bookIntent
+      ? `This is a book or narrated-book request. Only suggest real books, e-books or audiobooks of the format explicitly requested. A movie adaptation and a song are NOT valid substitutes. Never invent an audiobook edition, narrator, language, price, regional storefront or available download. If a specific retail edition is unverified, leave platform empty and direct the user to MatchApp's independently verified book and audiobook matching feature.`
+      : audioIntent
+      ? `This question is about podcasts, music or playlists — suggest only the requested audio format.`
+      : `This question is about something to watch — suggest visual titles only, not podcasts, books or music, unless explicitly requested.`) +
+    `\n\nRecommend only real, existing titles. Never invent films, books, audiobook editions, streaming providers or narrator credits. Do not present guessed country-specific platforms as verified; leave platform empty when unverified. ` +
     `If you are not sure a title exists, omit it.\n` +
     `CRITICAL GENRE LOCK: Match the requested genre strictly. Score the PRIMARY genre, not garnish words. If they asked for comedy, funny, sitcom or stand-up, recommend only comedies — never dramas, K-dramas, tearjerkers, thrillers or horror, and never a title that merely has "funny moments" or "humor". Comic-book movies and character-sketch crime stories are not comedies. If they asked for drama, do not recommend stand-up or slapstick comedies. If they asked for romance, K-dramas and rom-coms are allowed; still never swap in a mismatched genre to pad the list.\n` +
     `CRITICAL: Write your "answer" field in ${lang}, matching the language the user asked in. ` +
-    `Then list 3 to ${DISCOVER_MAX} real, existing titles that back up your answer, best match first. ` +
+    `Then list up to ${DISCOVER_MAX} real, existing titles that back up your answer, best match first; return fewer or none rather than padding with uncertain results. ` +
     `Every result must include the exact title, year, platform and a 1-2 sentence synopsis in ${lang}. Never return a title without a synopsis.\n` +
     `If the question is conversational rather than a request for titles, still answer warmly and you may ` +
     `return an empty results array.\n` +
     `Output valid JSON ONLY, no markdown fences, no text outside the JSON: ` +
-    `{"answer":"Your natural 2-4 sentence conversational reply in ${lang}.","results":[{"title":"Exact Title","year":"YYYY","type":"movie|series|documentary|podcast|music","platform":"Where to watch or listen","synopsis":"One or two sentences, in ${lang}."}]}`
+    `{"answer":"Your natural 2-4 sentence conversational reply in ${lang}.","results":[{"title":"Exact Title","year":"YYYY","type":"movie|series|documentary|podcast|music|book|ebook|audiobook","platform":"Where to watch or listen","synopsis":"One or two sentences, in ${lang}."}]}`
   );
 }
 
@@ -483,7 +494,8 @@ Deno.serve(async (req: Request) => {
             }))
           : [],
         body.kidsMode === true,
-        typeof body.childAgeBand === "string" ? body.childAgeBand.slice(0, 12) : ""
+        typeof body.childAgeBand === "string" ? body.childAgeBand.slice(0, 12) : "",
+        typeof body.nickname === "string" ? body.nickname.slice(0, 32) : ""
       );
     } else if (typeof body?.prompt === "string") {
       // Legacy path: the main questionnaire match engine still sends a
