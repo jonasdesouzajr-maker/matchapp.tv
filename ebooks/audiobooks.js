@@ -22,11 +22,19 @@
   const base=normalized(String(wanted||'').split(/\s+(?:&|and|e|and)\s+/i)[0]);
   const other=normalized(actual);
   if(!base||!other)return false;
-  const tokens=base.split(' ').filter(t=>t.length>2);
-  // Accept full name or the most distinctive last name, not a different
-  // author merely because a title happens to be the same.
-  return other.includes(base)||(tokens.length>0&&
-   other.split(' ').includes(tokens[tokens.length-1]));
+  const expected=base.split(' '),observed=other.split(' ');
+  if(other.includes(base))return true;
+  // The title alone is never enough; different authors may publish the same
+  // title. When an author has multiple identifiable names, require every
+  // distinctive name, never their shared surname alone.
+  const distinctive=expected.filter(t=>t.length>2);
+  if(distinctive.length>=2)return distinctive.every(t=>observed.includes(t));
+  if(distinctive.length===1){
+   const initials=expected.filter(t=>t.length===1);
+   return observed.includes(distinctive[0])&&
+    (!initials.length||initials.every(t=>observed.includes(t)));
+  }
+  return false;
  }
  function titleMatches(bookTitle,candidate){
   const expected=normalized(bookTitle),got=normalized(candidate);
