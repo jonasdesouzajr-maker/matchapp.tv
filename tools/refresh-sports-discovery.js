@@ -110,7 +110,79 @@ async function fetchGdelt(url){
   }
  }finally{clearTimeout(timer)}
 }
+/* Optional commercially permitted provider fallback.
+ * NewsData.io's free production use can be delayed ~12 hours. Never republish
+ * article bodies or third-party photos; never trust a feed-provided source
+ * label instead of the verified original publisher HTTPS hostname. */
+function normalizeNewsData(records,now=Date.now()){
+ const originals=[];
+ for(const row of Array.isArray(records)?records:[]){
+  if(!Array.isArray(row?.category)||!row.category.some(x=>String(x).toLowerCase()==='sports'))continue;
+  const raw=String(row.pubDate||'').trim();
+  const pubDate=/^\d{4}-\d\d-\d\d \d\d:\d\d:\d\d$/.test(raw)?raw.replace(' ','T')+'Z':raw;
+  const url=String(row.link||'');
+  if(!publisher(url))continue;
+  originals.push({title:row.title,url,seendate:pubDate});
+ }
+ return normalizeArticles(originals,now).map(row=>({
+  ...row,discovery_source:'NewsData.io Latest News',
+  date_provenance:'newsdata-supplied-publisher-time'
+ }));
+}
+async function discoverNewsData(key,request=fetch,now=Date.now()){
+ if(typeof key!=='string'||!key.trim())return [];
+ const api='https://newsdata.io/api/1/latest';
+ // Free keys return up to ten articles per request. Keep this bounded at
+ // two requests per scheduled run, within the published free-tier allowance.
+ const groups=[
+  'reuters.com,espn.com,apnews.com,espn.com.br,theguardian.com',
+  'g1.globo.com,formula1.com,nba.com'
+ ];
+ const results=new Map();
+ for(const domains of groups){
+  const u=new URL(api);
+  u.searchParams.set('apikey',key);
+  u.searchParams.set('category','sports');
+  u.searchParams.set('language','en,pt');
+  u.searchParams.set('domain',domains);
+  u.searchParams.set('size','10');
+  u.searchParams.set('removeduplicate','1');
+  const ctrl=new AbortController(),timer=setTimeout(()=>ctrl.abort(),16000);
+  try{
+   const response=await request(u,{signal:ctrl.signal,headers:{accept:'application/json'},redirect:'error'});
+   if(!response.ok)throw Error('NewsData HTTP '+response.status);
+   const payload=await response.json();
+   if(payload?.status!=='success'||!Array.isArray(payload.results))throw Error('NewsData API unavailable');
+   const verified=normalizeNewsData(payload.results,now);
+   for(const row of verified)results.set(row.id,row);
+   if(results.size>=3)break;
+  }finally{clearTimeout(timer)}
+ }
+ return [...results.values()].sort((a,b)=>b.published_at.localeCompare(a.published_at)).slice(0,12);
+}
 async function main(){
+ // A configured, expressly commercial-eligible API avoids dependence on
+ // GitHub's currently failing TLS route to GDELT. Without a key, preserve
+ // the original GDELT behavior; no sample or invented headlines.
+ if(process.env.NEWSDATA_API_KEY){
+  try{
+   const rows=await discoverNewsData(process.env.NEWSDATA_API_KEY);
+   if(rows.length>=3){
+    const snapshot={updated_at:new Date().toISOString(),
+     source_policy:'NewsData.io category=sports publisher-link index; verified original publisher HTTPS domains; no third-party images or article bodies',
+     items:rows};
+    fs.mkdirSync(path.dirname(OUTPUT),{recursive:true});
+    fs.writeFileSync(OUTPUT,JSON.stringify(snapshot,null,2)+'\n');
+    console.log(JSON.stringify({ok:true,sports:rows.length,discovery:'commercial-keyed-fallback',
+      sources:[...new Set(rows.map(i=>i.source))]}));
+    return;
+   }
+   console.warn('[sports] commercial fallback had fewer than three eligible current publisher links');
+  }catch(e){
+   // Do not log request URLs: NewsData embeds the key as a query parameter.
+   console.warn('[sports] keyed provider unavailable: '+(e?.cause?.code||e?.code||'safe-source-check-failed'));
+  }
+ }
  const u=new URL(API);
  u.searchParams.set('query','(football OR soccer OR basketball OR tennis OR "Formula 1" OR olympics OR futebol OR basquete)');
  u.searchParams.set('mode','artlist');
@@ -129,5 +201,5 @@ async function main(){
  fs.writeFileSync(OUTPUT,JSON.stringify(snapshot,null,2)+'\n');
  console.log(JSON.stringify({ok:true,sports:rows.length,sources:[...new Set(rows.map(i=>i.source))]}));
 }
-module.exports={normalizeArticles,publisher,dateOf,sportType};
+module.exports={normalizeArticles,publisher,dateOf,sportType,normalizeNewsData,discoverNewsData};
 if(require.main===module)main().catch(e=>{console.error('[sports] '+(e.stack||e.message));process.exitCode=1});
