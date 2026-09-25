@@ -164,6 +164,7 @@ function buildDiscoverPrompt(question: string, langCode: string, country: string
   const lang = LANG_NAMES[langCode] || "English";
   const bookIntent = !kidsMode && detectBookIntent(question);
   const audioIntent = !bookIntent && detectAudioIntent(question);
+  const visualIntent = !bookIntent && !audioIntent && /\b(movie|film|series|tv|shows?|documentar|anime|cinema|stream|watch|netflix|comedy|funny|laugh|romance|romantic|scary|horror|comfort|mood|drama)\b/i.test(question);
   // A nickname is optional user-controlled display text, not instructions.
   const safeNickname = /^[\p{L}\p{N} .'-]{1,32}$/u.test(nickname.trim()) ? nickname.trim() : "";
   const kidsRules = kidsMode
@@ -203,7 +204,9 @@ KIDS MODE IS ACTIVE. This is a hard safety boundary. Only suggest content clearl
       ? `This is a book or narrated-book request. Only suggest real books, e-books or audiobooks of the format explicitly requested. A movie adaptation and a song are NOT valid substitutes. Never invent an audiobook edition, narrator, language, price, regional storefront or available download. If a specific retail edition is unverified, leave platform empty and direct the user to MatchApp's independently verified book and audiobook matching feature.`
       : audioIntent
       ? `This question is about podcasts, music or playlists — suggest only the requested audio format.`
-      : `This question is about something to watch — suggest visual titles only, not podcasts, books or music, unless explicitly requested.`) +
+      : visualIntent
+      ? `This question asks for something to watch. Suggest the specified movie, series or documentary format rather than swapping in music, podcasts or books.`
+      : `No definite entertainment media request was expressed. Answer the actual question naturally rather than forcing irrelevant recommendations. If you cannot verify changing facts, live news, prices, availability or local details, explicitly say so and do not invent sources or facts. Return zero title results unless the question genuinely calls for entertainment suggestions.`) +
     `\n\nRecommend only real, existing titles. Never invent films, books, audiobook editions, streaming providers or narrator credits. Do not present guessed country-specific platforms as verified; leave platform empty when unverified. ` +
     `If you are not sure a title exists, omit it.\n` +
     `CRITICAL GENRE LOCK: Match the requested genre strictly. Score the PRIMARY genre, not garnish words. If they asked for comedy, funny, sitcom or stand-up, recommend only comedies — never dramas, K-dramas, tearjerkers, thrillers or horror, and never a title that merely has "funny moments" or "humor". Comic-book movies and character-sketch crime stories are not comedies. If they asked for drama, do not recommend stand-up or slapstick comedies. If they asked for romance, K-dramas and rom-coms are allowed; still never swap in a mismatched genre to pad the list.\n` +
