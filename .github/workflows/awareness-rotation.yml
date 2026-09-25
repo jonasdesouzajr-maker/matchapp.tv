@@ -66,10 +66,3 @@ jobs:
             if git push origin HEAD:main; then echo 'changed=1' >> "$GITHUB_OUTPUT"; exit 0; fi
           done
           exit 1
-      - name: Deploy committed awareness and index updated URLs
-        if: steps.publish.outputs.changed == '1'
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          gh workflow run pages-deploy.yml --ref main
-          gh workflow run indexnow.yml --ref main
