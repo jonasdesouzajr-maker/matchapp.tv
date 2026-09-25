@@ -13,7 +13,7 @@ permissions:
   actions: write
 
 concurrency:
-  group: availability-refresh
+  group: matchapp-content-publish
   cancel-in-progress: false
 
 jobs:
