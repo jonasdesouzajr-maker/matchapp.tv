@@ -9,7 +9,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: archive-international-day
+  group: matchapp-content-publish
   cancel-in-progress: false
 
 jobs:
