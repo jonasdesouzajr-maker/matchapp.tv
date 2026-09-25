@@ -22,6 +22,16 @@ function amazonSearchUrl(book,market){
  if(m==='BR'&&!unapprovedAppContext())url.searchParams.set('tag',BR_TAG);
  return url.toString();
 }
+// Magazine SEARCH (not an assured listing or a verified in-stock issue).
+// The Brazil tracking ID is web-only until native app approval; subscriptions
+// and digital magazine products may be excluded from commission eligibility.
+function amazonMagazineSearchUrl(magazine,market){
+ const m=String(market||'US').toUpperCase();
+ const url=new URL('https://www.'+(DOMAINS[m]||DOMAINS.US)+'/s');
+ url.searchParams.set('k',String(magazine.title||'')+' magazine');
+ if(m==='BR'&&!unapprovedAppContext())url.searchParams.set('tag',BR_TAG);
+ return url.toString();
+}
 function isAffiliateLink(href){
  try{
   const url=new URL(href);
@@ -34,5 +44,5 @@ function disclosure(locale){
   'As an Amazon Associate I earn from qualifying purchases. Como associado da Amazon, eu ganho com compras qualificadas.';
 }
 function paidLabel(locale){return /^pt/i.test(String(locale||''))?'publicidade':'paid link'}
-root.MatchAppEbookAffiliate=Object.freeze({amazonSearchUrl,isAffiliateLink,disclosure,paidLabel});
+root.MatchAppEbookAffiliate=Object.freeze({amazonSearchUrl,amazonMagazineSearchUrl,isAffiliateLink,disclosure,paidLabel});
 })(window);
