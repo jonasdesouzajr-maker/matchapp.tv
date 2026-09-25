@@ -38,30 +38,33 @@ const media=block=>{
  }
  return null;
 };
+function parseFeed(xml,feed,now=Date.now()){
+ const blocks=xml.match(/<item\\b[\\s\\S]*?<\\/item>/gi)||[];
+ return blocks.map(block=>{
+  const title=tag(block,'title'),url=tag(block,'link');
+  const d=new Date(tag(block,'pubDate')||tag(block,'published'));
+  if(!allowed(url)||title.length<16||title.length>220||!Number.isFinite(d.valueOf())||
+     d.valueOf()>now+3600000||now-d.valueOf()>72*3600000)return null;
+  if(/\\b(rumou?r|allegedly|speculation|unconfirmed)\\b/i.test(title))return null;
+  const id=crypto.createHash('sha256').update(url).digest('hex').slice(0,8);
+  return {id,title,url,source:'BBC Sport',source_domain:new URL(url).hostname.replace(/^www\\./,''),
+   source_home:'https://www.bbc.com/sport',country:'GLOBAL',category:'sports',
+   sport:feed.sport,event_type:feed.sport,published_at:d.toISOString(),image:media(block)};
+ }).filter(Boolean);
+}
 async function fetchFeed(feed){
  const ac=new AbortController(),timer=setTimeout(()=>ac.abort(),10000);
  try{
   const res=await fetch(feed.url,{signal:ac.signal,headers:{accept:'application/rss+xml,application/xml;q=0.9','user-agent':'MatchAppNewsBot/1.2 (+https://matchapp.tv/)'}});
   if(!res.ok)throw Error('HTTP '+res.status);
-  const xml=await res.text(),blocks=xml.match(/<item\b[\s\S]*?<\/item>/gi)||[];
-  const now=Date.now();
-  const items=blocks.map(block=>{
-   const title=tag(block,'title'),url=tag(block,'link');
-   const d=new Date(tag(block,'pubDate')||tag(block,'published'));
-   if(!allowed(url)||title.length<16||title.length>220||!Number.isFinite(d.valueOf())||
-      d.valueOf()>now+3600000||now-d.valueOf()>72*3600000)return null;
-   if(/\b(rumou?r|allegedly|speculation|unconfirmed)\b/i.test(title))return null;
-   const id=crypto.createHash('sha256').update(url).digest('hex').slice(0,8);
-   return {id,title,url,source:'BBC Sport',source_domain:new URL(url).hostname.replace(/^www\./,''),
-    source_home:'https://www.bbc.com/sport',country:'GLOBAL',category:'sports',
-    sport:feed.sport,event_type:feed.sport,published_at:d.toISOString(),image:media(block)};
-  }).filter(Boolean);
+  const items=parseFeed(await res.text(),feed);
   console.log('[sports] '+feed.sport+': '+items.length+' verified fresh RSS items');
   return items;
  }catch(e){console.warn('[sports] '+feed.sport+': '+e.message);return[]}
  finally{clearTimeout(timer)}
 }
-(async()=>{
+
+async function main(){
  const parts=await Promise.all(FEEDS.map(fetchFeed)),unique=new Map(),titles=new Set();
  for(const i of parts.flat()){
   const key=i.title.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
@@ -76,4 +79,6 @@ async function fetchFeed(feed){
  fs.mkdirSync(path.dirname(OUTPUT),{recursive:true});
  fs.writeFileSync(OUTPUT,JSON.stringify(output,null,2)+'\n');
  console.log(JSON.stringify({ok:true,sports:items.length,updated_at:output.updated_at,sources:['BBC Sport']}));
-})().catch(e=>{console.error('[sports] '+(e.stack||e.message));process.exitCode=1});
+}
+module.exports={parseFeed,allowed,clean,FEEDS};
+if(require.main===module)main().catch(e=>{console.error('[sports] '+(e.stack||e.message));process.exitCode=1});
