@@ -219,7 +219,7 @@ display:flex;flex-direction:column;align-items:center;justify-content:center;gap
  const market=['br','brasil','brazil'].includes(saved)||(navigator.language||'').toLowerCase().endsWith('-br')?'BR':'US';
  const affiliate=window.MatchAppEbookAffiliate;
  host.innerHTML=api.items.slice().sort((a,b)=>Number(b.region===market)-Number(a.region===market)).map(m=>{
-  const offers=api.buyLinks(m,market,affiliate),amazon=offers[0],tagged=!!affiliate?.isAffiliateLink(amazon.url);
+  const offers=api.buyLinks(m,market,affiliate),amazon=offers.find(x=>x.name.startsWith('Amazon')),tagged=!!(amazon&&affiliate?.isAffiliateLink(amazon.url));
   return '<article class="ebook-top-card magazine-hub-card"><div class="magazine-hub-logo">'+
    '<img src="'+esc(m.icon)+'" alt="'+esc(m.title)+' publisher icon" loading="lazy" decoding="async" onerror="this.hidden=true">'+
    '<strong>'+esc(m.title)+'</strong><span>ORIGINAL PUBLISHER IDENTITY</span></div>'+
@@ -227,8 +227,8 @@ display:flex;flex-direction:column;align-items:center;justify-content:center;gap
    '<p class="ebook-top-genre">'+esc(m.genres.join(' · '))+'</p><div class="ebook-top-actions">'+
    '<a class="ebook-provider ebook-free" href="'+esc(m.issues)+'" target="_blank" rel="noopener noreferrer">Original covers ↗</a>'+
    '<a class="ebook-provider ebook-free" href="'+esc(m.site)+'" target="_blank" rel="noopener noreferrer">Official articles ↗</a>'+
-   '<a class="ebook-provider" href="'+esc(amazon.url)+'" target="_blank" rel="'+(tagged?'sponsored ':'')+
-    'noopener noreferrer"'+(tagged?' data-ebook-affiliate="amazon-br"':'')+'>Amazon magazine search'+(tagged?' · '+esc(affiliate.paidLabel(navigator.language)):'')+' ↗</a>'+
+   (amazon?'<a class="ebook-provider" href="'+esc(amazon.url)+'" target="_blank" rel="'+(tagged?'sponsored ':'')+
+    'noopener noreferrer"'+(tagged?' data-ebook-affiliate="amazon-br"':'')+'>Amazon magazine search'+(tagged?' · '+esc(affiliate.paidLabel(navigator.language)):'')+' ↗</a>':'')+
    '<a class="ebook-provider" href="'+esc(m.subscription)+'" target="_blank" rel="noopener noreferrer">Publisher subscription ↗</a>'+
    (tagged?'<small class="ebook-rights">'+esc(affiliate.disclosure(navigator.language))+'</small>':'')+
    '</div></div></article>';
