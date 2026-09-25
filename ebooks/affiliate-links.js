@@ -26,6 +26,8 @@ function amazonSearchUrl(book,market){
 // The Brazil tracking ID is web-only until native app approval; subscriptions
 // and digital magazine products may be excluded from commission eligibility.
 function amazonMagazineSearchUrl(magazine,market){
+ // Do not link to Amazon at all from unapproved native/installed apps.
+ if(unapprovedAppContext())return '';
  const m=String(market||'US').toUpperCase();
  const url=new URL('https://www.'+(DOMAINS[m]||DOMAINS.US)+'/s');
  url.searchParams.set('k',String(magazine.title||'')+' magazine');
