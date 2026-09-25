@@ -46,8 +46,11 @@ jobs:
       - name: Refresh entertainment and AI news
         run: node tools/refresh-news-rss.js
 
-      - name: Refresh active and upcoming events
-        run: node tools/build-global-events.js
+      - name: Refresh active/upcoming events and dated awareness spotlight
+        run: |
+          node tools/build-global-events.js
+          node tools/archive-international-day.mjs
+          node tools/awareness-bot.mjs
 
       - name: Rebuild SEO pages, JSON-LD and watch pages
         run: |
@@ -57,28 +60,65 @@ jobs:
       - name: Refresh sitemap and validate search readiness
         run: |
           node tools/update-sitemap.js
+          node tools/check-content-rotation.js
           node tools/audit-site.js
           node tools/audit-search.js
           node tools/search-readiness.js
           npm test
           npm run build
 
-      - name: Publish rotation atomically
+      - name: Publish rotation atomically on a fresh main snapshot
         id: publish
         shell: bash
         run: |
           set -euo pipefail
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -A
-          if git diff --staged --quiet; then
-            echo 'changed=0' >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-          git commit -m "Daily midnight content and SEO rotation"
-          git pull --rebase origin main
-          git push origin HEAD:main
-          echo 'changed=1' >> "$GITHUB_OUTPUT"
+          # Only editorial generator outputs are owned by this bot. Never stage
+          # unrelated application, Ads, auth, Android or hand-curated Top Titles files.
+          for attempt in 1 2 3; do
+            if [ "$attempt" -gt 1 ]; then
+              git rebase --abort 2>/dev/null || true
+              git fetch origin main
+              git reset --hard origin/main
+              git clean -fd
+              # Never transplant stale generated content across a human/bot push.
+              # Rebuild from the latest committed title, event, news and SEO inputs.
+              node tools/sync-catalog-media.js
+              node tools/refresh-news-rss.js
+              node tools/build-global-events.js
+              node tools/archive-international-day.mjs
+              node tools/awareness-bot.mjs
+              node tools/build-seo-pages.js
+              node tools/build-watch-pages.js
+              node tools/update-sitemap.js
+              node tools/check-content-rotation.js
+              node tools/audit-site.js
+              node tools/audit-search.js
+              node tools/search-readiness.js
+              npm test
+              npm run build
+            fi
+            git add -A -- index.html events events-archive.html news where-to-watch
+            git add -A -- awareness/current.json awareness/*/index.html
+            git add -A -- tools/event-urls.json tools/awareness-urls.json tools/news-urls.json tools/news-sitemap-meta.json tools/seo-urls.json tools/watch-urls.json
+            git add -A -- data/international-day-history.json sitemap.xml sitemaps.xml
+            for d in moods collections platforms languages decades; do
+              if [ -e "$d" ]; then git add -A -- "$d"; fi
+            done
+            if git diff --staged --quiet; then
+              echo 'changed=0' >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            git commit -m "Daily midnight content and SEO rotation"
+            if git push origin HEAD:main; then
+              echo 'changed=1' >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            echo "Remote main advanced; rebuilding all editorial outputs before retry $((attempt+1))."
+          done
+          echo "::error::Content rotation did not safely publish after 3 attempts."
+          exit 1
 
       - name: Deploy refreshed frontend
         if: steps.publish.outputs.changed == '1'
