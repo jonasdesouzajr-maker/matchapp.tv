@@ -346,16 +346,50 @@
     let registry='';
     try{registry=typeof window.getVerifiedPoster==='function'?window.getVerifiedPoster(state.title):'';}catch(_){}
     const meta=state.meta||{};
-    const sources=[registry,state.preferred,meta.poster_large_url,meta.poster_url,meta.poster_original_url];
+    // A proven ID for the curated Home row lets fresh exact-source metadata
+    // correct a cached poster identity; matches preserve their chosen artwork.
+    const sources=state.isRail&&state.meta
+      ?[meta.poster_large_url,meta.poster_url,meta.poster_original_url,registry,state.preferred]
+      :[state.preferred,registry,meta.poster_large_url,meta.poster_url,meta.poster_original_url];
     return [...new Set(sources.flatMap(posterVariants))];
   }
+  function sameOriginalArtwork(a,b){
+    const file=url=>String(url||'').match(/^https:\/\/image\.tmdb\.org\/t\/p\/(?:w[0-9]+|original)\/([A-Za-z0-9_.-]+)$/)?.[1]||String(url||'');
+    return !!a&&!!b&&file(a)===file(b);
+  }
+  function safeSameTitleMedia(row,state){
+    if(!row||!row.title)return false;
+    const found=Number(row.tmdb_id);
+    if(state.tmdbId&&found!==state.tmdbId)return false;
+    if(state.kind&&row.media_kind&&row.media_kind!==state.kind)return false;
+    if(state.year&&row.year&&Math.abs(Number(row.year)-state.year)>1)return false;
+    return normalise(row.title)===normalise(state.title)||(state.tmdbId>0&&found===state.tmdbId);
+  }
+  const ADULT_IMAGE_PROBES=new Map();
   function posterImageLoads(url){
-    return new Promise(resolve=>{
+    if(ADULT_IMAGE_PROBES.has(url))return ADULT_IMAGE_PROBES.get(url);
+    const pending=new Promise(resolve=>{
       const probe=new Image();
-      probe.onload=()=>resolve(true);
-      probe.onerror=()=>resolve(false);
+      let done=false;
+      const finish=valid=>{
+        if(done)return;
+        done=true;clearTimeout(timeout);
+        probe.onload=null;probe.onerror=null;
+        resolve(valid);
+      };
+      // Some mobile browsers leave stalled images pending without an error.
+      const timeout=setTimeout(()=>finish(false),6500);
+      probe.onload=()=>finish(probe.naturalWidth!==0);
+      probe.onerror=()=>finish(false);
       probe.src=url;
     });
+    ADULT_IMAGE_PROBES.set(url,pending);
+    pending.then(valid=>{
+      if(!valid&&ADULT_IMAGE_PROBES.get(url)===pending)ADULT_IMAGE_PROBES.delete(url);
+      // Bounded memory: the Home rail shares cached probes between its copies.
+      else if(ADULT_IMAGE_PROBES.size>256)ADULT_IMAGE_PROBES.delete(ADULT_IMAGE_PROBES.keys().next().value);
+    });
+    return pending;
   }
   async function repairAdultPoster(img,state){
     if(state.repairing)return;
@@ -383,8 +417,23 @@
       if(!state.meta){
         const found=await lookup(title);
         if(img.__matchappAdultPoster!==identity)return;
-        if(found&&normalise(found.title)===normalise(title))state.meta=found;
+        if(safeSameTitleMedia(found,state))state.meta=found;
         if(await attempt())return;
+      }
+      // A known numeric ID is decisive for translated title labels whose
+      // database row uses the original-language title. Never fuzzy-search.
+      if(state.tmdbId&&['movie','tv'].includes(state.kind)&&typeof window.tmdbDetails==='function'){
+        let details=null;
+        try{details=await window.tmdbDetails(state.tmdbId,state.kind,{priority:!state.isRail});}catch(_){}
+        if(img.__matchappAdultPoster!==identity)return;
+        if(details&&details.adult!==true&&Number(details.tmdbId)===state.tmdbId&&
+           details.kind===state.kind&&(!state.year||!details.year||
+             Math.abs(Number(details.year)-state.year)<=1)){
+          state.meta={title,tmdb_id:state.tmdbId,media_kind:state.kind,year:details.year,
+            poster_url:details.poster||null,poster_large_url:details.posterLarge||null,
+            poster_original_url:details.posterOriginal||null};
+          if(await attempt())return;
+        }
       }
     }finally{
       if(img.__matchappAdultPoster===identity)state.repairing=false;
@@ -395,10 +444,24 @@
     const name=String(title);
     let state=img.__matchappAdultPoster;
     if(!state||state.title!==name){
-      state={title:name,meta:null,preferred:'',failed:new Set(),repairing:false};
+      state={title:name,meta:null,preferred:'',failed:new Set(),repairing:false,isRail:false,
+        tmdbId:0,kind:'',year:0,lastAttemptAt:Date.now()};
       img.__matchappAdultPoster=state;
     }
-    if(meta&&normalise(meta.title)===normalise(name))state.meta=meta;
+    state.isRail=!!img.closest?.('#marquee-track');
+    const currentIdentity=!state.isRail&&window.currentMatchIdentity&&
+      normalise(window.currentMatchIdentity.title)===normalise(name)
+      ?window.currentMatchIdentity:{};
+    const rawId=state.isRail?img.dataset.tmdbId:currentIdentity.tmdbId;
+    const tmdbId=Number(rawId);
+    if(Number.isSafeInteger(tmdbId)&&tmdbId>0){
+      state.tmdbId=tmdbId;
+      const kind=state.isRail?img.dataset.tmdbKind:currentIdentity.kind;
+      if(['movie','tv'].includes(kind))state.kind=kind;
+      const year=Number(state.isRail?img.dataset.tmdbYear:currentIdentity.year);
+      if(Number.isSafeInteger(year)&&year>=1880&&year<=2200)state.year=year;
+    }
+    if(safeSameTitleMedia(meta,state))state.meta=meta;
     if(preferred&&posterVariants(preferred).length)state.preferred=preferred;
     img.dataset.matchappMediaTitle=name;
     if(img.dataset.matchappAdultPosterBound!=='1'){
@@ -417,7 +480,13 @@
     }
     const current=String(img.currentSrc||img.src||'');
     const originalLoaded=TRUSTED_POSTER.test(current)&&img.complete&&img.naturalWidth>0;
-    if(originalLoaded)return; // Never replace a working original with placeholder art.
+    if(originalLoaded){
+      const catalogOriginal=state.isRail&&state.meta&&
+        (state.meta.poster_large_url||state.meta.poster_url||state.meta.poster_original_url);
+      if(catalogOriginal&&posterVariants(catalogOriginal).length&&
+         !sameOriginalArtwork(current,catalogOriginal))void repairAdultPoster(img,state);
+      return; // Never blank a working original while checking fresh artwork.
+    }
     if(current&&TRUSTED_POSTER.test(current)&&!img.complete)return; // Preserve in-flight remote loading.
     if(current&&TRUSTED_POSTER.test(current)&&img.complete&&img.naturalWidth===0)state.failed.add(current);
     if(!String(img.src||'').startsWith('data:image/svg+xml')&&
@@ -425,6 +494,9 @@
       img.dataset.matchappFallbackStage='local';
       img.src=localPoster(name);
     }
+    // Retry after reconnect instead of permanently remembering CDN outages.
+    if(!state.repairing&&Date.now()-state.lastAttemptAt>120000)state.failed.clear();
+    state.lastAttemptAt=Date.now();
     void repairAdultPoster(img,state);
   }
 

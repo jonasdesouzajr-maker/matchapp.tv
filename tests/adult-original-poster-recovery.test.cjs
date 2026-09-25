@@ -55,7 +55,7 @@ test('same-poster TMDB size fallback and exact saved metadata recover broken ori
   lookup:async title=>{queried.push(title);return {title,poster_url:good};},
   normalise:s=>String(s||'').toLowerCase().replace(/[^a-z0-9]/g,''),
   localPoster:title=>'data:image/svg+xml,'+encodeURIComponent(title),
-  Promise,Set
+  Promise,Set,setTimeout,clearTimeout
  };
  const {posterVariants,recoverAdultPoster}=vm.runInNewContext(media.slice(start,end)+'\n({posterVariants,recoverAdultPoster})',ctx);
  assert.deepEqual(Array.from(posterVariants(bad)),[
@@ -92,4 +92,137 @@ test('same-poster TMDB size fallback and exact saved metadata recover broken ori
  await new Promise(r=>setTimeout(r,0));
  assert.equal(loaded.src,good);
  assert.equal(queried.length,before);
+});
+
+
+test('all duplicated Home tiles retain the verified numeric film/TV identities',()=>{
+ const dom=new JSDOM(read('index.html')).window.document;
+ const expected=new Map([
+  ['Quem É Você?',[201778,'tv',1996]],
+  ['Vermelho Sangue',[226415,'tv',2025]],
+  ['Habeas Corpus',[308963,'tv',2026]],
+  ['Virtuosas',[1419806,'movie',2026]],
+  ['(Des)controle',[1369243,'movie',2026]],
+  ['Line of Fire',[321958,'tv',2026]],
+  ['Wicked',[402431,'movie',2024]],
+  ['You+Me - Against the World',[1641629,'movie',2026]],
+  ['The Love Hypothesis',[1032863,'movie',2026]],
+  ['American Hostage',[239618,'tv',2026]]
+ ]);
+ const imgs=[...dom.querySelectorAll('#marquee-track img[data-title]')];
+ assert.equal(imgs.length,20);
+ for(const [title,identity] of expected){
+  const duplicates=imgs.filter(img=>img.dataset.title===title);
+  assert.equal(duplicates.length,2,'must keep the exact duplicate loop for '+title);
+  for(const img of duplicates)
+   assert.deepEqual([Number(img.dataset.tmdbId),img.dataset.tmdbKind,Number(img.dataset.tmdbYear)],identity);
+ }
+});
+
+test('translated Top Titles posters recover using an exact ID, not a fuzzy title search',async()=>{
+ const media=read('catalog-media.js');
+ const start=media.indexOf('  function adultPosterSurface(');
+ const end=media.indexOf('  function localLikePoster(',start);
+ const dead='https://image.tmdb.org/t/p/w780/dead-registry.jpg';
+ const correct='https://image.tmdb.org/t/p/w780/VERIFIED_LOCALIZED.jpg';
+ const tried=[],detailsCalls=[],dbCalls=[];
+ class Probe {
+  naturalWidth=0;
+  set src(url){
+   tried.push(url);
+   queueMicrotask(()=>{
+    if(url===correct){this.naturalWidth=780;this.onload?.();}
+    else this.onerror?.();
+   });
+  }
+ }
+ const win={
+  getVerifiedPoster:()=>dead,
+  tmdbDetails:async(id,kind)=>{
+   detailsCalls.push([id,kind]);
+   return {tmdbId:226415,kind:'tv',adult:false,year:2025,posterLarge:correct};
+  }
+ };
+ const ctx={
+  TRUSTED_POSTER:/^https:\/\/(?:image\.tmdb\.org|is\d+-ssl\.mzstatic\.com)\//i,
+  Image:Probe,window:win,
+  lookup:async title=>{dbCalls.push(title);return null;},
+  normalise:s=>String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]/g,''),
+  localPoster:t=>'data:image/svg+xml,'+encodeURIComponent(t),
+  setTimeout,clearTimeout,Promise,Set,Date
+ };
+ const {recoverAdultPoster}=vm.runInNewContext(media.slice(start,end)+'\n({recoverAdultPoster})',ctx);
+ const img={
+  id:'',dataset:{tmdbId:'226415',tmdbKind:'tv',tmdbYear:'2025'},
+  isConnected:true,complete:true,naturalWidth:0,_src:dead,
+  get src(){return this._src},set src(value){this._src=value},
+  get currentSrc(){return this._src},
+  getAttribute(key){return key==='src'?this._src:null},
+  closest(sel){return sel==='#marquee-track'?{}:null},
+  addEventListener(){}
+ };
+ recoverAdultPoster(img,'Vermelho Sangue',null,dead);
+ await new Promise(resolve=>setTimeout(resolve,35));
+ assert.equal(img.src,correct,'the exact title identity should restore its original art');
+ assert.deepEqual(dbCalls,['Vermelho Sangue']);
+ assert.deepEqual(detailsCalls,[[226415,'tv']],'do not run a broad search or change TV/movie type');
+ assert.ok(!tried.includes('https://image.tmdb.org/t/p/w780/another-title.jpg'));
+});
+
+test('wrong numeric ID in similarly named metadata is ignored during poster rescue',async()=>{
+ const media=read('catalog-media.js');
+ const start=media.indexOf('  function adultPosterSurface(');
+ const end=media.indexOf('  function localLikePoster(',start);
+ const registry='https://image.tmdb.org/t/p/w780/missing.jpg';
+ const wrong='https://image.tmdb.org/t/p/w780/WRONG_MOVIE.jpg';
+ const correct='https://image.tmdb.org/t/p/w780/RIGHT_TV.jpg';
+ const attempted=[];
+ class Probe{
+  naturalWidth=0;
+  set src(url){attempted.push(url);queueMicrotask(()=>{
+   if(url===correct){this.naturalWidth=780;this.onload?.();}
+   else this.onerror?.();
+  });}
+ }
+ const ctx={
+  TRUSTED_POSTER:/^https:\/\/(?:image\.tmdb\.org|is\d+-ssl\.mzstatic\.com)\//i,
+  Image:Probe,
+  window:{
+   getVerifiedPoster:()=>registry,
+   tmdbDetails:async()=>({tmdbId:308963,kind:'tv',adult:false,year:2026,posterLarge:correct})
+  },
+  lookup:async()=>({title:'Habeas Corpus',year:2026,media_kind:'movie',tmdb_id:999,poster_large_url:wrong}),
+  normalise:s=>String(s||'').toLowerCase().replace(/[^a-z0-9]/g,''),
+  localPoster:t=>'data:image/svg+xml,'+encodeURIComponent(t),
+  setTimeout,clearTimeout,Promise,Set,Date
+ };
+ const {recoverAdultPoster}=vm.runInNewContext(media.slice(start,end)+'\n({recoverAdultPoster})',ctx);
+ const img={id:'',dataset:{tmdbId:'308963',tmdbKind:'tv',tmdbYear:'2026'},
+  isConnected:true,complete:true,naturalWidth:0,_src:registry,
+  get src(){return this._src},set src(v){this._src=v},
+  get currentSrc(){return this._src},
+  getAttribute(v){return v==='src'?this._src:null},
+  closest(v){return v==='#marquee-track'?{}:null},
+  addEventListener(){}};
+ recoverAdultPoster(img,'Habeas Corpus',null,registry);
+ await new Promise(resolve=>setTimeout(resolve,35));
+ assert.equal(img.src,correct);
+ assert.ok(!attempted.includes(wrong),'unrelated movie poster must never be attempted');
+});
+
+test('stalled original-poster probes have a bounded fallback and deduplicate duplicate-card downloads',async()=>{
+ const media=read('catalog-media.js');
+ const start=media.indexOf('  function adultPosterSurface(');
+ const end=media.indexOf('  function localLikePoster(',start);
+ let starts=0;
+ class StalledProbe{set src(_){starts++;}}
+ const ctx={Image:StalledProbe,window:{},Promise,Set,Date,
+  setTimeout:fn=>{queueMicrotask(fn);return 1},clearTimeout:()=>{},
+  TRUSTED_POSTER:/^https:\/\/image\.tmdb\.org\/t\/p\//i};
+ const {posterImageLoads}=vm.runInNewContext(media.slice(start,end)+'\n({posterImageLoads})',ctx);
+ const url='https://image.tmdb.org/t/p/w780/unresponsive-original.jpg';
+ const a=posterImageLoads(url),b=posterImageLoads(url);
+ assert.equal(a,b,'duplicate cards should share a single network probe');
+ assert.equal(await a,false,'stalled artwork must release fallback without hanging');
+ assert.equal(starts,1,'a duplicate request must not waste another provider fetch');
 });
