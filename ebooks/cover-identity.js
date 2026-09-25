@@ -10,17 +10,16 @@
  'use strict';
  const normalize=value=>String(value||'').normalize('NFKD')
   .replace(/[\u0300-\u036f]/g,'').toLowerCase()
-  .replace(/[^a-z0-9]+/g,' ').replace(/\s+/g,' ').trim();
+  .replace(/[^\p{L}\p{N}]+/gu,' ').replace(/\s+/g,' ').trim();
  function exactAuthor(wanted,sourceAuthors){
-  const expected=normalize(String(wanted||'')).split(' ').filter(Boolean);
-  if(!expected.length||!Array.isArray(sourceAuthors))return false;
-  // Require every significant known name, including initials. "Baum" alone
-  // cannot validate artwork for "L. Frank Baum" when another Baum exists.
-  return sourceAuthors.some(author=>{
-   const actual=normalize(author).split(' ').filter(Boolean);
-   const names=new Set(actual);
-   return expected.every(token=>names.has(token));
-  });
+  const coauthors=String(wanted||'').split(/\s+(?:&|and|e)\s+/i)
+   .map(n=>normalize(n).split(' ').filter(Boolean)).filter(n=>n.length);
+  if(!coauthors.length||!Array.isArray(sourceAuthors))return false;
+  // Require every known coauthor, including initials; never accept one of two.
+  return coauthors.every(tokens=>sourceAuthors.some(author=>{
+   const names=new Set(normalize(author).split(' ').filter(Boolean));
+   return tokens.every(token=>names.has(token));
+  }));
  }
  function exactWork(book,record){
   const title=normalize(book?.title),candidate=normalize(record?.title);
@@ -39,5 +38,25 @@
   }
   return null;
  }
- return Object.freeze({normalize,exactAuthor,exactWork,verifiedCoverId});
+ // Google Books imageLinks are allowed only after *exact* original title and
+ // every author agree. Editions may have later publication dates legitimately.
+ function verifiedGoogleCoverUrl(book,items){
+  for(const item of Array.isArray(items)?items:[]){
+   const v=item?.volumeInfo;
+   if(!v||!exactAuthor(book?.author,v.authors))continue;
+   if(![v.title,v.subtitle?v.title+': '+v.subtitle:null]
+        .some(candidate=>normalize(candidate)===normalize(book?.title)))continue;
+   const raw=v.imageLinks?.thumbnail||v.imageLinks?.smallThumbnail;
+   if(typeof raw!=='string')continue;
+   try{
+    const url=new URL(raw);
+    if(url.hostname!=='books.google.com'||url.pathname!=='/books/content'||
+       !['http:','https:'].includes(url.protocol))continue;
+    url.protocol='https:';
+    return url.href;
+   }catch(_){}
+  }
+  return null;
+ }
+ return Object.freeze({normalize,exactAuthor,exactWork,verifiedCoverId,verifiedGoogleCoverUrl});
 });
