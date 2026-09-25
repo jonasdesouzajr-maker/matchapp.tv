@@ -55,7 +55,7 @@ test('same-poster TMDB size fallback and exact saved metadata recover broken ori
   lookup:async title=>{queried.push(title);return {title,poster_url:good};},
   normalise:s=>String(s||'').toLowerCase().replace(/[^a-z0-9]/g,''),
   localPoster:title=>'data:image/svg+xml,'+encodeURIComponent(title),
-  Promise,Set
+  Promise,Set,Map,setTimeout,clearTimeout
  };
  const {posterVariants,recoverAdultPoster}=vm.runInNewContext(media.slice(start,end)+'\n({posterVariants,recoverAdultPoster})',ctx);
  assert.deepEqual(Array.from(posterVariants(bad)),[
