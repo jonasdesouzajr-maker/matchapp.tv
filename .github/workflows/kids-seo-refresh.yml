@@ -16,7 +16,7 @@ permissions:
   actions: write
 
 concurrency:
-  group: kids-seo-refresh
+  group: matchapp-content-publish
   cancel-in-progress: false
 
 jobs:
