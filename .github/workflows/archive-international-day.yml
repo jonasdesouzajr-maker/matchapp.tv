@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
   group: matchapp-content-publish
@@ -26,6 +27,7 @@ jobs:
       - name: Preserve the outgoing day record
         run: node tools/archive-international-day.cjs
       - name: Publish retained event history
+        id: publish
         shell: bash
         run: |
           set -euo pipefail
@@ -34,7 +36,15 @@ jobs:
           git add data/international-day-history.json
           if git diff --staged --quiet; then
             echo "No outgoing International Day to archive."
+            echo 'changed=0' >> "$GITHUB_OUTPUT"
             exit 0
           fi
           git commit -m "Events: retain ended International Day"
           git push origin HEAD:main
+          echo 'changed=1' >> "$GITHUB_OUTPUT"
+
+      - name: Validate and deploy updated retained events
+        if: steps.publish.outputs.changed == '1'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run pages-deploy.yml --ref main
