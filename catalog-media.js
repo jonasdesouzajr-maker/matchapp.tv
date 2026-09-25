@@ -339,13 +339,21 @@
       /^https:\/\/is\d+-ssl\.mzstatic\.com\/[A-Za-z0-9_./%-]+(?:\?[A-Za-z0-9_=&%-]+)?$/.test(url)
     );
   }
+  // The already-selected match may be audio or a TVMaze title. Preserve
+  // artwork supplied by that SAME verified result, without admitting a new
+  // cross-title lookup or allowing arbitrary remote hosts.
+  function trustedMatchArtwork(url){
+    return trustedAdultPoster(url)||
+      /^https:\/\/static\.tvmaze\.com\/uploads\/images\/[A-Za-z0-9_./%-]+$/.test(url)||
+      /^https:\/\/i\.scdn\.co\/image\/[A-Za-z0-9_-]+$/.test(url);
+  }
   function uniquePosterCandidates(meta,sourceUrl,rail=false){
     const values=rail
       ? [meta?.poster_url,meta?.poster_large_url,meta?.poster_original_url,sourceUrl]
       : [meta?.poster_large_url,meta?.poster_original_url,meta?.poster_url,sourceUrl];
     const urls=[];
     for(const url of values){
-      if(!trustedAdultPoster(url)||urls.includes(url))continue;
+      if(!(trustedAdultPoster(url)||(!rail&&sourceUrl===url&&trustedMatchArtwork(url)))||urls.includes(url))continue;
       urls.push(url);
     }
     return urls;
@@ -418,8 +426,9 @@
       img.dataset.matchappFallbackStage='local';
       img.src=fallback;
     }
-    let meta=exactAdultMetadata(opts.meta,name,opts);
-    if(!meta){
+    const sourceOnly=opts.sourceOnly===true;
+    let meta=sourceOnly?null:exactAdultMetadata(opts.meta,name,opts);
+    if(!meta&&!sourceOnly){
       const found=await lookup(name,{
         year:opts.year||'',kind:opts.kind||''
       });
@@ -428,7 +437,8 @@
     if(!current())return false;
     // When the exact backend knows this identity, its current artwork takes
     // precedence over cached/stale URLs in the homepage's initial HTML.
-    const source=meta?null:(trustedAdultPoster(opts.sourceUrl)?opts.sourceUrl:null);
+    const source=meta?null:((opts.trustedMatchSource&&trustedMatchArtwork(opts.sourceUrl))||
+      trustedAdultPoster(opts.sourceUrl)?opts.sourceUrl:null);
     const candidates=uniquePosterCandidates(meta,source,opts.rail===true);
     const promoted=new Set();
     const tryCandidates=async urls=>{
@@ -458,10 +468,11 @@
     if(await tryCandidates(candidates))return true;
     // A TMDB poster path can be retired. Refresh ONLY a previously proved
     // numeric film/show identity; never select a similarly named search hit.
-    const refreshed=await exactPosterRefresh(meta,name,opts);
+    const refreshed=sourceOnly?null:await exactPosterRefresh(meta,name,opts);
     if(await tryCandidates(uniquePosterCandidates(refreshed,null,opts.rail===true)))return true;
     if(!meta){
-      const fallbackSources=[opts.sourceUrl,img.getAttribute('src')].filter(trustedAdultPoster);
+      const fallbackSources=[opts.sourceUrl,img.getAttribute('src')]
+        .filter(url=>trustedAdultPoster(url)||(!opts.rail&&opts.trustedMatchSource&&trustedMatchArtwork(url)));
       if(await tryCandidates(fallbackSources))return true;
     }
     if(!current())return false;
