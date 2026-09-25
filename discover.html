@@ -163,6 +163,10 @@
         .discover-why { color: var(--gold-glow); font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; margin: 0 0 6px 0; }
         .discover-related-head { grid-column: 1 / -1; color: var(--gold); font-size: 14px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.8px; margin: 10px 0 0 0; }
         .discover-card.is-related { border-style: dashed; }
+        /* Only the real adult Bookworms matcher can verify store/audio editions. */
+        .discover-book-matcher-link { display: inline-flex; align-items: center; justify-content: center; max-width: 100%; min-height: 44px; margin: 12px 0 3px; padding: 10px 15px; border-radius: 13px; line-height: 1.35; font-size: 13px; font-weight: 800; text-decoration: none; white-space: normal; overflow-wrap: anywhere; text-align: center; }
+        .discover-book-matcher-link:focus-visible { outline: 3px solid #7ee9d3; outline-offset: 3px; }
+        @media(max-width:600px){ .discover-book-matcher-link{width:100%;} }
         .discover-card.is-hidden { display: none !important; }
 
         #discover-loading { text-align: center; padding: 40px 20px; }
@@ -413,7 +417,7 @@
 <script src="/catalog-plus.js?v=20260919-catalog3"></script>
     <script src="/catalog-media.js?v=20260924-poster1"></script>
     <script src="/install-progress.js?v=20260924-runtime1"></script>
-    <script src="/discover.js?v=20260925-provlinks3"></script>
+    <script src="/discover.js?v=20260925-books1"></script>
     <script src="/title-experience.js?v=20260918-notify2"></script>
     <script src="/voice-input.js?v=20260924-runtime1"></script>
     <script>
