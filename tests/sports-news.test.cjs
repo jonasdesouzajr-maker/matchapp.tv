@@ -67,8 +67,10 @@ test('non-licensed RSS sources never enter approved sports fallbacks',()=>{
    '<link>https://www.sportbusy.com/news/football-season-announcement</link>'+
    '<pubDate>Fri, 25 Sep 2026 10:00:00 GMT</pubDate></item></channel></rss>';
  assert.deepEqual(partner.parseFeed(xml,fake,now),[]);
- assert.equal(partner.FEEDS.length,1);
- assert.equal(partner.FEEDS[0].source,'The Conversation');
+ assert.equal(partner.FEEDS.length,4);
+ assert(partner.FEEDS.every(feed=>feed.source==='The Conversation'&&feed.domain==='theconversation.com'));
+ assert(partner.FEEDS.filter(feed=>feed.category==='sport').length===3);
+ assert(partner.FEEDS.some(feed=>feed.url==='https://theconversation.com/au/articles.atom'&&feed.category==='general'));
  assert.doesNotMatch(read('latest-news.js'),/sportbusy\.com/);
  assert.doesNotMatch(read('tools/refresh-news-rss.js'),/sportbusy\.com/);
 });
@@ -99,4 +101,33 @@ test('source transport fallback is constrained to approved canonical sources wit
  assert.match(home,/theconversation\.com/);
  assert.doesNotMatch(home,/sportbusy\.com/);
  assert.match(news,/timestamp_kind/);
+});
+
+test('regional sports topics and Australian feed preserve strict sport-only original links',()=>{
+ const partner=require('../tools/sports-partner-feed.js'),time=Date.parse('2026-09-25T12:00:00Z');
+ const dates='<published>2026-09-25T09:12:00Z</published>';
+ const xml=(title,url)=>'<feed xmlns="http://www.w3.org/2005/Atom"><entry>'+
+  '<title>'+title+'</title><link rel="alternate" href="'+url+'" />'+dates+
+  '<content>Publisher article body must never be republished.</content></entry></feed>';
+ const sportFeed=partner.FEEDS.find(f=>f.url.includes('athletes-84090'));
+ const olympicFeed=partner.FEEDS.find(f=>f.url.includes('jeux-olympiques-jo-153405'));
+ const general=partner.FEEDS.find(f=>f.category==='general');
+ assert.equal(partner.parseFeed(xml('Sports science studies athlete recovery','https://theconversation.com/sports-science-210000'),sportFeed,time).length,1);
+ assert.equal(partner.parseFeed(xml('Jeux Olympiques : nouvelles études et entraînement','https://theconversation.com/jeux-olympiques-science-210001'),olympicFeed,time).length,1);
+ assert.deepEqual(partner.parseFeed(xml('Technology changes housing choices','https://theconversation.com/technology-housing-210002'),general,time),[]);
+ const verified=partner.parseFeed(xml('Tennis and sport participation in Australia','https://theconversation.com/tennis-participation-210003'),general,time);
+ assert.equal(verified.length,1);
+ assert.equal(verified[0].image,null);
+ assert.equal(verified[0].url,'https://theconversation.com/tennis-participation-210003');
+ assert(!JSON.stringify(verified).includes('article body'));
+ assert.deepEqual(partner.parseFeed(xml('Football betting odds and parlays','https://theconversation.com/football-betting-210004'),general,time),[]);
+});
+test('regional feed sources stay exactly allowlisted; no direct unlicensed sport feeds',()=>{
+ const partner=require('../tools/sports-partner-feed.js');
+ assert.deepEqual(partner.FEEDS.map(f=>new URL(f.url).hostname),Array(4).fill('theconversation.com'));
+ const fake={...partner.FEEDS[0],url:'https://unlicensed-sport.example/rss'};
+ const xml='<feed><entry><title>Soccer game updates and scores today</title>'+
+ '<link rel="alternate" href="https://theconversation.com/soccer-2026" />'+
+ '<published>2026-09-25T10:00:00Z</published></entry></feed>';
+ assert.deepEqual(partner.parseFeed(xml,fake,Date.parse('2026-09-25T12:00:00Z')),[]);
 });
