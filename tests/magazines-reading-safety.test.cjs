@@ -86,7 +86,8 @@ test('adult Home, magazine hub and Ask AI wire publisher data while Kids cannot 
 test('Ask AI never substitutes film matches for requested e-books, audiobooks or magazines',()=>{
  const js=read('discover.js'),server=read('supabase/functions/gemini-proxy/index.ts');
  assert.match(js,/const bookIntent = detectBookIntent\(question\)/);
- assert.match(js,/if \(!bookIntent && \(!Array\.isArray\(payload\?\.results\)/);
+ assert.match(js,/if \(!bookIntent && wantsTitleRecommendations &&/);
+ assert.match(js,/!payload\?\._live \|\| !String\(payload\.answer \|\| ''\)\.trim\(\)/,'live AI replies without title cards must remain intact');
  assert.match(js,/MatchAppReadingAI\?\.render/);
  assert.match(js,/MatchAppContentSafety\?\.safeEntries/);
  assert.match(js,/MatchAppContentSafety\?\.isPornographicRequest/);

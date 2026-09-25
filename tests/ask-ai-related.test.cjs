@@ -282,7 +282,8 @@ test('Ask AI book/audiobook questions never fall back to unrelated movie or musi
  const fallback=js.slice(js.indexOf('async function fallbackSearch'),js.indexOf('function catalogFallbackForQuestion'));
  assert(fallback.indexOf('if (detectBookIntent(question))')<fallback.indexOf('const audioIntent'));
  assert.match(js,/function catalogFallbackForQuestion\(question\)[\s\S]*?detectBookIntent\(question\)\) return \[\]/);
- assert.match(js,/if \(!bookIntent && !newItems.length && window\.matchPolicy/);
+ assert.match(js,/if \(!bookIntent && wantsTitleRecommendations && !newItems\.length/);
+ assert.match(js,/!payload\?\._live && window\.matchPolicy/,'valid conversational answers must not be replaced with film recommendations');
  assert.match(js,/bookIntent \? \[\] : \(payload\.results \|\| \[\]\)/);
 });
 test('book Ask AI suggestions open verified matcher rather than guessed streaming/buy URLs',()=>{
