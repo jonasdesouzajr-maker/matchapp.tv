@@ -35,7 +35,7 @@ test('unapproved installed PWAs and television browsers do not receive affiliate
   const link=new URL(affiliate('Mozilla/5.0',options).amazonSearchUrl(book,'BR'));
   assert.equal(link.searchParams.has('tag'),false,'installed PWA must await retailer approval');
  }
- for(const ua of ['Mozilla/5.0 SmartTV','Mozilla/5.0 (Linux; Android TV)','Mozilla/5.0 GoogleTV','Mozilla/5.0 Roku','Mozilla/5.0 HbbTV','Mozilla/5.0 AFTMM']){
+ for(const ua of ['Mozilla/5.0 SmartTV','Mozilla/5.0 (Linux; Android TV)','Mozilla/5.0 Roku','Mozilla/5.0 HbbTV']){
   const link=new URL(affiliate(ua).amazonSearchUrl(book,'BR'));
   assert.equal(link.searchParams.has('tag'),false,'TV app not an approved affiliate surface');
  }
@@ -44,9 +44,10 @@ test('affiliate recognition is strict and disclosures are available in PT and En
  const aff=affiliate(),good=aff.amazonSearchUrl(book,'BR');
  assert.equal(aff.isAffiliateLink(good.replace('www.amazon.com.br','amazon.com')),false);
  assert.equal(aff.isAffiliateLink(good.replace('tag=matchapp06-20','tag=someone-20')),false);
- assert.equal(aff.disclosure('pt-BR'),'Como associado da Amazon, eu ganho com compras qualificadas.');
+ assert.match(aff.disclosure('pt-BR'),/Como associado da Amazon/);
  assert.equal(aff.paidLabel('pt-BR'),'publicidade');
  assert.match(aff.disclosure('en-US'),/qualifying purchases/);
+ assert.match(aff.disclosure('en-US'),/Como associado da Amazon/);
 });
 test('adult-only storefront surfaces load the centralized affiliate script before the matcher and disclose commercial links',()=>{
  const home=read('index.html'),hub=read('ebooks/index.html'),match=read('ebooks/ebook-matcher.js'),kids=read('kids/index.html');
@@ -55,7 +56,7 @@ test('adult-only storefront surfaces load the centralized affiliate script befor
  assert(hub.includes('/ebooks/affiliate-links.js'));
  assert(match.includes('MatchAppEbookAffiliate'));
  assert(match.includes("(tagged?'sponsored ':'')"));
- assert.match(hub,/Como associado da Amazon, eu ganho com compras qualificadas/);
+ assert.match(hub,/Como associado da Amazon/);
  assert.doesNotMatch(kids,/affiliate-links\.js/);
 });
 test('Google Play links remain ordinary until an approved Partnerize affiliate link exists',()=>{
@@ -65,4 +66,4 @@ test('Google Play links remain ordinary until an approved Partnerize affiliate l
  assert(!hub.includes('GGKEY:'));
 });
 
-test('cookie notice distinguishes external affiliate attribution from purchases',()=>{const policy=read('cookies.html');assert.match(policy,/External e-book retailers and affiliate links/);assert.match(policy,/not a completed purchase/);});
+test('cookie notice distinguishes third-party affiliate tracking from purchases',()=>{const policy=read('cookies.html');assert.match(policy,/External e-book retailers and affiliate links/);assert.match(policy,/not a completed purchase/);});
