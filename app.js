@@ -4477,7 +4477,11 @@ async function renderResult(selected, isSpecificSearch) {
     });
     posterEl.onerror = null;
     posterEl.src = localCover;
-    if (realCover && realCover !== localCover) {
+    if (realCover && realCover !== localCover &&
+        window.MatchAppCatalogMedia?.recoverAdultPoster &&
+        /^https:\/\/(?:image\.tmdb\.org|is\d+-ssl\.mzstatic\.com)\//i.test(realCover)) {
+        window.MatchAppCatalogMedia.recoverAdultPoster(posterEl, selected.title, null, realCover);
+    } else if (realCover && realCover !== localCover) {
         const probe = new Image();
         probe.onload = function() {
             if (window.globalMatchTitle === selected.title) {
