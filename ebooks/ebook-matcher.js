@@ -353,7 +353,7 @@ async function mount(){
  }
  if(root.dataset.ebookMounted==='1')return;
  root.dataset.ebookMounted='1';root.innerHTML=markup();bind(root);renderTop(root);await cloudHydrate();renderSaved(root);
- document.addEventListener('matchapp:langchange',()=>{const open=root.querySelector('.ebook-fold')?.open;root.innerHTML=markup();bind(root);renderTop(root);renderSaved(root);const fold=root.querySelector('.ebook-fold');if(fold)fold.open=open!==false;});
+ document.addEventListener('matchapp:langchange',()=>{const open=root.querySelector('.ebook-fold')?.open;root.innerHTML=markup();/* root delegated click handler already installed: re-binding duplicated network lookups and Match credits after language changes. */renderTop(root);renderSaved(root);const fold=root.querySelector('.ebook-fold');if(fold)fold.open=open!==false;});
 }
 window.MatchAppEbooks={match:()=>{const r=document.getElementById('ebook-matcher-root');return r?doMatch(r):null},saved:()=>read(K.saved).slice(),disliked:()=>read(K.disliked).slice()};
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount,{once:true});else mount();
