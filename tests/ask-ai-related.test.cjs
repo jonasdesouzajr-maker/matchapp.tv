@@ -241,3 +241,30 @@ test('Ask AI audiobook questions lead into the existing verified adult book matc
   assert.equal(audio._availabilityVerified,false);
   assert.equal(audio._aiPlatformHint,'Spotify');
 });
+
+
+test('unverified visual recommendations never use guessed/stale platform deep links',()=>{
+ const vm=require('node:vm'),src=read('discover.js');
+ const a=src.indexOf('function discoverWatchUrl(item) {');
+ const b=src.indexOf('// Hard exclusions',a);
+ assert(a>=0&&b>a);
+ const local={MATCH_LANG:'pt-BR'},context={
+   window:local,
+   localStorage:{getItem:key=>key==='match_user_country'?'Brazil':null},
+   justWatchLocale:()=> 'br',encodeURIComponent
+ };
+ const fn=vm.runInNewContext(src.slice(a,b)+'\ndiscoverWatchUrl;',context);
+ const example={title:'Known Real Movie',type:'movie',
+    platform:'',_availabilityVerified:false,
+    watchUrl:'https://unverified-streaming-service.example/watch/incorrect',
+    _viewing:{href:'https://unverified-streaming-service.example/watch/incorrect'}
+ };
+ const result=fn(example);
+ assert.equal(result,'https://www.justwatch.com/br/search?q=Known%20Real%20Movie');
+ assert(!result.includes('unverified-streaming-service'));
+ const verified={title:'Known Real Movie',type:'movie',_availabilityVerified:true,
+   _viewing:{mode:'stream',provider:'Verified Provider',href:'https://www.justwatch.com/br/provider/verified'}};
+ assert.equal(fn(verified),'https://www.justwatch.com/br/provider/verified');
+ const audiobook={title:'A Real Audiobook',type:'audiobook',platform:'',_availabilityVerified:false};
+ assert.equal(fn(audiobook),'/#ebook-matcher-root');
+});
