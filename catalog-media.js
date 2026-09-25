@@ -403,7 +403,10 @@
         if(img.__matchappAdultPoster!==identity||!img.isConnected)return true;
         img.dataset.matchappFallbackStage='verified';
         img.src=url;
-        if(img.id==='res-poster-img'&&window.globalMatchTitle===title)window.globalMatchPoster=url;
+        if(img.id==='res-poster-img'&&window.globalMatchTitle===title){
+          if(typeof window.setLoadedMatchPoster==='function')window.setLoadedMatchPoster(url,title);
+          else window.globalMatchPoster=url;
+        }
         return true;
       }
       return false;
@@ -473,7 +476,12 @@
         if(bad)active.failed.add(bad);
         if(!String(img.src||'').startsWith('data:image/svg+xml')){
           img.dataset.matchappFallbackStage='local';
-          img.src=localPoster(active.title);
+          const cover=localPoster(active.title);
+          img.src=cover;
+          if(img.id==='res-poster-img'&&window.globalMatchTitle===active.title){
+            if(typeof window.setLoadedMatchPoster==='function')window.setLoadedMatchPoster(cover,active.title);
+            else window.globalMatchPoster=cover;
+          }
         }
         void repairAdultPoster(img,active);
       });
@@ -512,7 +520,10 @@
       if(!img.isConnected||img.dataset.matchappMediaTitle!==expected)return;
       img.dataset.matchappFallbackStage='metadata';
       img.src=url;
-      if(img.id==='res-poster-img')window.globalMatchPoster=url;
+      if(img.id==='res-poster-img'){
+        if(typeof window.setLoadedMatchPoster==='function')window.setLoadedMatchPoster(url,expected);
+        else window.globalMatchPoster=url;
+      }
     };
     probe.onerror=()=>{};
     probe.src=url;
