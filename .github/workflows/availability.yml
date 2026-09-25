@@ -95,8 +95,3 @@ jobs:
             echo "Push attempt $attempt failed; refreshing from remote and regenerating."
           done
           exit 1
-      - name: Deploy refreshed content
-        if: steps.publish.outputs.changed == '1'
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: gh workflow run pages-deploy.yml --ref main
