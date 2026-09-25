@@ -49,13 +49,39 @@ probe() {
   fi
   sleep 22
   dismiss_launcher_anr "$name"
-  # A live PID alone is insufficient: reject emulator system ANR dialogs and
-  # app windows obscured by Launcher/permission screens.
-  focus="$(timeout 10s adb shell dumpsys window windows | grep -E 'mCurrentFocus|mFocusedApp' | tail -n 8 || true)"
-  printf '%s\n' "$focus" >"artifacts/android-emulator/$name-window-focus.txt"
-  if ! grep -Fq "$pkg" <<< "$focus"; then
-    echo "::error::$name process may exist, but its UI is not the foreground window."
+  # Validate the actually rendered root package. Newer emulator images can
+  # return an empty mCurrentFocus/mFocusedApp even while our Activity is plainly
+  # foreground, which made the previous dumpsys check a false negative.
+  timeout 15s adb shell uiautomator dump "/sdcard/$name-window.xml" >/dev/null 2>&1 || true
+  timeout 10s adb pull "/sdcard/$name-window.xml" "artifacts/android-emulator/$name-window.xml" >/dev/null 2>&1 || true
+  if ! grep -Fq "package=\"$pkg\"" "artifacts/android-emulator/$name-window.xml" 2>/dev/null; then
+    echo "::error::$name rendered hierarchy is not owned by the tested package."
     return 1
+  fi
+  # A freshly booted shared emulator can report no active network during the
+  # Activity's first millisecond and legitimately show MatchApp's offline view.
+  # Give Android connectivity time to settle, then use the real Retry control
+  # once before deciding that the production WebView could not be exercised.
+  if grep -qiE "You.?re offline|You are offline" "artifacts/android-emulator/$name-window.xml" 2>/dev/null; then
+    echo "$name opened MatchApp's offline recovery view; retrying once after connectivity settles."
+    sleep 8
+    coords=$(python3 - "artifacts/android-emulator/$name-window.xml" "$pkg" <<'PY'
+import re,sys
+text=open(sys.argv[1],encoding='utf-8').read()
+pkg=re.escape(sys.argv[2])
+m=re.search(r'resource-id="'+pkg+r':id/retry"[^>]*bounds="\[([0-9]+),([0-9]+)\]\[([0-9]+),([0-9]+)\]"',text)
+if m:
+ x1,y1,x2,y2=map(int,m.groups());print((x1+x2)//2,(y1+y2)//2)
+PY
+)
+    if [ -n "$coords" ]; then adb shell input tap $coords; fi
+    sleep 16
+    timeout 15s adb shell uiautomator dump "/sdcard/$name-window.xml" >/dev/null 2>&1 || true
+    timeout 10s adb pull "/sdcard/$name-window.xml" "artifacts/android-emulator/$name-window.xml" >/dev/null 2>&1 || true
+    if ! grep -Fq "package=\"$pkg\"" "artifacts/android-emulator/$name-window.xml" 2>/dev/null; then
+      echo "::error::$name left the tested Activity during network recovery."
+      return 1
+    fi
   fi
   if ! adb shell pidof "$pkg" >/dev/null; then
     echo "::error::$name native app crashed or failed to start"
@@ -64,9 +90,7 @@ probe() {
   fi
   adb exec-out screencap -p >"artifacts/android-emulator/$name-first-screen.png"
   test "$(stat -c%s "artifacts/android-emulator/$name-first-screen.png")" -gt 6000
-  # Android accessibility hierarchy is recorded for manual visual crosscheck.
-  timeout 15s adb shell uiautomator dump "/sdcard/$name-window.xml" || true
-  adb pull "/sdcard/$name-window.xml" "artifacts/android-emulator/$name-window.xml" || true
+  # Android accessibility hierarchy above is retained for manual visual crosscheck.
   # A full swipe should not crash WebView or freeze the owning process.
   adb shell input swipe 450 1500 450 350 650
   sleep 4
