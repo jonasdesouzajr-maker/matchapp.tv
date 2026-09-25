@@ -3,6 +3,12 @@ on:
   push:
     branches: [main]
     paths:
+      - 'match-guarantee.js'
+      - 'discover.js'
+      - 'supabase/functions/gemini-proxy/index.ts'
+      - 'ebooks/**'
+      - 'android-studio/app/**'
+      - 'android-studio/kidsapp/**'
       - 'tools/live-production-smoke.cjs'
       - 'tools/android-emulator-smoke.sh'
       - '.github/workflows/release-smoke.yml'
