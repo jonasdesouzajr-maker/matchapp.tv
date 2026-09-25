@@ -1,8 +1,8 @@
 'use strict';
 const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
 const root=path.join(__dirname,'..'),read=p=>fs.readFileSync(path.join(root,p),'utf8');
-function affiliate(ua){
- const context={window:{navigator:{userAgent:ua||'Mozilla/5.0'}},URL};
+function affiliate(ua,options={}){
+ const context={window:{navigator:{userAgent:ua||'Mozilla/5.0',standalone:!!options.iosStandalone},matchMedia:()=>({matches:!!options.pwaStandalone})},URL};
  vm.runInNewContext(read('ebooks/affiliate-links.js'),context,{filename:'affiliate-links.js'});
  return context.window.MatchAppEbookAffiliate;
 }
@@ -29,6 +29,16 @@ test('native Android remains untagged until its separate affiliate app approval'
  const link=new URL(aff.amazonSearchUrl(book,'BR'));
  assert.equal(link.hostname,'www.amazon.com.br');
  assert.equal(link.searchParams.has('tag'),false);
+});
+test('unapproved installed PWAs and television browsers do not receive affiliate tags',()=>{
+ for(const options of [{pwaStandalone:true},{iosStandalone:true}]){
+  const link=new URL(affiliate('Mozilla/5.0',options).amazonSearchUrl(book,'BR'));
+  assert.equal(link.searchParams.has('tag'),false,'installed PWA must await retailer approval');
+ }
+ for(const ua of ['Mozilla/5.0 SmartTV','Mozilla/5.0 (Linux; Android TV)']){
+  const link=new URL(affiliate(ua).amazonSearchUrl(book,'BR'));
+  assert.equal(link.searchParams.has('tag'),false,'TV app not an approved affiliate surface');
+ }
 });
 test('affiliate recognition is strict and disclosures are available in PT and English',()=>{
  const aff=affiliate(),good=aff.amazonSearchUrl(book,'BR');
