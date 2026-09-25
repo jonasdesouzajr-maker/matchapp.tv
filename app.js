@@ -1159,13 +1159,13 @@ const VERIFIED_POSTERS = {
     "Lanterns": "https://image.tmdb.org/t/p/w780/gpC7h43xPMEV3goYMQShfJbTtLq.jpg",
     "Quem É Você?": "https://image.tmdb.org/t/p/w780/ewelBEOwfr8EIjnrc6Drov67xe1.jpg",
     "Vermelho Sangue": "https://image.tmdb.org/t/p/w780/gtUqzLLaarxvNWzKeBepwWfTfm8.jpg",
-    "Habeas Corpus": "https://image.tmdb.org/t/p/w780/8JP8OXWufxAXFLfOOj4XU2SEhvV.jpg",
+    "Habeas Corpus": "https://image.tmdb.org/t/p/w780/cojcROwZe8681XzroVIOE9VK4zV.jpg",
     "Virtuosas": "https://image.tmdb.org/t/p/w780/v9wSMFf9Ysj40aHHUJ1VeLStZWn.jpg",
     "(Des)controle": "https://image.tmdb.org/t/p/w780/scl6uVD0YZc46WZHgXbEcaH2zYw.jpg",
     "Line of Fire": "https://image.tmdb.org/t/p/w780/sodRW36uEDHjv8l1WhYUNDvnIK6.jpg",
     "Wicked": "https://image.tmdb.org/t/p/w780/xDGbZ0JJ3mYaGKy4Nzd9Kph6M9L.jpg",
     "You+Me - Against the World": "https://image.tmdb.org/t/p/w780/bAbBNVplg7h79sm94OyHeKk8Phz.jpg",
-    "The Love Hypothesis": "https://image.tmdb.org/t/p/w780/vfZxVHextAGC70zrNhS8lsROqP1.jpg",
+    "The Love Hypothesis": "https://image.tmdb.org/t/p/w780/wlb6vunPuBjboYnmy4r3NlKZWji.jpg",
     "American Hostage": "https://image.tmdb.org/t/p/w780/p3Ro0ngezX9aNZY6j3vYbpQqVhr.jpg"
 };
 
@@ -1181,6 +1181,9 @@ function getVerifiedPoster(title) {
     return null;
 }
 
+
+// Shared only for exact-identity artwork; recommendation logic is unchanged.
+window.getVerifiedPoster = getVerifiedPoster;
 
 let CATALOG_TMDB_IDENTITIES_PROMISE = null;
 function catalogIdentityKey(value) {
@@ -1425,8 +1428,14 @@ async function hydrateMarqueeCovers() {
         // Hand-verified art short-circuits the lookup entirely.
         const verified = getVerifiedPoster(title);
         if (verified) {
-            img.onerror = function() { this.onerror = null; this.src = generatedCover(title); };
-            img.src = verified;
+            // Try original artwork at alternate TMDB sizes and exact saved metadata
+            // before accepting a branded fallback; no unrelated-title search.
+            if (window.MatchAppCatalogMedia?.recoverAdultPoster) {
+                window.MatchAppCatalogMedia.recoverAdultPoster(img, title, null, verified);
+            } else {
+                img.onerror = function() { this.onerror = null; this.src = generatedCover(title); };
+                img.src = verified;
+            }
             return;
         }
 
@@ -1444,8 +1453,12 @@ async function hydrateMarqueeCovers() {
             const rowHints = catalogEntry ? { year: catalogEntry.year, country: catalogEntry.country, countryCode: catalogEntry.countryCode, cats: catalogEntry.cats } : {};
             const real = await getRealCoverImage(title, rowHints);
             if (real) {
-                img.onerror = function() { this.onerror = null; this.src = generatedCover(title); };
-                img.src = real;
+                if (window.MatchAppCatalogMedia?.recoverAdultPoster) {
+                    window.MatchAppCatalogMedia.recoverAdultPoster(img, title, null, real);
+                } else {
+                    img.onerror = function() { this.onerror = null; this.src = generatedCover(title); };
+                    img.src = real;
+                }
             }
         } catch (e) { /* placeholder already showing */ }
     }));
