@@ -5,7 +5,8 @@
 'use strict';
 if((location.pathname||'').toLowerCase().startsWith('/kids'))return;
 
-const CAT=()=>Array.isArray(window.MATCHAPP_EBOOK_CATALOG)?window.MATCHAPP_EBOOK_CATALOG:[];
+const CAT=()=>window.MatchAppContentSafety?.safeEntries?.(window.MATCHAPP_EBOOK_CATALOG)|| (Array.isArray(window.MATCHAPP_EBOOK_CATALOG)?window.MATCHAPP_EBOOK_CATALOG:[]);
+const MAG=()=>window.MatchAppContentSafety?.safeEntries?.(window.MatchAppMagazines?.items)||window.MatchAppMagazines?.items||[];
 const K={saved:'match_ebook_saved_v1',disliked:'match_ebook_disliked_v1',seen:'match_ebook_seen_v1',prefs:'match_ebook_criteria_v1'};
 const FIELDS={
  mood:[
@@ -30,7 +31,7 @@ const FIELDS={
  length:[['any','📏','Any length'],['short','📗','Short'],['medium','📘','Medium'],['long','📙','Long']],
  era:[['any','🕰️','Any era'],['classic','🏺','Classic'],['modern','💿','1970–2014'],['recent','✨','2015+']],
  access:[['any','🌐','Free or paid'],['free','🆓','Legal free edition'],['paid','🛍️','Paid stores']],
- format:[['any','📚🎧','Read or listen'],['ebook','📖','E-book edition'],['audiobook','🎧','Audiobook only']]
+ format:[['any','📚🎧','Read or listen'],['ebook','📖','E-book edition'],['audiobook','🎧','Audiobook only'],['magazine','📰','Magazine only']]
 };
 const LABELS={
  en:{eyebrow:'FOR BOOKWORMS',title:'Match E-books Ai',intro:'Pick a reading or listening mood. MatchApp matches a book and checks real audio editions in your country, with legal free sources and official stores.',match:'Match my e-book',another:'Match another',save:'Save book',saved:'Saved',nope:'Not for me',why:'Why this match',where:'Where to get it',free:'Legal free editions',stores:'Official e-book stores',preview:'Book info / preview',rights:'Free-edition availability depends on copyright rules in your country. MatchApp links to source pages and never hosts copyrighted book files.',empty:'No unseen book fits every choice. We kept your access preference and broadened secondary filters.',quota:'Your MatchApp match allowance is used here too.',savedBooks:'Saved books & audiobooks',noneSaved:'No saved books yet.',remove:'Remove',close:'Close',topTitle:'Top E-books right now',topSub:'Current reader favorites and chart leaders — open an official store or a legal free-edition source.',topFree:'Free edition',topBuy:'Get this e-book',topSource:'Chart source',audioTitle:'Audiobook editions',audioVerify:'Check verified audiobook edition',audioWaiting:'Checking exact title and author at official audio sources…',audioNone:'No matching audio edition was verified. Official store searches may still help.',audioLinks:'Verified audiobook editions',audioSearch:'Search other audio stores (edition not confirmed)',audioRights:'Free LibriVox recordings are US public domain. Outside the US, check your local copyright law before listening or downloading.',audioEmpty:'No verified audiobook passed your filters right now. Try e-book format, broader filters, or official audio stores.',audioOnly:'Verified audio required · availability varies by country'},
@@ -132,6 +133,13 @@ async function chooseVerifiedAudio(p){
   }
  }
  return null;
+}
+function chooseMagazine(p){
+ const api=window.MatchAppMagazines;if(!api)return null;
+ const excluded=new Set([...read(K.saved),...read(K.disliked),...read(K.seen)]);
+ const magazine=api.select(p,market(),excluded)||
+   api.select(p,market(),new Set([...read(K.saved),...read(K.disliked)]));
+ return magazine?{book:magazine,magazine:true,relaxed:false}:null;
 }
 function why(book,p,relaxed){
  const bits=[];
@@ -236,7 +244,8 @@ function renderSaved(root){
  root.querySelectorAll('[data-ebook-saved-count]').forEach(x=>x.textContent=String(books.length));
  host.innerHTML=books.length?books.map(b=>'<article><div><strong>'+esc(b.title)+'</strong><small>'+esc(b.author)+'</small></div><div><a href="'+esc(bookInfo(b))+'" target="_blank" rel="noopener noreferrer">Google Books ↗</a><button type="button" data-ebook-saved-audio="'+esc(b.id)+'">🎧 '+esc(tr('audioVerify'))+'</button><button type="button" data-ebook-remove="'+esc(b.id)+'">'+esc(tr('remove'))+'</button><div class="ebook-saved-audio" data-ebook-saved-audio-result></div></div></article>').join(''):'<p>'+esc(tr('noneSaved'))+'</p>';
 }
-function renderResult(root,book,p,relaxed,audio){
+function renderResult(root,book,p,relaxed,audio,magazine){
+ if(magazine){renderMagazineResult(root,book,p);return;}
  const host=root.querySelector('[data-ebook-result]');
  const free=freeLinks(book),stores=storeLinks(book);
  const aff=window.MatchAppEbookAffiliate,paid=!!(aff&&stores.some(([,u])=>aff.isAffiliateLink(u)));
@@ -277,7 +286,8 @@ async function doMatch(root){
    root.dataset.audioBusy='0';
    root.querySelectorAll('[data-ebook-match],[data-ebook-rematch]').forEach(b=>b.disabled=false);
   }
- }else pick=choose(p);
+ }else if(p.format==='magazine')pick=chooseMagazine(p);
+ else pick=choose(p);
  const note=root.querySelector('[data-ebook-note]');
  if(!pick){if(note){note.hidden=false;note.textContent=p.format==='audiobook'?tr('audioEmpty'):tr('empty')}return;}
  // Same commercial meter as the main matcher; no charge when preflight found nothing.
@@ -289,7 +299,7 @@ async function doMatch(root){
  if(!allowed)return;
  if(note){note.hidden=!pick.relaxed;note.textContent=pick.relaxed?tr('empty'):''}
  const seen=uniq(read(K.seen).concat(pick.book.id)).slice(-300);write(K.seen,seen);
- renderResult(root,pick.book,p,pick.relaxed,pick.audio||null);
+ renderResult(root,pick.book,p,pick.relaxed,pick.audio||null,pick.magazine===true);
 }
 function bind(root){
  root.addEventListener('click',async e=>{
@@ -340,7 +350,7 @@ function markup(){
  const field=(key,label)=>'<fieldset class="ebook-field"><legend>'+label+'</legend><div class="ebook-chips">'+optionButtons(key,p[key])+'</div></fieldset>';
  return '<details class="ebook-fold" open><summary><span class="ebook-summary-icon" aria-hidden="true">📚✦</span><span><small>'+esc(tr('eyebrow'))+'</small><strong>'+esc(tr('title'))+'</strong></span><span class="ebook-chevron" aria-hidden="true">⌄</span></summary>'+
  '<div class="ebook-panel"><div class="ebook-intro"><div><h2>'+esc(tr('title'))+'</h2><p>'+esc(tr('intro'))+'</p></div><a href="/ebooks/" class="ebook-guide-link">Bookworms hub ↗</a></div>'+
- '<div class="ebook-fields">'+field('mood','How should it feel?')+field('genre','Genre')+field('pace','Reading pace')+field('length','Length')+field('era','Era')+field('access','Access')+field('format','Reading or listening')+'</div>'+
+ '<div class="ebook-fields">'+field('mood','How should it feel?')+field('genre','Genre')+field('pace','Reading pace')+field('length','Length')+field('era','Era')+field('access','Access')+field('format','Reading, listening or magazines')+'</div>'+
  '<div class="ebook-match-row"><button type="button" class="ebook-match-cta" data-ebook-match>📚🎧 '+esc(tr('match'))+'</button><span>'+esc(tr('quota'))+'</span></div>'+
  '<p class="ebook-note" data-ebook-note hidden></p><section class="ebook-result" data-ebook-result hidden aria-live="polite"></section>'+
  '<section class="ebook-top-section" aria-labelledby="ebook-top-title"><div class="ebook-top-head"><div><small>BOOKWORMS PICKS</small><h3 id="ebook-top-title">'+esc(tr('topTitle'))+'</h3><p>'+esc(tr('topSub'))+'</p></div><span>Updated Sep 24, 2026</span></div><div class="ebook-top-rail" data-ebook-top></div></section>'+
