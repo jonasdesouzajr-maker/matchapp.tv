@@ -240,7 +240,7 @@ function seoFor(i,trends,generated){
       trend_keywords:[],entity_keywords:topic,freshness_keywords:freshnessKeywords,
       source_keywords:sourceKeywords,
       meta_title:truncateWords(i.title+' | '+sport+' | MatchApp TV',60),
-      meta_description:truncateWords(sport+' report from BBC Sport published '+isoDate+'. Read the verified original story via MatchApp Latest News.',158),
+      meta_description:truncateWords(sport+' reporting indexed '+isoDate+'. Open the original publisher through MatchApp Latest News.',158),
       keywords:uniq([primary,...short,...long,...sourceKeywords,...freshnessKeywords]).slice(0,32),
       seo_generated_at:generated
     };
@@ -321,7 +321,7 @@ function sourceCreativeWork(i){
     '@type':'CreativeWork',
     name:i.title,
     url:i.url,
-    datePublished:i.published_at,
+    ...(i.category==='sports'?{}:{datePublished:i.published_at}),
     publisher:{
       '@type':'Organization',
       name:i.source,
@@ -340,6 +340,7 @@ function page(i){
   const canon=esc(i.matchapp_url);
   const kw=esc(i.seo.keywords.join(', '));
   const publishedLabel=new Date(i.published_at).toLocaleDateString('en-US',{dateStyle:'long'});
+  const publishedTitle=i.category==='sports'?'First indexed by news discovery':'Original publication';
   const imageMeta=i.image
     ? `<meta property="og:image" content="${esc(i.image)}"><meta name="twitter:image" content="${esc(i.image)}"><meta name="twitter:card" content="summary_large_image">`
     : '<meta name="twitter:card" content="summary">';
@@ -422,7 +423,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p>${esc(i.description)}</p>
     <div style="margin:18px 0;padding:14px;border:1px solid rgba(229,193,88,.25);border-radius:12px">
       <strong>Verified source:</strong> ${src} (${sourceDomain})<br>
-      <span>Original publication: <time datetime="${esc(i.published_at)}">${esc(publishedLabel)}</time></span>
+      <span>${esc(publishedTitle)}: <time datetime="${esc(i.published_at)}">${esc(publishedLabel)}</time></span>
     </div>
     <p><a href="${orig}" target="_blank" rel="noopener noreferrer external">Read the original report at ${src} ↗</a></p>
     <p><a href="${landing}">Open this story inside MatchApp Latest News →</a></p>
@@ -540,7 +541,7 @@ function readSports(){
     }
     const items=Array.isArray(parsed.items)?parsed.items.filter(i=>
       i&&i.category==='sports'&&i.title&&i.id&&
-      isAllowed(i.url,{domains:['bbc.co.uk','bbc.com']})&&
+      isAllowed(i.url,{domains:['reuters.com','apnews.com','g1.globo.com','espn.com','espn.com.br','theguardian.com','formula1.com','nba.com']})&&
       Number.isFinite(Date.parse(i.published_at))&&
       Date.now()-Date.parse(i.published_at)<96*3600000).slice(0,12):[];
     return {updated_at:parsed.updated_at,items};
@@ -680,7 +681,7 @@ function enforceArticleAnalyticsOnDisk(){
     const item={...entry,
       discovered_at:existing?.discovered_at||sportsSnapshot.updated_at||generated,
       person:'',
-      description:entry.sport+' headline reported by BBC Sport. MatchApp preserves the original publisher, publication date and link; open the source for full context.',
+      description:entry.sport+' coverage linked to the original publisher '+entry.source+'. MatchApp records when it was indexed; open the source for full context.',
       matchapp_url:existing?.matchapp_url||`${SITE}/news/articles/${slug(entry.title)}-${entry.id.slice(0,6)}/`,
       landing_url:`${SITE}/?news=${encodeURIComponent(entry.id)}#latest-news`
     };
