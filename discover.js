@@ -45,6 +45,11 @@ function keepConversationAtStart() {
 function detectAudioIntent(q) {
     return /\b(podcast|playlist|song|songs|music|album|albums|single|singles|audiobook|spotify|listen|radio show)\b/i.test(q);
 }
+function detectBookIntent(q) {
+    // Books and narrated book editions have an independent verified matcher.
+    // Never treat one as a Spotify music track or TMDB film request.
+    return /\b(e-?books?|audio\s?books?|novels?|reading|kindle|librivox|livros?|audiolivros?|libros?|audiolibros?)\b/i.test(q);
+}
 
 /* ---------- AI conversational answer ---------- */
 
@@ -179,6 +184,18 @@ function stripQuestionWords(q) {
 }
 
 async function fallbackSearch(question, aiWasDown) {
+    if (detectBookIntent(question)) {
+        // Offline mode must never show a movie, music track or an assumed
+        // narrator in response to a book question. The CTA below links the
+        // independently source-verified e-book and audiobook matcher.
+        const lang = window.MATCH_LANG || 'en';
+        const answer = /^pt/.test(lang)
+            ? 'Não consegui confirmar uma edição agora. O MatchApp pode buscar o livro ou audiolivro em fontes oficiais usando o sistema de match de livros.'
+            : /^es/.test(lang)
+            ? 'No pude verificar una edición ahora. El buscador de libros y audiolibros de MatchApp comprueba las fuentes oficiales.'
+            : 'I couldn’t verify an edition just now. Our dedicated book and audiobook matcher checks official sources before showing purchase or listening options.';
+        return {answer, results: [], _live: false};
+    }
     const audioIntent = detectAudioIntent(question);
     const podcastIntent = /\b(podcast|podcasts|radio show)\b/i.test(question);
     const musicIntent = audioIntent && !podcastIntent;
@@ -235,6 +252,7 @@ async function fallbackSearch(question, aiWasDown) {
 }
 
 function catalogFallbackForQuestion(question) {
+    if (detectBookIntent(question)) return []; // Film catalogue is not the Books catalogue.
     if (typeof CONTENT_CATALOG === 'undefined' || !Array.isArray(CONTENT_CATALOG)) return [];
     const policy = window.matchPolicy;
     return CONTENT_CATALOG
@@ -378,6 +396,10 @@ function justWatchLocale() {
 
 function discoverWatchUrl(item) {
     const title = (item && (item.title || item.displayTitle)) || '';
+    // The dedicated matcher performs exact bookstore/audio edition checks.
+    // Model-invented retailer or audiobook links must never become "buy now".
+    if (/\b(book|ebook|e-book|audiobook|novel)\b/i.test(String(item?.type || '')))
+        return '/#ebook-matcher-root';
     const isAudio = /podcast|album|music|audiobook/i.test((item && item.type) || '');
     // Verification failures and unverified AI platform hints must NEVER send
     // users to a guessed streaming service, including stale catalogue links.
@@ -474,10 +496,11 @@ async function enrichDiscoverMedia(item) {
         return item;
     };
     const isAudio = /podcast|music|album|audiobook|song/i.test(String(item.type || ''));
+    const isBook = /\b(book|ebook|e-book|audiobook|novel)\b/i.test(String(item.type || ''));
     // Audiobooks use the separate verified book matching flow, not TMDB film
     // provider metadata. The card's generic audio destination is a search,
     // never a promise that a particular narrator/edition is available.
-    if (isAudio || !window.MatchAppCatalogMedia?.lookup) return unverified();
+    if (isAudio || isBook || !window.MatchAppCatalogMedia?.lookup) return unverified();
     try {
         const rawType = String(item.type || '').toLowerCase();
         const kind = /movie|film/.test(rawType) ? 'movie' : (/series|tv|show|drama|anime|novela|documentary/.test(rawType) ? 'tv' : '');
@@ -1525,6 +1548,7 @@ async function askAndRender(question) {
         .slice(0, -1)
         .map(t => ({ role: t.role, text: t.text }));
 
+    const bookIntent = detectBookIntent(question);
     let payload, source = 'ai';
     try { payload = await askAIConversational(question, history); }
     catch (e) { payload = await fallbackSearch(question, !!e.aiUnavailable); source = 'fallback'; }
@@ -1588,7 +1612,20 @@ async function askAndRender(question) {
     const offlineBadge = document.getElementById('discover-offline-badge');
     if (offlineBadge) offlineBadge.style.display = payload._live ? 'none' : 'inline-flex';
 
-    const bubble = appendAssistantBubble(payload.answer, payload.results || [], { instant: false });
+    const bubble = appendAssistantBubble(payload.answer, bookIntent ? [] : (payload.results || []), { instant: false });
+    if (bubble?.wrap && bookIntent) {
+        const route = document.createElement('a');
+        route.href = '/#ebook-matcher-root';
+        route.className = 'gold-btn discover-book-matcher-link';
+        const lang = window.MATCH_LANG || 'en';
+        route.textContent = /^pt/.test(lang)
+            ? '📚🎧 Verificar livros e audiolivros'
+            : /^es/.test(lang)
+            ? '📚🎧 Verificar libros y audiolibros'
+            : '📚🎧 Verify books and audiobooks';
+        route.setAttribute('aria-label', route.textContent);
+        bubble.wrap.appendChild(route);
+    }
 
     // Auto-scroll to the response before the typewriter starts.
     if (bubble && bubble.wrap && !keepConversationAtStart()) {
@@ -1602,10 +1639,10 @@ async function askAndRender(question) {
     }
 
     const baseIndex = DISCOVER_ITEMS.length;
-    let newItems = (payload.results || [])
+    let newItems = (bookIntent ? [] : (payload.results || []))
         .map(item => enrichDiscoverItem(item, question))
         .filter(item => item && item.title && !isDiscoverDisliked(item.title));
-    if (!newItems.length && window.matchPolicy && typeof CONTENT_CATALOG !== 'undefined') {
+    if (!bookIntent && !newItems.length && window.matchPolicy && typeof CONTENT_CATALOG !== 'undefined') {
         newItems = CONTENT_CATALOG
             .filter(e => e && e.title && !isDiscoverDisliked(e.title) && window.matchPolicy.fitsQuestion(e, question))
             .slice(0, 6)
