@@ -5,15 +5,19 @@
 'use strict';
 const BR_TAG='matchapp06-20';
 const DOMAINS={BR:'amazon.com.br',GB:'amazon.co.uk',CA:'amazon.ca',AU:'amazon.com.au',JP:'amazon.co.jp',PT:'amazon.es',US:'amazon.com'};
-function nativeAndroid(){
- return /MatchAppAiAndroid\//i.test(String(root.navigator&&root.navigator.userAgent||''));
+function unapprovedAppOrTv(){
+ const ua=String(root.navigator&&root.navigator.userAgent||'');
+ const installed=!!(root.navigator&&root.navigator.standalone)||
+  !!(root.matchMedia&&root.matchMedia('(display-mode: standalone)').matches);
+ // Do not attach affiliate identifiers inside unapproved installed apps/TVs.
+ return /MatchAppAiAndroid\/|Smart-?TV|Tizen|Web0?S|HbbTV|Roku|AFT[A-Z0-9]+|GoogleTV|AppleTV/i.test(ua)||installed;
 }
 function amazonSearchUrl(book,market){
  const m=String(market||'US').toUpperCase();
  const url=new URL('https://www.'+(DOMAINS[m]||DOMAINS.US)+'/s');
  url.searchParams.set('k',String(book.title||'')+' '+String(book.author||''));
  url.searchParams.set('i','digital-text');
- if(m==='BR'&&!nativeAndroid())url.searchParams.set('tag',BR_TAG);
+ if(m==='BR'&&!unapprovedAppOrTv())url.searchParams.set('tag',BR_TAG);
  return url.toString();
 }
 function isAffiliateLink(href){
@@ -24,7 +28,7 @@ function isAffiliateLink(href){
 }
 function disclosure(locale){
  return /^pt/i.test(String(locale||''))?
-  'Como participante do Programa de Associados da Amazon, sou remunerado pelas compras qualificadas efetuadas.':
+  'Como associado da Amazon, eu ganho com compras qualificadas.':
   'As an Amazon Associate I earn from qualifying purchases.';
 }
 function paidLabel(locale){return /^pt/i.test(String(locale||''))?'publicidade':'paid link'}
