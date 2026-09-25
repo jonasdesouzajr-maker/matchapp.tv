@@ -20,7 +20,7 @@ test('Home startup avoids delayed boot locks, stale cache keys and duplicate hea
   assert.ok(html.includes('/'+file+'?v='),'missing cache-busted '+file);
  }
  assert.ok(html.includes('/build-meta.js?v=20260924-runtime2'),'stale shared runtime build-meta.js');
- assert.ok(html.includes('/settings.js?v=20260924-runtime1'),'stale shared runtime settings.js');
+ assert.ok(html.includes('/settings.js?v=20260925-guarantee2'),'stale shared runtime settings.js');
  assert.ok(html.includes('/catalog-media.js?v=20260925-verified2'),'stale shared runtime catalog-media.js');
  assert.ok(html.includes('/app.js?v=20260925-matchrestore2'),'stale shared runtime app.js');
  assert.match(settings,/if\(!isHome\)js\('\/experience-v2\.js'\)/);

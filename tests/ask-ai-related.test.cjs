@@ -273,7 +273,7 @@ test('Ask AI book/audiobook questions never fall back to unrelated movie or musi
  const vm=require('node:vm'),js=read('discover.js');
  const start=js.indexOf('function mediaIntentQuestion'),end=js.indexOf('/* ---------- AI conversational answer',start);
  assert(start>=0&&end>start);
- const ctx=vm.createContext({});
+ const ctx=vm.createContext({window:{}});
  vm.runInContext(js.slice(start,end),ctx);
  assert.equal(vm.runInContext("detectBookIntent('Find me a romantic audiobook')",ctx),true);
  assert.equal(vm.runInContext("detectBookIntent('Recommend Brazilian e-books')",ctx),true);
