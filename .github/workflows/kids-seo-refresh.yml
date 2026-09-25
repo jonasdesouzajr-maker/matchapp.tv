@@ -16,7 +16,7 @@ permissions:
   actions: write
 
 concurrency:
-  group: content-bot
+  group: kids-seo-refresh
   cancel-in-progress: false
 
 jobs:
