@@ -500,8 +500,9 @@
         mode:'discover', question, lang, kidsMode:true, childAgeBand:age,
         country:read('match_user_country') || '', age:''
       }});
-      if (error || !data?.candidates?.[0]?.content?.parts?.[0]?.text) return [];
-      const raw = data.candidates[0].content.parts[0].text;
+      if (error || !Array.isArray(data?.candidates?.[0]?.content?.parts)) return [];
+      const raw = data.candidates[0].content.parts.map(p => typeof p?.text === 'string' ? p.text : '').join('');
+      if (!raw) return [];
       const parsed = JSON.parse(raw.slice(raw.indexOf('{'), raw.lastIndexOf('}') + 1));
       const safe = [];
       (parsed.results || []).forEach(r => {
@@ -530,7 +531,11 @@
     chat.classList.add('show'); answer.textContent = tr('waiting'); results.replaceChildren();
     send.disabled = true; form.setAttribute('aria-busy', 'true');
     let timer;
-    const aiApproved = await Promise.race([safeAIRecognise(question.trim(), age), new Promise(resolve => { timer = setTimeout(() => resolve([]), 18000); })]);
+    // The shared Gemini proxy may legitimately try multiple 20-second models.
+    // Preserve the approved local fallback, but don't abandon a healthy AI
+    // request before its first model has even completed.
+    const KIDS_AI_TIMEOUT_MS = 60000;
+    const aiApproved = await Promise.race([safeAIRecognise(question.trim(), age), new Promise(resolve => { timer = setTimeout(() => resolve([]), KIDS_AI_TIMEOUT_MS); })]);
     clearTimeout(timer);
     if (version !== requestVersion || age !== currentAge()) return;
     // Reapply the CURRENT allowlist, even to locally selected fallback results.

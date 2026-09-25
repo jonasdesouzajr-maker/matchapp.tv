@@ -87,7 +87,11 @@ function parseAIResponse(data) {
     if (data.error) throw new Error(data.error);
     if (!data.candidates || !data.candidates[0]) throw new Error('AI unavailable');
 
-    const raw = data.candidates[0].content.parts[0].text;
+    // Gemini may split valid JSON across multiple text parts. Assemble them before parsing.
+    const raw = (Array.isArray(data.candidates[0]?.content?.parts)
+        ? data.candidates[0].content.parts.map(p => typeof p?.text === 'string' ? p.text : '').join('')
+        : '').trim();
+    if (!raw) throw new Error('Empty AI answer');
     const s = raw.indexOf('{'), e = raw.lastIndexOf('}');
     if (s === -1) throw new Error('Bad AI format');
 
@@ -129,19 +133,25 @@ async function askAIConversational(question, history) {
     const nickname = (typeof window.getUserNickname === 'function') ? window.getUserNickname() : '';
     const body = { mode: 'discover', question, lang, country, age, nickname, history: history || [] };
 
-    // HARD TIMEOUT PER ATTEMPT. supabase-js's functions.invoke has no timeout
-    // of its own, so if the Edge Function hangs — cold start, an upstream
-    // Gemini stall, a bad deploy — this waited forever. With two attempts that
-    // meant the page could sit on the loading meter indefinitely, which is
-    // exactly the "no output, then it took too long" report. 18s is generous
-    // enough for a genuine cold start but bounded, so the worst case is ~36s
-    // and then an honest message rather than an open-ended wait.
-    const AI_TIMEOUT_MS = 8000;
-    const withTimeout = (promise) => Promise.race([
-        promise,
-        new Promise((_, reject) =>
-            setTimeout(() => reject(new Error('AI request timed out')), AI_TIMEOUT_MS))
-    ]);
+    // The proxy can try four models, each with a 20-second upstream deadline.
+    // An 8-second browser timeout discarded healthy answers and retried live
+    // requests unnecessarily, contributing to rate limits and offline badges.
+    // Leave room for the entire verified proxy chain; do not retry timed-out
+    // in-flight work, which might still be consuming model capacity.
+    const AI_TIMEOUT_MS = 90000;
+    const withTimeout = async (promise) => {
+        let timer;
+        try {
+            return await Promise.race([
+                promise,
+                new Promise((_, reject) => {
+                    timer = setTimeout(() => reject(new Error('AI request timed out')), AI_TIMEOUT_MS);
+                })
+            ]);
+        } finally {
+            if (timer !== undefined) clearTimeout(timer);
+        }
+    };
 
     // Two attempts of the SAME contract, not a fallback to a different one.
     // A transient cold-start/network failure gets one bounded retry, while the
@@ -151,8 +161,18 @@ async function askAIConversational(question, history) {
             const { data, error } = await withTimeout(
                 window.supabaseClient.functions.invoke('gemini-proxy', { body }));
             if (!error && data && !data.error) return parseAIResponse(data);
+            // A second call cannot fix invalid credentials, a bad client
+            // request, or a quota/rate-limit response; it only makes those
+            // failures worse and needlessly burns provider capacity.
+            const status = Number(error?.context?.status || data?.status || 0);
+            if (status === 429 || (status >= 400 && status < 500 && status !== 408)) {
+                const err = new Error(status === 429 ? 'AI is busy; please try again shortly.' : 'AI request rejected.');
+                err.aiUnavailable = true;
+                err.aiTerminal = true;
+                throw err;
+            }
             if (attempt === 1) {
-                console.warn('[MatchApp AI] Attempt 1 failed, retrying once:', (error && error.message) || (data && data.error) || 'unknown');
+                console.warn('[MatchApp AI] Transient failure; retrying once:', (error && error.message) || (data && data.error) || 'unknown');
                 continue;
             }
             const detail = (error && error.message) || (data && data.error) || 'unknown';
@@ -162,11 +182,11 @@ async function askAIConversational(question, history) {
             err.aiUnavailable = true;   // lets the caller word the message honestly
             throw err;
         } catch (e) {
-            if (attempt === 2) {
+            if (attempt === 2 || e.aiTerminal || String(e.message || '').includes('timed out')) {
                 e.aiUnavailable = true;
                 throw e;
             }
-            console.warn('[MatchApp AI] Attempt 1 threw, retrying once:', e.message || e);
+            console.warn('[MatchApp AI] Transient first-attempt error; retrying once:', e.message || e);
         }
     }
     const err = new Error('AI unavailable');
@@ -1511,7 +1531,7 @@ async function renderResultsInto(grid, items, baseIndex) {
 }
 
 /* ---------- The main ask flow ---------- */
-async function askAndRender(question) {
+async function runAskAndRender(question) {
     if (!question || !question.trim()) return;
     question = question.trim();
     // Global MatchApp editorial policy: never use AI or provider lookups to
@@ -1570,7 +1590,12 @@ async function askAndRender(question) {
     // provider returns nothing, reuse the reviewed local catalogue under the
     // exact same policy. This adds no polling/observers and cannot loosen the
     // user's genre/taste exclusions.
-    if (!bookIntent && (!Array.isArray(payload?.results) || payload.results.length === 0)) {
+    // A perfectly good conversational AI reply may have zero title cards.
+    // Never overwrite its answer with an unrelated film-catalogue fallback.
+    const wantsTitleRecommendations = /\b(?:watch|recommend|suggest|stream|movie|movies|film|films|series|shows?|podcast|playlist|music|listen|similar|comedy|horror|romance|recommendation|assistir|filmes?|séries?|recomendar|recomende|indique|películas?)\b/i.test(question);
+    if (!bookIntent && wantsTitleRecommendations &&
+        (!payload?._live || !String(payload.answer || '').trim()) &&
+        (!Array.isArray(payload?.results) || payload.results.length === 0)) {
         const local = catalogFallbackForQuestion(question);
         if (local.length) {
             payload = payload || {};
@@ -1666,7 +1691,8 @@ async function askAndRender(question) {
     let newItems = (bookIntent ? [] : (payload.results || []))
         .map(item => enrichDiscoverItem(item, question))
         .filter(item => item && item.title && !isDiscoverDisliked(item.title));
-    if (!bookIntent && !newItems.length && window.matchPolicy && typeof CONTENT_CATALOG !== 'undefined') {
+    if (!bookIntent && wantsTitleRecommendations && !newItems.length &&
+        !payload?._live && window.matchPolicy && typeof CONTENT_CATALOG !== 'undefined') {
         newItems = CONTENT_CATALOG
             .filter(e => e && e.title && !isDiscoverDisliked(e.title) && window.matchPolicy.fitsQuestion(e, question))
             .slice(0, 6)
@@ -1693,6 +1719,19 @@ async function askAndRender(question) {
         const log = document.getElementById('chat-log');
         if (log) setTimeout(() => log.scrollIntoView({ behavior: 'auto', block: 'start' }), 20);
     }
+}
+
+// The button, keyboard and voice can submit the same question together.
+ // Keep one allowance debit and one answer in flight on this page at a time.
+let askInFlight = null;
+function askAndRender(question) {
+    if (askInFlight) return askInFlight;
+    const running = Promise.resolve().then(() => runAskAndRender(question));
+    askInFlight = running;
+    running.finally(() => {
+        if (askInFlight === running) askInFlight = null;
+    }).catch(() => {}); // The caller's promise retains the original error.
+    return running;
 }
 
 /* ---------- Auto-growing composer ----------
