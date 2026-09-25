@@ -1,13 +1,19 @@
 'use strict';
-/* Source restrictions: The Conversation sports Atom headline + canonical
- * original-article link only. Do not copy full article text, third-party
+/* Source restrictions: The Conversation's known sport-specific French
+ * topic feeds plus its official Australian edition's public Atom headlines,
+ * filtered strictly to clearly sports-specific stories and canonical links. Do not copy full article text, third-party
  * images, ads, publisher logos or claim endorsement. Its attribution rules
  * are documented publicly. A separate sports site's public Terms expressly
  * prohibit commercial material reuse; omit it absent written permission.
  * These records are independent editorial link cards, not republication. */
 const crypto=require('node:crypto');
 const FEEDS=Object.freeze([
- {url:'https://theconversation.com/topics/sport-20624/articles.atom',domain:'theconversation.com',source:'The Conversation',category:'sport'}
+ {url:'https://theconversation.com/topics/sport-20624/articles.atom',domain:'theconversation.com',source:'The Conversation',category:'sport'},
+ {url:'https://theconversation.com/topics/athletes-84090/articles.atom',domain:'theconversation.com',source:'The Conversation',category:'sport'},
+ {url:'https://theconversation.com/topics/jeux-olympiques-jo-153405/articles.atom',domain:'theconversation.com',source:'The Conversation',category:'sport'},
+ // Australian general feed is independently verified as a public Atom source.
+ // It must pass explicit sport words, unlike the three sport-scoped feeds.
+ {url:'https://theconversation.com/au/articles.atom',domain:'theconversation.com',source:'The Conversation',category:'general'}
 ]);
 const GAMBLING=/(?:betting|gambling|casino|sportsbook|wager|moneyline|parlay|bookmaker|bet slip|bonus bet|odds|picks for betting|predictions?\s+to\s+bet)/i;
 const SUBJECT=/(?:football|soccer|basketball|nba|wnba|tennis|formula\s*1|f1\b|motor|olympi|hockey|rugby|cricket|volleyball|sport|baseball|futebol|esporte|tenis|tênis|atl[eé]ti)/i;
@@ -50,8 +56,8 @@ function parseFeed(xml,feed,now=Date.now()){
   if(!allowed(url,feed.domain)||title.length<16||title.length>220||
    !Number.isFinite(date.valueOf())||date.valueOf()>now+3600000||
    now-date.valueOf()>96*3600000||GAMBLING.test(title+' '+url))continue;
-  // This exact topic Atom feed is sport-scoped. Retain the subject guard
-  // if a future separately approved general publisher feed is configured.
+  // Only the three exact sport-scoped topics bypass the lexical guard.
+  // The Australian general feed never admits unrelated general news.
   if(feed.category!=='sport'&&!SUBJECT.test(title+' '+new URL(url).pathname))continue;
   const id=crypto.createHash('sha256').update(url).digest('hex').slice(0,8);
   const sport=/formula\s*1|\bf1\b|grand prix/i.test(title)?'Formula 1':
@@ -76,7 +82,7 @@ async function collect(fetchFn=fetch){
    }});
    if(!res.ok)throw Error('HTTP '+res.status);
    const items=parseFeed(await res.text(),feed);
-   console.log('[sports] '+feed.source+': '+items.length+' licensed, directly attributed current links');
+   console.log('[sports] '+feed.source+' '+feed.url.split('/').slice(-2)[0]+': '+items.length+' attributed current original-source links');
    return items;
   }catch(e){
    console.warn('[sports] '+feed.source+' optional feed unavailable: '+String(e?.message||e));
