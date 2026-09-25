@@ -328,12 +328,146 @@
     return rows;
   }
 
+  // Adult-only visual recovery. A successfully decoded original-source image
+  // wins; an unverified title search never substitutes artwork from another
+  // film/show. Shared per-URL probes keep the duplicated Home rail inexpensive.
+  const POSTER_PROBES=new Map();
+  const POSTER_PATTERN=/^https:\/\/image\.tmdb\.org\/t\/p\/(?:original|w[0-9]+)\/[A-Za-z0-9_.-]+$/;
+  function trustedAdultPoster(url){
+    return typeof url==='string'&&(
+      POSTER_PATTERN.test(url)||
+      /^https:\/\/is\d+-ssl\.mzstatic\.com\/[A-Za-z0-9_./%-]+(?:\?[A-Za-z0-9_=&%-]+)?$/.test(url)
+    );
+  }
+  function uniquePosterCandidates(meta,sourceUrl,rail=false){
+    const values=rail
+      ? [meta?.poster_url,meta?.poster_large_url,meta?.poster_original_url,sourceUrl]
+      : [meta?.poster_large_url,meta?.poster_original_url,meta?.poster_url,sourceUrl];
+    const urls=[];
+    for(const url of values){
+      if(!trustedAdultPoster(url)||urls.includes(url))continue;
+      urls.push(url);
+    }
+    return urls;
+  }
+  function probePoster(url){
+    if(POSTER_PROBES.has(url))return POSTER_PROBES.get(url);
+    const result=new Promise(resolve=>{
+      const img=new Image();
+      let settled=false;
+      const finish=good=>{if(settled)return;settled=true;clearTimeout(timer);resolve(good);};
+      const timer=setTimeout(()=>finish(false),6500);
+      img.onload=()=>finish(img.naturalWidth>0);
+      img.onerror=()=>finish(false);
+      img.src=url;
+    });
+    // Failed requests must be retryable on reconnect; successful URLs and
+    // in-flight loads can be shared between repeated/duplicated title cards.
+    POSTER_PROBES.set(url,result);
+    result.then(ok=>{if(!ok&&POSTER_PROBES.get(url)===result)POSTER_PROBES.delete(url);});
+    return result;
+  }
+  function exactAdultMetadata(meta,title,opts){
+    if(!meta)return null;
+    const wanted=Number(opts?.tmdbId);
+    const found=Number(meta.tmdb_id);
+    if(Number.isSafeInteger(wanted)&&wanted>0&&found>0&&wanted!==found)return null;
+    if(opts?.kind&&meta.media_kind&&opts.kind!==meta.media_kind)return null;
+    if(opts?.year&&meta.year&&Math.abs(Number(opts.year)-Number(meta.year))>1)return null;
+    if(meta.title&&normalise(meta.title)!==normalise(title)&&!(wanted>0&&found===wanted))return null;
+    return meta;
+  }
+  async function exactPosterRefresh(meta,title,opts){
+    const tmdbId=Number(meta?.tmdb_id||opts?.tmdbId);
+    const kind=meta?.media_kind||opts?.kind;
+    if(!Number.isSafeInteger(tmdbId)||tmdbId<=0||!['movie','tv'].includes(kind)||
+       typeof window.tmdbDetails!=='function')return null;
+    try{
+      const value=await window.tmdbDetails(tmdbId,kind,{priority:opts?.priority===true});
+      if(!value||value.adult===true||Number(value.tmdbId)!==tmdbId||value.kind!==kind)return null;
+      return {
+        poster_url:value.poster||null,
+        poster_large_url:value.posterLarge||null,
+        poster_original_url:value.posterOriginal||null
+      };
+    }catch(_){return null;}
+  }
+  async function recoverAdultPoster(img,title,opts={}){
+    if(!img||!title||!(
+      img.id==='res-poster-img'||img.closest?.('#marquee-track')
+    ))return false;
+    const name=String(title),serial=(img.__matchappAdultPosterSerial||0)+1;
+    img.__matchappAdultPosterSerial=serial;
+    img.dataset.matchappMediaTitle=name;
+    const current=()=>img.isConnected&&
+      img.__matchappAdultPosterSerial===serial&&
+      img.dataset.matchappMediaTitle===name&&
+      (img.id!=='res-poster-img'||window.globalMatchTitle===name);
+    const fallback=opts.fallback||localPoster(name);
+    if(!img.getAttribute('src')||(img.complete&&img.naturalWidth===0)){
+      img.dataset.matchappFallbackStage='local';
+      img.src=fallback;
+    }
+    let meta=exactAdultMetadata(opts.meta,name,opts);
+    if(!meta){
+      const found=await lookup(name,{
+        year:opts.year||'',kind:opts.kind||''
+      });
+      meta=exactAdultMetadata(found,name,opts);
+    }
+    if(!current())return false;
+    // When the exact backend knows this identity, its current artwork takes
+    // precedence over cached/stale URLs in the homepage's initial HTML.
+    const source=meta?null:(trustedAdultPoster(opts.sourceUrl)?opts.sourceUrl:null);
+    const candidates=uniquePosterCandidates(meta,source,opts.rail===true);
+    const promoted=new Set();
+    const tryCandidates=async urls=>{
+      for(const url of urls){
+        if(!current())return false;
+        if(promoted.has(url))continue;
+        promoted.add(url);
+        if(!await probePoster(url))continue;
+        if(!current())return false;
+        img.dataset.matchappFallbackStage='metadata';
+        if(img.getAttribute('src')!==url)img.src=url;
+        if(img.id==='res-poster-img'){
+          window.globalMatchPoster=url;
+        }
+        return true;
+      }
+      return false;
+    };
+    if(await tryCandidates(candidates))return true;
+    // A TMDB poster path can be retired. Refresh ONLY a previously proved
+    // numeric film/show identity; never select a similarly named search hit.
+    const refreshed=await exactPosterRefresh(meta,name,opts);
+    if(await tryCandidates(uniquePosterCandidates(refreshed,null,opts.rail===true)))return true;
+    if(!meta){
+      const fallbackSources=[opts.sourceUrl,img.getAttribute('src')].filter(trustedAdultPoster);
+      if(await tryCandidates(fallbackSources))return true;
+    }
+    if(!current())return false;
+    img.dataset.matchappFallbackStage='local';
+    img.src=fallback;
+    if(img.id==='res-poster-img')window.globalMatchPoster=fallback;
+    return false;
+  }
   function localLikePoster(img){
     const raw=String(img?.getAttribute?.('src')||'');
     return !raw||raw.startsWith('data:image/svg+xml')||raw.includes('/kids/covers/');
   }
   function promotePoster(img,url,title){
     if(!img||!TRUSTED_POSTER.test(String(url||'')))return;
+    if(img.id==='res-poster-img'||img.closest?.('#marquee-track')){
+      // A stale cached original is not allowed to replace a decoded image;
+      // verify the exact identity and the image bytes first.
+      recoverAdultPoster(img,title,{meta:img.__matchappMediaMeta,sourceUrl:url,
+        tmdbId:img.id==='res-poster-img'?window.currentMatchIdentity?.tmdbId:null,
+        kind:img.id==='res-poster-img'?window.currentMatchIdentity?.kind:'',
+        year:img.id==='res-poster-img'?window.currentMatchIdentity?.year:'',
+        priority:img.id==='res-poster-img',rail:img.id!=='res-poster-img'}).catch(()=>{});
+      return;
+    }
     const expected=String(title||'');
     const probe=new Image();
     probe.onload=()=>{
@@ -570,6 +704,9 @@
       const img=card.querySelector('img[data-title]'),title=img?.dataset?.title||'';
       if(!title)return;
       const meta=await refreshExact(await lookup(title));
+      // Re-check when the Home rail enters view: Supabase may have initialized
+      // after the first paint, and this also repairs old cached poster paths.
+      await recoverAdultPoster(img,title,{meta,rail:true});
       const state=availability(meta);
       let ribbon=card.querySelector('.matchapp-cinema-ribbon');
       if(state.inCinemas){
@@ -729,6 +866,6 @@
       queueKidsEnrich();
     });
   }
-  window.MatchAppCatalogMedia=Object.freeze({lookup,lookupLive,refreshExact,resolvePoster,normalise,localPoster,enrichMain,enrichKids,enrichTrendingRail,renderPreview,renderAvailability,availability,streamingElsewhere,viewingTarget,providerLinks,providerSearch,showtimesUrl,sourcePage,regionCode,countryName,titleKeysForGenres,availableGenres,syncGenreFilter});
+  window.MatchAppCatalogMedia=Object.freeze({lookup,lookupLive,refreshExact,resolvePoster,normalise,localPoster,enrichMain,enrichKids,enrichTrendingRail,recoverAdultPoster,renderPreview,renderAvailability,availability,streamingElsewhere,viewingTarget,providerLinks,providerSearch,showtimesUrl,sourcePage,regionCode,countryName,titleKeysForGenres,availableGenres,syncGenreFilter});
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
 })();
