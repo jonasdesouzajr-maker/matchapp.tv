@@ -2,7 +2,7 @@ name: Refresh entertainment news
 
 on:
   schedule:
-    - cron: '11 * * * *'
+    - cron: '37 * * * *' # After the 00:00 São Paulo full rotation; keep hourly news independent
   workflow_dispatch:
   push:
     branches: [main]
@@ -17,7 +17,7 @@ permissions:
   actions: write
 
 concurrency:
-  group: content-bot
+  group: news-refresh
   cancel-in-progress: false
 
 jobs:
