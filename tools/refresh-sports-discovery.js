@@ -2,13 +2,15 @@
 'use strict';
 /*
  * GDELT Project DOC 2.0 discovers original sports publisher URLs, twice daily.
- * This does not ingest publishers' RSS, scrape their pages, copy their images,
- * reprint article bodies, or claim permission to syndicate the original work.
+ * Uses original index links first; when unavailable, only approved publisher
+ * feeds explicitly authorizing headline+canonical-link syndication can backfill.
+ * Never copies article bodies, photos, promotional content or betting guides.
  * Source links remain original HTTPS publisher URLs. No story is invented.
  * GDELT Project API is distinct from the separately licensed GDELT Cloud.
  */
 const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
 const {execFileSync}=require('node:child_process');
+const {collect:collectLicensedPartnerLinks}=require('./sports-partner-feed.js');
 const ROOT=path.join(__dirname,'..'),OUTPUT=path.join(ROOT,'news','sports.json');
 const API='https://api.gdeltproject.org/api/v2/doc/doc';
 const DOMAINS=[
@@ -118,12 +120,21 @@ async function main(){
  u.searchParams.set('timespan','48h');
  u.searchParams.set('sort','datedesc');
  u.searchParams.set('maxrecords','250');
- const result=await fetchGdelt(u.href);
- const rows=normalizeArticles(result.articles);
-
- if(rows.length<3)throw Error('Only '+rows.length+' verified original sports links; preserve last committed snapshot');
+ let rows=[],policy='GDELT Project DOC 2.0 publisher-link discovery';
+ try{
+  const result=await fetchGdelt(u.href);
+  rows=normalizeArticles(result.articles);
+ }catch(e){console.warn('[sports] GDELT unavailable; trying explicitly authorized publisher headlines: '+e.message)}
+ if(rows.length<3){
+  const fallback=await collectLicensedPartnerLinks();
+  if(fallback.length){
+   rows=fallback;
+   policy='Explicitly authorized attributed original publisher RSS/Atom headlines';
+  }
+ }
+ if(!rows.length)throw Error('No current source-verified sports stories accessible; preserve previously committed news');
  const snapshot={updated_at:new Date().toISOString(),
-  source_policy:'GDELT Project DOC 2.0 publisher-link discovery; original HTTPS publisher links only; no RSS syndication or copied photography',
+  source_policy:policy+'; directly linked canonical URLs, no article-body/image republication and no betting guides',
   items:rows};
  fs.mkdirSync(path.dirname(OUTPUT),{recursive:true});
  fs.writeFileSync(OUTPUT,JSON.stringify(snapshot,null,2)+'\n');
