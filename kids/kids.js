@@ -389,7 +389,7 @@
         // Avoid resetting document scroll on phones/Android when adding pages.
         const before=window.scrollY;
         renderGrid();
-        window.scrollTo({top:before,behavior:'instant'});
+        if(before>0&&typeof window.scrollTo==='function')window.scrollTo(0,before);
       });
       more.appendChild(button);host.appendChild(more);
     }
