@@ -14,3 +14,9 @@
 /tools/check-content-rotation.js @jonasdesouzajr-maker
 /tests/editorial-workflow-contract.test.cjs @jonasdesouzajr-maker
 /docs/EDITORIAL_AUTOMATION_LOCK.md @jonasdesouzajr-maker
+
+# Owner-reviewed child safety and accurate rating-verification source contract.
+/docs/KIDS_SOURCE_RATED_EXPANSION.md @jonasdesouzajr-maker
+/kids/age-rating-policy.js @jonasdesouzajr-maker
+/kids/source-rated-discovery.js @jonasdesouzajr-maker
+/tests/kids-source-rated.test.cjs @jonasdesouzajr-maker
