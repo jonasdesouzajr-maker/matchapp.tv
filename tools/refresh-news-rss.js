@@ -692,7 +692,7 @@ function enforceArticleAnalyticsOnDisk(){
 
   if(items.length<5)throw new Error(`trusted publisher feeds returned only ${items.length} usable items`);
 
-  const feedVersion=hash(items.slice(0,15).map(i=>`${i.id}:${i.published_at}`).join('|'));
+  const feedVersion=hash(items.slice(0,15).map(i=>`${i.id}:${i.published_at}`).join('|')+'|sports:'+items.filter(i=>i.category==='sports').map(i=>i.id).join(',')+'|'+(sportsSnapshot.updated_at||''));
 
   fs.mkdirSync(NEWS,{recursive:true});
   fs.mkdirSync(ART,{recursive:true});
