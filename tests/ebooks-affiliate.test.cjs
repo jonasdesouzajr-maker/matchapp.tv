@@ -30,11 +30,20 @@ test('native Android remains untagged until its separate affiliate app approval'
  assert.equal(link.hostname,'www.amazon.com.br');
  assert.equal(link.searchParams.has('tag'),false);
 });
+test('installed PWA and smart-TV browsers stay untagged until approved',()=>{
+ for(const ua of ['Mozilla/5.0 (SmartTV; Tizen 7)','Mozilla/5.0 GoogleTV']){
+  const u=new URL(affiliate(ua).amazonSearchUrl(book,'BR'));
+  assert.equal(u.searchParams.has('tag'),false);
+ }
+ const context={window:{navigator:{userAgent:'Mozilla/5.0'},matchMedia:()=>({matches:true})},URL};
+ vm.runInNewContext(read('ebooks/affiliate-links.js'),context);
+ assert.equal(new URL(context.window.MatchAppEbookAffiliate.amazonSearchUrl(book,'BR')).searchParams.has('tag'),false);
+});
 test('affiliate recognition is strict and disclosures are available in PT and English',()=>{
  const aff=affiliate(),good=aff.amazonSearchUrl(book,'BR');
  assert.equal(aff.isAffiliateLink(good.replace('www.amazon.com.br','amazon.com')),false);
  assert.equal(aff.isAffiliateLink(good.replace('tag=matchapp06-20','tag=someone-20')),false);
- assert.match(aff.disclosure('pt-BR'),/Programa de Associados da Amazon/);
+ assert.match(aff.disclosure('pt-BR'),/Como associado da Amazon/);
  assert.equal(aff.paidLabel('pt-BR'),'publicidade');
  assert.match(aff.disclosure('en-US'),/qualifying purchases/);
 });
@@ -45,7 +54,7 @@ test('adult-only storefront surfaces load the centralized affiliate script befor
  assert(hub.includes('/ebooks/affiliate-links.js'));
  assert(match.includes('MatchAppEbookAffiliate'));
  assert(match.includes("(tagged?'sponsored ':'')"));
- assert.match(hub,/Como participante do Programa de Associados da Amazon/);
+ assert.match(hub,/Como associado da Amazon/);
  assert.doesNotMatch(kids,/affiliate-links\.js/);
 });
 test('Google Play links remain ordinary until an approved Partnerize affiliate link exists',()=>{
