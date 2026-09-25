@@ -17,7 +17,7 @@
  const PAGE_BATCH=2,DETAIL_BATCH=3,MAX_CHECKS_PER_CLICK=18,MAX_SHOWN=48;
  let nextPage=1,busy=false,version=0;
  const seen=new Set(),verified=new Map(),detailCache=new Map();
- const locale=()=>String(document.getElementById('kids-lang')?.value||window.MATCH_LANG||'en');
+ const locale=()=>String(window.MATCH_LANG||document.getElementById('kids-lang')?.value||'en');
  const pt=()=>locale().startsWith('pt'),es=()=>locale().startsWith('es');
  function say(en,br,esText){return pt()?br:es()?esText:en}
  function setStatus(str){status.textContent=str}
@@ -127,10 +127,16 @@
      setStatus(say('Checking original ratings and artwork before showing titles…',
       'Verificando classificação e capas reais antes de exibir títulos…',
       'Comprobando clasificaciones y portadas reales antes de mostrar títulos…'));
-     candidates=await window.tmdbDiscover({
-       kind:wanted||'',genre_ids:[10751,16,10762],page_start:nextPage,
-       pages:PAGE_BATCH
-     });
+     // TMDB family genre identifiers differ between movie and TV indexes.
+     // Interleave verified source candidates so neither media kind crowds out the other.
+     const kinds=wanted?[wanted]:['movie','tv'];
+     const pages=await Promise.all(kinds.map(kind=>window.tmdbDiscover({
+       kind,genre_ids:kind==='movie'?[10751,16]:[10762,16],
+       page_start:nextPage,pages:PAGE_BATCH
+     }).catch(()=>[])));
+     const mixed=[],longest=Math.max(0,...pages.map(p=>Array.isArray(p)?p.length:0));
+     for(let n=0;n<longest;n++)for(const page of pages)if(Array.isArray(page)&&page[n])mixed.push(page[n]);
+     candidates=mixed;
      nextPage=Math.min(501,nextPage+PAGE_BATCH);
    }
    if(token!==version)return;
@@ -170,11 +176,26 @@
  input.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();runFind(true)}});
  ageSel.addEventListener('change',reset);
  kindSel.addEventListener('change',reset);
- document.getElementById('kids-lang')?.addEventListener('change',()=>{
+ function localize(){
   const heading=document.getElementById('kids-family-heading');
   if(heading)heading.textContent=say('More source-rated family discoveries','Mais descobertas familiares com classificação','Más descubrimientos familiares clasificados');
   search.textContent=say('Verify exact title','Verificar título exato','Verificar título exacto');
-  reset();
- });
- reset();
+  const lead=section.querySelector('.kids-source-lead');
+  if(lead)lead.textContent=say(
+   'Explore more real, age-classified family movies and shows. Original source identity, rating, family genres and official poster are checked before a title appears. Source-rated discoveries are not individually reviewed by MatchApp; ask a grown-up to check each title and episode.',
+   'Descubra mais filmes e séries familiares classificados por idade. Verificamos título, classificação, gêneros familiares e capa oficial antes de exibir cada obra. Essas descobertas não foram revisadas individualmente pelo MatchApp; peça a um responsável para avaliar cada título e episódio.',
+   'Descubre más películas y series familiares clasificadas por edad. Se verifican identidad, clasificación, géneros y portada oficial antes de mostrar cada obra. MatchApp no ha revisado cada título individualmente; pide a un adulto que compruebe cada título y episodio.');
+  const note=section.querySelector('.kids-source-note');
+  if(note)note.textContent=say(
+   'Unrated and ambiguous titles never appear. This source-rated shelf is separate from the editorial Kids matcher, Ask AI and saved favorites. This product uses the TMDB API but is not endorsed or certified by TMDB.',
+   'Títulos sem classificação ou ambíguos não são exibidos. Esta lista é separada do mecanismo de combinações, do Ask AI e dos favoritos Kids. Este produto utiliza a API TMDB, mas não é endossado nem certificado pelo TMDB.',
+   'No se muestran títulos sin clasificación o ambiguos. Esta selección no modifica las recomendaciones, Ask AI ni los favoritos infantiles. Este producto utiliza la API TMDB, pero no cuenta con su respaldo o certificación.');
+  const labels=section.querySelectorAll('.kids-source-controls label');
+  if(labels[0])labels[0].firstChild.textContent=say('Family discovery format','Formato de descoberta familiar','Formato de descubrimiento familiar');
+  if(labels[1])labels[1].firstChild.textContent=say('Verify a specific family title','Verificar título familiar específico','Verificar un título familiar concreto');
+  input.placeholder=say('Enter the exact movie or show title','Digite o título exato do filme ou série','Escribe el título exacto de película o serie');
+ }
+ document.getElementById('kids-lang')?.addEventListener('change',()=>{localize();reset()});
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>{localize();reset()},{once:true});
+ else{localize();reset()};
 })();
