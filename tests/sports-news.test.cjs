@@ -2,6 +2,7 @@
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
 const root=path.join(__dirname,'..'),read=p=>fs.readFileSync(path.join(root,p),'utf8');
 const discover=require('../tools/refresh-sports-discovery.js');
+const {EventEmitter}=require('node:events');
 const DATE='2026-09-25T10:30:00.000Z',now=Date.parse(DATE);
 const article=(title,url,seendate='20260925T100000Z')=>({title,url,seendate});
 test('only dated, directly linked, trusted HTTPS sports articles qualify',()=>{
@@ -30,6 +31,7 @@ test('one sports snapshot, twice daily; serialize publishers and dispatch only a
  const sport=read('.github/workflows/sports-refresh.yml'),hour=read('.github/workflows/news-refresh.yml');
  assert.match(sport,/cron: '17 11,23 \* \* \*'/);
  assert.match(sport,/push:[\s\S]*branches: \[main\][\s\S]*paths:[\s\S]*\.github\/workflows\/sports-refresh\.yml/);
+ assert.match(sport,/tools\/refresh-sports-discovery\.js/);
  assert.doesNotMatch(sport,/push:[\s\S]*news\/\*\*/);
  assert.match(sport,/group: matchapp-content-publish/);
  assert.match(sport,/cancel-in-progress: false/);
@@ -51,4 +53,47 @@ test('sports reuse existing homepage click flow, real source links, semantic met
  assert.doesNotMatch(sports,/feeds\.bbci|sports\/rss\.xml|rss\.cnn/);
  assert.match(sports,/image:null/);
  assert.match(read('tools/update-sitemap.js'),/newsUrlsFromDisk/);
+});
+
+test('native HTTPS retries can recover publisher-link discovery without RSS syndication',async()=>{
+ const fixture=[
+ article('Football league results: Brazil domestic finals confirmed','https://g1.globo.com/esporte/futebol/serie-a/noticia/2026/09/25/exemplo.ghtml'),
+ article('Basketball NBA season opens with major changes','https://www.reuters.com/sports/basketball/nba-season-2026-09-25/'),
+ article('Formula 1 teams prepare for next Grand Prix','https://www.apnews.com/article/formula-1-qualifying-2026')
+ ];
+ const old=Date.now;let calls=0;
+ try{
+ Date.now=()=>now;
+ const rows=await discover.discoverWithRetry(async url=>{
+  calls++;
+  assert.equal(url.protocol,'https:');
+  assert.equal(url.hostname,'api.gdeltproject.org');
+  assert.equal(url.searchParams.get('format'),'json');
+  return {articles:fixture};
+ });
+ assert.equal(calls,1);
+ assert.equal(rows.length,3);
+ assert(rows.every(i=>i.image===null&&i.discovery_source==='GDELT Project DOC 2.0'));
+ }finally{Date.now=old}
+});
+test('sports link request uses bounded native HTTPS and validates JSON before accepting it',async()=>{
+ const native={
+  get(url,opts,respond){
+   assert.equal(url.hostname,'api.gdeltproject.org');
+   assert.equal(opts.family,4);
+   assert(opts.timeout>=20000&&opts.timeout<30000);
+   const request=new EventEmitter();
+   request.destroy=err=>request.emit('error',err);
+   queueMicrotask(()=>{
+    const response=new EventEmitter();
+    response.statusCode=200;response.setEncoding=()=>{};
+    respond(response);
+    response.emit('data',JSON.stringify({articles:[]}));
+    response.emit('end');
+   });
+   return request;
+  }
+ };
+ const result=await discover.getGdeltJSON(discover.queryURL(10,'football'),native);
+ assert.deepEqual(result,{articles:[]});
 });
