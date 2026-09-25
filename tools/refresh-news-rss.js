@@ -427,7 +427,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <p><a href="${orig}" target="_blank" rel="noopener noreferrer external">Read the original report at ${src} ↗</a></p>
     <p><a href="${landing}">Open this story inside MatchApp Latest News →</a></p>
-    <p style="font-size:13px;color:#aaa">MatchApp links directly to the original publisher, identifies the source and publication time, and does not republish the article body.</p>
+    <p style="font-size:13px;color:#aaa">MatchApp links to the original publisher without republishing article bodies. Entertainment dates use publisher feed times; sports dates indicate when a story was indexed for discovery, not a verified original publication time.</p>
     <p><a href="/news/">More entertainment and sports news</a> · <a href="/">Back to MatchApp</a></p>
   </article>
 </main>
@@ -693,7 +693,9 @@ function enforceArticleAnalyticsOnDisk(){
 
   if(items.length<5)throw new Error(`trusted publisher feeds returned only ${items.length} usable items`);
 
-  const feedVersion=hash(items.slice(0,15).map(i=>`${i.id}:${i.published_at}`).join('|')+'|sports:'+items.filter(i=>i.category==='sports').map(i=>i.id).join(',')+'|'+(sportsSnapshot.updated_at||''));
+  // Bell notifications change only when actual headlines change, never because
+  // a scheduled sports check merely updated its crawl timestamp.
+  const feedVersion=hash(items.slice(0,15).map(i=>`${i.id}:${i.published_at}`).join('|')+'|sports:'+items.filter(i=>i.category==='sports').map(i=>i.id).join(','));
 
   fs.mkdirSync(NEWS,{recursive:true});
   fs.mkdirSync(ART,{recursive:true});
