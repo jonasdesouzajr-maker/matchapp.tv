@@ -41,3 +41,35 @@ button.kids-card-poster{display:block;width:100%;padding:0;color:inherit;text-al
 html,body{scroll-behavior:auto!important}
 *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
 .kids-watch-dialog::backdrop{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+
+/* Reviewed Kids catalogue is paginated to prevent full-library DOM freezes. */
+.kids-grid-more{grid-column:1/-1;display:flex;align-items:center;justify-content:center;padding:16px 8px 8px;min-width:0}
+.kids-grid-more>.kids-chip{min-height:44px;min-width:150px;max-width:100%;border:1px solid rgba(229,193,88,.6);border-radius:14px;cursor:pointer;font-weight:700}
+.kids-grid-more>.kids-chip:focus-visible{outline:3px solid #a0e9ed;outline-offset:3px}
+
+/* Source-rated discovery: intentionally separate from manually curated Kids cards. */
+.kids-source-section{max-width:var(--kids-max-width,1200px)}
+.kids-source-lead,.kids-source-note{max-width:920px;color:#eee0ff;line-height:1.65;overflow-wrap:anywhere}
+.kids-source-note{font-size:.88rem;color:#d9caed;border-left:3px solid #ffda8c;padding:10px 14px;background:rgba(24,15,48,.55);border-radius:9px}
+.kids-source-controls{display:flex;align-items:flex-end;flex-wrap:wrap;gap:12px;margin:18px 0}
+.kids-source-controls>label{min-width:170px;display:flex;flex-direction:column;gap:7px;font-weight:650;max-width:100%}
+.kids-source-controls input,.kids-source-controls select{min-height:44px;max-width:100%;background:#21133b;color:#fff;border:1px solid #cdb2ed;border-radius:10px;padding:9px 12px;font-size:1rem}
+.kids-source-controls .kids-source-search{flex:1;min-width:210px}
+.kids-source-controls button{min-height:44px;max-width:100%;padding:9px 16px;cursor:pointer}
+.kids-source-controls button:disabled{opacity:.62;cursor:wait}
+.kids-source-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,220px),1fr));gap:20px;align-items:stretch;margin:14px 0 30px}
+.kids-source-card{min-width:0;margin:0;display:flex;flex-direction:column;background:linear-gradient(165deg,#34204f,#1d1235);border:2px solid #e8c873;border-radius:23px;overflow:hidden;box-shadow:0 10px 24px rgba(0,0,0,.22)}
+.kids-source-cover{display:flex;align-items:center;justify-content:center;min-height:200px;max-height:385px;padding:12px;background:#1a1030;overflow:hidden}
+.kids-source-cover img{display:block;width:auto;height:auto;object-fit:contain;object-position:center;max-width:100%;max-height:355px;aspect-ratio:2/3;border-radius:13px}
+.kids-source-body{display:flex;flex-direction:column;gap:9px;padding:14px 16px 17px;min-width:0;flex:1}
+.kids-source-body h3{font-size:1.05rem;line-height:1.33;margin:0;color:#fff8db;overflow-wrap:anywhere}
+.kids-source-badge{align-self:flex-start;border-radius:99px;padding:5px 9px;font-weight:760;background:#fcdb86;color:#221235;font-size:.81rem}
+.kids-source-summary{font-size:.9rem;line-height:1.53;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:5;line-clamp:5;overflow:hidden;margin:0}
+.kids-source-genres,.kids-source-caution{font-size:.8rem;line-height:1.5;color:#f0dfff;margin:0}
+.kids-source-caution{border-top:1px solid #947aaa;padding-top:8px}
+.kids-source-actions{display:flex;flex-direction:column;gap:7px;margin-top:auto}
+.kids-source-actions a{display:block;padding:10px 12px;border-radius:10px;text-align:center;text-decoration:none;background:#f8d680;color:#221334;font-size:.87rem;font-weight:800;overflow-wrap:anywhere;min-height:44px}
+.kids-source-actions a+a{background:#533776;color:#fff3cf;border:1px solid #cfb7ed}
+.kids-source-controls :is(button,input,select):focus-visible,.kids-source-actions a:focus-visible{outline:3px solid #9cf0e4;outline-offset:3px}
+@media(max-width:600px){.kids-source-controls{align-items:stretch}.kids-source-controls>label,.kids-source-controls>button{width:100%;min-width:0}.kids-source-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.kids-source-body{padding:10px}.kids-source-cover{padding:6px;min-height:125px;max-height:240px}.kids-source-cover img{max-height:225px}.kids-source-summary{-webkit-line-clamp:3}}
+@media(max-width:390px){.kids-source-grid{grid-template-columns:1fr}.kids-source-cover{max-height:330px}.kids-source-cover img{max-height:310px}}
