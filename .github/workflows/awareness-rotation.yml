@@ -16,7 +16,7 @@ permissions:
   actions: write
 
 concurrency:
-  group: awareness-rotation
+  group: matchapp-content-publish
   cancel-in-progress: false
 
 jobs:
