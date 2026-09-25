@@ -46,7 +46,7 @@ test('hourly NEWS remains publisher sourced; awareness recovery cannot start ano
 test('only successful production Pages deployment initiates immediate IndexNow',()=>{
  const deploy=flow('pages-deploy'),now=flow('indexnow');
  assert.match(deploy,/actions: write/);
- assert.match(deploy,/run: npm.*audit:site/);
+ assert.match(deploy,/npm run audit:site/);
  assert.match(deploy,/node tools\/check-content-rotation\.js/);
  assert.doesNotMatch(deploy,/id!=='world-alzheimers-month-2026'/,'Deployment may never pin an expiring campaign');
  assert.ok(deploy.indexOf('uses: actions/deploy-pages@v4')<deploy.indexOf('gh workflow run indexnow.yml --ref main'));
