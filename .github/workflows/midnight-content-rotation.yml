@@ -120,21 +120,9 @@ jobs:
           echo "::error::Content rotation did not safely publish after 3 attempts."
           exit 1
 
-      - name: Deploy refreshed frontend
+      - name: Record automatic main-push Pages handoff
         if: steps.publish.outputs.changed == '1'
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          gh workflow run pages-deploy.yml --ref main
-          echo 'DEPLOYED=1' >> "$GITHUB_ENV"
-
-      - name: Submit refreshed URLs to IndexNow
-        if: steps.publish.outputs.changed == '1'
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          gh workflow run indexnow.yml --ref main
-          echo 'INDEXNOW=1' >> "$GITHUB_ENV"
+        run: echo 'DEPLOYED=1' >> "$GITHUB_ENV"
 
       - name: Build report and post to issue #1
         if: always()
