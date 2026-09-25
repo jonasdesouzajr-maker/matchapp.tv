@@ -18,7 +18,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: midnight-content-rotation
+  group: matchapp-content-publish
   cancel-in-progress: false
 
 jobs:
