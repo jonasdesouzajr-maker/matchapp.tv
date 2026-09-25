@@ -41,3 +41,8 @@ button.kids-card-poster{display:block;width:100%;padding:0;color:inherit;text-al
 html,body{scroll-behavior:auto!important}
 *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
 .kids-watch-dialog::backdrop{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+
+/* Reviewed Kids catalogue is paginated to prevent full-library DOM freezes. */
+.kids-grid-more{grid-column:1/-1;display:flex;align-items:center;justify-content:center;padding:16px 8px 8px;min-width:0}
+.kids-grid-more>.kids-chip{min-height:44px;min-width:150px;max-width:100%;border:1px solid rgba(229,193,88,.6);border-radius:14px;cursor:pointer;font-weight:700}
+.kids-grid-more>.kids-chip:focus-visible{outline:3px solid #a0e9ed;outline-offset:3px}
