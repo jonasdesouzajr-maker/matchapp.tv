@@ -752,7 +752,30 @@
     const enrichCard=async card=>{
       const img=card.querySelector('img[data-title]'),title=img?.dataset?.title||'';
       if(!title)return;
-      const meta=await refreshExact(await lookup(title));
+      let meta=await refreshExact(await lookup(title));
+      // Some verified Top Titles use a localized label (e.g. Vermelho Sangue).
+      // Their database row may use the original-language title, so an exact
+      // normalized-title SQL lookup cannot find it even when the displayed
+      // legacy poster still loads. Refresh ONLY their pinned numeric TMDB ID;
+      // never perform a fuzzy title search or swap to another work's artwork.
+      if(!meta){
+        const id=Number(img.dataset.tmdbId),kind=img.dataset.tmdbKind,year=Number(img.dataset.tmdbYear);
+        if(Number.isSafeInteger(id)&&id>0&&['movie','tv'].includes(kind)&&
+           typeof window.tmdbDetails==='function'){
+          try{
+            const details=await window.tmdbDetails(id,kind);
+            if(details&&details.adult!==true&&Number(details.tmdbId)===id&&
+               details.kind===kind&&(!Number.isSafeInteger(year)||year<1880||
+               !details.year||Math.abs(Number(details.year)-year)<=1)&&
+               posterVariants(details.posterLarge||details.poster||details.posterOriginal).length){
+              meta={title,tmdb_id:id,media_kind:kind,year:details.year||year,
+                poster_url:details.poster||null,
+                poster_large_url:details.posterLarge||null,
+                poster_original_url:details.posterOriginal||null};
+            }
+          }catch(_){/* Existing poster stays visible when metadata is offline. */}
+        }
+      }
       recoverAdultPoster(img,title,meta);
       const state=availability(meta);
       let ribbon=card.querySelector('.matchapp-cinema-ribbon');
