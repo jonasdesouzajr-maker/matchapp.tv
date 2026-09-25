@@ -20,6 +20,13 @@
  });
  const norm=value=>String(value||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'')
   .toLowerCase().replace(/[^\p{L}\p{N}]/gu,'');
+ const exactRequestedTitle=(query,candidate)=>{
+  const requested=norm(query);
+  // A high-ranked fuzzy TMDB search result must never masquerade as the
+  // exact title that a parent or child specifically requested.
+  return Boolean(requested&&candidate&&
+    [candidate.title,candidate.originalTitle].some(name=>norm(name)===requested));
+ };
  const safeUrl=url=>POSTER.test(String(url||''));
  const sourceUrl=(kind,id)=>'https://www.themoviedb.org/'+kind+'/'+id;
  const validId=(v)=>Number.isSafeInteger(v)&&v>0;
@@ -54,5 +61,5 @@
    editoriallyReviewed:false
   });
  }
- return Object.freeze({verify,ratingBands,safeUrl,sourceUrl});
+ return Object.freeze({verify,ratingBands,safeUrl,sourceUrl,exactRequestedTitle});
 });
