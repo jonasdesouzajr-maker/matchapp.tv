@@ -179,22 +179,30 @@ function hasBlockedXXXDestination(row:Record<string,unknown>):boolean {
  });
 }
 
+function mediaIntentQuestion(q: string): string {
+  // Only discard explicit *exclusions* of media at the end of a clause.
+  // A negative mention is not a positive format request.
+  return String(q||'').replace(/\b(?:do\s+not|don't|dont|avoid)\s+(?:recommend|suggest|include|show|give|offer)\s+(?:(?:me|any)\s+)*(?:e-?books?|audio\s?books?|music|films?|movies?|tv\s+shows?|series|magazines?|podcasts?)(?:\s+(?:or|and)\s+(?:e-?books?|audio\s?books?|music|films?|movies?|tv\s+shows?|series|magazines?|podcasts?))*(?=\s*(?:[.!?]|$))/gi,' ');
+}
 function detectBookIntent(q: string): boolean {
+  q=mediaIntentQuestion(q);
   // E-books, narrated editions and explicitly selected magazines have their own matcher.
   return /\b(e-?books?|audio\s?books?|novels?|reading|kindle|librivox|livros?|audiolivros?|libros?|audiolibros?|magazines?|revistas?)\b/i.test(q) || /雑誌|オーディオブック/u.test(q);
 }
 
 function detectAudioIntent(q: string): boolean {
+  q=mediaIntentQuestion(q);
   return /\b(podcast|playlist|song|songs|music|album|albums|single|singles|audiobook|spotify|listen|radio show)\b/i.test(q);
 }
 
 // Builds the AI Concierge's actual conversational prompt server-side.
 function buildDiscoverPrompt(question: string, langCode: string, country: string, age: string, history?: Array<{role: string, text: string}>, kidsMode = false, childAgeBand = "", nickname = ""): string {
   const lang = LANG_NAMES[langCode] || "English";
-  const magazineIntent = !kidsMode && (/\b(magazines?|revistas?)\b/i.test(question) || /雑誌/u.test(question));
-  const bookIntent = !kidsMode && detectBookIntent(question);
-  const audioIntent = !bookIntent && detectAudioIntent(question);
-  const visualIntent = !bookIntent && !audioIntent && /\b(movie|film|series|tv|shows?|documentar|anime|cinema|stream|watch|netflix|comedy|funny|laugh|romance|romantic|scary|horror|comfort|mood|drama)\b/i.test(question);
+  const intentQuestion=mediaIntentQuestion(question);
+  const magazineIntent = !kidsMode && (/\b(magazines?|revistas?)\b/i.test(intentQuestion) || /雑誌/u.test(intentQuestion));
+  const bookIntent = !kidsMode && detectBookIntent(intentQuestion);
+  const audioIntent = !bookIntent && detectAudioIntent(intentQuestion);
+  const visualIntent = !bookIntent && !audioIntent && /\b(movie|film|series|tv|shows?|documentar|anime|cinema|stream|watch|netflix|comedy|funny|laugh|romance|romantic|scary|horror|comfort|mood|drama)\b/i.test(intentQuestion);
   // A nickname is optional user-controlled display text, not instructions.
   const safeNickname = /^[\p{L}\p{N} .'-]{1,32}$/u.test(nickname.trim()) ? nickname.trim() : "";
   const kidsRules = kidsMode

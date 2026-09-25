@@ -42,10 +42,17 @@ function keepConversationAtStart() {
 // playlists, singles, audiobooks) so the fallback never pulls in podcasts
 // for a question about a movie. (The AI Concierge path does its own,
 // identical intent check server-side, in the Edge Function.)
+function mediaIntentQuestion(q) {
+  // Only discard explicit *exclusions* of media at the end of a clause.
+  // A negative mention is not a positive format request.
+  return String(q||'').replace(/\b(?:do\s+not|don't|dont|avoid)\s+(?:recommend|suggest|include|show|give|offer)\s+(?:(?:me|any)\s+)*(?:e-?books?|audio\s?books?|music|films?|movies?|tv\s+shows?|series|magazines?|podcasts?)(?:\s+(?:or|and)\s+(?:e-?books?|audio\s?books?|music|films?|movies?|tv\s+shows?|series|magazines?|podcasts?))*(?=\s*(?:[.!?]|$))/gi,' ');
+}
 function detectAudioIntent(q) {
+    q=mediaIntentQuestion(q);
     return /\b(podcast|playlist|song|songs|music|album|albums|single|singles|audiobook|spotify|listen|radio show)\b/i.test(q);
 }
 function detectBookIntent(q) {
+    q=mediaIntentQuestion(q);
     // Books and narrated book editions have an independent verified matcher.
     // Never treat one as a Spotify music track or TMDB film request.
     return /\b(e-?books?|audio\s?books?|novels?|reading|kindle|librivox|livros?|audiolivros?|libros?|audiolibros?|magazines?|revistas?)\b/i.test(q) || /雑誌|オーディオブック/u.test(q);
