@@ -9,10 +9,12 @@ test('grown-up Home loads E-books Ai data, current suggestions and matcher in sa
  const html=read('index.html');
  const catalog=html.indexOf('/ebooks/catalog.js?v=20260924-ebooks2');
  const top=html.indexOf('/ebooks/top-ebooks.js?v=20260924-top1');
- const matcher=html.indexOf('/ebooks/ebook-matcher.js?v=20260925-amzbr1');
+ const audio=html.indexOf('/ebooks/audiobooks.js?v=20260925-audio1');
+ const matcher=html.indexOf('/ebooks/ebook-matcher.js?v=20260925-audio1');
  assert(catalog>0);
  assert(top>catalog);
- assert(matcher>top);
+ assert(audio>top);
+ assert(matcher>audio);
  assert.match(html,/id="ebook-matcher-root"/);
  assert.match(html,/\/ebooks\/ebook-matcher\.css\?v=20260924-ebooks1/);
 });
