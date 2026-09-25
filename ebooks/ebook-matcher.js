@@ -12,13 +12,19 @@ const FIELDS={
   ['any','✨','Any mood'],['cozy','☕','Cozy'],['funny','😄','Funny'],['romantic','💘','Romantic'],
   ['hopeful','🌤️','Hopeful'],['emotional','💗','Emotional'],['mysterious','🕯️','Mysterious'],
   ['dark','🌑','Dark'],['scary','🦇','Scary'],['intense','⚡','Intense'],['adventurous','🧭','Adventurous'],
-  ['cerebral','🧠','Cerebral'],['mind-bending','🌀','Mind-bending'],['reflective','🌙','Reflective']
+  ['cerebral','🧠','Cerebral'],['mind-bending','🌀','Mind-bending'],['reflective','🌙','Reflective'],
+  ['inspiring','🌟','Inspiring'],['practical','🛠️','Practical'],['curious','🔍','Curious'],['awe','🌌','Awe'],
+  ['quirky','🎭','Quirky'],['nostalgic','📻','Nostalgic'],['mythic','🏺','Mythic'],['glamorous','✨','Glamorous'],
+  ['dreamy','☁️','Dreamy'],['epic','⚔️','Epic'],['melancholy','🌧️','Melancholy']
  ],
  genre:[
   ['any','📚','Any genre'],['fantasy','🐉','Fantasy'],['science-fiction','🚀','Sci-fi'],['romance','💞','Romance'],
-  ['mystery','🔎','Mystery'],['thriller','🗝️','Thriller'],['horror','🕸️','Horror'],['literary','✒️','Literary'],
-  ['historical','🏛️','Historical'],['classics','🏺','Classics'],['memoir','🪞','Memoir'],['nonfiction','🧭','Nonfiction'],
-  ['self-help','🌱','Self-help'],['science','🔭','Science'],['history','🗺️','History']
+  ['mystery','🔎','Mystery'],['thriller','🗝️','Thriller'],['horror','🕸️','Horror'],['gothic','🕯️','Gothic'],
+  ['literary','✒️','Literary'],['contemporary','🏙️','Contemporary'],['historical','🏛️','Historical'],['classics','🏺','Classics'],
+  ['adventure','🧭','Adventure'],['dystopian','👁️','Dystopian'],['magical-realism','🦋','Magical realism'],['comedy','😄','Comedy'],
+  ['memoir','🪞','Memoir'],['biography','👤','Biography'],['nonfiction','📖','Nonfiction'],['true-crime','🧩','True crime'],
+  ['self-help','🌱','Self-help'],['psychology','🧠','Psychology'],['philosophy','🏛️','Philosophy'],['business','💼','Business'],
+  ['economics','📈','Economics'],['technology','💻','Technology'],['science','🔭','Science'],['history','🗺️','History'],['nature','🌿','Nature']
  ],
  pace:[['any','⏱️','Any pace'],['fast','💨','Fast'],['balanced','⚖️','Balanced'],['slow','🫖','Slow-burn']],
  length:[['any','📏','Any length'],['short','📗','Short'],['medium','📘','Medium'],['long','📙','Long']],
