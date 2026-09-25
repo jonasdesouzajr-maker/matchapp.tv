@@ -34,11 +34,19 @@ PY
 }
 dismiss_launcher_anr 'boot'
 probe() {
-  local name="$1" pkg="$2" apk="$3"
+  local name="$1" pkg="$2" apk="$3" activity="$4"
   echo "TEST native $name APK: $pkg"
   adb install -r "$apk"
   adb shell am force-stop "$pkg" || true
-  adb shell monkey -p "$pkg" -c android.intent.category.LAUNCHER 1
+  # Launch the tested Activity explicitly. The Pixel launcher/monkey route is
+  # runner-dependent and previously returned to Launcher even while the APK
+  # itself was valid, producing a false foreground-window failure.
+  launch="$(timeout 30s adb shell am start -W -n "$pkg/$activity" 2>&1 || true)"
+  printf '%s\n' "$launch" >"artifacts/android-emulator/$name-launch.txt"
+  if ! grep -Eq 'Status: ok|ThisTime:|TotalTime:' <<< "$launch"; then
+    echo "::error::$name Activity did not report a successful explicit launch."
+    return 1
+  fi
   sleep 22
   dismiss_launcher_anr "$name"
   # A live PID alone is insufficient: reject emulator system ANR dialogs and
@@ -68,9 +76,9 @@ probe() {
   test "$(stat -c%s "artifacts/android-emulator/$name-after-scroll.png")" -gt 6000
   echo "PASS $name starts, remains alive after WebView load and swipe; screenshots captured."
 }
-probe "adult" "com.jonas.papercup.debug" "android-studio/app/build/outputs/apk/debug/app-debug.apk"
+probe "adult" "com.jonas.papercup.debug" "android-studio/app/build/outputs/apk/debug/app-debug.apk" "com.jonas.papercup.MainActivity"
 adb shell am force-stop com.jonas.papercup.debug || true
-probe "kids" "tv.matchapp.kids.debug" "android-studio/kidsapp/build/outputs/apk/debug/kidsapp-debug.apk"
+probe "kids" "tv.matchapp.kids.debug" "android-studio/kidsapp/build/outputs/apk/debug/kidsapp-debug.apk" "tv.matchapp.kids.MainActivity"
 adb shell am force-stop tv.matchapp.kids.debug || true
 adb logcat -d -v brief -t 2500 >artifacts/android-emulator/device-last-log.txt || true
 if grep -E 'FATAL EXCEPTION|Process: (com\.jonas\.papercup|tv\.matchapp\.kids)([ .]|$)' artifacts/android-emulator/device-last-log.txt |
