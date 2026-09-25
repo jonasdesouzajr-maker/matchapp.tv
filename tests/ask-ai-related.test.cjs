@@ -268,3 +268,34 @@ test('unverified visual recommendations never use guessed/stale platform deep li
  const audiobook={title:'A Real Audiobook',type:'audiobook',platform:'',_availabilityVerified:false};
  assert.equal(fn(audiobook),'/#ebook-matcher-root');
 });
+
+test('Ask AI book/audiobook questions never fall back to unrelated movie or music suggestions',()=>{
+ const vm=require('node:vm'),js=read('discover.js');
+ const start=js.indexOf('function detectAudioIntent'),end=js.indexOf('/* ---------- AI conversational answer',start);
+ assert(start>=0&&end>start);
+ const ctx=vm.createContext({});
+ vm.runInContext(js.slice(start,end),ctx);
+ assert.equal(vm.runInContext("detectBookIntent('Find me a romantic audiobook')",ctx),true);
+ assert.equal(vm.runInContext("detectBookIntent('Recommend Brazilian e-books')",ctx),true);
+ assert.equal(vm.runInContext("detectBookIntent('Quero audiolivros brasileiros')",ctx),true);
+ assert.equal(vm.runInContext("detectBookIntent('Comedy movies on Netflix')",ctx),false);
+ const fallback=js.slice(js.indexOf('async function fallbackSearch'),js.indexOf('function catalogFallbackForQuestion'));
+ assert(fallback.indexOf('if (detectBookIntent(question))')<fallback.indexOf('const audioIntent'));
+ assert.match(js,/function catalogFallbackForQuestion\(question\)[\s\S]*?detectBookIntent\(question\)\) return \[\]/);
+ assert.match(js,/if \(!bookIntent && !newItems.length && window\.matchPolicy/);
+ assert.match(js,/bookIntent \? \[\] : \(payload\.results \|\| \[\]\)/);
+});
+test('book Ask AI suggestions open verified matcher rather than guessed streaming/buy URLs',()=>{
+ const js=read('discover.js'),html=read('discover.html'),proxy=read('supabase/functions/gemini-proxy/index.ts');
+ assert.match(js,/if \(\/\\b\(book\|ebook\|e-book\|audiobook\|novel\)\\b\/i\.test/);
+ assert.match(js,/return '\/#ebook-matcher-root'/);
+ assert.match(js,/discover-book-matcher-link/);
+ assert.match(js,/if \(isAudio \|\| isBook \|\| !window\.MatchAppCatalogMedia\?\.lookup\) return unverified\(\)/);
+ assert(html.includes('/discover.js?v=20260925-books1'));
+ assert(html.includes('.discover-book-matcher-link'));
+ assert.match(proxy,/function detectBookIntent/);
+ assert.match(proxy,/const visualIntent/);
+ assert.match(proxy,/A movie adaptation and a song are NOT valid substitutes/);
+ assert.match(proxy,/const safeNickname =/);
+ assert.match(proxy,/body\.nickname\.slice\(0, 32\)/);
+});
