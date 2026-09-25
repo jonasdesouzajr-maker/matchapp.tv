@@ -41,7 +41,7 @@ function selectMagazine(q){
   (/\b(?:music|musica|música)\b/i.test(q)&&['mag-billboard','mag-rolling-stone'].includes(m.id))||
   (/\b(?:wildlife|animals?|animais|natureza|nature)\b/i.test(q)&&m.genres.includes('nature')));
  const country=market();
- const candidate=(topic.length?topic:safe).sort((a,b)=>Number(b.region===country)-Number(a.region===country));
+ const candidate=(topic.length?topic:safe).slice().sort((a,b)=>Number(b.region===country)-Number(a.region===country));
  return candidate.slice(0,3);
 }
 function selectBooks(q){
