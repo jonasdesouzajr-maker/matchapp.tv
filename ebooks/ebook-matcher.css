@@ -177,3 +177,94 @@ html body.page-home #ebook-matcher-root :is(.ebook-field,.ebook-top-card,.ebook-
 .ebook-saved [data-ebook-saved-audio]{border:1px solid rgba(229,193,88,.57);border-radius:9px;min-height:41px;padding:8px 10px;background:rgba(229,193,88,.12);color:#ffeab3;font-weight:800;cursor:pointer;white-space:normal}
 .ebook-saved [data-ebook-saved-audio]:disabled{opacity:.68;cursor:progress}
 @media(max-width:560px){.ebook-saved-audio .ebook-provider-row{display:grid;grid-template-columns:1fr}}
+
+/* Homepage E-books: same premium shell as Find what to watch here.
+   Visual changes only; the existing e-book form, audiobook checks and
+   saved/disliked behavior are untouched. E-book hub keeps its own design. */
+html body.page-home #ebook-matcher-root{
+  display:block;
+  width:100%!important;
+  max-width:var(--measure,1180px)!important;
+  min-width:0;
+  margin:9px auto!important;
+  padding:0;
+  box-sizing:border-box;
+}
+html body.page-home #ebook-matcher-root .ebook-fold{
+  border:1px solid rgba(168,108,36,.5)!important;
+  border-radius:20px!important;
+  background:linear-gradient(160deg,rgba(32,24,52,.92),rgba(20,19,26,.94))!important;
+  box-shadow:0 15px 50px rgba(0,0,0,.55)!important;
+  overflow:hidden;
+}
+html body.page-home #ebook-matcher-root .ebook-fold>summary{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:8px;
+  position:relative;
+  min-height:65px;
+  padding:15px 52px;
+  text-align:center;
+  background:transparent;
+}
+html body.page-home #ebook-matcher-root .ebook-summary-icon{display:none}
+html body.page-home #ebook-matcher-root .ebook-fold>summary>span:nth-child(2){
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+html body.page-home #ebook-matcher-root .ebook-fold>summary strong{
+  color:var(--gold,#e5c158)!important;
+  font-size:clamp(20px,3.5vw,34px)!important;
+  font-weight:900;
+  letter-spacing:.01em;
+  line-height:1.2;
+  text-transform:uppercase;
+}
+html body.page-home #ebook-matcher-root .ebook-chevron{
+  position:absolute;
+  right:17px;
+  top:50%;
+  margin:0;
+  transform:translateY(-50%);
+}
+html body.page-home #ebook-matcher-root .ebook-fold[open] .ebook-chevron{
+  transform:translateY(-50%) rotate(180deg);
+}
+html body.page-home #ebook-matcher-root .ebook-panel{
+  padding:14px 15px;
+  border-top:1px solid rgba(229,193,88,.2);
+}
+html body.page-home #ebook-matcher-root .ebook-intro h2{display:none}
+html body.page-home #ebook-matcher-root .ebook-intro p{
+  color:#d9d0e1;
+  line-height:1.5;
+}
+html body.page-home #ebook-matcher-root .ebook-field{
+  border:1px solid rgba(255,255,255,.18)!important;
+  border-radius:12px!important;
+  background:rgba(0,0,0,.54)!important;
+}
+html body.page-home #ebook-matcher-root .ebook-field legend{
+  color:#ddd;
+  font-size:13px;
+  text-transform:uppercase;
+}
+html body.page-home #ebook-matcher-root .ebook-match-cta{
+  border-color:var(--gold,#e5c158);
+  box-shadow:0 7px 23px rgba(229,193,88,.18);
+}
+html body.page-home #ebook-matcher-root :is(.ebook-field,.ebook-top-card,.ebook-result){
+  min-width:0;
+}
+@media(max-width:600px){
+  html body.page-home #ebook-matcher-root .ebook-fold{border-radius:16px!important}
+  html body.page-home #ebook-matcher-root .ebook-fold>summary{
+    min-height:55px;
+    padding:12px 36px;
+  }
+  html body.page-home #ebook-matcher-root .ebook-panel{padding:10px 11px}
+  html body.page-home #ebook-matcher-root .ebook-chevron{right:10px}
+}
+
