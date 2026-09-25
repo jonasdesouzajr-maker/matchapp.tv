@@ -8,7 +8,7 @@ permissions:
   contents: write
   actions: write
 concurrency:
-  group: sitemap-refresh
+  group: matchapp-content-publish
   cancel-in-progress: false
 jobs:
   refresh:
