@@ -7,6 +7,8 @@ on:
     branches: [main]
     paths:
       - '.github/workflows/sports-refresh.yml'
+      - 'tools/refresh-sports-discovery.js'
+      - 'tools/sports-partner-feed.js'
   schedule:
     - cron: '17 11,23 * * *' # 08:17 and 20:17 São Paulo; avoid hourly :37 news and 03:00 midnight
   workflow_dispatch:
