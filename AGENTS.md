@@ -106,3 +106,17 @@ For each applicable title, include and maintain all available title metadata and
 Use verified, exact title identities and trusted sources. Prefer a correct real poster and verified metadata over generated fallback artwork. Generated branded artwork is a last-resort safety fallback only when no trustworthy title art can be resolved. Never substitute an unrelated poster, trailer, cast, synopsis, or metadata merely to avoid an empty field.
 
 Apply this interpretation consistently across Desktop Web, Smartphone Web, Tablet Web, the Android app, and Kids Mode / the Kids Android app where the title is approved for Kids.
+
+
+---
+
+### 10. E-BOOK MATCHING & LEGAL-SOURCE CONTRACT
+
+- **Grown-up only:** Match E-books Ai belongs to normal MatchApp web/PWA and the grown-up Android app. Do not surface it inside Kids Mode or the Kids Android app unless the owner explicitly creates a separate child-safe book product.
+- **Shared allowance:** An e-book match consumes the same MatchApp Match allowance as the main grown-up matcher. Never create an unmetered fallback route.
+- **No piracy:** MatchApp never hosts copyrighted e-book files and never links to pirate mirrors, unofficial file lockers, scraped EPUB/PDF repositories, DRM-bypass tools, or circumvention instructions.
+- **Legal free routes:** Free-download/read buttons may point only to legitimate public-domain/open-access/library sources such as Project Gutenberg, Standard Ebooks, Open Library, or an official publisher/author source. Availability is country-dependent.
+- **Official paid routes:** Paid e-books route to official storefronts such as Kindle/Amazon, Apple Books, Google Play Books, Kobo, and NOOK where applicable.
+- **Book exclusions:** Saved and “Not for me” e-books must be excluded from future e-book matching until the user removes that preference.
+- **Current suggestions:** “Top E-books right now” is editorial/current data and must carry a refresh date/source. Do not present an old chart snapshot as current.
+- **Isolation:** The e-book catalog and matcher stay separate from the movie/TV `CONTENT_CATALOG` and may not weaken or alter the core audiovisual matching policy.
