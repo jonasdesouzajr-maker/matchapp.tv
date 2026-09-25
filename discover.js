@@ -48,7 +48,7 @@ function detectAudioIntent(q) {
 function detectBookIntent(q) {
     // Books and narrated book editions have an independent verified matcher.
     // Never treat one as a Spotify music track or TMDB film request.
-    return /\b(e-?books?|audio\s?books?|novels?|reading|kindle|librivox|livros?|audiolivros?|libros?|audiolibros?)\b/i.test(q);
+    return /\b(e-?books?|audio\s?books?|novels?|reading|kindle|librivox|livros?|audiolivros?|libros?|audiolibros?|magazines?|revistas?|雑誌)\b/i.test(q);
 }
 
 /* ---------- AI conversational answer ---------- */
@@ -187,13 +187,13 @@ async function fallbackSearch(question, aiWasDown) {
     if (detectBookIntent(question)) {
         // Offline mode must never show a movie, music track or an assumed
         // narrator in response to a book question. The CTA below links the
-        // independently source-verified e-book and audiobook matcher.
+        // independently source-verified e-book, audiobook and magazine matcher.
         const lang = window.MATCH_LANG || 'en';
         const answer = /^pt/.test(lang)
             ? 'Não consegui confirmar uma edição agora. O MatchApp pode buscar o livro ou audiolivro em fontes oficiais usando o sistema de match de livros.'
             : /^es/.test(lang)
             ? 'No pude verificar una edición ahora. El buscador de libros y audiolibros de MatchApp comprueba las fuentes oficiales.'
-            : 'I couldn’t verify an edition just now. Our dedicated book and audiobook matcher checks official sources before showing purchase or listening options.';
+            : 'I couldn’t verify an edition just now. Our dedicated book, audiobook and magazine matcher checks official sources before showing purchase or listening options.';
         return {answer, results: [], _live: false};
     }
     const audioIntent = detectAudioIntent(question);
@@ -398,7 +398,7 @@ function discoverWatchUrl(item) {
     const title = (item && (item.title || item.displayTitle)) || '';
     // The dedicated matcher performs exact bookstore/audio edition checks.
     // Model-invented retailer or audiobook links must never become "buy now".
-    if (/\b(book|ebook|e-book|audiobook|novel)\b/i.test(String(item?.type || '')))
+    if (/\b(book|ebook|e-book|audiobook|novel|magazine)\b/i.test(String(item?.type || '')))
         return '/#ebook-matcher-root';
     const isAudio = /podcast|album|music|audiobook/i.test((item && item.type) || '');
     // Verification failures and unverified AI platform hints must NEVER send
@@ -1514,6 +1514,19 @@ async function renderResultsInto(grid, items, baseIndex) {
 async function askAndRender(question) {
     if (!question || !question.trim()) return;
     question = question.trim();
+    // Global MatchApp editorial policy: never use AI or provider lookups to
+    // locate XXX/pornographic content, and never charge for that refusal.
+    if (window.MatchAppContentSafety?.isPornographicRequest?.(question)) {
+        appendUserBubble(question);
+        const lang = String(window.MATCH_LANG || 'en');
+        const answer = /^pt/.test(lang)
+          ? 'O MatchApp não recomenda conteúdo pornográfico. Posso ajudar com revistas, livros, filmes e audiolivros convencionais.'
+          : /^es/.test(lang)
+          ? 'MatchApp no recomienda contenido pornográfico. Puedo ayudarte con revistas, libros, películas y audiolibros convencionales.'
+          : 'MatchApp does not recommend pornographic or XXX content. I can help find mainstream magazines, books, films and audiobooks instead.';
+        appendAssistantBubble(answer, [], { instant: true });
+        return;
+    }
 
     const loadEl = document.getElementById('discover-loading');
     const emptyEl = document.getElementById('discover-empty');
@@ -1557,7 +1570,7 @@ async function askAndRender(question) {
     // provider returns nothing, reuse the reviewed local catalogue under the
     // exact same policy. This adds no polling/observers and cannot loosen the
     // user's genre/taste exclusions.
-    if (!Array.isArray(payload?.results) || payload.results.length === 0) {
+    if (!bookIntent && (!Array.isArray(payload?.results) || payload.results.length === 0)) {
         const local = catalogFallbackForQuestion(question);
         if (local.length) {
             payload = payload || {};
@@ -1566,6 +1579,15 @@ async function askAndRender(question) {
             source = source === 'ai' ? 'catalog-recovery' : source + '+catalog';
             const offlineNote = (typeof t === 'function') ? t('discover.offlineNote') : "Our AI concierge is temporarily offline, so here's what our catalog found for you:";
             payload.answer = `${offlineNote} “${question}”`;
+        }
+    }
+    // Defense in depth: a prompt restriction alone cannot guarantee the
+    // model won't return an explicit item; filter it before any UI/history use.
+    if (payload) {
+        payload.results = window.MatchAppContentSafety?.safeEntries?.(payload.results || []) || (payload.results || []);
+        if (window.MatchAppContentSafety?.isExplicit?.(payload.answer)) {
+            payload.answer = 'I can help with mainstream entertainment, books and magazines, but not pornographic content.';
+            payload.results = [];
         }
     }
     lastDiscoverQuestion = question;
@@ -1615,16 +1637,18 @@ async function askAndRender(question) {
     const bubble = appendAssistantBubble(payload.answer, bookIntent ? [] : (payload.results || []), { instant: false });
     if (bubble?.wrap && bookIntent) {
         const route = document.createElement('a');
-        route.href = '/#ebook-matcher-root';
+        const readingFormat = window.MatchAppReadingAI?.intent?.(question) || 'ebook';
+        route.href = '/?reading=' + encodeURIComponent(readingFormat) + '#ebook-matcher-root';
         route.className = 'gold-btn discover-book-matcher-link';
         const lang = window.MATCH_LANG || 'en';
         route.textContent = /^pt/.test(lang)
-            ? '📚🎧 Verificar livros e audiolivros'
+            ? '📚🎧📰 Verificar livros, audiolivros e revistas'
             : /^es/.test(lang)
-            ? '📚🎧 Verificar libros y audiolibros'
-            : '📚🎧 Verify books and audiobooks';
+            ? '📚🎧📰 Verificar libros, audiolibros y revistas'
+            : '📚🎧📰 Verify e-books, audiobooks and magazines';
         route.setAttribute('aria-label', route.textContent);
         bubble.wrap.appendChild(route);
+        window.MatchAppReadingAI?.render?.(question, bubble.wrap);
     }
 
     // Auto-scroll to the response before the typewriter starts.
