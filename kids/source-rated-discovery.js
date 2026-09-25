@@ -196,6 +196,11 @@
   input.placeholder=say('Enter the exact movie or show title','Digite o título exato do filme ou série','Escribe el título exacto de película o serie');
  }
  document.getElementById('kids-lang')?.addEventListener('change',()=>{localize();reset()});
- if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>{localize();reset()},{once:true});
- else{localize();reset()};
+ // Initialize immediately so a fast click cannot race DOMContentLoaded.
+ // Re-localize after Kids boot has restored the saved language; do not erase
+ // an in-flight discovery if the document finishes parsing during a lookup.
+ localize();reset();
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>{
+  localize();if(!busy)reset();
+ },{once:true});
 })();
