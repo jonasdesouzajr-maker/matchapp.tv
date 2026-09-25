@@ -480,14 +480,17 @@ async function enrichDiscoverMedia(item) {
             return item;
         }
         item._catalogMedia = meta;
-        item._availabilityVerified = true;
+        // Exact identity is not proof of regional provider availability.
+        item._availabilityVerified = false;
         if (meta.year) item.year = meta.year;
         if (meta.overview) item.synopsis = meta.overview;
         if (Array.isArray(meta.genres) && meta.genres.length) item.realGenres = meta.genres.slice(0, 8);
         if (!item.type || item.type === 'any') item.type = meta.media_kind === 'tv' ? 'series' : (meta.media_kind || item.type);
         item._viewing = window.MatchAppCatalogMedia.viewingTarget?.(meta, item.title) || null;
-        if (item._viewing?.provider) item.platform = item._viewing.provider;
-        else if (item._viewing?.mode === 'cinema') item.platform = '';
+        const verifiedModes=new Set(['stream','rent','buy','cinema']);
+        item._availabilityVerified=Boolean(item._viewing && verifiedModes.has(item._viewing.mode));
+        // The model's platform is only a hint. Never present it as verified.
+        item.platform=item._viewing?.provider&&item._availabilityVerified?item._viewing.provider:'';
     } catch (_) {}
     return item;
 }
@@ -533,7 +536,8 @@ function discoverStartLabel(item) {
     const nowY = new Date().getFullYear();
     if (item?._viewing?.mode === 'cinema') return discoverLabel('discover.inCinemas', 'In cinemas');
     if (year > nowY) return discoverLabel('discover.startsIn', 'Starts {year}').replace('{year}', String(year));
-    if (year === nowY) return discoverLabel('discover.nowStreaming', 'Now streaming');
+    if (year === nowY && item?._viewing?.mode === 'stream') return discoverLabel('discover.nowStreaming', 'Now streaming');
+    if (year === nowY) return discoverLabel('discover.premiered', 'Premiered {year}').replace('{year}', String(year));
     if (discoverIsEpisodic(item)) return discoverLabel('discover.sinceYear', 'Since {year}').replace('{year}', String(year));
     return discoverLabel('discover.premiered', 'Premiered {year}').replace('{year}', String(year));
 }
@@ -714,6 +718,8 @@ function discoverFallbackPoster(item) {
 }
 
 async function hydrateDiscoverCard(item, idx) {
+    // A former undeclared rawType crashed TV genre enrichment for some answers.
+    const rawType=String(item?.type||'').toLowerCase();
     const img = document.getElementById('dp-' + idx);
     const link = document.getElementById('dl-' + idx);
     if (!img) return;
