@@ -10,6 +10,7 @@ const NEWS=path.join(ROOT,'news');
 const ART=path.join(NEWS,'articles');
 const SITE='https://matchapp.tv';
 const ARCHIVE_LIMIT=1000;
+const SPORTS_SNAPSHOT=path.join(NEWS,'sports.json');
 
 const FEEDS=[
   {url:'https://feeds.bbci.co.uk/news/entertainment_and_arts/rss.xml',source:'BBC',domains:['bbc.com','bbc.co.uk'],country:'GB'},
@@ -31,6 +32,11 @@ const clean=s=>String(s||'')
   .replace(/&amp;/g,'&')
   .replace(/&quot;/g,'"')
   .replace(/&#39;|&apos;/g,"'")
+  // RSS headlines sometimes contain numeric curly quotes. Decode them once
+  // before escaping generated HTML to avoid visible double-escaped entities.
+  .replace(/&#x([a-f0-9]+);/gi,(_,n)=>String.fromCodePoint(parseInt(n,16)))
+  .replace(/&#([0-9]+);/g,(_,n)=>String.fromCodePoint(parseInt(n,10)))
+  .replace(/&nbsp;/g,' ')
   .replace(/&lt;/g,'<')
   .replace(/&gt;/g,'>')
   .replace(/\s+/g,' ')
@@ -103,7 +109,7 @@ function imageFromArticleHtml(html,baseUrl){
 }
 
 async function enrichMissingImages(items){
-  const missing=items.filter(i=>!i.image&&i.url);
+  const missing=items.filter(i=>i.category!=='sports'&&!i.image&&i.url);
   await Promise.all(missing.map(async i=>{
     try{
       const html=await get(i.url,'text/html,application/xhtml+xml;q=0.9,*/*;q=0.5');
@@ -213,6 +219,32 @@ function dateParts(value){
 }
 
 function seoFor(i,trends,generated){
+  if(i.category==='sports'){
+    const topic=words(i.title).slice(0,8),sport=i.sport||'Sports';
+    const {year,isoDate,monthEn}=dateParts(i.published_at);
+    const focus=topic.slice(0,5).join(' ')||sport.toLowerCase();
+    const short=uniq([sport, sport.toLowerCase()+' news','sports news',
+      'latest sports news','today sports headlines',...topic.slice(0,6)]);
+    const long=uniq([
+      focus+' sports news '+year,
+      focus+' latest update '+isoDate,
+      sport+' latest news '+monthEn+' '+year,
+      'BBC Sport '+sport.toLowerCase()+' news '+isoDate,
+      focus+' BBC Sport original report'
+    ]);
+    const sourceKeywords=uniq(['BBC Sport',sport+' BBC Sport','BBC sports headlines']);
+    const freshnessKeywords=[isoDate,monthEn+' '+year];
+    const primary=focus+' sports news';
+    return {
+      primary_keyword:primary,short_tail:short,long_tail:long,
+      trend_keywords:[],entity_keywords:topic,freshness_keywords:freshnessKeywords,
+      source_keywords:sourceKeywords,
+      meta_title:truncateWords(i.title+' | '+sport+' | MatchApp TV',60),
+      meta_description:truncateWords(sport+' report from BBC Sport published '+isoDate+'. Read the verified original story via MatchApp Latest News.',158),
+      keywords:uniq([primary,...short,...long,...sourceKeywords,...freshnessKeywords]).slice(0,32),
+      seo_generated_at:generated
+    };
+  }
   const topic=words(`${i.person} ${i.title}`).slice(0,10);
   const trend=trends.filter(t=>{
     const tw=words(t);
@@ -369,7 +401,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta property="og:url" content="${canon}">
 <meta property="article:published_time" content="${esc(i.discovered_at)}">
 <meta property="article:modified_time" content="${esc(i.seo.seo_generated_at||i.discovered_at)}">
-<meta property="article:section" content="Entertainment News">
+<meta property="article:section" content="${i.category==='sports'?'Sports News':'Entertainment News'}">
 <meta name="twitter:title" content="${esc(i.seo.meta_title)}">
 <meta name="twitter:description" content="${d}">
 ${imageMeta}
@@ -395,7 +427,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p><a href="${orig}" target="_blank" rel="noopener noreferrer external">Read the original report at ${src} ↗</a></p>
     <p><a href="${landing}">Open this story inside MatchApp Latest News →</a></p>
     <p style="font-size:13px;color:#aaa">MatchApp links directly to the original publisher, identifies the source and publication time, and does not republish the article body.</p>
-    <p><a href="/news/">More entertainment news</a> · <a href="/">Back to MatchApp</a></p>
+    <p><a href="/news/">More entertainment and sports news</a> · <a href="/">Back to MatchApp</a></p>
   </article>
 </main>
 <script src="/build-meta.js?v=203"></script>
@@ -425,15 +457,16 @@ function hub(items,generated){
       {
         '@type':'CollectionPage',
         '@id':`${SITE}/news/#collection`,
-        name:'Latest Entertainment News',
+        name:'Latest Entertainment and Sports News',
         url:`${SITE}/news/`,
         dateModified:generated,
-        description:'A continuously refreshed MatchApp index of entertainment reporting from named trusted publishers, with direct original-source links and clear source attribution.',
+        description:'An hourly refreshed entertainment-news index with twice-daily verified sports updates, original publisher links and source attribution.',
         isPartOf:{'@type':'WebSite','@id':`${SITE}/#website`,url:`${SITE}/`,name:'MatchApp TV Ai'},
         about:[
           {'@type':'Thing',name:'Entertainment news'},
           {'@type':'Thing',name:'Film and television'},
-          {'@type':'Thing',name:'Music and culture'}
+          {'@type':'Thing',name:'Music and culture'},
+          {'@type':'Thing',name:'Sports reporting'}
         ],
         mainEntity:{'@type':'ItemList',itemListElement:itemList},
         publisher:{'@type':'Organization',name:'MatchApp TV',url:SITE,logo:{'@type':'ImageObject',url:`${SITE}/assets/brand/matchapp-official-icon-512.webp`,width:512,height:512}}
@@ -460,14 +493,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Latest Entertainment News | MatchApp TV</title>
-<meta name="description" content="Verified entertainment headlines about actors, singers, film, TV and music from trusted publishers, refreshed hourly by MatchApp TV.">
+<title>Latest Entertainment &amp; Sports News | MatchApp TV</title>
+<meta name="description" content="Verified film, TV, music and sports reporting from named publishers. Entertainment refreshes hourly and sports updates twice daily, with original source links.">
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
 <link rel="canonical" href="${SITE}/news/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="MatchApp TV">
-<meta property="og:title" content="Latest Entertainment News | MatchApp TV">
-<meta property="og:description" content="Verified actor, singer, film, TV and music headlines linked to original trusted publishers and refreshed hourly.">
+<meta property="og:title" content="Latest Entertainment and Sports News | MatchApp TV">
+<meta property="og:description" content="Hourly verified entertainment reporting and twice-daily sports updates with original publisher attribution.">
 <meta property="og:url" content="${SITE}/news/">
 <script type="application/ld+json">${JSON.stringify(schema)}</script>
 <link rel="icon" href="/assets/brand/matchapp-favicon-32.png" type="image/png">
@@ -481,19 +514,37 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <header class="app-header"><a href="/" class="matchapp-brand-link" aria-label="MatchApp TV Ai"><span class="brand-logo brand-logo-placeholder" aria-hidden="true"></span><span class="app-title-main"><img class="matchapp-wordmark" src="/assets/brand/matchapp-tv-ai-v2.svg" alt="MatchApp TV Ai" width="368" height="66" decoding="async"></span></a></header>
 <main style="max-width:1120px;margin:36px auto;padding:18px">
   <a href="/#latest-news">← MatchApp Latest News</a>
-  <h1>Latest Entertainment News</h1>
-  <p>Verified actor, singer, film, TV and music updates from trusted publishers. Updated hourly, with direct links to every original source.</p>
+  <h1>Latest Entertainment and Sports News</h1>
+  <p>Verified entertainment news refreshed hourly and BBC Sport headlines refreshed twice daily. Each story links to its original publisher.</p>
   <section aria-labelledby="news-guide-title" style="margin:20px 0 28px;padding:20px;border:1px solid rgba(229,193,88,.22);border-radius:14px;background:rgba(24,16,38,.72)">
     <h2 id="news-guide-title" style="margin-top:0">How MatchApp Latest News works</h2>
-    <p>MatchApp Latest News is a continuously refreshed index of entertainment reporting from named publishers. We do not republish full articles here. Each item identifies the publisher, preserves a direct link to the original report and shows enough context to help you decide what is worth opening.</p>
+    <p>MatchApp Latest News is an hourly entertainment index with twice-daily sports updates from named publishers. We do not republish full articles here. Each item identifies the publisher, preserves a direct link to the original report and shows enough context to help you decide what is worth opening.</p>
     <p>The feed is built from direct trusted-publisher sources and refreshed throughout the day. Automated filters remove obvious rumor-style language and unrelated stories before an item reaches this hub. The original publisher remains the source of record for every headline and claim; MatchApp's role is discovery, organization and a clear path back to that source.</p>
     <p>When a story points you toward a movie, series, performer or release, continue with <a href="/">MatchApp's entertainment matcher</a>, <a href="/discover.html?focus=start">Ask MatchApp Ai</a>, or check <a href="/where-to-watch/">where to watch</a> for streaming and cinema availability.</p>
   </section>
-  <section aria-label="Latest verified entertainment headlines" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px">${cards}</section>
+  <section aria-label="Latest verified entertainment and sports headlines" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px">${cards}</section>
 </main>
 <script src="/build-meta.js?v=203"></script>
 </body>
 </html>`;
+}
+
+function readSports(){
+  if(!fs.existsSync(SPORTS_SNAPSHOT))return {updated_at:null,items:[]};
+  try{
+    const parsed=JSON.parse(fs.readFileSync(SPORTS_SNAPSHOT,'utf8'));
+    const updated=Date.parse(parsed.updated_at);
+    if(!Number.isFinite(updated)||Date.now()-updated>40*3600000||updated>Date.now()+3600000){
+      console.warn('[sports] snapshot older than 40h; preserving archive without showing stale sports as latest');
+      return {updated_at:parsed.updated_at||null,items:[]};
+    }
+    const items=Array.isArray(parsed.items)?parsed.items.filter(i=>
+      i&&i.category==='sports'&&i.title&&i.id&&
+      isAllowed(i.url,{domains:['bbc.co.uk','bbc.com']})&&
+      Number.isFinite(Date.parse(i.published_at))&&
+      Date.now()-Date.parse(i.published_at)<96*3600000).slice(0,12):[];
+    return {updated_at:parsed.updated_at,items};
+  }catch(e){console.warn('[sports] invalid optional snapshot: '+e.message);return {updated_at:null,items:[]}}
 }
 
 function readArchive(){
@@ -570,6 +621,7 @@ function enforceArticleAnalyticsOnDisk(){
   const generated=new Date().toISOString();
   const priorArchive=readArchive();
   const priorById=new Map(priorArchive.map(i=>[i.id,i]));
+  const sportsSnapshot=readSports();
 
   const [rawParts,trendParts]=await Promise.all([
     Promise.all(FEEDS.map(fetchFeed)),
@@ -610,6 +662,7 @@ function enforceArticleAnalyticsOnDisk(){
       published_at:publishedAt,
       discovered_at:existing&&existing.discovered_at?existing.discovered_at:generated,
       event_type:ev,
+      category:'entertainment',
       person:p,
       description:`${p?p+': ':''}${ev.toLowerCase()} headline reported by ${r.feed.source}. MatchApp verifies the publisher link and publication time; open the original report for full context.`,
       image:r.image,
@@ -622,12 +675,24 @@ function enforceArticleAnalyticsOnDisk(){
   }
 
   collected.sort((a,b)=>b.published_at.localeCompare(a.published_at));
-  const items=collected.slice(0,40);
+  const sports=sportsSnapshot.items.map(entry=>{
+    const existing=priorById.get(entry.id);
+    const item={...entry,
+      discovered_at:existing?.discovered_at||sportsSnapshot.updated_at||generated,
+      person:'',
+      description:entry.sport+' headline reported by BBC Sport. MatchApp preserves the original publisher, publication date and link; open the source for full context.',
+      matchapp_url:existing?.matchapp_url||`${SITE}/news/articles/${slug(entry.title)}-${entry.id.slice(0,6)}/`,
+      landing_url:`${SITE}/?news=${encodeURIComponent(entry.id)}#latest-news`
+    };
+    item.seo=existing?.seo||seoFor(item,[],generated);
+    return item;
+  });
+  const items=[...collected.slice(0,32),...sports].sort((a,b)=>b.published_at.localeCompare(a.published_at)).slice(0,44);
   await enrichMissingImages(items);
 
   if(items.length<5)throw new Error(`trusted publisher feeds returned only ${items.length} usable items`);
 
-  const feedVersion=hash(items.slice(0,10).map(i=>`${i.id}:${i.published_at}`).join('|'));
+  const feedVersion=hash(items.slice(0,15).map(i=>`${i.id}:${i.published_at}`).join('|'));
 
   fs.mkdirSync(NEWS,{recursive:true});
   fs.mkdirSync(ART,{recursive:true});
@@ -663,6 +728,7 @@ function enforceArticleAnalyticsOnDisk(){
     JSON.stringify({
       generated_at:generated,
       feed_version:feedVersion,
+      sports_updated_at:sportsSnapshot.updated_at,
       source_policy:'direct-trusted-publisher-rss+google-trends-keyword-signals',
       seo_policy:'per-story keyword snapshot at first discovery + source citation + stable archive',
       items
@@ -688,6 +754,8 @@ function enforceArticleAnalyticsOnDisk(){
   console.log(JSON.stringify({
     ok:true,
     items:items.length,
+    sports:items.filter(i=>i.category==='sports').length,
+    sports_updated_at:sportsSnapshot.updated_at,
     archived:archive.length,
     feed_version:feedVersion,
     sources:[...new Set(items.map(i=>i.source))],
