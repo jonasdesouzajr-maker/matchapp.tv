@@ -5,7 +5,7 @@
 ## Implemented in this Amazon Brazil affiliate patch
 - A single centrally controlled Amazon Brazil link builder uses the supplied public Associate ID on the `amazon.com.br` storefront ONLY for ordinary browser visits. Other Amazon storefronts have no borrowed Brazilian tag. Native Android shell, installed PWA and identified smart-TV clients remain untagged pending applicable program approvals.
 - Affiliate links display an adjacent paid-link/publicidade label, `rel=sponsored noopener noreferrer`, and the required Amazon Associate disclosure. Adult Bookworms discovery and matching surfaces share this implementation. Neither Kids Mode nor the existing AdSense placements or editorial/news/events/Top Titles automation are changed.
-- Google Play Books, Apple Books and other sellers remain ordinary links: `GGKEY:F5TQ3J2SAK8` is **not verified as an approved Play Books/Partnerize affiliate identifier** and is intentionally not inserted in links. Only an independently verified enrollment and Partnerize-tracked URL authorizes paid tracking.
+- Google Play Books, Apple Books and other sellers remain ordinary links: the supplied GGKEY-format identifier is **not verified as an approved Play Books/Partnerize affiliate identifier** and is intentionally not inserted in links. Only an independently verified enrollment and Partnerize-tracked URL authorizes paid tracking.
 - Referral analytics count clicks **not purchases**; retailer reporting alone establishes qualifying sales and commissions. Do not infer sales from local clicks.
 
 ## Must verify before assuming monetization or launch in a new market
