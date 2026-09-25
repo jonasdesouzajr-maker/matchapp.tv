@@ -132,3 +132,11 @@ Apply this interpretation consistently across Desktop Web, Smartphone Web, Table
 - Never mask failing steps, skip AdSense checks, invent event locations/official covers or ratings, edit matching/AI behavior, or republish content after a failed content-readiness gate.
 - Static editorial generators own their existing respective output. Avoid competing Home rewrites or uncontrolled `git add -A`; regenerate from latest `main` if a publisher loses a push race. For direct/external `main` pushes use the automatic Pages workflow. After each successful GitHub Actions bot content commit, explicitly dispatch exactly one validated `pages-deploy.yml --ref main` run because GitHub suppresses downstream workflow triggers from its own `GITHUB_TOKEN` pushes. Never dispatch for no-op changes or independently ping IndexNow; Pages triggers IndexNow only on deployment success.
 - Test these invariants with `node --test tests/editorial-workflow-contract.test.cjs`, `node tools/check-content-rotation.js`, and the existing full test/SEO/audit gates. Changes to this lock require owner review under `.github/CODEOWNERS` and GitHub branch protection.
+
+---
+
+### 12. KIDS SOURCE-RATED EXPANSION — FAIL CLOSED
+
+**Mandatory reference:** `docs/KIDS_SOURCE_RATED_EXPANSION.md`. Expanded source-rated titles come from exact TMDB identities and genuinely supplied source age classifications, not AI guesses or genres alone. They are a separate, explicitly labeled discovery tier until individually editorially reviewed and added to the original Kids allowlist. The manually curated `LIBRARY` remains the sole authority for Kids matching, Ask AI and saved favorites. Never silently promote source-rated titles into it. Reject all unrated, adult, wrong-title, year-mismatched, unsupported-rating, untrusted-artwork or age-incompatible results. Never sacrifice child safety or hide source limitations to reach an arbitrary title count.
+
+Production `/kids/` serves the public web (all browsers/devices) and dedicated Kids Android WebView. The standard Android app continues blocking Kids paths. Source expansion and manual browse use bounded, lazy image requests and fixed-size DOM batches to prevent mobile/TV freezes. Age changes must invalidate pending wider-catalog results.
