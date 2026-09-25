@@ -71,6 +71,10 @@ body.ebook-page{margin:0;background:#080610;color:#fff;min-height:100vh}
 <a class="ebook-page-cta" href="/#ebook-matcher-root">📚 Start my E-book Match</a>
 </section>
 
+<section class="ebook-top-section ebook-hub-top" aria-labelledby="ebook-hub-top-title">
+<div class="ebook-top-head"><div><small>BOOKWORMS PICKS · UPDATED SEPTEMBER 24, 2026</small><h2 id="ebook-hub-top-title" style="margin:0;color:#f3d77f;font-size:24px">Top E-books right now</h2><p>Current popular e-books from Brazilian and global charts, with official purchase routes and legal free-edition searches where applicable.</p></div></div>
+<div id="ebook-hub-top" class="ebook-top-rail" aria-live="polite"></div>
+</section>
 <section class="ebook-platform-trust" aria-label="E-book sources">
 <div class="ebook-platform-trust-inner">
 <article><h2>🆓 Legal free editions</h2><p>Public-domain and legally offered editions can be discovered through Project Gutenberg, Standard Ebooks and Open Library. Copyright availability can differ by country.</p></article>
@@ -90,5 +94,22 @@ body.ebook-page{margin:0;background:#080610;color:#fff;min-height:100vh}
 <footer class="seo-footer"><a href="/">MatchApp TV Ai</a> · <a href="/copyright.html">Copyright</a> · <a href="/privacy.html">Privacy</a><p>© 2026 MatchApp.tv</p></footer>
 <script src="/themes.js?v=187"></script>
 <script src="/build-meta.js?v=20260924-ebooks1"></script>
+<script src="/ebooks/top-ebooks.js?v=20260924-top1"></script>
+<script>
+(function(){
+ const host=document.getElementById('ebook-hub-top'),items=window.MATCHAPP_TOP_EBOOKS||[];if(!host)return;
+ const esc=s=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+ const q=b=>encodeURIComponent(b.title+' '+b.author);
+ const market=(navigator.language||'').toLowerCase().endsWith('-br')?'BR':'GLOBAL';
+ const ordered=items.slice().sort((a,b)=>((a.market===market?0:a.market==='GLOBAL'?1:2)-(b.market===market?0:b.market==='GLOBAL'?1:2)));
+ host.innerHTML=ordered.map(b=>{
+   const free=String(b.access||'').includes('free');
+   const buy='https://books.google.com/books?q='+q(b);
+   const freeUrl='https://www.gutenberg.org/ebooks/search/?query='+q(b);
+   const initials=b.title.split(/\s+/).filter(Boolean).slice(0,3).map(x=>x[0]).join('').toUpperCase();
+   return '<article class="ebook-top-card"><div class="ebook-top-cover"><div class="ebook-cover-fallback"><span>'+esc(initials)+'</span><strong>'+esc(b.title)+'</strong><small>'+esc(b.author)+'</small></div></div><div class="ebook-top-copy"><span class="ebook-top-badge">'+esc(b.badge)+'</span><h3>'+esc(b.title)+'</h3><p class="ebook-top-author">'+esc(b.author)+'</p><p class="ebook-top-genre">'+esc(b.genre)+'</p><div class="ebook-top-actions">'+(free?'<a class="ebook-provider ebook-free" href="'+freeUrl+'" target="_blank" rel="noopener noreferrer">Legal free edition ↗</a>':'')+'<a class="ebook-provider" href="'+buy+'" target="_blank" rel="noopener noreferrer">Find / buy e-book ↗</a><a class="ebook-top-source" href="'+esc(b.sourceUrl)+'" target="_blank" rel="noopener noreferrer">Chart source · '+esc(b.source)+'</a></div></div></article>';
+ }).join('');
+})();
+</script>
 </body>
 </html>
