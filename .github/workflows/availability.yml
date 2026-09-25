@@ -95,3 +95,9 @@ jobs:
             echo "Push attempt $attempt failed; refreshing from remote and regenerating."
           done
           exit 1
+
+      - name: Validate and deploy bot-published main commit
+        if: steps.publish.outputs.changed == '1'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run pages-deploy.yml --ref main
