@@ -4505,7 +4505,9 @@ async function renderResult(selected, isSpecificSearch) {
             kind: window.currentMatchIdentity?.kind || '',
             tmdbId: window.currentMatchIdentity?.tmdbId || null,
             priority: true,
-            fallback: localCover
+            fallback: localCover,
+            sourceOnly: isAudioCategory(categoryHint) || /youtube/i.test(categoryHint),
+            trustedMatchSource: true
         }).catch(() => {});
     } else if (realCover && realCover !== localCover) {
         // The original verified probe remains available if the optional
