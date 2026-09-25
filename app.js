@@ -1159,13 +1159,13 @@ const VERIFIED_POSTERS = {
     "Lanterns": "https://image.tmdb.org/t/p/w780/gpC7h43xPMEV3goYMQShfJbTtLq.jpg",
     "Quem É Você?": "https://image.tmdb.org/t/p/w780/ewelBEOwfr8EIjnrc6Drov67xe1.jpg",
     "Vermelho Sangue": "https://image.tmdb.org/t/p/w780/gtUqzLLaarxvNWzKeBepwWfTfm8.jpg",
-    "Habeas Corpus": "https://image.tmdb.org/t/p/w780/8JP8OXWufxAXFLfOOj4XU2SEhvV.jpg",
+    "Habeas Corpus": "https://image.tmdb.org/t/p/w780/cojcROwZe8681XzroVIOE9VK4zV.jpg",
     "Virtuosas": "https://image.tmdb.org/t/p/w780/v9wSMFf9Ysj40aHHUJ1VeLStZWn.jpg",
     "(Des)controle": "https://image.tmdb.org/t/p/w780/scl6uVD0YZc46WZHgXbEcaH2zYw.jpg",
     "Line of Fire": "https://image.tmdb.org/t/p/w780/sodRW36uEDHjv8l1WhYUNDvnIK6.jpg",
     "Wicked": "https://image.tmdb.org/t/p/w780/xDGbZ0JJ3mYaGKy4Nzd9Kph6M9L.jpg",
     "You+Me - Against the World": "https://image.tmdb.org/t/p/w780/bAbBNVplg7h79sm94OyHeKk8Phz.jpg",
-    "The Love Hypothesis": "https://image.tmdb.org/t/p/w780/vfZxVHextAGC70zrNhS8lsROqP1.jpg",
+    "The Love Hypothesis": "https://image.tmdb.org/t/p/w780/wlb6vunPuBjboYnmy4r3NlKZWji.jpg",
     "American Hostage": "https://image.tmdb.org/t/p/w780/p3Ro0ngezX9aNZY6j3vYbpQqVhr.jpg"
 };
 
@@ -1408,6 +1408,25 @@ function generateLocalPosterSVG(title, meta = {}) {
 // ----------------------------------------------------
 async function hydrateMarqueeCovers() {
     const imgs = document.querySelectorAll('.marquee-item img');
+
+    // Shared read-only media layer checks the exact source identity and probes
+    // official image URLs before promotion. The legacy path remains a fallback
+    // if the optional layer failed to load; never create duplicate competing
+    // asynchronous poster assignments on a healthy adult Home.
+    const media = window.MatchAppCatalogMedia;
+    if (media && typeof media.recoverAdultPoster === 'function') {
+        let next = 0;
+        const restore = async () => {
+            while (next < imgs.length) {
+                const img = imgs[next++];
+                const title = img.getAttribute('data-title') || img.getAttribute('alt') || '';
+                if (!title) continue;
+                try { await media.recoverAdultPoster(img, title, { rail: true }); } catch (_) {}
+            }
+        };
+        await Promise.all(Array.from({ length: Math.min(3, imgs.length) }, restore));
+        return;
+    }
 
     // Paint an instant local placeholder so a cover is visible on first frame —
     // previously the hardcoded TMDB URLs were dead, the inline onerror nulled
@@ -4416,7 +4435,9 @@ async function renderResult(selected, isSpecificSearch) {
 
     // Track the current match globally so Watch Later / Seen It can record it.
     globalMatchTitle = selected.title;
-    globalMatchPoster = realCover;
+    // A candidate URL is not proof of a loaded poster. The actual image
+    // becomes shareable only after the browser validates it below.
+    globalMatchPoster = generatedCover(selected.title, matchHints);
     globalPlatform = selected.platform;
     // THE ACTUAL SHARE BUG: `let globalMatchTitle` at top level never creates
     // `window.globalMatchTitle` — only `var` does that. share.js has always
@@ -4464,7 +4485,24 @@ async function renderResult(selected, isSpecificSearch) {
     });
     posterEl.onerror = null;
     posterEl.src = localCover;
-    if (realCover && realCover !== localCover) {
+    globalMatchPoster = localCover;
+    window.globalMatchPoster = localCover;
+    const posterMedia = window.MatchAppCatalogMedia;
+    if (posterMedia && typeof posterMedia.recoverAdultPoster === 'function') {
+        // Exact source-verified metadata can rescue a failed or stale match
+        // URL, including when the old title registry no longer has live art.
+        // It cannot change the chosen match or any provider/matching logic.
+        posterMedia.recoverAdultPoster(posterEl, selected.title, {
+            sourceUrl: realCover,
+            year: matchHints.year || '',
+            kind: window.currentMatchIdentity?.kind || '',
+            tmdbId: window.currentMatchIdentity?.tmdbId || null,
+            priority: true,
+            fallback: localCover
+        }).catch(() => {});
+    } else if (realCover && realCover !== localCover) {
+        // The original verified probe remains available if the optional
+        // read-only media layer is absent.
         const probe = new Image();
         probe.onload = function() {
             if (window.globalMatchTitle === selected.title) {
