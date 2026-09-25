@@ -154,8 +154,30 @@ const MAX_HISTORY_TURNS = 8;
 // explicit XXX entertainment or adult-only erotic magazines on any AI route.
 // Do not block standard science, medicine, mainstream documentaries or
 // respectful journalism merely because those topics are mature.
-const EXPLICIT_XXX=/\b(?:xxx|porn(?:ography|ographic|hub|star)?|hentai|hardcore(?:\s+sex)?|erotica|erotic(?:\s+fiction|\s+magazines?|\s+videos?)|onlyfans|adult\s+(?:xxx|movies?|videos?|magazines?|websites?))\b/i;
+const EXPLICIT_XXX=/\b(?:xxx|xvideos|xnxx|xhamster|redtube|youporn|brazzers|porn(?:ography|ographic|hub|star)?|hentai|hardcore(?:\s+sex)?|erotica|erotic(?:\s+fiction|\s+magazines?|\s+videos?)|onlyfans|adult\s+(?:xxx|movies?|videos?|magazines?|websites?))\b/i;
 
+
+ // Defense in depth: AI can produce an innocuous title pointing to an XXX site.
+ // Only adult discovery is changed here; the Kids editorial path stays separate.
+const BLOCKED_XXX_HOSTS=new Set(["onlyfans.com","pornhub.com","xvideos.com","xnxx.com","xhamster.com","redtube.com","youporn.com","brazzers.com"]);
+function hasBlockedXXXDestination(row:Record<string,unknown>):boolean {
+ if(!row||typeof row!=="object")return false;
+ const fields=["url","href","link","watchUrl","streamUrl","sourceUrl","providerUrl",
+  "buyUrl","readUrl","site","issues","subscription","posterUrl","coverUrl",
+  "imageUrl","artwork","thumbnail"];
+ const nested=[...(Array.isArray(row.links)?row.links:[]),
+  ...(Array.isArray(row.sources)?row.sources:[]),
+  ...(Array.isArray(row.providers)?row.providers:[])];
+ const values=fields.map(k=>row[k]).concat(nested.flatMap(
+  x=>x&&typeof x==="object"?fields.map(k=>(x as Record<string,unknown>)[k]):[x]));
+ return values.some(v=>{
+  if(typeof v!=="string"||!/^https?:\/\//i.test(v.trim()))return false;
+  try {
+   const hostname=new URL(v).hostname.toLowerCase();
+   return [...BLOCKED_XXX_HOSTS].some(h=>hostname===h||hostname.endsWith("."+h));
+  }catch(_){return false;}
+ });
+}
 
 function detectBookIntent(q: string): boolean {
   // E-books, narrated editions and explicitly selected magazines have their own matcher.
@@ -600,12 +622,14 @@ Deno.serve(async (req: Request) => {
             try {
               const parsed=JSON.parse(text);
               if (parsed && typeof parsed.answer==="string") {
-                if (EXPLICIT_XXX.test(parsed.answer)) {
+                if (EXPLICIT_XXX.test(parsed.answer) || [...parsed.answer.matchAll(/https?:\/\/[^\s)>\]]+/g)].some(m=>hasBlockedXXXDestination({url:m[0]}))) {
                   parsed.answer="MatchApp can help with mainstream, non-explicit entertainment and reading.";
                   parsed.results=[];
                 } else if (Array.isArray(parsed.results)) {
                   parsed.results=parsed.results.filter((r:Record<string,unknown>)=>
-                    !EXPLICIT_XXX.test([r.title,r.type,r.genre,r.synopsis].join(" ")));
+                    r && typeof r==="object" &&
+                    !EXPLICIT_XXX.test([r.title,r.type,r.genre,r.synopsis].join(" ")) &&
+                    (body?.kidsMode === true || !hasBlockedXXXDestination(r)));
                 }
                 data.candidates[0].content.parts[0].text=JSON.stringify(parsed);
               }

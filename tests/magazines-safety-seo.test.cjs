@@ -92,3 +92,28 @@ test('SEO describes magazines truthfully on existing indexed URLs only',()=>{
  assert.match(hub,/"@type":"CollectionPage"/);
  assert.match(hub,/"@type":"Service"/);
 });
+
+
+test('a harmless title cannot hide a blocked XXX destination in adult results or source cards',()=>{
+ const policy=modules().MatchAppContentSafety;
+ const forbidden=[
+  {title:'Film recommendation',watchUrl:'https://www.pornhub.com/view_video.php?test=1'},
+  {title:'Reading recommendation',links:[{label:'Read',url:'https://onlyfans.com/example'}]},
+  {title:'Cover artwork',imageUrl:'https://img.xnxx.com/cover.jpg'},
+  {title:'Store result',sources:[{href:'https://subdomain.xhamster.com/abc'}]},
+  {title:'Music recommendation',url:'https://www.redtube.com/123'}
+ ];
+ const accepted=[
+  {title:'Sex Education',watchUrl:'https://www.netflix.com/title/example'},
+  {title:'Health journalism',url:'https://sciencefocus.com/health'},
+  {title:'Documentary',watchUrl:'/watch/title'}
+ ];
+ assert.equal(Array.from(policy.safeEntries(forbidden)).length,0,'blocked sources must never be displayed');
+ assert.deepEqual(Array.from(policy.safeEntries(accepted)),accepted);
+ for(const term of ['xvideos','xnxx','xhamster','redtube','youporn','brazzers'])
+  assert.equal(policy.isPornographicRequest('Find '+term+' videos'),true,term);
+ assert.equal(policy.unsafeLink('https://pornhub.com.evil.example'),false,'no substring host false positives');
+ const server=read('supabase/functions/gemini-proxy/index.ts');
+ assert.match(server,/hasBlockedXXXDestination\(r\)/,'server must filter unsafe provider URLs before returning results');
+ assert.match(server,/hasBlockedXXXDestination\(\{url:m\[0\]\}\)/,'server must also reject unsafe URLs embedded in answer text');
+});
