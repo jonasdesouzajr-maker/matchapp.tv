@@ -1,0 +1,77 @@
+name: Refresh sports news twice daily
+
+on:
+  schedule:
+    - cron: '17 11,23 * * *' # 08:17 and 20:17 São Paulo; avoid hourly :37 news and 03:00 midnight
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: matchapp-content-publish
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - name: Discover trusted original sports publisher links
+        run: node tools/refresh-sports-discovery.js
+      - name: Merge into the existing entertainment pipeline and sitemap
+        run: |
+          node tools/refresh-news-rss.js
+          node tools/update-sitemap.js
+      - name: Validate news quality, editorial locks and release stability
+        run: |
+          node tools/check-content-rotation.js
+          npm test
+          npm run audit:site
+      - name: Publish only sports/news generator-owned content after checks
+        id: publish
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for attempt in 1 2 3; do
+            if [ "$attempt" -gt 1 ]; then
+              git fetch origin main
+              git reset --hard origin/main
+              git clean -fd
+              # No rebasing of stale generated news; regenerate against latest.
+              node tools/refresh-sports-discovery.js
+              node tools/refresh-news-rss.js
+              node tools/update-sitemap.js
+              node tools/check-content-rotation.js
+              npm test
+              npm run audit:site
+            fi
+            git add -A -- news tools/news-urls.json tools/news-sitemap-meta.json sitemap.xml sitemaps.xml
+            if git diff --staged --quiet; then
+              echo "changed=0" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            git commit -m "Refresh verified sports and entertainment news"
+            if git push origin HEAD:main; then
+              echo "changed=1" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+          done
+          echo "::error::Sports content failed to publish after 3 safe regenerations."
+          exit 1
+      - name: Deploy only successfully published news content
+        if: steps.publish.outputs.changed == '1'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run pages-deploy.yml --ref main
