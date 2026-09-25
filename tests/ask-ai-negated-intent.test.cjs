@@ -20,3 +20,15 @@ test('server and browser use exclusion-aware intent and refresh scripts',()=>{
  assert.match(read('discover.html'),/discover\.js\?v=20260925-intent1/);
  assert.match(read('discover.html'),/reading-ai\.js\?v=20260925-intent1/);
 });
+
+test('final Match guarantee does not turn a negated music mention into audio intent',()=>{
+ const guarantee=read('match-guarantee.js');
+ const fn=guarantee.match(/function guaranteeIntentQuestion\(q\) \{[\s\S]*?\n  \}/)?.[0];
+ assert(fn,'guaranteeIntentQuestion source');
+ const strip=vm.runInNewContext(fn+'\nguaranteeIntentQuestion');
+ const movie='Name the director and release year of Spirited Away. Do not recommend books or music.';
+ const audio=/\b(podcast|music|song|songs|album|albums|playlist|single|singles|audiobook|spotify|listen|radio show)\b/i;
+ assert.equal(audio.test(strip(movie)),false);
+ assert.equal(audio.test(strip('Find Spotify music for tonight')),true);
+ assert.match(guarantee,/audioIntent = .*test\(guaranteeIntentQuestion\(question\)\)/);
+});

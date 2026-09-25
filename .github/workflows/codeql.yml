@@ -5,6 +5,7 @@ on:
     paths:
       - 'app.js'
       - 'discover.js'
+      - 'match-guarantee.js'
       - 'catalog-media.js'
       - 'ebooks/**'
       - 'supabase/functions/**'

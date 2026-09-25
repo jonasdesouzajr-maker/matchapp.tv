@@ -85,6 +85,13 @@
     };
     window.triggerMatch.__guaranteed = true;
   }
+  // The guarantee wrapper must classify the same *positive* media intent as
+  // discover.js. A phrase such as "do not recommend books or music" is an
+  // exclusion, not a request for audio. Without this strip, the final safety
+  // wrapper could overwrite a correct movie answer with an audio fallback.
+  function guaranteeIntentQuestion(q) {
+    return String(q || '').replace(/\b(?:do\s+not|don't|dont|avoid)\s+(?:recommend|suggest|include|show|give|offer)\s+(?:(?:me|any)\s+)*(?:e-?books?|books?|audio\s?books?|music|films?|movies?|tv\s+shows?|series|magazines?|podcasts?)(?:\s+(?:or|and)\s+(?:e-?books?|books?|audio\s?books?|music|films?|movies?|tv\s+shows?|series|magazines?|podcasts?))*(?=\s*(?:[.!?]|$))/gi, ' ');
+  }
   function wrapAsk() {
     if (typeof window.askAIConversational !== 'function' || window.askAIConversational.__guarantee) return;
     const prev = window.askAIConversational;
@@ -97,7 +104,7 @@
       const policy = window.matchPolicy;
       const raw = Array.isArray(parsed.results) ? parsed.results : [];
       let results = raw.filter(item => item && item.title && (!policy || policy.fitsQuestion(item, question)));
-      const audioIntent = /\b(podcast|music|song|songs|album|albums|playlist|single|singles|audiobook|spotify|listen|radio show)\b/i.test(String(question || ''));
+      const audioIntent = /\b(podcast|music|song|songs|album|albums|playlist|single|singles|audiobook|spotify|listen|radio show)\b/i.test(guaranteeIntentQuestion(question));
       if (!results.length && policy && !audioIntent) {
         results = catalog()
           .filter(e => e && e.title && policy.fitsQuestion(e, question) && window.tasteAllowsEntry(e))
