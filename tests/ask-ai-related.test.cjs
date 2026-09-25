@@ -292,7 +292,7 @@ test('book Ask AI suggestions open verified matcher rather than guessed streamin
  assert.match(js,/return '\/#ebook-matcher-root'/);
  assert.match(js,/discover-book-matcher-link/);
  assert.match(js,/if \(isAudio \|\| isBook \|\| !window\.MatchAppCatalogMedia\?\.lookup\) return unverified\(\)/);
- assert(html.includes('/discover.js?v=20260925-mag1'));
+ assert(html.includes('/discover.js?v=20260925-ai-reliability3'));
  assert(html.includes('.discover-book-matcher-link'));
  assert.match(proxy,/function detectBookIntent/);
  assert.match(proxy,/const visualIntent/);
