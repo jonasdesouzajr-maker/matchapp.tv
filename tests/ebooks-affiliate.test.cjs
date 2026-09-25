@@ -44,7 +44,7 @@ test('adult-only storefront surfaces load the centralized affiliate script befor
  assert(home.indexOf('/ebooks/affiliate-links.js')<home.indexOf('/ebooks/ebook-matcher.js'));
  assert(hub.includes('/ebooks/affiliate-links.js'));
  assert(match.includes('MatchAppEbookAffiliate'));
- assert(match.includes('rel=\"\'+(tagged?\'sponsored '));
+ assert(match.includes("(tagged?'sponsored ':'')"));
  assert.match(hub,/Como participante do Programa de Associados da Amazon/);
  assert.doesNotMatch(kids,/affiliate-links\.js/);
 });
