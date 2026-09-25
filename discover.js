@@ -48,7 +48,7 @@ function detectAudioIntent(q) {
 function detectBookIntent(q) {
     // Books and narrated book editions have an independent verified matcher.
     // Never treat one as a Spotify music track or TMDB film request.
-    return /\b(e-?books?|audio\s?books?|novels?|reading|kindle|librivox|livros?|audiolivros?|libros?|audiolibros?|magazines?|revistas?|雑誌)\b/i.test(q);
+    return /\b(e-?books?|audio\s?books?|novels?|reading|kindle|librivox|livros?|audiolivros?|libros?|audiolibros?|magazines?|revistas?)\b/i.test(q) || /雑誌|オーディオブック/u.test(q);
 }
 
 /* ---------- AI conversational answer ---------- */
