@@ -50,5 +50,9 @@ test('sports reuse existing homepage click flow, real source links, semantic met
  assert.match(news,/sports dates indicate when a story was indexed for discovery/i);
  assert.doesNotMatch(sports,/feeds\.bbci|sports\/rss\.xml|rss\.cnn/);
  assert.match(sports,/image:null/);
+ assert.match(sports,/fetchGdelt/);
+ assert.match(sports,/execFileSync\('curl'/);
+ assert.match(sports,/--fail/);
+ assert.match(read('.github/workflows/sports-refresh.yml'),/NODE_OPTIONS: --dns-result-order=ipv4first/);
  assert.match(read('tools/update-sitemap.js'),/newsUrlsFromDisk/);
 });
