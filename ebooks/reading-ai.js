@@ -26,7 +26,7 @@ function market(){
 function mediaIntentQuestion(q) {
   // Only discard explicit *exclusions* of media at the end of a clause.
   // A negative mention is not a positive format request.
-  return String(q||'').replace(/\b(?:do\s+not|don't|dont|avoid)\s+(?:recommend|suggest|include|show|give|offer)\s+(?:(?:me|any)\s+)*(?:e-?books?|audio\s?books?|music|films?|movies?|tv\s+shows?|series|magazines?|podcasts?)(?:\s+(?:or|and)\s+(?:e-?books?|audio\s?books?|music|films?|movies?|tv\s+shows?|series|magazines?|podcasts?))*(?=\s*(?:[.!?]|$))/gi,' ');
+  return String(q||'').replace(/\b(?:do\s+not|don't|dont|avoid)\s+(?:recommend|suggest|include|show|give|offer)\s+(?:(?:me|any)\s+)*(?:e-?books?|books?|audio\s?books?|music|films?|movies?|tv\s+shows?|series|magazines?|podcasts?)(?:\s+(?:or|and)\s+(?:e-?books?|books?|audio\s?books?|music|films?|movies?|tv\s+shows?|series|magazines?|podcasts?))*(?=\s*(?:[.!?]|$))/gi,' ');
 }
 function intent(question){
  const q=mediaIntentQuestion(question);

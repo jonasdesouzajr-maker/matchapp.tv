@@ -182,12 +182,12 @@ function hasBlockedXXXDestination(row:Record<string,unknown>):boolean {
 function mediaIntentQuestion(q: string): string {
   // Only discard explicit *exclusions* of media at the end of a clause.
   // A negative mention is not a positive format request.
-  return String(q||'').replace(/\b(?:do\s+not|don't|dont|avoid)\s+(?:recommend|suggest|include|show|give|offer)\s+(?:(?:me|any)\s+)*(?:e-?books?|audio\s?books?|music|films?|movies?|tv\s+shows?|series|magazines?|podcasts?)(?:\s+(?:or|and)\s+(?:e-?books?|audio\s?books?|music|films?|movies?|tv\s+shows?|series|magazines?|podcasts?))*(?=\s*(?:[.!?]|$))/gi,' ');
+  return String(q||'').replace(/\b(?:do\s+not|don't|dont|avoid)\s+(?:recommend|suggest|include|show|give|offer)\s+(?:(?:me|any)\s+)*(?:e-?books?|books?|audio\s?books?|music|films?|movies?|tv\s+shows?|series|magazines?|podcasts?)(?:\s+(?:or|and)\s+(?:e-?books?|books?|audio\s?books?|music|films?|movies?|tv\s+shows?|series|magazines?|podcasts?))*(?=\s*(?:[.!?]|$))/gi,' ');
 }
 function detectBookIntent(q: string): boolean {
   q=mediaIntentQuestion(q);
   // E-books, narrated editions and explicitly selected magazines have their own matcher.
-  return /\b(e-?books?|audio\s?books?|novels?|reading|kindle|librivox|livros?|audiolivros?|libros?|audiolibros?|magazines?|revistas?)\b/i.test(q) || /雑誌|オーディオブック/u.test(q);
+  return /\b(e-?books?|books?|audio\s?books?|novels?|reading|kindle|librivox|livros?|audiolivros?|libros?|audiolibros?|magazines?|revistas?)\b/i.test(q) || /雑誌|オーディオブック/u.test(q);
 }
 
 function detectAudioIntent(q: string): boolean {

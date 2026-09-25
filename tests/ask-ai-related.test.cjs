@@ -271,7 +271,7 @@ test('unverified visual recommendations never use guessed/stale platform deep li
 
 test('Ask AI book/audiobook questions never fall back to unrelated movie or music suggestions',()=>{
  const vm=require('node:vm'),js=read('discover.js');
- const start=js.indexOf('function detectAudioIntent'),end=js.indexOf('/* ---------- AI conversational answer',start);
+ const start=js.indexOf('function mediaIntentQuestion'),end=js.indexOf('/* ---------- AI conversational answer',start);
  assert(start>=0&&end>start);
  const ctx=vm.createContext({});
  vm.runInContext(js.slice(start,end),ctx);
@@ -292,7 +292,7 @@ test('book Ask AI suggestions open verified matcher rather than guessed streamin
  assert.match(js,/return '\/#ebook-matcher-root'/);
  assert.match(js,/discover-book-matcher-link/);
  assert.match(js,/if \(isAudio \|\| isBook \|\| !window\.MatchAppCatalogMedia\?\.lookup\) return unverified\(\)/);
- assert(html.includes('/discover.js?v=20260925-ai-reliability3'));
+ assert(html.includes('/discover.js?v=20260925-intent1'));
  assert(html.includes('.discover-book-matcher-link'));
  assert.match(proxy,/function detectBookIntent/);
  assert.match(proxy,/const visualIntent/);

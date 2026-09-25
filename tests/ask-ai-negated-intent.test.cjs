@@ -9,6 +9,7 @@ test('negative mentions never invert an explicitly requested film into books/mus
  assert(client.book('I want an audiobook edition of Pride and Prejudice'));
  assert(client.audio('Find Spotify music for tonight'));
  assert(client.book('Recommend magazines for fashion and music'));
+ assert(client.book('Recommend some books about astronomy'));
  assert.equal(client.strip('Find me an audiobook; please do not recommend movies or music').includes('audiobook'),true);
 });
 test('server and browser use exclusion-aware intent and refresh scripts',()=>{
