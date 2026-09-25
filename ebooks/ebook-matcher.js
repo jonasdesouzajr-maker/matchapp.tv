@@ -9,7 +9,7 @@ const CAT=()=>Array.isArray(window.MATCHAPP_EBOOK_CATALOG)?window.MATCHAPP_EBOOK
 const K={saved:'match_ebook_saved_v1',disliked:'match_ebook_disliked_v1',seen:'match_ebook_seen_v1',prefs:'match_ebook_criteria_v1'};
 const FIELDS={
  mood:[
-  ['any','✨','Any mood'],['cozy','☕','Cozy'],['funny','😄','Funny'],['romantic','💘','Romantic'],
+  ['any','✨','Any mood'],['cozy','☕','Cozy'],['funny','😄','Funny'],['witty','💬','Witty'],['romantic','💘','Romantic'],
   ['hopeful','🌤️','Hopeful'],['emotional','💗','Emotional'],['mysterious','🕯️','Mysterious'],
   ['dark','🌑','Dark'],['scary','🦇','Scary'],['intense','⚡','Intense'],['adventurous','🧭','Adventurous'],
   ['cerebral','🧠','Cerebral'],['mind-bending','🌀','Mind-bending'],['reflective','🌙','Reflective'],
