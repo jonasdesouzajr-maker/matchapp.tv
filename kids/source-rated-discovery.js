@@ -122,7 +122,9 @@
      setStatus(say('Checking this title’s original classification…','Verificando a classificação original…','Comprobando la clasificación original…'));
      let hit=null;
      try{hit=await window.tmdbLookup?.(query,{kind:wanted||''});}catch(_){}
-     if(hit)candidates=[hit];
+     if(hit&&agePolicy.exactRequestedTitle(query,hit))candidates=[hit];
+     // A fuzzy nearest-neighbor is not a verified match for a typed exact
+     // title. Fail closed, without presenting an unrelated family work.
    }else{
      setStatus(say('Checking original ratings and artwork before showing titles…',
       'Verificando classificação e capas reais antes de exibir títulos…',

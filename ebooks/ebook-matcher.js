@@ -47,7 +47,9 @@ function savePrefs(v){try{localStorage.setItem(K.prefs,JSON.stringify(v))}catch(
 function uniq(v){return [...new Set(v.filter(Boolean))]}
 function idset(key){return new Set(read(key))}
 function market(){
- const saved=String(localStorage.getItem('match_user_country')||'').trim().toLowerCase();
+ let saved='';
+ try{saved=String(localStorage.getItem('match_user_country')||'').trim().toLowerCase()}catch(_){}
+ // Incognito/storage-denied mobile WebViews must not crash the matcher.
  const nav=String(navigator.language||'').toLowerCase();
  if(saved==='brazil'||saved==='brasil'||saved==='br'||nav.endsWith('-br'))return'BR';
  if(saved==='united kingdom'||saved==='uk'||saved==='gb'||nav.endsWith('-gb'))return'GB';
@@ -149,16 +151,17 @@ async function hydrateCover(book,img,fall){
  if(!img)return;
  const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),3200);
  try{
-  const u='https://openlibrary.org/search.json?title='+encodeURIComponent(book.title)+'&author='+encodeURIComponent(book.author)+'&limit=1&fields=title,author_name,cover_i';
+  const u='https://openlibrary.org/search.json?title='+encodeURIComponent(book.title)+'&author='+encodeURIComponent(book.author)+'&limit=8&fields=title,author_name,cover_i,first_publish_year';
   const r=await fetch(u,{signal:controller.signal,headers:{Accept:'application/json'}});
   if(!r.ok)throw Error('cover');
-  const d=await r.json(),doc=d&&d.docs&&d.docs[0];
-  if(!doc||!doc.cover_i)throw Error('cover');
-  const returned=String(doc.title||'').toLowerCase(), first=book.title.toLowerCase().split(/\s+/).filter(x=>x.length>3)[0];
-  if(first&&!returned.includes(first))throw Error('cover mismatch');
+  const d=await r.json();
+  const approvedId=window.MatchAppBookCoverIdentity?.verifiedCoverId(book,d?.docs);
+  // Never accept the first Open Library search hit based on one shared word:
+  // multiple books and unrelated editions frequently share generic titles.
+  if(!Number.isSafeInteger(approvedId)||approvedId<=0)throw Error('identity-unverified');
   img.onload=()=>{img.hidden=false;if(fall)fall.hidden=true};
   img.onerror=()=>{img.hidden=true;if(fall)fall.hidden=false};
-  img.src='https://covers.openlibrary.org/b/id/'+encodeURIComponent(doc.cover_i)+'-L.jpg';
+  img.src='https://covers.openlibrary.org/b/id/'+encodeURIComponent(approvedId)+'-L.jpg';
  }catch(_){img.hidden=true;if(fall)fall.hidden=false}finally{clearTimeout(timer)}
 }
 async function cloudSync(){
