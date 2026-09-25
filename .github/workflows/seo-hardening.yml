@@ -6,10 +6,8 @@ on:
     paths:
       - 'app.js'
       - 'tools/seo-hardening.js'
-      - 'tools/update-sitemap.js'
       - 'tools/build-seo-pages.js'
       - 'tests/performance-smoothness.test.cjs'
-      - '.github/workflows/seo-hardening.yml'
   workflow_dispatch:
 
 permissions:
@@ -73,3 +71,9 @@ jobs:
             fi
           done
           exit 1
+
+      - name: Validate and deploy bot-published main commit
+        if: steps.publish.outputs.changed == '1'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run pages-deploy.yml --ref main
