@@ -27,13 +27,13 @@ function createHarness({metadata=[],available=[],exactDetails=null}={}){
   const document={readyState:'loading',addEventListener(){}};
   const sandbox={window:win,document,Image:FakeImage,setTimeout,clearTimeout,console};
   vm.runInNewContext(read('catalog-media.js'),sandbox,{filename:'catalog-media.js'});
-  function poster({id='',title='',src='',tmdbId='',kind='',year=''}={}){
+  function poster({id='',title='',src='',tmdbId='',kind='',year='',rail=id!=='res-poster-img'&&id!=='kids-cover'}={}){
     let value=src;
     const img={id,isConnected:true,complete:false,naturalWidth:0,
       dataset:{title,tmdbId:String(tmdbId||''),tmdbKind:kind,tmdbYear:String(year||'')},
       get src(){return value},set src(u){value=u;this.complete=u.startsWith('data:');this.naturalWidth=this.complete?600:0},
       getAttribute(name){if(name==='src')return value;return null},
-      closest(selector){return selector==='#marquee-track'&&id!=='res-poster-img'?{}:null;}
+      closest(selector){return selector==='#marquee-track'&&rail?{}:null;}
     };
     return img;
   }
@@ -126,6 +126,19 @@ test('When no official artwork is reachable, show local title art instead of a b
  assert.equal(await h.api.recoverAdultPoster(img,'Unreleased Title',{sourceUrl:missing,rail:true}),false);
  assert.ok(img.src.startsWith('data:image/svg+xml'));
  assert.ok(!h.probed.includes('https://image.tmdb.org/t/p/w780/UNRELATED_IMAGE.jpg'));
+});
+
+test('Audio matches keep the verified original source artwork and never borrow a same-named movie poster',async()=>{
+ const audio='https://static.tvmaze.com/uploads/images/original_untouched/123/verified.jpg';
+ const wrong='https://image.tmdb.org/t/p/w780/same-name-wrong-movie.jpg';
+ const h=createHarness({metadata:[{title:'Shared Title',media_kind:'movie',tmdb_id:999,poster_large_url:wrong}],
+   available:[audio,wrong]});
+ h.window.globalMatchTitle='Shared Title';
+ const img=h.poster({id:'res-poster-img',title:'Shared Title',src:'data:image/svg+xml,loading'});
+ assert.equal(await h.api.recoverAdultPoster(img,'Shared Title',
+   {sourceOnly:true,sourceUrl:audio,trustedMatchSource:true}),true);
+ assert.equal(img.src,audio);
+ assert.ok(!h.probed.includes(wrong),'an audio match must never pick video artwork by name');
 });
 
 test('Poster recovery never touches Kids Mode cards or any other unrelated image',async()=>{
