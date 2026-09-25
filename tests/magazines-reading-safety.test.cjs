@@ -45,6 +45,11 @@ test('magazine-only selection respects topics, exclusions, and source priority w
  assert.match(match,/if\(magazine\)\{renderMagazineResult\(root,book,p\);return;\}/);
  assert.match(match,/const allowed=await window\.checkDailyLimit\(\)/);
  assert.match(match,/data-ebook-save/);
+ assert.match(match,/function consumeReadingDeepLink\(\)/);
+ assert.match(match,/url\.searchParams\.get\('reading'\)/);
+ assert.match(match,/p\.format=format;savePrefs\(p\)/);
+ assert.match(read('discover.js'),/route\.href = '\/\?reading='/);
+
 });
 test('Amazon BR is the first magazine search on approved web, other stores and unapproved Android remain untagged',()=>{
  const web=setup(),mag=web.MatchAppMagazines.items[0];
