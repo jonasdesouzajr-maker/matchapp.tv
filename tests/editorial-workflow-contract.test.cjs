@@ -8,7 +8,7 @@ test('GrokBot and other agents inherit permanent owner-only workflow and data co
  const agents=read('AGENTS.md'),policy=read('docs/EDITORIAL_AUTOMATION_LOCK.md'),owners=read('.github/CODEOWNERS');
  assert.match(agents,/EDITORIAL AUTOMATION LOCK/);
  assert.match(policy,/GrokBot/);
- assert.match(policy,/owner.*branch (?:ruleset|protection)/i);
+ assert.ok(policy.includes('branch ruleset')&&policy.includes('required checks'),'Owner-enforced branch ruleset requirement must be documented');
  assert.match(owners,/\/\.github\/workflows\/\* @jonasdesouzajr-maker/);
  for(const item of ['/tools/check-content-rotation.js','/tests/editorial-workflow-contract.test.cjs','/docs/EDITORIAL_AUTOMATION_LOCK.md'])assert.ok(owners.includes(item+' @jonasdesouzajr-maker'));
 });
@@ -48,6 +48,7 @@ test('only successful production Pages deployment initiates immediate IndexNow',
  assert.match(deploy,/actions: write/);
  assert.match(deploy,/npm run audit:site/);
  assert.match(deploy,/node tools\/check-content-rotation\.js/);
+ assert.match(flow('site-validation'),/node tools\/check-content-rotation\.js/);
  assert.doesNotMatch(deploy,/id!=='world-alzheimers-month-2026'/,'Deployment may never pin an expiring campaign');
  assert.ok(deploy.indexOf('uses: actions/deploy-pages@v4')<deploy.indexOf('gh workflow run indexnow.yml --ref main'));
  assert.doesNotMatch(now,/  push:/,'Raw commits may not ping still-unpublished pages');
