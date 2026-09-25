@@ -58,7 +58,7 @@ test('core CTA, quota loading, trending and separate AI experiences remain intac
 test('both Android Studio apps carry stabilized release marker without changing route separation',()=>{
   const mainGradle=read('android-studio/app/build.gradle.kts');
   const kidsGradle=read('android-studio/kidsapp/build.gradle.kts');
-  const main=read('android-studio/app/src/main/java/tv/matchapp/app/MainActivity.kt');
+  const main=read('android-studio/app/src/main/java/com/jonas/papercup/MainActivity.kt');
   const kids=read('android-studio/kidsapp/src/main/java/tv/matchapp/kids/MainActivity.kt');
   assert.match(mainGradle,/versionCode = \d+/);
   assert.match(mainGradle,/versionName = "\d+\.\d+\.\d+"/);

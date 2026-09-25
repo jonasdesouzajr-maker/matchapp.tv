@@ -76,7 +76,7 @@ test('match CTA and neutral quota loading state are localized without merging AI
 test('both Android Studio modules point to current live surfaces for AAB build',()=>{
   const mainGradle=read('android-studio/app/build.gradle.kts');
   const kidsGradle=read('android-studio/kidsapp/build.gradle.kts');
-  const main=read('android-studio/app/src/main/java/tv/matchapp/app/MainActivity.kt');
+  const main=read('android-studio/app/src/main/java/com/jonas/papercup/MainActivity.kt');
   const kids=read('android-studio/kidsapp/src/main/java/tv/matchapp/kids/MainActivity.kt');
 
   for(const gradle of [mainGradle,kidsGradle]){
