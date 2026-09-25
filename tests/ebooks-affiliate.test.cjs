@@ -57,6 +57,13 @@ test('adult-only storefront surfaces load the centralized affiliate script befor
  assert.match(hub,/Como associado da Amazon/);
  assert.doesNotMatch(kids,/affiliate-links\.js/);
 });
+test('affiliate marketing is transparently documented in privacy, cookies and terms without touching protected AdSense',()=>{
+ const en=read('privacy.html'),pt=read('privacidade.html'),terms=read('terms.html'),cookie=read('cookies.html');
+ assert.match(en,/Amazon Brazil affiliate links/);
+ assert.match(pt,/links de afiliado identificados da Amazon Brasil/);
+ assert.match(terms,/qualifying purchases/);
+ assert.match(cookie,/Store referral measurement/);
+});
 test('Google Play links remain ordinary until an approved Partnerize affiliate link exists',()=>{
  const match=read('ebooks/ebook-matcher.js'),hub=read('ebooks/index.html');
  assert(match.includes('https://play.google.com/store/search?q='));
