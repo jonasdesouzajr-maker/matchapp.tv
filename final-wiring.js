@@ -89,7 +89,7 @@
     if(appPages){js('/production-hardening.js');js('/shown-history.js');js('/match-speed.js');js('/catalog-media.js');}
     if(path==='/'||path==='/index.html'){
       const loadHomeEditorial=()=>{
-        js('/weekly-pick.js');js('/latest-news.js?v=20260923-speed3');js('/live-news-loader.js');js('/latest-news-image-guard.js');
+        js('/weekly-pick.js');js('/latest-news.js?v=20260925-sports1');js('/live-news-loader.js');js('/latest-news-image-guard.js');
       };
       const sentinel=document.getElementById('premiere-disclosure')||document.getElementById('swifties-spotify')||document.getElementById('global-events');
       if(sentinel&&'IntersectionObserver' in window){
