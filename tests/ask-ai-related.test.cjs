@@ -287,11 +287,11 @@ test('Ask AI book/audiobook questions never fall back to unrelated movie or musi
 });
 test('book Ask AI suggestions open verified matcher rather than guessed streaming/buy URLs',()=>{
  const js=read('discover.js'),html=read('discover.html'),proxy=read('supabase/functions/gemini-proxy/index.ts');
- assert.match(js,/if \(\/\\b\(book\|ebook\|e-book\|audiobook\|novel\)\\b\/i\.test/);
+ assert.match(js,/if \(\/\\b\(book\|ebook\|e-book\|audiobook\|novel\|magazine\)\\b\/i\.test/);
  assert.match(js,/return '\/#ebook-matcher-root'/);
  assert.match(js,/discover-book-matcher-link/);
  assert.match(js,/if \(isAudio \|\| isBook \|\| !window\.MatchAppCatalogMedia\?\.lookup\) return unverified\(\)/);
- assert(html.includes('/discover.js?v=20260925-books1'));
+ assert(html.includes('/discover.js?v=20260925-mag1'));
  assert(html.includes('.discover-book-matcher-link'));
  assert.match(proxy,/function detectBookIntent/);
  assert.match(proxy,/const visualIntent/);
