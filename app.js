@@ -2935,6 +2935,7 @@ window.unblockCategory = function(cat) {
 /** True when this catalog entry falls into anything the user has blocked. */
 function isBlockedEntry(entry) {
     if (!entry) return false;
+    if (window.MatchAppContentSafety?.isExplicit?.(entry)) return true; // site-wide no-XXX rule
     const blocked = getBlockedCategories();
     if (!blocked.length) return false;
     const tags = []
@@ -3512,6 +3513,7 @@ function currentPreferenceExclusions(){
     return {countries:new Set(countries.map(x=>String(x).toUpperCase())),genres:new Set(genres.map(x=>String(x).toLowerCase()))};
 }
 function entryPassesPreferenceExclusions(entry){
+    if(window.MatchAppContentSafety?.isExplicit?.(entry))return false;
     const x=currentPreferenceExclusions();
     const code=String(entry?.countryCode||'').toUpperCase();
     if(code&&x.countries.has(code))return false;
@@ -4291,6 +4293,14 @@ window.saveCurrentNote = async function () {
 
 async function renderResult(selected, isSpecificSearch) {
     await window.matchPolicy?.ready();
+    if(window.MatchAppContentSafety?.isExplicit?.(selected)){
+        document.body.classList.remove('match-searching');
+        const load=document.getElementById('loading-box');
+        if(load)load.style.display='none';
+        window.showToast?.('MatchApp does not recommend pornographic content. Choose another match.',true);
+        if(typeof window.goToQuestionnaire==='function')window.goToQuestionnaire();
+        return;
+    }
     const loadBox = document.getElementById('loading-box');
     const resultBox = document.getElementById('result-box');
     const form = document.getElementById('questionnaire-box');
