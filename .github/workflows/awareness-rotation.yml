@@ -1,7 +1,7 @@
 name: Rotate awareness spotlight
 on:
   schedule:
-    - cron: '5 3 * * *'   # 00:05 America/Sao_Paulo while UTC-3
+    - cron: '45 3 * * *'  # 00:45 São Paulo recovery/official source recheck; midnight performs first pass
     - cron: '5 12 * * *'  # recovery pass if GitHub cron was delayed
   push:
     branches: [main]
@@ -9,14 +9,14 @@ on:
       - 'awareness/calendar.json'
       - 'tools/awareness-bot.mjs'
       - 'tools/archive-international-day.mjs'
-      - 'data/international-day.json'
   workflow_dispatch:
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
-  group: awareness-bot
+  group: matchapp-content-publish
   cancel-in-progress: false
 
 jobs:
@@ -36,7 +36,10 @@ jobs:
           node tools/awareness-bot.mjs
           node tools/update-sitemap.js
           node --test tests/awareness-campaign.test.cjs
+      - name: Validate authoritative campaign output
+        run: node tools/check-content-rotation.js
       - name: Publish awareness state and SEO changes
+        id: publish
         shell: bash
         run: |
           set -euo pipefail
@@ -51,13 +54,15 @@ jobs:
               node tools/awareness-bot.mjs
               node tools/update-sitemap.js
               node --test tests/awareness-campaign.test.cjs
+              node tools/check-content-rotation.js
             fi
-            git add awareness/current.json awareness/*/index.html tools/awareness-urls.json data/international-day-history.json sitemap.xml sitemaps.xml
+            git add index.html awareness/current.json awareness/*/index.html tools/awareness-urls.json data/international-day-history.json sitemap.xml sitemaps.xml
             if git diff --staged --quiet; then
               echo "Awareness state already current."
+              echo 'changed=0' >> "$GITHUB_OUTPUT"
               exit 0
             fi
             git commit -m "Awareness bot: rotate active campaign"
-            if git push origin HEAD:main; then exit 0; fi
+            if git push origin HEAD:main; then echo 'changed=1' >> "$GITHUB_OUTPUT"; exit 0; fi
           done
           exit 1

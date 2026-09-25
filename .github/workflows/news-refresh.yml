@@ -2,7 +2,7 @@ name: Refresh entertainment news
 
 on:
   schedule:
-    - cron: '11 * * * *'
+    - cron: '37 * * * *' # After the 00:00 São Paulo full rotation; keep hourly news independent
   workflow_dispatch:
   push:
     branches: [main]
@@ -17,7 +17,7 @@ permissions:
   actions: write
 
 concurrency:
-  group: content-bot
+  group: matchapp-content-publish
   cancel-in-progress: false
 
 jobs:
@@ -64,8 +64,3 @@ jobs:
             fi
           done
           exit 1
-      - name: Deploy refreshed content
-        if: steps.publish.outputs.changed == '1'
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: gh workflow run pages-deploy.yml --ref main

@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  actions: read
+  actions: write
   contents: read
   pages: write
   id-token: write
@@ -67,14 +67,8 @@ jobs:
           node --check profile.js
           npm test
           npm run audit:site
-      - name: Materialize active awareness campaign
-        shell: bash
-        run: |
-          set -euo pipefail
-          node tools/awareness-bot.mjs
-          node -e "const c=require('./awareness/current.json').campaign;if(!c||c.id!=='world-alzheimers-month-2026')process.exit(1)"
-          grep -Fq 'MatchApp supports World Alzheimer’s Month' index.html
-          grep -Fq 'data-awareness-end="2026-10-01"' index.html
+      - name: Verify committed news, events, awareness and ten-title editorial contracts
+        run: node tools/check-content-rotation.js
       - name: Generate bilingual social preview
         run: |
           sudo apt-get update -qq
@@ -94,3 +88,9 @@ jobs:
         uses: actions/deploy-pages@v4
         with:
           artifact_name: github-pages-${{ github.run_attempt }}
+
+      - name: Submit IndexNow only after confirmed Pages deployment
+        if: success()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run indexnow.yml --ref main
