@@ -7,6 +7,7 @@ on:
     branches: [main]
     paths:
       - '.github/workflows/sports-refresh.yml'
+      - 'tools/refresh-sports-discovery.js'
   schedule:
     - cron: '17 11,23 * * *' # 08:17 and 20:17 São Paulo; avoid hourly :37 news and 03:00 midnight
   workflow_dispatch:
@@ -33,6 +34,7 @@ jobs:
           cache: npm
       - run: npm ci --ignore-scripts
       - name: Discover trusted original sports publisher links
+        timeout-minutes: 4
         run: node tools/refresh-sports-discovery.js
       - name: Merge into the existing entertainment pipeline and sitemap
         run: |
