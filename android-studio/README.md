@@ -35,9 +35,9 @@ This folder is one self-contained Android Studio project with **two separate ins
 
 Both Android modules remain WebView shells over live production:
 
-- Standard app (`:app`) release version: **1.1.27**
-- Standard app version code: **29**
-- Standard app launch: `https://matchapp.tv/?utm_source=android_app&appBuild=29`
+- Standard app (`:app`) release version: **1.1.28**
+- Standard app version code: **30**
+- Standard app launch: `https://matchapp.tv/?utm_source=android_app&appBuild=30`
 - Kids app (`:kidsapp`) release version: **1.1.25** / version code **27**
 - Kids app launch: `https://matchapp.tv/kids/?utm_source=android_kids_app&appBuild=27`
 - Both apps cold-load production on launch and manual refresh to avoid stale WebView content, then resume normal caching after the page renders.
