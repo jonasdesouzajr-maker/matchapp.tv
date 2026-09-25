@@ -4477,6 +4477,12 @@ async function renderResult(selected, isSpecificSearch) {
     });
     posterEl.onerror = null;
     posterEl.src = localCover;
+    // A generated result cover must still try the exact title's catalog image;
+    // otherwise an unavailable first source becomes permanent for this match.
+    if ((!realCover || /^data:image\/svg\+xml/.test(realCover)) &&
+        window.MatchAppCatalogMedia?.recoverAdultPoster) {
+        window.MatchAppCatalogMedia.recoverAdultPoster(posterEl, selected.title);
+    }
     if (realCover && realCover !== localCover &&
         window.MatchAppCatalogMedia?.recoverAdultPoster &&
         /^https:\/\/(?:image\.tmdb\.org|is\d+-ssl\.mzstatic\.com)\//i.test(realCover)) {
@@ -4490,7 +4496,11 @@ async function renderResult(selected, isSpecificSearch) {
                 window.globalMatchPoster = realCover;
             }
         };
-        probe.onerror = function() { /* keep the already-painted local cover */ };
+        probe.onerror = function() {
+            // The first provider may be unavailable. Keep the local poster
+            // visible while recovering only this exact title's saved original.
+            window.MatchAppCatalogMedia?.recoverAdultPoster?.(posterEl, selected.title);
+        };
         probe.src = realCover;
     }
 
