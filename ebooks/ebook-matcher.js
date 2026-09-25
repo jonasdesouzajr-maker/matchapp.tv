@@ -408,7 +408,20 @@ function markup(){
  '<details class="ebook-saved"><summary>★ '+esc(tr('savedBooks'))+' <span data-ebook-saved-count>0</span></summary><div data-ebook-saved-list></div></details>'+
  '<p class="ebook-rights">'+esc(tr('rights'))+'</p></div></details>';
 }
+// Ask AI deep links retain the selected reading medium rather than defaulting
+// magazine and audiobook users to the regular e-book-only selector.
+function consumeReadingDeepLink(){
+ try{
+  const url=new URL(location.href),format=url.searchParams.get('reading');
+  if(!['ebook','audiobook','magazine'].includes(format))return'';
+  const p=prefs();p.format=format;savePrefs(p);
+  url.searchParams.delete('reading');
+  history.replaceState(history.state,'',url.pathname+url.search+url.hash);
+  return format;
+ }catch(_){return''}
+}
 async function mount(){
+ const requestedFormat=consumeReadingDeepLink();
  let root=document.getElementById('ebook-matcher-root');
  if(!root){
   root=document.createElement('section');root.id='ebook-matcher-root';root.className='ebook-matcher-root';
@@ -417,6 +430,7 @@ async function mount(){
  }
  if(root.dataset.ebookMounted==='1')return;
  root.dataset.ebookMounted='1';root.innerHTML=markup();bind(root);renderTop(root);await cloudHydrate();renderSaved(root);
+ if(requestedFormat&&location.hash==='#ebook-matcher-root')requestAnimationFrame(()=>root.scrollIntoView({behavior:'auto',block:'start'}));
  document.addEventListener('matchapp:langchange',()=>{const open=root.querySelector('.ebook-fold')?.open;root.innerHTML=markup();/* root delegated click handler already installed: re-binding duplicated network lookups and Match credits after language changes. */renderTop(root);renderSaved(root);const fold=root.querySelector('.ebook-fold');if(fold)fold.open=open!==false;});
 }
 window.MatchAppEbooks={match:()=>{const r=document.getElementById('ebook-matcher-root');return r?doMatch(r):null},saved:()=>read(K.saved).slice(),disliked:()=>read(K.disliked).slice()};
