@@ -349,13 +349,27 @@
     const sources=[registry,state.preferred,meta.poster_large_url,meta.poster_url,meta.poster_original_url];
     return [...new Set(sources.flatMap(posterVariants))];
   }
+  const ADULT_POSTER_PROBES=new Map();
   function posterImageLoads(url){
-    return new Promise(resolve=>{
+    if(ADULT_POSTER_PROBES.has(url))return ADULT_POSTER_PROBES.get(url);
+    const job=new Promise(resolve=>{
       const probe=new Image();
-      probe.onload=()=>resolve(true);
-      probe.onerror=()=>resolve(false);
+      let complete=false;
+      const settle=ok=>{
+        if(complete)return;
+        complete=true;clearTimeout(timeout);
+        resolve(ok);
+      };
+      // A blocked image host does not fire onerror on every browser.
+      // Never leave one of the 20 Top Titles cards stuck indefinitely.
+      const timeout=setTimeout(()=>settle(false),3500);
+      probe.onload=()=>settle(true);
+      probe.onerror=()=>settle(false);
       probe.src=url;
     });
+    ADULT_POSTER_PROBES.set(url,job);
+    job.then(ok=>{if(!ok&&ADULT_POSTER_PROBES.get(url)===job)ADULT_POSTER_PROBES.delete(url);});
+    return job;
   }
   async function repairAdultPoster(img,state){
     if(state.repairing)return;
@@ -369,7 +383,10 @@
         if(img.__matchappAdultPoster!==identity||!img.isConnected)return true;
         img.dataset.matchappFallbackStage='verified';
         img.src=url;
-        if(img.id==='res-poster-img'&&window.globalMatchTitle===title)window.globalMatchPoster=url;
+        if(img.id==='res-poster-img'&&window.globalMatchTitle===title){
+          if(typeof window.setLoadedMatchPoster==='function')window.setLoadedMatchPoster(url,title);
+          else window.globalMatchPoster=url;
+        }
         return true;
       }
       return false;
@@ -379,12 +396,35 @@
       // Do not delay every matching result or Top Titles tile with SQL calls.
       if(await attempt()||img.__matchappAdultPoster!==identity)return;
       // Only if every known variant failed, query an exact same-title DB row.
-      // Never perform a fuzzy search that might return another film's poster.
+      // An existing numeric ID must also agree: same-named remakes exist.
       if(!state.meta){
-        const found=await lookup(title);
+        const found=await lookup(title,{
+          year:state.year||'',kind:state.kind||''
+        });
         if(img.__matchappAdultPoster!==identity)return;
-        if(found&&normalise(found.title)===normalise(title))state.meta=found;
+        const nameMatches=found&&normalise(found.title)===normalise(title);
+        const idMatches=!state.tmdbId||Number(found?.tmdb_id)===state.tmdbId;
+        if(nameMatches&&idMatches)state.meta=found;
         if(await attempt())return;
+      }
+      // Regional names sometimes differ from TMDB's original title.
+      // Look up ONLY the numeric identity supplied by the curated carousel
+      // or the already-selected match, never a fuzzy or same-named work.
+      if(state.tmdbId&&['movie','tv'].includes(state.kind)&&
+         typeof window.tmdbDetails==='function'){
+        try{
+          const d=await window.tmdbDetails(state.tmdbId,state.kind);
+          if(img.__matchappAdultPoster!==identity)return;
+          if(d&&d.adult!==true&&Number(d.tmdbId)===state.tmdbId&&d.kind===state.kind){
+            state.meta={
+              title:state.title,tmdb_id:state.tmdbId,media_kind:state.kind,
+              poster_url:d.poster||null,
+              poster_large_url:d.posterLarge||null,
+              poster_original_url:d.posterOriginal||null
+            };
+            await attempt();
+          }
+        }catch(_){/* Keep the original title-labelled local art visible. */}
       }
     }finally{
       if(img.__matchappAdultPoster===identity)state.repairing=false;
@@ -393,12 +433,24 @@
   function recoverAdultPoster(img,title,meta,preferred){
     if(!adultPosterSurface(img)||!title)return;
     const name=String(title);
+    const matchIdentity=img.id==='res-poster-img'?window.currentMatchIdentity:null;
+    const numeric=Number(img.id==='res-poster-img'?matchIdentity?.tmdbId:img.dataset.tmdbId);
+    const tmdbId=Number.isSafeInteger(numeric)&&numeric>0?numeric:null;
+    const kind=img.id==='res-poster-img'?matchIdentity?.kind:img.dataset.tmdbKind;
+    const year=img.id==='res-poster-img'?matchIdentity?.year:img.dataset.tmdbYear;
     let state=img.__matchappAdultPoster;
-    if(!state||state.title!==name){
-      state={title:name,meta:null,preferred:'',failed:new Set(),repairing:false};
+    if(!state||state.title!==name||state.tmdbId!==tmdbId||state.kind!==kind){
+      state={title:name,tmdbId,kind,year,meta:null,preferred:'',
+        failed:new Set(),repairing:false,lastAttempt:0};
       img.__matchappAdultPoster=state;
     }
-    if(meta&&normalise(meta.title)===normalise(name))state.meta=meta;
+    // Network failures are not proof an official source has disappeared.
+    // Re-probe after the device reconnects instead of permanently pinning
+    // a branded title card for the entire browser session.
+    if(!state.repairing&&Date.now()-state.lastAttempt>120000)state.failed.clear();
+    state.lastAttempt=Date.now();
+    if(meta&&normalise(meta.title)===normalise(name)&&
+       (!state.tmdbId||Number(meta.tmdb_id)===state.tmdbId))state.meta=meta;
     if(preferred&&posterVariants(preferred).length)state.preferred=preferred;
     img.dataset.matchappMediaTitle=name;
     if(img.dataset.matchappAdultPosterBound!=='1'){
@@ -440,7 +492,10 @@
       if(!img.isConnected||img.dataset.matchappMediaTitle!==expected)return;
       img.dataset.matchappFallbackStage='metadata';
       img.src=url;
-      if(img.id==='res-poster-img')window.globalMatchPoster=url;
+      if(img.id==='res-poster-img'){
+        if(typeof window.setLoadedMatchPoster==='function')window.setLoadedMatchPoster(url,expected);
+        else window.globalMatchPoster=url;
+      }
     };
     probe.onerror=()=>{};
     probe.src=url;
