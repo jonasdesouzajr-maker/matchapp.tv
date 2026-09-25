@@ -87,3 +87,25 @@ test('trending rows meet database constraints and preserve old data on failed up
   assert.match(ingest,/\.not\("source_key","in"/);
   assert.match(ingest,/stage==="authorization"\?403:500/);
 });
+
+test('TMDB theatrical date parsing accepts valid release dates and excludes non-cinema records',()=>{
+  // Evaluate only this standalone helper; never execute the Edge Function or require its secrets.
+  const vm=require('node:vm'),src=read('supabase/functions/catalog-media-ingest/index.ts');
+  const start=src.indexOf('function cinemaReleaseDate(');
+  const end=src.indexOf('\nfunction availabilityFrom(',start);
+  assert.ok(start>=0&&end>start,'release date helper must exist');
+  const helper=src.slice(start,end).replace('record:any,region:string','record,region')
+    .replaceAll('(r:any)','(r)').replaceAll('(v:string)','(v)');
+  const cinemaReleaseDate=vm.runInNewContext(helper+'\ncinemaReleaseDate',{});
+  const record={release_dates:{results:[
+    {iso_3166_1:'BR',release_dates:[
+      {type:4,release_date:'2026-09-19T12:00:00Z'}, // physical release must not count
+      {type:3,release_date:'2026-09-25T12:00:00Z'},
+      {type:2,release_date:'2026-09-22T12:00:00Z'},
+      {type:2,release_date:'not-a-date'}]},
+    {iso_3166_1:'US',release_dates:[{type:4,release_date:'2026-09-20T12:00:00Z'}]}
+  ]}};
+  assert.equal(cinemaReleaseDate(record,'BR'),'2026-09-22');
+  assert.equal(cinemaReleaseDate(record,'US'),null);
+  assert.equal(cinemaReleaseDate({},'BR'),null);
+});
