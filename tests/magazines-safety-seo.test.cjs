@@ -83,11 +83,11 @@ test('Ask AI routes English, Portuguese, Spanish and Japanese reading formats',(
 });
 test('SEO describes magazines truthfully on existing indexed URLs only',()=>{
  const home=read('index.html'),hub=read('ebooks/index.html'),ask=read('discover.html');
- assert.match(home,/AI magazine matcher/);
+ assert.match(home,/global magazine recommendations|AI magazine recommendations/i);
  assert.match(hub,/AI magazine matcher/);
- assert.match(hub,/Discover magazines by interest/);
- assert.match(hub,/official publisher issues|original publisher issue covers|original publisher pages/i);
- assert.match(ask,/AI magazine recommendations/);
+ assert.match(hub,/Discover magazines worldwide by subject and mood/);
+ assert.match(hub,/original publisher|official publisher/i);
+ assert.match(ask,/AI magazine finder/);
  assert.match(hub,/rel="canonical" href="https:\/\/matchapp\.tv\/ebooks\/"/);
  assert.match(hub,/"@type":"CollectionPage"/);
  assert.match(hub,/"@type":"Service"/);
