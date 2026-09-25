@@ -78,6 +78,14 @@ Open the repository's **`android-studio` folder** in Android Studio Quail. Let G
 - Main adult Ask AI remains in the normal website/`:app` WebView. The patched genre lookup avoids a ReferenceError, and only verified country-specific provider data may be displayed as current availability. Native Android permissions, URL routing and Kids separation are unchanged; no redundant HTML/JS copies or unnecessary Android version bump are needed for live web-content updates.
 - Before generating an Android release, cold-start both modules, confirm Kids only in `:kidsapp`, exercise the new source rating result/age switching/no-poster fallback and test Ask AI on `:app`. The web deployment alone does not prove either native AAB build passed.
 
+## Audiobook integration — cross-platform parity
+
+The existing grown-up `:app` Android WebView reads the live `matchapp.tv` e-book matching panel. The new audiobook-format control, exact Apple Books audiobook verification, optional US-eligible LibriVox audio, and official untagged store searches use the same website code on desktop, phones, tablets and the grown-up Android app; no duplicated Java/Kotlin matcher or unverified audio download logic belongs in Android Studio. External audio stores hand off through the native shell's existing HTTPS external-browser policy. The Amazon BR Associates e-book tracking ID must **not** be appended to unapproved Audible/Apple/Google links or native Android purchases.
+
+The separate `:kidsapp` remains Kids-only. Adult book/audiobook matching is not automatically injected into the Kids app: age verification for films/shows does not independently verify narrator or unreviewed audiobook content. A Kids audiobook collection requires its own independently reviewed identity, content, audio-source and age-band allowlist. This protects the existing family library and does not change the main app's Kids blocking.
+
+Android build markers need changing only if native routing, permissions, user-agent or release packaging changes; test both existing modules with the live deployment before generating signed APKs/AABs.
+
 ## Web → Android synchronization policy
 
 The Android apps intentionally render the live MatchApp web surfaces rather than maintaining a second copy of the UI:
