@@ -46,9 +46,9 @@ These existing native modules are **live WebView shells**, not divergent forks o
 
 Both Android modules remain WebView shells over live production:
 
-- Standard app (`:app`) release version: **1.1.30**
-- Standard app version code: **32**
-- Standard app launch: `https://matchapp.tv/?utm_source=android_app&appBuild=32`
+- Standard app (`:app`) release version: **1.1.31**
+- Standard app version code: **33**
+- Standard app launch: `https://matchapp.tv/?utm_source=android_app&appBuild=33`
 - Kids app (`:kidsapp`) release version: **1.1.25** / version code **27**
 - Kids app launch: `https://matchapp.tv/kids/?utm_source=android_kids_app&appBuild=27`
 - Both apps cold-load production on launch and manual refresh to avoid stale WebView content, then resume normal caching after the page renders.
@@ -129,4 +129,4 @@ After final Play signing certificates exist, Digital Asset Links can be updated 
 
 ## Adult Play Console identity checkpoint (2026-09-25)
 
-The first Play Console listing supplied by the owner uses package ID **`com.jonas.papercup`**, so the normal adult `:app` Gradle namespace, application ID and Kotlin package were aligned; normal app version 1.1.30 (code 32). This package cannot update an installed legacy `tv.matchapp.app` package. **Verify your Play Console listing uses the exact package ID before signing.** Kids `:kidsapp` is unchanged. The production banner ad unit is staged in the adult BuildConfig. The provided rewarded ID is a Google demo ad unit included only in DEBUG; RELEASE rewarded ID is blank. The app remains ad-free while the real AdMob App ID (with `~`) and SDK/consent are unresolved. Full release checklist: `play/RELEASE_PREFLIGHT.md`.
+The first Play Console listing supplied by the owner uses package ID **`com.jonas.papercup`**, so the normal adult `:app` Gradle namespace, application ID and Kotlin package were aligned; normal app version 1.1.31 (code 33). This package cannot update an installed legacy `tv.matchapp.app` package. **Verify your Play Console listing uses the exact package ID before signing.** Kids `:kidsapp` is unchanged. The production banner ad unit is staged in the adult BuildConfig. The provided rewarded ID is a Google demo ad unit included only in DEBUG; RELEASE rewarded ID is blank. The app remains ad-free while the real AdMob App ID (with `~`) and SDK/consent are unresolved. Full release checklist: `play/RELEASE_PREFLIGHT.md`.
