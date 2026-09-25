@@ -188,3 +188,56 @@ test('Ask AI has a bounded local catalogue recovery without polling or UI mutati
   assert.match(recovery,/fitsQuestion\(e, question\)/);
   assert.match(recovery,/isDiscoverDisliked\(e\.title\)/);
 });
+
+
+test('Ask AI never claims AI-guessed streaming availability if verified source is missing or throws',async()=>{
+  const vm=require('node:vm'),src=read('discover.js');
+  const start=src.indexOf('async function enrichDiscoverMedia(item) {');
+  const end=src.indexOf('\nfunction itemFromTitle(',start);
+  assert(start>=0&&end>start);
+  const code=src.slice(start,end)+'\nenrichDiscoverMedia;';
+  const noSource=vm.runInNewContext(code,{window:{}});
+  const absent={title:'A Real Comedy',type:'movie',platform:'Netflix'};
+  await noSource(absent);
+  assert.equal(absent.platform,'');
+  assert.equal(absent._aiPlatformHint,'Netflix');
+  assert.equal(absent._availabilityVerified,false);
+  const throwing=vm.runInNewContext(code,{window:{MatchAppCatalogMedia:{
+    lookup:async()=>{throw Error('source offline')},viewingTarget:()=>null
+  }}});
+  const errored={title:'A Real Comedy',type:'series',platform:'Netflix'};
+  await throwing(errored);
+  assert.equal(errored.platform,'');
+  assert.equal(errored._availabilityVerified,false);
+  assert.equal(errored._viewing,null);
+  const noTitleMeta=vm.runInNewContext(code,{window:{MatchAppCatalogMedia:{
+    lookup:async()=>null,lookupLive:async()=>null
+  }}});
+  const missing={title:'A Real Comedy',type:'movie',platform:'Netflix'};
+  await noTitleMeta(missing);
+  assert.equal(missing.platform,'');
+  assert.equal(missing._availabilityVerified,false);
+  const source=vm.runInNewContext(code,{window:{MatchAppCatalogMedia:{
+    lookup:async()=>({year:2024,overview:'Verified synopsis',genres:['Comedy']}),
+    viewingTarget:()=>({mode:'stream',provider:'Verified Provider',href:'https://www.justwatch.com/br'})
+  }}});
+  const good={title:'A Real Comedy',type:'movie',platform:'Unverified Service'};
+  await source(good);
+  assert.equal(good.platform,'Verified Provider');
+  assert.equal(good._availabilityVerified,true);
+});
+
+test('Ask AI audiobook questions lead into the existing verified adult book matcher rather than guessing Spotify availability',async()=>{
+  const vm=require('node:vm'),js=read('discover.js'),home=read('index.html');
+  assert.match(js,/if \(\/audiobook\/i\.test/);
+  assert.match(js,/return '\/#ebook-matcher-root'/);
+  assert.match(home,/id="ebook-matcher-root"/);
+  const from=js.indexOf('async function enrichDiscoverMedia(item) {');
+  const to=js.indexOf('\nfunction itemFromTitle(',from);
+  const fn=vm.runInNewContext(js.slice(from,to)+'\nenrichDiscoverMedia;',{window:{}});
+  const audio={title:'A Genuine Audiobook',type:'audiobook',platform:'Spotify'};
+  await fn(audio);
+  assert.equal(audio.platform,'');
+  assert.equal(audio._availabilityVerified,false);
+  assert.equal(audio._aiPlatformHint,'Spotify');
+});
