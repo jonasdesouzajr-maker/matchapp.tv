@@ -377,10 +377,16 @@ function justWatchLocale() {
 }
 
 function discoverWatchUrl(item) {
-    if (item && item._viewing && item._viewing.href) return item._viewing.href;
-    if (item && item.watchUrl) return item.watchUrl;
     const title = (item && (item.title || item.displayTitle)) || '';
     const isAudio = /podcast|album|music|audiobook/i.test((item && item.type) || '');
+    // Verification failures and unverified AI platform hints must NEVER send
+    // users to a guessed streaming service, including stale catalogue links.
+    // A country-specific title search is accurate without claiming availability.
+    if (item?._availabilityVerified === false && !isAudio) {
+        return `https://www.justwatch.com/${justWatchLocale()}/search?q=${encodeURIComponent(title)}`;
+    }
+    if (item && item._viewing && item._viewing.href) return item._viewing.href;
+    if (item && item.watchUrl) return item.watchUrl;
     if (typeof platformSearchUrl === 'function' && item && item.platform && item.platform !== 'any' &&
         typeof PLATFORMS !== 'undefined' && PLATFORMS[item.platform]) {
         const url = platformSearchUrl(item.platform, title);
