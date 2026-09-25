@@ -229,7 +229,7 @@ function seoFor(i,trends,generated){
       focus+' sports news '+year,
       focus+' latest update '+isoDate,
       sport+' latest news '+monthEn+' '+year,
-      i.source+' '+sport.toLowerCase()+' news indexed '+isoDate,
+      i.source+' '+sport.toLowerCase()+' sports update '+isoDate,
       focus+' '+i.source+' original report'
     ]);
     const sourceKeywords=uniq([i.source,sport+' '+i.source,i.source+' sports headlines']);
@@ -240,7 +240,7 @@ function seoFor(i,trends,generated){
       trend_keywords:[],entity_keywords:topic,freshness_keywords:freshnessKeywords,
       source_keywords:sourceKeywords,
       meta_title:truncateWords(i.title+' | '+sport+' | MatchApp TV',60),
-      meta_description:truncateWords(sport+' reporting indexed '+isoDate+'. Open the original publisher through MatchApp Latest News.',158),
+      meta_description:truncateWords(sport+' original-source reporting dated '+isoDate+'. Open the publisher via MatchApp Latest News.',158),
       keywords:uniq([primary,...short,...long,...sourceKeywords,...freshnessKeywords]).slice(0,32),
       seo_generated_at:generated
     };
@@ -340,7 +340,8 @@ function page(i){
   const canon=esc(i.matchapp_url);
   const kw=esc(i.seo.keywords.join(', '));
   const publishedLabel=new Date(i.published_at).toLocaleDateString('en-US',{dateStyle:'long'});
-  const publishedTitle=i.category==='sports'?'First indexed by news discovery':'Original publication';
+  const publishedTitle=i.category==='sports'?
+     (i.date_provenance==='newsdata-supplied-publisher-time'?'Date listed by sports news index':'First indexed by news discovery'):'Original publication';
   const imageMeta=i.image
     ? `<meta property="og:image" content="${esc(i.image)}"><meta name="twitter:image" content="${esc(i.image)}"><meta name="twitter:card" content="summary_large_image">`
     : '<meta name="twitter:card" content="summary">';
@@ -427,7 +428,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <p><a href="${orig}" target="_blank" rel="noopener noreferrer external">Read the original report at ${src} ↗</a></p>
     <p><a href="${landing}">Open this story inside MatchApp Latest News →</a></p>
-    <p style="font-size:13px;color:#aaa">MatchApp links to the original publisher without republishing article bodies. Entertainment dates use publisher feed times; sports dates indicate when a story was indexed for discovery, not a verified original publication time.</p>
+    <p style="font-size:13px;color:#aaa">MatchApp links to the original publisher without republishing article bodies or photos. Entertainment timestamps come from publisher feeds; sports timestamps come from the named discovery index and may not equal the original first-publication time.</p>
     <p><a href="/news/">More entertainment and sports news</a> · <a href="/">Back to MatchApp</a></p>
   </article>
 </main>
@@ -685,7 +686,7 @@ function enforceArticleAnalyticsOnDisk(){
       matchapp_url:existing?.matchapp_url||`${SITE}/news/articles/${slug(entry.title)}-${entry.id.slice(0,6)}/`,
       landing_url:`${SITE}/?news=${encodeURIComponent(entry.id)}#latest-news`
     };
-    item.seo=existing?.seo||seoFor(item,[],generated);
+    item.seo=existing?.discovery_source===item.discovery_source&&existing?.seo?existing.seo:seoFor(item,[],generated);
     return item;
   });
   const items=[...collected.slice(0,32),...sports].sort((a,b)=>b.published_at.localeCompare(a.published_at)).slice(0,44);
