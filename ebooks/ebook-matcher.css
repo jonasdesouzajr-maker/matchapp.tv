@@ -169,3 +169,11 @@ html body.page-home #ebook-matcher-root :is(.ebook-field,.ebook-top-card,.ebook-
 .ebook-matcher-root .ebook-field{min-width:0}
 @media(max-width:600px){.ebook-audio{padding:11px}.ebook-audio .ebook-provider-row{display:grid;grid-template-columns:1fr}.ebook-audio .ebook-provider{width:100%}}
 @media(prefers-reduced-motion:reduce){.ebook-audio-check{transition:none!important}}
+
+/* Saved books retain on-demand audio source verification without another match. */
+.ebook-saved-audio{margin-top:10px;display:grid;gap:7px;min-width:0}
+.ebook-saved-audio .ebook-provider-row{display:flex;flex-wrap:wrap;gap:7px}
+.ebook-saved-audio .ebook-provider{max-width:100%;white-space:normal;overflow-wrap:anywhere;min-height:41px}
+.ebook-saved [data-ebook-saved-audio]{border:1px solid rgba(229,193,88,.57);border-radius:9px;min-height:41px;padding:8px 10px;background:rgba(229,193,88,.12);color:#ffeab3;font-weight:800;cursor:pointer;white-space:normal}
+.ebook-saved [data-ebook-saved-audio]:disabled{opacity:.68;cursor:progress}
+@media(max-width:560px){.ebook-saved-audio .ebook-provider-row{display:grid;grid-template-columns:1fr}}
