@@ -9,7 +9,7 @@ function unapprovedAppContext(){
  const ua=String(root.navigator&&root.navigator.userAgent||'');
  // Amazon requires a separately approved mobile app. Conservatively leave
  // installed PWAs and television browsers untagged until individually cleared.
- if(/MatchAppAiAndroid\/|MatchAppTVAndroid|SmartTV|\bTizen\b|\bWebOS\b|\bAndroid TV\b/i.test(ua))return true;
+ if(/MatchAppAiAndroid\/|MatchAppTVAndroid|Smart.?TV|Tizen|Web0?S|Android TV|HbbTV|Roku|AFT[A-Z0-9]+|GoogleTV|AppleTV/i.test(ua))return true;
  if(root.navigator&&root.navigator.standalone===true)return true;
  try{if(root.matchMedia&&root.matchMedia('(display-mode: standalone)').matches)return true;}catch(_){}
  return false;
@@ -30,7 +30,7 @@ function isAffiliateLink(href){
 }
 function disclosure(locale){
  return /^pt/i.test(String(locale||''))?
-  'Como participante do Programa de Associados da Amazon, sou remunerado pelas compras qualificadas efetuadas.':
+  'Como associado da Amazon, eu ganho com compras qualificadas.':
   'As an Amazon Associate I earn from qualifying purchases.';
 }
 function paidLabel(locale){return /^pt/i.test(String(locale||''))?'publicidade':'paid link'}
