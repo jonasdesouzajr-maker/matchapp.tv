@@ -200,10 +200,12 @@ async function doMatch(root){
  const note=root.querySelector('[data-ebook-note]');
  if(!pick){if(note){note.hidden=false;note.textContent=tr('empty')}return;}
  // Same commercial meter as the main matcher; no charge when preflight found nothing.
- if(typeof window.checkDailyLimit==='function'){
-  const allowed=await window.checkDailyLimit();
-  if(!allowed)return;
+ if(typeof window.checkDailyLimit!=='function'){
+  if(window.showToast)window.showToast('E-book matching is available from the main MatchApp experience.',true);
+  return;
  }
+ const allowed=await window.checkDailyLimit();
+ if(!allowed)return;
  if(note){note.hidden=!pick.relaxed;note.textContent=pick.relaxed?tr('empty'):''}
  const seen=uniq(read(K.seen).concat(pick.book.id)).slice(-300);write(K.seen,seen);
  renderResult(root,pick.book,p,pick.relaxed);
