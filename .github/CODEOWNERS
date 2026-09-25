@@ -7,3 +7,10 @@
 /.github/workflows/adsense-lock.yml @jonasdesouzajr-maker
 /.github/workflows/pages-deploy.yml @jonasdesouzajr-maker
 /.github/workflows/site-validation.yml @jonasdesouzajr-maker
+
+# Owner approval for editorial automation contracts. Agent-authored changes must
+# be reviewed before merge once the repository's branch ruleset is enabled.
+/.github/workflows/* @jonasdesouzajr-maker
+/tools/check-content-rotation.js @jonasdesouzajr-maker
+/tests/editorial-workflow-contract.test.cjs @jonasdesouzajr-maker
+/docs/EDITORIAL_AUTOMATION_LOCK.md @jonasdesouzajr-maker
