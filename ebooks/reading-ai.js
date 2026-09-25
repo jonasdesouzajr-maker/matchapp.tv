@@ -62,14 +62,14 @@ function external(url,label,opts={}){
 }
 function magCard(m){
  const aff=root.MatchAppEbookAffiliate,offers=root.MatchAppMagazines.buyLinks(m,market(),aff);
- const primary=offers[0],tagged=!!aff?.isAffiliateLink(primary.url);
+ const primary=offers.find(x=>x.name.startsWith('Amazon')),tagged=!!(primary&&aff?.isAffiliateLink(primary.url));
  return '<article class="reading-ai-card"><div class="reading-ai-icon"><img src="'+esc(m.icon)+
  '" alt="'+esc(m.title)+' official publisher icon" loading="lazy" decoding="async" onerror="this.hidden=true"></div>'+
  '<div><span class="reading-ai-label">OFFICIAL MAGAZINE SOURCE</span><h4>'+esc(m.title)+'</h4>'+
  '<p>'+esc(m.summary)+'</p><div class="reading-ai-links">'+
  external(m.issues,'Original covers & issues')+
  external(m.site,'Official articles',{free:true})+
- external(primary.url,'Amazon — check availability',{paid:tagged,affiliate:tagged})+
+ (primary?external(primary.url,'Amazon — check availability',{paid:tagged,affiliate:tagged}):'')+
  external(m.subscription,'Publisher subscription')+'</div>'+
  '<small>Free articles and paid full issues are different. Availability, price and region vary.</small>'+
  (tagged?'<small>'+esc(aff.disclosure(locale()))+'</small>':'')+'</div></article>';
