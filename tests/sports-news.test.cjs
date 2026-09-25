@@ -29,6 +29,8 @@ test('a GDELT first-seen timestamp is parsed exactly; no fabricated publication 
 test('one sports snapshot, twice daily; serialize publishers and dispatch only after successful content push',()=>{
  const sport=read('.github/workflows/sports-refresh.yml'),hour=read('.github/workflows/news-refresh.yml');
  assert.match(sport,/cron: '17 11,23 \* \* \*'/);
+ assert.match(sport,/push:[\s\S]*branches: \[main\][\s\S]*paths:[\s\S]*\.github\/workflows\/sports-refresh\.yml/);
+ assert.doesNotMatch(sport,/push:[\s\S]*news\/\*\*/);
  assert.match(sport,/group: matchapp-content-publish/);
  assert.match(sport,/cancel-in-progress: false/);
  assert.match(sport,/node tools\/refresh-sports-discovery\.js/);
@@ -44,6 +46,8 @@ test('sports reuse existing homepage click flow, real source links, semantic met
  assert.match(front,/requestedNewsId/);assert.match(front,/noopener noreferrer external/);
  assert.match(front,/sports_updated_at/);assert.match(news,/seoFor\(item,\[\],generated\)/);
  assert.match(news,/i\.category==='sports'/);assert.match(news,/itemListElement/);
+ assert.doesNotMatch(news.split('const feedVersion=')[1].split(';')[0],/sportsSnapshot\.updated_at/);
+ assert.match(news,/sports dates indicate when a story was indexed for discovery/i);
  assert.doesNotMatch(sports,/feeds\.bbci|sports\/rss\.xml|rss\.cnn/);
  assert.match(sports,/image:null/);
  assert.match(read('tools/update-sitemap.js'),/newsUrlsFromDisk/);
