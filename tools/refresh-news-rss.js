@@ -229,10 +229,10 @@ function seoFor(i,trends,generated){
       focus+' sports news '+year,
       focus+' latest update '+isoDate,
       sport+' latest news '+monthEn+' '+year,
-      'BBC Sport '+sport.toLowerCase()+' news '+isoDate,
-      focus+' BBC Sport original report'
+      i.source+' '+sport.toLowerCase()+' news indexed '+isoDate,
+      focus+' '+i.source+' original report'
     ]);
-    const sourceKeywords=uniq(['BBC Sport',sport+' BBC Sport','BBC sports headlines']);
+    const sourceKeywords=uniq([i.source,sport+' '+i.source,i.source+' sports headlines']);
     const freshnessKeywords=[isoDate,monthEn+' '+year];
     const primary=focus+' sports news';
     return {
@@ -516,7 +516,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <main style="max-width:1120px;margin:36px auto;padding:18px">
   <a href="/#latest-news">← MatchApp Latest News</a>
   <h1>Latest Entertainment and Sports News</h1>
-  <p>Verified entertainment news refreshed hourly and BBC Sport headlines refreshed twice daily. Each story links to its original publisher.</p>
+  <p>Verified entertainment news refreshed hourly and trusted publisher sports links discovered twice daily. Each story opens its original publisher.</p>
   <section aria-labelledby="news-guide-title" style="margin:20px 0 28px;padding:20px;border:1px solid rgba(229,193,88,.22);border-radius:14px;background:rgba(24,16,38,.72)">
     <h2 id="news-guide-title" style="margin-top:0">How MatchApp Latest News works</h2>
     <p>MatchApp Latest News is an hourly entertainment index with twice-daily sports updates from named publishers. We do not republish full articles here. Each item identifies the publisher, preserves a direct link to the original report and shows enough context to help you decide what is worth opening.</p>
