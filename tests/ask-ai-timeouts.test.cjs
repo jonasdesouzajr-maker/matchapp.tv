@@ -51,5 +51,5 @@ test('new Ask AI code is cache-busted on desktop, phones, tablets and Android We
  const html=fs.readFileSync(path.join(root,'discover.html'),'utf8');
  const kidsHtml=fs.readFileSync(path.join(root,'kids/index.html'),'utf8');
  assert.match(html,/discover\.js\?v=20260925-intent1/);
- assert.match(kidsHtml,/kids\/kids\.js\?v=20260925-intent1/);
+ assert.match(kidsHtml,/kids\/kids\.js\?v=20260925-ai-reliability3/);
 });
