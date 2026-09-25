@@ -97,8 +97,10 @@
       const policy = window.matchPolicy;
       const raw = Array.isArray(parsed.results) ? parsed.results : [];
       let results = raw.filter(item => item && item.title && (!policy || policy.fitsQuestion(item, question)));
-      const audioIntent = /\b(podcast|music|song|songs|album|albums|playlist|single|singles|audiobook|spotify|listen|radio show)\b/i.test(String(question || ''));
-      if (!results.length && policy && !audioIntent) {
+      const requested=window.MatchAppMediaIntent?.requestedText?.(question) ?? String(question || '');
+      const bookIntent=window.MatchAppMediaIntent?.detectBookIntent?.(question) ?? /\b(e-?books?|books?|audio\s?books?|novels?|reading|kindle|livros?|magazines?)\b/i.test(requested);
+      const audioIntent=/\b(podcast|music|song|songs|album|albums|playlist|single|singles|audiobook|spotify|listen|radio show)\b/i.test(requested);
+      if (!results.length && policy && !audioIntent && !bookIntent) {
         results = catalog()
           .filter(e => e && e.title && policy.fitsQuestion(e, question) && window.tasteAllowsEntry(e))
           .slice(0, 6)
@@ -115,7 +117,8 @@
       }
       if (audioIntent) results = results.filter(item => /podcast|music|song|album|playlist|single|audiobook/i.test(String(item?.type || '') + ' ' + String(item?.platform || '')));
       parsed.results = results;
-      if (audioIntent) {
+      // Preserve full truthful AI answers after filtering media cards.
+      if (audioIntent && !String(parsed.answer || '').trim()) {
         const firstAudio = results[0];
         parsed.answer = firstAudio
           ? (String(firstAudio.title) + (firstAudio.synopsis ? ' — ' + String(firstAudio.synopsis).replace(/\s+/g,' ').trim() : ''))

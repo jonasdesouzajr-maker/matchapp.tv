@@ -58,6 +58,9 @@ function detectBookIntent(q) {
     return /\b(e-?books?|books?|audio\s?books?|novels?|reading|kindle|librivox|livros?|audiolivros?|libros?|audiolibros?|magazines?|revistas?)\b/i.test(q) || /雑誌|オーディオブック/u.test(q);
 }
 
+// The independently loaded result guarantee must honor the same exclusions.
+window.MatchAppMediaIntent=Object.freeze({requestedText:mediaIntentQuestion,detectBookIntent,detectAudioIntent});
+
 /* ---------- AI conversational answer ---------- */
 
 // Attempts to salvage JSON that was cut off mid-object (the classic symptom of

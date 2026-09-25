@@ -17,6 +17,6 @@ test('server and browser use exclusion-aware intent and refresh scripts',()=>{
  assert.match(edge,/const intentQuestion=mediaIntentQuestion\(question\)/);
  assert.match(edge,/detectBookIntent\(intentQuestion\)/);
  assert.match(edge,/detectAudioIntent\(intentQuestion\)/);
- assert.match(read('discover.html'),/discover\.js\?v=20260925-intent1/);
+ assert.match(read('discover.html'),/discover\.js\?v=20260925-guarantee2/);
  assert.match(read('discover.html'),/reading-ai\.js\?v=20260925-intent1/);
 });
