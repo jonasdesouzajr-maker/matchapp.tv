@@ -120,3 +120,15 @@ Apply this interpretation consistently across Desktop Web, Smartphone Web, Table
 - **Book exclusions:** Saved and “Not for me” e-books must be excluded from future e-book matching until the user removes that preference.
 - **Current suggestions:** “Top E-books right now” is editorial/current data and must carry a refresh date/source. Do not present an old chart snapshot as current.
 - **Isolation:** The e-book catalog and matcher stay separate from the movie/TV `CONTENT_CATALOG` and may not weaken or alter the core audiovisual matching policy.
+
+---
+
+### 11. EDITORIAL AUTOMATION LOCK — OWNER APPROVAL REQUIRED
+
+**Authoritative contract:** `docs/EDITORIAL_AUTOMATION_LOCK.md`. GrokBot, ChatGPT, GitHub Actions, automation agents, and all other editors must read it before touching any editorial workflow. The owner expressly prohibits silently restoring old workflows or changing their coordination, publishing safety, event retention, news reliability, or Top Titles validation. This applies across subsequent Grok sessions even when a new agent begins with a clean context.
+
+- Do not overwrite, revert, auto-regenerate, or replace `.github/workflows/*.yml`, `tools/check-content-rotation.js`, `tests/editorial-workflow-contract.test.cjs`, or `docs/EDITORIAL_AUTOMATION_LOCK.md` without the repository owner's explicit approval of the proposed change.
+- Preserve a **single serialized publisher** for editorial git-writing workflows, the dedicated TMDB ingestion authentication and server-only secrets, hourly publisher-sourced NEWS, the ten-title Home rail with exact official title art and synchronized loop duplicates, and date-aware global/awareness/International Day events with the three-day ENDED retention rule. Do not present an old curated chart as freshly fetched from TMDB.
+- Never mask failing steps, skip AdSense checks, invent event locations/official covers or ratings, edit matching/AI behavior, or republish content after a failed content-readiness gate.
+- Static editorial generators own their existing respective output. Avoid competing Home rewrites or uncontrolled `git add -A`; regenerate from latest `main` if a publisher loses a push race. Trigger Pages deployments only once from the committed `main` push, and ping IndexNow after a confirmed deploy or on the scheduled fallback.
+- Test these invariants with `node --test tests/editorial-workflow-contract.test.cjs`, `node tools/check-content-rotation.js`, and the existing full test/SEO/audit gates. Changes to this lock require owner review under `.github/CODEOWNERS` and GitHub branch protection.
