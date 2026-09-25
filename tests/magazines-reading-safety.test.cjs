@@ -60,7 +60,10 @@ test('Amazon BR is the first magazine search on approved web, other stores and u
   assert.equal(new URL(web.MatchAppMagazines.buyLinks(mag,market,web.MatchAppEbookAffiliate)[0].url).searchParams.has('tag'),false);
  }
  const native=setup('Mozilla/5.0 MatchAppAiAndroid/1.1.29');
- assert.equal(new URL(native.MatchAppMagazines.buyLinks(mag,'BR',native.MatchAppEbookAffiliate)[0].url).searchParams.has('tag'),false);
+ const nativeOffers=native.MatchAppMagazines.buyLinks(mag,'BR',native.MatchAppEbookAffiliate);
+ assert.equal(nativeOffers.length,1,'unapproved native app must show publisher only');
+ assert.equal(nativeOffers[0].name,'Publisher subscription / issue options');
+ assert.equal(native.MatchAppEbookAffiliate.amazonMagazineSearchUrl(mag,'BR'),'');
 });
 test('adult Home, magazine hub and Ask AI wire publisher data while Kids cannot load it',()=>{
  const home=read('index.html'),hub=read('ebooks/index.html'),ask=read('discover.html'),kids=read('kids/index.html');
