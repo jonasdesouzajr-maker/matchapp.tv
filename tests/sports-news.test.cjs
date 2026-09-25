@@ -67,10 +67,12 @@ test('non-licensed RSS sources never enter approved sports fallbacks',()=>{
    '<link>https://www.sportbusy.com/news/football-season-announcement</link>'+
    '<pubDate>Fri, 25 Sep 2026 10:00:00 GMT</pubDate></item></channel></rss>';
  assert.deepEqual(partner.parseFeed(xml,fake,now),[]);
- assert.equal(partner.FEEDS.length,4);
+ assert.equal(partner.FEEDS.length,5);
  assert(partner.FEEDS.every(feed=>feed.source==='The Conversation'&&feed.domain==='theconversation.com'));
  assert(partner.FEEDS.filter(feed=>feed.category==='sport').length===3);
  assert(partner.FEEDS.some(feed=>feed.url==='https://theconversation.com/au/articles.atom'&&feed.category==='general'));
+ assert(partner.FEEDS.some(feed=>feed.url==='https://theconversation.com/us/articles.atom'&&feed.category==='general'));
+ assert.equal(partner.FEEDS.filter(feed=>feed.category==='general').length,2);
  assert.doesNotMatch(read('latest-news.js'),/sportbusy\.com/);
  assert.doesNotMatch(read('tools/refresh-news-rss.js'),/sportbusy\.com/);
 });
@@ -124,10 +126,33 @@ test('regional sports topics and Australian feed preserve strict sport-only orig
 });
 test('regional feed sources stay exactly allowlisted; no direct unlicensed sport feeds',()=>{
  const partner=require('../tools/sports-partner-feed.js');
- assert.deepEqual(partner.FEEDS.map(f=>new URL(f.url).hostname),Array(4).fill('theconversation.com'));
+ assert.deepEqual(partner.FEEDS.map(f=>new URL(f.url).hostname),Array(5).fill('theconversation.com'));
  const fake={...partner.FEEDS[0],url:'https://unlicensed-sport.example/rss'};
  const xml='<feed><entry><title>Soccer game updates and scores today</title>'+
  '<link rel="alternate" href="https://theconversation.com/soccer-2026" />'+
  '<published>2026-09-25T10:00:00Z</published></entry></feed>';
  assert.deepEqual(partner.parseFeed(xml,fake,Date.parse('2026-09-25T12:00:00Z')),[]);
+});
+
+test('U.S. general edition accepts only genuine sports headlines from allowlisted original links',()=>{
+ const partner=require('../tools/sports-partner-feed.js');
+ const us=partner.FEEDS.find(f=>f.url==='https://theconversation.com/us/articles.atom');
+ assert.ok(us);assert.equal(us.category,'general');
+ const now=Date.parse('2026-09-25T10:30:00Z');
+ const atom=(title,url)=>'<feed><entry><title>'+title+'</title><link rel="alternate" href="'+url+'" />'+
+  '<published>2026-09-25T09:12:00Z</published></entry></feed>';
+ assert.equal(partner.parseFeed(atom('Football athletes and sports participation in U.S. colleges','https://theconversation.com/college-sport-research-270001'),us,now).length,1);
+ assert.deepEqual(partner.parseFeed(atom('Housing affordability and urban development research','https://theconversation.com/urban-housing-research-270002'),us,now),[]);
+ assert.deepEqual(partner.parseFeed(atom('Betting odds for college football games','https://theconversation.com/football-betting-270003'),us,now),[]);
+});
+test('partial GDELT sports discovery is combined with eligible partner coverage without duplicates',()=>{
+ const first={id:'gdelt',title:'Football tournament ends with national championship',
+  url:'https://www.reuters.com/sports/football/national-championship-2026/',published_at:'2026-09-25T10:00:00Z',source:'Reuters'};
+ const duplicate={...first,id:'other'};
+ const secondary={id:'conversation',title:'Sports research about team recovery and training',
+  url:'https://theconversation.com/sports-research-team-recovery-270004',published_at:'2026-09-25T09:00:00Z',source:'The Conversation'};
+ const both=discover.mergeVerifiedSourceRows([first],[duplicate,secondary]);
+ assert.equal(both.length,2);
+ assert.deepEqual(both.map(v=>v.id),['gdelt','conversation']);
+ assert.equal(discover.mergeVerifiedSourceRows([],Array(15).fill(secondary)).length,1);
 });

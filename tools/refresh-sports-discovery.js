@@ -71,6 +71,21 @@ function normalizeArticles(articles,now=Date.now()){
  }
  return [...found.values()].sort((a,b)=>b.published_at.localeCompare(a.published_at)).slice(0,12);
 }
+// Both inputs are already independently verified against their own publisher
+// policy. A partial GDELT response must never be thrown away just because the
+// separately permitted fallback returned another story.
+function mergeVerifiedSourceRows(discovered=[],partner=[]){
+ const urls=new Set(),headlines=new Set(),rows=[];
+ for(const item of [...discovered,...partner]){
+  if(!item||typeof item.url!=='string'||!item.url.startsWith('https://'))continue;
+  const title=words(item.title).toLowerCase().normalize('NFD')
+   .replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,' ').trim();
+  if(!title||urls.has(item.url)||headlines.has(title))continue;
+  urls.add(item.url);headlines.add(title);rows.push(item);
+ }
+ return rows.sort((a,b)=>b.published_at.localeCompare(a.published_at)).slice(0,12);
+}
+
 // GitHub runner DNS can favor broken IPv6 routes to GDELT. Use a strictly
 // URL-pinned IPv4 curl fallback after bounded native fetch, preserving HTTPS
 // certificate validation and JSON-only parsing. Never silently replace real
@@ -128,8 +143,11 @@ async function main(){
  if(rows.length<3){
   const fallback=await collectLicensedPartnerLinks();
   if(fallback.length){
-   rows=fallback;
-   policy='Explicitly authorized attributed original publisher RSS/Atom headlines';
+   const mixed=rows.length>0;
+   rows=mergeVerifiedSourceRows(rows,fallback);
+   policy=mixed
+    ?'GDELT Project DOC 2.0 publisher-link discovery plus explicitly authorized publisher RSS/Atom headlines'
+    :'Explicitly authorized attributed original publisher RSS/Atom headlines';
   }
  }
  if(!rows.length)throw Error('No current source-verified sports stories accessible; preserve previously committed news');
@@ -140,5 +158,5 @@ async function main(){
  fs.writeFileSync(OUTPUT,JSON.stringify(snapshot,null,2)+'\n');
  console.log(JSON.stringify({ok:true,sports:rows.length,sources:[...new Set(rows.map(i=>i.source))]}));
 }
-module.exports={normalizeArticles,publisher,dateOf,sportType};
+module.exports={normalizeArticles,publisher,dateOf,sportType,mergeVerifiedSourceRows};
 if(require.main===module)main().catch(e=>{console.error('[sports] '+(e.stack||e.message));process.exitCode=1});

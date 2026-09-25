@@ -13,7 +13,9 @@ const FEEDS=Object.freeze([
  {url:'https://theconversation.com/topics/jeux-olympiques-jo-153405/articles.atom',domain:'theconversation.com',source:'The Conversation',category:'sport'},
  // Australian general feed is independently verified as a public Atom source.
  // It must pass explicit sport words, unlike the three sport-scoped feeds.
- {url:'https://theconversation.com/au/articles.atom',domain:'theconversation.com',source:'The Conversation',category:'general'}
+ {url:'https://theconversation.com/au/articles.atom',domain:'theconversation.com',source:'The Conversation',category:'general'},
+ // U.S. general edition: admit only explicitly sports-specific headlines.
+ {url:'https://theconversation.com/us/articles.atom',domain:'theconversation.com',source:'The Conversation',category:'general'}
 ]);
 const GAMBLING=/(?:betting|gambling|casino|sportsbook|wager|moneyline|parlay|bookmaker|bet slip|bonus bet|odds|picks for betting|predictions?\s+to\s+bet)/i;
 const SUBJECT=/(?:football|soccer|basketball|nba|wnba|tennis|formula\s*1|f1\b|motor|olympi|hockey|rugby|cricket|volleyball|sport|baseball|futebol|esporte|tenis|tênis|atl[eé]ti)/i;
