@@ -40,17 +40,24 @@
    return legalLink(candidate)?candidate:item.source;
  }
  function card(item){
-  if(verified.has(item.identity))return;
+  if(verified.has(item.identity))return false;
+  // Rolling window: the available discovery library can extend over thousands
+  // of source candidates without thousands of live DOM nodes or images.
+  if(verified.size>=MAX_SHOWN){
+    const oldest=verified.keys().next().value;
+    verified.delete(oldest);
+    grid.firstElementChild?.remove();
+  }
   verified.set(item.identity,item);
-  if(verified.size>MAX_SHOWN)return;
   const figure=document.createElement('figure');figure.className='kids-source-card';
   figure.dataset.identity=item.identity;
   const wrap=document.createElement('div');wrap.className='kids-source-cover';
   const img=new Image();img.alt=item.title;img.loading='lazy';img.decoding='async';
-  img.width=600;img.height=900;img.src=item.poster;
+  img.width=600;img.height=900;
   // Unknown art is never replaced by a wrong-title or text-only poster.
   img.onerror=()=>{img.onerror=null;figure.remove();verified.delete(item.identity);
     setStatus(say('A cover was unavailable; that title was hidden.','Uma capa indisponível foi ocultada.','Una portada no disponible se ocultó.'));};
+  img.src=item.poster;
   wrap.appendChild(img);figure.appendChild(wrap);
   const body=document.createElement('figcaption');body.className='kids-source-body';
   const badge=document.createElement('span');badge.className='kids-source-badge';
@@ -78,6 +85,7 @@
   }
   body.append(badge,heading,genre,synopsis,caution,actions);figure.append(body);
   grid.append(figure);
+  return true;
  }
  async function safeDetail(candidate,age,token){
    const id=candidate?.tmdbId,kind=candidate?.kind;
@@ -131,17 +139,16 @@
      .filter(c=>!seen.has(c.kind+':'+c.tmdbId))
      .slice(0,exact?1:MAX_CHECKS_PER_CLICK);
    current.forEach(c=>seen.add(c.kind+':'+c.tmdbId));
-   const count=verified.size;
+   let count=0;
    for(let i=0;i<current.length;i+=DETAIL_BATCH){
       if(token!==version||ageSel.value!==age)break;
       const group=await Promise.all(current.slice(i,i+DETAIL_BATCH).map(c=>safeDetail(c,age,token)));
       for(const item of group){
-       if(item&&token===version&&ageSel.value===age)card(item);
+       if(item&&token===version&&ageSel.value===age&&card(item))count++;
       }
-      if(verified.size>=MAX_SHOWN)break;
    }
    if(token!==version)return;
-   const found=verified.size-count;
+   const found=count;
    if(found){
     setStatus(say(found+' new source-rated title(s) checked for this age group. A grown-up should review each title.',
      found+' novo(s) título(s) classificado(s) para esta faixa etária. Um responsável deve revisar cada título.',
@@ -151,7 +158,7 @@
      'Nenhum novo título passou todas as verificações. Explore mais páginas ou busque um título exato.',
      'Ningún título nuevo superó todas las verificaciones. Explora más páginas o busca un título exacto.'));
    }
-   load.hidden=nextPage>499||verified.size>=MAX_SHOWN;
+   load.hidden=nextPage>499;
   }catch(_){
    if(token===version)setStatus(say('The source is unavailable. Your approved Kids library is unaffected.',
     'A fonte está indisponível. A coleção Kids aprovada não foi alterada.',
