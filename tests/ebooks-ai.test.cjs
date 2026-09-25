@@ -7,14 +7,31 @@ const read=p=>fs.readFileSync(path.join(root,p),'utf8');
 
 test('grown-up Home loads E-books Ai data, current suggestions and matcher in safe order',()=>{
  const html=read('index.html');
- const catalog=html.indexOf('/ebooks/catalog.js?v=20260924-ebooks1');
+ const catalog=html.indexOf('/ebooks/catalog.js?v=20260924-ebooks2');
  const top=html.indexOf('/ebooks/top-ebooks.js?v=20260924-top1');
- const matcher=html.indexOf('/ebooks/ebook-matcher.js?v=20260924-top2');
+ const matcher=html.indexOf('/ebooks/ebook-matcher.js?v=20260924-ebooks2');
  assert(catalog>0);
  assert(top>catalog);
  assert(matcher>top);
  assert.match(html,/id="ebook-matcher-root"/);
  assert.match(html,/\/ebooks\/ebook-matcher\.css\?v=20260924-ebooks1/);
+});
+
+
+test('expanded E-book catalog exposes rich taxonomy and per-book keyword metadata',()=>{
+ const catalog=read('ebooks/catalog.js'),matcher=read('ebooks/ebook-matcher.js'),hub=read('ebooks/index.html');
+ const ids=(catalog.match(/\{id:'[^']+'/g)||[]);
+ assert(ids.length>=110,'expected at least 110 curated e-books');
+ assert.match(catalog,/AI ebook recommendation/);
+ for(const genre of ['psychology','philosophy','business','technology','true-crime','dystopian','magical-realism','gothic','contemporary']){
+  assert(matcher.includes("['"+genre+"'"),genre+' matcher category missing');
+ }
+ for(const mood of ['witty','inspiring','practical','curious','awe','quirky','nostalgic','mythic','glamorous','dreamy','epic','melancholy']){
+  assert(matcher.includes("['"+mood+"'"),mood+' matcher category missing');
+ }
+ assert.match(hub,/more than 100 curated e-books/i);
+ assert.match(hub,/"@type":"CollectionPage"/);
+ assert.match(hub,/"@type":"ItemList"/);
 });
 
 test('Kids Mode stays isolated from E-books Ai',()=>{
