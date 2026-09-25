@@ -17,13 +17,13 @@ test('fast verified matches do not wait for a ceremonial timer',async()=>{
  assert.equal((await env.bounded(()=>({title:'verified'}),50000)).title,'verified');
 });
 test('the guard is loaded after the adult matcher and not after 12 seconds',()=>{
- assert.match(html,/app\.js\?v=20260925-matchrestore1[\s\S]*match-speed\.js\?v=20260925-matchrestore1/);
+ assert.match(html,/app\.js\?v=20260925-matchrestore2[\s\S]*match-speed\.js\?v=20260925-matchrestore1/);
  assert.match(guard,/150000/);assert.doesNotMatch(guard,/12000\b/);
 });
 test('translation does not hold the match and the source synopsis stays available',()=>{
  assert.doesNotMatch(app,/matchResult\.synopsis=await window\.localizeMatchSynopsis/);
  assert.doesNotMatch(app,/const description=await window\.localizeMatchSynopsis\(selected\.synopsis/);
- assert.match(app,/synopsisEl\.innerText=sanitizeDisplayText\(selected\.synopsis/);
+ assert.match(app,/synopsisEl\.innerText=sanitizeDisplayText\(initialSynopsis/);
 });
 test('late preflight never spends quota after recovery',()=>{
  const trigger=app.slice(app.indexOf('window.triggerMatch = async function'),app.indexOf('// THE RENDER ENGINE'));

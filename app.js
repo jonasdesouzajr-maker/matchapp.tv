@@ -4434,7 +4434,10 @@ async function renderResult(selected, isSpecificSearch) {
     window.currentSynopsisSource={text:selected.originalSynopsis||selected.synopsis,lang:selected.originalSynopsis?'en':selected.synopsisLang||'en',title:selected.title};
     // Paint verified content immediately, then improve localization asynchronously.
     const synopsisEl=document.getElementById('res-synopsis');
-    if(synopsisEl)synopsisEl.innerText=sanitizeDisplayText(selected.synopsis||'',['synopsis','answer','description']);
+    const sourceLanguage=selected.synopsisLang||'en';
+    const initialSynopsis=sourceLanguage===(window.MATCH_LANG||'en')?selected.synopsis||''
+        :(window.t?window.t('global.guide')+' · '+window.t('res.findwhere'):'');
+    if(synopsisEl)synopsisEl.innerText=sanitizeDisplayText(initialSynopsis,['synopsis','answer','description']);
     const synopsisLanguage=window.MATCH_LANG||'en';
     if(selected.synopsis&&(selected.synopsisLang||'en')!==synopsisLanguage&&typeof window.localizeMatchSynopsis==='function'){
         Promise.resolve().then(()=>window.localizeMatchSynopsis(selected.synopsis,selected.synopsisLang||'en'))
