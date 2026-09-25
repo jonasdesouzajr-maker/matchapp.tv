@@ -16,7 +16,7 @@ test('grown-up Home loads E-books Ai data, current suggestions and matcher in sa
  assert(audio>top);
  assert(matcher>audio);
  assert.match(html,/id="ebook-matcher-root"/);
- assert.match(html,/\/ebooks\/ebook-matcher\.css\?v=20260924-ebooks1/);
+ assert.match(html,/\/ebooks\/ebook-matcher\.css\?v=20260925-audio1/);
 });
 
 
@@ -31,7 +31,8 @@ test('expanded E-book catalog exposes rich taxonomy and per-book keyword metadat
  for(const mood of ['witty','inspiring','practical','curious','awe','quirky','nostalgic','mythic','glamorous','dreamy','epic','melancholy']){
   assert(matcher.includes("['"+mood+"'"),mood+' matcher category missing');
  }
- assert.match(hub,/more than 100 curated e-books/i);
+ assert.match(hub,/(?:more than 100 hand-tagged reading profiles|over 100 curated reading profiles)/i);
+ assert.match(hub,/verified audiobook editions/i);
  assert.match(hub,/"@type":"CollectionPage"/);
  assert.match(hub,/"@type":"ItemList"/);
 });
