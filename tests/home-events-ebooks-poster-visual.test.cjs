@@ -35,7 +35,7 @@ test('Home events use the existing auto-swipe viewport with accessible left/righ
  assert.equal(next?.getAttribute('aria-controls'),'events-viewport');
  const shared=read('app.js'),events=read('global-events.js'),styles=read('events-cover.css');
  assert.match(shared,/\['marquee-viewport','events-viewport'\]/);
- assert.match(shared,/const autoDelay = vp\.id === 'marquee-viewport' \? 1050 : 6500/);
+ assert.match(shared,/const autoDelay = vp\.id === 'marquee-viewport' \? 1050 : vp\.id === 'events-viewport' \? 4000 : 6500/);
  assert.match(shared,/prefers-reduced-motion/);
  assert.match(events,/retainedEnded.*sort/);
  assert.match(styles,/#global-events \.events-rail-shell \.global-event-grid/);
@@ -60,7 +60,7 @@ test('E-books shares Home premium form aesthetics without changes to matcher mec
  assert.match(css,/#ebook-matcher-root \.ebook-fold>summary strong/);
  assert.match(css,/#ebook-matcher-root \.ebook-field/);
  assert.match(home,/id="questionnaire-box" class="premium-card"/);
- assert.match(home,/ebooks\/ebook-matcher\.css\?v=20260925-home1/);
+ assert.match(home,/ebooks\/ebook-matcher\.css\?v=20260925-adult-ui2/);
  assert.match(read('ebooks/ebook-matcher.js'),/root\.innerHTML=markup\(\);bind\(root\);renderTop\(root\)/);
 });
 

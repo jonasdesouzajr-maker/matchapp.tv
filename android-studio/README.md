@@ -13,6 +13,10 @@ These existing native modules are **live WebView shells**, not divergent forks o
 - Desktop and mobile browser parity: check responsive cover `object-fit:contain`, source-derived metadata and attribution, system reduced-motion, storage-restricted browsing and any empty/unreachable external catalog fallback. Verify actual provider destinations on the user's market rather than assuming all books, audiobooks or sports stories are available in every country.
 - GitHub's **Validate Android apps** workflow compiles **both** `:app:assembleDebug` and `:kidsapp:assembleDebug` from this shared Android Studio project. A successful run certifies compilation, **not** signed AABs, app-store approval or exhaustive on-device behavior. No package identifiers, user permissions, existing Ads boundaries, Kids routing or app versions change in this checkpoint.
 
+## Permanent app separation — adult MatchApp Ai
+
+**MatchApp Ai (`:app`, `com.jonas.papercup`) is adult-only.** Never add a Kids Mode tab, switch, route or family-catalog features to this app, including when implementing shared homepage changes. Kids belongs exclusively in a separately installed, independently released app (`:kidsapp`, `tv.matchapp.kids`); do not modify or deploy that app until explicitly requested. The standard app stays a live WebView of the adult homepage, so adult homepage UI changes appear after a fresh load without copying website code or bumping native version numbers.
+
 ## Modules
 
 ### MatchApp Ai — `:app`

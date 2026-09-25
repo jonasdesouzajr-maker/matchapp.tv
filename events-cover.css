@@ -261,3 +261,27 @@ html body.page-home #global-events .events-rail-shell button.marquee-arrow:focus
   }
 }
 
+
+/* Adult Home event rail wins over the older desktop grid layout. Reuse the
+   shared scroll controller and arrows; never create a second timer. */
+html body.page-home #global-events .events-rail-shell #events-viewport{
+  display:flex!important;
+  flex-flow:row nowrap!important;
+  grid-template-columns:none!important;
+  overflow-x:auto!important;
+  overflow-y:hidden!important;
+  width:100%!important;
+  max-width:100%!important;
+  scroll-snap-type:x proximity!important;
+}
+html body.page-home #global-events .events-rail-shell button.events-prev,
+html body.page-home #global-events .events-rail-shell button.events-next{
+  display:flex!important;
+  visibility:visible!important;
+  opacity:1!important;
+  z-index:20!important;
+}
+html body.page-home #global-events .events-rail-shell button.events-prev:disabled,
+html body.page-home #global-events .events-rail-shell button.events-next:disabled{
+  opacity:.55!important;
+}

@@ -12,7 +12,7 @@
     var ev = document.createElement('link');
     ev.id = 'ma-events-cover-css';
     ev.rel = 'stylesheet';
-    ev.href = '/events-cover.css?v=20260923-events2';
+    ev.href = '/events-cover.css?v=20260925-adult-ui2';
     (document.head || document.documentElement).appendChild(ev);
   }
   var approvedLink = document.getElementById('ma-approved-css');

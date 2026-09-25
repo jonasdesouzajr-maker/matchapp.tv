@@ -313,3 +313,24 @@ html body.page-home #ebook-matcher-root :is(.ebook-field,.ebook-top-card,.ebook-
  .reading-ai-icon img{max-width:46px;max-height:46px}}
 @media(prefers-reduced-motion:reduce){.reading-ai-card{scroll-behavior:auto}}
 
+
+/* Only the adult homepage: let the E-books fold be the same single premium
+   card as Find what to watch here. Avoid double borders from the generic
+   section.container > section rule; preserve existing matcher markup. */
+html body.page-home section.container > #ebook-matcher-root{
+  border:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  padding:0!important;
+  width:100%!important;
+  max-width:var(--measure,1180px)!important;
+}
+html body.page-home #ebook-matcher-root .ebook-fold{
+  border:1px solid rgba(255,255,255,.065)!important;
+  border-radius:22px!important;
+  background:linear-gradient(145deg,rgba(27,13,44,.60),rgba(15,7,26,.58))!important;
+  box-shadow:0 14px 38px rgba(0,0,0,.16)!important;
+}
+html body.page-home #ebook-matcher-root .ebook-fold:focus-within{
+  border-color:rgba(229,193,88,.45)!important;
+}

@@ -1634,7 +1634,7 @@ window.eventMatch = function (query) {
         // Autoplay runs only while visible, pauses while hovered, and holds
         // off for a while after any touch, drag, key or arrow press.
         let hovering = false, holdUntil = 0, visible = true;
-        const autoDelay = vp.id === 'marquee-viewport' ? 1050 : 6500;
+        const autoDelay = vp.id === 'marquee-viewport' ? 1050 : vp.id === 'events-viewport' ? 4000 : 6500;
         const HOLD_AFTER_TOUCH = 8000;
 
         root?.querySelectorAll('[data-rail-dir],.marquee-prev,.marquee-next,.events-prev,.events-next,.ma-news-prev,.ma-news-next').forEach(btn => {
@@ -1698,8 +1698,12 @@ window.eventMatch = function (query) {
         // clicks and keys hold autoplay off for a while after the last one.
         const hold=()=>{ holdUntil = Date.now() + HOLD_AFTER_TOUCH; scheduleAuto(HOLD_AFTER_TOUCH); };
         vp.__railHold = hold;
-        vp.addEventListener('mouseenter',()=>{ hovering = true; stopAuto(); },{passive:true});
-        vp.addEventListener('mouseleave',()=>{ hovering = false; scheduleAuto(); },{passive:true});
+        // Android/touch browsers synthesize mouseenter but may never fire mouseleave.
+        // Keep the events carousel moving after the normal touch hold expires.
+        if (vp.id !== 'events-viewport' || !window.matchMedia?.('(hover: none)').matches) {
+            vp.addEventListener('mouseenter',()=>{ hovering = true; stopAuto(); },{passive:true});
+            vp.addEventListener('mouseleave',()=>{ hovering = false; scheduleAuto(); },{passive:true});
+        }
         ['pointerdown','touchstart','wheel','keydown'].forEach(type => vp.addEventListener(type,hold,{passive:true}));
         root?.querySelectorAll('[data-rail-dir],.marquee-prev,.marquee-next,.events-prev,.events-next,.ma-news-prev,.ma-news-next').forEach(btn => btn.addEventListener('click',hold));
         vp.addEventListener('focusout',()=>scheduleAuto(),{passive:true});
