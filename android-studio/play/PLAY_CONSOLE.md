@@ -3,7 +3,7 @@
 This folder documents the **main Android app only**.
 
 - App name: **MatchApp Ai**
-- Application ID: `tv.matchapp.app`
+- Application ID: `com.jonas.papercup`
 - Module: `:app`
 - Kids Mode is **not part of this Android app**. A separate Android app, **MatchApp Ai KIDS**, is built from `:kidsapp`.
 
@@ -36,7 +36,7 @@ Privacy policy: `https://matchapp.tv/privacy.html`
 
 ## Ads
 
-This Android package does not include the Google Mobile Ads SDK. The Android shell blocks ad-network requests and hides leftover web ad slots. Complete the Play ads declaration according to the actual release behavior.
+The provided live banner ad unit is staged in BuildConfig, but the native Google Mobile Ads SDK is NOT enabled until the owner provides the matching Android AdMob App ID (the identifier containing `~`) and release consent handling is tested. The provided rewarded unit is a Google TEST ID; only DEBUG BuildConfig contains it, whereas RELEASE rewarded ID is blank. The WebView hides site AdSense independently. Declare the ads behavior of the actual release build, not of planned future integration.
 
 ## Data safety and content declarations
 
@@ -44,6 +44,10 @@ Complete Play Console declarations from the behavior of the release you are uplo
 
 ## App Links
 
-After Play App Signing provides the final SHA-256 signing certificate, Digital Asset Links can be updated for `tv.matchapp.app`. That website-side change is intentionally not included in this Android-only branch.
+After Play App Signing provides the final SHA-256 signing certificate, Digital Asset Links can be updated for `com.jonas.papercup`. That website-side change is intentionally not included in this Android-only branch.
 
 For the separate Kids app, follow `../play-kids/PLAY_CONSOLE.md`.
+
+## First Play listing — 2026-09-25
+
+Confirm Play package `com.jonas.papercup`; target SDK 36; version 1.1.30 (code 32). The owner-provided fingerprints are documented, not hardcoded signing credentials: see `RELEASE_PREFLIGHT.md`. Do not use any Kids listing screenshot or the `kidsapp` module. Confirm a release-signed AAB on a physical device before submitting to Play.

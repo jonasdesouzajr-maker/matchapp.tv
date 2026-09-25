@@ -1,4 +1,4 @@
-package tv.matchapp.app
+package com.jonas.papercup
 
 import android.app.Application
 import android.webkit.WebView
