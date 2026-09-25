@@ -1223,6 +1223,7 @@ async function getExactCatalogPoster(title) {
         return null;
     }
 }
+window.getVerifiedPoster = getVerifiedPoster;
 window.getCatalogTmdbIdentity = getCatalogTmdbIdentity;
 
 // Categories where a SEPARATE live lookup (searching iTunes/TVMaze for a
@@ -4448,6 +4449,12 @@ async function renderResult(selected, isSpecificSearch) {
     // Explicit mirroring, same pattern already used for isVIP/isUserLoggedIn.
     window.globalMatchTitle = globalMatchTitle;
     window.globalMatchPoster = globalMatchPoster;
+    window.setLoadedMatchPoster = function(url, title) {
+        if (window.globalMatchTitle !== title || !url) return false;
+        globalMatchPoster = url;
+        window.globalMatchPoster = url;
+        return true;
+    };
     window.globalPlatform = globalPlatform;
 
     // A shown result is permanent history, not merely a short-session hint.
