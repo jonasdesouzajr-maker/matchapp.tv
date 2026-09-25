@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  actions: read
+  actions: write
   contents: read
   pages: write
   id-token: write
@@ -88,3 +88,9 @@ jobs:
         uses: actions/deploy-pages@v4
         with:
           artifact_name: github-pages-${{ github.run_attempt }}
+
+      - name: Submit IndexNow only after confirmed Pages deployment
+        if: success()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run indexnow.yml --ref main
