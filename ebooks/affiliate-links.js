@@ -9,7 +9,7 @@ function unapprovedAppContext(){
  const ua=String(root.navigator&&root.navigator.userAgent||'');
  // Amazon requires a separately approved mobile app. Conservatively leave
  // installed PWAs and television browsers untagged until individually cleared.
- if(/MatchAppAiAndroid\/|MatchAppTVAndroid|Smart.?TV|Tizen|Web0?S|Android TV|HbbTV|Roku|AFT[A-Z0-9]+|GoogleTV|AppleTV/i.test(ua))return true;
+ if(/MatchAppAiAndroid\/|MatchAppTVAndroid|SmartTV|\bTizen\b|\bWebOS\b|\bAndroid TV\b|\bHbbTV\b|\bRoku\b|\bGoogleTV\b|\bAppleTV\b|\bAFT[A-Z0-9]+\b/i.test(ua))return true;
  if(root.navigator&&root.navigator.standalone===true)return true;
  try{if(root.matchMedia&&root.matchMedia('(display-mode: standalone)').matches)return true;}catch(_){}
  return false;
@@ -31,7 +31,7 @@ function isAffiliateLink(href){
 function disclosure(locale){
  return /^pt/i.test(String(locale||''))?
   'Como associado da Amazon, eu ganho com compras qualificadas.':
-  'As an Amazon Associate I earn from qualifying purchases.';
+  'As an Amazon Associate I earn from qualifying purchases. Como associado da Amazon, eu ganho com compras qualificadas.';
 }
 function paidLabel(locale){return /^pt/i.test(String(locale||''))?'publicidade':'paid link'}
 root.MatchAppEbookAffiliate=Object.freeze({amazonSearchUrl,isAffiliateLink,disclosure,paidLabel});
