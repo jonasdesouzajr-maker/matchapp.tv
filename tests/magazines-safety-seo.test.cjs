@@ -63,7 +63,7 @@ test('Brazil Amazon search has permitted web tag and precedes publisher routes',
 });
 test('native Android and other markets never inherit unapproved Amazon affiliate tags',()=>{
  const w=modules('MatchAppAiAndroid/1.1.28'),mag=w.MatchAppMagazines.items[0],a=w.MatchAppEbookAffiliate;
- assert.equal(new URL(a.amazonMagazineSearchUrl(mag,'BR')).searchParams.get('tag'),null);
+ assert.equal(a.amazonMagazineSearchUrl(mag,'BR'),'','native Android has no unapproved Amazon magazine destination');
  const web=modules().MatchAppEbookAffiliate;
  assert.equal(new URL(web.amazonMagazineSearchUrl(mag,'JP')).searchParams.get('tag'),null);
  assert.equal(new URL(web.amazonMagazineSearchUrl(mag,'AU')).searchParams.get('tag'),null);
