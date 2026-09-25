@@ -226,3 +226,75 @@ test('stalled original-poster probes have a bounded fallback and deduplicate dup
  assert.equal(await a,false,'stalled artwork must release fallback without hanging');
  assert.equal(starts,1,'a duplicate request must not waste another provider fetch');
 });
+
+
+test('translated titles refresh visibly loaded Top Titles artwork through the pinned exact ID',async()=>{
+ const media=read('catalog-media.js');
+ const start=media.indexOf('  async function enrichTrendingRail(');
+ const end=media.indexOf('  async function resolvePoster(',start);
+ assert.ok(start>=0&&end>start,'Top Titles enrichment must remain isolated');
+ const calls={lookup:[],details:[],restored:[]};
+ const img={dataset:{title:'Vermelho Sangue',tmdbId:'226415',tmdbKind:'tv',tmdbYear:'2025'}};
+ const card={querySelector:sel=>sel==='img[data-title]'?img:null};
+ const ctx={
+  document:{querySelectorAll:sel=>sel==='#marquee-track .marquee-item'?[card]:[]},
+  window:{tmdbDetails:async(id,kind)=>{calls.details.push([id,kind]);return {
+   tmdbId:226415,kind:'tv',adult:false,year:2025,
+   posterLarge:'https://image.tmdb.org/t/p/w780/FRESH_SAME_TITLE.jpg'
+  };}},
+  lookup:async title=>{calls.lookup.push(title);return null;},
+  refreshExact:async meta=>meta,
+  posterVariants:url=>/^https:\/\/image\.tmdb\.org\/t\/p\//.test(url||'')?[url]:[],
+  recoverAdultPoster:(el,title,meta)=>calls.restored.push({el,title,meta}),
+  availability:()=>({inCinemas:false})
+ };
+ const fn=vm.runInNewContext(media.slice(start,end)+'\nenrichTrendingRail',ctx);
+ await fn();
+ assert.deepEqual(calls.lookup,['Vermelho Sangue']);
+ assert.deepEqual(calls.details,[[226415,'tv']]);
+ assert.equal(calls.restored.length,1);
+ assert.equal(calls.restored[0].el,img);
+ assert.equal(calls.restored[0].meta.tmdb_id,226415);
+ assert.equal(calls.restored[0].meta.poster_large_url,'https://image.tmdb.org/t/p/w780/FRESH_SAME_TITLE.jpg');
+});
+
+test('Top Titles refuses a fresh image returned for the wrong numeric film or TV identity',async()=>{
+ const media=read('catalog-media.js');
+ const start=media.indexOf('  async function enrichTrendingRail(');
+ const end=media.indexOf('  async function resolvePoster(',start);
+ const calls=[];
+ const img={dataset:{title:'Habeas Corpus',tmdbId:'308963',tmdbKind:'tv',tmdbYear:'2026'}};
+ const ctx={
+  document:{querySelectorAll:()=>[{querySelector:sel=>sel==='img[data-title]'?img:null}]},
+  window:{tmdbDetails:async()=>({tmdbId:999,kind:'movie',year:2026,
+   posterLarge:'https://image.tmdb.org/t/p/w780/WRONG_MOVIE.jpg'})},
+  lookup:async()=>null,refreshExact:async meta=>meta,
+  posterVariants:url=>[url],
+  recoverAdultPoster:(_img,_title,meta)=>calls.push(meta),
+  availability:()=>({inCinemas:false})
+ };
+ await vm.runInNewContext(media.slice(start,end)+'\nenrichTrendingRail',ctx)();
+ assert.equal(calls.length,1);
+ assert.equal(calls[0],null,'wrong-identity metadata must never replace the existing original');
+});
+
+test('exact-title database metadata refreshes working posters without an extra live lookup',async()=>{
+ const media=read('catalog-media.js');
+ const start=media.indexOf('  async function enrichTrendingRail(');
+ const end=media.indexOf('  async function resolvePoster(',start);
+ const img={dataset:{title:'The Love Hypothesis',tmdbId:'1032863',tmdbKind:'movie',tmdbYear:'2026'}};
+ const current={title:'The Love Hypothesis',tmdb_id:1032863,media_kind:'movie',
+   poster_large_url:'https://image.tmdb.org/t/p/w780/wlb6vunPuBjboYnmy4r3NlKZWji.jpg'};
+ const recorded=[];
+ const ctx={
+  document:{querySelectorAll:()=>[{querySelector:sel=>sel==='img[data-title]'?img:null}]},
+  window:{tmdbDetails:async()=>{throw Error('Should not query live ID when saved exact metadata exists');}},
+  lookup:async()=>current,
+  refreshExact:async row=>row,
+  recoverAdultPoster:(_img,_title,meta)=>recorded.push(meta),
+  availability:()=>({inCinemas:false})
+ };
+ await vm.runInNewContext(media.slice(start,end)+'\nenrichTrendingRail',ctx)();
+ assert.equal(recorded.length,1);
+ assert.equal(recorded[0],current);
+});
