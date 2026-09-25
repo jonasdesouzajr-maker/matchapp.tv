@@ -340,7 +340,7 @@ function page(i){
   const canon=esc(i.matchapp_url);
   const kw=esc(i.seo.keywords.join(', '));
   const publishedLabel=new Date(i.published_at).toLocaleDateString('en-US',{dateStyle:'long'});
-  const publishedTitle=i.category==='sports'?'First indexed by news discovery':'Original publication';
+  const publishedTitle=i.category==='sports'&&i.timestamp_kind!=='published'?'First indexed by news discovery':'Original publication';
   const imageMeta=i.image
     ? `<meta property="og:image" content="${esc(i.image)}"><meta name="twitter:image" content="${esc(i.image)}"><meta name="twitter:card" content="summary_large_image">`
     : '<meta name="twitter:card" content="summary">';
@@ -427,7 +427,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <p><a href="${orig}" target="_blank" rel="noopener noreferrer external">Read the original report at ${src} ↗</a></p>
     <p><a href="${landing}">Open this story inside MatchApp Latest News →</a></p>
-    <p style="font-size:13px;color:#aaa">MatchApp links to the original publisher without republishing article bodies. Entertainment dates use publisher feed times; sports dates indicate when a story was indexed for discovery, not a verified original publication time.</p>
+    <p style="font-size:13px;color:#aaa">MatchApp links to the original publisher without republishing article bodies. Dates identify publisher-supplied publication times or clearly labeled discovery-index timestamps according to each story's data source.</p>
     <p><a href="/news/">More entertainment and sports news</a> · <a href="/">Back to MatchApp</a></p>
   </article>
 </main>
@@ -541,7 +541,7 @@ function readSports(){
     }
     const items=Array.isArray(parsed.items)?parsed.items.filter(i=>
       i&&i.category==='sports'&&i.title&&i.id&&
-      isAllowed(i.url,{domains:['reuters.com','apnews.com','g1.globo.com','espn.com','espn.com.br','theguardian.com','formula1.com','nba.com']})&&
+      isAllowed(i.url,{domains:['reuters.com','apnews.com','g1.globo.com','espn.com','espn.com.br','theguardian.com','formula1.com','nba.com','theconversation.com','sportbusy.com']})&&
       Number.isFinite(Date.parse(i.published_at))&&
       Date.now()-Date.parse(i.published_at)<96*3600000).slice(0,12):[];
     return {updated_at:parsed.updated_at,items};

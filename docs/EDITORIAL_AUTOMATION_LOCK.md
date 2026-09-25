@@ -46,7 +46,7 @@ GitHub Actions and manual edits until the owner explicitly changes it.
    false`. Do not add parallel data owners or race two bots against Home,
    news, event URL manifests or the same sitemap.
 2. Midnight runs at 03:00 UTC (00:00 in São Paulo); hourly news uses
-   37 minutes past each hour; sports at 11:17/23:17 UTC; awareness is a recovery/source recheck at
+   37 minutes past each hour; sports at 11:17/23:17 UTC; If GDELT's public DOC API cannot establish a secure connection, only approved The Conversation sports Atom and SportBusy partner RSS feeds with public attributed headline+canonical-link syndication permission may supply verified fresh original-link results; SportBusy betting/promotional content is excluded. Don't copy any source photos, bodies or gambling promotions, and always distinguish publisher-provided dates from GDELT first-seen timestamps. awareness is a recovery/source recheck at
    03:45 UTC plus its existing daytime pass. Preserve scheduled/on-demand
    functionality and only change cadence if owner approves.
 3. Midnight stages only known generator-owned artifacts, never `git add -A`
