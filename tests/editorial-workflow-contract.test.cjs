@@ -2,7 +2,7 @@
 const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
 const root=path.resolve(__dirname,'..'),read=p=>fs.readFileSync(path.join(root,p),'utf8');
 const flow=n=>read('.github/workflows/'+n+'.yml');
-const publishers=['midnight-content-rotation','news-refresh','awareness-rotation','availability','kids-seo-refresh','sitemap-refresh','seo-hardening','archive-international-day'];
+const publishers=['midnight-content-rotation','news-refresh','awareness-rotation','availability','kids-seo-refresh','sitemap-refresh','seo-hardening','archive-international-day','sports-refresh'];
 
 test('GrokBot and other agents inherit permanent owner-only workflow and data contracts',()=>{
  const agents=read('AGENTS.md'),policy=read('docs/EDITORIAL_AUTOMATION_LOCK.md'),owners=read('.github/CODEOWNERS');
@@ -35,6 +35,11 @@ test('daily midnight coordinates existing verified data owners and retries from 
 test('hourly NEWS remains publisher sourced; awareness recovery cannot start another midnight refresh',()=>{
  const news=flow('news-refresh'),events=flow('awareness-rotation');
  assert.match(news,/cron: '37 \* \* \* \*'/);
+ const sports=flow('sports-refresh');
+ assert.match(sports,/cron: '17 11,23 \* \* \*'/);
+ assert.match(sports,/node tools\/refresh-sports-discovery\.js/);
+ assert.match(sports,/node tools\/refresh-news-rss\.js/);
+ assert.doesNotMatch(sports,/gh workflow run indexnow\.yml/);
  assert.match(news,/node tools\/refresh-news-rss\.js/);
  assert.match(news,/git add news tools\/news-urls\.json/);
  assert.match(events,/cron: '45 3 \* \* \*'/);
