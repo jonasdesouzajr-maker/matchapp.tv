@@ -240,9 +240,60 @@ function paintAudio(root,book,audio){
 }
 function renderSaved(root){
  const host=root.querySelector('[data-ebook-saved-list]');if(!host)return;
- const ids=read(K.saved),books=ids.map(id=>CAT().find(b=>b.id===id)).filter(Boolean);
+ const ids=read(K.saved),books=ids.map(id=>CAT().concat(MAG()).find(b=>b.id===id)).filter(Boolean);
  root.querySelectorAll('[data-ebook-saved-count]').forEach(x=>x.textContent=String(books.length));
- host.innerHTML=books.length?books.map(b=>'<article><div><strong>'+esc(b.title)+'</strong><small>'+esc(b.author)+'</small></div><div><a href="'+esc(bookInfo(b))+'" target="_blank" rel="noopener noreferrer">Google Books ↗</a><button type="button" data-ebook-saved-audio="'+esc(b.id)+'">🎧 '+esc(tr('audioVerify'))+'</button><button type="button" data-ebook-remove="'+esc(b.id)+'">'+esc(tr('remove'))+'</button><div class="ebook-saved-audio" data-ebook-saved-audio-result></div></div></article>').join(''):'<p>'+esc(tr('noneSaved'))+'</p>';
+ host.innerHTML=books.length?books.map(b=>{
+  const magazine=b.kind==='magazine';
+  const url=magazine?b.issues:bookInfo(b);
+  const author=magazine?b.publisher:b.author;
+  return '<article><div><strong>'+esc(b.title)+'</strong><small>'+esc(author)+'</small></div><div>'+
+    '<a href="'+esc(url)+'" target="_blank" rel="noopener noreferrer">'+(magazine?'Official publisher &amp; covers':'Google Books')+' ↗</a>'+
+    (magazine?'':'<button type="button" data-ebook-saved-audio="'+esc(b.id)+'">🎧 '+esc(tr('audioVerify'))+'</button>')+
+    '<button type="button" data-ebook-remove="'+esc(b.id)+'">'+esc(tr('remove'))+'</button>'+
+    '<div class="ebook-saved-audio" data-ebook-saved-audio-result></div></div></article>';
+ }).join(''):'<p>'+esc(tr('noneSaved'))+'</p>';
+}
+function renderMagazineResult(root,mag,p){
+ const host=root.querySelector('[data-ebook-result]');
+ if(!host)return;
+ const affiliate=window.MatchAppEbookAffiliate;
+ const offers=window.MatchAppMagazines?.buyLinks(mag,market(),affiliate)||[];
+ const tagged=offers.some(x=>affiliate?.isAffiliateLink(x.url));
+ const links=offers.map(({name,url})=>{
+  const paid=!!affiliate?.isAffiliateLink(url);
+  return '<a class="ebook-provider" href="'+esc(url)+'" target="_blank" rel="'+(paid?'sponsored ':'')+
+   'noopener noreferrer" data-ebook-provider="'+esc(name)+'"'+(paid?' data-ebook-affiliate="amazon-br"':'')+'>'+
+   esc(name)+(paid?' · '+esc(affiliate.paidLabel(lang())):'')+' ↗</a>';
+ }).join('');
+ host.hidden=false;
+ host.innerHTML='<div class="ebook-result-grid magazine-result-grid">'+
+ '<div class="ebook-cover magazine-official-art">'+
+ '<img data-magazine-publisher-icon src="'+esc(mag.icon)+'" alt="Official '+esc(mag.title)+' publisher icon" loading="lazy" decoding="async" hidden>'+
+ '<div data-magazine-brand><small>ORIGINAL PUBLISHER</small><strong>'+esc(mag.title)+'</strong><span>'+esc(mag.publisher)+'</span></div></div>'+
+ '<div class="ebook-result-copy"><p class="ebook-kicker">📰 MAGAZINE · '+esc(mag.region==='GLOBAL'?'Worldwide':mag.region)+'</p>'+
+ '<h3>'+esc(mag.title)+'</h3><p class="ebook-author">Published by '+esc(mag.publisher)+'</p>'+
+ '<p class="ebook-summary">'+esc(mag.summary)+'</p>'+
+ '<p class="magazine-original-note">Original issue covers, editions and current prices are available at the publisher. This identity tile does not imitate an issue cover.</p>'+
+ '<div class="ebook-source-groups"><div><h4>Original issues and covers</h4><div class="ebook-provider-row">'+
+ '<a class="ebook-provider" href="'+esc(mag.issues)+'" target="_blank" rel="noopener noreferrer" data-ebook-provider="Official issues">Original covers &amp; issues ↗</a></div></div>'+
+ (p.access==='paid'?'':'<div><h4>Legally free publisher pages</h4><div class="ebook-provider-row">'+
+ '<a class="ebook-provider ebook-free" href="'+esc(mag.site)+'" target="_blank" rel="noopener noreferrer" data-ebook-provider="Publisher free articles">Publisher articles ↗</a></div>'+
+ '<p class="ebook-rights">Free articles vary. This is not a free full-issue download, and some articles may require a subscription.</p></div>')+
+ '<div><h4>Purchase &amp; subscriptions</h4><div class="ebook-provider-row">'+links+'</div>'+
+ (tagged?'<p class="ebook-rights">'+esc(affiliate.disclosure(lang()))+'</p>':'')+
+ '<p class="ebook-rights">Amazon is a search, not a verified issue, current price, or guaranteed affiliate commission.</p></div></div>'+
+ '<div class="ebook-result-actions"><button type="button" class="ebook-save" data-ebook-save="'+esc(mag.id)+'">☆ '+esc(tr('save'))+'</button>'+
+ '<button type="button" class="ebook-nope" data-ebook-nope="'+esc(mag.id)+'">× '+esc(tr('nope'))+'</button>'+
+ '<button type="button" class="ebook-rematch" data-ebook-rematch>↻ '+esc(tr('another'))+'</button></div></div></div>';
+ const img=host.querySelector('[data-magazine-publisher-icon]');
+ const fallback=host.querySelector('[data-magazine-brand]');
+ if(img){
+  img.onload=()=>{if(img.naturalWidth>0){img.hidden=false;fallback.hidden=true}};
+  img.onerror=()=>{img.hidden=true;fallback.hidden=false};
+  if(img.complete&&img.naturalWidth>0){img.hidden=false;fallback.hidden=true}
+ }
+ host.scrollIntoView({behavior:window.matchMedia?.('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'nearest'});
+ analytics('ebook_match_reveal',{ebook_id:mag.id,ebook_title:mag.title,ebook_access:p.access,ebook_format:'magazine'});
 }
 function renderResult(root,book,p,relaxed,audio,magazine){
  if(magazine){renderMagazineResult(root,book,p);return;}
