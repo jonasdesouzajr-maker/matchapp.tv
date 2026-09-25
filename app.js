@@ -1184,6 +1184,14 @@ function getVerifiedPoster(title) {
 
 // Shared only for exact-identity artwork; recommendation logic is unchanged.
 window.getVerifiedPoster = getVerifiedPoster;
+window.setLoadedMatchPoster = function(url,title) {
+    // An already-selected match has one shared poster for display, Watch Later
+    // and sharing. Never publish a candidate URL before its image has loaded.
+    if (!url || window.globalMatchTitle !== title) return false;
+    globalMatchPoster = url;
+    window.globalMatchPoster = url;
+    return true;
+};
 
 let CATALOG_TMDB_IDENTITIES_PROMISE = null;
 function catalogIdentityKey(value) {
@@ -4477,6 +4485,10 @@ async function renderResult(selected, isSpecificSearch) {
     });
     posterEl.onerror = null;
     posterEl.src = localCover;
+    // The original image will replace this only after a successful image
+    // probe. A broken CDN URL must not enter saved/share poster snapshots.
+    globalMatchPoster = localCover;
+    window.globalMatchPoster = localCover;
     // A generated result cover must still try the exact title's catalog image;
     // otherwise an unavailable first source becomes permanent for this match.
     if ((!realCover || /^data:image\/svg\+xml/.test(realCover)) &&
