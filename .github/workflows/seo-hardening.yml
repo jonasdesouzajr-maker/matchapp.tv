@@ -17,7 +17,7 @@ permissions:
   actions: write
 
 concurrency:
-  group: seo-hardening
+  group: matchapp-content-publish
   cancel-in-progress: false
 
 jobs:
