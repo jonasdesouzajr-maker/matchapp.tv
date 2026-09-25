@@ -541,7 +541,7 @@ function readSports(){
     }
     const items=Array.isArray(parsed.items)?parsed.items.filter(i=>
       i&&i.category==='sports'&&i.title&&i.id&&
-      isAllowed(i.url,{domains:['reuters.com','apnews.com','g1.globo.com','espn.com','espn.com.br','theguardian.com','formula1.com','nba.com','theconversation.com','sportbusy.com']})&&
+      isAllowed(i.url,{domains:['reuters.com','apnews.com','g1.globo.com','espn.com','espn.com.br','theguardian.com','formula1.com','nba.com','theconversation.com']})&&
       Number.isFinite(Date.parse(i.published_at))&&
       Date.now()-Date.parse(i.published_at)<96*3600000).slice(0,12):[];
     return {updated_at:parsed.updated_at,items};
