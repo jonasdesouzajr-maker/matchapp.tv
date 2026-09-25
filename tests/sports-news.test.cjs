@@ -69,8 +69,8 @@ test('non-licensed RSS sources never enter approved sports fallbacks',()=>{
  assert.deepEqual(partner.parseFeed(xml,fake,now),[]);
  assert.equal(partner.FEEDS.length,1);
  assert.equal(partner.FEEDS[0].source,'The Conversation');
- assert.doesNotMatch(read('latest-news.js'),/sportbusy\\.com/);
- assert.doesNotMatch(read('tools/refresh-news-rss.js'),/sportbusy\\.com/);
+ assert.doesNotMatch(read('latest-news.js'),/sportbusy\.com/);
+ assert.doesNotMatch(read('tools/refresh-news-rss.js'),/sportbusy\.com/);
 });
 test('The Conversation approved sports Atom title retains original URL and source date without copied article body',()=>{
  const partner=require('../tools/sports-partner-feed.js');
