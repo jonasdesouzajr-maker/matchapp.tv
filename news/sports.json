@@ -1,0 +1,22 @@
+{
+  "updated_at": "2026-09-25T09:37:31.587Z",
+  "source_policy": "Explicitly authorized attributed original publisher RSS/Atom headlines; directly linked canonical URLs, no article-body/image republication and no betting guides",
+  "items": [
+    {
+      "id": "49a0d2ea",
+      "title": "Politiques sportives : comment lutter vraiment contre le décrochage des jeunes ?",
+      "url": "https://theconversation.com/politiques-sportives-comment-lutter-vraiment-contre-le-decrochage-des-jeunes-291529",
+      "source": "The Conversation",
+      "source_domain": "theconversation.com",
+      "source_home": "https://theconversation.com",
+      "country": "GLOBAL",
+      "category": "sports",
+      "sport": "Sports",
+      "event_type": "Sports",
+      "published_at": "2026-09-23T13:48:27.000Z",
+      "timestamp_kind": "published",
+      "discovery_source": "Authorized publisher RSS/Atom",
+      "image": null
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-25T09:23:10.411Z",
-  "feed_version": "f2e8668b",
-  "sports_updated_at": null,
+  "generated_at": "2026-09-25T09:37:31.646Z",
+  "feed_version": "01157ac4",
+  "sports_updated_at": "2026-09-25T09:37:31.587Z",
   "source_policy": "direct-trusted-publisher-rss+google-trends-keyword-signals",
   "seo_policy": "per-story keyword snapshot at first discovery + source citation + stable archive",
   "items": [
@@ -2537,6 +2537,95 @@
           "BBC entertainment news"
         ],
         "seo_generated_at": "2026-09-23T16:50:35.095Z"
+      }
+    },
+    {
+      "id": "49a0d2ea",
+      "title": "Politiques sportives : comment lutter vraiment contre le décrochage des jeunes ?",
+      "url": "https://theconversation.com/politiques-sportives-comment-lutter-vraiment-contre-le-decrochage-des-jeunes-291529",
+      "source": "The Conversation",
+      "source_domain": "theconversation.com",
+      "source_home": "https://theconversation.com",
+      "country": "GLOBAL",
+      "category": "sports",
+      "sport": "Sports",
+      "event_type": "Sports",
+      "published_at": "2026-09-23T13:48:27.000Z",
+      "timestamp_kind": "published",
+      "discovery_source": "Authorized publisher RSS/Atom",
+      "image": null,
+      "discovered_at": "2026-09-25T09:37:31.587Z",
+      "person": "",
+      "description": "Sports coverage linked to the original publisher The Conversation. MatchApp records when it was indexed; open the source for full context.",
+      "matchapp_url": "https://matchapp.tv/news/articles/politiques-sportives-comment-lutter-vraiment-contre-le-decrochage-des-jeunes-49a0d2/",
+      "landing_url": "https://matchapp.tv/?news=49a0d2ea#latest-news",
+      "seo": {
+        "primary_keyword": "politiques sportives comment lutter vraiment sports news",
+        "short_tail": [
+          "Sports",
+          "sports news",
+          "latest sports news",
+          "today sports headlines",
+          "politiques",
+          "sportives",
+          "comment",
+          "lutter",
+          "vraiment",
+          "contre"
+        ],
+        "long_tail": [
+          "politiques sportives comment lutter vraiment sports news 2026",
+          "politiques sportives comment lutter vraiment latest update 2026-09-23",
+          "Sports latest news September 2026",
+          "The Conversation sports news indexed 2026-09-23",
+          "politiques sportives comment lutter vraiment The Conversation original report"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "politiques",
+          "sportives",
+          "comment",
+          "lutter",
+          "vraiment",
+          "contre",
+          "decrochage",
+          "des"
+        ],
+        "freshness_keywords": [
+          "2026-09-23",
+          "September 2026"
+        ],
+        "source_keywords": [
+          "The Conversation",
+          "Sports The Conversation",
+          "The Conversation sports headlines"
+        ],
+        "meta_title": "Politiques sportives : comment lutter vraiment contre le…",
+        "meta_description": "Sports reporting indexed 2026-09-23. Open the original publisher through MatchApp Latest News.",
+        "keywords": [
+          "politiques sportives comment lutter vraiment sports news",
+          "Sports",
+          "sports news",
+          "latest sports news",
+          "today sports headlines",
+          "politiques",
+          "sportives",
+          "comment",
+          "lutter",
+          "vraiment",
+          "contre",
+          "politiques sportives comment lutter vraiment sports news 2026",
+          "politiques sportives comment lutter vraiment latest update 2026-09-23",
+          "Sports latest news September 2026",
+          "The Conversation sports news indexed 2026-09-23",
+          "politiques sportives comment lutter vraiment The Conversation original report",
+          "The Conversation",
+          "Sports The Conversation",
+          "The Conversation sports headlines",
+          "2026-09-23",
+          "September 2026"
+        ],
+        "seo_generated_at": "2026-09-25T09:37:31.646Z"
       }
     },
     {
