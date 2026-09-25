@@ -134,6 +134,11 @@
   let category = 'all';
   let matchPicks = [];
   let previousMatch = [];
+  // Keep the browse surface bounded on low-memory TVs, phones and WebViews.
+  // Future editorial catalog growth must never create thousands of DOM cards
+  // or start thousands of remote artwork requests in one render.
+  const KIDS_BROWSE_BATCH=24;
+  let kidsBrowseVisible=KIDS_BROWSE_BATCH;
   const SAVED_KEY = 'match_kids_saved_titles';
   let savedTitles;
   try { const raw = JSON.parse(read(SAVED_KEY) || '[]'); savedTitles = new Set(Array.isArray(raw) ? raw.filter(x => typeof x === 'string').slice(0,100) : []); }
@@ -359,7 +364,7 @@
     const host = document.getElementById('kids-chips'); if (!host) return;
     const hadFocus = host.contains(document.activeElement);
     host.innerHTML = CATEGORIES.map(c => '<button type="button" class="kids-chip ' + (c === category ? 'active' : '') + '" data-cat="' + c + '" aria-pressed="' + (c === category) + '"><span class="kids-chip-icon" aria-hidden="true">' + icons[c] + '</span>' + escapeHTML(categoryLabel(c)) + '</button>').join('');
-    host.querySelectorAll('button').forEach(b => b.addEventListener('click', () => { category = b.dataset.cat; renderChips(); renderGrid(); }));
+    host.querySelectorAll('button').forEach(b => b.addEventListener('click', () => { category = b.dataset.cat; kidsBrowseVisible=KIDS_BROWSE_BATCH; renderChips(); renderGrid(); }));
     if (hadFocus) host.querySelector('[data-cat="' + category + '"]')?.focus({preventScroll:true});
   }
 
@@ -367,10 +372,27 @@
     const host = document.getElementById('kids-grid'); if (!host) return;
     const search=normalizeTitle(document.getElementById('kids-search')?.value || ''),era=document.getElementById('kids-era')?.value || 'all';
     const items = allowedLibrary(currentAge()).filter(x => (category === 'all' || x.cats.includes(category)) && normalizeTitle(x.title).includes(search) && (era==='all' || Math.floor(Number(x.year)/10)*10===Number(era)));
-    host.innerHTML = items.map((x,i) => cardHTML(x, false, 'grid-' + i)).join('');
+    const visible=items.slice(0,kidsBrowseVisible);
+    host.innerHTML = visible.map((x,i) => cardHTML(x, false, 'grid-' + i)).join('');
     host.querySelectorAll('.kids-card').forEach((el,i) => el.style.setProperty('--card-order', Math.min(i,7)));
     document.getElementById('kids-grid-status').textContent = items.length ? items.length + ' ' + tr('pickCount') : tr('empty');
-    items.forEach((x,i) => hydratePoster(x, 'grid-' + i));
+    visible.forEach((x,i) => hydratePoster(x, 'grid-' + i));
+    // Add one localized, keyboard-accessible control only when more reviewed
+    // identities exist. Existing cards, approved age bands and URLs are untouched.
+    if(visible.length<items.length){
+      const more=document.createElement('div');more.className='kids-grid-more';
+      const button=document.createElement('button');button.className='kids-chip';button.type='button';
+      button.textContent=lang==='pt-BR'?'Mostrar mais títulos':lang==='es'?'Ver más títulos':'Show more titles';
+      button.setAttribute('aria-label',button.textContent+' ('+(items.length-visible.length)+')');
+      button.addEventListener('click',()=>{
+        kidsBrowseVisible+=KIDS_BROWSE_BATCH;
+        // Avoid resetting document scroll on phones/Android when adding pages.
+        const before=window.scrollY;
+        renderGrid();
+        window.scrollTo({top:before,behavior:'instant'});
+      });
+      more.appendChild(button);host.appendChild(more);
+    }
   }
 
   function renderMatchControls() {
@@ -685,11 +707,11 @@
 
     document.getElementById('kids-lang')?.addEventListener('change', e => setLanguage(e.target.value));
     document.getElementById('kids-exit')?.addEventListener('click', exitKids);
-    ageSelect?.addEventListener('change', () => { write(AGE_KEY, ageSelect.value); clearChat();clearMatch(); document.getElementById('kids-watch-dialog')?.close?.(); renderChips();renderGrid(); renderFeatured();renderNostalgia();renderSaved(); });
+    ageSelect?.addEventListener('change', () => { kidsBrowseVisible=KIDS_BROWSE_BATCH;write(AGE_KEY, ageSelect.value); clearChat();clearMatch(); document.getElementById('kids-watch-dialog')?.close?.(); renderChips();renderGrid(); renderFeatured();renderNostalgia();renderSaved(); });
     document.getElementById('kids-match-form').addEventListener('submit',event=>{event.preventDefault();makeKidsMatch();});
     document.querySelectorAll('#kids-match-form select').forEach(select=>select.addEventListener('change',clearMatch));
-    document.getElementById('kids-search').addEventListener('input',renderGrid);
-    document.getElementById('kids-era').addEventListener('change',renderGrid);
+    document.getElementById('kids-search').addEventListener('input',()=>{kidsBrowseVisible=KIDS_BROWSE_BATCH;renderGrid();});
+    document.getElementById('kids-era').addEventListener('change',()=>{kidsBrowseVisible=KIDS_BROWSE_BATCH;renderGrid();});
     document.getElementById('kids-watch-region').addEventListener('change',event=>{write('match_kids_watch_region',event.target.value);renderWatchLinks();updateDirectLinks();});
     document.getElementById('kids-ask-form')?.addEventListener('submit', e => { e.preventDefault(); askKids(document.getElementById('kids-question')?.value || ''); });
 
