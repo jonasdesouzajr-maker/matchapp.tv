@@ -56,3 +56,56 @@ test('sports reuse existing homepage click flow, real source links, semantic met
  assert.match(read('.github/workflows/sports-refresh.yml'),/NODE_OPTIONS: --dns-result-order=ipv4first/);
  assert.match(read('tools/update-sitemap.js'),/newsUrlsFromDisk/);
 });
+
+
+test('explicitly authorized partner sports RSS is original-link only, date-bound and excludes gambling',()=>{
+ const partner=require('../tools/sports-partner-feed.js');
+ const f=partner.FEEDS.find(v=>v.source==='SportBusy'),time=Date.parse('2026-09-25T12:00:00Z');
+ const xml='<rss><channel>'+
+  '<item><title>Football club completes important new season announcement</title>'+
+  '<link>https://www.sportbusy.com/news/football-season-announcement</link>'+
+  '<pubDate>Fri, 25 Sep 2026 10:00:00 GMT</pubDate></item>'+
+  '<item><title>Football betting odds and sportsbook promotion guide</title>'+
+  '<link>https://www.sportbusy.com/news/betting-odds</link>'+
+  '<pubDate>Fri, 25 Sep 2026 10:00:00 GMT</pubDate></item>'+
+  '<item><title>Football title from an impostor domain must be rejected</title>'+
+  '<link>https://sportbusy.com.evil.example/sport/test</link>'+
+  '<pubDate>Fri, 25 Sep 2026 10:00:00 GMT</pubDate></item>'+
+  '</channel></rss>';
+ const items=partner.parseFeed(xml,f,time);
+ assert.equal(items.length,1);
+ assert.equal(items[0].title,'Football club completes important new season announcement');
+ assert.equal(items[0].source,'SportBusy');
+ assert.equal(items[0].timestamp_kind,'published');
+ assert.equal(items[0].published_at,'2026-09-25T10:00:00.000Z');
+ assert.equal(items[0].image,null);
+ assert(partner.parseFeed(xml,{...f,domain:'sportsbusy.com'},time).length===0);
+});
+test('The Conversation approved sports Atom title retains original URL and source date without copied article body',()=>{
+ const partner=require('../tools/sports-partner-feed.js');
+ const feed=partner.FEEDS.find(v=>v.source==='The Conversation');
+ const xml='<feed xmlns="http://www.w3.org/2005/Atom"><entry>'+
+  '<title>Research explains the impact of exercise across generations</title>'+
+  '<link rel="alternate" href="https://theconversation.com/research-explains-the-impact-of-exercise-246801" />'+
+  '<published>2026-09-25T09:12:00Z</published>'+
+  '<content>This article body must never be republished.</content>'+
+  '</entry></feed>';
+ const rows=partner.parseFeed(xml,feed,Date.parse('2026-09-25T10:00:00Z'));
+ assert.equal(rows.length,1);
+ assert.match(rows[0].url,/^https:\/\/theconversation\.com\//);
+ assert.equal(rows[0].image,null);
+ assert.equal(rows[0].timestamp_kind,'published');
+ assert.doesNotMatch(JSON.stringify(rows),/article body/i);
+});
+test('source transport fallback is constrained to approved canonical sources without photos or gambling',()=>{
+ const f=read('tools/refresh-sports-discovery.js'),p=read('tools/sports-partner-feed.js'),
+  news=read('tools/refresh-news-rss.js'),home=read('latest-news.js');
+ assert.match(f,/collectLicensedPartnerLinks/);
+ assert.match(p,/GAMBLING/);
+ assert.match(p,/image:null/);
+ assert.match(news,/theconversation\.com/);
+ assert.match(news,/sportbusy\.com/);
+ assert.match(home,/theconversation\.com/);
+ assert.match(home,/sportbusy\.com/);
+ assert.match(news,/timestamp_kind/);
+});
