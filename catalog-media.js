@@ -328,6 +328,99 @@
     return rows;
   }
 
+  // Adults only: exact-title poster recovery for Top Titles and the match result.
+  // Retry the same TMDB artwork at different image sizes before attempting a
+  // different image. Only metadata already bound to this exact title can add
+  // another artwork identity; this never searches for unrelated artwork.
+  function adultPosterSurface(img){
+    return !!(img && (img.id==='res-poster-img'||img.closest?.('#marquee-track')));
+  }
+  function posterVariants(url){
+    const safe=String(url||'');
+    if(!TRUSTED_POSTER.test(safe))return [];
+    const tmdb=/^(https:\/\/image\.tmdb\.org\/t\/p\/)(?:w[0-9]+|original)\/([A-Za-z0-9_.-]+)$/.exec(safe);
+    if(!tmdb)return [safe];
+    return [...new Set([safe,tmdb[1]+'w780/'+tmdb[2],tmdb[1]+'w500/'+tmdb[2],tmdb[1]+'original/'+tmdb[2]])];
+  }
+  function exactPosterCandidates(state){
+    let registry='';
+    try{registry=typeof window.getVerifiedPoster==='function'?window.getVerifiedPoster(state.title):'';}catch(_){}
+    const meta=state.meta||{};
+    const sources=[registry,state.preferred,meta.poster_large_url,meta.poster_url,meta.poster_original_url];
+    return [...new Set(sources.flatMap(posterVariants))];
+  }
+  function posterImageLoads(url){
+    return new Promise(resolve=>{
+      const probe=new Image();
+      probe.onload=()=>resolve(true);
+      probe.onerror=()=>resolve(false);
+      probe.src=url;
+    });
+  }
+  async function repairAdultPoster(img,state){
+    if(state.repairing)return;
+    state.repairing=true;
+    const title=state.title,identity=state;
+    try{
+      // If the curated rail's hard-coded source failed, an exact database
+      // title is the only extra identity source; do not fall back to fuzzy AI.
+      if(!state.meta){
+        const found=await lookup(title);
+        if(img.__matchappAdultPoster!==identity)return;
+        if(found&&normalise(found.title)===normalise(title))state.meta=found;
+      }
+      for(const url of exactPosterCandidates(state)){
+        if(state.failed.has(url))continue;
+        state.failed.add(url);
+        if(!(await posterImageLoads(url)))continue;
+        if(img.__matchappAdultPoster!==identity||!img.isConnected)return;
+        img.dataset.matchappFallbackStage='verified';
+        img.src=url;
+        if(img.id==='res-poster-img'&&window.globalMatchTitle===title)window.globalMatchPoster=url;
+        return;
+      }
+    }finally{
+      if(img.__matchappAdultPoster===identity)state.repairing=false;
+    }
+  }
+  function recoverAdultPoster(img,title,meta,preferred){
+    if(!adultPosterSurface(img)||!title)return;
+    const name=String(title);
+    let state=img.__matchappAdultPoster;
+    if(!state||state.title!==name){
+      state={title:name,meta:null,preferred:'',failed:new Set(),repairing:false};
+      img.__matchappAdultPoster=state;
+    }
+    if(meta&&normalise(meta.title)===normalise(name))state.meta=meta;
+    if(preferred&&posterVariants(preferred).length)state.preferred=preferred;
+    img.dataset.matchappMediaTitle=name;
+    if(img.dataset.matchappAdultPosterBound!=='1'){
+      img.dataset.matchappAdultPosterBound='1';
+      img.addEventListener('error',()=>{
+        const active=img.__matchappAdultPoster;
+        if(!active)return;
+        const bad=img.currentSrc||img.src;
+        if(bad)active.failed.add(bad);
+        if(!String(img.src||'').startsWith('data:image/svg+xml')){
+          img.dataset.matchappFallbackStage='local';
+          img.src=localPoster(active.title);
+        }
+        void repairAdultPoster(img,active);
+      });
+    }
+    const current=String(img.currentSrc||img.src||'');
+    const originalLoaded=TRUSTED_POSTER.test(current)&&img.complete&&img.naturalWidth>0;
+    if(originalLoaded)return; // Never replace a working original with placeholder art.
+    if(current&&TRUSTED_POSTER.test(current)&&!img.complete)return; // Preserve in-flight remote loading.
+    if(current&&TRUSTED_POSTER.test(current)&&img.complete&&img.naturalWidth===0)state.failed.add(current);
+    if(!String(img.src||'').startsWith('data:image/svg+xml')&&
+       (!img.getAttribute('src')||(img.complete&&img.naturalWidth===0))){
+      img.dataset.matchappFallbackStage='local';
+      img.src=localPoster(name);
+    }
+    void repairAdultPoster(img,state);
+  }
+
   function localLikePoster(img){
     const raw=String(img?.getAttribute?.('src')||'');
     return !raw||raw.startsWith('data:image/svg+xml')||raw.includes('/kids/covers/');
@@ -570,6 +663,7 @@
       const img=card.querySelector('img[data-title]'),title=img?.dataset?.title||'';
       if(!title)return;
       const meta=await refreshExact(await lookup(title));
+      recoverAdultPoster(img,title,meta);
       const state=availability(meta);
       let ribbon=card.querySelector('.matchapp-cinema-ribbon');
       if(state.inCinemas){
@@ -639,8 +733,7 @@
 
     if(poster){
       poster.dataset.matchappMediaTitle=title;
-      hardenImage(poster,title,meta);
-      if(resolved.url)promotePoster(poster,resolved.url,title);
+      recoverAdultPoster(poster,title,meta,resolved.url);
     }
     if(!meta){
       applyDetails(null);
@@ -685,7 +778,11 @@
     @media(max-width:640px){.matchapp-media-meta{display:block;margin:6px 0 0}.matchapp-title-fact-row{grid-template-columns:1fr;gap:2px}.matchapp-media-preview{width:100%}.matchapp-cinema-ribbon{top:7px;font-size:9px;padding:5px 8px 5px 10px}}
   `;document.head.appendChild(s);}
   function hardenWithin(root){
-    root?.querySelectorAll?.('img[data-title]:not([data-matchapp-media-hardened]),img[data-poster-title]:not([data-matchapp-media-hardened]),#res-poster-img:not([data-matchapp-media-hardened]),.kids-card img:not([data-matchapp-media-hardened])').forEach(img=>hardenImage(img,titleForImage(img)));
+    root?.querySelectorAll?.('img[data-title]:not([data-matchapp-media-hardened]),img[data-poster-title]:not([data-matchapp-media-hardened]),#res-poster-img:not([data-matchapp-media-hardened]),.kids-card img:not([data-matchapp-media-hardened])').forEach(img=>{
+      const title=titleForImage(img);
+      if(adultPosterSurface(img))recoverAdultPoster(img,title);
+      else hardenImage(img,title);
+    });
   }
   function boot(){
     installStyle();syncGenreFilter();hardenWithin(document);
@@ -729,6 +826,6 @@
       queueKidsEnrich();
     });
   }
-  window.MatchAppCatalogMedia=Object.freeze({lookup,lookupLive,refreshExact,resolvePoster,normalise,localPoster,enrichMain,enrichKids,enrichTrendingRail,renderPreview,renderAvailability,availability,streamingElsewhere,viewingTarget,providerLinks,providerSearch,showtimesUrl,sourcePage,regionCode,countryName,titleKeysForGenres,availableGenres,syncGenreFilter});
+  window.MatchAppCatalogMedia=Object.freeze({recoverAdultPoster,posterVariants,lookup,lookupLive,refreshExact,resolvePoster,normalise,localPoster,enrichMain,enrichKids,enrichTrendingRail,renderPreview,renderAvailability,availability,streamingElsewhere,viewingTarget,providerLinks,providerSearch,showtimesUrl,sourcePage,regionCode,countryName,titleKeysForGenres,availableGenres,syncGenreFilter});
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
 })();
