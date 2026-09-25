@@ -309,7 +309,7 @@
     const section=document.createElement('details');
     section.id='latest-news';section.className='ma-news premiere-disclosure ma-static-news';section.open=true;section.dataset.hasNew='false';
     section.innerHTML=`<summary><span class="ma-news-summary-main"><span class="ma-news-title">Latest News</span><span class="ma-news-description">Verified entertainment & sports · local + worldwide</span></span><span class="ma-news-new" role="status" aria-label="New verified news available"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M5 3h2v18H5V3Zm3 2h10.4l-1.9 4 1.9 4H8V5Z"/><circle class="ma-news-new-dot" cx="19" cy="5" r="3"/></svg><span>New</span></span></summary><div class="ma-news-panel"><div class="ma-news-empty">Loading verified entertainment and sports headlines…</div></div>`;
-    const primaryAction=document.getElementById('ma-concierge')||document.getElementById('questionnaire-box');const anchor=primaryAction||premiere;if(anchor)anchor.insertAdjacentElement('afterend',section);else main.prepend(section);
+    const primaryAction=document.getElementById('ebook-matcher-root')||document.getElementById('ma-concierge')||document.getElementById('questionnaire-box');const anchor=primaryAction||premiere;if(anchor)anchor.insertAdjacentElement('afterend',section);else main.prepend(section);
 
     const panel=section.querySelector('.ma-news-panel');let currentVersion='';let carousel=null;
     function openAndReveal(id=''){if(!section.open)section.open=true;window.setTimeout(()=>{const revealed=carousel&&carousel.reveal?carousel.reveal(id):false;if(!revealed){try{section.scrollIntoView({behavior:'smooth',block:'nearest'});}catch(_){}}if(carousel&&carousel.startAuto)carousel.startAuto();},220);}
