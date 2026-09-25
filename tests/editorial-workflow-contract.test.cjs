@@ -28,7 +28,7 @@ test('daily midnight coordinates existing verified data owners and retries from 
  assert.match(yml,/git reset --hard origin\/main/);
  assert.match(yml,/node tools\/check-content-rotation\.js[\s\S]*?git add -A -- index\.html/);
  assert.doesNotMatch(yml,/\bgit add -A\s*(?:\n|\r|$)/,'Unscoped staging could commit unrelated private configuration');
- assert.doesNotMatch(yml,/gh workflow run pages-deploy\.yml/,'Main-push auto deploy must be the single owner');
+ assert.match(yml,/if: steps\.publish\.outputs\.changed == '1'[\s\S]*?gh workflow run pages-deploy\.yml --ref main/,'GITHUB_TOKEN commits need an explicit validated Pages dispatch');
  assert.doesNotMatch(yml,/gh workflow run indexnow\.yml/,'IndexNow must wait for confirmed Pages deployment');
 });
 
@@ -40,7 +40,11 @@ test('hourly NEWS remains publisher sourced; awareness recovery cannot start ano
  assert.match(events,/cron: '45 3 \* \* \*'/);
  assert.match(events,/node tools\/awareness-bot\.mjs/);
  assert.match(events,/git add index\.html awareness\/current\.json/);
- assert.doesNotMatch(news+events,/gh workflow run pages-deploy\.yml/);
+ assert.match(news,/gh workflow run pages-deploy\.yml --ref main/);
+ assert.match(events,/gh workflow run pages-deploy\.yml --ref main/);
+ assert.doesNotMatch(news,/- '\.github\/workflows\/news-refresh\.yml'/,'News workflow must not trigger itself from multi-workflow metadata merges');
+ assert.doesNotMatch(flow('kids-seo-refresh'),/- '\.github\/workflows\/kids-seo-refresh\.yml'/);
+ assert.doesNotMatch(flow('seo-hardening'),/- '\.github\/workflows\/seo-hardening\.yml'/);
 });
 
 test('only successful production Pages deployment initiates immediate IndexNow',()=>{
@@ -54,7 +58,13 @@ test('only successful production Pages deployment initiates immediate IndexNow',
  assert.doesNotMatch(now,/  push:/,'Raw commits may not ping still-unpublished pages');
  assert.match(now,/workflow_dispatch:/);
  assert.match(now,/schedule:/,'Scheduled IndexNow recovery retained');
- for(const name of publishers) assert.doesNotMatch(flow(name),/gh workflow run pages-deploy\.yml/);
+ for(const name of publishers){
+   const yml=flow(name);
+   assert.equal((yml.match(/gh workflow run pages-deploy\.yml --ref main/g)||[]).length,1,name+' must dispatch exactly once after a bot content commit');
+   assert.match(yml,/if: steps\.publish\.outputs\.changed == '1'/);
+   assert.doesNotMatch(yml,/gh workflow run indexnow\.yml/);
+ }
+ assert.match(deploy,/push:\s*\n\s*branches: \[main\]/,'Non-bot main pushes still trigger automatic validation/deployment');
 });
 
 test('ended global/day/awareness events preserve three-day visibility and SEO',()=>{

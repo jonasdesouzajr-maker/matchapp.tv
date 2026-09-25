@@ -55,10 +55,16 @@ GitHub Actions and manual edits until the owner explicitly changes it.
    server-only credentials. Existing trending rows may be retired only after
    successfully upserting replacement data. Return actual authentication
    403 vs backend 500; do not hide failures or clear data on API errors.
-5. There is exactly one auto Pages deploy per published main change.
-   No content writer manually dispatches Pages again. IndexNow is submitted
-   only after successful custom Pages deployment, with scheduled recovery.
-   Do not claim that GitHub dispatched a job means it actually succeeded.
+5. GitHub intentionally suppresses `on: push` workflow triggers for
+   `GITHUB_TOKEN` commits. External/direct main pushes invoke the custom
+   Pages validation workflow automatically. For each successful bot-generated
+   content commit, its owning workflow **must explicitly dispatch exactly
+   one `pages-deploy.yml --ref main`**; never dispatch for a no-op.
+   Do not separately dispatch IndexNow. Only the successfully completed
+   custom Pages deployment dispatches IndexNow, with scheduled recovery.
+   Pages newest-wins deploy concurrency ensures the latest committed
+   content is published without stale deployments or duplicate pings.
+   Do not claim GitHub's dispatch means deployment actually succeeded.
 6. `tools/check-content-rotation.js` and
    `tests/editorial-workflow-contract.test.cjs` enforce the basic
    cross-generator data/workflow rules. Keep AdSense's separate immutable
@@ -77,3 +83,9 @@ enable a branch ruleset for main that requires pull requests, code-owner
 approval and required checks**; CODEOWNERS/test files alone cannot block an
 agent already allowed to push directly to main. If the branch protection is
 not enabled, never claim these instructions physically revoke write access.
+
+On a PR that edits multiple workflow YAML files, do not enable same-workflow
+self-trigger patterns for news, Kids SEO and SEO hardening: GitHub concurrency
+can replace older pending runs. Keep the midnight self-trigger as the single
+full-content recovery on editorial workflow changes. Ordinary data-source
+pushes and each independent recurring schedule remain intact.
