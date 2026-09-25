@@ -20,7 +20,7 @@ const clean=value=>String(value||'')
  .replace(/&amp;/g,'&').replace(/&quot;/g,'"').replace(/&apos;/g,"'")
  .replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&nbsp;/g,' ')
  .replace(/\s+/g,' ').trim();
-const attr=(block,name)=>{const m=block.match(new RegExp('\\b'+name+'=["\\']([^"\\']+)["\\']','i'));return m?clean(m[1]):''};
+const attr=(block,name)=>{const m=block.match(new RegExp('\\b'+name+'="([^"]+)"','i'));return m?clean(m[1]):''};
 const tag=(block,name)=>{const m=block.match(new RegExp('<'+name+'(?:\\s[^>]*)?>([\\s\\S]*?)<\\/'+name+'>','i'));return m?clean(m[1]):''};
 const allowed=url=>{
  try{const u=new URL(url);return u.protocol==='https:'&&
