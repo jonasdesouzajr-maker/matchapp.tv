@@ -764,7 +764,15 @@
     const enrichCard=async card=>{
       const img=card.querySelector('img[data-title]'),title=img?.dataset?.title||'';
       if(!title)return;
-      let meta=await refreshExact(await lookup(title));
+      const pinnedId=Number(img.dataset.tmdbId),pinnedKind=img.dataset.tmdbKind;
+      const pinnedYear=Number(img.dataset.tmdbYear);
+      let meta=await lookup(title,{
+        kind:['movie','tv'].includes(pinnedKind)?pinnedKind:'',
+        year:Number.isSafeInteger(pinnedYear)&&pinnedYear>1880?pinnedYear:''
+      });
+      if(Number.isSafeInteger(pinnedId)&&pinnedId>0&&
+         meta&&Number(meta.tmdb_id)!==pinnedId)meta=null;
+      meta=await refreshExact(meta);
       // Some verified Top Titles use a localized label (e.g. Vermelho Sangue).
       // Their database row may use the original-language title, so an exact
       // normalized-title SQL lookup cannot find it even when the displayed
@@ -812,6 +820,9 @@
 
   async function resolvePoster(title,opts={}){
     let meta=await lookup(title,opts);
+    const pinned=Number(opts.tmdbId);
+    if(Number.isSafeInteger(pinned)&&pinned>0&&meta&&
+       Number(meta.tmdb_id)!==pinned)meta=null;
     if(meta)meta=await refreshExact(meta);
     if(!safePoster(meta)){
       const live=await lookupLive(title,opts);
