@@ -65,3 +65,5 @@ test('Google Play links remain ordinary until an approved Partnerize affiliate l
  assert(!match.includes('GGKEY:'));
  assert(!hub.includes('GGKEY:'));
 });
+
+test('cookie notice distinguishes retailer tracking from a completed purchase',()=>{const policy=read('cookies.html');assert.match(policy,/External e-book retailers and affiliate links/);assert.match(policy,/a click is not a completed purchase/);});
