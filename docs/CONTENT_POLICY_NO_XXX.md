@@ -1,0 +1,13 @@
+# Permanent MatchApp TV Ai editorial rule — no XXX
+
+**Scope:** Every MatchApp TV Ai adult-facing surface (web, PWA, desktop, mobile browsers, tablet and the adult Android WebView), its AI answers, matching candidates, dynamic news and reading-source links. Kids Mode has its own *stricter* server-approved policy and must not be weakened or merged with adult catalogs.
+
+- Never recommend, feature, link to, scrape, buy/sell through, or render covers from pornographic/XXX entertainment, pornographic-only publishers, explicit erotic magazines or pornographic distribution platforms. This remains enforced even when users explicitly ask.
+- Enforce safety in curated catalogs, discovery and AI responses, publisher/source ingestion, original-cover selection and both client and server fallback paths. A prompt instruction alone is never a sufficient filter; retain the programmatic client/server checks.
+- Exclude confirmed explicit XXX content; **do not overblock** ordinary mainstream film/TV ratings, sexual-health or medical education, responsible journalism, scientific articles, mainstream fashion or general-interest magazines merely for mature topics or a word such as "adult" or "sex."
+- Use genuine original poster/cover URLs only when tied to the exact title, edition or publisher; never display an unrelated or invented title cover. When current issue-cover rights or images cannot be verified, link to the publisher's original cover/issue page and show an accurately labeled publisher-identity icon or plain title fallback.
+- E-books, audiobooks and magazines are distinct opt-in discovery formats. A publisher's free article is *not* a free full downloadable magazine issue. Do not link unauthorized copies or claim that an edition or audiobook narrator is confirmed unless verified.
+- Amazon Brazil special links use only the currently configured approved website market and include the required Associates disclosure. Until separate mobile-app enrollment is approved, do not add Amazon magazine affiliate links or Amazon magazine outbound routes to the adult native Android/PWA surface; preserve independent publisher options.
+- Every future catalog import, news refresh, front-end component and AI change must keep these safeguards and regression tests. Do not adjust unrelated product mechanics, age gates, locked AdSense placements, or Kids Mode in order to enforce this rule.
+
+Implementation entry points: `content-safety.js`, `app.js`, `discover.js`, `latest-news.js`, `supabase/functions/gemini-proxy/index.ts`, `ebooks/magazines.js` and `ebooks/affiliate-links.js`. Regression tests: `tests/magazines-reading-safety.test.cjs` and `tests/magazines-safety-seo.test.cjs`.
