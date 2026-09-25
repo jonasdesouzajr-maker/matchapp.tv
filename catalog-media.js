@@ -396,7 +396,17 @@
     if(!img||!title||!(
       img.id==='res-poster-img'||img.closest?.('#marquee-track')
     ))return false;
-    const name=String(title),serial=(img.__matchappAdultPosterSerial||0)+1;
+    const name=String(title);
+    if(img.closest?.('#marquee-track') && img.dataset.tmdbId){
+      // Every curated Top Titles tile carries an exact numeric film/show ID.
+      // It disambiguates regional/localized titles even if a name search
+      // would otherwise return a same-named but unrelated work.
+      opts={...opts,
+        tmdbId:Number(img.dataset.tmdbId),
+        kind:img.dataset.tmdbKind||'',
+        year:img.dataset.tmdbYear||''};
+    }
+    const serial=(img.__matchappAdultPosterSerial||0)+1;
     img.__matchappAdultPosterSerial=serial;
     img.dataset.matchappMediaTitle=name;
     const current=()=>img.isConnected&&
@@ -426,12 +436,20 @@
         if(!current())return false;
         if(promoted.has(url))continue;
         promoted.add(url);
+        if(img.getAttribute('src')===url&&img.complete&&img.naturalWidth>0){
+          if(img.id==='res-poster-img'){
+            if(typeof window.setLoadedMatchPoster==='function')window.setLoadedMatchPoster(url,name);
+            else window.globalMatchPoster=url;
+          }
+          return true;
+        }
         if(!await probePoster(url))continue;
         if(!current())return false;
         img.dataset.matchappFallbackStage='metadata';
         if(img.getAttribute('src')!==url)img.src=url;
         if(img.id==='res-poster-img'){
-          window.globalMatchPoster=url;
+          if(typeof window.setLoadedMatchPoster==='function')window.setLoadedMatchPoster(url,name);
+          else window.globalMatchPoster=url;
         }
         return true;
       }
@@ -449,7 +467,10 @@
     if(!current())return false;
     img.dataset.matchappFallbackStage='local';
     img.src=fallback;
-    if(img.id==='res-poster-img')window.globalMatchPoster=fallback;
+    if(img.id==='res-poster-img'){
+      if(typeof window.setLoadedMatchPoster==='function')window.setLoadedMatchPoster(fallback,name);
+      else window.globalMatchPoster=fallback;
+    }
     return false;
   }
   function localLikePoster(img){
