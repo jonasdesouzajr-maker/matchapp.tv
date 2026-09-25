@@ -7,7 +7,7 @@
  * Source links remain original HTTPS publisher URLs. No story is invented.
  * GDELT Project API is distinct from the separately licensed GDELT Cloud.
  */
-const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
+const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto'),https=require('node:https');
 const ROOT=path.join(__dirname,'..'),OUTPUT=path.join(ROOT,'news','sports.json');
 const API='https://api.gdeltproject.org/api/v2/doc/doc';
 const DOMAINS=[
@@ -68,24 +68,83 @@ function normalizeArticles(articles,now=Date.now()){
  }
  return [...found.values()].sort((a,b)=>b.published_at.localeCompare(a.published_at)).slice(0,12);
 }
-async function main(){
+// Native Node HTTPS avoids the built-in fetch transport's fixed 10-second
+// connection timeout, which stopped the first GitHub Actions sports run before
+// the function's 15-second AbortController expired. This is not a proxy,
+// publisher scrape or alternate unapproved content provider.
+const REQUEST_TIMEOUT_MS=26000,MAX_RESPONSE_BYTES=2*1024*1024;
+function getGdeltJSON(url,httpsModule=https){
+ return new Promise((resolve,reject)=>{
+  let settled=false;
+  function fail(error){if(!settled){settled=true;reject(error)}}
+  const req=httpsModule.get(url,{
+   family:4,timeout:REQUEST_TIMEOUT_MS,
+   headers:{accept:'application/json','user-agent':'MatchAppSportsDiscovery/1.1 (+https://matchapp.tv/)'}
+  },res=>{
+   if(res.statusCode!==200){
+    res.resume();
+    fail(Error('GDELT API HTTP '+res.statusCode));
+    return;
+   }
+   let content='';
+   res.setEncoding('utf8');
+   res.on('data',chunk=>{
+    content+=chunk;
+    if(content.length>MAX_RESPONSE_BYTES){
+     req.destroy(Error('GDELT response exceeded safety limit'));
+    }
+   });
+   res.on('error',fail);
+   res.on('end',()=>{
+    if(settled)return;
+    try{
+     const parsed=JSON.parse(content);
+     if(!Array.isArray(parsed?.articles))throw Error('GDELT response has no article list');
+     settled=true;resolve(parsed);
+    }catch(e){fail(e)}
+   });
+  });
+  req.on('timeout',()=>req.destroy(Error('GDELT HTTPS timeout')));
+  req.on('error',fail);
+ });
+}
+function queryURL(maxRecords,query){
  const u=new URL(API);
- u.searchParams.set('query','(football OR soccer OR basketball OR tennis OR "Formula 1" OR olympics OR futebol OR basquete)');
+ u.searchParams.set('query',query);
  u.searchParams.set('mode','artlist');
  u.searchParams.set('format','json');
  u.searchParams.set('timespan','48h');
  u.searchParams.set('sort','datedesc');
- u.searchParams.set('maxrecords','250');
- const ac=new AbortController(),timer=setTimeout(()=>ac.abort(),15000);
- let rows;
- try{
-  const response=await fetch(u,{signal:ac.signal,headers:{accept:'application/json','user-agent':'MatchAppSportsDiscovery/1.0 (+https://matchapp.tv/)'}});
-  if(!response.ok)throw Error('GDELT API HTTP '+response.status);
-  const result=await response.json();
-  if(!Array.isArray(result?.articles))throw Error('GDELT response has no articles');
-  rows=normalizeArticles(result.articles);
- }finally{clearTimeout(timer)}
- if(rows.length<3)throw Error('Only '+rows.length+' verified original sports links; preserve last committed snapshot');
+ u.searchParams.set('maxrecords',String(maxRecords));
+ return u;
+}
+async function discoverWithRetry(request=getGdeltJSON){
+ const queries=[
+  ['(football OR soccer OR basketball OR tennis OR "Formula 1" OR olympics OR futebol OR basquete)',150],
+  ['(football OR soccer OR basketball OR tennis OR "Formula 1")',120],
+  ['(football OR basketball OR tennis OR futebol)',100]
+ ];
+ let lastError=null;
+ for(let attempt=0;attempt<queries.length;attempt++){
+  const [query,limit]=queries[attempt];
+  try{
+   const result=await request(queryURL(limit,query));
+   const rows=normalizeArticles(result.articles);
+   if(rows.length>=3)return rows;
+   lastError=Error('Only '+rows.length+' vetted original sports links on attempt '+(attempt+1));
+   console.warn('[sports] '+lastError.message);
+  }catch(e){
+   lastError=e;
+   // Keep diagnostics explicit: upstream DNS, TLS, HTTP 429, empty API
+   // payloads and connect timeouts are different failures.
+   console.warn('[sports] GDELT attempt '+(attempt+1)+'/'+queries.length+': '+(e?.cause?.code||e?.code||e?.message||'unknown'));
+  }
+  if(attempt<queries.length-1)await new Promise(resolve=>setTimeout(resolve,1500*(attempt+1)));
+ }
+ throw Error('GDELT source unavailable after bounded retries; prior committed news untouched: '+(lastError?.message||'no trusted results'));
+}
+async function main(){
+ const rows=await discoverWithRetry();
  const snapshot={updated_at:new Date().toISOString(),
   source_policy:'GDELT Project DOC 2.0 publisher-link discovery; original HTTPS publisher links only; no RSS syndication or copied photography',
   items:rows};
@@ -93,5 +152,6 @@ async function main(){
  fs.writeFileSync(OUTPUT,JSON.stringify(snapshot,null,2)+'\n');
  console.log(JSON.stringify({ok:true,sports:rows.length,sources:[...new Set(rows.map(i=>i.source))]}));
 }
-module.exports={normalizeArticles,publisher,dateOf,sportType};
+
+module.exports={normalizeArticles,publisher,dateOf,sportType,queryURL,getGdeltJSON,discoverWithRetry};
 if(require.main===module)main().catch(e=>{console.error('[sports] '+(e.stack||e.message));process.exitCode=1});
