@@ -76,7 +76,7 @@ function openAskFromBrand(){
  if(card)card.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'center'});
  setTimeout(()=>{
    const input=qs('#specific-search-input');
-   if(input){input.focus({preventScroll:true});input.classList.add('ma-ai-focus-pulse');setTimeout(()=>input.classList.remove('ma-ai-focus-pulse'),2200)}
+   if(input){input.classList.add('ma-ai-focus-pulse');setTimeout(()=>input.classList.remove('ma-ai-focus-pulse'),2200)}
    let cue=qs('.ma-ai-prompt-hint');
    if(!cue&&card){cue=el('div','ma-ai-prompt-hint','Type your request here to start a new chat with MatchApp Ai.');cue.setAttribute('role','status');card.appendChild(cue)}
    if(cue){cue.hidden=false;cue.classList.remove('is-showing');requestAnimationFrame(()=>cue.classList.add('is-showing'));setTimeout(()=>{cue.classList.remove('is-showing');setTimeout(()=>cue.hidden=true,240)},4200)}
@@ -265,7 +265,7 @@ function mountHome(){
  const input=qs('#specific-search-input',search);if(input)input.placeholder=t.askph;
  const send=qs('button.gold-btn',search);if(send)send.textContent=t.send;
  const qline=el('div','ma-quota-line');qline.hidden=true;pa.appendChild(qline);syncQuota(qline);
- function tab(which){const ask=which==='ask';bm.setAttribute('aria-selected',String(!ask));ba.setAttribute('aria-selected',String(ask));pm.hidden=ask;pa.hidden=!ask;document.body.classList.toggle('ma-match-tab',!ask);document.body.classList.toggle('ma-ask-tab',ask);if(ask)setTimeout(()=>input?.focus(),80)}
+ function tab(which){const ask=which==='ask';bm.setAttribute('aria-selected',String(!ask));ba.setAttribute('aria-selected',String(ask));pm.hidden=ask;pa.hidden=!ask;document.body.classList.toggle('ma-match-tab',!ask);document.body.classList.toggle('ma-ask-tab',ask)}
  bm.addEventListener('click',()=>tab('match'));ba.addEventListener('click',()=>tab('ask'));
  if(new URLSearchParams(location.search).get('ask')==='1'){
    tab('ask');
@@ -290,13 +290,13 @@ function mountHome(){
 function mountDiscover(){
  document.body.classList.add('ma-ia-discover');
  const t=c(),h=qs('.discover-title-copy h1');if(h)h.textContent=t.discover;
- const input=qs('#discover-new-input');if(input){input.placeholder=t.askph;input.setAttribute('autofocus','')}
+ const input=qs('#discover-new-input');if(input){input.placeholder=t.askph;input.removeAttribute('autofocus')}
  const send=qs('.composer-send');if(send)send.textContent=t.send;
  const row=qs('.newsearch-row');if(row&&!qs('.ma-discover-quota',row.parentElement)){
    const q=el('div','ma-discover-quota');q.hidden=true;row.insertAdjacentElement('afterend',q);
    const src=qs('#ai-usage-value');if(src){const paint=()=>{const v=src.textContent.trim();q.textContent=v&&!/checking/i.test(v)?v:'';q.hidden=!q.textContent};paint();new MutationObserver(paint).observe(src,{childList:true,subtree:true})}
  }
- const log=qs('#chat-log');if(log&&!log.children.length)setTimeout(()=>input?.focus(),180);
+ // Keyboard opens only when users explicitly choose to type; microphone stays available.
 }
 function mountTogether(){
  document.body.classList.add('ma-ia-together');
