@@ -1,10 +1,10 @@
 {
-  "version": "2026.09.24.2",
-  "date": "2026-09-24",
+  "version": "2026.09.25.1",
+  "date": "2026-09-25",
   "functional": true,
   "notes": {
-    "en": "New: Match E-books Ai for Bookworms. Match by mood, genre, pace, length, era and free-vs-paid access; save or reject books; then open legal free editions or official Kindle, Apple Books, Google Play Books, Kobo and NOOK store routes.",
-    "pt-BR": "Novo: Match de E-books iA para Bookworms. Combine por clima, gênero, ritmo, tamanho, época e acesso grátis ou pago; salve ou rejeite livros; depois abra edições grátis legais ou lojas oficiais Kindle, Apple Books, Google Play Livros, Kobo e NOOK.",
+    "en": "New: official Google Play download button on MatchApp's web home page. The Android listing becomes available after Google publishes the app.",
+    "pt-BR": "Novidade: botão oficial para baixar o MatchApp iA pelo Google Play na página inicial da versão web. O aplicativo ficará disponível após a publicação pelo Google.",
     "es": "Nuevo: Match E-books IA para lectores. Combina por estado de ánimo, género, ritmo, extensión, época y acceso gratis o de pago, con fuentes gratuitas legales y tiendas oficiales.",
     "fr": "Nouveau : Match E-books Ai pour les lecteurs, avec humeur, genre, rythme, longueur, époque, accès gratuit ou payant, sources gratuites légales et boutiques officielles.",
     "de": "Neu: Match E-books Ai für Leser – nach Stimmung, Genre, Tempo, Länge, Epoche und kostenlosem oder kostenpflichtigem Zugang, mit legalen Gratisquellen und offiziellen Shops.",

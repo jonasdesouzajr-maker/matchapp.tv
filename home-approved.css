@@ -436,3 +436,17 @@ html.reduce-motion body.page-home :is(.ma-how-link,.ma-how-button){
     box-sizing:border-box!important;
   }
 }
+
+/* Adult web: official Google Play link beside the existing PWA Install control. */
+#ma-install-chip .ma-install-actions{display:flex;align-items:center;justify-content:flex-end;gap:9px;flex:0 0 auto;min-width:0}
+#ma-install-chip .ma-play-store{display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;min-height:36px;max-width:100%;padding:6px 15px;border:1px solid rgba(243,213,122,.85);border-radius:999px;background:linear-gradient(145deg,#382650,#170e29);color:#fff2c9;font:800 12px/1.2 Outfit,system-ui,sans-serif;text-align:center;text-decoration:none;white-space:normal;box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 3px 14px rgba(0,0,0,.2)}
+#ma-install-chip .ma-play-store:hover{border-color:#fff0b8;background:linear-gradient(145deg,#47305f,#211238)}
+#ma-install-chip .ma-play-store:focus-visible{outline:3px solid #fff0b8;outline-offset:3px}
+#ma-install-chip .ma-play-store[hidden]{display:none!important}
+@media(max-width:580px){
+  #ma-install-chip{flex-wrap:wrap}
+  #ma-install-chip>span{flex:1 1 calc(100% - 42px)}
+  #ma-install-chip .ma-install-actions{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:8px;flex:1 1 100%;width:100%}
+  #ma-install-chip .ma-install-actions>.ma-install-go,#ma-install-chip .ma-install-actions>.ma-play-store{width:100%;min-width:0;height:auto;min-height:36px;padding:7px 9px}
+  #ma-install-chip .ma-install-actions:has(.ma-play-store[hidden]){grid-template-columns:minmax(0,1fr)}
+}

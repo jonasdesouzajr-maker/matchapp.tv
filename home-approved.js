@@ -22,7 +22,7 @@
     approvedLink.rel = 'stylesheet';
     (document.head || document.documentElement).appendChild(approvedLink);
   }
-  approvedLink.href = '/home-approved.css?v=20260924-awarenesswidth1';
+  approvedLink.href = '/home-approved.css?v=20260925-playstore1';
   if (!document.getElementById('ma-install-onetap')) {
     var ot=document.createElement('script');
     ot.id='ma-install-onetap';
@@ -45,6 +45,17 @@
   }
   function appName() {
     return ptBr() ? 'MatchApp iA' : 'MatchApp Ai';
+  }
+
+  // Adult Android package from android-studio/app/build.gradle.kts.
+  var PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.jonas.papercup';
+  function openPlayStore(event) {
+    // Chrome for Android can launch the Play Store app on an explicit tap.
+    // Other browsers, tablets and desktop use the official HTTPS listing.
+    var ua = navigator.userAgent || '';
+    if (nativeShell() || !/Android/i.test(ua) || !/Chrome\//i.test(ua) || /EdgA|OPR\/|SamsungBrowser/i.test(ua)) return;
+    event.preventDefault();
+    window.location.href = 'intent://details?id=com.jonas.papercup#Intent;scheme=market;package=com.android.vending;S.browser_fallback_url=' + encodeURIComponent(PLAY_STORE_URL) + ';end';
   }
 
   function mountHero() {
@@ -92,13 +103,26 @@
       chip = document.createElement('div');
       chip.id = 'ma-install-chip';
       chip.innerHTML = '<img src="/assets/brand/matchapp-ai-install-192.png?v=20260923-icon4" width="28" height="28" alt="">' +
-        '<span></span><button type="button" class="ma-install-go install-btn">Install</button>';
+        '<span></span><div class="ma-install-actions"><button type="button" class="ma-install-go install-btn">Install</button>' +
+        '<a class="ma-play-store" target="_blank" rel="noopener noreferrer" href="' + PLAY_STORE_URL + '">Get it on Google Play</a></div>';
       document.body.insertBefore(chip, document.body.firstChild);
     }
     var label = chip.querySelector('span');
     if (label) label.textContent = appName();
     var go = chip.querySelector('.ma-install-go');
     if (go) go.textContent = installed ? (ptBr() ? 'Atualizar' : 'Update') : (ptBr() ? 'Instalar' : 'Install');
+    var store = chip.querySelector('.ma-play-store');
+    if (store) {
+      store.href = PLAY_STORE_URL;
+      store.hidden = nativeShell();
+      store.textContent = ptBr() ? 'Baixar no Google Play' : 'Get it on Google Play';
+      store.setAttribute('aria-label', ptBr() ? 'Baixar MatchApp iA para Android no Google Play' : 'Get MatchApp AI for Android on Google Play');
+      store.setAttribute('title', ptBr() ? 'Página oficial no Google Play (disponível após a publicação)' : 'Official Google Play listing (available after publication)');
+      if (!store.dataset.wired) {
+        store.dataset.wired = '1';
+        store.addEventListener('click', openPlayStore);
+      }
+    }
     if (go && !go.dataset.wired) {
       go.dataset.wired = '1';
       go.addEventListener('click', function (e) {
@@ -150,4 +174,5 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot, { once: true });
   else boot();
   window.addEventListener('load', boot, { once: true });
+  document.addEventListener('matchapp:langchange', mountInstall);
 })();

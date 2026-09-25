@@ -3,7 +3,7 @@
   'use strict';
   if (!document.querySelector('script[data-home-approved]')) {
     var h = document.createElement('script');
-    h.src = '/home-approved.js?v=20260923-ui2';
+    h.src = '/home-approved.js?v=20260925-playstore1';
     h.defer = true;
     h.setAttribute('data-home-approved', '1');
     (document.body || document.documentElement).appendChild(h);
