@@ -59,28 +59,18 @@ test('sports reuse existing homepage click flow, real source links, semantic met
 });
 
 
-test('explicitly authorized partner sports RSS is original-link only, date-bound and excludes gambling',()=>{
+test('non-licensed RSS sources never enter approved sports fallbacks',()=>{
  const partner=require('../tools/sports-partner-feed.js');
- const f=partner.FEEDS.find(v=>v.source==='SportBusy'),time=Date.parse('2026-09-25T12:00:00Z');
- const xml='<rss><channel>'+
-  '<item><title>Football club completes important new season announcement</title>'+
-  '<link>https://www.sportbusy.com/news/football-season-announcement</link>'+
-  '<pubDate>Fri, 25 Sep 2026 10:00:00 GMT</pubDate></item>'+
-  '<item><title>Football betting odds and sportsbook promotion guide</title>'+
-  '<link>https://www.sportbusy.com/news/betting-odds</link>'+
-  '<pubDate>Fri, 25 Sep 2026 10:00:00 GMT</pubDate></item>'+
-  '<item><title>Football title from an impostor domain must be rejected</title>'+
-  '<link>https://sportbusy.com.evil.example/sport/test</link>'+
-  '<pubDate>Fri, 25 Sep 2026 10:00:00 GMT</pubDate></item>'+
-  '</channel></rss>';
- const items=partner.parseFeed(xml,f,time);
- assert.equal(items.length,1);
- assert.equal(items[0].title,'Football club completes important new season announcement');
- assert.equal(items[0].source,'SportBusy');
- assert.equal(items[0].timestamp_kind,'published');
- assert.equal(items[0].published_at,'2026-09-25T10:00:00.000Z');
- assert.equal(items[0].image,null);
- assert(partner.parseFeed(xml,{...f,domain:'sportsbusy.com'},time).length===0);
+ const now=Date.parse('2026-09-25T12:00:00Z');
+ const fake={url:'https://www.sportbusy.com/feed.xml',domain:'sportbusy.com',source:'SportBusy',category:'sports'};
+ const xml='<rss><channel><item><title>Football team announces a new season lineup</title>'+
+   '<link>https://www.sportbusy.com/news/football-season-announcement</link>'+
+   '<pubDate>Fri, 25 Sep 2026 10:00:00 GMT</pubDate></item></channel></rss>';
+ assert.deepEqual(partner.parseFeed(xml,fake,now),[]);
+ assert.equal(partner.FEEDS.length,1);
+ assert.equal(partner.FEEDS[0].source,'The Conversation');
+ assert.doesNotMatch(read('latest-news.js'),/sportbusy\\.com/);
+ assert.doesNotMatch(read('tools/refresh-news-rss.js'),/sportbusy\\.com/);
 });
 test('The Conversation approved sports Atom title retains original URL and source date without copied article body',()=>{
  const partner=require('../tools/sports-partner-feed.js');
@@ -105,8 +95,8 @@ test('source transport fallback is constrained to approved canonical sources wit
  assert.match(p,/GAMBLING/);
  assert.match(p,/image:null/);
  assert.match(news,/theconversation\.com/);
- assert.match(news,/sportbusy\.com/);
+ assert.doesNotMatch(news,/sportbusy\.com/);
  assert.match(home,/theconversation\.com/);
- assert.match(home,/sportbusy\.com/);
+ assert.doesNotMatch(home,/sportbusy\.com/);
  assert.match(news,/timestamp_kind/);
 });
