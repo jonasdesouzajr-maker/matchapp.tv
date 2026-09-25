@@ -445,7 +445,7 @@
     let state=img.__matchappAdultPoster;
     if(!state||state.title!==name){
       state={title:name,meta:null,preferred:'',failed:new Set(),repairing:false,isRail:false,
-        tmdbId:0,kind:'',year:0,lastAttemptAt:0};
+        tmdbId:0,kind:'',year:0,lastAttemptAt:Date.now()};
       img.__matchappAdultPoster=state;
     }
     state.isRail=!!img.closest?.('#marquee-track');
