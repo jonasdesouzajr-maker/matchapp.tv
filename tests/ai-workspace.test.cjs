@@ -49,7 +49,7 @@ test('missing AI artwork becomes a synopsis-aware MatchApp poster and is persist
 
 test('Android project documents live web synchronization for both standard and Kids apps',()=>{
   const readme=read('android-studio/README.md');
-  const main=read('android-studio/app/src/main/java/tv/matchapp/app/MainActivity.kt');
+  const main=read('android-studio/app/src/main/java/com/jonas/papercup/MainActivity.kt');
   const kids=read('android-studio/kidsapp/src/main/java/tv/matchapp/kids/MainActivity.kt');
   assert.match(readme,/Web → Android synchronization policy/);
   assert.match(readme,/MatchApp Ai \(`:app`\).*loads the main/s);

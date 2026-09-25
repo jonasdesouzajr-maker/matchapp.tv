@@ -1,4 +1,4 @@
-package tv.matchapp.app
+package com.jonas.papercup
 
 import android.net.Uri
 import android.webkit.WebResourceResponse

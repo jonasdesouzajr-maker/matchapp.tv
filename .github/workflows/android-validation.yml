@@ -6,6 +6,11 @@ on:
     paths:
       - 'android-studio/**'
       - '.github/workflows/android-validation.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'android-studio/**'
+      - '.github/workflows/android-validation.yml'
   workflow_dispatch:
 
 permissions:
@@ -18,7 +23,7 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-24.04
-    timeout-minutes: 25
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-java@v6
@@ -26,8 +31,10 @@ jobs:
           distribution: temurin
           java-version: '17'
       - uses: gradle/actions/setup-gradle@v6
-      - name: Build both Android debug apps
+      - name: Check adult Play identity and safe AdMob staging
+        run: python3 android-studio/scripts/verify_adult_release.py
+      - name: Compile adult debug, unsigned release bundle and Kids regression
         working-directory: android-studio
         run: |
           chmod +x gradlew
-          ./gradlew :app:assembleDebug :kidsapp:assembleDebug --no-daemon --stacktrace
+          ./gradlew :app:assembleDebug :app:bundleRelease :kidsapp:assembleDebug --no-daemon --stacktrace

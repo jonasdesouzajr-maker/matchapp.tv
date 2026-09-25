@@ -17,13 +17,13 @@ These existing native modules are **live WebView shells**, not divergent forks o
 
 ### MatchApp Ai — `:app`
 
-- Application ID: `tv.matchapp.app`
+- Application ID: `com.jonas.papercup`
 - Installed name: **MatchApp Ai**
 - Opens `https://matchapp.tv/`
 - Keeps the existing Android application ID for upgrade continuity
 - Kids Mode is intentionally hidden and `/kids/` routes are blocked inside the standard Android app
 - The separate **MatchApp Ai KIDS** app owns the dedicated Kids experience and parental exit flow
-- Ads are disabled in the Android shell
+- Web AdSense is disabled in the adult Android shell; the requested AdMob IDs are staged but native AdMob is NOT activated pending the real AdMob App ID and consent integration.
 - Supports authenticated sessions, Android back, pull-to-refresh, fullscreen media, file selection and offline state
 - WebView injects production `cinema-dim.css` on adult pages (same sheet as the website)
 
@@ -46,9 +46,9 @@ These existing native modules are **live WebView shells**, not divergent forks o
 
 Both Android modules remain WebView shells over live production:
 
-- Standard app (`:app`) release version: **1.1.28**
-- Standard app version code: **30**
-- Standard app launch: `https://matchapp.tv/?utm_source=android_app&appBuild=30`
+- Standard app (`:app`) release version: **1.1.30**
+- Standard app version code: **32**
+- Standard app launch: `https://matchapp.tv/?utm_source=android_app&appBuild=32`
 - Kids app (`:kidsapp`) release version: **1.1.25** / version code **27**
 - Kids app launch: `https://matchapp.tv/kids/?utm_source=android_kids_app&appBuild=27`
 - Both apps cold-load production on launch and manual refresh to avoid stale WebView content, then resume normal caching after the page renders.
@@ -120,9 +120,13 @@ The website must continue serving its existing desktop, mobile and TV experience
 
 Create separate Play Console apps for:
 
-- `tv.matchapp.app` — MatchApp Ai
+- `com.jonas.papercup` — MatchApp Ai
 - `tv.matchapp.kids` — MatchApp Ai KIDS
 
 The existing `play/` folder is for the main MatchApp Ai listing. The old `play/screenshots/04-kids.png` image should **not** be used in the main listing now; it may be reused as reference material for the Kids listing.
 
 After final Play signing certificates exist, Digital Asset Links can be updated to verify both package IDs. That website-side step is intentionally **not performed here**, because this change is Android-only.
+
+## Adult Play Console identity checkpoint (2026-09-25)
+
+The first Play Console listing supplied by the owner uses package ID **`com.jonas.papercup`**, so the normal adult `:app` Gradle namespace, application ID and Kotlin package were aligned; normal app version 1.1.30 (code 32). This package cannot update an installed legacy `tv.matchapp.app` package. **Verify your Play Console listing uses the exact package ID before signing.** Kids `:kidsapp` is unchanged. The production banner ad unit is staged in the adult BuildConfig. The provided rewarded ID is a Google demo ad unit included only in DEBUG; RELEASE rewarded ID is blank. The app remains ad-free while the real AdMob App ID (with `~`) and SDK/consent are unresolved. Full release checklist: `play/RELEASE_PREFLIGHT.md`.

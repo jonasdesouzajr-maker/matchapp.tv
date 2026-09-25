@@ -1,4 +1,4 @@
-package tv.matchapp.app
+package com.jonas.papercup
 
 import android.annotation.SuppressLint
 import android.content.ActivityNotFoundException
@@ -217,6 +217,13 @@ class MainActivity : AppCompatActivity() {
             normalized.endsWith(".matchapp.tv")
     }
 
+    private fun hostIs(host: String, domain: String): Boolean =
+        host == domain || host.endsWith(".$domain")
+
+    private fun isTrustedAuthHost(host: String): Boolean =
+        listOf("supabase.co", "google.com", "gstatic.com", "googleapis.com", "googleusercontent.com")
+            .any { hostIs(host, it) }
+
     private fun isKidsUri(uri: Uri): Boolean {
         if (!isMatchAppHost(uri.host.orEmpty())) return false
         val path = uri.path.orEmpty().lowercase().trimEnd('/')
@@ -305,7 +312,7 @@ class MainActivity : AppCompatActivity() {
         if (scheme == "mailto" || scheme == "tel" || scheme == "sms" || scheme == "whatsapp" || scheme == "intent" || scheme == "market") {
             return openExternal(uri)
         }
-        if (host.endsWith("wa.me") || host.contains("whatsapp.com") || host.contains("play.google.com") || host.contains("t.me")) {
+        if (hostIs(host, "wa.me") || hostIs(host, "whatsapp.com") || hostIs(host, "play.google.com") || hostIs(host, "t.me")) {
             return openExternal(uri)
         }
         if (isKidsUri(uri)) {
@@ -313,13 +320,13 @@ class MainActivity : AppCompatActivity() {
             return true
         }
         if (isMatchAppHost(host)) {
-            return false
+            if (scheme == "http") {
+                web.loadUrl(uri.buildUpon().scheme("https").build().toString())
+                return true
+            }
+            return scheme != "https"
         }
-        if (host.endsWith("supabase.co") || host.endsWith("google.com") || host.endsWith("gstatic.com") ||
-            host.endsWith("googleapis.com") || host.endsWith("googleusercontent.com")
-        ) {
-            return false
-        }
+        if (scheme == "https" && isTrustedAuthHost(host)) return false
         return openExternal(uri)
     }
 
@@ -404,8 +411,16 @@ class MainActivity : AppCompatActivity() {
             val child = WebView(this@MainActivity)
             child.webViewClient = object : WebViewClient() {
                 override fun shouldOverrideUrlLoading(v: WebView, request: WebResourceRequest): Boolean {
-                    val url = request.url.toString()
-                    web.loadUrl(url)
+                    val target = request.url
+                    val host = target.host.orEmpty().lowercase()
+                    // Popups may not bypass the adult-only or HTTPS URL boundary.
+                    when {
+                        isKidsUri(target) -> web.loadUrl(HOME)
+                        target.scheme.equals("https", ignoreCase = true) &&
+                            (isMatchAppHost(host) || isTrustedAuthHost(host)) -> web.loadUrl(target.toString())
+                        else -> openExternal(target)
+                    }
+                    child.post { child.destroy() }
                     return true
                 }
             }
@@ -435,8 +450,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val HOME = "https://matchapp.tv/?utm_source=android_app&appBuild=31"
-        const val APP_UA = "MatchAppTVAndroid/1.1.29 MatchAppAiAndroid/1.1.29"
+        const val HOME = "https://matchapp.tv/?utm_source=android_app&appBuild=32"
+        const val APP_UA = "MatchAppTVAndroid/1.1.30 MatchAppAiAndroid/1.1.30"
         private const val APP_MODE_JS = """
             (function(){
               window.MATCHAPP_IS_AD_FREE = true;

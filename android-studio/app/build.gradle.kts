@@ -4,15 +4,18 @@ plugins {
 }
 
 android {
-    namespace = "tv.matchapp.app"
+    namespace = "com.jonas.papercup"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "tv.matchapp.app"
+        applicationId = "com.jonas.papercup"
         minSdk = 24
         targetSdk = 36
-        versionCode = 31
-        versionName = "1.1.29"
+        versionCode = 32
+        versionName = "1.1.30"
+        // AdMob credentials staged; SDK disabled until real AdMob App ID is supplied.
+        buildConfigField("String", "ADMOB_BANNER_ID", "\"ca-app-pub-9541435081010948/4843348278\"")
+        buildConfigField("String", "ADMOB_REWARDED_ID", "\"\"")
         resourceConfigurations += listOf("en", "pt", "es", "fr", "de", "it", "tr", "ru", "ar", "hi", "in", "ja", "ko", "zh")
     }
 
@@ -29,6 +32,9 @@ android {
             isMinifyEnabled = false
             applicationIdSuffix = ".debug"
             versionNameSuffix = "-debug"
+            // Official Google TEST ads for DEBUG only.
+            buildConfigField("String", "ADMOB_BANNER_ID", "\"ca-app-pub-3940256099942544/6300978111\"")
+            buildConfigField("String", "ADMOB_REWARDED_ID", "\"ca-app-pub-3940256099942544/5224354917\"")
         }
     }
 
