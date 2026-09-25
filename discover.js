@@ -395,6 +395,7 @@ function discoverWatchUrl(item) {
             }
         }
     } catch (err) {}
+    if (/audiobook/i.test((item && item.type) || '')) return '/ebooks/#ebook-matcher-root';
     if (isAudio) return `https://open.spotify.com/search/${encodeURIComponent(title)}`;
     return `https://www.justwatch.com/${justWatchLocale()}/search?q=${encodeURIComponent(title)}`;
 }
@@ -455,7 +456,22 @@ function enrichDiscoverItem(item, question) {
 }
 
 async function enrichDiscoverMedia(item) {
-    if (!item || !item.title || !window.MatchAppCatalogMedia?.lookup) return item;
+    if (!item || !item.title) return item;
+    // AI-provided platform labels are unverified hints. An unavailable source,
+    // network failure, or audio request must never turn one into a claimed
+    // country-specific streaming service or a wrong-title deep link.
+    const unverified = () => {
+        if (item.platform && item.platform !== 'any') item._aiPlatformHint = item.platform;
+        item.platform = '';
+        item._availabilityVerified = false;
+        item._viewing = null;
+        return item;
+    };
+    const isAudio = /podcast|music|album|audiobook|song/i.test(String(item.type || ''));
+    // Audiobooks use the separate verified book matching flow, not TMDB film
+    // provider metadata. The card's generic audio destination is a search,
+    // never a promise that a particular narrator/edition is available.
+    if (isAudio || !window.MatchAppCatalogMedia?.lookup) return unverified();
     try {
         const rawType = String(item.type || '').toLowerCase();
         const kind = /movie|film/.test(rawType) ? 'movie' : (/series|tv|show|drama|anime|novela|documentary/.test(rawType) ? 'tv' : '');
@@ -473,12 +489,7 @@ async function enrichDiscoverMedia(item) {
                 cats: item.cats || []
             });
         }
-        if (!meta) {
-            if (item.platform && item.platform !== 'any') item._aiPlatformHint = item.platform;
-            item.platform = '';
-            item._availabilityVerified = false;
-            return item;
-        }
+        if (!meta) return unverified();
         item._catalogMedia = meta;
         // Exact identity is not proof of regional provider availability.
         item._availabilityVerified = false;
@@ -491,7 +502,7 @@ async function enrichDiscoverMedia(item) {
         item._availabilityVerified=Boolean(item._viewing && verifiedModes.has(item._viewing.mode));
         // The model's platform is only a hint. Never present it as verified.
         item.platform=item._viewing?.provider&&item._availabilityVerified?item._viewing.provider:'';
-    } catch (_) {}
+    } catch (_) { return unverified(); }
     return item;
 }
 
