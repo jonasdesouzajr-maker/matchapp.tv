@@ -11,7 +11,7 @@
  if(root)root.MatchAppAudiobooks=service;
 })(typeof window!=='undefined'?window:null,function(){
  'use strict';
- const CACHE=new Map(),CACHE_LIMIT=80,TTL=6*3600000,QUERY_TIMEOUT=4500;
+ const CACHE=new Map(),CACHE_LIMIT=80,TTL=6*3600000,QUERY_TIMEOUT=6500;
  const REGION={BR:'br',GB:'gb',CA:'ca',AU:'au',JP:'jp',PT:'pt',US:'us'};
  function normalized(s){
   return String(s||'').normalize('NFKD').replace(/[\u0300-\u036f]/g,'')
@@ -19,22 +19,17 @@
    .replace(/[^\p{L}\p{N}]+/gu,' ').trim().replace(/\s+/g,' ');
  }
  function authorMatches(wanted,actual){
-  const base=normalized(String(wanted||'').split(/\s+(?:&|and|e|and)\s+/i)[0]);
-  const other=normalized(actual);
-  if(!base||!other)return false;
-  const expected=base.split(' '),observed=other.split(' ');
-  if(other.includes(base))return true;
-  // The title alone is never enough; different authors may publish the same
-  // title. When an author has multiple identifiable names, require every
-  // distinctive name, never their shared surname alone.
-  const distinctive=expected.filter(t=>t.length>2);
-  if(distinctive.length>=2)return distinctive.every(t=>observed.includes(t));
-  if(distinctive.length===1){
-   const initials=expected.filter(t=>t.length===1);
-   return observed.includes(distinctive[0])&&
-    (!initials.length||initials.every(t=>observed.includes(t)));
-  }
-  return false;
+  const observed=normalized(actual).split(' ').filter(Boolean);
+  if(!observed.length)return false;
+  // Exact audiobook editions must credit all known coauthors.
+  return String(wanted||'').split(/\s+(?:&|and|e)\s+/i).every(name=>{
+   const expected=normalized(name).split(' ').filter(Boolean);
+   const distinctive=expected.filter(token=>token.length>2);
+   if(distinctive.length>=2)return distinctive.every(token=>observed.includes(token));
+   if(distinctive.length===1)return observed.includes(distinctive[0])&&
+    expected.filter(token=>token.length===1).every(token=>observed.includes(token));
+   return false;
+  });
  }
  function titleMatches(bookTitle,candidate){
   const expected=normalized(bookTitle),got=normalized(candidate);
@@ -50,6 +45,14 @@
     /\/audiobook\//i.test(u.pathname);
   }catch(_){return false}
  }
+ function safeAppleArtwork(href){
+  if(typeof href!=='string')return null;
+  try{
+   const url=new URL(href);
+   return url.protocol==='https:'&&/^is[0-9]+-ssl\.mzstatic\.com$/i.test(url.hostname)&&
+    url.pathname.startsWith('/image/thumb/')?url.href:null;
+  }catch(_){return null}
+ }
  function verifyApple(book,results,market){
   const iso=String(market||'US').toUpperCase();
   for(const row of Array.isArray(results)?results:[]){
@@ -62,7 +65,8 @@
     if(!u.pathname.toLowerCase().startsWith('/'+(REGION[iso]||'us')+'/'))continue;
    }catch(_){continue}
    return Object.freeze({provider:'Apple Books',url,title:name,
-    author:String(row.artistName||''),verified:true,kind:'paid',region:iso});
+    author:String(row.artistName||''),verified:true,kind:'paid',region:iso,
+    coverUrl:safeAppleArtwork(row.artworkUrl600)||safeAppleArtwork(row.artworkUrl100)});
   }
   return null;
  }
@@ -99,9 +103,15 @@
   ];
   return suggestions.map(x=>Object.freeze({...x,verified:false,kind:'search-only',region:locale}));
  }
- const pausePromise=(timeout,run)=>{const ctrl=new AbortController();
-  const timer=setTimeout(()=>ctrl.abort(),timeout);
-  return Promise.resolve().then(()=>run(ctrl.signal)).finally(()=>clearTimeout(timer));
+ // Aborting is not always reliable in an embedded WebView: the deadline
+ // must also reject the in-flight Promise when the network never resolves.
+ const pausePromise=(timeout,run)=>{
+  const ctrl=new AbortController();let timer;
+  const deadline=new Promise((_,reject)=>{
+   timer=setTimeout(()=>{ctrl.abort();reject(Error('Audiobook source timed out'));},timeout);
+  });
+  return Promise.race([Promise.resolve().then(()=>run(ctrl.signal)),deadline])
+   .finally(()=>clearTimeout(timer));
  };
  async function appleSearch(book,market,fetchFn){
   const u=new URL('https://itunes.apple.com/search');
@@ -132,10 +142,14 @@
   const old=CACHE.get(key);
   if(old&&Date.now()-old.when<TTL)return old.value;
   const result={apple:null,free:null,searches:sourceSearches(book,region)};
-  if(wanted!=='free'){try{result.apple=await appleSearch(book,region,fetchFn)}catch(_){}}
-  if(wanted!=='paid'&&region==='US'&&book.access?.includes('free')){
-   try{result.free=await librivoxSearch(book,region,fetchFn)}catch(_){}
-  }
+  // An unresponsive audio store must not starve an independent legal source.
+  await Promise.all([
+   wanted==='free'?Promise.resolve():appleSearch(book,region,fetchFn)
+    .then(hit=>{result.apple=hit}).catch(()=>{}),
+   wanted==='paid'||region!=='US'||!book.access?.includes('free')
+    ?Promise.resolve():librivoxSearch(book,region,fetchFn)
+     .then(hit=>{result.free=hit}).catch(()=>{})
+  ]);
   const value=Object.freeze(result);
   // Cache positive results, not request failures. Store searches can still be
   // displayed when no live verification succeeded; never label them verified.
@@ -146,5 +160,5 @@
   return value;
  }
  return Object.freeze({verify,verifyApple,verifyLibriVox,sourceSearches,
-  titleMatches,authorMatches,safeAppleUrl,safeLibriVoxUrl});
+  titleMatches,authorMatches,safeAppleUrl,safeAppleArtwork,safeLibriVoxUrl});
 });
