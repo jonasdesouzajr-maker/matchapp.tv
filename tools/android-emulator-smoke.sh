@@ -1,0 +1,80 @@
+#!/usr/bin/env bash
+# Screenshots and crash checks of the actual repository APKs inside an Android
+# emulator. This is NOT a claim of testing a physical phone or Play-signed AAB.
+set -euo pipefail
+mkdir -p artifacts/android-emulator
+adb wait-for-device
+adb shell logcat -c || true
+# Pixel Launcher can ANR on freshly booted shared runners; dismiss a SYSTEM
+# dialog before grading MatchApp visuals. Never treat a blocked screenshot as pass.
+dismiss_launcher_anr() {
+  local label="$1" tmp="artifacts/android-emulator/${1}-dialog-check.xml" n=0
+  for n in 1 2; do
+    timeout 15s adb shell uiautomator dump /sdcard/matchapp-dialog-check.xml >/dev/null 2>&1 || true
+    timeout 10s adb pull /sdcard/matchapp-dialog-check.xml "$tmp" >/dev/null 2>&1 || true
+    if ! grep -qiE 'Launcher isn.t responding|Launcher is not responding' "$tmp" 2>/dev/null; then return 0; fi
+    echo "Emulator system launcher ANR detected, dismissing its dialog (attempt $n)"
+    local coords
+    coords=$(python3 - "$tmp" <<'PY'
+import re,sys
+text=open(sys.argv[1],encoding='utf-8').read()
+m=re.search(r'text="Close app"[^>]*bounds="\[([0-9]+),([0-9]+)\]\[([0-9]+),([0-9]+)\]"',text)
+if m:
+ x1,y1,x2,y2=map(int,m.groups());print((x1+x2)//2,(y1+y2)//2)
+PY
+)
+    if [ -n "$coords" ]; then adb shell input tap $coords; else adb shell input keyevent BACK; fi
+    sleep 6
+  done
+  timeout 15s adb shell uiautomator dump /sdcard/matchapp-dialog-check.xml >/dev/null 2>&1 || true
+  timeout 10s adb pull /sdcard/matchapp-dialog-check.xml "$tmp" >/dev/null 2>&1 || true
+  if grep -qiE 'Launcher isn.t responding|Launcher is not responding' "$tmp" 2>/dev/null; then
+    echo "::error::Emulator launcher remains unresponsive; native UI cannot be visually certified";return 1
+  fi
+}
+dismiss_launcher_anr 'boot'
+probe() {
+  local name="$1" pkg="$2" apk="$3"
+  echo "TEST native $name APK: $pkg"
+  adb install -r "$apk"
+  adb shell am force-stop "$pkg" || true
+  adb shell monkey -p "$pkg" -c android.intent.category.LAUNCHER 1
+  sleep 22
+  dismiss_launcher_anr "$name"
+  # A live PID alone is insufficient: reject emulator system ANR dialogs and
+  # app windows obscured by Launcher/permission screens.
+  focus="$(timeout 10s adb shell dumpsys window windows | grep -E 'mCurrentFocus|mFocusedApp' | tail -n 8 || true)"
+  printf '%s\n' "$focus" >"artifacts/android-emulator/$name-window-focus.txt"
+  if ! grep -Fq "$pkg" <<< "$focus"; then
+    echo "::error::$name process may exist, but its UI is not the foreground window."
+    return 1
+  fi
+  if ! adb shell pidof "$pkg" >/dev/null; then
+    echo "::error::$name native app crashed or failed to start"
+    adb logcat -d -v brief -t 650 >"artifacts/android-emulator/$name-crash.log"
+    return 1
+  fi
+  adb exec-out screencap -p >"artifacts/android-emulator/$name-first-screen.png"
+  test "$(stat -c%s "artifacts/android-emulator/$name-first-screen.png")" -gt 6000
+  # Android accessibility hierarchy is recorded for manual visual crosscheck.
+  timeout 15s adb shell uiautomator dump "/sdcard/$name-window.xml" || true
+  adb pull "/sdcard/$name-window.xml" "artifacts/android-emulator/$name-window.xml" || true
+  # A full swipe should not crash WebView or freeze the owning process.
+  adb shell input swipe 450 1500 450 350 650
+  sleep 4
+  dismiss_launcher_anr "$name-after-swipe"
+  adb shell pidof "$pkg" >/dev/null
+  adb exec-out screencap -p >"artifacts/android-emulator/$name-after-scroll.png"
+  test "$(stat -c%s "artifacts/android-emulator/$name-after-scroll.png")" -gt 6000
+  echo "PASS $name starts, remains alive after WebView load and swipe; screenshots captured."
+}
+probe "adult" "com.jonas.papercup.debug" "android-studio/app/build/outputs/apk/debug/app-debug.apk"
+adb shell am force-stop com.jonas.papercup.debug || true
+probe "kids" "tv.matchapp.kids.debug" "android-studio/kidsapp/build/outputs/apk/debug/kidsapp-debug.apk"
+adb shell am force-stop tv.matchapp.kids.debug || true
+adb logcat -d -v brief -t 2500 >artifacts/android-emulator/device-last-log.txt || true
+if grep -E 'FATAL EXCEPTION|Process: (com\.jonas\.papercup|tv\.matchapp\.kids)([ .]|$)' artifacts/android-emulator/device-last-log.txt |
+   grep -Eq 'FATAL EXCEPTION|Process: (com\.jonas\.papercup|tv\.matchapp\.kids)'; then
+  echo "::warning::Inspect device-last-log.txt: a native crash-like message was seen."
+fi
+echo "Android emulator smoke complete (physical handset still unverified)."

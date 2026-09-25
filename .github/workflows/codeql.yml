@@ -1,0 +1,40 @@
+name: Independent CodeQL Security Scan
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'app.js'
+      - 'discover.js'
+      - 'catalog-media.js'
+      - 'ebooks/**'
+      - 'supabase/functions/**'
+      - '.github/workflows/codeql.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - '.github/workflows/codeql.yml'
+      - 'app.js'
+      - 'discover.js'
+      - 'catalog-media.js'
+      - 'ebooks/**'
+      - 'supabase/functions/**'
+  workflow_dispatch:
+permissions:
+  actions: read
+  contents: read
+  security-events: write
+jobs:
+  analyze:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7
+      - name: Initialize GitHub's supported CodeQL analyzer (not Copilot PR AI)
+        uses: github/codeql-action/init@v4
+        with:
+          languages: javascript-typescript
+          queries: security-extended
+      - name: Run independent JS/TS source analysis
+        uses: github/codeql-action/analyze@v4
+        with:
+          category: /language:javascript-typescript
