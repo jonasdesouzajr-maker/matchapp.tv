@@ -11,7 +11,7 @@
   const SEEN_KEY='matchapp.latestNewsSeenVersion';
   const AUTO_FIRST_MS=2600;
   const AUTO_MS=4000;
-  const TRUSTED_DOMAINS=['reuters.com','reutersagency.com','cnn.com','hollywoodreporter.com','bbc.com','bbc.co.uk','g1.globo.com'];
+  const TRUSTED_DOMAINS=['reuters.com','reutersagency.com','cnn.com','hollywoodreporter.com','bbc.com','bbc.co.uk','g1.globo.com','apnews.com','espn.com','espn.com.br','theguardian.com','formula1.com','nba.com'];
 
   const esc=s=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const safeUrl=u=>{try{const x=new URL(u,location.origin);return x.protocol==='https:'?x.href:null;}catch(_){return null;}};
