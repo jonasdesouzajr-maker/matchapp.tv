@@ -395,7 +395,7 @@ function discoverWatchUrl(item) {
             }
         }
     } catch (err) {}
-    if (/audiobook/i.test((item && item.type) || '')) return '/ebooks/#ebook-matcher-root';
+    if (/audiobook/i.test((item && item.type) || '')) return '/#ebook-matcher-root';
     if (isAudio) return `https://open.spotify.com/search/${encodeURIComponent(title)}`;
     return `https://www.justwatch.com/${justWatchLocale()}/search?q=${encodeURIComponent(title)}`;
 }
