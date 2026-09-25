@@ -3829,8 +3829,25 @@ function pruneUnstockedOptions() {
     document.dispatchEvent(new CustomEvent('matchapp:optionspruned'));
 }
 
+// Source verification is deliberately longer than the old 12-second UI timer,
+// but remains bounded: a stalled provider cannot strand Match indefinitely.
+const MATCH_SOURCE_DEADLINES=Object.freeze({tmdb:50000,itunes:15000,ai:50000});
+async function withMatchSourceDeadline(work,ms){
+    let timer;
+    try{
+        return await Promise.race([
+            Promise.resolve().then(work),
+            new Promise(resolve=>{timer=setTimeout(()=>resolve(null),ms);})
+        ]);
+    }finally{if(timer!==undefined)clearTimeout(timer);}
+}
+
 window.triggerMatch = async function(isSpecificSearch = false) {
+    const matchRunId=(Number(window.__matchappMatchRunId)||0)+1;
+    window.__matchappMatchRunId=matchRunId;
+    window.__matchappMatchPhase='preflight';
     await window.matchPolicy?.ready();
+    if(matchRunId!==window.__matchappMatchRunId)return;
     const requested = window.getMatchCriteria?.() || {cat:[document.getElementById('q-category')?.value],plat:[document.getElementById('q-platform')?.value],genre:[document.getElementById('q-genre')?.value],mood:[document.getElementById('q-mood')?.value],vibe:[document.getElementById('q-vibe')?.value],rating:[document.getElementById('q-rating')?.value],decade:[document.getElementById('q-decade')?.value]};
     const wantedGenres = normCriteria(requested.genre);
     window.__matchappGenreFilterActive = wantedGenres.length > 0;
@@ -3873,7 +3890,7 @@ window.triggerMatch = async function(isSpecificSearch = false) {
     const startTime = Date.now();
     // Progress is visual feedback, not a timer. Never hold a verified result
     // just to finish an animation.
-    const PROGRESS_WINDOW_MS = 5000;
+    const PROGRESS_WINDOW_MS = 125000;
     const pBar = document.getElementById('ai-progress-bar');
     const pctLabel = document.getElementById('meter-pct');
     const headline = document.getElementById('loading-headline');
@@ -3893,7 +3910,9 @@ window.triggerMatch = async function(isSpecificSearch = false) {
         { at: 92, head: 'Finalising your match…', sub: 'Almost there' }
     ];
     const updateMatchProgress = () => {
-        const pct = Math.min(8 + ((Date.now() - startTime) / PROGRESS_WINDOW_MS) * 87, 95);
+        const elapsed=Date.now()-startTime;
+        const pct=elapsed<8000 ? 8+(elapsed/8000)*66
+            : Math.min(74+((elapsed-8000)/(PROGRESS_WINDOW_MS-8000))*21,95);
         if (pBar) pBar.style.width = pct + '%';
         if (pctLabel) pctLabel.innerText = Math.round(pct) + '%';
         const intensity = 0.35 + (pct / 100) * 0.65;
@@ -3903,6 +3922,7 @@ window.triggerMatch = async function(isSpecificSearch = false) {
     };
     updateMatchProgress();
     let timerInterval = setInterval(updateMatchProgress, 100);
+    window.__matchappActiveProgressTimer=timerInterval;
 
     let preflight = isSpecificSearch ? null : pickFromCatalog(requested.cat,requested.plat,requested.mood,requested.vibe,requested.rating,requested.decade);
     // Never recycle a previously shown title. If the curated exact pool is
@@ -3910,17 +3930,17 @@ window.triggerMatch = async function(isSpecificSearch = false) {
     // TMDB gets first chance because it can verify genres/ratings/origin and,
     // when requested, regional provider availability.
     if (!isSpecificSearch && !preflight) {
-        try { preflight = await discoverVerifiedExactTMDB(requested); } catch (_) { preflight = null; }
+        try { preflight = await withMatchSourceDeadline(()=>discoverVerifiedExactTMDB(requested),MATCH_SOURCE_DEADLINES.tmdb); } catch (_) { preflight = null; }
     }
     // iTunes is a real-source fallback only when no third-party platform,
     // source genre or blocked-source filter needs verification.
     if (!isSpecificSearch && !preflight && !normCriteria(requested.plat).length && !wantedGenres.length && !blockedGenres.length && !blockedCountries.length) {
-        try { preflight = await discoverFromITunes(requested.cat,requested.mood,requested.vibe,requested.decade,requested.rating); }
+        try { preflight = await withMatchSourceDeadline(()=>discoverFromITunes(requested.cat,requested.mood,requested.vibe,requested.decade,requested.rating),MATCH_SOURCE_DEADLINES.itunes); }
         catch (_) { preflight = null; }
     }
     // Last source: AI proposals, each verified on TMDB against every choice.
     if (!isSpecificSearch && !preflight && typeof aiProposedVerifiedExact === 'function') {
-        try { preflight = await aiProposedVerifiedExact(requested); } catch (_) { preflight = null; }
+        try { preflight = await withMatchSourceDeadline(()=>aiProposedVerifiedExact(requested),MATCH_SOURCE_DEADLINES.ai); } catch (_) { preflight = null; }
     }
     // Never dead-end ordinary matching because every fresh exact candidate has
     // already been shown or a live source is temporarily unavailable. Recycle
@@ -3936,6 +3956,7 @@ window.triggerMatch = async function(isSpecificSearch = false) {
             if (preflight?._relaxedStage) window.lastMatchRelaxation = preflight._relaxedStage;
         } catch (_) { preflight = null; }
     }
+    if(matchRunId!==window.__matchappMatchRunId){clearInterval(timerInterval);return;}
     const typed = document.getElementById('specific-search-input')?.value || '';
     if (!isSpecificSearch && !preflight) {
         ['questionnaire-box','search-box'].forEach(id=>{const el=document.getElementById(id);if(el)el.style.display='block';});
@@ -3963,6 +3984,7 @@ window.triggerMatch = async function(isSpecificSearch = false) {
         if (form) { form.style.display='block'; form.scrollIntoView({behavior:'smooth',block:'center'}); }
         return;
     }
+    window.__matchappMatchPhase='quota';
     if (!(await checkDailyLimit())) {
         clearInterval(timerInterval);
         document.body.classList.remove('match-searching');
@@ -3973,6 +3995,7 @@ window.triggerMatch = async function(isSpecificSearch = false) {
         } else if (qBox) qBox.style.display='block';
         return;
     }
+    if(matchRunId!==window.__matchappMatchRunId){clearInterval(timerInterval);return;}
     window.lastMatchWasSpecificSearch = isSpecificSearch;
     
     let promptText = "";
@@ -4078,11 +4101,10 @@ window.triggerMatch = async function(isSpecificSearch = false) {
         // confident, unverified lie.
         if (matchResult && !matchResult.platformVerified) matchResult.platform = 'any';
 
-        // Translate only the chosen real description; never substitute an English failure result.
+        // Keep the source-backed synopsis; optional translation never delays the card.
         if (matchResult) {
             matchResult.originalSynopsis=matchResult.synopsis;
-            matchResult.synopsis=await window.localizeMatchSynopsis(matchResult.synopsis,'en');
-            matchResult.synopsisLang=window.MATCH_LANG||'en';
+            matchResult.synopsisLang='en';
         }
     }
     // An intentional exhaustion recovery is allowed to reuse an older exact
@@ -4112,6 +4134,8 @@ window.triggerMatch = async function(isSpecificSearch = false) {
     if (pctLabel) pctLabel.innerText = '100%';
     clearInterval(timerInterval);
     
+    if(matchRunId!==window.__matchappMatchRunId)return;
+    window.__matchappMatchPhase='result';
     await renderResult(matchResult, isSpecificSearch);
 };
 
@@ -4408,8 +4432,19 @@ async function renderResult(selected, isSpecificSearch) {
     document.getElementById('res-title').innerText = sanitizeDisplayText(selected.title, ['title']);
     const captionLang=window.MATCH_LANG||'en';window.localizedTitle?.(selected.title,matchHints).then(name=>{if(window.currentSynopsisSource?.title===selected.title&&(window.MATCH_LANG||'en')===captionLang)document.getElementById('res-title').textContent=name;});
     window.currentSynopsisSource={text:selected.originalSynopsis||selected.synopsis,lang:selected.originalSynopsis?'en':selected.synopsisLang||'en',title:selected.title};
-    const description=await window.localizeMatchSynopsis(selected.synopsis,selected.synopsisLang||'en');
-    document.getElementById('res-synopsis').innerText=sanitizeDisplayText(description,['synopsis','answer','description']);
+    // Paint verified content immediately, then improve localization asynchronously.
+    const synopsisEl=document.getElementById('res-synopsis');
+    if(synopsisEl)synopsisEl.innerText=sanitizeDisplayText(selected.synopsis||'',['synopsis','answer','description']);
+    const synopsisLanguage=window.MATCH_LANG||'en';
+    if(selected.synopsis&&(selected.synopsisLang||'en')!==synopsisLanguage&&typeof window.localizeMatchSynopsis==='function'){
+        Promise.resolve().then(()=>window.localizeMatchSynopsis(selected.synopsis,selected.synopsisLang||'en'))
+            .then(translated=>{
+                if(window.globalMatchTitle===selected.title&&(window.MATCH_LANG||'en')===synopsisLanguage&&
+                   typeof translated==='string'&&translated.trim()&&synopsisEl){
+                    synopsisEl.innerText=sanitizeDisplayText(translated,['synopsis','answer','description']);
+                }
+            }).catch(()=>{/* Preserve the authentic source synopsis. */});
+    }
     document.getElementById('res-platform-badge').innerText =
         (selected.platform && selected.platform !== 'any') ? selected.platform : (window.t ? t('res.multiplatform') : 'Multiple Platforms');
 
