@@ -25,8 +25,8 @@ function market(){
 }
 function intent(question){
  const q=String(question||'');
- if(/\b(?:magazine|magazines|revista|revistas|magazines?|雑誌)\b/i.test(q))return'magazine';
- if(/\b(?:audiobook|audio\s?book|audiolivro|audiolivros|audiolibro|audiolibros|hörbuch|オーディオブック)\b/i.test(q))return'audiobook';
+ if(/\b(?:magazines?|revistas?)\b/i.test(q)||/雑誌/u.test(q))return'magazine';
+ if(/\b(?:audiobooks?|audio\s?books?|audiolivros?|audiolibros?|hörbuch)\b/i.test(q)||/オーディオブック/u.test(q))return'audiobook';
  if(/\b(?:e-?book|books?|novels?|kindle|livros?|libros?|reading|read|leitura|livro|ler)\b/i.test(q))return'ebook';
  return'';
 }
