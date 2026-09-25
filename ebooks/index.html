@@ -154,26 +154,31 @@ body.ebook-page{margin:0;background:#080610;color:#fff;min-height:100vh}
 <article class="ebook-seo-card"><h2>Find free e-books legally</h2><p>When a matched work has a known public-domain route, MatchApp surfaces legal source pages rather than unofficial download mirrors.</p><div class="ebook-source-links"><a href="https://www.gutenberg.org/" target="_blank" rel="noopener noreferrer">Project Gutenberg ↗</a><a href="https://standardebooks.org/" target="_blank" rel="noopener noreferrer">Standard Ebooks ↗</a><a href="https://openlibrary.org/" target="_blank" rel="noopener noreferrer">Open Library ↗</a></div></article>
 <article class="ebook-seo-card"><h2>Find paid e-books</h2><p>Store buttons are region-aware where possible and take readers to the official storefront search for the matched title. Prices, DRM, language editions and country availability remain controlled by each retailer.</p><div class="ebook-source-links"><a href="https://www.amazon.com/kindle-dbs/storefront" target="_blank" rel="noopener noreferrer">Kindle ↗</a><a href="https://www.apple.com/apple-books/" target="_blank" rel="noopener noreferrer">Apple Books ↗</a><a href="https://play.google.com/books" target="_blank" rel="noopener noreferrer">Google Play Books ↗</a><a href="https://www.kobo.com/" target="_blank" rel="noopener noreferrer">Kobo ↗</a><a href="https://www.barnesandnoble.com/collections/ebooks-nook" target="_blank" rel="noopener noreferrer">NOOK ↗</a></div></article>
 </section>
-<p class="ebook-page-note">MatchApp is not affiliated with the listed book retailers or free e-book libraries. Trademarks belong to their respective owners. A “free” route means MatchApp knows of a legal source that may offer the work without charge; local copyright law and source eligibility still apply.</p>
+<p class="ebook-page-note">Amazon Brazil purchase links may be paid affiliate links, clearly marked beside each eligible button. Como participante do Programa de Associados da Amazon, sou remunerado pelas compras qualificadas efetuadas. As an Amazon Associate I earn from qualifying purchases. MatchApp is an independent book-discovery service, not endorsed by the listed retailers or libraries. A “free” route refers to a legal source; local copyright rules and eligibility still apply.</p>
 </main>
 <footer class="seo-footer"><a href="/">MatchApp TV Ai</a> · <a href="/copyright.html">Copyright</a> · <a href="/privacy.html">Privacy</a><p>© 2026 MatchApp.tv</p></footer>
 <script src="/themes.js?v=187"></script>
 <script src="/build-meta.js?v=20260924-ebooks1"></script>
 <script src="/ebooks/top-ebooks.js?v=20260924-top1"></script>
+<script src="/ebooks/affiliate-links.js?v=20260925-amzbr1"></script>
 <script>
 (function(){
  const host=document.getElementById('ebook-hub-top'),items=window.MATCHAPP_TOP_EBOOKS||[];if(!host)return;
  const esc=s=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
  const q=b=>encodeURIComponent(b.title+' '+b.author);
- const market=(navigator.language||'').toLowerCase().endsWith('-br')?'BR':'GLOBAL';
+ let saved='';try{saved=String(localStorage.getItem('match_user_country')||'').trim().toLowerCase()}catch(_){}
+ const market=(saved==='br'||saved==='brazil'||saved==='brasil'||(navigator.language||'').toLowerCase().endsWith('-br'))?'BR':'GLOBAL';
+ const aff=window.MatchAppEbookAffiliate;
  const ordered=items.slice().sort((a,b)=>((a.market===market?0:a.market==='GLOBAL'?1:2)-(b.market===market?0:b.market==='GLOBAL'?1:2)));
  host.innerHTML=ordered.map(b=>{
    const free=String(b.access||'').includes('free');
-   const buy='https://books.google.com/books?q='+q(b);
+   const buy=market==='BR'&&aff?aff.amazonSearchUrl(b,'BR'):'https://books.google.com/books?q='+q(b);
+   const paid=!!(aff&&aff.isAffiliateLink(buy));
    const freeUrl='https://www.gutenberg.org/ebooks/search/?query='+q(b);
    const initials=b.title.split(/\s+/).filter(Boolean).slice(0,3).map(x=>x[0]).join('').toUpperCase();
-   return '<article class="ebook-top-card"><div class="ebook-top-cover"><div class="ebook-cover-fallback"><span>'+esc(initials)+'</span><strong>'+esc(b.title)+'</strong><small>'+esc(b.author)+'</small></div></div><div class="ebook-top-copy"><span class="ebook-top-badge">'+esc(b.badge)+'</span><h3>'+esc(b.title)+'</h3><p class="ebook-top-author">'+esc(b.author)+'</p><p class="ebook-top-genre">'+esc(b.genre)+'</p><div class="ebook-top-actions">'+(free?'<a class="ebook-provider ebook-free" href="'+freeUrl+'" target="_blank" rel="noopener noreferrer">Legal free edition ↗</a>':'')+'<a class="ebook-provider" href="'+buy+'" target="_blank" rel="noopener noreferrer">Find / buy e-book ↗</a><a class="ebook-top-source" href="'+esc(b.sourceUrl)+'" target="_blank" rel="noopener noreferrer">Chart source · '+esc(b.source)+'</a></div></div></article>';
+   return '<article class="ebook-top-card"><div class="ebook-top-cover"><div class="ebook-cover-fallback"><span>'+esc(initials)+'</span><strong>'+esc(b.title)+'</strong><small>'+esc(b.author)+'</small></div></div><div class="ebook-top-copy"><span class="ebook-top-badge">'+esc(b.badge)+'</span><h3>'+esc(b.title)+'</h3><p class="ebook-top-author">'+esc(b.author)+'</p><p class="ebook-top-genre">'+esc(b.genre)+'</p><div class="ebook-top-actions">'+(free?'<a class="ebook-provider ebook-free" href="'+freeUrl+'" target="_blank" rel="noopener noreferrer">Legal free edition ↗</a>':'')+'<a class="ebook-provider" href="'+esc(buy)+'" target="_blank" rel="'+(paid?'sponsored ':'')+'noopener noreferrer"'+(paid?' data-ebook-affiliate="amazon-br"':'')+'>'+(paid?'Kindle · '+esc(aff.paidLabel(navigator.language)):'Find / buy e-book')+' ↗</a>'+(paid?'<small class="ebook-rights">'+esc(aff.disclosure(navigator.language))+'</small>':'')+'<a class="ebook-top-source" href="'+esc(b.sourceUrl)+'" target="_blank" rel="noopener noreferrer">Chart source · '+esc(b.source)+'</a></div></div></article>';
  }).join('');
+ host.addEventListener('click',e=>{if(e.target.closest('[data-ebook-affiliate="amazon-br"]')){window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'ebook_affiliate_click',provider:'Amazon Brazil',surface:'ebook_hub'})}});
 })();
 </script>
 </body>
