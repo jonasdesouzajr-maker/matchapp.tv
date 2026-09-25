@@ -11,14 +11,6 @@ name: Automated IndexNow SEO Ping
 on:
   schedule:
     - cron: '0 8 * * *' # Daily at 08:00 UTC
-  push:
-    branches: [main]
-    paths:
-      - 'sitemap.xml'
-      - 'sitemaps.xml'
-      - 'where-to-watch/**'
-      - 'awareness/**'
-      - 'tools/awareness-urls.json'
   workflow_dispatch:
 
 permissions:
