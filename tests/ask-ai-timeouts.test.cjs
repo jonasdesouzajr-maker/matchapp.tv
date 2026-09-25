@@ -50,6 +50,6 @@ test('Kids Ask AI waits beyond a normal model attempt but remains age-verified a
 test('new Ask AI code is cache-busted on desktop, phones, tablets and Android WebViews',()=>{
  const html=fs.readFileSync(path.join(root,'discover.html'),'utf8');
  const kidsHtml=fs.readFileSync(path.join(root,'kids/index.html'),'utf8');
- assert.match(html,/discover\.js\?v=20260925-ai-reliability3/);
+ assert.match(html,/discover\.js\?v=20260925-intent1/);
  assert.match(kidsHtml,/kids\/kids\.js\?v=20260925-ai-reliability3/);
 });

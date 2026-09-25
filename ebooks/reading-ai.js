@@ -23,8 +23,13 @@ function market(){
  if(['pt','portugal'].includes(saved)||l.endsWith('-pt'))return'PT';
  return'US';
 }
+function mediaIntentQuestion(q) {
+  // Only discard explicit *exclusions* of media at the end of a clause.
+  // A negative mention is not a positive format request.
+  return String(q||'').replace(/\b(?:do\s+not|don't|dont|avoid)\s+(?:recommend|suggest|include|show|give|offer)\s+(?:(?:me|any)\s+)*(?:e-?books?|books?|audio\s?books?|music|films?|movies?|tv\s+shows?|series|magazines?|podcasts?)(?:\s+(?:or|and)\s+(?:e-?books?|books?|audio\s?books?|music|films?|movies?|tv\s+shows?|series|magazines?|podcasts?))*(?=\s*(?:[.!?]|$))/gi,' ');
+}
 function intent(question){
- const q=String(question||'');
+ const q=mediaIntentQuestion(question);
  if(/\b(?:magazines?|revistas?)\b/i.test(q)||/雑誌/u.test(q))return'magazine';
  if(/\b(?:audiobooks?|audio\s?books?|audiolivros?|audiolibros?|hörbuch)\b/i.test(q)||/オーディオブック/u.test(q))return'audiobook';
  if(/\b(?:e-?book|books?|novels?|kindle|livros?|libros?|reading|read|leitura|livro|ler)\b/i.test(q))return'ebook';
