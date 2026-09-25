@@ -117,3 +117,13 @@ test('a harmless title cannot hide a blocked XXX destination in adult results or
  assert.match(server,/hasBlockedXXXDestination\(r\)/,'server must filter unsafe provider URLs before returning results');
  assert.match(server,/hasBlockedXXXDestination\(\{url:m\[0\]\}\)/,'server must also reject unsafe URLs embedded in answer text');
 });
+
+
+test('all adult entrypoints request the updated XXX safety guard instead of a stale cached copy',()=>{
+ for(const page of ['index.html','discover.html','ebooks/index.html']){
+  const html=read(page);
+  assert.match(html,/\/content-safety\.js\?v=20260925-xxx2/,page);
+  assert.doesNotMatch(html,/\/content-safety\.js\?v=20260925-xxx1/,page);
+ }
+ assert.doesNotMatch(read('kids/index.html'),/content-safety\.js/);
+});
