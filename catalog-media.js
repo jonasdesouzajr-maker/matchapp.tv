@@ -18,6 +18,8 @@
   const TABLE='catalog_media_metadata';
   const CACHE=new Map();
   const INFLIGHT=new Map();
+  // Do not confuse a real empty catalogue row with a transient SQL failure.
+  const NEGATIVE_UNTIL=new Map();
   const LIVE_CACHE=new Map();
   let GENRE_INDEX=null;
   let GENRE_INFLIGHT=null;
@@ -38,14 +40,21 @@
   async function lookup(title,opts={}){
     const sb=window.supabaseClient;if(!sb||!title)return null;
     const key=[normalise(title),opts.year||'',opts.kind||'',opts.kids?'kids':'all'].join('::');
-    if(CACHE.has(key))return CACHE.get(key);if(INFLIGHT.has(key))return INFLIGHT.get(key);
+    if(CACHE.has(key))return CACHE.get(key);
+    if(NEGATIVE_UNTIL.has(key)){
+      if(Date.now()<NEGATIVE_UNTIL.get(key))return null;
+      NEGATIVE_UNTIL.delete(key);
+    }
+    if(INFLIGHT.has(key))return INFLIGHT.get(key);
     const p=(async()=>{try{
       let q=sb.from(TABLE).select('source_key,title,year,media_kind,tmdb_id,poster_url,poster_large_url,poster_original_url,backdrop_url,overview,genres,runtime_minutes,content_rating,vote_average,original_language,origin_countries,cast_members,preview_kind,preview_provider,preview_url,preview_embed_url,availability,kids_approved,kids_age_bands,is_catalog_title,is_trending,updated_at').eq('normalized_title',normalise(title));
       if(opts.year)q=q.eq('year',Number(opts.year));if(opts.kind)q=q.eq('media_kind',opts.kind);if(opts.kids)q=q.eq('kids_approved',true);
       const {data,error}=await q.order('is_catalog_title',{ascending:false}).order('updated_at',{ascending:false}).limit(4);
-      if(error||!Array.isArray(data)||!data.length){CACHE.set(key,null);return null;}
-      const exact=data.find(r=>normalise(r.title)===normalise(title))||data[0];CACHE.set(key,exact);return exact;
-    }catch(_){CACHE.set(key,null);return null;}finally{INFLIGHT.delete(key);}})();INFLIGHT.set(key,p);return p;
+      if(error||!Array.isArray(data))return null;
+      if(!data.length){NEGATIVE_UNTIL.set(key,Date.now()+30000);return null;}
+      const exact=data.find(r=>normalise(r.title)===normalise(title))||data[0];
+      NEGATIVE_UNTIL.delete(key);CACHE.set(key,exact);return exact;
+    }catch(_){return null;}finally{INFLIGHT.delete(key);}})();INFLIGHT.set(key,p);return p;
   }
   async function lookupLive(title,opts={}){
     if(!title||opts.kids)return null;
@@ -61,6 +70,9 @@
         details=await window.tmdbDetails(requestedId,requestedKind,{priority:opts.priority===true});
         if(details&&details.adult!==true&&Number(details.tmdbId)===requestedId&&details.kind===requestedKind)found=details;
       }
+      // A pinned ID is more authoritative than title text. If its detail
+      // lookup fails, do not swap in unrelated same-name artwork.
+      if(canUseExact&&!found)return null;
       if(!found){
         found=await window.tmdbLookup(title,{
           year:opts.year||'',kind:requestedKind,cats:opts.cats||[],
@@ -752,7 +764,15 @@
     const enrichCard=async card=>{
       const img=card.querySelector('img[data-title]'),title=img?.dataset?.title||'';
       if(!title)return;
-      let meta=await refreshExact(await lookup(title));
+      const pinnedId=Number(img.dataset.tmdbId),pinnedKind=img.dataset.tmdbKind;
+      const pinnedYear=Number(img.dataset.tmdbYear);
+      let meta=await lookup(title,{
+        kind:['movie','tv'].includes(pinnedKind)?pinnedKind:'',
+        year:Number.isSafeInteger(pinnedYear)&&pinnedYear>1880?pinnedYear:''
+      });
+      if(Number.isSafeInteger(pinnedId)&&pinnedId>0&&
+         meta&&Number(meta.tmdb_id)!==pinnedId)meta=null;
+      meta=await refreshExact(meta);
       // Some verified Top Titles use a localized label (e.g. Vermelho Sangue).
       // Their database row may use the original-language title, so an exact
       // normalized-title SQL lookup cannot find it even when the displayed
@@ -800,6 +820,9 @@
 
   async function resolvePoster(title,opts={}){
     let meta=await lookup(title,opts);
+    const pinned=Number(opts.tmdbId);
+    if(Number.isSafeInteger(pinned)&&pinned>0&&meta&&
+       Number(meta.tmdb_id)!==pinned)meta=null;
     if(meta)meta=await refreshExact(meta);
     if(!safePoster(meta)){
       const live=await lookupLive(title,opts);
