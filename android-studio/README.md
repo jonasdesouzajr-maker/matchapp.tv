@@ -2,6 +2,17 @@
 
 This folder is one self-contained Android Studio project with **two separate installable Android apps**. Both render the current production MatchApp experience through a hardened Android WebView shell, so Android stays aligned with MatchApp without copying or altering the website source.
 
+## September 25 full-feature cross-surface checkpoint
+
+These existing native modules are **live WebView shells**, not divergent forks of the website. The Android project must continue shipping its current `app` (adult-only) and `kidsapp` (Kids-only) build variants. The adult website's sports Latest News carousel (hourly entertainment, two scheduled sports source checks), e-book/audiobook matching and source-verified Ask AI changes are inherited by `app` on its next online web load. The Kids website's separately source-rated family discovery and exact-title/age-band checks are inherited by `kidsapp` and desktop/mobile Kids browsers. The older 64-entry individually reviewed Kids library remains the **sole approved matching and Kids Ask AI allowlist**: source-rated discovery is not equivalent to individual editorial approval.
+
+**Required real-device QA before signing a release** (compilation is not a substitute for device testing):
+
+- Android `app`: launch, swipe through sports/entertainment cards, open verified publisher links, use Ask AI for a movie and a book, reveal a book match, verify the exact Open Library author/title cover, and check an optional verified audiobook source; confirm no Kids routing and no unapproved Amazon affiliate tags inside the native shell.
+- Android `kidsapp`: launch into `/kids/` only, test age-band switching and fuzzy title searches against the precise source-rated identity check, try source-rated page loading without large poster bursts, confirm manually curated matching cannot recommend an unreviewed source-rated item, and exercise the existing guarded grown-up exit.
+- Desktop and mobile browser parity: check responsive cover `object-fit:contain`, source-derived metadata and attribution, system reduced-motion, storage-restricted browsing and any empty/unreachable external catalog fallback. Verify actual provider destinations on the user's market rather than assuming all books, audiobooks or sports stories are available in every country.
+- GitHub's **Validate Android apps** workflow compiles **both** `:app:assembleDebug` and `:kidsapp:assembleDebug` from this shared Android Studio project. A successful run certifies compilation, **not** signed AABs, app-store approval or exhaustive on-device behavior. No package identifiers, user permissions, existing Ads boundaries, Kids routing or app versions change in this checkpoint.
+
 ## Modules
 
 ### MatchApp Ai — `:app`
