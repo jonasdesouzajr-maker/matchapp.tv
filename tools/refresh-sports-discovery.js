@@ -8,6 +8,7 @@
  * GDELT Project API is distinct from the separately licensed GDELT Cloud.
  */
 const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
+const {execFileSync}=require('node:child_process');
 const ROOT=path.join(__dirname,'..'),OUTPUT=path.join(ROOT,'news','sports.json');
 const API='https://api.gdeltproject.org/api/v2/doc/doc';
 const DOMAINS=[
@@ -68,6 +69,47 @@ function normalizeArticles(articles,now=Date.now()){
  }
  return [...found.values()].sort((a,b)=>b.published_at.localeCompare(a.published_at)).slice(0,12);
 }
+// GitHub runner DNS can favor broken IPv6 routes to GDELT. Use a strictly
+// URL-pinned IPv4 curl fallback after bounded native fetch, preserving HTTPS
+// certificate validation and JSON-only parsing. Never silently replace real
+// headline data with guessed stories on network failure.
+async function fetchGdelt(url){
+ const controller=new AbortController();
+ const timer=setTimeout(()=>controller.abort(),8500);
+ try{
+  const response=await fetch(url,{signal:controller.signal,headers:{
+   accept:'application/json','user-agent':'MatchAppSportsDiscovery/1.0 (+https://matchapp.tv/)'
+  }});
+  if(!response.ok)throw Error('GDELT HTTP '+response.status);
+  const json=await response.json();
+  if(!Array.isArray(json?.articles))throw Error('GDELT response missing articles');
+  return json;
+ }catch(e){
+  console.warn('[sports] GDELT primary transport failed: '+String(e?.message||e)+
+   (e?.cause?' [cause: '+String(e.cause?.code||e.cause?.message||e.cause)+']':''));
+  let raw;
+  try{
+   raw=execFileSync('curl',[
+    '-4','--fail','--location','--silent','--show-error',
+    '--retry','1','--retry-all-errors','--retry-delay','1',
+    '--connect-timeout','6','--max-time','13',
+    '--header','Accept: application/json',url
+   ],{encoding:'utf8',timeout:17000,maxBuffer:8*1024*1024});
+  }catch(curlError){
+   console.error('[sports] GDELT IPv4 fallback failed: '+
+    String(curlError?.message||curlError).slice(0,750));
+   throw new Error('No verified sports data source reachable; preserve last committed news');
+  }
+  try{
+   const json=JSON.parse(raw);
+   if(!Array.isArray(json?.articles))throw Error('GDELT IPv4 returned no articles');
+   console.log('[sports] GDELT recovered using HTTPS IPv4 transport');
+   return json;
+  }catch(parseError){
+   throw new Error('GDELT fallback returned invalid JSON: '+parseError.message);
+  }
+ }finally{clearTimeout(timer)}
+}
 async function main(){
  const u=new URL(API);
  u.searchParams.set('query','(football OR soccer OR basketball OR tennis OR "Formula 1" OR olympics OR futebol OR basquete)');
@@ -76,15 +118,9 @@ async function main(){
  u.searchParams.set('timespan','48h');
  u.searchParams.set('sort','datedesc');
  u.searchParams.set('maxrecords','250');
- const ac=new AbortController(),timer=setTimeout(()=>ac.abort(),15000);
- let rows;
- try{
-  const response=await fetch(u,{signal:ac.signal,headers:{accept:'application/json','user-agent':'MatchAppSportsDiscovery/1.0 (+https://matchapp.tv/)'}});
-  if(!response.ok)throw Error('GDELT API HTTP '+response.status);
-  const result=await response.json();
-  if(!Array.isArray(result?.articles))throw Error('GDELT response has no articles');
-  rows=normalizeArticles(result.articles);
- }finally{clearTimeout(timer)}
+ const result=await fetchGdelt(u.href);
+ const rows=normalizeArticles(result.articles);
+
  if(rows.length<3)throw Error('Only '+rows.length+' verified original sports links; preserve last committed snapshot');
  const snapshot={updated_at:new Date().toISOString(),
   source_policy:'GDELT Project DOC 2.0 publisher-link discovery; original HTTPS publisher links only; no RSS syndication or copied photography',
