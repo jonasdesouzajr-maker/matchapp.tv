@@ -74,3 +74,16 @@ test('catalog metadata schema is public-read and server-write only',()=>{
   assert.match(sql,/grant all on table public\.catalog_media_metadata to service_role/);
   assert.match(sql,/Kids flags are derived exclusively from the reviewed local Kids allowlist/);
 });
+
+test('trending rows meet database constraints and preserve old data on failed upserts',()=>{
+  const src=read('supabase/functions/catalog-media-ingest/index.ts');
+  const trending=src.slice(src.indexOf('async function trending('),src.indexOf('function mergeRows('));
+  const ingest=src.slice(src.indexOf('Deno.serve(async(req)=>'));
+  assert.match(trending,/origin_countries:originCountries\(record\)/);
+  assert.match(trending,/cast_members:castMembers\(record\)/);
+  assert.match(trending,/TMDB trending feed unavailable/);
+  assert.ok(ingest.indexOf('.upsert(rows,')>=0);
+  assert.ok(ingest.indexOf('.upsert(rows,')<ingest.indexOf('.update({is_trending:false,trending_rank:null})'),'Do not clear trending before a successful upsert');
+  assert.match(ingest,/\.not\("source_key","in"/);
+  assert.match(ingest,/stage==="authorization"\?403:500/);
+});
