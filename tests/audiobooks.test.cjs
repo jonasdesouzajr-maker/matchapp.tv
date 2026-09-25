@@ -21,6 +21,8 @@ test('exact verified Apple audiobook title, author and storefront, not a loosely
  assert.equal(matched.verified,true);
  assert.equal(matched.kind,'paid');
  assert.equal(audio.verifyApple(book,[{...appleRow,artistName:'John Smith'}],'US'),null);
+ assert.equal(audio.verifyApple(book,[{...appleRow,artistName:'Martin Baum'}],'US'),null);
+ assert.equal(audio.verifyApple(book,[{...appleRow,artistName:'Frank Unknown'}],'US'),null);
  assert.equal(audio.verifyApple(book,[{...appleRow,collectionName:'The Other Wizard of Oz'}],'US'),null);
  assert.equal(audio.verifyApple(book,[{...appleRow,collectionViewUrl:'https://books.apple.com/gb/audiobook/test/id7'}],'US'),null);
  assert.equal(audio.verifyApple(book,[{...appleRow,collectionViewUrl:'http://books.apple.com/us/audiobook/test/id7'}],'US'),null);
