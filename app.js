@@ -4497,7 +4497,7 @@ async function renderResult(selected, isSpecificSearch) {
             }
         };
         probe.onerror = function() {
-            // The first provider may be unavailable. Keep the local poster
+            // If the provider fails, keep the already-painted local cover
             // visible while recovering only this exact title's saved original.
             window.MatchAppCatalogMedia?.recoverAdultPoster?.(posterEl, selected.title);
         };
