@@ -13,7 +13,7 @@ permissions:
   actions: write
 
 concurrency:
-  group: content-bot
+  group: availability-refresh
   cancel-in-progress: false
 
 jobs:
@@ -60,6 +60,9 @@ jobs:
 
       - name: Commit and push with retry
         id: publish
+        env:
+          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
+          TMDB_READ_TOKEN: ${{ secrets.TMDB_READ_TOKEN }}
         shell: bash
         run: |
           set -euo pipefail
