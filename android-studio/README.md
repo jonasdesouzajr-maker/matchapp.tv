@@ -71,6 +71,13 @@ Open the repository's **`android-studio` folder** in Android Studio Quail. Let G
 4. Run on an emulator/device or use Build → Generate Signed App Bundle or APK for release.
 5. Keep signing keystores and passwords outside GitHub.
 
+## 25 September 2026 — Verified expanded Kids discovery and Ask AI safety
+
+- The **public desktop, mobile, tablet and TV Kids Mode**, and the separate `:kidsapp` Android WebView, all receive the exact same source-rated family discovery module from `https://matchapp.tv/kids/`. The original 64-item editorial Kids allowlist and its matching/Ask AI boundary remain separate and unchanged.
+- Wider movie/TV discovery is on demand, age-rating and exact TMDB identity verified before rendering, paginated and capped to 48 live source-rated cards to avoid slow phones or freezes. Source-rated entries cannot silently enter the editorial Kids matcher or its favorites. A parent is explicitly advised to check each title and episode.
+- Main adult Ask AI remains in the normal website/`:app` WebView. The patched genre lookup avoids a ReferenceError, and only verified country-specific provider data may be displayed as current availability. Native Android permissions, URL routing and Kids separation are unchanged; no redundant HTML/JS copies or unnecessary Android version bump are needed for live web-content updates.
+- Before generating an Android release, cold-start both modules, confirm Kids only in `:kidsapp`, exercise the new source rating result/age switching/no-poster fallback and test Ask AI on `:app`. The web deployment alone does not prove either native AAB build passed.
+
 ## Web → Android synchronization policy
 
 The Android apps intentionally render the live MatchApp web surfaces rather than maintaining a second copy of the UI:
