@@ -66,3 +66,9 @@ jobs:
             if git push origin HEAD:main; then echo 'changed=1' >> "$GITHUB_OUTPUT"; exit 0; fi
           done
           exit 1
+
+      - name: Validate and deploy bot-published main commit
+        if: steps.publish.outputs.changed == '1'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run pages-deploy.yml --ref main
