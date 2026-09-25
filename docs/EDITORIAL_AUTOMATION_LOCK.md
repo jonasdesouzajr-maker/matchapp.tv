@@ -26,6 +26,7 @@ GitHub Actions and manual edits until the owner explicitly changes it.
   Fail closed on too few trusted headlines; preserve prior committed news
   rather than push empty/stale data. Hourly refresh remains independent of
   midnight, but writers must not compete for git publication.
+- **Sports news:** The owner-approved sports edition uses the public GDELT Project DOC 2.0 API to discover original publisher URLs, not restricted BBC Sport RSS syndication. `tools/refresh-sports-discovery.js` builds `news/sports.json` **twice daily at 11:17 and 23:17 UTC**. `tools/refresh-news-rss.js` remains the sole news HTML/SEO/archive/URL manifest generator and merges only fresh verified sports rows. The sports publisher uses the same serialized git lock, existing news carousel and original-source click behavior. Sports discovery copies no publisher images or article bodies, and identifies discovery time rather than inventing precise source publication dates. Errors leave previously committed news intact. The /news/ hub is already in the sitemap; thin source wrappers remain noindex.
 - **Top Titles:** the Home marquee contains **exactly ten unique editorial
   identities**, followed by identical ten-card marquee copies for smooth
   scrolling. Keep verified official exact-title posters; never replace them
@@ -45,7 +46,7 @@ GitHub Actions and manual edits until the owner explicitly changes it.
    false`. Do not add parallel data owners or race two bots against Home,
    news, event URL manifests or the same sitemap.
 2. Midnight runs at 03:00 UTC (00:00 in São Paulo); hourly news uses
-   37 minutes past each hour; awareness is a recovery/source recheck at
+   37 minutes past each hour; sports at 11:17/23:17 UTC; awareness is a recovery/source recheck at
    03:45 UTC plus its existing daytime pass. Preserve scheduled/on-demand
    functionality and only change cadence if owner approves.
 3. Midnight stages only known generator-owned artifacts, never `git add -A`
