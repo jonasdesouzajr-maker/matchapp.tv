@@ -5,15 +5,21 @@
 'use strict';
 const BR_TAG='matchapp06-20';
 const DOMAINS={BR:'amazon.com.br',GB:'amazon.co.uk',CA:'amazon.ca',AU:'amazon.com.au',JP:'amazon.co.jp',PT:'amazon.es',US:'amazon.com'};
-function nativeAndroid(){
- return /MatchAppAiAndroid\//i.test(String(root.navigator&&root.navigator.userAgent||''));
+function unapprovedAppContext(){
+ const ua=String(root.navigator&&root.navigator.userAgent||'');
+ // Amazon requires a separately approved mobile app. Conservatively leave
+ // installed PWAs and television browsers untagged until individually cleared.
+ if(/MatchAppAiAndroid\/|MatchAppTVAndroid|SmartTV|\bTizen\b|\bWebOS\b|\bAndroid TV\b/i.test(ua))return true;
+ if(root.navigator&&root.navigator.standalone===true)return true;
+ try{if(root.matchMedia&&root.matchMedia('(display-mode: standalone)').matches)return true;}catch(_){}
+ return false;
 }
 function amazonSearchUrl(book,market){
  const m=String(market||'US').toUpperCase();
  const url=new URL('https://www.'+(DOMAINS[m]||DOMAINS.US)+'/s');
  url.searchParams.set('k',String(book.title||'')+' '+String(book.author||''));
  url.searchParams.set('i','digital-text');
- if(m==='BR'&&!nativeAndroid())url.searchParams.set('tag',BR_TAG);
+ if(m==='BR'&&!unapprovedAppContext())url.searchParams.set('tag',BR_TAG);
  return url.toString();
 }
 function isAffiliateLink(href){
