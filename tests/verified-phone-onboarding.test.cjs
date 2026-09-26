@@ -184,6 +184,6 @@ test('homepage loads versioned phone recovery UI but not in Kids',()=>{
   const home=read('index.html');
   assert.match(home,/id="phone-auth-name"/);
   assert.match(home,/id="phone-auth-have-code"/);
-  assert.match(home,/phone-auth\.js\?v=20260926-phoneverify1/);
+  assert.match(home,/phone-auth\.js\?v=20260926-phoneverify2/);
   assert.doesNotMatch(read('kids/index.html'),/phone-auth-name/);
 });
