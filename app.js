@@ -3498,7 +3498,7 @@ async function discoverVerifiedTVMaze(requested) {
     const known=new Set(window.matchPolicy?.known?.()||[]);
     SESSION_SHOWN.forEach(title=>known.add(window.matchPolicy?.key?.(title)||service.clean(title).replace(/\s+/g,'')));
     return service.discover({cats,moods,genres,decades,platform:platforms,ratings,vibes},{
-        known,blockedGenres:new Set([...prefs.genres].map(service.clean)),
+        known,key:window.matchPolicy?.key,blockedGenres:new Set([...prefs.genres].map(service.clean)),
         blockedCountries:[...prefs.countries],moodFits:moodFitsVerified,
         blockedText:text=>isBlockedText(text)||
             (!cats.includes('Gospel & Faith')&&GOSPEL_TEXT_SIGNALS.some(w=>String(text).toLowerCase().includes(w))),
