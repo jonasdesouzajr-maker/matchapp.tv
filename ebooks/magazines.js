@@ -43,13 +43,18 @@ const RAW=[
  ["tokyo-weekender","Tokyo Weekender","Tokyo Weekender","https://www.tokyoweekender.com/","https://www.tokyoweekender.com/","https://www.tokyoweekender.com/","contemporary,history","curious,glamorous,adventurous","JP","Japan-based culture, travel, food, events and everyday life."],
  ["piaui","piauí","piauí","https://piaui.folha.uol.com.br/","https://piaui.folha.uol.com.br/","https://piaui.folha.uol.com.br/","contemporary,literary,history","cerebral,curious,reflective","BR","Brazilian long-form journalism, essays and cultural reporting."]
 ];
+const OFFICIAL_ICONS=Object.freeze({
+ // Vogue publishes its icon below this versioned editorial assets directory,
+ // not at /favicon.ico. Keep the source on Vogue's own domain.
+ vogue:'https://www.vogue.com/verso/static/vogue-global/assets/us/favicon.ico'
+});
 const BLOCK=/\b(?:xxx|porn(?:ographic|ography|star|hub)?|hentai|erotica|hardcore(?:\s+sex)?|onlyfans)\b/i;
 const magazines=Object.freeze(RAW.map(r=>Object.freeze({
  id:'mag-'+r[0],title:r[1],publisher:r[2],site:r[3],issues:r[4],
  subscription:r[5],genres:r[6].split(','),moods:r[7].split(','),region:r[8],
  summary:r[9],access:['free','paid'],kind:'magazine',
  // Original publisher-brand icon, not a fictional mock issue cover.
- icon:new URL('/favicon.ico',r[3]).href
+ icon:OFFICIAL_ICONS[r[0]]||new URL('/favicon.ico',r[3]).href
 })).filter(x=>!BLOCK.test(x.title+' '+x.publisher+' '+x.summary)));
 function matches(m,p){
  if(p.access&&p.access!=='any'&&!m.access.includes(p.access))return false;
