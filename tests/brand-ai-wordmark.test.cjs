@@ -18,7 +18,7 @@ test('adult Home paints integrated MatchApp Ai beside the unchanged official orb
  assert.equal(lockup.querySelector('.ma-tv'),null,'No legacy TV word remains');
  assert.equal(lockup.querySelector('.ma-ai-brand-button'),null,'No orphaned glow-button Ai remains');
  assert.equal(lockup.querySelectorAll('[data-ma-brand-ai]').length,1);
- assert.match(read('index.html'),/brand-headline\.css\?v=20260926-brandai1/);
+ assert.match(read('index.html'),/brand-headline\.css\?v=20260926-ai-energy2/);
  assert.match(read('index.html'),/matchapp-ia\.js\?v=20260926-brandai1/);
 });
 
@@ -90,7 +90,7 @@ test('signature metallic type stays bold, bounded, responsive and accessible on 
  assert.match(css,/@media\(prefers-reduced-motion:reduce\)/);
  assert.match(css,/html\.reduce-motion body\.page-home/);
  assert.match(css,/html body\.page-shell header\.app-header\.mh-topbox/);
- assert.match(read('page-shell.css'),/^@import url\("\/brand-headline\.css\?v=20260926-brandai1"\);/);
+ assert.match(read('page-shell.css'),/^@import url\("\/brand-headline\.css\?v=20260926-ai-energy2"\);/);
 });
 
 test('normal submitted Android package inherits web typography; Kids remains separate',()=>{
