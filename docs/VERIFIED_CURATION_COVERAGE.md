@@ -8,7 +8,7 @@ mood, official artwork, regional availability, preview, or child-safety review.
 
 | Surface | Current source and discovery | Safe scaling boundary |
 |---|---|---|
-| Adult movie / series | ~202 original editorial profiles in `app.js` plus on-demand source-verified TMDB discovery | Source genre, movie/TV kind, synopsis mood, country, age and platform rules remain hard; a filtered live match is not a license to relax a user's Comfort choice. |
+| Adult movie / series | ~202 original editorial profiles in `app.js` plus on-demand source-verified TMDB discovery | Source genre, movie/TV kind, synopsis mood, country, age and platform rules remain hard. After a bounded source window is exhausted, future requests inspect subsequent TMDB pages in that browser session rather than claiming the whole TMDB catalog is empty. A filtered live match is not a license to relax a user's Comfort choice. |
 | Music / podcast | Original adult editorial profiles plus Apple iTunes search | Up to 100 regional, source-format-correct Apple audio/podcast records per eligible request. This never proves Spotify playlist or single identity/availability. Apple previews are official-source-only. |
 | E-books | **151** editorial book profiles, up from 114 | Exact-title/author Open Library and Google Books cover recovery runs on demand. Edition-specific covers and free rights are never invented. Books retain their mood/genre contract. |
 | Audiobooks | The same **151** book profiles; separate exact-edition checks | Only author/title-exact Apple Books audio editions in the user's storefront and US-eligible exact LibriVox projects qualify as verified. Verified Apple audio samples may be embedded only from the trusted official preview host. No inferred narration metadata. |
