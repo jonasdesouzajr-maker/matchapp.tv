@@ -91,6 +91,7 @@ test('private SQL enforces 2 per guest and single-use posts in one serialized tr
  assert.match(sql,/alter table match_private\.guest_social_proofs enable row level security/i);
  assert.match(sql,/revoke all on match_private\.guest_social_proofs from public,anon,authenticated/i);
  assert.match(sql,/guest_social_proofs_unique_platform_post/i);
+ assert.match(sql,/extensions\.gen_random_bytes\(12\)/, 'crypto RNG must be explicitly schema-qualified in locked SEC DEFINER functions');
  assert.match(sql,/pg_advisory_xact_lock/i);
  assert.match(sql,/if v_used>=2/i);
  assert.match(sql,/post_already_used/i);
