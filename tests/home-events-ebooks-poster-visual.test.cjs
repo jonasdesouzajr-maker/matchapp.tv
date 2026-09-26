@@ -61,7 +61,7 @@ test('E-books shares Home premium form aesthetics without changes to matcher mec
  assert.match(css,/#ebook-matcher-root \.ebook-fold>summary strong/);
  assert.match(css,/#ebook-matcher-root \.ebook-field/);
  assert.match(home,/id="questionnaire-box" class="premium-card"/);
- assert.match(home,/ebooks\/ebook-matcher\.css\?v=20260925-adult-ui2/);
+ assert.match(home,/ebooks\/ebook-matcher\.css\?v=20260926-compact1/);
  assert.match(read('ebooks/ebook-matcher.js'),/root\.innerHTML=markup\(\);bind\(root\);renderTop\(root\)/);
 });
 
@@ -76,4 +76,16 @@ test('Antártida feature guide uses existing exact-title poster identity, never 
  assert.match(feature,/object-fit:contain/);
  assert.match(feature,/fetchpriority="high"/);
  assert.doesNotMatch(feature,/<div class="plate"><b>Antártida<\/b>/);
+});
+
+test('Compact adult homepage book matcher follows the original matcher and opens for deep links',()=>{
+ const doc=new JSDOM(read('index.html')).window.document;
+ const root=doc.querySelector('#ebook-matcher-root'),js=read('ebooks/ebook-matcher.js'),css=read('ebooks/ebook-matcher.css');
+ assert.equal(root.previousElementSibling.id,'questionnaire-box');
+ assert.ok(js.includes("const initiallyOpen=!document.body.classList.contains('page-home')||location.hash==='#ebook-matcher-root'"));
+ assert.ok(js.includes("return '<details class=\"ebook-fold\"'+(initiallyOpen?' open':'')+'><summary>"));
+ assert.ok(js.includes("window.addEventListener('hashchange'"));
+ assert.ok(css.includes('Homepage-only compact book-matching card'));
+ assert.ok(css.includes('html body.page-home #ebook-matcher-root .ebook-fold>summary'));
+ assert.doesNotMatch(read('kids/index.html'),/ebook-matcher-root/);
 });
