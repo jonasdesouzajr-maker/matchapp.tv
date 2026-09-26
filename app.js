@@ -3496,6 +3496,28 @@ async function discoverVerifiedTVMaze(requested) {
     });
 }
 
+// Exhaust more than the first source window in the SAME match request rather
+// than asking the user to press Match again. A live API outage, unchanged
+// cursor or bounded time budget stops additional requests immediately.
+async function discoverVerifiedTMDBWider(requested){
+    const cat=normCriteria(requested.cat),mood=normCriteria(requested.mood),
+          vibe=normCriteria(requested.vibe),rating=normCriteria(requested.rating),
+          decade=normCriteria(requested.decade),platform=normCriteria(requested.plat),
+          realGenres=normCriteria(requested.genre),
+          region=window.MatchAppCatalogMedia?.regionCode?.()||'BR';
+    const criteriaKey=JSON.stringify({cat,mood,vibe,rating,decade,platform,realGenres,region});
+    const started=Date.now();
+    // Three source windows maximum, not three broad unverified recommendations.
+    for(let windowIndex=0;windowIndex<3;windowIndex++){
+        const previous=TMDB_DISCOVERY_CURSOR.get(criteriaKey)||1;
+        const hit=await discoverVerifiedExactTMDB(requested);
+        if(hit)return hit;
+        const next=TMDB_DISCOVERY_CURSOR.get(criteriaKey)||1;
+        if(next===previous||Date.now()-started>36000)break;
+    }
+    return null;
+}
+
 // ----------------------------------------------------
 // AI-PROPOSED, SOURCE-VERIFIED FRESH TITLE
 //
@@ -4124,7 +4146,7 @@ window.triggerMatch = async function(isSpecificSearch = false) {
     // TMDB gets first chance because it can verify genres/ratings/origin and,
     // when requested, regional provider availability.
     if (!isSpecificSearch && !preflight) {
-        try { preflight = await withMatchSourceDeadline(()=>discoverVerifiedExactTMDB(requested),MATCH_SOURCE_DEADLINES.tmdb); } catch (_) { preflight = null; }
+        try { preflight = await withMatchSourceDeadline(()=>discoverVerifiedTMDBWider(requested),MATCH_SOURCE_DEADLINES.tmdb); } catch (_) { preflight = null; }
     }
     // Broaden to a second independently attributed TV catalog only for criteria
     // its public records can actually prove. Never swap out Comfort, region,
