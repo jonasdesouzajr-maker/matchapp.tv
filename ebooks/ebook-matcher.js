@@ -5,7 +5,22 @@
 'use strict';
 if((location.pathname||'').toLowerCase().startsWith('/kids'))return;
 
-const CAT=()=>window.MatchAppContentSafety?.safeEntries?.(window.MATCHAPP_EBOOK_CATALOG)|| (Array.isArray(window.MATCHAPP_EBOOK_CATALOG)?window.MATCHAPP_EBOOK_CATALOG:[]);
+// Checked external books are profiles, not claims of permanent store stock.
+const LIVE_KEY='match_ebook_live_discovered_v1';
+const CAT=()=>{
+ const curated=Array.isArray(window.MATCHAPP_EBOOK_CATALOG)?window.MATCHAPP_EBOOK_CATALOG:[];
+ let live=[];
+ try{
+  const rows=JSON.parse(localStorage.getItem(LIVE_KEY)||'[]');
+  if(Array.isArray(rows))live=rows.slice(-24).filter(x=>
+    /^ol:OL\d+W$/.test(String(x?.id||''))&&
+    /^https:\/\/openlibrary\.org\/works\/OL\d+W$/.test(String(x?.sourcePage||''))&&
+    /^https:\/\/play\.google\.com\/store\/books\/details/.test(String(x?.storeUrl||''))&&
+    x.source==='openlibrary-google-exact'&&typeof x.title==='string'&&typeof x.author==='string');
+ }catch(_){}
+ const all=curated.concat(live);
+ return window.MatchAppContentSafety?.safeEntries?.(all)||all;
+};
 const MAG=()=>window.MatchAppContentSafety?.safeEntries?.(window.MatchAppMagazines?.items)||window.MatchAppMagazines?.items||[];
 const K={saved:'match_ebook_saved_v1',disliked:'match_ebook_disliked_v1',seen:'match_ebook_seen_v1',prefs:'match_ebook_criteria_v1'};
 const FIELDS={
@@ -77,7 +92,9 @@ function storeLinks(book){
  const links=[
   ['Kindle',kindle],
   ['Apple Books','https://books.apple.com/'+apple+'/search?term='+query],
-  ['Google Play Books','https://play.google.com/store/search?q='+query+'&c=books'],
+   ['Google Play Books',book.source==='openlibrary-google-exact'&&
+       /^https:\/\/play\.google\.com\/store\/books\/details/.test(String(book.storeUrl||''))?
+       book.storeUrl:'https://play.google.com/store/search?q='+query+'&c=books'],
   ['Kobo','https://www.kobo.com/'+kobo+'/search?query='+query]
  ];
  if(m==='US')links.push(['NOOK','https://www.barnesandnoble.com/s/'+query+'?keyword='+query]);
@@ -233,6 +250,11 @@ function showVerifiedCover(img,fall,url){
 async function hydrateCover(book,img,fall,audio){
  if(!img)return;
  img.hidden=true;if(fall)fall.hidden=false;
+ // Original Open Library cover comes from the work independently confirmed
+ // by an exact author/title bookstore listing, not fuzzy image search.
+ if(book.source==='openlibrary-google-exact'&&
+    /^https:\/\/covers\.openlibrary\.org\/b\/id\/\d+-L\.jpg$/.test(String(book.verifiedCover||''))&&
+    await showVerifiedCover(img,fall,book.verifiedCover))return;
  // A source-verified Apple audio record carries its own genuine edition art.
  if(audio?.apple?.coverUrl&&await showVerifiedCover(img,fall,audio.apple.coverUrl))return;
  for(const source of ['openlibrary','google']){
@@ -378,6 +400,8 @@ function renderResult(root,book,p,relaxed,audio,magazine){
  host.innerHTML='<div class="ebook-result-grid">'+
   '<div class="ebook-cover"><img data-ebook-cover alt="" hidden><div data-ebook-cover-fallback>'+coverFallback(book)+'</div></div>'+
   '<div class="ebook-result-copy"><p class="ebook-kicker">'+esc(book.year)+' · '+esc(book.genres.join(' · '))+'</p><h3>'+esc(book.title)+'</h3><p class="ebook-author">by '+esc(book.author)+'</p><p class="ebook-summary">'+esc(book.summary)+'</p>'+
+  (book.source==='openlibrary-google-exact'&&/^https:\/\/openlibrary\.org\/works\/OL\d+W$/.test(String(book.sourcePage||''))?
+   '<a class="ebook-preview-link" href="'+esc(book.sourcePage)+'" target="_blank" rel="noopener noreferrer">Source: Open Library ↗</a>':'')+
   '<div class="ebook-why"><strong>'+esc(tr('why'))+'</strong><span>'+esc(why(book,p,relaxed))+'</span></div>'+
   '<div class="ebook-meta"><span>'+esc(book.length)+' read</span><span>'+esc(book.pace)+' pace</span><span>'+(book.access.includes('free')?'free option + stores':'paid stores')+'</span></div>'+
   '<div class="ebook-source-groups">'+
@@ -456,6 +480,27 @@ async function doMatch(root){
    });
   }else if(p.format==='magazine')pick=chooseMagazine(p);
   else pick=choose(p);
+  // Broaden search only after the eligible editorial shelf is exhausted.
+  // The additional work must have exact library identity AND verified retail
+  // availability in the user's country; unknown mood/length/pace fails closed.
+  if(!pick&&p.format!=='audiobook'&&p.format!=='magazine'&&
+     window.MatchAppLiveBookSource?.discover){
+   const source=window.MatchAppLiveBookSource;
+   const excluded=new Set(CAT().map(b=>source.norm(b.title)));
+   if(note){note.hidden=false;note.textContent=lang()==='pt-BR'?
+     'Verificando outras bibliotecas e lojas oficiais…':'Checking other trusted libraries and official book stores…';}
+   const matched=await source.discover({...p,
+     explicit:item=>window.MatchAppContentSafety?.isExplicit?.(item)===true
+   },{market:market(),excluded});
+   if(matched){
+    try{
+     const old=JSON.parse(localStorage.getItem(LIVE_KEY)||'[]');
+     const unique=Array.isArray(old)?old.filter(b=>b?.id!==matched.id):[];
+     localStorage.setItem(LIVE_KEY,JSON.stringify(unique.concat(matched).slice(-24)));
+    }catch(_){}
+    pick={book:matched,relaxed:false};
+   }
+  }
   if(!pick){
    if(p.format==='audiobook'){renderAudioDiscovery(root,p);if(note){note.hidden=true;note.textContent='';}}
    else if(note){note.hidden=false;note.textContent=tr('empty');}
