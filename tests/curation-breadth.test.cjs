@@ -75,6 +75,11 @@ test('adult movies and music retain original-source gates and Kids remains indep
  const app=read('app.js'),audio=read('ebooks/audiobooks.js'),kids=read('kids/source-rated-discovery.js');
  const kidsPage=read('kids/index.html'),home=read('index.html');
  assert(app.includes('discoverVerifiedExactTMDB')&&app.includes('moodFitsVerified'));
+ assert(app.includes('TMDB_DISCOVERY_CURSOR_LIMIT=64'));
+ assert(app.includes('page_start:pageStart'));
+ assert(app.includes('const next=pageStart+pageSize'));
+ assert(app.includes('if(!Array.isArray(candidates)||!candidates.length)'),
+  'a failed TMDB source must never count as verified inventory');
  assert(app.includes("if (['Spotify playlist','Spotify single'].includes(cat)) return null;"),
   'never label an unrelated Apple track as a Spotify playlist or single');
  assert(app.includes("if(cat==='music album')params.set('entity','album')"),
