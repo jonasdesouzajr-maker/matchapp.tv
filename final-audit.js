@@ -48,12 +48,12 @@
       if(!sb){message('Account service is temporarily unavailable. Please try again.',true);return;}
       message('Creating your private MatchApp account…');
       try{
-        const {data,error}=await sb.auth.signUp({email:mail,password,options:{data:{full_name:name,name,matchapp_first_time_onboarding_v1:true},emailRedirectTo:'https://matchapp.tv/?openAuth=1'}});
+        const {data,error}=await sb.auth.signUp({email:mail,password,options:{data:{full_name:name,name,matchapp_first_time_onboarding_v1:true},emailRedirectTo:'https://matchapp.tv/'}});
         if(error)throw error;
         if(data?.session?.user){
           await window.hydrateProfileFromAuth?.(data.session.user);window.closeAuthModal?.();
           window.showToast?.('Account created. Complete your profile to personalize every match.');
-        }else message('Account created. Check your email to confirm your address, then sign in.');
+        }else message('Account created. Check your inbox and use the newest confirmation link. If the link expires, request a new one from Log In.');
       }catch(e){message(e?.message||'Could not create your account. Please try again.',true);}
     };
   }
