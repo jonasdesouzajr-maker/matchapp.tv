@@ -1936,30 +1936,88 @@ window.handleEmailSignup = async function() {
 };
 
 window.handleEmailLogin = async function() {
-    const email = document.getElementById('login-email').value.trim(); 
-    const password = document.getElementById('login-password').value; 
+    const emailField = document.getElementById('login-email');
+    const passwordField = document.getElementById('login-password');
+    const email = (emailField?.value || '').trim();
+    // Never trim/change a password: spaces can be intentional characters.
+    const password = passwordField?.value || '';
     const msgEl = document.getElementById('auth-message');
-    
-    if (!supabaseClient) { msgEl.style.display = 'block'; msgEl.style.color = '#ff5252'; msgEl.style.background = 'rgba(255,0,0,0.1)'; msgEl.innerText = "Database connection offline."; return; }
-    if(!email || !password) { msgEl.style.display = 'block'; msgEl.style.color = '#ff5252'; msgEl.style.background = 'rgba(255,0,0,0.1)'; msgEl.innerText = "Please enter email and password."; return; }
-    
-    msgEl.style.display = 'block'; msgEl.style.color = '#fff'; msgEl.style.background = 'rgba(229,193,88,0.2)'; msgEl.innerText = "Authenticating...";
-    
+    const submit = document.getElementById('login-submit');
+    if (!msgEl) return;
+    const show = (text, state = 'error') => {
+        msgEl.style.display = 'block';
+        msgEl.style.color = state === 'success' ? '#25D366' : state === 'pending' ? '#fff' : '#ffb4b4';
+        msgEl.style.background = state === 'success' ? 'rgba(37,211,102,0.1)' :
+            state === 'pending' ? 'rgba(229,193,88,0.2)' : 'rgba(255,0,0,0.1)';
+        msgEl.textContent = text;
+    };
+    if (!supabaseClient?.auth?.signInWithPassword) {
+        show('Account service is temporarily unavailable. Please try again.');
+        return;
+    }
+    if (!email || !password) {
+        show('Enter your email address and password.');
+        return;
+    }
+    // Multiple rapid taps must not interleave session writes and redirects.
+    if (window.__maEmailLoginPending) return;
+    window.__maEmailLoginPending = true;
+    if (submit) submit.disabled = true;
+    show('Signing in securely…', 'pending');
     try {
-        const { error, data } = await supabaseClient.auth.signInWithPassword({ email, password });
-        if(error) { 
-            msgEl.style.color = '#ff5252'; msgEl.style.background = 'rgba(255,0,0,0.1)';
-            msgEl.innerText = (error.code === 'email_not_confirmed')
-                ? "Confirm your email before signing in. You can request a new link below."
-                : (error.code === 'invalid_credentials')
-                    ? "Unable to sign in. Check your details. If you just registered, confirm your email or request a fresh link below."
-                    : error.message;
-        } else if (data.user) { 
-            msgEl.style.color = '#25D366'; msgEl.style.background = 'rgba(37,211,102,0.1)'; msgEl.innerText = "Welcome back! Routing to Home..."; 
-            setTimeout(() => { window.location.reload(); }, 1000); 
+        const {data,error} = await supabaseClient.auth.signInWithPassword({email,password});
+        if (error) {
+            // Invalid credentials never prove that an email exists. They may
+            // also occur when a member originally registered via Google and
+            // therefore has no email/password credential at all.
+            if (error.code === 'email_not_confirmed') {
+                show('Please confirm your email, then sign in. If necessary, choose Resend confirmation email below.');
+            } else if (error.code === 'invalid_credentials' || /invalid login credentials/i.test(error.message || '')) {
+                show('Email/password not accepted. If you joined with Google, use Continue with Google. Otherwise choose Forgot your password? to securely set a new one. Do not create another account.');
+            } else if (error.status === 429 || /rate limit/i.test(error.message || '')) {
+                show('Too many sign-in attempts. Please try again later or use the password recovery option.');
+            } else {
+                show('Sign-in could not be completed. Please try again or use Forgot your password?');
+            }
+            return;
         }
-    } catch(err) {
-        msgEl.style.color = '#ff5252'; msgEl.style.background = 'rgba(255,0,0,0.1)'; msgEl.innerText = "Critical authentication error.";
+        // Supabase should persist the session before signInWithPassword
+        // resolves. Do not celebrate a server-issued token if local session
+        // restoration failed or belongs to another account.
+        if (!data?.user?.id || !data?.session?.access_token || !data?.session?.refresh_token) {
+            show('Sign-in was not completed. Please retry or reset your password.');
+            return;
+        }
+        let saved = await supabaseClient.auth.getSession();
+        if (saved.error || saved.data?.session?.user?.id !== data.user.id) {
+            // A stale cached session must not defeat a successful password
+            // login. Retry once with the credentials JUST returned by Auth,
+            // never with an API/anon key or a previously cached token.
+            if (typeof supabaseClient.auth.setSession === 'function') {
+                const restored = await supabaseClient.auth.setSession({
+                    access_token:data.session.access_token,
+                    refresh_token:data.session.refresh_token
+                });
+                if (restored.error) throw restored.error;
+                saved = await supabaseClient.auth.getSession();
+            }
+        }
+        if (saved.error || saved.data?.session?.user?.id !== data.user.id ||
+            !saved.data?.session?.access_token) {
+            show('Your password was accepted, but this browser did not retain your session. Check browser storage permissions and try again.');
+            return;
+        }
+        show('Welcome back! You are signed in.', 'success');
+        // Existing onAuthStateChange owns profile hydration and quota refresh.
+        // Avoid an immediate reload that used to race session persistence.
+        window.closeAuthModal?.();
+        window.showToast?.('Welcome back to MatchApp Ai!');
+    } catch (err) {
+        console.warn('Email sign-in session could not be confirmed:', err?.code || err?.message || err);
+        show('Sign-in connection interrupted. Please retry; if the password is rejected, choose Forgot your password?');
+    } finally {
+        window.__maEmailLoginPending = false;
+        if (submit) submit.disabled = false;
     }
 };
 
