@@ -3338,6 +3338,10 @@ function categoryFitsVerified(kind,genres,countries,wanted){
       return false;
     });
 }
+// Reuse TMDB's existing indexed discovery safely as viewers exhaust curated
+// options. Only move past a source page window after its eligible exact-title
+// candidates have been examined; keep memory bounded per browser session.
+const TMDB_DISCOVERY_CURSOR=new Map(),TMDB_DISCOVERY_CURSOR_LIMIT=64;
 async function discoverVerifiedExactTMDB(requested){
     if(typeof window.tmdbDiscover!=='function'||typeof window.tmdbDetails!=='function')return null;
     const cat=normCriteria(requested.cat),mood=normCriteria(requested.mood),vibe=normCriteria(requested.vibe),
@@ -3358,7 +3362,17 @@ async function discoverVerifiedExactTMDB(requested){
     const start=decade.length===1?Number(String(decade[0]).match(/\d{4}/)?.[0]):0;
     const region=window.MatchAppCatalogMedia?.regionCode?.()||'BR';
     const provider=platform.length===1?platform[0]:'';
-    const candidates=await window.tmdbDiscover({kind,genre_ids:genreIds,original_language:cat.includes('anime')?'ja':'',decade_start:start||0,pages:provider?3:2,provider,region},{priority:true});
+    const pageSize=provider?3:2;
+    const criteriaKey=JSON.stringify({cat,mood,vibe,rating,decade,platform,realGenres,region});
+    const requestedStart=TMDB_DISCOVERY_CURSOR.get(criteriaKey)||1;
+    const pageStart=requestedStart>=1&&requestedStart<=498?requestedStart:1;
+    const candidates=await window.tmdbDiscover({kind,genre_ids:genreIds,original_language:cat.includes('anime')?'ja':'',decade_start:start||0,pages:pageSize,page_start:pageStart,provider,region},{priority:true});
+    // A source outage returns []; retry the opening window next time instead
+    // of treating an unavailable API as an exhausted global catalogue.
+    if(!Array.isArray(candidates)||!candidates.length){
+      if(pageStart>1)TMDB_DISCOVERY_CURSOR.delete(criteriaKey);
+      return null;
+    }
     const prefs=currentPreferenceExclusions(),known=window.matchPolicy?.known?.()||new Set();
 
     // TMDB Discover is popularity-sorted. Starting at row 0 on every device
@@ -3421,6 +3435,14 @@ async function discoverVerifiedExactTMDB(requested){
         }
       };
     }
+    // Current source window contained no eligible unseen titles. Allow a
+    // later Match request to check fresh TMDB pages without loading hundreds
+    // of posters, overriding exclusions or relaxing mood/platform/rating.
+    const next=pageStart+pageSize;
+    if(TMDB_DISCOVERY_CURSOR.size>=TMDB_DISCOVERY_CURSOR_LIMIT)
+      TMDB_DISCOVERY_CURSOR.delete(TMDB_DISCOVERY_CURSOR.keys().next().value);
+    if(next<=498)TMDB_DISCOVERY_CURSOR.set(criteriaKey,next);
+    else TMDB_DISCOVERY_CURSOR.delete(criteriaKey);
     return null;
 }
 
