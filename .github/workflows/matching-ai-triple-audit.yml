@@ -68,6 +68,18 @@ jobs:
           done
           echo "::error::Live site did not confirm this precise SHA."
           exit 1
+      - name: Serve the checked-out PR candidate with real backend services
+        if: github.event_name == 'pull_request' && matrix.pass == 1
+        env:
+          CANDIDATE_SHA: ${{ github.sha }}
+        run: |
+          printf '%s\n' "$CANDIDATE_SHA" > deployment-sha.txt
+          python3 -m http.server 8899 --bind 127.0.0.1 > /tmp/matching-audit-server.log 2>&1 &
+          for i in {1..20}; do
+            if curl -fsS http://127.0.0.1:8899/deployment-sha.txt; then break; fi
+            sleep 1
+          done
+          echo 'MATCHAPP_TEST_BASE=http://127.0.0.1:8899' >> "$GITHUB_ENV"
       - name: Live adult movie, e-book, magazine and Ask AI across four viewports
         if: (github.event_name != 'pull_request' && github.ref == 'refs/heads/main') || (github.event_name == 'pull_request' && matrix.pass == 1)
         run: node tools/live-production-smoke.cjs

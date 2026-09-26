@@ -52,7 +52,9 @@ async function guarded(browser,label,fn){
    await page.locator('button[onclick="triggerMatch(false)"]').click();
    await page.waitForFunction(()=>{
     const box=document.querySelector('#result-box'),title=document.querySelector('#res-title')?.textContent?.trim();
-    return box&&getComputedStyle(box).display!=='none'&&title&&title!=='Title';
+    // The title paints before metadata and the destination finish resolving.
+    return box&&getComputedStyle(box).display!=='none'&&title&&title!=='Title'&&
+     window.globalMatchTitle&&window.globalPlatform&&document.querySelector('#res-direct-link')?.getAttribute('href');
    },null,{timeout:110000});
    const match=await page.evaluate(()=>({title:document.querySelector('#res-title')?.textContent?.trim(),platform:String(globalPlatform||'').trim(),
     cover:document.querySelector('#res-poster-img')?.currentSrc||document.querySelector('#res-poster-img')?.src,
