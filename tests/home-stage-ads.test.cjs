@@ -43,7 +43,9 @@ test('Home keeps two desktop AdSense rails and three subtle tablet/mobile in-flo
   assert.match(ia,/ads\.forEach\(ad=>ad\.classList\.add\('ma-inline-ad'\)\)/);
   assert.match(ia,/if\(trending\)\{after\(hero,trending\);after\(trending,concierge\)\}/,'Top Titles must flow directly into the primary Match/Ai action');
   assert.doesNotMatch(ia,/if\(ads\[0\]&&trending\)after\(trending,ads\[0\]\)/,'no ad may be injected between Top Titles and the primary action');
-  assert.match(ia,/if\(ads\[1\]&&week\)after\(week,ads\[1\]\)/);
+  assert.doesNotMatch(ia,/if\(ads\[1\]&&week\)after\(week,ads\[1\]\)/,'Together sponsor cannot follow the premiere at runtime');
+  assert.match(ia,/const togetherAd=qs\('\.ma-together-ad',container\)/);
+  assert.match(ia,/if\(togetherAd\)after\(tg,togetherAd\)/,'The sponsored slot must follow the full Together card at runtime');
   assert.match(ia,/if\(ads\[2\]\)after\(events\|\|swift\|\|anchor,ads\[2\]\)/);
 });
 
