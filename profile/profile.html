@@ -573,31 +573,53 @@ body.profile-page-v3 .profile-hub-row{min-height:70px!important;border-radius:18
 <script src="/title-captions.js?v=190"></script><script defer src="/page-shell.js?v=20260926-brandai1" data-page-shell="1"></script>
 <script id="profile-hub-actions">document.addEventListener('DOMContentLoaded',()=>{document.querySelectorAll('[data-profile-target]').forEach(btn=>btn.addEventListener('click',()=>{const el=document.getElementById(btn.dataset.profileTarget);if(!el)return;const opening=el.hidden;document.querySelectorAll('.profile-hub-target').forEach(x=>{x.hidden=true;x.classList.remove('profile-hub-open')});if(opening){el.hidden=false;el.classList.add('profile-hub-open');requestAnimationFrame(()=>el.scrollIntoView({behavior:'smooth',block:'start'}))}}));});</script><script id="verified-email-profile-entry">
 document.addEventListener('DOMContentLoaded', async () => {
-    // Only a successful confirmation callback uses this one-time marker.
-    // The marker alone never grants access or reveals private profile data.
-    if (new URLSearchParams(location.search).get('welcome') !== 'verified') return;
+    // A URL marker alone grants no access: server-validate email or phone confirmation.
+    const welcomeType = new URLSearchParams(location.search).get('welcome');
+    if (welcomeType !== 'verified' && welcomeType !== 'phone') return;
     const clean = new URL(location.href);
     clean.searchParams.delete('welcome');
     history.replaceState(null, '', clean.pathname + clean.search + clean.hash);
-    const sb = window.supabaseClient;
+    // Auth initialization can finish just after DOMContentLoaded on slow devices.
+    // Wait a bounded time rather than losing the one-time welcome silently.
+    let sb = window.supabaseClient;
+    for (let attempt = 0; !sb?.auth?.getUser && attempt < 12; attempt++) {
+        await new Promise(resolve => setTimeout(resolve, 150));
+        sb = window.supabaseClient;
+    }
     if (!sb?.auth?.getUser) return;
     try {
         const { data, error } = await sb.auth.getUser();
-        // A visitor cannot unlock the create-profile form with ?welcome=verified.
-        if (error || !data?.user?.email_confirmed_at) return;
+        // The profile remains protected even if someone forges the welcome URL.
+        const user = data?.user;
+        if (error || !user ||
+            (welcomeType === 'verified' && !user.email_confirmed_at) ||
+            (welcomeType === 'phone' && !user.phone_confirmed_at)) return;
         const card = document.getElementById('account-details');
         if (!card) return;
         if (card.hidden) document.querySelector('[data-profile-target="account-details"]')?.click();
-        if (!document.getElementById('verified-email-welcome')) {
+        if (welcomeType === 'phone' && localStorage.getItem('match_profile_locked') !== 'true') {
+            const nameInput = document.getElementById('profile-name');
+            if (nameInput && !nameInput.value.trim()) {
+                // Only a server-confirmed member's own metadata is used for prefilling.
+                const name = String(user.user_metadata?.full_name || '').trim();
+                if (name) nameInput.value = name.slice(0, 120);
+            }
+        }
+        const hintId = welcomeType === 'phone' ? 'verified-phone-welcome' : 'verified-email-welcome';
+        if (!document.getElementById(hintId)) {
             const hint = document.createElement('p');
-            hint.id = 'verified-email-welcome';
+            hint.id = hintId;
             hint.setAttribute('role', 'status');
             hint.className = 'pf-card-sub';
             hint.style.color = 'var(--gold)';
             const isPt = (localStorage.getItem('match_lang') || document.documentElement.lang) === 'pt-BR';
-            hint.textContent = isPt
-                ? 'E-mail confirmado! Você já está conectado. Complete seu perfil abaixo.'
-                : 'Email confirmed! You are signed in. Complete your profile below.';
+            hint.textContent = welcomeType === 'phone'
+                ? (isPt
+                    ? 'Telefone confirmado! Você está conectado. Complete seu perfil e salve e bloqueie os campos obrigatórios abaixo.'
+                    : 'Phone verified! You are signed in. Complete your profile and save and lock the required fields below.')
+                : (isPt
+                    ? 'E-mail confirmado! Você já está conectado. Complete seu perfil abaixo.'
+                    : 'Email confirmed! You are signed in. Complete your profile below.');
             card.querySelector('h3')?.after(hint);
         }
     } catch (_) {
