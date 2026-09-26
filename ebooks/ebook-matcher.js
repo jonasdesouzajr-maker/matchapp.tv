@@ -6,17 +6,25 @@
 if((location.pathname||'').toLowerCase().startsWith('/kids'))return;
 
 // Checked external books are profiles, not claims of permanent store stock.
-const LIVE_KEY='match_ebook_live_discovered_v1';
+const LIVE_KEY='match_ebook_live_discovered_v2';
 const CAT=()=>{
  const curated=Array.isArray(window.MATCHAPP_EBOOK_CATALOG)?window.MATCHAPP_EBOOK_CATALOG:[];
  let live=[];
  try{
   const rows=JSON.parse(localStorage.getItem(LIVE_KEY)||'[]');
-  if(Array.isArray(rows))live=rows.slice(-24).filter(x=>
+  if(Array.isArray(rows)){
+   const country=market(),saved=new Set(read('match_ebook_saved_v1'));
+   live=rows.slice(-24).filter(x=>
     /^ol:OL\d+W$/.test(String(x?.id||''))&&
     /^https:\/\/openlibrary\.org\/works\/OL\d+W$/.test(String(x?.sourcePage||''))&&
     /^https:\/\/play\.google\.com\/store\/books\/details/.test(String(x?.storeUrl||''))&&
-    x.source==='openlibrary-google-exact'&&typeof x.title==='string'&&typeof x.author==='string');
+    x.source==='openlibrary-google-exact'&&x.verifiedRegion===country&&
+    Number.isSafeInteger(x.verifiedAt)&&x.verifiedAt<=Date.now()&&
+    (Date.now()-x.verifiedAt<6*3600000||saved.has(x.id))&&
+    Array.isArray(x.moods)&&x.moods.length===0&&
+    Array.isArray(x.access)&&x.access.includes('paid')&&
+    typeof x.title==='string'&&typeof x.author==='string');
+  }
  }catch(_){}
  const all=curated.concat(live);
  return window.MatchAppContentSafety?.safeEntries?.(all)||all;
@@ -501,12 +509,13 @@ async function doMatch(root){
      explicit:item=>window.MatchAppContentSafety?.isExplicit?.(item)===true
    },{market:market(),excluded});
    if(matched){
+    const profile={...matched,verifiedRegion:market(),verifiedAt:Date.now()};
     try{
      const old=JSON.parse(localStorage.getItem(LIVE_KEY)||'[]');
      const unique=Array.isArray(old)?old.filter(b=>b?.id!==matched.id):[];
-     localStorage.setItem(LIVE_KEY,JSON.stringify(unique.concat(matched).slice(-24)));
+     localStorage.setItem(LIVE_KEY,JSON.stringify(unique.concat(profile).slice(-24)));
     }catch(_){}
-    pick={book:matched,relaxed:false};
+    pick={book:profile,relaxed:false};
    }
   }
   if(!pick){
