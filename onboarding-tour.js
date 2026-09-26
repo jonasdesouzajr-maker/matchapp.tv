@@ -2,9 +2,10 @@
 (function(){
 'use strict';
 
-const VERSION='v6';
+const VERSION='v7';
 let stepIndex=0,steps=[],panel=null,spot=null,active=false,repositionRaf=0,touchX=null,lastTarget=null;
 let focusGuardInstalled=false;
+let bookFoldBeforeTour=null,bookFoldForcedOpen=false;
 
 const copy={
  en:{
@@ -13,6 +14,8 @@ const copy={
   format:['Choose a format','Movie, series, anime, novela or another format — tap the kind of entertainment you want.'],
   platform:['Choose a platform','Choose a service you already use, or leave it open so MatchApp can search more options.'],
   more:['Fine-tune only if you want','Open More Filters for genre, pacing, era and age rating. Everything here is optional.'],
+  book:['Meet Bookworms','Just below Find what to watch here is a separate matching card for e-books, verified audiobooks and magazines. Open this dropdown to find your next read or listen, without switching to Ask AI.'],
+  bookFormat:['Pick what to read or listen to','Choose E-book, Audiobook or Magazine here. Then set your mood, genre and any optional filters in the compact dropdowns, and tap Match my e-book for original covers and legitimate free, listening or official store links.'],
   ai:['Ask MatchApp Ai','Prefer your own words? Tap this card, then choose typing or the microphone. The tour itself will never open your keyboard.'],
   latest:['Browse the latest titles','Swipe these posters or use the arrows. Tap any title to open its details and where-to-watch information.'],
   kids:['Open Kids Mode','Tap here for the separate age-reviewed Kids experience with its own safety rules.'],
@@ -25,6 +28,8 @@ const copy={
   format:['Escolha um formato','Filme, série, anime, novela ou outro formato — toque no tipo de entretenimento que você quer.'],
   platform:['Escolha uma plataforma','Escolha um serviço que você já usa ou deixe em aberto para o MatchApp procurar mais opções.'],
   more:['Ajuste só se quiser','Abra Mais Filtros para gênero, ritmo, época e classificação etária. Tudo aqui é opcional.'],
+  book:['Conheça o Bookworms','Logo abaixo de Encontre o que assistir aqui fica o campo separado de matches para e-books, audiolivros verificados e revistas. Abra esta seção para encontrar sua próxima leitura sem entrar no Pergunte à iA.'],
+  bookFormat:['Escolha o que ler ou ouvir','Selecione E-book, Audiolivro ou Revista aqui. Depois escolha clima, gênero e outros filtros nos menus compactos e toque em Encontrar meu e-book para ver capas originais e links de fontes gratuitas legais, áudio ou lojas oficiais.'],
   ai:['Pergunte à MatchApp iA','Prefere explicar com suas próprias palavras? Toque aqui e depois escolha digitar ou usar o microfone. O tour nunca abre o teclado sozinho.'],
   latest:['Veja os títulos mais recentes','Deslize pelos pôsteres ou use as setas. Toque em um título para abrir detalhes e onde assistir.'],
   kids:['Abra o Modo Kids','Toque aqui para entrar na experiência infantil separada, revisada por idade e com regras próprias de segurança.'],
@@ -33,7 +38,7 @@ const copy={
  }
 };
 
-const icons={pick:'✦',mood:'◐',format:'▣',platform:'▶',more:'≡',ai:'Ai',latest:'↔',kids:'★',profile:'●'};
+const icons={pick:'✦',mood:'◐',format:'▣',platform:'▶',more:'≡',book:'📚',bookFormat:'▤',ai:'Ai',latest:'↔',kids:'★',profile:'●'};
 const tr=()=>{const l=String(window.MATCH_LANG||document.documentElement.lang||'en');return copy[l]||copy[l.split('-')[0]]||copy.en};
 const home=()=>location.pathname==='/'||location.pathname==='/index.html';
 const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -72,12 +77,20 @@ function buildSteps(){
   {key:'format',selector:'.ma-quick .ma-filter-row:nth-child(2)'},
   {key:'platform',selector:'.ma-quick .ma-filter-row:nth-child(3)'},
   {key:'more',selector:'.match-more-filters>summary,.match-more-filters',mode:'filters'},
+  // These two steps belong to the SEPARATE Bookworms card directly beneath
+  // #questionnaire-box; never aim the coachmark at Ask AI for book matching.
+  {key:'book',selector:'#ebook-matcher-root .ebook-fold>summary'},
+  {key:'bookFormat',selector:'#ebook-matcher-root .ebook-select[data-ebook-select="format"]',mode:'book-form'},
   {key:'ai',selector:'#ma-tab-ask'},
   {key:'latest',selector:'#trending-rail .marquee-item:nth-child(2),#trending-rail .marquee-item,#trending-rail'},
   {key:'kids',selector:'#matchapp-kids-entry,.ma-kids-mode-entry'},
   {key:'profile',selector:'#profile-link-tab,#nav-reg-btn,[data-avatar-slot]'}
  ];
- return defs.filter(step=>firstVisible(step.selector));
+ // Format is deliberately inside a collapsed <details>; only include its
+ // step when Bookworms and its real format dropdown are already mounted.
+ return defs.filter(step=>step.mode==='book-form'
+  ? !!document.querySelector(step.selector) && !!firstVisible('#ebook-matcher-root .ebook-fold>summary')
+  : !!firstVisible(step.selector));
 }
 
 function ensureUi(){
@@ -127,7 +140,21 @@ function ensureUi(){
  },{passive:true});
 }
 
+function restoreBookFold(){
+ if(!bookFoldForcedOpen)return;
+ const fold=document.querySelector('#ebook-matcher-root .ebook-fold');
+ if(fold&&bookFoldBeforeTour!==null)fold.open=bookFoldBeforeTour;
+ bookFoldForcedOpen=false;
+}
+
 function prep(step,el){
+ if(step.mode==='book-form'){
+  const fold=document.querySelector('#ebook-matcher-root .ebook-fold');
+  if(fold){
+   if(bookFoldBeforeTour===null)bookFoldBeforeTour=fold.open;
+   if(!fold.open){fold.open=true;bookFoldForcedOpen=true;}
+  }
+ }
  // Only the Match tab is activated for context. Ask AI is deliberately never
  // activated by the tour because its normal click behavior focuses the input.
  if(step.key==='pick')document.getElementById('ma-tab-match')?.click();
@@ -277,7 +304,12 @@ function show(i){
  if(!steps.length)return close();
  stepIndex=Math.min(Math.max(i,0),steps.length-1);
  const step=steps[stepIndex];
- let el=firstVisible(step.selector);
+ if(step.key!=='bookFormat')restoreBookFold();
+ // A real format dropdown is hidden by the native collapsed Bookworms card.
+ // First find its visible summary, expand the card for this ONE tour step,
+ // and only then measure/highlight the actual selector on any screen size.
+ const entrySelector=step.mode==='book-form'?'#ebook-matcher-root .ebook-fold>summary':step.selector;
+ let el=firstVisible(entrySelector);
  if(!el){steps.splice(stepIndex,1);return steps.length?show(Math.min(stepIndex,steps.length-1)):close()}
 
  blurActive();
@@ -310,6 +342,8 @@ function close(){
  if(!active)return;
  active=false;
  blurActive();
+ restoreBookFold();
+ bookFoldBeforeTour=null;
  removeFocusGuard();
  if(panel)panel.hidden=true;
  if(spot)spot.hidden=true;
@@ -321,6 +355,9 @@ function start(){
  if(active||!home())return;
  steps=buildSteps();
  if(!steps.length)return;
+ // Restore exactly the visitor's initial Bookworms open/collapsed state.
+ bookFoldBeforeTour=document.querySelector('#ebook-matcher-root .ebook-fold')?.open??null;
+ bookFoldForcedOpen=false;
  ensureUi();
  active=true;
  installFocusGuard();
