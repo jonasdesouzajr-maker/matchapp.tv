@@ -89,7 +89,7 @@ test('custom confirmation template requires user click and frontend recognizes v
   const landing=read('auth-confirmation.js');
   const guide=read('docs/supabase-confirm-signup-email-template.md');
   assert.match(guide,/confirm\.html\?token_hash=\{\{ \.TokenHash \}\}/);
-  assert.match(landing,/verifiedReturn = query\.get\('authReturn'\) === 'verified'/);
+  assert.match(manual,/location\.replace\('\/profile\/profile\.html\?welcome=verified'\)/);
   assert.doesNotMatch(manual,/addEventListener\(['"]DOMContentLoaded['"]\s*,\s*verify/);
   assert.match(read('confirm.html'),/<meta name="referrer" content="no-referrer">/);
 });
