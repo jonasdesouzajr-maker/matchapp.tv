@@ -283,7 +283,7 @@
       // without itself being a thriller or intense story. Keep every other
       // disturbing-content signal active, including against podcast summaries.
       const safeSummary=(primaryMood==='cozy comfort watch'&&cats.includes('podcast'))
-        ?summary.replace(/\\bgrief\\b/gi,' '):summary;
+        ?summary.replace(/\bgrief\b/gi,' '):summary;
       if (comfortHeavyText.test(safeSummary)) return false;
     }
     if (values(criteria?.genre).some(genre=>incompatible(genre,criteria)))return false;
