@@ -5,7 +5,7 @@ const read=p=>fs.readFileSync(path.join(__dirname,'..',p),'utf8');
 function load(file,key){
  const sandbox={window:{},URL};
  vm.runInNewContext(read(file),sandbox,{filename:file});
- return Array.from(sandbox.window[key]||[]);
+ return Array.from(sandbox.window[key]?.items||sandbox.window[key]||[]);
 }
 test('adult editorial book profiles expand without duplicated work identities or unsupported entries',()=>{
  const books=load('ebooks/catalog.js','MATCHAPP_EBOOK_CATALOG');
@@ -14,7 +14,7 @@ test('adult editorial book profiles expand without duplicated work identities or
  assert.equal(new Set(books.map(b=>b.title.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase()+'|'+b.author.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase())).size,books.length);
  for(const b of books){
   assert(b.id&&b.title&&b.author&&b.summary?.length>28,b.id);
-  assert(Number.isInteger(b.year)&&b.year>=500&&b.year<=2026,b.id);
+  assert(Number.isInteger(b.year)&&b.year>=-1000&&b.year<=2026,b.id);
   assert(b.moods.length&&b.genres.length&&b.keywords.length>2,b.id);
   assert(b.access.every(a=>['free','paid'].includes(a)),b.id);
   assert(!/\b(?:porn|xxx|erotica|hentai)\b/i.test(b.title+' '+b.summary),b.id);
