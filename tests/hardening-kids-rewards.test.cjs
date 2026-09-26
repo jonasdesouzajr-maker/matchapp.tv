@@ -36,7 +36,8 @@ test('share rewards accumulate as persistent Match currency',()=>{
   const app=read('app.js'),share=read('share.js'),kidsAccount=read('kids/account.js'),migration=read('supabase/migrations/20260921210945_persistent_share_match_rewards.sql');
   assert.match(app,/match_guestBonusMatches/);
   assert.match(app,/purchased_matches:action==='match'\?next:extras/);
-  assert.match(share,/match_guestBonusMatches/);
+  assert.match(read('guest-share-rewards.js'),/match_guestBonusMatches/);
+  assert.match(share,/MatchAppGuestShare\.open/);
   assert.doesNotMatch(share,/match_dailyCount'\), Math\.max\(0, current - 1\)/);
   assert.match(kidsAccount,/rpc\('claim_share_reward'\)/);
   assert.match(migration,/purchased_matches = coalesce\(purchased_matches, 0\) \+ 1/);
