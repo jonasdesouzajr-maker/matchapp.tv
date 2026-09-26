@@ -24,7 +24,7 @@ function getShareLog() {
         return raw.filter(ts => ts > cutoff);
     } catch (e) { return []; }
 }
-function shareRewardsLeft() { return Math.max(0, SHARE_MAX_REWARDS - getShareLog().length); }
+function shareRewardsLeft() { return !window.isUserLoggedIn && window.MatchAppGuestShare?.remainingShares ? window.MatchAppGuestShare.remainingShares() : Math.max(0, SHARE_MAX_REWARDS - getShareLog().length); }
 window.shareRewardsLeft = shareRewardsLeft;
 
 function nextRewardResetText() {
@@ -59,25 +59,14 @@ async function grantShareReward() {
             return { ok: false, left: shareRewardsLeft(), serverUnavailable: true };
         }
     }
-    // Anonymous path: persistent local Match balance, separate from the daily
-    // included-action counter. Copying text is not a completed social share.
-    if (shareRewardsLeft() <= 0) return { ok: false, left: 0 };
-    const log = getShareLog();
-    log.push(Date.now());
-    localStorage.setItem('match_shareLog', JSON.stringify(log));
-    const currentBalance = window.MatchAppGuestMatches?.balance?.()
-        ?? Math.max(0, Number.parseInt(localStorage.getItem('match_guestBonusMatches') || '0', 10) || 0);
-    const balance = window.MatchAppGuestMatches?.set?.(currentBalance + 1)
-        ?? (() => { const next=currentBalance+1; localStorage.setItem('match_guestBonusMatches',String(next)); return next; })();
-    const today = new Date().toLocaleDateString();
-    const used = localStorage.getItem('match_lastDate') === today
-        ? Math.max(0, Number.parseInt(localStorage.getItem('match_dailyCount') || '0', 10) || 0)
-        : 0;
-    window.updateQuotaBadge?.({
-        remaining: Math.max(0, 3 - used),
-        used, limit: 3, purchased_matches: balance, anon: true
-    });
-    return { ok: true, left: shareRewardsLeft(), matches: balance };
+    // Adult guests share one two-reward, non-resetting budget with Bookworms
+    // and Ask AI. The shared engine persists +1 Match as match_guestBonusMatches.
+    // Never grant a bonus for opening a social tab or copying a caption.
+    if (!window.MatchAppGuestShare?.claim) return {ok:false,left:0};
+    const token='watch:'+String(window.__matchappMatchRunId||window.globalMatchTitle||'unknown');
+    const claimed=window.MatchAppGuestShare.claim('match',token);
+    return {ok:claimed.ok,left:claimed.left,matches:claimed.matches};
+
 }
 
 window.grantShareReward = grantShareReward;
@@ -250,9 +239,14 @@ window.openShareSheet = async function() {
         if (st && typeof st.share_rewards_left === 'number') left = st.share_rewards_left;
     }
     if (statusEl) {
+        const guestTrial=!window.isUserLoggedIn && !!window.MatchAppGuestShare;
         statusEl.innerHTML = left > 0
-            ? `🎁 Share this and earn <strong>+1 bonus match</strong> — <strong>${left}</strong> of ${SHARE_MAX_REWARDS} bonus matches left this 6-hour window.`
-            : `⏳ You've claimed all ${SHARE_MAX_REWARDS} bonus matches for now. Next one unlocks in <strong>${nextRewardResetText()}</strong>. You can still share!`;
+            ? guestTrial
+                ? `🎁 Share this and unlock <strong>+1 Match</strong> — ${left} of your 2 guest share rewards left.`
+                : `🎁 Share this and earn <strong>+1 bonus match</strong> — <strong>${left}</strong> of ${SHARE_MAX_REWARDS} bonus matches left this 6-hour window.`
+            : guestTrial
+                ? `You've used both guest share bonuses. Register free for more Matches and AI prompts!`
+                : `⏳ You've claimed all ${SHARE_MAX_REWARDS} bonus matches for now. Next one unlocks in <strong>${nextRewardResetText()}</strong>. You can still share!`;
     }
 };
 
@@ -532,6 +526,13 @@ async function afterShare(network) {
     const statusEl = document.getElementById('share-reward-status');
     if (result.ok) {
         _rewardedThisCard = true;
+        if (!window.isUserLoggedIn && window.MatchAppGuestShare?.matchReward) {
+            // After a completed guest share, dismiss the result and start the
+            // earned +1 Match with the SAME filters (never fabricate a result).
+            if (statusEl) statusEl.textContent = '🎁 +1 Match unlocked — finding your next pick…';
+            await window.MatchAppGuestShare.matchReward();
+            return;
+        }
         if (statusEl) statusEl.innerHTML = `🎉 <strong>Bonus match unlocked!</strong> ${result.left} of ${SHARE_MAX_REWARDS} left this window.`;
         if (window.showToast) showToast('🎁 Thanks for sharing! +1 Match saved until you use it.');
         if (typeof confetti === 'function' && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
