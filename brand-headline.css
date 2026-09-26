@@ -157,3 +157,53 @@ html.reduce-motion body.page-shell header.app-header.mh-topbox .ma-word-ai,
 html.reduce-motion body.page-shell header.app-header.mh-topbox .ma-word-ai::after{
   animation:none!important;background-position:50% 50%!important;
 }
+
+
+/* The dedicated adult Bookworms hub is a standalone page, so its top logo
+   carries the exact same branded type without loading Home controllers. */
+html body.ebook-page .ebook-page-top .ebook-hub-brand{
+ display:inline-flex!important;align-items:center!important;gap:8px!important;
+ text-decoration:none!important;min-width:0!important;max-width:100%!important;
+ background:none!important;border:0!important;padding:0!important;
+}
+html body.ebook-page .ebook-page-top .ebook-hub-brand .ma-brand-orb-stage{
+ display:grid!important;place-items:center!important;flex:0 0 58px!important;
+ width:58px!important;height:58px!important;
+}
+html body.ebook-page .ebook-page-top .ebook-hub-brand .ma-brand-orb{
+ width:58px!important;height:58px!important;max-width:58px!important;
+ object-fit:contain!important;filter:drop-shadow(0 3px 8px rgba(244,202,115,.24))!important;
+}
+html body.ebook-page .ebook-page-top .ebook-hub-brand .ma-brand-copy{
+ display:inline-flex!important;align-items:baseline!important;gap:.18em!important;
+ font-family:Outfit,Inter,system-ui,sans-serif!important;font-weight:950!important;
+ white-space:nowrap!important;letter-spacing:-.057em!important;
+}
+html body.ebook-page .ebook-page-top .ebook-hub-brand .ma-wordmark{
+ display:inline-flex!important;align-items:baseline!important;
+ font:950 clamp(22px,3vw,34px)/1.1 Outfit,Inter,system-ui,sans-serif!important;
+ letter-spacing:-.057em!important;
+}
+html body.ebook-page .ebook-page-top .ebook-hub-brand .ma-word-match{
+ background:linear-gradient(170deg,#fff,#f4ebff 46%,#b1b7cc)!important;
+ background-clip:text!important;-webkit-background-clip:text!important;-webkit-text-fill-color:transparent!important;
+}
+html body.ebook-page .ebook-page-top .ebook-hub-brand .ma-word-app{
+ background:linear-gradient(165deg,#fff3be,#e6bc58 65%,#ac7629)!important;
+ background-clip:text!important;-webkit-background-clip:text!important;-webkit-text-fill-color:transparent!important;
+}
+html body.ebook-page .ebook-page-top .ebook-hub-brand .ma-word-ai{
+ font:950 clamp(25px,3.3vw,38px)/1.1 Outfit,Inter,system-ui,sans-serif!important;
+ letter-spacing:-.08em!important;background:linear-gradient(104deg,#d6adff,#f7e1ac,#c29af2)!important;
+ -webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important;
+}
+@media(max-width:420px){
+ html body.ebook-page .ebook-page-top .ebook-hub-brand .ma-brand-orb-stage{
+  width:44px!important;height:44px!important;flex-basis:44px!important;
+ }
+ html body.ebook-page .ebook-page-top .ebook-hub-brand .ma-brand-orb{
+  width:44px!important;height:44px!important;max-width:44px!important;
+ }
+ html body.ebook-page .ebook-page-top .ebook-hub-brand .ma-wordmark{font-size:clamp(20px,5.7vw,24px)!important}
+ html body.ebook-page .ebook-page-top .ebook-hub-brand .ma-word-ai{font-size:clamp(22px,6.3vw,28px)!important}
+}
