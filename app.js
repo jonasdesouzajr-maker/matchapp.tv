@@ -3384,6 +3384,12 @@ async function discoverVerifiedExactTMDB(requested){
         kind,genre_ids:genreIds,original_language:cat.includes('anime')?'ja':'',
         decade_start:start||0,page_start:pageStart,pages:pageCount,provider,region
       },{priority:true});
+      // Null/invalid payload means the TMDB source is unavailable, not that
+      // its next page is an evidence-backed empty catalog.
+      if(!Array.isArray(candidates)||!candidates.length){
+        if(!Array.isArray(candidates))break;
+        continue;
+      }
     const prefs=currentPreferenceExclusions(),known=window.matchPolicy?.known?.()||new Set();
 
     // TMDB Discover is popularity-sorted. Starting at row 0 on every device
