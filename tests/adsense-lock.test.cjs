@@ -92,7 +92,7 @@ test('Match Together full-width sponsored unit is immutable',()=>{
   assert.equal((html.match(/class="ad-banner-container premium-ad-frame ma-together-ad"/g)||[]).length,1);
   // Owner's express placement exception changes ONLY the order of this slot.
   // The exact 5 units, IDs, creative attributes and responsive CSS remain locked.
-  const card=html.indexOf('<!-- MATCH TOGETHER ENTRY —');
+  const card=html.indexOf('<!-- MATCH TOGETHER ENTRY -->');
   const ad=html.indexOf('<!-- MATCH TOGETHER SPONSORED UNIT — owner-approved position');
   const premiere=html.indexOf('<details id="premiere-disclosure"',card);
   assert.ok(card>0&&ad>card&&premiere>ad,'Together sponsored slot must follow its card, before premiere');
