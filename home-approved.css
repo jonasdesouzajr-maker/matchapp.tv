@@ -24,6 +24,7 @@ html body.page-home #ma-install-offer{
 #ma-install-offer .ma-offer-browser{border:1px solid #ffdf89;background:linear-gradient(135deg,#ffe195,#d5ab49);color:#251528;padding:9px;}
 #ma-install-offer .ma-offer-play{display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,227,151,.74);background:rgba(255,255,255,.075);color:#ffe9b6;text-decoration:none;padding:9px;}
 #ma-install-offer .ma-offer-play[hidden]{display:none!important;}
+#ma-install-offer .ma-offer-play[disabled]{opacity:.65;cursor:not-allowed;background:rgba(255,255,255,.035);border-color:rgba(255,227,151,.35);color:#bdb3ca;}
 #ma-install-offer .ma-offer-actions:has(.ma-offer-play[hidden]){grid-template-columns:1fr;}
 #ma-install-offer .ma-offer-never{display:block;min-height:42px;margin:7px auto 0;padding:9px 8px;color:#cabbd5;border:0;background:transparent;font-weight:700;text-decoration:underline;text-underline-offset:3px;}
 #ma-install-offer :is(button,a):focus-visible{outline:2px solid #fce6a1;outline-offset:3px;}
