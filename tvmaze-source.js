@@ -13,11 +13,12 @@
  const PAGES=new Map(),MAX_KEYS=64;
  const MAX_PAGE=160,MAX_REQUESTS=2,TIMEOUT_MS=5600;
  const clean=s=>String(s||'').normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
+ const knownKey=s=>clean(s).replace(/\\s+/g,'');
  const words=s=>String(s||'').replace(/<[^>]*>/g,' ').replace(/\s+/g,' ').trim();
  const artwork=url=>{
   if(typeof url!=='string')return null;
   try{const u=new URL(url);return u.protocol==='https:'&&u.hostname==='static.tvmaze.com'&&
-    /^\/uploads\/images\/(?:original|main|medium)\/\d+\/[a-z0-9_.-]+$/i.test(u.pathname)?u.href:null;}catch(_){return null}
+    /^\/uploads\/images\/(?:original|original_untouched|main|medium)\/\d+\/[a-z0-9_.-]+$/i.test(u.pathname)?u.href:null;}catch(_){return null}
  };
  const showUrl=(url,id)=>{
   if(typeof url!=='string'||!Number.isSafeInteger(id)||id<=0)return null;
@@ -42,7 +43,7 @@
    const url=showUrl(show?.url,id),actualGenres=Array.isArray(show?.genres)?show.genres.filter(g=>typeof g==='string'):[];
    const synopsis=words(show?.summary),year=Number(String(show?.premiered||'').slice(0,4));
    if(!url||!poster||!title||!synopsis||synopsis.length<40||!Number.isInteger(year)||year<1930)continue;
-   if(known.has(clean(title))||actualGenres.some(g=>blockedGenres.has(clean(g))))continue;
+   if(known.has(knownKey(title))||actualGenres.some(g=>blockedGenres.has(clean(g))))continue;
    // TVmaze gives network country, NOT country of production. Do not infer one.
    if(cats.includes('reality show')&&show.type!=='Reality')continue;
    if(genres.length&&!genres.some(g=>actualGenres.some(found=>clean(found)===clean(g))))continue;
