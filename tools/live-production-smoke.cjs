@@ -121,11 +121,11 @@ async function aiQuestion(page,question,expected,label){
         header:!fold||fold.nextElementSibling===card,
         onScreenOrder:!visible||a.top>=c.bottom-3,
         responsive:ins.getAttribute('data-full-width-responsive')==='true',
-        format:ins.getAttribute('data-ad-format'),count:document.querySelectorAll('ins.adsbygoogle').length};
+        format:ins.getAttribute('data-ad-format'),manualCount:document.querySelectorAll('ins.adsbygoogle[data-ad-slot="2595698117"]').length,totalCount:document.querySelectorAll('ins.adsbygoogle').length};
     });
     record('Match Together ad follows complete card '+device.name,
       sponsor.found&&sponsor.direct&&sponsor.header&&sponsor.onScreenOrder&&
-      sponsor.responsive&&sponsor.format==='auto'&&sponsor.count===5,JSON.stringify(sponsor));
+      sponsor.responsive&&sponsor.format==='auto'&&sponsor.manualCount===5,JSON.stringify(sponsor));
     // Three bespoke, micro-sized intelligence effects, never a whole header
     // animation. Touch devices receive one-pass text glint with the same sparks.
     const aiEffects=await page.evaluate(()=>{
