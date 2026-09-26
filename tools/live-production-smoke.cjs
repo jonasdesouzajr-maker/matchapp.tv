@@ -110,8 +110,8 @@ async function aiQuestion(page,question,expected,label){
     // Owner-authorized reordering: verify the ACTUAL page, not just HTML.
     // The manual AdSense inventory and full-width creative are untouched.
     const sponsor=await page.evaluate(()=>{
-      const card=document.querySelector('.container > .tg-entry');
-      const ad=document.querySelector('.container > .ma-together-ad');
+      const card=document.querySelector('.tg-entry');
+      const ad=document.querySelector('.ma-together-ad');
       const fold=document.querySelector('.lazy-head[data-fold-key="together"]');
       const ins=ad?.querySelector('ins.adsbygoogle');
       if(!card||!ad||!ins)return {found:false};
