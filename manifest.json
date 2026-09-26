@@ -43,6 +43,11 @@
       "platform": "webapp",
       "id": "https://matchapp.tv/",
       "url": "https://matchapp.tv/manifest-pt-br.json"
+    },
+    {
+      "platform": "play",
+      "id": "com.jonas.papercup",
+      "url": "https://play.google.com/store/apps/details?id=com.jonas.papercup"
     }
   ],
   "prefer_related_applications": false,

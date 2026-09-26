@@ -2091,10 +2091,6 @@ html body.page-home #daily-match-checkin { padding: 11px 12px !important; }
       <span class="matchapp-growth-orb" aria-hidden="true">✦</span>
       <span class="matchapp-growth-copy"><strong>Always growing.</strong> MatchApp is constantly expanding with new titles, features and experiences. <span>Stay tuned for what’s next.</span></span>
     </aside>
-    <aside id="chrome-install-card" aria-label="Install MatchApp Ai with Google Chrome">
-      <div class="chrome-install-copy"><strong>📲 Get MatchApp Ai on your home screen</strong><span>For the clean app experience on Android, open MatchApp in Google Chrome and tap Install.</span></div>
-      <div class="chrome-install-actions"><button type="button" class="chrome-open-btn" onclick="openInChrome()">Open in Chrome</button><button type="button" class="chrome-install-now" onclick="installMatchApp()">⬇ Install MatchApp</button></div>
-    </aside>
 
 
 
@@ -3409,7 +3405,8 @@ html body.page-home #daily-match-checkin { padding: 11px 12px !important; }
     <script src="/taste.js?v=187"></script><script src="/notifications.js?v=20260924-tastedna2"></script>
     <script src="/contacts.js?v=187"></script>
     <script src="/share.js?v=20260921-hardening1"></script>
-    <script defer src="/home-approved.js?v=20260925-playstore1" data-home-approved="1"></script>
+    <script defer src="/home-approved.js?v=20260926-visitoffer1" data-home-approved="1"></script>
+    <script defer src="/browser-install-offer.js?v=20260926-visitoffer1" data-browser-install-offer="1"></script>
     <script defer src="/desktop-install.js?v=20260923-live1" data-desktop-install="1"></script>
     <script defer src="/share-guard.js?v=20260923-live1"></script>
     <script src="/pricing.js?v=20260918-billing2"></script>
@@ -3435,22 +3432,6 @@ html body.page-home #daily-match-checkin { padding: 11px 12px !important; }
                 window.location.href = "https://matchapp.tv/?install=chrome";
             }
         }
-        (function configureChromeInstallCard(){
-            function apply(){
-                var card=document.getElementById('chrome-install-card'); if(!card)return;
-                var ua=navigator.userAgent||'';
-                var android=/Android/i.test(ua), native=/MatchAppTVAndroid/i.test(ua);
-                var standalone=(window.matchMedia&&window.matchMedia('(display-mode: standalone)').matches)||navigator.standalone===true;
-                if(!android||native||standalone){card.style.display='none';return;}
-                card.style.display='flex';
-                var isChrome=/Chrome\\//i.test(ua)&&!/EdgA|OPR\\//i.test(ua);
-                var open=card.querySelector('.chrome-open-btn'), install=card.querySelector('.chrome-install-now');
-                if(isChrome){open.style.display='none';install.style.display='block';}
-                else{install.style.display='none';open.style.display='block';}
-            }
-            if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',apply,{once:true});else apply();
-            window.addEventListener('appinstalled',apply);
-        })();
 
         // Floating logos are now handled by ambient.js (canvas + collision physics).
 

@@ -1,43 +1,36 @@
 /* Approved Home chrome 2026-09-23 installpop2. Presentation overlay only. */
 html body.page-home{padding-bottom:calc(72px + env(safe-area-inset-bottom,0px))}
 
-#ma-install-chip{
-  position:relative;top:auto;z-index:2;
-  display:flex;align-items:center;gap:10px;
-  margin:8px 12px 0;padding:6px 8px 6px 8px;
-  min-height:44px;box-sizing:border-box;
-  border:1px solid rgba(229,193,88,.65);border-radius:16px;
-  background:#10081c;color:#fff;
-  font:600 13px/1.2 Outfit,system-ui,sans-serif;
-  transform:translateZ(0);
-  box-shadow:0 0 0 1px rgba(229,193,88,.35),0 10px 28px rgba(229,193,88,.22)
-}
-#ma-install-chip img{width:28px;height:28px;border-radius:8px;object-fit:cover;flex:0 0 28px}
-#ma-install-chip span{flex:1;min-width:0}
-#ma-install-chip .ma-install-go{
-  height:32px;min-width:96px;padding:0 14px;border:0;border-radius:999px;
-  background:linear-gradient(180deg,#f3d57a,#d7ad3e);color:#1a1328;font-weight:800
-}
+/* Retired persistent install bars; also neutralize stale cached banner markup. */
+html body #ma-install-chip,html body #chrome-install-card,html body.page-home #install-bubble{display:none!important;}
 
-html body #chrome-install-card,
-html body aside#chrome-install-card,
-html body .chrome-install-card{
-  display:none!important
+/* Small optional, per-opening browser-only app invitation. No page reflow. */
+html body.page-home #ma-install-offer{
+  position:fixed;right:18px;bottom:18px;z-index:220;
+  width:min(376px,calc(100vw - 24px));max-height:min(88dvh,470px);overflow-y:auto;
+  box-sizing:border-box;padding:14px;border-radius:20px;
+  border:1px solid rgba(246,211,111,.76);
+  background:linear-gradient(145deg,#281935 0%,#160f22 100%);
+  box-shadow:0 18px 44px rgba(0,0,0,.53),inset 0 1px rgba(255,255,255,.12);
+  color:#fff;font:500 13px/1.45 Outfit,Inter,system-ui,sans-serif;
 }
-html body .install-btn,
-html body .ma-install-go{
-  position:relative;
-  transform:translateZ(0) scale(1.08);
-  box-shadow:0 0 0 2px rgba(229,193,88,.6),0 10px 26px rgba(229,193,88,.4)!important;
-  animation:maInstallPop 1.4s ease-in-out 4
-}
-@keyframes maInstallPop{
-  0%,100%{transform:translateZ(0) scale(1.08)}
-  50%{transform:translateZ(0) scale(1.14)}
-}
-@media(prefers-reduced-motion:reduce){
-  html body .install-btn,html body .ma-install-go, #ma-install-chip{animation:none}
-}
+#ma-install-offer .ma-offer-head{display:flex;align-items:flex-start;gap:10px;padding-right:28px;}
+#ma-install-offer .ma-offer-head img{width:40px;height:40px;border-radius:12px;object-fit:cover;flex-shrink:0;}
+#ma-install-offer .ma-offer-title{display:block;margin:0 0 4px;font-size:16px;line-height:1.25;font-weight:850;color:#ffe6a3;}
+#ma-install-offer .ma-offer-description{margin:0;color:#e2d9ec;font-size:12.5px;line-height:1.42;}
+#ma-install-offer .ma-offer-close{position:absolute;right:8px;top:7px;display:grid;place-items:center;min-width:42px;min-height:42px;padding:0;border:0;border-radius:50%;background:transparent;color:#dfd1e9;font-size:23px;cursor:pointer;}
+#ma-install-offer .ma-offer-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:13px;}
+#ma-install-offer .ma-offer-actions>*,#ma-install-offer .ma-offer-never{box-sizing:border-box;cursor:pointer;min-height:44px;border-radius:11px;font:800 12px/1.24 Outfit,Inter,system-ui,sans-serif;text-align:center;}
+#ma-install-offer .ma-offer-browser{border:1px solid #ffdf89;background:linear-gradient(135deg,#ffe195,#d5ab49);color:#251528;padding:9px;}
+#ma-install-offer .ma-offer-play{display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,227,151,.74);background:rgba(255,255,255,.075);color:#ffe9b6;text-decoration:none;padding:9px;}
+#ma-install-offer .ma-offer-play[hidden]{display:none!important;}
+#ma-install-offer .ma-offer-actions:has(.ma-offer-play[hidden]){grid-template-columns:1fr;}
+#ma-install-offer .ma-offer-never{display:block;min-height:42px;margin:7px auto 0;padding:9px 8px;color:#cabbd5;border:0;background:transparent;font-weight:700;text-decoration:underline;text-underline-offset:3px;}
+#ma-install-offer :is(button,a):focus-visible{outline:2px solid #fce6a1;outline-offset:3px;}
+html.ma-native-shell body #ma-install-offer,html.matchapp-android body #ma-install-offer{display:none!important;}
+@media(max-width:1100px){html body.page-home #ma-install-offer{bottom:calc(78px + env(safe-area-inset-bottom,0px));left:50%;right:auto;transform:translateX(-50%);}}
+@media(max-width:420px){html body.page-home #ma-install-offer{padding:12px;width:calc(100vw - 20px);}#ma-install-offer .ma-offer-actions{gap:6px;}}
+@media(prefers-reduced-motion:reduce){html body.page-home #ma-install-offer{scroll-behavior:auto;}}
 
 #ma-hero-ctas{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 8px;justify-content:center}
 #ma-hero-match,#ma-hero-ask{
@@ -437,16 +430,3 @@ html.reduce-motion body.page-home :is(.ma-how-link,.ma-how-button){
   }
 }
 
-/* Adult web: official Google Play link beside the existing PWA Install control. */
-#ma-install-chip .ma-install-actions{display:flex;align-items:center;justify-content:flex-end;gap:9px;flex:0 0 auto;min-width:0}
-#ma-install-chip .ma-play-store{display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;min-height:36px;max-width:100%;padding:6px 15px;border:1px solid rgba(243,213,122,.85);border-radius:999px;background:linear-gradient(145deg,#382650,#170e29);color:#fff2c9;font:800 12px/1.2 Outfit,system-ui,sans-serif;text-align:center;text-decoration:none;white-space:normal;box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 3px 14px rgba(0,0,0,.2)}
-#ma-install-chip .ma-play-store:hover{border-color:#fff0b8;background:linear-gradient(145deg,#47305f,#211238)}
-#ma-install-chip .ma-play-store:focus-visible{outline:3px solid #fff0b8;outline-offset:3px}
-#ma-install-chip .ma-play-store[hidden]{display:none!important}
-@media(max-width:580px){
-  #ma-install-chip{flex-wrap:wrap}
-  #ma-install-chip>span{flex:1 1 calc(100% - 42px)}
-  #ma-install-chip .ma-install-actions{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:8px;flex:1 1 100%;width:100%}
-  #ma-install-chip .ma-install-actions>.ma-install-go,#ma-install-chip .ma-install-actions>.ma-play-store{width:100%;min-width:0;height:auto;min-height:36px;padding:7px 9px}
-  #ma-install-chip .ma-install-actions:has(.ma-play-store[hidden]){grid-template-columns:minmax(0,1fr)}
-}
