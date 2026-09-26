@@ -164,6 +164,7 @@ async function verifyCode(){
     const confirmed=await sb.auth.getUser();
     if(confirmed.error||!confirmed.data?.user||
        confirmed.data.user.id!==session.user.id||
+       normalizePhone(confirmed.data.user.phone)!==activePhone||
        !confirmed.data.user.phone_confirmed_at){
       throw new Error('Your phone session could not be validated. Please sign in again.');
     }
