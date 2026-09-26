@@ -3446,6 +3446,33 @@ async function discoverVerifiedExactTMDB(requested){
     return null;
 }
 
+// Secondary trusted TV index for ordinary adult series when TMDB's
+// source window is empty/unavailable. TVmaze does not certify audience ratings,
+// third-party streaming rights, mood or country of production; do not invoke
+// when those hard user preferences cannot be verified. Each selected result
+// carries a direct TVmaze source page with CC BY-SA attribution.
+async function discoverVerifiedTVMaze(requested) {
+    const service=window.MatchAppTVMazeSource;
+    if(!service?.discover)return null;
+    const cats=normCriteria(requested.cat),moods=normCriteria(requested.mood),
+          genres=normCriteria(requested.genre),decades=normCriteria(requested.decade),
+          platforms=normCriteria(requested.plat),ratings=normCriteria(requested.rating),
+          vibes=normCriteria(requested.vibe);
+    if(platforms.length||ratings.length||vibes.length||
+       cats.some(cat=>!['series','reality show'].includes(cat)))return null;
+    const prefs=currentPreferenceExclusions();
+    if(prefs.countries.size)return null; // source does not establish origin country
+    const known=new Set(window.matchPolicy?.known?.()||[]);
+    SESSION_SHOWN.forEach(title=>known.add(window.matchPolicy?.key?.(title)||service.clean(title).replace(/\s+/g,'')));
+    return service.discover({cats,moods,genres,decades,platform:platforms,ratings,vibes},{
+        known,blockedGenres:new Set([...prefs.genres].map(service.clean)),
+        blockedCountries:[...prefs.countries],moodFits:moodFitsVerified,
+        blockedText:text=>isBlockedText(text)||
+            (!cats.includes('Gospel & Faith')&&GOSPEL_TEXT_SIGNALS.some(w=>String(text).toLowerCase().includes(w))),
+        explicit:item=>window.MatchAppContentSafety?.isExplicit?.(item)===true
+    });
+}
+
 // ----------------------------------------------------
 // AI-PROPOSED, SOURCE-VERIFIED FRESH TITLE
 //
@@ -3975,7 +4002,7 @@ function pruneUnstockedOptions() {
 
 // Source verification is deliberately longer than the old 12-second UI timer,
 // but remains bounded: a stalled provider cannot strand Match indefinitely.
-const MATCH_SOURCE_DEADLINES=Object.freeze({tmdb:50000,itunes:15000,ai:50000});
+const MATCH_SOURCE_DEADLINES=Object.freeze({tmdb:50000,tvmaze:15000,itunes:15000,ai:50000});
 async function withMatchSourceDeadline(work,ms){
     let timer;
     try{
@@ -4075,6 +4102,13 @@ window.triggerMatch = async function(isSpecificSearch = false) {
     // when requested, regional provider availability.
     if (!isSpecificSearch && !preflight) {
         try { preflight = await withMatchSourceDeadline(()=>discoverVerifiedExactTMDB(requested),MATCH_SOURCE_DEADLINES.tmdb); } catch (_) { preflight = null; }
+    }
+    // Broaden to a second independently attributed TV catalog only for criteria
+    // its public records can actually prove. Never swap out Comfort, region,
+    // age or platform just to force a recommendation.
+    if (!isSpecificSearch && !preflight) {
+        try { preflight=await withMatchSourceDeadline(()=>discoverVerifiedTVMaze(requested),MATCH_SOURCE_DEADLINES.tvmaze); }
+        catch (_) { preflight=null; }
     }
     // iTunes is a real-source fallback only when no third-party platform,
     // source genre or blocked-source filter needs verification.
@@ -4511,6 +4545,20 @@ async function renderResult(selected, isSpecificSearch) {
     });
     globalMatchTitle = selected.title;
     window.globalMatchTitle = selected.title;
+    // Required license/source attribution for the optional independent TV tier.
+    // Remove the previous source credit when a subsequent result comes from
+    // another provider. Never claim the source verifies stream availability.
+    document.getElementById('ma-tvmaze-source')?.remove();
+    if(selected.source==='tvmaze-source-verified' &&
+       /^https:\/\/www\.tvmaze\.com\/shows\/\d+\//.test(String(selected._meta?.sourceUrl||''))){
+        const synopsis=document.getElementById('res-synopsis');
+        const credit=document.createElement('a');
+        credit.id='ma-tvmaze-source';
+        credit.href=selected._meta.sourceUrl;
+        credit.target='_blank';credit.rel='noopener noreferrer';
+        credit.textContent='TV information & original artwork: TVmaze (CC BY-SA) ↗';
+        if(synopsis)synopsis.insertAdjacentElement('afterend',credit);
+    }
     const titleEl = document.getElementById('res-title');
     if (titleEl) titleEl.innerText = sanitizeDisplayText(selected.title, ['title']);
     // Render a correctly labelled image before awaiting remote sources. An
