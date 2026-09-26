@@ -321,9 +321,16 @@ async function aiQuestion(page,question,expected,label){
       const title=node.querySelector('.magazine-result-grid h3')?.textContent?.trim()||'';
       const original=node.querySelector('a[data-ebook-provider="Official issues"]');
       const icon=node.querySelector('img[data-magazine-publisher-icon]');
+      const label=node.querySelector('[data-magazine-brand]');
       const article=node.querySelector('.magazine-original-note');
-      return {title,issues:original?.href||'',icon:icon?.src||'',iconLoaded:!!(icon?.complete&&icon?.naturalWidth),
-        honestLabel:!!article};
+      const iconLoaded=!!(icon?.complete&&icon?.naturalWidth>0&&!icon.hidden&&
+        getComputedStyle(icon).display!=='none');
+      // A remote publisher can refuse hotlinking. The real publisher name
+      // must stay visible, not an empty or fabricated issue cover.
+      const brandFallbackVisible=!!(label&&!label.hidden&&
+        getComputedStyle(label).display!=='none'&&label.textContent.includes(title));
+      return {title,issues:original?.href||'',icon:icon?.src||'',iconLoaded,
+        brandFallbackVisible,honestLabel:!!article};
     });
     const issuer=magazine.issues?new URL(magazine.issues).hostname:'';
     const imageDomain=magazine.icon?new URL(magazine.icon).hostname:'';
@@ -332,8 +339,14 @@ async function aiQuestion(page,question,expected,label){
         (issuer===imageDomain||issuer.endsWith('.'+imageDomain)||imageDomain.endsWith('.'+issuer))&&
         magazine.honestLabel,
       JSON.stringify(magazine));
-    record('LIVE original publisher icon resolves',magazine.iconLoaded,
-      'magazine='+magazine.title+' publisher icon='+magazine.icon);
+    record('LIVE original publisher icon or visible publisher-name fallback',
+      magazine.iconLoaded||magazine.brandFallbackVisible,
+      'magazine='+magazine.title+' iconLoaded='+magazine.iconLoaded+
+      ' authenticNameVisible='+magazine.brandFallbackVisible+' publisher icon='+magazine.icon);
+    const vogueIcon=await books.evaluate(()=>window.MatchAppMagazines?.byId('mag-vogue')?.icon||'');
+    record('LIVE Vogue icon references real publisher asset path',
+      vogueIcon==='https://www.vogue.com/verso/static/vogue-global/assets/us/favicon.ico',
+      'publisher asset='+vogueIcon);
     await shot(books,'live-magazine-matched');
   }catch(error){
     record('LIVE Bookworms e-book and magazine matching',false,String(error.stack||error).slice(0,500));
