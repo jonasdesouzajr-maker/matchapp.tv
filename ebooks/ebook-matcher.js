@@ -479,7 +479,7 @@ function markup(){
   return '<label class="ebook-select-field"><span>'+esc(label)+'</span><select class="ebook-select" data-ebook-select="'+key+'" aria-label="'+esc(label)+'">'+
    FIELDS[key].map(([value,,name])=>'<option value="'+esc(value)+'"'+(p[key]===value?' selected':'')+'>'+esc(name)+'</option>').join('')+'</select></label>';
  };
- return '<details class="ebook-fold"'+(initiallyOpen?' open':'')+'><summary><span class="ebook-summary-icon" aria-hidden="true">📚✦</span><span><small>'+esc(tr('eyebrow'))+'</small><strong>'+esc(home?tr('homeTitle'):tr('title'))+'</strong></span><span class="ebook-chevron" aria-hidden="true">⌄</span></summary>'+
+ return '<details class="ebook-fold"'+(initiallyOpen?' open':'')+'><summary><span class="ebook-summary-icon" aria-hidden="true">'+(home?'<img class="ebook-bookworms-crest" src="/assets/brand/matchapp-bookworms-crest.svg?v=20260926-crest1" alt="" width="72" height="72" decoding="async">':'📚✦')+'</span><span><small>'+esc(tr('eyebrow'))+'</small><strong>'+esc(home?tr('homeTitle'):tr('title'))+'</strong></span><span class="ebook-chevron" aria-hidden="true">⌄</span></summary>'+
  '<div class="ebook-panel"><div class="ebook-intro"><div><h2>'+esc(tr('title'))+'</h2><p>'+esc(tr('intro'))+'</p></div><a href="/ebooks/" class="ebook-guide-link">Bookworms hub ↗</a></div>'+
  '<div class="ebook-fields">'+field('format','E-book, audiobook or magazine')+field('mood','Reading mood')+field('genre','Genre')+field('pace','Reading pace')+field('length','Length')+field('era','Era')+field('access','Free or paid')+'</div>'+
  '<div class="ebook-match-row"><button type="button" class="ebook-match-cta" data-ebook-match>📚🎧 '+esc(tr('match'))+'</button><span>'+esc(tr('quota'))+'</span></div>'+
