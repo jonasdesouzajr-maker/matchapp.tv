@@ -3123,6 +3123,12 @@ async function discoverFromITunes(cat, mood, vibe, decade, rating) {
             if (!genreHit.length) return null;
             pool = genreHit;
         }
+        if (mood === 'cozy comfort watch') {
+            pool = pool.filter(r =>
+                !/thriller|horror|war|crime|drama/i.test(String(r.primaryGenreName || '')) &&
+                !COZY_HEAVY_TEXT.test([r.longDescription,r.shortDescription].filter(Boolean).join(' ')));
+            if (!pool.length) return null;
+        }
         if (mood === 'funny') {
             pool = pool.filter(r => {
                 const g = String(r.primaryGenreName || '');
@@ -3226,8 +3232,8 @@ const COUNTRY_CATEGORY_CODES={
 // to prove a MatchApp mood. Keep this gate source-backed and conservative.
 // In particular, "cozy comfort watch" must not accept a heavy Drama/Romance
 // merely because Romance appears in its genre list.
-const COZY_BLOCKED_GENRES=new Set(['Horror','Thriller','War']);
-const COZY_HEAVY_TEXT=/\b(?:murder(?:ed|er)?|serial killer|kidnap(?:ped|ping)?|hostage|tortur(?:e|ed)|terminal(?:ly)?|cancer|dying|death|funeral|grief|organ donor|organ transplant|sick child|critically ill|life[- ]threatening|war zone|revenge killing)\b/i;
+const COZY_BLOCKED_GENRES=new Set(['Horror','Thriller','War','Crime','War & Politics']);
+const COZY_HEAVY_TEXT=/\b(?:murder(?:ed|er)?|serial killer|kidnap(?:ped|ping)?|hostage|tortur(?:e|ed)|terminal(?:ly)?|cancer|dying|death|funeral|grief|organ donor|organ transplant|sick child|critically ill|life[- ]threatening|war zone|revenge killing|sexual assault|assaulted|rape|raped|violent attack|violence against|brutal crime)\b/i;
 function moodFitsVerified(wanted,genres,overview){
     if(!wanted.length)return true;
     const gs=Array.isArray(genres)?genres:[];
@@ -3848,8 +3854,9 @@ function pickGuaranteedCatalog(cat, plat, mood, vibe, rating, decade) {
         ['exact', requested],
         ['broaden-vibe', {...requested, vibe:[]}],
         ['broaden-era', {...requested, vibe:[], decade:[]}],
-        ['broaden-mood', {...requested, vibe:[], decade:[], mood:[]}],
-        ['broaden-platform', {...requested, vibe:[], decade:[], mood:[], plat:[]}]
+        // Never discard the chosen mood merely because the fallback pool is
+        // exhausted. A request for Comfort must remain genuinely comforting.
+        ['broaden-platform', {...requested, vibe:[], decade:[], plat:[]}]
     ];
     for (const [stage, criteria] of stages) {
         const hit = choose(criteria, stage);
