@@ -503,7 +503,7 @@ function bind(root){
    const result=root.querySelector('[data-ebook-result]');if(result)result.hidden=true;
    await doMatch(root);return;
   }
-  if(e.target.closest('[data-ebook-match]')){e.preventDefault();await doMatch(root);return;
+  if(e.target.closest('[data-ebook-match]')){e.preventDefault();await doMatch(root);return;}
   if(e.target.closest('[data-ebook-rematch]')){e.preventDefault();await doMatch(root);return;}
   const savedAudio=e.target.closest('[data-ebook-saved-audio]');
   if(savedAudio){
