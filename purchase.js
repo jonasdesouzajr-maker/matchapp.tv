@@ -22,7 +22,20 @@
   celebrate();stage('✓',text);
   const h=document.querySelector('main .premium-card h1');if(h)h.textContent='Purchase complete';document.title='Purchase complete | MatchApp TV Ai';
  }
- async function check(){
+ // Never infer a purchase from a Stripe redirect or button click.
+// Emit one first-party GTM event only after the signed-in backend confirms delivery.
+function recordVerifiedPurchase(sessionId,plan,data){
+ try{
+  const key='match_purchase_conversion_'+sessionId;
+  if(sessionStorage.getItem(key)==='1')return;
+  const payload={event:'purchase_verified',transaction_id:sessionId,plan:plan||'unknown'};
+  if(typeof data?.currency==='string'&&/^[A-Z]{3}$/i.test(data.currency))payload.currency=data.currency.toUpperCase();
+  window.dataLayer=window.dataLayer||[];
+  window.dataLayer.push(payload);
+  sessionStorage.setItem(key,'1');
+ }catch(_){/* Analytics must never block payment confirmation. */}
+}
+async function check(){
   if(busy)return;busy=true;const retry=document.getElementById('purchase-retry');if(retry)retry.disabled=true;stage('⏳',tr('checking'));
   try{
    const sb=window.supabaseClient,sessionId=new URLSearchParams(location.search).get('session_id');if(!sb)throw new Error('Billing unavailable');
@@ -31,7 +44,7 @@
    if(!sessionId||!/^cs_(test_|live_)?[A-Za-z0-9]+$/.test(sessionId)){stage('!',tr('failed'));return;}
    for(let attempt=0;attempt<6;attempt++){
     const {data,error}=await sb.functions.invoke('stripe-checkout',{body:{action:'status',session_id:sessionId}});
-    if(!error&&data?.delivered===true){const plan=String(data.plan||'');stage('✓','Payment confirmed — updating your account…');await finalMessage(sb,session,plan,data);const target=localStorage.getItem('match_kids_mode')==='true'?'/kids/':'/';const next=document.getElementById('purchase-continue');if(next){next.href=target+'?purchase=success&lang='+encodeURIComponent(window.MATCH_LANG||'en');next.hidden=false;}if(retry)retry.hidden=true;setTimeout(()=>location.replace(target+'?purchase=success&lang='+encodeURIComponent(window.MATCH_LANG||'en')),5000);return;}
+    if(!error&&data?.delivered===true){const plan=String(data.plan||'');recordVerifiedPurchase(sessionId,plan,data);stage('✓','Payment confirmed — updating your account…');await finalMessage(sb,session,plan,data);const target=localStorage.getItem('match_kids_mode')==='true'?'/kids/':'/';const next=document.getElementById('purchase-continue');if(next){next.href=target+'?purchase=success&lang='+encodeURIComponent(window.MATCH_LANG||'en');next.hidden=false;}if(retry)retry.hidden=true;setTimeout(()=>location.replace(target+'?purchase=success&lang='+encodeURIComponent(window.MATCH_LANG||'en')),5000);return;}
     if(!error&&data?.state==='failed'){stage('!',tr('failed'));return;}
     if(attempt<5)await new Promise(r=>setTimeout(r,1700));
    }
