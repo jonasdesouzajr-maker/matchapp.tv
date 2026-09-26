@@ -24,9 +24,12 @@ test('adult Android currently routes canonical matching, pricing and profile lin
 test('successful server-verified profile registration queues GTM conversion with no user PII',()=>{
  const js=read('registration-upgrade.js');
  assert.match(js,/sb\.rpc\('complete_registration'/);
- assert.match(js,/if\(error\|\|!data\?\.profile_locked\)/);
+ assert.match(js,/if \(error \|\| !response\?\.profile_locked \|\| !response\?\.registration_completed\)/);
+ assert.match(js,/existing\?\.profile_locked && existing\?\.registration_completed_at/);
+ assert.match(js,/if \(saved\.full_name !== name/);
  assert.match(js,/event:'registration_completed'/);
- assert.ok(js.indexOf("event:'registration_completed'")>js.indexOf("if(error||!data?.profile_locked)"));
+ assert.ok(js.indexOf("event:'registration_completed'")>js.indexOf("if (saved.full_name !== name"),
+   'Only emit conversion after verifying the server-backed identity');
  assert.doesNotMatch(js,/dataLayer\.push\(\{event:'registration_completed'[^\n]*(?:email|user_id|name):/);
 });
 test('Stripe conversion is emitted only after backend confirms delivered and deduplicated per session',()=>{
