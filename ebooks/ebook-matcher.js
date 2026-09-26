@@ -122,25 +122,30 @@ async function chooseVerifiedAudio(p,onProgress){
  const verify=window.MatchAppAudiobooks?.verify;
  if(typeof verify!=='function')return null;
  const country=market();
- if(p.access==='free'&&country!=='US')return null; // jurisdiction-specific free rights
+ // Do not label US public-domain audio "verified free" abroad without rights.
+ if(p.access==='free'&&country!=='US')return null;
  const relax=[[],['length'],['pace','length'],['era','pace','length']];
- let tries=0;const tested=new Set(),started=Date.now();
- for(const fields of relax){
-  const options=pool(p,new Set(fields),false).sort(()=>Math.random()-.5);
-  for(const book of options){
-   if(tested.has(book.id))continue;
-   // Longer bounded source search: eight distinct legitimate candidates,
-   // never an arbitrary "nearby" title returned when sources are down.
-   if(tries>=8||Date.now()-started>55000)return null;
-   tested.add(book.id);tries++;
-   try{onProgress?.(tries,8)}catch(_){}
-   let found=null;
-   try{found=await verify(book,country,p.access)}catch(_){continue}
-   if(!found)continue;
-   if((p.access==='free'&&found.free)||
-      (p.access==='paid'&&found.apple)||
-      (p.access==='any'&&(found.apple||found.free)))
-    return {book,audio:found,relaxed:fields.length>0};
+ const tested=new Set(),started=Date.now(),limit=24;
+ for(const allowSeen of [false,true]){
+  for(const fields of relax){
+   const options=pool(p,new Set(fields),allowSeen).filter(b=>!tested.has(b.id));
+   // Batch independent source lookups instead of exhausting eight serial
+   // timeouts before reaching a promising, matching classic.
+   for(let offset=0;offset<options.length;offset+=4){
+    if(tested.size>=limit||Date.now()-started>55000)return null;
+    const batch=options.slice(offset,offset+Math.min(4,limit-tested.size));
+    batch.forEach(book=>{tested.add(book.id);try{onProgress?.(tested.size,limit)}catch(_){}});
+    const checked=await Promise.all(batch.map(async book=>{
+     try{
+      const audio=await verify(book,country,p.access);
+      return audio&&((p.access==='free'&&audio.free)||
+       (p.access==='paid'&&audio.apple)||
+       (p.access==='any'&&(audio.apple||audio.free)))?
+       {book,audio,relaxed:fields.length>0,recycled:allowSeen}:null;
+     }catch(_){return null}
+    }));
+    const hit=checked.find(Boolean);if(hit)return hit;
+   }
   }
  }
  return null;
@@ -387,6 +392,29 @@ function renderResult(root,book,p,relaxed,audio,magazine){
  host.scrollIntoView({behavior:(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)?'auto':'smooth',block:'nearest'});
  analytics('ebook_match_reveal',{ebook_id:book.id,ebook_title:book.title,ebook_access:p.access,ebook_format:p.format,relaxed:!!relaxed});
 }
+// Honest fallback: no verified audio means no Match credit is used.
+function renderAudioDiscovery(root,p){
+ const host=root.querySelector('[data-ebook-result]');if(!host)return;
+ const book=choose(p)?.book,country=market(),foreign=p.access==='free'&&country!=='US';
+ const reason=foreign?
+  (lang()==='pt-BR'?'Ainda não verificamos os direitos de gravações gratuitas no seu país. O domínio público nos EUA não garante o mesmo direito no Brasil.':
+   'Free recordings are not yet rights-verified for your country. US public-domain rights may not apply locally.'):
+  tr('audioEmpty');
+ const searches=book?window.MatchAppAudiobooks?.sourceSearches?.(book,country)||[]:[];
+ host.hidden=false;
+ host.innerHTML='<div class="ebook-result-copy ebook-audio-discovery"><h3>🎧 '+esc(tr('audioTitle'))+'</h3>'+
+  '<p class="ebook-audio-note">'+esc(reason)+'</p>'+
+  (book?'<h3>'+esc(book.title)+'</h3><p class="ebook-author">'+esc(book.author)+'</p><p>'+esc(book.summary)+'</p>':'')+
+  '<p class="ebook-rights">'+esc(lang()==='pt-BR'?'Livro compatível. Edição em áudio não verificada.':'Compatible book profile. Audio edition not verified.')+'</p>'+
+  '<div class="ebook-provider-row">'+searches.map(item=>'<a class="ebook-provider ebook-audio-search" href="'+esc(item.url)+
+   '" target="_blank" rel="noopener noreferrer">'+esc(item.provider)+' · '+esc(lang()==='pt-BR'?'pesquisa não confirmada':'unverified search')+' ↗</a>').join('')+'</div>'+
+  '<div class="ebook-result-actions"><button type="button" class="ebook-rematch" data-ebook-switch-format="ebook">'+
+   esc(lang()==='pt-BR'?'Encontrar e-book compatível':'Match a compatible e-book')+'</button>'+
+  '<button type="button" class="ebook-rematch" data-ebook-switch-access="any">'+
+   esc(lang()==='pt-BR'?'Incluir lojas de áudio':'Include official audio stores')+'</button></div>'+
+  '<p class="ebook-rights">'+esc(lang()==='pt-BR'?'Nenhum match foi consumido. Pesquisas não comprovam a disponibilidade da edição.':
+   'No Match credit was consumed. Search links do not confirm edition availability.')+'</p></div>';
+}
 async function doMatch(root){
  // One in-flight search includes source preflight and shared Match allowance.
  // Double taps in every format must never charge a second credit.
@@ -403,7 +431,11 @@ async function doMatch(root){
    });
   }else if(p.format==='magazine')pick=chooseMagazine(p);
   else pick=choose(p);
-  if(!pick){if(note){note.hidden=false;note.textContent=p.format==='audiobook'?tr('audioEmpty'):tr('empty')}return;}
+  if(!pick){
+   if(p.format==='audiobook'){renderAudioDiscovery(root,p);if(note){note.hidden=true;note.textContent='';}}
+   else if(note){note.hidden=false;note.textContent=tr('empty');}
+   return;
+  }
   // If no authentic source was found, spend nothing.
   if(typeof window.checkDailyLimit!=='function'){
    if(window.showToast)window.showToast('E-book matching is available from the main MatchApp experience.',true);
@@ -455,7 +487,23 @@ function bind(root){
    paintAudio(root,book,audio);
    return;
   }
-  if(e.target.closest('[data-ebook-match]')){e.preventDefault();await doMatch(root);return;}
+  const switcher=e.target.closest('[data-ebook-switch-format],[data-ebook-switch-access]');
+  if(switcher){
+   e.preventDefault();
+   const p=prefs();
+   if(switcher.dataset.ebookSwitchFormat)p.format=switcher.dataset.ebookSwitchFormat;
+   if(switcher.dataset.ebookSwitchAccess)p.access=switcher.dataset.ebookSwitchAccess;
+   savePrefs(p);
+   root.querySelectorAll('[data-ebook-select]').forEach(sel=>{sel.value=p[sel.dataset.ebookSelect]});
+   root.querySelectorAll('[data-ebook-field]').forEach(b=>{
+    const on=p[b.dataset.ebookField]===b.dataset.ebookValue;
+    b.classList.toggle('is-on',on);b.setAttribute('aria-pressed',String(on));
+   });
+   syncBookControls(root,p);
+   const result=root.querySelector('[data-ebook-result]');if(result)result.hidden=true;
+   await doMatch(root);return;
+  }
+  if(e.target.closest('[data-ebook-match]')){e.preventDefault();await doMatch(root);return;
   if(e.target.closest('[data-ebook-rematch]')){e.preventDefault();await doMatch(root);return;}
   const savedAudio=e.target.closest('[data-ebook-saved-audio]');
   if(savedAudio){
