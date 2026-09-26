@@ -17,9 +17,9 @@ test('expanded adult Bookworms is diverse, uniquely identified and explicit-safe
   assert(b.summary&&b.summary.length>=30,`Missing editorial summary: ${b.title}`);
   assert(Number.isSafeInteger(b.year)&&b.year>=-1500&&b.year<=2026);
   assert(Array.isArray(b.access)&&b.access.length);
-  assert(!/\\b(?:porn|xxx|hentai|erotica)\\b/i.test(b.title+' '+b.summary));
+  assert(!new RegExp('\\b(?:porn|xxx|hentai|erotica)\\b','i').test(b.title+' '+b.summary));
   assert.equal(keys.has(b.id),false,`Duplicate book: ${b.id}`);keys.add(b.id);
-  assert(!('cover' in b)||/^https:\\/\\//.test(b.cover),
+  assert(!('cover' in b)||String(b.cover).startsWith('https://'),
    'An original edition cover cannot be invented in the bibliography');
   b.genres.forEach(g=>genres.add(g));b.moods.forEach(m=>moods.add(m));
   if(b.moods.includes('cozy'))assert(!b.genres.some(g=>['horror','thriller','true-crime','dystopian'].includes(g)),
