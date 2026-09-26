@@ -468,6 +468,14 @@
   function recoverAdultPoster(img,title,meta,preferred){
     if(!adultPosterSurface(img)||!title)return;
     const name=String(title);
+    const liveIdentity=window.currentMatchIdentity;
+    // An officially verified Spotify playlist owns its artwork. Never launch
+    // TMDB/movie-poster recovery against the same-named playlist.
+    if(img.id==='res-poster-img'&&liveIdentity?.title===name&&liveIdentity.spotifyArtwork&&
+       /^https:\/\/i\.scdn\.co\/image\/[A-Za-z0-9]+$/.test(liveIdentity.spotifyArtwork)){
+      if(img.src!==liveIdentity.spotifyArtwork)img.src=liveIdentity.spotifyArtwork;
+      return;
+    }
     let state=img.__matchappAdultPoster;
     if(!state||state.title!==name){
       state={title:name,meta:null,preferred:'',failed:new Set(),repairing:false,needsRepair:false,isRail:false,
@@ -876,6 +884,16 @@
       };
     }catch(_){}
 
+    if(identity.spotifyArtwork && /^https:\/\/i\.scdn\.co\/image\/[A-Za-z0-9]+$/.test(identity.spotifyArtwork) &&
+       /^https:\/\/open\.spotify\.com\/playlist\/[A-Za-z0-9]+$/.test(identity.spotifyPlaylistUrl||'')){
+      // Never ask TMDB for a music playlist with the same title as a movie.
+      const poster=document.getElementById('res-poster-img');
+      if(poster&&poster.src!==identity.spotifyArtwork)poster.src=identity.spotifyArtwork;
+      applyDetails(null);
+      renderAvailability(availabilityHost,null,{title});
+      renderPreview(host,null,{title});
+      return;
+    }
     if(identity.itunesAudio===true){
       // Do not search TMDB for a same-named movie when the exact Apple result
       // is an album, podcast, audiobook or music track. Its own source art is
