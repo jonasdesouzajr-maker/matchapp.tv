@@ -243,10 +243,13 @@ async function aiQuestion(page,question,expected,label){
       return box&&getComputedStyle(box).display!=='none'&&title&&title!=='Title';
     },null,{timeout:110000});
     const title=await page.locator('#res-title').innerText();
+    // The immediate image is intentionally a genuine title-labelled fallback.
+    // Wait separately for the exact original's successful image-load probe.
     await page.waitForFunction(()=>{
       const im=document.getElementById('res-poster-img');
-      return im&&im.complete&&im.naturalWidth>0;
-    },null,{timeout:25000});
+      return im&&/^https:\/\/image\.tmdb\.org\/t\/p\//i.test(im.currentSrc||im.src)&&
+        im.complete&&im.naturalWidth>0;
+    },null,{timeout:25000}).catch(()=>{});
     const poster=await page.locator('#res-poster-img').evaluate(img=>({
       src:img.currentSrc||img.src,loaded:img.complete&&img.naturalWidth>0,
       aspect:img.naturalHeight?img.naturalWidth/img.naturalHeight:0,fit:getComputedStyle(img).objectFit
@@ -265,10 +268,10 @@ async function aiQuestion(page,question,expected,label){
       resultHidden:getComputedStyle(document.getElementById('result-box')).display==='none',
       formRestored:document.getElementById('questionnaire-box').style.display!=='none',
       homeVisible:!!document.getElementById('trending-rail')?.getClientRects().length,
-      ads:document.querySelectorAll('ins.adsbygoogle').length
+      manualAds:document.querySelectorAll('ins.adsbygoogle[data-ad-slot="2595698117"]').length
     }));
     record('LIVE red trash dismisses match without damaging Home',closed.resultHidden&&
-      closed.formRestored&&closed.homeVisible&&closed.ads===5,JSON.stringify(closed));
+      closed.formRestored&&closed.homeVisible&&closed.manualAds===5,JSON.stringify(closed));
     await shot(page,'live-result-dismissed');
   }catch(error){record('LIVE normal movie matching',false,String(error.stack||error).slice(0,500));await shot(page,'live-normal-failure')}
   finally{await c.close();}
