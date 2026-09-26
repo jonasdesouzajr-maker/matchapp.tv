@@ -18,7 +18,7 @@ test('server and browser use exclusion-aware intent and refresh scripts',()=>{
  assert.match(edge,/detectBookIntent\(intentQuestion\)/);
  assert.match(edge,/detectAudioIntent\(intentQuestion\)/);
  assert.match(read('discover.html'),/discover\.js\?v=20260925-intent1/);
- assert.match(read('discover.html'),/reading-ai\.js\?v=20260925-intent1/);
+ assert.match(read('discover.html'),/reading-ai\.js\?v=20260926-publishericon2/);
 });
 
 test('final Match guarantee does not turn a negated music mention into audio intent',()=>{
