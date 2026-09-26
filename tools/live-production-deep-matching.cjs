@@ -136,7 +136,13 @@ async function guarded(browser,label,fn){
  }catch(e){record('deep smoke bootstrap',false,String(e.message||e));}
  finally{
   await browser?.close().catch(()=>{});
-  fs.writeFileSync(path.join(out,'report.json'),JSON.stringify({base:BASE,checks:results,warnings:notes,errors,finished:new Date().toISOString()},null,2));
+  // Keep untrusted remote response text in the job log only. The persisted
+  // JSON contains local check labels and outcomes, never downloaded payloads.
+  const checks=results.map(({name,ok})=>({name,ok}));
+  const warnings=notes.map(({name})=>({name}));
+  const failedChecks=checks.filter(check=>!check.ok).map(check=>check.name);
+  fs.writeFileSync(path.join(out,'report.json'),JSON.stringify({base:BASE,checks,warnings,errors:failedChecks,
+   detailsLocation:'PASS, FAIL and UNVERIFIED lines in the audit job log',finished:new Date().toISOString()},null,2));
   console.log('DEEP SMOKE: '+results.filter(x=>x.ok).length+' passed, '+errors.length+' failed, '+notes.length+' unverified');
   if(errors.length)process.exitCode=1;
  }
