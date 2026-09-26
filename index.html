@@ -1212,6 +1212,43 @@
                         min-width: 52px; padding: 7px 9px; border-radius: 12px;
                         background: rgba(19,7,52,0.9); border: 1px solid rgba(229,193,88,0.5);
                         box-shadow: 0 4px 14px rgba(0,0,0,0.5); line-height: 1; transition: 0.3s; }
+        /* Result controls only: red trash at top right; credits at left. */
+        html body.page-home #result-box .quota-corner{left:12px!important;right:auto!important}
+        html body.page-home #result-box .res-media-row{padding-top:48px!important}
+        html body.page-home #result-box .result-dismiss{
+          position:absolute!important;right:12px!important;top:12px!important;
+          z-index:25!important;display:grid!important;place-items:center!important;
+          width:42px!important;height:42px!important;min-width:42px!important;
+          min-height:42px!important;padding:8px!important;border-radius:12px!important;
+          border:1px solid rgba(255,111,125,.8)!important;
+          background:rgba(96,14,30,.94)!important;color:#ff6b79!important;
+          box-shadow:0 5px 18px rgba(0,0,0,.38)!important;cursor:pointer!important
+        }
+        html body.page-home #result-box .result-dismiss:hover,
+        html body.page-home #result-box .result-dismiss:focus-visible{
+          color:#fff!important;background:#c8203b!important;
+          outline:2px solid #ffc2ca!important;outline-offset:2px!important
+        }
+        html body.page-home #result-box.ma-result-arriving{
+          animation:maResultFadeIn .25s ease-out both!important
+        }
+        html body.page-home #result-box.ma-result-closing{
+          animation:maResultFadeOut .23s ease-in both!important;pointer-events:none!important
+        }
+        @keyframes maResultFadeIn{
+          from{opacity:0;transform:translateY(5px)}
+          to{opacity:1;transform:none}
+        }
+        @keyframes maResultFadeOut{
+          from{opacity:1;transform:none}
+          to{opacity:0;transform:translateY(-5px)}
+        }
+        @media(prefers-reduced-motion:reduce){
+          html body.page-home #result-box.ma-result-arriving,
+          html body.page-home #result-box.ma-result-closing{animation:none!important}
+        }
+        html.reduce-motion body.page-home #result-box.ma-result-arriving,
+        html.reduce-motion body.page-home #result-box.ma-result-closing{animation:none!important}
         .qc-num { color: var(--gold-glow); font-size: 19px; font-weight: 900; }
         .qc-label { color: #a99cc4; font-size: 8.5px; text-transform: uppercase; letter-spacing: 0.6px; margin-top: 3px; text-align: center; }
         .quota-corner.qc-low { border-color: #ff8a5c; background: rgba(74,26,10,0.9); }
@@ -1587,7 +1624,7 @@ html body.page-home #mh-topbox .mh-deck>.sound-toggle-btn,html body.page-home #m
     </style>
     <link rel="stylesheet" href="/frontend-polish.css?v=20260924-ui3">
     <link rel="stylesheet" href="/ebooks/ebook-matcher.css?v=20260926-bookcrest1">
-    <link rel="stylesheet" href="/fold-colors.css?v=20260926-chroma1" data-matchapp-fold-colors="1">
+    <link rel="stylesheet" href="/fold-colors.css?v=20260926-newsfold1" data-matchapp-fold-colors="1">
     <link rel="stylesheet" href="/brand-headline.css?v=20260926-ai-energy2" data-matchapp-brand-headline="1">
 </head>
 <body class="page-home">
@@ -2517,6 +2554,7 @@ html body.page-home #daily-match-checkin { padding: 11px 12px !important; }
                 </article>
 
 <article id="result-box" class="premium-card" style="display: none; text-align: left; position: relative;">
+                    <button id="result-dismiss" class="result-dismiss" type="button" onclick="dismissMatchResult()" aria-label="Close this match result" title="Close this match result"><svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M8 6V4h8v2m3 0-1 15H6L5 6m5 4v7m4-7v7"/></svg></button>
                     <!-- REMAINING MATCHES — small corner counter, filled in per match -->
                     <a id="result-quota-corner" class="quota-corner" href="/pricing/pricing.html#credits" data-i18n-aria="match.more" aria-label="Get more credits" style="display:none;">
                         <span class="qc-num" id="result-quota-num">…</span>
@@ -3377,7 +3415,7 @@ html body.page-home #daily-match-checkin { padding: 11px 12px !important; }
     <script src="/settings.js?v=20260925-guarantee3"></script>
     <script src="/matching-policy.js?v=20260924-runtime1"></script>
     <script src="/match-localization.js?v=20260925-matchrestore2"></script>
-<script src="/app.js?v=20260925-matchrestore2"></script>
+<script src="/app.js?v=20260926-resultclose-cover1"></script>
 <script src="/catalog-plus.js?v=20260919-catalog3"></script>
 <script src="/content-safety.js?v=20260925-xxx2"></script>
 <script src="/ebooks/catalog.js?v=20260924-ebooks2"></script>
@@ -3388,7 +3426,7 @@ html body.page-home #daily-match-checkin { padding: 11px 12px !important; }
 <script src="/ebooks/cover-identity.js?v=20260925-original2"></script>
 <script src="/ebooks/ebook-matcher.js?v=20260926-chroma1"></script>
 <script src="/phone-auth-i18n.js?v=1"></script><script src="/phone-auth.js?v=1"></script><script src="/phone-auth-localize.js?v=1"></script>
-    <script src="/catalog-media.js?v=20260925-verified2"></script>
+    <script src="/catalog-media.js?v=20260926-coverrace1"></script>
 <script src="/title-experience.js?v=20260920-freeze2"></script>
     <script src="/install-progress.js?v=20260924-runtime1"></script>
     <!-- Loads AFTER app.js so the chips it builds can call straight into the
@@ -3398,6 +3436,9 @@ html body.page-home #daily-match-checkin { padding: 11px 12px !important; }
     <script src="/criteria.js?v=191"></script>
     <script src="/match-speed.js?v=20260925-matchrestore1"></script>
     <script src="/lazy.js?v=20260926-chroma1"></script>
+    <!-- News must start on Home, not wait for a later editorial section to scroll into view. -->
+    <script defer src="/latest-news.js?v=20260926-newsfold1"></script>
+    <script defer src="/live-news-loader.js?v=20260926-newsfold1"></script>
     <script src="/tv.js?v=187"></script>
     <script src="/taste.js?v=187"></script><script src="/notifications.js?v=20260924-tastedna2"></script>
     <script src="/contacts.js?v=187"></script>
