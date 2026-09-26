@@ -133,6 +133,11 @@ test('only adult pages load independent source fallbacks; Kids manual-reviewed l
  assert(home.indexOf('/ebooks/gutenberg-source.js')>=0&&home.indexOf('/ebooks/gutenberg-source.js')<home.indexOf('/ebooks/ebook-matcher.js'));
  assert(!kids.includes('tvmaze-source.js')&&!kids.includes('live-book-source.js')&&!kids.includes('gutenberg-source.js'));
  assert(app.includes('discoverVerifiedTVMaze')&&app.includes('moodFits:moodFitsVerified'));
+ assert(app.includes("if (selected.source !== 'tvmaze-source-verified') void getCuratedPoster(selected.title)"),
+  'a same-name curated title must never overwrite the independent TV source image');
+ assert(app.includes("|| selected.source === 'tvmaze-source-verified'"),
+  'the selected independent source must take precedence over unrelated exact-title poster maps');
+ assert(app.includes('static\\.tvmaze\\.com'), 'preserve already loaded official independent cover art');
  assert(match.includes('MatchAppLiveBookSource?.discover')&&match.includes('MatchAppGutenbergSource.search'));
  assert(app.includes("const terms=[term]"),'regional music and podcasts retry independently with exact format gates');
 });
