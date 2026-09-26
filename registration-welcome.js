@@ -5,7 +5,7 @@ const copy={
  en:{
   eyebrow:'YOUR FREE PREVIEW IS COMPLETE',
   headline:'Enjoy more of what you love.',
-  matches:'Extra Matches',ai:'Ask AI prompts',
+  matches:'Extra Matches',ai:'Ask AI Limit',
   sub:'Create your free account and, once verified, get both welcome bonuses. They are yours in addition to your regular daily AI allowance.',
   note:'No credit card. Complete your profile to unlock your full registered daily allowance.',
   button:'Claim my 20 free bonuses'
@@ -13,7 +13,7 @@ const copy={
  'pt-BR':{
   eyebrow:'VOCÊ APROVEITOU SUA DEGUSTAÇÃO GRATUITA',
   headline:'Continue descobrindo o que você ama.',
-  matches:'Matches extras',ai:'Perguntas à Ask AI',
+  matches:'Matches extras',ai:'Limite de IA',
   sub:'Crie sua conta grátis e, após a confirmação, receba os dois bônus de boas-vindas, além do limite diário normal.',
   note:'Sem cartão de crédito. Complete o perfil para liberar todo o seu limite diário de usuário cadastrado.',
   button:'Resgatar meus 20 bônus grátis'
@@ -21,7 +21,7 @@ const copy={
  es:{
   eyebrow:'HAS AGOTADO TU PRUEBA GRATUITA',
   headline:'Sigue descubriendo lo que te gusta.',
-  matches:'Matches extra',ai:'Preguntas a Ask AI',
+  matches:'Matches extra',ai:'Límite de IA',
   sub:'Crea una cuenta gratis y, tras verificarla, recibe ambos bonos además de tu límite diario normal.',
   note:'Sin tarjeta de crédito. Completa tu perfil para obtener todo tu límite diario de usuario registrado.',
   button:'Obtener mis 20 bonos gratis'
