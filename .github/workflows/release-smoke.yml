@@ -26,6 +26,9 @@ concurrency:
   cancel-in-progress: true
 jobs:
   live-browser:
+    # A PR commit has not been deployed; never wait for it on production.
+    # Post-merge push tests are pinned to the exact deployed SHA.
+    if: github.event_name != 'pull_request'
     runs-on: ubuntu-24.04
     timeout-minutes: 24
     steps:
