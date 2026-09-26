@@ -53,6 +53,16 @@
     url.pathname.startsWith('/image/thumb/')?url.href:null;
   }catch(_){return null}
  }
+ // A playable audio preview belongs exclusively to the exact source-verified
+ // audiobook record. Store URLs and unrelated arbitrary audio are not previews.
+ function safeApplePreview(href){
+  if(typeof href!=='string')return null;
+  try{
+   const u=new URL(href);
+   return u.protocol==='https:'&&u.hostname==='audio-ssl.itunes.apple.com'&&
+    u.pathname.startsWith('/itunes-assets/')?u.href:null;
+  }catch(_){return null}
+ }
  function verifyApple(book,results,market){
   const iso=String(market||'US').toUpperCase();
   for(const row of Array.isArray(results)?results:[]){
@@ -66,7 +76,8 @@
    }catch(_){continue}
    return Object.freeze({provider:'Apple Books',url,title:name,
     author:String(row.artistName||''),verified:true,kind:'paid',region:iso,
-    coverUrl:safeAppleArtwork(row.artworkUrl600)||safeAppleArtwork(row.artworkUrl100)});
+    coverUrl:safeAppleArtwork(row.artworkUrl600)||safeAppleArtwork(row.artworkUrl100),
+    previewUrl:safeApplePreview(row.previewUrl)});
   }
   return null;
  }
@@ -160,5 +171,5 @@
   return value;
  }
  return Object.freeze({verify,verifyApple,verifyLibriVox,sourceSearches,
-  titleMatches,authorMatches,safeAppleUrl,safeAppleArtwork,safeLibriVoxUrl});
+  titleMatches,authorMatches,safeAppleUrl,safeAppleArtwork,safeApplePreview,safeLibriVoxUrl});
 });
