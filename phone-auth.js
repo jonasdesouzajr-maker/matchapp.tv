@@ -7,6 +7,33 @@ const RESEND_SECONDS=60;
 let activePhone='';
 let resendTimer=null;
 let resendLeft=0;
+const PENDING_KEY='matchapp_phone_verify_pending_v1';
+const PENDING_TTL_MS=10*60*1000;
+let pendingName='';
+let linkRequested=new URLSearchParams(window.location.search).get('phoneVerify')==='1';
+function scrubLink(){
+  if(!linkRequested)return;
+  const url=new URL(window.location.href);
+  url.searchParams.delete('phoneVerify');
+  window.history.replaceState(null,'',url.pathname+url.search+url.hash);
+  linkRequested=false;
+}
+function rememberPending(phone,name){
+  try{sessionStorage.setItem(PENDING_KEY,JSON.stringify({phone,name,at:Date.now()}));}catch(_){}
+}
+function restorePending(){
+  try{
+    const saved=JSON.parse(sessionStorage.getItem(PENDING_KEY)||'null');
+    if(saved&&Date.now()-Number(saved.at)<PENDING_TTL_MS&&/^\+[1-9]\d{7,14}$/.test(saved.phone)){
+      activePhone=saved.phone;
+      pendingName=String(saved.name||'').slice(0,120);
+      if(el('phone-auth-number'))el('phone-auth-number').value=activePhone;
+      if(el('phone-auth-name')&&pendingName)el('phone-auth-name').value=pendingName;
+    }else sessionStorage.removeItem(PENDING_KEY);
+  }catch(_){}
+}
+function clearPending(){try{sessionStorage.removeItem(PENDING_KEY);}catch(_){}}
+
 
 const strings={
   en:{entry:'Sign up / log in with phone',title:'Continue with your phone',help:'Enter your mobile number including the country code, for example +55 21 99999 9999.',send:'Send code',sent:'We sent a 6-digit code by SMS.',code:'6-digit code',verify:'Verify & continue',change:'Use a different number',resend:'Resend code',wait:n=>`Resend in ${n}s`,badPhone:'Enter a valid mobile number with country code, starting with +.',badCode:'Enter the 6-digit code from the SMS.',sending:'Sending code…',verifying:'Checking code…',success:'Phone verified. You’re signed in.'},
@@ -45,6 +72,12 @@ function applyText(){
   if(el('phone-auth-title'))el('phone-auth-title').textContent=t.title;
   if(el('phone-auth-help'))el('phone-auth-help').textContent=t.help;
   if(el('phone-auth-send'))el('phone-auth-send').textContent=t.send;
+  if(el('phone-auth-name')) {
+    el('phone-auth-name').placeholder=t.name||strings.en.name;
+    el('phone-auth-name').setAttribute('aria-label',t.name||strings.en.name);
+  }
+  if(el('phone-auth-name-help'))el('phone-auth-name-help').textContent=t.nameHelp||strings.en.nameHelp;
+  if(el('phone-auth-have-code'))el('phone-auth-have-code').textContent=t.haveCode||strings.en.haveCode;
   if(el('phone-auth-code-help'))el('phone-auth-code-help').textContent=t.sent;
   if(el('phone-auth-code'))el('phone-auth-code').placeholder=t.code;
   if(el('phone-auth-verify'))el('phone-auth-verify').textContent=t.verify;
@@ -81,6 +114,10 @@ async function sendCode(){
   if(!sb)return;
   const phone=normalizePhone(el('phone-auth-number')?.value);
   if(!phone){setStatus(t.badPhone,'error');el('phone-auth-number')?.focus();return;}
+  const name=String(el('phone-auth-name')?.value||'').trim().replace(/\s+/g,' ').slice(0,120);
+  if(name&&(name.length<3||name.split(/\s+/).length<2)){
+    setStatus(t.badName||strings.en.badName,'error');el('phone-auth-name')?.focus();return;
+  }
 
   const btn=el('phone-auth-send');
   if(btn)btn.disabled=true;
@@ -91,11 +128,13 @@ async function sendCode(){
       options:{
         shouldCreateUser:true,
         channel:'sms',
-        data:{matchapp_first_time_onboarding_v1:true}
+        data:{matchapp_first_time_onboarding_v1:true,...(name?{full_name:name,name}:{})}
       }
     });
     if(error)throw error;
     activePhone=phone;
+    pendingName=name;
+    rememberPending(phone,name);
     setStep('code');
     setStatus(t.sent,'ok');
     const code=el('phone-auth-code');
