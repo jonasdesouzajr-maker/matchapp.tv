@@ -75,7 +75,17 @@ test('signature metallic type stays bold, bounded, responsive and accessible on 
  assert.match(css,/linear-gradient\(104deg,#D4A8FF/);
  assert.match(css,/@keyframes maSignatureWordmarkGlint/);
  assert.match(css,/7\.6s ease-out 1 both/,'One-time shimmer only; never loop GPU filters');
- assert.doesNotMatch(css,/infinite/);
+ // The owner's subsequent AI animation instruction allows small-area CSS
+ // shimmer/signal/star motion, but never continuous compositor filter loops.
+ assert.match(css,/@keyframes maAiIntelligenceGlint/);
+ assert.match(css,/@keyframes maAiSignalMote/);
+ assert.match(css,/@keyframes maAiSignatureStar/);
+ assert.match(css,/maAiIntelligenceGlint 13s[^;]*infinite/);
+ assert.match(css,/maAiSignalMote 9\\.5s[^;]*infinite/);
+ assert.match(css,/maAiSignatureStar 6\\.7s[^;]*infinite/);
+ assert.doesNotMatch(css,/animation:[^;]*filter[^;]*infinite/);
+ assert.match(css,/@media\\(max-width:700px\\),\\(pointer:coarse\\)/);
+ assert.match(css,/html\\.reduce-motion body\\.ebook-page/);
  assert.match(css,/@media\(max-width:420px\)/);
  assert.match(css,/@media\(max-width:350px\)/);
  assert.match(css,/@media\(prefers-reduced-motion:reduce\)/);
