@@ -173,7 +173,7 @@
     // Upgrade only their top-box brand node to the same actual text lockup;
     // preserve the route's existing navigation, login, profile and shortcuts.
     var legacyBrand = head.querySelector('.header-brand-area, .ma-brand-stage, .matchapp-brand-link');
-    if (legacyBrand && !legacyBrand.querySelector('.ma-brand-lockup')) {
+    if (legacyBrand && !legacyBrand.querySelector('[data-ma-brand-ai]')) {
       legacyBrand.replaceWith(buildBrand());
     }
     updateBrandLocale(head);
