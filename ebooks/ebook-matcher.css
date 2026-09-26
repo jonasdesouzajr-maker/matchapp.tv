@@ -300,6 +300,11 @@ html body.page-home #ebook-matcher-root :is(.ebook-field,.ebook-top-card,.ebook-
  border:1px solid rgba(229,193,88,.45);border-radius:9px;
  display:flex;align-items:center;justify-content:center;overflow:hidden}
 .reading-ai-icon img{max-width:55px;max-height:55px;object-fit:contain}
+.reading-ai-icon img[hidden],.reading-ai-icon [data-reading-publisher-name][hidden]{display:none!important}
+.reading-ai-icon [data-reading-publisher-name]{
+ display:block;width:100%;padding:5px 3px;color:#f4db83;font-size:11px;
+ line-height:1.25;font-weight:800;text-align:center;overflow-wrap:anywhere
+}
 .reading-ai-label{display:block;color:#e5c158;font-size:10px;font-weight:850;letter-spacing:.06em}
 .reading-ai-card h4{margin:4px 0;color:#fff;font-size:18px}
 .reading-ai-card p{margin:4px 0 9px;color:#eee;font-size:13px;line-height:1.5}
