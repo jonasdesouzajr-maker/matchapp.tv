@@ -601,7 +601,16 @@ document.addEventListener('DOMContentLoaded', async () => {
             const nameInput = document.getElementById('profile-name');
             if (nameInput && !nameInput.value.trim()) {
                 // Only a server-confirmed member's own metadata is used for prefilling.
-                const name = String(user.user_metadata?.full_name || '').trim();
+                let name = String(user.user_metadata?.full_name || '').trim();
+                if (!name) {
+                    try {
+                        const pending = JSON.parse(sessionStorage.getItem('matchapp_phone_verify_pending_v1') || 'null');
+                        if (pending && pending.phone === user.phone &&
+                            Date.now() - Number(pending.at) < 10 * 60 * 1000) {
+                            name = String(pending.name || '').trim();
+                        }
+                    } catch (_) { /* Name can always be entered manually. */ }
+                }
                 if (name) nameInput.value = name.slice(0, 120);
             }
         }
