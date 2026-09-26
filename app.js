@@ -4635,7 +4635,7 @@ async function renderResult(selected, isSpecificSearch) {
     // Verify the exact curated poster in parallel with optional rich metadata.
     // A slow metadata service must never leave a known original as an SVG.
     const originalMatchRun = Number(window.__matchappMatchRunId) || 0;
-    void getCuratedPoster(selected.title).then(url => {
+    if (selected.source !== 'tvmaze-source-verified') void getCuratedPoster(selected.title).then(url => {
         const current = () => window.globalMatchTitle === selected.title &&
             (Number(window.__matchappMatchRunId) || 0) === originalMatchRun &&
             firstPoster && firstPoster.isConnected;
@@ -4740,7 +4740,8 @@ async function renderResult(selected, isSpecificSearch) {
     // Hand-verified art wins over everything — no lookup can beat a known-correct
     // image, and for unreleased/app-exclusive titles a lookup actively returns
     // the wrong one.
-    const verified = window.currentMatchIdentity?.itunesAudio?null:getVerifiedPoster(selected.title);
+    const verified = (window.currentMatchIdentity?.itunesAudio || selected.source === 'tvmaze-source-verified')
+        ? null : getVerifiedPoster(selected.title);
 
     // The discovery engine already carries artwork/preview/store data — reuse it
     // instead of making a second network round-trip for the same title.
@@ -4806,7 +4807,7 @@ async function renderResult(selected, isSpecificSearch) {
         synopsis: selected.synopsis || matchHints.synopsis || ''
     });
     posterEl.onerror = null;
-    const originalShown = /^https:\/\/(?:image\.tmdb\.org|is\d+-ssl\.mzstatic\.com)\//i.test(posterEl.currentSrc || posterEl.src) &&
+    const originalShown = /^https:\/\/(?:image\.tmdb\.org|is\d+-ssl\.mzstatic\.com|static\.tvmaze\.com)\//i.test(posterEl.currentSrc || posterEl.src) &&
         posterEl.complete && posterEl.naturalWidth > 0;
     // Do not erase an original which exact-title enrichment already decoded
     // while a second provider was still resolving metadata.
@@ -4815,7 +4816,8 @@ async function renderResult(selected, isSpecificSearch) {
     window.globalMatchPoster = globalMatchPoster;
     // A generated result cover must still try the exact title's catalog image;
     // otherwise an unavailable first source becomes permanent for this match.
-    if ((!realCover || /^data:image\/svg\+xml/.test(realCover)) &&
+    if (selected.source !== 'tvmaze-source-verified' &&
+        (!realCover || /^data:image\/svg\+xml/.test(realCover)) &&
         window.MatchAppCatalogMedia?.recoverAdultPoster) {
         window.MatchAppCatalogMedia.recoverAdultPoster(posterEl, selected.title);
     }
@@ -4835,7 +4837,8 @@ async function renderResult(selected, isSpecificSearch) {
         probe.onerror = function() {
             // If the provider fails, keep the already-painted local cover
             // visible while recovering only this exact title's saved original.
-            window.MatchAppCatalogMedia?.recoverAdultPoster?.(posterEl, selected.title);
+            if (selected.source !== 'tvmaze-source-verified')
+                window.MatchAppCatalogMedia?.recoverAdultPoster?.(posterEl, selected.title);
         };
         probe.src = realCover;
     }
