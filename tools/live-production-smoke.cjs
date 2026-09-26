@@ -306,7 +306,10 @@ async function aiQuestion(page,question,expected,label){
     });
     const cover=await im.evaluate(img=>({src:img.currentSrc||img.src,loaded:img.complete&&img.naturalWidth>0,
       fit:getComputedStyle(img).objectFit}));
-    const verifiedSource=/^https:\/\/(?:covers\.openlibrary\.org|books\.google\.com\/books\/content)/i.test(cover.src);
+    // The matcher accepts source-verified Apple Books as the third ORIGINAL
+    // edition-art provider only after exact title + author + Apple Books page
+    // checks in ebooks/cover-identity.js. Do not mislabel it as unverified.
+    const verifiedSource=/^https:\/\/(?:covers\.openlibrary\.org|books\.google\.com\/books\/content|is[0-9]+-ssl\.mzstatic\.com\/image\/thumb\/)/i.test(cover.src);
     record('LIVE Bookworms real e-book matching and verified original cover',
       !!name&&loaded&&cover.loaded&&verifiedSource&&cover.fit!=='fill',
       'book='+name.slice(0,100)+' source='+cover.src.slice(0,130)+' verified='+verifiedSource+' fit='+cover.fit);
