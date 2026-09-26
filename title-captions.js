@@ -66,7 +66,7 @@
  if(!isHome&&!document.querySelector('link[data-final-audit]')){const l=document.createElement('link');l.rel='stylesheet';l.href='/final-audit.css?v=194';l.dataset.finalAudit='1';document.head.appendChild(l);}
  function loadAudit(){
   if(document.querySelector('script[data-final-audit]'))return;
-  const s=document.createElement('script');s.src='/final-audit.js?v=20260926-emailverify1';s.async=false;s.dataset.finalAudit='1';document.head.appendChild(s);
+  const s=document.createElement('script');s.src='/final-audit.js?v=20260926-emailsingle1';s.async=false;s.dataset.finalAudit='1';document.head.appendChild(s);
  }
  if(isHome){
   const schedule=()=>setTimeout(()=>{
