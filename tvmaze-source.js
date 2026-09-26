@@ -12,7 +12,7 @@
  'use strict';
  const PAGES=new Map(),MAX_KEYS=64;
  const MAX_PAGE=160,MAX_REQUESTS=2,TIMEOUT_MS=5600;
- const clean=s=>String(s||'').normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
+ const clean=s=>String(s||'').normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^\p{L}\p{N}]+/gu,' ').trim();
  const knownKey=s=>clean(s).replace(/\s+/g,'');
  const words=s=>String(s||'').replace(/<[^>]*>/g,' ').replace(/\s+/g,' ').trim();
  const artwork=url=>{
