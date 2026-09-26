@@ -1,10 +1,10 @@
 {
-  "version": "2026.09.26.4",
+  "version": "2026.09.26.5",
   "date": "2026-09-26",
   "functional": true,
   "notes": {
-    "en": "Email signup and login recovery: prevent accidental duplicate signup requests from invalidating confirmation links, display honest resend errors, and avoid rapid repeat email requests. Verified SMS members go directly to their signed-in Profile Hub. Google Play download remains on hold.",
-    "pt-BR": "Cadastro e recuperação por e-mail: evita cadastros duplicados por toques rápidos, exibe erros de reenvio corretamente e impede solicitações de confirmação consecutivas. Após a verificação por SMS, o usuário abre o perfil já conectado. O botão do Google Play continua desativado.",
+    "en": "The SMS verification link now opens the phone confirmation screen directly, including recovery if SMS sign-in is unavailable. Email, profile and existing account security are unchanged.",
+    "pt-BR": "O link de verificação por SMS agora abre diretamente a tela de confirmação do telefone, inclusive quando o acesso por SMS estiver indisponível. A segurança do e-mail, perfil e contas existentes permanece intacta.",
     "es": "Nuevo: Match E-books IA para lectores. Combina por estado de ánimo, género, ritmo, extensión, época y acceso gratis o de pago, con fuentes gratuitas legales y tiendas oficiales.",
     "fr": "Nouveau : Match E-books Ai pour les lecteurs, avec humeur, genre, rythme, longueur, époque, accès gratuit ou payant, sources gratuites légales et boutiques officielles.",
     "de": "Neu: Match E-books Ai für Leser – nach Stimmung, Genre, Tempo, Länge, Epoche und kostenlosem oder kostenpflichtigem Zugang, mit legalen Gratisquellen und offiziellen Shops.",

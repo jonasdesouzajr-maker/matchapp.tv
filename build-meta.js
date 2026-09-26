@@ -1,5 +1,5 @@
 // Functional release identifier must match release.json.
-window.MATCHAPP_BUILD = '2026.09.26.4';
+window.MATCHAPP_BUILD = '2026.09.26.5';
 
 
 /* Search freshness + truthfulness layer. */

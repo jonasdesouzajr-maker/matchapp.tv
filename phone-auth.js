@@ -219,13 +219,20 @@ async function syncAvailability(){
   entry.hidden=!enabled;
   if(!enabled){
     if(linkRequested){
+      // A verification link must open the *outer* auth dialog as well:
+      // changing the inner panel alone leaves it invisible on Home.
+      window.openAuthModal?.();
       panel.hidden=false;
       setStatus(lang().noProvider||strings.en.noProvider,'error');
       scrubLink();
     }else panel.hidden=true;
     return;
   }
-  if(linkRequested){togglePanel(true);scrubLink();}
+  if(linkRequested){
+    window.openAuthModal?.();
+    togglePanel(true);
+    scrubLink();
+  }
 }
 // A link opened on another phone/browser must not request a replacement OTP:
 // enter the number and use the existing code that arrived in the SMS.
