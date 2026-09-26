@@ -1,17 +1,9 @@
 name: Live MatchApp Browser and Android Emulator Smoke
 on:
+  # Every main change — including UI/metadata/release edits — gets the same
+  # real production normal matching + Bookworms + Ask AI + original-art gate.
   push:
     branches: [main]
-    paths:
-      - 'match-guarantee.js'
-      - 'discover.js'
-      - 'supabase/functions/gemini-proxy/index.ts'
-      - 'ebooks/**'
-      - 'android-studio/app/**'
-      - 'android-studio/kidsapp/**'
-      - 'tools/live-production-smoke.cjs'
-      - 'tools/android-emulator-smoke.sh'
-      - '.github/workflows/release-smoke.yml'
   workflow_dispatch:
 permissions:
   contents: read
@@ -44,7 +36,7 @@ jobs:
           done
           echo "::error::Production did not confirm this commit within seven minutes."
           exit 1
-      - name: Run live production browser, one real movie match and two Ask AI questions
+      - name: Run live production adult normal matching, e-book/magazine, original art and two Ask AI questions
         run: node tools/live-production-smoke.cjs
       - name: Keep screenshots and machine-readable test report, even on failure
         if: always()
