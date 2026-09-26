@@ -69,7 +69,7 @@ function magCard(m){
  const aff=root.MatchAppEbookAffiliate,offers=root.MatchAppMagazines.buyLinks(m,market(),aff);
  const primary=offers.find(x=>x.name.startsWith('Amazon')),tagged=!!(primary&&aff?.isAffiliateLink(primary.url));
  return '<article class="reading-ai-card"><div class="reading-ai-icon"><img src="'+esc(m.icon)+
- '" alt="'+esc(m.title)+' official publisher icon" data-reading-publisher-icon loading="lazy" decoding="async" hidden>'+ 
+ '" alt="'+esc(m.title)+' official publisher icon" data-reading-publisher-icon loading="eager" decoding="async" hidden>'+ 
  '<span data-reading-publisher-name aria-hidden="true">'+esc(m.title)+'</span></div>'+
  '<div><span class="reading-ai-label">OFFICIAL MAGAZINE SOURCE</span><h4>'+esc(m.title)+'</h4>'+
  '<p>'+esc(m.summary)+'</p><div class="reading-ai-links">'+
