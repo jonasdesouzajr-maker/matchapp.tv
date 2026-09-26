@@ -7,19 +7,19 @@ const read=p=>fs.readFileSync(path.join(root,p),'utf8');
 
 test('grown-up Home loads E-books Ai data, current suggestions and matcher in safe order',()=>{
  const html=read('index.html');
- const catalog=html.indexOf('/ebooks/catalog.js?v=20260924-ebooks2');
+ const catalog=html.indexOf('/ebooks/catalog.js?v=20260926-catalogscale1');
  const top=html.indexOf('/ebooks/top-ebooks.js?v=20260924-top1');
- const audio=html.indexOf('/ebooks/audiobooks.js?v=20260925-audioverify2');
- const cover=html.indexOf('/ebooks/cover-identity.js?v=20260925-original2');
- const matcher=html.indexOf('/ebooks/ebook-matcher.js?v=20260926-strictbooks4');
+ const audio=html.indexOf('/ebooks/audiobooks.js?v=20260926-catalogscale1');
+ const cover=html.indexOf('/ebooks/cover-identity.js?v=20260926-catalogscale1');
+ const matcher=html.indexOf('/ebooks/ebook-matcher.js?v=20260926-catalogscale1');
  assert(catalog>0);
  assert(top>catalog);
  assert(audio>top);
  assert(cover>audio);
  assert(matcher>cover);
  assert.match(html,/id="ebook-matcher-root"/);
- assert.match(html,/\/ebooks\/ebook-matcher\.css\?v=20260926-strictbooks4/);
- assert.match(html,/\/ebooks\/ebook-matcher\.js\?v=20260926-strictbooks4/);
+ assert.match(html,/\/ebooks\/ebook-matcher\.css\?v=20260926-catalogscale1/);
+ assert.match(html,/\/ebooks\/ebook-matcher\.js\?v=20260926-catalogscale1/);
 });
 
 

@@ -11,7 +11,7 @@
  if(root)root.MatchAppAudiobooks=service;
 })(typeof window!=='undefined'?window:null,function(){
  'use strict';
- const CACHE=new Map(),CACHE_LIMIT=80,TTL=6*3600000,QUERY_TIMEOUT=6500;
+ const CACHE=new Map(),INFLIGHT=new Map(),CACHE_LIMIT=160,TTL=6*3600000,EMPTY_TTL=75000,QUERY_TIMEOUT=6500;
  const REGION={BR:'br',GB:'gb',CA:'ca',AU:'au',JP:'jp',PT:'pt',US:'us'};
  function normalized(s){
   return String(s||'').normalize('NFKD').replace(/[\u0300-\u036f]/g,'')
@@ -53,20 +53,29 @@
     url.pathname.startsWith('/image/thumb/')?url.href:null;
   }catch(_){return null}
  }
+ function safeApplePreview(href){
+  if(typeof href!=='string')return null;
+  try {
+   const url=new URL(href);
+   return url.protocol==='https:'&&url.hostname==='audio-ssl.itunes.apple.com'&&
+    /^\/(?:itunes-assets|apple-assets|music-assets|audio)/i.test(url.pathname)?url.href:null;
+  }catch(_){return null}
+ }
  function verifyApple(book,results,market){
   const iso=String(market||'US').toUpperCase();
   for(const row of Array.isArray(results)?results:[]){
    const name=String(row.collectionName||row.trackName||'');
    const url=String(row.collectionViewUrl||row.trackViewUrl||'');
    if(!titleMatches(book.title,name)||!authorMatches(book.author,row.artistName)||
-      !safeAppleUrl(url))continue;
+      !safeAppleUrl(url)||row.trackExplicitness==='explicit'||row.collectionExplicitness==='explicit')continue;
    try{
     const u=new URL(url);
     if(!u.pathname.toLowerCase().startsWith('/'+(REGION[iso]||'us')+'/'))continue;
    }catch(_){continue}
    return Object.freeze({provider:'Apple Books',url,title:name,
     author:String(row.artistName||''),verified:true,kind:'paid',region:iso,
-    coverUrl:safeAppleArtwork(row.artworkUrl600)||safeAppleArtwork(row.artworkUrl100)});
+    coverUrl:safeAppleArtwork(row.artworkUrl600)||safeAppleArtwork(row.artworkUrl100),
+    previewUrl:safeApplePreview(row.previewUrl)});
   }
   return null;
  }
@@ -118,7 +127,8 @@
   u.searchParams.set('term',String(book.title||'')+' '+String(book.author||''));
   u.searchParams.set('country',REGION[String(market||'US').toUpperCase()]||'us');
   u.searchParams.set('media','audiobook');u.searchParams.set('entity','audiobook');
-  u.searchParams.set('limit','8');u.searchParams.set('explicit','No');
+  // Expand results PER SEARCH without multiplying Apple's published request budget.
+  u.searchParams.set('limit','40');u.searchParams.set('explicit','No');
   const result=await pausePromise(QUERY_TIMEOUT,signal=>fetchFn(u.href,{signal,headers:{Accept:'application/json'}}));
   if(!result.ok)throw Error('Apple audio search unavailable');
   const data=await result.json();
@@ -128,7 +138,7 @@
   if(String(market||'').toUpperCase()!=='US')return null;
   const u=new URL('https://librivox.org/api/feed/audiobooks/');
   u.searchParams.set('title',String(book.title||'').slice(0,90));
-  u.searchParams.set('format','json');u.searchParams.set('limit','5');
+  u.searchParams.set('format','json');u.searchParams.set('limit','20');
   const result=await pausePromise(QUERY_TIMEOUT,signal=>fetchFn(u.href,{signal,headers:{Accept:'application/json'}}));
   if(!result.ok)throw Error('LibriVox unavailable');
   const data=await result.json();
@@ -140,25 +150,36 @@
   if(!fetchFn||!book?.title||!book?.author)return {apple:null,free:null,searches:sourceSearches(book||{},region)};
   const key=region+'|'+wanted+'|'+normalized(book.title)+'|'+normalized(book.author);
   const old=CACHE.get(key);
-  if(old&&Date.now()-old.when<TTL)return old.value;
-  const result={apple:null,free:null,searches:sourceSearches(book,region)};
-  // An unresponsive audio store must not starve an independent legal source.
-  await Promise.all([
-   wanted==='free'?Promise.resolve():appleSearch(book,region,fetchFn)
-    .then(hit=>{result.apple=hit}).catch(()=>{}),
-   wanted==='paid'||region!=='US'||!book.access?.includes('free')
-    ?Promise.resolve():librivoxSearch(book,region,fetchFn)
-     .then(hit=>{result.free=hit}).catch(()=>{})
-  ]);
-  const value=Object.freeze(result);
-  // Cache positive results, not request failures. Store searches can still be
-  // displayed when no live verification succeeded; never label them verified.
-  if(value.apple||value.free){
-   if(CACHE.size>=CACHE_LIMIT)CACHE.delete(CACHE.keys().next().value);
-   CACHE.set(key,{when:Date.now(),value});
-  }
-  return value;
+  if(old&&Date.now()-old.when<(old.empty?EMPTY_TTL:TTL))return old.value;
+  if(INFLIGHT.has(key))return INFLIGHT.get(key);
+  const job=(async()=>{
+   const result={apple:null,free:null,searches:sourceSearches(book,region)};
+   let expected=0,completed=0;
+   // Avoid duplicate simultaneous lookups for this exact work + storefront.
+   // An independent source still runs if another store fails or times out.
+   const checks=[];
+   if(wanted!=='free'){
+    expected++;checks.push(appleSearch(book,region,fetchFn)
+     .then(hit=>{result.apple=hit;completed++}).catch(()=>{}));
+   }
+   if(wanted!=='paid'&&region==='US'&&book.access?.includes('free')){
+    expected++;checks.push(librivoxSearch(book,region,fetchFn)
+     .then(hit=>{result.free=hit;completed++}).catch(()=>{}));
+   }
+   await Promise.all(checks);
+   const value=Object.freeze(result);
+   // Never cache failed/timed-out source requests as proof of no edition.
+   // Fully checked source misses get only a short cooldown to respect rate
+   // limits on rematches; positive exact editions retain the six-hour TTL.
+   if(value.apple||value.free||(expected>0&&completed===expected)){
+    if(CACHE.size>=CACHE_LIMIT)CACHE.delete(CACHE.keys().next().value);
+    CACHE.set(key,{when:Date.now(),value,empty:!value.apple&&!value.free});
+   }
+   return value;
+  })().finally(()=>INFLIGHT.delete(key));
+  INFLIGHT.set(key,job);
+  return job;
  }
  return Object.freeze({verify,verifyApple,verifyLibriVox,sourceSearches,
-  titleMatches,authorMatches,safeAppleUrl,safeAppleArtwork,safeLibriVoxUrl});
+  titleMatches,authorMatches,safeAppleUrl,safeAppleArtwork,safeApplePreview,safeLibriVoxUrl});
 });

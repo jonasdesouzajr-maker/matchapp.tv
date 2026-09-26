@@ -46,7 +46,7 @@ test('full verified Apple search uses audiobook-only media and correct market',a
  assert.equal(u.searchParams.get('media'),'audiobook');
  assert.equal(u.searchParams.get('entity'),'audiobook');
  assert.equal(u.searchParams.get('country'),'us');
- assert.equal(u.searchParams.get('limit'),'8');
+ assert.equal(u.searchParams.get('limit'),'40');
 });
 test('eligible US free LibriVox verification does not mistakenly call paid stores',async()=>{
  let calls=[];
@@ -56,7 +56,7 @@ test('eligible US free LibriVox verification does not mistakenly call paid store
  assert.equal(found.free.provider,'LibriVox');
  assert.equal(calls.length,1);
  assert(new URL(calls[0]).hostname==='librivox.org');
- assert.equal(new URL(calls[0]).searchParams.get('limit'),'5');
+ assert.equal(new URL(calls[0]).searchParams.get('limit'),'20');
 });
 test('free audiobook match outside the US is not falsely shown as public domain',async()=>{
  let calls=0;
@@ -95,4 +95,32 @@ test('new audiobook controls preserve responsive artwork fit, existing sitemap a
  assert.match(hub,/librivox\.org/);
  assert.match(hub,/audiobook recommendations by genre/i);
  assert(sitemap.includes('<loc>https://matchapp.tv/ebooks/</loc>'));
+});
+
+test('only exact verified Apple editions expose real vendor preview audio',()=>{
+ const preview='https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview/valid.m4a';
+ const good=audio.verifyApple(book,[{...appleRow,previewUrl:preview}],'US');
+ assert.equal(good.previewUrl,preview);
+ assert.equal(audio.safeApplePreview('https://audio-ssl.itunes.apple.com.evil.example/itunes-assets/valid.m4a'),null);
+ assert.equal(audio.safeApplePreview('http://audio-ssl.itunes.apple.com/itunes-assets/valid.m4a'),null);
+ assert.equal(audio.verifyApple(book,[{...appleRow,previewUrl:'https://evil.example/fake.mp3'}],'US').previewUrl,null);
+ assert.equal(audio.verifyApple(book,[{...appleRow,trackExplicitness:'explicit'}],'US'),null);
+ const matcher=read('ebooks/ebook-matcher.js');
+ assert.match(matcher,/audio\?\.apple\?\.verified&&audio\.apple\.previewUrl/);
+ assert.match(matcher,/class="ebook-audio-preview"/);
+});
+
+test('completed zero-hit edition checks receive a short cache; source failures remain retryable',async()=>{
+ const unknown={...book,title:'Unlikely Real Book For Source Test',author:'Distinct Writer'};
+ let calls=0;
+ const none=async()=>{calls++;return{ok:true,json:async()=>({results:[]})}};
+ const first=await audio.verify(unknown,'AU','paid',none);
+ const second=await audio.verify(unknown,'AU','paid',none);
+ assert.equal(first.apple,null);assert.equal(second.apple,null);assert.equal(calls,1);
+ const failedBook={...unknown,title:'Transient Distinct Book'};
+ let attempts=0;
+ const fail=async()=>{attempts++;throw Error('upstream temporarily down')};
+ await audio.verify(failedBook,'JP','paid',fail);
+ await audio.verify(failedBook,'JP','paid',fail);
+ assert.equal(attempts,2);
 });

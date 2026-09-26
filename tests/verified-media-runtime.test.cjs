@@ -75,6 +75,27 @@ test('normal matching, audiobook matching and conversational AI retain separate 
  assert.match(book,/chooseVerifiedAudio\(p,/);
  assert.match(book,/const allowed=await window\.checkDailyLimit\(\)/);
  assert.match(chat,/async function askAIConversational/);
- assert(home.includes('/ebooks/cover-identity.js?v=20260925-original2'));
+ assert(home.includes('/ebooks/cover-identity.js?v=20260926-catalogscale1'));
  assert(!kids.includes('/ebooks/audiobooks.js')&&!kids.includes('/ebooks/ebook-matcher.js'));
+});
+
+test('optional third cover source uses exact Apple book identity, region and genuine edition art only',()=>{
+ const book={title:'The Posthumous Memoirs of Brás Cubas',author:'Machado de Assis',year:1881};
+ const row={trackName:book.title,artistName:book.author,kind:'ebook',
+  trackViewUrl:'https://books.apple.com/br/book/the-posthumous-memoirs-of-bras-cubas/id123',
+  artworkUrl600:'https://is1-ssl.mzstatic.com/image/thumb/Books111/v4/official.jpg'};
+ assert.equal(covers.verifiedAppleBookCoverUrl(book,[row],'BR'),row.artworkUrl600);
+ const reject=[
+  {...row,artistName:'Another Writer'},
+  {...row,trackName:'Unrelated Memoir'},
+  {...row,trackViewUrl:'https://books.apple.com/us/book/foreign-region/id123'},
+  {...row,trackViewUrl:'https://books.apple.com.evil.example/br/book/title/id123'},
+  {...row,artworkUrl600:'https://is1-ssl.mzstatic.com.evil.test/image/thumb/wrong.jpg'},
+  {...row,trackExplicitness:'explicit'},
+  {...row,kind:'audiobook'}
+ ];
+ for(const item of reject)assert.equal(covers.verifiedAppleBookCoverUrl(book,[item],'BR'),null);
+ const matcher=read('ebooks/ebook-matcher.js');
+ assert.match(matcher,/verifiedAppleBookCoverUrl/);
+ assert.match(matcher,/\['openlibrary','google','apple'\]/);
 });

@@ -207,6 +207,17 @@ async function sourceCover(book,source){
    const d=await coverJSON(url);
    return window.MatchAppBookCoverIdentity?.verifiedGoogleCoverUrl(book,d?.items)||null;
   }
+  if(source==='apple'){
+   // Apple is a late, bounded last resort only after the established work-level
+   // sources failed. It is never used for guessed music/audio edition art.
+   const u=new URL('https://itunes.apple.com/search');
+   u.searchParams.set('term',book.title+' '+book.author);
+   u.searchParams.set('media','ebook');u.searchParams.set('entity','ebook');
+   u.searchParams.set('country',market().toLowerCase());
+   u.searchParams.set('limit','10');u.searchParams.set('explicit','No');
+   const d=await coverJSON(u.href);
+   return window.MatchAppBookCoverIdentity?.verifiedAppleBookCoverUrl(book,d?.results,market())||null;
+  }
   return null;
  })().then(url=>{if(url)BOOK_COVER_IDENTITY.set(key,url);return url})
   .catch(()=>null).finally(()=>BOOK_COVER_INFLIGHT.delete(key));
@@ -235,7 +246,7 @@ async function hydrateCover(book,img,fall,audio){
  img.hidden=true;if(fall)fall.hidden=false;
  // A source-verified Apple audio record carries its own genuine edition art.
  if(audio?.apple?.coverUrl&&await showVerifiedCover(img,fall,audio.apple.coverUrl))return;
- for(const source of ['openlibrary','google']){
+ for(const source of ['openlibrary','google','apple']){
   const url=await sourceCover(book,source);
   if(url&&await showVerifiedCover(img,fall,url))return;
  }
@@ -291,9 +302,14 @@ function audioLinksHTML(audio){
   '" target="_blank" rel="noopener noreferrer" data-ebook-provider="'+esc(item.provider)+'">'+
   esc(item.provider)+' · '+esc(item.title)+' ✓ ↗</a>').join('');
  const searches=Array.isArray(audio?.searches)?audio.searches:[];
+ // Only a source-verified audiobook edition may provide an embedded preview.
+ // Search URLs and matching e-book records are NEVER audio preview evidence.
+ const preview=audio?.apple?.verified&&audio.apple.previewUrl?
+  '<label class="ebook-audio-preview-label">'+esc(lang()==='pt-BR'?'Prévia oficial da edição em áudio':lang()==='es'?'Muestra oficial de audiolibro':lang()==='ja'?'公式オーディオ試聴':'Official audiobook sample')+'</label>'+
+  '<audio class="ebook-audio-preview" controls preload="none" src="'+esc(audio.apple.previewUrl)+'"></audio>':'';
  return (vlinks?'<h5>'+esc(tr('audioLinks'))+'</h5><div class="ebook-provider-row">'+vlinks+'</div>':
   '<p class="ebook-audio-note">'+esc(tr('audioNone'))+'</p>')+
-  '<h5>'+esc(tr('audioSearch'))+'</h5><div class="ebook-provider-row">'+
+  preview+'<h5>'+esc(tr('audioSearch'))+'</h5><div class="ebook-provider-row">'+
   searches.map(item=>'<a class="ebook-provider ebook-audio-search" href="'+esc(item.url)+
    '" target="_blank" rel="noopener noreferrer" data-ebook-provider="'+esc(item.provider)+'">'+
    esc(item.label)+' ↗</a>').join('')+'</div>'+

@@ -3083,6 +3083,7 @@ async function discoverFromITunes(cat, mood, vibe, decade, rating) {
     // Preserve the whole rating set — it is the one field where a stricter
     // pick must not be silently dropped.
     const ratingSet = normCriteria(rating);
+    const selectedMoods=normCriteria(mood);
     cat = one(cat); mood = one(mood); vibe = one(vibe); decade = one(decade);
     rating = ratingSet.length ? ratingSet[0] : 'any';
 
@@ -3091,7 +3092,12 @@ async function discoverFromITunes(cat, mood, vibe, decade, rating) {
     // iTunes — searching here doesn't come back empty, it comes back with
     // something confidently unrelated (this was the root of the "book
     // summaries app cover on a drama title" bug). Don't even try.
-    if ((cat || '').toLowerCase() === 'vertical micro-drama') return null;
+    // Apple's song catalog cannot establish the identity or availability of
+    // a Spotify playlist. Never silently substitute one for the other.
+    // An Apple music record is not proof that a specific song exists on
+    // Spotify. Preserve the user's requested service instead of relabeling.
+    if ((cat || '').toLowerCase() === 'vertical micro-drama' ||
+        cat === 'Spotify playlist' || cat === 'Spotify single') return null;
 
     const parts = [];
     if (decade && decade !== 'any' && DECADE_TERMS[decade]) parts.push(DECADE_TERMS[decade]);
@@ -3102,13 +3108,17 @@ async function discoverFromITunes(cat, mood, vibe, decade, rating) {
 
     const term = parts.join(' ');
     const media = mediaForCategory(cat);
+    const region=window.MatchAppCatalogMedia?.regionCode?.()||'BR';
+    const entity=cat==='music album'?'album':cat==='Spotify single'?'song':
+      cat==='podcast'?'podcast':cat==='audiobook'?'audiobook':'';
+    const limit=['music','podcast','audiobook'].includes(media)?80:40;
     // 'none' means this category has no iTunes equivalent (YouTube channels
     // and Shorts). Searching anyway would return unrelated films or shows, so
     // return null and let the caller fall back to the curated catalog, which
     // does have real YouTube entries.
     if (media === 'none') return null;
     try {
-        const res = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(term)}&media=${media}&limit=40`);
+        const res = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(term)}&media=${media}&limit=${limit}&country=${encodeURIComponent(region)}&explicit=No${entity?'&entity='+entity:''}`);
         if (!res.ok) return null;
         const data = await res.json();
         if (!data.results || data.results.length === 0) return null;
@@ -3139,9 +3149,13 @@ async function discoverFromITunes(cat, mood, vibe, decade, rating) {
             if (!genreHit.length) return null;
             pool = genreHit;
         }
-        if (mood === 'cozy comfort watch') {
-            pool = pool.filter(r =>
-                !/thriller|horror|war|crime|drama/i.test(String(r.primaryGenreName || '')) &&
+        if (selectedMoods.includes('cozy comfort watch')) {
+            // The safety constraint survives multiple acceptable moods: when
+            // romantic + Comfort were both selected, an earlier single-mood
+            // iTunes query could admit a romantic thriller.
+            pool = pool.filter(r=>
+                /family|comedy/i.test(String(r.primaryGenreName||'')) &&
+                !/thriller|horror|war|crime|drama/i.test(String(r.primaryGenreName||'')) &&
                 !COZY_HEAVY_TEXT.test([r.longDescription,r.shortDescription].filter(Boolean).join(' ')));
             if (!pool.length) return null;
         }
@@ -3206,6 +3220,7 @@ async function discoverFromITunes(cat, mood, vibe, decade, rating) {
                 `${year ? year + ' — ' : ''}${r.primaryGenreName || 'A great pick'}${r.artistName ? ', from ' + r.artistName : ''}.`,
             platform: 'any',
             platformVerified: false,
+            cats: cat&&cat!=='any'?[cat]:[],
             source: 'itunes-live',
             _meta: {
                 artwork: upgradeArtwork(r.artworkUrl100),
@@ -3254,14 +3269,14 @@ function moodFitsVerified(wanted,genres,overview){
     if(!wanted.length)return true;
     const gs=Array.isArray(genres)?genres:[];
     const text=String(overview||'');
+    // A hard incompatibility is ANDed across all selected moods before
+    // choosing an acceptable positive mood. Another selected mood must never
+    // bypass Comfort's no-Thriller/no-heavy-story contract.
+    if(wanted.includes('cozy comfort watch')&&
+       (gs.some(g=>COZY_BLOCKED_GENRES.has(g))||COZY_HEAVY_TEXT.test(text)))return false;
     return wanted.some(m=>{
       const mapped=MOOD_SOURCE_GENRES[m]||[];
-      if(!mapped.length||!mapped.some(g=>gs.includes(g)))return false;
-      if(m==='cozy comfort watch'){
-        if(gs.some(g=>COZY_BLOCKED_GENRES.has(g)))return false;
-        if(COZY_HEAVY_TEXT.test(text))return false;
-      }
-      return true;
+      return mapped.length>0&&mapped.some(g=>gs.includes(g));
     });
 }
 function canonicalProviderName(value){
@@ -3332,7 +3347,17 @@ async function discoverVerifiedExactTMDB(requested){
     const start=decade.length===1?Number(String(decade[0]).match(/\d{4}/)?.[0]):0;
     const region=window.MatchAppCatalogMedia?.regionCode?.()||'BR';
     const provider=platform.length===1?platform[0]:'';
-    const candidates=await window.tmdbDiscover({kind,genre_ids:genreIds,original_language:cat.includes('anime')?'ja':'',decade_start:start||0,pages:provider?3:2,provider,region},{priority:true});
+    // Escalate to later source pages only when the earlier verified batch has
+    // no exact fit. Keep source calls and UI wait bounded by the match deadline.
+    const sourceStarted=Date.now(),MAX_EXACT_DETAILS=14;
+    let exactDetails=0;
+    const pagePlan=provider?[[1,3],[4,3]]:[[1,2],[3,2]];
+    for(const [pageStart,pageCount] of pagePlan){
+      if(Date.now()-sourceStarted>46000||exactDetails>=MAX_EXACT_DETAILS)break;
+      const candidates=await window.tmdbDiscover({
+        kind,genre_ids:genreIds,original_language:cat.includes('anime')?'ja':'',
+        decade_start:start||0,page_start:pageStart,pages:pageCount,provider,region
+      },{priority:true});
     const prefs=currentPreferenceExclusions(),known=window.matchPolicy?.known?.()||new Set();
 
     // TMDB Discover is popularity-sorted. Starting at row 0 on every device
@@ -3347,8 +3372,10 @@ async function discoverVerifiedExactTMDB(requested){
       ? candidateWindow.slice(rotationStart).concat(candidateWindow.slice(0,rotationStart))
       : candidateWindow;
     for(const base of orderedCandidates){
+      if(Date.now()-sourceStarted>46000||exactDetails>=MAX_EXACT_DETAILS)return null;
       const key=window.matchPolicy?.key?.(base.title)||'';
       if(!key||known.has(key)||SESSION_SHOWN.has(base.title))continue;
+      exactDetails++;
       const d=await window.tmdbDetails(base.tmdbId,base.kind,{priority:true});
       // A provider-filtered TMDB Discover result is already source proof that
       // this exact identity is on the selected service in this region. Detail
@@ -3394,6 +3421,7 @@ async function discoverVerifiedExactTMDB(requested){
           tmdbId:base.tmdbId,kind:base.kind
         }
       };
+    }
     }
     return null;
 }
@@ -4492,7 +4520,14 @@ async function renderResult(selected, isSpecificSearch) {
         cats:Array.isArray(selected.cats)?selected.cats:[],
         tmdbId:Number(selected._tmdbId||selected._meta?.tmdbId)||null,
         kind:selected._tmdbKind||selected._meta?.kind||'',
-        artwork:selected._meta?.artwork||''
+        artwork:selected._meta?.artwork||'',
+        // The exact same official Apple catalog result supplies the title,
+        // artwork and audio sample. Search suggestions or unrelated movie
+        // metadata may never invent an embedded podcast/song preview.
+        itunesAudio:selected.source==='itunes-live'&&Array.isArray(selected.cats)&&
+            selected.cats.some(c=>['podcast','Spotify single','music album','audiobook','Classical Music'].includes(c)),
+        applePreviewUrl:String(selected._meta?.preview||''),
+        appleSourceUrl:String(selected._meta?.storeUrl||'')
     };
     document.dispatchEvent(new CustomEvent('matchapp:newmatch',{detail:window.currentMatchIdentity}));
 
@@ -4604,7 +4639,7 @@ async function renderResult(selected, isSpecificSearch) {
     // Hand-verified art wins over everything — no lookup can beat a known-correct
     // image, and for unreleased/app-exclusive titles a lookup actively returns
     // the wrong one.
-    const verified = getVerifiedPoster(selected.title);
+    const verified = window.currentMatchIdentity?.itunesAudio?null:getVerifiedPoster(selected.title);
 
     // The discovery engine already carries artwork/preview/store data — reuse it
     // instead of making a second network round-trip for the same title.

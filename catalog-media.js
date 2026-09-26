@@ -876,6 +876,24 @@
       };
     }catch(_){}
 
+    if(identity.itunesAudio===true){
+      // Do not search TMDB for a same-named movie when the exact Apple result
+      // is an album, podcast, audiobook or music track. Its own source art is
+      // the only eligible original, and its preview must be on Apple's audio CDN.
+      const page=String(identity.appleSourceUrl||'');
+      const allowedPage=/^https:\/\/(?:music|podcasts|books)\.apple\.com\//i.test(page)||
+        /^https:\/\/itunes\.apple\.com\//i.test(page);
+      const rawPreview=String(identity.applePreviewUrl||'');
+      const preview=/^https:\/\/audio-ssl\.itunes\.apple\.com\//i.test(rawPreview)&&allowedPage?rawPreview:null;
+      if(serial!==mainSerial)return;
+      applyDetails(null);
+      renderAvailability(availabilityHost,null,{title});
+      renderPreview(host,{title,preview_kind:preview?'audio':null,preview_url:preview,
+        source_page_url:allowedPage?page:null},{title});
+      const image=document.getElementById('res-poster-img');
+      if(image&&identity.artwork)recoverAdultPoster(image,title,null,identity.artwork);
+      return;
+    }
     const resolved=await resolvePoster(title,opts);
     if(serial!==mainSerial)return;
     const meta=resolved.meta;
