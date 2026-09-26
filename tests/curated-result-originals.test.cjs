@@ -47,6 +47,6 @@ test('the visibly revealed adult match probes curated artwork before optional me
  assert(first>reveal&&pinned>first&&slow>pinned);
  assert.match(app.slice(pinned,slow),/probe\.onload[\s\S]*firstPoster\.src = url/);
  assert.match(app.slice(pinned,slow),/window\.setLoadedMatchPoster\(url, selected\.title\)/);
- assert.match(html,/app\.js\?v=20260926-catalogscale1/);
+ assert.match(html,/app\.js\?v=20260926-sourceclean1/);
  assert.doesNotMatch(read('kids/index.html'),/20260926-catalogscale1|result-dismiss/);
 });

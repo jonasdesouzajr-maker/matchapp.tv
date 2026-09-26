@@ -3118,16 +3118,42 @@ async function discoverFromITunes(cat, mood, vibe, decade, rating) {
     // does have real YouTube entries.
     if (media === 'none') return null;
     try {
-        const res = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(term)}&media=${media}&limit=${limit}&country=${encodeURIComponent(region)}&explicit=No${entity?'&entity='+entity:''}`);
-        if (!res.ok) return null;
-        const data = await res.json();
-        if (!data.results || data.results.length === 0) return null;
+        const audioDiscovery=['music','podcast'].includes(media);
+        // Second official regional catalog query extends discovery without
+        // changing the requested category or treating Apple as Spotify.
+        const terms=[term];
+        const broad=media==='podcast'?'podcast':cat==='music album'?'album':'music';
+        if(audioDiscovery&&term.toLowerCase()!==broad)terms.push(broad);
+        const arrays=await Promise.all(terms.map(async termQuery=>{
+            try {
+                const url=`https://itunes.apple.com/search?term=${encodeURIComponent(termQuery)}&media=${media}&limit=${audioDiscovery?100:limit}&country=${encodeURIComponent(region)}&explicit=No${entity?'&entity='+entity:''}`;
+                const response=await fetch(url);
+                if(!response.ok)return [];
+                const json=await response.json();
+                return Array.isArray(json.results)?json.results:[];
+            }catch(_){return [];}
+        }));
+        const sourceSeen=new Set(),sourceResults=[];
+        for(const record of arrays.flat()){
+            const id=String(record.trackId||record.collectionId||'')+'|'+String(record.trackName||record.collectionName||'');
+            if(sourceSeen.has(id))continue;
+            sourceSeen.add(id);sourceResults.push(record);
+        }
+        if(!sourceResults.length)return null;
+        const data={results:sourceResults};
 
         const excluded = new Set([...(window.matchPolicy?.known()||[]),...Array.from(SESSION_SHOWN).map(t=>window.matchPolicy?.key(t)||t)]);
         const seenRecently = new Set(recentTitles);
 
         // Only keep entries that actually have artwork, so covers never come back blank.
-        let pool = data.results.filter(r => r.artworkUrl100 && (r.trackName || r.collectionName));
+        let pool = data.results.filter(r =>
+            /^https:\/\/is\d+-ssl\.mzstatic\.com\//i.test(String(r.artworkUrl100||'')) &&
+            (r.trackName || r.collectionName) &&
+            (!audioDiscovery || (media==='podcast'
+                ? r.kind==='podcast'
+                : cat==='music album'
+                    ? r.wrapperType==='collection' && r.collectionType==='Album'
+                    : r.kind==='song' || r.kind==='music-video' || r.wrapperType==='collection')));
         pool = pool.filter(r => !excluded.has(window.matchPolicy?.key(r.trackName || r.collectionName)));
         const ITUNES_GENRE = {
             funny: /comedy|stand.?up/i,
@@ -3327,6 +3353,10 @@ function categoryFitsVerified(kind,genres,countries,wanted){
       return false;
     });
 }
+// Remember a small, per-session cursor for fully exhausted verified source
+// windows. An impossible filter or a source outage never authorizes weaker
+// results; later user attempts can inspect genuinely different source pages.
+const TMDB_DISCOVERY_CURSOR=new Map(),TMDB_DISCOVERY_CURSOR_LIMIT=64;
 async function discoverVerifiedExactTMDB(requested){
     if(typeof window.tmdbDiscover!=='function'||typeof window.tmdbDetails!=='function')return null;
     const cat=normCriteria(requested.cat),mood=normCriteria(requested.mood),vibe=normCriteria(requested.vibe),
@@ -3352,12 +3382,29 @@ async function discoverVerifiedExactTMDB(requested){
     const sourceStarted=Date.now(),MAX_EXACT_DETAILS=14;
     let exactDetails=0;
     const pagePlan=provider?[[1,3],[4,3]]:[[1,2],[3,2]];
-    for(const [pageStart,pageCount] of pagePlan){
+    const cursorKey=JSON.stringify({cat,mood,vibe,rating,decade,platform,realGenres,region});
+    const offset=TMDB_DISCOVERY_CURSOR.get(cursorKey)||0;
+    const advance=()=>{
+      if(TMDB_DISCOVERY_CURSOR.size>=TMDB_DISCOVERY_CURSOR_LIMIT)
+        TMDB_DISCOVERY_CURSOR.delete(TMDB_DISCOVERY_CURSOR.keys().next().value);
+      const next=offset+(provider?6:4);
+      TMDB_DISCOVERY_CURSOR.set(cursorKey,next<=492?next:0);
+    };
+    let sawResults=false,sourceOutage=false;
+    for(const [relativeStart,pageCount] of pagePlan){
+      const pageStart=relativeStart+offset;
       if(Date.now()-sourceStarted>46000||exactDetails>=MAX_EXACT_DETAILS)break;
       const candidates=await window.tmdbDiscover({
         kind,genre_ids:genreIds,original_language:cat.includes('anime')?'ja':'',
         decade_start:start||0,page_start:pageStart,pages:pageCount,provider,region
       },{priority:true});
+      // Null/invalid payload means the TMDB source is unavailable, not that
+      // its next page is an evidence-backed empty catalog.
+      if(!Array.isArray(candidates)||!candidates.length){
+        if(!Array.isArray(candidates)){sourceOutage=true;break;}
+        continue;
+      }
+      sawResults=true;
     const prefs=currentPreferenceExclusions(),known=window.matchPolicy?.known?.()||new Set();
 
     // TMDB Discover is popularity-sorted. Starting at row 0 on every device
@@ -3372,7 +3419,10 @@ async function discoverVerifiedExactTMDB(requested){
       ? candidateWindow.slice(rotationStart).concat(candidateWindow.slice(0,rotationStart))
       : candidateWindow;
     for(const base of orderedCandidates){
-      if(Date.now()-sourceStarted>46000||exactDetails>=MAX_EXACT_DETAILS)return null;
+      if(Date.now()-sourceStarted>46000||exactDetails>=MAX_EXACT_DETAILS){
+        if(sawResults&&!sourceOutage)advance();
+        return null;
+      }
       const key=window.matchPolicy?.key?.(base.title)||'';
       if(!key||known.has(key)||SESSION_SHOWN.has(base.title))continue;
       exactDetails++;
@@ -3385,6 +3435,7 @@ async function discoverVerifiedExactTMDB(requested){
       const genres=Array.isArray(d?.genres)&&d.genres.length?d.genres:discoverGenres;
       const countries=Array.isArray(d?.originCountries)?d.originCountries:[];
       if(!d && (!provider || !genres.length))continue;
+      if(!d&&prefs.countries.size)continue; // Origin unknown is not verified against country blocklist.
       if(countries.some(x=>prefs.countries.has(String(x).toUpperCase())))continue;
       if(genres.some(g=>prefs.genres.has(String(g).toLowerCase())))continue;
       if(realGenres.length&&!genres.some(g=>realGenres.includes(g)))continue;
@@ -3423,8 +3474,38 @@ async function discoverVerifiedExactTMDB(requested){
       };
     }
     }
+    if(sawResults&&!sourceOutage)advance();
+    else if(!sourceOutage&&offset>0)TMDB_DISCOVERY_CURSOR.set(cursorKey,0);
     return null;
 }
+
+// Secondary trusted TV index for ordinary adult series when TMDB's
+// source window is empty/unavailable. TVmaze does not certify audience ratings,
+// third-party streaming rights, mood or country of production; do not invoke
+// when those hard user preferences cannot be verified. Each selected result
+// carries a direct TVmaze source page with CC BY-SA attribution.
+async function discoverVerifiedTVMaze(requested) {
+    const service=window.MatchAppTVMazeSource;
+    if(!service?.discover)return null;
+    const cats=normCriteria(requested.cat),moods=normCriteria(requested.mood),
+          genres=normCriteria(requested.genre),decades=normCriteria(requested.decade),
+          platforms=normCriteria(requested.plat),ratings=normCriteria(requested.rating),
+          vibes=normCriteria(requested.vibe);
+    if(platforms.length||ratings.length||vibes.length||
+       cats.some(cat=>!['series','reality show'].includes(cat)))return null;
+    const prefs=currentPreferenceExclusions();
+    if(prefs.countries.size)return null; // source does not establish origin country
+    const known=new Set(window.matchPolicy?.known?.()||[]);
+    SESSION_SHOWN.forEach(title=>known.add(window.matchPolicy?.key?.(title)||service.clean(title).replace(/\s+/g,'')));
+    return service.discover({cats,moods,genres,decades,platform:platforms,ratings,vibes},{
+        known,key:window.matchPolicy?.key,blockedGenres:new Set([...prefs.genres].map(service.clean)),
+        blockedCountries:[...prefs.countries],moodFits:moodFitsVerified,
+        blockedText:text=>isBlockedText(text)||
+            (!cats.includes('Gospel & Faith')&&GOSPEL_TEXT_SIGNALS.some(w=>String(text).toLowerCase().includes(w))),
+        explicit:item=>window.MatchAppContentSafety?.isExplicit?.(item)===true
+    });
+}
+
 
 // ----------------------------------------------------
 // AI-PROPOSED, SOURCE-VERIFIED FRESH TITLE
@@ -3955,7 +4036,7 @@ function pruneUnstockedOptions() {
 
 // Source verification is deliberately longer than the old 12-second UI timer,
 // but remains bounded: a stalled provider cannot strand Match indefinitely.
-const MATCH_SOURCE_DEADLINES=Object.freeze({tmdb:50000,itunes:15000,ai:50000});
+const MATCH_SOURCE_DEADLINES=Object.freeze({tmdb:50000,tvmaze:12500,itunes:15000,ai:50000});
 async function withMatchSourceDeadline(work,ms){
     let timer;
     try{
@@ -4055,6 +4136,12 @@ window.triggerMatch = async function(isSpecificSearch = false) {
     // when requested, regional provider availability.
     if (!isSpecificSearch && !preflight) {
         try { preflight = await withMatchSourceDeadline(()=>discoverVerifiedExactTMDB(requested),MATCH_SOURCE_DEADLINES.tmdb); } catch (_) { preflight = null; }
+    }
+    // Independent, attributed TVmaze series search when TMDB misses; hard
+    // genre/mood exclusions survive and unknown provider/rating claims fail.
+    if (!isSpecificSearch && !preflight) {
+        try { preflight = await withMatchSourceDeadline(()=>discoverVerifiedTVMaze(requested),MATCH_SOURCE_DEADLINES.tvmaze); }
+        catch (_) { preflight = null; }
     }
     // iTunes is a real-source fallback only when no third-party platform,
     // source genre or blocked-source filter needs verification.
@@ -4491,6 +4578,20 @@ async function renderResult(selected, isSpecificSearch) {
     });
     globalMatchTitle = selected.title;
     window.globalMatchTitle = selected.title;
+    // Required license/source attribution for the optional independent TV tier.
+    // Remove the previous source credit when a subsequent result comes from
+    // another provider. Never claim the source verifies stream availability.
+    document.getElementById('ma-tvmaze-source')?.remove();
+    if(selected.source==='tvmaze-source-verified' &&
+       /^https:\/\/www\.tvmaze\.com\/shows\/\d+\//.test(String(selected._meta?.sourceUrl||''))){
+        const synopsis=document.getElementById('res-synopsis');
+        const credit=document.createElement('a');
+        credit.id='ma-tvmaze-source';
+        credit.href=selected._meta.sourceUrl;
+        credit.target='_blank';credit.rel='noopener noreferrer';
+        credit.textContent='TV information & original artwork: TVmaze (CC BY-SA) ↗';
+        if(synopsis)synopsis.insertAdjacentElement('afterend',credit);
+    }
     const titleEl = document.getElementById('res-title');
     if (titleEl) titleEl.innerText = sanitizeDisplayText(selected.title, ['title']);
     // Render a correctly labelled image before awaiting remote sources. An
@@ -4534,7 +4635,7 @@ async function renderResult(selected, isSpecificSearch) {
     // Verify the exact curated poster in parallel with optional rich metadata.
     // A slow metadata service must never leave a known original as an SVG.
     const originalMatchRun = Number(window.__matchappMatchRunId) || 0;
-    void getCuratedPoster(selected.title).then(url => {
+    if (selected.source !== 'tvmaze-source-verified') void getCuratedPoster(selected.title).then(url => {
         const current = () => window.globalMatchTitle === selected.title &&
             (Number(window.__matchappMatchRunId) || 0) === originalMatchRun &&
             firstPoster && firstPoster.isConnected;
@@ -4639,7 +4740,8 @@ async function renderResult(selected, isSpecificSearch) {
     // Hand-verified art wins over everything — no lookup can beat a known-correct
     // image, and for unreleased/app-exclusive titles a lookup actively returns
     // the wrong one.
-    const verified = window.currentMatchIdentity?.itunesAudio?null:getVerifiedPoster(selected.title);
+    const verified = (window.currentMatchIdentity?.itunesAudio || selected.source === 'tvmaze-source-verified')
+        ? null : getVerifiedPoster(selected.title);
 
     // The discovery engine already carries artwork/preview/store data — reuse it
     // instead of making a second network round-trip for the same title.
@@ -4705,7 +4807,7 @@ async function renderResult(selected, isSpecificSearch) {
         synopsis: selected.synopsis || matchHints.synopsis || ''
     });
     posterEl.onerror = null;
-    const originalShown = /^https:\/\/(?:image\.tmdb\.org|is\d+-ssl\.mzstatic\.com)\//i.test(posterEl.currentSrc || posterEl.src) &&
+    const originalShown = /^https:\/\/(?:image\.tmdb\.org|is\d+-ssl\.mzstatic\.com|static\.tvmaze\.com)\//i.test(posterEl.currentSrc || posterEl.src) &&
         posterEl.complete && posterEl.naturalWidth > 0;
     // Do not erase an original which exact-title enrichment already decoded
     // while a second provider was still resolving metadata.
@@ -4714,7 +4816,8 @@ async function renderResult(selected, isSpecificSearch) {
     window.globalMatchPoster = globalMatchPoster;
     // A generated result cover must still try the exact title's catalog image;
     // otherwise an unavailable first source becomes permanent for this match.
-    if ((!realCover || /^data:image\/svg\+xml/.test(realCover)) &&
+    if (selected.source !== 'tvmaze-source-verified' &&
+        (!realCover || /^data:image\/svg\+xml/.test(realCover)) &&
         window.MatchAppCatalogMedia?.recoverAdultPoster) {
         window.MatchAppCatalogMedia.recoverAdultPoster(posterEl, selected.title);
     }
@@ -4734,7 +4837,27 @@ async function renderResult(selected, isSpecificSearch) {
         probe.onerror = function() {
             // If the provider fails, keep the already-painted local cover
             // visible while recovering only this exact title's saved original.
-            window.MatchAppCatalogMedia?.recoverAdultPoster?.(posterEl, selected.title);
+            if (selected.source === 'tvmaze-source-verified') {
+                // The alternate comes from this SAME verified TVmaze show;
+                // a title-only catalog lookup could substitute another work.
+                const backup = window.MatchAppTVMazeSource?.artwork?.(selected._meta?.artworkFallback);
+                if (backup && backup !== realCover) {
+                    const alternate = new Image();
+                    alternate.onload = () => {
+                        if (alternate.naturalWidth > 0 && posterEl.isConnected &&
+                            window.globalMatchTitle === selected.title &&
+                            (Number(window.__matchappMatchRunId) || 0) === originalMatchRun) {
+                            posterEl.src = backup;
+                            globalMatchPoster = backup;
+                            window.globalMatchPoster = backup;
+                        }
+                    };
+                    alternate.onerror = () => {};
+                    alternate.src = backup;
+                }
+            } else {
+                window.MatchAppCatalogMedia?.recoverAdultPoster?.(posterEl, selected.title);
+            }
         };
         probe.src = realCover;
     }

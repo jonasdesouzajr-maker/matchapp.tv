@@ -48,6 +48,19 @@ test('full verified Apple search uses audiobook-only media and correct market',a
  assert.equal(u.searchParams.get('country'),'us');
  assert.equal(u.searchParams.get('limit'),'40');
 });
+test('official title-only audiobook search recovers an indexed edition without loosening author identity',async()=>{
+ const profile={...book,title:'Alternate Query Source Example',author:'Distinct Writer'};
+ const valid={...appleRow,collectionName:profile.title,artistName:profile.author};
+ let calls=[];
+ const mock=async url=>{
+  calls.push(new URL(String(url)).searchParams.get('term'));
+  return {ok:true,json:async()=>({results:calls.length===1?[{...valid,artistName:'Wrong Writer'}]:[valid]})};
+ };
+ const found=await audio.verify(profile,'US','paid',mock);
+ assert.equal(found.apple?.title,profile.title);
+ assert.equal(found.apple?.author,profile.author);
+ assert.deepEqual(calls,[profile.title+' '+profile.author,profile.title]);
+});
 test('eligible US free LibriVox verification does not mistakenly call paid stores',async()=>{
  let calls=[];
  const mock=async(url)=>{calls.push(String(url));return {ok:true,json:async()=>({books:[libriRow]})}};
@@ -116,7 +129,7 @@ test('completed zero-hit edition checks receive a short cache; source failures r
  const none=async()=>{calls++;return{ok:true,json:async()=>({results:[]})}};
  const first=await audio.verify(unknown,'AU','paid',none);
  const second=await audio.verify(unknown,'AU','paid',none);
- assert.equal(first.apple,null);assert.equal(second.apple,null);assert.equal(calls,1);
+ assert.equal(first.apple,null);assert.equal(second.apple,null);assert.equal(calls,2); // two successfully checked official Apple query shapes, short cached thereafter
  const failedBook={...unknown,title:'Transient Distinct Book'};
  let attempts=0;
  const fail=async()=>{attempts++;throw Error('upstream temporarily down')};
