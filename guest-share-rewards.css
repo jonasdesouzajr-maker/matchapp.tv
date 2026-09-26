@@ -1,0 +1,63 @@
+/* Adult guest share trial — reuse MatchApp's gold buttons and premium card.
+   This sheet/banner is intentionally scoped; Kids and ad placements untouched. */
+.ma-guest-trial-bar{
+ display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:9px;
+ box-sizing:border-box;width:100%;margin:0 0 16px;padding:12px 13px;
+ border:1px solid rgba(229,193,88,.52);border-radius:15px;
+ background:linear-gradient(130deg,rgba(73,39,94,.78),rgba(22,17,38,.88) 67%,rgba(79,55,18,.56));
+ box-shadow:inset 0 1px 0 rgba(255,246,213,.12);color:#fff;
+}
+.ma-guest-trial-bar[hidden]{display:none!important}
+.ma-guest-trial-count{font:800 12px/1.42 Inter,"Segoe UI",system-ui,sans-serif;color:#ffe5a2;flex:1 1 155px;min-width:0}
+button.ma-guest-trial-button{
+ width:auto!important;max-width:100%;min-height:42px;margin:0!important;
+ padding:10px 13px!important;border-radius:12px!important;font-size:12px!important;
+ line-height:1.3!important;font-weight:850!important;white-space:normal!important;
+ background:linear-gradient(135deg,#f9e8ab,#d6a64e)!important;color:#291c35!important;
+ flex:0 1 auto;
+}
+button.ma-guest-trial-button[hidden]{display:none!important}
+.ma-guest-trial-highlight{outline:2px solid #ffe59d;outline-offset:3px}
+#ebook-matcher-root [data-ebook-result]>.ma-guest-trial-bar{margin-bottom:15px}
+#chat-log>.chat-assistant>.ma-guest-trial-bar{margin-bottom:10px}
+#result-box>.ma-guest-trial-bar{position:relative;z-index:1;padding-right:72px}
+.ma-guest-social-backdrop{
+ position:fixed;inset:0;z-index:3400;padding:16px;
+ display:flex;align-items:center;justify-content:center;
+ background:rgba(5,4,11,.94);backdrop-filter:blur(13px);overflow:auto;
+}
+.ma-guest-social-backdrop[hidden]{display:none!important}
+.ma-guest-social-card{
+ position:relative;width:min(100%,460px);max-height:min(94dvh,730px);overflow:auto;
+ box-sizing:border-box;text-align:left;padding:23px!important;
+ border:1px solid rgba(229,193,88,.66)!important;
+ background:linear-gradient(155deg,#312041,#17121f)!important;
+}
+.ma-guest-social-card h3{color:#ffe7a9;text-align:center;margin:0 38px 8px 0;font-size:21px}
+.ma-guest-social-card p{font:500 12px/1.55 Inter,"Segoe UI",system-ui,sans-serif;color:#e5d9ef;margin:0 0 11px}
+.ma-guest-social-card .ma-guest-social-preview{
+ display:block;box-sizing:border-box;width:100%;min-height:90px;max-height:170px;
+ padding:13px;border-radius:13px;background:#110d17;color:#fff;border:1px solid #8b6d99;
+ font:500 13px/1.55 Inter,"Segoe UI",system-ui,sans-serif;resize:vertical;
+}
+.ma-guest-social-card button.gold-btn{min-height:43px;width:100%;border-radius:11px;font-size:13px;margin:12px 0 0}
+.ma-guest-social-close{
+ position:absolute;right:13px;top:12px;width:34px;height:34px;border:1px solid #937cb2;
+ border-radius:9px;background:rgba(255,255,255,.07);color:white;cursor:pointer
+}
+.ma-guest-social-options{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.ma-guest-social-options button{
+ flex:1 1 28%;min-height:40px;border:1px solid rgba(229,193,88,.5);border-radius:10px;
+ background:rgba(70,44,95,.83);color:#fff;font-weight:800;cursor:pointer
+}
+.ma-guest-social-options button:focus-visible,
+.ma-guest-social-card button:focus-visible,
+.ma-guest-trial-button:focus-visible{outline:3px solid white;outline-offset:2px}
+.ma-guest-social-feedback{color:#ffdf83!important}
+@media(max-width:520px){
+ .ma-guest-trial-bar{padding:11px;gap:8px}
+ #result-box>.ma-guest-trial-bar{padding-right:11px;margin-top:45px}
+ button.ma-guest-trial-button{flex:1 1 100%}
+ .ma-guest-social-card{padding:18px!important}
+}
+@media(prefers-reduced-motion:reduce){.ma-guest-trial-highlight{transition:none}}

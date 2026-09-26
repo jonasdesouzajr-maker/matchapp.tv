@@ -370,6 +370,7 @@ function renderMagazineResult(root,mag,p){
  '<div class="ebook-result-actions"><button type="button" class="ebook-save" data-ebook-save="'+esc(mag.id)+'">☆ '+esc(tr('save'))+'</button>'+
  '<button type="button" class="ebook-nope" data-ebook-nope="'+esc(mag.id)+'">× '+esc(tr('nope'))+'</button>'+
  '<button type="button" class="ebook-rematch" data-ebook-rematch>↻ '+esc(tr('another'))+'</button></div></div></div>';
+ window.MatchAppGuestShare?.decorateBookResult?.(host,mag.title,'magazine');
  const img=host.querySelector('[data-magazine-publisher-icon]');
  const fallback=host.querySelector('[data-magazine-brand]');
  if(img){
@@ -402,6 +403,7 @@ function renderResult(root,book,p,relaxed,audio,magazine){
   '</div>'+
   '<div class="ebook-result-actions"><button type="button" class="ebook-save" data-ebook-save="'+esc(book.id)+'">☆ '+esc(tr('save'))+'</button><button type="button" class="ebook-nope" data-ebook-nope="'+esc(book.id)+'">× '+esc(tr('nope'))+'</button><button type="button" class="ebook-rematch" data-ebook-rematch>↻ '+esc(tr('another'))+'</button></div>'+
   '</div></div>';
+ window.MatchAppGuestShare?.decorateBookResult?.(host,book.title,p.format);
  const img=host.querySelector('[data-ebook-cover]'),fall=host.querySelector('[data-ebook-cover-fallback]');
  hydrateCover(book,img,fall,audio);
  if(audio)paintAudio(root,book,audio);

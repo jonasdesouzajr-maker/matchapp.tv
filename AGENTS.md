@@ -20,6 +20,7 @@ Every design, layout, structural, or functional change MUST be simultaneously ad
   - If a change is made for **Desktop**, automatically adapt and engineer it so it looks beautiful, performs smoothly, and operates natively on **Smartphones**, **Tablets**, and the **Android App**.
   - If a change originates on **Smartphones**, propagate the exact design and functionality to **Desktop** and **Tablet** layouts.
 - **Mobile-First UX Optimization:** Smartphone and tablet layouts must never look like shrink-down desktop pages. Implement proper touch targets, fluid viewports, drawer/sheet mechanics, and thumb-friendly UI controls.
+- **Premium Button Consistency (permanent project rule):** Every NEW button or call to action must visually reuse MatchApp's existing gold/violet premium button language, typography, spacing, rounded shape, focus visibility, touch size, and responsive treatment. Never introduce a plain, inconsistent, or unrelated button style. Keep adjustments confined to newly requested surfaces and honor reduced motion.
 
 ---
 
