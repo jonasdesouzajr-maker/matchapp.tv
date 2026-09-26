@@ -1855,35 +1855,55 @@ window.handlePasswordReset = async function() {
     const email = (document.getElementById('forgot-email')?.value || '').trim();
     const msgEl = document.getElementById('auth-message');
     const btn = document.getElementById('btn-forgot');
-
     const show = (text, ok) => {
         if (!msgEl) return;
         msgEl.style.display = 'block';
-        msgEl.style.color = ok ? '#4ade80' : '#ff5252';
+        msgEl.style.color = ok ? '#4ade80' : '#ffb4b4';
         msgEl.style.background = ok ? 'rgba(74,222,128,0.1)' : 'rgba(255,0,0,0.1)';
-        msgEl.innerText = text;
+        msgEl.textContent = text;
     };
-
-    if (!email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
-        show(window.t ? t('auth.badEmail') : 'Please enter a valid email address.', false);
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+        show('Enter a valid email address to request a secure password link.', false);
         return;
     }
-    if (!supabaseClient) { show('Connection offline. Please try again shortly.', false); return; }
-
-    const original = btn ? btn.innerText : '';
-    if (btn) { btn.disabled = true; btn.style.opacity = '0.6'; btn.innerText = '…'; }
-
+    if (!supabaseClient?.auth?.resetPasswordForEmail) {
+        show('Account service is temporarily unavailable. Please try again.', false);
+        return;
+    }
+    // A second request can invalidate the first email's one-time link.
+    // Prevent racing double taps and tell people when they can retry.
+    if (window.__maPasswordResetPending) return;
+    const next = window.__maPasswordResetCooldownUntil || 0;
+    if (Date.now() < next) {
+        show('A reset was just requested. Check your inbox and spam folder before requesting another link.', true);
+        return;
+    }
+    window.__maPasswordResetPending = true;
+    const original = btn ? btn.textContent : '';
+    if (btn) { btn.disabled = true; btn.style.opacity = '0.6'; btn.textContent = 'Requesting…'; }
     try {
-        await supabaseClient.auth.resetPasswordForEmail(email, {
+        const {error} = await supabaseClient.auth.resetPasswordForEmail(email, {
             redirectTo: window.location.origin + '/reset.html'
         });
-    } catch (e) {
-        // Swallowed on purpose — see the note above about not revealing
-        // whether an address is registered.
+        if (error) {
+            if (error.status === 429 || /rate limit/i.test(error.message || '')) {
+                window.__maPasswordResetCooldownUntil = Date.now() + 60_000;
+                show('Too many requests. Check your inbox, then try again later.', false);
+            } else {
+                // Do not leak account existence, but don't report that the
+                // email was sent when the server explicitly rejected it.
+                show('The reset email could not be requested right now. Please try again or use Continue with Google if you joined with Google.', false);
+            }
+            return;
+        }
+        window.__maPasswordResetCooldownUntil = Date.now() + 60_000;
+        show('If that address belongs to an account, a password reset link has been requested. Check your inbox and spam folder. If you registered through Google, you can also sign in with Google.', true);
+    } catch (_) {
+        show('Could not reach the account service. Please try again.', false);
+    } finally {
+        window.__maPasswordResetPending = false;
+        if (btn) { btn.disabled = false; btn.style.opacity = '1'; btn.textContent = original; }
     }
-
-    show(window.t ? t('auth.resetSent') : "If that email has an account, a reset link is on its way. Check your inbox and spam folder.", true);
-    if (btn) { btn.disabled = false; btn.style.opacity = '1'; btn.innerText = original; }
 };
 
 // ----------------------------------------------------
