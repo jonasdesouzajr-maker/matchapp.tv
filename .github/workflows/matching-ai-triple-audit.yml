@@ -6,6 +6,10 @@ on:
       - 'kids/index.html'
       - 'tests/**'
       - 'tools/live-production-deep-matching.cjs'
+      - 'tools/live-production-smoke.cjs'
+      - 'discover.js'
+      - 'discover.html'
+      - 'supabase/functions/gemini-proxy/index.ts'
       - '.github/workflows/matching-ai-triple-audit.yml'
   push:
     branches: [main]
@@ -14,6 +18,10 @@ on:
       - 'kids/index.html'
       - 'tests/**'
       - 'tools/live-production-deep-matching.cjs'
+      - 'tools/live-production-smoke.cjs'
+      - 'discover.js'
+      - 'discover.html'
+      - 'supabase/functions/gemini-proxy/index.ts'
       - '.github/workflows/matching-ai-triple-audit.yml'
   workflow_dispatch:
 permissions:
