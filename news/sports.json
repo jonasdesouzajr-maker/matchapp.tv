@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-26T01:34:35.349Z",
+  "updated_at": "2026-09-26T14:58:49.162Z",
   "source_policy": "Explicitly authorized attributed original publisher RSS/Atom headlines; directly linked canonical URLs, no article-body/image republication and no betting guides",
   "items": [
     {
@@ -14,22 +14,6 @@
       "sport": "Sports",
       "event_type": "Sports",
       "published_at": "2026-09-23T13:48:27.000Z",
-      "timestamp_kind": "published",
-      "discovery_source": "Authorized publisher RSS/Atom",
-      "image": null
-    },
-    {
-      "id": "10acd399",
-      "title": "Game delays for lightning may be annoying, but they save lives – a sports meteorologist explains the risk",
-      "url": "https://theconversation.com/game-delays-for-lightning-may-be-annoying-but-they-save-lives-a-sports-meteorologist-explains-the-risk-292488",
-      "source": "The Conversation",
-      "source_domain": "theconversation.com",
-      "source_home": "https://theconversation.com",
-      "country": "GLOBAL",
-      "category": "sports",
-      "sport": "Sports",
-      "event_type": "Sports",
-      "published_at": "2026-09-22T12:48:39.000Z",
       "timestamp_kind": "published",
       "discovery_source": "Authorized publisher RSS/Atom",
       "image": null
