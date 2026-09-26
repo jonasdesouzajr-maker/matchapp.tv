@@ -3393,7 +3393,7 @@ html body.page-home #daily-match-checkin { padding: 11px 12px !important; }
             <div id="form-login" class="auth-form-section active"><div class="passkey-box"><button type="button" class="passkey-button" data-passkey-action="signin" data-passkey-text="signIn">Sign in with Face ID / fingerprint / PIN</button><p class="passkey-help" data-passkey-text="help">Use your device unlock to sign in again. MatchApp never receives your biometrics or PIN.</p><p class="passkey-status" data-passkey-status role="status" aria-live="polite"></p></div>
                 <input type="email" id="login-email" autocomplete="username webauthn" placeholder="Email Address" style="width: 100%; padding: 16px; margin-bottom: 15px; border-radius: 12px; border: 1px solid var(--gold); background: #000; color: #fff;">
                 <input type="password" id="login-password" autocomplete="current-password" placeholder="Password" style="width: 100%; padding: 16px; margin-bottom: 25px; border-radius: 12px; border: 1px solid var(--gold); background: #000; color: #fff;">
-                <button onclick="handleEmailLogin()" class="gold-btn" style="width: 100%; padding: 18px; font-size: 20px;">Log In</button>
+                <button type="button" id="btn-email-login" onclick="handleEmailLogin()" class="gold-btn" style="width: 100%; padding: 18px; font-size: 20px;">Log In</button>
                 <button type="button" class="auth-link-btn" onclick="showForgotPassword()" data-i18n="auth.forgot">Forgot your password?</button>
             </div>
 
@@ -3407,9 +3407,10 @@ html body.page-home #daily-match-checkin { padding: 11px 12px !important; }
                 <button type="button" class="auth-link-btn" onclick="switchAuthTab('login')" data-i18n="auth.backToLogin">← Back to log in</button>
             </div>
             <div id="form-signup" class="auth-form-section">
+                <input type="text" id="reg-full-name" name="name" autocomplete="name" maxlength="120" required aria-label="Full name" placeholder="Full Name" style="width: 100%; padding: 16px; margin-bottom: 15px; border-radius: 12px; border: 1px solid var(--gold); background: #000; color: #fff;">
                 <input type="email" id="reg-email" placeholder="Email Address" style="width: 100%; padding: 16px; margin-bottom: 15px; border-radius: 12px; border: 1px solid var(--gold); background: #000; color: #fff;">
                 <input type="password" id="reg-password" placeholder="Create Password" style="width: 100%; padding: 16px; margin-bottom: 25px; border-radius: 12px; border: 1px solid var(--gold); background: #000; color: #fff;">
-                <button onclick="handleEmailSignup()" class="gold-btn" style="width: 100%; padding: 18px; font-size: 20px;">Create Free Account</button>
+                <button type="button" id="btn-email-signup" onclick="handleEmailSignup()" class="gold-btn" style="width: 100%; padding: 18px; font-size: 20px;">Create Free Account</button>
             </div>
             <p id="auth-message" style="font-size: 15px; margin-top: 25px; display: none; font-weight: bold; text-align: center; padding: 12px; border-radius: 10px;"></p>
         </div>
