@@ -253,6 +253,7 @@ function init(){
   el('phone-auth-code')?.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();verifyCode();}});
   syncAvailability();
   document.addEventListener('matchapp:languagechange',applyText);
+  document.addEventListener('matchapp:langchange',applyText);
   window.addEventListener('focus',syncAvailability);
 }
 window.MatchAppPhoneAuth={syncAvailability,sendCode,verifyCode,useExistingCode};
