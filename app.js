@@ -1008,6 +1008,13 @@ window.fetchTitleMeta = fetchTitleMeta;
 async function getRealCoverImage(title, hints) {
     if (!title) return generatedCover(title, hints);
     const verified = getVerifiedPoster(title);
+    // Antártida's previously pinned CDN poster has intermittently disappeared.
+    // An exact numeric TMDB identity may now carry a replacement real poster.
+    // Never use a fuzzy title search or a poster from another Antarctic film.
+    if (verified && /^ant[aá]rtida$/i.test(String(title || ''))) {
+        const fresh = await getExactCatalogPoster(title);
+        if (fresh) return fresh;
+    }
     if (verified) return verified;
     const entry = typeof CONTENT_CATALOG !== 'undefined' ? CONTENT_CATALOG.find(e => e.title === title) : null;
     hints = { ...(entry || {}), ...(hints || {}) };
@@ -1253,6 +1260,15 @@ async function getCuratedPoster(title) {
 async function getExactCatalogPoster(title) {
     if (!title) return null;
     try {
+        if (catalogIdentityKey(title) === 'antartida' && typeof window.tmdbDetails === 'function') {
+            // Existing verified film identity from the official Antártida guide.
+            const exact = await window.tmdbDetails(1401757, 'movie', {priority:true});
+            if (Number(exact?.tmdbId) === 1401757 && exact.kind === 'movie' && exact.adult !== true) {
+                const art = String(exact.posterLarge || exact.posterOriginal || exact.poster || '');
+                if (/^https:\/\/image\.tmdb\.org\/t\/p\/(?:w\d+|original)\/[A-Za-z0-9_.-]+$/.test(art))
+                    return art;
+            }
+        }
         // A verified ID + year + source artwork is immediately usable without
         // waiting for a second API lookup, and still needs an image-load probe.
         const pinned = await getCuratedPoster(title);
