@@ -21,9 +21,20 @@
    return tokens.every(token=>names.has(token));
   }));
  }
+ // Exact known translations for the SAME source work, never fuzzy title
+ // matching. A translated edition can legitimately have a different title,
+ // but source author and work date verification still apply.
+ const WORK_TITLE_ALIASES=Object.freeze({
+  'the posthumous memoirs of bras cubas':['memorias postumas de bras cubas'],
+  'memorias postumas de bras cubas':['the posthumous memoirs of bras cubas']
+ });
+ const sameKnownWork=(wanted,actual)=>{
+  const a=normalize(wanted),b=normalize(actual);
+  return !!a&&(a===b||Array.isArray(WORK_TITLE_ALIASES[a])&&WORK_TITLE_ALIASES[a].includes(b));
+ };
  function exactWork(book,record){
   const title=normalize(book?.title),candidate=normalize(record?.title);
-  if(!title||title!==candidate||!exactAuthor(book?.author,record?.author_name))return false;
+  if(!sameKnownWork(title,candidate)||!exactAuthor(book?.author,record?.author_name))return false;
   const originalYear=Number(book?.year),candidateYear=Number(record?.first_publish_year);
   // Open Library works may have a missing first-publication date. When both
   // dates are present, reject a substantially different work sharing a title.
@@ -45,7 +56,7 @@
    const v=item?.volumeInfo;
    if(!v||!exactAuthor(book?.author,v.authors))continue;
    if(![v.title,v.subtitle?v.title+': '+v.subtitle:null]
-        .some(candidate=>normalize(candidate)===normalize(book?.title)))continue;
+        .some(candidate=>sameKnownWork(book?.title,candidate)))continue;
    const raw=v.imageLinks?.thumbnail||v.imageLinks?.smallThumbnail;
    if(typeof raw!=='string')continue;
    try{
