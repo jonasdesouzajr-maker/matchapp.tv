@@ -185,7 +185,7 @@ window.closeOutOfMatches = function () {
 
 async function checkDailyLimit(action = 'match') {
     if (!['match','ask_ai'].includes(action)) return false;
-    if (!supabaseClient) return anonLimitCheck();
+    if (!supabaseClient) return anonLimitCheck(action);
     try {
         // Wait for the SDK to restore the session before treating a new page as logged out.
         const sessionResult = await supabaseClient.auth.getSession();
