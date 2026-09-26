@@ -45,6 +45,7 @@
         form.appendChild(button);
     }
 
+    let nextResendAt = 0;
     async function resend() {
         const emailInput = document.getElementById('login-email');
         const alternate = document.getElementById('reg-email');
@@ -60,6 +61,11 @@
             return;
         }
         const button = document.getElementById('resend-confirmation-btn');
+        if (Date.now() < nextResendAt) {
+            const seconds = Math.ceil((nextResendAt - Date.now()) / 1000);
+            message('A confirmation was recently requested. Check your inbox and spam folder; retry in ' + seconds + ' seconds.', true);
+            return;
+        }
         if (button?.disabled) return;
         if (button) button.disabled = true;
         try {
@@ -69,10 +75,15 @@
                 options: { emailRedirectTo: 'https://matchapp.tv/' }
             });
             if (error && (error.status === 429 || error.code === 'over_email_send_rate_limit')) {
+                nextResendAt = Date.now() + 60_000;
                 message('Too many confirmation requests. Please try again later.', true);
-            } else if (error && error.status >= 500) {
-                message('Confirmation email could not be sent right now. Please try again.', true);
+            } else if (error) {
+                // Never claim delivery when Supabase rejected this send.
+                message(error.status >= 500
+                    ? 'Confirmation email could not be sent right now. Please try again.'
+                    : 'Confirmation could not be requested. Please try again or contact support.', true);
             } else {
+                nextResendAt = Date.now() + 60_000;
                 // Do not disclose whether an email has a MatchApp account.
                 message('If this address has an unconfirmed account, a new confirmation email is on its way. Use the newest link only.', false);
             }
