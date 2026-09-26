@@ -7,7 +7,7 @@ test('the displayed match and both saved/share snapshots start with real rendere
  const app=read('app.js');
  assert.match(app,/firstPoster\.src = firstCover;/,'The first match paint must already have a visible title-labelled image');
  assert.match(app,/if \(!originalShown\) posterEl\.src = localCover;/,'A slower provider cannot overwrite a decoded original');
- assert.match(app,/globalMatchPoster = localCover;\s*window\.globalMatchPoster = localCover;/);
+ assert.match(app,/globalMatchPoster = firstCover;\s*window\.globalMatchPoster = firstCover;/,'The first visible image and saved share preview stay synchronized');
  assert.match(app,/window\.setLoadedMatchPoster = function\(url,title\)/);
  assert.match(read('catalog-media.js'),/if\(typeof window\.setLoadedMatchPoster==='function'\)window\.setLoadedMatchPoster\(url,title\)/);
 });
