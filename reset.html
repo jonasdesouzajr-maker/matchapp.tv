@@ -145,7 +145,7 @@ window.savePassword = async function() {
         document.getElementById('sub').textContent = 'You can log in with your new password now.';
         show('All set — taking you back to MatchApp…', true);
         if (window.dataLayer) window.dataLayer.push({ event: 'password_reset_completed' });
-        setTimeout(() => { window.location.href = '/index.html?openAuth=1'; }, 2200);
+        setTimeout(() => { window.location.href = '/?signIn=1'; }, 2200);
     } catch (e) {
         show('Something went wrong. Please request a new reset link.', false);
         btn.disabled = false; btn.textContent = original;
