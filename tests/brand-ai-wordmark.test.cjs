@@ -18,7 +18,7 @@ test('adult Home paints integrated MatchApp Ai beside the unchanged official orb
  assert.equal(lockup.querySelector('.ma-tv'),null,'No legacy TV word remains');
  assert.equal(lockup.querySelector('.ma-ai-brand-button'),null,'No orphaned glow-button Ai remains');
  assert.equal(lockup.querySelectorAll('[data-ma-brand-ai]').length,1);
- assert.match(read('index.html'),/brand-headline\.css\?v=20260926-brandai1/);
+ assert.match(read('index.html'),/brand-headline\.css\?v=20260926-ai-energy2/);
  assert.match(read('index.html'),/matchapp-ia\.js\?v=20260926-brandai1/);
 });
 
@@ -75,13 +75,22 @@ test('signature metallic type stays bold, bounded, responsive and accessible on 
  assert.match(css,/linear-gradient\(104deg,#D4A8FF/);
  assert.match(css,/@keyframes maSignatureWordmarkGlint/);
  assert.match(css,/7\.6s ease-out 1 both/,'One-time shimmer only; never loop GPU filters');
- assert.doesNotMatch(css,/infinite/);
+ // User-approved AI energy is confined to the tiny branded letters.
+ assert.ok(css.includes('@keyframes maAiIntelligenceGlint'));
+ assert.ok(css.includes('@keyframes maAiSignalMote'));
+ assert.ok(css.includes('@keyframes maAiSignatureStar'));
+ assert.ok(css.includes('maAiIntelligenceGlint 13s'));
+ assert.ok(css.includes('maAiSignalMote 9.5s'));
+ assert.ok(css.includes('maAiSignatureStar 6.7s'));
+ assert.doesNotMatch(css,/animation:[^;]*filter[^;]*infinite/);
+ assert.ok(css.includes('@media(max-width:700px),(pointer:coarse)'));
+ assert.ok(css.includes('html.reduce-motion body.ebook-page'));
  assert.match(css,/@media\(max-width:420px\)/);
  assert.match(css,/@media\(max-width:350px\)/);
  assert.match(css,/@media\(prefers-reduced-motion:reduce\)/);
  assert.match(css,/html\.reduce-motion body\.page-home/);
  assert.match(css,/html body\.page-shell header\.app-header\.mh-topbox/);
- assert.match(read('page-shell.css'),/^@import url\("\/brand-headline\.css\?v=20260926-brandai1"\);/);
+ assert.match(read('page-shell.css'),/^@import url\("\/brand-headline\.css\?v=20260926-ai-energy2"\);/);
 });
 
 test('normal submitted Android package inherits web typography; Kids remains separate',()=>{

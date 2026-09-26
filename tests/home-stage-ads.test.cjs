@@ -82,3 +82,19 @@ test('homepage keeps the locked desktop rails and responsive mobile slots',()=>{
   const layout=read('home-8k-layout.css');
   assert.match(layout,/@media\(min-width:1180px\)[\s\S]*\.ad-banner-container\.ma-together-ad\{[\s\S]*min-height:148px!important[\s\S]*ins\.adsbygoogle\{[\s\S]*width:100%!important[\s\S]*min-height:120px!important/);
 });
+
+
+test('owner-approved Together sponsorship follows its fold and retains the exact manual inventory',()=>{
+ const {JSDOM}=require('jsdom');
+ const doc=new JSDOM(read('index.html')).window.document;
+ const together=doc.querySelector('.tg-entry');
+ const ad=doc.querySelector('.ma-together-ad');
+ assert.ok(together&&ad,'Both direct child sections must exist so existing ad runtime still finds this slot');
+ assert.equal(together.nextElementSibling,ad,'Full-width sponsored content must follow the Together card');
+ assert.equal(ad.nextElementSibling?.id,'premiere-disclosure','The next premium fold remains after the sponsored slot');
+ const ins=ad.querySelector('ins.adsbygoogle');
+ assert.ok(ins);
+ assert.equal(ins.getAttribute('data-ad-format'),'auto');
+ assert.equal(ins.getAttribute('data-full-width-responsive'),'true');
+ assert.equal(doc.querySelectorAll('ins.adsbygoogle').length,5,'Never duplicate or drop any protected slot');
+});

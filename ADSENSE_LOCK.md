@@ -57,3 +57,8 @@ Automated agents must not update the lock/test baselines to legitimize an AdSens
 ## Unlock rule
 
 Only a new, direct repository-owner instruction that explicitly revokes or modifies the **AdSense lock** authorizes a change. No inferred intent, redesign request, cleanup request, SEO task, monetization experiment, or bot-generated change counts as authorization.
+
+
+## Owner-authorized positional amendment — 2026-09-26
+
+The owner specifically directed that the **existing full-width Match Together sponsored unit** appear **immediately after its entire fold/card**, not above it. This is a **one-time, position-only exception** to the formerly locked DOM order. The new below-card position is locked from now on. Keep the same `ma-together-ad` host, sponsored disclosure, unchanged `ins.adsbygoogle`, publisher/client ID, slot ID, full-width auto format, reserved creative height, responsiveness, desktop rails, the other four manual slots and Auto ads unchanged. Neither `ads-init.js` nor the AdSense engine may change. The locked regression now enforces **Match Together card → sponsored unit → premiere** with the exact same existing inventory and styling checks. No general AdSense authorization follows from this amendment.

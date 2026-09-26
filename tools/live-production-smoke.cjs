@@ -107,6 +107,53 @@ async function aiQuestion(page,question,expected,label){
         JSON.stringify(portuguese));
       await page.evaluate(()=>window.setLanguage('en'));
     }
+    // Owner-authorized reordering: verify the ACTUAL page, not just HTML.
+    // The manual AdSense inventory and full-width creative are untouched.
+    const sponsor=await page.evaluate(()=>{
+      const card=document.querySelector('.tg-entry');
+      const ad=document.querySelector('.ma-together-ad');
+      const fold=document.querySelector('.lazy-head[data-fold-key="together"]');
+      const ins=ad?.querySelector('ins.adsbygoogle');
+      if(!card||!ad||!ins)return {found:false};
+      const a=ad.getBoundingClientRect(),c=card.getBoundingClientRect();
+      const visible=getComputedStyle(ad).display!=='none'&&getComputedStyle(card).display!=='none';
+      return {found:true,direct:card.nextElementSibling===ad,
+        header:!fold||fold.nextElementSibling===card,
+        onScreenOrder:!visible||a.top>=c.bottom-3,
+        responsive:ins.getAttribute('data-full-width-responsive')==='true',
+        format:ins.getAttribute('data-ad-format'),count:document.querySelectorAll('ins.adsbygoogle').length};
+    });
+    record('Match Together ad follows complete card '+device.name,
+      sponsor.found&&sponsor.direct&&sponsor.header&&sponsor.onScreenOrder&&
+      sponsor.responsive&&sponsor.format==='auto'&&sponsor.count===5,JSON.stringify(sponsor));
+    // Three bespoke, micro-sized intelligence effects, never a whole header
+    // animation. Touch devices receive one-pass text glint with the same sparks.
+    const aiEffects=await page.evaluate(()=>{
+      const ai=document.querySelector('#mh-topbox [data-ma-brand-ai]');
+      if(!ai)return {};
+      return {text:getComputedStyle(ai).animationName,
+       mote:getComputedStyle(ai,'::before').animationName,
+       star:getComputedStyle(ai,'::after').animationName};
+    });
+    record('subtle native CSS Ai signature '+device.name,
+      /maAiIntelligenceGlint|maSignatureWordmarkGlint/.test(aiEffects.text||'')&&
+      /maAiSignalMote/.test(aiEffects.mote||'')&&
+      /maAiSignatureStar/.test(aiEffects.star||''),JSON.stringify(aiEffects));
+    if(device.name==='desktop'){
+      const still=await browser.newContext({viewport:{width:1280,height:800},reducedMotion:'reduce'});
+      try{
+        const quiet=await still.newPage();
+        await observed(quiet,'/');
+        const motion=await quiet.evaluate(()=>{
+          const ai=document.querySelector('#mh-topbox [data-ma-brand-ai]');
+          return ai?{text:getComputedStyle(ai).animationName,
+            mote:getComputedStyle(ai,'::before').animationName,
+            star:getComputedStyle(ai,'::after').animationName}:{missing:true};
+        });
+        record('accessible AI branding respects reduced motion',
+          motion.text==='none'&&motion.mote==='none'&&motion.star==='none',JSON.stringify(motion));
+      }finally{await still.close();}
+    }
     const ebook=page.locator('#ebook-matcher-root');
     const placement=await page.evaluate(()=>{
       const form=document.getElementById('questionnaire-box'),root=document.getElementById('ebook-matcher-root');

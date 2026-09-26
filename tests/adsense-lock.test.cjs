@@ -90,7 +90,19 @@ test('desktop AdSense rails remain a locked matched pair before content',()=>{
 test('Match Together full-width sponsored unit is immutable',()=>{
   const html=read('index.html');
   assert.equal((html.match(/class="ad-banner-container premium-ad-frame ma-together-ad"/g)||[]).length,1);
-  assert.match(html,/MATCH TOGETHER SPONSORED UNIT — full-width responsive AdSense canvas[\s\S]*class="ad-banner-container premium-ad-frame ma-together-ad"[\s\S]*style="display:block; width:100%; min-height:120px;"[\s\S]*data-ad-format="auto"[\s\S]*data-full-width-responsive="true"[\s\S]*<!-- MATCH TOGETHER ENTRY -->/);
+  // Owner's express placement exception changes ONLY the order of this slot.
+  // The exact 5 units, IDs, creative attributes and responsive CSS remain locked.
+  const card=html.indexOf('<!-- MATCH TOGETHER ENTRY -->');
+  const ad=html.indexOf('<!-- MATCH TOGETHER SPONSORED UNIT — owner-approved position');
+  const premiere=html.indexOf('<details id="premiere-disclosure"',card);
+  assert.ok(card>0&&ad>card&&premiere>ad,'Together sponsored slot must follow its card, before premiere');
+  const segment=html.slice(card,premiere);
+  const together=segment.indexOf('href="/together.html" class="tg-entry"');
+  const banner=segment.indexOf('class="ad-banner-container premium-ad-frame ma-together-ad"');
+  assert.ok(together>=0&&banner>together,'Sponsor must follow the complete Together anchor');
+  assert.ok(segment.includes('style="display:block; width:100%; min-height:120px;"'));
+  assert.ok(segment.includes('data-ad-format="auto"'));
+  assert.ok(segment.includes('data-full-width-responsive="true"'));
 });
 
 test('manual AdSense initializer is byte-for-byte locked',()=>{
