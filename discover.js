@@ -223,7 +223,7 @@ function requestedMovieTitle(question) {
         if(found)return found.title;
     }
     // Common fact syntax: "director and release year of Spirited Away".
-    const named=String(question).match(/\b(?:of|for|about|called|named)\s+([A-Z][\p{L}\p{N}'-]+(?:\s+[A-Z][\p{L}\p{N}'-]+){1,5})/u);
+    const named=String(question).match(/\b(?:film|movie|series|of|for|about|called|named)\s+([A-Z][\p{L}\p{N}'-]+(?:\s+[A-Z][\p{L}\p{N}'-]+){1,5})/u);
     return named?named[1].trim():'';
 }
 async function sourceVerifiedFilmFacts(question) {
