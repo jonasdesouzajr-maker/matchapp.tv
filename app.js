@@ -3083,6 +3083,7 @@ async function discoverFromITunes(cat, mood, vibe, decade, rating) {
     // Preserve the whole rating set — it is the one field where a stricter
     // pick must not be silently dropped.
     const ratingSet = normCriteria(rating);
+    const selectedMoods=normCriteria(mood);
     cat = one(cat); mood = one(mood); vibe = one(vibe); decade = one(decade);
     rating = ratingSet.length ? ratingSet[0] : 'any';
 
@@ -3093,7 +3094,10 @@ async function discoverFromITunes(cat, mood, vibe, decade, rating) {
     // summaries app cover on a drama title" bug). Don't even try.
     // Apple's song catalog cannot establish the identity or availability of
     // a Spotify playlist. Never silently substitute one for the other.
-    if ((cat || '').toLowerCase() === 'vertical micro-drama' || cat === 'Spotify playlist') return null;
+    // An Apple music record is not proof that a specific song exists on
+    // Spotify. Preserve the user's requested service instead of relabeling.
+    if ((cat || '').toLowerCase() === 'vertical micro-drama' ||
+        cat === 'Spotify playlist' || cat === 'Spotify single') return null;
 
     const parts = [];
     if (decade && decade !== 'any' && DECADE_TERMS[decade]) parts.push(DECADE_TERMS[decade]);
@@ -3145,9 +3149,13 @@ async function discoverFromITunes(cat, mood, vibe, decade, rating) {
             if (!genreHit.length) return null;
             pool = genreHit;
         }
-        if (mood === 'cozy comfort watch') {
-            pool = pool.filter(r =>
-                !/thriller|horror|war|crime|drama/i.test(String(r.primaryGenreName || '')) &&
+        if (selectedMoods.includes('cozy comfort watch')) {
+            // The safety constraint survives multiple acceptable moods: when
+            // romantic + Comfort were both selected, an earlier single-mood
+            // iTunes query could admit a romantic thriller.
+            pool = pool.filter(r=>
+                /family|comedy/i.test(String(r.primaryGenreName||'')) &&
+                !/thriller|horror|war|crime|drama/i.test(String(r.primaryGenreName||'')) &&
                 !COZY_HEAVY_TEXT.test([r.longDescription,r.shortDescription].filter(Boolean).join(' ')));
             if (!pool.length) return null;
         }
@@ -3261,14 +3269,14 @@ function moodFitsVerified(wanted,genres,overview){
     if(!wanted.length)return true;
     const gs=Array.isArray(genres)?genres:[];
     const text=String(overview||'');
+    // A hard incompatibility is ANDed across all selected moods before
+    // choosing an acceptable positive mood. Another selected mood must never
+    // bypass Comfort's no-Thriller/no-heavy-story contract.
+    if(wanted.includes('cozy comfort watch')&&
+       (gs.some(g=>COZY_BLOCKED_GENRES.has(g))||COZY_HEAVY_TEXT.test(text)))return false;
     return wanted.some(m=>{
       const mapped=MOOD_SOURCE_GENRES[m]||[];
-      if(!mapped.length||!mapped.some(g=>gs.includes(g)))return false;
-      if(m==='cozy comfort watch'){
-        if(gs.some(g=>COZY_BLOCKED_GENRES.has(g)))return false;
-        if(COZY_HEAVY_TEXT.test(text))return false;
-      }
-      return true;
+      return mapped.length>0&&mapped.some(g=>gs.includes(g));
     });
 }
 function canonicalProviderName(value){

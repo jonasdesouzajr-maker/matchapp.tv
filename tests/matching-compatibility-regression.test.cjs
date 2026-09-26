@@ -47,7 +47,7 @@ test('Comfort is also a strict recommendation gate, not only a disabled chip',()
  assert.equal(policy.incompatible('cozy comfort watch',{mood:[],genre:['Thriller']}),true);
  const app=read('app.js');
  assert(!app.includes("['broaden-mood'"),'fallback must not relax the mood');
- assert(app.includes("if (mood === 'cozy comfort watch')"),'iTunes must block heavy themes');
+ assert(app.includes("if (selectedMoods.includes('cozy comfort watch'))"),'iTunes must block heavy themes');
  dom.window.close();
 });
 test('Bookworms Home and the shared audiobook form disable contradictory moods and genres',async()=>{

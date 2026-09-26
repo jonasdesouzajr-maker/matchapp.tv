@@ -15,7 +15,7 @@ test('adult movie/TV source discovery expands only after a bounded identity-chec
 });
 test('iTunes music and podcast expansion uses legal exact media, country, explicit and Apple original',()=>{
  const app=read('app.js'),media=read('catalog-media.js');
- assert.match(app,/cat === 'Spotify playlist'\) return null/);
+ assert.match(app,/cat === 'Spotify playlist' \|\| cat === 'Spotify single'\) return null/);
  assert.match(app,/entity=cat==='music album'\?'album'/);
  assert.match(app,/cat==='podcast'\?'podcast'/);
  assert.match(app,/limit=\$\{limit\}&country=\$\{encodeURIComponent\(region\)\}&explicit=No/);
