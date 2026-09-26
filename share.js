@@ -59,13 +59,9 @@ async function grantShareReward() {
             return { ok: false, left: shareRewardsLeft(), serverUnavailable: true };
         }
     }
-    // Adult guests share one two-reward, non-resetting budget with Bookworms
-    // and Ask AI. The shared engine persists +1 Match as match_guestBonusMatches.
-    // Never grant a bonus for opening a social tab or copying a caption.
-    if (!window.MatchAppGuestShare?.claim) return {ok:false,left:0};
-    const token='watch:'+String(window.__matchappMatchRunId||window.globalMatchTitle||'unknown');
-    const claimed=window.MatchAppGuestShare.claim('match',token);
-    return {ok:claimed.ok,left:claimed.left,matches:claimed.matches};
+    // Guests are rewarded ONLY after independent official public-post proof
+    // through guest-social-proof. A native handoff is not publication proof.
+    return {ok:false,left:shareRewardsLeft(),verificationRequired:true};
 
 }
 
@@ -201,6 +197,21 @@ window.openShareSheet = async function() {
         return;
     }
 
+    // Adult guest sharing uses a fresh server-issued code and an actual
+    // public-post check. Member rewards keep their original server RPC.
+    if (!window.isUserLoggedIn) {
+        if (window.MatchAppGuestShare?.open) {
+            window.MatchAppGuestShare.open({
+                kind:'match',title,
+                token:'watch:'+String(window.__matchappMatchRunId||title),
+                message:shareText(),
+                url:'https://matchapp.tv/',
+                onNext:()=>window.MatchAppGuestShare.matchReward()
+            });
+        } else window.showToast?.('Verified public-post sharing is currently unavailable.',true);
+        return;
+    }
+
     const modal = document.getElementById('share-modal');
     const preview = document.getElementById('share-preview');
     const statusEl = document.getElementById('share-reward-status');
@@ -263,6 +274,7 @@ function shareText() {
 
 // Native share sheet (mobile) — attaches the generated image when supported.
 window.shareNative = async function() {
+    if (!window.isUserLoggedIn) return window.openShareSheet();
     const canvas = window._shareCanvas;
     const text = shareText();
     try {
@@ -345,6 +357,7 @@ function markExternalShareStarted(network) {
 // Web intents therefore require an explicit confirmation after the visitor
 // returns instead of silently awarding a Match for opening a tab or copying text.
 window.shareTo = function(network) {
+    if (!window.isUserLoggedIn) return window.openShareSheet();
     const text = encodeURIComponent(shareText());
     const url = encodeURIComponent(SHARE_URL);
     const map = {
