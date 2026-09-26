@@ -1,0 +1,21 @@
+/* Adult Home sign-up bonus is visible only at the guest action limit. */
+#ma-welcome-offer[hidden]{display:none!important}
+#ma-welcome-offer{
+  margin:0 0 18px;padding:18px 16px 16px;overflow:hidden;
+  border:1px solid rgba(246,210,113,.77);border-radius:18px;
+  background:linear-gradient(150deg,rgba(77,49,112,.92),rgba(24,18,37,.97) 55%,rgba(59,40,17,.96));
+  box-shadow:inset 0 1px rgba(255,247,201,.25),0 10px 35px rgba(0,0,0,.21);
+  color:#fff;text-align:center;
+}
+#ma-bonus-eyebrow{margin:0 0 5px;color:#ffe49c;font-size:10px;line-height:1.5;letter-spacing:.12em;font-weight:850}
+#ma-bonus-headline{font-size:clamp(17px,3.7vw,22px);line-height:1.23;margin:0 0 13px;color:#fff;font-weight:850;letter-spacing:-.02em}
+.ma-bonus-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin:0 auto 12px;max-width:380px}
+.ma-bonus-figure{min-width:0;padding:10px 7px 8px;border:1px solid rgba(255,227,149,.42);background:rgba(0,0,0,.28);border-radius:14px}
+.ma-bonus-number{display:block;color:#ffdc82;font-weight:900;font-size:clamp(28px,7vw,40px);line-height:1.08;letter-spacing:-.04em}
+.ma-bonus-label{display:block;margin-top:3px;font-size:clamp(10px,2.8vw,12px);font-weight:750;color:#fff}
+#ma-bonus-description{font-size:13px;line-height:1.45;color:#f3e9ff;margin:0 auto 13px;max-width:380px}
+#ma-bonus-register{display:block;min-height:44px;width:100%;margin:auto;padding:11px 12px;max-width:380px;border:0;border-radius:12px;background:linear-gradient(125deg,#ffecad,#e9bc51);color:#241628;font-weight:900;font-size:14px;cursor:pointer;box-shadow:0 4px 19px #e9bc5130}
+#ma-bonus-register:focus-visible{outline:3px solid #fff;outline-offset:3px}
+#ma-bonus-note{font-size:11px;line-height:1.4;color:#ebddfb;margin:10px 0 0}
+#main-auth-modal.ma-welcome-modal>.premium-card{max-height:calc(100dvh - 32px);max-height:calc(100svh - 32px);overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin}
+@media(prefers-reduced-motion:reduce){#ma-bonus-register{transition:none}}

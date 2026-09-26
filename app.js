@@ -112,9 +112,16 @@ function anonLimitCheck(action = 'match') {
 
 function showQuotaMessage(kind, status, action = 'match') {
     if (kind === 'anon') {
-        if (window.showToast) showToast("🔒 That's your 3 included AI actions for today — register free to unlock 5 daily.");
-        else alert("🔒 You've used your 3 included AI actions today!\n\nRegister for FREE to unlock 5 daily.");
-        if (window.openAuthModal) window.openAuthModal();
+        // Show the offer only when the shared 3-action guest allowance is
+        // genuinely exhausted. Never promise the bonus to a signed-in member.
+        if (window.MatchAppRegistrationWelcome?.openOffer) {
+            window.MatchAppRegistrationWelcome.openOffer();
+        } else {
+            // Discovery / e-book pages without the Home registration modal
+            // return to that same modal with the offer preserved.
+            window.location.assign('/?registrationOffer=1');
+        }
+        return;
     } else if (action === 'ask_ai') {
         if (window.showToast) showToast(`You've used all ${status?.limit ?? (isUserLoggedIn ? 5 : ANON_DAILY_LIMIT)} included AI actions today. Ask AI credits let you keep asking without changing your Match balance.`);
         return;
@@ -178,7 +185,7 @@ window.closeOutOfMatches = function () {
 
 async function checkDailyLimit(action = 'match') {
     if (!['match','ask_ai'].includes(action)) return false;
-    if (!supabaseClient) return anonLimitCheck();
+    if (!supabaseClient) return anonLimitCheck(action);
     try {
         // Wait for the SDK to restore the session before treating a new page as logged out.
         const sessionResult = await supabaseClient.auth.getSession();
@@ -2420,6 +2427,31 @@ function promptProfileCompletion(missing) {
     bar.querySelector('.profile-nudge-x').onclick = () => bar.remove();
 }
 
+// Separate non-expiring welcome balances are created by a verified-user-only
+// Supabase RPC. The browser never selects reward amounts or eligible user IDs.
+const registrationWelcomeAttempted = new Set();
+async function claimRegistrationWelcomeBonus(user) {
+    if (!user?.id || registrationWelcomeAttempted.has(user.id) || !supabaseClient?.rpc) return;
+    registrationWelcomeAttempted.add(user.id);
+    try {
+        const { data, error } = await supabaseClient.rpc('claim_registration_welcome_bonus');
+        if (error || !data?.ok) throw error || new Error('Welcome grant was not acknowledged');
+        // A new account can sign in before verifying, so allow a later retry.
+        if (data.reason === 'verification_required') registrationWelcomeAttempted.delete(user.id);
+        if (data.granted === true) {
+            window.renderCreditBadge?.(data.credits);
+            await window.refreshQuotaStatus?.();
+            window.showToast?.('🎁 Welcome! +10 Extra Matches and +10 Ask AI prompts are now in your account.');
+            document.dispatchEvent(new CustomEvent('matchapp:welcomecredits',{
+                detail:{extraMatches:10,askAiCredits:10}
+            }));
+        }
+    } catch (error) {
+        registrationWelcomeAttempted.delete(user.id);
+        console.warn('Welcome grant will retry on a verified login:',error?.message||error);
+    }
+}
+
 let profileAuthEvent = 0;
 if (supabaseClient?.auth && typeof supabaseClient.auth.onAuthStateChange === 'function') {
     supabaseClient.auth.onAuthStateChange((event, session) => {
@@ -2440,6 +2472,9 @@ if (supabaseClient?.auth && typeof supabaseClient.auth.onAuthStateChange === 'fu
             // so native passkey sign-in and session refresh cannot deadlock.
             setTimeout(async () => {
                 if(authEvent!==profileAuthEvent)return;
+                // The server grant is independent of profile loading and
+                // idempotent across tabs, providers and future sign-ins.
+                void claimRegistrationWelcomeBonus(session.user);
                 await hydrateProfileFromAuth(session.user);
                 if (window.refreshQuotaStatus) window.refreshQuotaStatus();
             }, 0);

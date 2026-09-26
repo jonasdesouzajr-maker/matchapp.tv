@@ -1,10 +1,10 @@
 {
-  "version": "2026.09.26.5",
+  "version": "2026.09.26.6",
   "date": "2026-09-26",
   "functional": true,
   "notes": {
-    "en": "The SMS verification link now opens the phone confirmation screen directly, including recovery if SMS sign-in is unavailable. Email, profile and existing account security are unchanged.",
-    "pt-BR": "O link de verificação por SMS agora abre diretamente a tela de confirmação do telefone, inclusive quando o acesso por SMS estiver indisponível. A segurança do e-mail, perfil e contas existentes permanece intacta.",
+    "en": "After all 3 shared guest AI actions are used, present a premium free registration offer: +10 non-expiring Extra Matches and +10 Ask AI prompts. Both are granted once by Supabase to newly verified accounts, on top of existing daily registration allowances; works for email, SMS and social signup.",
+    "pt-BR": "Após as 3 ações gratuitas compartilhadas de visitante, oferecer cadastro grátis com +10 Matches extras e +10 mensagens de Ask AI, sem expiração. O Supabase concede os dois bônus uma única vez a novas contas verificadas, além dos limites diários existentes, via e-mail, SMS ou login social.",
     "es": "Nuevo: Match E-books IA para lectores. Combina por estado de ánimo, género, ritmo, extensión, época y acceso gratis o de pago, con fuentes gratuitas legales y tiendas oficiales.",
     "fr": "Nouveau : Match E-books Ai pour les lecteurs, avec humeur, genre, rythme, longueur, époque, accès gratuit ou payant, sources gratuites légales et boutiques officielles.",
     "de": "Neu: Match E-books Ai für Leser – nach Stimmung, Genre, Tempo, Länge, Epoche und kostenlosem oder kostenpflichtigem Zugang, mit legalen Gratisquellen und offiziellen Shops.",
