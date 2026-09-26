@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160" role="img" aria-labelledby="title desc">
+  <title id="title">MatchApp Bookworms crest</title>
+  <desc id="desc">Custom gold-lined open book inside an amethyst halo, with a MatchApp play spark rising from its pages</desc>
+  <defs>
+    <linearGradient id="plum" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#64309C"/>
+      <stop offset=".48" stop-color="#391B6F"/>
+      <stop offset="1" stop-color="#1B103A"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFF1B6"/>
+      <stop offset=".45" stop-color="#F7C95C"/>
+      <stop offset="1" stop-color="#A96A24"/>
+    </linearGradient>
+    <linearGradient id="pages" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFF6D6"/>
+      <stop offset="1" stop-color="#D0B6FB"/>
+    </linearGradient>
+    <filter id="glow" x="-45%" y="-45%" width="190%" height="190%">
+      <feGaussianBlur stdDeviation="2.3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <!-- MatchApp's signature halo and a single sweep: not a stock book emoji. -->
+  <rect x="8" y="8" width="144" height="144" rx="39" fill="url(#plum)" stroke="url(#gold)" stroke-width="3"/>
+  <path d="M30 111c18 9 36 11 50 4 14 7 32 5 50-4" fill="none" stroke="#AF74E1" stroke-opacity=".5" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="80" cy="80" r="60" fill="none" stroke="#F4C66C" stroke-opacity=".32" stroke-width="1.8" stroke-dasharray="2 7"/>
+  <!-- Original open-book mark: curved double page folds meet at a sharp gold spine. -->
+  <path d="M27 52c17-9 35-8 53 2v58c-16-10-33-12-53-3Z" fill="#251347" stroke="url(#gold)" stroke-width="3.7" stroke-linejoin="round"/>
+  <path d="M133 52c-17-9-35-8-53 2v58c16-10 33-12 53-3Z" fill="#31195A" stroke="url(#gold)" stroke-width="3.7" stroke-linejoin="round"/>
+  <path d="M35 61c14-5 26-3 39 3M35 74c15-4 28-2 39 4M125 75c-15-5-28-2-39 4" fill="none" stroke="url(#pages)" stroke-opacity=".8" stroke-width="2.6" stroke-linecap="round"/>
+  <path d="M80 54v58" stroke="url(#gold)" stroke-width="4" stroke-linecap="round"/>
+  <!-- Star/play monogram grows out of the right page rather than floating emoji. -->
+  <path d="M106 24l6 19 19 6-19 6-6 19-6-19-19-6 19-6Z" fill="url(#gold)" filter="url(#glow)"/>
+  <path d="M103 40v18l14-9Z" fill="#341858" stroke="#FFF1BF" stroke-width="1.2" stroke-linejoin="round"/>
+  <path d="M39 118c21 6 31 8 41 4 10 4 22 2 41-4" fill="none" stroke="url(#gold)" stroke-opacity=".85" stroke-width="2.7" stroke-linecap="round"/>
+</svg>
