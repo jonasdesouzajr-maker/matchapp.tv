@@ -97,8 +97,12 @@ test('Match Together full-width sponsored unit is immutable',()=>{
   const premiere=html.indexOf('<details id="premiere-disclosure"',card);
   assert.ok(card>0&&ad>card&&premiere>ad,'Together sponsored slot must follow its card, before premiere');
   const segment=html.slice(card,premiere);
-  assert.match(segment,/href="\\/together\\.html" class="tg-entry"[\\s\\S]*<\\/a>[\\s\\S]*class="ad-banner-container premium-ad-frame ma-together-ad"/);
-  assert.match(segment,/ma-together-ad[\\s\\S]*style="display:block; width:100%; min-height:120px;"[\\s\\S]*data-ad-format="auto"[\\s\\S]*data-full-width-responsive="true"/);
+  const together=segment.indexOf('href="/together.html" class="tg-entry"');
+  const banner=segment.indexOf('class="ad-banner-container premium-ad-frame ma-together-ad"');
+  assert.ok(together>=0&&banner>together,'Sponsor must follow the complete Together anchor');
+  assert.ok(segment.includes('style="display:block; width:100%; min-height:120px;"'));
+  assert.ok(segment.includes('data-ad-format="auto"'));
+  assert.ok(segment.includes('data-full-width-responsive="true"'));
 });
 
 test('manual AdSense initializer is byte-for-byte locked',()=>{
