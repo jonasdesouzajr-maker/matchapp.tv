@@ -414,21 +414,16 @@
     try{await window.KidsAccount?.prepare();}catch(_){document.getElementById('kids-match-status').textContent=tr('quotaError');return;}
     const mood=document.getElementById('kids-match-mood').value,format=document.getElementById('kids-match-format').value,era=document.getElementById('kids-match-era').value;
     const safePool=allowedLibrary(currentAge());
+    // Age, mood and format are HARD boundaries. Only the decade may broaden.
+    // Never substitute a different type of show or unrelated mood just to
+    // make three cards. An impossible combination gets an actionable hint.
     const fits=(item,stage)=>{
-      if(stage.mood&&mood!=='all'&&!item.cats.includes(mood))return false;
-      if(stage.format&&format!=='all'&&item.type!==format)return false;
+      if(mood!=='all'&&!item.cats.includes(mood))return false;
+      if(format!=='all'&&item.type!==format)return false;
       if(stage.era&&era!=='all'&&Math.floor(Number(item.year)/10)*10!==Number(era))return false;
       return true;
     };
-    // Age approval is NEVER relaxed. Secondary taste constraints are widened
-    // only as needed so a valid Kids selection can never end in a dead-end.
-    const stages=[
-      {mood:true,format:true,era:true},
-      {mood:true,format:true,era:false},
-      {mood:true,format:false,era:false},
-      {mood:false,format:true,era:false},
-      {mood:false,format:false,era:false}
-    ];
+    const stages=[{era:true},{era:false}];
     const chosen=[],seen=new Set();
     for(const stage of stages){
       const source=safePool.filter(item=>
@@ -447,10 +442,14 @@
     // may broaden the decade, but mood and format remain hard boundaries.
     // If the unseen approved pool is exhausted, show fewer choices/noMatch;
     // never substitute an unrelated Kids title.
-    const minimumTarget=Math.min(3,safePool.length);
     matchPicks=chosen.slice(0,3);previousMatch=matchPicks.map(x=>x.title);
     renderMatchResults();
-    document.getElementById('kids-match-status').textContent=matchPicks.length?tr('matchReady'):tr('noMatch');
+    const refineHint=lang==='pt-BR'
+      ?'Ainda não encontramos títulos aprovados com essa combinação. Tente outro humor ou formato.'
+      :lang==='es'
+      ?'Todavía no encontramos títulos aprobados con esa combinación. Prueba otro estado de ánimo o formato.'
+      :'No age-approved picks match this exact mood and format yet. Try another mood or format.';
+    document.getElementById('kids-match-status').textContent=matchPicks.length?tr('matchReady'):refineHint;
     document.getElementById('kids-match-submit').textContent=tr('matchAgain');
     if(matchPicks.length)await openWatch(slug(matchPicks[0]),document.getElementById('kids-match-submit'));
   }
