@@ -7,7 +7,7 @@ const read=p=>fs.readFileSync(path.join(root,p),'utf8');
 
 test('grown-up Home loads E-books Ai data, current suggestions and matcher in safe order',()=>{
  const html=read('index.html');
- const catalog=html.indexOf('/ebooks/catalog.js?v=20260924-ebooks2');
+ const catalog=html.indexOf('/ebooks/catalog.js?v=20260926-curation1');
  const top=html.indexOf('/ebooks/top-ebooks.js?v=20260924-top1');
  const audio=html.indexOf('/ebooks/audiobooks.js?v=20260926-curation1');
  const cover=html.indexOf('/ebooks/cover-identity.js?v=20260925-original2');
