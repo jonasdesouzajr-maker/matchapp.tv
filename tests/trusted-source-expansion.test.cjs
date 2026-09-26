@@ -31,6 +31,11 @@ test('independently attributed TV source requires genuine source URL, poster and
  assert.equal(tv.select([{...show,genres:['Thriller']}],criteria,checks),null);
  assert.equal(tv.select([{...show,summary:'<p>A serial killer thriller terrorizes the peaceful village all week.</p>'}],criteria,checks),null);
  assert.equal(tv.select([show],criteria,{...checks,known:new Set(['quietescapes'])}),null);
+ const accented={...show,name:'Café Escapes'};
+ const sharedKey=s=>String(s).normalize('NFKC').toLowerCase().replace(/[^\\p{L}\\p{N}]/gu,'');
+ assert.equal(tv.select([accented],criteria,{...checks,
+  known:new Set([sharedKey(accented.name)]),key:sharedKey}),null,
+  'accented titles excluded by the shared saved/disliked policy cannot reappear through a secondary source');
  assert.equal(tv.select([show],{...criteria,ratings:['all ages family friendly']},checks),null);
  assert.equal(tv.select([show],{...criteria,platform:['Netflix']},checks),null);
  assert.equal(tv.select([show],{...criteria,cats:['movie']},checks),null);
@@ -137,6 +142,7 @@ test('only adult pages load independent source fallbacks; Kids manual-reviewed l
  assert(home.indexOf('/ebooks/gutenberg-source.js')>=0&&home.indexOf('/ebooks/gutenberg-source.js')<home.indexOf('/ebooks/ebook-matcher.js'));
  assert(!kids.includes('tvmaze-source.js')&&!kids.includes('live-book-source.js')&&!kids.includes('gutenberg-source.js'));
  assert(app.includes('discoverVerifiedTVMaze')&&app.includes('moodFits:moodFitsVerified'));
+ assert(app.includes('known,key:window.matchPolicy?.key'), 'alternate sources must share the exact persisted title-exclusion key');
  assert(app.includes("if (selected.source !== 'tvmaze-source-verified') void getCuratedPoster(selected.title)"),
   'a same-name curated title must never overwrite the independent TV source image');
  assert(app.includes("|| selected.source === 'tvmaze-source-verified'"),
