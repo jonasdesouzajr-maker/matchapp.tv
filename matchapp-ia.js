@@ -273,9 +273,15 @@ function mountHome(){
  // Existing IDs, handlers, matching state and feature logic are preserved.
  let anchor=concierge;[loading,result,week,swift,events,how,aiExplainer].forEach(n=>{if(n){after(anchor,n);anchor=n}});
  const ads=qsa('.container>.ad-banner-container',container);ads.forEach(ad=>ad.classList.add('ma-inline-ad'));
- if(ads[1]&&week)after(week,ads[1]);
+ // The Together ad is attached to the entire fold, not relocated with editorial ads.
+ // lazy.js injects the fold heading immediately BEFORE .tg-entry at runtime.
  if(ads[2])after(events||swift||anchor,ads[2]);
- const tg=qs('.tg-entry');if(tg)tg.hidden=true;
+ const tg=qs('.tg-entry');
+ if(tg){
+   tg.hidden=true;
+   const togetherAd=qs('.ma-together-ad',container);
+   if(togetherAd)after(tg,togetherAd);
+ }
  if(trending){
    const h=qs('h4',trending);if(h)h.textContent=t.latest;
    const seen=new Set();qsa('.marquee-item',trending).forEach(card=>{const name=(qs('img',card)?.alt||'').trim().toLowerCase();if(name&&seen.has(name))card.remove();else if(name)seen.add(name)});
