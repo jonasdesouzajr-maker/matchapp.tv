@@ -19,8 +19,8 @@ test('standalone Ask AI leaves typing unfocused and voice available',()=>{
 });
 test('adult pages all invalidate previous cached input focus script',()=>{
  for(const p of ['index.html','discover.html','together.html','pricing/pricing.html']){
-   assert(read(p).includes('/matchapp-ia.js?v=20260925-manualfocus2'),p);
+   assert(read(p).includes('/matchapp-ia.js?v=20260926-brandai1'),p);
  }
  const kids=read('kids/index.html');
- assert(!kids.includes('20260925-manualfocus2'));
+ assert(!kids.includes('20260926-brandai1'));
 });
