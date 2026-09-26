@@ -15,7 +15,7 @@ test('expanded adult Bookworms is diverse, uniquely identified and explicit-safe
  for(const b of all){
   assert.equal(typeof b.id,'string');assert(b.id&&b.title&&b.author);
   assert(b.summary&&b.summary.length>=30,`Missing editorial summary: ${b.title}`);
-  assert(Number.isSafeInteger(b.year)&&b.year>0);
+  assert(Number.isSafeInteger(b.year)&&b.year>=-1500&&b.year<=2026);
   assert(Array.isArray(b.access)&&b.access.length);
   assert(!/\\b(?:porn|xxx|hentai|erotica)\\b/i.test(b.title+' '+b.summary));
   assert.equal(keys.has(b.id),false,`Duplicate book: ${b.id}`);keys.add(b.id);
@@ -67,7 +67,7 @@ test('audiobook official playable samples require exact verified edition, never 
  assert.equal(a.verifyApple(book,[{...original,artistName:'Different Author'}],'US'),null);
  assert.equal(a.verifyApple(book,[{...original,previewUrl:'https://evil.test/fake.mp3'}],'US').previewUrl,null);
  const ui=read('ebooks/ebook-matcher.js');
- assert.match(ui,/audio\\?\\.apple\\?\\.verified===true/);
+ assert(ui.includes('audio?.apple?.verified===true'));
  assert.match(ui,/safeApplePreview/);
  assert.match(ui,/<audio controls preload="none"/);
 });
