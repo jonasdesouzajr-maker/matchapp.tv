@@ -31,6 +31,7 @@
   const genres=Array.isArray(criteria.genres)?criteria.genres:[];
   const decades=Array.isArray(criteria.decades)?criteria.decades:[];
   const known=checks.known instanceof Set?checks.known:new Set();
+  const excludedKey=typeof checks.key==='function'?checks.key:knownKey;
   const blockedGenres=checks.blockedGenres instanceof Set?checks.blockedGenres:new Set();
   // Do not silently claim a rating, territorial provider or user-defined vibe.
   if(criteria.platform?.length||criteria.ratings?.length||criteria.vibes?.length||checks.blockedCountries?.length)return null;
@@ -44,7 +45,7 @@
    const url=showUrl(show?.url,id),actualGenres=Array.isArray(show?.genres)?show.genres.filter(g=>typeof g==='string'):[];
    const synopsis=words(show?.summary),year=Number(String(show?.premiered||'').slice(0,4));
    if(!url||!poster||!title||!synopsis||synopsis.length<40||!Number.isInteger(year)||year<1930)continue;
-   if(known.has(knownKey(title))||actualGenres.some(g=>blockedGenres.has(clean(g))))continue;
+   if(known.has(excludedKey(title))||actualGenres.some(g=>blockedGenres.has(clean(g))))continue;
    // TVmaze gives network country, NOT country of production. Do not infer one.
    if(cats.includes('reality show')&&show.type!=='Reality')continue;
    if(genres.length&&!genres.some(g=>actualGenres.some(found=>clean(found)===clean(g))))continue;
