@@ -31,6 +31,7 @@ test('Live smoke code parses and exercises separate genuine normal, Bookworms, m
  assert.match(js,/covers\\.openlibrary\\.org/);
  assert.match(js,/books\\.google\\.com/);
  assert.match(js,/image\.naturalWidth>0/);
+ assert.match(js,/fold\.locator\(':scope > summary'\)\.click\(\)/,'Tour and Bookworms have nested summaries; smoke must use direct child');
  assert.match(js,/record\('browser fatal JS exceptions'/);
  assert.doesNotMatch(js,/checkDailyLimit\s*=|mockGemini|fakePoster|bypassQuota/i);
 });
