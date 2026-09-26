@@ -13,3 +13,87 @@ window.MATCH_PHONE_AUTH_STRINGS = {
   ko:{entry:"전화번호로 가입 / 로그인",title:"전화번호로 계속하기",help:"국가 코드를 포함한 휴대폰 번호를 입력하세요. 예: +82 10 1234 5678",send:"코드 보내기",sent:"SMS로 6자리 코드를 보냈습니다.",code:"6자리 코드",verify:"확인하고 계속하기",change:"다른 번호 사용",resend:"코드 다시 보내기",wait:n=>`${n}초 후 다시 보내기`,badPhone:"국가 코드를 포함하고 +로 시작하는 올바른 휴대폰 번호를 입력하세요.",badCode:"SMS로 받은 6자리 코드를 입력하세요.",sending:"코드를 보내는 중…",verifying:"코드를 확인하는 중…",success:"전화번호가 확인되었습니다. 로그인되었습니다."},
   zh:{entry:"使用手机号注册 / 登录",title:"使用手机号继续",help:"请输入包含国家/地区代码的手机号，例如 +86 138 0013 8000。",send:"发送验证码",sent:"我们已通过短信发送 6 位验证码。",code:"6 位验证码",verify:"验证并继续",change:"使用其他号码",resend:"重新发送验证码",wait:n=>`${n} 秒后重新发送`,badPhone:"请输入以 + 开头并包含国家/地区代码的有效手机号。",badCode:"请输入短信中的 6 位验证码。",sending:"正在发送验证码…",verifying:"正在验证验证码…",success:"手机号已验证。你已登录。"}
 };
+
+// Additional labels for the optional first-registration name and SMS entry link.
+const MATCHAPP_PHONE_NEW_FIELDS={
+  "fr": [
+    "Nom complet (première inscription)",
+    "Nouveau ? Ajoutez votre nom complet. Si vous avez déjà un compte, laissez ce champ vide.",
+    "Saisissez votre nom complet, ou laissez vide si vous avez déjà un compte.",
+    "J'ai déjà reçu un code SMS",
+    "La connexion par SMS est indisponible. Utilisez votre e-mail ou réessayez."
+  ],
+  "de": [
+    "Vollständiger Name (erste Registrierung)",
+    "Neu hier? Hinterlege deinen vollständigen Namen. Bestehende Mitglieder können das Feld leer lassen.",
+    "Gib deinen vollständigen Namen ein oder lasse das Feld bei bestehendem Konto leer.",
+    "Ich habe bereits einen SMS-Code",
+    "SMS-Anmeldung ist gerade nicht verfügbar. Bitte E-Mail verwenden oder später erneut versuchen."
+  ],
+  "it": [
+    "Nome completo (prima registrazione)",
+    "Sei nuovo? Inserisci il nome completo. Se hai già un account, puoi lasciare vuoto.",
+    "Inserisci il nome completo o lascia vuoto se hai già un account.",
+    "Ho già un codice SMS",
+    "Accesso SMS temporaneamente non disponibile. Usa l'e-mail o riprova."
+  ],
+  "tr": [
+    "Ad soyad (ilk kayıt)",
+    "Yeni misiniz? Adınızı soyadınızı girin. Zaten hesabınız varsa boş bırakabilirsiniz.",
+    "Adınızı soyadınızı yazın veya mevcut hesabınız varsa boş bırakın.",
+    "Zaten SMS kodum var",
+    "SMS ile giriş şu anda kullanılamıyor. E-posta ile giriş yapın veya tekrar deneyin."
+  ],
+  "ru": [
+    "Полное имя (первая регистрация)",
+    "Впервые здесь? Укажите полное имя. Если у вас уже есть аккаунт, оставьте поле пустым.",
+    "Укажите полное имя или оставьте поле пустым, если уже зарегистрированы.",
+    "У меня уже есть код из СМС",
+    "Вход по СМС сейчас недоступен. Используйте электронную почту или попробуйте позже."
+  ],
+  "ar": [
+    "الاسم الكامل (التسجيل الأول)",
+    "مستخدم جديد؟ أدخل اسمك الكامل. إذا كان لديك حساب، اترك الحقل فارغًا.",
+    "أدخل اسمك الكامل أو اترك الحقل فارغًا إذا كان لديك حساب.",
+    "لدي بالفعل رمز SMS",
+    "تسجيل الدخول برسالة SMS غير متاح الآن. استخدم البريد الإلكتروني أو حاول لاحقًا."
+  ],
+  "hi": [
+    "पूरा नाम (पहला पंजीकरण)",
+    "नए हैं? पूरा नाम दें। पहले से खाता है तो खाली छोड़ सकते हैं।",
+    "पूरा नाम डालें या पहले से खाता होने पर खाली छोड़ें।",
+    "मेरे पास पहले से SMS कोड है",
+    "अभी SMS साइन-इन उपलब्ध नहीं है। ईमेल से प्रवेश करें या बाद में कोशिश करें।"
+  ],
+  "id": [
+    "Nama lengkap (pendaftaran pertama)",
+    "Baru di sini? Masukkan nama lengkap. Anggota lama boleh mengosongkannya.",
+    "Isi nama lengkap atau kosongkan jika sudah memiliki akun.",
+    "Saya sudah punya kode SMS",
+    "Login SMS tidak tersedia sekarang. Gunakan email atau coba lagi."
+  ],
+  "ja": [
+    "氏名（初回登録時）",
+    "初めての方は氏名を入力してください。既存会員は空欄で続行できます。",
+    "氏名を入力するか、既存会員の場合は空欄にしてください。",
+    "SMSコードを受信済み",
+    "現在SMSログインをご利用いただけません。メールを使うか後でお試しください。"
+  ],
+  "ko": [
+    "성명 (처음 가입 시)",
+    "처음 가입하는 경우 성명을 입력하세요. 기존 회원은 비워 두어도 됩니다.",
+    "성명을 입력하거나 기존 회원이라면 비워 두세요.",
+    "이미 SMS 코드가 있어요",
+    "현재 SMS 로그인을 사용할 수 없습니다. 이메일 로그인 또는 나중에 다시 시도하세요."
+  ],
+  "zh": [
+    "全名（首次注册）",
+    "新用户请输入全名，已有账号可留空。",
+    "请输入全名；如果已有账号，可以留空。",
+    "我已有短信验证码",
+    "暂时无法使用短信登录，请使用邮箱或稍后重试。"
+  ]
+};
+for(const [locale,values] of Object.entries(MATCHAPP_PHONE_NEW_FIELDS)){
+  Object.assign(window.MATCH_PHONE_AUTH_STRINGS[locale]||{},Object.fromEntries(['name','nameHelp','badName','haveCode','noProvider'].map((k,i)=>[k,values[i]])));
+}
