@@ -1,0 +1,32 @@
+name: One-time selected sharing poster import
+on:
+  push:
+    branches: [feature/selected-share-poster-20260926]
+    paths: [.github/workflows/one-time-import-share-poster.yml]
+permissions:
+  contents: write
+jobs:
+  import-selected-poster:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Download exact owner-selected poster and check SHA-256
+        env:
+          IMAGE_SOURCE: "https://d2jqrm6oza8nb6.cloudfront.net/datasets/b7cfe59c-8782-4add-8b75-a977a51dc9a6.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiMmFkNDU3ODcwYzAwZDI4ZiIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc5MDYxMDMxMX0.nB_KZsgKbWoMzk8pzZFRDyjSNXiw4fbPZDy55mdThmQ"
+        run: |
+          set -euo pipefail
+          mkdir -p assets/brand
+          curl --fail --location --silent --show-error --retry 3 --max-time 90 "$IMAGE_SOURCE" -o assets/brand/matchapp-share-poster.png
+          echo '2061c598556c5e4be2dd49c5ee65941a31a1bce150de9fc5708597a9dc6ac630  assets/brand/matchapp-share-poster.png' | sha256sum --check --status
+          test "$(wc -c < assets/brand/matchapp-share-poster.png)" -eq 2395539
+      - name: Commit poster on this feature branch only
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add assets/brand/matchapp-share-poster.png
+          git commit -m 'Add exact owner-selected MatchApp sharing poster'
+          git push origin HEAD:feature/selected-share-poster-20260926
