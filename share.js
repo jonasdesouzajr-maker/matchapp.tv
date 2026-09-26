@@ -13,7 +13,8 @@
 
 const SHARE_WINDOW_MS = 6 * 60 * 60 * 1000;  // 6 hours
 const SHARE_MAX_REWARDS = 3;
-const SHARE_TAGS = '#MatchApp #WhatToWatch #StreamingAI #AIConcierge #MovieNight';
+const SHARE_TAGS = '#MatchAppAi #MatchAppTV #FindWhatToWatch #StreamingGuide #MovieNight';
+const SHARE_POSTER = '/assets/brand/matchapp-share-poster.png?v=20260926-selected1';
 const SHARE_URL = 'https://matchapp.tv/';
 
 /* ---------- Reward accounting ---------- */
@@ -91,94 +92,18 @@ function wrapText(ctx, text, maxWidth) {
     return lines;
 }
 
-window.buildShareCard = async function(title, posterUrl, platform, synopsis) {
-    const W = 1080, H = 1350;               // 4:5 — the best-performing feed ratio
-    const c = document.createElement('canvas');
-    c.width = W; c.height = H;
-    const ctx = c.getContext('2d');
-
-    // Brand background
-    const bg = ctx.createLinearGradient(0, 0, W, H);
-    bg.addColorStop(0, '#14131A'); bg.addColorStop(0.55, '#2A1A47'); bg.addColorStop(1, '#130734');
-    ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
-
-    const glow = ctx.createRadialGradient(W * 0.75, H * 0.18, 40, W * 0.75, H * 0.18, 620);
-    glow.addColorStop(0, 'rgba(229,193,88,0.28)'); glow.addColorStop(1, 'rgba(229,193,88,0)');
-    ctx.fillStyle = glow; ctx.fillRect(0, 0, W, H);
-
-    // Gold frame
-    ctx.strokeStyle = '#E5C158'; ctx.lineWidth = 7;
-    ctx.strokeRect(26, 26, W - 52, H - 52);
-
-    // Header
-    ctx.fillStyle = '#E5C158';
-    ctx.font = '900 40px "Segoe UI", Arial, sans-serif';
-    ctx.textAlign = 'left';
-    ctx.fillText('MATCHAPP.TV', 68, 108);
-    ctx.fillStyle = '#A376B6';
-    ctx.font = '600 25px "Segoe UI", Arial, sans-serif';
-    ctx.fillText('AI STREAMING CONCIERGE', 68, 148);
-
-    // Poster
-    const posterW = 500, posterH = 720, px = (W - posterW) / 2, py = 200;
-    const img = await loadImage(posterUrl);
-    ctx.save();
-    ctx.shadowColor = 'rgba(0,0,0,0.85)'; ctx.shadowBlur = 46; ctx.shadowOffsetY = 16;
-    ctx.fillStyle = '#0d0620';
-    ctx.fillRect(px, py, posterW, posterH);
-    ctx.restore();
-    if (img) {
-        // Cover-fit without distorting the artwork
-        const scale = Math.max(posterW / img.width, posterH / img.height);
-        const dw = img.width * scale, dh = img.height * scale;
-        ctx.save();
-        ctx.beginPath(); ctx.rect(px, py, posterW, posterH); ctx.clip();
-        ctx.drawImage(img, px + (posterW - dw) / 2, py + (posterH - dh) / 2, dw, dh);
-        ctx.restore();
-    } else {
-        ctx.fillStyle = '#E5C158';
-        ctx.font = '900 44px "Segoe UI", Arial, sans-serif';
-        ctx.textAlign = 'center';
-        wrapText(ctx, title, posterW - 70).slice(0, 4).forEach((ln, i) =>
-            ctx.fillText(ln, W / 2, py + posterH / 2 - 40 + i * 56));
-    }
-    ctx.strokeStyle = '#E5C158'; ctx.lineWidth = 5;
-    ctx.strokeRect(px, py, posterW, posterH);
-
-    // "MY MATCH" ribbon
-    ctx.fillStyle = '#E5C158';
-    ctx.fillRect(px - 16, py + 44, 210, 62);
-    ctx.fillStyle = '#14131A';
-    ctx.font = '900 31px "Segoe UI", Arial, sans-serif';
-    ctx.textAlign = 'center';
-    ctx.fillText('MY MATCH', px + 89, py + 86);
-
-    // Title
-    ctx.textAlign = 'center';
-    ctx.fillStyle = '#FFFFFF';
-    ctx.font = '900 60px "Segoe UI", Arial, sans-serif';
-    const titleLines = wrapText(ctx, title, W - 190).slice(0, 2);
-    titleLines.forEach((ln, i) => ctx.fillText(ln, W / 2, 1010 + i * 68));
-
-    let y = 1010 + titleLines.length * 68 + 18;
-    if (platform && platform !== 'any') {
-        ctx.fillStyle = '#A376B6';
-        ctx.font = '700 31px "Segoe UI", Arial, sans-serif';
-        ctx.fillText('Now streaming on ' + platform, W / 2, y);
-        y += 48;
-    }
-    if (synopsis) {
-        ctx.fillStyle = '#C9C1DA';
-        ctx.font = '400 27px "Segoe UI", Arial, sans-serif';
-        wrapText(ctx, synopsis, W - 210).slice(0, 2).forEach((ln, i) => ctx.fillText(ln, W / 2, y + i * 36));
-    }
-
-    // Footer CTA
-    ctx.fillStyle = '#E5C158';
-    ctx.font = '900 33px "Segoe UI", Arial, sans-serif';
-    ctx.fillText('Find YOUR perfect match free →  matchapp.tv', W / 2, H - 74);
-
-    return c;
+// MatchApp's selected official poster is the ONLY exported image for
+// adult match sharing. Draw it at its natural resolution without cropping.
+window.buildShareCard = async function() {
+    const poster = await loadImage(SHARE_POSTER);
+    if (!poster) throw new Error('official_share_poster_unavailable');
+    const canvas = document.createElement('canvas');
+    canvas.width = poster.naturalWidth || poster.width;
+    canvas.height = poster.naturalHeight || poster.height;
+    const context = canvas.getContext('2d');
+    if (!context) throw new Error('share_canvas_unavailable');
+    context.drawImage(poster, 0, 0);
+    return canvas;
 };
 
 function canvasToBlob(canvas) {
@@ -231,14 +156,23 @@ window.openShareSheet = async function() {
     if (modal) modal.style.display = 'flex';
     if (preview) preview.innerHTML = '<div class="share-spinner"></div>';
 
-    const canvas = await window.buildShareCard(
-        title, window.globalMatchPoster, window.globalPlatform,
-        (document.getElementById('res-synopsis') || {}).innerText || ''
-    );
+    // A failed image load must not silently reuse a previous match's card.
+    window._shareCanvas = null;
+    let canvas;
+    try {
+        canvas = await window.buildShareCard();
+    } catch (_) {
+        if (preview) preview.textContent = 'Official MatchApp Ai poster temporarily unavailable. Please try again.';
+        window.showToast?.('Could not load the official share poster. Please retry.', true);
+        return;
+    }
     window._shareCanvas = canvas;
     if (preview) {
         preview.innerHTML = '';
-        canvas.style.width = '100%';
+        canvas.style.width = 'min(100%, 300px)';
+        canvas.style.maxHeight = 'min(57dvh, 500px)';
+        canvas.style.objectFit = 'contain';
+        canvas.style.height = 'auto';
         canvas.style.borderRadius = '14px';
         canvas.style.border = '1px solid rgba(229,193,88,0.5)';
         preview.appendChild(canvas);
@@ -267,9 +201,7 @@ window.closeShareSheet = function() {
 };
 
 function shareText() {
-    const title = window.globalMatchTitle || 'my match';
-    const plat = window.globalPlatform && window.globalPlatform !== 'any' ? ` on ${window.globalPlatform}` : '';
-    return `MatchApp's AI just matched me with "${title}"${plat} 🍿 Find what YOU should watch tonight — free AI streaming concierge.\n\n${SHARE_TAGS}`;
+    return `Find YOUR Perfect Match with MatchApp Ai ✨ Discover movies, series and more by mood, format and platform. Start free: ${SHARE_URL}\n\n${SHARE_TAGS}`;
 }
 
 // Native share sheet (mobile) — attaches the generated image when supported.
@@ -280,14 +212,14 @@ window.shareNative = async function() {
     try {
         if (canvas && navigator.canShare) {
             const blob = await canvasToBlob(canvas);
-            const file = new File([blob], 'matchapp-match.png', { type: 'image/png' });
+            const file = new File([blob], 'matchapp-ai-share-poster.png', { type: 'image/png' });
             if (navigator.canShare({ files: [file] })) {
-                await navigator.share({ files: [file], text, title: 'My MatchApp pick' });
+                await navigator.share({ files: [file], text, title: 'MatchApp Ai | Find Your Perfect Match' });
                 return afterShare('native');
             }
         }
         if (navigator.share) {
-            await navigator.share({ title: 'My MatchApp pick', text, url: SHARE_URL });
+            await navigator.share({ title: 'MatchApp Ai | Find Your Perfect Match', text, url: SHARE_URL });
             return afterShare('native');
         }
         // No native share support. Previously this silently downloaded the card to
@@ -303,7 +235,7 @@ window.downloadShareCard = function() {
     const canvas = window._shareCanvas;
     if (!canvas) return;
     const a = document.createElement('a');
-    a.download = `matchapp-${(window.globalMatchTitle || 'match').replace(/[^a-z0-9]/gi, '-').toLowerCase()}.png`;
+    a.download = 'matchapp-ai-share-poster.png';
     a.href = canvas.toDataURL('image/png');
     a.click();
     if (window.showToast) showToast('⬇️ Card saved to your device.');
@@ -311,7 +243,7 @@ window.downloadShareCard = function() {
 
 window.copyShareText = async function(silent) {
     try {
-        await navigator.clipboard.writeText(shareText() + '\n' + SHARE_URL);
+        await navigator.clipboard.writeText(shareText());
         if (!silent && window.showToast) showToast('📋 Caption + link copied. A copied caption is not counted as a completed share.');
     } catch (e) { if (window.showToast) showToast('Could not copy — select the text manually.', true); }
 };
@@ -374,7 +306,7 @@ window.shareTo = function(network) {
         const dest = network === 'instagram' ? 'https://www.instagram.com/' : 'https://www.tiktok.com/';
         window.open(dest, '_blank', 'noopener');
         markExternalShareStarted(network);
-        if (window.showToast) showToast(`📋 Caption copied — finish the post in ${network === 'instagram' ? 'Instagram' : 'TikTok'}, then return to confirm the share.`);
+        if (window.showToast) showToast(`📋 Caption copied. Tap Save Image for the official poster, publish it on ${network === 'instagram' ? 'Instagram' : 'TikTok'}, then return to confirm.`);
         return;
     }
     if (map[network]) {
