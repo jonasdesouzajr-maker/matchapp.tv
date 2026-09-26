@@ -71,6 +71,42 @@ async function aiQuestion(page,question,expected,label){
     record('home responsive and original visible posters '+device.name,
       home.scrollWidth<=home.width+16 && !home.wrongFit && home.artworks>0 && home.valid>0,
       JSON.stringify(home));
+    // The brand is genuine, translated text beside the existing transparent orb.
+    // Check actual production computed layout on every viewport, including 320px.
+    const identity=await page.evaluate(()=>{
+      const h=document.getElementById('mh-topbox'),brand=h?.querySelector('.ma-brand-lockup');
+      const name=h?.querySelector('.ma-brand-copy'),ai=name?.querySelector('[data-ma-brand-ai]');
+      const rect=name?.getBoundingClientRect(),box=h?.getBoundingClientRect();
+      return {
+        label:brand?.getAttribute('aria-label')||'',ai:ai?.textContent||'',
+        tv:!!brand?.querySelector('.ma-tv'),detached:!!brand?.querySelector('.ma-ai-brand-button'),
+        logo:!!brand?.querySelector('.ma-brand-orb[src*="matchapp-home-orb-transparent.webp"]'),
+        gradient:!!ai&&getComputedStyle(ai).backgroundImage.includes('linear-gradient'),
+        weight:name?getComputedStyle(name.querySelector('.ma-wordmark')).fontWeight:'0',
+        textInside:!!rect&&!!box&&rect.right<=box.right+3&&rect.left>=box.left-3,
+        width:rect?.width||0
+      };
+    });
+    record('original integrated MatchApp Ai brand '+device.name,
+      identity.label==='MatchApp Ai'&&identity.ai==='Ai'&&!identity.tv&&!identity.detached&&
+      identity.logo&&identity.gradient&&identity.textInside&&Number(identity.weight)>=800,
+      JSON.stringify(identity));
+    if(device.name==='desktop'){
+      await page.evaluate(()=>{if(typeof window.setLanguage!=='function')throw Error('Language switch unavailable');window.setLanguage('pt-BR')});
+      await page.waitForFunction(()=>{
+        const brand=document.querySelector('#mh-topbox .ma-brand-lockup');
+        return brand?.getAttribute('aria-label')==='MatchApp iA'&&brand.querySelector('[data-ma-brand-ai]')?.textContent==='iA';
+      },null,{timeout:10000});
+      const portuguese=await page.evaluate(()=>{
+        const b=document.querySelector('#mh-topbox .ma-brand-lockup');
+        return {label:b?.getAttribute('aria-label'),ai:b?.querySelector('[data-ma-brand-ai]')?.textContent,
+          home:b?.querySelector('.ma-brand-home-link')?.getAttribute('aria-label')};
+      });
+      record('live Brazilian Portuguese MatchApp iA brand',
+        portuguese.label==='MatchApp iA'&&portuguese.ai==='iA'&&portuguese.home==='MatchApp iA home',
+        JSON.stringify(portuguese));
+      await page.evaluate(()=>window.setLanguage('en'));
+    }
     const ebook=page.locator('#ebook-matcher-root');
     const placement=await page.evaluate(()=>{
       const form=document.getElementById('questionnaire-box'),root=document.getElementById('ebook-matcher-root');
@@ -103,6 +139,15 @@ async function aiQuestion(page,question,expected,label){
     });
     record('Ask AI composer '+device.name,composer.inputWidth>85&&!composer.focused&&!composer.collision,
       JSON.stringify(composer));
+    const shellBrand=await page.evaluate(()=>{
+      const b=document.querySelector('body.page-shell .mh-topbox .ma-brand-lockup');
+      return {label:b?.getAttribute('aria-label'),ai:b?.querySelector('[data-ma-brand-ai]')?.textContent,
+        obsoleteGraphic:!!document.querySelector('body.page-shell .mh-topbox .matchapp-wordmark'),
+        detached:!!b?.querySelector('.ma-ai-brand-button')};
+    });
+    record('shared adult page top-box brand '+device.name,
+      shellBrand.label==='MatchApp Ai'&&shellBrand.ai==='Ai'&&!shellBrand.obsoleteGraphic&&!shellBrand.detached,
+      JSON.stringify(shellBrand));
     await shot(page,device.name+'-ask-ai');
    }catch(error){
      record('device '+device.name,false,String(error.stack||error).slice(0,500));

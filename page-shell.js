@@ -31,6 +31,24 @@
                     b.classList.contains('kids-body')));
   }
 
+  function brandName() {
+    var lang = String(window.MATCH_LANG || '').toLowerCase();
+    try { lang = lang || String(localStorage.getItem('match_lang') || '').toLowerCase(); } catch (_) {}
+    lang = lang || String(document.documentElement.lang || '').toLowerCase();
+    return lang.indexOf('pt') === 0 ? 'MatchApp iA' : 'MatchApp Ai';
+  }
+  function updateBrandLocale(root) {
+    var name = brandName();
+    var brand = root && root.querySelector('.ma-brand-lockup');
+    if (!brand) return;
+    brand.setAttribute('aria-label', name);
+    var home = brand.querySelector('.ma-brand-home-link');
+    if (home) home.setAttribute('aria-label', name + ' home');
+    var ai = brand.querySelector('[data-ma-brand-ai]');
+    if (ai && ai.textContent !== (name.endsWith('iA') ? 'iA' : 'Ai')) {
+      ai.textContent = name.endsWith('iA') ? 'iA' : 'Ai';
+    }
+  }
   function el(tag, cls, text) {
     var n = document.createElement(tag);
     if (cls) n.className = cls;
@@ -56,11 +74,11 @@
     var host = el('div', 'header-brand-area ma-brand-stage');
     host.id = 'shell-brand-lockup';
     var lockup = el('div', 'ma-brand-lockup');
-    lockup.setAttribute('aria-label', 'MatchApp TV Ai');
+    lockup.setAttribute('aria-label', brandName());
 
     var link = el('a', 'ma-brand-home-link');
     link.href = '/';
-    link.setAttribute('aria-label', 'MatchApp TV home');
+    link.setAttribute('aria-label', brandName() + ' home');
 
     var stage = el('span', 'ma-brand-orb-stage');
     stage.setAttribute('aria-hidden', 'true');
@@ -78,7 +96,8 @@
     word.appendChild(el('span', 'ma-word-match', 'Match'));
     word.appendChild(el('span', 'ma-word-app', 'App'));
     copy.appendChild(word);
-    copy.appendChild(el('span', 'ma-tv', 'TV'));
+    copy.appendChild(el('span', 'ma-word-ai', brandName().endsWith('iA') ? 'iA' : 'Ai'));
+    copy.querySelector('.ma-word-ai').setAttribute('data-ma-brand-ai', '');
 
     link.appendChild(stage);
     link.appendChild(copy);
@@ -150,6 +169,14 @@
       else header.insertBefore(head, header.firstChild);
       head.appendChild(brand || buildBrand());
     }
+    // Some adult routes still ship an older SVG that literally says "TV Ai".
+    // Upgrade only their top-box brand node to the same actual text lockup;
+    // preserve the route's existing navigation, login, profile and shortcuts.
+    var legacyBrand = head.querySelector('.header-brand-area, .ma-brand-stage, .matchapp-brand-link');
+    if (legacyBrand && !legacyBrand.querySelector('[data-ma-brand-ai]')) {
+      legacyBrand.replaceWith(buildBrand());
+    }
+    updateBrandLocale(head);
     if (!head.querySelector('.mh-tagline')) {
       var label = pageLabel();
       if (label) head.appendChild(el('p', 'mh-tagline', label));
@@ -177,6 +204,14 @@
     });
   }
 
+  document.addEventListener('matchapp:langchange', function () {
+    var head = document.querySelector('body.page-shell .mh-topbox .mh-head');
+    if (head) updateBrandLocale(head);
+  });
+  window.addEventListener('pageshow', function () {
+    var head = document.querySelector('body.page-shell .mh-topbox .mh-head');
+    if (head) updateBrandLocale(head);
+  });
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', mount, { once: true });
   } else {

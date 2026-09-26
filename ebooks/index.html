@@ -26,7 +26,7 @@
 <link rel="stylesheet" href="/style.css?v=187">
 <link rel="stylesheet" href="/themes.css?v=187">
 <link rel="stylesheet" href="/brand.css?v=192">
-<link rel="stylesheet" href="/page-shell.css?v=20260921-shell1">
+<link rel="stylesheet" href="/page-shell.css?v=20260926-brandai1">
 <link rel="stylesheet" href="/ebooks/ebook-matcher.css?v=20260925-audio1">
 <style>
 body.ebook-page{margin:0;background:#080610;color:#fff;min-height:100vh}
@@ -137,7 +137,10 @@ display:flex;flex-direction:column;align-items:center;justify-content:center;gap
 <body class="ebook-page">
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7J3NNBN" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <header class="ebook-page-top">
-<a href="/" aria-label="MatchApp home" style="border:0;padding:0"><img src="/assets/brand/matchapp-tv-ai-v2.svg" width="368" height="66" alt="MatchApp TV Ai"></a>
+<a class="ebook-hub-brand" href="/" aria-label="MatchApp Ai home">
+ <span class="ma-brand-orb-stage" aria-hidden="true"><img class="ma-brand-orb" src="/assets/brand/matchapp-home-orb-transparent.webp?v=20260920-homebrand4" alt="" width="62" height="62" decoding="async"></span>
+ <span class="ma-brand-copy"><span class="ma-wordmark"><span class="ma-word-match">Match</span><span class="ma-word-app">App</span></span><span class="ma-word-ai" data-ma-brand-ai>Ai</span></span>
+ </a>
 <nav aria-label="E-book page navigation"><a href="/">Home</a><a href="/#questionnaire-box">Movies & TV Match</a><a href="/discover.html">Ask Ai</a></nav>
 </header>
 <main>
@@ -236,6 +239,24 @@ display:flex;flex-direction:column;align-items:center;justify-content:center;gap
  host.addEventListener('click',e=>{if(e.target.closest('[data-ebook-affiliate="amazon-br"]')){
   window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'ebook_affiliate_click',provider:'Amazon Brazil',surface:'magazine_hub'});
  }});
+})();
+</script>
+<script>
+/* The independent adult Bookworms hub uses the same locale-sensitive top
+   wordmark, but does not load the Home's matching/AI header controllers. */
+(function(){
+ function paint(){
+  var lang=String(window.MATCH_LANG||'').toLowerCase();
+  try{lang=lang||String(localStorage.getItem('match_lang')||'').toLowerCase();}catch(_){}
+  lang=lang||String(navigator.language||document.documentElement.lang||'en').toLowerCase();
+  var pt=lang.indexOf('pt')===0,brand=document.querySelector('.ebook-hub-brand');
+  if(!brand)return;
+  var ai=brand.querySelector('[data-ma-brand-ai]');if(ai)ai.textContent=pt?'iA':'Ai';
+  brand.setAttribute('aria-label',pt?'MatchApp iA home':'MatchApp Ai home');
+ }
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',paint,{once:true});else paint();
+ document.addEventListener('matchapp:langchange',paint);
+ window.addEventListener('pageshow',paint);
 })();
 </script>
 </body>
