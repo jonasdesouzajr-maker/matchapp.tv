@@ -19,7 +19,7 @@ test('Home startup avoids delayed boot locks, stale cache keys and duplicate hea
  for(const file of ['page-origin.js','build-meta.js','matchapp-ia.js','settings.js','app.js','catalog-media.js','title-experience.js','lazy.js','app-updates.js']){
   assert.ok(html.includes('/'+file+'?v='),'missing cache-busted '+file);
  }
- assert.ok(html.includes('/build-meta.js?v=20260924-runtime2'),'stale shared runtime build-meta.js');
+ assert.ok(html.includes('/build-meta.js?v=20260926-eye1'),'stale shared runtime build-meta.js');
  assert.ok(html.includes('/settings.js?v=20260925-guarantee3'),'stale shared runtime settings.js');
  assert.ok(html.includes('/catalog-media.js?v=20260926-catalogscale1'),'stale shared runtime catalog-media.js');
  assert.ok(html.includes('/app.js?v=20260926-catalogscale1'),'stale shared runtime app.js');
