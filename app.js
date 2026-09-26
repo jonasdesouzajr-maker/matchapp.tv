@@ -1778,16 +1778,27 @@ window.openAuthModal = function() {
     modal.querySelector('button:not(:disabled), input')?.focus();
 };
 
-// Anyone redirected here from the retired register.html (old bookmarks,
-// external links) lands straight in the sign-up flow rather than a blank
-// homepage with no obvious next step.
+// Email redirects must complete Supabase session initialization BEFORE we
+// change location/history or choose an auth tab. The shared confirmation
+// handler also preserves the legacy /register.html signup entry point.
 document.addEventListener('DOMContentLoaded', () => {
+    if (window.MatchAppEmailAuth) {
+        window.MatchAppEmailAuth.handleLanding(supabaseClient);
+        return;
+    }
+    // Non-home pages do not load the confirmation UI. Retain the normal
+    // legacy entry point without discarding authentication URL fragments.
     try {
         const authParams = new URLSearchParams(window.location.search);
         if (authParams.get('openAuth') === '1' || authParams.get('signIn') === '1') {
             window.openAuthModal();
             if (typeof window.switchAuthTab === 'function') window.switchAuthTab(authParams.get('signIn') === '1' ? 'login' : 'signup');
-            history.replaceState(null, '', '/'); // keep the canonical home URL while preventing auth from reopening on refresh
+            if (!window.location.hash.includes('access_token') && !window.location.hash.includes('error=')) {
+                const clean = new URL(window.location.href);
+                clean.searchParams.delete('openAuth');
+                clean.searchParams.delete('signIn');
+                history.replaceState(null, '', clean.pathname + clean.search + clean.hash);
+            }
         }
     } catch (e) {}
 });
@@ -1872,25 +1883,39 @@ window.handlePasswordReset = async function() {
 // AUTH LOGIC
 // ----------------------------------------------------
 window.handleEmailSignup = async function() {
-    const email = document.getElementById('reg-email').value.trim(); 
-    const password = document.getElementById('reg-password').value; 
+    const email = document.getElementById('reg-email').value.trim();
+    const password = document.getElementById('reg-password').value;
     const msgEl = document.getElementById('auth-message');
-    
-    if (!supabaseClient) { msgEl.style.display = 'block'; msgEl.style.color = '#ff5252'; msgEl.style.background = 'rgba(255,0,0,0.1)'; msgEl.innerText = "Database connection offline."; return; }
-    if(!email || !password) { msgEl.style.display = 'block'; msgEl.style.color = '#ff5252'; msgEl.style.background = 'rgba(255,0,0,0.1)'; msgEl.innerText = "Please provide an email and password."; return; }
-    
+
+    if (!supabaseClient) { msgEl.style.display = 'block'; msgEl.style.color = '#ff5252'; msgEl.style.background = 'rgba(255,0,0,0.1)'; msgEl.innerText = "Account service is temporarily unavailable."; return; }
+    if (!email || !password) { msgEl.style.display = 'block'; msgEl.style.color = '#ff5252'; msgEl.style.background = 'rgba(255,0,0,0.1)'; msgEl.innerText = "Please provide an email and password."; return; }
+
     msgEl.style.display = 'block'; msgEl.style.color = '#fff'; msgEl.style.background = 'rgba(229,193,88,0.2)'; msgEl.innerText = "Creating account...";
-    
+
     try {
-        const { error } = await supabaseClient.auth.signUp({ email, password, options: { data: { matchapp_first_time_onboarding_v1: true } } });
-        if(error) { 
-            msgEl.style.color = '#ff5252'; msgEl.style.background = 'rgba(255,0,0,0.1)'; msgEl.innerText = error.message; 
-        } else { 
-            msgEl.style.color = '#25D366'; msgEl.style.background = 'rgba(37,211,102,0.1)'; msgEl.innerText = "Account created! Routing to Profile Hub..."; 
-            setTimeout(() => { window.location.href = '/profile/profile.html'; }, 1500); 
+        // A verification email must return to the page that can finish the
+        // implicit/PKCE session, not directly into another signup modal.
+        const { data, error } = await supabaseClient.auth.signUp({
+            email, password,
+            options: {
+                data: { matchapp_first_time_onboarding_v1: true },
+                emailRedirectTo: 'https://matchapp.tv/'
+            }
+        });
+        if (error) {
+            msgEl.style.color = '#ff5252'; msgEl.style.background = 'rgba(255,0,0,0.1)'; msgEl.innerText = error.message;
+        } else if (data?.session?.user) {
+            msgEl.style.color = '#25D366'; msgEl.style.background = 'rgba(37,211,102,0.1)';
+            msgEl.innerText = "Signed in. Opening your profile...";
+            setTimeout(() => { window.location.href = '/profile/profile.html'; }, 700);
+        } else {
+            // Email confirmation enabled: signUp returns a user, NOT a session.
+            // Do not redirect to an unauthenticated profile or claim success.
+            msgEl.style.color = '#25D366'; msgEl.style.background = 'rgba(37,211,102,0.1)';
+            msgEl.innerText = "Check your inbox and confirm your email using the newest link. Already expired? Use 'Resend confirmation email' on the Log In tab.";
         }
-    } catch(err) {
-        msgEl.style.color = '#ff5252'; msgEl.style.background = 'rgba(255,0,0,0.1)'; msgEl.innerText = "Critical registration error.";
+    } catch (_) {
+        msgEl.style.color = '#ff5252'; msgEl.style.background = 'rgba(255,0,0,0.1)'; msgEl.innerText = "Could not create the account. Please retry.";
     }
 };
 
@@ -1907,7 +1932,12 @@ window.handleEmailLogin = async function() {
     try {
         const { error, data } = await supabaseClient.auth.signInWithPassword({ email, password });
         if(error) { 
-            msgEl.style.color = '#ff5252'; msgEl.style.background = 'rgba(255,0,0,0.1)'; msgEl.innerText = error.message; 
+            msgEl.style.color = '#ff5252'; msgEl.style.background = 'rgba(255,0,0,0.1)';
+            msgEl.innerText = (error.code === 'email_not_confirmed')
+                ? "Confirm your email before signing in. You can request a new link below."
+                : (error.code === 'invalid_credentials')
+                    ? "Unable to sign in. Check your details. If you just registered, confirm your email or request a fresh link below."
+                    : error.message;
         } else if (data.user) { 
             msgEl.style.color = '#25D366'; msgEl.style.background = 'rgba(37,211,102,0.1)'; msgEl.innerText = "Welcome back! Routing to Home..."; 
             setTimeout(() => { window.location.reload(); }, 1000); 
