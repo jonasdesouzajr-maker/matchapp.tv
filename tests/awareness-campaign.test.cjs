@@ -18,7 +18,7 @@ test('home awareness is localized, date-gated and matches committed campaign',()
     assert.ok(h.includes('data-awareness-end="'+c.endExclusive+'"'));
     assert.ok(h.includes(c.pageUrl));
   }else assert.doesNotMatch(h,/id="awareness-spotlight"/);
-  assert.match(h,/\/awareness\.js\?v=20260922-awareness1/);
+  assert.match(h,/\/awareness\.js\?v=20260926-bottom2/);
   assert.match(j,/today>=c\.startDate&&today<c\.endExclusive|t>=c\.startDate&&t<c\.endExclusive/);
   assert.match(j,/pt-BR/);
   assert.doesNotMatch(j,/setInterval|requestAnimationFrame/);
@@ -34,4 +34,18 @@ test('Awareness spotlight stays at the bottom above SEO footer on each scheduled
  assert.equal((h.match(/<!-- AWARENESS-SPOTLIGHT:START -->/g)||[]).length,1);
  assert.ok(bot.includes("s=s.replace(footer,block(c)+'\\n\\n'+footer)"),'Bot must regenerate spotlight by the bottom footer');
  assert.ok(!bot.includes("m+'\\n'+block(c)"),'Bot must not regenerate spotlight under the header');
+});
+
+
+test('Live awareness refresh moves stale top card to bottom and never recreates one beneath header',async()=>{
+ const {JSDOM}=require('jsdom');
+ const {window:w}=new JSDOM('<!doctype html><html><body><header id="mh-topbox"></header><aside id="awareness-spotlight"><div class="awareness-card"><span class="awareness-eyebrow"></span><strong class="awareness-title"></strong><span class="awareness-body"></span><a class="awareness-cta"></a></div></aside><main></main><footer class="seo-footer"></footer></body></html>',{url:'https://matchapp.tv/',runScripts:'outside-only'});
+ w.fetch=async(url)=>({ok:true,json:async()=>url.includes('current.json')?{campaign:{name:'World Alzheimer’s Month',startDate:'2026-01-01',endExclusive:'2099-01-01',pageUrl:'/awareness/world-alzheimers-month-2026/'}}:{events:[]}});
+ w.eval(read('awareness.js'));
+ w.document.dispatchEvent(new w.Event('DOMContentLoaded'));
+ await new Promise(resolve=>setTimeout(resolve,0));
+ const a=w.document.getElementById('awareness-spotlight'),f=w.document.querySelector('footer.seo-footer');
+ assert.equal(a.nextElementSibling,f,'Runtime reparent must keep the awareness card above the actual footer');
+ assert.equal(w.document.querySelectorAll('#awareness-spotlight').length,1,'Must never duplicate awareness card');
+ w.close();
 });

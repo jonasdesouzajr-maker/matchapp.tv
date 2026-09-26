@@ -463,7 +463,7 @@ function bind(root){
 function markup(){
  const p=prefs();
  // The dedicated reading hub remains expanded; adult Home starts as a compact disclosure.
- const initiallyOpen=!document.body.classList.contains('page-home')||location.hash==='#ebook-matcher-root';
+ const initiallyOpen=!(document.body.classList.contains('page-home')||location.pathname==='/'||location.pathname==='/index.html')||location.hash==='#ebook-matcher-root';
  const field=(key,label)=>'<fieldset class="ebook-field"><legend>'+label+'</legend><div class="ebook-chips">'+optionButtons(key,p[key])+'</div></fieldset>';
  return '<details class="ebook-fold"'+(initiallyOpen?' open':'')+'><summary><span class="ebook-summary-icon" aria-hidden="true">📚✦</span><span><small>'+esc(tr('eyebrow'))+'</small><strong>'+esc(tr('title'))+'</strong></span><span class="ebook-chevron" aria-hidden="true">⌄</span></summary>'+
  '<div class="ebook-panel"><div class="ebook-intro"><div><h2>'+esc(tr('title'))+'</h2><p>'+esc(tr('intro'))+'</p></div><a href="/ebooks/" class="ebook-guide-link">Bookworms hub ↗</a></div>'+
@@ -493,6 +493,12 @@ async function mount(){
   root=document.createElement('section');root.id='ebook-matcher-root';root.className='ebook-matcher-root';
   const anchor=document.getElementById('search-box')||document.getElementById('questionnaire-box');
   if(anchor)anchor.insertAdjacentElement('afterend',root);else(document.querySelector('main')||document.body).appendChild(root);
+ }
+ // Defensive recovery for already-cached Home HTML: this belongs after Ask AI,
+ // not between the watch questionnaire and its loading/result components.
+ if(document.body.classList.contains('page-home')){
+  const search=document.getElementById('search-box');
+  if(search&&root.previousElementSibling!==search)search.insertAdjacentElement('afterend',root);
  }
  if(root.dataset.ebookMounted==='1')return;
  root.dataset.ebookMounted='1';root.innerHTML=markup();bind(root);renderTop(root);await cloudHydrate();renderSaved(root);
