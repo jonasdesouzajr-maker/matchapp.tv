@@ -39,7 +39,10 @@
  };
  const safeWork=key=>/^\/works\/OL\d+W$/.test(String(key||''))?'https://openlibrary.org'+key:null;
  function approve(work,volumes,prefs,market,excluded=new Set()){
-  const title=String(work?.title||'').trim(),authors=work?.author_name;
+  // Bibliographic subject tags cannot verify subjective mood or pacing.
+ if((prefs?.mood&&prefs.mood!=='any')||(prefs?.pace&&prefs.pace!=='any')||
+    (prefs?.length&&prefs.length!=='any')||prefs?.access==='free')return null;
+ const title=String(work?.title||'').trim(),authors=work?.author_name;
   const year=Number(work?.first_publish_year),cover=Number(work?.cover_i);
   const workUrl=safeWork(work?.key),genre=String(prefs?.genre||'any');
   const sourceTopics=Array.isArray(work?.subject)?work.subject.filter(x=>typeof x==='string').join(' | '):'';
@@ -93,7 +96,7 @@
   const data=await get(ol.href,fetchFn);
   if(!Array.isArray(data?.docs))return null;
   const excluded=context.excluded instanceof Set?context.excluded:new Set();
-  for(const work of data.docs.slice(0,LIMIT).filter(x=>!excluded.has(norm(x.title))).slice(0,MAX_CHECKS)){
+  for(const work of data.docs.slice(0,LIMIT).filter(x=>x?.cover_i&&Array.isArray(x?.author_name)&&!excluded.has(norm(x.title))).slice(0,MAX_CHECKS)){
    // One official retailer lookup per identity; a fuzzy search result never
    // authorizes a cover, price, availability or book summary.
    if(!work.title||!Array.isArray(work.author_name)||!work.author_name.length||!work.cover_i)continue;
