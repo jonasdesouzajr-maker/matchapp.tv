@@ -104,8 +104,13 @@
       const policy = window.matchPolicy;
       const raw = Array.isArray(parsed.results) ? parsed.results : [];
       let results = raw.filter(item => item && item.title && (!policy || policy.fitsQuestion(item, question)));
-      const audioIntent = /\b(podcast|music|song|songs|album|albums|playlist|single|singles|audiobook|spotify|listen|radio show)\b/i.test(guaranteeIntentQuestion(question));
-      if (!results.length && policy && !audioIntent) {
+      const requested = guaranteeIntentQuestion(question);
+      const audioIntent = /\b(podcast|music|song|songs|album|albums|playlist|single|singles|audiobook|spotify|listen|radio show)\b/i.test(requested);
+      const bookIntent = /\b(e-?books?|books?|audio\s?books?|novels?|reading|kindle|librivox|livros?|audiolivros?|libros?|audiolibros?|magazines?|revistas?)\b/i.test(requested) || /雑誌|オーディオブック/u.test(requested);
+      // A real conversational answer needs no unrelated local film cards.
+      const hasLiveAnswer = Boolean(parsed._live && String(parsed.answer || '').trim());
+      const wantsRecommendation = /\b(?:watch|recommend|suggest|stream|movies?|films?|series|shows?|comedy|horror|romance|recommendation|assistir|filmes?|séries?|recomendar|recomende|indique|películas?)\b/i.test(requested);
+      if (!results.length && policy && !audioIntent && !bookIntent && !hasLiveAnswer && wantsRecommendation) {
         results = catalog()
           .filter(e => e && e.title && policy.fitsQuestion(e, question) && window.tasteAllowsEntry(e))
           .slice(0, 6)
@@ -122,7 +127,8 @@
       }
       if (audioIntent) results = results.filter(item => /podcast|music|song|album|playlist|single|audiobook/i.test(String(item?.type || '') + ' ' + String(item?.platform || '')));
       parsed.results = results;
-      if (audioIntent) {
+      // Only recover a missing answer. Never overwrite a verified AI reply.
+      if (audioIntent && !String(parsed.answer || '').trim()) {
         const firstAudio = results[0];
         parsed.answer = firstAudio
           ? (String(firstAudio.title) + (firstAudio.synopsis ? ' — ' + String(firstAudio.synopsis).replace(/\s+/g,' ').trim() : ''))
