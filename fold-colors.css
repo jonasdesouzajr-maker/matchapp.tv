@@ -129,6 +129,9 @@ html body.page-home #latest-news>summary::before{
  background:var(--ma-fold-icon) center / contain no-repeat!important;
 }
 html body.page-home #latest-news:not([open])>summary{border-radius:22px!important;}
+/* Later Home CSS forces the panel to display:block; explicitly hide it when
+   native details closes, otherwise the headline looks permanently expanded. */
+html body.page-home #latest-news:not([open])>.ma-news-panel{display:none!important;}
 html body.page-home #latest-news .ma-news-summary-main{
  display:flex!important;flex:1 1 auto!important;min-width:0!important;
  flex-direction:column!important;align-items:flex-start!important;gap:2px!important;
