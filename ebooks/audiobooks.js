@@ -125,21 +125,32 @@
    .finally(()=>clearTimeout(timer));
  };
  async function appleSearch(book,market,fetchFn){
-  const u=new URL('https://itunes.apple.com/search');
-  u.searchParams.set('term',String(book.title||'')+' '+String(book.author||''));
-  u.searchParams.set('country',REGION[String(market||'US').toUpperCase()]||'us');
-  u.searchParams.set('media','audiobook');u.searchParams.set('entity','audiobook');
-  u.searchParams.set('limit','8');u.searchParams.set('explicit','No');
-  const result=await pausePromise(QUERY_TIMEOUT,signal=>fetchFn(u.href,{signal,headers:{Accept:'application/json'}}));
-  if(!result.ok)throw Error('Apple audio search unavailable');
-  const data=await result.json();
-  return verifyApple(book,data.results,market);
+  // Some storefronts rank audiobook editions under the title but NOT the
+  // author-joined query. Run the broader title-only search only after the
+  // exact-title-and-author query fails, then independently verify both fields.
+  const region=REGION[String(market||'US').toUpperCase()]||'us';
+  for(const term of [String(book.title||'')+' '+String(book.author||''),String(book.title||'')]){
+   const u=new URL('https://itunes.apple.com/search');
+   u.searchParams.set('term',term);
+   u.searchParams.set('country',region);
+   u.searchParams.set('media','audiobook');u.searchParams.set('entity','audiobook');
+   u.searchParams.set('limit','30');u.searchParams.set('explicit','No');
+   let response;
+   try{
+    response=await pausePromise(QUERY_TIMEOUT,signal=>fetchFn(u.href,{signal,headers:{Accept:'application/json'}}));
+   }catch(_){continue} // one source query outage does not prove no exact edition
+   if(!response?.ok)continue;
+   const payload=await response.json().catch(()=>null);
+   const matched=verifyApple(book,payload?.results,market);
+   if(matched)return matched;
+  }
+  return null;
  }
  async function librivoxSearch(book,market,fetchFn){
   if(String(market||'').toUpperCase()!=='US')return null;
   const u=new URL('https://librivox.org/api/feed/audiobooks/');
   u.searchParams.set('title',String(book.title||'').slice(0,90));
-  u.searchParams.set('format','json');u.searchParams.set('limit','5');
+  u.searchParams.set('format','json');u.searchParams.set('limit','20');
   const result=await pausePromise(QUERY_TIMEOUT,signal=>fetchFn(u.href,{signal,headers:{Accept:'application/json'}}));
   if(!result.ok)throw Error('LibriVox unavailable');
   const data=await result.json();
