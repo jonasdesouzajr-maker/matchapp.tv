@@ -147,7 +147,7 @@ function decorateBookResult(host,title,format){
  button=bar.querySelector('button');status(bar,'match',button);
 }
 function decorateAiBubble(wrap){
- if(!guest()||!wrap)return;
+ if(!guest()||!wrap||wrap.dataset.guestShareEligible==='0')return;
  let bar=wrap.querySelector(':scope > .ma-guest-trial-bar');
  let button;
  if(!bar){
@@ -184,7 +184,7 @@ function refreshVisible(){
  if(result&&result.style.display!=='none')decorateMatchResult();
  const book=$('#ebook-matcher-root [data-ebook-result]');
  if(book&&!book.hidden&&book.querySelector('.ebook-result-grid'))decorateBookResult(book,book.dataset.guestShareBookId||book.querySelector('h3')?.textContent||'','ebook');
- document.querySelectorAll('#chat-log > .chat-assistant').forEach(decorateAiBubble);
+ document.querySelectorAll('#chat-log > .chat-assistant:not([data-guest-share-eligible="0"])').forEach(decorateAiBubble);
 }
 async function matchReward(){
  prefer('match');
@@ -233,7 +233,8 @@ function makeDialog(){
 }
 let pending=null;
 function open({kind,title,token,message,url,onNext}){
- if(!guest()||sharesLeft()===0)return openRegistration();
+ if(!guest())return;
+ if(sharesLeft()===0)return openRegistration();
  const modal=makeDialog();
  const preview=$('#ma-guest-social-preview');
  preview.value=message||'MatchApp Ai matched me with '+title+'! Find your perfect match on MatchApp Ai. #MatchAppAi';
@@ -269,10 +270,12 @@ function open({kind,title,token,message,url,onNext}){
     facebook:'https://www.facebook.com/sharer/sharer.php?u='+u,
     x:'https://twitter.com/intent/tweet?text='+t+'&url='+u,
     telegram:'https://t.me/share/url?url='+u+'&text='+t};
+   // Open synchronously inside the click so a clipboard promise cannot
+   // expire the browser's popup/user-activation permission first.
+   window.open(links[name]||(name==='instagram'?'https://www.instagram.com/':'https://www.tiktok.com/'),'_blank','noopener');
    if(name==='instagram'||name==='tiktok'){
     try{await navigator.clipboard?.writeText(value+'\n'+invite.url);}catch(_){}
    }
-   window.open(links[name]||(name==='instagram'?'https://www.instagram.com/':'https://www.tiktok.com/'),'_blank','noopener');
    pending.startedAt=Date.now();confirm.hidden=false;
    feedback.textContent='Complete the post or message, then return to confirm. Opening a site does not grant a bonus.';
   };
