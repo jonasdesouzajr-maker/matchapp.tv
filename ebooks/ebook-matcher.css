@@ -479,3 +479,90 @@ html body.page-home #ebook-matcher-root .ebook-home-picks[open] .ebook-top-secti
     min-height:48px;font-size:16px;
   }
 }
+
+
+/* 2026-09-26 Bookworms exclusive violet/gold crest: adult Home only.
+   These final rules supersede old icon-hiding and pale panel styles without
+   touching the /ebooks/ hub, normal matcher or locked AdSense placement. */
+html body.page-home #ebook-matcher-root .ebook-fold{
+  background:
+    radial-gradient(ellipse at 9% 26%,rgba(178,105,255,.43),transparent 46%),
+    radial-gradient(ellipse at 92% 86%,rgba(117,67,204,.38),transparent 52%),
+    linear-gradient(113deg,#57317F 0%,#613092 38%,#3D1F6A 76%,#261542 100%)!important;
+  border-color:rgba(248,211,117,.86)!important;
+  box-shadow:inset 0 1px rgba(255,243,201,.21),
+    0 8px 24px rgba(69,26,118,.31),0 0 0 1px rgba(243,205,113,.12)!important;
+}
+html body.page-home #ebook-matcher-root .ebook-fold>summary{
+  display:grid!important;
+  grid-template-columns:64px minmax(0,1fr) 64px!important;
+  align-items:center!important;justify-items:stretch!important;
+  gap:11px!important;box-sizing:border-box!important;
+  min-height:80px!important;padding:7px 17px!important;
+  position:relative!important;
+  background:linear-gradient(180deg,rgba(255,255,255,.10),transparent 82%)!important;
+}
+html body.page-home #ebook-matcher-root .ebook-summary-icon{
+  display:grid!important;place-items:center!important;
+  position:static!important;width:64px!important;height:64px!important;
+  min-width:0!important;padding:0!important;margin:0!important;
+  border:0!important;background:transparent!important;box-shadow:none!important;
+  font-size:inherit!important;
+}
+html body.page-home #ebook-matcher-root img.ebook-brand-crest{
+  display:block!important;object-fit:contain!important;
+  width:64px!important;height:64px!important;max-width:100%!important;
+  border:0!important;border-radius:16px!important;
+  filter:drop-shadow(0 3px 7px rgba(17,8,39,.38));
+}
+html body.page-home #ebook-matcher-root .ebook-fold>summary>span:nth-child(2){
+  display:block!important;align-self:center!important;
+  justify-self:stretch!important;min-width:0!important;
+  text-align:center!important;
+}
+html body.page-home #ebook-matcher-root .ebook-fold>summary strong{
+  display:block!important;
+  font:850 clamp(18px,2.6vw,30px)/1.15 Outfit,Inter,system-ui,sans-serif!important;
+  color:#FFF8EE!important;text-align:center!important;
+  text-shadow:0 2px 8px rgba(17,8,41,.35)!important;
+  overflow-wrap:break-word!important;
+}
+html body.page-home #ebook-matcher-root .ebook-chevron{
+  position:static!important;justify-self:end!important;align-self:center!important;
+  width:52px!important;height:52px!important;min-width:44px!important;
+  min-height:44px!important;margin:0!important;
+  box-sizing:border-box!important;
+  border:1.5px solid rgba(255,218,133,.78)!important;
+  border-radius:50%!important;background:rgba(30,13,63,.35)!important;
+  font-size:26px!important;color:#FFE59A!important;
+  top:auto!important;right:auto!important;
+  transform:none!important;
+  transition:transform .18s ease!important;
+}
+html body.page-home #ebook-matcher-root .ebook-fold[open] .ebook-chevron{
+  transform:rotate(180deg)!important;
+}
+html body.page-home #ebook-matcher-root .ebook-fold>summary:focus-visible{
+  outline:3px solid #FFF0BA!important;outline-offset:-5px!important;
+  border-radius:20px!important;
+}
+@media(max-width:640px){
+  html body.page-home #ebook-matcher-root .ebook-fold>summary{
+    grid-template-columns:46px minmax(0,1fr) 46px!important;
+    min-height:69px!important;gap:6px!important;
+    padding:6px 10px!important;
+  }
+  html body.page-home #ebook-matcher-root .ebook-summary-icon,
+  html body.page-home #ebook-matcher-root img.ebook-brand-crest{
+    width:46px!important;height:46px!important;
+  }
+  html body.page-home #ebook-matcher-root .ebook-chevron{
+    width:45px!important;height:45px!important;font-size:23px!important;
+  }
+  html body.page-home #ebook-matcher-root .ebook-fold>summary strong{
+    font-size:clamp(15px,4.2vw,21px)!important;letter-spacing:-.025em!important;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  html body.page-home #ebook-matcher-root .ebook-chevron{transition:none!important}
+}
