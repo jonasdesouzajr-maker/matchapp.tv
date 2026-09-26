@@ -35,7 +35,7 @@ test('main exhausts fresh verified sources before exact recovery while Kids neve
 test('share rewards accumulate as persistent Match currency',()=>{
   const app=read('app.js'),share=read('share.js'),kidsAccount=read('kids/account.js'),migration=read('supabase/migrations/20260921210945_persistent_share_match_rewards.sql');
   assert.match(app,/match_guestBonusMatches/);
-  assert.match(app,/purchased_matches: remainingExtras/);
+  assert.match(app,/purchased_matches:action==='match'\?next:extras/);
   assert.match(share,/match_guestBonusMatches/);
   assert.doesNotMatch(share,/match_dailyCount'\), Math\.max\(0, current - 1\)/);
   assert.match(kidsAccount,/rpc\('claim_share_reward'\)/);
