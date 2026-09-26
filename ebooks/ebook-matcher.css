@@ -364,3 +364,20 @@ html body.page-home #ebook-matcher-root .ebook-fold>summary:focus-visible{
   html body.page-home #ebook-matcher-root .ebook-field{padding:9px;}
   html body.page-home #ebook-matcher-root .ebook-chips{gap:6px;}
 }
+
+
+/* 26 September 2026: truly compact Bookworms entry, after Watch Match + Search/Ask.
+   Keep the full matching form and official book covers accessible ON EXPANSION;
+   never change the independent /ebooks/ hub or native Kids surfaces. */
+html body.page-home #ebook-matcher-root{display:block!important;width:100%!important;max-width:var(--measure,1180px)!important;min-width:0;margin:6px auto 9px!important;padding:0!important;}
+html body.page-home #ebook-matcher-root .ebook-fold{border:1px solid rgba(229,193,88,.36)!important;border-radius:15px!important;background:linear-gradient(120deg,rgba(28,17,45,.95),rgba(14,12,28,.95))!important;box-shadow:0 6px 18px rgba(0,0,0,.22)!important;}
+html body.page-home #ebook-matcher-root .ebook-fold>summary{justify-content:flex-start!important;text-align:left!important;gap:9px!important;min-height:52px!important;padding:7px 40px 7px 11px!important;}
+html body.page-home #ebook-matcher-root .ebook-summary-icon{display:grid!important;place-items:center;width:30px;height:30px;flex:0 0 30px;border-radius:9px;font-size:15px;}
+html body.page-home #ebook-matcher-root .ebook-fold>summary>span:nth-child(2){align-items:flex-start!important;text-align:left!important;}
+html body.page-home #ebook-matcher-root .ebook-fold>summary small{font-size:8px!important;letter-spacing:.13em;line-height:1.1;}
+html body.page-home #ebook-matcher-root .ebook-fold>summary strong{font-size:clamp(15px,2.2vw,18px)!important;line-height:1.22!important;letter-spacing:0;text-transform:none;}
+html body.page-home #ebook-matcher-root .ebook-chevron{right:13px!important;font-size:20px;}
+html body.page-home #ebook-matcher-root .ebook-fold[open] .ebook-panel{padding:11px 12px!important;}
+html body.page-home #ebook-matcher-root .ebook-fields{gap:8px;}
+html body.page-home #ebook-matcher-root .ebook-field{padding:8px;}
+@media(max-width:600px){html body.page-home #ebook-matcher-root .ebook-fold>summary{min-height:50px!important;padding:6px 34px 6px 9px!important;}html body.page-home #ebook-matcher-root .ebook-summary-icon{width:28px;height:28px;flex-basis:28px;}html body.page-home #ebook-matcher-root .ebook-fold[open] .ebook-panel{padding:10px!important;}}
