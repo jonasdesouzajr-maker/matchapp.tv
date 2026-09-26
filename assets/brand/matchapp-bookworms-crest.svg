@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120" role="img" aria-labelledby="title desc">
+  <title id="title">MatchApp Bookworms original crest</title>
+  <desc id="desc">A golden MatchApp ring encircles an open violet storybook with a gold play emblem and a four-point reading star.</desc>
+  <defs>
+    <linearGradient id="ring" x1="5%" y1="5%" x2="92%" y2="100%">
+      <stop offset="0" stop-color="#fff1b7"/>
+      <stop offset=".37" stop-color="#edc768"/>
+      <stop offset=".71" stop-color="#ae792d"/>
+      <stop offset="1" stop-color="#ffe49a"/>
+    </linearGradient>
+    <linearGradient id="page" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#b686fa"/>
+      <stop offset=".42" stop-color="#66319f"/>
+      <stop offset="1" stop-color="#34185e"/>
+    </linearGradient>
+    <linearGradient id="foil" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff7d1"/>
+      <stop offset=".48" stop-color="#eac261"/>
+      <stop offset="1" stop-color="#b47a31"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="38%" cy="25%" r="83%">
+      <stop offset="0" stop-color="#8f4bd1" stop-opacity=".92"/>
+      <stop offset="1" stop-color="#201136" stop-opacity=".96"/>
+    </radialGradient>
+  </defs>
+  <!-- Branded circular identity; outer canvas remains transparent. -->
+  <circle cx="60" cy="60" r="50.5" fill="url(#glow)" stroke="url(#ring)" stroke-width="5"/>
+  <path d="M18.4 58.5a42.4 42.4 0 0 1 67-30.9" fill="none" stroke="#fff0b3" stroke-opacity=".31" stroke-width="1.65" stroke-linecap="round"/>
+  <path d="M99.6 69a41.5 41.5 0 0 1-26 30" fill="none" stroke="#f1c86c" stroke-opacity=".25" stroke-width="1.65" stroke-linecap="round"/>
+  <!-- Two original asymmetrical leaves meet at the spine to form a book crest. -->
+  <path d="M20 43 Q39 35 58 45 L58 86 Q38 77 20 85 Z" fill="url(#page)" stroke="url(#ring)" stroke-width="2.8" stroke-linejoin="round"/>
+  <path d="M62 45 Q82 35 100 43 L100 85 Q81 76 62 86 Z" fill="url(#page)" stroke="url(#ring)" stroke-width="2.8" stroke-linejoin="round"/>
+  <path d="M26 48 Q40 43 53 49 M26 56 Q39 52 52 56 M26 65 Q39 61 52 65" fill="none" stroke="#e6c89e" stroke-opacity=".74" stroke-width="1.75" stroke-linecap="round"/>
+  <path d="M68 49 Q81 43 94 48 M68 56 Q82 52 94 56 M68 65 Q82 61 94 65" fill="none" stroke="#e6c89e" stroke-opacity=".74" stroke-width="1.75" stroke-linecap="round"/>
+  <path d="M60 42 L60 89" stroke="url(#foil)" stroke-width="3.7" stroke-linecap="round"/>
+  <path d="M19 85 Q40 81 60 91 Q81 81 101 85" fill="none" stroke="url(#foil)" stroke-width="3.1" stroke-linecap="round"/>
+  <!-- The play glyph ties the book identity to MatchApp's entertainment logo. -->
+  <path d="M54 52.2 Q54 50.2 55.9 51.2 L72.1 60 Q74.1 61 72.1 62 L55.9 71 Q54 72 54 69.8 Z" fill="#241036" stroke="#f5d57c" stroke-width="3.2" stroke-linejoin="round"/>
+  <path d="M58 56.4 L68 61.1 L58 66.4 Z" fill="url(#foil)"/>
+  <!-- Four unequal prongs make the proprietary sparkle easy to recognize. -->
+  <path d="M91 11 L94.3 20.4 L105 24 L94.3 27.6 L91 37 L87.7 27.6 L77 24 L87.7 20.4 Z" fill="url(#foil)" stroke="#fff4c5" stroke-width=".85" stroke-linejoin="round"/>
+  <circle cx="78.5" cy="38" r="1.75" fill="#f6d782"/>
+</svg>
