@@ -56,7 +56,7 @@ test('News initializes directly on the homepage and its original-source cards li
  assert.match(colors,/#latest-news>summary\{[\s\S]*?pointer-events:auto!important;cursor:pointer!important/);
  assert.doesNotMatch(colors,/#latest-news>summary::after\{\s*content:none/);
  assert.match(colors,/#latest-news:not\(\[open\]\)>\.ma-news-panel\{display:none!important/);
- const dom=new JSDOM('<!doctype html><html lang="en"><body><main><article id="questionnaire-box"></article><section id="ebook-matcher-root"></section><details id="premiere-disclosure"></details></main></body></html>',{url:'https://matchapp.tv/',runScripts:'outside-only'});
+ const dom=new JSDOM('<!doctype html><html lang="en"><body><main><section id="ma-concierge"><article id="questionnaire-box"></article><section id="ebook-matcher-root"></section></section><details id="premiere-disclosure"></details></main></body></html>',{url:'https://matchapp.tv/',runScripts:'outside-only'});
  const w=dom.window;
  w.requestAnimationFrame=fn=>{fn();return 1;};
  w.fetch=async url=>String(url).includes('/cdn-cgi/trace')?{ok:false}:{
@@ -71,6 +71,8 @@ test('News initializes directly on the homepage and its original-source cards li
  const section=w.document.getElementById('latest-news');
  assert.ok(section);
  assert.equal(section.tagName,'DETAILS');
+ assert.equal(w.document.getElementById('ma-concierge').nextElementSibling,section,'News must remain visible outside a collapsed Match/Ask stage');
+ assert.equal(w.document.getElementById('ebook-matcher-root').previousElementSibling.id,'questionnaire-box','Never split the approved matcher/Bookworms pair');
  assert.equal(section.open,true);
  assert.equal(section.querySelectorAll('.ma-news-card').length,1);
  assert.equal(section.querySelector('.ma-news-card-main')?.getAttribute('href'),'https://www.reuters.com/world/');
