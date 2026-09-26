@@ -135,7 +135,8 @@ function decorateBookResult(host,title,format){
   ({bar,button}=createBanner('match'));host.prepend(bar);
   button.addEventListener('click',()=>{
    if(button.dataset.offer==='register')return openRegistration();
-   open({kind:'match',title:host.querySelector('h3')?.textContent||title,token:'book:'+String(host.dataset.guestShareBookId||title),onNext:()=>{
+   open({kind:'match',title:host.querySelector('h3')?.textContent||title,token:'book:'+String(host.dataset.guestShareBookId||title),
+    message:'Find your perfect entertainment match with MatchApp Ai. #MatchAppAi #WhatToWatch',onNext:()=>{
     host.hidden=true;
     // Same preferences and original catalog; the normal matcher consumes the
     // credited +1 and is responsible for all title/edition verification.
@@ -161,7 +162,8 @@ function decorateAiBubble(wrap){
    const excerpt=answer.slice(0,380);
    open({kind:'ask_ai',title:'MatchApp Ai conversation',
     token:'ai:'+question.slice(0,180)+':'+excerpt.slice(0,180),
-    message:'I asked MatchApp Ai: '+question.slice(0,190)+'\n\n'+excerpt+(answer.length>380?'…':'')+'\n\n#MatchAppAi',
+    // Keep AI chat contents PRIVATE; the public post promotes the owner's selected poster.
+    message:'Ask MatchApp Ai for your next great movie, book or series. #MatchAppAi #WhatToWatch',
     url:'https://matchapp.tv/discover.html',
     onNext:async()=>{
      // An AI prompt needs a question: open a clean, unlocked composer rather

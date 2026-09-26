@@ -6,6 +6,17 @@
 'use strict';
 const $=s=>document.querySelector(s);
 const guestKey='match_guestProofBrowser_v1';
+const POSTER='/assets/brand/matchapp-share-poster.png?v=20260926-selected1';
+let posterFilePending=null;
+function posterFile(){
+ if(!posterFilePending){
+  posterFilePending=fetch(POSTER,{cache:'force-cache'})
+   .then(r=>{if(!r.ok)throw new Error('Poster temporarily unavailable');return r.blob();})
+   .then(blob=>new File([blob],'matchapp-ai-share-poster.png',{type:'image/png'}))
+   .catch(e=>{posterFilePending=null;throw e;});
+ }
+ return posterFilePending;
+}
 const pt=()=>/^pt/i.test(String(window.MATCH_LANG||document.documentElement.lang||'en'));
 const uuid=()=>{
  if(crypto.randomUUID)return crypto.randomUUID();
@@ -42,11 +53,13 @@ function create(){
  '<div class="premium-card ma-guest-social-card ma-public-proof-card">',
  '<button class="ma-guest-social-close" type="button" data-proof-close aria-label="Close">✕</button>',
  '<h3 data-proof-heading>Share publicly · unlock +1</h3>',
- '<p class="ma-public-proof-lead">We will check the actual public post before awarding your bonus. No passwords or social account access required.</p>',
+ '<p class="ma-public-proof-lead">Share the official MatchApp Ai poster. We check your NEW public post and unique caption before awarding your bonus.</p>',
+ '<img class="ma-public-proof-poster" src="'+POSTER+'" width="941" height="1672" loading="lazy" alt="Official MatchApp Ai Find Your Perfect Match sharing poster">',
+ '<div class="ma-public-proof-actions"><a class="gold-btn" href="'+POSTER+'" download="matchapp-ai-share-poster.png" data-proof-save>⬇ Save poster</a><button type="button" class="gold-btn" data-proof-share>📲 Share poster</button></div>',
  '<label for="ma-proof-caption">Your unique sharing caption</label>',
  '<textarea id="ma-proof-caption" class="ma-guest-social-preview" readonly rows="4" aria-describedby="ma-proof-instructions"></textarea>',
  '<button type="button" class="gold-btn ma-proof-copy" data-proof-copy>Copy caption and code</button>',
- '<p id="ma-proof-instructions" class="ma-guest-social-note">Create a public TikTok video or Bluesky post using this caption. Private messages, drafts and screenshots cannot be verified.</p>',
+ '<p id="ma-proof-instructions" class="ma-guest-social-note">Attach this poster to a NEW public TikTok video or Bluesky post and include the ENTIRE unique caption. We independently verify public post text, not the image attachment. Private posts, messages and drafts do not qualify.</p>',
  '<div class="ma-guest-social-options ma-public-proof-platforms">',
  '<button type="button" data-proof-platform="tiktok">TikTok ↗</button>',
  '<button type="button" data-proof-platform="bluesky">Bluesky ↗</button>',
@@ -100,7 +113,8 @@ function open({kind,title,token,message,url,onNext}){
  if(window.isUserLoggedIn)return;
  if(window.MatchAppGuestShare?.remainingShares?.()===0)return window.MatchAppRegistrationWelcome?.openOffer?.()||window.location.assign('/?registrationOffer=1');
  const modal=create();modal.hidden=false;
- const copy=modal.querySelector('[data-proof-copy]'),verify=modal.querySelector('[data-proof-verify]');
+ const copy=modal.querySelector('[data-proof-copy]'),verify=modal.querySelector('[data-proof-verify]'),
+       sharePoster=modal.querySelector('[data-proof-share]');
  const caption=modal.querySelector('#ma-proof-caption'),feedback=modal.querySelector('[data-proof-feedback]');
  const link=modal.querySelector('#ma-proof-url'),platform=modal.querySelector('#ma-proof-platform');
  const heading=modal.querySelector('[data-proof-heading]');
@@ -108,15 +122,18 @@ function open({kind,title,token,message,url,onNext}){
   ?(pt()?'Compartilhe a resposta e ganhe +1 pergunta de IA':'Share your AI answer · earn +1 AI prompt')
   :(pt()?'Compartilhe o resultado e ganhe +1 Match':'Share your result · earn +1 Match');
  feedback.textContent=pt()?'Criando seu código de verificação…':'Generating your private verification code…';
- copy.disabled=true;verify.disabled=true;caption.value='';link.value='';
+ copy.disabled=true;verify.disabled=true;sharePoster.disabled=true;caption.value='';link.value='';
+ if(typeof fetch==='function')void posterFile().catch(()=>{});
  const thisOpen=Symbol();current={id:thisOpen,kind,title,token,onNext,proof:null,done:false};
  request({action:'start',kind}).then(data=>{
   if(current?.id!==thisOpen)return;
   current.proof=data;
   // Keep the challenge first; TikTok captions can be truncated in previews.
-  const core=String(message||('MatchApp Ai matched me with '+title)).replace(/\s+/g,' ').slice(0,350);
-  caption.value=data.challenge+' · https://matchapp.tv\n'+core;
-  copy.disabled=false;verify.disabled=false;
+  // Place the unique code FIRST for truncated TikTok captions; keep the
+  // entire caption short enough for Bluesky's 300-character post limit.
+  const core=String(message||'Find your next movie, series or book with MatchApp Ai').replace(/\s+/g,' ').slice(0,105);
+  caption.value=data.challenge+' https://matchapp.tv\n'+core+'\n#MatchAppAi #MatchAppTV #WhatToWatch #StreamingGuide #MovieNight';
+  copy.disabled=false;verify.disabled=false;sharePoster.disabled=false;
   feedback.textContent=pt()?'Pronto. Publique uma nova postagem pública contendo esta legenda.':'Ready. Publish a NEW PUBLIC post containing the exact caption above, then paste its URL.';
  }).catch(e=>{if(current?.id!==thisOpen)return;feedback.textContent=explanation(e.message);});
  copy.onclick=async()=>{
@@ -124,6 +141,24 @@ function open({kind,title,token,message,url,onNext}){
   try{await navigator.clipboard.writeText(caption.value);
     feedback.textContent=pt()?'Legenda copiada. Publique publicamente e cole o link depois.':'Caption copied. Publish it publicly, then return with the post link.';
   }catch(_){caption.focus();caption.select();feedback.textContent='Select and copy the caption above.';}
+ };
+ sharePoster.onclick=async()=>{
+  if(!current?.proof||current.id!==thisOpen)return;
+  if(typeof navigator.share!=='function'||typeof navigator.canShare!=='function'){
+   feedback.textContent=pt()?'Salve o pôster e publique com a legenda e o código.':'Save the poster and publish it with your copied caption and verification code.';
+   return;
+  }
+  try{
+   const file=await posterFile();
+   if(!navigator.canShare({files:[file]})){
+    feedback.textContent=pt()?'Seu navegador não envia imagens diretamente. Salve e publique pelo aplicativo.':'Your browser cannot attach images directly. Save the poster, then upload it in your social app.';
+    return;
+   }
+   await navigator.share({files:[file],title:'MatchApp Ai | Find Your Perfect Match',text:caption.value});
+   feedback.textContent=pt()?'Volte com o link da sua publicação pública para verificar o bônus.':'Come back with the PUBLIC post link to verify your reward. Opening a share sheet alone earns nothing.';
+  }catch(e){
+   if(e?.name!=='AbortError')feedback.textContent=pt()?'Não foi possível enviar o pôster. Salve e publique manualmente.':'Could not attach the poster. Save it and upload it manually.';
+  }
  };
  modal.querySelectorAll('[data-proof-platform]').forEach(button=>{
   button.onclick=()=>{

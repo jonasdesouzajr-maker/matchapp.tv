@@ -81,3 +81,10 @@ background:#130e22;font:600 13px/1.5 Inter,"Segoe UI",system-ui,sans-serif}
 .ma-public-proof-card .ma-public-proof-limit{margin:14px 0 0!important;color:#c8bfd3!important;font-size:11px!important}
 .ma-public-proof-card [data-proof-feedback]{min-height:30px;margin-top:10px!important;color:#ffe19b!important}
 @media(max-width:520px){.ma-public-proof-card{padding:17px!important;max-height:calc(100dvh - 24px)}}
+
+/* Official sharing artwork remains sharp and uncropped on mobile and desktop. */
+.ma-public-proof-poster{display:block;width:auto;height:auto;max-width:min(100%,205px);max-height:235px;object-fit:contain;margin:10px auto 12px;border-radius:13px;border:2px solid #e5c158;box-shadow:0 9px 28px rgba(229,193,88,.22),0 0 0 5px rgba(104,55,151,.22)}
+.ma-public-proof-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin:11px 0}
+.ma-public-proof-actions .gold-btn{box-sizing:border-box;display:flex;align-items:center;justify-content:center;min-height:44px!important;width:100%!important;margin:0!important;padding:9px!important;text-align:center;text-decoration:none;font:800 12px/1.25 Inter,"Segoe UI",system-ui,sans-serif}
+.ma-public-proof-actions .gold-btn:focus-visible{outline:3px solid #fff;outline-offset:2px}
+@media(max-width:520px){.ma-public-proof-poster{max-width:min(100%,158px);max-height:205px}.ma-public-proof-actions{gap:7px}}
