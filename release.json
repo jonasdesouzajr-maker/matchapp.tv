@@ -1,10 +1,10 @@
 {
-  "version": "2026.09.26.7",
+  "version": "2026.09.26.8",
   "date": "2026-09-26",
   "functional": true,
   "notes": {
-    "en": "Email/password sign-in recovery: clear Google-only and incorrect-password guidance, persisted-session verification, no premature reload or duplicate sign-ins, accurate password reset send errors and safe cooldown; successful password reset returns directly to Log In.",
-    "pt-BR": "Recuperação de acesso por e-mail/senha: orientação para contas Google ou senha incorreta, validação da sessão persistida, prevenção de recarga prematura e envios duplicados, erros reais ao solicitar redefinição e retorno direto à tela Entrar após alterar a senha.",
+    "en": "Guests now see remaining Matches at the top of Watch and Bookworms results. Across Watch, Bookworms and Ask AI, two one-time successful or explicitly confirmed social shares unlock +1 Match or +1 AI prompt. Each completed share closes the previous result and starts the corresponding next experience. After their included and share actions run out, guests are invited to register for the verified +10 Match/+10 AI welcome offer. Member rewards and Kids are unchanged.",
+    "pt-BR": "Visitantes agora veem os matches disponíveis acima dos resultados de filmes e livros. Dois compartilhamentos confirmados no total, entre Matches, Livros e Ask AI, dão +1 Match ou +1 pergunta de IA. Cada compartilhamento concluído fecha o resultado e inicia a próxima experiência. Após os créditos e os dois bônus acabarem, o convite é cadastrar-se e receber +10 Matches e +10 perguntas de IA após a verificação. Contas registradas e Kids não foram alterados.",
     "es": "Nuevo: Match E-books IA para lectores. Combina por estado de ánimo, género, ritmo, extensión, época y acceso gratis o de pago, con fuentes gratuitas legales y tiendas oficiales.",
     "fr": "Nouveau : Match E-books Ai pour les lecteurs, avec humeur, genre, rythme, longueur, époque, accès gratuit ou payant, sources gratuites légales et boutiques officielles.",
     "de": "Neu: Match E-books Ai für Leser – nach Stimmung, Genre, Tempo, Länge, Epoche und kostenlosem oder kostenpflichtigem Zugang, mit legalen Gratisquellen und offiziellen Shops.",
