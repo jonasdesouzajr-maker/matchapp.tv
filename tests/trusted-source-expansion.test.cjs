@@ -102,15 +102,18 @@ test('empty editorial e-book pool may search trusted libraries only when source 
  const noFree=await books.discover({...prefs,access:'free'},{market:'BR',excluded:new Set()},async()=>{blocked++;return null});
  assert.equal(noFree,null);assert.equal(blocked,0,'unknown free rights cannot be claimed');
 });
-test('same Match attempt inspects bounded subsequent verified TMDB windows before the independent fallback',()=>{
+test('same Match attempt inspects bounded source-verified TMDB windows before TVmaze fallback',()=>{
  const app=read('app.js');
- assert(app.includes('async function discoverVerifiedTMDBWider(requested)'));
- assert(app.includes('windowIndex<3'),'avoid infinite server query loops');
- assert(app.includes('Date.now()-started>36000'),'hard time budget protects mobile WebViews');
- assert(app.includes('next===previous'),'source outage must not cause a retry storm');
- assert(app.includes('withMatchSourceDeadline(()=>discoverVerifiedTMDBWider(requested),MATCH_SOURCE_DEADLINES.tmdb)'));
- assert(app.includes('if(!Array.isArray(candidates)||!candidates.length)'), 'empty/unavailable source remains unverified');
- assert(!app.includes("['broaden-mood'"),'no comfort-to-thriller relaxation');
+ assert(app.includes('async function discoverVerifiedExactTMDB(requested)'));
+ assert(app.includes('pagePlan=provider?[[1,3],[4,3]]:[[1,2],[3,2]]'),
+  'wider TMDB coverage must use the existing main two-window strategy');
+ assert(app.includes('Date.now()-sourceStarted>46000'),'search budget protects mobile WebViews');
+ assert(app.includes('MAX_EXACT_DETAILS=14'),'bounded exact-identity detail checks');
+ assert(app.includes('if(!Array.isArray(candidates)||!candidates.length)'),
+  'an unavailable source cannot prove inventory');
+ assert(app.includes('withMatchSourceDeadline(()=>discoverVerifiedExactTMDB(requested),MATCH_SOURCE_DEADLINES.tmdb)'));
+ assert(app.includes('withMatchSourceDeadline(()=>discoverVerifiedTVMaze(requested),MATCH_SOURCE_DEADLINES.tvmaze)'));
+ assert(!app.includes("['broaden-mood'"),'never relax Comfort into a thriller');
 });
 test('only adult pages load independent source fallbacks; Kids manual-reviewed library is never widened by public search',()=>{
  const home=read('index.html'),discover=read('discover.html'),kids=read('kids/index.html');
