@@ -207,84 +207,36 @@ function offerPending(kind){
  window.showToast?.(kind==='ask_ai'?'Share your latest AI response above to unlock one more prompt.':'Share your result above to unlock one more Match.');
  return true;
 }
-function makeDialog(){
- let modal=$('#ma-guest-social-modal');if(modal)return modal;
- modal=document.createElement('div');
- modal.id='ma-guest-social-modal';modal.className='ma-guest-social-backdrop';modal.hidden=true;
- modal.setAttribute('role','dialog');modal.setAttribute('aria-modal','true');modal.setAttribute('aria-label','Share and earn a free guest action');
- const card=document.createElement('div');card.className='premium-card ma-guest-social-card';
- const close=document.createElement('button');close.className='ma-guest-social-close';close.type='button';close.setAttribute('aria-label','Close sharing');close.textContent='✕';close.onclick=()=>{modal.hidden=true;};
- const h=document.createElement('h3');h.textContent=pt()?'Compartilhe e ganhe +1':'Share & unlock +1';
- const explain=document.createElement('p');explain.textContent=pt()?'Confira a mensagem antes de compartilhar. Copiar não libera o bônus.':'Review the content before sharing. Copying alone never grants a reward.';
- const preview=document.createElement('textarea');preview.className='ma-guest-social-preview';preview.id='ma-guest-social-preview';preview.setAttribute('aria-label','Text to share');preview.rows=5;
- const native=document.createElement('button');native.type='button';native.className='gold-btn ma-guest-social-native';native.textContent=pt()?'Compartilhar pelo dispositivo':'Share with my device';
- const options=document.createElement('div');options.className='ma-guest-social-options';
- for(const [name,title] of [['whatsapp','WhatsApp'],['facebook','Facebook'],['x','X'],['telegram','Telegram'],['instagram','Instagram'],['tiktok','TikTok']]){
-  const b=document.createElement('button');b.type='button';b.className='ma-guest-social-option';b.textContent=title;b.dataset.network=name;options.appendChild(b);
- }
- const hint=document.createElement('p');hint.className='ma-guest-social-note';hint.textContent='For browser-based social sharing, return here and confirm you actually posted or sent it.';
- const confirm=document.createElement('button');confirm.type='button';confirm.className='gold-btn ma-guest-social-confirm';confirm.textContent='✓ I shared it — unlock my bonus';confirm.hidden=true;
- const feedback=document.createElement('p');feedback.className='ma-guest-social-feedback';feedback.setAttribute('role','status');
- card.append(close,h,explain,preview,native,options,hint,confirm,feedback);modal.appendChild(card);
- document.body.appendChild(modal);
- modal.addEventListener('click',ev=>{if(ev.target===modal)modal.hidden=true;});
- document.addEventListener('keydown',ev=>{if(ev.key==='Escape'&&!modal.hidden)modal.hidden=true;});
- return modal;
+// Only accept an official server-verification response. No unverified
+// native share handoff, opened social tab, copied text or self-confirmation
+// can redeem a MatchApp guest reward.
+function finalizeVerified({kind,token,proof,onNext}){
+ if(!guest()||!proof?.verified||proof.kind!==kind||
+    typeof proof.proof_id!=='string'||proof.proof_id.length<30||
+    !['tiktok','bluesky'].includes(proof.platform)||
+    !['match','ask_ai'].includes(kind))return false;
+ const awarded=claim(kind,token);
+ if(!awarded.ok)return false;
+ prefer(kind);
+ window.showToast?.(kind==='ask_ai'
+  ?(pt()?'🎁 +1 pergunta de IA desbloqueada!':'🎁 +1 AI prompt unlocked!')
+  :(pt()?'🎁 +1 Match desbloqueado!':'🎁 +1 Match unlocked!'));
+ void Promise.resolve().then(()=>onNext?.()).catch(e=>{
+  console.warn('Verified share follow-up was interrupted:',e?.message||e);
+ });
+ return true;
 }
-let pending=null;
 function open({kind,title,token,message,url,onNext}){
  if(!guest())return;
  if(sharesLeft()===0)return openRegistration();
- const modal=makeDialog();
- const preview=$('#ma-guest-social-preview');
- preview.value=message||'MatchApp Ai matched me with '+title+'! Find your perfect match on MatchApp Ai. #MatchAppAi';
- const n=modal.querySelector('.ma-guest-social-native'),confirm=modal.querySelector('.ma-guest-social-confirm'),feedback=modal.querySelector('.ma-guest-social-feedback');
- n.hidden=typeof navigator.share!=='function';confirm.hidden=true;feedback.textContent='';modal.hidden=false;
- const invite={kind,title,token,url:url||'https://matchapp.tv/',onNext};
- pending={...invite,confirmed:false,startedAt:0};
- async function redeem(){
-  if(!pending||pending.token!==invite.token||pending.confirmed)return;
-  pending.confirmed=true;
-  const grant=claim(kind,token);
-  if(!grant.ok){feedback.textContent='No new bonus was issued.';return;}
-  modal.hidden=true;
-  prefer(kind);
-  window.showToast?.(kind==='ask_ai'?'🎁 +1 AI prompt unlocked!':'🎁 +1 Match unlocked!');
-  await onNext?.();
+ if(window.MatchAppVerifiedGuestPublicShare?.open){
+  return window.MatchAppVerifiedGuestPublicShare.open({kind,title,token,message,url,onNext});
  }
- n.onclick=async()=>{
-  if(n.disabled||!pending||pending.token!==token)return;
-  n.disabled=true;
-  try{
-   // Call navigator.share synchronously inside this genuine button click.
-   await navigator.share({title,text:preview.value,url:invite.url});
-   await redeem();
-  }catch(err){
-   feedback.textContent=err?.name==='AbortError'?'Share cancelled. No bonus was used.':'Sharing was not completed. Try another sharing option.';
-  }finally{n.disabled=false;}
- };
- modal.querySelectorAll('[data-network]').forEach(btn=>{
-  btn.onclick=async()=>{
-   const name=btn.dataset.network,value=preview.value,u=encodeURIComponent(invite.url),t=encodeURIComponent(value);
-   const links={whatsapp:'https://api.whatsapp.com/send?text='+t+'%20'+u,
-    facebook:'https://www.facebook.com/sharer/sharer.php?u='+u,
-    x:'https://twitter.com/intent/tweet?text='+t+'&url='+u,
-    telegram:'https://t.me/share/url?url='+u+'&text='+t};
-   // Open synchronously inside the click so a clipboard promise cannot
-   // expire the browser's popup/user-activation permission first.
-   window.open(links[name]||(name==='instagram'?'https://www.instagram.com/':'https://www.tiktok.com/'),'_blank','noopener');
-   if(name==='instagram'||name==='tiktok'){
-    try{await navigator.clipboard?.writeText(value+'\n'+invite.url);}catch(_){}
-   }
-   pending.startedAt=Date.now();confirm.hidden=false;
-   feedback.textContent='Complete the post or message, then return to confirm. Opening a site does not grant a bonus.';
-  };
- });
- confirm.onclick=async()=>{
-  if(!pending||pending.token!==token||pending.confirmed)return;
-  if(Date.now()-pending.startedAt<1200){feedback.textContent='Finish sharing first, then return here.';return;}
-  await redeem();
- };
+ // Fail closed when the independently verifying frontend/backend is
+ // unavailable. Do not expose the old "I shared" reward path.
+ window.showToast?.(pt()
+  ?'A verificação de publicações está indisponível. Nenhum bônus foi usado.'
+  :'Post verification is temporarily unavailable. No bonus was used.',true);
 }
 function init(){
  document.addEventListener('matchapp:authchange',refreshVisible);
@@ -293,8 +245,8 @@ function init(){
  refreshVisible();
 }
 window.MatchAppGuestShare=Object.freeze({
- remainingShares:sharesLeft,matchBalance,aiBalance,dailyLeft,left,claim,
- takePrefer,prefer,open,decorateMatchResult,decorateBookResult,decorateAiBubble,
+ remainingShares:sharesLeft,matchBalance,aiBalance,dailyLeft,left,
+ takePrefer,prefer,open,finalizeVerified,decorateMatchResult,decorateBookResult,decorateAiBubble,
  refreshVisible,matchReward,offerPending
 });
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();

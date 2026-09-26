@@ -61,3 +61,23 @@ button.ma-guest-trial-button[hidden]{display:none!important}
  .ma-guest-social-card{padding:18px!important}
 }
 @media(prefers-reduced-motion:reduce){.ma-guest-trial-highlight{transition:none}}
+
+
+/* Official-public-post verifier: same premium gold CTA on every adult screen. */
+.ma-public-proof-card{max-width:510px!important}
+.ma-public-proof-card label{display:block;color:#ffe4a0;font-size:12px;font-weight:800;margin:12px 0 5px}
+.ma-public-proof-lead{padding-right:18px}
+.ma-public-proof-card .ma-guest-social-preview{resize:none;min-height:92px;max-height:140px}
+.ma-public-proof-card .ma-guest-social-note{margin:13px 0 9px!important;color:#e4d1ee!important}
+.ma-public-proof-platforms{margin:12px 0 5px}
+.ma-public-proof-platforms button{background:linear-gradient(135deg,rgba(99,58,126,.95),rgba(57,40,70,.98));border-radius:12px}
+.ma-public-proof-select,.ma-public-proof-input{display:block;box-sizing:border-box;width:100%;min-height:45px;
+border:1px solid rgba(229,193,88,.7);border-radius:12px;padding:11px 12px;color:#fff;
+background:#130e22;font:600 13px/1.5 Inter,"Segoe UI",system-ui,sans-serif}
+.ma-public-proof-select option{background:#231631;color:white}
+.ma-public-proof-input::placeholder{color:#ab97b6}
+.ma-public-proof-select:focus-visible,.ma-public-proof-input:focus-visible{outline:3px solid #fff3c3;outline-offset:2px}
+.ma-public-proof-card [data-proof-copy]:disabled,.ma-public-proof-card [data-proof-verify]:disabled{opacity:.45;cursor:wait}
+.ma-public-proof-card .ma-public-proof-limit{margin:14px 0 0!important;color:#c8bfd3!important;font-size:11px!important}
+.ma-public-proof-card [data-proof-feedback]{min-height:30px;margin-top:10px!important;color:#ffe19b!important}
+@media(max-width:520px){.ma-public-proof-card{padding:17px!important;max-height:calc(100dvh - 24px)}}
