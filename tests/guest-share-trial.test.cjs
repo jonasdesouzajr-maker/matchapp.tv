@@ -114,14 +114,15 @@ test('book top banner starts the real existing Bookworms matcher only after plat
  assert.equal(host.hidden,true);
  dom.window.close();
 });
-test('AI quote at top is copied only to a reviewable caption and earned prompt opens new composer',async()=>{
+test('AI share uses public brand caption without leaking private chat and earned prompt opens new composer',async()=>{
  const box=boot(),{w,trial,get,call,dom}=box;
  const bubble=w.document.createElement('div');bubble.className='chat-bubble chat-assistant';bubble.dataset.guestShareEligible='1';
  bubble.innerHTML='<p class="chat-answer-text">An AI response about a title you like.</p>';get('chat-log').appendChild(bubble);
  trial.decorateAiBubble(bubble);
  bubble.querySelector('button').click();await tick();await tick();
  const modal=get('ma-official-social-proof');
- assert.match(modal.querySelector('#ma-proof-caption').value,/An AI response/);
+ assert.match(modal.querySelector('#ma-proof-caption').value,/Ask MatchApp Ai/);
+ assert.doesNotMatch(modal.querySelector('#ma-proof-caption').value,/An AI response/, 'private chat must never leak into a public promo post');
  call.activeKind='ask_ai';
  await verify(modal,'https://www.tiktok.com/@example/video/7123456789012345678',call);
  await tick();await tick();
@@ -166,8 +167,8 @@ test('guest with remaining share opportunities is shown previous result instead 
 test('new adult assets and premium design do not touch Kids',()=>{
  const home=read('index.html'),chat=read('discover.html');
  for(const page of [home,chat]){
-  assert.match(page,/verified-public-guest-share\.js\?v=20260926-publicproof1/);
-  assert.match(page,/guest-share-rewards\.css\?v=20260926-publicproof1/);
+  assert.match(page,/verified-public-guest-share\.js\?v=20260926-selectedposter1/);
+  assert.match(page,/guest-share-rewards\.css\?v=20260926-selectedposter1/);
  }
  assert.match(read('guest-share-rewards.js'),/finalizeVerified/);
  assert.match(read('share.js'),/No.+native handoff is not publication proof|native handoff is not publication proof/i);
