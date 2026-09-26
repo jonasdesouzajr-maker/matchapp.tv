@@ -277,7 +277,7 @@
     if (wantedMoods.includes('cozy comfort watch')) {
       const taggedGenres = [...cats,...values(entry.genres)];
       if (moodGenreBlocks['cozy comfort watch'].some(g=>taggedGenres.some(t=>String(t).toLowerCase()===g.toLowerCase()))) return false;
-      if (moods.some(m=>['scary','dark and gritty','intense and thrilling','heartbreaking'].includes(m))) return false;
+      if (['scary','dark and gritty','intense and thrilling','heartbreaking'].includes(primaryMood)) return false;
       if (comfortHeavyText.test([entry.synopsis,entry.overview].filter(Boolean).join(' '))) return false;
     }
     if (values(criteria?.genre).some(genre=>incompatible(genre,criteria)))return false;
