@@ -20,10 +20,10 @@ test('TikTok intro and video showcase are fully absent from Home runtime',()=>{
 test('fresh Home navigation establishes the top once without delayed scroll correction',()=>{
  const origin=read('page-origin.js');assert.match(origin,/scrollRestoration='manual'/);assert.match(origin,/getEntriesByType/);assert.doesNotMatch(origin,/DOMContentLoaded|pageshow|requestAnimationFrame\(top\)|setInterval\(|prototype\.scrollIntoView|prototype\.focus/);
 });
-test('walkthrough is launched manually and follows the nine-step premium feature order',()=>{
+test('walkthrough is manual and follows premium watch, Bookworms and Ask AI feature order',()=>{
  const tour=read('onboarding-tour.js');
  assert.match(tour,/window\.MatchAppOnboarding/);assert.doesNotMatch(tour,/setTimeout\(start|DOMContentLoaded[^\n]*start/);
- for(const key of ["pick","mood","format","platform","more","ai","latest","kids","profile"])assert.match(tour,new RegExp("key:'"+key+"'"));
+ for(const key of ["pick","mood","format","platform","more","book","bookFormat","ai","latest","kids","profile"])assert.match(tour,new RegExp("key:'"+key+"'"));
  assert.doesNotMatch(tour,/key:'find'/);
  assert.doesNotMatch(tour,/key:'quota'/);
 });
