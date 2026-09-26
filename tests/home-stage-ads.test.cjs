@@ -98,3 +98,13 @@ test('owner-approved Together sponsorship follows its fold and retains the exact
  assert.equal(ins.getAttribute('data-full-width-responsive'),'true');
  assert.equal(doc.querySelectorAll('ins.adsbygoogle').length,5,'Never duplicate or drop any protected slot');
 });
+
+
+test('live sponsor verification counts locked manual slots without flagging legitimate Auto ads',()=>{
+ const smoke=read('tools/live-production-smoke.cjs');
+ assert.ok(smoke.includes('manualCount:document.querySelectorAll('));
+ assert.ok(smoke.includes('ins.adsbygoogle[data-ad-slot="2595698117"]'));
+ assert.ok(smoke.includes('sponsor.manualCount===5'));
+ assert.ok(smoke.includes('totalCount:document.querySelectorAll('),'Auto-ad count is reported, not mistakenly treated as inventory drift');
+ assert.ok(!smoke.includes('sponsor.count===5'));
+});
