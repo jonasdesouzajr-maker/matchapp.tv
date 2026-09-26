@@ -66,6 +66,7 @@ test('Latest News has an interactive native fold with its original blue-violet c
  assert.match(css,/content:""!important;display:block!important;flex:0 0 62px!important/);
  assert.match(css,/#5369AA,#394E91/);
  assert.match(css,/pointer-events:auto!important;cursor:pointer!important/);
+ assert.match(css,/#latest-news:not\(\[open\]\)>\.ma-news-panel\{display:none!important/,'Closed news hides its panel even when older CSS forces display:block');
  assert.doesNotMatch(css,/#latest-news>summary::after\{\s*content:none!important;display:none!important/);
  assert.match(old,/#latest-news>summary::after\{/,'The existing arrow stays visible');
  assert.ok(old.indexOf('#latest-news>summary::before')>=0,'Known legacy CSS override must remain accounted for');
