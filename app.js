@@ -1867,16 +1867,25 @@ window.handlePasswordReset = async function() {
     if (btn) { btn.disabled = true; btn.style.opacity = '0.6'; btn.innerText = '…'; }
 
     try {
-        await supabaseClient.auth.resetPasswordForEmail(email, {
+        // Supabase returns { error } for SMTP/rate failures; catching only
+        // thrown exceptions used to falsely promise delivery when no email sent.
+        const { error } = await supabaseClient.auth.resetPasswordForEmail(email, {
             redirectTo: window.location.origin + '/reset.html'
         });
-    } catch (e) {
-        // Swallowed on purpose — see the note above about not revealing
-        // whether an address is registered.
+        if (error && (error.status === 429 || error.code === 'over_email_send_rate_limit')) {
+            show('Too many password-reset requests. Please try again later.', false);
+        } else if (error && error.status >= 500) {
+            show('We could not send a password-reset email right now. Please retry.', false);
+        } else {
+            // Preserve enumeration protection: the reply is identical for
+            // nonexistent, Google-only and existing password accounts.
+            show(window.t ? t('auth.resetSent') : "If this address has a password account, a reset link is on its way. If you signed up with Google, use Continue with Google.", true);
+        }
+    } catch (_) {
+        show('Could not reach the account service. Check your connection and retry.', false);
+    } finally {
+        if (btn) { btn.disabled = false; btn.style.opacity = '1'; btn.innerText = original; }
     }
-
-    show(window.t ? t('auth.resetSent') : "If that email has an account, a reset link is on its way. Check your inbox and spam folder.", true);
-    if (btn) { btn.disabled = false; btn.style.opacity = '1'; btn.innerText = original; }
 };
 
 // ----------------------------------------------------
@@ -2020,12 +2029,14 @@ async function loginWithOAuthProvider(provider, label) {
         if (msgEl) { msgEl.style.display = 'block'; msgEl.style.color = '#ff5252'; msgEl.style.background = 'rgba(255,0,0,0.1)'; msgEl.innerText = "Database connection offline."; }
         return;
     }
-    const { error } = await supabaseClient.auth.signInWithOAuth({
-        provider,
-        options: { redirectTo: window.location.origin + '/index.html' }
-    });
-    if (error && msgEl) {
-        msgEl.style.display = 'block'; msgEl.style.color = '#ff5252'; msgEl.style.background = 'rgba(255,0,0,0.1)'; msgEl.innerText = label + " Login Error: " + error.message;
+    try {
+        const { error } = await supabaseClient.auth.signInWithOAuth({
+            provider,
+            options: { redirectTo: window.location.origin + '/index.html' }
+        });
+        if (error) showEmailAuthMessage(label + ' sign-in could not start. Please retry.');
+    } catch (_) {
+        showEmailAuthMessage('Could not connect to '+label+'. Please check your connection and retry.');
     }
 }
 window.loginWithGoogle = () => loginWithOAuthProvider('google','Google');
