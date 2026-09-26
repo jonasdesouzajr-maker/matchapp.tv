@@ -98,8 +98,8 @@ test('The compact hero preserves both working shortcuts and the existing How it 
  assert.match(compact,/\.home-hero \.ma-how-link/);
  assert.match(compact,/@media\(max-width:600px\)/);
  const html=read('index.html');
- assert.match(html,/\/ebooks\/ebook-matcher\.js\?v=20260926-strictbooks4/);
- assert.match(html,/\/ebooks\/ebook-matcher\.css\?v=20260926-strictbooks4/);
+ assert.match(html,/\/ebooks\/ebook-matcher\.js\?v=20260926-curation1/);
+ assert.match(html,/\/ebooks\/ebook-matcher\.css\?v=20260926-curation1/);
  assert.match(html,/\/home-approved\.js\?v=20260926-bookcrest-hero1/);
  assert.match(read('home-approved.js'),/home-approved\.css\?v=20260926-bookcrest-hero1/);
 });
