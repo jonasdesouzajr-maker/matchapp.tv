@@ -3385,7 +3385,10 @@ html body.page-home #daily-match-checkin { padding: 11px 12px !important; }
                 <p id="phone-auth-help">Enter your mobile number including the country code.</p>
                 <div id="phone-auth-number-step">
                     <input id="phone-auth-number" class="phone-auth-field" type="tel" inputmode="tel" autocomplete="tel" placeholder="+55 21 99999 9999" aria-label="Mobile phone number with country code">
+                    <input id="phone-auth-name" class="phone-auth-field" type="text" autocomplete="name" maxlength="120" placeholder="Full name (first registration)" aria-label="Full name (first registration)">
+                    <p id="phone-auth-name-help" class="auth-hint">New here? Add your full name so it is saved with your account. Returning members can leave it blank.</p>
                     <button id="phone-auth-send" class="phone-auth-action" type="button">Send code</button>
+                    <button id="phone-auth-have-code" class="phone-auth-secondary" type="button">I already have an SMS code</button>
                 </div>
                 <div id="phone-auth-code-step" hidden>
                     <p id="phone-auth-code-help">We sent a 6-digit code by SMS.</p>
@@ -3462,7 +3465,7 @@ html body.page-home #daily-match-checkin { padding: 11px 12px !important; }
 <script src="/ebooks/audiobooks.js?v=20260926-catalogscale1"></script>
 <script src="/ebooks/cover-identity.js?v=20260926-catalogscale1"></script>
 <script src="/ebooks/ebook-matcher.js?v=20260926-publishericon2"></script>
-<script src="/phone-auth-i18n.js?v=1"></script><script src="/phone-auth.js?v=1"></script><script src="/phone-auth-localize.js?v=1"></script>
+<script src="/phone-auth-i18n.js?v=1"></script><script src="/phone-auth.js?v=20260926-phoneverify1"></script><script src="/phone-auth-localize.js?v=1"></script>
     <script src="/catalog-media.js?v=20260926-catalogscale1"></script>
 <script src="/title-experience.js?v=20260920-freeze2"></script>
     <script src="/install-progress.js?v=20260924-runtime1"></script>
