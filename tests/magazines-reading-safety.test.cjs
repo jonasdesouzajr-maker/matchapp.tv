@@ -28,7 +28,12 @@ test('expanded official adult-only global magazine profiles contain real publish
  assert.ok(items.every(x=>!w.MatchAppContentSafety.isExplicit(x)&&x.kind==='magazine'));
  for(const m of items){
   assert.ok(/^https:\/\//.test(m.issues)&&/^https:\/\//.test(m.site));
-  assert.ok(/^https:\/\/[^/]+\/favicon\.ico$/.test(m.icon),'only original publisher-brand icons: '+m.title);
+  const icon=new URL(m.icon),publisher=new URL(m.site);
+  assert.equal(icon.hostname,publisher.hostname,'publisher icon must be served from its official host: '+m.title);
+  assert.ok(icon.pathname.endsWith('/favicon.ico'),'use original publisher-brand icon: '+m.title);
+  if(m.id==='mag-vogue')
+    assert.equal(icon.pathname,'/verso/static/vogue-global/assets/us/favicon.ico',
+      'Vogue icon must point at the published brand asset, not an assumed root path');
   assert.deepEqual(Array.from(m.access),['free','paid']);
  }
 });
