@@ -10,8 +10,8 @@ test('phone signup and login copy covers every supported MatchApp language',()=>
   const base=read('phone-auth.js');
   const extra=read('phone-auth-i18n.js');
   const helper=read('phone-auth-localize.js');
-  assert.match(html,/phone-auth-i18n\.js\?v=1/);
-  assert.match(html,/phone-auth\.js\?v=1/);
+  assert.match(html,/phone-auth-i18n\.js\?v=20260926-phoneverify1/);
+  assert.match(html,/phone-auth\.js\?v=20260926-phoneverify1/);
   assert.match(html,/phone-auth-localize\.js\?v=1/);
   for(const lang of ['en','pt-BR','es']) assert.match(base,new RegExp("(^|[,'\\s])['\"]?"+lang.replace('-','\\-')+"['\"]?\\s*:"));
   for(const lang of ['fr','de','it','tr','ru','ar','hi','id','ja','ko','zh']) assert.match(extra,new RegExp("(^|[,'\\s])"+lang.replace('-','\\-')+"\\s*:"));
