@@ -22,6 +22,10 @@ test('independently attributed TV source requires genuine source URL, poster and
  assert.equal(hit.platformVerified,false);
  assert.equal(hit._meta.sourceUrl,show.url);
  assert.equal(hit._meta.artwork,show.image.original);
+ const sameShowMedium='https://static.tvmaze.com/uploads/images/medium/3/7893.jpg';
+ const sourceWithBackup=tv.select([{...show,image:{...show.image,medium:sameShowMedium}}],criteria,checks);
+ assert.equal(sourceWithBackup._meta.artworkFallback,sameShowMedium);
+ assert.equal(sourceWithBackup._meta.artwork,show.image.original);
  assert.equal(tv.select([{...show,url:'https://www.tvmaze.com/shows/666/wrong'}],criteria,checks),null);
  assert.equal(tv.select([{...show,image:{original:'https://evil.test/fake.jpg'}}],criteria,checks),null);
  assert.equal(tv.select([{...show,genres:['Thriller']}],criteria,checks),null);
@@ -138,6 +142,8 @@ test('only adult pages load independent source fallbacks; Kids manual-reviewed l
  assert(app.includes("|| selected.source === 'tvmaze-source-verified'"),
   'the selected independent source must take precedence over unrelated exact-title poster maps');
  assert(app.includes('static\\.tvmaze\\.com'), 'preserve already loaded official independent cover art');
+ assert(app.includes('MatchAppTVMazeSource?.artwork?.(selected._meta?.artworkFallback)'),
+  'a failed original should retry only the same independently verified TV show medium artwork');
  assert(match.includes('MatchAppLiveBookSource?.discover')&&match.includes('MatchAppGutenbergSource.search'));
  assert(app.includes("const terms=[term]"),'regional music and podcasts retry independently with exact format gates');
 });
