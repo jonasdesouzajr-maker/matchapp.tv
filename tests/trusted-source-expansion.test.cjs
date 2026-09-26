@@ -85,17 +85,22 @@ test('live book requires two independently exact sources, verified country sale,
  assert.equal(books.approve(work,[{...volume,saleInfo:{...volume.saleInfo,saleability:'NOT_FOR_SALE'}}],prefs,'BR'),null);
  assert.equal(books.approve(work,[{...volume,volumeInfo:{...volume.volumeInfo,description:'Short'}}],prefs,'BR'),null);
  assert.equal(books.approve(work,[{...volume,volumeInfo:{...volume.volumeInfo,maturityRating:'MATURE'}}],prefs,'BR'),null);
+ assert.equal(books.approve(work,[{...volume,volumeInfo:{...volume.volumeInfo,maturityRating:undefined}}],prefs,'BR'),null,'an unclassified retailer rating must not count as confirmed safe');
+ assert.equal(books.approve(work,[{...volume,saleInfo:{...volume.saleInfo,buyLink:'https://books.google.com/books?id=preview'}}],prefs,'BR'),null,'a preview is not a retailer purchase link');
 });
 test('empty editorial e-book pool may search trusted libraries only when source can verify every hard criterion',async()=>{
  const seen=[];
  const fetchMock=async url=>{
   seen.push(url);
-  return {ok:true,json:async()=>url.includes('openlibrary.org')?{docs:[work]}:{items:[volume]}};
+  return {ok:true,json:async()=>new URL(url).hostname==='openlibrary.org'?{docs:[work]}:{items:[volume]}};
  };
  const hit=await books.discover(prefs,{market:'BR',excluded:new Set()},fetchMock);
  assert.equal(hit.title,'The Voyage Beyond');
  assert.equal(seen.length,2);
- assert(seen[0].includes('openlibrary.org/search.json')&&seen[1].includes('googleapis.com/books/v1/volumes'));
+ assert.equal(new URL(seen[0]).hostname,'openlibrary.org');
+ assert.equal(new URL(seen[0]).pathname,'/search.json');
+ assert.equal(new URL(seen[1]).hostname,'www.googleapis.com');
+ assert.equal(new URL(seen[1]).pathname,'/books/v1/volumes');
  let blocked=0;
  const noMood=await books.discover({...prefs,mood:'cozy'},{market:'BR',excluded:new Set()},async()=>{blocked++;return null});
  assert.equal(noMood,null);assert.equal(blocked,0,'unknown source mood may not be invented');
