@@ -102,6 +102,16 @@ test('empty editorial e-book pool may search trusted libraries only when source 
  const noFree=await books.discover({...prefs,access:'free'},{market:'BR',excluded:new Set()},async()=>{blocked++;return null});
  assert.equal(noFree,null);assert.equal(blocked,0,'unknown free rights cannot be claimed');
 });
+test('same Match attempt inspects bounded subsequent verified TMDB windows before the independent fallback',()=>{
+ const app=read('app.js');
+ assert(app.includes('async function discoverVerifiedTMDBWider(requested)'));
+ assert(app.includes('windowIndex<3'),'avoid infinite server query loops');
+ assert(app.includes('Date.now()-started>36000'),'hard time budget protects mobile WebViews');
+ assert(app.includes('next===previous'),'source outage must not cause a retry storm');
+ assert(app.includes('withMatchSourceDeadline(()=>discoverVerifiedTMDBWider(requested),MATCH_SOURCE_DEADLINES.tmdb)'));
+ assert(app.includes('if(!Array.isArray(candidates)||!candidates.length)'), 'empty/unavailable source remains unverified');
+ assert(!app.includes("['broaden-mood'"),'no comfort-to-thriller relaxation');
+});
 test('only adult pages load independent source fallbacks; Kids manual-reviewed library is never widened by public search',()=>{
  const home=read('index.html'),discover=read('discover.html'),kids=read('kids/index.html');
  const app=read('app.js'),match=read('ebooks/ebook-matcher.js');
