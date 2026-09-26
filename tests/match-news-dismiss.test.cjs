@@ -89,7 +89,7 @@ test('match artwork appears before source awaits and slow fallback cannot replac
  assert.match(app,/if \(!originalShown\) posterEl\.src = localCover/);
  assert.match(media,/state\.needsRepair=true/);
  assert.match(media,/if\(!state\.meta&&safeSameTitleMedia\(found,state\)\)/);
- assert.match(html,/catalog-media\.js\?v=20260926-coverrace1/);
- assert.match(html,/app\.js\?v=20260926-comfort4/);
+ assert.match(html,/catalog-media\.js\?v=20260926-catalogscale1/);
+ assert.match(html,/app\.js\?v=20260926-catalogscale1/);
  assert.doesNotMatch(read('kids/index.html'),/result-dismiss|latest-news\.js\?v=20260926-newsfold1/);
 });

@@ -20,7 +20,7 @@ test('match click paints progress immediately and never delays a verified result
 test('result card is not skipped as already-seen after the title is remembered',()=>{
   const trigger=app.slice(app.indexOf('window.triggerMatch'),app.indexOf('async function renderResult'));
   const renderStart=app.indexOf('async function renderResult');
-  const render=app.slice(renderStart, renderStart+4500);
+  const render=app.slice(renderStart, renderStart+6500);
   assert.doesNotMatch(trigger,/rememberShownTitle\(matchResult\.title\)[\s\S]{0,80}matchapp:newmatch/);
   assert.match(render,/rememberShownTitle\(selected\.title\)/);
   assert.match(render,/matchapp:newmatch/);

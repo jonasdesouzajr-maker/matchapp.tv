@@ -17,7 +17,7 @@ test('fast verified matches do not wait for a ceremonial timer',async()=>{
  assert.equal((await env.bounded(()=>({title:'verified'}),50000)).title,'verified');
 });
 test('the guard is loaded after the adult matcher and not after 12 seconds',()=>{
- assert.match(html,/app\.js\?v=20260926-comfort4[\s\S]*match-speed\.js\?v=20260925-matchrestore1/);
+ assert.match(html,/app\.js\?v=20260926-catalogscale1[\s\S]*match-speed\.js\?v=20260925-matchrestore1/);
  assert.match(guard,/150000/);assert.doesNotMatch(guard,/12000\b/);
 });
 test('translation does not hold the match and the source synopsis stays available',()=>{

@@ -106,7 +106,7 @@ test('only exact verified Apple editions expose real vendor preview audio',()=>{
  assert.equal(audio.verifyApple(book,[{...appleRow,previewUrl:'https://evil.example/fake.mp3'}],'US').previewUrl,null);
  assert.equal(audio.verifyApple(book,[{...appleRow,trackExplicitness:'explicit'}],'US'),null);
  const matcher=read('ebooks/ebook-matcher.js');
- assert.match(matcher,/audio\.apple\.verified&&audio\.apple\.previewUrl/);
+ assert.match(matcher,/audio\?\.apple\?\.verified&&audio\.apple\.previewUrl/);
  assert.match(matcher,/class="ebook-audio-preview"/);
 });
 
