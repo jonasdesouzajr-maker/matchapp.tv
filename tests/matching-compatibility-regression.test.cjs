@@ -50,7 +50,7 @@ test('Comfort is also a strict recommendation gate, not only a disabled chip',()
  assert(app.includes("if (mood === 'cozy comfort watch')"),'iTunes must block heavy themes');
  dom.window.close();
 });
-test('Bookworms Home and the shared audiobook form disable contradictory moods and genres',()=>{
+test('Bookworms Home and the shared audiobook form disable contradictory moods and genres',async()=>{
  const dom=books({mood:'cozy',genre:'classics'}),w=dom.window;
  const genre=w.document.querySelector('[data-ebook-select="genre"]'),mood=w.document.querySelector('[data-ebook-select="mood"]');
  assert.equal(genre.value,'classics');
@@ -63,13 +63,18 @@ test('Bookworms Home and the shared audiobook form disable contradictory moods a
  assert.equal(genre.querySelector('option[value="thriller"]').disabled,false);
  genre.value='thriller';genre.dispatchEvent(new w.Event('change',{bubbles:true}));
  assert.equal(mood.querySelector('option[value="cozy"]').disabled,true);
+ // Bookworms mount finishes its asynchronous cloud-hydration continuation
+ // before this synthetic browser is closed; otherwise jsdom reports a
+ // post-test unhandled rejection even though all assertions pass.
+ await new Promise(resolve=>setTimeout(resolve,0));
  w.close();
 });
-test('Saved incompatible Bookworms preferences normalize to keep the explicit mood',()=>{
+test('Saved incompatible Bookworms preferences normalize to keep the explicit mood',async()=>{
  const dom=books({format:'audiobook',mood:'cozy',genre:'thriller'}),w=dom.window;
  assert.equal(w.document.querySelector('[data-ebook-select="mood"]').value,'cozy');
  assert.equal(w.document.querySelector('[data-ebook-select="genre"]').value,'any');
  assert.equal(w.document.querySelector('option[value="thriller"]').disabled,true);
+ await new Promise(resolve=>setTimeout(resolve,0));
  w.close();
 });
 test('Unsupported BR free audiobook rights show honest source discovery without taking quota',async()=>{
