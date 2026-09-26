@@ -33,8 +33,8 @@
    });
  const safeBuy=url=>{
   try{const u=new URL(url);return u.protocol==='https:'&&
-    ['play.google.com','books.google.com'].includes(u.hostname)&&
-    (/^\/store\/books\/details/.test(u.pathname)||/^\/books/.test(u.pathname))?u.href:null;
+    u.hostname==='play.google.com'&&
+    /^\/store\/books\/details(?:\/|$)/.test(u.pathname)&&u.searchParams.has('id')?u.href:null;
   }catch(_){return null}
  };
  const safeWork=key=>/^\/works\/OL\d+W$/.test(String(key||''))?'https://openlibrary.org'+key:null;
@@ -60,7 +60,7 @@
    const buy=safeBuy(sale?.buyLink);
    if(!v||!titleEqual(title,v.title)||!authorEqual(authors,v.authors)||
       !buy||String(sale?.country||'').toUpperCase()!==market||
-      sale.saleability!=='FOR_SALE'||v.maturityRating==='MATURE'||
+      sale.saleability!=='FOR_SALE'||v.maturityRating!=='NOT_MATURE'||
       summary.length<75||EXPLICIT.test(summary+' '+(v.categories||[]).join(' ')))continue;
    if(prefs.explicit?.({title,synopsis:summary,cats:work.subject})===true)continue;
    const length=Number(v.pageCount)||0;
