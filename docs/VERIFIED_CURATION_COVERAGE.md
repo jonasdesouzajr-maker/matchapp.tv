@@ -42,6 +42,56 @@ and offer controlled alternate filters without silently changing constraints.
   Ask AI or saved titles. New source-rated cards require individual adult
   editorial review before promotion. No adult books, audio or magazines enter Kids.
 
+## Bounded trusted-source escalation (added after the original profile expansion)
+
+When the eligible editorial list and exact TMDB source lookup cannot satisfy a
+request, the adult matcher now tries a **separate, attributed TVmaze TV index**.
+That secondary source is only eligible for series without third-party platform,
+content-rating, origin-country exclusions or custom vibe that TVmaze cannot
+prove. Actual TVmaze source genre, summary and original source-owned image
+must pass the SAME strict mood and blocked-content gates, and the result links
+to the TVmaze source page under its CC BY-SA attribution. This tier is never
+available in Kids Mode and cannot certify any Netflix or other streaming
+availability. It is paginated, bounded and progresses through source pages
+between exhausted attempts without downloading thousands of images.
+
+For regional music and podcasts, two differently phrased **official Apple
+catalog** searches are checked; a wider query never relaxes source media type,
+mood, existing exclusions or image/previews validation. The audiobook verifier
+tries an alternative title-only Apple Books search only after the title+author
+query fails, but independently requires the exact book AND author, correct
+storefront and verified audiobook page. Eligible US LibriVox checking considers
+more source candidates. Audible, Kobo, Spotify and Google Play *searches*
+remain explicitly unverified until an authorized edition-level API is added.
+
+For e-books, the system already checks exact Open Library and Google Books
+covers. If the **entire matching editorial book pool** is exhausted, an optional
+new source can check additional Open Library bibliographic results against a
+second, exact-title-and-all-authors Google Books record that confirms a
+saleable official edition **in that user's country**, with a real source-owned
+cover and substantive publisher description. It runs only when mood, reading
+pace and length are unrestricted: it cannot pretend bibliographic genre tags
+prove a subjective cozy mood or unknown pacing. A separate bounded Gutendex
+query exposes a direct canonical Project Gutenberg page only when title,
+author and US public-domain metadata all agree. In other countries it does not
+mislabel Gutenberg records as legally free. The publicly hosted Gutendex
+service recommends self-hosting for sustained production volume; on-demand
+request caps are transitional, and an owned compliant deployment or licensed
+source is needed before high-volume scaling.
+
+Magazines remain publisher-first: their existing 31 publisher identities point
+to original issue and subscription pages rather than scraping or fabricating
+third-party issue covers. Kids retains the owner-protected 64 reviewed
+recommendations and separate broad source-rated TMDB shelf. Newly discovered
+family titles cannot automatically enter Kids matching/Ask AI without
+individual age/content and rights review. This limitation is intentional.
+
+**No infinite guarantee:** even every lawful catalog combined cannot produce a
+verified edition for impossible combinations, exhausted exclusions, regional
+rights limitations or provider outages. Keep hard choices intact, don't spend
+credits on failed source verification, and give truthful suggestions instead
+of recommending unrelated works.
+
 ## Outstanding work before any universal-coverage claim
 
 1. Recover source-verified covers that fail exact book-identity APIs; record
