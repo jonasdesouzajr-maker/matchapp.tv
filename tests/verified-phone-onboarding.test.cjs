@@ -18,6 +18,7 @@ function setup(url='https://matchapp.tv/',opts={}){
     url,runScripts:'outside-only',virtualConsole:new VirtualConsole()
   });
   const w=dom.window,calls={sent:[],verified:[],validated:0,updated:[]};
+  if(opts.pending)w.sessionStorage.setItem('matchapp_phone_verify_pending_v1',JSON.stringify(opts.pending));
   w.fetch=async()=>({ok:true,json:async()=>({external:{phone:opts.provider!==false}})});
   w.supabaseClient={supabaseUrl:'https://test.supabase.co',supabaseKey:'public-test-key',auth:{
     signInWithOtp:async payload=>{calls.sent.push(payload);return {error:opts.sendError||null};},
@@ -70,7 +71,7 @@ test('SMS link opens verification step and accepts original code without sending
   ctx.w.document.addEventListener('matchapp:phoneauthsuccess',()=>successes++);
   await ctx.w.MatchAppPhoneAuth.verifyCode();
   assert.equal(ctx.calls.verified.length,1);
-  assert.deepEqual(ctx.calls.verified[0],{phone:'+5521999999999',token:'123456',type:'sms'});
+  assert.deepEqual(JSON.parse(JSON.stringify(ctx.calls.verified[0])),{phone:'+5521999999999',token:'123456',type:'sms'});
   assert.equal(ctx.calls.validated,1);
   assert.equal(successes,1);
   assert.match(ctx.byId('phone-auth-status').textContent,/verified/i);
@@ -85,7 +86,7 @@ test('verified new phone account passes supplied name into server Auth metadata'
   await ctx.w.MatchAppPhoneAuth.sendCode();
   ctx.byId('phone-auth-code').value='123456';
   await ctx.w.MatchAppPhoneAuth.verifyCode();
-  assert.deepEqual(ctx.calls.updated,[{data:{full_name:'New Member',name:'New Member'}}]);
+  assert.deepEqual(JSON.parse(JSON.stringify(ctx.calls.updated)),[{data:{full_name:'New Member',name:'New Member'}}]);
   ctx.dom.window.close();
 });
 
@@ -115,20 +116,17 @@ test('wrong or unconfirmed server phone cannot unlock a profile',async()=>{
   }
 });
 
-test('a linked SMS on the same browser restores the pending number but never the OTP',async()=>{
-  const ctx=setup('https://matchapp.tv/?phoneVerify=1');
-  ctx.w.sessionStorage.setItem('matchapp_phone_verify_pending_v1',JSON.stringify({
+test('a linked SMS resumes a pending number without storing the OTP',async()=>{
+  const ctx=setup('https://matchapp.tv/?phoneVerify=1',{pending:{
     phone:'+5521999999999',name:'Saved Name',at:Date.now()
-  }));
-  // A fresh browser page will load the stored pending name and number.
-  const child=setup('https://matchapp.tv/?phoneVerify=1');
-  child.w.sessionStorage.setItem('matchapp_phone_verify_pending_v1',
-    ctx.w.sessionStorage.getItem('matchapp_phone_verify_pending_v1'));
-  // Re-run a fresh boot in this window with session state already present.
-  const later=child.w.MatchAppPhoneAuth;
-  assert.ok(later&&source.includes('restorePending()'));
+  }});
+  await settle();
+  assert.equal(ctx.byId('phone-auth-number').value,'+5521999999999');
+  assert.equal(ctx.byId('phone-auth-name').value,'Saved Name');
+  assert.equal(ctx.byId('phone-auth-code-step').hidden,false);
+  assert.equal(ctx.byId('phone-auth-code').value,'','No SMS code should be persisted');
+  assert.equal(ctx.w.location.search,'');
   ctx.dom.window.close();
-  child.dom.window.close();
 });
 
 test('verified phone link opens existing profile only after server-validated phone',async()=>{
