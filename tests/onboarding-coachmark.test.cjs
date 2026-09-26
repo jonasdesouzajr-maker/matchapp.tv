@@ -110,6 +110,9 @@ test('manual tour pinpoints Bookworms card and its real format dropdown, then re
   const dom=new JSDOM(html,{url:'https://matchapp.tv/',runScripts:'outside-only',pretendToBeVisual:true});
   const w=dom.window,doc=w.document;
   w.matchMedia=()=>({matches:true});
+  // jsdom returns opacity='' for default elements (Number('') === 0),
+  // while real browser computed style defaults to 1. Match browser semantics.
+  w.getComputedStyle=el=>({display:el.hidden?'none':'block',visibility:'visible',opacity:'1',borderRadius:'14px'});
   w.HTMLElement.prototype.getBoundingClientRect=function(){
     const isDropdown=this.matches?.('.ebook-select');
     const left=isDropdown?240:100,top=isDropdown?220:120;
@@ -151,6 +154,7 @@ test('tour stays usable without Bookworms and never starts itself in Kids Mode',
   function setup(url){
     const dom=new JSDOM('<html><body><button id="ma-tab-match">Match</button></body></html>',{url,runScripts:'outside-only',pretendToBeVisual:true});
     dom.window.matchMedia=()=>({matches:true});
+    dom.window.getComputedStyle=el=>({display:el.hidden?'none':'block',visibility:'visible',opacity:'1',borderRadius:'14px'});
     dom.window.HTMLElement.prototype.getBoundingClientRect=()=>({left:70,top:80,right:190,bottom:132,width:120,height:52});
     dom.window.HTMLElement.prototype.scrollIntoView=function(){};
     dom.window.eval(read('onboarding-tour.js'));
