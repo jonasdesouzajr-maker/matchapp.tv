@@ -211,8 +211,11 @@
                 // A ticked chip is ALWAYS rendered, even past the collapse
                 // limit. Hiding something the user has selected behind a
                 // "show more" is how a form silently lies about its own state.
-                if (on || shown < limit) {
-                    if (!on) shown++;
+                // A disabled conflicting option must remain visible as the
+                // reason a Comfort selection cannot produce a Thriller.
+                const blocked = !!window.matchPolicy?.incompatible(o.value,state);
+                if (on || blocked || shown < limit) {
+                    if (!on && !blocked) shown++;
                     visible.push(o);
                 }
             });
