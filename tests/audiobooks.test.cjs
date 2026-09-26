@@ -46,7 +46,22 @@ test('full verified Apple search uses audiobook-only media and correct market',a
  assert.equal(u.searchParams.get('media'),'audiobook');
  assert.equal(u.searchParams.get('entity'),'audiobook');
  assert.equal(u.searchParams.get('country'),'us');
- assert.equal(u.searchParams.get('limit'),'8');
+ assert.equal(u.searchParams.get('limit'),'30');
+});
+test('broader Apple title lookup still requires exact author and correct storefront',async()=>{
+ const classic={title:'Sense and Sensibility',author:'Jane Austen',access:['paid']};
+ const record={collectionName:'Sense and Sensibility',artistName:'Jane Austen',
+  collectionViewUrl:'https://books.apple.com/gb/audiobook/sense-and-sensibility/id12345'};
+ let calls=0;
+ const source=async(url)=>{
+  calls++;
+  assert.equal(new URL(url).searchParams.get('country'),'gb');
+  return {ok:true,json:async()=>({results:calls===1?[{...record,artistName:'Imposter Author'}]:[record]})};
+ };
+ const hit=await audio.verify(classic,'GB','paid',source);
+ assert.equal(calls,2,'an empty exact-author candidate permits one alternative source query');
+ assert.equal(hit.apple.author,'Jane Austen');
+ assert.equal(hit.apple.region,'GB');
 });
 test('eligible US free LibriVox verification does not mistakenly call paid stores',async()=>{
  let calls=[];
@@ -56,7 +71,7 @@ test('eligible US free LibriVox verification does not mistakenly call paid store
  assert.equal(found.free.provider,'LibriVox');
  assert.equal(calls.length,1);
  assert(new URL(calls[0]).hostname==='librivox.org');
- assert.equal(new URL(calls[0]).searchParams.get('limit'),'5');
+ assert.equal(new URL(calls[0]).searchParams.get('limit'),'20');
 });
 test('free audiobook match outside the US is not falsely shown as public domain',async()=>{
  let calls=0;
