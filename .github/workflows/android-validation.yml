@@ -45,11 +45,11 @@ jobs:
           test -s "$BUNDLE"
           unzip -t "$BUNDLE" > /dev/null
           sha256sum "$BUNDLE" > app/build/outputs/bundle/release/app-release.aab.sha256
-          printf '%s\n' 'UNSIGNED RELEASE AAB - NOT READY FOR PLAY CONSOLE UPLOAD.' 'Use your private Play upload keystore to sign it locally, or use Android Studio > Generate Signed Bundle on the app module.' 'Package: com.jonas.papercup; version: 1.1.31; versionCode: 33.' > app/build/outputs/bundle/release/README-UNSIGNED.txt
+          printf '%s\n' 'UNSIGNED RELEASE AAB - NOT READY FOR PLAY CONSOLE UPLOAD.' 'Use your private Play upload keystore to sign it locally, or use Android Studio > Generate Signed Bundle on the app module.' 'Package: com.jonas.papercup; version: 1.1.32; versionCode: 34.' > app/build/outputs/bundle/release/README-UNSIGNED.txt
       - name: Export adult-only AAB for local signing
         uses: actions/upload-artifact@v4
         with:
-          name: MatchApp-Ai-adult-1.1.31-code33-UNSIGNED-AAB
+          name: MatchApp-Ai-adult-1.1.32-code34-UNSIGNED-AAB
           path: |
             android-studio/app/build/outputs/bundle/release/app-release.aab
             android-studio/app/build/outputs/bundle/release/app-release.aab.sha256
