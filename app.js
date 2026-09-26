@@ -1973,6 +1973,44 @@ window.closePosterZoom = function () {
     if (overlay) overlay.style.display = 'none';
 };
 
+// Dismiss only the visible match result. Leave saved history, quotas,
+// selections and every other Home section untouched.
+window.dismissMatchResult = function () {
+    const box = document.getElementById('result-box');
+    if (!box || box.style.display === 'none' || box.dataset.resultClosing === '1') return;
+    const run = Number(window.__matchappMatchRunId) || 0;
+    const reduced = !!window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches ||
+        document.documentElement.classList.contains('reduce-motion');
+    window.closePosterZoom?.();
+    box.dataset.resultClosing = '1';
+    box.classList.remove('ma-result-arriving');
+    box.classList.add('ma-result-closing');
+    window.setTimeout(() => {
+        if (box.dataset.resultClosing !== '1') return;
+        if ((Number(window.__matchappMatchRunId) || 0) === run) {
+            box.classList.remove('is-revealed');
+            box.style.display = 'none';
+            box.setAttribute('aria-hidden', 'true');
+            const form = document.getElementById('questionnaire-box');
+            if (form) form.style.display = '';
+        }
+        box.classList.remove('ma-result-closing');
+        delete box.dataset.resultClosing;
+    }, reduced ? 0 : 240);
+};
+function syncMatchResultDismissLabel() {
+    const button = document.getElementById('result-dismiss');
+    if (!button) return;
+    const lang = String(window.MATCH_LANG || document.documentElement.lang || 'en');
+    const label = /^pt(?:-|$)/i.test(lang) ? 'Fechar e remover este resultado da tela' : 'Close this match result';
+    button.setAttribute('aria-label', label);
+    button.title = label;
+}
+document.addEventListener('matchapp:langchange', syncMatchResultDismissLabel);
+if (document.readyState === 'loading')
+    document.addEventListener('DOMContentLoaded', syncMatchResultDismissLabel, { once: true });
+else syncMatchResultDismissLabel();
+
 // Top-of-page ask box. Sends the query straight to Ask AI rather than making
 // the user land on discover.html and type a second time.
 window.topAskSubmit = function (e) {
@@ -4349,8 +4387,13 @@ async function renderResult(selected, isSpecificSearch) {
     // skipped the result card, confetti, and left the premiere poster in view.
     reveal();
     if (!resultBox) return;
+    delete resultBox.dataset.resultClosing;
+    resultBox.classList.remove('ma-result-closing', 'ma-result-arriving');
+    resultBox.removeAttribute('aria-hidden');
     resultBox.style.display = 'block';
     resultBox.classList.add('is-revealed');
+    void resultBox.offsetWidth;
+    resultBox.classList.add('ma-result-arriving');
     // Scroll to the artwork itself once it is painted; the poster is the
     // beginning of the result experience on every screen size.
     requestAnimationFrame(() => {
@@ -4364,6 +4407,18 @@ async function renderResult(selected, isSpecificSearch) {
     window.globalMatchTitle = selected.title;
     const titleEl = document.getElementById('res-title');
     if (titleEl) titleEl.innerText = sanitizeDisplayText(selected.title, ['title']);
+    // Render a correctly labelled image before awaiting remote sources. An
+    // exact original will replace it only after its image successfully loads.
+    const firstPoster = document.getElementById('res-poster-img');
+    if (firstPoster) {
+        firstPoster.onerror = null;
+        firstPoster.dataset.matchappMediaTitle = selected.title;
+        const firstCover = generatedCover(selected.title, selected);
+        firstPoster.src = firstCover;
+        firstPoster.style.display = 'block';
+        globalMatchPoster = firstCover;
+        window.globalMatchPoster = firstCover;
+    }
     rememberShownTitle(selected.title);
 
     // Keep the exact identity beside the rendered title. Media enrichment runs
@@ -4537,11 +4592,13 @@ async function renderResult(selected, isSpecificSearch) {
         synopsis: selected.synopsis || matchHints.synopsis || ''
     });
     posterEl.onerror = null;
-    posterEl.src = localCover;
-    // The original image will replace this only after a successful image
-    // probe. A broken CDN URL must not enter saved/share poster snapshots.
-    globalMatchPoster = localCover;
-    window.globalMatchPoster = localCover;
+    const originalShown = /^https:\/\/(?:image\.tmdb\.org|is\d+-ssl\.mzstatic\.com)\//i.test(posterEl.currentSrc || posterEl.src) &&
+        posterEl.complete && posterEl.naturalWidth > 0;
+    // Do not erase an original which exact-title enrichment already decoded
+    // while a second provider was still resolving metadata.
+    if (!originalShown) posterEl.src = localCover;
+    globalMatchPoster = originalShown ? (posterEl.currentSrc || posterEl.src) : localCover;
+    window.globalMatchPoster = globalMatchPoster;
     // A generated result cover must still try the exact title's catalog image;
     // otherwise an unavailable first source becomes permanent for this match.
     if ((!realCover || /^data:image\/svg\+xml/.test(realCover)) &&
