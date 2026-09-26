@@ -4837,8 +4837,27 @@ async function renderResult(selected, isSpecificSearch) {
         probe.onerror = function() {
             // If the provider fails, keep the already-painted local cover
             // visible while recovering only this exact title's saved original.
-            if (selected.source !== 'tvmaze-source-verified')
+            if (selected.source === 'tvmaze-source-verified') {
+                // The alternate comes from this SAME verified TVmaze show;
+                // a title-only catalog lookup could substitute another work.
+                const backup = window.MatchAppTVMazeSource?.artwork?.(selected._meta?.artworkFallback);
+                if (backup && backup !== realCover) {
+                    const alternate = new Image();
+                    alternate.onload = () => {
+                        if (alternate.naturalWidth > 0 && posterEl.isConnected &&
+                            window.globalMatchTitle === selected.title &&
+                            (Number(window.__matchappMatchRunId) || 0) === originalMatchRun) {
+                            posterEl.src = backup;
+                            globalMatchPoster = backup;
+                            window.globalMatchPoster = backup;
+                        }
+                    };
+                    alternate.onerror = () => {};
+                    alternate.src = backup;
+                }
+            } else {
                 window.MatchAppCatalogMedia?.recoverAdultPoster?.(posterEl, selected.title);
+            }
         };
         probe.src = realCover;
     }
