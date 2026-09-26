@@ -46,6 +46,10 @@
       if(!mail||!email.checkValidity()){message('Please enter a valid email address.',true);email.focus();return;}
       if(password.length<6){message('Create a password with at least 6 characters.',true);$('#reg-password')?.focus();return;}
       if(!sb){message('Account service is temporarily unavailable. Please try again.',true);return;}
+      if(window.__maEmailSignupPending)return;
+      window.__maEmailSignupPending=true;
+      const signupButton=$('#form-signup .gold-btn');
+      if(signupButton)signupButton.disabled=true;
       message('Creating your private MatchApp account…');
       try{
         const {data,error}=await sb.auth.signUp({email:mail,password,options:{data:{full_name:name,name,matchapp_first_time_onboarding_v1:true},emailRedirectTo:'https://matchapp.tv/'}});
@@ -55,6 +59,7 @@
           window.showToast?.('Account created. Complete your profile to personalize every match.');
         }else message('Account created. Check your inbox and use the newest confirmation link. If the link expires, request a new one from Log In.');
       }catch(e){message(e?.message||'Could not create your account. Please try again.',true);}
+      finally{window.__maEmailSignupPending=false;if(signupButton)signupButton.disabled=false;}
     };
   }
 

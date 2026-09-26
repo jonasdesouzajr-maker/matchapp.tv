@@ -97,8 +97,8 @@ test('homepage loads redirect capture before SDK client, and signup waits for co
     const audit = read('final-audit.js');
     assert.match(audit, /emailRedirectTo:'https:\/\/matchapp\.tv\/'/);
     assert.doesNotMatch(audit, /emailRedirectTo:'https:\/\/matchapp\.tv\/\?openAuth=1'/);
-    assert.match(read('title-captions.js'), /final-audit\.js\?v=20260926-emailverify1/);
-    assert.match(home, /title-captions\.js\?v=20260921-ui2&amp;auth=20260926-emailverify1/);
+    assert.match(read('title-captions.js'), /final-audit\.js\?v=20260926-emailsingle1/);
+    assert.match(home, /title-captions\.js\?v=20260921-ui2&amp;auth=20260926-emailsingle1/);
 });
 
 
@@ -160,5 +160,29 @@ test('a forged welcome URL cannot open account form without a verified user', as
     await new Promise(resolve => setImmediate(resolve));
     assert.equal(w.document.getElementById('account-details').hidden,true);
     assert.equal(w.document.getElementById('verified-email-welcome'),null);
+    dom.window.close();
+});
+
+test('confirmation email resend uses cooldown to avoid invalidating fresh links',async()=>{
+    const {dom,win,ui}=site('https://matchapp.tv/');
+    let sends=0;
+    win.supabaseClient={auth:{resend:async()=>{sends++;return {error:null};}}};
+    win.document.getElementById('login-email').value='member@example.test';
+    await ui.resend();
+    await ui.resend();
+    assert.equal(sends,1,'The newest emailed link must not be replaced by immediate double-clicks');
+    assert.match(win.document.getElementById('auth-message').textContent,/retry in/i);
+    dom.window.close();
+});
+
+test('rejected confirmation resend must never falsely promise an email',async()=>{
+    const {dom,win,ui}=site('https://matchapp.tv/');
+    let sends=0;
+    win.supabaseClient={auth:{resend:async()=>{sends++;return {error:{status:400,code:'invalid_request'}};}}};
+    win.document.getElementById('login-email').value='member@example.test';
+    await ui.resend();
+    assert.equal(sends,1);
+    assert.match(win.document.getElementById('auth-message').textContent,/could not be requested/i);
+    assert.doesNotMatch(win.document.getElementById('auth-message').textContent,/on its way/i);
     dom.window.close();
 });
