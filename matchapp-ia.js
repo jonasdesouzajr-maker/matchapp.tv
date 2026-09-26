@@ -101,22 +101,18 @@ function brandHeader(){
  if(brand){
    brand.classList.add('ma-brand-stage');
    if(!qs('.ma-brand-lockup',brand)) brand.innerHTML=
-     '<div class="ma-brand-lockup" aria-label="MatchApp TV Ai">'+
-       '<a class="ma-brand-home-link" href="/" aria-label="MatchApp TV home">'+
+     '<div class="ma-brand-lockup" aria-label="MatchApp Ai">'+
+       '<a class="ma-brand-home-link" href="/" aria-label="MatchApp Ai home">'+
          '<span class="ma-brand-orb-stage" aria-hidden="true">'+
            '<img class="ma-brand-orb" src="'+(isHome?HOME_ICON:ICON)+'" alt="" width="260" height="260">'+
-           '<span class="ma-orbit ma-orbit-a"></span><span class="ma-orbit ma-orbit-b"></span>'+
-           '<span class="ma-orb-star ma-orb-star-a">✦</span><span class="ma-orb-star ma-orb-star-b">✧</span><span class="ma-orb-star ma-orb-star-c">✦</span>'+
          '</span>'+
-         '<span class="ma-brand-copy"><span class="ma-wordmark"><span class="ma-word-match">Match</span><span class="ma-word-app">App</span></span><span class="ma-tv">TV</span></span>'+
+         '<span class="ma-brand-copy"><span class="ma-wordmark"><span class="ma-word-match">Match</span><span class="ma-word-app">App</span></span><span class="ma-word-ai" data-ma-brand-ai>Ai</span></span>'+
        '</a>'+
-       '<button type="button" class="ma-ai-brand-button" aria-label="Start a new chat with MatchApp Ai" title="Ask MatchApp Ai">'+
-         '<span class="ma-ai-letters">Ai</span><span class="ma-ai-star ma-ai-star-one" aria-hidden="true">✦</span><span class="ma-ai-star ma-ai-star-two" aria-hidden="true">✧</span><span class="ma-ai-star ma-ai-star-three" aria-hidden="true">✦</span>'+
-       '</button>'+
      '</div>';
    const homeOrb=qs('.ma-brand-orb',brand);
    if(isHome&&homeOrb&&homeOrb.getAttribute('src')!==HOME_ICON)homeOrb.setAttribute('src',HOME_ICON);
-   const ai=qs('.ma-ai-brand-button',brand);if(ai&&!ai.dataset.maAskBound){ai.dataset.maAskBound='1';ai.addEventListener('click',openAskFromBrand);}
+   // Ask MatchApp remains available through its existing dedicated hero tab and composer.
+   // The branding is one integrated wordmark; no detached Ai action is recreated.
  }
  const nav=qs('nav',h);if(!nav)return;
  nav.classList.add('ma-header-actions');
@@ -358,7 +354,19 @@ function prepareResponsiveAds(){
    rail.classList.add('ma-desktop-ad-rail',i===0?'ma-desktop-ad-left':'ma-desktop-ad-right');
  });
 }
+function applyBrandLocale(){
+ const name=langKey()==='pt-BR'?'MatchApp iA':'MatchApp Ai';
+ qsa('.ma-brand-lockup').forEach(brand=>{
+  // Only the adult canonical lockups created by this runtime/page-shell.
+  const ai=brand.querySelector('[data-ma-brand-ai]');if(!ai)return;
+  ai.textContent=name.endsWith('iA')?'iA':'Ai';
+  brand.setAttribute('aria-label',name);
+  const home=brand.querySelector('.ma-brand-home-link');
+  if(home)home.setAttribute('aria-label',name+' home');
+ });
+}
 function applyLanguage(){
+ applyBrandLocale();
  const t=c();
  if(isHome&&qs('.ma-concierge')){
    const hero=qs('.home-hero');if(hero){qs('.home-h1',hero).textContent=t.title;qs('.home-h1-sub',hero).textContent=t.sub}
@@ -372,7 +380,7 @@ function applyLanguage(){
 }
 function boot(){
  if(!(isHome||isDiscover||isTogether||isPricing))return;
- ensureBrandMeta();brandHeader();
+ ensureBrandMeta();brandHeader();applyBrandLocale();
  if(isHome){
    // Home re-homes several existing sections during boot. Disable browser
    // scroll anchoring for those synchronous moves so first paint can never
