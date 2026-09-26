@@ -82,6 +82,7 @@ jobs:
           arch: x86_64
           profile: pixel_7
           emulator-boot-timeout: 500
+          emulator-options: -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim -camera-back none -dns-server 1.1.1.1,8.8.8.8
           script: bash tools/android-emulator-smoke.sh
       - name: Export Android emulator images, UI hierarchy and crash evidence
         if: always()
