@@ -572,3 +572,7 @@ html body.page-home #ebook-matcher-root .ebook-fold>summary:focus-visible{
 
 /* Incompatible mood/genre chips are visibly unavailable. */
 #ebook-matcher-root .ebook-chip:disabled{opacity:.32;filter:grayscale(.8);cursor:not-allowed}
+
+/* Source-verified audiobook sample stays inside compact mobile/tablet Bookworms cards. */
+#ebook-matcher-root .ebook-audio-preview{display:grid;gap:8px;min-width:0;margin:12px 0}
+#ebook-matcher-root .ebook-audio-preview audio{display:block;width:100%;max-width:100%;min-width:0}
