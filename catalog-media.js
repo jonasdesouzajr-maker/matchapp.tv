@@ -457,7 +457,10 @@
         // lookup. Do not silently discard that late original artwork.
         if(state.needsRepair){
           state.needsRepair=false;
-          void repairAdultPoster(img,state);
+          // If this exact original was already applied while the earlier
+          // request finished, avoid re-running the full lookup unnecessarily.
+          if(!sameOriginalArtwork(img.src,state.preferred))
+            void repairAdultPoster(img,state);
         }
       }
     }
