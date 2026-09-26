@@ -182,15 +182,22 @@
       const { data: auth } = await sb.auth.getUser();
       if (!auth?.user) return;
       const { data, error } = await sb.from('profiles')
-        .select('preferred_language,preferred_region,marketing_consent,registration_completed_at')
+        .select('country,preferred_language,preferred_region,marketing_consent,registration_completed_at')
         .eq('id',auth.user.id).maybeSingle();
       if (error || !data) return;
       if ($('registration-language') && data.preferred_language &&
           Array.from($('registration-language').options).some(o=>o.value===data.preferred_language))
         $('registration-language').value=data.preferred_language;
+      if (!regionTouched && data.country && geo()?.isCountry(data.country)) {
+        geo()?.initCountries();
+        $('profile-country').value = geo().resolveCountry(data.country)[0];
+      }
       if (data.preferred_region) {
         try { localStorage.setItem('match_user_region',data.preferred_region); } catch (_) {}
-        if (!regionTouched) $('registration-region')?.restoreRegion?.(data.preferred_region);
+        if (!regionTouched) geo()?.bindRegionSelect($('registration-region'),data.preferred_region);
+        window.checkAndRenderProfileState?.();
+      } else if (!regionTouched) {
+        geo()?.bindRegionSelect($('registration-region'),'');
       }
       if ($('registration-marketing')) $('registration-marketing').checked=!!data.marketing_consent;
     } catch (_) { /* Preferences will load on next visit if offline. */ }
