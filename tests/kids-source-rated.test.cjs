@@ -94,3 +94,35 @@ test('Ask AI verified provider data and TV genre hydration stay regression-guard
  assert.match(src,/verifiedModes=new Set\(\['stream','rent','buy','cinema'\]\)/);
  assert.match(page,/discover\.js\?v=20260925-intent1/);
 });
+test('source-rated discovery retains the full fetched identity backlog without over-fetching per tap',async()=>{
+ const html='<select id="kids-age"><option value="3-5">3-5</option></select>'+
+ '<select id="kids-lang"><option value="en">en</option></select>'+
+ '<select id="kids-watch-region"><option value="BR">BR</option></select>'+
+ '<section id="kids-family-expansion"><h2 id="kids-family-heading"></h2>'+
+ '<input id="kids-family-search"><select id="kids-family-format"><option value=""></option></select>'+
+ '<button id="kids-family-more"></button><button id="kids-family-find"></button>'+
+ '<p id="kids-family-status"></p><div id="kids-family-grid"></div></section>';
+ const dom=new JSDOM(html,{url:'https://matchapp.tv/kids/',runScripts:'outside-only'});
+ try{
+   const w=dom.window;
+   w.eval(read('kids/age-rating-policy.js'));
+   const batch=Array.from({length:30},(_,i)=>({...movie,tmdbId:2000+i,title:'Family Test '+i,originalTitle:'Family Test '+i}));
+   let sourceCalls=0,detailCalls=0;
+   w.tmdbDiscover=async()=>{sourceCalls++;return batch};
+   w.tmdbDetails=async id=>{
+     detailCalls++;
+     const item=batch.find(x=>x.tmdbId===id);
+     return {...details,...item,genres:['Family'],contentRating:'G'};
+   };
+   w.eval(read('kids/source-rated-discovery.js'));
+   const btn=w.document.getElementById('kids-family-more');
+   const settle=async()=>{for(let i=0;i<80;i++){await new Promise(resolve=>setImmediate(resolve));if(!btn.disabled)break}};
+   btn.click();await settle();
+   assert.equal(detailCalls,18,'at most 18 exact age verifications per click');
+   const firstSourceCalls=sourceCalls;
+   btn.click();await settle();
+   assert.equal(detailCalls,30,'second tap checks the retained remaining twelve');
+   assert.equal(sourceCalls,firstSourceCalls,'no additional source pages until queue is drained');
+   assert.equal(w.document.querySelectorAll('.kids-source-card').length,30);
+ }finally{dom.window.close()}
+});

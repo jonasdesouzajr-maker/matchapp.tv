@@ -14,7 +14,8 @@
  const grid=document.getElementById('kids-family-grid');
  const ageSel=document.getElementById('kids-age');
  if(!input||!kindSel||!load||!search||!status||!grid||!ageSel)return;
- const PAGE_BATCH=2,DETAIL_BATCH=3,MAX_CHECKS_PER_CLICK=18,MAX_SHOWN=48;
+ const PAGE_BATCH=3,DETAIL_BATCH=3,MAX_CHECKS_PER_CLICK=18,MAX_SHOWN=48;
+ const pendingCandidates=[],pendingIds=new Set();
  let nextPage=1,busy=false,version=0;
  const seen=new Set(),verified=new Map(),detailCache=new Map();
  const locale=()=>String(window.MATCH_LANG||document.getElementById('kids-lang')?.value||'en');
@@ -22,7 +23,7 @@
  function say(en,br,esText){return pt()?br:es()?esText:en}
  function setStatus(str){status.textContent=str}
  function reset(){
-   version++;nextPage=1;seen.clear();verified.clear();grid.replaceChildren();
+   version++;nextPage=1;seen.clear();verified.clear();pendingCandidates.length=0;pendingIds.clear();grid.replaceChildren();
    setStatus(say('Select Explore to load source-rated titles.','Selecione Explorar para buscar títulos classificados.','Selecciona Explorar para buscar títulos clasificados.'));
    load.textContent=say('Explore more verified ratings','Explorar mais classificações verificadas','Explorar más clasificaciones verificadas');
  }
@@ -129,17 +130,27 @@
      setStatus(say('Checking original ratings and artwork before showing titles…',
       'Verificando classificação e capas reais antes de exibir títulos…',
       'Comprobando clasificaciones y portadas reales antes de mostrar títulos…'));
-     // TMDB family genre identifiers differ between movie and TV indexes.
-     // Interleave verified source candidates so neither media kind crowds out the other.
-     const kinds=wanted?[wanted]:['movie','tv'];
-     const pages=await Promise.all(kinds.map(kind=>window.tmdbDiscover({
-       kind,genre_ids:kind==='movie'?[10751,16]:[10762,16],
-       page_start:nextPage,pages:PAGE_BATCH
-     }).catch(()=>[])));
-     const mixed=[],longest=Math.max(0,...pages.map(p=>Array.isArray(p)?p.length:0));
-     for(let n=0;n<longest;n++)for(const page of pages)if(Array.isArray(page)&&page[n])mixed.push(page[n]);
-     candidates=mixed;
-     nextPage=Math.min(501,nextPage+PAGE_BATCH);
+     // Keep every sourced identity across taps instead of silently dropping
+     // everything beyond the 18 checks in the original first page batch.
+     if(!pendingCandidates.length&&nextPage<=500){
+       const kinds=wanted?[wanted]:['movie','tv'];
+       const pages=await Promise.all(kinds.map(kind=>window.tmdbDiscover({
+         kind,genre_ids:kind==='movie'?[10751,16]:[10762,16],
+         page_start:nextPage,pages:PAGE_BATCH
+       }).catch(()=>[])));
+       if(token!==version)return;
+       const mixed=[],longest=Math.max(0,...pages.map(p=>Array.isArray(p)?p.length:0));
+       for(let n=0;n<longest;n++)for(const page of pages)if(Array.isArray(page)&&page[n])mixed.push(page[n]);
+       for(const item of mixed){
+         const id=item?.kind+':'+item?.tmdbId;
+         if(!item||!['movie','tv'].includes(item.kind)||!Number.isSafeInteger(item.tmdbId)||
+           item.adult===true||seen.has(id)||pendingIds.has(id))continue;
+         pendingCandidates.push(item);pendingIds.add(id);
+       }
+       nextPage=Math.min(501,nextPage+PAGE_BATCH);
+     }
+     candidates=pendingCandidates.splice(0,MAX_CHECKS_PER_CLICK);
+     candidates.forEach(item=>pendingIds.delete(item.kind+':'+item.tmdbId));
    }
    if(token!==version)return;
    const current=(Array.isArray(candidates)?candidates:[])
@@ -166,7 +177,7 @@
      'Nenhum novo título passou todas as verificações. Explore mais páginas ou busque um título exato.',
      'Ningún título nuevo superó todas las verificaciones. Explora más páginas o busca un título exacto.'));
    }
-   load.hidden=nextPage>499;
+   load.hidden=nextPage>499&&!pendingCandidates.length;
   }catch(_){
    if(token===version)setStatus(say('The source is unavailable. Your approved Kids library is unaffected.',
     'A fonte está indisponível. A coleção Kids aprovada não foi alterada.',
