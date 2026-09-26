@@ -572,3 +572,7 @@ html body.page-home #ebook-matcher-root .ebook-fold>summary:focus-visible{
 
 /* Incompatible mood/genre chips are visibly unavailable. */
 #ebook-matcher-root .ebook-chip:disabled{opacity:.32;filter:grayscale(.8);cursor:not-allowed}
+
+/* Real publisher-provided audiobook edition samples only. */
+#ebook-matcher-root .ebook-audio-preview{display:block;width:min(100%,420px);max-width:100%;min-height:44px;margin:10px 0}
+#ebook-matcher-root .ebook-audio-preview-label{display:block;font-size:13px;font-weight:700;color:#e5c158}

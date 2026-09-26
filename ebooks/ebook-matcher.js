@@ -291,9 +291,14 @@ function audioLinksHTML(audio){
   '" target="_blank" rel="noopener noreferrer" data-ebook-provider="'+esc(item.provider)+'">'+
   esc(item.provider)+' · '+esc(item.title)+' ✓ ↗</a>').join('');
  const searches=Array.isArray(audio?.searches)?audio.searches:[];
+ // Only a source-verified audiobook edition may provide an embedded preview.
+ // Search URLs and matching e-book records are NEVER audio preview evidence.
+ const preview=audio?.apple?.verified&&audio.apple.previewUrl?
+  '<label class="ebook-audio-preview-label">'+esc(lang()==='pt-BR'?'Prévia oficial da edição em áudio':lang()==='es'?'Muestra oficial de audiolibro':lang()==='ja'?'公式オーディオ試聴':'Official audiobook sample')+'</label>'+
+  '<audio class="ebook-audio-preview" controls preload="none" src="'+esc(audio.apple.previewUrl)+'"></audio>':'';
  return (vlinks?'<h5>'+esc(tr('audioLinks'))+'</h5><div class="ebook-provider-row">'+vlinks+'</div>':
   '<p class="ebook-audio-note">'+esc(tr('audioNone'))+'</p>')+
-  '<h5>'+esc(tr('audioSearch'))+'</h5><div class="ebook-provider-row">'+
+  preview+'<h5>'+esc(tr('audioSearch'))+'</h5><div class="ebook-provider-row">'+
   searches.map(item=>'<a class="ebook-provider ebook-audio-search" href="'+esc(item.url)+
    '" target="_blank" rel="noopener noreferrer" data-ebook-provider="'+esc(item.provider)+'">'+
    esc(item.label)+' ↗</a>').join('')+'</div>'+
