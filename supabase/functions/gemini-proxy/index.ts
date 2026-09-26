@@ -603,6 +603,23 @@ Deno.serve(async (req: Request) => {
               }),
             }
           );
+          // Some model variants reject optional thinking/schema fields with
+          // INVALID_ARGUMENT (400). Retry that model ONCE with portable JSON
+          // settings. Never retry a 429: Google spend caps are project-wide,
+          // and retrying would consume limiter headroom without helping.
+          if (geminiRes.status === 400) {
+            console.warn(`[gemini-proxy] ${model} rejected structured config; retrying minimal JSON generation`);
+            geminiRes = await fetch(
+              `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`, {
+                method: "POST", signal: ac.signal,
+                headers: {"Content-Type":"application/json","x-goog-api-key":apiKey},
+                body: JSON.stringify({
+                  contents:[{parts:[{text:prompt}]}],
+                  generationConfig:{temperature:0.45,maxOutputTokens:8192,responseMimeType:"application/json"},
+                }),
+              }
+            );
+          }
         } finally {
           clearTimeout(timer);
         }
@@ -657,8 +674,10 @@ Deno.serve(async (req: Request) => {
         // 404 = model retired/unknown; try the next one in the chain.
         // Any other status (401, 429, 500...) is not a model problem,
         // so stop and report it immediately instead of silently retrying.
-        if (geminiRes.status === 404) {
-          lastError = `${model}: 404 (model unavailable)`;
+        if (geminiRes.status === 404 || geminiRes.status === 400) {
+          lastError = `${model}: ${geminiRes.status} (model unavailable or incompatible generation settings)`;
+          // A different model may accept this prompt/schema. This is NOT
+          // true of project-wide spend-cap 429s, handled separately below.
           continue;
         }
 
