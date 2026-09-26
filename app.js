@@ -1993,6 +1993,8 @@ window.dismissMatchResult = function () {
             box.setAttribute('aria-hidden', 'true');
             const form = document.getElementById('questionnaire-box');
             if (form) form.style.display = '';
+            const search = document.getElementById('search-box');
+            if (search) search.style.display = '';
         }
         box.classList.remove('ma-result-closing');
         delete box.dataset.resultClosing;
