@@ -46,10 +46,10 @@ function matches(m,p){
 }
 function select(p,market,exclusions){
  const disallowed=exclusions instanceof Set?exclusions:new Set(exclusions||[]);
- const choices=magazines.filter(m=>!disallowed.has(m.id)&&matches(m,p));
- const pool=choices.length?choices:magazines.filter(m=>!disallowed.has(m.id)&&
-  (!p.genre||p.genre==='any'||m.genres.includes(p.genre))&&
-  (!p.access||p.access==='any'||m.access.includes(p.access)));
+ // Magazine matching honors the SAME hard mood/genre/access contract as
+ // e-books and audiobooks. Recycled already-seen titles are managed by the
+ // caller's second explicit pass, never by weakening the selected mood.
+ const pool=magazines.filter(m=>!disallowed.has(m.id)&&matches(m,p));
  if(!pool.length)return null;
  const local=pool.filter(m=>m.region===market);
  return (local.length?local:pool)[Math.floor(Math.random()*(local.length?local.length:pool.length))];
