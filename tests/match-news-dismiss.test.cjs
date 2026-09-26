@@ -24,7 +24,7 @@ test('matched title has one accessible top-right trash control with in/out and r
 test('trash only hides the match after its fade; a new match cannot be hidden by the old timer',()=>{
  const code=read('app.js'),start=code.indexOf('window.dismissMatchResult = function () {'),end=code.indexOf('\n};',start);
  assert.ok(start>=0&&end>start);
- const dom=new JSDOM('<html><body><section id="other-home">Keep me</section><article id="questionnaire-box" style="display:none"></article><article id="result-box" class="is-revealed" style="display:block"><h2 id="res-title">Real title</h2><img id="res-poster-img" src="data:image/svg+xml,cover"></article></body></html>',{url:'https://matchapp.tv/'});
+ const dom=new JSDOM('<html><body><section id="other-home">Keep me</section><article id="questionnaire-box" style="display:none"></article><article id="search-box" style="display:none"></article><article id="result-box" class="is-revealed" style="display:block"><h2 id="res-title">Real title</h2><img id="res-poster-img" src="data:image/svg+xml,cover"></article></body></html>',{url:'https://matchapp.tv/'});
  const doc=dom.window.document,timers=[];
  let zoomClosed=0;
  const w={__matchappMatchRunId:8,matchMedia:()=>({matches:false}),closePosterZoom:()=>zoomClosed++,setTimeout:(fn)=>timers.push(fn)};
@@ -39,6 +39,7 @@ test('trash only hides the match after its fade; a new match cannot be hidden by
  assert.equal(box.style.display,'none');
  assert.equal(box.getAttribute('aria-hidden'),'true');
  assert.equal(doc.getElementById('questionnaire-box').style.display,'');
+ assert.equal(doc.getElementById('search-box').style.display,'','Ask AI input must remain usable after closing match');
  assert.equal(box.querySelector('#res-title').textContent,'Real title','dismiss must not delete title/history');
  box.style.display='block';box.removeAttribute('aria-hidden');box.classList.add('is-revealed');
  w.dismissMatchResult();
