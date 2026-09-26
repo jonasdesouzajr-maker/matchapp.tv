@@ -87,8 +87,8 @@ test('homepage keeps the locked desktop rails and responsive mobile slots',()=>{
 test('owner-approved Together sponsorship follows its fold and retains the exact manual inventory',()=>{
  const {JSDOM}=require('jsdom');
  const doc=new JSDOM(read('index.html')).window.document;
- const together=doc.querySelector('.container > .tg-entry');
- const ad=doc.querySelector('.container > .ma-together-ad');
+ const together=doc.querySelector('.tg-entry');
+ const ad=doc.querySelector('.ma-together-ad');
  assert.ok(together&&ad,'Both direct child sections must exist so existing ad runtime still finds this slot');
  assert.equal(together.nextElementSibling,ad,'Full-width sponsored content must follow the Together card');
  assert.equal(ad.nextElementSibling?.id,'premiere-disclosure','The next premium fold remains after the sponsored slot');
