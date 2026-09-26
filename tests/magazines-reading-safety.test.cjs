@@ -110,9 +110,9 @@ test('publisher original source pages and magazine SEO are indexable on the exis
 });
 test('adult native Android WebView receives magazine-only update, Kids binaries stay isolated',()=>{
  const gradle=read('android-studio/app/build.gradle.kts'),main=read('android-studio/app/src/main/java/com/jonas/papercup/MainActivity.kt');
- assert.match(gradle,/versionCode = 33/);assert.match(gradle,/versionName = "1\.1\.31"/);
- assert.match(main,/adult-reading-magazines-20260925-1/);
- assert.match(main,/MatchAppAiAndroid\/1\.1\.31/);
+ assert.match(gradle,/versionCode = 34/);assert.match(gradle,/versionName = "1\.1\.32"/);
+ assert.match(main,/adult-reading-compact-awareness-20260926-1/);
+ assert.match(main,/MatchAppAiAndroid\/1\.1\.32/);
  assert.match(main,/MATCHAPP_ANDROID_KIDS_BLOCKED/);
  assert.doesNotMatch(read('android-studio/kidsapp/src/main/java/tv/matchapp/kids/MainActivity.kt'),/adult-reading-magazines/);
 });

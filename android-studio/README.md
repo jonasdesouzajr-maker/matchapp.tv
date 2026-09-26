@@ -50,9 +50,9 @@ These existing native modules are **live WebView shells**, not divergent forks o
 
 Both Android modules remain WebView shells over live production:
 
-- Standard app (`:app`) release version: **1.1.31**
-- Standard app version code: **33**
-- Standard app launch: `https://matchapp.tv/?utm_source=android_app&appBuild=33`
+- Standard app (`:app`) release version: **1.1.32**
+- Standard app version code: **34**
+- Standard app launch: `https://matchapp.tv/?utm_source=android_app&appBuild=34`
 - Kids app (`:kidsapp`) release version: **1.1.25** / version code **27**
 - Kids app launch: `https://matchapp.tv/kids/?utm_source=android_kids_app&appBuild=27`
 - Both apps cold-load production on launch and manual refresh to avoid stale WebView content, then resume normal caching after the page renders.
@@ -133,4 +133,12 @@ After final Play signing certificates exist, Digital Asset Links can be updated 
 
 ## Adult Play Console identity checkpoint (2026-09-25)
 
-The first Play Console listing supplied by the owner uses package ID **`com.jonas.papercup`**, so the normal adult `:app` Gradle namespace, application ID and Kotlin package were aligned; normal app version 1.1.31 (code 33). This package cannot update an installed legacy `tv.matchapp.app` package. **Verify your Play Console listing uses the exact package ID before signing.** Kids `:kidsapp` is unchanged. The production banner ad unit is staged in the adult BuildConfig. The provided rewarded ID is a Google demo ad unit included only in DEBUG; RELEASE rewarded ID is blank. The app remains ad-free while the real AdMob App ID (with `~`) and SDK/consent are unresolved. Full release checklist: `play/RELEASE_PREFLIGHT.md`.
+The first Play Console listing supplied by the owner uses package ID **`com.jonas.papercup`**, so the normal adult `:app` Gradle namespace, application ID and Kotlin package were aligned; normal app version 1.1.32 (code 34). This package cannot update an installed legacy `tv.matchapp.app` package. **Verify your Play Console listing uses the exact package ID before signing.** Kids `:kidsapp` is unchanged. The production banner ad unit is staged in the adult BuildConfig. The provided rewarded ID is a Google demo ad unit included only in DEBUG; RELEASE rewarded ID is blank. The app remains ad-free while the real AdMob App ID (with `~`) and SDK/consent are unresolved. Full release checklist: `play/RELEASE_PREFLIGHT.md`.
+
+
+## 26 September 2026 — Adult AAB candidate and ongoing WebView parity
+The requested adult-only bundle candidate is `com.jonas.papercup` **1.1.32 (versionCode 34)**. The compact E-books card and relocated bottom Awareness Spotlight already load from the production adult website in installed WebView apps after deployment and a fresh network load: a new AAB is not required for each website change.
+
+**Clone:** `git clone https://github.com/jonasdesouzajr-maker/matchapp.tv.git`. Open `matchapp.tv/android-studio/` (containing `settings.gradle.kts`) in Android Studio Quail with **Gradle JDK 17**. To sync future changes, use `git pull origin main` from the root of the existing checkout rather than re-cloning. Select **app** for the adult Play app, not **kidsapp**.
+
+The `Validate Android apps` GitHub workflow archives the **UNSIGNED** adult-only `MatchApp-Ai-adult-1.1.32-code34-UNSIGNED-AAB`. Before submitting a Play update, verify code 34 is higher than any previous Play-uploaded build and use Android Studio **Build → Generate Signed App Bundle / APK** for **app/release** with the SAME protected upload keystore already registered for `com.jonas.papercup`. Test on a physical device/internal track and submit via Play Console. Web changes do NOT automatically create/publish Play releases. Kids native module remains untouched.
