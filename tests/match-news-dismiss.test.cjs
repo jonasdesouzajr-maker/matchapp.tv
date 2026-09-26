@@ -54,6 +54,7 @@ test('News initializes directly on the homepage and its original-source cards li
  assert.match(html,/\/live-news-loader\.js\?v=20260926-newsfold1/);
  assert.match(colors,/#latest-news>summary\{[\s\S]*?pointer-events:auto!important;cursor:pointer!important/);
  assert.doesNotMatch(colors,/#latest-news>summary::after\{\s*content:none/);
+ assert.match(colors,/#latest-news:not\(\[open\]\)>\.ma-news-panel\{display:none!important/);
  const dom=new JSDOM('<!doctype html><html lang="en"><body><main><article id="questionnaire-box"></article><section id="ebook-matcher-root"></section><details id="premiere-disclosure"></details></main></body></html>',{url:'https://matchapp.tv/',runScripts:'outside-only'});
  const w=dom.window;
  w.requestAnimationFrame=fn=>{fn();return 1;};
