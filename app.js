@@ -3107,8 +3107,20 @@ async function discoverFromITunes(cat, mood, vibe, decade, rating) {
     // return null and let the caller fall back to the curated catalog, which
     // does have real YouTube entries.
     if (media === 'none') return null;
+    // iTunes returns individual tracks, never a source-verified Spotify playlist.
+    // Explicit Spotify catalog formats stay on their already curated source
+    // route rather than swapping the requested format for an Apple recording.
+    if (['Spotify playlist','Spotify single'].includes(cat)) return null;
     try {
-        const res = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(term)}&media=${media}&limit=40`);
+        const audioDiscovery=media==='music'||media==='podcast';
+        // The iTunes catalog is deep; inspect more source records in audio
+        // categories while keeping film/TV requests and mood gates unchanged.
+        const limit=audioDiscovery?100:40;
+        const rawRegion=String(window.MatchAppCatalogMedia?.regionCode?.()||'US').toUpperCase();
+        const region=['BR','US','GB','CA','AU','JP','PT'].includes(rawRegion)?rawRegion:'US';
+        const params=new URLSearchParams({term,media,limit:String(limit)});
+        if(audioDiscovery)params.set('country',region);
+        const res = await fetch('https://itunes.apple.com/search?'+params.toString());
         if (!res.ok) return null;
         const data = await res.json();
         if (!data.results || data.results.length === 0) return null;
@@ -3117,7 +3129,12 @@ async function discoverFromITunes(cat, mood, vibe, decade, rating) {
         const seenRecently = new Set(recentTitles);
 
         // Only keep entries that actually have artwork, so covers never come back blank.
-        let pool = data.results.filter(r => r.artworkUrl100 && (r.trackName || r.collectionName));
+        let pool = data.results.filter(r =>
+            /^https:\/\/is\d+-ssl\.mzstatic\.com\//i.test(String(r.artworkUrl100||'')) &&
+            (r.trackName || r.collectionName) &&
+            (!audioDiscovery || (media==='podcast'
+                ? (r.kind==='podcast'||r.wrapperType==='track'&&r.collectionName)
+                : r.kind==='song'||r.kind==='music-video'||r.wrapperType==='track')));
         pool = pool.filter(r => !excluded.has(window.matchPolicy?.key(r.trackName || r.collectionName)));
         const ITUNES_GENRE = {
             funny: /comedy|stand.?up/i,
@@ -3209,7 +3226,11 @@ async function discoverFromITunes(cat, mood, vibe, decade, rating) {
             source: 'itunes-live',
             _meta: {
                 artwork: upgradeArtwork(r.artworkUrl100),
-                preview: r.previewUrl || null,
+                // Audio embeds must be an actual Apple sample, never an
+                // arbitrary link that happens to look like a media file.
+                preview: audioDiscovery
+                    ? (/^https:\/\/audio-ssl\.itunes\.apple\.com\//i.test(String(r.previewUrl||''))?r.previewUrl:null)
+                    : (r.previewUrl||null),
                 storeUrl: r.trackViewUrl || r.collectionViewUrl || null,
                 year: year
             }
