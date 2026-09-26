@@ -1882,68 +1882,132 @@ window.handlePasswordReset = async function() {
 // ----------------------------------------------------
 // AUTH LOGIC
 // ----------------------------------------------------
+// These controls must work at first paint: delayed UI/audit scripts are not
+// allowed to supply fields required by the production auth.users trigger.
+let emailSignupBusy = false;
+let emailLoginBusy = false;
+function showEmailAuthMessage(text, success = false) {
+    const msg = document.getElementById('auth-message');
+    if (!msg) return;
+    msg.style.display = 'block';
+    msg.style.color = success ? '#25D366' : '#ffb4b4';
+    msg.style.background = success ? 'rgba(37,211,102,.1)' : 'rgba(255,82,82,.1)';
+    msg.textContent = text;
+}
+
 window.handleEmailSignup = async function() {
-    const email = document.getElementById('reg-email').value.trim();
-    const password = document.getElementById('reg-password').value;
-    const msgEl = document.getElementById('auth-message');
+    if (emailSignupBusy) return;
+    const nameField = document.getElementById('reg-full-name');
+    const emailField = document.getElementById('reg-email');
+    const passwordField = document.getElementById('reg-password');
+    const name = String(nameField?.value || '').trim().replace(/\s+/g, ' ').slice(0, 120);
+    const email = String(emailField?.value || '').trim();
+    const password = passwordField?.value || '';
+    const button = document.getElementById('btn-email-signup');
 
-    if (!supabaseClient) { msgEl.style.display = 'block'; msgEl.style.color = '#ff5252'; msgEl.style.background = 'rgba(255,0,0,0.1)'; msgEl.innerText = "Account service is temporarily unavailable."; return; }
-    if (!email || !password) { msgEl.style.display = 'block'; msgEl.style.color = '#ff5252'; msgEl.style.background = 'rgba(255,0,0,0.1)'; msgEl.innerText = "Please provide an email and password."; return; }
+    if (!name) {
+        showEmailAuthMessage('Enter your full name to create an account.');
+        nameField?.focus();
+        return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        showEmailAuthMessage('Enter a valid email address.');
+        emailField?.focus();
+        return;
+    }
+    if (password.length < 6) {
+        showEmailAuthMessage('Create a password with at least 6 characters.');
+        passwordField?.focus();
+        return;
+    }
+    if (!supabaseClient?.auth) {
+        showEmailAuthMessage('Account service could not load. Refresh this page and retry.');
+        return;
+    }
 
-    msgEl.style.display = 'block'; msgEl.style.color = '#fff'; msgEl.style.background = 'rgba(229,193,88,0.2)'; msgEl.innerText = "Creating account...";
-
+    emailSignupBusy = true;
+    if (button) button.disabled = true;
+    showEmailAuthMessage('Creating your MatchApp account…', true);
     try {
-        // A verification email must return to the page that can finish the
-        // implicit/PKCE session, not directly into another signup modal.
+        // Full name is mandatory in the production auth.users BEFORE INSERT
+        // trigger; omitting user_metadata caused early signup to be rejected.
         const { data, error } = await supabaseClient.auth.signUp({
             email, password,
             options: {
-                data: { matchapp_first_time_onboarding_v1: true },
+                data: { full_name: name, name, matchapp_first_time_onboarding_v1: true },
                 emailRedirectTo: 'https://matchapp.tv/'
             }
         });
         if (error) {
-            msgEl.style.color = '#ff5252'; msgEl.style.background = 'rgba(255,0,0,0.1)'; msgEl.innerText = error.message;
+            showEmailAuthMessage(
+                error.status === 429 || /rate.?limit/i.test(error.message || '')
+                    ? 'Too many signup requests. Please try again later.'
+                    : error.status >= 500
+                        ? 'Account service could not complete registration. Please retry.'
+                        : error.message || 'Could not create your account. Please retry.'
+            );
         } else if (data?.session?.user) {
-            msgEl.style.color = '#25D366'; msgEl.style.background = 'rgba(37,211,102,0.1)';
-            msgEl.innerText = "Signed in. Opening your profile...";
-            setTimeout(() => { window.location.href = '/profile/profile.html'; }, 700);
+            showEmailAuthMessage('Signed in. Opening your profile…', true);
+            window.location.assign('/profile/profile.html');
         } else {
-            // Email confirmation enabled: signUp returns a user, NOT a session.
-            // Do not redirect to an unauthenticated profile or claim success.
-            msgEl.style.color = '#25D366'; msgEl.style.background = 'rgba(37,211,102,0.1)';
-            msgEl.innerText = "Check your inbox and confirm your email using the newest link. Already expired? Use 'Resend confirmation email' on the Log In tab.";
+            // An existing email may yield an intentionally non-disclosing result.
+            // Do not claim a new account was made without a verified session.
+            showEmailAuthMessage(
+                'If this is a new email, check your inbox for a confirmation link. If you registered before, sign in with your original method (including Google) or reset your password.',
+                true
+            );
         }
-    } catch (_) {
-        msgEl.style.color = '#ff5252'; msgEl.style.background = 'rgba(255,0,0,0.1)'; msgEl.innerText = "Could not create the account. Please retry.";
+    } catch (error) {
+        showEmailAuthMessage('Could not reach the account service. Check your connection and try again.');
+    } finally {
+        emailSignupBusy = false;
+        if (button) button.disabled = false;
     }
 };
 
 window.handleEmailLogin = async function() {
-    const email = document.getElementById('login-email').value.trim(); 
-    const password = document.getElementById('login-password').value; 
-    const msgEl = document.getElementById('auth-message');
-    
-    if (!supabaseClient) { msgEl.style.display = 'block'; msgEl.style.color = '#ff5252'; msgEl.style.background = 'rgba(255,0,0,0.1)'; msgEl.innerText = "Database connection offline."; return; }
-    if(!email || !password) { msgEl.style.display = 'block'; msgEl.style.color = '#ff5252'; msgEl.style.background = 'rgba(255,0,0,0.1)'; msgEl.innerText = "Please enter email and password."; return; }
-    
-    msgEl.style.display = 'block'; msgEl.style.color = '#fff'; msgEl.style.background = 'rgba(229,193,88,0.2)'; msgEl.innerText = "Authenticating...";
-    
+    if (emailLoginBusy) return;
+    const emailField = document.getElementById('login-email');
+    const passwordField = document.getElementById('login-password');
+    const email = String(emailField?.value || '').trim();
+    const password = passwordField?.value || '';
+    const button = document.getElementById('btn-email-login');
+    if (!supabaseClient?.auth) {
+        showEmailAuthMessage('Account service could not load. Refresh this page and retry.');
+        return;
+    }
+    if (!email || !password) {
+        showEmailAuthMessage('Enter your email and password, or use Continue with Google.');
+        return;
+    }
+    emailLoginBusy = true;
+    if (button) button.disabled = true;
+    showEmailAuthMessage('Signing in…', true);
     try {
         const { error, data } = await supabaseClient.auth.signInWithPassword({ email, password });
-        if(error) { 
-            msgEl.style.color = '#ff5252'; msgEl.style.background = 'rgba(255,0,0,0.1)';
-            msgEl.innerText = (error.code === 'email_not_confirmed')
-                ? "Confirm your email before signing in. You can request a new link below."
-                : (error.code === 'invalid_credentials')
-                    ? "Unable to sign in. Check your details. If you just registered, confirm your email or request a fresh link below."
-                    : error.message;
-        } else if (data.user) { 
-            msgEl.style.color = '#25D366'; msgEl.style.background = 'rgba(37,211,102,0.1)'; msgEl.innerText = "Welcome back! Routing to Home..."; 
-            setTimeout(() => { window.location.reload(); }, 1000); 
+        if (error) {
+            showEmailAuthMessage(
+                (error.code === 'email_not_confirmed')
+                    ? 'Confirm your email first. Use the Resend confirmation email button below if needed.'
+                    : (error.code === 'invalid_credentials')
+                        ? 'Email/password not accepted. If you joined with Google, choose Continue with Google. Otherwise check your password or use Forgot your password.'
+                        : (error.status === 429)
+                            ? 'Too many attempts. Please wait before trying again.'
+                            : error.status >= 500
+                                ? 'Account service temporarily unavailable. Please retry.'
+                                : (error.message || 'Could not sign in.')
+            );
+        } else if (data?.session && data?.user) {
+            showEmailAuthMessage('Welcome back! Opening MatchApp…', true);
+            window.setTimeout(() => window.location.reload(), 350);
+        } else {
+            showEmailAuthMessage('Sign-in did not return a session. Please retry or use your original sign-in method.');
         }
-    } catch(err) {
-        msgEl.style.color = '#ff5252'; msgEl.style.background = 'rgba(255,0,0,0.1)'; msgEl.innerText = "Critical authentication error.";
+    } catch (_) {
+        showEmailAuthMessage('Connection interrupted during sign-in. Please retry.');
+    } finally {
+        emailLoginBusy = false;
+        if (button) button.disabled = false;
     }
 };
 
