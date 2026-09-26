@@ -43,7 +43,7 @@ const strings={
 
 function lang(){
   const raw=window.MATCH_LANG||document.documentElement.lang||'en';
-  return strings[raw]||strings[raw.split('-')[0]]||strings.en;
+  return strings[raw]||strings[raw.split('-')[0]]||window.MATCH_PHONE_AUTH_STRINGS?.[raw]||window.MATCH_PHONE_AUTH_STRINGS?.[raw.split('-')[0]]||strings.en;
 }
 function client(){return window.supabaseClient||null;}
 function el(id){return document.getElementById(id);}
