@@ -5,7 +5,8 @@ const read=p=>fs.readFileSync(path.join(__dirname,'..',p),'utf8');
 
 test('the displayed match and both saved/share snapshots start with real rendered local fallback',()=>{
  const app=read('app.js');
- assert.match(app,/posterEl\.src = localCover;\s*\/\/ The original image will replace this only after a successful image/);
+ assert.match(app,/firstPoster\.src = firstCover;/,'The first match paint must already have a visible title-labelled image');
+ assert.match(app,/if \(!originalShown\) posterEl\.src = localCover;/,'A slower provider cannot overwrite a decoded original');
  assert.match(app,/globalMatchPoster = localCover;\s*window\.globalMatchPoster = localCover;/);
  assert.match(app,/window\.setLoadedMatchPoster = function\(url,title\)/);
  assert.match(read('catalog-media.js'),/if\(typeof window\.setLoadedMatchPoster==='function'\)window\.setLoadedMatchPoster\(url,title\)/);
