@@ -91,6 +91,7 @@ test('private SQL enforces 2 per guest and single-use posts in one serialized tr
  assert.match(sql,/alter table match_private\.guest_social_proofs enable row level security/i);
  assert.match(sql,/revoke all on match_private\.guest_social_proofs from public,anon,authenticated/i);
  assert.match(sql,/guest_social_proofs_unique_platform_post/i);
+ assert.match(sql,/extensions\.gen_random_bytes\(12\)/, 'crypto RNG must be explicitly schema-qualified in locked SEC DEFINER functions');
  assert.match(sql,/pg_advisory_xact_lock/i);
  assert.match(sql,/if v_used>=2/i);
  assert.match(sql,/post_already_used/i);
@@ -98,7 +99,11 @@ test('private SQL enforces 2 per guest and single-use posts in one serialized tr
  const edge=source('supabase/functions/guest-social-proof/index.ts');
  assert.match(edge,/verifyPublicSocialPost/);
  assert.match(edge,/status!=="pending"/);
- assert.match(edge,/guest_social_proof_complete/);
+ assert.match(edge,/verified_guest_social_gateway/);
+ assert.match(edge,/p_action:"complete"/);
+ const gateway=source('supabase/security/verified-guest-social-service-gateway.sql');
+ assert.match(gateway,/revoke all on function public\.verified_guest_social_gateway[\s\S]*from public,anon,authenticated/i);
+ assert.match(gateway,/grant execute on function public\.verified_guest_social_gateway[\s\S]*to service_role/i);
  assert.match(edge,/!origin\|\|!ORIGINS\.has\(origin\)/);
  assert.doesNotMatch(edge,/verify.+?true;\s*return response\(\{granted:true/i);
 });

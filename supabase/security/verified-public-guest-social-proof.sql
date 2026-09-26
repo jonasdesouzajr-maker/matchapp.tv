@@ -48,7 +48,7 @@ begin
      return jsonb_build_object('ok',false,'reason','rate_limited');
    end if;
    insert into match_private.guest_social_proofs(guest_id,kind,challenge)
-    values(p_guest_id,p_kind,'MAI-'||upper(encode(gen_random_bytes(12),'hex')))
+    values(p_guest_id,p_kind,'MAI-'||upper(encode(extensions.gen_random_bytes(12),'hex')))
     returning * into v_pending;
  end if;
  return jsonb_build_object('ok',true,'proof_id',v_pending.id,

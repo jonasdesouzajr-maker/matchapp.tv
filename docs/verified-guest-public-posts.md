@@ -56,13 +56,17 @@ their receipt is not independently verifiable and they do not receive the
 The Supabase project must have:
 
 1. Applied migration: \`supabase/security/verified-public-guest-social-proof.sql\`.
+   Also apply `supabase/security/verified-guest-social-service-gateway.sql` for
+   the restricted public API wrapper. Do **not** expose the whole private
+   schema in Supabase Data API settings.
 2. Deployed Edge Function: \`guest-social-proof\` with
    \`index.ts\` and \`verification-core.mjs\` from
    \`supabase/functions/guest-social-proof/\`. This is a guest-facing endpoint:
    \`verify_jwt=false\` is intentional because guests have no MatchApp
    account; the function enforces an origin + public anon-key request gate,
-   restricts outbound requests to fixed official provider domains, and calls
-   two service-role-only private SQL functions. The publishable key is NOT
+   restricts outbound requests to fixed official provider domains, and calls a restricted public wrapper executable only by `service_role`, which
+   in turn invokes service-only private SQL functions. `match_private` itself
+   remains unexposed to public PostgREST requests. The publishable key is NOT
    private authentication. Positive provider evidence and server claims are
    the security boundary.
 3. Available standard managed secrets \`SUPABASE_URL\`,
