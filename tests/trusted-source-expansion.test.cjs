@@ -109,6 +109,10 @@ test('same Match attempt inspects bounded source-verified TMDB windows before TV
   'wider TMDB coverage must use the existing main two-window strategy');
  assert(app.includes('Date.now()-sourceStarted>46000'),'search budget protects mobile WebViews');
  assert(app.includes('MAX_EXACT_DETAILS=14'),'bounded exact-identity detail checks');
+ assert(app.includes('TMDB_DISCOVERY_CURSOR=new Map()'),'exhausted criteria must explore new source windows on a later attempt');
+ assert(app.includes('const pageStart=relativeStart+offset'),'cursor must move the next batch beyond previous candidates');
+ assert(app.includes('if(sawResults&&!sourceOutage)advance()'),'do not advance source windows on provider outage');
+ assert(app.includes('if(!d&&prefs.countries.size)continue'),'unverified origin cannot evade a user country blocklist');
  assert(app.includes('if(!Array.isArray(candidates)||!candidates.length)'),
   'an unavailable source cannot prove inventory');
  assert(app.includes('withMatchSourceDeadline(()=>discoverVerifiedExactTMDB(requested),MATCH_SOURCE_DEADLINES.tmdb)'));
