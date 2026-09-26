@@ -51,6 +51,19 @@ test('publisher checked adult magazines use official title and issue destination
  assert.equal(new URL(archive.issues).pathname,'/magazine-issues');
  dom.window.close();
 });
+test('real original-language Machado de Assis cover requires exact bilingual work, author and year',()=>{
+ const covers=require('../ebooks/cover-identity.js');
+ const book={title:'The Posthumous Memoirs of Brás Cubas',author:'Machado de Assis',year:1881};
+ const official={title:'Memórias Póstumas de Brás Cubas',author_name:['Machado de Assis'],
+  first_publish_year:1881,cover_i:123456};
+ assert.equal(covers.verifiedCoverId(book,[official]),123456);
+ assert.equal(covers.verifiedCoverId(book,[{...official,author_name:['Other Author']}]),null);
+ assert.equal(covers.verifiedCoverId(book,[{...official,title:'Dom Casmurro'}]),null);
+ assert.equal(covers.verifiedCoverId(book,[{...official,first_publish_year:1917}]),null);
+ const art=covers.verifiedGoogleCoverUrl(book,[{volumeInfo:{title:official.title,
+  authors:['Machado de Assis'],imageLinks:{thumbnail:'http://books.google.com/books/content?id=brascubas'}}}]);
+ assert(art&&art.startsWith('https://books.google.com/books/content?'));
+});
 test('audiobook official playable samples require exact verified edition, never store search',()=>{
  const a=require('../ebooks/audiobooks.js');
  const book={title:'The Wonderful Wizard of Oz',author:'L. Frank Baum'};
