@@ -21,7 +21,7 @@ test('magazines are a distinct explicitly selected adult matching format',()=>{
 });
 test('curated global magazines use original publisher destinations and exclude XXX',()=>{
  const w=modules(),m=w.MatchAppMagazines.items,safe=w.MatchAppContentSafety;
- assert.equal(m.length,24);
+ assert.equal(m.length,31);
  assert(m.some(x=>x.region==='BR')&&m.some(x=>x.region==='JP')&&m.some(x=>x.region==='AU'));
  for(const item of m){
   assert(!safe.isExplicit(item),'explicit magazine: '+item.title);
