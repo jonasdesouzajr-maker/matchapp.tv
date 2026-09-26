@@ -22,7 +22,7 @@
     approvedLink.rel = 'stylesheet';
     (document.head || document.documentElement).appendChild(approvedLink);
   }
-  approvedLink.href = '/home-approved.css?v=20260926-bookcrest-hero1';
+  approvedLink.href = '/home-approved.css?v=20260926-playpending1';
   if (!document.getElementById('ma-install-onetap')) {
     var ot=document.createElement('script');
     ot.id='ma-install-onetap';
