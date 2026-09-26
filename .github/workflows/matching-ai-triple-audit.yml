@@ -51,7 +51,7 @@ jobs:
       - name: Full site audit
         run: npm run audit:site
       - name: Install browser runtime for deployed production checks
-        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        if: (github.event_name != 'pull_request' && github.ref == 'refs/heads/main') || (github.event_name == 'pull_request' && matrix.pass == 1)
         run: |
           npm install --no-save --package-lock=false --ignore-scripts playwright@1.56.1
           npx playwright install --with-deps chromium
@@ -69,10 +69,10 @@ jobs:
           echo "::error::Live site did not confirm this precise SHA."
           exit 1
       - name: Live adult movie, e-book, magazine and Ask AI across four viewports
-        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        if: (github.event_name != 'pull_request' && github.ref == 'refs/heads/main') || (github.event_name == 'pull_request' && matrix.pass == 1)
         run: node tools/live-production-smoke.cjs
       - name: Live Spotify, exact audiobook, Kids matching and Kids AI
-        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        if: (github.event_name != 'pull_request' && github.ref == 'refs/heads/main') || (github.event_name == 'pull_request' && matrix.pass == 1)
         run: node tools/live-production-deep-matching.cjs
       - name: Archive per-pass evidence
         if: always()
