@@ -64,8 +64,8 @@ test('E-books shares Home premium form aesthetics without changes to matcher mec
  assert.match(css,/#ebook-matcher-root \.ebook-fold>summary strong/);
  assert.match(css,/#ebook-matcher-root \.ebook-field/);
  assert.match(home,/id="questionnaire-box" class="premium-card"/);
- assert.match(home,/ebooks\/ebook-matcher\.css\?v=20260926-bookcrest1/);
- assert.match(read('ebooks/ebook-matcher.js'),/root\.innerHTML=markup\(\);bind\(root\);renderTop\(root\)/);
+ assert.match(home,/ebooks\/ebook-matcher\.css\?v=20260926-strictbooks4/);
+ assert.match(read('ebooks/ebook-matcher.js'),/root\.innerHTML=markup\(\);bind\(root\);syncBookControls\(root,prefs\(\)\);renderTop\(root\)/);
 });
 
 test('Antártida feature guide uses existing exact-title poster identity, never a fabricated cover',()=>{

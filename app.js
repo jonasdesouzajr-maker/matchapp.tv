@@ -1008,6 +1008,13 @@ window.fetchTitleMeta = fetchTitleMeta;
 async function getRealCoverImage(title, hints) {
     if (!title) return generatedCover(title, hints);
     const verified = getVerifiedPoster(title);
+    // Antártida's previously pinned CDN poster has intermittently disappeared.
+    // An exact numeric TMDB identity may now carry a replacement real poster.
+    // Never use a fuzzy title search or a poster from another Antarctic film.
+    if (verified && /^ant[aá]rtida$/i.test(String(title || ''))) {
+        const fresh = await getExactCatalogPoster(title);
+        if (fresh) return fresh;
+    }
     if (verified) return verified;
     const entry = typeof CONTENT_CATALOG !== 'undefined' ? CONTENT_CATALOG.find(e => e.title === title) : null;
     hints = { ...(entry || {}), ...(hints || {}) };
@@ -1253,6 +1260,15 @@ async function getCuratedPoster(title) {
 async function getExactCatalogPoster(title) {
     if (!title) return null;
     try {
+        if (catalogIdentityKey(title) === 'antartida' && typeof window.tmdbDetails === 'function') {
+            // Existing verified film identity from the official Antártida guide.
+            const exact = await window.tmdbDetails(1401757, 'movie', {priority:true});
+            if (Number(exact?.tmdbId) === 1401757 && exact.kind === 'movie' && exact.adult !== true) {
+                const art = String(exact.posterLarge || exact.posterOriginal || exact.poster || '');
+                if (/^https:\/\/image\.tmdb\.org\/t\/p\/(?:w\d+|original)\/[A-Za-z0-9_.-]+$/.test(art))
+                    return art;
+            }
+        }
         // A verified ID + year + source artwork is immediately usable without
         // waiting for a second API lookup, and still needs an image-load probe.
         const pinned = await getCuratedPoster(title);
@@ -3123,6 +3139,12 @@ async function discoverFromITunes(cat, mood, vibe, decade, rating) {
             if (!genreHit.length) return null;
             pool = genreHit;
         }
+        if (mood === 'cozy comfort watch') {
+            pool = pool.filter(r =>
+                !/thriller|horror|war|crime|drama/i.test(String(r.primaryGenreName || '')) &&
+                !COZY_HEAVY_TEXT.test([r.longDescription,r.shortDescription].filter(Boolean).join(' ')));
+            if (!pool.length) return null;
+        }
         if (mood === 'funny') {
             pool = pool.filter(r => {
                 const g = String(r.primaryGenreName || '');
@@ -3226,8 +3248,8 @@ const COUNTRY_CATEGORY_CODES={
 // to prove a MatchApp mood. Keep this gate source-backed and conservative.
 // In particular, "cozy comfort watch" must not accept a heavy Drama/Romance
 // merely because Romance appears in its genre list.
-const COZY_BLOCKED_GENRES=new Set(['Horror','Thriller','War']);
-const COZY_HEAVY_TEXT=/\b(?:murder(?:ed|er)?|serial killer|kidnap(?:ped|ping)?|hostage|tortur(?:e|ed)|terminal(?:ly)?|cancer|dying|death|funeral|grief|organ donor|organ transplant|sick child|critically ill|life[- ]threatening|war zone|revenge killing)\b/i;
+const COZY_BLOCKED_GENRES=new Set(['Horror','Thriller','War','Crime','War & Politics']);
+const COZY_HEAVY_TEXT=/\b(?:murder(?:ed|er)?|serial killer|kidnap(?:ped|ping)?|hostage|tortur(?:e|ed)|terminal(?:ly)?|cancer|dying|death|funeral|grief|organ donor|organ transplant|sick child|critically ill|life[- ]threatening|war zone|revenge killing|sexual assault|assaulted|rape|raped|violent attack|violence against|brutal crime)\b/i;
 function moodFitsVerified(wanted,genres,overview){
     if(!wanted.length)return true;
     const gs=Array.isArray(genres)?genres:[];
@@ -3848,8 +3870,9 @@ function pickGuaranteedCatalog(cat, plat, mood, vibe, rating, decade) {
         ['exact', requested],
         ['broaden-vibe', {...requested, vibe:[]}],
         ['broaden-era', {...requested, vibe:[], decade:[]}],
-        ['broaden-mood', {...requested, vibe:[], decade:[], mood:[]}],
-        ['broaden-platform', {...requested, vibe:[], decade:[], mood:[], plat:[]}]
+        // Never discard the chosen mood merely because the fallback pool is
+        // exhausted. A request for Comfort must remain genuinely comforting.
+        ['broaden-platform', {...requested, vibe:[], decade:[], plat:[]}]
     ];
     for (const [stage, criteria] of stages) {
         const hit = choose(criteria, stage);

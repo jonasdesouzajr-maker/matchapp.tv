@@ -95,8 +95,7 @@
                 .map(x => String(x || '').trim())
                 .filter(x => x && x !== 'any');
         });
-        const unique = Object.values(state).flat();
-        if(unique.includes('funny'))state.mood=state.mood.filter(v=>v==='funny'||!window.matchPolicy?.incompatible(v,{mood:['funny']}));
+        reconcileConflicts();
         save();
         renderAll();
     };
@@ -121,6 +120,17 @@
         const changed = next.length !== state[key].length || next.some((value, i) => value !== state[key][i]);
         state[key] = next;
         return changed;
+    }
+
+    function reconcileConflicts() {
+        // Previously saved or programmatically set opposing selections cannot
+        // remain invisible and override a visible Comfort selection.
+        const moods=[];
+        for(const mood of state.mood) {
+            if (!window.matchPolicy?.incompatible(mood,{mood:moods,genre:[]})) moods.push(mood);
+        }
+        state.mood=moods;
+        state.genre=state.genre.filter(genre=>!window.matchPolicy?.incompatible(genre,{mood:moods,genre:[]}));
     }
 
     function toggle(key, value, sel) {
@@ -201,8 +211,11 @@
                 // A ticked chip is ALWAYS rendered, even past the collapse
                 // limit. Hiding something the user has selected behind a
                 // "show more" is how a form silently lies about its own state.
-                if (on || shown < limit) {
-                    if (!on) shown++;
+                // A disabled conflicting option must remain visible as the
+                // reason a Comfort selection cannot produce a Thriller.
+                const blocked = !!window.matchPolicy?.incompatible(o.value,state);
+                if (on || blocked || shown < limit) {
+                    if (!on && !blocked) shown++;
                     visible.push(o);
                 }
             });
@@ -356,16 +369,20 @@
         });
 
         if (reconcileField(sel, f.key)) save();
+        reconcileConflicts();
         renderField(sel, f.key);
         syncSelect(sel, f.key);
     }
 
     function renderAll() {
-        let changed = false;
+        const old=JSON.stringify(state);
+        reconcileConflicts();
+        let changed = JSON.stringify(state)!==old;
         FIELDS.forEach(f => {
             const sel = document.getElementById(f.id);
             if (sel && sel.dataset.critMounted === '1') {
                 changed = reconcileField(sel, f.key) || changed;
+                Array.from(sel.options).forEach(o=>{if(o.value!=='any')o.disabled=!state[f.key].includes(o.value)&&!!window.matchPolicy?.incompatible(o.value,state);});
                 renderField(sel, f.key); syncSelect(sel, f.key);
             }
         });
@@ -380,7 +397,9 @@
         try { const previous=JSON.parse(localStorage.getItem('match_rematch_criteria') || '{}');FIELDS.forEach(f=>{if(Array.isArray(previous[f.key]))state[f.key]=previous[f.key];}); } catch (_) {}
     }
     if (rematch) { const form=document.getElementById('questionnaire-box');if(form){form.style.display='block';if(window.MatchAppScrollGate?.canAutoScroll?.())form.scrollIntoView({behavior:'smooth',block:'start'});} }
+        reconcileConflicts();
         FIELDS.forEach(mountField);
+        renderAll();
     }
 
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);

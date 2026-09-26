@@ -80,7 +80,7 @@ test('only the adult reader/listener matcher loads audiobook logic, preserving K
  assert(!kids.includes('/ebooks/audiobooks.js'));
  assert.match(match,/format:\[\['any'/);
  assert.match(match,/chooseVerifiedAudio/);
- assert.match(match,/if\(!pick\).*return;/);
+ assert.match(match,/if\(!pick\)[\s\S]*?return;/);
  assert(match.indexOf('const allowed=await window.checkDailyLimit()')>match.indexOf('if(!pick)'));
  assert.match(match,/data-ebook-check-audio/);
  assert.match(match,/paintAudio/);

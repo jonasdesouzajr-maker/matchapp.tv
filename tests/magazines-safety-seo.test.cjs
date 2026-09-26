@@ -49,6 +49,7 @@ test('magazine recommendations obey mood, genre, region and saved exclusions',()
  assert(available.length>0);
  const chosen=api.select({mood:'curious',genre:'science',access:'any'},'BR',[]);
  assert(chosen&&chosen.region==='BR'&&chosen.genres.includes('science'));
+ assert.equal(api.select({mood:'not-a-matching-mood',genre:'science',access:'any'},'BR',[]),null,'magazine fallback must not discard an explicit mood');
  const blocked=api.items.map(x=>x.id);
  assert.equal(api.select({mood:'any',genre:'any',access:'any'},'BR',blocked),null);
 });

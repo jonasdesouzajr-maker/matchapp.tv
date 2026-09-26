@@ -403,6 +403,9 @@
                      border: 1.5px solid rgba(255,255,255,0.28); border-radius: 5px;
                      transition: background 0.15s, border-color 0.15s; }
         .crit-chip:hover { background: rgba(255,255,255,0.06); color: #fff; }
+        .crit-chip:disabled { cursor: not-allowed; opacity: .34; filter: grayscale(.8);
+            background: rgba(255,255,255,.025); color: #aaa; }
+        .crit-chip:disabled:hover { background: rgba(255,255,255,.025); color: #aaa; }
         .crit-chip:focus-visible { outline: 2px solid var(--gold); outline-offset: -2px; }
 
         /* A ticked chip is the one piece of gold in the field. Filled rather
@@ -1623,7 +1626,7 @@ html body.page-home #mh-topbox .mh-deck>.sound-toggle-btn,html body.page-home #m
     }
     </style>
     <link rel="stylesheet" href="/frontend-polish.css?v=20260924-ui3">
-    <link rel="stylesheet" href="/ebooks/ebook-matcher.css?v=20260926-bookcrest1">
+    <link rel="stylesheet" href="/ebooks/ebook-matcher.css?v=20260926-strictbooks4">
     <link rel="stylesheet" href="/fold-colors.css?v=20260926-newsfold1" data-matchapp-fold-colors="1">
     <link rel="stylesheet" href="/brand-headline.css?v=20260926-ai-energy2" data-matchapp-brand-headline="1">
 </head>
@@ -3413,18 +3416,18 @@ html body.page-home #daily-match-checkin { padding: 11px 12px !important; }
     </div>
 
     <script src="/settings.js?v=20260925-guarantee3"></script>
-    <script src="/matching-policy.js?v=20260924-runtime1"></script>
+    <script src="/matching-policy.js?v=20260926-conflicts2"></script>
     <script src="/match-localization.js?v=20260925-matchrestore2"></script>
-<script src="/app.js?v=20260926-pinnedcover3"></script>
+<script src="/app.js?v=20260926-comfort4"></script>
 <script src="/catalog-plus.js?v=20260919-catalog3"></script>
 <script src="/content-safety.js?v=20260925-xxx2"></script>
 <script src="/ebooks/catalog.js?v=20260924-ebooks2"></script>
-<script src="/ebooks/magazines.js?v=20260925-mag1"></script>
+<script src="/ebooks/magazines.js?v=20260926-strictmag1"></script>
 <script src="/ebooks/top-ebooks.js?v=20260924-top1"></script>
 <script src="/ebooks/affiliate-links.js?v=20260925-amzbr1"></script>
 <script src="/ebooks/audiobooks.js?v=20260925-audioverify2"></script>
 <script src="/ebooks/cover-identity.js?v=20260925-original2"></script>
-<script src="/ebooks/ebook-matcher.js?v=20260926-chroma1"></script>
+<script src="/ebooks/ebook-matcher.js?v=20260926-strictbooks4"></script>
 <script src="/phone-auth-i18n.js?v=1"></script><script src="/phone-auth.js?v=1"></script><script src="/phone-auth-localize.js?v=1"></script>
     <script src="/catalog-media.js?v=20260926-coverrace1"></script>
 <script src="/title-experience.js?v=20260920-freeze2"></script>
@@ -3433,7 +3436,7 @@ html body.page-home #daily-match-checkin { padding: 11px 12px !important; }
          matcher, and non-deferred so the form is never briefly interactive as
          a plain single-choice select. -->
     <script src="/tmdb.js?v=20260924-runtime1"></script>
-    <script src="/criteria.js?v=191"></script>
+    <script src="/criteria.js?v=20260926-conflicts2"></script>
     <script src="/match-speed.js?v=20260925-matchrestore1"></script>
     <script src="/lazy.js?v=20260926-chroma1"></script>
     <!-- News must start on Home, not wait for a later editorial section to scroll into view. -->

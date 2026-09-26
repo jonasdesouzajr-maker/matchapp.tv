@@ -47,6 +47,6 @@ test('the visibly revealed adult match probes curated artwork before optional me
  assert(first>reveal&&pinned>first&&slow>pinned);
  assert.match(app.slice(pinned,slow),/probe\.onload[\s\S]*firstPoster\.src = url/);
  assert.match(app.slice(pinned,slow),/window\.setLoadedMatchPoster\(url, selected\.title\)/);
- assert.match(html,/app\.js\?v=20260926-pinnedcover3/);
- assert.doesNotMatch(read('kids/index.html'),/20260926-pinnedcover3|result-dismiss/);
+ assert.match(html,/app\.js\?v=20260926-comfort4/);
+ assert.doesNotMatch(read('kids/index.html'),/20260926-comfort4|result-dismiss/);
 });

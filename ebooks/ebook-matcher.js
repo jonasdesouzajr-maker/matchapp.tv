@@ -43,8 +43,14 @@ function lang(){const raw=String(window.MATCH_LANG||document.documentElement.lan
 function tr(k){const l=LABELS[lang()]||LABELS.en;return l[k]||LABELS.en[k]||k;}
 function read(key){try{const v=JSON.parse(localStorage.getItem(key)||'[]');return Array.isArray(v)?v:[]}catch(_){return[]}}
 function write(key,v){try{localStorage.setItem(key,JSON.stringify(v))}catch(_){}}
-function prefs(){try{return Object.assign({mood:'any',genre:'any',pace:'any',length:'any',era:'any',access:'any',format:'any'},JSON.parse(localStorage.getItem(K.prefs)||'{}'))}catch(_){return{mood:'any',genre:'any',pace:'any',length:'any',era:'any',access:'any',format:'any'}}}
-function savePrefs(v){try{localStorage.setItem(K.prefs,JSON.stringify(v))}catch(_){}}
+const BOOK_CONFLICTS={cozy:['thriller','horror','true-crime','dystopian'],funny:['thriller','horror','true-crime'],hopeful:['horror','true-crime']};
+function bookIncompatible(field,value,p){
+ const mood=field==='mood'?value:p.mood,genre=field==='genre'?value:p.genre;
+ return (BOOK_CONFLICTS[mood]||[]).includes(genre);
+}
+function normalizeBookPrefs(p){if(bookIncompatible('genre',p.genre,p))p.genre='any';return p}
+function prefs(){try{return normalizeBookPrefs(Object.assign({mood:'any',genre:'any',pace:'any',length:'any',era:'any',access:'any',format:'any'},JSON.parse(localStorage.getItem(K.prefs)||'{}')))}catch(_){return{mood:'any',genre:'any',pace:'any',length:'any',era:'any',access:'any',format:'any'}}}
+function savePrefs(v){normalizeBookPrefs(v);try{localStorage.setItem(K.prefs,JSON.stringify(v))}catch(_){}}
 function uniq(v){return [...new Set(v.filter(Boolean))]}
 function idset(key){return new Set(read(key))}
 function market(){
@@ -89,6 +95,7 @@ function freeLinks(book){
 function bookInfo(book){return 'https://books.google.com/books?q='+q(book);}
 function analytics(name,detail){try{window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:name,...detail})}catch(_){}}
 function fits(book,p,omit){
+ if(p.mood==='cozy'&&book.genres.some(g=>BOOK_CONFLICTS.cozy.includes(g)))return false;
  if(!omit.has('mood')&&p.mood!=='any'&&!book.moods.includes(p.mood))return false;
  if(!omit.has('genre')&&p.genre!=='any'&&!book.genres.includes(p.genre))return false;
  if(!omit.has('pace')&&p.pace!=='any'&&book.pace!==p.pace)return false;
@@ -102,7 +109,7 @@ function pool(p,omit,allowSeen){
  return CAT().filter(b=>!saved.has(b.id)&&!bad.has(b.id)&&(allowSeen||!seen.has(b.id))&&fits(b,p,omit));
 }
 function choose(p){
- const relax=[[],['length'],['pace','length'],['mood','pace','length'],['era','mood','pace','length'],['genre','era','mood','pace','length']];
+ const relax=[[],['length'],['pace','length'],['era','pace','length']];
  for(const fields of relax){const a=pool(p,new Set(fields),false);if(a.length)return{book:a[Math.floor(Math.random()*a.length)],relaxed:fields.length>0};}
  // Exhausted fresh pool: repeat a previously shown book, never a saved/disliked one.
  for(const fields of relax){const a=pool(p,new Set(fields),true);if(a.length)return{book:a[Math.floor(Math.random()*a.length)],relaxed:true,recycled:true};}
@@ -115,26 +122,30 @@ async function chooseVerifiedAudio(p,onProgress){
  const verify=window.MatchAppAudiobooks?.verify;
  if(typeof verify!=='function')return null;
  const country=market();
- if(p.access==='free'&&country!=='US')return null; // jurisdiction-specific free rights
- const relax=[[],['length'],['pace','length'],['mood','pace','length'],
-  ['era','mood','pace','length'],['genre','era','mood','pace','length']];
- let tries=0;const tested=new Set(),started=Date.now();
- for(const fields of relax){
-  const options=pool(p,new Set(fields),false).sort(()=>Math.random()-.5);
-  for(const book of options){
-   if(tested.has(book.id))continue;
-   // Longer bounded source search: eight distinct legitimate candidates,
-   // never an arbitrary "nearby" title returned when sources are down.
-   if(tries>=8||Date.now()-started>55000)return null;
-   tested.add(book.id);tries++;
-   try{onProgress?.(tries,8)}catch(_){}
-   let found=null;
-   try{found=await verify(book,country,p.access)}catch(_){continue}
-   if(!found)continue;
-   if((p.access==='free'&&found.free)||
-      (p.access==='paid'&&found.apple)||
-      (p.access==='any'&&(found.apple||found.free)))
-    return {book,audio:found,relaxed:fields.length>0};
+ // Do not label US public-domain audio "verified free" abroad without rights.
+ if(p.access==='free'&&country!=='US')return null;
+ const relax=[[],['length'],['pace','length'],['era','pace','length']];
+ const tested=new Set(),started=Date.now(),limit=24;
+ for(const allowSeen of [false,true]){
+  for(const fields of relax){
+   const options=pool(p,new Set(fields),allowSeen).filter(b=>!tested.has(b.id));
+   // Batch independent source lookups instead of exhausting eight serial
+   // timeouts before reaching a promising, matching classic.
+   for(let offset=0;offset<options.length;offset+=4){
+    if(tested.size>=limit||Date.now()-started>55000)return null;
+    const batch=options.slice(offset,offset+Math.min(4,limit-tested.size));
+    batch.forEach(book=>{tested.add(book.id);try{onProgress?.(tested.size,limit)}catch(_){}});
+    const checked=await Promise.all(batch.map(async book=>{
+     try{
+      const audio=await verify(book,country,p.access);
+      return audio&&((p.access==='free'&&audio.free)||
+       (p.access==='paid'&&audio.apple)||
+       (p.access==='any'&&(audio.apple||audio.free)))?
+       {book,audio,relaxed:fields.length>0,recycled:allowSeen}:null;
+     }catch(_){return null}
+    }));
+    const hit=checked.find(Boolean);if(hit)return hit;
+   }
   }
  }
  return null;
@@ -246,8 +257,8 @@ async function cloudHydrate(){
   if(Array.isArray(m.match_ebook_disliked))write(K.disliked,uniq(read(K.disliked).concat(m.match_ebook_disliked)));
  }catch(_){}
 }
-function optionButtons(field,current){
- return FIELDS[field].map(([value,icon,label])=>'<button type="button" class="ebook-chip'+(current===value?' is-on':'')+'" data-ebook-field="'+field+'" data-ebook-value="'+esc(value)+'" aria-pressed="'+(current===value?'true':'false')+'"><span aria-hidden="true">'+icon+'</span>'+esc(label)+'</button>').join('');
+function optionButtons(field,current,p){
+ return FIELDS[field].map(([value,icon,label])=>'<button type="button" class="ebook-chip'+(current===value?' is-on':'')+'" data-ebook-field="'+field+'" data-ebook-value="'+esc(value)+'" aria-pressed="'+(current===value?'true':'false')+'"'+(value!==current&&bookIncompatible(field,value,p)?' disabled aria-disabled="true" title="Conflicts with your mood or genre"':'')+'><span aria-hidden="true">'+icon+'</span>'+esc(label)+'</button>').join('');
 }
 function topBooks(){return Array.isArray(window.MATCHAPP_TOP_EBOOKS)?window.MATCHAPP_TOP_EBOOKS:[];}
 function renderTop(root){
@@ -381,6 +392,29 @@ function renderResult(root,book,p,relaxed,audio,magazine){
  host.scrollIntoView({behavior:(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)?'auto':'smooth',block:'nearest'});
  analytics('ebook_match_reveal',{ebook_id:book.id,ebook_title:book.title,ebook_access:p.access,ebook_format:p.format,relaxed:!!relaxed});
 }
+// Honest fallback: no verified audio means no Match credit is used.
+function renderAudioDiscovery(root,p){
+ const host=root.querySelector('[data-ebook-result]');if(!host)return;
+ const book=choose(p)?.book,country=market(),foreign=p.access==='free'&&country!=='US';
+ const reason=foreign?
+  (lang()==='pt-BR'?'Ainda não verificamos os direitos de gravações gratuitas no seu país. O domínio público nos EUA não garante o mesmo direito no Brasil.':
+   'Free recordings are not yet rights-verified for your country. US public-domain rights may not apply locally.'):
+  tr('audioEmpty');
+ const searches=book?window.MatchAppAudiobooks?.sourceSearches?.(book,country)||[]:[];
+ host.hidden=false;
+ host.innerHTML='<div class="ebook-result-copy ebook-audio-discovery"><h3>🎧 '+esc(tr('audioTitle'))+'</h3>'+
+  '<p class="ebook-audio-note">'+esc(reason)+'</p>'+
+  (book?'<h3>'+esc(book.title)+'</h3><p class="ebook-author">'+esc(book.author)+'</p><p>'+esc(book.summary)+'</p>':'')+
+  '<p class="ebook-rights">'+esc(lang()==='pt-BR'?'Livro compatível. Edição em áudio não verificada.':'Compatible book profile. Audio edition not verified.')+'</p>'+
+  '<div class="ebook-provider-row">'+searches.map(item=>'<a class="ebook-provider ebook-audio-search" href="'+esc(item.url)+
+   '" target="_blank" rel="noopener noreferrer">'+esc(item.provider)+' · '+esc(lang()==='pt-BR'?'pesquisa não confirmada':'unverified search')+' ↗</a>').join('')+'</div>'+
+  '<div class="ebook-result-actions"><button type="button" class="ebook-rematch" data-ebook-switch-format="ebook">'+
+   esc(lang()==='pt-BR'?'Encontrar e-book compatível':'Match a compatible e-book')+'</button>'+
+  '<button type="button" class="ebook-rematch" data-ebook-switch-access="any">'+
+   esc(lang()==='pt-BR'?'Incluir lojas de áudio':'Include official audio stores')+'</button></div>'+
+  '<p class="ebook-rights">'+esc(lang()==='pt-BR'?'Nenhum match foi consumido. Pesquisas não comprovam a disponibilidade da edição.':
+   'No Match credit was consumed. Search links do not confirm edition availability.')+'</p></div>';
+}
 async function doMatch(root){
  // One in-flight search includes source preflight and shared Match allowance.
  // Double taps in every format must never charge a second credit.
@@ -397,7 +431,11 @@ async function doMatch(root){
    });
   }else if(p.format==='magazine')pick=chooseMagazine(p);
   else pick=choose(p);
-  if(!pick){if(note){note.hidden=false;note.textContent=p.format==='audiobook'?tr('audioEmpty'):tr('empty')}return;}
+  if(!pick){
+   if(p.format==='audiobook'){renderAudioDiscovery(root,p);if(note){note.hidden=true;note.textContent='';}}
+   else if(note){note.hidden=false;note.textContent=tr('empty');}
+   return;
+  }
   // If no authentic source was found, spend nothing.
   if(typeof window.checkDailyLimit!=='function'){
    if(window.showToast)window.showToast('E-book matching is available from the main MatchApp experience.',true);
@@ -416,6 +454,13 @@ async function doMatch(root){
   root.querySelectorAll('[data-ebook-match],[data-ebook-rematch]').forEach(b=>b.disabled=false);
  }
 }
+function syncBookControls(root,p){
+ root.querySelectorAll('[data-ebook-select]').forEach(s=>[...s.options].forEach(o=>{o.disabled=o.value!==p[s.dataset.ebookSelect]&&bookIncompatible(s.dataset.ebookSelect,o.value,p)}));
+ root.querySelectorAll('[data-ebook-field]').forEach(b=>{
+  b.disabled=b.dataset.ebookValue!==p[b.dataset.ebookField]&&bookIncompatible(b.dataset.ebookField,b.dataset.ebookValue,p);
+  b.title=b.disabled?'Conflicts with your selected mood or genre':'';
+ });
+}
 function bind(root){
  // Home dropdowns and /ebooks/ chip buttons persist to one preference model.
  root.addEventListener('change',e=>{
@@ -424,12 +469,12 @@ function bind(root){
   const field=select.dataset.ebookSelect;
   if(!Object.prototype.hasOwnProperty.call(FIELDS,field))return;
   if(!FIELDS[field].some(option=>option[0]===select.value))return;
-  const p=prefs();p[field]=select.value;savePrefs(p);
+  const p=prefs();if(bookIncompatible(field,select.value,p)){select.value=p[field];return;}p[field]=select.value;savePrefs(p);syncBookControls(root,p);
  });
  root.addEventListener('click',async e=>{
   const chip=e.target.closest('[data-ebook-field]');
   if(chip){
-   const p=prefs();p[chip.dataset.ebookField]=chip.dataset.ebookValue;savePrefs(p);
+   const p=prefs();if(bookIncompatible(chip.dataset.ebookField,chip.dataset.ebookValue,p))return;p[chip.dataset.ebookField]=chip.dataset.ebookValue;savePrefs(p);syncBookControls(root,p);
    root.querySelectorAll('[data-ebook-field="'+chip.dataset.ebookField+'"]').forEach(b=>{const on=b.dataset.ebookValue===chip.dataset.ebookValue;b.classList.toggle('is-on',on);b.setAttribute('aria-pressed',String(on))});
    return;
   }
@@ -441,6 +486,22 @@ function bind(root){
    const audio=await window.MatchAppAudiobooks.verify(book,market(),'any');
    paintAudio(root,book,audio);
    return;
+  }
+  const switcher=e.target.closest('[data-ebook-switch-format],[data-ebook-switch-access]');
+  if(switcher){
+   e.preventDefault();
+   const p=prefs();
+   if(switcher.dataset.ebookSwitchFormat)p.format=switcher.dataset.ebookSwitchFormat;
+   if(switcher.dataset.ebookSwitchAccess)p.access=switcher.dataset.ebookSwitchAccess;
+   savePrefs(p);
+   root.querySelectorAll('[data-ebook-select]').forEach(sel=>{sel.value=p[sel.dataset.ebookSelect]});
+   root.querySelectorAll('[data-ebook-field]').forEach(b=>{
+    const on=p[b.dataset.ebookField]===b.dataset.ebookValue;
+    b.classList.toggle('is-on',on);b.setAttribute('aria-pressed',String(on));
+   });
+   syncBookControls(root,p);
+   const result=root.querySelector('[data-ebook-result]');if(result)result.hidden=true;
+   await doMatch(root);return;
   }
   if(e.target.closest('[data-ebook-match]')){e.preventDefault();await doMatch(root);return;}
   if(e.target.closest('[data-ebook-rematch]')){e.preventDefault();await doMatch(root);return;}
@@ -475,9 +536,9 @@ function markup(){
  const initiallyOpen=!(document.body.classList.contains('page-home')||location.pathname==='/'||location.pathname==='/index.html')||location.hash==='#ebook-matcher-root';
  const home=document.body.classList.contains('page-home')||location.pathname==='/'||location.pathname==='/index.html';
  const field=(key,label)=>{
-  if(!home)return '<fieldset class="ebook-field"><legend>'+label+'</legend><div class="ebook-chips">'+optionButtons(key,p[key])+'</div></fieldset>';
+  if(!home)return '<fieldset class="ebook-field"><legend>'+label+'</legend><div class="ebook-chips">'+optionButtons(key,p[key],p)+'</div></fieldset>';
   return '<label class="ebook-select-field"><span>'+esc(label)+'</span><select class="ebook-select" data-ebook-select="'+key+'" aria-label="'+esc(label)+'">'+
-   FIELDS[key].map(([value,,name])=>'<option value="'+esc(value)+'"'+(p[key]===value?' selected':'')+'>'+esc(name)+'</option>').join('')+'</select></label>';
+   FIELDS[key].map(([value,,name])=>'<option value="'+esc(value)+'"'+(p[key]===value?' selected':'')+(value!==p[key]&&bookIncompatible(key,value,p)?' disabled':'')+'>'+esc(name)+'</option>').join('')+'</select></label>';
  };
  return '<details class="ebook-fold"'+(initiallyOpen?' open':'')+'><summary><span class="ebook-summary-icon" aria-hidden="true">'+(home?'<img class="ebook-brand-crest" src="/assets/brand/matchapp-bookworms-crest.svg" width="64" height="64" alt="" decoding="async">':'📚✦')+'</span><span><small>'+esc(tr('eyebrow'))+'</small><strong>'+esc(home?tr('homeTitle'):tr('title'))+'</strong></span><span class="ebook-chevron" aria-hidden="true">⌄</span></summary>'+
  '<div class="ebook-panel"><div class="ebook-intro"><div><h2>'+esc(tr('title'))+'</h2><p>'+esc(tr('intro'))+'</p></div><a href="/ebooks/" class="ebook-guide-link">Bookworms hub ↗</a></div>'+
@@ -517,11 +578,11 @@ async function mount(){
   if(watch&&root.previousElementSibling!==watch)watch.insertAdjacentElement('afterend',root);
  }
  if(root.dataset.ebookMounted==='1')return;
- root.dataset.ebookMounted='1';root.innerHTML=markup();bind(root);renderTop(root);await cloudHydrate();renderSaved(root);
+ root.dataset.ebookMounted='1';root.innerHTML=markup();bind(root);syncBookControls(root,prefs());renderTop(root);await cloudHydrate();renderSaved(root);
  if(location.hash==='#ebook-matcher-root')requestAnimationFrame(()=>root.scrollIntoView({behavior:'auto',block:'start'}));
  // Reveal collapsed Home controls when an already open page receives a reading deep link.
  window.addEventListener('hashchange',()=>{if(location.hash!=='#ebook-matcher-root')return;const fold=root.querySelector('.ebook-fold');if(fold)fold.open=true;root.scrollIntoView({behavior:'auto',block:'start'});});
- document.addEventListener('matchapp:langchange',()=>{const open=root.querySelector('.ebook-fold')?.open;root.innerHTML=markup();/* root delegated click handler already installed: re-binding duplicated network lookups and Match credits after language changes. */renderTop(root);renderSaved(root);const fold=root.querySelector('.ebook-fold');if(fold)fold.open=open!==false;if(root.dataset.audioBusy==='1')root.querySelectorAll('[data-ebook-match],[data-ebook-rematch]').forEach(b=>b.disabled=true);});
+ document.addEventListener('matchapp:langchange',()=>{const open=root.querySelector('.ebook-fold')?.open;root.innerHTML=markup();/* root delegated click handler already installed: re-binding duplicated network lookups and Match credits after language changes. */renderTop(root);renderSaved(root);syncBookControls(root,prefs());const fold=root.querySelector('.ebook-fold');if(fold)fold.open=open!==false;if(root.dataset.audioBusy==='1')root.querySelectorAll('[data-ebook-match],[data-ebook-rematch]').forEach(b=>b.disabled=true);});
 }
 window.MatchAppEbooks={match:()=>{const r=document.getElementById('ebook-matcher-root');return r?doMatch(r):null},saved:()=>read(K.saved).slice(),disliked:()=>read(K.disliked).slice()};
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount,{once:true});else mount();
