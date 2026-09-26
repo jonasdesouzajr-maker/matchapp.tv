@@ -4697,6 +4697,9 @@ async function renderResult(selected, isSpecificSearch) {
         tmdbId:Number(selected._tmdbId||selected._meta?.tmdbId)||null,
         kind:selected._tmdbKind||selected._meta?.kind||'',
         artwork:selected._meta?.artwork||'',
+        // Exact official Spotify curation bypasses movie/TMDB poster lookup.
+        spotifyArtwork:exactSpotifyPlaylistCover(selected),
+        spotifyPlaylistUrl:exactSpotifyPlaylistCover(selected)?selected.watchUrl:'',
         // The exact same official Apple catalog result supplies the title,
         // artwork and audio sample. Search suggestions or unrelated movie
         // metadata may never invent an embedded podcast/song preview.
