@@ -5,7 +5,7 @@ const path=require('node:path');
 const root=path.join(__dirname,'..');
 const read=p=>fs.readFileSync(path.join(root,p),'utf8').replace(/\r\n/g,'\n');
 
-test('How It Works uses nine visible product controls as anchored targets',()=>{
+test('How It Works includes two anchored Bookworms steps alongside existing product controls',()=>{
   const js=read('onboarding-tour.js');
   for(const selector of [
     '#ma-tab-match',
@@ -13,11 +13,18 @@ test('How It Works uses nine visible product controls as anchored targets',()=>{
     '.ma-quick .ma-filter-row:nth-child(2)',
     '.ma-quick .ma-filter-row:nth-child(3)',
     '.match-more-filters>summary',
+    '#ebook-matcher-root .ebook-fold>summary',
+    '#ebook-matcher-root .ebook-select[data-ebook-select="format"]',
     '#ma-tab-ask',
     '#trending-rail .marquee-item:nth-child(2)',
     '#matchapp-kids-entry',
     '#profile-link-tab'
   ]) assert.ok(js.includes(selector),selector+' must remain a tour target');
+  assert.ok(js.indexOf("key:'more'")<js.indexOf("key:'book'"));
+  assert.ok(js.indexOf("key:'book'")<js.indexOf("key:'bookFormat'"));
+  assert.ok(js.indexOf("key:'bookFormat'")<js.indexOf("key:'ai'"));
+  assert.match(js,/restoreBookFold\(\)/);
+  assert.match(js,/step\.mode==='book-form'/);
   assert.doesNotMatch(js,/key:'find'/);
   assert.doesNotMatch(js,/key:'quota'/);
 });
@@ -64,9 +71,9 @@ test('spotlight leaves context readable and highlights the actual target',()=>{
 test('manual walkthrough ships the new cache key to Home',()=>{
   const js=read('onboarding-tour.js'),html=read('index.html');
   assert.match(js,/function start\(\)[\s\S]*show\(0\)/);
-  assert.match(js,/const VERSION='v6'/);
+  assert.match(js,/const VERSION='v7'/);
   assert.ok(html.includes('/onboarding-tour.css?v=20260924-coach3'));
-  assert.ok(html.includes('/onboarding-tour.js?v=20260924-coach3'));
+  assert.ok(html.includes('/onboarding-tour.js?v=20260926-bookworms7'));
   assert.doesNotMatch(html,/20260924-coach1/);
 });
 
