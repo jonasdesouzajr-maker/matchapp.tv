@@ -158,10 +158,23 @@ async function verifyCode(){
   try{
     const {data,error}=await sb.auth.verifyOtp({phone:activePhone,token,type:'sms'});
     if(error)throw error;
-    if(!data?.session)throw new Error('Phone verification did not create a session.');
+    // A real, persistent Supabase session must exist before showing success.
+    const session=data?.session||(await sb.auth.getSession())?.data?.session;
+    if(!session?.access_token||!session?.user?.id)throw new Error('Phone verification did not create a session.');
+    const confirmed=await sb.auth.getUser();
+    if(confirmed.error||!confirmed.data?.user||
+       confirmed.data.user.id!==session.user.id||
+       !confirmed.data.user.phone_confirmed_at){
+      throw new Error('Your phone session could not be validated. Please sign in again.');
+    }
+    // Protect already completed identities from a login-screen name update.
+    if(pendingName && !confirmed.data.user.user_metadata?.full_name) {
+      try{await sb.auth.updateUser({data:{full_name:pendingName,name:pendingName}});}catch(_){}
+    }
     setStatus(t.success,'ok');
     document.dispatchEvent(new CustomEvent('matchapp:phoneauthsuccess',{detail:{phone:activePhone}}));
-    setTimeout(()=>window.location.reload(),650);
+    // The Profile Hub validates the same server session before opening fields.
+    window.location.assign('/profile/profile.html?welcome=phone');
   }catch(error){
     setStatus(error?.message||'That code could not be verified.','error');
   }finally{
@@ -175,6 +188,8 @@ async function resendCode(){
   await sendCode();
 }
 function resetPhone(){
+  clearPending();
+  pendingName='';
   activePhone='';
   clearInterval(resendTimer);
   setStep('number');
@@ -201,12 +216,35 @@ async function syncAvailability(){
   if(!entry||!panel)return;
   const enabled=await providerEnabled();
   entry.hidden=!enabled;
-  if(!enabled)panel.hidden=true;
+  if(!enabled){
+    if(linkRequested){
+      panel.hidden=false;
+      setStatus(lang().noProvider||strings.en.noProvider,'error');
+      scrubLink();
+    }else panel.hidden=true;
+    return;
+  }
+  if(linkRequested){togglePanel(true);scrubLink();}
+}
+// A link opened on another phone/browser must not request a replacement OTP:
+// enter the number and use the existing code that arrived in the SMS.
+function useExistingCode(){
+  const phone=normalizePhone(el('phone-auth-number')?.value);
+  if(!phone){setStatus(lang().badPhone,'error');return;}
+  const name=String(el('phone-auth-name')?.value||'').trim().replace(/\s+/g,' ').slice(0,120);
+  activePhone=phone;
+  pendingName=name;
+  rememberPending(phone,name);
+  setStep('code');
+  setStatus('');
+  el('phone-auth-code')?.focus();
 }
 function init(){
   applyText();
+  restorePending();
   el('phone-auth-entry')?.addEventListener('click',()=>togglePanel(el('phone-auth-panel')?.hidden!==false));
   el('phone-auth-send')?.addEventListener('click',sendCode);
+  el('phone-auth-have-code')?.addEventListener('click',useExistingCode);
   el('phone-auth-verify')?.addEventListener('click',verifyCode);
   el('phone-auth-change')?.addEventListener('click',resetPhone);
   el('phone-auth-resend')?.addEventListener('click',resendCode);
@@ -217,6 +255,6 @@ function init(){
   document.addEventListener('matchapp:languagechange',applyText);
   window.addEventListener('focus',syncAvailability);
 }
-window.MatchAppPhoneAuth={syncAvailability,sendCode,verifyCode};
+window.MatchAppPhoneAuth={syncAvailability,sendCode,verifyCode,useExistingCode};
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
 })();
