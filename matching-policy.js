@@ -278,7 +278,13 @@
       const taggedGenres = [...cats,...values(entry.genres)];
       if (moodGenreBlocks['cozy comfort watch'].some(g=>taggedGenres.some(t=>String(t).toLowerCase()===g.toLowerCase()))) return false;
       if (['scary','dark and gritty','intense and thrilling','heartbreaking'].includes(primaryMood)) return false;
-      if (comfortHeavyText.test([entry.synopsis,entry.overview].filter(Boolean).join(' '))) return false;
+      const summary=[entry.synopsis,entry.overview].filter(Boolean).join(' ');
+      // A calm, curated guided-meditation podcast may explicitly address grief
+      // without itself being a thriller or intense story. Keep every other
+      // disturbing-content signal active, including against podcast summaries.
+      const safeSummary=(primaryMood==='cozy comfort watch'&&cats.includes('podcast'))
+        ?summary.replace(/\\bgrief\\b/gi,' '):summary;
+      if (comfortHeavyText.test(safeSummary)) return false;
     }
     if (values(criteria?.genre).some(genre=>incompatible(genre,criteria)))return false;
 
