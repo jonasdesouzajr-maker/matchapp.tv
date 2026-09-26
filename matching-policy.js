@@ -3,7 +3,30 @@
   'use strict';
   const key = title => String(title || '').normalize('NFKC').toLowerCase().replace(/[^\p{L}\p{N}]/gu, '');
   const values = v => (Array.isArray(v) ? v : [v]).filter(x => x && x !== 'any');
-  const conflicts = [ ['funny', 'intense and thrilling'], ['funny', 'dark and gritty'], ['funny', 'heartbreaking'], ['funny', 'scary'], ['cozy comfort watch', 'intense and thrilling'], ['cozy comfort watch', 'scary'] ];
+  // A contradiction is symmetric: selecting Comfort disables Thriller,
+  // and selecting Thriller disables Comfort. This is also the final
+  // recommendation gate, not merely a cosmetic disabled chip.
+  const conflicts = [
+    ['funny','intense and thrilling'],['funny','dark and gritty'],
+    ['funny','heartbreaking'],['funny','scary'],
+    ['cozy comfort watch','intense and thrilling'],['cozy comfort watch','scary'],
+    ['cozy comfort watch','dark and gritty'],['cozy comfort watch','heartbreaking'],
+    ['light and feel-good','scary'],['light and feel-good','dark and gritty']
+  ];
+  const moodGenreBlocks = {
+    'cozy comfort watch':['Thriller','Horror','War','War & Politics','Crime'],
+    'light and feel-good':['Thriller','Horror','War','War & Politics'],
+    'funny':['Horror','War','War & Politics'],
+    'scary':['Family','Kids']
+  };
+  const comfortHeavyText = /\b(?:murder(?:ed|er)?|serial killer|kidnap(?:ped|ping)?|hostage|tortur(?:e|ed)|terminal(?:ly)?|cancer|dying|death|funeral|grief|organ donor|organ transplant|sick child|critically ill|life[- ]threatening|war zone|revenge killing|sexual assault|assaulted|rape|raped|violent attack|violence against|brutal crime)\b/i;
+  function incompatible(value,state) {
+    const selectedMoods=values(state?.mood),selectedGenres=values(state?.genre);
+    if(conflicts.some(([a,b])=>(value===a&&selectedMoods.includes(b))||(value===b&&selectedMoods.includes(a))))return true;
+    return Object.entries(moodGenreBlocks).some(([mood,blocked])=>
+      (value===mood&&blocked.some(genre=>selectedGenres.includes(genre)))||
+      (blocked.includes(value)&&selectedMoods.includes(mood)));
+  }
   const DRAMA_CATS = new Set(['K-drama','C-drama','J-drama','telenovela','novela brasileira','vertical micro-drama','Turkish dizi','Thai drama']);
   const COMEDY_CATS = new Set(['stand-up comedy special']);
   const LIGHT_MOODS = new Set(['funny','light and feel-good','cozy comfort watch','romantic','inspiring']);
@@ -251,6 +274,13 @@
     const wantsDramaFormat = wantedCats.some(c => DRAMA_CATS.has(c));
     const wantsDramaFamily = wantsDramaFormat || families.has('drama');
     const wantsHorror = wantedMoods.includes('scary') || families.has('horror');
+    if (wantedMoods.includes('cozy comfort watch')) {
+      const taggedGenres = [...cats,...values(entry.genres)];
+      if (moodGenreBlocks['cozy comfort watch'].some(g=>taggedGenres.some(t=>String(t).toLowerCase()===g.toLowerCase()))) return false;
+      if (moods.some(m=>['scary','dark and gritty','intense and thrilling','heartbreaking'].includes(m))) return false;
+      if (comfortHeavyText.test([entry.synopsis,entry.overview].filter(Boolean).join(' '))) return false;
+    }
+    if (values(criteria?.genre).some(genre=>incompatible(genre,criteria)))return false;
 
     if (wantsComedy && !wantsDramaFormat && !allowMix) {
       if (cats.some(c => DRAMA_CATS.has(c))) return false;
@@ -315,7 +345,7 @@
     if (!entry || !entry.title || known().has(key(entry.title)) || extra.includes(key(entry.title))) return false;
     return matchesCriteria(entry, criteria);
   }
-  window.matchPolicy = Object.freeze({key,values,matches,matchesCriteria,remember,forget,known,history:()=>history.slice(),ready:()=>ready,incompatible:(value,state) => conflicts.some(([a,b]) => (value===a && values(state.mood).includes(b)) || (value===b && values(state.mood).includes(a))),genreFits,intentFromText,fitsQuestion,sameFamily,asEntry,familyScores,comedyLocked,attach:user => (ready = attach(user).catch(() => {})), flush});
+  window.matchPolicy = Object.freeze({key,values,matches,matchesCriteria,remember,forget,known,history:()=>history.slice(),ready:()=>ready,incompatible,genreFits,intentFromText,fitsQuestion,sameFamily,asEntry,familyScores,comedyLocked,attach:user => (ready = attach(user).catch(() => {})), flush});
   window.addEventListener('online', () => flush().catch(() => {}));
   setTimeout(() => {
     const client = window.supabaseClient;
