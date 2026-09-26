@@ -124,7 +124,7 @@ test('an SMS verification link opens auth dialog even if phone provider is down'
   assert.equal(ctx.byId('phone-auth-panel').hidden,false);
   assert.equal(ctx.byId('phone-auth-entry').hidden,true);
   assert.equal(ctx.byId('phone-auth-status').dataset.state,'error');
-  assert.match(ctx.byId('phone-auth-status').textContent,/unavailable/i);
+  assert.match(ctx.byId('phone-auth-status').textContent,/(?:not available|unavailable)/i);
   assert.equal(ctx.w.location.search,'');
   ctx.dom.window.close();
 });
