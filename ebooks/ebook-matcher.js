@@ -287,12 +287,17 @@ function renderTop(root){
 }
 function audioLinksHTML(audio){
  const verified=[audio?.apple,audio?.free].filter(Boolean);
+ // Never embed a store search, mismatched narrator or unverified edition.
+ const preview=audio?.apple?.verified===true?
+  window.MatchAppAudiobooks?.safeApplePreview?.(audio.apple.previewUrl):null;
  const vlinks=verified.map(item=>'<a class="ebook-provider ebook-audio-verified" href="'+esc(item.url)+
   '" target="_blank" rel="noopener noreferrer" data-ebook-provider="'+esc(item.provider)+'">'+
   esc(item.provider)+' · '+esc(item.title)+' ✓ ↗</a>').join('');
  const searches=Array.isArray(audio?.searches)?audio.searches:[];
  return (vlinks?'<h5>'+esc(tr('audioLinks'))+'</h5><div class="ebook-provider-row">'+vlinks+'</div>':
   '<p class="ebook-audio-note">'+esc(tr('audioNone'))+'</p>')+
+  (preview?'<div class="ebook-audio-preview"><label>'+esc(lang()==='pt-BR'?'Prévia oficial da edição em áudio':'Official audiobook edition preview')+
+    '</label><audio controls preload="none" src="'+esc(preview)+'" aria-label="'+esc(audio.apple.title+' official sample')+'"></audio></div>':'')+
   '<h5>'+esc(tr('audioSearch'))+'</h5><div class="ebook-provider-row">'+
   searches.map(item=>'<a class="ebook-provider ebook-audio-search" href="'+esc(item.url)+
    '" target="_blank" rel="noopener noreferrer" data-ebook-provider="'+esc(item.provider)+'">'+
