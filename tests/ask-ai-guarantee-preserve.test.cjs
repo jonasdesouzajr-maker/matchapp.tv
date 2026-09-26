@@ -43,7 +43,7 @@ test('empty generic conversation does not fabricate an unrelated movie',async()=
 });
 test('only the adult pages that load Ask AI refresh the amended guarantee asset version',()=>{
  const settings=read('settings.js');
- assert(settings.includes("src==='/match-guarantee.js'?'20260925-guarantee3':V"));
+ assert(settings.includes("src==='/match-guarantee.js'?'20260926-guarantee-outage1':V"));
  for(const f of ['index.html','discover.html','together.html','pricing/pricing.html'])
-   assert(read(f).includes('/settings.js?v=20260925-guarantee3'),f);
+   assert(read(f).includes('/settings.js?v=20260926-guarantee-outage1'),f);
 });
