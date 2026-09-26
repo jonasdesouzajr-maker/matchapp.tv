@@ -38,7 +38,7 @@ Deno.serve(async(req:Request)=>{
   if(action==="start"){
    const kind=body.kind;
    if(kind!=="match"&&kind!=="ask_ai")return response({ok:false,reason:"invalid_request"},400,origin);
-   const {data,error}=await db.schema("match_private").rpc("guest_social_proof_begin",{p_guest_id:guestId,p_kind:kind});
+   const {data,error}=await db.rpc("verified_guest_social_gateway",{p_action:"start",p_guest_id:guestId,p_kind:kind});
    if(error){console.error("Guest proof issue failed:",error.code);return response({ok:false,reason:"server_error"},503,origin);}
    return response(data,200,origin);
   }
@@ -49,9 +49,7 @@ Deno.serve(async(req:Request)=>{
   }
   // Never fetch user-provided URLs: verification-core builds only official
   // allowlisted, fixed provider URLs from strict parsed post identifiers.
-  const {data:proof,error:lookupError}=await db.schema("match_private").from("guest_social_proofs")
-   .select("id,guest_id,kind,challenge,issued_at,status")
-   .eq("id",proofId).eq("guest_id",guestId).maybeSingle();
+  const {data:proof,error:lookupError}=await db.rpc("verified_guest_social_gateway",{p_action:"get",p_guest_id:guestId,p_proof_id:proofId});
   if(lookupError)return response({ok:false,reason:"server_error"},503,origin);
   if(!proof||proof.status!=="pending")return response({ok:false,reason:"challenge_not_available"},400,origin);
   if(Date.now()-Date.parse(proof.issued_at)>90*60*1000)return response({ok:false,reason:"challenge_expired"},400,origin);
@@ -66,8 +64,8 @@ Deno.serve(async(req:Request)=>{
    return response({ok:false,reason:"provider_unavailable"},503,origin);
   }
   if(!result?.verified)return response({ok:false,reason:result?.reason||"proof_not_found"},422,origin);
-  const {data:credited,error:grantError}=await db.schema("match_private").rpc("guest_social_proof_complete",{
-   p_guest_id:guestId,p_proof_id:proofId,p_platform:result.platform,p_post_id:result.id,p_post_url:result.url
+  const {data:credited,error:grantError}=await db.rpc("verified_guest_social_gateway",{
+   p_action:"complete",p_guest_id:guestId,p_proof_id:proofId,p_platform:result.platform,p_post_id:result.id,p_post_url:result.url
   });
   if(grantError){
    // A unique post cannot credit another guest; fail closed on collisions.
