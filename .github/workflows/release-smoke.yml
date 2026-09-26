@@ -12,6 +12,12 @@ on:
       - 'tools/live-production-smoke.cjs'
       - 'tools/android-emulator-smoke.sh'
       - '.github/workflows/release-smoke.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'tools/android-emulator-smoke.sh'
+      - 'tools/live-production-smoke.cjs'
+      - '.github/workflows/release-smoke.yml'
   workflow_dispatch:
 permissions:
   contents: read
