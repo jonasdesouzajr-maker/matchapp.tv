@@ -36,9 +36,8 @@ function translate(){
 }
 function showSignup(){
  window.switchAuthTab?.('signup');
- const card=el('main-auth-modal')?.querySelector('.premium-card');
- if(card)card.scrollTop=0;
  const target=el('reg-full-name')||el('reg-email');
+ target?.scrollIntoView?.({block:'center',behavior:'smooth'});
  target?.focus({preventScroll:true});
 }
 function openOffer(){
@@ -50,7 +49,11 @@ function openOffer(){
  modal.classList.add('ma-welcome-modal');
  translate();
  window.openAuthModal?.();
- showSignup();
+ // Select the registration tab but keep the promotional promise visible.
+ // Don't raise the mobile keyboard until the person presses the claim CTA.
+ window.switchAuthTab?.('signup');
+ const card=modal.querySelector('.premium-card');
+ if(card)card.scrollTop=0;
  return true;
 }
 function init(){
