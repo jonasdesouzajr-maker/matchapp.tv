@@ -30,5 +30,6 @@ test('final Match guarantee does not turn a negated music mention into audio int
  const audio=/\b(podcast|music|song|songs|album|albums|playlist|single|singles|audiobook|spotify|listen|radio show)\b/i;
  assert.equal(audio.test(strip(movie)),false);
  assert.equal(audio.test(strip('Find Spotify music for tonight')),true);
- assert.match(guarantee,/audioIntent = .*test\(guaranteeIntentQuestion\(question\)\)/);
+ assert.match(guarantee,/const requested = guaranteeIntentQuestion\(question\)/);
+ assert.match(guarantee,/audioIntent = .*test\(requested\)/);
 });
