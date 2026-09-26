@@ -122,6 +122,8 @@ function normalise(r: Record<string, unknown>, kind: "movie" | "tv"): Record<str
     popularity: typeof r.popularity === "number" ? r.popularity : 0,
     voteAverage: typeof r.vote_average === "number" ? r.vote_average : null,
     originalLanguage: r.original_language ?? null,
+    // Preserve source genre IDs so the client can enforce verified mood/genre fit.
+    genreIds: Array.isArray(r.genre_ids) ? (r.genre_ids as unknown[]).map(Number).filter((n)=>Number.isSafeInteger(n)&&n>0) : [],
     // TMDB's own adult flag. MatchApp filters again on the client with its own
     // rules, but discarding what the source already tells us would be careless.
     adult: r.adult === true,
