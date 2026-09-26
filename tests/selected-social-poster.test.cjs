@@ -41,33 +41,34 @@ test('normal share card uses the branded poster unchanged, never match artwork',
  dom.window.close();
 });
 
+
 test('verified guest poster can be saved or shared without bypassing public-post proof',()=>{
  const proof=read('verified-public-guest-share.js');
- assert.match(proof,/const POSTER='\\/assets\\/brand\\/matchapp-share-poster\\.png/);
- assert.match(proof,/ma-public-proof-poster/);
- assert.match(proof,/data-proof-save/);
- assert.match(proof,/data-proof-share/);
- assert.match(proof,/navigator\\.canShare/);
- assert.match(proof,/verified/i);
- assert.match(proof,/not the image attachment/i,'never pretend attached image is independently verified');
- assert.match(proof,/finalizeVerified/);
- assert.doesNotMatch(read('kids/index.html'),/ma-public-proof-poster/);
+ assert.ok(proof.includes("const POSTER='/assets/brand/matchapp-share-poster.png"));
+ for(const token of ['ma-public-proof-poster','data-proof-save','data-proof-share','navigator.canShare','finalizeVerified']){
+  assert.ok(proof.includes(token),'missing proof UI '+token);
+ }
+ assert.ok(proof.includes('not the image attachment'),'never claim attached image is independently verified');
+ assert.ok(!read('kids/index.html').includes('ma-public-proof-poster'),'Kids Mode remains untouched');
 });
 
-test('adult landing pages expose actual selected image in social metadata and versioned scripts',()=>{
+test('adult landing pages expose the exact poster in social metadata and versioned scripts',()=>{
+ const url='https://matchapp.tv/assets/brand/matchapp-share-poster.png?v=20260926-selected1';
  for(const page of ['index.html','discover.html']){
   const html=read(page);
-  assert.match(html,/property="og:image" content="https:\\/\\/matchapp\\.tv\\/assets\\/brand\\/matchapp-share-poster\\.png\\?v=20260926-selected1"/);
-  assert.match(html,/property="og:image:width" content="941"/);
-  assert.match(html,/property="og:image:height" content="1672"/);
-  assert.match(html,/name="twitter:image" content="https:\\/\\/matchapp\\.tv\\/assets\\/brand\\/matchapp-share-poster\\.png\\?v=20260926-selected1"/);
-  assert.match(html,/verified-public-guest-share\\.js\\?v=20260926-selectedposter1/);
-  assert.match(html,/guest-share-rewards\\.css\\?v=20260926-selectedposter1/);
+  for(const fragment of [
+   'property="og:image" content="'+url+'"',
+   'property="og:image:width" content="941"',
+   'property="og:image:height" content="1672"',
+   'name="twitter:image" content="'+url+'"',
+   'verified-public-guest-share.js?v=20260926-selectedposter1',
+   'guest-share-rewards.css?v=20260926-selectedposter1'
+  ])assert.ok(html.includes(fragment),page+' missing '+fragment);
  }
  const share=read('share.js');
  const caption=share.slice(share.indexOf('function shareText()'),share.indexOf('// Native share sheet'));
- assert.match(caption,/MatchApp Ai/);
- assert.match(caption,/#MatchAppAi/);
- assert.doesNotMatch(caption,/globalMatchTitle/,'do not publish a personal result instead of branded artwork');
- assert.match(read('guest-share-rewards.js'),/PRIVATE/);
+ assert.ok(caption.includes('MatchApp Ai'));
+ assert.ok(share.includes('#MatchAppAi #MatchAppTV'));
+ assert.ok(!caption.includes('globalMatchTitle'),'personal result must not replace brand poster');
+ assert.ok(read('guest-share-rewards.js').includes('Keep AI chat contents PRIVATE'));
 });
