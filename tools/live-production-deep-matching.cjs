@@ -57,7 +57,12 @@ async function guarded(browser,label,fn){
    const match=await page.evaluate(()=>({title:document.querySelector('#res-title')?.textContent?.trim(),platform:String(globalPlatform||'').trim(),
     cover:document.querySelector('#res-poster-img')?.currentSrc||document.querySelector('#res-poster-img')?.src,
     href:document.querySelector('#res-direct-link')?.href||''}));
-   record('LIVE music respects Spotify and provides the correct direct playlist link',match.platform==='Spotify'&&match.title==='Deep Focus'&&match.href==='https://open.spotify.com/playlist/37i9dQZF1DWZeKCadgRdKQ',
+   const official={
+    'Deep Focus':'https://open.spotify.com/playlist/37i9dQZF1DWZeKCadgRdKQ',
+    'Peaceful Meditation':'https://open.spotify.com/playlist/37i9dQZF1DWZqd5JICZI0u'
+   };
+   record('LIVE music respects Spotify and exact verified playlist deep link',
+    match.platform==='Spotify'&&!!official[match.title]&&match.href===official[match.title],
     'title='+match.title+' platform='+match.platform+' direct='+match.href);
    await page.waitForFunction(()=>document.querySelector('#res-poster-img')?.currentSrc?.startsWith('https://i.scdn.co/image/'),null,{timeout:15000}).catch(()=>{});
    const hasArtwork=await page.locator('#res-poster-img').evaluate(img=>img.complete&&img.naturalWidth>0&&getComputedStyle(img).objectFit!=='fill'&&/^https:\/\/i\.scdn\.co\/image\//.test(img.currentSrc||img.src)).catch(()=>false);
