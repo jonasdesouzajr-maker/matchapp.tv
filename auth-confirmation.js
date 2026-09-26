@@ -100,9 +100,17 @@
             } catch (_) { /* Keep the sign-in and recovery options available. */ }
         }
         if (session?.user) {
+            // Complete a verified email callback by opening the *signed-in*
+            // Profile Hub directly, never by displaying the sign-in modal or
+            // leaving a new member stranded on the homepage.
             cleanReturnUrl();
+            if (hasResponse && !hasError) {
+                window.location.replace('/profile/profile.html?welcome=verified');
+                return true;
+            }
+            // /register.html links without a callback still work for people
+            // who already have an authenticated session.
             window.closeAuthModal?.();
-            if (hasResponse && !hasError) window.showToast?.('Email confirmed. You are signed in!');
             return true;
         }
         if (hasResponse) {
