@@ -566,3 +566,6 @@ html body.page-home #ebook-matcher-root .ebook-fold>summary:focus-visible{
 @media(prefers-reduced-motion:reduce){
   html body.page-home #ebook-matcher-root .ebook-chevron{transition:none!important}
 }
+
+/* Conflicting mood and genre combinations are visibly unavailable. */
+#ebook-matcher-root .ebook-chip:disabled{opacity:.3;filter:grayscale(.8);cursor:not-allowed}
