@@ -22,7 +22,7 @@
     approvedLink.rel = 'stylesheet';
     (document.head || document.documentElement).appendChild(approvedLink);
   }
-  approvedLink.href = '/home-approved.css?v=20260925-playstore1';
+  approvedLink.href = '/home-approved.css?v=20260926-visitoffer1';
   if (!document.getElementById('ma-install-onetap')) {
     var ot=document.createElement('script');
     ot.id='ma-install-onetap';
@@ -39,25 +39,6 @@
   function standalone() {
     return navigator.standalone === true || !!(window.matchMedia && window.matchMedia('(display-mode: standalone)').matches);
   }
-  function ptBr() {
-    var lang = String(document.documentElement.lang || navigator.language || 'en').toLowerCase();
-    return lang.indexOf('pt') === 0;
-  }
-  function appName() {
-    return ptBr() ? 'MatchApp iA' : 'MatchApp Ai';
-  }
-
-  // Adult Android package from android-studio/app/build.gradle.kts.
-  var PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.jonas.papercup';
-  function openPlayStore(event) {
-    // Chrome for Android can launch the Play Store app on an explicit tap.
-    // Other browsers, tablets and desktop use the official HTTPS listing.
-    var ua = navigator.userAgent || '';
-    if (nativeShell() || !/Android/i.test(ua) || !/Chrome\//i.test(ua) || /EdgA|OPR\/|SamsungBrowser/i.test(ua)) return;
-    event.preventDefault();
-    window.location.href = 'intent://details?id=com.jonas.papercup#Intent;scheme=market;package=com.android.vending;S.browser_fallback_url=' + encodeURIComponent(PLAY_STORE_URL) + ';end';
-  }
-
   function mountHero() {
     if (kids() || document.getElementById('ma-hero-ctas')) return;
     var host = document.querySelector('.home-hero') || (document.querySelector('h1.home-h1') && document.querySelector('h1.home-h1').parentElement);
@@ -82,56 +63,11 @@
     });
   }
 
-  function triggerInstall() {
-    if (typeof window.installMatchApp === 'function') {
-      window.installMatchApp();
-      return;
-    }
-    var real = document.querySelector('.install-btn:not(.ma-install-go)');
-    if (real) real.click();
-  }
-
-  function mountInstall() {
-    if (kids()) {
-      var gone = document.getElementById('ma-install-chip');
-      if (gone) gone.remove();
-      return;
-    }
-    var installed = !!(standalone() || nativeShell() || (window.matchAppInstallState && window.matchAppInstallState.isInstalled()));
-    var chip = document.getElementById('ma-install-chip');
-    if (!chip) {
-      chip = document.createElement('div');
-      chip.id = 'ma-install-chip';
-      chip.innerHTML = '<img src="/assets/brand/matchapp-ai-install-192.png?v=20260923-icon4" width="28" height="28" alt="">' +
-        '<span></span><div class="ma-install-actions"><button type="button" class="ma-install-go install-btn">Install</button>' +
-        '<a class="ma-play-store" target="_blank" rel="noopener noreferrer" href="' + PLAY_STORE_URL + '">Get it on Google Play</a></div>';
-      document.body.insertBefore(chip, document.body.firstChild);
-    }
-    var label = chip.querySelector('span');
-    if (label) label.textContent = appName();
-    var go = chip.querySelector('.ma-install-go');
-    if (go) go.textContent = installed ? (ptBr() ? 'Atualizar' : 'Update') : (ptBr() ? 'Instalar' : 'Install');
-    var store = chip.querySelector('.ma-play-store');
-    if (store) {
-      store.href = PLAY_STORE_URL;
-      store.hidden = nativeShell();
-      store.textContent = ptBr() ? 'Baixar no Google Play' : 'Get it on Google Play';
-      store.setAttribute('aria-label', ptBr() ? 'Baixar MatchApp iA para Android no Google Play' : 'Get MatchApp AI for Android on Google Play');
-      store.setAttribute('title', ptBr() ? 'Página oficial no Google Play (disponível após a publicação)' : 'Official Google Play listing (available after publication)');
-      if (!store.dataset.wired) {
-        store.dataset.wired = '1';
-        store.addEventListener('click', openPlayStore);
-      }
-    }
-    if (go && !go.dataset.wired) {
-      go.dataset.wired = '1';
-      go.addEventListener('click', function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-        if (installed && typeof window.updateMatchAppNow === 'function') window.updateMatchAppNow();
-        else triggerInstall();
-      });
-    }
+  // The screenshot's permanent strip is retired; the temporary visitor-only
+  // choice is owned by browser-install-offer.js, never by the Android shell.
+  function removeRetiredCards() {
+    document.getElementById('ma-install-chip')?.remove();
+    document.getElementById('chrome-install-card')?.remove();
   }
 
   function mountDock() {
@@ -151,28 +87,11 @@
   function boot() {
     if (nativeShell()) document.documentElement.classList.add('ma-native-shell');
     if (standalone()) document.documentElement.classList.add('ma-installed');
-    function killBanner(){
-      var banner=document.getElementById('chrome-install-card');
-      if(!banner) return;
-      banner.hidden=true;
-      banner.setAttribute('hidden','');
-      banner.style.setProperty('display','none','important');
-      banner.style.setProperty('visibility','hidden','important');
-    }
-    killBanner();
-    [50,200,600,1200,2500].forEach(function(ms){ setTimeout(killBanner, ms); });
-    if(!document.getElementById('ma-install-pop-inline')){
-      var st=document.createElement('style');
-      st.id='ma-install-pop-inline';
-      st.textContent='html body #chrome-install-card,html body aside#chrome-install-card{display:none!important;visibility:hidden!important;height:0!important;margin:0!important;padding:0!important}html body .install-btn,html body .ma-install-go{transform:translateZ(0) scale(1.08);box-shadow:0 0 0 2px rgba(229,193,88,.65),0 10px 26px rgba(229,193,88,.42)!important}';
-      (document.head||document.documentElement).appendChild(st);
-    }
+    removeRetiredCards();
     mountHero();
-    mountInstall();
     mountDock();
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot, { once: true });
   else boot();
   window.addEventListener('load', boot, { once: true });
-  document.addEventListener('matchapp:langchange', mountInstall);
 })();
