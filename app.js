@@ -75,36 +75,44 @@ window.MatchAppGuestMatches = Object.freeze({ balance: guestMatchBalance, set: s
 function anonLimitCheck(action = 'match') {
     const todayStr = new Date().toLocaleDateString();
     const lastDate = localStorage.getItem('match_lastDate');
-    let dailyCount = parseInt(localStorage.getItem('match_dailyCount') || '0');
-    if (lastDate !== todayStr) { dailyCount = 0; localStorage.setItem('match_lastDate', todayStr); }
-    const extras = guestMatchBalance();
-
-    if (dailyCount >= ANON_DAILY_LIMIT) {
-        // Extra Matches are Match-only, non-expiring currency. They never pay
-        // for Ask AI, and they are consumed only after the included allowance.
-        if (action === 'match' && extras > 0) {
-            const remainingExtras = setGuestMatchBalance(extras - 1);
-            lastQuotaStatus = {
-                allowed: true, used: dailyCount, limit: ANON_DAILY_LIMIT, remaining: 0,
-                purchased_matches: remainingExtras, paid_with_match_pack: true, anon: true
-            };
-            updateQuotaBadge(lastQuotaStatus);
-            return true;
-        }
-        lastQuotaStatus = {
-            allowed: false, used: dailyCount, limit: ANON_DAILY_LIMIT, remaining: 0,
-            purchased_matches: extras, anon: true
+    let dailyCount = parseInt(localStorage.getItem('match_dailyCount') || '0',10);
+    if (lastDate !== todayStr) { dailyCount=0; localStorage.setItem('match_lastDate',todayStr); }
+    const extras=guestMatchBalance();
+    const aiExtras=Math.max(0,Number.parseInt(localStorage.getItem('match_guestBonusAiPrompts_v1')||'0',10)||0);
+    const preferred=window.MatchAppGuestShare?.takePrefer?.(action)===true;
+    // On a newly rewarded share the FIRST next action spends the +1 gift.
+    // Otherwise preserve the established shared three daily included actions
+    // and use type-specific bonuses only once that included quota is gone.
+    if ((preferred||dailyCount>=ANON_DAILY_LIMIT)&&
+        ((action==='match'&&extras>0)||(action==='ask_ai'&&aiExtras>0))) {
+        const next=action==='match'
+            ?setGuestMatchBalance(extras-1)
+            :(()=>{localStorage.setItem('match_guestBonusAiPrompts_v1',String(aiExtras-1));return aiExtras-1})();
+        lastQuotaStatus={
+            allowed:true,used:dailyCount,limit:ANON_DAILY_LIMIT,
+            remaining:Math.max(0,ANON_DAILY_LIMIT-dailyCount),
+            purchased_matches:action==='match'?next:extras,
+            credits:action==='ask_ai'?next:aiExtras,
+            paid_with_match_pack:action==='match',
+            paid_with_guest_ai:action==='ask_ai',anon:true
         };
         updateQuotaBadge(lastQuotaStatus);
-        showQuotaMessage('anon', lastQuotaStatus, action);
+        return true;
+    }
+    if (dailyCount>=ANON_DAILY_LIMIT) {
+        lastQuotaStatus={
+            allowed:false,used:dailyCount,limit:ANON_DAILY_LIMIT,remaining:0,
+            purchased_matches:extras,credits:aiExtras,anon:true
+        };
+        updateQuotaBadge(lastQuotaStatus);
+        showQuotaMessage('anon',lastQuotaStatus,action);
         return false;
     }
-
-    const used = dailyCount + 1;
-    localStorage.setItem('match_dailyCount', used.toString());
-    lastQuotaStatus = {
-        allowed: true, used, limit: ANON_DAILY_LIMIT, remaining: ANON_DAILY_LIMIT - used,
-        purchased_matches: extras, anon: true
+    const used=dailyCount+1;
+    localStorage.setItem('match_dailyCount',String(used));
+    lastQuotaStatus={
+        allowed:true,used,limit:ANON_DAILY_LIMIT,remaining:ANON_DAILY_LIMIT-used,
+        purchased_matches:extras,credits:aiExtras,anon:true
     };
     updateQuotaBadge(lastQuotaStatus);
     return true;
@@ -112,6 +120,9 @@ function anonLimitCheck(action = 'match') {
 
 function showQuotaMessage(kind, status, action = 'match') {
     if (kind === 'anon') {
+        // Guests may still have one of their two free social-share rewards.
+        // Keep their latest result visible until they have tried it.
+        if (window.MatchAppGuestShare?.offerPending?.(action)) return;
         // Show the offer only when the shared 3-action guest allowance is
         // genuinely exhausted. Never promise the bonus to a signed-in member.
         if (window.MatchAppRegistrationWelcome?.openOffer) {
