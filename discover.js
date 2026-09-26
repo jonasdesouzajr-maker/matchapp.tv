@@ -1480,6 +1480,7 @@ function appendAssistantBubble(text, results, opts) {
     if (!log) return null;
     const wrap = document.createElement('div');
     wrap.className = 'chat-bubble chat-assistant';
+    wrap.dataset.guestShareEligible = opts?.instant ? '0' : '1';
 
     const row = document.createElement('div');
     row.className = 'chat-answer-row';
