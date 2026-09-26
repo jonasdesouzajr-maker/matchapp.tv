@@ -14,7 +14,7 @@ test('normal Match fallback is progressive, transparent and keeps hard safety/ex
   assert.match(fn,/\['exact', requested\]/);
   assert.match(fn,/\['broaden-vibe'/);
   assert.match(fn,/\['broaden-era'/);
-  assert.match(fn,/\['broaden-mood'/);
+  assert.doesNotMatch(fn,/\['broaden-mood'/);
   assert.match(fn,/\['broaden-platform'/);
   assert.doesNotMatch(fn,/rating:\[\]/);
   assert.doesNotMatch(fn,/cat:\[\]/);
