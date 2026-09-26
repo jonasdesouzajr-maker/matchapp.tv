@@ -55,7 +55,7 @@ test('persistent Install boxes are gone; Play stays disabled until the owner aut
   assert.ok(offer.isConnected,'Disabled Play CTA must never dismiss the usable browser install offer');
   assert.match(source,/const PLAY_RELEASED=false/);
   assert.match(read('home-approved.css'),/\.ma-offer-play\[disabled\]/);
-  assert.match(read('index.html'),/browser-install-offer\.js\?v=20260926-visitoffer1/);
+  assert.match(read('index.html'),/browser-install-offer\.js\?v=20260926-playpending1/);
   assert.doesNotMatch(read('index.html'),/<aside id="chrome-install-card"/);
   assert.doesNotMatch(read('home-approved.js'),/mountInstall\(/);
   assert.match(read('home-approved.css'),/position:fixed;right:18px;bottom:18px/);
