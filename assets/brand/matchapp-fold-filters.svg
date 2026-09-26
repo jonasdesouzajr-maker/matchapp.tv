@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96" role="img" aria-labelledby="title desc">
+<title id="title">MatchApp Matching Filters signature crest</title>
+<desc id="desc">Original MatchApp matching filters symbol with a gold halo and a four-point sparkle.</desc>
+<defs><radialGradient id="core" cx="28%" cy="17%" r="89%"><stop offset="0" stop-color="#555EA0"/><stop offset="1" stop-color="#171229"/></radialGradient>
+<linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFF4C6"/><stop offset=".49" stop-color="#E9BE61"/><stop offset="1" stop-color="#9D692A"/></linearGradient></defs>
+<circle cx="48" cy="48" r="42" fill="url(#core)" stroke="url(#gold)" stroke-width="3.5"/>
+<path d="M14 50c-2-16 10-32 23-36" fill="none" stroke="#FFF2CA" stroke-opacity=".4" stroke-width="1.6" stroke-linecap="round"/>
+<path d="M23 32h48M23 48h48M23 64h48" fill="none" stroke="#F6DFAC" stroke-width="2.8" stroke-linecap="round"/><rect x="32" y="25" width="11" height="14" rx="5" fill="#384E85" stroke="url(#gold)" stroke-width="2.3"/><rect x="54" y="41" width="11" height="14" rx="5" fill="#384E85" stroke="url(#gold)" stroke-width="2.3"/><rect x="43" y="57" width="11" height="14" rx="5" fill="#384E85" stroke="url(#gold)" stroke-width="2.3"/><path d="M70 19v8M66 23h8" stroke="#FFE9A8" stroke-width="1.8" stroke-linecap="round"/>
+<path d="M77 9l2.9 5.7 5.7 2.9-5.7 2.8-2.9 5.8-2.9-5.8-5.7-2.8 5.7-2.9Z" fill="url(#gold)" stroke="#FFF1C8" stroke-width=".65" stroke-linejoin="round"/>
+</svg>
