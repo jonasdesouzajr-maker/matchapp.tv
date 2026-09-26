@@ -15,6 +15,7 @@
     const fromRecovery = fragment.get('type') === 'recovery' || query.get('type') === 'recovery';
     const legacySignup = query.get('openAuth') === '1';
     const directSignIn = query.get('signIn') === '1';
+    const verifiedReturn = query.get('authReturn') === 'verified';
 
     function message(value, isError) {
         const el = document.getElementById('auth-message');
@@ -85,11 +86,11 @@
 
     async function handleLanding(client) {
         if (fromRecovery) return false; // Password recovery belongs to /reset.html.
-        if (!hasResponse && !legacySignup && !directSignIn) return false;
+        if (!hasResponse && !legacySignup && !directSignIn && !verifiedReturn) return false;
         let session = null;
         // The SDK automatically consumes implicit tokens or exchanges PKCE
         // codes; getSession waits for its initialization to finish.
-        if (!hasError && (hasResponse || legacySignup) && client?.auth?.getSession) {
+        if (!hasError && (hasResponse || legacySignup || verifiedReturn) && client?.auth?.getSession) {
             try {
                 const result = await client.auth.getSession();
                 session = result?.data?.session || null;
@@ -102,13 +103,15 @@
         if (session?.user) {
             cleanReturnUrl();
             window.closeAuthModal?.();
-            if (hasResponse && !hasError) window.showToast?.('Email confirmed. You are signed in!');
+            if ((hasResponse && !hasError) || verifiedReturn) window.showToast?.('Email confirmed. You are signed in!');
             return true;
         }
-        if (hasResponse) {
+        if (hasResponse || verifiedReturn) {
             window.openAuthModal?.();
             window.switchAuthTab?.('login');
-            const fallback = hasError
+            const fallback = verifiedReturn
+                ? 'Your email confirmation was received, but the browser could not restore the sign-in session. Sign in below to continue.'
+                : hasError
                 ? 'This verification link is invalid or expired. Enter your email and choose "Resend confirmation email" below. Use the newest email link only.'
                 : 'We could not finish the email sign-in on this device. Sign in below, or request a fresh confirmation email if you have not verified your address.';
             message(fallback, true);
