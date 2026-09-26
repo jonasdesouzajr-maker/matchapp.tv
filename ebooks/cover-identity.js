@@ -58,5 +58,34 @@
   }
   return null;
  }
- return Object.freeze({normalize,exactAuthor,exactWork,verifiedCoverId,verifiedGoogleCoverUrl});
+ // A third official source for books that have no usable Open Library or
+ // Google Books image. Store search ranking alone is not edition proof.
+ // Never borrow an Apple cover from a similarly named author or format.
+ function verifiedAppleBookCoverUrl(book,results,region='US'){
+  const locale=String(region||'US').toLowerCase();
+  for(const row of Array.isArray(results)?results:[]){
+   const name=String(row.trackName||row.collectionName||'');
+   const author=String(row.artistName||'');
+   if(row.kind&&row.kind!=='ebook')continue;
+   if(row.trackExplicitness==='explicit'||row.collectionExplicitness==='explicit')continue;
+   if(!exactWork(book,{title:name,author_name:[author]}))continue;
+   const page=String(row.trackViewUrl||row.collectionViewUrl||'');
+   try{
+    const u=new URL(page);
+    if(u.protocol!=='https:'||!['books.apple.com','itunes.apple.com'].includes(u.hostname)||
+       !u.pathname.toLowerCase().startsWith('/'+locale+'/')||
+       !/\/book\//.test(u.pathname))continue;
+   }catch(_){continue}
+   for(const value of [row.artworkUrl600,row.artworkUrl100]){
+    if(typeof value!=='string')continue;
+    try{
+     const img=new URL(value);
+     if(img.protocol==='https:'&&/^is[0-9]+-ssl\.mzstatic\.com$/i.test(img.hostname)&&
+       img.pathname.startsWith('/image/thumb/'))return img.href;
+    }catch(_){}
+   }
+  }
+  return null;
+ }
+ return Object.freeze({normalize,exactAuthor,exactWork,verifiedCoverId,verifiedGoogleCoverUrl,verifiedAppleBookCoverUrl});
 });

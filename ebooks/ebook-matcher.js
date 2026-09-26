@@ -207,6 +207,17 @@ async function sourceCover(book,source){
    const d=await coverJSON(url);
    return window.MatchAppBookCoverIdentity?.verifiedGoogleCoverUrl(book,d?.items)||null;
   }
+  if(source==='apple'){
+   // Apple is a late, bounded last resort only after the established work-level
+   // sources failed. It is never used for guessed music/audio edition art.
+   const u=new URL('https://itunes.apple.com/search');
+   u.searchParams.set('term',book.title+' '+book.author);
+   u.searchParams.set('media','ebook');u.searchParams.set('entity','ebook');
+   u.searchParams.set('country',market().toLowerCase());
+   u.searchParams.set('limit','10');u.searchParams.set('explicit','No');
+   const d=await coverJSON(u.href);
+   return window.MatchAppBookCoverIdentity?.verifiedAppleBookCoverUrl(book,d?.results,market())||null;
+  }
   return null;
  })().then(url=>{if(url)BOOK_COVER_IDENTITY.set(key,url);return url})
   .catch(()=>null).finally(()=>BOOK_COVER_INFLIGHT.delete(key));
@@ -235,7 +246,7 @@ async function hydrateCover(book,img,fall,audio){
  img.hidden=true;if(fall)fall.hidden=false;
  // A source-verified Apple audio record carries its own genuine edition art.
  if(audio?.apple?.coverUrl&&await showVerifiedCover(img,fall,audio.apple.coverUrl))return;
- for(const source of ['openlibrary','google']){
+ for(const source of ['openlibrary','google','apple']){
   const url=await sourceCover(book,source);
   if(url&&await showVerifiedCover(img,fall,url))return;
  }
