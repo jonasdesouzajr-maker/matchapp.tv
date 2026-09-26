@@ -19,9 +19,9 @@ test('permanent no-XXX restriction excludes pornography without censoring mainst
  assert.equal(safe.unsafeLink('https://www.pornhub.com/example'),true);
  assert.equal(safe.unsafeLink('https://time.com/'),false);
 });
-test('24 official adult-only global magazine profiles contain real publisher routes, no fake issue cover or XXX titles',()=>{
+test('31 official adult-only global magazine profiles contain real publisher routes, no fake issue cover or XXX titles',()=>{
  const w=setup(),items=w.MatchAppMagazines.items;
- assert.equal(items.length,24);
+ assert.equal(items.length,31);
  assert.ok(items.some(x=>x.region==='BR'));
  assert.ok(items.some(x=>x.region==='AU'));
  assert.ok(items.some(x=>x.region==='JP'));
