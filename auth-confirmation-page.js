@@ -63,7 +63,7 @@
             scrubLink();
             if (session?.user) {
                 status('Email confirmed. Opening MatchApp…', 'success');
-                window.location.replace('/?authReturn=verified');
+                window.location.replace('/profile/profile.html?welcome=verified');
             } else {
                 status('Your email is confirmed. Sign in to continue.', 'success');
             }
