@@ -97,8 +97,8 @@ test('homepage loads redirect capture before SDK client, and signup waits for co
     const audit = read('final-audit.js');
     assert.match(audit, /emailRedirectTo:'https:\/\/matchapp\.tv\/'/);
     assert.doesNotMatch(audit, /emailRedirectTo:'https:\/\/matchapp\.tv\/\?openAuth=1'/);
-    assert.match(read('title-captions.js'), /final-audit\.js\?v=20260926-emailverify1/);
-    assert.match(home, /title-captions\.js\?v=20260921-ui2&amp;auth=20260926-emailverify1/);
+    assert.match(read('title-captions.js'), /final-audit\.js\?v=20260926-emailsingle1/);
+    assert.match(home, /title-captions\.js\?v=20260921-ui2&amp;auth=20260926-emailsingle1/);
 });
 
 
