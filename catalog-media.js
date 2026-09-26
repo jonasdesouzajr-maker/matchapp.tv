@@ -432,7 +432,7 @@
       if(!state.meta){
         const found=await lookup(title);
         if(img.__matchappAdultPoster!==identity)return;
-        if(safeSameTitleMedia(found,state))state.meta=found;
+        if(!state.meta&&safeSameTitleMedia(found,state))state.meta=found;
         if(await attempt())return;
       }
       // A known numeric ID is decisive for translated title labels whose
@@ -451,7 +451,15 @@
         }
       }
     }finally{
-      if(img.__matchappAdultPoster===identity)state.repairing=false;
+      if(img.__matchappAdultPoster===identity){
+        state.repairing=false;
+        // An exact, verified URL may arrive during an older title-only
+        // lookup. Do not silently discard that late original artwork.
+        if(state.needsRepair){
+          state.needsRepair=false;
+          void repairAdultPoster(img,state);
+        }
+      }
     }
   }
   function recoverAdultPoster(img,title,meta,preferred){
@@ -459,7 +467,7 @@
     const name=String(title);
     let state=img.__matchappAdultPoster;
     if(!state||state.title!==name){
-      state={title:name,meta:null,preferred:'',failed:new Set(),repairing:false,isRail:false,
+      state={title:name,meta:null,preferred:'',failed:new Set(),repairing:false,needsRepair:false,isRail:false,
         tmdbId:0,kind:'',year:0,lastAttemptAt:Date.now()};
       img.__matchappAdultPoster=state;
     }
@@ -476,8 +484,11 @@
       const year=Number(state.isRail?img.dataset.tmdbYear:currentIdentity.year);
       if(Number.isSafeInteger(year)&&year>=1880&&year<=2200)state.year=year;
     }
+    const previousMeta=state.meta,previousPreferred=state.preferred;
     if(safeSameTitleMedia(meta,state))state.meta=meta;
     if(preferred&&posterVariants(preferred).length)state.preferred=preferred;
+    if(state.repairing&&(state.meta!==previousMeta||state.preferred!==previousPreferred))
+      state.needsRepair=true;
     img.dataset.matchappMediaTitle=name;
     if(img.dataset.matchappAdultPosterBound!=='1'){
       img.dataset.matchappAdultPosterBound='1';
