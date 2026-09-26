@@ -154,6 +154,7 @@ function checkAndRenderProfileState() {
             const setVal = (id, val) => { const el = document.getElementById(id); if (el) el.innerText = val; };
             setVal('lock-val-name', savedName || "User");
             setVal('lock-val-country', savedCountry || "N/A");
+            setVal('lock-val-region', localStorage.getItem('match_user_region') || 'N/A');
             setVal('lock-val-dob', savedDob || "N/A");
             setVal('lock-val-sign', formatSign(savedSign));
             setVal('lock-val-age', localStorage.getItem('match_user_age') ? `${localStorage.getItem('match_user_age')} years old` : "N/A");
