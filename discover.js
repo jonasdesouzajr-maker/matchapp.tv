@@ -1167,7 +1167,7 @@ function localAiQuotaStatus() {
     const storedDay = localStorage.getItem('match_lastDate');
     const used = storedDay === today ? Math.max(0, parseInt(localStorage.getItem('match_dailyCount') || '0', 10) || 0) : 0;
     const limit = 3;
-    return { authenticated:false, anon:true, used, limit, remaining:Math.max(0, limit - used), credits:0 };
+    return { authenticated:false, anon:true, used, limit, remaining:Math.max(0, limit - used), credits:Math.max(0, Number.parseInt(localStorage.getItem('match_guestBonusAiPrompts_v1')||'0',10)||0) };
 }
 
 function renderAiQuotaStatus(status) {
@@ -1186,7 +1186,7 @@ function renderAiQuotaStatus(status) {
     if (fill) fill.style.width = pct + '%';
     if (credits) {
         credits.textContent = status.anon
-            ? (remaining > 0 ? 'Guest allowance · sign in for account-based AI credits.' : 'Guest allowance used · sign in or register to continue.')
+            ? (remaining > 0 ? 'Guest allowance · 2 social-share bonuses total available to try.' : paidCredits > 0 ? paidCredits + ' free share AI prompt' + (paidCredits===1?'':'s') + ' available.' : (window.MatchAppGuestShare?.remainingShares?.() > 0 ? 'Share your last AI reply above to unlock +1 prompt.' : 'Guest preview complete · register free for +10 Matches and +10 AI prompts.'))
             : (paidCredits + ' Ask AI credit' + (paidCredits === 1 ? '' : 's') + ' available after your included allowance.');
     }
     if (newChat) {
@@ -1511,6 +1511,9 @@ function appendAssistantBubble(text, results, opts) {
     wrap.appendChild(grid);
 
     log.appendChild(wrap);
+    // One visible guest prompt at the TOP of newly generated AI answers.
+    // History re-renders and uncharged instant refusals do not grant rewards.
+    if (!opts?.instant) window.MatchAppGuestShare?.decorateAiBubble?.(wrap);
 
     if (opts && opts.instant) p.textContent = text;
     return { wrap, textEl: p, grid, speakBtn: speak };
