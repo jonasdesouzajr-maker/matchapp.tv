@@ -1,6 +1,6 @@
 /* Production-only visual + semantic smoke. This script does not monkeypatch app code,
  * seed catalog entries, bypass quotas or pretend simulated devices are physical phones.
- * Run deliberately (manual GitHub workflow); live match/Ask AI consume guest allowance. */
+ * Runs after each live main deployment; live matching and AI consume genuine guest allowance. */
 'use strict';
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
 const {chromium}=require('playwright');
@@ -63,19 +63,28 @@ async function aiQuestion(page,question,expected,label){
        inView:visible.length,valid:visible.filter(im=>im.complete&&im.naturalWidth>0).length,
        wrongFit:visible.filter(im=>getComputedStyle(im).objectFit==='fill').length};
     });
-    record('home responsive '+device.name,home.scrollWidth<=home.width+16 && !home.wrongFit,
+    record('home responsive and original visible posters '+device.name,
+      home.scrollWidth<=home.width+16 && !home.wrongFit && home.artworks>0 && home.valid>0,
       JSON.stringify(home));
     const ebook=page.locator('#ebook-matcher-root');
-    const audiobook=ebook.locator('[data-ebook-field="format"][data-ebook-value="audiobook"]');
-    await audiobook.click();
-    assert.equal(await audiobook.getAttribute('aria-pressed'),'true');
-    const magazine=ebook.locator('[data-ebook-field="format"][data-ebook-value="magazine"]');
-    await magazine.click();
-    assert.equal(await magazine.getAttribute('aria-pressed'),'true');
-    const read=ebook.locator('[data-ebook-field="format"][data-ebook-value="ebook"]');
-    await read.click();
-    assert.equal(await read.getAttribute('aria-pressed'),'true');
-    record('reading format controls '+device.name,true,'ebook, audiobook and magazine controls responsive');
+    const placement=await page.evaluate(()=>{
+      const form=document.getElementById('questionnaire-box'),root=document.getElementById('ebook-matcher-root');
+      return !!(form&&root&&root.previousElementSibling===form&&!root.closest('#search-box'));
+    });
+    record('Bookworms directly follows Find what to watch here '+device.name,placement,'independent of Ask AI');
+    const fold=ebook.locator('details.ebook-fold');
+    if(!await fold.evaluate(d=>d.open))await fold.locator('summary').click();
+    const format=ebook.locator('select[data-ebook-select="format"]');
+    await format.waitFor({state:'visible',timeout:12000});
+    for(const kind of ['audiobook','magazine','ebook']){
+      await format.selectOption(kind);
+      assert.equal(await format.inputValue(),kind,'real '+kind+' option was not selected');
+      const current=await page.evaluate(()=>JSON.parse(localStorage.getItem('match_ebook_criteria_v1')||'{}').format);
+      assert.equal(current,kind,'selected format must persist to the real Bookworms matcher');
+    }
+    const bookFields=await ebook.locator('select[data-ebook-select]').count();
+    record('real compact reading controls '+device.name,bookFields===7,
+      'seven live dropdowns preserve ebook, verified audio and magazine choices');
     await shot(page,device.name+'-home');
     await observed(page,'/discover.html');
     const textbox=page.locator('#discover-new-input');await textbox.waitFor({state:'visible',timeout:20000});
@@ -88,17 +97,6 @@ async function aiQuestion(page,question,expected,label){
     record('Ask AI composer '+device.name,composer.inputWidth>85&&!composer.focused&&!composer.collision,
       JSON.stringify(composer));
     await shot(page,device.name+'-ask-ai');
-    if(device.name==='desktop'){
-      await aiQuestion(page,
-       'Name the director and the release year of the 2001 animated film Spirited Away. Do not recommend books or music.',
-       /(?:miyazaki)/i,'movie-fact');
-      await aiQuestion(page,
-       'How can I find a legitimate audiobook edition of Pride and Prejudice by Jane Austen? Please do not recommend any films or TV shows.',
-       /pride\s+(?:and|&)\s+prejudice|jane\s+austen/i,'audiobook-intent');
-      const bookRoute=page.locator('#chat-log .discover-book-matcher-link').last();
-      const href=await bookRoute.getAttribute('href').catch(()=>null);
-      record('Ask AI audio-specific route',!!href&&href.includes('reading=audiobook'),href||'missing');
-    }
    }catch(error){
      record('device '+device.name,false,String(error.stack||error).slice(0,500));
      await shot(page,device.name+'-failure');
@@ -121,12 +119,107 @@ async function aiQuestion(page,question,expected,label){
       return box&&getComputedStyle(box).display!=='none'&&title&&title!=='Title';
     },null,{timeout:110000});
     const title=await page.locator('#res-title').innerText();
-    const poster=await page.locator('#res-poster-img').evaluate(img=>({src:img.currentSrc||img.src,loaded:img.complete&&img.naturalWidth>0}));
-    record('LIVE normal movie matching',title.length>1&&poster.loaded,
-      'title='+title.slice(0,110)+' poster-loaded='+poster.loaded);
+    await page.waitForFunction(()=>{
+      const im=document.getElementById('res-poster-img');
+      return im&&im.complete&&im.naturalWidth>0;
+    },null,{timeout:25000});
+    const poster=await page.locator('#res-poster-img').evaluate(img=>({
+      src:img.currentSrc||img.src,loaded:img.complete&&img.naturalWidth>0,
+      aspect:img.naturalHeight?img.naturalWidth/img.naturalHeight:0,fit:getComputedStyle(img).objectFit
+    }));
+    const authentic=poster.loaded && /^https?:/i.test(poster.src) &&
+      !/placeholder|fallback|fake-poster|dummy/i.test(poster.src);
+    record('LIVE normal movie matching and source poster',title.length>1&&authentic&&poster.fit!=='fill',
+      'title='+title.slice(0,110)+' poster='+poster.src.slice(0,130)+' loaded='+poster.loaded+' fit='+poster.fit);
     await page.waitForTimeout(1800);await shot(page,'live-normal-matched');
   }catch(error){record('LIVE normal movie matching',false,String(error.stack||error).slice(0,500));await shot(page,'live-normal-failure')}
   finally{await c.close();}
+  // A real book match exercises the production matcher and confirms that the
+  // image is fetched from an identity-verified Open Library / Google Books
+  // edition, never a synthetic text-only replacement falsely called a cover.
+  const booksContext=await browser.newContext({viewport:{width:1200,height:900},locale:'en-US'});
+  const books=await booksContext.newPage();
+  try{
+    await observed(books,'/');
+    await books.getByRole('button',{name:/Essential only/i}).first().click({timeout:1600}).catch(()=>{});
+    const root=books.locator('#ebook-matcher-root');
+    await root.locator('details.ebook-fold').waitFor({state:'attached',timeout:18000});
+    await root.locator('details.ebook-fold').evaluate(el=>{el.open=true});
+    const format=root.locator('select[data-ebook-select="format"]');
+    await format.selectOption('ebook');
+    await root.locator('[data-ebook-match]').click();
+    const result=root.locator('[data-ebook-result]');
+    await result.locator('h3').first().waitFor({state:'visible',timeout:55000});
+    const name=await result.locator('h3').first().innerText();
+    // If the original edition cover is unavailable, retain the honest named
+    // fallback in production but FAIL this verification; do not invent art.
+    const im=result.locator('img[data-ebook-cover]');
+    await im.waitFor({state:'attached',timeout:10000});
+    const loaded=await im.evaluate(async image=>{
+      if(image.complete&&image.naturalWidth>0)return true;
+      return await new Promise(resolve=>{
+        let timer=setTimeout(()=>resolve(false),28000);
+        image.addEventListener('load',()=>{clearTimeout(timer);resolve(image.naturalWidth>0)},{once:true});
+        image.addEventListener('error',()=>{clearTimeout(timer);resolve(false)},{once:true});
+      });
+    });
+    const cover=await im.evaluate(img=>({src:img.currentSrc||img.src,loaded:img.complete&&img.naturalWidth>0,
+      fit:getComputedStyle(img).objectFit}));
+    const verifiedSource=/^https:\/\/(?:covers\.openlibrary\.org|books\.google\.com\/books\/content)/i.test(cover.src);
+    record('LIVE Bookworms real e-book matching and verified original cover',
+      !!name&&loaded&&cover.loaded&&verifiedSource&&cover.fit!=='fill',
+      'book='+name.slice(0,100)+' source='+cover.src.slice(0,130)+' verified='+verifiedSource+' fit='+cover.fit);
+    await shot(books,'live-ebook-matched');
+
+    // Publisher identity tiles are intentional and genuine issue art is only
+    // linked on the publisher site; never pretend they are downloaded covers.
+    await format.selectOption('magazine');
+    await root.locator('[data-ebook-match]').click();
+    await result.locator('.magazine-result-grid h3').waitFor({state:'visible',timeout:50000});
+    const magazine=await result.evaluate(node=>{
+      const title=node.querySelector('.magazine-result-grid h3')?.textContent?.trim()||'';
+      const original=node.querySelector('a[data-ebook-provider="Official issues"]');
+      const icon=node.querySelector('img[data-magazine-publisher-icon]');
+      const article=node.querySelector('.magazine-original-note');
+      return {title,issues:original?.href||'',icon:icon?.src||'',iconLoaded:!!(icon?.complete&&icon?.naturalWidth),
+        honestLabel:!!article};
+    });
+    const issuer=magazine.issues?new URL(magazine.issues).hostname:'';
+    const imageDomain=magazine.icon?new URL(magazine.icon).hostname:'';
+    record('LIVE magazine matching and authentic publisher cover route',
+      !!magazine.title&&!!issuer&&!!imageDomain&&
+        (issuer===imageDomain||issuer.endsWith('.'+imageDomain)||imageDomain.endsWith('.'+issuer))&&
+        magazine.honestLabel,
+      JSON.stringify(magazine));
+    record('LIVE original publisher icon resolves',magazine.iconLoaded,
+      'magazine='+magazine.title+' publisher icon='+magazine.icon);
+    await shot(books,'live-magazine-matched');
+  }catch(error){
+    record('LIVE Bookworms e-book and magazine matching',false,String(error.stack||error).slice(0,500));
+    await shot(books,'live-bookworms-failure');
+  }finally{await booksContext.close();}
+
+  // Run genuine proxy-backed AI questions only AFTER normal/book matching.
+  const aiContext=await browser.newContext({viewport:{width:1360,height:900},locale:'en-US'});
+  const pageAi=await aiContext.newPage();
+  try{
+    await observed(pageAi,'/discover.html');
+    await pageAi.locator('#discover-new-input').waitFor({state:'visible',timeout:20000});
+    const page=pageAi;
+      await aiQuestion(page,
+       'Name the director and the release year of the 2001 animated film Spirited Away. Do not recommend books or music.',
+       /(?:miyazaki)/i,'movie-fact');
+      await aiQuestion(page,
+       'How can I find a legitimate audiobook edition of Pride and Prejudice by Jane Austen? Please do not recommend any films or TV shows.',
+       /pride\s+(?:and|&)\s+prejudice|jane\s+austen/i,'audiobook-intent');
+      const bookRoute=page.locator('#chat-log .discover-book-matcher-link').last();
+      const href=await bookRoute.getAttribute('href').catch(()=>null);
+      record('Ask AI audio-specific route',!!href&&href.includes('reading=audiobook'),href||'missing');
+
+  }catch(error){
+    record('LIVE Ask AI movie and audiobook intents',false,String(error.stack||error).slice(0,500));
+    await shot(pageAi,'live-ai-failure');
+  }finally{await aiContext.close();}
   record('browser fatal JS exceptions',!errors.length,JSON.stringify(errors.slice(0,4)));
  }catch(error){record('smoke harness setup',false,String(error.stack||error).slice(0,700))}
  finally{
