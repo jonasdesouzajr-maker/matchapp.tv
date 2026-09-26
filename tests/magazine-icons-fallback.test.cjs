@@ -57,6 +57,8 @@ test('Ask AI displays a genuine icon only when the image actually loaded',()=>{
 test('all magazine matches retain the visible genuine publisher-name fallback on failed icons',()=>{
  const s=read('ebooks/ebook-matcher.js'),css=read('ebooks/ebook-matcher.css');
  assert.match(s,/<div data-magazine-brand>/);
+ assert.match(s,/data-magazine-publisher-icon src=[\\s\\S]*?loading="eager"/,'selected magazine icon cannot remain lazy while hidden');
+ assert.match(read('ebooks/reading-ai.js'),/data-reading-publisher-icon loading="eager"/);
  assert.match(s,/img\.onerror=\(\)=>\{img\.hidden=true;fallback\.hidden=false\}/);
  assert.match(css,/\.reading-ai-icon \[data-reading-publisher-name\]/);
 });
