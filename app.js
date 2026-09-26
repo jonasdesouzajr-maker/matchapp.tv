@@ -1890,6 +1890,12 @@ window.handleEmailSignup = async function() {
     if (!supabaseClient) { msgEl.style.display = 'block'; msgEl.style.color = '#ff5252'; msgEl.style.background = 'rgba(255,0,0,0.1)'; msgEl.innerText = "Account service is temporarily unavailable."; return; }
     if (!email || !password) { msgEl.style.display = 'block'; msgEl.style.color = '#ff5252'; msgEl.style.background = 'rgba(255,0,0,0.1)'; msgEl.innerText = "Please provide an email and password."; return; }
 
+    // Guard against double taps while Supabase is generating one-time links.
+    // Concurrent signups can invalidate the email that arrives first.
+    if (window.__maEmailSignupPending) return;
+    window.__maEmailSignupPending = true;
+    const signupButton = document.querySelector('#form-signup .gold-btn');
+    if (signupButton) signupButton.disabled = true;
     msgEl.style.display = 'block'; msgEl.style.color = '#fff'; msgEl.style.background = 'rgba(229,193,88,0.2)'; msgEl.innerText = "Creating account...";
 
     try {
@@ -1916,6 +1922,9 @@ window.handleEmailSignup = async function() {
         }
     } catch (_) {
         msgEl.style.color = '#ff5252'; msgEl.style.background = 'rgba(255,0,0,0.1)'; msgEl.innerText = "Could not create the account. Please retry.";
+    } finally {
+        window.__maEmailSignupPending = false;
+        if (signupButton) signupButton.disabled = false;
     }
 };
 
