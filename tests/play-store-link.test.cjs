@@ -82,7 +82,7 @@ test('offer goes away automatically, and browser installation keeps the native t
   const visible=await open(other);
   let taps=0;other.w.installMatchApp=()=>{taps++;};
   visible.querySelector('.ma-offer-browser').click();
-  assert.equal(taps,1,'Must invoke real browser install path from the user's click');
+  assert.equal(taps,1,'Must invoke real browser install path from the user click');
   assert.equal(other.w.document.getElementById('ma-install-offer'),null);
   other.dom.window.close();
 });
