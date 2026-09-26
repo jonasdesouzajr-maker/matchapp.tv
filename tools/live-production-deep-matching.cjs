@@ -16,9 +16,21 @@ const approved=vm.runInNewContext(list[1]);
 async function open(page,route){await page.goto(BASE+route,{waitUntil:'domcontentloaded',timeout:60000});await page.waitForTimeout(1800);}
 async function consent(page){await page.getByRole('button',{name:/Essential only/i}).first().click({timeout:1700}).catch(()=>{});}
 async function contextFor(browser){const context=await browser.newContext({viewport:{width:1180,height:850},locale:'en-US'});return {context,page:await context.newPage()};}
+// Every new isolated test browser must complete the REAL guardian setup
+// through its on-screen UI. Never disable the gate or reuse an owner's PIN.
+async function setupFreshGuardian(page){
+ const dialog=page.locator('dialog.kids-parent-setup[open]');
+ await dialog.waitFor({state:'visible',timeout:12000});
+ const choice=dialog.locator('.kids-parent-pin-choice');
+ if(await choice.isVisible())await choice.click();
+ await dialog.locator('#kids-parent-pin-one').fill('7319');
+ await dialog.locator('#kids-parent-pin-two').fill('7319');
+ await dialog.locator('.kids-parent-pin-save').click();
+ await dialog.waitFor({state:'hidden',timeout:10000});
+}
 async function guarded(browser,label,fn){
  const {context,page}=await contextFor(browser);
- const exceptions=[];page.on('pageerror',e=>exceptions.push(e.message));
+ const exceptions=[];page.on('pageerror',e=>exceptions.push(String(e.stack||e.message).slice(0,380)));
  try{await fn(page);record(label+' JavaScript health',exceptions.length===0,exceptions.slice(0,2).join('; '));}
  catch(e){record(label,false,String(e.message||e).slice(0,430));await page.screenshot({path:path.join(out,label.replace(/[^a-z0-9]/gi,'-')+'-failure.png'),timeout:8000}).catch(()=>{});}
  finally{await context.close();}
@@ -42,13 +54,14 @@ async function guarded(browser,label,fn){
     const box=document.querySelector('#result-box'),title=document.querySelector('#res-title')?.textContent?.trim();
     return box&&getComputedStyle(box).display!=='none'&&title&&title!=='Title';
    },null,{timeout:110000});
-   const match=await page.evaluate(()=>({title:document.querySelector('#res-title')?.textContent?.trim(),platform:globalPlatform,
+   const match=await page.evaluate(()=>({title:document.querySelector('#res-title')?.textContent?.trim(),platform:String(globalPlatform||'').trim(),
     cover:document.querySelector('#res-poster-img')?.currentSrc||document.querySelector('#res-poster-img')?.src,
-    href:[...document.querySelectorAll('#result-box a[href]')].map(e=>e.href).filter(h=>/spotify\.com/i.test(h)).slice(0,3)}));
-   record('LIVE music respects Spotify platform and selected category',match.platform==='Spotify'&&!!match.title,
-    'title='+match.title+' platform='+match.platform+' Spotify links='+match.href.length);
-   const hasArtwork=await page.locator('#res-poster-img').evaluate(img=>img.complete&&img.naturalWidth>0&&getComputedStyle(img).objectFit!=='fill').catch(()=>false);
-   record('LIVE music shows a loaded undistorted cover',hasArtwork,match.cover||'missing');
+    href:document.querySelector('#res-direct-link')?.href||''}));
+   record('LIVE music respects Spotify and provides the correct direct playlist link',match.platform==='Spotify'&&match.title==='Deep Focus'&&match.href==='https://open.spotify.com/playlist/37i9dQZF1DWZeKCadgRdKQ',
+    'title='+match.title+' platform='+match.platform+' direct='+match.href);
+   await page.waitForFunction(()=>document.querySelector('#res-poster-img')?.currentSrc?.startsWith('https://i.scdn.co/image/'),null,{timeout:15000}).catch(()=>{});
+   const hasArtwork=await page.locator('#res-poster-img').evaluate(img=>img.complete&&img.naturalWidth>0&&getComputedStyle(img).objectFit!=='fill'&&/^https:\/\/i\.scdn\.co\/image\//.test(img.currentSrc||img.src)).catch(()=>false);
+   record('LIVE music shows verified original undistorted Spotify artwork',hasArtwork,'source='+String(await page.locator('#res-poster-img').getAttribute('src')).slice(0,150));
    await page.screenshot({path:path.join(out,'adult-spotify.png')}).catch(()=>{});
   });
   await guarded(browser,'Adult verified audiobook match',async page=>{
@@ -86,7 +99,7 @@ async function guarded(browser,label,fn){
    await page.screenshot({path:path.join(out,'adult-audiobook.png')}).catch(()=>{});
   });
   await guarded(browser,'Kids mood and age gate',async page=>{
-   await open(page,'/kids/');await consent(page);
+   await open(page,'/kids/');await setupFreshGuardian(page);await consent(page);
    await page.locator('#kids-age').selectOption('6-8');
    await page.locator('#kids-match-mood').selectOption('funny');
    await page.locator('#kids-match-format').selectOption('series');
@@ -100,7 +113,7 @@ async function guarded(browser,label,fn){
   });
   await guarded(browser,'Kids AI approved answer',async page=>{
    const upstream=[];page.on('response',response=>{if(response.url().includes('/functions/v1/gemini-proxy'))upstream.push(response.status());});
-   await open(page,'/kids/');await consent(page);
+   await open(page,'/kids/');await setupFreshGuardian(page);await consent(page);
    await page.locator('#kids-age').selectOption('6-8');
    await page.locator('#kids-question').fill('I love Bluey. Find a gentle funny animal cartoon for a six-year-old from your approved Kids collection.');
    await page.locator('#kids-send').click();
