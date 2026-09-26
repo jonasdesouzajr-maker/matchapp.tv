@@ -40,6 +40,7 @@
   for(const show of Array.isArray(shows)?shows:[]) {
    const id=Number(show?.id),title=String(show?.name||'').trim();
    const poster=artwork(show?.image?.original||show?.image?.medium);
+   const sameShowBackup=artwork(show?.image?.medium);
    const url=showUrl(show?.url,id),actualGenres=Array.isArray(show?.genres)?show.genres.filter(g=>typeof g==='string'):[];
    const synopsis=words(show?.summary),year=Number(String(show?.premiered||'').slice(0,4));
    if(!url||!poster||!title||!synopsis||synopsis.length<40||!Number.isInteger(year)||year<1930)continue;
@@ -52,7 +53,8 @@
    if(checks.explicit?.({title,synopsis,cats:actualGenres}))continue;
    return {title,year,synopsis,platform:'any',platformVerified:false,
     cats:cats.length?cats:['series'],moods,vibes:[],ratings:[],source:'tvmaze-source-verified',
-    _meta:{artwork:poster,sourceUrl:url,sourceName:'TVmaze',sourceLicense:'CC BY-SA',kind:'tv',year}};
+    _meta:{artwork:poster,artworkFallback:sameShowBackup!==poster?sameShowBackup:null,
+      sourceUrl:url,sourceName:'TVmaze',sourceLicense:'CC BY-SA',kind:'tv',year}};
   }
   return null;
  }
