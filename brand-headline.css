@@ -1,0 +1,159 @@
+/* MatchApp Ai | MatchApp iA: signature bilingual top-box lettering.
+   Uses the existing transparent circular orb. One integrated, accessible
+   wordmark replaces TV plus the formerly detached animated Ai button.
+   Text is genuine DOM text (not an image), so it stays crisp on every screen. */
+
+/* One design system for the Home top box AND the shared adult route shell.
+   Deliberately excludes Kids Mode, title artwork, AdSense and the Android
+   launcher/splash assets. */
+html body.page-home #mh-topbox .ma-brand-lockup,
+html body.page-shell header.app-header.mh-topbox .ma-brand-lockup{
+  display:flex!important;align-items:center!important;gap:0!important;
+  min-width:0!important;max-width:100%!important;
+  overflow:visible!important;
+}
+html body.page-home #mh-topbox .ma-brand-home-link,
+html body.page-shell header.app-header.mh-topbox .ma-brand-home-link{
+  display:inline-flex!important;align-items:center!important;gap:0!important;
+  min-width:0!important;max-width:100%!important;
+  text-decoration:none!important;
+}
+html body.page-home #mh-topbox .ma-brand-copy,
+html body.page-shell header.app-header.mh-topbox .ma-brand-copy{
+  display:inline-flex!important;align-items:baseline!important;
+  justify-content:flex-start!important;
+  flex:0 1 auto!important;min-width:0!important;
+  margin-left:0!important;gap:.22em!important;
+  transform:none!important;white-space:nowrap!important;
+  overflow:visible!important;isolation:isolate!important;
+  font-family:Outfit,Inter,"Arial Rounded MT Bold",system-ui,sans-serif!important;
+  font-weight:950!important;font-synthesis:weight!important;
+  letter-spacing:-.057em!important;text-transform:none!important;
+}
+html body.page-home #mh-topbox .ma-brand-copy .ma-wordmark,
+html body.page-shell header.app-header.mh-topbox .ma-brand-copy .ma-wordmark{
+  display:inline-flex!important;align-items:baseline!important;
+  flex:0 0 auto!important;white-space:nowrap!important;
+  font-family:inherit!important;font-weight:950!important;
+  font-size:clamp(35px,3.6vw,53px)!important;
+  line-height:1.08!important;letter-spacing:-.057em!important;
+  text-shadow:none!important;
+}
+html body.page-home #mh-topbox .ma-brand-copy .ma-word-match,
+html body.page-shell header.app-header.mh-topbox .ma-brand-copy .ma-word-match{
+  background:linear-gradient(170deg,#FFFFFF 2%,#F8F3FF 32%,#DACDE5 75%,#AEB5CB 100%)!important;
+  -webkit-background-clip:text!important;background-clip:text!important;
+  -webkit-text-fill-color:transparent!important;color:#F6F1FF!important;
+}
+html body.page-home #mh-topbox .ma-brand-copy .ma-word-app,
+html body.page-shell header.app-header.mh-topbox .ma-brand-copy .ma-word-app{
+  background:linear-gradient(165deg,#FFF4C0 0%,#FFE09A 27%,#E6B953 65%,#BB802B 100%)!important;
+  -webkit-background-clip:text!important;background-clip:text!important;
+  -webkit-text-fill-color:transparent!important;color:#EBC76E!important;
+}
+html body.page-home #mh-topbox .ma-brand-copy .ma-word-ai,
+html body.page-shell header.app-header.mh-topbox .ma-brand-copy .ma-word-ai{
+  display:inline-block!important;position:relative!important;
+  flex:0 0 auto!important;min-width:1.1em!important;
+  font:950 clamp(38px,4vw,58px)/1.08 Outfit,Inter,"Arial Rounded MT Bold",system-ui,sans-serif!important;
+  letter-spacing:-.082em!important;padding-right:.20em!important;
+  white-space:nowrap!important;
+  /* A soft amethyst-to-champagne glint, not the old looping neon animation. */
+  background-image:linear-gradient(104deg,#D4A8FF 4%,#B68AF1 23%,#F5DEFF 48%,#F9E3AD 53%,#C59CF4 70%,#E6C9FF 95%)!important;
+  background-size:235% 100%!important;background-position:0 50%!important;
+  -webkit-background-clip:text!important;background-clip:text!important;
+  -webkit-text-fill-color:transparent!important;color:#DBC4FF!important;
+  filter:drop-shadow(0 2px 4px rgba(142,80,194,.24))!important;
+  animation:maSignatureWordmarkGlint 7.6s ease-out 1 both!important;
+}
+/* Original four-tip accent drawn in CSS, no generic emoji or extra assets. */
+html body.page-home #mh-topbox .ma-brand-copy .ma-word-ai::after,
+html body.page-shell header.app-header.mh-topbox .ma-brand-copy .ma-word-ai::after{
+  content:""!important;position:absolute!important;pointer-events:none!important;
+  top:.02em!important;right:0!important;width:.145em!important;height:.145em!important;
+  background:#FFE5A8!important;
+  clip-path:polygon(50% 0,62% 37%,100% 50%,62% 63%,50% 100%,38% 63%,0 50%,38% 37%)!important;
+  box-shadow:none!important;opacity:.82!important;
+  animation:maSignatureStarGlint 7.6s ease-out 1 both!important;
+}
+@keyframes maSignatureWordmarkGlint{
+  0%,7%{background-position:0 50%}
+  32%,100%{background-position:100% 50%}
+}
+@keyframes maSignatureStarGlint{
+  0%,12%,40%,100%{opacity:.73}
+  24%{opacity:1}
+}
+/* No independent, floating Ai control can be reinstated by older header
+   presentation layers. Existing Ask AI hero/composer actions remain intact. */
+html body.page-home #mh-topbox .ma-tv,
+html body.page-home #mh-topbox .ma-ai-brand-button,
+html body.page-shell header.app-header.mh-topbox .ma-tv,
+html body.page-shell header.app-header.mh-topbox .ma-ai-brand-button{
+  display:none!important;
+}
+/* The large desktop mark remains the existing orb — the only motion is
+   the one-time, text-local sheen above; do not animate the header layout. */
+@media(min-width:900px) and (max-width:1099px){
+  html body.page-home #mh-topbox .ma-brand-orb-stage{
+    width:155px!important;flex-basis:155px!important;margin-right:-16px!important;
+  }
+  html body.page-home #mh-topbox .ma-brand-orb{
+    width:164px!important;height:164px!important;top:-12px!important;
+  }
+  html body.page-home #mh-topbox .ma-brand-copy .ma-wordmark{font-size:35px!important}
+  html body.page-home #mh-topbox .ma-brand-copy .ma-word-ai{font-size:39px!important}
+}
+@media(min-width:1100px) and (max-width:1260px){
+  html body.page-home #mh-topbox .ma-brand-copy .ma-wordmark{font-size:41px!important}
+  html body.page-home #mh-topbox .ma-brand-copy .ma-word-ai{font-size:46px!important}
+}
+@media(max-width:899px){
+  html body.page-home #mh-topbox .ma-brand-copy .ma-wordmark{
+    font-size:clamp(26px,5vw,37px)!important;
+  }
+  html body.page-home #mh-topbox .ma-brand-copy .ma-word-ai{
+    font-size:clamp(28px,5.5vw,41px)!important;
+  }
+}
+@media(max-width:420px){
+  html body.page-home #mh-topbox .ma-brand-copy .ma-wordmark{font-size:clamp(21px,6.3vw,26px)!important}
+  html body.page-home #mh-topbox .ma-brand-copy .ma-word-ai{font-size:clamp(23px,7vw,29px)!important}
+  html body.page-home #mh-topbox .ma-brand-copy{gap:.16em!important}
+}
+@media(max-width:350px){
+  html body.page-home #mh-topbox .ma-brand-copy .ma-wordmark{font-size:20px!important}
+  html body.page-home #mh-topbox .ma-brand-copy .ma-word-ai{font-size:22px!important}
+  html body.page-home #mh-topbox .ma-brand-orb-stage{width:66px!important;flex-basis:66px!important}
+  html body.page-home #mh-topbox .ma-brand-orb{width:72px!important;height:72px!important}
+}
+html body.page-shell header.app-header.mh-topbox .ma-brand-copy .ma-wordmark{
+  font-size:clamp(22px,2.1vw,31px)!important;
+}
+html body.page-shell header.app-header.mh-topbox .ma-brand-copy .ma-word-ai{
+  font-size:clamp(24px,2.35vw,35px)!important;
+}
+@media(max-width:640px){
+  html body.page-shell header.app-header.mh-topbox .ma-brand-copy .ma-wordmark{
+    font-size:clamp(19px,5.4vw,27px)!important;
+  }
+  html body.page-shell header.app-header.mh-topbox .ma-brand-copy .ma-word-ai{
+    font-size:clamp(21px,5.9vw,29px)!important;
+  }
+  html body.page-shell header.app-header.mh-topbox .ma-brand-copy{gap:.15em!important}
+}
+/* Motion/contrast accessibility and Android WebView stability. */
+@media(prefers-reduced-motion:reduce){
+  html body.page-home #mh-topbox .ma-word-ai,
+  html body.page-home #mh-topbox .ma-word-ai::after,
+  html body.page-shell header.app-header.mh-topbox .ma-word-ai,
+  html body.page-shell header.app-header.mh-topbox .ma-word-ai::after{
+    animation:none!important;background-position:50% 50%!important;
+  }
+}
+html.reduce-motion body.page-home #mh-topbox .ma-word-ai,
+html.reduce-motion body.page-home #mh-topbox .ma-word-ai::after,
+html.reduce-motion body.page-shell header.app-header.mh-topbox .ma-word-ai,
+html.reduce-motion body.page-shell header.app-header.mh-topbox .ma-word-ai::after{
+  animation:none!important;background-position:50% 50%!important;
+}
