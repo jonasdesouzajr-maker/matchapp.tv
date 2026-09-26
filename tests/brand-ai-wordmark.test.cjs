@@ -19,7 +19,7 @@ test('adult Home paints integrated MatchApp Ai beside the unchanged official orb
  assert.equal(lockup.querySelector('.ma-ai-brand-button'),null,'No orphaned glow-button Ai remains');
  assert.equal(lockup.querySelectorAll('[data-ma-brand-ai]').length,1);
  assert.match(read('index.html'),/brand-headline\.css\?v=20260926-ai-energy2/);
- assert.match(read('index.html'),/matchapp-ia\.js\?v=20260926-brandai1/);
+ assert.match(read('index.html'),/matchapp-ia\.js\?v=20260926-brandai1-adorder2/);
 });
 
 test('other adult route headers replace old raster/SVG TV wordmark without changing navigation',()=>{
