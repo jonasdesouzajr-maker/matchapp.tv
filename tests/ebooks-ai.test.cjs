@@ -18,7 +18,8 @@ test('grown-up Home loads E-books Ai data, current suggestions and matcher in sa
  assert(cover>audio);
  assert(matcher>cover);
  assert.match(html,/id="ebook-matcher-root"/);
- assert.match(html,/\/ebooks\/ebook-matcher\.css\?v=20260925-adult-ui2/);
+ assert.match(html,/\/ebooks\/ebook-matcher\.css\?v=20260926-compact1/);
+ assert.match(html,/\/ebooks\/ebook-matcher\.js\?v=20260926-compact1/);
 });
 
 
