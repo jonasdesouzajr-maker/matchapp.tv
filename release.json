@@ -1,10 +1,10 @@
 {
-  "version": "2026.09.26.3",
+  "version": "2026.09.26.4",
   "date": "2026-09-26",
   "functional": true,
   "notes": {
-    "en": "Improved phone sign-up and login: enter your number and optional first-time full name, verify the SMS code and open your signed-in profile to save and lock required details. SMS messages can also link directly to the verification screen once configured by the provider. Email confirmation and recovery remain protected.",
-    "pt-BR": "Cadastro e login por telefone aprimorados: informe o número e, no primeiro cadastro, o nome completo; confirme o código SMS e abra seu perfil já conectado para salvar e bloquear os dados obrigatórios. Após a configuração do provedor, o SMS também poderá levar diretamente à tela de verificação. A confirmação e a recuperação por e-mail continuam protegidas.",
+    "en": "Email signup and login recovery: prevent accidental duplicate signup requests from invalidating confirmation links, display honest resend errors, and avoid rapid repeat email requests. Verified SMS members go directly to their signed-in Profile Hub. Google Play download remains on hold.",
+    "pt-BR": "Cadastro e recuperação por e-mail: evita cadastros duplicados por toques rápidos, exibe erros de reenvio corretamente e impede solicitações de confirmação consecutivas. Após a verificação por SMS, o usuário abre o perfil já conectado. O botão do Google Play continua desativado.",
     "es": "Nuevo: Match E-books IA para lectores. Combina por estado de ánimo, género, ritmo, extensión, época y acceso gratis o de pago, con fuentes gratuitas legales y tiendas oficiales.",
     "fr": "Nouveau : Match E-books Ai pour les lecteurs, avec humeur, genre, rythme, longueur, époque, accès gratuit ou payant, sources gratuites légales et boutiques officielles.",
     "de": "Neu: Match E-books Ai für Leser – nach Stimmung, Genre, Tempo, Länge, Epoche und kostenlosem oder kostenpflichtigem Zugang, mit legalen Gratisquellen und offiziellen Shops.",
