@@ -1222,9 +1222,42 @@ async function getCatalogTmdbIdentity(title) {
     const index = await CATALOG_TMDB_IDENTITIES_PROMISE;
     return index.get(catalogIdentityKey(title)) || null;
 }
+// The repository already ships independently verified exact TMDB identities
+// and their genuine artwork. Use them when the live metadata proxy is slow or
+// unavailable; never search by fuzzy title or accept a mismatched film/TV ID.
+let CURATED_POSTERS_PROMISE = null;
+async function getCuratedPoster(title) {
+    if (!title || typeof fetch !== 'function') return null;
+    const identity = await getCatalogTmdbIdentity(title);
+    if (!identity) return null;
+    if (!CURATED_POSTERS_PROMISE) {
+        CURATED_POSTERS_PROMISE = fetch('/data/poster-identities.json', { cache: 'force-cache' })
+            .then(response => response.ok ? response.json() : [])
+            .then(rows => Array.isArray(rows) ? rows : [])
+            .catch(() => {
+                CURATED_POSTERS_PROMISE = null; // Retry if the local data was briefly unavailable.
+                return [];
+            });
+    }
+    const records = await CURATED_POSTERS_PROMISE;
+    const key = catalogIdentityKey(title);
+    const row = records.find(record =>
+        record?.adult === false &&
+        (catalogIdentityKey(record.title) === key || catalogIdentityKey(record.originalTitle) === key) &&
+        Number(record.tmdbId) === identity.tmdbId && record.kind === identity.kind &&
+        (!identity.year || !record.year || Math.abs(Number(record.year) - identity.year) <= 1)
+    );
+    const poster = String(row?.posterLarge || row?.poster || '');
+    return /^https:\/\/image\.tmdb\.org\/t\/p\/(?:w\d+|original)\/[A-Za-z0-9_.-]+$/.test(poster) ? poster : null;
+}
 async function getExactCatalogPoster(title) {
-    if (!title || typeof window.tmdbDetails !== 'function') return null;
+    if (!title) return null;
     try {
+        // A verified ID + year + source artwork is immediately usable without
+        // waiting for a second API lookup, and still needs an image-load probe.
+        const pinned = await getCuratedPoster(title);
+        if (pinned) return pinned;
+        if (typeof window.tmdbDetails !== 'function') return null;
         const identity = await getCatalogTmdbIdentity(title);
         if (!identity) return null;
         const details = await window.tmdbDetails(identity.tmdbId, identity.kind, { priority: true });
@@ -4439,6 +4472,26 @@ async function renderResult(selected, isSpecificSearch) {
         artwork:selected._meta?.artwork||''
     };
     document.dispatchEvent(new CustomEvent('matchapp:newmatch',{detail:window.currentMatchIdentity}));
+
+    // Verify the exact curated poster in parallel with optional rich metadata.
+    // A slow metadata service must never leave a known original as an SVG.
+    const originalMatchRun = Number(window.__matchappMatchRunId) || 0;
+    void getCuratedPoster(selected.title).then(url => {
+        const current = () => window.globalMatchTitle === selected.title &&
+            (Number(window.__matchappMatchRunId) || 0) === originalMatchRun &&
+            firstPoster && firstPoster.isConnected;
+        if (!url || !current()) return;
+        window.MatchAppCatalogMedia?.recoverAdultPoster?.(firstPoster, selected.title, null, url);
+        const probe = new Image();
+        probe.onload = () => {
+            if (!probe.naturalWidth || !current()) return;
+            firstPoster.src = url;
+            if (typeof window.setLoadedMatchPoster === 'function')
+                window.setLoadedMatchPoster(url, selected.title);
+        };
+        probe.onerror = () => {}; // Keep the already-visible title-labelled fallback.
+        probe.src = url;
+    }).catch(() => {});
 
     // Computed ONCE and shared by both the poster lookup below and
     // hydrateTitleFacts(). Previously each ran its own separate,
