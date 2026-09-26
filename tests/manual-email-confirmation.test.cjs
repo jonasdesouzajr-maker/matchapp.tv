@@ -47,7 +47,9 @@ test('valid deliberate click verifies token and persists session before home red
   w.document.dispatchEvent(new w.Event('DOMContentLoaded'));
   button.click();
   await next();
-  assert.deepEqual(calls,[{token_hash:token,type:'email'}]);
+  assert.equal(calls.length,1);
+  assert.equal(calls[0].token_hash,token);
+  assert.equal(calls[0].type,'email');
   assert.equal(status.dataset.state,'success');
   assert.match(status.textContent,/confirmed/i);
   assert.ok(!w.location.search.includes('token_hash='),'never retain verified token in history');
