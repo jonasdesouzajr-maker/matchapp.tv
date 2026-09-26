@@ -58,19 +58,20 @@ test('Every adult Home fold has a different filled hue with its own mapped signa
  assert.match(css,/@media\(prefers-reduced-motion:reduce\)/);
 });
 
-test('Latest News keeps its current static/open semantics, gains a visible blue-violet custom crest',()=>{
+test('Latest News has an interactive native fold with its original blue-violet crest',()=>{
  const news=read('latest-news.js'),css=read('fold-colors.css'),old=read('matchapp-ia.css');
  assert.match(news,/section\.open=true/);
  assert.match(news,/section\.id='latest-news'/);
  assert.match(css,/#latest-news>summary::before\{/);
  assert.match(css,/content:""!important;display:block!important;flex:0 0 62px!important/);
  assert.match(css,/#5369AA,#394E91/);
- assert.match(css,/pointer-events:none!important;cursor:default!important/);
- assert.match(css,/#latest-news>summary::after\{\s*content:none!important;display:none!important/);
+ assert.match(css,/pointer-events:auto!important;cursor:pointer!important/);
+ assert.doesNotMatch(css,/#latest-news>summary::after\{\s*content:none!important;display:none!important/);
+ assert.match(old,/#latest-news>summary::after\{/,'The existing arrow stays visible');
  assert.ok(old.indexOf('#latest-news>summary::before')>=0,'Known legacy CSS override must remain accounted for');
  const html=read('index.html');
- assert.ok(html.indexOf('fold-colors.css?v=20260926-chroma1')>html.indexOf('matchapp-ia.css'));
- assert.ok(html.indexOf('fold-colors.css?v=20260926-chroma1')>html.indexOf('frontend-polish.css'));
+ assert.ok(html.indexOf('fold-colors.css?v=20260926-newsfold1')>html.indexOf('matchapp-ia.css'));
+ assert.ok(html.indexOf('fold-colors.css?v=20260926-newsfold1')>html.indexOf('frontend-polish.css'));
 });
 
 test('Generic globe, music and popcorn header glyphs stay retired, including daily event rebuilds',()=>{
