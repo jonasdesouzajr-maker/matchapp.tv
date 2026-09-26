@@ -2779,7 +2779,7 @@ const CONTENT_CATALOG = [
     { title: "The Mindful in Minutes Podcast", country: "United States", countryCode: "US", synopsis: "Kelly Smith teaches meditation in roughly ten-minute sittings, with themed series on grief, burnout and building a daily habit.", platform: "Apple Podcasts", cats: ["podcast"], moods: ["cozy comfort watch","inspiring"], vibes: ["slow burn"], ratings: ["all ages family friendly","any"] },
 
     // ---- MEDITATION & FOCUS MUSIC ----
-    { title: "Deep Focus", country: "Global", synopsis: "Instrumental, lyric-free tracks built to hold concentration for long stretches of work or study.", platform: "Spotify", cats: ["Spotify playlist"], moods: ["cozy comfort watch"], vibes: ["easy background watch","slow burn"], ratings: ["all ages family friendly","any"] },
+    { title: "Deep Focus", country: "Global", synopsis: "Instrumental, lyric-free tracks built to hold concentration for long stretches of work or study.", platform: "Spotify", cats: ["Spotify playlist"], moods: ["cozy comfort watch"], vibes: ["easy background watch","slow burn"], ratings: ["all ages family friendly","any"], watchUrl: "https://open.spotify.com/playlist/37i9dQZF1DWZeKCadgRdKQ", officialArtwork: "https://i.scdn.co/image/ab67706f000000036020f2f6476db518ef747da4" },
     { title: "Peaceful Meditation", country: "Global", synopsis: "Slow ambient soundscapes for meditation practice, breathwork and winding down without any spoken guidance.", platform: "Spotify", cats: ["Spotify playlist"], moods: ["cozy comfort watch"], vibes: ["slow burn","easy background watch"], ratings: ["all ages family friendly","any"] },
     { title: "Pure Yoga", country: "Global", synopsis: "Flowing instrumental music paced for a yoga session, calm enough to hold a long hold and warm enough to keep you moving.", platform: "Apple Music", cats: ["Spotify playlist"], moods: ["cozy comfort watch"], vibes: ["slow burn"], ratings: ["all ages family friendly","any"] },
     { title: "Sleep Sounds", country: "Global", synopsis: "Rain, white noise and low ambient drones running long enough to cover a whole night without a loop you can hear.", platform: "YouTube Music", cats: ["Spotify playlist"], moods: ["cozy comfort watch"], vibes: ["easy background watch","slow burn"], ratings: ["all ages family friendly","any"] },
@@ -4662,7 +4662,8 @@ async function renderResult(selected, isSpecificSearch) {
     if (firstPoster) {
         firstPoster.onerror = null;
         firstPoster.dataset.matchappMediaTitle = selected.title;
-        const firstCover = generatedCover(selected.title, selected);
+        const firstCover = selected.watchUrl === 'https://open.spotify.com/playlist/37i9dQZF1DWZeKCadgRdKQ' && selected.title === 'Deep Focus' && /^https:\/\/i\.scdn\.co\/image\/[A-Za-z0-9]+$/.test(selected.officialArtwork||'')
+          ? selected.officialArtwork : generatedCover(selected.title, selected);
         firstPoster.src = firstCover;
         firstPoster.style.display = 'block';
         globalMatchPoster = firstCover;
@@ -4810,7 +4811,12 @@ async function renderResult(selected, isSpecificSearch) {
     if (!meta && !skipLiveLookup && !verified) meta = await getRichMetadata(selected.title, categoryHint, matchHints);
 
     let realCover;
-    if (verified) {
+    // Verified official Spotify playlist identity and original Spotify-hosted
+    // artwork outrank generic TMDB/title search and synthetic audio artwork.
+    if (selected.title === 'Deep Focus' && selected.watchUrl === 'https://open.spotify.com/playlist/37i9dQZF1DWZeKCadgRdKQ' &&
+        /^https:\/\/i\.scdn\.co\/image\/[A-Za-z0-9]+$/.test(selected.officialArtwork||'')) {
+        realCover = selected.officialArtwork;
+    } else if (verified) {
         realCover = verified;
     } else if (skipLiveLookup && !(meta && meta.artwork)) {
         realCover = generatedCover(selected.title, matchHints);
