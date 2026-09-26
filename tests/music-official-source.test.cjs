@@ -12,7 +12,12 @@ test('official Spotify playlist identity has a legitimate deep link and source a
  assert.equal(item.officialArtwork,'https://i.scdn.co/image/ab67706f000000036020f2f6476db518ef747da4');
 });
 test('music never misattributes generated artwork as a verified original',()=>{
- assert.match(app,/selected\.title === 'Deep Focus' && selected\.watchUrl === 'https:\/\/open\.spotify\.com\/playlist/);
+ assert.match(app,/function exactSpotifyPlaylistCover\(selected\)/);
+ assert.match(app,/selected\.watchUrl !== 'https:\/\/open\.spotify\.com\/playlist\//);
+ const peaceful=vm.runInNewContext(catalogMatch[1]).find(x=>x.title==='Peaceful Meditation'&&x.platform==='Spotify');
+ assert(peaceful?.cats.includes('Spotify playlist'));
+ assert.equal(peaceful.watchUrl,'https://open.spotify.com/playlist/37i9dQZF1DWZqd5JICZI0u');
+ assert.equal(peaceful.officialArtwork,'https://i.scdn.co/image/ab67706f0000000308dc478ff3e930553f46b9eb');
  assert.match(app,/selected\.officialArtwork/);
  assert.match(app,/if \(selected\.watchUrl\) \{\s*directBtn\.href = selected\.watchUrl;/);
 });
