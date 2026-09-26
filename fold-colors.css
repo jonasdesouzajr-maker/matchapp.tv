@@ -111,8 +111,7 @@ html body.page-home .share-how>summary::before{
  background:var(--ma-fold-icon) center center / contain no-repeat!important;
  filter:drop-shadow(0 4px 8px rgba(8,3,28,.34))!important;
 }
-/* News remains intentionally open/static, but its colored headline is as
-   prominent as Bookworms and has its OWN original illustrated news crest. */
+/* News is a functional native fold, retaining its original blue-violet crest. */
 html body.page-home #latest-news{
  background:linear-gradient(155deg,rgba(27,35,68,.96),rgba(13,18,38,.97))!important;
  border-color:rgba(247,210,134,.66)!important;
@@ -122,16 +121,14 @@ html body.page-home #latest-news>summary{
  padding:13px 17px!important;border:1px solid rgba(250,213,137,.78)!important;
  border-radius:22px 22px 0 0!important;
  background:linear-gradient(110deg,#5369AA,#394E91 52%,#222E55)!important;
- pointer-events:none!important;cursor:default!important;
+ pointer-events:auto!important;cursor:pointer!important;
 }
 html body.page-home #latest-news>summary::before{
  content:""!important;display:block!important;flex:0 0 62px!important;
  width:62px!important;height:62px!important;
  background:var(--ma-fold-icon) center / contain no-repeat!important;
 }
-html body.page-home #latest-news>summary::after{
- content:none!important;display:none!important;
-}
+html body.page-home #latest-news:not([open])>summary{border-radius:22px!important;}
 html body.page-home #latest-news .ma-news-summary-main{
  display:flex!important;flex:1 1 auto!important;min-width:0!important;
  flex-direction:column!important;align-items:flex-start!important;gap:2px!important;
