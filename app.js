@@ -3353,6 +3353,10 @@ function categoryFitsVerified(kind,genres,countries,wanted){
       return false;
     });
 }
+// Remember a small, per-session cursor for fully exhausted verified source
+// windows. An impossible filter or a source outage never authorizes weaker
+// results; later user attempts can inspect genuinely different source pages.
+const TMDB_DISCOVERY_CURSOR=new Map(),TMDB_DISCOVERY_CURSOR_LIMIT=64;
 async function discoverVerifiedExactTMDB(requested){
     if(typeof window.tmdbDiscover!=='function'||typeof window.tmdbDetails!=='function')return null;
     const cat=normCriteria(requested.cat),mood=normCriteria(requested.mood),vibe=normCriteria(requested.vibe),
@@ -3378,7 +3382,17 @@ async function discoverVerifiedExactTMDB(requested){
     const sourceStarted=Date.now(),MAX_EXACT_DETAILS=14;
     let exactDetails=0;
     const pagePlan=provider?[[1,3],[4,3]]:[[1,2],[3,2]];
-    for(const [pageStart,pageCount] of pagePlan){
+    const cursorKey=JSON.stringify({cat,mood,vibe,rating,decade,platform,realGenres,region});
+    const offset=TMDB_DISCOVERY_CURSOR.get(cursorKey)||0;
+    const advance=()=>{
+      if(TMDB_DISCOVERY_CURSOR.size>=TMDB_DISCOVERY_CURSOR_LIMIT)
+        TMDB_DISCOVERY_CURSOR.delete(TMDB_DISCOVERY_CURSOR.keys().next().value);
+      const next=offset+(provider?6:4);
+      TMDB_DISCOVERY_CURSOR.set(cursorKey,next<=492?next:0);
+    };
+    let sawResults=false,sourceOutage=false;
+    for(const [relativeStart,pageCount] of pagePlan){
+      const pageStart=relativeStart+offset;
       if(Date.now()-sourceStarted>46000||exactDetails>=MAX_EXACT_DETAILS)break;
       const candidates=await window.tmdbDiscover({
         kind,genre_ids:genreIds,original_language:cat.includes('anime')?'ja':'',
@@ -3387,9 +3401,10 @@ async function discoverVerifiedExactTMDB(requested){
       // Null/invalid payload means the TMDB source is unavailable, not that
       // its next page is an evidence-backed empty catalog.
       if(!Array.isArray(candidates)||!candidates.length){
-        if(!Array.isArray(candidates))break;
+        if(!Array.isArray(candidates)){sourceOutage=true;break;}
         continue;
       }
+      sawResults=true;
     const prefs=currentPreferenceExclusions(),known=window.matchPolicy?.known?.()||new Set();
 
     // TMDB Discover is popularity-sorted. Starting at row 0 on every device
@@ -3404,7 +3419,10 @@ async function discoverVerifiedExactTMDB(requested){
       ? candidateWindow.slice(rotationStart).concat(candidateWindow.slice(0,rotationStart))
       : candidateWindow;
     for(const base of orderedCandidates){
-      if(Date.now()-sourceStarted>46000||exactDetails>=MAX_EXACT_DETAILS)return null;
+      if(Date.now()-sourceStarted>46000||exactDetails>=MAX_EXACT_DETAILS){
+        if(sawResults&&!sourceOutage)advance();
+        return null;
+      }
       const key=window.matchPolicy?.key?.(base.title)||'';
       if(!key||known.has(key)||SESSION_SHOWN.has(base.title))continue;
       exactDetails++;
@@ -3417,6 +3435,7 @@ async function discoverVerifiedExactTMDB(requested){
       const genres=Array.isArray(d?.genres)&&d.genres.length?d.genres:discoverGenres;
       const countries=Array.isArray(d?.originCountries)?d.originCountries:[];
       if(!d && (!provider || !genres.length))continue;
+      if(!d&&prefs.countries.size)continue; // Origin unknown is not verified against country blocklist.
       if(countries.some(x=>prefs.countries.has(String(x).toUpperCase())))continue;
       if(genres.some(g=>prefs.genres.has(String(g).toLowerCase())))continue;
       if(realGenres.length&&!genres.some(g=>realGenres.includes(g)))continue;
@@ -3455,6 +3474,8 @@ async function discoverVerifiedExactTMDB(requested){
       };
     }
     }
+    if(sawResults&&!sourceOutage)advance();
+    else if(!sourceOutage&&offset>0)TMDB_DISCOVERY_CURSOR.set(cursorKey,0);
     return null;
 }
 
