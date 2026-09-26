@@ -37,21 +37,42 @@ async function open(ctx){
   await settle();
   return ctx.w.document.getElementById('ma-install-offer');
 }
-test('persistent top Install boxes are gone; optional offer links existing Play package',async()=>{
+test('persistent Install boxes are gone; Play stays disabled until the owner authorizes launch',async()=>{
   const ctx=mount({ua:UA.chrome}),offer=await open(ctx);
   assert.ok(offer,'One Home opening gets a transient nonblocking offer');
   assert.equal(ctx.w.document.getElementById('ma-install-chip'),null);
   assert.equal(ctx.w.document.getElementById('chrome-install-card'),null);
   assert.equal(offer.getAttribute('role'),'region');
-  assert.equal(offer.querySelector('.ma-offer-play').href,play);
-  assert.equal(offer.querySelector('.ma-offer-play').getAttribute('target'),'_blank');
-  assert.equal(offer.querySelector('.ma-offer-play').hidden,false);
-  assert.match(read('index.html'),/browser-install-offer\.js\?v=20260926-visitoffer1/);
+  const playButton=offer.querySelector('.ma-offer-play');
+  assert.equal(playButton.tagName,'BUTTON');
+  assert.equal(playButton.disabled,true);
+  assert.equal(playButton.getAttribute('aria-disabled'),'true');
+  assert.equal(playButton.hasAttribute('href'),false,'No premature link should open a nonexistent store listing');
+  assert.match(playButton.textContent,/coming soon/i);
+  assert.equal(playButton.hidden,false);
+  playButton.click();
+  assert.equal(ctx.w.location.href,'https://matchapp.tv/','Disabled Play CTA must never navigate');
+  assert.ok(offer.isConnected,'Disabled Play CTA must never dismiss the usable browser install offer');
+  assert.match(source,/const PLAY_RELEASED=false/);
+  assert.match(read('home-approved.css'),/\.ma-offer-play\[disabled\]/);
+  assert.match(read('index.html'),/browser-install-offer\.js\?v=20260926-playpending1/);
   assert.doesNotMatch(read('index.html'),/<aside id="chrome-install-card"/);
   assert.doesNotMatch(read('home-approved.js'),/mountInstall\(/);
   assert.match(read('home-approved.css'),/position:fixed;right:18px;bottom:18px/);
   assert.match(source,/intent:\/\/details\?id=com\.jonas\.papercup/);
   assert.equal(ctx.timers.length,0,'Never schedule more than once in this opening');
+  ctx.dom.window.close();
+});
+test('desktop and Portuguese offer show Play as visibly unavailable while browser install still works',async()=>{
+  const ctx=mount({lang:'pt-BR'}),offer=await open(ctx);
+  const playButton=offer.querySelector('.ma-offer-play');
+  assert.equal(playButton.disabled,true);
+  assert.match(playButton.textContent,/em breve/i);
+  assert.match(offer.querySelector('.ma-offer-description').textContent,/navegador/);
+  let browserInstalls=0;
+  ctx.w.installMatchApp=()=>browserInstalls++;
+  offer.querySelector('.ma-offer-browser').click();
+  assert.equal(browserInstalls,1,'Browser install must remain available during Play review');
   ctx.dom.window.close();
 });
 test('Never show again persists across new page openings, unlike ordinary dismissal',async()=>{

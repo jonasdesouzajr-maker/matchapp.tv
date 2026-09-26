@@ -6,6 +6,8 @@
   window.__maBrowserInstallOffer=true;
   const OPT_OUT='matchapp_install_offer_never_v1';
   const PLAY='https://play.google.com/store/apps/details?id=com.jonas.papercup';
+  // Owner-controlled launch gate. Do not re-enable until explicitly authorized.
+  const PLAY_RELEASED=false;
   const INSTALL_DELAY=1100, VISIBLE_FOR=15000;
   let shown=false,queued=false,expiry=0;
 
@@ -51,13 +53,13 @@
   function copy(){
     return pt()?{
       title:'Leve o MatchApp iA com você',
-      description:'Prefere usar como aplicativo? Instale pelo navegador ou escolha o Google Play.',
-      browser:'Instalar pelo navegador',play:'Baixar no Google Play',
+      description:PLAY_RELEASED?'Prefere usar como aplicativo? Instale pelo navegador ou escolha o Google Play.':'Instale pelo navegador agora. O download pelo Google Play estará disponível após o lançamento.',
+      browser:'Instalar pelo navegador',play:PLAY_RELEASED?'Baixar no Google Play':'Google Play — em breve',
       never:'Nunca mostrar novamente',close:'Fechar sugestão de instalação'
     }:{
       title:'Take MatchApp Ai with you',
-      description:'Prefer the app experience? Install from your browser or choose Google Play.',
-      browser:'Install from browser',play:'Get it on Google Play',
+      description:PLAY_RELEASED?'Prefer the app experience? Install from your browser or choose Google Play.':'Install from your browser for now. Google Play downloads open after launch.',
+      browser:'Install from browser',play:PLAY_RELEASED?'Get it on Google Play':'Google Play — coming soon',
       never:'Never show this again',close:'Dismiss app installation suggestion'
     };
   }
@@ -102,7 +104,7 @@
       '<div class="ma-offer-head"><img src="/assets/brand/matchapp-ai-install-192.png?v=20260923-icon4" width="40" height="40" alt="">'+
       '<div><strong class="ma-offer-title"></strong><p class="ma-offer-description"></p></div></div>'+
       '<div class="ma-offer-actions"><button class="ma-offer-browser" type="button"></button>'+
-      '<a class="ma-offer-play" target="_blank" rel="noopener noreferrer" href="'+PLAY+'"></a></div>'+
+      (PLAY_RELEASED?'<a class="ma-offer-play" target="_blank" rel="noopener noreferrer" href="'+PLAY+'"></a>':'<button class="ma-offer-play" type="button" disabled aria-disabled="true"></button>')+'</div>'+
       '<button class="ma-offer-never" type="button"></button>';
     paint(node);
     // No iOS App Store build exists. Safari supports browser Add to Home Screen.
@@ -116,7 +118,7 @@
       // Keep the synchronous click gesture for Chromium's PWA install prompt.
       if(typeof window.installMatchApp==='function'){close();window.installMatchApp();}
     });
-    node.querySelector('.ma-offer-play').addEventListener('click',event=>{
+    if(PLAY_RELEASED)node.querySelector('.ma-offer-play').addEventListener('click',event=>{
       close();
       openPlay(event);
     });
