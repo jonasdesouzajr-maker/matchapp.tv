@@ -90,6 +90,6 @@ test('match artwork appears before source awaits and slow fallback cannot replac
  assert.match(media,/state\.needsRepair=true/);
  assert.match(media,/if\(!state\.meta&&safeSameTitleMedia\(found,state\)\)/);
  assert.match(html,/catalog-media\.js\?v=20260926-coverrace1/);
- assert.match(html,/app\.js\?v=20260926-curation1/);
+ assert.match(html,/app\.js\?v=20260926-source2/);
  assert.doesNotMatch(read('kids/index.html'),/result-dismiss|latest-news\.js\?v=20260926-newsfold1/);
 });
