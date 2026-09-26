@@ -43,8 +43,14 @@ function lang(){const raw=String(window.MATCH_LANG||document.documentElement.lan
 function tr(k){const l=LABELS[lang()]||LABELS.en;return l[k]||LABELS.en[k]||k;}
 function read(key){try{const v=JSON.parse(localStorage.getItem(key)||'[]');return Array.isArray(v)?v:[]}catch(_){return[]}}
 function write(key,v){try{localStorage.setItem(key,JSON.stringify(v))}catch(_){}}
-function prefs(){try{return Object.assign({mood:'any',genre:'any',pace:'any',length:'any',era:'any',access:'any',format:'any'},JSON.parse(localStorage.getItem(K.prefs)||'{}'))}catch(_){return{mood:'any',genre:'any',pace:'any',length:'any',era:'any',access:'any',format:'any'}}}
-function savePrefs(v){try{localStorage.setItem(K.prefs,JSON.stringify(v))}catch(_){}}
+const BOOK_CONFLICTS={cozy:['thriller','horror','true-crime','dystopian'],funny:['thriller','horror','true-crime'],hopeful:['horror','true-crime']};
+function bookIncompatible(field,value,p){
+ const mood=field==='mood'?value:p.mood,genre=field==='genre'?value:p.genre;
+ return (BOOK_CONFLICTS[mood]||[]).includes(genre);
+}
+function normalizeBookPrefs(p){if(bookIncompatible('genre',p.genre,p))p.genre='any';return p}
+function prefs(){try{return normalizeBookPrefs(Object.assign({mood:'any',genre:'any',pace:'any',length:'any',era:'any',access:'any',format:'any'},JSON.parse(localStorage.getItem(K.prefs)||'{}')))}catch(_){return{mood:'any',genre:'any',pace:'any',length:'any',era:'any',access:'any',format:'any'}}}
+function savePrefs(v){normalizeBookPrefs(v);try{localStorage.setItem(K.prefs,JSON.stringify(v))}catch(_){}}
 function uniq(v){return [...new Set(v.filter(Boolean))]}
 function idset(key){return new Set(read(key))}
 function market(){
@@ -89,6 +95,7 @@ function freeLinks(book){
 function bookInfo(book){return 'https://books.google.com/books?q='+q(book);}
 function analytics(name,detail){try{window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:name,...detail})}catch(_){}}
 function fits(book,p,omit){
+ if(p.mood==='cozy'&&book.genres.some(g=>BOOK_CONFLICTS.cozy.includes(g)))return false;
  if(!omit.has('mood')&&p.mood!=='any'&&!book.moods.includes(p.mood))return false;
  if(!omit.has('genre')&&p.genre!=='any'&&!book.genres.includes(p.genre))return false;
  if(!omit.has('pace')&&p.pace!=='any'&&book.pace!==p.pace)return false;
@@ -102,7 +109,7 @@ function pool(p,omit,allowSeen){
  return CAT().filter(b=>!saved.has(b.id)&&!bad.has(b.id)&&(allowSeen||!seen.has(b.id))&&fits(b,p,omit));
 }
 function choose(p){
- const relax=[[],['length'],['pace','length'],['mood','pace','length'],['era','mood','pace','length'],['genre','era','mood','pace','length']];
+ const relax=[[],['length'],['pace','length'],['era','pace','length']];
  for(const fields of relax){const a=pool(p,new Set(fields),false);if(a.length)return{book:a[Math.floor(Math.random()*a.length)],relaxed:fields.length>0};}
  // Exhausted fresh pool: repeat a previously shown book, never a saved/disliked one.
  for(const fields of relax){const a=pool(p,new Set(fields),true);if(a.length)return{book:a[Math.floor(Math.random()*a.length)],relaxed:true,recycled:true};}
@@ -116,8 +123,7 @@ async function chooseVerifiedAudio(p,onProgress){
  if(typeof verify!=='function')return null;
  const country=market();
  if(p.access==='free'&&country!=='US')return null; // jurisdiction-specific free rights
- const relax=[[],['length'],['pace','length'],['mood','pace','length'],
-  ['era','mood','pace','length'],['genre','era','mood','pace','length']];
+ const relax=[[],['length'],['pace','length'],['era','pace','length']];
  let tries=0;const tested=new Set(),started=Date.now();
  for(const fields of relax){
   const options=pool(p,new Set(fields),false).sort(()=>Math.random()-.5);
@@ -246,8 +252,8 @@ async function cloudHydrate(){
   if(Array.isArray(m.match_ebook_disliked))write(K.disliked,uniq(read(K.disliked).concat(m.match_ebook_disliked)));
  }catch(_){}
 }
-function optionButtons(field,current){
- return FIELDS[field].map(([value,icon,label])=>'<button type="button" class="ebook-chip'+(current===value?' is-on':'')+'" data-ebook-field="'+field+'" data-ebook-value="'+esc(value)+'" aria-pressed="'+(current===value?'true':'false')+'"><span aria-hidden="true">'+icon+'</span>'+esc(label)+'</button>').join('');
+function optionButtons(field,current,p){
+ return FIELDS[field].map(([value,icon,label])=>'<button type="button" class="ebook-chip'+(current===value?' is-on':'')+'" data-ebook-field="'+field+'" data-ebook-value="'+esc(value)+'" aria-pressed="'+(current===value?'true':'false')+'"'+(value!==current&&bookIncompatible(field,value,p)?' disabled aria-disabled="true" title="Conflicts with your mood or genre"':'')+'><span aria-hidden="true">'+icon+'</span>'+esc(label)+'</button>').join('');
 }
 function topBooks(){return Array.isArray(window.MATCHAPP_TOP_EBOOKS)?window.MATCHAPP_TOP_EBOOKS:[];}
 function renderTop(root){
@@ -416,6 +422,13 @@ async function doMatch(root){
   root.querySelectorAll('[data-ebook-match],[data-ebook-rematch]').forEach(b=>b.disabled=false);
  }
 }
+function syncBookControls(root,p){
+ root.querySelectorAll('[data-ebook-select]').forEach(s=>[...s.options].forEach(o=>{o.disabled=o.value!==p[s.dataset.ebookSelect]&&bookIncompatible(s.dataset.ebookSelect,o.value,p)}));
+ root.querySelectorAll('[data-ebook-field]').forEach(b=>{
+  b.disabled=b.dataset.ebookValue!==p[b.dataset.ebookField]&&bookIncompatible(b.dataset.ebookField,b.dataset.ebookValue,p);
+  b.title=b.disabled?'Conflicts with your selected mood or genre':'';
+ });
+}
 function bind(root){
  // Home dropdowns and /ebooks/ chip buttons persist to one preference model.
  root.addEventListener('change',e=>{
@@ -424,12 +437,12 @@ function bind(root){
   const field=select.dataset.ebookSelect;
   if(!Object.prototype.hasOwnProperty.call(FIELDS,field))return;
   if(!FIELDS[field].some(option=>option[0]===select.value))return;
-  const p=prefs();p[field]=select.value;savePrefs(p);
+  const p=prefs();if(bookIncompatible(field,select.value,p)){select.value=p[field];return;}p[field]=select.value;savePrefs(p);syncBookControls(root,p);
  });
  root.addEventListener('click',async e=>{
   const chip=e.target.closest('[data-ebook-field]');
   if(chip){
-   const p=prefs();p[chip.dataset.ebookField]=chip.dataset.ebookValue;savePrefs(p);
+   const p=prefs();if(bookIncompatible(chip.dataset.ebookField,chip.dataset.ebookValue,p))return;p[chip.dataset.ebookField]=chip.dataset.ebookValue;savePrefs(p);syncBookControls(root,p);
    root.querySelectorAll('[data-ebook-field="'+chip.dataset.ebookField+'"]').forEach(b=>{const on=b.dataset.ebookValue===chip.dataset.ebookValue;b.classList.toggle('is-on',on);b.setAttribute('aria-pressed',String(on))});
    return;
   }
@@ -475,9 +488,9 @@ function markup(){
  const initiallyOpen=!(document.body.classList.contains('page-home')||location.pathname==='/'||location.pathname==='/index.html')||location.hash==='#ebook-matcher-root';
  const home=document.body.classList.contains('page-home')||location.pathname==='/'||location.pathname==='/index.html';
  const field=(key,label)=>{
-  if(!home)return '<fieldset class="ebook-field"><legend>'+label+'</legend><div class="ebook-chips">'+optionButtons(key,p[key])+'</div></fieldset>';
+  if(!home)return '<fieldset class="ebook-field"><legend>'+label+'</legend><div class="ebook-chips">'+optionButtons(key,p[key],p)+'</div></fieldset>';
   return '<label class="ebook-select-field"><span>'+esc(label)+'</span><select class="ebook-select" data-ebook-select="'+key+'" aria-label="'+esc(label)+'">'+
-   FIELDS[key].map(([value,,name])=>'<option value="'+esc(value)+'"'+(p[key]===value?' selected':'')+'>'+esc(name)+'</option>').join('')+'</select></label>';
+   FIELDS[key].map(([value,,name])=>'<option value="'+esc(value)+'"'+(p[key]===value?' selected':'')+(value!==p[key]&&bookIncompatible(key,value,p)?' disabled':'')+'>'+esc(name)+'</option>').join('')+'</select></label>';
  };
  return '<details class="ebook-fold"'+(initiallyOpen?' open':'')+'><summary><span class="ebook-summary-icon" aria-hidden="true">'+(home?'<img class="ebook-brand-crest" src="/assets/brand/matchapp-bookworms-crest.svg" width="64" height="64" alt="" decoding="async">':'📚✦')+'</span><span><small>'+esc(tr('eyebrow'))+'</small><strong>'+esc(home?tr('homeTitle'):tr('title'))+'</strong></span><span class="ebook-chevron" aria-hidden="true">⌄</span></summary>'+
  '<div class="ebook-panel"><div class="ebook-intro"><div><h2>'+esc(tr('title'))+'</h2><p>'+esc(tr('intro'))+'</p></div><a href="/ebooks/" class="ebook-guide-link">Bookworms hub ↗</a></div>'+
@@ -517,11 +530,11 @@ async function mount(){
   if(watch&&root.previousElementSibling!==watch)watch.insertAdjacentElement('afterend',root);
  }
  if(root.dataset.ebookMounted==='1')return;
- root.dataset.ebookMounted='1';root.innerHTML=markup();bind(root);renderTop(root);await cloudHydrate();renderSaved(root);
+ root.dataset.ebookMounted='1';root.innerHTML=markup();bind(root);syncBookControls(root,prefs());renderTop(root);await cloudHydrate();renderSaved(root);
  if(location.hash==='#ebook-matcher-root')requestAnimationFrame(()=>root.scrollIntoView({behavior:'auto',block:'start'}));
  // Reveal collapsed Home controls when an already open page receives a reading deep link.
  window.addEventListener('hashchange',()=>{if(location.hash!=='#ebook-matcher-root')return;const fold=root.querySelector('.ebook-fold');if(fold)fold.open=true;root.scrollIntoView({behavior:'auto',block:'start'});});
- document.addEventListener('matchapp:langchange',()=>{const open=root.querySelector('.ebook-fold')?.open;root.innerHTML=markup();/* root delegated click handler already installed: re-binding duplicated network lookups and Match credits after language changes. */renderTop(root);renderSaved(root);const fold=root.querySelector('.ebook-fold');if(fold)fold.open=open!==false;if(root.dataset.audioBusy==='1')root.querySelectorAll('[data-ebook-match],[data-ebook-rematch]').forEach(b=>b.disabled=true);});
+ document.addEventListener('matchapp:langchange',()=>{const open=root.querySelector('.ebook-fold')?.open;root.innerHTML=markup();/* root delegated click handler already installed: re-binding duplicated network lookups and Match credits after language changes. */renderTop(root);renderSaved(root);syncBookControls(root,prefs());const fold=root.querySelector('.ebook-fold');if(fold)fold.open=open!==false;if(root.dataset.audioBusy==='1')root.querySelectorAll('[data-ebook-match],[data-ebook-rematch]').forEach(b=>b.disabled=true);});
 }
 window.MatchAppEbooks={match:()=>{const r=document.getElementById('ebook-matcher-root');return r?doMatch(r):null},saved:()=>read(K.saved).slice(),disliked:()=>read(K.disliked).slice()};
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount,{once:true});else mount();
