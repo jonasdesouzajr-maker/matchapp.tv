@@ -98,7 +98,11 @@ test('private SQL enforces 2 per guest and single-use posts in one serialized tr
  const edge=source('supabase/functions/guest-social-proof/index.ts');
  assert.match(edge,/verifyPublicSocialPost/);
  assert.match(edge,/status!=="pending"/);
- assert.match(edge,/guest_social_proof_complete/);
+ assert.match(edge,/verified_guest_social_gateway/);
+ assert.match(edge,/p_action:"complete"/);
+ const gateway=source('supabase/security/verified-guest-social-service-gateway.sql');
+ assert.match(gateway,/revoke all on function public\.verified_guest_social_gateway[\s\S]*from public,anon,authenticated/i);
+ assert.match(gateway,/grant execute on function public\.verified_guest_social_gateway[\s\S]*to service_role/i);
  assert.match(edge,/!origin\|\|!ORIGINS\.has\(origin\)/);
  assert.doesNotMatch(edge,/verify.+?true;\s*return response\(\{granted:true/i);
 });
