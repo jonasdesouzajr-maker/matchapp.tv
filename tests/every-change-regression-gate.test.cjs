@@ -22,8 +22,9 @@ test('Live smoke code parses and exercises separate genuine normal, Bookworms, m
   'LIVE Bookworms real e-book matching and verified original cover',
   'LIVE magazine matching and authentic publisher cover route',
   'LIVE original publisher icon resolves',
-  'LIVE Ask AI movie-fact',
-  'LIVE Ask AI audiobook-intent',
+  "record('LIVE Ask AI '+label",
+  "'movie-fact'",
+  "'audiobook-intent'",
   "select[data-ebook-select=\"format\"]",
   'original visible posters'
  ])assert.ok(js.includes(term),term+' must run after every deployment');
