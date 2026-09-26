@@ -479,3 +479,90 @@ html body.page-home #ebook-matcher-root .ebook-home-picks[open] .ebook-top-secti
     min-height:48px;font-size:16px;
   }
 }
+
+
+/* Adult HOME signature Bookworms field. Keep all original book-cover rules,
+   normal matching, dedicated /ebooks/ chips, Kids and locked ads unchanged. */
+html body.page-home #ebook-matcher-root .ebook-fold{
+  border:1.5px solid #dab36e!important;border-radius:25px!important;
+  background:linear-gradient(125deg,#66328f,#3d215f 61%,#211532)!important;
+  box-shadow:0 0 0 1px rgba(255,229,167,.13),0 13px 34px rgba(10,5,29,.38),
+    0 0 27px rgba(133,65,193,.23)!important;
+}
+html body.page-home #ebook-matcher-root .ebook-fold>summary{
+  display:grid!important;grid-template-columns:76px minmax(0,1fr) 76px;
+  justify-items:center!important;align-items:center!important;column-gap:15px!important;
+  position:relative!important;min-height:102px!important;
+  padding:14px 22px!important;
+  background:radial-gradient(ellipse at 13% 40%,rgba(216,156,255,.44),transparent 37%),
+    linear-gradient(105deg,#70379f,#572983 43%,#442166 72%,#2a193f)!important;
+}
+html body.page-home #ebook-matcher-root .ebook-fold>summary:hover{
+  background:radial-gradient(ellipse at 13% 40%,rgba(226,174,255,.54),transparent 39%),
+    linear-gradient(105deg,#793da9,#61308f 43%,#4e2573 72%,#321b49)!important;
+}
+html body.page-home #ebook-matcher-root .ebook-fold>summary .ebook-summary-icon{
+  display:grid!important;grid-column:1;grid-row:1;place-items:center;
+  flex:initial!important;width:72px!important;height:72px!important;
+  min-width:0!important;max-width:100%;padding:0!important;
+  border:0!important;border-radius:50%!important;
+  background:none!important;box-shadow:none!important;
+}
+html body.page-home #ebook-matcher-root .ebook-bookworms-crest{
+  display:block;width:100%;height:100%;max-width:100%;max-height:100%;
+  object-fit:contain!important;filter:drop-shadow(0 3px 11px rgba(255,196,99,.4));
+}
+html body.page-home #ebook-matcher-root .ebook-fold>summary>span:nth-child(2){
+  display:block!important;grid-column:2;grid-row:1;
+  min-width:0;width:100%;text-align:center!important;
+}
+html body.page-home #ebook-matcher-root .ebook-fold>summary strong{
+  display:block;font:850 clamp(20px,2.7vw,33px)/1.2 Outfit,Inter,system-ui,sans-serif!important;
+  color:#fff8ff!important;letter-spacing:-.025em!important;
+  white-space:normal;overflow-wrap:break-word;
+  text-shadow:0 2px 18px rgba(20,7,37,.29);
+}
+html body.page-home #ebook-matcher-root .ebook-fold>summary .ebook-chevron{
+  display:grid!important;grid-column:3;grid-row:1;
+  position:relative!important;inset:auto!important;margin:0!important;
+  width:61px;height:61px;border:1.5px solid rgba(252,220,145,.87)!important;
+  border-radius:50%;background:rgba(22,9,43,.43)!important;
+  color:#ffe2a0!important;transform:none!important;
+}
+html body.page-home #ebook-matcher-root .ebook-fold[open] .ebook-chevron{
+  transform:rotate(180deg)!important;
+}
+html body.page-home #ebook-matcher-root .ebook-fold[open] .ebook-panel{
+  background:linear-gradient(155deg,rgba(29,19,45,.99),rgba(16,12,32,.99))!important;
+  border-top:1px solid rgba(255,219,145,.34)!important;
+}
+@media(max-width:640px){
+  html body.page-home #ebook-matcher-root .ebook-fold>summary{
+    grid-template-columns:49px minmax(0,1fr) 49px;column-gap:8px!important;
+    min-height:82px!important;padding:12px!important;
+  }
+  html body.page-home #ebook-matcher-root .ebook-fold>summary .ebook-summary-icon{
+    width:48px!important;height:48px!important;
+  }
+  html body.page-home #ebook-matcher-root .ebook-fold>summary .ebook-chevron{
+    width:46px;height:46px;font-size:23px!important;
+  }
+  html body.page-home #ebook-matcher-root .ebook-fold>summary strong{
+    font-size:clamp(17px,4.75vw,25px)!important;line-height:1.18!important;
+  }
+}
+@media(max-width:360px){
+  html body.page-home #ebook-matcher-root .ebook-fold>summary{
+    grid-template-columns:43px minmax(0,1fr) 43px;column-gap:6px!important;
+    padding:12px 9px!important;
+  }
+  html body.page-home #ebook-matcher-root .ebook-fold>summary .ebook-summary-icon{
+    width:42px!important;height:42px!important;
+  }
+  html body.page-home #ebook-matcher-root .ebook-fold>summary .ebook-chevron{
+    width:42px;height:42px;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  html body.page-home #ebook-matcher-root .ebook-fold>summary{transition:none!important;}
+}
