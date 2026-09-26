@@ -353,7 +353,7 @@ function renderMagazineResult(root,mag,p){
  host.hidden=false;
  host.innerHTML='<div class="ebook-result-grid magazine-result-grid">'+
  '<div class="ebook-cover magazine-official-art">'+
- '<img data-magazine-publisher-icon src="'+esc(mag.icon)+'" alt="Official '+esc(mag.title)+' publisher icon" loading="lazy" decoding="async" hidden>'+
+ '<img data-magazine-publisher-icon src="'+esc(mag.icon)+'" alt="Official '+esc(mag.title)+' publisher icon" loading="eager" decoding="async" hidden>'+
  '<div data-magazine-brand><small>ORIGINAL PUBLISHER</small><strong>'+esc(mag.title)+'</strong><span>'+esc(mag.publisher)+'</span></div></div>'+
  '<div class="ebook-result-copy"><p class="ebook-kicker">📰 MAGAZINE · '+esc(mag.region==='GLOBAL'?'Worldwide':mag.region)+'</p>'+
  '<h3>'+esc(mag.title)+'</h3><p class="ebook-author">Published by '+esc(mag.publisher)+'</p>'+

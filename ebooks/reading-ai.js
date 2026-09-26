@@ -69,7 +69,8 @@ function magCard(m){
  const aff=root.MatchAppEbookAffiliate,offers=root.MatchAppMagazines.buyLinks(m,market(),aff);
  const primary=offers.find(x=>x.name.startsWith('Amazon')),tagged=!!(primary&&aff?.isAffiliateLink(primary.url));
  return '<article class="reading-ai-card"><div class="reading-ai-icon"><img src="'+esc(m.icon)+
- '" alt="'+esc(m.title)+' official publisher icon" loading="lazy" decoding="async" onerror="this.hidden=true"></div>'+
+ '" alt="'+esc(m.title)+' official publisher icon" data-reading-publisher-icon loading="eager" decoding="async" hidden>'+ 
+ '<span data-reading-publisher-name aria-hidden="true">'+esc(m.title)+'</span></div>'+
  '<div><span class="reading-ai-label">OFFICIAL MAGAZINE SOURCE</span><h4>'+esc(m.title)+'</h4>'+
  '<p>'+esc(m.summary)+'</p><div class="reading-ai-links">'+
  external(m.issues,'Original covers & issues')+
@@ -119,6 +120,19 @@ function render(question,host){
  section.innerHTML='<h3>'+heading+'</h3><p class="reading-ai-note">Original publication and store pages, not generated or unlicensed downloads. Prices, free access and stock must be checked at the source.</p>'+
  results.map(r=>mode==='magazine'?magCard(r):bookCard(r,mode)).join('');
  host.appendChild(section);
+ // A publisher may block off-site icons, so keep its real name visible
+ // until genuine icon art loads; never leave an empty placeholder.
+ section.querySelectorAll('[data-reading-publisher-icon]').forEach(img=>{
+   const label=img.nextElementSibling;
+   const sync=()=>{
+     const loaded=img.complete&&img.naturalWidth>0;
+     img.hidden=!loaded;
+     if(label)label.hidden=loaded;
+   };
+   img.addEventListener('load',sync);
+   img.addEventListener('error',sync);
+   sync();
+ });
  return results.length;
 }
 root.MatchAppReadingAI=Object.freeze({intent,render,selectMagazine,selectBooks});
