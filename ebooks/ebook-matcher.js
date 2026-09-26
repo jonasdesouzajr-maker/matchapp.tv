@@ -487,7 +487,7 @@ function markup(){
  (home?'<details class="ebook-home-picks"><summary>'+esc(tr('topFold'))+' <span aria-hidden="true">⌄</span></summary>':'')+
  '<section class="ebook-top-section" aria-labelledby="ebook-top-title"><div class="ebook-top-head"><div><small>BOOKWORMS PICKS</small><h3 id="ebook-top-title">'+esc(tr('topTitle'))+'</h3><p>'+esc(tr('topSub'))+'</p></div><span>Updated Sep 24, 2026</span></div><div class="ebook-top-rail" data-ebook-top></div></section>'+
  (home?'</details>':'')+
- '<details class="ebook-saved"><summary>★ '+esc(tr('savedBooks'))+' <span data-ebook-saved-count>0</span></summary><div data-ebook-saved-list></div></details>'+
+ '<details class="ebook-saved"><summary><img class="ebook-saved-crest" src="/assets/brand/matchapp-fold-saved.svg" width="36" height="36" alt="" aria-hidden="true" decoding="async"> '+esc(tr('savedBooks'))+' <span data-ebook-saved-count>0</span></summary><div data-ebook-saved-list></div></details>'+
  '<p class="ebook-rights">'+esc(tr('rights'))+'</p></div></details>';
 }
 // Ask AI deep links retain the selected reading medium rather than defaulting

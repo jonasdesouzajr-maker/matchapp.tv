@@ -1,0 +1,298 @@
+/* MatchApp adult Home: one original crest and one distinctive filled color per
+   independently foldable module. This file intentionally does not touch posters,
+   news images, cover-art layout, ads, the Kids app, or fold handlers. */
+/* A Bookworms-like premium structure, with a different saturated hue for each. */
+html body.page-home .lazy-head[data-fold-key="concierge"]{
+ --ma-fold-a:#485C99;--ma-fold-b:#344A83;--ma-fold-c:#202E51;
+ --ma-fold-icon:url("/assets/brand/matchapp-fold-watch.svg");
+}
+html body.page-home .lazy-head[data-fold-key="together"]{
+ --ma-fold-a:#935469;--ma-fold-b:#744158;--ma-fold-c:#3A243B;
+ --ma-fold-icon:url("/assets/brand/matchapp-fold-together.svg");
+}
+html body.page-home #latest-news>summary{
+ --ma-fold-a:#5369AA;--ma-fold-b:#394E91;--ma-fold-c:#222E55;
+ --ma-fold-icon:url("/assets/brand/matchapp-fold-news.svg");
+}
+html body.page-home #premiere-disclosure>summary{
+ --ma-fold-a:#A15A4F;--ma-fold-b:#7C4545;--ma-fold-c:#422938;
+ --ma-fold-icon:url("/assets/brand/matchapp-fold-premiere.svg");
+}
+html body.page-home #weekly-pick-disclosure>summary{
+ --ma-fold-a:#3E796A;--ma-fold-b:#285B56;--ma-fold-c:#193B43;
+ --ma-fold-icon:url("/assets/brand/matchapp-fold-weekly.svg");
+}
+html body.page-home #global-events>.global-events-fold>.global-events-summary{
+ --ma-fold-a:#367A8C;--ma-fold-b:#275F79;--ma-fold-c:#1C3654;
+ --ma-fold-icon:url("/assets/brand/matchapp-fold-events.svg");
+}
+html body.page-home #swifties-spotify .swifties-fold{
+ --ma-fold-a:#9B477E;--ma-fold-b:#753A73;--ma-fold-c:#382749;
+ --ma-fold-icon:url("/assets/brand/matchapp-fold-music.svg");
+}
+html body.page-home .match-more-filters>summary{
+ --ma-fold-a:#666BA4;--ma-fold-b:#4D5389;--ma-fold-c:#303754;
+ --ma-fold-icon:url("/assets/brand/matchapp-fold-filters.svg");
+}
+html body.page-home .seo-fold-summary{
+ --ma-fold-a:#636F52;--ma-fold-b:#4C5843;--ma-fold-c:#283A37;
+ --ma-fold-icon:url("/assets/brand/matchapp-fold-guides.svg");
+}
+html body.page-home #ebook-matcher-root .ebook-home-picks>summary{
+ --ma-fold-a:#85566A;--ma-fold-b:#693F5C;--ma-fold-c:#38273C;
+ --ma-fold-icon:url("/assets/brand/matchapp-fold-picks.svg");
+}
+html body.page-home #ebook-matcher-root .ebook-saved>summary{
+ --ma-fold-a:#467969;--ma-fold-b:#335E55;--ma-fold-c:#203A38;
+ --ma-fold-icon:url("/assets/brand/matchapp-fold-saved.svg");
+}
+html body.page-home .share-how>summary{
+ --ma-fold-a:#92704D;--ma-fold-b:#765640;--ma-fold-c:#43352F;
+ --ma-fold-icon:url("/assets/brand/matchapp-fold-share.svg");
+}
+/* Only presentation: keep existing section order, accessible summary text,
+   open/closed state persistence, news autoplay and Android WebView parity. */
+html body.page-home :is(
+ .lazy-head[data-fold-key="concierge"],
+ .lazy-head[data-fold-key="together"],
+ #latest-news>summary,
+ #premiere-disclosure>summary,
+ #weekly-pick-disclosure>summary,
+ #global-events>.global-events-fold>.global-events-summary,
+ #swifties-spotify .swifties-fold,
+ .match-more-filters>summary,
+ .seo-fold-summary,
+ #ebook-matcher-root .ebook-home-picks>summary,
+ #ebook-matcher-root .ebook-saved>summary,
+ .share-how>summary
+){
+ position:relative!important;isolation:isolate!important;box-sizing:border-box!important;
+ align-items:center!important;gap:12px!important;
+ background:linear-gradient(115deg,var(--ma-fold-a) 0%,var(--ma-fold-b) 54%,var(--ma-fold-c) 100%)!important;
+ background-size:100% 100%!important;
+ border:1.5px solid rgba(249,213,139,.74)!important;
+ border-radius:22px!important;
+ box-shadow:inset 0 1px 0 rgba(255,239,196,.17),
+   0 10px 28px rgba(5,3,19,.31),0 0 21px rgba(144,85,183,.09)!important;
+ color:#fff5fa!important;
+ text-shadow:0 1px 6px rgba(11,5,26,.34)!important;
+}
+html body.page-home :is(
+ .lazy-head[data-fold-key="concierge"],
+ .lazy-head[data-fold-key="together"],
+ #premiere-disclosure>summary,
+ #weekly-pick-disclosure>summary,
+ #global-events>.global-events-fold>.global-events-summary,
+ #swifties-spotify .swifties-fold
+){
+ display:flex!important;min-height:78px!important;
+ padding:10px 79px 10px 16px!important;
+ margin-block:7px!important;
+}
+html body.page-home :is(
+ .lazy-head[data-fold-key="concierge"],
+ .lazy-head[data-fold-key="together"],
+ #premiere-disclosure>summary,
+ #weekly-pick-disclosure>summary,
+ #global-events>.global-events-fold>.global-events-summary,
+ #swifties-spotify .swifties-fold
+)::before,
+html body.page-home #latest-news>summary::before,
+html body.page-home .match-more-filters>summary::before,
+html body.page-home .seo-fold-summary::before,
+html body.page-home #ebook-matcher-root .ebook-home-picks>summary::before,
+html body.page-home .share-how>summary::before{
+ content:""!important;display:block!important;visibility:visible!important;
+ box-sizing:border-box!important;flex:0 0 57px!important;
+ width:57px!important;height:57px!important;min-width:0!important;
+ margin:0 5px 0 0!important;padding:0!important;
+ position:static!important;inset:auto!important;transform:none!important;
+ border:0!important;border-radius:50%!important;box-shadow:none!important;
+ background:var(--ma-fold-icon) center center / contain no-repeat!important;
+ filter:drop-shadow(0 4px 8px rgba(8,3,28,.34))!important;
+}
+/* News remains intentionally open/static, but its colored headline is as
+   prominent as Bookworms and has its OWN original illustrated news crest. */
+html body.page-home #latest-news{
+ background:linear-gradient(155deg,rgba(27,35,68,.96),rgba(13,18,38,.97))!important;
+ border-color:rgba(247,210,134,.66)!important;
+}
+html body.page-home #latest-news>summary{
+ display:flex!important;min-height:86px!important;height:auto!important;
+ padding:13px 17px!important;border:1px solid rgba(250,213,137,.78)!important;
+ border-radius:22px 22px 0 0!important;
+ background:linear-gradient(110deg,#5369AA,#394E91 52%,#222E55)!important;
+ pointer-events:none!important;cursor:default!important;
+}
+html body.page-home #latest-news>summary::before{
+ content:""!important;display:block!important;flex:0 0 62px!important;
+ width:62px!important;height:62px!important;
+ background:var(--ma-fold-icon) center / contain no-repeat!important;
+}
+html body.page-home #latest-news>summary::after{
+ content:none!important;display:none!important;
+}
+html body.page-home #latest-news .ma-news-summary-main{
+ display:flex!important;flex:1 1 auto!important;min-width:0!important;
+ flex-direction:column!important;align-items:flex-start!important;gap:2px!important;
+}
+html body.page-home #latest-news .ma-news-title{
+ font:850 clamp(19px,2.5vw,27px)/1.17 Outfit,Inter,system-ui,sans-serif!important;
+ color:#fff9fd!important;
+}
+html body.page-home #latest-news .ma-news-description{
+ font-size:clamp(10px,1.1vw,12px)!important;color:#e4ddf5!important;
+ white-space:normal!important;
+}
+html body.page-home #latest-news .ma-news-new{flex:0 0 auto!important;}
+/* Preserve the one existing right-side expansion affordance for true folds:
+   the signature art replaces only generic *section* symbols, never controls. */
+html body.page-home #global-events .ge-sum-label > span[aria-hidden="true"]:first-child,
+html body.page-home #swifties-spotify .swifties-fold #swifties-spotify-title > span[aria-hidden="true"],
+html body.page-home #swifties-spotify .swifties-fold .swifties-fold-icon{
+ display:none!important;
+}
+html body.page-home #global-events .ge-sum-label{
+ display:flex!important;align-items:center!important;min-width:0!important;
+ font:800 clamp(15px,2vw,22px)/1.2 Outfit,Inter,system-ui,sans-serif!important;
+ color:#fff9fa!important;
+}
+html body.page-home :is(#premiere-disclosure,#weekly-pick-disclosure)>summary{
+ font:850 clamp(17px,2.2vw,23px)/1.2 Outfit,Inter,system-ui,sans-serif!important;
+}
+html body.page-home #swifties-spotify .swifties-fold{
+ width:100%!important;max-width:none!important;
+}
+html body.page-home #swifties-spotify .swifties-fold #swifties-spotify-title{
+ min-width:0!important;flex:1!important;text-align:left!important;
+ font-size:clamp(13px,1.65vw,19px)!important;
+ white-space:normal!important;overflow-wrap:anywhere!important;
+}
+html body.page-home #swifties-spotify .swifties-fold::after{
+ content:"⌄"!important;display:grid!important;place-items:center!important;
+ position:absolute!important;right:15px!important;top:50%!important;
+ width:48px!important;height:48px!important;margin:0!important;
+ border:1.5px solid rgba(255,223,155,.70)!important;border-radius:50%!important;
+ background:rgba(18,10,35,.23)!important;color:#FFEBB6!important;
+ font:600 28px/1 Outfit,Inter,system-ui,sans-serif!important;
+ transform:translateY(-50%) rotate(0deg)!important;
+ transition:transform .2s ease!important;
+}
+html body.page-home #swifties-spotify .swifties-fold[aria-expanded="true"]::after{
+ transform:translateY(-50%) rotate(180deg)!important;
+}
+html body.page-home .lazy-head[data-fold-key] .lazy-head-label{
+ min-width:0!important;flex:1!important;white-space:normal!important;
+ text-align:left!important;font:850 clamp(15px,2vw,22px)/1.2 Outfit,Inter,system-ui,sans-serif!important;
+}
+html body.page-home .lazy-head[data-fold-key]::after{
+ background-color:rgba(18,10,34,.19)!important;
+}
+/* Internal folds are deliberately shorter. The original matcher, quota,
+   official-cover rail, CTA and library selectors remain untouched. */
+html body.page-home :is(
+ .match-more-filters>summary,
+ .seo-fold-summary,
+ #ebook-matcher-root .ebook-home-picks>summary,
+ #ebook-matcher-root .ebook-saved>summary,
+ .share-how>summary
+){
+ display:flex!important;justify-content:flex-start!important;
+ min-height:53px!important;height:auto!important;max-width:100%!important;
+ padding:7px 53px 7px 9px!important;gap:8px!important;
+ font:800 clamp(12px,1.5vw,14px)/1.25 Outfit,Inter,system-ui,sans-serif!important;
+}
+html body.page-home :is(
+ .match-more-filters>summary,
+ .seo-fold-summary,
+ #ebook-matcher-root .ebook-home-picks>summary,
+ .share-how>summary
+)::before,
+html body.page-home #ebook-matcher-root .ebook-saved>summary .ebook-saved-crest{
+ flex:0 0 38px!important;width:38px!important;height:38px!important;
+ margin:0 3px 0 0!important;
+}
+html body.page-home #ebook-matcher-root .ebook-saved>summary .ebook-saved-crest{
+ display:block!important;object-fit:contain!important;
+ filter:drop-shadow(0 3px 7px rgba(9,5,24,.33))!important;
+}
+html body.page-home #ebook-matcher-root .ebook-home-picks>summary > span[aria-hidden="true"]{
+ display:none!important;
+}
+html body.page-home :is(.match-more-filters>summary,.seo-fold-summary,
+ #ebook-matcher-root .ebook-home-picks>summary,.share-how>summary)::after{
+ border-color:rgba(255,220,142,.5)!important;
+ background-color:rgba(13,9,27,.16)!important;
+}
+html body.page-home #ebook-matcher-root .ebook-saved>summary{
+ padding-right:14px!important;
+}
+html body.page-home #ebook-matcher-root .ebook-saved [data-ebook-saved-count]{
+ margin-left:auto!important;min-width:22px!important;text-align:center!important;
+ color:#FFE8AD!important;font-size:12px!important;
+}
+html body.page-home .share-how>summary{list-style:none!important;}
+html body.page-home .share-how>summary::-webkit-details-marker{display:none!important;}
+html body.page-home .share-how>summary::after{
+ content:"⌄"!important;display:grid!important;place-items:center!important;
+ position:absolute!important;right:11px!important;top:50%!important;
+ width:33px!important;height:33px!important;border-radius:50%!important;
+ border:1px solid rgba(255,220,142,.55)!important;
+ background:rgba(16,11,28,.16)!important;color:#FFE9B9!important;
+ transform:translateY(-50%)!important;
+}
+html body.page-home .share-how[open]>summary::after{
+ transform:translateY(-50%) rotate(180deg)!important;
+}
+html body.page-home .tg-entry-icon img{
+ display:block!important;width:44px!important;height:44px!important;
+ max-width:100%!important;object-fit:contain!important;
+}
+/* Keep visible focus, legible contrast, real 44px target sizes and no CLS. */
+html body.page-home :is(.lazy-head[data-fold-key],#premiere-disclosure>summary,
+ #weekly-pick-disclosure>summary,#global-events .global-events-summary,
+ #swifties-spotify .swifties-fold,.match-more-filters>summary,
+ .seo-fold-summary,.ebook-home-picks>summary,.ebook-saved>summary,.share-how>summary):focus-visible{
+ outline:3px solid #FFF3B5!important;outline-offset:3px!important;
+}
+@media(max-width:640px){
+ html body.page-home :is(
+  .lazy-head[data-fold-key="concierge"],.lazy-head[data-fold-key="together"],
+  #premiere-disclosure>summary,#weekly-pick-disclosure>summary,
+  #global-events>.global-events-fold>.global-events-summary,
+  #swifties-spotify .swifties-fold
+ ){
+  min-height:70px!important;padding:8px 64px 8px 10px!important;gap:7px!important;
+ }
+ html body.page-home :is(.lazy-head[data-fold-key="concierge"],
+  .lazy-head[data-fold-key="together"],#premiere-disclosure>summary,
+  #weekly-pick-disclosure>summary,#global-events .global-events-summary,
+  #swifties-spotify .swifties-fold)::before,
+ html body.page-home #latest-news>summary::before{
+  flex-basis:45px!important;width:45px!important;height:45px!important;
+ }
+ html body.page-home #latest-news>summary{
+  min-height:75px!important;padding:10px!important;gap:9px!important;
+ }
+ html body.page-home #latest-news .ma-news-title{font-size:19px!important;}
+ html body.page-home #latest-news .ma-news-description{font-size:10.5px!important;}
+ html body.page-home #swifties-spotify .swifties-fold::after{
+  width:42px!important;height:42px!important;right:10px!important;font-size:23px!important;
+ }
+ html body.page-home #swifties-spotify .swifties-fold #swifties-spotify-title{
+  font-size:clamp(12px,3.4vw,17px)!important;
+ }
+ html body.page-home .tg-entry-icon img{width:36px!important;height:36px!important;}
+}
+@media(max-width:360px){
+ html body.page-home #global-events .ge-sum-label{font-size:15px!important;}
+ html body.page-home #swifties-spotify .swifties-fold #swifties-spotify-title{font-size:12px!important;}
+ html body.page-home #latest-news .ma-news-new{font-size:8px!important;}
+}
+@media(prefers-reduced-motion:reduce){
+ html body.page-home :is(.lazy-head,#premiere-disclosure>summary,
+  #weekly-pick-disclosure>summary,#global-events .global-events-summary,
+  #swifties-spotify .swifties-fold,#latest-news>summary){
+  transition:none!important;animation:none!important;
+ }
+}

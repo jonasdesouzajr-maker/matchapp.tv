@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96" role="img" aria-labelledby="title desc">
+<title id="title">MatchApp Music and Official Videos signature crest</title>
+<desc id="desc">Original MatchApp music and official videos symbol with a gold halo and a four-point sparkle.</desc>
+<defs><radialGradient id="core" cx="28%" cy="17%" r="89%"><stop offset="0" stop-color="#9E397A"/><stop offset="1" stop-color="#171229"/></radialGradient>
+<linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFF4C6"/><stop offset=".49" stop-color="#E9BE61"/><stop offset="1" stop-color="#9D692A"/></linearGradient></defs>
+<circle cx="48" cy="48" r="42" fill="url(#core)" stroke="url(#gold)" stroke-width="3.5"/>
+<path d="M14 50c-2-16 10-32 23-36" fill="none" stroke="#FFF2CA" stroke-opacity=".4" stroke-width="1.6" stroke-linecap="round"/>
+<path d="M49 27v31M49 28l20-6v29" fill="none" stroke="url(#gold)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="41" cy="62" rx="9" ry="6" transform="rotate(-21 41 62)" fill="#F8DDA1"/><ellipse cx="61" cy="55" rx="9" ry="6" transform="rotate(-21 61 55)" fill="#F8DDA1"/><path d="M23 39l6-9 6 9-6 9Z" fill="none" stroke="#E5C8F4" stroke-width="1.8"/><path d="M69 66l5 8-5 8-5-8Z" fill="#FBD99A"/>
+<path d="M77 9l2.9 5.7 5.7 2.9-5.7 2.8-2.9 5.8-2.9-5.8-5.7-2.8 5.7-2.9Z" fill="url(#gold)" stroke="#FFF1C8" stroke-width=".65" stroke-linejoin="round"/>
+</svg>

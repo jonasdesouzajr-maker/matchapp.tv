@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96" role="img" aria-labelledby="title desc">
+<title id="title">MatchApp Sharing Rewards signature crest</title>
+<desc id="desc">Original MatchApp sharing rewards symbol with a gold halo and a four-point sparkle.</desc>
+<defs><radialGradient id="core" cx="28%" cy="17%" r="89%"><stop offset="0" stop-color="#8A6946"/><stop offset="1" stop-color="#171229"/></radialGradient>
+<linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFF4C6"/><stop offset=".49" stop-color="#E9BE61"/><stop offset="1" stop-color="#9D692A"/></linearGradient></defs>
+<circle cx="48" cy="48" r="42" fill="url(#core)" stroke="url(#gold)" stroke-width="3.5"/>
+<path d="M14 50c-2-16 10-32 23-36" fill="none" stroke="#FFF2CA" stroke-opacity=".4" stroke-width="1.6" stroke-linecap="round"/>
+<circle cx="28" cy="47" r="8" fill="#735333" stroke="url(#gold)" stroke-width="2.5"/><circle cx="65" cy="30" r="8" fill="#735333" stroke="url(#gold)" stroke-width="2.5"/><circle cx="65" cy="67" r="8" fill="#735333" stroke="url(#gold)" stroke-width="2.5"/><path d="M35 43l22-10M35 50l22 13" stroke="#FFE4A2" stroke-width="3" stroke-linecap="round"/><path d="M20 22l2 5 5 2-5 2-2 5-2-5-5-2 5-2Z" fill="#FCDDA4"/>
+<path d="M77 9l2.9 5.7 5.7 2.9-5.7 2.8-2.9 5.8-2.9-5.8-5.7-2.8 5.7-2.9Z" fill="url(#gold)" stroke="#FFF1C8" stroke-width=".65" stroke-linejoin="round"/>
+</svg>
