@@ -224,7 +224,7 @@ display:flex;flex-direction:column;align-items:center;justify-content:center;gap
  host.innerHTML=api.items.slice().sort((a,b)=>Number(b.region===market)-Number(a.region===market)).map(m=>{
   const offers=api.buyLinks(m,market,affiliate),amazon=offers.find(x=>x.name.startsWith('Amazon')),tagged=!!(amazon&&affiliate?.isAffiliateLink(amazon.url));
   return '<article class="ebook-top-card magazine-hub-card"><div class="magazine-hub-logo">'+
-   '<img src="'+esc(m.icon)+'" alt="'+esc(m.title)+' publisher icon" loading="lazy" decoding="async" onerror="this.hidden=true">'+
+   '<img data-magazine-hub-icon src="'+esc(m.icon)+'" alt="'+esc(m.title)+' publisher icon" loading="lazy" decoding="async">'+
    '<strong>'+esc(m.title)+'</strong><span>ORIGINAL PUBLISHER IDENTITY</span></div>'+
    '<div class="ebook-top-copy"><h3>'+esc(m.title)+'</h3><p class="ebook-top-author">'+esc(m.publisher)+'</p>'+
    '<p class="ebook-top-genre">'+esc(m.genres.join(' · '))+'</p><div class="ebook-top-actions">'+
@@ -236,6 +236,12 @@ display:flex;flex-direction:column;align-items:center;justify-content:center;gap
    (tagged?'<small class="ebook-rights">'+esc(affiliate.disclosure(navigator.language))+'</small>':'')+
    '</div></div></article>';
  }).join('');
+ // Remote publisher artwork may fail; original publisher name stays visible.
+ host.querySelectorAll('[data-magazine-hub-icon]').forEach(img=>{
+  const unavailable=()=>{img.hidden=true;};
+  img.addEventListener('error',unavailable,{once:true});
+  if(img.complete&&img.naturalWidth===0)unavailable();
+ });
  host.addEventListener('click',e=>{if(e.target.closest('[data-ebook-affiliate="amazon-br"]')){
   window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'ebook_affiliate_click',provider:'Amazon Brazil',surface:'magazine_hub'});
  }});
