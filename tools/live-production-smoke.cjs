@@ -56,6 +56,11 @@ async function aiQuestion(page,question,expected,label){
     await page.locator('#q-category').locator('xpath=..').locator('.crit-chips .crit-chip').first().waitFor({state:'attached',timeout:15000});
     await page.locator('#ebook-matcher-root [data-ebook-match]').waitFor({state:'attached',timeout:25000});
     assert(await page.locator('img[data-title]').count()>0,'no original-title poster elements');
+    // On a 320px phone the trending rail starts below the opening hero and
+    // images may still be lazy. Scroll it genuinely into the viewport first.
+    await page.locator('#trending-rail').scrollIntoViewIfNeeded();
+    await page.waitForFunction(()=>[...document.querySelectorAll('#trending-rail img[data-title]')]
+      .some(img=>img.complete&&img.naturalWidth>0),null,{timeout:15000}).catch(()=>{});
     const home=await page.evaluate(()=>{
       const images=[...document.querySelectorAll('img[data-title]')];
       const visible=images.filter(el=>{const r=el.getBoundingClientRect();return r.width>40&&r.height>40&&r.left<innerWidth&&r.top<innerHeight&&r.bottom>0});
@@ -73,7 +78,9 @@ async function aiQuestion(page,question,expected,label){
     });
     record('Bookworms directly follows Find what to watch here '+device.name,placement,'independent of Ask AI');
     const fold=ebook.locator('details.ebook-fold');
-    if(!await fold.evaluate(d=>d.open))await fold.locator('summary').click();
+    // Nested Bookworms top-picks and saved lists have their own summaries.
+    // Click the ONE direct fold summary, not three nested matches.
+    if(!await fold.evaluate(d=>d.open))await fold.locator(':scope > summary').click();
     const format=ebook.locator('select[data-ebook-select="format"]');
     await format.waitFor({state:'visible',timeout:12000});
     for(const kind of ['audiobook','magazine','ebook']){
