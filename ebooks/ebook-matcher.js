@@ -381,7 +381,8 @@ function renderResult(root,book,p,relaxed,audio,magazine){
   '<div class="ebook-why"><strong>'+esc(tr('why'))+'</strong><span>'+esc(why(book,p,relaxed))+'</span></div>'+
   '<div class="ebook-meta"><span>'+esc(book.length)+' read</span><span>'+esc(book.pace)+' pace</span><span>'+(book.access.includes('free')?'free option + stores':'paid stores')+'</span></div>'+
   '<div class="ebook-source-groups">'+
-   (free.length?'<div><h4>'+esc(tr('free'))+'</h4><div class="ebook-provider-row">'+free.map(([n,u])=>'<a class="ebook-provider ebook-free" href="'+esc(u)+'" target="_blank" rel="noopener noreferrer" data-ebook-provider="'+esc(n)+'">'+esc(n)+' ↗</a>').join('')+'</div></div>':'')+
+   (free.length?'<div><h4>'+esc(tr('free'))+'</h4><div data-ebook-verified-free></div><div class="ebook-provider-row">'+free.map(([n,u])=>'<a class="ebook-provider ebook-free" href="'+esc(u)+'" target="_blank" rel="noopener noreferrer" data-ebook-provider="'+esc(n)+'">'+esc(n)+' · '+esc(lang()==='pt-BR'?'busca não confirmada':'unverified search')+' ↗</a>').join('')+'</div><p class="ebook-rights">'+
+     esc(lang()==='pt-BR'?'Buscas não confirmam a edição gratuita nem os direitos autorais em seu país.':'Catalog searches do not verify a free edition or your country’s copyright rights.')+'</p></div>':'')+
    '<div><h4>'+esc(tr('stores'))+'</h4><div class="ebook-provider-row">'+stores.map(([n,u])=>{const tagged=!!(aff&&aff.isAffiliateLink(u));return '<a class="ebook-provider" href="'+esc(u)+'" target="_blank" rel="'+(tagged?'sponsored ':'')+'noopener noreferrer" data-ebook-provider="'+esc(n)+'"'+(tagged?' data-ebook-affiliate="amazon-br"':'')+'>'+esc(n)+(tagged?' · '+esc(aff.paidLabel(lang())):'')+' ↗</a>'}).join('')+'</div>'+(paid?'<p class="ebook-rights">'+esc(aff.disclosure(lang()))+'</p>':'')+'</div>'+
    '<a class="ebook-preview-link" href="'+esc(bookInfo(book))+'" target="_blank" rel="noopener noreferrer" data-ebook-provider="Google Books">'+esc(tr('preview'))+' ↗</a>'+
   '</div>'+
@@ -393,6 +394,25 @@ function renderResult(root,book,p,relaxed,audio,magazine){
   '</div></div>';
  const img=host.querySelector('[data-ebook-cover]'),fall=host.querySelector('[data-ebook-cover-fallback]');
  hydrateCover(book,img,fall,audio);
+ // Another independent, rights-scoped source: Gutenberg metadata, queried
+ // only for a displayed US-eligible public-domain book. A direct source link
+ // appears only when the same book title AND author verify; arbitrary search
+ // results remain visibly unverified and cannot impersonate a free edition.
+ const freeHost=host.querySelector('[data-ebook-verified-free]');
+ if(freeHost && market()==='US' && window.MatchAppGutenbergSource?.search){
+  const identity=book.id;
+  void window.MatchAppGutenbergSource.search(book,'US').then(record=>{
+   if(!record?.verified||host.querySelector('h3')?.textContent!==book.title||
+      !host.isConnected || !freeHost.isConnected ||
+      !/^https:\/\/www\.gutenberg\.org\/ebooks\/\d+$/.test(record.sourceUrl))return;
+   const a=document.createElement('a');
+   a.className='ebook-provider ebook-free';a.href=record.sourceUrl;
+   a.target='_blank';a.rel='noopener noreferrer';
+   a.setAttribute('data-ebook-provider','Project Gutenberg exact edition');
+   a.textContent=lang()==='pt-BR'?'Project Gutenberg · edição verificada para EUA ↗':'Project Gutenberg · verified US edition ↗';
+   freeHost.replaceChildren(a);
+  }).catch(()=>{});
+ }
  if(audio)paintAudio(root,book,audio);
  host.scrollIntoView({behavior:(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)?'auto':'smooth',block:'nearest'});
  analytics('ebook_match_reveal',{ebook_id:book.id,ebook_title:book.title,ebook_access:p.access,ebook_format:p.format,relaxed:!!relaxed});
