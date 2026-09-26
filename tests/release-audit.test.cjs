@@ -14,7 +14,7 @@ test('behavioral pages load one current shared runtime instead of stale cache ke
   };
   const appPages=['index.html','discover.html','profile/profile.html','together.html','pricing/pricing.html','purchase.html','friends.html','callback.html','oauth/consent.html','events-archive.html'];
   // Home receives the requested result/cover fix; other pages remain unchanged.
-  assert.equal(version('index.html','app.js'),'20260926-resultclose-cover1');
+  assert.equal(version('index.html','app.js'),'20260926-pinnedcover3');
   assert.deepEqual([...new Set(appPages.filter(p=>p!=='index.html').map(p=>version(p,'app.js')))],['20260925-matchrestore2']);
   const policyPages=['index.html','discover.html','profile/profile.html','together.html','friends.html','kids/index.html'];
   assert.deepEqual([...new Set(policyPages.map(p=>version(p,'matching-policy.js')))],['20260924-runtime1']);
