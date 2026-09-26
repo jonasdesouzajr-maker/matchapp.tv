@@ -123,16 +123,26 @@
    .finally(()=>clearTimeout(timer));
  };
  async function appleSearch(book,market,fetchFn){
-  const u=new URL('https://itunes.apple.com/search');
-  u.searchParams.set('term',String(book.title||'')+' '+String(book.author||''));
-  u.searchParams.set('country',REGION[String(market||'US').toUpperCase()]||'us');
-  u.searchParams.set('media','audiobook');u.searchParams.set('entity','audiobook');
-  // Expand results PER SEARCH without multiplying Apple's published request budget.
-  u.searchParams.set('limit','40');u.searchParams.set('explicit','No');
-  const result=await pausePromise(QUERY_TIMEOUT,signal=>fetchFn(u.href,{signal,headers:{Accept:'application/json'}}));
-  if(!result.ok)throw Error('Apple audio search unavailable');
-  const data=await result.json();
-  return verifyApple(book,data.results,market);
+  // Official storefront indexing sometimes omits author terms from its
+  // search tokens. Expand the QUERY only when the exact joined query returned
+  // successfully without any matching edition. Never expand acceptance:
+  // verifyApple independently proves author, full title, audiobook kind,
+  // actual Apple page, country, cover and playable preview.
+  for(const term of [String(book.title||'')+' '+String(book.author||''),String(book.title||'')]){
+   const u=new URL('https://itunes.apple.com/search');
+   u.searchParams.set('term',term.trim());
+   u.searchParams.set('country',REGION[String(market||'US').toUpperCase()]||'us');
+   u.searchParams.set('media','audiobook');u.searchParams.set('entity','audiobook');
+   u.searchParams.set('limit','40');u.searchParams.set('explicit','No');
+   // On provider outage return via the existing retryable error path rather
+   // than duplicate a failed request or cache a false negative.
+   const result=await pausePromise(QUERY_TIMEOUT,signal=>fetchFn(u.href,{signal,headers:{Accept:'application/json'}}));
+   if(!result.ok)throw Error('Apple audio search unavailable');
+   const data=await result.json();
+   const matched=verifyApple(book,data.results,market);
+   if(matched)return matched;
+  }
+  return null;
  }
  async function librivoxSearch(book,market,fetchFn){
   if(String(market||'').toUpperCase()!=='US')return null;
