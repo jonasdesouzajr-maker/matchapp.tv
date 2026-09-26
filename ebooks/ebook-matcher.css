@@ -381,3 +381,101 @@ html body.page-home #ebook-matcher-root .ebook-fold[open] .ebook-panel{padding:1
 html body.page-home #ebook-matcher-root .ebook-fields{gap:8px;}
 html body.page-home #ebook-matcher-root .ebook-field{padding:8px;}
 @media(max-width:600px){html body.page-home #ebook-matcher-root .ebook-fold>summary{min-height:50px!important;padding:6px 34px 6px 9px!important;}html body.page-home #ebook-matcher-root .ebook-summary-icon{width:28px;height:28px;flex-basis:28px;}html body.page-home #ebook-matcher-root .ebook-fold[open] .ebook-panel{padding:10px!important;}}
+
+
+/* Adult Home Bookworms — directly under the matching form, visually paired
+   with its closed premium heading. Native dropdowns replace hundreds of
+   expanded chips here ONLY. Dedicated /ebooks/ keeps its existing interface. */
+html body.page-home #ebook-matcher-root{
+  width:100%!important;max-width:var(--measure,1180px)!important;
+  margin:7px auto 10px!important;min-width:0;scroll-margin-top:80px;
+}
+html body.page-home #ebook-matcher-root .ebook-fold{
+  border:1.5px solid rgba(232,195,109,.75)!important;
+  border-radius:24px!important;
+  background:linear-gradient(140deg,rgba(28,19,45,.97),rgba(24,19,40,.97))!important;
+  box-shadow:0 12px 35px rgba(0,0,0,.28)!important;
+}
+html body.page-home #ebook-matcher-root .ebook-fold>summary{
+  min-height:94px!important;padding:15px 84px 15px 24px!important;
+  display:flex!important;justify-content:center!important;align-items:center!important;
+  position:relative!important;text-align:center!important;cursor:pointer;
+}
+html body.page-home #ebook-matcher-root .ebook-summary-icon,
+html body.page-home #ebook-matcher-root .ebook-fold>summary small{display:none!important;}
+html body.page-home #ebook-matcher-root .ebook-fold>summary>span:nth-child(2){
+  display:block!important;text-align:center!important;
+}
+html body.page-home #ebook-matcher-root .ebook-fold>summary strong{
+  font:800 clamp(19px,2.7vw,31px)/1.2 Outfit,Inter,system-ui,sans-serif!important;
+  color:#f8f6fc!important;text-transform:none!important;letter-spacing:0!important;
+}
+html body.page-home #ebook-matcher-root .ebook-chevron{
+  display:grid!important;place-items:center!important;
+  position:absolute!important;right:16px!important;top:50%!important;
+  width:58px;height:58px;border:1.5px solid rgba(232,195,109,.55);border-radius:50%;
+  background:rgba(20,15,36,.25);color:#f4cc77!important;font-size:30px!important;
+  line-height:1;transform:translateY(-50%)!important;
+}
+html body.page-home #ebook-matcher-root .ebook-fold[open] .ebook-chevron{
+  transform:translateY(-50%) rotate(180deg)!important;
+}
+html body.page-home #ebook-matcher-root .ebook-fold[open] .ebook-panel{
+  padding:14px clamp(12px,2vw,20px) 16px!important;
+  border-top:1px solid rgba(229,193,88,.26)!important;
+}
+html body.page-home #ebook-matcher-root .ebook-intro{margin-bottom:13px!important;gap:10px;}
+html body.page-home #ebook-matcher-root .ebook-intro p{
+  font-size:13px!important;line-height:1.45!important;
+}
+html body.page-home #ebook-matcher-root .ebook-fields{
+  display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:10px 12px!important;align-items:end;
+}
+html body.page-home #ebook-matcher-root .ebook-select-field{
+  display:flex;flex-direction:column;gap:5px;min-width:0;
+  font:800 11px/1.25 Outfit,Inter,system-ui,sans-serif;color:#ebe2ef;
+  text-transform:uppercase;letter-spacing:.055em;
+}
+html body.page-home #ebook-matcher-root .ebook-select{
+  box-sizing:border-box;width:100%;min-width:0;min-height:48px;
+  padding:9px 37px 9px 12px;border-radius:12px;
+  border:1px solid rgba(229,193,88,.34);background:#110e1c;
+  color:#fff;font:600 14px/1.3 Outfit,Inter,system-ui,sans-serif;
+  color-scheme:dark;cursor:pointer;text-transform:none;letter-spacing:0;
+}
+html body.page-home #ebook-matcher-root .ebook-select:focus-visible{
+  outline:2px solid #f3d57a;outline-offset:2px;
+}
+html body.page-home #ebook-matcher-root .ebook-match-row{
+  margin:14px 0 10px;flex-direction:column;gap:6px!important;
+}
+html body.page-home #ebook-matcher-root .ebook-match-cta{
+  box-sizing:border-box;width:100%;min-height:50px;border-radius:12px;
+  font-size:15px;letter-spacing:.025em;
+}
+html body.page-home #ebook-matcher-root .ebook-home-picks{
+  border:1px solid rgba(229,193,88,.24);border-radius:12px;
+  margin-top:12px;padding:0 12px;
+}
+html body.page-home #ebook-matcher-root .ebook-home-picks>summary{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:12px 0;color:#f6db9a;font-size:13px;font-weight:800;cursor:pointer;
+}
+html body.page-home #ebook-matcher-root .ebook-home-picks[open] .ebook-top-section{
+  margin-top:0;padding-top:12px;
+}
+@media(max-width:640px){
+  html body.page-home #ebook-matcher-root .ebook-fold>summary{
+    min-height:76px!important;padding:13px 65px 13px 11px!important;
+  }
+  html body.page-home #ebook-matcher-root .ebook-chevron{
+    right:10px!important;width:46px;height:46px;font-size:24px!important;
+  }
+  html body.page-home #ebook-matcher-root .ebook-fields{
+    grid-template-columns:minmax(0,1fr)!important;gap:9px!important;
+  }
+  html body.page-home #ebook-matcher-root .ebook-select{
+    min-height:48px;font-size:16px;
+  }
+}
