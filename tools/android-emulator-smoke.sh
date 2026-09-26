@@ -5,6 +5,11 @@ set -euo pipefail
 mkdir -p artifacts/android-emulator
 adb wait-for-device
 adb shell logcat -c || true
+# Runner internet can work while the virtual phone's DNS/guest network is down.
+# Keep evidence, not a false UI pass, when Android WebView cannot reach production.
+(timeout 8s adb shell settings put global private_dns_mode off || true)
+(timeout 8s adb shell getprop net.dns1 || true) >artifacts/android-emulator/emulator-dns.txt
+(timeout 10s adb shell ping -c 1 -W 3 matchapp.tv || true) >artifacts/android-emulator/emulator-ping.txt 2>&1
 # Pixel Launcher can ANR on freshly booted shared runners; dismiss a SYSTEM
 # dialog before grading MatchApp visuals. Never treat a blocked screenshot as pass.
 dismiss_launcher_anr() {
@@ -55,8 +60,16 @@ probe() {
   timeout 15s adb shell uiautomator dump "/sdcard/$name-window.xml" >/dev/null 2>&1 || true
   timeout 10s adb pull "/sdcard/$name-window.xml" "artifacts/android-emulator/$name-window.xml" >/dev/null 2>&1 || true
   if ! grep -Fq "package=\"$pkg\"" "artifacts/android-emulator/$name-window.xml" 2>/dev/null; then
-    echo "::error::$name rendered hierarchy is not owned by the tested package."
-    return 1
+    # Accessibility dumping is occasionally interrupted on a newly booted
+    # guest. The dialog check is captured after app launch and is an equivalent
+    # package-identified hierarchy; never accept a different package.
+    if grep -Fq "package=\"$pkg\"" "artifacts/android-emulator/$name-dialog-check.xml" 2>/dev/null; then
+      cp "artifacts/android-emulator/$name-dialog-check.xml" "artifacts/android-emulator/$name-window.xml"
+    else
+      echo "::error::$name rendered hierarchy is not owned by the tested package."
+      adb exec-out screencap -p >"artifacts/android-emulator/$name-failed-hierarchy.png" || true
+      return 1
+    fi
   fi
   # A freshly booted shared emulator can report no active network during the
   # Activity's first millisecond and legitimately show MatchApp's offline view.
@@ -90,6 +103,12 @@ PY
   fi
   adb exec-out screencap -p >"artifacts/android-emulator/$name-first-screen.png"
   test "$(stat -c%s "artifacts/android-emulator/$name-first-screen.png")" -gt 6000
+  # Do not count a black, offline or native Android error page as successful
+  # end-to-end WebView testing. The native process can stay alive regardless.
+  if grep -qiE "Webpage not available|net::ERR_|ERR_NAME_NOT_RESOLVED|ERR_INTERNET_DISCONNECTED|You.?re offline|You are offline" "artifacts/android-emulator/$name-window.xml"; then
+    echo "::error::$name native Activity started but its embedded production website did not load (see $name-first-screen.png and emulator-dns.txt)."
+    return 1
+  fi
   # Android accessibility hierarchy above is retained for manual visual crosscheck.
   # A full swipe should not crash WebView or freeze the owning process.
   adb shell input swipe 450 1500 450 350 650
