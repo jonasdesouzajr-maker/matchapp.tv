@@ -91,4 +91,11 @@ test('homepage loads redirect capture before SDK client, and signup waits for co
     assert.match(app, /window\.MatchAppEmailAuth\.handleLanding\(supabaseClient\)/);
     assert.match(app, /else if \(data\?\.session\?\.user\)/);
     assert.match(app, /error\.code === 'email_not_confirmed'/);
+    // A delayed final-audit.js script replaces the signup handler several
+    // seconds after load. Both handlers must use the same verified return.
+    const audit = read('final-audit.js');
+    assert.match(audit, /emailRedirectTo:'https:\/\/matchapp\.tv\/'/);
+    assert.doesNotMatch(audit, /emailRedirectTo:'https:\/\/matchapp\.tv\/\?openAuth=1'/);
+    assert.match(read('title-captions.js'), /final-audit\.js\?v=20260926-emailverify1/);
+    assert.match(home, /title-captions\.js\?v=20260926-emailverify1/);
 });
