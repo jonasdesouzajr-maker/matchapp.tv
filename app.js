@@ -3119,6 +3119,8 @@ async function discoverFromITunes(cat, mood, vibe, decade, rating) {
         const rawRegion=String(window.MatchAppCatalogMedia?.regionCode?.()||'US').toUpperCase();
         const region=['BR','US','GB','CA','AU','JP','PT'].includes(rawRegion)?rawRegion:'US';
         const params=new URLSearchParams({term,media,limit:String(limit)});
+        if(cat==='music album')params.set('entity','album');
+        else if(media==='podcast')params.set('entity','podcast');
         if(audioDiscovery)params.set('country',region);
         const res = await fetch('https://itunes.apple.com/search?'+params.toString());
         if (!res.ok) return null;
@@ -3133,8 +3135,11 @@ async function discoverFromITunes(cat, mood, vibe, decade, rating) {
             /^https:\/\/is\d+-ssl\.mzstatic\.com\//i.test(String(r.artworkUrl100||'')) &&
             (r.trackName || r.collectionName) &&
             (!audioDiscovery || (media==='podcast'
-                ? (r.kind==='podcast'||r.wrapperType==='track'&&r.collectionName)
-                : r.kind==='song'||r.kind==='music-video'||r.wrapperType==='track')));
+                ? (r.kind==='podcast'||r.collectionType==='Podcast')
+                : cat==='music album'
+                    ? (r.wrapperType==='collection'&&r.collectionType==='Album')
+                    : r.kind==='song')) &&
+            (cat!=='Classical Music'||/classical/i.test(String(r.primaryGenreName||''))));
         pool = pool.filter(r => !excluded.has(window.matchPolicy?.key(r.trackName || r.collectionName)));
         const ITUNES_GENRE = {
             funny: /comedy|stand.?up/i,
