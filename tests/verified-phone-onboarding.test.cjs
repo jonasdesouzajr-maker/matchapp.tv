@@ -17,7 +17,8 @@ function setup(url='https://matchapp.tv/',opts={}){
   const dom=new JSDOM('<!doctype html><html lang="en"><body>'+panel+'</body></html>',{
     url,runScripts:'outside-only',virtualConsole:new VirtualConsole()
   });
-  const w=dom.window,calls={sent:[],verified:[],validated:0,updated:[]};
+  const w=dom.window,calls={sent:[],verified:[],validated:0,updated:[],modalOpened:0};
+  w.openAuthModal=()=>{calls.modalOpened++;};
   if(opts.pending)w.sessionStorage.setItem('matchapp_phone_verify_pending_v1',JSON.stringify(opts.pending));
   w.fetch=async()=>({ok:true,json:async()=>({external:{phone:opts.provider!==false}})});
   w.supabaseClient={supabaseUrl:'https://test.supabase.co',supabaseKey:'public-test-key',auth:{
@@ -61,6 +62,7 @@ test('real phone signup submits E.164 number, first-time name and SMS channel im
 test('SMS link opens verification step and accepts original code without sending another SMS',async()=>{
   const ctx=setup('https://matchapp.tv/?phoneVerify=1');await settle();
   assert.equal(ctx.byId('phone-auth-panel').hidden,false);
+  assert.equal(ctx.calls.modalOpened,1,'SMS link must open the enclosing login dialog, not just a hidden child panel');
   assert.equal(ctx.w.location.search,'','link marker is cleaned after opening');
   ctx.byId('phone-auth-number').value='+55 21 99999 9999';
   ctx.byId('phone-auth-have-code').click();
@@ -114,6 +116,23 @@ test('wrong or unconfirmed server phone cannot unlock a profile',async()=>{
     assert.equal(ctx.byId('phone-auth-status').dataset.state,'error');
     ctx.dom.window.close();
   }
+});
+
+test('an SMS verification link opens auth dialog even if phone provider is down',async()=>{
+  const ctx=setup('https://matchapp.tv/?phoneVerify=1',{provider:false});await settle();
+  assert.equal(ctx.calls.modalOpened,1);
+  assert.equal(ctx.byId('phone-auth-panel').hidden,false);
+  assert.equal(ctx.byId('phone-auth-entry').hidden,true);
+  assert.equal(ctx.byId('phone-auth-status').dataset.state,'error');
+  assert.match(ctx.byId('phone-auth-status').textContent,/unavailable/i);
+  assert.equal(ctx.w.location.search,'');
+  ctx.dom.window.close();
+});
+
+test('ordinary homepage never auto-opens auth dialog without an SMS link',async()=>{
+  const ctx=setup();await settle();
+  assert.equal(ctx.calls.modalOpened,0);
+  ctx.dom.window.close();
 });
 
 test('a linked SMS resumes a pending number without storing the OTP',async()=>{
