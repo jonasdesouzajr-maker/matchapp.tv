@@ -55,6 +55,31 @@ async function aiQuestion(page,question,expected,label){
     await page.locator('#q-category').waitFor({state:'attached',timeout:15000});
     await page.locator('#q-category').locator('xpath=..').locator('.crit-chips .crit-chip').first().waitFor({state:'attached',timeout:15000});
     await page.locator('#ebook-matcher-root [data-ebook-match]').waitFor({state:'attached',timeout:25000});
+    // Requested news regression: native summary must open a populated panel
+    // outside the Match/Ask accordion at every viewport, not just exist in DOM.
+    try {
+      await page.locator('#latest-news > summary').waitFor({state:'visible',timeout:20000});
+      await page.waitForFunction(()=>document.querySelectorAll('#latest-news .ma-news-card-main[href^="https://"]').length>0,null,{timeout:20000});
+      const summary=page.locator('#latest-news > summary');
+      await summary.click();
+      const collapsed=await page.evaluate(()=>{
+        const n=document.getElementById('latest-news');
+        return !n.open&&getComputedStyle(n.querySelector('.ma-news-panel')).display==='none';
+      });
+      await summary.click();
+      const expanded=await page.evaluate(()=>{
+        const n=document.getElementById('latest-news');
+        return n.open&&getComputedStyle(n.querySelector('.ma-news-panel')).display!=='none'&&
+          getComputedStyle(n.querySelector('summary')).pointerEvents!=='none'&&
+          n.closest('#ma-concierge')===null&&
+          !!n.querySelector('.ma-news-card-main[href^="https://"]');
+      });
+      record('LIVE Latest News opens and closes '+device.name,collapsed&&expanded,
+        'collapsed='+collapsed+' expanded='+expanded);
+      await shot(page,device.name+'-latest-news-open');
+    } catch(error) {
+      record('LIVE Latest News opens and closes '+device.name,false,String(error.message).slice(0,240));
+    }
     assert(await page.locator('img[data-title]').count()>0,'no original-title poster elements');
     // On a 320px phone the trending rail starts below the opening hero and
     // images may still be lazy. Scroll it genuinely into the viewport first.
@@ -231,6 +256,20 @@ async function aiQuestion(page,question,expected,label){
     record('LIVE normal movie matching and source poster',title.length>1&&authentic&&poster.fit!=='fill',
       'title='+title.slice(0,110)+' poster='+poster.src.slice(0,130)+' loaded='+poster.loaded+' fit='+poster.fit);
     await page.waitForTimeout(1800);await shot(page,'live-normal-matched');
+    // Requested dismissal regression: click the real red trash icon, wait for
+    // fade-out, and verify the normal Home remains intact without losing ads.
+    const dismiss=page.locator('#result-dismiss');
+    await dismiss.click();
+    await page.waitForFunction(()=>getComputedStyle(document.getElementById('result-box')).display==='none',null,{timeout:5000});
+    const closed=await page.evaluate(()=>({
+      resultHidden:getComputedStyle(document.getElementById('result-box')).display==='none',
+      formRestored:document.getElementById('questionnaire-box').style.display!=='none',
+      homeVisible:!!document.getElementById('trending-rail')?.getClientRects().length,
+      ads:document.querySelectorAll('ins.adsbygoogle').length
+    }));
+    record('LIVE red trash dismisses match without damaging Home',closed.resultHidden&&
+      closed.formRestored&&closed.homeVisible&&closed.ads===5,JSON.stringify(closed));
+    await shot(page,'live-result-dismissed');
   }catch(error){record('LIVE normal movie matching',false,String(error.stack||error).slice(0,500));await shot(page,'live-normal-failure')}
   finally{await c.close();}
   // A real book match exercises the production matcher and confirms that the
