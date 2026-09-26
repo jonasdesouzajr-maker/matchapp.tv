@@ -14,7 +14,7 @@ test('behavioral pages load one current shared runtime instead of stale cache ke
   };
   const appPages=['index.html','discover.html','profile/profile.html','together.html','pricing/pricing.html','purchase.html','friends.html','callback.html','oauth/consent.html','events-archive.html'];
   // Every adult page that loads shared matching uses the current cache key.
-  assert.deepEqual([...new Set(appPages.map(p=>version(p,'app.js')))],['20260926-comfort4']);
+  assert.deepEqual([...new Set(appPages.map(p=>version(p,'app.js')))],['20260926-curation1']);
   const policyPages=['index.html','discover.html','profile/profile.html','together.html','friends.html'];
   assert.deepEqual([...new Set(policyPages.map(p=>version(p,'matching-policy.js')))],['20260926-conflicts2']);
   assert.equal(version('kids/index.html','matching-policy.js'),'20260924-runtime1');
