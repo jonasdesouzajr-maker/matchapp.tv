@@ -15,7 +15,7 @@
  const sameWork=(a,b)=>{
   const expected=norm(a),actual=norm(b);
   return !!expected&&(actual===expected||
-    actual.split(/[:;]/)[0].trim()===expected);
+    norm(String(b||'').split(/[:;]/)[0])===expected);
  };
  const exactAuthor=(expected,names)=>{
   const coauthors=String(expected||'').split(/\s+(?:&|and|e)\s+/i)
