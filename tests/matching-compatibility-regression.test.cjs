@@ -30,6 +30,8 @@ test('Comfort disables Thriller and Horror and restored contradictions cannot ov
  assert.deepEqual(Array.from(w.getMatchCriteria().mood),['cozy comfort watch']);
  assert.deepEqual(Array.from(w.getMatchCriteria().genre),[]);
  w.document.querySelector('[data-value="cozy comfort watch"]').click();
+ const genreGroup=w.document.getElementById('q-genre').parentElement.querySelector('.crit-chips');
+ if(!genreGroup.querySelector('[data-value="Thriller"]'))genreGroup.querySelector('[data-toggle-more]').click();
  w.document.querySelector('[data-value="Thriller"]').click();
  assert.equal(w.document.querySelector('[data-value="cozy comfort watch"]').disabled,true);
  assert.deepEqual(Array.from(w.getMatchCriteria().genre),['Thriller']);
