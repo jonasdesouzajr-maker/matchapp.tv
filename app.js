@@ -3122,10 +3122,33 @@ async function discoverFromITunes(cat, mood, vibe, decade, rating) {
         if(cat==='music album')params.set('entity','album');
         else if(media==='podcast')params.set('entity','podcast');
         if(audioDiscovery)params.set('country',region);
-        const res = await fetch('https://itunes.apple.com/search?'+params.toString());
-        if (!res.ok) return null;
-        const data = await res.json();
-        if (!data.results || data.results.length === 0) return null;
+        // Try an independent query shape against the same official storefront.
+        // Broad query rows are still subjected to EXACT category and mood
+        // verification below; broadening a query never broadens acceptance.
+        const variants=[params];
+        if(audioDiscovery){
+            const broader=new URLSearchParams(params);
+            const generic=cat==='music album'?'album':media==='podcast'?'podcast':'music';
+            if(term.toLowerCase()!==generic) {
+                broader.set('term',generic);
+                variants.push(broader);
+            }
+        }
+        const answers=await Promise.all(variants.map(async q=>{
+            try{
+                const res=await fetch('https://itunes.apple.com/search?'+q.toString());
+                if(!res.ok)return [];
+                const data=await res.json();
+                return Array.isArray(data.results)?data.results:[];
+            }catch(_){return [];}
+        }));
+        const results=[],ids=new Set();
+        for(const row of answers.flat()){
+            const key=String(row.trackId||row.collectionId||'')+'|'+String(row.trackName||row.collectionName||'');
+            if(ids.has(key))continue;ids.add(key);results.push(row);
+        }
+        if(!results.length)return null;
+        const data={results};
 
         const excluded = new Set([...(window.matchPolicy?.known()||[]),...Array.from(SESSION_SHOWN).map(t=>window.matchPolicy?.key(t)||t)]);
         const seenRecently = new Set(recentTitles);
