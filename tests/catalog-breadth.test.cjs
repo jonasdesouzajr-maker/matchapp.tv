@@ -41,6 +41,7 @@ test('magazine publishers expand with explicit source pages, region and editoria
  assert(mags.some(x=>x.region==='BR')&&mags.some(x=>x.region==='JP'));
  const matcher=read('ebooks/ebook-matcher.js');
  assert(matcher.includes('Original issue covers, editions and current prices are available at the publisher.'));
- assert(matcher.includes("api.select(p,market(),excluded)"));
+ assert(matcher.includes('api.items.filter(m=>!excluded.has(m.id)'));
+ assert(matcher.includes('return await rankBooks(shortlist,p)'))
  assert.doesNotMatch(read('kids/index.html'),/\/ebooks\/magazines\.js/);
 });

@@ -1735,6 +1735,41 @@ window.eventMatch = function (query) {
             arrowFrame = requestAnimationFrame(() => { arrowFrame = 0; updateArrows(vp); });
         }, { passive:true });
 
+        // Mobile swipe stays native and fluid. Suppress a poster's click when a
+        // finger has dragged the rail; a deliberate tap still opens that title.
+        if(vp.id==='marquee-viewport'){
+            let drag=null,swipeUntil=0;
+            vp.addEventListener('pointerdown',e=>{
+                if(e.pointerType!=='touch'&&!e.pointerType.startsWith('pen'))return;
+                drag={id:e.pointerId,x:e.clientX,y:e.clientY,scroll:vp.scrollLeft,moved:false};
+            },{passive:true});
+            vp.addEventListener('pointermove',e=>{
+                if(!drag||e.pointerId!==drag.id)return;
+                if(Math.abs(e.clientX-drag.x)>11||Math.abs(vp.scrollLeft-drag.scroll)>9)
+                    drag.moved=true;
+            },{passive:true});
+            const finishGesture=e=>{
+                if(!drag||e.pointerId!==drag.id)return;
+                if(drag.moved||Math.abs(vp.scrollLeft-drag.scroll)>9)
+                    swipeUntil=Date.now()+450;
+                drag=null;
+            };
+            vp.addEventListener('pointerup',finishGesture,{passive:true});
+            vp.addEventListener('pointercancel',finishGesture,{passive:true});
+            vp.addEventListener('click',e=>{
+                if(Date.now()<swipeUntil&&e.target.closest?.('.marquee-item')){
+                    e.preventDefault();e.stopImmediatePropagation();
+                }
+            },true);
+            vp.addEventListener('keydown',e=>{
+                if(e.key!=='Enter'&&e.key!==' ')return;
+                const item=e.target.closest?.('.marquee-item');
+                if(!item)return;
+                e.preventDefault();hold();
+                const title=item.querySelector('img[data-title]')?.dataset.title;
+                if(title)window.selectMarqueeItem?.(title);
+            });
+        }
         if ('IntersectionObserver' in window) {
             const io = new IntersectionObserver(entries => {
                 visible = !!entries[0]?.isIntersecting;
@@ -2636,7 +2671,38 @@ const CONTENT_CATALOG = [
     { title: "John Mulaney: Baby J", year: 2023, country: "United States", countryCode: "US", synopsis: "A stand-up special turning the comedian's very public struggles into sharp, self-deprecating comedy.", platform: "Netflix", cats: ["stand-up comedy special"], moods: ["funny"], vibes: ["one sitting short watch","award winning"], ratings: ["mature adults only R rated","any"] , shareRestricted: true },
     { title: "Love Is Blind", year: 2020, country: "United States", countryCode: "US", synopsis: "Singles date and get engaged sight unseen, meeting face-to-face only after saying yes.", platform: "Netflix", cats: ["reality show"], moods: ["romantic"], vibes: ["guilty pleasure","fast-paced binge-worthy"], ratings: ["teen PG-13","any"] },
     { title: "Alcarràs", year: 2022, country: "Spain", countryCode: "ES", synopsis: "A Catalan farming family faces their final harvest as their land is sold for solar panels.", platform: "MUBI", cats: ["European cinema","movie"], moods: ["heartbreaking","nostalgic"], vibes: ["slow burn","hidden gem underrated"], ratings: ["all ages family friendly","any"] },
-    { title: "RRR", year: 2022, country: "India", countryCode: "IN", synopsis: "Two revolutionaries in colonial India form an epic, action-packed friendship in this Tollywood blockbuster.", platform: "Netflix", cats: ["Bollywood","movie"], moods: ["epic and adventurous","intense and thrilling"], vibes: ["fast-paced binge-worthy","award winning"], ratings: ["teen PG-13","any"] },
+    { title: "RRR", year: 2022, country: "India", countryCode: "IN", synopsis: "Two revolutionaries in colonial India form an epic, action-packed friendship in this Tollywood blockbuster.", platform: "Netflix", cats: ["movie"], moods: ["epic and adventurous","intense and thrilling"], vibes: ["fast-paced binge-worthy","award winning"], ratings: ["teen PG-13","any"] },
+
+    // ---- Source-referenced Indian Hindi cinema and Mexican titles (Sep 2026) ----
+    {"title":"Dangal","year":2016,"country":"India","countryCode":"IN","originalLanguage":"hi","synopsis":"A former wrestler trains his daughters to compete internationally despite resistance in their hometown.","platform":"Netflix","cats":["Bollywood","movie"],"moods":["inspiring","intense and thrilling"],"vibes":["prestige and critically acclaimed"],"ratings":["any"],"metadataSource":"https://www.netflix.com/in/browse/genre/107461","availabilityRegions":["IN"],"source":"verified-editorial","platformVerified":false},
+    {"title":"Laapataa Ladies","year":2024,"country":"India","countryCode":"IN","originalLanguage":"hi","synopsis":"Two newlywed brides become separated during a train journey, setting off a warm comedy about identity and independence.","platform":"Netflix","cats":["Bollywood","movie"],"moods":["light and feel-good","funny"],"vibes":["hidden gem underrated"],"ratings":["any"],"metadataSource":"https://www.netflix.com/in/browse/genre/107461","availabilityRegions":["IN"],"source":"verified-editorial","platformVerified":false},
+    {"title":"Jawan","year":2023,"country":"India","countryCode":"IN","originalLanguage":"hi","synopsis":"A vigilante and his team confront corruption through audacious missions tied to a painful family history.","platform":"Netflix","cats":["Bollywood","movie"],"moods":["intense and thrilling","epic and adventurous"],"vibes":["fast-paced binge-worthy"],"ratings":["any"],"metadataSource":"https://www.netflix.com/in/browse/genre/107461","availabilityRegions":["IN"],"source":"verified-editorial","platformVerified":false},
+    {"title":"Gangubai Kathiawadi","year":2022,"country":"India","countryCode":"IN","originalLanguage":"hi","synopsis":"A young woman forced into Bombay's red-light district becomes a political advocate for the women around her.","platform":"Netflix","cats":["Bollywood","movie"],"moods":["inspiring","intense and thrilling"],"vibes":["prestige and critically acclaimed"],"ratings":["any"],"metadataSource":"https://www.netflix.com/in/browse/genre/107461","availabilityRegions":["IN"],"source":"verified-editorial","platformVerified":false},
+    {"title":"Raat Akeli Hai","year":2020,"country":"India","countryCode":"IN","originalLanguage":"hi","synopsis":"A small-town police officer investigates a wealthy family's suspicious wedding-night murder.","platform":"Netflix","cats":["Bollywood","movie"],"moods":["dark and gritty","intense and thrilling"],"vibes":["slow burn"],"ratings":["any"],"metadataSource":"https://www.netflix.com/in/browse/genre/107461","availabilityRegions":["IN"],"source":"verified-editorial","platformVerified":false},
+    {"title":"Darlings","year":2022,"country":"India","countryCode":"IN","originalLanguage":"hi","synopsis":"A mother and daughter plot an unconventional response to domestic abuse in a dark social satire.","platform":"Netflix","cats":["Bollywood","movie"],"moods":["dark and gritty"],"vibes":["prestige and critically acclaimed"],"ratings":["any"],"metadataSource":"https://www.netflix.com/in/browse/genre/107461","availabilityRegions":["IN"],"source":"verified-editorial","platformVerified":false},
+    {"title":"Heeramandi: The Diamond Bazaar","year":2024,"country":"India","countryCode":"IN","originalLanguage":"hi","synopsis":"Courtesans navigate power, rivalry and independence in pre-partition Lahore.","platform":"Netflix","cats":["series"],"moods":["romantic","dark and gritty"],"vibes":["prestige and critically acclaimed"],"ratings":["any"],"metadataSource":"https://www.netflix.com/in/browse/genre/107461","availabilityRegions":["IN"],"source":"verified-editorial","platformVerified":false},
+    {"title":"Sacred Games","year":2018,"country":"India","countryCode":"IN","originalLanguage":"hi","synopsis":"A Mumbai police officer follows a cryptic criminal warning into a conspiracy with national consequences.","platform":"Netflix","cats":["series"],"moods":["intense and thrilling","dark and gritty"],"vibes":["fast-paced binge-worthy"],"ratings":["any"],"metadataSource":"https://www.netflix.com/in/browse/genre/107461","availabilityRegions":["IN"],"source":"verified-editorial","platformVerified":false},
+    {"title":"Delhi Crime","year":2019,"country":"India","countryCode":"IN","originalLanguage":"hi","synopsis":"Delhi investigators pursue demanding cases in a police procedural focused on victims and public scrutiny.","platform":"Netflix","cats":["series"],"moods":["intense and thrilling","dark and gritty"],"vibes":["prestige and critically acclaimed"],"ratings":["any"],"metadataSource":"https://www.netflix.com/in/browse/genre/107461","availabilityRegions":["IN"],"source":"verified-editorial","platformVerified":false},
+    {"title":"Kota Factory","year":2019,"country":"India","countryCode":"IN","originalLanguage":"hi","synopsis":"Students prepare for highly competitive entrance examinations while navigating friendship and pressure.","platform":"Netflix","cats":["series"],"moods":["inspiring","nostalgic"],"vibes":["long running series"],"ratings":["any"],"metadataSource":"https://www.netflix.com/in/browse/genre/107461","availabilityRegions":["IN"],"source":"verified-editorial","platformVerified":false},
+    {"title":"3 Idiots","year":2009,"country":"India","countryCode":"IN","originalLanguage":"hi","synopsis":"Three engineering students question a rigid education system while following their own ambitions.","platform":"any","cats":["Bollywood","movie"],"moods":["funny","inspiring"],"vibes":["prestige and critically acclaimed"],"ratings":["any"],"metadataSource":"https://www.themoviedb.org/movie/20453-3-idiots","availabilityRegions":[],"source":"verified-editorial","platformVerified":false},
+    {"title":"Zindagi Na Milegi Dobara","year":2011,"country":"India","countryCode":"IN","originalLanguage":"hi","synopsis":"Three lifelong friends take a road trip that prompts them to reconsider love, fear and friendship.","platform":"any","cats":["Bollywood","movie"],"moods":["light and feel-good","inspiring"],"vibes":["prestige and critically acclaimed"],"ratings":["any"],"metadataSource":"https://www.themoviedb.org/search?query=Zindagi%20Na%20Milegi%20Dobara","availabilityRegions":[],"source":"verified-editorial","platformVerified":false},
+    {"title":"Andhadhun","year":2018,"country":"India","countryCode":"IN","originalLanguage":"hi","synopsis":"A pianist pretending to be blind stumbles into a crime and a cascade of dangerous deceptions.","platform":"any","cats":["Bollywood","movie"],"moods":["mind-bending","intense and thrilling"],"vibes":["prestige and critically acclaimed"],"ratings":["any"],"metadataSource":"https://www.themoviedb.org/search?query=Andhadhun","availabilityRegions":[],"source":"verified-editorial","platformVerified":false},
+    {"title":"Queen","year":2014,"country":"India","countryCode":"IN","originalLanguage":"hi","synopsis":"A woman travels alone on her planned honeymoon after her engagement ends, discovering her independence.","platform":"any","cats":["Bollywood","movie"],"moods":["inspiring","light and feel-good"],"vibes":["prestige and critically acclaimed"],"ratings":["any"],"metadataSource":"https://www.themoviedb.org/search?query=Queen%202014","availabilityRegions":[],"source":"verified-editorial","platformVerified":false},
+    {"title":"La casa de las flores","year":2018,"country":"Mexico","countryCode":"MX","originalLanguage":"es","synopsis":"A wealthy family's secrets spill into public view after a scandal shakes their flower business.","platform":"Netflix","cats":["series"],"moods":["funny","dark and gritty"],"vibes":["fast-paced binge-worthy"],"ratings":["any"],"metadataSource":"https://www.netflix.com/mx/browse/genre/100388","availabilityRegions":["MX"],"source":"verified-editorial","platformVerified":false},
+    {"title":"Club de Cuervos","year":2015,"country":"Mexico","countryCode":"MX","originalLanguage":"es","synopsis":"Rival siblings struggle for control of their late father's football club.","platform":"Netflix","cats":["series"],"moods":["funny","intense and thrilling"],"vibes":["fast-paced binge-worthy"],"ratings":["any"],"metadataSource":"https://www.netflix.com/mx/browse/genre/100388","availabilityRegions":["MX"],"source":"verified-editorial","platformVerified":false},
+    {"title":"Control Z","year":2020,"country":"Mexico","countryCode":"MX","originalLanguage":"es","synopsis":"A high school hacker exposes classmates' secrets, provoking a dangerous web of suspicion.","platform":"Netflix","cats":["series"],"moods":["intense and thrilling","dark and gritty"],"vibes":["fast-paced binge-worthy"],"ratings":["any"],"metadataSource":"https://www.netflix.com/mx/browse/genre/100388","availabilityRegions":["MX"],"source":"verified-editorial","platformVerified":false},
+    {"title":"Monarca","year":2019,"country":"Mexico","countryCode":"MX","originalLanguage":"es","synopsis":"A powerful Mexican family battles for control of its tequila business amid secrets and corruption.","platform":"Netflix","cats":["series"],"moods":["dark and gritty","intense and thrilling"],"vibes":["fast-paced binge-worthy"],"ratings":["any"],"metadataSource":"https://www.netflix.com/mx/browse/genre/100388","availabilityRegions":["MX"],"source":"verified-editorial","platformVerified":false},
+    {"title":"¿Quién mató a Sara?","year":2021,"country":"Mexico","countryCode":"MX","originalLanguage":"es","synopsis":"A man returns after years in prison to uncover who killed his sister and who framed him.","platform":"Netflix","cats":["series"],"moods":["intense and thrilling","dark and gritty"],"vibes":["fast-paced binge-worthy"],"ratings":["any"],"metadataSource":"https://www.netflix.com/mx/browse/genre/100388","availabilityRegions":["MX"],"source":"verified-editorial","platformVerified":false},
+    {"title":"Luis Miguel: La serie","year":2018,"country":"Mexico","countryCode":"MX","originalLanguage":"es","synopsis":"This dramatized biographical series follows singer Luis Miguel's life and complicated family history.","platform":"Netflix","cats":["series"],"moods":["romantic","intense and thrilling"],"vibes":["long running series"],"ratings":["any"],"metadataSource":"https://www.netflix.com/mx/browse/genre/100388","availabilityRegions":["MX"],"source":"verified-editorial","platformVerified":false},
+    {"title":"Rosario Tijeras","year":2016,"country":"Mexico","countryCode":"MX","originalLanguage":"es","synopsis":"A young woman from Mexico City's difficult neighborhoods becomes entangled in organized crime.","platform":"Netflix","cats":["series","telenovela"],"moods":["intense and thrilling","dark and gritty"],"vibes":["long running series"],"ratings":["any"],"metadataSource":"https://www.netflix.com/mx/browse/genre/100388","availabilityRegions":["MX"],"source":"verified-editorial","platformVerified":false},
+    {"title":"El Dragón: El regreso de un guerrero","year":2019,"country":"Mexico","countryCode":"MX","originalLanguage":"es","synopsis":"A businessman raised in Japan returns to Mexico and confronts his family's criminal legacy.","platform":"Netflix","cats":["series","telenovela"],"moods":["intense and thrilling","dark and gritty"],"vibes":["fast-paced binge-worthy"],"ratings":["any"],"metadataSource":"https://www.netflix.com/mx/browse/genre/100388","availabilityRegions":["MX"],"source":"verified-editorial","platformVerified":false},
+    {"title":"La usurpadora","year":1998,"country":"Mexico","countryCode":"MX","originalLanguage":"es","synopsis":"An ambitious woman persuades her lookalike to replace her in a wealthy family, setting up a classic melodrama.","platform":"any","cats":["series","telenovela"],"moods":["romantic","intense and thrilling"],"vibes":["long running series"],"ratings":["any"],"metadataSource":"https://www.themoviedb.org/search?query=La%20usurpadora%201998","availabilityRegions":[],"source":"verified-editorial","platformVerified":false},
+    {"title":"Rubí","year":2004,"country":"Mexico","countryCode":"MX","originalLanguage":"es","synopsis":"A resourceful young woman pursues wealth and social status, often at the expense of those who love her.","platform":"any","cats":["series","telenovela"],"moods":["romantic","dark and gritty"],"vibes":["long running series"],"ratings":["any"],"metadataSource":"https://www.themoviedb.org/search?query=Rub%C3%AD%202004","availabilityRegions":[],"source":"verified-editorial","platformVerified":false},
+    {"title":"Teresa","year":2010,"country":"Mexico","countryCode":"MX","originalLanguage":"es","synopsis":"A university student faces difficult choices as ambition and romance collide.","platform":"any","cats":["series","telenovela"],"moods":["romantic","dark and gritty"],"vibes":["long running series"],"ratings":["any"],"metadataSource":"https://www.themoviedb.org/search?query=Teresa%202010","availabilityRegions":[],"source":"verified-editorial","platformVerified":false},
+    {"title":"Roma","year":2018,"country":"Mexico","countryCode":"MX","originalLanguage":"es","synopsis":"An intimate portrait of an Indigenous domestic worker and a family in 1970s Mexico City.","platform":"Netflix","cats":["movie"],"moods":["heartbreaking","nostalgic"],"vibes":["prestige and critically acclaimed"],"ratings":["any"],"metadataSource":"https://www.netflix.com/mx/browse/genre/100388","availabilityRegions":["MX"],"source":"verified-editorial","platformVerified":false},
+    {"title":"Pedro Páramo","year":2024,"country":"Mexico","countryCode":"MX","originalLanguage":"es","synopsis":"A man travels to his mother's hometown and discovers a place haunted by memory and unsettled voices.","platform":"Netflix","cats":["movie"],"moods":["mind-bending","dark and gritty"],"vibes":["prestige and critically acclaimed"],"ratings":["any"],"metadataSource":"https://www.netflix.com/mx/browse/genre/100388","availabilityRegions":["MX"],"source":"verified-editorial","platformVerified":false},
+    {"title":"Amores perros","year":2000,"country":"Mexico","countryCode":"MX","originalLanguage":"es","synopsis":"Three interconnected stories after a Mexico City car crash explore love, violence and class.","platform":"any","cats":["movie"],"moods":["intense and thrilling","dark and gritty"],"vibes":["prestige and critically acclaimed"],"ratings":["any"],"metadataSource":"https://www.themoviedb.org/search?query=Amores%20perros","availabilityRegions":[],"source":"verified-editorial","platformVerified":false},
+    {"title":"Como caído del cielo","year":2019,"country":"Mexico","countryCode":"MX","originalLanguage":"es","synopsis":"A famous singer is sent back to Earth in another man's body and must earn redemption.","platform":"Netflix","cats":["movie"],"moods":["funny","romantic"],"vibes":["easy background watch"],"ratings":["any"],"metadataSource":"https://www.netflix.com/mx/browse/genre/100388","availabilityRegions":["MX"],"source":"verified-editorial","platformVerified":false},
     { title: "Business Proposal", year: 2022, country: "South Korea", countryCode: "KR", synopsis: "A woman goes on a blind date pretending to be someone else — and it turns out to be her own CEO.", platform: "Viki", cats: ["K-drama","series"], moods: ["light and feel-good","romantic"], vibes: ["fast-paced binge-worthy","guilty pleasure"], ratings: ["teen PG-13","any"] },
     { title: "Rebel Moon", year: 2023, country: "United States", countryCode: "US", synopsis: "A peaceful colony on the edge of the galaxy sends a warrior to recruit fighters against a tyrannical regime.", platform: "Netflix", cats: ["movie"], moods: ["epic and adventurous","intense and thrilling"], vibes: ["fast-paced binge-worthy","guilty pleasure"], ratings: ["mature adults only R rated","any"] , shareRestricted: true },
     { title: "Midnight Diner: Tokyo Stories", year: 2016, country: "Japan", countryCode: "JP", synopsis: "A quiet late-night Tokyo diner serves comfort food and even more comforting stories to its regulars.", platform: "Netflix", watchUrl: "https://www.netflix.com/title/80113037", cats: ["J-drama","series"], moods: ["cozy comfort watch","nostalgic"], vibes: ["easy background watch","hidden gem underrated"], ratings: ["all ages family friendly","any"] },
@@ -3363,11 +3429,31 @@ async function discoverFromITunes(cat, mood, vibe, decade, rating) {
         // verified source signal, fail closed rather than pretending the title
         // satisfied them.
         if(normCriteria(vibe).length||ratingSet.length)return null;
-        const fresh = pool.filter(r => !seenRecently.has(r.trackName || r.collectionName));
-        if (fresh.length) pool = fresh;
-        if (!pool.length) return null;
-
-        const r = pool[Math.floor(Math.random() * pool.length)];
+        // A real iTunes identity with its own original artwork/preview is an
+        // approved AI candidate, not permission to make up songs or platforms.
+        const fresh = pool.filter(r => !seenRecently.has(r.trackName || r.collectionName)
+            && !SESSION_SHOWN.has(r.trackName || r.collectionName));
+        if(!fresh.length)return null;
+        pool=fresh;
+        let r=null;
+        if(typeof window.MatchAppAIRank?.rank==='function'){
+            const shuffled=pool.slice().sort(()=>Math.random()-.5).slice(0,20);
+            const rows=shuffled.map((item,i)=>({
+                id:'c'+i,title:item.trackName||item.collectionName,
+                format:media,genres:item.primaryGenreName||'',
+                mood:selectedMoods.join(' or '),synopsis:item.shortDescription||item.longDescription||'',
+                country:region
+            }));
+            const ranked=await window.MatchAppAIRank.rank(rows,{
+                format:cat,genre:genreRx?String(genreRx):'',
+                mood:selectedMoods.join(' or '),platform:'any',country:region
+            });
+            if(/^c\d+$/.test(String(ranked?.id||''))){
+                const hit=shuffled[Number(ranked.id.slice(1))];
+                if(hit&&pool.includes(hit))r=hit;
+            }
+        }
+        if(!r)r=pool[Math.floor(Math.random()*pool.length)];
         const name = r.trackName || r.collectionName;
         const year = r.releaseDate ? String(r.releaseDate).substring(0, 4) : '';
 
@@ -3825,6 +3911,55 @@ function titlePassesRealGenre(entry) {
     return keys.has(normalise(entry?.title));
 }
 
+function regionAvailabilityFits(entry,criteria) {
+    const limited=Array.isArray(entry?.availabilityRegions)?entry.availabilityRegions:[];
+    const platforms=normCriteria(criteria?.plat);
+    if(!limited.length||!platforms.length)return true;
+    const current=window.MatchAppCatalogMedia?.regionCode?.()||'';
+    return limited.includes(current);
+}
+async function rankVerifiedCuratedMatch(requested) {
+    const policy=window.matchPolicy,ranker=window.MatchAppAIRank?.rank;
+    if(!policy||typeof ranker!=='function')return null;
+    const wantedFaith=normCriteria(requested.cat).includes('Gospel & Faith')||
+       normCriteria(requested.plat).some(p=>['Pure Flix','Angel Studios'].includes(p));
+    const criteria={cat:requested.cat,plat:requested.plat,mood:requested.mood,
+       vibe:requested.vibe,rating:requested.rating,decade:requested.decade};
+    // Mandatory checks are identical to those used by the ordinary shelf.
+    const eligible=CONTENT_CATALOG.filter(e=>policy.matches(e,criteria)&&
+       (!window.__matchappGenreFilterActive||titlePassesRealGenre(e))&&
+       entryPassesPreferenceExclusions(e)&&regionAvailabilityFits(e,criteria)&&!isBlockedEntry(e)&&
+       !SESSION_SHOWN.has(e.title)&&
+       (wantedFaith||!e.cats.includes('Gospel & Faith'))&&
+       (normCriteria(requested.cat).length||isSurpriseEligible(e)));
+    if(!eligible.length)return null;
+    const offset=Math.floor(Math.random()*eligible.length);
+    const rotated=eligible.slice(offset).concat(eligible.slice(0,offset));
+    const country=window.MatchAppCatalogMedia?.regionCode?.()||'';
+    const shortlist=rotated.slice(0,20).sort((a,b)=>
+       Number(b.countryCode===country)-Number(a.countryCode===country));
+    const ranked=await ranker(shortlist.map(e=>({
+       id:policy.key(e.title),title:e.title,format:(e.cats||[]).join(', '),
+       genres:(e.realGenres||[]).join(', '),mood:(e.moods||[]).join(', '),
+       synopsis:e.synopsis||'',country:e.countryCode||''
+    })).map((r,i)=>({...r,id:'c'+i})),{
+       format:normCriteria(requested.cat).join(' or '),
+       genre:normCriteria(requested.genre).join(' or '),
+       mood:normCriteria(requested.mood).join(' or '),
+       pace:normCriteria(requested.vibe).join(' or '),
+       platform:normCriteria(requested.plat).join(' or '),
+       country
+    });
+    // Shared ranker returns the supplied input object, never a new title.
+    const index=ranked?.id && /^c\d+$/.test(ranked.id)?Number(ranked.id.slice(1)):-1;
+    const hit=shortlist[index];
+    if(!hit||!eligible.includes(hit))return null;
+    return {...hit,platformVerified:hit.platform!=='any'&&hit.platformVerified!==false,source:'catalog-ai-ranked'};
+}
+
+// Source-backed curation runs before generative title proposals: the AI only
+// orders already eligible real titles. If that shelf is empty, the proposal
+// route still requires exact TMDB identity/genre/country/provider verification.
 function pickFromCatalog(cat, plat, mood, vibe, rating, decade) {
     try { if (typeof window !== 'undefined') window.lastMatchTasteBiased = false; } catch (_) {}
     const criteria = {cat, plat, mood, vibe, rating, decade: decade || window.getMatchCriteria?.().decade || []};
@@ -3834,7 +3969,7 @@ function pickFromCatalog(cat, plat, mood, vibe, rating, decade) {
     const eligible = e => policy.matches(e, criteria)
         && (typeof titlePassesRealGenre!=='function'||titlePassesRealGenre(e))
         && (typeof entryPassesPreferenceExclusions!=='function'||entryPassesPreferenceExclusions(e))
-        && !isBlockedEntry(e) && !SESSION_SHOWN.has(e.title)
+        && regionAvailabilityFits(e,criteria) && !isBlockedEntry(e) && !SESSION_SHOWN.has(e.title)
         && (wantsFaith || !e.cats.includes('Gospel & Faith'))
         && (normCriteria(cat).length || isSurpriseEligible(e));
 
@@ -3873,7 +4008,7 @@ function pickFromCatalog(cat, plat, mood, vibe, rating, decade) {
         }
     } catch (_) {}
     const pick = pool[Math.floor(Math.random() * pool.length)];
-    return {...pick,title:pick.title,synopsis:pick.synopsis,platform:pick.platform,platformVerified:true,watchUrl:pick.watchUrl||(pick.platform==='Roku Channel'?pick.url:null)||null,source:'catalog'};
+    return {...pick,title:pick.title,synopsis:pick.synopsis,platform:pick.platform,platformVerified:pick.platform!=='any'&&pick.platformVerified!==false,watchUrl:pick.watchUrl||(pick.platform==='Roku Channel'?pick.url:null)||null,source:'catalog'};
 }
 
 // Exhaustion recovery: if every exact match has already appeared, recycle the
@@ -3888,7 +4023,7 @@ function pickRecycledCatalog(cat, plat, mood, vibe, rating, decade) {
     const eligible = e => policy.matchesCriteria(e, criteria)
         && (typeof titlePassesRealGenre!=='function'||titlePassesRealGenre(e))
         && (typeof entryPassesPreferenceExclusions!=='function'||entryPassesPreferenceExclusions(e))
-        && !isBlockedEntry(e)
+        && regionAvailabilityFits(e,criteria) && !isBlockedEntry(e)
         && (wantsFaith || !e.cats.includes('Gospel & Faith'))
         && (normCriteria(cat).length || isSurpriseEligible(e));
 
@@ -3964,7 +4099,7 @@ function pickRecycledCatalog(cat, plat, mood, vibe, rating, decade) {
     });
 
     const pick = pool[0];
-    return {...pick,title:pick.title,synopsis:pick.synopsis,platform:pick.platform,platformVerified:true,watchUrl:pick.watchUrl||(pick.platform==='Roku Channel'?pick.url:null)||null,source:'catalog-recycle',_historyFallback:true};
+    return {...pick,title:pick.title,synopsis:pick.synopsis,platform:pick.platform,platformVerified:pick.platform!=='any'&&pick.platformVerified!==false,watchUrl:pick.watchUrl||(pick.platform==='Roku Channel'?pick.url:null)||null,source:'catalog-recycle',_historyFallback:true};
 }
 
 // Guaranteed recovery for ordinary matching. Exact user choices win first.
@@ -4211,11 +4346,23 @@ window.triggerMatch = async function(isSpecificSearch = false) {
     let timerInterval = setInterval(updateMatchProgress, 100);
     window.__matchappActiveProgressTimer=timerInterval;
 
-    let preflight = isSpecificSearch ? null : pickFromCatalog(requested.cat,requested.plat,requested.mood,requested.vibe,requested.rating,requested.decade);
+    let preflight = null;
+    if(!isSpecificSearch && window.MatchAppAIRank?.rank){
+        try{preflight=await withMatchSourceDeadline(()=>rankVerifiedCuratedMatch(requested),45000);}
+        catch(_){preflight=null;}
+    }
+    if(!isSpecificSearch && !preflight){
+        preflight=pickFromCatalog(requested.cat,requested.plat,requested.mood,requested.vibe,requested.rating,requested.decade);
+    }
     // Never recycle a previously shown title. If the curated exact pool is
     // exhausted, ask the verified source layer for a genuinely fresh title.
-    // TMDB gets first chance because it can verify genres/ratings/origin and,
-    // when requested, regional provider availability.
+    // If the curated shelf is exhausted, request OpenAI-led proposals first;
+    // independent TMDB lookup verifies every suggested title before display.
+    if (!isSpecificSearch && !preflight && typeof aiProposedVerifiedExact === 'function') {
+        try { preflight=await withMatchSourceDeadline(()=>aiProposedVerifiedExact(requested),MATCH_SOURCE_DEADLINES.ai); }
+        catch(_){preflight=null;}
+    }
+    // A source-first TMDB search remains the mandatory independent fallback.
     if (!isSpecificSearch && !preflight) {
         try { preflight = await withMatchSourceDeadline(()=>discoverVerifiedExactTMDB(requested),MATCH_SOURCE_DEADLINES.tmdb); } catch (_) { preflight = null; }
     }
@@ -4225,19 +4372,15 @@ window.triggerMatch = async function(isSpecificSearch = false) {
         try { preflight = await withMatchSourceDeadline(()=>discoverFromITunes(requested.cat,requested.mood,requested.vibe,requested.decade,requested.rating),MATCH_SOURCE_DEADLINES.itunes); }
         catch (_) { preflight = null; }
     }
-    // Last source: AI proposals, each verified on TMDB against every choice.
-    if (!isSpecificSearch && !preflight && typeof aiProposedVerifiedExact === 'function') {
-        try { preflight = await withMatchSourceDeadline(()=>aiProposedVerifiedExact(requested),MATCH_SOURCE_DEADLINES.ai); } catch (_) { preflight = null; }
-    }
     // Never dead-end ordinary matching because every fresh exact candidate has
     // already been shown or a live source is temporarily unavailable. Recycle
     // an exact eligible catalogue title first; only then use the existing
     // guaranteed recovery ladder. User-saved / Not For Me titles remain hard
     // exclusions in both helpers.
-    if (!isSpecificSearch && !preflight && typeof pickRecycledCatalog === 'function') {
+    if (!isSpecificSearch && !preflight && window.matchappAllowSeenAgain === true && typeof pickRecycledCatalog === 'function') {
         try { preflight = pickRecycledCatalog(requested.cat,requested.plat,requested.mood,requested.vibe,requested.rating,requested.decade); } catch (_) { preflight = null; }
     }
-    if (!isSpecificSearch && !preflight && typeof pickGuaranteedCatalog === 'function') {
+    if (!isSpecificSearch && !preflight && window.matchappAllowSeenAgain === true && typeof pickGuaranteedCatalog === 'function') {
         try {
             preflight = pickGuaranteedCatalog(requested.cat,requested.plat,requested.mood,requested.vibe,requested.rating,requested.decade);
             if (preflight?._relaxedStage) window.lastMatchRelaxation = preflight._relaxedStage;

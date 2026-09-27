@@ -34,10 +34,10 @@ const FIELDS={
  format:[['any','📚🎧','Read or listen'],['ebook','📖','E-book edition'],['audiobook','🎧','Audiobook only'],['magazine','📰','Magazine only']]
 };
 const LABELS={
- en:{eyebrow:'FOR BOOKWORMS',title:'Match E-books Ai',homeTitle:'Find what to read here',topFold:'Browse top e-books',intro:'Pick a reading or listening mood. MatchApp matches a book and checks real audio editions in your country, with legal free sources and official stores.',match:'Match my e-book',another:'Match another',save:'Save book',saved:'Saved',nope:'Not for me',why:'Why this match',where:'Where to get it',free:'Legal free editions',stores:'Official e-book stores',preview:'Book info / preview',rights:'Free-edition availability depends on copyright rules in your country. MatchApp links to source pages and never hosts copyrighted book files.',empty:'No unseen book fits every choice. We kept your access preference and broadened secondary filters.',quota:'Your MatchApp match allowance is used here too.',savedBooks:'Saved books & audiobooks',noneSaved:'No saved books yet.',remove:'Remove',close:'Close',topTitle:'Top E-books right now',topSub:'Current reader favorites and chart leaders — open an official store or a legal free-edition source.',topFree:'Free edition',topBuy:'Get this e-book',topSource:'Chart source',audioTitle:'Audiobook editions',audioVerify:'Check verified audiobook edition',audioWaiting:'Checking exact title and author at official audio sources…',audioNone:'No matching audio edition was verified. Official store searches may still help.',audioLinks:'Verified audiobook editions',audioSearch:'Search other audio stores (edition not confirmed)',audioRights:'Free LibriVox recordings are US public domain. Outside the US, check your local copyright law before listening or downloading.',audioEmpty:'No verified audiobook passed your filters right now. Try e-book format, broader filters, or official audio stores.',audioOnly:'Verified audio required · availability varies by country'},
- 'pt-BR':{eyebrow:'PARA BOOKWORMS',title:'Match de E-books iA',homeTitle:'Encontre o que ler aqui',topFold:'Ver e-books em destaque',intro:'Escolha o clima de leitura ou de escuta. O MatchApp encontra livros e verifica audiolivros reais no seu país, com fontes legais e lojas oficiais.',match:'Encontrar meu e-book',another:'Outro e-book',save:'Salvar livro',saved:'Salvo',nope:'Não é para mim',why:'Por que combina',where:'Onde encontrar',free:'Edições grátis legais',stores:'Lojas oficiais de e-books',preview:'Informações / prévia',rights:'A disponibilidade gratuita depende das leis de direitos autorais do seu país. O MatchApp só direciona para fontes oficiais e não hospeda arquivos protegidos.',empty:'Nenhum livro ainda não visto combina com tudo. Mantivemos sua preferência de acesso e ampliamos filtros secundários.',quota:'Usa a mesma cota de matches do MatchApp.',savedBooks:'Livros e audiolivros salvos',noneSaved:'Nenhum livro salvo ainda.',remove:'Remover',close:'Fechar',topTitle:'Top E-books agora',topSub:'Favoritos atuais e líderes de listas — abra uma loja oficial ou uma fonte legal de edição gratuita.',topFree:'Edição grátis',topBuy:'Encontrar e-book',topSource:'Fonte da lista',audioTitle:'Edições em audiolivro',audioVerify:'Verificar edição em audiolivro',audioWaiting:'Verificando título e autor exatos nas fontes oficiais…',audioNone:'Não foi possível confirmar esta edição em áudio. Buscas nas lojas oficiais podem ajudar.',audioLinks:'Audiolivros confirmados',audioSearch:'Pesquisar outras lojas de áudio (edição não confirmada)',audioRights:'As gravações da LibriVox são de domínio público nos EUA. Em outros países, confira os direitos autorais antes de ouvir ou baixar.',audioEmpty:'Nenhum audiolivro confirmado passou nos filtros agora. Tente e-books, filtros mais amplos ou as lojas oficiais.',audioOnly:'Áudio confirmado obrigatório · a disponibilidade varia por país'},
- es:{eyebrow:'PARA BOOKWORMS',title:'Match E-books IA',homeTitle:'Encuentra qué leer aquí',topFold:'Explorar e-books destacados',intro:'Elige el ambiente para leer o escuchar. MatchApp encuentra libros y verifica ediciones de audiolibro en tu país, con fuentes legales y tiendas oficiales.',match:'Encontrar mi e-book',another:'Otro e-book',save:'Guardar libro',saved:'Guardado',nope:'No es para mí',why:'Por qué encaja',where:'Dónde conseguirlo',free:'Ediciones gratuitas legales',stores:'Tiendas oficiales',preview:'Información / vista previa',rights:'La disponibilidad gratuita depende del copyright de tu país. MatchApp no aloja archivos protegidos.',empty:'No hay un libro nuevo con todos los filtros. Mantuvimos tu opción de acceso y ampliamos filtros secundarios.',quota:'Usa la misma cuota de matches de MatchApp.',savedBooks:'Libros y audiolibros guardados',noneSaved:'Aún no hay libros guardados.',remove:'Quitar',close:'Cerrar',topTitle:'Top E-books ahora',topSub:'Favoritos actuales y líderes de listas — abre una tienda oficial o una fuente legal de edición gratuita.',topFree:'Edición gratis',topBuy:'Conseguir e-book',topSource:'Fuente de la lista',audioTitle:'Ediciones de audiolibro',audioVerify:'Verificar edición en audio',audioWaiting:'Comprobando título y autor exactos…',audioNone:'No se confirmó una edición en audio. Puedes buscar en las tiendas oficiales.',audioLinks:'Audiolibros confirmados',audioSearch:'Buscar en otras tiendas de audio (edición sin confirmar)',audioRights:'Las grabaciones de LibriVox son de dominio público en EE. UU. En otros países, comprueba los derechos de autor.',audioEmpty:'Ningún audiolibro confirmado cumple estos filtros ahora. Prueba otro formato o fuentes oficiales.',audioOnly:'Se requiere audio confirmado · disponibilidad regional'},
- ja:{eyebrow:'本好きのために',title:'E-books Ai マッチ',homeTitle:'読みたい本を見つける',topFold:'注目の電子書籍',intro:'読書・朗読を聴きたい気分に合わせて本を選び、正規ストアで音声版のタイトル・著者を確認します。',match:'E-bookをマッチ',another:'別の本',save:'保存',saved:'保存済み',nope:'好みではない',why:'おすすめの理由',where:'入手先',free:'合法的な無料版',stores:'公式E-bookストア',preview:'書籍情報 / プレビュー',rights:'無料で利用できるかは各国の著作権法によって異なります。MatchApp は著作権保護されたファイルをホストしません。',empty:'すべての条件に合う未表示の本がありません。入手方法の希望を維持し、その他の条件を広げました。',quota:'通常のMatchAppマッチ枠を使用します。',savedBooks:'保存した本・オーディオブック',noneSaved:'保存した本はまだありません。',remove:'削除',close:'閉じる',topTitle:'今人気のE-book',topSub:'現在の人気作品とランキング上位作品。公式ストアまたは合法的な無料版へ移動できます。',topFree:'無料版',topBuy:'E-bookを入手',topSource:'ランキング出典',audioTitle:'オーディオブック版',audioVerify:'音声版を確認する',audioWaiting:'公式ストアで同一タイトルと著者を確認中…',audioNone:'音声版を確認できませんでした。公式ストアで検索できます。',audioLinks:'確認済みオーディオブック',audioSearch:'他のオーディオストアで検索（未確認）',audioRights:'LibriVox は米国内でパブリックドメインです。他の国では著作権をご確認ください。',audioEmpty:'条件を満たす確認済み音声版がありません。読書形式や検索条件を変更してください。',audioOnly:'確認済み音声版のみ・国によって異なります'}
+ en:{eyebrow:'FOR BOOKWORMS',title:'Match E-books Ai',homeTitle:'Find what to read here',topFold:'Browse top e-books',intro:'Pick a reading or listening mood. MatchApp matches a book and checks real audio editions in your country, with legal free sources and official stores.',match:'Match my e-book',another:'Match another',save:'Save book',saved:'Saved',nope:'Not for me',why:'Why this match',where:'Where to get it',free:'Legal free editions',stores:'Official e-book stores',preview:'Book info / preview',rights:'Free-edition availability depends on copyright rules in your country. MatchApp links to source pages and never hosts copyrighted book files.',empty:'No unseen book fits every selected filter. Keep your important choices and adjust a filter for a fresh recommendation.',quota:'Your MatchApp match allowance is used here too.',savedBooks:'Saved books & audiobooks',noneSaved:'No saved books yet.',remove:'Remove',close:'Close',topTitle:'Top E-books right now',topSub:'Current reader favorites and chart leaders — open an official store or a legal free-edition source.',topFree:'Free edition',topBuy:'Get this e-book',topSource:'Chart source',audioTitle:'Audiobook editions',audioVerify:'Check verified audiobook edition',audioWaiting:'Checking exact title and author at official audio sources…',audioNone:'No matching audio edition was verified. Official store searches may still help.',audioLinks:'Verified audiobook editions',audioSearch:'Search other audio stores (edition not confirmed)',audioRights:'Free LibriVox recordings are US public domain. Outside the US, check your local copyright law before listening or downloading.',audioEmpty:'No verified audiobook passed your filters right now. Try e-book format, broader filters, or official audio stores.',audioOnly:'Verified audio required · availability varies by country'},
+ 'pt-BR':{eyebrow:'PARA BOOKWORMS',title:'Match de E-books iA',homeTitle:'Encontre o que ler aqui',topFold:'Ver e-books em destaque',intro:'Escolha o clima de leitura ou de escuta. O MatchApp encontra livros e verifica audiolivros reais no seu país, com fontes legais e lojas oficiais.',match:'Encontrar meu e-book',another:'Outro e-book',save:'Salvar livro',saved:'Salvo',nope:'Não é para mim',why:'Por que combina',where:'Onde encontrar',free:'Edições grátis legais',stores:'Lojas oficiais de e-books',preview:'Informações / prévia',rights:'A disponibilidade gratuita depende das leis de direitos autorais do seu país. O MatchApp só direciona para fontes oficiais e não hospeda arquivos protegidos.',empty:'Nenhum livro novo atende a todos os filtros. Mantenha suas preferências principais e ajuste um filtro para encontrar mais opções.',quota:'Usa a mesma cota de matches do MatchApp.',savedBooks:'Livros e audiolivros salvos',noneSaved:'Nenhum livro salvo ainda.',remove:'Remover',close:'Fechar',topTitle:'Top E-books agora',topSub:'Favoritos atuais e líderes de listas — abra uma loja oficial ou uma fonte legal de edição gratuita.',topFree:'Edição grátis',topBuy:'Encontrar e-book',topSource:'Fonte da lista',audioTitle:'Edições em audiolivro',audioVerify:'Verificar edição em audiolivro',audioWaiting:'Verificando título e autor exatos nas fontes oficiais…',audioNone:'Não foi possível confirmar esta edição em áudio. Buscas nas lojas oficiais podem ajudar.',audioLinks:'Audiolivros confirmados',audioSearch:'Pesquisar outras lojas de áudio (edição não confirmada)',audioRights:'As gravações da LibriVox são de domínio público nos EUA. Em outros países, confira os direitos autorais antes de ouvir ou baixar.',audioEmpty:'Nenhum audiolivro confirmado passou nos filtros agora. Tente e-books, filtros mais amplos ou as lojas oficiais.',audioOnly:'Áudio confirmado obrigatório · a disponibilidade varia por país'},
+ es:{eyebrow:'PARA BOOKWORMS',title:'Match E-books IA',homeTitle:'Encuentra qué leer aquí',topFold:'Explorar e-books destacados',intro:'Elige el ambiente para leer o escuchar. MatchApp encuentra libros y verifica ediciones de audiolibro en tu país, con fuentes legales y tiendas oficiales.',match:'Encontrar mi e-book',another:'Otro e-book',save:'Guardar libro',saved:'Guardado',nope:'No es para mí',why:'Por qué encaja',where:'Dónde conseguirlo',free:'Ediciones gratuitas legales',stores:'Tiendas oficiales',preview:'Información / vista previa',rights:'La disponibilidad gratuita depende del copyright de tu país. MatchApp no aloja archivos protegidos.',empty:'No encontramos un libro nuevo con todos esos filtros. Mantén lo importante y ajusta un filtro para ampliar las opciones.',quota:'Usa la misma cuota de matches de MatchApp.',savedBooks:'Libros y audiolibros guardados',noneSaved:'Aún no hay libros guardados.',remove:'Quitar',close:'Cerrar',topTitle:'Top E-books ahora',topSub:'Favoritos actuales y líderes de listas — abre una tienda oficial o una fuente legal de edición gratuita.',topFree:'Edición gratis',topBuy:'Conseguir e-book',topSource:'Fuente de la lista',audioTitle:'Ediciones de audiolibro',audioVerify:'Verificar edición en audio',audioWaiting:'Comprobando título y autor exactos…',audioNone:'No se confirmó una edición en audio. Puedes buscar en las tiendas oficiales.',audioLinks:'Audiolibros confirmados',audioSearch:'Buscar en otras tiendas de audio (edición sin confirmar)',audioRights:'Las grabaciones de LibriVox son de dominio público en EE. UU. En otros países, comprueba los derechos de autor.',audioEmpty:'Ningún audiolibro confirmado cumple estos filtros ahora. Prueba otro formato o fuentes oficiales.',audioOnly:'Se requiere audio confirmado · disponibilidad regional'},
+ ja:{eyebrow:'本好きのために',title:'E-books Ai マッチ',homeTitle:'読みたい本を見つける',topFold:'注目の電子書籍',intro:'読書・朗読を聴きたい気分に合わせて本を選び、正規ストアで音声版のタイトル・著者を確認します。',match:'E-bookをマッチ',another:'別の本',save:'保存',saved:'保存済み',nope:'好みではない',why:'おすすめの理由',where:'入手先',free:'合法的な無料版',stores:'公式E-bookストア',preview:'書籍情報 / プレビュー',rights:'無料で利用できるかは各国の著作権法によって異なります。MatchApp は著作権保護されたファイルをホストしません。',empty:'すべての条件を満たす新しい本はまだ見つかりません。大切な条件はそのままに、フィルターを調整してください。',quota:'通常のMatchAppマッチ枠を使用します。',savedBooks:'保存した本・オーディオブック',noneSaved:'保存した本はまだありません。',remove:'削除',close:'閉じる',topTitle:'今人気のE-book',topSub:'現在の人気作品とランキング上位作品。公式ストアまたは合法的な無料版へ移動できます。',topFree:'無料版',topBuy:'E-bookを入手',topSource:'ランキング出典',audioTitle:'オーディオブック版',audioVerify:'音声版を確認する',audioWaiting:'公式ストアで同一タイトルと著者を確認中…',audioNone:'音声版を確認できませんでした。公式ストアで検索できます。',audioLinks:'確認済みオーディオブック',audioSearch:'他のオーディオストアで検索（未確認）',audioRights:'LibriVox は米国内でパブリックドメインです。他の国では著作権をご確認ください。',audioEmpty:'条件を満たす確認済み音声版がありません。読書形式や検索条件を変更してください。',audioOnly:'確認済み音声版のみ・国によって異なります'}
 };
 function lang(){const raw=String(window.MATCH_LANG||document.documentElement.lang||navigator.language||'en');if(/^pt/i.test(raw))return'pt-BR';if(/^es/i.test(raw))return'es';if(/^ja/i.test(raw))return'ja';return'en';}
 function tr(k){const l=LABELS[lang()]||LABELS.en;return l[k]||LABELS.en[k]||k;}
@@ -108,11 +108,29 @@ function pool(p,omit,allowSeen){
  const saved=idset(K.saved),bad=idset(K.disliked),seen=idset(K.seen);
  return CAT().filter(b=>!saved.has(b.id)&&!bad.has(b.id)&&(allowSeen||!seen.has(b.id))&&fits(b,p,omit));
 }
+// AI orders only already-curated, criteria-compatible source records. It can
+// never create a fictional book, narrating edition, purchase link or magazine.
+async function rankBooks(approved,p){
+ if(!Array.isArray(approved)||!approved.length)return null;
+ const ranker=window.MatchAppAIRank?.rank;
+ if(typeof ranker!=='function')return null;
+ const set=approved.slice(0,20);
+ const annotated=set.map((pick,i)=>{
+    const b=pick.book;
+    return {id:'c'+i,title:b.title,format:p.format,
+      genres:(b.genres||[]).join(', '),mood:(b.moods||[]).join(', '),
+      synopsis:b.summary||'',country:b.region||''};
+ });
+ const row=await ranker(annotated,{format:p.format,genre:p.genre,mood:p.mood,
+   pace:p.pace,country:market(),era:p.era});
+ const index=row?.id&&/^c\d+$/.test(row.id)?Number(row.id.slice(1)):-1;
+ return set[index]||null;
+}
 function choose(p){
- const relax=[[],['length'],['pace','length'],['era','pace','length']];
- for(const fields of relax){const a=pool(p,new Set(fields),false);if(a.length)return{book:a[Math.floor(Math.random()*a.length)],relaxed:fields.length>0};}
- // Exhausted fresh pool: repeat a previously shown book, never a saved/disliked one.
- for(const fields of relax){const a=pool(p,new Set(fields),true);if(a.length)return{book:a[Math.floor(Math.random()*a.length)],relaxed:true,recycled:true};}
+ // Exact-only matching: no surprise duplicates or silent changes to genre,
+ // pace, length, access or era. Users can adjust filters explicitly.
+ const eligible=pool(p,new Set(),false);
+ if(eligible.length)return{book:eligible[Math.floor(Math.random()*eligible.length)],relaxed:false};
  return null;
 }
 // The e-book catalogue is a set of book profiles, not a list of confirmed
@@ -124,10 +142,9 @@ async function chooseVerifiedAudio(p,onProgress){
  const country=market();
  // Do not label US public-domain audio "verified free" abroad without rights.
  if(p.access==='free'&&country!=='US')return null;
- const relax=[[],['length'],['pace','length'],['era','pace','length']];
  const tested=new Set(),started=Date.now(),limit=24;
- for(const allowSeen of [false,true]){
-  for(const fields of relax){
+ for(const allowSeen of [false]){
+  for(const fields of [[]]){
    const options=pool(p,new Set(fields),allowSeen).filter(b=>!tested.has(b.id));
    // Batch independent source lookups instead of exhausting eight serial
    // timeouts before reaching a promising, matching classic.
@@ -144,18 +161,26 @@ async function chooseVerifiedAudio(p,onProgress){
        {book,audio,relaxed:fields.length>0,recycled:allowSeen}:null;
      }catch(_){return null}
     }));
-    const hit=checked.find(Boolean);if(hit)return hit;
+    const verified=checked.filter(Boolean);if(verified.length){
+      const chosen=await rankBooks(verified,p);
+      return chosen||verified[0];
+    }
    }
   }
  }
  return null;
 }
-function chooseMagazine(p){
- const api=window.MatchAppMagazines;if(!api)return null;
+async function chooseMagazine(p){
+ const api=window.MatchAppMagazines;if(!api?.items)return null;
  const excluded=new Set([...read(K.saved),...read(K.disliked),...read(K.seen)]);
- const magazine=api.select(p,market(),excluded)||
-   api.select(p,market(),new Set([...read(K.saved),...read(K.disliked)]));
- return magazine?{book:magazine,magazine:true,relaxed:false}:null;
+ const all=api.items.filter(m=>!excluded.has(m.id)&&
+   (p.access==='any'||m.access.includes(p.access))&&
+   (p.genre==='any'||m.genres.includes(p.genre))&&
+   (p.mood==='any'||m.moods.includes(p.mood)));
+ if(!all.length)return null;
+ const local=all.filter(m=>m.region===market());
+ const shortlist=(local.length?local:all).map(book=>({book,magazine:true,relaxed:false}));
+ return await rankBooks(shortlist,p)||shortlist[Math.floor(Math.random()*shortlist.length)];
 }
 function why(book,p,relaxed){
  const bits=[];
@@ -447,8 +472,12 @@ async function doMatch(root){
    pick=await chooseVerifiedAudio(p,(tried,total)=>{
     if(note?.isConnected)note.textContent=tr('audioWaiting')+' ('+tried+'/'+total+')';
    });
-  }else if(p.format==='magazine')pick=chooseMagazine(p);
-  else pick=choose(p);
+  }else if(p.format==='magazine')pick=await chooseMagazine(p);
+  else {
+   const eligible=pool(p,new Set(),false);
+   const shortlist=eligible.map(book=>({book,relaxed:false}));
+   pick=window.MatchAppAIRank?.rank?(await rankBooks(shortlist,p)||choose(p)):choose(p);
+  }
   if(!pick){
    if(p.format==='audiobook'){renderAudioDiscovery(root,p);if(note){note.hidden=true;note.textContent='';}}
    else if(note){note.hidden=false;note.textContent=tr('empty');}

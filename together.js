@@ -213,16 +213,42 @@ async function tgTryResolve(participants) {
     if (tgState.resolved) return;
     if (!participants || participants.length < 2) return;
 
+    // One in-flight rank/RPC per shared session, even during frequent polls.
+    if(tgState.resolving)return;
+    tgState.resolving=true;
+    try {
+
     const merged = tgResolvePrefs(participants);
     await window.matchPolicy?.ready();
-    const candidates = typeof CONTENT_CATALOG!=='undefined' ? CONTENT_CATALOG.filter(e=>participants.every(p=>window.matchPolicy?.matches(e,p.prefs||{})) && !isBlockedEntry(e) && !SESSION_SHOWN.has(e.title)) : [];
-    const pick=candidates[Math.floor(Math.random()*candidates.length)];
+    const candidates = typeof CONTENT_CATALOG!=='undefined' ? CONTENT_CATALOG.filter(e=>participants.every(p=>window.matchPolicy?.matches(e,p.prefs||{}) && (typeof regionAvailabilityFits!=='function'||regionAvailabilityFits(e,p.prefs||{}))) && !isBlockedEntry(e) && !SESSION_SHOWN.has(e.title)) : [];
+    // Every participant's explicit criteria have ALREADY been intersected.
+    // OpenAI may only reorder these actual jointly approved catalog entries.
+    let pick=null;
+    if(candidates.length&&window.MatchAppAIRank?.rank){
+        const shortlisted=candidates.slice(0,20),input=shortlisted.map((item,i)=>({
+            id:'c'+i,title:item.title,format:(item.cats||[]).join(', '),
+            genres:(item.realGenres||[]).join(', '),mood:(item.moods||[]).join(', '),
+            synopsis:item.synopsis||'',country:item.countryCode||''
+        }));
+        const ranked=await window.MatchAppAIRank.rank(input,{
+            format:participants.map(p=>p.prefs?.cat||'any').join(' / '),
+            mood:participants.map(p=>p.prefs?.mood||'any').join(' / '),
+            pace:participants.map(p=>p.prefs?.vibe||'any').join(' / '),
+            platform:participants.map(p=>p.prefs?.plat||'any').join(' / '),
+            country:window.MatchAppCatalogMedia?.regionCode?.()||''
+        });
+        if(/^c\d+$/.test(String(ranked?.id||''))){
+            const candidate=shortlisted[Number(ranked.id.slice(1))];
+            if(candidate&&candidates.includes(candidate))pick=candidate;
+        }
+    }
+    if(!pick)pick=candidates[Math.floor(Math.random()*candidates.length)];
     if(!pick){const note=tgEl('tg-waiting-note');if(note)note.textContent='No fresh title fits everyone’s exact choices. Start a new match with different criteria, or use private Friends for account-wide exclusions for both users.';return;}
     const payload = {
         title: pick.title,
         synopsis: pick.synopsis,
         platform: pick.platform,
-        platformVerified: true,
+        platformVerified: pick.platform!=='any'&&pick.platformVerified!==false,
         watchUrl: pick.watchUrl || null,
         merged: merged
     };
@@ -240,6 +266,7 @@ async function tgTryResolve(participants) {
         tgStopPolling();
         tgRenderResult(data.result, participants);
     } catch (e) { /* next poll retries */ }
+    }finally{tgState.resolving=false;}
 }
 
 /* ---------- rendering ---------- */
