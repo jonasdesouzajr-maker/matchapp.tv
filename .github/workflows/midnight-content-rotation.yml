@@ -61,6 +61,7 @@ jobs:
         run: |
           node tools/build-seo-pages.js
           node tools/build-watch-pages.js
+          node tools/build-world-discovery-guide.js
 
       - name: Refresh sitemap and validate search readiness
         run: |
@@ -108,6 +109,7 @@ jobs:
             git add -A -- awareness/current.json awareness/*/index.html
             git add -A -- tools/event-urls.json tools/awareness-urls.json tools/news-urls.json tools/news-sitemap-meta.json tools/seo-urls.json tools/watch-urls.json
             git add -A -- data/international-day-history.json sitemap.xml sitemaps.xml
+            git add -A -- guides/worldwide-entertainment-discovery
             for d in moods collections platforms languages decades; do
               if [ -e "$d" ]; then git add -A -- "$d"; fi
             done
