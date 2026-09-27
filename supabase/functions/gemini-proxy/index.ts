@@ -617,7 +617,7 @@ Deno.serve(async (req: Request) => {
         req, prompt, key:openAiApiKey,
         mode:isDiscoverMode ? "discover" : isProposalMode ? "match_proposals" : "legacy",
         reserve:async () => {
-          const {data,error} = await adminDb.rpc("claim_openai_fallback_slot",{p_limit:dailyLimit});
+          const {data,error} = await adminDb.rpc("claim_openai_primary_slot",{p_limit:dailyLimit});
           return !error && data === true;
         },
         cors:corsHeaders,
