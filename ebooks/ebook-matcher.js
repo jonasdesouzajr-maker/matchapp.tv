@@ -108,7 +108,32 @@ function pool(p,omit,allowSeen){
  const saved=idset(K.saved),bad=idset(K.disliked),seen=idset(K.seen);
  return CAT().filter(b=>!saved.has(b.id)&&!bad.has(b.id)&&(allowSeen||!seen.has(b.id))&&fits(b,p,omit));
 }
+// AI orders only already-curated, criteria-compatible source records. It can
+// never create a fictional book, narrating edition, purchase link or magazine.
+async function rankBooks(approved,p){
+ if(!Array.isArray(approved)||!approved.length)return null;
+ const ranker=window.MatchAppAIRank?.rank;
+ if(typeof ranker!=='function')return null;
+ const set=approved.slice(0,20);
+ const annotated=set.map((pick,i)=>{
+    const b=pick.book;
+    return {id:'c'+i,title:b.title,format:p.format,
+      genres:(b.genres||[]).join(', '),mood:(b.moods||[]).join(', '),
+      synopsis:b.summary||'',country:b.region||''};
+ });
+ const row=await ranker(annotated,{format:p.format,genre:p.genre,mood:p.mood,
+   pace:p.pace,country:market(),era:p.era});
+ const index=row?.id&&/^c\d+$/.test(row.id)?Number(row.id.slice(1)):-1;
+ return set[index]||null;
+}
 function choose(p){
+ // Exact-only matching: no surprise duplicates or silent changes to genre,
+ // pace, length, access or era. Users can adjust filters explicitly.
+ const eligible=pool(p,new Set(),false);
+ if(eligible.length)return{book:eligible[Math.floor(Math.random()*eligible.length)],relaxed:false};
+ return null;
+}
+function chooseLegacyRelaxed(p){
  const relax=[[],['length'],['pace','length'],['era','pace','length']];
  for(const fields of relax){const a=pool(p,new Set(fields),false);if(a.length)return{book:a[Math.floor(Math.random()*a.length)],relaxed:fields.length>0};}
  // Exhausted fresh pool: repeat a previously shown book, never a saved/disliked one.
@@ -126,8 +151,8 @@ async function chooseVerifiedAudio(p,onProgress){
  if(p.access==='free'&&country!=='US')return null;
  const relax=[[],['length'],['pace','length'],['era','pace','length']];
  const tested=new Set(),started=Date.now(),limit=24;
- for(const allowSeen of [false,true]){
-  for(const fields of relax){
+ for(const allowSeen of [false]){
+  for(const fields of [[]]){
    const options=pool(p,new Set(fields),allowSeen).filter(b=>!tested.has(b.id));
    // Batch independent source lookups instead of exhausting eight serial
    // timeouts before reaching a promising, matching classic.
@@ -144,18 +169,26 @@ async function chooseVerifiedAudio(p,onProgress){
        {book,audio,relaxed:fields.length>0,recycled:allowSeen}:null;
      }catch(_){return null}
     }));
-    const hit=checked.find(Boolean);if(hit)return hit;
+    const verified=checked.filter(Boolean);if(verified.length){
+      const chosen=await rankBooks(verified,p);
+      return chosen||verified[0];
+    }
    }
   }
  }
  return null;
 }
-function chooseMagazine(p){
- const api=window.MatchAppMagazines;if(!api)return null;
+async function chooseMagazine(p){
+ const api=window.MatchAppMagazines;if(!api?.items)return null;
  const excluded=new Set([...read(K.saved),...read(K.disliked),...read(K.seen)]);
- const magazine=api.select(p,market(),excluded)||
-   api.select(p,market(),new Set([...read(K.saved),...read(K.disliked)]));
- return magazine?{book:magazine,magazine:true,relaxed:false}:null;
+ const all=api.items.filter(m=>!excluded.has(m.id)&&
+   (p.access==='any'||m.access.includes(p.access))&&
+   (p.genre==='any'||m.genres.includes(p.genre))&&
+   (p.mood==='any'||m.moods.includes(p.mood)));
+ if(!all.length)return null;
+ const local=all.filter(m=>m.region===market());
+ const shortlist=(local.length?local:all).map(book=>({book,magazine:true,relaxed:false}));
+ return await rankBooks(shortlist,p)||shortlist[Math.floor(Math.random()*shortlist.length)];
 }
 function why(book,p,relaxed){
  const bits=[];
@@ -447,8 +480,12 @@ async function doMatch(root){
    pick=await chooseVerifiedAudio(p,(tried,total)=>{
     if(note?.isConnected)note.textContent=tr('audioWaiting')+' ('+tried+'/'+total+')';
    });
-  }else if(p.format==='magazine')pick=chooseMagazine(p);
-  else pick=choose(p);
+  }else if(p.format==='magazine')pick=await chooseMagazine(p);
+  else {
+   const eligible=pool(p,new Set(),false);
+   const shortlist=eligible.map(book=>({book,relaxed:false}));
+   pick=await rankBooks(shortlist,p)||choose(p);
+  }
   if(!pick){
    if(p.format==='audiobook'){renderAudioDiscovery(root,p);if(note){note.hidden=true;note.textContent='';}}
    else if(note){note.hidden=false;note.textContent=tr('empty');}
