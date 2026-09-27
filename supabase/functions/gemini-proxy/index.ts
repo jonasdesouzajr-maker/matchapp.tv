@@ -58,7 +58,7 @@ const adminDb = createClient(
   Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? "",
 );
 
-const MODEL_CHAIN = [
+// These models have an actual $0 free allocation ONLY on a separate\n// Free-Tier Google project. On a billed project they still cost paid tokens.\nconst FREE_MODEL_CHAIN = ["gemini-2.5-flash-lite", "gemini-2.5-flash"];\n\nconst MODEL_CHAIN = [
   "gemini-3.5-flash",       // PROVEN end-to-end on discover mode — primary
   "gemini-3.6-flash",       // confirmed reachable, newest generation
   "gemini-3.5-flash-lite",  // confirmed reachable, cheaper tier
@@ -71,16 +71,7 @@ const MODEL_CHAIN = [
 // tell us about a newer model worth promoting, or confirm that a removed one
 // is still dead. This list is probe-only: nothing here serves traffic until
 // it is explicitly moved into MODEL_CHAIN.
-const DIAGNOSTIC_PROBE_MODELS = [
-  ...MODEL_CHAIN,
-  // Retired models, kept here ONLY as probes. They are deliberately absent
-  // from MODEL_CHAIN so they never cost a real request, but continuing to
-  // test them means the diagnostic still reports plainly that they are dead
-  // rather than going silent about them — if Google ever revives one, or
-  // retires another, this is where that shows up first.
-  "gemini-2.5-flash",
-  "gemini-2.5-flash-lite",
-];
+const DIAGNOSTIC_PROBE_MODELS = [...FREE_MODEL_CHAIN, ...MODEL_CHAIN];
 
 // ============================================================
 // CORS — ALLOW LIST, NOT "*"
@@ -418,10 +409,15 @@ Deno.serve(async (req: Request) => {
       );
     }
 
-    const apiKey = Deno.env.get("GEMINI_API_KEY");
+    // Free usage cannot be selected by model name on a paid Google project.
+    // Supply GEMINI_FREE_API_KEY from a SEPARATE, unbilled Free-Tier project;
+    // the original paid project remains a bounded fallback when allowed.
+    const freeApiKey = Deno.env.get("GEMINI_FREE_API_KEY")?.trim() || "";
+    const paidApiKey = Deno.env.get("GEMINI_API_KEY")?.trim() || "";
+    const apiKey = freeApiKey || paidApiKey;
     if (!apiKey) {
       return new Response(
-        JSON.stringify({ error: "GEMINI_API_KEY secret is not set on this Edge Function." }),
+        JSON.stringify({ error: "No Gemini API project key is configured." }),
         { status: 500, headers: { ...corsHeaders(req), "Content-Type": "application/json" } }
       );
     }
@@ -462,6 +458,7 @@ Deno.serve(async (req: Request) => {
         }
         const report: Record<string, unknown> = {
             apiKeyPresent: !!apiKey,
+            separateFreeKeyConfigured: !!freeApiKey,
             // apiKeyLength deliberately not reported: a credential's length
             // narrows a brute-force search space and reveals which key format
             // is in use. "is it set at all" is the only part that helps
@@ -469,7 +466,7 @@ Deno.serve(async (req: Request) => {
             functionVersion: "2026-09-hardened+prompt-tighten-temp-065",
             supportsDiscoverMode: true,
             // Which models actually serve traffic, vs which are only probed.
-            servingChain: MODEL_CHAIN,
+            servingChain: [...(freeApiKey ? FREE_MODEL_CHAIN : []), ...(paidApiKey ? MODEL_CHAIN : [])],
             models: {} as Record<string, string>,
         };
         const models = report.models as Record<string, string>;
@@ -478,12 +475,13 @@ Deno.serve(async (req: Request) => {
             try {
                 const pac = new AbortController();
                 const ptimer = setTimeout(() => pac.abort(), PER_MODEL_TIMEOUT_MS);
+                const probeKey = freeApiKey && FREE_MODEL_CHAIN.includes(model) ? freeApiKey : (paidApiKey || freeApiKey);
                 const r = await fetch(
                     `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`,
                     {
                         method: "POST",
                         signal: pac.signal,
-                        headers: { "Content-Type": "application/json", "x-goog-api-key": apiKey },
+                        headers: { "Content-Type": "application/json", "x-goog-api-key": probeKey },
                         body: JSON.stringify({
                             contents: [{ parts: [{ text: "Reply with exactly: OK" }] }],
                             generationConfig: { maxOutputTokens: 10 },
@@ -577,7 +575,17 @@ Deno.serve(async (req: Request) => {
 
     let lastError: string | null = null;
 
-    for (const model of MODEL_CHAIN) {
+    // Exhaust the separately configured free tier before considering a
+    // chargeable key. Never retry a project-wide free-tier 429 on the other
+    // free model; Google applies project-level limits across requests.
+    const routes = [
+      ...(freeApiKey ? FREE_MODEL_CHAIN.map(model => ({model, key:freeApiKey, tier:"free"})) : []),
+      ...(paidApiKey ? MODEL_CHAIN.map(model => ({model, key:paidApiKey, tier:"paid"})) : []),
+    ];
+    let freeProjectBlocked = false;
+    for (const route of routes) {
+      if (route.tier === "free" && freeProjectBlocked) continue;
+      const {model} = route;
       try {
         // A hung upstream used to hold this function open until the platform
         // killed it, with the user staring at a spinner the whole time and
@@ -595,7 +603,7 @@ Deno.serve(async (req: Request) => {
               signal: ac.signal,
               headers: {
                 "Content-Type": "application/json",
-                "x-goog-api-key": apiKey,
+                "x-goog-api-key": route.key,
               },
               body: JSON.stringify({
                 contents: [{ parts: [{ text: prompt }] }],
@@ -612,7 +620,7 @@ Deno.serve(async (req: Request) => {
             geminiRes = await fetch(
               `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`, {
                 method: "POST", signal: ac.signal,
-                headers: {"Content-Type":"application/json","x-goog-api-key":apiKey},
+                headers: {"Content-Type":"application/json","x-goog-api-key":route.key},
                 body: JSON.stringify({
                   contents:[{parts:[{text:prompt}]}],
                   generationConfig:{temperature:0.45,maxOutputTokens:8192,responseMimeType:"application/json"},
@@ -665,6 +673,7 @@ Deno.serve(async (req: Request) => {
           return new Response(JSON.stringify({
             ...data,
             _servedByModel: model,
+            _servedByTier: route.tier,
             _finishReason: finish,
           }), {
             headers: { ...corsHeaders(req), "Content-Type": "application/json" },
@@ -679,6 +688,21 @@ Deno.serve(async (req: Request) => {
           // A different model may accept this prompt/schema. This is NOT
           // true of project-wide spend-cap 429s, handled separately below.
           continue;
+        }
+
+        // On a separate free project's 429, stop making free-tier requests
+        // immediately; try the already-configured paid project only once
+        // billing allows it. A wrong/restricted free key likewise must not
+        // prevent an otherwise healthy paid service from answering.
+        if (route.tier === "free" &&
+            (geminiRes.status === 429 || geminiRes.status === 401 || geminiRes.status === 403)) {
+          freeProjectBlocked = true;
+          console.warn("[gemini-proxy] Separate free project unavailable (status " + geminiRes.status + ").");
+          lastError = "free project unavailable: " + geminiRes.status;
+          if (paidApiKey) continue;
+          return new Response(JSON.stringify({error:"Free Gemini project unavailable or quota exhausted.",status:geminiRes.status}),
+            {status:geminiRes.status === 429 ? 429 : 502,
+             headers:{...corsHeaders(req),"Content-Type":"application/json"}});
         }
 
         // Upstream error bodies can carry project identifiers, quota details
