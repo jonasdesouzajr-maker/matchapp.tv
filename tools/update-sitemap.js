@@ -25,6 +25,8 @@ const CORE = [
     { loc: `${SITE}/guides/what-to-watch-september-2026/`, freq: 'weekly', pri: '0.8' },
     { loc: `${SITE}/guides/global-music-september-2026/`, freq: 'weekly', pri: '0.8' },
     { loc: `${SITE}/guides/books-september-2026/`, freq: 'weekly', pri: '0.8' },
+    { loc: `${SITE}/guides/filmes-series-em-alta-brasil-setembro-2026/`, freq: 'weekly', pri: '0.8' },
+    { loc: `${SITE}/guides/peliculas-series-tendencia-mexico-septiembre-2026/`, freq: 'weekly', pri: '0.8' },
     { loc: `${SITE}/collections/indian-cinema/`,    freq: 'weekly',  pri: '0.8' },
     { loc: `${SITE}/collections/mexican-series-films/`, freq: 'weekly', pri: '0.8' },
     { loc: `${SITE}/android/`,                  freq: 'weekly',  pri: '0.6' },
