@@ -31,6 +31,8 @@
 
   let root = null;
   let busy = false;
+  let statusEpoch = 0;
+  let confirmedStatus = null; // Last server-confirmed state, scoped to one user.
 
   /* ------------------------------ copy ------------------------------ */
 
@@ -200,7 +202,18 @@
     if (claim) claim.addEventListener('click', checkin);
   }
 
-  function openRegistration() {
+  async function openRegistration() {
+    // A signed-in member must never be sent into the login loop because an
+    // earlier asynchronous status request failed or finished out of order.
+    try {
+      const session = (await window.supabaseClient?.auth?.getSession())?.data?.session;
+      if (session?.user || window.isUserLoggedIn === true) {
+        await status();
+        return;
+      }
+    } catch (_) {
+      if (window.isUserLoggedIn === true) { await status(); return; }
+    }
     if (typeof window.openAuthModal === 'function') window.openAuthModal();
     else location.href = '/register.html';
   }
@@ -245,18 +258,63 @@
   /* ------------------------------ network ------------------------------ */
 
   async function status() {
+    const epoch = ++statusEpoch;
+    let signedInUser = null;
     try {
       const sb = window.supabaseClient;
-      if (!sb) return render({ authenticated: false });
-      const { data: { session } } = await sb.auth.getSession();
-      if (!session) return render({ authenticated: false });
-      const { data, error } = await sb.rpc('daily_match_checkin_status');
-      if (error) throw error;
-      render(data);
-    } catch (_) {
-      // The strip is an offer, not a dependency: an unreachable backend shows
-      // the locked state rather than an error or an empty hole in the page.
-      render({ authenticated: false });
+      if (!sb?.auth) {
+        if (epoch === statusEpoch) render({authenticated: window.isUserLoggedIn === true});
+        return;
+      }
+      const {data: auth, error: authError} = await sb.auth.getSession();
+      if (epoch !== statusEpoch) return; // A newer auth event won the race.
+      if (authError) throw authError;
+      signedInUser = auth?.session?.user || null;
+      if (!signedInUser) {
+        // INITIAL_SESSION and OAuth redirects can cross an early guest render.
+        // Only show the guest CTA when the auth engine agrees they signed out.
+        if (window.isUserLoggedIn === true) {
+          render({authenticated:true,streak:confirmedStatus?.streak||0,
+                  checked_today:confirmedStatus?.checked_today||false});
+        } else {
+          confirmedStatus = null;
+          render({authenticated:false});
+        }
+        return;
+      }
+      if (confirmedStatus?.userId !== signedInUser.id) confirmedStatus = null;
+      // Unlock the CTA as soon as the persisted session is verified. Waiting
+      // on a slow status RPC used to leave members staring at 'Register'.
+      // The server remains the sole authority for whether today was claimed.
+      if (!busy) render({authenticated:true,streak:confirmedStatus?.streak||0,
+                         checked_today:confirmedStatus?.checked_today||false});
+      let response = await sb.rpc('daily_match_checkin_status');
+      if (epoch !== statusEpoch) return;
+      if (!response.error && response.data?.authenticated === false) {
+        // Authenticated client + anonymous RPC indicates stale request auth.
+        // Try one token refresh, never an unbounded poll or a forced logout.
+        const refreshed = await sb.auth.refreshSession();
+        if (epoch !== statusEpoch) return;
+        if (refreshed.error || refreshed.data?.session?.user?.id !== signedInUser.id)
+          throw refreshed.error || new Error('Check-in session needs refresh');
+        response = await sb.rpc('daily_match_checkin_status');
+      }
+      if (response.error || response.data?.authenticated !== true)
+        throw response.error || new Error('Check-in status unavailable');
+      if (epoch !== statusEpoch) return;
+      confirmedStatus = { ...response.data, userId:signedInUser.id };
+      render({ ...response.data, authenticated:true });
+    } catch (error) {
+      if (epoch !== statusEpoch) return;
+      // Status RPC failure is NOT proof of sign-out. Keep the member's claim
+      // available; the server still validates and awards each day only once.
+      if (signedInUser || window.isUserLoggedIn === true) {
+        console.warn('[check-in] Signed-in status temporarily unavailable:',error?.message||error);
+        render({authenticated:true,streak:confirmedStatus?.streak||0,
+                checked_today:confirmedStatus?.checked_today||false});
+      } else {
+        render({authenticated:false});
+      }
     }
   }
 
@@ -286,12 +344,26 @@
     try {
       const sb = window.supabaseClient;
       if (!sb) throw new Error('supabase_unavailable');
-      const { data, error } = await sb.rpc('daily_match_checkin');
+      let { data, error } = await sb.rpc('daily_match_checkin');
+      if ((data?.reason === 'not_authenticated' || error?.status === 401) &&
+          sb.auth?.refreshSession) {
+        // Refresh only when the server actually rejected this session. The
+        // reward RPC is idempotent, so one retry cannot double-credit it.
+        const refreshed = await sb.auth.refreshSession();
+        if (refreshed.error || !refreshed.data?.session?.user)
+          throw refreshed.error || new Error('session_refresh_failed');
+        ({data,error} = await sb.rpc('daily_match_checkin'));
+      }
       if (error) throw error;
       if (!data || data.ok !== true) throw new Error(String(data?.reason || 'checkin_failed'));
 
       const awarded = Math.max(0, Number(data.awarded || 0));
       const balance = Number(data.matches);
+      ++statusEpoch; // Never let an older pending status overwrite this award.
+      // The award is already committed: optional auth/cache reads must never
+      // turn a successful credit into a retry/error on this device.
+      const userId = confirmedStatus?.userId || window.matchProfileState?.userId || null;
+      confirmedStatus = {userId,authenticated:true,streak:data.streak,checked_today:true};
       render({ authenticated: true, streak: data.streak, checked_today: true });
 
       // The reward balance is separate from the included daily-action quota.
