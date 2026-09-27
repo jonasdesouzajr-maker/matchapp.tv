@@ -97,6 +97,7 @@ jobs:
               node tools/awareness-bot.mjs
               node tools/build-seo-pages.js
               node tools/build-watch-pages.js
+              node tools/build-world-discovery-guide.js
               node tools/update-sitemap.js
               node tools/check-content-rotation.js
               node tools/audit-site.js
