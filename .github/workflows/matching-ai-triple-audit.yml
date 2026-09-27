@@ -58,12 +58,10 @@ jobs:
             if [ "$route" = github-pages-origin ]; then
               args+=(--resolve 'matchapp.tv:443:185.199.108.153')
             fi
-            curl -sS --max-time 15 "${args[@]}" -D /tmp/route-headers -o /tmp/route-body \\
-              -w 'HTTP %{http_code}; remote %{remote_ip}; redirect %{redirect_url}\\n' \\
-              "https://matchapp.tv/deployment-sha.txt?route_audit=${GITHUB_SHA}" || true
+            curl -sS --max-time 15 "${args[@]}" -D /tmp/route-headers -o /tmp/route-body -w 'HTTP %{http_code}; remote %{remote_ip}; redirect %{redirect_url}\n' "https://matchapp.tv/deployment-sha.txt?route_audit=${GITHUB_SHA}" || true
             grep -Ei '^(server|cf-ray|cf-cache-status|cache-control|age|location|etag|x-cache|last-modified):' /tmp/route-headers || true
             if [ -f /tmp/route-body ]; then
-              head -c 110 /tmp/route-body | tr '\\n' ' '
+              head -c 110 /tmp/route-body | tr '\n' ' '
               echo
             fi
           done
