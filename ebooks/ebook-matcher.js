@@ -133,13 +133,6 @@ function choose(p){
  if(eligible.length)return{book:eligible[Math.floor(Math.random()*eligible.length)],relaxed:false};
  return null;
 }
-function chooseLegacyRelaxed(p){
- const relax=[[],['length'],['pace','length'],['era','pace','length']];
- for(const fields of relax){const a=pool(p,new Set(fields),false);if(a.length)return{book:a[Math.floor(Math.random()*a.length)],relaxed:fields.length>0};}
- // Exhausted fresh pool: repeat a previously shown book, never a saved/disliked one.
- for(const fields of relax){const a=pool(p,new Set(fields),true);if(a.length)return{book:a[Math.floor(Math.random()*a.length)],relaxed:true,recycled:true};}
- return null;
-}
 // The e-book catalogue is a set of book profiles, not a list of confirmed
 // audio editions. Verify an exact commercial or eligible public-domain audio
 // record before spending a match on "Audiobook only".
