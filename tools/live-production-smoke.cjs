@@ -238,16 +238,28 @@ async function aiQuestion(page,question,expected,label){
     // Check the result of the scroll, not an intermediate animation frame;
     // allowing brief layout settlement also catches genuine stuck offscreen UI.
     await page.waitForFunction(()=>{
-      const box=document.getElementById('search-box')?.getBoundingClientRect();
-      return !!box&&box.width>60&&box.top<innerHeight&&box.bottom>0;
+      const input=document.getElementById('specific-search-input')?.getBoundingClientRect();
+      const send=document.querySelector('#search-box .gold-btn')?.getBoundingClientRect();
+      const dock=document.getElementById('ma-dock');
+      const dockSpace=dock&&getComputedStyle(dock).display!=='none'?dock.getBoundingClientRect().height+14:14;
+      const bottom=innerHeight-dockSpace;
+      return !!input&&!!send&&input.width>60&&send.width>50&&
+        input.top>=0&&input.bottom<=bottom&&send.top>=0&&send.bottom<=bottom&&
+        !document.getElementById('ma-install-offer');
     },null,{timeout:3500}).catch(()=>{});
     const activeAsk=await page.evaluate(()=>{
       const pane=document.getElementById('ma-concierge'),form=document.getElementById('search-box');
       const input=document.getElementById('specific-search-input'),rect=form?.getBoundingClientRect();
+      const ir=input?.getBoundingClientRect(),sr=form?.querySelector('.gold-btn')?.getBoundingClientRect();
+      const dock=document.getElementById('ma-dock');
+      const dockSpace=dock&&getComputedStyle(dock).display!=='none'?dock.getBoundingClientRect().height+14:14;
+      const safeBottom=innerHeight-dockSpace;
+      const controlsUsable=!!ir&&!!sr&&ir.width>60&&sr.width>50&&
+        ir.top>=0&&ir.bottom<=safeBottom&&sr.top>=0&&sr.bottom<=safeBottom;
       return {open:!pane?.classList.contains('lazy-foldable')||pane.classList.contains('lazy-open'),
         selected:document.getElementById('ma-tab-ask')?.getAttribute('aria-selected')==='true',
-        visible:!!rect&&rect.width>60&&rect.top<innerHeight&&rect.bottom>0,
-        position:rect?{top:Math.round(rect.top),bottom:Math.round(rect.bottom),viewport:innerHeight,scrollY:scrollY}:null,
+        visible:controlsUsable&&!document.getElementById('ma-install-offer'),
+        position:rect?{top:Math.round(rect.top),bottom:Math.round(rect.bottom),viewport:innerHeight,scrollY:scrollY,inputTop:Math.round(ir?.top||0),sendBottom:Math.round(sr?.bottom||0),safeBottom:Math.round(safeBottom)}:null,
         noAutoKeyboard:document.activeElement!==input};
     });
     record('Home Ask AI tap opens visible unfocused composer '+device.name,

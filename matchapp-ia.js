@@ -267,6 +267,9 @@ function mountHome(){
  // concierge fold was previously collapsed on a phone or tablet. Never focus
  // the input here: keyboard/microphone selection belongs to the user.
  ba.addEventListener('click',()=>{
+   // A Home installation offer must not cover the user-requested Ask composer.
+   // Closing is temporary and does not change their install preferences.
+   qs('#ma-install-offer .ma-offer-close')?.click();
    const fold=concierge.classList.contains('lazy-foldable')&&!concierge.classList.contains('lazy-open');
    const toggle=concierge.previousElementSibling;
    if(fold){
@@ -281,6 +284,20 @@ function mountHome(){
        // actually enter the viewport on the first mobile/desktop tap.
        try{target.scrollIntoView({behavior:'instant',block:'start'});}
        catch(_){target.scrollIntoView();}
+       // On narrow WebViews an anchored Trending row or restored fold can
+       // counteract scrollIntoView. Set an explicit, keyboard-safe visible
+       // position after the fold has committed its layout, above the bottom dock.
+       requestAnimationFrame(()=>{
+         const rect=target.getBoundingClientRect();
+         const desiredTop=Math.max(70,Math.min(112,window.innerHeight*0.16));
+         const dock=qs('#ma-dock');
+         const dockVisible=dock&&getComputedStyle(dock).display!=='none';
+         const safeBottom=window.innerHeight-(dockVisible?dock.getBoundingClientRect().height+20:18);
+         if(rect.top>desiredTop||rect.bottom>safeBottom){
+           try{window.scrollBy({top:rect.top-desiredTop,behavior:'instant'});}
+           catch(_){window.scrollBy(0,rect.top-desiredTop);}
+         }
+       });
      }
    });
  });

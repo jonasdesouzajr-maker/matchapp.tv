@@ -56,6 +56,9 @@
       if (box) box.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
     row.querySelector('#ma-hero-ask').addEventListener('click', function () {
+      // Chat actions take precedence over the optional install promotion. A
+      // regular Close tap here is session-only (never the permanent opt-out).
+      document.getElementById('ma-install-offer')?.querySelector('.ma-offer-close')?.click();
       var concierge = document.getElementById('ma-concierge');
       // Previously the hero clicked a tab INSIDE a saved collapsed fold, then
       // tried to scroll to its display:none ancestor: nothing happened.

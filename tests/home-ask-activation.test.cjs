@@ -43,8 +43,8 @@ test('empty chat Send provides accessible bilingual feedback without triggering 
 });
 test('new Ask runtime reaches phones, iPhones, tablets and live Android WebView with unchanged native shell',()=>{
  const home=read('index.html'),chat=read('discover.html');
- assert.match(home,/matchapp-ia\.js\?v=20260926-brandai1-adorder2&amp;askbtn=20260927-1/);
- assert.match(home,/home-approved\.js\?v=20260926-playpending1&amp;askbtn=20260927-1/);
+ assert.match(home,/matchapp-ia\.js\?v=20260926-brandai1-adorder2&amp;askbtn=20260927-2/);
+ assert.match(home,/home-approved\.js\?v=20260926-playpending1&amp;askbtn=20260927-2/);
  assert.match(chat,/discover\.js\?v=20260925-intent1[^"]*askbtn=20260927-1/);
  assert.match(home,/class="top-ai-launch" href="\/discover\.html"/);
  assert.match(read('home-approved.js'),/class="ma-dock-ask" href="\/discover\.html"/);
@@ -58,4 +58,20 @@ test('live phone/tablet/desktop smoke opens the real Home Ask card and handles e
  assert.match(smoke,/noAutoKeyboard/);
  assert.match(smoke,/waitForFunction\(\(\)=>\{[\s\S]*box\.top<innerHeight&&box\.bottom>0/);
  assert.match(smoke,/Ask AI empty Send is actionable/);
+});
+
+test('Ask AI closes only an overlapping install suggestion and prevents a new one mid-chat',()=>{
+ const home=read('home-approved.js'),tab=read('matchapp-ia.js'),offer=read('browser-install-offer.js'),html=read('index.html');
+ assert.match(home,/getElementById\('ma-install-offer'\)\?\.querySelector\('\.ma-offer-close'\)\?\.click/);
+ assert.match(tab,/qs\('#ma-install-offer \.ma-offer-close'\)\?\.click/);
+ assert.match(offer,/classList\.contains\('ma-ask-tab'\)\) return true/);
+ assert.match(tab,/requestAnimationFrame\(\(\)=>\{[\s\S]*?window\.scrollBy\(\{top:rect\.top-desiredTop,behavior:'instant'\}\)/);
+ assert.match(html,/browser-install-offer\.js\?v=20260926-playpending1&amp;chat=20260927-1/);
+ assert.doesNotMatch(tab.slice(tab.indexOf("ba.addEventListener('click',()=>{"),tab.indexOf("if(new URLSearchParams",tab.indexOf("ba.addEventListener('click',()=>{"))),/localStorage|focus\(/);
+});
+test('live smoke checks usable input and Send above the phone dock, not an arbitrary panel edge',()=>{
+ const smoke=read('tools/live-production-smoke.cjs');
+ assert.match(smoke,/const dockSpace=dock&&getComputedStyle\(dock\)\.display/);
+ assert.match(smoke,/input\.bottom<=bottom&&send\.top>=0&&send\.bottom<=bottom/);
+ assert.match(smoke,/controlsUsable&&!document\.getElementById\('ma-install-offer'\)/);
 });
