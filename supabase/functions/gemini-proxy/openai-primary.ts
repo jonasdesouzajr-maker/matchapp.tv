@@ -43,7 +43,7 @@ export async function callOpenAIPrimary(args: OpenAIArgs): Promise<Response|null
   const {req,prompt,mode,key,reserve,cors,blockXXX,explicitXXX}=args;
   if (!key || Deno.env.get("OPENAI_PRIMARY_DISABLED")==="true") return null;
   // Fail closed if the atomic daily reservation RPC is missing or times out.
-  try { if (!(await reserve())) return null; }
+  try { if (!(await reserve())) { console.warn("[gemini-proxy] OpenAI primary daily budget gate closed"); return null; } }
   catch (_) { console.warn("[gemini-proxy] OpenAI budget gate unavailable"); return null; }
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(),OPENAI_TIMEOUT_MS);

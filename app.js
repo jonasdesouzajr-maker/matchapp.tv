@@ -2630,9 +2630,17 @@ if (!supabaseClient?.auth) setProfileLoadState('error',null);
 // AI MATCH EXECUTION
 // ----------------------------------------------------
 async function fetchGeminiData(promptText, proposalMode = false) {
+    // Provider quota must not lock the user into a long second attempt.
+    // Ordinary matching independently checks exact local/TMDB sources.
+    if(Date.now()<Number(window.__matchappAIDownUntil||0))
+        throw new Error('AI provider is temporarily quota-limited');
     if (!supabaseClient) throw new Error("Database not connected");
     const { data, error } = await supabaseClient.functions.invoke('gemini-proxy', { body: { prompt: promptText, adultMatch: true, ...(proposalMode ? { mode: 'match_proposals' } : {}) } });
-    if (error || !data || !data.candidates) throw new Error("API Error");
+    if (error || !data || !data.candidates) {
+        if(Number(error?.context?.status||data?.status||0)===429)
+            window.__matchappAIDownUntil=Date.now()+45000;
+        throw new Error("AI unavailable; use verified source matching");
+    }
     
     let rawText = data.candidates[0].content.parts[0].text;
     let startIndex = rawText.indexOf('{'); let endIndex = rawText.lastIndexOf('}');

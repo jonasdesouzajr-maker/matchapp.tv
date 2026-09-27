@@ -639,7 +639,11 @@ Deno.serve(async (req: Request) => {
         mode:isDiscoverMode ? "discover" : isRankMode ? "rank_candidates" : isProposalMode ? "match_proposals" : "legacy",
         allowedCandidateIds:rankCandidateIds,
         reserve:async () => {
-          const {data,error} = await adminDb.rpc("claim_openai_primary_slot",{p_limit:dailyLimit});
+          // Reserve part of the existing, owner-configurable OpenAI daily ceiling
+          // for conversations and hard-to-find exact matches. Routine ranked
+          // ordering must not exhaust Ask AI's remaining production budget.
+          const cap = isRankMode ? Math.max(1,dailyLimit-Math.min(20,Math.floor(dailyLimit*.2))) : dailyLimit;
+          const {data,error} = await adminDb.rpc("claim_openai_primary_slot",{p_limit:cap});
           return !error && data === true;
         },
         cors:corsHeaders,
@@ -799,17 +803,33 @@ Deno.serve(async (req: Request) => {
              headers:{...corsHeaders(req),"Content-Type":"application/json"}});
         }
 
-        // Upstream error bodies can carry project identifiers, quota details
-        // and key metadata. Log them where only we can read them; tell the
-        // browser the status and nothing more.
-        if (route.tier === "paid" && geminiRes.status === 429 && !freeApiKey)
-          console.warn("[gemini-proxy] separate free-tier secret is not configured");
-        const errBody = await geminiRes.text();
-        console.error(`[gemini-proxy] ${model} -> ${geminiRes.status}: ${errBody.slice(0, 500)}`);
+        // Overload is model-specific: try the next configured model/key once
+        // instead of marking the entire provider down on a transient 503.
+        if(geminiRes.status>=500){
+          console.warn("[gemini-proxy] temporary model overload tier="+route.tier+" status="+geminiRes.status);
+          lastError=route.tier+" model temporarily unavailable";
+          continue;
+        }
+        // A paid-project monthly cap affects every model sharing that key.
+        // Do NOT burn more retries or log the provider's potentially sensitive
+        // quota body. Per-model 429s may safely try the next model.
+        if(route.tier==="paid" && geminiRes.status===429){
+          if(!freeApiKey)console.warn("[gemini-proxy] separate free-tier secret is not configured");
+          const detail=await geminiRes.text();
+          const projectWide=/(?:project|billing account).{0,100}(?:monthly spending cap|monthly spend cap|spending cap)|exceeded its monthly spending cap/i.test(detail);
+          console.warn("[gemini-proxy] paid route quota="+(projectWide?"project_spend_cap":"model_or_tier_rate_limit"));
+          lastError="paid provider rate-limited";
+          if(!projectWide)continue;
+          return new Response(JSON.stringify({error:"AI capacity temporarily exhausted",status:429}),
+            {status:429,headers:{...corsHeaders(req),"Content-Type":"application/json","Retry-After":"60"}});
+        }
+        // Reject terminal errors without exposing upstream bodies or secrets.
+        console.warn("[gemini-proxy] provider unavailable tier="+route.tier+" status="+geminiRes.status);
         return new Response(
-          JSON.stringify({ error: "AI service unavailable", status: geminiRes.status }),
-          { status: geminiRes.status === 429 ? 429 : 502,
-            headers: { ...corsHeaders(req), "Content-Type": "application/json" } }
+          JSON.stringify({error:"AI service temporarily unavailable",status:geminiRes.status}),
+          {status: geminiRes.status === 429 ? 429 : 502,
+           headers:{...corsHeaders(req),"Content-Type":"application/json",
+             ...(geminiRes.status===429?{"Retry-After":"60"}:{})}}
         );
       } catch (e) {
         lastError = `${model}: ${e instanceof Error ? e.message : String(e)}`;
