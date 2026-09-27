@@ -410,8 +410,10 @@
     const attempt=async()=>{
       for(const url of exactPosterCandidates(state)){
         if(state.failed.has(url))continue;
-        state.failed.add(url);
-        if(!(await posterImageLoads(url)))continue;
+        // An attempted original isn't broken merely because it was tried.
+        // Remember only confirmed probe failures. A successful URL must remain
+        // available if another async result-paint temporarily overwrites it.
+        if(!(await posterImageLoads(url))){state.failed.add(url);continue;}
         if(img.__matchappAdultPoster!==identity||!img.isConnected)return true;
         img.dataset.matchappFallbackStage='verified';
         img.src=url;
@@ -497,7 +499,13 @@
     }
     const previousMeta=state.meta,previousPreferred=state.preferred;
     if(safeSameTitleMedia(meta,state))state.meta=meta;
-    if(preferred&&posterVariants(preferred).length)state.preferred=preferred;
+    // Live TMDB discovery already supplied the exact numeric identity AND its
+    // source artwork. Start that original on the very first result event,
+    // without waiting for a title-only SQL search or delayed metadata chain.
+    const pinnedOriginal=!state.isRail&&state.tmdbId>0&&['movie','tv'].includes(state.kind)
+      ? String(currentIdentity.artwork||''):'';
+    const eligiblePreferred=posterVariants(preferred).length?preferred:pinnedOriginal;
+    if(eligiblePreferred&&posterVariants(eligiblePreferred).length)state.preferred=eligiblePreferred;
     if(state.repairing&&(state.meta!==previousMeta||state.preferred!==previousPreferred))
       state.needsRepair=true;
     img.dataset.matchappMediaTitle=name;
@@ -529,7 +537,25 @@
          !sameOriginalArtwork(current,catalogOriginal))void repairAdultPoster(img,state);
       return; // Never blank a working original while checking fresh artwork.
     }
-    if(current&&TRUSTED_POSTER.test(current)&&!img.complete)return; // Preserve in-flight remote loading.
+    if(current&&TRUSTED_POSTER.test(current)&&!img.complete){
+      // Android WebView can leave a stalled remote <img> loading forever, with
+      // neither load nor error. Keep the title card visible and give it a
+      // bounded, exact-identity alternate-poster recovery after 8 seconds.
+      if(state.watchingUrl!==current){
+        state.watchingUrl=current;
+        const watching=state,url=current;
+        setTimeout(()=>{
+          if(img.__matchappAdultPoster!==watching||!img.isConnected||img.complete)return;
+          if(String(img.currentSrc||img.src||'')!==url)return;
+          watching.failed.add(url);ADULT_IMAGE_PROBES.delete(url);
+          img.dataset.matchappFallbackStage='local';
+          img.src=localPoster(name);
+          watching.watchingUrl='';
+          void repairAdultPoster(img,watching);
+        },8000);
+      }
+      return;
+    }
     if(current&&TRUSTED_POSTER.test(current)&&img.complete&&img.naturalWidth===0)state.failed.add(current);
     if(!String(img.src||'').startsWith('data:image/svg+xml')&&
        (!img.getAttribute('src')||(img.complete&&img.naturalWidth===0))){

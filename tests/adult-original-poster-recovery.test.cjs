@@ -298,3 +298,48 @@ test('exact-title database metadata refreshes working posters without an extra l
  assert.equal(recorded.length,1);
  assert.equal(recorded[0],current);
 });
+
+test('a live source poster loads immediately from its verified numeric identity',async()=>{
+ const media=read('catalog-media.js');
+ const start=media.indexOf('  function adultPosterSurface('),end=media.indexOf('  function localLikePoster(',start);
+ const original='https://image.tmdb.org/t/p/w780/EXACTMAXCOMEDY.jpg';
+ const attempts=[];
+ class Probe{naturalWidth=0;set src(url){attempts.push(url);queueMicrotask(()=>{
+   if(url.includes('EXACTMAXCOMEDY')){this.naturalWidth=780;this.onload?.();}
+   else this.onerror?.();
+ });}}
+ const ctx={TRUSTED_POSTER:/^https:\/\/(?:image\.tmdb\.org|is\d+-ssl\.mzstatic\.com)\//i,Image:Probe,Promise,Set,Map,Date,setTimeout,clearTimeout,
+  normalise:v=>String(v||'').toLowerCase(),localPoster:v=>'data:image/svg+xml,'+encodeURIComponent(v),
+  lookup:async()=>{throw Error('do not require a title-only lookup before live artwork')},
+  window:{getVerifiedPoster:()=>null,globalMatchTitle:'Exact Max Comedy',
+   currentMatchIdentity:{title:'Exact Max Comedy',tmdbId:1234,kind:'tv',year:2022,artwork:original},
+   setLoadedMatchPoster(){}}
+ };
+ const {recoverAdultPoster}=vm.runInNewContext(media.slice(start,end)+'\n({recoverAdultPoster})',ctx);
+ const img={id:'res-poster-img',dataset:{},isConnected:true,complete:true,naturalWidth:600,_src:'data:image/svg+xml,first',
+  get src(){return this._src},set src(url){this._src=url;this.complete=true;this.naturalWidth=url===original?780:600},
+  get currentSrc(){return this._src},getAttribute(k){return k==='src'?this._src:null},
+  closest:()=>null,addEventListener(){}};
+ recoverAdultPoster(img,'Exact Max Comedy'); // event path has no explicit preferred URL
+ await new Promise(resolve=>setTimeout(resolve,25));
+ assert.equal(img.src,original,'source-verified artwork paints before optional database enrichment');
+ // A second asynchronous result renderer used to overwrite successful posters.
+ // Re-entering recovery must be allowed to paint the SAME confirmed URL again.
+ img.src='data:image/svg+xml,late-fallback';
+ recoverAdultPoster(img,'Exact Max Comedy');
+ await new Promise(resolve=>setTimeout(resolve,25));
+ assert.equal(img.src,original,'successful original must not be blacklisted by previous use');
+ assert.equal(attempts.filter(x=>x===original).length,1,'successful image probes are still deduplicated');
+});
+
+test('mobile match poster reserves visible dimensions while its original decodes',()=>{
+ const home=new JSDOM(read('index.html')).window.document;
+ const img=home.getElementById('res-poster-img');
+ assert.equal(img.getAttribute('width'),'600');
+ assert.equal(img.getAttribute('height'),'900');
+ assert.match(read('index.html'),/catalog-media\.js\?v=20260927-posterrecovery1/);
+ assert.match(read('discover.html'),/catalog-media\.js\?v=20260927-posterrecovery1/);
+ const media=read('catalog-media.js');
+ assert.match(media,/watching\.failed\.add\(url\);ADULT_IMAGE_PROBES\.delete\(url\)/);
+ assert.match(media,/if\(!\(await posterImageLoads\(url\)\)\)\{state\.failed\.add\(url\);continue;\}/);
+});
