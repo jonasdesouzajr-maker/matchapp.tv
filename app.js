@@ -1735,6 +1735,41 @@ window.eventMatch = function (query) {
             arrowFrame = requestAnimationFrame(() => { arrowFrame = 0; updateArrows(vp); });
         }, { passive:true });
 
+        // Mobile swipe stays native and fluid. Suppress a poster's click when a
+        // finger has dragged the rail; a deliberate tap still opens that title.
+        if(vp.id==='marquee-viewport'){
+            let drag=null,swipeUntil=0;
+            vp.addEventListener('pointerdown',e=>{
+                if(e.pointerType!=='touch'&&!e.pointerType.startsWith('pen'))return;
+                drag={id:e.pointerId,x:e.clientX,y:e.clientY,scroll:vp.scrollLeft,moved:false};
+            },{passive:true});
+            vp.addEventListener('pointermove',e=>{
+                if(!drag||e.pointerId!==drag.id)return;
+                if(Math.abs(e.clientX-drag.x)>11||Math.abs(vp.scrollLeft-drag.scroll)>9)
+                    drag.moved=true;
+            },{passive:true});
+            const finishGesture=e=>{
+                if(!drag||e.pointerId!==drag.id)return;
+                if(drag.moved||Math.abs(vp.scrollLeft-drag.scroll)>9)
+                    swipeUntil=Date.now()+450;
+                drag=null;
+            };
+            vp.addEventListener('pointerup',finishGesture,{passive:true});
+            vp.addEventListener('pointercancel',finishGesture,{passive:true});
+            vp.addEventListener('click',e=>{
+                if(Date.now()<swipeUntil&&e.target.closest?.('.marquee-item')){
+                    e.preventDefault();e.stopImmediatePropagation();
+                }
+            },true);
+            vp.addEventListener('keydown',e=>{
+                if(e.key!=='Enter'&&e.key!==' ')return;
+                const item=e.target.closest?.('.marquee-item');
+                if(!item)return;
+                e.preventDefault();hold();
+                const title=item.querySelector('img[data-title]')?.dataset.title;
+                if(title)window.selectMarqueeItem?.(title);
+            });
+        }
         if ('IntersectionObserver' in window) {
             const io = new IntersectionObserver(entries => {
                 visible = !!entries[0]?.isIntersecting;
