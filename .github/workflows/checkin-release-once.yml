@@ -1,0 +1,64 @@
+name: One-time check-in bubble release preparation
+on:
+  push:
+    branches: [feat/checkin-signin-bubble-20260927]
+    paths: ['.github/workflows/checkin-release-once.yml']
+permissions:
+  contents: write
+jobs:
+  prepare:
+    if: contains(github.event.head_commit.message, 'one-time guarded release')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feat/checkin-signin-bubble-20260927
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - name: Surgical version bump on existing adult entry points only
+        run: |
+          node <<'NODE'
+          const fs=require('node:fs');
+          const version='2026.09.27.1';
+          const next='daily-checkin.js?v=20260927-bubble1';
+          for(const filename of ['index.html','discover.html','together.html']){
+            const before=fs.readFileSync(filename,'utf8');
+            const matches=before.match(/daily-checkin\.js\?v=[\w-]+/g)||[];
+            if(matches.length!==1)throw new Error(`${filename}: expected exactly one check-in script, got ${matches.length}`);
+            const after=before.replace(/daily-checkin\.js\?v=[\w-]+/,next);
+            fs.writeFileSync(filename,after);
+          }
+          const testfile='tests/surgical-auth-checkin-free-first.test.cjs';
+          let test=fs.readFileSync(testfile,'utf8');
+          if(!test.includes('authsession1'))throw new Error('cache-busting regression assertion was changed unexpectedly');
+          test=test.replace('authsession1','bubble1');
+          fs.writeFileSync(testfile,test);
+          const release=JSON.parse(fs.readFileSync('release.json','utf8'));
+          release.version=version;release.date='2026-09-27';release.functional=true;
+          release.notes.en='Daily Check-in no longer takes up home-page space. Signed-in members with an available daily reward receive a small premium reminder; a successful claim adds their existing Match reward and a brief See you tomorrow celebration. Dismiss once per session. Kids, AI, and existing reward rules are unchanged.';
+          release.notes['pt-BR']='O check-in diário não ocupa mais espaço na página inicial. Quem está conectado e tem um prêmio disponível recebe um lembrete discreto e premium. Após resgatar, o Match é creditado como antes e aparece uma breve animação Até amanhã. O lembrete pode ser fechado. Modo Kids, IA e regras de recompensa continuam iguais.';
+          release.notes.es='El check-in diario ya no ocupa espacio en la página principal. Los usuarios conectados reciben un pequeño recordatorio solo cuando tienen una recompensa disponible y ven un breve Hasta mañana al cobrarla. Kids, IA y las reglas de premios no cambian.';
+          fs.writeFileSync('release.json',JSON.stringify(release,null,2)+'\n');
+          const meta='build-meta.js';let src=fs.readFileSync(meta,'utf8');
+          if(!/window\.MATCHAPP_BUILD = '\d{4}\.\d{2}\.\d{2}\.\d+';/.test(src))throw new Error('Build version declaration not found');
+          src=src.replace(/window\.MATCHAPP_BUILD = '\d{4}\.\d{2}\.\d{2}\.\d+';/,`window.MATCHAPP_BUILD = '${version}';`);
+          fs.writeFileSync(meta,src);
+          NODE
+      - name: Validate versioned code before the automated commit
+        run: |
+          node --check daily-checkin.js
+          npm ci --ignore-scripts
+          npm test
+          npm run audit:site
+      - name: Commit only the requested release and cache-busting files
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add index.html discover.html together.html tests/surgical-auth-checkin-free-first.test.cjs release.json build-meta.js
+          git diff --cached --quiet && exit 0
+          git commit -m 'chore: release check-in bubble with versioned adult page assets'
+          git push origin HEAD:feat/checkin-signin-bubble-20260927
