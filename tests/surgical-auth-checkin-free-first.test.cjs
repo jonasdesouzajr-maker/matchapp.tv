@@ -113,7 +113,7 @@ test('registration success is presented only after server verification, before n
 test('a separately funded-free-tier Gemini project is preferred before any paid key',()=>{
   // A declaration inside an accidentally escaped comment passes a loose
   // regex yet fails the real Supabase TypeScript bundler.
-  assert.match(proxy,/^const FREE_MODEL_CHAIN = \["gemini-2\.5-flash-lite", "gemini-2\.5-flash"\];$/m);
+  assert.match(proxy,/^const FREE_MODEL_CHAIN = \["gemini-3\.5-flash-lite", "gemini-3\.8-flash"\];$/m);
   assert.match(proxy,/^const MODEL_CHAIN = \[$/m);
   assert.match(proxy,/Deno\.env\.get\("GEMINI_FREE_API_KEY"\)/);
   assert.match(proxy,/Deno\.env\.get\("GEMINI_API_KEY"\)/);
@@ -121,6 +121,9 @@ test('a separately funded-free-tier Gemini project is preferred before any paid 
   assert.match(proxy,/if \(route\.tier === "free" && freeProjectBlocked\) continue/);
   assert.match(proxy,/freeProjectBlocked = true;[\s\S]*if \(paidApiKey\) continue/);
   assert.match(proxy,/x-goog-api-key": route\.key/);
+  assert.match(proxy,/served tier=free model=\$\{model\}/);
+  assert.match(proxy,/separate free-tier secret is not configured/);
+  assert.match(proxy,/free project model unavailable:/);
 });
 test('the homepage loads the check-in session fix instead of a stale cached script',()=>{
   assert.match(homeHtml,/daily-checkin\.js\?v=20260927-authsession1/);
