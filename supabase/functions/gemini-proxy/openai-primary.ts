@@ -2,11 +2,12 @@
 // Gemini remains the independent backup. Do not use this for Kids Mode.
 const OPENAI_MODEL = "gpt-5.6-luna";
 const OPENAI_TIMEOUT_MS = 16000;
-type SchemaMode = "discover" | "match_proposals" | "legacy";
+type SchemaMode = "discover" | "match_proposals" | "rank_candidates" | "legacy";
 type OpenAIArgs = {
   req: Request; prompt: string; mode: SchemaMode; key: string;
   reserve: () => Promise<boolean>; cors: (req: Request) => Record<string,string>;
   blockXXX: (row: Record<string,unknown>) => boolean; explicitXXX: (text: string) => boolean;
+  allowedCandidateIds?: string[];
 };
 function schemaFor(mode: SchemaMode) {
   const str = { type: "string" };
@@ -31,8 +32,12 @@ function schemaFor(mode: SchemaMode) {
       required:["title","year","kind"]
     }}},required:["results"]
   };
+  const rank = {
+    type:"object", additionalProperties:false,
+    properties:{ ids:{type:"array",items:str} }, required:["ids"]
+  };
   return {type:"json_schema",name:"matchapp_"+mode,strict:true,
-          schema:mode==="discover"?discover:mode==="match_proposals"?proposals:legacy};
+          schema:mode==="discover"?discover:mode==="match_proposals"?proposals:mode==="rank_candidates"?rank:legacy};
 }
 export async function callOpenAIPrimary(args: OpenAIArgs): Promise<Response|null> {
   const {req,prompt,mode,key,reserve,cors,blockXXX,explicitXXX}=args;
@@ -48,7 +53,7 @@ export async function callOpenAIPrimary(args: OpenAIArgs): Promise<Response|null
       headers:{"Content-Type":"application/json","Authorization":"Bearer "+key},
       body:JSON.stringify({
         model:OPENAI_MODEL,input:prompt,store:false,reasoning:{effort:"none"},
-        max_output_tokens:mode==="legacy"?900:mode==="discover"?2600:1500,
+        max_output_tokens:mode==="legacy"?900:mode==="discover"?2600:mode==="rank_candidates"?350:1500,
         text:{format:schemaFor(mode)}
       })
     });
@@ -77,6 +82,13 @@ export async function callOpenAIPrimary(args: OpenAIArgs): Promise<Response|null
         parsed.results=parsed.results.slice(0,12).filter((r:Record<string,unknown>)=>
           r&&typeof r.title==="string"&&!explicitXXX([r.title,r.type,r.synopsis].join(" "))&&!blockXXX(r));
       }
+    }else if(mode==="rank_candidates"){
+      if(!Array.isArray(parsed.ids))return null;
+      const allowed=new Set(
+        Array.isArray(args.allowedCandidateIds)?args.allowedCandidateIds:[]);
+      parsed.ids=[...new Set(parsed.ids)].filter((id:unknown)=>
+        typeof id==="string"&&allowed.has(id)).slice(0,12);
+      if(!parsed.ids.length)return null;
     }else if(mode==="match_proposals"){
       if(!Array.isArray(parsed.results))return null;
       parsed.results=parsed.results.slice(0,16).filter((r:Record<string,unknown>)=>
