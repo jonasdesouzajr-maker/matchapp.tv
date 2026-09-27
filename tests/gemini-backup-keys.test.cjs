@@ -5,7 +5,12 @@ test('Gemini backups remain optional server secrets and OpenAI stays primary',()
   assert.match(source,/Deno\.env\.get\("GEMINI_BACKUP_API_KEY_1"\)|"GEMINI_BACKUP_API_KEY_1"/);
   assert.match(source,/"GEMINI_BACKUP_API_KEY_2"/);
   assert.ok(source.indexOf('callOpenAIPrimary({')<source.indexOf('const routes = ['),'do not change OpenAI-first priority');
-  assert.match(source,/\.\.\.\(paidApiKey \? MODEL_CHAIN\.map[\s\S]*\.\.\.backupPaidApiKeys\.flatMap/);
+  const routes = source.slice(source.indexOf("const routes = ["),source.indexOf("];",source.indexOf("const routes = [")));
+  const free = routes.indexOf("...(freeApiKey ? FREE_MODEL_CHAIN.map");
+  const backup = routes.indexOf("...backupPaidApiKeys.flatMap");
+  const oldPaid = routes.indexOf("...(paidApiKey ? MODEL_CHAIN.map");
+  assert.ok(free >= 0 && free < backup && backup < oldPaid,"new Gemini projects must precede the older paid key");
+  assert.match(source,/const apiKey = freeApiKey \|\| backupPaidApiKeys\[0\] \|\| paidApiKey/);
   assert.match(source,/\.filter\(\(key, index, keys\) => !!key && key !== freeApiKey && key !== paidApiKey && keys.indexOf\(key\) === index\)/);
 });
 test('project-wide quota and rejected paid key skip other models on that key',()=>{

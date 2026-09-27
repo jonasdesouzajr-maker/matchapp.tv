@@ -447,7 +447,7 @@ Deno.serve(async (req: Request) => {
       .map(name => Deno.env.get(name)?.trim() || "")
       .filter((key, index, keys) => !!key && key !== freeApiKey && key !== paidApiKey && keys.indexOf(key) === index);
     const openAiApiKey = Deno.env.get("OPENAI_API_KEY")?.trim() || "";
-    const apiKey = freeApiKey || paidApiKey || backupPaidApiKeys[0] || "";
+    const apiKey = freeApiKey || backupPaidApiKeys[0] || paidApiKey || "";
     if (!apiKey && !openAiApiKey) {
       return new Response(
         JSON.stringify({ error: "No AI provider API key is configured." }),
@@ -502,7 +502,7 @@ Deno.serve(async (req: Request) => {
             functionVersion: "2026-09-hardened+prompt-tighten-temp-065",
             supportsDiscoverMode: true,
             // Which models actually serve traffic, vs which are only probed.
-            servingChain: [...(freeApiKey ? FREE_MODEL_CHAIN : []), ...(paidApiKey ? MODEL_CHAIN : [])],
+            servingChain: [...(freeApiKey ? FREE_MODEL_CHAIN : []), ...backupPaidApiKeys.flatMap(() => MODEL_CHAIN), ...(paidApiKey ? MODEL_CHAIN : [])],
             models: {} as Record<string, string>,
         };
         const models = report.models as Record<string, string>;
@@ -511,7 +511,7 @@ Deno.serve(async (req: Request) => {
             try {
                 const pac = new AbortController();
                 const ptimer = setTimeout(() => pac.abort(), PER_MODEL_TIMEOUT_MS);
-                const probeKey = freeApiKey && FREE_MODEL_CHAIN.includes(model) ? freeApiKey : (paidApiKey || freeApiKey);
+                const probeKey = freeApiKey && FREE_MODEL_CHAIN.includes(model) ? freeApiKey : (backupPaidApiKeys[0] || paidApiKey || freeApiKey);
                 const r = await fetch(
                     `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`,
                     {
@@ -661,8 +661,8 @@ Deno.serve(async (req: Request) => {
     // if configured. Its quota/model semantics are intentionally unchanged.
     const routes = [
       ...(freeApiKey ? FREE_MODEL_CHAIN.map(model => ({model, key:freeApiKey, tier:"free"})) : []),
-      ...(paidApiKey ? MODEL_CHAIN.map(model => ({model, key:paidApiKey, tier:"paid"})) : []),
       ...backupPaidApiKeys.flatMap(key => MODEL_CHAIN.map(model => ({model, key, tier:"paid"}))),
+      ...(paidApiKey ? MODEL_CHAIN.map(model => ({model, key:paidApiKey, tier:"paid"})) : []),
     ];
     let freeProjectBlocked = false;
     // If a whole project is capped or its key is invalid, skip its other models.
