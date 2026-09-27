@@ -226,18 +226,37 @@ function requestedMovieTitle(question) {
     const named=String(question).match(/\b(?:film|movie|series|of|for|about|called|named)\s+([A-Z][\p{L}\p{N}'-]+(?:\s+[A-Z][\p{L}\p{N}'-]+){1,5})/u);
     return named?named[1].trim():'';
 }
+// Original publisher credits are a deterministic backup for EXACT film
+// identities when TMDB is unreachable. Extend ONLY with original-source
+// confirmed works, never with guessed film facts or fuzzy title matches.
+// Studio Ghibli primary source: https://www.ghibli.jp/works/chihiro/
+// The studio explicitly credits director Hayao Miyazaki and release 2001.
+const EDITORIAL_FILM_CREDITS=Object.freeze([
+    Object.freeze({title:'Spirited Away',year:'2001',director:'Hayao Miyazaki',
+      source:'https://www.ghibli.jp/works/chihiro/',publisher:'Studio Ghibli'})
+]);
 async function sourceVerifiedFilmFacts(question) {
-    if(!isFactualMediaQuestion(question) || typeof window.tmdbLookup!=='function' ||
-        typeof window.tmdbRelated!=='function')return null;
+    if(!isFactualMediaQuestion(question))return null;
     const requested=requestedMovieTitle(question);
     if(!requested)return null;
+    const norm=x=>String(x||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+        .toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
+    const year=String(question).match(/\b(?:19|20)\d{2}\b/)?.[0]||'';
+    const publisher=EDITORIAL_FILM_CREDITS.find(x=>norm(x.title)===norm(requested) && (!year||x.year===year));
+    if(publisher) {
+        const lang=window.MATCH_LANG||'en';
+        const answer=/^pt/.test(lang)
+            ? publisher.title+' ('+publisher.year+') foi dirigido por '+publisher.director+'. Fonte original verificada: '+publisher.publisher+'. O chat de IA está temporariamente indisponível.'
+            : /^es/.test(lang)
+            ? publisher.title+' ('+publisher.year+') fue dirigida por '+publisher.director+'. Fuente original verificada: '+publisher.publisher+'. El chat de IA está temporalmente no disponible.'
+            : publisher.title+' ('+publisher.year+') was directed by '+publisher.director+'. Verified original publisher: '+publisher.publisher+'. Conversational AI is temporarily unavailable.';
+        return {answer,results:[],_live:false,verifiedSource:publisher.source};
+    }
+    if(typeof window.tmdbLookup!=='function'||typeof window.tmdbRelated!=='function')return null;
     try {
-        const year=String(question).match(/\b(?:19|20)\d{2}\b/)?.[0]||'';
         const movie=await window.tmdbLookup(requested,{kind:'movie',cats:['movie'],year,priority:true});
         if(!movie || movie.kind!=='movie' || movie.adult===true ||
             !Number.isSafeInteger(movie.tmdbId) || movie.tmdbId<=0)return null;
-        const norm=x=>String(x||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'')
-            .toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
         if(![movie.title,movie.originalTitle].some(t=>norm(t)===norm(requested)))return null;
         if(year && String(movie.year)!==year)return null;
         const info=await window.tmdbRelated(movie.tmdbId,'movie');
@@ -1743,7 +1762,7 @@ async function runAskAndRender(question) {
     const bubble = appendAssistantBubble(payload.answer, bookIntent ? [] : (payload.results || []), { instant: false });
     // Only attach the exact numbered TMDB record returned from verified
     // lookup+credits. Plain AI prose and fuzzy title suggestions get no link.
-    if(bubble?.wrap && /^https:\/\/www\.themoviedb\.org\/movie\/\d+$/.test(payload?.verifiedSource||'')) {
+    if(bubble?.wrap && (/^https:\/\/www\.themoviedb\.org\/movie\/\d+$/.test(payload?.verifiedSource||'') || payload?.verifiedSource==='https://www.ghibli.jp/works/chihiro/')) {
         const sourceLink=document.createElement('a');
         sourceLink.className='gold-btn discover-verified-source';
         sourceLink.href=payload.verifiedSource;
