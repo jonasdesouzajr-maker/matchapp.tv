@@ -36,7 +36,7 @@ test('the distinct AI candidate-list schema is used end-to-end, never legacy one
 
 test('provider failover is finite, guarded, reversible and cannot silently change Kids or ads',()=>{
   assert.match(openai,/OPENAI_TIMEOUT_MS = 16000/);
-  assert.match(openai,/if\(!result\.ok\)/);
+  assert.match(openai,/if\s*\(!result\.ok\)/);
   assert.match(openai,/return null;/);
   assert.match(proxy,/if \(answer\) return answer;\s*\}\s*\/\/ The existing Gemini fallback/);
   assert.match(proxy,/FREE_MODEL_CHAIN\.map/);
@@ -47,6 +47,6 @@ test('provider failover is finite, guarded, reversible and cannot silently chang
   assert.match(sql,/grant execute on function public\.claim_openai_primary_slot\(integer\) to service_role/);
   assert.match(openai,/!explicitXXX/);
   assert.match(openai,/!blockXXX/);
-  assert.match(home,/app\.js\?v=20260927-openai-criteria1/);
+  assert.match(home,/app\.js\?v=20260926-catalogscale1&amp;auth=[^\"]+&amp;openai=20260927-criteria1/);
   assert.doesNotMatch(home,/sk-[a-zA-Z0-9_-]{10,}/);
 });
