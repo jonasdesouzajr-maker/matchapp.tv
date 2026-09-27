@@ -1994,6 +1994,23 @@ html body.page-home #swifties-spotify .swifties-latest a{
   background:rgba(255,255,255,.045)!important;color:#fff!important;text-decoration:none!important;font-size:11.5px!important;font-weight:760!important;
 }
 html body.page-home #swifties-spotify .swifties-latest a:hover{border-color:#55e986!important;background:rgba(29,185,84,.12)!important}
+/* Authentic Spotify release art: contained, not stretched or cropped. */
+html body.page-home #swifties-spotify .swifties-new-album{
+  display:flex;align-items:center;gap:12px;max-width:830px;margin:0 auto 12px;padding:10px 12px;
+  border:1px solid rgba(29,185,84,.4);border-radius:14px;background:rgba(0,0,0,.24);
+  color:#fff;text-decoration:none;
+}
+html body.page-home #swifties-spotify .swifties-new-album:hover{border-color:#55e986;background:rgba(29,185,84,.12)}
+html body.page-home #swifties-spotify .swifties-new-album img{
+  display:block;width:96px;height:96px;flex:0 0 96px;object-fit:contain;border-radius:9px;
+}
+html body.page-home #swifties-spotify .swifties-new-album span{display:flex;flex-direction:column;gap:5px;min-width:0;text-align:left}
+html body.page-home #swifties-spotify .swifties-new-album strong{font-size:14px;line-height:1.3}
+html body.page-home #swifties-spotify .swifties-new-album small{color:#a7ddb8;font-size:11.5px;line-height:1.4}
+@media(max-width:380px){
+  html body.page-home #swifties-spotify .swifties-new-album{gap:9px;padding:9px}
+  html body.page-home #swifties-spotify .swifties-new-album img{width:72px;height:72px;flex-basis:72px}
+}
 html body.page-home #swifties-spotify .swifties-grid{display:grid!important;grid-template-columns:1.25fr .75fr!important;gap:8px!important;max-width:830px!important;margin:0 auto 14px!important}
 html body.page-home #swifties-spotify :is(.swifties-official-link,.swifties-artist-link){
   min-height:58px!important;display:flex!important;align-items:center!important;gap:10px!important;padding:10px 12px!important;
