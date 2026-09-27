@@ -20,7 +20,7 @@ function adultExtras(){
 }
 test('verified adult Netflix and Spotify additions are deduplicated with authenticated original music art',()=>{
  const extras=adultExtras();
- for(const title of ['Gandhari','Physical 100: Mexico','Crew Girl']){
+ for(const title of ['Gandhari','Physical 100: Mexico','Crew Girl','Not a Stranger','Fauda','KPop Demon Hunters']){
   const hit=extras.filter(x=>x.title===title);
   assert.equal(hit.length,1,title);
   assert.ok(hit[0].sourceUrl?.startsWith('https://'),'official source required');
