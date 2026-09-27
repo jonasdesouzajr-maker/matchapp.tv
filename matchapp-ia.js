@@ -277,7 +277,9 @@ function mountHome(){
    requestAnimationFrame(()=>{
      if(!pa.hidden&&pa.getClientRects().length){
        const target=qs('#search-box',pa)||pa;
-       try{target.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'nearest'});}
+       // No queued smooth animation after a fold opens: the input must
+       // actually enter the viewport on the first mobile/desktop tap.
+       try{target.scrollIntoView({behavior:'instant',block:'start'});}
        catch(_){target.scrollIntoView();}
      }
    });

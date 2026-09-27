@@ -72,7 +72,9 @@
         ? (document.getElementById('search-box') || panel)
         : document.querySelector('.ma-concierge, .top-ask-wrap, #top-ask');
       if (tab && ask) {
-        try { ask.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+        // Reveal the chat in the same tap. CSS/global smooth scrolling on
+        // mobile used to leave the panel below the fold, appearing unresponsive.
+        try { ask.scrollIntoView({ behavior: 'instant', block: 'start' }); }
         catch (_) { ask.scrollIntoView(); }
       } else {
         // If the dynamically mounted Home chat isn't present, the genuine

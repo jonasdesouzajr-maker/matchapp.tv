@@ -16,6 +16,7 @@ test('Home hero Ask opens a previously collapsed concierge and reveals the actua
  assert.equal(clicks,1,'activate Ask panel');
  assert.equal(panel.hidden,false,'Ask input must be revealed');
  assert.equal(scrolls,1,'scroll to the revealed input, not the hidden section');
+ assert.match(read('home-approved.js'),/ask\.scrollIntoView\(\{ behavior: 'instant', block: 'start' \}\)/,'mobile first-tap must not wait behind smooth scroll');
  w.close();
 });
 test('dedicated Home Ask card expands fold and scrolls the revealed input without opening keyboard',()=>{
@@ -23,7 +24,7 @@ test('dedicated Home Ask card expands fold and scrolls the revealed input withou
  assert.match(s,/ba\.addEventListener\('click',\(\)=>\{/);
  assert.match(s,/if\(fold\)[\s\S]*toggle\.click\(\)/);
  assert.match(s,/tab\('ask'\);\s*requestAnimationFrame/);
- assert.match(s,/target\.scrollIntoView\(/);
+ assert.match(s,/target\.scrollIntoView\(\{behavior:'instant',block:'start'\}\)/);
  const handler=s.slice(s.indexOf("ba.addEventListener('click',()=>{"),s.indexOf("\n });",s.indexOf("ba.addEventListener('click',()=>{"))+4);
  assert.doesNotMatch(handler,/\.focus\(/,'do not auto-pop the phone keyboard');
 });
@@ -55,5 +56,6 @@ test('live phone/tablet/desktop smoke opens the real Home Ask card and handles e
  assert.match(smoke,/Home Ask AI tap opens visible unfocused composer/);
  assert.match(smoke,/getElementById\('ma-panel-ask'\)/);
  assert.match(smoke,/noAutoKeyboard/);
+ assert.match(smoke,/waitForFunction\(\(\)=>\{[\s\S]*box\.top<innerHeight&&box\.bottom>0/);
  assert.match(smoke,/Ask AI empty Send is actionable/);
 });

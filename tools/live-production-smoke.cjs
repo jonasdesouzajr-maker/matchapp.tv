@@ -235,12 +235,19 @@ async function aiQuestion(page,question,expected,label){
       const pane=document.getElementById('ma-panel-ask'),form=document.getElementById('search-box');
       return !!pane&&!pane.hidden&&!!form&&getComputedStyle(form).display!=='none'&&form.getBoundingClientRect().width>60;
     },null,{timeout:9000});
+    // Check the result of the scroll, not an intermediate animation frame;
+    // allowing brief layout settlement also catches genuine stuck offscreen UI.
+    await page.waitForFunction(()=>{
+      const box=document.getElementById('search-box')?.getBoundingClientRect();
+      return !!box&&box.width>60&&box.top<innerHeight&&box.bottom>0;
+    },null,{timeout:3500}).catch(()=>{});
     const activeAsk=await page.evaluate(()=>{
       const pane=document.getElementById('ma-concierge'),form=document.getElementById('search-box');
       const input=document.getElementById('specific-search-input'),rect=form?.getBoundingClientRect();
       return {open:!pane?.classList.contains('lazy-foldable')||pane.classList.contains('lazy-open'),
         selected:document.getElementById('ma-tab-ask')?.getAttribute('aria-selected')==='true',
         visible:!!rect&&rect.width>60&&rect.top<innerHeight&&rect.bottom>0,
+        position:rect?{top:Math.round(rect.top),bottom:Math.round(rect.bottom),viewport:innerHeight,scrollY:scrollY}:null,
         noAutoKeyboard:document.activeElement!==input};
     });
     record('Home Ask AI tap opens visible unfocused composer '+device.name,
