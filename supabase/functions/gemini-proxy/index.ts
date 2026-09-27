@@ -834,11 +834,21 @@ Deno.serve(async (req: Request) => {
           return new Response(JSON.stringify({error:"AI capacity temporarily exhausted",status:429}),
             {status:429,headers:{...corsHeaders(req),"Content-Type":"application/json","Retry-After":"60"}});
         }
-        // An invalid or unauthorized paid key must not block a healthy backup.
-        if (route.tier === "paid" && (geminiRes.status === 401 || geminiRes.status === 403)) {
+        // HTTP 402 is a BILLING failure on this paid project; do not
+        // terminate the entire chain before trying the other configured paid
+        // projects. As with 401/403, all models using this key would fail.
+        // If projects share one exhausted billing balance all will still fail,
+        // at which point the honest, uncharged frontend fallback remains.
+        if (route.tier === "paid" &&
+            (geminiRes.status === 402 || geminiRes.status === 401 || geminiRes.status === 403)) {
           blockedPaidKeys.add(route.key);
-          lastError = "paid Gemini project authentication or authorization failed";
-          if (routes.some(next => next.tier === "paid" && !blockedPaidKeys.has(next.key))) continue;
+          lastError = geminiRes.status === 402
+            ? "paid Gemini project billing unavailable"
+            : "paid Gemini project authentication or authorization failed";
+          const alternatePaidAvailable = routes.some(next => next.tier === "paid" && !blockedPaidKeys.has(next.key));
+          console.warn("[gemini-proxy] paid route unusable status=" + geminiRes.status +
+                       " backup_available=" + alternatePaidAvailable);
+          if (alternatePaidAvailable) continue;
         }
         // Reject terminal errors without exposing upstream bodies or secrets.
         console.warn("[gemini-proxy] provider unavailable tier="+route.tier+" status="+geminiRes.status);

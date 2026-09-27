@@ -17,7 +17,16 @@ test('project-wide quota and rejected paid key skip other models on that key',()
   assert.match(source,/const blockedPaidKeys = new Set<string>\(\)/);
   assert.match(source,/if \(route\.tier === "paid" && blockedPaidKeys\.has\(route\.key\)\) continue/);
   assert.match(source,/if\(!projectWide\)continue;\s*blockedPaidKeys\.add\(route\.key\)/);
-  assert.match(source,/\(geminiRes\.status === 401 \|\| geminiRes\.status === 403\)/);
+  assert.match(source,/geminiRes\.status === 402 \|\| geminiRes\.status === 401 \|\| geminiRes\.status === 403/);
   assert.match(source,/if \(backupPaidApiKeys\.length\) continue/);
   assert.doesNotMatch(source,/console\.(?:log|info|warn|error)\([^\n]*route\.key/);
+});
+
+test('each billing-failed paid key yields to a different configured paid project instead of aborting early',()=>{
+  const failureBlock=source.slice(source.indexOf('// HTTP 402 is a BILLING failure'),source.indexOf('// Reject terminal errors without exposing upstream bodies or secrets.'));
+  assert.ok(failureBlock.includes('blockedPaidKeys.add(route.key)'),'project-specific failure blocks only its own key');
+  assert.ok(failureBlock.includes('const alternatePaidAvailable = routes.some(next => next.tier === "paid" && !blockedPaidKeys.has(next.key))'));
+  assert.ok(failureBlock.includes('if (alternatePaidAvailable) continue;'));
+  assert.ok(failureBlock.includes('geminiRes.status === 402'));
+  assert.doesNotMatch(failureBlock,/console\.(?:warn|log|info|error)\([^\n]*route\.key/,'never log credential material');
 });
