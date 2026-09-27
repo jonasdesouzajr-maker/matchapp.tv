@@ -25,6 +25,11 @@
         <priority>0.8</priority>
     </url>
     <url>
+        <loc>https://matchapp.tv/guides/worldwide-entertainment-discovery/</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
         <loc>https://matchapp.tv/guides/what-to-watch-september-2026/</loc>
         <lastmod>2026-09-27T12:59:08+00:00</lastmod>
         <changefreq>weekly</changefreq>
