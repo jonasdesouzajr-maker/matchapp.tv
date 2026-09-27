@@ -48,3 +48,12 @@ test('new Ask runtime reaches phones, iPhones, tablets and live Android WebView 
  assert.match(home,/class="top-ai-launch" href="\/discover\.html"/);
  assert.match(read('home-approved.js'),/class="ma-dock-ask" href="\/discover\.html"/);
 });
+
+test('live phone/tablet/desktop smoke opens the real Home Ask card and handles empty Send',()=>{
+ const smoke=read('tools/live-production-smoke.cjs');
+ assert.match(smoke,/page\.locator\('#ma-hero-ask'\)\.click/);
+ assert.match(smoke,/Home Ask AI tap opens visible unfocused composer/);
+ assert.match(smoke,/#ma-panel-ask/);
+ assert.match(smoke,/noAutoKeyboard/);
+ assert.match(smoke,/Ask AI empty Send is actionable/);
+});

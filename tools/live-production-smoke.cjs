@@ -222,8 +222,37 @@ async function aiQuestion(page,question,expected,label){
     const bookFields=await ebook.locator('select[data-ebook-select]').count();
     record('real compact reading controls '+device.name,bookFields===7,
       'seven live dropdowns preserve ebook, verified audio and magazine choices');
-    await shot(page,device.name+'-home');
+    // Real touch/browser regression: an existing folded concierge must not
+    // make the Home Ask button appear dead on a phone, tablet or desktop.
+    const preAsk=await page.evaluate(()=>{
+      const pane=document.getElementById('ma-concierge');
+      const fold=pane?.previousElementSibling;
+      if(fold?.classList.contains('lazy-head')&&pane.classList.contains('lazy-open'))fold.click();
+      return {folded:!!(pane?.classList.contains('lazy-foldable')&&!pane.classList.contains('lazy-open'))};
+    });
+    await page.locator('#ma-hero-ask').click({timeout:12000});
+    await page.waitForFunction(()=>{
+      const pane=document.getElementById('ma-panel-ask'),form=document.getElementById('search-box');
+      return !!pane&&!pane.hidden&&!!form&&getComputedStyle(form).display!=='none'&&form.getBoundingClientRect().width>60;
+    },null,{timeout:9000});
+    const activeAsk=await page.evaluate(()=>{
+      const pane=document.getElementById('ma-concierge'),form=document.getElementById('search-box');
+      const input=document.getElementById('specific-search-input'),rect=form?.getBoundingClientRect();
+      return {open:!pane?.classList.contains('lazy-foldable')||pane.classList.contains('lazy-open'),
+        selected:document.getElementById('ma-tab-ask')?.getAttribute('aria-selected')==='true',
+        visible:!!rect&&rect.width>60&&rect.top<innerHeight&&rect.bottom>0,
+        noAutoKeyboard:document.activeElement!==input};
+    });
+    record('Home Ask AI tap opens visible unfocused composer '+device.name,
+      activeAsk.open&&activeAsk.selected&&activeAsk.visible&&activeAsk.noAutoKeyboard,
+      'initialFolded='+preAsk.folded+' '+JSON.stringify(activeAsk));
+    await shot(page,device.name+'-home-ask-open');
     await observed(page,'/discover.html');
+    // Empty Send must guide the user rather than appearing unresponsive.
+    await page.locator('.composer-send').click({timeout:10000});
+    const emptyPrompt=await page.locator('#discover-compose-help').innerText();
+    record('Ask AI empty Send is actionable '+device.name,
+      /Type a question|tap the microphone/i.test(emptyPrompt),emptyPrompt.slice(0,160));
     const textbox=page.locator('#discover-new-input');await textbox.waitFor({state:'visible',timeout:20000});
     const composer=await page.evaluate(()=>{
       const input=document.getElementById('discover-new-input').getBoundingClientRect();
