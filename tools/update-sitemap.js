@@ -22,6 +22,7 @@ const CORE = [
     { loc: `${SITE}/discover.html`,            freq: 'daily',   pri: '0.9' },
     { loc: `${SITE}/anime.html`,                freq: 'daily',   pri: '0.8' },
     { loc: `${SITE}/ebooks/`,                   freq: 'weekly',  pri: '0.8' },
+    { loc: `${SITE}/guides/worldwide-entertainment-discovery/`, freq: 'monthly', pri: '0.8' },
     { loc: `${SITE}/guides/what-to-watch-september-2026/`, freq: 'weekly', pri: '0.8' },
     { loc: `${SITE}/guides/global-music-september-2026/`, freq: 'weekly', pri: '0.8' },
     { loc: `${SITE}/guides/books-september-2026/`, freq: 'weekly', pri: '0.8' },
