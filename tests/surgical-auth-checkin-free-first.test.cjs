@@ -73,6 +73,19 @@ test('signed-in member remains eligible when the status RPC fails; successful cl
   assert(state.getOverlay(),'Reward celebration should appear');
 });
 
+test('a valid Google/Supabase session unlocks check-in before a slow status RPC returns',async()=>{
+  let release;
+  const state=boot(()=>new Promise(resolve=>{release=resolve;}),
+    async()=>({data:{session:{user:{id:'member-1'}}},error:null}));
+  state.handlers.DOMContentLoaded();
+  await flush();await flush();
+  assert.doesNotMatch(state.root.innerHTML,/Register to unlock/);
+  assert.match(state.root.innerHTML,/Check in · \+1 Match/);
+  release({data:{authenticated:true,streak:1,checked_today:false},error:null});
+  await flush();await flush();
+  assert.match(state.root.innerHTML,/Day 1 of 7/);
+});
+
 test('stale guest status cannot overwrite a newer authenticated check-in status',async()=>{
   let release;
   let reads=0;
