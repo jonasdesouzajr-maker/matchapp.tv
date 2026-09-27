@@ -43,6 +43,17 @@ function loadCatalog() {
     if (start === -1 || end === -1) throw new Error('CONTENT_CATALOG not found in app.js');
     const sandbox = {};
     new Function('exports', src.slice(start, end) + ';exports.C = CONTENT_CATALOG;')(sandbox);
+    // Adult extras are actual browse/match records, not Kids catalog. Include them
+    // in truthful collection-page facet counts without changing the UI filter.
+    const plus = fs.readFileSync(path.join(ROOT, 'catalog-plus.js'), 'utf8');
+    const extra = plus.match(/const extra=(\\[[\\s\\S]*?\\n\\]);function merge/);
+    if (!extra) throw new Error('Adult extra catalog not found');
+    const extras = new Function('return (' + extra[1] + ');')();
+    const seen = new Set(sandbox.C.map(e => String(e.title || '').trim().toLowerCase()));
+    for (const e of extras) {
+      const key = String(e.title || '').trim().toLowerCase();
+      if (key && !seen.has(key)) { sandbox.C.push(e); seen.add(key); }
+    }
     return sandbox.C;
 }
 
