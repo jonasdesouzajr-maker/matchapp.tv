@@ -227,3 +227,9 @@ For all future authorized MatchApp system or mechanical tasks — bug fixes, bac
 ### 23. OPENAI-ONLY ADULT ROUTING UNTIL OWNER CONFIRMS GEMINI REPLENISHMENT (2026-09-27)
 
 Owner's latest explicit instruction: **Only OpenAI handles eligible adult Ask AI and AI-assisted matching now.** Do not use the original paid Gemini key, free Gemini key or other backup Gemini keys for adult chat or matching until the owner explicitly confirms paid credits have been purchased and authorizes restoration. Any earlier assertion that the owner had already restored paid credits is superseded. Preserve existing Kids and non-adult legacy routes unchanged. Preserve the owner-configured daily OpenAI usage ceiling: when its gate is exhausted or the API fails, return an honest retryable unavailable response (and allow verified independent source metadata on the client), never quietly fall through to Gemini or increase spending. Restore backup routing only upon the owner's subsequent instruction and independently verify it first.
+
+---
+
+### 24. OWNER DIRECTIVE: NO EMULATOR TESTING (2026-09-27)
+
+The owner expressly discontinued Android emulator work **for all future MatchApp sessions**. Do not launch, rerun, troubleshoot, recommend, or make releases dependent on Android emulator tests. Do not opt into the repository's optional emulator GitHub workflow or include its opt-in commit tag. Continue the other authorized tasks and maintain normal Android compilation/static checks, production mobile-web browser checks, and actual physical-device verification when available. Do not present skipped emulator testing as a release defect or interrupt unrelated work to discuss it. This directive supersedes earlier requests to pursue emulator testing and remains until the owner explicitly changes it.
