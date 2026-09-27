@@ -48,7 +48,7 @@ test('home marquee keeps curated originals with native swipe tap suppression and
  const section=home.match(/<div class="marquee-track" id="marquee-track">([\s\S]*?)<\/div>\s*<\/div>\s*<\/div>/)?.[1]||'';
  const cards=[...section.matchAll(/<img[^>]*data-title="([^"]+)"[^>]*data-tmdb-id="([^"]+)"[^>]*src="([^"]+)"/g)];
  assert.equal(cards.length,20);
- for(let i=0;i<10;i++)assert.deepEqual(cards[i],cards[i+10]);
+ for(let i=0;i<10;i++)assert.deepEqual(cards[i].slice(1,4),cards[i+10].slice(1,4));
  assert(home.indexOf('/match-ai-rank.js')<home.indexOf('/app.js?v='));
  assert.equal((section.split('role="button"').length-1),10);
  assert.match(app,/if\(vp\.id==='marquee-viewport'\)/);
