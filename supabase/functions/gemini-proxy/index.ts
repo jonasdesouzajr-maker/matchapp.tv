@@ -700,14 +700,24 @@ Deno.serve(async (req: Request) => {
           continue;
         }
 
-        // On a separate free project's 429, stop making free-tier requests
-        // immediately; try the already-configured paid project only once
-        // billing allows it. A wrong/restricted free key likewise must not
-        // prevent an otherwise healthy paid service from answering.
+        // Google 429 can mean a per-model quota OR a project-wide spending
+        // cap. Only block both free models for project-wide cap/key failure.
+        // For model-specific rate limits, try the other free model once first.
         if (route.tier === "free" &&
             (geminiRes.status === 429 || geminiRes.status === 401 || geminiRes.status === 403)) {
+          if (geminiRes.status === 429) {
+            // Inspect Google's response privately; never log raw quota bodies,
+            // project identifiers, API keys, or the user's actual prompt.
+            const reason = await geminiRes.text();
+            const projectWide = /(?:project|billing account).{0,100}(?:monthly spending cap|monthly spend cap|spending cap)/i.test(reason) ||
+                                /exceeded its monthly spending cap/i.test(reason);
+            console.warn("[gemini-proxy] free route quota=" +
+              (projectWide ? "project_spend_cap" : "model_or_tier_rate_limit") + " model=" + model);
+            lastError = model + ": free route 429";
+            if (!projectWide) continue; // Next free model, bounded by FREE_MODEL_CHAIN.
+          }
           freeProjectBlocked = true;
-          console.warn("[gemini-proxy] Separate free project unavailable (status " + geminiRes.status + ").");
+          console.warn("[gemini-proxy] separate free project blocked status=" + geminiRes.status);
           lastError = "free project unavailable: " + geminiRes.status;
           if (paidApiKey) continue;
           return new Response(JSON.stringify({error:"Free Gemini project unavailable or quota exhausted.",status:geminiRes.status}),
