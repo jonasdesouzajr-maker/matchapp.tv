@@ -657,6 +657,16 @@ Deno.serve(async (req: Request) => {
       if (answer) return answer;
     }
 
+    // TEMPORARY OWNER ROUTING: OpenAI exclusively handles eligible adult AI.
+    // Owner has not yet confirmed replenishment of the separate Gemini keys.
+    // Never spend an unapproved Gemini project to bypass the OpenAI usage gate.
+    if (openAiEligible) {
+      return new Response(
+        JSON.stringify({error:"OpenAI is temporarily unavailable. Please try again later.",provider:"openai",retryable:true}),
+        {status:503,headers:{...corsHeaders(req),"Content-Type":"application/json","Retry-After":"120","Cache-Control":"no-store"}}
+      );
+    }
+
     // The existing Gemini fallback retains the free→backup→original order
     // for Kids and legacy calls. For eligible ADULT calls, the explicit guard
     // in the loop skips every route except the original replenished paid key.

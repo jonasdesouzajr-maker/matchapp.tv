@@ -38,7 +38,8 @@ test('provider failover is finite, guarded, reversible and cannot silently chang
   assert.match(openai,/OPENAI_TIMEOUT_MS = 16000/);
   assert.match(openai,/if\s*\(!result\.ok\)/);
   assert.match(openai,/return null;/);
-  assert.match(proxy,/if \(answer\) return answer;\s*\}\s*\/\/ The existing Gemini fallback/);
+  assert.match(proxy,/if \(answer\) return answer;\s*}\s*\/\/ TEMPORARY OWNER ROUTING/);
+  assert.match(proxy,/if \(openAiEligible\) \{[\s\S]*?provider:"openai"[\s\S]*?status:503/);
   assert.match(proxy,/FREE_MODEL_CHAIN\.map/);
   assert.match(proxy,/MODEL_CHAIN\.map/);
   assert.match(proxy,/OPENAI_DAILY_CALL_LIMIT/);
