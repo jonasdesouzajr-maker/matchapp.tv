@@ -33,6 +33,15 @@ PY
   fi
 }
 dismiss_launcher_anr 'boot'
+# Keep diagnostic evidence whenever the hosted emulator drops ADB or Android
+# cannot expose its accessibility tree. Neither failure proves an app crash.
+capture_native_diagnostics() {
+  local label="$1"
+  timeout 12s adb get-state > "artifacts/android-emulator/${label}-adb-state.txt" 2>&1 || true
+  timeout 12s adb shell dumpsys activity activities > "artifacts/android-emulator/${label}-activities.txt" 2>&1 || true
+  timeout 15s adb logcat -d -v brief -t 1000 > "artifacts/android-emulator/${label}-logcat.txt" 2>&1 || true
+  timeout 15s adb exec-out screencap -p > "artifacts/android-emulator/${label}-screenshot.png" 2>/dev/null || true
+}
 probe() {
   local name="$1" pkg="$2" apk="$3" activity="$4"
   echo "TEST native $name APK: $pkg"
@@ -44,10 +53,20 @@ probe() {
   launch="$(timeout 30s adb shell am start -W -n "$pkg/$activity" 2>&1 || true)"
   printf '%s\n' "$launch" >"artifacts/android-emulator/$name-launch.txt"
   if ! grep -Eq 'Status: ok|ThisTime:|TotalTime:' <<< "$launch"; then
-    echo "::error::$name Activity did not report a successful explicit launch."
-    return 1
+    # am start -W can time out while the startup WebView is still initializing.
+    # Do not conflate that with a native process crash: check the real PID.
+    sleep 7
+    if ! timeout 12s adb shell pidof "$pkg" >/dev/null 2>&1; then
+      capture_native_diagnostics "$name-startup-failure"
+      echo "::error::$name Activity timed out and the native process is unavailable."
+      return 1
+    fi
+    echo "::warning::$name am start did not finish drawing; process exists, checking native UI."
   fi
-  sleep 22
+  # Capture before UiAutomator; a hosted emulator has previously lost its ADB
+  # connection during accessibility inspection, leaving no visual evidence.
+  timeout 15s adb exec-out screencap -p > "artifacts/android-emulator/$name-early-screen.png" 2>/dev/null || true
+  sleep 12
   dismiss_launcher_anr "$name"
   # Validate the actually rendered root package. Newer emulator images can
   # return an empty mCurrentFocus/mFocusedApp even while our Activity is plainly
@@ -55,8 +74,19 @@ probe() {
   timeout 15s adb shell uiautomator dump "/sdcard/$name-window.xml" >/dev/null 2>&1 || true
   timeout 10s adb pull "/sdcard/$name-window.xml" "artifacts/android-emulator/$name-window.xml" >/dev/null 2>&1 || true
   if ! grep -Fq "package=\"$pkg\"" "artifacts/android-emulator/$name-window.xml" 2>/dev/null; then
-    echo "::error::$name rendered hierarchy is not owned by the tested package."
-    return 1
+    # Accessibility may fail on WebView without the app actually leaving the
+    # foreground; require an independent RESUMED activity and real screenshot.
+    local foreground
+    foreground="$(timeout 12s adb shell dumpsys activity activities 2>/dev/null || true)"
+    printf '%s\n' "$foreground" > "artifacts/android-emulator/$name-activity-state.txt"
+    if grep -E '(mResumedActivity|topResumedActivity|ResumedActivity)' <<< "$foreground" | grep -Fq "$pkg" &&
+      test "$(stat -c%s "artifacts/android-emulator/$name-early-screen.png" 2>/dev/null || echo 0)" -gt 6000; then
+      echo "::warning::$name UiAutomator hierarchy unavailable; resumed Activity and real screenshot confirmed; inspect visual artifact manually."
+    else
+      capture_native_diagnostics "$name-foreground-failure"
+      echo "::error::$name foreground could not be proven by UI hierarchy or resumed Activity; see emulator evidence."
+      return 1
+    fi
   fi
   # A freshly booted shared emulator can report no active network during the
   # Activity's first millisecond and legitimately show MatchApp's offline view.
