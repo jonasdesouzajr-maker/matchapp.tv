@@ -21,10 +21,11 @@ function boot(statusRpc, initialGetSession) {
     get innerHTML() {return this._html || '';},
     querySelector(selector) {
       const isJoin = selector === '.dc-action-join';
+      const isClaim = selector === '.dc-action' || selector.includes(':not(');
       if (isJoin && !currentHtml.includes('dc-action-join')) return null;
-      if (!isJoin && selector.includes(':not(') && !currentHtml.includes('dc-action">') &&
+      if (isClaim && !currentHtml.includes('dc-action">') &&
           !currentHtml.includes('is-bonus-claim')) return null;
-      if (!isJoin && !selector.includes(':not(')) return null;
+      if (!isJoin && !isClaim) return null;
       return {
         disabled:false, textContent:'', animate() {},
         addEventListener(_event, fn) {if(isJoin) join=fn; else claim=fn;}
