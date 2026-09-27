@@ -160,6 +160,14 @@ async function askAIConversational(question, history) {
         }
     };
 
+    // A confirmed provider quota from this page's matching flow is not
+    // recoverable by calling the same exhausted keys again immediately.
+    if(Date.now()<Number(window.__matchappAIDownUntil||0)){
+        const err=new Error('AI providers are temporarily quota-limited');
+        err.aiUnavailable=true;
+        err.aiTerminal=true;
+        throw err;
+    }
     // Two attempts of the SAME contract, not a fallback to a different one.
     // A transient cold-start/network failure gets one bounded retry, while the
     // request/response schema remains identical on both attempts.
@@ -172,6 +180,7 @@ async function askAIConversational(question, history) {
             // request, or a quota/rate-limit response; it only makes those
             // failures worse and needlessly burns provider capacity.
             const status = Number(error?.context?.status || data?.status || 0);
+            if(status===429)window.__matchappAIDownUntil=Date.now()+45000;
             if (status === 429 || (status >= 400 && status < 500 && status !== 408)) {
                 const err = new Error(status === 429 ? 'AI is busy; please try again shortly.' : 'AI request rejected.');
                 err.aiUnavailable = true;
