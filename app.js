@@ -3891,6 +3891,13 @@ function titlePassesRealGenre(entry) {
     return keys.has(normalise(entry?.title));
 }
 
+function regionAvailabilityFits(entry,criteria) {
+    const limited=Array.isArray(entry?.availabilityRegions)?entry.availabilityRegions:[];
+    const platforms=normCriteria(criteria?.plat);
+    if(!limited.length||!platforms.length)return true;
+    const current=window.MatchAppCatalogMedia?.regionCode?.()||'';
+    return limited.includes(current);
+}
 async function rankVerifiedCuratedMatch(requested) {
     const policy=window.matchPolicy,ranker=window.MatchAppAIRank?.rank;
     if(!policy||typeof ranker!=='function')return null;
@@ -3901,7 +3908,7 @@ async function rankVerifiedCuratedMatch(requested) {
     // Mandatory checks are identical to those used by the ordinary shelf.
     const eligible=CONTENT_CATALOG.filter(e=>policy.matches(e,criteria)&&
        (!window.__matchappGenreFilterActive||titlePassesRealGenre(e))&&
-       entryPassesPreferenceExclusions(e)&&!isBlockedEntry(e)&&
+       entryPassesPreferenceExclusions(e)&&regionAvailabilityFits(e,criteria)&&!isBlockedEntry(e)&&
        !SESSION_SHOWN.has(e.title)&&
        (wantedFaith||!e.cats.includes('Gospel & Faith'))&&
        (normCriteria(requested.cat).length||isSurpriseEligible(e)));
@@ -3927,7 +3934,7 @@ async function rankVerifiedCuratedMatch(requested) {
     const index=ranked?.id && /^c\d+$/.test(ranked.id)?Number(ranked.id.slice(1)):-1;
     const hit=shortlist[index];
     if(!hit||!eligible.includes(hit))return null;
-    return {...hit,platformVerified:hit.platform!=='any',source:'catalog-ai-ranked'};
+    return {...hit,platformVerified:hit.platform!=='any'&&hit.platformVerified!==false,source:'catalog-ai-ranked'};
 }
 
 // Source-backed curation runs before generative title proposals: the AI only
@@ -3942,7 +3949,7 @@ function pickFromCatalog(cat, plat, mood, vibe, rating, decade) {
     const eligible = e => policy.matches(e, criteria)
         && (typeof titlePassesRealGenre!=='function'||titlePassesRealGenre(e))
         && (typeof entryPassesPreferenceExclusions!=='function'||entryPassesPreferenceExclusions(e))
-        && !isBlockedEntry(e) && !SESSION_SHOWN.has(e.title)
+        && regionAvailabilityFits(e,criteria) && !isBlockedEntry(e) && !SESSION_SHOWN.has(e.title)
         && (wantsFaith || !e.cats.includes('Gospel & Faith'))
         && (normCriteria(cat).length || isSurpriseEligible(e));
 
@@ -3981,7 +3988,7 @@ function pickFromCatalog(cat, plat, mood, vibe, rating, decade) {
         }
     } catch (_) {}
     const pick = pool[Math.floor(Math.random() * pool.length)];
-    return {...pick,title:pick.title,synopsis:pick.synopsis,platform:pick.platform,platformVerified:true,watchUrl:pick.watchUrl||(pick.platform==='Roku Channel'?pick.url:null)||null,source:'catalog'};
+    return {...pick,title:pick.title,synopsis:pick.synopsis,platform:pick.platform,platformVerified:pick.platform!=='any'&&pick.platformVerified!==false,watchUrl:pick.watchUrl||(pick.platform==='Roku Channel'?pick.url:null)||null,source:'catalog'};
 }
 
 // Exhaustion recovery: if every exact match has already appeared, recycle the
@@ -3996,7 +4003,7 @@ function pickRecycledCatalog(cat, plat, mood, vibe, rating, decade) {
     const eligible = e => policy.matchesCriteria(e, criteria)
         && (typeof titlePassesRealGenre!=='function'||titlePassesRealGenre(e))
         && (typeof entryPassesPreferenceExclusions!=='function'||entryPassesPreferenceExclusions(e))
-        && !isBlockedEntry(e)
+        && regionAvailabilityFits(e,criteria) && !isBlockedEntry(e)
         && (wantsFaith || !e.cats.includes('Gospel & Faith'))
         && (normCriteria(cat).length || isSurpriseEligible(e));
 
@@ -4072,7 +4079,7 @@ function pickRecycledCatalog(cat, plat, mood, vibe, rating, decade) {
     });
 
     const pick = pool[0];
-    return {...pick,title:pick.title,synopsis:pick.synopsis,platform:pick.platform,platformVerified:true,watchUrl:pick.watchUrl||(pick.platform==='Roku Channel'?pick.url:null)||null,source:'catalog-recycle',_historyFallback:true};
+    return {...pick,title:pick.title,synopsis:pick.synopsis,platform:pick.platform,platformVerified:pick.platform!=='any'&&pick.platformVerified!==false,watchUrl:pick.watchUrl||(pick.platform==='Roku Channel'?pick.url:null)||null,source:'catalog-recycle',_historyFallback:true};
 }
 
 // Guaranteed recovery for ordinary matching. Exact user choices win first.
