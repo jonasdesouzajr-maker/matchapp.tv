@@ -142,3 +142,16 @@ The requested adult-only bundle candidate is `com.jonas.papercup` **1.1.33 (vers
 **Clone:** `git clone https://github.com/jonasdesouzajr-maker/matchapp.tv.git`. Open `matchapp.tv/android-studio/` (containing `settings.gradle.kts`) in Android Studio Quail with **Gradle JDK 17**. To sync future changes, use `git pull origin main` from the root of the existing checkout rather than re-cloning. Select **app** for the adult Play app, not **kidsapp**.
 
 The `Validate Android apps` GitHub workflow archives the **UNSIGNED** adult-only `MatchApp-Ai-adult-1.1.33-code35-UNSIGNED-AAB`. Before submitting a Play update, verify code 35 is higher than any previous Play-uploaded build and use Android Studio **Build → Generate Signed App Bundle / APK** for **app/release** with the SAME protected upload keystore already registered for `com.jonas.papercup`. Test on a physical device/internal track and submit via Play Console. Web changes do NOT automatically create/publish Play releases. Kids native module remains untouched.
+
+
+## 27 September release verification checkpoint
+
+CI's `verify_adult_release.py` now checks **the same exact App Links JSON**
+under the live website source and Android release template, including the
+confirmed Play **app-signing** fingerprint, package name and verified Android
+HTTPS intent filter. The source tests do not claim the live apex or separate
+`www` domain has been verified by Android: those need HTTP verification
+and an installed Play-distributed build. The adult version is
+`1.1.33` (`versionCode 35`); only the existing private upload keystore
+can sign an update. The workflow produces an **unsigned** AAB solely for
+owner-side signing. No Kids code or production AdMob activation is changed.
