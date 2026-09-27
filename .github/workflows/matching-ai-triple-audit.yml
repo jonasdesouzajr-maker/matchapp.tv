@@ -45,6 +45,28 @@ jobs:
         with:
           node-version: '24'
           cache: npm
+      - name: Diagnose live DNS, Cloudflare cache, and GitHub Pages origin
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        shell: bash
+        run: |
+          set -u
+          echo 'Public DNS answers:'
+          getent ahostsv4 matchapp.tv | awk '{print $1}' | sort -u || true
+          for route in public github-pages-origin; do
+            echo "---- $route deployment marker ----"
+            args=()
+            if [ "$route" = github-pages-origin ]; then
+              args+=(--resolve 'matchapp.tv:443:185.199.108.153')
+            fi
+            curl -sS --max-time 15 "${args[@]}" -D /tmp/route-headers -o /tmp/route-body \\
+              -w 'HTTP %{http_code}; remote %{remote_ip}; redirect %{redirect_url}\\n' \\
+              "https://matchapp.tv/deployment-sha.txt?route_audit=${GITHUB_SHA}" || true
+            grep -Ei '^(server|cf-ray|cf-cache-status|cache-control|age|location|etag|x-cache|last-modified):' /tmp/route-headers || true
+            if [ -f /tmp/route-body ]; then
+              head -c 110 /tmp/route-body | tr '\\n' ' '
+              echo
+            fi
+          done
       - run: npm ci --ignore-scripts
       - name: Validate matching, AI, books, magazines, kids, quotas and all regression suites
         run: npm test
@@ -70,7 +92,7 @@ jobs:
           EXPECTED_SHA: ${{ github.sha }}
         run: |
           for i in {1..28}; do
-            remote="$(curl -fsSL https://matchapp.tv/deployment-sha.txt || true)"
+            remote="$(curl -fsSL "https://matchapp.tv/deployment-sha.txt?audit_sha=${EXPECTED_SHA}" || true)"
             if [ "$remote" = "$EXPECTED_SHA" ]; then exit 0; fi
             sleep 15
           done
