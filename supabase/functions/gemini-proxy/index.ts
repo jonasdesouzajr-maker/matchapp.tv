@@ -60,7 +60,9 @@ const adminDb = createClient(
 
 // These models have an actual $0 free allocation ONLY on a separate
 // Free-Tier Google project. On a billed project they still cost paid tokens.
-const FREE_MODEL_CHAIN = ["gemini-2.5-flash-lite", "gemini-2.5-flash"];
+// Google limits the 2.5 series for newly created API projects. Use the
+// currently supported Free-Tier options for newly created projects.
+const FREE_MODEL_CHAIN = ["gemini-3.5-flash-lite", "gemini-3.8-flash"];
 
 const MODEL_CHAIN = [
   "gemini-3.5-flash",       // PROVEN end-to-end on discover mode — primary
@@ -654,6 +656,9 @@ Deno.serve(async (req: Request) => {
             continue;
           }
 
+          // Report only the routing tier/model, never key, prompt, or user data.
+          if (route.tier === "free") console.info(`[gemini-proxy] served tier=free model=${model}`);
+
           // Output-level guard, independent of prompt adherence.
           if (isDiscoverMode && data?.candidates?.[0]?.content?.parts?.[0]?.text) {
             try {
@@ -689,6 +694,7 @@ Deno.serve(async (req: Request) => {
         // so stop and report it immediately instead of silently retrying.
         if (geminiRes.status === 404 || geminiRes.status === 400) {
           lastError = `${model}: ${geminiRes.status} (model unavailable or incompatible generation settings)`;
+          if (route.tier === "free") console.warn(`[gemini-proxy] free project model unavailable: ${model} status=${geminiRes.status}`);
           // A different model may accept this prompt/schema. This is NOT
           // true of project-wide spend-cap 429s, handled separately below.
           continue;
@@ -712,6 +718,8 @@ Deno.serve(async (req: Request) => {
         // Upstream error bodies can carry project identifiers, quota details
         // and key metadata. Log them where only we can read them; tell the
         // browser the status and nothing more.
+        if (route.tier === "paid" && geminiRes.status === 429 && !freeApiKey)
+          console.warn("[gemini-proxy] separate free-tier secret is not configured");
         const errBody = await geminiRes.text();
         console.error(`[gemini-proxy] ${model} -> ${geminiRes.status}: ${errBody.slice(0, 500)}`);
         return new Response(
