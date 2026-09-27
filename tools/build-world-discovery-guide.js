@@ -123,7 +123,7 @@ const esc=v=>String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&
 const SITE="https://matchapp.tv",url=SITE+"/guides/worldwide-entertainment-discovery/";
 const link=(href,label)=>`<a href="${esc(href)}">${esc(label)}</a>`;
 const sections=data.map(r=>`<section class="lang-card" id="lang-${esc(r.code.toLowerCase().replace("-","-"))}" lang="${esc(r.code)}"${r.code==="ar"?' dir="rtl"':""}><h2>${esc(r.label)}</h2><p>${esc(r.description)}</p><h3>${esc(r.watch)}</h3><ul><li>${esc(r.mood)}</li><li>${esc(r.books)}</li></ul><p>${link("/?lang="+encodeURIComponent(r.code),r.code==="en"?"Explore MatchApp in English":r.watch+" →")}</p></section>`).join("\n");
-const ld={"@context":"https://schema.org","@graph":[{"@type":"WebPage","name":"Worldwide movie, series, e-book and audiobook discovery in 14 languages","description":"A practical guide to MatchApp's entertainment discovery categories, localized search prompts and regional publisher links.","url":url,"inLanguage":"en","about":[{"@type":"Thing","name":"Movies and TV by mood"},{"@type":"Thing","name":"E-books and verified audiobooks"},{"@type":"Thing","name":"Streaming availability by country"}],"isPartOf":{"@type":"WebSite","url":SITE+"/","name":"MatchApp TV Ai"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"MatchApp","item":SITE+"/"},{"@type":"ListItem","position":2,"name":"Worldwide entertainment discovery","item":url}]}]};
+const ld={"@context":"https://schema.org","@graph":[{"@type":"WebPage","name":"Worldwide movie, series, e-book and audiobook discovery in 14 languages","description":"A practical guide to MatchApp's entertainment discovery categories, localized search prompts and regional publisher links.","url":url,"inLanguage":"en","about":[{"@type":"Thing","name":"Movies and TV by mood"},{"@type":"Thing","name":"E-books and verified audiobooks"},{"@type":"Thing","name":"Streaming availability by country"}],"isPartOf":{"@type":"WebSite","url":SITE+"/","name":"MatchApp TV Ai","alternateName":["MatchApp","MatchApp.tv"]}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"MatchApp TV Ai","item":SITE+"/"},{"@type":"ListItem","position":2,"name":"Worldwide entertainment discovery","item":url}]}]};
 return `<!doctype html>
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
@@ -156,8 +156,10 @@ nav{margin:20px 0 34px}.links{display:flex;flex-wrap:wrap;gap:13px}
 section{margin:25px 0}.note{border-left:3px solid #d1ae67;padding-left:15px;color:#cec4da}
 footer{border-top:1px solid #453551;margin-top:35px;font-size:.9rem}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
-</style></head>
+</style><link rel="stylesheet" href="/brand.css?v=192">
+</head>
 <body>
+<div class="matchapp-brand-bar"><a class="matchapp-brand-link" href="/" aria-label="MatchApp TV Ai"><img class="matchapp-wordmark" src="/assets/brand/matchapp-tv-ai-v2.svg" alt="MatchApp TV Ai" width="368" height="66" decoding="async"></a></div>
 <header><div class="brand">${link("/","✦ MatchApp Ai")}</div><p class="eyebrow">A practical worldwide discovery guide</p>
 <h1>What to watch, read or listen to — in your language</h1>
 <p class="intro">Choose your mood and what you want to enjoy: a movie, a series, a book, an audiobook, a magazine, music or a podcast. MatchApp’s interface supports 14 languages and helps you explore entertainment from multiple countries. Content and store availability vary by region; always confirm with the linked publisher or provider.</p>
