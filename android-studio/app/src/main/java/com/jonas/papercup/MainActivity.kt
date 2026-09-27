@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity() {
 
     // Web UI (including the responsive Avatar Studio) is shared with matchapp.tv.
     // Keep production pages fresh so phone/tablet WebViews receive approved UI updates immediately.
-    private val sharedUiVersion = "adult-reading-compact-awareness-20260926-1"
+    private val sharedUiVersion = "adult-mobile-match-ai-runtime-20260927-1"
 
     private val fileChooser = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
@@ -224,6 +224,13 @@ class MainActivity : AppCompatActivity() {
         listOf("supabase.co", "google.com", "gstatic.com", "googleapis.com", "googleusercontent.com")
             .any { hostIs(host, it) }
 
+    // Only the adult Match and Ask AI documents need cold document/asset
+    // loads after the emergency provider changes; keep every other native
+    // route and the entire desktop/browser experience untouched.
+    private fun isAdultAiDocument(uri: Uri): Boolean =
+        isMatchAppHost(uri.host.orEmpty()) &&
+            (uri.path.orEmpty() == "/" || uri.path.orEmpty() == "/discover.html")
+
     private fun isKidsUri(uri: Uri): Boolean {
         if (!isMatchAppHost(uri.host.orEmpty())) return false
         val path = uri.path.orEmpty().lowercase().trimEnd('/')
@@ -260,12 +267,15 @@ class MainActivity : AppCompatActivity() {
 
     private inner class MatchClient : WebViewClient() {
         override fun shouldOverrideUrlLoading(view: WebView, request: WebResourceRequest): Boolean {
+            if (isAdultAiDocument(request.url)) view.settings.cacheMode = WebSettings.LOAD_NO_CACHE
             return handleUrl(request.url)
         }
 
         @Deprecated("Deprecated in Java")
         override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
-            return handleUrl(Uri.parse(url))
+            val uri = Uri.parse(url)
+            if (isAdultAiDocument(uri)) view.settings.cacheMode = WebSettings.LOAD_NO_CACHE
+            return handleUrl(uri)
         }
 
         override fun shouldInterceptRequest(view: WebView, request: WebResourceRequest): WebResourceResponse? {
@@ -285,6 +295,7 @@ class MainActivity : AppCompatActivity() {
                 view.loadUrl(HOME)
                 return
             }
+            if (uri != null && isAdultAiDocument(uri)) view.settings.cacheMode = WebSettings.LOAD_NO_CACHE
             lastUrl = url ?: lastUrl
             injectAppMode(view)
         }
@@ -450,11 +461,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val HOME = "https://matchapp.tv/?utm_source=android_app&appBuild=34"
-        const val APP_UA = "MatchAppTVAndroid/1.1.32 MatchAppAiAndroid/1.1.32"
+        const val HOME = "https://matchapp.tv/?utm_source=android_app&appBuild=35"
+        const val APP_UA = "MatchAppTVAndroid/1.1.33 MatchAppAiAndroid/1.1.33"
         private const val APP_MODE_JS = """
             (function(){
               window.MATCHAPP_IS_AD_FREE = true;
+              window.MATCHAPP_ANDROID = true;
               window.MATCHAPP_ANDROID_KIDS_AVAILABLE = false;
               window.MATCHAPP_ANDROID_KIDS_BLOCKED = true;
               try { localStorage.setItem('match_ad_free','true'); } catch (e) {}
