@@ -1194,4 +1194,34 @@
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
     </url>
+    <url>
+        <loc>https://matchapp.tv/guides/what-to-watch-september-2026/</loc>
+        <lastmod>2026-09-27</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/guides/global-music-september-2026/</loc>
+        <lastmod>2026-09-27</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/guides/books-september-2026/</loc>
+        <lastmod>2026-09-27</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/guides/filmes-series-em-alta-brasil-setembro-2026/</loc>
+        <lastmod>2026-09-27</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/guides/peliculas-series-tendencia-mexico-septiembre-2026/</loc>
+        <lastmod>2026-09-27</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
 </urlset>
