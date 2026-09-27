@@ -46,7 +46,7 @@ for(const e of events){
  const url=SITE+'/events/'+e.slug+'/';urls.push(url);
  const image=absolutePoster(e);
  const schema={'@context':'https://schema.org','@graph':[
-  {'@type':'WebPage',name:e.title+' event guide',url,description:e.synopsis,keywords:e.keywords,dateModified:'2026-09-24',isPartOf:{'@type':'WebSite',name:'MatchApp.tv',url:SITE}},
+  {'@type':'WebPage',name:e.title+' event guide',url,description:e.synopsis,keywords:e.keywords,dateModified:e.updatedAt||'2026-09-24',isPartOf:{'@type':'WebSite',name:'MatchApp.tv',url:SITE}},
   {'@type':'Event',name:e.title,startDate:e.start,endDate:e.end,eventStatus:'https://schema.org/EventScheduled',eventAttendanceMode:'https://schema.org/OfflineEventAttendanceMode',location:{'@type':'Place',name:e.location,address:e.address},description:e.synopsis,image,keywords:e.keywords,url:e.official,organizer:{'@type':'Organization',name:e.organizer,url:e.official}},
   {'@type':'BreadcrumbList',itemListElement:[{'@type':'ListItem',position:1,name:'MatchApp.tv',item:SITE+'/'},{'@type':'ListItem',position:2,name:'Global events',item:SITE+'/events-archive.html'},{'@type':'ListItem',position:3,name:e.title,item:url}]}
  ]};
