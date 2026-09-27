@@ -2594,9 +2594,9 @@ if (!supabaseClient?.auth) setProfileLoadState('error',null);
 // ----------------------------------------------------
 // AI MATCH EXECUTION
 // ----------------------------------------------------
-async function fetchGeminiData(promptText) {
+async function fetchGeminiData(promptText, proposalMode = false) {
     if (!supabaseClient) throw new Error("Database not connected");
-    const { data, error } = await supabaseClient.functions.invoke('gemini-proxy', { body: { prompt: promptText } });
+    const { data, error } = await supabaseClient.functions.invoke('gemini-proxy', { body: { prompt: promptText, adultMatch: true, ...(proposalMode ? { mode: 'match_proposals' } : {}) } });
     if (error || !data || !data.candidates) throw new Error("API Error");
     
     let rawText = data.candidates[0].content.parts[0].text;
@@ -3623,7 +3623,7 @@ async function aiProposedVerifiedExact(requested){
         'Use each title\'s original English release title and its first release year. '+
         'Output valid JSON ONLY: {"results":[{"title":"Exact Title","year":2020,"kind":"movie or tv"}]}';
     let proposals=[];
-    try{const parsed=await fetchGeminiData(prompt);proposals=Array.isArray(parsed?.results)?parsed.results.slice(0,16):[];}catch(_){return null;}
+    try{const parsed=await fetchGeminiData(prompt, true);proposals=Array.isArray(parsed?.results)?parsed.results.slice(0,16):[];}catch(_){return null;}
     for(const p of proposals){
         const title=typeof p?.title==='string'?p.title.trim():'';if(!title)continue;
         const key=window.matchPolicy?.key?.(title)||'';
