@@ -130,64 +130,54 @@ rather than applied twice.
 
 ---
 
-## ⚠️ Required: deploy the gemini-proxy Edge Function
+## AI backend: OpenAI primary with independent Gemini fallback
 
-> **Already deployed this before?** The file changed again — the AI
-> Concierge's prompt engineering moved from the browser into this function
-> (see "What changed most recently" below). **Redeploy it**, same steps as
-> before.
+One canonical Edge Function (`supabase/functions/gemini-proxy/index.ts`) maintains the
+existing browser response contract. Adult Ask AI and *explicitly tagged* adult
+match requests use this finite provider order:
 
-**Root cause of both the "always shows the same result" and "Ask AI only
-returns podcasts" bugs:** Google shut down Gemini 1.0, 1.5, and 2.0 Flash
-between early and mid-2026. Any Edge Function still pointed at one of those
-retired model names has been returning 404 on every single call — silently,
-since the frontend was written to treat any proxy failure as "fall back to
-offline mode" rather than surface the error.
+1. `OPENAI_API_KEY` → `gpt-5.6-luna`, with an atomic **100-request UTC daily
+   default ceiling** (configurable through `OPENAI_DAILY_CALL_LIMIT`, maximum
+   200). This is a request ceiling, not a guaranteed hard **dollar** cap.
+2. `GEMINI_FREE_API_KEY` → current separate free-project Gemini models.
+3. `GEMINI_API_KEY` → the previously configured paid Gemini model chain.
 
-`supabase/functions/gemini-proxy/index.ts` is the fix: it tries a short chain
-of currently-supported models (`gemini-3.5-flash` → `gemini-2.5-flash` →
-`gemini-3.1-flash-lite`), only falling through to the next one on an actual
-failure — so a future Google deprecation alone can't take this down again.
+Any OpenAI rejection, insufficient credit, provider outage, timeout, or exhausted
+daily cap advances to Gemini rather than exposing provider details to visitors.
+Server secrets never ship in web files. Kids Mode and unrelated translation
+calls retain their **existing Gemini routing**.
 
-### What changed most recently
+### Matching schema contract
 
-The AI Concierge's actual prompt — the instructions that shape its tone,
-what it's allowed to recommend, how it structures its JSON reply — used to
-be built as a plain string in `discover.js`, fully readable by anyone who
-opened the browser's DevTools. It now lives in this function instead. The
-browser sends only `{ mode: "discover", question, lang, country, age }`;
-the function assembles the real prompt server-side. The main questionnaire's
-match engine is unaffected — it still sends a pre-built `{ prompt }` directly,
-which this function still accepts for backward compatibility.
+`mode:"discover"` returns a conversational `{answer,results}` response.
+`mode:"match_proposals"` with `adultMatch:true` returns a strict
+`{results:[{title,year,kind}]}` array, which is then **verified** against
+TMDB identity, genre/mood, region, provider, country exclusions and chosen
+criteria before presenting a match. The original legacy `{prompt}` single-title
+response remains available to existing non-proposal callers.
 
-### How to deploy
+### Deployment and validation
 
-**Option A — Supabase CLI** (if you have it installed locally):
+Apply **once** the SQL in
+`supabase/security/openai-primary-daily-gate.sql` as the
+`openai_primary_daily_gate` migration; it installs an atomic, service-only
+daily request ceiling, failing closed. In Supabase Edge secrets set
+`OPENAI_API_KEY` privately (the user's key is never committed). Optionally set
+`OPENAI_DAILY_CALL_LIMIT=100`, or `OPENAI_PRIMARY_DISABLED=true` for
+immediate kill-switch fallback. Also configure an OpenAI project budget and
+alerts; alerts are not guaranteed hard caps.
+
+Deploy `gemini-proxy` with **both** `index.ts` and `openai-primary.ts`
+using a multi-file Edge deployment, or Supabase CLI from the repo root:
+
 ```bash
-supabase functions deploy gemini-proxy --project-ref <your-project-ref>
+supabase functions deploy gemini-proxy --project-ref YOUR_PROJECT_REF --no-verify-jwt
 ```
 
-**Option B — Dashboard** (no CLI needed):
-1. Supabase Dashboard → **Edge Functions** → open (or create) `gemini-proxy`
-2. Open `supabase/functions/gemini-proxy/index.ts` on GitHub, click **Raw**
-3. Select all, copy, paste over the existing function code in the dashboard editor
-4. Click **Deploy**
-
-### Also verify the secret is set
-
-The function reads `GEMINI_API_KEY` from the project's Edge Function secrets.
-Dashboard → **Edge Functions** → **Manage secrets** → confirm `GEMINI_API_KEY`
-exists and is a valid key from [Google AI Studio](https://aistudio.google.com/apikey).
-If it's missing, the function now returns a clear `"GEMINI_API_KEY secret is
-not set"` error instead of failing silently — check the Edge Function logs
-in the dashboard if Ask AI still isn't working after deploying.
-
-### Verify it worked
-
-Ask a real question on `/discover.html` — you should get a natural-language
-answer within a couple of seconds, not the offline-mode badge. The response
-also includes a `_servedByModel` field if you want to confirm which model in
-the chain actually answered (visible in the browser's Network tab).
+Do **not** paste `index.ts` alone into the Supabase single-file editor:
+the relative provider module is required. Verify live source, OpenAI routing
+(or a safely reported fallback), normal matching's actual verified title,
+adult Ask AI and unchanged Kids behavior before a release is considered done.
 
 ---
 

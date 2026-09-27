@@ -50,6 +50,7 @@
 // be promoted, but the main path shouldn't be moved onto a model proven only
 // to answer a ping.
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import { callOpenAIPrimary } from "./openai-primary.ts";
 
 // Service-role client, used ONLY to meter requests (migration 008). The key
 // lives in Edge Function secrets and never leaves the server.
@@ -270,7 +271,7 @@ KIDS MODE IS ACTIVE. This is a hard safety boundary. Only suggest content clearl
 // Fixes: a much larger budget, thinking disabled (this task doesn't need
 // chain-of-thought), and native structured output so valid JSON is guaranteed
 // rather than merely requested in the prompt.
-function buildGenerationConfig(isDiscover: boolean) {
+function buildGenerationConfig(isDiscover: boolean, isProposals = false) {
   const base = {
     temperature: 0.65,
     maxOutputTokens: 8192,
@@ -278,6 +279,25 @@ function buildGenerationConfig(isDiscover: boolean) {
     responseMimeType: "application/json",
   };
 
+  if (isProposals) {
+    return {
+      ...base,
+      responseSchema: {
+        type: "OBJECT",
+        properties: {
+          results: {
+            type: "ARRAY",
+            items: {
+              type: "OBJECT",
+              properties: { title: {type:"STRING"}, year: {type:"INTEGER"}, kind: {type:"STRING"} },
+              required: ["title","year","kind"],
+            }
+          }
+        },
+        required: ["results"],
+      },
+    };
+  }
   if (isDiscover) {
     return {
       ...base,
@@ -420,10 +440,11 @@ Deno.serve(async (req: Request) => {
     // the original paid project remains a bounded fallback when allowed.
     const freeApiKey = Deno.env.get("GEMINI_FREE_API_KEY")?.trim() || "";
     const paidApiKey = Deno.env.get("GEMINI_API_KEY")?.trim() || "";
+    const openAiApiKey = Deno.env.get("OPENAI_API_KEY")?.trim() || "";
     const apiKey = freeApiKey || paidApiKey;
-    if (!apiKey) {
+    if (!apiKey && !openAiApiKey) {
       return new Response(
-        JSON.stringify({ error: "No Gemini API project key is configured." }),
+        JSON.stringify({ error: "No AI provider API key is configured." }),
         { status: 500, headers: { ...corsHeaders(req), "Content-Type": "application/json" } }
       );
     }
@@ -431,6 +452,7 @@ Deno.serve(async (req: Request) => {
     const body = await req.json();
     let prompt: string;
     let isDiscoverMode = false;
+    let isProposalMode = false;
 
     // ---- DIAGNOSTIC MODE ----
     // POST { "mode": "selftest" } to get a plain-language report of what is
@@ -557,6 +579,7 @@ Deno.serve(async (req: Request) => {
         typeof body.nickname === "string" ? body.nickname.slice(0, 32) : ""
       );
     } else if (typeof body?.prompt === "string") {
+      isProposalMode = body.mode === "match_proposals" && body.adultMatch === true;
       // Legacy path: the main questionnaire match engine still sends a
       // pre-built prompt directly. Kept for backward compatibility.
       //
@@ -581,9 +604,31 @@ Deno.serve(async (req: Request) => {
 
     let lastError: string | null = null;
 
-    // Exhaust the separately configured free tier before considering a
-    // chargeable key. Never retry a project-wide free-tier 429 on the other
-    // free model; Google applies project-level limits across requests.
+    // Only adult conversational and explicitly tagged adult matching routes
+    // use OpenAI. Kids, incidental translation and other legacy proxy callers
+    // retain their existing Gemini behavior unchanged.
+    const openAiEligible = body?.kidsMode !== true &&
+      (isDiscoverMode || (body?.adultMatch === true && typeof body?.prompt === "string"));
+    if (openAiEligible && openAiApiKey) {
+      const desiredLimit = Number(Deno.env.get("OPENAI_DAILY_CALL_LIMIT") || "100");
+      const dailyLimit = Number.isInteger(desiredLimit) && desiredLimit >= 1
+        ? Math.min(desiredLimit,200) : 100;
+      const answer = await callOpenAIPrimary({
+        req, prompt, key:openAiApiKey,
+        mode:isDiscoverMode ? "discover" : isProposalMode ? "match_proposals" : "legacy",
+        reserve:async () => {
+          const {data,error} = await adminDb.rpc("claim_openai_primary_slot",{p_limit:dailyLimit});
+          return !error && data === true;
+        },
+        cors:corsHeaders,
+        blockXXX:hasBlockedXXXDestination,
+        explicitXXX:(text:string) => EXPLICIT_XXX.test(text)
+      });
+      if (answer) return answer;
+    }
+
+    // The existing Gemini fallback remains free project first, then paid
+    // if configured. Its quota/model semantics are intentionally unchanged.
     const routes = [
       ...(freeApiKey ? FREE_MODEL_CHAIN.map(model => ({model, key:freeApiKey, tier:"free"})) : []),
       ...(paidApiKey ? MODEL_CHAIN.map(model => ({model, key:paidApiKey, tier:"paid"})) : []),
@@ -613,7 +658,7 @@ Deno.serve(async (req: Request) => {
               },
               body: JSON.stringify({
                 contents: [{ parts: [{ text: prompt }] }],
-                generationConfig: buildGenerationConfig(isDiscoverMode),
+                generationConfig: buildGenerationConfig(isDiscoverMode,isProposalMode),
               }),
             }
           );
@@ -742,10 +787,10 @@ Deno.serve(async (req: Request) => {
       }
     }
 
-    // Every model in the chain failed.
-    console.error(`[gemini-proxy] whole chain failed: ${lastError}`);
+    // Every eligible provider failed or its budget gate rejected this call.
+    console.error(`[gemini-proxy] Gemini chain failed or unconfigured: ${lastError}`);
     return new Response(
-      JSON.stringify({ error: "All Gemini models in the fallback chain failed." }),
+      JSON.stringify({ error: "AI providers unavailable or rate-limited." }),
       { status: 502, headers: { ...corsHeaders(req), "Content-Type": "application/json" } }
     );
   } catch (e) {
