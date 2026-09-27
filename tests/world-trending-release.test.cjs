@@ -54,7 +54,7 @@ test('publisher-verified books have original summaries and no automatically inve
  assert.doesNotMatch(read('ebooks/top-ebooks.js'),/market:'GLOBAL'/,'US charts are not global');
 });
 test('three substantial editorial guides are navigable, indexable and backed by accurate structured data',()=>{
- const paths=['what-to-watch-september-2026','global-music-september-2026','books-september-2026'];
+ const paths=['what-to-watch-september-2026','global-music-september-2026','books-september-2026','filmes-series-em-alta-brasil-setembro-2026','peliculas-series-tendencia-mexico-septiembre-2026'];
  const html=read('index.html'),sitemap=read('tools/update-sitemap.js');
  for(const slug of paths){
   const doc=new JSDOM(read('guides/'+slug+'/index.html')).window.document;
