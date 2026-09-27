@@ -129,6 +129,13 @@ async function guarded(browser,label,fn){
    }else{
      const legal=result.verified.length>0&&result.verified.every(h=>/^https:\/\/(?:books\.apple\.com|librivox\.org)/i.test(h));
      record('LIVE exact audiobook provider and original edition',legal,JSON.stringify(result));
+     // The verified audiobook result may paint before its edition-specific
+     // cover finishes downloading. A real wait removes timing false negatives
+     // but an unavailable/incorrect cover still fails this audit.
+     await page.waitForFunction(()=>{
+       const img=document.querySelector('#ebook-matcher-root [data-ebook-result] img[data-ebook-cover]');
+       return img&&img.complete&&img.naturalWidth>0;
+     },null,{timeout:18000}).catch(()=>{});
      const cover=await root.locator('[data-ebook-result] img[data-ebook-cover]').first().evaluate(im=>im.complete&&im.naturalWidth>0).catch(()=>false);
      record('LIVE audiobook original edition cover',cover,result.title);
    }
