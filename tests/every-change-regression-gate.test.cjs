@@ -3,12 +3,16 @@ const test=require('node:test'),assert=require('node:assert/strict');
 const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
 const root=path.join(__dirname,'..'),read=p=>fs.readFileSync(path.join(root,p),'utf8');
 
-test('Every main change launches live regression only after its own deployment marker',()=>{
+test('Every successful main deployment launches live regression against its exact deployed SHA',()=>{
  const workflow=read('.github/workflows/release-smoke.yml');
- assert.match(workflow,/push:\s*\n\s*branches:\s*\[main\]/);
- const pushBlock=workflow.slice(workflow.indexOf('  push:'),workflow.indexOf('  workflow_dispatch:'));
- assert.doesNotMatch(pushBlock,/paths:|paths-ignore:/,'Do not silently skip UI, editorial or metadata releases');
- assert.match(workflow,/EXPECTED_SHA: \$\{\{ github\.sha \}\}/);
+ assert.match(workflow,/workflow_run:\s*\n\s*workflows:\s*\["Deploy MatchApp Pages"\]/);
+ assert.match(workflow,/types:\s*\[completed\]/);
+ assert.match(workflow,/branches:\s*\[main\]/);
+ assert.match(workflow,/github\.event\.workflow_run\.conclusion == 'success'/,
+  'Cancelled deployments must never launch live regression');
+ assert.match(workflow,/ref:\s*\$\{\{ github\.event\.workflow_run\.head_sha \|\| github\.sha \}\}/,
+  'Check out precisely the deployment that successfully completed');
+ assert.match(workflow,/EXPECTED_SHA:\s*\$\{\{ github\.event\.workflow_run\.head_sha \|\| github\.sha \}\}/);
  assert.match(workflow,/deployment-sha\.txt/);
  assert.match(workflow,/node tools\/live-production-smoke\.cjs/);
  assert.match(workflow,/upload-artifact@/,'Keep screenshots and machine-readable report');
