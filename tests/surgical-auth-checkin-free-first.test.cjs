@@ -38,8 +38,8 @@ function boot(statusRpc, initialGetSession) {
     dispatchEvent(e){calls.push(e.type);},
     getElementById(id){return id==='daily-match-checkin' && root.id===id ? root:null;},
     querySelector(selector){if(selector==='.top-ask-wrap')return {parentNode:{insertBefore(node){root.id=node.id;}}};return null;},
-    createElement(){return {
-      ...root, dataset:{},setAttribute(){},
+    createElement(tag){if(tag==='section')return root;return {
+      dataset:{},setAttribute(){},innerHTML:'',
       querySelector(){return {addEventListener(){},focus(){}}},
       addEventListener(){},remove(){}
     };}
