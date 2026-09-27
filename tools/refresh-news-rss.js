@@ -14,16 +14,22 @@ const SPORTS_SNAPSHOT=path.join(NEWS,'sports.json');
 
 const FEEDS=[
   {url:'https://feeds.bbci.co.uk/news/entertainment_and_arts/rss.xml',source:'BBC',domains:['bbc.com','bbc.co.uk'],country:'GB'},
+  {url:'https://feeds.bbci.co.uk/news/world/rss.xml',source:'BBC World',domains:['bbc.com','bbc.co.uk'],country:'GLOBAL',category:'world'},
+  {url:'https://feeds.bbci.co.uk/news/technology/rss.xml',source:'BBC Technology',domains:['bbc.com','bbc.co.uk'],country:'GLOBAL',category:'world'},
+  {url:'https://feeds.bbci.co.uk/news/science_and_environment/rss.xml',source:'BBC Science',domains:['bbc.com','bbc.co.uk'],country:'GLOBAL',category:'world'},
   {url:'https://g1.globo.com/dynamo/pop-arte/rss2.xml',source:'G1',domains:['g1.globo.com'],country:'BR'},
   {url:'https://rss.cnn.com/rss/edition_entertainment.rss',source:'CNN',domains:['cnn.com'],country:'US'},
   {url:'https://www.hollywoodreporter.com/feed/',source:'The Hollywood Reporter',domains:['hollywoodreporter.com'],country:'US'},
   {url:'https://www.reutersagency.com/feed/?best-topics=entertainment&post_type=best',source:'Reuters',domains:['reuters.com','reutersagency.com'],country:'GLOBAL'}
 ];
 
-const TREND_GEOS=['BR','US','GB'];
+const TREND_GEOS=['BR','US','GB','MX','IN'];
 const RUMOR=/\b(rumou?r|rumor|boato|reportedly|allegedly|speculation|unconfirmed|supostamente|alegadamente|teria|segundo fontes|fontes dizem|sources say|might be|could be|is said to|insider claims?)\b/i;
 const NON_NEWS=/\b(opinion|shopping|coupon|horoscope|quiz|review roundup|opini[aã]o|compras|cupom)\b/i;
 const TOPIC=/\b(actor|actress|singer|musician|film|movie|television|tv|streaming|series|album|song|concert|celebrity|award|emmy|oscar|grammy|director|star|music|cinema|atriz|ator|cantor|cantora|filme|cinema|música|musica|álbum|album|série|serie|televisão|televisao)\b/i;
+// World headlines need topical relevance and a verified publisher source; do
+// not convert unrelated RSS stories or uncertain weather forecasts into news.
+const WORLD_TOPIC=/\b(hormuz|shipping|maritime|united nations|un general assembly|diplomacy|climate|hurricane|tropical storm|el ni[nñ]o|artificial intelligence|\bai\b|technology|energy|oil|gas|power grid|international summit|humanitarian|wildfire|flood)\b/i;
 const STOP=new Set('the a an and or of for to in on with from at by as is are was were be this that de da do das dos e em para com por no na nos nas um uma o a os as'.split(' '));
 
 const clean=s=>String(s||'')
@@ -219,6 +225,11 @@ function dateParts(value){
 }
 
 function seoFor(i,trends,generated){
+  if(i.category==='world'){
+    const {isoDate,monthEn,year}=dateParts(i.published_at);
+    const topic=words(i.title).slice(0,6);
+    return {primary_keyword:'world news '+isoDate,short_tail:['world news','global headlines',...topic],long_tail:[i.title+' '+isoDate,'world news '+monthEn+' '+year],trend_keywords:[],entity_keywords:topic,freshness_keywords:[isoDate],source_keywords:[i.source],meta_title:truncateWords(i.title+' | World News | MatchApp TV',60),meta_description:truncateWords('World report published by '+i.source+' on '+isoDate+'. Open the original report for full context.',158),keywords:uniq(['world news','global headlines',...topic,isoDate,i.source]),seo_generated_at:generated};
+  }
   if(i.category==='sports'){
     const topic=words(i.title).slice(0,8),sport=i.sport||'Sports';
     const {year,isoDate,monthEn}=dateParts(i.published_at);
@@ -639,7 +650,8 @@ function enforceArticleAnalyticsOnDisk(){
     const url=r.link;
 
     if(!isAllowed(url,r.feed)||title.length<18||title.length>220||RUMOR.test(title)||RUMOR.test(r.desc)||NON_NEWS.test(title))continue;
-    if(!TOPIC.test(`${title} ${r.desc}`))continue;
+    const isWorld=r.feed.category==='world';
+    if(isWorld?!WORLD_TOPIC.test(`${title} ${r.desc}`):!TOPIC.test(`${title} ${r.desc}`))continue;
 
     const key=title.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,' ').trim();
     if(seen.has(key))continue;
@@ -663,9 +675,9 @@ function enforceArticleAnalyticsOnDisk(){
       published_at:publishedAt,
       discovered_at:existing&&existing.discovered_at?existing.discovered_at:generated,
       event_type:ev,
-      category:'entertainment',
+      category:isWorld?'world':'entertainment',
       person:p,
-      description:`${p?p+': ':''}${ev.toLowerCase()} headline reported by ${r.feed.source}. MatchApp verifies the publisher link and publication time; open the original report for full context.`,
+      description:isWorld?`World news reported by ${r.feed.source} on ${publishedAt.slice(0,10)}. MatchApp links to the original report for its complete context and ongoing updates.`:`${p?p+': ':''}${ev.toLowerCase()} headline reported by ${r.feed.source}. MatchApp verifies the publisher link and publication time; open the original report for full context.`,
       image:r.image,
       matchapp_url:matchappUrl,
       landing_url:`${SITE}/?news=${encodeURIComponent(id)}#latest-news`
@@ -688,7 +700,11 @@ function enforceArticleAnalyticsOnDisk(){
     item.seo=existing?.seo||seoFor(item,[],generated);
     return item;
   });
-  const items=[...collected.slice(0,32),...sports].sort((a,b)=>b.published_at.localeCompare(a.published_at)).slice(0,44);
+  // Reserve both world and entertainment reporting without allowing either
+  // source group to crowd the other out as developing stories accelerate.
+  const entertainment=collected.filter(i=>i.category==='entertainment').slice(0,24);
+  const world=collected.filter(i=>i.category==='world').slice(0,8);
+  const items=[...entertainment,...world,...sports].sort((a,b)=>b.published_at.localeCompare(a.published_at)).slice(0,44);
   await enrichMissingImages(items);
 
   if(items.length<5)throw new Error(`trusted publisher feeds returned only ${items.length} usable items`);
