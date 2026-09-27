@@ -337,9 +337,33 @@ test('mobile match poster reserves visible dimensions while its original decodes
  const img=home.getElementById('res-poster-img');
  assert.equal(img.getAttribute('width'),'600');
  assert.equal(img.getAttribute('height'),'900');
- assert.match(read('index.html'),/catalog-media\.js\?v=20260927-posterrecovery1/);
- assert.match(read('discover.html'),/catalog-media\.js\?v=20260927-posterrecovery1/);
+ assert.match(read('index.html'),/catalog-media\.js\?v=20260927-posterrecovery2/);
+ assert.match(read('discover.html'),/catalog-media\.js\?v=20260927-posterrecovery2/);
  const media=read('catalog-media.js');
  assert.match(media,/watching\.failed\.add\(url\);ADULT_IMAGE_PROBES\.delete\(url\)/);
- assert.match(media,/if\(!\(await posterImageLoads\(url\)\)\)\{state\.failed\.add\(url\);continue;\}/);
+ assert.match(media,/const firstVerified=urls=>new Promise/);
+ assert.match(media,/state\.failed\.add\(url\)/);
+});
+
+test('a stalled exact TMDB variant cannot block a healthy alternate original size',async()=>{
+ const source=read('catalog-media.js');
+ const start=source.indexOf('  async function repairAdultPoster(');
+ const end=source.indexOf('  function recoverAdultPoster(',start);
+ assert.ok(start>0&&end>start);
+ const slow='https://image.tmdb.org/t/p/w780/SAME_EXACT_POSTER.jpg';
+ const fast='https://image.tmdb.org/t/p/w342/SAME_EXACT_POSTER.jpg';
+ const requested=[];
+ const state={title:'Verified movie',tmdbId:123,kind:'movie',year:2023,
+  isRail:false,repairing:false,needsRepair:false,failed:new Set(),preferred:slow,meta:null};
+ const img={__matchappAdultPoster:state,isConnected:true,dataset:{},id:'res-poster-img',src:'data:image/svg+xml,fallback'};
+ const ctx={Promise,Set,window:{globalMatchTitle:'Verified movie',setLoadedMatchPoster:()=>{}},
+  posterVariants:url=>url===slow?[slow,fast]:[],
+  exactPosterCandidates:()=>[slow,fast],
+  posterImageLoads:url=>{requested.push(url);return url===slow?new Promise(()=>{}):Promise.resolve(true);},
+  lookup:async()=>{throw Error('Unexpected title-only query')},sameOriginalArtwork:()=>false};
+ const fn=vm.runInNewContext(source.slice(start,end)+'\nrepairAdultPoster',ctx);
+ const finished=await Promise.race([fn(img,state).then(()=>true),new Promise(r=>setTimeout(()=>r(false),250))]);
+ assert.equal(finished,true);
+ assert.equal(img.src,fast);
+ assert.deepEqual(requested,[slow,fast]);
 });

@@ -352,7 +352,7 @@
     if(!TRUSTED_POSTER.test(safe))return [];
     const tmdb=/^(https:\/\/image\.tmdb\.org\/t\/p\/)(?:w[0-9]+|original)\/([A-Za-z0-9_.-]+)$/.exec(safe);
     if(!tmdb)return [safe];
-    return [...new Set([safe,tmdb[1]+'w780/'+tmdb[2],tmdb[1]+'w500/'+tmdb[2],tmdb[1]+'original/'+tmdb[2]])];
+    return [...new Set([safe,tmdb[1]+'w780/'+tmdb[2],tmdb[1]+'w500/'+tmdb[2],tmdb[1]+'w342/'+tmdb[2],tmdb[1]+'original/'+tmdb[2]])];
   }
   function exactPosterCandidates(state){
     let registry='';
@@ -407,23 +407,42 @@
     if(state.repairing)return;
     state.repairing=true;
     const title=state.title,identity=state;
+    // Alternate TMDB sizes share the same exact source artwork. Race the
+    // verified sizes without letting a stalled first size block the card.
+    const firstVerified=urls=>new Promise(resolve=>{
+      let remaining=urls.length,settled=false;
+      if(!remaining){resolve('');return;}
+      urls.forEach(async url=>{
+        let valid=false;
+        try{valid=await posterImageLoads(url);}catch(_){}
+        if(valid){if(!settled){settled=true;resolve(url);}return;}
+        state.failed.add(url);
+        if(--remaining===0&&!settled)resolve('');
+      });
+    });
     const attempt=async()=>{
-      for(const url of exactPosterCandidates(state)){
-        if(state.failed.has(url))continue;
-        // An attempted original isn't broken merely because it was tried.
-        // Remember only confirmed probe failures. A successful URL must remain
-        // available if another async result-paint temporarily overwrites it.
-        if(!(await posterImageLoads(url))){state.failed.add(url);continue;}
-        if(img.__matchappAdultPoster!==identity||!img.isConnected)return true;
-        img.dataset.matchappFallbackStage='verified';
-        img.src=url;
-        if(img.id==='res-poster-img'&&window.globalMatchTitle===title){
-          if(typeof window.setLoadedMatchPoster==='function')window.setLoadedMatchPoster(url,title);
-          else window.globalMatchPoster=url;
-        }
-        return true;
+      const candidates=exactPosterCandidates(state).filter(url=>!state.failed.has(url));
+      // Do not race a title-only saved poster against the known numeric
+      // identity's actual source artwork. The chosen source gets priority.
+      const pinned=posterVariants(state.preferred).filter(url=>candidates.includes(url));
+      const quick=urls=>urls.filter(url=>!/\/original\//.test(url));
+      const huge=urls=>urls.filter(url=>/\/original\//.test(url));
+      let winner=await firstVerified(quick(pinned));
+      if(!winner)winner=await firstVerified(huge(pinned));
+      if(!winner){
+        const rest=candidates.filter(url=>!pinned.includes(url));
+        winner=await firstVerified(quick(rest));
+        if(!winner)winner=await firstVerified(huge(rest));
       }
-      return false;
+      if(!winner)return false;
+      if(img.__matchappAdultPoster!==identity||!img.isConnected)return true;
+      img.dataset.matchappFallbackStage='verified';
+      img.src=winner;
+      if(img.id==='res-poster-img'&&window.globalMatchTitle===title){
+        if(typeof window.setLoadedMatchPoster==='function')window.setLoadedMatchPoster(winner,title);
+        else window.globalMatchPoster=winner;
+      }
+      return true;
     };
     try{
       // First try the already verified artwork at alternate TMDB sizes.
