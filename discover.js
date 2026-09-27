@@ -1892,12 +1892,26 @@ document.addEventListener('DOMContentLoaded', initComposer);
 
 window.newDiscoverSearch = function () {
     const el = document.getElementById('discover-new-input');
-    if (el && el.value.trim()) {
-        askAndRender(el.value.trim());
-        // Collapse back to one line once the question is sent.
-        el.value = '';
-        window.autoGrowComposer();
+    const hint = document.getElementById('discover-compose-help');
+    const question = el?.value?.trim() || '';
+    if (!question) {
+        // A tap on the real chat's Send button must never appear broken.
+        // Prompt visibly, but do not focus the input or open the keyboard.
+        if (hint) {
+            if (!hint.dataset.initialCopy) hint.dataset.initialCopy = hint.textContent || '';
+            const lang = String(window.MATCH_LANG || document.documentElement.lang || 'en').toLowerCase();
+            hint.textContent = lang.startsWith('pt')
+                ? 'Digite uma pergunta ou toque no microfone para falar com o MatchApp iA.'
+                : 'Type a question, or tap the microphone to ask MatchApp Ai.';
+        }
+        return false;
     }
+    if (hint?.dataset.initialCopy) hint.textContent = hint.dataset.initialCopy;
+    askAndRender(question);
+    // Collapse back to one line once the question is sent.
+    el.value = '';
+    window.autoGrowComposer();
+    return true;
 };
 
 /* ---------- Boot ---------- */

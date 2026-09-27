@@ -56,10 +56,29 @@
       if (box) box.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
     row.querySelector('#ma-hero-ask').addEventListener('click', function () {
+      var concierge = document.getElementById('ma-concierge');
+      // Previously the hero clicked a tab INSIDE a saved collapsed fold, then
+      // tried to scroll to its display:none ancestor: nothing happened.
+      if (concierge && concierge.classList.contains('lazy-foldable') &&
+          !concierge.classList.contains('lazy-open')) {
+        var fold = concierge.previousElementSibling;
+        if (fold && fold.classList.contains('lazy-head')) fold.click();
+        else concierge.classList.add('lazy-open');
+      }
       var tab = document.getElementById('ma-tab-ask');
       if (tab) tab.click();
-      var ask = document.querySelector('.ma-concierge, .top-ask-wrap, #top-ask');
-      if (ask) ask.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      var panel = document.getElementById('ma-panel-ask');
+      var ask = panel && !panel.hidden
+        ? (document.getElementById('search-box') || panel)
+        : document.querySelector('.ma-concierge, .top-ask-wrap, #top-ask');
+      if (tab && ask) {
+        try { ask.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+        catch (_) { ask.scrollIntoView(); }
+      } else {
+        // If the dynamically mounted Home chat isn't present, the genuine
+        // chat page still works. No dead button, even on partial mobile boot.
+        window.location.assign('/discover.html');
+      }
     });
   }
 

@@ -262,7 +262,26 @@ function mountHome(){
  const send=qs('button.gold-btn',search);if(send)send.textContent=t.send;
  const qline=el('div','ma-quota-line');qline.hidden=true;pa.appendChild(qline);syncQuota(qline);
  function tab(which){const ask=which==='ask';bm.setAttribute('aria-selected',String(!ask));ba.setAttribute('aria-selected',String(ask));pm.hidden=ask;pa.hidden=!ask;document.body.classList.toggle('ma-match-tab',!ask);document.body.classList.toggle('ma-ask-tab',ask)}
- bm.addEventListener('click',()=>tab('match'));ba.addEventListener('click',()=>tab('ask'));
+ bm.addEventListener('click',()=>tab('match'));
+ // A visible Ask click must reveal a visible composer, including when the
+ // concierge fold was previously collapsed on a phone or tablet. Never focus
+ // the input here: keyboard/microphone selection belongs to the user.
+ ba.addEventListener('click',()=>{
+   const fold=concierge.classList.contains('lazy-foldable')&&!concierge.classList.contains('lazy-open');
+   const toggle=concierge.previousElementSibling;
+   if(fold){
+     if(toggle?.classList.contains('lazy-head'))toggle.click();
+     else concierge.classList.add('lazy-open');
+   }
+   tab('ask');
+   requestAnimationFrame(()=>{
+     if(!pa.hidden&&pa.getClientRects().length){
+       const target=qs('#search-box',pa)||pa;
+       try{target.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'nearest'});}
+       catch(_){target.scrollIntoView();}
+     }
+   });
+ });
  if(new URLSearchParams(location.search).get('ask')==='1'){
    tab('ask');
    setTimeout(()=>openAskFromBrand(),220);
