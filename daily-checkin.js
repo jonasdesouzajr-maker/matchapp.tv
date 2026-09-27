@@ -355,7 +355,9 @@
       const awarded = Math.max(0, Number(data.awarded || 0));
       const balance = Number(data.matches);
       ++statusEpoch; // Never let an older pending status overwrite this award.
-      const userId = (await sb.auth.getSession()).data?.session?.user?.id;
+      // The award is already committed: optional auth/cache reads must never
+      // turn a successful credit into a retry/error on this device.
+      const userId = confirmedStatus?.userId || window.matchProfileState?.userId || null;
       confirmedStatus = {userId,authenticated:true,streak:data.streak,checked_today:true};
       render({ authenticated: true, streak: data.streak, checked_today: true });
 
