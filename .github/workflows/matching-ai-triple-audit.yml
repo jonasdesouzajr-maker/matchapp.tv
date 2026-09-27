@@ -1,0 +1,106 @@
+name: Triple Matching and AI Audit
+on:
+  pull_request:
+    paths:
+      - 'kids/kids.js'
+      - 'kids/index.html'
+      - 'tests/**'
+      - 'tools/live-production-deep-matching.cjs'
+      - 'tools/live-production-smoke.cjs'
+      - 'discover.js'
+      - 'discover.html'
+      - 'supabase/functions/gemini-proxy/index.ts'
+      - '.github/workflows/matching-ai-triple-audit.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'kids/kids.js'
+      - 'kids/index.html'
+      - 'tests/**'
+      - 'tools/live-production-deep-matching.cjs'
+      - 'tools/live-production-smoke.cjs'
+      - 'discover.js'
+      - 'discover.html'
+      - 'supabase/functions/gemini-proxy/index.ts'
+      - '.github/workflows/matching-ai-triple-audit.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: matching-ai-audit-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  three-independent-passes:
+    name: Audit pass ${{ matrix.pass }} of 3
+    runs-on: ubuntu-24.04
+    timeout-minutes: 28
+    strategy:
+      fail-fast: false
+      max-parallel: 1
+      matrix:
+        pass: [1, 2, 3]
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - name: Validate matching, AI, books, magazines, kids, quotas and all regression suites
+        run: npm test
+      - name: Check both production browser harnesses are syntactically valid
+        run: |
+          node --check tools/live-production-smoke.cjs
+          node --check tools/live-production-deep-matching.cjs
+          node --check kids/kids.js
+          node --check ebooks/ebook-matcher.js
+          node --check discover.js
+          node --check app.js
+      - name: Full site audit
+        run: npm run audit:site
+      - name: Install browser runtime for deployed production checks
+        if: (github.event_name != 'pull_request' && github.ref == 'refs/heads/main') || (github.event_name == 'pull_request' && matrix.pass == 1)
+        run: |
+          npm install --no-save --package-lock=false --ignore-scripts playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Confirm this commit is actually deployed
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        shell: bash
+        env:
+          EXPECTED_SHA: ${{ github.sha }}
+        run: |
+          for i in {1..28}; do
+            remote="$(curl -fsSL https://matchapp.tv/deployment-sha.txt || true)"
+            if [ "$remote" = "$EXPECTED_SHA" ]; then exit 0; fi
+            sleep 15
+          done
+          echo "::error::Live site did not confirm this precise SHA."
+          exit 1
+      - name: Serve the checked-out PR candidate with real backend services
+        if: github.event_name == 'pull_request' && matrix.pass == 1
+        env:
+          CANDIDATE_SHA: ${{ github.sha }}
+        run: |
+          printf '%s\n' "$CANDIDATE_SHA" > deployment-sha.txt
+          python3 -m http.server 8899 --bind 127.0.0.1 > /tmp/matching-audit-server.log 2>&1 &
+          for i in {1..20}; do
+            if curl -fsS http://127.0.0.1:8899/deployment-sha.txt; then break; fi
+            sleep 1
+          done
+          echo 'MATCHAPP_TEST_BASE=http://127.0.0.1:8899' >> "$GITHUB_ENV"
+      - name: Live adult movie, e-book, magazine and Ask AI across four viewports
+        if: (github.event_name != 'pull_request' && github.ref == 'refs/heads/main') || (github.event_name == 'pull_request' && matrix.pass == 1)
+        run: node tools/live-production-smoke.cjs
+      - name: Live Spotify, exact audiobook, Kids matching and Kids AI
+        if: (github.event_name != 'pull_request' && github.ref == 'refs/heads/main') || (github.event_name == 'pull_request' && matrix.pass == 1)
+        run: node tools/live-production-deep-matching.cjs
+      - name: Archive per-pass evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: matching-ai-audit-pass-${{ matrix.pass }}
+          path: |
+            artifacts/live-smoke/
+            artifacts/deep-match-smoke/
+          if-no-files-found: ignore
+          retention-days: 14

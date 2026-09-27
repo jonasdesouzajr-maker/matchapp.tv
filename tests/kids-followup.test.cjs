@@ -11,3 +11,31 @@ test('favorites accept only approved titles and older favorites disappear from y
 test('viewing links resolve exact regional title pages in the same tab and stay active until navigation',async()=>{const d=await boot(),w=d.window;w.document.querySelector('#kids-grid [data-watch=bluey]').click();await tick();change(w,'kids-watch-region','BR');const link=w.document.getElementById('kids-watch-continue'),dialog=w.document.getElementById('kids-watch-dialog');assert.equal(link.href,links.titles.bluey.regions.BR);assert.equal(link.target,'_self');assert.match(link.href,/\/br\/serie\/bluey$/);link.addEventListener('click',e=>e.preventDefault());link.click();assert.equal(dialog.open,true);change(w,'kids-watch-region','US');assert.equal(link.href,links.titles.bluey.regions.US);assert.match(w.document.getElementById('kids-watch-fallback').href,/google\.com\/search/);d.window.close();});
 test('missing, mismatched and untrusted watch data always gets a usable title-specific fallback',async()=>{for(const entry of [undefined,{title:'Bluey',year:'2018',type:'series',regions:{BR:'https://evil.example/bluey',US:'https://evil.example/bluey'}},{title:'Unknown',year:'2018',type:'series',regions:{US:'https://www.justwatch.com/us/tv-show/unknown'}}]){const d=await boot({titles:{bluey:entry}}),w=d.window;w.document.querySelector('#kids-grid [data-watch=bluey]').click();await tick();const link=w.document.getElementById('kids-watch-continue');assert.match(link.href,/^https:\/\/www\.google\.com\/search\?q=/);assert(decodeURIComponent(link.href).includes('Bluey'));d.window.close();}});
 test('the expanded collection spans eight decades and local watch metadata matches its identities',()=>{assert.equal(library.length,64);assert.equal(new Set(library.map(x=>x.title)).size,64);for(const decade of [1950,1960,1970,1980,1990,2000,2010,2020])assert(library.some(x=>Math.floor(Number(x.year)/10)*10===decade));for(const entry of Object.values(links.titles)){const item=library.find(x=>x.title===entry.title);assert(item);assert.equal(entry.year,item.year);assert.equal(entry.type,item.type);for(const [region,url] of Object.entries(entry.regions))assert(new RegExp('^https://www\\.justwatch\\.com/'+region.toLowerCase()+'/').test(url));}});
+
+test('Kids never relaxes mood or format; decade alone may broaden',async()=>{
+ const d=await boot(),w=d.window;
+ const moods=[...w.document.querySelectorAll('#kids-match-mood option')].map(el=>el.value).filter(v=>v!=='all');
+ const impossible=['series','movie','music'].flatMap(f=>moods.map(m=>({m,f})))
+   .find(({m,f})=>!library.some(x=>x.type===f&&x.cats.includes(m)));
+ assert(impossible,'test requires at least one incompatible mood and format');
+ change(w,'kids-match-mood',impossible.m);
+ change(w,'kids-match-format',impossible.f);
+ change(w,'kids-match-era','1950');
+ w.document.getElementById('kids-match-submit').click();await tick();
+ assert.equal(w.document.querySelectorAll('#kids-match-results .kids-card').length,0,
+  'impossible mood/format must not silently return unrelated Kids media');
+ assert.match(w.document.getElementById('kids-match-status').textContent,
+  /another mood or format/i,'suggest changing impossible criteria');
+ change(w,'kids-match-mood','funny');
+ change(w,'kids-match-format','series');
+ change(w,'kids-match-era','1950');
+ w.document.getElementById('kids-match-submit').click();await tick();
+ const cards=[...w.document.querySelectorAll('#kids-match-results .kids-card')];
+ assert(cards.length>0,'available mood/format should broaden decade, not dead-end');
+ for(const card of cards){
+  const item=library.find(x=>x.title===card.dataset.title);
+  assert(item&&item.type==='series'&&item.cats.includes('funny'),
+   'decade broadening must not alter selected mood/format');
+ }
+ d.window.close();
+});

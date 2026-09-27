@@ -99,7 +99,11 @@
       const lang = window.MATCH_LANG || 'en';
       const steered = lang === 'en' ? String(question || '') : String(question || '') + '\n\nRespond in ' + lang + '. Use localized official titles.';
       let parsed = null;
-      try { parsed = await prev(steered, history); } catch (_) { parsed = null; }
+      // Propagate upstream outages to runAskAndRender's independently
+      // source-checked fallback. Swallowing 429s here previously fabricated
+      // "The Bear" for factual questions and hid official audiobook sources.
+      try { parsed = await prev(steered, history); }
+      catch (error) { throw error; }
       if (!parsed) parsed = { answer: '', results: [] };
       const policy = window.matchPolicy;
       const raw = Array.isArray(parsed.results) ? parsed.results : [];
@@ -109,7 +113,9 @@
       const bookIntent = /\b(e-?books?|books?|audio\s?books?|novels?|reading|kindle|librivox|livros?|audiolivros?|libros?|audiolibros?|magazines?|revistas?)\b/i.test(requested) || /雑誌|オーディオブック/u.test(requested);
       // A real conversational answer needs no unrelated local film cards.
       const hasLiveAnswer = Boolean(parsed._live && String(parsed.answer || '').trim());
-      const wantsRecommendation = /\b(?:watch|recommend|suggest|stream|movies?|films?|series|shows?|comedy|horror|romance|recommendation|assistir|filmes?|séries?|recomendar|recomende|indique|películas?)\b/i.test(requested);
+      const factual = /\b(?:who\s+directed|director\s+(?:of|for)|name\s+the\s+director|release\s+(?:date|year)|what\s+year\s+was\s+.+released|when\s+was\s+.+released)\b/i.test(requested)
+        && !/\b(?:recommend|suggest|what\s+should\s+i\s+watch)\b/i.test(requested);
+      const wantsRecommendation = !factual && /\b(?:watch|recommend|suggest|stream|movies?|films?|series|shows?|comedy|horror|romance|recommendation|assistir|filmes?|séries?|recomendar|recomende|indique|películas?)\b/i.test(requested);
       if (!results.length && policy && !audioIntent && !bookIntent && !hasLiveAnswer && wantsRecommendation) {
         results = catalog()
           .filter(e => e && e.title && policy.fitsQuestion(e, question) && window.tasteAllowsEntry(e))

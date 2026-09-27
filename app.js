@@ -2779,8 +2779,8 @@ const CONTENT_CATALOG = [
     { title: "The Mindful in Minutes Podcast", country: "United States", countryCode: "US", synopsis: "Kelly Smith teaches meditation in roughly ten-minute sittings, with themed series on grief, burnout and building a daily habit.", platform: "Apple Podcasts", cats: ["podcast"], moods: ["cozy comfort watch","inspiring"], vibes: ["slow burn"], ratings: ["all ages family friendly","any"] },
 
     // ---- MEDITATION & FOCUS MUSIC ----
-    { title: "Deep Focus", country: "Global", synopsis: "Instrumental, lyric-free tracks built to hold concentration for long stretches of work or study.", platform: "Spotify", cats: ["Spotify playlist"], moods: ["cozy comfort watch"], vibes: ["easy background watch","slow burn"], ratings: ["all ages family friendly","any"] },
-    { title: "Peaceful Meditation", country: "Global", synopsis: "Slow ambient soundscapes for meditation practice, breathwork and winding down without any spoken guidance.", platform: "Spotify", cats: ["Spotify playlist"], moods: ["cozy comfort watch"], vibes: ["slow burn","easy background watch"], ratings: ["all ages family friendly","any"] },
+    { title: "Deep Focus", country: "Global", synopsis: "Instrumental, lyric-free tracks built to hold concentration for long stretches of work or study.", platform: "Spotify", cats: ["Spotify playlist"], moods: ["cozy comfort watch"], vibes: ["easy background watch","slow burn"], ratings: ["all ages family friendly","any"], watchUrl: "https://open.spotify.com/playlist/37i9dQZF1DWZeKCadgRdKQ", officialArtwork: "https://i.scdn.co/image/ab67706f000000036020f2f6476db518ef747da4" },
+    { title: "Peaceful Meditation", country: "Global", synopsis: "Slow ambient soundscapes for meditation practice, breathwork and winding down without any spoken guidance.", platform: "Spotify", cats: ["Spotify playlist"], moods: ["cozy comfort watch"], vibes: ["slow burn","easy background watch"], ratings: ["all ages family friendly","any"], watchUrl: "https://open.spotify.com/playlist/37i9dQZF1DWZqd5JICZI0u", officialArtwork: "https://i.scdn.co/image/ab67706f0000000308dc478ff3e930553f46b9eb" },
     { title: "Pure Yoga", country: "Global", synopsis: "Flowing instrumental music paced for a yoga session, calm enough to hold a long hold and warm enough to keep you moving.", platform: "Apple Music", cats: ["Spotify playlist"], moods: ["cozy comfort watch"], vibes: ["slow burn"], ratings: ["all ages family friendly","any"] },
     { title: "Sleep Sounds", country: "Global", synopsis: "Rain, white noise and low ambient drones running long enough to cover a whole night without a loop you can hear.", platform: "YouTube Music", cats: ["Spotify playlist"], moods: ["cozy comfort watch"], vibes: ["easy background watch","slow burn"], ratings: ["all ages family friendly","any"] },
     { title: "Workout Twerkout", country: "Global", synopsis: "High-tempo tracks sequenced to carry a full gym session without needing to touch your phone.", platform: "Spotify", cats: ["Spotify playlist"], moods: ["intense and thrilling"], vibes: ["fast-paced binge-worthy"], ratings: ["teen PG-13","mature adults only R rated","any"] },
@@ -4607,6 +4607,19 @@ window.saveCurrentNote = async function () {
     }
 };
 
+// Official Spotify-owned playlists verified against their precise Spotify IDs.
+function exactSpotifyPlaylistCover(selected) {
+    if (!selected || selected.platform !== 'Spotify' || !selected.cats?.includes('Spotify playlist')) return null;
+    const trusted = {
+        'Deep Focus': ['37i9dQZF1DWZeKCadgRdKQ', 'ab67706f000000036020f2f6476db518ef747da4'],
+        'Peaceful Meditation': ['37i9dQZF1DWZqd5JICZI0u', 'ab67706f0000000308dc478ff3e930553f46b9eb']
+    };
+    const match = trusted[selected.title];
+    if (!match || selected.watchUrl !== 'https://open.spotify.com/playlist/' + match[0] ||
+        selected.officialArtwork !== 'https://i.scdn.co/image/' + match[1]) return null;
+    return selected.officialArtwork;
+}
+
 async function renderResult(selected, isSpecificSearch) {
     await window.matchPolicy?.ready();
     if(window.MatchAppContentSafety?.isExplicit?.(selected)){
@@ -4662,7 +4675,7 @@ async function renderResult(selected, isSpecificSearch) {
     if (firstPoster) {
         firstPoster.onerror = null;
         firstPoster.dataset.matchappMediaTitle = selected.title;
-        const firstCover = generatedCover(selected.title, selected);
+        const firstCover = exactSpotifyPlaylistCover(selected) || generatedCover(selected.title, selected);
         firstPoster.src = firstCover;
         firstPoster.style.display = 'block';
         globalMatchPoster = firstCover;
@@ -4684,6 +4697,9 @@ async function renderResult(selected, isSpecificSearch) {
         tmdbId:Number(selected._tmdbId||selected._meta?.tmdbId)||null,
         kind:selected._tmdbKind||selected._meta?.kind||'',
         artwork:selected._meta?.artwork||'',
+        // Exact official Spotify curation bypasses movie/TMDB poster lookup.
+        spotifyArtwork:exactSpotifyPlaylistCover(selected),
+        spotifyPlaylistUrl:exactSpotifyPlaylistCover(selected)?selected.watchUrl:'',
         // The exact same official Apple catalog result supplies the title,
         // artwork and audio sample. Search suggestions or unrelated movie
         // metadata may never invent an embedded podcast/song preview.
@@ -4810,7 +4826,10 @@ async function renderResult(selected, isSpecificSearch) {
     if (!meta && !skipLiveLookup && !verified) meta = await getRichMetadata(selected.title, categoryHint, matchHints);
 
     let realCover;
-    if (verified) {
+    // Spotify originals outrank fuzzy title searches and generated placeholders.
+    if (exactSpotifyPlaylistCover(selected)) {
+        realCover = exactSpotifyPlaylistCover(selected);
+    } else if (verified) {
         realCover = verified;
     } else if (skipLiveLookup && !(meta && meta.artwork)) {
         realCover = generatedCover(selected.title, matchHints);

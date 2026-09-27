@@ -45,3 +45,11 @@ test('a failed details request is not cached; a real empty answer is',async()=>{
     assert.equal(calls.length,3,'a real empty answer is cached');
   }finally{dom.window.close();}
 });
+
+test('TMDB proxy preserves source genre IDs for verified mood and genre gating',()=>{
+ const proxy=require('node:fs').readFileSync(require('node:path').join(__dirname,'../supabase/functions/tmdb-proxy/index.ts'),'utf8');
+ assert.match(proxy,/genreIds: Array\.isArray\(r\.genre_ids\)/,
+  'a source-verified TV/movie genre must reach the strict mood safety policy');
+ assert.match(proxy,/Number\.isSafeInteger\(n\)&&n>0/,
+  'filter invalid/non-numeric provider genre codes');
+});

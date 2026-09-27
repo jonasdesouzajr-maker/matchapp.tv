@@ -5,7 +5,7 @@ const guarantee=read('match-guarantee.js');
 function setup(reply,policy=true) {
  const start=guarantee.indexOf('function guaranteeIntentQuestion('),end=guarantee.indexOf('function installWrappers()',start);
  assert(start>0 && end>start);
- const w={MATCH_LANG:'en',askAIConversational:async()=>reply};
+ const w={MATCH_LANG:'en',askAIConversational:async()=>{if(reply instanceof Error)throw reply;return reply;}};
  if(policy) {w.matchPolicy={fitsQuestion:()=>true};w.tasteAllowsEntry=()=>true;}
  const ctx=vm.createContext({window:w,CONTENT_CATALOG:[{title:'Unrelated Local Film',cats:['movie'],synopsis:'Not requested'}]});
  vm.runInContext('function catalog(){return CONTENT_CATALOG;}\n'+guarantee.slice(start,end)+'\nwrapAsk()',ctx);
@@ -43,7 +43,25 @@ test('empty generic conversation does not fabricate an unrelated movie',async()=
 });
 test('only the adult pages that load Ask AI refresh the amended guarantee asset version',()=>{
  const settings=read('settings.js');
- assert(settings.includes("src==='/match-guarantee.js'?'20260925-guarantee3':V"));
+ assert(settings.includes("src==='/match-guarantee.js'?'20260926-guarantee-outage1':V"));
  for(const f of ['index.html','discover.html','together.html','pricing/pricing.html'])
-   assert(read(f).includes('/settings.js?v=20260925-guarantee3'),f);
+   assert(read(f).includes('/settings.js?v=20260926-guarantee-outage1'),f);
+});
+
+test('a real 429 or provider outage propagates to the independent source-backed fallback rather than being converted to The Bear',async()=>{
+ const error=new Error('Google monthly spending cap reached');error.aiUnavailable=true;error.aiTerminal=true;
+ const w=setup(error);
+ await assert.rejects(w.askAIConversational(
+  'Name the director and release year of Spirited Away. Do not recommend books or music.',[]),
+  e=>e===error);
+ const audio=setup(error);
+ await assert.rejects(audio.askAIConversational('How can I find Pride and Prejudice as an audiobook?',[]),
+  e=>e===error);
+});
+test('a factual query without a verified live answer never fabricates a catalogue title',async()=>{
+ const w=setup({answer:'',results:[],_live:false});
+ const got=await w.askAIConversational(
+  'Name the director and release year of the 2001 film Spirited Away. Do not recommend books or music.',[]);
+ assert.equal(got.results.length,0);
+ assert.doesNotMatch(got.answer,/Unrelated Local Film/);
 });
