@@ -2,13 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://matchapp.tv/</loc>
-        <lastmod>2026-09-27T16:45:16+00:00</lastmod>
+        <lastmod>2026-09-27T18:36:45+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/discover.html</loc>
-        <lastmod>2026-09-27T14:00:18+00:00</lastmod>
+        <lastmod>2026-09-27T18:36:45+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.9</priority>
     </url>
@@ -1190,7 +1190,7 @@
     </url>
     <url>
         <loc>https://matchapp.tv/news/</loc>
-        <lastmod>2026-09-27T14:15:45+00:00</lastmod>
+        <lastmod>2026-09-27T18:37:58+00:00</lastmod>
         <changefreq>hourly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -1226,7 +1226,7 @@
     </url>
     <url>
         <loc>https://matchapp.tv/awareness/world-tourism-day-2026/</loc>
-        <lastmod>2026-09-27T16:45:16+00:00</lastmod>
+        <lastmod>2026-09-27T16:45:19+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
     </url>
