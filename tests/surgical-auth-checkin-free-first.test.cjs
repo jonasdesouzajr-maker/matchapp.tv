@@ -124,6 +124,10 @@ test('a separately funded-free-tier Gemini project is preferred before any paid 
   assert.match(proxy,/served tier=free model=\$\{model\}/);
   assert.match(proxy,/separate free-tier secret is not configured/);
   assert.match(proxy,/free project model unavailable:/);
+  assert.match(proxy,/const projectWide = \/\(\?:project\|billing account\)/);
+  assert.match(proxy,/if \(!projectWide\) continue/);
+  assert.match(proxy,/project_spend_cap/);
+  assert.match(proxy,/model_or_tier_rate_limit/);
 });
 test('the homepage loads the check-in session fix instead of a stale cached script',()=>{
   assert.match(homeHtml,/daily-checkin\.js\?v=20260927-authsession1/);
