@@ -3,10 +3,18 @@
 'use strict';
 const RELEASE_URL='/release.json';
 const INSTALLED_BUILD_KEY='match_app_installed_build';
-const BUILD='2026.09.23.1';
-window.MATCHAPP_BUILD = BUILD;
+const BUILD = /^\d{4}\.\d{2}\.\d{2}\.\d+$/.test(String(window.MATCHAPP_BUILD||''))
+  ? window.MATCHAPP_BUILD : '2026.09.26.9';
+// build-meta.js is the actual release authority; never overwrite its newer
+// value with an obsolete update-module constant on installed mobile clients.
+if(!window.MATCHAPP_BUILD)window.MATCHAPP_BUILD=BUILD;
 
-const isStandalone=()=>!!((window.matchMedia&&matchMedia('(display-mode: standalone)').matches)||navigator.standalone===true||window.MATCHAPP_ANDROID);
+const KIDS = location.pathname === '/kids' || location.pathname.startsWith('/kids/');
+const UA = String(navigator.userAgent || '');
+const IS_NATIVE_ADULT = /MatchAppAiAndroid\\//.test(UA);
+const IS_MOBILE_ADULT = !KIDS && /Android|iPhone|iPad|iPod/i.test(UA);
+const MOBILE_RECOVERY_KEY='matchapp_adult_mobile_runtime_20260927_1';
+const isStandalone=()=>!!((window.matchMedia&&matchMedia('(display-mode: standalone)').matches)||navigator.standalone===true||window.MATCHAPP_ANDROID||IS_NATIVE_ADULT);
 function safeGet(k){try{return localStorage.getItem(k)}catch(_){return null}}
 function safeSet(k,v){try{localStorage.setItem(k,v)}catch(_){}}
 function pt(){return String(document.documentElement.lang||navigator.language||'').toLowerCase().indexOf('pt')===0}
@@ -54,6 +62,23 @@ async function refreshWorker(){
  }
 }
 
+// One mobile-only refresh on an already-installed adult PWA after the 27 Sep
+// matching/AI hotfix. Versioned page URL plus bumped script URLs break the
+// previous old-script/new-backend combination without touching saved accounts,
+// exclusions, session history or match/Ask AI credits. Never run on desktop,
+// Kids, or an Android native shell (which already cold-loads with no cache).
+async function recoverInstalledMobileRuntime(){
+ if(!IS_MOBILE_ADULT||IS_NATIVE_ADULT||!isStandalone()||safeGet(MOBILE_RECOVERY_KEY))return;
+ if(document.body?.classList.contains('match-searching'))return;
+ const input=document.querySelector('.newsearch-row textarea,.newsearch-row input,#specific-search-input');
+ if(input && String(input.value||'').trim())return;
+ safeSet(MOBILE_RECOVERY_KEY,'pending');
+ try { await refreshWorker(); } catch (_) {}
+ const url=new URL(location.href);
+ url.searchParams.set('ma_mobile_recovery','20260927-1');
+ if(typeof location.replace==='function')location.replace(url.toString());
+}
+
 window.updateMatchAppNow=async function(){
  const name=appName();
  overlay(pt()
@@ -71,7 +96,15 @@ window.updateMatchAppNow=async function(){
  }catch(_){
   safeSet(INSTALLED_BUILD_KEY,BUILD);
  }
- setTimeout(()=>location.reload(),400);
+ // An explicit mobile update must request a fresh document URL; reloading
+ // the identical cached PWA URL was insufficient after the backend hotfix.
+ setTimeout(()=>{
+   if(IS_MOBILE_ADULT&&!IS_NATIVE_ADULT){
+     const url=new URL(location.href);
+     url.searchParams.set('ma_mobile_recovery','20260927-1');
+     location.replace(url.toString());
+   }else location.reload();
+ },400);
 };
 window.updateMatchApp=window.updateMatchAppNow;
 
@@ -83,6 +116,11 @@ async function check(){
   if(!res.ok)return null;
   const release=await res.json();
   if(release&&release.version) window.matchAppUpdatePending={version:String(release.version)};
+  // Only an installed adult mobile PWA is eligible for the one-time scoped
+  // recovery. Ordinary mobile websites, desktop and Kids keep their UI and
+  // update flow unchanged.
+  if(window.matchAppUpdatePending && String(window.matchAppUpdatePending.version)===BUILD)
+    await recoverInstalledMobileRuntime();
   return window.matchAppUpdatePending;
  }catch(err){
   console.warn('[MatchApp update check]',err);
