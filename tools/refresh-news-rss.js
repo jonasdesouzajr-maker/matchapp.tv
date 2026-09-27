@@ -413,7 +413,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta property="og:url" content="${canon}">
 <meta property="article:published_time" content="${esc(i.discovered_at)}">
 <meta property="article:modified_time" content="${esc(i.seo.seo_generated_at||i.discovered_at)}">
-<meta property="article:section" content="${i.category==='sports'?'Sports News':'Entertainment News'}">
+<meta property="article:section" content="${i.category==='sports'?'Sports News':i.category==='world'?'World News':'Entertainment News'}">
 <meta name="twitter:title" content="${esc(i.seo.meta_title)}">
 <meta name="twitter:description" content="${d}">
 ${imageMeta}
@@ -439,7 +439,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p><a href="${orig}" target="_blank" rel="noopener noreferrer external">Read the original report at ${src} ↗</a></p>
     <p><a href="${landing}">Open this story inside MatchApp Latest News →</a></p>
     <p style="font-size:13px;color:#aaa">MatchApp links to the original publisher without republishing article bodies. Dates identify publisher-supplied publication times or clearly labeled discovery-index timestamps according to each story's data source.</p>
-    <p><a href="/news/">More entertainment and sports news</a> · <a href="/">Back to MatchApp</a></p>
+    <p><a href="/news/">More entertainment, world and sports news</a> · <a href="/">Back to MatchApp</a></p>
   </article>
 </main>
 <script src="/build-meta.js?v=203"></script>
@@ -469,16 +469,17 @@ function hub(items,generated){
       {
         '@type':'CollectionPage',
         '@id':`${SITE}/news/#collection`,
-        name:'Latest Entertainment and Sports News',
+        name:'Latest Entertainment, World and Sports News',
         url:`${SITE}/news/`,
         dateModified:generated,
-        description:'An hourly refreshed entertainment-news index with twice-daily verified sports updates, original publisher links and source attribution.',
+        description:'An hourly refreshed entertainment and world-news index with twice-daily verified sports updates, original publisher links and source attribution.',
         isPartOf:{'@type':'WebSite','@id':`${SITE}/#website`,url:`${SITE}/`,name:'MatchApp TV Ai'},
         about:[
           {'@type':'Thing',name:'Entertainment news'},
           {'@type':'Thing',name:'Film and television'},
           {'@type':'Thing',name:'Music and culture'},
-          {'@type':'Thing',name:'Sports reporting'}
+          {'@type':'Thing',name:'Sports reporting'},
+          {'@type':'Thing',name:'World news and technology'}
         ],
         mainEntity:{'@type':'ItemList',itemListElement:itemList},
         publisher:{'@type':'Organization',name:'MatchApp TV',url:SITE,logo:{'@type':'ImageObject',url:`${SITE}/assets/brand/matchapp-official-icon-512.webp`,width:512,height:512}}
@@ -506,13 +507,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Latest Entertainment &amp; Sports News | MatchApp TV</title>
-<meta name="description" content="Verified film, TV, music and sports reporting from named publishers. Entertainment refreshes hourly and sports updates twice daily, with original source links.">
+<meta name="description" content="Verified film, TV, music, world and sports reporting from named publishers. News refreshes hourly and sports updates twice daily, with original source links.">
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
 <link rel="canonical" href="${SITE}/news/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="MatchApp TV">
-<meta property="og:title" content="Latest Entertainment and Sports News | MatchApp TV">
-<meta property="og:description" content="Hourly verified entertainment reporting and twice-daily sports updates with original publisher attribution.">
+<meta property="og:title" content="Latest Entertainment, World and Sports News | MatchApp TV">
+<meta property="og:description" content="Hourly verified entertainment and world reporting plus twice-daily sports updates with original publisher attribution.">
 <meta property="og:url" content="${SITE}/news/">
 <script type="application/ld+json">${JSON.stringify(schema)}</script>
 <link rel="icon" href="/assets/brand/matchapp-favicon-32.png" type="image/png">
@@ -526,15 +527,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <header class="app-header"><a href="/" class="matchapp-brand-link" aria-label="MatchApp TV Ai"><span class="brand-logo brand-logo-placeholder" aria-hidden="true"></span><span class="app-title-main"><img class="matchapp-wordmark" src="/assets/brand/matchapp-tv-ai-v2.svg" alt="MatchApp TV Ai" width="368" height="66" decoding="async"></span></a></header>
 <main style="max-width:1120px;margin:36px auto;padding:18px">
   <a href="/#latest-news">← MatchApp Latest News</a>
-  <h1>Latest Entertainment and Sports News</h1>
-  <p>Verified entertainment news refreshed hourly and trusted publisher sports links discovered twice daily. Each story opens its original publisher.</p>
+  <h1>Latest Entertainment, World and Sports News</h1>
+  <p>Verified entertainment and world news refreshed hourly plus trusted publisher sports links discovered twice daily. Each story opens its original publisher.</p>
   <section aria-labelledby="news-guide-title" style="margin:20px 0 28px;padding:20px;border:1px solid rgba(229,193,88,.22);border-radius:14px;background:rgba(24,16,38,.72)">
     <h2 id="news-guide-title" style="margin-top:0">How MatchApp Latest News works</h2>
-    <p>MatchApp Latest News is an hourly entertainment index with twice-daily sports updates from named publishers. We do not republish full articles here. Each item identifies the publisher, preserves a direct link to the original report and shows enough context to help you decide what is worth opening.</p>
+    <p>MatchApp Latest News is an hourly entertainment and world-news index with twice-daily sports updates from named publishers. We do not republish full articles here. Each item identifies the publisher, preserves a direct link to the original report and shows enough context to help you decide what is worth opening.</p>
     <p>The feed is built from direct trusted-publisher sources and refreshed throughout the day. Automated filters remove obvious rumor-style language and unrelated stories before an item reaches this hub. The original publisher remains the source of record for every headline and claim; MatchApp's role is discovery, organization and a clear path back to that source.</p>
     <p>When a story points you toward a movie, series, performer or release, continue with <a href="/">MatchApp's entertainment matcher</a>, <a href="/discover.html?focus=start">Ask MatchApp Ai</a>, or check <a href="/where-to-watch/">where to watch</a> for streaming and cinema availability.</p>
   </section>
-  <section aria-label="Latest verified entertainment and sports headlines" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px">${cards}</section>
+  <section aria-label="Latest verified entertainment, world and sports headlines" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px">${cards}</section>
 </main>
 <script src="/build-meta.js?v=203"></script>
 </body>
