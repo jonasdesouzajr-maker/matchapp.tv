@@ -1,4 +1,4 @@
--- MatchApp adult OpenAI emergency fallback: one atomic, service-only daily budget gate.
+-- MatchApp adult OpenAI-first routing: one atomic, service-only daily budget gate.
 -- Execute as a migration before deploying a proxy that invokes claim_openai_fallback_slot.
 -- All days are measured in UTC. Reserved attempts count even when the provider fails.
 
@@ -10,7 +10,7 @@ create table if not exists match_private.openai_fallback_daily_usage (
 alter table match_private.openai_fallback_daily_usage enable row level security;
 revoke all on match_private.openai_fallback_daily_usage from public, anon, authenticated;
 
-create or replace function public.claim_openai_fallback_slot(p_limit integer default 20)
+create or replace function public.claim_openai_fallback_slot(p_limit integer default 100)
 returns boolean
 language plpgsql
 security definer
@@ -20,7 +20,7 @@ declare
   v_attempts integer;
 begin
   -- This function has NO public grant. Also reject invalid or unlimited caps.
-  if p_limit is null or p_limit < 1 or p_limit > 50 then
+  if p_limit is null or p_limit < 1 or p_limit > 200 then
     return false;
   end if;
 
