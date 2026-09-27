@@ -1,11 +1,11 @@
 {
-  "version": "2026.09.26.9",
-  "date": "2026-09-26",
+  "version": "2026.09.27.1",
+  "date": "2026-09-27",
   "functional": true,
   "notes": {
-    "en": "Guests sharing Watch, Bookworms and AI content can now unlock their two lifetime browser-local bonuses only after an independent public-post verification through official TikTok public video or Bluesky post APIs. Unique server-issued 90-minute codes, creator/post identity checks, global post replay blocking and an atomic private two-claim ledger replace self-confirmation and native share handoff rewards. Private Instagram/personal posts and DMs cannot be verified without platform-specific consent/approval and do not award a verified guest bonus. Members and Kids unchanged.",
-    "pt-BR": "O bônus por compartilhamento de visitantes nos Matches, Livros e Ask AI agora exige verificação independente de publicações públicas com códigos temporários únicos. Vídeos públicos no TikTok e postagens públicas no Bluesky são conferidos por APIs oficiais; a comprovação de outro usuário ou publicação repetida não vale. O máximo continua em dois bônus combinados no navegador. Publicações pessoais ou privadas do Instagram e mensagens privadas não são verificáveis sem autorização da plataforma. Contas registradas e Kids permanecem intactos.",
-    "es": "Nuevo: Match E-books IA para lectores. Combina por estado de ánimo, género, ritmo, extensión, época y acceso gratis o de pago, con fuentes gratuitas legales y tiendas oficiales.",
+    "en": "Daily Check-in no longer takes up home-page space. Signed-in members with an available daily reward receive a small premium reminder; a successful claim adds their existing Match reward and a brief See you tomorrow celebration. Dismiss once per session. Kids, AI, and existing reward rules are unchanged.",
+    "pt-BR": "O check-in diário não ocupa mais espaço na página inicial. Quem está conectado e tem um prêmio disponível recebe um lembrete discreto e premium. Após resgatar, o Match é creditado como antes e aparece uma breve animação Até amanhã. O lembrete pode ser fechado. Modo Kids, IA e regras de recompensa continuam iguais.",
+    "es": "El check-in diario ya no ocupa espacio en la página principal. Los usuarios conectados reciben un pequeño recordatorio solo cuando tienen una recompensa disponible y ven un breve Hasta mañana al cobrarla. Kids, IA y las reglas de premios no cambian.",
     "fr": "Nouveau : Match E-books Ai pour les lecteurs, avec humeur, genre, rythme, longueur, époque, accès gratuit ou payant, sources gratuites légales et boutiques officielles.",
     "de": "Neu: Match E-books Ai für Leser – nach Stimmung, Genre, Tempo, Länge, Epoche und kostenlosem oder kostenpflichtigem Zugang, mit legalen Gratisquellen und offiziellen Shops.",
     "it": "Novità: Match E-books Ai per chi ama leggere, con umore, genere, ritmo, lunghezza, epoca, accesso gratuito o a pagamento, fonti gratuite legali e store ufficiali.",

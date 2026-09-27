@@ -151,5 +151,5 @@ test('a separately funded-free-tier Gemini project is preferred before any paid 
   assert.match(proxy,/model_or_tier_rate_limit/);
 });
 test('the homepage loads the check-in session fix instead of a stale cached script',()=>{
-  assert.match(homeHtml,/daily-checkin\.js\?v=20260927-authsession1/);
+  assert.match(homeHtml,/daily-checkin\.js\?v=20260927-bubble1/);
 });
