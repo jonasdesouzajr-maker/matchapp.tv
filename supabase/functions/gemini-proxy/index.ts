@@ -442,8 +442,12 @@ Deno.serve(async (req: Request) => {
     // the original paid project remains a bounded fallback when allowed.
     const freeApiKey = Deno.env.get("GEMINI_FREE_API_KEY")?.trim() || "";
     const paidApiKey = Deno.env.get("GEMINI_API_KEY")?.trim() || "";
+    // Optional, server-side-only backups; no credentials belong in source or clients.
+    const backupPaidApiKeys = ["GEMINI_BACKUP_API_KEY_1", "GEMINI_BACKUP_API_KEY_2"]
+      .map(name => Deno.env.get(name)?.trim() || "")
+      .filter((key, index, keys) => !!key && key !== freeApiKey && key !== paidApiKey && keys.indexOf(key) === index);
     const openAiApiKey = Deno.env.get("OPENAI_API_KEY")?.trim() || "";
-    const apiKey = freeApiKey || paidApiKey;
+    const apiKey = freeApiKey || paidApiKey || backupPaidApiKeys[0] || "";
     if (!apiKey && !openAiApiKey) {
       return new Response(
         JSON.stringify({ error: "No AI provider API key is configured." }),
@@ -658,10 +662,14 @@ Deno.serve(async (req: Request) => {
     const routes = [
       ...(freeApiKey ? FREE_MODEL_CHAIN.map(model => ({model, key:freeApiKey, tier:"free"})) : []),
       ...(paidApiKey ? MODEL_CHAIN.map(model => ({model, key:paidApiKey, tier:"paid"})) : []),
+      ...backupPaidApiKeys.flatMap(key => MODEL_CHAIN.map(model => ({model, key, tier:"paid"}))),
     ];
     let freeProjectBlocked = false;
+    // If a whole project is capped or its key is invalid, skip its other models.
+    const blockedPaidKeys = new Set<string>();
     for (const route of routes) {
       if (route.tier === "free" && freeProjectBlocked) continue;
+      if (route.tier === "paid" && blockedPaidKeys.has(route.key)) continue;
       const {model} = route;
       try {
         // A hung upstream used to hold this function open until the platform
@@ -798,6 +806,7 @@ Deno.serve(async (req: Request) => {
           console.warn("[gemini-proxy] separate free project blocked status=" + geminiRes.status);
           lastError = "free project unavailable: " + geminiRes.status;
           if (paidApiKey) continue;
+          if (backupPaidApiKeys.length) continue;
           return new Response(JSON.stringify({error:"Free Gemini project unavailable or quota exhausted.",status:geminiRes.status}),
             {status:geminiRes.status === 429 ? 429 : 502,
              headers:{...corsHeaders(req),"Content-Type":"application/json"}});
@@ -810,9 +819,9 @@ Deno.serve(async (req: Request) => {
           lastError=route.tier+" model temporarily unavailable";
           continue;
         }
-        // A paid-project monthly cap affects every model sharing that key.
-        // Do NOT burn more retries or log the provider's potentially sensitive
-        // quota body. Per-model 429s may safely try the next model.
+        // A paid-project monthly cap affects all models with the same key.
+        // Skip that key and use another configured project when available.
+        // This cannot bypass an exhausted prepaid balance shared by all projects.
         if(route.tier==="paid" && geminiRes.status===429){
           if(!freeApiKey)console.warn("[gemini-proxy] separate free-tier secret is not configured");
           const detail=await geminiRes.text();
@@ -820,8 +829,16 @@ Deno.serve(async (req: Request) => {
           console.warn("[gemini-proxy] paid route quota="+(projectWide?"project_spend_cap":"model_or_tier_rate_limit"));
           lastError="paid provider rate-limited";
           if(!projectWide)continue;
+          blockedPaidKeys.add(route.key);
+          if (routes.some(next => next.tier === "paid" && !blockedPaidKeys.has(next.key))) continue;
           return new Response(JSON.stringify({error:"AI capacity temporarily exhausted",status:429}),
             {status:429,headers:{...corsHeaders(req),"Content-Type":"application/json","Retry-After":"60"}});
+        }
+        // An invalid or unauthorized paid key must not block a healthy backup.
+        if (route.tier === "paid" && (geminiRes.status === 401 || geminiRes.status === 403)) {
+          blockedPaidKeys.add(route.key);
+          lastError = "paid Gemini project authentication or authorization failed";
+          if (routes.some(next => next.tier === "paid" && !blockedPaidKeys.has(next.key))) continue;
         }
         // Reject terminal errors without exposing upstream bodies or secrets.
         console.warn("[gemini-proxy] provider unavailable tier="+route.tier+" status="+geminiRes.status);
