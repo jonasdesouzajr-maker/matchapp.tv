@@ -70,7 +70,7 @@ async function aiQuestion(page,question,expected,label){
    const context=await browser.newContext({viewport:{width:device.width,height:device.height},
       isMobile:device.isMobile,hasTouch:device.hasTouch,deviceScaleFactor:1,locale:'en-US'});
    const page=await context.newPage();
-   page.on('pageerror',error=>errors.push({device:device.name,page:'home',error:String(error.message).slice(0,180)}));
+   page.on('pageerror',error=>errors.push({device:device.name,page:'home',error:String(error.stack||error.message).slice(0,500)}));
    try{
     await observed(page,'/');
     await page.getByRole('button',{name:/Essential only/i}).first().click({timeout:1600}).catch(()=>{});
