@@ -3429,11 +3429,31 @@ async function discoverFromITunes(cat, mood, vibe, decade, rating) {
         // verified source signal, fail closed rather than pretending the title
         // satisfied them.
         if(normCriteria(vibe).length||ratingSet.length)return null;
-        const fresh = pool.filter(r => !seenRecently.has(r.trackName || r.collectionName));
-        if (fresh.length) pool = fresh;
-        if (!pool.length) return null;
-
-        const r = pool[Math.floor(Math.random() * pool.length)];
+        // A real iTunes identity with its own original artwork/preview is an
+        // approved AI candidate, not permission to make up songs or platforms.
+        const fresh = pool.filter(r => !seenRecently.has(r.trackName || r.collectionName)
+            && !SESSION_SHOWN.has(r.trackName || r.collectionName));
+        if(!fresh.length)return null;
+        pool=fresh;
+        let r=null;
+        if(typeof window.MatchAppAIRank?.rank==='function'){
+            const shuffled=pool.slice().sort(()=>Math.random()-.5).slice(0,20);
+            const rows=shuffled.map((item,i)=>({
+                id:'c'+i,title:item.trackName||item.collectionName,
+                format:media,genres:item.primaryGenreName||'',
+                mood:selectedMoods.join(' or '),synopsis:item.shortDescription||item.longDescription||'',
+                country:region
+            }));
+            const ranked=await window.MatchAppAIRank.rank(rows,{
+                format:cat,genre:genreRx?String(genreRx):'',
+                mood:selectedMoods.join(' or '),platform:'any',country:region
+            });
+            if(/^c\d+$/.test(String(ranked?.id||''))){
+                const hit=shuffled[Number(ranked.id.slice(1))];
+                if(hit&&pool.includes(hit))r=hit;
+            }
+        }
+        if(!r)r=pool[Math.floor(Math.random()*pool.length)];
         const name = r.trackName || r.collectionName;
         const year = r.releaseDate ? String(r.releaseDate).substring(0, 4) : '';
 
