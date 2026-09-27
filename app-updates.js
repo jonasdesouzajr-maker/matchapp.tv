@@ -11,7 +11,7 @@ if(!window.MATCHAPP_BUILD)window.MATCHAPP_BUILD=BUILD;
 
 const KIDS = location.pathname === '/kids' || location.pathname.startsWith('/kids/');
 const UA = String(navigator.userAgent || '');
-const IS_NATIVE_ADULT = /MatchAppAiAndroid\\//.test(UA);
+const IS_NATIVE_ADULT = /MatchAppAiAndroid\//.test(UA);
 const IS_MOBILE_ADULT = !KIDS && /Android|iPhone|iPad|iPod/i.test(UA);
 const MOBILE_RECOVERY_KEY='matchapp_adult_mobile_runtime_20260927_1';
 const isStandalone=()=>!!((window.matchMedia&&matchMedia('(display-mode: standalone)').matches)||navigator.standalone===true||window.MATCHAPP_ANDROID||IS_NATIVE_ADULT);
