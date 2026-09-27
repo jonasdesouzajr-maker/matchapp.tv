@@ -35,6 +35,25 @@ PY
 dismiss_launcher_anr 'boot'
 # Keep diagnostic evidence whenever the hosted emulator drops ADB or Android
 # cannot expose its accessibility tree. Neither failure proves an app crash.
+adb_reconnect() {
+  # Hosted emulators sometimes drop the ADB transport during WebView startup
+  # despite keeping the native process alive. Give transport one bounded
+  # recovery opportunity and report transport loss separately from an app crash.
+  if timeout 8s adb get-state 2>/dev/null | grep -Fxq device; then return 0; fi
+  echo "::warning::Hosted Android ADB transport disconnected; reconnecting once."
+  timeout 8s adb kill-server >/dev/null 2>&1 || true
+  timeout 8s adb start-server >/dev/null 2>&1 || true
+  for attempt in 1 2 3; do
+    if timeout 12s adb wait-for-device >/dev/null 2>&1 &&
+       timeout 8s adb get-state 2>/dev/null | grep -Fxq device; then
+      echo "Hosted ADB transport restored on attempt $attempt"
+      return 0
+    fi
+    sleep 3
+  done
+  echo "::error::Hosted emulator ADB transport unavailable; no native-app crash is established."
+  return 1
+}
 capture_native_diagnostics() {
   local label="$1"
   timeout 12s adb get-state > "artifacts/android-emulator/${label}-adb-state.txt" 2>&1 || true
@@ -106,27 +125,57 @@ PY
 )
     if [ -n "$coords" ]; then adb shell input tap $coords; fi
     sleep 16
-    timeout 15s adb shell uiautomator dump "/sdcard/$name-window.xml" >/dev/null 2>&1 || true
-    timeout 10s adb pull "/sdcard/$name-window.xml" "artifacts/android-emulator/$name-window.xml" >/dev/null 2>&1 || true
+    if ! adb_reconnect; then
+      capture_native_diagnostics "$name-adb-loss-after-retry"
+      return 1
+    fi
+    # Remove the old *offline* XML before re-sampling: a failed pull must
+    # never fool the test into treating stale accessibility text as current.
+    rm -f "artifacts/android-emulator/$name-window.xml"
+    timeout 18s adb shell uiautomator dump "/sdcard/$name-window.xml" >/dev/null 2>&1 || true
+    timeout 12s adb pull "/sdcard/$name-window.xml" "artifacts/android-emulator/$name-window.xml" >/dev/null 2>&1 || true
     if ! grep -Fq "package=\"$pkg\"" "artifacts/android-emulator/$name-window.xml" 2>/dev/null; then
-      echo "::error::$name left the tested Activity during network recovery."
+      # WebView accessibility inspection itself may lose the ADB connection;
+      # capture a fresh rendered screenshot plus independent Activity/PID
+      # rather than misidentifying instrumentation loss as a process crash.
+      adb_reconnect || { capture_native_diagnostics "$name-adb-loss"; return 1; }
+      capture_native_diagnostics "$name-recovery-unverified"
+      local current
+      current="$(timeout 12s adb shell dumpsys activity activities 2>/dev/null || true)"
+      if ! grep -E '(mResumedActivity|topResumedActivity|ResumedActivity)' <<< "$current" | grep -Fq "$pkg" ||
+         ! timeout 12s adb shell pidof "$pkg" >/dev/null 2>&1 ||
+         [ "$(stat -c%s "artifacts/android-emulator/$name-recovery-unverified-screenshot.png" 2>/dev/null || echo 0)" -le 6000 ]; then
+        echo "::error::$name recovery could not be proven; emulator evidence saved (not classified as app crash)."
+        return 1
+      fi
+      echo "::warning::$name recovered native Activity and screenshot; WebView accessibility unavailable, inspect captured image."
+    elif grep -qiE "You.?re offline|You are offline" "artifacts/android-emulator/$name-window.xml"; then
+      capture_native_diagnostics "$name-still-offline"
+      echo "::error::$name remains offline after bounded retry; no verified online WebView."
       return 1
     fi
   fi
-  if ! adb shell pidof "$pkg" >/dev/null; then
+  adb_reconnect || { capture_native_diagnostics "$name-adb-loss-before-pid"; return 1; }
+  if ! timeout 12s adb shell pidof "$pkg" >/dev/null 2>&1; then
     echo "::error::$name native app crashed or failed to start"
     adb logcat -d -v brief -t 650 >"artifacts/android-emulator/$name-crash.log"
     return 1
   fi
-  adb exec-out screencap -p >"artifacts/android-emulator/$name-first-screen.png"
+  adb_reconnect || { capture_native_diagnostics "$name-adb-loss-before-screenshot"; return 1; }
+  timeout 20s adb exec-out screencap -p >"artifacts/android-emulator/$name-first-screen.png" ||
+    { capture_native_diagnostics "$name-screenshot-failure"; return 1; }
   test "$(stat -c%s "artifacts/android-emulator/$name-first-screen.png")" -gt 6000
   # Android accessibility hierarchy above is retained for manual visual crosscheck.
   # A full swipe should not crash WebView or freeze the owning process.
-  adb shell input swipe 450 1500 450 350 650
+  timeout 15s adb shell input swipe 450 1500 450 350 650 ||
+    { capture_native_diagnostics "$name-swipe-transport"; return 1; }
   sleep 4
+  adb_reconnect || { capture_native_diagnostics "$name-adb-loss-after-swipe"; return 1; }
   dismiss_launcher_anr "$name-after-swipe"
-  adb shell pidof "$pkg" >/dev/null
-  adb exec-out screencap -p >"artifacts/android-emulator/$name-after-scroll.png"
+  timeout 12s adb shell pidof "$pkg" >/dev/null ||
+    { capture_native_diagnostics "$name-process-exited-after-swipe"; return 1; }
+  timeout 20s adb exec-out screencap -p >"artifacts/android-emulator/$name-after-scroll.png" ||
+    { capture_native_diagnostics "$name-scroll-screenshot-failure"; return 1; }
   test "$(stat -c%s "artifacts/android-emulator/$name-after-scroll.png")" -gt 6000
   echo "PASS $name starts, remains alive after WebView load and swipe; screenshots captured."
 }

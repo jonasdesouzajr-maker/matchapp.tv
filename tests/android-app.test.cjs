@@ -53,3 +53,13 @@ test('Kids Android app exposes native biometric guardian bridge while main app s
  assert.match(kidsManifest,/USE_BIOMETRIC/);
  assert.match(kidsGradle,/androidx\.biometric:biometric:1\.1\.0/);
 });
+
+test('hosted emulator ADB loss and a stale offline hierarchy cannot be mistaken for an app crash or success',()=>{
+ const smoke=read('tools/android-emulator-smoke.sh');
+ assert.match(smoke,/adb_reconnect\(\) \{/);
+ assert.match(smoke,/Hosted emulator ADB transport unavailable; no native-app crash is established/);
+ assert.match(smoke,/rm -f "artifacts\/android-emulator\/\$name-window\.xml"/);
+ assert.match(smoke,/name-recovery-unverified-screenshot\.png/);
+ assert.match(smoke,/remains offline after bounded retry; no verified online WebView/);
+ assert.match(smoke,/adb_reconnect \|\| \{ capture_native_diagnostics/);
+});
