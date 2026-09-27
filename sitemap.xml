@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://matchapp.tv/</loc>
-        <lastmod>2026-09-27T10:47:00+00:00</lastmod>
+        <lastmod>2026-09-27T12:59:50+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
@@ -20,19 +20,49 @@
     </url>
     <url>
         <loc>https://matchapp.tv/ebooks/</loc>
-        <lastmod>2026-09-27T10:47:19+00:00</lastmod>
+        <lastmod>2026-09-27T12:59:50+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/guides/what-to-watch-september-2026/</loc>
+        <lastmod>2026-09-27T12:59:50+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/guides/global-music-september-2026/</loc>
+        <lastmod>2026-09-27T12:59:50+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/guides/books-september-2026/</loc>
+        <lastmod>2026-09-27T12:59:50+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/guides/filmes-series-em-alta-brasil-setembro-2026/</loc>
+        <lastmod>2026-09-27T12:59:50+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/guides/peliculas-series-tendencia-mexico-septiembre-2026/</loc>
+        <lastmod>2026-09-27T12:59:50+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/collections/indian-cinema/</loc>
-        <lastmod>2026-09-27T10:47:19+00:00</lastmod>
+        <lastmod>2026-09-27T10:47:36+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/collections/mexican-series-films/</loc>
-        <lastmod>2026-09-27T10:47:19+00:00</lastmod>
+        <lastmod>2026-09-27T10:47:36+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -44,13 +74,13 @@
     </url>
     <url>
         <loc>https://matchapp.tv/desktop/windows.html</loc>
-        <lastmod>2026-09-27T10:47:19+00:00</lastmod>
+        <lastmod>2026-09-27T12:59:50+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/desktop/macos.html</loc>
-        <lastmod>2026-09-27T10:47:19+00:00</lastmod>
+        <lastmod>2026-09-27T12:59:50+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
     </url>
@@ -98,7 +128,7 @@
     </url>
     <url>
         <loc>https://matchapp.tv/events-archive.html</loc>
-        <lastmod>2026-09-27T10:47:19+00:00</lastmod>
+        <lastmod>2026-09-27T12:59:50+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
     </url>
@@ -146,145 +176,151 @@
     </url>
     <url>
         <loc>https://matchapp.tv/moods/intense-and-thrilling/</loc>
-        <lastmod>2026-09-27T10:47:19+00:00</lastmod>
+        <lastmod>2026-09-27T12:59:50+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/moods/dark-and-gritty/</loc>
-        <lastmod>2026-09-27T10:47:19+00:00</lastmod>
+        <lastmod>2026-09-27T12:59:50+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/moods/epic-and-adventurous/</loc>
-        <lastmod>2026-09-27T10:47:19+00:00</lastmod>
+        <lastmod>2026-09-27T12:59:50+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/moods/funny/</loc>
-        <lastmod>2026-09-27T10:47:19+00:00</lastmod>
+        <lastmod>2026-09-27T12:59:50+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/moods/romantic/</loc>
-        <lastmod>2026-09-27T10:47:19+00:00</lastmod>
+        <lastmod>2026-09-27T12:59:50+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/moods/heartbreaking/</loc>
-        <lastmod>2026-09-27T10:47:19+00:00</lastmod>
+        <lastmod>2026-09-27T12:59:50+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/moods/light-and-feel-good/</loc>
-        <lastmod>2026-09-27T10:47:19+00:00</lastmod>
+        <lastmod>2026-09-27T12:59:50+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/moods/cozy-comfort-watch/</loc>
-        <lastmod>2026-09-27T10:47:19+00:00</lastmod>
+        <lastmod>2026-09-27T12:59:50+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/moods/inspiring/</loc>
-        <lastmod>2026-09-27T10:47:19+00:00</lastmod>
+        <lastmod>2026-09-27T12:59:50+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/moods/mind-bending/</loc>
-        <lastmod>2026-09-27T10:47:19+00:00</lastmod>
+        <lastmod>2026-09-27T12:59:50+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/moods/nostalgic/</loc>
-        <lastmod>2026-09-27T10:47:19+00:00</lastmod>
+        <lastmod>2026-09-27T12:59:50+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/collections/series/</loc>
-        <lastmod>2026-09-27T10:47:19+00:00</lastmod>
+        <lastmod>2026-09-27T12:59:50+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/collections/movie/</loc>
-        <lastmod>2026-09-27T10:47:19+00:00</lastmod>
+        <lastmod>2026-09-27T12:59:50+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/collections/k-drama/</loc>
+        <lastmod>2026-09-27T12:59:50+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/collections/podcast/</loc>
-        <lastmod>2026-09-27T10:47:19+00:00</lastmod>
+        <lastmod>2026-09-27T12:59:50+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/collections/documentary/</loc>
-        <lastmod>2026-09-27T10:47:19+00:00</lastmod>
+        <lastmod>2026-09-27T12:59:50+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/collections/gospel-and-faith/</loc>
-        <lastmod>2026-09-27T10:47:19+00:00</lastmod>
+        <lastmod>2026-09-27T12:59:50+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/collections/youtube-channel/</loc>
-        <lastmod>2026-09-27T10:47:19+00:00</lastmod>
+        <lastmod>2026-09-27T12:59:50+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/collections/youtube-shorts/</loc>
-        <lastmod>2026-09-27T10:47:19+00:00</lastmod>
+        <lastmod>2026-09-27T12:59:50+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/collections/classical-music/</loc>
-        <lastmod>2026-09-27T10:47:19+00:00</lastmod>
+        <lastmod>2026-09-27T12:59:50+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/collections/news/</loc>
-        <lastmod>2026-09-27T10:47:19+00:00</lastmod>
+        <lastmod>2026-09-27T12:59:50+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/collections/sports/</loc>
-        <lastmod>2026-09-27T10:47:19+00:00</lastmod>
+        <lastmod>2026-09-27T12:59:50+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/platforms/netflix/</loc>
-        <lastmod>2026-09-27T10:47:19+00:00</lastmod>
+        <lastmod>2026-09-27T12:59:50+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/platforms/spotify/</loc>
-        <lastmod>2026-09-27T10:47:19+00:00</lastmod>
+        <lastmod>2026-09-27T12:59:50+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/platforms/youtube/</loc>
-        <lastmod>2026-09-27T10:47:19+00:00</lastmod>
+        <lastmod>2026-09-27T12:59:50+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
@@ -1028,121 +1064,121 @@
     </url>
     <url>
         <loc>https://matchapp.tv/events/asian-games-2026/</loc>
-        <lastmod>2026-09-25T07:28:39+00:00</lastmod>
+        <lastmod>2026-09-27T12:59:50+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/events/azerbaijan-gp-2026/</loc>
-        <lastmod>2026-09-25T07:28:39+00:00</lastmod>
+        <lastmod>2026-09-27T12:59:50+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/events/calgary-international-film-festival-2026/</loc>
-        <lastmod>2026-09-25T07:28:39+00:00</lastmod>
+        <lastmod>2026-09-27T12:59:50+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/events/new-york-film-festival-2026/</loc>
-        <lastmod>2026-09-25T07:28:39+00:00</lastmod>
+        <lastmod>2026-09-27T12:59:50+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/events/festival-do-rio-2026/</loc>
-        <lastmod>2026-09-25T07:28:39+00:00</lastmod>
+        <lastmod>2026-09-27T12:59:50+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/events/viff-2026/</loc>
-        <lastmod>2026-09-25T07:28:39+00:00</lastmod>
+        <lastmod>2026-09-27T12:59:50+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/events/bfi-london-film-festival-2026/</loc>
-        <lastmod>2026-09-25T07:28:39+00:00</lastmod>
+        <lastmod>2026-09-27T12:59:50+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/events/new-york-comic-con-2026/</loc>
-        <lastmod>2026-09-25T07:28:39+00:00</lastmod>
+        <lastmod>2026-09-27T12:59:50+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/events/pax-aus-2026/</loc>
-        <lastmod>2026-09-25T07:28:39+00:00</lastmod>
+        <lastmod>2026-09-27T12:59:50+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/events/brasil-game-show-2026/</loc>
-        <lastmod>2026-09-25T07:28:39+00:00</lastmod>
+        <lastmod>2026-09-27T12:59:50+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/events/adelaide-film-festival-2026/</loc>
-        <lastmod>2026-09-25T07:28:39+00:00</lastmod>
+        <lastmod>2026-09-27T12:59:50+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/events/toronto-after-dark-2026/</loc>
-        <lastmod>2026-09-25T07:28:39+00:00</lastmod>
+        <lastmod>2026-09-27T12:59:50+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/events/mostra-sao-paulo-2026/</loc>
-        <lastmod>2026-09-25T07:28:39+00:00</lastmod>
+        <lastmod>2026-09-27T12:59:50+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/events/worlds-2026/</loc>
-        <lastmod>2026-09-25T07:28:39+00:00</lastmod>
+        <lastmod>2026-09-27T12:59:50+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/events/kota-dussehra-2026/</loc>
-        <lastmod>2026-09-27T10:47:19+00:00</lastmod>
+        <lastmod>2026-09-27T12:59:50+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/events/mcm-london-comic-con-2026/</loc>
-        <lastmod>2026-09-25T07:28:39+00:00</lastmod>
+        <lastmod>2026-09-27T12:59:50+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/events/tokyo-international-film-festival-2026/</loc>
-        <lastmod>2026-09-25T07:28:39+00:00</lastmod>
+        <lastmod>2026-09-27T12:59:50+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/events/mexico-day-of-dead-2026/</loc>
-        <lastmod>2026-09-27T10:47:19+00:00</lastmod>
+        <lastmod>2026-09-27T12:59:50+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/events/mexico-city-race-weekend-2026/</loc>
-        <lastmod>2026-09-27T10:47:19+00:00</lastmod>
+        <lastmod>2026-09-27T12:59:50+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/events/ccxp-2026/</loc>
-        <lastmod>2026-09-25T07:28:39+00:00</lastmod>
+        <lastmod>2026-09-27T12:59:50+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
@@ -1154,18 +1190,12 @@
     </url>
     <url>
         <loc>https://matchapp.tv/news/</loc>
-        <lastmod>2026-09-27T08:31:50+00:00</lastmod>
+        <lastmod>2026-09-27T12:59:27+00:00</lastmod>
         <changefreq>hourly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/awareness/breast-cancer-awareness-month-2026/</loc>
-        <lastmod>2026-09-25T07:28:39+00:00</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-    </url>
-    <url>
-        <loc>https://matchapp.tv/awareness/international-day-of-sign-languages-2026/</loc>
         <lastmod>2026-09-25T07:28:39+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -1193,35 +1223,5 @@
         <lastmod>2026-09-25T07:28:39+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
-    </url>
-    <url>
-        <loc>https://matchapp.tv/guides/what-to-watch-september-2026/</loc>
-        <lastmod>2026-09-27</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://matchapp.tv/guides/global-music-september-2026/</loc>
-        <lastmod>2026-09-27</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://matchapp.tv/guides/books-september-2026/</loc>
-        <lastmod>2026-09-27</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://matchapp.tv/guides/filmes-series-em-alta-brasil-setembro-2026/</loc>
-        <lastmod>2026-09-27</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://matchapp.tv/guides/peliculas-series-tendencia-mexico-septiembre-2026/</loc>
-        <lastmod>2026-09-27</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
     </url>
 </urlset>
