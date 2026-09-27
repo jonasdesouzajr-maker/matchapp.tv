@@ -5,7 +5,7 @@ const path=require('node:path');
 const read=p=>fs.readFileSync(path.join(__dirname,'..',p),'utf8');
 const proxy=read('supabase/functions/gemini-proxy/index.ts');
 const openai=read('supabase/functions/gemini-proxy/openai-primary.ts');
-const sql=read('supabase/security/openai-fallback-daily-gate.sql');
+const sql=read('supabase/security/openai-primary-daily-gate.sql');
 const app=read('app.js'),home=read('index.html');
 
 test('OpenAI primary is eligible only for adult Ask AI or explicitly tagged adult match',()=>{
@@ -43,8 +43,8 @@ test('provider failover is finite, guarded, reversible and cannot silently chang
   assert.match(proxy,/MODEL_CHAIN\.map/);
   assert.match(proxy,/OPENAI_DAILY_CALL_LIMIT/);
   assert.match(sql,/enable row level security/i);
-  assert.match(sql,/revoke all on function public\.claim_openai_fallback_slot\(integer\)/);
-  assert.match(sql,/grant execute on function public\.claim_openai_fallback_slot\(integer\) to service_role/);
+  assert.match(sql,/revoke all on function public\.claim_openai_primary_slot\(integer\)/);
+  assert.match(sql,/grant execute on function public\.claim_openai_primary_slot\(integer\) to service_role/);
   assert.match(openai,/!explicitXXX/);
   assert.match(openai,/!blockXXX/);
   assert.match(home,/app\.js\?v=20260927-openai-criteria1/);
