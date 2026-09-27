@@ -15,7 +15,7 @@ function modules(userAgent='Mozilla/5.0 Chrome/120.0'){
 test('magazines are a distinct explicitly selected adult matching format',()=>{
  const match=read('ebooks/ebook-matcher.js');
  assert.match(match,/\['magazine','📰','Magazine only'\]/);
- assert.match(match,/p\.format==='magazine'\)pick=chooseMagazine\(p\)/);
+ assert.match(match,/p\.format==='magazine'\)pick=await chooseMagazine\(p\)/);
  assert.match(match,/renderMagazineResult\(root,book,p\)/);
  assert.doesNotMatch(read('kids/index.html'),/MatchAppMagazines|magazines\.js|reading-ai\.js/);
 });
