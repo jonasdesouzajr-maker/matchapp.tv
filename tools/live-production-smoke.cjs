@@ -15,6 +15,26 @@ const cases=[
  {name:'small-phone',width:320,height:710,isMobile:true,hasTouch:true}
 ];
 const errors=[];
+// Playwright surfaces exceptions from cross-origin iframe scripts as pageerror.
+// Keep first-party JS failures release-blocking, but classify the EXACT known
+// Spotify third-party iframe transport disconnect separately. Do not count it
+// as a successful Spotify embed: preserve the warning in the QA report.
+function isSpotifyIframeTransportDisconnect(error){
+ const stack=String(error?.stack||error?.message||'');
+ return stack.includes('TransportError: Cannot authenticate disconnected transport') &&
+   /https:\/\/embed-cdn\.spotifycdn\.com\//.test(stack) &&
+   /at (?:_authenticate|authenticate) \(https:\/\/embed-cdn\.spotifycdn\.com\//.test(stack);
+}
+function capturePageError(device,error){
+ const stack=String(error?.stack||error?.message||'');
+ if(isSpotifyIframeTransportDisconnect(error)){
+   const warning={check:'Spotify external iframe disconnected',device,issue:'Cross-origin Spotify player transport failed; host-page JavaScript unaffected. Verify the embedded player separately.'};
+   report.warnings.push(warning);
+   console.warn('EXTERNAL PLAYER WARNING '+device+': '+warning.issue);
+   return;
+ }
+ errors.push({device,page:'home',error:stack.slice(0,500)});
+}
 async function shot(page,name){try{await page.screenshot({path:path.join(dir,name+'.png'),animations:'disabled',timeout:20000});report.screens.push(name+'.png')}catch(e){record('screenshot '+name,false,String(e.message).slice(0,150))}}
 async function observed(page,url){await page.goto(base+url,{waitUntil:'domcontentloaded',timeout:60000});await page.waitForTimeout(1400);return page;}
 async function aiQuestion(page,question,expected,label){
@@ -70,7 +90,7 @@ async function aiQuestion(page,question,expected,label){
    const context=await browser.newContext({viewport:{width:device.width,height:device.height},
       isMobile:device.isMobile,hasTouch:device.hasTouch,deviceScaleFactor:1,locale:'en-US'});
    const page=await context.newPage();
-   page.on('pageerror',error=>errors.push({device:device.name,page:'home',error:String(error.stack||error.message).slice(0,500)}));
+   page.on('pageerror',error=>capturePageError(device.name,error));
    try{
     await observed(page,'/');
     await page.getByRole('button',{name:/Essential only/i}).first().click({timeout:1600}).catch(()=>{});
