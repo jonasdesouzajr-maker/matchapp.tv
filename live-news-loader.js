@@ -2,7 +2,7 @@
 (function(){
   'use strict';
   const API='https://zkymvqrmbabngsqblyye.supabase.co/functions/v1/latest-news-api';
-  const MAX_LOCAL=5,MAX_GLOBAL=5,MAX_TOTAL=10;
+  const MAX_LOCAL=5,MAX_GLOBAL=3,MAX_TOTAL=12,MAX_WORLD=2,MAX_SPORTS=2;
   const SEEN_KEY='matchapp.latestNewsSeenVersion.newsdata';
   const REFRESH_MS=30000;
   let staticCards=null,lastVersion='',timer=0,running=false;
@@ -76,12 +76,24 @@
     if(running||document.hidden)return;running=true;
     try{
       const section=document.getElementById('latest-news');const track=section?.querySelector('.ma-news-track');if(!section||!track)return;
-      if(!staticCards)staticCards=[...track.children].filter(el=>!el.dataset.newsProvider);
+      if(!staticCards||!staticCards.length)staticCards=[...track.children].filter(el=>!el.dataset.newsProvider);
       const cc=await country();const r=await fetch(`${API}?country=${encodeURIComponent(cc)}&limit=60`,{cache:'no-store',headers:{accept:'application/json'}});if(!r.ok)throw new Error(`HTTP ${r.status}`);
       const payload=await r.json();const items=(Array.isArray(payload.items)?payload.items:[]).filter(trusted);if(!items.length)return;
       const chosen=choose(items,cc);const liveCards=chosen.map(({item,scope})=>card(item,scope));
       const requested=new URLSearchParams(location.search).get('news')||'';const fallback=staticCards.filter(el=>!liveCards.some(x=>x.dataset.newsId===el.dataset.newsId));
-      const requestedCard=requested?fallback.find(el=>el.dataset.newsId===requested):null;const ordered=[];if(requestedCard)ordered.push(requestedCard);ordered.push(...liveCards);for(const el of fallback){if(ordered.length>=MAX_TOTAL)break;if(el!==requestedCard)ordered.push(el);}
+      const requestedCard=requested?fallback.find(el=>el.dataset.newsId===requested):null;
+      // NewsData has its own live reporting, but must not evict the separate
+      // trusted publisher world and twice-daily verified sports snapshots.
+      // Preserve the original source card/link; never copy its photo.
+      const reservedWorld=fallback.filter(el=>el.dataset.newsScope==='world').slice(0,MAX_WORLD);
+      const reservedSports=fallback.filter(el=>el.dataset.newsScope==='sports').slice(0,MAX_SPORTS);
+      const retained=new Set([...reservedWorld,...reservedSports,requestedCard].filter(Boolean));
+      const ordered=[];if(requestedCard)ordered.push(requestedCard);
+      ordered.push(...liveCards.slice(0,MAX_TOTAL-retained.size));
+      for(const el of [...reservedWorld,...reservedSports,...fallback]){
+        if(ordered.length>=MAX_TOTAL)break;
+        if(!ordered.includes(el))ordered.push(el);
+      }
       track.replaceChildren(...ordered.slice(0,MAX_TOTAL));
       lastVersion=String(payload.feed_version||payload.generated_at||'');let seen='';try{seen=localStorage.getItem(SEEN_KEY)||'';}catch(_){}
       if(lastVersion&&lastVersion!==seen&&!section.open)section.dataset.hasNew='true';

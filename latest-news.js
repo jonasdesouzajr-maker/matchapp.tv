@@ -5,8 +5,9 @@
   const DATA='/news/data.json';
   const FALLBACK_COUNTRY='US';
   const MAX_LOCAL=5;
-  const MAX_GLOBAL=5;
-  const MAX_TOTAL=10;
+  const MAX_GLOBAL=3;
+  const MAX_TOTAL=12;
+  const MAX_WORLD=2;
   const MAX_SPORTS=2; // Sports share the exact same original-source card action.
   const SEEN_KEY='matchapp.latestNewsSeenVersion';
   const AUTO_FIRST_MS=2600;
@@ -92,7 +93,7 @@
     article.className='ma-news-card';
     article.dataset.newsId=item.id||'';
     article.dataset.newsScope=scope;
-    article.dataset.newsCategory=item.category==='sports'?'sports':'entertainment';
+    article.dataset.newsCategory=item.category==='sports'?'sports':item.category==='world'?'world':'entertainment';
     if(seo.primary_keyword)article.dataset.primaryKeyword=decodeEntities(seo.primary_keyword);
 
     const a=document.createElement('a');
@@ -109,7 +110,7 @@
     img.width=240;
     img.height=135;
     img.referrerPolicy='no-referrer';
-    img.alt=item.category==='sports'?`Sports news: ${title}`:item.person?`${decodeEntities(item.person)} — ${decodeEntities(item.event_type||'entertainment news')}`:(seo.primary_keyword?`${decodeEntities(seo.primary_keyword)}: ${title}`:`Entertainment news: ${title}`);
+    img.alt=item.category==='sports'?`Sports news: ${title}`:item.category==='world'?`World news from ${sourceName}: ${title}`:item.person?`${decodeEntities(item.person)} — ${decodeEntities(item.event_type||'entertainment news')}`:(seo.primary_keyword?`${decodeEntities(seo.primary_keyword)}: ${title}`:`Entertainment news: ${title}`);
     const logo=publisherLogo(item);
     const branded=()=>{img.classList.add('ma-news-source-logo');img.src=fallbackImage(sourceName,title);};
     const useLogo=()=>{
@@ -271,15 +272,16 @@
     // Preserve local-first entertainment discovery, reserve two worldwide
     // slots for independently refreshed sports, then fill remaining world
     // slots without duplication. No separate or conflicting news carousel.
-    const entertainment=items.filter(i=>i.category!=='sports');
+    const entertainment=items.filter(i=>i.category==='entertainment');
+    const world=items.filter(i=>i.category==='world').slice(0,MAX_WORLD);
     const sports=items.filter(i=>i.category==='sports').slice(0,MAX_SPORTS);
     const local=entertainment.filter(i=>i.country===country).slice(0,MAX_LOCAL);
-    const used=new Set([...local,...sports].map(i=>i.id));
+    const used=new Set([...local,...sports,...world].map(i=>i.id));
     while(local.length<MAX_LOCAL){
       const extra=entertainment.find(i=>!used.has(i.id)&&i.country!=='GLOBAL');
       if(!extra)break;local.push(extra);used.add(extra.id);
     }
-    const globalLimit=Math.min(MAX_GLOBAL,MAX_TOTAL-local.length-sports.length);
+    const globalLimit=Math.min(MAX_GLOBAL,MAX_TOTAL-local.length-sports.length-world.length);
     const global=entertainment.filter(i=>!used.has(i.id)&&i.country==='GLOBAL').slice(0,globalLimit);
     global.forEach(i=>used.add(i.id));
     while(global.length<globalLimit){
@@ -288,11 +290,12 @@
     }
     let combined=[...local.map(item=>({item,scope:'local'})),
       ...global.map(item=>({item,scope:'global'})),
+      ...world.map(item=>({item,scope:'world'})),
       ...sports.map(item=>({item,scope:'sports'}))];
     if(requestedNewsId){
       const requested=items.find(i=>i.id===requestedNewsId);
       if(requested){
-        const requestedScope=requested.category==='sports'?'sports':requested.country===country?'local':requested.country==='GLOBAL'?'global':'linked';
+        const requestedScope=requested.category==='sports'?'sports':requested.category==='world'?'world':requested.country===country?'local':requested.country==='GLOBAL'?'global':'linked';
         combined=[{item:requested,scope:requestedScope},...combined.filter(x=>x.item.id!==requested.id)];
       }
     }
@@ -309,7 +312,7 @@
     const deep=deepLinkState();
     const section=document.createElement('details');
     section.id='latest-news';section.className='ma-news premiere-disclosure ma-static-news';section.open=true;section.dataset.hasNew='false';
-    section.innerHTML=`<summary><span class="ma-news-summary-main"><span class="ma-news-title">Latest News</span><span class="ma-news-description">Verified entertainment & sports · local + worldwide</span></span><span class="ma-news-new" role="status" aria-label="New verified news available"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M5 3h2v18H5V3Zm3 2h10.4l-1.9 4 1.9 4H8V5Z"/><circle class="ma-news-new-dot" cx="19" cy="5" r="3"/></svg><span>New</span></span></summary><div class="ma-news-panel"><div class="ma-news-empty">Loading verified entertainment and sports headlines…</div></div>`;
+    section.innerHTML=`<summary><span class="ma-news-summary-main"><span class="ma-news-title">Latest News</span><span class="ma-news-description">Verified entertainment, world news & sports · local + worldwide</span></span><span class="ma-news-new" role="status" aria-label="New verified news available"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M5 3h2v18H5V3Zm3 2h10.4l-1.9 4 1.9 4H8V5Z"/><circle class="ma-news-new-dot" cx="19" cy="5" r="3"/></svg><span>New</span></span></summary><div class="ma-news-panel"><div class="ma-news-empty">Loading verified entertainment, world news and sports headlines…</div></div>`;
     // Bookworms may live inside the foldable Match/Ask stage on modern Home.
     // News is a separate Home section: place it AFTER the entire stage rather
     // than accidentally hiding it in the Match tab when the stage folds.

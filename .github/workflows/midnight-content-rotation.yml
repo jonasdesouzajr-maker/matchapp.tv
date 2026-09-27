@@ -35,6 +35,11 @@ jobs:
           cache: npm
       - run: npm ci
 
+      # Distinguish an outdated source cache key from an editor generator
+      # accidentally rewriting it; both should block automated publication.
+      - name: Preflight shared runtime version contract
+        run: node --test tests/release-audit.test.cjs
+
       - name: Snapshot before rotation
         run: |
           git rev-parse HEAD > /tmp/before.sha

@@ -42,7 +42,7 @@ test('one sports snapshot, twice daily; serialize publishers and dispatch only a
 });
 test('sports reuse existing homepage click flow, real source links, semantic metadata, and no publisher photo copying',()=>{
  const front=read('latest-news.js'),news=read('tools/refresh-news-rss.js'),sports=read('tools/refresh-sports-discovery.js');
- assert.match(front,/MAX_TOTAL=10/);assert.match(front,/MAX_SPORTS=2/);
+ assert.match(front,/MAX_TOTAL=12/);assert.match(front,/MAX_WORLD=2/);assert.match(front,/MAX_SPORTS=2/);
  assert.match(front,/requestedNewsId/);assert.match(front,/noopener noreferrer external/);
  assert.match(front,/sports_updated_at/);assert.match(news,/seoFor\(item,\[\],generated\)/);
  assert.match(news,/i\.category==='sports'/);assert.match(news,/itemListElement/);

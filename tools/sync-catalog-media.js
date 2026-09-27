@@ -54,6 +54,8 @@ function homepageTrending(){
 }
 function buildCatalog(){
   const content=parseArray(read('app.js'),/const CONTENT_CATALOG = (\[[\s\S]*?\n\]);/,'CONTENT_CATALOG');
+  const adultExtra=parseArray(read('catalog-plus.js'),/const extra=(\[[\s\S]*?\n\]);function merge/,'adult extra catalog');
+  content.push(...adultExtra);
   const kids=parseArray(read('kids/kids.js'),/const LIBRARY = (\[[\s\S]*?\n  \]);/,'Kids LIBRARY');
   const availability=JSON.parse(read('data/availability.json'));
   const exactIds=new Map();

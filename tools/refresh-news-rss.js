@@ -14,16 +14,22 @@ const SPORTS_SNAPSHOT=path.join(NEWS,'sports.json');
 
 const FEEDS=[
   {url:'https://feeds.bbci.co.uk/news/entertainment_and_arts/rss.xml',source:'BBC',domains:['bbc.com','bbc.co.uk'],country:'GB'},
+  {url:'https://feeds.bbci.co.uk/news/world/rss.xml',source:'BBC World',domains:['bbc.com','bbc.co.uk'],country:'GLOBAL',category:'world'},
+  {url:'https://feeds.bbci.co.uk/news/technology/rss.xml',source:'BBC Technology',domains:['bbc.com','bbc.co.uk'],country:'GLOBAL',category:'world'},
+  {url:'https://feeds.bbci.co.uk/news/science_and_environment/rss.xml',source:'BBC Science',domains:['bbc.com','bbc.co.uk'],country:'GLOBAL',category:'world'},
   {url:'https://g1.globo.com/dynamo/pop-arte/rss2.xml',source:'G1',domains:['g1.globo.com'],country:'BR'},
   {url:'https://rss.cnn.com/rss/edition_entertainment.rss',source:'CNN',domains:['cnn.com'],country:'US'},
   {url:'https://www.hollywoodreporter.com/feed/',source:'The Hollywood Reporter',domains:['hollywoodreporter.com'],country:'US'},
   {url:'https://www.reutersagency.com/feed/?best-topics=entertainment&post_type=best',source:'Reuters',domains:['reuters.com','reutersagency.com'],country:'GLOBAL'}
 ];
 
-const TREND_GEOS=['BR','US','GB'];
+const TREND_GEOS=['BR','US','GB','MX','IN'];
 const RUMOR=/\b(rumou?r|rumor|boato|reportedly|allegedly|speculation|unconfirmed|supostamente|alegadamente|teria|segundo fontes|fontes dizem|sources say|might be|could be|is said to|insider claims?)\b/i;
 const NON_NEWS=/\b(opinion|shopping|coupon|horoscope|quiz|review roundup|opini[aã]o|compras|cupom)\b/i;
 const TOPIC=/\b(actor|actress|singer|musician|film|movie|television|tv|streaming|series|album|song|concert|celebrity|award|emmy|oscar|grammy|director|star|music|cinema|atriz|ator|cantor|cantora|filme|cinema|música|musica|álbum|album|série|serie|televisão|televisao)\b/i;
+// World headlines need topical relevance and a verified publisher source; do
+// not convert unrelated RSS stories or uncertain weather forecasts into news.
+const WORLD_TOPIC=/\b(hormuz|shipping|maritime|united nations|un general assembly|diplomacy|climate|hurricane|tropical storm|el ni[nñ]o|artificial intelligence|\bai\b|technology|energy|oil|gas|power grid|international summit|humanitarian|wildfire|flood)\b/i;
 const STOP=new Set('the a an and or of for to in on with from at by as is are was were be this that de da do das dos e em para com por no na nos nas um uma o a os as'.split(' '));
 
 const clean=s=>String(s||'')
@@ -219,6 +225,11 @@ function dateParts(value){
 }
 
 function seoFor(i,trends,generated){
+  if(i.category==='world'){
+    const {isoDate,monthEn,year}=dateParts(i.published_at);
+    const topic=words(i.title).slice(0,6);
+    return {primary_keyword:'world news '+isoDate,short_tail:['world news','global headlines',...topic],long_tail:[i.title+' '+isoDate,'world news '+monthEn+' '+year],trend_keywords:[],entity_keywords:topic,freshness_keywords:[isoDate],source_keywords:[i.source],meta_title:truncateWords(i.title+' | World News | MatchApp TV',60),meta_description:truncateWords('World report published by '+i.source+' on '+isoDate+'. Open the original report for full context.',158),keywords:uniq(['world news','global headlines',...topic,isoDate,i.source]),seo_generated_at:generated};
+  }
   if(i.category==='sports'){
     const topic=words(i.title).slice(0,8),sport=i.sport||'Sports';
     const {year,isoDate,monthEn}=dateParts(i.published_at);
@@ -402,7 +413,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta property="og:url" content="${canon}">
 <meta property="article:published_time" content="${esc(i.discovered_at)}">
 <meta property="article:modified_time" content="${esc(i.seo.seo_generated_at||i.discovered_at)}">
-<meta property="article:section" content="${i.category==='sports'?'Sports News':'Entertainment News'}">
+<meta property="article:section" content="${i.category==='sports'?'Sports News':i.category==='world'?'World News':'Entertainment News'}">
 <meta name="twitter:title" content="${esc(i.seo.meta_title)}">
 <meta name="twitter:description" content="${d}">
 ${imageMeta}
@@ -428,7 +439,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p><a href="${orig}" target="_blank" rel="noopener noreferrer external">Read the original report at ${src} ↗</a></p>
     <p><a href="${landing}">Open this story inside MatchApp Latest News →</a></p>
     <p style="font-size:13px;color:#aaa">MatchApp links to the original publisher without republishing article bodies. Dates identify publisher-supplied publication times or clearly labeled discovery-index timestamps according to each story's data source.</p>
-    <p><a href="/news/">More entertainment and sports news</a> · <a href="/">Back to MatchApp</a></p>
+    <p><a href="/news/">More entertainment, world and sports news</a> · <a href="/">Back to MatchApp</a></p>
   </article>
 </main>
 <script src="/build-meta.js?v=203"></script>
@@ -458,16 +469,17 @@ function hub(items,generated){
       {
         '@type':'CollectionPage',
         '@id':`${SITE}/news/#collection`,
-        name:'Latest Entertainment and Sports News',
+        name:'Latest Entertainment, World and Sports News',
         url:`${SITE}/news/`,
         dateModified:generated,
-        description:'An hourly refreshed entertainment-news index with twice-daily verified sports updates, original publisher links and source attribution.',
+        description:'An hourly refreshed entertainment and world-news index with twice-daily verified sports updates, original publisher links and source attribution.',
         isPartOf:{'@type':'WebSite','@id':`${SITE}/#website`,url:`${SITE}/`,name:'MatchApp TV Ai'},
         about:[
           {'@type':'Thing',name:'Entertainment news'},
           {'@type':'Thing',name:'Film and television'},
           {'@type':'Thing',name:'Music and culture'},
-          {'@type':'Thing',name:'Sports reporting'}
+          {'@type':'Thing',name:'Sports reporting'},
+          {'@type':'Thing',name:'World news and technology'}
         ],
         mainEntity:{'@type':'ItemList',itemListElement:itemList},
         publisher:{'@type':'Organization',name:'MatchApp TV',url:SITE,logo:{'@type':'ImageObject',url:`${SITE}/assets/brand/matchapp-official-icon-512.webp`,width:512,height:512}}
@@ -495,13 +507,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Latest Entertainment &amp; Sports News | MatchApp TV</title>
-<meta name="description" content="Verified film, TV, music and sports reporting from named publishers. Entertainment refreshes hourly and sports updates twice daily, with original source links.">
+<meta name="description" content="Verified film, TV, music, world and sports reporting from named publishers. News refreshes hourly and sports updates twice daily, with original source links.">
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
 <link rel="canonical" href="${SITE}/news/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="MatchApp TV">
-<meta property="og:title" content="Latest Entertainment and Sports News | MatchApp TV">
-<meta property="og:description" content="Hourly verified entertainment reporting and twice-daily sports updates with original publisher attribution.">
+<meta property="og:title" content="Latest Entertainment, World and Sports News | MatchApp TV">
+<meta property="og:description" content="Hourly verified entertainment and world reporting plus twice-daily sports updates with original publisher attribution.">
 <meta property="og:url" content="${SITE}/news/">
 <script type="application/ld+json">${JSON.stringify(schema)}</script>
 <link rel="icon" href="/assets/brand/matchapp-favicon-32.png" type="image/png">
@@ -515,15 +527,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <header class="app-header"><a href="/" class="matchapp-brand-link" aria-label="MatchApp TV Ai"><span class="brand-logo brand-logo-placeholder" aria-hidden="true"></span><span class="app-title-main"><img class="matchapp-wordmark" src="/assets/brand/matchapp-tv-ai-v2.svg" alt="MatchApp TV Ai" width="368" height="66" decoding="async"></span></a></header>
 <main style="max-width:1120px;margin:36px auto;padding:18px">
   <a href="/#latest-news">← MatchApp Latest News</a>
-  <h1>Latest Entertainment and Sports News</h1>
-  <p>Verified entertainment news refreshed hourly and trusted publisher sports links discovered twice daily. Each story opens its original publisher.</p>
+  <h1>Latest Entertainment, World and Sports News</h1>
+  <p>Verified entertainment and world news refreshed hourly plus trusted publisher sports links discovered twice daily. Each story opens its original publisher.</p>
   <section aria-labelledby="news-guide-title" style="margin:20px 0 28px;padding:20px;border:1px solid rgba(229,193,88,.22);border-radius:14px;background:rgba(24,16,38,.72)">
     <h2 id="news-guide-title" style="margin-top:0">How MatchApp Latest News works</h2>
-    <p>MatchApp Latest News is an hourly entertainment index with twice-daily sports updates from named publishers. We do not republish full articles here. Each item identifies the publisher, preserves a direct link to the original report and shows enough context to help you decide what is worth opening.</p>
+    <p>MatchApp Latest News is an hourly entertainment and world-news index with twice-daily sports updates from named publishers. We do not republish full articles here. Each item identifies the publisher, preserves a direct link to the original report and shows enough context to help you decide what is worth opening.</p>
     <p>The feed is built from direct trusted-publisher sources and refreshed throughout the day. Automated filters remove obvious rumor-style language and unrelated stories before an item reaches this hub. The original publisher remains the source of record for every headline and claim; MatchApp's role is discovery, organization and a clear path back to that source.</p>
     <p>When a story points you toward a movie, series, performer or release, continue with <a href="/">MatchApp's entertainment matcher</a>, <a href="/discover.html?focus=start">Ask MatchApp Ai</a>, or check <a href="/where-to-watch/">where to watch</a> for streaming and cinema availability.</p>
   </section>
-  <section aria-label="Latest verified entertainment and sports headlines" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px">${cards}</section>
+  <section aria-label="Latest verified entertainment, world and sports headlines" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px">${cards}</section>
 </main>
 <script src="/build-meta.js?v=203"></script>
 </body>
@@ -639,7 +651,8 @@ function enforceArticleAnalyticsOnDisk(){
     const url=r.link;
 
     if(!isAllowed(url,r.feed)||title.length<18||title.length>220||RUMOR.test(title)||RUMOR.test(r.desc)||NON_NEWS.test(title))continue;
-    if(!TOPIC.test(`${title} ${r.desc}`))continue;
+    const isWorld=r.feed.category==='world';
+    if(isWorld?!WORLD_TOPIC.test(`${title} ${r.desc}`):!TOPIC.test(`${title} ${r.desc}`))continue;
 
     const key=title.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,' ').trim();
     if(seen.has(key))continue;
@@ -663,9 +676,9 @@ function enforceArticleAnalyticsOnDisk(){
       published_at:publishedAt,
       discovered_at:existing&&existing.discovered_at?existing.discovered_at:generated,
       event_type:ev,
-      category:'entertainment',
+      category:isWorld?'world':'entertainment',
       person:p,
-      description:`${p?p+': ':''}${ev.toLowerCase()} headline reported by ${r.feed.source}. MatchApp verifies the publisher link and publication time; open the original report for full context.`,
+      description:isWorld?`World news reported by ${r.feed.source} on ${publishedAt.slice(0,10)}. MatchApp links to the original report for its complete context and ongoing updates.`:`${p?p+': ':''}${ev.toLowerCase()} headline reported by ${r.feed.source}. MatchApp verifies the publisher link and publication time; open the original report for full context.`,
       image:r.image,
       matchapp_url:matchappUrl,
       landing_url:`${SITE}/?news=${encodeURIComponent(id)}#latest-news`
@@ -688,7 +701,11 @@ function enforceArticleAnalyticsOnDisk(){
     item.seo=existing?.seo||seoFor(item,[],generated);
     return item;
   });
-  const items=[...collected.slice(0,32),...sports].sort((a,b)=>b.published_at.localeCompare(a.published_at)).slice(0,44);
+  // Reserve both world and entertainment reporting without allowing either
+  // source group to crowd the other out as developing stories accelerate.
+  const entertainment=collected.filter(i=>i.category==='entertainment').slice(0,24);
+  const world=collected.filter(i=>i.category==='world').slice(0,8);
+  const items=[...entertainment,...world,...sports].sort((a,b)=>b.published_at.localeCompare(a.published_at)).slice(0,44);
   await enrichMissingImages(items);
 
   if(items.length<5)throw new Error(`trusted publisher feeds returned only ${items.length} usable items`);
