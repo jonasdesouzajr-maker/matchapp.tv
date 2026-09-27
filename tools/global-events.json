@@ -464,7 +464,8 @@
     },
     "poster": "/assets/events/kota-dussehra-2026.svg",
     "posterCredit": "Original MatchApp editorial illustration; not the organizer's official poster.",
-    "featuredTitles": []
+    "featuredTitles": [],
+    "updatedAt": "2026-09-27"
   },
   {
     "slug": "mcm-london-comic-con-2026",
@@ -555,7 +556,8 @@
     },
     "poster": "/assets/events/mexico-day-of-dead-2026.svg",
     "posterCredit": "Original MatchApp editorial illustration; not an official city event poster.",
-    "featuredTitles": []
+    "featuredTitles": [],
+    "updatedAt": "2026-09-27"
   },
   {
     "slug": "mexico-city-race-weekend-2026",
@@ -583,7 +585,8 @@
     },
     "poster": "/assets/events/mexico-city-race-weekend-2026.svg",
     "posterCredit": "Original independent MatchApp editorial illustration; not official Formula 1 imagery and no organizer affiliation implied.",
-    "featuredTitles": []
+    "featuredTitles": [],
+    "updatedAt": "2026-09-27"
   },
   {
     "slug": "ccxp-2026",
