@@ -53,7 +53,7 @@ test('live phone/tablet/desktop smoke opens the real Home Ask card and handles e
  const smoke=read('tools/live-production-smoke.cjs');
  assert.match(smoke,/page\.locator\('#ma-hero-ask'\)\.click/);
  assert.match(smoke,/Home Ask AI tap opens visible unfocused composer/);
- assert.match(smoke,/#ma-panel-ask/);
+ assert.match(smoke,/getElementById\('ma-panel-ask'\)/);
  assert.match(smoke,/noAutoKeyboard/);
  assert.match(smoke,/Ask AI empty Send is actionable/);
 });
