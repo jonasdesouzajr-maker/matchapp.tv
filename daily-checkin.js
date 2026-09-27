@@ -283,6 +283,11 @@
         return;
       }
       if (confirmedStatus?.userId !== signedInUser.id) confirmedStatus = null;
+      // Unlock the CTA as soon as the persisted session is verified. Waiting
+      // on a slow status RPC used to leave members staring at 'Register'.
+      // The server remains the sole authority for whether today was claimed.
+      if (!busy) render({authenticated:true,streak:confirmedStatus?.streak||0,
+                         checked_today:confirmedStatus?.checked_today||false});
       let response = await sb.rpc('daily_match_checkin_status');
       if (epoch !== statusEpoch) return;
       if (!response.error && response.data?.authenticated === false) {
