@@ -3541,7 +3541,8 @@ function canonicalProviderName(value){
     if(s.includes('netflix'))return'netflix';
     if(s.includes('amazon prime')||s.includes('prime video')||s.includes('amazon video'))return'primevideo';
     if(s.includes('disney'))return'disney';
-    if(s.includes('hbo max')||s==='max')return'max';
+    if(s.includes("amazon channel")||s.includes("apple tv channel")||s.includes("bundle"))return s.replace(/[^a-z0-9]/g,"");
+    if(s==="hbo max"||s==="max")return"max";
     if(s.includes('apple tv'))return'appletv';
     if(s.includes('paramount'))return'paramount';
     if(s.includes('hulu'))return'hulu';
@@ -3634,6 +3635,7 @@ async function discoverVerifiedExactTMDB(requested){
       if(!key||known.has(key)||SESSION_SHOWN.has(base.title))continue;
       exactDetails++;
       const d=await window.tmdbDetails(base.tmdbId,base.kind,{priority:true});
+      const sourceProvesProvider=!!(provider&&base.providerFiltered===true&&base.verifiedRegion===region&&base.verifiedProvider===canonicalProviderName(provider));
       // A provider-filtered TMDB Discover result is already source proof that
       // this exact identity is on the selected service in this region. Detail
       // mode enriches it, but a transient detail failure must not turn a valid
@@ -3641,7 +3643,7 @@ async function discoverVerifiedExactTMDB(requested){
       const discoverGenres=(Array.isArray(base.genreIds)?base.genreIds:[]).map(id=>Object.keys(TMDB_GENRE_ID_BY_NAME).find(name=>TMDB_GENRE_ID_BY_NAME[name]===Number(id))).filter(Boolean);
       const genres=Array.isArray(d?.genres)&&d.genres.length?d.genres:discoverGenres;
       const countries=Array.isArray(d?.originCountries)?d.originCountries:[];
-      if(!d && (!provider || !genres.length))continue;
+      if(!d && (!sourceProvesProvider || !genres.length || prefs.countries.size || rating.length))continue;
       if(countries.some(x=>prefs.countries.has(String(x).toUpperCase())))continue;
       if(genres.some(g=>prefs.genres.has(String(g).toLowerCase())))continue;
       if(realGenres.length&&!genres.some(g=>realGenres.includes(g)))continue;
@@ -3652,16 +3654,18 @@ async function discoverVerifiedExactTMDB(requested){
       if(!d && rating.length)continue;
       let verifiedPlatform='any';
       if(platform.length){
-        if(provider){
-          verifiedPlatform=platform[0];
-        }else{
-          const row=d?.availability?.[region]||{};
-          const providers=[...(row.stream||[]),...(row.rent||[]),...(row.buy||[])];
-          const wanted=new Set(platform.map(canonicalProviderName));
-          const hit=providers.find(p=>wanted.has(canonicalProviderName(p)));
-          if(!hit)continue;verifiedPlatform=hit;
-        }
+        const row=d?.availability?.[region]||{};
+        // Only a direct stream on the selected service or independent proof
+        // from region/provider-filtered TMDB discovery confirms a platform.
+        const providers=Array.isArray(row.stream)?row.stream:[];
+        const wanted=new Set(platform.map(canonicalProviderName));
+        const hit=providers.find(p=>wanted.has(canonicalProviderName(p)));
+        // If details explicitly list other streamers, do not claim a conflicting provider.
+        if(!hit&&(!sourceProvesProvider||providers.length))continue;
+        verifiedPlatform=hit||platform[0];
       }
+      const finalTitle=String(d?.title||base.title);
+      if(known.has(window.matchPolicy?.key?.(finalTitle))||SESSION_SHOWN.has(finalTitle))continue;
       return {
         title:String(d?.title||base.title),year:Number(d?.year||base.year)||null,
         countryCode:countries[0]||'',country:countries[0]||'',
@@ -3740,7 +3744,7 @@ async function aiProposedVerifiedExact(requested){
         let verifiedPlatform='any';
         if(platform.length){
             const row=d.availability?.[region]||{};
-            const providers=[...(row.stream||[]),...(row.rent||[]),...(row.buy||[])];
+            const providers=Array.isArray(row.stream)?row.stream:[];
             const wanted=new Set(platform.map(canonicalProviderName));
             const hit=providers.find(x=>wanted.has(canonicalProviderName(x)));
             if(!hit)continue;verifiedPlatform=hit;

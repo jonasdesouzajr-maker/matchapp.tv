@@ -178,7 +178,9 @@
             if(error||!Array.isArray(data?.results))return [];
             out=data.results.filter(r=>r&&Number.isSafeInteger(r.tmdbId)&&['movie','tv'].includes(r.kind)&&r.adult!==true);
         } catch (_) { return []; }
-        CACHE[key]=out;
+        // An empty success can mask a transient upstream outage. Let the
+        // next user Match retry rather than poisoning the entire browser tab.
+        if(out.length)CACHE[key]=out;
         return out;
     };
 
