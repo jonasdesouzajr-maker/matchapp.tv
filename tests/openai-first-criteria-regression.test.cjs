@@ -11,7 +11,7 @@ const app=read('app.js'),home=read('index.html');
 test('OpenAI primary is eligible only for adult Ask AI or explicitly tagged adult match',()=>{
   assert.match(proxy,/import \{ callOpenAIPrimary \} from "\.\/openai-primary\.ts"/);
   assert.match(proxy,/const openAiEligible = body\?\.kidsMode !== true/);
-  assert.match(proxy,/isDiscoverMode \|\| \(body\?\.adultMatch === true/);
+  assert.match(proxy,/isDiscoverMode \|\| isRankMode \|\| \(body\?\.adultMatch === true/);
   assert.match(app,/body: \{ prompt: promptText, adultMatch: true/);
   assert.match(openai,/store:false/);
   assert.match(openai,/model:OPENAI_MODEL/);
@@ -25,10 +25,10 @@ test('the distinct AI candidate-list schema is used end-to-end, never legacy one
   assert.match(app,/fetchGeminiData\(prompt, true\)/);
   assert.match(app,/mode: 'match_proposals'/);
   assert.match(proxy,/isProposalMode = body\.mode === "match_proposals" && body\.adultMatch === true/);
-  assert.match(proxy,/generationConfig: buildGenerationConfig\(isDiscoverMode,isProposalMode\)/);
+  assert.match(proxy,/generationConfig: buildGenerationConfig\(isDiscoverMode,isProposalMode,isRankMode\)/);
   assert.match(proxy,/if \(isProposals\)/);
   assert.match(proxy,/required: \["title","year","kind"\]/);
-  assert.match(openai,/mode==="match_proposals"\?proposals:legacy/);
+  assert.match(openai,/mode==="match_proposals"\?proposals:mode==="rank_candidates"\?rank:legacy/);
   assert.match(openai,/kind:\{type:"string",enum:\["movie","tv"\]\}/);
   assert.match(app,/discoverVerifiedExactTMDB\(requested\)/);
   assert.match(app,/aiProposedVerifiedExact\(requested\)/);
