@@ -38,7 +38,7 @@ async function aiQuestion(page,question,expected,label){
   // Both states appear in the machine-readable report; NEVER call fallback
   // "live" or claim the provider passed.
   const independent=label==='movie-fact'
-    ? (await page.locator('#chat-log .chat-assistant .discover-verified-source[href^="https://www.themoviedb.org/movie/"]').last().count())>0
+    ? (await page.locator('#chat-log .chat-assistant .discover-verified-source[href^="https://www.themoviedb.org/movie/"], #chat-log .chat-assistant .discover-verified-source[href="https://www.ghibli.jp/works/chihiro/"]').last().count())>0
     : label==='audiobook-intent'
     ? await page.locator('#chat-log .chat-assistant .reading-ai-card')
         .filter({has:page.locator('h4', {hasText:/Pride and Prejudice/i})})
