@@ -56,7 +56,7 @@ test('live phone/tablet/desktop smoke opens the real Home Ask card and handles e
  assert.match(smoke,/Home Ask AI tap opens visible unfocused composer/);
  assert.match(smoke,/getElementById\('ma-panel-ask'\)/);
  assert.match(smoke,/noAutoKeyboard/);
- assert.match(smoke,/waitForFunction\(\(\)=>\{[\s\S]*box\.top<innerHeight&&box\.bottom>0/);
+ assert.match(smoke,/waitForFunction\(\(\)=>\{[\s\S]*input\.top>=0&&input\.bottom<=bottom&&send\.top>=0&&send\.bottom<=bottom/);
  assert.match(smoke,/Ask AI empty Send is actionable/);
 });
 

@@ -215,3 +215,9 @@ On the adult Home, shared adult shells and the standalone Bookworms hub, the int
 - **Strict isolation:** This priority never authorizes unrelated refactors, design changes, extra charges, quota bypasses, unsafe content, loosening age gates, changes to locked AdSense, edits to protected editorial workflows, or native Android/Kids changes outside the owner's requested scope. Implement the smallest reliable fix and add focused regression tests.
 
 This priority applies to all future work and takes precedence in testing, rollout and defect triage while preserving the scope and safety locks above.
+
+---
+
+### 22. CODEX-FIRST TECHNICAL WORKFLOW — OWNER PREFERENCE (2026-09-27)
+
+For all future authorized MatchApp system or mechanical tasks — bug fixes, backend logic, matching and AI routing, native/mobile integrations, tests, infrastructure and related code editing — **prefer ChatGPT Codex ("ChatGPT Code") instead of doing the implementation in an ordinary chat, when Codex is actually accessible in the current environment and its credit/usage allowance is sufficient**. If available, hand off implementation to that supported Codex workflow automatically where product capabilities permit. If Codex is unavailable, inaccessible from the current conversation, out of credits, or its balance cannot be checked or it cannot be invoked, continue the scoped authorized work using the available chat coding and connected development tools rather than blocking the repair. Never imply that Codex was launched, a credit balance was checked, or a cross-mode handoff occurred unless the corresponding operation actually succeeded. This is a tool-routing preference, not permission to expand task scope or bypass security, approval, CI, release, locked-AdSense or device-quality requirements above.
