@@ -61,22 +61,22 @@ test('native Android app and installed Kids PWA never run adult PWA refresh',asy
 test('fresh mobile JS URLs are the only required HTML changes; desktop UI structure remains intact',()=>{
  const home=read('index.html'),ask=read('discover.html');
  for(const html of [home,ask]){
-  assert.match(html,/match-ai-rank\\.js\\?v=20260927-ranked1-mobilefresh1/);
+  assert.match(html,/match-ai-rank\.js\?v=20260927-ranked1-mobilefresh1/);
   assert.match(html,/global=20260927-ranked1&amp;mobilefresh=20260927-1/);
-  assert.match(html,/app-updates\\.js\\?v=20260927-mobilefresh1/);
+  assert.match(html,/app-updates\.js\?v=20260927-mobilefresh1/);
  }
- assert.match(ask,/discover\\.js\\?v=20260925-intent1[^"]*mobilefresh=20260927-1/);
- assert.match(UPDATES,/!IS_MOBILE_ADULT\\|\\|IS_NATIVE_ADULT\\|\\|!isStandalone\\(\\)/);
- assert.doesNotMatch(UPDATES,/localStorage\\.clear\\(/);
+ assert.match(ask,/discover\.js\?v=20260925-intent1[^"]*mobilefresh=20260927-1/);
+ assert.match(UPDATES,/!IS_MOBILE_ADULT\|\|IS_NATIVE_ADULT\|\|!isStandalone\(\)/);
+ assert.doesNotMatch(UPDATES,/localStorage\.clear\(/);
 });
 test('next adult Android version cold-loads only Match/Ask documents and preserves native Kids separation',()=>{
  const main=read('android-studio/app/src/main/java/com/jonas/papercup/MainActivity.kt');
  const gradle=read('android-studio/app/build.gradle.kts');
  assert.match(main,/isAdultAiDocument/);
- assert.match(main,/WebSettings\\.LOAD_NO_CACHE/);
- assert.match(main,/window\\.MATCHAPP_ANDROID = true/);
+ assert.match(main,/WebSettings\.LOAD_NO_CACHE/);
+ assert.match(main,/window\.MATCHAPP_ANDROID = true/);
  assert.match(main,/MATCHAPP_ANDROID_KIDS_BLOCKED/);
  assert.match(gradle,/versionCode = 35/);
- assert.match(gradle,/versionName = "1\\.1\\.33"/);
+ assert.match(gradle,/versionName = "1\.1\.33"/);
  assert.doesNotMatch(read('android-studio/kidsapp/src/main/java/tv/matchapp/kids/MainActivity.kt'),/adult-mobile-match-ai-runtime-20260927-1/);
 });
