@@ -657,21 +657,21 @@ Deno.serve(async (req: Request) => {
       if (answer) return answer;
     }
 
-    // OWNER ROUTING (2026-09-27): Only the original replenished Gemini key
-    // backs up OpenAI on eligible ADULT AI calls. Preserve the existing free
-    // and separate project chains for Kids and non-adult legacy consumers.
-    // Never touch backup keys or spend their quotas for adult chat/matching.
-    const routes = openAiEligible
-      ? (paidApiKey ? MODEL_CHAIN.map(model => ({model, key:paidApiKey, tier:"paid"})) : [])
-      : [
-          ...(freeApiKey ? FREE_MODEL_CHAIN.map(model => ({model, key:freeApiKey, tier:"free"})) : []),
-          ...backupPaidApiKeys.flatMap(key => MODEL_CHAIN.map(model => ({model, key, tier:"paid"}))),
-          ...(paidApiKey ? MODEL_CHAIN.map(model => ({model, key:paidApiKey, tier:"paid"})) : []),
-        ];
+    // The existing Gemini fallback retains the free→backup→original order
+    // for Kids and legacy calls. For eligible ADULT calls, the explicit guard
+    // in the loop skips every route except the original replenished paid key.
+    const routes = [
+      ...(freeApiKey ? FREE_MODEL_CHAIN.map(model => ({model, key:freeApiKey, tier:"free"})) : []),
+      ...backupPaidApiKeys.flatMap(key => MODEL_CHAIN.map(model => ({model, key, tier:"paid"}))),
+      ...(paidApiKey ? MODEL_CHAIN.map(model => ({model, key:paidApiKey, tier:"paid"})) : []),
+    ];
     let freeProjectBlocked = false;
     // If a whole project is capped or its key is invalid, skip its other models.
     const blockedPaidKeys = new Set<string>();
     for (const route of routes) {
+      // OpenAI already ran. Only the ORIGINAL GEMINI_API_KEY may serve adult
+      // fallback; configured free/new-backup keys stay unused for adult AI.
+      if (openAiEligible && (route.tier !== "paid" || route.key !== paidApiKey)) continue;
       if (route.tier === "free" && freeProjectBlocked) continue;
       if (route.tier === "paid" && blockedPaidKeys.has(route.key)) continue;
       const {model} = route;
