@@ -814,6 +814,7 @@ Deno.serve(async (req: Request) => {
         // Do NOT burn more retries or log the provider's potentially sensitive
         // quota body. Per-model 429s may safely try the next model.
         if(route.tier==="paid" && geminiRes.status===429){
+          if(!freeApiKey)console.warn("[gemini-proxy] separate free-tier secret is not configured");
           const detail=await geminiRes.text();
           const projectWide=/(?:project|billing account).{0,100}(?:monthly spending cap|monthly spend cap|spending cap)|exceeded its monthly spending cap/i.test(detail);
           console.warn("[gemini-proxy] paid route quota="+(projectWide?"project_spend_cap":"model_or_tier_rate_limit"));
@@ -826,7 +827,7 @@ Deno.serve(async (req: Request) => {
         console.warn("[gemini-proxy] provider unavailable tier="+route.tier+" status="+geminiRes.status);
         return new Response(
           JSON.stringify({error:"AI service temporarily unavailable",status:geminiRes.status}),
-          {status:geminiRes.status===429?429:502,
+          {status: geminiRes.status === 429 ? 429 : 502,
            headers:{...corsHeaders(req),"Content-Type":"application/json",
              ...(geminiRes.status===429?{"Retry-After":"60"}:{})}}
         );
