@@ -657,13 +657,17 @@ Deno.serve(async (req: Request) => {
       if (answer) return answer;
     }
 
-    // The existing Gemini fallback remains free project first, then paid
-    // if configured. Its quota/model semantics are intentionally unchanged.
-    const routes = [
-      ...(freeApiKey ? FREE_MODEL_CHAIN.map(model => ({model, key:freeApiKey, tier:"free"})) : []),
-      ...backupPaidApiKeys.flatMap(key => MODEL_CHAIN.map(model => ({model, key, tier:"paid"}))),
-      ...(paidApiKey ? MODEL_CHAIN.map(model => ({model, key:paidApiKey, tier:"paid"})) : []),
-    ];
+    // OWNER ROUTING (2026-09-27): Only the original replenished Gemini key
+    // backs up OpenAI on eligible ADULT AI calls. Preserve the existing free
+    // and separate project chains for Kids and non-adult legacy consumers.
+    // Never touch backup keys or spend their quotas for adult chat/matching.
+    const routes = openAiEligible
+      ? (paidApiKey ? MODEL_CHAIN.map(model => ({model, key:paidApiKey, tier:"paid"})) : [])
+      : [
+          ...(freeApiKey ? FREE_MODEL_CHAIN.map(model => ({model, key:freeApiKey, tier:"free"})) : []),
+          ...backupPaidApiKeys.flatMap(key => MODEL_CHAIN.map(model => ({model, key, tier:"paid"}))),
+          ...(paidApiKey ? MODEL_CHAIN.map(model => ({model, key:paidApiKey, tier:"paid"})) : []),
+        ];
     let freeProjectBlocked = false;
     // If a whole project is capped or its key is invalid, skip its other models.
     const blockedPaidKeys = new Set<string>();
