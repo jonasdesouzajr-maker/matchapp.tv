@@ -18,6 +18,12 @@
       .map((entry,i)=>({entry,wire:encode({...entry,id:'c'+i})}))
       .filter(row=>row.wire.title.trim());
    if(!selected.length)return null;
+   // No AI decision is needed for a single already-verified, criteria-safe title.
+   // Preserve OpenAI for real ranking choices and Ask AI instead of wasting its daily cap.
+   if(selected.length===1)return selected[0].entry;
+   // After a genuine upstream quota response, avoid re-spending the same
+   // provider chain for every matching attempt; verified catalog curation wins.
+   if(Date.now()<Number(window.__matchappAIDownUntil||0))return null;
    const body={mode:'rank_candidates',adultMatch:true,
      criteria:criteria&&typeof criteria==='object'?criteria:{},
      candidates:selected.map(x=>x.wire)};
@@ -28,7 +34,11 @@
        sb.functions.invoke('gemini-proxy',{body}),
        new Promise(resolve=>{timeout=setTimeout(()=>resolve(null),45000);})
      ]);
-     if(result?.error || !result?.data?.candidates)return null;
+     if(result?.error || !result?.data?.candidates){
+       const status=Number(result?.error?.context?.status||result?.data?.status||0);
+       if(status===429)window.__matchappAIDownUntil=Date.now()+45000;
+       return null;
+     }
      const raw=result.data.candidates[0]?.content?.parts?.map(x=>x.text||'').join('')||'';
      const parsed=JSON.parse(raw);
      const ids=Array.isArray(parsed?.ids)?parsed.ids:[];
