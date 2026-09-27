@@ -30,8 +30,37 @@ async function setupFreshGuardian(page){
 }
 async function guarded(browser,label,fn){
  const {context,page}=await contextFor(browser);
- const exceptions=[];page.on('pageerror',e=>exceptions.push(String(e.stack||e.message).slice(0,380)));
- try{await fn(page);record(label+' JavaScript health',exceptions.length===0,exceptions.slice(0,2).join('; '));}
+ const exceptions=[];
+ // Minified external widgets sometimes throw a one-letter "W" without a
+ // stack. Capture the native browser error event URL before classifying it:
+ // never dismiss an unlocated or first-party exception as "just an ad".
+ await page.addInitScript(()=>{
+   window.__matchappAuditErrors=[];
+   window.addEventListener('error',event=>{
+     window.__matchappAuditErrors.push({
+       message:String(event.message||''),
+       filename:String(event.filename||''),
+       line:event.lineno||0,
+       stack:String(event.error?.stack||'').slice(0,340)
+     });
+   });
+ });
+ page.on('pageerror',e=>exceptions.push(String(e.stack||e.message).slice(0,380)));
+ try{
+  await fn(page);
+  const provenance=await page.evaluate(()=>window.__matchappAuditErrors||[]).catch(()=>[]);
+  const details=exceptions.map((message,i)=>({
+    message,source:provenance[i]?.filename||'',line:provenance[i]?.line||0,
+    eventMessage:provenance[i]?.message||''
+  }));
+  details.forEach(x=>console.log('DEEP BROWSER PAGEERROR '+label+' '+JSON.stringify(x)));
+  const firstPartyErrors=details.filter(e=>
+    !e.source || e.source.startsWith(BASE+'/') ||
+    !/^(?:https?:\/\/)(?:pagead2\.googlesyndication\.com|googleads\.g\.doubleclick\.net|tpc\.googlesyndication\.com)(?:\/|$)/.test(e.source));
+  const ignored=details.filter(x=>!firstPartyErrors.includes(x));
+  if(ignored.length)warn(label+' external ad exception',ignored.map(x=>x.source).join(', '));
+  record(label+' JavaScript health',firstPartyErrors.length===0,JSON.stringify(firstPartyErrors.slice(0,2)));
+ }
  catch(e){record(label,false,String(e.message||e).slice(0,430));await page.screenshot({path:path.join(out,label.replace(/[^a-z0-9]/gi,'-')+'-failure.png'),timeout:8000}).catch(()=>{});}
  finally{await context.close();}
 }
