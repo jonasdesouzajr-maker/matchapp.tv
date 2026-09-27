@@ -142,7 +142,6 @@ async function chooseVerifiedAudio(p,onProgress){
  const country=market();
  // Do not label US public-domain audio "verified free" abroad without rights.
  if(p.access==='free'&&country!=='US')return null;
- const relax=[[],['length'],['pace','length'],['era','pace','length']];
  const tested=new Set(),started=Date.now(),limit=24;
  for(const allowSeen of [false]){
   for(const fields of [[]]){
