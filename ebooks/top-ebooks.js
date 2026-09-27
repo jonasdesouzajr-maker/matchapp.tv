@@ -11,10 +11,10 @@ window.MATCHAPP_TOP_EBOOKS=Object.freeze([
  {title:'O voo da vespa',author:'Ken Follett',market:'BR',badge:'Kobo bestseller',access:'paid',source:'Kobo Brasil',sourceUrl:'https://www.kobo.com/br/pt/best-selling-ebooks',genre:'Ficção histórica'},
  {title:'A estranha na cama',author:'Raphael Montes',market:'BR',badge:'Kobo bestseller',access:'paid',source:'Kobo Brasil',sourceUrl:'https://www.kobo.com/br/pt/best-selling-ebooks',genre:'Suspense'},
  {title:'Verity',author:'Colleen Hoover',market:'BR',badge:'Kobo bestseller',access:'paid',source:'Kobo Brasil',sourceUrl:'https://www.kobo.com/br/pt/best-selling-ebooks',genre:'Thriller · Romance'},
- {title:'Fury in Death',author:'J. D. Robb',market:'GLOBAL',badge:'Current bestseller',access:'paid',source:'Current US bestseller list',sourceUrl:'https://www.nytimes.com/books/best-sellers/',genre:'Mystery · Crime'},
- {title:'Theo of Golden',author:'Allen Levi',market:'GLOBAL',badge:'Current bestseller',access:'paid',source:'Current US bestseller list',sourceUrl:'https://www.nytimes.com/books/best-sellers/',genre:'Literary fiction'},
- {title:'The Thoroughbreds',author:'Elin Hilderbrand & Shelby Cunningham',market:'GLOBAL',badge:'Top Apple Books US',access:'paid',source:'Apple Books US chart',sourceUrl:'https://books.apple.com/us/charts',genre:'Fiction'},
- {title:'Hollow Bones',author:'Jodi Picoult',market:'GLOBAL',badge:'Top Apple Books US',access:'paid',source:'Apple Books US chart',sourceUrl:'https://books.apple.com/us/charts',genre:'Fiction'},
- {title:'We Chase Shadows',author:'Richard Osman',market:'GLOBAL',badge:'Top Apple Books US',access:'paid',source:'Apple Books US chart',sourceUrl:'https://books.apple.com/us/charts',genre:'Mystery'}
+ {title:'Fury in Death',author:'J. D. Robb',market:'US',badge:'Current bestseller',access:'paid',source:'Current US bestseller list',sourceUrl:'https://www.nytimes.com/books/best-sellers/',genre:'Mystery · Crime'},
+ {title:'Theo of Golden',author:'Allen Levi',market:'US',badge:'Current bestseller',access:'paid',source:'Current US bestseller list',sourceUrl:'https://www.nytimes.com/books/best-sellers/',genre:'Literary fiction'},
+ {title:'The Thoroughbreds',author:'Elin Hilderbrand & Shelby Cunningham',market:'US',badge:'Top Apple Books US',access:'paid',source:'Apple Books US chart',sourceUrl:'https://books.apple.com/us/charts',genre:'Fiction'},
+ {title:'Hollow Bones',author:'Jodi Picoult',market:'US',badge:'Top Apple Books US',access:'paid',source:'Apple Books US chart',sourceUrl:'https://books.apple.com/us/charts',genre:'Fiction'},
+ {title:'We Chase Shadows',author:'Richard Osman',market:'US',badge:'Top Apple Books US',access:'paid',source:'Apple Books US chart',sourceUrl:'https://books.apple.com/us/charts',genre:'Mystery'}
 ].map(x=>Object.freeze(x)));
 })();
