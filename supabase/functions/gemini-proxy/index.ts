@@ -58,7 +58,11 @@ const adminDb = createClient(
   Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? "",
 );
 
-// These models have an actual $0 free allocation ONLY on a separate\n// Free-Tier Google project. On a billed project they still cost paid tokens.\nconst FREE_MODEL_CHAIN = ["gemini-2.5-flash-lite", "gemini-2.5-flash"];\n\nconst MODEL_CHAIN = [
+// These models have an actual $0 free allocation ONLY on a separate
+// Free-Tier Google project. On a billed project they still cost paid tokens.
+const FREE_MODEL_CHAIN = ["gemini-2.5-flash-lite", "gemini-2.5-flash"];
+
+const MODEL_CHAIN = [
   "gemini-3.5-flash",       // PROVEN end-to-end on discover mode — primary
   "gemini-3.6-flash",       // confirmed reachable, newest generation
   "gemini-3.5-flash-lite",  // confirmed reachable, cheaper tier
