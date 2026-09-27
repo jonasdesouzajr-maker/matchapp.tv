@@ -111,7 +111,10 @@ test('registration success is presented only after server verification, before n
 });
 
 test('a separately funded-free-tier Gemini project is preferred before any paid key',()=>{
-  assert.match(proxy,/const FREE_MODEL_CHAIN = \["gemini-2\.5-flash-lite", "gemini-2\.5-flash"\]/);
+  // A declaration inside an accidentally escaped comment passes a loose
+  // regex yet fails the real Supabase TypeScript bundler.
+  assert.match(proxy,/^const FREE_MODEL_CHAIN = \["gemini-2\.5-flash-lite", "gemini-2\.5-flash"\];$/m);
+  assert.match(proxy,/^const MODEL_CHAIN = \[$/m);
   assert.match(proxy,/Deno\.env\.get\("GEMINI_FREE_API_KEY"\)/);
   assert.match(proxy,/Deno\.env\.get\("GEMINI_API_KEY"\)/);
   assert.match(proxy,/\.\.\.\(freeApiKey \? FREE_MODEL_CHAIN\.map[\s\S]*\.\.\.\(paidApiKey \? MODEL_CHAIN\.map/);
