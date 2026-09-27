@@ -363,12 +363,24 @@ async function sha256Hex(input: string): Promise<string> {
 async function bucketKeyFor(req: Request): Promise<{ key: string; limit: number }> {
   const auth = req.headers.get("authorization") || "";
   const jwt = auth.startsWith("Bearer ") ? auth.slice(7) : "";
-
-  if (jwt) {
+  const publicApiKey = req.headers.get("apikey") || "";
+  // Functions use the public anon/publishable key as Bearer for guests.
+  // This key is NOT an end-user session: never send it to auth.getUser().
+  // An untrusted decoded role is a negative prefilter only; the Supabase
+  // server still verifies every possible authenticated user's actual JWT.
+  let likelyAuthenticated = false;
+  if (jwt && jwt !== publicApiKey && jwt.split(".").length === 3) {
+    try {
+      const encoded = jwt.split(".")[1].replace(/-/g, "+").replace(/_/g, "/");
+      const claims = JSON.parse(atob(encoded));
+      likelyAuthenticated = claims?.role === "authenticated";
+    } catch { /* malformed/opaque tokens use guest metering */ }
+  }
+  if (likelyAuthenticated) {
     try {
       const { data } = await adminDb.auth.getUser(jwt);
       if (data?.user?.id) return { key: `u:${data.user.id}`, limit: RATE_LIMIT_AUTHED };
-    } catch { /* fall through to address metering */ }
+    } catch { /* fall through to anonymous address metering */ }
   }
 
   const fwd = req.headers.get("x-forwarded-for") || "";
