@@ -30,6 +30,10 @@ jobs:
       - uses: actions/setup-node@v7
         with:
           node-version: '24'
+      # The campaign's regression test uses jsdom from the locked npm graph.
+      # Scheduled jobs start on a fresh runner, not an existing node_modules tree.
+      - name: Install locked regression test dependencies
+        run: npm ci --ignore-scripts
       - name: Verify official sources and rotate campaign
         run: |
           node tools/archive-international-day.mjs
