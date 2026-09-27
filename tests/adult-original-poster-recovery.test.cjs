@@ -59,7 +59,8 @@ test('same-poster TMDB size fallback and exact saved metadata recover broken ori
  };
  const {posterVariants,recoverAdultPoster}=vm.runInNewContext(media.slice(start,end)+'\n({posterVariants,recoverAdultPoster})',ctx);
  assert.deepEqual(Array.from(posterVariants(bad)),[
-  bad,'https://image.tmdb.org/t/p/w500/oldbad.jpg','https://image.tmdb.org/t/p/original/oldbad.jpg'
+  bad,'https://image.tmdb.org/t/p/w500/oldbad.jpg',
+  'https://image.tmdb.org/t/p/w342/oldbad.jpg','https://image.tmdb.org/t/p/original/oldbad.jpg'
  ]);
  function fakeImg(initial,title){
   const listeners={};

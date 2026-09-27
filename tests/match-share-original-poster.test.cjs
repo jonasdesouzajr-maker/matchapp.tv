@@ -9,7 +9,8 @@ test('the displayed match and both saved/share snapshots start with real rendere
  assert.match(app,/if \(!originalShown\) posterEl\.src = localCover;/,'A slower provider cannot overwrite a decoded original');
  assert.match(app,/globalMatchPoster = firstCover;\s*window\.globalMatchPoster = firstCover;/,'The first visible image and saved share preview stay synchronized');
  assert.match(app,/window\.setLoadedMatchPoster = function\(url,title\)/);
- assert.match(read('catalog-media.js'),/if\(typeof window\.setLoadedMatchPoster==='function'\)window\.setLoadedMatchPoster\(url,title\)/);
+ assert.match(read('catalog-media.js'),/if\(typeof window\.setLoadedMatchPoster==='function'\)window\.setLoadedMatchPoster\(winner,title\)/);
+ assert.match(read('catalog-media.js'),/if\(img\.id==='res-poster-img'&&window\.globalMatchTitle===title\)/,'only matching title can update share snapshot after a successful original probe');
 });
 
 test('only the currently selected title may update both match portfolio and public sharing artwork',()=>{
