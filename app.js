@@ -3825,6 +3825,48 @@ function titlePassesRealGenre(entry) {
     return keys.has(normalise(entry?.title));
 }
 
+async function rankVerifiedCuratedMatch(requested) {
+    const policy=window.matchPolicy,ranker=window.MatchAppAIRank?.rank;
+    if(!policy||typeof ranker!=='function')return null;
+    const wantedFaith=normCriteria(requested.cat).includes('Gospel & Faith')||
+       normCriteria(requested.plat).some(p=>['Pure Flix','Angel Studios'].includes(p));
+    const criteria={cat:requested.cat,plat:requested.plat,mood:requested.mood,
+       vibe:requested.vibe,rating:requested.rating,decade:requested.decade};
+    // Mandatory checks are identical to those used by the ordinary shelf.
+    const eligible=CONTENT_CATALOG.filter(e=>policy.matches(e,criteria)&&
+       (!window.__matchappGenreFilterActive||titlePassesRealGenre(e))&&
+       entryPassesPreferenceExclusions(e)&&!isBlockedEntry(e)&&
+       !SESSION_SHOWN.has(e.title)&&
+       (wantedFaith||!e.cats.includes('Gospel & Faith'))&&
+       (normCriteria(requested.cat).length||isSurpriseEligible(e)));
+    if(!eligible.length)return null;
+    const offset=Math.floor(Math.random()*eligible.length);
+    const rotated=eligible.slice(offset).concat(eligible.slice(0,offset));
+    const country=window.MatchAppCatalogMedia?.regionCode?.()||'';
+    const shortlist=rotated.slice(0,20).sort((a,b)=>
+       Number(b.countryCode===country)-Number(a.countryCode===country));
+    const ranked=await ranker(shortlist.map(e=>({
+       id:policy.key(e.title),title:e.title,format:(e.cats||[]).join(', '),
+       genres:(e.realGenres||[]).join(', '),mood:(e.moods||[]).join(', '),
+       synopsis:e.synopsis||'',country:e.countryCode||''
+    })).map((r,i)=>({...r,id:'c'+i})),{
+       format:normCriteria(requested.cat).join(' or '),
+       genre:normCriteria(requested.genre).join(' or '),
+       mood:normCriteria(requested.mood).join(' or '),
+       pace:normCriteria(requested.vibe).join(' or '),
+       platform:normCriteria(requested.plat).join(' or '),
+       country
+    });
+    // Shared ranker returns the supplied input object, never a new title.
+    const index=ranked?.id && /^c\d+$/.test(ranked.id)?Number(ranked.id.slice(1)):-1;
+    const hit=shortlist[index];
+    if(!hit||!eligible.includes(hit))return null;
+    return {...hit,platformVerified:hit.platform!=='any',source:'catalog-ai-ranked'};
+}
+
+// Source-backed curation runs before generative title proposals: the AI only
+// orders already eligible real titles. If that shelf is empty, the proposal
+// route still requires exact TMDB identity/genre/country/provider verification.
 function pickFromCatalog(cat, plat, mood, vibe, rating, decade) {
     try { if (typeof window !== 'undefined') window.lastMatchTasteBiased = false; } catch (_) {}
     const criteria = {cat, plat, mood, vibe, rating, decade: decade || window.getMatchCriteria?.().decade || []};
@@ -4211,11 +4253,23 @@ window.triggerMatch = async function(isSpecificSearch = false) {
     let timerInterval = setInterval(updateMatchProgress, 100);
     window.__matchappActiveProgressTimer=timerInterval;
 
-    let preflight = isSpecificSearch ? null : pickFromCatalog(requested.cat,requested.plat,requested.mood,requested.vibe,requested.rating,requested.decade);
+    let preflight = null;
+    if(!isSpecificSearch && window.MatchAppAIRank?.rank){
+        try{preflight=await withMatchSourceDeadline(()=>rankVerifiedCuratedMatch(requested),45000);}
+        catch(_){preflight=null;}
+    }
+    if(!isSpecificSearch && !preflight){
+        preflight=pickFromCatalog(requested.cat,requested.plat,requested.mood,requested.vibe,requested.rating,requested.decade);
+    }
     // Never recycle a previously shown title. If the curated exact pool is
     // exhausted, ask the verified source layer for a genuinely fresh title.
-    // TMDB gets first chance because it can verify genres/ratings/origin and,
-    // when requested, regional provider availability.
+    // If the curated shelf is exhausted, request OpenAI-led proposals first;
+    // independent TMDB lookup verifies every suggested title before display.
+    if (!isSpecificSearch && !preflight && typeof aiProposedVerifiedExact === 'function') {
+        try { preflight=await withMatchSourceDeadline(()=>aiProposedVerifiedExact(requested),MATCH_SOURCE_DEADLINES.ai); }
+        catch(_){preflight=null;}
+    }
+    // A source-first TMDB search remains the mandatory independent fallback.
     if (!isSpecificSearch && !preflight) {
         try { preflight = await withMatchSourceDeadline(()=>discoverVerifiedExactTMDB(requested),MATCH_SOURCE_DEADLINES.tmdb); } catch (_) { preflight = null; }
     }
@@ -4225,19 +4279,15 @@ window.triggerMatch = async function(isSpecificSearch = false) {
         try { preflight = await withMatchSourceDeadline(()=>discoverFromITunes(requested.cat,requested.mood,requested.vibe,requested.decade,requested.rating),MATCH_SOURCE_DEADLINES.itunes); }
         catch (_) { preflight = null; }
     }
-    // Last source: AI proposals, each verified on TMDB against every choice.
-    if (!isSpecificSearch && !preflight && typeof aiProposedVerifiedExact === 'function') {
-        try { preflight = await withMatchSourceDeadline(()=>aiProposedVerifiedExact(requested),MATCH_SOURCE_DEADLINES.ai); } catch (_) { preflight = null; }
-    }
     // Never dead-end ordinary matching because every fresh exact candidate has
     // already been shown or a live source is temporarily unavailable. Recycle
     // an exact eligible catalogue title first; only then use the existing
     // guaranteed recovery ladder. User-saved / Not For Me titles remain hard
     // exclusions in both helpers.
-    if (!isSpecificSearch && !preflight && typeof pickRecycledCatalog === 'function') {
+    if (!isSpecificSearch && !preflight && window.matchappAllowSeenAgain === true && typeof pickRecycledCatalog === 'function') {
         try { preflight = pickRecycledCatalog(requested.cat,requested.plat,requested.mood,requested.vibe,requested.rating,requested.decade); } catch (_) { preflight = null; }
     }
-    if (!isSpecificSearch && !preflight && typeof pickGuaranteedCatalog === 'function') {
+    if (!isSpecificSearch && !preflight && window.matchappAllowSeenAgain === true && typeof pickGuaranteedCatalog === 'function') {
         try {
             preflight = pickGuaranteedCatalog(requested.cat,requested.plat,requested.mood,requested.vibe,requested.rating,requested.decade);
             if (preflight?._relaxedStage) window.lastMatchRelaxation = preflight._relaxedStage;
