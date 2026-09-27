@@ -36,7 +36,32 @@
     return 'Registration could not be saved. Your entries remain editable; please retry.';
   }
 
-  // A server-confirmed registration is important enough to be seen before\n  // leaving this page. Never display this on a failed or unverified write.\n  function showRegistrationSuccess() {\n    document.getElementById('registration-save-success')?.remove();\n    const overlay = document.createElement('div');\n    overlay.id = 'registration-save-success';\n    overlay.setAttribute('role', 'dialog');\n    overlay.setAttribute('aria-modal', 'true');\n    overlay.setAttribute('aria-labelledby', 'registration-save-success-title');\n    overlay.style.cssText = 'position:fixed;inset:0;z-index:2147483000;display:grid;place-items:center;padding:20px;background:rgba(5,6,13,.86);backdrop-filter:blur(10px)';\n    overlay.innerHTML = '<div style="width:min(440px,100%);padding:32px 26px;border:2px solid #e5c158;border-radius:24px;background:linear-gradient(150deg,#302519,#11131d);box-shadow:0 0 56px rgba(229,193,88,.33),0 24px 80px #000;text-align:center;color:#fff">' +\n      '<div aria-hidden="true" style="font-size:50px;color:#e5c158;margin-bottom:12px">✓</div>' +\n      '<h2 id="registration-save-success-title" style="margin:0 0 14px;font-size:clamp(24px,6vw,32px);color:#ffde83">Profile saved successfully!</h2>' +\n      '<p style="font-size:17px;line-height:1.55;margin:0 0 20px">Your saved details will personalize your future MatchApp selections. Your account is ready!</p>' +\n      '<p style="font-size:13px;opacity:.85;margin-bottom:16px">Opening your homepage automatically…</p>' +\n      '<button type="button" id="registration-success-home" style="width:100%;padding:14px;border:0;border-radius:13px;background:#e5c158;color:#1a1410;font-weight:800;font-size:16px;cursor:pointer">Go to my homepage now →</button>' +\n      '</div>';\n    document.body.appendChild(overlay);\n    const goHome = () => window.location.assign('/');\n    overlay.querySelector('#registration-success-home').addEventListener('click', goHome);\n    overlay.querySelector('#registration-success-home').focus({preventScroll:true});\n    // Keep the confirmation prominent long enough to actually read it.\n    setTimeout(() => { if (overlay.isConnected) goHome(); }, 3500);\n  }\n\n  function form() {
+  // A server-confirmed registration is important enough to be seen before
+  // leaving this page. Never display this on a failed or unverified write.
+  function showRegistrationSuccess() {
+    document.getElementById('registration-save-success')?.remove();
+    const overlay = document.createElement('div');
+    overlay.id = 'registration-save-success';
+    overlay.setAttribute('role', 'dialog');
+    overlay.setAttribute('aria-modal', 'true');
+    overlay.setAttribute('aria-labelledby', 'registration-save-success-title');
+    overlay.style.cssText = 'position:fixed;inset:0;z-index:2147483000;display:grid;place-items:center;padding:20px;background:rgba(5,6,13,.86);backdrop-filter:blur(10px)';
+    overlay.innerHTML = '<div style="width:min(440px,100%);padding:32px 26px;border:2px solid #e5c158;border-radius:24px;background:linear-gradient(150deg,#302519,#11131d);box-shadow:0 0 56px rgba(229,193,88,.33),0 24px 80px #000;text-align:center;color:#fff">' +
+      '<div aria-hidden="true" style="font-size:50px;color:#e5c158;margin-bottom:12px">✓</div>' +
+      '<h2 id="registration-save-success-title" style="margin:0 0 14px;font-size:clamp(24px,6vw,32px);color:#ffde83">Profile saved successfully!</h2>' +
+      '<p style="font-size:17px;line-height:1.55;margin:0 0 20px">Your saved details will personalize your future MatchApp selections. Your account is ready!</p>' +
+      '<p style="font-size:13px;opacity:.85;margin-bottom:16px">Opening your homepage automatically…</p>' +
+      '<button type="button" id="registration-success-home" style="width:100%;padding:14px;border:0;border-radius:13px;background:#e5c158;color:#1a1410;font-weight:800;font-size:16px;cursor:pointer">Go to my homepage now →</button>' +
+      '</div>';
+    document.body.appendChild(overlay);
+    const goHome = () => window.location.assign('/');
+    overlay.querySelector('#registration-success-home').addEventListener('click', goHome);
+    overlay.querySelector('#registration-success-home').focus({preventScroll:true});
+    // Keep the confirmation prominent long enough to actually read it.
+    setTimeout(() => { if (overlay.isConnected) goHome(); }, 3500);
+  }
+
+  function form() {
     if (location.pathname !== '/profile/profile.html') return;
     const section = $('editable-fields-section');
     const country = $('profile-country');
@@ -164,6 +189,7 @@
         try { await window.hydrateProfileFromAuth?.(user); } catch (_) { /* Server save already confirmed. */ }
         window.checkAndRenderProfileState?.();
         document.dispatchEvent(new CustomEvent('matchapp:historychange'));
+        toast('Registration saved. Your profile is locked and available on your account.');
         showRegistrationSuccess();
       } catch (error) {
         console.warn('Registration save failed',error?.code||error?.message||'unknown');
