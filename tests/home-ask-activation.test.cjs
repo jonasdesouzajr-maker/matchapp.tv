@@ -44,10 +44,13 @@ test('empty chat Send provides accessible bilingual feedback without triggering 
 test('new Ask runtime reaches phones, iPhones, tablets and live Android WebView with unchanged native shell',()=>{
  const home=read('index.html'),chat=read('discover.html');
  assert.match(home,/matchapp-ia\.js\?v=20260926-brandai1-adorder2&amp;askbtn=20260927-2/);
- assert.match(home,/home-approved\.js\?v=20260926-playpending1&amp;askbtn=20260927-2/);
+ assert.match(home,/home-approved\.js\?v=20260928-no-dock1/);
  assert.match(chat,/discover\.js\?v=20260925-intent1[^"]*askbtn=20260927-1/);
  assert.match(home,/class="top-ai-launch" href="\/discover\.html"/);
- assert.match(read('home-approved.js'),/class="ma-dock-ask" href="\/discover\.html"/);
+ assert.doesNotMatch(read('home-approved.js'),/mountDock|ma-dock/);
+ assert.doesNotMatch(read('home-approved.css'),/#ma-dock/);
+ assert.match(home,/href="\/together\.html" class="tg-entry"/);
+ assert.match(home,/id="profile-link-tab" href="\/profile\/profile\.html/);
 });
 
 test('live phone/tablet/desktop smoke opens the real Home Ask card and handles empty Send',()=>{
@@ -69,7 +72,7 @@ test('Ask AI closes only an overlapping install suggestion and prevents a new on
  assert.match(html,/browser-install-offer\.js\?v=20260926-playpending1&amp;chat=20260927-1/);
  assert.doesNotMatch(tab.slice(tab.indexOf("ba.addEventListener('click',()=>{"),tab.indexOf("if(new URLSearchParams",tab.indexOf("ba.addEventListener('click',()=>{"))),/localStorage|focus\(/);
 });
-test('live smoke checks usable input and Send above the phone dock, not an arbitrary panel edge',()=>{
+test('live smoke checks usable input and Send inside the phone viewport',()=>{
  const smoke=read('tools/live-production-smoke.cjs');
  assert.match(smoke,/const dockSpace=dock&&getComputedStyle\(dock\)\.display/);
  assert.match(smoke,/input\.bottom<=bottom&&send\.top>=0&&send\.bottom<=bottom/);

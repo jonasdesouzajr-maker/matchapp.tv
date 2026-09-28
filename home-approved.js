@@ -22,7 +22,7 @@
     approvedLink.rel = 'stylesheet';
     (document.head || document.documentElement).appendChild(approvedLink);
   }
-  approvedLink.href = '/home-approved.css?v=20260926-playpending1';
+  approvedLink.href = '/home-approved.css?v=20260928-no-dock1';
   if (!document.getElementById('ma-install-onetap')) {
     var ot=document.createElement('script');
     ot.id='ma-install-onetap';
@@ -94,26 +94,11 @@
     document.getElementById('chrome-install-card')?.remove();
   }
 
-  function mountDock() {
-    if (kids() || document.getElementById('ma-dock')) return;
-    if (!document.body || !document.body.classList.contains('page-home')) return;
-    var dock = document.createElement('nav');
-    dock.id = 'ma-dock';
-    dock.setAttribute('aria-label', 'MatchApp');
-    dock.innerHTML =
-      '<a class="ma-dock-home is-on" href="/">Home</a>' +
-      '<a class="ma-dock-ask" href="/discover.html">Ask</a>' +
-      '<a class="ma-dock-together" href="/friends.html">Together</a>' +
-      '<a class="ma-dock-you" href="/profile/profile.html">You</a>';
-    document.body.appendChild(dock);
-  }
-
   function boot() {
     if (nativeShell()) document.documentElement.classList.add('ma-native-shell');
     if (standalone()) document.documentElement.classList.add('ma-installed');
     removeRetiredCards();
     mountHero();
-    mountDock();
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot, { once: true });
   else boot();

@@ -46,31 +46,8 @@ html body.page-home .header-brand-area img:not(.matchapp-wordmark){
   border-radius:50%!important;object-fit:cover!important;clip-path:circle(49.5% at 50% 50%)
 }
 
-#ma-dock{
-  position:fixed;left:10px;right:10px;bottom:calc(8px + env(safe-area-inset-bottom,0px));
-  z-index:80;
-  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
-  align-items:stretch;justify-items:stretch;
-  height:58px;padding:4px;
-  box-sizing:border-box;
-  border:1px solid rgba(229,193,88,.45);border-radius:20px;
-  background:#10081c;
-  box-shadow:0 10px 28px rgba(0,0,0,.45);
-  isolation:isolate
-}
-#ma-dock a,#ma-dock button{
-  appearance:none;-webkit-appearance:none;
-  display:flex;align-items:center;justify-content:center;
-  margin:0;padding:0;border:0;border-radius:16px;
-  background:transparent;color:#d7cfe4;
-  font:700 12px/1 Outfit,system-ui,sans-serif;
-  text-decoration:none;min-width:0;min-height:0;height:100%;
-  box-shadow:none
-}
-#ma-dock .is-on{color:#E5C158;background:rgba(229,193,88,.12)}
-@media(min-width:1101px){#ma-dock{display:none!important}}
 @media(prefers-reduced-motion:reduce){
-  #ma-hero-match,#ma-hero-ask,#ma-dock a,#ma-dock button{transition:none}
+  #ma-hero-match,#ma-hero-ask{transition:none}
 }
 
 
@@ -117,14 +94,6 @@ html body.page-home .matchapp-growth-disclosure{
     0 10px 28px rgba(0,0,0,.24),
     inset 0 1px 0 rgba(255,255,255,.045)!important;
 }
-
-html body.page-home #ma-dock{
-  border-color:rgba(229,193,88,.58)!important;
-  box-shadow:
-    inset 0 0 0 1px rgba(229,193,88,.20),
-    0 10px 28px rgba(0,0,0,.45)!important;
-}
-
 
 /* 2026-09-24 phone/tablet perimeter coherence.
    Presentation only. Extends the finished 360-degree perimeter used by the
