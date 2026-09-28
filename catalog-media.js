@@ -974,6 +974,12 @@
     applyDetails(meta);
     renderAvailability(availabilityHost,meta,{title});
     renderPreview(host,meta,{title});
+    // Display-only extension event. Optional RapidAPI enhancement never affects the Match.
+    if(Number.isSafeInteger(Number(meta.tmdb_id))&&Number(meta.tmdb_id)>0&&
+       ['movie','tv'].includes(meta.media_kind))
+      document.dispatchEvent(new CustomEvent('matchapp:adult-metadata',{detail:{
+        title,tmdbId:Number(meta.tmdb_id),kind:meta.media_kind,country:regionCode()
+      }}));
   }
 
   let kidsSerial=0,kidsEnrichTimer=0;
