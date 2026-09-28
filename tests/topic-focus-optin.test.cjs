@@ -74,6 +74,15 @@ test('desktop, tablet and mobile share the same quick topic form and hidden cate
   assert.equal(w.getMatchCriteria().cat.length,0);
   click('youtube');
   assert.equal(w.getMatchCriteria().cat[0],'YouTube channel');
+  // The real Spotify/Android deep link supplies both values in one call.
+  // A cross-topic reset must not erase this intentionally selected platform.
+  w.setMatchCriteria({cat:['Spotify playlist'],plat:['Spotify'],mood:['cozy comfort watch']});
+  assert.deepEqual(Array.from(w.getMatchCriteria().cat),['Spotify playlist']);
+  assert.deepEqual(Array.from(w.getMatchCriteria().plat),['Spotify']);
+  assert.deepEqual(Array.from(w.getMatchCriteria().mood),['cozy comfort watch']);
+  // A later category-only change must still discard a stale Spotify platform.
+  w.setMatchCriteria({cat:['Cooking & Recipes']});
+  assert.deepEqual(Array.from(w.getMatchCriteria().plat),[]);
   dom.window.close();
 });
 test('all live adult matching entry points load the shared topic guard before app.js',()=>{

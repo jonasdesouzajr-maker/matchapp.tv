@@ -109,15 +109,24 @@
     window.setMatchCriteria = function (patch) {
         if (!patch) return;
         const before=focusGroup(state.cat);
+        // When a deep link provides category AND platform in one patch, clear
+        // only stale filters first; never erase the platform explicitly supplied.
+        if ('cat' in patch) {
+            const v = patch.cat;
+            state.cat = (Array.isArray(v) ? v : [v])
+                .map(x => String(x || '').trim())
+                .filter(x => x && x !== 'any');
+            normalizeCategories();
+            resetIncompatibleFilters(before,focusGroup(state.cat));
+        }
         FIELDS.forEach(f => {
-            if (!(f.key in patch)) return;
+            if (f.key === 'cat' || !(f.key in patch)) return;
             const v = patch[f.key];
             state[f.key] = (Array.isArray(v) ? v : [v])
                 .map(x => String(x || '').trim())
                 .filter(x => x && x !== 'any');
         });
         normalizeCategories();
-        resetIncompatibleFilters(before,focusGroup(state.cat));
         reconcileConflicts();
         save();
         renderAll();
