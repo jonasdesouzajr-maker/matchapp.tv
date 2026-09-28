@@ -28,6 +28,11 @@ verify_jwt = false
 [functions.tmdb-proxy]
 verify_jwt = false
 
+# Public title ratings still validate allowed origins and rate-limit inside the
+# function; the legacy JWT gateway rejects ES256 user sessions.
+[functions.omdb-ratings]
+verify_jwt = false
+
 # Backend-only hourly notification delivery. It validates a secret stored in Supabase Vault.
 [functions.notification-worker]
 verify_jwt = false

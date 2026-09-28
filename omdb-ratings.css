@@ -1,0 +1,7 @@
+#res-omdb-ratings[hidden]{display:none!important}
+#res-omdb-ratings{display:flex;flex-wrap:wrap;gap:7px;max-width:100%;margin:10px 0 0;align-items:center}
+.ma-critic-badge{box-sizing:border-box;display:inline-flex;align-items:baseline;gap:7px;min-height:34px;padding:7px 10px;border:1px solid rgba(229,193,88,.38);border-radius:12px;background:#1c142e;color:#f8eab7;line-height:1.15;white-space:nowrap;box-shadow:0 3px 12px rgba(0,0,0,.2)}
+.ma-critic-badge .ma-critic-name{font:600 11px/1.2 system-ui,sans-serif;color:#dfd3eb}
+.ma-critic-badge strong{font:800 14px/1.15 system-ui,sans-serif;font-variant-numeric:tabular-nums;color:#fff}
+.ma-critic-rt{border-color:rgba(246,104,102,.53)}.ma-critic-mc{border-color:rgba(132,198,142,.5)}
+@media(max-width:480px){#res-omdb-ratings{justify-content:center}.ma-critic-badge{max-width:100%}}
