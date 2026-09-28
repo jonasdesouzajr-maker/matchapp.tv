@@ -4829,7 +4829,7 @@ async function renderResult(selected, isSpecificSearch) {
     resultBox.style.display = 'block';
     resultBox.classList.add('is-revealed', 'ma-result-arriving');
     // The stylesheet reserves the full poster area from first paint. Wait for
-    // two lightweight paint frames, not a synchronous offsetWidth reflow,
+    // two lightweight paint frames without a forced layout pass,
     // before scrolling once to the actual artwork.
     requestAnimationFrame(() => requestAnimationFrame(() => {
         if (window.globalMatchTitle !== selected.title || resultBox.style.display === 'none') return;
