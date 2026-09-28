@@ -15,6 +15,7 @@ on:
       - 'supabase/functions/gemini-proxy/index.ts'
       - 'supabase/functions/gemini-proxy/openai-primary.ts'
       - 'supabase/functions/gemini-proxy/openrouter-backup.ts'
+      - 'supabase/functions/gemini-proxy/groq-backup.ts'
       - '.github/workflows/matching-ai-triple-audit.yml'
   push:
     branches: [main]
@@ -32,6 +33,7 @@ on:
       - 'supabase/functions/gemini-proxy/index.ts'
       - 'supabase/functions/gemini-proxy/openai-primary.ts'
       - 'supabase/functions/gemini-proxy/openrouter-backup.ts'
+      - 'supabase/functions/gemini-proxy/groq-backup.ts'
       - '.github/workflows/matching-ai-triple-audit.yml'
   workflow_dispatch:
 permissions:
