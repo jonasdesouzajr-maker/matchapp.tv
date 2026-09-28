@@ -487,7 +487,7 @@
             wrap.querySelector('.crit-toggle')?.scrollIntoView({behavior:'auto',block:'nearest'});
         });
         host.appendChild(more);
-        const desc=document.createElement('p');
+        const desc=document.getElementById('matchapp-topic-description')||document.createElement('p');
         desc.id='matchapp-topic-description';desc.className='matchapp-topic-description';
         desc.setAttribute('aria-live','polite');
         primary.parentElement.insertBefore(host,primary);
