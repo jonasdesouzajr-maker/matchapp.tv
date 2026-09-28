@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://matchapp.tv/</loc>
-        <lastmod>2026-09-28T08:34:22+00:00</lastmod>
+        <lastmod>2026-09-28T09:18:10+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
@@ -20,7 +20,7 @@
     </url>
     <url>
         <loc>https://matchapp.tv/ebooks/</loc>
-        <lastmod>2026-09-28T08:59:01+00:00</lastmod>
+        <lastmod>2026-09-28T09:18:10+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -32,31 +32,31 @@
     </url>
     <url>
         <loc>https://matchapp.tv/guides/what-to-watch-september-2026/</loc>
-        <lastmod>2026-09-28T08:59:01+00:00</lastmod>
+        <lastmod>2026-09-28T09:18:10+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/guides/global-music-september-2026/</loc>
-        <lastmod>2026-09-28T08:59:01+00:00</lastmod>
+        <lastmod>2026-09-28T09:18:10+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/guides/books-september-2026/</loc>
-        <lastmod>2026-09-28T08:59:01+00:00</lastmod>
+        <lastmod>2026-09-28T09:18:10+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/guides/filmes-series-em-alta-brasil-setembro-2026/</loc>
-        <lastmod>2026-09-28T08:59:01+00:00</lastmod>
+        <lastmod>2026-09-28T09:18:10+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/guides/peliculas-series-tendencia-mexico-septiembre-2026/</loc>
-        <lastmod>2026-09-28T08:59:01+00:00</lastmod>
+        <lastmod>2026-09-28T09:18:10+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -80,13 +80,13 @@
     </url>
     <url>
         <loc>https://matchapp.tv/desktop/windows.html</loc>
-        <lastmod>2026-09-28T08:59:01+00:00</lastmod>
+        <lastmod>2026-09-28T09:18:10+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/desktop/macos.html</loc>
-        <lastmod>2026-09-28T08:59:01+00:00</lastmod>
+        <lastmod>2026-09-28T09:18:10+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
     </url>
@@ -1196,7 +1196,7 @@
     </url>
     <url>
         <loc>https://matchapp.tv/news/</loc>
-        <lastmod>2026-09-28T07:33:00+00:00</lastmod>
+        <lastmod>2026-09-28T09:17:43+00:00</lastmod>
         <changefreq>hourly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -1214,12 +1214,6 @@
     </url>
     <url>
         <loc>https://matchapp.tv/awareness/world-alzheimers-month-2026/</loc>
-        <lastmod>2026-09-25T07:28:39+00:00</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-    </url>
-    <url>
-        <loc>https://matchapp.tv/awareness/world-maritime-day-2026/</loc>
         <lastmod>2026-09-25T07:28:39+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>

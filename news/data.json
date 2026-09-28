@@ -1,10 +1,226 @@
 {
-  "generated_at": "2026-09-28T07:33:00.537Z",
-  "feed_version": "6b87fbc3",
+  "generated_at": "2026-09-28T09:17:43.040Z",
+  "feed_version": "64363ffc",
   "sports_updated_at": "2026-09-27T01:27:56.722Z",
   "source_policy": "direct-trusted-publisher-rss+google-trends-keyword-signals",
   "seo_policy": "per-story keyword snapshot at first discovery + source citation + stable archive",
   "items": [
+    {
+      "id": "e9f40459",
+      "title": "Ed Motta volta a cantar em português, mas sem seguir à risca o manual pop na arquitetura sólida do álbum 'Toc-Toc'",
+      "url": "https://g1.globo.com/pop-arte/musica/blog/mauro-ferreira/post/2026/09/28/ed-motta-volta-a-cantar-em-portugues-mas-sem-seguir-a-risca-o-manual-pop-na-arquitetura-solida-do-album-toc-toc.ghtml",
+      "source": "G1",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "BR",
+      "published_at": "2026-09-28T08:00:00.000Z",
+      "discovered_at": "2026-09-28T09:17:43.040Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "Ed Motta",
+      "description": "Ed Motta: entertainment headline reported by G1. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://s2-g1.glbimg.com/2MmupNTVv4ywviR2-GUFAUSwS_U=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/Y/S/msC7AWThuxSyt2FbKi7g/bispo-4285.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/ed-motta-volta-a-cantar-em-portugues-mas-sem-seguir-a-risca-o-manual-pop-na-arqu-e9f404/",
+      "landing_url": "https://matchapp.tv/?news=e9f40459#latest-news",
+      "seo": {
+        "primary_keyword": "कंपनी",
+        "short_tail": [
+          "Ed Motta",
+          "Ed Motta news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje",
+          "कंपनी",
+          "चिराग पासवान",
+          "সর্বোচ্চ আদালত",
+          "വില"
+        ],
+        "long_tail": [
+          "Ed Motta latest news September 2026",
+          "Ed Motta entertainment update 2026",
+          "Ed Motta news 2026-09-28",
+          "latest entertainment news about Ed Motta",
+          "motta motta volta cantar portugues mas latest update",
+          "G1 Ed Motta entertainment",
+          "últimas notícias sobre Ed Motta setembro 2026",
+          "Ed Motta notícia de 2026-09-28",
+          "o que aconteceu com Ed Motta"
+        ],
+        "trend_keywords": [
+          "कंपनी",
+          "चिराग पासवान",
+          "সর্বোচ্চ আদালত",
+          "വില"
+        ],
+        "entity_keywords": [
+          "Ed Motta",
+          "motta",
+          "volta",
+          "cantar",
+          "portugues",
+          "mas",
+          "sem",
+          "seguir"
+        ],
+        "freshness_keywords": [
+          "September 2026",
+          "2026-09-28",
+          "setembro 2026",
+          "Ed Motta 2026"
+        ],
+        "source_keywords": [
+          "G1 Ed Motta",
+          "g1.globo.com Ed Motta",
+          "G1 entertainment news"
+        ],
+        "meta_title": "Ed Motta volta a cantar em português, mas sem seguir à…",
+        "meta_description": "Ed Motta: Entertainment update reported by G1 on 2026-09-28. See verified context, publication time and the original source via MatchApp TV.",
+        "keywords": [
+          "कंपनी",
+          "Ed Motta",
+          "Ed Motta news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje",
+          "चिराग पासवान",
+          "সর্বোচ্চ আদালত",
+          "വില",
+          "Ed Motta latest news September 2026",
+          "Ed Motta entertainment update 2026",
+          "Ed Motta news 2026-09-28",
+          "latest entertainment news about Ed Motta",
+          "motta motta volta cantar portugues mas latest update",
+          "G1 Ed Motta entertainment",
+          "últimas notícias sobre Ed Motta setembro 2026",
+          "Ed Motta notícia de 2026-09-28",
+          "o que aconteceu com Ed Motta",
+          "motta",
+          "volta",
+          "cantar",
+          "portugues",
+          "mas",
+          "sem",
+          "seguir",
+          "September 2026",
+          "2026-09-28",
+          "setembro 2026",
+          "Ed Motta 2026",
+          "G1 Ed Motta"
+        ],
+        "seo_generated_at": "2026-09-28T09:17:43.040Z"
+      }
+    },
+    {
+      "id": "3537ff94",
+      "title": "Taylor Swift breaks record for most MTV VMAs as Madonna also wins",
+      "url": "https://www.bbc.co.uk/news/articles/c8ly403p1rwpo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GB",
+      "published_at": "2026-09-28T07:40:05.000Z",
+      "discovered_at": "2026-09-28T09:17:43.040Z",
+      "event_type": "Awards",
+      "category": "entertainment",
+      "person": "Taylor Swift",
+      "description": "Taylor Swift: awards headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/8c94/live/12d3b150-bb05-11f1-913f-9dfd502f2fcc.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/taylor-swift-breaks-record-for-most-mtv-vmas-as-madonna-also-wins-3537ff/",
+      "landing_url": "https://matchapp.tv/?news=3537ff94#latest-news",
+      "seo": {
+        "primary_keyword": "कंपनी",
+        "short_tail": [
+          "Taylor Swift",
+          "Taylor Swift news",
+          "awards",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "कंपनी",
+          "चिराग पासवान",
+          "সর্বোচ্চ আদালত",
+          "വില"
+        ],
+        "long_tail": [
+          "Taylor Swift latest news September 2026",
+          "Taylor Swift awards update 2026",
+          "Taylor Swift news 2026-09-28",
+          "latest awards news about Taylor Swift",
+          "taylor swift taylor swift breaks record latest update",
+          "BBC Taylor Swift awards",
+          "latest news about Taylor Swift September 2026",
+          "Taylor Swift entertainment news 2026-09-28",
+          "what happened with Taylor Swift"
+        ],
+        "trend_keywords": [
+          "कंपनी",
+          "चिराग पासवान",
+          "সর্বোচ্চ আদালত",
+          "വില"
+        ],
+        "entity_keywords": [
+          "Taylor Swift",
+          "taylor",
+          "swift",
+          "breaks",
+          "record",
+          "most",
+          "mtv"
+        ],
+        "freshness_keywords": [
+          "September 2026",
+          "2026-09-28",
+          "Taylor Swift 2026"
+        ],
+        "source_keywords": [
+          "BBC Taylor Swift",
+          "bbc.co.uk Taylor Swift",
+          "BBC entertainment news"
+        ],
+        "meta_title": "Taylor Swift breaks record for most MTV VMAs as Madonna…",
+        "meta_description": "Taylor Swift: Awards update reported by BBC on 2026-09-28. See verified context, publication time and the original source via MatchApp TV.",
+        "keywords": [
+          "कंपनी",
+          "Taylor Swift",
+          "Taylor Swift news",
+          "awards",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "चिराग पासवान",
+          "সর্বোচ্চ আদালত",
+          "വില",
+          "Taylor Swift latest news September 2026",
+          "Taylor Swift awards update 2026",
+          "Taylor Swift news 2026-09-28",
+          "latest awards news about Taylor Swift",
+          "taylor swift taylor swift breaks record latest update",
+          "BBC Taylor Swift awards",
+          "latest news about Taylor Swift September 2026",
+          "Taylor Swift entertainment news 2026-09-28",
+          "what happened with Taylor Swift",
+          "taylor",
+          "swift",
+          "breaks",
+          "record",
+          "most",
+          "mtv",
+          "September 2026",
+          "2026-09-28",
+          "Taylor Swift 2026",
+          "BBC Taylor Swift",
+          "bbc.co.uk Taylor Swift",
+          "BBC entertainment news"
+        ],
+        "seo_generated_at": "2026-09-28T09:17:43.040Z"
+      }
+    },
     {
       "id": "9619aa5c",
       "title": "Como banda emo serviu de 'escola' para produtores indicados ao Grammy Latino com Anitta e Marina Sena",
@@ -1936,7 +2152,7 @@
       "id": "3905074a",
       "title": "Bangkok roads submerged as flood disaster declared",
       "url": "https://www.bbc.co.uk/news/articles/ck1wxx8n2x3zo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
+      "source": "BBC Science",
       "source_domain": "bbc.co.uk",
       "source_home": "https://www.bbc.co.uk",
       "country": "GLOBAL",
@@ -1945,7 +2161,7 @@
       "event_type": "Entertainment",
       "category": "world",
       "person": "",
-      "description": "World news reported by BBC World on 2026-09-27. MatchApp links to the original report for its complete context and ongoing updates.",
+      "description": "World news reported by BBC Science on 2026-09-27. MatchApp links to the original report for its complete context and ongoing updates.",
       "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/2b19/live/342eea60-b978-11f1-97d9-a9cee45390c5.jpg",
       "matchapp_url": "https://matchapp.tv/news/articles/bangkok-roads-submerged-as-flood-disaster-declared-390507/",
       "landing_url": "https://matchapp.tv/?news=3905074a#latest-news",
@@ -2293,71 +2509,6 @@
       }
     },
     {
-      "id": "947aa809",
-      "title": "British national among six dead in building explosion close to Acropolis in Athens",
-      "url": "https://www.bbc.co.uk/news/articles/c6p3kk78l4l1o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "published_at": "2026-09-26T12:47:25.000Z",
-      "discovered_at": "2026-09-27T12:59:27.421Z",
-      "event_type": "Obituary",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-09-26. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/c8e5/live/83c97ed0-b9ac-11f1-8a1a-0176f978c211.png",
-      "matchapp_url": "https://matchapp.tv/news/articles/british-national-among-six-dead-in-building-explosion-close-to-acropolis-in-athe-947aa8/",
-      "landing_url": "https://matchapp.tv/?news=947aa809#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-09-26",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "british",
-          "national",
-          "among",
-          "six",
-          "dead",
-          "building"
-        ],
-        "long_tail": [
-          "British national among six dead in building explosion close to Acropolis in Athens 2026-09-26",
-          "world news September 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "british",
-          "national",
-          "among",
-          "six",
-          "dead",
-          "building"
-        ],
-        "freshness_keywords": [
-          "2026-09-26"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "British national among six dead in building explosion…",
-        "meta_description": "World report published by BBC World on 2026-09-26. Open the original report for full context.",
-        "keywords": [
-          "world news",
-          "global headlines",
-          "british",
-          "national",
-          "among",
-          "six",
-          "dead",
-          "building",
-          "2026-09-26",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-09-27T12:59:27.421Z"
-      }
-    },
-    {
       "id": "b6e4ee51",
       "title": "Caetano Veloso faz 'Coração vagabundo' bater de novo ao louvar João Gilberto em música do álbum de Cézar Mendes",
       "url": "https://g1.globo.com/pop-arte/musica/blog/mauro-ferreira/post/2026/09/26/caetano-veloso-faz-coracao-vagabundo-bater-de-novo-ao-louvar-joao-gilberto-em-musica-do-album-de-cezar-mendes.ghtml",
@@ -2452,101 +2603,6 @@
           "G1 entertainment news"
         ],
         "seo_generated_at": "2026-09-26T11:08:04.666Z"
-      }
-    },
-    {
-      "id": "ab70de30",
-      "title": "Liam Neeson involved in new movie revealing story behind Tuam babies",
-      "url": "https://www.bbc.co.uk/news/articles/ckj063lq1jm6o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GB",
-      "published_at": "2026-09-26T05:43:54.000Z",
-      "discovered_at": "2026-09-27T08:31:50.968Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "Liam Neeson",
-      "description": "Liam Neeson: entertainment headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/bb6e/live/1070f570-b8d1-11f1-ad1f-538855f30ba1.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/liam-neeson-involved-in-new-movie-revealing-story-behind-tuam-babies-ab70de/",
-      "landing_url": "https://matchapp.tv/?news=ab70de30#latest-news",
-      "seo": {
-        "primary_keyword": "Liam Neeson latest news",
-        "short_tail": [
-          "Liam Neeson",
-          "Liam Neeson news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "Liam Neeson latest news September 2026",
-          "Liam Neeson entertainment update 2026",
-          "Liam Neeson news 2026-09-26",
-          "latest entertainment news about Liam Neeson",
-          "liam neeson liam neeson involved new latest update",
-          "BBC Liam Neeson entertainment",
-          "latest news about Liam Neeson September 2026",
-          "Liam Neeson entertainment news 2026-09-26",
-          "what happened with Liam Neeson"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Liam Neeson",
-          "liam",
-          "neeson",
-          "involved",
-          "new",
-          "movie",
-          "revealing"
-        ],
-        "freshness_keywords": [
-          "September 2026",
-          "2026-09-26",
-          "Liam Neeson 2026"
-        ],
-        "source_keywords": [
-          "BBC Liam Neeson",
-          "bbc.co.uk Liam Neeson",
-          "BBC entertainment news"
-        ],
-        "meta_title": "Liam Neeson involved in new movie revealing story behind…",
-        "meta_description": "Liam Neeson: Entertainment update reported by BBC on 2026-09-26. See verified context, publication time and the original source via MatchApp TV.",
-        "keywords": [
-          "Liam Neeson latest news",
-          "Liam Neeson",
-          "Liam Neeson news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "Liam Neeson latest news September 2026",
-          "Liam Neeson entertainment update 2026",
-          "Liam Neeson news 2026-09-26",
-          "latest entertainment news about Liam Neeson",
-          "liam neeson liam neeson involved new latest update",
-          "BBC Liam Neeson entertainment",
-          "latest news about Liam Neeson September 2026",
-          "Liam Neeson entertainment news 2026-09-26",
-          "what happened with Liam Neeson",
-          "liam",
-          "neeson",
-          "involved",
-          "new",
-          "movie",
-          "revealing",
-          "September 2026",
-          "2026-09-26",
-          "Liam Neeson 2026",
-          "BBC Liam Neeson",
-          "bbc.co.uk Liam Neeson",
-          "BBC entertainment news"
-        ],
-        "seo_generated_at": "2026-09-27T08:31:50.968Z"
       }
     },
     {
@@ -2709,106 +2765,6 @@
           "BBC World"
         ],
         "seo_generated_at": "2026-09-27T12:59:27.421Z"
-      }
-    },
-    {
-      "id": "939ab02d",
-      "title": "Após quase 40 anos, disco inédito de Paulo André Barata é lançado em Belém",
-      "url": "https://g1.globo.com/pa/para/noticia/2026/09/25/apos-quase-40-anos-disco-inedito-de-paulo-andre-barata-e-lancado-em-belem.ghtml",
-      "source": "G1",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "BR",
-      "published_at": "2026-09-25T17:17:57.000Z",
-      "discovered_at": "2026-09-25T21:47:48.406Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "",
-      "description": "entertainment headline reported by G1. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://s2-g1.glbimg.com/eyGNY4wtxt1be8rulkLweePvZQI=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/x/1/cswDOSRRKxucAuY8nQPA/paulo.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/apos-quase-40-anos-disco-inedito-de-paulo-andre-barata-e-lancado-em-belem-939ab0/",
-      "landing_url": "https://matchapp.tv/?news=939ab02d#latest-news",
-      "seo": {
-        "primary_keyword": "apos quase anos disco latest news",
-        "short_tail": [
-          "apos quase anos disco",
-          "apos quase anos disco news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje"
-        ],
-        "long_tail": [
-          "apos quase anos disco latest news September 2026",
-          "apos quase anos disco entertainment update 2026",
-          "apos quase anos disco news 2026-09-25",
-          "latest entertainment news about apos quase anos disco",
-          "apos quase anos disco inedito paulo latest update",
-          "G1 apos quase anos disco entertainment",
-          "últimas notícias sobre apos quase anos disco setembro 2026",
-          "apos quase anos disco notícia de 2026-09-25",
-          "o que aconteceu com apos quase anos disco"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "apos",
-          "quase",
-          "anos",
-          "disco",
-          "inedito",
-          "paulo",
-          "andre",
-          "barata"
-        ],
-        "freshness_keywords": [
-          "September 2026",
-          "2026-09-25",
-          "setembro 2026",
-          "apos quase anos disco 2026"
-        ],
-        "source_keywords": [
-          "G1 apos quase anos disco",
-          "g1.globo.com apos quase anos disco",
-          "G1 entertainment news"
-        ],
-        "meta_title": "Após quase 40 anos, disco inédito de Paulo André Barata é…",
-        "meta_description": "Entertainment update reported by G1 on 2026-09-25. See verified context, publication time and the original source via MatchApp TV.",
-        "keywords": [
-          "apos quase anos disco latest news",
-          "apos quase anos disco",
-          "apos quase anos disco news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "apos quase anos disco latest news September 2026",
-          "apos quase anos disco entertainment update 2026",
-          "apos quase anos disco news 2026-09-25",
-          "latest entertainment news about apos quase anos disco",
-          "apos quase anos disco inedito paulo latest update",
-          "G1 apos quase anos disco entertainment",
-          "últimas notícias sobre apos quase anos disco setembro 2026",
-          "apos quase anos disco notícia de 2026-09-25",
-          "o que aconteceu com apos quase anos disco",
-          "apos",
-          "quase",
-          "anos",
-          "disco",
-          "inedito",
-          "paulo",
-          "andre",
-          "barata",
-          "September 2026",
-          "2026-09-25",
-          "setembro 2026",
-          "apos quase anos disco 2026",
-          "G1 apos quase anos disco",
-          "g1.globo.com apos quase anos disco",
-          "G1 entertainment news"
-        ],
-        "seo_generated_at": "2026-09-25T21:47:48.406Z"
       }
     },
     {
@@ -3004,6 +2960,71 @@
           "BBC Technology"
         ],
         "seo_generated_at": "2026-09-28T01:08:27.683Z"
+      }
+    },
+    {
+      "id": "ca720b1f",
+      "title": "India is producing more green energy - but wasting a lot of it",
+      "url": "https://www.bbc.co.uk/news/articles/c8xkvzlz0x4o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC Science",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "published_at": "2026-09-22T23:02:29.000Z",
+      "discovered_at": "2026-09-28T09:17:43.040Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC Science on 2026-09-22. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/37d6/live/9c8a92d0-b185-11f1-9730-e36fcedc2d41.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/india-is-producing-more-green-energy-but-wasting-a-lot-of-it-ca720b/",
+      "landing_url": "https://matchapp.tv/?news=ca720b1f#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-09-22",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "india",
+          "producing",
+          "more",
+          "green",
+          "energy",
+          "but"
+        ],
+        "long_tail": [
+          "India is producing more green energy - but wasting a lot of it 2026-09-22",
+          "world news September 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "india",
+          "producing",
+          "more",
+          "green",
+          "energy",
+          "but"
+        ],
+        "freshness_keywords": [
+          "2026-09-22"
+        ],
+        "source_keywords": [
+          "BBC Science"
+        ],
+        "meta_title": "India is producing more green energy - but wasting a lot…",
+        "meta_description": "World report published by BBC Science on 2026-09-22. Open the original report for full context.",
+        "keywords": [
+          "world news",
+          "global headlines",
+          "india",
+          "producing",
+          "more",
+          "green",
+          "energy",
+          "but",
+          "2026-09-22",
+          "BBC Science"
+        ],
+        "seo_generated_at": "2026-09-28T09:17:43.040Z"
       }
     }
   ]
