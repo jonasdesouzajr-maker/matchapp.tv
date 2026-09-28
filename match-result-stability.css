@@ -1,0 +1,123 @@
+/* Adult result only. Keep the credits and dismiss button outside the poster.
+   Reserve real cover space before it decodes so Android/WebView does not
+   scroll to a zero-height stage or shift the title beneath the controls. */
+html body.page-home #result-box .match-result-toolbar {
+  position: relative !important;
+  display: flex !important;
+  align-items: flex-start !important;
+  justify-content: space-between !important;
+  gap: 12px !important;
+  min-height: 48px !important;
+  width: 100% !important;
+  margin: 0 0 14px !important;
+  padding: 0 !important;
+}
+html body.page-home #result-box .match-result-toolbar .quota-corner {
+  position: relative !important;
+  inset: auto !important;
+  left: auto !important;
+  right: auto !important;
+  top: auto !important;
+  bottom: auto !important;
+  max-width: calc(100% - 64px) !important;
+  flex: 0 1 auto !important;
+  margin: 0 !important;
+}
+html body.page-home #result-box .match-result-toolbar .result-dismiss {
+  position: relative !important;
+  inset: auto !important;
+  left: auto !important;
+  right: auto !important;
+  top: auto !important;
+  bottom: auto !important;
+  flex: 0 0 46px !important;
+  width: 46px !important;
+  height: 46px !important;
+  min-width: 46px !important;
+  min-height: 46px !important;
+  margin: 0 0 0 auto !important;
+  z-index: 2 !important;
+  touch-action: manipulation;
+}
+html body.page-home main.page-wrapper #result-box .res-media-row {
+  padding: 0 !important;
+  margin-top: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  gap: 12px !important;
+}
+html body.page-home #result-box .res-poster-col {
+  display: flex !important;
+  justify-content: center !important;
+  width: 100% !important;
+  min-width: 0 !important;
+}
+html body.page-home #result-box .res-poster-col .poster-stage {
+  box-sizing: border-box !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  position: relative !important;
+  width: min(100%, 380px) !important;
+  max-width: 380px !important;
+  aspect-ratio: 2 / 3 !important;
+  min-height: 0 !important;
+  max-height: min(66svh, 570px) !important;
+  overflow: hidden !important;
+  margin: 0 auto !important;
+  border-radius: 20px !important;
+  background: #120824 !important;
+}
+html body.page-home #result-box .res-poster-col img#res-poster-img {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  box-sizing: border-box !important;
+  position: relative !important;
+  flex: 0 0 100% !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  transform: none !important;
+  animation: none !important;
+  transition: none !important;
+}
+html body.page-home #result-box .res-poster-col .res-zoom-hint {
+  z-index: 4;
+  bottom: 10px;
+  right: 10px;
+}
+html body.page-home #result-box.ma-result-arriving {
+  animation: maStableResultArrival .18s ease-out both !important;
+}
+@keyframes maStableResultArrival {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@media (max-width: 640px) {
+  html body.page-home #result-box .match-result-toolbar {
+    margin-bottom: 12px !important;
+  }
+  html body.page-home #result-box .res-poster-col .poster-stage {
+    width: min(100%, 320px, 38svh) !important;
+    max-width: 100% !important;
+    max-height: 57svh !important;
+    border-radius: 18px !important;
+  }
+  html body.page-home #result-box .res-poster-col img#res-poster-img {
+    border-radius: 15px !important;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html body.page-home #result-box.ma-result-arriving {
+    animation: none !important;
+  }
+}
+html.reduce-motion body.page-home #result-box.ma-result-arriving {
+  animation: none !important;
+}
