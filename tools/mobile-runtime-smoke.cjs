@@ -44,18 +44,44 @@ async function setup(page){
      // Native touch gestures must work when they start on a top-title poster.
      await page.locator('#ma-install-offer .ma-offer-close').click({timeout:700}).catch(()=>{});
      const rail=page.locator('#marquee-viewport');
-     await rail.scrollIntoViewIfNeeded();
-     await rail.evaluate(el=>{el.__railHold?.();el.scrollLeft=0;});
+     await rail.evaluate(el=>{el.__railHold?.();el.scrollIntoView({block:'center',behavior:'instant'});el.scrollTo({left:0,behavior:'instant'});});
+     await page.waitForTimeout(350);
      const touch=await ctx.newCDPSession(page);
-     const box=await rail.boundingBox();
-     const x=Math.round(box.x+box.width/2),y=Math.round(box.y+box.height/2);
+     async function swipe(dx,dy,target=rail){
+       const box=await target.boundingBox();
+       const x=Math.round(box.x+box.width/2),y=Math.round(box.y+box.height/2);
+       await touch.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x,y}]});
+       for(let i=1;i<=12;i++){
+         await touch.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[{x:x+dx*i/12,y:y+dy*i/12}]});
+         await page.waitForTimeout(20);
+       }
+       await touch.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});
+       await page.waitForTimeout(250);
+     }
      const before=await page.evaluate(()=>({y:scrollY,x:document.getElementById('marquee-viewport').scrollLeft}));
-     await touch.send('Input.synthesizeScrollGesture',{x,y,xDistance:-140,yDistance:0,gestureSourceType:'touch',speed:500});
+     await swipe(-Math.min(260,device.width*0.35),0);
      const horizontal=await rail.evaluate(el=>el.scrollLeft);
      pass(device.name+' poster horizontal touch scroll',horizontal>before.x+20,JSON.stringify({before:before.x,after:horizontal}));
-     await touch.send('Input.synthesizeScrollGesture',{x,y,xDistance:0,yDistance:-140,gestureSourceType:'touch',speed:500});
+     await swipe(0,-120);
      const after=await page.evaluate(()=>scrollY);
      pass(device.name+' page vertical touch scroll from poster',after>before.y+20,JSON.stringify({before:before.y,after}));
+     await rail.evaluate(el=>el.scrollIntoView({block:'center',behavior:'instant'}));
+     const pinchBox=await rail.boundingBox(),px=Math.round(pinchBox.x+pinchBox.width/2),py=Math.round(pinchBox.y+pinchBox.height/2);
+     const scaleBefore=await page.evaluate(()=>visualViewport.scale);
+     await touch.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x:px-20,y:py,id:1},{x:px+20,y:py,id:2}]});
+     for(let i=1;i<=10;i++){
+       await touch.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[{x:px-20-i*5,y:py,id:1},{x:px+20+i*5,y:py,id:2}]});
+       await page.waitForTimeout(20);
+     }
+     await touch.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});
+     const scaleAfter=await page.evaluate(()=>visualViewport.scale);
+     pass(device.name+' Home pinch does not zoom',Math.abs(scaleAfter-scaleBefore)<0.01,JSON.stringify({before:scaleBefore,after:scaleAfter}));
+     const hero=page.locator('.home-hero').first();
+     await hero.evaluate(el=>el.scrollIntoView({block:'center',behavior:'instant'}));
+     const heroBefore=await page.evaluate(()=>scrollY);
+     await swipe(0,-120,hero);
+     const heroAfter=await page.evaluate(()=>scrollY);
+     pass(device.name+' vertical scroll from Home heading',heroAfter>heroBefore+20,JSON.stringify({before:heroBefore,after:heroAfter}));
      await touch.detach();
      await page.evaluate(()=>window.setMatchCriteria({cat:['movie'],mood:['funny'],plat:[]}));
      const btn=page.locator('button[onclick="triggerMatch(false)"]');

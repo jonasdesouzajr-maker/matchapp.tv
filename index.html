@@ -9,7 +9,7 @@
     })(window,document,'script','dataLayer','GTM-M7J3NNBN');</script>
     <!-- End Google Tag Manager -->
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <script src="/page-origin.js?v=20260920-freeze2"></script>
 <link rel="icon" href="/assets/brand/matchapp-official-icon-192.png?v=20260920-official1" type="image/png">
     <meta name="theme-color" content="#101010">
@@ -2005,13 +2005,14 @@ html body.page-home #daily-match-checkin { padding: 11px 12px !important; }
             -webkit-overflow-scrolling: touch;
             overscroll-behavior-x: contain;
             scrollbar-width: none;
-            touch-action: pan-x pinch-zoom;
+            touch-action: pan-x pan-y;
             cursor: grab;
         }
         html body.page-home :is(.marquee-viewport, .events-viewport, .ma-news-carousel-shell)::-webkit-scrollbar { display: none; }
-        /* A gesture starting on a title must also be able to scroll the page. */
+        /* Keep native one-finger scrolling; the owner disabled Home pinch zoom. */
+        html, body.page-home { touch-action: pan-x pan-y; }
         html body.page-home .marquee-viewport {
-            touch-action: pan-x pan-y pinch-zoom;
+            touch-action: pan-x pan-y;
             overscroll-behavior-y: auto;
         }
         /* Snap belongs on the news carousel, which advances card by card.
