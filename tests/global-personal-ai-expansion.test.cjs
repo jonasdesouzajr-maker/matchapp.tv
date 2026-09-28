@@ -43,7 +43,7 @@ test('all adult match formats keep hard filters and no unrequested recycles',()=
  assert.match(books,/const unseen=bookCandidates\(p,false\)/);
  assert.match(books,/const ranked=unseen.length\?unseen:bookCandidates\(p,true\)/);
  assert.match(books,/for\(const allowSeen of \[false,true\]\)/);
- assert.match(books,/const excluded=new Set\(\[\.\.\.read\(K.saved\),\.\.\.read\(K.disliked\)\]\)/);
+ assert.match(books,/excluded=new Set\(\[\.\.\.read\(K.saved\),\.\.\.read\(K.disliked\)\]\)/);
  assert.match(books,/async function chooseMagazine\(p\)/);
  assert.match(books,/if\(verified.length\)return/);
 });
