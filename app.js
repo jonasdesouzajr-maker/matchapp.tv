@@ -4411,6 +4411,12 @@ window.triggerMatch = async function(isSpecificSearch = false) {
     let timerInterval = setInterval(updateMatchProgress, 100);
     window.__matchappActiveProgressTimer=timerInterval;
 
+    // Specialist selections never consult movie-only fallbacks. They must
+    // receive an exact curated item (or an honest source-unavailable state).
+    const specialistTopic=normCriteria(requested.cat).some(cat=>
+        ['Cooking & Recipes','Fitness & Wellness','Spotify playlist','Spotify single',
+         'Apple Music playlist','music album','music artist','Music & Concerts',
+         'Classical Music','podcast','audiobook','News','Sports'].includes(cat));
     let preflight = null;
     if(!isSpecificSearch && window.MatchAppAIRank?.rank){
         try{preflight=await withMatchSourceDeadline(()=>rankVerifiedCuratedMatch(requested),45000);}
@@ -4423,12 +4429,12 @@ window.triggerMatch = async function(isSpecificSearch = false) {
     // exhausted, ask the verified source layer for a genuinely fresh title.
     // If the curated shelf is exhausted, request OpenAI-led proposals first;
     // independent TMDB lookup verifies every suggested title before display.
-    if (!isSpecificSearch && !preflight && typeof aiProposedVerifiedExact === 'function') {
+    if (!isSpecificSearch && !preflight && !specialistTopic && typeof aiProposedVerifiedExact === 'function') {
         try { preflight=await withMatchSourceDeadline(()=>aiProposedVerifiedExact(requested),MATCH_SOURCE_DEADLINES.ai); }
         catch(_){preflight=null;}
     }
     // A source-first TMDB search remains the mandatory independent fallback.
-    if (!isSpecificSearch && !preflight) {
+    if (!isSpecificSearch && !preflight && !specialistTopic) {
         try { preflight = await withMatchSourceDeadline(()=>discoverVerifiedExactTMDB(requested),MATCH_SOURCE_DEADLINES.tmdb); } catch (_) { preflight = null; }
     }
     // iTunes is a real-source fallback only when no third-party platform,
@@ -4437,6 +4443,8 @@ window.triggerMatch = async function(isSpecificSearch = false) {
         try { preflight = await withMatchSourceDeadline(()=>discoverFromITunes(requested.cat,requested.mood,requested.vibe,requested.decade,requested.rating),MATCH_SOURCE_DEADLINES.itunes); }
         catch (_) { preflight = null; }
     }
+    // An external result never gets to override a topic picked by the user.
+    if (!isSpecificSearch && preflight && !entryAllowedForSelection(preflight,requested.cat)) preflight=null;
     // Never dead-end ordinary matching because every fresh exact candidate has
     // already been shown or a live source is temporarily unavailable. Recycle
     // an exact eligible catalogue title first; only then use the existing
