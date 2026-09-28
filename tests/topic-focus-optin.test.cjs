@@ -76,6 +76,13 @@ test('desktop, tablet and mobile share the same quick topic form and hidden cate
   assert.equal(w.getMatchCriteria().cat[0],'YouTube channel');
   dom.window.close();
 });
+test('all live adult matching entry points load the shared topic guard before app.js',()=>{
+  for(const page of ['index.html','discover.html','together.html']){
+    const html=fs.readFileSync(page,'utf8');
+    assert(html.includes('/topic-focus.js?v=20260928-1'),page+' missing opt-in guard');
+    assert(html.indexOf('/topic-focus.js?v=')<html.indexOf('/app.js?v='),page+' guard must load first');
+  }
+});
 test('all adult curated pickers and post-source preflight enforce the opt-in guard',()=>{
   const app=fs.readFileSync('app.js','utf8');
   assert.match(app,/entryAllowedForSelection\(e,requested\.cat\)/);
