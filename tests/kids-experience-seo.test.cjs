@@ -56,7 +56,7 @@ test('Kids generated pages stay free of the general GTM container',()=>{
 test('Kids sitemap uses stable content revision dates instead of fake freshness',()=>{
   const builder=read('tools/build-kids-pages.js');
   const sitemap=read('tools/update-sitemap.js');
-  assert.match(builder,/SEO_REVISION='2026-09-22'/);
+  assert.match(builder,/SEO_REVISION='2026-09-28'/);
   assert.match(builder,/kids-sitemap-meta\.json/);
   assert.match(sitemap,/readObject\('kids-sitemap-meta\.json'\)/);
   assert.match(sitemap,/kidsMeta\[loc\]/);
