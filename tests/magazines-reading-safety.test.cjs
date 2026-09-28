@@ -47,7 +47,7 @@ test('magazine-only selection respects topics, exclusions, and source priority w
  const match=read('ebooks/ebook-matcher.js');
  assert.match(match,/\['magazine','📰','Magazine only'\]/);
  assert.match(match,/p\.format==='magazine'\)pick=await chooseMagazine\(p\)/);
- assert.match(match,/if\(magazine\)\{renderMagazineResult\(root,book,p\);return;\}/);
+ assert.match(match,/if\(magazine\)\{renderMagazineResult\(root,book,p,pick\);return;\}/);
  assert.match(match,/const allowed=await window\.checkDailyLimit\(\)/);
  assert.match(match,/data-ebook-save/);
  assert.match(match,/function consumeReadingDeepLink\(\)/);
