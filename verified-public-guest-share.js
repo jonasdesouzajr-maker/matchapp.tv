@@ -111,16 +111,21 @@ function explanation(reason){
 }
 function open({kind,title,token,message,url,onNext}){
  if(window.isUserLoggedIn)return;
- if(window.MatchAppGuestShare?.remainingShares?.()===0)return window.MatchAppRegistrationWelcome?.openOffer?.()||window.location.assign('/?registrationOffer=1');
+ if(kind!=='watch_match'&&window.MatchAppGuestShare?.remainingShares?.()===0)return window.MatchAppRegistrationWelcome?.openOffer?.()||window.location.assign('/?registrationOffer=1');
  const modal=create();modal.hidden=false;
  const copy=modal.querySelector('[data-proof-copy]'),verify=modal.querySelector('[data-proof-verify]'),
        sharePoster=modal.querySelector('[data-proof-share]');
  const caption=modal.querySelector('#ma-proof-caption'),feedback=modal.querySelector('[data-proof-feedback]');
  const link=modal.querySelector('#ma-proof-url'),platform=modal.querySelector('#ma-proof-platform');
  const heading=modal.querySelector('[data-proof-heading]');
+ verify.textContent=kind==='watch_match'
+  ?(pt()?'Verificar compartilhamento':'Verify share · track progress')
+  :(pt()?'Verificar publicação e liberar bônus':'Verify post & unlock my bonus');
  heading.textContent=kind==='ask_ai'
   ?(pt()?'Compartilhe a resposta e ganhe +1 pergunta de IA':'Share your AI answer · earn +1 AI prompt')
-  :(pt()?'Compartilhe o resultado e ganhe +1 Match':'Share your result · earn +1 Match');
+  :kind==='watch_match'
+   ?(pt()?'Compartilhe 3 resultados e ganhe +1 Match':'Share 3 results · earn +1 Match')
+   :(pt()?'Compartilhe o resultado e ganhe +1 Match':'Share your result · earn +1 Match');
  feedback.textContent=pt()?'Criando seu código de verificação…':'Generating your private verification code…';
  copy.disabled=true;verify.disabled=true;sharePoster.disabled=true;caption.value='';link.value='';
  if(typeof fetch==='function')void posterFile().catch(()=>{});
@@ -134,7 +139,8 @@ function open({kind,title,token,message,url,onNext}){
   const core=String(message||'Find your next movie, series or book with MatchApp Ai').replace(/\s+/g,' ').slice(0,105);
   caption.value=data.challenge+' https://matchapp.tv\n'+core+'\n#MatchAppAi #MatchAppTV #WhatToWatch #StreamingGuide #MovieNight';
   copy.disabled=false;verify.disabled=false;sharePoster.disabled=false;
-  feedback.textContent=pt()?'Pronto. Publique uma nova postagem pública contendo esta legenda.':'Ready. Publish a NEW PUBLIC post containing the exact caption above, then paste its URL.';
+  feedback.textContent=(kind==='watch_match'?(pt()?`${3-data.remaining} de 3 compartilhamentos verificados. `:`${3-data.remaining} of 3 shares verified. `):'')+
+   (pt()?'Pronto. Publique uma nova postagem pública contendo esta legenda.':'Ready. Publish a NEW PUBLIC post containing the exact caption above, then paste its URL.');
  }).catch(e=>{if(current?.id!==thisOpen)return;feedback.textContent=explanation(e.message);});
  copy.onclick=async()=>{
   if(!current?.proof||current.id!==thisOpen)return;
@@ -188,7 +194,7 @@ function open({kind,title,token,message,url,onNext}){
    if(!data.verified||data.proof_id!==current.proof.proof_id||data.kind!==kind)throw new Error('verification_failed');
    current.done=true;
    const accepted=window.MatchAppGuestShare?.finalizeVerified?.({
-     kind,token,proof:data,onNext
+     kind,title,token,proof:data,onNext
    });
    if(!accepted)throw new Error('verification_failed');
    modal.hidden=true;
