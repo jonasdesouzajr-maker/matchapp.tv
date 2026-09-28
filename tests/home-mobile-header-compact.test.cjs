@@ -6,6 +6,7 @@ const read=(p)=>fs.readFileSync(path.join(__dirname,'..',p),'utf8');
 test('compact mobile header is enabled in the canonical page without changing other routes',()=>{
  const html=read('index.html'),css=read('mobile-header-compact.css');
  assert.match(html,/\/mobile-header-compact\.css\?v=20260927-single-guide1/);
+ assert.match(html,/matchapp-ia\.js\?v=[^\"]+guide=20260927-single1/);
  assert.match(css,/@media \(max-width:600px\)/);
  assert.match(css,/#mh-topbox\.app-header\.ma-home-header > nav\.mh-deck\.ma-header-actions/);
  assert.match(css,/grid-template-columns:repeat\(12,minmax\(0,1fr\)\)/);
