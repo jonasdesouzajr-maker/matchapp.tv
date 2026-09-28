@@ -3,7 +3,7 @@
 const fs=require('fs'),path=require('path'),vm=require('vm');
 const root=path.join(__dirname,'..');
 const SITE='https://matchapp.tv';
-const SEO_REVISION='2026-09-22';
+const SEO_REVISION='2026-09-28';
 const src=fs.readFileSync(path.join(root,'kids/kids.js'),'utf8'),a=src.indexOf('  const LIBRARY = [')+'  const LIBRARY = '.length,b=src.indexOf('\n  ];',a)+4;
 const titles=vm.runInNewContext(src.slice(a,b));
 const links=JSON.parse(fs.readFileSync(path.join(root,'kids/watch-links.json'),'utf8')).titles;
@@ -48,9 +48,16 @@ function keywordSet(i){
 }
 function titleName(i){return `${i.title}${i.year?' ('+i.year+')':''} for Kids · Age Guide & Where to Watch`;}
 function metaDescription(i){
-  const core=`${i.title}${i.year?' ('+i.year+')':''}: ${i.desc}`;
-  const suffix=` Kids age bands ${ageText(i)}. Find family-safe discovery context, similar picks and regional viewing guides.`;
-  return (core+suffix).slice(0,158).replace(/\s+\S*$/,'').trim()+((core+suffix).length>158?'…':'');
+  // Keep each snippet unique and truthful: original reviewed description,
+  // actual Kids age bands, and existing regional viewing links. Avoid cutting
+  // off the final words or promising a streaming service carries the title.
+  const prefix=`${i.title}${i.year?' ('+i.year+')':''}: `;
+  const suffix=` Ages ${ageText(i)}. Find similar family picks and regional viewing guides.`;
+  const summary=String(i.desc||'').trim().replace(/[.\s]+$/,'');
+  const available=Math.max(30,158-prefix.length-suffix.length-2);
+  const clipped=summary.length<=available?summary:
+    summary.slice(0,available-1).replace(/\s+\S*$/,'').replace(/[ ,;:]+$/,'').trim()+'…';
+  return prefix+clipped+(/[.!?…]$/.test(clipped)?'':'.')+suffix;
 }
 function serpTitle(title){
   const brand=' | MatchApp TV Ai Kids';
@@ -127,11 +134,11 @@ const body='<h1>Classic cartoons to rediscover: the 1950s to the 2000s</h1><p>Wo
 const hubData={
   '@context':'https://schema.org',
   '@graph':[
-    {'@type':'CollectionPage',name:'Classic cartoon nostalgia guide',url:hub,dateModified:SEO_REVISION,keywords:hubKeywords.join(', '),description:'Classic cartoons from the 1950s through the 2000s with age guidance, family context and regional viewing links.',mainEntity:{'@type':'ItemList',itemListElement:classics.map((i,index)=>({'@type':'ListItem',position:index+1,name:i.title,url:`${SITE}/kids/titles/${slug(i.title)}/`}))}},
+    {'@type':'CollectionPage',name:'Classic cartoon nostalgia guide',url:hub,dateModified:SEO_REVISION,isPartOf:{'@type':'WebSite',name:'MatchApp TV Ai',url:`${SITE}/`},keywords:hubKeywords.join(', '),description:'Classic cartoons from the 1950s–2000s with age guidance and original title pages linking to regional viewing guides.',mainEntity:{'@type':'ItemList',itemListElement:classics.map((i,index)=>({'@type':'ListItem',position:index+1,name:i.title,url:`${SITE}/kids/titles/${slug(i.title)}/`}))}},
     {'@type':'BreadcrumbList',itemListElement:[{'@type':'ListItem',position:1,name:'Kids Mode',item:`${SITE}/kids/`},{'@type':'ListItem',position:2,name:'Classic cartoons',item:hub}]}
   ]
 };
-fs.writeFileSync(path.join(root,'kids/nostalgia/index.html'),page('Classic Cartoons for Kids · 1950s–2000s Nostalgia','Find classic cartoons including Woody Woodpecker, Garfield, DuckTales, Doug, the Smurfs and Ben 10. Age guidance, title covers and regional viewing links.',hub,body,hubData,hubKeywords,`${SITE}/kids/kids-logo.jpeg`));
+fs.writeFileSync(path.join(root,'kids/nostalgia/index.html'),page('Classic Cartoons by Decade: 1950s–2000s | MatchApp Kids','Classic cartoons from the 1950s–2000s: DuckTales, Garfield, Woody Woodpecker and more. Browse decades, age guidance and regional viewing links.',hub,body,hubData,hubKeywords,`${SITE}/kids/kids-logo.jpeg`));
 fs.writeFileSync(path.join(root,'tools/kids-urls.json'),JSON.stringify(urls,null,2)+'\n');
 fs.writeFileSync(path.join(root,'tools/kids-sitemap-meta.json'),JSON.stringify(sitemapMeta,null,2)+'\n');
 console.log(`Built ${urls.length} public Kids guides with stable SEO revision ${SEO_REVISION}.`);
