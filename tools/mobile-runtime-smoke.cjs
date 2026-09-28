@@ -41,6 +41,22 @@ async function setup(page){
      const runtime=await page.evaluate(()=>({touch:navigator.maxTouchPoints>0,mobileViewport:document.documentElement.clientWidth<=window.innerWidth+2,build:window.MATCHAPP_BUILD,quota:localStorage.getItem('match_dailyCount')||'0'}));
      pass(device.name+' proper touch-enabled bootstrap',runtime.touch&&runtime.mobileViewport,JSON.stringify(runtime));
      await page.getByRole('button',{name:/Essential only/i}).first().click({timeout:900}).catch(()=>{});
+     // Native touch gestures must work when they start on a top-title poster.
+     await page.locator('#ma-install-offer .ma-offer-close').click({timeout:700}).catch(()=>{});
+     const rail=page.locator('#marquee-viewport');
+     await rail.scrollIntoViewIfNeeded();
+     await rail.evaluate(el=>{el.__railHold?.();el.scrollLeft=0;});
+     const touch=await ctx.newCDPSession(page);
+     const box=await rail.boundingBox();
+     const x=Math.round(box.x+box.width/2),y=Math.round(box.y+box.height/2);
+     const before=await page.evaluate(()=>({y:scrollY,x:document.getElementById('marquee-viewport').scrollLeft}));
+     await touch.send('Input.synthesizeScrollGesture',{x,y,xDistance:-140,yDistance:0,gestureSourceType:'touch',speed:500});
+     const horizontal=await rail.evaluate(el=>el.scrollLeft);
+     pass(device.name+' poster horizontal touch scroll',horizontal>before.x+20,JSON.stringify({before:before.x,after:horizontal}));
+     await touch.send('Input.synthesizeScrollGesture',{x,y,xDistance:0,yDistance:-140,gestureSourceType:'touch',speed:500});
+     const after=await page.evaluate(()=>scrollY);
+     pass(device.name+' page vertical touch scroll from poster',after>before.y+20,JSON.stringify({before:before.y,after}));
+     await touch.detach();
      await page.evaluate(()=>window.setMatchCriteria({cat:['movie'],mood:['funny'],plat:[]}));
      const btn=page.locator('button[onclick="triggerMatch(false)"]');
      await btn.scrollIntoViewIfNeeded({timeout:12000});

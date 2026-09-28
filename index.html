@@ -2009,6 +2009,11 @@ html body.page-home #daily-match-checkin { padding: 11px 12px !important; }
             cursor: grab;
         }
         html body.page-home :is(.marquee-viewport, .events-viewport, .ma-news-carousel-shell)::-webkit-scrollbar { display: none; }
+        /* A gesture starting on a title must also be able to scroll the page. */
+        html body.page-home .marquee-viewport {
+            touch-action: pan-x pan-y pinch-zoom;
+            overscroll-behavior-y: auto;
+        }
         /* Snap belongs on the news carousel, which advances card by card.
            On the poster rails it fights the continuous drift, yanking the
            position back to a poster edge every frame. */
