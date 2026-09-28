@@ -39,6 +39,62 @@ const LABELS={
  es:{eyebrow:'PARA BOOKWORMS',title:'Match E-books IA',homeTitle:'Encuentra qué leer aquí',topFold:'Explorar e-books destacados',intro:'Elige el ambiente para leer o escuchar. MatchApp encuentra libros y verifica ediciones de audiolibro en tu país, con fuentes legales y tiendas oficiales.',match:'Encontrar mi e-book',another:'Otro e-book',save:'Guardar libro',saved:'Guardado',nope:'No es para mí',why:'Por qué encaja',where:'Dónde conseguirlo',free:'Ediciones gratuitas legales',stores:'Tiendas oficiales',preview:'Información / vista previa',rights:'La disponibilidad gratuita depende del copyright de tu país. MatchApp no aloja archivos protegidos.',empty:'No encontramos un libro nuevo con todos esos filtros. Mantén lo importante y ajusta un filtro para ampliar las opciones.',quota:'Usa la misma cuota de matches de MatchApp.',savedBooks:'Libros y audiolibros guardados',noneSaved:'Aún no hay libros guardados.',remove:'Quitar',close:'Cerrar',topTitle:'Top E-books ahora',topSub:'Favoritos actuales y líderes de listas — abre una tienda oficial o una fuente legal de edición gratuita.',topFree:'Edición gratis',topBuy:'Conseguir e-book',topSource:'Fuente de la lista',audioTitle:'Ediciones de audiolibro',audioVerify:'Verificar edición en audio',audioWaiting:'Comprobando título y autor exactos…',audioNone:'No se confirmó una edición en audio. Puedes buscar en las tiendas oficiales.',audioLinks:'Audiolibros confirmados',audioSearch:'Buscar en otras tiendas de audio (edición sin confirmar)',audioRights:'Las grabaciones de LibriVox son de dominio público en EE. UU. En otros países, comprueba los derechos de autor.',audioEmpty:'Ningún audiolibro confirmado cumple estos filtros ahora. Prueba otro formato o fuentes oficiales.',audioOnly:'Se requiere audio confirmado · disponibilidad regional'},
  ja:{eyebrow:'本好きのために',title:'E-books Ai マッチ',homeTitle:'読みたい本を見つける',topFold:'注目の電子書籍',intro:'読書・朗読を聴きたい気分に合わせて本を選び、正規ストアで音声版のタイトル・著者を確認します。',match:'E-bookをマッチ',another:'別の本',save:'保存',saved:'保存済み',nope:'好みではない',why:'おすすめの理由',where:'入手先',free:'合法的な無料版',stores:'公式E-bookストア',preview:'書籍情報 / プレビュー',rights:'無料で利用できるかは各国の著作権法によって異なります。MatchApp は著作権保護されたファイルをホストしません。',empty:'すべての条件を満たす新しい本はまだ見つかりません。大切な条件はそのままに、フィルターを調整してください。',quota:'通常のMatchAppマッチ枠を使用します。',savedBooks:'保存した本・オーディオブック',noneSaved:'保存した本はまだありません。',remove:'削除',close:'閉じる',topTitle:'今人気のE-book',topSub:'現在の人気作品とランキング上位作品。公式ストアまたは合法的な無料版へ移動できます。',topFree:'無料版',topBuy:'E-bookを入手',topSource:'ランキング出典',audioTitle:'オーディオブック版',audioVerify:'音声版を確認する',audioWaiting:'公式ストアで同一タイトルと著者を確認中…',audioNone:'音声版を確認できませんでした。公式ストアで検索できます。',audioLinks:'確認済みオーディオブック',audioSearch:'他のオーディオストアで検索（未確認）',audioRights:'LibriVox は米国内でパブリックドメインです。他の国では著作権をご確認ください。',audioEmpty:'条件を満たす確認済み音声版がありません。読書形式や検索条件を変更してください。',audioOnly:'確認済み音声版のみ・国によって異なります'}
 };
+const FALLBACK_COPY={
+ en:{closest:'Closest available source match.',miss:'Not matched:',recycled:'Previously suggested because no fresh, compatible title remains.',unsupported:'Magazine publishers do not confirm:',browse:'No unexcluded catalogued title remains. Browse these source searches instead; results are not verified matches and no credit is used.',bookProfile:'Closest source-catalogued book profile; audio edition not verified.',freeCheck:'These links search legitimate catalogues. A free edition and local copyright eligibility must still be checked.',sourceCheck:'Official source search (availability not verified)'},
+ 'pt-BR':{closest:'Opção mais próxima no catálogo.',miss:'Critérios não atendidos:',recycled:'Já sugerido antes porque não restaram títulos novos compatíveis.',unsupported:'Editoras não confirmam os seguintes dados:',browse:'Não restam títulos do catálogo que você não excluiu. Consulte estas buscas externas; os resultados não estão verificados e nenhum crédito foi usado.',bookProfile:'Livro do catálogo mais próximo das preferências; edição em áudio não confirmada.',freeCheck:'Estes links pesquisam catálogos legítimos. Confirme a edição grátis e os direitos autorais no seu país.',sourceCheck:'Busca em fonte oficial (disponibilidade não confirmada)'},
+ es:{closest:'Opción más cercana en el catálogo.',miss:'Criterios no cumplidos:',recycled:'Ya recomendado; no quedan títulos nuevos compatibles.',unsupported:'No se confirman estos datos de las revistas:',browse:'No quedan títulos no excluidos en el catálogo. Consulta estas búsquedas externas; los resultados no están verificados y no se consumió ningún crédito.',bookProfile:'Libro del catálogo más cercano; edición en audio no verificada.',freeCheck:'Estos enlaces buscan en catálogos legítimos. Comprueba la edición gratuita y los derechos locales.',sourceCheck:'Búsqueda en fuente oficial (disponibilidad sin verificar)'},
+ ja:{closest:'条件に最も近いカタログ候補です。',miss:'一致しなかった条件:',recycled:'新しい候補がないため以前の作品を再提案しています。',unsupported:'雑誌について確認できない項目:',browse:'除外されていない候補が残っていません。以下の公式ソースを検索してください。未検証の検索結果であり、マッチ枠は消費しません。',bookProfile:'条件に近い書籍です。音声版の在庫は未確認です。',freeCheck:'公式カタログの検索リンクです。無料版とお住まいの国の著作権を確認してください。',sourceCheck:'公式サイト検索（在庫は未確認）'}
+};
+function fallbackCopy(key){return (FALLBACK_COPY[lang()]||FALLBACK_COPY.en)[key]||FALLBACK_COPY.en[key]}
+function selectionName(p,key){
+ const item=FIELDS[key]?.find(opt=>opt[0]===p[key]);
+ return item?item[2]:String(p[key]||key);
+}
+function matchNote(p,pick){
+ if(!pick)return'';
+ const missing=Array.isArray(pick.mismatched)?pick.mismatched:[];
+ const unsupported=p.format==='magazine'?['pace','length','era'].filter(key=>p[key]!=='any'):[];
+ const notes=[];
+ if(missing.length)notes.push(fallbackCopy('closest')+' '+fallbackCopy('miss')+' '+missing.map(key=>selectionName(p,key)).join(', ')+'.');
+ if(unsupported.length)notes.push(fallbackCopy('unsupported')+' '+unsupported.map(key=>selectionName(p,key)).join(', ')+'.');
+ if(pick.recycled)notes.push(fallbackCopy('recycled'));
+ return notes.join(' ');
+}
+function discoverySearches(p,book){
+ const term=book?book.title+' '+book.author:[p.genre,p.mood].filter(x=>x&&x!=='any').join(' ')||'books';
+ const q=encodeURIComponent(term),audio=p.format==='audiobook';
+ if(audio&&p.access==='free')return[
+   ['LibriVox (US rights; check locally)','https://librivox.org/search?q='+q],
+   ['WorldCat (check local library audio)','https://search.worldcat.org/search?q='+q]
+ ];
+ if(audio)return[
+   ['Audible','https://www.'+(market()==='BR'?'audible.com.br':'audible.com')+'/search?keywords='+q],
+   ['Apple Books','https://books.apple.com/'+market().toLowerCase()+'/search?term='+q]
+ ];
+ if(p.format==='magazine')return[
+   ['Search official magazine publishers','https://www.google.com/search?q='+encodeURIComponent(term+' magazine official publisher')],
+   ['WorldCat magazine catalogues','https://search.worldcat.org/search?q='+encodeURIComponent(term+' magazine')]
+ ];
+ if(p.access==='free')return[
+   ['Project Gutenberg','https://www.gutenberg.org/ebooks/search/?query='+q],
+   ['Standard Ebooks','https://standardebooks.org/ebooks?query='+q],
+   ['Open Library','https://openlibrary.org/search?q='+q+'&mode=ebooks']
+ ];
+ return[
+   ['Google Books','https://books.google.com/books?q='+q],
+   ['Apple Books','https://books.apple.com/'+market().toLowerCase()+'/search?term='+q]
+ ];
+}
+function renderReadingDiscovery(root,p){
+ const host=root.querySelector('[data-ebook-result]');if(!host)return;
+ const links=discoverySearches(p,null);
+ host.hidden=false;
+ host.innerHTML='<div class="ebook-result-copy ebook-audio-discovery"><h3>📚 '+esc(fallbackCopy('sourceCheck'))+'</h3>'+
+   '<p class="ebook-audio-note">'+esc(fallbackCopy('browse'))+'</p>'+
+   '<div class="ebook-provider-row">'+links.map(([name,url])=>'<a class="ebook-provider" href="'+esc(url)+
+      '" target="_blank" rel="noopener noreferrer">'+esc(name)+' ↗</a>').join('')+'</div>'+
+   '<p class="ebook-rights">'+esc(tr('rights'))+'</p></div>';
+}
 function lang(){const raw=String(window.MATCH_LANG||document.documentElement.lang||navigator.language||'en');if(/^pt/i.test(raw))return'pt-BR';if(/^es/i.test(raw))return'es';if(/^ja/i.test(raw))return'ja';return'en';}
 function tr(k){const l=LABELS[lang()]||LABELS.en;return l[k]||LABELS.en[k]||k;}
 function read(key){try{const v=JSON.parse(localStorage.getItem(key)||'[]');return Array.isArray(v)?v:[]}catch(_){return[]}}
