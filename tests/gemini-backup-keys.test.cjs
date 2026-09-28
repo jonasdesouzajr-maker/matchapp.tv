@@ -1,22 +1,22 @@
 'use strict';
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
 const source=fs.readFileSync(path.join(__dirname,'../supabase/functions/gemini-proxy/index.ts'),'utf8');
-test('OpenAI alone handles adult requests; legacy Gemini chains remain isolated',()=>{
-  assert.match(source,/\"GEMINI_BACKUP_API_KEY_1\"/);
-  assert.match(source,/\"GEMINI_BACKUP_API_KEY_2\"/);
+test('adult OpenRouter then OpenAI then Gemini; Kids retains Gemini key precedence',()=>{
+  assert.match(source,/"OPENROUTER_API_KEY"/);
+  assert.match(source,/"GEMINI_BACKUP_API_KEY_1"/);
+  assert.match(source,/"GEMINI_BACKUP_API_KEY_2"/);
+  const router=source.indexOf('const answer = await callOpenRouterFirst({');
   const open=source.indexOf('const answer = await callOpenAIPrimary({');
   const routing=source.indexOf('const routes = [');
-  assert.ok(open>=0&&open<routing,'OpenAI must always get first attempt');
+  assert.ok(router>=0&&open>router&&routing>open);
   const fallback=source.slice(routing,source.indexOf('let freeProjectBlocked',routing));
   const free=fallback.indexOf('...(freeApiKey ? FREE_MODEL_CHAIN.map');
   const backup=fallback.indexOf('...backupPaidApiKeys.flatMap');
   const original=fallback.indexOf('...(paidApiKey ? MODEL_CHAIN.map');
-  assert.ok(free>=0&&free<backup&&backup<original,'protected Kids and non-adult order unchanged');
-  const guard=source.indexOf('if (openAiEligible) {',source.indexOf('if (answer) return answer;'));
-  assert.ok(guard>=0&&guard<routing,'adult calls terminate without ever reaching Gemini');
-  assert.match(source.slice(guard,routing),/provider:"openai"/);
-  assert.match(source.slice(guard,routing),/status:503/);
-  assert.match(source,/const apiKey = freeApiKey \\|\\| backupPaidApiKeys\\[0\\] \\|\\| paidApiKey/);
+  assert.ok(free>=0&&free<backup&&backup<original);
+  assert.doesNotMatch(source,/TEMPORARY OWNER ROUTING/);
+  assert.doesNotMatch(source,/if \(openAiEligible\) \{\s*return new Response/);
+  assert.match(source,/const apiKey = freeApiKey \|\| backupPaidApiKeys\[0\] \|\| paidApiKey/);
 });
 test('project-wide quota and rejected paid key skip other models on that key',()=>{
   assert.match(source,/const blockedPaidKeys = new Set<string>\(\)/);
@@ -36,15 +36,12 @@ test('each billing-failed paid key yields to a different configured paid project
   assert.doesNotMatch(failureBlock,/console\.(?:warn|log|info|error)\([^\n]*route\.key/,'never log credential material');
 });
 
-test('OpenAI daily reservation cannot be bypassed by adult Gemini fallback',()=>{
+test('OpenAI daily ceiling is independent; Gemini is available if preceding tiers fail',()=>{
+  const router=source.indexOf('const answer = await callOpenRouterFirst({');
   const primary=source.indexOf('const answer = await callOpenAIPrimary({');
   const route=source.indexOf('const routes = [');
-  assert.ok(primary>=0&&route>primary,'OpenAI runs before any Gemini fallback');
+  assert.ok(router>=0&&primary>router&&route>primary);
   assert.match(source.slice(primary,route),/claim_openai_primary_slot/);
   assert.match(source.slice(primary,route),/if \(answer\) return answer/);
-  const loop=source.indexOf('for (const route of routes)');
-  const guard=source.indexOf('if (openAiEligible) {',source.indexOf('if (answer) return answer;'));
-  assert.ok(guard>=0&&guard<route,'adult requests exit before all Gemini routes');
-  assert.ok(loop>guard,'legacy Kids route remains intact');
   assert.match(source,/body\?\.kidsMode !== true/);
 });

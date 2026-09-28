@@ -9,7 +9,7 @@ type OpenAIArgs = {
   blockXXX: (row: Record<string,unknown>) => boolean; explicitXXX: (text: string) => boolean;
   allowedCandidateIds?: string[];
 };
-function schemaFor(mode: SchemaMode) {
+export function schemaFor(mode: SchemaMode) {
   const str = { type: "string" };
   const legacy = {
     type:"object",additionalProperties:false,
