@@ -10,3 +10,21 @@
 .taste-status{margin:10px 0;color:var(--gold,#e5c158)}
 #taste-save{width:100%;padding:14px;margin-top:8px}
 @media(max-width:560px){.taste-q-grid{grid-template-columns:1fr}}
+
+/* Scope form geometry against shared profile input/label styles. */
+#taste-quiz[hidden]{display:none!important}
+#taste-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+#taste-quiz .taste-q{min-width:0;margin:0;padding:8px;border:1px solid #e5c15838}
+#taste-quiz .taste-q-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:5px}
+#taste-quiz label.taste-choice{display:grid;grid-template-columns:18px minmax(0,1fr);align-items:center;gap:8px;margin:0;padding:8px;min-height:44px;width:auto;text-align:start;font-size:.85rem;line-height:1.3;border:1px solid #ffffff1c;border-radius:10px;background:#ffffff05}
+#taste-quiz .taste-choice input{appearance:auto;position:static;width:16px;height:16px;min-width:16px;margin:0;padding:0;accent-color:#e5c158;box-shadow:none;transform:none}
+#taste-quiz .taste-choice:has(input:checked){border-color:#e5c158;background:#e5c15818}
+#taste-quiz .taste-choice:focus-within{outline:2px solid #c7a7ff;outline-offset:2px}
+#taste-edit{width:100%;min-height:44px;margin-bottom:12px}
+#taste-saved-toast{position:fixed;z-index:10000;inset:auto 16px max(20px,env(safe-area-inset-bottom));width:fit-content;max-width:min(520px,calc(100vw - 32px));box-sizing:border-box;margin:0 auto;padding:14px 18px;border:1px solid #e5c158;border-radius:16px;background:#201338;color:#fff3c5;box-shadow:0 8px 32px #0008;pointer-events:none;opacity:0;transition:opacity .35s}
+#taste-saved-toast.is-visible{opacity:1}
+@media(max-width:760px){#taste-form{grid-template-columns:1fr}}
+@media(max-width:359px){#taste-quiz .taste-q-grid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){#taste-saved-toast{transition:none}}
+#taste-quiz .taste-choice span{display:block;min-width:0;text-transform:none;letter-spacing:normal;font-size:.85rem;font-weight:500;text-align:start;line-height:1.35}
+#taste-quiz .taste-q legend{text-align:start;letter-spacing:normal;text-transform:none;font-size:.9rem}

@@ -1690,9 +1690,10 @@ async function runAskAndRender(question) {
         .map(t => ({ role: t.role, text: t.text }));
 
     const bookIntent = detectBookIntent(question);
+    const cookingIntent = !!window.MatchCooking?.isCooking(question);
     let payload, source = 'ai';
     try { payload = await askAIConversational(question, history); }
-    catch (e) { payload = await fallbackSearch(question, !!e.aiUnavailable); source = 'fallback'; }
+    catch (e) { payload = cookingIntent ? {answer: /^pt/i.test(window.MATCH_LANG||'') ? 'A IA está indisponível agora. Explore abaixo as receitas e os vídeos originais dos criadores.' : 'AI is unavailable right now. Explore the original cooking sources and videos below.', results:[], _live:false} : await fallbackSearch(question, !!e.aiUnavailable); source = 'fallback'; }
 
     // Final bounded recovery: if AI parsing, the Edge Function, or the keyless
     // provider returns nothing, reuse the reviewed local catalogue under the
@@ -1702,7 +1703,7 @@ async function runAskAndRender(question) {
     // Never overwrite its answer with an unrelated film-catalogue fallback.
     const wantsTitleRecommendations = !isFactualMediaQuestion(question) &&
         /\b(?:watch|recommend|suggest|stream|movie|movies|film|films|series|shows?|podcast|playlist|music|listen|similar|comedy|horror|romance|recommendation|assistir|filmes?|séries?|recomendar|recomende|indique|películas?)\b/i.test(mediaIntentQuestion(question));
-    if (!bookIntent && wantsTitleRecommendations &&
+    if (!bookIntent && !cookingIntent && wantsTitleRecommendations &&
         (!payload?._live || !String(payload.answer || '').trim()) &&
         (!Array.isArray(payload?.results) || payload.results.length === 0)) {
         const local = catalogFallbackForQuestion(question);
@@ -1768,7 +1769,13 @@ async function runAskAndRender(question) {
     const offlineBadge = document.getElementById('discover-offline-badge');
     if (offlineBadge) offlineBadge.style.display = payload._live ? 'none' : 'inline-flex';
 
+    if(cookingIntent)payload.results=[];
     const bubble = appendAssistantBubble(payload.answer, bookIntent ? [] : (payload.results || []), { instant: false });
+    if(cookingIntent && bubble?.wrap){
+      const sources=document.createElement('section');sources.className='cooking-chat-sources';sources.setAttribute('aria-label','Original cooking sources');
+      const route=document.createElement('a');route.className='gold-btn';route.href='/cooking/?q='+encodeURIComponent(question);route.textContent='Explore original recipes & videos';sources.append(route);
+      window.MatchCooking.channels.forEach(c=>{const p=document.createElement('p'),a=document.createElement('a');a.href=c.url;a.textContent=c.name+' · '+c.specialty;p.append(a);sources.append(p);});bubble.wrap.append(sources);
+    }
     // Only attach the exact numbered TMDB record returned from verified
     // lookup+credits. Plain AI prose and fuzzy title suggestions get no link.
     if(bubble?.wrap && (/^https:\/\/www\.themoviedb\.org\/movie\/\d+$/.test(payload?.verifiedSource||'') || payload?.verifiedSource==='https://www.ghibli.jp/works/chihiro/')) {

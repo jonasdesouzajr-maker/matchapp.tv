@@ -63,10 +63,10 @@
    the maintained shell on the main, profile, pricing and purchase flows. */
 (function(){'use strict';
  const isHome=location.pathname==='/'||location.pathname==='/index.html';
- if(!isHome&&!document.querySelector('link[data-final-audit]')){const l=document.createElement('link');l.rel='stylesheet';l.href='/final-audit.css?v=194';l.dataset.finalAudit='1';document.head.appendChild(l);}
+ if(!isHome&&!document.querySelector('link[data-final-audit]')){const l=document.createElement('link');l.rel='stylesheet';l.href='/final-audit.css?v=20260928-avatar1';l.dataset.finalAudit='1';document.head.appendChild(l);}
  function loadAudit(){
   if(document.querySelector('script[data-final-audit]'))return;
-  const s=document.createElement('script');s.src='/final-audit.js?v=20260926-emailsingle1';s.async=false;s.dataset.finalAudit='1';document.head.appendChild(s);
+  const s=document.createElement('script');s.src='/final-audit.js?v=20260926-emailsingle1&avatar=20260928-1';s.async=false;s.dataset.finalAudit='1';document.head.appendChild(s);
  }
  if(isHome){
   const schedule=()=>setTimeout(()=>{

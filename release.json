@@ -1,21 +1,9 @@
 {
-  "version": "2026.09.27.1",
-  "date": "2026-09-27",
+  "version": "2026.09.28.1",
+  "date": "2026-09-28",
   "functional": true,
   "notes": {
-    "en": "Daily Check-in no longer takes up home-page space. Signed-in members with an available daily reward receive a small premium reminder; a successful claim adds their existing Match reward and a brief See you tomorrow celebration. Dismiss once per session. Kids, AI, and existing reward rules are unchanged.",
-    "pt-BR": "O check-in diário não ocupa mais espaço na página inicial. Quem está conectado e tem um prêmio disponível recebe um lembrete discreto e premium. Após resgatar, o Match é creditado como antes e aparece uma breve animação Até amanhã. O lembrete pode ser fechado. Modo Kids, IA e regras de recompensa continuam iguais.",
-    "es": "El check-in diario ya no ocupa espacio en la página principal. Los usuarios conectados reciben un pequeño recordatorio solo cuando tienen una recompensa disponible y ven un breve Hasta mañana al cobrarla. Kids, IA y las reglas de premios no cambian.",
-    "fr": "Nouveau : Match E-books Ai pour les lecteurs, avec humeur, genre, rythme, longueur, époque, accès gratuit ou payant, sources gratuites légales et boutiques officielles.",
-    "de": "Neu: Match E-books Ai für Leser – nach Stimmung, Genre, Tempo, Länge, Epoche und kostenlosem oder kostenpflichtigem Zugang, mit legalen Gratisquellen und offiziellen Shops.",
-    "it": "Novità: Match E-books Ai per chi ama leggere, con umore, genere, ritmo, lunghezza, epoca, accesso gratuito o a pagamento, fonti gratuite legali e store ufficiali.",
-    "tr": "Yeni: üstte iyileştirme bildirimi, Match’te “Neden bu seçim” satırı ve katalog ipucu, Ask AI’da görünür maliyet, Çocuk Modunda yetişkin doğrulaması ve isteğe bağlı günlük süre sınırı, eşitlenen Kids favorileri ve eğlenceli bir eşleşme kutlaması.",
-    "ru": "Новое: уведомление об улучшениях вверху, строка «Почему этот выбор» и подсказка о подборке в Match, видимая стоимость в Ask AI, проверка взрослого и дневной лимит в детском режиме, синхронизация избранного Kids и весёлое празднование совпадения.",
-    "ar": "جديد: إشعار التحسينات في الأعلى، وسطر «لماذا هذا الاختيار» وتلميح عن المجموعة في Match، وتكلفة واضحة في Ask AI، وتحقق للكبار وحد يومي اختياري في وضع الأطفال، ومزامنة مفضلات الأطفال، واحتفال مرح عند المطابقة.",
-    "hi": "नया: ऊपर सुधार सूचना, Match में “यह चुनाव क्यों” लाइन और संग्रह संकेत, Ask AI में लागत, Kids Mode में बड़ों की जाँच और वैकल्पिक दैनिक समय सीमा, सिंक होने वाले Kids फ़ेवरेट और मज़ेदार मैच उत्सव।",
-    "id": "Baru: pemberitahuan pembaruan di atas, baris “Kenapa pilihan ini” dan petunjuk koleksi di Match, biaya terlihat di Ask AI, pemeriksaan orang dewasa dan batas waktu harian opsional di Mode Anak, favorit Kids tersinkron, dan perayaan match yang seru.",
-    "ja": "新機能：Bookworms 向け Match E-books Ai。気分、ジャンル、ペース、長さ、年代、無料／有料で選び、合法的な無料版や公式ストアへ移動できます。",
-    "ko": "새 기능: 독서가를 위한 Match E-books Ai. 분위기, 장르, 속도, 분량, 시대, 무료/유료 조건으로 매칭하고 합법적인 무료 소스와 공식 스토어로 연결합니다.",
-    "zh": "新功能：面向书迷的 Match E-books Ai。可按心情、类型、节奏、篇幅、年代和免费/付费条件匹配，并前往合法免费来源或官方电子书商店。"
+    "en": "Explore original cooking channels and recipe videos, with cooking help in Ask AI. Your profile avatar now matches the header. Taste DNA is more compact, closes after saving and can be edited in Settings. Vertical swipes over Top Titles scroll the page.",
+    "pt-BR": "Explore canais de culinária e vídeos de receitas originais, com ajuda no Ask AI. O avatar do perfil acompanha o cabeçalho. Taste DNA está mais compacto, fecha ao salvar e pode ser editado nas Configurações. Deslizar verticalmente sobre os títulos agora rola a página."
   }
 }
