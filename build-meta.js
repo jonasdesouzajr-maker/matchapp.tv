@@ -89,7 +89,7 @@ window.MATCHAPP_BUILD = '2026.09.27.1';
     }
     if (path === '/discover.html') {
       document.title = 'Ask AI What to Watch | Movie & TV Concierge | MatchApp';
-      upsertMeta('description', 'Ask MatchApp AI about movies, TV series, e-books, audiobooks and magazines. Find verified streaming, official publishers and legal reading options.');
+      upsertMeta('description', 'Ask MatchApp TV Ai about movies, TV series, e-books, audiobooks and magazines. Find verified streaming, official publishers and legal reading options.');
       upsertMeta('robots', 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1');
       // Describe the public page factually. Do not claim Software/WebApplication
       // rich-result eligibility until MatchApp has genuine review/rating data.
