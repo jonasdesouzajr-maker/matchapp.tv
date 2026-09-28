@@ -52,7 +52,7 @@ Deno.serve(async (req: Request) => {
   if (!await allow(req)) return unavailable(req, 'rate_limited', 429);
   try {
     const showId = request.kind + '/' + request.tmdbId;
-    const url = new URL('https://' + host + '/shows/' + showId);
+    const url = new URL('https://' + host + '/shows/' + encodeURIComponent(showId));
     url.searchParams.set('country', request.country.toLowerCase());
     const response = await fetch(url, { method: 'GET',
       headers: { 'X-RapidAPI-Key': apiKey, 'X-RapidAPI-Host': host, Accept: 'application/json' },
