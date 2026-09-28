@@ -1,4 +1,5 @@
 const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),{JSDOM}=require('jsdom');
+const topic=require('../topic-focus.js');
 const root=path.join(__dirname,'..'),source=fs.readFileSync(path.join(root,'app.js'),'utf8').replace(/\r\n/g,'\n');
 const catalog=vm.runInNewContext(source.match(/const CONTENT_CATALOG = (\[[\s\S]*?\n\]);/)[1]);
 const functionSource=name=>source.match(new RegExp('function '+name+'\\([\\s\\S]*?\\n}\\n'))[0];
@@ -7,18 +8,19 @@ function matching(requested,excluded=[]){
  w.HTMLElement.prototype.scrollIntoView=function(){};
  w.localStorage.setItem('match_seenList',JSON.stringify(excluded));w.eval(fs.readFileSync(path.join(root,'matching-policy.js'),'utf8'));
  w.getMatchCriteria=()=>requested;w.localizeMatchSynopsis=async text=>text;w.showToast=text=>state.messages.push(text);
+ w.MatchAppTopicFocus=topic;
  w.MatchAppCatalogMedia={regionCode:()=>w.__testRegion||'BR'};
  const context=vm.createContext({window:w,document:w.document,CustomEvent:w.CustomEvent,CONTENT_CATALOG:catalog,SESSION_SHOWN:new Set(),isVIP:false,Math,
   isBlockedEntry:()=>false,isSurpriseEligible:entry=>entry.cats.some(c=>['movie','series','limited series','K-drama','novela brasileira','telenovela'].includes(c)),
   tSafe:key=>key,checkDailyLimit:async()=>{state.charges++;return true;},discoverFromITunes:async()=>null,discoverVerifiedExactTMDB:async()=>null,rememberShownTitle:()=>{},renderResult:result=>{state.rendered=result;},setInterval:()=>1,clearInterval:()=>{},setTimeout:fn=>{fn();return 1;},clearTimeout:()=>{},requestAnimationFrame:fn=>{fn();return 1;},cancelAnimationFrame:()=>{},console});
- vm.runInContext(functionSource('normCriteria')+functionSource('regionAvailabilityFits')+functionSource('pickFromCatalog')+functionSource('pickRecycledCatalog')+functionSource('pickGuaranteedCatalog'),context);
+ vm.runInContext(functionSource('normCriteria')+functionSource('isSurpriseEligible')+functionSource('entryAllowedForSelection')+functionSource('regionAvailabilityFits')+functionSource('pickFromCatalog')+functionSource('pickRecycledCatalog')+functionSource('pickGuaranteedCatalog'),context);
  vm.runInContext(source.slice(source.indexOf('const MATCH_SOURCE_DEADLINES'),source.indexOf('// THE RENDER ENGINE')),context);
  return {dom,w,context,state};
 }
 
 test('exact catalogue choices satisfy their selected category, mood, platform, rating and decade',()=>{
  const {dom,w,context}=matching({});let cases=0;
- try{for(const entry of catalog){w.__testRegion=entry.countryCode||'BR';for(const cat of entry.cats){const criteria={cat:[cat],plat:[entry.platform],mood:entry.moods.filter(x=>x!=='any').slice(0,1),vibe:entry.vibes.filter(x=>x!=='any').slice(0,1),rating:entry.ratings.filter(x=>x!=='any').slice(0,1),decade:entry.year?[Math.floor(entry.year/10)*10+'s']:[]};
+ try{for(const entry of catalog){w.__testRegion=entry.countryCode||'BR';for(const cat of entry.cats){if(!topic.allow(entry,[cat]))continue;const criteria={cat:[cat],plat:[entry.platform],mood:entry.moods.filter(x=>x!=='any').slice(0,1),vibe:entry.vibes.filter(x=>x!=='any').slice(0,1),rating:entry.ratings.filter(x=>x!=='any').slice(0,1),decade:entry.year?[Math.floor(entry.year/10)*10+'s']:[]};
  const pick=context.pickFromCatalog(criteria.cat,criteria.plat,criteria.mood,criteria.vibe,criteria.rating,criteria.decade);
  if(cat!=='Gospel & Faith'&&entry.cats.includes('Gospel & Faith'))continue;
  assert(pick,entry.title+' must remain findable');assert(w.matchPolicy.matches(catalog.find(item=>item.title===pick.title),criteria));cases++;

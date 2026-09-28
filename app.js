@@ -2818,9 +2818,10 @@ const CONTENT_CATALOG = [
     { title: "Linus Tech Tips", synopsis: "Chaotic, hands-on PC building, hardware testing and the occasional very expensive mistake.", platform: "YouTube", cats: ["YouTube channel"], moods: ["funny","inspiring"], vibes: ["easy background watch","long running series"], ratings: ["tween PG","teen PG-13","any"] },
     { title: "Mrwhosetheboss", synopsis: "Slick gadget deep-dives and phone comparisons, with a good eye for what is actually worth your money.", platform: "YouTube", cats: ["YouTube channel","YouTube Shorts"], moods: ["inspiring"], vibes: ["easy background watch","fast-paced binge-worthy"], ratings: ["all ages family friendly","tween PG","any"] },
 
-    { title: "Babish Culinary Universe", synopsis: "Recreating dishes from films and television, then teaching you to cook them properly for real.", platform: "YouTube", cats: ["YouTube channel"], moods: ["cozy comfort watch","light and feel-good"], vibes: ["easy background watch","long running series"], ratings: ["all ages family friendly","tween PG","any"] },
-    { title: "Joshua Weissman", synopsis: "Ambitious from-scratch cooking and fast-food remakes, delivered at high speed and higher confidence.", platform: "YouTube", cats: ["YouTube channel","YouTube Shorts"], moods: ["light and feel-good","funny"], vibes: ["fast-paced binge-worthy","easy background watch"], ratings: ["teen PG-13","tween PG","any"] },
-    { title: "Maangchi", synopsis: "Warm, authoritative Korean home cooking, from kimchi to tteokbokki, taught with infectious joy.", platform: "YouTube", cats: ["YouTube channel"], moods: ["cozy comfort watch","light and feel-good"], vibes: ["easy background watch","hidden gem underrated"], ratings: ["all ages family friendly","any"] },
+    { title: "Babish Culinary Universe", synopsis: "Recreating dishes from films and television, then teaching you to cook them properly for real.", platform: "YouTube", cats: ["YouTube channel","Cooking & Recipes"], moods: ["cozy comfort watch","light and feel-good"], vibes: ["easy background watch","long running series"], topicKeywords: ["cooking videos","film-inspired recipes","home cooking tutorials"], ratings: ["all ages family friendly","tween PG","any"] },
+    { title: "Joshua Weissman", synopsis: "Ambitious from-scratch cooking and fast-food remakes, delivered at high speed and higher confidence.", platform: "YouTube", cats: ["YouTube channel","YouTube Shorts","Cooking & Recipes"], moods: ["light and feel-good","funny"], vibes: ["fast-paced binge-worthy","easy background watch"], topicKeywords: ["from-scratch cooking videos","recipe tutorials","restaurant-style home cooking"], ratings: ["teen PG-13","tween PG","any"] },
+    { title: "Maangchi", synopsis: "Warm, authoritative Korean home cooking, from kimchi to tteokbokki, taught with infectious joy.", platform: "YouTube", cats: ["YouTube channel","Cooking & Recipes"], moods: ["cozy comfort watch","light and feel-good"], vibes: ["easy background watch","hidden gem underrated"], topicKeywords: ["Korean home cooking","kimchi tutorial","traditional Korean recipes"], ratings: ["all ages family friendly","any"] },
+    { title: "America's Test Kitchen", country: "United States", countryCode: "US", synopsis: "Recipe demonstrations, tested home-cooking techniques and kitchen-equipment explainers from the America's Test Kitchen editorial team. Selected videos are available on YouTube; complete recipes and full seasons may require a membership.", platform: "YouTube", cats: ["YouTube channel","Cooking & Recipes"], moods: ["inspiring","cozy comfort watch"], vibes: ["easy background watch","long running series"], ratings: ["any"], topicKeywords: ["tested recipes","cooking technique tutorials","kitchen science","how to cook"], verifiedSource: "https://support.americastestkitchen.com/hc/en-us/articles/30628429082523-How-to-Watch-America-s-Test-Kitchen-s-Shows" },
 
     { title: "OverSimplified", synopsis: "Entire wars and revolutions compressed into fast, funny animated history that somehow still teaches you the facts.", platform: "YouTube", cats: ["YouTube channel","documentary"], moods: ["funny","epic and adventurous"], vibes: ["fast-paced binge-worthy","one sitting short watch"], ratings: ["tween PG","teen PG-13","any"] },
     { title: "Kings and Generals", synopsis: "Animated military history walking through ancient and medieval campaigns battle by battle.", platform: "YouTube", cats: ["YouTube channel","documentary"], moods: ["epic and adventurous","intense and thrilling"], vibes: ["slow burn","long running series"], ratings: ["teen PG-13","tween PG","any"] },
@@ -2835,12 +2836,12 @@ const CONTENT_CATALOG = [
     { title: "Markiplier", synopsis: "Horror games, absurd challenges and a comedy sensibility that turned a gaming channel into a whole production house.", platform: "YouTube", cats: ["YouTube channel"], moods: ["funny","scary"], vibes: ["long running series","easy background watch"], ratings: ["teen PG-13","mature adults only R rated","any"] },
     { title: "Jacksepticeye", synopsis: "High-energy gaming and commentary from an Irish creator with one of the platform's most loyal communities.", platform: "YouTube", cats: ["YouTube channel"], moods: ["funny","light and feel-good"], vibes: ["easy background watch","long running series"], ratings: ["teen PG-13","any"] },
 
-    { title: "NPR Tiny Desk Concerts", synopsis: "Stripped-back live sets performed behind an office desk, where great artists have nowhere to hide.", platform: "YouTube", cats: ["YouTube channel"], moods: ["cozy comfort watch","inspiring"], vibes: ["easy background watch","prestige and critically acclaimed"], ratings: ["all ages family friendly","teen PG-13","any"] },
-    { title: "Lofi Girl", synopsis: "The endless lo-fi study stream: relaxed beats and a girl who has been doing homework since 2017.", platform: "YouTube", cats: ["YouTube channel"], moods: ["cozy comfort watch","nostalgic"], vibes: ["easy background watch","long running series"], ratings: ["all ages family friendly","any"] },
-    { title: "T-Series", synopsis: "The Bollywood music powerhouse behind a huge share of Hindi film soundtracks and chart hits.", platform: "YouTube", cats: ["YouTube channel","Bollywood"], moods: ["romantic","epic and adventurous"], vibes: ["long running series","easy background watch"], ratings: ["all ages family friendly","teen PG-13","any"] },
+    { title: "NPR Tiny Desk Concerts", synopsis: "Stripped-back live sets performed behind an office desk, where great artists have nowhere to hide.", platform: "YouTube", cats: ["YouTube channel","Music & Concerts"], moods: ["cozy comfort watch","inspiring"], vibes: ["easy background watch","prestige and critically acclaimed"], ratings: ["all ages family friendly","teen PG-13","any"] },
+    { title: "Lofi Girl", synopsis: "The endless lo-fi study stream: relaxed beats and a girl who has been doing homework since 2017.", platform: "YouTube", cats: ["YouTube channel","Music & Concerts"], moods: ["cozy comfort watch","nostalgic"], vibes: ["easy background watch","long running series"], ratings: ["all ages family friendly","any"] },
+    { title: "T-Series", synopsis: "The Bollywood music powerhouse behind a huge share of Hindi film soundtracks and chart hits.", platform: "YouTube", cats: ["YouTube channel","Bollywood","Music & Concerts"], moods: ["romantic","epic and adventurous"], vibes: ["long running series","easy background watch"], ratings: ["all ages family friendly","teen PG-13","any"] },
 
     { title: "The Joy of Painting with Bob Ross", synopsis: "Happy little trees, a soothing voice and the most calming half hour on the internet.", platform: "YouTube", cats: ["YouTube channel"], moods: ["cozy comfort watch","nostalgic"], vibes: ["easy background watch","long running series"], ratings: ["all ages family friendly","kids","any"] },
-    { title: "Yoga With Adriene", synopsis: "Approachable, no-pressure yoga sessions for every level, from a quick stretch to a full practice.", platform: "YouTube", cats: ["YouTube channel"], moods: ["cozy comfort watch","inspiring"], vibes: ["easy background watch","long running series"], ratings: ["all ages family friendly","any"] },
+    { title: "Yoga With Adriene", synopsis: "Approachable, no-pressure yoga sessions for every level, from a quick stretch to a full practice.", platform: "YouTube", cats: ["YouTube channel","Fitness & Wellness"], moods: ["cozy comfort watch","inspiring"], vibes: ["easy background watch","long running series"], ratings: ["all ages family friendly","any"] },
 
     { title: "Bailey Sarian: Dark History", synopsis: "True crime and buried history told conversationally, half storytelling and half makeup tutorial.", platform: "YouTube", cats: ["YouTube channel","documentary"], moods: ["dark and gritty","intense and thrilling"], vibes: ["easy background watch","based on a true story"], ratings: ["mature adults only R rated","teen PG-13","any"] },
     { title: "LEMMiNO", synopsis: "Meticulously researched mysteries and unsolved cases, narrated calmly over beautiful editing.", platform: "YouTube", cats: ["YouTube channel","documentary"], moods: ["mind-bending","scary"], vibes: ["slow burn","hidden gem underrated"], ratings: ["teen PG-13","any"] },
@@ -2857,16 +2858,16 @@ const CONTENT_CATALOG = [
     { title: "Hell's Paradise", year: 2023, country: "Japan", countryCode: "JP", synopsis: "An amnesiac ninja sentenced to death is offered a pardon if he can find a legendary elixir on a mysterious island \u2014 one guarded by monsters far worse than any executioner.", platform: "Crunchyroll", cats: ["anime","series"], moods: ["dark and gritty","intense and thrilling"], vibes: ["fast-paced binge-worthy"], ratings: ["mature adults only R rated","any"] },
     { title: "The Last House", year: 2026, country: "United States", countryCode: "US", synopsis: "A family finds every door and window in their home sealed shut by an inexplicable force, and must find a way to survive as supplies run out and no rescue comes.", platform: "Netflix", cats: ["movie"], moods: ["intense and thrilling","mind-bending"], vibes: ["fast-paced binge-worthy"], ratings: ["teen PG-13","any"] },
     // ---- FITNESS & WORKOUT (YouTube) ----
-    { title: "Fitness Blender", country: "United States", countryCode: "US", synopsis: "Husband-and-wife team Daniel and Kelli publish hundreds of full-length, equipment-optional workouts with no subscription and no upsell.", platform: "YouTube", cats: ["YouTube channel"], moods: ["inspiring"], vibes: ["easy background watch"], ratings: ["all ages family friendly","tween PG","teen PG-13","any"] },
-    { title: "Blogilates", country: "United States", countryCode: "US", synopsis: "Cassey Ho's Pilates-led channel, one of the longest-running fitness brands on the platform, mixing workouts with food and body-image honesty.", platform: "YouTube", cats: ["YouTube channel"], moods: ["light and feel-good","inspiring"], vibes: ["easy background watch"], ratings: ["all ages family friendly","tween PG","teen PG-13","any"] },
-    { title: "Walk at Home by Leslie Sansone", country: "United States", countryCode: "US", synopsis: "The original indoor walking workout, running for over thirty years — low-impact routines you can do in a few square feet of floor.", platform: "YouTube", cats: ["YouTube channel"], moods: ["light and feel-good"], vibes: ["easy background watch"], ratings: ["all ages family friendly","any"] },
-    { title: "HASfit", country: "United States", countryCode: "US", synopsis: "Coach Kozak and Claudia run free full-length workouts scaled for every level, with a modifier demonstrated in almost every video.", platform: "YouTube", cats: ["YouTube channel"], moods: ["inspiring"], vibes: ["easy background watch"], ratings: ["all ages family friendly","tween PG","teen PG-13","any"] },
-    { title: "Sydney Cummings Houdyshell", country: "United States", countryCode: "US", synopsis: "A new full-length strength or conditioning workout published every single day, programmed in monthly blocks you can follow like a plan.", platform: "YouTube", cats: ["YouTube channel"], moods: ["intense and thrilling","inspiring"], vibes: ["fast-paced binge-worthy"], ratings: ["teen PG-13","any"] },
-    { title: "Lucy Wyndham-Read", country: "United Kingdom", countryCode: "GB", synopsis: "Short, beginner-friendly routines built around walking, low-impact cardio and quick sessions that fit into a normal day.", platform: "YouTube", cats: ["YouTube channel"], moods: ["light and feel-good"], vibes: ["easy background watch"], ratings: ["all ages family friendly","any"] },
-    { title: "The Fitness Marshall", country: "United States", countryCode: "US", synopsis: "Dance cardio to current pop tracks, played for joy rather than discipline — closer to a living-room party than a workout.", platform: "YouTube", cats: ["YouTube channel"], moods: ["funny","light and feel-good"], vibes: ["easy background watch","guilty pleasure"], ratings: ["tween PG","teen PG-13","any"] },
-    { title: "growwithjo", country: "Malaysia", countryCode: "MY", synopsis: "Joanna Soh's walking and home workouts aimed squarely at beginners, with an emphasis on routines that need no equipment at all.", platform: "YouTube", cats: ["YouTube channel"], moods: ["light and feel-good","inspiring"], vibes: ["easy background watch"], ratings: ["all ages family friendly","any"] },
-    { title: "MadFit", country: "Canada", countryCode: "CA", synopsis: "Apartment-friendly workouts choreographed to full songs, designed to be quiet enough not to annoy the neighbours below.", platform: "YouTube", cats: ["YouTube channel"], moods: ["light and feel-good"], vibes: ["fast-paced binge-worthy"], ratings: ["tween PG","teen PG-13","any"] },
-    { title: "Pamela Reif", country: "Germany", countryCode: "DE", synopsis: "Silent, no-talking workout sets timed to music, from ten-minute abs to full-length HIIT, with a follow-along format and no chat.", platform: "YouTube", cats: ["YouTube channel"], moods: ["intense and thrilling"], vibes: ["fast-paced binge-worthy"], ratings: ["teen PG-13","any"] },
+    { title: "Fitness Blender", country: "United States", countryCode: "US", synopsis: "Husband-and-wife team Daniel and Kelli publish hundreds of full-length, equipment-optional workouts with no subscription and no upsell.", platform: "YouTube", cats: ["YouTube channel","Fitness & Wellness"], moods: ["inspiring"], vibes: ["easy background watch"], ratings: ["all ages family friendly","tween PG","teen PG-13","any"] },
+    { title: "Blogilates", country: "United States", countryCode: "US", synopsis: "Cassey Ho's Pilates-led channel, one of the longest-running fitness brands on the platform, mixing workouts with food and body-image honesty.", platform: "YouTube", cats: ["YouTube channel","Fitness & Wellness"], moods: ["light and feel-good","inspiring"], vibes: ["easy background watch"], ratings: ["all ages family friendly","tween PG","teen PG-13","any"] },
+    { title: "Walk at Home by Leslie Sansone", country: "United States", countryCode: "US", synopsis: "The original indoor walking workout, running for over thirty years — low-impact routines you can do in a few square feet of floor.", platform: "YouTube", cats: ["YouTube channel","Fitness & Wellness"], moods: ["light and feel-good"], vibes: ["easy background watch"], ratings: ["all ages family friendly","any"] },
+    { title: "HASfit", country: "United States", countryCode: "US", synopsis: "Coach Kozak and Claudia run free full-length workouts scaled for every level, with a modifier demonstrated in almost every video.", platform: "YouTube", cats: ["YouTube channel","Fitness & Wellness"], moods: ["inspiring"], vibes: ["easy background watch"], ratings: ["all ages family friendly","tween PG","teen PG-13","any"] },
+    { title: "Sydney Cummings Houdyshell", country: "United States", countryCode: "US", synopsis: "A new full-length strength or conditioning workout published every single day, programmed in monthly blocks you can follow like a plan.", platform: "YouTube", cats: ["YouTube channel","Fitness & Wellness"], moods: ["intense and thrilling","inspiring"], vibes: ["fast-paced binge-worthy"], ratings: ["teen PG-13","any"] },
+    { title: "Lucy Wyndham-Read", country: "United Kingdom", countryCode: "GB", synopsis: "Short, beginner-friendly routines built around walking, low-impact cardio and quick sessions that fit into a normal day.", platform: "YouTube", cats: ["YouTube channel","Fitness & Wellness"], moods: ["light and feel-good"], vibes: ["easy background watch"], ratings: ["all ages family friendly","any"] },
+    { title: "The Fitness Marshall", country: "United States", countryCode: "US", synopsis: "Dance cardio to current pop tracks, played for joy rather than discipline — closer to a living-room party than a workout.", platform: "YouTube", cats: ["YouTube channel","Fitness & Wellness"], moods: ["funny","light and feel-good"], vibes: ["easy background watch","guilty pleasure"], ratings: ["tween PG","teen PG-13","any"] },
+    { title: "growwithjo", country: "Malaysia", countryCode: "MY", synopsis: "Joanna Soh's walking and home workouts aimed squarely at beginners, with an emphasis on routines that need no equipment at all.", platform: "YouTube", cats: ["YouTube channel","Fitness & Wellness"], moods: ["light and feel-good","inspiring"], vibes: ["easy background watch"], ratings: ["all ages family friendly","any"] },
+    { title: "MadFit", country: "Canada", countryCode: "CA", synopsis: "Apartment-friendly workouts choreographed to full songs, designed to be quiet enough not to annoy the neighbours below.", platform: "YouTube", cats: ["YouTube channel","Fitness & Wellness"], moods: ["light and feel-good"], vibes: ["fast-paced binge-worthy"], ratings: ["tween PG","teen PG-13","any"] },
+    { title: "Pamela Reif", country: "Germany", countryCode: "DE", synopsis: "Silent, no-talking workout sets timed to music, from ten-minute abs to full-length HIIT, with a follow-along format and no chat.", platform: "YouTube", cats: ["YouTube channel","Fitness & Wellness"], moods: ["intense and thrilling"], vibes: ["fast-paced binge-worthy"], ratings: ["teen PG-13","any"] },
     { title: "Chloe Ting", country: "Australia", countryCode: "AU", synopsis: "Free structured challenge programmes with a calendar to follow, which is what turned her short at-home routines into a global habit.", platform: "YouTube", cats: ["YouTube channel"], moods: ["intense and thrilling","inspiring"], vibes: ["fast-paced binge-worthy"], ratings: ["teen PG-13","any"] },
     { title: "POPSUGAR Fitness", country: "United States", countryCode: "US", synopsis: "Studio-style classes across dance, HIIT, strength and cardio, taught by rotating professional instructors.", platform: "YouTube", cats: ["YouTube channel"], moods: ["light and feel-good"], vibes: ["easy background watch"], ratings: ["all ages family friendly","tween PG","any"] },
 
@@ -3040,13 +3041,13 @@ const PLATFORMS = {
     "Pure Flix":      { group: "Faith & Gospel", audio: false, countries: ['*'], cats: ["Gospel & Faith"], url: "https://pureflix.com", search: t => `https://pureflix.com/search?q=${encodeURIComponent(t)}` },
     "Angel Studios":  { group: "Faith & Gospel", audio: false, countries: ['*'], cats: ["Gospel & Faith"], url: "https://www.angel.com", search: t => `https://www.angel.com/search?q=${encodeURIComponent(t)}` },
 
-    "Spotify":        { group: "Audio", audio: true, countries: ['*'], cats: ["podcast","Spotify playlist","Spotify single","music album","audiobook","Gospel & Faith"], url: "https://open.spotify.com", search: t => `https://open.spotify.com/search/${encodeURIComponent(t)}` },
+    "Spotify":        { group: "Audio", audio: true, countries: ['*'], cats: ["podcast","Spotify playlist","Spotify single","music album","music artist","audiobook","Gospel & Faith"], url: "https://open.spotify.com", search: t => `https://open.spotify.com/search/${encodeURIComponent(t)}` },
     "Apple Music":    { group: "Audio", audio: true, countries: ['*'], cats: ["Spotify single","music album","Spotify playlist","Gospel & Faith"], url: "https://music.apple.com", search: t => `https://music.apple.com/search?term=${encodeURIComponent(t)}` },
     "Apple Podcasts": { group: "Audio", audio: true, countries: ['*'], cats: ["podcast","audiobook"], url: "https://podcasts.apple.com", search: t => `https://podcasts.apple.com/search?term=${encodeURIComponent(t)}` },
     "YouTube Music":  { group: "Audio", audio: true, countries: ['*'], cats: ["Spotify playlist","Spotify single","music album"], url: "https://music.youtube.com", search: t => `https://music.youtube.com/search?q=${encodeURIComponent(t)}` },
     "Audible":        { group: "Audio", audio: true, countries: ['*'], cats: ["audiobook","podcast"], url: "https://www.audible.com", search: t => `https://www.audible.com/search?keywords=${encodeURIComponent(t)}` },
 
-    "YouTube":        { group: "Free / Ad-Supported", audio: false, countries: ['*'], cats: ["movie","series","documentary","short film","stand-up comedy special","kids","YouTube Shorts","podcast"], url: "https://www.youtube.com", search: t => `https://www.youtube.com/results?search_query=${encodeURIComponent(t)}` },
+    "YouTube":        { group: "Free / Ad-Supported", audio: false, countries: ['*'], cats: ["movie","series","documentary","short film","stand-up comedy special","kids","YouTube channel","YouTube Shorts","Cooking & Recipes","Fitness & Wellness","Music & Concerts","podcast"], url: "https://www.youtube.com", search: t => `https://www.youtube.com/results?search_query=${encodeURIComponent(t)}` },
     "Tubi":           { group: "Free / Ad-Supported", audio: false, countries: ['United States','Canada','Mexico','Brazil','Brasil'], cats: ["movie","series","documentary","anime","kids","Nollywood"], url: "https://tubitv.com", search: t => `https://tubitv.com/search/${encodeURIComponent(t)}` },
     "Pluto TV":       { group: "Free / Ad-Supported", audio: false, countries: ['*'], cats: ["movie","series","documentary","reality show","kids","telenovela"], url: "https://pluto.tv", search: t => `https://pluto.tv/en/search/details?q=${encodeURIComponent(t)}` },
     "Roku Channel":   { group: "Free / Ad-Supported", audio: false, countries: ['United States','Canada','United Kingdom'], cats: ["movie","series","documentary","reality show","kids"], url: "https://therokuchannel.roku.com", search: t => `https://therokuchannel.roku.com/search/${encodeURIComponent(t)}` }
@@ -3093,6 +3094,8 @@ function platformsFor(cat, country) {
         // automatically the moment a title on it is added.
         if (stocked.size && !stocked.has(name)) return false;
         if (!platformServesCountry(pf, country)) return false;
+        // Audio services are not Surprise Me filters: choose music or audio first.
+        if ((!cat || cat === 'any') && pf.audio) return false;
         if (!cat || cat === 'any') return true;
         return pf.cats.includes(cat);
     });
@@ -3882,12 +3885,8 @@ function rememberShownTitle(title) {
 // added to the catalogue from now on is opt-in by default and has to be named
 // here on purpose to join the surprise pool. The safe direction is the default.
 const SURPRISE_ME_CATEGORIES = new Set([
-    'movie',
-    'series',
-    'limited series',
-    'K-drama',
-    'novela brasileira',
-    'telenovela'
+    'movie', 'series', 'limited series', 'K-drama',
+    'novela brasileira', 'telenovela', 'YouTube channel'
 ]);
 
 // True when the entry can appear in an unfiltered "surprise me" draw. It needs
@@ -3896,7 +3895,17 @@ const SURPRISE_ME_CATEGORIES = new Set([
 // movies over time as cross-tagging grows.
 function isSurpriseEligible(entry) {
     if (!entry || !Array.isArray(entry.cats)) return false;
-    return entry.cats.some(c => SURPRISE_ME_CATEGORIES.has(c));
+    if (typeof window !== 'undefined' && window.MatchAppTopicFocus)
+        return window.MatchAppTopicFocus.allow(entry, []);
+    // If the topic module fails to load, generic YouTube cannot leak into Surprise Me.
+    return !entry.cats.includes('YouTube channel') &&
+        entry.cats.some(c => c !== 'YouTube channel' && SURPRISE_ME_CATEGORIES.has(c));
+}
+function entryAllowedForSelection(entry, cat) {
+    if (typeof window !== 'undefined' && window.MatchAppTopicFocus)
+        return window.MatchAppTopicFocus.allow(entry, cat);
+    // Unknown specialist topics never fall back to unrelated content.
+    return normCriteria(cat).length ? false : isSurpriseEligible(entry);
 }
 
 // ----------------------------------------------------
@@ -3979,7 +3988,7 @@ async function rankVerifiedCuratedMatch(requested) {
        entryPassesPreferenceExclusions(e)&&regionAvailabilityFits(e,criteria)&&!isBlockedEntry(e)&&
        !SESSION_SHOWN.has(e.title)&&
        (wantedFaith||!e.cats.includes('Gospel & Faith'))&&
-       (normCriteria(requested.cat).length||isSurpriseEligible(e)));
+       entryAllowedForSelection(e,requested.cat));
     if(!eligible.length)return null;
     const offset=Math.floor(Math.random()*eligible.length);
     const rotated=eligible.slice(offset).concat(eligible.slice(0,offset));
@@ -4019,7 +4028,7 @@ function pickFromCatalog(cat, plat, mood, vibe, rating, decade) {
         && (typeof entryPassesPreferenceExclusions!=='function'||entryPassesPreferenceExclusions(e))
         && regionAvailabilityFits(e,criteria) && !isBlockedEntry(e) && !SESSION_SHOWN.has(e.title)
         && (wantsFaith || !e.cats.includes('Gospel & Faith'))
-        && (normCriteria(cat).length || isSurpriseEligible(e));
+        && entryAllowedForSelection(e,cat);
 
     // recentTitles has been persisted to localStorage all along and never
     // consulted here, which is why the same title could come back straight
@@ -4073,7 +4082,7 @@ function pickRecycledCatalog(cat, plat, mood, vibe, rating, decade) {
         && (typeof entryPassesPreferenceExclusions!=='function'||entryPassesPreferenceExclusions(e))
         && regionAvailabilityFits(e,criteria) && !isBlockedEntry(e)
         && (wantsFaith || !e.cats.includes('Gospel & Faith'))
-        && (normCriteria(cat).length || isSurpriseEligible(e));
+        && entryAllowedForSelection(e,cat);
 
     // Watch Later and Not For Me are deliberate user choices, not ordinary
     // match history. They stay hard exclusions even when we recycle older
@@ -4196,6 +4205,7 @@ function pickGuaranteedCatalog(cat, plat, mood, vibe, rating, decade) {
 
     const allowed = entry => {
         if (!entry || !entry.title) return false;
+        if (!entryAllowedForSelection(entry,requested.cat)) return false;
         if (typeof titlePassesRealGenre==='function' && !titlePassesRealGenre(entry)) return false;
         if (typeof entryPassesPreferenceExclusions==='function' && !entryPassesPreferenceExclusions(entry)) return false;
         const k = policy.key(entry.title);
@@ -4401,6 +4411,12 @@ window.triggerMatch = async function(isSpecificSearch = false) {
     let timerInterval = setInterval(updateMatchProgress, 100);
     window.__matchappActiveProgressTimer=timerInterval;
 
+    // Specialist selections never consult movie-only fallbacks. They must
+    // receive an exact curated item (or an honest source-unavailable state).
+    const specialistTopic=normCriteria(requested.cat).some(cat=>
+        ['Cooking & Recipes','Fitness & Wellness','Spotify playlist','Spotify single',
+         'Apple Music playlist','music album','music artist','Music & Concerts',
+         'Classical Music','podcast','audiobook','News','Sports'].includes(cat));
     let preflight = null;
     if(!isSpecificSearch && window.MatchAppAIRank?.rank){
         try{preflight=await withMatchSourceDeadline(()=>rankVerifiedCuratedMatch(requested),45000);}
@@ -4413,12 +4429,12 @@ window.triggerMatch = async function(isSpecificSearch = false) {
     // exhausted, ask the verified source layer for a genuinely fresh title.
     // If the curated shelf is exhausted, request OpenAI-led proposals first;
     // independent TMDB lookup verifies every suggested title before display.
-    if (!isSpecificSearch && !preflight && typeof aiProposedVerifiedExact === 'function') {
+    if (!isSpecificSearch && !preflight && !specialistTopic && typeof aiProposedVerifiedExact === 'function') {
         try { preflight=await withMatchSourceDeadline(()=>aiProposedVerifiedExact(requested),MATCH_SOURCE_DEADLINES.ai); }
         catch(_){preflight=null;}
     }
     // A source-first TMDB search remains the mandatory independent fallback.
-    if (!isSpecificSearch && !preflight) {
+    if (!isSpecificSearch && !preflight && !specialistTopic) {
         try { preflight = await withMatchSourceDeadline(()=>discoverVerifiedExactTMDB(requested),MATCH_SOURCE_DEADLINES.tmdb); } catch (_) { preflight = null; }
     }
     // iTunes is a real-source fallback only when no third-party platform,
@@ -4427,6 +4443,8 @@ window.triggerMatch = async function(isSpecificSearch = false) {
         try { preflight = await withMatchSourceDeadline(()=>discoverFromITunes(requested.cat,requested.mood,requested.vibe,requested.decade,requested.rating),MATCH_SOURCE_DEADLINES.itunes); }
         catch (_) { preflight = null; }
     }
+    // An external result never gets to override a topic picked by the user.
+    if (!isSpecificSearch && preflight && !entryAllowedForSelection(preflight,requested.cat)) preflight=null;
     // Never dead-end ordinary matching because every fresh exact candidate has
     // already been shown or a live source is temporarily unavailable. Recycle
     // an exact eligible catalogue title first; only then use the existing

@@ -45,6 +45,25 @@
     ];
 
     const STORE_KEY = 'match_criteria_v1';
+    const TOPIC_QUICK = [
+        {id:'surprise',cat:[],en:'🎲 Surprise Me',pt:'🎲 Surpreenda-me',es:'🎲 Sorpréndeme'},
+        {id:'screen',cat:['movie','series','telenovela'],en:'🎬 Movies & TV',pt:'🎬 Filmes e séries',es:'🎬 Cine y series'},
+        {id:'youtube',cat:['YouTube channel'],en:'▶ YouTube Shows',pt:'▶ Vídeos YouTube',es:'▶ Vídeos YouTube'},
+        {id:'cooking',cat:['Cooking & Recipes'],en:'🍳 Cooking',pt:'🍳 Culinária',es:'🍳 Cocina'},
+        {id:'spotify',cat:['Spotify playlist'],en:'🎵 Spotify Playlists',pt:'🎵 Playlists Spotify',es:'🎵 Listas Spotify'}
+    ];
+    function focusGroup(cats) {
+        return window.MatchAppTopicFocus?.TOPICS?.[cats?.[0]] || 'screen';
+    }
+    function normalizeCategories(preferred) {
+        if(window.MatchAppTopicFocus)state.cat=window.MatchAppTopicFocus.normalizeSelection(state.cat,preferred);
+    }
+    function resetIncompatibleFilters(oldGroup,newGroup) {
+        if(oldGroup===newGroup)return;
+        // TMDB-only genre/era checks must not silently empty an audio or recipe request.
+        ['plat','genre','rating','decade'].forEach(k=>{state[k]=[];});
+        // Keep mood and pace when switching: they remain deliberate preferences.
+    }
 
     /* Categories that only ever match when explicitly ticked. Mirrors the
        inverse of SURPRISE_ME_CATEGORIES in app.js. Used purely to mark the
@@ -53,7 +72,8 @@
     const OPT_IN_MARKED = new Set([
         'News', 'Sports', 'Classical Music', 'Gospel & Faith',
         'podcast', 'Spotify playlist', 'Spotify single', 'music album',
-        'audiobook', 'YouTube channel', 'YouTube Shorts', 'documentary'
+        'audiobook', 'YouTube Shorts', 'documentary', 'Cooking & Recipes',
+        'Fitness & Wellness', 'Music & Concerts', 'music artist', 'Apple Music playlist'
     ]);
 
     const state = Object.create(null);
@@ -88,13 +108,25 @@
        saved preset, the Together flow). */
     window.setMatchCriteria = function (patch) {
         if (!patch) return;
+        const before=focusGroup(state.cat);
+        // When a deep link provides category AND platform in one patch, clear
+        // only stale filters first; never erase the platform explicitly supplied.
+        if ('cat' in patch) {
+            const v = patch.cat;
+            state.cat = (Array.isArray(v) ? v : [v])
+                .map(x => String(x || '').trim())
+                .filter(x => x && x !== 'any');
+            normalizeCategories();
+            resetIncompatibleFilters(before,focusGroup(state.cat));
+        }
         FIELDS.forEach(f => {
-            if (!(f.key in patch)) return;
+            if (f.key === 'cat' || !(f.key in patch)) return;
             const v = patch[f.key];
             state[f.key] = (Array.isArray(v) ? v : [v])
                 .map(x => String(x || '').trim())
                 .filter(x => x && x !== 'any');
         });
+        normalizeCategories();
         reconcileConflicts();
         save();
         renderAll();
@@ -135,8 +167,12 @@
 
     function toggle(key, value, sel) {
         const list = state[key];
-        const at = list.indexOf(value);
+        const at = list.indexOf(value), before=focusGroup(state.cat);
         if (at >= 0) list.splice(at, 1); else if (!window.matchPolicy?.incompatible(value,state)) list.push(value);
+        if(key==='cat'){
+            normalizeCategories(at < 0 ? value : undefined);
+            resetIncompatibleFilters(before,focusGroup(state.cat));
+        }
         save();
         syncSelect(sel, key);
         renderAll();
@@ -376,6 +412,7 @@
 
     function renderAll() {
         const old=JSON.stringify(state);
+        normalizeCategories();
         reconcileConflicts();
         let changed = JSON.stringify(state)!==old;
         FIELDS.forEach(f => {
@@ -387,6 +424,84 @@
             }
         });
         if (changed) save();
+        syncTopicQuick();
+    }
+
+    function quickLabel(row){
+        const lang=String(window.MATCH_LANG||document.documentElement.lang||'en').toLowerCase();
+        return lang.startsWith('pt')?row.pt:lang.startsWith('es')?row.es:row.en;
+    }
+    function syncTopicQuick() {
+        const host=document.getElementById('matchapp-topic-shortcuts');
+        if(!host)return;
+        const selected=state.cat;
+        let active=false;
+        host.querySelectorAll('button[data-topic]').forEach(btn=>{
+            const preset=TOPIC_QUICK.find(row=>row.id===btn.dataset.topic);
+            const on=!!preset && selected.length===preset.cat.length &&
+                selected.every(x=>preset.cat.includes(x));
+            if(on)active=true;
+            btn.setAttribute('aria-pressed',on?'true':'false');
+            btn.classList.toggle('is-active',on);
+            if(preset)btn.textContent=quickLabel(preset);
+        });
+        const detail=document.getElementById('matchapp-topic-description');
+        if(detail){
+            if(!selected.length)detail.textContent=tr('topic.surprise',
+              'Surprise Me finds movies, TV series, telenovelas or curated entertainment YouTube channels. Cooking, fitness, music and podcasts appear only when you select them.');
+            else if(selected.includes('Cooking & Recipes'))detail.textContent=tr('topic.cooking',
+              'Cooking only: discover cooking videos and trusted recipe channels, not unrelated movies or playlists.');
+            else if(selected.includes('Spotify playlist'))detail.textContent=tr('topic.spotify',
+              'Music only: find Spotify playlists that match your selected mood and preferences.');
+            else if(selected.includes('YouTube channel'))detail.textContent=tr('topic.youtube',
+              'Entertainment YouTube channels only. Choose Cooking or another topic for specialist tutorials.');
+            else detail.textContent=tr('topic.selected','Only content matching your selected category is considered.');
+        }
+        const more=host.querySelector('[data-topic-more]');
+        if(more){more.classList.toggle('is-active',!active&&!!selected.length);
+            more.setAttribute('aria-pressed',(!active&&!!selected.length)?'true':'false');}
+    }
+    function mountTopicQuick(){
+        const form=document.getElementById('questionnaire-box');
+        if(!form||document.getElementById('matchapp-topic-shortcuts'))return;
+        const primary=form.querySelector('.q-grid--primary');
+        if(!primary)return;
+        const host=document.createElement('div');
+        host.className='matchapp-topic-shortcuts';
+        host.id='matchapp-topic-shortcuts';
+        host.setAttribute('role','group');
+        host.setAttribute('aria-label','Choose what you want MatchApp to find');
+        TOPIC_QUICK.forEach(row=>{
+            const btn=document.createElement('button');
+            btn.type='button';btn.dataset.topic=row.id;btn.className='matchapp-topic-choice';
+            btn.textContent=quickLabel(row);
+            btn.addEventListener('click',()=>{
+                window.setMatchCriteria({cat:row.cat});
+                document.dispatchEvent(new CustomEvent('matchapp:criteriachange',
+                  {detail:window.getMatchCriteria()}));
+            });
+            host.appendChild(btn);
+        });
+        const more=document.createElement('button');
+        more.type='button';more.className='matchapp-topic-choice';more.dataset.topicMore='1';
+        more.textContent='＋ '+tr('topic.more','All topics & formats');
+        more.setAttribute('aria-pressed','false');
+        more.addEventListener('click',()=>{
+            const native=document.getElementById('q-category'),wrap=native?.parentElement;
+            if(!wrap)return;
+            wrap.classList.add('crit-open');
+            wrap.querySelector('.crit-toggle')?.setAttribute('aria-expanded','true');
+            const chips=wrap.querySelector('.crit-chips');
+            if(chips){chips.dataset.expanded='1';renderField(native,'cat');}
+            wrap.querySelector('.crit-toggle')?.scrollIntoView({behavior:'auto',block:'nearest'});
+        });
+        host.appendChild(more);
+        const desc=document.getElementById('matchapp-topic-description')||document.createElement('p');
+        desc.id='matchapp-topic-description';desc.className='matchapp-topic-description';
+        desc.setAttribute('aria-live','polite');
+        primary.parentElement.insertBefore(host,primary);
+        host.insertAdjacentElement('afterend',desc);
+        syncTopicQuick();
     }
 
     function init() {
@@ -397,8 +512,10 @@
         try { const previous=JSON.parse(localStorage.getItem('match_rematch_criteria') || '{}');FIELDS.forEach(f=>{if(Array.isArray(previous[f.key]))state[f.key]=previous[f.key];}); } catch (_) {}
     }
     if (rematch) { const form=document.getElementById('questionnaire-box');if(form){form.style.display='block';if(window.MatchAppScrollGate?.canAutoScroll?.())form.scrollIntoView({behavior:'smooth',block:'start'});} }
+        normalizeCategories();
         reconcileConflicts();
         FIELDS.forEach(mountField);
+        mountTopicQuick();
         renderAll();
     }
 

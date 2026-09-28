@@ -1,0 +1,46 @@
+/* Adult-only topic chooser, scoped so AdSense and Kids layouts are untouched. */
+#questionnaire-box .matchapp-topic-shortcuts{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:8px;margin:0 0 9px;max-width:100%;box-sizing:border-box;
+}
+#questionnaire-box .matchapp-topic-choice{
+  appearance:none;display:flex;align-items:center;justify-content:center;
+  min-height:48px;min-width:0;padding:11px 10px;text-align:center;
+  border:1px solid rgba(229,193,88,.48);border-radius:14px;
+  color:#e8d9f6;background:linear-gradient(145deg,rgba(45,26,76,.95),rgba(23,18,35,.98));
+  font:800 13px/1.3 Inter,Arial,sans-serif;white-space:normal;
+  cursor:pointer;transition:border-color .15s,background .15s,box-shadow .15s;
+  touch-action:manipulation;
+}
+#questionnaire-box .matchapp-topic-choice.is-active,
+#questionnaire-box .matchapp-topic-choice[aria-pressed="true"]{
+  color:#120e1c;border-color:#f1cf69;
+  background:linear-gradient(120deg,#e9c45b,#fbe4a6);
+  box-shadow:0 0 0 1px rgba(244,213,113,.18);
+}
+#questionnaire-box .matchapp-topic-choice:focus-visible{
+  outline:3px solid #fff;outline-offset:2px;
+}
+#questionnaire-box .matchapp-topic-description{
+  margin:2px 0 16px;padding:9px 12px;
+  color:#ddd2ed;background:rgba(37,22,59,.62);
+  border:1px solid rgba(229,193,88,.19);border-radius:12px;
+  font:500 12px/1.55 Inter,Arial,sans-serif;overflow-wrap:anywhere;
+}
+@media (hover:hover){
+ #questionnaire-box .matchapp-topic-choice:not(.is-active):hover{
+   border-color:#e9c45b;background:rgba(88,55,128,.45);
+ }
+}
+@media(max-width:700px){
+ #questionnaire-box .matchapp-topic-shortcuts{
+   grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;
+ }
+ #questionnaire-box .matchapp-topic-choice{font-size:12px;min-height:48px}
+}
+@media(max-width:360px){
+ #questionnaire-box .matchapp-topic-choice{font-size:11.5px;padding:10px 7px}
+}
+@media(prefers-reduced-motion:reduce){
+ #questionnaire-box .matchapp-topic-choice{transition:none}
+}
