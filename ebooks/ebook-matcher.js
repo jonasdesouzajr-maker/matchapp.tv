@@ -570,14 +570,17 @@ async function doMatch(root){
    });
   }else if(p.format==='magazine')pick=await chooseMagazine(p);
   else {
-   const eligible=pool(p,new Set(),false);
-   const shortlist=eligible.map(book=>({book,relaxed:false}));
-   pick=window.MatchAppAIRank?.rank?(await rankBooks(shortlist,p)||choose(p)):choose(p);
+   const shortlist=bestBookChoices(p);
+   // The model may only order already-curated equally compatible records.
+   // A transient upstream error never discards valid local suggestions.
+   try{pick=window.MatchAppAIRank?.rank?(await rankBooks(shortlist,p)||choose(p)):choose(p);}
+   catch(_){pick=choose(p);}
   }
   if(!pick){
-   if(p.format==='audiobook'){renderAudioDiscovery(root,p);if(note){note.hidden=true;note.textContent='';}}
-   else if(note){note.hidden=false;note.textContent=tr('empty');}
-   return;
+   if(p.format==='audiobook')renderAudioDiscovery(root,p);
+   else renderReadingDiscovery(root,p);
+   if(note){note.hidden=true;note.textContent='';}
+   return; // No curated title or verified audio: never spend quota.
   }
   // If no authentic source was found, spend nothing.
   if(typeof window.checkDailyLimit!=='function'){
@@ -586,12 +589,15 @@ async function doMatch(root){
   }
   const allowed=await window.checkDailyLimit();
   if(!allowed)return;
-  if(note){note.hidden=!pick.relaxed;note.textContent=pick.relaxed?tr('empty'):''}
+  if(note){const message=matchNote(p,pick);note.hidden=!message;note.textContent=message;}
   const seen=uniq(read(K.seen).concat(pick.book.id)).slice(-300);write(K.seen,seen);
   renderResult(root,pick.book,p,pick.relaxed,pick.audio||null,pick.magazine===true);
  }catch(e){
   console.warn('[MatchApp E-books] Match/source error:',e);
-  if(note){note.hidden=false;note.textContent=tr(p.format==='audiobook'?'audioEmpty':'empty')}
+  // Upstream/source faults still offer a usable, uncharged discovery route.
+  if(p.format==='audiobook')renderAudioDiscovery(root,p);
+  else renderReadingDiscovery(root,p);
+  if(note){note.hidden=true;note.textContent='';}
  }finally{
   root.dataset.audioBusy='0';
   root.querySelectorAll('[data-ebook-match],[data-ebook-rematch]').forEach(b=>b.disabled=false);
