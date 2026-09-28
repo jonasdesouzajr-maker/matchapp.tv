@@ -279,7 +279,7 @@ function why(book,p,relaxed){
  if(p.pace!=='any'&&book.pace===p.pace)bits.push(book.pace+' pace');
  if(p.length!=='any'&&book.length===p.length)bits.push(book.length+' read');
  if(!bits.length)bits.push(book.genres[0],book.moods[0]);
- return (relaxed?'Closest fresh fit · ':'Exact fit · ')+bits.slice(0,3).join(' · ');
+ return (relaxed?'Closest catalogued fit · ':'Exact fit · ')+bits.slice(0,3).join(' · ');
 }
 function esc(v){return String(v==null?'':v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
 function coverFallback(book){
@@ -508,7 +508,7 @@ function renderResult(root,book,p,relaxed,audio,magazine){
   '<div class="ebook-why"><strong>'+esc(tr('why'))+'</strong><span>'+esc(why(book,p,relaxed))+'</span></div>'+
   '<div class="ebook-meta"><span>'+esc(book.length)+' read</span><span>'+esc(book.pace)+' pace</span><span>'+(book.access.includes('free')?'free option + stores':'paid stores')+'</span></div>'+
   '<div class="ebook-source-groups">'+
-   (free.length?'<div><h4>'+esc(tr('free'))+'</h4><div class="ebook-provider-row">'+free.map(([n,u])=>'<a class="ebook-provider ebook-free" href="'+esc(u)+'" target="_blank" rel="noopener noreferrer" data-ebook-provider="'+esc(n)+'">'+esc(n)+' ↗</a>').join('')+'</div></div>':'')+
+   (free.length?'<div><h4>'+esc(tr('free'))+'</h4><div class="ebook-provider-row">'+free.map(([n,u])=>'<a class="ebook-provider ebook-free" href="'+esc(u)+'" target="_blank" rel="noopener noreferrer" data-ebook-provider="'+esc(n)+'">'+esc(n)+' ↗</a>').join('')+'</div><p class="ebook-rights">'+esc(fallbackCopy('freeCheck'))+'</p></div>':'')+
    '<div><h4>'+esc(tr('stores'))+'</h4><div class="ebook-provider-row">'+stores.map(([n,u])=>{const tagged=!!(aff&&aff.isAffiliateLink(u));return '<a class="ebook-provider" href="'+esc(u)+'" target="_blank" rel="'+(tagged?'sponsored ':'')+'noopener noreferrer" data-ebook-provider="'+esc(n)+'"'+(tagged?' data-ebook-affiliate="amazon-br"':'')+'>'+esc(n)+(tagged?' · '+esc(aff.paidLabel(lang())):'')+' ↗</a>'}).join('')+'</div>'+(paid?'<p class="ebook-rights">'+esc(aff.disclosure(lang()))+'</p>':'')+'</div>'+
    '<a class="ebook-preview-link" href="'+esc(bookInfo(book))+'" target="_blank" rel="noopener noreferrer" data-ebook-provider="Google Books">'+esc(tr('preview'))+' ↗</a>'+
   '</div>'+
@@ -528,25 +528,31 @@ function renderResult(root,book,p,relaxed,audio,magazine){
 // Honest fallback: no verified audio means no Match credit is used.
 function renderAudioDiscovery(root,p){
  const host=root.querySelector('[data-ebook-result]');if(!host)return;
- const book=choose(p)?.book,country=market(),foreign=p.access==='free'&&country!=='US';
+ const selected=choose(p),book=selected?.book,country=market(),foreign=p.access==='free'&&country!=='US';
  const reason=foreign?
-  (lang()==='pt-BR'?'Ainda não verificamos os direitos de gravações gratuitas no seu país. O domínio público nos EUA não garante o mesmo direito no Brasil.':
-   'Free recordings are not yet rights-verified for your country. US public-domain rights may not apply locally.'):
-  tr('audioEmpty');
- const searches=book?window.MatchAppAudiobooks?.sourceSearches?.(book,country)||[]:[];
+   (lang()==='pt-BR'?'Ainda não verificamos os direitos de gravações gratuitas no seu país. O domínio público nos EUA não garante o mesmo direito no Brasil.':
+    'Free recordings are not yet rights-verified for your country. US public-domain rights may not apply locally.'):
+   tr('audioEmpty');
+ // Respect the selected free/paid tier even for unverified discovery links.
+ const searches=p.access==='free'?discoverySearches(p,book).map(([provider,url])=>({provider,url})):
+   book?(window.MatchAppAudiobooks?.sourceSearches?.(book,country)||
+     discoverySearches(p,book).map(([provider,url])=>({provider,url}))):
+   discoverySearches(p,null).map(([provider,url])=>({provider,url}));
+ const disclosure=selected?matchNote(p,selected):fallbackCopy('browse');
  host.hidden=false;
  host.innerHTML='<div class="ebook-result-copy ebook-audio-discovery"><h3>🎧 '+esc(tr('audioTitle'))+'</h3>'+
-  '<p class="ebook-audio-note">'+esc(reason)+'</p>'+
-  (book?'<h3>'+esc(book.title)+'</h3><p class="ebook-author">'+esc(book.author)+'</p><p>'+esc(book.summary)+'</p>':'')+
-  '<p class="ebook-rights">'+esc(lang()==='pt-BR'?'Livro compatível. Edição em áudio não verificada.':'Compatible book profile. Audio edition not verified.')+'</p>'+
-  '<div class="ebook-provider-row">'+searches.map(item=>'<a class="ebook-provider ebook-audio-search" href="'+esc(item.url)+
-   '" target="_blank" rel="noopener noreferrer">'+esc(item.provider)+' · '+esc(lang()==='pt-BR'?'pesquisa não confirmada':'unverified search')+' ↗</a>').join('')+'</div>'+
-  '<div class="ebook-result-actions"><button type="button" class="ebook-rematch" data-ebook-switch-format="ebook">'+
-   esc(lang()==='pt-BR'?'Encontrar e-book compatível':'Match a compatible e-book')+'</button>'+
-  '<button type="button" class="ebook-rematch" data-ebook-switch-access="any">'+
-   esc(lang()==='pt-BR'?'Incluir lojas de áudio':'Include official audio stores')+'</button></div>'+
-  '<p class="ebook-rights">'+esc(lang()==='pt-BR'?'Nenhum match foi consumido. Pesquisas não comprovam a disponibilidade da edição.':
-   'No Match credit was consumed. Search links do not confirm edition availability.')+'</p></div>';
+   '<p class="ebook-audio-note">'+esc(reason)+'</p>'+
+   (disclosure?'<p class="ebook-audio-note">'+esc(disclosure)+'</p>':'')+
+   (book?'<h3>'+esc(book.title)+'</h3><p class="ebook-author">'+esc(book.author)+'</p><p>'+esc(book.summary)+'</p>':'')+
+   (book?'<p class="ebook-rights">'+esc(fallbackCopy('bookProfile'))+'</p>':'')+
+   '<div class="ebook-provider-row">'+searches.map(item=>'<a class="ebook-provider ebook-audio-search" href="'+esc(item.url)+
+     '" target="_blank" rel="noopener noreferrer">'+esc(item.provider)+' · '+esc(lang()==='pt-BR'?'pesquisa não confirmada':'unverified search')+' ↗</a>').join('')+'</div>'+
+   '<div class="ebook-result-actions"><button type="button" class="ebook-rematch" data-ebook-switch-format="ebook">'+
+     esc(lang()==='pt-BR'?'Encontrar e-book compatível':'Match a compatible e-book')+'</button>'+
+   '<button type="button" class="ebook-rematch" data-ebook-switch-access="any">'+
+     esc(lang()==='pt-BR'?'Incluir lojas de áudio':'Include official audio stores')+'</button></div>'+
+   '<p class="ebook-rights">'+esc(lang()==='pt-BR'?'Nenhum match foi consumido. Pesquisas não comprovam a disponibilidade da edição.':
+     'No Match credit was consumed. Search links do not confirm edition availability.')+'</p></div>';
 }
 async function doMatch(root){
  // One in-flight search includes source preflight and shared Match allowance.
