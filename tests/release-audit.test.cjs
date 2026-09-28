@@ -25,7 +25,8 @@ test('behavioral pages load one current shared runtime instead of stale cache ke
   assert.deepEqual([...new Set(policyPages.map(p=>version(p,'matching-policy.js')))],['20260926-conflicts2']);
   assert.equal(version('kids/index.html','matching-policy.js'),'20260924-runtime1');
   const buildPages=['index.html','together.html','pricing/pricing.html','friends.html','events-archive.html'];
-  assert.deepEqual([...new Set(buildPages.map(p=>version(p,'build-meta.js')))],['20260926-publicproof1']);
+  assert.equal(version('index.html','build-meta.js'),'20260926-publicproof1&amp;seo=20260928-2');
+  assert.deepEqual([...new Set(buildPages.filter(p=>p!=='index.html').map(p=>version(p,'build-meta.js')))],['20260926-publicproof1']);
   assert.match(read('pricing/pricing.html'),/\/pricing\.js\?v=\d{8}-[\w-]+/);
   assert.match(read('purchase.html'),/\/purchase\.js\?v=\d{8}-[\w-]+/);
 });

@@ -74,7 +74,7 @@ window.MATCHAPP_BUILD = '2026.09.27.1';
     ensureKidsEntry();
     if (path === '/' || path === '/index.html') {
       document.title = 'What to Watch Tonight | AI Movie, TV & E-book Finder | MatchApp';
-      upsertMeta('description', 'Find what to watch or read with MatchApp: exact mood matching for movies, TV and e-books, verified streaming and cinema availability, legal free e-book sources, official book stores, Kids Mode and Match Together.');
+      upsertMeta('description', 'Surprise Me with movies, TV series, telenovelas and entertainment YouTube; share a match with friends. Cooking and Spotify only when you choose.');
       upsertMeta('robots', 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1');
       upsertPropertyMeta('og:description', 'Tell MatchApp your mood, get a movie, series or e-book match, then see verified streaming, cinema or legal book-access routes.');
       addJsonLd('matchapp-organization-schema', {
@@ -89,7 +89,7 @@ window.MATCHAPP_BUILD = '2026.09.27.1';
     }
     if (path === '/discover.html') {
       document.title = 'Ask AI What to Watch | Movie & TV Concierge | MatchApp';
-      upsertMeta('description', 'Ask MatchApp what to watch, then see verified streaming, rental and cinema options by country. Follow titles and get alerted when streaming starts locally.');
+      upsertMeta('description', 'Ask MatchApp TV Ai about movies, TV series, e-books, audiobooks and magazines. Find verified streaming, official publishers and legal reading options.');
       upsertMeta('robots', 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1');
       // Describe the public page factually. Do not claim Software/WebApplication
       // rich-result eligibility until MatchApp has genuine review/rating data.
@@ -112,7 +112,7 @@ window.MATCHAPP_BUILD = '2026.09.27.1';
 (function(){
   if(document.querySelector('script[data-matchapp-final-wiring]'))return;
   const s=document.createElement('script');
-  s.src='/final-wiring.js?v=20260923-videoaudit1';
+  s.src='/final-wiring.js?v=20260928-seofix2';
   s.async=false; s.defer=true; s.dataset.matchappFinalWiring='1';
   document.head.appendChild(s);
 })();
