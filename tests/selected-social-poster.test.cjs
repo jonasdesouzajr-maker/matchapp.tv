@@ -52,14 +52,20 @@ test('verified guest poster can be saved or shared without bypassing public-post
  assert.ok(!read('kids/index.html').includes('ma-public-proof-poster'),'Kids Mode remains untouched');
 });
 
-test('adult landing pages expose the exact poster in social metadata and versioned scripts',()=>{
- const url='https://matchapp.tv/assets/brand/matchapp-share-poster.png?v=20260926-selected1';
+test('adult landing pages show brand wordmark previews while share cards retain the selected poster',()=>{
+ const url='https://matchapp.tv/og-image.jpg?v=20260928-brand-preview1';
+ const preview=fs.readFileSync(path.join(root,'og-image.jpg'));
+ assert.equal(preview.subarray(0,2).toString('hex'),'ffd8');
+ assert.ok(preview.length<300000,'link preview should be small enough for messaging crawlers');
+ const schemaLogo=fs.readFileSync(path.join(root,'assets/brand/matchapp-official-icon-512.webp'));
+ assert.equal(schemaLogo.subarray(0,4).toString(),'RIFF');
+ assert.equal(schemaLogo.subarray(8,12).toString(),'WEBP');
  for(const page of ['index.html','discover.html']){
   const html=read(page);
   for(const fragment of [
    'property="og:image" content="'+url+'"',
-   'property="og:image:width" content="941"',
-   'property="og:image:height" content="1672"',
+   'property="og:image:width" content="1200"',
+   'property="og:image:height" content="630"',
    'name="twitter:image" content="'+url+'"',
    page==='index.html'?'verified-public-guest-share.js?v=20260928-three-shares1':'verified-public-guest-share.js?v=20260926-selectedposter1',
    'guest-share-rewards.css?v=20260926-selectedposter1'
