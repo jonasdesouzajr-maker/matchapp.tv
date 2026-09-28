@@ -95,7 +95,8 @@ function freeLinks(book){
 function bookInfo(book){return 'https://books.google.com/books?q='+q(book);}
 function analytics(name,detail){try{window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:name,...detail})}catch(_){}}
 function fits(book,p,omit){
- if(p.mood==='cozy'&&book.genres.some(g=>BOOK_CONFLICTS.cozy.includes(g)))return false;
+ // A closest fit must never turn a gentle/funny mood into horror or a thriller.
+ if((BOOK_CONFLICTS[p.mood]||[]).some(g=>book.genres.includes(g)))return false;
  if(!omit.has('mood')&&p.mood!=='any'&&!book.moods.includes(p.mood))return false;
  if(!omit.has('genre')&&p.genre!=='any'&&!book.genres.includes(p.genre))return false;
  if(!omit.has('pace')&&p.pace!=='any'&&book.pace!==p.pace)return false;
@@ -126,12 +127,38 @@ async function rankBooks(approved,p){
  const index=row?.id&&/^c\d+$/.test(row.id)?Number(row.id.slice(1)):-1;
  return set[index]||null;
 }
+// Always try exact, fresh catalogued works first. With no exact fit,
+// score close matches without weakening access, safety or user exclusions.
+const BOOK_SOFT_FIELDS=['mood','genre','pace','length','era'];
+const BOOK_WEIGHTS={genre:80,mood:70,pace:12,length:10,era:8};
+function matchesCriterion(book,p,key){
+ if(!p[key]||p[key]==='any')return true;
+ if(key==='mood')return Array.isArray(book.moods)&&book.moods.includes(p.mood);
+ if(key==='genre')return Array.isArray(book.genres)&&book.genres.includes(p.genre);
+ return book[key]===p[key];
+}
+function bookCandidates(p,allowSeen){
+ const seen=idset(K.seen);
+ return pool(p,new Set(BOOK_SOFT_FIELDS),allowSeen).map(book=>{
+   const mismatched=BOOK_SOFT_FIELDS.filter(key=>!matchesCriterion(book,p,key));
+   const weight=BOOK_SOFT_FIELDS.reduce((sum,key)=>sum+
+     (p[key]!=='any'&&matchesCriterion(book,p,key)?BOOK_WEIGHTS[key]:0),0);
+   return {book,relaxed:mismatched.length>0,recycled:allowSeen&&seen.has(book.id),
+     mismatched,weight:weight+(mismatched.length===0?1000:0)};
+ }).sort((a,b)=>b.weight-a.weight);
+}
+function bestBookChoices(p){
+ // Fresh approximate results precede previously suggested exact results.
+ // Saved and disliked items are excluded even when the seen list is recycled.
+ const unseen=bookCandidates(p,false);
+ const ranked=unseen.length?unseen:bookCandidates(p,true);
+ if(!ranked.length)return [];
+ const best=ranked[0].weight;
+ return ranked.filter(row=>row.weight===best).slice(0,12);
+}
 function choose(p){
- // Exact-only matching: no surprise duplicates or silent changes to genre,
- // pace, length, access or era. Users can adjust filters explicitly.
- const eligible=pool(p,new Set(),false);
- if(eligible.length)return{book:eligible[Math.floor(Math.random()*eligible.length)],relaxed:false};
- return null;
+ const shortlisted=bestBookChoices(p);
+ return shortlisted.length?shortlisted[Math.floor(Math.random()*shortlisted.length)]:null;
 }
 // The e-book catalogue is a set of book profiles, not a list of confirmed
 // audio editions. Verify an exact commercial or eligible public-domain audio
