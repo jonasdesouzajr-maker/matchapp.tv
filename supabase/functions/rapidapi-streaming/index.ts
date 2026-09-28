@@ -1,6 +1,6 @@
 // Optional RapidAPI display-only enrichment. NO changes to Match or Ask AI.
-// Activation REQUIRES RAPIDAPI_STREAMING_ENABLED=true AFTER the owner confirms an
-// active Streaming Availability plan and understands its quota/overage rules.
+// Activation REQUIRES RAPIDAPI_STREAMING_ENABLED=true only after confirming
+// this key has genuinely free access to this exact provider (no paid plan/overages).
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.105.0';
 import { normalizeStreaming } from './streaming-core.mjs';
 const db = createClient(Deno.env.get('SUPABASE_URL') || '', Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') || '');
