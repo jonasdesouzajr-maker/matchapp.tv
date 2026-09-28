@@ -1,14 +1,15 @@
 'use strict';
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
 const source=fs.readFileSync(path.join(__dirname,'../supabase/functions/gemini-proxy/index.ts'),'utf8');
-test('adult OpenRouter then OpenAI then Gemini; Kids retains Gemini key precedence',()=>{
+test('adult OpenRouter then Groq then OpenAI then Gemini; Kids retains Gemini key precedence',()=>{
   assert.match(source,/"OPENROUTER_API_KEY"/);
   assert.match(source,/"GEMINI_BACKUP_API_KEY_1"/);
   assert.match(source,/"GEMINI_BACKUP_API_KEY_2"/);
   const router=source.indexOf('const answer = await callOpenRouterFirst({');
+  const groq=source.indexOf('const answer = await callGroqBackup({');
   const open=source.indexOf('const answer = await callOpenAIPrimary({');
   const routing=source.indexOf('const routes = [');
-  assert.ok(router>=0&&open>router&&routing>open);
+  assert.ok(router>=0&&groq>router&&open>groq&&routing>open);
   const fallback=source.slice(routing,source.indexOf('let freeProjectBlocked',routing));
   const free=fallback.indexOf('...(freeApiKey ? FREE_MODEL_CHAIN.map');
   const backup=fallback.indexOf('...backupPaidApiKeys.flatMap');
@@ -38,9 +39,10 @@ test('each billing-failed paid key yields to a different configured paid project
 
 test('OpenAI daily ceiling is independent; Gemini is available if preceding tiers fail',()=>{
   const router=source.indexOf('const answer = await callOpenRouterFirst({');
+  const groq=source.indexOf('const answer = await callGroqBackup({');
   const primary=source.indexOf('const answer = await callOpenAIPrimary({');
   const route=source.indexOf('const routes = [');
-  assert.ok(router>=0&&primary>router&&route>primary);
+  assert.ok(router>=0&&groq>router&&primary>groq&&route>primary);
   assert.match(source.slice(primary,route),/claim_openai_primary_slot/);
   assert.match(source.slice(primary,route),/if \(answer\) return answer/);
   assert.match(source,/body\?\.kidsMode !== true/);
