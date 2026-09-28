@@ -19,6 +19,7 @@ Deno.serve(async req => {
   if (!apiKey) return json(req, { unavailable: true }, 503);
   let input: Record<string, unknown>;
   try { input = await req.json(); } catch { return json(req, { unavailable: true }, 400); }
+  if (!input || typeof input !== "object" || Array.isArray(input)) return json(req, { unavailable: true }, 400);
   const imdbId = typeof input.imdbId === "string" && /^tt\d{7,10}$/.test(input.imdbId) ? input.imdbId : "";
   const title = typeof input.title === "string" && input.title.trim().length <= 120 ? input.title.trim() : "";
   const kind = input.kind === "movie" || input.kind === "tv" ? input.kind : "";
@@ -29,8 +30,7 @@ Deno.serve(async req => {
   if (prior && prior.expires > Date.now()) return json(req, prior.data);
   try {
     const ip = (req.headers.get("x-forwarded-for") || "unknown").split(",")[0].trim();
-    const salt = Deno.env.get("RATE_LIMIT_SALT") || "";
-    if (!salt) return json(req, { unavailable: true }, 503);
+    const salt = Deno.env.get("RATE_LIMIT_SALT") || Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") || "";
     const digest = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(salt + ip));
     const hash = [...new Uint8Array(digest)].map(n => n.toString(16).padStart(2, "0")).join("");
     const { data: limit, error } = await db.rpc("check_ai_rate_limit", { p_key: `omdb:${hash}`, p_limit: 20 });
