@@ -39,10 +39,10 @@ function nextRewardResetText() {
 
 // Server-enforced when signed in (claim_share_reward RPC), local otherwise.
 // A reward is real Match currency: it accumulates and stays until a Match uses it.
-async function grantShareReward() {
+async function grantShareReward(sharedTitle = window.globalMatchTitle) {
     if (window.isUserLoggedIn && window.supabaseClient) {
         try {
-            const { data, error } = await window.supabaseClient.rpc('claim_share_reward');
+            const { data, error } = await window.supabaseClient.rpc('claim_match_result_share', { p_title: sharedTitle });
             if (error) throw error;
             if (data && data.granted) {
                 if (window.refreshQuotaStatus) await window.refreshQuotaStatus();
@@ -52,7 +52,9 @@ async function grantShareReward() {
                     matches: Number(data.purchased_matches ?? data.matches) || 0
                 };
             }
-            return { ok: false, left: 0, resetIn: (data && data.reset_in_seconds) || 0 };
+            return { ok: false, left: data?.remaining_rewards ?? 0,
+                progress: data?.progress, reason: data?.reason,
+                resetIn: data?.reset_in_seconds || 0 };
         } catch (e) {
             // Never mint a client-side paid/reward balance for a signed-in
             // account when the authoritative server grant failed.
@@ -111,6 +113,7 @@ function canvasToBlob(canvas) {
 }
 
 /* ---------- Share flow ---------- */
+let shareSessionTitle = '';
 window.openShareSheet = async function() {
     const title = window.globalMatchTitle;
     if (!title) { if (window.showToast) showToast('Get a match first, then share it!', true); return; }
@@ -121,13 +124,14 @@ window.openShareSheet = async function() {
         if (window.getAnotherMatchInstead) window.getAnotherMatchInstead();
         return;
     }
+    shareSessionTitle = title;
 
     // Adult guest sharing uses a fresh server-issued code and an actual
     // public-post check. Member rewards keep their original server RPC.
     if (!window.isUserLoggedIn) {
         if (window.MatchAppGuestShare?.open) {
             window.MatchAppGuestShare.open({
-                kind:'match',title,
+                kind:'watch_match',title,
                 token:'watch:'+String(window.__matchappMatchRunId||title),
                 message:shareText(),
                 url:'https://matchapp.tv/',
@@ -187,10 +191,10 @@ window.openShareSheet = async function() {
         const guestTrial=!window.isUserLoggedIn && !!window.MatchAppGuestShare;
         statusEl.innerHTML = left > 0
             ? guestTrial
-                ? `🎁 Share this and unlock <strong>+1 Match</strong> — ${left} of your 2 guest share rewards left.`
-                : `🎁 Share this and earn <strong>+1 bonus match</strong> — <strong>${left}</strong> of ${SHARE_MAX_REWARDS} bonus matches left this 6-hour window.`
+                ? `🎁 Verify 3 new public result posts to unlock +1 Match.`
+                : `🎁 Share <strong>3 different results</strong> to earn +1 Match. Up to ${SHARE_MAX_REWARDS} bonuses per 6 hours.`
             : guestTrial
-                ? `You've used both guest share bonuses. Register free for more Matches and AI prompts!`
+                ? `Verify 3 new public result posts to unlock +1 Match.`
                 : `⏳ You've claimed all ${SHARE_MAX_REWARDS} bonus matches for now. Next one unlocks in <strong>${nextRewardResetText()}</strong>. You can still share!`;
     }
 };
@@ -201,12 +205,14 @@ window.closeShareSheet = function() {
 };
 
 function shareText() {
-    return `Find YOUR Perfect Match with MatchApp Ai ✨ Discover movies, series and more by mood, format and platform. Start free: ${SHARE_URL}\n\n${SHARE_TAGS}`;
+    const title = String(shareSessionTitle || window.globalMatchTitle || '').trim();
+    return `MatchApp Ai matched me with “${title}”! Find your own movie or series by mood and platform. Try it free: ${SHARE_URL}\n\n${SHARE_TAGS}`;
 }
 
 // Native share sheet (mobile) — attaches the generated image when supported.
 window.shareNative = async function() {
     if (!window.isUserLoggedIn) return window.openShareSheet();
+    const sharedTitle = shareSessionTitle || window.globalMatchTitle;
     const canvas = window._shareCanvas;
     const text = shareText();
     try {
@@ -215,19 +221,21 @@ window.shareNative = async function() {
             const file = new File([blob], 'matchapp-ai-share-poster.png', { type: 'image/png' });
             if (navigator.canShare({ files: [file] })) {
                 await navigator.share({ files: [file], text, title: 'MatchApp Ai | Find Your Perfect Match' });
-                return afterShare('native');
+                return afterShare('native', sharedTitle);
             }
         }
         if (navigator.share) {
             await navigator.share({ title: 'MatchApp Ai | Find Your Perfect Match', text, url: SHARE_URL });
-            return afterShare('native');
+            return afterShare('native', sharedTitle);
         }
         // No native share support. Previously this silently downloaded the card to
         // the user's device — writing a file nobody asked for. Copy the caption
         // instead and point at the explicit Save Image button if they want the asset.
         await window.copyShareText(true);
-        if (window.showToast) showToast('📋 Caption copied — pick a platform below, or tap Save Image for the card.');
-    } catch (e) { /* user dismissed the sheet */ }
+        if (window.showToast) showToast('📋 Caption copied. Copying alone does not count as a completed share.');
+    } catch (e) {
+        if (e?.name !== 'AbortError') window.showToast?.('Sharing is unavailable right now. Try a social button or copy the caption.', true);
+    }
 };
 
 // Only ever runs from the explicit "Save Image" button — never automatically.
@@ -252,7 +260,7 @@ let pendingExternalShare = null;
 function externalShareStatus(network) {
     const statusEl = document.getElementById('share-reward-status');
     const name = network === 'x' ? 'X' : network.charAt(0).toUpperCase() + network.slice(1);
-    if (statusEl) statusEl.innerHTML = `↗ Finish sharing on <strong>${name}</strong>, then return here and confirm it to unlock the bonus. MatchApp cannot read your activity inside another social network.`;
+    if (statusEl) statusEl.innerHTML = `↗ Finish sharing on <strong>${name}</strong>, then return and confirm your progress toward 3 shares. MatchApp cannot read your activity inside another social network.`;
     let btn = document.getElementById('share-confirm-external');
     if (!btn) {
         btn = document.createElement('button');
@@ -268,18 +276,19 @@ function externalShareStatus(network) {
                 return;
             }
             const network = pendingExternalShare.network;
+            const sharedTitle = pendingExternalShare.title;
             pendingExternalShare = null;
             btn.hidden = true;
-            await afterShare(network + '-confirmed');
+            await afterShare(network + '-confirmed', sharedTitle);
         });
         const reward = document.getElementById('share-reward-status');
         reward?.insertAdjacentElement('afterend', btn);
     }
     btn.hidden = false;
-    btn.textContent = '✓ I shared it — unlock +1 Match';
+    btn.textContent = '✓ I shared it — record progress';
 }
 function markExternalShareStarted(network) {
-    pendingExternalShare = {network, startedAt: Date.now()};
+    pendingExternalShare = {network, title: shareSessionTitle || window.globalMatchTitle, startedAt: Date.now()};
     externalShareStatus(network);
 }
 
@@ -297,7 +306,7 @@ window.shareTo = function(network) {
         x:        `https://twitter.com/intent/tweet?text=${text}&url=${url}`,
         facebook: `https://www.facebook.com/sharer/sharer.php?u=${url}&quote=${text}`,
         telegram: `https://t.me/share/url?url=${url}&text=${text}`,
-        reddit:   `https://www.reddit.com/submit?url=${url}&title=${encodeURIComponent('MatchApp AI matched me with ' + (window.globalMatchTitle || ''))}`,
+        reddit:   `https://www.reddit.com/submit?url=${url}&title=${encodeURIComponent(shareText())}`,
         linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${url}`,
         pinterest:`https://pinterest.com/pin/create/button/?url=${url}&description=${text}`
     };
@@ -384,7 +393,7 @@ function shareRenderContacts() {
         if (!c) return;
         window.touchWatchContact(c.id);
         window.sendInvite(c.channel, c.value, shareInvite());
-        afterShare(c.channel);
+        // A private invitation is not a social result share for the 3-share offer.
     };
 }
 
@@ -411,7 +420,7 @@ window.shareSendInvite = function () {
         shareRenderContacts();
     }
     if (input) input.value = '';
-    afterShare(_shareChannel);
+    // Private direct messages do not advance public result-share rewards.
 };
 
 document.addEventListener('matchapp:contactschange', shareRenderContacts);
@@ -463,11 +472,12 @@ window.matchAgainFromShare = function() {
     }
 };
 
-async function afterShare(network) {
+async function afterShare(network, sharedTitle = shareSessionTitle || window.globalMatchTitle) {
     if (typeof window.track === 'function') window.track('share', { method: network, content_type: 'match', item_id: window.globalMatchTitle || '' });
     if (_rewardedThisCard) return;
 
-    const result = await grantShareReward();
+    const result = await grantShareReward(sharedTitle);
+    if (shareSessionTitle && sharedTitle !== shareSessionTitle) return;
     const statusEl = document.getElementById('share-reward-status');
     if (result.ok) {
         _rewardedThisCard = true;
@@ -486,6 +496,16 @@ async function afterShare(network) {
         }
         showRewardScreen(result.left);
     } else if (statusEl) {
+        if (typeof result.progress === 'number' && result.progress > 0) {
+            _rewardedThisCard = true;
+            statusEl.textContent = `${result.progress} of 3 different results shared. ${3-result.progress} more to unlock +1 Match.`;
+            window.showToast?.(statusEl.textContent);
+            return;
+        }
+        if (result.reason === 'already_shared') {
+            statusEl.textContent = 'This result was already counted. Share a different match next.';
+            return;
+        }
         if (result.serverUnavailable) {
             statusEl.textContent = 'Could not verify the reward right now. Your account balance was not changed — please try sharing again.';
             return;

@@ -76,6 +76,9 @@ function openRegistration(){
 }
 function text(kind){
  const leftNow=left(kind),slots=sharesLeft(),label=kind==='ask_ai'?(pt()?'perguntas de IA':'AI prompts'):(pt()?'matches':'Matches');
+ if(kind==='watch_match')return pt()
+  ?leftNow+' Matches disponíveis · 3 resultados verificados = +1 Match'
+  :leftNow+' Matches left · 3 verified results = +1 Match';
  return pt()
   ?leftNow+' '+label+' disponíveis · '+slots+' de 2 bônus por compartilhamento restantes'
   :leftNow+' '+label+' left · '+slots+' of 2 share bonuses available';
@@ -83,7 +86,9 @@ function text(kind){
 function label(kind){
  return kind==='ask_ai'
   ?(pt()?'Compartilhe esta resposta e ganhe +1 pergunta de IA':'Share this reply · earn +1 AI prompt')
-  :(pt()?'Compartilhe seu resultado e ganhe +1 match':'Share this result · earn +1 Match');
+  :kind==='watch_match'
+   ?(pt()?'Compartilhe 3 resultados · ganhe +1 Match':'Share 3 results · earn +1 Match')
+   :(pt()?'Compartilhe seu resultado e ganhe +1 Match':'Share this result · earn +1 Match');
 }
 function createBanner(kind){
  const bar=document.createElement('aside');
@@ -97,7 +102,7 @@ function status(bar,kind,button){
  const count=bar.querySelector('.ma-guest-trial-count');
  if(count)count.textContent=text(kind);
  if(!button)return;
- const slots=sharesLeft();
+ const slots=kind==='watch_match'?3:sharesLeft();
  if(slots>0){
   button.textContent=label(kind);button.hidden=false;
   button.dataset.offer='share';
@@ -111,7 +116,7 @@ function decorateMatchResult(){
  let bar=result.querySelector(':scope > .ma-guest-trial-bar');
  let button;
  if(!bar){
-  ({bar,button}=createBanner('match'));
+  ({bar,button}=createBanner('watch_match'));
   // Place ABOVE poster, just below the close and existing quota corner.
   const media=result.querySelector('.res-media-row');
   if(media)media.before(bar);else result.prepend(bar);
@@ -124,8 +129,8 @@ function decorateMatchResult(){
    window.openShareSheet?.();
   });
  }else button=bar.querySelector('button');
- if(window.currentMatchShareRestricted&&sharesLeft()>0){bar.hidden=true;return;}
- bar.hidden=false;status(bar,'match',button);
+ if(window.currentMatchShareRestricted){bar.hidden=true;return;}
+ bar.hidden=false;status(bar,'watch_match',button);
 }
 function decorateBookResult(host,title,format){
  if(!guest()||!host||host.hidden)return;
@@ -198,7 +203,7 @@ async function matchReward(){
  },window.matchMedia?.('(prefers-reduced-motion: reduce)').matches?0:270);
 }
 function offerPending(kind){
- if(sharesLeft()<=0)return false;
+ if(kind==='ask_ai'&&sharesLeft()<=0)return false;
  const target=kind==='ask_ai'
   ?$('#chat-log > .chat-assistant:last-of-type .ma-guest-trial-bar')
   :$('#result-box .ma-guest-trial-bar')||$('#ebook-matcher-root [data-ebook-result]:not([hidden]) .ma-guest-trial-bar');
@@ -206,17 +211,42 @@ function offerPending(kind){
  target.scrollIntoView?.({behavior:window.matchMedia?.('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'center'});
  target.classList.add('ma-guest-trial-highlight');
  window.setTimeout(()=>target.classList.remove('ma-guest-trial-highlight'),1600);
- window.showToast?.(kind==='ask_ai'?'Share your latest AI response above to unlock one more prompt.':'Share your result above to unlock one more Match.');
+ window.showToast?.(kind==='ask_ai'?'Share your latest AI response above to unlock one more prompt.':'Share 3 verified results above to unlock one more Match.');
  return true;
 }
 // Only accept an official server-verification response. No unverified
 // native share handoff, opened social tab, copied text or self-confirmation
 // can redeem a MatchApp guest reward.
-function finalizeVerified({kind,token,proof,onNext}){
+function finalizeVerified({kind,title,token,proof,onNext}){
  if(!guest()||!proof?.verified||proof.kind!==kind||
     typeof proof.proof_id!=='string'||proof.proof_id.length<30||
     !['tiktok','bluesky'].includes(proof.platform)||
-    !['match','ask_ai'].includes(kind))return false;
+    !['match','watch_match','ask_ai'].includes(kind))return false;
+ if(kind==='watch_match'){
+  if(typeof proof.reward_granted!=='boolean'||!Number.isInteger(proof.progress)||proof.progress<0||proof.progress>2)return false;
+  if(proof.reward_granted!==(proof.progress===0))return false;
+  const receiptKey='match_guestWatchShareReceipts_v1';
+  const titleKey=String(title||token||'').trim().toLocaleLowerCase();
+  if(!titleKey)return false;
+  let receipts;
+  try{receipts=JSON.parse(localStorage.getItem(receiptKey)||'[]');}catch(_){return false;}
+  if(!Array.isArray(receipts)||receipts.some(r=>r.proofId===proof.proof_id||r.title===titleKey))return false;
+  try{localStorage.setItem(receiptKey,JSON.stringify([...receipts,{proofId:proof.proof_id,title:titleKey}]));}catch(_){return false;}
+  if(proof.reward_granted!==true){
+   window.showToast?.(pt()
+    ?`${proof.progress} de 3 resultados verificados. Continue compartilhando!`
+    :`${proof.progress} of 3 verified result shares. Keep sharing!`);
+   refreshVisible();
+   return true;
+  }
+  const next=matchBalance()+1;
+  if(window.MatchAppGuestMatches?.set)window.MatchAppGuestMatches.set(next);
+  else localStorage.setItem('match_guestBonusMatches',String(next));
+  broadcast();
+  window.showToast?.(pt()?'🎁 +1 Match desbloqueado!':'🎁 +1 Match unlocked!');
+  void Promise.resolve().then(()=>onNext?.()).catch(e=>console.warn('Verified share follow-up was interrupted:',e?.message||e));
+  return true;
+ }
  const awarded=claim(kind,token);
  if(!awarded.ok)return false;
  prefer(kind);
@@ -230,7 +260,15 @@ function finalizeVerified({kind,token,proof,onNext}){
 }
 function open({kind,title,token,message,url,onNext}){
  if(!guest())return;
- if(sharesLeft()===0)return openRegistration();
+ if(kind==='watch_match'){
+  try{
+   const receipts=JSON.parse(localStorage.getItem('match_guestWatchShareReceipts_v1')||'[]');
+   if(receipts.some(r=>r.title===String(title||token||'').trim().toLocaleLowerCase())){
+    window.showToast?.(pt()?'Este resultado já foi contado. Compartilhe outro match.':'This result was already counted. Share a different match.');return;
+   }
+  }catch(_){window.showToast?.('Share progress could not be saved in this browser.',true);return;}
+ }
+ if(kind!=='watch_match'&&sharesLeft()===0)return openRegistration();
  if(window.MatchAppVerifiedGuestPublicShare?.open){
   return window.MatchAppVerifiedGuestPublicShare.open({kind,title,token,message,url,onNext});
  }

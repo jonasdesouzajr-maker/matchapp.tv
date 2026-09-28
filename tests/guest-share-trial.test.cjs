@@ -78,7 +78,7 @@ test('signed-in server share reward remains untouched and guest cannot receive l
  get('result-box').style.display='block';trial.refreshVisible();
  assert.equal(get('result-box').querySelector('.ma-guest-trial-bar'),null);
  const share=read('share.js');
- assert.match(share,/supabaseClient\.rpc\('claim_share_reward'\)/);
+ assert.match(share,/supabaseClient\.rpc\('claim_match_result_share'/);
  assert.match(share,/SHARE_MAX_REWARDS = 3/);
  dom.window.close();
 });
@@ -161,13 +161,13 @@ test('guest with remaining share opportunities is shown previous result instead 
  let registration=0;w.MatchAppRegistrationWelcome={openOffer:()=>{registration++;}};
  for(let i=0;i<3;i++)assert.equal(w.anonLimitCheck('match'),true);
  assert.equal(w.anonLimitCheck('match'),false);
- assert.equal(registration,0);assert.match(bar.textContent,/2 of 2/);
+ assert.equal(registration,0);assert.match(bar.textContent,/3 verified results/);
  dom.window.close();
 });
 test('new adult assets and premium design do not touch Kids',()=>{
  const home=read('index.html'),chat=read('discover.html');
  for(const page of [home,chat]){
-  assert.match(page,/verified-public-guest-share\.js\?v=20260926-selectedposter1/);
+  assert.match(page,/verified-public-guest-share\.js\?v=202609(26-selectedposter1|28-three-shares1)/);
   assert.match(page,/guest-share-rewards\.css\?v=20260926-selectedposter1/);
  }
  assert.match(read('guest-share-rewards.js'),/finalizeVerified/);

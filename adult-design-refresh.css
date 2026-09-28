@@ -1,0 +1,86 @@
+/* Adult Home visual treatment. Scoped away from Kids, ads, and product state. */
+/* Depth is painted within existing geometry; fold colors and artwork stay intact. */
+html body.page-home :is(#questionnaire-box,#how-it-works,#ai-concierge-section){
+  background:linear-gradient(145deg,rgba(35,25,48,.97),rgba(13,12,24,.97))!important;
+  border-color:rgba(222,188,128,.38)!important;
+  box-shadow:inset 0 1px 0 rgba(255,239,207,.15),inset 0 -1px 0 rgba(0,0,0,.5),0 12px 28px rgba(0,0,0,.26)!important;
+}
+html body.page-home #ebook-matcher-root .ebook-panel{
+  background:linear-gradient(145deg,rgba(33,23,48,.96),rgba(13,12,24,.96));
+}
+html body.page-home :is(#questionnaire-box,#ebook-matcher-root) :is(select,input:not([type=checkbox])){
+  background-color:#171323!important;
+  border-color:rgba(204,185,229,.32)!important;
+  box-shadow:inset 0 2px 5px rgba(0,0,0,.38),0 1px 0 rgba(255,235,199,.09)!important;
+  color:#f6f1fc!important;
+}
+html body.page-home :is(#questionnaire-box,#ebook-matcher-root) :is(select,input,button):focus-visible{
+  outline:2px solid #f2cd7b!important;outline-offset:3px;
+}
+html body.page-home :is(#questionnaire-box .gold-btn,#ebook-matcher-root .ebook-match-cta,.top-ai-launch){
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 4px 0 rgba(30,12,54,.7),0 12px 24px rgba(48,24,89,.28)!important;
+}
+html body.page-home :is(.spotlight-card,.tg-entry,.ebook-fold){
+  box-shadow:inset 0 1px 0 rgba(255,237,210,.13),0 10px 24px rgba(0,0,0,.25)!important;
+}
+html body.page-home #result-box :is(.res-action-grid button,.rematch-btn),
+html body.page-home #questionnaire-box :is(button,select,input),
+html body.page-home #share-modal :is(button,.share-sheet){
+  transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease,filter .18s ease;
+}
+html body.page-home #result-box :is(.res-action-grid button,.rematch-btn):not(.share-restricted){
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 5px 0 rgba(0,0,0,.26),0 13px 22px rgba(0,0,0,.24);
+}
+html body.page-home #result-box .share-cta:not(.share-restricted){
+  min-height:54px!important;
+  background:linear-gradient(120deg,#7437b8 0%,#a52777 52%,#85520f 100%)!important;
+  background-size:160% 100%!important;
+  border:1px solid rgba(255,226,158,.8)!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.55),0 5px 0 #56205e,0 12px 28px rgba(191,63,169,.38)!important;
+  color:#fff!important;
+  text-shadow:0 1px 2px rgba(42,10,45,.65)!important;
+  animation:shareGlow 6s ease-in-out 2!important;
+}
+html body.page-home #result-box .share-cta:not(.share-restricted):hover,
+html body.page-home #share-modal .share-native:hover{filter:brightness(1.12)!important;transform:translateY(-2px)}
+html body.page-home #result-box .share-cta:not(.share-restricted):active,
+html body.page-home #share-modal .share-native:active{transform:translateY(2px) scale(.99)}
+html body.page-home #share-modal .share-native{
+  width:100%;min-height:52px;
+  background:linear-gradient(120deg,#7437b8,#a52777 52%,#85520f)!important;
+  border:1px solid rgba(255,226,158,.75)!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.48),0 5px 0 #56205e,0 12px 28px rgba(191,63,169,.3)!important;
+}
+html body.page-home #share-modal .share-sheet{
+  border:1px solid rgba(235,195,126,.4)!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.11),0 26px 65px rgba(0,0,0,.48)!important;
+}
+html body.page-home #result-box .match-fun-share{
+  display:grid;grid-template-columns:42px minmax(0,1fr);align-items:center;gap:14px;margin:0 0 20px;padding:15px 17px;
+  border:1px solid rgba(220,188,253,.3);border-radius:18px;
+  background:linear-gradient(125deg,rgba(93,45,120,.34),rgba(22,16,39,.94));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 12px 24px rgba(0,0,0,.2);
+}
+html body.page-home #result-box .match-fun-share:has(.share-restricted) :is(.match-fun-share__copy,.match-fun-share__icon){display:none}
+.match-fun-share__icon{flex:none;display:grid;place-items:center;width:42px;height:42px;border-radius:13px;background:rgba(186,117,235,.16);color:#ffe2a4}
+.match-fun-share__copy{min-width:0;flex:1;display:grid;gap:3px;line-height:1.35}
+.match-fun-share__copy strong{color:#fff;font-size:15px}
+.match-fun-share__copy span{color:#d2c5dd;font-size:13px}
+html body.page-home #result-box .match-fun-share .share-cta{grid-column:1/-1;width:100%;min-width:0!important;margin-top:2px!important;white-space:normal;overflow-wrap:normal}
+html body.page-home :is(.share-cta,.share-native):focus-visible{outline:3px solid #ffe192!important;outline-offset:3px}
+@media(max-width:700px){
+  html body.page-home #result-box .match-fun-share{display:grid;grid-template-columns:42px minmax(0,1fr);gap:10px 12px}
+}
+@media(prefers-reduced-motion:reduce){
+  html body.page-home #result-box .share-cta:not(.share-restricted){animation:none!important}
+  html body.page-home :is(#result-box button,#share-modal button){transition:none!important}
+  html body.page-home :is(#result-box button,#share-modal button):is(:hover,:active){transform:none!important}
+}
+html.reduce-motion body.page-home #result-box .share-cta:not(.share-restricted){animation:none!important}
+html.reduce-motion body.page-home :is(#result-box button,#share-modal button){transition:none!important;transform:none!important}
+
+@media(max-width:700px){
+ html body.page-home #questionnaire-box .ma-moods{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+ html body.page-home #questionnaire-box .ma-moods .ma-chip{min-height:44px!important;padding:8px 6px!important;font-size:12px!important;word-break:normal!important;overflow-wrap:normal!important}
+}
+@media(max-width:380px){html body.page-home #questionnaire-box .ma-moods{grid-template-columns:repeat(2,minmax(0,1fr))!important}}

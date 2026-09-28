@@ -61,7 +61,7 @@ test('adult landing pages expose the exact poster in social metadata and version
    'property="og:image:width" content="941"',
    'property="og:image:height" content="1672"',
    'name="twitter:image" content="'+url+'"',
-   'verified-public-guest-share.js?v=20260926-selectedposter1',
+   page==='index.html'?'verified-public-guest-share.js?v=20260928-three-shares1':'verified-public-guest-share.js?v=20260926-selectedposter1',
    'guest-share-rewards.css?v=20260926-selectedposter1'
   ])assert.ok(html.includes(fragment),page+' missing '+fragment);
  }
@@ -69,6 +69,6 @@ test('adult landing pages expose the exact poster in social metadata and version
  const caption=share.slice(share.indexOf('function shareText()'),share.indexOf('// Native share sheet'));
  assert.ok(caption.includes('MatchApp Ai'));
  assert.ok(share.includes('#MatchAppAi #MatchAppTV'));
- assert.ok(!caption.includes('globalMatchTitle'),'personal result must not replace brand poster');
+ assert.ok(caption.includes('globalMatchTitle'),'share caption includes the chosen result without changing poster artwork');
  assert.ok(read('guest-share-rewards.js').includes('Keep AI chat contents PRIVATE'));
 });

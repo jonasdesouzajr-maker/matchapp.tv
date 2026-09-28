@@ -37,7 +37,7 @@ Deno.serve(async(req:Request)=>{
   if(!uuid(guestId))return response({ok:false,reason:"invalid_request"},400,origin);
   if(action==="start"){
    const kind=body.kind;
-   if(kind!=="match"&&kind!=="ask_ai")return response({ok:false,reason:"invalid_request"},400,origin);
+   if(kind!=="match"&&kind!=="watch_match"&&kind!=="ask_ai")return response({ok:false,reason:"invalid_request"},400,origin);
    const {data,error}=await db.rpc("verified_guest_social_gateway",{p_action:"start",p_guest_id:guestId,p_kind:kind});
    if(error){console.error("Guest proof issue failed:",error.code);return response({ok:false,reason:"server_error"},503,origin);}
    return response(data,200,origin);
