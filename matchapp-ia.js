@@ -239,10 +239,7 @@ function mountHome(){
  const container=qs('section.container');const hero=qs('.home-hero');const form=qs('#questionnaire-box');const search=qs('#search-box');
  if(!container||!hero||!form||!search)return;
  const t=c();qs('.home-h1',hero).textContent=t.title;qs('.home-h1-sub',hero).textContent=t.sub;
- if(!qs('.ma-how-link',hero)){
-   const how=el('button','ma-how-link',langKey()==='pt-BR'?'✨ Como funciona':'✨ How it works');how.type='button';
-   how.addEventListener('click',()=>window.MatchAppOnboarding?.start?.());hero.appendChild(how);
- }
+ // The working header guide is the sole Home onboarding button.
  const concierge=el('section','ma-concierge');concierge.id='ma-concierge';
  const tabs=el('div','ma-tabs');tabs.setAttribute('role','tablist');
  const hints=TAB_HINTS[langKey()]||TAB_HINTS.en;
