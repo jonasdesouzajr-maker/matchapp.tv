@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-21T10:16:03.367Z",
+  "generated": "2026-09-28T11:18:04.401Z",
   "source": "TMDB / JustWatch",
   "titles": {
     "The Bear": {
@@ -15,8 +15,8 @@
         },
         "US": {
           "stream": [
-            "Disney Plus",
             "Hulu",
+            "Disney Plus",
             "YouTube TV"
           ],
           "link": "https://www.themoviedb.org/tv/136315-the-bear/watch?locale=US"
@@ -239,8 +239,7 @@
         "BR": {
           "stream": [
             "HBO Max",
-            "Claro tv+",
-            "HBO Max Amazon Channel"
+            "Claro tv+"
           ],
           "link": "https://www.themoviedb.org/tv/94997-house-of-the-dragon/watch?locale=BR"
         },
@@ -368,9 +367,9 @@
         },
         "US": {
           "stream": [
+            "Hulu",
             "Netflix",
             "Amazon Prime Video",
-            "Hulu",
             "Crunchyroll",
             "Crunchyroll Amazon Channel",
             "Netflix Standard with Ads",
@@ -428,8 +427,8 @@
         },
         "US": {
           "stream": [
-            "Netflix",
             "Hulu",
+            "Netflix",
             "Crunchyroll",
             "Crunchyroll Amazon Channel",
             "Netflix Standard with Ads"
@@ -812,7 +811,6 @@
         "US": {
           "stream": [
             "Netflix",
-            "fuboTV",
             "Netflix Standard with Ads"
           ],
           "link": "https://www.themoviedb.org/movie/579974/watch?locale=US"
@@ -829,6 +827,753 @@
             "Netflix"
           ],
           "link": "https://www.themoviedb.org/movie/579974/watch?locale=PT"
+        }
+      }
+    },
+    "Dangal": {
+      "tmdbId": 360814,
+      "kind": "movie",
+      "year": 2016,
+      "regions": {
+        "BR": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/movie/360814/watch?locale=BR"
+        },
+        "US": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "rent": [
+            "Google Play Movies",
+            "YouTube"
+          ],
+          "buy": [
+            "Apple TV Store",
+            "Google Play Movies",
+            "YouTube"
+          ],
+          "link": "https://www.themoviedb.org/movie/360814/watch?locale=US"
+        },
+        "GB": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "rent": [
+            "Apple TV Store"
+          ],
+          "buy": [
+            "Apple TV Store"
+          ],
+          "link": "https://www.themoviedb.org/movie/360814/watch?locale=GB"
+        },
+        "PT": {
+          "stream": [
+            "Netflix"
+          ],
+          "rent": [
+            "Apple TV Store"
+          ],
+          "buy": [
+            "Apple TV Store"
+          ],
+          "link": "https://www.themoviedb.org/movie/360814/watch?locale=PT"
+        }
+      }
+    },
+    "Jawan": {
+      "tmdbId": 872906,
+      "kind": "movie",
+      "year": 2023,
+      "regions": {
+        "BR": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/movie/872906/watch?locale=BR"
+        },
+        "US": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "rent": [
+            "Google Play Movies",
+            "YouTube"
+          ],
+          "buy": [
+            "Apple TV Store",
+            "Google Play Movies",
+            "YouTube"
+          ],
+          "link": "https://www.themoviedb.org/movie/872906/watch?locale=US"
+        },
+        "GB": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "rent": [
+            "Apple TV Store",
+            "Google Play Movies",
+            "YouTube"
+          ],
+          "buy": [
+            "Apple TV Store",
+            "Google Play Movies",
+            "YouTube"
+          ],
+          "link": "https://www.themoviedb.org/movie/872906/watch?locale=GB"
+        },
+        "PT": {
+          "stream": [
+            "Netflix"
+          ],
+          "rent": [
+            "Apple TV Store"
+          ],
+          "buy": [
+            "Apple TV Store"
+          ],
+          "link": "https://www.themoviedb.org/movie/872906/watch?locale=PT"
+        }
+      }
+    },
+    "Gangubai Kathiawadi": {
+      "tmdbId": 664332,
+      "kind": "movie",
+      "year": 2022,
+      "regions": {
+        "BR": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/movie/664332/watch?locale=BR"
+        },
+        "US": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/movie/664332/watch?locale=US"
+        },
+        "GB": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/movie/664332/watch?locale=GB"
+        },
+        "PT": {
+          "stream": [
+            "Netflix"
+          ],
+          "link": "https://www.themoviedb.org/movie/664332/watch?locale=PT"
+        }
+      }
+    },
+    "Raat Akeli Hai": {
+      "tmdbId": 589615,
+      "kind": "movie",
+      "year": 2020,
+      "regions": {
+        "BR": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/movie/589615/watch?locale=BR"
+        },
+        "US": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/movie/589615/watch?locale=US"
+        },
+        "GB": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/movie/589615/watch?locale=GB"
+        },
+        "PT": {
+          "stream": [
+            "Netflix"
+          ],
+          "link": "https://www.themoviedb.org/movie/589615/watch?locale=PT"
+        }
+      }
+    },
+    "Darlings": {
+      "tmdbId": 801526,
+      "kind": "movie",
+      "year": 2022,
+      "regions": {
+        "BR": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/movie/801526/watch?locale=BR"
+        },
+        "US": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/movie/801526/watch?locale=US"
+        },
+        "GB": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/movie/801526/watch?locale=GB"
+        },
+        "PT": {
+          "stream": [
+            "Netflix"
+          ],
+          "link": "https://www.themoviedb.org/movie/801526/watch?locale=PT"
+        }
+      }
+    },
+    "Sacred Games": {
+      "tmdbId": 79352,
+      "kind": "tv",
+      "year": 2018,
+      "regions": {
+        "BR": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/79352-sacred-games/watch?locale=BR"
+        },
+        "US": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/79352-sacred-games/watch?locale=US"
+        },
+        "GB": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/79352-sacred-games/watch?locale=GB"
+        },
+        "PT": {
+          "stream": [
+            "Netflix"
+          ],
+          "link": "https://www.themoviedb.org/tv/79352-sacred-games/watch?locale=PT"
+        }
+      }
+    },
+    "Delhi Crime": {
+      "tmdbId": 87508,
+      "kind": "tv",
+      "year": 2019,
+      "regions": {
+        "BR": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/87508/watch?locale=BR"
+        },
+        "US": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/87508/watch?locale=US"
+        },
+        "GB": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/87508/watch?locale=GB"
+        },
+        "PT": {
+          "stream": [
+            "Netflix"
+          ],
+          "link": "https://www.themoviedb.org/tv/87508/watch?locale=PT"
+        }
+      }
+    },
+    "Kota Factory": {
+      "tmdbId": 89113,
+      "kind": "tv",
+      "year": 2019,
+      "regions": {
+        "BR": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/89113/watch?locale=BR"
+        },
+        "US": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/89113/watch?locale=US"
+        },
+        "GB": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/89113/watch?locale=GB"
+        },
+        "PT": {
+          "stream": [
+            "Netflix"
+          ],
+          "link": "https://www.themoviedb.org/tv/89113/watch?locale=PT"
+        }
+      }
+    },
+    "3 Idiots": {
+      "tmdbId": 20453,
+      "kind": "movie",
+      "year": 2009,
+      "regions": {
+        "US": {
+          "rent": [
+            "Google Play Movies",
+            "YouTube"
+          ],
+          "buy": [
+            "Google Play Movies",
+            "YouTube"
+          ],
+          "link": "https://www.themoviedb.org/movie/20453-3-idiots/watch?locale=US"
+        },
+        "GB": {
+          "rent": [
+            "Google Play Movies",
+            "YouTube"
+          ],
+          "buy": [
+            "Google Play Movies",
+            "YouTube"
+          ],
+          "link": "https://www.themoviedb.org/movie/20453-3-idiots/watch?locale=GB"
+        }
+      }
+    },
+    "Zindagi Na Milegi Dobara": {
+      "tmdbId": 61202,
+      "kind": "movie",
+      "year": 2011,
+      "regions": {
+        "BR": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/movie/61202/watch?locale=BR"
+        },
+        "US": {
+          "stream": [
+            "Netflix",
+            "fuboTV",
+            "Netflix Standard with Ads"
+          ],
+          "rent": [
+            "Apple TV Store",
+            "Google Play Movies",
+            "YouTube"
+          ],
+          "buy": [
+            "Apple TV Store",
+            "Google Play Movies",
+            "YouTube"
+          ],
+          "link": "https://www.themoviedb.org/movie/61202/watch?locale=US"
+        },
+        "GB": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads",
+            "ITVX Premium"
+          ],
+          "rent": [
+            "Apple TV Store"
+          ],
+          "buy": [
+            "Apple TV Store"
+          ],
+          "link": "https://www.themoviedb.org/movie/61202/watch?locale=GB"
+        },
+        "PT": {
+          "stream": [
+            "Netflix"
+          ],
+          "buy": [
+            "Apple TV Store"
+          ],
+          "link": "https://www.themoviedb.org/movie/61202/watch?locale=PT"
+        }
+      }
+    },
+    "Andhadhun": {
+      "tmdbId": 534780,
+      "kind": "movie",
+      "year": 2018,
+      "regions": {
+        "US": {
+          "rent": [
+            "Apple TV Store",
+            "Google Play Movies",
+            "YouTube"
+          ],
+          "buy": [
+            "Apple TV Store",
+            "Google Play Movies",
+            "YouTube"
+          ],
+          "link": "https://www.themoviedb.org/movie/534780/watch?locale=US"
+        },
+        "GB": {
+          "stream": [
+            "Amazon Prime Video",
+            "Amazon Prime Video with Ads"
+          ],
+          "rent": [
+            "Apple TV Store",
+            "Google Play Movies",
+            "YouTube"
+          ],
+          "buy": [
+            "Apple TV Store",
+            "Google Play Movies",
+            "YouTube"
+          ],
+          "link": "https://www.themoviedb.org/movie/534780/watch?locale=GB"
+        },
+        "PT": {
+          "rent": [
+            "Apple TV Store"
+          ],
+          "buy": [
+            "Apple TV Store"
+          ],
+          "link": "https://www.themoviedb.org/movie/534780/watch?locale=PT"
+        }
+      }
+    },
+    "Queen": {
+      "tmdbId": 247645,
+      "kind": "movie",
+      "year": 2014,
+      "regions": {
+        "US": {
+          "rent": [
+            "Apple TV Store",
+            "Google Play Movies",
+            "YouTube"
+          ],
+          "buy": [
+            "Apple TV Store",
+            "Google Play Movies",
+            "YouTube"
+          ],
+          "link": "https://www.themoviedb.org/movie/247645-queen/watch?locale=US"
+        },
+        "GB": {
+          "stream": [
+            "Amazon Prime Video",
+            "Amazon Prime Video with Ads"
+          ],
+          "rent": [
+            "Google Play Movies",
+            "YouTube"
+          ],
+          "buy": [
+            "Apple TV Store",
+            "Google Play Movies",
+            "YouTube"
+          ],
+          "link": "https://www.themoviedb.org/movie/247645-queen/watch?locale=GB"
+        },
+        "PT": {
+          "buy": [
+            "Apple TV Store"
+          ],
+          "link": "https://www.themoviedb.org/movie/247645-queen/watch?locale=PT"
+        }
+      }
+    },
+    "Club de Cuervos": {
+      "tmdbId": 63314,
+      "kind": "tv",
+      "year": 2015,
+      "regions": {
+        "BR": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/63314-club-de-cuervos/watch?locale=BR"
+        },
+        "US": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/63314-club-de-cuervos/watch?locale=US"
+        },
+        "GB": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/63314-club-de-cuervos/watch?locale=GB"
+        },
+        "PT": {
+          "stream": [
+            "Netflix"
+          ],
+          "link": "https://www.themoviedb.org/tv/63314-club-de-cuervos/watch?locale=PT"
+        }
+      }
+    },
+    "Control Z": {
+      "tmdbId": 102903,
+      "kind": "tv",
+      "year": 2020,
+      "regions": {
+        "BR": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/102903-control-z/watch?locale=BR"
+        },
+        "US": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/102903-control-z/watch?locale=US"
+        },
+        "GB": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/102903-control-z/watch?locale=GB"
+        },
+        "PT": {
+          "stream": [
+            "Netflix"
+          ],
+          "link": "https://www.themoviedb.org/tv/102903-control-z/watch?locale=PT"
+        }
+      }
+    },
+    "Monarca": {
+      "tmdbId": 93297,
+      "kind": "tv",
+      "year": 2019,
+      "regions": {
+        "BR": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/93297-monarca/watch?locale=BR"
+        },
+        "US": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/93297-monarca/watch?locale=US"
+        },
+        "GB": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/93297-monarca/watch?locale=GB"
+        },
+        "PT": {
+          "stream": [
+            "Netflix"
+          ],
+          "link": "https://www.themoviedb.org/tv/93297-monarca/watch?locale=PT"
+        }
+      }
+    },
+    "Rubí": {
+      "tmdbId": 12961,
+      "kind": "tv",
+      "year": 2004,
+      "regions": {
+        "US": {
+          "stream": [
+            "ViX Premium Amazon Channel"
+          ],
+          "link": "https://www.themoviedb.org/tv/12961-rubi/watch?locale=US"
+        }
+      }
+    },
+    "Teresa": {
+      "tmdbId": 12926,
+      "kind": "tv",
+      "year": 2010,
+      "regions": {
+        "US": {
+          "stream": [
+            "ViX Premium Amazon Channel"
+          ],
+          "link": "https://www.themoviedb.org/tv/12926-teresa/watch?locale=US"
+        }
+      }
+    },
+    "Roma": {
+      "tmdbId": 426426,
+      "kind": "movie",
+      "year": 2018,
+      "regions": {
+        "BR": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/movie/426426-roma/watch?locale=BR"
+        },
+        "US": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/movie/426426-roma/watch?locale=US"
+        },
+        "GB": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/movie/426426-roma/watch?locale=GB"
+        },
+        "PT": {
+          "stream": [
+            "Netflix"
+          ],
+          "link": "https://www.themoviedb.org/movie/426426-roma/watch?locale=PT"
+        }
+      }
+    },
+    "Pedro Páramo": {
+      "tmdbId": 1069387,
+      "kind": "movie",
+      "year": 2024,
+      "regions": {
+        "BR": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/movie/1069387-pedro-paramo/watch?locale=BR"
+        },
+        "US": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/movie/1069387-pedro-paramo/watch?locale=US"
+        },
+        "GB": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/movie/1069387-pedro-paramo/watch?locale=GB"
+        },
+        "PT": {
+          "stream": [
+            "Netflix"
+          ],
+          "link": "https://www.themoviedb.org/movie/1069387-pedro-paramo/watch?locale=PT"
+        }
+      }
+    },
+    "Amores perros": {
+      "tmdbId": 55,
+      "kind": "movie",
+      "year": 2000,
+      "regions": {
+        "BR": {
+          "stream": [
+            "MUBI",
+            "MUBI Amazon Channel"
+          ],
+          "rent": [
+            "Apple TV Store",
+            "Amazon Video"
+          ],
+          "buy": [
+            "Apple TV Store",
+            "Amazon Video"
+          ],
+          "link": "https://www.themoviedb.org/movie/55-amores-perros/watch?locale=BR"
+        },
+        "US": {
+          "stream": [
+            "MUBI",
+            "MUBI Amazon Channel"
+          ],
+          "rent": [
+            "Amazon Video",
+            "Apple TV Store",
+            "Fandango At Home"
+          ],
+          "buy": [
+            "Amazon Video",
+            "Apple TV Store",
+            "Fandango At Home"
+          ],
+          "link": "https://www.themoviedb.org/movie/55-amores-perros/watch?locale=US"
+        },
+        "GB": {
+          "stream": [
+            "MUBI",
+            "MUBI Amazon Channel"
+          ],
+          "rent": [
+            "Apple TV Store",
+            "Amazon Video"
+          ],
+          "buy": [
+            "Apple TV Store",
+            "Amazon Video"
+          ],
+          "link": "https://www.themoviedb.org/movie/55-amores-perros/watch?locale=GB"
+        },
+        "PT": {
+          "stream": [
+            "Filmin",
+            "MUBI Amazon Channel"
+          ],
+          "link": "https://www.themoviedb.org/movie/55-amores-perros/watch?locale=PT"
         }
       }
     },
@@ -1316,8 +2061,8 @@
         },
         "US": {
           "stream": [
-            "Disney Plus",
-            "Hulu"
+            "Hulu",
+            "Disney Plus"
           ],
           "link": "https://www.themoviedb.org/tv/246473/watch?locale=US"
         },
@@ -1419,8 +2164,8 @@
         },
         "US": {
           "stream": [
-            "Netflix",
             "Hulu",
+            "Netflix",
             "Crunchyroll",
             "Crunchyroll Amazon Channel",
             "Netflix Standard with Ads"
@@ -1622,6 +2367,40 @@
         }
       }
     },
+    "A Different World": {
+      "tmdbId": 305357,
+      "kind": "tv",
+      "year": 2026,
+      "regions": {
+        "BR": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/305357-a-different-world/watch?locale=BR"
+        },
+        "US": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/305357-a-different-world/watch?locale=US"
+        },
+        "GB": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/305357-a-different-world/watch?locale=GB"
+        },
+        "PT": {
+          "stream": [
+            "Netflix"
+          ],
+          "link": "https://www.themoviedb.org/tv/305357-a-different-world/watch?locale=PT"
+        }
+      }
+    },
     "Best of the Best": {
       "tmdbId": 1514863,
       "kind": "movie",
@@ -1724,6 +2503,40 @@
         }
       }
     },
+    "The Love Hypothesis": {
+      "tmdbId": 1032863,
+      "kind": "movie",
+      "year": 2026,
+      "regions": {
+        "BR": {
+          "stream": [
+            "Amazon Prime Video",
+            "Amazon Prime Video with Ads"
+          ],
+          "link": "https://www.themoviedb.org/movie/1032863-the-love-hypothesis/watch?locale=BR"
+        },
+        "US": {
+          "stream": [
+            "Amazon Prime Video",
+            "Amazon Prime Video with Ads"
+          ],
+          "link": "https://www.themoviedb.org/movie/1032863-the-love-hypothesis/watch?locale=US"
+        },
+        "GB": {
+          "stream": [
+            "Amazon Prime Video",
+            "Amazon Prime Video with Ads"
+          ],
+          "link": "https://www.themoviedb.org/movie/1032863-the-love-hypothesis/watch?locale=GB"
+        },
+        "PT": {
+          "stream": [
+            "Amazon Prime Video"
+          ],
+          "link": "https://www.themoviedb.org/movie/1032863-the-love-hypothesis/watch?locale=PT"
+        }
+      }
+    },
     "The Drop: A Snowfall Saga": {
       "tmdbId": 304842,
       "kind": "tv",
@@ -1743,12 +2556,16 @@
       "kind": "movie",
       "year": 2026,
       "regions": {
+        "BR": {
+          "stream": [
+            "Disney Plus"
+          ],
+          "link": "https://www.themoviedb.org/movie/1084244-toy-story-5/watch?locale=BR"
+        },
         "US": {
           "rent": [
-            "Apple TV Store",
             "Google Play Movies",
-            "YouTube",
-            "Fandango At Home"
+            "YouTube"
           ],
           "buy": [
             "Amazon Video",
@@ -1760,10 +2577,8 @@
           "link": "https://www.themoviedb.org/movie/1084244-toy-story-5/watch?locale=US"
         },
         "GB": {
-          "rent": [
-            "Apple TV Store",
-            "Rakuten TV",
-            "Sky Store"
+          "stream": [
+            "Disney Plus"
           ],
           "buy": [
             "Apple TV Store",
@@ -1774,6 +2589,9 @@
           "link": "https://www.themoviedb.org/movie/1084244-toy-story-5/watch?locale=GB"
         },
         "PT": {
+          "stream": [
+            "Disney Plus"
+          ],
           "buy": [
             "Apple TV Store",
             "Rakuten TV",
@@ -2116,6 +2934,7 @@
         "US": {
           "stream": [
             "Amazon Prime Video",
+            "Philo",
             "YouTube TV",
             "Amazon Prime Video with Ads",
             "Thirteen",
