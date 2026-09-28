@@ -5,8 +5,8 @@ let generation=0, disabled=false;
 const cache=new Map(), host=document.createElement('aside');
 host.id='matchapp-rapidapi-links';host.hidden=true;
 host.setAttribute('aria-label','Additional verified streaming links');
-host.style.cssText='display:grid;gap:8px;margin:9px 0 13px;padding:11px 12px;border:1px solid rgba(229,193,88,.25);border-radius:13px;background:rgba(29,25,36,.96)';
-function clear(){generation++;host.hidden=true;host.replaceChildren();}
+host.style.cssText='gap:8px;margin:9px 0 13px;padding:11px 12px;border:1px solid rgba(229,193,88,.25);border-radius:13px;background:rgba(29,25,36,.96)';
+function clear(){generation++;host.hidden=true;host.style.display='';host.replaceChildren();}
 function render(data){
   const heading=document.createElement('strong');
   heading.textContent='More streaming links · '+data.country;
@@ -28,7 +28,7 @@ function render(data){
     links.appendChild(el);
   }
   if(!links.childNodes.length)return;
-  host.replaceChildren(heading,links,label);host.hidden=false;
+  host.replaceChildren(heading,links,label);host.hidden=false;host.style.display='grid';
 }
 async function update(detail){
   const title=String(detail?.title||'').trim(),tmdbId=Number(detail?.tmdbId),
