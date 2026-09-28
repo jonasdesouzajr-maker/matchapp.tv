@@ -194,12 +194,40 @@ window.closeOutOfMatches = function () {
     if (m) m.style.display = 'none';
 };
 
+// Legacy portfolio metadata inflated JWT headers enough for PostgREST to
+// reject every request with HTTP 400. The server now preserves that data
+// outside auth metadata. Refresh old tokens once, before any allowance debit.
+let compactSessionFlight = null;
+let compactSessionAttempt = { token: '', at: 0 };
+window.ensureCompactMatchSession = async function () {
+    if (!supabaseClient?.auth) return { data: { session: null } };
+    const current = await supabaseClient.auth.getSession();
+    if (current.error) throw current.error;
+    const token = current.data?.session?.access_token || '';
+    if (token.length < 8000) return current;
+    if (compactSessionFlight) return compactSessionFlight;
+    if (compactSessionAttempt.token === token && Date.now() - compactSessionAttempt.at < 30000)
+        throw new Error('Session refresh is temporarily unavailable');
+    compactSessionAttempt = { token, at: Date.now() };
+    compactSessionFlight = (async () => {
+        const refreshed = await supabaseClient.auth.refreshSession();
+        if (refreshed.error) throw refreshed.error;
+        if (!refreshed.data?.session || (refreshed.data.session.access_token || '').length >= 8000)
+            throw new Error('Session could not be refreshed');
+        return refreshed;
+    })();
+    try { return await compactSessionFlight; }
+    finally { compactSessionFlight = null; }
+};
+
 async function checkDailyLimit(action = 'match') {
     if (!['match','ask_ai'].includes(action)) return false;
     if (!supabaseClient) return anonLimitCheck(action);
     try {
         // Wait for the SDK to restore the session before treating a new page as logged out.
-        const sessionResult = await supabaseClient.auth.getSession();
+        const sessionResult = window.ensureCompactMatchSession
+            ? await window.ensureCompactMatchSession()
+            : await supabaseClient.auth.getSession();
         if (sessionResult.error) throw sessionResult.error;
         if (!sessionResult.data?.session) return anonLimitCheck(action);
         isUserLoggedIn = true; window.isUserLoggedIn = true;
@@ -2596,6 +2624,14 @@ if (supabaseClient?.auth && typeof supabaseClient.auth.onAuthStateChange === 'fu
             // so native passkey sign-in and session refresh cannot deadlock.
             setTimeout(async () => {
                 if(authEvent!==profileAuthEvent)return;
+                try {
+                    const current = await window.ensureCompactMatchSession();
+                    if (authEvent !== profileAuthEvent || !current.data?.session) return;
+                    session = current.data.session;
+                } catch (error) {
+                    console.warn('Session recovery deferred:', error.message);
+                    return;
+                }
                 // The server grant is independent of profile loading and
                 // idempotent across tabs, providers and future sign-ins.
                 void claimRegistrationWelcomeBonus(session.user);
@@ -4280,6 +4316,13 @@ window.triggerMatch = async function(isSpecificSearch = false) {
     const matchRunId=(Number(window.__matchappMatchRunId)||0)+1;
     window.__matchappMatchRunId=matchRunId;
     window.__matchappMatchPhase='preflight';
+    try { await window.ensureCompactMatchSession?.(); }
+    catch (error) {
+        window.__matchappMatchPhase = 'idle';
+        console.warn('Match session recovery deferred:', error.message);
+        window.showToast?.(window.t?.('credits.retry') || 'Could not verify your allowance. Please try again.', true);
+        return false;
+    }
     await window.matchPolicy?.ready();
     if(matchRunId!==window.__matchappMatchRunId)return;
     const requested = window.getMatchCriteria?.() || {cat:[document.getElementById('q-category')?.value],plat:[document.getElementById('q-platform')?.value],genre:[document.getElementById('q-genre')?.value],mood:[document.getElementById('q-mood')?.value],vibe:[document.getElementById('q-vibe')?.value],rating:[document.getElementById('q-rating')?.value],decade:[document.getElementById('q-decade')?.value]};
@@ -4309,7 +4352,7 @@ window.triggerMatch = async function(isSpecificSearch = false) {
     const qBox = document.getElementById('questionnaire-box');
     const sBox = document.getElementById('search-box');
     const resultBox = document.getElementById('result-box');
-    if (resultBox) resultBox.style.display = 'none';
+    if (resultBox) { resultBox.style.display = 'none'; resultBox.hidden = true; }
     if (qBox) qBox.style.display = 'none';
     if (sBox) sBox.style.display = 'none';
     if (loadBox) {
@@ -4826,6 +4869,7 @@ async function renderResult(selected, isSpecificSearch) {
     delete resultBox.dataset.resultClosing;
     resultBox.classList.remove('ma-result-closing', 'ma-result-arriving');
     resultBox.removeAttribute('aria-hidden');
+    resultBox.hidden = false;
     resultBox.style.display = 'block';
     resultBox.classList.add('is-revealed', 'ma-result-arriving');
     // The stylesheet reserves the full poster area from first paint. Wait for
@@ -5541,15 +5585,8 @@ async function syncListsToDatabase() {
                 return;
             }
 
-            // Exclusion keys and history stay in metadata: they are bounded by
-            // matchPolicy's own cap and are small, so they do not risk the
-            // ceiling that the portfolio arrays did.
-            await supabaseClient.auth.updateUser({
-                data: {
-                    match_exclusion_keys: [...(window.matchPolicy?.known() || [])].slice(0, 500),
-                    match_history: (window.matchPolicy?.history() || []).slice(0, 200)
-                }
-            }).catch(e => console.warn('History sync deferred:', e.message));
+            // matchPolicy persists exclusions/history through portfolio_action.
+            // Never duplicate growing title records into every access token.
         } catch (e) {
             console.error('[matchapp] Portfolio sync error:', e.message);
         }

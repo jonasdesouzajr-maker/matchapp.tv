@@ -50,19 +50,6 @@
     const pick = pool[Math.floor(Math.random() * pool.length)];
     return { ...pick, platformVerified: true, source: pick.source || 'catalog' };
   }
-  function paintResult(pick) {
-    if (!pick) return false;
-    const box = document.getElementById('result-box'), title = document.getElementById('res-title'), syn = document.getElementById('res-synopsis');
-    const q = document.getElementById('questionnaire-box'), load = document.getElementById('loading-box');
-    if (title) { title.textContent = pick.title; title.removeAttribute('data-src-text'); title.dataset.localePainted = ''; }
-    if (syn) { syn.textContent = pick.synopsis || ''; syn.removeAttribute('data-src-text'); syn.dataset.localePainted = ''; }
-    const badge = document.getElementById('res-platform-badge'); if (badge) badge.textContent = pick.platform || 'Match';
-    if (load) load.style.display = 'none'; if (q) q.style.display = 'none'; if (box) box.style.display = 'block';
-    try { window.SESSION_SHOWN?.add?.(pick.title); } catch (_) {}
-    document.dispatchEvent(new CustomEvent('matchapp:newmatch', { detail: pick }));
-    document.dispatchEvent(new Event('matchapp:langchange'));
-    return true;
-  }
   function wrapPick() {
     const orig = window.pickFromCatalog; if (!orig || orig.__guaranteed) return;
     window.pickFromCatalog = function (cat, plat, mood, vibe, rating, decade) {
@@ -73,18 +60,9 @@
     };
     window.pickFromCatalog.__guaranteed = true;
   }
-  function wrapTrigger() {
-    const orig = window.triggerMatch; if (!orig || orig.__guaranteed) return;
-    window.triggerMatch = async function (isSpecific) {
-      await orig.apply(this, arguments);
-      const box = document.getElementById('result-box');
-      const visible = box && box.style.display !== 'none' && (box.offsetHeight > 0 || box.classList.contains('is-revealed'));
-      if (visible || isSpecific || document.body.classList.contains('match-searching')) return;
-      const pick = pickFreshFitting(currentCriteria());
-      if (pick) paintResult(pick);
-    };
-    window.triggerMatch.__guaranteed = true;
-  }
+  // triggerMatch owns verification, quota and the complete poster renderer.
+  // A returned promise may mean quota denial, cancellation or no verified
+  // result. Never reinterpret it as permission to paint an unmetered card.
   // The guarantee wrapper must classify the same *positive* media intent as
   // discover.js. A phrase such as "do not recommend books or music" is an
   // exclusion, not a request for audio. Without this strip, the final safety
@@ -155,7 +133,7 @@
     };
     window.askAIConversational.__guarantee = true;
   }
-  function installWrappers(){wrapPick();wrapTrigger();wrapAsk();}
+  function installWrappers(){wrapPick();wrapAsk();}
   function boot() {
     bootLang();installWrappers();
     let attempt=0;

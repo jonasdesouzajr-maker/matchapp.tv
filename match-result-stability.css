@@ -1,6 +1,7 @@
 /* Adult result only. Keep the credits and dismiss button outside the poster.
    Reserve real cover space before it decodes so Android/WebView does not
    scroll to a zero-height stage or shift the title beneath the controls. */
+html body.page-home #result-box[hidden] { display: none !important; }
 html body.page-home #result-box .match-result-toolbar {
   position: relative !important;
   display: flex !important;
