@@ -52,7 +52,7 @@ function metaDescription(i){
   // actual Kids age bands, and existing regional viewing links. Avoid cutting
   // off the final words or promising a streaming service carries the title.
   const prefix=`${i.title}${i.year?' ('+i.year+')':''}: `;
-  const suffix=` Ages ${ageText(i)}. Find similar family picks and regional viewing guides.`;
+  const suffix=` Ages ${ageText(i)}. Find where to watch and similar picks.`;
   const summary=String(i.desc||'').trim().replace(/[.\s]+$/,'');
   const available=Math.max(30,158-prefix.length-suffix.length-2);
   const clipped=summary.length<=available?summary:
