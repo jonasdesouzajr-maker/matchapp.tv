@@ -138,7 +138,7 @@ const hubData={
     {'@type':'BreadcrumbList',itemListElement:[{'@type':'ListItem',position:1,name:'Kids Mode',item:`${SITE}/kids/`},{'@type':'ListItem',position:2,name:'Classic cartoons',item:hub}]}
   ]
 };
-fs.writeFileSync(path.join(root,'kids/nostalgia/index.html'),page('Classic Cartoons by Decade: 1950s–2000s','Classic cartoons from the 1950s–2000s: DuckTales, Garfield, Woody Woodpecker and more. Browse decades, age guidance and regional viewing links.',hub,body,hubData,hubKeywords,`${SITE}/kids/kids-logo.jpeg`));
+fs.writeFileSync(path.join(root,'kids/nostalgia/index.html'),page('Classic Cartoons 1950s–2000s','Classic cartoons from the 1950s–2000s: DuckTales, Garfield, Woody Woodpecker and more. Browse decades, age guidance and regional viewing links.',hub,body,hubData,hubKeywords,`${SITE}/kids/kids-logo.jpeg`));
 fs.writeFileSync(path.join(root,'tools/kids-urls.json'),JSON.stringify(urls,null,2)+'\n');
 fs.writeFileSync(path.join(root,'tools/kids-sitemap-meta.json'),JSON.stringify(sitemapMeta,null,2)+'\n');
 console.log(`Built ${urls.length} public Kids guides with stable SEO revision ${SEO_REVISION}.`);
