@@ -53,7 +53,7 @@ html body.page-home .share-how>summary{
 /* Only presentation: keep existing section order, accessible summary text,
    open/closed state persistence, news autoplay and Android WebView parity. */
 html body.page-home :is(
- .lazy-head[data-fold-key="concierge"],
+ .lazy-head[data-fold-key="concierge"],.lazy-head[data-fold-key="trending"],
  .lazy-head[data-fold-key="together"],
  #latest-news>summary,
  #premiere-disclosure>summary,
@@ -78,7 +78,7 @@ html body.page-home :is(
  text-shadow:0 1px 6px rgba(11,5,26,.34)!important;
 }
 html body.page-home :is(
- .lazy-head[data-fold-key="concierge"],
+ .lazy-head[data-fold-key="concierge"],.lazy-head[data-fold-key="trending"],
  .lazy-head[data-fold-key="together"],
  #premiere-disclosure>summary,
  #weekly-pick-disclosure>summary,
@@ -90,7 +90,7 @@ html body.page-home :is(
  margin-block:7px!important;
 }
 html body.page-home :is(
- .lazy-head[data-fold-key="concierge"],
+ .lazy-head[data-fold-key="concierge"],.lazy-head[data-fold-key="trending"],
  .lazy-head[data-fold-key="together"],
  #premiere-disclosure>summary,
  #weekly-pick-disclosure>summary,
@@ -257,14 +257,14 @@ html body.page-home :is(.lazy-head[data-fold-key],#premiere-disclosure>summary,
 }
 @media(max-width:640px){
  html body.page-home :is(
-  .lazy-head[data-fold-key="concierge"],.lazy-head[data-fold-key="together"],
+  .lazy-head[data-fold-key="concierge"],.lazy-head[data-fold-key="trending"],.lazy-head[data-fold-key="together"],
   #premiere-disclosure>summary,#weekly-pick-disclosure>summary,
   #global-events>.global-events-fold>.global-events-summary,
   #swifties-spotify .swifties-fold
  ){
   min-height:70px!important;padding:8px 64px 8px 10px!important;gap:7px!important;
  }
- html body.page-home :is(.lazy-head[data-fold-key="concierge"],
+ html body.page-home :is(.lazy-head[data-fold-key="concierge"],.lazy-head[data-fold-key="trending"],
   .lazy-head[data-fold-key="together"],#premiere-disclosure>summary,
   #weekly-pick-disclosure>summary,#global-events .global-events-summary,
   #swifties-spotify .swifties-fold)::before,
@@ -295,4 +295,15 @@ html body.page-home :is(.lazy-head[data-fold-key],#premiere-disclosure>summary,
   #swifties-spotify .swifties-fold,#latest-news>summary){
   transition:none!important;animation:none!important;
  }
+}
+
+/* Owner-requested initial folds and separate primary action spacing. */
+html body.page-home .lazy-head[data-fold-key="trending"]{
+ --ma-fold-a:#65529C;--ma-fold-b:#493677;--ma-fold-c:#292047;
+ --ma-fold-icon:url("/assets/brand/matchapp-fold-picks.svg");
+ display:flex!important;
+}
+html body.page-home #trending-rail.lazy-foldable:not(.lazy-open){display:none!important}
+html body.page-home #ma-concierge #questionnaire-box .match-more-filters + button[data-i18n="q.submit"]{
+ margin-top:18px!important;position:relative!important;bottom:auto!important;
 }

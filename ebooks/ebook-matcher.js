@@ -724,13 +724,13 @@ async function mount(){
  let root=document.getElementById('ebook-matcher-root');
  if(!root){
   root=document.createElement('section');root.id='ebook-matcher-root';root.className='ebook-matcher-root';
-  const anchor=document.getElementById('questionnaire-box');
+  const anchor=document.getElementById('ma-concierge')||document.getElementById('questionnaire-box');
   if(anchor)anchor.insertAdjacentElement('afterend',root);else(document.querySelector('main')||document.body).appendChild(root);
  }
  // Old cached Home HTML may still put Bookworms beneath Search/Ask AI.
- // Repair placement beside the watch matcher every time, including remounts.
+ // Keep reading independent of both tabs and the outer Watch/Ask fold.
  if(document.body.classList.contains('page-home')){
-  const watch=document.getElementById('questionnaire-box');
+  const watch=document.getElementById('ma-concierge')||document.getElementById('questionnaire-box');
   if(watch&&root.previousElementSibling!==watch)watch.insertAdjacentElement('afterend',root);
  }
  if(root.dataset.ebookMounted==='1')return;

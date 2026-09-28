@@ -125,6 +125,8 @@ async function aiQuestion(page,question,expected,label){
     assert(await page.locator('img[data-title]').count()>0,'no original-title poster elements');
     // On a 320px phone the trending rail starts below the opening hero and
     // images may still be lazy. Scroll it genuinely into the viewport first.
+    const trendingFold=page.locator('.lazy-head[data-fold-key="trending"]');
+    if(await trendingFold.count()&&await trendingFold.getAttribute('aria-expanded')==='false')await trendingFold.click();
     await page.locator('#trending-rail').scrollIntoViewIfNeeded();
     await page.waitForFunction(()=>[...document.querySelectorAll('#trending-rail img[data-title]')]
       .some(img=>img.complete&&img.naturalWidth>0),null,{timeout:15000}).catch(()=>{});
@@ -223,8 +225,8 @@ async function aiQuestion(page,question,expected,label){
     }
     const ebook=page.locator('#ebook-matcher-root');
     const placement=await page.evaluate(()=>{
-      const form=document.getElementById('questionnaire-box'),root=document.getElementById('ebook-matcher-root');
-      return !!(form&&root&&root.previousElementSibling===form&&!root.closest('#search-box'));
+      const form=document.getElementById('ma-concierge'),root=document.getElementById('ebook-matcher-root');
+      return !!(form&&root&&root.previousElementSibling===form&&!root.closest('#ma-concierge'));
     });
     record('Bookworms directly follows Find what to watch here '+device.name,placement,'independent of Ask AI');
     const fold=ebook.locator('details.ebook-fold');

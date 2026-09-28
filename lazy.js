@@ -4,12 +4,13 @@
 const STORE_KEY='match_lazy_mode';
 const FOLD_KEY='match_home_fold_state_v2';
 const GENERIC=[
+ {sel:'#trending-rail',key:'trending',label:'Latest titles trending right now'},
  {sel:'#ma-concierge',key:'concierge',label:'Match / Ask MatchApp Ai'},
  {sel:'.tg-entry',key:'together',label:'Match Together'}
 ];
 /* These sections are intentionally hidden/re-homed by the current IA.
    Never generate orphan fold bars for them on Home. */
-const RETIRED_GENERIC_KEYS=new Set(['checkin','topask','how','aboutai','trending']);
+const RETIRED_GENERIC_KEYS=new Set(['checkin','topask','how','aboutai']);
 const NATIVE=[
  {sel:'#premiere-disclosure',key:'premiere'},
  {sel:'#weekly-pick-disclosure',key:'weekly'},
@@ -17,10 +18,11 @@ const NATIVE=[
  {sel:'#global-events .global-events-fold',key:'events'}
 ];
 let foldState=loadFoldState(), syncing=false, observerQueued=false;
-function loadFoldState(){try{const x=JSON.parse(localStorage.getItem(FOLD_KEY)||'{}');return x&&typeof x==='object'?x:{}}catch(_){return{}}}
+// Every fresh Home opening starts with just Watch and News expanded.
+function loadFoldState(){return {concierge:true,news:true}}
 function saveFoldState(){try{localStorage.setItem(FOLD_KEY,JSON.stringify(foldState))}catch(_){}}
 function lazyOn(){return document.body.classList.contains('lazy-mode')}
-function storedOpen(key){return foldState[key]!==false}
+function storedOpen(key){return foldState[key]===true}
 function remember(key,open){foldState[key]=!!open;saveFoldState()}
 function isOn(){try{return localStorage.getItem(STORE_KEY)==='1'}catch(_){return false}}
 function setOn(v){try{localStorage.setItem(STORE_KEY,v?'1':'0')}catch(_){}}
@@ -86,16 +88,6 @@ function mountSwift(){
  });
 }
 function cleanupRetiredHeads(){
- // Remove the obsolete trending fold by position too, so an older saved/runtime
- // fold node cannot survive just because it lacks the current data-fold-key.
- document.querySelectorAll('.lazy-head').forEach(head=>{
-  const section=head.nextElementSibling;
-  if(section?.id!=='trending-rail')return;
-  section.classList.remove('lazy-foldable','lazy-open');
-  delete section.dataset.lazyFoldMounted;
-  delete section.dataset.foldKey;
-  head.remove();
- });
  document.querySelectorAll('.lazy-head[data-fold-key]').forEach(head=>{
   if(!RETIRED_GENERIC_KEYS.has(head.dataset.foldKey))return;
   const section=head.nextElementSibling;
@@ -170,7 +162,7 @@ function mountHeroJump(){
  });
 }
 function init(){
- buildToggle();mountAll();apply(isOn(),false);mountHeroJump();
+ buildToggle();mountAll();apply(false,false);mountHeroJump();
  const obs=new MutationObserver(records=>{
   let relevant=false;
   for(const r of records)for(const n of r.addedNodes||[])if(n.nodeType===1&&(n.matches?.('#weekly-pick-disclosure,#latest-news,#ma-concierge')||n.querySelector?.('#weekly-pick-disclosure,#latest-news,#ma-concierge'))){relevant=true;break}

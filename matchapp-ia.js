@@ -306,7 +306,7 @@ function mountHome(){
  if(trending){after(hero,trending);after(trending,concierge)}
  // Presentation-only journey: titles → primary action → dynamic News → feature banners.
  // Existing IDs, handlers, matching state and feature logic are preserved.
- let anchor=concierge;[loading,result,week,swift,events,how,aiExplainer].forEach(n=>{if(n){after(anchor,n);anchor=n}});
+ let anchor=concierge;[qs('#ebook-matcher-root'),loading,result,week,swift,events,how,aiExplainer].forEach(n=>{if(n){after(anchor,n);anchor=n}});
  const ads=qsa('.container>.ad-banner-container',container);ads.forEach(ad=>ad.classList.add('ma-inline-ad'));
  // The Together ad is attached to the entire fold, not relocated with editorial ads.
  // lazy.js injects the fold heading immediately BEFORE .tg-entry at runtime.

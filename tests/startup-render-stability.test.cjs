@@ -121,11 +121,10 @@ test('Home editorial scripts do not preload hundreds of pixels before view',()=>
 });
 
 
-test('Home removes the nonfunctional trending fold bar and keeps autoplay bounded',()=>{
+test('Home supports the requested collapsed trending fold and keeps autoplay bounded',()=>{
  const lazy=read('lazy.js'),app=read('app.js'),news=read('latest-news.js'),css=read('matchapp-ia.css');
- assert.doesNotMatch(lazy,/key:'trending'/);
- assert.match(lazy,/RETIRED_GENERIC_KEYS=new Set\(\[[^\]]*'trending'/);
- assert.match(lazy,/nextElementSibling[\s\S]*id!=='trending-rail'/);
+ assert.match(lazy,/key:'trending'/);
+ assert.match(lazy,/function loadFoldState\(\)\{return \{concierge:true,news:true\}\}/);
  assert.match(css,/#trending-rail>h4\{display:none!important\}/);
  assert.match(app,/autoDelay = vp\.id === 'marquee-viewport' \? 1050 : 6500/);
  assert.match(news,/AUTO_FIRST_MS=2600/);
@@ -266,7 +265,7 @@ test('2026-09-21 Home control bar keeps every control and packs it into rows',()
 test('2026-09-21 hero headline opens the matcher and scrolls to it',()=>{
  const lazy=read('lazy.js'),css=read('matchapp-ia.css');
  assert.match(lazy,/function mountHeroJump\(\)/);
- assert.match(lazy,/buildToggle\(\);mountAll\(\);apply\(isOn\(\),false\);mountHeroJump\(\);/);
+ assert.match(lazy,/buildToggle\(\);mountAll\(\);apply\(false,false\);mountHeroJump\(\);/);
  // The fold is opened through its own control, so lazy.js stays the single
  // fold owner and the remembered state keeps in step.
  assert.match(lazy,/\.lazy-head\[data-fold-key="concierge"\]/);
