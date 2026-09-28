@@ -170,44 +170,51 @@ async function chooseVerifiedAudio(p,onProgress){
  // Do not label US public-domain audio "verified free" abroad without rights.
  if(p.access==='free'&&country!=='US')return null;
  const tested=new Set(),started=Date.now(),limit=24;
- for(const allowSeen of [false]){
-  for(const fields of [[]]){
-   const options=pool(p,new Set(fields),allowSeen).filter(b=>!tested.has(b.id));
-   // Batch independent source lookups instead of exhausting eight serial
-   // timeouts before reaching a promising, matching classic.
+ // Search fresh compatible source records in preference order, then seen
+ // records only when fresh options have been exhausted. A verified edition
+ // in the selected country and access tier is mandatory before spending quota.
+ for(const allowSeen of [false,true]){
+   const options=bookCandidates(p,allowSeen).filter(row=>!tested.has(row.book.id));
    for(let offset=0;offset<options.length;offset+=4){
-    if(tested.size>=limit||Date.now()-started>55000)return null;
-    const batch=options.slice(offset,offset+Math.min(4,limit-tested.size));
-    batch.forEach(book=>{tested.add(book.id);try{onProgress?.(tested.size,limit)}catch(_){}});
-    const checked=await Promise.all(batch.map(async book=>{
-     try{
-      const audio=await verify(book,country,p.access);
-      return audio&&((p.access==='free'&&audio.free)||
-       (p.access==='paid'&&audio.apple)||
-       (p.access==='any'&&(audio.apple||audio.free)))?
-       {book,audio,relaxed:fields.length>0,recycled:allowSeen}:null;
-     }catch(_){return null}
-    }));
-    const verified=checked.filter(Boolean);if(verified.length){
-      const chosen=await rankBooks(verified,p);
-      return chosen||verified[0];
-    }
+     if(tested.size>=limit||Date.now()-started>55000)return null;
+     const batch=options.slice(offset,offset+Math.min(4,limit-tested.size));
+     batch.forEach(row=>{tested.add(row.book.id);try{onProgress?.(tested.size,limit)}catch(_){}});
+     const checked=await Promise.all(batch.map(async row=>{
+       try{
+         const audio=await verify(row.book,country,p.access);
+         return audio&&((p.access==='free'&&audio.free)||
+           (p.access==='paid'&&audio.apple)||
+           (p.access==='any'&&(audio.apple||audio.free)))?{...row,audio}:null;
+       }catch(_){return null}
+     }));
+     const verified=checked.filter(Boolean);
+     if(verified.length)return await rankBooks(verified,p)||verified[0];
    }
-  }
  }
  return null;
 }
 async function chooseMagazine(p){
- const api=window.MatchAppMagazines;if(!api?.items)return null;
- const excluded=new Set([...read(K.saved),...read(K.disliked),...read(K.seen)]);
- const all=api.items.filter(m=>!excluded.has(m.id)&&
-   (p.access==='any'||m.access.includes(p.access))&&
-   (p.genre==='any'||m.genres.includes(p.genre))&&
-   (p.mood==='any'||m.moods.includes(p.mood)));
- if(!all.length)return null;
- const local=all.filter(m=>m.region===market());
- const shortlist=(local.length?local:all).map(book=>({book,magazine:true,relaxed:false}));
- return await rankBooks(shortlist,p)||shortlist[Math.floor(Math.random()*shortlist.length)];
+ const safe=MAG(),excluded=new Set([...read(K.saved),...read(K.disliked)]);
+ // Magazine publisher profiles have topics and moods, but do not establish
+ // issue pace, length or era. Unsupported criteria are disclosed in the note.
+ for(const allowSeen of [false,true]){
+  const seen=idset(K.seen);
+  const candidates=safe.filter(m=>!excluded.has(m.id)&&(allowSeen||!seen.has(m.id))&&
+    (p.access==='any'||m.access.includes(p.access)));
+  if(!candidates.length)continue;
+  const ranked=candidates.map(book=>{
+    const mismatched=['genre','mood'].filter(k=>!matchesCriterion(book,p,k));
+    const weight=(p.genre!=='any'&&book.genres.includes(p.genre)?80:0)+
+      (p.mood!=='any'&&book.moods.includes(p.mood)?70:0)+
+      (book.region===market()?1:0);
+    return {book,magazine:true,relaxed:mismatched.length>0,
+      recycled:allowSeen&&seen.has(book.id),mismatched,
+      weight:weight+(mismatched.length===0?1000:0)};
+  }).sort((a,b)=>b.weight-a.weight);
+  const top=ranked[0].weight,shortlist=ranked.filter(row=>row.weight===top).slice(0,12);
+  return await rankBooks(shortlist,p)||shortlist[Math.floor(Math.random()*shortlist.length)];
+ }
+ return null;
 }
 function why(book,p,relaxed){
  const bits=[];
