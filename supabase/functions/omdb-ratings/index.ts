@@ -15,9 +15,6 @@ Deno.serve(async req => {
   if (req.method === "OPTIONS") return origins.has(req.headers.get("origin") || "") ? json(req, {}, 200) : json(req, {}, 403);
   if (req.method !== "POST") return json(req, { unavailable: true }, 405);
   if (!origins.has(req.headers.get("origin") || "")) return json(req, { unavailable: true }, 403);
-  // An API key does not establish a commercial display licence. Stay inert until
-  // the owner verifies separate rights for MatchApp's monetized product.
-  if (Deno.env.get("OMDB_COMMERCIAL_USE_APPROVED") !== "true") return json(req, { unavailable: true }, 503);
   const apiKey = Deno.env.get("OMDB_API_KEY");
   if (!apiKey) return json(req, { unavailable: true }, 503);
   let input: Record<string, unknown>;

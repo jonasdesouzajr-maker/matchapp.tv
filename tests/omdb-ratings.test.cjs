@@ -42,11 +42,10 @@ test('result badge degrades silently for missing scores, errors and stale matche
   dom.window.close();
 });
 
-test('commercial licensing flag guards the server and the secret is absent from public files', () => {
+test('the OMDb secret is server-side and never exposed by the public client', () => {
   const edge=fs.readFileSync('supabase/functions/omdb-ratings/index.ts','utf8');
   const html=fs.readFileSync('index.html','utf8');
   const js=fs.readFileSync('omdb-ratings.js','utf8');
-  assert.match(edge,/OMDB_COMMERCIAL_USE_APPROVED.*!== "true"/);
   assert.match(edge,/Deno\.env\.get\("OMDB_API_KEY"\)/);
   assert.doesNotMatch(html+js,/OMDB_API_KEY|apikey=/);
   assert.match(html,/id="res-omdb-ratings"[^>]*hidden/);
