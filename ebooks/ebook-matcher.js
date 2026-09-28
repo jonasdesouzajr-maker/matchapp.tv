@@ -94,6 +94,7 @@ function renderReadingDiscovery(root,p){
    '<div class="ebook-provider-row">'+links.map(([name,url])=>'<a class="ebook-provider" href="'+esc(url)+
       '" target="_blank" rel="noopener noreferrer">'+esc(name)+' ↗</a>').join('')+'</div>'+
    '<p class="ebook-rights">'+esc(tr('rights'))+'</p></div>';
+ host.scrollIntoView?.({behavior:window.matchMedia?.('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'nearest'});
 }
 function lang(){const raw=String(window.MATCH_LANG||document.documentElement.lang||navigator.language||'en');if(/^pt/i.test(raw))return'pt-BR';if(/^es/i.test(raw))return'es';if(/^ja/i.test(raw))return'ja';return'en';}
 function tr(k){const l=LABELS[lang()]||LABELS.en;return l[k]||LABELS.en[k]||k;}
@@ -557,6 +558,7 @@ function renderAudioDiscovery(root,p){
      esc(lang()==='pt-BR'?'Incluir lojas de áudio':'Include official audio stores')+'</button></div>'+
    '<p class="ebook-rights">'+esc(lang()==='pt-BR'?'Nenhum match foi consumido. Pesquisas não comprovam a disponibilidade da edição.':
      'No Match credit was consumed. Search links do not confirm edition availability.')+'</p></div>';
+ host.scrollIntoView?.({behavior:window.matchMedia?.('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'nearest'});
 }
 async function doMatch(root){
  // One in-flight search includes source preflight and shared Match allowance.
