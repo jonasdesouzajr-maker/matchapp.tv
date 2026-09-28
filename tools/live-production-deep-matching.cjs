@@ -103,6 +103,20 @@ async function guarded(browser,label,fn){
   await guarded(browser,'Adult verified audiobook match',async page=>{
    await page.addInitScript(()=>localStorage.setItem('match_user_country','US'));
    await open(page,'/');await consent(page);
+   // 1180px is the narrowest locked desktop breakpoint: audit *usable* ad
+   // width before exercising the same audiobook path that exposed 116px.
+   const rail=await page.evaluate(()=>({viewport:innerWidth,adsEmpty:document.documentElement.classList.contains('ads-empty'),
+    units:[...document.querySelectorAll('.sidebar-ad-left,.sidebar-ad-right')].map(host=>{
+      const ins=host.querySelector('ins.adsbygoogle');
+      return {side:host.classList.contains('sidebar-ad-left')?'left':'right',
+        outerWidth:Math.round(host.getBoundingClientRect().width),
+        usableWidth:Math.round(ins?.getBoundingClientRect().width||0),
+        displayed:!!ins?.getClientRects().length};
+    })}));
+   if(rail.units.every(x=>x.displayed)){
+     record('LIVE narrow desktop side rails provide Google-safe usable width',
+       rail.viewport===1180&&rail.units.length===2&&rail.units.every(x=>x.usableWidth>=120),JSON.stringify(rail));
+   }else warn('LIVE narrow desktop rail inventory unavailable',JSON.stringify(rail));
    const root=page.locator('#ebook-matcher-root');
    const fold=root.locator('details.ebook-fold');await fold.waitFor({state:'attached',timeout:23000});
    await fold.evaluate(node=>{node.open=true});

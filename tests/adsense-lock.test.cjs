@@ -111,7 +111,9 @@ test('manual AdSense initializer is byte-for-byte locked',()=>{
 
 test('desktop/tablet/mobile AdSense responsive rules are locked',()=>{
   const css=read('matchapp-ia.css');
-  assert.match(css,/Desktop web: keep real AdSense-ready rails visible on both sides[\s\S]*@media\(min-width:1180px\)[\s\S]*--ma-ad-rail:clamp\(132px,10\.8vw,160px\);[\s\S]*grid-template-columns:var\(--ma-ad-rail\) minmax\(0,var\(--ma-stage-width\)\) var\(--ma-ad-rail\)!important;/);
+  assert.match(css,/Desktop web: keep real AdSense-ready rails visible on both sides[\s\S]*@media\(min-width:1180px\)[\s\S]*--ma-ad-rail:clamp\(144px,10\.8vw,160px\);[\s\S]*grid-template-columns:var\(--ma-ad-rail\) minmax\(0,var\(--ma-stage-width\)\) var\(--ma-ad-rail\)!important;/);
+  assert.match(css,/--ma-ad-rail:clamp\(144px,11vw,160px\);/,'both desktop rail declarations must preserve the safe minimum');
+  assert.ok(144-2*7-2>=120,'the 1180px desktop rail must reserve at least 120px for the ad after padding and borders');
   assert.match(css,/\.sidebar-ad-left,\s*\n\s*html body\.page-home \.sidebar-ad-right\s*\{[\s\S]*display:flex!important;[\s\S]*position:sticky!important;[\s\S]*top:104px!important;[\s\S]*max-width:160px!important;[\s\S]*min-height:600px!important;/);
   assert.match(css,/\.sidebar-ad-left\{grid-column:1!important;justify-self:end!important\}/);
   assert.match(css,/\.sidebar-ad-right\{grid-column:3!important;justify-self:start!important\}/);

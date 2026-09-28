@@ -1033,7 +1033,7 @@ body.page-home{overflow-x:clip!important}
    viewport; the center column flexes before anything can be clipped. */
 @media(min-width:1180px) and (hover:hover) and (pointer:fine){
   html body.page-home main.page-wrapper>.main-layout{
-    --ma-ad-rail:clamp(132px,11vw,160px);
+    --ma-ad-rail:clamp(144px,11vw,160px);
     --ma-ad-gap:clamp(12px,1.4vw,22px);
     display:grid!important;
     grid-template-columns:var(--ma-ad-rail) minmax(0,var(--ma-stage-width)) var(--ma-ad-rail)!important;
@@ -3163,11 +3163,13 @@ html body.page-home .ma-concierge .ma-chip{
   box-sizing:border-box!important;
 }
 
-/* Desktop web: keep real AdSense-ready rails visible on both sides based on
-   viewport width alone. Touch-capable laptops still count as desktop here. */
+/* Desktop web: keep both AdSense rails visible. Minimum outer rail of 144px
+   leaves 128px for the responsive vertical unit after locked 7px padding
+   and two 1px borders, safely over Google's 120px minimum. All five existing
+   slots, positions, formats, heights, breakpoints and Auto ads stay intact. */
 @media(min-width:1180px){
   html body.page-home main.page-wrapper>.main-layout{
-    --ma-ad-rail:clamp(132px,10.8vw,160px);
+    --ma-ad-rail:clamp(144px,10.8vw,160px);
     --ma-ad-gap:clamp(10px,1.25vw,18px);
     display:grid!important;
     grid-template-columns:var(--ma-ad-rail) minmax(0,var(--ma-stage-width)) var(--ma-ad-rail)!important;
