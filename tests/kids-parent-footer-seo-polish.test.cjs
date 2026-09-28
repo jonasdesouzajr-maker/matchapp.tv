@@ -79,7 +79,7 @@ test('Kids generator produces original, readable unique title snippets without t
  for(const snippet of [bluey,learn,long]){
   assert(snippet.length<=180,snippet);
   assert(!snippet.endsWith('…'),'snippet must finish with meaningful where-to-watch context');
-  assert.match(snippet,/similar family picks and regional viewing guides\./);
+  assert.match(snippet,/Find where to watch and similar picks\./);
   assert.match(snippet,/Ages/);
  }
  assert.notEqual(bluey,learn);
