@@ -21,7 +21,7 @@ test('adult match reserves a full poster above the facts, with isolated quota an
   assert.ok(!media.querySelector('#result-dismiss'), 'dismiss may never cover image controls');
   assert.equal(media.querySelector('#res-poster-img').getAttribute('loading'), 'eager');
   assert.match(html, /match-result-stability\.css\?v=20260927-mobile1/);
-  assert.match(html, /app\.js\?v=20260926-catalogscale1&amp;poster=20260927-mobile1/);
+  assert.match(html, /app\.js\?v=20260926-catalogscale1&amp;auth=[^\"]+&amp;poster=20260927-mobile1/);
 });
 
 test('scoped CSS reserves original cover size on phones without cropping or extra poster animations', () => {
