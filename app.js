@@ -4804,38 +4804,42 @@ async function renderResult(selected, isSpecificSearch) {
     // skipped the result card, confetti, and left the premiere poster in view.
     reveal();
     if (!resultBox) return;
-    delete resultBox.dataset.resultClosing;
-    resultBox.classList.remove('ma-result-closing', 'ma-result-arriving');
-    resultBox.removeAttribute('aria-hidden');
-    resultBox.style.display = 'block';
-    resultBox.classList.add('is-revealed');
-    void resultBox.offsetWidth;
-    resultBox.classList.add('ma-result-arriving');
-    // Scroll to the artwork itself once it is painted; the poster is the
-    // beginning of the result experience on every screen size.
-    requestAnimationFrame(() => {
-        const posterStage = resultBox.querySelector('.poster-stage');
-        (posterStage || resultBox).scrollIntoView({
-            behavior: document.documentElement.classList.contains('reduce-motion') || matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
-            block: 'start'
-        });
-    });
+    // Populate the correct title and an immediately available, title-specific
+    // cover before revealing the card. This prevents the zero-height poster
+    // layout/scroll race on Android and mobile browsers.
     globalMatchTitle = selected.title;
     window.globalMatchTitle = selected.title;
     const titleEl = document.getElementById('res-title');
     if (titleEl) titleEl.innerText = sanitizeDisplayText(selected.title, ['title']);
-    // Render a correctly labelled image before awaiting remote sources. An
-    // exact original will replace it only after its image successfully loads.
     const firstPoster = document.getElementById('res-poster-img');
     if (firstPoster) {
         firstPoster.onerror = null;
         firstPoster.dataset.matchappMediaTitle = selected.title;
+        firstPoster.alt = selected.title + ' cover';
+        firstPoster.loading = 'eager';
         const firstCover = exactSpotifyPlaylistCover(selected) || generatedCover(selected.title, selected);
         firstPoster.src = firstCover;
         firstPoster.style.display = 'block';
         globalMatchPoster = firstCover;
         window.globalMatchPoster = firstCover;
     }
+    delete resultBox.dataset.resultClosing;
+    resultBox.classList.remove('ma-result-closing', 'ma-result-arriving');
+    resultBox.removeAttribute('aria-hidden');
+    resultBox.style.display = 'block';
+    resultBox.classList.add('is-revealed', 'ma-result-arriving');
+    // The stylesheet reserves the full poster area from first paint. Wait for
+    // two lightweight paint frames, not a synchronous offsetWidth reflow,
+    // before scrolling once to the actual artwork.
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+        if (window.globalMatchTitle !== selected.title || resultBox.style.display === 'none') return;
+        const posterStage = resultBox.querySelector('.poster-stage');
+        (posterStage || resultBox).scrollIntoView({
+            behavior: document.documentElement.classList.contains('reduce-motion') ||
+                matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+            block: 'start'
+        });
+    }));
     rememberShownTitle(selected.title);
 
     // Keep the exact identity beside the rendered title. Media enrichment runs
