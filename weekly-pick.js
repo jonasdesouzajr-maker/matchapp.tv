@@ -324,8 +324,8 @@ function enrichSeo(){
     'American Horror Story 13','AHS13','American Horror Story season 13 trailer','AHS 13 FX Hulu Disney+'
   ].join(', ');
   if(kw&&!kw.content.includes('Antártida onde assistir'))kw.content+=', '+extra;
-  const desc=document.querySelector('meta[name="description"]');
-  if(desc&&!desc.content.includes('Featured this week: Antártida'))desc.content=(desc.content.replace(/\s*$/,'')+' Featured this week: Antártida (2026) — in cinemas now, plus American Horror Story 13 and its official trailer.').slice(0,300);
+  // The featured title remains discoverable through keywords and the Movie
+  // JSON-LD below; keep the page's canonical search description short.
   if(!document.getElementById('weekly-pick-schema')){
     const graph=[{
       '@type':'Movie','@id':'https://matchapp.tv/featured/antartida/#movie',

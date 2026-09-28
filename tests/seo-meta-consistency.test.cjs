@@ -1,0 +1,17 @@
+'use strict';
+const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs');
+test('public home and Ask AI descriptions remain consistent with live metadata and short snippets',()=>{
+  const home=fs.readFileSync('index.html','utf8');
+  const discover=fs.readFileSync('discover.html','utf8');
+  const live=fs.readFileSync('build-meta.js','utf8');
+  const featured=fs.readFileSync('weekly-pick.js','utf8');
+  const staticDesc=s=>s.match(/<meta name="description" content="([^"]+)"/)?.[1];
+  const homeLive=live.split("if (path === '/' || path === '/index.html') {")[1]?.split("upsertMeta('description', '")[1]?.split("');")[0];
+  const discoverLive=live.split("if (path === '/discover.html') {")[1]?.split("upsertMeta('description', '")[1]?.split("');")[0];
+  assert.equal(homeLive,staticDesc(home),'homepage dynamic metadata must not undo release-specific opt-in SEO');
+  assert.equal(discoverLive,staticDesc(discover),'Ask AI dynamic metadata must match crawlable head');
+  assert(homeLive.length<=155,'homepage snippet too long');
+  assert(discoverLive.length<=160,'Ask AI snippet too long');
+  assert.doesNotMatch(featured,/\bdesc\.content\s*=/,'weekly featured must not append past short search snippets');
+  assert.match(featured,/weekly-pick-schema/,'preserve original weekly Movie schema');
+});
