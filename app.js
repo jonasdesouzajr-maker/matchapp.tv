@@ -3041,13 +3041,13 @@ const PLATFORMS = {
     "Pure Flix":      { group: "Faith & Gospel", audio: false, countries: ['*'], cats: ["Gospel & Faith"], url: "https://pureflix.com", search: t => `https://pureflix.com/search?q=${encodeURIComponent(t)}` },
     "Angel Studios":  { group: "Faith & Gospel", audio: false, countries: ['*'], cats: ["Gospel & Faith"], url: "https://www.angel.com", search: t => `https://www.angel.com/search?q=${encodeURIComponent(t)}` },
 
-    "Spotify":        { group: "Audio", audio: true, countries: ['*'], cats: ["podcast","Spotify playlist","Spotify single","music album","audiobook","Gospel & Faith"], url: "https://open.spotify.com", search: t => `https://open.spotify.com/search/${encodeURIComponent(t)}` },
+    "Spotify":        { group: "Audio", audio: true, countries: ['*'], cats: ["podcast","Spotify playlist","Spotify single","music album","music artist","audiobook","Gospel & Faith"], url: "https://open.spotify.com", search: t => `https://open.spotify.com/search/${encodeURIComponent(t)}` },
     "Apple Music":    { group: "Audio", audio: true, countries: ['*'], cats: ["Spotify single","music album","Spotify playlist","Gospel & Faith"], url: "https://music.apple.com", search: t => `https://music.apple.com/search?term=${encodeURIComponent(t)}` },
     "Apple Podcasts": { group: "Audio", audio: true, countries: ['*'], cats: ["podcast","audiobook"], url: "https://podcasts.apple.com", search: t => `https://podcasts.apple.com/search?term=${encodeURIComponent(t)}` },
     "YouTube Music":  { group: "Audio", audio: true, countries: ['*'], cats: ["Spotify playlist","Spotify single","music album"], url: "https://music.youtube.com", search: t => `https://music.youtube.com/search?q=${encodeURIComponent(t)}` },
     "Audible":        { group: "Audio", audio: true, countries: ['*'], cats: ["audiobook","podcast"], url: "https://www.audible.com", search: t => `https://www.audible.com/search?keywords=${encodeURIComponent(t)}` },
 
-    "YouTube":        { group: "Free / Ad-Supported", audio: false, countries: ['*'], cats: ["movie","series","documentary","short film","stand-up comedy special","kids","YouTube Shorts","podcast"], url: "https://www.youtube.com", search: t => `https://www.youtube.com/results?search_query=${encodeURIComponent(t)}` },
+    "YouTube":        { group: "Free / Ad-Supported", audio: false, countries: ['*'], cats: ["movie","series","documentary","short film","stand-up comedy special","kids","YouTube channel","YouTube Shorts","Cooking & Recipes","Fitness & Wellness","Music & Concerts","podcast"], url: "https://www.youtube.com", search: t => `https://www.youtube.com/results?search_query=${encodeURIComponent(t)}` },
     "Tubi":           { group: "Free / Ad-Supported", audio: false, countries: ['United States','Canada','Mexico','Brazil','Brasil'], cats: ["movie","series","documentary","anime","kids","Nollywood"], url: "https://tubitv.com", search: t => `https://tubitv.com/search/${encodeURIComponent(t)}` },
     "Pluto TV":       { group: "Free / Ad-Supported", audio: false, countries: ['*'], cats: ["movie","series","documentary","reality show","kids","telenovela"], url: "https://pluto.tv", search: t => `https://pluto.tv/en/search/details?q=${encodeURIComponent(t)}` },
     "Roku Channel":   { group: "Free / Ad-Supported", audio: false, countries: ['United States','Canada','United Kingdom'], cats: ["movie","series","documentary","reality show","kids"], url: "https://therokuchannel.roku.com", search: t => `https://therokuchannel.roku.com/search/${encodeURIComponent(t)}` }
@@ -3094,6 +3094,8 @@ function platformsFor(cat, country) {
         // automatically the moment a title on it is added.
         if (stocked.size && !stocked.has(name)) return false;
         if (!platformServesCountry(pf, country)) return false;
+        // Audio services are not Surprise Me filters: choose music or audio first.
+        if ((!cat || cat === 'any') && pf.audio) return false;
         if (!cat || cat === 'any') return true;
         return pf.cats.includes(cat);
     });
@@ -3883,12 +3885,8 @@ function rememberShownTitle(title) {
 // added to the catalogue from now on is opt-in by default and has to be named
 // here on purpose to join the surprise pool. The safe direction is the default.
 const SURPRISE_ME_CATEGORIES = new Set([
-    'movie',
-    'series',
-    'limited series',
-    'K-drama',
-    'novela brasileira',
-    'telenovela'
+    'movie', 'series', 'limited series', 'K-drama',
+    'novela brasileira', 'telenovela', 'YouTube channel'
 ]);
 
 // True when the entry can appear in an unfiltered "surprise me" draw. It needs
@@ -3897,7 +3895,17 @@ const SURPRISE_ME_CATEGORIES = new Set([
 // movies over time as cross-tagging grows.
 function isSurpriseEligible(entry) {
     if (!entry || !Array.isArray(entry.cats)) return false;
-    return entry.cats.some(c => SURPRISE_ME_CATEGORIES.has(c));
+    if (typeof window !== 'undefined' && window.MatchAppTopicFocus)
+        return window.MatchAppTopicFocus.allow(entry, []);
+    // If the topic module fails to load, generic YouTube cannot leak into Surprise Me.
+    return !entry.cats.includes('YouTube channel') &&
+        entry.cats.some(c => c !== 'YouTube channel' && SURPRISE_ME_CATEGORIES.has(c));
+}
+function entryAllowedForSelection(entry, cat) {
+    if (typeof window !== 'undefined' && window.MatchAppTopicFocus)
+        return window.MatchAppTopicFocus.allow(entry, cat);
+    // Unknown specialist topics never fall back to unrelated content.
+    return normCriteria(cat).length ? false : isSurpriseEligible(entry);
 }
 
 // ----------------------------------------------------
@@ -3980,7 +3988,7 @@ async function rankVerifiedCuratedMatch(requested) {
        entryPassesPreferenceExclusions(e)&&regionAvailabilityFits(e,criteria)&&!isBlockedEntry(e)&&
        !SESSION_SHOWN.has(e.title)&&
        (wantedFaith||!e.cats.includes('Gospel & Faith'))&&
-       (normCriteria(requested.cat).length||isSurpriseEligible(e)));
+       entryAllowedForSelection(e,requested.cat));
     if(!eligible.length)return null;
     const offset=Math.floor(Math.random()*eligible.length);
     const rotated=eligible.slice(offset).concat(eligible.slice(0,offset));
@@ -4020,7 +4028,7 @@ function pickFromCatalog(cat, plat, mood, vibe, rating, decade) {
         && (typeof entryPassesPreferenceExclusions!=='function'||entryPassesPreferenceExclusions(e))
         && regionAvailabilityFits(e,criteria) && !isBlockedEntry(e) && !SESSION_SHOWN.has(e.title)
         && (wantsFaith || !e.cats.includes('Gospel & Faith'))
-        && (normCriteria(cat).length || isSurpriseEligible(e));
+        && entryAllowedForSelection(e,cat);
 
     // recentTitles has been persisted to localStorage all along and never
     // consulted here, which is why the same title could come back straight
@@ -4074,7 +4082,7 @@ function pickRecycledCatalog(cat, plat, mood, vibe, rating, decade) {
         && (typeof entryPassesPreferenceExclusions!=='function'||entryPassesPreferenceExclusions(e))
         && regionAvailabilityFits(e,criteria) && !isBlockedEntry(e)
         && (wantsFaith || !e.cats.includes('Gospel & Faith'))
-        && (normCriteria(cat).length || isSurpriseEligible(e));
+        && entryAllowedForSelection(e,cat);
 
     // Watch Later and Not For Me are deliberate user choices, not ordinary
     // match history. They stay hard exclusions even when we recycle older
@@ -4197,6 +4205,7 @@ function pickGuaranteedCatalog(cat, plat, mood, vibe, rating, decade) {
 
     const allowed = entry => {
         if (!entry || !entry.title) return false;
+        if (!entryAllowedForSelection(entry,requested.cat)) return false;
         if (typeof titlePassesRealGenre==='function' && !titlePassesRealGenre(entry)) return false;
         if (typeof entryPassesPreferenceExclusions==='function' && !entryPassesPreferenceExclusions(entry)) return false;
         const k = policy.key(entry.title);
