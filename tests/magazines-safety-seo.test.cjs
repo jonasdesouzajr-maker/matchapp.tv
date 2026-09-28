@@ -16,7 +16,7 @@ test('magazines are a distinct explicitly selected adult matching format',()=>{
  const match=read('ebooks/ebook-matcher.js');
  assert.match(match,/\['magazine','📰','Magazine only'\]/);
  assert.match(match,/p\.format==='magazine'\)pick=await chooseMagazine\(p\)/);
- assert.match(match,/renderMagazineResult\(root,book,p\)/);
+ assert.match(match,/renderMagazineResult\(root,book,p,pick\)/);
  assert.doesNotMatch(read('kids/index.html'),/MatchAppMagazines|magazines\.js|reading-ai\.js/);
 });
 test('curated global magazines use original publisher destinations and exclude XXX',()=>{

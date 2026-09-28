@@ -38,10 +38,14 @@ test('all adult match formats keep hard filters and no unrequested recycles',()=
  assert.match(app,/matchappAllowSeenAgain === true && typeof pickGuaranteedCatalog/);
  assert.match(app,/const ranked=await window\.MatchAppAIRank\.rank\(rows/);
  assert.match(books,/async function rankBooks\(approved,p\)/);
- assert.match(books,/for\(const allowSeen of \[false\]\)/);
- assert.match(books,/function choose\(p\)\{[\s\S]*?pool\(p,new Set\(\),false\)/);
+ // User-approved reading fallback may recycle previously seen profiles only
+ // after fresh source profiles run out. Saved and disliked remain excluded.
+ assert.match(books,/const unseen=bookCandidates\(p,false\)/);
+ assert.match(books,/const ranked=unseen.length\?unseen:bookCandidates\(p,true\)/);
+ assert.match(books,/for\(const allowSeen of \[false,true\]\)/);
+ assert.match(books,/excluded=new Set\(\[\.\.\.read\(K.saved\),\.\.\.read\(K.disliked\)\]\)/);
  assert.match(books,/async function chooseMagazine\(p\)/);
- assert.match(books,/const chosen=await rankBooks\(verified,p\)/);
+ assert.match(books,/if\(verified.length\)return/);
 });
 
 test('home marquee keeps curated originals with native swipe tap suppression and keyboard activation',()=>{
