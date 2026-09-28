@@ -1642,6 +1642,7 @@ html body.page-home #mh-topbox .mh-deck>.sound-toggle-btn,html body.page-home #m
     </style>
     <link rel="stylesheet" href="/frontend-polish.css?v=20260924-ui3">
     <link rel="stylesheet" href="/adult-design-refresh.css?v=20260928-1">
+    <link rel="stylesheet" href="/omdb-ratings.css?v=20260928-1">
     <link rel="stylesheet" href="/ebooks/ebook-matcher.css?v=20260926-publishericon2">
     <link rel="stylesheet" href="/fold-colors.css?v=20260926-newsfold1" data-matchapp-fold-colors="1">
     <link rel="stylesheet" href="/brand-headline.css?v=20260926-ai-energy2" data-matchapp-brand-headline="1">
@@ -2597,6 +2598,7 @@ html body.page-home #daily-match-checkin { padding: 11px 12px !important; }
                             <h2 id="res-title" class="res-title-el">Title</h2>
                             <!-- Origin / year / genre chips, filled from live metadata -->
                             <div id="res-factbar" class="res-factbar" style="display:none;"></div>
+                            <div id="res-omdb-ratings" aria-label="Critical ratings from OMDb" hidden></div>
                         </div>
                     </div>
 
@@ -3563,6 +3565,7 @@ html body.page-home #daily-match-checkin { padding: 11px 12px !important; }
 <script src="/phone-auth-i18n.js?v=20260926-phoneverify1"></script><script src="/phone-auth.js?v=20260926-phoneverify2"></script><script src="/phone-auth-localize.js?v=1"></script>
     <script src="/catalog-media.js?v=20260927-posterrecovery2"></script>
 <script src="/title-experience.js?v=20260920-freeze2"></script>
+<script src="/omdb-ratings.js?v=20260928-1"></script>
     <script src="/install-progress.js?v=20260924-runtime1"></script>
     <!-- Loads AFTER app.js so the chips it builds can call straight into the
          matcher, and non-deferred so the form is never briefly interactive as
