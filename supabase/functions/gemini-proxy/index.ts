@@ -51,6 +51,7 @@
 // to answer a ping.
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { callOpenAIPrimary } from "./openai-primary.ts";
+import { callOpenRouterFirst } from "./openrouter-backup.ts";
 
 // Service-role client, used ONLY to meter requests (migration 008). The key
 // lives in Edge Function secrets and never leaves the server.
@@ -459,8 +460,9 @@ Deno.serve(async (req: Request) => {
       .map(name => Deno.env.get(name)?.trim() || "")
       .filter((key, index, keys) => !!key && key !== freeApiKey && key !== paidApiKey && keys.indexOf(key) === index);
     const openAiApiKey = Deno.env.get("OPENAI_API_KEY")?.trim() || "";
+    const openRouterApiKey = Deno.env.get("OPENROUTER_API_KEY")?.trim() || "";
     const apiKey = freeApiKey || backupPaidApiKeys[0] || paidApiKey || "";
-    if (!apiKey && !openAiApiKey) {
+    if (!apiKey && !openAiApiKey && !openRouterApiKey) {
       return new Response(
         JSON.stringify({ error: "No AI provider API key is configured." }),
         { status: 500, headers: { ...corsHeaders(req), "Content-Type": "application/json" } }
@@ -641,11 +643,20 @@ Deno.serve(async (req: Request) => {
 
     let lastError: string | null = null;
 
-    // Only adult conversational and explicitly tagged adult matching routes
-    // use OpenAI. Kids, incidental translation and other legacy proxy callers
-    // retain their existing Gemini behavior unchanged.
+    // Only adult Ask AI and explicitly tagged adult matches use the new routes.
+    // Kids and untagged legacy calls retain their original Gemini routing.
     const openAiEligible = body?.kidsMode !== true &&
       (isDiscoverMode || isRankMode || (body?.adultMatch === true && typeof body?.prompt === "string"));
+    if (openAiEligible && openRouterApiKey) {
+      const answer = await callOpenRouterFirst({
+        req,prompt,key:openRouterApiKey,
+        mode:isDiscoverMode ? "discover" : isRankMode ? "rank_candidates" : isProposalMode ? "match_proposals" : "legacy",
+        allowedCandidateIds:rankCandidateIds,cors:corsHeaders,
+        blockXXX:hasBlockedXXXDestination,
+        explicitXXX:(text:string) => EXPLICIT_XXX.test(text)
+      });
+      if (answer) return answer;
+    }
     if (openAiEligible && openAiApiKey) {
       const desiredLimit = Number(Deno.env.get("OPENAI_DAILY_CALL_LIMIT") || "100");
       const dailyLimit = Number.isInteger(desiredLimit) && desiredLimit >= 1
@@ -669,19 +680,9 @@ Deno.serve(async (req: Request) => {
       if (answer) return answer;
     }
 
-    // TEMPORARY OWNER ROUTING: OpenAI exclusively handles eligible adult AI.
-    // Owner has not yet confirmed replenishment of the separate Gemini keys.
-    // Never spend an unapproved Gemini project to bypass the OpenAI usage gate.
-    if (openAiEligible) {
-      return new Response(
-        JSON.stringify({error:"OpenAI is temporarily unavailable. Please try again later.",provider:"openai",retryable:true}),
-        {status:503,headers:{...corsHeaders(req),"Content-Type":"application/json","Retry-After":"120","Cache-Control":"no-store"}}
-      );
-    }
-
-    // The existing Gemini fallback retains the free→backup→original order
-    // for Kids and legacy calls. For eligible ADULT calls, the explicit guard
-    // in the loop skips every route except the original replenished paid key.
+    // OpenRouter and OpenAI were unavailable or at their separate limits.
+    // Owner-authorized Gemini acts as final fallback for adult traffic, too.
+    // Free, backup-paid and original-paid Gemini routes retain their order.
     const routes = [
       ...(freeApiKey ? FREE_MODEL_CHAIN.map(model => ({model, key:freeApiKey, tier:"free"})) : []),
       ...backupPaidApiKeys.flatMap(key => MODEL_CHAIN.map(model => ({model, key, tier:"paid"}))),
@@ -691,9 +692,6 @@ Deno.serve(async (req: Request) => {
     // If a whole project is capped or its key is invalid, skip its other models.
     const blockedPaidKeys = new Set<string>();
     for (const route of routes) {
-      // OpenAI already ran. Only the ORIGINAL GEMINI_API_KEY may serve adult
-      // fallback; configured free/new-backup keys stay unused for adult AI.
-      if (openAiEligible && (route.tier !== "paid" || route.key !== paidApiKey)) continue;
       if (route.tier === "free" && freeProjectBlocked) continue;
       if (route.tier === "paid" && blockedPaidKeys.has(route.key)) continue;
       const {model} = route;
