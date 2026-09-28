@@ -20,14 +20,16 @@ function ok(content,model='anthropic/claude-haiku-4.5'){
  return new Response(JSON.stringify({model,choices:[{finish_reason:'stop',message:{content:JSON.stringify(content)}}]}),
   {status:200,headers:{'Content-Type':'application/json'}});
 }
-test('adult-only routing has three independent provider tiers',()=>{
+test('adult-only routing has four independent provider tiers',()=>{
  const router=proxy.indexOf('const answer = await callOpenRouterFirst({');
+ const groq=proxy.indexOf('const answer = await callGroqBackup({');
  const openai=proxy.indexOf('const answer = await callOpenAIPrimary({');
  const gemini=proxy.indexOf('const routes = [');
- assert.ok(router>0&&openai>router&&gemini>openai);
+ assert.ok(router>0&&groq>router&&openai>groq&&gemini>openai);
  assert.match(proxy,/if \(openAiEligible && openRouterApiKey\)/);
  assert.match(proxy,/body\?\.kidsMode !== true/);
- assert.match(proxy,/if \(!apiKey && !openAiApiKey && !openRouterApiKey\)/);
+ assert.match(proxy,/if \(openAiEligible && groqApiKey\)/);
+ assert.match(proxy,/if \(!apiKey && !openAiApiKey && !openRouterApiKey && !groqApiKey\)/);
 });
 test('JSON response preserves frontend contract and models are ordered',async()=>{
  let request;

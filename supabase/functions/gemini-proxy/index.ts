@@ -52,6 +52,7 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { callOpenAIPrimary } from "./openai-primary.ts";
 import { callOpenRouterFirst } from "./openrouter-backup.ts";
+import { callGroqBackup } from "./groq-backup.ts";
 
 // Service-role client, used ONLY to meter requests (migration 008). The key
 // lives in Edge Function secrets and never leaves the server.
@@ -461,8 +462,9 @@ Deno.serve(async (req: Request) => {
       .filter((key, index, keys) => !!key && key !== freeApiKey && key !== paidApiKey && keys.indexOf(key) === index);
     const openAiApiKey = Deno.env.get("OPENAI_API_KEY")?.trim() || "";
     const openRouterApiKey = Deno.env.get("OPENROUTER_API_KEY")?.trim() || "";
+    const groqApiKey = Deno.env.get("GROQ_API_KEY")?.trim() || "";
     const apiKey = freeApiKey || backupPaidApiKeys[0] || paidApiKey || "";
-    if (!apiKey && !openAiApiKey && !openRouterApiKey) {
+    if (!apiKey && !openAiApiKey && !openRouterApiKey && !groqApiKey) {
       return new Response(
         JSON.stringify({ error: "No AI provider API key is configured." }),
         { status: 500, headers: { ...corsHeaders(req), "Content-Type": "application/json" } }
@@ -657,6 +659,18 @@ Deno.serve(async (req: Request) => {
       });
       if (answer) return answer;
     }
+    // Independent Groq fallback after proven OpenRouter, before metered OpenAI.
+    // Kids still skip these providers and use the original Gemini-only chain.
+    if (openAiEligible && groqApiKey) {
+      const answer = await callGroqBackup({
+        req,prompt,key:groqApiKey,
+        mode:isDiscoverMode ? "discover" : isRankMode ? "rank_candidates" : isProposalMode ? "match_proposals" : "legacy",
+        allowedCandidateIds:rankCandidateIds,cors:corsHeaders,
+        blockXXX:hasBlockedXXXDestination,
+        explicitXXX:(text:string) => EXPLICIT_XXX.test(text)
+      });
+      if (answer) return answer;
+    }
     if (openAiEligible && openAiApiKey) {
       const desiredLimit = Number(Deno.env.get("OPENAI_DAILY_CALL_LIMIT") || "100");
       const dailyLimit = Number.isInteger(desiredLimit) && desiredLimit >= 1
@@ -680,7 +694,7 @@ Deno.serve(async (req: Request) => {
       if (answer) return answer;
     }
 
-    // OpenRouter and OpenAI were unavailable or at their separate limits.
+    // OpenRouter, Groq and OpenAI were unavailable or at their separate limits.
     // Owner-authorized Gemini acts as final fallback for adult traffic, too.
     // Free, backup-paid and original-paid Gemini routes retain their order.
     const routes = [
