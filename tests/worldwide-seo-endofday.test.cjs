@@ -61,6 +61,8 @@ test('news source summaries retain noindex while legitimate news hub stays index
 
 test('existing regression harnesses cover adult matching, books, audio, Ask AI and touch viewports without Android emulator',()=>{
  const triple=read('.github/workflows/matching-ai-triple-audit.yml');
+ assert.match(triple,/one-complete-pass:/);
+ assert.doesNotMatch(triple,/matrix\.pass|pass:\s*\[1,\s*2,\s*3\]/,'run one complete audit per workflow invocation');
  assert(triple.includes('npm test'));
  assert(triple.includes('tools/live-production-smoke.cjs'));
  assert(triple.includes('tools/live-production-deep-matching.cjs'));
