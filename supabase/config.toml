@@ -33,6 +33,11 @@ verify_jwt = false
 [functions.omdb-ratings]
 verify_jwt = false
 
+# Optional adult metadata provider, origin-checked and fail-closed metered.
+# Supabase's legacy gateway JWT validation rejects this project's ES256 sessions.
+[functions.rapidapi-streaming]
+verify_jwt = false
+
 # Backend-only hourly notification delivery. It validates a secret stored in Supabase Vault.
 [functions.notification-worker]
 verify_jwt = false
