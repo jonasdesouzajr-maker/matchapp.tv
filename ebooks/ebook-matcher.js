@@ -40,10 +40,10 @@ const LABELS={
  ja:{eyebrow:'本好きのために',title:'E-books Ai マッチ',homeTitle:'読みたい本を見つける',topFold:'注目の電子書籍',intro:'読書・朗読を聴きたい気分に合わせて本を選び、正規ストアで音声版のタイトル・著者を確認します。',match:'E-bookをマッチ',another:'別の本',save:'保存',saved:'保存済み',nope:'好みではない',why:'おすすめの理由',where:'入手先',free:'合法的な無料版',stores:'公式E-bookストア',preview:'書籍情報 / プレビュー',rights:'無料で利用できるかは各国の著作権法によって異なります。MatchApp は著作権保護されたファイルをホストしません。',empty:'完全一致がない場合、条件に近い候補と異なる条件を表示します。',quota:'通常のMatchAppマッチ枠を使用します。',savedBooks:'保存した本・オーディオブック',noneSaved:'保存した本はまだありません。',remove:'削除',close:'閉じる',topTitle:'今人気のE-book',topSub:'現在の人気作品とランキング上位作品。公式ストアまたは合法的な無料版へ移動できます。',topFree:'無料版',topBuy:'E-bookを入手',topSource:'ランキング出典',audioTitle:'オーディオブック版',audioVerify:'音声版を確認する',audioWaiting:'公式ストアで同一タイトルと著者を確認中…',audioNone:'音声版を確認できませんでした。公式ストアで検索できます。',audioLinks:'確認済みオーディオブック',audioSearch:'他のオーディオストアで検索（未確認）',audioRights:'LibriVox は米国内でパブリックドメインです。他の国では著作権をご確認ください。',audioEmpty:'条件を満たす確認済み音声版がありません。読書形式や検索条件を変更してください。',audioOnly:'確認済み音声版のみ・国によって異なります'}
 };
 const FALLBACK_COPY={
- en:{closest:'Closest available source match.',miss:'Not matched:',recycled:'Previously suggested because no fresh, compatible title remains.',unsupported:'Magazine publishers do not confirm:',browse:'No unexcluded catalogued title remains. Browse these source searches instead; results are not verified matches and no credit is used.',bookProfile:'Closest source-catalogued book profile; audio edition not verified.',freeCheck:'These links search legitimate catalogues. A free edition and local copyright eligibility must still be checked.',sourceCheck:'Official source search (availability not verified)'},
- 'pt-BR':{closest:'Opção mais próxima no catálogo.',miss:'Critérios não atendidos:',recycled:'Já sugerido antes porque não restaram títulos novos compatíveis.',unsupported:'Editoras não confirmam os seguintes dados:',browse:'Não restam títulos do catálogo que você não excluiu. Consulte estas buscas externas; os resultados não estão verificados e nenhum crédito foi usado.',bookProfile:'Livro do catálogo mais próximo das preferências; edição em áudio não confirmada.',freeCheck:'Estes links pesquisam catálogos legítimos. Confirme a edição grátis e os direitos autorais no seu país.',sourceCheck:'Busca em fonte oficial (disponibilidade não confirmada)'},
- es:{closest:'Opción más cercana en el catálogo.',miss:'Criterios no cumplidos:',recycled:'Ya recomendado; no quedan títulos nuevos compatibles.',unsupported:'No se confirman estos datos de las revistas:',browse:'No quedan títulos no excluidos en el catálogo. Consulta estas búsquedas externas; los resultados no están verificados y no se consumió ningún crédito.',bookProfile:'Libro del catálogo más cercano; edición en audio no verificada.',freeCheck:'Estos enlaces buscan en catálogos legítimos. Comprueba la edición gratuita y los derechos locales.',sourceCheck:'Búsqueda en fuente oficial (disponibilidad sin verificar)'},
- ja:{closest:'条件に最も近いカタログ候補です。',miss:'一致しなかった条件:',recycled:'新しい候補がないため以前の作品を再提案しています。',unsupported:'雑誌について確認できない項目:',browse:'除外されていない候補が残っていません。以下の公式ソースを検索してください。未検証の検索結果であり、マッチ枠は消費しません。',bookProfile:'条件に近い書籍です。音声版の在庫は未確認です。',freeCheck:'公式カタログの検索リンクです。無料版とお住まいの国の著作権を確認してください。',sourceCheck:'公式サイト検索（在庫は未確認）'}
+ en:{closest:'Closest available source match.',miss:'Not matched:',recycled:'Previously suggested because no fresh, compatible title remains.',unsupported:'Magazine publishers do not confirm:',browse:'No unexcluded catalogued title remains. Browse these source searches instead; results are not verified matches and no credit is used.',bookProfile:'Closest source-catalogued book profile; audio edition not verified.',freeCheck:'These links search legitimate catalogues. A free edition and local copyright eligibility must still be checked.',sourceCheck:'Source searches (results unverified)'},
+ 'pt-BR':{closest:'Opção mais próxima no catálogo.',miss:'Critérios não atendidos:',recycled:'Já sugerido antes porque não restaram títulos novos compatíveis.',unsupported:'Editoras não confirmam os seguintes dados:',browse:'Não restam títulos do catálogo que você não excluiu. Consulte estas buscas externas; os resultados não estão verificados e nenhum crédito foi usado.',bookProfile:'Livro do catálogo mais próximo das preferências; edição em áudio não confirmada.',freeCheck:'Estes links pesquisam catálogos legítimos. Confirme a edição grátis e os direitos autorais no seu país.',sourceCheck:'Buscas em fontes (resultados não confirmados)'},
+ es:{closest:'Opción más cercana en el catálogo.',miss:'Criterios no cumplidos:',recycled:'Ya recomendado; no quedan títulos nuevos compatibles.',unsupported:'No se confirman estos datos de las revistas:',browse:'No quedan títulos no excluidos en el catálogo. Consulta estas búsquedas externas; los resultados no están verificados y no se consumió ningún crédito.',bookProfile:'Libro del catálogo más cercano; edición en audio no verificada.',freeCheck:'Estos enlaces buscan en catálogos legítimos. Comprueba la edición gratuita y los derechos locales.',sourceCheck:'Búsquedas de fuentes (resultados sin verificar)'},
+ ja:{closest:'条件に最も近いカタログ候補です。',miss:'一致しなかった条件:',recycled:'新しい候補がないため以前の作品を再提案しています。',unsupported:'雑誌について確認できない項目:',browse:'除外されていない候補が残っていません。以下の公式ソースを検索してください。未検証の検索結果であり、マッチ枠は消費しません。',bookProfile:'条件に近い書籍です。音声版の在庫は未確認です。',freeCheck:'公式カタログの検索リンクです。無料版とお住まいの国の著作権を確認してください。',sourceCheck:'ソース検索（結果未確認）'}
 };
 function fallbackCopy(key){return (FALLBACK_COPY[lang()]||FALLBACK_COPY.en)[key]||FALLBACK_COPY.en[key]}
 function selectionName(p,key){
@@ -244,7 +244,8 @@ async function chooseVerifiedAudio(p,onProgress){
        }catch(_){return null}
      }));
      const verified=checked.filter(Boolean);
-     if(verified.length)return await rankBooks(verified,p)||verified[0];
+     if(verified.length)return verified.some(row=>row.relaxed||row.recycled)?verified[0]:
+       (await rankBooks(verified,p)||verified[0]);
    }
  }
  return null;
@@ -268,7 +269,8 @@ async function chooseMagazine(p){
       weight:weight+(mismatched.length===0?1000:0)};
   }).sort((a,b)=>b.weight-a.weight);
   const top=ranked[0].weight,shortlist=ranked.filter(row=>row.weight===top).slice(0,12);
-  return await rankBooks(shortlist,p)||shortlist[Math.floor(Math.random()*shortlist.length)];
+  const localPick=shortlist[Math.floor(Math.random()*shortlist.length)];
+  return shortlist.some(row=>row.relaxed||row.recycled)?localPick:(await rankBooks(shortlist,p)||localPick);
  }
  return null;
 }
@@ -575,7 +577,8 @@ async function doMatch(root){
    const shortlist=bestBookChoices(p);
    // The model may only order already-curated equally compatible records.
    // A transient upstream error never discards valid local suggestions.
-   try{pick=window.MatchAppAIRank?.rank?(await rankBooks(shortlist,p)||choose(p)):choose(p);}
+   try{pick=shortlist.some(row=>row.relaxed||row.recycled)?choose(p):
+     (window.MatchAppAIRank?.rank?(await rankBooks(shortlist,p)||choose(p)):choose(p));}
    catch(_){pick=choose(p);}
   }
   if(!pick){
