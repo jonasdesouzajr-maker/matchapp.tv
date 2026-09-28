@@ -108,6 +108,7 @@
        saved preset, the Together flow). */
     window.setMatchCriteria = function (patch) {
         if (!patch) return;
+        const before=focusGroup(state.cat);
         FIELDS.forEach(f => {
             if (!(f.key in patch)) return;
             const v = patch[f.key];
@@ -115,7 +116,6 @@
                 .map(x => String(x || '').trim())
                 .filter(x => x && x !== 'any');
         });
-        const before=focusGroup(window.getMatchCriteria().cat);
         normalizeCategories();
         resetIncompatibleFilters(before,focusGroup(state.cat));
         reconcileConflicts();
