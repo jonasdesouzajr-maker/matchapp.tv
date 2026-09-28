@@ -359,11 +359,13 @@ async function aiQuestion(page,question,expected,label){
     const closed=await page.evaluate(()=>({
       resultHidden:getComputedStyle(document.getElementById('result-box')).display==='none',
       formRestored:document.getElementById('questionnaire-box').style.display!=='none',
-      homeVisible:!!document.getElementById('trending-rail')?.getClientRects().length,
+      homeVisible:!!document.querySelector('.lazy-head[data-fold-key="trending"]')?.getClientRects().length&&
+        !!document.getElementById('ma-concierge')?.getClientRects().length,
+      titlesStillFolded:document.querySelector('.lazy-head[data-fold-key="trending"]')?.getAttribute('aria-expanded')==='false',
       manualAds:document.querySelectorAll('ins.adsbygoogle[data-ad-slot="2595698117"]').length
     }));
     record('LIVE red trash dismisses match without damaging Home',closed.resultHidden&&
-      closed.formRestored&&closed.homeVisible&&closed.manualAds===5,JSON.stringify(closed));
+      closed.formRestored&&closed.homeVisible&&closed.titlesStillFolded&&closed.manualAds===5,JSON.stringify(closed));
     await shot(page,'live-result-dismissed');
   }catch(error){record('LIVE normal movie matching',false,String(error.stack||error).slice(0,500));await shot(page,'live-normal-failure')}
   finally{await c.close();}
