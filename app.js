@@ -4413,6 +4413,7 @@ window.matchAllowanceBeforeLookup=matchAllowanceBeforeLookup;
 window.triggerMatch = async function(isSpecificSearch = false) {
     const matchRunId=(Number(window.__matchappMatchRunId)||0)+1;
     window.__matchappMatchRunId=matchRunId;
+    window.lastMatchRelaxation='exact';
     window.__matchappMatchPhase='preflight';
     try { await window.ensureCompactMatchSession?.(); }
     catch (error) {
@@ -4546,6 +4547,25 @@ window.triggerMatch = async function(isSpecificSearch = false) {
     // A source-first TMDB search remains the mandatory independent fallback.
     if (!isSpecificSearch && !preflight && !specialistTopic) {
         try { preflight = await withMatchSourceDeadline(()=>discoverVerifiedExactTMDB(requested),sourceMs(MATCH_SOURCE_DEADLINES.tmdb,8000)); } catch (_) { preflight = null; }
+    }
+    // If exact live discovery finds no title, make one bounded wider source
+    // pass that removes only the secondary era and provider preferences.
+    // Format, mood, rating, real genre, region exclusions and blocked titles
+    // remain enforced by the same source-verification function. Because the
+    // selected provider is removed from this pass, it can never be reported
+    // as confirmed on that service.
+    if (!isSpecificSearch && !preflight && !specialistTopic &&
+        (normCriteria(requested.decade).length || normCriteria(requested.plat).length)) {
+        try {
+            const broader = await withMatchSourceDeadline(
+                ()=>discoverVerifiedExactTMDB({...requested,decade:[],plat:[]}),
+                sourceMs(MATCH_SOURCE_DEADLINES.tmdb,0)
+            );
+            if (broader) {
+                preflight = {...broader,_relaxedFallback:true,_relaxedStage:'broaden-era-platform'};
+                window.lastMatchRelaxation = 'broaden-era-platform';
+            }
+        } catch (_) { preflight = null; }
     }
     // iTunes is a real-source fallback only when no third-party platform,
     // source genre or blocked-source filter needs verification.
