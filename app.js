@@ -3584,7 +3584,7 @@ const COUNTRY_CATEGORY_CODES={
 // merely because Romance appears in its genre list.
 const COZY_BLOCKED_GENRES=new Set(['Horror','Thriller','War','Crime','War & Politics']);
 const COZY_HEAVY_TEXT=/\b(?:murder(?:ed|er)?|serial killer|kidnap(?:ped|ping)?|hostage|tortur(?:e|ed)|terminal(?:ly)?|cancer|dying|death|funeral|grief|organ donor|organ transplant|sick child|critically ill|life[- ]threatening|war zone|revenge killing|sexual assault|assaulted|rape|raped|violent attack|violence against|brutal crime)\b/i;
-function moodFitsVerified(wanted,genres,overview){
+function moodFitsVerified(wanted,genres,overview,kind=''){
     if(!wanted.length)return true;
     const gs=Array.isArray(genres)?genres:[];
     const text=String(overview||'');
@@ -3594,6 +3594,10 @@ function moodFitsVerified(wanted,genres,overview){
     if(wanted.includes('cozy comfort watch')&&
        (gs.some(g=>COZY_BLOCKED_GENRES.has(g))||COZY_HEAVY_TEXT.test(text)))return false;
     return wanted.some(m=>{
+      // TMDB TV has no Horror genre. Require horror evidence from the
+      // verified series overview; a general Mystery/Drama label is not enough.
+      if(m==='scary'&&kind==='tv')return gs.includes('Horror')||
+        /\b(?:horror|haunt(?:ed|ing|s)?|ghosts?|demons?|zombies?|vampires?|werewolves?|evil spirits?|supernatural terror|terrifying|serial killer)\b/i.test(text);
       const mapped=MOOD_SOURCE_GENRES[m]||[];
       return mapped.length>0&&mapped.some(g=>gs.includes(g));
     });
@@ -3670,10 +3674,15 @@ async function discoverVerifiedExactTMDB(requested){
     const mappableMood=mood.flatMap(m=>MOOD_SOURCE_GENRES[m]||[]);
     if(mood.length&&!mappableMood.length)return null;
     const sourceGenres=[...new Set([...mappableMood,...realGenres.filter(g=>TMDB_GENRE_ID_BY_NAME[g]),...(cat.includes('anime')?['Animation']:[])])];
-    const genreIds=sourceGenres.map(g=>TMDB_GENRE_ID_BY_NAME[g]).filter(Boolean);
+    let genreIds=sourceGenres.map(g=>TMDB_GENRE_ID_BY_NAME[g]).filter(Boolean);
     let kind='';
     if(cat.length&&cat.every(x=>['movie','stand-up comedy special','short film','Bollywood','Nollywood','European cinema'].includes(x)))kind='movie';
     else if(cat.length&&cat.every(x=>['series','reality show','K-drama','C-drama','J-drama','Turkish dizi','novela brasileira','telenovela'].includes(x)))kind='tv';
+    // Movie genre 27 (Horror) is invalid for TV discovery. Search native
+    // TV genres, then require horror evidence before accepting a series.
+    if(kind==='tv'&&sourceGenres.includes('Horror')){
+        genreIds=[...new Set(sourceGenres.flatMap(g=>g==='Horror'?[9648,10765,18]:[TMDB_GENRE_ID_BY_NAME[g]]).filter(Boolean))];
+    }
     const start=decade.length===1?Number(String(decade[0]).match(/\d{4}/)?.[0]):0;
     const region=window.MatchAppCatalogMedia?.regionCode?.()||'BR';
     const provider=platform.length===1?platform[0]:'';
@@ -3705,6 +3714,10 @@ async function discoverVerifiedExactTMDB(requested){
       if(Date.now()-sourceStarted>46000||exactDetails>=MAX_EXACT_DETAILS)return null;
       const key=window.matchPolicy?.key?.(base.title)||'';
       if(!key||known.has(key)||SESSION_SHOWN.has(base.title))continue;
+      // Skip unrelated popular dramas before spending the bounded detail
+      // budget. Both discovery and detail overviews belong to this TMDB ID.
+      if(base.kind==='tv'&&mood.length===1&&mood[0]==='scary'&&
+         !moodFitsVerified(mood,[],base.overview||'',base.kind))continue;
       exactDetails++;
       const d=await window.tmdbDetails(base.tmdbId,base.kind,{priority:true});
       const sourceProvesProvider=!!(provider&&base.providerFiltered===true&&base.verifiedRegion===region&&base.verifiedProvider===canonicalProviderName(provider));
@@ -3719,7 +3732,7 @@ async function discoverVerifiedExactTMDB(requested){
       if(countries.some(x=>prefs.countries.has(String(x).toUpperCase())))continue;
       if(genres.some(g=>prefs.genres.has(String(g).toLowerCase())))continue;
       if(realGenres.length&&!genres.some(g=>realGenres.includes(g)))continue;
-      if(!moodFitsVerified(mood,genres,d?.overview||base.overview||''))continue;
+      if(!moodFitsVerified(mood,genres,d?.overview||base.overview||'',base.kind))continue;
       if(!categoryFitsVerified(base.kind,genres,countries,cat,d))continue;
       if(decade.length&&!decade.some(dec=>{const s=Number(String(dec).match(/\d{4}/)?.[0]);const y=Number(d?.year||base.year);return s&&y>=s&&y<s+10;}))continue;
       if(d && !sourceRatingFits(d.contentRating,rating))continue;
@@ -3809,7 +3822,7 @@ async function aiProposedVerifiedExact(requested){
         if(genres.some(g=>prefs.genres.has(String(g).toLowerCase())))continue;
         if(realGenres.length&&!genres.some(g=>realGenres.includes(g)))continue;
         const mappable=mood.filter(m=>(MOOD_SOURCE_GENRES[m]||[]).length);
-        if(mappable.length&&!moodFitsVerified(mappable,genres,d.overview||base.overview||''))continue;
+        if(mappable.length&&!moodFitsVerified(mappable,genres,d.overview||base.overview||'',base.kind))continue;
         if(!categoryFitsVerified(base.kind,genres,countries,cat,d))continue;
         if(decade.length&&!decade.some(dec=>{const s=Number(String(dec).match(/\d{4}/)?.[0]);const y=Number(d.year||base.year);return s&&y>=s&&y<s+10;}))continue;
         if(!sourceRatingFits(d.contentRating,rating))continue;
@@ -4547,25 +4560,6 @@ window.triggerMatch = async function(isSpecificSearch = false) {
     // A source-first TMDB search remains the mandatory independent fallback.
     if (!isSpecificSearch && !preflight && !specialistTopic) {
         try { preflight = await withMatchSourceDeadline(()=>discoverVerifiedExactTMDB(requested),sourceMs(MATCH_SOURCE_DEADLINES.tmdb,8000)); } catch (_) { preflight = null; }
-    }
-    // If exact live discovery finds no title, make one bounded wider source
-    // pass that removes only the secondary era and provider preferences.
-    // Format, mood, rating, real genre, region exclusions and blocked titles
-    // remain enforced by the same source-verification function. Because the
-    // selected provider is removed from this pass, it can never be reported
-    // as confirmed on that service.
-    if (!isSpecificSearch && !preflight && !specialistTopic &&
-        (normCriteria(requested.decade).length || normCriteria(requested.plat).length)) {
-        try {
-            const broader = await withMatchSourceDeadline(
-                ()=>discoverVerifiedExactTMDB({...requested,decade:[],plat:[]}),
-                sourceMs(MATCH_SOURCE_DEADLINES.tmdb,0)
-            );
-            if (broader) {
-                preflight = {...broader,_relaxedFallback:true,_relaxedStage:'broaden-era-platform'};
-                window.lastMatchRelaxation = 'broaden-era-platform';
-            }
-        } catch (_) { preflight = null; }
     }
     // iTunes is a real-source fallback only when no third-party platform,
     // source genre or blocked-source filter needs verification.

@@ -1,21 +1,21 @@
 {
-  "version": "2026.09.29.1",
+  "version": "2026.09.29.2",
   "date": "2026-09-29",
   "functional": true,
   "notes": {
-    "en": "Matching now recovers safe eligible suggestions when fresh titles run out. Explore original cooking videos and ask AI about recipes. Your profile avatar stays consistent, Taste DNA is easier to edit, and Home now has its own folded Cooking section.",
-    "pt-BR": "O Match agora recupera sugestões compatíveis quando acabam os títulos inéditos. Explore vídeos culinários originais e pergunte sobre receitas à IA. Seu avatar fica consistente, o Taste DNA pode ser editado com facilidade e a página inicial ganhou sua própria seção de Culinária.",
-    "es": "Match recupera sugerencias compatibles cuando se agotan los títulos nuevos. Explora vídeos de cocina originales y consulta recetas a la IA. Tu avatar se mantiene igual, Taste DNA se puede editar fácilmente y la página inicial tiene una sección de Cocina plegada.",
-    "fr": "Le Match retrouve des suggestions compatibles lorsque les nouveaux titres s'épuisent. Explorez des vidéos culinaires originales et interrogez l'IA sur les recettes. Votre avatar reste cohérent, Taste DNA est plus facile à modifier et une section Cuisine repliée apparaît sur l'accueil.",
-    "de": "Match findet wieder passende Vorschläge, wenn neue Titel ausgehen. Entdecke Original-Kochvideos und frage die KI nach Rezepten. Dein Avatar bleibt einheitlich, Taste DNA ist leichter bearbeitbar und die Startseite hat einen einklappbaren Kochbereich.",
-    "it": "Match recupera suggerimenti compatibili quando finiscono i titoli nuovi. Esplora video originali di cucina e chiedi all'IA informazioni sulle ricette. L'avatar resta coerente, Taste DNA è più facile da modificare e la home ha una sezione Cucina richiudibile.",
-    "tr": "Yeni içerikler tükendiğinde Match uygun önerileri geri getirir. Özgün yemek videolarını keşfedin ve yapay zekâya tarifleri sorun. Avatarınız tutarlı görünür, Taste DNA kolayca düzenlenir ve ana sayfada katlanabilir Yemek bölümü bulunur.",
-    "ru": "Когда новые варианты заканчиваются, Match снова предлагает подходящие названия. Смотрите оригинальные кулинарные видео и спрашивайте ИИ о рецептах. Аватар отображается единообразно, Taste DNA проще редактировать, на главной появилась сворачиваемая секция рецептов.",
-    "ar": "يستعيد Match الاقتراحات الملائمة عند نفاد العناوين الجديدة. اكتشف فيديوهات الطهي الأصلية واسأل الذكاء الاصطناعي عن الوصفات. تظهر صورتك الرمزية بشكل متناسق، ويسهل تعديل Taste DNA، وتتوفر صفحة طهي قابلة للطي في الرئيسية.",
-    "hi": "नए शीर्षक खत्म होने पर Match फिर से उपयुक्त सुझाव देता है। असली कुकिंग वीडियो देखें और AI से रेसिपी पूछें। आपका अवतार एक जैसा दिखेगा, Taste DNA संपादित करना आसान है और होम पर अलग से खुलने-बंद होने वाला कुकिंग सेक्शन है।",
-    "id": "Match kini memulihkan rekomendasi yang sesuai ketika judul baru habis. Jelajahi video memasak asli dan tanyakan resep kepada AI. Avatar tetap konsisten, Taste DNA lebih mudah diedit, dan Beranda memiliki bagian Memasak yang dapat dilipat.",
-    "ja": "新しい作品の候補が尽きても、Matchが条件に合う作品を再提案します。オリジナルの料理動画を探し、AIにレシピを質問できます。アバター表示を統一し、Taste DNAの編集を改善。ホームには折りたたみ式の料理セクションを追加しました。",
-    "ko": "새로운 작품이 소진되어도 Match가 조건에 맞는 추천을 복구합니다. 원본 요리 영상을 찾아보고 AI에 레시피를 질문하세요. 아바타 표시를 통일하고 Taste DNA 편집을 개선했으며 홈에 접을 수 있는 요리 섹션을 추가했습니다.",
-    "zh": "当新作品候选用尽时，Match 仍会恢复符合条件的推荐。探索原创烹饪视频并向 AI 询问食谱。头像显示保持一致，Taste DNA 更易编辑，首页新增可折叠的烹饪专区。"
+    "en": "Corrected horror TV series matching and refreshed the matching recovery notice.",
+    "pt-BR": "Corrigimos o match de séries de terror e atualizamos a mensagem de recuperação do match.",
+    "es": "Corregimos el match de series de terror y actualizamos el mensaje de recuperación.",
+    "fr": "Correction du matching des séries d’horreur et mise à jour du message de récupération.",
+    "de": "Das Matching von Horrorserien und die Wiederherstellungsmeldung wurden korrigiert.",
+    "it": "Corretto il matching delle serie horror e aggiornato il messaggio di recupero.",
+    "tr": "Korku dizisi eşleştirmesi düzeltildi ve yeniden deneme mesajı güncellendi.",
+    "ru": "Исправлен подбор сериалов ужасов и обновлено сообщение о повторной попытке.",
+    "ar": "تم تصحيح مطابقة مسلسلات الرعب وتحديث رسالة إعادة المحاولة.",
+    "hi": "हॉरर टीवी सीरीज़ का मिलान सुधारा गया और दोबारा कोशिश का संदेश अपडेट किया गया।",
+    "id": "Pencocokan serial horor diperbaiki dan pesan pemulihan diperbarui.",
+    "ja": "ホラーTVシリーズのマッチングを修正し、再試行メッセージを更新しました。",
+    "ko": "공포 TV 시리즈 매칭을 수정하고 재시도 안내를 업데이트했습니다.",
+    "zh": "修正了恐怖电视剧匹配，并更新了重试提示。"
   }
 }
