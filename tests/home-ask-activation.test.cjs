@@ -64,7 +64,7 @@ test('Ask AI closes only an overlapping install suggestion and prevents a new on
  assert.match(tab,/qs\('#ma-install-offer \.ma-offer-close'\)\?\.click/);
  assert.match(offer,/classList\.contains\('ma-ask-tab'\)\) return true/);
  assert.match(tab,/requestAnimationFrame\(\(\)=>\{[\s\S]*?window\.scrollBy\(\{top:rect\.top-desiredTop,behavior:'instant'\}\)/);
- assert.match(html,/browser-install-offer\.js\?v=20260926-playpending1&amp;chat=20260927-1/);
+ assert.match(html,/browser-install-offer\.js\?v=20260926-playpending1&amp;chat=20260929-overlap1/);
  assert.doesNotMatch(tab.slice(tab.indexOf("ba.addEventListener('click',()=>{"),tab.indexOf("if(new URLSearchParams",tab.indexOf("ba.addEventListener('click',()=>{"))),/localStorage|focus\(/);
 });
 test('live smoke checks usable input and Send inside the phone viewport',()=>{
