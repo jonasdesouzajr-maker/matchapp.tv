@@ -8,7 +8,7 @@ const openai=read('supabase/functions/gemini-proxy/openai-primary.ts');
 const sql=read('supabase/security/openai-primary-daily-gate.sql');
 const app=read('app.js'),home=read('index.html');
 
-test('OpenRouter, Groq and OpenAI are eligible only for adult Ask AI or tagged adult match',()=>{
+test('OpenRouter, OpenAI and Groq are eligible only for adult Ask AI or tagged adult match',()=>{
   assert.match(proxy,/import \{ callOpenAIPrimary \} from "\.\/openai-primary\.ts"/);
   assert.match(proxy,/const openAiEligible = body\?\.kidsMode !== true/);
   assert.match(proxy,/isDiscoverMode \|\| isRankMode \|\| \(body\?\.adultMatch === true/);
@@ -20,7 +20,7 @@ test('OpenRouter, Groq and OpenAI are eligible only for adult Ask AI or tagged a
   const groq=proxy.indexOf('const answer = await callGroqBackup({');
   const primary=proxy.indexOf('const answer = await callOpenAIPrimary({');
   const gemini=proxy.indexOf('const routes = [',primary);
-  assert(router>0 && groq>router && primary>groq && gemini>primary,'OpenRouter, Groq, OpenAI then Gemini');
+  assert(router>0 && primary>router && gemini>primary && groq>gemini,'OpenRouter, OpenAI, Gemini then Groq');
 });
 
 test('the distinct AI candidate-list schema is used end-to-end, never legacy one-title schema',()=>{
