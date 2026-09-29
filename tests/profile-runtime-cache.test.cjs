@@ -12,4 +12,9 @@ test('profile always receives current canonical avatar and compact Taste DNA sty
  const hero=fs.readFileSync('final-audit.js','utf8');
  assert(hero.includes('avatar=window.resolveUserAvatar?.()'));
  assert(fs.readFileSync('taste-profile.js','utf8').includes("toast.id='taste-saved-toast'"));
+ const release=JSON.parse(fs.readFileSync('release.json','utf8'));
+ assert.equal(release.version,'2026.09.29.1');
+ assert.equal(release.date,'2026-09-29');
+ assert.equal(Object.keys(release.notes).length,14);
+ assert(fs.readFileSync('build-meta.js','utf8').includes("window.MATCHAPP_BUILD = '"+release.version+"'"));
 });
