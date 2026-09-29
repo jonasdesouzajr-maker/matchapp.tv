@@ -241,14 +241,14 @@
   // Genre-specific offline answers must be source-grounded, never arbitrary
   // first rows from the catalogue. No inferred genre = no offline claim.
   const OFFLINE_GENRES = Object.freeze({
-    thriller:/\\bthrillers?|suspense|suspenseful|suspenso\\b/i,
-    action:/\\baction|a[cç][aã]o|acci[oó]n\\b/i,
-    scifi:/\\bsci[ -]?fi|science fiction|fic[cç][aã]o cient[ií]fica|ciencia ficci[oó]n\\b/i,
-    fantasy:/\\bfantasy|fantasia|fant[aá]stic[oa]\\b/i,
-    crime:/\\bcrime|criminal|policial\\b/i,
-    mystery:/\\bmystery|mist[eé]rio|misterio\\b/i,
-    animation:/\\banimat(?:ion|ed)|anima[cç][aã]o|animaci[oó]n\\b/i,
-    anime:/\\banime\\b/i
+    thriller:/\bthrillers?|suspense|suspenseful|suspenso\b/i,
+    action:/\baction|a[cç][aã]o|acci[oó]n\b/i,
+    scifi:/\bsci[ -]?fi|science fiction|fic[cç][aã]o cient[ií]fica|ciencia ficci[oó]n\b/i,
+    fantasy:/\bfantasy|fantasia|fant[aá]stic[oa]\b/i,
+    crime:/\bcrime|criminal|policial\b/i,
+    mystery:/\bmystery|mist[eé]rio|misterio\b/i,
+    animation:/\banimat(?:ion|ed)|anima[cç][aã]o|animaci[oó]n\b/i,
+    anime:/\banime\b/i
   });
   function matchingOfflineGenre(entry, genre) {
     if(!genre)return true;
@@ -258,8 +258,8 @@
     const re=OFFLINE_GENRES[genre];
     // A synopsis can explicitly describe a genre, but vague mood or a title
     // alone cannot turn an unrelated drama into an action or thriller film.
-    if(genre==='anime')return /\\banime\\b/i.test(metadata);
-    if(genre==='animation')return /\\banimation|animated|anime\\b/i.test(metadata);
+    if(genre==='anime')return /\banime\b/i.test(metadata);
+    if(genre==='animation')return /\banimation|animated|anime\b/i.test(metadata);
     return !!re&&(re.test(metadata)||re.test(description));
   }
   function intentFromText(text) {
@@ -268,7 +268,7 @@
     const moods = [];
     const cats = [];
     let requestedGenre = null;
-    const normalized = q.normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').toLowerCase();
+    const normalized = q.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
     for (const [genre,re] of Object.entries(OFFLINE_GENRES)) {
       if(re.test(normalized)){ requestedGenre = genre; break; }
     }
@@ -348,7 +348,7 @@
     if (intent.requestedGenre && !matchingOfflineGenre(entry,intent.requestedGenre)) return false;
     // Unrecognized explicit genre selectors cannot silently broaden into an
     // arbitrary drama when the offline catalogue has no known match.
-    const explicitGenre = String(question||'').match(/\\bgenre\\s*[:=]\\s*([\\p{L}-]+)/iu);
+    const explicitGenre = String(question||'').match(/\bgenre\s*[:=]\s*([\p{L}-]+)/iu);
     if(explicitGenre && !Object.values(OFFLINE_GENRES).some(re=>re.test(explicitGenre[1])) &&
        !COMEDY_STRONG.test(explicitGenre[1]) && !HORROR_RE.test(explicitGenre[1]) &&
        !ROMANCE_RE.test(explicitGenre[1]) && !DRAMA_STRONG.test(explicitGenre[1])) return false;
