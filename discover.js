@@ -1660,8 +1660,9 @@ async function runAskAndRender(question) {
     const emptyEl = document.getElementById('discover-empty');
     if (emptyEl) emptyEl.style.display = 'none';
 
-    // Every turn costs one from the daily allowance, same as a match.
-    if (typeof checkDailyLimit === 'function' && !(await checkDailyLimit('ask_ai'))) {
+    // Verify allowance without spending it before contacting paid providers.
+    // A failed or unusable AI response must never consume a guest or paid credit.
+    if (typeof window.matchAllowanceBeforeLookup === 'function' && !(await window.matchAllowanceBeforeLookup('ask_ai'))) {
         refreshAiWorkspaceStatus();
         return;
     }
@@ -1736,6 +1737,18 @@ async function runAskAndRender(question) {
     if (typeof window.sanitizeDisplayText === 'function' && payload && payload.answer) {
         payload.answer = window.sanitizeDisplayText(payload.answer, ['answer', 'synopsis', 'text']);
     }
+
+    // Only a verified, successful live answer earns a debit. Offline source
+    // fallbacks and transport/JSON failures remain free.
+    if (payload?._live === true && String(payload.answer || '').trim() &&
+        typeof checkDailyLimit === 'function' && !(await checkDailyLimit('ask_ai'))) {
+        if (loadEl) { finishAiWorkflow(); loadEl.style.display = 'none'; }
+        await refreshAiWorkspaceStatus();
+        appendAssistantBubble((typeof window.t === 'function' ? window.t('credits.retry') : '') ||
+            'Your allowance changed while the answer was generated. No result was charged; try again.', [], { instant:true });
+        return;
+    }
+    await refreshAiWorkspaceStatus();
 
     // Routed through the shared track() helper so this reaches GTM's
     // dataLayer — a direct gtag() call is a no-op under a GTM container.
