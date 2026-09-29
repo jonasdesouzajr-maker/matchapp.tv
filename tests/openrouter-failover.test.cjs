@@ -25,7 +25,7 @@ test('adult-only routing has four independent provider tiers',()=>{
  const groq=proxy.indexOf('const answer = await callGroqBackup({');
  const openai=proxy.indexOf('const answer = await callOpenAIPrimary({');
  const gemini=proxy.indexOf('const routes = [');
- assert.ok(router>0&&groq>router&&openai>groq&&gemini>openai);
+ assert.ok(router>0&&openai>router&&gemini>openai&&groq>gemini);
  assert.match(proxy,/if \(openAiEligible && openRouterApiKey\)/);
  assert.match(proxy,/body\?\.kidsMode !== true/);
  assert.match(proxy,/if \(openAiEligible && groqApiKey\)/);
@@ -44,7 +44,7 @@ test('JSON response preserves frontend contract and models are ordered',async()=
  assert.equal(request.response_format.type,'json_schema');
  assert.equal(JSON.stringify(body).includes(args.key),false);
 });
-test('402 immediately fails over to OpenAI and cools repeated attempts',async()=>{
+test('402 yields to the next adult provider and cools repeated attempts',async()=>{
  let calls=0;const router=boot(async()=>{calls++;return new Response('{}',{status:402});});
  assert.equal(await router(args),null);
  assert.equal(await router(args),null);
