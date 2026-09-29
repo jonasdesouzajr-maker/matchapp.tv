@@ -71,7 +71,7 @@ function ensureBrandMeta(){
 }
 function openAskFromBrand(){
  if(!isHome){location.href='/?ask=1#ma-concierge';return}
- const ask=qs('#ma-tab-ask'),card=qs('#ma-concierge');
+ const ask=qs('#ma-tab-ask'),card=qs('#ma-ai-entry')||qs('#ma-concierge');
  if(ask)safeClick(ask);
  if(card)card.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'center'});
  setTimeout(()=>{
@@ -267,11 +267,12 @@ function mountHome(){
    // A Home installation offer must not cover the user-requested Ask composer.
    // Closing is temporary and does not change their install preferences.
    qs('#ma-install-offer .ma-offer-close')?.click();
-   const fold=concierge.classList.contains('lazy-foldable')&&!concierge.classList.contains('lazy-open');
-   const toggle=concierge.previousElementSibling;
+   const askSection=qs('#ma-ai-entry')||concierge;
+   const fold=askSection.classList.contains('lazy-foldable')&&!askSection.classList.contains('lazy-open');
+   const toggle=askSection.previousElementSibling;
    if(fold){
      if(toggle?.classList.contains('lazy-head'))toggle.click();
-     else concierge.classList.add('lazy-open');
+     else askSection.classList.add('lazy-open');
    }
    tab('ask');
    requestAnimationFrame(()=>{
@@ -322,6 +323,8 @@ function mountHome(){
    tg.hidden=true;
    const togetherAd=qs('.ma-together-ad',container);
    if(togetherAd)after(tg,togetherAd);
+   const togetherHead=qs('.lazy-head[data-fold-key="together"]',container);
+   if(togetherHead)tg.before(togetherHead);
  }
  if(trending){
    const h=qs('h4',trending);if(h)h.textContent=t.latest;

@@ -1,3 +1,4 @@
+@import url("/adult-page-compact.css?v=20260929-1");
 /* MatchApp brand system — crisp from phones through 8K. */
 .matchapp-wordmark{display:block!important;width:clamp(14rem,26vw,22rem)!important;max-width:100%!important;height:auto!important;aspect-ratio:600/104;object-fit:contain!important;border:0!important;border-radius:0!important;box-shadow:none!important;flex:none;transform-origin:left center;filter:drop-shadow(0 5px 15px rgba(0,0,0,.3)) drop-shadow(0 0 9px rgba(229,193,88,.08));animation:brandReveal .7s cubic-bezier(.2,.8,.2,1) both;transition:transform .25s ease,filter .25s ease!important}
 .matchapp-brand-link:hover .matchapp-wordmark,.matchapp-brand-link:focus-visible .matchapp-wordmark{transform:translateY(-2px) scale(1.025);filter:drop-shadow(0 7px 18px rgba(0,0,0,.32)) drop-shadow(0 0 13px rgba(229,193,88,.14))}

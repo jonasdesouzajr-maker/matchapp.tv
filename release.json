@@ -1,21 +1,21 @@
 {
-  "version": "2026.09.29.4",
+  "version": "2026.09.29.5",
   "date": "2026-09-29",
   "functional": true,
   "notes": {
-    "en": "More compact AI conversations, follow-up input above titles and improved original poster loading.",
-    "pt-BR": "Conversas de IA mais compactas, campo de pergunta acima dos títulos e carregamento aprimorado dos pôsteres originais.",
-    "es": "Conversaciones de IA más compactas, entrada sobre los títulos y carga mejorada de pósteres originales.",
-    "fr": "Conversations IA plus compactes, saisie au-dessus des titres et meilleur chargement des affiches originales.",
-    "de": "Kompaktere KI-Gespräche, Eingabe über den Titeln und verbessertes Laden der Originalposter.",
-    "it": "Conversazioni IA più compatte, campo sopra i titoli e caricamento migliorato dei poster originali.",
-    "tr": "Daha kompakt yapay zekâ sohbetleri, başlıkların üzerinde giriş ve iyileştirilmiş orijinal afiş yükleme.",
-    "ru": "Компактные беседы с ИИ, ввод над подборкой и улучшенная загрузка оригинальных постеров.",
-    "ar": "محادثات ذكاء اصطناعي أصغر، وحقل إدخال فوق العناوين وتحسين تحميل الملصقات الأصلية.",
-    "hi": "अधिक कॉम्पैक्ट AI बातचीत, शीर्षकों के ऊपर इनपुट और मूल पोस्टर की बेहतर लोडिंग।",
-    "id": "Percakapan AI lebih ringkas, input di atas judul dan pemuatan poster asli yang lebih baik.",
-    "ja": "AI会話をコンパクトにし、作品の上に入力欄を配置。公式ポスターの読み込みも改善しました。",
-    "ko": "AI 대화를 더 간결하게 만들고 작품 위에 입력란을 배치했으며 원본 포스터 로딩을 개선했습니다.",
-    "zh": "更紧凑的AI对话、位于作品上方的输入框，以及改进的原版海报加载。"
+    "en": "Aligned compact sections, only Top Titles open by default, and consistent adult pages and back buttons.",
+    "pt-BR": "Seções compactas alinhadas, apenas títulos em alta abertos por padrão e páginas e botões de voltar consistentes.",
+    "es": "Secciones compactas alineadas, solo títulos destacados abiertos por defecto y páginas y botones de regreso uniformes.",
+    "fr": "Sections compactes alignées, seuls les titres tendance ouverts par défaut et pages et boutons de retour harmonisés.",
+    "de": "Einheitliche kompakte Bereiche, standardmäßig nur Top-Titel geöffnet und konsistente Seiten und Zurück-Buttons.",
+    "it": "Sezioni compatte allineate, solo titoli principali aperti per impostazione predefinita e pagine e pulsanti Indietro uniformi.",
+    "tr": "Hizalı kompakt bölümler, varsayılan olarak yalnızca öne çıkan yapımlar açık ve tutarlı sayfalar ve geri düğmeleri.",
+    "ru": "Компактные согласованные разделы, по умолчанию открыты только популярные произведения, единый стиль страниц и кнопок возврата.",
+    "ar": "أقسام صغيرة ومتناسقة، مع فتح العناوين الرائجة فقط افتراضياً وتوحيد الصفحات وأزرار الرجوع.",
+    "hi": "समान कॉम्पैक्ट अनुभाग, डिफ़ॉल्ट रूप से केवल प्रमुख शीर्षक खुले, और एक जैसे पृष्ठ व वापस बटन।",
+    "id": "Bagian ringkas yang selaras, hanya judul unggulan terbuka secara default, serta halaman dan tombol kembali yang konsisten.",
+    "ja": "各セクションをコンパクトに統一。初期表示では注目作品のみ開き、ページと戻るボタンも統一しました。",
+    "ko": "섹션을 간결하게 정렬하고 기본 화면에서는 인기 작품만 펼치며 페이지와 뒤로 버튼을 통일했습니다.",
+    "zh": "统一紧凑的分区，默认仅展开热门作品，并统一页面和返回按钮。"
   }
 }

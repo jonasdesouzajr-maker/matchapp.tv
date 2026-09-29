@@ -4,6 +4,7 @@
 const STORE_KEY='match_lazy_mode';
 const FOLD_KEY='match_home_fold_state_v2';
 const GENERIC=[
+ {sel:'#ma-ai-entry',key:'askai',label:'Ask MatchApp Ai'},
  {sel:'#ma-concierge',key:'concierge',label:'Match / Ask MatchApp Ai'},
  {sel:'.tg-entry',key:'together',label:'Match Together'}
 ];
@@ -14,11 +15,13 @@ const NATIVE=[
  {sel:'#premiere-disclosure',key:'premiere'},
  {sel:'#weekly-pick-disclosure',key:'weekly'},
  {sel:'#latest-news',key:'news'},
- {sel:'#global-events .global-events-fold',key:'events'}
+ {sel:'#global-events .global-events-fold',key:'events'},
+ {sel:'#cooking-home',key:'cooking'},
+ {sel:'#ebook-matcher-root .ebook-fold',key:'reading'}
 ];
 let foldState=loadFoldState(), syncing=false, observerQueued=false;
-// Every fresh Home opening starts with just Watch and News expanded.
-function loadFoldState(){return {concierge:true,news:true}}
+// Only Top Titles is expanded on a fresh Home opening; explicit deep links may open their target.
+function loadFoldState(){return {}}
 function saveFoldState(){try{localStorage.setItem(FOLD_KEY,JSON.stringify(foldState))}catch(_){}}
 function lazyOn(){return document.body.classList.contains('lazy-mode')}
 function storedOpen(key){return foldState[key]===true}
@@ -29,12 +32,18 @@ function loggedIn(){return window.isUserLoggedIn===true}
 function tr(key,fallback){if(typeof window.t!=='function')return fallback;const v=window.t(key);return v&&v!==key?v:fallback}
 function labelFor(cfg,section){const h=section.querySelector?.('h2,h3,h4');const t=h?.textContent?.trim().replace(/\s+/g,' ');return t&&t.length<=72?t:cfg.label}
 function setGeneric(section,open){
+ alignGenericHead(section);
  const head=section.previousElementSibling?.classList?.contains('lazy-head')?section.previousElementSibling:null;
  section.classList.toggle('lazy-open',!!open);
  if(head){head.classList.toggle('is-open',!!open);head.setAttribute('aria-expanded',open?'true':'false')}
 }
+function alignGenericHead(section){
+ const head=document.querySelector('.lazy-head[data-fold-key="'+section.dataset.foldKey+'"]');
+ if(head&&head.nextElementSibling!==section)section.parentNode.insertBefore(head,section);
+}
 function mountGeneric(cfg,section){
- if(!section||section.dataset.lazyFoldMounted==='1')return;
+ if(!section)return;
+ if(section.dataset.lazyFoldMounted==='1'){alignGenericHead(section);return;}
  section.dataset.lazyFoldMounted='1';section.dataset.foldKey=cfg.key;section.classList.add('lazy-foldable');
  const head=document.createElement('button');head.type='button';head.className='lazy-head';head.dataset.foldKey=cfg.key;
  head.innerHTML='<span class="lazy-head-label"></span><span class="lazy-head-chevron" aria-hidden="true">⌄</span>';
@@ -139,7 +148,7 @@ function init(){
  buildToggle();mountAll();apply(false,false);
  const obs=new MutationObserver(records=>{
   let relevant=false;
-  for(const r of records)for(const n of r.addedNodes||[])if(n.nodeType===1&&(n.matches?.('#weekly-pick-disclosure,#latest-news,#ma-concierge')||n.querySelector?.('#weekly-pick-disclosure,#latest-news,#ma-concierge'))){relevant=true;break}
+  for(const r of records)for(const n of r.addedNodes||[])if(n.nodeType===1&&(n.matches?.('#weekly-pick-disclosure,#latest-news,#ma-concierge,#ma-ai-entry,#cooking-home,.ebook-fold,.tg-entry')||n.querySelector?.('#weekly-pick-disclosure,#latest-news,#ma-concierge'))){relevant=true;break}
   if(relevant&&!observerQueued){observerQueued=true;queueMicrotask(()=>{observerQueued=false;mountAll();syncAll(lazyOn())})}
  });
  obs.observe(document.body,{childList:true,subtree:true});

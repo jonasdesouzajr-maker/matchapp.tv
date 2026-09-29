@@ -1,0 +1,40 @@
+/* Shared adult phone/tablet density. No Home, Kids, ad geometry or business logic. */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap");
+html:not(:has(link[rel="canonical"][href*="/kids"])) body:not(.page-home):not(.tv-mode):not([class*="kids"]):not([data-kids]) :is(.ma-back-button,a.back-link,a.back-btn,a[data-i18n="nav.back"],a[data-i18n="common.back"],.adult-page-nav>a){
+ display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:6px!important;
+ min-height:38px!important;box-sizing:border-box!important;padding:8px 12px!important;border:1px solid #e5c15870!important;border-radius:11px!important;
+ background:linear-gradient(145deg,#45305e,#21152f)!important;color:#ffe8ac!important;font-family:Inter,sans-serif!important;
+ font-size:12px!important;font-weight:700!important;line-height:1.3!important;text-decoration:none!important;
+}
+html:not(:has(link[rel="canonical"][href*="/kids"])) body:not(.page-home):not(.tv-mode):not([class*="kids"]):not([data-kids]) :is(.ma-back-button,a.back-link,a.back-btn,.adult-page-nav>a):focus-visible{outline:3px solid #cba5ff!important;outline-offset:3px!important}
+html:not(:has(link[rel="canonical"][href*="/kids"])) body:not(.page-home):not(.tv-mode):not([class*="kids"]):not([data-kids]) .adult-page-nav{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+@media(max-width:1024px){
+ html:not(:has(link[rel="canonical"][href*="/kids"])) body:not(.page-home):not(.tv-mode):not([class*="kids"]):not([data-kids]){font-family:Inter,"Segoe UI",sans-serif!important;font-size:14px!important;line-height:1.5!important}
+ html:not(:has(link[rel="canonical"][href*="/kids"])) body:not(.page-home):not(.tv-mode):not([class*="kids"]):not([data-kids]) :is(button,input,select,textarea){font-family:Inter,"Segoe UI",sans-serif!important}
+ html:not(:has(link[rel="canonical"][href*="/kids"])) body:not(.page-home):not(.tv-mode):not([class*="kids"]):not([data-kids]) :is(main,.wrap,.cooking-shell,.ebook-shell) :is(h1,h2,h3){font-family:Outfit,Inter,sans-serif!important;line-height:1.25!important;overflow-wrap:anywhere!important}
+ html:not(:has(link[rel="canonical"][href*="/kids"])) body:not(.page-home):not(.tv-mode):not([class*="kids"]):not([data-kids]) :is(main,.wrap,.cooking-shell,.ebook-shell) h1{font-size:23px!important;margin:12px 0 8px!important}
+ html:not(:has(link[rel="canonical"][href*="/kids"])) body:not(.page-home):not(.tv-mode):not([class*="kids"]):not([data-kids]) :is(main,.wrap,.cooking-shell,.ebook-shell) h2{font-size:19px!important;margin:16px 0 8px!important}
+ html:not(:has(link[rel="canonical"][href*="/kids"])) body:not(.page-home):not(.tv-mode):not([class*="kids"]):not([data-kids]) :is(main,.wrap,.cooking-shell,.ebook-shell) h3{font-size:16px!important;margin:8px 0 6px!important}
+ html:not(:has(link[rel="canonical"][href*="/kids"])) body:not(.page-home):not(.tv-mode):not([class*="kids"]):not([data-kids]) :is(main,.wrap,.cooking-shell,.ebook-shell) :is(p,li){font-size:13px!important;line-height:1.55!important}
+ html:not(:has(link[rel="canonical"][href*="/kids"])) body:not(.page-home):not(.tv-mode):not([class*="kids"]):not([data-kids]) :is(.premium-card:not(.ad-banner-container):not(.premium-ad-frame),.cooking-card,.tg-card,.seo-item,.tile,.w2w-region,.ebook-field){
+  padding:12px!important;border-radius:15px!important;margin-bottom:12px!important;
+ }
+ html:not(:has(link[rel="canonical"][href*="/kids"])) body:not(.page-home):not(.tv-mode):not([class*="kids"]):not([data-kids])>main:not(.page-wrapper):not(.tg-wrap):not(.wrap){padding:12px!important;margin:14px auto!important;width:calc(100% - 24px)!important;box-sizing:border-box!important}
+ html:not(:has(link[rel="canonical"][href*="/kids"])) body:not(.page-home):not(.tv-mode):not([class*="kids"]):not([data-kids]) .cooking-shell{margin:14px auto!important;padding:0 12px!important}
+ html:not(:has(link[rel="canonical"][href*="/kids"])) body:not(.page-home):not(.tv-mode):not([class*="kids"]):not([data-kids]) .cooking-grid{gap:10px!important;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))!important}
+ html:not(:has(link[rel="canonical"][href*="/kids"])) body:not(.page-home):not(.tv-mode):not([class*="kids"]):not([data-kids]) .cooking-tools{gap:8px!important;margin:12px 0!important}
+ html:not(:has(link[rel="canonical"][href*="/kids"])) body:not(.page-home):not(.tv-mode):not([class*="kids"]):not([data-kids]) .cooking-tools :is(input,select){min-height:38px!important;padding:7px 9px!important;font-size:14px!important;border-radius:10px!important}
+ html:not(:has(link[rel="canonical"][href*="/kids"])) body:not(.page-home):not(.tv-mode):not([class*="kids"]):not([data-kids]) .cooking-card img{width:auto!important;max-width:100%!important;height:auto!important;max-height:180px!important;object-fit:contain!important;margin:0 auto 8px!important}
+ html:not(:has(link[rel="canonical"][href*="/kids"])) body:not(.page-home):not(.tv-mode):not([class*="kids"]):not([data-kids]) .cooking-card p{margin:6px 0 10px!important}
+ html:not(:has(link[rel="canonical"][href*="/kids"])) body:not(.page-home):not(.tv-mode):not([class*="kids"]):not([data-kids]) :is(.cooking-actions,.discover-actions,.tg-actions){gap:6px!important}
+ html:not(:has(link[rel="canonical"][href*="/kids"])) body:not(.page-home):not(.tv-mode):not([class*="kids"]):not([data-kids]) :is(.gold-btn,.secondary-btn,.tg-btn,.cooking-actions a,.cooking-actions button,.pf-btn):not(.mic-btn):not(.composer-send){
+  font-size:12px!important;line-height:1.35!important;min-height:36px!important;padding:8px 12px!important;border-radius:11px!important;
+ }
+ html:not(:has(link[rel="canonical"][href*="/kids"])) body:not(.page-home):not(.tv-mode):not([class*="kids"]):not([data-kids]) :is(.pf-input,.profile-form input,.profile-form select,.ebook-select-field select){font-size:14px!important;min-height:38px!important;padding:8px 10px!important}
+ html:not(:has(link[rel="canonical"][href*="/kids"])) body:not(.page-home):not(.tv-mode):not([class*="kids"]):not([data-kids]) .mh-topbox{padding:6px 9px!important;gap:5px!important}
+ html:not(:has(link[rel="canonical"][href*="/kids"])) body:not(.page-home):not(.tv-mode):not([class*="kids"]):not([data-kids]) .mh-topbox .mh-deck{gap:6px!important}
+ html:not(:has(link[rel="canonical"][href*="/kids"])) body:not(.page-home):not(.tv-mode):not([class*="kids"]):not([data-kids]) .mh-topbox .mh-deck> :is(a,button,select,.ma-menu-wrap){min-height:34px!important;font-size:11px!important;padding:6px 9px!important;border-radius:10px!important}
+ html:not(:has(link[rel="canonical"][href*="/kids"])) body:not(.page-home):not(.tv-mode):not([class*="kids"]):not([data-kids]) .mh-topbox :is(.ma-wordmark,.ma-word-ai){font-size:24px!important}
+ html:not(:has(link[rel="canonical"][href*="/kids"])) body:not(.page-home):not(.tv-mode):not([class*="kids"]):not([data-kids]) .mh-topbox .ma-brand-orb-stage{width:42px!important;height:40px!important;min-width:42px!important}
+ html:not(:has(link[rel="canonical"][href*="/kids"])) body:not(.page-home):not(.tv-mode):not([class*="kids"]):not([data-kids]) .mh-topbox .ma-brand-orb{width:44px!important;height:44px!important}
+}

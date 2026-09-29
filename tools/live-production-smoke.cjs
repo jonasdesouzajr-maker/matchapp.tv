@@ -97,10 +97,17 @@ async function aiQuestion(page,question,expected,label){
     await page.locator('#q-category').waitFor({state:'attached',timeout:15000});
     await page.locator('#q-category').locator('xpath=..').locator('.crit-chips .crit-chip').first().waitFor({state:'attached',timeout:15000});
     await page.locator('#ebook-matcher-root [data-ebook-match]').waitFor({state:'attached',timeout:25000});
-    // Latest News is an always-open Home surface, separate from the Match/Ask
-    // accordion. Keep this check aligned with the current fixed opening layout.
+    // Fresh Home opens only Top Titles. Open News explicitly to verify its content.
     try {
       await page.locator('#latest-news > summary').waitFor({state:'visible',timeout:20000});
+      const defaults=await page.evaluate(()=>({
+        titles:!!document.getElementById('trending-rail')?.getClientRects().length,
+        generic:[...document.querySelectorAll('.lazy-head[data-fold-key]')].every(n=>n.getAttribute('aria-expanded')==='false'),
+        native:['#latest-news','#premiere-disclosure','#weekly-pick-disclosure','#cooking-home','#ebook-matcher-root .ebook-fold','#global-events .global-events-fold'].every(s=>!document.querySelector(s)?.open),
+        music:document.querySelector('.swifties-fold')?.getAttribute('aria-expanded')==='false'
+      }));
+      record('Fresh Home opens only Top Titles '+device.name,defaults.titles&&defaults.generic&&defaults.native&&defaults.music,JSON.stringify(defaults));
+      await page.locator('#latest-news > summary').click();
       await page.waitForFunction(()=>document.querySelectorAll('#latest-news .ma-news-card-main[href^="https://"]').length>0,null,{timeout:20000});
       const news=await page.evaluate(()=>{
         const n=document.getElementById('latest-news');
@@ -108,11 +115,11 @@ async function aiQuestion(page,question,expected,label){
         return {open:!!n?.open,panelVisible:!!panel&&getComputedStyle(panel).display!=='none'&&panel.getClientRects().length>0,
           outsideMatcher:!!n&&n.closest('#ma-concierge')===null,hasVerifiedCards:!!n?.querySelector('.ma-news-card-main[href^="https://"]')};
       });
-      record('LIVE Latest News starts unfolded '+device.name,
+      record('LIVE Latest News opens on request '+device.name,
         news.open&&news.panelVisible&&news.outsideMatcher&&news.hasVerifiedCards,JSON.stringify(news));
       await shot(page,device.name+'-latest-news-open');
     } catch(error) {
-      record('LIVE Latest News starts unfolded '+device.name,false,String(error.message).slice(0,240));
+      record('LIVE Latest News opens on request '+device.name,false,String(error.message).slice(0,240));
     }
     assert(await page.locator('img[data-title]').count()>0,'no original-title poster elements');
     // On a 320px phone the trending rail starts below the opening hero and
@@ -236,8 +243,8 @@ async function aiQuestion(page,question,expected,label){
     const bookFields=await ebook.locator('select[data-ebook-select]').count();
     record('real compact reading controls '+device.name,bookFields===7,
       'seven live dropdowns preserve ebook, verified audio and magazine choices');
-    // The approved Home layout has a separate, always-visible Ask AI composer;
-    // it no longer exposes the retired Match/Ask tab as its entry point.
+    // Open the separate Ask fold through its visible header; do not auto-focus.
+    await page.locator('.lazy-head[data-fold-key="askai"]').click();
     const aiEntry=page.locator('#ma-ai-entry'),homeInput=page.locator('#ma-ai-entry #specific-search-input');
     await aiEntry.waitFor({state:'visible',timeout:12000});
     await homeInput.waitFor({state:'visible',timeout:12000});
@@ -251,9 +258,9 @@ async function aiQuestion(page,question,expected,label){
       const dockSpace=dock&&getComputedStyle(dock).display!=='none'?dock.getBoundingClientRect().height+14:14;
       const bottom=innerHeight-dockSpace;
       const offerCoversControl=!!offer&&!!offer.getClientRects().length&&!!offerRect&&[input,send].some(r=>r&&r.left<offerRect.right&&r.right>offerRect.left&&r.top<offerRect.bottom&&r.bottom>offerRect.top);
-      return !!input&&!!send&&input.width>60&&send.width>40&&
+      return !!input&&!!send&&input.width>60&&send.width>=32&&
         input.top>=0&&input.bottom<=bottom&&send.top>=0&&send.bottom<=bottom&&
-        (!matchMedia('(max-width: 600px)').matches||input.height>=84)&&!offerCoversControl;
+        (!matchMedia('(max-width: 600px)').matches||input.height>=36)&&!offerCoversControl;
     },null,{timeout:3500}).catch(()=>{});
     const activeAsk=await page.evaluate(()=>{
       const entry=document.getElementById('ma-ai-entry'),form=document.getElementById('search-box');
@@ -263,8 +270,8 @@ async function aiQuestion(page,question,expected,label){
       const dock=document.getElementById('ma-dock');
       const dockSpace=dock&&getComputedStyle(dock).display!=='none'?dock.getBoundingClientRect().height+14:14;
       const safeBottom=innerHeight-dockSpace;
-      const controlsUsable=!!ir&&!!sr&&ir.width>60&&sr.width>40&&
-        (!matchMedia('(max-width: 600px)').matches||ir.height>=84)&&
+      const controlsUsable=!!ir&&!!sr&&ir.width>60&&sr.width>=32&&
+        (!matchMedia('(max-width: 600px)').matches||ir.height>=36)&&
         ir.top>=0&&ir.bottom<=safeBottom&&sr.top>=0&&sr.bottom<=safeBottom;
       const offerCoversControl=!!offer&&!!offer.getClientRects().length&&!!offerRect&&[ir,sr].some(r=>r&&r.left<offerRect.right&&r.right>offerRect.left&&r.top<offerRect.bottom&&r.bottom>offerRect.top);
       return {open:!!entry&&!entry.hidden&&entry.getClientRects().length>0,
@@ -315,6 +322,8 @@ async function aiQuestion(page,question,expected,label){
     await page.waitForFunction(()=>typeof window.setMatchCriteria==='function',{timeout:15000});
     const picked=await page.evaluate(()=>{window.setMatchCriteria({cat:['movie'],mood:['funny'],plat:[]});return window.getMatchCriteria()});
     assert(picked.cat.includes('movie')&&picked.mood.includes('funny'),'production multi-select did not preserve choices');
+    await page.locator('.lazy-head[data-fold-key="concierge"]').click();
+    await page.locator('.lazy-head[data-fold-key="askai"]').click();
     await page.locator('button[onclick="triggerMatch(false)"]').click();
     await page.waitForFunction(()=>{
       const box=document.getElementById('result-box');

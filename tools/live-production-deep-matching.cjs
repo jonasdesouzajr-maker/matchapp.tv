@@ -79,6 +79,7 @@ async function guarded(browser,label,fn){
      return getMatchCriteria();
    });
    assert(chosen.cat.includes('Spotify playlist')&&chosen.plat.includes('Spotify')&&chosen.mood.includes('cozy comfort watch'),'music form did not preserve choices');
+   await page.locator('.lazy-head[data-fold-key="concierge"]').click();
    await page.locator('button[onclick="triggerMatch(false)"]').click();
    await page.waitForFunction(()=>{
     const box=document.querySelector('#result-box'),title=document.querySelector('#res-title')?.textContent?.trim();

@@ -146,6 +146,16 @@
     return header;
   }
 
+  function polishBackLinks() {
+    document.querySelectorAll('a[href]').forEach(function (link) {
+      var href = link.getAttribute('href') || '';
+      if (/^https?:/i.test(href) && link.origin !== location.origin) return;
+      var label = (link.textContent || '').trim();
+      if (/^(?:[←‹«]\\s*)?(?:go back|back|voltar|retour|zurück|volver|indietro|geri|назад|عودة|वापस|kembali|戻る|뒤로|返回)(?:\\s|$)/i.test(label)) {
+        link.classList.add('ma-back-button');
+      }
+    });
+  }
   function mount() {
     var body = document.body;
     if (!body || skip()) return;
@@ -155,6 +165,7 @@
     if (!header) return;
     body.dataset.pageShell = '1';
     body.classList.add('page-shell');
+    polishBackLinks();
     header.classList.add('mh-topbox');
 
     /* --- head: brand lockup + page label, as one column --- */

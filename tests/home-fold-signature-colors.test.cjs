@@ -60,7 +60,7 @@ test('Every adult Home fold has a different filled hue with its own mapped signa
 
 test('Latest News has an interactive native fold with its original blue-violet crest',()=>{
  const news=read('latest-news.js'),css=read('fold-colors.css'),old=read('matchapp-ia.css');
- assert.match(news,/section\.open=true/);
+ assert.match(news,/section\.open=false/);
  assert.match(news,/section\.id='latest-news'/);
  assert.match(css,/#latest-news>summary::before\{/);
  assert.match(css,/content:""!important;display:block!important;flex:0 0 62px!important/);
