@@ -87,6 +87,8 @@ async function setup(page){
      pass(device.name+' vertical scroll from Home heading',heroAfter>heroBefore+20,JSON.stringify({before:heroBefore,after:heroAfter}));
      await touch.detach();
      await page.evaluate(()=>window.setMatchCriteria({cat:['movie'],mood:['funny'],plat:[]}));
+     const watchFold=page.locator('.lazy-head[data-fold-key="concierge"]');
+     if(await watchFold.getAttribute('aria-expanded')==='false')await watchFold.click();
      const btn=page.locator('button[onclick="triggerMatch(false)"]');
      await btn.scrollIntoViewIfNeeded({timeout:12000});
      await btn.click({timeout:12000});
