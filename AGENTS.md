@@ -224,9 +224,9 @@ For all future authorized MatchApp system or mechanical tasks — bug fixes, bac
 
 ---
 
-### 23. OPENAI-ONLY ADULT ROUTING UNTIL OWNER CONFIRMS GEMINI REPLENISHMENT (2026-09-27)
+### 23. OWNER-APPROVED ADULT AI FALLBACK ORDER (2026-09-29)
 
-Owner's latest explicit instruction: **Only OpenAI handles eligible adult Ask AI and AI-assisted matching now.** Do not use the original paid Gemini key, free Gemini key or other backup Gemini keys for adult chat or matching until the owner explicitly confirms paid credits have been purchased and authorizes restoration. Any earlier assertion that the owner had already restored paid credits is superseded. Preserve existing Kids and non-adult legacy routes unchanged. Preserve the owner-configured daily OpenAI usage ceiling: when its gate is exhausted or the API fails, return an honest retryable unavailable response (and allow verified independent source metadata on the client), never quietly fall through to Gemini or increase spending. Restore backup routing only upon the owner's subsequent instruction and independently verify it first.
+For adult Ask AI and explicitly tagged adult matching, use **OpenRouter → OpenAI → Gemini → Groq** in that exact order. Proceed to the next configured provider only when the preceding provider fails or cannot produce usable output. Preserve the configured daily OpenAI ceiling (maximum 200 calls), existing provider safety/validation rules and an overall finite adult request budget. When every provider is unavailable, report it honestly and do not fabricate or charge for an unsuccessful request. Kids and untagged legacy routes keep their existing Gemini-only precedence unchanged. This September 29 approval supersedes the earlier temporary OpenAI-only instruction and any intermediate Groq-before-OpenAI configuration.
 
 ---
 
