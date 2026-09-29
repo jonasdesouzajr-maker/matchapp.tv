@@ -758,6 +758,10 @@
     }
     if(wrap.childElementCount){host.appendChild(wrap);host.hidden=false;}
   }
+  function desktopResultInfo(){
+    return window.matchMedia?.('(min-width: 1180px) and (hover: hover) and (pointer: fine)')?.matches === true
+      && !document.documentElement.classList.contains('matchapp-android');
+  }
   function renderTitleFacts(meta,{kids=false}={}){
     const id=kids?'matchapp-kids-title-facts':'res-title-facts';
     let host=document.getElementById(id);
@@ -777,6 +781,12 @@
       if(anchor)anchor.insertAdjacentElement('afterend',host);
     }
     if(!host)return;
+    // Desktop keeps country and cast directly after the synopsis, ahead of
+    // streaming options and the embedded preview, including on a re-match.
+    if(!kids&&desktopResultInfo()){
+      const synopsis=document.getElementById('res-synopsis');
+      if(synopsis&&host.previousElementSibling!==synopsis)synopsis.insertAdjacentElement('afterend',host);
+    }
     host.replaceChildren();
     if(countries.length){
       const row=document.createElement('div');
@@ -822,6 +832,23 @@
       if(!existing)badge.insertAdjacentElement('afterend',el);
     }else existing?.remove();
 
+    if(desktopResultInfo()){
+      const bar=document.getElementById('res-factbar');
+      if(bar){
+        // The exact TMDB identity wins over the matcher's interim hints.
+        // A same-named TVMaze result must never leave a conflicting year here.
+        const facts=[];
+        if(Number(meta.year)>1880)facts.push(String(meta.year));
+        (Array.isArray(meta.origin_countries)?meta.origin_countries:[])
+          .map(countryName).filter(Boolean).forEach(value=>facts.push(value));
+        (Array.isArray(meta.genres)?meta.genres:[])
+          .map(value=>String(value||'').trim()).filter(Boolean).forEach(value=>facts.push(value));
+        bar.replaceChildren(...[...new Set(facts)].map(value=>{
+          const chip=document.createElement('span');chip.textContent=value;return chip;
+        }));
+        bar.style.display=facts.length?'flex':'none';
+      }
+    }
     renderTitleFacts(meta);
   }
 
@@ -906,9 +933,18 @@
     const title=String(window.globalMatchTitle||titleEl.textContent||'').trim();
     if(!title||title==='Title')return;
     const serial=++mainSerial;
-    const anchor=document.getElementById('res-platform-badge')||document.getElementById('res-synopsis')||document.getElementById('res-actions')||titleEl;
+    // On desktop the title, ratings and synopsis must precede lengthy
+    // streaming and preview panels. Keep the established compact order on
+    // phone, tablet and Android WebView.
+    const synopsis=document.getElementById('res-synopsis');
+    const desktopInfo=desktopResultInfo()&&!!synopsis;
+    const anchor=(desktopInfo&&synopsis)||document.getElementById('res-platform-badge')||synopsis||document.getElementById('res-actions')||titleEl;
     const availabilityHost=ensurePlayerHost(anchor,'matchapp-main-availability');
     const host=ensurePlayerHost(availabilityHost||anchor,'matchapp-main-preview');
+    if(desktopInfo&&availabilityHost&&availabilityHost.previousElementSibling!==synopsis)
+      synopsis.insertAdjacentElement('afterend',availabilityHost);
+    if(desktopInfo&&host&&availabilityHost&&host.previousElementSibling!==availabilityHost)
+      availabilityHost.insertAdjacentElement('afterend',host);
 
     const identity=(window.currentMatchIdentity&&normalise(window.currentMatchIdentity.title)===normalise(title))
       ? window.currentMatchIdentity:{};
