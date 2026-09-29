@@ -244,15 +244,15 @@ async function aiQuestion(page,question,expected,label){
     const bookFields=await ebook.locator('select[data-ebook-select]').count();
     record('real compact reading controls '+device.name,bookFields===7,
       'seven live dropdowns preserve ebook, verified audio and magazine choices');
-    // Real touch/browser regression: an existing folded concierge must not
-    // make the Home Ask button appear dead on a phone, tablet or desktop.
+    // Real touch/browser regression: the dedicated in-product Ask tab must
+    // reveal its composer on a phone, tablet or desktop.
     const preAsk=await page.evaluate(()=>{
       const pane=document.getElementById('ma-concierge');
       const fold=pane?.previousElementSibling;
       if(fold?.classList.contains('lazy-head')&&pane.classList.contains('lazy-open'))fold.click();
       return {folded:!!(pane?.classList.contains('lazy-foldable')&&!pane.classList.contains('lazy-open'))};
     });
-    await page.locator('#ma-hero-ask').click({timeout:12000});
+    await page.locator('#ma-tab-ask').click({timeout:12000});
     await page.waitForFunction(()=>{
       const pane=document.getElementById('ma-panel-ask'),form=document.getElementById('search-box');
       return !!pane&&!pane.hidden&&!!form&&getComputedStyle(form).display!=='none'&&form.getBoundingClientRect().width>60;

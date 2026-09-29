@@ -66,7 +66,7 @@ test('Exclusive filled Bookworms treatment wins over legacy icon-hiding rules an
  assert.doesNotMatch(read('kids/index.html'),/matchapp-bookworms-crest/);
 });
 
-test('The compact hero preserves both working shortcuts and the existing How it works button',()=>{
+test('The retired Home hero no longer renders the headline or English shortcut buttons',()=>{
  const dom=new JSDOM('<html><body class="page-home"><header class="home-hero">'+
   '<h1 class="home-h1">What should you watch tonight?</h1><p class="home-h1-sub">Pick a mood.</p>'+
   '<button class="ma-how-link" type="button">How it works</button></header>'+
@@ -74,32 +74,20 @@ test('The compact hero preserves both working shortcuts and the existing How it 
   '<article id="questionnaire-box"></article><div class="ma-concierge"></div></body></html>',
   {url:'https://matchapp.tv/',runScripts:'outside-only'});
  const w=dom.window;
- let matchClicks=0,askClicks=0,scrolls=0;
- w.document.getElementById('ma-tab-match').onclick=()=>matchClicks++;
- w.document.getElementById('ma-tab-ask').onclick=()=>askClicks++;
- w.HTMLElement.prototype.scrollIntoView=()=>{scrolls++};
  w.eval(read('home-approved.js'));
  w.document.dispatchEvent(new w.Event('DOMContentLoaded'));
  const hero=w.document.querySelector('.home-hero');
- assert.equal(hero.querySelectorAll('#ma-hero-ctas').length,1,'Hero retains one original shortcut row');
- assert.equal(hero.querySelectorAll('.ma-how-link').length,1,'Do not duplicate or break the existing tour launcher');
- hero.querySelector('#ma-hero-match').click();
- hero.querySelector('#ma-hero-ask').click();
- assert.equal(matchClicks,1);
- assert.equal(askClicks,1);
- assert.equal(scrolls,2);
+ assert.equal(hero.querySelector('#ma-hero-ctas'),null);
+ assert.equal(hero.querySelector('#ma-hero-match'),null);
+ assert.equal(hero.querySelector('#ma-hero-ask'),null);
+ assert.doesNotMatch(read('home-approved.js'),/function mountHero\(/);
  w.close();
  const css=read('home-approved.css');
- const compact=css.slice(css.lastIndexOf('compact adult Home hero'));
- assert.ok(compact.length>900);
- assert.match(compact,/font-size:clamp\(22px,2\.65vw,36px\)!important/);
- assert.match(compact,/#ma-hero-ctas\{/);
- assert.match(compact,/min-height:44px!important/);
- assert.match(compact,/\.home-hero \.ma-how-link/);
- assert.match(compact,/@media\(max-width:600px\)/);
+ assert.match(css,/html body\.page-home \.home-hero\{position:absolute!important;width:1px!important/);
+ assert.doesNotMatch(css,/#ma-hero-ctas\{|#ma-hero-match\{|#ma-hero-ask\{/);
  const html=read('index.html');
  assert.match(html,/\/ebooks\/ebook-matcher\.js\?v=20260926-publishericon2/);
  assert.match(html,/\/ebooks\/ebook-matcher\.css\?v=20260926-publishericon2/);
- assert.match(html,/\/home-approved\.js\?v=20260928-no-dock1/);
- assert.match(read('home-approved.js'),/home-approved\.css\?v=20260928-no-dock1/);
+ assert.match(html,/\/home-approved\.js\?v=20260929-hide-hero/);
+ assert.match(read('home-approved.js'),/home-approved\.css\?v=20260929-hide-hero/);
 });

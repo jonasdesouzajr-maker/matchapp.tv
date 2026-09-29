@@ -1596,9 +1596,10 @@ function appendAssistantBubble(text, results, opts) {
 
     const speak = document.createElement('button');
     speak.className = 'discover-speak';
-    speak.title = 'Read aloud';
-    speak.setAttribute('aria-label', 'Read answer aloud');
-    speak.textContent = '🔊';
+    const playbackLabel = typeof t === 'function' ? t('discover.readAloud') : 'Read answer aloud';
+    speak.title = playbackLabel || 'Read answer aloud';
+    speak.setAttribute('aria-label', playbackLabel || 'Read answer aloud');
+    speak.textContent = '🎙';
     speak.onclick = () => window.readAloud(text, speak);
     row.appendChild(speak);
 

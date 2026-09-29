@@ -121,9 +121,11 @@ test('Home editorial scripts do not preload hundreds of pixels before view',()=>
 });
 
 
-test('Home supports the requested collapsed trending fold and keeps autoplay bounded',()=>{
+test('Top Titles stays unfolded at Home while autoplay remains bounded',()=>{
  const lazy=read('lazy.js'),app=read('app.js'),news=read('latest-news.js'),css=read('matchapp-ia.css');
- assert.match(lazy,/key:'trending'/);
+ assert.doesNotMatch(lazy,/key:'trending'/);
+ assert.match(lazy,/rail\.classList\.add\('lazy-open'\)/);
+ assert.match(lazy,/rail\.previousElementSibling\?\.matches\?\.\('\.lazy-head\[data-fold-key="trending"\]'\)/);
  assert.match(lazy,/function loadFoldState\(\)\{return \{concierge:true,news:true\}\}/);
  assert.match(css,/#trending-rail>h4\{display:none!important\}/);
  assert.match(app,/autoDelay = vp\.id === 'marquee-viewport' \? 1050 : 6500/);
@@ -262,21 +264,9 @@ test('2026-09-21 Home control bar keeps every control and packs it into rows',()
  assert.match(css,/#quota-badge:empty\{display:none!important\}/);
 });
 
-test('2026-09-21 hero headline opens the matcher and scrolls to it',()=>{
- const lazy=read('lazy.js'),css=read('matchapp-ia.css');
- assert.match(lazy,/function mountHeroJump\(\)/);
- assert.match(lazy,/buildToggle\(\);mountAll\(\);apply\(false,false\);mountHeroJump\(\);/);
- // The fold is opened through its own control, so lazy.js stays the single
- // fold owner and the remembered state keeps in step.
- assert.match(lazy,/\.lazy-head\[data-fold-key="concierge"\]/);
- assert.match(lazy,/if\(!section\.classList\.contains\('lazy-open'\)&&head\)head\.click\(\)/);
- assert.match(lazy,/scrollIntoView\(\{behavior:smooth\?'smooth':'auto',block:'start'\}\)/);
- // Keyboard parity and reduced-motion respect.
- assert.match(lazy,/event\.key==='Enter'\|\|event\.key===' '/);
- assert.match(lazy,/prefers-reduced-motion: reduce/);
- assert.match(lazy,/reduce-motion/);
- // Bound to the element, never to markup inside it: i18n rewrites the
- // heading's textContent on every language change.
- assert.doesNotMatch(lazy,/home-h1[^\n]*innerHTML/);
- assert.match(css,/\.home-h1-jump\{[\s\S]*cursor:pointer!important/);
+test('Home hero headline and English CTA row are retired',()=>{
+ const home=read('home-approved.js'),css=read('home-approved.css');
+ assert.doesNotMatch(home,/function mountHero\(|ma-hero-match|ma-hero-ask/);
+ assert.match(css,/html body\.page-home \.home-hero\{position:absolute!important;width:1px!important/);
+ assert.doesNotMatch(css,/#ma-hero-ctas|#ma-hero-match|#ma-hero-ask/);
 });
