@@ -12,9 +12,9 @@ function matching(requested,excluded=[]){
  w.MatchAppCatalogMedia={regionCode:()=>w.__testRegion||'BR'};
  const context=vm.createContext({window:w,document:w.document,CustomEvent:w.CustomEvent,CONTENT_CATALOG:catalog,SESSION_SHOWN:new Set(),isVIP:false,Math,
   isBlockedEntry:()=>false,isSurpriseEligible:entry=>entry.cats.some(c=>['movie','series','limited series','K-drama','novela brasileira','telenovela'].includes(c)),
-  tSafe:key=>key,checkDailyLimit:async()=>{state.charges++;return true;},discoverFromITunes:async()=>null,discoverVerifiedExactTMDB:async()=>null,rememberShownTitle:()=>{},renderResult:result=>{state.rendered=result;},setInterval:()=>1,clearInterval:()=>{},setTimeout:fn=>{fn();return 1;},clearTimeout:()=>{},requestAnimationFrame:fn=>{fn();return 1;},cancelAnimationFrame:()=>{},console});
+  tSafe:key=>key,matchAllowanceBeforeLookup:async()=>true,checkDailyLimit:async()=>{state.charges++;return true;},discoverFromITunes:async()=>null,discoverVerifiedExactTMDB:async()=>null,rememberShownTitle:()=>{},renderResult:result=>{state.rendered=result;},setInterval:()=>1,clearInterval:()=>{},setTimeout:fn=>{fn();return 1;},clearTimeout:()=>{},requestAnimationFrame:fn=>{fn();return 1;},cancelAnimationFrame:()=>{},console});
  vm.runInContext(functionSource('normCriteria')+functionSource('isSurpriseEligible')+functionSource('entryAllowedForSelection')+functionSource('regionAvailabilityFits')+functionSource('pickFromCatalog')+functionSource('pickRecycledCatalog')+functionSource('pickGuaranteedCatalog'),context);
- vm.runInContext(source.slice(source.indexOf('const MATCH_SOURCE_DEADLINES'),source.indexOf('// THE RENDER ENGINE')),context);
+ vm.runInContext(source.slice(source.indexOf('const MATCH_SOURCE_DEADLINES'),source.indexOf('// Non-spending preflight.'))+source.slice(source.indexOf('window.triggerMatch = async function'),source.indexOf('// THE RENDER ENGINE')),context);
  return {dom,w,context,state};
 }
 
@@ -31,13 +31,13 @@ test('history exhaustion recovers with an exact eligible title when fresh source
  const excluded=catalog.filter(entry=>entry.ratings.includes('all ages family friendly')).map(entry=>entry.title);
  const requested={cat:['movie'],plat:[],mood:[],vibe:[],rating:['all ages family friendly'],decade:[]};
  const {dom,w,state}=matching(requested,excluded);
- try{await w.triggerMatch(false);assert(state.rendered,'exact recovery should avoid a dead end');assert.equal(state.rendered._historyFallback,true,'recycled exact result must be disclosed');assert(w.matchPolicy.matchesCriteria(catalog.find(e=>e.title===state.rendered.title),requested));assert.equal(state.charges,1);}finally{dom.window.close();}
+ try{await w.triggerMatch(false);assert(state.rendered,'exact recovery should avoid a dead end');assert.equal(state.rendered._historyFallback,true,'recycled exact result must be disclosed');assert(w.matchPolicy.matchesCriteria(catalog.find(e=>e.title===state.rendered.title),requested));assert.equal(state.charges,0,'recycled content should not spend a match');}finally{dom.window.close();}
 });
 
 test('account history exhaustion uses exact recovery without weakening selected criteria',async()=>{
  const requested={cat:['movie'],plat:[],mood:['funny'],vibe:[],rating:[],decade:[]};
  const {dom,w,state}=matching(requested,catalog.map(entry=>entry.title));
- try{await w.triggerMatch(false);assert(state.rendered,'exact recovery should still return a result');assert.equal(state.rendered._historyFallback,true);assert(w.matchPolicy.matchesCriteria(catalog.find(e=>e.title===state.rendered.title),requested));assert.equal(state.charges,1);}finally{dom.window.close();}
+ try{await w.triggerMatch(false);assert(state.rendered,'exact recovery should still return a result');assert.equal(state.rendered._historyFallback,true);assert(w.matchPolicy.matchesCriteria(catalog.find(e=>e.title===state.rendered.title),requested));assert.equal(state.charges,0,'recycled content should not spend a match');}finally{dom.window.close();}
 });
 
 test('ordinary matching preserves exact choices when no verifiable candidate exists',async()=>{

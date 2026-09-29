@@ -23,14 +23,14 @@ function ok(object,model='openai/gpt-oss-120b'){
   finish_reason:'stop',message:{content:JSON.stringify(object)}
  }]}),{status:200});
 }
-test('Groq is adult-only and runs between OpenRouter and OpenAI, ahead of Gemini',()=>{
+test('Groq is adult-only and runs after OpenRouter, OpenAI and Gemini',()=>{
  const router=proxy.indexOf('const answer = await callOpenRouterFirst({');
  const groq=proxy.indexOf('const answer = await callGroqBackup({');
  const openai=proxy.indexOf('const answer = await callOpenAIPrimary({');
  const gemini=proxy.indexOf('const routes = [');
- assert.ok(router>0&&groq>router&&openai>groq&&gemini>openai);
+ assert.ok(router>0&&openai>router&&gemini>openai&&groq>gemini);
  assert.match(proxy,/body\?\.kidsMode !== true/);
- assert.match(proxy,/if \(openAiEligible && groqApiKey\)/);
+ assert.match(proxy,/if \(openAiEligible && groqApiKey && Date\.now\(\) < providerDeadline\)/);
  assert.match(proxy,/Deno\.env\.get\("GROQ_API_KEY"\)/);
 });
 test('uses strict schema, supported production model and existing frontend contract',async()=>{

@@ -1,7 +1,7 @@
 const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
 const root=path.join(__dirname,'..'),app=fs.readFileSync(path.join(root,'app.js'),'utf8'),guard=fs.readFileSync(path.join(root,'match-speed.js'),'utf8'),html=fs.readFileSync(path.join(root,'index.html'),'utf8');
 test('stalled discovery expires so the next exact source can be tried',async()=>{
- const code=app.slice(app.indexOf('const MATCH_SOURCE_DEADLINES'),app.indexOf('window.triggerMatch = async function'));
+ const code=app.slice(app.indexOf('const MATCH_SOURCE_DEADLINES'),app.indexOf('// Non-spending preflight.'));
  let scheduled,cleared=false;
  const env={Promise,setTimeout(fn){scheduled=fn;return 9;},clearTimeout(id){assert.equal(id,9);cleared=true;}};
  vm.createContext(env);vm.runInContext(code+';this.bounded=withMatchSourceDeadline;this.limits=MATCH_SOURCE_DEADLINES;',env);
@@ -11,7 +11,7 @@ test('stalled discovery expires so the next exact source can be tried',async()=>
  assert.equal(await promise,null);assert.equal(cleared,true);
 });
 test('fast verified matches do not wait for a ceremonial timer',async()=>{
- const code=app.slice(app.indexOf('const MATCH_SOURCE_DEADLINES'),app.indexOf('window.triggerMatch = async function'));
+ const code=app.slice(app.indexOf('const MATCH_SOURCE_DEADLINES'),app.indexOf('// Non-spending preflight.'));
  const env={Promise,setTimeout(){return 9;},clearTimeout(){}};
  vm.createContext(env);vm.runInContext(code+';this.bounded=withMatchSourceDeadline;',env);
  assert.equal((await env.bounded(()=>({title:'verified'}),50000)).title,'verified');
@@ -26,6 +26,6 @@ test('translation does not hold the match and the source synopsis stays availabl
  assert.match(app,/synopsisEl\.innerText=sanitizeDisplayText\(initialSynopsis/);
 });
 test('late preflight never spends quota after recovery',()=>{
- const trigger=app.slice(app.indexOf('window.triggerMatch = async function'),app.indexOf('// THE RENDER ENGINE'));
+ const trigger=app.slice(app.indexOf('// Non-spending preflight.'),app.indexOf('// THE RENDER ENGINE'));
  assert.match(trigger,/if\(matchRunId!==window\.__matchappMatchRunId\)\{clearInterval\(timerInterval\);return;\}[\s\S]*checkDailyLimit/);
 });

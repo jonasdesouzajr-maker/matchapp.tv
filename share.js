@@ -37,11 +37,14 @@ function nextRewardResetText() {
     return h > 0 ? `${h}h ${m}m` : `${m}m`;
 }
 
-// Server-enforced when signed in (claim_share_reward RPC), local otherwise.
+// Server-enforced when signed in (claim_match_result_share RPC), local otherwise.
 // A reward is real Match currency: it accumulates and stays until a Match uses it.
 async function grantShareReward(sharedTitle = window.globalMatchTitle) {
     if (window.isUserLoggedIn && window.supabaseClient) {
         try {
+            // A result must reach the signed-in owner's server history before
+            // it can count toward a share reward. No fabricated browser titles.
+            await window.matchPolicy?.flush?.();
             const { data, error } = await window.supabaseClient.rpc('claim_match_result_share', { p_title: sharedTitle });
             if (error) throw error;
             if (data && data.granted) {

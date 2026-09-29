@@ -49,7 +49,10 @@
     vp.addEventListener('wheel',function(e){
       if(vp.scrollWidth<=vp.clientWidth+12)return;
       if(Math.abs(e.deltaY)<=Math.abs(e.deltaX))return;
-      vp.scrollLeft+=e.deltaY;
+      // Let the page keep scrolling when this rail is already at its edge.
+      const limit=Math.max(0,vp.scrollWidth-vp.clientWidth);
+      if((e.deltaY<0 && vp.scrollLeft<=1) || (e.deltaY>0 && vp.scrollLeft>=limit-1))return;
+      vp.scrollLeft=Math.max(0,Math.min(limit,vp.scrollLeft+e.deltaY));
       e.preventDefault();
     },{passive:false});
   }

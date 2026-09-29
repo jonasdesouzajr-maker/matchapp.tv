@@ -41,12 +41,12 @@ Deno.serve(async req => {
     else { url.searchParams.set("t", title); if (year) url.searchParams.set("y", String(year)); }
     if (kind) url.searchParams.set("type", kind === "tv" ? "series" : "movie");
     const response = await fetch(url, { signal: AbortSignal.timeout(4000) });
-    if (!response.ok) return json(req, { unavailable: true }, response.status === 429 ? 429 : 503);
+    if (!response.ok) return json(req, { unavailable: true }, response.status === 429 ? 429 : 502);
     const raw = await response.json();
     const result = parseRatings(raw, { imdbId, title: imdbId ? "" : title, kind, year });
     const data = result ? { ...result, source: "OMDb" } : { unavailable: true };
     if (cache.size > 300) cache.clear();
     cache.set(key, { data, expires: Date.now() + (result ? 86_400_000 : 300_000) });
     return json(req, data);
-  } catch { return json(req, { unavailable: true }, 503); }
+  } catch (error) { return json(req, { unavailable: true }, error instanceof DOMException && error.name === 'TimeoutError' ? 504 : 502); }
 });

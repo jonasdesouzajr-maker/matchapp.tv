@@ -7,7 +7,7 @@ const css=fs.readFileSync(path.join(root,'urgent-fixes.css'),'utf8');
 const cinema=fs.readFileSync(path.join(root,'premium-cinema.css'),'utf8');
 
 test('match click paints progress immediately and never delays a verified result just for animation',()=>{
-  assert.match(app,/const PROGRESS_WINDOW_MS = 125000/);
+  assert.match(app,/const PROGRESS_WINDOW_MS = 60000/);
   assert.match(app,/Progress is visual feedback, not a timer/);
   assert.match(app,/body\.classList\.add\('match-searching'\)/);
   assert.doesNotMatch(app,/MIN_WAIT_MS/);

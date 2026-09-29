@@ -3384,7 +3384,14 @@ async function discoverFromITunes(cat, mood, vibe, decade, rating) {
 
     const term = parts.join(' ');
     const media = mediaForCategory(cat);
-    const region=window.MatchAppCatalogMedia?.regionCode?.()||'BR';
+    // Use a saved country when supplied, otherwise only a browser locale
+    // with an actual country suffix; never assume unknown users are Brazilian.
+    const chosenCountry=String(window.localStorage?.getItem('match_user_region')||window.localStorage?.getItem('match_user_country')||'').trim();
+    const locale=String(window.navigator?.language||'').replace('_','-');
+    const countryMatch=/-([A-Za-z]{2})(?:$|-)/.exec(locale);
+    const browserCountry=countryMatch?countryMatch[1].toUpperCase():'';
+    const region=chosenCountry?(window.MatchAppCatalogMedia?.regionCode?.()||browserCountry):browserCountry;
+    const countryParam=region?'&country='+encodeURIComponent(region):'';
     const entity=cat==='music album'?'album':cat==='Spotify single'?'song':
       cat==='podcast'?'podcast':cat==='audiobook'?'audiobook':'';
     const limit=['music','podcast','audiobook'].includes(media)?80:40;
@@ -3394,7 +3401,7 @@ async function discoverFromITunes(cat, mood, vibe, decade, rating) {
     // does have real YouTube entries.
     if (media === 'none') return null;
     try {
-        const res = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(term)}&media=${media}&limit=${limit}&country=${encodeURIComponent(region)}&explicit=No${entity?'&entity='+entity:''}`);
+        const res = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(term)}&media=${media}&limit=${limit}${countryParam}&explicit=No${entity?'&entity='+entity:''}`);
         if (!res.ok) return null;
         const data = await res.json();
         if (!data.results || data.results.length === 0) return null;
@@ -4016,8 +4023,19 @@ async function rankVerifiedCuratedMatch(requested) {
        (wantedFaith||!e.cats.includes('Gospel & Faith'))&&
        entryAllowedForSelection(e,requested.cat));
     if(!eligible.length)return null;
-    const offset=Math.floor(Math.random()*eligible.length);
-    const rotated=eligible.slice(offset).concat(eligible.slice(0,offset));
+    // The AI ranker must receive the same Taste DNA-biased candidate pool as
+    // the ordinary catalog picker on an open-ended Surprise Me request.
+    let candidates=eligible;
+    const openTaste=!normCriteria(requested.cat).length && !normCriteria(requested.mood).length &&
+        !normCriteria(requested.vibe).length && !normCriteria(requested.genre).length;
+    if(openTaste && typeof window.tasteBiasPool==='function'){
+        try{
+            const biased=window.tasteBiasPool(eligible,'any','any');
+            if(Array.isArray(biased)&&biased.length)candidates=biased;
+        }catch(_){/* User criteria still take precedence. */}
+    }
+    const offset=Math.floor(Math.random()*candidates.length);
+    const rotated=candidates.slice(offset).concat(candidates.slice(0,offset));
     const country=window.MatchAppCatalogMedia?.regionCode?.()||'';
     const shortlist=rotated.slice(0,20).sort((a,b)=>
        Number(b.countryCode===country)-Number(a.countryCode===country));
@@ -4339,6 +4357,8 @@ function pruneUnstockedOptions() {
 // but remains bounded: a stalled provider cannot strand Match indefinitely.
 const MATCH_SOURCE_DEADLINES=Object.freeze({tmdb:50000,itunes:15000,ai:50000});
 async function withMatchSourceDeadline(work,ms){
+    // An exhausted overall budget must not launch another expensive request.
+    if (!Number.isFinite(ms) || ms <= 0) return null;
     let timer;
     try{
         return await Promise.race([
@@ -4347,6 +4367,47 @@ async function withMatchSourceDeadline(work,ms){
         ]);
     }finally{if(timer!==undefined)clearTimeout(timer);}
 }
+
+// Non-spending preflight. The server's atomic consume step still runs only
+// once a real result has passed source and history validation.
+async function matchAllowanceBeforeLookup(action='match') {
+    const guestStatus=()=>{
+        const used=localStorage.getItem('match_lastDate')===new Date().toLocaleDateString()
+            ? Math.max(0,parseInt(localStorage.getItem('match_dailyCount')||'0',10)||0) : 0;
+        const extras=action==='ask_ai'
+            ? Math.max(0,parseInt(localStorage.getItem('match_guestBonusAiPrompts_v1')||'0',10)||0)
+            : guestMatchBalance();
+        const status={authenticated:false,anon:true,used,limit:ANON_DAILY_LIMIT,
+            remaining:Math.max(0,ANON_DAILY_LIMIT-used),purchased_matches:guestMatchBalance(),
+            credits:action==='ask_ai'?extras:0};
+        lastQuotaStatus=status;updateQuotaBadge(status);
+        if(status.remaining>0||extras>0)return true;
+        showQuotaMessage('anon',status,action);return false;
+    };
+    if(!supabaseClient)return guestStatus();
+    try {
+        const session=window.ensureCompactMatchSession
+            ? await window.ensureCompactMatchSession() : await supabaseClient.auth.getSession();
+        if(session.error)throw session.error;
+        if(!session.data?.session)return guestStatus();
+        const {data,error}=await supabaseClient.rpc('match_status');
+        if(error||!data?.authenticated)throw error||new Error('Allowance status unavailable');
+        lastQuotaStatus=data;updateQuotaBadge(data);
+        // Match packs cannot pay for Ask AI: only included actions or AI credits can.
+        // Keep these balances separate before any provider request is made.
+        const usable=Math.max(0,Number(data.remaining)||0)+
+            (action==='ask_ai'?Math.max(0,Number(data.credits)||0)
+                :Math.max(0,Number(data.purchased_matches)||0));
+        if(usable>0)return true;
+        showQuotaMessage(data.limit>=50?'business':data.limit>=10?'vip':'registered',data,action);
+        return false;
+    }catch(error){
+        console.warn('Match allowance preflight unavailable:',error?.message||error);
+        window.showToast?.(window.t?.('credits.retry')||'Could not verify your allowance. Please try again.',true);
+        return false;
+    }
+}
+window.matchAllowanceBeforeLookup=matchAllowanceBeforeLookup;
 
 window.triggerMatch = async function(isSpecificSearch = false) {
     const matchRunId=(Number(window.__matchappMatchRunId)||0)+1;
@@ -4360,6 +4421,25 @@ window.triggerMatch = async function(isSpecificSearch = false) {
         return false;
     }
     await window.matchPolicy?.ready();
+    if(matchRunId!==window.__matchappMatchRunId)return;
+    const typedAtStart=(document.getElementById('specific-search-input')?.value||'').trim();
+    if(isSpecificSearch&&!typedAtStart){window.showToast?.('Enter a title to search.');return false;}
+    // An exact saved and source-verified catalogue lookup is a free retrieval.
+    const savedKey=window.matchPolicy?.key?.(typedAtStart)||'';
+    let previouslySaved=false;
+    if(isSpecificSearch&&savedKey){
+        const hasSaved=rows=>Array.isArray(rows)&&rows.some(x=>window.matchPolicy.key(x?.title||x)===savedKey);
+        try{previouslySaved=hasSaved(typeof savedList!=='undefined'?savedList:[])||
+            hasSaved(JSON.parse(localStorage.getItem('match_savedList')||'[]'))||
+            (window.matchPolicy?.history?.()||[]).some(x=>
+                window.matchPolicy.key(x?.title)===savedKey && String(x.action||'').toLowerCase()==='save');}
+        catch(_){previouslySaved=false;}
+    }
+    const freeSavedSpecific=previouslySaved &&
+        typeof CONTENT_CATALOG!=='undefined' && CONTENT_CATALOG.some(x=>window.matchPolicy.key(x.title)===savedKey);
+    if(!freeSavedSpecific && !(await matchAllowanceBeforeLookup('match'))){
+        window.__matchappMatchPhase='idle';return false;
+    }
     if(matchRunId!==window.__matchappMatchRunId)return;
     const requested = window.getMatchCriteria?.() || {cat:[document.getElementById('q-category')?.value],plat:[document.getElementById('q-platform')?.value],genre:[document.getElementById('q-genre')?.value],mood:[document.getElementById('q-mood')?.value],vibe:[document.getElementById('q-vibe')?.value],rating:[document.getElementById('q-rating')?.value],decade:[document.getElementById('q-decade')?.value]};
     const wantedGenres = normCriteria(requested.genre);
@@ -4401,9 +4481,11 @@ window.triggerMatch = async function(isSpecificSearch = false) {
     // immediately enters the verification chain.
     await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
     const startTime = Date.now();
+    const sourceDeadline=startTime+60000;
+    const sourceMs=limit=>Math.min(limit,Math.max(0,sourceDeadline-Date.now()));
     // Progress is visual feedback, not a timer. Never hold a verified result
     // just to finish an animation.
-    const PROGRESS_WINDOW_MS = 125000;
+    const PROGRESS_WINDOW_MS = 60000;
     const pBar = document.getElementById('ai-progress-bar');
     const pctLabel = document.getElementById('meter-pct');
     const headline = document.getElementById('loading-headline');
@@ -4445,7 +4527,7 @@ window.triggerMatch = async function(isSpecificSearch = false) {
          'Classical Music','podcast','audiobook','News','Sports'].includes(cat));
     let preflight = null;
     if(!isSpecificSearch && window.MatchAppAIRank?.rank){
-        try{preflight=await withMatchSourceDeadline(()=>rankVerifiedCuratedMatch(requested),45000);}
+        try{preflight=await withMatchSourceDeadline(()=>rankVerifiedCuratedMatch(requested),sourceMs(45000));}
         catch(_){preflight=null;}
     }
     if(!isSpecificSearch && !preflight){
@@ -4456,17 +4538,17 @@ window.triggerMatch = async function(isSpecificSearch = false) {
     // If the curated shelf is exhausted, request OpenAI-led proposals first;
     // independent TMDB lookup verifies every suggested title before display.
     if (!isSpecificSearch && !preflight && !specialistTopic && typeof aiProposedVerifiedExact === 'function') {
-        try { preflight=await withMatchSourceDeadline(()=>aiProposedVerifiedExact(requested),MATCH_SOURCE_DEADLINES.ai); }
+        try { preflight=await withMatchSourceDeadline(()=>aiProposedVerifiedExact(requested),sourceMs(MATCH_SOURCE_DEADLINES.ai)); }
         catch(_){preflight=null;}
     }
     // A source-first TMDB search remains the mandatory independent fallback.
     if (!isSpecificSearch && !preflight && !specialistTopic) {
-        try { preflight = await withMatchSourceDeadline(()=>discoverVerifiedExactTMDB(requested),MATCH_SOURCE_DEADLINES.tmdb); } catch (_) { preflight = null; }
+        try { preflight = await withMatchSourceDeadline(()=>discoverVerifiedExactTMDB(requested),sourceMs(MATCH_SOURCE_DEADLINES.tmdb)); } catch (_) { preflight = null; }
     }
     // iTunes is a real-source fallback only when no third-party platform,
     // source genre or blocked-source filter needs verification.
     if (!isSpecificSearch && !preflight && !normCriteria(requested.plat).length && !wantedGenres.length && !blockedGenres.length && !blockedCountries.length) {
-        try { preflight = await withMatchSourceDeadline(()=>discoverFromITunes(requested.cat,requested.mood,requested.vibe,requested.decade,requested.rating),MATCH_SOURCE_DEADLINES.itunes); }
+        try { preflight = await withMatchSourceDeadline(()=>discoverFromITunes(requested.cat,requested.mood,requested.vibe,requested.decade,requested.rating),sourceMs(MATCH_SOURCE_DEADLINES.itunes)); }
         catch (_) { preflight = null; }
     }
     // An external result never gets to override a topic picked by the user.
@@ -4495,7 +4577,7 @@ window.triggerMatch = async function(isSpecificSearch = false) {
         window.showToast?.('No verified exact title is available for these choices right now. Try again, or change Vibe, Era, or Platform.');
         return;
     }
-    const alreadySeenSpecific = isSpecificSearch && window.matchPolicy?.known().has(window.matchPolicy.key(typed));
+    const alreadySeenSpecific = isSpecificSearch && !freeSavedSpecific && window.matchPolicy?.known().has(window.matchPolicy.key(typed));
     if (isSpecificSearch && !typed.trim()) {
         clearInterval(timerInterval);
         document.body.classList.remove('match-searching');
@@ -4513,18 +4595,6 @@ window.triggerMatch = async function(isSpecificSearch = false) {
         if (form) { form.style.display='block'; form.scrollIntoView({behavior:'smooth',block:'center'}); }
         return;
     }
-    window.__matchappMatchPhase='quota';
-    if (!(await checkDailyLimit())) {
-        clearInterval(timerInterval);
-        document.body.classList.remove('match-searching');
-        if (loadBox) loadBox.style.display='none';
-        if (resultBox) resultBox.style.display='none';
-        if (isSpecificSearch) {
-            if (sBox) sBox.style.display='block';
-        } else if (qBox) qBox.style.display='block';
-        return;
-    }
-    if(matchRunId!==window.__matchappMatchRunId){clearInterval(timerInterval);return;}
     window.lastMatchWasSpecificSearch = isSpecificSearch;
     
     let promptText = "";
@@ -4586,7 +4656,8 @@ window.triggerMatch = async function(isSpecificSearch = false) {
                     platformVerified: false
                 };
             } catch (err) {
-                matchResult = { title: typedTitle, synopsis: "Here's your title — verified viewing options will appear below when available.", platform: "any", platformVerified: false };
+                // No fabricated result and no credit spend for an unsuccessful search.
+                matchResult = null;
             }
         }
     } else {
@@ -4631,7 +4702,7 @@ window.triggerMatch = async function(isSpecificSearch = false) {
         && matchResult._historyFallback === true
         && (matchResult.source === 'catalog-recycle' || matchResult.source === 'catalog-guaranteed-recycle'));
     const resultWasKnown = !!(matchResult
-        && !intentionalHistoryFallback
+        && !intentionalHistoryFallback && !freeSavedSpecific
         && window.matchPolicy?.known().has(window.matchPolicy.key(matchResult.title)));
     if (!matchResult || resultWasKnown) {
         clearInterval(timerInterval);
@@ -4639,9 +4710,23 @@ window.triggerMatch = async function(isSpecificSearch = false) {
         if (loadBox) loadBox.style.display='none';
         if (typeof window.goToQuestionnaire === 'function') window.goToQuestionnaire();
         else if (qBox) qBox.style.display='block';
-        window.showToast(tSafe('polish.inHistory'));
+        window.showToast(!matchResult && isSpecificSearch ? "Couldn't verify this title. No Match was used." : tSafe('polish.inHistory'));
         return;
     }
+    // Charge only after a usable title has passed validation. Reused titles
+    // and explicit retrieval of a saved, verified title are free.
+    window.__matchappMatchPhase='quota';
+    if (!intentionalHistoryFallback && !freeSavedSpecific && !(await checkDailyLimit())) {
+        clearInterval(timerInterval);
+        document.body.classList.remove('match-searching');
+        if (loadBox) loadBox.style.display='none';
+        if (resultBox) resultBox.style.display='none';
+        if (isSpecificSearch) {
+            if (sBox) sBox.style.display='block';
+        } else if (qBox) qBox.style.display='block';
+        return;
+    }
+    if(matchRunId!==window.__matchappMatchRunId){clearInterval(timerInterval);return;}
     // Do not remember the title or fire matchapp:newmatch until the result
     // card is actually on screen. rememberShownTitle writes match_recentTitles,
     // which known() reads, and a premature newmatch lets other modules hide

@@ -238,11 +238,40 @@
     }
     return { ...titled, cats, moods, synopsis: titled.synopsis || '', platform: titled.platform || '' };
   }
+  // Genre-specific offline answers must be source-grounded, never arbitrary
+  // first rows from the catalogue. No inferred genre = no offline claim.
+  const OFFLINE_GENRES = Object.freeze({
+    thriller:/\bthrillers?|suspense|suspenseful|suspenso\b/i,
+    action:/\baction|a[cç][aã]o|acci[oó]n\b/i,
+    scifi:/\bsci[ -]?fi|science fiction|fic[cç][aã]o cient[ií]fica|ciencia ficci[oó]n\b/i,
+    fantasy:/\bfantasy|fantasia|fant[aá]stic[oa]\b/i,
+    crime:/\bcrime|criminal|policial\b/i,
+    mystery:/\bmystery|mist[eé]rio|misterio\b/i,
+    animation:/\banimat(?:ion|ed)|anima[cç][aã]o|animaci[oó]n\b/i,
+    anime:/\banime\b/i
+  });
+  function matchingOfflineGenre(entry, genre) {
+    if(!genre)return true;
+    const genres=values(entry.genres).concat(values(entry.genre),values(entry.cats),values(entry.type));
+    const metadata=genres.join(' ');
+    const description=String(entry.synopsis||entry.overview||'');
+    const re=OFFLINE_GENRES[genre];
+    // A synopsis can explicitly describe a genre, but vague mood or a title
+    // alone cannot turn an unrelated drama into an action or thriller film.
+    if(genre==='anime')return /\banime\b/i.test(metadata);
+    if(genre==='animation')return /\banimation|animated|anime\b/i.test(metadata);
+    return !!re&&(re.test(metadata)||re.test(description));
+  }
   function intentFromText(text) {
     const q = String(text || '');
     const families = new Set();
     const moods = [];
     const cats = [];
+    let requestedGenre = null;
+    const normalized = q.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+    for (const [genre,re] of Object.entries(OFFLINE_GENRES)) {
+      if(re.test(normalized)){ requestedGenre = genre; break; }
+    }
     if (COMEDY_STRONG.test(q) || /\b(funny|hilarious|comédia|sitcom|stand-?up|laugh(?:s|ter)?|engraçad)/i.test(q)) {
       families.add('comedy'); moods.push('funny');
     }
@@ -256,7 +285,7 @@
     if (/\b(documentar(?:y|ies)|documentário)\b/i.test(q)) { families.add('documentary'); cats.push('documentary'); }
     if (/\b(kids?|children|infantil|family[- ]friendly)\b/i.test(q)) { families.add('kids'); cats.push('kids'); }
     return {
-      families, moods, cats,
+      families, moods, cats, requestedGenre,
       asCriteria() { return { mood: moods.slice(), cat: cats.slice(), plat: [], vibe: [], rating: [], decade: [] }; }
     };
   }
@@ -314,9 +343,16 @@
   }
   function fitsQuestion(item, question) {
     const intent = question && question.families ? question : intentFromText(question);
-    if (!intent.families || !intent.families.size) return !!(item && item.title);
     const entry = asEntry(item);
     if (!entry || !entry.title) return false;
+    if (intent.requestedGenre && !matchingOfflineGenre(entry,intent.requestedGenre)) return false;
+    // Unrecognized explicit genre selectors cannot silently broaden into an
+    // arbitrary drama when the offline catalogue has no known match.
+    const explicitGenre = String(question||'').match(/\bgenre\s*[:=]\s*([\p{L}-]+)/iu);
+    if(explicitGenre && !Object.values(OFFLINE_GENRES).some(re=>re.test(explicitGenre[1])) &&
+       !COMEDY_STRONG.test(explicitGenre[1]) && !HORROR_RE.test(explicitGenre[1]) &&
+       !ROMANCE_RE.test(explicitGenre[1]) && !DRAMA_STRONG.test(explicitGenre[1])) return false;
+    if (!intent.families || !intent.families.size) return true;
     const allowMix = intent.families.has('comedy') && intent.families.has('drama');
     return genreFits(entry, intent.asCriteria ? intent.asCriteria() : { mood: intent.moods, cat: intent.cats }, { allowMix, families: intent.families });
   }
