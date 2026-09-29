@@ -22,7 +22,7 @@ html body.page-home:not(.tv-mode) :is(.lazy-head[data-fold-key],#latest-news>sum
 }
 html body.page-home:not(.tv-mode) :is(.lazy-head.is-open,#latest-news[open]>summary,#premiere-disclosure[open]>summary,#weekly-pick-disclosure[open]>summary,#global-events>.global-events-fold[open]>.global-events-summary,#swifties-spotify .swifties-fold[aria-expanded="true"],#ebook-matcher-root .ebook-fold[open]>summary,#cooking-home[open]>summary)::after{transform:rotate(180deg)!important}
 html body.page-home:not(.tv-mode) :is(.lazy-head[data-fold-key],#latest-news>summary,#premiere-disclosure>summary,#weekly-pick-disclosure>summary,#global-events>.global-events-fold>.global-events-summary,#swifties-spotify .swifties-fold,#ebook-matcher-root .ebook-fold>summary,#cooking-home>summary)> :is(span,h2,h3){grid-column:2!important;grid-row:1!important;min-width:0!important;justify-self:stretch!important;text-align:start!important;margin:0!important}
-html body.page-home:not(.tv-mode) :is(.lazy-head-chevron,.ebook-chevron,.ge-sum-chevron,.ge-sum-chev,.global-events-chevron,.swifties-fold-icon){display:none!important}
+html body.page-home:not(.tv-mode) :is(#ebook-matcher-root .ebook-chevron,#global-events .ge-sum-chev,.lazy-head-chevron,.ge-sum-chevron,.global-events-chevron,.swifties-fold-icon){display:none!important}
 html body.page-home:not(.tv-mode) :is(#cooking-home>summary,#ebook-matcher-root .ebook-fold>summary)::before{content:none!important;display:none!important}
 html body.page-home:not(.tv-mode) #cooking-home>summary>img,
 html body.page-home:not(.tv-mode) #ebook-matcher-root .ebook-fold>summary>.ebook-summary-icon{
