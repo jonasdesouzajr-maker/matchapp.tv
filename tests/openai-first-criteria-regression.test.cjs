@@ -40,9 +40,9 @@ test('provider failover is finite, guarded, reversible and cannot silently chang
   assert.match(openai,/OPENAI_TIMEOUT_MS = 16000/);
   assert.match(openai,/if\s*\(!result\.ok\)/);
   assert.match(openai,/return null;/);
-  assert.match(proxy,/if \(openAiEligible && openRouterApiKey\)/);
-  assert.match(proxy,/if \(openAiEligible && groqApiKey\)/);
-  assert.match(proxy,/if \(openAiEligible && openAiApiKey\)/);
+  assert.match(proxy,/if \(openAiEligible && openRouterApiKey && Date\.now\(\) < providerDeadline\)/);
+  assert.match(proxy,/if \(openAiEligible && groqApiKey && Date\.now\(\) < providerDeadline\)/);
+  assert.match(proxy,/if \(openAiEligible && openAiApiKey && Date\.now\(\) < providerDeadline\)/);
   assert.doesNotMatch(proxy,/TEMPORARY OWNER ROUTING/);
   assert.match(proxy,/FREE_MODEL_CHAIN\.map/);
   assert.match(proxy,/MODEL_CHAIN\.map/);
