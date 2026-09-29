@@ -199,11 +199,17 @@ function detectAudioIntent(q: string): boolean {
 function buildDiscoverPrompt(question: string, langCode: string, country: string, age: string, history?: Array<{role: string, text: string}>, kidsMode = false, childAgeBand = "", nickname = ""): string {
   const lang = LANG_NAMES[langCode] || LANG_NAMES[langCode.split("-")[0]] || "English";
   const intentQuestion=mediaIntentQuestion(question);
-  const cookingIntent = !kidsMode && /\b(recipes?|receitas?|cooking|cookery|culinária|culinaria|cozinhar|recetas?|cocinar|maangchi|panelinha|rita lobo|food wishes|chef john|jamie oliver|bibimbap|omelet|omelette|omelete|scrambled eggs|tomato soup)\b/i.test(intentQuestion);
+  const watchText = intentQuestion.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
+  // A film or a documentary ABOUT cooking is not a recipe question.
+  const watchIntent = /\b(watch|stream|movie|movies|film|films|series|tv|tv shows?|cooking shows?|documentary|documentaries|documentario|documentarios|filme|filmes|serie|series|pelicula|peliculas|assistir|ver|regarder|sehen)\b/i.test(watchText);
+  const cookingIntent = !kidsMode && !watchIntent && /\b(recipes?|receitas?|cooking|cookery|culinaria|cozinhar|recetas?|cocinar|maangchi|panelinha|rita lobo|food wishes|chef john|jamie oliver|bibimbap|omelet|omelette|omelete|scrambled eggs|tomato soup)\b/i.test(watchText);
   const magazineIntent = !kidsMode && (/\b(magazines?|revistas?)\b/i.test(intentQuestion) || /雑誌/u.test(intentQuestion));
   const bookIntent = !kidsMode && detectBookIntent(intentQuestion);
   const audioIntent = !bookIntent && detectAudioIntent(intentQuestion);
-  const visualIntent = !bookIntent && !audioIntent && /\b(movie|film|series|tv|shows?|documentar|anime|cinema|stream|watch|netflix|comedy|funny|laugh|romance|romantic|scary|horror|comfort|mood|drama)\b/i.test(intentQuestion);
+  // Preserve the existing Kids classification exactly; expand adult locale vocabulary.
+  const visualIntent = !bookIntent && !audioIntent && (kidsMode
+    ? /\b(movie|film|series|tv|shows?|documentar|anime|cinema|stream|watch|netflix|comedy|funny|laugh|romance|romantic|scary|horror|comfort|mood|drama)\b/i.test(intentQuestion)
+    : /\b(movie|movies|film|films|series|tv|shows?|documentary|documentaries|documentario|documentarios|anime|cinema|stream|watch|netflix|comedy|funny|laugh|romance|romantic|scary|horror|comfort|mood|drama|filme|filmes|serie|pelicula|peliculas|novela|telenovela|terror|assistir|regarder|sehen|recomiendame)\b/i.test(watchText));
   // A nickname is optional user-controlled display text, not instructions.
   const safeNickname = /^[\p{L}\p{N} .'-]{1,32}$/u.test(nickname.trim()) ? nickname.trim() : "";
   const kidsRules = kidsMode
