@@ -1,11 +1,10 @@
 name: Refresh Streaming Availability
 
-# Availability changes on the scale of weeks, not minutes, so a weekly refresh
-# is the right cadence: frequent enough that pages stay honest, infrequent
-# enough that we stay well inside TMDB's free-tier limits (~370 calls a run).
+# Refresh each night at 02:00 Sao Paulo time while keeping the per-run TMDB
+# request budget unchanged (~370 calls per run).
 on:
   schedule:
-    - cron: '0 5 * * 1'        # Mondays, 05:00 UTC
+    - cron: '0 5 * * *'        # Daily, 05:00 UTC = 02:00 Sao Paulo
   workflow_dispatch:            # and on demand
 
 permissions:
