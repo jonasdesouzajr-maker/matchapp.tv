@@ -316,7 +316,7 @@
     // Bookworms may live inside the foldable Match/Ask stage on modern Home.
     // News is a separate Home section: place it AFTER the entire stage rather
     // than accidentally hiding it in the Match tab when the stage folds.
-    const primaryAction=document.getElementById('ebook-matcher-root')||document.getElementById('questionnaire-box')||document.getElementById('ma-concierge');
+    const primaryAction=document.getElementById('cooking-home')||document.getElementById('ebook-matcher-root')||document.getElementById('questionnaire-box')||document.getElementById('ma-concierge');
     const anchor=primaryAction?.closest?.('#ma-concierge')||primaryAction||premiere;
     if(anchor)anchor.insertAdjacentElement('afterend',section);else main.prepend(section);
 

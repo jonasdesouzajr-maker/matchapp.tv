@@ -12,13 +12,17 @@ test('Home puts its one compact Bookworms matcher IMMEDIATELY below Find what to
  assert.ok(root&&form&&loading);
  assert.equal(doc.querySelectorAll('#ebook-matcher-root').length,1);
  assert.equal(root.previousElementSibling,form,'Bookworms must be directly after the original watch matching field');
- assert.equal(root.nextElementSibling,loading,'Matching loading/result UI follows Bookworms untouched');
+ const cooking=doc.querySelector('#cooking-home');
+ assert.ok(cooking);
+ assert.equal(doc.querySelectorAll('#cooking-home').length,1);
+ assert.equal(root.nextElementSibling,cooking,'Cooking is directly below Bookworms');
+ assert.equal(cooking.nextElementSibling,loading,'Matching loading/result UI follows the requested reading/cooking pair');
  const ask=doc.getElementById('search-box');
  assert.ok(ask,'The unchanged Search/Ask AI card must still exist');
  assert.ok(root.compareDocumentPosition(ask)&doc.defaultView.Node.DOCUMENT_POSITION_FOLLOWING,'Bookworms must NOT be inside or below Ask AI');
  // Latest News is created dynamically. Its only changed line is the mount anchor.
  const news=read('latest-news.js');
- assert.match(news,/const primaryAction=document\.getElementById\('ebook-matcher-root'\)/);
+ assert.match(news,/const primaryAction=document\.getElementById\('cooking-home'\)\|\|document\.getElementById\('ebook-matcher-root'\)/);
  assert.match(news,/anchor\.insertAdjacentElement\('afterend',section\)/);
  assert.match(read('index.html'),/ebooks\/ebook-matcher\.js\?v=/);
 });
@@ -85,7 +89,8 @@ test('Compact adult homepage book matcher follows the original matcher and opens
  const doc=new JSDOM(read('index.html')).window.document;
  const root=doc.querySelector('#ebook-matcher-root'),js=read('ebooks/ebook-matcher.js'),css=read('ebooks/ebook-matcher.css');
  assert.equal(root.previousElementSibling.id,'questionnaire-box');
- assert.equal(root.nextElementSibling.id,'loading-box');
+ assert.equal(root.nextElementSibling.id,'cooking-home');
+ assert.equal(root.nextElementSibling.nextElementSibling.id,'loading-box');
  assert.ok(doc.getElementById('questionnaire-box').compareDocumentPosition(root)&doc.defaultView.Node.DOCUMENT_POSITION_FOLLOWING);
  assert.ok(js.includes("const initiallyOpen=!(document.body.classList.contains('page-home')||location.pathname==='/'||location.pathname==='/index.html')||location.hash==='#ebook-matcher-root'"));
  assert.ok(js.includes("return '<details class=\"ebook-fold\"'+(initiallyOpen?' open':'')+'><summary>"));
