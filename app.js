@@ -4841,6 +4841,13 @@ async function hydrateTitleFacts(selected, hints) {
     if (!selected || !selected.title) return;
 
     hints = hints || {};
+    // Desktop results receive exact movie/TV identity and facts from the
+    // catalogue media layer. TVMaze can describe a same-named show (or an
+    // older work) and overwrite the verified film year, cast or synopsis.
+    // Keep the selected title's immediate hints, then let verified media
+    // replace them. Phone, tablet and Android result hydration is unchanged.
+    const desktopVerifiedFacts = window.matchMedia?.('(min-width: 1180px) and (hover: hover) and (pointer: fine)')?.matches
+        && !document.documentElement.classList.contains('matchapp-android');
 
     // Show what the catalog already knows immediately, so the card is never
     // empty while the network call is in flight.
@@ -4862,6 +4869,8 @@ async function hydrateTitleFacts(selected, hints) {
                          + sanitizeDisplayText(hints.cast.join(', '));
         castEl.style.display = 'block';
     }
+
+    if (desktopVerifiedFacts) return;
 
     let meta = null;
     try { meta = await fetchTitleMeta(selected.title, hints); } catch (e) {}

@@ -122,3 +122,16 @@ html body.page-home #result-box.ma-result-arriving {
 html.reduce-motion body.page-home #result-box.ma-result-arriving {
   animation: none !important;
 }
+
+/* Desktop result facts and official media follow the title and synopsis.
+   Keep these panels inside the same readable column as the text below the
+   poster; the phone, tablet and Android layout is unchanged. */
+@media (min-width: 1180px) and (hover: hover) and (pointer: fine) {
+  html:not(.matchapp-android) body.page-home #result-box
+    :is(#matchapp-main-availability, #matchapp-main-preview) {
+    box-sizing: border-box;
+    width: min(100%, 760px);
+    max-width: 760px;
+    margin: 16px auto;
+  }
+}
