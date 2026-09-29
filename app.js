@@ -3399,12 +3399,28 @@ async function discoverFromITunes(cat, mood, vibe, decade, rating) {
         const data = await res.json();
         if (!data.results || data.results.length === 0) return null;
 
+        const sourceTitle = r => cat==='series' ? (r.collectionName || r.trackName) : (r.trackName || r.collectionName);
         const excluded = new Set([...(window.matchPolicy?.known()||[]),...Array.from(SESSION_SHOWN).map(t=>window.matchPolicy?.key(t)||t)]);
         const seenRecently = new Set(recentTitles);
 
         // Only keep entries that actually have artwork, so covers never come back blank.
         let pool = data.results.filter(r => r.artworkUrl100 && (r.trackName || r.collectionName));
-        pool = pool.filter(r => !excluded.has(window.matchPolicy?.key(r.trackName || r.collectionName)));
+        // Search terms/media parameters are not proof of a result's format.
+        // Never relabel an episode, song or generic TV show as the requested niche.
+        pool = pool.filter(r => {
+            const kind=String(r.kind||''),wrapper=String(r.wrapperType||'');
+            if(cat==='any'||cat==='movie')return kind==='feature-movie';
+            if(cat==='series')return kind==='tv-episode'||wrapper==='collection'&&r.collectionType==='TV Season';
+            if(cat==='short film')return kind==='short-film';
+            if(cat==='documentary')return ['feature-movie','tv-episode'].includes(kind)&&/documentary/i.test(String(r.primaryGenreName||''));
+            if(cat==='podcast')return kind==='podcast';
+            if(cat==='audiobook')return wrapper==='audiobook';
+            if(cat==='music album')return wrapper==='collection'&&r.collectionType==='Album';
+            // iTunes cannot prove a playlist, channel, country-specific drama,
+            // anime origin, limited-series status or stand-up performance.
+            return false;
+        });
+        pool = pool.filter(r => !excluded.has(window.matchPolicy?.key(sourceTitle(r))));
         const ITUNES_GENRE = {
             funny: /comedy|stand.?up/i,
             scary: /horror/i,
@@ -3478,8 +3494,8 @@ async function discoverFromITunes(cat, mood, vibe, decade, rating) {
         if(normCriteria(vibe).length||ratingSet.length)return null;
         // A real iTunes identity with its own original artwork/preview is an
         // approved AI candidate, not permission to make up songs or platforms.
-        const fresh = pool.filter(r => !seenRecently.has(r.trackName || r.collectionName)
-            && !SESSION_SHOWN.has(r.trackName || r.collectionName));
+        const fresh = pool.filter(r => !seenRecently.has(sourceTitle(r))
+            && !SESSION_SHOWN.has(sourceTitle(r)));
         if(!fresh.length)return null;
         pool=fresh;
         let r=null;
@@ -3501,7 +3517,7 @@ async function discoverFromITunes(cat, mood, vibe, decade, rating) {
             }
         }
         if(!r)r=pool[Math.floor(Math.random()*pool.length)];
-        const name = r.trackName || r.collectionName;
+        const name = sourceTitle(r);
         const year = r.releaseDate ? String(r.releaseDate).substring(0, 4) : '';
 
         // iTunes' Search API has no concept of third-party platform availability
@@ -3516,7 +3532,7 @@ async function discoverFromITunes(cat, mood, vibe, decade, rating) {
                 `${year ? year + ' — ' : ''}${r.primaryGenreName || 'A great pick'}${r.artistName ? ', from ' + r.artistName : ''}.`,
             platform: 'any',
             platformVerified: false,
-            cats: cat&&cat!=='any'?[cat]:[],
+            cats: cat&&cat!=='any'?[cat]:['movie'],
             source: 'itunes-live',
             _meta: {
                 artwork: upgradeArtwork(r.artworkUrl100),
@@ -3609,18 +3625,28 @@ function sourceRatingFits(cert,wanted){
     };
     return wanted.some(w=>(groups[w]||[]).some(x=>c===x||c.startsWith(x+'/')));
 }
-function categoryFitsVerified(kind,genres,countries,wanted){
+function categoryFitsVerified(kind,genres,countries,wanted,details={}){
+    if(!['movie','tv'].includes(kind))return false;
     if(!wanted.length)return true;
     const gs=new Set(genres),cs=new Set(countries);
     return wanted.some(cat=>{
       if(cat==='movie')return kind==='movie';
       if(cat==='series')return kind==='tv';
       if(cat==='documentary')return gs.has('Documentary');
-      if(cat==='stand-up comedy special')return kind==='movie'&&gs.has('Comedy');
+      // Comedy alone does not establish a filmed stand-up performance.
+      // Use the curated stand-up catalogue until the source supplies that proof.
+      if(cat==='stand-up comedy special')return false;
       if(cat==='reality show')return kind==='tv'&&gs.has('Reality');
-      if(cat==='short film')return kind==='movie';
+      if(cat==='short film')return kind==='movie'&&Number(details?.runtimeMinutes)>0&&Number(details.runtimeMinutes)<40;
       if(cat==='anime')return gs.has('Animation')&&cs.has('JP');
-      const required=COUNTRY_CATEGORY_CODES[cat];if(required)return required.some(x=>cs.has(x));
+      if(['K-drama','C-drama','J-drama','Turkish dizi'].includes(cat))
+          return kind==='tv'&&gs.has('Drama')&&(COUNTRY_CATEGORY_CODES[cat]||[]).some(x=>cs.has(x));
+      if(cat==='novela brasileira'||cat==='telenovela')
+          return kind==='tv'&&gs.has('Soap')&&(COUNTRY_CATEGORY_CODES[cat]||[]).some(x=>cs.has(x));
+      // Country alone cannot prove Hindi-language Bollywood cinema.
+      if(cat==='Bollywood')return false;
+      const required=COUNTRY_CATEGORY_CODES[cat];
+      if(required)return kind==='movie'&&required.some(x=>cs.has(x));
       return false;
     });
 }
@@ -3687,7 +3713,7 @@ async function discoverVerifiedExactTMDB(requested){
       if(genres.some(g=>prefs.genres.has(String(g).toLowerCase())))continue;
       if(realGenres.length&&!genres.some(g=>realGenres.includes(g)))continue;
       if(!moodFitsVerified(mood,genres,d?.overview||base.overview||''))continue;
-      if(!categoryFitsVerified(base.kind,genres,countries,cat))continue;
+      if(!categoryFitsVerified(base.kind,genres,countries,cat,d))continue;
       if(decade.length&&!decade.some(dec=>{const s=Number(String(dec).match(/\d{4}/)?.[0]);const y=Number(d?.year||base.year);return s&&y>=s&&y<s+10;}))continue;
       if(d && !sourceRatingFits(d.contentRating,rating))continue;
       if(!d && rating.length)continue;
@@ -3710,7 +3736,7 @@ async function discoverVerifiedExactTMDB(requested){
         countryCode:countries[0]||'',country:countries[0]||'',
         synopsis:String(d?.overview||base.overview||'').trim(),
         platform:verifiedPlatform,platformVerified:platform.length>0,
-        cats:cat.length?cat:[base.kind==='movie'?'movie':'series'],
+        cats:cat.length?cat.filter(c=>categoryFitsVerified(base.kind,genres,countries,[c],d)):[base.kind==='movie'?'movie':'series'],
         moods:mood,vibes:vibe,ratings:rating,source:'tmdb-exact-live',
         _tmdbId:base.tmdbId,_tmdbKind:base.kind,
         // Discovery already returned artwork for this exact numeric TMDB
@@ -3777,7 +3803,7 @@ async function aiProposedVerifiedExact(requested){
         if(realGenres.length&&!genres.some(g=>realGenres.includes(g)))continue;
         const mappable=mood.filter(m=>(MOOD_SOURCE_GENRES[m]||[]).length);
         if(mappable.length&&!moodFitsVerified(mappable,genres,d.overview||base.overview||''))continue;
-        if(!categoryFitsVerified(base.kind,genres,countries,cat))continue;
+        if(!categoryFitsVerified(base.kind,genres,countries,cat,d))continue;
         if(decade.length&&!decade.some(dec=>{const s=Number(String(dec).match(/\d{4}/)?.[0]);const y=Number(d.year||base.year);return s&&y>=s&&y<s+10;}))continue;
         if(!sourceRatingFits(d.contentRating,rating))continue;
         let verifiedPlatform='any';
@@ -3793,7 +3819,7 @@ async function aiProposedVerifiedExact(requested){
             countryCode:countries[0]||'',country:countries[0]||'',
             synopsis:String(d.overview||base.overview||'').trim(),
             platform:verifiedPlatform,platformVerified:platform.length>0,
-            cats:cat.length?cat:[base.kind==='movie'?'movie':'series'],
+            cats:cat.length?cat.filter(c=>categoryFitsVerified(base.kind,genres,countries,[c],d)):[base.kind==='movie'?'movie':'series'],
             moods:mood,vibes:vibe,ratings:rating,source:'tmdb-exact-live',
             _tmdbId:base.tmdbId,_tmdbKind:base.kind,
             // This title has already been verified against this exact TMDB
@@ -4564,21 +4590,9 @@ window.triggerMatch = async function(isSpecificSearch = false) {
             }
         }
     } else {
-        // Read the full ticked SET per field, not one value. getMatchCriteria
-        // is installed by criteria.js; the single-value fallback keeps the
-        // matcher working if that file fails to load for any reason, rather
-        // than leaving the form inert.
-        const picked = (typeof window.getMatchCriteria === 'function')
-            ? window.getMatchCriteria()
-            : {
-                cat:    [document.getElementById('q-category')?.value].filter(v => v && v !== 'any'),
-                plat:   [document.getElementById('q-platform')?.value].filter(v => v && v !== 'any'),
-                genre:  [document.getElementById('q-genre')?.value].filter(v => v && v !== 'any'),
-                mood:   [document.getElementById('q-mood')?.value].filter(v => v && v !== 'any'),
-                vibe:   [document.getElementById('q-vibe')?.value].filter(v => v && v !== 'any'),
-                rating: [document.getElementById('q-rating')?.value].filter(v => v && v !== 'any'),
-                decade: [document.getElementById('q-decade')?.value].filter(v => v && v !== 'any')
-              };
+        // Describe the same criteria snapshot used to verify this result;
+        // another control may have changed while source requests were pending.
+        const picked = requested;
 
         let cat = picked.cat, plat = picked.plat, genre = picked.genre, mood = picked.mood,
             vibe = picked.vibe, rating = picked.rating, decade = picked.decade;
