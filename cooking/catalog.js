@@ -15,7 +15,12 @@ const recipes=[
  {id:'omelete',channelId:'panelinha',title:'Omelete · Panelinha',url:'https://panelinha.com.br/receita/omelete',image:'https://i.panelinha.com.br/i1/bk-7046-omelete.webp',description:'Panelinha’s written omelet recipe, with ingredient amounts and step-by-step instructions at the original source.',tags:'omelet omelette omelete eggs ovos brazil brasileira'}
 ];
 function normalize(s){return String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();}
-function isCooking(q){return /\b(recipes?|receitas?|cooking|cookery|culinaria|cozinhar|recetas?|cocinar|maangchi|panelinha|rita lobo|food wishes|chef john|jamie oliver|bibimbap|omelet|omelette|omelete|scrambled eggs|tomato soup)\b/.test(normalize(q));}
+function isCooking(q){
+ const text=normalize(q);
+ // A film, series or documentary ABOUT cooking is still a watch request.
+ if(/\b(watch|stream|shows?|series|movies?|films?|documentar(?:y|ies|ios?)|assistir|ver|filmes?|series?|documentarios?|peliculas?)\b/.test(text))return false;
+ return /\b(recipes?|receitas?|cooking|cookery|culinaria|cozinhar|recetas?|cocinar|maangchi|panelinha|rita lobo|food wishes|chef john|jamie oliver|bibimbap|omelet|omelette|omelete|scrambled eggs|tomato soup)\b/.test(text);
+}
 function find(q,kind='recipes'){
  const words=normalize(q).split(/[^a-z0-9]+/).filter(w=>w.length>2 && !['the','and','for','with','how','can','make','recipe','recipes','receita','receitas','cooking','channel','channels','uma','para','com','como','quero','cook','find','from'].includes(w));
  const pool=kind==='channels'?channels:recipes;
