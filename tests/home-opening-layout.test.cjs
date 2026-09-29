@@ -53,3 +53,20 @@ test('adult density excludes canonical Kids routes and keeps natural covers and 
  assert.match(read('cooking/index.html'),/href="\/" class="ma-back-button"/);
  assert.match(read('page-shell.js'),/function polishBackLinks\(\)/);
 });
+
+test('Home field spacing uses the same outer edge and Together follows Events',()=>{
+ const css=read('home-fold-grid.css');
+ assert.match(css,/margin:0 0 8px!important;padding:0!important/);
+ assert.match(css,/main\.page-wrapper \.main-layout>\.container/);
+ assert.match(css,/#ebook-matcher-root>\.ebook-fold/);
+ const source=read('matchapp-ia.js');
+ assert.match(source,/if\(events\)after\(events,tg\)/);
+});
+test('Home journey places Together below Events with its original card and sponsor',()=>{
+ const w=new JSDOM('<section class="container"><section id="global-events"></section><div class="lower"></div><button class="lazy-head" data-fold-key="together"></button><a class="tg-entry"></a><div class="ma-together-ad"><ins class="adsbygoogle"></ins></div></section>',{runScripts:'outside-only'}).window;
+ const source=read('matchapp-ia.js'),start=source.indexOf(" const tg=qs('.tg-entry');"),end=source.indexOf(' if(trending){',start);
+ assert.ok(start>0&&end>start);
+ w.eval("const container=document.querySelector('.container'),events=document.querySelector('#global-events');const qs=(s,r=document)=>r.querySelector(s);function after(ref,node){if(ref&&ref.parentNode)ref.parentNode.insertBefore(node,ref.nextSibling)}"+source.slice(start,end));
+ const d=w.document,events=d.querySelector('#global-events'),head=d.querySelector('.lazy-head'),card=d.querySelector('.tg-entry'),ad=d.querySelector('.ma-together-ad');
+ assert.equal(events.nextElementSibling,head);assert.equal(head.nextElementSibling,card);assert.equal(card.nextElementSibling,ad);assert.equal(d.querySelectorAll('ins.adsbygoogle').length,1);w.close();
+});

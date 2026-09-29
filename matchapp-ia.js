@@ -320,6 +320,8 @@ function mountHome(){
  if(ads[2])after(events||swift||anchor,ads[2]);
  const tg=qs('.tg-entry');
  if(tg){
+   // Keep the existing Together field immediately below Events in the Home journey.
+   if(events)after(events,tg);
    tg.hidden=true;
    const togetherAd=qs('.ma-together-ad',container);
    if(togetherAd)after(tg,togetherAd);

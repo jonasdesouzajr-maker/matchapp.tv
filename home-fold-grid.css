@@ -1,18 +1,18 @@
 /* One adult Home fold grid; no request handlers or advertising geometry. */
-html body.page-home:not(.tv-mode) :is(.lazy-head[data-fold-key],#latest-news>summary,#premiere-disclosure>summary,#weekly-pick-disclosure>summary,#global-events>.global-events-fold>.global-events-summary,#swifties-spotify .swifties-fold,#ebook-matcher-root .ebook-fold>summary,#cooking-home>summary){
+html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container :is(.lazy-head[data-fold-key],#latest-news>summary,#premiere-disclosure>summary,#weekly-pick-disclosure>summary,#global-events>.global-events-fold>.global-events-summary,#swifties-spotify .swifties-fold,#ebook-matcher-root .ebook-fold>summary,#cooking-home>summary){
  display:grid!important;grid-template-columns:38px minmax(0,1fr) 34px!important;
  align-items:center!important;justify-content:stretch!important;gap:10px!important;
  width:100%!important;max-width:none!important;box-sizing:border-box!important;
  min-height:58px!important;height:auto!important;margin:0!important;padding:8px 10px!important;
  text-align:start!important;position:relative!important;list-style:none!important;
 }
-html body.page-home:not(.tv-mode) :is(.lazy-head[data-fold-key],#latest-news>summary,#premiere-disclosure>summary,#weekly-pick-disclosure>summary,#global-events>.global-events-fold>.global-events-summary,#swifties-spotify .swifties-fold,#ebook-matcher-root .ebook-fold>summary,#cooking-home>summary)::-webkit-details-marker{display:none!important}
-html body.page-home:not(.tv-mode) :is(.lazy-head[data-fold-key],#latest-news>summary,#premiere-disclosure>summary,#weekly-pick-disclosure>summary,#global-events>.global-events-fold>.global-events-summary,#swifties-spotify .swifties-fold,#ebook-matcher-root .ebook-fold>summary,#cooking-home>summary)::before{
+html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container :is(.lazy-head[data-fold-key],#latest-news>summary,#premiere-disclosure>summary,#weekly-pick-disclosure>summary,#global-events>.global-events-fold>.global-events-summary,#swifties-spotify .swifties-fold,#ebook-matcher-root .ebook-fold>summary,#cooking-home>summary)::-webkit-details-marker{display:none!important}
+html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container :is(.lazy-head[data-fold-key],#latest-news>summary,#premiere-disclosure>summary,#weekly-pick-disclosure>summary,#global-events>.global-events-fold>.global-events-summary,#swifties-spotify .swifties-fold,#ebook-matcher-root .ebook-fold>summary,#cooking-home>summary)::before{
  grid-column:1!important;grid-row:1!important;justify-self:center!important;align-self:center!important;
  width:38px!important;height:38px!important;min-width:0!important;min-height:0!important;
  margin:0!important;padding:0!important;position:static!important;inset:auto!important;transform:none!important;
 }
-html body.page-home:not(.tv-mode) :is(.lazy-head[data-fold-key],#latest-news>summary,#premiere-disclosure>summary,#weekly-pick-disclosure>summary,#global-events>.global-events-fold>.global-events-summary,#swifties-spotify .swifties-fold,#ebook-matcher-root .ebook-fold>summary,#cooking-home>summary)::after{
+html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container :is(.lazy-head[data-fold-key],#latest-news>summary,#premiere-disclosure>summary,#weekly-pick-disclosure>summary,#global-events>.global-events-fold>.global-events-summary,#swifties-spotify .swifties-fold,#ebook-matcher-root .ebook-fold>summary,#cooking-home>summary)::after{
  content:""!important;display:block!important;grid-column:3!important;grid-row:1!important;
  position:static!important;inset:auto!important;align-self:center!important;justify-self:center!important;
  width:34px!important;height:34px!important;min-width:0!important;min-height:0!important;
@@ -20,41 +20,41 @@ html body.page-home:not(.tv-mode) :is(.lazy-head[data-fold-key],#latest-news>sum
  border-radius:11px!important;background:rgba(23,12,39,.26) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='m6 9 6 6 6-6' fill='none' stroke='%23ffe9ad' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 21px 21px no-repeat!important;
  transform:rotate(0deg)!important;transition:transform .18s ease!important;
 }
-html body.page-home:not(.tv-mode) :is(.lazy-head.is-open,#latest-news[open]>summary,#premiere-disclosure[open]>summary,#weekly-pick-disclosure[open]>summary,#global-events>.global-events-fold[open]>.global-events-summary,#swifties-spotify .swifties-fold[aria-expanded="true"],#ebook-matcher-root .ebook-fold[open]>summary,#cooking-home[open]>summary)::after{transform:rotate(180deg)!important}
-html body.page-home:not(.tv-mode) :is(.lazy-head[data-fold-key],#latest-news>summary,#premiere-disclosure>summary,#weekly-pick-disclosure>summary,#global-events>.global-events-fold>.global-events-summary,#swifties-spotify .swifties-fold,#ebook-matcher-root .ebook-fold>summary,#cooking-home>summary)> :is(span,h2,h3){grid-column:2!important;grid-row:1!important;min-width:0!important;justify-self:stretch!important;text-align:start!important;margin:0!important}
-html body.page-home:not(.tv-mode) :is(#ebook-matcher-root .ebook-chevron,#global-events .ge-sum-chev,.lazy-head-chevron,.ge-sum-chevron,.global-events-chevron,.swifties-fold-icon){display:none!important}
-html body.page-home:not(.tv-mode) :is(#cooking-home>summary,#ebook-matcher-root .ebook-fold>summary)::before{content:none!important;display:none!important}
-html body.page-home:not(.tv-mode) #cooking-home>summary>img,
-html body.page-home:not(.tv-mode) #ebook-matcher-root .ebook-fold>summary>.ebook-summary-icon{
+html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container :is(.lazy-head.is-open,#latest-news[open]>summary,#premiere-disclosure[open]>summary,#weekly-pick-disclosure[open]>summary,#global-events>.global-events-fold[open]>.global-events-summary,#swifties-spotify .swifties-fold[aria-expanded="true"],#ebook-matcher-root .ebook-fold[open]>summary,#cooking-home[open]>summary)::after{transform:rotate(180deg)!important}
+html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container :is(.lazy-head[data-fold-key],#latest-news>summary,#premiere-disclosure>summary,#weekly-pick-disclosure>summary,#global-events>.global-events-fold>.global-events-summary,#swifties-spotify .swifties-fold,#ebook-matcher-root .ebook-fold>summary,#cooking-home>summary)> :is(span,h2,h3){grid-column:2!important;grid-row:1!important;min-width:0!important;justify-self:stretch!important;text-align:start!important;margin:0!important}
+html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container :is(#ebook-matcher-root .ebook-chevron,#global-events .ge-sum-chev,.lazy-head-chevron,.ge-sum-chevron,.global-events-chevron,.swifties-fold-icon){display:none!important}
+html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container :is(#cooking-home>summary,#ebook-matcher-root .ebook-fold>summary)::before{content:none!important;display:none!important}
+html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container #cooking-home>summary>img,
+html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container #ebook-matcher-root .ebook-fold>summary>.ebook-summary-icon{
  grid-column:1!important;grid-row:1!important;justify-self:center!important;width:38px!important;height:38px!important;
  margin:0!important;padding:0!important;min-width:0!important;min-height:0!important;object-fit:contain!important;
 }
-html body.page-home:not(.tv-mode) #ebook-matcher-root .ebook-fold>summary .ebook-brand-crest{width:100%!important;height:100%!important;object-fit:contain!important}
-html body.page-home:not(.tv-mode) :is(#cooking-home,#ebook-matcher-root .ebook-fold,#latest-news,#premiere-disclosure,#weekly-pick-disclosure,#swifties-spotify,#global-events>.global-events-fold){
+html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container #ebook-matcher-root .ebook-fold>summary .ebook-brand-crest{width:100%!important;height:100%!important;object-fit:contain!important}
+html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container :is(#cooking-home,#ebook-matcher-root .ebook-fold,#latest-news,#premiere-disclosure,#weekly-pick-disclosure,#swifties-spotify,#global-events>.global-events-fold){
  width:100%!important;max-width:100%!important;box-sizing:border-box!important;padding:0!important;min-height:0!important;margin:10px 0!important;
 }
-html body.page-home:not(.tv-mode) :is(.lazy-head[data-fold-key]){margin:10px 0!important}
-html body.page-home:not(.tv-mode) #latest-news .ma-news-new,
-html body.page-home:not(.tv-mode) #global-events .ge-sum-count{
+html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container :is(.lazy-head[data-fold-key]){margin:10px 0!important}
+html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container #latest-news .ma-news-new,
+html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container #global-events .ge-sum-count{
  grid-column:auto!important;position:absolute!important;right:51px!important;top:50%!important;
  transform:translateY(-50%)!important;margin:0!important;font-size:10px!important;
 }
-html body.page-home:not(.tv-mode) #latest-news .ma-news-new{padding:4px!important;min-width:20px!important}
-html body.page-home:not(.tv-mode) #latest-news .ma-news-new>span{display:none!important}
-html body.page-home:not(.tv-mode) #latest-news[data-has-new="true"] .ma-news-summary-main,
-html body.page-home:not(.tv-mode) #global-events .ge-sum-label{padding-inline-end:32px!important}
-html body.page-home:not(.tv-mode) #ebook-matcher-root .ebook-fold>summary strong{font-size:16px!important;line-height:1.25!important;text-align:start!important}
+html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container #latest-news .ma-news-new{padding:4px!important;min-width:20px!important}
+html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container #latest-news .ma-news-new>span{display:none!important}
+html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container #latest-news[data-has-new="true"] .ma-news-summary-main,
+html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container #global-events .ge-sum-label{padding-inline-end:32px!important}
+html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container #ebook-matcher-root .ebook-fold>summary strong{font-size:16px!important;line-height:1.25!important;text-align:start!important}
 @media(max-width:1024px){
- html body.page-home:not(.tv-mode) :is(.lazy-head[data-fold-key],#latest-news>summary,#premiere-disclosure>summary,#weekly-pick-disclosure>summary,#global-events>.global-events-fold>.global-events-summary,#swifties-spotify .swifties-fold,#ebook-matcher-root .ebook-fold>summary,#cooking-home>summary){
+ html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container :is(.lazy-head[data-fold-key],#latest-news>summary,#premiere-disclosure>summary,#weekly-pick-disclosure>summary,#global-events>.global-events-fold>.global-events-summary,#swifties-spotify .swifties-fold,#ebook-matcher-root .ebook-fold>summary,#cooking-home>summary){
   grid-template-columns:30px minmax(0,1fr) 28px!important;gap:8px!important;min-height:46px!important;
   padding:5px 9px!important;border-radius:14px!important;font-size:14px!important;line-height:1.2!important;
  }
- html body.page-home:not(.tv-mode) :is(.lazy-head[data-fold-key],#latest-news>summary,#premiere-disclosure>summary,#weekly-pick-disclosure>summary,#global-events>.global-events-fold>.global-events-summary,#swifties-spotify .swifties-fold,#ebook-matcher-root .ebook-fold>summary,#cooking-home>summary)::before,html body.page-home:not(.tv-mode) #cooking-home>summary>img,html body.page-home:not(.tv-mode) #ebook-matcher-root .ebook-fold>summary>.ebook-summary-icon{width:30px!important;height:30px!important}
- html body.page-home:not(.tv-mode) :is(.lazy-head[data-fold-key],#latest-news>summary,#premiere-disclosure>summary,#weekly-pick-disclosure>summary,#global-events>.global-events-fold>.global-events-summary,#swifties-spotify .swifties-fold,#ebook-matcher-root .ebook-fold>summary,#cooking-home>summary)::after{width:28px!important;height:28px!important;border-radius:9px!important;background-size:19px 19px!important}
- html body.page-home:not(.tv-mode) #latest-news .ma-news-new,html body.page-home:not(.tv-mode) #global-events .ge-sum-count{right:45px!important}
- html body.page-home:not(.tv-mode) #ebook-matcher-root .ebook-fold>summary strong{font-size:14px!important}
+ html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container :is(.lazy-head[data-fold-key],#latest-news>summary,#premiere-disclosure>summary,#weekly-pick-disclosure>summary,#global-events>.global-events-fold>.global-events-summary,#swifties-spotify .swifties-fold,#ebook-matcher-root .ebook-fold>summary,#cooking-home>summary)::before,html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container #cooking-home>summary>img,html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container #ebook-matcher-root .ebook-fold>summary>.ebook-summary-icon{width:30px!important;height:30px!important}
+ html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container :is(.lazy-head[data-fold-key],#latest-news>summary,#premiere-disclosure>summary,#weekly-pick-disclosure>summary,#global-events>.global-events-fold>.global-events-summary,#swifties-spotify .swifties-fold,#ebook-matcher-root .ebook-fold>summary,#cooking-home>summary)::after{width:28px!important;height:28px!important;border-radius:9px!important;background-size:19px 19px!important}
+ html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container #latest-news .ma-news-new,html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container #global-events .ge-sum-count{right:45px!important}
+ html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container #ebook-matcher-root .ebook-fold>summary strong{font-size:14px!important}
 }
-@media(prefers-reduced-motion:reduce){html body.page-home:not(.tv-mode) :is(.lazy-head[data-fold-key],#latest-news>summary,#premiere-disclosure>summary,#weekly-pick-disclosure>summary,#global-events>.global-events-fold>.global-events-summary,#swifties-spotify .swifties-fold,#ebook-matcher-root .ebook-fold>summary,#cooking-home>summary)::after{transition:none!important}}
+@media(prefers-reduced-motion:reduce){html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container :is(.lazy-head[data-fold-key],#latest-news>summary,#premiere-disclosure>summary,#weekly-pick-disclosure>summary,#global-events>.global-events-fold>.global-events-summary,#swifties-spotify .swifties-fold,#ebook-matcher-root .ebook-fold>summary,#cooking-home>summary)::after{transition:none!important}}
 html.reduce-motion body.page-home :is(.lazy-head[data-fold-key],#latest-news>summary,#premiere-disclosure>summary,#weekly-pick-disclosure>summary,#global-events>.global-events-fold>.global-events-summary,#swifties-spotify .swifties-fold,#ebook-matcher-root .ebook-fold>summary,#cooking-home>summary)::after{transition:none!important}
 
 html body.page-home .lazy-head[data-fold-key="askai"]{
@@ -66,4 +66,20 @@ html body.page-home .lazy-head[data-fold-key="askai"]::before{
  content:""!important;display:block!important;background:var(--ma-fold-icon) center / contain no-repeat!important;
 }
 
-html body.page-home:not(.tv-mode) :is(#ma-ai-entry,#ma-concierge).lazy-foldable:not(.lazy-open){display:none!important}
+html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container :is(#ma-ai-entry,#ma-concierge).lazy-foldable:not(.lazy-open){display:none!important}
+
+/* A single outer edge and eight-pixel rhythm for the adult Home fields. */
+html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container>:is(.lazy-head[data-fold-key],#ebook-matcher-root,#cooking-home,#latest-news,#premiere-disclosure,#weekly-pick-disclosure,#swifties-spotify,#global-events){
+ width:100%!important;max-width:100%!important;min-width:0!important;box-sizing:border-box!important;
+ margin:0 0 8px!important;padding:0!important;align-self:stretch!important;
+}
+html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container :is(#ebook-matcher-root>.ebook-fold,#global-events>.global-events-fold){
+ width:100%!important;max-width:100%!important;box-sizing:border-box!important;margin:0!important;padding:0!important;
+}
+html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container :is(#ebook-matcher-root>.ebook-fold,#cooking-home,#latest-news,#premiere-disclosure,#weekly-pick-disclosure,#swifties-spotify,#global-events>.global-events-fold){
+ border:0!important;
+}
+html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container :is(.lazy-head[data-fold-key],#latest-news>summary,#premiere-disclosure>summary,#weekly-pick-disclosure>summary,#global-events>.global-events-fold>.global-events-summary,#swifties-spotify .swifties-fold,#ebook-matcher-root .ebook-fold>summary,#cooking-home>summary){
+ border:1.5px solid #f9d58bbe!important;border-radius:14px!important;
+}
+html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container #ebook-matcher-root .ebook-fold>summary>.ebook-summary-icon{display:grid!important;}
