@@ -4,7 +4,7 @@
   const host = document.getElementById('res-omdb-ratings');
   if (!host) return;
   let generation = 0;
-  let disabled = false;
+  let disabledUntil = 0;
   const pending = new Map();
   const cache = new Map();
   function clear() { generation++; host.hidden = true; host.replaceChildren(); }
@@ -22,7 +22,7 @@
     const kind = identity?.kind || window.tmdbKindForCats?.(identity?.cats || []);
     const year = Number(identity?.year);
     const imdbId = /^tt\d{7,10}$/.test(identity?.imdbId || '') ? identity.imdbId : '';
-    if (disabled || !['movie','tv'].includes(kind) || (!imdbId && (!title || !Number.isInteger(year))) || !window.supabaseClient?.functions) return;
+    if (Date.now() < disabledUntil || !['movie','tv'].includes(kind) || (!imdbId && (!title || !Number.isInteger(year))) || !window.supabaseClient?.functions) return;
     const body = { title, kind, ...(year >= 1888 && year <= 2100 ? {year} : {}), ...(imdbId ? {imdbId} : {}) };
     const key = JSON.stringify(body);
     let request = cache.get(key);
@@ -37,8 +37,7 @@
       }
     }
     const result = await request;
-    if (result?.data?.unavailable && result.error?.context?.status === 503) disabled = true;
-    if (result?.error?.context?.status === 503) disabled = true;
+    if (result?.error || result?.data?.unavailable) disabledUntil = Date.now() + 120000;
     if (mine !== generation || window.globalMatchTitle !== title || !host.isConnected) return;
     const ratings = result?.data?.ratings;
     if (!ratings || typeof ratings !== 'object') return;
