@@ -82,7 +82,7 @@ test('member share claims demand server history while keeping existing window li
 
 test('Bookworms header uses responsive text instead of the old overflowing SVG',()=>{
   const hub=source('ebooks/index.html');
-  assert(hub.includes('class="ebook-text-wordmark"'));
+  assert(hub.includes('class="ebook-text-wordmark"'), 'Unexpected Bookworms HTML at test time: '+hub.slice(hub.indexOf('ebook-hub-brand'),hub.indexOf('ebook-hub-brand')+380));
   assert(hub.includes('data-ma-brand-ai'));
   assert(!hub.includes('<img class="matchapp-wordmark" src="/assets/brand/matchapp-tv-ai-v2.svg"'));
 });
