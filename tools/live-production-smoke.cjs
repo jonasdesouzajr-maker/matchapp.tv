@@ -4,6 +4,7 @@
 'use strict';
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
 const {chromium}=require('playwright');
+const {fetchDeploymentMarker}=require('./deployment-marker.cjs');
 const base=process.env.MATCHAPP_TEST_BASE||'https://matchapp.tv';
 const dir=path.resolve('artifacts/live-smoke');fs.mkdirSync(dir,{recursive:true});
 const report={base,started:new Date().toISOString(),screens:[],checks:[],errors:[],warnings:[],liveAnswers:[]};
@@ -82,8 +83,7 @@ async function aiQuestion(page,question,expected,label){
 (async()=>{
  let browser;
  try{
-  const deployed=await fetch(base+'/deployment-sha.txt',{signal:AbortSignal.timeout(20000)})
-   .then(r=>{assert(r.ok,'production deployment marker HTTP '+r.status);return r.text()});
+  const deployed=await fetchDeploymentMarker(base);
   record('production deployment marker',/^[0-9a-f]{40}\s*$/i.test(deployed),deployed.trim().slice(0,12));
   browser=await chromium.launch({headless:true,args:['--no-sandbox']});
   for(const device of cases){
