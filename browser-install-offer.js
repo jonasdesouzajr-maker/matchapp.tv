@@ -24,6 +24,7 @@
     // A pending delayed install banner cannot appear on top of an active
     // Ask AI composer after its button was tapped. It can return next visit.
     if(document.body.classList.contains('ma-ask-tab')) return true;
+    if(document.getElementById('ma-ai-entry')?.classList.contains('lazy-open')) return true;
     if(location.pathname!=='/' && location.pathname!=='/index.html') return true;
     if(nativeShell()||standalone()) return true;
     try{if(localStorage.getItem(OPT_OUT)==='1')return true;}catch(_){}

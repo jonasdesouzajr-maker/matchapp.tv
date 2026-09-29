@@ -48,7 +48,7 @@ function mountGeneric(cfg,section){
  const head=document.createElement('button');head.type='button';head.className='lazy-head';head.dataset.foldKey=cfg.key;
  head.innerHTML='<span class="lazy-head-label"></span><span class="lazy-head-chevron" aria-hidden="true">⌄</span>';
  head.querySelector('.lazy-head-label').textContent=labelFor(cfg,section);
- head.addEventListener('click',()=>{const open=!section.classList.contains('lazy-open');setGeneric(section,open);if(!lazyOn())remember(cfg.key,open)});
+ head.addEventListener('click',()=>{const open=!section.classList.contains('lazy-open');setGeneric(section,open);if(open&&cfg.key==='askai')document.querySelector('#ma-install-offer .ma-offer-close')?.click();if(!lazyOn())remember(cfg.key,open)});
  section.parentNode.insertBefore(head,section);
  if(cfg.key==='trending'){const title=section.querySelector(':scope > h4');if(title)title.hidden=true;}
 }
