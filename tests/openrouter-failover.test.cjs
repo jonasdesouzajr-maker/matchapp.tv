@@ -26,9 +26,9 @@ test('adult-only routing has four independent provider tiers',()=>{
  const openai=proxy.indexOf('const answer = await callOpenAIPrimary({');
  const gemini=proxy.indexOf('const routes = [');
  assert.ok(router>0&&openai>router&&gemini>openai&&groq>gemini);
- assert.match(proxy,/if \(openAiEligible && openRouterApiKey\)/);
+ assert.match(proxy,/if \(openAiEligible && openRouterApiKey && Date\.now\(\) < providerDeadline\)/);
  assert.match(proxy,/body\?\.kidsMode !== true/);
- assert.match(proxy,/if \(openAiEligible && groqApiKey\)/);
+ assert.match(proxy,/if \(openAiEligible && groqApiKey && Date\.now\(\) < providerDeadline\)/);
  assert.match(proxy,/if \(!apiKey && !openAiApiKey && !openRouterApiKey && !groqApiKey\)/);
 });
 test('JSON response preserves frontend contract and models are ordered',async()=>{
