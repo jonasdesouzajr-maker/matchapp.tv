@@ -4016,8 +4016,19 @@ async function rankVerifiedCuratedMatch(requested) {
        (wantedFaith||!e.cats.includes('Gospel & Faith'))&&
        entryAllowedForSelection(e,requested.cat));
     if(!eligible.length)return null;
-    const offset=Math.floor(Math.random()*eligible.length);
-    const rotated=eligible.slice(offset).concat(eligible.slice(0,offset));
+    // The AI ranker must receive the same Taste DNA-biased candidate pool as
+    // the ordinary catalog picker on an open-ended Surprise Me request.
+    let candidates=eligible;
+    const openTaste=!normCriteria(requested.cat).length && !normCriteria(requested.mood).length &&
+        !normCriteria(requested.vibe).length && !normCriteria(requested.genre).length;
+    if(openTaste && typeof window.tasteBiasPool==='function'){
+        try{
+            const biased=window.tasteBiasPool(eligible,'any','any');
+            if(Array.isArray(biased)&&biased.length)candidates=biased;
+        }catch(_){/* User criteria still take precedence. */}
+    }
+    const offset=Math.floor(Math.random()*candidates.length);
+    const rotated=candidates.slice(offset).concat(candidates.slice(0,offset));
     const country=window.MatchAppCatalogMedia?.regionCode?.()||'';
     const shortlist=rotated.slice(0,20).sort((a,b)=>
        Number(b.countryCode===country)-Number(a.countryCode===country));
