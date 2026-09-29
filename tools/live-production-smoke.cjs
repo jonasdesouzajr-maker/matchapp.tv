@@ -97,30 +97,22 @@ async function aiQuestion(page,question,expected,label){
     await page.locator('#q-category').waitFor({state:'attached',timeout:15000});
     await page.locator('#q-category').locator('xpath=..').locator('.crit-chips .crit-chip').first().waitFor({state:'attached',timeout:15000});
     await page.locator('#ebook-matcher-root [data-ebook-match]').waitFor({state:'attached',timeout:25000});
-    // Requested news regression: native summary must open a populated panel
-    // outside the Match/Ask accordion at every viewport, not just exist in DOM.
+    // Latest News is an always-open Home surface, separate from the Match/Ask
+    // accordion. Keep this check aligned with the current fixed opening layout.
     try {
       await page.locator('#latest-news > summary').waitFor({state:'visible',timeout:20000});
       await page.waitForFunction(()=>document.querySelectorAll('#latest-news .ma-news-card-main[href^="https://"]').length>0,null,{timeout:20000});
-      const summary=page.locator('#latest-news > summary');
-      await summary.click();
-      const collapsed=await page.evaluate(()=>{
+      const news=await page.evaluate(()=>{
         const n=document.getElementById('latest-news');
-        return !n.open&&getComputedStyle(n.querySelector('.ma-news-panel')).display==='none';
+        const panel=n?.querySelector('.ma-news-panel');
+        return {open:!!n?.open,panelVisible:!!panel&&getComputedStyle(panel).display!=='none'&&panel.getClientRects().length>0,
+          outsideMatcher:!!n&&n.closest('#ma-concierge')===null,hasVerifiedCards:!!n?.querySelector('.ma-news-card-main[href^="https://"]')};
       });
-      await summary.click();
-      const expanded=await page.evaluate(()=>{
-        const n=document.getElementById('latest-news');
-        return n.open&&getComputedStyle(n.querySelector('.ma-news-panel')).display!=='none'&&
-          getComputedStyle(n.querySelector('summary')).pointerEvents!=='none'&&
-          n.closest('#ma-concierge')===null&&
-          !!n.querySelector('.ma-news-card-main[href^="https://"]');
-      });
-      record('LIVE Latest News opens and closes '+device.name,collapsed&&expanded,
-        'collapsed='+collapsed+' expanded='+expanded);
+      record('LIVE Latest News starts unfolded '+device.name,
+        news.open&&news.panelVisible&&news.outsideMatcher&&news.hasVerifiedCards,JSON.stringify(news));
       await shot(page,device.name+'-latest-news-open');
     } catch(error) {
-      record('LIVE Latest News opens and closes '+device.name,false,String(error.message).slice(0,240));
+      record('LIVE Latest News starts unfolded '+device.name,false,String(error.message).slice(0,240));
     }
     assert(await page.locator('img[data-title]').count()>0,'no original-title poster elements');
     // On a 320px phone the trending rail starts below the opening hero and
@@ -244,21 +236,13 @@ async function aiQuestion(page,question,expected,label){
     const bookFields=await ebook.locator('select[data-ebook-select]').count();
     record('real compact reading controls '+device.name,bookFields===7,
       'seven live dropdowns preserve ebook, verified audio and magazine choices');
-    // Real touch/browser regression: the dedicated in-product Ask tab must
-    // reveal its composer on a phone, tablet or desktop.
-    const preAsk=await page.evaluate(()=>{
-      const pane=document.getElementById('ma-concierge');
-      const fold=pane?.previousElementSibling;
-      if(fold?.classList.contains('lazy-head')&&pane.classList.contains('lazy-open'))fold.click();
-      return {folded:!!(pane?.classList.contains('lazy-foldable')&&!pane.classList.contains('lazy-open'))};
-    });
-    await page.locator('#ma-tab-ask').click({timeout:12000});
-    await page.waitForFunction(()=>{
-      const pane=document.getElementById('ma-panel-ask'),form=document.getElementById('search-box');
-      return !!pane&&!pane.hidden&&!!form&&getComputedStyle(form).display!=='none'&&form.getBoundingClientRect().width>60;
-    },null,{timeout:9000});
-    // Check the result of the scroll, not an intermediate animation frame;
-    // allowing brief layout settlement also catches genuine stuck offscreen UI.
+    // The approved Home layout has a separate, always-visible Ask AI composer;
+    // it no longer exposes the retired Match/Ask tab as its entry point.
+    const aiEntry=page.locator('#ma-ai-entry'),homeInput=page.locator('#ma-ai-entry #specific-search-input');
+    await aiEntry.waitFor({state:'visible',timeout:12000});
+    await homeInput.waitFor({state:'visible',timeout:12000});
+    await aiEntry.scrollIntoViewIfNeeded({timeout:12000});
+    // Check composer controls after layout settles, without focusing the input.
     await page.waitForFunction(()=>{
       const input=document.getElementById('specific-search-input')?.getBoundingClientRect();
       const send=document.querySelector('#search-box .gold-btn')?.getBoundingClientRect();
@@ -270,7 +254,7 @@ async function aiQuestion(page,question,expected,label){
         !document.getElementById('ma-install-offer');
     },null,{timeout:3500}).catch(()=>{});
     const activeAsk=await page.evaluate(()=>{
-      const pane=document.getElementById('ma-concierge'),form=document.getElementById('search-box');
+      const entry=document.getElementById('ma-ai-entry'),form=document.getElementById('search-box');
       const input=document.getElementById('specific-search-input'),rect=form?.getBoundingClientRect();
       const ir=input?.getBoundingClientRect(),sr=form?.querySelector('.gold-btn')?.getBoundingClientRect();
       const dock=document.getElementById('ma-dock');
@@ -278,15 +262,13 @@ async function aiQuestion(page,question,expected,label){
       const safeBottom=innerHeight-dockSpace;
       const controlsUsable=!!ir&&!!sr&&ir.width>60&&sr.width>50&&
         ir.top>=0&&ir.bottom<=safeBottom&&sr.top>=0&&sr.bottom<=safeBottom;
-      return {open:!pane?.classList.contains('lazy-foldable')||pane.classList.contains('lazy-open'),
-        selected:document.getElementById('ma-tab-ask')?.getAttribute('aria-selected')==='true',
+      return {open:!!entry&&!entry.hidden&&entry.getClientRects().length>0,
         visible:controlsUsable&&!document.getElementById('ma-install-offer'),
         position:rect?{top:Math.round(rect.top),bottom:Math.round(rect.bottom),viewport:innerHeight,scrollY:scrollY,inputTop:Math.round(ir?.top||0),sendBottom:Math.round(sr?.bottom||0),safeBottom:Math.round(safeBottom)}:null,
         noAutoKeyboard:document.activeElement!==input};
     });
-    record('Home Ask AI tap opens visible unfocused composer '+device.name,
-      activeAsk.open&&activeAsk.selected&&activeAsk.visible&&activeAsk.noAutoKeyboard,
-      'initialFolded='+preAsk.folded+' '+JSON.stringify(activeAsk));
+    record('Separate Home Ask AI composer is visible and unfocused '+device.name,
+      activeAsk.open&&activeAsk.visible&&activeAsk.noAutoKeyboard,JSON.stringify(activeAsk));
     await shot(page,device.name+'-home-ask-open');
     await observed(page,'/discover.html');
     // Empty Send must guide the user rather than appearing unresponsive.
@@ -359,13 +341,15 @@ async function aiQuestion(page,question,expected,label){
     const closed=await page.evaluate(()=>({
       resultHidden:getComputedStyle(document.getElementById('result-box')).display==='none',
       formRestored:document.getElementById('questionnaire-box').style.display!=='none',
-      homeVisible:!!document.querySelector('.lazy-head[data-fold-key="trending"]')?.getClientRects().length&&
+      homeVisible:!!document.getElementById('trending-rail')?.getClientRects().length&&
+        !!document.getElementById('ma-ai-entry')?.getClientRects().length&&
         !!document.getElementById('ma-concierge')?.getClientRects().length,
-      titlesStillFolded:document.querySelector('.lazy-head[data-fold-key="trending"]')?.getAttribute('aria-expanded')==='false',
+      titlesRemainUnfolded:!document.querySelector('.lazy-head[data-fold-key="trending"]')&&
+        !!document.getElementById('trending-rail')?.getClientRects().length,
       manualAds:document.querySelectorAll('ins.adsbygoogle[data-ad-slot="2595698117"]').length
     }));
     record('LIVE red trash dismisses match without damaging Home',closed.resultHidden&&
-      closed.formRestored&&closed.homeVisible&&closed.titlesStillFolded&&closed.manualAds===5,JSON.stringify(closed));
+      closed.formRestored&&closed.homeVisible&&closed.titlesRemainUnfolded&&closed.manualAds===5,JSON.stringify(closed));
     await shot(page,'live-result-dismissed');
   }catch(error){record('LIVE normal movie matching',false,String(error.stack||error).slice(0,500));await shot(page,'live-normal-failure')}
   finally{await c.close();}
