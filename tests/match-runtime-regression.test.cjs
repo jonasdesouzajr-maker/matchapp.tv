@@ -149,3 +149,19 @@ test('catalogue pruning synchronizes chips and saved state while retaining avail
  w.document.dispatchEvent(new w.Event('matchapp:langchange'));assert.deepEqual(Array.from(w.getMatchCriteria().cat),['movie']);assert.equal(w.document.querySelector('[data-value="movie"]').getAttribute('aria-pressed'),'true');
  }finally{dom.window.close();}
 });
+
+test('a stalled AI proposal leaves time to launch independent exact discovery',async()=>{
+ const {dom,w,context,state}=matching({cat:['movie'],plat:['Impossible service'],mood:[],vibe:[],rating:[],decade:[]});
+ let now=1000,sourceCalls=0;const deadlines=[];
+ context.Date={now:()=>now};
+ context.aiProposedVerifiedExact=()=>new Promise(()=>{});
+ context.discoverVerifiedExactTMDB=async()=>{sourceCalls++;return null;};
+ context.setTimeout=(fn,ms)=>{deadlines.push(ms);queueMicrotask(()=>{now+=ms;fn();});return deadlines.length;};
+ try{
+  await w.triggerMatch(false);
+  assert.equal(sourceCalls,1,'independent discovery must run after AI timeout');
+  assert.equal(deadlines[0],25000,'AI reserves 35 seconds of the overall budget');
+  assert(deadlines[1]>=27000,'TMDB retains time even after AI stalls');
+  assert.equal(state.charges,0);assert.equal(w.__matchappMatchPhase,'idle');
+ }finally{dom.window.close();}
+});

@@ -26,7 +26,7 @@
     }
     window.showToast?.(reason==='error'
       ? 'Something interrupted that match. Your choices are saved — please try again.'
-      : 'Source verification took too long. Your page is responsive — please try again.',true);
+      : 'Source verification took too long. Your page is responsive — please try again.',true,{recovery:true});
   }
   const wrapped=function(...args){
     if(activePromise)return activePromise;

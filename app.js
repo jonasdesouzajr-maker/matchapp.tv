@@ -4482,7 +4482,8 @@ window.triggerMatch = async function(isSpecificSearch = false) {
     await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
     const startTime = Date.now();
     const sourceDeadline=startTime+60000;
-    const sourceMs=limit=>Math.min(limit,Math.max(0,sourceDeadline-Date.now()));
+    // Reserve time for independent sources even when AI providers stall.
+    const sourceMs=(limit,reserve=0)=>Math.min(limit,Math.max(0,sourceDeadline-Date.now()-reserve));
     // Progress is visual feedback, not a timer. Never hold a verified result
     // just to finish an animation.
     const PROGRESS_WINDOW_MS = 60000;
@@ -4527,7 +4528,7 @@ window.triggerMatch = async function(isSpecificSearch = false) {
          'Classical Music','podcast','audiobook','News','Sports'].includes(cat));
     let preflight = null;
     if(!isSpecificSearch && window.MatchAppAIRank?.rank){
-        try{preflight=await withMatchSourceDeadline(()=>rankVerifiedCuratedMatch(requested),sourceMs(45000));}
+        try{preflight=await withMatchSourceDeadline(()=>rankVerifiedCuratedMatch(requested),sourceMs(8000));}
         catch(_){preflight=null;}
     }
     if(!isSpecificSearch && !preflight){
@@ -4538,12 +4539,12 @@ window.triggerMatch = async function(isSpecificSearch = false) {
     // If the curated shelf is exhausted, request OpenAI-led proposals first;
     // independent TMDB lookup verifies every suggested title before display.
     if (!isSpecificSearch && !preflight && !specialistTopic && typeof aiProposedVerifiedExact === 'function') {
-        try { preflight=await withMatchSourceDeadline(()=>aiProposedVerifiedExact(requested),sourceMs(MATCH_SOURCE_DEADLINES.ai)); }
+        try { preflight=await withMatchSourceDeadline(()=>aiProposedVerifiedExact(requested),sourceMs(MATCH_SOURCE_DEADLINES.ai,35000)); }
         catch(_){preflight=null;}
     }
     // A source-first TMDB search remains the mandatory independent fallback.
     if (!isSpecificSearch && !preflight && !specialistTopic) {
-        try { preflight = await withMatchSourceDeadline(()=>discoverVerifiedExactTMDB(requested),sourceMs(MATCH_SOURCE_DEADLINES.tmdb)); } catch (_) { preflight = null; }
+        try { preflight = await withMatchSourceDeadline(()=>discoverVerifiedExactTMDB(requested),sourceMs(MATCH_SOURCE_DEADLINES.tmdb,8000)); } catch (_) { preflight = null; }
     }
     // iTunes is a real-source fallback only when no third-party platform,
     // source genre or blocked-source filter needs verification.
@@ -4574,7 +4575,8 @@ window.triggerMatch = async function(isSpecificSearch = false) {
         ['loading-box','result-box'].forEach(id=>{const el=document.getElementById(id);if(el)el.style.display='none';});
         document.body.classList.remove('match-searching');
         clearInterval(timerInterval);
-        window.showToast?.('No verified exact title is available for these choices right now. Try again, or change Vibe, Era, or Platform.');
+        window.__matchappMatchPhase='idle';
+        window.showToast?.('No verified exact title is available for these choices right now. Your choices are saved and no match was used. Please retry, or change Vibe, Era, or Platform.',true,{recovery:'empty'});
         return;
     }
     const alreadySeenSpecific = isSpecificSearch && !freeSavedSpecific && window.matchPolicy?.known().has(window.matchPolicy.key(typed));
@@ -4586,6 +4588,9 @@ window.triggerMatch = async function(isSpecificSearch = false) {
         return;
     }
     if (alreadySeenSpecific) {
+        clearInterval(timerInterval);
+        document.body.classList.remove('match-searching');
+        window.__matchappMatchPhase='idle';
         // A rematch may already have hidden the previous result. Restore the
         // form before returning so an exhausted selection never strands it.
         ['questionnaire-box','search-box'].forEach(id => { const el=document.getElementById(id); if(el)el.style.display='block'; });
@@ -5723,7 +5728,14 @@ async function syncListsToDatabase() {
 // ----------------------------------------------------
 // PREMIUM TOAST (non-blocking replacement for alert popups)
 // ----------------------------------------------------
-window.showToast = function(message, isError) {
+window.matchRecoveryHeading = function() {
+    return /^pt/i.test(window.MATCH_LANG||'')
+        ? 'INTERRUPÇÃO TEMPORÁRIA — TENTE NOVAMENTE EM INSTANTES.'
+        : /^es/i.test(window.MATCH_LANG||'')
+        ? 'INTERRUPCIÓN TEMPORAL — VUELVE A INTENTARLO EN BREVE.'
+        : 'TEMPORARY INTERRUPTION — PLEASE TRY AGAIN SHORTLY.';
+};
+window.showToast = function(message, isError, options) {
     let host = document.getElementById('toast-host');
     if (!host) {
         host = document.createElement('div');
@@ -5732,9 +5744,18 @@ window.showToast = function(message, isError) {
     }
     const t = document.createElement('div');
     t.className = 'match-toast' + (isError ? ' toast-error' : '');
-    t.textContent = message;
+    t.setAttribute('role',isError ? 'alert' : 'status');
+    if(options?.recovery){
+        const heading=document.createElement('strong');
+        heading.textContent=options.recovery==='empty'
+            ? (/^pt/i.test(window.MATCH_LANG||'') ? 'AINDA NÃO HÁ UM MATCH EXATO — TENTE NOVAMENTE EM INSTANTES.' : 'NO EXACT MATCH YET — PLEASE TRY AGAIN SHORTLY.')
+            : window.matchRecoveryHeading();
+        heading.style.display='block';
+        t.appendChild(heading);
+        t.appendChild(document.createTextNode(String(message||'')));
+    }else t.textContent = message;
     host.appendChild(t);
-    setTimeout(() => { t.classList.add('toast-out'); setTimeout(() => t.remove(), 500); }, 3600);
+    setTimeout(() => { t.classList.add('toast-out'); setTimeout(() => t.remove(), 500); }, options?.recovery ? 12000 : 3600);
 };
 
 // ----------------------------------------------------

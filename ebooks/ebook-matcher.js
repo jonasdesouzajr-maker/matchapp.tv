@@ -601,6 +601,7 @@ async function doMatch(root){
   renderResult(root,pick.book,p,pick.relaxed,pick.audio||null,pick.magazine===true,pick);
  }catch(e){
   console.warn('[MatchApp E-books] Match/source error:',e);
+  window.showToast?.('Reading sources are temporarily unavailable. You can explore the source links below or retry shortly.',true,{recovery:true});
   // Upstream/source faults still offer a usable, uncharged discovery route.
   if(p.format==='audiobook')renderAudioDiscovery(root,p);
   else renderReadingDiscovery(root,p);
