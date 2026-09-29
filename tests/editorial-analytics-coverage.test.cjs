@@ -29,7 +29,7 @@ test('13 public editorial routes use one approved existing GTM loader and no-scr
     const loaders=scripts.filter(([,code])=>code.includes('GTM-M7J3NNBN'));
     assert.equal(loaders.length,1,file+' must contain one and only one existing GTM loader');
     assert.match(loaders[0][1],/gtm\.js/);
-    const fallbacks=[...body.matchAll(/<noscript>\s*<iframe\b[^>]+<\/iframe>\s*<\/noscript>/gi)];
+    const fallbacks=[...body.matchAll(/<noscript>\s*<iframe\b[^>]*><\/iframe>\s*<\/noscript>/gi)];
     assert.equal(fallbacks.filter(([html])=>html.includes('ns.html?id=GTM-M7J3NNBN')).length,1,file+' must contain the matching no-script fallback');
   }
 });
