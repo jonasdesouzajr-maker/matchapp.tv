@@ -147,13 +147,14 @@
   async function refreshProfileHero(){
     if(location.pathname!='/profile/profile.html')return;const root=$('.container > .premium-card');if(!root)return;
     let hero=$('#audit-profile-hero');if(!hero){hero=document.createElement('section');hero.id='audit-profile-hero';hero.className='audit-profile-hero';const extras=$('.identity-extras');root.insertBefore(hero,extras||root.firstChild);}
-    let name=localStorage.getItem('match_user_name')||'',email='',avatar=$('#profile-pic-preview')?.src||'',locked=localStorage.getItem('match_profile_locked')==='true';
+    let name=localStorage.getItem('match_user_name')||'',email='',avatar=window.resolveUserAvatar?.()||'',locked=localStorage.getItem('match_profile_locked')==='true';
     try{
       const auth=window.supabaseClient?.auth?.getUser?await window.supabaseClient.auth.getUser():null;
       const user=auth?.data?.user;
       if(user){email=user.email||'';name=name||user.user_metadata?.full_name||user.user_metadata?.name||'';}
     }catch(_){}
-    hero.innerHTML='<div class="audit-profile-avatar">'+(avatar?'<img src="'+esc(avatar)+'" alt="">':icon('user'))+'</div><div class="audit-profile-copy"><span class="audit-profile-eyebrow">Private MatchApp profile</span><h1>'+esc(name||'Complete your profile')+'</h1><p>'+esc(email||'Sign in to sync your profile across devices')+'</p><div class="audit-profile-badges"><span>'+icon('lock')+(locked?'Identity protected':'Identity setup required')+'</span><span>'+icon('globe')+'Cross-device sync</span></div></div>';
+    hero.innerHTML='<div class="audit-profile-avatar" data-avatar-slot><img src="'+esc(avatar)+'" alt="Your MatchApp avatar" width="96" height="96"'+(avatar?'':' style="display:none"')+'><span class="avatar-empty"'+(avatar?' style="display:none"':'')+'>'+icon('user')+'</span>'+'</div><div class="audit-profile-copy"><span class="audit-profile-eyebrow">Private MatchApp profile</span><h1>'+esc(name||'Complete your profile')+'</h1><p>'+esc(email||'Sign in to sync your profile across devices')+'</p><div class="audit-profile-badges"><span>'+icon('lock')+(locked?'Identity protected':'Identity setup required')+'</span><span>'+icon('globe')+'Cross-device sync</span></div></div>';
+    window.renderUserAvatar?.();
     const save=$('#save-profile-btn');if(save)save.hidden=locked;
     const core=$('.core-identity-card');if(core)core.classList.toggle('is-locked',locked);
     $$('#editable-fields-section .input-group label').forEach(l=>{if(!l.querySelector('.required-mark'))l.insertAdjacentHTML('beforeend',' <span class="required-mark" aria-hidden="true">*</span>');});
