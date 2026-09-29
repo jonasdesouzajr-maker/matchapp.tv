@@ -85,7 +85,8 @@ test('phone and Android keep their existing result host order', async () => {
     const d = dom.window.document;
     const availability = d.getElementById('matchapp-main-availability');
     assert.equal(availability.parentElement.id, 'res-info-col');
-    assert.equal(availability.previousElementSibling.id, 'res-platform-badge');
+    assert.equal(availability.previousElementSibling.id, 'res-media-meta');
+    assert.equal(availability.previousElementSibling.previousElementSibling.id, 'res-platform-badge');
     dom.window.close();
   }
 });
