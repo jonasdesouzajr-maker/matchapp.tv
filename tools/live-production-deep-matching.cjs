@@ -4,6 +4,7 @@
 'use strict';
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict'),vm=require('node:vm');
 const {chromium}=require('playwright');
+const {fetchDeploymentMarker}=require('./deployment-marker.cjs');
 const BASE=process.env.MATCHAPP_TEST_BASE||'https://matchapp.tv';
 const out=path.resolve('artifacts/deep-match-smoke');fs.mkdirSync(out,{recursive:true});
 const results=[],notes=[],errors=[];
@@ -67,7 +68,7 @@ async function guarded(browser,label,fn){
 (async()=>{
  let browser;
  try{
-  const sha=await fetch(BASE+'/deployment-sha.txt',{signal:AbortSignal.timeout(16000)}).then(r=>r.text());
+  const sha=await fetchDeploymentMarker(BASE);
   record('production SHA available',/^[0-9a-f]{40}\s*$/i.test(sha),sha.trim().slice(0,12));
   browser=await chromium.launch({headless:true,args:['--no-sandbox']});
   await guarded(browser,'Adult Spotify playlist match',async page=>{
