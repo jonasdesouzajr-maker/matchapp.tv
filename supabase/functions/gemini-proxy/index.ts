@@ -658,7 +658,9 @@ Deno.serve(async (req: Request) => {
     // Kids and untagged legacy calls retain their original Gemini routing.
     const openAiEligible = body?.kidsMode !== true &&
       (isDiscoverMode || isRankMode || (body?.adultMatch === true && typeof body?.prompt === "string"));
-    if (openAiEligible && openRouterApiKey) {
+    // One strict adult request budget across all independent providers.
+    const providerDeadline = openAiEligible ? Date.now() + 40_000 : Number.POSITIVE_INFINITY;
+    if (openAiEligible && openRouterApiKey && Date.now() < providerDeadline) {
       const answer = await callOpenRouterFirst({
         req,prompt,key:openRouterApiKey,
         mode:isDiscoverMode ? "discover" : isRankMode ? "rank_candidates" : isProposalMode ? "match_proposals" : "legacy",
@@ -668,19 +670,7 @@ Deno.serve(async (req: Request) => {
       });
       if (answer) return answer;
     }
-    // Independent Groq fallback after proven OpenRouter, before metered OpenAI.
-    // Kids still skip these providers and use the original Gemini-only chain.
-    if (openAiEligible && groqApiKey) {
-      const answer = await callGroqBackup({
-        req,prompt,key:groqApiKey,
-        mode:isDiscoverMode ? "discover" : isRankMode ? "rank_candidates" : isProposalMode ? "match_proposals" : "legacy",
-        allowedCandidateIds:rankCandidateIds,cors:corsHeaders,
-        blockXXX:hasBlockedXXXDestination,
-        explicitXXX:(text:string) => EXPLICIT_XXX.test(text)
-      });
-      if (answer) return answer;
-    }
-    if (openAiEligible && openAiApiKey) {
+    if (openAiEligible && openAiApiKey && Date.now() < providerDeadline) {
       const desiredLimit = Number(Deno.env.get("OPENAI_DAILY_CALL_LIMIT") || "100");
       const dailyLimit = Number.isInteger(desiredLimit) && desiredLimit >= 1
         ? Math.min(desiredLimit,200) : 100;
@@ -711,10 +701,25 @@ Deno.serve(async (req: Request) => {
       ...backupPaidApiKeys.flatMap(key => MODEL_CHAIN.map(model => ({model, key, tier:"paid"}))),
       ...(paidApiKey ? MODEL_CHAIN.map(model => ({model, key:paidApiKey, tier:"paid"})) : []),
     ];
+    // Groq is the final adult fallback, after Gemini, never used by Kids.
+    const groqLast = async (): Promise<Response | null> => {
+      if (openAiEligible && groqApiKey && Date.now() < providerDeadline) {
+      const answer = await callGroqBackup({
+        req,prompt,key:groqApiKey,
+        mode:isDiscoverMode ? "discover" : isRankMode ? "rank_candidates" : isProposalMode ? "match_proposals" : "legacy",
+        allowedCandidateIds:rankCandidateIds,cors:corsHeaders,
+        blockXXX:hasBlockedXXXDestination,
+        explicitXXX:(text:string) => EXPLICIT_XXX.test(text)
+      });
+      if (answer) return answer;
+      }
+      return null;
+    };
     let freeProjectBlocked = false;
     // If a whole project is capped or its key is invalid, skip its other models.
     const blockedPaidKeys = new Set<string>();
     for (const route of routes) {
+      if (Date.now() >= providerDeadline) break;
       if (route.tier === "free" && freeProjectBlocked) continue;
       if (route.tier === "paid" && blockedPaidKeys.has(route.key)) continue;
       const {model} = route;
@@ -725,7 +730,7 @@ Deno.serve(async (req: Request) => {
         // its own deadline, so a slow model costs one timeout and falls
         // through to the next instead of costing the whole request.
         const ac = new AbortController();
-        const timer = setTimeout(() => ac.abort(), PER_MODEL_TIMEOUT_MS);
+        const timer = setTimeout(() => ac.abort(), Math.min(PER_MODEL_TIMEOUT_MS, Math.max(1, providerDeadline - Date.now())));
         let geminiRes: Response;
         try {
           geminiRes = await fetch(
@@ -854,6 +859,8 @@ Deno.serve(async (req: Request) => {
           lastError = "free project unavailable: " + geminiRes.status;
           if (paidApiKey) continue;
           if (backupPaidApiKeys.length) continue;
+          const groqRecovery = await groqLast();
+          if (groqRecovery) return groqRecovery;
           return new Response(JSON.stringify({error:"Free Gemini project unavailable or quota exhausted.",status:geminiRes.status}),
             {status:geminiRes.status === 429 ? 429 : 502,
              headers:{...corsHeaders(req),"Content-Type":"application/json"}});
@@ -878,6 +885,8 @@ Deno.serve(async (req: Request) => {
           if(!projectWide)continue;
           blockedPaidKeys.add(route.key);
           if (routes.some(next => next.tier === "paid" && !blockedPaidKeys.has(next.key))) continue;
+          const groqRecovery = await groqLast();
+          if (groqRecovery) return groqRecovery;
           return new Response(JSON.stringify({error:"AI capacity temporarily exhausted",status:429}),
             {status:429,headers:{...corsHeaders(req),"Content-Type":"application/json","Retry-After":"60"}});
         }
@@ -899,6 +908,8 @@ Deno.serve(async (req: Request) => {
         }
         // Reject terminal errors without exposing upstream bodies or secrets.
         console.warn("[gemini-proxy] provider unavailable tier="+route.tier+" status="+geminiRes.status);
+        const groqRecovery = await groqLast();
+        if (groqRecovery) return groqRecovery;
         return new Response(
           JSON.stringify({error:"AI service temporarily unavailable",status:geminiRes.status}),
           {status: geminiRes.status === 429 ? 429 : 502,
@@ -911,6 +922,8 @@ Deno.serve(async (req: Request) => {
     }
 
     // Every eligible provider failed or its budget gate rejected this call.
+    const groqRecovery = await groqLast();
+    if (groqRecovery) return groqRecovery;
     console.error(`[gemini-proxy] Gemini chain failed or unconfigured: ${lastError}`);
     return new Response(
       JSON.stringify({ error: "AI providers unavailable or rate-limited." }),
