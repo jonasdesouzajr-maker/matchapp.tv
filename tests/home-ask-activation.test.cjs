@@ -71,5 +71,13 @@ test('live smoke checks usable input and Send inside the phone viewport',()=>{
  const smoke=read('tools/live-production-smoke.cjs');
  assert.match(smoke,/const dockSpace=dock&&getComputedStyle\(dock\)\.display/);
  assert.match(smoke,/input\.bottom<=bottom&&send\.top>=0&&send\.bottom<=bottom/);
- assert.match(smoke,/controlsUsable&&!document\.getElementById\('ma-install-offer'\)/);
+ assert.match(smoke,/controlsUsable&&!offerCoversControl/);
+ assert.match(smoke,/offerCoversControl=!!offer&&!!offer\.getClientRects\(\)\.length/);
+});
+test('optional install invite dismisses when it would cover the Home Ask composer',()=>{
+ const s=read('browser-install-offer.js');
+ assert.match(s,/function closeIfOverlappingComposer\(\)/);
+ assert.match(s,/entry\.left<offer\.right&&entry\.right>offer\.left&&entry\.top<offer\.bottom&&entry\.bottom>offer\.top/);
+ assert.match(s,/addEventListener\('scroll',composerOverlapHandler/);
+ assert.match(s,/removeEventListener\('scroll',composerOverlapHandler/);
 });
