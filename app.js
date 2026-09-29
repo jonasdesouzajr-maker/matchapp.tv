@@ -4600,7 +4600,10 @@ window.triggerMatch = async function(isSpecificSearch = false) {
         document.body.classList.remove('match-searching');
         clearInterval(timerInterval);
         window.__matchappMatchPhase='idle';
-        window.showToast?.('No verified exact title is available for these choices right now. Your choices are saved and no match was used. Please retry, or change Vibe, Era, or Platform.',true,{recovery:'empty'});
+        const noExactMatchMessage=window.MATCH_LANG==='pt-BR'
+            ? 'Não encontramos um título verificado para essas escolhas agora. Suas escolhas foram mantidas e nenhum match foi consumido. Tente novamente ou ajuste Vibe, Época ou Plataforma.'
+            : 'No verified exact title is available for these choices right now. Your choices are saved and no match was used. Please retry, or change Vibe, Era, or Platform.';
+        window.showToast?.(noExactMatchMessage,true,{recovery:'empty'});
         return;
     }
     const alreadySeenSpecific = isSpecificSearch && !freeSavedSpecific && window.matchPolicy?.known().has(window.matchPolicy.key(typed));
