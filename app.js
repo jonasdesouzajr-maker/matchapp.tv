@@ -4476,7 +4476,7 @@ window.triggerMatch = async function(isSpecificSearch = false) {
     // an exact eligible catalogue title first; only then use the existing
     // guaranteed recovery ladder. User-saved / Not For Me titles remain hard
     // exclusions in both helpers.
-    if (!isSpecificSearch && !preflight && window.matchappAllowSeenAgain === true && typeof pickRecycledCatalog === 'function') {
+    if (!isSpecificSearch && !preflight && typeof pickRecycledCatalog === 'function') {
         try { preflight = pickRecycledCatalog(requested.cat,requested.plat,requested.mood,requested.vibe,requested.rating,requested.decade); } catch (_) { preflight = null; }
     }
     if (!isSpecificSearch && !preflight && window.matchappAllowSeenAgain === true && typeof pickGuaranteedCatalog === 'function') {
@@ -4492,7 +4492,7 @@ window.triggerMatch = async function(isSpecificSearch = false) {
         ['loading-box','result-box'].forEach(id=>{const el=document.getElementById(id);if(el)el.style.display='none';});
         document.body.classList.remove('match-searching');
         clearInterval(timerInterval);
-        window.showToast?.('Keeping your choices exact — no verified fresh title was available just now. Try Match again.');
+        window.showToast?.('No verified exact title is available for these choices right now. Try again, or change Vibe, Era, or Platform.');
         return;
     }
     const alreadySeenSpecific = isSpecificSearch && window.matchPolicy?.known().has(window.matchPolicy.key(typed));
@@ -4725,6 +4725,14 @@ function renderMatchCriteria() {
         const labels = {'broaden-vibe':'Closest available · vibe broadened','broaden-era':'Closest available · vibe + era broadened','broaden-mood':'Closest available · vibe + era + mood broadened','broaden-platform':'Closest available · secondary filters broadened'};
         chips.insertAdjacentHTML('beforeend', `<span class="match-relaxed-criteria">${sanitizeDisplayText(labels[relaxed] || 'Closest available match')}</span>`);
     }
+    if (window.lastMatchHistoryFallback) {
+        const chip = document.createElement('span');
+        chip.className = 'match-relaxed-criteria';
+        chip.textContent = relaxed && relaxed !== 'exact'
+            ? 'Previously suggested · closest available match'
+            : 'Previously suggested · matches all your choices';
+        chips.appendChild(chip);
+    }
     wrap.style.display = 'block';
 }
 
@@ -4874,6 +4882,8 @@ async function renderResult(selected, isSpecificSearch) {
         else if (form) form.style.display='block';
         return;
     }
+    window.lastMatchHistoryFallback = selected._historyFallback === true &&
+        (selected.source === 'catalog-recycle' || selected.source === 'catalog-guaranteed-recycle');
     // This title was already proven fresh in triggerMatch. known() also
     // contains match_recentTitles, so re-checking here after a remember
     // skipped the result card, confetti, and left the premiere poster in view.

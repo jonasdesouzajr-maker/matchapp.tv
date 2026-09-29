@@ -34,7 +34,9 @@ test('all adult match formats keep hard filters and no unrequested recycles',()=
  const catalog=app.indexOf('preflight=pickFromCatalog(requested.cat');
  assert(rank>=0&&catalog>rank);
  assert.match(app,/regionAvailabilityFits\(e,criteria\)/);
- assert.match(app,/matchappAllowSeenAgain === true && typeof pickRecycledCatalog/);
+ assert.match(app,/!isSpecificSearch && !preflight && typeof pickRecycledCatalog/);
+ assert.doesNotMatch(app,/matchappAllowSeenAgain === true && typeof pickRecycledCatalog/);
+ assert.match(app,/Previously suggested · matches all your choices/);
  assert.match(app,/matchappAllowSeenAgain === true && typeof pickGuaranteedCatalog/);
  assert.match(app,/const ranked=await window\.MatchAppAIRank\.rank\(rows/);
  assert.match(books,/async function rankBooks\(approved,p\)/);

@@ -31,13 +31,24 @@ test('history exhaustion recovers with an exact eligible title when fresh source
  const excluded=catalog.filter(entry=>entry.ratings.includes('all ages family friendly')).map(entry=>entry.title);
  const requested={cat:['movie'],plat:[],mood:[],vibe:[],rating:['all ages family friendly'],decade:[]};
  const {dom,w,state}=matching(requested,excluded);
- try{w.matchappAllowSeenAgain=true;await w.triggerMatch(false);assert(state.rendered,'exact recovery should avoid a dead end');assert(w.matchPolicy.matchesCriteria(catalog.find(e=>e.title===state.rendered.title),requested));assert.equal(state.charges,1);}finally{dom.window.close();}
+ try{await w.triggerMatch(false);assert(state.rendered,'exact recovery should avoid a dead end');assert.equal(state.rendered._historyFallback,true,'recycled exact result must be disclosed');assert(w.matchPolicy.matchesCriteria(catalog.find(e=>e.title===state.rendered.title),requested));assert.equal(state.charges,1);}finally{dom.window.close();}
 });
 
 test('account history exhaustion uses exact recovery without weakening selected criteria',async()=>{
  const requested={cat:['movie'],plat:[],mood:['funny'],vibe:[],rating:[],decade:[]};
  const {dom,w,state}=matching(requested,catalog.map(entry=>entry.title));
- try{w.matchappAllowSeenAgain=true;await w.triggerMatch(false);assert(state.rendered,'exact recovery should still return a result');assert(w.matchPolicy.matchesCriteria(catalog.find(e=>e.title===state.rendered.title),requested));assert.equal(state.charges,1);}finally{dom.window.close();}
+ try{await w.triggerMatch(false);assert(state.rendered,'exact recovery should still return a result');assert.equal(state.rendered._historyFallback,true);assert(w.matchPolicy.matchesCriteria(catalog.find(e=>e.title===state.rendered.title),requested));assert.equal(state.charges,1);}finally{dom.window.close();}
+});
+
+test('ordinary matching preserves exact choices when no verifiable candidate exists',async()=>{
+ const requested={cat:['movie'],plat:['Impossible service'],mood:['funny'],vibe:[],rating:[],decade:[]};
+ const {dom,w,state}=matching(requested,[]);
+ try{
+  await w.triggerMatch(false);
+  assert.equal(state.rendered,null,'unverified selections must never invent a result');
+  assert.equal(state.charges,0,'no match should consume no match credit');
+  assert(state.messages.some(text=>text.includes('No verified exact title')));
+ }finally{dom.window.close();}
 });
 
 test('impossible secondary criteria fall back progressively without dropping category or rating',()=>{
