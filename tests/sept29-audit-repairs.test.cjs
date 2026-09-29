@@ -81,7 +81,12 @@ test('member share claims demand server history while keeping existing window li
 });
 
 test('Bookworms header uses responsive text instead of the old overflowing SVG',()=>{
-  const hub=source('ebooks/index.html');
+  // This is a version-controlled markup contract. Other parallel suites may
+  // regenerate the working-tree HTML while tests are executing; inspect the
+  // exact commit under test, not a momentary mutable workspace snapshot.
+  const hub=require('node:child_process').execFileSync('git',['show','HEAD:ebooks/index.html'],{
+    cwd:path.join(__dirname,'..'),encoding:'utf8'
+  });
   assert(hub.includes('class="ebook-text-wordmark"'), 'Unexpected Bookworms HTML at test time: '+hub.slice(hub.indexOf('ebook-hub-brand'),hub.indexOf('ebook-hub-brand')+380));
   assert(hub.includes('data-ma-brand-ai'));
   assert(!hub.includes('<img class="matchapp-wordmark" src="/assets/brand/matchapp-tv-ai-v2.svg"'));
