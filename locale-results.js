@@ -110,7 +110,8 @@
     window.askAIConversational = async function (question, history) {
       const parsed = await prev(question, history);
       if (!parsed || lang() === 'en') return parsed;
-      if (parsed.answer) parsed.answer = await translateText(parsed.answer, 'synopsis');
+      if (parsed._live === true) return parsed; // This response already uses the selected language.
+      // Offline answer is explanatory source text. Keep it instead of guessing a replacement.
       if (Array.isArray(parsed.results)) {
         for (const item of parsed.results) {
           if (item.title) {
