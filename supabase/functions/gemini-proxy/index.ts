@@ -659,7 +659,8 @@ Deno.serve(async (req: Request) => {
     const openAiEligible = body?.kidsMode !== true &&
       (isDiscoverMode || isRankMode || (body?.adultMatch === true && typeof body?.prompt === "string"));
     // One strict adult request budget across all independent providers.
-    const providerDeadline = openAiEligible ? Date.now() + 40_000 : Number.POSITIVE_INFINITY;
+    const providerDeadline = openAiEligible ? Date.now() + (isRankMode || isProposalMode ? 43_000 : 58_000) : Number.POSITIVE_INFINITY;
+    const groqReserveMs = openAiEligible && groqApiKey ? 8_000 : 0;
     if (openAiEligible && openRouterApiKey && Date.now() < providerDeadline) {
       const answer = await callOpenRouterFirst({
         req,prompt,key:openRouterApiKey,
@@ -719,7 +720,8 @@ Deno.serve(async (req: Request) => {
     // If a whole project is capped or its key is invalid, skip its other models.
     const blockedPaidKeys = new Set<string>();
     for (const route of routes) {
-      if (Date.now() >= providerDeadline) break;
+      // Preserve a final Groq attempt when the preceding Gemini models stall.
+      if (Date.now() >= providerDeadline - groqReserveMs) break;
       if (route.tier === "free" && freeProjectBlocked) continue;
       if (route.tier === "paid" && blockedPaidKeys.has(route.key)) continue;
       const {model} = route;
@@ -730,7 +732,7 @@ Deno.serve(async (req: Request) => {
         // its own deadline, so a slow model costs one timeout and falls
         // through to the next instead of costing the whole request.
         const ac = new AbortController();
-        const timer = setTimeout(() => ac.abort(), Math.min(PER_MODEL_TIMEOUT_MS, Math.max(1, providerDeadline - Date.now())));
+        const timer = setTimeout(() => ac.abort(), Math.min(PER_MODEL_TIMEOUT_MS, Math.max(1, providerDeadline - Date.now() - groqReserveMs)));
         let geminiRes: Response;
         try {
           geminiRes = await fetch(
