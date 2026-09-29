@@ -18,7 +18,7 @@ function normalize(s){return String(s||'').normalize('NFD').replace(/[\u0300-\u0
 function isCooking(q){
  const text=normalize(q);
  // A film, series or documentary ABOUT cooking is still a watch request.
- if(/\b(watch|stream|shows?|series|movies?|films?|documentar(?:y|ies|ios?)|assistir|ver|filmes?|series?|documentarios?|peliculas?)\b/.test(text))return false;
+ if(/\b(watch|stream|(?:cooking|tv|television)\s+shows?|series|movies?|films?|documentar(?:y|ies|ios?)|assistir|ver|filmes?|series?|documentarios?|peliculas?)\b/.test(text))return false;
  return /\b(recipes?|receitas?|cooking|cookery|culinaria|cozinhar|recetas?|cocinar|maangchi|panelinha|rita lobo|food wishes|chef john|jamie oliver|bibimbap|omelet|omelette|omelete|scrambled eggs|tomato soup)\b/.test(text);
 }
 function find(q,kind='recipes'){

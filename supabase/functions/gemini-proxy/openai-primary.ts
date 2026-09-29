@@ -1,5 +1,5 @@
 // One scoped OpenAI provider for adult Match and Ask AI; no client secrets.
-// Gemini remains the independent backup. Do not use this for Kids Mode.
+// Adult fallback order: OpenRouter, this OpenAI provider, then Gemini and Groq. Never use this module for Kids Mode.
 const OPENAI_MODEL = "gpt-5.6-luna";
 const OPENAI_TIMEOUT_MS = 16000;
 type SchemaMode = "discover" | "match_proposals" | "rank_candidates" | "legacy";

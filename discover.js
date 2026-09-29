@@ -381,7 +381,7 @@ function catalogFallbackForQuestion(question) {
     const policy = window.matchPolicy;
     return CONTENT_CATALOG
         .filter(e => {
-            if (!e || !e.title || isDiscoverDisliked(e.title)) return false;
+            if (!e || !e.title || isDiscoverDisliked(e.title) || policy?.known?.().has(policy.key(e.title))) return false;
             if (typeof window.tasteAllowsEntry === 'function' && !window.tasteAllowsEntry(e)) return false;
             return !policy || policy.fitsQuestion(e, question);
         })

@@ -3384,7 +3384,14 @@ async function discoverFromITunes(cat, mood, vibe, decade, rating) {
 
     const term = parts.join(' ');
     const media = mediaForCategory(cat);
-    const region=window.MatchAppCatalogMedia?.regionCode?.()||'BR';
+    // Use a saved country when supplied, otherwise only a browser locale
+    // with an actual country suffix; never assume unknown users are Brazilian.
+    const chosenCountry=String(localStorage.getItem('match_user_region')||localStorage.getItem('match_user_country')||'').trim();
+    const locale=String(window.navigator?.language||'').replace('_','-');
+    const countryMatch=/-([A-Za-z]{2})(?:$|-)/.exec(locale);
+    const browserCountry=countryMatch?countryMatch[1].toUpperCase():'';
+    const region=chosenCountry?(window.MatchAppCatalogMedia?.regionCode?.()||browserCountry):browserCountry;
+    const countryParam=region?'&country='+encodeURIComponent(region):'';
     const entity=cat==='music album'?'album':cat==='Spotify single'?'song':
       cat==='podcast'?'podcast':cat==='audiobook'?'audiobook':'';
     const limit=['music','podcast','audiobook'].includes(media)?80:40;
@@ -3394,7 +3401,7 @@ async function discoverFromITunes(cat, mood, vibe, decade, rating) {
     // does have real YouTube entries.
     if (media === 'none') return null;
     try {
-        const res = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(term)}&media=${media}&limit=${limit}&country=${encodeURIComponent(region)}&explicit=No${entity?'&entity='+entity:''}`);
+        const res = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(term)}&media=${media}&limit=${limit}${countryParam}&explicit=No${entity?'&entity='+entity:''}`);
         if (!res.ok) return null;
         const data = await res.json();
         if (!data.results || data.results.length === 0) return null;
@@ -4700,7 +4707,7 @@ window.triggerMatch = async function(isSpecificSearch = false) {
         if (loadBox) loadBox.style.display='none';
         if (typeof window.goToQuestionnaire === 'function') window.goToQuestionnaire();
         else if (qBox) qBox.style.display='block';
-        window.showToast(tSafe('polish.inHistory'));
+        window.showToast(!matchResult && isSpecificSearch ? "Couldn't verify this title. No Match was used." : tSafe('polish.inHistory'));
         return;
     }
     // Charge only after a usable title has passed validation. Reused titles
@@ -4716,7 +4723,6 @@ window.triggerMatch = async function(isSpecificSearch = false) {
         } else if (qBox) qBox.style.display='block';
         return;
     }
-    if(matchRunId!==window.__matchappMatchRunId){clearInterval(timerInterval);return;}
     if(matchRunId!==window.__matchappMatchRunId){clearInterval(timerInterval);return;}
     // Do not remember the title or fire matchapp:newmatch until the result
     // card is actually on screen. rememberShownTitle writes match_recentTitles,
