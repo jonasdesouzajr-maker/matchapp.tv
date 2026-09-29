@@ -68,10 +68,10 @@ html body.page-home .lazy-head[data-fold-key="askai"]::before{
 
 html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container :is(#ma-ai-entry,#ma-concierge).lazy-foldable:not(.lazy-open){display:none!important}
 
-/* A single outer edge and eight-pixel rhythm for the adult Home fields. */
+/* A single outer edge and fourteen-pixel rhythm for the adult Home pills. */
 html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container>:is(.lazy-head[data-fold-key],#ebook-matcher-root,#cooking-home,#latest-news,#premiere-disclosure,#weekly-pick-disclosure,#swifties-spotify,#global-events){
  width:100%!important;max-width:100%!important;min-width:0!important;box-sizing:border-box!important;
- margin:0 0 8px!important;padding:0!important;align-self:stretch!important;
+ margin:0 0 14px!important;padding:0!important;align-self:stretch!important;
 }
 html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container :is(#ebook-matcher-root>.ebook-fold,#global-events>.global-events-fold){
  width:100%!important;max-width:100%!important;box-sizing:border-box!important;margin:0!important;padding:0!important;
@@ -80,6 +80,12 @@ html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container :is(
  border:0!important;
 }
 html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container :is(.lazy-head[data-fold-key],#latest-news>summary,#premiere-disclosure>summary,#weekly-pick-disclosure>summary,#global-events>.global-events-fold>.global-events-summary,#swifties-spotify .swifties-fold,#ebook-matcher-root .ebook-fold>summary,#cooking-home>summary){
- border:1.5px solid #f9d58bbe!important;border-radius:14px!important;
+ border:1.5px solid #f9d58bbe!important;border-radius:999px!important;
 }
 html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container #ebook-matcher-root .ebook-fold>summary>.ebook-summary-icon{display:grid!important;}
+
+/* Round the closed outer surfaces too, so their backgrounds cannot leave
+   rectangular corners behind the pill. Expanded content keeps its own layout. */
+html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container :is(#ebook-matcher-root>.ebook-fold:not([open]),#cooking-home:not([open]),#latest-news:not([open]),#premiere-disclosure:not([open]),#weekly-pick-disclosure:not([open]),#global-events>.global-events-fold:not([open]),#swifties-spotify:has(.swifties-fold[aria-expanded="false"])){
+ border-radius:999px!important;overflow:hidden!important;
+}

@@ -56,7 +56,7 @@ test('adult density excludes canonical Kids routes and keeps natural covers and 
 
 test('Home field spacing uses the same outer edge and Together follows Events',()=>{
  const css=read('home-fold-grid.css');
- assert.match(css,/margin:0 0 8px!important;padding:0!important/);
+ assert.match(css,/margin:0 0 14px!important;padding:0!important/);
  assert.match(css,/main\.page-wrapper \.main-layout>\.container/);
  assert.match(css,/#ebook-matcher-root>\.ebook-fold/);
  const source=read('matchapp-ia.js');
