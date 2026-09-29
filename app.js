@@ -3386,7 +3386,7 @@ async function discoverFromITunes(cat, mood, vibe, decade, rating) {
     const media = mediaForCategory(cat);
     // Use a saved country when supplied, otherwise only a browser locale
     // with an actual country suffix; never assume unknown users are Brazilian.
-    const chosenCountry=String(localStorage.getItem('match_user_region')||localStorage.getItem('match_user_country')||'').trim();
+    const chosenCountry=String(window.localStorage?.getItem('match_user_region')||window.localStorage?.getItem('match_user_country')||'').trim();
     const locale=String(window.navigator?.language||'').replace('_','-');
     const countryMatch=/-([A-Za-z]{2})(?:$|-)/.exec(locale);
     const browserCountry=countryMatch?countryMatch[1].toUpperCase():'';
