@@ -1,0 +1,15 @@
+const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs');
+test('profile always receives current canonical avatar and compact Taste DNA styles and script',()=>{
+ const profile=fs.readFileSync('profile/profile.html','utf8');
+ const shell=fs.readFileSync('title-captions.js','utf8');
+ const settings=fs.readFileSync('settings.js','utf8');
+ assert(profile.includes('/settings.js?v=20260929-profile1'));
+ assert(profile.includes('/title-captions.js?v=20260929-avatar1'));
+ assert(shell.includes('/final-audit.js?v=20260929-avatar1'));
+ assert(shell.includes('/final-audit.css?v=20260929-avatar1'));
+ assert(settings.includes("src==='/taste-profile.js'?'20260929-taste1'"));
+ assert(settings.includes("src==='/taste-profile.css'?'20260929-taste1'"));
+ const hero=fs.readFileSync('final-audit.js','utf8');
+ assert(hero.includes('avatar=window.resolveUserAvatar?.()'));
+ assert(fs.readFileSync('taste-profile.js','utf8').includes("toast.id='taste-saved-toast'"));
+});
