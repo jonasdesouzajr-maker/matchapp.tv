@@ -43,12 +43,10 @@ async function setup(page){
      await page.getByRole('button',{name:/Essential only/i}).first().click({timeout:900}).catch(()=>{});
      // Native touch gestures must work when they start on a top-title poster.
      await page.locator('#ma-install-offer .ma-offer-close').click({timeout:700}).catch(()=>{});
-     const trendingFold=page.locator('.lazy-head[data-fold-key="trending"]');
-     await trendingFold.waitFor({state:'visible',timeout:15000});
-     pass(device.name+' titles initially folded',await trendingFold.getAttribute('aria-expanded')==='false');
-     await trendingFold.click();
      const rail=page.locator('#marquee-viewport');
      await rail.waitFor({state:'visible',timeout:15000});
+     const trendingFold=page.locator('.lazy-head[data-fold-key="trending"]');
+     pass(device.name+' Top Titles initially unfolded',await trendingFold.count()===0&&await rail.isVisible());
      await rail.evaluate(el=>{el.__railHold?.();el.scrollIntoView({block:'center',behavior:'instant'});el.scrollTo({left:0,behavior:'instant'});});
      await page.waitForTimeout(350);
      const touch=await ctx.newCDPSession(page);
