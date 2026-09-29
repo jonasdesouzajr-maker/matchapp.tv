@@ -1,21 +1,21 @@
 {
-  "version": "2026.09.29.3",
+  "version": "2026.09.29.4",
   "date": "2026-09-29",
   "functional": true,
   "notes": {
-    "en": "More compact mobile controls and improved live voice dictation with punctuation.",
-    "pt-BR": "Controles móveis mais compactos e ditado ao vivo aprimorado com pontuação.",
-    "es": "Controles móviles más compactos y dictado en vivo mejorado con puntuación.",
-    "fr": "Commandes mobiles plus compactes et dictée en direct améliorée avec ponctuation.",
-    "de": "Kompaktere mobile Bedienelemente und verbesserte Live-Diktate mit Zeichensetzung.",
-    "it": "Controlli mobili più compatti e dettatura dal vivo migliorata con punteggiatura.",
-    "tr": "Daha kompakt mobil kontroller ve noktalama ile geliştirilmiş canlı dikte.",
-    "ru": "Более компактные мобильные элементы управления и улучшенная диктовка с пунктуацией.",
-    "ar": "عناصر تحكم أصغر للهاتف وتحسين الإملاء المباشر مع علامات الترقيم.",
-    "hi": "अधिक छोटे मोबाइल नियंत्रण और विराम चिह्नों के साथ बेहतर लाइव डिक्टेशन।",
-    "id": "Kontrol seluler lebih ringkas dan dikte langsung ditingkatkan dengan tanda baca.",
-    "ja": "モバイル操作をコンパクトにし、句読点付きのリアルタイム音声入力を改善しました。",
-    "ko": "모바일 컨트롤을 더 작게 만들고 문장 부호를 포함한 실시간 받아쓰기를 개선했습니다.",
-    "zh": "更紧凑的移动控件，以及带标点的改进实时语音输入。"
+    "en": "More compact AI conversations, follow-up input above titles and improved original poster loading.",
+    "pt-BR": "Conversas de IA mais compactas, campo de pergunta acima dos títulos e carregamento aprimorado dos pôsteres originais.",
+    "es": "Conversaciones de IA más compactas, entrada sobre los títulos y carga mejorada de pósteres originales.",
+    "fr": "Conversations IA plus compactes, saisie au-dessus des titres et meilleur chargement des affiches originales.",
+    "de": "Kompaktere KI-Gespräche, Eingabe über den Titeln und verbessertes Laden der Originalposter.",
+    "it": "Conversazioni IA più compatte, campo sopra i titoli e caricamento migliorato dei poster originali.",
+    "tr": "Daha kompakt yapay zekâ sohbetleri, başlıkların üzerinde giriş ve iyileştirilmiş orijinal afiş yükleme.",
+    "ru": "Компактные беседы с ИИ, ввод над подборкой и улучшенная загрузка оригинальных постеров.",
+    "ar": "محادثات ذكاء اصطناعي أصغر، وحقل إدخال فوق العناوين وتحسين تحميل الملصقات الأصلية.",
+    "hi": "अधिक कॉम्पैक्ट AI बातचीत, शीर्षकों के ऊपर इनपुट और मूल पोस्टर की बेहतर लोडिंग।",
+    "id": "Percakapan AI lebih ringkas, input di atas judul dan pemuatan poster asli yang lebih baik.",
+    "ja": "AI会話をコンパクトにし、作品の上に入力欄を配置。公式ポスターの読み込みも改善しました。",
+    "ko": "AI 대화를 더 간결하게 만들고 작품 위에 입력란을 배치했으며 원본 포스터 로딩을 개선했습니다.",
+    "zh": "更紧凑的AI对话、位于作品上方的输入框，以及改进的原版海报加载。"
   }
 }

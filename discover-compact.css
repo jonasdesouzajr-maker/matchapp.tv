@@ -1,0 +1,75 @@
+/* Adult Discover conversation density. Original artwork retains its natural ratio. */
+body.ai-chat-page .discover-speak svg{display:block;width:24px;height:24px;overflow:visible}
+body.ai-chat-page .discover-poster{height:auto;align-self:flex-start}
+body.ai-chat-page .discover-poster img{width:100%;height:auto;object-fit:contain}
+@media(max-width:1024px){
+ html body.ai-chat-page.ma-ia-discover:not(.tv-mode){
+  font-family:Inter,"Segoe UI",sans-serif!important;font-size:14px;
+ }
+ html body.ai-chat-page.ma-ia-discover:not(.tv-mode) :is(button,textarea,input){font-family:Inter,"Segoe UI",sans-serif!important}
+ html body.ai-chat-page.ma-ia-discover:not(.tv-mode) :is(.discover-head h1,.discover-body h3){font-family:Outfit,Inter,sans-serif!important}
+ html body.ai-chat-page.ma-ia-discover:not(.tv-mode) .discover-head h1{font-size:21px!important;line-height:1.2!important}
+ html body.ai-chat-page.ma-ia-discover:not(.tv-mode) .chat-log{gap:12px!important;margin-top:12px!important}
+ html body.ai-chat-page.ma-ia-discover:not(.tv-mode) .chat-bubble{padding:12px!important;border-radius:16px!important}
+ html body.ai-chat-page.ma-ia-discover:not(.tv-mode) .chat-user{font-size:13px!important;line-height:1.5!important}
+ html body.ai-chat-page.ma-ia-discover:not(.tv-mode) .chat-answer-row{
+  display:grid!important;grid-template-columns:24px minmax(0,1fr) 36px!important;gap:8px!important;align-items:start!important;
+ }
+ html body.ai-chat-page.ma-ia-discover:not(.tv-mode) .chat-avatar{width:24px!important;height:24px!important;margin:0!important}
+ html body.ai-chat-page.ma-ia-discover:not(.tv-mode) .chat-answer-text{
+  font-family:Inter,"Segoe UI",sans-serif!important;font-size:14px!important;line-height:1.55!important;text-align:start!important;margin:0!important;overflow-wrap:anywhere;
+ }
+ html body.ai-chat-page.ma-ia-discover:not(.tv-mode) .discover-speak{
+  width:36px!important;height:36px!important;min-height:36px!important;margin:0!important;padding:0!important;
+  border:1px solid rgba(240,208,139,.45)!important;border-radius:12px!important;
+  background:linear-gradient(145deg,#493064,#201629)!important;color:#ffe9a6!important;
+ }
+ html body.ai-chat-page.ma-ia-discover:not(.tv-mode) .discover-speak svg{width:21px!important;height:21px!important}
+ html body.ai-chat-page.ma-ia-discover:not(.tv-mode) .discover-speak.speaking{background:#61428a!important}
+ html body.ai-chat-page.ma-ia-discover:not(.tv-mode) .chat-assistant>.newsearch-row{
+  margin:12px 0 0!important;width:100%!important;box-sizing:border-box!important;
+ }
+ html body.ai-chat-page.ma-ia-discover:not(.tv-mode) .newsearch-row .composer textarea{
+  font-family:Inter,"Segoe UI",sans-serif!important;font-size:14px!important;line-height:1.45!important;letter-spacing:-.01em!important;
+ }
+ html body.ai-chat-page.ma-ia-discover:not(.tv-mode) .composer-hint{font-size:10px!important;line-height:1.4!important}
+ html body.ai-chat-page.ma-ia-discover:not(.tv-mode) .chat-results-grid{
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important;margin-top:14px!important;
+ }
+ html body.ai-chat-page.ma-ia-discover:not(.tv-mode) .discover-card{
+  display:grid!important;grid-template-columns:96px minmax(0,1fr)!important;align-items:start!important;
+  padding:10px!important;gap:10px!important;border-radius:15px!important;text-align:start!important;
+ }
+ html body.ai-chat-page.ma-ia-discover:not(.tv-mode) .discover-poster{
+  width:96px!important;height:auto!important;max-height:none!important;aspect-ratio:auto!important;margin:0!important;align-self:start!important;overflow:visible!important;
+ }
+ html body.ai-chat-page.ma-ia-discover:not(.tv-mode) .discover-poster img{
+  width:100%!important;height:auto!important;min-height:0!important;max-height:none!important;aspect-ratio:auto!important;object-fit:contain!important;
+ }
+ html body.ai-chat-page.ma-ia-discover:not(.tv-mode) .discover-body{min-width:0!important}
+ html body.ai-chat-page.ma-ia-discover:not(.tv-mode) .discover-body h3{
+  font-size:15px!important;line-height:1.25!important;margin:0 0 5px!important;overflow-wrap:anywhere!important;
+ }
+ html body.ai-chat-page.ma-ia-discover:not(.tv-mode) :is(.discover-meta,.discover-why){font-size:10px!important;line-height:1.3!important;margin-bottom:6px!important;letter-spacing:.04em!important}
+ html body.ai-chat-page.ma-ia-discover:not(.tv-mode) .discover-facts{gap:3px!important;margin-bottom:7px!important}
+ html body.ai-chat-page.ma-ia-discover:not(.tv-mode) .discover-fact{font-size:12px!important;line-height:1.4!important;gap:3px 6px!important}
+ html body.ai-chat-page.ma-ia-discover:not(.tv-mode) .discover-fact-k{font-size:9px!important;min-width:0!important;letter-spacing:.03em!important}
+ html body.ai-chat-page.ma-ia-discover:not(.tv-mode) .discover-body p{
+  font-size:12px!important;line-height:1.5!important;margin:0 0 8px!important;overflow-wrap:anywhere!important;text-align:start!important;
+ }
+ html body.ai-chat-page.ma-ia-discover:not(.tv-mode) .discover-categories{gap:4px!important;margin:5px 0!important}
+ html body.ai-chat-page.ma-ia-discover:not(.tv-mode) .discover-category{font-size:9px!important;min-height:18px!important;padding:2px 5px!important}
+ html body.ai-chat-page.ma-ia-discover:not(.tv-mode) .discover-actions{gap:6px!important}
+ html body.ai-chat-page.ma-ia-discover:not(.tv-mode) :is(.discover-play,.discover-save,.discover-nfm){
+  font-size:11px!important;line-height:1.3!important;min-width:0!important;min-height:36px!important;padding:7px 9px!important;border-radius:10px!important;white-space:normal!important;
+ }
+ html body.ai-chat-page.ma-ia-discover:not(.tv-mode) .matchapp-card-availability{font-size:11px!important;line-height:1.45!important}
+ html body.ai-chat-page.ma-ia-discover:not(.tv-mode) .discover-rank{font-size:9px!important;padding:3px 5px!important}
+}
+@media(max-width:620px){
+ html body.ai-chat-page.ma-ia-discover:not(.tv-mode) .chat-results-grid{grid-template-columns:minmax(0,1fr)!important}
+}
+@media(max-width:380px){
+ html body.ai-chat-page.ma-ia-discover:not(.tv-mode) .discover-card{grid-template-columns:80px minmax(0,1fr)!important;gap:8px!important;padding:8px!important}
+ html body.ai-chat-page.ma-ia-discover:not(.tv-mode) .discover-poster{width:80px!important}
+}

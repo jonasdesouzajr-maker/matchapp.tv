@@ -786,6 +786,38 @@ function catalogCousins(item, take) {
         }));
 }
 
+/* Artwork is presentation-only; recommendation identity stays unchanged. */
+function discoverPosterUrl(item) {
+    let pinned='';
+    try{pinned=typeof getVerifiedPoster==='function'?getVerifiedPoster(item.title)||'':'';}catch(_){}
+    const cm=item._catalogMedia||{};
+    return [pinned,item._meta?.artwork,cm.poster_original_url,cm.poster_large_url,cm.poster_url,item._resolved?.artwork]
+      .find(url=>/^https:\/\/(?:image\.tmdb\.org|is\d+-ssl\.mzstatic\.com)\//i.test(String(url||'')))||'';
+}
+function setDiscoverPoster(img,item,url,fallback) {
+    if(!url)return;
+    item._posterExhausted=false;
+    const variants=window.MatchAppCatalogMedia?.posterVariants?.(url)||[url];
+    let index=0;
+    img.onerror=()=>{
+        if(!img.isConnected)return;
+        index++;
+        img.src=variants[index]||fallback;
+        if(index>=variants.length){img.onerror=null;item._posterExhausted=true;item._resolved={...(item._resolved||{}),artwork:fallback};}
+    };
+    img.src=variants[0]||url;
+}
+let discoverComposerNode=null;
+function parkDiscoverComposer() {
+    const row=discoverComposerNode||document.querySelector('.newsearch-row');
+    const log=document.getElementById('chat-log');
+    if(row&&log){discoverComposerNode=row;log.insertAdjacentElement('afterend',row);}
+}
+function placeDiscoverComposer(wrap,grid) {
+    const row=discoverComposerNode||document.querySelector('.newsearch-row');
+    if(row){discoverComposerNode=row;wrap.insertBefore(row,grid);}
+}
+
 function discoverCardHTML(item, idx) {
     const rawTitle = String(item.displayTitle || item.title || '');
     const title = (typeof window.sanitizeDisplayText === 'function')
@@ -823,7 +855,7 @@ function discoverCardHTML(item, idx) {
     <article class="discover-card${item.why ? ' is-related' : ''}" data-discover-idx="${idx}">
         <div class="discover-poster">
             ${ribbon}
-            <img id="dp-${idx}" src="" alt="${safe}" loading="lazy">
+            <img id="dp-${idx}" src="${escapeDiscoverHtml(discoverPosterUrl(item)||discoverFallbackPoster(item))}" alt="${safe}" loading="${idx < 3 ? 'eager' : 'lazy'}" decoding="async" width="342" height="513">
             <div class="discover-rank">${item.why ? '＋' : '#' + (idx + 1)}</div>
         </div>
         <div class="discover-body">
@@ -889,7 +921,9 @@ async function hydrateDiscoverCard(item, idx) {
     if (!img) return;
 
     const fallbackArtwork = discoverFallbackPoster(item);
+    const readyArtwork=discoverPosterUrl(item);
     img.src = fallbackArtwork;
+    if(readyArtwork)setDiscoverPoster(img,item,readyArtwork,fallbackArtwork);
     item._fallbackArtwork = fallbackArtwork;
 
     // Hand-verified art (parity with app.js's render path) always wins —
@@ -911,7 +945,7 @@ async function hydrateDiscoverCard(item, idx) {
     if (!meta && item._catalogMedia) {
         const cm = item._catalogMedia;
         meta = {
-            artwork: cm.poster_large_url || cm.poster_url || '',
+            artwork: cm.poster_original_url || cm.poster_large_url || cm.poster_url || '',
             year: cm.year || item.year || '',
             overview: cm.overview || '',
             tmdbId: cm.tmdb_id || null,
@@ -922,7 +956,27 @@ async function hydrateDiscoverCard(item, idx) {
         };
     }
     const visualType = !/podcast|album|music|audiobook/i.test(item.type || '');
-    if (!meta && !skipLiveLookup && !verified && visualType && typeof window.tmdbLookup === 'function') {
+    // Missing artwork is not a completed lookup. Reuse the exact source ID
+    // when available, including for translated titles.
+    if ((!meta || !meta.artwork) && !skipLiveLookup && !verified && visualType &&
+        window.MatchAppCatalogMedia?.resolvePoster) {
+        try {
+            const kind=/movie|film/i.test(item.type||'')?'movie':/series|tv|drama|anime|novela|show|documentary/i.test(item.type||'')?'tv':'';
+            const identity=item._catalogMedia||{};
+            const resolved=await window.MatchAppCatalogMedia.resolvePoster(item.title,{
+                year:item.year||'',kind:identity.media_kind||meta?.kind||kind,
+                tmdbId:identity.tmdb_id||meta?.tmdbId||null,cats:item.cats||[]
+            });
+            if(resolved?.url){
+                const cm=resolved.meta||{};
+                meta={...(meta||{}),artwork:resolved.url,year:cm.year||item.year,
+                  tmdbId:cm.tmdb_id||meta?.tmdbId,kind:cm.media_kind||meta?.kind||kind,
+                  source:'tmdb',title:cm.title||item.title,overview:cm.overview||meta?.overview||'',
+                  genres:cm.genres||meta?.genres||[]};
+            }
+        }catch(_){}
+    }
+    if ((!meta || !meta.artwork) && !skipLiveLookup && !verified && visualType && typeof window.tmdbLookup === 'function') {
         const kind = /movie|film/i.test(item.type || '') ? 'movie' : /series|tv|drama|anime|novela|show|documentary/i.test(item.type || '') ? 'tv' : '';
         const tmdb = await window.tmdbLookup(item.title, { year: item.year || '', kind });
         if (tmdb && (tmdb.posterLarge || tmdb.poster)) {
@@ -930,6 +984,9 @@ async function hydrateDiscoverCard(item, idx) {
             item._tmdb = tmdb;
         }
     }
+    // Show artwork before optional synopsis/preview services finish.
+    const earlyArtwork=verified||meta?.artwork||readyArtwork;
+    if(earlyArtwork)setDiscoverPoster(img,item,earlyArtwork,fallbackArtwork);
     let richMeta = null;
     if (!item._catalogMedia && !skipLiveLookup && typeof getRichMetadata === 'function') {
         // Apple metadata is exact-identity guarded in app.js. Keep it separate
@@ -969,19 +1026,9 @@ async function hydrateDiscoverCard(item, idx) {
     }
     paintDiscoverGenres(item, idx);
 
-    let resolvedArtwork = fallbackArtwork;
-    if (verified) {
-        img.onerror = function () { this.onerror = null; this.src = fallbackArtwork; };
-        img.src = verified;
-        resolvedArtwork = verified;
-    } else if (meta && meta.artwork) {
-        img.onerror = function () {
-            this.onerror = null;
-            this.src = fallbackArtwork;
-        };
-        img.src = meta.artwork;
-        resolvedArtwork = meta.artwork;
-    }
+    let resolvedArtwork = item._posterExhausted ? fallbackArtwork : (verified || meta?.artwork || readyArtwork || fallbackArtwork);
+    if(resolvedArtwork!==fallbackArtwork && img.getAttribute('src')===fallbackArtwork)
+        setDiscoverPoster(img,item,resolvedArtwork,fallbackArtwork);
     // If no external artwork survives the verified lookup chain, keep the
     // synopsis-aware MatchApp poster and persist that same artwork into
     // history / Watch Later instead of saving a blank poster URL.
@@ -1499,7 +1546,7 @@ window.startNewChat = function () {
     }
     currentThread = null;
     const log = document.getElementById('chat-log');
-    if (log) log.innerHTML = '';
+    if (log) { parkDiscoverComposer(); log.innerHTML = ''; }
     const empty = document.getElementById('discover-empty');
     if (empty) empty.style.display = 'none';
     const input = document.getElementById('discover-new-input');
@@ -1516,7 +1563,7 @@ window.openThread = function (id) {
     if (!t) return;
     currentThread = t;
     const log = document.getElementById('chat-log');
-    if (log) log.innerHTML = '';
+    if (log) { parkDiscoverComposer(); log.innerHTML = ''; }
     DISCOVER_ITEMS = [];
     t.turns.forEach(turn => {
         if (turn.role === 'user') {
@@ -1599,7 +1646,7 @@ function appendAssistantBubble(text, results, opts) {
     const playbackLabel = typeof t === 'function' ? t('discover.readAloud') : 'Read answer aloud';
     speak.title = playbackLabel || 'Read answer aloud';
     speak.setAttribute('aria-label', playbackLabel || 'Read answer aloud');
-    speak.textContent = '🎙';
+    speak.innerHTML = "<svg viewBox=\"0 0 48 48\" width=\"30\" height=\"30\" aria-hidden=\"true\" focusable=\"false\">\r\n                            <path d=\"M8,20 Q4,24 8,28\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" opacity=\"0.55\"/>\r\n                            <path d=\"M3,17 Q-3,24 3,31\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" opacity=\"0.3\"/>\r\n                            <path d=\"M40,20 Q44,24 40,28\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" opacity=\"0.55\"/>\r\n                            <path d=\"M45,17 Q51,24 45,31\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" opacity=\"0.3\"/>\r\n                            <rect x=\"18\" y=\"6\" width=\"12\" height=\"21\" rx=\"6\" fill=\"currentColor\"/>\r\n                            <path d=\"M13,21 a11,11 0 0 0 22,0\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3\" stroke-linecap=\"round\"/>\r\n                            <line x1=\"24\" y1=\"32\" x2=\"24\" y2=\"38\" stroke=\"currentColor\" stroke-width=\"3\" stroke-linecap=\"round\"/>\r\n                            <line x1=\"17\" y1=\"38\" x2=\"31\" y2=\"38\" stroke=\"currentColor\" stroke-width=\"3\" stroke-linecap=\"round\"/>\r\n                        </svg>";
     speak.onclick = () => window.readAloud(text, speak);
     row.appendChild(speak);
 
@@ -1608,6 +1655,7 @@ function appendAssistantBubble(text, results, opts) {
     const grid = document.createElement('div');
     grid.className = 'chat-results-grid';
     wrap.appendChild(grid);
+    placeDiscoverComposer(wrap,grid);
 
     log.appendChild(wrap);
     // One visible guest prompt at the TOP of newly generated AI answers.
@@ -2123,7 +2171,7 @@ async function runDiscovery() {
         currentThread = null;
         DISCOVER_ITEMS = [];
         const log = document.getElementById('chat-log');
-        if (log) log.innerHTML = '';
+        if (log) { parkDiscoverComposer(); log.innerHTML = ''; }
         history.replaceState(null, '', '/discover.html');
     }
 
