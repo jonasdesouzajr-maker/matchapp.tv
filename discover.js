@@ -1786,6 +1786,12 @@ async function runAskAndRender(question) {
     if (offlineBadge) offlineBadge.style.display = payload._live ? 'none' : 'inline-flex';
 
     const bubble = appendAssistantBubble(payload.answer, bookIntent ? [] : (payload.results || []), { instant: false });
+    if(payload?._live !== true && bubble?.wrap){
+        const notice=document.createElement('strong');
+        notice.setAttribute('role','status');
+        notice.textContent=window.matchRecoveryHeading?.() || 'TEMPORARY INTERRUPTION — PLEASE TRY AGAIN SHORTLY.';
+        bubble.wrap.prepend(notice);
+    }
     if(cookingIntent && bubble?.wrap){
       const sources=document.createElement('section');sources.className='cooking-chat-sources';sources.setAttribute('aria-label','Original cooking sources');
       const route=document.createElement('a');route.className='gold-btn';route.href='/cooking/?q='+encodeURIComponent(question);route.textContent=/^pt/i.test(window.MATCH_LANG||'')?'Explorar receitas e vídeos originais':/^es/i.test(window.MATCH_LANG||'')?'Explorar recetas y vídeos originales':/^fr/i.test(window.MATCH_LANG||'')?'Explorer les recettes et vidéos originales':/^de/i.test(window.MATCH_LANG||'')?'Originalrezepte und Videos ansehen':'Explore original recipes & videos';sources.append(route);
@@ -1868,7 +1874,18 @@ async function runAskAndRender(question) {
 let askInFlight = null;
 function askAndRender(question) {
     if (askInFlight) return askInFlight;
-    const running = Promise.resolve().then(() => runAskAndRender(question));
+    const running = Promise.resolve().then(() => runAskAndRender(question)).catch(error => {
+        // Even the independent source fallback can fail. Restore the composer
+        // and stop its loader instead of leaving an unhandled rejection.
+        console.warn('[MatchApp AI] Request interrupted:',error?.message||error);
+        finishAiWorkflow();
+        const loading=document.getElementById('discover-loading');
+        if(loading)loading.style.display='none';
+        const input=document.getElementById('discover-new-input');
+        if(input && !input.value)input.value=question;
+        window.showToast?.('Ask AI could not complete this request. Your question is ready to retry.',true,{recovery:true});
+        return null;
+    });
     askInFlight = running;
     running.finally(() => {
         if (askInFlight === running) askInFlight = null;

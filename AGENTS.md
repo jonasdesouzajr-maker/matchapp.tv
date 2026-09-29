@@ -233,3 +233,11 @@ For adult Ask AI and explicitly tagged adult matching, use **OpenRouter → Open
 ### 24. OWNER DIRECTIVE: NO EMULATOR TESTING (2026-09-27)
 
 The owner expressly discontinued Android emulator work **for all future MatchApp sessions**. Do not launch, rerun, troubleshoot, recommend, or make releases dependent on Android emulator tests. Do not opt into the repository's optional emulator GitHub workflow or include its opt-in commit tag. Continue the other authorized tasks and maintain normal Android compilation/static checks, production mobile-web browser checks, and actual physical-device verification when available. Do not present skipped emulator testing as a release defect or interrupt unrelated work to discuss it. This directive supersedes earlier requests to pursue emulator testing and remains until the owner explicitly changes it.
+
+---
+
+### 25. MATCHING AND ASK AI RECOVERY — OWNER REQUIREMENT (2026-09-29)
+
+Matching in every supported format and Ask AI are release-critical and must remain responsive and recoverable across supported devices. Engineer for continuous operation; never promise that external systems cannot fail. Reserve a finite request budget for independent verified-source fallbacks so a slow AI route cannot starve recovery. Restore usable controls and preserve the request after failures; do not charge for an unfulfilled request, fabricate answers, relax safety or silently misrepresent selected criteria.
+
+If recovery cannot complete a request, show an accessible, visibly **bold temporary-interruption heading** asking users to retry shortly, followed by useful retry guidance. Do not promise a restoration time or claim a repair is underway without evidence. Distinguish genuine empty exact-filter searches, allowance limits and sign-in requirements from service outages. Protect this behavior with regression tests and verify deployed matching and Ask AI before claiming success.
