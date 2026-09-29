@@ -306,7 +306,7 @@ function mountHome(){
  if(trending){after(hero,trending);after(trending,concierge)}
  // Presentation-only journey: titles → primary action → dynamic News → feature banners.
  // Existing IDs, handlers, matching state and feature logic are preserved.
- let anchor=concierge;[qs('#ebook-matcher-root'),loading,result,week,swift,events,how,aiExplainer].forEach(n=>{if(n){after(anchor,n);anchor=n}});
+ let anchor=concierge;[qs('#ebook-matcher-root'),qs('#cooking-home'),loading,result,week,swift,events,how,aiExplainer].forEach(n=>{if(n){after(anchor,n);anchor=n}});
  // Independent, always-visible AI entry; retain the existing composer and listeners.
  const aiEntry=el('section','ma-ai-entry');aiEntry.id='ma-ai-entry';aiEntry.setAttribute('aria-label',t.ask);
  concierge.before(aiEntry);aiEntry.appendChild(pa);pa.hidden=false;
