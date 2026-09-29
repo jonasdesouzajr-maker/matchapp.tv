@@ -157,8 +157,18 @@ section{margin:25px 0}.note{border-left:3px solid #d1ae67;padding-left:15px;colo
 footer{border-top:1px solid #453551;margin-top:35px;font-size:.9rem}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
 </style><link rel="stylesheet" href="/brand.css?v=192">
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-M7J3NNBN');</script>
+<!-- End Google Tag Manager -->
 </head>
 <body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7J3NNBN"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
 <header><div class="brand"><a href="/" aria-label="MatchApp TV Ai" class="matchapp-brand-link"><img class="matchapp-wordmark" src="/assets/brand/matchapp-tv-ai-v2.svg" alt="MatchApp TV Ai" width="368" height="66" decoding="async"></a></div><p class="eyebrow">A practical worldwide discovery guide</p>
 <h1>What to watch, read or listen to — in your language</h1>
 <p class="intro">Choose your mood and what you want to enjoy: a movie, a series, a book, an audiobook, a magazine, music or a podcast. MatchApp’s interface supports 14 languages and helps you explore entertainment from multiple countries. Content and store availability vary by region; always confirm with the linked publisher or provider.</p>
