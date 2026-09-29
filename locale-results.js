@@ -83,24 +83,33 @@
 
   async function paintNode(el, kind) {
     if (!el || el.dataset.localePainted === lang()) return;
+    const requestedLanguage=lang();
+    // A reused result node may now contain a different verified title.
+    if(el.dataset.localeLastText && el.textContent!==el.dataset.localeLastText)el.removeAttribute('data-src-text');
     const original = el.getAttribute('data-src-text') || el.textContent;
     if (!original || original.length < 2) return;
     el.setAttribute('data-src-text', original);
     const next = await translateText(original, kind);
-    if (el.isConnected && next) {
+    if (el.isConnected && next && lang()===requestedLanguage && el.getAttribute('data-src-text')===original) {
       el.textContent = next;
-      el.dataset.localePainted = lang();
+      el.dataset.localeLastText = next;
+      el.dataset.localePainted = requestedLanguage;
     }
   }
 
   async function paintPage() {
-    if (lang() === 'en') return;
+    if (lang() === 'en') {
+      document.querySelectorAll('[data-src-text][data-locale-last-text]').forEach(el=>{
+        if(el.textContent===el.dataset.localeLastText){el.textContent=el.dataset.srcText;el.dataset.localeLastText=el.textContent;el.dataset.localePainted='en';}
+      });
+      return;
+    }
     const title = document.getElementById('res-title');
-    if (title) await paintNode(title, 'title');
+    if (title && !window.currentSynopsisSource) await paintNode(title, 'title');
     const syn = document.getElementById('res-synopsis');
-    if (syn) await paintNode(syn, 'synopsis');
+    if (syn && !window.currentSynopsisSource) await paintNode(syn, 'synopsis');
     document.querySelectorAll('.discover-card h3').forEach(h => paintNode(h, 'title'));
-    document.querySelectorAll('.discover-card p').forEach(p => paintNode(p, 'synopsis'));
+    document.querySelectorAll('.discover-card .discover-synopsis').forEach(p => paintNode(p, 'synopsis'));
     document.querySelectorAll('.marquee-title').forEach(el => paintNode(el, 'title'));
   }
 

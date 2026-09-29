@@ -258,7 +258,7 @@ function mountHome(){
  const input=qs('#specific-search-input',search);if(input)input.placeholder=t.askph;
  const send=qs('button.gold-btn',search);if(send)send.textContent=t.send;
  const qline=el('div','ma-quota-line');qline.hidden=true;pa.appendChild(qline);syncQuota(qline);
- function tab(which){const ask=which==='ask';bm.setAttribute('aria-selected',String(!ask));ba.setAttribute('aria-selected',String(ask));pm.hidden=ask;pa.hidden=!ask;document.body.classList.toggle('ma-match-tab',!ask);document.body.classList.toggle('ma-ask-tab',ask)}
+ function tab(which){const ask=which==='ask';bm.setAttribute('aria-selected',String(!ask));ba.setAttribute('aria-selected',String(ask));pm.hidden=false;pa.hidden=false;document.body.classList.toggle('ma-match-tab',!ask);document.body.classList.toggle('ma-ask-tab',ask)}
  bm.addEventListener('click',()=>tab('match'));
  // A visible Ask click must reveal a visible composer, including when the
  // concierge fold was previously collapsed on a phone or tablet. Never focus
@@ -307,6 +307,12 @@ function mountHome(){
  // Presentation-only journey: titles → primary action → dynamic News → feature banners.
  // Existing IDs, handlers, matching state and feature logic are preserved.
  let anchor=concierge;[qs('#ebook-matcher-root'),loading,result,week,swift,events,how,aiExplainer].forEach(n=>{if(n){after(anchor,n);anchor=n}});
+ // Independent, always-visible AI entry; retain the existing composer and listeners.
+ const aiEntry=el('section','ma-ai-entry');aiEntry.id='ma-ai-entry';aiEntry.setAttribute('aria-label',t.ask);
+ concierge.before(aiEntry);aiEntry.appendChild(pa);pa.hidden=false;
+ tabs.hidden=true;tabs.setAttribute('aria-hidden','true');
+ pm.removeAttribute('role');pa.removeAttribute('role');
+ const aiHeading=qs('h2',search);if(aiHeading){aiHeading.removeAttribute('data-i18n');aiHeading.textContent=t.ask;}
  const ads=qsa('.container>.ad-banner-container',container);ads.forEach(ad=>ad.classList.add('ma-inline-ad'));
  // The Together ad is attached to the entire fold, not relocated with editorial ads.
  // lazy.js injects the fold heading immediately BEFORE .tg-entry at runtime.
@@ -411,6 +417,8 @@ function applyLanguage(){
  const t=c();
  if(isHome&&qs('.ma-concierge')){
    const hero=qs('.home-hero');if(hero){qs('.home-h1',hero).textContent=t.title;qs('.home-h1-sub',hero).textContent=t.sub}
+   const aiHeading=qs('#search-box h2');if(aiHeading)aiHeading.textContent=t.ask;
+   qs('#ma-ai-entry')?.setAttribute('aria-label',t.ask);
    const tabs=qsa('.ma-tab');if(tabs[0])tabs[0].textContent=t.match;if(tabs[1])tabs[1].textContent=t.ask;
    const submit=qs('#questionnaire-box button[data-i18n="q.submit"]');if(submit)submit.textContent=t.find;
    const send=qs('#search-box .gold-btn');if(send)send.textContent=t.send;

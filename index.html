@@ -1607,7 +1607,7 @@
 <link rel="stylesheet" href="/profile-card.css?v=20260919-stable3" data-home-support="profile-card">
 <link rel="stylesheet" href="/preference-exclusions.css?v=20260919-stable3" data-home-support="preferences">
 <link rel="stylesheet" href="/matchapp-ia.css?v=20260924-ads1" data-matchapp-ia="1">
-<script defer src="/matchapp-ia.js?v=20260926-brandai1-adorder2&amp;askbtn=20260927-2&amp;guide=20260927-single1&amp;home=20260928-folds2" data-matchapp-ia="1"></script>
+<script defer src="/matchapp-ia.js?v=20260926-brandai1-adorder2&amp;askbtn=20260927-2&amp;composer=20260929-1&amp;guide=20260927-single1&amp;home=20260928-folds2" data-matchapp-ia="1"></script>
     <link rel="stylesheet" href="/ui-containment.css?v=20260921-ui1" data-ui-containment="1">
 <link rel="stylesheet" href="/home-8k-layout.css?v=20260924-adfull1">
 <style id="home-avatar-profile-v2">
@@ -1652,6 +1652,9 @@ html body.page-home #mh-topbox .mh-deck>.sound-toggle-btn,html body.page-home #m
     <link rel="stylesheet" href="/mobile-header-compact.css?v=20260927-single-guide1" data-home-mobile-header="1">
     <link rel="stylesheet" href="/match-result-stability.css?v=20260927-mobile1&amp;matching=20260928-session1&amp;desktop=20260929-details1">
 <link rel="stylesheet" href="/cooking/cooking.css?v=20260929-1">
+<link rel="stylesheet" href="/ai-composer.css?v=20260929-1">
+<script defer src="/locale-results.js?v=20260929-language1"></script>
+<script defer src="/ai-composer.js?v=20260929-1"></script>
 </head>
 <body class="page-home">
     <!-- Google Tag Manager (noscript) -->
@@ -2303,7 +2306,7 @@ html body.page-home #daily-match-checkin { padding: 11px 12px !important; }
                 
 
                 <article id="questionnaire-box" class="premium-card">
-                    <h2 style="margin: 0 0 25px 0; font-size: 34px; color: var(--gold); text-align: center; font-weight: 900; text-transform: uppercase;" data-fixed-copy="match-box-title">Find what to watch here</h2>
+                    <h2 style="margin: 0 0 25px 0; font-size: 34px; color: var(--gold); text-align: center; font-weight: 900; text-transform: uppercase;" data-i18n="q.title">Find what to watch here</h2>
                     <p id="matchapp-topic-description" class="matchapp-topic-description" aria-live="polite">Start with Surprise Me for movies, television series, telenovelas and selected entertainment YouTube channels. To find recipe videos, trusted cooking channels, fitness workouts, Spotify playlists, music or podcasts, choose that topic explicitly below.</p>
                     <div class="q-grid q-grid--primary">
                         <div>
@@ -2730,7 +2733,7 @@ html body.page-home #daily-match-checkin { padding: 11px 12px !important; }
                     <p style="color:#b9b1cc; font-size:14px; text-align:center; margin:0 0 4px 0;" data-i18n="search.hint">Type a title for a direct match — or ask a full question and our AI will find every title that fits.</p>
                     <p style="color:var(--gold); font-size:12.5px; text-align:center; margin:0 0 20px 0; font-weight:700; text-transform:uppercase; letter-spacing:0.4px;" data-i18n="search.voiceHint">🎙️ Or just tap the mic and talk — your AI concierge listens in your language</p>
                     <div class="home-ask-composer" style="display: flex; gap: 12px; flex-wrap: wrap;">
-                        <input type="text" id="specific-search-input" placeholder="e.g., Fallout — or: Is there a TV show about Doctors Without Borders?" data-i18n-placeholder="search.placeholder" onkeydown="if(event.key==='Enter') smartSearch()" style="flex: 1; padding: 18px; border-radius: 12px; border: 1px solid var(--gold); background: rgba(0,0,0,0.7); color: #fff; font-size: 17px; min-width: 200px;">
+                        <textarea rows="3" id="specific-search-input" placeholder="e.g., Fallout — or: Is there a TV show about Doctors Without Borders?" data-i18n-placeholder="search.placeholder" onkeydown="if(event.key==='Enter' &amp;&amp; !event.shiftKey &amp;&amp; !event.isComposing){event.preventDefault();submitHomeAI()}" style="flex: 1; padding: 18px; border-radius: 12px; border: 1px solid var(--gold); background: rgba(0,0,0,0.7); color: #fff; font-size: 17px; min-width: 200px;"></textarea>
                         <button id="mic-btn-index" class="mic-btn" type="button" aria-label="Speak your question" title="Speak your question" style="display:none;"><svg viewBox="0 0 48 48" width="30" height="30" aria-hidden="true" focusable="false">
                             <path d="M8,20 Q4,24 8,28" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" opacity="0.55"/>
                             <path d="M3,17 Q-3,24 3,31" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" opacity="0.3"/>
@@ -2741,7 +2744,7 @@ html body.page-home #daily-match-checkin { padding: 11px 12px !important; }
                             <line x1="24" y1="32" x2="24" y2="38" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
                             <line x1="17" y1="38" x2="31" y2="38" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
                         </svg></button>
-                        <button onclick="smartSearch()" class="gold-btn" style="padding: 18px 35px; font-size: 18px; width:auto;" data-i18n="search.button">🔍 Search</button>
+                        <button onclick="submitHomeAI()" class="gold-btn" style="padding: 18px 35px; font-size: 18px; width:auto;" data-i18n="search.button">🔍 Search</button>
                     </div>
                     <div class="search-examples">
                         <span data-i18n="search.trythese">Try:</span>
@@ -3616,7 +3619,7 @@ html body.page-home #daily-match-checkin { padding: 11px 12px !important; }
     <script src="/voice-input.js?v=20260924-runtime1"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            initVoiceInput('specific-search-input', 'mic-btn-index', () => smartSearch());
+            initVoiceInput('specific-search-input', 'mic-btn-index');
         });
     </script>
     <script>

@@ -42,7 +42,7 @@ test('The reminder is fixed, compact, and releases page space on mobile and desk
 });
 
 test('Home match picker uses requested heading and keeps compact breathing room inside its field',()=>{
-  assert.match(home,/data-fixed-copy="match-box-title">Find what to watch here<\/h2>/);
+  assert.match(home,/data-i18n="q.title">Find what to watch here<\/h2>/);
   assert.match(iaCss,/\.ma-filter-row\{display:grid;gap:4px;/);
   assert.match(iaCss,/\.ma-chip-row\{display:flex;gap:5px;/);
   assert.match(iaCss,/\.ma-concierge #questionnaire-box\{padding:4px!important;overflow:hidden!important\}/);

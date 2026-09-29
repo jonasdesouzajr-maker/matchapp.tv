@@ -5,13 +5,13 @@ const path=require('node:path');
 const read=f=>fs.readFileSync(path.join(__dirname,'..',f),'utf8');
 const html=read('index.html'), css=read('matchapp-ia.css');
 const patch=css.slice(css.indexOf('/* Homepage Ask Ai: keep all three controls'));
-test('homepage Ask Ai has a dedicated composer without changing submit or voice IDs',()=>{
+test('homepage Ask Ai has a dedicated composer retains input and voice IDs and submits to the existing AI entry',()=>{
   const block=html.slice(html.indexOf('<article id="search-box"'),html.indexOf('</article>',html.indexOf('<article id="search-box"')));
   assert.match(block, /class="home-ask-composer"/);
   assert.match(block, /id="specific-search-input"/);
   assert.match(block, /id="mic-btn-index"/);
-  assert.match(block, /onclick="smartSearch\(\)"/);
-  assert.match(block, /onkeydown="if\(event.key==='Enter'\) smartSearch\(\)"/);
+  assert.match(block, /onclick="submitHomeAI\(\)"/);
+  assert.match(block, /!event.shiftKey[\s\S]*!event.isComposing[\s\S]*submitHomeAI\(\)/);
 });
 test('mobile input and mic occupy row one and Send occupies row two',()=>{
   assert.match(patch, /@media\(max-width:640px\)/);

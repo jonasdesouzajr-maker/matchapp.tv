@@ -1,0 +1,50 @@
+/* Adult AI presentation. Existing request, quota and matching code owns behavior. */
+body.ma-ia-home #ma-ai-entry{width:100%;min-width:0;margin:20px 0 24px;scroll-margin-top:90px}
+body.ma-ia-home #ma-ai-entry #ma-panel-ask{display:block!important;padding:0!important}
+body.ma-ia-home #ma-ai-entry #search-box{display:block!important;margin:0!important;padding:clamp(18px,3vw,32px)!important;border:1px solid #a495cd!important;border-radius:26px!important;background:radial-gradient(ellipse at top left,#33284e 0,transparent 65%),#131222!important;box-shadow:0 12px 32px #0003,inset 0 1px #ffffff14!important}
+body.ma-ia-home #ma-ai-entry h2{font-size:clamp(22px,3vw,32px)!important;line-height:1.25!important;text-align:start!important;text-transform:none!important;letter-spacing:-.025em!important;color:#f7efff!important;margin-bottom:12px!important}
+body.ma-ia-home #ma-ai-entry p{text-align:start!important;line-height:1.6!important;text-transform:none!important;letter-spacing:normal!important}
+body.ma-ia-home #ma-concierge>.ma-tabs[hidden]{display:none!important}
+body.ma-ia-home #ma-ai-entry .home-ask-composer{display:grid!important;grid-template-columns:minmax(0,1fr) 52px!important;grid-template-areas:'input mic' 'send send'!important;gap:12px!important;align-items:start!important;padding:14px!important;border:1px solid #9183b8!important;border-radius:20px!important;background:#11101e!important;transition:border-color .2s,box-shadow .2s!important}
+body.ma-ia-home #ma-ai-entry .home-ask-composer:focus-within,html body.ai-chat-page.ma-ia-discover .composer:focus-within{border-color:#d1b5ff!important;box-shadow:0 0 0 3px #b88cfb24!important}
+html body.ma-ia-home #ma-ai-entry #search-box #specific-search-input{grid-area:input!important;box-sizing:border-box!important;min-width:0!important;width:100%!important;min-height:96px!important;height:auto!important;max-height:240px!important;resize:vertical!important;padding:10px!important;border:0!important;border-radius:10px!important;background:transparent!important;color:#fff!important;-webkit-text-fill-color:#fff!important;font:400 16px/1.6 system-ui,sans-serif!important;caret-color:#edd0ff!important;outline:0!important}
+body.ma-ia-home #ma-ai-entry #mic-btn-index{grid-area:mic!important;width:48px!important;height:48px!important;min-width:48px!important;margin:4px 0!important;background:#322644!important;border:1px solid #c2a2ee!important;color:#f7eaff!important;position:static!important;transform:none!important}
+body.ma-ia-home #ma-ai-entry .home-ask-composer>.gold-btn{grid-area:send!important;justify-self:end!important;max-width:100%!important;min-height:48px!important;width:auto!important;white-space:normal!important;padding:12px 28px!important;font-size:16px!important;line-height:1.4!important}
+body.ma-ia-home #ma-ai-entry .search-examples{display:flex!important;flex-wrap:wrap!important;gap:10px!important;margin-top:16px!important}
+body.ma-ia-home #ma-ai-entry .search-examples button{white-space:normal!important;line-height:1.5!important;min-height:44px!important;max-width:100%!important;padding:10px 14px!important}
+html body.ai-chat-page.ma-ia-discover .discover-head{padding:clamp(18px,3vw,36px)!important;border:1px solid #665779!important;border-radius:26px!important;background:#151321!important}
+html body.ai-chat-page.ma-ia-discover .discover-title-copy h1{font-family:system-ui,sans-serif!important;font-size:clamp(25px,4vw,38px)!important;line-height:1.2!important;letter-spacing:-.035em!important;text-transform:none!important}
+html body.ai-chat-page.ma-ia-discover .concierge-tagline{font-size:15px!important;line-height:1.65!important;max-width:65ch!important}
+html body.ai-chat-page.ma-ia-discover .chat-log{gap:24px!important;margin:28px 0!important;min-width:0!important}
+html body.ai-chat-page.ma-ia-discover .chat-user{align-self:flex-end!important;max-width:85%!important;border:1px solid #8871a8!important;background:#352847!important;border-radius:22px 22px 6px 22px!important;font:500 16px/1.65 system-ui,sans-serif!important;padding:16px 20px!important}
+html body.ai-chat-page.ma-ia-discover .chat-assistant{background:#1b1829!important;border:1px solid #524561!important;border-radius:6px 22px 22px!important;padding:clamp(16px,2.5vw,26px)!important;min-width:0!important}
+html body.ai-chat-page.ma-ia-discover .chat-answer-text{font-family:system-ui,sans-serif!important;font-size:clamp(16px,1.5vw,18px)!important;line-height:1.8!important;color:#eee8f6!important;overflow-wrap:anywhere!important;min-width:0!important}
+html body.ai-chat-page.ma-ia-discover .chat-answer-row{min-width:0!important;gap:12px!important}
+html body.ai-chat-page.ma-ia-discover .chat-results-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr))!important}
+html body.ai-chat-page.ma-ia-discover .newsearch-row{display:flex!important;flex-direction:column!important;gap:12px!important;min-width:0!important;width:100%!important;margin-top:28px!important}
+html body.ai-chat-page.ma-ia-discover .composer{display:grid!important;grid-template-columns:minmax(0,1fr) 48px!important;grid-template-areas:'label label' 'input mic'!important;gap:10px!important;width:100%!important;box-sizing:border-box!important;padding:16px!important;background:#100f1c!important;border:1px solid #9183b8!important;border-radius:20px!important}
+html body.ai-chat-page.ma-ia-discover .composer-input-label{grid-area:label!important;position:static!important;color:#e9dcfa!important;font:600 13px/1.5 system-ui,sans-serif!important;white-space:normal!important}
+html body.ai-chat-page.ma-ia-discover #discover-new-input{grid-area:input!important;width:100%!important;min-width:0!important;min-height:88px!important;max-height:240px!important;height:auto!important;padding:6px!important;font:400 16px/1.65 system-ui,sans-serif!important;resize:vertical!important;color:#fff!important;-webkit-text-fill-color:#fff!important}
+html body.ai-chat-page.ma-ia-discover #mic-btn-discover{grid-area:mic!important;position:static!important;inset:auto!important;transform:none!important;width:48px!important;height:48px!important;margin:0!important;background:#322644!important;border:1px solid #c2a2ee!important;color:#f7eaff!important}
+html body.ai-chat-page.ma-ia-discover .composer-send{align-self:flex-end!important;width:auto!important;max-width:100%!important;min-height:48px!important;padding:12px 24px!important;position:static!important;white-space:normal!important;line-height:1.5!important}
+html body.ai-chat-page.ma-ia-discover .composer-hint{font-size:13px!important;line-height:1.6!important;color:#b9adc9!important}
+body:is(.ma-ia-home,.ma-ia-discover) :is(button,.gold-btn,.crit-chip,.ma-quick-chip,.ai-session-chip){box-sizing:border-box;max-width:100%;min-width:0;white-space:normal;overflow-wrap:anywhere;line-height:1.45;height:auto}
+html body.ai-chat-page.ma-ia-discover :is(.ai-session-strip,.discover-card-actions){flex-wrap:wrap!important;gap:10px!important}
+html body.ai-chat-page.ma-ia-discover :is(.discover-title-copy,.discover-card,.ai-thinking-copy){min-width:0!important;overflow-wrap:anywhere}
+html body.ai-chat-page.ma-ia-discover .ai-session-chip{font-size:12px!important;padding:8px 12px!important}
+html[dir=rtl] html body.ai-chat-page.ma-ia-discover .chat-user{border-radius:22px 22px 22px 6px!important}
+html[dir=rtl] html body.ai-chat-page.ma-ia-discover .chat-assistant{border-radius:22px 6px 22px 22px!important}
+@media(max-width:600px){html body.ai-chat-page.ma-ia-discover .chat-user{max-width:92%!important}html body.ai-chat-page.ma-ia-discover .chat-answer-row{flex-wrap:wrap!important}html body.ai-chat-page.ma-ia-discover .chat-answer-text{flex-basis:100%!important}html body.ai-chat-page.ma-ia-discover .composer-send,body.ma-ia-home #ma-ai-entry .home-ask-composer>.gold-btn{width:100%!important}html body.ai-chat-page.ma-ia-discover .discover-title-row{align-items:flex-start!important}html body.ai-chat-page.ma-ia-discover .app-header nav{flex-wrap:wrap!important}}
+@media(prefers-reduced-motion:reduce){html body.ai-chat-page.ma-ia-discover .chat-bubble,html body.ai-chat-page.ma-ia-discover .ai-thinking *,body.ma-ia-home #ma-ai-entry *{animation:none!important;transition:none!important}}
+html.reduce-motion body.ai-chat-page.ma-ia-discover .chat-bubble,html.reduce-motion body.ai-chat-page.ma-ia-discover .ai-thinking *,html.reduce-motion body.ma-ia-home #ma-ai-entry *{animation:none!important;transition:none!important}
+
+html body.ai-chat-page.ma-ia-discover .ai-session-strip[hidden]{display:none!important}
+
+html body.ai-chat-page.ma-ia-discover .composer{order:0!important;flex:none!important}
+html body.ai-chat-page.ma-ia-discover .composer-input-label{width:auto!important;height:auto!important;margin:0!important;overflow:visible!important;clip:auto!important}
+html body.ai-chat-page.ma-ia-discover .composer-hint{order:1!important}
+html body.ai-chat-page.ma-ia-discover .composer-send{order:2!important}
+html body.ai-chat-page.ma-ia-discover .ai-send-cost{order:3!important}
+html body.ai-chat-page.ma-ia-discover .ma-discover-quota{display:none!important}
+html body.ai-chat-page.ma-ia-discover .discover-title-copy h1{background:transparent!important}
+html body.ai-chat-page.ma-ia-discover #discover-new-input{background:transparent!important;border:0!important;box-shadow:none!important}
