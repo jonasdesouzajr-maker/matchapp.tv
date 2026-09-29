@@ -91,3 +91,24 @@ test('Bookworms header uses responsive text instead of the old overflowing SVG',
   assert(hub.includes('data-ma-brand-ai'));
   assert(!hub.includes('<img class="matchapp-wordmark" src="/assets/brand/matchapp-tv-ai-v2.svg"'));
 });
+
+test('read-only preflight cannot spend match packs on Ask AI',async()=>{
+  const d=new JSDOM('',{url:'https://matchapp.tv/',runScripts:'outside-only'});
+  try{
+    const app=source('app.js');
+    const first=app.indexOf('async function matchAllowanceBeforeLookup(');
+    const last=app.indexOf('window.matchAllowanceBeforeLookup=matchAllowanceBeforeLookup;',first);
+    assert(first>=0&&last>first);
+    d.window.__status={authenticated:true,remaining:0,purchased_matches:5,credits:0,limit:5};
+    d.window.__client={auth:{getSession:async()=>({data:{session:{user:{id:'user'}}}})},
+      rpc:async name=>{assert.equal(name,'match_status');return {data:d.window.__status};}};
+    d.window.eval("var supabaseClient=window.__client,lastQuotaStatus=null;function updateQuotaBadge(){};function showQuotaMessage(kind,status,action){window.__blocked=action;}\n"+
+      app.slice(first,last+'window.matchAllowanceBeforeLookup=matchAllowanceBeforeLookup;'.length));
+    assert.equal(await d.window.matchAllowanceBeforeLookup('ask_ai'),false);
+    assert.equal(d.window.__blocked,'ask_ai');
+    assert.equal(await d.window.matchAllowanceBeforeLookup('match'),true);
+    d.window.__status={authenticated:true,remaining:0,purchased_matches:0,credits:2,limit:5};
+    assert.equal(await d.window.matchAllowanceBeforeLookup('ask_ai'),true);
+    assert.equal(await d.window.matchAllowanceBeforeLookup('match'),false);
+  }finally{d.window.close();}
+});

@@ -4393,8 +4393,11 @@ async function matchAllowanceBeforeLookup(action='match') {
         const {data,error}=await supabaseClient.rpc('match_status');
         if(error||!data?.authenticated)throw error||new Error('Allowance status unavailable');
         lastQuotaStatus=data;updateQuotaBadge(data);
+        // Match packs cannot pay for Ask AI: only included actions or AI credits can.
+        // Keep these balances separate before any provider request is made.
         const usable=Math.max(0,Number(data.remaining)||0)+
-            Math.max(0,Number(data.purchased_matches)||0)+Math.max(0,Number(data.credits)||0);
+            (action==='ask_ai'?Math.max(0,Number(data.credits)||0)
+                :Math.max(0,Number(data.purchased_matches)||0));
         if(usable>0)return true;
         showQuotaMessage(data.limit>=50?'business':data.limit>=10?'vip':'registered',data,action);
         return false;
