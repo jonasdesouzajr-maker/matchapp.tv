@@ -30,7 +30,7 @@ test('Groq is adult-only and runs after OpenRouter, OpenAI and Gemini',()=>{
  const gemini=proxy.indexOf('const routes = [');
  assert.ok(router>0&&openai>router&&gemini>openai&&groq>gemini);
  assert.match(proxy,/body\?\.kidsMode !== true/);
- assert.match(proxy,/if \(openAiEligible && groqApiKey\)/);
+ assert.match(proxy,/if \(openAiEligible && groqApiKey && Date\.now\(\) < providerDeadline\)/);
  assert.match(proxy,/Deno\.env\.get\("GROQ_API_KEY"\)/);
 });
 test('uses strict schema, supported production model and existing frontend contract',async()=>{
