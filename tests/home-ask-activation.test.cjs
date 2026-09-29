@@ -47,11 +47,12 @@ test('new Ask runtime reaches phones, iPhones, tablets and live Android WebView 
  assert.match(home,/id="profile-link-tab" href="\/profile\/profile\.html/);
 });
 
-test('live phone/tablet/desktop smoke opens the real Home Ask card and handles empty Send',()=>{
+test('live phone/tablet/desktop smoke verifies the separate Home Ask composer and empty Send',()=>{
  const smoke=read('tools/live-production-smoke.cjs');
- assert.match(smoke,/page\.locator\('#ma-tab-ask'\)\.click/);
- assert.match(smoke,/Home Ask AI tap opens visible unfocused composer/);
- assert.match(smoke,/getElementById\('ma-panel-ask'\)/);
+ assert.match(smoke,/page\.locator\('#ma-ai-entry #specific-search-input'\)/);
+ assert.match(smoke,/Separate Home Ask AI composer is visible and unfocused/);
+ assert.match(smoke,/getElementById\('ma-ai-entry'\)/);
+ assert.doesNotMatch(smoke,/page\.locator\('#ma-tab-ask'\)\.click/);
  assert.match(smoke,/noAutoKeyboard/);
  assert.match(smoke,/waitForFunction\(\(\)=>\{[\s\S]*input\.top>=0&&input\.bottom<=bottom&&send\.top>=0&&send\.bottom<=bottom/);
  assert.match(smoke,/Ask AI empty Send is actionable/);
