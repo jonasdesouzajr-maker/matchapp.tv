@@ -18,6 +18,7 @@ test('Supabase cooking prompt stays opt-in adults, truthful on recipe sources an
   assert.match(proxy,/cookingIntent = !kidsMode/);
   assert(proxy.includes('This is a COOKING request.'));
   assert(proxy.includes('Return an empty results array: the client renders independently reviewed cooking source links'));
-  assert(proxy.includes("https://matchapp.tv/cooking/"));
+  const cookingUrl = proxy.match(/The user can browse (\S+) for original sources and videos\./)?.[1];
+  assert.equal(cookingUrl, 'https://matchapp.tv/cooking/');
   assert(proxy.includes('Never claim to have retrieved recipe text not supplied here'));
 });
