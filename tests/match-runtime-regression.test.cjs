@@ -41,13 +41,26 @@ test('account history exhaustion uses exact recovery without weakening selected 
 });
 
 test('ordinary matching preserves exact choices when no verifiable candidate exists',async()=>{
- const requested={cat:['movie'],plat:['Impossible service'],mood:['funny'],vibe:[],rating:[],decade:[]};
+ const requested={cat:['unsupported format'],plat:['Impossible service'],mood:['funny'],vibe:[],rating:[],decade:[]};
  const {dom,w,state}=matching(requested,[]);
  try{
   await w.triggerMatch(false);
   assert.equal(state.rendered,null,'unverified selections must never invent a result');
   assert.equal(state.charges,0,'no match should consume no match credit');
-  assert(state.messages.some(text=>text.includes('No verified exact title')));
+  assert(state.messages.some(text=>text.includes('No verified exact title')&&text.includes('no match was used')));
+ }finally{dom.window.close();}
+});
+
+test('fresh recovery relaxes secondary choices without repeating a seen title or changing mood',async()=>{
+ const requested={cat:['movie'],plat:['Impossible service'],mood:['funny'],vibe:[],rating:[],decade:['1900s']};
+ const {dom,w,state}=matching(requested,[]);
+ try{
+  await w.triggerMatch(false);
+  assert(state.rendered,'a fresh eligible movie should recover the request');
+  assert(catalog.find(e=>e.title===state.rendered.title).moods.includes('funny'));
+  assert.equal(state.rendered._historyFallback,false);
+  assert.equal(state.rendered._relaxedStage,'broaden-platform');
+  assert.equal(state.charges,1);
  }finally{dom.window.close();}
 });
 
@@ -162,6 +175,7 @@ test('a stalled AI proposal leaves time to launch independent exact discovery',a
   assert.equal(sourceCalls,1,'independent discovery must run after AI timeout');
   assert.equal(deadlines[0],25000,'AI reserves 35 seconds of the overall budget');
   assert(deadlines[1]>=27000,'TMDB retains time even after AI stalls');
-  assert.equal(state.charges,0);assert.equal(w.__matchappMatchPhase,'idle');
+  assert(state.rendered && state.rendered._relaxedStage==='broaden-platform');
+  assert.equal(state.charges,1,'the independently verified recovery is fulfilled and charged once');
  }finally{dom.window.close();}
 });

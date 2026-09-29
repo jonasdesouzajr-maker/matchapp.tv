@@ -4208,7 +4208,7 @@ function pickRecycledCatalog(cat, plat, mood, vibe, rating, decade) {
 // in a predictable order while keeping the selected category anchored as long
 // as the catalogue has an eligible title in that category. Watch Later and
 // Not For Me are always hard exclusions, including cloud-restored history.
-function pickGuaranteedCatalog(cat, plat, mood, vibe, rating, decade) {
+function pickGuaranteedCatalog(cat, plat, mood, vibe, rating, decade, freshOnly = false) {
     const policy = window.matchPolicy;
     if (!policy || typeof policy.matchesCriteria !== 'function') return null;
     const requested = {
@@ -4263,7 +4263,7 @@ function pickGuaranteedCatalog(cat, plat, mood, vibe, rating, decade) {
         title: pick.title,
         synopsis: pick.synopsis,
         platform: pick.platform,
-        platformVerified: true,
+        platformVerified: pick.platform !== 'any' && pick.platformVerified !== false,
         watchUrl: pick.watchUrl || (pick.platform === 'Roku Channel' ? pick.url : null) || null,
         source: recycled ? 'catalog-guaranteed-recycle' : 'catalog-guaranteed',
         _historyFallback: !!recycled,
@@ -4279,6 +4279,7 @@ function pickGuaranteedCatalog(cat, plat, mood, vibe, rating, decade) {
             return !policy.known().has(k) && !sessionShown;
         });
         if (fresh.length) return shape(fresh[Math.floor(Math.random()*fresh.length)], stage, false);
+        if (freshOnly) return null;
         const notCurrent = candidates.filter(entry => policy.key(entry.title) !== currentKey);
         if (notCurrent.length) candidates = notCurrent;
         candidates.sort((a,b) => {
@@ -4562,9 +4563,12 @@ window.triggerMatch = async function(isSpecificSearch = false) {
     if (!isSpecificSearch && !preflight && typeof pickRecycledCatalog === 'function') {
         try { preflight = pickRecycledCatalog(requested.cat,requested.plat,requested.mood,requested.vibe,requested.rating,requested.decade); } catch (_) { preflight = null; }
     }
-    if (!isSpecificSearch && !preflight && window.matchappAllowSeenAgain === true && typeof pickGuaranteedCatalog === 'function') {
+    // Recover a fresh, verified catalogue title under the hard category,
+    // mood, rating, genre and exclusion boundaries before showing an outage.
+    // Do not turn on previously-seen recycling without the user's opt-in.
+    if (!isSpecificSearch && !preflight && typeof pickGuaranteedCatalog === 'function') {
         try {
-            preflight = pickGuaranteedCatalog(requested.cat,requested.plat,requested.mood,requested.vibe,requested.rating,requested.decade);
+            preflight = pickGuaranteedCatalog(requested.cat,requested.plat,requested.mood,requested.vibe,requested.rating,requested.decade,window.matchappAllowSeenAgain !== true);
             if (preflight?._relaxedStage) window.lastMatchRelaxation = preflight._relaxedStage;
         } catch (_) { preflight = null; }
     }

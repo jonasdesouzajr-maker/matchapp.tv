@@ -37,7 +37,7 @@ test('all adult match formats keep hard filters and no unrequested recycles',()=
  assert.match(app,/!isSpecificSearch && !preflight && typeof pickRecycledCatalog/);
  assert.doesNotMatch(app,/matchappAllowSeenAgain === true && typeof pickRecycledCatalog/);
  assert.match(app,/Previously suggested · matches all your choices/);
- assert.match(app,/matchappAllowSeenAgain === true && typeof pickGuaranteedCatalog/);
+ assert.match(app,/pickGuaranteedCatalog\(requested\.cat,requested\.plat,requested\.mood,requested\.vibe,requested\.rating,requested\.decade,window\.matchappAllowSeenAgain !== true\)/);
  assert.match(app,/const ranked=await window\.MatchAppAIRank\.rank\(rows/);
  assert.match(books,/async function rankBooks\(approved,p\)/);
  // User-approved reading fallback may recycle previously seen profiles only
