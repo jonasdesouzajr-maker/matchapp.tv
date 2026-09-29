@@ -42,6 +42,9 @@ function nextRewardResetText() {
 async function grantShareReward(sharedTitle = window.globalMatchTitle) {
     if (window.isUserLoggedIn && window.supabaseClient) {
         try {
+            // A result must reach the signed-in owner's server history before
+            // it can count toward a share reward. No fabricated browser titles.
+            await window.matchPolicy?.flush?.();
             const { data, error } = await window.supabaseClient.rpc('claim_match_result_share', { p_title: sharedTitle });
             if (error) throw error;
             if (data && data.granted) {
