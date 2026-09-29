@@ -19,6 +19,23 @@ function nativeVoiceAvailable(){
 }
 function activeSpeechLang(){return SPEECH_LANG_MAP[window.MATCH_LANG] || 'en-US';}
 
+/* Keep recognizer wording and existing device punctuation. */
+function punctuateSpeech(value,lang){
+  let text=String(value||'').trim().replace(/\s+/g,' ');
+  const commands=lang==='pt-BR'
+    ? [[/\b(?:ponto de interrogação)\b/gi,'?'],[/\b(?:ponto de exclamação)\b/gi,'!'],[/\b(?:vírgula)\b/gi,','],[/\b(?:ponto final)\b/gi,'.']]
+    : lang==='en' ? [[/\bquestion mark\b/gi,'?'],[/\bexclamation (?:mark|point)\b/gi,'!'],[/\bcomma\b/gi,','],[/\bfull stop\b/gi,'.']] : [];
+  for(const [pattern,mark] of commands)text=text.replace(pattern,mark);
+  text=text.replace(/\s+([,.;:!?])/g,'$1').replace(/([,;:!?])(?=[\p{L}\p{N}])/gu,'$1 ');
+  text=text.replace(/(^|[.!?]\s+)(\p{L})/gu,(_,before,letter)=>before+letter.toLocaleUpperCase(lang||'en'));
+  if(text&&!/[.!?。！？…]$/.test(text)){
+    const question=lang==='pt-BR'
+      ? /^(?:o que|qual|quais|quem|onde|quando|como|por que|quanto|quantos|quantas)\b/i.test(text)
+      : lang==='en' ? /^(?:what|which|who|where|when|why|how|can you|could you|is there|are there|do you|does)\b/i.test(text) : false;
+    text+=(question?'?':/^(?:ja|zh)/.test(lang||'')?'。':'.');
+  }
+  return text;
+}
 function initVoiceInput(inputId,micBtnId,onFinalTranscript){
   const input=document.getElementById(inputId);
   const micBtn=document.getElementById(micBtnId);
@@ -31,6 +48,15 @@ function initVoiceInput(inputId,micBtnId,onFinalTranscript){
 
   let recognition=null;
   let listening=false;
+  const enhanced=!location.pathname.startsWith('/kids/') &&
+    (inputId==='specific-search-input'||inputId==='discover-new-input');
+  let prefix='',finalText='',interimText='',cancelled=false;
+  function paintTranscript(value){
+    input.value=value;
+    input.dispatchEvent(new Event('input',{bubbles:true}));
+    grow();
+    input.scrollTop=input.scrollHeight;
+  }
   const originalPlaceholder=input.getAttribute('placeholder')||'';
 
   function tr(key,fallback){return (typeof t==='function'&&t(key))||fallback;}
@@ -41,15 +67,18 @@ function initVoiceInput(inputId,micBtnId,onFinalTranscript){
     input.placeholder=originalPlaceholder;
   }
   function begin(){
+    if(enhanced){prefix=input.value.trim();finalText='';interimText='';cancelled=false;}
     listening=true;
     micBtn.classList.add('mic-listening');
     input.placeholder=tr('voice.listening','🎙️ Listening... speak now');
   }
   function acceptTranscript(value){
-    const transcript=String(value||'').trim();
+    const raw=String(value||'').trim();
+    if(!raw||(enhanced&&cancelled)){finish();return;}
+    const spoken=enhanced?punctuateSpeech(raw,window.MATCH_LANG||'en'):raw;
+    const transcript=enhanced&&spoken?[prefix,spoken].filter(Boolean).join(' '):spoken;
     if(!transcript){finish();return;}
-    input.value=transcript;
-    grow();
+    if(enhanced)paintTranscript(transcript);else{input.value=transcript;grow();}
     finish();
     // Voice is a first-class input path: do not focus the textarea here.
     // On mobile, focusing it after dictation opens the software keyboard and
@@ -71,10 +100,17 @@ function initVoiceInput(inputId,micBtnId,onFinalTranscript){
   window.matchAppNativeVoiceResult=acceptTranscript;
   window.matchAppNativeVoiceError=showError;
 
+  if(enhanced)input.addEventListener('input',event=>{
+    if(!event.isTrusted||!listening)return;
+    cancelled=true;
+    try{recognition?.abort();}catch(_){}
+    finish();
+  });
+
   micBtn.addEventListener('click',()=>{
     if(listening&&recognition){
       try{recognition.stop();}catch(_){}
-      finish();
+      if(!enhanced)finish();
       return;
     }
 
@@ -98,21 +134,36 @@ function initVoiceInput(inputId,micBtnId,onFinalTranscript){
 
     recognition.onstart=()=>{
       begin();
-      input.value='';
+      if(!enhanced)input.value='';
       grow();
     };
     recognition.onresult=e=>{
-      let interim='',final='';
-      for(let i=e.resultIndex;i<e.results.length;i++){
-        const transcript=e.results[i][0].transcript;
-        if(e.results[i].isFinal)final+=transcript;else interim+=transcript;
+      if(enhanced){
+        if(cancelled)return;
+        const finals=[],interims=[];
+        // Rebuild all results: resultIndex only identifies changed entries.
+        for(let i=0;i<e.results.length;i++){
+          const words=e.results[i][0].transcript.trim();
+          (e.results[i].isFinal?finals:interims).push(words);
+        }
+        finalText=finals.join(' ');interimText=interims.join(' ');
+        paintTranscript([prefix,finalText,interimText].filter(Boolean).join(' '));
+      }else{
+        let interim='',final='';
+        for(let i=e.resultIndex;i<e.results.length;i++){
+          const transcript=e.results[i][0].transcript;
+          if(e.results[i].isFinal)final+=transcript;else interim+=transcript;
+        }
+        input.value=final||interim;
+        grow();
+        if(final.trim())acceptTranscript(final);
       }
-      input.value=final||interim;
-      grow();
-      if(final.trim())acceptTranscript(final);
     };
     recognition.onerror=e=>showError(e.error||'unavailable');
-    recognition.onend=()=>{if(listening)finish();};
+    recognition.onend=()=>{
+      if(enhanced&&listening&&!cancelled&&finalText.trim())acceptTranscript(finalText);
+      else if(listening)finish();
+    };
 
     try{recognition.start();}
     catch(_){showError('unavailable');}

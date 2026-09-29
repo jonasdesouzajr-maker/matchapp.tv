@@ -1,21 +1,21 @@
 {
-  "version": "2026.09.29.2",
+  "version": "2026.09.29.3",
   "date": "2026-09-29",
   "functional": true,
   "notes": {
-    "en": "Corrected horror TV series matching and refreshed the matching recovery notice.",
-    "pt-BR": "Corrigimos o match de séries de terror e atualizamos a mensagem de recuperação do match.",
-    "es": "Corregimos el match de series de terror y actualizamos el mensaje de recuperación.",
-    "fr": "Correction du matching des séries d’horreur et mise à jour du message de récupération.",
-    "de": "Das Matching von Horrorserien und die Wiederherstellungsmeldung wurden korrigiert.",
-    "it": "Corretto il matching delle serie horror e aggiornato il messaggio di recupero.",
-    "tr": "Korku dizisi eşleştirmesi düzeltildi ve yeniden deneme mesajı güncellendi.",
-    "ru": "Исправлен подбор сериалов ужасов и обновлено сообщение о повторной попытке.",
-    "ar": "تم تصحيح مطابقة مسلسلات الرعب وتحديث رسالة إعادة المحاولة.",
-    "hi": "हॉरर टीवी सीरीज़ का मिलान सुधारा गया और दोबारा कोशिश का संदेश अपडेट किया गया।",
-    "id": "Pencocokan serial horor diperbaiki dan pesan pemulihan diperbarui.",
-    "ja": "ホラーTVシリーズのマッチングを修正し、再試行メッセージを更新しました。",
-    "ko": "공포 TV 시리즈 매칭을 수정하고 재시도 안내를 업데이트했습니다.",
-    "zh": "修正了恐怖电视剧匹配，并更新了重试提示。"
+    "en": "More compact mobile controls and improved live voice dictation with punctuation.",
+    "pt-BR": "Controles móveis mais compactos e ditado ao vivo aprimorado com pontuação.",
+    "es": "Controles móviles más compactos y dictado en vivo mejorado con puntuación.",
+    "fr": "Commandes mobiles plus compactes et dictée en direct améliorée avec ponctuation.",
+    "de": "Kompaktere mobile Bedienelemente und verbesserte Live-Diktate mit Zeichensetzung.",
+    "it": "Controlli mobili più compatti e dettatura dal vivo migliorata con punteggiatura.",
+    "tr": "Daha kompakt mobil kontroller ve noktalama ile geliştirilmiş canlı dikte.",
+    "ru": "Более компактные мобильные элементы управления и улучшенная диктовка с пунктуацией.",
+    "ar": "عناصر تحكم أصغر للهاتف وتحسين الإملاء المباشر مع علامات الترقيم.",
+    "hi": "अधिक छोटे मोबाइल नियंत्रण और विराम चिह्नों के साथ बेहतर लाइव डिक्टेशन।",
+    "id": "Kontrol seluler lebih ringkas dan dikte langsung ditingkatkan dengan tanda baca.",
+    "ja": "モバイル操作をコンパクトにし、句読点付きのリアルタイム音声入力を改善しました。",
+    "ko": "모바일 컨트롤을 더 작게 만들고 문장 부호를 포함한 실시간 받아쓰기를 개선했습니다.",
+    "zh": "更紧凑的移动控件，以及带标点的改进实时语音输入。"
   }
 }
