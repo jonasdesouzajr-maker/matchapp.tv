@@ -1725,6 +1725,9 @@ async function runAskAndRender(question) {
             payload.results = [];
         }
     }
+    // Only audiovisual cards may enter film match history. Books and recipes
+    // have separate, verified discovery destinations and are not film matches.
+    if (payload && (bookIntent || cookingIntent)) payload.results = [];
     lastDiscoverQuestion = question;
 
     // Same unconditional safety net as the match engine: no matter which
@@ -1743,7 +1746,7 @@ async function runAskAndRender(question) {
     try {
         window.MatchActivity?.log?.('ai', question);
         (payload.results || []).forEach(item => {
-            if (!item || !item.title) return;
+            if (!item || !item.title || !/^(movie|film|series|tv|tvshow|documentary|anime|stand-up comedy special|k-drama|telenovela|short film|show)$/i.test(String(item.type || ''))) return;
             const title = (typeof window.sanitizeDisplayText === 'function')
                 ? window.sanitizeDisplayText(String(item.title), ['title'])
                 : String(item.title);
@@ -1769,11 +1772,10 @@ async function runAskAndRender(question) {
     const offlineBadge = document.getElementById('discover-offline-badge');
     if (offlineBadge) offlineBadge.style.display = payload._live ? 'none' : 'inline-flex';
 
-    if(cookingIntent)payload.results=[];
     const bubble = appendAssistantBubble(payload.answer, bookIntent ? [] : (payload.results || []), { instant: false });
     if(cookingIntent && bubble?.wrap){
       const sources=document.createElement('section');sources.className='cooking-chat-sources';sources.setAttribute('aria-label','Original cooking sources');
-      const route=document.createElement('a');route.className='gold-btn';route.href='/cooking/?q='+encodeURIComponent(question);route.textContent='Explore original recipes & videos';sources.append(route);
+      const route=document.createElement('a');route.className='gold-btn';route.href='/cooking/?q='+encodeURIComponent(question);route.textContent=/^pt/i.test(window.MATCH_LANG||'')?'Explorar receitas e vídeos originais':/^es/i.test(window.MATCH_LANG||'')?'Explorar recetas y vídeos originales':/^fr/i.test(window.MATCH_LANG||'')?'Explorer les recettes et vidéos originales':/^de/i.test(window.MATCH_LANG||'')?'Originalrezepte und Videos ansehen':'Explore original recipes & videos';sources.append(route);
       window.MatchCooking.channels.forEach(c=>{const p=document.createElement('p'),a=document.createElement('a');a.href=c.url;a.textContent=c.name+' · '+c.specialty;p.append(a);sources.append(p);});bubble.wrap.append(sources);
     }
     // Only attach the exact numbered TMDB record returned from verified
