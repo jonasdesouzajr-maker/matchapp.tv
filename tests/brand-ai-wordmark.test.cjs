@@ -62,7 +62,7 @@ test('shared runtime fallback changes only the brand and rerenders English/PT-BR
  assert.match(js,/document\.addEventListener\('matchapp:langchange',\(\)=>setTimeout\(applyLanguage,0\)\)/);
  assert.doesNotMatch(js,/'<button type="button" class="ma-ai-brand-button"/);
  assert.match(js,/\.ma-tab/,'Existing dedicated Ask AI tab must not be removed');
- assert.match(read('home-approved.js'),/ma-hero-ask/,'Keep direct Ask AI shortcut on Home');
+ assert.doesNotMatch(read('home-approved.js'),/ma-hero-ask|ma-hero-match/,'Retire the duplicate English Home hero buttons');
 });
 
 test('signature metallic type stays bold, bounded, responsive and accessible on all adult routes',()=>{

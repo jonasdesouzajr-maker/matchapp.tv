@@ -33,21 +33,10 @@ html.ma-native-shell body #ma-install-offer,html.matchapp-android body #ma-insta
 @media(max-width:420px){html body.page-home #ma-install-offer{padding:12px;width:calc(100vw - 20px);}#ma-install-offer .ma-offer-actions{gap:6px;}}
 @media(prefers-reduced-motion:reduce){html body.page-home #ma-install-offer{scroll-behavior:auto;}}
 
-#ma-hero-ctas{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 8px;justify-content:center}
-#ma-hero-match,#ma-hero-ask{
-  min-height:48px;padding:0 18px;border-radius:999px;font:800 15px/1 Outfit,system-ui,sans-serif;cursor:pointer
-}
-#ma-hero-match{border:0;background:linear-gradient(180deg,#f3d57a,#d7ad3e);color:#1a1328}
-#ma-hero-ask{border:1px solid rgba(232,197,106,.55);background:rgba(16,10,32,.55);color:#fff}
-
 html body.page-home .home-hero .ma-how-link{margin-top:8px}
 html body.page-home .ma-brand-orb,
 html body.page-home .header-brand-area img:not(.matchapp-wordmark){
   border-radius:50%!important;object-fit:cover!important;clip-path:circle(49.5% at 50% 50%)
-}
-
-@media(prefers-reduced-motion:reduce){
-  #ma-hero-match,#ma-hero-ask{transition:none}
 }
 
 
@@ -421,18 +410,6 @@ html body.page-home .home-hero .home-h1-sub{
   line-height:1.34!important;
   margin:0 auto 3px!important;
 }
-html body.page-home #ma-hero-ctas{
-  display:flex!important;flex-wrap:wrap!important;
-  justify-content:center!important;align-items:center!important;
-  gap:8px!important;margin:7px auto 4px!important;
-}
-html body.page-home #ma-hero-match,
-html body.page-home #ma-hero-ask{
-  box-sizing:border-box!important;
-  min-height:44px!important;
-  padding:9px 19px!important;
-  font:800 clamp(13px,1.4vw,16px)/1.2 Outfit,Inter,system-ui,sans-serif!important;
-}
 html body.page-home .home-hero .ma-how-link{
   box-sizing:border-box!important;
   min-height:44px!important;
@@ -445,13 +422,11 @@ html body.page-home .home-hero .ma-how-link{
   html body.page-home .home-hero{padding:0 6px 2px!important}
   html body.page-home .home-hero .home-h1{font-size:clamp(21px,5.7vw,29px)!important}
   html body.page-home .home-hero .home-h1-sub{font-size:12px!important;line-height:1.32!important}
-  html body.page-home #ma-hero-ctas{gap:7px!important;margin:6px auto 3px!important}
-  html body.page-home #ma-hero-match,html body.page-home #ma-hero-ask{
-    min-height:44px!important;padding:8px 16px!important;
-    font-size:14px!important;
-  }
   html body.page-home .home-hero .ma-how-link{
     min-height:44px!important;padding:0 17px!important;margin-top:4px!important;
     font-size:13.5px!important;
   }
 }
+
+/* The spoken page title remains available to assistive technology; the visible hero headline and CTA row are retired. */
+html body.page-home .home-hero{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}

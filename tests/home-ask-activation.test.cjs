@@ -2,21 +2,15 @@
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
 const {JSDOM}=require('jsdom');
 const read=name=>fs.readFileSync(path.join(__dirname,'..',name),'utf8');
-test('Home hero Ask opens a previously collapsed concierge and reveals the actual Ask panel',()=>{
+test('Home hero headline and duplicate English CTA buttons stay retired',()=>{
  const dom=new JSDOM('<html><body class="page-home"><header class="home-hero"><h1 class="home-h1">Match</h1><p class="home-h1-sub"></p></header><button class="lazy-head" data-fold-key="concierge"></button><section id="ma-concierge" class="ma-concierge lazy-foldable"><button id="ma-tab-ask"></button><div id="ma-panel-ask" hidden><article id="search-box"></article></div></section><article id="questionnaire-box"></article></body></html>',{url:'https://matchapp.tv/',runScripts:'outside-only'});
- const w=dom.window,section=w.document.getElementById('ma-concierge'),panel=w.document.getElementById('ma-panel-ask');
- let opens=0,clicks=0,scrolls=0;
- section.previousElementSibling.onclick=()=>{opens++;section.classList.add('lazy-open')};
- w.document.getElementById('ma-tab-ask').onclick=()=>{clicks++;panel.hidden=false};
- w.HTMLElement.prototype.scrollIntoView=function(){scrolls++;};
+ const w=dom.window;
  w.eval(read('home-approved.js'));
  w.document.dispatchEvent(new w.Event('DOMContentLoaded'));
- w.document.getElementById('ma-hero-ask').click();
- assert.equal(opens,1,'expand persisted collapsed fold before selecting Ask');
- assert.equal(clicks,1,'activate Ask panel');
- assert.equal(panel.hidden,false,'Ask input must be revealed');
- assert.equal(scrolls,1,'scroll to the revealed input, not the hidden section');
- assert.match(read('home-approved.js'),/ask\.scrollIntoView\(\{ behavior: 'instant', block: 'start' \}\)/,'mobile first-tap must not wait behind smooth scroll');
+ assert.equal(w.document.getElementById('ma-hero-ask'),null);
+ assert.equal(w.document.getElementById('ma-hero-match'),null);
+ assert.equal(w.document.getElementById('ma-hero-ctas'),null);
+ assert.match(read('home-approved.css'),/\.home-hero\{position:absolute!important;width:1px!important/);
  w.close();
 });
 test('dedicated Home Ask card expands fold and scrolls the revealed input without opening keyboard',()=>{
@@ -44,7 +38,7 @@ test('empty chat Send provides accessible bilingual feedback without triggering 
 test('new Ask runtime reaches phones, iPhones, tablets and live Android WebView with unchanged native shell',()=>{
  const home=read('index.html'),chat=read('discover.html');
  assert.match(home,/matchapp-ia\.js\?v=20260926-brandai1-adorder2&amp;askbtn=20260927-2/);
- assert.match(home,/home-approved\.js\?v=20260928-no-dock1/);
+ assert.match(home,/home-approved\.js\?v=20260929-hide-hero/);
  assert.match(chat,/discover\.js\?v=20260925-intent1[^"]*askbtn=20260927-1/);
  assert.match(home,/class="top-ai-launch" href="\/discover\.html"/);
  assert.doesNotMatch(read('home-approved.js'),/mountDock|ma-dock/);
@@ -53,11 +47,12 @@ test('new Ask runtime reaches phones, iPhones, tablets and live Android WebView 
  assert.match(home,/id="profile-link-tab" href="\/profile\/profile\.html/);
 });
 
-test('live phone/tablet/desktop smoke opens the real Home Ask card and handles empty Send',()=>{
+test('live phone/tablet/desktop smoke verifies the separate Home Ask composer and empty Send',()=>{
  const smoke=read('tools/live-production-smoke.cjs');
- assert.match(smoke,/page\.locator\('#ma-hero-ask'\)\.click/);
- assert.match(smoke,/Home Ask AI tap opens visible unfocused composer/);
- assert.match(smoke,/getElementById\('ma-panel-ask'\)/);
+ assert.match(smoke,/page\.locator\('#ma-ai-entry #specific-search-input'\)/);
+ assert.match(smoke,/Separate Home Ask AI composer is visible and unfocused/);
+ assert.match(smoke,/getElementById\('ma-ai-entry'\)/);
+ assert.doesNotMatch(smoke,/page\.locator\('#ma-tab-ask'\)\.click/);
  assert.match(smoke,/noAutoKeyboard/);
  assert.match(smoke,/waitForFunction\(\(\)=>\{[\s\S]*input\.top>=0&&input\.bottom<=bottom&&send\.top>=0&&send\.bottom<=bottom/);
  assert.match(smoke,/Ask AI empty Send is actionable/);
@@ -65,16 +60,24 @@ test('live phone/tablet/desktop smoke opens the real Home Ask card and handles e
 
 test('Ask AI closes only an overlapping install suggestion and prevents a new one mid-chat',()=>{
  const home=read('home-approved.js'),tab=read('matchapp-ia.js'),offer=read('browser-install-offer.js'),html=read('index.html');
- assert.match(home,/getElementById\('ma-install-offer'\)\?\.querySelector\('\.ma-offer-close'\)\?\.click/);
+ assert.doesNotMatch(home,/ma-hero-ask/);
  assert.match(tab,/qs\('#ma-install-offer \.ma-offer-close'\)\?\.click/);
  assert.match(offer,/classList\.contains\('ma-ask-tab'\)\) return true/);
  assert.match(tab,/requestAnimationFrame\(\(\)=>\{[\s\S]*?window\.scrollBy\(\{top:rect\.top-desiredTop,behavior:'instant'\}\)/);
- assert.match(html,/browser-install-offer\.js\?v=20260926-playpending1&amp;chat=20260927-1/);
+ assert.match(html,/browser-install-offer\.js\?v=20260926-playpending1&amp;chat=20260929-overlap1/);
  assert.doesNotMatch(tab.slice(tab.indexOf("ba.addEventListener('click',()=>{"),tab.indexOf("if(new URLSearchParams",tab.indexOf("ba.addEventListener('click',()=>{"))),/localStorage|focus\(/);
 });
 test('live smoke checks usable input and Send inside the phone viewport',()=>{
  const smoke=read('tools/live-production-smoke.cjs');
  assert.match(smoke,/const dockSpace=dock&&getComputedStyle\(dock\)\.display/);
  assert.match(smoke,/input\.bottom<=bottom&&send\.top>=0&&send\.bottom<=bottom/);
- assert.match(smoke,/controlsUsable&&!document\.getElementById\('ma-install-offer'\)/);
+ assert.match(smoke,/controlsUsable&&!offerCoversControl/);
+ assert.match(smoke,/offerCoversControl=!!offer&&!!offer\.getClientRects\(\)\.length/);
+});
+test('optional install invite dismisses when it would cover the Home Ask composer',()=>{
+ const s=read('browser-install-offer.js');
+ assert.match(s,/function closeIfOverlappingComposer\(\)/);
+ assert.match(s,/entry\.left<offer\.right&&entry\.right>offer\.left&&entry\.top<offer\.bottom&&entry\.bottom>offer\.top/);
+ assert.match(s,/addEventListener\('scroll',composerOverlapHandler/);
+ assert.match(s,/removeEventListener\('scroll',composerOverlapHandler/);
 });

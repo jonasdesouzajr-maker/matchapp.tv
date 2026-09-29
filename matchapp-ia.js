@@ -238,7 +238,7 @@ function mountHome(){
  try{delete document.documentElement.dataset.tiktokIntro}catch(_){}
  const container=qs('section.container');const hero=qs('.home-hero');const form=qs('#questionnaire-box');const search=qs('#search-box');
  if(!container||!hero||!form||!search)return;
- const t=c();qs('.home-h1',hero).textContent=t.title;qs('.home-h1-sub',hero).textContent=t.sub;
+ const t=c(),homeTitle=qs('.home-h1',hero),homeSub=qs('.home-h1-sub',hero);if(homeTitle)homeTitle.textContent=t.title;if(homeSub)homeSub.textContent=t.sub;
  // The working header guide is the sole Home onboarding button.
  const concierge=el('section','ma-concierge');concierge.id='ma-concierge';
  const tabs=el('div','ma-tabs');tabs.setAttribute('role','tablist');
@@ -416,7 +416,7 @@ function applyLanguage(){
  applyBrandLocale();
  const t=c();
  if(isHome&&qs('.ma-concierge')){
-   const hero=qs('.home-hero');if(hero){qs('.home-h1',hero).textContent=t.title;qs('.home-h1-sub',hero).textContent=t.sub}
+   const hero=qs('.home-hero');if(hero){const homeTitle=qs('.home-h1',hero),homeSub=qs('.home-h1-sub',hero);if(homeTitle)homeTitle.textContent=t.title;if(homeSub)homeSub.textContent=t.sub}
    const aiHeading=qs('#search-box h2');if(aiHeading)aiHeading.textContent=t.ask;
    qs('#ma-ai-entry')?.setAttribute('aria-label',t.ask);
    const tabs=qsa('.ma-tab');if(tabs[0])tabs[0].textContent=t.match;if(tabs[1])tabs[1].textContent=t.ask;

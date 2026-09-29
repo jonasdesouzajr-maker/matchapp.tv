@@ -1606,8 +1606,8 @@
 <link rel="stylesheet" href="/taste-profile.css?v=20260919-stable3" data-home-support="taste">
 <link rel="stylesheet" href="/profile-card.css?v=20260919-stable3" data-home-support="profile-card">
 <link rel="stylesheet" href="/preference-exclusions.css?v=20260919-stable3" data-home-support="preferences">
-<link rel="stylesheet" href="/matchapp-ia.css?v=20260924-ads1" data-matchapp-ia="1">
-<script defer src="/matchapp-ia.js?v=20260926-brandai1-adorder2&amp;askbtn=20260927-2&amp;composer=20260929-1&amp;guide=20260927-single1&amp;home=20260928-folds2" data-matchapp-ia="1"></script>
+<link rel="stylesheet" href="/matchapp-ia.css?v=20260929-askheight1" data-matchapp-ia="1">
+<script defer src="/matchapp-ia.js?v=20260926-brandai1-adorder2&amp;askbtn=20260927-2&amp;composer=20260929-3&amp;guide=20260927-single1&amp;home=20260928-folds2" data-matchapp-ia="1"></script>
     <link rel="stylesheet" href="/ui-containment.css?v=20260921-ui1" data-ui-containment="1">
 <link rel="stylesheet" href="/home-8k-layout.css?v=20260924-adfull1">
 <style id="home-avatar-profile-v2">
@@ -1652,9 +1652,9 @@ html body.page-home #mh-topbox .mh-deck>.sound-toggle-btn,html body.page-home #m
     <link rel="stylesheet" href="/mobile-header-compact.css?v=20260927-single-guide1" data-home-mobile-header="1">
     <link rel="stylesheet" href="/match-result-stability.css?v=20260927-mobile1&amp;matching=20260928-session1&amp;desktop=20260929-details1">
 <link rel="stylesheet" href="/cooking/cooking.css?v=20260929-1">
-<link rel="stylesheet" href="/ai-composer.css?v=20260929-1">
+<link rel="stylesheet" href="/ai-composer.css?v=20260929-10">
 <script defer src="/locale-results.js?v=20260929-language1"></script>
-<script defer src="/ai-composer.js?v=20260929-1"></script>
+<script defer src="/ai-composer.js?v=20260929-5"></script>
 </head>
 <body class="page-home">
     <!-- Google Tag Manager (noscript) -->
@@ -2223,9 +2223,8 @@ html body.page-home #daily-match-checkin { padding: 11px 12px !important; }
                 <!-- Primary H1. The homepage had none at all, which left Google
                      without its strongest on-page topical signal. Visible and
                      genuinely descriptive rather than hidden. -->
-                <header class="home-hero">
+                <header class="home-hero" aria-label="MatchApp">
                     <h1 class="home-h1" data-i18n="home.h1">What Should I Watch Tonight?</h1>
-                    <p class="home-h1-sub" data-i18n="home.h1sub">Tell MatchApp your mood and get one perfect pick — movies, series, K-dramas, anime, novelas, micro-dramas, podcasts and YouTube — plus exactly where to stream it.</p>
                 </header>
 
                 <div class="marquee-wrapper" id="trending-rail" aria-label="Latest titles trending right now">
@@ -2733,7 +2732,7 @@ html body.page-home #daily-match-checkin { padding: 11px 12px !important; }
                     <p style="color:#b9b1cc; font-size:14px; text-align:center; margin:0 0 4px 0;" data-i18n="search.hint">Type a title for a direct match — or ask a full question and our AI will find every title that fits.</p>
                     <p style="color:var(--gold); font-size:12.5px; text-align:center; margin:0 0 20px 0; font-weight:700; text-transform:uppercase; letter-spacing:0.4px;" data-i18n="search.voiceHint">🎙️ Or just tap the mic and talk — your AI concierge listens in your language</p>
                     <div class="home-ask-composer" style="display: flex; gap: 12px; flex-wrap: wrap;">
-                        <textarea rows="3" id="specific-search-input" placeholder="e.g., Fallout — or: Is there a TV show about Doctors Without Borders?" data-i18n-placeholder="search.placeholder" onkeydown="if(event.key==='Enter' &amp;&amp; !event.shiftKey &amp;&amp; !event.isComposing){event.preventDefault();submitHomeAI()}" style="flex: 1; padding: 18px; border-radius: 12px; border: 1px solid var(--gold); background: rgba(0,0,0,0.7); color: #fff; font-size: 17px; min-width: 200px;"></textarea>
+                        <textarea rows="1" id="specific-search-input" placeholder="e.g., Fallout — or: Is there a TV show about Doctors Without Borders?" data-i18n-placeholder="search.placeholder" onkeydown="if(event.key==='Enter' &amp;&amp; !event.shiftKey &amp;&amp; !event.isComposing){event.preventDefault();submitHomeAI()}" style="flex: 1; padding: 18px; border-radius: 12px; border: 1px solid var(--gold); background: rgba(0,0,0,0.7); color: #fff; font-size: 17px; min-width: 200px;"></textarea>
                         <button id="mic-btn-index" class="mic-btn" type="button" aria-label="Speak your question" title="Speak your question" style="display:none;"><svg viewBox="0 0 48 48" width="30" height="30" aria-hidden="true" focusable="false">
                             <path d="M8,20 Q4,24 8,28" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" opacity="0.55"/>
                             <path d="M3,17 Q-3,24 3,31" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" opacity="0.3"/>
@@ -3603,7 +3602,7 @@ html body.page-home #daily-match-checkin { padding: 11px 12px !important; }
     <script src="/tmdb.js?v=20260927-providerfix1"></script>
     <script src="/criteria.js?v=20260928-topics1"></script>
     <script src="/match-speed.js?v=20260925-matchrestore1&amp;recovery=20260929-2"></script>
-    <script src="/lazy.js?v=20260926-chroma1&amp;home=20260928-folds2"></script>
+    <script src="/lazy.js?v=20260926-chroma1&amp;home=20260928-folds2&amp;toprail=20260929-1"></script>
     <!-- News must start on Home, not wait for a later editorial section to scroll into view. -->
     <script defer src="/latest-news.js?v=20260926-newsfold1"></script>
     <script defer src="/live-news-loader.js?v=20260926-newsfold1"></script>
@@ -3611,8 +3610,8 @@ html body.page-home #daily-match-checkin { padding: 11px 12px !important; }
     <script src="/taste.js?v=187"></script><script src="/notifications.js?v=20260924-tastedna2"></script>
     <script src="/contacts.js?v=187"></script>
     <script src="/share.js?v=20260928-three-shares1"></script>
-    <script defer src="/home-approved.js?v=20260928-no-dock1" data-home-approved="1"></script>
-    <script defer src="/browser-install-offer.js?v=20260926-playpending1&amp;chat=20260927-1" data-browser-install-offer="1"></script>
+    <script defer src="/home-approved.js?v=20260929-hide-hero" data-home-approved="1"></script>
+    <script defer src="/browser-install-offer.js?v=20260926-playpending1&amp;chat=20260929-overlap1" data-browser-install-offer="1"></script>
     <script defer src="/desktop-install.js?v=20260923-live1" data-desktop-install="1"></script>
     <script defer src="/share-guard.js?v=20260923-live1"></script>
     <script defer src="/match-fun-share.js?v=20260928-1"></script>

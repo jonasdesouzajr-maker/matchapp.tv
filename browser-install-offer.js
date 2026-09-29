@@ -9,7 +9,7 @@
   // Owner-controlled launch gate. Do not re-enable until explicitly authorized.
   const PLAY_RELEASED=false;
   const INSTALL_DELAY=1100, VISIBLE_FOR=15000;
-  let shown=false,queued=false,expiry=0;
+  let shown=false,queued=false,expiry=0,composerOverlapHandler=null;
 
   function nativeShell(){
     return /MatchAppTVAndroid|MatchAppAiAndroid|MatchAppAiKidsAndroid/i.test(navigator.userAgent||'') ||
@@ -68,8 +68,20 @@
   }
   function close(){
     if(expiry){clearTimeout(expiry);expiry=0;}
+    if(composerOverlapHandler){
+      window.removeEventListener('scroll',composerOverlapHandler);
+      window.removeEventListener('resize',composerOverlapHandler);
+      composerOverlapHandler=null;
+    }
     const item=document.getElementById('ma-install-offer');
     if(item)item.remove();
+  }
+  function closeIfOverlappingComposer(){
+    const item=document.getElementById('ma-install-offer');
+    const composer=document.getElementById('ma-ai-entry');
+    if(!item||!composer||!item.getClientRects().length||!composer.getClientRects().length)return;
+    const offer=item.getBoundingClientRect(),entry=composer.getBoundingClientRect();
+    if(entry.left<offer.right&&entry.right>offer.left&&entry.top<offer.bottom&&entry.bottom>offer.top)close();
   }
   function startExpiry(){
     if(expiry)clearTimeout(expiry);
@@ -133,6 +145,12 @@
     });
     document.body.appendChild(node);
     startExpiry();
+    // The Home Ask composer is a primary action. Keep this optional fixed
+    // invitation from covering it as the visitor scrolls to or resizes around it.
+    composerOverlapHandler=()=>window.requestAnimationFrame(closeIfOverlappingComposer);
+    window.addEventListener('scroll',composerOverlapHandler,{passive:true});
+    window.addEventListener('resize',composerOverlapHandler,{passive:true});
+    closeIfOverlappingComposer();
   }
   function boot(){
     // Remove remnants from stale Home scripts without touching site content.
