@@ -1,21 +1,21 @@
 {
-  "version": "2026.09.27.1",
-  "date": "2026-09-27",
+  "version": "2026.09.29.1",
+  "date": "2026-09-29",
   "functional": true,
   "notes": {
-    "en": "Daily Check-in no longer takes up home-page space. Signed-in members with an available daily reward receive a small premium reminder; a successful claim adds their existing Match reward and a brief See you tomorrow celebration. Dismiss once per session. Kids, AI, and existing reward rules are unchanged.",
-    "pt-BR": "O check-in diário não ocupa mais espaço na página inicial. Quem está conectado e tem um prêmio disponível recebe um lembrete discreto e premium. Após resgatar, o Match é creditado como antes e aparece uma breve animação Até amanhã. O lembrete pode ser fechado. Modo Kids, IA e regras de recompensa continuam iguais.",
-    "es": "El check-in diario ya no ocupa espacio en la página principal. Los usuarios conectados reciben un pequeño recordatorio solo cuando tienen una recompensa disponible y ven un breve Hasta mañana al cobrarla. Kids, IA y las reglas de premios no cambian.",
-    "fr": "Nouveau : Match E-books Ai pour les lecteurs, avec humeur, genre, rythme, longueur, époque, accès gratuit ou payant, sources gratuites légales et boutiques officielles.",
-    "de": "Neu: Match E-books Ai für Leser – nach Stimmung, Genre, Tempo, Länge, Epoche und kostenlosem oder kostenpflichtigem Zugang, mit legalen Gratisquellen und offiziellen Shops.",
-    "it": "Novità: Match E-books Ai per chi ama leggere, con umore, genere, ritmo, lunghezza, epoca, accesso gratuito o a pagamento, fonti gratuite legali e store ufficiali.",
-    "tr": "Yeni: üstte iyileştirme bildirimi, Match’te “Neden bu seçim” satırı ve katalog ipucu, Ask AI’da görünür maliyet, Çocuk Modunda yetişkin doğrulaması ve isteğe bağlı günlük süre sınırı, eşitlenen Kids favorileri ve eğlenceli bir eşleşme kutlaması.",
-    "ru": "Новое: уведомление об улучшениях вверху, строка «Почему этот выбор» и подсказка о подборке в Match, видимая стоимость в Ask AI, проверка взрослого и дневной лимит в детском режиме, синхронизация избранного Kids и весёлое празднование совпадения.",
-    "ar": "جديد: إشعار التحسينات في الأعلى، وسطر «لماذا هذا الاختيار» وتلميح عن المجموعة في Match، وتكلفة واضحة في Ask AI، وتحقق للكبار وحد يومي اختياري في وضع الأطفال، ومزامنة مفضلات الأطفال، واحتفال مرح عند المطابقة.",
-    "hi": "नया: ऊपर सुधार सूचना, Match में “यह चुनाव क्यों” लाइन और संग्रह संकेत, Ask AI में लागत, Kids Mode में बड़ों की जाँच और वैकल्पिक दैनिक समय सीमा, सिंक होने वाले Kids फ़ेवरेट और मज़ेदार मैच उत्सव।",
-    "id": "Baru: pemberitahuan pembaruan di atas, baris “Kenapa pilihan ini” dan petunjuk koleksi di Match, biaya terlihat di Ask AI, pemeriksaan orang dewasa dan batas waktu harian opsional di Mode Anak, favorit Kids tersinkron, dan perayaan match yang seru.",
-    "ja": "新機能：Bookworms 向け Match E-books Ai。気分、ジャンル、ペース、長さ、年代、無料／有料で選び、合法的な無料版や公式ストアへ移動できます。",
-    "ko": "새 기능: 독서가를 위한 Match E-books Ai. 분위기, 장르, 속도, 분량, 시대, 무료/유료 조건으로 매칭하고 합법적인 무료 소스와 공식 스토어로 연결합니다.",
-    "zh": "新功能：面向书迷的 Match E-books Ai。可按心情、类型、节奏、篇幅、年代和免费/付费条件匹配，并前往合法免费来源或官方电子书商店。"
+    "en": "Matching now recovers safe eligible suggestions when fresh titles run out. Explore original cooking videos and ask AI about recipes. Your profile avatar stays consistent, Taste DNA is easier to edit, and Home now has its own folded Cooking section.",
+    "pt-BR": "O Match agora recupera sugestões compatíveis quando acabam os títulos inéditos. Explore vídeos culinários originais e pergunte sobre receitas à IA. Seu avatar fica consistente, o Taste DNA pode ser editado com facilidade e a página inicial ganhou sua própria seção de Culinária.",
+    "es": "Match recupera sugerencias compatibles cuando se agotan los títulos nuevos. Explora vídeos de cocina originales y consulta recetas a la IA. Tu avatar se mantiene igual, Taste DNA se puede editar fácilmente y la página inicial tiene una sección de Cocina plegada.",
+    "fr": "Le Match retrouve des suggestions compatibles lorsque les nouveaux titres s'épuisent. Explorez des vidéos culinaires originales et interrogez l'IA sur les recettes. Votre avatar reste cohérent, Taste DNA est plus facile à modifier et une section Cuisine repliée apparaît sur l'accueil.",
+    "de": "Match findet wieder passende Vorschläge, wenn neue Titel ausgehen. Entdecke Original-Kochvideos und frage die KI nach Rezepten. Dein Avatar bleibt einheitlich, Taste DNA ist leichter bearbeitbar und die Startseite hat einen einklappbaren Kochbereich.",
+    "it": "Match recupera suggerimenti compatibili quando finiscono i titoli nuovi. Esplora video originali di cucina e chiedi all'IA informazioni sulle ricette. L'avatar resta coerente, Taste DNA è più facile da modificare e la home ha una sezione Cucina richiudibile.",
+    "tr": "Yeni içerikler tükendiğinde Match uygun önerileri geri getirir. Özgün yemek videolarını keşfedin ve yapay zekâya tarifleri sorun. Avatarınız tutarlı görünür, Taste DNA kolayca düzenlenir ve ana sayfada katlanabilir Yemek bölümü bulunur.",
+    "ru": "Когда новые варианты заканчиваются, Match снова предлагает подходящие названия. Смотрите оригинальные кулинарные видео и спрашивайте ИИ о рецептах. Аватар отображается единообразно, Taste DNA проще редактировать, на главной появилась сворачиваемая секция рецептов.",
+    "ar": "يستعيد Match الاقتراحات الملائمة عند نفاد العناوين الجديدة. اكتشف فيديوهات الطهي الأصلية واسأل الذكاء الاصطناعي عن الوصفات. تظهر صورتك الرمزية بشكل متناسق، ويسهل تعديل Taste DNA، وتتوفر صفحة طهي قابلة للطي في الرئيسية.",
+    "hi": "नए शीर्षक खत्म होने पर Match फिर से उपयुक्त सुझाव देता है। असली कुकिंग वीडियो देखें और AI से रेसिपी पूछें। आपका अवतार एक जैसा दिखेगा, Taste DNA संपादित करना आसान है और होम पर अलग से खुलने-बंद होने वाला कुकिंग सेक्शन है।",
+    "id": "Match kini memulihkan rekomendasi yang sesuai ketika judul baru habis. Jelajahi video memasak asli dan tanyakan resep kepada AI. Avatar tetap konsisten, Taste DNA lebih mudah diedit, dan Beranda memiliki bagian Memasak yang dapat dilipat.",
+    "ja": "新しい作品の候補が尽きても、Matchが条件に合う作品を再提案します。オリジナルの料理動画を探し、AIにレシピを質問できます。アバター表示を統一し、Taste DNAの編集を改善。ホームには折りたたみ式の料理セクションを追加しました。",
+    "ko": "새로운 작품이 소진되어도 Match가 조건에 맞는 추천을 복구합니다. 원본 요리 영상을 찾아보고 AI에 레시피를 질문하세요. 아바타 표시를 통일하고 Taste DNA 편집을 개선했으며 홈에 접을 수 있는 요리 섹션을 추가했습니다.",
+    "zh": "当新作品候选用尽时，Match 仍会恢复符合条件的推荐。探索原创烹饪视频并向 AI 询问食谱。头像显示保持一致，Taste DNA 更易编辑，首页新增可折叠的烹饪专区。"
   }
 }

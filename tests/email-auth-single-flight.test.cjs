@@ -57,6 +57,6 @@ test('late-loaded registration override has the same cross-handler single-flight
   assert.match(audit,/window\.__maEmailSignupPending=true/);
   assert.match(audit,/finally\{window\.__maEmailSignupPending=false/);
   assert.match(app,/window\.__maEmailSignupPending = false/);
-  assert.match(read('title-captions.js'),/final-audit\.js\?v=20260926-emailsingle1/);
+  assert.match(read('title-captions.js'),/final-audit\.js\?v=20260929-avatar1/);
   assert.match(read('index.html'),/auth-confirmation\.js\?v=20260926-emailsingle1/);
 });
