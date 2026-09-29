@@ -6,7 +6,7 @@
   if(root)root.MatchAppTopicFocus=api;
 })(typeof window!=='undefined'?window:null,function(){
 'use strict';
-const SCREEN=new Set(['movie','series','limited series','K-drama','novela brasileira','telenovela']);
+const SCREEN=new Set(['movie','series','limited series','K-drama','novela brasileira','telenovela','documentary','anime','stand-up comedy special']);
 const TOPICS=Object.freeze({
   'Cooking & Recipes':'cooking','Fitness & Wellness':'fitness',
   'Spotify playlist':'audio','Apple Music playlist':'audio','Spotify single':'audio',
