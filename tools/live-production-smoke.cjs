@@ -251,9 +251,9 @@ async function aiQuestion(page,question,expected,label){
       const dockSpace=dock&&getComputedStyle(dock).display!=='none'?dock.getBoundingClientRect().height+14:14;
       const bottom=innerHeight-dockSpace;
       const offerCoversControl=!!offer&&!!offer.getClientRects().length&&!!offerRect&&[input,send].some(r=>r&&r.left<offerRect.right&&r.right>offerRect.left&&r.top<offerRect.bottom&&r.bottom>offerRect.top);
-      return !!input&&!!send&&input.width>60&&send.width>50&&
+      return !!input&&!!send&&input.width>60&&send.width>40&&
         input.top>=0&&input.bottom<=bottom&&send.top>=0&&send.bottom<=bottom&&
-        !offerCoversControl;
+        (!matchMedia('(max-width: 600px)').matches||input.height>=84)&&!offerCoversControl;
     },null,{timeout:3500}).catch(()=>{});
     const activeAsk=await page.evaluate(()=>{
       const entry=document.getElementById('ma-ai-entry'),form=document.getElementById('search-box');
@@ -263,12 +263,13 @@ async function aiQuestion(page,question,expected,label){
       const dock=document.getElementById('ma-dock');
       const dockSpace=dock&&getComputedStyle(dock).display!=='none'?dock.getBoundingClientRect().height+14:14;
       const safeBottom=innerHeight-dockSpace;
-      const controlsUsable=!!ir&&!!sr&&ir.width>60&&sr.width>50&&
+      const controlsUsable=!!ir&&!!sr&&ir.width>60&&sr.width>40&&
+        (!matchMedia('(max-width: 600px)').matches||ir.height>=84)&&
         ir.top>=0&&ir.bottom<=safeBottom&&sr.top>=0&&sr.bottom<=safeBottom;
       const offerCoversControl=!!offer&&!!offer.getClientRects().length&&!!offerRect&&[ir,sr].some(r=>r&&r.left<offerRect.right&&r.right>offerRect.left&&r.top<offerRect.bottom&&r.bottom>offerRect.top);
       return {open:!!entry&&!entry.hidden&&entry.getClientRects().length>0,
         visible:controlsUsable&&!offerCoversControl,
-        position:rect?{top:Math.round(rect.top),bottom:Math.round(rect.bottom),viewport:innerHeight,scrollY:scrollY,inputTop:Math.round(ir?.top||0),sendBottom:Math.round(sr?.bottom||0),safeBottom:Math.round(safeBottom)}:null,
+        position:rect?{top:Math.round(rect.top),bottom:Math.round(rect.bottom),viewport:innerHeight,scrollY:scrollY,inputTop:Math.round(ir?.top||0),inputHeight:Math.round(ir?.height||0),sendWidth:Math.round(sr?.width||0),sendBottom:Math.round(sr?.bottom||0),safeBottom:Math.round(safeBottom)}:null,
         noAutoKeyboard:document.activeElement!==input};
     });
     record('Separate Home Ask AI composer is visible and unfocused '+device.name,
