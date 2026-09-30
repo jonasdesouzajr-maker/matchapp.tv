@@ -5143,7 +5143,8 @@ async function renderResult(selected, isSpecificSearch) {
 
     document.getElementById('res-title').innerText = sanitizeDisplayText(selected.title, ['title']);
     const captionLang=window.MATCH_LANG||'en';window.localizedTitle?.(selected.title,matchHints).then(name=>{if(window.currentSynopsisSource?.title===selected.title&&(window.MATCH_LANG||'en')===captionLang)document.getElementById('res-title').textContent=name;});
-    window.currentSynopsisSource={text:selected.originalSynopsis||selected.synopsis,lang:selected.originalSynopsis?'en':selected.synopsisLang||'en',title:selected.title};
+    window.currentSynopsisSource={text:selected.originalSynopsis||selected.synopsis,lang:selected.originalSynopsis?'en':selected.synopsisLang||'en',title:selected.title,year:matchHints.year,kind:matchHints.kind};
+    window.MatchAppTitleIdentity?.paint(document.getElementById('res-title'),{...selected,kind:matchHints.kind||selected._tmdbKind||'',year:matchHints.year||selected.year,countryCode:selected.countryCode||matchHints.countryCode});
     // Paint verified content immediately, then improve localization asynchronously.
     const synopsisEl=document.getElementById('res-synopsis');
     const sourceLanguage=selected.synopsisLang||'en';
@@ -5152,11 +5153,11 @@ async function renderResult(selected, isSpecificSearch) {
     if(synopsisEl)synopsisEl.innerText=sanitizeDisplayText(initialSynopsis,['synopsis','answer','description']);
     const synopsisLanguage=window.MATCH_LANG||'en';
     if(selected.synopsis&&(selected.synopsisLang||'en')!==synopsisLanguage&&typeof window.localizeMatchSynopsis==='function'){
-        Promise.resolve().then(()=>window.localizeMatchSynopsis(selected.synopsis,selected.synopsisLang||'en'))
+        Promise.resolve().then(()=>(window.localizeVerifiedSynopsis||window.localizeMatchSynopsis)(selected.synopsis,selected.synopsisLang||'en',synopsisLanguage,{title:selected.title,...matchHints}))
             .then(translated=>{
                 if(window.globalMatchTitle===selected.title&&(window.MATCH_LANG||'en')===synopsisLanguage&&
                    typeof translated==='string'&&translated.trim()&&synopsisEl){
-                    synopsisEl.innerText=sanitizeDisplayText(translated===selected.synopsis?window.matchTranslationUnavailable():translated,['synopsis','answer','description']);
+                    synopsisEl.innerText=sanitizeDisplayText(translated===selected.synopsis&&!window.matchSynopsisWasTranslated?.(selected.synopsis,synopsisLanguage)?window.matchTranslationUnavailable():translated,['synopsis','answer','description']);
                 }
             }).catch(()=>{/* Preserve the authentic source synopsis. */});
     }
@@ -6074,8 +6075,8 @@ document.addEventListener('matchapp:langchange',async()=>{
  if(source&&document.getElementById('res-synopsis')){
   const title=source.title,language=window.MATCH_LANG||'en';document.getElementById('res-synopsis').textContent=tSafe('global.guide');
   window.localizedTitle?.(title).then(name=>{if(window.currentSynopsisSource?.title===title&&(window.MATCH_LANG||'en')===language)document.getElementById('res-title').textContent=name;});
-  const text=await window.localizeMatchSynopsis(source.text,source.lang);
-  if(window.currentSynopsisSource?.title===title&&(window.MATCH_LANG||'en')===language)document.getElementById('res-synopsis').textContent=text===source.text&&source.lang!==language?window.matchTranslationUnavailable():text;
+  const text=await (window.localizeVerifiedSynopsis||window.localizeMatchSynopsis)(source.text,source.lang,language,{title,year:source.year,kind:source.kind});
+  if(window.currentSynopsisSource?.title===title&&(window.MATCH_LANG||'en')===language)document.getElementById('res-synopsis').textContent=text===source.text&&source.lang!==language&&!window.matchSynopsisWasTranslated?.(source.text,language)?window.matchTranslationUnavailable():text;
  }
 });
 document.addEventListener('click',event=>{if(event.target.closest('.app-header a,.app-header button:not(.sound-toggle-btn),.app-header select'))window.playPremiumSound?.();});

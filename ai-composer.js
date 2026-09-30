@@ -155,7 +155,7 @@ async function localizeResponses(){
   const source=originals.get(node);if(!source?.text)continue;
   const translated=target===source.lang?source.text:await window.localizeMatchSynopsis?.(source.text,source.lang);
   if(version!==generation||!node.isConnected)return;
-  if(translated&&node.textContent===source.painted){node.textContent=translated===source.text&&target!==source.lang?window.matchTranslationUnavailable?.()||translated:translated;source.painted=node.textContent;}
+  if(translated&&node.textContent===source.painted){node.textContent=translated===source.text&&target!==source.lang&&!window.matchSynopsisWasTranslated?.(source.text,target)?window.matchTranslationUnavailable?.()||translated:translated;source.painted=node.textContent;}
  }
 }
 function boot(){

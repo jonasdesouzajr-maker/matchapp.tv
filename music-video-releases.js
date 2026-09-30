@@ -46,6 +46,7 @@
         if(r.durationSeconds){const time=document.createElement('p');time.className='discover-meta';time.textContent=Math.floor(r.durationSeconds/60)+':'+String(r.durationSeconds%60).padStart(2,'0');body.append(time);}
         const actions=document.createElement('div');actions.className='discover-actions';actions.append(link(r.url,copy()[5]),link(r.creditsSource,copy()[6]));body.append(actions);
         card.append(poster,body);grid.append(card);
+        window.MatchAppTitleIdentity?.paint(heading,{title:r.title,originalTitle:r.title,displayTitle:r.title,kind:'music video'});
     }
     function tile(r, duplicate) {
         const card=document.createElement('div');card.className='marquee-item';card.dataset.musicVideo=r.id;

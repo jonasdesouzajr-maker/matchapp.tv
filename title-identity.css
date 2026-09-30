@@ -1,0 +1,3 @@
+/* Inline metadata follows the surrounding title details, without another box. */
+.matchapp-title-identity{display:flex;flex-wrap:wrap;align-items:baseline;gap:.3em .8em;margin:.35em 0 .7em!important;max-width:100%;min-width:0;font:inherit;font-size:.85em!important;line-height:1.45!important;color:inherit;text-align:start!important;letter-spacing:normal!important;text-transform:none!important;opacity:.85;}
+.matchapp-title-identity>span{min-width:0;max-width:100%;overflow-wrap:anywhere;}

@@ -11,6 +11,17 @@
   try{const parsed=JSON.parse(value);value=typeof parsed==='string'?parsed:(parsed&&['translation','synopsis','answer','description','text'].map(k=>parsed[k]).find(v=>typeof v==='string')||'');}catch(_){if(/^[{\[]/.test(value))return '';}
   return value.trim().replace(/^["']|["']$/g,'');
  }
+ window.matchSynopsisWasTranslated=(text,target)=>cache.has(normalize(target||window.matchResultLanguage())+'\n'+text);
+ window.localizeVerifiedSynopsis=async function(text,sourceLang='en',targetLanguage,identity){
+  const target=normalize(targetLanguage||window.matchResultLanguage());
+  if(normalize(sourceLang)===target)return text;
+  if(identity?.title&&['movie','tv'].includes(identity.kind)&&window.tmdbLookup&&target===window.matchResultLanguage()){
+   try{const row=await window.tmdbLookup(identity.title,{year:identity.year||'',kind:identity.kind||'',cats:identity.cats||[]});
+    if(target===window.matchResultLanguage()&&normalize(row?.overviewLang)===target&&row?.overview?.trim()){const value=row.overview.trim();cache.set(target+'\n'+text,value);return value;}
+   }catch(_){}
+  }
+  return window.localizeMatchSynopsis(text,sourceLang,target);
+ };
  window.localizeMatchSynopsis=async function(text,sourceLang='en',targetLanguage){
   const lang=normalize(targetLanguage||window.matchResultLanguage());if(!text)return '';if(normalize(sourceLang)===lang)return text;
   const key=lang+'\n'+text;if(cache.has(key))return cache.get(key);if(pending.has(key))return pending.get(key);
@@ -20,7 +31,7 @@
    const response=await Promise.race([request,new Promise(resolve=>{timer=setTimeout(()=>resolve(null),25000);})]);
    const raw=response?.data?.candidates?.[0]?.content?.parts?.map(p=>p.text||'').join('');
    const translated=extract(raw);
-   if(!response?.error&&translated&&translated!==text){cache.set(key,translated);return translated;}
+   if(!response?.error&&translated){cache.set(key,translated);return translated;}
   }catch(_){}finally{if(timer!==undefined)clearTimeout(timer);}return text;})();
   pending.set(key,task);try{return await task;}finally{pending.delete(key);}
  };

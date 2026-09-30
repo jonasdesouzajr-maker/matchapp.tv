@@ -139,7 +139,7 @@
                 .filter(x => x.score > 0)
                 .sort((a, b) => b.score - a.score);
 
-            best = scored.length ? scored[0].r : null;
+            best = scored.length ? {...scored[0].r,overviewLang:'en'} : null;
             // Establish identity first, then request the same TMDB record in the
             // selected locale. A translated name must never identify a different work.
             if (best && lang !== 'en-US' && Number.isSafeInteger(best.tmdbId) && ['tv','movie'].includes(best.kind)) {
@@ -148,7 +148,7 @@
                 const r = translated.data?.results?.[0];
                 if (!translated.error && r && r.tmdbId === original.tmdbId && r.kind === original.kind &&
                     r.originalTitle === original.originalTitle && r.year === original.year && r.adult !== true) {
-                    best = {...original, ...r, poster:r.poster || original.poster};
+                    best = {...original, ...r, overviewLang:lang, poster:r.poster || original.poster};
                 }
             }
         } catch (e) {

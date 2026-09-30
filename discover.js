@@ -866,7 +866,7 @@ function discoverCardHTML(item, idx) {
             ${facts}
             ${categories}
             <div id="discover-availability-${idx}" class="matchapp-card-availability" hidden></div>
-            <p class="discover-synopsis" data-source-lang="${escapeDiscoverHtml(item.synopsisLang || lang)}">${synopsis}</p>
+            <p class="discover-synopsis" data-result-title="${escapeDiscoverHtml(item.title || title)}" data-result-year="${escapeDiscoverHtml(item.year || '')}" data-result-kind="${escapeDiscoverHtml(item._catalogMedia?.media_kind || item._tmdb?.kind || (/movie|film/i.test(item.type || '') ? 'movie' : /series|tv|show|novela|drama|anime/i.test(item.type || '') ? 'tv' : ''))}" data-source-lang="${escapeDiscoverHtml(item.synopsisLang || lang)}">${synopsis}</p>
             <div id="discover-preview-${idx}" class="discover-card-preview" hidden></div>
             <div class="discover-actions">
                 <a id="dl-${idx}" class="gold-btn discover-play${cinemaOnly ? ' is-cinema' : ''}" href="#" target="_blank" rel="noopener">${watchLabel}</a>
@@ -915,6 +915,7 @@ function discoverFallbackPoster(item) {
 }
 
 async function hydrateDiscoverCard(item, idx) {
+    window.MatchAppTitleIdentity?.paint(document.querySelector(`[data-discover-idx="${idx}"] h3`),{...item,kind:item._catalogMedia?.media_kind||item._tmdb?.kind||(/movie|film/i.test(item.type||'')?'movie':/series|tv|show|novela|drama|anime/i.test(item.type||'')?'tv':item.type)});
     // A former undeclared rawType crashed TV genre enrichment for some answers.
     const rawType=String(item?.type||'').toLowerCase();
     const img = document.getElementById('dp-' + idx);

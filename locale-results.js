@@ -50,8 +50,9 @@
       if (kind === 'title' && typeof window.localizedTitle === 'function') {
         try {
           const official = await window.localizedTitle(text);
-          if (official && official !== text) return official;
+          return official || text;
         } catch (_) {}
+        return text; // Preserve official identities; never invent translated work names.
       }
       if (kind === 'synopsis' && typeof window.localizeMatchSynopsis === 'function') {
         try { return await window.localizeMatchSynopsis(text, 'en', L); } catch (_) {}
@@ -94,9 +95,9 @@
     if(!original?.trim()||(previous&&!reused&&previous.target===L))return;
     const state={text:original,source,target:L,painted:current};records.set(el,state);
     if(kind==='synopsis'&&source!==L){state.painted=window.t?.('global.guide')||'';el.textContent=state.painted;}
-    const next=kind==='synopsis'?await window.localizeMatchSynopsis?.(original,source,L):await translateText(original,kind);
+    const next=kind==='synopsis'?await (window.localizeVerifiedSynopsis||window.localizeMatchSynopsis)?.(original,source,L,el.dataset.resultTitle?{title:el.dataset.resultTitle,year:el.dataset.resultYear,kind:el.dataset.resultKind}:null):await translateText(original,kind);
     if(el.isConnected&&lang()===L&&records.get(el)===state&&el.textContent===state.painted){
-      state.painted=next===original&&source!==L&&kind==='synopsis'?window.matchTranslationUnavailable?.()||'':next||original;
+      state.painted=next===original&&source!==L&&kind==='synopsis'&&!window.matchSynopsisWasTranslated?.(original,L)?window.matchTranslationUnavailable?.()||'':next||original;
       el.textContent=state.painted;
       el.dataset.localeLastText=state.painted;el.dataset.localePainted=L;
     }

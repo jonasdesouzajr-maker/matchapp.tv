@@ -16,7 +16,7 @@ test('behavioral pages load one current shared runtime instead of stale cache ke
   const preservedPages=['profile/profile.html','pricing/pricing.html','purchase.html','friends.html','callback.html','oauth/consent.html','events-archive.html'];
   const original='20260926-catalogscale1&amp;auth=20260926-emailsingle1&amp;welcome=20260926-welcome1&amp;login=20260926-loginfix1&amp;trial=20260926-guesttrial1&amp;openai=20260927-criteria1&amp;global=20260927-ranked1';
   // Matching entry points receive session recovery; account/checkout URLs stay stable.
-  assert.deepEqual([...new Set(freshEntryPages.map(p=>version(p,'app.js')))], [original+'&amp;mobilefresh=20260927-1&amp;providerfix=20260927-1&amp;poster=20260927-mobile1&amp;matching=20260928-session1&amp;topic=20260928-1&amp;formatfix=20260929-1&amp;fallbackfix=20260929-1&amp;recovery=20260929-2&amp;desktop=20260929-details1&amp;series=20260929-horrortv2&amp;language=20260930-fix1']);
+  assert.deepEqual([...new Set(freshEntryPages.map(p=>version(p,'app.js')))], [original+'&amp;mobilefresh=20260927-1&amp;providerfix=20260927-1&amp;poster=20260927-mobile1&amp;matching=20260928-session1&amp;topic=20260928-1&amp;formatfix=20260929-1&amp;fallbackfix=20260929-1&amp;recovery=20260929-2&amp;desktop=20260929-details1&amp;series=20260929-horrortv2&amp;language=20260930-fix2']);
   assert.equal(version('together.html','app.js'),original+'&amp;matching=20260928-session1&amp;formatfix=20260929-1&amp;fallbackfix=20260929-2');
   assert.deepEqual([...new Set(preservedPages.map(p=>version(p,'app.js')))], [original]);
   for(const p of freshEntryPages){const h=read(p);assert(h.includes('/match-ai-rank.js?v=20260927-ranked1-mobilefresh1'));assert(h.indexOf('/match-ai-rank.js?v=')<h.indexOf('/app.js?v='));}
