@@ -157,14 +157,14 @@ async function aiQuestion(page,question,expected,label){
       };
     });
     record('original integrated MatchApp Ai brand '+device.name,
-      identity.label==='MatchApp Ai'&&identity.ai==='Ai'&&!identity.tv&&!identity.detached&&
+      identity.label==='Matchapp Ai'&&identity.ai==='Ai'&&!identity.tv&&!identity.detached&&
       identity.logo&&identity.gradient&&identity.textInside&&Number(identity.weight)>=800,
       JSON.stringify(identity));
     if(device.name==='desktop'){
       await page.evaluate(()=>{if(typeof window.setLanguage!=='function')throw Error('Language switch unavailable');window.setLanguage('pt-BR')});
       await page.waitForFunction(()=>{
         const brand=document.querySelector('#mh-topbox .ma-brand-lockup');
-        return brand?.getAttribute('aria-label')==='MatchApp iA'&&brand.querySelector('[data-ma-brand-ai]')?.textContent==='iA';
+        return brand?.getAttribute('aria-label')==='Matchapp iA'&&brand.querySelector('[data-ma-brand-ai]')?.textContent==='iA';
       },null,{timeout:10000});
       const portuguese=await page.evaluate(()=>{
         const b=document.querySelector('#mh-topbox .ma-brand-lockup');
@@ -172,7 +172,7 @@ async function aiQuestion(page,question,expected,label){
           home:b?.querySelector('.ma-brand-home-link')?.getAttribute('aria-label')};
       });
       record('live Brazilian Portuguese MatchApp iA brand',
-        portuguese.label==='MatchApp iA'&&portuguese.ai==='iA'&&portuguese.home==='MatchApp iA home',
+        portuguese.label==='Matchapp iA'&&portuguese.ai==='iA'&&portuguese.home==='Matchapp iA home',
         JSON.stringify(portuguese));
       await page.evaluate(()=>window.setLanguage('en'));
     }

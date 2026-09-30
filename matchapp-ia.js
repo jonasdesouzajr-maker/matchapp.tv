@@ -106,7 +106,7 @@ function brandHeader(){
          '<span class="ma-brand-orb-stage" aria-hidden="true">'+
            '<img class="ma-brand-orb" src="'+(isHome?HOME_ICON:ICON)+'" alt="" width="260" height="260">'+
          '</span>'+
-         '<span class="ma-brand-copy"><span class="ma-wordmark"><span class="ma-word-match">Match</span><span class="ma-word-app">App</span></span><span class="ma-word-ai" data-ma-brand-ai>Ai</span></span>'+
+         '<span class="ma-brand-copy" translate="no"><span class="ma-wordmark"><span class="ma-word-match">Match</span><span class="ma-word-app">app</span></span><span class="ma-word-ai" data-ma-brand-ai>Ai</span><span class="ma-brand-caption"><span class="ma-brand-tagline">Your new Entertainment Ai</span><span class="ma-brand-security" title="Connection encrypted over HTTPS and served through Cloudflare"><svg width="8" height="9" viewBox="0 0 12 14" aria-hidden="true" fill="none" stroke="currentColor"><path d="M6 1 11 3v4c0 3-5 6-5 6S1 10 1 7V3z"/><path d="m3.5 7 1.5 1.5 3.5-3.5"/></svg> Cloudflare · HTTPS</span></span></span>'+
        '</a>'+
      '</div>';
    const homeOrb=qs('.ma-brand-orb',brand);
@@ -407,7 +407,7 @@ function prepareResponsiveAds(){
  });
 }
 function applyBrandLocale(){
- const name=langKey()==='pt-BR'?'MatchApp iA':'MatchApp Ai';
+ const name=isHome?(langKey()==='pt-BR'?'Matchapp iA':'Matchapp Ai'):(langKey()==='pt-BR'?'MatchApp iA':'MatchApp Ai');
  qsa('.ma-brand-lockup').forEach(brand=>{
   // Only the adult canonical lockups created by this runtime/page-shell.
   const ai=brand.querySelector('[data-ma-brand-ai]');if(!ai)return;
@@ -415,6 +415,9 @@ function applyBrandLocale(){
   brand.setAttribute('aria-label',name);
   const home=brand.querySelector('.ma-brand-home-link');
   if(home)home.setAttribute('aria-label',name+' home');
+  const tagline=brand.querySelector('.ma-brand-tagline');
+  if(tagline){const lines={en:'Your new Entertainment Ai','pt-BR':'Sua nova iA de entretenimento',es:'Tu nueva Ai de entretenimiento',fr:'Votre nouvelle Ai du divertissement',de:'Deine neue Entertainment-Ai',it:'La tua nuova Ai di intrattenimento',tr:'Yeni eğlence Ai’niz',ru:'Ваш новый ИИ для развлечений',ar:'ذكاؤك الجديد للترفيه',hi:'आपका नया मनोरंजन Ai',id:'Ai hiburan baru Anda',ja:'あなたの新しいエンタメAi',ko:'새로운 엔터테인먼트 Ai',zh:'你的全新娱乐 Ai'};tagline.textContent=lines[langKey()]||lines.en;}
+  const word=brand.querySelector('.ma-wordmark');if(word)word.setAttribute('translate','no');
  });
 }
 function applyLanguage(){

@@ -86,7 +86,7 @@ function localizeControl(node){
  if(aria){node.setAttribute('aria-label',aria);node.setAttribute('title',aria);}
  const walker=document.createTreeWalker(node,NodeFilter.SHOW_TEXT);let text;
  while((text=walker.nextNode())){
-  if(text.parentElement?.closest('svg,script,style,textarea,.discover-card,.marquee-item,.chat-user,.chat-answer-text'))continue;
+  if(text.parentElement?.closest('[translate="no"],svg,script,style,textarea,.discover-card,.marquee-item,.chat-user,.chat-answer-text'))continue;
   const source=text.nodeValue.trim(),labelKey=reverse.get(source);
   const translated=labelKey?.startsWith('composer.extra.')?(extra[language()]||extra.en)[Number(labelKey.split('.').pop())]:labelKey&&window.t?.(labelKey);
   if(translated&&translated!==source&&!/[<>]/.test(translated))text.nodeValue=text.nodeValue.replace(source,translated);

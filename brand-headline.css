@@ -301,3 +301,26 @@ html.reduce-motion body.page-shell header.app-header.mh-topbox .ma-word-ai::afte
 html.reduce-motion body.ebook-page .ebook-page-top .ma-word-ai::after{
  animation:none!important;transform:none!important;
 }
+
+/* Small supporting copy fits inside the existing orb-height brand row. */
+html body.page-home #mh-topbox.app-header.ma-home-header .ma-brand-copy{
+ display:grid!important;grid-template-columns:max-content max-content!important;align-items:baseline!important;
+ column-gap:.16em!important;row-gap:2px!important;
+}
+html body.page-home #mh-topbox.app-header.ma-home-header .ma-brand-caption{
+ grid-column:1/-1;width:0;min-width:100%;display:flex;flex-wrap:wrap;align-items:center;gap:2px 5px;
+ max-width:100%;font:500 9px/1.15 system-ui,sans-serif;letter-spacing:0;white-space:normal;color:#dfd0ec;
+}
+html body.page-home #mh-topbox.app-header.ma-home-header .ma-brand-security{
+ display:inline-flex;align-items:center;gap:2px;border:1px solid #b8d6bd55;
+ border-radius:999px;padding:1px 4px;color:#cbe8cd;font-size:8px;white-space:nowrap;
+}
+@media(max-width:600px){
+ html body.page-home #mh-topbox.app-header.ma-home-header .ma-brand-caption{font-size:7.5px;line-height:1;gap:2px 4px;max-width:210px;}
+ html body.page-home #mh-topbox.app-header.ma-home-header .ma-brand-security{font-size:7px;line-height:1;padding:0 3px;}
+}
+@media(prefers-reduced-motion:no-preference){
+ html:not(.reduce-motion) body.page-home #mh-topbox .ma-brand-copy .ma-word-ai{
+  animation:maAiIntelligenceGlint 13s ease-in-out infinite!important;
+ }
+}
