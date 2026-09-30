@@ -8,6 +8,7 @@ type OpenAIArgs = {
   reserve: () => Promise<boolean>; cors: (req: Request) => Record<string,string>;
   blockXXX: (row: Record<string,unknown>) => boolean; explicitXXX: (text: string) => boolean;
   allowedCandidateIds?: string[];
+  acceptDiscoverAnswer?: (answer: string) => boolean;
 };
 export function schemaFor(mode: SchemaMode) {
   const str = { type: "string" };
@@ -74,6 +75,7 @@ export async function callOpenAIPrimary(args: OpenAIArgs): Promise<Response|null
     if(!parsed||typeof parsed!=="object")return null;
     if(mode==="discover"){
       if(typeof parsed.answer!=="string"||!Array.isArray(parsed.results))return null;
+      if(args.acceptDiscoverAnswer && !args.acceptDiscoverAnswer(parsed.answer))return null;
       const urls=[...parsed.answer.matchAll(/https?:\/\/[^\s)>\]]+/g)];
       if(explicitXXX(parsed.answer)||urls.some((m:RegExpMatchArray)=>blockXXX({url:m[0]}))){
         parsed.answer="MatchApp helps with mainstream, non-explicit entertainment.";

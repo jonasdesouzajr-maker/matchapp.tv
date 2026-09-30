@@ -10,6 +10,7 @@ type GroqArgs = {
   blockXXX: (row: Record<string,unknown>) => boolean;
   explicitXXX: (text: string) => boolean;
   allowedCandidateIds?: string[];
+  acceptDiscoverAnswer?: (answer: string) => boolean;
 };
 
 // Both current production models support strict JSON-schema responses.
@@ -63,6 +64,7 @@ export async function callGroqBackup(args: GroqArgs): Promise<Response|null> {
       if(!parsed||typeof parsed!=="object"||Array.isArray(parsed))continue;
       if(mode==="discover"){
         if(typeof parsed.answer!=="string"||!Array.isArray(parsed.results))continue;
+        if(args.acceptDiscoverAnswer && !args.acceptDiscoverAnswer(parsed.answer))continue;
         const urls=[...parsed.answer.matchAll(/https?:\/\/[^\s)>\]]+/g)];
         if(explicitXXX(parsed.answer)||urls.some((m:RegExpMatchArray)=>blockXXX({url:m[0]}))){
           parsed.answer="MatchApp helps with mainstream, non-explicit entertainment.";

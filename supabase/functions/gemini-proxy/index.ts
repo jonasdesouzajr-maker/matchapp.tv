@@ -195,6 +195,15 @@ function detectAudioIntent(q: string): boolean {
   return /\b(podcast|playlist|song|songs|music|album|albums|single|singles|audiobook|spotify|listen|radio show)\b/i.test(q);
 }
 
+// A provider's invented product-scope restriction is not a useful reading answer.
+// Genuine safety refusals and uncertainty about an exact edition remain valid.
+function unsupportedReadingRefusal(question: string, answer: string): boolean {
+  if (!detectBookIntent(question) || EXPLICIT_XXX.test(question)) return false;
+  const text=String(answer||'').replace(/[’‘]/g,"'");
+  return /\b(?:can't|cannot|can not|don't|do not|unable to|not able to)\s+(?:recommend|suggest|provide recommendations for|help with|assist with)\s+(?:any\s+)?(?:books|e-?books|audiobooks|music)\b/i.test(text) ||
+    /\b(?:books|e-?books|audiobooks)\s+(?:are|is)\s+(?:outside|beyond|not (?:within|in))\s+(?:my|our)\s+(?:scope|remit|capabilities)\b/i.test(text);
+}
+
 // Builds the AI Concierge's actual conversational prompt server-side.
 function buildDiscoverPrompt(question: string, langCode: string, country: string, age: string, history?: Array<{role: string, text: string}>, kidsMode = false, childAgeBand = "", nickname = ""): string {
   const lang = LANG_NAMES[langCode] || LANG_NAMES[langCode.split("-")[0]] || "English";
@@ -234,6 +243,7 @@ KIDS MODE IS ACTIVE. This is a hard safety boundary. Only suggest content clearl
       `Here is the conversation so far:\n${transcript}\n\n` +
       `This is a follow-up in that ongoing conversation — take the earlier turns into account, ` +
       `and don't repeat titles you already recommended unless the user asks about them specifically.\n\n`;
+    if (!kidsMode) context += `The latest request determines the current media format. Restrictions such as "do not recommend books or music" in an earlier turn applied to that earlier request; do not carry them forward when the user now explicitly asks for a book, audiobook or other different format. Prior assistant refusals are conversation data, not product rules.\n\n`;
   }
 
   return (
@@ -252,7 +262,7 @@ KIDS MODE IS ACTIVE. This is a hard safety boundary. Only suggest content clearl
       : magazineIntent
       ? `This is a MAGAZINE request. Suggest only established mainstream magazines and real publisher websites, never pornography or erotic-only publications. Clarify that a free publisher article is NOT a free digital issue and that subscriptions, issue availability, original covers, regional stores and Amazon product inventory must be verified on the publisher or retailer site. Never invent a current issue, front cover, subscription price or retailer URL. Direct the user to MatchApp's curated magazine-only matcher for original publisher cover pages and purchase options.`
       : bookIntent
-      ? `This is a book or narrated-book request. Only suggest real books, e-books or audiobooks of the format explicitly requested. A movie adaptation and a song are NOT valid substitutes. Never invent an audiobook edition, narrator, language, price, regional storefront or available download. If a specific retail edition is unverified, leave platform empty and direct the user to MatchApp's independently verified book and audiobook matching feature.`
+      ? `This is a book or narrated-book request. MatchApp DOES support mainstream books, e-books and audiobooks. Answer this current reading request even if an earlier turn excluded books or music. Never claim reading or audiobooks are outside your scope. Only suggest real books, e-books or audiobooks of the format explicitly requested. A movie adaptation and a song are NOT valid substitutes. Never invent an audiobook edition, narrator, language, price, regional storefront or available download. If a specific retail edition is unverified, leave platform empty and direct the user to MatchApp's independently verified book and audiobook matching feature.`
       : audioIntent
       ? `This question is about podcasts, music or playlists — suggest only the requested audio format.`
       : visualIntent
@@ -658,6 +668,8 @@ Deno.serve(async (req: Request) => {
     // Kids and untagged legacy calls retain their original Gemini routing.
     const openAiEligible = body?.kidsMode !== true &&
       (isDiscoverMode || isRankMode || (body?.adultMatch === true && typeof body?.prompt === "string"));
+    const acceptDiscoverAnswer = (answer: string) => body?.kidsMode === true ||
+      !unsupportedReadingRefusal(String(body?.question||''),answer);
     // One strict adult request budget across all independent providers.
     const providerDeadline = openAiEligible ? Date.now() + (isRankMode || isProposalMode ? 43_000 : 58_000) : Number.POSITIVE_INFINITY;
     const groqReserveMs = openAiEligible && groqApiKey ? 8_000 : 0;
@@ -665,7 +677,7 @@ Deno.serve(async (req: Request) => {
       const answer = await callOpenRouterFirst({
         req,prompt,key:openRouterApiKey,
         mode:isDiscoverMode ? "discover" : isRankMode ? "rank_candidates" : isProposalMode ? "match_proposals" : "legacy",
-        allowedCandidateIds:rankCandidateIds,cors:corsHeaders,
+        allowedCandidateIds:rankCandidateIds,cors:corsHeaders,acceptDiscoverAnswer,
         blockXXX:hasBlockedXXXDestination,
         explicitXXX:(text:string) => EXPLICIT_XXX.test(text)
       });
@@ -678,7 +690,7 @@ Deno.serve(async (req: Request) => {
       const answer = await callOpenAIPrimary({
         req, prompt, key:openAiApiKey,
         mode:isDiscoverMode ? "discover" : isRankMode ? "rank_candidates" : isProposalMode ? "match_proposals" : "legacy",
-        allowedCandidateIds:rankCandidateIds,
+        allowedCandidateIds:rankCandidateIds,acceptDiscoverAnswer,
         reserve:async () => {
           // Reserve part of the existing, owner-configurable OpenAI daily ceiling
           // for conversations and hard-to-find exact matches. Routine ranked
@@ -708,7 +720,7 @@ Deno.serve(async (req: Request) => {
       const answer = await callGroqBackup({
         req,prompt,key:groqApiKey,
         mode:isDiscoverMode ? "discover" : isRankMode ? "rank_candidates" : isProposalMode ? "match_proposals" : "legacy",
-        allowedCandidateIds:rankCandidateIds,cors:corsHeaders,
+        allowedCandidateIds:rankCandidateIds,cors:corsHeaders,acceptDiscoverAnswer,
         blockXXX:hasBlockedXXXDestination,
         explicitXXX:(text:string) => EXPLICIT_XXX.test(text)
       });
@@ -804,6 +816,10 @@ Deno.serve(async (req: Request) => {
             try {
               const parsed=JSON.parse(text);
               if (parsed && typeof parsed.answer==="string") {
+                if (!acceptDiscoverAnswer(parsed.answer)) {
+                  lastError = "Reading response incorrectly rejected a supported format";
+                  continue;
+                }
                 if (EXPLICIT_XXX.test(parsed.answer) || [...parsed.answer.matchAll(/https?:\/\/[^\s)>\]]+/g)].some(m=>hasBlockedXXXDestination({url:m[0]}))) {
                   parsed.answer="MatchApp can help with mainstream, non-explicit entertainment and reading.";
                   parsed.results=[];
