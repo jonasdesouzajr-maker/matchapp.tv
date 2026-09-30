@@ -97,16 +97,17 @@ async function aiQuestion(page,question,expected,label){
     await page.locator('#q-category').waitFor({state:'attached',timeout:15000});
     await page.locator('#q-category').locator('xpath=..').locator('.crit-chips .crit-chip').first().waitFor({state:'attached',timeout:15000});
     await page.locator('#ebook-matcher-root [data-ebook-match]').waitFor({state:'attached',timeout:25000});
-    // Fresh Home opens only Top Titles. Open News explicitly to verify its content.
+    // Fresh Home opens Top Titles and Ask AI, with Watch in compact preview. Open News explicitly to verify its content.
     try {
       await page.locator('#latest-news > summary').waitFor({state:'visible',timeout:20000});
       const defaults=await page.evaluate(()=>({
         titles:!!document.getElementById('trending-rail')?.getClientRects().length,
-        generic:[...document.querySelectorAll('.lazy-head[data-fold-key]')].every(n=>n.getAttribute('aria-expanded')==='false'),
+        generic:[...document.querySelectorAll('.lazy-head[data-fold-key]')].every(n=>n.getAttribute('aria-expanded')===(n.dataset.foldKey==='askai'?'true':'false')),
+        compact:document.querySelector('#ma-concierge')?.classList.contains('ma-watch-compact'),
         native:['#latest-news','#premiere-disclosure','#weekly-pick-disclosure','#cooking-home','#ebook-matcher-root .ebook-fold','#global-events .global-events-fold'].every(s=>!document.querySelector(s)?.open),
         music:document.querySelector('.swifties-fold')?.getAttribute('aria-expanded')==='false'
       }));
-      record('Fresh Home opens only Top Titles '+device.name,defaults.titles&&defaults.generic&&defaults.native&&defaults.music,JSON.stringify(defaults));
+      record('Fresh Home opens Top Titles and Ask AI with compact Watch '+device.name,defaults.titles&&defaults.generic&&defaults.native&&defaults.music&&defaults.compact,JSON.stringify(defaults));
       await page.locator('#latest-news > summary').click();
       await page.waitForFunction(()=>document.querySelectorAll('#latest-news .ma-news-card-main[href^="https://"]').length>0,null,{timeout:20000});
       const news=await page.evaluate(()=>{
@@ -185,14 +186,15 @@ async function aiQuestion(page,question,expected,label){
       if(!card||!ad||!ins)return {found:false};
       const a=ad.getBoundingClientRect(),c=card.getBoundingClientRect();
       const visible=getComputedStyle(ad).display!=='none'&&getComputedStyle(card).display!=='none';
-      return {found:true,direct:card.nextElementSibling===ad,
+      return {found:true,follows:!!(card.compareDocumentPosition(ad)&Node.DOCUMENT_POSITION_FOLLOWING),
+        lockedParent:ad.parentElement.matches('main.page-wrapper'),
         header:!fold||fold.nextElementSibling===card,
         onScreenOrder:!visible||a.top>=c.bottom-3,
         responsive:ins.getAttribute('data-full-width-responsive')==='true',
         format:ins.getAttribute('data-ad-format'),manualCount:document.querySelectorAll('ins.adsbygoogle[data-ad-slot="2595698117"]').length,totalCount:document.querySelectorAll('ins.adsbygoogle').length};
     });
     record('Match Together ad follows complete card '+device.name,
-      sponsor.found&&sponsor.direct&&sponsor.header&&sponsor.onScreenOrder&&
+      sponsor.found&&sponsor.follows&&sponsor.lockedParent&&sponsor.header&&sponsor.onScreenOrder&&
       sponsor.responsive&&sponsor.format==='auto'&&sponsor.manualCount===5,JSON.stringify(sponsor));
     // Three bespoke, micro-sized intelligence effects, never a whole header
     // animation. Touch devices receive one-pass text glint with the same sparks.
@@ -243,8 +245,9 @@ async function aiQuestion(page,question,expected,label){
     const bookFields=await ebook.locator('select[data-ebook-select]').count();
     record('real compact reading controls '+device.name,bookFields===7,
       'seven live dropdowns preserve ebook, verified audio and magazine choices');
-    // Open the separate Ask fold through its visible header; do not auto-focus.
-    await page.locator('.lazy-head[data-fold-key="askai"]').click();
+    // Ask starts open; open it only if a prior interaction folded it. Do not auto-focus.
+    const askHead=page.locator('.lazy-head[data-fold-key="askai"]');
+    if(await askHead.getAttribute('aria-expanded')!=='true')await askHead.click();
     const aiEntry=page.locator('#ma-ai-entry'),homeInput=page.locator('#ma-ai-entry #specific-search-input');
     await aiEntry.waitFor({state:'visible',timeout:12000});
     await homeInput.waitFor({state:'visible',timeout:12000});
@@ -323,7 +326,8 @@ async function aiQuestion(page,question,expected,label){
     const picked=await page.evaluate(()=>{window.setMatchCriteria({cat:['movie'],mood:['funny'],plat:[]});return window.getMatchCriteria()});
     assert(picked.cat.includes('movie')&&picked.mood.includes('funny'),'production multi-select did not preserve choices');
     await page.locator('.lazy-head[data-fold-key="concierge"]').click();
-    await page.locator('.lazy-head[data-fold-key="askai"]').click();
+    const askHead=page.locator('.lazy-head[data-fold-key="askai"]');
+    if(await askHead.getAttribute('aria-expanded')!=='true')await askHead.click();
     await page.locator('button[onclick="triggerMatch(false)"]').click();
     await page.waitForFunction(()=>{
       const box=document.getElementById('result-box');

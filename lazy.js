@@ -20,8 +20,8 @@ const NATIVE=[
  {sel:'#ebook-matcher-root .ebook-fold',key:'reading'}
 ];
 let foldState=loadFoldState(), syncing=false, observerQueued=false;
-// Only Top Titles is expanded on a fresh Home opening; explicit deep links may open their target.
-function loadFoldState(){return {}}
+// Fresh Home opens Top Titles and Ask AI; Watch starts with its compact preview.
+function loadFoldState(){return {askai:true}}
 function saveFoldState(){try{localStorage.setItem(FOLD_KEY,JSON.stringify(foldState))}catch(_){}}
 function lazyOn(){return document.body.classList.contains('lazy-mode')}
 function storedOpen(key){return foldState[key]===true}
@@ -35,6 +35,7 @@ function setGeneric(section,open){
  alignGenericHead(section);
  const head=section.previousElementSibling?.classList?.contains('lazy-head')?section.previousElementSibling:null;
  section.classList.toggle('lazy-open',!!open);
+ if(section.id==='ma-concierge'){section.classList.toggle('ma-watch-compact',!open&&!lazyOn());refreshWatchPreview(section);}
  if(head){head.classList.toggle('is-open',!!open);head.setAttribute('aria-expanded',open?'true':'false')}
 }
 function alignGenericHead(section){
@@ -50,7 +51,44 @@ function mountGeneric(cfg,section){
  head.querySelector('.lazy-head-label').textContent=labelFor(cfg,section);
  head.addEventListener('click',()=>{const open=!section.classList.contains('lazy-open');setGeneric(section,open);if(open&&cfg.key==='askai')document.querySelector('#ma-install-offer .ma-offer-close')?.click();if(!lazyOn())remember(cfg.key,open)});
  section.parentNode.insertBefore(head,section);
+ if(cfg.key==='concierge')mountWatchPreview(section);
  if(cfg.key==='trending'){const title=section.querySelector(':scope > h4');if(title)title.hidden=true;}
+}
+// Two compact rows: labels and existing format/mood choices. No automatic match request.
+const PREVIEW_FIELDS=[['q-category','cat','q.category','Category / Format'],['q-mood','mood','q.mood','Mood']];
+function refreshWatchPreview(section){
+ const preview=section.querySelector('.ma-watch-preview');if(!preview)return;
+ PREVIEW_FIELDS.forEach(([id,key,labelKey,fallback])=>{
+  const source=document.getElementById(id),select=preview.querySelector('[data-criteria-key="'+key+'"]');
+  if(!source||!select)return;
+  select.replaceChildren(...Array.from(source.children,n=>n.cloneNode(true)));
+  const selected=window.getMatchCriteria?.()?.[key]?.[0]||source.value||'any';
+  select.value=selected;
+  select.previousElementSibling.textContent=tr(labelKey,fallback);
+ });
+}
+function mountWatchPreview(section){
+ if(section.querySelector('.ma-watch-preview')||!document.getElementById('q-category'))return;
+ const preview=document.createElement('div');preview.className='ma-watch-preview';
+ PREVIEW_FIELDS.forEach(([id,key])=>{
+  const label=document.createElement('label'),text=document.createElement('span'),select=document.createElement('select');
+  select.id='ma-compact-'+key;select.dataset.criteriaKey=key;label.htmlFor=select.id;
+  label.append(text,select);preview.append(label);
+  select.addEventListener('change',()=>{
+   if(typeof window.setMatchCriteria!=='function')return;
+   window.setMatchCriteria({[key]:select.value==='any'?[]:[select.value]});
+   setGeneric(section,true);remember('concierge',true);
+   document.dispatchEvent(new CustomEvent('matchapp:criteriachange',{detail:window.getMatchCriteria?.()}));
+  });
+ });
+ section.prepend(preview);refreshWatchPreview(section);
+}
+function refreshFoldLabels(){
+ GENERIC.forEach(cfg=>{
+  const section=document.querySelector(cfg.sel),label=document.querySelector('.lazy-head[data-fold-key="'+cfg.key+'"] .lazy-head-label');
+  if(section&&label){const value=labelFor(cfg,section);if(label.textContent!==value)label.textContent=value;}
+ });
+ const watch=document.getElementById('ma-concierge');if(watch)refreshWatchPreview(watch);
 }
 function setNative(el,open){if(el&&el.tagName==='DETAILS'&&el.open!==!!open)el.open=!!open}
 function mountNative(cfg,el){
@@ -155,5 +193,5 @@ function init(){
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
 document.addEventListener('matchapp:authchange',()=>apply(isOn(),false));
-document.addEventListener('matchapp:langchange',refreshToggleUI);
+document.addEventListener('matchapp:langchange',()=>{refreshToggleUI();setTimeout(refreshFoldLabels,0);});
 })();

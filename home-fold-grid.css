@@ -3,7 +3,7 @@ html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container :is(
  display:grid!important;grid-template-columns:38px minmax(0,1fr) 34px!important;
  align-items:center!important;justify-content:stretch!important;gap:10px!important;
  width:100%!important;max-width:none!important;box-sizing:border-box!important;
- min-height:58px!important;height:auto!important;margin:0!important;padding:8px 10px!important;
+ min-height:58px!important;height:auto!important;margin:0!important;padding:8px 16px!important;
  text-align:start!important;position:relative!important;list-style:none!important;
 }
 html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container :is(.lazy-head[data-fold-key],#latest-news>summary,#premiere-disclosure>summary,#weekly-pick-disclosure>summary,#global-events>.global-events-fold>.global-events-summary,#swifties-spotify .swifties-fold,#ebook-matcher-root .ebook-fold>summary,#cooking-home>summary)::-webkit-details-marker{display:none!important}
@@ -36,7 +36,7 @@ html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container :is(
 html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container :is(.lazy-head[data-fold-key]){margin:10px 0!important}
 html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container #latest-news .ma-news-new,
 html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container #global-events .ge-sum-count{
- grid-column:auto!important;position:absolute!important;right:51px!important;top:50%!important;
+ grid-column:auto!important;position:absolute!important;right:auto!important;inset-inline-end:57px!important;top:50%!important;
  transform:translateY(-50%)!important;margin:0!important;font-size:10px!important;
 }
 html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container #latest-news .ma-news-new{padding:4px!important;min-width:20px!important}
@@ -47,11 +47,11 @@ html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container #ebo
 @media(max-width:1024px){
  html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container :is(.lazy-head[data-fold-key],#latest-news>summary,#premiere-disclosure>summary,#weekly-pick-disclosure>summary,#global-events>.global-events-fold>.global-events-summary,#swifties-spotify .swifties-fold,#ebook-matcher-root .ebook-fold>summary,#cooking-home>summary){
   grid-template-columns:30px minmax(0,1fr) 28px!important;gap:8px!important;min-height:46px!important;
-  padding:5px 9px!important;border-radius:14px!important;font-size:14px!important;line-height:1.2!important;
+  padding:7px 14px!important;border-radius:14px!important;font-size:14px!important;line-height:1.2!important;
  }
  html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container :is(.lazy-head[data-fold-key],#latest-news>summary,#premiere-disclosure>summary,#weekly-pick-disclosure>summary,#global-events>.global-events-fold>.global-events-summary,#swifties-spotify .swifties-fold,#ebook-matcher-root .ebook-fold>summary,#cooking-home>summary)::before,html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container #cooking-home>summary>img,html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container #ebook-matcher-root .ebook-fold>summary>.ebook-summary-icon{width:30px!important;height:30px!important}
  html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container :is(.lazy-head[data-fold-key],#latest-news>summary,#premiere-disclosure>summary,#weekly-pick-disclosure>summary,#global-events>.global-events-fold>.global-events-summary,#swifties-spotify .swifties-fold,#ebook-matcher-root .ebook-fold>summary,#cooking-home>summary)::after{width:28px!important;height:28px!important;border-radius:9px!important;background-size:19px 19px!important}
- html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container #latest-news .ma-news-new,html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container #global-events .ge-sum-count{right:45px!important}
+ html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container #latest-news .ma-news-new,html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container #global-events .ge-sum-count{right:auto!important;inset-inline-end:50px!important}
  html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container #ebook-matcher-root .ebook-fold>summary strong{font-size:14px!important}
 }
 @media(prefers-reduced-motion:reduce){html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container :is(.lazy-head[data-fold-key],#latest-news>summary,#premiere-disclosure>summary,#weekly-pick-disclosure>summary,#global-events>.global-events-fold>.global-events-summary,#swifties-spotify .swifties-fold,#ebook-matcher-root .ebook-fold>summary,#cooking-home>summary)::after{transition:none!important}}
@@ -66,12 +66,12 @@ html body.page-home .lazy-head[data-fold-key="askai"]::before{
  content:""!important;display:block!important;background:var(--ma-fold-icon) center / contain no-repeat!important;
 }
 
-html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container :is(#ma-ai-entry,#ma-concierge).lazy-foldable:not(.lazy-open){display:none!important}
+html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container :is(#ma-ai-entry,#ma-concierge).lazy-foldable:not(.lazy-open):not(.ma-watch-compact){display:none!important}
 
 /* A single outer edge and fourteen-pixel rhythm for the adult Home pills. */
 html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container.container.container>:is(.lazy-head[data-fold-key],#ebook-matcher-root,#cooking-home,#latest-news,#premiere-disclosure,#weekly-pick-disclosure,#swifties-spotify,#global-events){
  width:100%!important;max-width:100%!important;min-width:0!important;box-sizing:border-box!important;
- margin:0 0 14px!important;padding:0!important;align-self:stretch!important;
+ margin:0 0 14px!important;align-self:stretch!important;
 }
 html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container :is(#ebook-matcher-root>.ebook-fold,#global-events>.global-events-fold){
  width:100%!important;max-width:100%!important;box-sizing:border-box!important;margin:0!important;padding:0!important;
@@ -89,3 +89,12 @@ html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container #ebo
 html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container :is(#ebook-matcher-root>.ebook-fold:not([open]),#cooking-home:not([open]),#latest-news:not([open]),#premiere-disclosure:not([open]),#weekly-pick-disclosure:not([open]),#global-events>.global-events-fold:not([open]),#swifties-spotify:has(.swifties-fold[aria-expanded="false"])){
  border-radius:999px!important;overflow:hidden!important;
 }
+
+/* Preview reuses the working match criteria API; only its presentation folds. */
+html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container #ma-concierge.ma-watch-compact{display:block!important;padding:10px 14px!important;margin:0 0 14px!important;}
+html body.page-home #ma-concierge.ma-watch-compact>:not(.ma-watch-preview){display:none!important;}
+html body.page-home #ma-concierge>.ma-watch-preview{display:none!important;}
+html body.page-home #ma-concierge.ma-watch-compact>.ma-watch-preview{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;}
+html body.page-home .ma-watch-preview label{display:grid;gap:4px;min-width:0;color:#f9e8bd;font-size:12px;font-weight:700;line-height:1.2;}
+html body.page-home .ma-watch-preview select{box-sizing:border-box;width:100%;min-width:0;min-height:44px;padding:8px 10px;border:1px solid #f9d58b70;border-radius:14px;background:#20172f;color:#fff;font:inherit;font-size:14px;}
+html body.page-home .ma-watch-preview select:focus-visible{outline:2px solid #f9d58b;outline-offset:2px;}
