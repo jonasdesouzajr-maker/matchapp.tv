@@ -20,6 +20,7 @@
     };
     const lang = () => String(window.MATCH_LANG || document.documentElement.lang || 'en').split('-')[0].toLowerCase();
     const copy = () => COPY[lang()] || COPY.en;
+    const releaseMonth = value => new Intl.DateTimeFormat(window.MATCH_LANG || document.documentElement.lang || 'en', {month:'short',year:'numeric',timeZone:'UTC'}).format(new Date(value));
     const date = value => new Intl.DateTimeFormat(window.MATCH_LANG || document.documentElement.lang || 'en', {dateStyle:'medium',timeZone:'UTC'}).format(new Date(value));
     let inventory, featuredIds;
     async function all() {
@@ -62,7 +63,7 @@
         const frame=document.createElement('div');frame.className='music-cover-frame';frame.append(img);
         const caption=document.createElement('div');caption.className='music-video-caption';
         const title=document.createElement('span');title.className='music-cover-title';title.textContent=r.title;
-        const year=document.createElement('span');year.className='music-cover-year';year.textContent=String(new Date(r.publishedAt).getUTCFullYear());
+        const year=document.createElement('span');year.className='music-cover-year';year.textContent=releaseMonth(r.publishedAt);
         caption.append(title,year);cover.append(header,frame,caption);card.append(cover);
         // Sample only a tiny, same-origin copy for the surrounding UI palette.
         // The displayed original image is never edited, stretched or cropped.
@@ -100,7 +101,7 @@
     }
     async function localize() {
         const rows=await all();
-        document.querySelectorAll('[data-music-video]').forEach(card=>{const r=rows.find(x=>x.id===card.dataset.musicVideo);if(r)card.setAttribute('aria-label',intro(r));});
+        document.querySelectorAll('[data-music-video]').forEach(card=>{const r=rows.find(x=>x.id===card.dataset.musicVideo);if(r){card.setAttribute('aria-label',intro(r));const release=card.querySelector('.music-cover-year');if(release)release.textContent=releaseMonth(r.publishedAt);}});
         document.querySelectorAll('.chat-bubble[data-music-video-id]').forEach(bubble=>{
             const r=rows.find(x=>x.id===bubble.dataset.musicVideoId);if(!r)return;
             const p=bubble.querySelector('.chat-answer-text');if(p)p.textContent=intro(r);
