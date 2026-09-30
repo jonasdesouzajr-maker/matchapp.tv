@@ -66,8 +66,8 @@
         const track=document.getElementById('marquee-track');if(!track || track.querySelector('[data-music-video]'))return;
         const rows=await all();if(!rows.length)return;
         // Keep all ten original film/TV identities, plus their original loop.
-        const second=track.children[10];
-        track.prepend(...rows.map(r=>tile(r,false)));
+        const first=track.children[1],second=track.children[11];
+        rows.forEach(r=>track.insertBefore(tile(r,false),first||null));
         if(second)rows.forEach(r=>track.insertBefore(tile(r,true),second));
         const viewport=track.closest('.marquee-viewport');if(viewport)viewport.scrollLeft=0;
         window.dispatchEvent(new Event('resize'));
