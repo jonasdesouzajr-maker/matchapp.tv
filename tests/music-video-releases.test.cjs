@@ -1,6 +1,7 @@
 'use strict';
 const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),{JSDOM}=require('jsdom');
 const data=JSON.parse(fs.readFileSync('data/music-video-releases.json','utf8'));
+const featuredCount=data.featuredIds?.length||data.items.length;
 const script=fs.readFileSync('music-video-releases.js','utf8');
 function fixture(){
  const d=new JSDOM('<html lang="en"><div id="marquee-track">'+Array.from({length:20},(_,i)=>'<div class="marquee-item"><img data-title="Film '+i%10+'"></div>').join('')+'</div><div id="grid"></div></html>',{url:'https://matchapp.tv/',runScripts:'outside-only'});
@@ -15,7 +16,7 @@ test('official release identity, source, artwork and publication data agree',()=
  assert.equal(seo.numberOfItems,data.items.length);seo.itemListElement.forEach((entry,i)=>{assert.equal(entry.item.url,data.items[i].url);assert.equal(entry.item.thumbnailUrl[0],'https://matchapp.tv'+data.items[i].poster);assert.equal(entry.item.uploadDate,data.items[i].publishedAt);});
 });
 test('music cards extend both loops without altering the ten original film identities',async()=>{
- const d=fixture();try{await settle();const cards=[...d.window.document.querySelector('#marquee-track').children];assert.equal(cards.length,20+data.items.length*2);assert.equal(cards.filter(c=>c.querySelector('img[data-title]')).length,20);assert.deepEqual(cards.slice(0,10+data.items.length).map(c=>c.dataset.musicVideo||c.textContent||c.querySelector('img').dataset.title),cards.slice(10+data.items.length).map(c=>c.dataset.musicVideo||c.textContent||c.querySelector('img').dataset.title));assert.equal(cards[1].getAttribute('role'),'button');assert.equal(cards[11+data.items.length].tabIndex,-1);assert.equal(cards[11+data.items.length].getAttribute('aria-hidden'),'true');}finally{d.window.close();}
+ const d=fixture();try{await settle();const cards=[...d.window.document.querySelector('#marquee-track').children];assert.equal(cards.length,20+featuredCount*2);assert.equal(cards.filter(c=>c.querySelector('img[data-title]')).length,20);assert.deepEqual(cards.slice(0,10+featuredCount).map(c=>c.dataset.musicVideo||c.textContent||c.querySelector('img').dataset.title),cards.slice(10+featuredCount).map(c=>c.dataset.musicVideo||c.textContent||c.querySelector('img').dataset.title));assert.equal(cards[1].getAttribute('role'),'button');assert.equal(cards[11+featuredCount].tabIndex,-1);assert.equal(cards[11+featuredCount].getAttribute('aria-hidden'),'true');}finally{d.window.close();}
 });
 test('each exact release renders its official YouTube destination without invoking AI or TMDB',async()=>{
  const d=fixture();try{await settle();for(const r of data.items){const grid=d.window.document.getElementById('grid');await d.window.MatchAppMusicReleases.paintCard(r.id,grid);assert.equal(grid.querySelector('img').getAttribute('src'),r.poster);assert.equal(grid.querySelector('a').href,r.url);assert.ok(grid.textContent.includes(r.director));}assert.equal(await d.window.MatchAppMusicReleases.get('unverified-id'),undefined);}finally{d.window.close();}

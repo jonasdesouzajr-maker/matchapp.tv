@@ -21,11 +21,11 @@
     const lang = () => String(window.MATCH_LANG || document.documentElement.lang || 'en').split('-')[0].toLowerCase();
     const copy = () => COPY[lang()] || COPY.en;
     const date = value => new Intl.DateTimeFormat(window.MATCH_LANG || document.documentElement.lang || 'en', {dateStyle:'medium',timeZone:'UTC'}).format(new Date(value));
-    let inventory;
+    let inventory, featuredIds;
     async function all() {
-        if (!inventory) inventory = fetch('/data/music-video-releases.json?v=20260930-1').then(r => {
+        if (!inventory) inventory = fetch('/data/music-video-releases.json?day='+new Date().toISOString().slice(0,10), {cache:'no-store'}).then(r => {
             if (!r.ok) throw Error('Music inventory unavailable'); return r.json();
-        }).then(data => data.items.filter(r => /^[\w-]{11}$/.test(r.id) && r.url === 'https://www.youtube.com/watch?v='+r.id && r.thumbnail === 'https://i.ytimg.com/vi/'+r.id+'/hqdefault.jpg' && r.poster === '/assets/music-videos/'+r.id+'.jpg' && Date.parse(r.publishedAt) <= Date.now()));
+        }).then(data => { featuredIds=data.featuredIds; return data.items.filter(r => /^[\w-]{11}$/.test(r.id) && r.url === 'https://www.youtube.com/watch?v='+r.id && r.thumbnail === 'https://i.ytimg.com/vi/'+r.id+'/hqdefault.jpg' && r.poster === '/assets/music-videos/'+r.id+'.jpg' && Date.parse(r.publishedAt) <= Date.now()); });
         try { return await inventory; } catch (_) { inventory = null; return []; }
     }
     const get = async id => (await all()).find(r => r.id === id);
@@ -64,7 +64,7 @@
     }
     async function mount() {
         const track=document.getElementById('marquee-track');if(!track || track.querySelector('[data-music-video]'))return;
-        const rows=await all();if(!rows.length)return;
+        const records=await all(), rows=Array.isArray(featuredIds)?records.filter(r=>featuredIds.includes(r.id)):records;if(!rows.length)return;
         // Keep all ten original film/TV identities, plus their original loop.
         const first=track.children[1],second=track.children[11];
         rows.forEach(r=>track.insertBefore(tile(r,false),first||null));
