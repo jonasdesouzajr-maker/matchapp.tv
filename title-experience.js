@@ -37,7 +37,7 @@
 
   function wireTrending(){
     document.addEventListener('click',ev=>{
-      const card=ev.target?.closest?.('#marquee-track .marquee-item');if(!card)return;
+      const card=ev.target?.closest?.('#marquee-track .marquee-item');if(!card||card.dataset.musicVideo)return;
       const vp=card.closest('.marquee-viewport');if(vp?.classList.contains('is-dragging'))return;
       const title=card.querySelector('img[data-title]')?.dataset?.title||card.querySelector('img')?.alt||'';
       if(!title)return;
@@ -47,7 +47,7 @@
     },true);
     document.addEventListener('keydown',ev=>{
       if(ev.key!=='Enter'&&ev.key!==' ')return;
-      const card=ev.target?.closest?.('#marquee-track .marquee-item');if(!card)return;
+      const card=ev.target?.closest?.('#marquee-track .marquee-item');if(!card||card.dataset.musicVideo)return;
       const title=card.querySelector('img[data-title]')?.dataset?.title||card.querySelector('img')?.alt||'';
       if(!title)return;ev.preventDefault();if(window.MatchAppHomeTitleDetails?.open){window.MatchAppHomeTitleDetails.open(title);return;}openTitle(title);
     });

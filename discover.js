@@ -1572,6 +1572,10 @@ window.openThread = function (id) {
         }
         else {
             const bubble = appendAssistantBubble(turn.text, turn.results || [], { instant: true });
+            if (turn.musicVideoId && bubble) {
+                bubble.wrap.dataset.musicVideoId = turn.musicVideoId;
+                window.MatchAppMusicReleases?.paintCard(turn.musicVideoId, bubble.grid);
+            }
             const visible = (turn.results || []).filter(item => item && item.title && !isDiscoverDisliked(item.title));
             if (bubble && visible.length) {
                 const baseIndex = DISCOVER_ITEMS.length;
@@ -2003,6 +2007,27 @@ window.newDiscoverSearch = function () {
 };
 
 /* ---------- Boot ---------- */
+async function showMusicVideoInfoCard(id) {
+    const release = await window.MatchAppMusicReleases?.get(id);
+    if (!release) return false;
+    for (const name of ['discover-empty', 'discover-loading']) {
+        const el = document.getElementById(name); if (el) el.style.display = 'none';
+    }
+    const title = release.artist + ' — ' + release.title;
+    if (!currentThread) currentThread = { id: newThreadId(), title: title.slice(0, 60), turns: [], createdAt: Date.now(), updatedAt: Date.now() };
+    const text = window.MatchAppMusicReleases.intro(release);
+    const bubble = appendAssistantBubble(text, [], { instant: true });
+    if (bubble) {
+        bubble.wrap.dataset.musicVideoId = id;
+        await window.MatchAppMusicReleases.paintCard(id, bubble.grid);
+    }
+    currentThread.turns.push({ role: 'assistant', text, results: [], musicVideoId: id, ts: Date.now() });
+    currentThread.updatedAt = Date.now(); persistCurrentThread();
+    document.title = title + ' — MatchApp AI Concierge';
+    document.getElementById('chat-log')?.scrollIntoView({ behavior: 'auto', block: 'start' });
+    return true;
+}
+
 async function showTitleInfoCard(titleName) {
     titleName = String(titleName || '').trim();
     if (!titleName) return;
@@ -2156,6 +2181,7 @@ async function showEventInfoCard(eventPath) {
 
 async function runDiscovery() {
     renderThreadList();
+    const musicVideoId = getQueryParam('video').trim();
     const title = getQueryParam('title').trim();
     const eventPath = getQueryParam('event').trim();
     const q = getQueryParam('q').trim();
@@ -2174,6 +2200,8 @@ async function runDiscovery() {
         if (log) { parkDiscoverComposer(); log.innerHTML = ''; }
         history.replaceState(null, '', '/discover.html');
     }
+
+    if (musicVideoId && await showMusicVideoInfoCard(musicVideoId)) return;
 
     if (eventPath) {
         if (loadEl) loadEl.style.display = 'none';
