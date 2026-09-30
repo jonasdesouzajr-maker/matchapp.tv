@@ -56,7 +56,7 @@ window.submitHomeAI=function(){
  input.removeAttribute('aria-invalid');window.askAI?.(q);return true;
 };
 function paint(){
- paintGlobal();paintFoldLabels();paintRights();
+ paintGlobal();paintFoldLabels();paintRights();paintHeader();
  if(!document.body.classList.contains('page-home')&&!document.body.classList.contains('ai-chat-page'))return;
  const c=copy();
  put('#search-box h2,.lazy-head[data-fold-key="askai"] .lazy-head-label',c[0]);put('.composer-input-label',c[1]);put('#ai-new-chat span:last-child',c[2]);
@@ -71,6 +71,41 @@ function paint(){
  put('.ai-thinking-copy p',c[7]);
  put('#search-box [data-i18n="search.hint"]',window.t?.('discover.conciergeTagline')||c[6]);
  document.querySelectorAll('.discover-speak').forEach(button=>{const label=window.matchAppReadAloudLabel();button.setAttribute('aria-label',label);button.setAttribute('title',label);});
+}
+// Stable header targets translate on every language change without replacing listeners.
+const headerCopy={
+ en:['How it works','Kids Mode','Settings','Country','Language','Sound','Theme','Lazy Mode','Daily check-in','Pricing','Install app','Settings',"What's new"],
+ 'pt-BR':['Como funciona','Modo Kids','Configurações','País','Idioma','Som','Tema','Modo relaxado','Check-in diário','Planos','Instalar app','Configurações','Novidades'],
+ es:['Cómo funciona','Modo infantil','Ajustes','País','Idioma','Sonido','Tema','Modo relajado','Registro diario','Planes','Instalar app','Ajustes','Novedades'],
+ fr:['Mode d’emploi','Mode enfants','Réglages','Pays','Langue','Son','Thème','Mode détente','Pointage quotidien','Tarifs','Installer l’app','Réglages','Nouveautés'],
+ de:['So funktioniert’s','Kindermodus','Einstellungen','Land','Sprache','Ton','Design','Entspannungsmodus','Täglicher Check-in','Preise','App installieren','Einstellungen','Neuigkeiten'],
+ it:['Come funziona','Modalità bambini','Impostazioni','Paese','Lingua','Audio','Tema','Modalità relax','Accesso giornaliero','Piani','Installa app','Impostazioni','Novità'],
+ tr:['Nasıl çalışır','Çocuk modu','Ayarlar','Ülke','Dil','Ses','Tema','Rahat mod','Günlük giriş','Planlar','Uygulamayı yükle','Ayarlar','Yenilikler'],
+ ru:['Как это работает','Детский режим','Настройки','Страна','Язык','Звук','Тема','Режим отдыха','Ежедневная отметка','Тарифы','Установить','Настройки','Новое'],
+ ar:['كيف يعمل','وضع الأطفال','الإعدادات','البلد','اللغة','الصوت','السمة','وضع الراحة','تسجيل يومي','الخطط','تثبيت التطبيق','الإعدادات','الجديد'],
+ hi:['कैसे काम करता है','बच्चों का मोड','सेटिंग्स','देश','भाषा','ध्वनि','थीम','आराम मोड','दैनिक चेक-इन','प्लान','ऐप इंस्टॉल करें','सेटिंग्स','नया क्या है'],
+ id:['Cara kerja','Mode anak','Pengaturan','Negara','Bahasa','Suara','Tema','Mode santai','Check-in harian','Paket','Pasang aplikasi','Pengaturan','Yang baru'],
+ ja:['使い方','キッズモード','設定','国','言語','音声','テーマ','リラックスモード','毎日のチェックイン','料金','アプリを入手','設定','新着情報'],
+ ko:['사용 방법','키즈 모드','설정','국가','언어','소리','테마','휴식 모드','매일 체크인','요금제','앱 설치','설정','새 소식'],
+ zh:['使用指南','儿童模式','设置','国家','语言','声音','主题','休闲模式','每日签到','套餐','安装应用','设置','最新消息']
+};
+function paintHeader(){
+ const h=document.querySelector('#mh-topbox.ma-home-header');if(!h)return;
+ const c=headerCopy[language()]||headerCopy.en;
+ const label=(selector,text,child)=>{const n=h.querySelector(selector);if(!n)return;
+  n.setAttribute('aria-label',text);n.setAttribute('title',text);
+  const target=child?n.querySelector(child):n;
+  if(target&&target.textContent!==text)target.textContent=text;
+ };
+ label('.ma-how-button',c[0]);label('.ma-kids-mode-entry',c[1],'span');label('.ma-menu-button',c[2],'span');
+ const signIn={en:'Sign in','pt-BR':'Entrar',es:'Entrar',fr:'Connexion',de:'Anmelden',it:'Accedi',tr:'Giriş',ru:'Войти',ar:'دخول',hi:'साइन इन',id:'Masuk',ja:'ログイン',ko:'로그인',zh:'登录'};
+ label('#nav-reg-btn','👤 '+(signIn[language()]||signIn.en));
+ h.querySelectorAll('.ma-menu>[role="menuitem"]').forEach((n,i)=>{
+  const text=c[i+3];if(!text)return;
+  if(!n.dataset.maMenuIcon)n.dataset.maMenuIcon=n.textContent.trim().split(' ')[0];
+  const value=n.dataset.maMenuIcon+' '+text;if(n.textContent!==value)n.textContent=value;n.setAttribute('aria-label',text);
+ });
+ const logout=h.querySelector('#nav-logout-btn');if(logout){const text=window.t?.('nav.logout')||'Logout';logout.setAttribute('aria-label',text);logout.setAttribute('title',text);}
 }
 // Resolve exact authored UI labels, including dynamically inserted error/toast text.
 // Never rewrite user prompts, titles, names, links or form values.
@@ -125,7 +160,7 @@ function boot(){
  paint();buildLabels();labels();rememberResponses();
  const observer=new MutationObserver(records=>{
   if(queued||!records.some(r=>r.addedNodes.length))return;
-  queued=true;requestAnimationFrame(()=>{queued=false;paintFoldLabels();records.forEach(r=>r.addedNodes.forEach(n=>{if(n.nodeType===1){if(n.matches?.('button,[role="button"],a,[role="link"]'))localizeControl(n);labels(n);}}));rememberResponses();});
+  queued=true;requestAnimationFrame(()=>{queued=false;paintFoldLabels();paintHeader();records.forEach(r=>r.addedNodes.forEach(n=>{if(n.nodeType===1){if(n.matches?.('button,[role="button"],a,[role="link"]'))localizeControl(n);labels(n);}}));rememberResponses();});
  });
  observer.observe(document.body,{childList:true,subtree:true});
  document.addEventListener('matchapp:langchange',()=>{buildLabels();paint();labels();localizeResponses();requestAnimationFrame(paint);});

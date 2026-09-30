@@ -13,7 +13,7 @@ test('Home labels the matching system clearly and removes Pick My Night',()=>{
   assert.match(ia,/ma-tab-title/);
   assert.match(ia,/ma-tab-hint/);
   assert.match(ia,/data-ma-intent','match'/);
-  assert.match(tour,/Find My Perfect Match/);
+  assert.match(tour,/Find what to stream here/);
   assert.doesNotMatch(ia,/Pick My Night/);
   assert.doesNotMatch(tour,/Pick My Night/);
 });

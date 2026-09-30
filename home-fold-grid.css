@@ -111,11 +111,26 @@ html body.page-home main.page-wrapper .main-layout>.container .lazy-head[data-fo
 html body.page-home #ma-ai-entry #search-box :is(h2,[data-i18n="search.hint"]){position:relative!important;isolation:isolate;overflow:hidden;border-radius:8px;}
 html body.page-home #ma-ai-entry #search-box :is(h2,[data-i18n="search.hint"])::before{
  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
- background:linear-gradient(110deg,transparent 8%,#9d4eff66 25%,#d5a1ff99 39%,#fff0bbaa 49%,#efb8ff88 58%,#9254e766 73%,transparent 92%);
- transform:translateX(-120%);animation:maAskIntroSweep 4.8s ease-in-out infinite;
+ background:linear-gradient(90deg,#9254e766,#d5a1ff99 24%,#fff0bbaa 50%,#efb8ff88 76%,#9254e766);
+ background-size:200% 100%;animation:maAskIntroSweep 6s linear infinite;
 }
-html body.page-home #ma-ai-entry #search-box [data-i18n="search.hint"]::before{animation-delay:.15s;}
-@keyframes maAskIntroSweep{0%,12%{transform:translateX(-120%);opacity:0}20%{opacity:1}58%{opacity:1}72%,100%{transform:translateX(120%);opacity:0}}
+@keyframes maAskIntroSweep{from{background-position:0% 50%}to{background-position:200% 50%}}
+/* Paint over the header fill and under its content without clipping menus. */
+html body.page-home #mh-topbox.app-header.ma-home-header{position:relative!important;isolation:isolate;}
+html body.page-home #mh-topbox.app-header.ma-home-header::before{
+ content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;border-radius:inherit;
+ background:linear-gradient(90deg,#9254e766,#d5a1ff66 24%,#fff0bb70 50%,#efb8ff66 76%,#9254e766);
+ background-size:200% 100%;animation:maAskIntroSweep 9s linear infinite;
+}
+@media(prefers-reduced-motion:reduce){html body.page-home #mh-topbox.app-header.ma-home-header::before{animation:none;opacity:.35;}}
+html.reduce-motion body.page-home #mh-topbox.app-header.ma-home-header::before{animation:none;opacity:.35;}
+/* Translated utility labels can use two lines within their existing grid cell. */
+html body.page-home:not(.tv-mode) #mh-topbox.app-header.ma-home-header>nav.mh-deck.ma-header-actions :is(.ma-how-button,.ma-kids-mode-entry,#nav-reg-btn){
+ white-space:normal!important;overflow-wrap:anywhere!important;line-height:1.15!important;text-align:center!important;
+}
+html body.page-home:not(.tv-mode) #mh-topbox.app-header.ma-home-header>nav.mh-deck.ma-header-actions>.ma-kids-mode-entry>span{min-width:0!important;white-space:normal!important;overflow-wrap:anywhere!important;}
+html body.page-home:not(.tv-mode) #mh-topbox .ma-brand-tagline{max-width:100%;white-space:normal;overflow-wrap:anywhere;}
+html body.page-home #mh-topbox .ma-menu>[role="menuitem"]{white-space:normal!important;overflow-wrap:anywhere!important;height:auto!important;min-height:34px!important;}
 @media(prefers-reduced-motion:reduce){html body.page-home #ma-ai-entry #search-box :is(h2,[data-i18n="search.hint"])::before{animation:none;transform:none;opacity:.23;}}
 html.reduce-motion body.page-home #ma-ai-entry #search-box :is(h2,[data-i18n="search.hint"])::before{animation:none;transform:none;opacity:.23;}
 
