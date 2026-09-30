@@ -186,14 +186,15 @@ async function aiQuestion(page,question,expected,label){
       if(!card||!ad||!ins)return {found:false};
       const a=ad.getBoundingClientRect(),c=card.getBoundingClientRect();
       const visible=getComputedStyle(ad).display!=='none'&&getComputedStyle(card).display!=='none';
-      return {found:true,direct:card.nextElementSibling===ad,
+      return {found:true,follows:!!(card.compareDocumentPosition(ad)&Node.DOCUMENT_POSITION_FOLLOWING),
+        lockedParent:ad.parentElement.matches('main.page-wrapper'),
         header:!fold||fold.nextElementSibling===card,
         onScreenOrder:!visible||a.top>=c.bottom-3,
         responsive:ins.getAttribute('data-full-width-responsive')==='true',
         format:ins.getAttribute('data-ad-format'),manualCount:document.querySelectorAll('ins.adsbygoogle[data-ad-slot="2595698117"]').length,totalCount:document.querySelectorAll('ins.adsbygoogle').length};
     });
     record('Match Together ad follows complete card '+device.name,
-      sponsor.found&&sponsor.direct&&sponsor.header&&sponsor.onScreenOrder&&
+      sponsor.found&&sponsor.follows&&sponsor.lockedParent&&sponsor.header&&sponsor.onScreenOrder&&
       sponsor.responsive&&sponsor.format==='auto'&&sponsor.manualCount===5,JSON.stringify(sponsor));
     // Three bespoke, micro-sized intelligence effects, never a whole header
     // animation. Touch devices receive one-pass text glint with the same sparks.
@@ -244,8 +245,9 @@ async function aiQuestion(page,question,expected,label){
     const bookFields=await ebook.locator('select[data-ebook-select]').count();
     record('real compact reading controls '+device.name,bookFields===7,
       'seven live dropdowns preserve ebook, verified audio and magazine choices');
-    // Open the separate Ask fold through its visible header; do not auto-focus.
-    await page.locator('.lazy-head[data-fold-key="askai"]').click();
+    // Ask starts open; open it only if a prior interaction folded it. Do not auto-focus.
+    const askHead=page.locator('.lazy-head[data-fold-key="askai"]');
+    if(await askHead.getAttribute('aria-expanded')!=='true')await askHead.click();
     const aiEntry=page.locator('#ma-ai-entry'),homeInput=page.locator('#ma-ai-entry #specific-search-input');
     await aiEntry.waitFor({state:'visible',timeout:12000});
     await homeInput.waitFor({state:'visible',timeout:12000});
@@ -324,7 +326,8 @@ async function aiQuestion(page,question,expected,label){
     const picked=await page.evaluate(()=>{window.setMatchCriteria({cat:['movie'],mood:['funny'],plat:[]});return window.getMatchCriteria()});
     assert(picked.cat.includes('movie')&&picked.mood.includes('funny'),'production multi-select did not preserve choices');
     await page.locator('.lazy-head[data-fold-key="concierge"]').click();
-    await page.locator('.lazy-head[data-fold-key="askai"]').click();
+    const askHead=page.locator('.lazy-head[data-fold-key="askai"]');
+    if(await askHead.getAttribute('aria-expanded')!=='true')await askHead.click();
     await page.locator('button[onclick="triggerMatch(false)"]').click();
     await page.waitForFunction(()=>{
       const box=document.getElementById('result-box');
