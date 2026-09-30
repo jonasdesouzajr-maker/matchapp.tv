@@ -1,0 +1,10 @@
+/* Only the new release cards; the existing rail box and dimensions are reused. */
+.marquee-item[data-music-video] img { width:100%; height:100%; object-fit:contain; }
+.marquee-item[data-music-video] .music-video-caption { box-sizing:border-box; overflow-wrap:anywhere; }
+.discover-music-card .discover-poster img { object-fit:contain; }
+.discover-music-card .discover-actions { flex-wrap:wrap; }
+.discover-music-card .discover-actions a { white-space:normal; overflow-wrap:anywhere; text-align:center; }
+.discover-music-card .discover-body { min-width:0; overflow-wrap:anywhere; }
+
+.marquee-item[data-music-video] .music-video-caption { position:absolute; bottom:0; width:100%; background:linear-gradient(transparent,rgba(0,0,0,.95)); color:#fff; font-size:10px; padding:10px 3px 4px; text-align:center; font-weight:bold; z-index:3; }
+.discover-music-card h2 { font-size:18px; color:var(--gold-glow); margin:0 0 8px; line-height:1.3; }
