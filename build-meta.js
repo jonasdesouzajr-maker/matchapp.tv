@@ -73,10 +73,13 @@ window.MATCHAPP_BUILD = '2026.09.29.5';
     const path = location.pathname;
     ensureKidsEntry();
     if (path === '/' || path === '/index.html') {
-      document.title = 'What to Watch Tonight | AI Movie, TV & E-book Finder | MatchApp';
-      upsertMeta('description', 'Surprise Me with movies, TV series, telenovelas and entertainment YouTube; share a match with friends. Cooking and Spotify only when you choose.');
+      document.title = 'What to Watch Tonight & Where to Stream | MatchApp Ai';
+      upsertMeta('description', 'Find what to watch and where to stream with AI; share a match with friends. Explore music videos, books, audiobooks, magazines and recipes by choice.');
+      upsertPropertyMeta('og:title', 'What to Watch Tonight & Where to Stream | MatchApp Ai');
+      upsertPropertyMeta('og:description', 'Find what to watch and where to stream with AI; share a match with friends. Explore music videos, books, audiobooks, magazines and recipes by choice.');
+      upsertMeta('twitter:title', 'What to Watch Tonight & Where to Stream | MatchApp Ai');
+      upsertMeta('twitter:description', 'Find what to watch and where to stream with AI; share a match with friends. Explore music videos, books, audiobooks, magazines and recipes by choice.');
       upsertMeta('robots', 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1');
-      upsertPropertyMeta('og:description', 'Tell MatchApp your mood, get a movie, series or e-book match, then see verified streaming, cinema or legal book-access routes.');
       addJsonLd('matchapp-organization-schema', {
         '@context': 'https://schema.org',
         '@type': 'Organization',
@@ -88,8 +91,12 @@ window.MATCHAPP_BUILD = '2026.09.29.5';
       });
     }
     if (path === '/discover.html') {
-      document.title = 'Ask AI What to Watch | Movie & TV Concierge | MatchApp';
-      upsertMeta('description', 'Ask MatchApp TV Ai about movies, TV series, e-books, audiobooks and magazines. Find verified streaming, official publishers and legal reading options.');
+      document.title = 'Ask AI What to Watch, Read or Listen To | MatchApp Ai';
+      upsertMeta('description', 'Ask AI what to watch, read or hear: movies, anime, K-dramas, books, verified audiobooks and magazines, with regional streaming and official source links.');
+      upsertPropertyMeta('og:title', 'Ask AI What to Watch, Read or Listen To | MatchApp Ai');
+      upsertPropertyMeta('og:description', 'Ask AI what to watch, read or hear: movies, anime, K-dramas, books, verified audiobooks and magazines, with regional streaming and official source links.');
+      upsertMeta('twitter:title', 'Ask AI What to Watch, Read or Listen To | MatchApp Ai');
+      upsertMeta('twitter:description', 'Ask AI what to watch, read or hear: movies, anime, K-dramas, books, verified audiobooks and magazines, with regional streaming and official source links.');
       upsertMeta('robots', 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1');
       // Describe the public page factually. Do not claim Software/WebApplication
       // rich-result eligibility until MatchApp has genuine review/rating data.
