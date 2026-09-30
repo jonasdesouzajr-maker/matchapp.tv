@@ -5,6 +5,9 @@ const RELEASE_URL='/release.json';
 const INSTALLED_BUILD_KEY='match_app_installed_build';
 const BUILD = /^\d{4}\.\d{2}\.\d{2}\.\d+$/.test(String(window.MATCHAPP_BUILD||''))
   ? window.MATCHAPP_BUILD : '2026.09.26.9';
+const validVersion=v=>/^\d{4}\.\d{2}\.\d{2}\.\d+$/.test(String(v||''));
+function newer(a,b){return validVersion(a)&&validVersion(b)&&a.split('.').map(Number).some((n,i,parts)=>n>Number(b.split('.')[i])&&parts.slice(0,i).every((v,j)=>v===Number(b.split('.')[j])));}
+async function bounded(work){let timer;try{return await Promise.race([work,new Promise((_,reject)=>{timer=setTimeout(()=>reject(new Error('Update check timed out')),8000);})]);}finally{clearTimeout(timer);}}
 // build-meta.js is the actual release authority; never overwrite its newer
 // value with an obsolete update-module constant on installed mobile clients.
 if(!window.MATCHAPP_BUILD)window.MATCHAPP_BUILD=BUILD;
@@ -25,7 +28,7 @@ function removeLegacyUi(){
 }
 
 function labelInstallButtons(mode){
- const text = mode==='update' ? (pt()?'Atualizar':'Update') : (pt()?'Instalar':'Install');
+ const text = mode==='update' ? (pt()?'Atualizar':'Update') : mode==='installed' ? (pt()?'Instalado':'Installed') : (pt()?'Instalar':'Install');
  document.querySelectorAll('.install-btn, .ma-install-go, .chrome-install-now').forEach(btn=>{
   if(btn && !btn.closest('#chrome-install-card')) btn.textContent=text;
  });
@@ -44,6 +47,7 @@ function overlay(msg){
   p.id='matchapp-update-overlay-text';
   p.style.margin='0';
   card.appendChild(p);
+  if(!KIDS){const close=document.createElement('button');close.type='button';close.textContent=pt()?'Fechar':'Close';close.className='gold-btn';close.style.cssText='margin-top:12px;min-height:44px';close.addEventListener('click',()=>el.remove());card.appendChild(close);}
   el.appendChild(card);
   document.body.appendChild(el);
  }
@@ -85,16 +89,19 @@ window.updateMatchAppNow=async function(){
   ?('Atualizando '+name+' para a versão mais recente…')
   :('Updating '+name+' to the latest release…'));
  try{
-  await refreshWorker();
-  const res=await fetch(RELEASE_URL+'?v='+Date.now(),{cache:'no-store'});
+  await bounded(refreshWorker());
+  const res=await bounded(fetch(RELEASE_URL+'?v='+Date.now(),{cache:'no-store'}));
   if(res.ok){
-   const release=await res.json();
-   if(release&&release.version) safeSet(INSTALLED_BUILD_KEY,String(release.version));
+   const release=await bounded(res.json());
+   if(!validVersion(release?.version))throw new Error('Invalid release');
+   safeSet(INSTALLED_BUILD_KEY,String(release.version));
   }else{
-   safeSet(INSTALLED_BUILD_KEY,BUILD);
+   throw new Error('Update unavailable');
   }
  }catch(_){
-  safeSet(INSTALLED_BUILD_KEY,BUILD);
+  document.getElementById('matchapp-update-overlay')?.remove();
+  if(window.showToast)window.showToast(pt()?'Não foi possível atualizar. Tente novamente.':'Could not update. Please try again.');
+  return false;
  }
  // An explicit mobile update must request a fresh document URL; reloading
  // the identical cached PWA URL was insufficient after the backend hotfix.
@@ -110,12 +117,15 @@ window.updateMatchApp=window.updateMatchAppNow;
 
 async function check(){
  removeLegacyUi();
- labelInstallButtons((isStandalone()||window.matchAppInstallState?.isInstalled())?'update':'install');
+ labelInstallButtons((isStandalone()||window.matchAppInstallState?.isInstalled())?(KIDS||window.matchAppUpdatePending?'update':'installed'):'install');
  try{
-  const res=await fetch(RELEASE_URL+'?v='+Date.now(),{cache:'no-store'});
+  const res=await bounded(fetch(RELEASE_URL+'?v='+Date.now(),{cache:'no-store'}));
   if(!res.ok)return null;
-  const release=await res.json();
-  if(release&&release.version) window.matchAppUpdatePending={version:String(release.version)};
+  const release=await bounded(res.json());
+  const installedBuild=window.matchAppInstallState?.installedBuild?.()||safeGet(INSTALLED_BUILD_KEY)||BUILD;
+  if(KIDS){if(release&&release.version)window.matchAppUpdatePending={version:String(release.version)};}
+  else window.matchAppUpdatePending=release&&newer(release.version,installedBuild)?{version:String(release.version)}:null;
+  window.syncMatchAppUpdateButtons();
   // Only an installed adult mobile PWA is eligible for the one-time scoped
   // recovery. Ordinary mobile websites, desktop and Kids keep their UI and
   // update flow unchanged.
@@ -128,7 +138,7 @@ async function check(){
  }
 }
 window.checkMatchAppRelease=check;
-window.syncMatchAppUpdateButtons=function(){labelInstallButtons((isStandalone()||window.matchAppInstallState?.isInstalled())?'update':'install')};
+window.syncMatchAppUpdateButtons=function(){labelInstallButtons((isStandalone()||window.matchAppInstallState?.isInstalled())?(KIDS||window.matchAppUpdatePending?'update':'installed'):'install')};
 removeLegacyUi();
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>{check()},{once:true});else check();
 })();

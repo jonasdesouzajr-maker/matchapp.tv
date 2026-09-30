@@ -1,21 +1,21 @@
 {
-  "version": "2026.09.29.5",
-  "date": "2026-09-29",
+  "version": "2026.09.30.1",
+  "date": "2026-09-30",
   "functional": true,
   "notes": {
-    "en": "Aligned compact sections, only Top Titles open by default, and consistent adult pages and back buttons.",
-    "pt-BR": "Seções compactas alinhadas, apenas títulos em alta abertos por padrão e páginas e botões de voltar consistentes.",
-    "es": "Secciones compactas alineadas, solo títulos destacados abiertos por defecto y páginas y botones de regreso uniformes.",
-    "fr": "Sections compactes alignées, seuls les titres tendance ouverts par défaut et pages et boutons de retour harmonisés.",
-    "de": "Einheitliche kompakte Bereiche, standardmäßig nur Top-Titel geöffnet und konsistente Seiten und Zurück-Buttons.",
-    "it": "Sezioni compatte allineate, solo titoli principali aperti per impostazione predefinita e pagine e pulsanti Indietro uniformi.",
-    "tr": "Hizalı kompakt bölümler, varsayılan olarak yalnızca öne çıkan yapımlar açık ve tutarlı sayfalar ve geri düğmeleri.",
-    "ru": "Компактные согласованные разделы, по умолчанию открыты только популярные произведения, единый стиль страниц и кнопок возврата.",
-    "ar": "أقسام صغيرة ومتناسقة، مع فتح العناوين الرائجة فقط افتراضياً وتوحيد الصفحات وأزرار الرجوع.",
-    "hi": "समान कॉम्पैक्ट अनुभाग, डिफ़ॉल्ट रूप से केवल प्रमुख शीर्षक खुले, और एक जैसे पृष्ठ व वापस बटन।",
-    "id": "Bagian ringkas yang selaras, hanya judul unggulan terbuka secara default, serta halaman dan tombol kembali yang konsisten.",
-    "ja": "各セクションをコンパクトに統一。初期表示では注目作品のみ開き、ページと戻るボタンも統一しました。",
-    "ko": "섹션을 간결하게 정렬하고 기본 화면에서는 인기 작품만 펼치며 페이지와 뒤로 버튼을 통일했습니다.",
-    "zh": "统一紧凑的分区，默认仅展开热门作品，并统一页面和返回按钮。"
+    "en": "Fixed stuck installation screens. Installed apps now check for updates and offer device uninstall instructions with a return Home option.",
+    "pt-BR": "Corrigidas telas de instalação travadas. Apps instalados verificam atualizações e oferecem instruções para desinstalar e voltar ao início.",
+    "es": "Corregidas pantallas de instalación bloqueadas. Las apps instaladas comprueban actualizaciones y ofrecen instrucciones para desinstalar y volver al inicio.",
+    "fr": "Installation débloquée, vérification des mises à jour et instructions de désinstallation avec retour à l’accueil.",
+    "de": "Festhängende Installation behoben. Updateprüfung und Deinstallationsanleitung mit Rückkehr zur Startseite.",
+    "it": "Risolta l’installazione bloccata. Controllo aggiornamenti e istruzioni di disinstallazione con ritorno alla Home.",
+    "tr": "Takılan kurulum ekranı düzeltildi. Güncelleme kontrolü ve ana sayfaya dönüş ile kaldırma talimatları.",
+    "ru": "Исправлено зависание установки. Проверка обновлений и инструкции по удалению с возвратом на главную.",
+    "ar": "تم إصلاح توقف شاشة التثبيت وإضافة التحقق من التحديثات وتعليمات إزالة التطبيق والعودة للرئيسية.",
+    "hi": "अटकी इंस्टॉलेशन स्क्रीन ठीक की। अपडेट जाँच और ऐप हटाने के निर्देश, होम पर लौटने के विकल्प के साथ।",
+    "id": "Layar pemasangan macet diperbaiki. Pemeriksaan pembaruan dan petunjuk penghapusan dengan opsi kembali ke beranda.",
+    "ja": "インストール画面の停止を修正。更新確認と削除手順、ホームへ戻る選択肢を追加。",
+    "ko": "멈춘 설치 화면을 수정했습니다. 업데이트 확인, 제거 안내 및 홈으로 돌아가기 옵션을 제공합니다.",
+    "zh": "修复安装界面卡住的问题。已安装应用可检查更新，并查看卸载步骤或返回首页。"
   }
 }

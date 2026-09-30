@@ -31,6 +31,8 @@
     if (!isDesktop()) return;
     var btn = e.target && e.target.closest && e.target.closest('.install-btn, .chrome-install-now, .ma-install-go');
     if (!btn) return;
+    // Installed adult apps use the shared update/removal choices on every device.
+    if (!kidsPath() && window.matchAppInstallState?.isInstalled?.()) return;
     e.preventDefault();
     e.stopPropagation();
     location.href = dest();

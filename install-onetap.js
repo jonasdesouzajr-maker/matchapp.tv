@@ -1,6 +1,10 @@
 /* First tap starts install. Never ask the user to tap Install twice. */
 (function () {
   'use strict';
+  // Adult installs have one owner: install.js preserves the native gesture,
+  // handles userChoice and starts progress only after genuine acceptance.
+  // A click interceptor here created a second overlay behind installed help.
+  if (!(location.pathname === '/kids' || location.pathname.startsWith('/kids/'))) return;
   if (window.__maOneTapInstall) return;
   window.__maOneTapInstall = true;
 

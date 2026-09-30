@@ -26,7 +26,7 @@
   if (!document.getElementById('ma-install-onetap')) {
     var ot=document.createElement('script');
     ot.id='ma-install-onetap';
-    ot.src='/install-onetap.js?v=20260923-onetap1';
+    ot.src='/install-onetap.js?v=20260930-install-recovery1';
     (document.head||document.documentElement).appendChild(ot);
   }
 

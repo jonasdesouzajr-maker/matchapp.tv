@@ -4,6 +4,9 @@
   if (window.__maInstallMeter) return;
   window.__maInstallMeter = true;
 
+  const adult = !(location.pathname === '/kids' || location.pathname.startsWith('/kids/'));
+  let waitTimer = 0;
+  let previousFocus = null;
   let target = 0;
   let shown = 0;
   let raf = 0;
@@ -65,11 +68,20 @@
     ensureStyle();
     el = document.createElement('div');
     el.id = 'ma-install-meter';
+    el.hidden = true;
     el.setAttribute('role', 'dialog');
     el.setAttribute('aria-modal', 'true');
     el.innerHTML = '<div class="ma-im-card"><button type="button" class="ma-im-close" hidden aria-label="Close">&times;</button><img src="/assets/brand/matchapp-ai-install-192.png?v=20260923-icon4" width="56" height="56" alt=""><div class="ma-im-success" hidden aria-hidden="true">✓</div><h2></h2><p></p><div class="ma-im-track"><div class="ma-im-fill"></div></div></div>';
     document.body.appendChild(el);
     el.querySelector('.ma-im-close').addEventListener('click', hide);
+    if (adult) {
+      el.addEventListener('click', function (e) { if (e.target === el) hide(); });
+      document.addEventListener('keydown', function (e) {
+        if (el.hidden) return;
+        if (e.key === 'Escape') { e.preventDefault(); hide(); }
+        else if (e.key === 'Tab') { e.preventDefault(); el.querySelector('.ma-im-close').focus({preventScroll:true}); }
+      });
+    }
     return el;
   }
 
@@ -79,10 +91,15 @@
     el.querySelector('p').textContent = body;
     const btn = el.querySelector('.ma-im-close');
     btn.setAttribute('aria-label', copy().close);
-    btn.hidden = !showDone;
+    btn.hidden = adult ? false : !showDone;
     el.querySelector('.ma-im-success').hidden = !showDone;
     el.querySelector('.ma-im-track').hidden = !!showDone;
+    const opening = el.hidden || phase === 'idle';
     el.hidden = false;
+    if (adult && opening) {
+      previousFocus = document.activeElement;
+      btn.focus({preventScroll:true});
+    }
   }
 
   function tick() {
@@ -111,14 +128,28 @@
     raf = 0;
     clearTimeout(holdTimer);
     clearTimeout(doneTimer);
+    clearTimeout(waitTimer);
+    if (adult && previousFocus?.isConnected) previousFocus.focus({preventScroll:true});
+    previousFocus = null;
+  }
+
+  function boundWait() {
+    if (!adult) return;
+    clearTimeout(waitTimer);
+    // Missing browser completion events must never leave the page blocked.
+    // Dismissing this UI does not claim success or cancel the OS install.
+    waitTimer = setTimeout(hide, 15000);
   }
 
   function start() {
+    if (adult && window.matchAppInstallState?.isInstalled?.()) { hide(); return; }
+    if (adult) hide();
     const t = copy();
     phase = 'confirm';
     setText(t.title, t.wait, false);
     shown = 0;
     to(22);
+    boundWait();
   }
 
   function accepting() {
@@ -126,6 +157,7 @@
     phase = 'installing';
     setText(t.title, t.work, false);
     to(62);
+    boundWait();
     clearTimeout(holdTimer);
     holdTimer = setTimeout(function () { if (phase === 'installing') to(88); }, 900);
   }
@@ -136,7 +168,10 @@
     setText(t.done, '', true);
     to(100);
     clearTimeout(doneTimer);
-    // Success remains visible until the user closes it with X. No timer can
+    clearTimeout(waitTimer);
+    clearTimeout(holdTimer);
+    if (adult) doneTimer = setTimeout(hide, 2500);
+    // Kids success remains visible until the user closes it with X. No timer can
     // make the confirmation disappear before they have seen it.
   }
 

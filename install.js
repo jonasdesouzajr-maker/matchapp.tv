@@ -181,12 +181,71 @@ window.closeInstallModal = function () {
     if (m) { if(typeof m.close==='function')m.close();else m.removeAttribute('open'); }
 };
 
+// Device removal requires the OS/browser's own uninstall confirmation.
+// Never clear accounts, credits, or installation hints as a fake uninstall.
+function showInstalledAppOptions() {
+    const code=String(window.MATCH_LANG||document.documentElement.lang||'en');
+    const pt=code.startsWith('pt'),es=code.startsWith('es');
+    const c=pt?{
+        title:'O MatchApp já está instalado',body:'Nenhuma atualização disponível foi encontrada. Deseja desinstalar o aplicativo?',
+        home:'Cancelar e voltar ao início',uninstall:'Desinstalar — ver instruções',guide:'Desinstalar do dispositivo',
+        android:'No Android, abra Configurações → Aplicativos → MatchApp → Desinstalar e confirme. Se for apenas um atalho, mantenha o ícone pressionado e toque em Remover.',
+        ios:'Mantenha pressionado o ícone do MatchApp na tela inicial, escolha Remover App ou Apagar e confirme.',
+        desktop:'Abra o MatchApp instalado e use o menu do aplicativo → Desinstalar. Também é possível removê-lo pela lista de aplicativos instalados do navegador ou sistema.',
+        note:'A remoção precisa ser confirmada no seu dispositivo. O site não pode desinstalar aplicativos nem verificar toda remoção.'
+    }:es?{
+        title:'MatchApp ya está instalado',body:'No se encontró una actualización disponible. ¿Quieres desinstalar la aplicación?',
+        home:'Cancelar y volver al inicio',uninstall:'Desinstalar — ver instrucciones',guide:'Desinstalar del dispositivo',
+        android:'En Android, abre Ajustes → Aplicaciones → MatchApp → Desinstalar y confirma. Si solo es un acceso directo, mantén pulsado el icono y selecciona Eliminar.',
+        ios:'Mantén pulsado el icono de MatchApp en la pantalla de inicio, selecciona Eliminar app y confirma.',
+        desktop:'Abre MatchApp instalado y usa su menú → Desinstalar. También puedes eliminarlo desde la lista de aplicaciones instaladas del navegador o sistema.',
+        note:'Debes confirmar la eliminación en tu dispositivo. El sitio no puede desinstalar aplicaciones ni verificar todas las eliminaciones.'
+    }:{
+        title:'MatchApp is already installed',body:'No available update was found. Would you like to uninstall the app?',
+        home:'Cancel and return Home',uninstall:'Uninstall — show steps',guide:'Uninstall from your device',
+        android:'On Android, open Settings → Apps → MatchApp → Uninstall and confirm. If it is only a shortcut, press and hold its icon and choose Remove.',
+        ios:'Press and hold the MatchApp icon on your home screen, choose Remove App or Delete, and confirm.',
+        desktop:'Open the installed MatchApp and use its app menu → Uninstall. You can also remove it from your browser or system’s installed apps list.',
+        note:'Removal must be confirmed on your device. This website cannot uninstall apps or verify every removal.'
+    };
+    let help=document.getElementById('match-installed-help');
+    if (!help) { help=document.createElement('dialog');help.id='match-installed-help';help.className='match-install-dialog';document.body.appendChild(help); }
+    help.replaceChildren();
+    const heading=document.createElement('h2');heading.id='match-installed-heading';heading.textContent=c.title;
+    help.setAttribute('aria-labelledby',heading.id);
+    const body=document.createElement('p');body.textContent=c.body;
+    const home=document.createElement('button');home.type='button';home.textContent=c.home;home.autofocus=true;
+    home.style.cssText='width:100%;margin-top:12px';
+    const uninstall=document.createElement('button');uninstall.type='button';uninstall.textContent=c.uninstall;
+    uninstall.style.cssText='width:100%;margin-top:12px;background:#211430;color:#dfbd6d';
+    home.addEventListener('click',()=>{if(help.close)help.close();else help.removeAttribute('open');location.assign('/');});
+    uninstall.addEventListener('click',()=>{
+        heading.textContent=c.guide;
+        const platform=platformInfo();
+        body.textContent=(platform.isAndroid?c.android:platform.isIOS?c.ios:c.desktop)+' '+c.note;
+        uninstall.hidden=true;home.focus({preventScroll:true});
+    });
+    help.append(heading,body,home,uninstall);
+    if(!help.open){if(typeof help.showModal==='function')help.showModal();else help.setAttribute('open','');}
+    home.focus({preventScroll:true});
+}
+
 window.installMatchApp = async function () {
+    // Clear a stale adult meter before installed help or manual instructions.
+    if (!MATCHAPP_KIDS_INSTALL) window.matchAppInstallProgress?.cancel?.();
     if (!secureInstallContext()) {
         if (window.showToast) showToast('For your protection, MatchApp can only be installed from the secure matchapp.tv site.');
         return;
     }
     if (window.matchAppInstallState?.isInstalled()) {
+        if (!MATCHAPP_KIDS_INSTALL) {
+            if (window.checkMatchAppRelease) await window.checkMatchAppRelease();
+            if (window.matchAppUpdatePending && window.updateMatchAppNow) {
+                return window.updateMatchAppNow();
+            }
+            showInstalledAppOptions();
+            return;
+        }
         const code=window.MATCH_LANG||document.documentElement.lang||'en';
         const text=code.startsWith('pt')?'O MatchApp já foi instalado. Abra pelo ícone na tela inicial ou na lista de aplicativos. Seu dispositivo controla a posição do ícone.':code.startsWith('es')?'MatchApp ya está instalado. Ábrelo desde la pantalla de inicio o la lista de aplicaciones. Tu dispositivo controla la posición del icono.':'MatchApp is installed. Open its icon from your home screen or app launcher. Your device controls where the icon is placed.';
         let help=document.getElementById('match-installed-help');if(!help){help=document.createElement('dialog');help.id='match-installed-help';help.className='match-install-dialog';const p=document.createElement('p');help.append(p);const form=document.createElement('form');form.method='dialog';const close=document.createElement('button');close.type='submit';close.textContent='OK';form.append(close);help.append(form);document.body.append(help);}
@@ -209,7 +268,8 @@ window.installMatchApp = async function () {
             deferredInstallPrompt = null;
             await installEvent.prompt();
             const choice = await installEvent.userChoice;
-            if (choice && choice.outcome === 'accepted') {
+            if (choice && choice.outcome === 'accepted' &&
+                (MATCHAPP_KIDS_INSTALL || !window.matchAppInstallState?.isInstalled())) {
                 window.matchAppInstallProgress?.start?.();
                 window.matchAppInstallProgress?.accepting?.();
             } else {
