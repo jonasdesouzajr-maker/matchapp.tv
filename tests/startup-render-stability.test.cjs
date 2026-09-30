@@ -126,7 +126,7 @@ test('Top Titles stays unfolded at Home while autoplay remains bounded',()=>{
  assert.doesNotMatch(lazy,/key:'trending'/);
  assert.match(lazy,/rail\.classList\.add\('lazy-open'\)/);
  assert.match(lazy,/rail\.previousElementSibling\?\.matches\?\.\('\.lazy-head\[data-fold-key="trending"\]'\)/);
- assert.match(lazy,/function loadFoldState\(\)\{return \{\}\}/);
+ assert.match(lazy,/function loadFoldState\(\)\{return \{askai:true\}\}/);
  assert.match(css,/#trending-rail>h4\{display:none!important\}/);
  assert.match(app,/autoDelay = vp\.id === 'marquee-viewport' \? 1050 : 6500/);
  assert.match(news,/AUTO_FIRST_MS=2600/);

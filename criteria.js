@@ -418,6 +418,9 @@
         FIELDS.forEach(f => {
             const sel = document.getElementById(f.id);
             if (sel && sel.dataset.critMounted === '1') {
+                const label=sel.parentElement.querySelector('label'),heading=sel.parentElement.querySelector('.crit-toggle-label');
+                if(label&&heading)heading.textContent=label.textContent.trim();
+                const group=sel.parentElement.querySelector('.crit-chips');if(label&&group)group.setAttribute('aria-label',label.textContent.trim());
                 changed = reconcileField(sel, f.key) || changed;
                 Array.from(sel.options).forEach(o=>{if(o.value!=='any')o.disabled=!state[f.key].includes(o.value)&&!!window.matchPolicy?.incompatible(o.value,state);});
                 renderField(sel, f.key); syncSelect(sel, f.key);
@@ -458,7 +461,7 @@
             else detail.textContent=tr('topic.selected','Only content matching your selected category is considered.');
         }
         const more=host.querySelector('[data-topic-more]');
-        if(more){more.classList.toggle('is-active',!active&&!!selected.length);
+        if(more){more.textContent='＋ '+tr('topic.more','All topics & formats');more.classList.toggle('is-active',!active&&!!selected.length);
             more.setAttribute('aria-pressed',(!active&&!!selected.length)?'true':'false');}
     }
     function mountTopicQuick(){

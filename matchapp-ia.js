@@ -421,6 +421,7 @@ function applyLanguage(){
  applyBrandLocale();
  const t=c();
  if(isHome&&qs('.ma-concierge')){
+   const quick=qs('.ma-quick');if(quick){quick.remove();buildQuick(qs('#questionnaire-box'));renderQuick();}
    const hero=qs('.home-hero');if(hero){const homeTitle=qs('.home-h1',hero),homeSub=qs('.home-h1-sub',hero);if(homeTitle)homeTitle.textContent=t.title;if(homeSub)homeSub.textContent=t.sub}
    const aiHeading=qs('#search-box h2');if(aiHeading)aiHeading.textContent=t.ask;
    qs('#ma-ai-entry')?.setAttribute('aria-label',t.ask);

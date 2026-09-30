@@ -39,6 +39,8 @@ const language=()=>window.MATCH_LANG||document.documentElement.lang||'en';
 const copy=()=>rows[language()]||rows.en;
 window.matchAppReadAloudLabel=()=>playbackLabels[language()]||playbackLabels.en;
 function put(selector,value){document.querySelectorAll(selector).forEach(n=>{if(n.textContent!==value)n.textContent=value;});}
+const foldCopy={"en": ["Latest News", "Top cooking channels & recipes"], "pt-BR": ["Últimas notícias", "Melhores canais de culinária e receitas"], "es": ["Últimas noticias", "Mejores canales de cocina y recetas"], "fr": ["Dernières actualités", "Meilleures chaînes de cuisine et recettes"], "de": ["Neueste Nachrichten", "Beste Kochkanäle und Rezepte"], "it": ["Ultime notizie", "Migliori canali di cucina e ricette"], "tr": ["Son haberler", "En iyi yemek kanalları ve tarifler"], "ru": ["Последние новости", "Лучшие кулинарные каналы и рецепты"], "ar": ["آخر الأخبار", "أفضل قنوات الطبخ والوصفات"], "hi": ["ताज़ा खबरें", "बेहतरीन कुकिंग चैनल और रेसिपी"], "id": ["Berita terbaru", "Kanal memasak dan resep terbaik"], "ja": ["最新ニュース", "おすすめ料理チャンネルとレシピ"], "ko": ["최신 뉴스", "추천 요리 채널과 레시피"], "zh": ["最新消息", "优质烹饪频道与食谱"]};
+function paintFoldLabels(){const c=foldCopy[language()]||foldCopy.en;put("#latest-news .ma-news-title",c[0]);put("#cooking-home>summary>span",c[1]);}
 function paintGlobal(){
  const node=document.querySelector('.matchapp-growth-copy');if(!node)return;
  const c=growthCopy[language()]||growthCopy.en,lead=node.querySelector('strong'),tail=node.querySelector('span');
@@ -52,10 +54,10 @@ window.submitHomeAI=function(){
  input.removeAttribute('aria-invalid');window.askAI?.(q);return true;
 };
 function paint(){
- paintGlobal();
+ paintGlobal();paintFoldLabels();
  if(!document.body.classList.contains('page-home')&&!document.body.classList.contains('ai-chat-page'))return;
  const c=copy();
- put('#search-box h2',c[0]);put('.composer-input-label',c[1]);put('#ai-new-chat span:last-child',c[2]);
+ put('#search-box h2,.lazy-head[data-fold-key="askai"] .lazy-head-label',c[0]);put('.composer-input-label',c[1]);put('#ai-new-chat span:last-child',c[2]);
  put('.ai-sidebar-section-title',c[3]);put('.ai-sidebar-brand span',c[4]);put('.ai-usage-row > span',c[5]);
  put('#search-box [data-i18n="search.voiceHint"],#discover-compose-help',c[6]);
  put('#ai-step-understand',c[8]);put('#ai-step-match',c[9]);put('#ai-step-answer',c[10]);
@@ -92,7 +94,7 @@ function localizeControl(node){
 }
 function labels(root=document){
  if(!root)return;
- root.querySelectorAll?.('button:not([data-i18n]),[role="button"]:not([data-i18n]),a:not([data-i18n]),[role="link"]:not([data-i18n])').forEach(localizeControl);
+ root.querySelectorAll?.('button:not([data-i18n]),[role="button"]:not([data-i18n]),a:not([data-i18n]),[role="link"]:not([data-i18n]),summary').forEach(localizeControl);
  const cookies=[];if(root.matches?.('.ma-cookie'))cookies.push(root);root.querySelectorAll?.('.ma-cookie').forEach(node=>cookies.push(node));
  cookies.forEach(box=>{const text=box.querySelector('p')?.firstChild;if(text?.nodeType!==Node.TEXT_NODE)return;const source=text.nodeValue.trim(),key=reverse.get(source);const translated=key?.startsWith('composer.extra.')?(extra[language()]||extra.en)[Number(key.split('.').pop())]:key&&window.t?.(key);if(translated&&translated!==source)text.nodeValue=text.nodeValue.replace(source,translated);});
 }
@@ -121,7 +123,7 @@ function boot(){
  paint();buildLabels();labels();rememberResponses();
  const observer=new MutationObserver(records=>{
   if(queued||!records.some(r=>r.addedNodes.length))return;
-  queued=true;requestAnimationFrame(()=>{queued=false;records.forEach(r=>r.addedNodes.forEach(n=>{if(n.nodeType===1){if(n.matches?.('button,[role="button"],a,[role="link"]'))localizeControl(n);labels(n);}}));rememberResponses();});
+  queued=true;requestAnimationFrame(()=>{queued=false;paintFoldLabels();records.forEach(r=>r.addedNodes.forEach(n=>{if(n.nodeType===1){if(n.matches?.('button,[role="button"],a,[role="link"]'))localizeControl(n);labels(n);}}));rememberResponses();});
  });
  observer.observe(document.body,{childList:true,subtree:true});
  document.addEventListener('matchapp:langchange',()=>{buildLabels();paint();labels();localizeResponses();requestAnimationFrame(paint);});

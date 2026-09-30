@@ -97,16 +97,17 @@ async function aiQuestion(page,question,expected,label){
     await page.locator('#q-category').waitFor({state:'attached',timeout:15000});
     await page.locator('#q-category').locator('xpath=..').locator('.crit-chips .crit-chip').first().waitFor({state:'attached',timeout:15000});
     await page.locator('#ebook-matcher-root [data-ebook-match]').waitFor({state:'attached',timeout:25000});
-    // Fresh Home opens only Top Titles. Open News explicitly to verify its content.
+    // Fresh Home opens Top Titles and Ask AI, with Watch in compact preview. Open News explicitly to verify its content.
     try {
       await page.locator('#latest-news > summary').waitFor({state:'visible',timeout:20000});
       const defaults=await page.evaluate(()=>({
         titles:!!document.getElementById('trending-rail')?.getClientRects().length,
-        generic:[...document.querySelectorAll('.lazy-head[data-fold-key]')].every(n=>n.getAttribute('aria-expanded')==='false'),
+        generic:[...document.querySelectorAll('.lazy-head[data-fold-key]')].every(n=>n.getAttribute('aria-expanded')===(n.dataset.foldKey==='askai'?'true':'false')),
+        compact:document.querySelector('#ma-concierge')?.classList.contains('ma-watch-compact'),
         native:['#latest-news','#premiere-disclosure','#weekly-pick-disclosure','#cooking-home','#ebook-matcher-root .ebook-fold','#global-events .global-events-fold'].every(s=>!document.querySelector(s)?.open),
         music:document.querySelector('.swifties-fold')?.getAttribute('aria-expanded')==='false'
       }));
-      record('Fresh Home opens only Top Titles '+device.name,defaults.titles&&defaults.generic&&defaults.native&&defaults.music,JSON.stringify(defaults));
+      record('Fresh Home opens Top Titles and Ask AI with compact Watch '+device.name,defaults.titles&&defaults.generic&&defaults.native&&defaults.music&&defaults.compact,JSON.stringify(defaults));
       await page.locator('#latest-news > summary').click();
       await page.waitForFunction(()=>document.querySelectorAll('#latest-news .ma-news-card-main[href^="https://"]').length>0,null,{timeout:20000});
       const news=await page.evaluate(()=>{
