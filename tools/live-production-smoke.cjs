@@ -463,7 +463,7 @@ async function aiQuestion(page,question,expected,label){
        'Name the director and the release year of the 2001 animated film Spirited Away. Do not recommend books or music.',
        /(?:miyazaki)/i,'movie-fact');
       await aiQuestion(page,
-       'How can I find a legitimate audiobook edition of Pride and Prejudice by Jane Austen? Please do not recommend any films or TV shows.',
+       'How can I find a legitimate audiobook edition of Pride and Prejudice by Jane Austen? Include the book title and author in your answer. Please do not recommend any films or TV shows.',
        /pride\s+(?:and|&)\s+prejudice|jane\s+austen/i,'audiobook-intent');
       const bookRoute=page.locator('#chat-log .discover-book-matcher-link').last();
       const href=await bookRoute.getAttribute('href').catch(()=>null);
