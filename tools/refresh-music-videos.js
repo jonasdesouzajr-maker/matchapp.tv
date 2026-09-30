@@ -64,7 +64,7 @@ async function refresh(){
  const updated={...old,items:sorted,featuredIds:featured};
  const homeFile=path.join(ROOT,'index.html'),home=fs.readFileSync(homeFile,'utf8');
  const marker=/<script\b(?=[^>]*\bid="music-video-releases-schema")[^>]*>[\s\S]*?<\/script>/;
- const replacement='<script type="application/ld+json" id="music-video-releases-schema">'+JSON.stringify(schema(sorted)).replace(/</g,'\\u003c')+'</script>';
+ const replacement='<script type="application/ld+json" id="music-video-releases-schema">'+JSON.stringify(schema(sorted.filter(r=>featured.includes(r.id)))).replace(/</g,'\\u003c')+'</script>';
  if(!marker.test(home))throw Error('SEO ownership marker missing');
  fs.writeFileSync(homeFile,home.replace(marker,replacement));
  fs.writeFileSync(file,JSON.stringify(updated,null,2)+'\n');
