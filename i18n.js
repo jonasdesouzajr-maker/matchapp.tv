@@ -560,6 +560,125 @@ const I18N = {
   }
 };
 
+// Adult category labels: keep backend filter values stable across languages.
+const ADULT_CATEGORY_LABELS = {
+  "en": [
+    "Cooking & Wellness",
+    "🍳 Cooking Videos & Recipes",
+    "🏋️ Fitness & Wellness Videos",
+    "Apple Music Playlists",
+    "Music Artists",
+    "Official Music Video & Concert Channels"
+  ],
+  "pt-BR": [
+    "Culinária e Bem-estar",
+    "🍳 Vídeos de culinária e receitas",
+    "🏋️ Vídeos de fitness e bem-estar",
+    "Playlists do Apple Music",
+    "Artistas musicais",
+    "Canais oficiais de videoclipes e shows"
+  ],
+  "es": [
+    "Cocina y bienestar",
+    "🍳 Vídeos de cocina y recetas",
+    "🏋️ Vídeos de fitness y bienestar",
+    "Listas de Apple Music",
+    "Artistas musicales",
+    "Canales oficiales de vídeos musicales y conciertos"
+  ],
+  "fr": [
+    "Cuisine et bien-être",
+    "🍳 Vidéos de cuisine et recettes",
+    "🏋️ Vidéos de fitness et bien-être",
+    "Playlists Apple Music",
+    "Artistes musicaux",
+    "Chaînes officielles de clips et concerts"
+  ],
+  "de": [
+    "Kochen und Wellness",
+    "🍳 Kochvideos und Rezepte",
+    "🏋️ Fitness- und Wellnessvideos",
+    "Apple Music-Playlists",
+    "Musikkünstler",
+    "Offizielle Musikvideo- und Konzertkanäle"
+  ],
+  "it": [
+    "Cucina e benessere",
+    "🍳 Video di cucina e ricette",
+    "🏋️ Video di fitness e benessere",
+    "Playlist Apple Music",
+    "Artisti musicali",
+    "Canali ufficiali di video musicali e concerti"
+  ],
+  "tr": [
+    "Yemek ve sağlıklı yaşam",
+    "🍳 Yemek videoları ve tarifler",
+    "🏋️ Fitness ve sağlıklı yaşam videoları",
+    "Apple Music çalma listeleri",
+    "Müzik sanatçıları",
+    "Resmî müzik videosu ve konser kanalları"
+  ],
+  "ru": [
+    "Кулинария и здоровье",
+    "🍳 Кулинарные видео и рецепты",
+    "🏋️ Видео о фитнесе и здоровье",
+    "Плейлисты Apple Music",
+    "Музыкальные исполнители",
+    "Официальные каналы клипов и концертов"
+  ],
+  "ar": [
+    "الطبخ والعافية",
+    "🍳 فيديوهات الطبخ والوصفات",
+    "🏋️ فيديوهات اللياقة والعافية",
+    "قوائم تشغيل Apple Music",
+    "فنانون موسيقيون",
+    "قنوات رسمية للفيديوهات الموسيقية والحفلات"
+  ],
+  "hi": [
+    "खाना पकाना और स्वास्थ्य",
+    "🍳 खाना पकाने के वीडियो और व्यंजन",
+    "🏋️ फिटनेस और स्वास्थ्य वीडियो",
+    "Apple Music प्लेलिस्ट",
+    "संगीत कलाकार",
+    "आधिकारिक संगीत वीडियो और कॉन्सर्ट चैनल"
+  ],
+  "id": [
+    "Memasak dan kebugaran",
+    "🍳 Video memasak dan resep",
+    "🏋️ Video kebugaran dan kesehatan",
+    "Playlist Apple Music",
+    "Artis musik",
+    "Kanal resmi video musik dan konser"
+  ],
+  "ja": [
+    "料理とウェルネス",
+    "🍳 料理動画とレシピ",
+    "🏋️ フィットネスと健康の動画",
+    "Apple Musicプレイリスト",
+    "音楽アーティスト",
+    "公式ミュージックビデオ・コンサートチャンネル"
+  ],
+  "ko": [
+    "요리와 웰니스",
+    "🍳 요리 영상과 레시피",
+    "🏋️ 피트니스와 건강 영상",
+    "Apple Music 플레이리스트",
+    "음악 아티스트",
+    "공식 뮤직비디오 및 콘서트 채널"
+  ],
+  "zh": [
+    "烹饪与健康",
+    "🍳 烹饪视频与食谱",
+    "🏋️ 健身与健康视频",
+    "Apple Music 播放列表",
+    "音乐艺人",
+    "官方音乐视频与演唱会频道"
+  ]
+};
+Object.entries(ADULT_CATEGORY_LABELS).forEach(([lang, labels]) => {
+    ["optgrp.cookingwellness", "cat.cooking", "cat.fitness", "cat.appleplaylist", "cat.artist", "cat.musicchannels"].forEach((key, i) => { I18N[lang][key] = labels[i]; });
+});
+
 /* ---------- Detection ---------- */
 function normalizeLang(tag) {
     if (!tag) return null;

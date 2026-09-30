@@ -96,3 +96,30 @@ test('language changes repaint dynamic fold labels and compact controls without 
  assert.equal(head.textContent,'Ask MatchApp Ai');assert.equal(w.document.querySelector('.ma-news-title').textContent,'Latest News');assert.equal(w.document.querySelector('#ma-compact-cat'),preview);
  assert.ok(w.document.querySelector('#ma-ai-entry').classList.contains('lazy-open'));w.close();
 });
+
+test('new adult categories translate in both canonical and compact selectors without changing matching values',async()=>{
+ const category=read('index.html').match(/<select id="q-category"[\s\S]*?<\/select>/)[0];
+ const html='<body class="page-home"><div id="lang-switcher-host"></div><section id="ma-concierge"><article id="questionnaire-box"><h2 data-i18n="q.title">Watch</h2>'+category+'<select id="q-mood"><option value="any">Any Mood</option></select></article></section></body>';
+ const w=new JSDOM(html,{url:'https://matchapp.tv/',runScripts:'outside-only',pretendToBeVisual:true}).window;
+ const state={cat:[],mood:[]};w.getMatchCriteria=()=>state;w.setMatchCriteria=patch=>Object.assign(state,patch);
+ try {
+  w.eval(read('i18n.js')+'\n'+read('lazy.js'));
+  w.document.dispatchEvent(new w.Event('DOMContentLoaded'));await new Promise(r=>setTimeout(r,30));
+  const source=w.document.querySelector('#q-category'),preview=w.document.querySelector('#ma-compact-cat');
+  const values=Array.from(source.options,o=>o.value);
+  const keys=['cat.cooking','cat.fitness','cat.appleplaylist','cat.artist','cat.musicchannels'];
+  for(const lang of ['pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh','en']){
+   w.setLanguage(lang);await new Promise(r=>setTimeout(r,20));
+   assert.deepEqual(Array.from(source.options,o=>o.value),values);
+   assert.deepEqual(Array.from(preview.options,o=>o.value),values);
+   for(const key of keys){
+    const original=source.querySelector('[data-i18n="'+key+'"]'),copy=preview.querySelector('[data-i18n="'+key+'"]');
+    assert.ok(original);assert.equal(copy.textContent,original.textContent);assert.equal(original.textContent,w.t(key,lang));
+    if(lang!=='en')assert.notEqual(original.textContent,w.t(key,'en'));
+   }
+   assert.equal(preview.querySelector('optgroup[data-i18n-label="optgrp.cookingwellness"]').label,w.t('optgrp.cookingwellness',lang));
+  }
+  w.setLanguage('pt-BR');preview.value='Cooking & Recipes';preview.dispatchEvent(new w.Event('change',{bubbles:true}));
+  assert.equal(state.cat[0],'Cooking & Recipes');assert.ok(w.document.querySelector('#ma-concierge').classList.contains('lazy-open'));
+ } finally {w.close();}
+});
