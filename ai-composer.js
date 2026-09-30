@@ -2,20 +2,20 @@
 (function(){
 'use strict';
 const rows={
-en:['Ask MatchApp Ai','Type your question here','New chat','Recent conversations','Conversation history','AI allowance','Type a question or use the microphone, then press Send.','Understanding your request…','Understand','Match','Answer','Find what to watch here'],
-'pt-BR':['Pergunte à MatchApp iA','Digite sua pergunta aqui','Nova conversa','Conversas recentes','Histórico de conversas','Limite de IA','Digite ou use o microfone e depois toque em Enviar.','Entendendo seu pedido…','Entender','Encontrar','Responder','Encontre o que assistir aqui'],
-es:['Pregunta a MatchApp Ai','Escribe tu pregunta aquí','Nueva conversación','Conversaciones recientes','Historial de conversaciones','Cupo de IA','Escribe o usa el micrófono y después pulsa Enviar.','Entendiendo tu solicitud…','Entender','Encontrar','Responder','Encuentra qué ver aquí'],
-fr:['Demandez à MatchApp Ai','Écrivez votre question ici','Nouvelle discussion','Discussions récentes','Historique des discussions','Quota IA','Écrivez ou utilisez le micro, puis appuyez sur Envoyer.','Analyse de votre demande…','Comprendre','Trouver','Répondre','Trouvez quoi regarder ici'],
-de:['MatchApp Ai fragen','Stelle hier deine Frage','Neuer Chat','Letzte Gespräche','Chatverlauf','KI-Kontingent','Tippe oder nutze das Mikrofon und drücke dann Senden.','Deine Anfrage wird verstanden…','Verstehen','Finden','Antworten','Hier findest du etwas zum Anschauen'],
-it:['Chiedi a MatchApp Ai','Scrivi qui la tua domanda','Nuova chat','Conversazioni recenti','Cronologia delle chat','Quota IA','Scrivi o usa il microfono, poi premi Invia.','Comprensione della richiesta…','Comprendere','Trovare','Rispondere','Trova cosa guardare qui'],
-tr:['MatchApp Ai’ye sor','Sorunu buraya yaz','Yeni sohbet','Son sohbetler','Sohbet geçmişi','Yapay zekâ kotası','Yaz veya mikrofonu kullan, ardından Gönder’e bas.','İsteğin anlaşılıyor…','Anla','Bul','Yanıtla','İzleyecek bir şey bul'],
-ru:['Спросите MatchApp Ai','Введите свой вопрос','Новый чат','Недавние беседы','История бесед','Лимит ИИ','Введите вопрос или используйте микрофон, затем нажмите «Отправить».','Изучаем ваш запрос…','Понять','Найти','Ответить','Найдите, что посмотреть'],
-ar:['اسأل MatchApp Ai','اكتب سؤالك هنا','محادثة جديدة','المحادثات الأخيرة','سجل المحادثات','رصيد الذكاء الاصطناعي','اكتب أو استخدم الميكروفون، ثم اضغط إرسال.','جارٍ فهم طلبك…','فهم','بحث','إجابة','اعثر على ما تشاهده هنا'],
-hi:['MatchApp Ai से पूछें','अपना सवाल यहाँ लिखें','नई बातचीत','हाल की बातचीत','बातचीत का इतिहास','AI सीमा','लिखें या माइक्रोफ़ोन इस्तेमाल करें, फिर भेजें दबाएँ।','आपका अनुरोध समझ रहे हैं…','समझें','खोजें','जवाब दें','यहाँ देखने के लिए कुछ खोजें'],
-id:['Tanya MatchApp Ai','Tulis pertanyaan di sini','Obrolan baru','Percakapan terbaru','Riwayat percakapan','Kuota AI','Ketik atau gunakan mikrofon, lalu tekan Kirim.','Memahami permintaanmu…','Pahami','Cari','Jawab','Temukan tontonan di sini'],
-ja:['MatchApp Aiに質問','ここに質問を入力','新しいチャット','最近の会話','会話履歴','AI利用枠','入力するかマイクを使い、送信を押してください。','リクエストを確認中…','理解','検索','回答','ここで見たい作品を探す'],
-ko:['MatchApp Ai에 질문','여기에 질문을 입력하세요','새 대화','최근 대화','대화 기록','AI 이용 한도','입력하거나 마이크를 사용한 후 보내기를 누르세요.','요청을 이해하고 있어요…','이해','찾기','답변','여기서 볼 작품을 찾으세요'],
-zh:['询问 MatchApp Ai','在这里输入问题','新对话','最近的对话','对话记录','AI 使用额度','输入或使用麦克风，然后点击发送。','正在理解你的请求…','理解','查找','回答','在这里寻找想看的作品']
+en:['Ask MatchApp Ai','Type your question here','New chat','Recent conversations','Conversation history','AI allowance','Type a question or use the microphone, then press Send.','Understanding your request…','Understand','Match','Answer','Find what to stream here'],
+'pt-BR':['Pergunte à MatchApp iA','Digite sua pergunta aqui','Nova conversa','Conversas recentes','Histórico de conversas','Limite de IA','Digite ou use o microfone e depois toque em Enviar.','Entendendo seu pedido…','Entender','Encontrar','Responder','Encontre o que ver por streaming aqui'],
+es:['Pregunta a MatchApp Ai','Escribe tu pregunta aquí','Nueva conversación','Conversaciones recientes','Historial de conversaciones','Cupo de IA','Escribe o usa el micrófono y después pulsa Enviar.','Entendiendo tu solicitud…','Entender','Encontrar','Responder','Encuentra qué ver en streaming aquí'],
+fr:['Demandez à MatchApp Ai','Écrivez votre question ici','Nouvelle discussion','Discussions récentes','Historique des discussions','Quota IA','Écrivez ou utilisez le micro, puis appuyez sur Envoyer.','Analyse de votre demande…','Comprendre','Trouver','Répondre','Trouvez quoi regarder en streaming ici'],
+de:['MatchApp Ai fragen','Stelle hier deine Frage','Neuer Chat','Letzte Gespräche','Chatverlauf','KI-Kontingent','Tippe oder nutze das Mikrofon und drücke dann Senden.','Deine Anfrage wird verstanden…','Verstehen','Finden','Antworten','Hier findest du etwas zum Streamen'],
+it:['Chiedi a MatchApp Ai','Scrivi qui la tua domanda','Nuova chat','Conversazioni recenti','Cronologia delle chat','Quota IA','Scrivi o usa il microfono, poi premi Invia.','Comprensione della richiesta…','Comprendere','Trovare','Rispondere','Trova cosa guardare in streaming qui'],
+tr:['MatchApp Ai’ye sor','Sorunu buraya yaz','Yeni sohbet','Son sohbetler','Sohbet geçmişi','Yapay zekâ kotası','Yaz veya mikrofonu kullan, ardından Gönder’e bas.','İsteğin anlaşılıyor…','Anla','Bul','Yanıtla','Burada yayın izleyecek bir şey bul'],
+ru:['Спросите MatchApp Ai','Введите свой вопрос','Новый чат','Недавние беседы','История бесед','Лимит ИИ','Введите вопрос или используйте микрофон, затем нажмите «Отправить».','Изучаем ваш запрос…','Понять','Найти','Ответить','Найдите, что смотреть онлайн'],
+ar:['اسأل MatchApp Ai','اكتب سؤالك هنا','محادثة جديدة','المحادثات الأخيرة','سجل المحادثات','رصيد الذكاء الاصطناعي','اكتب أو استخدم الميكروفون، ثم اضغط إرسال.','جارٍ فهم طلبك…','فهم','بحث','إجابة','اعثر على ما تبثه هنا'],
+hi:['MatchApp Ai से पूछें','अपना सवाल यहाँ लिखें','नई बातचीत','हाल की बातचीत','बातचीत का इतिहास','AI सीमा','लिखें या माइक्रोफ़ोन इस्तेमाल करें, फिर भेजें दबाएँ।','आपका अनुरोध समझ रहे हैं…','समझें','खोजें','जवाब दें','यहाँ स्ट्रीम करने के लिए कुछ खोजें'],
+id:['Tanya MatchApp Ai','Tulis pertanyaan di sini','Obrolan baru','Percakapan terbaru','Riwayat percakapan','Kuota AI','Ketik atau gunakan mikrofon, lalu tekan Kirim.','Memahami permintaanmu…','Pahami','Cari','Jawab','Temukan tontonan streaming di sini'],
+ja:['MatchApp Aiに質問','ここに質問を入力','新しいチャット','最近の会話','会話履歴','AI利用枠','入力するかマイクを使い、送信を押してください。','リクエストを確認中…','理解','検索','回答','ここでストリーミング作品を探す'],
+ko:['MatchApp Ai에 질문','여기에 질문을 입력하세요','새 대화','최근 대화','대화 기록','AI 이용 한도','입력하거나 마이크를 사용한 후 보내기를 누르세요.','요청을 이해하고 있어요…','이해','찾기','답변','여기서 스트리밍할 작품을 찾으세요'],
+zh:['询问 MatchApp Ai','在这里输入问题','新对话','最近的对话','对话记录','AI 使用额度','输入或使用麦克风，然后点击发送。','正在理解你的请求…','理解','查找','回答','在这里寻找想串流观看的作品']
 };
 const extra={
 en:['Home','Privacy','Cookies','Terms','Copyright','Contact','Accept','Essential only','Details','We use essential cookies to run MatchApp. Analytics and Google AdSense may use cookies to measure visits and fund the free service.'],
@@ -41,6 +41,8 @@ window.matchAppReadAloudLabel=()=>playbackLabels[language()]||playbackLabels.en;
 function put(selector,value){document.querySelectorAll(selector).forEach(n=>{if(n.textContent!==value)n.textContent=value;});}
 const foldCopy={"en": ["Latest News", "Top cooking channels & recipes"], "pt-BR": ["Últimas notícias", "Melhores canais de culinária e receitas"], "es": ["Últimas noticias", "Mejores canales de cocina y recetas"], "fr": ["Dernières actualités", "Meilleures chaînes de cuisine et recettes"], "de": ["Neueste Nachrichten", "Beste Kochkanäle und Rezepte"], "it": ["Ultime notizie", "Migliori canali di cucina e ricette"], "tr": ["Son haberler", "En iyi yemek kanalları ve tarifler"], "ru": ["Последние новости", "Лучшие кулинарные каналы и рецепты"], "ar": ["آخر الأخبار", "أفضل قنوات الطبخ والوصفات"], "hi": ["ताज़ा खबरें", "बेहतरीन कुकिंग चैनल और रेसिपी"], "id": ["Berita terbaru", "Kanal memasak dan resep terbaik"], "ja": ["最新ニュース", "おすすめ料理チャンネルとレシピ"], "ko": ["최신 뉴스", "추천 요리 채널과 레시피"], "zh": ["最新消息", "优质烹饪频道与食谱"]};
 function paintFoldLabels(){const c=foldCopy[language()]||foldCopy.en;put("#latest-news .ma-news-title",c[0]);put("#cooking-home>summary>span",c[1]);}
+const footerRights={"en": ["All rights reserved.", "Legal rights"], "pt-BR": ["Todos os direitos reservados.", "Direitos legais"], "es": ["Todos los derechos reservados.", "Derechos legales"], "fr": ["Tous droits réservés.", "Droits légaux"], "de": ["Alle Rechte vorbehalten.", "Rechtliche Hinweise"], "it": ["Tutti i diritti riservati.", "Diritti legali"], "tr": ["Tüm hakları saklıdır.", "Yasal haklar"], "ru": ["Все права защищены.", "Правовая информация"], "ar": ["جميع الحقوق محفوظة.", "الحقوق القانونية"], "hi": ["सर्वाधिकार सुरक्षित।", "कानूनी अधिकार"], "id": ["Hak cipta dilindungi.", "Hak hukum"], "ja": ["無断転載を禁じます。", "法的権利"], "ko": ["모든 권리 보유.", "법적 권리"], "zh": ["保留所有权利。", "法律权利"]};
+function paintRights(){const r=footerRights[language()]||footerRights.en;put(".ma-rights-copy","© "+new Date().getFullYear()+" Matchapp Ai · "+r[0]);put(".ma-legal-rights-link",r[1]);}
 function paintGlobal(){
  const node=document.querySelector('.matchapp-growth-copy');if(!node)return;
  const c=growthCopy[language()]||growthCopy.en,lead=node.querySelector('strong'),tail=node.querySelector('span');
@@ -54,7 +56,7 @@ window.submitHomeAI=function(){
  input.removeAttribute('aria-invalid');window.askAI?.(q);return true;
 };
 function paint(){
- paintGlobal();paintFoldLabels();
+ paintGlobal();paintFoldLabels();paintRights();
  if(!document.body.classList.contains('page-home')&&!document.body.classList.contains('ai-chat-page'))return;
  const c=copy();
  put('#search-box h2,.lazy-head[data-fold-key="askai"] .lazy-head-label',c[0]);put('.composer-input-label',c[1]);put('#ai-new-chat span:last-child',c[2]);

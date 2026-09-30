@@ -98,3 +98,28 @@ html body.page-home #ma-concierge.ma-watch-compact>.ma-watch-preview{display:gri
 html body.page-home .ma-watch-preview label{display:grid;gap:4px;min-width:0;color:#f9e8bd;font-size:12px;font-weight:700;line-height:1.2;}
 html body.page-home .ma-watch-preview select{box-sizing:border-box;width:100%;min-width:0;min-height:44px;padding:8px 10px;border:1px solid #f9d58b70;border-radius:14px;background:#20172f;color:#fff;font:inherit;font-size:14px;}
 html body.page-home .ma-watch-preview select:focus-visible{outline:2px solid #f9d58b;outline-offset:2px;}
+
+/* Final adult Home polish: the same 14px rhythm above Top Titles. */
+html body.page-home #matchapp-growth-disclosure{margin-bottom:0!important;}
+html body.page-home main.page-wrapper{margin-top:0!important;padding-top:0!important;}
+html body.page-home main.page-wrapper>.main-layout{margin-top:0!important;padding-top:0!important;}
+html body.page-home main.page-wrapper>.main-layout>.container{margin-top:0!important;padding-top:0!important;}
+html body.page-home main.page-wrapper>.main-layout>.container #trending-rail{margin-top:14px!important;}
+/* The crest's star sits outside its gold circle: keep its square SVG viewport. */
+html body.page-home main.page-wrapper .main-layout>.container .lazy-head[data-fold-key="concierge"]:has(+ #ma-concierge)::before{border-radius:0!important;overflow:visible!important;background-size:contain!important;}
+/* A bright champagne/violet sweep behind the Ask AI introduction. */
+html body.page-home #ma-ai-entry #search-box :is(h2,[data-i18n="search.hint"]){position:relative!important;isolation:isolate;overflow:hidden;border-radius:8px;}
+html body.page-home #ma-ai-entry #search-box :is(h2,[data-i18n="search.hint"])::before{
+ content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+ background:linear-gradient(110deg,transparent 8%,#9d4eff66 25%,#d5a1ff99 39%,#fff0bbaa 49%,#efb8ff88 58%,#9254e766 73%,transparent 92%);
+ transform:translateX(-120%);animation:maAskIntroSweep 4.8s ease-in-out infinite;
+}
+html body.page-home #ma-ai-entry #search-box [data-i18n="search.hint"]::before{animation-delay:.15s;}
+@keyframes maAskIntroSweep{0%,12%{transform:translateX(-120%);opacity:0}20%{opacity:1}58%{opacity:1}72%,100%{transform:translateX(120%);opacity:0}}
+@media(prefers-reduced-motion:reduce){html body.page-home #ma-ai-entry #search-box :is(h2,[data-i18n="search.hint"])::before{animation:none;transform:none;opacity:.23;}}
+html.reduce-motion body.page-home #ma-ai-entry #search-box :is(h2,[data-i18n="search.hint"])::before{animation:none;transform:none;opacity:.23;}
+
+html body.page-home .ma-final-legal{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:10px 16px;padding:14px 10px;margin:12px auto 0;max-width:900px;text-align:center;font-size:12px;color:#eadcf5;}
+html body.page-home .ma-final-legal nav{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;}
+html body.page-home .ma-final-legal a{color:#f4d58e;text-decoration:underline;text-underline-offset:3px;}
+html body.page-home .ma-footer-protection{display:inline-flex;align-items:center;gap:6px;padding:7px 12px;border:1px solid #c8e8c97a;border-radius:999px;background:linear-gradient(120deg,#173525,#25203e);color:#dcf2dd;font-size:12px;font-weight:700;}
