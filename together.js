@@ -448,7 +448,8 @@ function tgRenderResult(result, participants) {
     const t = tgEl('tg-result-title');
     if (t) t.textContent = result.title || '';
     const s = tgEl('tg-result-synopsis');
-    if (s) s.textContent = result.synopsis || '';
+    if (s) {s.dataset.resultDescription='1';s.dataset.sourceLang='en';s.dataset.resultTitle=result.title;s.dataset.resultYear=result.year||'';s.dataset.resultKind=result.kind||(/movie|film/i.test(result.cats?.[0]||'')?'movie':/series|tv/i.test(result.cats?.[0]||'')?'tv':'');s.textContent=result.synopsis||'';}
+    window.MatchAppTitleIdentity?.paint(t,{...result,kind:s?.dataset.resultKind||result.cats?.[0]||''});
 
     const badge = tgEl('tg-result-platform');
     if (badge) {

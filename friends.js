@@ -78,7 +78,8 @@
   if(data.result){
    clearInterval(matchTimer);matchTimer=null;
    const r=data.result;$('friend-match-form').hidden=true;$('friend-match-result').hidden=false;
-   $('friend-result-title').textContent=r.title;$('friend-result-synopsis').textContent=window.t('global.guide');window.localizeMatchSynopsis(r.synopsis||'').then(text=>{if($('friend-result-title').textContent===r.title)$('friend-result-synopsis').textContent=text;});
+   $('friend-result-title').textContent=r.title;const synopsis=$('friend-result-synopsis');synopsis.dataset.resultDescription='1';synopsis.dataset.sourceLang='en';synopsis.dataset.resultTitle=r.title;synopsis.dataset.resultYear=r.year||'';synopsis.dataset.resultKind=r.kind||(/movie|film/i.test(r.cats?.[0]||'')?'movie':/series|tv/i.test(r.cats?.[0]||'')?'tv':'');synopsis.textContent=r.synopsis||'';
+   window.MatchAppTitleIdentity?.paint($('friend-result-title'),{...r,kind:synopsis.dataset.resultKind||r.cats?.[0]||''});
    const image=$('friend-result-poster'),fallback=()=>generateLocalPosterSVG(r.title,r);image.src=fallback();image.onerror=()=>{image.onerror=null;image.src=fallback();};
    getRealCoverImage(r.title,r).then(url=>{if(url)image.src=url;}).catch(()=>{});
    const link=$('friend-result-watch');link.href=r.watchUrl || platformSearchUrl(r.platform,r.title);link.textContent=tr('Find where to watch','Onde assistir');
