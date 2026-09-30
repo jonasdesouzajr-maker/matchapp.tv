@@ -71,7 +71,7 @@ test('spotlight leaves context readable and highlights the actual target',()=>{
 test('manual walkthrough ships the new cache key to Home',()=>{
   const js=read('onboarding-tour.js'),html=read('index.html');
   assert.match(js,/function start\(\)[\s\S]*show\(0\)/);
-  assert.match(js,/const VERSION='v7'/);
+  assert.match(js,/const VERSION='v8'/);
   assert.ok(html.includes('/onboarding-tour.css?v=20260924-coach3'));
   assert.ok(html.includes('/onboarding-tour.js?v=20260926-bookworms7'));
   assert.doesNotMatch(html,/20260924-coach1/);
@@ -128,7 +128,7 @@ test('manual tour pinpoints Bookworms card and its real format dropdown, then re
   w.MatchAppOnboarding.start();
   const panel=doc.querySelector('.matchapp-tour-card');
   assert.ok(panel,'Real coachmark should be mounted');
-  assert.equal(panel.querySelector('#matchapp-tour-title').textContent,'Find My Perfect Match');
+  assert.equal(panel.querySelector('#matchapp-tour-title').textContent,'Find what to stream here');
   panel.querySelector('.matchapp-tour-next').click();
   assert.equal(panel.querySelector('#matchapp-tour-title').textContent,'Meet Bookworms');
   assert.equal(panel.querySelector('.matchapp-tour-count').textContent,'2 of 4');

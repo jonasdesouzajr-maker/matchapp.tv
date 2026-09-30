@@ -6,3 +6,15 @@ test('all supported languages localize composer, growth notice and consent label
 test('unannotated adult actions follow the selected language without rewriting title identity',()=>{const dom=setup(),w=dom.window;for(const lang of ['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh']){w.MATCH_LANG=lang;w.document.dispatchEvent(new w.Event('matchapp:langchange'));assert.equal(w.document.querySelector('#match-cta').textContent,w.t('q.submit'));assert.equal(w.document.querySelector('#ai-link').getAttribute('aria-label'),w.t('q.submit'));}assert.equal(w.document.querySelector('.discover-card h3').textContent,'Original title identity');w.close();});
 test('late response translations cannot overwrite a newer language selection',async()=>{const dom=setup(),w=dom.window;let resolve;w.localizeMatchSynopsis=()=>new Promise(r=>resolve=r);w.MATCH_LANG='pt-BR';w.document.dispatchEvent(new w.Event('matchapp:langchange'));w.MATCH_LANG='en';w.document.dispatchEvent(new w.Event('matchapp:langchange'));resolve('Resposta antiga');await new Promise(r=>setTimeout(r,10));assert.equal(w.document.querySelector('.chat-answer-text').textContent,'Original answer');w.close();});
 test('dictation waits for Send on both adult surfaces',()=>{for(const file of ['index.html','discover.html']){const html=fs.readFileSync(file,'utf8');assert.doesNotMatch(html,/initVoiceInput\([^;]+=>/);assert.match(html,/ai-composer.css\?v=/);}assert.match(fs.readFileSync('voice-input.js','utf8'),/interimResults=true/);});
+test('header labels switch languages reversibly while preserving guide, menu and Kids actions',()=>{
+ const dom=setup(),w=dom.window;w.document.body.className='page-home';
+ const h=w.document.createElement('header');h.id='mh-topbox';h.className='ma-home-header';
+ h.innerHTML='<button class="ma-how-button">How it works</button><a class="ma-kids-mode-entry" href="/kids/"><img src="/kids/logo.png"><span>Kids Mode</span></a><button class="ma-menu-button"><svg></svg><span>Settings</span></button><div class="ma-menu"><a role="menuitem" href="/profile/profile.html#country">🌍 Country</a></div>';
+ w.document.body.append(h);let clicks=0;const guide=h.querySelector('button');guide.addEventListener('click',()=>clicks++);
+ for(const lang of ['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh','en']){
+  w.MATCH_LANG=lang;w.document.dispatchEvent(new w.Event('matchapp:langchange'));
+  assert.ok(guide.textContent);if(lang!=='en')assert.notEqual(guide.textContent,'How it works');
+  assert.equal(h.querySelector('a').getAttribute('href'),'/kids/');assert.ok(h.querySelector('img'));assert.ok(h.querySelector('svg'));guide.click();
+ }
+ assert.equal(clicks,15);assert.equal(guide.textContent,'How it works');assert.equal(h.querySelector('.ma-menu a').textContent,'🌍 Country');w.close();
+});
