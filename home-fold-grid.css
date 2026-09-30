@@ -69,7 +69,7 @@ html body.page-home .lazy-head[data-fold-key="askai"]::before{
 html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container :is(#ma-ai-entry,#ma-concierge).lazy-foldable:not(.lazy-open){display:none!important}
 
 /* A single outer edge and fourteen-pixel rhythm for the adult Home pills. */
-html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container>:is(.lazy-head[data-fold-key],#ebook-matcher-root,#cooking-home,#latest-news,#premiere-disclosure,#weekly-pick-disclosure,#swifties-spotify,#global-events){
+html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container.container.container>:is(.lazy-head[data-fold-key],#ebook-matcher-root,#cooking-home,#latest-news,#premiere-disclosure,#weekly-pick-disclosure,#swifties-spotify,#global-events){
  width:100%!important;max-width:100%!important;min-width:0!important;box-sizing:border-box!important;
  margin:0 0 14px!important;padding:0!important;align-self:stretch!important;
 }
