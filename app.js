@@ -5156,7 +5156,7 @@ async function renderResult(selected, isSpecificSearch) {
             .then(translated=>{
                 if(window.globalMatchTitle===selected.title&&(window.MATCH_LANG||'en')===synopsisLanguage&&
                    typeof translated==='string'&&translated.trim()&&synopsisEl){
-                    synopsisEl.innerText=sanitizeDisplayText(translated,['synopsis','answer','description']);
+                    synopsisEl.innerText=sanitizeDisplayText(translated===selected.synopsis?window.matchTranslationUnavailable():translated,['synopsis','answer','description']);
                 }
             }).catch(()=>{/* Preserve the authentic source synopsis. */});
     }
@@ -6075,7 +6075,7 @@ document.addEventListener('matchapp:langchange',async()=>{
   const title=source.title,language=window.MATCH_LANG||'en';document.getElementById('res-synopsis').textContent=tSafe('global.guide');
   window.localizedTitle?.(title).then(name=>{if(window.currentSynopsisSource?.title===title&&(window.MATCH_LANG||'en')===language)document.getElementById('res-title').textContent=name;});
   const text=await window.localizeMatchSynopsis(source.text,source.lang);
-  if(window.currentSynopsisSource?.title===title&&(window.MATCH_LANG||'en')===language)document.getElementById('res-synopsis').textContent=text;
+  if(window.currentSynopsisSource?.title===title&&(window.MATCH_LANG||'en')===language)document.getElementById('res-synopsis').textContent=text===source.text&&source.lang!==language?window.matchTranslationUnavailable():text;
  }
 });
 document.addEventListener('click',event=>{if(event.target.closest('.app-header a,.app-header button:not(.sound-toggle-btn),.app-header select'))window.playPremiumSound?.();});

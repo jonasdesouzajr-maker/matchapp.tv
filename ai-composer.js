@@ -35,12 +35,14 @@ zh:['首页','隐私','Cookie','条款','版权','联系我们','接受','仅必
 };
 const playbackLabels={"en": "Read answer aloud", "pt-BR": "Ler resposta em voz alta", "es": "Leer respuesta en voz alta", "fr": "Lire la réponse à voix haute", "de": "Antwort laut vorlesen", "it": "Leggi la risposta ad alta voce", "tr": "Yanıtı sesli oku", "ru": "Прочитать ответ вслух", "ar": "اقرأ الإجابة بصوت عالٍ", "hi": "जवाब को ज़ोर से पढ़ें", "id": "Bacakan jawaban", "ja": "回答を読み上げる", "ko": "답변을 소리 내어 읽기", "zh": "朗读回答"};
 const growthCopy={en:['Always growing.','MatchApp is constantly expanding with new titles, features and experiences.','Stay tuned for what’s next.','MatchApp is constantly expanding'],'pt-BR':['Sempre crescendo.','A MatchApp está sempre se expandindo com novos títulos, recursos e experiências.','Fique por dentro das novidades.','A MatchApp está sempre se expandindo'],'es':['Siempre creciendo.','MatchApp sigue ampliando su catálogo con nuevos títulos, funciones y experiencias.','Muy pronto habrá más novedades.','MatchApp sigue creciendo'],'fr':['Toujours en expansion.','MatchApp s’enrichit constamment de nouveaux titres, fonctionnalités et expériences.','Restez à l’écoute des nouveautés.','MatchApp est en constante expansion'],'de':['Wir wachsen weiter.','MatchApp erweitert sich ständig um neue Titel, Funktionen und Erlebnisse.','Bleib gespannt auf das, was kommt.','MatchApp wächst ständig weiter'],'it':['Sempre in crescita.','MatchApp si arricchisce continuamente di nuovi titoli, funzioni ed esperienze.','Resta sintonizzato per le novità.','MatchApp è in continua espansione'],'tr':['Sürekli büyüyoruz.','MatchApp yeni yapımlar, özellikler ve deneyimlerle sürekli gelişiyor.','Yenilikler için takipte kalın.','MatchApp sürekli gelişiyor'],'ru':['Мы продолжаем расти.','В MatchApp постоянно появляются новые материалы, функции и возможности.','Следите за новостями.','MatchApp постоянно развивается'],'ar':['نواصل النمو.','تتوسع MatchApp باستمرار بعناوين وميزات وتجارب جديدة.','ترقبوا المزيد.','MatchApp في توسع مستمر'],'hi':['हम लगातार बढ़ रहे हैं।','MatchApp में नए शीर्षक, सुविधाएँ और अनुभव लगातार जुड़ रहे हैं।','आगे की खबरों के लिए जुड़े रहें।','MatchApp लगातार विस्तार कर रहा है'],'id':['Terus berkembang.','MatchApp terus menghadirkan judul, fitur, dan pengalaman baru.','Nantikan kabar berikutnya.','MatchApp terus berkembang'],'ja':['さらに成長しています。','MatchAppでは、新しい作品や機能、体験を続々と追加しています。','今後の更新もお楽しみに。','MatchAppは拡大を続けています'],'ko':['계속 성장 중입니다.','MatchApp은 새로운 작품과 기능, 경험을 계속 추가하고 있어요.','앞으로의 소식도 기대해 주세요.','MatchApp은 계속 성장하고 있습니다'],'zh':['持续成长。','MatchApp 不断推出新作品、新功能和新体验。','敬请期待更多更新。','MatchApp 正在持续扩展']};
+const exampleCopy={en:'A feel-good Netflix movie','pt-BR':'Um filme leve na Netflix',es:'Busca una película alegre en Netflix',fr:'Trouve un film joyeux sur Netflix',de:'Finde einen Wohlfühlfilm auf Netflix',it:'Trova un film allegro su Netflix',tr:'Netflix’te keyifli bir film bul',ru:'Найди добрый фильм на Netflix',ar:'ابحث عن فيلم مبهج على Netflix',hi:'Netflix पर एक खुशमिज़ाज फ़िल्म खोजें',id:'Cari film menyenangkan di Netflix',ja:'Netflixで心温まる映画を探して',ko:'Netflix에서 따뜻한 영화를 찾아줘',zh:'找一部Netflix上的温馨电影'};
+function paintExample(){const L=language(),question=exampleCopy[L]||exampleCopy.en;document.querySelectorAll('[data-ai-example]').forEach(button=>{button.dataset.question=question;const text=(window.t?.('search.trythese')||'Try:')+' '+question;if(button.textContent!==text)button.textContent=text;});}
 const language=()=>window.MATCH_LANG||document.documentElement.lang||'en';
 const copy=()=>rows[language()]||rows.en;
 window.matchAppReadAloudLabel=()=>playbackLabels[language()]||playbackLabels.en;
 function put(selector,value){document.querySelectorAll(selector).forEach(n=>{if(n.textContent!==value)n.textContent=value;});}
 const foldCopy={"en": ["Latest News", "Top cooking channels & recipes"], "pt-BR": ["Últimas notícias", "Melhores canais de culinária e receitas"], "es": ["Últimas noticias", "Mejores canales de cocina y recetas"], "fr": ["Dernières actualités", "Meilleures chaînes de cuisine et recettes"], "de": ["Neueste Nachrichten", "Beste Kochkanäle und Rezepte"], "it": ["Ultime notizie", "Migliori canali di cucina e ricette"], "tr": ["Son haberler", "En iyi yemek kanalları ve tarifler"], "ru": ["Последние новости", "Лучшие кулинарные каналы и рецепты"], "ar": ["آخر الأخبار", "أفضل قنوات الطبخ والوصفات"], "hi": ["ताज़ा खबरें", "बेहतरीन कुकिंग चैनल और रेसिपी"], "id": ["Berita terbaru", "Kanal memasak dan resep terbaik"], "ja": ["最新ニュース", "おすすめ料理チャンネルとレシピ"], "ko": ["최신 뉴스", "추천 요리 채널과 레시피"], "zh": ["最新消息", "优质烹饪频道与食谱"]};
-function paintFoldLabels(){const c=foldCopy[language()]||foldCopy.en;put("#latest-news .ma-news-title",c[0]);put("#cooking-home>summary>span",c[1]);}
+function paintFoldLabels(){paintExample();const c=foldCopy[language()]||foldCopy.en;put("#latest-news .ma-news-title",c[0]);put("#cooking-home>summary>span",c[1]);}
 const footerRights={"en": ["All rights reserved.", "Legal rights", "Terms", "Privacy"], "pt-BR": ["Todos os direitos reservados.", "Direitos legais", "Termos", "Privacidade"], "es": ["Todos los derechos reservados.", "Derechos legales", "Términos", "Privacidad"], "fr": ["Tous droits réservés.", "Droits légaux", "Conditions", "Confidentialité"], "de": ["Alle Rechte vorbehalten.", "Rechtliche Hinweise", "Bedingungen", "Datenschutz"], "it": ["Tutti i diritti riservati.", "Diritti legali", "Termini", "Privacy"], "tr": ["Tüm hakları saklıdır.", "Yasal haklar", "Koşullar", "Gizlilik"], "ru": ["Все права защищены.", "Правовая информация", "Условия", "Конфиденциальность"], "ar": ["جميع الحقوق محفوظة.", "الحقوق القانونية", "الشروط", "الخصوصية"], "hi": ["सर्वाधिकार सुरक्षित।", "कानूनी अधिकार", "शर्तें", "गोपनीयता"], "id": ["Hak cipta dilindungi.", "Hak hukum", "Ketentuan", "Privasi"], "ja": ["無断転載を禁じます。", "法的権利", "利用規約", "プライバシー"], "ko": ["모든 권리 보유.", "법적 권리", "이용약관", "개인정보"], "zh": ["保留所有权利。", "法律权利", "条款", "隐私"]};
 function paintRights(){const r=footerRights[language()]||footerRights.en;put(".ma-rights-copy","© "+new Date().getFullYear()+" Matchapp Ai · "+r[0]);put(".ma-legal-rights-link",r[1]);put(".ma-final-legal .ma-terms",r[2]);put(".ma-final-legal .ma-privacy",r[3]);}
 function paintGlobal(){
@@ -139,7 +141,7 @@ function labels(root=document){
 // Uses the existing bounded display-localization helper for already-rendered answer text.
 const originals=new WeakMap();let previousLanguage=language(),generation=0;
 function rememberResponses(){
- document.querySelectorAll('.chat-answer-text,.discover-synopsis').forEach(n=>{
+ document.querySelectorAll('.chat-answer-text').forEach(n=>{
   const old=originals.get(n);
   if(!old||n.textContent!==old.painted)originals.set(n,{text:n.textContent,lang:previousLanguage,painted:n.textContent});
  });
@@ -147,13 +149,13 @@ function rememberResponses(){
 async function localizeResponses(){
  rememberResponses();const target=language(),version=++generation;
  previousLanguage=target;
- const nodes=Array.from(document.querySelectorAll('.chat-answer-text,.discover-synopsis'));
+ const nodes=Array.from(document.querySelectorAll('.chat-answer-text'));
  for(const node of nodes){
   if(version!==generation)return;
   const source=originals.get(node);if(!source?.text)continue;
   const translated=target===source.lang?source.text:await window.localizeMatchSynopsis?.(source.text,source.lang);
   if(version!==generation||!node.isConnected)return;
-  if(translated&&node.textContent===source.painted){node.textContent=translated;source.painted=translated;}
+  if(translated&&node.textContent===source.painted){node.textContent=translated===source.text&&target!==source.lang?window.matchTranslationUnavailable?.()||translated:translated;source.painted=node.textContent;}
  }
 }
 function boot(){

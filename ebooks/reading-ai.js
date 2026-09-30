@@ -72,7 +72,7 @@ function magCard(m){
  '" alt="'+esc(m.title)+' official publisher icon" data-reading-publisher-icon loading="eager" decoding="async" hidden>'+ 
  '<span data-reading-publisher-name aria-hidden="true">'+esc(m.title)+'</span></div>'+
  '<div><span class="reading-ai-label">OFFICIAL MAGAZINE SOURCE</span><h4>'+esc(m.title)+'</h4>'+
- '<p>'+esc(m.summary)+'</p><div class="reading-ai-links">'+
+ '<p class="reading-ai-description" data-source-lang="en">'+esc(m.summary)+'</p><div class="reading-ai-links">'+
  external(m.issues,'Original covers & issues')+
  external(m.site,'Official articles',{free:true})+
  (primary?external(primary.url,'Amazon — check availability',{paid:tagged,affiliate:tagged}):'')+
@@ -101,7 +101,7 @@ function bookCard(b,format){
  }
  return '<article class="reading-ai-card"><div class="reading-ai-wordmark" aria-hidden="true">📚</div>'+
  '<div><span class="reading-ai-label">CURATED BOOK PROFILE · '+(audio?'AUDIO VERIFICATION REQUIRED':'E-BOOK')+
- '</span><h4>'+esc(b.title)+'</h4><p>by '+esc(b.author)+'</p><p>'+esc(b.summary)+'</p>'+
+ '</span><h4>'+esc(b.title)+'</h4><p>by '+esc(b.author)+'</p><p class="reading-ai-description" data-source-lang="en">'+esc(b.summary)+'</p>'+
  '<div class="reading-ai-links">'+links+'</div>'+
  '<small>'+(audio?'An audiobook edition is not confirmed by a store search. Use Match E-books Ai to verify exact title and author.':'Stores and free edition eligibility vary by country.')+'</small>'+
  (tagged&&!audio?'<small>'+esc(aff.disclosure(locale()))+'</small>':'')+'</div></article>';

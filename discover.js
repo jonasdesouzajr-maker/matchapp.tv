@@ -138,7 +138,8 @@ async function askAIConversational(question, history) {
     // Nickname so the AI can address the user by name. Optional by design —
     // an empty string simply means the AI stays neutral rather than guessing.
     const nickname = (typeof window.getUserNickname === 'function') ? window.getUserNickname() : '';
-    const body = { mode: 'discover', question, lang, country, age, nickname, history: history || [] };
+    const displayQuestion=question+'\n\nResponse language: '+lang+'. Use this selected language for the answer and every result description, regardless of the question language.';
+    const body = { mode: 'discover', question:displayQuestion, lang, country, age, nickname, history: history || [] };
 
     // The proxy can try four models, each with a 20-second upstream deadline.
     // An 8-second browser timeout discarded healthy answers and retried live
@@ -647,7 +648,7 @@ async function enrichDiscoverMedia(item) {
         // Exact identity is not proof of regional provider availability.
         item._availabilityVerified = false;
         if (meta.year) item.year = meta.year;
-        if (meta.overview) item.synopsis = meta.overview;
+        if (meta.overview) { item.synopsis = meta.overview; item.synopsisLang='en'; }
         if (Array.isArray(meta.genres) && meta.genres.length) item.realGenres = meta.genres.slice(0, 8);
         if (!item.type || item.type === 'any') item.type = meta.media_kind === 'tv' ? 'series' : (meta.media_kind || item.type);
         item._viewing = window.MatchAppCatalogMedia.viewingTarget?.(meta, item.title) || null;
@@ -865,7 +866,7 @@ function discoverCardHTML(item, idx) {
             ${facts}
             ${categories}
             <div id="discover-availability-${idx}" class="matchapp-card-availability" hidden></div>
-            <p class="discover-synopsis" data-locale-painted="${lang}">${synopsis}</p>
+            <p class="discover-synopsis" data-source-lang="${escapeDiscoverHtml(item.synopsisLang || lang)}">${synopsis}</p>
             <div id="discover-preview-${idx}" class="discover-card-preview" hidden></div>
             <div class="discover-actions">
                 <a id="dl-${idx}" class="gold-btn discover-play${cinemaOnly ? ' is-cinema' : ''}" href="#" target="_blank" rel="noopener">${watchLabel}</a>
@@ -1043,7 +1044,9 @@ async function hydrateDiscoverCard(item, idx) {
         const preferLocalized = lang !== 'en' && meta.source === 'tmdb';
         if (short || preferLocalized) {
             item.synopsis = meta.overview;
+            item.synopsisLang='en';
             const syn = document.querySelector(`[data-discover-idx="${idx}"] .discover-synopsis`);
+            if (syn) syn.dataset.sourceLang='en';
             if (syn) syn.textContent = (typeof window.sanitizeDisplayText === 'function')
                 ? window.sanitizeDisplayText(meta.overview, ['synopsis'])
                 : meta.overview;

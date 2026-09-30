@@ -19,7 +19,7 @@
     YouTube: { cats: ['movie','series','documentary','short film','stand-up comedy special','kids','YouTube Shorts','podcast'] }
   };
   const cache = new Map();
-  const lang = () => window.MATCH_LANG || localStorage.getItem('match_lang') || document.documentElement.lang || 'en';
+  const lang = () => window.matchResultLanguage?.() || window.MATCH_LANG || document.documentElement.lang || 'en';
   const nameOf = () => NAMES[lang()] || 'English';
 
   window.criteriaCompatible = function (fieldKey, value, state) {
@@ -43,7 +43,7 @@
 
   async function translateText(text, kind) {
     const L = lang();
-    if (!text || L === 'en') return text;
+    if (!text) return text;
     const key = L + '::' + kind + '::' + text;
     if (cache.has(key)) return cache.get(key);
     const pending = (async () => {
@@ -54,7 +54,7 @@
         } catch (_) {}
       }
       if (kind === 'synopsis' && typeof window.localizeMatchSynopsis === 'function') {
-        try { return await window.localizeMatchSynopsis(text, 'en'); } catch (_) {}
+        try { return await window.localizeMatchSynopsis(text, 'en', L); } catch (_) {}
       }
       if (!window.supabaseClient) return text;
       try {
@@ -77,41 +77,40 @@
       return text;
     })();
     cache.set(key, pending);
-    return pending;
+    const result=await pending;
+    if(result===text)cache.delete(key);
+    return result;
   }
   window.localizeDisplayTitle = (title) => translateText(title, 'title');
 
+  const records=new WeakMap();
+  const descriptions='.discover-synopsis,.ebook-summary,.reading-ai-description,[data-result-description]';
   async function paintNode(el, kind) {
-    if (!el || el.dataset.localePainted === lang()) return;
-    const requestedLanguage=lang();
-    // A reused result node may now contain a different verified title.
-    if(el.dataset.localeLastText && el.textContent!==el.dataset.localeLastText)el.removeAttribute('data-src-text');
-    const original = el.getAttribute('data-src-text') || el.textContent;
-    if (!original || original.length < 2) return;
-    el.setAttribute('data-src-text', original);
-    const next = await translateText(original, kind);
-    if (el.isConnected && next && lang()===requestedLanguage && el.getAttribute('data-src-text')===original) {
-      el.textContent = next;
-      el.dataset.localeLastText = next;
-      el.dataset.localePainted = requestedLanguage;
+    if(!el)return;
+    const L=lang(),current=el.textContent,previous=records.get(el);
+    const reused=previous&&current!==previous.painted;
+    const original=reused?current:previous?.text||el.getAttribute('data-src-text')||current;
+    const source=reused?(el.dataset.sourceLang||'en'):previous?.source||el.dataset.sourceLang||'en';
+    if(!original?.trim()||(previous&&!reused&&previous.target===L))return;
+    const state={text:original,source,target:L,painted:current};records.set(el,state);
+    if(kind==='synopsis'&&source!==L){state.painted=window.t?.('global.guide')||'';el.textContent=state.painted;}
+    const next=kind==='synopsis'?await window.localizeMatchSynopsis?.(original,source,L):await translateText(original,kind);
+    if(el.isConnected&&lang()===L&&records.get(el)===state&&el.textContent===state.painted){
+      state.painted=next===original&&source!==L&&kind==='synopsis'?window.matchTranslationUnavailable?.()||'':next||original;
+      el.textContent=state.painted;
+      el.dataset.localeLastText=state.painted;el.dataset.localePainted=L;
     }
   }
-
-  async function paintPage() {
-    if (lang() === 'en') {
-      document.querySelectorAll('[data-src-text][data-locale-last-text]').forEach(el=>{
-        if(el.textContent===el.dataset.localeLastText){el.textContent=el.dataset.srcText;el.dataset.localeLastText=el.textContent;el.dataset.localePainted='en';}
-      });
-      return;
-    }
-    const title = document.getElementById('res-title');
-    if (title && !window.currentSynopsisSource) await paintNode(title, 'title');
-    const syn = document.getElementById('res-synopsis');
-    if (syn && !window.currentSynopsisSource) await paintNode(syn, 'synopsis');
-    document.querySelectorAll('.discover-card h3').forEach(h => paintNode(h, 'title'));
-    document.querySelectorAll('.discover-card .discover-synopsis').forEach(p => paintNode(p, 'synopsis'));
-    document.querySelectorAll('.marquee-title').forEach(el => paintNode(el, 'title'));
+  function paintPage() {
+    const title=document.getElementById('res-title');
+    if(title&&!window.currentSynopsisSource)paintNode(title,'title');
+    const syn=document.getElementById('res-synopsis');
+    if(syn&&!window.currentSynopsisSource)paintNode(syn,'synopsis');
+    document.querySelectorAll(descriptions).forEach(p=>paintNode(p,'synopsis'));
+    document.querySelectorAll('.discover-card h3,.marquee-title').forEach(p=>paintNode(p,'title'));
   }
+  let paintQueued=false;
+  function schedulePaint(){if(paintQueued)return;paintQueued=true;queueMicrotask(()=>{paintQueued=false;paintPage();});}
 
   function wrapAsk() {
     if (typeof window.askAIConversational !== 'function' || window.askAIConversational.__locale) return;
@@ -156,6 +155,8 @@
   function boot() {
     wrapAsk();
     paintPage();
+    const observer=new MutationObserver(changes=>{if(changes.some(c=>{const el=c.target.nodeType===1?c.target:c.target.parentElement;return el?.matches?.(descriptions)||el?.closest?.('.discover-card,#ebook-matcher-root,.reading-ai-card')||Array.from(c.addedNodes).some(n=>n.nodeType===1&&(n.matches?.(descriptions)||n.querySelector?.(descriptions)));}))schedulePaint();});
+    observer.observe(document.body,{childList:true,subtree:true,characterData:true});
     decorateCriteria();
   }
   document.addEventListener('matchapp:langchange', () => {
