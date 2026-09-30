@@ -1,10 +1,465 @@
 {
-  "generated_at": "2026-09-30T02:08:20.241Z",
-  "feed_version": "29c2dc47",
+  "generated_at": "2026-09-30T07:21:38.518Z",
+  "feed_version": "a6c69b22",
   "sports_updated_at": "2026-09-30T02:08:20.196Z",
   "source_policy": "direct-trusted-publisher-rss+google-trends-keyword-signals",
   "seo_policy": "per-story keyword snapshot at first discovery + source citation + stable archive",
   "items": [
+    {
+      "id": "86f8e960",
+      "title": "'Matéria escura' vai além de limites do livro original em 2ª temporada com ajuda de atores: 'Página em branco'",
+      "url": "https://g1.globo.com/pop-arte/tv-e-series/noticia/2026/09/30/materia-escura-vai-alem-de-limites-do-livro-original-em-2a-temporada-com-ajuda-de-atores-pagina-em-branco.ghtml",
+      "source": "G1",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "BR",
+      "published_at": "2026-09-30T07:00:01.000Z",
+      "discovered_at": "2026-09-30T07:21:38.518Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "",
+      "description": "entertainment headline reported by G1. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://s2-g1.glbimg.com/6EzgJppBFAZ_Dqv1HchJrBe2olM=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/O/c/gMg1BQQq6T0NxMAAscFA/materia-escura-joel-edgerton-jennifer-connelly-1.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/materia-escura-vai-alem-de-limites-do-livro-original-em-2-temporada-com-ajuda-de-86f8e9/",
+      "landing_url": "https://matchapp.tv/?news=86f8e960#latest-news",
+      "seo": {
+        "primary_keyword": "ns&i",
+        "short_tail": [
+          "materia escura vai alem",
+          "materia escura vai alem news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje",
+          "ns&i",
+          "समाजवादी पार्टी",
+          "ಡಿ ಕೆ ಶಿವಕುಮಾರ್",
+          "వీరమాచనేని రామకృష్ణ"
+        ],
+        "long_tail": [
+          "materia escura vai alem latest news September 2026",
+          "materia escura vai alem entertainment update 2026",
+          "materia escura vai alem news 2026-09-30",
+          "latest entertainment news about materia escura vai alem",
+          "materia escura vai alem limites livro latest update",
+          "G1 materia escura vai alem entertainment",
+          "últimas notícias sobre materia escura vai alem setembro 2026",
+          "materia escura vai alem notícia de 2026-09-30",
+          "o que aconteceu com materia escura vai alem"
+        ],
+        "trend_keywords": [
+          "ns&i",
+          "समाजवादी पार्टी",
+          "ಡಿ ಕೆ ಶಿವಕುಮಾರ್",
+          "వీరమాచనేని రామకృష్ణ"
+        ],
+        "entity_keywords": [
+          "materia",
+          "escura",
+          "vai",
+          "alem",
+          "limites",
+          "livro",
+          "original",
+          "temporada"
+        ],
+        "freshness_keywords": [
+          "September 2026",
+          "2026-09-30",
+          "setembro 2026",
+          "materia escura vai alem 2026"
+        ],
+        "source_keywords": [
+          "G1 materia escura vai alem",
+          "g1.globo.com materia escura vai alem",
+          "G1 entertainment news"
+        ],
+        "meta_title": "'Matéria escura' vai além de limites do livro original em…",
+        "meta_description": "Entertainment update reported by G1 on 2026-09-30. See verified context, publication time and the original source via MatchApp TV.",
+        "keywords": [
+          "ns&i",
+          "materia escura vai alem",
+          "materia escura vai alem news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje",
+          "समाजवादी पार्टी",
+          "ಡಿ ಕೆ ಶಿವಕುಮಾರ್",
+          "వీరమాచనేని రామకృష్ణ",
+          "materia escura vai alem latest news September 2026",
+          "materia escura vai alem entertainment update 2026",
+          "materia escura vai alem news 2026-09-30",
+          "latest entertainment news about materia escura vai alem",
+          "materia escura vai alem limites livro latest update",
+          "G1 materia escura vai alem entertainment",
+          "últimas notícias sobre materia escura vai alem setembro 2026",
+          "materia escura vai alem notícia de 2026-09-30",
+          "o que aconteceu com materia escura vai alem",
+          "materia",
+          "escura",
+          "vai",
+          "alem",
+          "limites",
+          "livro",
+          "original",
+          "temporada",
+          "September 2026",
+          "2026-09-30",
+          "setembro 2026",
+          "materia escura vai alem 2026"
+        ],
+        "seo_generated_at": "2026-09-30T07:21:38.518Z"
+      }
+    },
+    {
+      "id": "7c463c61",
+      "title": "With ‘Digger,’ Tom Cruise Takes On His Riskiest Business Yet",
+      "url": "https://www.hollywoodreporter.com/movies/movie-news/digger-tom-cruise-academy-museum-alejandro-g-inarritu-1236716822/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "published_at": "2026-09-30T06:47:41.000Z",
+      "discovered_at": "2026-09-30T07:21:38.518Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "",
+      "description": "entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/09/GettyImages-2297726235-1.jpg?w=1296&h=730&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/with-digger-tom-cruise-takes-on-his-riskiest-business-yet-7c463c/",
+      "landing_url": "https://matchapp.tv/?news=7c463c61#latest-news",
+      "seo": {
+        "primary_keyword": "ns&i",
+        "short_tail": [
+          "digger tom cruise takes",
+          "digger tom cruise takes news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "ns&i",
+          "समाजवादी पार्टी",
+          "ಡಿ ಕೆ ಶಿವಕುಮಾರ್",
+          "వీరమాచనేని రామకృష్ణ"
+        ],
+        "long_tail": [
+          "digger tom cruise takes latest news September 2026",
+          "digger tom cruise takes entertainment update 2026",
+          "digger tom cruise takes news 2026-09-30",
+          "latest entertainment news about digger tom cruise takes",
+          "digger tom cruise takes his riskiest latest update",
+          "The Hollywood Reporter digger tom cruise takes entertainment",
+          "latest news about digger tom cruise takes September 2026",
+          "digger tom cruise takes entertainment news 2026-09-30",
+          "what happened with digger tom cruise takes"
+        ],
+        "trend_keywords": [
+          "ns&i",
+          "समाजवादी पार्टी",
+          "ಡಿ ಕೆ ಶಿವಕುಮಾರ್",
+          "వీరమాచనేని రామకృష్ణ"
+        ],
+        "entity_keywords": [
+          "digger",
+          "tom",
+          "cruise",
+          "takes",
+          "his",
+          "riskiest",
+          "business",
+          "yet"
+        ],
+        "freshness_keywords": [
+          "September 2026",
+          "2026-09-30",
+          "digger tom cruise takes 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter digger tom cruise takes",
+          "hollywoodreporter.com digger tom cruise takes",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "With ‘Digger,’ Tom Cruise Takes On His Riskiest Business…",
+        "meta_description": "Entertainment update reported by The Hollywood Reporter on 2026-09-30. See verified context, publication time and the original source via MatchApp TV.",
+        "keywords": [
+          "ns&i",
+          "digger tom cruise takes",
+          "digger tom cruise takes news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "समाजवादी पार्टी",
+          "ಡಿ ಕೆ ಶಿವಕುಮಾರ್",
+          "వీరమాచనేని రామకృష్ణ",
+          "digger tom cruise takes latest news September 2026",
+          "digger tom cruise takes entertainment update 2026",
+          "digger tom cruise takes news 2026-09-30",
+          "latest entertainment news about digger tom cruise takes",
+          "digger tom cruise takes his riskiest latest update",
+          "The Hollywood Reporter digger tom cruise takes entertainment",
+          "latest news about digger tom cruise takes September 2026",
+          "digger tom cruise takes entertainment news 2026-09-30",
+          "what happened with digger tom cruise takes",
+          "digger",
+          "tom",
+          "cruise",
+          "takes",
+          "his",
+          "riskiest",
+          "business",
+          "yet",
+          "September 2026",
+          "2026-09-30",
+          "digger tom cruise takes 2026",
+          "The Hollywood Reporter digger tom cruise takes"
+        ],
+        "seo_generated_at": "2026-09-30T07:21:38.518Z"
+      }
+    },
+    {
+      "id": "0b10a0cc",
+      "title": "OpenAI unveils AI assistant 'dots' while safety worries delay new model",
+      "url": "https://www.bbc.co.uk/news/articles/cw7v42rp083eo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC Technology",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "published_at": "2026-09-30T05:18:13.000Z",
+      "discovered_at": "2026-09-30T00:44:22.303Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC Technology on 2026-09-30. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/181a/live/455d3af0-bc41-11f1-bc1f-3f186ca4140c.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/openai-unveils-ai-assistant-dots-while-safety-worries-delay-new-model-0b10a0/",
+      "landing_url": "https://matchapp.tv/?news=0b10a0cc#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-09-29",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "openai",
+          "unveils",
+          "assistant",
+          "dots",
+          "while",
+          "safety"
+        ],
+        "long_tail": [
+          "OpenAI unveils AI assistant 'dots' while safety worries delay new model 2026-09-29",
+          "world news September 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "openai",
+          "unveils",
+          "assistant",
+          "dots",
+          "while",
+          "safety"
+        ],
+        "freshness_keywords": [
+          "2026-09-29"
+        ],
+        "source_keywords": [
+          "BBC Technology"
+        ],
+        "meta_title": "OpenAI unveils AI assistant 'dots' while safety worries…",
+        "meta_description": "World report published by BBC Technology on 2026-09-29. Open the original report for full context.",
+        "keywords": [
+          "world news",
+          "global headlines",
+          "openai",
+          "unveils",
+          "assistant",
+          "dots",
+          "while",
+          "safety",
+          "2026-09-29",
+          "BBC Technology"
+        ],
+        "seo_generated_at": "2026-09-30T00:44:22.303Z"
+      }
+    },
+    {
+      "id": "1a186591",
+      "title": "Three takeaways from Trump's 'Super Intelligence' summit",
+      "url": "https://www.bbc.co.uk/news/articles/cme30dz5vkzko?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "published_at": "2026-09-30T04:01:52.000Z",
+      "discovered_at": "2026-09-30T07:21:38.518Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-09-30. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/af69/live/34e7c4c0-bc86-11f1-bc1f-3f186ca4140c.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/three-takeaways-from-trump-s-super-intelligence-summit-1a1865/",
+      "landing_url": "https://matchapp.tv/?news=1a186591#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-09-30",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "three",
+          "takeaways",
+          "trump",
+          "super",
+          "intelligence",
+          "summit"
+        ],
+        "long_tail": [
+          "Three takeaways from Trump's 'Super Intelligence' summit 2026-09-30",
+          "world news September 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "three",
+          "takeaways",
+          "trump",
+          "super",
+          "intelligence",
+          "summit"
+        ],
+        "freshness_keywords": [
+          "2026-09-30"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Three takeaways from Trump's 'Super Intelligence' summit |…",
+        "meta_description": "World report published by BBC World on 2026-09-30. Open the original report for full context.",
+        "keywords": [
+          "world news",
+          "global headlines",
+          "three",
+          "takeaways",
+          "trump",
+          "super",
+          "intelligence",
+          "summit",
+          "2026-09-30",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-09-30T07:21:38.518Z"
+      }
+    },
+    {
+      "id": "06489d5a",
+      "title": "‘SVU’ Star Mariska Hargitay Speaks Out on Cornell Rape Case, Says University “Failed to Protect Its Students”",
+      "url": "https://www.hollywoodreporter.com/news/general-news/svu-mariska-hargitay-speaks-out-cornell-rape-case-1236716722/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "published_at": "2026-09-30T02:38:47.000Z",
+      "discovered_at": "2026-09-30T07:21:38.518Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "",
+      "description": "entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/09/Mariska-Hargitay-getty-H-2026.png?w=1296&h=730&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/svu-star-mariska-hargitay-speaks-out-on-cornell-rape-case-says-university-failed-06489d/",
+      "landing_url": "https://matchapp.tv/?news=06489d5a#latest-news",
+      "seo": {
+        "primary_keyword": "ns&i",
+        "short_tail": [
+          "svu star mariska hargitay",
+          "svu star mariska hargitay news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "ns&i",
+          "समाजवादी पार्टी",
+          "ಡಿ ಕೆ ಶಿವಕುಮಾರ್",
+          "వీరమాచనేని రామకృష్ణ"
+        ],
+        "long_tail": [
+          "svu star mariska hargitay latest news September 2026",
+          "svu star mariska hargitay entertainment update 2026",
+          "svu star mariska hargitay news 2026-09-30",
+          "latest entertainment news about svu star mariska hargitay",
+          "svu star mariska hargitay speaks out latest update",
+          "The Hollywood Reporter svu star mariska hargitay entertainment",
+          "latest news about svu star mariska hargitay September 2026",
+          "svu star mariska hargitay entertainment news 2026-09-30",
+          "what happened with svu star mariska hargitay"
+        ],
+        "trend_keywords": [
+          "ns&i",
+          "समाजवादी पार्टी",
+          "ಡಿ ಕೆ ಶಿವಕುಮಾರ್",
+          "వీరమాచనేని రామకృష్ణ"
+        ],
+        "entity_keywords": [
+          "svu",
+          "star",
+          "mariska",
+          "hargitay",
+          "speaks",
+          "out",
+          "cornell",
+          "rape"
+        ],
+        "freshness_keywords": [
+          "September 2026",
+          "2026-09-30",
+          "svu star mariska hargitay 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter svu star mariska hargitay",
+          "hollywoodreporter.com svu star mariska hargitay",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "‘SVU’ Star Mariska Hargitay Speaks Out on Cornell Rape…",
+        "meta_description": "Entertainment update reported by The Hollywood Reporter on 2026-09-30. See verified context, publication time and the original source via MatchApp TV.",
+        "keywords": [
+          "ns&i",
+          "svu star mariska hargitay",
+          "svu star mariska hargitay news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "समाजवादी पार्टी",
+          "ಡಿ ಕೆ ಶಿವಕುಮಾರ್",
+          "వీరమాచనేని రామకృష్ణ",
+          "svu star mariska hargitay latest news September 2026",
+          "svu star mariska hargitay entertainment update 2026",
+          "svu star mariska hargitay news 2026-09-30",
+          "latest entertainment news about svu star mariska hargitay",
+          "svu star mariska hargitay speaks out latest update",
+          "The Hollywood Reporter svu star mariska hargitay entertainment",
+          "latest news about svu star mariska hargitay September 2026",
+          "svu star mariska hargitay entertainment news 2026-09-30",
+          "what happened with svu star mariska hargitay",
+          "svu",
+          "star",
+          "mariska",
+          "hargitay",
+          "speaks",
+          "out",
+          "cornell",
+          "rape",
+          "September 2026",
+          "2026-09-30",
+          "svu star mariska hargitay 2026",
+          "The Hollywood Reporter svu star mariska hargitay"
+        ],
+        "seo_generated_at": "2026-09-30T07:21:38.518Z"
+      }
+    },
     {
       "id": "06b97d86",
       "title": "How AI is creating a UK super-museum and revealing our planet's history",
@@ -68,71 +523,6 @@
           "BBC Science"
         ],
         "seo_generated_at": "2026-09-30T02:08:20.241Z"
-      }
-    },
-    {
-      "id": "0b10a0cc",
-      "title": "OpenAI unveils AI assistant 'dots' while safety worries delay new model",
-      "url": "https://www.bbc.co.uk/news/articles/cw7v42rp083eo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC Technology",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "published_at": "2026-09-29T23:47:10.000Z",
-      "discovered_at": "2026-09-30T00:44:22.303Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC Technology on 2026-09-29. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/181a/live/455d3af0-bc41-11f1-bc1f-3f186ca4140c.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/openai-unveils-ai-assistant-dots-while-safety-worries-delay-new-model-0b10a0/",
-      "landing_url": "https://matchapp.tv/?news=0b10a0cc#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-09-29",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "openai",
-          "unveils",
-          "assistant",
-          "dots",
-          "while",
-          "safety"
-        ],
-        "long_tail": [
-          "OpenAI unveils AI assistant 'dots' while safety worries delay new model 2026-09-29",
-          "world news September 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "openai",
-          "unveils",
-          "assistant",
-          "dots",
-          "while",
-          "safety"
-        ],
-        "freshness_keywords": [
-          "2026-09-29"
-        ],
-        "source_keywords": [
-          "BBC Technology"
-        ],
-        "meta_title": "OpenAI unveils AI assistant 'dots' while safety worries…",
-        "meta_description": "World report published by BBC Technology on 2026-09-29. Open the original report for full context.",
-        "keywords": [
-          "world news",
-          "global headlines",
-          "openai",
-          "unveils",
-          "assistant",
-          "dots",
-          "while",
-          "safety",
-          "2026-09-29",
-          "BBC Technology"
-        ],
-        "seo_generated_at": "2026-09-30T00:44:22.303Z"
       }
     },
     {
@@ -397,365 +787,6 @@
           "The Hollywood Reporter entertainment news"
         ],
         "seo_generated_at": "2026-09-29T23:09:21.449Z"
-      }
-    },
-    {
-      "id": "12e14a66",
-      "title": "Trump rules out joint US-China venture to develop AI",
-      "url": "https://www.bbc.co.uk/news/articles/cwly5lmvy38qo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "published_at": "2026-09-29T21:45:01.000Z",
-      "discovered_at": "2026-09-29T16:54:17.169Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-09-29. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/94a2/live/12c9a5e0-bc1b-11f1-b84f-b5367b64d530.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/trump-rules-out-joint-us-china-venture-to-develop-ai-12e14a/",
-      "landing_url": "https://matchapp.tv/?news=12e14a66#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-09-29",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "trump",
-          "rules",
-          "out",
-          "joint",
-          "china",
-          "venture"
-        ],
-        "long_tail": [
-          "Trump rules out joint US-China venture to develop AI 2026-09-29",
-          "world news September 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "trump",
-          "rules",
-          "out",
-          "joint",
-          "china",
-          "venture"
-        ],
-        "freshness_keywords": [
-          "2026-09-29"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Trump rules out joint US-China venture to develop AI |…",
-        "meta_description": "World report published by BBC World on 2026-09-29. Open the original report for full context.",
-        "keywords": [
-          "world news",
-          "global headlines",
-          "trump",
-          "rules",
-          "out",
-          "joint",
-          "china",
-          "venture",
-          "2026-09-29",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-09-29T16:54:17.169Z"
-      }
-    },
-    {
-      "id": "a67a5b44",
-      "title": "Jennifer Lawrence to Star in Zach Cregger’s Sci-Fi Thriller ‘The Flood’",
-      "url": "https://www.hollywoodreporter.com/movies/movie-news/jennifer-lawrence-to-star-in-zach-creggers-the-flood-1236715712/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "published_at": "2026-09-29T21:30:00.000Z",
-      "discovered_at": "2026-09-29T22:13:41.083Z",
-      "event_type": "Casting",
-      "category": "entertainment",
-      "person": "Jennifer Lawrence",
-      "description": "Jennifer Lawrence: casting headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/09/Jennifer-Lawrence-and-Zach-Cregger-Split-Getty-H-2026.jpg?w=1296&h=730&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/jennifer-lawrence-to-star-in-zach-cregger-s-sci-fi-thriller-the-flood-a67a5b/",
-      "landing_url": "https://matchapp.tv/?news=a67a5b44#latest-news",
-      "seo": {
-        "primary_keyword": "Jennifer Lawrence latest news",
-        "short_tail": [
-          "Jennifer Lawrence",
-          "Jennifer Lawrence news",
-          "casting",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "Jennifer Lawrence latest news September 2026",
-          "Jennifer Lawrence casting update 2026",
-          "Jennifer Lawrence news 2026-09-29",
-          "latest casting news about Jennifer Lawrence",
-          "jennifer lawrence jennifer lawrence star zach latest update",
-          "The Hollywood Reporter Jennifer Lawrence casting",
-          "latest news about Jennifer Lawrence September 2026",
-          "Jennifer Lawrence entertainment news 2026-09-29",
-          "what happened with Jennifer Lawrence"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Jennifer Lawrence",
-          "jennifer",
-          "lawrence",
-          "star",
-          "zach",
-          "cregger",
-          "sci"
-        ],
-        "freshness_keywords": [
-          "September 2026",
-          "2026-09-29",
-          "Jennifer Lawrence 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter Jennifer Lawrence",
-          "hollywoodreporter.com Jennifer Lawrence",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "Jennifer Lawrence to Star in Zach Cregger’s Sci-Fi…",
-        "meta_description": "Jennifer Lawrence: Casting update reported by The Hollywood Reporter on 2026-09-29. See verified context, publication time and the original source via…",
-        "keywords": [
-          "Jennifer Lawrence latest news",
-          "Jennifer Lawrence",
-          "Jennifer Lawrence news",
-          "casting",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "Jennifer Lawrence latest news September 2026",
-          "Jennifer Lawrence casting update 2026",
-          "Jennifer Lawrence news 2026-09-29",
-          "latest casting news about Jennifer Lawrence",
-          "jennifer lawrence jennifer lawrence star zach latest update",
-          "The Hollywood Reporter Jennifer Lawrence casting",
-          "latest news about Jennifer Lawrence September 2026",
-          "Jennifer Lawrence entertainment news 2026-09-29",
-          "what happened with Jennifer Lawrence",
-          "jennifer",
-          "lawrence",
-          "star",
-          "zach",
-          "cregger",
-          "sci",
-          "September 2026",
-          "2026-09-29",
-          "Jennifer Lawrence 2026",
-          "The Hollywood Reporter Jennifer Lawrence",
-          "hollywoodreporter.com Jennifer Lawrence",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-09-29T22:13:41.083Z"
-      }
-    },
-    {
-      "id": "58cd9d19",
-      "title": "David Cross, Thomas Mann, Hasan Minhaj’s Comedy ‘Lucy Schulman’ From Ellie Sachs Lands Release (Exclusive)",
-      "url": "https://www.hollywoodreporter.com/movies/movie-news/lucy-schulman-david-cross-hasan-minhaj-ellie-sachs-release-1236714751/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "published_at": "2026-09-29T20:58:43.000Z",
-      "discovered_at": "2026-09-29T21:00:31.840Z",
-      "event_type": "Release",
-      "category": "entertainment",
-      "person": "David Cross",
-      "description": "David Cross: release headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/09/LS_Still_1.jpg?w=1296&h=730&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/david-cross-thomas-mann-hasan-minhaj-s-comedy-lucy-schulman-from-ellie-sachs-lan-58cd9d/",
-      "landing_url": "https://matchapp.tv/?news=58cd9d19#latest-news",
-      "seo": {
-        "primary_keyword": "ఫహాద్ ఫాజిల్",
-        "short_tail": [
-          "David Cross",
-          "David Cross news",
-          "release",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "ఫహాద్ ఫాజిల్"
-        ],
-        "long_tail": [
-          "David Cross latest news September 2026",
-          "David Cross release update 2026",
-          "David Cross news 2026-09-29",
-          "latest release news about David Cross",
-          "david cross david cross thomas mann latest update",
-          "The Hollywood Reporter David Cross release",
-          "latest news about David Cross September 2026",
-          "David Cross entertainment news 2026-09-29",
-          "what happened with David Cross"
-        ],
-        "trend_keywords": [
-          "ఫహాద్ ఫాజిల్"
-        ],
-        "entity_keywords": [
-          "David Cross",
-          "david",
-          "cross",
-          "thomas",
-          "mann",
-          "hasan",
-          "minhaj"
-        ],
-        "freshness_keywords": [
-          "September 2026",
-          "2026-09-29",
-          "David Cross 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter David Cross",
-          "hollywoodreporter.com David Cross",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "David Cross, Thomas Mann, Hasan Minhaj’s Comedy ‘Lucy…",
-        "meta_description": "David Cross: Release update reported by The Hollywood Reporter on 2026-09-29. See verified context, publication time and the original source via MatchApp TV.",
-        "keywords": [
-          "ఫహాద్ ఫాజిల్",
-          "David Cross",
-          "David Cross news",
-          "release",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "David Cross latest news September 2026",
-          "David Cross release update 2026",
-          "David Cross news 2026-09-29",
-          "latest release news about David Cross",
-          "david cross david cross thomas mann latest update",
-          "The Hollywood Reporter David Cross release",
-          "latest news about David Cross September 2026",
-          "David Cross entertainment news 2026-09-29",
-          "what happened with David Cross",
-          "david",
-          "cross",
-          "thomas",
-          "mann",
-          "hasan",
-          "minhaj",
-          "September 2026",
-          "2026-09-29",
-          "David Cross 2026",
-          "The Hollywood Reporter David Cross",
-          "hollywoodreporter.com David Cross",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-09-29T21:00:31.840Z"
-      }
-    },
-    {
-      "id": "a0189ae6",
-      "title": "‘South Park’ and Butters Take on AI Data Centers in Latest Episode",
-      "url": "https://www.hollywoodreporter.com/tv/tv-news/south-park-ai-data-centers-logline-1236714680/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "published_at": "2026-09-29T20:25:32.000Z",
-      "discovered_at": "2026-09-29T21:00:31.840Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "",
-      "description": "entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/09/Screenshot-2026-09-29-at-3.43.52-PM.png?w=1440&h=810&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/south-park-and-butters-take-on-ai-data-centers-in-latest-episode-a0189a/",
-      "landing_url": "https://matchapp.tv/?news=a0189ae6#latest-news",
-      "seo": {
-        "primary_keyword": "ఫహాద్ ఫాజిల్",
-        "short_tail": [
-          "south park butters take",
-          "south park butters take news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "ఫహాద్ ఫాజిల్"
-        ],
-        "long_tail": [
-          "south park butters take latest news September 2026",
-          "south park butters take entertainment update 2026",
-          "south park butters take news 2026-09-29",
-          "latest entertainment news about south park butters take",
-          "south park butters take data centers latest update",
-          "The Hollywood Reporter south park butters take entertainment",
-          "latest news about south park butters take September 2026",
-          "south park butters take entertainment news 2026-09-29",
-          "what happened with south park butters take"
-        ],
-        "trend_keywords": [
-          "ఫహాద్ ఫాజిల్"
-        ],
-        "entity_keywords": [
-          "south",
-          "park",
-          "butters",
-          "take",
-          "data",
-          "centers",
-          "latest",
-          "episode"
-        ],
-        "freshness_keywords": [
-          "September 2026",
-          "2026-09-29",
-          "south park butters take 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter south park butters take",
-          "hollywoodreporter.com south park butters take",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "‘South Park’ and Butters Take on AI Data Centers in Latest…",
-        "meta_description": "Entertainment update reported by The Hollywood Reporter on 2026-09-29. See verified context, publication time and the original source via MatchApp TV.",
-        "keywords": [
-          "ఫహాద్ ఫాజిల్",
-          "south park butters take",
-          "south park butters take news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "south park butters take latest news September 2026",
-          "south park butters take entertainment update 2026",
-          "south park butters take news 2026-09-29",
-          "latest entertainment news about south park butters take",
-          "south park butters take data centers latest update",
-          "The Hollywood Reporter south park butters take entertainment",
-          "latest news about south park butters take September 2026",
-          "south park butters take entertainment news 2026-09-29",
-          "what happened with south park butters take",
-          "south",
-          "park",
-          "butters",
-          "take",
-          "data",
-          "centers",
-          "latest",
-          "episode",
-          "September 2026",
-          "2026-09-29",
-          "south park butters take 2026",
-          "The Hollywood Reporter south park butters take",
-          "hollywoodreporter.com south park butters take",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-09-29T21:00:31.840Z"
       }
     },
     {
@@ -1821,7 +1852,7 @@
       "id": "2154fd5e",
       "title": "Hurricane Polo makes landfall on Mexico's Pacific coast",
       "url": "https://www.bbc.co.uk/news/articles/cw8d3z5y7958o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
+      "source": "BBC Science",
       "source_domain": "bbc.co.uk",
       "source_home": "https://www.bbc.co.uk",
       "country": "GLOBAL",
@@ -1830,7 +1861,7 @@
       "event_type": "Entertainment",
       "category": "world",
       "person": "Hurricane Polo",
-      "description": "World news reported by BBC World on 2026-09-29. MatchApp links to the original report for its complete context and ongoing updates.",
+      "description": "World news reported by BBC Science on 2026-09-29. MatchApp links to the original report for its complete context and ongoing updates.",
       "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/af68/live/c9d59b40-bbda-11f1-bfea-9d5bb7e7d40b.jpg",
       "matchapp_url": "https://matchapp.tv/news/articles/hurricane-polo-makes-landfall-on-mexico-s-pacific-coast-2154fd/",
       "landing_url": "https://matchapp.tv/?news=2154fd5e#latest-news",
@@ -2856,71 +2887,6 @@
       }
     },
     {
-      "id": "bf932302",
-      "title": "Argentina threatens legal action against UK over Falkland Islands oil exploration",
-      "url": "https://www.bbc.co.uk/news/articles/cq5yj1835y1wo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "published_at": "2026-09-29T03:50:40.000Z",
-      "discovered_at": "2026-09-29T08:59:16.468Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-09-29. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/0d54/live/ced3b090-bb9f-11f1-a430-4d16ee157c41.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/argentina-threatens-legal-action-against-uk-over-falkland-islands-oil-exploratio-bf9323/",
-      "landing_url": "https://matchapp.tv/?news=bf932302#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-09-29",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "argentina",
-          "threatens",
-          "legal",
-          "action",
-          "against",
-          "over"
-        ],
-        "long_tail": [
-          "Argentina threatens legal action against UK over Falkland Islands oil exploration 2026-09-29",
-          "world news September 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "argentina",
-          "threatens",
-          "legal",
-          "action",
-          "against",
-          "over"
-        ],
-        "freshness_keywords": [
-          "2026-09-29"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Argentina threatens legal action against UK over Falkland…",
-        "meta_description": "World report published by BBC World on 2026-09-29. Open the original report for full context.",
-        "keywords": [
-          "world news",
-          "global headlines",
-          "argentina",
-          "threatens",
-          "legal",
-          "action",
-          "against",
-          "over",
-          "2026-09-29",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-09-29T08:59:16.468Z"
-      }
-    },
-    {
       "id": "18861d1f",
       "title": "Blue Lights: The police drama hitting home in Northern Ireland",
       "url": "https://www.bbc.co.uk/news/articles/c6grvpppvw5eo?at_medium=RSS&at_campaign=rss",
@@ -3133,6 +3099,71 @@
           "g1.globo.com Luana Tavares"
         ],
         "seo_generated_at": "2026-09-29T08:59:16.468Z"
+      }
+    },
+    {
+      "id": "af5b32a2",
+      "title": "Apple ordered to pay $5.7bn after losing vibration tech patent suit",
+      "url": "https://www.bbc.co.uk/news/articles/c6je85n2vyleo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC Technology",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "published_at": "2026-09-28T11:16:08.000Z",
+      "discovered_at": "2026-09-28T15:54:04.007Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC Technology on 2026-09-28. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/b94e/live/b987eeb0-bb2a-11f1-971b-5fdf53b135ba.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/apple-ordered-to-pay-5-7bn-after-losing-vibration-tech-patent-suit-af5b32/",
+      "landing_url": "https://matchapp.tv/?news=af5b32a2#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-09-28",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "apple",
+          "ordered",
+          "pay",
+          "7bn",
+          "after",
+          "losing"
+        ],
+        "long_tail": [
+          "Apple ordered to pay $5.7bn after losing vibration tech patent suit 2026-09-28",
+          "world news September 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "apple",
+          "ordered",
+          "pay",
+          "7bn",
+          "after",
+          "losing"
+        ],
+        "freshness_keywords": [
+          "2026-09-28"
+        ],
+        "source_keywords": [
+          "BBC Technology"
+        ],
+        "meta_title": "Apple ordered to pay $5.7bn after losing vibration tech…",
+        "meta_description": "World report published by BBC Technology on 2026-09-28. Open the original report for full context.",
+        "keywords": [
+          "world news",
+          "global headlines",
+          "apple",
+          "ordered",
+          "pay",
+          "7bn",
+          "after",
+          "losing",
+          "2026-09-28",
+          "BBC Technology"
+        ],
+        "seo_generated_at": "2026-09-28T15:54:04.007Z"
       }
     }
   ]
