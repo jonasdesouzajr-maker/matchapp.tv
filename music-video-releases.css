@@ -1,10 +1,40 @@
 /* Only the new release cards; the existing rail box and dimensions are reused. */
-.marquee-item[data-music-video] img { width:100%; height:100%; object-fit:contain; }
-.marquee-item[data-music-video] .music-video-caption { box-sizing:border-box; overflow-wrap:anywhere; }
+.marquee-item[data-music-video] .music-video-cover {
+    --music-cover-rgb:112,70,155;
+    position:absolute;inset:0;display:grid;grid-template-rows:minmax(0,1fr) auto minmax(0,1fr);
+    container-type:inline-size;isolation:isolate;
+    background:radial-gradient(ellipse at 15% 0%,rgba(var(--music-cover-rgb),.9),transparent 74%),
+        radial-gradient(ellipse at 100% 100%,rgba(var(--music-cover-rgb),.7),transparent 75%),
+        linear-gradient(155deg,#24162e,#100f19 52%,#251a2c);
+}
+.marquee-item[data-music-video] .music-cover-header,
+.marquee-item[data-music-video] .music-video-caption {
+    box-sizing:border-box;min-height:0;display:flex;flex-direction:column;justify-content:center;align-items:center;
+    gap:5px;padding:8px 10px;text-align:center;color:#fff;overflow-wrap:anywhere;
+}
+.marquee-item[data-music-video] .music-cover-header { background:linear-gradient(rgba(10,6,17,.15),transparent); }
+.marquee-item[data-music-video] .music-cover-platform {
+    font-size:clamp(8px,5cqw,11px);font-weight:750;letter-spacing:.09em;color:#f5dfa0;
+}
+.marquee-item[data-music-video] .music-cover-artist {
+    font-size:clamp(11px,7cqw,16px);font-weight:800;line-height:1.12;text-shadow:0 1px 4px #0008;
+}
+.marquee-item[data-music-video] .music-cover-frame {
+    min-width:0;aspect-ratio:4/3;position:relative;border-block:1px solid #efcf8560;
+    box-sizing:border-box;box-shadow:0 5px 16px #0004;
+}
+html body.page-home #trending-rail .marquee-item[data-music-video] .music-cover-frame img {
+    display:block;width:100%!important;height:100%!important;object-fit:contain!important;
+    object-position:center!important;background:transparent!important;
+}
+.marquee-item[data-music-video] .music-video-caption { background:linear-gradient(transparent,#08071166); }
+.marquee-item[data-music-video] .music-cover-title {
+    font-size:clamp(13px,8.5cqw,22px);font-weight:850;line-height:1.12;text-wrap:balance;text-shadow:0 1px 4px #0008;
+}
+.marquee-item[data-music-video] .music-cover-year { color:#f5dfa0;font-size:clamp(8px,4.5cqw,10px);letter-spacing:.12em; }
 .discover-music-card .discover-poster img { object-fit:contain; }
 .discover-music-card .discover-actions { flex-wrap:wrap; }
 .discover-music-card .discover-actions a { white-space:normal; overflow-wrap:anywhere; text-align:center; }
 .discover-music-card .discover-body { min-width:0; overflow-wrap:anywhere; }
 
-.marquee-item[data-music-video] .music-video-caption { position:absolute; bottom:0; width:100%; background:linear-gradient(transparent,rgba(0,0,0,.95)); color:#fff; font-size:10px; padding:10px 3px 4px; text-align:center; font-weight:bold; z-index:3; }
 .discover-music-card h2 { font-size:18px; color:var(--gold-glow); margin:0 0 8px; line-height:1.3; }

@@ -53,8 +53,29 @@
         if(duplicate)card.setAttribute('aria-hidden','true');
         card.setAttribute('aria-label',intro(r));
         const img=document.createElement('img');img.dataset.maMedia='1';img.src=r.poster;img.alt=r.artist+' — '+r.title;img.width=480;img.height=360;img.loading='lazy';img.decoding='async';
-        const caption=document.createElement('span');caption.className='music-video-caption';caption.textContent=img.alt;
-        card.append(img,caption);
+        const cover=document.createElement('div');cover.className='music-video-cover';
+        const header=document.createElement('div');header.className='music-cover-header';
+        const platform=document.createElement('span');platform.className='music-cover-platform';platform.textContent='YouTube';platform.setAttribute('aria-hidden','true');
+        const artist=document.createElement('span');artist.className='music-cover-artist';artist.textContent=r.artist;
+        header.append(platform,artist);
+        const frame=document.createElement('div');frame.className='music-cover-frame';frame.append(img);
+        const caption=document.createElement('div');caption.className='music-video-caption';
+        const title=document.createElement('span');title.className='music-cover-title';title.textContent=r.title;
+        const year=document.createElement('span');year.className='music-cover-year';year.textContent=String(new Date(r.publishedAt).getUTCFullYear());
+        caption.append(title,year);cover.append(header,frame,caption);card.append(cover);
+        // Sample only a tiny, same-origin copy for the surrounding UI palette.
+        // The displayed original image is never edited, stretched or cropped.
+        const tint=()=>{
+            try{
+                const canvas=document.createElement('canvas');canvas.width=canvas.height=8;
+                const ctx=canvas.getContext('2d',{willReadFrequently:true});if(!ctx)return;
+                ctx.drawImage(img,0,0,8,8);const pixels=ctx.getImageData(0,0,8,8).data;
+                let red=0,green=0,blue=0,count=0;
+                for(let i=0;i<pixels.length;i+=4){const brightness=(pixels[i]+pixels[i+1]+pixels[i+2])/3;if(brightness<30||brightness>225)continue;red+=pixels[i];green+=pixels[i+1];blue+=pixels[i+2];count++;}
+                if(count)cover.style.setProperty('--music-cover-rgb',[red,green,blue].map(n=>Math.round(n/count)).join(','));
+            }catch(_){/* The filled brand palette remains available if sampling fails. */}
+        };
+        img.addEventListener('load',tint,{once:true});if(img.complete&&img.naturalWidth)tint();
         card.addEventListener('click',()=>{window.track?.('music_video_click',{title:img.alt,videoId:r.id});window.location.href='/discover.html?video='+encodeURIComponent(r.id)+'&focus=start';});
         card.addEventListener('keydown',event=>{
             if(event.key!=='Enter'&&event.key!==' ')return;
@@ -65,10 +86,14 @@
     async function mount() {
         const track=document.getElementById('marquee-track');if(!track || track.querySelector('[data-music-video]'))return;
         const records=await all(), rows=Array.isArray(featuredIds)?records.filter(r=>featuredIds.includes(r.id)):records;if(!rows.length)return;
-        // Keep all ten original film/TV identities, plus their original loop.
-        const first=track.children[1],second=track.children[11];
-        rows.forEach(r=>track.insertBefore(tile(r,false),first||null));
-        if(second)rows.forEach(r=>track.insertBefore(tile(r,true),second));
+        // Spread releases among the ten original film/TV cards. Move no
+        // original nodes, and mirror the same order in the seamless loop.
+        const originals=Array.from(track.children);
+        rows.forEach((r,index)=>{
+            const after=Math.floor(index*10/rows.length);
+            track.insertBefore(tile(r,false),originals[after+1]||null);
+            if(originals[10])track.insertBefore(tile(r,true),originals[11+after]||null);
+        });
         const viewport=track.closest('.marquee-viewport');if(viewport)viewport.scrollLeft=0;
         window.dispatchEvent(new Event('resize'));
     }
