@@ -107,12 +107,12 @@ html body.page-home main.page-wrapper>.main-layout>.container{margin-top:0!impor
 html body.page-home main.page-wrapper>.main-layout>.container #trending-rail{margin-top:14px!important;}
 /* The crest's star sits outside its gold circle: keep its square SVG viewport. */
 html body.page-home main.page-wrapper .main-layout>.container .lazy-head[data-fold-key="concierge"]:has(+ #ma-concierge)::before{border-radius:0!important;overflow:visible!important;background-size:contain!important;}
-/* A quiet violet/champagne sweep behind the Ask AI introduction. */
+/* A visible, balanced violet/champagne sweep behind the Ask AI introduction. */
 html body.page-home #ma-ai-entry #search-box :is(h2,[data-i18n="search.hint"]){position:relative!important;isolation:isolate;overflow:hidden;border-radius:8px;}
 html body.page-home #ma-ai-entry #search-box :is(h2,[data-i18n="search.hint"])::before{
  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
- background:linear-gradient(90deg,#39264b18,#70518d26 24%,#c5a56524 50%,#70518d26 76%,#39264b18);
- background-size:200% 100%;animation:maAskIntroSweep 14s linear infinite;
+ background:linear-gradient(90deg,#54337445,#9670bc66 24%,#d7b87966 50%,#9670bc66 76%,#54337445);
+ background-size:200% 100%;animation:maAskIntroSweep 10s linear infinite;
 }
 @keyframes maAskIntroSweep{from{background-position:0% 50%}to{background-position:200% 50%}}
 /* Paint over the header fill and under its content without clipping menus. */
