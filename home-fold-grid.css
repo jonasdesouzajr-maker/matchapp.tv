@@ -123,3 +123,59 @@ html body.page-home .ma-final-legal{display:flex;flex-wrap:wrap;justify-content:
 html body.page-home .ma-final-legal nav{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;}
 html body.page-home .ma-final-legal a{color:#f4d58e;text-decoration:underline;text-underline-offset:3px;}
 html body.page-home .ma-footer-protection{display:inline-flex;align-items:center;gap:6px;padding:7px 12px;border:1px solid #c8e8c97a;border-radius:999px;background:linear-gradient(120deg,#173525,#25203e);color:#dcf2dd;font-size:12px;font-weight:700;}
+/* Final adult Home design touches: retain existing controls and handlers. */
+html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container #ebook-matcher-root .ebook-fold>summary :is(.ebook-summary-icon,.ebook-brand-crest){
+ border-radius:0!important;overflow:visible!important;clip-path:none!important;
+}
+html body.page-home:not(.tv-mode) #ma-ai-entry #search-box .search-examples{
+ display:flex!important;flex-wrap:wrap!important;align-items:center!important;
+ gap:5px!important;margin-top:8px!important;
+}
+html body.page-home:not(.tv-mode) #ma-ai-entry #search-box .search-examples>span{
+ flex:0 0 100%!important;font-size:10px!important;line-height:1.2!important;
+}
+html body.page-home:not(.tv-mode) #ma-ai-entry #search-box .search-examples>button{
+ flex:0 1 auto!important;width:auto!important;max-width:100%!important;min-width:0!important;
+ min-height:32px!important;height:auto!important;padding:4px 8px!important;margin:0!important;
+ font-size:11px!important;line-height:1.25!important;border-radius:999px!important;
+ white-space:normal!important;overflow-wrap:anywhere!important;
+}
+html body.page-home:not(.tv-mode) #mh-topbox.app-header.ma-home-header .ma-brand-home-link{
+ gap:8px!important;
+}
+html body.page-home:not(.tv-mode) #mh-topbox.app-header.ma-home-header>nav.mh-deck.ma-header-actions{
+ gap:4px!important;align-items:center!important;min-height:0!important;
+}
+@media(max-width:600px){
+ html body.page-home:not(.tv-mode) #mh-topbox.app-header.ma-home-header>nav.mh-deck.ma-header-actions{
+  justify-items:stretch!important;
+ }
+ html body.page-home:not(.tv-mode) #mh-topbox.app-header.ma-home-header>nav.mh-deck.ma-header-actions>:is(.sound-toggle-btn,.matchapp-notification-button,#nav-logout-btn){
+  width:100%!important;min-width:0!important;max-width:100%!important;justify-self:stretch!important;
+ }
+}
+@media(min-width:601px) and (max-width:1024px){
+ html body.page-home:not(.tv-mode) #mh-topbox.app-header.ma-home-header>nav.mh-deck.ma-header-actions{
+  display:grid!important;grid-template-columns:repeat(12,minmax(0,1fr))!important;
+  grid-auto-rows:minmax(44px,auto)!important;justify-items:stretch!important;
+ }
+ html body.page-home:not(.tv-mode) #mh-topbox.app-header.ma-home-header>nav.mh-deck.ma-header-actions>:is(#lang-switcher-host,.sound-toggle-btn,.matchapp-notification-button,#profile-link-tab,#nav-reg-btn,#nav-logout-btn,.ma-kids-mode-entry,.ma-how-button,.ma-menu-wrap){
+  width:100%!important;min-width:0!important;max-width:100%!important;margin:0!important;
+ }
+ html body.page-home:not(.tv-mode) #mh-topbox.app-header.ma-home-header>nav.mh-deck.ma-header-actions>#lang-switcher-host{grid-column:1/5!important;grid-row:1!important;}
+ html body.page-home:not(.tv-mode) #mh-topbox.app-header.ma-home-header>nav.mh-deck.ma-header-actions>.sound-toggle-btn{grid-column:5/7!important;grid-row:1!important;}
+ html body.page-home:not(.tv-mode) #mh-topbox.app-header.ma-home-header>nav.mh-deck.ma-header-actions>.matchapp-notification-button{grid-column:7/9!important;grid-row:1!important;}
+ html body.page-home:not(.tv-mode) #mh-topbox.app-header.ma-home-header>nav.mh-deck.ma-header-actions>#profile-link-tab{grid-column:9/11!important;grid-row:1!important;justify-content:center!important;}
+ html body.page-home:not(.tv-mode) #mh-topbox.app-header.ma-home-header>nav.mh-deck.ma-header-actions>#nav-reg-btn{grid-column:9/13!important;grid-row:1!important;}
+ html body.page-home:not(.tv-mode) #mh-topbox.app-header.ma-home-header>nav.mh-deck.ma-header-actions>#nav-logout-btn{grid-column:11/13!important;grid-row:1!important;}
+ html body.page-home:not(.tv-mode) #mh-topbox.app-header.ma-home-header>nav.mh-deck.ma-header-actions>.ma-kids-mode-entry{grid-column:1/6!important;grid-row:2!important;}
+ html body.page-home:not(.tv-mode) #mh-topbox.app-header.ma-home-header>nav.mh-deck.ma-header-actions>.ma-how-button{grid-column:6/11!important;grid-row:2!important;}
+ html body.page-home:not(.tv-mode) #mh-topbox.app-header.ma-home-header>nav.mh-deck.ma-header-actions>.ma-menu-wrap{grid-column:11/13!important;grid-row:2!important;}
+ html body.page-home:not(.tv-mode) #mh-topbox.app-header.ma-home-header>nav.mh-deck.ma-header-actions>.ma-menu-wrap>.ma-menu-button{width:100%!important;justify-content:center!important;}
+ html body.page-home:not(.tv-mode) #mh-topbox.app-header.ma-home-header>nav.mh-deck.ma-header-actions :is(button,select,.ma-kids-mode-entry,#lang-switcher-host,.ma-menu-wrap){
+  box-sizing:border-box!important;height:44px!important;min-height:44px!important;
+ }
+ html body.page-home:not(.tv-mode) #mh-topbox.app-header.ma-home-header>nav.mh-deck.ma-header-actions>#lang-switcher-host>select{
+  width:100%!important;min-width:0!important;max-width:100%!important;
+ }
+}
