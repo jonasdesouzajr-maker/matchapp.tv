@@ -32,6 +32,30 @@
       "poster": "/assets/music-videos/mw3kSNIxjqo.jpg"
     },
     {
+      "id": "XwCWKSO0F8s",
+      "artist": "Taylor Swift",
+      "title": "I Knew It, I Knew You (Piano Version)",
+      "album": "",
+      "publishedAt": "2026-08-29T13:00:33+00:00",
+      "director": "",
+      "cast": [],
+      "channel": "Taylor Swift",
+      "channelUrl": "https://www.youtube.com/@TaylorSwift",
+      "source": "https://www.youtube.com/watch?v=XwCWKSO0F8s",
+      "creditsSource": "https://www.youtube.com/watch?v=XwCWKSO0F8s",
+      "url": "https://www.youtube.com/watch?v=XwCWKSO0F8s",
+      "thumbnail": "https://i.ytimg.com/vi/XwCWKSO0F8s/hqdefault.jpg",
+      "poster": "/assets/music-videos/XwCWKSO0F8s.jpg",
+      "verifiedAt": "2026-09-30",
+      "keywords": [
+        "Taylor Swift",
+        "I Knew It, I Knew You (Piano Version)",
+        "official music video",
+        "YouTube music video",
+        "2026 music releases"
+      ]
+    },
+    {
       "id": "afSgBNwmZrQ",
       "artist": "Ariana Grande",
       "title": "petal",
@@ -165,6 +189,30 @@
         "The Romantic"
       ],
       "poster": "/assets/music-videos/lY5V4hSLWY8.jpg"
+    },
+    {
+      "id": "xGaZBfJOyAc",
+      "artist": "Lady Gaga",
+      "title": "The Dead Dance",
+      "album": "",
+      "publishedAt": "2025-09-03T16:00:07+00:00",
+      "director": "",
+      "cast": [],
+      "channel": "LadyGagaVEVO",
+      "channelUrl": "https://www.youtube.com/@LadyGagaVEVO",
+      "source": "https://www.youtube.com/watch?v=xGaZBfJOyAc",
+      "creditsSource": "https://www.youtube.com/watch?v=xGaZBfJOyAc",
+      "url": "https://www.youtube.com/watch?v=xGaZBfJOyAc",
+      "thumbnail": "https://i.ytimg.com/vi/xGaZBfJOyAc/hqdefault.jpg",
+      "poster": "/assets/music-videos/xGaZBfJOyAc.jpg",
+      "verifiedAt": "2026-09-30",
+      "keywords": [
+        "Lady Gaga",
+        "The Dead Dance",
+        "official music video",
+        "YouTube music video",
+        "2025 music releases"
+      ]
     }
   ],
   "featuredIds": [
