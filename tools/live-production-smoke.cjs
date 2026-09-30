@@ -5,6 +5,7 @@
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
 const {chromium}=require('playwright');
 const {fetchDeploymentMarker}=require('./deployment-marker.cjs');
+const {auditLiveSearch}=require('./live-search-readiness.cjs');
 const base=process.env.MATCHAPP_TEST_BASE||'https://matchapp.tv';
 const dir=path.resolve('artifacts/live-smoke');fs.mkdirSync(dir,{recursive:true});
 const report={base,started:new Date().toISOString(),screens:[],checks:[],errors:[],warnings:[],liveAnswers:[]};
@@ -26,12 +27,26 @@ function isSpotifyIframeTransportDisconnect(error){
    /https:\/\/embed-cdn\.spotifycdn\.com\//.test(stack) &&
    /at (?:_authenticate|authenticate) \(https:\/\/embed-cdn\.spotifycdn\.com\//.test(stack);
 }
+function isGoogleAdTelemetryInt64(error){
+ const stack=String(error?.stack||'');
+ // Exact observed telemetry failure, with every stack frame proven external.
+ // Missing provenance, another Google error, or any app frame remains fatal.
+ const frames=stack.split('\n').slice(1).filter(line=>line.trim());
+ return /^(?:Uncaught Error|Error): int64\s*$/.test(stack.split('\n')[0]) &&
+   frames.length>=2 && frames.every(line=>/^\s*at .*https:\/\/pagead2\.googlesyndication\.com\/pagead\/js\/[^\s)]+\/rum\.js:\d+:\d+\)?\s*$/.test(line));
+}
 function capturePageError(device,error){
  const stack=String(error?.stack||error?.message||'');
  if(isSpotifyIframeTransportDisconnect(error)){
    const warning={check:'Spotify external iframe disconnected',device,issue:'Cross-origin Spotify player transport failed; host-page JavaScript unaffected. Verify the embedded player separately.'};
    report.warnings.push(warning);
    console.warn('EXTERNAL PLAYER WARNING '+device+': '+warning.issue);
+  return;
+ }
+ if(isGoogleAdTelemetryInt64(error)){
+   const warning={check:'Google external ad telemetry exception',device,issue:'Google rum.js threw int64; ad telemetry remains unverified. No first-party stack frames were present.',stack};
+   report.warnings.push(warning);
+   console.warn('EXTERNAL AD WARNING '+device+': '+warning.issue);
    return;
  }
  errors.push({device,page:'home',error:stack.slice(0,500)});
@@ -85,6 +100,10 @@ async function aiQuestion(page,question,expected,label){
  try{
   const deployed=await fetchDeploymentMarker(base);
   record('production deployment marker',/^[0-9a-f]{40}\s*$/i.test(deployed),deployed.trim().slice(0,12));
+  try{
+   const search=await auditLiveSearch(base);
+   record('LIVE crawler policy, sitemap HTTP status and page indexability',search.checkedUrls>0&&!search.issues.length,JSON.stringify(search));
+  }catch(error){record('LIVE crawler policy, sitemap HTTP status and page indexability',false,String(error.message));}
   browser=await chromium.launch({headless:true,args:['--no-sandbox']});
   for(const device of cases){
    const context=await browser.newContext({viewport:{width:device.width,height:device.height},

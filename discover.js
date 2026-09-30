@@ -1756,9 +1756,9 @@ async function runAskAndRender(question) {
 
     const bookIntent = detectBookIntent(question);
     const cookingIntent = !!window.MatchCooking?.isCooking(question);
-    let payload, source = 'ai';
-    const musicPayload = await window.MatchAppMusicReleases?.query(question, history);
+    let payload, musicPayload, source = 'ai';
     try {
+        musicPayload = await window.MatchAppMusicReleases?.query(question, history);
         if (musicPayload) payload = musicPayload;
         else payload = await askAIConversational(question, history);
     }

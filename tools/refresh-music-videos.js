@@ -22,6 +22,15 @@ function parseFeed(xml,channelId,now=Date.now()){
   return [{id,rawTitle:title,publishedAt,channel:e.querySelector('author name')?.textContent||''}];
  });}finally{dom.window.close();}
 }
+function confirmExistingRelease(prior,row,artist,channelId,info,checkedAt){
+ const author=String(info.author_url||'').replace(/\/$/,'').toLowerCase();
+ if(![artist.channelUrl.toLowerCase(),'https://www.youtube.com/channel/'+channelId.toLowerCase()].includes(author)||info.title!==row.rawTitle)throw Error('Video author/title identity mismatch');
+ if(!prior)return null;
+ const names=String(prior.artist||'').split(/\s+(?:&|feat\.?|ft\.?)\s+/i);
+ const sameDate=Date.parse(prior.publishedAt)===Date.parse(row.publishedAt)||(/^\d{4}-\d{2}-\d{2}$/.test(prior.publishedAt)&&new Date(row.publishedAt).toISOString().slice(0,10)===prior.publishedAt);
+ if(prior.id!==row.id||!names.includes(artist.artist)||prior.channelUrl.toLowerCase()!==artist.channelUrl.toLowerCase()||!sameDate)throw Error('Existing release identity mismatch');
+ return {...prior,publishedAt:row.publishedAt,verifiedAt:checkedAt};
+}
 function schema(items){return {'@context':'https://schema.org','@type':'ItemList',name:'Official music video releases on YouTube',numberOfItems:items.length,itemListElement:items.map((r,i)=>({'@type':'ListItem',position:i+1,item:{'@type':'VideoObject',name:r.artist+' — '+r.title,description:`${r.artist} official music video for ${r.title}. Released on YouTube ${r.publishedAt.slice(0,10)}.`,thumbnailUrl:['https://matchapp.tv'+r.poster],uploadDate:r.publishedAt,url:r.url,embedUrl:'https://www.youtube.com/embed/'+r.id,creator:{'@type':'MusicGroup',name:r.artist,url:r.channelUrl},keywords:r.keywords.join(', '),isAccessibleForFree:true,...(r.durationSeconds?{duration:'PT'+r.durationSeconds+'S'}:{})}}))};}
 async function refresh(){
  const file=path.join(ROOT,'data/music-video-releases.json'),old=JSON.parse(fs.readFileSync(file,'utf8'));
@@ -37,11 +46,11 @@ async function refresh(){
    const feedUrl='https://www.youtube.com/feeds/videos.xml?channel_id='+channelId;
    const rows=parseFeed(await request(feedUrl),channelId);successes++;
    for(const row of rows.slice(0,2)){
-    if(byId.has(row.id))continue;
     const url='https://www.youtube.com/watch?v='+row.id;
     const info=JSON.parse(await request('https://www.youtube.com/oembed?url='+encodeURIComponent(url)+'&format=json'));
-    const author=String(info.author_url||'').replace(/\/$/,'').toLowerCase();
-    if(![artist.channelUrl.toLowerCase(),'https://www.youtube.com/channel/'+channelId.toLowerCase()].includes(author)||info.title!==row.rawTitle)throw Error('Video author/title identity mismatch');
+    const checkedAt=new Date().toISOString().slice(0,10);
+    const existing=confirmExistingRelease(byId.get(row.id),row,artist,channelId,info,checkedAt);
+    if(existing){byId.set(row.id,existing);continue;}
     const thumbnail='https://i.ytimg.com/vi/'+row.id+'/hqdefault.jpg';let image;
     // YouTube's alternate image hosts serve the same exact video artwork.
     for(const host of ['i.ytimg.com','i9.ytimg.com']){
@@ -70,5 +79,5 @@ async function refresh(){
  fs.writeFileSync(file,JSON.stringify(updated,null,2)+'\n');
  console.log(`${successes}/${channels.length} official feeds checked; ${featured.length} featured videos; ${sorted.length} verified records.`);
 }
-module.exports={parseFeed,schema};
+module.exports={parseFeed,schema,confirmExistingRelease};
 if(require.main===module)refresh().catch(e=>{console.error(e.message);process.exitCode=1;});

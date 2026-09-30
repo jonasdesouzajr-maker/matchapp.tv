@@ -18,3 +18,15 @@ test('cross-origin iframe warning is reported, while the browser error audit rem
  assert.match(smoke,/page\.on\('pageerror',error=>capturePageError\(device\.name,error\)\)/);
  assert.match(smoke,/record\('browser fatal JS exceptions',!errors\.length/);
 });
+test('Google telemetry warning requires exact int64 error and exclusively proven rum.js stack frames',()=>{
+ const start=smoke.indexOf('function isGoogleAdTelemetryInt64(error){');
+ const end=smoke.indexOf('\nfunction capturePageError(',start);
+ const fn=vm.runInNewContext(smoke.slice(start,end)+'; isGoogleAdTelemetryInt64',{});
+ const external='Error: int64\n    at sb (https://pagead2.googlesyndication.com/pagead/js/r20260929/r20190131/rum.js:35:440)\n    at zc (https://pagead2.googlesyndication.com/pagead/js/r20260929/r20190131/rum.js:40:62)';
+ assert.equal(fn({stack:external}),true);
+ assert.equal(fn({stack:external+'\n    at app (https://matchapp.tv/app.js:1:1)'}),false);
+ assert.equal(fn({stack:external.replace('Error: int64','Error: ads failed')}),false);
+ assert.equal(fn({stack:external.replace(/rum\.js/g,'adsbygoogle.js')}),false);
+ assert.equal(fn({stack:external.replace(/pagead2\.googlesyndication\.com/g,'pagead2.googlesyndication.com.evil.example')}),false);
+ assert.equal(fn({message:'Error: int64'}),false);
+});

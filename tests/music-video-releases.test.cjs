@@ -5,6 +5,8 @@ const featuredCount=data.featuredIds?.length||data.items.length;
 const script=fs.readFileSync('music-video-releases.js','utf8');
 function fixture(){
  const d=new JSDOM('<html lang="en"><div id="marquee-track">'+Array.from({length:20},(_,i)=>'<div class="marquee-item"><img data-title="Film '+i%10+'"></div>').join('')+'</div><div id="grid"></div></html>',{url:'https://matchapp.tv/',runScripts:'outside-only'});
+ // Test a fresh snapshot at its check date rather than expiring with wall time.
+ d.window.Date.now=()=>Math.max(...data.items.map(r=>Date.parse(r.verifiedAt+'T12:00:00Z')),...data.items.map(r=>Date.parse(r.publishedAt)));
  d.window.fetch=async()=>({ok:true,json:async()=>data});d.window.eval(script);return d;
 }
 const settle=()=>new Promise(r=>setTimeout(r,20));
@@ -34,9 +36,27 @@ test('latest artist videos use dated exact official identities, descending dates
  assert.ok((await api.query('latest videos of her',[{text:'Taylor Swift'}])).results.length);
  assert.equal(await api.query('latest movies'),null);
  assert.equal((await api.query('latest music videos of Unknown Artist')).results.length,0);
+ for(const artist of ['Lady Gaga','Shakira']){
+  const p=await api.query('latest videos of '+artist);assert.ok(p.results.length,artist);
+  const expected=data.items.filter(r=>r.artist.split(/\s+&\s+/).includes(artist)).sort((a,b)=>Date.parse(b.publishedAt)-Date.parse(a.publishedAt));
+  assert.equal(p.results[0]._musicVideoId,expected[0].id);
+ }
+ assert.ok((await api.query('latest music videos of Lady Gaga & Doechii')).results.length);
+ assert.ok((await api.query('latest videos of them',[{text:'Lady Gaga & Doechii'}])).results.length);
  d.window.document.dispatchEvent(new d.window.Event('matchapp:langchange'));await settle();assert.ok(d.window.document.querySelectorAll('.discover-music-card').length>1);
  }finally{d.window.close();}
 });
 test('stale artist inventory cannot be passed off as current',async()=>{
  const d=new JSDOM('<html lang="en"></html>',{url:'https://matchapp.tv/',runScripts:'outside-only'});try{d.window.fetch=async()=>({ok:true,json:async()=>({...data,items:data.items.map(r=>({...r,verifiedAt:'2020-01-01'}))})});d.window.eval(script);const p=await d.window.MatchAppMusicReleases.query('latest videos of Taylor Swift');assert.equal(p.results.length,0);assert.match(p.answer,/could not confirm/);}finally{d.window.close();}
+});
+test('future verification dates cannot authorize current release claims',async()=>{
+ const d=fixture();try{await settle();d.window.Date.now=()=>Date.parse('2020-01-01');const p=await d.window.MatchAppMusicReleases.query('latest music videos of Taylor Swift');assert.equal(p.results.length,0);}finally{d.window.close();}
+});
+test('a synchronous request setup failure is recoverable on the next lookup',async()=>{
+ const d=new JSDOM('<html lang="en"></html>',{url:'https://matchapp.tv/',runScripts:'outside-only'});try{
+ d.window.fetch=()=>{throw Error('Network setup failed');};d.window.eval(script);
+ assert.equal(await d.window.MatchAppMusicReleases.get(data.items[0].id),undefined);
+ d.window.fetch=async()=>({ok:true,json:async()=>data});
+ assert.equal((await d.window.MatchAppMusicReleases.get(data.items[0].id)).id,data.items[0].id);
+ }finally{d.window.close();}
 });
