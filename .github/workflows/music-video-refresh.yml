@@ -1,0 +1,63 @@
+name: Refresh official music video releases
+on:
+  schedule:
+    - cron: '10 3 * * *' # 00:10 America/Sao_Paulo
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/music-video-refresh.yml'
+permissions:
+  contents: write
+  actions: write
+concurrency:
+  group: matchapp-content-publish
+  cancel-in-progress: false
+jobs:
+  refresh:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - name: Refresh and validate official releases before publication
+        id: publish
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          for attempt in 1 2 3; do
+            git fetch origin main
+            git reset --hard origin/main
+            git clean -fd -- assets/music-videos
+            node tools/refresh-music-videos.js
+            node tools/check-content-rotation.js
+            npm test
+            npm run audit:site
+            npm run build
+            git add -- data/music-video-releases.json assets/music-videos index.html
+            if git diff --staged --quiet; then
+              echo 'changed=0' >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            git commit -m 'Refresh verified official music video releases and SEO'
+            if git push origin HEAD:main; then
+              echo 'changed=1' >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+          done
+          echo '::error::Remote advanced; unable to publish safely after three complete rebuilds.'
+          exit 1
+      - name: Deploy validated bot content exactly once
+        if: steps.publish.outputs.changed == '1'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run pages-deploy.yml --ref main

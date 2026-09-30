@@ -1,0 +1,74 @@
+#!/usr/bin/env node
+'use strict';
+// Official-channel Atom feeds only. No AI-generated identities or credits.
+const fs=require('node:fs'),path=require('node:path'),{JSDOM}=require('jsdom');
+const ROOT=path.join(__dirname,'..');
+const OFFICIAL=/\b(?:official (?:music )?video|videoclipe oficial|video oficial)\b/i;
+const EXCLUDE=/\b(?:lyric|lyrics|audio|visualizer|teaser|trailer|reaction|behind the scenes|live performance|live at|shorts)\b/i;
+async function request(url,binary=false){
+ const r=await fetch(url,{signal:AbortSignal.timeout(30000),headers:{'User-Agent':'Mozilla/5.0 (compatible; MatchAppEditorial/1.0)'}});
+ if(!r.ok)throw Error('HTTP '+r.status+' '+url);
+ return binary?Buffer.from(await r.arrayBuffer()):r.text();
+}
+function parseFeed(xml,channelId,now=Date.now()){
+ const dom=new JSDOM(xml,{contentType:'text/xml'});
+ try{return [...dom.window.document.querySelectorAll('entry')].flatMap(e=>{
+  const value=(ns,tag)=>e.getElementsByTagNameNS(ns,tag)[0]?.textContent?.trim()||'';
+  const id=value('http://www.youtube.com/xml/schemas/2015','videoId');
+  const owner=value('http://www.youtube.com/xml/schemas/2015','channelId');
+  const title=e.querySelector('title')?.textContent?.trim()||'';
+  const publishedAt=e.querySelector('published')?.textContent||'';
+  if(owner!==channelId||! /^[\w-]{11}$/.test(id)||!OFFICIAL.test(title)||EXCLUDE.test(title)||!Number.isFinite(Date.parse(publishedAt))||Date.parse(publishedAt)>now)return [];
+  return [{id,rawTitle:title,publishedAt,channel:e.querySelector('author name')?.textContent||''}];
+ });}finally{dom.window.close();}
+}
+function schema(items){return {'@context':'https://schema.org','@type':'ItemList',name:'Official music video releases on YouTube',numberOfItems:items.length,itemListElement:items.map((r,i)=>({'@type':'ListItem',position:i+1,item:{'@type':'VideoObject',name:r.artist+' — '+r.title,description:`${r.artist} official music video for ${r.title}. Released on YouTube ${r.publishedAt.slice(0,10)}.`,thumbnailUrl:['https://matchapp.tv'+r.poster],uploadDate:r.publishedAt,url:r.url,embedUrl:'https://www.youtube.com/embed/'+r.id,creator:{'@type':'MusicGroup',name:r.artist,url:r.channelUrl},keywords:r.keywords.join(', '),isAccessibleForFree:true,...(r.durationSeconds?{duration:'PT'+r.durationSeconds+'S'}:{})}}))};}
+async function refresh(){
+ const file=path.join(ROOT,'data/music-video-releases.json'),old=JSON.parse(fs.readFileSync(file,'utf8'));
+ const channels=JSON.parse(fs.readFileSync(path.join(ROOT,'data/music-video-artists.json'),'utf8'));
+ const byId=new Map(old.items.map(r=>[r.id,r]));let successes=0;
+ // Small batches and finite requests; partial failures retain previous records.
+ for(let i=0;i<channels.length;i+=3)await Promise.all(channels.slice(i,i+3).map(async artist=>{
+  try{
+   const page=await request(artist.channelUrl);
+   const dom=new JSDOM(page);let channelId;
+   try{const canonical=dom.window.document.querySelector('link[rel="canonical"]')?.href||'';channelId=canonical.match(/\/channel\/(UC[\w-]{22})/)?.[1]||dom.window.document.querySelector('meta[itemprop="channelId"]')?.content;}finally{dom.window.close();}
+   if(!/^UC[\w-]{22}$/.test(channelId||''))throw Error('Official channel ID unavailable');
+   const feedUrl='https://www.youtube.com/feeds/videos.xml?channel_id='+channelId;
+   const rows=parseFeed(await request(feedUrl),channelId);successes++;
+   for(const row of rows.slice(0,2)){
+    if(byId.has(row.id))continue;
+    const url='https://www.youtube.com/watch?v='+row.id;
+    const info=JSON.parse(await request('https://www.youtube.com/oembed?url='+encodeURIComponent(url)+'&format=json'));
+    const author=String(info.author_url||'').replace(/\/$/,'').toLowerCase();
+    if(![artist.channelUrl.toLowerCase(),'https://www.youtube.com/channel/'+channelId.toLowerCase()].includes(author)||info.title!==row.rawTitle)throw Error('Video author/title identity mismatch');
+    const thumbnail='https://i.ytimg.com/vi/'+row.id+'/hqdefault.jpg';let image;
+    // YouTube's alternate image hosts serve the same exact video artwork.
+    for(const host of ['i.ytimg.com','i9.ytimg.com']){
+     try{const candidate=await request('https://'+host+'/vi/'+row.id+'/hqdefault.jpg',true);
+      if(candidate.length>=3000&&candidate[0]===255&&candidate[1]===216){image=candidate;break;}
+     }catch(_){/* Try the other exact-video image host within the finite budget. */}
+    }
+    if(!image)throw Error('Original thumbnail unavailable');
+    const poster='/assets/music-videos/'+row.id+'.jpg';fs.mkdirSync(path.join(ROOT,'assets/music-videos'),{recursive:true});fs.writeFileSync(path.join(ROOT,poster),image);
+    const title=row.rawTitle.replace(/\s*[\[(]?(?:official (?:music )?video|videoclipe oficial|video oficial)[\])]?\s*/ig,' ').replace(new RegExp('^'+artist.artist.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'\\s*[-–—:]\\s*','i'),'').trim();
+    byId.set(row.id,{id:row.id,artist:artist.artist,title,album:'',publishedAt:row.publishedAt,director:'',cast:[],channel:info.author_name,channelUrl:artist.channelUrl,source:url,creditsSource:url,url,thumbnail,poster,verifiedAt:new Date().toISOString().slice(0,10),keywords:[artist.artist,title,'official music video','YouTube music video',new Date(row.publishedAt).getUTCFullYear()+' music releases']});
+   }
+  }catch(error){console.error(artist.artist+': '+error.message);}
+ }));
+ if(!successes)throw Error('All official feeds unavailable; previous inventory retained');
+ const sorted=[...byId.values()].sort((a,b)=>Date.parse(b.publishedAt)-Date.parse(a.publishedAt));
+ // Latest release per artist; retain older IDs for saved/deep-linked release cards.
+ const seen=new Set(),featured=[];
+ for(const r of sorted)if(!seen.has(r.channelUrl.toLowerCase())&&featured.length<12){seen.add(r.channelUrl.toLowerCase());featured.push(r.id);}
+ const updated={...old,items:sorted,featuredIds:featured};
+ const homeFile=path.join(ROOT,'index.html'),home=fs.readFileSync(homeFile,'utf8');
+ const marker=/<script\b(?=[^>]*\bid="music-video-releases-schema")[^>]*>[\s\S]*?<\/script>/;
+ const replacement='<script type="application/ld+json" id="music-video-releases-schema">'+JSON.stringify(schema(sorted)).replace(/</g,'\\u003c')+'</script>';
+ if(!marker.test(home))throw Error('SEO ownership marker missing');
+ fs.writeFileSync(homeFile,home.replace(marker,replacement));
+ fs.writeFileSync(file,JSON.stringify(updated,null,2)+'\n');
+ console.log(`${successes}/${channels.length} official feeds checked; ${featured.length} featured videos; ${sorted.length} verified records.`);
+}
+module.exports={parseFeed,schema};
+if(require.main===module)refresh().catch(e=>{console.error(e.message);process.exitCode=1;});
