@@ -24,19 +24,51 @@
     const date = value => new Intl.DateTimeFormat(window.MATCH_LANG || document.documentElement.lang || 'en', {dateStyle:'medium',timeZone:'UTC'}).format(new Date(value));
     let inventory, featuredIds;
     async function all() {
-        if (!inventory) inventory = fetch('/data/music-video-releases.json?day='+new Date().toISOString().slice(0,10), {cache:'no-store'}).then(r => {
+        if (!inventory) inventory = fetch('/data/music-video-releases.json?day='+new Date().toISOString().slice(0,10), {cache:'no-store',signal:AbortSignal.timeout(6500)}).then(r => {
             if (!r.ok) throw Error('Music inventory unavailable'); return r.json();
         }).then(data => { featuredIds=data.featuredIds; return data.items.filter(r => /^[\w-]{11}$/.test(r.id) && r.url === 'https://www.youtube.com/watch?v='+r.id && r.thumbnail === 'https://i.ytimg.com/vi/'+r.id+'/hqdefault.jpg' && r.poster === '/assets/music-videos/'+r.id+'.jpg' && Date.parse(r.publishedAt) <= Date.now()); });
         try { return await inventory; } catch (_) { inventory = null; return []; }
+    }
+    const normalize = value => String(value || '').normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
+    function isVideoQuestion(question, history=[]) {
+        const q=normalize(question), context=normalize(history.map(t=>t.text||'').join(' '));
+        return /\b(music videos?|videoclipes?|videoclips?|clips? musicais|videos? musicais)\b/.test(q) ||
+            (/\b(videos?|clipes?|clips?)\b/.test(q) && /\b(latest|recent|newest|new|ultimos?|recentes?|novos?|mais novos?|nuevos?|recientes?)\b/.test(q)) ||
+            (/\b(latest|newest|most recent|mais recentes|ultimos)\b/.test(q) && /\b(music videos?|videoclipes?)\b/.test(context));
+    }
+    async function query(question, history=[]) {
+        if(!isVideoQuestion(question,history))return null;
+        if(!/\b(latest|recent|recently|newest|new|ultimos?|recentes?|novos?|mais novos?|nuevos?|recientes?)\b/.test(normalize(question)))return null;
+        const rows=await all(), q=normalize(question);
+        const artists=[...new Set(rows.map(r=>r.artist))];
+        let matches=artists.filter(a=>(' '+q+' ').includes(' '+normalize(a)+' '));
+        if(!matches.length && /\b(her|his|their|dela|dele|eles|ela|he|she)\b/.test(q)) {
+            for(const turn of [...history].reverse()) {
+                matches=artists.filter(a=>(' '+normalize(turn.text)+' ').includes(' '+normalize(a)+' '));
+                if(matches.length)break;
+            }
+        }
+        if(!matches.length && !/\b(music videos?|videoclipes?|videoclips?|videos? musicais)\b/.test(q))return null;
+        // Explicit recent requests never use model memory or title-only iTunes.
+        // A daily verified snapshot is labelled honestly; it is not a live chart.
+        const fresh=rows.filter(r=>Date.now()-Date.parse(r.verifiedAt+'T00:00:00Z')<=2*86400000);
+        const selected=matches.length===1 ? fresh.filter(r=>r.artist===matches[0]).sort((a,b)=>Date.parse(b.publishedAt)-Date.parse(a.publishedAt)).slice(0,6) : [];
+        const pt=lang()==='pt', es=lang()==='es';
+        const answer=selected.length ?
+            (pt?'Videoclipes oficiais verificados de ':es?'Videoclips oficiales verificados de ':'Verified official music videos by ')+matches[0]+
+            (pt?', do mais recente ao mais antigo. Catálogo verificado em ':es?', del más reciente al más antiguo. Catálogo verificado el ':', newest first. Catalog checked on ')+date(selected[0].verifiedAt+'T12:00:00Z')+
+            (pt?'. Consulte o canal oficial para lançamentos após essa verificação.':es?'. Consulta el canal oficial para estrenos posteriores.':'. Check the official channel for releases after that check.') :
+            (pt?'Não consegui confirmar os videoclipes recentes desse artista. Diga o nome completo do artista ou consulte seu canal oficial; não vou apresentar vídeos antigos como recentes.':es?'No pude confirmar los videoclips recientes de ese artista. Indica su nombre completo o consulta su canal oficial.':'I could not confirm recent official videos for that artist. Please give the full artist name or check their official channel; older suggestions will not be presented as latest releases.');
+        return {answer,results:selected.map(r=>({title:r.artist+' — '+r.title,type:'music video',_musicVideoId:r.id})),_live:false,_verifiedMusic:selected.length>0};
     }
     const get = async id => (await all()).find(r => r.id === id);
     const intro = r => `${copy()[0]}: ${r.artist} — ${r.title}. ${copy()[1]}: ${date(r.publishedAt)}.`;
     function link(href, label) {
         const a=document.createElement('a');a.className='gold-btn';a.href=href;a.target='_blank';a.rel='noopener noreferrer';a.textContent=label;return a;
     }
-    async function paintCard(id, grid) {
+    async function paintCard(id, grid, append=false) {
         const r=await get(id);if(!r || !grid?.isConnected)return;
-        grid.replaceChildren();grid.style.display='grid';
+        if(!append)grid.replaceChildren();grid.style.display='grid';
         const card=document.createElement('article');card.className='discover-card discover-music-card';card.dataset.musicVideoId=id;
         const poster=document.createElement('div');poster.className='discover-poster';
         const img=document.createElement('img');img.dataset.maMedia='1';img.src=r.poster;img.alt=r.artist+' — '+r.title;img.width=480;img.height=360;img.decoding='async';poster.append(img);
@@ -46,6 +78,8 @@
         facts.filter(([,value])=>value).forEach(([label,value])=>{const p=document.createElement('p');p.className='discover-music-info';p.textContent=label+': '+value;body.append(p);});
         if(r.durationSeconds){const time=document.createElement('p');time.className='discover-meta';time.textContent=Math.floor(r.durationSeconds/60)+':'+String(r.durationSeconds%60).padStart(2,'0');body.append(time);}
         const actions=document.createElement('div');actions.className='discover-actions';actions.append(link(r.url,copy()[5]),link(r.creditsSource,copy()[6]));body.append(actions);
+        const preview=document.createElement('iframe');preview.src='https://www.youtube-nocookie.com/embed/'+r.id;preview.title=r.artist+' — '+r.title;preview.loading='lazy';preview.allow='encrypted-media; picture-in-picture; fullscreen';preview.allowFullscreen=true;preview.className='discover-official-music-preview';body.append(preview);
+        const channel=link(r.channelUrl, r.channel+' · YouTube');body.append(channel);
         card.append(poster,body);grid.append(card);
         window.MatchAppTitleIdentity?.paint(heading,{title:r.title,originalTitle:r.title,displayTitle:r.title,kind:'music video'});
     }
@@ -108,9 +142,9 @@
             const speak=bubble.querySelector('.discover-speak');if(speak)speak.onclick=()=>window.readAloud(intro(r),speak);
             paintCard(r.id,bubble.querySelector('.chat-results-grid'));
         });
-        document.querySelectorAll('.discover-music-card').forEach(card=>paintCard(card.dataset.musicVideoId,card.parentElement));
+        document.querySelectorAll('.discover-music-card').forEach(card=>{const holder=document.createElement('div');card.replaceWith(holder);paintCard(card.dataset.musicVideoId,holder).then(()=>holder.replaceWith(...holder.childNodes));});
     }
-    window.MatchAppMusicReleases={get,intro,paintCard};
+    window.MatchAppMusicReleases={get,intro,paintCard,query,isVideoQuestion};
     document.addEventListener('matchapp:langchange',localize);
     if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount,{once:true});else mount();
 })();

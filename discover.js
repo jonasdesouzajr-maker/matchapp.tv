@@ -587,6 +587,7 @@ function isDiscoverDisliked(title) {
 
 function enrichDiscoverItem(item, question) {
     if (!item || !item.title) return null;
+    if (item._musicVideoId || /music|song|album|single/i.test(item.type || '')) return item;
     const policy = window.matchPolicy;
     if (policy && question && !policy.fitsQuestion(item, question)) return null;
     try {
@@ -625,6 +626,7 @@ async function enrichDiscoverMedia(item) {
     // Audiobooks use the separate verified book matching flow, not TMDB film
     // provider metadata. The card's generic audio destination is a search,
     // never a promise that a particular narrator/edition is available.
+    if (isAudio || isBook) { delete item._catalogMedia; delete item._tmdb; }
     if (isAudio || isBook || !window.MatchAppCatalogMedia?.lookup) return unverified();
     try {
         const rawType = String(item.type || '').toLowerCase();
@@ -930,7 +932,7 @@ async function hydrateDiscoverCard(item, idx) {
 
     // Hand-verified art (parity with app.js's render path) always wins —
     // no lookup can beat a known-correct image.
-    const verified = (typeof getVerifiedPoster === 'function') ? getVerifiedPoster(item.title) : null;
+    const verified = !/music|song|album|single/i.test(rawType) && (typeof getVerifiedPoster === 'function') ? getVerifiedPoster(item.title) : null;
 
     // AI-chat titles come from Gemini's free-form knowledge, not our curated
     // catalog, so they're inherently less trustworthy than a match-engine
@@ -990,7 +992,7 @@ async function hydrateDiscoverCard(item, idx) {
     const earlyArtwork=verified||meta?.artwork||readyArtwork;
     if(earlyArtwork)setDiscoverPoster(img,item,earlyArtwork,fallbackArtwork);
     let richMeta = null;
-    if (!item._catalogMedia && !skipLiveLookup && typeof getRichMetadata === 'function') {
+    if (!item._catalogMedia && !skipLiveLookup && !/music|song|album|single/i.test(rawType) && typeof getRichMetadata === 'function') {
         // Apple metadata is exact-identity guarded in app.js. Keep it separate
         // from TMDB artwork so it can supply a genuine preview and source genre
         // even when TMDB already supplied the poster.
@@ -1677,6 +1679,11 @@ function appendAssistantBubble(text, results, opts) {
 async function renderResultsInto(grid, items, baseIndex) {
     await window.matchPolicy?.ready();
     if (!Array.isArray(items)) return;
+    if(items.length && items.every(item=>item._musicVideoId)) {
+        grid.replaceChildren();
+        for(const item of items)await window.MatchAppMusicReleases?.paintCard(item._musicVideoId,grid,true);
+        return;
+    }
     items = (await Promise.all(items
         .map(item => enrichDiscoverItem(item, lastDiscoverQuestion))
         .filter(Boolean)
@@ -1750,7 +1757,11 @@ async function runAskAndRender(question) {
     const bookIntent = detectBookIntent(question);
     const cookingIntent = !!window.MatchCooking?.isCooking(question);
     let payload, source = 'ai';
-    try { payload = await askAIConversational(question, history); }
+    const musicPayload = await window.MatchAppMusicReleases?.query(question, history);
+    try {
+        if (musicPayload) payload = musicPayload;
+        else payload = await askAIConversational(question, history);
+    }
     catch (e) { payload = cookingIntent ? {answer: /^pt/i.test(window.MATCH_LANG||'') ? 'A IA está indisponível agora. Explore abaixo as receitas e os vídeos originais dos criadores.' : 'AI is unavailable right now. Explore the original cooking sources and videos below.', results:[], _live:false} : await fallbackSearch(question, !!e.aiUnavailable); source = 'fallback'; }
 
     // Final bounded recovery: if AI parsing, the Edge Function, or the keyless
@@ -1761,7 +1772,7 @@ async function runAskAndRender(question) {
     // Never overwrite its answer with an unrelated film-catalogue fallback.
     const wantsTitleRecommendations = !isFactualMediaQuestion(question) &&
         /\b(?:watch|recommend|suggest|stream|movie|movies|film|films|series|shows?|podcast|playlist|music|listen|similar|comedy|horror|romance|recommendation|assistir|filmes?|séries?|recomendar|recomende|indique|películas?)\b/i.test(mediaIntentQuestion(question));
-    if (!bookIntent && !cookingIntent && wantsTitleRecommendations &&
+    if (!bookIntent && !cookingIntent && wantsTitleRecommendations && !musicPayload &&
         (!payload?._live || !String(payload.answer || '').trim()) &&
         (!Array.isArray(payload?.results) || payload.results.length === 0)) {
         const local = catalogFallbackForQuestion(question);
@@ -1840,10 +1851,10 @@ async function runAskAndRender(question) {
     }
 
     const offlineBadge = document.getElementById('discover-offline-badge');
-    if (offlineBadge) offlineBadge.style.display = payload._live ? 'none' : 'inline-flex';
+    if (offlineBadge) offlineBadge.style.display = payload._live || musicPayload ? 'none' : 'inline-flex';
 
     const bubble = appendAssistantBubble(payload.answer, bookIntent ? [] : (payload.results || []), { instant: false });
-    if(payload?._live !== true && bubble?.wrap){
+    if(payload?._live !== true && !musicPayload && bubble?.wrap){
         const notice=document.createElement('strong');
         notice.setAttribute('role','status');
         notice.textContent=window.matchRecoveryHeading?.() || 'TEMPORARY INTERRUPTION — PLEASE TRY AGAIN SHORTLY.';
@@ -1896,7 +1907,7 @@ async function runAskAndRender(question) {
     let newItems = (bookIntent ? [] : (payload.results || []))
         .map(item => enrichDiscoverItem(item, question))
         .filter(item => item && item.title && !isDiscoverDisliked(item.title));
-    if (!bookIntent && wantsTitleRecommendations && !newItems.length &&
+    if (!bookIntent && wantsTitleRecommendations && !newItems.length && !musicPayload &&
         !payload?._live && window.matchPolicy && typeof CONTENT_CATALOG !== 'undefined') {
         newItems = CONTENT_CATALOG
             .filter(e => e && e.title && !isDiscoverDisliked(e.title) && window.matchPolicy.fitsQuestion(e, question))

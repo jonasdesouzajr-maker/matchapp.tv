@@ -24,3 +24,19 @@ test('each exact release renders its official YouTube destination without invoki
 test('all 14 languages have release information and a localized watch action',async()=>{
  const d=fixture();try{await settle();const grid=d.window.document.getElementById('grid');for(const lang of ['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh']){d.window.MATCH_LANG=lang;await d.window.MatchAppMusicReleases.paintCard(data.items[0].id,grid);const text=grid.textContent;if(lang!=='en'){assert.ok(!text.includes('Released on YouTube'),lang);assert.ok(!text.includes('Watch on YouTube'),lang);assert.ok(!text.includes('Official source'),lang);}assert.ok(text.includes(data.items[0].title));}}finally{d.window.close();}
 });
+test('latest artist videos use dated exact official identities, descending dates and context',async()=>{
+ const d=fixture();try{await settle();const api=d.window.MatchAppMusicReleases;
+ for(const q of ['latest music videos of Taylor Swift','latest videos of Taylor Swift','videoclipes mais recentes de Taylor Swift']){
+ const p=await api.query(q);assert.ok(p.results.length);assert.ok(p.results.every(r=>r.title.startsWith('Taylor Swift — ')));assert.equal(p.results[0]._musicVideoId,data.items.filter(r=>r.artist==='Taylor Swift').sort((a,b)=>Date.parse(b.publishedAt)-Date.parse(a.publishedAt))[0].id);
+ const grid=d.window.document.getElementById('grid');grid.replaceChildren();for(const item of p.results)await api.paintCard(item._musicVideoId,grid,true);
+ assert.equal(grid.children.length,p.results.length);for(const card of grid.children){const id=card.dataset.musicVideoId;assert.equal(card.querySelector('iframe').src,'https://www.youtube-nocookie.com/embed/'+id);assert.equal(card.querySelector('a').href,'https://www.youtube.com/watch?v='+id);assert.ok(!card.textContent.includes('Cinemas'));}
+ }
+ assert.ok((await api.query('latest videos of her',[{text:'Taylor Swift'}])).results.length);
+ assert.equal(await api.query('latest movies'),null);
+ assert.equal((await api.query('latest music videos of Unknown Artist')).results.length,0);
+ d.window.document.dispatchEvent(new d.window.Event('matchapp:langchange'));await settle();assert.ok(d.window.document.querySelectorAll('.discover-music-card').length>1);
+ }finally{d.window.close();}
+});
+test('stale artist inventory cannot be passed off as current',async()=>{
+ const d=new JSDOM('<html lang="en"></html>',{url:'https://matchapp.tv/',runScripts:'outside-only'});try{d.window.fetch=async()=>({ok:true,json:async()=>({...data,items:data.items.map(r=>({...r,verifiedAt:'2020-01-01'}))})});d.window.eval(script);const p=await d.window.MatchAppMusicReleases.query('latest videos of Taylor Swift');assert.equal(p.results.length,0);assert.match(p.answer,/could not confirm/);}finally{d.window.close();}
+});
