@@ -1,10 +1,75 @@
 {
-  "generated_at": "2026-09-30T00:44:22.303Z",
-  "feed_version": "39c320b0",
-  "sports_updated_at": "2026-09-29T16:54:17.112Z",
+  "generated_at": "2026-09-30T02:08:20.241Z",
+  "feed_version": "29c2dc47",
+  "sports_updated_at": "2026-09-30T02:08:20.196Z",
   "source_policy": "direct-trusted-publisher-rss+google-trends-keyword-signals",
   "seo_policy": "per-story keyword snapshot at first discovery + source citation + stable archive",
   "items": [
+    {
+      "id": "06b97d86",
+      "title": "How AI is creating a UK super-museum and revealing our planet's history",
+      "url": "https://www.bbc.co.uk/news/articles/cv5yjgrj4ello?at_medium=RSS&at_campaign=rss",
+      "source": "BBC Science",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "published_at": "2026-09-30T00:46:29.000Z",
+      "discovered_at": "2026-09-30T02:08:20.241Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "How AI",
+      "description": "World news reported by BBC Science on 2026-09-30. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/f156/live/89546d90-b29c-11f1-9b18-ad61bef6e34f.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/how-ai-is-creating-a-uk-super-museum-and-revealing-our-planet-s-history-06b97d/",
+      "landing_url": "https://matchapp.tv/?news=06b97d86#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-09-30",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "how",
+          "creating",
+          "super",
+          "museum",
+          "revealing",
+          "our"
+        ],
+        "long_tail": [
+          "How AI is creating a UK super-museum and revealing our planet's history 2026-09-30",
+          "world news September 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "how",
+          "creating",
+          "super",
+          "museum",
+          "revealing",
+          "our"
+        ],
+        "freshness_keywords": [
+          "2026-09-30"
+        ],
+        "source_keywords": [
+          "BBC Science"
+        ],
+        "meta_title": "How AI is creating a UK super-museum and revealing our…",
+        "meta_description": "World report published by BBC Science on 2026-09-30. Open the original report for full context.",
+        "keywords": [
+          "world news",
+          "global headlines",
+          "how",
+          "creating",
+          "super",
+          "museum",
+          "revealing",
+          "our",
+          "2026-09-30",
+          "BBC Science"
+        ],
+        "seo_generated_at": "2026-09-30T02:08:20.241Z"
+      }
+    },
     {
       "id": "0b10a0cc",
       "title": "OpenAI unveils AI assistant 'dots' while safety worries delay new model",
@@ -3068,71 +3133,6 @@
           "g1.globo.com Luana Tavares"
         ],
         "seo_generated_at": "2026-09-29T08:59:16.468Z"
-      }
-    },
-    {
-      "id": "af5b32a2",
-      "title": "Apple ordered to pay $5.7bn after losing vibration tech patent suit",
-      "url": "https://www.bbc.co.uk/news/articles/c6je85n2vyleo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC Technology",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "published_at": "2026-09-28T11:16:08.000Z",
-      "discovered_at": "2026-09-28T15:54:04.007Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC Technology on 2026-09-28. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/b94e/live/b987eeb0-bb2a-11f1-971b-5fdf53b135ba.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/apple-ordered-to-pay-5-7bn-after-losing-vibration-tech-patent-suit-af5b32/",
-      "landing_url": "https://matchapp.tv/?news=af5b32a2#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-09-28",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "apple",
-          "ordered",
-          "pay",
-          "7bn",
-          "after",
-          "losing"
-        ],
-        "long_tail": [
-          "Apple ordered to pay $5.7bn after losing vibration tech patent suit 2026-09-28",
-          "world news September 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "apple",
-          "ordered",
-          "pay",
-          "7bn",
-          "after",
-          "losing"
-        ],
-        "freshness_keywords": [
-          "2026-09-28"
-        ],
-        "source_keywords": [
-          "BBC Technology"
-        ],
-        "meta_title": "Apple ordered to pay $5.7bn after losing vibration tech…",
-        "meta_description": "World report published by BBC Technology on 2026-09-28. Open the original report for full context.",
-        "keywords": [
-          "world news",
-          "global headlines",
-          "apple",
-          "ordered",
-          "pay",
-          "7bn",
-          "after",
-          "losing",
-          "2026-09-28",
-          "BBC Technology"
-        ],
-        "seo_generated_at": "2026-09-28T15:54:04.007Z"
       }
     }
   ]

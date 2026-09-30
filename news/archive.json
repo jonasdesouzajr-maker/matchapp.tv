@@ -1,7 +1,72 @@
 {
-  "generated_at": "2026-09-30T00:44:22.303Z",
+  "generated_at": "2026-09-30T02:08:20.241Z",
   "limit": 1000,
   "items": [
+    {
+      "id": "06b97d86",
+      "title": "How AI is creating a UK super-museum and revealing our planet's history",
+      "url": "https://www.bbc.co.uk/news/articles/cv5yjgrj4ello?at_medium=RSS&at_campaign=rss",
+      "source": "BBC Science",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "published_at": "2026-09-30T00:46:29.000Z",
+      "discovered_at": "2026-09-30T02:08:20.241Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "How AI",
+      "description": "World news reported by BBC Science on 2026-09-30. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/f156/live/89546d90-b29c-11f1-9b18-ad61bef6e34f.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/how-ai-is-creating-a-uk-super-museum-and-revealing-our-planet-s-history-06b97d/",
+      "landing_url": "https://matchapp.tv/?news=06b97d86#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-09-30",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "how",
+          "creating",
+          "super",
+          "museum",
+          "revealing",
+          "our"
+        ],
+        "long_tail": [
+          "How AI is creating a UK super-museum and revealing our planet's history 2026-09-30",
+          "world news September 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "how",
+          "creating",
+          "super",
+          "museum",
+          "revealing",
+          "our"
+        ],
+        "freshness_keywords": [
+          "2026-09-30"
+        ],
+        "source_keywords": [
+          "BBC Science"
+        ],
+        "meta_title": "How AI is creating a UK super-museum and revealing our…",
+        "meta_description": "World report published by BBC Science on 2026-09-30. Open the original report for full context.",
+        "keywords": [
+          "world news",
+          "global headlines",
+          "how",
+          "creating",
+          "super",
+          "museum",
+          "revealing",
+          "our",
+          "2026-09-30",
+          "BBC Science"
+        ],
+        "seo_generated_at": "2026-09-30T02:08:20.241Z"
+      }
+    },
     {
       "id": "0b10a0cc",
       "title": "OpenAI unveils AI assistant 'dots' while safety worries delay new model",
