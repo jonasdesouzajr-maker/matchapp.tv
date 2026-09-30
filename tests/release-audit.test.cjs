@@ -25,9 +25,9 @@ test('behavioral pages load one current shared runtime instead of stale cache ke
   assert.deepEqual([...new Set(policyPages.map(p=>version(p,'matching-policy.js')))],['20260926-conflicts2']);
   assert.equal(version('kids/index.html','matching-policy.js'),'20260924-runtime1');
   const buildPages=['index.html','together.html','pricing/pricing.html','friends.html','events-archive.html'];
-  assert.equal(version('index.html','build-meta.js'),'20260926-publicproof1&amp;seo=20260928-2&amp;release=20260929-5&amp;intent=20260930-1&amp;installfix=20260930-1');
+  assert.equal(version('index.html','build-meta.js'),'20260926-publicproof1&amp;seo=20260928-2&amp;release=20260929-5&amp;intent=20260930-1&amp;installfix=20260930-1&amp;icon=20260930-space1');
   for(const page of buildPages.filter(p=>p!=='index.html')){
-    assert.equal(version(page,'build-meta.js'),'20260926-publicproof1'+(page==='events-archive.html'?'':'&amp;installfix=20260930-1'));
+    assert.equal(version(page,'build-meta.js'),'20260926-publicproof1'+(page==='events-archive.html'?'':'&amp;installfix=20260930-1&amp;icon=20260930-space1'));
   }
   assert.match(read('pricing/pricing.html'),/\/pricing\.js\?v=\d{8}-[\w-]+/);
   assert.match(read('purchase.html'),/\/purchase\.js\?v=\d{8}-[\w-]+/);

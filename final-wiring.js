@@ -2,7 +2,7 @@
 (function(){
   'use strict';
   const V='20260923-videoaudit1';
-  const PWA_V='20260922-icon3';
+  const PWA_V='20260930-icon-space1';
   const INSTALL_MANIFEST_PT='/manifest-pt-br.json';
   const INSTALL_NAME_PT='MatchApp iA';
   const INSTALL_NAME_EN='MatchApp Ai';
