@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-28T11:18:04.401Z",
+  "generated": "2026-09-30T11:03:20.197Z",
   "source": "TMDB / JustWatch",
   "titles": {
     "The Bear": {
@@ -2545,7 +2545,8 @@
         "US": {
           "stream": [
             "Hulu",
-            "fuboTV"
+            "fuboTV",
+            "FXNow"
           ],
           "link": "https://www.themoviedb.org/tv/304842-the-drop-a-snowfall-saga/watch?locale=US"
         }
