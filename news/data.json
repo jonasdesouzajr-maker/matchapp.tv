@@ -1,10 +1,396 @@
 {
-  "generated_at": "2026-09-30T07:21:38.518Z",
-  "feed_version": "a6c69b22",
+  "generated_at": "2026-09-30T09:15:20.764Z",
+  "feed_version": "ac05d373",
   "sports_updated_at": "2026-09-30T02:08:20.196Z",
   "source_policy": "direct-trusted-publisher-rss+google-trends-keyword-signals",
   "seo_policy": "per-story keyword snapshot at first discovery + source citation + stable archive",
   "items": [
+    {
+      "id": "8898c607",
+      "title": "US actor Chad Lowe 'heartbroken' by death of daughter Fiona aged 13",
+      "url": "https://www.bbc.co.uk/news/articles/c3x2z9k1zdn4o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GB",
+      "published_at": "2026-09-30T08:59:38.000Z",
+      "discovered_at": "2026-09-30T09:15:20.764Z",
+      "event_type": "Obituary",
+      "category": "entertainment",
+      "person": "",
+      "description": "obituary headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/8a27/live/37eb2f00-bcad-11f1-a3e9-bbda6f9b9e25.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/us-actor-chad-lowe-heartbroken-by-death-of-daughter-fiona-aged-13-8898c6/",
+      "landing_url": "https://matchapp.tv/?news=8898c607#latest-news",
+      "seo": {
+        "primary_keyword": "बंगाल की खाड़ी",
+        "short_tail": [
+          "actor chad lowe heartbroken",
+          "actor chad lowe heartbroken news",
+          "obituary",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "बंगाल की खाड़ी",
+          "ఎన్నికల కమిషన్",
+          "ऋषभ पंत",
+          "होंडा"
+        ],
+        "long_tail": [
+          "actor chad lowe heartbroken latest news September 2026",
+          "actor chad lowe heartbroken obituary update 2026",
+          "actor chad lowe heartbroken news 2026-09-30",
+          "latest obituary news about actor chad lowe heartbroken",
+          "actor chad lowe heartbroken death daughter latest update",
+          "BBC actor chad lowe heartbroken obituary",
+          "latest news about actor chad lowe heartbroken September 2026",
+          "actor chad lowe heartbroken entertainment news 2026-09-30",
+          "what happened with actor chad lowe heartbroken"
+        ],
+        "trend_keywords": [
+          "बंगाल की खाड़ी",
+          "ఎన్నికల కమిషన్",
+          "ऋषभ पंत",
+          "होंडा"
+        ],
+        "entity_keywords": [
+          "actor",
+          "chad",
+          "lowe",
+          "heartbroken",
+          "death",
+          "daughter",
+          "fiona",
+          "aged"
+        ],
+        "freshness_keywords": [
+          "September 2026",
+          "2026-09-30",
+          "actor chad lowe heartbroken 2026"
+        ],
+        "source_keywords": [
+          "BBC actor chad lowe heartbroken",
+          "bbc.co.uk actor chad lowe heartbroken",
+          "BBC entertainment news"
+        ],
+        "meta_title": "US actor Chad Lowe 'heartbroken' by death of daughter…",
+        "meta_description": "Obituary update reported by BBC on 2026-09-30. See verified context, publication time and the original source via MatchApp TV.",
+        "keywords": [
+          "बंगाल की खाड़ी",
+          "actor chad lowe heartbroken",
+          "actor chad lowe heartbroken news",
+          "obituary",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "ఎన్నికల కమిషన్",
+          "ऋषभ पंत",
+          "होंडा",
+          "actor chad lowe heartbroken latest news September 2026",
+          "actor chad lowe heartbroken obituary update 2026",
+          "actor chad lowe heartbroken news 2026-09-30",
+          "latest obituary news about actor chad lowe heartbroken",
+          "actor chad lowe heartbroken death daughter latest update",
+          "BBC actor chad lowe heartbroken obituary",
+          "latest news about actor chad lowe heartbroken September 2026",
+          "actor chad lowe heartbroken entertainment news 2026-09-30",
+          "what happened with actor chad lowe heartbroken",
+          "actor",
+          "chad",
+          "lowe",
+          "heartbroken",
+          "death",
+          "daughter",
+          "fiona",
+          "aged",
+          "September 2026",
+          "2026-09-30",
+          "actor chad lowe heartbroken 2026",
+          "BBC actor chad lowe heartbroken"
+        ],
+        "seo_generated_at": "2026-09-30T09:15:20.764Z"
+      }
+    },
+    {
+      "id": "8209192a",
+      "title": "Luiz Carlos Sá canta parcerias com Almir Sater, Ivan Lins e Zeca Baleiro no álbum 'Eu, caçador de mim' e lança livro",
+      "url": "https://g1.globo.com/pop-arte/musica/blog/mauro-ferreira/post/2026/09/30/luiz-carlos-sa-canta-parcerias-com-almir-sater-ivan-lins-e-zeca-baleiro-no-album-eu-cacador-de-mim-e-lanca-livro.ghtml",
+      "source": "G1",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "BR",
+      "published_at": "2026-09-30T08:49:49.000Z",
+      "discovered_at": "2026-09-30T09:15:20.764Z",
+      "event_type": "Release",
+      "category": "entertainment",
+      "person": "Luiz Carlos",
+      "description": "Luiz Carlos: release headline reported by G1. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://s2-g1.glbimg.com/LVgbXo3Hfb4OKyeGDyyXdvaddeA=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/T/d/ltfUaRRDWFlx2g5DWf8g/luiz-carlos-sa-cred-marcos-neves8.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/luiz-carlos-sa-canta-parcerias-com-almir-sater-ivan-lins-e-zeca-baleiro-no-album-820919/",
+      "landing_url": "https://matchapp.tv/?news=8209192a#latest-news",
+      "seo": {
+        "primary_keyword": "बंगाल की खाड़ी",
+        "short_tail": [
+          "Luiz Carlos",
+          "Luiz Carlos news",
+          "release",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje",
+          "बंगाल की खाड़ी",
+          "ఎన్నికల కమిషన్",
+          "ऋषभ पंत",
+          "होंडा"
+        ],
+        "long_tail": [
+          "Luiz Carlos latest news September 2026",
+          "Luiz Carlos release update 2026",
+          "Luiz Carlos news 2026-09-30",
+          "latest release news about Luiz Carlos",
+          "luiz carlos luiz carlos canta parcerias latest update",
+          "G1 Luiz Carlos release",
+          "últimas notícias sobre Luiz Carlos setembro 2026",
+          "Luiz Carlos notícia de 2026-09-30",
+          "o que aconteceu com Luiz Carlos"
+        ],
+        "trend_keywords": [
+          "बंगाल की खाड़ी",
+          "ఎన్నికల కమిషన్",
+          "ऋषभ पंत",
+          "होंडा"
+        ],
+        "entity_keywords": [
+          "Luiz Carlos",
+          "luiz",
+          "carlos",
+          "canta",
+          "parcerias",
+          "almir",
+          "sater"
+        ],
+        "freshness_keywords": [
+          "September 2026",
+          "2026-09-30",
+          "setembro 2026",
+          "Luiz Carlos 2026"
+        ],
+        "source_keywords": [
+          "G1 Luiz Carlos",
+          "g1.globo.com Luiz Carlos",
+          "G1 entertainment news"
+        ],
+        "meta_title": "Luiz Carlos Sá canta parcerias com Almir Sater, Ivan Lins…",
+        "meta_description": "Luiz Carlos: Release update reported by G1 on 2026-09-30. See verified context, publication time and the original source via MatchApp TV.",
+        "keywords": [
+          "बंगाल की खाड़ी",
+          "Luiz Carlos",
+          "Luiz Carlos news",
+          "release",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje",
+          "ఎన్నికల కమిషన్",
+          "ऋषभ पंत",
+          "होंडा",
+          "Luiz Carlos latest news September 2026",
+          "Luiz Carlos release update 2026",
+          "Luiz Carlos news 2026-09-30",
+          "latest release news about Luiz Carlos",
+          "luiz carlos luiz carlos canta parcerias latest update",
+          "G1 Luiz Carlos release",
+          "últimas notícias sobre Luiz Carlos setembro 2026",
+          "Luiz Carlos notícia de 2026-09-30",
+          "o que aconteceu com Luiz Carlos",
+          "luiz",
+          "carlos",
+          "canta",
+          "parcerias",
+          "almir",
+          "sater",
+          "September 2026",
+          "2026-09-30",
+          "setembro 2026",
+          "Luiz Carlos 2026",
+          "G1 Luiz Carlos",
+          "g1.globo.com Luiz Carlos"
+        ],
+        "seo_generated_at": "2026-09-30T09:15:20.764Z"
+      }
+    },
+    {
+      "id": "0b5b0fd9",
+      "title": "Can Drama Change the World? Creators of Series on Far-Right Politics, Climate Crisis and More Weigh in",
+      "url": "https://www.hollywoodreporter.com/tv/tv-news/can-drama-series-change-world-iberseries-far-right-politics-1236714321/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "published_at": "2026-09-30T08:35:21.000Z",
+      "discovered_at": "2026-09-30T09:15:20.764Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "Can Drama Change",
+      "description": "Can Drama Change: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/09/panel-4.jpg?w=1440&h=810&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/can-drama-change-the-world-creators-of-series-on-far-right-politics-climate-cris-0b5b0f/",
+      "landing_url": "https://matchapp.tv/?news=0b5b0fd9#latest-news",
+      "seo": {
+        "primary_keyword": "बंगाल की खाड़ी",
+        "short_tail": [
+          "Can Drama Change",
+          "Can Drama Change news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "बंगाल की खाड़ी",
+          "ఎన్నికల కమిషన్",
+          "ऋषभ पंत",
+          "होंडा"
+        ],
+        "long_tail": [
+          "Can Drama Change latest news September 2026",
+          "Can Drama Change entertainment update 2026",
+          "Can Drama Change news 2026-09-30",
+          "latest entertainment news about Can Drama Change",
+          "can drama change can drama change latest update",
+          "The Hollywood Reporter Can Drama Change entertainment",
+          "latest news about Can Drama Change September 2026",
+          "Can Drama Change entertainment news 2026-09-30",
+          "what happened with Can Drama Change"
+        ],
+        "trend_keywords": [
+          "बंगाल की खाड़ी",
+          "ఎన్నికల కమిషన్",
+          "ऋषभ पंत",
+          "होंडा"
+        ],
+        "entity_keywords": [
+          "Can Drama Change",
+          "can",
+          "drama",
+          "change",
+          "world",
+          "creators"
+        ],
+        "freshness_keywords": [
+          "September 2026",
+          "2026-09-30",
+          "Can Drama Change 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter Can Drama Change",
+          "hollywoodreporter.com Can Drama Change",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "Can Drama Change the World? Creators of Series on…",
+        "meta_description": "Can Drama Change: Entertainment update reported by The Hollywood Reporter on 2026-09-30. See verified context, publication time and the original source via…",
+        "keywords": [
+          "बंगाल की खाड़ी",
+          "Can Drama Change",
+          "Can Drama Change news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "ఎన్నికల కమిషన్",
+          "ऋषभ पंत",
+          "होंडा",
+          "Can Drama Change latest news September 2026",
+          "Can Drama Change entertainment update 2026",
+          "Can Drama Change news 2026-09-30",
+          "latest entertainment news about Can Drama Change",
+          "can drama change can drama change latest update",
+          "The Hollywood Reporter Can Drama Change entertainment",
+          "latest news about Can Drama Change September 2026",
+          "Can Drama Change entertainment news 2026-09-30",
+          "what happened with Can Drama Change",
+          "can",
+          "drama",
+          "change",
+          "world",
+          "creators",
+          "September 2026",
+          "2026-09-30",
+          "Can Drama Change 2026",
+          "The Hollywood Reporter Can Drama Change",
+          "hollywoodreporter.com Can Drama Change",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-09-30T09:15:20.764Z"
+      }
+    },
+    {
+      "id": "1f770631",
+      "title": "Africa's richest man to launch Kenya oil refinery despite land protests",
+      "url": "https://www.bbc.co.uk/news/articles/cmkg8dpwy25po?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "published_at": "2026-09-30T08:12:43.000Z",
+      "discovered_at": "2026-09-30T09:15:20.764Z",
+      "event_type": "Release",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-09-30. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/7308/live/d006fc60-bc8f-11f1-b03d-619bc425bae8.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/africa-s-richest-man-to-launch-kenya-oil-refinery-despite-land-protests-1f7706/",
+      "landing_url": "https://matchapp.tv/?news=1f770631#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-09-30",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "africa",
+          "richest",
+          "man",
+          "launch",
+          "kenya",
+          "oil"
+        ],
+        "long_tail": [
+          "Africa's richest man to launch Kenya oil refinery despite land protests 2026-09-30",
+          "world news September 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "africa",
+          "richest",
+          "man",
+          "launch",
+          "kenya",
+          "oil"
+        ],
+        "freshness_keywords": [
+          "2026-09-30"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Africa's richest man to launch Kenya oil refinery despite…",
+        "meta_description": "World report published by BBC World on 2026-09-30. Open the original report for full context.",
+        "keywords": [
+          "world news",
+          "global headlines",
+          "africa",
+          "richest",
+          "man",
+          "launch",
+          "kenya",
+          "oil",
+          "2026-09-30",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-09-30T09:15:20.764Z"
+      }
+    },
     {
       "id": "86f8e960",
       "title": "'Matéria escura' vai além de limites do livro original em 2ª temporada com ajuda de atores: 'Página em branco'",
@@ -220,6 +606,71 @@
           "The Hollywood Reporter digger tom cruise takes"
         ],
         "seo_generated_at": "2026-09-30T07:21:38.518Z"
+      }
+    },
+    {
+      "id": "7aaa964e",
+      "title": "Somali pirates killed oil tanker crew before rescue, official tells BBC",
+      "url": "https://www.bbc.co.uk/news/articles/crjw5jp2de7go?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "published_at": "2026-09-30T06:41:35.000Z",
+      "discovered_at": "2026-09-30T09:15:20.764Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-09-30. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/660d/live/ab3dbe70-bc97-11f1-afac-af7610470640.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/somali-pirates-killed-oil-tanker-crew-before-rescue-official-tells-bbc-7aaa96/",
+      "landing_url": "https://matchapp.tv/?news=7aaa964e#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-09-30",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "somali",
+          "pirates",
+          "killed",
+          "oil",
+          "tanker",
+          "crew"
+        ],
+        "long_tail": [
+          "Somali pirates killed oil tanker crew before rescue, official tells BBC 2026-09-30",
+          "world news September 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "somali",
+          "pirates",
+          "killed",
+          "oil",
+          "tanker",
+          "crew"
+        ],
+        "freshness_keywords": [
+          "2026-09-30"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Somali pirates killed oil tanker crew before rescue,…",
+        "meta_description": "World report published by BBC World on 2026-09-30. Open the original report for full context.",
+        "keywords": [
+          "world news",
+          "global headlines",
+          "somali",
+          "pirates",
+          "killed",
+          "oil",
+          "tanker",
+          "crew",
+          "2026-09-30",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-09-30T09:15:20.764Z"
       }
     },
     {
@@ -461,71 +912,6 @@
       }
     },
     {
-      "id": "06b97d86",
-      "title": "How AI is creating a UK super-museum and revealing our planet's history",
-      "url": "https://www.bbc.co.uk/news/articles/cv5yjgrj4ello?at_medium=RSS&at_campaign=rss",
-      "source": "BBC Science",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "published_at": "2026-09-30T00:46:29.000Z",
-      "discovered_at": "2026-09-30T02:08:20.241Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "How AI",
-      "description": "World news reported by BBC Science on 2026-09-30. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/f156/live/89546d90-b29c-11f1-9b18-ad61bef6e34f.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/how-ai-is-creating-a-uk-super-museum-and-revealing-our-planet-s-history-06b97d/",
-      "landing_url": "https://matchapp.tv/?news=06b97d86#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-09-30",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "how",
-          "creating",
-          "super",
-          "museum",
-          "revealing",
-          "our"
-        ],
-        "long_tail": [
-          "How AI is creating a UK super-museum and revealing our planet's history 2026-09-30",
-          "world news September 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "how",
-          "creating",
-          "super",
-          "museum",
-          "revealing",
-          "our"
-        ],
-        "freshness_keywords": [
-          "2026-09-30"
-        ],
-        "source_keywords": [
-          "BBC Science"
-        ],
-        "meta_title": "How AI is creating a UK super-museum and revealing our…",
-        "meta_description": "World report published by BBC Science on 2026-09-30. Open the original report for full context.",
-        "keywords": [
-          "world news",
-          "global headlines",
-          "how",
-          "creating",
-          "super",
-          "museum",
-          "revealing",
-          "our",
-          "2026-09-30",
-          "BBC Science"
-        ],
-        "seo_generated_at": "2026-09-30T02:08:20.241Z"
-      }
-    },
-    {
       "id": "744a654a",
       "title": "Chinese AI tool told researchers how to make bioweapons",
       "url": "https://www.bbc.co.uk/news/articles/cmrergq3j7lgo?at_medium=RSS&at_campaign=rss",
@@ -689,109 +1075,8 @@
       }
     },
     {
-      "id": "cfaa69dd",
-      "title": "‘Coven Academy’ Creator Tim Federle Talks Witches, the YA “White Space” and Why All the Episodes Are Atypically Short (It’s Not the Reason You Expect)",
-      "url": "https://www.hollywoodreporter.com/tv/tv-features/coven-academy-creator-witch-malachi-barton-shorter-episodes-1236714726/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "published_at": "2026-09-29T22:53:09.000Z",
-      "discovered_at": "2026-09-29T23:09:21.449Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "",
-      "description": "entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/09/180571_0701_v1_340467de-e1790721836877.jpeg?w=1440&h=810&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/coven-academy-creator-tim-federle-talks-witches-the-ya-white-space-and-why-all-t-cfaa69/",
-      "landing_url": "https://matchapp.tv/?news=cfaa69dd#latest-news",
-      "seo": {
-        "primary_keyword": "ఫహాద్ ఫాజిల్",
-        "short_tail": [
-          "coven academy creator tim",
-          "coven academy creator tim news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "ఫహాద్ ఫాజిల్"
-        ],
-        "long_tail": [
-          "coven academy creator tim latest news September 2026",
-          "coven academy creator tim entertainment update 2026",
-          "coven academy creator tim news 2026-09-29",
-          "latest entertainment news about coven academy creator tim",
-          "coven academy creator tim federle talks latest update",
-          "The Hollywood Reporter coven academy creator tim entertainment",
-          "latest news about coven academy creator tim September 2026",
-          "coven academy creator tim entertainment news 2026-09-29",
-          "what happened with coven academy creator tim"
-        ],
-        "trend_keywords": [
-          "ఫహాద్ ఫాజిల్"
-        ],
-        "entity_keywords": [
-          "coven",
-          "academy",
-          "creator",
-          "tim",
-          "federle",
-          "talks",
-          "witches",
-          "white"
-        ],
-        "freshness_keywords": [
-          "September 2026",
-          "2026-09-29",
-          "coven academy creator tim 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter coven academy creator tim",
-          "hollywoodreporter.com coven academy creator tim",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "‘Coven Academy’ Creator Tim Federle Talks Witches, the YA…",
-        "meta_description": "Entertainment update reported by The Hollywood Reporter on 2026-09-29. See verified context, publication time and the original source via MatchApp TV.",
-        "keywords": [
-          "ఫహాద్ ఫాజిల్",
-          "coven academy creator tim",
-          "coven academy creator tim news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "coven academy creator tim latest news September 2026",
-          "coven academy creator tim entertainment update 2026",
-          "coven academy creator tim news 2026-09-29",
-          "latest entertainment news about coven academy creator tim",
-          "coven academy creator tim federle talks latest update",
-          "The Hollywood Reporter coven academy creator tim entertainment",
-          "latest news about coven academy creator tim September 2026",
-          "coven academy creator tim entertainment news 2026-09-29",
-          "what happened with coven academy creator tim",
-          "coven",
-          "academy",
-          "creator",
-          "tim",
-          "federle",
-          "talks",
-          "witches",
-          "white",
-          "September 2026",
-          "2026-09-29",
-          "coven academy creator tim 2026",
-          "The Hollywood Reporter coven academy creator tim",
-          "hollywoodreporter.com coven academy creator tim",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-09-29T23:09:21.449Z"
-      }
-    },
-    {
       "id": "c797c726",
-      "title": "Alcione, Daniela Mercury, Leci Brandão e Maria Bethânia gravam o samba da Mangueira para o Carnaval 2027",
+      "title": "Alcione, Daniela Mercury, Leci Brandão e Maria Bethânia gravam o samba da Mangueira para o Carnaval de 2027",
       "url": "https://g1.globo.com/pop-arte/musica/blog/mauro-ferreira/post/2026/09/29/alcione-daniela-mercury-leci-brandao-e-maria-bethania-gravam-o-samba-da-mangueira-para-o-carnaval-2027.ghtml",
       "source": "G1",
       "source_domain": "g1.globo.com",
@@ -803,7 +1088,7 @@
       "category": "entertainment",
       "person": "",
       "description": "entertainment headline reported by G1. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://s2-g1.glbimg.com/Tzq3J6i5YnqU7ErAZimmm6g9ZYA=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/C/Q/qVx3QRTUA2KEBqBbVI5Q/mangueirasamba.jpg",
+      "image": "https://s2-g1.glbimg.com/AUv1MU5hxzMLTxJa_8WHxAId3X8=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/e/7/ZmXf6zQg6qC2zxIY0B6A/mangueiracantoraspresidente.jpg",
       "matchapp_url": "https://matchapp.tv/news/articles/alcione-daniela-mercury-leci-brandao-e-maria-bethania-gravam-o-samba-da-mangueir-c797c7/",
       "landing_url": "https://matchapp.tv/?news=c797c726#latest-news",
       "seo": {
@@ -1474,71 +1759,6 @@
           "2026-09-29",
           "setembro 2026",
           "cantora tailandesa chamada lula 2026"
-        ],
-        "seo_generated_at": "2026-09-29T16:06:07.121Z"
-      }
-    },
-    {
-      "id": "c24f76b4",
-      "title": "Man charged over AI image of crocodile in Singapore reservoir",
-      "url": "https://www.bbc.co.uk/news/articles/c6grveg7d9zro?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "published_at": "2026-09-29T13:08:55.000Z",
-      "discovered_at": "2026-09-29T16:06:07.121Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-09-29. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/bee8/live/73545b90-bc06-11f1-90b9-913e4354ed35.png",
-      "matchapp_url": "https://matchapp.tv/news/articles/man-charged-over-ai-image-of-crocodile-in-singapore-reservoir-c24f76/",
-      "landing_url": "https://matchapp.tv/?news=c24f76b4#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-09-29",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "man",
-          "charged",
-          "over",
-          "image",
-          "crocodile",
-          "singapore"
-        ],
-        "long_tail": [
-          "Man charged over AI image of crocodile in Singapore reservoir 2026-09-29",
-          "world news September 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "man",
-          "charged",
-          "over",
-          "image",
-          "crocodile",
-          "singapore"
-        ],
-        "freshness_keywords": [
-          "2026-09-29"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Man charged over AI image of crocodile in Singapore…",
-        "meta_description": "World report published by BBC World on 2026-09-29. Open the original report for full context.",
-        "keywords": [
-          "world news",
-          "global headlines",
-          "man",
-          "charged",
-          "over",
-          "image",
-          "crocodile",
-          "singapore",
-          "2026-09-29",
-          "BBC World"
         ],
         "seo_generated_at": "2026-09-29T16:06:07.121Z"
       }
@@ -2882,221 +3102,6 @@
           "filhos mais tarde mais 2026",
           "G1 filhos mais tarde mais",
           "g1.globo.com filhos mais tarde mais"
-        ],
-        "seo_generated_at": "2026-09-29T08:59:16.468Z"
-      }
-    },
-    {
-      "id": "18861d1f",
-      "title": "Blue Lights: The police drama hitting home in Northern Ireland",
-      "url": "https://www.bbc.co.uk/news/articles/c6grvpppvw5eo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GB",
-      "published_at": "2026-09-29T03:24:39.000Z",
-      "discovered_at": "2026-09-29T08:59:16.468Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "Blue Lights",
-      "description": "Blue Lights: entertainment headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/0e10/live/67448000-b5d5-11f1-8c16-65d8f060d73f.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/blue-lights-the-police-drama-hitting-home-in-northern-ireland-18861d/",
-      "landing_url": "https://matchapp.tv/?news=18861d1f#latest-news",
-      "seo": {
-        "primary_keyword": "न्यायालय",
-        "short_tail": [
-          "Blue Lights",
-          "Blue Lights news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "न्यायालय",
-          "ഫഹദ് ഫാസില്",
-          "தினகரன்",
-          "ఓటీటీ"
-        ],
-        "long_tail": [
-          "Blue Lights latest news September 2026",
-          "Blue Lights entertainment update 2026",
-          "Blue Lights news 2026-09-29",
-          "latest entertainment news about Blue Lights",
-          "blue lights blue lights police drama latest update",
-          "BBC Blue Lights entertainment",
-          "latest news about Blue Lights September 2026",
-          "Blue Lights entertainment news 2026-09-29",
-          "what happened with Blue Lights"
-        ],
-        "trend_keywords": [
-          "न्यायालय",
-          "ഫഹദ് ഫാസില്",
-          "தினகரன்",
-          "ఓటీటీ"
-        ],
-        "entity_keywords": [
-          "Blue Lights",
-          "blue",
-          "lights",
-          "police",
-          "drama",
-          "hitting",
-          "home"
-        ],
-        "freshness_keywords": [
-          "September 2026",
-          "2026-09-29",
-          "Blue Lights 2026"
-        ],
-        "source_keywords": [
-          "BBC Blue Lights",
-          "bbc.co.uk Blue Lights",
-          "BBC entertainment news"
-        ],
-        "meta_title": "Blue Lights: The police drama hitting home in Northern…",
-        "meta_description": "Blue Lights: Entertainment update reported by BBC on 2026-09-29. See verified context, publication time and the original source via MatchApp TV.",
-        "keywords": [
-          "न्यायालय",
-          "Blue Lights",
-          "Blue Lights news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "ഫഹദ് ഫാസില്",
-          "தினகரன்",
-          "ఓటీటీ",
-          "Blue Lights latest news September 2026",
-          "Blue Lights entertainment update 2026",
-          "Blue Lights news 2026-09-29",
-          "latest entertainment news about Blue Lights",
-          "blue lights blue lights police drama latest update",
-          "BBC Blue Lights entertainment",
-          "latest news about Blue Lights September 2026",
-          "Blue Lights entertainment news 2026-09-29",
-          "what happened with Blue Lights",
-          "blue",
-          "lights",
-          "police",
-          "drama",
-          "hitting",
-          "home",
-          "September 2026",
-          "2026-09-29",
-          "Blue Lights 2026",
-          "BBC Blue Lights",
-          "bbc.co.uk Blue Lights",
-          "BBC entertainment news"
-        ],
-        "seo_generated_at": "2026-09-29T08:59:16.468Z"
-      }
-    },
-    {
-      "id": "6c7c46f5",
-      "title": "Luana Tavares canta com Gabi da Pele Preta e Isaar em álbum autoral que ecoa sons da Zona da Mata pernambucana",
-      "url": "https://g1.globo.com/pop-arte/musica/blog/mauro-ferreira/post/2026/09/29/luana-tavares-canta-com-gabi-da-pele-preta-e-isaar-em-album-autoral-que-ecoa-sons-da-zona-da-mata-pernambucana.ghtml",
-      "source": "G1",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "BR",
-      "published_at": "2026-09-29T03:00:00.000Z",
-      "discovered_at": "2026-09-29T08:59:16.468Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "Luana Tavares",
-      "description": "Luana Tavares: entertainment headline reported by G1. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://s2-g1.glbimg.com/ocNFNPLSnYqWFs5Br5A5wsQYIkY=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/B/8/8YcjSgTtm36UivoWFAZQ/luana-tavares-betofigueiroa2x.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/luana-tavares-canta-com-gabi-da-pele-preta-e-isaar-em-album-autoral-que-ecoa-son-6c7c46/",
-      "landing_url": "https://matchapp.tv/?news=6c7c46f5#latest-news",
-      "seo": {
-        "primary_keyword": "न्यायालय",
-        "short_tail": [
-          "Luana Tavares",
-          "Luana Tavares news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "न्यायालय",
-          "ഫഹദ് ഫാസില്",
-          "தினகரன்",
-          "ఓటీటీ"
-        ],
-        "long_tail": [
-          "Luana Tavares latest news September 2026",
-          "Luana Tavares entertainment update 2026",
-          "Luana Tavares news 2026-09-29",
-          "latest entertainment news about Luana Tavares",
-          "luana tavares luana tavares canta gabi latest update",
-          "G1 Luana Tavares entertainment",
-          "últimas notícias sobre Luana Tavares setembro 2026",
-          "Luana Tavares notícia de 2026-09-29",
-          "o que aconteceu com Luana Tavares"
-        ],
-        "trend_keywords": [
-          "न्यायालय",
-          "ഫഹദ് ഫാസില്",
-          "தினகரன்",
-          "ఓటీటీ"
-        ],
-        "entity_keywords": [
-          "Luana Tavares",
-          "luana",
-          "tavares",
-          "canta",
-          "gabi",
-          "pele",
-          "preta"
-        ],
-        "freshness_keywords": [
-          "September 2026",
-          "2026-09-29",
-          "setembro 2026",
-          "Luana Tavares 2026"
-        ],
-        "source_keywords": [
-          "G1 Luana Tavares",
-          "g1.globo.com Luana Tavares",
-          "G1 entertainment news"
-        ],
-        "meta_title": "Luana Tavares canta com Gabi da Pele Preta e Isaar em…",
-        "meta_description": "Luana Tavares: Entertainment update reported by G1 on 2026-09-29. See verified context, publication time and the original source via MatchApp TV.",
-        "keywords": [
-          "न्यायालय",
-          "Luana Tavares",
-          "Luana Tavares news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "ഫഹദ് ഫാസില്",
-          "தினகரன்",
-          "ఓటీటీ",
-          "Luana Tavares latest news September 2026",
-          "Luana Tavares entertainment update 2026",
-          "Luana Tavares news 2026-09-29",
-          "latest entertainment news about Luana Tavares",
-          "luana tavares luana tavares canta gabi latest update",
-          "G1 Luana Tavares entertainment",
-          "últimas notícias sobre Luana Tavares setembro 2026",
-          "Luana Tavares notícia de 2026-09-29",
-          "o que aconteceu com Luana Tavares",
-          "luana",
-          "tavares",
-          "canta",
-          "gabi",
-          "pele",
-          "preta",
-          "September 2026",
-          "2026-09-29",
-          "setembro 2026",
-          "Luana Tavares 2026",
-          "G1 Luana Tavares",
-          "g1.globo.com Luana Tavares"
         ],
         "seo_generated_at": "2026-09-29T08:59:16.468Z"
       }
