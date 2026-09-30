@@ -9,6 +9,7 @@ type RouterArgs = {
   blockXXX: (row: Record<string,unknown>) => boolean;
   explicitXXX: (text: string) => boolean;
   allowedCandidateIds?: string[];
+  acceptDiscoverAnswer?: (answer: string) => boolean;
 };
 
 // OpenRouter itself fails over between different model providers.
@@ -61,6 +62,7 @@ export async function callOpenRouterFirst(args: RouterArgs): Promise<Response|nu
     if(!parsed || typeof parsed!=="object" || Array.isArray(parsed))return null;
     if(mode==="discover"){
       if(typeof parsed.answer!=="string" || !Array.isArray(parsed.results))return null;
+      if(args.acceptDiscoverAnswer && !args.acceptDiscoverAnswer(parsed.answer))return null;
       const urls=[...parsed.answer.matchAll(/https?:\/\/[^\s)>\]]+/g)];
       if(explicitXXX(parsed.answer)||urls.some((m:RegExpMatchArray)=>blockXXX({url:m[0]}))){
         parsed.answer="MatchApp helps with mainstream, non-explicit entertainment.";
