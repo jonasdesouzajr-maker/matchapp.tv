@@ -128,3 +128,26 @@ test('fresh rich artwork is reused while pinned source art retains priority',asy
  assert.equal(await run(),'https://official.example/exact.jpg');assert.equal(calls,0);
  context.verified='https://pinned.example/exact.jpg';assert.equal(await run(),context.verified);assert.equal(calls,0);
 });
+
+
+test('verified ebook cover sources overlap network work while preserving trusted display priority',async()=>{
+ const source=read('ebooks/ebook-matcher.js');
+ const start=source.indexOf('async function hydrateCover('),end=source.indexOf('async function cloudSync(',start);
+ assert(start>=0&&end>start);
+ const starts=[],shown=[],resolve={};
+ const ctx=vm.createContext({
+  sourceCover:(_book,name)=>{starts.push(name);return new Promise(r=>{resolve[name]=r})},
+  showSourceCover:async(_img,_fall,url)=>{shown.push(url);return true},
+  window:{MatchAppBookCoverIdentity:{}}
+ });
+ const hydrate=vm.runInContext(source.slice(start,end)+';hydrateCover',ctx);
+ const work=hydrate({title:'Exact Book',author:'Exact Author'},{hidden:false},{hidden:false},null);
+ await Promise.resolve();
+ assert.deepEqual(starts,['openlibrary','google','apple']);
+ resolve.google('google-exact');resolve.apple('apple-exact');
+ await Promise.resolve();
+ assert.deepEqual(shown,[]);
+ resolve.openlibrary(null);
+ await work;
+ assert.deepEqual(shown,['google-exact']);
+});

@@ -61,3 +61,14 @@ test('circular loading artwork gives way to playback without changing the startu
  assert.equal(video.style.visibility,'visible');assert.equal(b.overlay().querySelector('img'),null);
  b.deadline();assert.equal(b.overlay(),null);b.dom.window.close();
 });
+
+
+test('installed intro starts from head before render-blocking styles',()=>{
+ const home=fs.readFileSync('index.html','utf8');
+ const intro=home.indexOf('/installed-app-intro.js?v=20261001-introearly1');
+ assert.ok(intro>0);
+ assert.ok(intro<home.indexOf('</head>'));
+ assert.ok(intro<home.indexOf('/style.css'));
+ assert.equal(home.indexOf('/installed-app-intro.js',home.indexOf('<body')), -1);
+ assert.match(source,/document\.documentElement\.appendChild\(overlay\)/);
+});

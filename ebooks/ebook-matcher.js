@@ -370,8 +370,9 @@ async function hydrateCover(book,img,fall,audio){
  img.hidden=true;if(fall)fall.hidden=false;
  // A source-verified Apple audio record carries its own genuine edition art.
  if(audio?.apple?.coverUrl&&await showSourceCover(img,fall,audio.apple.coverUrl))return;
- for(const source of ['openlibrary','google','apple']){
-  const url=await sourceCover(book,source);
+ const sourceJobs=['openlibrary','google','apple'].map(source=>sourceCover(book,source));
+ for(const job of sourceJobs){
+  const url=await job;
   if(url&&await showSourceCover(img,fall,url))return;
  }
  img.hidden=true;if(fall)fall.hidden=false;

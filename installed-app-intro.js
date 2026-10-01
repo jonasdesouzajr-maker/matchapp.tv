@@ -61,7 +61,7 @@
   document.addEventListener('visibilitychange', onVisibility);
   window.addEventListener('pagehide', finish, { once: true });
   overlay.append(style, video, loading, skip);
-  document.body.appendChild(overlay);
+  document.documentElement.appendChild(overlay);
   // Finite wall-clock deadline includes download, decoding and stalled playback.
   deadline = setTimeout(finish, 6500);
   // Check the actual H.264 profile, not just the MP4 container.
