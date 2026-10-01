@@ -59,7 +59,7 @@ test('Kids hub metadata describes actual age, mood, learning and streaming-guide
  assert.equal(meta('twitter:description'),meta('description'));
  const ld=JSON.parse(doc.querySelector('script[type="application/ld+json"]').textContent);
  assert.equal(ld['@graph'][0]['@type'],'CollectionPage');
- assert.equal(ld['@graph'][0].dateModified,'2026-09-28');
+ assert.equal(ld['@graph'][0].dateModified,'2026-10-01');
  assert.equal(ld['@graph'][0].mainEntity.itemListElement.length,4);
  assert(ld['@graph'][0].hasPart.some(item=>item.url.endsWith('/kids/nostalgia/')));
  assert(ld['@graph'].some(node=>node['@type']==='BreadcrumbList'));
