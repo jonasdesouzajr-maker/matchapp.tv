@@ -90,7 +90,16 @@ function refreshFoldLabels(){
  });
  const watch=document.getElementById('ma-concierge');if(watch)refreshWatchPreview(watch);
 }
-function setNative(el,open){if(el&&el.tagName==='DETAILS'&&el.open!==!!open)el.open=!!open}
+function setNative(el,open,force=false){
+ if(!el||el.tagName!=='DETAILS')return;
+ // A direct summary activation must win over a stale observer sync. Lazy Mode
+ // remains authoritative because its force-closed pass explicitly bypasses this guard.
+ if(!force&&el.dataset.foldUserAction){
+  const key=el.dataset.foldKey;if(key)remember(key,el.open);
+  return;
+ }
+ if(el.open!==!!open)el.open=!!open;
+}
 function mountNative(cfg,el){
  if(!el||el.dataset.foldStateMounted==='1')return;
  el.dataset.foldStateMounted='1';el.dataset.foldKey=cfg.key;
@@ -155,7 +164,7 @@ function syncAll(forceClosed=false){
  syncing=true;
  try{
   GENERIC.forEach(cfg=>document.querySelectorAll(cfg.sel).forEach(el=>setGeneric(el,forceClosed?false:storedOpen(cfg.key))));
-  NATIVE.forEach(cfg=>document.querySelectorAll(cfg.sel).forEach(el=>setNative(el,forceClosed?false:storedOpen(cfg.key))));
+  NATIVE.forEach(cfg=>document.querySelectorAll(cfg.sel).forEach(el=>setNative(el,forceClosed?false:storedOpen(cfg.key),forceClosed)));
   setSwift(forceClosed?false:storedOpen('swifties'));
  }finally{queueMicrotask(()=>{syncing=false})}
 }

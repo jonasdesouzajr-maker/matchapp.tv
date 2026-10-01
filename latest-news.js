@@ -328,10 +328,17 @@
     // dynamic section. Pointer/touch and keyboard activation all dispatch click,
     // so one request always produces exactly one state change.
     const summary=section.querySelector(':scope > summary');
+    let summaryAction=0;
     summary?.addEventListener('click',event=>{
       if(event.defaultPrevented)return;
       event.preventDefault();
+      // Preserve a real user activation while Home's MutationObserver may still
+      // be applying an older fold snapshot. The token prevents an earlier timer
+      // from clearing a newer rapid second activation.
+      const token=String(++summaryAction);
+      section.dataset.foldUserAction=token;
       section.open=!section.open;
+      window.setTimeout(()=>{if(section.dataset.foldUserAction===token)delete section.dataset.foldUserAction;},400);
     });
 
     section.addEventListener('toggle',()=>{

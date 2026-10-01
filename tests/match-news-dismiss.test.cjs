@@ -51,7 +51,7 @@ test('trash only hides the match after its fade; a new match cannot be hidden by
 
 test('News initializes directly on the homepage and its original-source cards live inside an interactive details fold',async()=>{
  const html=read('index.html'),news=read('latest-news.js'),colors=read('fold-colors.css');
- assert.match(html,/\/latest-news\.js\?v=20261001-newsfold2/,'must not rely on deferred editorial intersection trigger');
+ assert.match(html,/\/latest-news\.js\?v=20261001-newsfold3/,'must not rely on deferred editorial intersection trigger');
  assert.match(html,/\/live-news-loader\.js\?v=20260926-newsfold1/);
  assert.match(colors,/#latest-news>summary\{[\s\S]*?pointer-events:auto!important;cursor:pointer!important/);
  assert.doesNotMatch(colors,/#latest-news>summary::after\{\s*content:none/);
@@ -66,19 +66,24 @@ test('News initializes directly on the homepage and its original-source cards li
     country:'US',category:'entertainment',event_type:'Entertainment'
    }]})
  };
- w.eval(news);w.document.dispatchEvent(new w.Event('DOMContentLoaded'));
- await new Promise(r=>setTimeout(r,30));
+ w.eval(read('lazy.js'));w.eval(news);w.document.dispatchEvent(new w.Event('DOMContentLoaded'));
+ // Activate immediately, before the dynamic-section MutationObserver settles.
+ // A stale closed snapshot must never undo this explicit user request.
  const section=w.document.getElementById('latest-news');
  assert.ok(section);
+ const summary=section.querySelector(':scope > summary');
+ section.open=false;summary.click();assert.equal(section.open,true,'one summary activation opens News');
+ await new Promise(r=>setTimeout(r,30));
+ assert.equal(section.open,true,'queued Home fold sync must preserve explicit News activation');
  assert.equal(section.tagName,'DETAILS');
  assert.equal(w.document.getElementById('ma-concierge').nextElementSibling,section,'News must remain visible outside a collapsed Match/Ask stage');
  assert.equal(w.document.getElementById('ebook-matcher-root').previousElementSibling.id,'questionnaire-box','Never split the approved matcher/Bookworms pair');
  assert.equal(section.open,false,'News starts folded until the user opens it');
  assert.equal(section.querySelectorAll('.ma-news-card').length,1);
  assert.equal(section.querySelector('.ma-news-card-main')?.getAttribute('href'),'https://www.reuters.com/world/');
- const summary=section.querySelector(':scope > summary');
- section.open=false;summary.click();assert.equal(section.open,true,'one summary activation opens News');
  summary.click();assert.equal(section.open,false,'second summary activation closes News');
+ await new Promise(r=>setTimeout(r,10));
+ assert.equal(section.open,false,'queued fold work must preserve the second explicit close');
  section.open=true;assert.equal(section.open,true);
  w.close();
 });
@@ -99,5 +104,6 @@ test('match artwork appears before source awaits and slow fallback cannot replac
 test('Latest News owns one deterministic summary state change across touch-sized layouts',()=>{
  const news=read('latest-news.js');
  assert.match(news,/summary\?\.addEventListener\('click',event=>\{/);
- assert.match(news,/event\.preventDefault\(\);\s*section\.open=!section\.open/);
+ assert.match(news,/section\.dataset\.foldUserAction=token;\s*section\.open=!section\.open/);
+ assert.match(read('lazy.js'),/if\(!force&&el\.dataset\.foldUserAction\)/);
 });
