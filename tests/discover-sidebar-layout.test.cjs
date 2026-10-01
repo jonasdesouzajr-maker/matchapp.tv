@@ -1,0 +1,20 @@
+const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs');
+const {JSDOM}=require('jsdom');
+test('history clearance follows actual header size and language changes without changing chat state',async()=>{
+ const dom=new JSDOM('<body class="ai-chat-page"><header class="app-header"></header><button id="ai-sidebar-toggle"></button></body>',{runScripts:'outside-only',pretendToBeVisual:true});
+ const w=dom.window;let bottom=132,resize;
+ const header=w.document.querySelector('header');header.getBoundingClientRect=()=>({bottom});
+ w.ResizeObserver=class{constructor(fn){resize=fn}observe(el){assert.equal(el,header)}};
+ w.eval(fs.readFileSync('discover-sidebar-layout.js','utf8'));
+ w.document.dispatchEvent(new w.Event('DOMContentLoaded'));
+ assert.equal(w.document.body.style.getPropertyValue('--ai-sidebar-top'),'140px');
+ bottom=205;resize();assert.equal(w.document.body.style.getPropertyValue('--ai-sidebar-top'),'213px');
+ bottom=96;w.document.dispatchEvent(new w.Event('matchapp:langchange'));
+ await new Promise(resolve=>w.requestAnimationFrame(resolve));
+ assert.equal(w.document.body.style.getPropertyValue('--ai-sidebar-top'),'104px');
+ assert.equal(w.document.body.className,'ai-chat-page');
+ const css=fs.readFileSync('discover-compact.css','utf8');
+ assert.match(css,/\.ai-sidebar-toggle,\.ai-sidebar,\.ai-sidebar-scrim\)\{top:var\(--ai-sidebar-top,140px\)!important\}/);
+ assert.match(fs.readFileSync('discover.html','utf8'),/discover-sidebar-layout\.js\?v=20261001-sidebar1/);
+ dom.window.close();
+});

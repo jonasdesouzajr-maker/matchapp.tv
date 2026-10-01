@@ -32,3 +32,21 @@ test('PR crawler checks fetch candidate files locally while enforcing the produc
  assert.ok(bad.issues.some(x=>x.startsWith('Canonical mismatch')));
  await assert.rejects(auditLiveSearch(local,transport({'/sitemaps.xml':'<sitemapindex><sitemap><loc>https://untrusted.example/sitemap.xml</loc></sitemap></sitemapindex>'}),base),/Noncanonical/);
 });
+
+test('crawler retries a transient timeout once and preserves persistent failure URL',async()=>{
+ const healthy=transport();let calls=0;
+ const retry=async(url,options)=>{
+  if(new URL(url).pathname==='/guide/'&&++calls===1)throw new DOMException('request timed out','TimeoutError');
+  return healthy(url,options);
+ };
+ assert.deepEqual(await auditLiveSearch(base,retry),{checkedUrls:1,issues:[]});
+ assert.equal(calls,2);
+ calls=0;
+ const fail=async(url,options)=>{
+  if(new URL(url).pathname==='/guide/'){calls++;throw new DOMException('request timed out','TimeoutError');}
+  return healthy(url,options);
+ };
+ const result=await auditLiveSearch(base,fail);
+ assert.equal(calls,2);
+ assert.deepEqual(result.issues,[base+'/guide/: request timed out']);
+});

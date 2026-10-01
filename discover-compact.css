@@ -1,4 +1,6 @@
 /* Adult Discover conversation density. Original artwork retains its natural ratio. */
+/* History must remain tappable below the shared responsive header. */
+html body.ai-chat-page :is(.ai-sidebar-toggle,.ai-sidebar,.ai-sidebar-scrim){top:var(--ai-sidebar-top,140px)!important}
 body.ai-chat-page .discover-speak svg{display:block;width:24px;height:24px;overflow:visible}
 body.ai-chat-page .discover-poster{height:auto;align-self:flex-start}
 body.ai-chat-page .discover-poster img{width:100%;height:auto;object-fit:contain}

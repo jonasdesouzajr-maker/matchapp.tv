@@ -320,6 +320,23 @@ async function aiQuestion(page,question,expected,label){
       activeAsk.open&&activeAsk.visible&&activeAsk.noAutoKeyboard,JSON.stringify(activeAsk));
     await shot(page,device.name+'-home-ask-open');
     await observed(page,'/discover.html');
+    // The shared header grows on touch screens and after language changes.
+    // Exercise real clicks so a header covering history cannot pass silently.
+    const historyFold=page.locator('.ai-sidebar-fold');
+    if(await historyFold.isVisible()&&device.width>980)await historyFold.click();
+    await page.locator('#ai-sidebar-toggle').click({timeout:12000});
+    const history=await page.evaluate(()=>{
+      const button=document.getElementById('ai-sidebar-toggle');
+      const panel=document.getElementById('ai-sidebar');
+      const header=document.querySelector('header.app-header').getBoundingClientRect();
+      const rect=panel.getBoundingClientRect();
+      return {belowHeader:rect.top>=header.bottom,visible:rect.left>=-1&&rect.right>0,
+        newChat:!!document.getElementById('ai-new-chat')?.getClientRects().length,
+        toggleTop:button.getBoundingClientRect().top,headerBottom:header.bottom};
+    });
+    record('Ask AI history opens below shared header '+device.name,
+      history.belowHeader&&history.visible&&history.newChat,JSON.stringify(history));
+    await historyFold.click();
     // Empty Send must guide the user rather than appearing unresponsive.
     await page.locator('.composer-send').click({timeout:10000});
     const emptyPrompt=await page.locator('#discover-compose-help').innerText();
@@ -344,6 +361,14 @@ async function aiQuestion(page,question,expected,label){
       shellBrand.label==='MatchApp Ai'&&shellBrand.ai==='Ai'&&!shellBrand.obsoleteGraphic&&!shellBrand.detached,
       JSON.stringify(shellBrand));
     await shot(page,device.name+'-ask-ai');
+    await observed(page,'/pricing/pricing.html');
+    const pricing=await page.evaluate(()=>({viewport:document.documentElement.clientWidth,
+      layout:innerWidth,scroll:document.documentElement.scrollWidth,
+      plans:document.querySelectorAll('button[id^="btn-"]').length}));
+    record('Pricing fits actual device viewport '+device.name,
+      pricing.layout<=device.width+16&&pricing.scroll<=device.width+16&&pricing.plans>=4,
+      JSON.stringify(pricing));
+    await shot(page,device.name+'-pricing');
    }catch(error){
      record('device '+device.name,false,String(error.stack||error).slice(0,500));
      await shot(page,device.name+'-failure');

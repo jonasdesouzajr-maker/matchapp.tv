@@ -8,9 +8,20 @@ async function auditLiveSearch(base='https://matchapp.tv',request=fetch,canonica
   if(target.origin!==canonicalOrigin)throw Error('Noncanonical sitemap host: '+url);
   // PR candidates serve production metadata locally; validate canonical identity
   // separately from the address used to fetch the candidate's actual files.
-  const r=await request(origin+target.pathname+target.search,{signal:AbortSignal.timeout(12000),cache:'no-store'});
-  if(r.status!==200)throw Error('HTTP '+r.status+' '+url);
-  return {text:await r.text(),robots:r.headers.get('x-robots-tag')||''};
+  for(let attempt=0;attempt<2;attempt++){
+   try{
+    const r=await request(origin+target.pathname+target.search,{signal:AbortSignal.timeout(12000),cache:'no-store'});
+    if(r.status!==200)throw Error('HTTP '+r.status+' '+url);
+    return {text:await r.text(),robots:r.headers.get('x-robots-tag')||''};
+   }catch(error){
+    // Only retry transient transport failures. Persistent HTTP, canonical and
+    // content defects remain fatal; every final failure identifies its URL.
+    const transient=['TimeoutError','AbortError','TypeError'].includes(error.name);
+    if(attempt===1||!transient)throw Error(url+': '+error.message,{cause:error});
+    console.warn('Crawler transport retry '+url+': '+error.message);
+    await new Promise(resolve=>setTimeout(resolve,250));
+   }
+  }
  }
  function locations(text,type){
   const dom=new JSDOM(text,{contentType:'text/xml'});
