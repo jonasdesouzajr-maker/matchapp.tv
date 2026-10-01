@@ -1,4 +1,4 @@
-/* MatchApp Ai | MatchApp iA: signature bilingual top-box lettering.
+/* MatchApp Ai: canonical all-language top-box lettering.
    Uses the existing transparent circular orb. One integrated, accessible
    wordmark replaces TV plus the formerly detached animated Ai button.
    Text is genuine DOM text (not an image), so it stays crisp on every screen. */
@@ -213,7 +213,7 @@ html body.ebook-page .ebook-page-top .ebook-hub-brand .ma-word-ai{
    An intelligent-looking iridescent text wave, a tiny travelling "signal"
    mote and our existing proprietary four-point gold star breathing in sync.
    CSS-only; NO canvas, GIF, layout transforms or repeating filter animation.
-   Scoped solely to adult Ai/iA letters across the Home, inner pages and hub. */
+   Scoped solely to adult Ai letters across the Home, inner pages and hub. */
 html body.page-home #mh-topbox .ma-brand-copy .ma-word-ai,
 html body.page-shell header.app-header.mh-topbox .ma-brand-copy .ma-word-ai,
 html body.ebook-page .ebook-page-top .ebook-hub-brand .ma-word-ai{
