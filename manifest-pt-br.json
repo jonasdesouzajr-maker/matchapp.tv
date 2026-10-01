@@ -50,8 +50,8 @@
     }
   ],
   "prefer_related_applications": false,
-  "name": "MatchApp iA",
-  "short_name": "MatchApp iA",
+  "name": "MatchApp Ai",
+  "short_name": "MatchApp Ai",
   "description": "Concierge de entretenimento com IA: escolha o clima, receba um título e veja onde assistir oficialmente no seu país.",
   "start_url": "/?utm_source=pwa&lang=pt-BR",
   "lang": "pt-BR",
