@@ -32,6 +32,8 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.core.view.WindowCompat
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.button.MaterialButton
@@ -204,7 +206,19 @@ class MainActivity : AppCompatActivity() {
     private fun startIntro() {
         val root = findViewById<FrameLayout>(R.id.root)
         val host = FrameLayout(this).apply { setBackgroundColor(Color.BLACK) }
-        val video = VideoView(this)
+        val video = object : VideoView(this@MainActivity) {
+            override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+                val width = View.MeasureSpec.getSize(widthMeasureSpec)
+                val height = View.MeasureSpec.getSize(heightMeasureSpec)
+                val scale = maxOf(width / 1080f, height / 1920f)
+                setMeasuredDimension(kotlin.math.ceil(1080 * scale).toInt(), kotlin.math.ceil(1920 * scale).toInt())
+            }
+        }
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+        WindowCompat.getInsetsController(window, window.decorView).apply {
+            systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+            hide(WindowInsetsCompat.Type.systemBars())
+        }
         val skip = MaterialButton(this).apply {
             text = if (resources.configuration.locales[0].language == "pt") "Pular" else "Skip"
             setOnClickListener { finishIntro() }
@@ -212,8 +226,8 @@ class MainActivity : AppCompatActivity() {
         introHost = host
         introVideo = video
         val bounds = resources.displayMetrics
-        val width = minOf(bounds.widthPixels, (bounds.heightPixels * 720f / 1260f).toInt())
-        host.addView(video, FrameLayout.LayoutParams(width, (width * 1260f / 720f).toInt(), android.view.Gravity.CENTER))
+        host.clipChildren = true
+        host.addView(video, FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT, android.view.Gravity.CENTER))
         val margin = (16 * bounds.density).toInt()
         host.addView(skip, FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, android.view.Gravity.BOTTOM or android.view.Gravity.END).apply {
             setMargins(margin, margin, margin, margin)
@@ -236,6 +250,8 @@ class MainActivity : AppCompatActivity() {
         findViewById<FrameLayout>(R.id.root)?.removeCallbacks(introDeadline)
         val host = introHost ?: return
         introHost = null
+        WindowCompat.setDecorFitsSystemWindows(window, true)
+        WindowCompat.getInsetsController(window, window.decorView).show(WindowInsetsCompat.Type.systemBars())
         try { introVideo?.stopPlayback() } catch (_: Exception) { }
         introVideo = null
         (host.parent as? ViewGroup)?.removeView(host)
@@ -514,8 +530,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val HOME = "https://matchapp.tv/?utm_source=android_app&appBuild=36"
-        const val APP_UA = "MatchAppTVAndroid/1.1.34 MatchAppAiAndroid/1.1.34 MatchAppLaunchIntro/1"
+        const val HOME = "https://matchapp.tv/?utm_source=android_app&appBuild=37"
+        const val APP_UA = "MatchAppTVAndroid/1.1.35 MatchAppAiAndroid/1.1.35 MatchAppLaunchIntro/1"
         private const val APP_MODE_JS = """
             (function(){
               window.MATCHAPP_IS_AD_FREE = true;

@@ -29,6 +29,17 @@ test('native intro is bundled, bounded, destroyed on background and does not cha
  const s=fs.readFileSync('android-studio/app/src/main/java/com/jonas/papercup/MainActivity.kt','utf8');
  assert.match(s,/R.raw.matchapp_launch_intro/);assert.match(s,/root.postDelayed\(introDeadline, 6500\)/);assert.match(s,/setOnErrorListener/);assert.match(s,/override fun onPause\(\) \{\s*finishIntro\(\)/);assert.match(s,/mediaPlaybackRequiresUserGesture = true/);
  assert.match(s,/savedInstanceState == null && intent.data == null/);
- assert.ok(fs.statSync('assets/brand/matchapp-launch-intro.mp4').size<1000000);
- assert.equal(fs.readFileSync('assets/brand/matchapp-launch-intro.mp4').compare(fs.readFileSync('android-studio/app/src/main/res/raw/matchapp_launch_intro.mp4')),0);
+ assert.ok(fs.statSync('assets/brand/matchapp-launch-intro-hd.mp4').size<1000000);
+ assert.equal(fs.readFileSync('assets/brand/matchapp-launch-intro-hd.mp4').compare(fs.readFileSync('android-studio/app/src/main/res/raw/matchapp_launch_intro.mp4')),0);
+});
+
+test('installed intro fills the viewport without distorting the video and native restores system bars',()=>{
+ const b=boot(); const video=b.overlay().querySelector('video');
+ assert.equal(video.style.objectFit,'cover');assert.equal(video.style.width,'100%');assert.equal(video.style.height,'100%');
+ assert.match(video.src,/matchapp-launch-intro-hd\.mp4$/);b.deadline();b.dom.window.close();
+ const native=fs.readFileSync('android-studio/app/src/main/java/com/jonas/papercup/MainActivity.kt','utf8');
+ assert.match(native,/maxOf\(width \/ 1080f, height \/ 1920f\)/);
+ assert.match(native,/hide\(WindowInsetsCompat.Type.systemBars\(\)\)/);
+ assert.match(native,/show\(WindowInsetsCompat.Type.systemBars\(\)\)/);
+ assert.match(fs.readFileSync('android-studio/app/src/main/res/values/themes.xml','utf8'),/windowSplashScreenAnimatedIcon">@drawable\/launch_empty/);
 });
