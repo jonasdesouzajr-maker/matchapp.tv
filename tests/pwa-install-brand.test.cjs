@@ -26,8 +26,8 @@ test('PWA keeps one localized app identity and uses the uploaded MatchApp icon',
   const pt=JSON.parse(read('manifest-pt-br.json'));
   assert.equal(en.name,'MatchApp Ai');
   assert.equal(en.short_name,'MatchApp Ai');
-  assert.equal(pt.name,'MatchApp iA');
-  assert.equal(pt.short_name,'MatchApp iA');
+  assert.equal(pt.name,'MatchApp Ai');
+  assert.equal(pt.short_name,'MatchApp Ai');
   assert.equal(en.id,'https://matchapp.tv/');
   assert.equal(pt.id,en.id);
   assert.equal(en.scope,'/');
@@ -53,7 +53,7 @@ test('browser install is real, consent-based, secure and localized',()=>{
   assert.match(js,/secureInstallContext\(\)/);
   assert.match(js,/window\.isSecureContext === true/);
   assert.match(js,/manifest-pt-br\.json/);
-  assert.match(js,/MatchApp iA/);
+  assert.match(js,/MatchApp Ai/);
   assert.match(js,/MatchApp Ai/);
   assert.match(js,/Add to Home Screen/);
   assert.match(js,/MatchAppTVAndroid/);
@@ -71,7 +71,7 @@ test('final wiring preserves localized install identity and all primary install 
   const version=(install.match(/MATCHAPP_INSTALL_VERSION = '([^']+)'/)||[])[1];
   assert.ok(version,'install.js must expose a cache/version identity');
   assert.match(wiring,/manifest-pt-br\.json/);
-  assert.match(wiring,/MatchApp iA/);
+  assert.match(wiring,/MatchApp Ai/);
   assert.match(wiring,/MatchApp Ai/);
   assert.match(wiring,/matchapp-ai-install-192\.png/);
   assert.doesNotMatch(wiring,/matchapp-apple-touch-icon\.png/);
