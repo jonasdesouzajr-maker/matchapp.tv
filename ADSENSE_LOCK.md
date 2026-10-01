@@ -70,3 +70,15 @@ The owner specifically directed that the **existing full-width Match Together sp
 ## Owner-authorized sizing correction — 2026-09-28
 
 The owner directly requested correction of the live Google AdSense `No slot size for availableWidth=116` error. On 1180px desktop viewports, the previously locked 132px outer side rail left only 116px for each responsive vertical unit after two 7px paddings and two 1px borders; Google specifies at least 120px for a fixed display ad width, and its responsive sizing rejected 116px in production. This one-time, width-only corrective exception raises the existing desktop rail track's minimum from 132px to **144px** in both matching desktop CSS declarations, yielding 128px minimum usable width. The desktop breakpoint remains 1180px; both rails, all five existing manual units, publisher/slot IDs, 600px reservation, positions, formats, Auto ads, initialization, Android ad-free shells and all other ad geometry remain untouched. The immutable regression now enforces the new 144px track floor and >=120px resulting interior. The corrected geometry is re-locked; this amendment grants no future AdSense changes.
+
+
+## Owner-authorized Kids web/PWA banner amendment — 2026-10-01
+
+The owner directly authorized one subtle AdSense banner on the public Kids Mode web/PWA surface. This amendment does not unlock or alter the five frozen adult Home units, their DOM order, formats, dimensions, IDs, Auto ads setting, or `ads-init.js`.
+
+- Scope: `/kids/` web browsers and installed PWA only.
+- Inventory: exactly one responsive horizontal manual unit using publisher `ca-pub-9541435081010948` and slot `2595698117`.
+- Treatment: every request carries `data-tag-for-age-treatment="1"` and the loader requests non-personalized ads.
+- Placement: inside the collapsed “A note for grown-ups” disclosure, away from the Kids matcher, result dialog, Ask AI input, wallet, guardian gate, and purchase controls.
+- Native app: the dedicated Kids Android WebView remains ad-free and never loads the Kids AdSense engine.
+- Future automation must not add a second Kids manual unit or expand this exception without another direct owner instruction.

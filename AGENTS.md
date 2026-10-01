@@ -86,6 +86,8 @@ Whenever I give you a task, acknowledge these instructions, confirm cross-platfo
 
 The canonical locked state is documented in `ADSENSE_LOCK.md` and enforced by automated regression checks.
 
+**OWNER AMENDMENT — 2026-10-01:** One subtle manual AdSense banner is authorized on public Kids Mode web/PWA only. Keep the adult five-unit lock unchanged. The Kids banner must remain exactly one unit, use the existing publisher/slot IDs, carry `data-tag-for-age-treatment="1"`, initialize only inside the grown-up disclosure, and remain completely suppressed inside the dedicated Kids Android WebView. See `ADSENSE_LOCK.md` for the re-locked exception.
+
 
 ---
 
