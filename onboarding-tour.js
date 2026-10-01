@@ -30,7 +30,7 @@ const copy={
   more:['Ajuste só se quiser','Abra Mais Filtros para gênero, ritmo, época e classificação etária. Tudo aqui é opcional.'],
   book:['Conheça o Bookworms','O campo separado de leitura abaixo do matcher de streaming encontra e-books, audiolivros verificados e revistas, com capas originais das fontes e links oficiais.'],
   bookFormat:['Escolha o que ler ou ouvir','Selecione E-book, Audiolivro ou Revista aqui. Depois escolha clima, gênero e outros filtros nos menus compactos e toque em Encontrar meu e-book para ver capas originais e links de fontes gratuitas legais, áudio ou lojas oficiais.'],
-  ai:['Pergunte à MatchApp iA','Prefere explicar com suas próprias palavras? Toque aqui e depois escolha digitar ou usar o microfone. O tour nunca abre o teclado sozinho.'],
+  ai:['Pergunte ao MatchApp Ai','Prefere explicar com suas próprias palavras? Toque aqui e depois escolha digitar ou usar o microfone. O tour nunca abre o teclado sozinho.'],
   latest:['Veja os títulos mais recentes','Deslize pelos pôsteres ou use as setas. Toque em um título para abrir detalhes e onde assistir.'],
   kids:['Abra o Modo Kids','Toque aqui para entrar na experiência infantil separada, revisada por idade e com regras próprias de segurança.'],
   profile:['Seu perfil ou login','Toque no avatar para abrir perfil privado, preferências e controles da conta — ou entre por aqui se ainda não estiver conectado.'],
