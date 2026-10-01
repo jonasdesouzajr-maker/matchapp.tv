@@ -8,7 +8,7 @@ const {fetchDeploymentMarker}=require('./deployment-marker.cjs');
 const {auditLiveSearch}=require('./live-search-readiness.cjs');
 const base=process.env.MATCHAPP_TEST_BASE||'https://matchapp.tv';
 const dir=path.resolve('artifacts/live-smoke');fs.mkdirSync(dir,{recursive:true});
-const report={base,started:new Date().toISOString(),screens:[],checks:[],errors:[],warnings:[],liveAnswers:[]};
+const report={base,started:new Date().toISOString(),screens:[],checks:[],errors:[],warnings:[],liveAnswers:[],runtimeErrorSources:[]};
 const record=(check,ok,detail)=>{report.checks.push({check,ok,detail});console.log((ok?'PASS ':'FAIL ')+check+(detail?' - '+detail:''));if(!ok)report.errors.push(check+': '+detail);};
 const cases=[
  {name:'desktop',width:1440,height:900,isMobile:false,hasTouch:false},
@@ -52,7 +52,22 @@ function capturePageError(device,error){
  errors.push({device,page:'home',error:stack.slice(0,500)});
 }
 async function shot(page,name){try{await page.screenshot({path:path.join(dir,name+'.png'),animations:'disabled',timeout:20000});report.screens.push(name+'.png')}catch(e){record('screenshot '+name,false,String(e.message).slice(0,150))}}
-async function observed(page,url){await page.goto(base+url,{waitUntil:'domcontentloaded',timeout:60000});await page.waitForTimeout(1400);return page;}
+async function observed(page,url){
+ // Observe ErrorEvent provenance as well as Playwright's sometimes opaque
+ // pageerror (e.g. minified external exception name "W"). Never suppress it.
+ page.on('console',message=>{
+  const prefix='MATCHAPP_QA_ERROR_SOURCE ';
+  if(!message.text().startsWith(prefix))return;
+  try{report.runtimeErrorSources.push(JSON.parse(message.text().slice(prefix.length)))}catch(_){}
+ });
+ if(!page.listenerCount('pageerror'))page.on('pageerror',error=>capturePageError(url,error));
+ await page.addInitScript(()=>window.addEventListener('error',event=>{
+  console.error('MATCHAPP_QA_ERROR_SOURCE '+JSON.stringify({message:event.message,
+    file:event.filename,line:event.lineno,column:event.colno,stack:String(event.error?.stack||'').slice(0,2000)}));
+ }));
+ await page.goto(base+url,{waitUntil:'domcontentloaded',timeout:60000});
+ await page.waitForTimeout(1400);return page;
+}
 async function aiQuestion(page,question,expected,label){
  const before=await page.locator('#chat-log .chat-assistant').count(),upstream=[];
  const network=response=>{if(response.url().includes('/functions/v1/gemini-proxy'))upstream.push(response.status())};
@@ -429,6 +444,20 @@ async function aiQuestion(page,question,expected,label){
       !!name&&loaded&&cover.loaded&&verifiedSource&&cover.fit!=='fill',
       'book='+name.slice(0,100)+' source='+cover.src.slice(0,130)+' verified='+verifiedSource+' fit='+cover.fit);
     await shot(books,'live-ebook-matched');
+
+    // A real audio edition must be verified before the matcher spends quota.
+    await format.selectOption('audiobook');
+    await root.locator('[data-ebook-match]').click();
+    await result.locator('.ebook-audio-verified').first().waitFor({state:'visible',timeout:75000});
+    const audioEdition=await result.evaluate(el=>({title:el.querySelector('h3')?.textContent,
+      author:el.querySelector('.ebook-author')?.textContent,
+      links:[...el.querySelectorAll('.ebook-audio-verified')].map(a=>({url:a.href,label:a.textContent}))}));
+    const audioSources=audioEdition.links.every(a=>{
+      const u=new URL(a.url);
+      return u.protocol==='https:'&&((['books.apple.com','itunes.apple.com'].includes(u.hostname)&&u.pathname.includes('/audiobook/'))||u.hostname==='librivox.org');
+    });
+    record('LIVE verified audiobook matching',!!audioEdition.title&&!!audioEdition.author&&audioEdition.links.length>0&&audioSources,JSON.stringify(audioEdition));
+    await shot(books,'live-audiobook-matched');
 
     // Publisher identity tiles are intentional and genuine issue art is only
     // linked on the publisher site; never pretend they are downloaded covers.

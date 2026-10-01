@@ -75,7 +75,7 @@ test('normal matching, audiobook matching and conversational AI retain separate 
  assert.match(book,/chooseVerifiedAudio\(p,/);
  assert.match(book,/const allowed=await window\.checkDailyLimit\(\)/);
  assert.match(chat,/async function askAIConversational/);
- assert(home.includes('/ebooks/cover-identity.js?v=20260926-catalogscale1'));
+ assert(home.includes('/ebooks/cover-identity.js?v=20261001-coverquality1'));
  assert(!kids.includes('/ebooks/audiobooks.js')&&!kids.includes('/ebooks/ebook-matcher.js'));
 });
 
@@ -98,4 +98,33 @@ test('optional third cover source uses exact Apple book identity, region and gen
  const matcher=read('ebooks/ebook-matcher.js');
  assert.match(matcher,/verifiedAppleBookCoverUrl/);
  assert.match(matcher,/\['openlibrary','google','apple'\]/);
+});
+
+ test('Apple thumbnail sharpening preserves verified asset and rejects unrelated origins',()=>{
+  const original='https://is1-ssl.mzstatic.com/image/thumb/Publication211/v4/exact/edition.jpg/100x100';
+  assert.equal(covers.sharpAppleCoverUrl(original),original.replace('/100x100','/600x600bb.jpg'));
+  assert.equal(covers.sharpAppleCoverUrl(original.replace('mzstatic.com','mzstatic.com.evil.test')),null);
+  assert.equal(covers.sharpAppleCoverUrl(original.replace('/image/thumb/','/other/')),null);
+  assert.equal(covers.sharpAppleCoverUrl(original.replace('/100x100','/600x600bb.jpg')),null);
+  assert.equal(covers.sharpAppleCoverUrl('bad'),null);
+ });
+
+test('failed sharper Apple rendition falls back to the verified thumbnail',async()=>{
+ const source=read('ebooks/ebook-matcher.js');
+ const start=source.indexOf('async function showSourceCover('),end=source.indexOf('async function hydrateCover(',start);
+ const calls=[],original='https://is1-ssl.mzstatic.com/image/thumb/Books/exact/100x100';
+ const ctx=vm.createContext({window:{MatchAppBookCoverIdentity:covers},showVerifiedCover:async(_img,_fall,url,timeout)=>{calls.push({url,timeout});return url===original}});
+ const show=vm.runInContext(source.slice(start,end)+';showSourceCover',ctx);
+ assert.equal(await show({},null,original),true);
+ assert.equal(calls.length,2);assert.equal(calls[0].timeout,2500);assert.equal(calls[1].url,original);
+});
+
+test('fresh rich artwork is reused while pinned source art retains priority',async()=>{
+ const source=read('app.js'),start=source.indexOf('    let realCover;'),end=source.indexOf('    // Track the current match globally',start);
+ let calls=0;
+ const context=vm.createContext({selected:{title:'Exact Movie'},meta:{artwork:'https://official.example/exact.jpg'},verified:null,skipLiveLookup:false,matchHints:{},
+  exactSpotifyPlaylistCover:()=>null,getRealCoverImage:async()=>{calls++;return 'https://other.example/cover.jpg'},generatedCover:()=>null});
+ const run=()=>vm.runInContext('(async()=>{'+source.slice(start,end)+'return realCover})()',context);
+ assert.equal(await run(),'https://official.example/exact.jpg');assert.equal(calls,0);
+ context.verified='https://pinned.example/exact.jpg';assert.equal(await run(),context.verified);assert.equal(calls,0);
 });

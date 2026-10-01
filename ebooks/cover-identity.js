@@ -87,5 +87,17 @@
   }
   return null;
  }
- return Object.freeze({normalize,exactAuthor,exactWork,verifiedCoverId,verifiedGoogleCoverUrl,verifiedAppleBookCoverUrl});
+ // Resize only a verified Apple CDN thumbnail, preserving the exact asset path.
+ // This optional rendition must fall back to the source URL on failure.
+ function sharpAppleCoverUrl(value){
+  try{
+   const url=new URL(value);
+   if(url.protocol!=='https:'||!/^is[0-9]+-ssl\.mzstatic\.com$/i.test(url.hostname)||
+      !url.pathname.startsWith('/image/thumb/'))return null;
+   if(!/\/(?:60|100)x(?:60|100)(?:bb)?(?:\.jpg)?$/.test(url.pathname))return null;
+   url.pathname=url.pathname.replace(/\/[^/]+$/, '/600x600bb.jpg');
+   return url.href;
+  }catch(_){return null}
+ }
+ return Object.freeze({normalize,exactAuthor,exactWork,verifiedCoverId,verifiedGoogleCoverUrl,verifiedAppleBookCoverUrl,sharpAppleCoverUrl});
 });

@@ -86,7 +86,7 @@ test('The retired Home hero no longer renders the headline or English shortcut b
  assert.match(css,/html body\.page-home \.home-hero\{position:absolute!important;width:1px!important/);
  assert.doesNotMatch(css,/#ma-hero-ctas\{|#ma-hero-match\{|#ma-hero-ask\{/);
  const html=read('index.html');
- assert.match(html,/\/ebooks\/ebook-matcher\.js\?v=20260926-publishericon2/);
+ assert.match(html,/\/ebooks\/ebook-matcher\.js\?v=20261001-coverquality1/);
  assert.match(html,/\/ebooks\/ebook-matcher\.css\?v=20260926-publishericon2/);
  assert.match(html,/\/home-approved\.js\?v=20260929-hide-hero/);
  assert.match(read('home-approved.js'),/home-approved\.css\?v=20260929-hide-hero/);

@@ -342,7 +342,7 @@ async function sourceCover(book,source){
  BOOK_COVER_INFLIGHT.set(key,job);
  return job;
 }
-function showVerifiedCover(img,fall,url){
+function showVerifiedCover(img,fall,url,timeout=7000){
  if(!url||!img?.isConnected)return Promise.resolve(false);
  return new Promise(resolve=>{
   let finished=false,timer;
@@ -354,19 +354,25 @@ function showVerifiedCover(img,fall,url){
    resolve(valid);
   };
   img.onload=()=>settle(true);img.onerror=()=>settle(false);
-  timer=setTimeout(()=>settle(false),7000);
+  timer=setTimeout(()=>settle(false),timeout);
   img.src=url;
   if(img.complete&&img.naturalWidth>0)settle(true);
  });
+}
+async function showSourceCover(img,fall,url){
+ const sharp=window.MatchAppBookCoverIdentity?.sharpAppleCoverUrl(url);
+ // Keep a stalled larger rendition from delaying the already verified source.
+ if(sharp&&await showVerifiedCover(img,fall,sharp,2500))return true;
+ return showVerifiedCover(img,fall,url);
 }
 async function hydrateCover(book,img,fall,audio){
  if(!img)return;
  img.hidden=true;if(fall)fall.hidden=false;
  // A source-verified Apple audio record carries its own genuine edition art.
- if(audio?.apple?.coverUrl&&await showVerifiedCover(img,fall,audio.apple.coverUrl))return;
+ if(audio?.apple?.coverUrl&&await showSourceCover(img,fall,audio.apple.coverUrl))return;
  for(const source of ['openlibrary','google','apple']){
   const url=await sourceCover(book,source);
-  if(url&&await showVerifiedCover(img,fall,url))return;
+  if(url&&await showSourceCover(img,fall,url))return;
  }
  img.hidden=true;if(fall)fall.hidden=false;
 }

@@ -5200,7 +5200,7 @@ async function renderResult(selected, isSpecificSearch) {
     } else if (skipLiveLookup && !(meta && meta.artwork)) {
         realCover = generatedCover(selected.title, matchHints);
     } else {
-        realCover = selected._meta?.artwork || await getRealCoverImage(selected.title, matchHints);
+        realCover = meta?.artwork || await getRealCoverImage(selected.title, matchHints);
     }
     if (!realCover) realCover = generatedCover(selected.title, matchHints);
 
