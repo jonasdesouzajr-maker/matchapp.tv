@@ -16,10 +16,10 @@ template = content("play/assetlinks.json")
 
 assert 'namespace = "com.jonas.papercup"' in gradle
 assert 'applicationId = "com.jonas.papercup"' in gradle
-assert "targetSdk = 36" in gradle and "versionCode = 35" in gradle
+assert "targetSdk = 36" in gradle and "versionCode = 36" in gradle
 assert 'package="tv.matchapp.app"' not in manifest
 assert "package com.jonas.papercup" in activity
-assert "appBuild=35" in activity
+assert "appBuild=36" in activity
 assert "isKidsUri(target)" in activity
 assert "child.post { child.destroy() }" in activity
 assert 'applicationId = "tv.matchapp.kids"' in kids

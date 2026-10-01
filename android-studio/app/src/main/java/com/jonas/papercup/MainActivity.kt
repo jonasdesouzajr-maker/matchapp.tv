@@ -26,6 +26,7 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.FrameLayout
 import android.widget.Toast
+import android.widget.VideoView
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -46,7 +47,10 @@ class MainActivity : AppCompatActivity() {
     private var filePathCallback: ValueCallback<Array<Uri>>? = null
     private var customView: View? = null
     private var customViewCallback: WebChromeClient.CustomViewCallback? = null
-    private var splashKeep = true
+    private var splashKeep = false
+    private var introHost: FrameLayout? = null
+    private var introVideo: VideoView? = null
+    private val introDeadline = Runnable { finishIntro() }
     private var lastUrl = HOME
 
     // Web UI (including the responsive Avatar Studio) is shared with matchapp.tv.
@@ -77,7 +81,10 @@ class MainActivity : AppCompatActivity() {
 
     @SuppressLint("SetJavaScriptEnabled")
     override fun onCreate(savedInstanceState: Bundle?) {
-        installSplashScreen().setKeepOnScreenCondition { splashKeep }
+        installSplashScreen().apply {
+            setKeepOnScreenCondition { splashKeep }
+            setOnExitAnimationListener { it.remove() }
+        }
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
@@ -146,12 +153,15 @@ class MainActivity : AppCompatActivity() {
         onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 when {
+                    introHost != null -> finishIntro()
                     customView != null -> hideCustomView()
                     web.canGoBack() -> web.goBack()
                     else -> finish()
                 }
             }
         })
+
+        if (savedInstanceState == null && intent.data == null) startIntro()
 
         val launch = resolveLaunchUrl(intent)
         lastUrl = launch
@@ -172,6 +182,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onPause() {
+        finishIntro()
         super.onPause()
         web.onPause()
         CookieManager.getInstance().flush()
@@ -183,9 +194,51 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onDestroy() {
+        finishIntro()
         fullscreenHost.removeAllViews()
         web.destroy()
         super.onDestroy()
+    }
+
+    // Playback is bundled, muted, finite, and independent of Home loading.
+    private fun startIntro() {
+        val root = findViewById<FrameLayout>(R.id.root)
+        val host = FrameLayout(this).apply { setBackgroundColor(Color.BLACK) }
+        val video = VideoView(this)
+        val skip = MaterialButton(this).apply {
+            text = if (resources.configuration.locales[0].language == "pt") "Pular" else "Skip"
+            setOnClickListener { finishIntro() }
+        }
+        introHost = host
+        introVideo = video
+        val bounds = resources.displayMetrics
+        val width = minOf(bounds.widthPixels, (bounds.heightPixels * 720f / 1260f).toInt())
+        host.addView(video, FrameLayout.LayoutParams(width, (width * 1260f / 720f).toInt(), android.view.Gravity.CENTER))
+        val margin = (16 * bounds.density).toInt()
+        host.addView(skip, FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, android.view.Gravity.BOTTOM or android.view.Gravity.END).apply {
+            setMargins(margin, margin, margin, margin)
+        })
+        root.addView(host, FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT))
+        root.postDelayed(introDeadline, 6500)
+        video.setOnPreparedListener { player ->
+            player.setVolume(0f, 0f)
+            player.isLooping = false
+            video.start()
+        }
+        video.setOnCompletionListener { finishIntro() }
+        video.setOnErrorListener { _, _, _ -> finishIntro(); true }
+        try {
+            video.setVideoURI(Uri.parse("android.resource://$packageName/${R.raw.matchapp_launch_intro}"))
+        } catch (_: Exception) { finishIntro() }
+    }
+
+    private fun finishIntro() {
+        findViewById<FrameLayout>(R.id.root)?.removeCallbacks(introDeadline)
+        val host = introHost ?: return
+        introHost = null
+        try { introVideo?.stopPlayback() } catch (_: Exception) { }
+        introVideo = null
+        (host.parent as? ViewGroup)?.removeView(host)
     }
 
     private fun retry() {
@@ -461,8 +514,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val HOME = "https://matchapp.tv/?utm_source=android_app&appBuild=35"
-        const val APP_UA = "MatchAppTVAndroid/1.1.33 MatchAppAiAndroid/1.1.33"
+        const val HOME = "https://matchapp.tv/?utm_source=android_app&appBuild=36"
+        const val APP_UA = "MatchAppTVAndroid/1.1.34 MatchAppAiAndroid/1.1.34 MatchAppLaunchIntro/1"
         private const val APP_MODE_JS = """
             (function(){
               window.MATCHAPP_IS_AD_FREE = true;
