@@ -85,6 +85,6 @@ test('Kids generator produces original, readable unique title snippets without t
  }
  assert.notEqual(bluey,learn);
  assert.match(learn,/science/);
- assert.match(read('tools/update-sitemap.js'),/kids\/.*2026-09-28|lastmod: '2026-09-28T00:00:00\+00:00'/);
+ assert.match(read('tools/update-sitemap.js'),/kids\/.*2026-10-01|lastmod: '2026-10-01T00:00:00\+00:00'/);
  assert.match(read('.github/workflows/kids-seo-refresh.yml'),/node tools\/build-kids-pages\.js/);
 });

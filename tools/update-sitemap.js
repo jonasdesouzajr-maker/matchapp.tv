@@ -35,7 +35,7 @@ const CORE = [
     { loc: `${SITE}/android/`,                  freq: 'weekly',  pri: '0.6' },
     { loc: `${SITE}/desktop/windows.html`,      freq: 'weekly',  pri: '0.6' },
     { loc: `${SITE}/desktop/macos.html`,        freq: 'weekly',  pri: '0.6' },
-    { loc: `${SITE}/kids/`,                    freq: 'weekly',  pri: '0.9', lastmod: '2026-09-28T00:00:00+00:00' },
+    { loc: `${SITE}/kids/`,                    freq: 'weekly',  pri: '0.9', lastmod: '2026-10-01T00:00:00+00:00' },
     { loc: `${SITE}/featured/a-gata-comeu/`,   freq: 'weekly',  pri: '0.8', lastmod: '2026-09-17T00:00:00+00:00' },
     { loc: `${SITE}/featured/american-horror-story-13/`, freq: 'weekly', pri: '0.8', lastmod: '2026-09-17T00:00:00+00:00' },
     { loc: `${SITE}/featured/antartida/`,     freq: 'weekly',  pri: '0.8' },

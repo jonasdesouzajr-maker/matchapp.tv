@@ -44,7 +44,11 @@ test('one responsive cross-device Kids source module never edits editorial allow
  assert(page.includes('id="kids-family-expansion"'));
  assert(page.indexOf('/kids/age-rating-policy.js')<page.indexOf('/kids/source-rated-discovery.js'));
  assert(page.indexOf('/kids/kids.js')<page.indexOf('/kids/source-rated-discovery.js'));
- assert.doesNotMatch(page,/googletagmanager\.com|adsbygoogle/i);
+ assert.doesNotMatch(page,/googletagmanager\.com/i);
+ const pageDoc=new JSDOM(page).window.document;
+ const parentAd=pageDoc.querySelectorAll('details.kids-parent-info #kids-parent-ad ins.adsbygoogle');
+ assert.equal(parentAd.length,1,'only the owner-authorized parent-area Kids ad is allowed on this surface');
+ assert.equal(parentAd[0].dataset.tagForAgeTreatment,'1');
  assert.match(kids,/const LIBRARY = \[/);assert.match(kids,/KIDS_BROWSE_BATCH=24/);
  assert.match(extra,/MAX_CHECKS_PER_CLICK=18,MAX_SHOWN=48/);
  assert.match(extra,/grid\.firstElementChild\?\.remove/);
