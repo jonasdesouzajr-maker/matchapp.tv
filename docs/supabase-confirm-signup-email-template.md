@@ -16,7 +16,7 @@ https://supabase.com/dashboard/project/zkymvqrmbabngsqblyye/auth/templates
 <p><a href="https://matchapp.tv/confirm.html?token_hash={{ .TokenHash }}&amp;type=email">Confirm my email</a></p>
 <p>If you did not request a MatchApp account, ignore this email.</p>
 <hr>
-<h2>Confirme seu e-mail do MatchApp iA</h2>
+<h2>Confirme seu e-mail do MatchApp Ai</h2>
 <p>Para concluir o cadastro, clique no botão acima.</p>
 ```
 
