@@ -65,3 +65,35 @@ test('hosted emulator ADB loss and a stale offline hierarchy cannot be mistaken 
  assert.match(smoke,/remains offline after bounded retry; no verified online WebView/);
  assert.match(smoke,/adb_reconnect \|\| \{ capture_native_diagnostics/);
 });
+
+
+test('hosted Android emulator uses a debug-only localhost mirror while release networking stays strict',()=>{
+ const main=read('android-studio/app/src/main/java/com/jonas/papercup/MainActivity.kt');
+ const kids=read('android-studio/kidsapp/src/main/java/tv/matchapp/kids/MainActivity.kt');
+ const mainManifest=read('android-studio/app/src/main/AndroidManifest.xml');
+ const kidsManifest=read('android-studio/kidsapp/src/main/AndroidManifest.xml');
+ const mainDebug=read('android-studio/app/src/debug/AndroidManifest.xml');
+ const kidsDebug=read('android-studio/kidsapp/src/debug/AndroidManifest.xml');
+ const smoke=read('tools/android-emulator-smoke.sh');
+ for(const src of [main,kids]){
+  assert.match(src,/BuildConfig\.DEBUG/);
+  assert.match(src,/matchapp_smoke_url/);
+  assert.match(src,/127\.0\.0\.1/);
+  assert.match(src,/localhost/);
+ }
+ assert.match(kids,/path == "\/kids" \|\| path\.startsWith\("\/kids\/"\)/);
+ for(const manifest of [mainManifest,kidsManifest]){
+  assert.match(manifest,/android:usesCleartextTraffic="false"/);
+  assert.match(manifest,/@xml\/network_security_config/);
+ }
+ for(const manifest of [mainDebug,kidsDebug]){
+  assert.match(manifest,/android:usesCleartextTraffic="true"/);
+  assert.match(manifest,/@xml\/network_security_config_debug/);
+ }
+ for(const p of ['android-studio/app/src/debug/res/xml/network_security_config_debug.xml','android-studio/kidsapp/src/debug/res/xml/network_security_config_debug.xml'])
+  assert.match(read(p),/cleartextTrafficPermitted="true"/);
+ assert.match(smoke,/python3 -m http\.server/);
+ assert.match(smoke,/adb reverse "tcp:\$SMOKE_PORT" "tcp:\$SMOKE_PORT"/);
+ assert.match(smoke,/--es matchapp_smoke_url/);
+ assert.match(smoke,/\/kids\/\?native_emulator_smoke=1/);
+});

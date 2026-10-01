@@ -4,6 +4,22 @@
 set -euo pipefail
 mkdir -p artifacts/android-emulator
 adb wait-for-device
+
+# GitHub's hosted Android guest can boot with no external network route even
+# while the APK itself is healthy. Serve the exact checked-out production tree
+# over adb reverse so DEBUG builds exercise their real WebViews deterministically.
+# Release builds cannot use this localhost hook.
+SMOKE_PORT=8899
+python3 -m http.server "$SMOKE_PORT" --bind 127.0.0.1 --directory .   >artifacts/android-emulator/local-mirror.log 2>&1 &
+SMOKE_SERVER_PID=$!
+cleanup_smoke_server(){ kill "$SMOKE_SERVER_PID" >/dev/null 2>&1 || true; }
+trap cleanup_smoke_server EXIT
+for _ in {1..20}; do
+  if curl -fsS "http://127.0.0.1:$SMOKE_PORT/" >/dev/null; then break; fi
+  sleep 1
+done
+curl -fsS "http://127.0.0.1:$SMOKE_PORT/" >/dev/null
+adb reverse "tcp:$SMOKE_PORT" "tcp:$SMOKE_PORT"
 adb shell logcat -c || true
 # Pixel Launcher can ANR on freshly booted shared runners; dismiss a SYSTEM
 # dialog before grading MatchApp visuals. Never treat a blocked screenshot as pass.
@@ -62,14 +78,17 @@ capture_native_diagnostics() {
   timeout 15s adb exec-out screencap -p > "artifacts/android-emulator/${label}-screenshot.png" 2>/dev/null || true
 }
 probe() {
-  local name="$1" pkg="$2" apk="$3" activity="$4"
+  local name="$1" pkg="$2" apk="$3" activity="$4" smoke_path="$5"
+  local smoke_url="http://127.0.0.1:$SMOKE_PORT$smoke_path"
   echo "TEST native $name APK: $pkg"
   adb install -r "$apk"
   adb shell am force-stop "$pkg" || true
   # Launch the tested Activity explicitly. The Pixel launcher/monkey route is
   # runner-dependent and previously returned to Launcher even while the APK
   # itself was valid, producing a false foreground-window failure.
-  launch="$(timeout 30s adb shell am start -W -n "$pkg/$activity" 2>&1 || true)"
+  launch="$(timeout 30s adb shell am start -W -n "$pkg/$activity" --es matchapp_smoke_url "$smoke_url" 2>&1 || true)"
+  printf '%s
+' "$smoke_url" >"artifacts/android-emulator/$name-smoke-url.txt"
   printf '%s\n' "$launch" >"artifacts/android-emulator/$name-launch.txt"
   if ! grep -Eq 'Status: ok|ThisTime:|TotalTime:' <<< "$launch"; then
     # am start -W can time out while the startup WebView is still initializing.
@@ -179,9 +198,9 @@ PY
   test "$(stat -c%s "artifacts/android-emulator/$name-after-scroll.png")" -gt 6000
   echo "PASS $name starts, remains alive after WebView load and swipe; screenshots captured."
 }
-probe "adult" "com.jonas.papercup.debug" "android-studio/app/build/outputs/apk/debug/app-debug.apk" "com.jonas.papercup.MainActivity"
+probe "adult" "com.jonas.papercup.debug" "android-studio/app/build/outputs/apk/debug/app-debug.apk" "com.jonas.papercup.MainActivity" "/?native_emulator_smoke=1"
 adb shell am force-stop com.jonas.papercup.debug || true
-probe "kids" "tv.matchapp.kids.debug" "android-studio/kidsapp/build/outputs/apk/debug/kidsapp-debug.apk" "tv.matchapp.kids.MainActivity"
+probe "kids" "tv.matchapp.kids.debug" "android-studio/kidsapp/build/outputs/apk/debug/kidsapp-debug.apk" "tv.matchapp.kids.MainActivity" "/kids/?native_emulator_smoke=1"
 adb shell am force-stop tv.matchapp.kids.debug || true
 adb logcat -d -v brief -t 2500 >artifacts/android-emulator/device-last-log.txt || true
 if grep -E 'FATAL EXCEPTION|Process: (com\.jonas\.papercup|tv\.matchapp\.kids)([ .]|$)' artifacts/android-emulator/device-last-log.txt |

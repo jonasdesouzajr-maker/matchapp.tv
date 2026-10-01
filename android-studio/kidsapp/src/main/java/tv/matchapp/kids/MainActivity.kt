@@ -134,7 +134,7 @@ class MainActivity : AppCompatActivity() {
 
         val launch = resolveLaunchUrl(intent)
         lastUrl = launch
-        if (isOnline()) {
+        if (isDebugSmokeUrl(launch) || isOnline()) {
             web.loadUrl(launch)
         } else {
             splashKeep = false
@@ -170,7 +170,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun retry() {
-        if (!isOnline()) {
+        if (!isDebugSmokeUrl(lastUrl) && !isOnline()) {
             Toast.makeText(this, getString(R.string.offline_title), Toast.LENGTH_SHORT).show()
             return
         }
@@ -191,6 +191,24 @@ class MainActivity : AppCompatActivity() {
         return caps.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
     }
 
+    private fun debugSmokeUri(url: String?): Uri? {
+        if (!BuildConfig.DEBUG || url.isNullOrBlank()) return null
+        val uri = runCatching { Uri.parse(url) }.getOrNull() ?: return null
+        val host = uri.host.orEmpty().lowercase()
+        val path = uri.path.orEmpty().lowercase().trimEnd('/')
+        return uri.takeIf {
+            it.scheme.equals("http", ignoreCase = true) &&
+                (host == "127.0.0.1" || host == "localhost") &&
+                (path == "/kids" || path.startsWith("/kids/"))
+        }
+    }
+
+    private fun isDebugSmokeUrl(url: String?): Boolean = debugSmokeUri(url) != null
+
+    private fun debugSmokeLaunch(intent: Intent?): String? =
+        intent?.getStringExtra("matchapp_smoke_url")
+            ?.let { debugSmokeUri(it)?.toString() }
+
     private fun isMatchAppHost(host: String): Boolean {
         val normalized = host.lowercase()
         return normalized == "matchapp.tv" ||
@@ -206,6 +224,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun isAllowedKidsUrl(url: String?): Boolean {
         if (url.isNullOrBlank()) return false
+        if (isDebugSmokeUrl(url)) return true
         return runCatching { isKidsUri(Uri.parse(url)) }.getOrDefault(false)
     }
 
@@ -219,6 +238,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun resolveLaunchUrl(intent: Intent?): String {
+        debugSmokeLaunch(intent)?.let { return it }
         val data = intent?.data
         if (data != null && (data.scheme == "https" || data.scheme == "http") && isKidsUri(data)) {
             return data.buildUpon().scheme("https").build().toString()
@@ -298,6 +318,7 @@ class MainActivity : AppCompatActivity() {
             return openExternal(uri)
         }
 
+        if (debugSmokeUri(uri.toString()) != null) return false
         if (isKidsUri(uri)) return false
 
         if (isLegalMatchAppUri(uri)) {

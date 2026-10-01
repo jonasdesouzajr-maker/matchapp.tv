@@ -167,7 +167,7 @@ class MainActivity : AppCompatActivity() {
 
         val launch = resolveLaunchUrl(intent)
         lastUrl = launch
-        if (isOnline()) web.loadUrl(launch) else {
+        if (isDebugSmokeUrl(launch) || isOnline()) web.loadUrl(launch) else {
             splashKeep = false
             showOffline(true)
         }
@@ -258,7 +258,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun retry() {
-        if (!isOnline()) {
+        if (!isDebugSmokeUrl(lastUrl) && !isOnline()) {
             Toast.makeText(this, getString(R.string.offline_title), Toast.LENGTH_SHORT).show()
             return
         }
@@ -278,6 +278,22 @@ class MainActivity : AppCompatActivity() {
         val caps = cm.getNetworkCapabilities(network) ?: return false
         return caps.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
     }
+
+    private fun debugSmokeUri(url: String?): Uri? {
+        if (!BuildConfig.DEBUG || url.isNullOrBlank()) return null
+        val uri = runCatching { Uri.parse(url) }.getOrNull() ?: return null
+        val host = uri.host.orEmpty().lowercase()
+        return uri.takeIf {
+            it.scheme.equals("http", ignoreCase = true) &&
+                (host == "127.0.0.1" || host == "localhost")
+        }
+    }
+
+    private fun isDebugSmokeUrl(url: String?): Boolean = debugSmokeUri(url) != null
+
+    private fun debugSmokeLaunch(intent: Intent?): String? =
+        intent?.getStringExtra("matchapp_smoke_url")
+            ?.let { debugSmokeUri(it)?.toString() }
 
     private fun isMatchAppHost(host: String): Boolean {
         val normalized = host.lowercase()
@@ -312,6 +328,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun resolveLaunchUrl(intent: Intent?): String {
+        debugSmokeLaunch(intent)?.let { return it }
         val data = intent?.data
         if (data != null && (data.scheme == "https" || data.scheme == "http")) {
             if (isMatchAppHost(data.host.orEmpty()) && !isKidsUri(data)) {
@@ -395,6 +412,7 @@ class MainActivity : AppCompatActivity() {
         if (hostIs(host, "wa.me") || hostIs(host, "whatsapp.com") || hostIs(host, "play.google.com") || hostIs(host, "t.me")) {
             return openExternal(uri)
         }
+        if (debugSmokeUri(uri.toString()) != null) return false
         if (isKidsUri(uri)) {
             if (!isKidsUrl(web.url)) web.loadUrl(HOME)
             return true
