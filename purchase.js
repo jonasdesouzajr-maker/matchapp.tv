@@ -8,13 +8,17 @@
   vip_annual:{title:'VIP Annual',success:'VIP Annual is now active — the same 10 included AI actions per day and VIP benefits are unlocked for the year.'},
   business:{title:'Business',success:'MatchApp Business is now active — 50 included AI actions per day are unlocked on this account.'},
   credits_25:{title:'25 Ask AI credits'},credits_75:{title:'75 Ask AI credits'},credits_200:{title:'200 Ask AI credits'},credits_500:{title:'500 Ask AI credits'},
-  matches_5:{title:'5 Extra Matches'},matches_25:{title:'25 Extra Matches'},matches_50:{title:'50 Extra Matches'}
+  matches_5:{title:'5 Extra Matches'},matches_25:{title:'25 Extra Matches'},matches_50:{title:'50 Extra Matches'},
+  kids_matches_5:{title:'5 Kids Match Credits'},kids_matches_25:{title:'25 Kids Match Credits'},kids_matches_50:{title:'50 Kids Match Credits'},
+  kids_credits_25:{title:'25 Kids Ask AI Credits'},kids_credits_75:{title:'75 Kids Ask AI Credits'},kids_credits_200:{title:'200 Kids Ask AI Credits'}
  };
  function stage(icon,text){const s=document.getElementById('purchase-status');if(s)s.innerHTML=`<span class="purchase-orb" aria-hidden="true">${icon}</span><span>${text}</span>`;}
  function celebrate(){const card=document.querySelector('main .premium-card');if(!card||card.querySelector('.purchase-burst'))return;card.classList.add('purchase-success-view');const burst=document.createElement('div');burst.className='purchase-burst';burst.setAttribute('aria-hidden','true');for(let i=0;i<22;i++){const p=document.createElement('i');p.style.setProperty('--r',(i*47%360)+'deg');p.style.setProperty('--x',((i%2?1:-1)*(28+(i*17%170)))+'px');p.style.setProperty('--y',(-65-(i*13%150))+'px');p.style.left=(42+(i*11%20))+'%';p.style.top=(40+(i*7%14))+'%';burst.appendChild(p);}card.appendChild(burst);setTimeout(()=>burst.remove(),1700);}
  async function finalMessage(sb,session,plan,data){
   const item=labels[plan]||{title:'MatchApp purchase'};let text=item.success||`${item.title} added successfully.`;
-  if(plan.startsWith('matches_')){const b=await sb.rpc('match_pack_balance');const balance=typeof b.data?.matches==='number'?` Your Extra Match balance is ${b.data.matches}.`:'';text=`${item.title} added successfully.${balance}`;}
+  if(plan.startsWith('kids_matches_')){const b=await sb.rpc('kids_match_pack_balance');const balance=typeof b.data?.matches==='number'?` Your Kids Match balance is ${b.data.matches}.`:'';text=`${item.title} added successfully.${balance}`;}
+  else if(plan.startsWith('kids_credits_')){const b=await sb.rpc('kids_credits');if(typeof b.data?.credits==='number')localStorage.setItem('match_kids_credits',String(b.data.credits));const balance=typeof b.data?.credits==='number'?` Your Kids Ask AI balance is ${b.data.credits}.`:'';text=`${item.title} added successfully.${balance}`;}
+  else if(plan.startsWith('matches_')){const b=await sb.rpc('match_pack_balance');const balance=typeof b.data?.matches==='number'?` Your Extra Match balance is ${b.data.matches}.`:'';text=`${item.title} added successfully.${balance}`;}
   else if(plan.startsWith('credits_')){const b=await sb.rpc('match_credits');if(typeof b.data?.credits==='number')localStorage.setItem('match_credits',String(b.data.credits));const balance=typeof b.data?.credits==='number'?` Your Ask AI balance is ${b.data.credits}.`:'';text=`${item.title} added successfully.${balance}`;}
   try{await window.hydrateProfileFromAuth?.(session.user);}catch(_){}
   try{await window.refreshQuotaStatus?.();await window.refreshCreditBalance?.();}catch(_){}

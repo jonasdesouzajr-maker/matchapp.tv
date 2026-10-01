@@ -1,99 +1,48 @@
-/* Kids uses the same authenticated allowance and private history as the main app. */
+/* MatchApp Kids entitlement + history bridge.
+   The grown-up account owns the entitlement, but Kids usage, top-ups, share
+   rewards and title history are isolated from the adult Match/Ask AI system. */
 (function(){
  'use strict';
- let owner,ready=Promise.resolve();
- async function session(){
-  const sb=window.supabaseClient;if(!sb)throw Error('connection');
-  const result=await sb.auth.getSession();if(result.error)throw result.error;
-  return result.data?.session?.user || null;
- }
+ let owner=null;
+ const DAY_KEY='match_kids_dailyDate',COUNT_KEY='match_kids_dailyCount',BONUS_KEY='match_kids_bonusMatches';
+ const HISTORY_KEYS=['match_kids_shownList','match_kids_seenList','match_kids_savedList','match_kids_dislikedList'];
+ async function session(){const sb=window.supabaseClient;if(!sb)throw Error('connection');const result=await sb.auth.getSession();if(result.error)throw result.error;return result.data?.session?.user||null}
  async function attach(user){
-  const id=user?.id||null;if(owner===id)return ready;
-  owner=id;
-  if(user && localStorage.getItem('match_portfolio_owner')!==id){
-   ['match_seenList','match_savedList','match_dislikedList','match_userRatings','match_titleNotes','match_user_name','match_user_country','match_user_dob','match_user_sign','match_user_age','match_profile_locked','match_user_avatar','match_user_nickname'].forEach(k=>localStorage.removeItem(k));
-   localStorage.setItem('match_portfolio_owner',id);
-  }
-  ready=Promise.resolve(window.matchPolicy?.attach(user));await ready;
+  const id=user?.id||null;if(owner===id)return;owner=id;
+  if(user&&localStorage.getItem('match_kids_portfolio_owner')!==id){HISTORY_KEYS.forEach(k=>localStorage.removeItem(k));localStorage.setItem('match_kids_portfolio_owner',id)}
  }
- function guestMatchBalance(){
-  const n=Number.parseInt(localStorage.getItem('match_guestBonusMatches')||'0',10);
-  return Number.isFinite(n)?Math.max(0,n):0;
+ function key(title){return String(title||'').normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim()}
+ function list(k){try{const v=JSON.parse(localStorage.getItem(k)||'[]');return Array.isArray(v)?v:[]}catch(_){return[]}}
+ function known(){const out=new Set();HISTORY_KEYS.forEach(k=>list(k).forEach(v=>out.add(key(v?.title||v))));return out}
+ function today(){return new Date().toLocaleDateString()}
+ function num(k){const n=Number.parseInt(localStorage.getItem(k)||'0',10);return Number.isFinite(n)?Math.max(0,n):0}
+ function guestStatus(){const used=localStorage.getItem(DAY_KEY)===today()?num(COUNT_KEY):0;return{authenticated:false,kids:true,used,limit:3,remaining:Math.max(0,3-used),kids_purchased_matches:num(BONUS_KEY),kids_credits:0,anon:true,userId:null}}
+ function announce(data){try{document.dispatchEvent(new CustomEvent('matchapp:kids-quota',{detail:data||{}}))}catch(_){}return data}
+ async function consumeKind(reason,isCurrent=()=>true){
+  const user=await session();await attach(user);if(!isCurrent())throw Error('cancelled');
+  if(user){const {data,error}=await window.supabaseClient.rpc('consume_kids_action',{p_reason:reason});if(error||!data)throw error||Error('quota');const current=await session();if(current?.id!==user.id)throw Error('account_changed');return announce({...data,userId:user.id})}
+  const status=guestStatus();
+  if(status.used<status.limit){localStorage.setItem(DAY_KEY,today());localStorage.setItem(COUNT_KEY,String(status.used+1));return announce({...status,allowed:true,reason,used:status.used+1,remaining:status.limit-(status.used+1)})}
+  if(reason==='match'&&status.kids_purchased_matches>0){const balance=status.kids_purchased_matches-1;localStorage.setItem(BONUS_KEY,String(balance));return announce({...status,allowed:true,reason,remaining:0,kids_purchased_matches:balance,paid_with_kids_match_pack:true})}
+  return announce({...status,allowed:false,reason:'limit_reached',requested:reason,remaining:0})
  }
- function setGuestMatchBalance(value){
-  const next=Math.max(0,Number.parseInt(value,10)||0);
-  localStorage.setItem('match_guestBonusMatches',String(next));return next;
- }
- async function consume(isCurrent=()=>true){
-  const user=await session();await attach(user);
-  if(!isCurrent())throw Error('cancelled');
-  if(user){
-   // Kids recommendations are Matches, never Ask AI prompts. Keep the two
-   // balances separate so paid entitlements and purchased Match packs behave
-   // exactly like they do on the main Match screen.
-   const {data,error}=await window.supabaseClient.rpc('consume_match');
-   if(error||!data)throw error||Error('quota');
-   const current=await session();if(current?.id!==user.id)throw Error('account_changed');
-   return {...data,userId:user.id};
-  }
-  const date=new Date().toLocaleDateString();
-  const parsed=Number.parseInt(localStorage.getItem('match_dailyCount')||'0',10);
-  const used=localStorage.getItem('match_lastDate')===date && Number.isFinite(parsed)?Math.max(0,parsed):0;
-  if(used>=3){
-   const extras=guestMatchBalance();
-   if(extras<=0)return {allowed:false,remaining:0,purchased_matches:0,anon:true,userId:null};
-   const balance=setGuestMatchBalance(extras-1);
-   return {allowed:true,remaining:0,purchased_matches:balance,paid_with_match_pack:true,anon:true,userId:null};
-  }
-  localStorage.setItem('match_lastDate',date);localStorage.setItem('match_dailyCount',String(used+1));
-  return {allowed:true,remaining:2-used,purchased_matches:guestMatchBalance(),anon:true,userId:null};
- }
+ const consume=isCurrent=>consumeKind('match',isCurrent),consumeAI=isCurrent=>consumeKind('ask_ai',isCurrent);
  async function claimShareReward(){
   const user=await session();await attach(user);
-  if(user){
-   const {data,error}=await window.supabaseClient.rpc('claim_share_reward');
-   if(error||!data)throw error||Error('reward');
-   if((await session())?.id!==user.id)throw Error('account_changed');
-   return {...data,userId:user.id};
-  }
-  const windowMs=6*60*60*1000,now=Date.now(),cutoff=now-windowMs,max=3;
-  let log=[];try{log=JSON.parse(localStorage.getItem('match_shareLog')||'[]');if(!Array.isArray(log))log=[];}catch(_){}
-  log=log.map(Number).filter(ts=>Number.isFinite(ts)&&ts>cutoff);
-  if(log.length>=max){
-   const oldest=Math.min(...log);
-   localStorage.setItem('match_shareLog',JSON.stringify(log));
-   return {granted:false,reason:'window_full',remaining_rewards:0,reset_in_seconds:Math.max(0,Math.ceil((oldest+windowMs-now)/1000)),userId:null};
-  }
-  log.push(now);localStorage.setItem('match_shareLog',JSON.stringify(log));
-  const balance=setGuestMatchBalance(guestMatchBalance()+1);
-  return {granted:true,remaining_rewards:max-log.length,purchased_matches:balance,matches:balance,userId:null};
+  if(user){const {data,error}=await window.supabaseClient.rpc('claim_kids_share_reward');if(error||!data)throw error||Error('reward');if((await session())?.id!==user.id)throw Error('account_changed');return announce({...data,userId:user.id})}
+  const windowMs=6*60*60*1000,now=Date.now(),cutoff=now-windowMs,max=3;let log=[];try{log=JSON.parse(localStorage.getItem('match_kids_shareLog')||'[]');if(!Array.isArray(log))log=[]}catch(_){}
+  log=log.map(Number).filter(ts=>Number.isFinite(ts)&&ts>cutoff);if(log.length>=max){const oldest=Math.min(...log);localStorage.setItem('match_kids_shareLog',JSON.stringify(log));return announce({granted:false,reason:'window_full',remaining_rewards:0,reset_in_seconds:Math.max(0,Math.ceil((oldest+windowMs-now)/1000)),kids_purchased_matches:num(BONUS_KEY),userId:null})}
+  log.push(now);localStorage.setItem('match_kids_shareLog',JSON.stringify(log));const balance=num(BONUS_KEY)+1;localStorage.setItem(BONUS_KEY,String(balance));return announce({granted:true,remaining_rewards:max-log.length,kids_purchased_matches:balance,matches:balance,userId:null})
  }
- async function status(){
-  const user=await session();await attach(user);
-  if(user){
-   const {data,error}=await window.supabaseClient.rpc('match_status');
-   if(error||!data)throw error||Error('quota');
-   return {...data,userId:user.id};
-  }
-  const date=new Date().toLocaleDateString();
-  const parsed=Number.parseInt(localStorage.getItem('match_dailyCount')||'0',10);
-  const used=localStorage.getItem('match_lastDate')===date&&Number.isFinite(parsed)?Math.max(0,parsed):0;
-  return {authenticated:false,used,limit:3,remaining:Math.max(0,3-used),purchased_matches:guestMatchBalance(),anon:true,userId:null};
- }
+ async function status(){const user=await session();await attach(user);if(user){const {data,error}=await window.supabaseClient.rpc('kids_status');if(error||!data)throw error||Error('quota');return announce({...data,userId:user.id})}return announce(guestStatus())}
  async function remember(item,action,userId){
-  if(!['save','seen','loved','dislike'].includes(action))throw Error('action');
+  if(!['shown','save','seen','loved','dislike'].includes(action))throw Error('action');
   const user=await session();if((user?.id||null)!==userId)throw Error('account_changed');
-  const entry={...item,action,addedAt:Date.now()};
-  if(user){const {error}=await window.supabaseClient.rpc('portfolio_action',{p_action:'remember',p_payload:{items:[entry]}});if(error)throw error;if((await session())?.id!==user.id)throw Error('account_changed');}
-  window.matchPolicy?.remember(entry,action,false);
-  const key=action==='save'?'match_savedList':action==='dislike'?'match_dislikedList':'match_seenList';
-  let list=[];try{list=JSON.parse(localStorage.getItem(key)||'[]');if(!Array.isArray(list))list=[];}catch(_){}
-  localStorage.setItem(key,JSON.stringify([entry,...list.filter(i=>(i.title||i)!==item.title)]));
+  const entry={...item,action,addedAt:Date.now(),kids:true};
+  const storageKey=action==='shown'?'match_kids_shownList':action==='save'?'match_kids_savedList':action==='dislike'?'match_kids_dislikedList':'match_kids_seenList';
+  const current=list(storageKey);localStorage.setItem(storageKey,JSON.stringify([entry,...current.filter(i=>key(i?.title||i)!==key(item.title))].slice(0,250)))
  }
- function loadCatalogMedia(){
-  if(document.querySelector('script[data-kids-catalog-media]'))return;
-  const s=document.createElement('script');s.src='/catalog-media.js?v=20260925-verified2';s.defer=true;s.async=false;s.dataset.kidsCatalogMedia='1';document.head.appendChild(s);
- }
- window.KidsAccount=Object.freeze({consume,remember,claimShareReward,status,prepare:async()=>attach(await session())});
+ function loadCatalogMedia(){if(document.querySelector('script[data-kids-catalog-media]'))return;const s=document.createElement('script');s.src='/catalog-media.js?v=20260925-verified2';s.defer=true;s.async=false;s.dataset.kidsCatalogMedia='1';document.head.appendChild(s)}
+ window.KidsAccount=Object.freeze({consume,consumeMatch:consume,consumeAI,remember,claimShareReward,status,known,key,prepare:async()=>attach(await session())});
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',loadCatalogMedia,{once:true});else loadCatalogMedia();
 })();

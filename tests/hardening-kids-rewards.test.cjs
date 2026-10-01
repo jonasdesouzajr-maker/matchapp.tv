@@ -5,15 +5,17 @@ const path=require('node:path');
 const root=path.resolve(__dirname,'..');
 const read=p=>fs.readFileSync(path.join(root,p),'utf8');
 
-test('Kids Mode runs with no animation or smooth-scroll effects',()=>{
-  const js=read('kids/kids.js'),css=read('kids/kids.css'),voice=read('kids/voice-feedback.js');
+test('Kids immersive motion is bounded, CSS-only and globally pausable',()=>{
+  const js=read('kids/kids.js'),css=read('kids/kids.css'),voice=read('kids/voice-feedback.js'),immersive=read('kids/immersive.css'),immersiveJs=read('kids/immersive.js');
   assert.doesNotMatch(js,/playKidsCelebrate|requestAnimationFrame/);
   assert.doesNotMatch(js,/behavior\s*:\s*['"]smooth['"]/);
   assert.doesNotMatch(voice,/animation\s*:|@keyframes|requestAnimationFrame|behavior\s*:\s*['"]smooth['"]|will-change/);
+  assert.doesNotMatch(immersiveJs,/requestAnimationFrame|setInterval/);
   assert.match(css,/emergency Kids stability lock/);
-  assert.match(css,/\*,\*::before,\*::after\{animation:none!important;transition:none!important;scroll-behavior:auto!important\}/);
+  assert.match(immersive,/@keyframes kidsLumiFloat/);
+  assert.match(immersive,/body\.kids-paused[\s\S]*animation:none!important/);
+  assert.match(immersive,/@media\(prefers-reduced-motion:reduce\)/);
   assert.match(css,/\.kids-watch-dialog::backdrop\{backdrop-filter:none!important;-webkit-backdrop-filter:none!important\}/);
-  assert.match(css,/\.kids-celebrate\{display:none!important\}/);
 });
 test('main exhausts fresh verified sources before exact recovery while Kids never recycles shown titles',()=>{
   const app=read('app.js'),kids=read('kids/kids.js');
@@ -29,7 +31,7 @@ test('main exhausts fresh verified sources before exact recovery while Kids neve
   assert.match(app,/watchlater/);
   assert.match(app,/window\.matchPolicy\?\.remember\([\s\S]*?'shown'\)/);
   assert.doesNotMatch(kids,/const source=unseen\.length\?unseen:pool/);
-  assert.match(kids,/window\.matchPolicy\?\.remember\([\s\S]*?'shown'\)/);
+  assert.match(kids,/window\.KidsAccount\?\.remember\?\.\([\s\S]*?'shown'/);
 });
 
 test('share rewards accumulate as persistent Match currency',()=>{
@@ -39,7 +41,7 @@ test('share rewards accumulate as persistent Match currency',()=>{
   assert.match(read('guest-share-rewards.js'),/match_guestBonusMatches/);
   assert.match(share,/MatchAppGuestShare\.open/);
   assert.doesNotMatch(share,/match_dailyCount'\), Math\.max\(0, current - 1\)/);
-  assert.match(kidsAccount,/rpc\('claim_share_reward'\)/);
+  assert.match(kidsAccount,/rpc\('claim_kids_share_reward'\)/);
   assert.match(migration,/purchased_matches = coalesce\(purchased_matches, 0\) \+ 1/);
   assert.match(migration,/revoke execute on function public\.claim_share_reward\(\) from public, anon/);
 });
@@ -61,6 +63,7 @@ test('cache keys force the hardening bundle onto every device wrapper',()=>{
   assert.match(read('kids/index.html'),/kids\/account\.js\?v=\d{8}-[\w-]+/);
   assert.match(read('kids/index.html'),/kids\/voice-feedback\.js\?v=\d{8}-[\w-]+/);
   assert.match(read('kids/index.html'),/kids\/kids\.js\?v=\d{8}-[\w-]+/);
+  assert.match(read('kids/index.html'),/kids\/immersive\.js\?v=\d{8}-[\w-]+/);
 });
 
 

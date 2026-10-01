@@ -13,7 +13,13 @@ export const PRODUCTS:Record<string,BillingProduct>={
  credits_500:{url:'https://buy.stripe.com/5kQcN50xP35494afEBcfK0d',mode:'payment',amount:2999,brl:3490},
  matches_5:{url:'https://buy.stripe.com/eVq6oH2FX6hg1BIbolcfK0g',mode:'payment',amount:99,brl:190},
  matches_25:{url:'https://buy.stripe.com/28E4gz0xP210gwCdwtcfK0h',mode:'payment',amount:299,brl:490},
- matches_50:{url:'https://buy.stripe.com/dRm5kDcgxcFEcgmcspcfK0i',mode:'payment',amount:499,brl:790}
+ matches_50:{url:'https://buy.stripe.com/dRm5kDcgxcFEcgmcspcfK0i',mode:'payment',amount:499,brl:790},
+ kids_matches_5:{url:'https://buy.stripe.com/4gM8wP1BTgVUgwCbolcfK0k',mode:'payment',amount:99,brl:190},
+ kids_matches_25:{url:'https://buy.stripe.com/5kQ28rcgxfRQ806gIFcfK0l',mode:'payment',amount:299,brl:490},
+ kids_matches_50:{url:'https://buy.stripe.com/eVq3cv4O5gVUbcidwtcfK0m',mode:'payment',amount:499,brl:790},
+ kids_credits_25:{url:'https://buy.stripe.com/6oU00jcgxgVUcgm785cfK0n',mode:'payment',amount:299,brl:490},
+ kids_credits_75:{url:'https://buy.stripe.com/14AaEX80heNM2FM4ZXcfK0o',mode:'payment',amount:699,brl:990},
+ kids_credits_200:{url:'https://buy.stripe.com/3cI28rbctbBAeouakhcfK0p',mode:'payment',amount:1499,brl:1990}
 };
 const BRL_PRICES:Record<string,string>={
  ad_free:'price_1UG14OFRuUuhrLPGZBiUsKMc',
@@ -26,7 +32,13 @@ const BRL_PRICES:Record<string,string>={
  credits_500:'price_1UG152FRuUuhrLPGP9TeC2r8',
  matches_5:'price_1UG15AFRuUuhrLPGMqz4oEtq',
  matches_25:'price_1UG15GFRuUuhrLPGIuFHwGVN',
- matches_50:'price_1UG15LFRuUuhrLPGtV0czK4N'
+ matches_50:'price_1UG15LFRuUuhrLPGtV0czK4N',
+ kids_matches_5:'price_1ULowDFRuUuhrLPGhrKDh9Tf',
+ kids_matches_25:'price_1ULowGFRuUuhrLPGZxcGtd4e',
+ kids_matches_50:'price_1ULowJFRuUuhrLPGhJH6mJEc',
+ kids_credits_25:'price_1ULowNFRuUuhrLPGyKlDBCkf',
+ kids_credits_75:'price_1ULowPFRuUuhrLPGkh0awff7',
+ kids_credits_200:'price_1ULowSFRuUuhrLPG7054uya4'
 };
 type CatalogEntry={key:string;link:string|null;price:string;currency:'usd'|'brl';mode:'payment'|'subscription';active:boolean};
 let cached:CatalogEntry[]|null=null;let cacheAt=0;

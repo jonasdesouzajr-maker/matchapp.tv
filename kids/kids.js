@@ -432,7 +432,7 @@
       const source=safePool.filter(item=>
         fits(item,stage) &&
         !seen.has(slug(item)) &&
-        !window.matchPolicy?.known().has(window.matchPolicy.key(item.title))
+        !(window.KidsAccount?.known?.()||new Set()).has(window.KidsAccount?.key?.(item.title)||normalizeTitle(item.title))
       );
       const ranked=source.map(item=>({item,score:(previousMatch.includes(item.title)?0:2)+Math.random()})).sort((a,b)=>b.score-a.score);
       for(const row of ranked){
@@ -476,8 +476,8 @@
 
   function localMatch(question, age) {
     const tokens = queryTokens(question);
-    const known=window.matchPolicy?.known?.()||new Set();
-    const pool = allowedLibrary(age).filter(item=>!known.has(window.matchPolicy?.key?.(item.title)||normalizeTitle(item.title)));
+    const known=window.KidsAccount?.known?.()||new Set();
+    const pool = allowedLibrary(age).filter(item=>!known.has(window.KidsAccount?.key?.(item.title)||normalizeTitle(item.title)));
     const synonyms = {
       animal:['animals'],animais:['animals'],animales:['animals'],funny:['funny'],engraçado:['funny'],divertido:['funny'],comedy:['funny'],learn:['learning'],learning:['learning'],aprender:['learning'],science:['learning'],math:['learning'],music:['music'],música:['music'],song:['music'],songs:['music'],adventure:['adventure'],aventura:['adventure'],family:['family'],família:['family'],familia:['family'],bedtime:['bedtime'],sleep:['bedtime'],dormir:['bedtime'],calm:['bedtime']
     };
@@ -559,6 +559,20 @@
     const form = document.getElementById('kids-ask-form');
     chat.classList.add('show'); answer.textContent = tr('waiting'); results.replaceChildren();
     send.disabled = true; form.setAttribute('aria-busy', 'true');
+    try {
+      if(!window.KidsAccount?.consumeAI)throw Error('quota');
+      const quota=await window.KidsAccount.consumeAI(()=>version===requestVersion&&age===currentAge());
+      if(version!==requestVersion||age!==currentAge())return;
+      if(!quota?.allowed){
+        answer.textContent=tr('quotaEmpty');send.disabled=false;form.setAttribute('aria-busy','false');
+        const help=document.getElementById('kids-account-help');if(help)help.hidden=false;
+        document.dispatchEvent(new CustomEvent('matchapp:kids-quota-empty',{detail:{kind:'ask_ai'}}));
+        return;
+      }
+    } catch (_) {
+      if(version!==requestVersion||age!==currentAge())return;
+      answer.textContent=tr('quotaError');send.disabled=false;form.setAttribute('aria-busy','false');return;
+    }
     let timer;
     // The shared Gemini proxy may legitimately try multiple 20-second models.
     // Preserve the approved local fallback, but don't abandon a healthy AI
@@ -568,11 +582,11 @@
     clearTimeout(timer);
     if (version !== requestVersion || age !== currentAge()) return;
     // Reapply the CURRENT allowlist, even to locally selected fallback results.
-    const known=window.matchPolicy?.known?.()||new Set();
+    const known=window.KidsAccount?.known?.()||new Set();
     chatPicks = (aiApproved.length ? aiApproved : localMatch(question.trim(), age)).filter(x =>
       byTitle.get(normalizeTitle(x.title)) === x &&
       allowedForAge(x, currentAge()) &&
-      !known.has(window.matchPolicy?.key?.(x.title)||normalizeTitle(x.title))
+      !known.has(window.KidsAccount?.key?.(x.title)||normalizeTitle(x.title))
     );
     const lead = chatPicks[0];
     const syn = lead && String(lead.synopsis || '').replace(/\s+/g, ' ').trim();
@@ -587,6 +601,7 @@
     results.innerHTML = chatPicks.map((x,i) => cardHTML(x, true, 'chat-' + i)).join('');
     chatPicks.forEach((x,i) => hydratePoster(x, 'chat-' + i));
     send.disabled = false; form.setAttribute('aria-busy', 'false');
+    document.dispatchEvent(new CustomEvent('matchapp:kids-ai-result',{detail:{count:chatPicks.length,title:lead?.title||''}}));
     chat.scrollIntoView({behavior:'auto', block:'nearest'});
   }
 
@@ -633,7 +648,7 @@
     try{
       if(!window.KidsAccount)throw Error('connection');
       const result=await window.KidsAccount.consume(()=>band===currentAge());
-      if(!result.allowed){status.textContent=tr('quotaEmpty');document.getElementById('kids-account-help').hidden=false;status.scrollIntoView({block:'center'});return;}
+      if(!result.allowed){status.textContent=tr('quotaEmpty');document.getElementById('kids-account-help').hidden=false;document.dispatchEvent(new CustomEvent('matchapp:kids-quota-empty',{detail:{kind:'match'}}));status.scrollIntoView({block:'center'});return;}
       if(band!==currentAge() || !allowedForAge(item,currentAge()))return;
       matchedUserId=result.userId;currentWatchItem=item;currentWatchShared=false;pendingKidsShareNetwork='';watchOpener=opener;paintMatch(item);document.querySelectorAll('[data-match-choice]').forEach(button=>button.disabled=false);
       const shareConfirm=document.getElementById('kids-share-confirm');if(shareConfirm)shareConfirm.hidden=true;
@@ -649,9 +664,9 @@
         dialog.setAttribute('open','');
         dialog.scrollIntoView({behavior:'auto',block:'start'});
       }
-      // Persist every actual shown Match. Guests keep this locally; signed-in
-      // families also sync through the shared private portfolio history.
-      window.matchPolicy?.remember({title:item.title,posterUrl:makePoster(item),streamUrl:watchUrl(item)},'shown');
+      // Keep Kids shown history in its own namespace so adult recommendations
+      // and adult exclusions are never mutated by a Kids adventure.
+      window.KidsAccount?.remember?.({title:item.title,posterUrl:makePoster(item),streamUrl:watchUrl(item)},'shown',matchedUserId).catch(()=>{});
       document.dispatchEvent(new CustomEvent('matchapp:kids-result',{detail:{title:item.title}}));
       // Kids Mode intentionally runs without decorative result animation.
     }catch(_){clearKidsCelebrate();status.textContent=tr('quotaError');status.scrollIntoView({block:'center'});}
@@ -675,7 +690,7 @@
       const reward=await window.KidsAccount?.claimShareReward?.();
       if(reward?.granted){
         currentWatchShared=true;
-        const balance=Math.max(0,Number(reward.purchased_matches??reward.matches)||0);
+        const balance=Math.max(0,Number(reward.kids_purchased_matches??reward.purchased_matches??reward.matches)||0);
         status.textContent=tr('shareReward').replace('{count}',String(balance));
       }else if(reward?.reason==='window_full'){
         status.textContent=tr('shareLimit');
@@ -764,7 +779,7 @@
     if(dub)dub.value=read('match_kids_dub') || (/brasil|brazil|portugal|^br$|^pt$/.test(residence) || lang==='pt-BR'?'pt':/spain|espa|mex|argentin|colomb|chile|peru|uruguay|ecuador|venezuela/.test(residence) || lang==='es'?'es':'en');
     updateDirectLinks();
     document.getElementById('kids-motion')?.addEventListener('click', () => { motionPaused = !motionPaused; write('match_kids_pause_motion', String(motionPaused)); updateMotion(); });
-    document.getElementById('kids-surprise')?.addEventListener('click', () => { const pool = allowedLibrary(currentAge()).filter(item=>!window.matchPolicy?.known().has(window.matchPolicy.key(item.title))); if (pool.length)openWatch(slug(pool[Math.floor(Math.random()*pool.length)]),document.getElementById('kids-surprise')); });
+    document.getElementById('kids-surprise')?.addEventListener('click', () => { const pool = allowedLibrary(currentAge()).filter(item=>!(window.KidsAccount?.known?.()||new Set()).has(window.KidsAccount?.key?.(item.title)||normalizeTitle(item.title))); if (pool.length)openWatch(slug(pool[Math.floor(Math.random()*pool.length)]),document.getElementById('kids-surprise')); });
     document.addEventListener('click', event => {
       const choice=event.target.closest('[data-match-choice]');if(choice){saveMatchChoice(choice.dataset.matchChoice,choice);return;}
       const save=event.target.closest('[data-save]');if(save){toggleSaved(save.dataset.save);return;}

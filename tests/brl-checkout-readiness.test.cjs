@@ -21,7 +21,7 @@ test('hosted checkout never requires Organization, tax ID or phone',()=>{
   assert.match(checkout,/customer_email/);
 });
 test('USD Payment Links stay in lockstep between the buy buttons and the server catalog',()=>{
-  const keys=['ad_free','vip_monthly','vip_annual','business','credits_25','credits_75','credits_200','credits_500','matches_5','matches_25','matches_50'];
+  const keys=['ad_free','vip_monthly','vip_annual','business','credits_25','credits_75','credits_200','credits_500','matches_5','matches_25','matches_50','kids_matches_5','kids_matches_25','kids_matches_50','kids_credits_25','kids_credits_75','kids_credits_200'];
   for(const key of keys){
     const uiLink=pricing.match(new RegExp(key+":'(https://buy\\.stripe\\.com/[^']+)'"));
     const serverLink=billing.match(new RegExp(key+":\\{url:'(https://buy\\.stripe\\.com/[^']+)'"));
