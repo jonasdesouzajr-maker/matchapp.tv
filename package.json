@@ -2,7 +2,7 @@
   "name": "matchapp-site",
   "private": true,
   "scripts": {
-    "build": "node -e \"const fs=require('fs'); for (const f of ['index.html','sitemap.xml','robots.txt']) { if (!fs.existsSync(f)) { console.error('missing '+f); process.exit(1);} } console.log('MatchApp static site ready');\"" ,
+    "build": "node -e \"const fs=require('fs'); for (const f of ['index.html','sitemap.xml','robots.txt']) { if (!fs.existsSync(f)) { console.error('missing '+f); process.exit(1);} } console.log('MatchApp static site ready');\"",
     "test": "node --test --test-isolation=none --test-force-exit tests/*.test.cjs",
     "audit:site": "node tools/audit-site.js && node tools/audit-search.js && node tools/search-readiness.js",
     "audit:search": "node tools/audit-search.js && node tools/search-readiness.js",
@@ -10,10 +10,14 @@
     "build:seo": "node tools/build-seo-pages.js",
     "build:watch": "node tools/build-watch-pages.js",
     "refresh:availability": "node tools/fetch-availability.js",
-    "refresh:catalog-seo": "node tools/build-seo-pages.js && node tools/build-watch-pages.js && node tools/update-sitemap.js && node tools/audit-search.js && node tools/search-readiness.js"
+    "refresh:catalog-seo": "node tools/build-seo-pages.js && node tools/build-watch-pages.js && node tools/update-sitemap.js && node tools/audit-search.js && node tools/search-readiness.js",
+    "setup:browser": "playwright install chromium --only-shell",
+    "test:intro": "node tools/installed-intro-browser-smoke.cjs",
+    "test:intro:local": "node tools/installed-intro-local-smoke.cjs"
   },
   "devDependencies": {
+    "@electric-sql/pglite": "0.5.8",
     "jsdom": "26.1.0",
-    "@electric-sql/pglite": "0.5.8"
+    "playwright": "1.56.1"
   }
 }
