@@ -1,7 +1,39 @@
 {
-  "updated_at": "2026-10-01T02:09:51.389Z",
+  "updated_at": "2026-10-01T17:22:59.467Z",
   "source_policy": "Explicitly authorized attributed original publisher RSS/Atom headlines; directly linked canonical URLs, no article-body/image republication and no betting guides",
   "items": [
+    {
+      "id": "1ed9fde2",
+      "title": "As private equity, politics and prediction markets reshape sports, is the press box up to the task?",
+      "url": "https://theconversation.com/as-private-equity-politics-and-prediction-markets-reshape-sports-is-the-press-box-up-to-the-task-292094",
+      "source": "The Conversation",
+      "source_domain": "theconversation.com",
+      "source_home": "https://theconversation.com",
+      "country": "GLOBAL",
+      "category": "sports",
+      "sport": "Sports",
+      "event_type": "Sports",
+      "published_at": "2026-10-01T12:41:57.000Z",
+      "timestamp_kind": "published",
+      "discovery_source": "Authorized publisher RSS/Atom",
+      "image": null
+    },
+    {
+      "id": "b2489750",
+      "title": "With a former Wallaby’s ‘cruel’ diagnosis, is there a link between contact sports and MND?",
+      "url": "https://theconversation.com/with-a-former-wallabys-cruel-diagnosis-is-there-a-link-between-contact-sports-and-mnd-293330",
+      "source": "The Conversation",
+      "source_domain": "theconversation.com",
+      "source_home": "https://theconversation.com",
+      "country": "GLOBAL",
+      "category": "sports",
+      "sport": "Sports",
+      "event_type": "Sports",
+      "published_at": "2026-10-01T05:06:06.000Z",
+      "timestamp_kind": "published",
+      "discovery_source": "Authorized publisher RSS/Atom",
+      "image": null
+    },
     {
       "id": "a02cc1e5",
       "title": "Cities keep shelling out taxpayer money for sports stadiums, yet the economics almost never makes sense",
