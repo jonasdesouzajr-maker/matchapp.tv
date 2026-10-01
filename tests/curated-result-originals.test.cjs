@@ -50,3 +50,17 @@ test('the visibly revealed adult match probes curated artwork before optional me
  assert.match(html,/app\.js\?v=20260926-catalogscale1/);
  assert.doesNotMatch(read('kids/index.html'),/20260926-catalogscale1|result-dismiss/);
 });
+
+test('source-renamed catalog titles keep exact numeric TMDB aliases without weakening title safety',()=>{
+ const availability=read('tools/fetch-availability.js');
+ const sync=read('tools/sync-catalog-media.js');
+ for(const source of [availability,sync]){
+  assert.match(source,/laapataaladies/);
+  assert.match(source,/1163194/);
+  assert.match(source,/media_kind:'movie'|kind: 'movie'/);
+ }
+ // The special case must stay a tiny exact-ID override. General discovery still
+ // rejects a fuzzy title mismatch rather than borrowing another work's identity.
+ assert.match(availability,/const hit = data\.results\.find\(r => norm\(r\.title \|\| r\.name\) === wanted\)/);
+ assert.match(availability,/if \(!hit\) return null/);
+});
