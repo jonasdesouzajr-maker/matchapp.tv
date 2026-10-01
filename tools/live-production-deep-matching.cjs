@@ -160,10 +160,17 @@ async function guarded(browser,label,fn){
   await guarded(browser,'Kids mood and age gate',async page=>{
    await open(page,'/kids/');await setupFreshGuardian(page);await consent(page);
    await page.locator('#kids-age').selectOption('6-8');
-   await page.locator('#kids-match-mood').selectOption('funny');
-   await page.locator('#kids-match-format').selectOption('series');
-   await page.locator('#kids-match-era').selectOption('2020');
-   await page.locator('#kids-match-submit').click();
+   await page.waitForSelector('#kids-quest .kids-quest-choice[data-value="funny"]',{state:'visible'});
+   await page.locator('#kids-quest .kids-quest-step').nth(0).locator('.kids-quest-choice[data-value="funny"]').click();
+   await page.locator('#kids-quest .kids-quest-step').nth(1).locator('.kids-quest-choice[data-value="series"]').click();
+   await page.locator('#kids-quest .kids-quest-step').nth(2).locator('.kids-quest-choice[data-value="2020"]').click();
+   const chosen=await page.evaluate(()=>({
+     mood:document.getElementById('kids-match-mood')?.value,
+     format:document.getElementById('kids-match-format')?.value,
+     era:document.getElementById('kids-match-era')?.value
+   }));
+   record('LIVE Kids quest maps game choices to the matcher controls',chosen.mood==='funny'&&chosen.format==='series'&&chosen.era==='2020',JSON.stringify(chosen));
+   await page.locator('#kids-quest .kids-quest-reveal').click();
    await page.waitForFunction(()=>document.querySelectorAll('#kids-match-results .kids-card').length>0,null,{timeout:22000});
    const rows=await page.locator('#kids-match-results .kids-card').evaluateAll(nodes=>nodes.map(n=>n.dataset.title));
    const vetted=rows.length>0&&rows.every(title=>approved.some(x=>x.title===title&&x.cats.includes('funny')&&x.type==='series'&&(x.ages.includes('6-8')||x.ages.includes('all'))));
