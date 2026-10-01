@@ -22,3 +22,13 @@ test('live readiness checks declared public pages rather than assuming a deploye
  await assert.rejects(auditLiveSearch(base,transport({status:503})),/HTTP 503/);
  await assert.rejects(auditLiveSearch(base,transport({'/sitemap.xml':'<urlset><url><loc>https://untrusted.example/</loc></url></urlset>'})).then(r=>{if(r.issues.length)throw Error(r.issues[0]);}),/Noncanonical/);
 });
+
+test('PR crawler checks fetch candidate files locally while enforcing the production canonical host',async()=>{
+ const local='http://127.0.0.1:8899',seen=[];
+ const request=async url=>{seen.push(url);assert.equal(new URL(url).origin,local);return transport()(url);};
+ assert.deepEqual(await auditLiveSearch(local,request,base),{checkedUrls:1,issues:[]});
+ assert.deepEqual(seen,[local+'/robots.txt',local+'/sitemaps.xml',local+'/sitemap.xml',local+'/guide/']);
+ const bad=await auditLiveSearch(local,transport({'/guide/':page.replace(base+'/guide/',local+'/guide/')}),base);
+ assert.ok(bad.issues.some(x=>x.startsWith('Canonical mismatch')));
+ await assert.rejects(auditLiveSearch(local,transport({'/sitemaps.xml':'<sitemapindex><sitemap><loc>https://untrusted.example/sitemap.xml</loc></sitemap></sitemapindex>'}),base),/Noncanonical/);
+});

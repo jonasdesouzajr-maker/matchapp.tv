@@ -1,11 +1,14 @@
 'use strict';
 const {JSDOM}=require('jsdom');
 // Public read-only checks. Fetch only canonical URLs declared by the live site.
-async function auditLiveSearch(base='https://matchapp.tv',request=fetch){
- const origin=new URL(base).origin,issues=[];
+async function auditLiveSearch(base='https://matchapp.tv',request=fetch,canonicalBase=base){
+ const origin=new URL(base).origin,canonicalOrigin=new URL(canonicalBase).origin,issues=[];
  async function get(url){
-  if(new URL(url).origin!==origin)throw Error('Noncanonical sitemap host: '+url);
-  const r=await request(url,{signal:AbortSignal.timeout(12000),cache:'no-store'});
+  const target=new URL(url);
+  if(target.origin!==canonicalOrigin)throw Error('Noncanonical sitemap host: '+url);
+  // PR candidates serve production metadata locally; validate canonical identity
+  // separately from the address used to fetch the candidate's actual files.
+  const r=await request(origin+target.pathname+target.search,{signal:AbortSignal.timeout(12000),cache:'no-store'});
   if(r.status!==200)throw Error('HTTP '+r.status+' '+url);
   return {text:await r.text(),robots:r.headers.get('x-robots-tag')||''};
  }
@@ -13,10 +16,10 @@ async function auditLiveSearch(base='https://matchapp.tv',request=fetch){
   const dom=new JSDOM(text,{contentType:'text/xml'});
   try{if(dom.window.document.documentElement.localName!==type)throw Error('Invalid '+type);return [...dom.window.document.querySelectorAll('loc')].map(n=>n.textContent.trim());}finally{dom.window.close();}
  }
- const robots=(await get(origin+'/robots.txt')).text;
+ const robots=(await get(canonicalOrigin+'/robots.txt')).text;
  if(!/User-agent:\s*\*/i.test(robots)||!/^Allow:\s*\/$/mi.test(robots)||/^Disallow:\s*\/$/mi.test(robots))issues.push('Public crawling blocked or missing general policy');
- if(!robots.includes('Sitemap: '+origin+'/sitemaps.xml'))issues.push('Missing canonical sitemap declaration');
- const maps=locations((await get(origin+'/sitemaps.xml')).text,'sitemapindex');
+ if(!robots.includes('Sitemap: '+canonicalOrigin+'/sitemaps.xml'))issues.push('Missing canonical sitemap declaration');
+ const maps=locations((await get(canonicalOrigin+'/sitemaps.xml')).text,'sitemapindex');
  if(!maps.length)issues.push('Empty sitemap index');
  const urls=[];
  for(const map of maps)urls.push(...locations((await get(map)).text,'urlset'));

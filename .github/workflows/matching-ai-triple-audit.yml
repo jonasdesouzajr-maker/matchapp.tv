@@ -116,6 +116,9 @@ jobs:
             sleep 1
           done
           echo 'MATCHAPP_TEST_BASE=http://127.0.0.1:8899' >> "$GITHUB_ENV"
+      - name: Verify installed intro decode, fullscreen fill, Skip and completion
+        if: (github.event_name != 'pull_request' && github.ref == 'refs/heads/main') || github.event_name == 'pull_request'
+        run: node tools/installed-intro-browser-smoke.cjs
       - name: Verify actual touch and mobile-browser Match and Ask AI flows without spending provider quota
         if: (github.event_name != 'pull_request' && github.ref == 'refs/heads/main') || github.event_name == 'pull_request'
         run: node tools/mobile-runtime-smoke.cjs
@@ -134,5 +137,6 @@ jobs:
             artifacts/live-smoke/
             artifacts/mobile-runtime-smoke/
             artifacts/deep-match-smoke/
+            artifacts/installed-intro-smoke/
           if-no-files-found: ignore
           retention-days: 14
