@@ -37,6 +37,8 @@ test('native intro is bundled, bounded, destroyed on background and does not cha
 test('installed intro fills the viewport without distorting the video and native restores system bars',()=>{
  const b=boot(); const video=b.overlay().querySelector('video');
  assert.equal(video.style.objectFit,'cover');assert.equal(video.style.width,'100%');assert.equal(video.style.height,'100%');
+ assert.match(video.poster,/matchapp-launch-intro-poster\.jpg$/);
+ assert.ok(fs.statSync('assets/brand/matchapp-launch-intro-poster.jpg').size>1000);
  assert.match(video.src,/matchapp-launch-intro-hd\.mp4$/);b.deadline();b.dom.window.close();
  const native=fs.readFileSync('android-studio/app/src/main/java/com/jonas/papercup/MainActivity.kt','utf8');
  assert.match(native,/maxOf\(width \/ 1080f, height \/ 1920f\)/);
@@ -48,4 +50,14 @@ test('installed intro fills the viewport without distorting the video and native
 test('browsers without the H.264 profile use the same 1080p WebM intro',()=>{
  const b=boot({mp4:false});assert.match(b.overlay().querySelector('video').src,/matchapp-launch-intro-hd\.webm$/);
  assert.ok(fs.statSync('assets/brand/matchapp-launch-intro-hd.webm').size<1000000);b.deadline();b.dom.window.close();
+});
+
+test('circular loading artwork gives way to playback without changing the startup deadline',()=>{
+ const b=boot(),video=b.overlay().querySelector('video');
+ assert.match(b.overlay().querySelector('img').src,/circle-launch1/);
+ assert.equal(video.style.visibility,'hidden');
+ assert.match(b.overlay().querySelector('style').textContent,/prefers-reduced-motion/);
+ video.dispatchEvent(new b.w.Event('playing'));
+ assert.equal(video.style.visibility,'visible');assert.equal(b.overlay().querySelector('img'),null);
+ b.deadline();assert.equal(b.overlay(),null);b.dom.window.close();
 });

@@ -5,6 +5,22 @@ const path=require('node:path');
 const root=path.join(__dirname,'..');
 const read=f=>fs.readFileSync(path.join(root,f),'utf8');
 
+test('adult launch artwork has real transparency instead of an opaque square tile',()=>{
+  for(const size of [192,512]){
+    const png=fs.readFileSync(path.join(root,`assets/brand/matchapp-ai-install-${size}.png`));
+    assert.equal(png.readUInt32BE(16),size);assert.equal(png.readUInt32BE(20),size);
+    assert.equal(png[25],6,'RGBA icon required');
+    const chunks=[];
+    for(let pos=8;pos<png.length;){const length=png.readUInt32BE(pos);if(png.toString('ascii',pos+4,pos+8)==='IDAT')chunks.push(png.subarray(pos+8,pos+8+length));pos+=length+12;}
+    // For the first pixel every PNG predictor is zero, so its alpha is literal.
+    const pixels=require('node:zlib').inflateSync(Buffer.concat(chunks));
+    assert.equal(pixels[4],0,'top-left corner must be transparent');
+  }
+  for(const name of ['manifest.json','manifest-pt-br.json']){
+    assert.equal(JSON.parse(read(name)).background_color,'#101010');
+  }
+});
+
 test('PWA keeps one localized app identity and uses the uploaded MatchApp icon',()=>{
   const en=JSON.parse(read('manifest.json'));
   const pt=JSON.parse(read('manifest-pt-br.json'));

@@ -22,8 +22,21 @@
   video.autoplay = true;
   video.playsInline = true;
   video.preload = 'auto';
+  // Show the actual intro frame while the browser fetches/decodes the video.
+  video.poster = '/assets/brand/matchapp-launch-intro-poster.jpg';
   video.setAttribute('playsinline', '');
-  video.style.cssText = 'width:100%;height:100%;object-fit:cover;';
+  video.style.cssText = 'width:100%;height:100%;object-fit:cover;visibility:hidden;';
+  var loading = document.createElement('img');
+  loading.src = '/assets/brand/matchapp-ai-install-192.png?v=20261001-circle-launch1';
+  loading.alt = '';
+  loading.setAttribute('aria-hidden', 'true');
+  loading.style.cssText = 'position:absolute;width:112px;height:112px;object-fit:contain;animation:matchapp-intro-glow 1.4s ease-in-out infinite;';
+  var style = document.createElement('style');
+  style.textContent = '@keyframes matchapp-intro-glow{0%,100%{opacity:.75;transform:scale(.96)}50%{opacity:1;transform:scale(1)}}@media(prefers-reduced-motion:reduce){#matchapp-launch-intro img{animation:none!important}}html.reduce-motion #matchapp-launch-intro img{animation:none!important}';
+  video.addEventListener('playing', function () {
+    video.style.visibility = 'visible';
+    loading.remove();
+  }, { once: true });
   var skip = document.createElement('button');
   skip.type = 'button';
   skip.textContent = /^pt/i.test(navigator.language) ? 'Pular' : 'Skip';
@@ -47,7 +60,7 @@
   video.addEventListener('error', finish, { once: true });
   document.addEventListener('visibilitychange', onVisibility);
   window.addEventListener('pagehide', finish, { once: true });
-  overlay.append(video, skip);
+  overlay.append(style, video, loading, skip);
   document.body.appendChild(overlay);
   // Finite wall-clock deadline includes download, decoding and stalled playback.
   deadline = setTimeout(finish, 6500);

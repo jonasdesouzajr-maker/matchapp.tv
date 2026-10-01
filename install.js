@@ -26,7 +26,7 @@
 
 let deferredInstallPrompt = null;
 
-const MATCHAPP_INSTALL_VERSION = '20260930-icon-space1';
+const MATCHAPP_INSTALL_VERSION = '20261001-circle-launch1';
 const MATCHAPP_KIDS_INSTALL_VERSION = '20260923-kidsinstall1';
 const MATCHAPP_KIDS_INSTALL = location.pathname === '/kids' || location.pathname.startsWith('/kids/');
 const MATCHAPP_KIDS_MANIFEST = '/kids/manifest.json';
