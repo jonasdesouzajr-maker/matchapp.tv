@@ -121,7 +121,7 @@ test('never prompt existing PWA, native Android app, Kids, or verified associate
 });
 test('Portuguese copy and browser-only iOS installation are supported',async()=>{
   const ctx=mount({lang:'pt-BR',ua:UA.ios}),offer=await open(ctx);
-  assert.match(offer.querySelector('.ma-offer-title').textContent,/MatchApp iA/);
+  assert.match(offer.querySelector('.ma-offer-title').textContent,/MatchApp Ai/);
   assert.match(offer.querySelector('.ma-offer-never').textContent,/Nunca mostrar/);
   assert.equal(offer.querySelector('.ma-offer-play').hidden,true,'Do not imply an iOS Play app exists');
   ctx.w.document.documentElement.lang='en';
