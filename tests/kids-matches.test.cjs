@@ -52,3 +52,10 @@ test('result dialog opens before decorative celebration and cleanup never traps 
  assert.equal(w.document.body.style.overflow,'','celebration must not lock body scrolling');
  d.window.close();
 });
+
+test('Kids quest shows three choices before spending and opening a chosen title spends exactly one match',async()=>{
+ const {w,d,calls}=await boot();
+ const form=w.document.getElementById('kids-match-form');form.dispatchEvent(new w.Event('submit',{cancelable:true,bubbles:true}));await tick();
+ const cards=[...w.document.querySelectorAll('#kids-match-results .kids-card')];assert.equal(cards.length,3);assert.equal(calls.filter(c=>c.name==='consume_kids_action').length,0);assert.equal(w.document.getElementById('kids-watch-dialog').open,false);
+ cards[0].querySelector('.kids-card-poster').click();await tick();const spends=calls.filter(c=>c.name==='consume_kids_action');assert.equal(spends.length,1);assert.equal(spends[0].args.p_reason,'match');assert.equal(w.document.getElementById('kids-watch-dialog').open,true);d.window.close();
+});
