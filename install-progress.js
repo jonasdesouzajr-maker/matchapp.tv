@@ -18,7 +18,7 @@
     return String(document.documentElement.lang || navigator.language || '').toLowerCase().indexOf('pt') === 0;
   }
   function appName() {
-    return window.MATCHAPP_INSTALL_NAME || (pt() ? 'MatchApp iA' : 'MatchApp Ai');
+    return window.MATCHAPP_INSTALL_NAME || 'MatchApp Ai';
   }
   function copy() {
     const name = appName();
