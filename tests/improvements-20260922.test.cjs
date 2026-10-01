@@ -1,15 +1,13 @@
 const test=require('node:test');const assert=require('node:assert/strict');const fs=require('fs');const path=require('path');
 const read=f=>fs.readFileSync(path.join(__dirname,'..',f),'utf8');
 const LANGS=['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh'];
-test('improvement notice stays off Home while remaining available on Ask AI and Kids',()=>{
+test('improvement notice stays off Home and finished Kids Mode while remaining available on Ask AI',()=>{
   const js=read('trust-notice.js'),css=read('trust-notice.css');
-  const home=read('index.html');
-  assert.doesNotMatch(home,/class="ma-trust" data-ma-trust role="note"/);
-  assert.doesNotMatch(home,/trust-notice\.(?:css|js)\?v=/);
-  for(const f of ['discover.html','kids/index.html']){const h=read(f);assert.match(h,/class="ma-trust" data-ma-trust role="note"/,f);assert.match(h,/trust-notice\.css\?v=/,f);assert.match(h,/trust-notice\.js\?v=/,f);}
+  for(const f of ['index.html','kids/index.html']){const h=read(f);assert.doesNotMatch(h,/class="ma-trust" data-ma-trust role="note"/,f);assert.doesNotMatch(h,/trust-notice\.(?:css|js)\?v=/,f);}
+  const discover=read('discover.html');assert.match(discover,/class="ma-trust" data-ma-trust role="note"/);assert.match(discover,/trust-notice\.css\?v=/);assert.match(discover,/trust-notice\.js\?v=/);
   for(const l of LANGS)assert.ok(js.includes("'"+l+"':"),l);
   assert.match(css,/@keyframes maTrustBlink\{0%,100%\{opacity:1\}50%\{opacity:\.25\}\}/);
-  assert.match(css,/prefers-reduced-motion:reduce/);assert.match(css,/body\.kids-paused \.ma-trust \.ma-trust-dot\{animation:none!important\}/);
+  assert.match(css,/prefers-reduced-motion:reduce/);
   assert.doesNotMatch(js,/requestAnimationFrame|setInterval|setTimeout/);
 });
 test('match insights stay informational, bounded and translated',()=>{
