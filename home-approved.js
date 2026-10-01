@@ -22,7 +22,7 @@
     approvedLink.rel = 'stylesheet';
     (document.head || document.documentElement).appendChild(approvedLink);
   }
-  approvedLink.href = '/home-approved.css?v=20260929-hide-hero';
+  approvedLink.href = '/home-approved.css?v=20261001-adulttopboxdark1';
   if (!document.getElementById('ma-install-onetap')) {
     var ot=document.createElement('script');
     ot.id='ma-install-onetap';

@@ -38,7 +38,7 @@ test('empty chat Send provides accessible bilingual feedback without triggering 
 test('new Ask runtime reaches phones, iPhones, tablets and live Android WebView with unchanged native shell',()=>{
  const home=read('index.html'),chat=read('discover.html');
  assert.match(home,/matchapp-ia\.js\?v=20260926-brandai1-adorder2&amp;askbtn=20260927-2/);
- assert.match(home,/home-approved\.js\?v=20260929-hide-hero/);
+ assert.match(home,/home-approved\.js\?v=20261001-adulttopboxdark1/);
  assert.match(chat,/discover\.js\?v=20260925-intent1[^"]*askbtn=20260927-1/);
  assert.match(home,/class="top-ai-launch" href="\/discover\.html"/);
  assert.doesNotMatch(read('home-approved.js'),/mountDock|ma-dock/);

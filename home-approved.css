@@ -430,3 +430,17 @@ html body.page-home .home-hero .ma-how-link{
 
 /* The spoken page title remains available to assistive technology; the visible hero headline and CTA row are retired. */
 html body.page-home .home-hero{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+
+
+/* 2026-10-01 owner-requested adult top-box tone.
+   Presentation only: retain every control, dimension, border, animation hook,
+   layout rule and mechanism; reduce the purple wash into a mature ink/plum fill
+   that sits naturally against the rest of the adult MatchApp page. */
+html body.page-home #mh-topbox.app-header.ma-home-header{
+  background-color:#100c14!important;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.018),transparent 34%),
+    radial-gradient(520px 150px at 12% 18%,rgba(113,77,135,.105),transparent 72%),
+    radial-gradient(420px 140px at 88% 85%,rgba(72,49,92,.075),transparent 74%),
+    linear-gradient(122deg,rgba(21,15,26,.985),rgba(10,8,13,.992) 58%,rgba(17,12,22,.988))!important;
+}
