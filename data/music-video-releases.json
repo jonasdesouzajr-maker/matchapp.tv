@@ -6,7 +6,7 @@
       "artist": "Taylor Swift",
       "title": "Patient Zero",
       "album": "The Life of a Showgirl: The Encore",
-      "publishedAt": "2026-09-29T22:00:19Z",
+      "publishedAt": "2026-09-29T22:00:19+00:00",
       "durationSeconds": 312,
       "director": "Taylor Swift",
       "cast": [
@@ -20,7 +20,7 @@
       "creditsSource": "https://www.taylorswift.com/directed-projects/",
       "url": "https://www.youtube.com/watch?v=mw3kSNIxjqo",
       "thumbnail": "https://i.ytimg.com/vi/mw3kSNIxjqo/hqdefault.jpg",
-      "verifiedAt": "2026-09-30",
+      "verifiedAt": "2026-10-01",
       "keywords": [
         "Taylor Swift",
         "Patient Zero",
@@ -46,7 +46,7 @@
       "url": "https://www.youtube.com/watch?v=XwCWKSO0F8s",
       "thumbnail": "https://i.ytimg.com/vi/XwCWKSO0F8s/hqdefault.jpg",
       "poster": "/assets/music-videos/XwCWKSO0F8s.jpg",
-      "verifiedAt": "2026-09-30",
+      "verifiedAt": "2026-10-01",
       "keywords": [
         "Taylor Swift",
         "I Knew It, I Knew You (Piano Version)",
@@ -108,7 +108,7 @@
       "artist": "Lady Gaga & Doechii",
       "title": "RUNWAY",
       "album": "The Devil Wears Prada 2 (Music From The Motion Picture)",
-      "publishedAt": "2026-04-27T19:00:23Z",
+      "publishedAt": "2026-04-27T19:00:23+00:00",
       "durationSeconds": 178,
       "director": "Parris Goebel",
       "cast": [
@@ -121,7 +121,7 @@
       "creditsSource": "https://www.universal-music.co.jp/lady-gaga/news/2026-04-28/",
       "url": "https://www.youtube.com/watch?v=XXIX2WnfbpE",
       "thumbnail": "https://i.ytimg.com/vi/XXIX2WnfbpE/hqdefault.jpg",
-      "verifiedAt": "2026-09-30",
+      "verifiedAt": "2026-10-01",
       "keywords": [
         "Lady Gaga & Doechii",
         "RUNWAY",
@@ -137,7 +137,7 @@
       "artist": "Sabrina Carpenter",
       "title": "House Tour",
       "album": "Man’s Best Friend",
-      "publishedAt": "2026-04-06T15:00:06Z",
+      "publishedAt": "2026-04-06T15:00:06+00:00",
       "durationSeconds": 215,
       "director": "Sabrina Carpenter & Margaret Qualley",
       "cast": [
@@ -151,7 +151,7 @@
       "creditsSource": "https://www.universal-music.co.jp/sabrina-carpenter/news/2026-04-07/",
       "url": "https://www.youtube.com/watch?v=KWoTyfPsqbE",
       "thumbnail": "https://i.ytimg.com/vi/KWoTyfPsqbE/hqdefault.jpg",
-      "verifiedAt": "2026-09-30",
+      "verifiedAt": "2026-10-01",
       "keywords": [
         "Sabrina Carpenter",
         "House Tour",
@@ -205,7 +205,7 @@
       "url": "https://www.youtube.com/watch?v=xGaZBfJOyAc",
       "thumbnail": "https://i.ytimg.com/vi/xGaZBfJOyAc/hqdefault.jpg",
       "poster": "/assets/music-videos/xGaZBfJOyAc.jpg",
-      "verifiedAt": "2026-09-30",
+      "verifiedAt": "2026-10-01",
       "keywords": [
         "Lady Gaga",
         "The Dead Dance",
