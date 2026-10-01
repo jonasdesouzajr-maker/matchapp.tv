@@ -81,7 +81,7 @@ const I18N = {
     'search.heading': 'Busque ou pergunte qualquer coisa', 'search.hint': 'Digite um título para busca direta — ou faça uma pergunta completa e nossa IA encontrará todos os títulos que combinam.', 'search.trythese': 'Experimente:',
     'nav.signin': '👤 Entrar / Cadastrar', 'nav.profile': '👤 Perfil', 'nav.logout': 'Sair',
     'chrome.notice': 'Abra no Google Chrome para a melhor experiência',
-    'marquee.title': 'Títulos mais recentes em alta agora', 'topai.kicker': 'MatchApp iA Concierge', 'topai.talk': 'Fale com nossa iA', 'discover.inCinemas': 'Nos cinemas', 'discover.titlePage': '🎟️ Nos cinemas · Página do título', 'discover.categories': 'Categorias', 'discover.preview': 'Prévia',
+    'marquee.title': 'Títulos mais recentes em alta agora', 'topai.kicker': 'MatchApp Ai Concierge', 'topai.talk': 'Fale com o MatchApp Ai', 'discover.inCinemas': 'Nos cinemas', 'discover.titlePage': '🎟️ Nos cinemas · Página do título', 'discover.categories': 'Categorias', 'discover.preview': 'Prévia',
     'search.heading': 'Busque qualquer título diretamente',
     'search.placeholder': 'Digite um filme, série, novela ou podcast...',
     'search.button': '🔍 Buscar',
@@ -677,6 +677,44 @@ const ADULT_CATEGORY_LABELS = {
 };
 Object.entries(ADULT_CATEGORY_LABELS).forEach(([lang, labels]) => {
     ["optgrp.cookingwellness", "cat.cooking", "cat.fitness", "cat.appleplaylist", "cat.artist", "cat.musicchannels"].forEach((key, i) => { I18N[lang][key] = labels[i]; });
+});
+
+/* ---------- Profile Hub localization ---------- */
+Object.assign(I18N.en, {
+  'profile.pageTitle':'MatchApp Ai | My Profile','profile.hubTitle':'My Profile','profile.hubSubtitle':'Manage your account and preferences',
+  'profile.detailsTitle':'My details','profile.detailsSummary':'Name, email and account info','profile.planTitle':'My plan','profile.planSummary':'Manage your subscription',
+  'profile.matchesCreditsTitle':'My matches & credits','profile.matchesCreditsSummary':'See your activity and rewards','profile.watchlistTitle':'My watchlist','profile.watchlistSummary':'Saved titles and Not for me',
+  'profile.preferencesTitle':'Preferences','profile.preferencesSummary':'Genres, languages, countries','profile.familyTitle':'Family & Kids Mode','profile.familySummary':'Manage Kids Mode and parent settings',
+  'profile.notificationsTitle':'Notifications','profile.notificationsSummary':'Manage what you receive','profile.privacyTitle':'Privacy & Security','profile.privacySummary':'Keep your account safe',
+  'profile.helpTitle':'Help & Support','profile.helpSummary':'FAQs and contact us','profile.savedDetails':'Your saved account details.','profile.name':'Name','profile.dob':'Date of birth',
+  'profile.country':'Country','profile.selectCountry':'Select your country','profile.starSign':'Star sign','profile.chooseStarSign':'Choose your star sign','profile.gender':'Gender',
+  'profile.genderPrefer':'Prefer not to say','profile.genderMale':'Male','profile.genderFemale':'Female','profile.genderNonBinary':'Non-binary',
+  'profile.lockedIdentity':'Your identity is saved securely and cannot be edited.','profile.region':'State / region','profile.age':'Age','profile.retry':'Try again','profile.saveCreate':'Save & create profile',
+  'profile.exclusionsTitle':'🚫 What I don’t want to see in my matches','profile.exclusionsCopy':'Choose countries of origin and real genres/categories you want MatchApp to avoid. These are hard exclusions: selected items will not appear in your normal Matches.',
+  'profile.excludedCountries':'Countries of origin','profile.excludedCountriesHelp':'Select as many as you want. Example: selecting Spain hides Spain-made titles.','profile.excludedCountriesAria':'Countries to exclude',
+  'profile.excludedGenres':'Genres & source categories','profile.excludedGenresHelp':'Hide real catalog genres such as Horror, Comedy, Reality, Music or others you do not want matched.','profile.excludedGenresAria':'Genres to exclude',
+  'profile.exclusionsSave':'Selections save instantly and follow your account when you are signed in.','profile.historyTab':'◷ History','profile.watchLaterTab':'⭐ Watch Later','profile.seenTab':'👁️ Seen It','profile.audioTab':'🎧 Audio Library',
+  'profile.watchLaterEmpty':'Your portfolio is empty. Go match!','profile.seenEmpty':'You haven’t marked anything as seen yet.','profile.historyTitle':'Your history',
+  'profile.historyCopy':'Every title MatchApp has shown you — matches, Ask AI, saves and seen — stays here until you remove it.','profile.friendsLink':'● Friends & private Match Together',
+  'profile.audioTitle':'🎧 Audio Library','profile.audioCopy':'Your saved music, playlists, singles, podcasts and audiobooks. Tap any cover to listen.','profile.audioEmpty':'No saved music, playlists, singles or podcasts yet.'
+});
+Object.assign(I18N['pt-BR'], {
+  'profile.pageTitle':'MatchApp Ai | Meu Perfil','profile.hubTitle':'Meu Perfil','profile.hubSubtitle':'Gerencie sua conta e preferências',
+  'profile.detailsTitle':'Meus dados','profile.detailsSummary':'Nome, e-mail e informações da conta','profile.planTitle':'Meu plano','profile.planSummary':'Gerencie sua assinatura',
+  'profile.matchesCreditsTitle':'Meus matches e créditos','profile.matchesCreditsSummary':'Veja sua atividade e recompensas','profile.watchlistTitle':'Minha lista','profile.watchlistSummary':'Títulos salvos e Não é para mim',
+  'profile.preferencesTitle':'Preferências','profile.preferencesSummary':'Gêneros, idiomas e países','profile.familyTitle':'Família e Modo Kids','profile.familySummary':'Gerencie o Modo Kids e as configurações dos responsáveis',
+  'profile.notificationsTitle':'Notificações','profile.notificationsSummary':'Gerencie o que você recebe','profile.privacyTitle':'Privacidade e Segurança','profile.privacySummary':'Mantenha sua conta segura',
+  'profile.helpTitle':'Ajuda e Suporte','profile.helpSummary':'Perguntas frequentes e fale conosco','profile.savedDetails':'Seus dados de conta salvos.','profile.name':'Nome','profile.dob':'Data de nascimento',
+  'profile.country':'País','profile.selectCountry':'Selecione seu país','profile.starSign':'Signo','profile.chooseStarSign':'Escolha seu signo','profile.gender':'Gênero',
+  'profile.genderPrefer':'Prefiro não informar','profile.genderMale':'Masculino','profile.genderFemale':'Feminino','profile.genderNonBinary':'Não binário',
+  'profile.lockedIdentity':'Sua identidade foi salva com segurança e não pode ser editada.','profile.region':'Estado / região','profile.age':'Idade','profile.retry':'Tentar novamente','profile.saveCreate':'Salvar e criar perfil',
+  'profile.exclusionsTitle':'🚫 O que não quero ver nos meus matches','profile.exclusionsCopy':'Escolha países de origem e gêneros/categorias reais que você quer que o MatchApp evite. São exclusões rígidas: os itens selecionados não aparecerão nos seus Matches normais.',
+  'profile.excludedCountries':'Países de origem','profile.excludedCountriesHelp':'Selecione quantos quiser. Exemplo: selecionar Espanha oculta títulos produzidos na Espanha.','profile.excludedCountriesAria':'Países a excluir',
+  'profile.excludedGenres':'Gêneros e categorias de origem','profile.excludedGenresHelp':'Oculte gêneros reais do catálogo, como Terror, Comédia, Reality, Música ou outros que você não queira nos matches.','profile.excludedGenresAria':'Gêneros a excluir',
+  'profile.exclusionsSave':'As seleções são salvas na hora e acompanham sua conta quando você estiver conectado.','profile.historyTab':'◷ Histórico','profile.watchLaterTab':'⭐ Assistir depois','profile.seenTab':'👁️ Já vi','profile.audioTab':'🎧 Biblioteca de áudio',
+  'profile.watchLaterEmpty':'Sua lista está vazia. Faça um match!','profile.seenEmpty':'Você ainda não marcou nenhum título como visto.','profile.historyTitle':'Seu histórico',
+  'profile.historyCopy':'Todo título que o MatchApp mostrou — em matches, Ask AI, salvos ou vistos — fica aqui até você removê-lo.','profile.friendsLink':'● Amigos e Match Together privado',
+  'profile.audioTitle':'🎧 Biblioteca de áudio','profile.audioCopy':'Suas músicas, playlists, singles, podcasts e audiolivros salvos. Toque em qualquer capa para ouvir.','profile.audioEmpty':'Nenhuma música, playlist, single ou podcast salvo ainda.'
 });
 
 /* ---------- Detection ---------- */
