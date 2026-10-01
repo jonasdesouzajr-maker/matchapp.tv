@@ -53,12 +53,18 @@ jobs:
           if-no-files-found: warn
           retention-days: 14
   android-emulator:
-    # GitHub's hosted Android guest cannot currently resolve matchapp.tv, even
-    # with explicit public DNS. Keep real WebView evidence available on manual
-    # runs instead of making every successful production browser deployment red.
-    # Explicit commit-tag opt-in enables a one-off hosted Android emulator run.
-    # APK compilation remains independently mandatory via android-validation.yml.
+    # The hosted guest may have no external route. Each app therefore receives
+    # its own fresh emulator and a DEBUG-only adb-reverse mirror of the exact
+    # checked-out web tree; production/release builds remain HTTPS-only.
     if: github.event_name == 'workflow_dispatch' || (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success' && contains(github.event.workflow_run.head_commit.message, '[android-emulator-check]'))
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - target: adult
+            gradle_task: ':app:assembleDebug'
+          - target: kids
+            gradle_task: ':kidsapp:assembleDebug'
     runs-on: ubuntu-24.04
     timeout-minutes: 38
     steps:
@@ -68,11 +74,11 @@ jobs:
           distribution: temurin
           java-version: '17'
       - uses: gradle/actions/setup-gradle@v6
-      - name: Build production-code adult and regression Kids debug APKs
+      - name: Build selected native debug APK
         working-directory: android-studio
         run: |
           chmod +x gradlew
-          ./gradlew :app:assembleDebug :kidsapp:assembleDebug --no-daemon
+          ./gradlew ${{ matrix.gradle_task }} --no-daemon
       - name: Enable KVM for Android emulator
         run: |
           echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
@@ -86,12 +92,12 @@ jobs:
           arch: x86_64
           profile: pixel_7
           emulator-boot-timeout: 500
-          script: bash tools/android-emulator-smoke.sh
-      - name: Export Android emulator images, UI hierarchy and crash evidence
+          script: MATCHAPP_ANDROID_SMOKE_TARGET="${{ matrix.target }}" bash tools/android-emulator-smoke.sh
+      - name: Export Android emulator images, activity state and crash evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: MatchApp-Android-emulator-evidence
+          name: MatchApp-Android-emulator-evidence-${{ matrix.target }}
           path: artifacts/android-emulator/
           if-no-files-found: warn
           retention-days: 14

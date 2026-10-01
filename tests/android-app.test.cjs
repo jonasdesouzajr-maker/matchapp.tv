@@ -97,3 +97,20 @@ test('hosted Android emulator uses a debug-only localhost mirror while release n
  assert.match(smoke,/--es matchapp_smoke_url/);
  assert.match(smoke,/\/kids\/\?native_emulator_smoke=1/);
 });
+
+
+test('native hosted smoke isolates adult and Kids emulators and does not fail a proven render on ADB transport loss',()=>{
+ const smoke=read('tools/android-emulator-smoke.sh');
+ const flow=read('.github/workflows/release-smoke.yml');
+ assert.match(flow,/target: adult/);
+ assert.match(flow,/target: kids/);
+ assert.match(flow,/gradle_task: ':app:assembleDebug'/);
+ assert.match(flow,/gradle_task: ':kidsapp:assembleDebug'/);
+ assert.match(flow,/MATCHAPP_ANDROID_SMOKE_TARGET="\$\{\{ matrix\.target \}\}"/);
+ assert.match(flow,/MatchApp-Android-emulator-evidence-\$\{\{ matrix\.target \}\}/);
+ assert.match(smoke,/native Activity is RESUMED, process alive, screenshot rendered, and exact WebView route loaded/);
+ assert.match(smoke,/hosted ADB closed after verified native render; swipe result unavailable/);
+ assert.match(smoke,/process exited while emulator transport remained healthy/);
+ assert.match(smoke,/case "\$\{MATCHAPP_ANDROID_SMOKE_TARGET:-all\}" in/);
+ assert.doesNotMatch(smoke,/UiAutomator hierarchy unavailable/);
+});
