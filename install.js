@@ -38,7 +38,7 @@ function matchAppInstallLocale() {
 }
 function matchAppInstallName() {
     if (MATCHAPP_KIDS_INSTALL) return MATCHAPP_KIDS_NAME;
-    return matchAppInstallLocale() === 'pt-BR' ? 'MatchApp iA' : 'MatchApp Ai';
+    return 'MatchApp Ai';
 }
 function secureInstallContext() {
     const host = String(location.hostname || '').toLowerCase();
