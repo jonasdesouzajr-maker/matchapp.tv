@@ -2008,7 +2008,7 @@ window.newDiscoverSearch = function () {
             if (!hint.dataset.initialCopy) hint.dataset.initialCopy = hint.textContent || '';
             const lang = String(window.MATCH_LANG || document.documentElement.lang || 'en').toLowerCase();
             hint.textContent = lang.startsWith('pt')
-                ? 'Digite uma pergunta ou toque no microfone para falar com o MatchApp iA.'
+                ? 'Digite uma pergunta ou toque no microfone para falar com o MatchApp Ai.'
                 : 'Type a question, or tap the microphone to ask MatchApp Ai.';
         }
         return false;
@@ -2204,7 +2204,7 @@ async function runDiscovery() {
     const loadEl = document.getElementById('discover-loading');
     const emptyEl = document.getElementById('discover-empty');
 
-    // The homepage Ai/iA wordmark is an explicit "new chat" action.
+    // The homepage Ai wordmark is an explicit "new chat" action.
     // A fresh page normally starts with currentThread=null anyway, but this
     // makes that contract deliberate and future-proof if navigation becomes
     // client-side later. No credit is consumed until the user actually asks.
