@@ -184,8 +184,8 @@ display:flex;flex-direction:column;align-items:center;justify-content:center;gap
   lang=lang||String(navigator.language||document.documentElement.lang||'en').toLowerCase();
   var pt=lang.indexOf('pt')===0,brand=document.querySelector('.ebook-hub-brand');
   if(!brand)return;
-  var ai=brand.querySelector('[data-ma-brand-ai]');if(ai)ai.textContent=pt?'iA':'Ai';
-  brand.setAttribute('aria-label',pt?'MatchApp iA home':'MatchApp Ai home');
+  var ai=brand.querySelector('[data-ma-brand-ai]');if(ai)ai.textContent='Ai';
+  brand.setAttribute('aria-label','MatchApp Ai home');
  }
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',paint,{once:true});else paint();
  document.addEventListener('matchapp:langchange',paint);
