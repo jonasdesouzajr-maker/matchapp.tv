@@ -43,8 +43,8 @@ test('other adult route headers replace old raster/SVG TV wordmark without chang
  w.MATCH_LANG='pt-BR';
  w.document.documentElement.lang='pt-BR';
  w.document.dispatchEvent(new w.CustomEvent('matchapp:langchange',{detail:{lang:'pt-BR'}}));
- assert.equal(header.querySelector('[data-ma-brand-ai]').textContent,'iA');
- assert.equal(header.querySelector('.ma-brand-home-link').getAttribute('aria-label'),'MatchApp iA home');
+ assert.equal(header.querySelector('[data-ma-brand-ai]').textContent,'Ai');
+ assert.equal(header.querySelector('.ma-brand-home-link').getAttribute('aria-label'),'MatchApp Ai home');
  w.MATCH_LANG='en';
  w.document.documentElement.lang='en';
  w.document.dispatchEvent(new w.CustomEvent('matchapp:langchange',{detail:{lang:'en'}}));
@@ -58,7 +58,7 @@ test('shared runtime fallback changes only the brand and rerenders English/PT-BR
  assert.doesNotThrow(()=>new vm.Script(js,{filename:'matchapp-ia.js'}));
  assert.match(js,/class="ma-word-ai" data-ma-brand-ai>Ai/);
  assert.match(js,/function applyBrandLocale\(\)/);
- assert.match(js,/langKey\(\)==='pt-BR'\?'MatchApp iA':'MatchApp Ai'/);
+ assert.match(js,/const name=isHome\?'Matchapp Ai':'MatchApp Ai'/);
  assert.match(js,/document\.addEventListener\('matchapp:langchange',\(\)=>setTimeout\(applyLanguage,0\)\)/);
  assert.doesNotMatch(js,/'<button type="button" class="ma-ai-brand-button"/);
  assert.match(js,/\.ma-tab/,'Existing dedicated Ask AI tab must not be removed');
@@ -99,7 +99,7 @@ test('normal submitted Android package inherits web typography; Kids remains sep
  assert.match(android,/keep production pages fresh|Keep production pages fresh/i);
  assert.match(read('android-studio/app/src/main/res/values/strings.xml'),/<string name="app_name">MatchApp Ai<\/string>/);
  assert.doesNotMatch(read('kids/index.html'),/brand-headline\.css|ma-word-ai/);
- assert.match(read('AGENTS.md'),/CANONICAL MATCHAPP AI\/iA HEADER WORDMARK/);
+ assert.match(read('AGENTS.md'),/CANONICAL MATCHAPP AI HEADER WORDMARK/);
  assert.match(read('AGENTS.md'),/MANDATORY POST-CHANGE MATCHING, BOOKWORMS, AI AND ORIGINAL ART REGRESSION/);
 });
 
@@ -108,4 +108,16 @@ test('the Home brand survives automatic label translation and repeated language 
  w.eval(read('i18n.js'));w.eval(read('ai-composer.js'));w.document.dispatchEvent(new w.Event('DOMContentLoaded'));
  for(const lang of ['pt-BR','en','pt-BR','en']){w.setLanguage(lang);await new Promise(r=>setTimeout(r,25));assert.equal(w.document.querySelector('.ma-wordmark').textContent,'Matchapp');}
  w.close();
+});
+
+
+test('profile hub exposes PT-BR localization keys without changing stored gender values',()=>{
+ const html=read('profile/profile.html'),i18n=read('i18n.js');
+ const doc=new JSDOM(html).window.document;
+ assert.equal(doc.querySelector('.profile-hub-intro h1').getAttribute('data-i18n'),'profile.hubTitle');
+ assert.equal(doc.querySelector('[data-profile-target="account-details"] strong').getAttribute('data-i18n'),'profile.detailsTitle');
+ assert.equal(doc.querySelector('#profile-gender option[value="Male"]').getAttribute('data-i18n'),'profile.genderMale');
+ assert.match(i18n,/'profile\.hubTitle':'Meu Perfil'/);
+ assert.match(i18n,/'profile\.familyTitle':'Família e Modo Kids'/);
+ assert.match(i18n,/'profile\.saveCreate':'Salvar e criar perfil'/);
 });
