@@ -97,8 +97,22 @@ const isEligible = e => (e.cats || []).some(c => ELIGIBLE.has(c));
 const norm = s => String(s).toLowerCase().normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]/g, '');
 
+// Source-confirmed numeric identities for catalog titles whose current TMDB
+// display name intentionally differs from MatchApp's original/source title.
+// Keep this list tiny: numeric identity is safer than weakening exact-name
+// matching for every title. Laapataa Ladies is currently displayed by TMDB as
+// "Lost Ladies"; TMDB movie 1163194 is the same 2024 Hindi film.
+const EXACT_TMDB_IDENTITIES = new Map([
+    ['laapataaladies', { id: 1163194, kind: 'movie', year: 2024 }]
+]);
+
 async function findId(entry) {
     const kind = (entry.cats || []).includes('movie') ? 'movie' : 'tv';
+    const pinned = EXACT_TMDB_IDENTITIES.get(norm(entry.title));
+    if (pinned && pinned.kind === kind &&
+        (!entry.year || !pinned.year || Number(entry.year) === Number(pinned.year))) {
+        return { id: pinned.id, kind, tmdbTitle: entry.title };
+    }
     const q = encodeURIComponent(entry.title);
     const yearParam = entry.year
         ? (kind === 'movie' ? `&primary_release_year=${entry.year}` : `&first_air_date_year=${entry.year}`)

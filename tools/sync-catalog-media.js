@@ -29,6 +29,12 @@ function mainKind(entry){
   if(/playlist|album|single|music|classical|gospel|song|radio|concert/.test(joined))return 'music';
   return 'other';
 }
+// Exact source identities for the rare case where TMDB's current display
+// title differs from the catalog's original/source title. This is deliberately
+// narrow so server enrichment never falls back to fuzzy identity guessing.
+const EXACT_TMDB_IDENTITIES=new Map([
+  ['laapataaladies',{tmdb_id:1163194,media_kind:'movie',year:2024}]
+]);
 function kidsKind(entry){
   const t=String(entry.type||'').toLowerCase();
   if(t==='movie'||/movie|film/.test(t))return 'movie';
@@ -64,6 +70,9 @@ function buildCatalog(){
     if(Number.isSafeInteger(tmdbId)&&tmdbId>0&&['movie','tv'].includes(kind)){
       exactIds.set(normalize(title),{tmdb_id:tmdbId,media_kind:kind,year:Number.isInteger(Number(row?.year))?Number(row.year):null});
     }
+  }
+  for(const [key,identity] of EXACT_TMDB_IDENTITIES){
+    if(!exactIds.has(key))exactIds.set(key,identity);
   }
   const kidIndex=new Map();
   for(const k of kids){if(!k?.title)continue;const kind=kidsKind(k),year=Number.isInteger(Number(k.year))?Number(k.year):null,ages=Array.isArray(k.ages)?k.ages.map(String):[];kidIndex.set(`${normalize(k.title)}::${year||''}::${kind}`,ages);}
