@@ -101,7 +101,7 @@ async function aiQuestion(page,question,expected,label){
   const deployed=await fetchDeploymentMarker(base);
   record('production deployment marker',/^[0-9a-f]{40}\s*$/i.test(deployed),deployed.trim().slice(0,12));
   try{
-   const search=await auditLiveSearch(base);
+   const search=await auditLiveSearch(base,fetch,'https://matchapp.tv');
    record('LIVE crawler policy, sitemap HTTP status and page indexability',search.checkedUrls>0&&!search.issues.length,JSON.stringify(search));
   }catch(error){record('LIVE crawler policy, sitemap HTTP status and page indexability',false,String(error.message));}
   browser=await chromium.launch({headless:true,args:['--no-sandbox']});

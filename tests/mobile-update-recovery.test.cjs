@@ -49,7 +49,7 @@ test('installed mobile PWA receives one release-scoped refresh without deleting 
  dom.window.close();
 });
 test('native Android app and installed Kids PWA never run adult PWA refresh',async()=>{
- const native=boot({ua:'Mozilla/5.0 (Linux; Android 15) Chrome/141 MatchAppAiAndroid/1.1.34'});
+ const native=boot({ua:'Mozilla/5.0 (Linux; Android 15) Chrome/141 MatchAppAiAndroid/1.1.35'});
  const kids=boot({url:'https://matchapp.tv/kids/',ua:'Mozilla/5.0 (iPad; CPU OS 18_0) Mobile',standalone:true});
  await next();
  for(const {dom,w} of [native,kids]){
@@ -76,7 +76,7 @@ test('next adult Android version cold-loads only Match/Ask documents and preserv
  assert.match(main,/WebSettings\.LOAD_NO_CACHE/);
  assert.match(main,/window\.MATCHAPP_ANDROID = true/);
  assert.match(main,/MATCHAPP_ANDROID_KIDS_BLOCKED/);
- assert.match(gradle,/versionCode = 36/);
- assert.match(gradle,/versionName = "1\.1\.34"/);
+ assert.match(gradle,/versionCode = 37/);
+ assert.match(gradle,/versionName = "1\.1\.35"/);
  assert.doesNotMatch(read('android-studio/kidsapp/src/main/java/tv/matchapp/kids/MainActivity.kt'),/adult-mobile-match-ai-runtime-20260927-1/);
 });

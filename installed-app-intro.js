@@ -3,7 +3,7 @@
   'use strict';
   var ua = navigator.userAgent || '';
   var native = /MatchApp(?:TV|Ai)Android/i.test(ua);
-  var installed = navigator.standalone === true || window.matchMedia('(display-mode: standalone)').matches;
+  var installed = navigator.standalone === true || (window.matchMedia('(display-mode: standalone)').matches || window.matchMedia('(display-mode: fullscreen)').matches);
   var handheld = /Android|iPhone|iPad|iPod/i.test(ua) || (/Macintosh/i.test(ua) && navigator.maxTouchPoints > 1);
   if ((!native && (!installed || !handheld)) || !/^\/(?:index\.html)?$/.test(location.pathname)) return;
   // New native builds play the bundled intro; never play it twice.
@@ -23,7 +23,7 @@
   video.playsInline = true;
   video.preload = 'auto';
   video.setAttribute('playsinline', '');
-  video.style.cssText = 'width:100%;height:100%;object-fit:contain;';
+  video.style.cssText = 'width:100%;height:100%;object-fit:cover;';
   var skip = document.createElement('button');
   skip.type = 'button';
   skip.textContent = /^pt/i.test(navigator.language) ? 'Pular' : 'Skip';
@@ -51,7 +51,10 @@
   document.body.appendChild(overlay);
   // Finite wall-clock deadline includes download, decoding and stalled playback.
   deadline = setTimeout(finish, 6500);
-  video.src = '/assets/brand/matchapp-launch-intro.mp4';
+  // Check the actual H.264 profile, not just the MP4 container.
+  video.src = video.canPlayType('video/mp4; codecs="avc1.640029"')
+    ? '/assets/brand/matchapp-launch-intro-hd.mp4'
+    : '/assets/brand/matchapp-launch-intro-hd.webm';
   try {
     var playback = video.play();
     if (playback && playback.catch) playback.catch(finish);

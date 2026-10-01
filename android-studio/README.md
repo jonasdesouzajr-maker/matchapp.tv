@@ -50,9 +50,9 @@ These existing native modules are **live WebView shells**, not divergent forks o
 
 Both Android modules remain WebView shells over live production:
 
-- Standard app (`:app`) release version: **1.1.34**
-- Standard app version code: **34**
-- Standard app launch: `https://matchapp.tv/?utm_source=android_app&appBuild=36`
+- Standard app (`:app`) release version: **1.1.35**
+- Standard app version code: **37**
+- Standard app launch: `https://matchapp.tv/?utm_source=android_app&appBuild=37`
 - Kids app (`:kidsapp`) release version: **1.1.25** / version code **27**
 - Kids app launch: `https://matchapp.tv/kids/?utm_source=android_kids_app&appBuild=27`
 - Both apps cold-load production on launch and manual refresh to avoid stale WebView content, then resume normal caching after the page renders.
@@ -137,11 +137,11 @@ The first Play Console listing supplied by the owner uses package ID **`com.jona
 
 
 ## 26 September 2026 — Adult AAB candidate and ongoing WebView parity
-The requested adult-only bundle candidate is `com.jonas.papercup` **1.1.34 (versionCode 36)**. The compact E-books card and relocated bottom Awareness Spotlight already load from the production adult website in installed WebView apps after deployment and a fresh network load: a new AAB is not required for each website change.
+The requested adult-only bundle candidate is `com.jonas.papercup` **1.1.35 (versionCode 37)**. The compact E-books card and relocated bottom Awareness Spotlight already load from the production adult website in installed WebView apps after deployment and a fresh network load: a new AAB is not required for each website change.
 
 **Clone:** `git clone https://github.com/jonasdesouzajr-maker/matchapp.tv.git`. Open `matchapp.tv/android-studio/` (containing `settings.gradle.kts`) in Android Studio Quail with **Gradle JDK 17**. To sync future changes, use `git pull origin main` from the root of the existing checkout rather than re-cloning. Select **app** for the adult Play app, not **kidsapp**.
 
-The `Validate Android apps` GitHub workflow archives the **UNSIGNED** adult-only `MatchApp-Ai-adult-1.1.34-code36-UNSIGNED-AAB`. Before submitting a Play update, verify code 36 is higher than any previous Play-uploaded build and use Android Studio **Build → Generate Signed App Bundle / APK** for **app/release** with the SAME protected upload keystore already registered for `com.jonas.papercup`. Test on a physical device/internal track and submit via Play Console. Web changes do NOT automatically create/publish Play releases. Kids native module remains untouched.
+The `Validate Android apps` GitHub workflow archives the **UNSIGNED** adult-only `MatchApp-Ai-adult-1.1.35-code37-UNSIGNED-AAB`. Before submitting a Play update, verify code 37 is higher than any previous Play-uploaded build and use Android Studio **Build → Generate Signed App Bundle / APK** for **app/release** with the SAME protected upload keystore already registered for `com.jonas.papercup`. Test on a physical device/internal track and submit via Play Console. Web changes do NOT automatically create/publish Play releases. Kids native module remains untouched.
 
 
 ## 27 September release verification checkpoint
@@ -152,6 +152,6 @@ confirmed Play **app-signing** fingerprint, package name and verified Android
 HTTPS intent filter. The source tests do not claim the live apex or separate
 `www` domain has been verified by Android: those need HTTP verification
 and an installed Play-distributed build. The adult version is
-`1.1.34` (`versionCode 36`); only the existing private upload keystore
+`1.1.35` (`versionCode 37`); only the existing private upload keystore
 can sign an update. The workflow produces an **unsigned** AAB solely for
 owner-side signing. No Kids code or production AdMob activation is changed.
