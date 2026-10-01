@@ -56,7 +56,7 @@
   }
   function copy(){
     return pt()?{
-      title:'Leve o MatchApp iA com você',
+      title:'Leve o MatchApp Ai com você',
       description:PLAY_RELEASED?'Prefere usar como aplicativo? Instale pelo navegador ou escolha o Google Play.':'Instale pelo navegador agora. O download pelo Google Play estará disponível após o lançamento.',
       browser:'Instalar pelo navegador',play:PLAY_RELEASED?'Baixar no Google Play':'Google Play — em breve',
       never:'Nunca mostrar novamente',close:'Fechar sugestão de instalação'
