@@ -38,6 +38,22 @@ test('Android apps expose a same-origin native speech recognizer bridge',()=>{
 });
 
 
+test('Kids Android app gives Lumi a native text-to-speech bridge while preserving browser fallback',()=>{
+ const kids=read('android-studio/kidsapp/src/main/java/tv/matchapp/kids/MainActivity.kt');
+ const gradle=read('android-studio/kidsapp/build.gradle.kts');
+ const immersive=read('kids/immersive.js');
+ assert.match(kids,/TextToSpeech/);
+ assert.match(kids,/UtteranceProgressListener/);
+ assert.match(kids,/fun speak\(text: String\?, languageTag: String\?\)/);
+ assert.match(kids,/fun stopSpeaking\(\)/);
+ assert.match(kids,/matchAppNativeLumiState/);
+ assert.match(gradle,/versionCode = 28/);
+ assert.match(gradle,/versionName = "1\.1\.26"/);
+ assert.match(immersive,/MatchAppNativeVoice\?\.speak/);
+ assert.match(immersive,/SpeechSynthesisUtterance/);
+ assert.match(immersive,/matchAppNativeLumiState/);
+});
+
 test('Kids Android app exposes native biometric guardian bridge while main app stays Kids-free',()=>{
  const main=read('android-studio/app/src/main/java/com/jonas/papercup/MainActivity.kt');
  const kids=read('android-studio/kidsapp/src/main/java/tv/matchapp/kids/MainActivity.kt');

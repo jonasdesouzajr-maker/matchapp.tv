@@ -11,6 +11,8 @@ import android.net.Uri
 import android.os.Bundle
 import android.os.Message
 import android.speech.RecognizerIntent
+import android.speech.tts.TextToSpeech
+import android.speech.tts.UtteranceProgressListener
 import android.view.View
 import android.view.ViewGroup
 import android.webkit.CookieManager
@@ -35,6 +37,7 @@ import androidx.core.view.WindowCompat
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.button.MaterialButton
 import org.json.JSONObject
+import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
 
@@ -47,6 +50,8 @@ class MainActivity : AppCompatActivity() {
     private var customViewCallback: WebChromeClient.CustomViewCallback? = null
     private var splashKeep = true
     private var lastUrl = HOME
+    private var lumiTts: TextToSpeech? = null
+    private var lumiTtsReady = false
 
     private val voiceRecognizer = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
@@ -67,6 +72,18 @@ class MainActivity : AppCompatActivity() {
         installSplashScreen().setKeepOnScreenCondition { splashKeep }
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        lumiTts = TextToSpeech(this) { status ->
+            lumiTtsReady = status == TextToSpeech.SUCCESS
+            if (lumiTtsReady) {
+                lumiTts?.setOnUtteranceProgressListener(object : UtteranceProgressListener() {
+                    override fun onStart(utteranceId: String?) = sendLumiSpeakingState(true)
+                    override fun onDone(utteranceId: String?) = sendLumiSpeakingState(false)
+                    @Deprecated("Deprecated in Java")
+                    override fun onError(utteranceId: String?) = sendLumiSpeakingState(false)
+                })
+            }
+        }
 
         WindowCompat.setDecorFitsSystemWindows(window, true)
         window.statusBarColor = ContextCompat.getColor(this, R.color.ink)
@@ -164,6 +181,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onDestroy() {
+        lumiTts?.stop()
+        lumiTts?.shutdown()
+        lumiTts = null
+        lumiTtsReady = false
         fullscreenHost.removeAllViews()
         web.destroy()
         super.onDestroy()
@@ -373,6 +394,36 @@ class MainActivity : AppCompatActivity() {
         )
     }
 
+    private fun sendLumiSpeakingState(active: Boolean) {
+        if (!::web.isInitialized) return
+        runOnUiThread {
+            web.evaluateJavascript(
+                "window.matchAppNativeLumiState&&window.matchAppNativeLumiState(" + active + ");",
+                null
+            )
+        }
+    }
+
+    private fun speakLumiText(text: String?, languageTag: String?) {
+        if (!isAllowedKidsUrl(web.url)) {
+            sendVoiceError("not-allowed")
+            return
+        }
+        val value = text?.trim()?.take(360).orEmpty()
+        if (value.isBlank() || !lumiTtsReady) {
+            sendLumiSpeakingState(false)
+            return
+        }
+        val localeTag = languageTag
+            ?.takeIf { it.matches(Regex("^[A-Za-z]{2,3}(-[A-Za-z]{2,4})?$")) }
+            ?: "en-US"
+        val engine = lumiTts ?: return
+        val locale = Locale.forLanguageTag(localeTag)
+        if (locale.language.isNotBlank()) engine.language = locale
+        engine.setSpeechRate(0.96f)
+        engine.setPitch(1.08f)
+        engine.speak(value, TextToSpeech.QUEUE_FLUSH, null, "matchapp-lumi")
+    }
     private fun authenticateGuardian() {
         if (!isAllowedKidsUrl(web.url)) {
             sendGuardianResult(false, "not-allowed")
@@ -424,6 +475,19 @@ class MainActivity : AppCompatActivity() {
     }
 
     private inner class NativeVoiceBridge {
+        @JavascriptInterface
+        fun speak(text: String?, languageTag: String?) {
+            runOnUiThread { speakLumiText(text, languageTag) }
+        }
+
+        @JavascriptInterface
+        fun stopSpeaking() {
+            runOnUiThread {
+                lumiTts?.stop()
+                sendLumiSpeakingState(false)
+            }
+        }
+
         @JavascriptInterface
         fun start(languageTag: String?) {
             runOnUiThread {
@@ -501,8 +565,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val HOME = "https://matchapp.tv/kids/?utm_source=android_kids_app&appBuild=27"
-        const val APP_UA = "MatchAppTVAndroid/1.1.25 MatchAppAiKidsAndroid/1.1.25"
+        const val HOME = "https://matchapp.tv/kids/?utm_source=android_kids_app&appBuild=28"
+        const val APP_UA = "MatchAppTVAndroid/1.1.26 MatchAppAiKidsAndroid/1.1.26"
 
         private const val KIDS_APP_JS = """
             (function(){

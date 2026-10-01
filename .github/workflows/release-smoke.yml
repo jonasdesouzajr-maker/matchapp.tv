@@ -31,16 +31,24 @@ jobs:
         run: |
           npm install --no-save --package-lock=false --ignore-scripts playwright@1.56.1
           npx playwright install --with-deps chromium
-      - name: Wait for exactly this commit to reach the live domain before testing
+      - name: Wait for this commit or a newer descendant to reach the live domain before testing
         env:
           EXPECTED_SHA: ${{ github.event.workflow_run.head_sha || github.sha }}
         run: |
+          set -euo pipefail
+          git fetch --no-tags --depth=64 origin main
           for i in {1..28}; do
             remote="$(curl -fsSL "https://matchapp.tv/deployment-sha.txt?release=${EXPECTED_SHA}-${i}" || true)"
             if [ "$remote" = "$EXPECTED_SHA" ]; then exit 0; fi
+            if [[ "$remote" =~ ^[0-9a-f]{40}$ ]] && git cat-file -e "$remote^{commit}" 2>/dev/null; then
+              if git merge-base --is-ancestor "$EXPECTED_SHA" "$remote"; then
+                echo "::notice::Expected deploy was superseded by descendant $remote; testing current production instead."
+                exit 0
+              fi
+            fi
             sleep 15
           done
-          echo "::error::Production did not confirm this commit within seven minutes."
+          echo "::error::Production did not confirm this commit or a newer descendant within seven minutes."
           exit 1
       - name: Run live production adult normal matching, e-book/magazine, original art and two Ask AI questions
         run: node tools/live-production-smoke.cjs
