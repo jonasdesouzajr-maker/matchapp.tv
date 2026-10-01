@@ -346,59 +346,97 @@ window.refreshQuotaStatus = async function() {
 function soundEnabled() {
     try { return localStorage.getItem('match_soundEnabled') !== 'false'; } catch (e) { return true; }
 }
+
+function soundIconMarkup(enabled) {
+    const stateClass = enabled ? 'is-on' : 'is-muted';
+    const statePath = enabled
+        ? '<path class="sound-wave" d="M16.5 8.4a5 5 0 0 1 0 7.2M19 5.8a8.4 8.4 0 0 1 0 12.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>'
+        : '<path class="sound-slash" d="M4.8 5 20 19.2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>';
+    return '<span class="sound-state-icon '+stateClass+'" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path class="sound-speaker" d="M4 9.2v5.6h4.1l5 4.1V5.1l-5 4.1H4Z" fill="currentColor"/>'+statePath+'</svg></span>';
+}
+
+function syncSoundToggle() {
+    const enabled = soundEnabled();
+    document.querySelectorAll('.sound-toggle-btn').forEach(b => {
+        b.innerHTML = soundIconMarkup(enabled);
+        b.classList.toggle('is-muted', !enabled);
+        b.setAttribute('aria-pressed', String(enabled));
+        const label = window.t ? t(enabled ? 'sound.on' : 'sound.off') : (enabled ? 'Sound on' : 'Sound off');
+        b.setAttribute('aria-label', label);
+        b.title = label;
+    });
+}
+
+let matchAudioCtx = null;
+function matchAudioContext() {
+    if (!soundEnabled()) return null;
+    const AC = window.AudioContext || window.webkitAudioContext;
+    if (!AC) return null;
+    if (!matchAudioCtx || matchAudioCtx.state === 'closed') matchAudioCtx = new AC();
+    if (matchAudioCtx.state === 'suspended') matchAudioCtx.resume?.().catch?.(() => {});
+    return matchAudioCtx;
+}
+function matchTone(ctx, tone) {
+    const start = ctx.currentTime + (tone.delay || 0);
+    const duration = Math.max(.025, tone.duration || .08);
+    const gainValue = Math.min(.03, Math.max(.0015, tone.gain || .008));
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = tone.type || 'sine';
+    osc.frequency.setValueAtTime(tone.freq, start);
+    if (tone.endFreq) osc.frequency.exponentialRampToValueAtTime(tone.endFreq, start + duration);
+    gain.gain.setValueAtTime(.0001, start);
+    gain.gain.exponentialRampToValueAtTime(gainValue, start + Math.min(.014, duration / 3));
+    gain.gain.exponentialRampToValueAtTime(.0001, start + duration);
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.start(start);
+    osc.stop(start + duration + .02);
+}
+
+/* Short, original synthesized cues: no downloaded/copyrighted audio assets. */
+const MATCH_SOUND_PALETTE = Object.freeze({
+    tap:      [{freq:410,duration:.045,gain:.006,type:'sine'}],
+    nav:      [{freq:360,duration:.055,gain:.006,type:'triangle'},{freq:480,duration:.065,delay:.026,gain:.0045,type:'sine'}],
+    select:   [{freq:560,duration:.055,gain:.007,type:'sine'},{freq:720,duration:.065,delay:.028,gain:.0045,type:'triangle'}],
+    tab:      [{freq:320,duration:.06,gain:.006,type:'triangle'},{freq:480,duration:.07,delay:.035,gain:.0045,type:'sine'}],
+    open:     [{freq:285,duration:.07,gain:.0055,type:'sine'},{freq:425,duration:.085,delay:.04,gain:.004,type:'sine'}],
+    primary:  [{freq:440,duration:.075,gain:.008,type:'triangle'},{freq:659.25,duration:.105,delay:.04,gain:.006,type:'sine'}],
+    share:    [{freq:523.25,duration:.065,gain:.0065,type:'triangle'},{freq:783.99,duration:.08,delay:.045,gain:.005,type:'sine'},{freq:1046.5,duration:.095,delay:.09,gain:.0035,type:'sine'}],
+    save:     [{freq:493.88,duration:.065,gain:.006,type:'sine'},{freq:659.25,duration:.09,delay:.045,gain:.0045,type:'sine'}],
+    like:     [{freq:523.25,duration:.07,gain:.0065,type:'triangle'},{freq:659.25,duration:.09,delay:.045,gain:.005,type:'sine'},{freq:880,duration:.11,delay:.09,gain:.0035,type:'sine'}],
+    back:     [{freq:420,duration:.065,gain:.0055,type:'triangle',endFreq:330}],
+    /* Result reveal: deliberately quieter than the old 600→1200 Hz alarm-like sweep. */
+    result:   [{freq:392,duration:.11,gain:.007,type:'sine'},{freq:587.33,duration:.14,delay:.055,gain:.005,type:'sine'},{freq:783.99,duration:.17,delay:.115,gain:.0035,type:'sine'}],
+    together: [{freq:392,duration:.09,gain:.006,type:'sine'},{freq:523.25,duration:.12,delay:.06,gain:.0045,type:'sine'},{freq:659.25,duration:.14,delay:.12,gain:.0035,type:'sine'}],
+    soundOn:  [{freq:440,duration:.06,gain:.006,type:'sine'},{freq:659.25,duration:.09,delay:.04,gain:.004,type:'sine'}]
+});
+window.playMatchAppSound = function(kind='tap') {
+    if (!soundEnabled()) return;
+    try {
+        const ctx = matchAudioContext();
+        if (!ctx) return;
+        const tones = MATCH_SOUND_PALETTE[kind] || MATCH_SOUND_PALETTE.tap;
+        tones.forEach(tone => matchTone(ctx, tone));
+    } catch (_) {}
+};
+/* Backward-compatible alias for older adult surfaces that still request the legacy cue. */
+window.playPremiumSound = function() { return window.playMatchAppSound('primary'); };
+window.playTogetherSound = function() { return window.playMatchAppSound('together'); };
+
 window.toggleSound = function () {
     const next = !soundEnabled();
     try { localStorage.setItem('match_soundEnabled', String(next)); } catch (e) {}
-    document.querySelectorAll('.sound-toggle-btn').forEach(b => { b.innerHTML = "<span class=\"sound-star\" aria-hidden=\"true\"><svg viewBox=\"0 0 32 32\" fill=\"none\"><path d=\"m16 2 4 9 10 1-7 7 2 10-9-5-9 5 2-10-7-7 10-1Z\" fill=\"currentColor\" opacity=\".2\"/><path class=\"sound-note\" d=\"M14 20V9l10-2v11M14 12l10-2M14 20c0 2-2 3-4 3s-3-1-3-2 2-3 4-3 3 1 3 2Zm10-2c0 2-2 3-4 3s-3-1-3-2 2-3 4-3 3 1 3 2Z\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linejoin=\"round\"/><path class=\"sound-slash\" d=\"m5 5 23 23\" stroke=\"currentColor\" stroke-width=\"3\" stroke-linecap=\"round\"/></svg></span>"; b.setAttribute('aria-pressed', String(soundEnabled())); b.setAttribute('aria-label', window.t ? t(soundEnabled() ? 'sound.on' : 'sound.off') : 'Sound'); });
-    if (next && window.playPremiumSound) window.playPremiumSound();
+    syncSoundToggle();
+    if (next) window.playMatchAppSound('soundOn');
     if (window.showToast) {
         showToast(next ? (window.t ? t('sound.on') : '🔊 Sound on')
                        : (window.t ? t('sound.off') : '🔇 Sound off'));
     }
 };
-function initSoundToggle() {
-    document.querySelectorAll('.sound-toggle-btn').forEach(b => { b.innerHTML = "<span class=\"sound-star\" aria-hidden=\"true\"><svg viewBox=\"0 0 32 32\" fill=\"none\"><path d=\"m16 2 4 9 10 1-7 7 2 10-9-5-9 5 2-10-7-7 10-1Z\" fill=\"currentColor\" opacity=\".2\"/><path class=\"sound-note\" d=\"M14 20V9l10-2v11M14 12l10-2M14 20c0 2-2 3-4 3s-3-1-3-2 2-3 4-3 3 1 3 2Zm10-2c0 2-2 3-4 3s-3-1-3-2 2-3 4-3 3 1 3 2Z\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linejoin=\"round\"/><path class=\"sound-slash\" d=\"m5 5 23 23\" stroke=\"currentColor\" stroke-width=\"3\" stroke-linecap=\"round\"/></svg></span>"; b.setAttribute('aria-pressed', String(soundEnabled())); b.setAttribute('aria-label', window.t ? t(soundEnabled() ? 'sound.on' : 'sound.off') : 'Sound'); });
-}
+function initSoundToggle() { syncSoundToggle(); }
 document.addEventListener('DOMContentLoaded', initSoundToggle);
 document.addEventListener('matchapp:langchange', initSoundToggle);
-
-window.playPremiumSound = function() {
-    if (!soundEnabled()) return;
-    try { 
-        const ctx = new (window.AudioContext || window.webkitAudioContext)(); 
-        const osc = ctx.createOscillator(); 
-        const gain = ctx.createGain(); 
-        osc.connect(gain); gain.connect(ctx.destination); 
-        osc.type = 'sine'; 
-        osc.frequency.setValueAtTime(600, ctx.currentTime); 
-        osc.frequency.exponentialRampToValueAtTime(1200, ctx.currentTime + 0.1); 
-        gain.gain.setValueAtTime(0.09, ctx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.2); 
-        osc.onended=()=>ctx.close(); osc.start(ctx.currentTime); osc.stop(ctx.currentTime + 0.2);
-    } catch (e) { console.log("Audio FX skipped"); }
-};
-
-// A second, distinct chime for Match Together's reveal — deliberately not
-// the same sound as a solo match. Two people converging on one answer is a
-// different kind of moment (and had confetti already, but total silence),
-// so it gets a two-note ascending tone instead of reusing the solo sweep.
-window.playTogetherSound = function () {
-    if (!soundEnabled()) return;
-    try {
-        const ctx = new (window.AudioContext || window.webkitAudioContext)();
-        [[523.25, 0], [659.25, 0.12]].forEach(([freq, delay]) => {
-            const osc = ctx.createOscillator();
-            const gain = ctx.createGain();
-            osc.connect(gain); gain.connect(ctx.destination);
-            osc.type = 'sine';
-            const t0 = ctx.currentTime + delay;
-            osc.frequency.setValueAtTime(freq, t0);
-            gain.gain.setValueAtTime(0.28, t0);
-            gain.gain.exponentialRampToValueAtTime(0.01, t0 + 0.28);
-            osc.start(t0); osc.stop(t0 + 0.28);
-        });
-    } catch (e) { console.log("Audio FX skipped"); }
-};
 
 // ----------------------------------------------------
 // "NEVER-FAIL" COVER DICTIONARY & GENERATOR
@@ -5134,8 +5172,8 @@ async function renderResult(selected, isSpecificSearch) {
     renderMatchCriteria();
     hydrateTitleFacts(selected, matchHints);
 
-    // TRIGGER PREMIUM FX
-    window.playPremiumSound();
+    // TRIGGER PREMIUM FX — soft cinematic reveal, intentionally quieter than ordinary primary actions.
+    window.playMatchAppSound?.('result');
     if (!document.documentElement.classList.contains('reduce-motion') && !matchMedia('(prefers-reduced-motion: reduce)').matches && typeof confetti !== 'undefined') {
         const compactFx = matchMedia('(max-width: 820px)').matches || document.documentElement.classList.contains('matchapp-android');
         confetti({ particleCount: compactFx ? 20 : 38, spread: 64, origin: { y: 0.58 }, colors: ['#E5C158', '#FFF', '#8A2BE2', '#E50914'], disableForReducedMotion: true });
@@ -5638,7 +5676,7 @@ window.recordAction = async function(type) {
     } else if (type === 'like') {
         userRatings[globalMatchTitle] = 5;
         if (!inList(seenList, globalMatchTitle)) seenList.push(itemObj);
-        window.playPremiumSound && window.playPremiumSound();
+        window.playMatchAppSound?.('like');
         if (!document.documentElement.classList.contains('reduce-motion') && !matchMedia('(prefers-reduced-motion: reduce)').matches && typeof confetti === 'function') confetti({ particleCount: 90, spread: 75, origin: { y: 0.7 }, colors: ['#E5C158','#FFF0B3','#ffffff'] });
         showToast(`❤️ Loved it! We'll find you more like "${globalMatchTitle}".`);
     } else if (type === 'dislike') {
@@ -6079,4 +6117,4 @@ document.addEventListener('matchapp:langchange',async()=>{
   if(window.currentSynopsisSource?.title===title&&(window.MATCH_LANG||'en')===language)document.getElementById('res-synopsis').textContent=text===source.text&&source.lang!==language&&!window.matchSynopsisWasTranslated?.(source.text,language)?window.matchTranslationUnavailable():text;
  }
 });
-document.addEventListener('click',event=>{if(event.target.closest('.app-header a,.app-header button:not(.sound-toggle-btn),.app-header select'))window.playPremiumSound?.();});
+document.addEventListener('click',event=>{if(event.target.closest('.app-header a,.app-header button:not(.sound-toggle-btn),.app-header select'))window.playMatchAppSound?.('nav');});
