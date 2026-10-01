@@ -4,7 +4,7 @@
   const V='20260923-videoaudit1';
   const PWA_V='20261001-circle-launch1';
   const INSTALL_MANIFEST_PT='/manifest-pt-br.json';
-  const INSTALL_NAME_PT='MatchApp iA';
+  const INSTALL_NAME_PT='MatchApp Ai';
   const INSTALL_NAME_EN='MatchApp Ai';
   const INSTALL_ICON='/assets/brand/matchapp-ai-install-192.png';
   const path=location.pathname;
