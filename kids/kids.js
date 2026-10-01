@@ -40,6 +40,8 @@
   Object.assign(UI.en,{nostalgiaTitle:'Nostalgia favorites',nostalgiaSub:'Classic cartoons from the 1950s to the 2000s. Tap a title to open its viewing guide. Ask a grown-up before visiting another site.',nostalgiaYoung:'Our nostalgia picks are for older children. Try Winnie the Pooh, Little Bear or Franklin in the collection below.',dub:'Woody Woodpecker language',nostalgiaGuide:'Explore the classic cartoon guide'});
   Object.assign(UI['pt-BR'],{nostalgiaTitle:'Clássicos para matar a saudade',nostalgiaSub:'Pica-Pau, DuckTales, Garfield e desenhos dos anos 50 aos 2000. Toque no título para ver onde assistir. Peça ajuda a um adulto ao abrir outro site.',nostalgiaYoung:'Estes clássicos são para crianças maiores. Explore Pooh, Little Bear e Franklin no catálogo.',dub:'Idioma do Pica-Pau',nostalgiaGuide:'Guia de desenhos clássicos'});
   Object.assign(UI.es,{nostalgiaTitle:'Clásicos para recordar',nostalgiaSub:'El Pájaro Loco, Garfield y dibujos de los años 50 a los 2000. Toca un título para ver dónde verlo. Pide ayuda a un adulto.',nostalgiaYoung:'Estos clásicos son para niños mayores. Explora Pooh, Little Bear y Franklin.',dub:'Idioma del Pájaro Loco',nostalgiaGuide:'Guía de dibujos clásicos'});
+  for (const [locale, message] of Object.entries({"en": "AI is temporarily busy. These picks come from the approved Kids library; try AI again shortly.", "pt-BR": "A IA está temporariamente ocupada. Estas opções vêm da biblioteca Kids aprovada; tente a IA novamente em breve.", "es": "La IA está ocupada temporalmente. Estas opciones vienen de la biblioteca Kids aprobada; vuelve a intentarlo en breve.", "fr": "L’IA est temporairement occupée. Ces choix viennent de la bibliothèque Kids approuvée ; réessayez bientôt.", "de": "Die KI ist vorübergehend ausgelastet. Diese Tipps stammen aus der freigegebenen Kids-Bibliothek; versuche es bald erneut.", "it": "L’IA è temporaneamente occupata. Queste scelte provengono dalla libreria Kids approvata; riprova tra poco.", "tr": "Yapay zekâ geçici olarak meşgul. Bu seçenekler onaylı Kids kütüphanesinden gelir; biraz sonra tekrar deneyin.", "ru": "ИИ временно занят. Эти варианты из одобренной детской библиотеки; попробуйте ИИ чуть позже.", "ar": "الذكاء الاصطناعي مشغول مؤقتاً. هذه الخيارات من مكتبة الأطفال المعتمدة؛ حاول مجدداً بعد قليل.", "hi": "AI अभी व्यस्त है। ये विकल्प स्वीकृत Kids लाइब्रेरी से हैं; थोड़ी देर बाद फिर कोशिश करें।", "id": "AI sedang sibuk sementara. Pilihan ini berasal dari pustaka Kids yang disetujui; coba AI lagi sebentar lagi.", "ja": "AIは一時的に混み合っています。これらは承認済みのキッズライブラリからのおすすめです。少し後に再試行してください。", "ko": "AI가 일시적으로 바쁩니다. 승인된 키즈 라이브러리에서 고른 추천입니다. 잠시 후 다시 시도해 주세요.", "zh": "AI暂时繁忙。这些推荐来自已审核的儿童内容库，请稍后重试AI。"})) UI[locale].aiLocal = message;
+
   const CATEGORIES = ['all','animals','funny','learning','adventure','family','music','bedtime'];
 
   const LIBRARY = [
@@ -128,6 +130,7 @@
   const read = (key) => { try { return localStorage.getItem(key); } catch (_) { return null; } };
   const write = (key, value) => { try { localStorage.setItem(key, value); } catch (_) {} };
   let requestVersion = 0;
+  let aiCooldownUntil = 0;
   let chatPicks = [];
   let motionPaused = read('match_kids_pause_motion') === 'true';
   let lang = 'en';
@@ -492,13 +495,40 @@
     return positive.length ? positive : pool.slice(0,4);
   }
 
-  async function safeAIRecognise(question, age) {
+  async function safeAIRecognise(question, age, version, deadline) {
     if (!window.supabaseClient) return [];
     try {
-      const { data, error } = await window.supabaseClient.functions.invoke('gemini-proxy', { body: {
+      let data, error;
+      // One short retry can recover a minute-window boundary. Longer waits
+      // use reviewed local picks immediately rather than freezing the form.
+      for (let attempt = 0; attempt < 2; attempt++) {
+        if (version !== requestVersion || Date.now() >= deadline) return [];
+        const wait = aiCooldownUntil - Date.now();
+        if (wait > 0) {
+          if (wait > 15000 || Date.now() + wait >= deadline - 20000) return [];
+          await new Promise(resolve => setTimeout(resolve, wait));
+          if (version !== requestVersion || age !== currentAge()) return [];
+        }
+        ({ data, error } = await window.supabaseClient.functions.invoke('gemini-proxy', { body: {
         mode:'discover', question, lang, kidsMode:true, childAgeBand:age,
         country:read('match_user_country') || '', age:''
-      }});
+        }}));
+        if (!error) break;
+        const response = error.context;
+        if (response?.status !== 429) return [];
+        let payload = {};
+        try { payload = await response.clone().json(); } catch (_) {}
+        const header = response.headers?.get('Retry-After');
+        const seconds = Number(header ?? payload.retryAfter);
+        const delay = header && !Number.isFinite(seconds)
+          ? Date.parse(header) - Date.now()
+          : (Number.isFinite(seconds) && seconds >= 0 ? seconds * 1000 : 60000);
+        // Add a small boundary margin; never retry earlier than instructed.
+        aiCooldownUntil = Date.now() + (Number.isFinite(delay) ? Math.max(0, delay) : 60000) + 250;
+        // Only the app's short minute-window throttle gets an automatic retry.
+        // Provider quotas may require much longer recovery; don't hammer them.
+        if (attempt || !Number.isFinite(payload.retryAfter) || aiCooldownUntil - Date.now() > 15000) return [];
+      }
       if (error || !Array.isArray(data?.candidates?.[0]?.content?.parts)) return [];
       const raw = data.candidates[0].content.parts.map(p => typeof p?.text === 'string' ? p.text : '').join('');
       if (!raw) return [];
@@ -523,7 +553,7 @@
     const answer = document.getElementById('kids-answer');
     const results = document.getElementById('kids-chat-results');
     const chat = document.getElementById('kids-chat');
-    if (!question.trim() || !answer || !results || !chat) return;
+    if (!question.trim() || !answer || !results || !chat || document.getElementById('kids-send')?.disabled) return;
     const version = ++requestVersion; const age = currentAge();
     const send = document.getElementById('kids-send');
     const form = document.getElementById('kids-ask-form');
@@ -534,7 +564,7 @@
     // Preserve the approved local fallback, but don't abandon a healthy AI
     // request before its first model has even completed.
     const KIDS_AI_TIMEOUT_MS = 60000;
-    const aiApproved = await Promise.race([safeAIRecognise(question.trim(), age), new Promise(resolve => { timer = setTimeout(() => resolve([]), KIDS_AI_TIMEOUT_MS); })]);
+    const aiApproved = await Promise.race([safeAIRecognise(question.trim(), age, version, Date.now() + KIDS_AI_TIMEOUT_MS), new Promise(resolve => { timer = setTimeout(() => resolve([]), KIDS_AI_TIMEOUT_MS); })]);
     clearTimeout(timer);
     if (version !== requestVersion || age !== currentAge()) return;
     // Reapply the CURRENT allowlist, even to locally selected fallback results.
@@ -549,6 +579,11 @@
     answer.textContent = chatPicks.length
       ? (syn ? lead.title + ' — ' + syn : lead.title)
       : tr('noMatch');
+    if (!aiApproved.length) {
+      const status = document.createElement('strong');
+      status.textContent = tr('aiLocal');
+      answer.prepend(status, document.createTextNode(' '));
+    }
     results.innerHTML = chatPicks.map((x,i) => cardHTML(x, true, 'chat-' + i)).join('');
     chatPicks.forEach((x,i) => hydratePoster(x, 'chat-' + i));
     send.disabled = false; form.setAttribute('aria-busy', 'false');
