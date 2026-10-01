@@ -95,18 +95,29 @@ jobs:
         run: |
           npm install --no-save --package-lock=false --ignore-scripts playwright@1.56.1
           npx playwright install --with-deps chromium
-      - name: Confirm this commit is actually deployed
+      - name: Confirm this commit or a descendant containing it is deployed
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
         shell: bash
         env:
           EXPECTED_SHA: ${{ github.sha }}
         run: |
+          # Automated content/SEO commits can legitimately supersede this SHA
+          # while Pages is deploying. A live descendant still contains the
+          # audited change, so accept it and continue with real production checks.
+          git fetch --no-tags --prune origin main --depth=200
           for i in {1..28}; do
-            remote="$(curl -fsSL "https://matchapp.tv/deployment-sha.txt?audit_sha=${EXPECTED_SHA}" || true)"
+            remote="$(curl -fsSL "https://matchapp.tv/deployment-sha.txt?audit_sha=${EXPECTED_SHA}-${i}" || true)"
             if [ "$remote" = "$EXPECTED_SHA" ]; then exit 0; fi
+            if [[ "$remote" =~ ^[0-9a-f]{40}$ ]]; then
+              git fetch --no-tags --prune origin main --depth=200 >/dev/null 2>&1 || true
+              if git merge-base --is-ancestor "$EXPECTED_SHA" "$remote" 2>/dev/null; then
+                echo "Live descendant $remote contains audited commit $EXPECTED_SHA."
+                exit 0
+              fi
+            fi
             sleep 15
           done
-          echo "::error::Live site did not confirm this precise SHA."
+          echo "::error::Live site did not confirm this SHA or a deployed descendant containing it."
           exit 1
       - name: Serve the checked-out PR candidate with real backend services
         if: github.event_name == 'pull_request'
