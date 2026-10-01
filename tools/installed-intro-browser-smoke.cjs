@@ -12,12 +12,19 @@ const screens=[['phone',390,844],['tablet',820,1180],['landscape',1180,820],['wi
    const context=await browser.newContext({viewport:{width,height},hasTouch:true,userAgent:'Mozilla/5.0 (Linux; Android 15) AppleWebKit/537.36 Chrome/141.0 Mobile Safari/537.36'});
    try{
     await context.addInitScript(()=>Object.defineProperty(navigator,'standalone',{value:true}));
-    const page=await context.newPage();
+    const page=await context.newPage(),media=[];
+    page.on('response',response=>{if(response.url().includes('matchapp-launch-intro'))media.push({status:response.status(),url:response.url()});});
+    await context.addInitScript(()=>{
+     window.introMediaErrors=[];
+     document.addEventListener('error',event=>{if(event.target instanceof HTMLMediaElement)window.introMediaErrors.push({code:event.target.error?.code,message:event.target.error?.message});},true);
+    });
     await page.goto(base+'/?intro_browser_check=1',{waitUntil:'commit'});
     await page.waitForFunction(()=>{
      const video=document.querySelector('#matchapp-launch-intro video');
      return video&&video.readyState>=2&&video.currentTime>0;
-    },null,{timeout:6000});
+    },null,{timeout:6000}).catch(async error=>{
+     console.error('Intro diagnostic',name,JSON.stringify({media,state:await page.evaluate(()=>({installed:navigator.standalone,mp4:document.createElement('video').canPlayType('video/mp4'),errors:window.introMediaErrors,hidden:document.hidden,overlay:!!document.querySelector('#matchapp-launch-intro'),played:sessionStorage.getItem('matchapp-launch-intro')}))}));throw error;
+    });
     const state=await page.evaluate(()=>{
      const video=document.querySelector('#matchapp-launch-intro video'),rect=video.getBoundingClientRect();
      return {width:rect.width,height:rect.height,screenWidth:innerWidth,screenHeight:innerHeight,
