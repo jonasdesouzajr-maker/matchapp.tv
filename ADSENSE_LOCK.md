@@ -1,5 +1,9 @@
 # MatchApp AdSense Immutable Lock
 
+## Owner-authorized zero-width initialization correction — 2026-10-01
+
+The owner explicitly authorized a narrow AdSense-lock exception to correct zero-width initialization while preserving placements and IDs. Each manual request now targets the exact visible, measured `ins` using Google's supported `element` request field. An untargeted request previously selected the first unfilled DOM unit, including a desktop rail hidden on phones/tablets, instead of the measured unit. All five slots, markup, DOM positions, responsive dimensions, publisher/slot IDs, Auto ads, engine script and Android ad-free behavior remain unchanged. The initializer is re-locked with this one-line targeting correction and a regression that rejects requests for hidden units. This exception grants no unrelated AdSense changes.
+
 **Status:** LOCKED  
 **Established:** 2026-09-24  
 **Authority:** Repository owner only

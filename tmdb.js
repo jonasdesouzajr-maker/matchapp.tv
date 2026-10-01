@@ -115,6 +115,10 @@
         if (!isSearchable(hints.cats)) return null;
 
         const kind = hints.kind || kindForCats(hints.cats);
+        // The curated shelf retains its historical short name for exclusions.
+        // Resolve only this verified 2023 film; never accept a fuzzy sequel.
+        const rebelMoonAlias = title === 'Rebel Moon' && Number(hints.year) === 2023 && kind === 'movie';
+        const lookupTitle = rebelMoonAlias ? 'Rebel Moon - Part One: A Child of Fire' : title;
         // Kids verifies English catalogue names independently of the UI language.
         const locales = {en:'en-US', 'pt-BR':'pt-BR', es:'es-ES', fr:'fr-FR', de:'de-DE', it:'it-IT', tr:'tr-TR', ru:'ru-RU', ar:'ar-SA', hi:'hi-IN', id:'id-ID', ja:'ja-JP', ko:'ko-KR', zh:'zh-CN'};
         const lang = hints.lang === 'en-US' ? 'en-US' : (locales[window.MATCH_LANG] || 'en-US');
@@ -124,7 +128,7 @@
         let best = null;
         try {
             const lookupBody = {
-                    query: title,
+                    query: lookupTitle,
                     year: hints.year || '',
                     kind: kind || '',
                     lang: 'en-US'
@@ -135,7 +139,8 @@
             if (error || !data || !Array.isArray(data.results)) return null;
 
             let scored = data.results
-                .map(r => ({ r, score: scoreCandidate(title, hints, r) }))
+                .filter(r => !rebelMoonAlias || r.tmdbId === 848326)
+                .map(r => ({ r, score: scoreCandidate(lookupTitle, hints, r) }))
                 .filter(x => x.score > 0)
                 .sort((a, b) => b.score - a.score);
 
