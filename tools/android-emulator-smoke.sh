@@ -3,7 +3,7 @@
 # emulator. This is NOT a claim of testing a physical phone or Play-signed AAB.
 set -euo pipefail
 mkdir -p artifacts/android-emulator
-adb wait-for-device
+timeout 35s adb wait-for-device
 
 # GitHub's hosted Android guest can boot with no external network route even
 # while the APK itself is healthy. Serve the exact checked-out production tree
@@ -19,7 +19,7 @@ for _ in {1..20}; do
   sleep 1
 done
 curl -fsS "http://127.0.0.1:$SMOKE_PORT/" >/dev/null
-adb reverse "tcp:$SMOKE_PORT" "tcp:$SMOKE_PORT"
+timeout 15s adb reverse "tcp:$SMOKE_PORT" "tcp:$SMOKE_PORT"
 adb shell logcat -c || true
 # Pixel Launcher can ANR on freshly booted shared runners; dismiss a SYSTEM
 # dialog before grading MatchApp visuals. Never treat a blocked screenshot as pass.
@@ -81,7 +81,7 @@ probe() {
   local name="$1" pkg="$2" apk="$3" activity="$4" smoke_path="$5"
   local smoke_url="http://127.0.0.1:$SMOKE_PORT$smoke_path"
   echo "TEST native $name APK: $pkg"
-  adb install -r "$apk"
+  timeout 75s adb install -r "$apk"
   adb shell am force-stop "$pkg" || true
   # Launch the tested Activity explicitly. The Pixel launcher/monkey route is
   # runner-dependent and previously returned to Launcher even while the APK
@@ -166,7 +166,7 @@ case "${MATCHAPP_ANDROID_SMOKE_TARGET:-all}" in
     ;;
   all)
     probe "adult" "com.jonas.papercup.debug" "android-studio/app/build/outputs/apk/debug/app-debug.apk" "com.jonas.papercup.MainActivity" "/?native_emulator_smoke=1"
-    adb shell am force-stop com.jonas.papercup.debug || true
+    timeout 12s adb shell am force-stop com.jonas.papercup.debug || true
     probe "kids" "tv.matchapp.kids.debug" "android-studio/kidsapp/build/outputs/apk/debug/kidsapp-debug.apk" "tv.matchapp.kids.MainActivity" "/kids/?native_emulator_smoke=1"
     ;;
   *)
@@ -174,7 +174,7 @@ case "${MATCHAPP_ANDROID_SMOKE_TARGET:-all}" in
     exit 2
     ;;
 esac
-adb logcat -d -v brief -t 2500 >artifacts/android-emulator/device-last-log.txt || true
+timeout 20s adb logcat -d -v brief -t 2500 >artifacts/android-emulator/device-last-log.txt 2>&1 || true
 if grep -E 'FATAL EXCEPTION|Process: (com\.jonas\.papercup|tv\.matchapp\.kids)([ .]|$)' artifacts/android-emulator/device-last-log.txt |
    grep -Eq 'FATAL EXCEPTION|Process: (com\.jonas\.papercup|tv\.matchapp\.kids)'; then
   echo "::warning::Inspect device-last-log.txt: a native crash-like message was seen."

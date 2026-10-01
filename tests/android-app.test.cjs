@@ -117,3 +117,12 @@ test('native hosted smoke isolates adult and Kids emulators and does not fail a 
  assert.match(smoke,/case "\$\{MATCHAPP_ANDROID_SMOKE_TARGET:-all\}" in/);
  assert.doesNotMatch(smoke,/UiAutomator hierarchy unavailable/);
 });
+
+
+test('hosted native smoke bounds ADB setup, install and final diagnostics so runner transport loss cannot hang the workflow',()=>{
+ const smoke=read('tools/android-emulator-smoke.sh');
+ assert.match(smoke,/timeout 35s adb wait-for-device/);
+ assert.match(smoke,/timeout 15s adb reverse "tcp:\$SMOKE_PORT" "tcp:\$SMOKE_PORT"/);
+ assert.match(smoke,/timeout 75s adb install -r "\$apk"/);
+ assert.match(smoke,/timeout 20s adb logcat -d -v brief -t 2500/);
+});
