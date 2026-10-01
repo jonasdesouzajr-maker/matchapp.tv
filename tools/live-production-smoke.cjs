@@ -198,15 +198,15 @@ async function aiQuestion(page,question,expected,label){
       await page.evaluate(()=>{if(typeof window.setLanguage!=='function')throw Error('Language switch unavailable');window.setLanguage('pt-BR')});
       await page.waitForFunction(()=>{
         const brand=document.querySelector('#mh-topbox .ma-brand-lockup');
-        return brand?.getAttribute('aria-label')==='Matchapp iA'&&brand.querySelector('[data-ma-brand-ai]')?.textContent==='iA';
+        return brand?.getAttribute('aria-label')==='Matchapp Ai'&&brand.querySelector('[data-ma-brand-ai]')?.textContent==='Ai';
       },null,{timeout:10000});
       const portuguese=await page.evaluate(()=>{
         const b=document.querySelector('#mh-topbox .ma-brand-lockup');
         return {label:b?.getAttribute('aria-label'),ai:b?.querySelector('[data-ma-brand-ai]')?.textContent,
           home:b?.querySelector('.ma-brand-home-link')?.getAttribute('aria-label')};
       });
-      record('live Brazilian Portuguese MatchApp iA brand',
-        portuguese.label==='Matchapp iA'&&portuguese.ai==='iA'&&portuguese.home==='Matchapp iA home',
+      record('live Brazilian Portuguese MatchApp Ai brand',
+        portuguese.label==='Matchapp Ai'&&portuguese.ai==='Ai'&&portuguese.home==='Matchapp Ai home',
         JSON.stringify(portuguese));
       await page.evaluate(()=>window.setLanguage('en'));
     }
