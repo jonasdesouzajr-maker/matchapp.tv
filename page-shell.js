@@ -93,7 +93,7 @@
     word.appendChild(el('span', 'ma-word-match', 'Match'));
     word.appendChild(el('span', 'ma-word-app', 'App'));
     copy.appendChild(word);
-    copy.appendChild(el('span', 'ma-word-ai', brandName().endsWith('iA') ? 'iA' : 'Ai'));
+    copy.appendChild(el('span', 'ma-word-ai', 'Ai'));
     copy.querySelector('.ma-word-ai').setAttribute('data-ma-brand-ai', '');
 
     link.appendChild(stage);
