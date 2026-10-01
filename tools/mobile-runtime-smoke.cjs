@@ -38,6 +38,10 @@ async function setup(page){
      await setup(page);
      await page.goto(BASE+'/?mobile_runtime_check=20260927-1',{waitUntil:'domcontentloaded',timeout:60000});
      await page.waitForFunction(()=>typeof window.triggerMatch==='function'&&typeof window.setMatchCriteria==='function',null,{timeout:23000});
+     // Legacy native windows play the intro before Home accepts gestures.
+     const intro=page.locator('#matchapp-launch-intro');
+     if(await intro.isVisible())await intro.locator('button').click({timeout:2000});
+     await intro.waitFor({state:'detached',timeout:7500});
      const runtime=await page.evaluate(()=>({touch:navigator.maxTouchPoints>0,mobileViewport:document.documentElement.clientWidth<=window.innerWidth+2,build:window.MATCHAPP_BUILD,quota:localStorage.getItem('match_dailyCount')||'0'}));
      pass(device.name+' proper touch-enabled bootstrap',runtime.touch&&runtime.mobileViewport,JSON.stringify(runtime));
      await page.getByRole('button',{name:/Essential only/i}).first().click({timeout:900}).catch(()=>{});
