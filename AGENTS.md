@@ -41,11 +41,14 @@ Every design, layout, structural, or functional change MUST be simultaneously ad
 
 ---
 
-### 5. SEO, SITEMAP & GOOGLE SEARCH CONSOLE INTEGRITY
+### 5. SEO, SITEMAP & MULTI-ENGINE SEARCH DISCOVERY INTEGRITY
 
-- **Search Console Compliance:** All HTML, React components, meta tags, structured data (JSON-LD), and semantic elements must strictly follow Google Search Console standards.
-- **Zero Technical SEO Errors:** Changes must NEVER introduce crawling glitches, mobile usability errors (e.g., text too small, clickable elements too close together), or Cumulative Layout Shifts (CLS).
-- **Automated Sitemap Maintenance:** Whenever a change introduces, modifies, or alters indexable routes, pages, or URL structures, ensure the `sitemap.xml` (and/or dynamic sitemap scripts) is properly updated to reflect the change.
+- **Google + Bing + Yandex are mandatory:** Every SEO, indexing, crawlability, discovery, sitemap, metadata, structured-data, canonical, hreflang, robots, rich-result, search-engine submission, or webmaster-tool task MUST explicitly account for **Google Search / Google Search Console, Bing / Bing Webmaster Tools, and Yandex / Yandex Webmaster**. Never treat SEO as Google-only.
+- **Engine-appropriate submission:** Use Google-supported sitemap/Search Console flows for Google. Use **IndexNow** and Bing Webmaster-compatible discovery for Bing, and **IndexNow** plus Yandex Webmaster-compatible discovery for Yandex where applicable. Do not use deprecated or fabricated ping endpoints.
+- **Verification honesty:** Never invent Bing/Yandex verification tokens, API keys, indexing confirmations, rankings, or crawl results. If a webmaster connection is unavailable, keep the site technically ready (robots, sitemap, canonical, hreflang, structured data, IndexNow key file) and clearly report the external verification limitation.
+- **Search Console / Webmaster compliance:** All HTML, React components, meta tags, structured data (JSON-LD), semantic elements, canonicals, hreflang, robots directives and crawl paths must remain valid for Google, Bing, and Yandex.
+- **Zero Technical SEO Errors:** Changes must NEVER introduce crawling glitches, mobile usability errors (e.g., text too small, clickable elements too close together), duplicate-index traps, broken canonicals, invalid structured data, or Cumulative Layout Shifts (CLS).
+- **Automated Sitemap Maintenance:** Whenever a change introduces, modifies, or alters indexable routes, pages, or URL structures, ensure the `sitemap.xml` / sitemap index and any dynamic sitemap scripts are updated, then submit or ping through the supported Google, Bing and Yandex discovery paths as appropriate.
 
 ---
 
