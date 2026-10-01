@@ -72,13 +72,13 @@ test('News initializes directly on the homepage and its original-source cards li
  const section=w.document.getElementById('latest-news');
  assert.ok(section);
  const summary=section.querySelector(':scope > summary');
- section.open=false;summary.click();assert.equal(section.open,true,'one summary activation opens News');
+ assert.equal(section.open,false,'News starts folded until the user opens it');
+ summary.click();assert.equal(section.open,true,'one summary activation opens News');
  await new Promise(r=>setTimeout(r,30));
  assert.equal(section.open,true,'queued Home fold sync must preserve explicit News activation');
  assert.equal(section.tagName,'DETAILS');
  assert.equal(w.document.getElementById('ma-concierge').nextElementSibling,section,'News must remain visible outside a collapsed Match/Ask stage');
  assert.equal(w.document.getElementById('ebook-matcher-root').previousElementSibling.id,'questionnaire-box','Never split the approved matcher/Bookworms pair');
- assert.equal(section.open,false,'News starts folded until the user opens it');
  assert.equal(section.querySelectorAll('.ma-news-card').length,1);
  assert.equal(section.querySelector('.ma-news-card-main')?.getAttribute('href'),'https://www.reuters.com/world/');
  summary.click();assert.equal(section.open,false,'second summary activation closes News');
