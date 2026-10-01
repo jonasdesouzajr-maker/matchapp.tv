@@ -169,7 +169,7 @@
   };
   Object.entries(matchCopy).forEach(([locale,copy])=>Object.assign(UI[locale],copy));
   Object.entries(window.KidsMatchCopy||{}).forEach(([locale,copy])=>Object.assign(UI[locale],copy));
-  let openingMatch=false, matchedUserId=null, currentWatchShared=false, pendingKidsShareNetwork='';
+  let openingMatch=false, buildingMatch=false, matchedUserId=null, currentWatchShared=false, pendingKidsShareNetwork='';
 
   function setLanguage(next) {
     lang = normalizeLang(next);
@@ -412,49 +412,53 @@
     document.getElementById('kids-match-status').textContent=matchPicks.length?tr('matchReady'):'';
   }
   function clearMatch() { matchPicks=[];renderMatchResults(); }
+  function setMatchBusy(busy) {
+    const form=document.getElementById('kids-match-form');if(form)form.setAttribute('aria-busy',String(busy));
+    const submit=document.getElementById('kids-match-submit');if(submit)submit.disabled=busy;
+    const reveal=document.querySelector('.kids-quest-reveal');if(reveal)reveal.disabled=busy;
+    document.querySelectorAll('.kids-quest-choice').forEach(button=>{button.disabled=busy;});
+    document.querySelectorAll('#kids-match-form select').forEach(select=>{select.disabled=busy;});
+  }
   async function makeKidsMatch() {
-    if(openingMatch)return;
-    try{await window.KidsAccount?.prepare();}catch(_){document.getElementById('kids-match-status').textContent=tr('quotaError');return;}
-    const mood=document.getElementById('kids-match-mood').value,format=document.getElementById('kids-match-format').value,era=document.getElementById('kids-match-era').value;
-    const safePool=allowedLibrary(currentAge());
-    // Age, mood and format are HARD boundaries. Only the decade may broaden.
-    // Never substitute a different type of show or unrelated mood just to
-    // make three cards. An impossible combination gets an actionable hint.
-    const fits=(item,stage)=>{
-      if(mood!=='all'&&!item.cats.includes(mood))return false;
-      if(format!=='all'&&item.type!==format)return false;
-      if(stage.era&&era!=='all'&&Math.floor(Number(item.year)/10)*10!==Number(era))return false;
-      return true;
-    };
-    const stages=[{era:true},{era:false}];
-    const chosen=[],seen=new Set();
-    for(const stage of stages){
-      const source=safePool.filter(item=>
-        fits(item,stage) &&
-        !seen.has(slug(item)) &&
-        !(window.KidsAccount?.known?.()||new Set()).has(window.KidsAccount?.key?.(item.title)||normalizeTitle(item.title))
-      );
-      const ranked=source.map(item=>({item,score:(previousMatch.includes(item.title)?0:2)+Math.random()})).sort((a,b)=>b.score-a.score);
-      for(const row of ranked){
-        const key=slug(row.item);if(seen.has(key))continue;seen.add(key);chosen.push(row.item);if(chosen.length>=3)break;
+    if(buildingMatch||openingMatch)return;
+    buildingMatch=true;const band=currentAge(),status=document.getElementById('kids-match-status');
+    status.textContent=tr('matchEmpty');setMatchBusy(true);
+    try{
+      await window.KidsAccount?.prepare();
+      if(band!==currentAge())return;
+      const mood=document.getElementById('kids-match-mood').value,format=document.getElementById('kids-match-format').value,era=document.getElementById('kids-match-era').value;
+      const safePool=allowedLibrary(band);
+      // Age, mood and format are HARD boundaries. Only the decade may broaden.
+      const fits=(item,stage)=>{
+        if(mood!=='all'&&!item.cats.includes(mood))return false;
+        if(format!=='all'&&item.type!==format)return false;
+        if(stage.era&&era!=='all'&&Math.floor(Number(item.year)/10)*10!==Number(era))return false;
+        return true;
+      };
+      const stages=[{era:true},{era:false}],chosen=[],seen=new Set();
+      for(const stage of stages){
+        const source=safePool.filter(item=>
+          fits(item,stage)&&!seen.has(slug(item))&&
+          !(window.KidsAccount?.known?.()||new Set()).has(window.KidsAccount?.key?.(item.title)||normalizeTitle(item.title))
+        );
+        const ranked=source.map(item=>({item,score:(previousMatch.includes(item.title)?0:2)+Math.random()})).sort((a,b)=>b.score-a.score);
+        for(const row of ranked){const key=slug(row.item);if(seen.has(key))continue;seen.add(key);chosen.push(row.item);if(chosen.length>=3)break;}
+        if(chosen.length>=3)break;
       }
-      if(chosen.length>=3)break;
-    }
-    // Never silently discard the child's selected mood/format just to fill
-    // three cards. Era is the only soft preference: after exact matching we
-    // may broaden the decade, but mood and format remain hard boundaries.
-    // If the unseen approved pool is exhausted, show fewer choices/noMatch;
-    // never substitute an unrelated Kids title.
-    matchPicks=chosen.slice(0,3);previousMatch=matchPicks.map(x=>x.title);
-    renderMatchResults();
-    const refineHint=lang==='pt-BR'
-      ?'Ainda não encontramos títulos aprovados com essa combinação. Tente outro humor ou formato.'
-      :lang==='es'
-      ?'Todavía no encontramos títulos aprobados con esa combinación. Prueba otro estado de ánimo o formato.'
-      :'No age-approved picks match this exact mood and format yet. Try another mood or format.';
-    document.getElementById('kids-match-status').textContent=matchPicks.length?tr('matchReady'):refineHint;
-    document.getElementById('kids-match-submit').textContent=tr('matchAgain');
-    if(matchPicks.length)await openWatch(slug(matchPicks[0]),document.getElementById('kids-match-submit'));
+      // Present the adventure as a choice game. A Kids match is spent only
+      // when the child opens one of these reviewed results, never just for
+      // generating the three choices.
+      matchPicks=chosen.slice(0,3);previousMatch=matchPicks.map(x=>x.title);renderMatchResults();
+      const refineHint=lang==='pt-BR'
+        ?'Ainda não encontramos títulos aprovados com essa combinação. Tente outro humor ou formato.'
+        :lang==='es'
+        ?'Todavía no encontramos títulos aprobados con esa combinación. Prueba otro estado de ánimo o formato.'
+        :'No age-approved picks match this exact mood and format yet. Try another mood or format.';
+      status.textContent=matchPicks.length?tr('matchReady'):refineHint;
+      document.getElementById('kids-match-submit').textContent=tr('matchAgain');
+      if(matchPicks.length)document.getElementById('kids-match-results')?.scrollIntoView({behavior:'auto',block:'nearest'});
+    }catch(_){status.textContent=tr('quotaError');}
+    finally{buildingMatch=false;setMatchBusy(false);}
   }
   function renderSaved() {
     const picks=allowedLibrary(currentAge()).filter(x=>savedTitles.has(slug(x)));
@@ -550,59 +554,62 @@
     document.getElementById('kids-ask-form')?.setAttribute('aria-busy', 'false');
   }
   async function askKids(question) {
-    const answer = document.getElementById('kids-answer');
-    const results = document.getElementById('kids-chat-results');
-    const chat = document.getElementById('kids-chat');
-    if (!question.trim() || !answer || !results || !chat || document.getElementById('kids-send')?.disabled) return;
-    const version = ++requestVersion; const age = currentAge();
-    const send = document.getElementById('kids-send');
-    const form = document.getElementById('kids-ask-form');
-    chat.classList.add('show'); answer.textContent = tr('waiting'); results.replaceChildren();
-    send.disabled = true; form.setAttribute('aria-busy', 'true');
-    try {
-      if(!window.KidsAccount?.consumeAI)throw Error('quota');
-      const quota=await window.KidsAccount.consumeAI(()=>version===requestVersion&&age===currentAge());
+    const answer=document.getElementById('kids-answer'),results=document.getElementById('kids-chat-results'),chat=document.getElementById('kids-chat');
+    if(!question.trim()||!answer||!results||!chat||document.getElementById('kids-send')?.disabled)return;
+    const version=++requestVersion,age=currentAge(),send=document.getElementById('kids-send'),form=document.getElementById('kids-ask-form');
+    const quotaEmpty=()=>{
+      answer.textContent=tr('quotaEmpty');send.disabled=false;form.setAttribute('aria-busy','false');
+      const help=document.getElementById('kids-account-help');if(help)help.hidden=false;
+      document.dispatchEvent(new CustomEvent('matchapp:kids-quota-empty',{detail:{kind:'ask_ai'}}));
+    };
+    chat.classList.add('show');answer.textContent=tr('waiting');results.replaceChildren();send.disabled=true;form.setAttribute('aria-busy','true');
+    try{
+      if(!window.KidsAccount)throw Error('quota');
+      const before=await window.KidsAccount.status?.();
       if(version!==requestVersion||age!==currentAge())return;
-      if(!quota?.allowed){
-        answer.textContent=tr('quotaEmpty');send.disabled=false;form.setAttribute('aria-busy','false');
-        const help=document.getElementById('kids-account-help');if(help)help.hidden=false;
-        document.dispatchEvent(new CustomEvent('matchapp:kids-quota-empty',{detail:{kind:'ask_ai'}}));
-        return;
-      }
-    } catch (_) {
+      const remaining=Number(before?.remaining),credits=Number(before?.kids_credits);
+      if(Number.isFinite(remaining)&&Number.isFinite(credits)&&remaining<=0&&credits<=0){quotaEmpty();return;}
+    }catch(_){
       if(version!==requestVersion||age!==currentAge())return;
       answer.textContent=tr('quotaError');send.disabled=false;form.setAttribute('aria-busy','false');return;
     }
     let timer;
-    // The shared Gemini proxy may legitimately try multiple 20-second models.
-    // Preserve the approved local fallback, but don't abandon a healthy AI
-    // request before its first model has even completed.
-    const KIDS_AI_TIMEOUT_MS = 60000;
-    const aiApproved = await Promise.race([safeAIRecognise(question.trim(), age, version, Date.now() + KIDS_AI_TIMEOUT_MS), new Promise(resolve => { timer = setTimeout(() => resolve([]), KIDS_AI_TIMEOUT_MS); })]);
+    const KIDS_AI_TIMEOUT_MS=60000;
+    const aiApproved=await Promise.race([
+      safeAIRecognise(question.trim(),age,version,Date.now()+KIDS_AI_TIMEOUT_MS),
+      new Promise(resolve=>{timer=setTimeout(()=>resolve([]),KIDS_AI_TIMEOUT_MS);})
+    ]);
     clearTimeout(timer);
-    if (version !== requestVersion || age !== currentAge()) return;
-    // Reapply the CURRENT allowlist, even to locally selected fallback results.
+    if(version!==requestVersion||age!==currentAge())return;
     const known=window.KidsAccount?.known?.()||new Set();
-    chatPicks = (aiApproved.length ? aiApproved : localMatch(question.trim(), age)).filter(x =>
-      byTitle.get(normalizeTitle(x.title)) === x &&
-      allowedForAge(x, currentAge()) &&
+    chatPicks=(aiApproved.length?aiApproved:localMatch(question.trim(),age)).filter(x=>
+      byTitle.get(normalizeTitle(x.title))===x&&allowedForAge(x,currentAge())&&
       !known.has(window.KidsAccount?.key?.(x.title)||normalizeTitle(x.title))
     );
-    const lead = chatPicks[0];
-    const syn = lead && String(lead.synopsis || '').replace(/\s+/g, ' ').trim();
-    answer.textContent = chatPicks.length
-      ? (syn ? lead.title + ' — ' + syn : lead.title)
-      : tr('noMatch');
-    if (!aiApproved.length) {
-      const status = document.createElement('strong');
-      status.textContent = tr('aiLocal');
-      answer.prepend(status, document.createTextNode(' '));
+    const lead=chatPicks[0],syn=lead&&String(lead.synopsis||'').replace(/\s+/g,' ').trim();
+    if(!chatPicks.length){
+      answer.textContent=tr('noMatch');
+      if(!aiApproved.length){const status=document.createElement('strong');status.textContent=tr('aiLocal');answer.prepend(status,document.createTextNode(' '));}
+      send.disabled=false;form.setAttribute('aria-busy','false');chat.scrollIntoView({behavior:'auto',block:'nearest'});return;
     }
-    results.innerHTML = chatPicks.map((x,i) => cardHTML(x, true, 'chat-' + i)).join('');
-    chatPicks.forEach((x,i) => hydratePoster(x, 'chat-' + i));
-    send.disabled = false; form.setAttribute('aria-busy', 'false');
+    // Spend one Kids Ask AI allowance only after a usable, age-approved result
+    // exists. Provider errors, timeouts and empty/fully-seen pools cost nothing.
+    try{
+      if(!window.KidsAccount?.consumeAI)throw Error('quota');
+      const quota=await window.KidsAccount.consumeAI(()=>version===requestVersion&&age===currentAge()&&chatPicks.length>0);
+      if(version!==requestVersion||age!==currentAge())return;
+      if(!quota?.allowed){chatPicks=[];results.replaceChildren();quotaEmpty();return;}
+    }catch(_){
+      if(version!==requestVersion||age!==currentAge())return;
+      chatPicks=[];results.replaceChildren();answer.textContent=tr('quotaError');send.disabled=false;form.setAttribute('aria-busy','false');return;
+    }
+    answer.textContent=syn?lead.title+' — '+syn:lead.title;
+    if(!aiApproved.length){const status=document.createElement('strong');status.textContent=tr('aiLocal');answer.prepend(status,document.createTextNode(' '));}
+    results.innerHTML=chatPicks.map((x,i)=>cardHTML(x,true,'chat-'+i)).join('');
+    chatPicks.forEach((x,i)=>hydratePoster(x,'chat-'+i));
+    send.disabled=false;form.setAttribute('aria-busy','false');
     document.dispatchEvent(new CustomEvent('matchapp:kids-ai-result',{detail:{count:chatPicks.length,title:lead?.title||''}}));
-    chat.scrollIntoView({behavior:'auto', block:'nearest'});
+    chat.scrollIntoView({behavior:'auto',block:'nearest'});
   }
 
   function clearKidsCelebrate(){
