@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-30T11:03:20.197Z",
+  "generated": "2026-10-01T11:30:05.682Z",
   "source": "TMDB / JustWatch",
   "titles": {
     "The Bear": {
@@ -885,6 +885,40 @@
         }
       }
     },
+    "Laapataa Ladies": {
+      "tmdbId": 1163194,
+      "kind": "movie",
+      "year": 2024,
+      "regions": {
+        "BR": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/movie/1163194/watch?locale=BR"
+        },
+        "US": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/movie/1163194/watch?locale=US"
+        },
+        "GB": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/movie/1163194/watch?locale=GB"
+        },
+        "PT": {
+          "stream": [
+            "Netflix"
+          ],
+          "link": "https://www.themoviedb.org/movie/1163194/watch?locale=PT"
+        }
+      }
+    },
     "Jawan": {
       "tmdbId": 872906,
       "kind": "movie",
@@ -1192,7 +1226,6 @@
         "US": {
           "stream": [
             "Netflix",
-            "fuboTV",
             "Netflix Standard with Ads"
           ],
           "rent": [
@@ -2935,7 +2968,6 @@
         "US": {
           "stream": [
             "Amazon Prime Video",
-            "Philo",
             "YouTube TV",
             "Amazon Prime Video with Ads",
             "Thirteen",
