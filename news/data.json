@@ -1,10 +1,350 @@
 {
-  "generated_at": "2026-10-01T09:43:00.188Z",
-  "feed_version": "489e779c",
+  "generated_at": "2026-10-01T11:44:07.247Z",
+  "feed_version": "206a652d",
   "sports_updated_at": "2026-10-01T02:09:51.389Z",
   "source_policy": "direct-trusted-publisher-rss+google-trends-keyword-signals",
   "seo_policy": "per-story keyword snapshot at first discovery + source citation + stable archive",
   "items": [
+    {
+      "id": "d7a00591",
+      "title": "Julianne Moore to Receive Rome Film Fest Lifetime Award",
+      "url": "https://www.hollywoodreporter.com/movies/movie-news/julianne-moore-rome-film-fest-lifetime-award-the-debut-1236718112/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "published_at": "2026-10-01T11:43:03.000Z",
+      "discovered_at": "2026-10-01T11:44:07.247Z",
+      "event_type": "Awards",
+      "category": "entertainment",
+      "person": "Julianne Moore",
+      "description": "Julianne Moore: awards headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/08/Julianne-Moore-Cannes-Main-2026.jpg?w=1296&h=730&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/julianne-moore-to-receive-rome-film-fest-lifetime-award-d7a005/",
+      "landing_url": "https://matchapp.tv/?news=d7a00591#latest-news",
+      "seo": {
+        "primary_keyword": "தமிழக வெற்றிக் கழகம்",
+        "short_tail": [
+          "Julianne Moore",
+          "Julianne Moore news",
+          "awards",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "தமிழக வெற்றிக் கழகம்",
+          "வங்கி விடுமுறை",
+          "नकली नोट",
+          "अमिताभ बच्चन"
+        ],
+        "long_tail": [
+          "Julianne Moore latest news October 2026",
+          "Julianne Moore awards update 2026",
+          "Julianne Moore news 2026-10-01",
+          "latest awards news about Julianne Moore",
+          "julianne moore julianne moore receive rome latest update",
+          "The Hollywood Reporter Julianne Moore awards",
+          "latest news about Julianne Moore October 2026",
+          "Julianne Moore entertainment news 2026-10-01",
+          "what happened with Julianne Moore"
+        ],
+        "trend_keywords": [
+          "தமிழக வெற்றிக் கழகம்",
+          "வங்கி விடுமுறை",
+          "नकली नोट",
+          "अमिताभ बच्चन"
+        ],
+        "entity_keywords": [
+          "Julianne Moore",
+          "julianne",
+          "moore",
+          "receive",
+          "rome",
+          "film",
+          "fest"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-01",
+          "Julianne Moore 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter Julianne Moore",
+          "hollywoodreporter.com Julianne Moore",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "Julianne Moore to Receive Rome Film Fest Lifetime Award |…",
+        "meta_description": "Julianne Moore: Awards update reported by The Hollywood Reporter on 2026-10-01. See verified context, publication time and the original source via MatchApp…",
+        "keywords": [
+          "தமிழக வெற்றிக் கழகம்",
+          "Julianne Moore",
+          "Julianne Moore news",
+          "awards",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "வங்கி விடுமுறை",
+          "नकली नोट",
+          "अमिताभ बच्चन",
+          "Julianne Moore latest news October 2026",
+          "Julianne Moore awards update 2026",
+          "Julianne Moore news 2026-10-01",
+          "latest awards news about Julianne Moore",
+          "julianne moore julianne moore receive rome latest update",
+          "The Hollywood Reporter Julianne Moore awards",
+          "latest news about Julianne Moore October 2026",
+          "Julianne Moore entertainment news 2026-10-01",
+          "what happened with Julianne Moore",
+          "julianne",
+          "moore",
+          "receive",
+          "rome",
+          "film",
+          "fest",
+          "October 2026",
+          "2026-10-01",
+          "Julianne Moore 2026",
+          "The Hollywood Reporter Julianne Moore",
+          "hollywoodreporter.com Julianne Moore",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-01T11:44:07.247Z"
+      }
+    },
+    {
+      "id": "9db91608",
+      "title": "Trump's AI rebrand causes 'unprecedented' demand for Slovenian website names",
+      "url": "https://www.bbc.co.uk/news/articles/cqx2z23xj555o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC Technology",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "published_at": "2026-10-01T11:37:46.000Z",
+      "discovered_at": "2026-10-01T11:44:07.247Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "Trump's AI",
+      "description": "World news reported by BBC Technology on 2026-10-01. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/4ff7/live/977f2bf0-bd85-11f1-ab03-fd866f8788d0.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/trump-s-ai-rebrand-causes-unprecedented-demand-for-slovenian-website-names-9db916/",
+      "landing_url": "https://matchapp.tv/?news=9db91608#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-01",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "trump",
+          "rebrand",
+          "causes",
+          "unprecedented",
+          "demand",
+          "slovenian"
+        ],
+        "long_tail": [
+          "Trump's AI rebrand causes 'unprecedented' demand for Slovenian website names 2026-10-01",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "trump",
+          "rebrand",
+          "causes",
+          "unprecedented",
+          "demand",
+          "slovenian"
+        ],
+        "freshness_keywords": [
+          "2026-10-01"
+        ],
+        "source_keywords": [
+          "BBC Technology"
+        ],
+        "meta_title": "Trump's AI rebrand causes 'unprecedented' demand for…",
+        "meta_description": "World report published by BBC Technology on 2026-10-01. Open the original report for full context.",
+        "keywords": [
+          "world news",
+          "global headlines",
+          "trump",
+          "rebrand",
+          "causes",
+          "unprecedented",
+          "demand",
+          "slovenian",
+          "2026-10-01",
+          "BBC Technology"
+        ],
+        "seo_generated_at": "2026-10-01T11:44:07.247Z"
+      }
+    },
+    {
+      "id": "a37b209a",
+      "title": "Netflix’s New Releases Coming in October 2026",
+      "url": "https://www.hollywoodreporter.com/tv/tv-news/netflix-october-2026-new-releases-movies-tv-1236718064/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "published_at": "2026-10-01T11:00:00.000Z",
+      "discovered_at": "2026-10-01T11:44:07.247Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "Netflix’s New Releases Coming",
+      "description": "Netflix’s New Releases Coming: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/Netflix-October-2026.jpg?w=1296&h=730&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/netflix-s-new-releases-coming-in-october-2026-a37b20/",
+      "landing_url": "https://matchapp.tv/?news=a37b209a#latest-news",
+      "seo": {
+        "primary_keyword": "october 2026 calendar",
+        "short_tail": [
+          "Netflix’s New Releases Coming",
+          "Netflix’s New Releases Coming news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "october 2026 calendar",
+          "தமிழக வெற்றிக் கழகம்",
+          "வங்கி விடுமுறை",
+          "नकली नोट"
+        ],
+        "long_tail": [
+          "Netflix’s New Releases Coming latest news October 2026",
+          "Netflix’s New Releases Coming entertainment update 2026",
+          "Netflix’s New Releases Coming news 2026-10-01",
+          "latest entertainment news about Netflix’s New Releases Coming",
+          "netflix new releases coming netflix new latest update",
+          "The Hollywood Reporter Netflix’s New Releases Coming entertainment",
+          "latest news about Netflix’s New Releases Coming October 2026",
+          "Netflix’s New Releases Coming entertainment news 2026-10-01",
+          "what happened with Netflix’s New Releases Coming"
+        ],
+        "trend_keywords": [
+          "october 2026 calendar",
+          "தமிழக வெற்றிக் கழகம்",
+          "வங்கி விடுமுறை",
+          "नकली नोट"
+        ],
+        "entity_keywords": [
+          "Netflix’s New Releases Coming",
+          "netflix",
+          "new",
+          "releases",
+          "coming"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-01",
+          "Netflix’s New Releases Coming 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter Netflix’s New Releases Coming",
+          "hollywoodreporter.com Netflix’s New Releases Coming",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "Netflix’s New Releases Coming in October 2026 |…",
+        "meta_description": "Netflix’s New Releases Coming: Entertainment update reported by The Hollywood Reporter on 2026-10-01. See verified context, publication time and the…",
+        "keywords": [
+          "october 2026 calendar",
+          "Netflix’s New Releases Coming",
+          "Netflix’s New Releases Coming news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "தமிழக வெற்றிக் கழகம்",
+          "வங்கி விடுமுறை",
+          "नकली नोट",
+          "Netflix’s New Releases Coming latest news October 2026",
+          "Netflix’s New Releases Coming entertainment update 2026",
+          "Netflix’s New Releases Coming news 2026-10-01",
+          "latest entertainment news about Netflix’s New Releases Coming",
+          "netflix new releases coming netflix new latest update",
+          "The Hollywood Reporter Netflix’s New Releases Coming entertainment",
+          "latest news about Netflix’s New Releases Coming October 2026",
+          "Netflix’s New Releases Coming entertainment news 2026-10-01",
+          "what happened with Netflix’s New Releases Coming",
+          "netflix",
+          "new",
+          "releases",
+          "coming",
+          "October 2026",
+          "2026-10-01",
+          "Netflix’s New Releases Coming 2026",
+          "The Hollywood Reporter Netflix’s New Releases Coming",
+          "hollywoodreporter.com Netflix’s New Releases Coming",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-01T11:44:07.247Z"
+      }
+    },
+    {
+      "id": "df6ead8a",
+      "title": "AI boom could trigger market shocks, Bank of England boss warns",
+      "url": "https://www.bbc.co.uk/news/articles/cv8e30enrkxyo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC Technology",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "published_at": "2026-10-01T10:05:25.000Z",
+      "discovered_at": "2026-10-01T09:23:36.572Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC Technology on 2026-10-01. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/d849/live/8e2b1bb0-bd4c-11f1-a52c-0511052dc036.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/ai-boom-could-trigger-market-shocks-bank-of-england-boss-warns-df6ead/",
+      "landing_url": "https://matchapp.tv/?news=df6ead8a#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-01",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "boom",
+          "could",
+          "trigger",
+          "market",
+          "shocks",
+          "bank"
+        ],
+        "long_tail": [
+          "AI boom could trigger market shocks, Bank of England boss warns 2026-10-01",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "boom",
+          "could",
+          "trigger",
+          "market",
+          "shocks",
+          "bank"
+        ],
+        "freshness_keywords": [
+          "2026-10-01"
+        ],
+        "source_keywords": [
+          "BBC Technology"
+        ],
+        "meta_title": "AI boom could trigger market shocks, Bank of England boss…",
+        "meta_description": "World report published by BBC Technology on 2026-10-01. Open the original report for full context.",
+        "keywords": [
+          "world news",
+          "global headlines",
+          "boom",
+          "could",
+          "trigger",
+          "market",
+          "shocks",
+          "bank",
+          "2026-10-01",
+          "BBC Technology"
+        ],
+        "seo_generated_at": "2026-10-01T09:23:36.572Z"
+      }
+    },
     {
       "id": "15873f2d",
       "title": "Tributes paid to 'inspirational' presenter and campaigner Esther Rantzen",
@@ -110,6 +450,115 @@
           "bbc.co.uk tributes paid inspirational presenter"
         ],
         "seo_generated_at": "2026-10-01T09:23:36.572Z"
+      }
+    },
+    {
+      "id": "b354d1fe",
+      "title": "Paulinho da Viola, Teresa Cristina, Zeca Pagodinho e Diogo Nogueira gravam o samba da Portela em tributo a Monarco",
+      "url": "https://g1.globo.com/pop-arte/musica/blog/mauro-ferreira/post/2026/10/01/paulinho-da-viola-teresa-cristina-zeca-pagodinho-e-diogo-nogueira-gravam-o-samba-da-portela-em-tributo-a-monarco.ghtml",
+      "source": "G1",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "BR",
+      "published_at": "2026-10-01T08:00:00.000Z",
+      "discovered_at": "2026-10-01T11:44:07.247Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "",
+      "description": "entertainment headline reported by G1. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://s2-g1.glbimg.com/eIKd35gDMLi0z9IMwWPpptZLzDE=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/m/u/gMamn2TimIJAjDm3z6Bw/portela2027.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/paulinho-da-viola-teresa-cristina-zeca-pagodinho-e-diogo-nogueira-gravam-o-samba-b354d1/",
+      "landing_url": "https://matchapp.tv/?news=b354d1fe#latest-news",
+      "seo": {
+        "primary_keyword": "தமிழக வெற்றிக் கழகம்",
+        "short_tail": [
+          "paulinho viola teresa cristina",
+          "paulinho viola teresa cristina news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje",
+          "தமிழக வெற்றிக் கழகம்",
+          "வங்கி விடுமுறை",
+          "नकली नोट",
+          "अमिताभ बच्चन"
+        ],
+        "long_tail": [
+          "paulinho viola teresa cristina latest news October 2026",
+          "paulinho viola teresa cristina entertainment update 2026",
+          "paulinho viola teresa cristina news 2026-10-01",
+          "latest entertainment news about paulinho viola teresa cristina",
+          "paulinho viola teresa cristina zeca pagodinho latest update",
+          "G1 paulinho viola teresa cristina entertainment",
+          "últimas notícias sobre paulinho viola teresa cristina outubro 2026",
+          "paulinho viola teresa cristina notícia de 2026-10-01",
+          "o que aconteceu com paulinho viola teresa cristina"
+        ],
+        "trend_keywords": [
+          "தமிழக வெற்றிக் கழகம்",
+          "வங்கி விடுமுறை",
+          "नकली नोट",
+          "अमिताभ बच्चन"
+        ],
+        "entity_keywords": [
+          "paulinho",
+          "viola",
+          "teresa",
+          "cristina",
+          "zeca",
+          "pagodinho",
+          "diogo",
+          "nogueira"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-01",
+          "outubro 2026",
+          "paulinho viola teresa cristina 2026"
+        ],
+        "source_keywords": [
+          "G1 paulinho viola teresa cristina",
+          "g1.globo.com paulinho viola teresa cristina",
+          "G1 entertainment news"
+        ],
+        "meta_title": "Paulinho da Viola, Teresa Cristina, Zeca Pagodinho e Diogo…",
+        "meta_description": "Entertainment update reported by G1 on 2026-10-01. See verified context, publication time and the original source via MatchApp TV.",
+        "keywords": [
+          "தமிழக வெற்றிக் கழகம்",
+          "paulinho viola teresa cristina",
+          "paulinho viola teresa cristina news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje",
+          "வங்கி விடுமுறை",
+          "नकली नोट",
+          "अमिताभ बच्चन",
+          "paulinho viola teresa cristina latest news October 2026",
+          "paulinho viola teresa cristina entertainment update 2026",
+          "paulinho viola teresa cristina news 2026-10-01",
+          "latest entertainment news about paulinho viola teresa cristina",
+          "paulinho viola teresa cristina zeca pagodinho latest update",
+          "G1 paulinho viola teresa cristina entertainment",
+          "últimas notícias sobre paulinho viola teresa cristina outubro 2026",
+          "paulinho viola teresa cristina notícia de 2026-10-01",
+          "o que aconteceu com paulinho viola teresa cristina",
+          "paulinho",
+          "viola",
+          "teresa",
+          "cristina",
+          "zeca",
+          "pagodinho",
+          "diogo",
+          "nogueira",
+          "October 2026",
+          "2026-10-01",
+          "outubro 2026",
+          "paulinho viola teresa cristina 2026"
+        ],
+        "seo_generated_at": "2026-10-01T11:44:07.247Z"
       }
     },
     {
@@ -1038,176 +1487,6 @@
       }
     },
     {
-      "id": "714ae26a",
-      "title": "Nicolas Cage Says the MCU “Is Becoming a Well-Funded and Glorified WWE”",
-      "url": "https://www.hollywoodreporter.com/movies/movie-news/nicolas-cage-mcu-well-funded-glorified-wwe-1236717966/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "published_at": "2026-10-01T04:38:03.000Z",
-      "discovered_at": "2026-10-01T09:23:36.572Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "Nicolas Cage Says",
-      "description": "Nicolas Cage Says: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/05/GettyImages-2276102704.jpg?crop=0px%2C44px%2C4524px%2C2532px&resize=1440%2C810",
-      "matchapp_url": "https://matchapp.tv/news/articles/nicolas-cage-says-the-mcu-is-becoming-a-well-funded-and-glorified-wwe-714ae2/",
-      "landing_url": "https://matchapp.tv/?news=714ae26a#latest-news",
-      "seo": {
-        "primary_keyword": "m4",
-        "short_tail": [
-          "Nicolas Cage Says",
-          "Nicolas Cage Says news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "m4",
-          "భారత జాతీయ క్రికెట్ జట్టు",
-          "गाजियाबाद",
-          "विजय"
-        ],
-        "long_tail": [
-          "Nicolas Cage Says latest news October 2026",
-          "Nicolas Cage Says entertainment update 2026",
-          "Nicolas Cage Says news 2026-10-01",
-          "latest entertainment news about Nicolas Cage Says",
-          "nicolas cage says nicolas cage says latest update",
-          "The Hollywood Reporter Nicolas Cage Says entertainment",
-          "latest news about Nicolas Cage Says October 2026",
-          "Nicolas Cage Says entertainment news 2026-10-01",
-          "what happened with Nicolas Cage Says"
-        ],
-        "trend_keywords": [
-          "m4",
-          "భారత జాతీయ క్రికెట్ జట్టు",
-          "गाजियाबाद",
-          "विजय"
-        ],
-        "entity_keywords": [
-          "Nicolas Cage Says",
-          "nicolas",
-          "cage",
-          "says",
-          "mcu",
-          "becoming"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-01",
-          "Nicolas Cage Says 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter Nicolas Cage Says",
-          "hollywoodreporter.com Nicolas Cage Says",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "Nicolas Cage Says the MCU “Is Becoming a Well-Funded and…",
-        "meta_description": "Nicolas Cage Says: Entertainment update reported by The Hollywood Reporter on 2026-10-01. See verified context, publication time and the original source via…",
-        "keywords": [
-          "m4",
-          "Nicolas Cage Says",
-          "Nicolas Cage Says news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "భారత జాతీయ క్రికెట్ జట్టు",
-          "गाजियाबाद",
-          "विजय",
-          "Nicolas Cage Says latest news October 2026",
-          "Nicolas Cage Says entertainment update 2026",
-          "Nicolas Cage Says news 2026-10-01",
-          "latest entertainment news about Nicolas Cage Says",
-          "nicolas cage says nicolas cage says latest update",
-          "The Hollywood Reporter Nicolas Cage Says entertainment",
-          "latest news about Nicolas Cage Says October 2026",
-          "Nicolas Cage Says entertainment news 2026-10-01",
-          "what happened with Nicolas Cage Says",
-          "nicolas",
-          "cage",
-          "says",
-          "mcu",
-          "becoming",
-          "October 2026",
-          "2026-10-01",
-          "Nicolas Cage Says 2026",
-          "The Hollywood Reporter Nicolas Cage Says",
-          "hollywoodreporter.com Nicolas Cage Says",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-01T09:23:36.572Z"
-      }
-    },
-    {
-      "id": "df6ead8a",
-      "title": "AI boom could trigger market shocks, Bank of England boss warns",
-      "url": "https://www.bbc.co.uk/news/articles/cv8e30enrkxyo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC Technology",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "published_at": "2026-10-01T04:03:17.000Z",
-      "discovered_at": "2026-10-01T09:23:36.572Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC Technology on 2026-10-01. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/d849/live/8e2b1bb0-bd4c-11f1-a52c-0511052dc036.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/ai-boom-could-trigger-market-shocks-bank-of-england-boss-warns-df6ead/",
-      "landing_url": "https://matchapp.tv/?news=df6ead8a#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-01",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "boom",
-          "could",
-          "trigger",
-          "market",
-          "shocks",
-          "bank"
-        ],
-        "long_tail": [
-          "AI boom could trigger market shocks, Bank of England boss warns 2026-10-01",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "boom",
-          "could",
-          "trigger",
-          "market",
-          "shocks",
-          "bank"
-        ],
-        "freshness_keywords": [
-          "2026-10-01"
-        ],
-        "source_keywords": [
-          "BBC Technology"
-        ],
-        "meta_title": "AI boom could trigger market shocks, Bank of England boss…",
-        "meta_description": "World report published by BBC Technology on 2026-10-01. Open the original report for full context.",
-        "keywords": [
-          "world news",
-          "global headlines",
-          "boom",
-          "could",
-          "trigger",
-          "market",
-          "shocks",
-          "bank",
-          "2026-10-01",
-          "BBC Technology"
-        ],
-        "seo_generated_at": "2026-10-01T09:23:36.572Z"
-      }
-    },
-    {
       "id": "85f8e46f",
       "title": "Lazzo Matumbi expõe a influência da África em single de álbum audiovisual em que canta compositores da Bahia",
       "url": "https://g1.globo.com/pop-arte/musica/blog/mauro-ferreira/post/2026/10/01/lazzo-matumbi-expoe-a-influencia-da-africa-em-single-de-album-audiovisual-em-que-canta-compositores-da-bahia.ghtml",
@@ -1566,7 +1845,7 @@
       "category": "world",
       "person": "The AI",
       "description": "World news reported by BBC Technology on 2026-09-30. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/874b/live/cbc27c20-acfd-11f1-bc1f-3f186ca4140c.jpg",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/0645/live/cb36dd30-bd80-11f1-bc2e-018d645d8d21.jpg",
       "matchapp_url": "https://matchapp.tv/news/articles/the-ai-telling-farmers-when-to-harvest-b63e79/",
       "landing_url": "https://matchapp.tv/?news=b63e79db#latest-news",
       "seo": {
@@ -2784,287 +3063,6 @@
           "2026-09-30",
           "setembro 2026",
           "filha ator pretty little 2026"
-        ],
-        "seo_generated_at": "2026-09-30T14:12:45.133Z"
-      }
-    },
-    {
-      "id": "58cbeb84",
-      "title": "Danni becomes first contestant to leave Bake Off",
-      "url": "https://www.bbc.co.uk/news/articles/cqde01j1p3gxo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GB",
-      "published_at": "2026-09-30T11:12:00.000Z",
-      "discovered_at": "2026-09-30T14:12:45.133Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "",
-      "description": "entertainment headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/daf5/live/c231f890-b65b-11f1-bc1f-3f186ca4140c.png",
-      "matchapp_url": "https://matchapp.tv/news/articles/danni-becomes-first-contestant-to-leave-bake-off-58cbeb/",
-      "landing_url": "https://matchapp.tv/?news=58cbeb84#latest-news",
-      "seo": {
-        "primary_keyword": "m6",
-        "short_tail": [
-          "danni becomes first contestant",
-          "danni becomes first contestant news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "m6",
-          "മഴ",
-          "ఆహారం",
-          "தமிழக முதல்வர்"
-        ],
-        "long_tail": [
-          "danni becomes first contestant latest news September 2026",
-          "danni becomes first contestant entertainment update 2026",
-          "danni becomes first contestant news 2026-09-30",
-          "latest entertainment news about danni becomes first contestant",
-          "danni becomes first contestant leave bake latest update",
-          "BBC danni becomes first contestant entertainment",
-          "latest news about danni becomes first contestant September 2026",
-          "danni becomes first contestant entertainment news 2026-09-30",
-          "what happened with danni becomes first contestant"
-        ],
-        "trend_keywords": [
-          "m6",
-          "മഴ",
-          "ఆహారం",
-          "தமிழக முதல்வர்"
-        ],
-        "entity_keywords": [
-          "danni",
-          "becomes",
-          "first",
-          "contestant",
-          "leave",
-          "bake",
-          "off"
-        ],
-        "freshness_keywords": [
-          "September 2026",
-          "2026-09-30",
-          "danni becomes first contestant 2026"
-        ],
-        "source_keywords": [
-          "BBC danni becomes first contestant",
-          "bbc.co.uk danni becomes first contestant",
-          "BBC entertainment news"
-        ],
-        "meta_title": "Danni becomes first contestant to leave Bake Off |…",
-        "meta_description": "Entertainment update reported by BBC on 2026-09-30. See verified context, publication time and the original source via MatchApp TV.",
-        "keywords": [
-          "m6",
-          "danni becomes first contestant",
-          "danni becomes first contestant news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "മഴ",
-          "ఆహారం",
-          "தமிழக முதல்வர்",
-          "danni becomes first contestant latest news September 2026",
-          "danni becomes first contestant entertainment update 2026",
-          "danni becomes first contestant news 2026-09-30",
-          "latest entertainment news about danni becomes first contestant",
-          "danni becomes first contestant leave bake latest update",
-          "BBC danni becomes first contestant entertainment",
-          "latest news about danni becomes first contestant September 2026",
-          "danni becomes first contestant entertainment news 2026-09-30",
-          "what happened with danni becomes first contestant",
-          "danni",
-          "becomes",
-          "first",
-          "contestant",
-          "leave",
-          "bake",
-          "off",
-          "September 2026",
-          "2026-09-30",
-          "danni becomes first contestant 2026",
-          "BBC danni becomes first contestant",
-          "bbc.co.uk danni becomes first contestant"
-        ],
-        "seo_generated_at": "2026-09-30T14:12:45.133Z"
-      }
-    },
-    {
-      "id": "62d0605d",
-      "title": "Inquieto, Gustavo Mioto incursiona pelo rock em álbum em que tenta ir além do desgastado padrão da música sertaneja",
-      "url": "https://g1.globo.com/pop-arte/musica/blog/mauro-ferreira/post/2026/09/30/inquieto-gustavo-mioto-incursiona-pelo-rock-em-album-em-que-tenta-ir-alem-do-desgastado-padrao-da-musica-sertaneja.ghtml",
-      "source": "G1",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "BR",
-      "published_at": "2026-09-30T10:52:17.000Z",
-      "discovered_at": "2026-09-30T14:12:45.133Z",
-      "event_type": "Music",
-      "category": "entertainment",
-      "person": "",
-      "description": "music headline reported by G1. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://s2-g1.glbimg.com/O0y7sozs5daRWKTFZuag_IuY3pE=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/K/j/LvTyoYS9OZYgPESXHABg/gustavomiotofotoleosaucer.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/inquieto-gustavo-mioto-incursiona-pelo-rock-em-album-em-que-tenta-ir-alem-do-des-62d060/",
-      "landing_url": "https://matchapp.tv/?news=62d0605d#latest-news",
-      "seo": {
-        "primary_keyword": "m6",
-        "short_tail": [
-          "inquieto gustavo mioto incursiona",
-          "inquieto gustavo mioto incursiona news",
-          "music",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "m6",
-          "മഴ",
-          "ఆహారం",
-          "தமிழக முதல்வர்"
-        ],
-        "long_tail": [
-          "inquieto gustavo mioto incursiona latest news September 2026",
-          "inquieto gustavo mioto incursiona music update 2026",
-          "inquieto gustavo mioto incursiona news 2026-09-30",
-          "latest music news about inquieto gustavo mioto incursiona",
-          "inquieto gustavo mioto incursiona pelo rock latest update",
-          "G1 inquieto gustavo mioto incursiona music",
-          "últimas notícias sobre inquieto gustavo mioto incursiona setembro 2026",
-          "inquieto gustavo mioto incursiona notícia de 2026-09-30",
-          "o que aconteceu com inquieto gustavo mioto incursiona"
-        ],
-        "trend_keywords": [
-          "m6",
-          "മഴ",
-          "ఆహారం",
-          "தமிழக முதல்வர்"
-        ],
-        "entity_keywords": [
-          "inquieto",
-          "gustavo",
-          "mioto",
-          "incursiona",
-          "pelo",
-          "rock",
-          "album",
-          "que"
-        ],
-        "freshness_keywords": [
-          "September 2026",
-          "2026-09-30",
-          "setembro 2026",
-          "inquieto gustavo mioto incursiona 2026"
-        ],
-        "source_keywords": [
-          "G1 inquieto gustavo mioto incursiona",
-          "g1.globo.com inquieto gustavo mioto incursiona",
-          "G1 entertainment news"
-        ],
-        "meta_title": "Inquieto, Gustavo Mioto incursiona pelo rock em álbum em…",
-        "meta_description": "Music update reported by G1 on 2026-09-30. See verified context, publication time and the original source via MatchApp TV.",
-        "keywords": [
-          "m6",
-          "inquieto gustavo mioto incursiona",
-          "inquieto gustavo mioto incursiona news",
-          "music",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "മഴ",
-          "ఆహారం",
-          "தமிழக முதல்வர்",
-          "inquieto gustavo mioto incursiona latest news September 2026",
-          "inquieto gustavo mioto incursiona music update 2026",
-          "inquieto gustavo mioto incursiona news 2026-09-30",
-          "latest music news about inquieto gustavo mioto incursiona",
-          "inquieto gustavo mioto incursiona pelo rock latest update",
-          "G1 inquieto gustavo mioto incursiona music",
-          "últimas notícias sobre inquieto gustavo mioto incursiona setembro 2026",
-          "inquieto gustavo mioto incursiona notícia de 2026-09-30",
-          "o que aconteceu com inquieto gustavo mioto incursiona",
-          "inquieto",
-          "gustavo",
-          "mioto",
-          "incursiona",
-          "pelo",
-          "rock",
-          "album",
-          "que",
-          "September 2026",
-          "2026-09-30",
-          "setembro 2026",
-          "inquieto gustavo mioto incursiona 2026"
-        ],
-        "seo_generated_at": "2026-09-30T14:12:45.133Z"
-      }
-    },
-    {
-      "id": "a53d5163",
-      "title": "Young minds develop ideas to tackle climate change",
-      "url": "https://www.bbc.co.uk/news/articles/cv62kpj70585o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC Science",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "published_at": "2026-09-30T09:36:10.000Z",
-      "discovered_at": "2026-09-30T14:12:45.133Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC Science on 2026-09-30. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/0535/live/2b154970-bc10-11f1-a524-3125ac41b7f5.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/young-minds-develop-ideas-to-tackle-climate-change-a53d51/",
-      "landing_url": "https://matchapp.tv/?news=a53d5163#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-09-30",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "young",
-          "minds",
-          "develop",
-          "ideas",
-          "tackle",
-          "climate"
-        ],
-        "long_tail": [
-          "Young minds develop ideas to tackle climate change 2026-09-30",
-          "world news September 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "young",
-          "minds",
-          "develop",
-          "ideas",
-          "tackle",
-          "climate"
-        ],
-        "freshness_keywords": [
-          "2026-09-30"
-        ],
-        "source_keywords": [
-          "BBC Science"
-        ],
-        "meta_title": "Young minds develop ideas to tackle climate change | World…",
-        "meta_description": "World report published by BBC Science on 2026-09-30. Open the original report for full context.",
-        "keywords": [
-          "world news",
-          "global headlines",
-          "young",
-          "minds",
-          "develop",
-          "ideas",
-          "tackle",
-          "climate",
-          "2026-09-30",
-          "BBC Science"
         ],
         "seo_generated_at": "2026-09-30T14:12:45.133Z"
       }
