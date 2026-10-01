@@ -15,7 +15,7 @@
     <link rel="manifest" href="/manifest.json">
     <link rel="icon" href="/logo.jpeg?v=2">
 
-    <title>MatchApp TV Ai | My Private Streaming Hub</title>
+    <title data-i18n="profile.pageTitle">MatchApp Ai | My Profile</title>
     <meta name="robots" content="noindex, nofollow">
 
     <!-- GOOGLE ANALYTICS (GTAG) -->
@@ -347,18 +347,18 @@ body.profile-page-v3 .profile-hub-row{min-height:70px!important;border-radius:18
 
     <main class="main-layout">
         <section class="container">
-            <section class="match-avatar-maker" id="avatar-studio" aria-label="MatchApp avatar"></section><section class="profile-hub"><div class="profile-hub-intro"><h1>My Profile</h1><p>Manage your account and preferences</p></div><nav class="profile-hub-menu">
-<button class="profile-hub-row" type="button" data-profile-target="account-details"><span>👤</span><span><strong>My details</strong><small>Name, email and account info</small></span><b>›</b></button>
-<a class="profile-hub-row" href="/pricing/pricing.html"><span>♛</span><span><strong>My plan</strong><small>Manage your subscription</small></span><b>›</b></a>
-<a class="profile-hub-row" href="#activity-panel"><span>✧</span><span><strong>My matches &amp; credits</strong><small>See your activity and rewards</small></span><b>›</b></a>
-<a class="profile-hub-row" href="#tab-watchlater"><span>♡</span><span><strong>My watchlist</strong><small>Saved titles and Not for me</small></span><b>›</b></a>
-<a class="profile-hub-row" href="#settings-panel"><span>⚙</span><span><strong>Preferences</strong><small>Genres, languages, countries</small></span><b>›</b></a>
-<a class="profile-hub-row" href="/kids/"><span>♧</span><span><strong>Family &amp; Kids Mode</strong><small>Manage Kids Mode and parent settings</small></span><b>›</b></a>
-<a class="profile-hub-row" href="#settings-panel" onclick="if(window.MatchNotifications&&MatchNotifications.open){event.preventDefault();event.stopPropagation();MatchNotifications.open();}"><span>♢</span><span><strong>Notifications</strong><small>Manage what you receive</small></span><b>›</b></a>
-<a class="profile-hub-row" href="#passkey-title"><span>♜</span><span><strong>Privacy &amp; Security</strong><small>Keep your account safe</small></span><b>›</b></a>
-<a class="profile-hub-row" href="mailto:support@matchapp.tv"><span>?</span><span><strong>Help &amp; Support</strong><small>FAQs and contact us</small></span><b>›</b></a>
+            <section class="match-avatar-maker" id="avatar-studio" aria-label="MatchApp avatar"></section><section class="profile-hub"><div class="profile-hub-intro"><h1 data-i18n="profile.hubTitle">My Profile</h1><p data-i18n="profile.hubSubtitle">Manage your account and preferences</p></div><nav class="profile-hub-menu">
+<button class="profile-hub-row" type="button" data-profile-target="account-details"><span>👤</span><span><strong data-i18n="profile.detailsTitle">My details</strong><small data-i18n="profile.detailsSummary">Name, email and account info</small></span><b>›</b></button>
+<a class="profile-hub-row" href="/pricing/pricing.html"><span>♛</span><span><strong data-i18n="profile.planTitle">My plan</strong><small data-i18n="profile.planSummary">Manage your subscription</small></span><b>›</b></a>
+<a class="profile-hub-row" href="#activity-panel"><span>✧</span><span><strong data-i18n="profile.matchesCreditsTitle">My matches &amp; credits</strong><small data-i18n="profile.matchesCreditsSummary">See your activity and rewards</small></span><b>›</b></a>
+<a class="profile-hub-row" href="#tab-watchlater"><span>♡</span><span><strong data-i18n="profile.watchlistTitle">My watchlist</strong><small data-i18n="profile.watchlistSummary">Saved titles and Not for me</small></span><b>›</b></a>
+<a class="profile-hub-row" href="#settings-panel"><span>⚙</span><span><strong data-i18n="profile.preferencesTitle">Preferences</strong><small data-i18n="profile.preferencesSummary">Genres, languages, countries</small></span><b>›</b></a>
+<a class="profile-hub-row" href="/kids/"><span>♧</span><span><strong data-i18n="profile.familyTitle">Family &amp; Kids Mode</strong><small data-i18n="profile.familySummary">Manage Kids Mode and parent settings</small></span><b>›</b></a>
+<a class="profile-hub-row" href="#settings-panel" onclick="if(window.MatchNotifications&&MatchNotifications.open){event.preventDefault();event.stopPropagation();MatchNotifications.open();}"><span>♢</span><span><strong data-i18n="profile.notificationsTitle">Notifications</strong><small data-i18n="profile.notificationsSummary">Manage what you receive</small></span><b>›</b></a>
+<a class="profile-hub-row" href="#passkey-title"><span>♜</span><span><strong data-i18n="profile.privacyTitle">Privacy &amp; Security</strong><small data-i18n="profile.privacySummary">Keep your account safe</small></span><b>›</b></a>
+<a class="profile-hub-row" href="mailto:support@matchapp.tv"><span>?</span><span><strong data-i18n="profile.helpTitle">Help &amp; Support</strong><small data-i18n="profile.helpSummary">FAQs and contact us</small></span><b>›</b></a>
 </nav></section>
-            <article class="premium-card core-identity-card profile-hub-target" id="account-details" hidden><h3>My details</h3><p class="pf-card-sub">Your saved account details.</p><div class="input-grid" id="editable-fields-section"><div class="input-group"><label for="profile-name">Name</label><input id="profile-name" type="text"></div><div class="input-group"><label for="profile-dob">Date of birth</label><input id="profile-dob" type="text" inputmode="numeric" placeholder="DD/MM/YYYY" maxlength="10"></div><div class="input-group"><label for="profile-country">Country</label><select id="profile-country" autocomplete="country-name" required aria-required="true"><option value="">Select your country</option></select></div><div class="input-group"><label for="profile-starsign">Star sign</label><select id="profile-starsign" required><option value="">Choose your star sign</option><option value="Aries">Aries</option><option value="Taurus">Taurus</option><option value="Gemini">Gemini</option><option value="Cancer">Cancer</option><option value="Leo">Leo</option><option value="Virgo">Virgo</option><option value="Libra">Libra</option><option value="Scorpio">Scorpio</option><option value="Sagittarius">Sagittarius</option><option value="Capricorn">Capricorn</option><option value="Aquarius">Aquarius</option><option value="Pisces">Pisces</option></select></div><div class="input-group"><label for="profile-gender">Gender</label><select id="profile-gender"><option value="">Prefer not to say</option><option>Male</option><option>Female</option><option>Non-binary</option></select></div></div><div id="locked-info-card" class="pf-locked-summary" style="display:none" aria-live="polite"><p class="pf-card-sub">Your identity is saved securely and cannot be edited.</p><div class="input-grid"><div class="input-group"><label>Name</label><strong id="lock-val-name"></strong></div><div class="input-group"><label>Country</label><strong id="lock-val-country"></strong></div><div class="input-group"><label>State / region</label><strong id="lock-val-region"></strong></div><div class="input-group"><label>Date of birth</label><strong id="lock-val-dob"></strong></div><div class="input-group"><label>Star sign</label><strong id="lock-val-sign"></strong></div><div class="input-group"><label>Age</label><strong id="lock-val-age"></strong></div></div><span id="lock-val-sign-trait" class="pf-card-sub"></span><span id="lock-val-email" hidden></span></div><span id="profile-age-display" style="display:none"></span><p id="identity-load-status" class="setting-note" hidden></p><button id="identity-load-retry" class="secondary-btn" hidden type="button">Try again</button><button id="save-profile-btn" class="gold-btn" type="button" onclick="saveProfileData()">Save &amp; create profile</button></article>
+            <article class="premium-card core-identity-card profile-hub-target" id="account-details" hidden><h3 data-i18n="profile.detailsTitle">My details</h3><p class="pf-card-sub" data-i18n="profile.savedDetails">Your saved account details.</p><div class="input-grid" id="editable-fields-section"><div class="input-group"><label for="profile-name" data-i18n="profile.name">Name</label><input id="profile-name" type="text"></div><div class="input-group"><label for="profile-dob" data-i18n="profile.dob">Date of birth</label><input id="profile-dob" type="text" inputmode="numeric" placeholder="DD/MM/YYYY" maxlength="10"></div><div class="input-group"><label for="profile-country" data-i18n="profile.country">Country</label><select id="profile-country" autocomplete="country-name" required aria-required="true"><option value="" data-i18n="profile.selectCountry">Select your country</option></select></div><div class="input-group"><label for="profile-starsign" data-i18n="profile.starSign">Star sign</label><select id="profile-starsign" required><option value="" data-i18n="profile.chooseStarSign">Choose your star sign</option><option value="Aries">Aries</option><option value="Taurus">Taurus</option><option value="Gemini">Gemini</option><option value="Cancer">Cancer</option><option value="Leo">Leo</option><option value="Virgo">Virgo</option><option value="Libra">Libra</option><option value="Scorpio">Scorpio</option><option value="Sagittarius">Sagittarius</option><option value="Capricorn">Capricorn</option><option value="Aquarius">Aquarius</option><option value="Pisces">Pisces</option></select></div><div class="input-group"><label for="profile-gender" data-i18n="profile.gender">Gender</label><select id="profile-gender"><option value="" data-i18n="profile.genderPrefer">Prefer not to say</option><option value="Male" data-i18n="profile.genderMale">Male</option><option value="Female" data-i18n="profile.genderFemale">Female</option><option value="Non-binary" data-i18n="profile.genderNonBinary">Non-binary</option></select></div></div><div id="locked-info-card" class="pf-locked-summary" style="display:none" aria-live="polite"><p class="pf-card-sub" data-i18n="profile.lockedIdentity">Your identity is saved securely and cannot be edited.</p><div class="input-grid"><div class="input-group"><label data-i18n="profile.name">Name</label><strong id="lock-val-name"></strong></div><div class="input-group"><label data-i18n="profile.country">Country</label><strong id="lock-val-country"></strong></div><div class="input-group"><label data-i18n="profile.region">State / region</label><strong id="lock-val-region"></strong></div><div class="input-group"><label data-i18n="profile.dob">Date of birth</label><strong id="lock-val-dob"></strong></div><div class="input-group"><label data-i18n="profile.starSign">Star sign</label><strong id="lock-val-sign"></strong></div><div class="input-group"><label data-i18n="profile.age">Age</label><strong id="lock-val-age"></strong></div></div><span id="lock-val-sign-trait" class="pf-card-sub"></span><span id="lock-val-email" hidden></span></div><span id="profile-age-display" style="display:none"></span><p id="identity-load-status" class="setting-note" hidden></p><button id="identity-load-retry" class="secondary-btn" hidden type="button" data-i18n="profile.retry">Try again</button><button id="save-profile-btn" class="gold-btn" type="button" onclick="saveProfileData()" data-i18n="profile.saveCreate">Save &amp; create profile</button></article>
                 <!-- ============================================== -->
                 <!-- SETTINGS — every preference in one place.      -->
                 <!-- Collapsed by default: this is a page people    -->
@@ -406,25 +406,25 @@ body.profile-page-v3 .profile-hub-row{min-height:70px!important;border-radius:18
 <!-- MATCH EXCLUSIONS -->
                             <details class="matchapp-exclusion-box" id="match-exclusions-panel">
                                 <summary>
-                                    <span>🚫 What I don’t want to see in my matches</span>
+                                    <span data-i18n="profile.exclusionsTitle">🚫 What I don’t want to see in my matches</span>
                                     <span aria-hidden="true">⌄</span>
                                 </summary>
-                                <p class="matchapp-exclusion-copy">Choose countries of origin and real genres/categories you want MatchApp to avoid. These are hard exclusions: selected items will not appear in your normal Matches.</p>
+                                <p class="matchapp-exclusion-copy" data-i18n="profile.exclusionsCopy">Choose countries of origin and real genres/categories you want MatchApp to avoid. These are hard exclusions: selected items will not appear in your normal Matches.</p>
                                 <div class="matchapp-exclusion-grid">
                                     <section class="matchapp-exclusion-group" aria-labelledby="excluded-countries-title">
-                                        <h5 id="excluded-countries-title">Countries of origin</h5>
-                                        <p>Select as many as you want. Example: selecting Spain hides Spain-made titles.</p>
-                                        <div id="excluded-country-chips" class="matchapp-exclusion-chips" role="group" aria-label="Countries to exclude"></div>
+                                        <h5 id="excluded-countries-title" data-i18n="profile.excludedCountries">Countries of origin</h5>
+                                        <p data-i18n="profile.excludedCountriesHelp">Select as many as you want. Example: selecting Spain hides Spain-made titles.</p>
+                                        <div id="excluded-country-chips" class="matchapp-exclusion-chips" role="group" aria-label="Countries to exclude" data-i18n-aria="profile.excludedCountriesAria"></div>
                                         <div id="excluded-country-summary" class="matchapp-exclusion-summary"></div>
                                     </section>
                                     <section class="matchapp-exclusion-group" aria-labelledby="excluded-genres-title">
-                                        <h5 id="excluded-genres-title">Genres &amp; source categories</h5>
-                                        <p>Hide real catalog genres such as Horror, Comedy, Reality, Music or others you do not want matched.</p>
-                                        <div id="excluded-genre-chips" class="matchapp-exclusion-chips" role="group" aria-label="Genres to exclude"></div>
+                                        <h5 id="excluded-genres-title" data-i18n="profile.excludedGenres">Genres &amp; source categories</h5>
+                                        <p data-i18n="profile.excludedGenresHelp">Hide real catalog genres such as Horror, Comedy, Reality, Music or others you do not want matched.</p>
+                                        <div id="excluded-genre-chips" class="matchapp-exclusion-chips" role="group" aria-label="Genres to exclude" data-i18n-aria="profile.excludedGenresAria"></div>
                                         <div id="excluded-genre-summary" class="matchapp-exclusion-summary"></div>
                                     </section>
                                 </div>
-                                <p class="matchapp-exclusion-save-note">Selections save instantly and follow your account when you are signed in.</p>
+                                <p class="matchapp-exclusion-save-note" data-i18n="profile.exclusionsSave">Selections save instantly and follow your account when you are signed in.</p>
                             </details>
 
                             <!-- VOICE -->
@@ -513,29 +513,29 @@ body.profile-page-v3 .profile-hub-row{min-height:70px!important;border-radius:18
                 </div>
 
                 <div class="premium-card"><section class="passkey-box" aria-labelledby="passkey-title"><h3 id="passkey-title" data-passkey-text="title">Device sign-in</h3><p class="passkey-help" data-passkey-text="help">Use your device unlock to sign in again. MatchApp never receives your biometrics or PIN.</p><button type="button" class="passkey-button" data-passkey-action="add" data-passkey-text="add">Add a passkey</button><a class="passkey-sign-in" data-passkey-sign-in-first href="/?signIn=1" data-passkey-text="signInFirst">Sign in first</a><p class="passkey-status" data-passkey-status role="status" aria-live="polite"></p><div id="passkey-list" class="passkey-list"></div></section></div><div class="portfolio-tabs">
-                    <button id="tab-history" class="portfolio-tab active" onclick="switchPortfolioTab('history')">◷ History <span id="count-history" class="tab-count">0</span></button>
-                    <button id="tab-watchlater" class="portfolio-tab" onclick="switchPortfolioTab('watchlater')">⭐ Watch Later <span id="count-watchlater" class="tab-count">0</span></button>
-                    <button id="tab-seenit" class="portfolio-tab" onclick="switchPortfolioTab('seenit')">👁️ Seen It <span id="count-seenit" class="tab-count">0</span></button>
-                    <button id="tab-audio" class="portfolio-tab" onclick="switchPortfolioTab('audio')">🎧 Audio Library <span id="count-audio" class="tab-count">0</span></button>
+                    <button id="tab-history" class="portfolio-tab active" onclick="switchPortfolioTab('history')"><span data-i18n="profile.historyTab">◷ History</span> <span id="count-history" class="tab-count">0</span></button>
+                    <button id="tab-watchlater" class="portfolio-tab" onclick="switchPortfolioTab('watchlater')"><span data-i18n="profile.watchLaterTab">⭐ Watch Later</span> <span id="count-watchlater" class="tab-count">0</span></button>
+                    <button id="tab-seenit" class="portfolio-tab" onclick="switchPortfolioTab('seenit')"><span data-i18n="profile.seenTab">👁️ Seen It</span> <span id="count-seenit" class="tab-count">0</span></button>
+                    <button id="tab-audio" class="portfolio-tab" onclick="switchPortfolioTab('audio')"><span data-i18n="profile.audioTab">🎧 Audio Library</span> <span id="count-audio" class="tab-count">0</span></button>
                 </div>
 
                 <div id="panel-watchlater" class="portfolio-panel" style="display:none; background: rgba(229,193,88,0.05); padding: 30px; border-radius: 20px; border: 2px solid var(--gold); margin-bottom: 40px;">
                     <h3 style="color: var(--gold); margin: 0 0 8px 0; font-size: 26px; text-transform: uppercase; font-weight: 900;" data-i18n="pf.watchLaterTitle">⭐ Watch Later Portfolio</h3>
                     <p style="color:#999; font-size:13px; margin:0 0 25px 0;" data-i18n="pf.watchLaterSub">Titles you saved to stream later.</p>
-                    <div id="portfolio-grid"><p style="color: #aaa; font-size: 15px; font-style: italic;">Your portfolio is empty. Go match!</p></div>
+                    <div id="portfolio-grid"><p style="color: #aaa; font-size: 15px; font-style: italic;" data-i18n="profile.watchLaterEmpty">Your portfolio is empty. Go match!</p></div>
                 </div>
 
                 <div id="panel-seenit" class="portfolio-panel" style="display:none; background: rgba(255,255,255,0.03); padding: 30px; border-radius: 20px; border: 2px solid rgba(255,255,255,0.25); margin-bottom: 40px;">
                     <h3 style="color: #fff; margin: 0 0 8px 0; font-size: 26px; text-transform: uppercase; font-weight: 900;" data-i18n="pf.seenTitle">👁️ Seen It Portfolio</h3>
                     <p style="color:#999; font-size:13px; margin:0 0 25px 0;" data-i18n="pf.seenSub">Your watch history. The AI never recommends these again.</p>
-                    <div id="seen-grid"><p style="color: #aaa; font-size: 15px; font-style: italic;">You haven't marked anything as seen yet.</p></div>
+                    <div id="seen-grid"><p style="color: #aaa; font-size: 15px; font-style: italic;" data-i18n="profile.seenEmpty">You haven't marked anything as seen yet.</p></div>
                 </div>
 
-                <div id="panel-history" class="portfolio-panel"><h2>Your history</h2><p>Every title MatchApp has shown you — matches, Ask AI, saves and seen — stays here until you remove it.</p><p><a href="/friends.html">● Friends &amp; private Match Together</a></p><div id="history-rematch"></div><div id="history-list"></div></div>
+                <div id="panel-history" class="portfolio-panel"><h2 data-i18n="profile.historyTitle">Your history</h2><p data-i18n="profile.historyCopy">Every title MatchApp has shown you — matches, Ask AI, saves and seen — stays here until you remove it.</p><p><a href="/friends.html" data-i18n="profile.friendsLink">● Friends &amp; private Match Together</a></p><div id="history-rematch"></div><div id="history-list"></div></div>
                 <div id="panel-audio" class="portfolio-panel" style="display:none; background: rgba(29,185,84,0.05); padding: 30px; border-radius: 20px; border: 2px solid #1DB954; margin-bottom: 40px;">
-                    <h3 style="color: #1DB954; margin: 0 0 8px 0; font-size: 26px; text-transform: uppercase; font-weight: 900;">🎧 Audio Library</h3>
-                    <p style="color:#999; font-size:13px; margin:0 0 25px 0;">Your saved music, playlists, singles, podcasts and audiobooks. Tap any cover to listen.</p>
-                    <div id="audio-grid"><p style="color: #aaa; font-size: 15px; font-style: italic;">No saved music, playlists, singles or podcasts yet.</p></div>
+                    <h3 style="color: #1DB954; margin: 0 0 8px 0; font-size: 26px; text-transform: uppercase; font-weight: 900;" data-i18n="profile.audioTitle">🎧 Audio Library</h3>
+                    <p style="color:#999; font-size:13px; margin:0 0 25px 0;" data-i18n="profile.audioCopy">Your saved music, playlists, singles, podcasts and audiobooks. Tap any cover to listen.</p>
+                    <div id="audio-grid"><p style="color: #aaa; font-size: 15px; font-style: italic;" data-i18n="profile.audioEmpty">No saved music, playlists, singles or podcasts yet.</p></div>
                 </div>
             </article>
         </section>
@@ -548,7 +548,7 @@ body.profile-page-v3 .profile-hub-row{min-height:70px!important;border-radius:18
 
     <script src="/activity.js?v=194"></script>
     <script src="/settings.js?v=20260929-profile1"></script>
-    <script src="/i18n.js?v=200"></script>
+    <script src="/i18n.js?v=20261001-profileptbr1"></script>
 <script defer src="/polish-i18n.js?v=191"></script>
 <script defer src="/event-i18n.js?v=187"></script>
 <script defer src="/page-locale.js?v=187"></script>
@@ -571,7 +571,7 @@ body.profile-page-v3 .profile-hub-row{min-height:70px!important;border-radius:18
     <script src="/tv.js?v=187"></script>
 <script src="/passkeys.js?v=187"></script>
 <script src="/app-updates.js?v=202&amp;installfix=20260930-1"></script>
-<script src="/title-captions.js?v=20260929-avatar1"></script><script defer src="/page-shell.js?v=20260926-brandai1" data-page-shell="1"></script>
+<script src="/title-captions.js?v=20260929-avatar1"></script><script defer src="/page-shell.js?v=20261001-canonicalai1" data-page-shell="1"></script>
 <script id="profile-hub-actions">document.addEventListener('DOMContentLoaded',()=>{document.querySelectorAll('[data-profile-target]').forEach(btn=>btn.addEventListener('click',()=>{const el=document.getElementById(btn.dataset.profileTarget);if(!el)return;const opening=el.hidden;document.querySelectorAll('.profile-hub-target').forEach(x=>{x.hidden=true;x.classList.remove('profile-hub-open')});if(opening){el.hidden=false;el.classList.add('profile-hub-open');requestAnimationFrame(()=>el.scrollIntoView({behavior:'smooth',block:'start'}))}}));});</script><script id="verified-email-profile-entry">
 document.addEventListener('DOMContentLoaded', async () => {
     // A URL marker alone grants no access: server-validate email or phone confirmation.
