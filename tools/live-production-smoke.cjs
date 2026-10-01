@@ -325,6 +325,10 @@ async function aiQuestion(page,question,expected,label){
     const historyFold=page.locator('.ai-sidebar-fold');
     if(await historyFold.isVisible()&&device.width>980)await historyFold.click();
     await page.locator('#ai-sidebar-toggle').click({timeout:12000});
+    await page.waitForFunction(()=>{
+      const panel=document.getElementById('ai-sidebar')?.getBoundingClientRect();
+      return panel&&panel.left>=-1&&panel.right>0;
+    },null,{timeout:5000});
     const history=await page.evaluate(()=>{
       const button=document.getElementById('ai-sidebar-toggle');
       const panel=document.getElementById('ai-sidebar');
