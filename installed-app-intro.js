@@ -51,7 +51,10 @@
   document.body.appendChild(overlay);
   // Finite wall-clock deadline includes download, decoding and stalled playback.
   deadline = setTimeout(finish, 6500);
-  video.src = '/assets/brand/matchapp-launch-intro-hd.mp4';
+  // Check the actual H.264 profile, not just the MP4 container.
+  video.src = video.canPlayType('video/mp4; codecs="avc1.640029"')
+    ? '/assets/brand/matchapp-launch-intro-hd.mp4'
+    : '/assets/brand/matchapp-launch-intro-hd.webm';
   try {
     var playback = video.play();
     if (playback && playback.catch) playback.catch(finish);

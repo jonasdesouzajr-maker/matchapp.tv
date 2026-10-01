@@ -37,3 +37,5 @@ The adult native launcher now plays the bundled 4.5-second silent intro while Ho
 
 ### Full-screen intro correction
 The intro now fills the native display with proportional center-crop, hides system bars only during playback, and restores Home bars on every exit. Web/PWA playback fills the available viewport with object-fit:cover. The encoded asset is 1080x1920, upscaled from the supplied 720x1260 video; upscaling does not add source detail. Chrome controls its PWA cold-launch icon and OS bars; website code cannot remove that screen. Native transparent launch-icon resources already suppress the logo, but installed APKs need a signed native update. Code 37 remains an unpublished candidate; its Play publication was not performed here.
+
+H.264 is encoded at level 4.1 for wider hardware compatibility. Browsers without that H.264 profile receive the same 1080x1920 WebM video; the native bundle uses MP4.

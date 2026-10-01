@@ -1,12 +1,13 @@
 const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs');
 const {JSDOM}=require('jsdom');
 const source=fs.readFileSync('installed-app-intro.js','utf8');
-function boot({installed=true,ua='Android Chrome',touch=1,reject=false,storage=false}={}){
+function boot({installed=true,ua='Android Chrome',touch=1,reject=false,storage=false,mp4=true}={}){
  const dom=new JSDOM('<body><main id="home">Home</main></body>',{url:'https://matchapp.tv/',runScripts:'outside-only'}),w=dom.window;
  Object.defineProperty(w.navigator,'userAgent',{value:ua});Object.defineProperty(w.navigator,'maxTouchPoints',{value:touch});
  w.matchMedia=()=>({matches:installed});
  let deadline,paused=0,loads=0;
  w.setTimeout=fn=>{deadline=fn;return 1};w.clearTimeout=()=>{};
+ w.HTMLMediaElement.prototype.canPlayType=()=>mp4?'probably':'';
  w.HTMLMediaElement.prototype.play=()=>reject?Promise.reject(new Error('blocked')):Promise.resolve();
  w.HTMLMediaElement.prototype.pause=()=>paused++;w.HTMLMediaElement.prototype.load=()=>loads++;
  if(storage) Object.defineProperty(w,'sessionStorage',{get(){throw new Error('blocked storage')}});
@@ -42,4 +43,9 @@ test('installed intro fills the viewport without distorting the video and native
  assert.match(native,/hide\(WindowInsetsCompat.Type.systemBars\(\)\)/);
  assert.match(native,/show\(WindowInsetsCompat.Type.systemBars\(\)\)/);
  assert.match(fs.readFileSync('android-studio/app/src/main/res/values/themes.xml','utf8'),/windowSplashScreenAnimatedIcon">@drawable\/launch_empty/);
+});
+
+test('browsers without the H.264 profile use the same 1080p WebM intro',()=>{
+ const b=boot({mp4:false});assert.match(b.overlay().querySelector('video').src,/matchapp-launch-intro-hd\.webm$/);
+ assert.ok(fs.statSync('assets/brand/matchapp-launch-intro-hd.webm').size<1000000);b.deadline();b.dom.window.close();
 });
