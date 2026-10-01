@@ -707,7 +707,7 @@
   async function shareMatch(copyOnly){
     if(!currentWatchItem)return;
     const url=document.getElementById('kids-share-link').value;
-    const text=currentWatchItem.title+' · '+description(currentWatchItem)+' #MatchAppTVAi #KidsMode';
+    const text=currentWatchItem.title+' · '+description(currentWatchItem)+' #MatchAppKids #KidsMovies #KidsShows #FamilyEntertainment #WhatToWatch';
     const status=document.getElementById('kids-result-status');
     try{
       if(!copyOnly&&navigator.share){
@@ -723,7 +723,7 @@
   function shareKidsTo(network){
     if(!currentWatchItem)return;
     const url=document.getElementById('kids-share-link').value;
-    const text=currentWatchItem.title+' · '+description(currentWatchItem)+' #MatchAppTVAi #KidsMode';
+    const text=currentWatchItem.title+' · '+description(currentWatchItem)+' #MatchAppKids #KidsMovies #KidsShows #FamilyEntertainment #WhatToWatch';
     const encodedUrl=encodeURIComponent(url),encodedText=encodeURIComponent(text);
     const targets={
       whatsapp:'https://wa.me/?text='+encodeURIComponent(text+' '+url),
