@@ -323,6 +323,17 @@
     const panel=section.querySelector('.ma-news-panel');let currentVersion='';let carousel=null;
     function openAndReveal(id=''){if(!section.open)section.open=true;window.setTimeout(()=>{const revealed=carousel&&carousel.reveal?carousel.reveal(id):false;if(!revealed){try{section.scrollIntoView({behavior:'smooth',block:'nearest'});}catch(_){}}if(carousel&&carousel.startAuto)carousel.startAuto();},220);}
 
+    // Own the summary activation instead of depending on timing-sensitive native
+    // <details> default handling while Home's fold-state observer is mounting this
+    // dynamic section. Pointer/touch and keyboard activation all dispatch click,
+    // so one request always produces exactly one state change.
+    const summary=section.querySelector(':scope > summary');
+    summary?.addEventListener('click',event=>{
+      if(event.defaultPrevented)return;
+      event.preventDefault();
+      section.open=!section.open;
+    });
+
     section.addEventListener('toggle',()=>{
       if(section.open){
         if(currentVersion){try{localStorage.setItem(SEEN_KEY,currentVersion);}catch(_){}section.dataset.hasNew='false';}

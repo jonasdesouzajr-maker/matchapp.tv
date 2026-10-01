@@ -51,7 +51,7 @@ test('trash only hides the match after its fade; a new match cannot be hidden by
 
 test('News initializes directly on the homepage and its original-source cards live inside an interactive details fold',async()=>{
  const html=read('index.html'),news=read('latest-news.js'),colors=read('fold-colors.css');
- assert.match(html,/\/latest-news\.js\?v=20260926-newsfold1/,'must not rely on deferred editorial intersection trigger');
+ assert.match(html,/\/latest-news\\.js\\?v=20261001-newsfold2/,'must not rely on deferred editorial intersection trigger');
  assert.match(html,/\/live-news-loader\.js\?v=20260926-newsfold1/);
  assert.match(colors,/#latest-news>summary\{[\s\S]*?pointer-events:auto!important;cursor:pointer!important/);
  assert.doesNotMatch(colors,/#latest-news>summary::after\{\s*content:none/);
@@ -76,7 +76,9 @@ test('News initializes directly on the homepage and its original-source cards li
  assert.equal(section.open,false,'News starts folded until the user opens it');
  assert.equal(section.querySelectorAll('.ma-news-card').length,1);
  assert.equal(section.querySelector('.ma-news-card-main')?.getAttribute('href'),'https://www.reuters.com/world/');
- section.open=false;assert.equal(section.open,false);
+ const summary=section.querySelector(':scope > summary');
+ section.open=false;summary.click();assert.equal(section.open,true,'one summary activation opens News');
+ summary.click();assert.equal(section.open,false,'second summary activation closes News');
  section.open=true;assert.equal(section.open,true);
  w.close();
 });
@@ -92,4 +94,10 @@ test('match artwork appears before source awaits and slow fallback cannot replac
  assert.match(html,/catalog-media\.js\?v=20260927-posterrecovery2/);
  assert.match(html,/app\.js\?v=20260926-catalogscale1/);
  assert.doesNotMatch(read('kids/index.html'),/result-dismiss|latest-news\.js\?v=20260926-newsfold1/);
+});
+
+test('Latest News owns one deterministic summary state change across touch-sized layouts',()=>{
+ const news=read('latest-news.js');
+ assert.match(news,/summary\?\.addEventListener\('click',event=>\{/);
+ assert.match(news,/event\.preventDefault\(\);\s*section\.open=!section\.open/);
 });
