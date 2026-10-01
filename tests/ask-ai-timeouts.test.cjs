@@ -41,7 +41,7 @@ test('Ask AI does not replace legitimate conversational answers with unrelated m
 });
 
 test('Kids Ask AI waits beyond a normal model attempt but remains age-verified and bounded',()=>{
- assert.match(kids,/const KIDS_AI_TIMEOUT_MS = 60000/);
+ assert.match(kids,/const KIDS_AI_TIMEOUT_MS\s*=\s*60000/);
  assert.match(kids,/allowedForAge\(approved, age\)/);
  assert.match(kids,/byTitle\.get\(normalizeTitle\(r\.title\)\)/);
  assert.match(kids,/clearTimeout\(timer\)/);
@@ -51,5 +51,5 @@ test('new Ask AI code is cache-busted on desktop, phones, tablets and Android We
  const html=fs.readFileSync(path.join(root,'discover.html'),'utf8');
  const kidsHtml=fs.readFileSync(path.join(root,'kids/index.html'),'utf8');
  assert.match(html,/discover\.js\?v=20260925-intent1/);
- assert.match(kidsHtml,/kids\/kids\.js\?v=20261001-rate-recovery1/);
+ assert.match(kidsHtml,/kids\/kids\.js\?v=20261001-kidsflow2/);
 });
