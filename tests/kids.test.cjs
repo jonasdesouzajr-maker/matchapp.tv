@@ -14,6 +14,12 @@ test('children can pause motion and category buttons retain keyboard focus',asyn
 function ask(w,question='funny animals'){w.document.getElementById('kids-question').value=question;w.document.getElementById('kids-ask-form').dispatchEvent(new w.Event('submit',{cancelable:true}));}
 function throttle(seconds,body=true){return {error:{context:new Response(JSON.stringify(body?{retryAfter:seconds}:{error:'Provider quota'}),{status:429,headers:{'Retry-After':String(seconds)}})}};}
 const blueyAI={data:{candidates:[{content:{parts:[{text:JSON.stringify({results:[{title:'Bluey'},{title:'Unknown adult film'}]})}]}}]}};
+test('Kids Ask AI spends only after a usable reviewed result and never on an empty approved pool',async()=>{
+ const order=[];const account={consume:async()=>({allowed:true,userId:null}),consumeAI:async()=>{order.push('consume');return {allowed:true,userId:null}},status:async()=>({remaining:1,kids_credits:0}),prepare:async()=>{},remember:async()=>{},claimShareReward:async()=>({granted:true,kids_purchased_matches:1}),known:()=>new Set(),key:t=>String(t).toLowerCase()};
+ const d=await boot({KidsAccount:account,supabaseClient:{functions:{invoke:async()=>{order.push('recognise');return blueyAI}}}}),w=d.window;ask(w,'bluey');await new Promise(r=>setTimeout(r,30));assert.deepEqual(order,['recognise','consume']);assert.equal(w.document.querySelectorAll('#kids-chat-results .kids-card').length,1);d.window.close();
+ let spends=0;const knownAll=new Set(library.map(x=>String(x.title).toLowerCase()));const emptyAccount={...account,consumeAI:async()=>{spends++;return {allowed:true,userId:null}},known:()=>knownAll};
+ const d2=await boot({KidsAccount:emptyAccount,supabaseClient:{functions:{invoke:async()=>blueyAI}}}),w2=d2.window;ask(w2,'bluey');await new Promise(r=>setTimeout(r,30));assert.equal(spends,0);assert.equal(w2.document.querySelectorAll('#kids-chat-results .kids-card').length,0);d2.window.close();
+});
 test('Kids short app throttle retries once after Retry-After and retains the reviewed allowlist',async()=>{
  let calls=0;const d=await boot({supabaseClient:{functions:{invoke:async()=>++calls===1?throttle(0):blueyAI}}}),w=d.window;
  ask(w);ask(w);await tick();assert.equal(calls,1,'duplicate submission and immediate retry are blocked');
