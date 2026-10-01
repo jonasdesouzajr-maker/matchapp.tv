@@ -21,7 +21,7 @@ const isStandalone=()=>!!((window.matchMedia&&matchMedia('(display-mode: standal
 function safeGet(k){try{return localStorage.getItem(k)}catch(_){return null}}
 function safeSet(k,v){try{localStorage.setItem(k,v)}catch(_){}}
 function pt(){return String(document.documentElement.lang||navigator.language||'').toLowerCase().indexOf('pt')===0}
-function appName(){return pt()?'MatchApp iA':'MatchApp Ai'}
+function appName(){return 'MatchApp Ai'}
 
 function removeLegacyUi(){
  document.querySelectorAll('#app-release-notice,.app-release-notice,.matchapp-whats-new-modal').forEach(el=>el.remove());
