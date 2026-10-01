@@ -32,10 +32,7 @@
   }
 
   function brandName() {
-    var lang = String(window.MATCH_LANG || '').toLowerCase();
-    try { lang = lang || String(localStorage.getItem('match_lang') || '').toLowerCase(); } catch (_) {}
-    lang = lang || String(document.documentElement.lang || '').toLowerCase();
-    return lang.indexOf('pt') === 0 ? 'MatchApp iA' : 'MatchApp Ai';
+    return 'MatchApp Ai';
   }
   function updateBrandLocale(root) {
     var name = brandName();
@@ -45,8 +42,8 @@
     var home = brand.querySelector('.ma-brand-home-link');
     if (home) home.setAttribute('aria-label', name + ' home');
     var ai = brand.querySelector('[data-ma-brand-ai]');
-    if (ai && ai.textContent !== (name.endsWith('iA') ? 'iA' : 'Ai')) {
-      ai.textContent = name.endsWith('iA') ? 'iA' : 'Ai';
+    if (ai && ai.textContent !== ('Ai')) {
+      ai.textContent = 'Ai';
     }
   }
   function el(tag, cls, text) {
