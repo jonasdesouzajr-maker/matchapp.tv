@@ -217,3 +217,38 @@ html body:not(.page-kids) .sound-toggle-btn.is-muted .sound-state-icon{
 
 body.page-home.match-searching #loading-box{display:block!important;visibility:visible!important}
 body.page-home.ma-first-screen #result-box:not([hidden]){display:block!important;visibility:visible!important}
+
+/* Full-width ask pill. Later than the mobile grid so the field spans the card. */
+html body.page-home #search-box > .home-ask-composer{
+  display:flex!important;
+  flex-wrap:nowrap!important;
+  align-items:center!important;
+  width:100%!important;
+  max-width:none!important;
+  min-height:62px!important;
+  padding:8px 8px 8px 18px!important;
+  border-radius:999px!important;
+  background:#161222!important;
+  box-shadow:0 0 0 2px rgba(242,207,105,.7),0 0 18px rgba(184,140,255,.45)!important;
+  grid-template-columns:none!important;
+  grid-template-areas:none!important;
+}
+html body.page-home #search-box > .home-ask-composer > #specific-search-input{
+  flex:1 1 auto!important;
+  width:auto!important;
+  height:44px!important;
+  min-height:44px!important;
+  border:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  grid-area:auto!important;
+}
+html body.page-home #search-box > .home-ask-composer > #mic-btn-index,
+html body.page-home #search-box > .home-ask-composer > .gold-btn{
+  flex:0 0 44px!important;
+  width:44px!important;
+  height:44px!important;
+  min-height:44px!important;
+  border-radius:50%!important;
+  grid-area:auto!important;
+}
