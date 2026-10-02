@@ -1,0 +1,181 @@
+{
+  "schemaVersion": 1,
+  "weekOf": "2026-09-25",
+  "updated": "2026-10-02",
+  "label": "Top titles this week",
+  "sourceNote": "Week of 25 Sep–2 Oct 2026 from Netflix weekly charts and US attention rankings.",
+  "titles": [
+    {
+      "title": "Monster: The Lizzie Borden Story",
+      "kind": "tv",
+      "year": 2026,
+      "origin": "US",
+      "platform": "Netflix",
+      "tmdbId": "",
+      "poster": "",
+      "keywords": [
+        "Monster",
+        "Lizzie Borden",
+        "Netflix",
+        "true crime",
+        "trending TV"
+      ]
+    },
+    {
+      "title": "UNABOMBER",
+      "kind": "movie",
+      "year": 2026,
+      "origin": "US",
+      "platform": "Netflix",
+      "tmdbId": "",
+      "poster": "",
+      "keywords": [
+        "UNABOMBER",
+        "Netflix movie",
+        "Russell Crowe",
+        "trending movie"
+      ]
+    },
+    {
+      "title": "Not a Stranger",
+      "kind": "tv",
+      "year": 2026,
+      "origin": "TR",
+      "platform": "Netflix",
+      "tmdbId": "",
+      "poster": "",
+      "keywords": [
+        "Not a Stranger",
+        "Turkish thriller",
+        "Netflix",
+        "non-English"
+      ]
+    },
+    {
+      "title": "Ted Lasso",
+      "kind": "tv",
+      "year": 2026,
+      "origin": "US",
+      "platform": "Apple TV",
+      "tmdbId": "97546",
+      "poster": "",
+      "keywords": [
+        "Ted Lasso",
+        "Apple TV",
+        "comedy"
+      ]
+    },
+    {
+      "title": "The Gentlemen",
+      "kind": "tv",
+      "year": 2024,
+      "origin": "GB",
+      "platform": "Netflix",
+      "tmdbId": "236235",
+      "poster": "https://image.tmdb.org/t/p/w780/tw3tzfXaSpmUZIB8ZNqNEGzMBCy.jpg",
+      "keywords": [
+        "The Gentlemen",
+        "Netflix",
+        "Guy Ritchie"
+      ]
+    },
+    {
+      "title": "Slow Horses",
+      "kind": "tv",
+      "year": 2026,
+      "origin": "GB",
+      "platform": "Apple TV",
+      "tmdbId": "95480",
+      "poster": "",
+      "keywords": [
+        "Slow Horses",
+        "Apple TV",
+        "spy"
+      ]
+    },
+    {
+      "title": "Neagley",
+      "kind": "tv",
+      "year": 2026,
+      "origin": "US",
+      "platform": "Prime Video",
+      "tmdbId": "",
+      "poster": "",
+      "keywords": [
+        "Neagley",
+        "Reacher",
+        "Prime Video"
+      ]
+    },
+    {
+      "title": "MobLand",
+      "kind": "tv",
+      "year": 2025,
+      "origin": "GB",
+      "platform": "Paramount+",
+      "tmdbId": "",
+      "poster": "",
+      "keywords": [
+        "MobLand",
+        "Paramount Plus",
+        "crime"
+      ]
+    },
+    {
+      "title": "Widow's Bay",
+      "kind": "tv",
+      "year": 2026,
+      "origin": "US",
+      "platform": "Apple TV",
+      "tmdbId": "",
+      "poster": "",
+      "keywords": [
+        "Widow's Bay",
+        "Apple TV"
+      ]
+    },
+    {
+      "title": "East of Eden",
+      "kind": "tv",
+      "year": 2026,
+      "origin": "US",
+      "platform": "Netflix",
+      "tmdbId": "",
+      "poster": "",
+      "keywords": [
+        "East of Eden",
+        "Netflix",
+        "Steinbeck"
+      ]
+    },
+    {
+      "title": "Lanterns",
+      "kind": "tv",
+      "year": 2026,
+      "origin": "US",
+      "platform": "Max",
+      "tmdbId": "",
+      "poster": "",
+      "keywords": [
+        "Lanterns",
+        "HBO",
+        "DC",
+        "Green Lantern"
+      ]
+    },
+    {
+      "title": "American Horror Story",
+      "kind": "tv",
+      "year": 2026,
+      "origin": "US",
+      "platform": "FX",
+      "tmdbId": "1413",
+      "poster": "",
+      "keywords": [
+        "American Horror Story",
+        "FX",
+        "horror"
+      ]
+    }
+  ]
+}

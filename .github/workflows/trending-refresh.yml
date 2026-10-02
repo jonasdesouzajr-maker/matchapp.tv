@@ -1,0 +1,33 @@
+name: Refresh top titles this week
+on:
+  schedule:
+    - cron: '15 3 * * *' # 00:15 America/Sao_Paulo
+  workflow_dispatch:
+permissions:
+  contents: write
+  actions: write
+concurrency:
+  group: matchapp-content-publish
+  cancel-in-progress: false
+jobs:
+  refresh:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+      - name: Refresh trending metadata and SEO page
+        run: node tools/refresh-trending.mjs
+      - name: Publish
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/trending-week.json trending/this-week/index.html
+          if git diff --staged --quiet; then echo "already current"; exit 0; fi
+          git commit -m "Refresh top titles this week"
+          git push origin HEAD:main

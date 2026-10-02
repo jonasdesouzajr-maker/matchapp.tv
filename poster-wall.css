@@ -703,3 +703,6 @@ html body:not(.kids-body) .poster-wall::after{
         rgba(5,4,16,.66) 100%)!important;
   }
 }
+
+#trending-rail .trending-week-label{margin:0 12px 8px;color:#f2cf69;font-size:12px;font-weight:750;letter-spacing:.04em;text-transform:uppercase}
+#trending-rail .marquee-viewport{touch-action:pan-x}
