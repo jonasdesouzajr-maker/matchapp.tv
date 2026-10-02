@@ -4791,7 +4791,7 @@ window.triggerMatch = async function(isSpecificSearch = false) {
     let promptText = "";
     if (isSpecificSearch) {
         const input = document.getElementById('specific-search-input');
-        if (!input || !input.value.trim()) { window.location.reload(); return; }
+        if (!input || !input.value.trim()) { window.__matchappMatchPhase='idle'; return; }
         const lang = LANG_NAMES_FOR_PROMPT[window.MATCH_LANG] || 'English';
         promptText = `Find real, accurate streaming information strictly for the existing title "${input.value.trim()}". ` +
             `Do not invent a title if you don't recognize it — return your best guess at the closest real match instead. ` +
