@@ -47,8 +47,12 @@ test('Kids Android app gives Lumi a native text-to-speech bridge while preservin
  assert.match(kids,/fun speak\(text: String\?, languageTag: String\?\)/);
  assert.match(kids,/fun stopSpeaking\(\)/);
  assert.match(kids,/matchAppNativeLumiState/);
- assert.match(gradle,/versionCode = 28/);
- assert.match(gradle,/versionName = "1\.1\.26"/);
+ assert.match(kids,/setSpeechRate\(1\.12f\)/);
+ assert.match(kids,/setPitch\(1\.24f\)/);
+ assert.match(immersive,/utter\.rate=1\.12/);
+ assert.match(immersive,/utter\.pitch=1\.24/);
+ assert.match(gradle,/versionCode = 29/);
+ assert.match(gradle,/versionName = "1\.1\.27"/);
  assert.match(immersive,/MatchAppNativeVoice\?\.speak/);
  assert.match(immersive,/SpeechSynthesisUtterance/);
  assert.match(immersive,/matchAppNativeLumiState/);
