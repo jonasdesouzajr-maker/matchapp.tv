@@ -29,10 +29,8 @@ async function activate(){
   if(state==='thinking')return;
   stopTimers();try{api()?.stop?.()}catch(_){}
   enableVoice();setState('prompt');
-  const allowed=await primeMic();
-  if(!allowed){speakError('micDenied','I need microphone permission to hear you.');return}
   let started=false;
-  const listen=()=>{if(started)return;started=true;startListening()};
+  const listen=async()=>{if(started)return;started=true;const allowed=await primeMic();if(!allowed){speakError('micDenied','I need microphone permission to hear you.');return}startListening()};
   const spoken=speak(tr('askQuestion','Ask your question!'),listen);
   if(!spoken){listen();return}
   promptTimer=setTimeout(listen,4200);
