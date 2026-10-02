@@ -228,7 +228,7 @@ function seoFor(i,trends,generated){
   if(i.category==='world'){
     const {isoDate,monthEn,year}=dateParts(i.published_at);
     const topic=words(i.title).slice(0,6);
-    return {primary_keyword:'world news '+isoDate,short_tail:['world news','global headlines',...topic],long_tail:[i.title+' '+isoDate,'world news '+monthEn+' '+year],trend_keywords:[],entity_keywords:topic,freshness_keywords:[isoDate],source_keywords:[i.source],meta_title:truncateWords(i.title+' | World News | MatchApp TV',60),meta_description:truncateWords('World report published by '+i.source+' on '+isoDate+'. Open the original report for full context.',158),keywords:uniq(['world news','global headlines',...topic,isoDate,i.source]),seo_generated_at:generated};
+    return {primary_keyword:'world news '+isoDate,short_tail:['world news','global headlines',...topic],long_tail:[i.title+' '+isoDate,'world news '+monthEn+' '+year],trend_keywords:[],entity_keywords:topic,freshness_keywords:[isoDate],source_keywords:[i.source],meta_title:truncateWords(i.title+' | World News | MatchApp Ai',60),meta_description:truncateWords('World report published by '+i.source+' on '+isoDate+'. Open the original report for full context.',158),keywords:uniq(['world news','global headlines',...topic,isoDate,i.source]),seo_generated_at:generated};
   }
   if(i.category==='sports'){
     const topic=words(i.title).slice(0,8),sport=i.sport||'Sports';
@@ -250,7 +250,7 @@ function seoFor(i,trends,generated){
       primary_keyword:primary,short_tail:short,long_tail:long,
       trend_keywords:[],entity_keywords:topic,freshness_keywords:freshnessKeywords,
       source_keywords:sourceKeywords,
-      meta_title:truncateWords(i.title+' | '+sport+' | MatchApp TV',60),
+      meta_title:truncateWords(i.title+' | '+sport+' | MatchApp Ai',60),
       meta_description:truncateWords(sport+' reporting indexed '+isoDate+'. Open the original publisher through MatchApp Latest News.',158),
       keywords:uniq([primary,...short,...long,...sourceKeywords,...freshnessKeywords]).slice(0,32),
       seo_generated_at:generated
@@ -306,9 +306,9 @@ function seoFor(i,trends,generated){
   ]).slice(0,4);
 
   const primary=trend[0]||`${focus} latest news`;
-  const metaTitle=truncateWords(`${i.title} | Entertainment News | MatchApp TV`,60);
+  const metaTitle=truncateWords(`${i.title} | Entertainment News | MatchApp Ai`,60);
   const metaDescription=truncateWords(
-    `${i.person?i.person+': ':''}${i.event_type} update reported by ${i.source} on ${isoDate}. See verified context, publication time and the original source via MatchApp TV.`,
+    `${i.person?i.person+': ':''}${i.event_type} update reported by ${i.source} on ${isoDate}. See verified context, publication time and the original source via MatchApp Ai.`,
     158
   );
 
@@ -375,7 +375,7 @@ function page(i){
         citation:i.url,
         mainEntity:sourceCreativeWork(i),
         potentialAction:{'@type':'ViewAction',target:i.landing_url,name:'Open in MatchApp Latest News'},
-        publisher:{'@type':'Organization',name:'MatchApp TV',url:SITE,logo:{'@type':'ImageObject',url:`${SITE}/assets/brand/matchapp-official-icon-512.webp`,width:512,height:512}}
+        publisher:{'@type':'Organization',name:'MatchApp Ai',url:SITE,logo:{'@type':'ImageObject',url:`${SITE}/assets/brand/matchapp-official-icon-512.webp`,width:512,height:512}}
       },
       {
         '@type':'BreadcrumbList',
@@ -403,11 +403,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <title>${esc(i.seo.meta_title)}</title>
 <meta name="description" content="${d}">
 <meta name="keywords" content="${kw}">
-<meta name="author" content="MatchApp TV">
+<meta name="author" content="MatchApp Ai">
 <meta name="robots" content="noindex,follow">
 <link rel="canonical" href="${canon}">
 <meta property="og:type" content="article">
-<meta property="og:site_name" content="MatchApp TV">
+<meta property="og:site_name" content="MatchApp Ai">
 <meta property="og:title" content="${esc(i.seo.meta_title)}">
 <meta property="og:description" content="${d}">
 <meta property="og:url" content="${canon}">
@@ -426,7 +426,7 @@ ${imageMeta}
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7J3NNBN"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-<header class="app-header"><a href="/" class="matchapp-brand-link" aria-label="MatchApp TV Ai"><span class="brand-logo brand-logo-placeholder" aria-hidden="true"></span><span class="app-title-main"><img class="matchapp-wordmark" src="/assets/brand/matchapp-tv-ai-v2.svg" alt="MatchApp TV Ai" width="368" height="66" decoding="async"></span></a></header>
+<header class="app-header"><a href="/" class="matchapp-brand-link" aria-label="MatchApp Ai"><span class="brand-logo brand-logo-placeholder" aria-hidden="true"></span><span class="app-title-main"><img class="matchapp-wordmark" src="/assets/brand/matchapp-tv-ai-v2.svg" alt="MatchApp Ai" width="368" height="66" decoding="async"></span></a></header>
 <main style="max-width:780px;margin:40px auto;padding:20px">
   <article class="premium-card" style="padding:24px">
     <p style="color:#E5C158;font-weight:800">LATEST NEWS · ${esc(i.event_type)}</p>
@@ -473,7 +473,7 @@ function hub(items,generated){
         url:`${SITE}/news/`,
         dateModified:generated,
         description:'An hourly refreshed entertainment and world-news index with twice-daily verified sports updates, original publisher links and source attribution.',
-        isPartOf:{'@type':'WebSite','@id':`${SITE}/#website`,url:`${SITE}/`,name:'MatchApp TV Ai'},
+        isPartOf:{'@type':'WebSite','@id':`${SITE}/#website`,url:`${SITE}/`,name:'MatchApp Ai'},
         about:[
           {'@type':'Thing',name:'Entertainment news'},
           {'@type':'Thing',name:'Film and television'},
@@ -482,7 +482,7 @@ function hub(items,generated){
           {'@type':'Thing',name:'World news and technology'}
         ],
         mainEntity:{'@type':'ItemList',itemListElement:itemList},
-        publisher:{'@type':'Organization',name:'MatchApp TV',url:SITE,logo:{'@type':'ImageObject',url:`${SITE}/assets/brand/matchapp-official-icon-512.webp`,width:512,height:512}}
+        publisher:{'@type':'Organization',name:'MatchApp Ai',url:SITE,logo:{'@type':'ImageObject',url:`${SITE}/assets/brand/matchapp-official-icon-512.webp`,width:512,height:512}}
       },
       {
         '@type':'BreadcrumbList',
@@ -506,13 +506,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Latest Entertainment &amp; Sports News | MatchApp TV</title>
+<title>Latest Entertainment &amp; Sports News | MatchApp Ai</title>
 <meta name="description" content="Verified film, TV, music, world and sports reporting from named publishers. News refreshes hourly and sports updates twice daily, with original source links.">
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
 <link rel="canonical" href="${SITE}/news/">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="MatchApp TV">
-<meta property="og:title" content="Latest Entertainment, World and Sports News | MatchApp TV">
+<meta property="og:site_name" content="MatchApp Ai">
+<meta property="og:title" content="Latest Entertainment, World and Sports News | MatchApp Ai">
 <meta property="og:description" content="Hourly verified entertainment and world reporting plus twice-daily sports updates with original publisher attribution.">
 <meta property="og:url" content="${SITE}/news/">
 <script type="application/ld+json">${JSON.stringify(schema)}</script>
@@ -524,7 +524,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7J3NNBN"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-<header class="app-header"><a href="/" class="matchapp-brand-link" aria-label="MatchApp TV Ai"><span class="brand-logo brand-logo-placeholder" aria-hidden="true"></span><span class="app-title-main"><img class="matchapp-wordmark" src="/assets/brand/matchapp-tv-ai-v2.svg" alt="MatchApp TV Ai" width="368" height="66" decoding="async"></span></a></header>
+<header class="app-header"><a href="/" class="matchapp-brand-link" aria-label="MatchApp Ai"><span class="brand-logo brand-logo-placeholder" aria-hidden="true"></span><span class="app-title-main"><img class="matchapp-wordmark" src="/assets/brand/matchapp-tv-ai-v2.svg" alt="MatchApp Ai" width="368" height="66" decoding="async"></span></a></header>
 <main style="max-width:1120px;margin:36px auto;padding:18px">
   <a href="/#latest-news">← MatchApp Latest News</a>
   <h1>Latest Entertainment, World and Sports News</h1>

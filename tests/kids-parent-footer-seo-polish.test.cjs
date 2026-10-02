@@ -51,7 +51,7 @@ test('Kids hub metadata describes actual age, mood, learning and streaming-guide
  assert.match(doc.title,/Kids Movies, Cartoons & Shows by Age/);
  assert(meta('description').length>=115&&meta('description').length<=165);
  assert.match(meta('description'),/educational shows/);
- assert.match(meta('keywords'),/Kids Mode MatchApp/);
+ assert.match(meta('keywords'),/MatchApp Ai KIDS/);
  assert.match(meta('keywords'),/classic cartoons by decade/);
  assert.match(meta('keywords'),/family viewing guide Brazil/);
  assert.equal(doc.querySelectorAll('link[rel=canonical]').length,1);

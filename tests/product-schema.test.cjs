@@ -5,7 +5,7 @@ const html=fs.readFileSync('pricing/pricing.html','utf8');
 const scripts=[...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map(m=>{try{return JSON.parse(m[1])}catch{return null}}).filter(Boolean);
 
 test('digital MatchApp plans use OfferCatalog without fabricated merchant fields',()=>{
- const catalog=scripts.find(x=>x['@type']==='OfferCatalog'&&x.name==='MatchApp TV Ai plans');
+ const catalog=scripts.find(x=>x['@type']==='OfferCatalog'&&x.name==='MatchApp Ai plans');
  assert(catalog,'OfferCatalog must exist');
  assert.equal(catalog.url,'https://matchapp.tv/pricing/pricing.html');
  assert(Array.isArray(catalog.itemListElement)&&catalog.itemListElement.length>=5);

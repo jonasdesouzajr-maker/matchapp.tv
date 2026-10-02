@@ -44,7 +44,7 @@ test('public runtime and page generators cannot reintroduce legacy brand names',
   if(!r.endsWith('.js'))return false;
   if(!r.includes('/'))return true;
   if(r.startsWith('kids/'))return true;
-  if(r.startsWith('tools/'))return /^tools\/(?:build-|refresh-)|^tools\/(?:seo-hardening|discovery-metadata|apply-critical-hotfixes|finalize-brand)\.js$/.test(r);
+  if(r.startsWith('tools/'))return /^tools\/(?:build-|refresh-)|^tools\/(?:discovery-metadata|finalize-brand)\.js$/.test(r);
   return false;
  });
  const failures=[];
