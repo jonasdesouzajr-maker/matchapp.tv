@@ -419,9 +419,24 @@ class MainActivity : AppCompatActivity() {
             ?: "en-US"
         val engine = lumiTts ?: return
         val locale = Locale.forLanguageTag(localeTag)
-        if (locale.language.isNotBlank()) engine.language = locale
-        engine.setSpeechRate(0.96f)
-        engine.setPitch(1.08f)
+        if (locale.language.isNotBlank()) {
+            val languageVoices = engine.voices
+                ?.filter { it.locale.language.equals(locale.language, ignoreCase = true) }
+                .orEmpty()
+            val localVoices = languageVoices.filterNot { it.isNetworkConnectionRequired }
+            val candidates = if (localVoices.isNotEmpty()) localVoices else languageVoices
+            val youthful = Regex("child|kid|young|junior|neural|natural|enhanced|premium|studio", RegexOption.IGNORE_CASE)
+            val chosen = candidates.maxByOrNull { voice ->
+                var score = voice.quality
+                if (voice.locale.toLanguageTag().equals(locale.toLanguageTag(), ignoreCase = true)) score += 500
+                if (!voice.isNetworkConnectionRequired) score += 250
+                if (youthful.containsMatchIn(voice.name)) score += 1000
+                score
+            }
+            if (chosen != null) engine.voice = chosen else engine.language = locale
+        }
+        engine.setSpeechRate(1.12f)
+        engine.setPitch(1.24f)
         engine.speak(value, TextToSpeech.QUEUE_FLUSH, null, "matchapp-lumi")
     }
     private fun authenticateGuardian() {
