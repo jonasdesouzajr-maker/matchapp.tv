@@ -174,3 +174,13 @@ html body.page-home #ma-dark-toggle{bottom:calc(78px + env(safe-area-inset-botto
 @media(prefers-reduced-motion:reduce){
   html body.page-home.ma-first-screen .marquee-item{transition:none!important}
 }
+
+/* Stop the oval glow and keep one full-width ask pill. */
+html body.page-home.ma-first-screen #ma-ai-entry #search-box > .home-ask-composer::before,
+html body.page-home.ma-first-screen #ma-ai-entry #search-box > .home-ask-composer::after{
+  content:none!important;display:none!important;animation:none!important;
+}
+html body.page-home.ma-first-screen #trending-rail .trending-week-label{
+  margin:4px 14px 10px!important;font-family:Georgia,serif!important;font-size:22px!important;font-weight:700!important;
+  letter-spacing:.01em!important;text-transform:none!important;color:#f2cf69!important;
+}
