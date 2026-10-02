@@ -8,11 +8,11 @@ test('Kids page exposes only the voice-first Luma assistant, not a typed Ask AI 
  assert.equal(backend.hidden,true);
  assert.equal(backend.getAttribute('aria-hidden'),'true');
  assert.match(html,/lumi-assistant\.css\?v=20261001-voice1/);
- assert.match(html,/lumi-assistant\.js\?v=20261001-voice2/);
+ assert.match(html,/lumi-assistant\.js\?v=20261002-luma1/);
  assert.match(html,/voice-input\.js\?v=20261001-lumi1/);
  assert.match(html,/with Luma, a voice-first Kids assistant/);
  assert.doesNotMatch(html,/with Lumi, a voice-first Kids assistant/);
- assert.match(html,/kids\/immersive\.js\?v=20261001-immersive7/);
+ assert.match(html,/kids\/immersive\.js\?v=20261002-luma1/);
 });
 
 test('Floating Luma is compact, draggable, stateful and persists a safe viewport-relative position',()=>{

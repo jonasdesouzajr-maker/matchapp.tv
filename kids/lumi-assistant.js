@@ -109,7 +109,7 @@ function boot(){
   if(!document.body.classList.contains('page-kids'))return;
   host=document.createElement('button');host.id='kids-lumi-assistant';host.type='button';host.dataset.state='idle';
   host.setAttribute('aria-label',tr('assistantLabel','Ask Luma a question by voice'));
-  host.innerHTML='<span class="kids-lumi-assistant-ring" aria-hidden="true"></span><span class="kids-lumi-assistant-body"><img src="/kids/lumi.svg?v=20261001-immersive1" alt="" width="96" height="96" draggable="false"><span class="kids-lumi-assistant-wave" aria-hidden="true"><i></i><i></i><i></i></span><span class="kids-lumi-assistant-mic" aria-hidden="true">🎙️</span></span>';
+  host.innerHTML='<span class="kids-lumi-assistant-ring" aria-hidden="true"></span><span class="kids-lumi-assistant-body"><img src="/kids/lumi.svg?v=20261002-luma1" alt="" width="96" height="96" draggable="false"><span class="kids-lumi-assistant-wave" aria-hidden="true"><i></i><i></i><i></i></span><span class="kids-lumi-assistant-mic" aria-hidden="true">🎙️</span></span>';
   document.body.appendChild(host);installDrag();installEvents();placeStored();
   host.addEventListener('click',()=>{if(Date.now()<suppressClickUntil)return;activate()});
 }
