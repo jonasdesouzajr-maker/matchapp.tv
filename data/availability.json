@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-01T11:30:05.682Z",
+  "generated": "2026-10-02T10:59:27.439Z",
   "source": "TMDB / JustWatch",
   "titles": {
     "The Bear": {
@@ -150,8 +150,7 @@
             "Apple TV Store",
             "Google Play Movies",
             "YouTube",
-            "Rakuten TV",
-            "Amazon Video"
+            "Rakuten TV"
           ],
           "link": "https://www.themoviedb.org/movie/693134-dune-part-two/watch?locale=PT"
         }
@@ -2802,8 +2801,7 @@
           "buy": [
             "Google Play Movies",
             "YouTube",
-            "Rakuten TV",
-            "Amazon Video"
+            "Rakuten TV"
           ],
           "link": "https://www.themoviedb.org/movie/279-amadeus/watch?locale=PT"
         }
