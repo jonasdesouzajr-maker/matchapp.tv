@@ -63,7 +63,21 @@ function start(vp){
   window.addEventListener('pagehide',()=>clearInterval(timer),{once:true});
 }
 function boot(){
-  fetch('/data/trending-week.json?v=20261002-week1',{cache:'no-store'}).then(r=>r.ok?r.json():null).then(paint).catch(()=>{});
+  Promise.all([
+    fetch('/data/trending-week.json?v=20261002-week1',{cache:'no-store'}).then(r=>r.ok?r.json():null),
+    fetch('/data/poster-identities.json?v=20261002-poster1',{cache:'force-cache'}).then(r=>r.ok?r.json():[]).catch(()=>[])
+  ]).then(([data,identities])=>{
+    if(!data||!Array.isArray(data.titles))return;
+    const byTitle=new Map((Array.isArray(identities)?identities:[]).map(row=>[String(row?.title||'').trim().toLowerCase(),row]));
+    const titles=data.titles.map(item=>{
+      const exact=byTitle.get(String(item?.title||'').trim().toLowerCase());
+      return Object.assign({},item,{poster:item?.poster||exact?.posterLarge||exact?.poster||exact?.posterOriginal||''});
+    }).filter(item=>item.poster);
+    // Never replace the working verified poster rail with mostly-empty refresh data.
+    // Keep the committed rail until the weekly refresh has enough exact artwork.
+    if(titles.length<6)return;
+    paint(Object.assign({},data,{titles}));
+  }).catch(()=>{});
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});
 else boot();
