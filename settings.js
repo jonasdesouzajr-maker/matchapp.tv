@@ -27,7 +27,7 @@ function applyOfficialBrand(){
  document.querySelectorAll('.matchapp-brand-link').forEach(link=>{
   let img=Array.from(link.children).find(el=>el.tagName==='IMG'&&!el.classList.contains('matchapp-wordmark'));
   if(!img){img=document.createElement('img');link.prepend(img)}
-  img.src=OFFICIAL_BRAND_ICON;img.alt='MatchApp TV Ai official icon';img.width=512;img.height=512;img.decoding='async';
+  img.src=OFFICIAL_BRAND_ICON;img.alt='MatchApp Ai official icon';img.width=512;img.height=512;img.decoding='async';
   img.classList.add('brand-logo','ma-official-brand-icon');
  });
  document.querySelectorAll('link[rel~="icon"]').forEach(l=>{l.href=OFFICIAL_FAVICON;l.type='image/png'});
@@ -37,7 +37,7 @@ load();loadRedesign();applyAll();const ready=()=>{applyAll();applyOfficialBrand(
 })();
 (function(){'use strict';const V='20260923-cinemadim1';function js(src){if(document.querySelector(`script[src^="${src}"]`))return;const s=document.createElement('script');s.src=src+'?v='+(src==='/taste-profile.js'?'20260929-taste1':src==='/match-guarantee.js'?'20260926-guarantee-outage1':src==='/ai-composer.js'?'20260929-language-buttons3':V);if(src==='/match-guarantee.js')s.src+='&matching=20260928-session1';s.defer=true;document.head.appendChild(s)}function css(src){if(document.querySelector(`link[href^="${src}"]`))return;const l=document.createElement('link');l.rel='stylesheet';l.href=src+'?v='+(src==='/taste-profile.css'?'20260929-taste1':V);document.head.appendChild(l)}const isKids=location.pathname.startsWith('/kids/');const isHome=location.pathname==='/'||location.pathname==='/index.html';if(!isKids){css('/tokens.css');css('/components.css');if(!isHome)js('/premium-ui.js')}if(!isKids)js('/content-safety.js');if(!isHome)css('/emergency-layout.css');css('/notifications.css');if(isHome){css('/onboarding-tour.css');js('/onboarding-tour.js')}if(!isHome){css('/experience-v2.css');css('/premium-cinema.css');css('/criteria-fold.css')}css('/taste-profile.css');css('/profile-card.css');if(!isHome){css('/urgent-fixes.css');css('/page-fluidity.css')}css('/preference-exclusions.css');/* Home visual ownership belongs exclusively to matchapp-ia.css. */js('/notifications.js');js('/activity.js');if(!isHome)js('/experience-v2.js');js('/chrome-launcher.js');js('/activity-cloud-bridge.js');if(!isHome)js('/premium-cinema.js');js('/legal-kit.js');js('/locale-results.js');js('/social-kit.js');js('/catalog-plus.js');js('/taste-profile.js');js('/match-guarantee.js');js('/site-hits.js');if(!isHome)js('/page-fluidity.js');if(location.pathname==='/profile/profile.html'){css('/profile-history.css');js('/profile-history.js');js('/registration-upgrade.js')}if(location.pathname==='/'||location.pathname==='/index.html'||location.pathname==='/discover.html')js('/roadmap-runtime.js');if(location.pathname==='/pricing/pricing.html'||location.pathname==='/pricing/')js('/brl-pricing.js');if(!isKids)js('/ai-composer.js');})();
 
-/* MatchApp IA shared loader 20260919 */
+/* MatchApp Ai shared loader 20260919 */
 (function(){
   'use strict';
   var p=location.pathname||'/';

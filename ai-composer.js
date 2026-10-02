@@ -3,7 +3,7 @@
 'use strict';
 const rows={
 en:['Ask MatchApp Ai','Type your question here','New chat','Recent conversations','Conversation history','AI allowance','Type a question or use the microphone, then press Send.','Understanding your request…','Understand','Match','Answer','Find what to stream here'],
-'pt-BR':['Pergunte à MatchApp iA','Digite sua pergunta aqui','Nova conversa','Conversas recentes','Histórico de conversas','Limite de IA','Digite ou use o microfone e depois toque em Enviar.','Entendendo seu pedido…','Entender','Encontrar','Responder','Encontre o que ver por streaming aqui'],
+'pt-BR':['Pergunte à MatchApp Ai','Digite sua pergunta aqui','Nova conversa','Conversas recentes','Histórico de conversas','Limite de IA','Digite ou use o microfone e depois toque em Enviar.','Entendendo seu pedido…','Entender','Encontrar','Responder','Encontre o que ver por streaming aqui'],
 es:['Pregunta a MatchApp Ai','Escribe tu pregunta aquí','Nueva conversación','Conversaciones recientes','Historial de conversaciones','Cupo de IA','Escribe o usa el micrófono y después pulsa Enviar.','Entendiendo tu solicitud…','Entender','Encontrar','Responder','Encuentra qué ver en streaming aquí'],
 fr:['Demandez à MatchApp Ai','Écrivez votre question ici','Nouvelle discussion','Discussions récentes','Historique des discussions','Quota IA','Écrivez ou utilisez le micro, puis appuyez sur Envoyer.','Analyse de votre demande…','Comprendre','Trouver','Répondre','Trouvez quoi regarder en streaming ici'],
 de:['MatchApp Ai fragen','Stelle hier deine Frage','Neuer Chat','Letzte Gespräche','Chatverlauf','KI-Kontingent','Tippe oder nutze das Mikrofon und drücke dann Senden.','Deine Anfrage wird verstanden…','Verstehen','Finden','Antworten','Hier findest du etwas zum Streamen'],
