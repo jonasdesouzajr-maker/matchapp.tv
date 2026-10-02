@@ -133,7 +133,7 @@
       const copy=paras.find(p=>p.length>80&&p!==paras[0])||paras[1]||'';
       const links=[...doc.querySelectorAll('.global-event-links a[href]')].map(a=>({label:a.textContent.trim(),href:a.href})).filter(x=>/^https:\/\//.test(x.href));
       const preview=links.map(x=>youtubeEmbed(x.href)).find(Boolean)||'';
-      document.title=title+' — MatchApp AI Concierge';
+      document.title=title+' — MatchApp Ai Concierge';
       document.getElementById('discover-empty')?.style.setProperty('display','none');
       document.getElementById('discover-loading')?.style.setProperty('display','none');
       const log=document.getElementById('chat-log');if(!log)return;

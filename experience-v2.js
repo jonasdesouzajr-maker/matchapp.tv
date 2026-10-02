@@ -172,7 +172,7 @@
       image.classList.add('matchapp-wordmark-source');
       const live = document.createElement('span');
       live.className = 'matchapp-live-wordmark';
-      live.setAttribute('aria-label','MatchApp TV Ai');
+      live.setAttribute('aria-label','MatchApp Ai');
       live.innerHTML = '<span class="ma-core">MatchApp</span><span class="ma-tv">TV</span><span class="ma-ai">Ai</span><span class="ma-ai-spark" aria-hidden="true">✦</span>';
       host.appendChild(live);
     });

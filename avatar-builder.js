@@ -565,7 +565,7 @@ ${hair.front || hair.cap ? `<clipPath id="${id('hc')}"><path d="${hair.front || 
     const tabs = Object.keys(TABS).map(k => `<button type="button" role="tab" class="ma-av-tab" data-tab="${k}" aria-selected="false">${svgIcon(k, 'ma-av-tabicon')}<span>${T.tabs[k]}</span></button>`).join('');
     dlg.innerHTML = `<div class="ma-av-sheet" tabindex="-1" autofocus>
   <header class="ma-av-head">
-    <div class="ma-av-brand"><img class="ma-av-orb" src="/assets/brand/matchapp-home-orb-transparent.webp?v=20260920-homebrand4" alt="" width="52" height="52" decoding="async"><div><img class="ma-av-wordmark" src="/assets/brand/matchapp-tv-ai-v2.svg" alt="MatchApp TV Ai" width="184" height="33" decoding="async"><span>${T.tagline}</span></div></div>
+    <div class="ma-av-brand"><img class="ma-av-orb" src="/assets/brand/matchapp-home-orb-transparent.webp?v=20260920-homebrand4" alt="" width="52" height="52" decoding="async"><div><img class="ma-av-wordmark" src="/assets/brand/matchapp-tv-ai-v2.svg" alt="MatchApp Ai" width="184" height="33" decoding="async"><span>${T.tagline}</span></div></div>
     <button type="button" class="ma-av-close" data-av="cancel" aria-label="${T.close}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button>
   </header>
   <div class="ma-av-intro">

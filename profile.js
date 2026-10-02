@@ -597,7 +597,7 @@ window.testVoiceSample = function() {
     const select = document.getElementById('voice-select');
     const rate = parseFloat(localStorage.getItem('match_voice_rate') || '1');
     const sampleByLang = {
-        'en': "Hi! I'm your MatchApp AI concierge. This is how I'll sound.",
+        'en': "Hi! I'm your MatchApp Ai concierge. This is how I'll sound.",
         'pt-BR': "Oi! Eu sou o seu concierge de IA do MatchApp. É assim que eu vou soar.",
         'es': "¡Hola! Soy tu conserje de IA de MatchApp. Así es como sonaré.",
         'fr': "Bonjour ! Je suis votre concierge IA MatchApp. Voici à quoi je ressemblerai.",
@@ -606,11 +606,11 @@ window.testVoiceSample = function() {
         'tr': "Merhaba! Ben MatchApp yapay zekâ danışmanınızım. Böyle duyulacağım.",
         'ru': "Привет! Я ваш ИИ-консьерж MatchApp. Вот как я буду звучать.",
         'ar': "مرحبًا! أنا مساعدك الذكي في MatchApp. هكذا سيكون صوتي.",
-        'hi': "नमस्ते! मैं आपका MatchApp AI कंसीयज हूँ। मैं ऐसे सुनाई दूँगा।",
+        'hi': "नमस्ते! मैं आपका MatchApp Ai कंसीयज हूँ। मैं ऐसे सुनाई दूँगा।",
         'id': "Hai! Saya concierge AI MatchApp Anda. Begini suara saya nanti.",
         'ja': "こんにちは！MatchAppのAIコンシェルジュです。こんな声でお話しします。",
-        'ko': "안녕하세요! 저는 MatchApp AI 컨시어지입니다. 이런 목소리로 안내해 드릴게요.",
-        'zh': "你好！我是你的 MatchApp AI 管家，我的声音听起来是这样的。"
+        'ko': "안녕하세요! 저는 MatchApp Ai 컨시어지입니다. 이런 목소리로 안내해 드릴게요.",
+        'zh': "你好！我是你的 MatchApp Ai 管家，我的声音听起来是这样的。"
     };
     speechSynthesis.cancel();
     const utter = new SpeechSynthesisUtterance(sampleByLang[window.MATCH_LANG] || sampleByLang.en);

@@ -1,4 +1,4 @@
-/* MatchApp TV Ai daily check-in: compact sign-in bubble, no in-page card.
+/* MatchApp Ai daily check-in: compact sign-in bubble, no in-page card.
    The database exclusively grants +1 daily and the existing day-7 +5 bonus.
    One mount, no timers for status, observers, intervals or polling. */
 (() => {
