@@ -30,6 +30,7 @@ test('Tapping Lumi speaks the prompt, then starts the hidden Kids microphone and
  Object.defineProperty(w.navigator,'mediaDevices',{value:{getUserMedia:async()=>({getTracks:()=>[{stop(){}}]})},configurable:true});
  w.document.getElementById('kids-mic').addEventListener('click',()=>{micClicks++});
  w.eval(read('kids/lumi-assistant.js'));
+ if(!w.document.getElementById('kids-lumi-assistant'))w.document.dispatchEvent(new w.Event('DOMContentLoaded'));
  const lumi=w.document.getElementById('kids-lumi-assistant');assert(lumi);
  lumi.click();
  await new Promise(resolve=>setTimeout(resolve,0));
