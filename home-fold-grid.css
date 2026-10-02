@@ -274,3 +274,160 @@ html body.page-home #trending-rail .marquee-track.is-marquee-flowing>.marquee-it
 @media(prefers-reduced-motion:reduce){
  html body.page-home #trending-rail .marquee-track.is-marquee-flowing{animation:none!important;transform:none!important;will-change:auto!important}
 }
+
+
+/* PREMIUM COHERENCE 2026-10-02
+   Visual-only final layer: retain each fold's unique signature crest/color,
+   but move the adult Home from saturated panels to a calmer premium feed. */
+html body.page-home:not(.tv-mode){
+ --ma-surface-0:#0b0910;
+ --ma-surface-1:#121019;
+ --ma-line-soft:rgba(245,217,158,.24);
+ --ma-line-focus:rgba(245,217,158,.48);
+ --ma-text-soft:#d7cedd;
+}
+html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container :is(
+ .lazy-head[data-fold-key],
+ #latest-news>summary,
+ #premiere-disclosure>summary,
+ #weekly-pick-disclosure>summary,
+ #global-events>.global-events-fold>.global-events-summary,
+ #swifties-spotify .swifties-fold,
+ #ebook-matcher-root .ebook-fold>summary,
+ #cooking-home>summary,
+ .match-more-filters>summary,
+ .seo-fold-summary
+){
+ background:
+  linear-gradient(112deg,
+   color-mix(in srgb,var(--ma-fold-a,#6d4c80) 22%,#151119 78%) 0%,
+   rgba(15,12,20,.98) 62%,
+   rgba(10,9,14,.99) 100%)!important;
+ border:1px solid var(--ma-line-soft)!important;
+ box-shadow:
+  inset 3px 0 0 color-mix(in srgb,var(--ma-fold-a,#8b62a8) 52%,#e9c978 48%),
+  inset 0 1px 0 rgba(255,255,255,.045),
+  0 7px 18px rgba(0,0,0,.22)!important;
+ color:#f7f2fb!important;
+ text-shadow:none!important;
+}
+html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container :is(
+ .lazy-head[data-fold-key],
+ #latest-news>summary,
+ #premiere-disclosure>summary,
+ #weekly-pick-disclosure>summary,
+ #global-events>.global-events-fold>.global-events-summary,
+ #swifties-spotify .swifties-fold,
+ #ebook-matcher-root .ebook-fold>summary,
+ #cooking-home>summary
+):hover{
+ border-color:var(--ma-line-focus)!important;
+ filter:brightness(1.035);
+}
+html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container :is(
+ .lazy-head[data-fold-key],
+ #latest-news>summary,
+ #premiere-disclosure>summary,
+ #weekly-pick-disclosure>summary,
+ #global-events>.global-events-fold>.global-events-summary,
+ #swifties-spotify .swifties-fold,
+ #ebook-matcher-root .ebook-fold>summary,
+ #cooking-home>summary
+)::before{
+ filter:drop-shadow(0 3px 7px rgba(0,0,0,.28))!important;
+}
+html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container :is(
+ .lazy-head[data-fold-key],
+ #latest-news>summary,
+ #premiere-disclosure>summary,
+ #weekly-pick-disclosure>summary,
+ #global-events>.global-events-fold>.global-events-summary,
+ #swifties-spotify .swifties-fold,
+ #ebook-matcher-root .ebook-fold>summary,
+ #cooking-home>summary
+)::after{
+ border-color:rgba(244,214,151,.34)!important;
+ background-color:rgba(255,255,255,.035)!important;
+ box-shadow:none!important;
+}
+@media(min-width:1025px){
+ html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container :is(
+  .lazy-head[data-fold-key],
+  #latest-news>summary,
+  #premiere-disclosure>summary,
+  #weekly-pick-disclosure>summary,
+  #global-events>.global-events-fold>.global-events-summary,
+  #swifties-spotify .swifties-fold,
+  #ebook-matcher-root .ebook-fold>summary,
+  #cooking-home>summary
+ ){
+  grid-template-columns:36px minmax(0,1fr) 30px!important;
+  min-height:56px!important;
+  padding:7px 14px!important;
+  gap:10px!important;
+  border-radius:999px!important;
+ }
+ html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container :is(
+  .lazy-head[data-fold-key],
+  #latest-news>summary,
+  #premiere-disclosure>summary,
+  #weekly-pick-disclosure>summary,
+  #global-events>.global-events-fold>.global-events-summary,
+  #swifties-spotify .swifties-fold,
+  #ebook-matcher-root .ebook-fold>summary,
+  #cooking-home>summary
+ )::before,
+ html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container #cooking-home>summary>img,
+ html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container #ebook-matcher-root .ebook-fold>summary>.ebook-summary-icon{
+  width:34px!important;height:34px!important;flex-basis:34px!important;
+ }
+ html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container :is(
+  .lazy-head[data-fold-key],
+  #latest-news>summary,
+  #premiere-disclosure>summary,
+  #weekly-pick-disclosure>summary,
+  #global-events>.global-events-fold>.global-events-summary,
+  #swifties-spotify .swifties-fold,
+  #ebook-matcher-root .ebook-fold>summary,
+  #cooking-home>summary
+ )::after{
+  width:28px!important;height:28px!important;border-radius:50%!important;background-size:18px 18px!important;
+ }
+}
+html body.page-home #trending-rail.marquee-wrapper{
+ background:linear-gradient(160deg,rgba(15,12,20,.90),rgba(7,7,11,.94))!important;
+ border:1px solid rgba(242,207,105,.24)!important;
+ box-shadow:inset 0 1px 0 rgba(255,255,255,.035),0 10px 24px rgba(0,0,0,.20)!important;
+}
+html body.page-home #trending-rail .trending-week-label{
+ margin:5px 14px 8px!important;
+ font:700 13px/1.25 Outfit,Inter,system-ui,sans-serif!important;
+ letter-spacing:.04em!important;
+ color:#e8d9b2!important;
+ text-transform:uppercase!important;
+}
+html body.page-home #trending-rail .marquee-item:not([data-music-video]){
+ border-width:1px!important;
+ border-color:rgba(230,198,117,.48)!important;
+ border-radius:16px!important;
+ background:#0b0910!important;
+ box-shadow:0 8px 18px rgba(0,0,0,.28)!important;
+}
+html body.page-home #trending-rail .marquee-item:not([data-music-video])>img{
+ border-radius:14px!important;
+}
+@media(hover:hover){
+ html body.page-home #trending-rail .marquee-item:not([data-music-video]):hover{
+  transform:translateY(-3px) scale(1.015)!important;
+  border-color:rgba(245,219,155,.72)!important;
+  box-shadow:0 14px 26px rgba(0,0,0,.34)!important;
+ }
+}
+@media(prefers-reduced-motion:reduce){
+ html body.page-home:not(.tv-mode) main.page-wrapper .main-layout>.container :is(
+  .lazy-head[data-fold-key],#latest-news>summary,#premiere-disclosure>summary,#weekly-pick-disclosure>summary,
+  #global-events>.global-events-fold>.global-events-summary,#swifties-spotify .swifties-fold,
+  #ebook-matcher-root .ebook-fold>summary,#cooking-home>summary
+ ){filter:none!important}
+ html body.page-home #trending-rail .marquee-item:not([data-music-video]):hover{transform:none!important}
+}

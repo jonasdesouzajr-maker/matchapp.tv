@@ -1670,9 +1670,9 @@ html body.page-home #mh-topbox .mh-deck>.sound-toggle-btn,html body.page-home #m
     <link rel="stylesheet" href="/mobile-header-compact.css?v=20260927-single-guide1" data-home-mobile-header="1">
     <link rel="stylesheet" href="/match-result-stability.css?v=20260927-mobile1&amp;matching=20260928-session1&amp;desktop=20260929-details1&amp;recovery=20260929-tmdbsecondary1&amp;locale=20260929-noexactpt1">
 <link rel="stylesheet" href="/cooking/cooking.css?v=20260929-1">
-<link rel="stylesheet" href="/ai-composer.css?v=20261002-calm-pill1">
+<link rel="stylesheet" href="/ai-composer.css?v=20261002-premium-coherence1">
 <link rel="stylesheet" href="/mobile-compact.css?v=20260929-compact3">
-<link rel="stylesheet" href="/home-fold-grid.css?v=20260930-flow-locales4&amp;language=20260930-fix2&amp;polish=20260930-2">
+<link rel="stylesheet" href="/home-fold-grid.css?v=20261002-premium-coherence1">
 <script defer src="/locale-results.js?v=20260929-language1&amp;language=20260930-fix2"></script>
 <script defer src="/ai-composer.js?v=20261002-again1&amp;ui=20260930-1&amp;brand=20260930-1&amp;stream=20260930-1&amp;header=20260930-locales2&amp;language=20260930-fix2"></script>
 <link rel="stylesheet" href="/music-video-releases.css?v=20260930-portrait1">
@@ -1748,7 +1748,7 @@ html body.page-home #mh-topbox .mh-deck>.sound-toggle-btn,html body.page-home #m
            inner all resolve to the same measure. */
         html body.page-home .main-layout > .container,
         html body.page-home main.page-wrapper > .main-layout > .container {
-            width: var(--measure) !important;
+            width: 100% !important;
             max-width: var(--measure) !important;
             padding-left: 0 !important; padding-right: 0 !important;
         }
@@ -2001,15 +2001,17 @@ html body.page-home #daily-match-checkin { padding: 11px 12px !important; }
            middle, which is what reads as stretched. Each card now takes the
            width its content needs, up to the page measure, and is centred. */
         html body.page-home :is(.premium-card, .tg-entry, #daily-match-checkin, .marquee-wrapper,
-            .spotlight-card, .ma-news, #latest-news, #how-it-works, #ai-concierge-section,
-            #search-box, #questionnaire-box, .top-ask-wrap > *, .lazy-bar) {
+            .spotlight-card, .ma-news, #latest-news, #how-it-works,
+            #questionnaire-box, .top-ask-wrap > *, .lazy-bar) {
             width: fit-content !important;
             max-width: var(--measure) !important;
             margin-left: auto !important; margin-right: auto !important;
         }
         /* Blocks whose whole job is to span the measure keep it. */
-        html body.page-home :is(#questionnaire-box, #daily-match-checkin, .marquee-wrapper, .ma-news, #latest-news) {
+        html body.page-home :is(#questionnaire-box, #daily-match-checkin, .marquee-wrapper, .ma-news, #latest-news,
+            #ai-concierge-section, #ma-ai-entry, #ma-ai-entry #search-box, #ma-concierge) {
             width: 100% !important;
+            max-width: var(--measure) !important;
         }
         html body.page-home .premium-card { min-width: min(100%, 320px); }
 
@@ -2057,16 +2059,16 @@ html body.page-home #daily-match-checkin { padding: 11px 12px !important; }
         /* ---------- 12. PER DEVICE ---------- */
         @media (min-width: 1000px) {
             html body.page-home { --measure: min(100% - 24px, 900px); }
-            html body.page-home .marquee-item { width: 92px !important; height: 138px !important; }
+            html body.page-home .marquee-item { width: 106px !important; height: 159px !important; }
         }
         @media (min-width: 560px) and (max-width: 999px) {
             html body.page-home { --measure: min(100% - 18px, 700px); }
-            html body.page-home .marquee-item { width: 86px !important; height: 129px !important; }
+            html body.page-home .marquee-item { width: 94px !important; height: 141px !important; }
             html body.page-home .daily-checkin-days { grid-template-columns: repeat(7, minmax(0, 1fr)) !important; }
         }
         @media (max-width: 559px) {
             html body.page-home { --measure: calc(100% - 12px); }
-            html body.page-home .marquee-item { width: 74px !important; height: 111px !important; }
+            html body.page-home .marquee-item { width: 84px !important; height: 126px !important; }
             html body.page-home .marquee-track { gap: 6px !important; }
             /* Seven day tiles across a 350px column is four legible pixels
                each; two rows of four reads. */
@@ -2257,16 +2259,16 @@ html body.page-home #daily-match-checkin { padding: 11px 12px !important; }
                     <div class="marquee-viewport" id="marquee-viewport">
                         <div class="marquee-track" id="marquee-track" data-loop-count="26">
                         <div class="marquee-item" role="button" tabindex="0" data-loop-copy="0" data-origin="BR" onclick="selectMarqueeItem(&quot;Quem É Você?&quot;)">
-                            <img data-title="Quem É Você?" data-origin="BR" data-tmdb-id="201778" data-tmdb-kind="tv" data-tmdb-year="1996" src="https://image.tmdb.org/t/p/w780/ewelBEOwfr8EIjnrc6Drov67xe1.jpg" alt="Quem É Você?" loading="lazy" decoding="async">
+                            <img data-title="Quem É Você?" data-origin="BR" data-tmdb-id="201778" data-tmdb-kind="tv" data-tmdb-year="1996" src="https://image.tmdb.org/t/p/w780/ewelBEOwfr8EIjnrc6Drov67xe1.jpg" alt="Quem É Você?" loading="eager" fetchpriority="high" decoding="async">
                         </div>
                         <div class="marquee-item" role="button" tabindex="0" data-loop-copy="0" data-origin="GB" onclick="selectMarqueeItem(&quot;Absolutely Fabulous&quot;)">
-                            <img data-title="Absolutely Fabulous" data-origin="GB" data-tmdb-id="4493" data-tmdb-kind="tv" data-tmdb-year="1992" src="https://image.tmdb.org/t/p/w780/s6HrSQwSwtzLlJYq2yeur3J5iR9.jpg" alt="Absolutely Fabulous" loading="lazy" decoding="async">
+                            <img data-title="Absolutely Fabulous" data-origin="GB" data-tmdb-id="4493" data-tmdb-kind="tv" data-tmdb-year="1992" src="https://image.tmdb.org/t/p/w780/s6HrSQwSwtzLlJYq2yeur3J5iR9.jpg" alt="Absolutely Fabulous" loading="eager" fetchpriority="high" decoding="async">
                         </div>
                         <div class="marquee-item" role="button" tabindex="0" data-loop-copy="0" data-origin="AU" onclick="selectMarqueeItem(&quot;Heartbreak High&quot;)">
-                            <img data-title="Heartbreak High" data-origin="AU" data-tmdb-id="158154" data-tmdb-kind="tv" data-tmdb-year="2022" src="https://image.tmdb.org/t/p/w780/1KTYMK7N2vRe8PowCyb799DbDRR.jpg" alt="Heartbreak High" loading="lazy" decoding="async">
+                            <img data-title="Heartbreak High" data-origin="AU" data-tmdb-id="158154" data-tmdb-kind="tv" data-tmdb-year="2022" src="https://image.tmdb.org/t/p/w780/1KTYMK7N2vRe8PowCyb799DbDRR.jpg" alt="Heartbreak High" loading="eager" fetchpriority="high" decoding="async">
                         </div>
                         <div class="marquee-item" role="button" tabindex="0" data-loop-copy="0" data-origin="CA" onclick="selectMarqueeItem(&quot;Schitt&#39;s Creek&quot;)">
-                            <img data-title="Schitt&#39;s Creek" data-origin="CA" data-tmdb-id="61662" data-tmdb-kind="tv" data-tmdb-year="2015" src="https://image.tmdb.org/t/p/w780/bqSgt3OZDvHnOfoZEr7l0jVrSqB.jpg" alt="Schitt&#39;s Creek" loading="lazy" decoding="async">
+                            <img data-title="Schitt&#39;s Creek" data-origin="CA" data-tmdb-id="61662" data-tmdb-kind="tv" data-tmdb-year="2015" src="https://image.tmdb.org/t/p/w780/bqSgt3OZDvHnOfoZEr7l0jVrSqB.jpg" alt="Schitt&#39;s Creek" loading="eager" fetchpriority="high" decoding="async">
                         </div>
                         <div class="marquee-item" role="button" tabindex="0" data-loop-copy="0" data-origin="JP" onclick="selectMarqueeItem(&quot;Alice in Borderland&quot;)">
                             <img data-title="Alice in Borderland" data-original-title="今際の国のアリス" data-origin="JP" data-tmdb-id="110316" data-tmdb-kind="tv" data-tmdb-year="2020" src="https://image.tmdb.org/t/p/w780/Ac8ruycRXzgcsndTZFK6ouGA0FA.jpg" alt="Alice in Borderland" loading="lazy" decoding="async">
