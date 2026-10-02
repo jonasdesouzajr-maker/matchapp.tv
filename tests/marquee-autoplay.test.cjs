@@ -3,12 +3,15 @@ const assert=require('node:assert/strict');
 const fs=require('node:fs');
 const path=require('path');
 const root=path.join(__dirname,'..'),read=p=>fs.readFileSync(path.join(root,p),'utf8');
-test('Home rails use native scroll-snap and no dedicated perpetual autoplay engine',()=>{
+test('Top Titles uses one compositor-only seamless flow without per-frame scroll writes',()=>{
  assert.equal(fs.existsSync(path.join(root,'marquee-autoplay.js')),false);
  assert.equal(fs.existsSync(path.join(root,'right-glide-rails.js')),false);
- const css=read('components.css'),app=read('app.js');
- assert.match(css,/scroll-snap-type:x mandatory/);
- assert.match(css,/min-width:44px/);
+ const base=read('components.css'),home=read('index.html'),app=read('app.js');
+ assert.match(base,/min-width:44px/);
+ assert.match(home,/@keyframes marqueeFlow/);
+ assert.match(home,/#marquee-viewport\[data-matchapp-autoplay-active="1"\]/);
+ assert.match(app,/FLOW_SECONDS_PER_TITLE = 6/);
+ assert.match(app,/firstClone\.offsetLeft - track\.offsetLeft/);
  assert.doesNotMatch(app,/requestAnimationFrame\([^\n]*scrollLeft/);
 });
 test('Kids experience has no decorative animation engine',()=>{
