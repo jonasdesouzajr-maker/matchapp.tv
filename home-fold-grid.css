@@ -235,28 +235,42 @@ html body.page-home #ma-ai-entry #search-box .search-examples>button[data-ai-exa
  line-height:1.3!important;white-space:nowrap!important;overflow-wrap:normal!important;
 }
 
-/* Top Titles: the complete original film/TV poster fills its portrait card.
-   Accessible localized names remain on the existing buttons and images. */
+/* Top Titles poster frame: preserve every complete original poster without
+   cropping or stretching, centered inside the rounded MatchApp gold frame. */
 html body.page-home #trending-rail .marquee-item{
  aspect-ratio:2/3!important;height:auto!important;
+}
+html body.page-home #trending-rail .marquee-item:not([data-music-video]){
+ box-sizing:border-box!important;overflow:hidden!important;padding:3px!important;
+ border:2px solid rgba(229,193,88,.82)!important;border-radius:18px!important;
+ background:linear-gradient(155deg,rgba(241,211,121,.22),rgba(12,9,18,.98) 18%,rgba(12,9,18,.98) 82%,rgba(168,108,36,.22))!important;
+ box-shadow:0 13px 30px rgba(0,0,0,.36),0 0 0 1px rgba(255,243,163,.08) inset!important;
 }
 html body.page-home #trending-rail .marquee-item:not([data-music-video]) .marquee-title{
  display:none!important;
 }
 html body.page-home #trending-rail .marquee-item:not([data-music-video])>img{
- width:100%!important;height:100%!important;aspect-ratio:2/3!important;object-fit:contain!important;
+ display:block!important;box-sizing:border-box!important;
+ width:100%!important;height:100%!important;max-width:100%!important;max-height:100%!important;
+ aspect-ratio:auto!important;object-fit:contain!important;object-position:50% 50%!important;
+ border-radius:13px!important;background:#0b0910!important;
 }
 
-/* REGIONAL TOP TITLES CONTINUOUS LOOP — owner approved 2026-10-02.
-   26 unique editorial identities are followed by an identical 26-card copy.
-   Transform-only motion crosses that seam continuously; no scrollLeft reset. */
+/* REGIONAL TOP TITLES SEAMLESS NATIVE LOOP — owner approved 2026-10-02.
+   The mirrored second half hides the wrap, while the real scroll viewport stays
+   swipeable in BOTH directions on phones, tablets, desktop and Android WebView. */
 html body.page-home #trending-rail .marquee-arrow{display:none!important}
-html body.page-home #trending-rail .marquee-viewport[data-matchapp-autoplay-active="1"]{overflow-x:hidden!important;overflow-y:hidden!important;touch-action:pan-y!important;overscroll-behavior-x:none!important;cursor:default!important}
-html body.page-home #trending-rail .marquee-track.is-marquee-flowing{scroll-snap-type:none!important;animation:maRegionalTopTitlesFlow var(--marquee-duration,130s) linear infinite!important;will-change:transform;backface-visibility:hidden}
-html body.page-home #trending-rail .marquee-viewport:focus-within .marquee-track.is-marquee-flowing,
-html body.page-home #trending-rail .marquee-track.is-marquee-flowing:has(.marquee-item:hover){animation-play-state:paused!important}
-@keyframes maRegionalTopTitlesFlow{from{transform:translate3d(0,0,0)}to{transform:translate3d(var(--marquee-end,-50%),0,0)}}
+html body.page-home #trending-rail .marquee-viewport[data-matchapp-autoplay-active="1"]{
+ overflow-x:auto!important;overflow-y:hidden!important;touch-action:pan-x pan-y!important;
+ overscroll-behavior-x:contain!important;-webkit-overflow-scrolling:touch!important;
+ scrollbar-width:none!important;cursor:grab!important;scroll-snap-type:none!important;
+}
+html body.page-home #trending-rail .marquee-viewport[data-matchapp-autoplay-active="1"]::-webkit-scrollbar{display:none!important}
+html body.page-home #trending-rail .marquee-viewport.is-dragging{cursor:grabbing!important;scroll-behavior:auto!important}
+html body.page-home #trending-rail .marquee-track.is-marquee-flowing{
+ animation:none!important;transform:none!important;will-change:auto!important;scroll-snap-type:none!important;
+}
+html body.page-home #trending-rail .marquee-track.is-marquee-flowing>.marquee-item{scroll-snap-align:none!important}
 @media(prefers-reduced-motion:reduce){
  html body.page-home #trending-rail .marquee-track.is-marquee-flowing{animation:none!important;transform:none!important;will-change:auto!important}
- html body.page-home #trending-rail .marquee-viewport[data-matchapp-autoplay-active="1"]{overflow-x:auto!important;touch-action:pan-x pan-y!important}
 }

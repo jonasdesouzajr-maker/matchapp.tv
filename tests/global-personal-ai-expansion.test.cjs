@@ -60,8 +60,10 @@ test('home marquee keeps curated regional originals with seamless loop and keybo
  for(const title of ['Absolutely Fabulous','Slow Horses',"Schitt&#39;s Creek",'North of North','Alice in Borderland','Last Samurai Standing','Heartbreak High','The Survivors'])assert.ok(section.includes(title),title+' missing from regional Home rail');
  assert.match(app,/if\(vp\.id==='marquee-viewport'\)/);
  assert.match(app,/track\.classList\.add\('is-marquee-flowing'\)/);
- assert.match(app,/track\.style\.setProperty\('--marquee-end'/);
- assert.match(app,/Math\.max\(90,realCount\*5\)/);
+ assert.match(app,/MARQUEE_AUTO_MS=4200/);
+ assert.match(app,/vp\.classList\.add\('is-dragging'\)/);
+ assert.match(app,/vp\.scrollBy\(\{left:step,behavior:'smooth'\}\)/);
+ assert.match(app,/vp\.scrollLeft=loopWidth/);
  assert.match(app,/window\.selectMarqueeItem\?\.\(title\)/);
 });
 

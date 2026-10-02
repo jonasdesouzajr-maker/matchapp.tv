@@ -19,6 +19,9 @@ test('every Top Titles source matches the exact-title poster registry, including
  assert.equal(registry['Habeas Corpus'],'https://image.tmdb.org/t/p/w780/cojcROwZe8681XzroVIOE9VK4zV.jpg');
  assert.equal(registry['The Love Hypothesis'],'https://image.tmdb.org/t/p/w780/wlb6vunPuBjboYnmy4r3NlKZWji.jpg');
  assert.match(read('index.html'),/#trending-rail \.marquee-item img \{ object-fit: contain !important/);
+ const railCss=read('home-fold-grid.css');
+ assert.match(railCss,/#trending-rail \.marquee-item:not\(\[data-music-video\]\)>img\{[\s\S]*object-fit:contain!important;[\s\S]*object-position:50% 50%!important/);
+ assert.match(railCss,/#trending-rail \.marquee-item:not\(\[data-music-video\]\)\{[\s\S]*border:2px solid rgba\(229,193,88,\.82\)!important;[\s\S]*border-radius:18px!important/);
 });
 
 test('Top Titles and the adult match share poster recovery without replacing the recommendation engine',()=>{

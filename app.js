@@ -1780,32 +1780,113 @@ window.eventMatch = function (query) {
         vp.tabIndex = vp.tabIndex >= 0 ? vp.tabIndex : 0;
         const root = vp.closest('.marquee-wrapper,.events-wrapper,.ma-news-carousel-shell,.premium-card') || vp.parentElement;
 
-        // Top Titles is a true seamless marquee: the identical second half is
-        // the loop seam, so the user never sees a jump back to card one.
-        // Other rails keep their existing native scroll/autoplay controller.
+        // Top Titles uses the identical second half as an invisible loop seam,
+        // but keeps the viewport as a real native scroller. That gives touch,
+        // trackpad and pointer users genuine two-way navigation while autoplay
+        // advances one title at a readable pace and never visibly jumps home.
         if(vp.id==='marquee-viewport'){
             const track=vp.querySelector('#marquee-track');
             if(track){
+                const MARQUEE_AUTO_MS=4200,HOLD_AFTER_TOUCH=7000;
+                let loopWidth=0,autoTimer=0,settleTimer=0,holdUntil=0,hovering=false,visible=true,drag=null,swipeUntil=0;
                 vp.dataset.matchappAutoplayActive='1';
-                vp.tabIndex=-1;
+                vp.tabIndex=0;
                 track.classList.add('is-marquee-flowing');
-                const syncMarquee=()=>{
-                    const seam=track.querySelector('.marquee-item[data-loop-copy="1"]');
-                    if(!seam)return;
-                    track.style.setProperty('--marquee-end',(-seam.offsetLeft)+'px');
-                    const realCount=track.querySelectorAll('.marquee-item:not([aria-hidden="true"])').length;
-                    track.style.setProperty('--marquee-duration',Math.max(90,realCount*5)+'s');
+
+                const stepSize=()=>{
+                    const card=track.querySelector('.marquee-item:not([aria-hidden="true"])')||track.firstElementChild;
+                    const style=getComputedStyle(track),gap=parseFloat(style.columnGap||style.gap||'0')||0;
+                    return Math.max(120,(card?.getBoundingClientRect().width||224)+gap);
                 };
-                syncMarquee();
-                window.addEventListener('resize',syncMarquee,{passive:true});
+                const syncLoop=()=>{
+                    const seam=track.querySelector('.marquee-item[data-loop-copy="1"]');
+                    loopWidth=seam?.offsetLeft||0;
+                    // Start on the visually identical second copy so there is
+                    // immediately a full loop of swipe room in either direction.
+                    if(loopWidth>0&&vp.scrollWidth>vp.clientWidth&&vp.scrollLeft<2)vp.scrollLeft=loopWidth;
+                };
+                const normalizeLoop=()=>{
+                    if(!loopWidth||drag)return;
+                    const max=Math.max(0,vp.scrollWidth-vp.clientWidth);
+                    if(vp.scrollLeft<=2)vp.scrollLeft=loopWidth;
+                    else if(vp.scrollLeft>=max-2)vp.scrollLeft=Math.max(0,vp.scrollLeft-loopWidth);
+                };
+                const stopAuto=()=>{if(autoTimer){clearTimeout(autoTimer);autoTimer=0;}};
+                const paused=()=>hovering||drag||vp.contains(document.activeElement)||Date.now()<holdUntil;
+                const scheduleAuto=(delay=MARQUEE_AUTO_MS)=>{
+                    stopAuto();
+                    if(REDUCED||!visible||document.hidden||!loopWidth||vp.scrollWidth<=vp.clientWidth)return;
+                    autoTimer=setTimeout(()=>{
+                        autoTimer=0;
+                        if(!visible||document.hidden)return;
+                        if(paused()){scheduleAuto(Math.max(650,holdUntil-Date.now()));return;}
+                        const step=stepSize(),max=Math.max(0,vp.scrollWidth-vp.clientWidth);
+                        if(vp.scrollLeft+step>=max-2)vp.scrollLeft=Math.max(0,vp.scrollLeft-loopWidth);
+                        vp.scrollBy({left:step,behavior:'smooth'});
+                        clearTimeout(settleTimer);
+                        settleTimer=setTimeout(()=>{normalizeLoop();scheduleAuto();},650);
+                    },delay);
+                };
+                const hold=()=>{holdUntil=Date.now()+HOLD_AFTER_TOUCH;scheduleAuto(HOLD_AFTER_TOUCH);};
+                vp.__railHold=hold;
+
+                vp.addEventListener('pointerdown',e=>{
+                    if(e.pointerType!=='touch'&&!e.pointerType.startsWith('pen')&&e.pointerType!=='mouse')return;
+                    drag={id:e.pointerId,x:e.clientX,scroll:vp.scrollLeft,moved:false};
+                    vp.classList.add('is-dragging');hold();
+                },{passive:true});
+                vp.addEventListener('pointermove',e=>{
+                    if(!drag||e.pointerId!==drag.id)return;
+                    if(Math.abs(e.clientX-drag.x)>11||Math.abs(vp.scrollLeft-drag.scroll)>9)drag.moved=true;
+                },{passive:true});
+                const finishGesture=e=>{
+                    if(!drag||e.pointerId!==drag.id)return;
+                    if(drag.moved||Math.abs(vp.scrollLeft-drag.scroll)>9)swipeUntil=Date.now()+450;
+                    drag=null;vp.classList.remove('is-dragging');
+                    clearTimeout(settleTimer);settleTimer=setTimeout(normalizeLoop,180);
+                };
+                vp.addEventListener('pointerup',finishGesture,{passive:true});
+                vp.addEventListener('pointercancel',finishGesture,{passive:true});
+                vp.addEventListener('click',e=>{
+                    if(Date.now()<swipeUntil&&e.target.closest?.('.marquee-item')){
+                        e.preventDefault();e.stopImmediatePropagation();
+                    }
+                },true);
+                vp.addEventListener('scroll',()=>{
+                    clearTimeout(settleTimer);
+                    settleTimer=setTimeout(normalizeLoop,180);
+                },{passive:true});
                 vp.addEventListener('keydown',e=>{
-                    if(e.key!=='Enter'&&e.key!==' ')return;
-                    const item=e.target.closest?.('.marquee-item[data-loop-copy="0"]');
-                    if(!item)return;
-                    e.preventDefault();
-                    const title=item.querySelector('img[data-title]')?.dataset.title;
-                    if(title)window.selectMarqueeItem?.(title);
+                    if(e.key!=='ArrowLeft'&&e.key!=='ArrowRight'&&e.key!=='Enter'&&e.key!==' ')return;
+                    if(e.key==='Enter'||e.key===' '){
+                        const item=e.target.closest?.('.marquee-item[data-loop-copy="0"]');
+                        if(!item)return;
+                        e.preventDefault();
+                        const title=item.querySelector('img[data-title]')?.dataset.title;
+                        if(title)window.selectMarqueeItem?.(title);
+                        return;
+                    }
+                    e.preventDefault();hold();
+                    const step=stepSize(),dir=e.key==='ArrowLeft'?-1:1;
+                    if(dir<0&&loopWidth&&vp.scrollLeft<step+2)vp.scrollLeft+=loopWidth;
+                    else if(dir>0&&loopWidth&&vp.scrollLeft+step>=vp.scrollWidth-vp.clientWidth-2)vp.scrollLeft=Math.max(0,vp.scrollLeft-loopWidth);
+                    vp.scrollBy({left:dir*step,behavior:REDUCED?'auto':'smooth'});
                 });
+
+                if('IntersectionObserver'in window){
+                    const io=new IntersectionObserver(entries=>{
+                        visible=!!entries[0]?.isIntersecting;
+                        if(visible)scheduleAuto();else stopAuto();
+                    },{threshold:.15});
+                    io.observe(vp);
+                }
+                vp.addEventListener('mouseenter',()=>{hovering=true;stopAuto();},{passive:true});
+                vp.addEventListener('mouseleave',()=>{hovering=false;scheduleAuto();},{passive:true});
+                ['touchstart','wheel'].forEach(type=>vp.addEventListener(type,hold,{passive:true}));
+                vp.addEventListener('focusout',()=>scheduleAuto(),{passive:true});
+                document.addEventListener('visibilitychange',()=>{if(document.hidden)stopAuto();else scheduleAuto();});
+                syncLoop();window.addEventListener('resize',syncLoop,{passive:true});
+                scheduleAuto();
             }
             updateArrows(vp);
             return;
