@@ -123,7 +123,7 @@
     "title": "Queen of Tears",
     "tmdbId": 215720,
     "kind": "tv",
-    "originalTitle": "\ub208\ubb3c\uc758 \uc5ec\uc655",
+    "originalTitle": "눈물의 여왕",
     "year": "2024",
     "poster": "https://image.tmdb.org/t/p/w500/7ZXLZ3KYL3IVvsSHBZaHjcNQzNU.jpg",
     "posterLarge": "https://image.tmdb.org/t/p/w780/7ZXLZ3KYL3IVvsSHBZaHjcNQzNU.jpg",
@@ -168,10 +168,10 @@
     "adult": false
   },
   {
-    "title": "Sh\u014dgun",
+    "title": "Shōgun",
     "tmdbId": 126308,
     "kind": "tv",
-    "originalTitle": "Sh\u014dgun",
+    "originalTitle": "Shōgun",
     "year": "2024",
     "poster": "https://image.tmdb.org/t/p/w500/7O4iVfOMQmdCSxhOg1WnzG1AgYT.jpg",
     "posterLarge": "https://image.tmdb.org/t/p/w780/7O4iVfOMQmdCSxhOg1WnzG1AgYT.jpg",
@@ -198,7 +198,10 @@
     "originalTitle": "Laapataa Ladies",
     "year": "2024",
     "originalLanguage": "hi",
-    "adult": false
+    "adult": false,
+    "poster": "https://image.tmdb.org/t/p/w500/1289XbegHS0NLeK5VE7R6inZyw7.jpg",
+    "posterLarge": "https://image.tmdb.org/t/p/w780/1289XbegHS0NLeK5VE7R6inZyw7.jpg",
+    "posterOriginal": "https://image.tmdb.org/t/p/original/1289XbegHS0NLeK5VE7R6inZyw7.jpg"
   },
   {
     "title": "Deadpool & Wolverine",
@@ -207,6 +210,9 @@
     "originalTitle": "Deadpool & Wolverine",
     "year": "2024",
     "originalLanguage": "en",
-    "adult": false
+    "adult": false,
+    "poster": "https://image.tmdb.org/t/p/w500/8cdWjvZQUExUUTzyp4t6EDMubfO.jpg",
+    "posterLarge": "https://image.tmdb.org/t/p/w780/8cdWjvZQUExUUTzyp4t6EDMubfO.jpg",
+    "posterOriginal": "https://image.tmdb.org/t/p/original/8cdWjvZQUExUUTzyp4t6EDMubfO.jpg"
   }
 ]
