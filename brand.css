@@ -447,3 +447,25 @@ body:has(.list article[data-ages]){
 }
 /* MA-KIDS-GUIDE-SYNC:END */
 
+/* MA-PILL-FINAL:START — final cascade guard for owner-requested pill controls. */
+html:not(.kids-mode):not([data-kids-mode]) body:not(.page-kids):not(.kids-body) :is(
+  .gold-btn,.secondary-btn,.ma-primary,.ma-plan-cta,.credit-pack-btn,.dc-action,.spotlight-ask,.ai-new-chat,
+  .composer-send,.tg-btn-gold,.settings-save,.settings-reset,.ma-back-button,.mh-home-btn,.ma-how-button,
+  .ma-menu-button,.social-btn,.awareness-cta,.tg-entry,.top-ai-launch,.top-ask-go,.install-btn,.reg-join,.reg-home,
+  .matchapp-notification-button,.ma-kids-mode-entry,.nav-avatar-link
+){border-radius:999px!important}
+html body.page-home #mh-topbox.app-header.ma-home-header nav.ma-header-actions :is(
+  button,a.mh-home-btn,a.ma-kids-mode-entry,a.nav-avatar-link
+){border-radius:999px!important}
+html body.page-shell header.app-header.mh-topbox nav.mh-deck :is(
+  button,a.mh-home-btn,a.ma-back-button,a.nav-avatar-link,a.icon-btn
+){border-radius:999px!important}
+:where(body.page-kids,body.kids-body,html.kids-mode body,html[data-kids-mode] body) :is(
+  .kids-primary,.kids-secondary,.kids-pill,.kids-tool,.kids-wallet-buy,.kids-quest-choice,.kids-watch,
+  .kids-voice-toggle,.kids-fx-toggle,.kids-quest-reveal,
+  .kids-result-actions button,.kids-result-sharing button,.kids-social-grid button,#kids-share-confirm,
+  .kids-dialog-actions button,.kids-gate button,.kids-timeup button,.kids-time-settings button
+){border-radius:999px!important}
+/* Artwork/card buttons are deliberately excluded so posters keep their natural card shape. */
+/* MA-PILL-FINAL:END */
+
