@@ -214,3 +214,6 @@ html body:not(.page-kids) .sound-toggle-btn.is-muted .sound-state-icon{
 }
 /* MA-SOUND-CONTROL:END */
 
+
+body.page-home.match-searching #loading-box{display:block!important;visibility:visible!important}
+body.page-home.ma-first-screen #result-box:not([hidden]){display:block!important;visibility:visible!important}

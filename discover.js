@@ -2245,4 +2245,4 @@ async function runDiscovery() {
     if(log){log.hidden=false;log.style.display='flex';log.scrollIntoView({behavior:'auto',block:'start'});}
 }
 
-document.addEventListener('DOMContentLoaded', () => { setTimeout(runDiscovery, 350); });
+document.addEventListener('DOMContentLoaded', () => { setTimeout(runDiscovery, 40); });

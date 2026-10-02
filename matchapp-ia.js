@@ -278,7 +278,15 @@ function presentFirstScreen(parts){
  const matchBtn=qs('#questionnaire-box > button');
  if(askBtn&&matchBtn&&!qs('.ma-find-btn',card)){
    const go=el('button','ma-find-btn gold-btn','Find my match');go.type='button';
+   const syncVisibleFilters=()=>{
+     const read=id=>{const v=qs('#'+id)?.value||'';return v&&v!=='any'?[v]:[]};
+     const patch={cat:read('q-category'),mood:read('q-mood'),plat:read('q-platform')};
+     if(patch.mood.includes('scary')&&!patch.mood.includes('dark and gritty'))patch.mood.push('dark and gritty');
+     setCriteria(patch);
+   };
+   ['q-category','q-mood','q-platform'].forEach(id=>qs('#'+id)?.addEventListener('change',syncVisibleFilters));
    go.addEventListener('click',()=>{
+     syncVisibleFilters();
      const typed=(qs('#specific-search-input')?.value||'').trim();
      if(typed)askBtn.click();else matchBtn.click();
    });
