@@ -264,14 +264,15 @@ function mountAlso(anchor){
  });
  return row;
 }
+function isAdHost(node){return !!(node&&node.querySelector&&node.querySelector('ins.adsbygoogle,.ad-banner-container,.sidebar-ad-left,.sidebar-ad-right'))}
 function presentFirstScreen(parts){
  const {hero,concierge,aiEntry,loading,result,trending,week}=parts;
  document.body.classList.add('ma-first-screen');
  let card=qs('#ma-first-screen');
  if(!card){card=el('section','ma-first-screen-card');card.id='ma-first-screen';card.setAttribute('aria-label','Find something to watch')}
  if(hero&&hero.parentNode)after(hero,card);
- if(aiEntry)card.appendChild(aiEntry);
- if(concierge)card.appendChild(concierge);
+ if(aiEntry&&!isAdHost(aiEntry))card.appendChild(aiEntry);
+ if(concierge&&!isAdHost(concierge))card.appendChild(concierge);
  if(!qs('.ma-first-label',card))card.insertBefore(el('p','ma-first-label','Find something to watch'),card.firstChild);
  const askBtn=qs('#search-box .gold-btn');
  const matchBtn=qs('#questionnaire-box > button');
@@ -284,7 +285,7 @@ function presentFirstScreen(parts){
    card.appendChild(go);
  }
  let anchor=card;
- [loading,result,trending].forEach(n=>{if(n){after(anchor,n);anchor=n}});
+ [loading,result,trending].forEach(n=>{if(n&&!isAdHost(n)){after(anchor,n);anchor=n}});
  if(week){week.open=false;week.classList.add('ma-slim-premiere')}
  mountAlso(anchor);
  qsa('.lazy-head[data-fold-key="askai"],.lazy-head[data-fold-key="concierge"]').forEach(n=>n.setAttribute('hidden',''));

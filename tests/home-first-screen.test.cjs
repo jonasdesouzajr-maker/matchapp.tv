@@ -15,5 +15,5 @@ test('home first screen is one matcher with catalogs after the result', () => {
   assert.doesNotMatch(js, /after\(hero,trending\);after\(trending,concierge\)/);
   assert.match(css, /#ma-first-screen/);
   assert.match(css, /#ma-dock/);
-  assert.match(html, /first=20261002-1/);
+  assert.match(html, /first=20261002-2/);
 });

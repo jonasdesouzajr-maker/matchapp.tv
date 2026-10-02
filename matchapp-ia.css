@@ -3674,6 +3674,11 @@ body.page-home.ma-first-screen .ma-dock-link{
 }
 body.page-home.ma-first-screen .ma-dock-link[aria-current="page"]{color:#f2cf69;background:rgba(242,207,105,.1)}
 body.page-home.ma-first-screen{padding-bottom:72px}
+body.page-home.ma-first-screen .ma-cookie,
+body.page-home.ma-first-screen .mobile-ad-bottom{
+  bottom:calc(64px + env(safe-area-inset-bottom))!important;
+}
+
 @media(min-width:900px){
   body.page-home.ma-first-screen #ma-dock{left:50%;right:auto;width:min(720px,calc(100% - 24px));transform:translateX(-50%);border:1px solid rgba(255,255,255,.1);border-radius:16px;bottom:10px}
 }
