@@ -12,7 +12,7 @@ const isTogether=path==='/together.html';
 const isPricing=path==='/pricing'||path==='/pricing/pricing.html';
 
 const COPY={
- en:{title:'What should you watch tonight?',sub:'Pick a mood. Get one title and where it plays.',match:'🎯 Find My Perfect Match',ask:'✨ Ask MatchApp Ai',mood:'Mood',format:'Format',platform:'Platform',fine:'Fine-tune',find:'Find something to watch',together:'Watching with someone? Match Together',send:'Send',quota:'Included actions left today',askph:'Ask what to watch, where it plays, or anything about a title…',comfort:'Comfort',funny:'Funny',intense:'Intense',romance:'Romance',smart:'Smart',scary:'Scary',short:'Something short',surprise:'Surprise me',any:'Any',movie:'Movie',series:'Series',anime:'Anime',novela:'Novela',kids:'Kids',podcast:'Podcast',free:'Free',latest:'Latest titles',discover:'Ask MatchApp',pricingTitle:'Watch with fewer limits.',pricingSub:'One daily action is either a Match or an Ask. Top-ups stay separate.',freePlan:'Free',account:'Account',vip:'VIP',daily:'included AI actions daily',monthly:'Monthly',annual:'Annual',start:'Start matching',join:'Create free account'},
+ en:{title:'What should you watch tonight?',sub:'Tell us the mood. We find one title and where it plays.',match:'Find my match',ask:'✨ Ask MatchApp Ai',mood:'Mood',format:'Format',platform:'Platform',fine:'Fine-tune',find:'Find something to watch',together:'Watching with someone? Match Together',send:'Send',quota:'Included actions left today',askph:'Ask what to watch, where it plays, or anything about a title…',comfort:'Comfort',funny:'Funny',intense:'Intense',romance:'Romance',smart:'Smart',scary:'Scary',short:'Something short',surprise:'Surprise me',any:'Any',movie:'Movie',series:'Series',anime:'Anime',novela:'Novela',kids:'Kids',podcast:'Podcast',free:'Free',latest:'Latest titles',discover:'Ask MatchApp',pricingTitle:'Watch with fewer limits.',pricingSub:'One daily action is either a Match or an Ask. Top-ups stay separate.',freePlan:'Free',account:'Account',vip:'VIP',daily:'included AI actions daily',monthly:'Monthly',annual:'Annual',start:'Start matching',join:'Create free account'},
  'pt-BR':{title:'O que você deve assistir hoje?',sub:'Escolha um clima. Receba um título e onde assistir.',match:'🎯 Encontre Meu Match Perfeito',ask:'✨ Pergunte ao MatchApp Ai',mood:'Clima',format:'Formato',platform:'Plataforma',fine:'Ajustar',find:'Encontrar algo para assistir',together:'Vai assistir com alguém? Match Together',send:'Enviar',quota:'Ações incluídas restantes hoje',askph:'Pergunte o que assistir, onde passa ou qualquer coisa sobre um título…',comfort:'Conforto',funny:'Engraçado',intense:'Intenso',romance:'Romance',smart:'Inteligente',scary:'Assustador',short:'Algo curto',surprise:'Surpreenda-me',any:'Qualquer',movie:'Filme',series:'Série',anime:'Anime',novela:'Novela',kids:'Kids',podcast:'Podcast',free:'Grátis',latest:'Títulos recentes',discover:'Pergunte ao MatchApp',pricingTitle:'Assista com menos limites.',pricingSub:'Uma ação diária é um Match ou uma pergunta. Recargas continuam separadas.',freePlan:'Grátis',account:'Conta',vip:'VIP',daily:'ações de IA incluídas por dia',monthly:'Mensal',annual:'Anual',start:'Começar',join:'Criar conta grátis'},
  es:{title:'¿Qué deberías ver esta noche?',sub:'Elige un ánimo. Recibe un título y dónde verlo.',match:'🎯 Encuentra Mi Match Perfecto',ask:'✨ Pregunta a MatchApp Ai',mood:'Ánimo',format:'Formato',platform:'Plataforma',fine:'Afinar',find:'Encontrar algo para ver',together:'¿Ves con alguien? Match Together',send:'Enviar',quota:'Acciones incluidas restantes hoy',askph:'Pregunta qué ver, dónde está o cualquier cosa sobre un título…',comfort:'Confort',funny:'Divertido',intense:'Intenso',romance:'Romance',smart:'Inteligente',scary:'Terror',short:'Algo corto',surprise:'Sorpréndeme',any:'Cualquiera',movie:'Película',series:'Serie',anime:'Anime',novela:'Telenovela',kids:'Niños',podcast:'Podcast',free:'Gratis',latest:'Títulos recientes',discover:'Pregunta a MatchApp',pricingTitle:'Mira con menos límites.',pricingSub:'Una acción diaria es un Match o una pregunta. Las recargas son separadas.',freePlan:'Gratis',account:'Cuenta',vip:'VIP',daily:'acciones de IA incluidas al día',monthly:'Mensual',annual:'Anual',start:'Empezar',join:'Crear cuenta gratis'},
  fr:{title:'Que regarder ce soir ?',sub:'Choisissez une humeur. Obtenez un titre et où le voir.',match:'🎯 Trouver Mon Match Parfait',ask:'✨ Demander à MatchApp Ai',mood:'Humeur',format:'Format',platform:'Plateforme',fine:'Affiner',find:'Trouver quelque chose à regarder',together:'Vous regardez à deux ? Match Together',send:'Envoyer',quota:"Actions incluses restantes aujourd'hui",askph:'Demandez quoi regarder, où le voir ou tout sur un titre…',comfort:'Réconfort',funny:'Drôle',intense:'Intense',romance:'Romance',smart:'Malin',scary:'Effrayant',short:'Quelque chose de court',surprise:'Surprenez-moi',any:'Tous',movie:'Film',series:'Série',anime:'Anime',novela:'Novela',kids:'Kids',podcast:'Podcast',free:'Gratuit',latest:'Titres récents',discover:'Demander à MatchApp',pricingTitle:'Regardez avec moins de limites.',pricingSub:'Une action quotidienne est un Match ou une question. Les recharges restent séparées.',freePlan:'Gratuit',account:'Compte',vip:'VIP',daily:'actions IA incluses par jour',monthly:'Mensuel',annual:'Annuel',start:'Commencer',join:'Créer un compte'},
@@ -58,11 +58,13 @@ function safeClick(target){try{target?.click?.()}catch(_){}}
 function countryName(){try{return String(localStorage.getItem('match_user_country')||'').trim()}catch(_){return''}}
 function syncHeaderAuth(){
  const profile=qs('#profile-link-tab');
- const signed=!!(profile&&getComputedStyle(profile).display!=='none');
+ const signed=!!(profile&&getComputedStyle(profile).display!=='none'&&profile.getAttribute('aria-hidden')!=='true');
  document.body.classList.toggle('ma-guest',!signed);
  document.body.classList.toggle('ma-signed-in',signed);
  const logout=qs('#nav-logout-btn');
- if(logout){logout.hidden=!signed;logout.style.display=signed?'':'none'}
+ if(logout){logout.hidden=!signed;logout.style.display=signed?'':'none';logout.setAttribute('aria-hidden',signed?'false':'true')}
+ const signin=qs('#nav-reg-btn');
+ if(signin){signin.hidden=signed;signin.style.display=signed?'none':'';signin.setAttribute('aria-hidden',signed?'true':'false')}
 }
 function ensureBrandMeta(){
  let fav=qs('link[rel="icon"]');if(!fav){fav=document.createElement('link');fav.rel='icon';document.head.appendChild(fav)}
@@ -233,6 +235,68 @@ function syncQuota(target){
  const paint=()=>{const s=source.textContent.trim();target.textContent=s||'';target.hidden=!s};
  paint();new MutationObserver(paint).observe(source,{childList:true,subtree:true,attributes:true});
 }
+function mountDock(){
+ if(qs('#ma-dock'))return;
+ const dock=el('nav','ma-dock');dock.id='ma-dock';dock.setAttribute('aria-label','Primary');
+ [['/','Home','home'],['/discover.html','Discover','discover'],['/together.html','Together','together'],['/events-archive.html','Events','events'],['/profile/profile.html','You','you']].forEach(([href,label,key])=>{
+   const a=el('a','ma-dock-link',label);a.href=href;a.dataset.dock=key;
+   if(location.pathname===href||(key==='home'&&location.pathname==='/'))a.setAttribute('aria-current','page');
+   dock.appendChild(a);
+ });
+ document.body.appendChild(dock);
+}
+function mountAlso(anchor){
+ let row=qs('#ma-also');
+ if(!row){
+   row=el('nav','ma-also');row.id='ma-also';row.setAttribute('aria-label','Also on MatchApp');
+   row.append(el('p','ma-also-label','Also on MatchApp'),el('div','ma-also-links'));
+   after(anchor,row);
+ }
+ const links=qs('.ma-also-links',row);
+ [['#ebook-matcher-root','E-books'],['#cooking-home','Cooking'],['#latest-news','News'],['#global-events','Events']].forEach(([sel,label])=>{
+   if(!qs('a[href="'+sel+'"]',links)){const a=el('a','ma-also-link',label);a.href=sel;links.appendChild(a)}
+   const n=qs(sel);if(!n)return;
+   if(!n.classList.contains('ma-also-section')){
+     n.classList.add('ma-also-section');
+     const details=n.matches('details')?n:qs('details',n);
+     if(details)details.open=false;
+   }
+ });
+ return row;
+}
+function presentFirstScreen(parts){
+ const {hero,concierge,aiEntry,loading,result,trending,week}=parts;
+ document.body.classList.add('ma-first-screen');
+ let card=qs('#ma-first-screen');
+ if(!card){card=el('section','ma-first-screen-card');card.id='ma-first-screen';card.setAttribute('aria-label','Find something to watch')}
+ if(hero&&hero.parentNode)after(hero,card);
+ if(aiEntry)card.appendChild(aiEntry);
+ if(concierge)card.appendChild(concierge);
+ if(!qs('.ma-first-label',card))card.insertBefore(el('p','ma-first-label','Find something to watch'),card.firstChild);
+ const askBtn=qs('#search-box .gold-btn');
+ const matchBtn=qs('#questionnaire-box > button');
+ if(askBtn&&matchBtn&&!qs('.ma-find-btn',card)){
+   const go=el('button','ma-find-btn gold-btn','Find my match');go.type='button';
+   go.addEventListener('click',()=>{
+     const typed=(qs('#specific-search-input')?.value||'').trim();
+     if(typed)askBtn.click();else matchBtn.click();
+   });
+   card.appendChild(go);
+ }
+ let anchor=card;
+ [loading,result,trending].forEach(n=>{if(n){after(anchor,n);anchor=n}});
+ if(week){week.open=false;week.classList.add('ma-slim-premiere')}
+ mountAlso(anchor);
+ qsa('.lazy-head[data-fold-key="askai"],.lazy-head[data-fold-key="concierge"]').forEach(n=>n.setAttribute('hidden',''));
+ if(aiEntry)aiEntry.classList.add('lazy-open');
+ if(concierge)concierge.classList.add('lazy-open');
+ if(!document.body.dataset.maAlsoWatch){
+   document.body.dataset.maAlsoWatch='1';
+   const pull=()=>mountAlso(qs('#trending-rail')||qs('#result-box')||qs('#ma-first-screen'));
+   setTimeout(pull,400);
+   setTimeout(pull,1400);
+ }
+}
 function mountHome(){
  document.body.classList.add('ma-ia-home','ma-match-tab');
  try{delete document.documentElement.dataset.tiktokIntro}catch(_){}
@@ -304,13 +368,12 @@ function mountHome(){
    setTimeout(()=>openAskFromBrand(),220);
  }
  const loading=qs('#loading-box'),result=qs('#result-box'),trending=qs('#trending-rail'),week=qs('#premiere-disclosure'),swift=qs('#swifties-spotify'),events=qs('#global-events'),how=qs('#how-it-works'),aiExplainer=qs('#ai-concierge-section');
- if(trending){after(hero,trending);after(trending,concierge)}
- // Presentation-only journey: titles → primary action → dynamic News → feature banners.
+ // One first screen: ask field and mood chips share a card. Titles come after the result.
  // Existing IDs, handlers, matching state and feature logic are preserved.
- let anchor=concierge;[qs('#ebook-matcher-root'),qs('#cooking-home'),loading,result,week,swift,events,how,aiExplainer].forEach(n=>{if(n){after(anchor,n);anchor=n}});
- // Independent, always-visible AI entry; retain the existing composer and listeners.
  const aiEntry=el('section','ma-ai-entry');aiEntry.id='ma-ai-entry';aiEntry.setAttribute('aria-label',t.ask);
- concierge.before(aiEntry);aiEntry.appendChild(pa);pa.hidden=false;
+ aiEntry.appendChild(pa);pa.hidden=false;
+ presentFirstScreen({hero,concierge,aiEntry,loading,result,trending,week});
+ let anchor=qs('#ma-also')||trending||result||concierge;[qs('#ebook-matcher-root'),qs('#cooking-home'),week,swift,events,how,aiExplainer].forEach(n=>{if(n){after(anchor,n);anchor=n}});
  tabs.hidden=true;tabs.setAttribute('aria-hidden','true');
  pm.removeAttribute('role');pa.removeAttribute('role');
  const aiHeading=qs('h2',search);if(aiHeading){aiHeading.removeAttribute('data-i18n');aiHeading.textContent=t.ask;}
@@ -445,7 +508,7 @@ function boot(){
    // jump the viewport down to a section that changed position.
    const root=document.documentElement,previousAnchor=root.style.overflowAnchor;
    root.style.overflowAnchor='none';
-   prepareResponsiveAds();mountHome();
+   prepareResponsiveAds();mountHome();mountDock();
    requestAnimationFrame(()=>requestAnimationFrame(()=>{
      if(previousAnchor)root.style.overflowAnchor=previousAnchor;
      else root.style.removeProperty('overflow-anchor');
