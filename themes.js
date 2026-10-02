@@ -42,5 +42,22 @@
   document.addEventListener('matchapp:settingschanged', () => { if (!preview) apply(window.MatchSettings?.get('theme') || saved()); paint(); });
   document.addEventListener('matchapp:langchange', paint);
   window.addEventListener('pagehide', () => { preview = null; });
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+  window.MatchThemes.toggleDark=function(){
+    const dark=root.dataset.theme!=='sunrise';
+    const next=dark?'sunrise':'cinema';
+    preview=null;apply(next);
+    try{const s=JSON.parse(localStorage.getItem('match_settings')||'{}');s.theme=next;localStorage.setItem('match_settings',JSON.stringify(s));}catch(_){}
+    paint();
+  };
+  function mountToggle(){
+    if(document.getElementById('ma-dark-toggle'))return;
+    const btn=document.createElement('button');
+    btn.id='ma-dark-toggle';btn.type='button';btn.className='ma-dark-toggle';
+    btn.textContent=root.dataset.theme==='sunrise'?'Dark':'Light';
+    btn.setAttribute('aria-pressed',String(root.dataset.theme!=='sunrise'));
+    btn.addEventListener('click',()=>{window.MatchThemes.toggleDark();btn.textContent=root.dataset.theme==='sunrise'?'Dark':'Light';btn.setAttribute('aria-pressed',String(root.dataset.theme!=='sunrise'));});
+    (document.querySelector('.app-header')||document.body).appendChild(btn);
+  }
+  const boot=()=>{init();mountToggle();};
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();
 })();
