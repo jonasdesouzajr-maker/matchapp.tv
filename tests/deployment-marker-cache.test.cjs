@@ -3,6 +3,7 @@ const {test}=require('node:test'),assert=require('node:assert/strict'),fs=requir
 const {fetchDeploymentMarker}=require('../tools/deployment-marker.cjs');
 const root=path.join(__dirname,'..');
 const read=p=>fs.readFileSync(path.join(root,p),'utf8');
+test('default deployment-marker window tolerates Pages and CDN handoffs',()=>{const src=read('tools/deployment-marker.cjs');assert.match(src,/attempts=12/);assert.match(src,/retryDelayMs=2000/);});
 test('production marker retries a stale CDN 404 using unique cache-busted URLs without bypassing SHA verification',async()=>{
  const requested=[],sha='a'.repeat(40);
  const got=await fetchDeploymentMarker('https://matchapp.tv',{retryDelayMs:0,fetcher:async(url,options)=>{
