@@ -8,7 +8,7 @@ test('Kids page exposes only the voice-first Lumi assistant, not a typed Ask AI 
  assert.equal(backend.hidden,true);
  assert.equal(backend.getAttribute('aria-hidden'),'true');
  assert.match(html,/lumi-assistant\.css\?v=20261001-voice1/);
- assert.match(html,/lumi-assistant\.js\?v=20261001-voice1/);
+ assert.match(html,/lumi-assistant\.js\?v=20261001-voice2/);
  assert.match(html,/voice-input\.js\?v=20261001-lumi1/);
  assert.match(html,/kids\/immersive\.js\?v=20261001-immersive7/);
 });
