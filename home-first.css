@@ -147,3 +147,30 @@ html body:not(.page-kids) .sound-toggle-btn.is-muted .sound-state-icon{
 
 body.page-home.match-searching #loading-box{display:block!important;visibility:visible!important}
 body.page-home.ma-first-screen #result-box:not([hidden]){display:block!important;visibility:visible!important}
+
+/* Immersive first screen. Presentation only; match, ask and ad hosts stay in place. */
+html body.page-home.ma-first-screen{
+  background:
+    radial-gradient(ellipse at 50% -10%, rgba(168,110,255,.22), transparent 46%),
+    radial-gradient(ellipse at 100% 20%, rgba(242,207,105,.08), transparent 32%),
+    #0c0814!important;
+}
+html body.page-home.ma-first-screen #ma-first-screen{
+  box-shadow:0 18px 40px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.06)!important;
+}
+html body.page-home.ma-first-screen #trending-rail{
+  border-color:rgba(242,207,105,.45)!important;
+  box-shadow:0 10px 28px rgba(0,0,0,.28)!important;
+}
+html body.page-home.ma-first-screen .marquee-item{
+  transition:transform .2s ease, border-color .2s ease!important;
+}
+html body.page-home.ma-first-screen .ma-find-btn{
+  background:linear-gradient(90deg,#7a4dff,#c45cff)!important;
+  color:#fff!important;
+  letter-spacing:.04em!important;
+}
+html body.page-home #ma-dark-toggle{bottom:calc(78px + env(safe-area-inset-bottom))!important}
+@media(prefers-reduced-motion:reduce){
+  html body.page-home.ma-first-screen .marquee-item{transition:none!important}
+}
