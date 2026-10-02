@@ -1,5 +1,5 @@
 const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
-const app=fs.readFileSync('app.js','utf8');
+const app=fs.readFileSync('app.js','utf8').replace(/\r\n/g,'\n');
 const fn=name=>app.match(new RegExp('(?:async )?function '+name+'\\([\\s\\S]*?\\n}\\n'))[0];
 const countries=app.match(/const COUNTRY_CATEGORY_CODES=\{[\s\S]*?\n\};/)[0];
 const fits=vm.runInNewContext(countries+'\n'+fn('categoryFitsVerified')+';categoryFitsVerified');

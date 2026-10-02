@@ -2,7 +2,7 @@ const {test}=require('node:test'),assert=require('node:assert/strict'),fs=requir
 const root=path.join(__dirname,'..');
 const read=f=>fs.readFileSync(path.join(root,f),'utf8');
 
-test('home exposes one branded MatchApp AI launch action instead of the old inline Ask box',()=>{
+test('home exposes one branded MatchApp Ai launch action instead of the old inline Ask box',()=>{
   const html=read('index.html');
   const css=read('style.css');
   assert.match(html,/class="top-ai-launch" href="\/discover\.html"/);

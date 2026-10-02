@@ -8,7 +8,7 @@ const block = css => {
   const a = css.indexOf('/* MA-DEPTH-3D:START');
   const b = css.indexOf('/* MA-DEPTH-3D:END */');
   assert.ok(a > -1 && b > a, 'depth block markers present');
-  return css.slice(a, b);
+  return css.slice(a, b).replace(/\r\n/g, '\n');
 };
 
 test('3D depth layer is identical in style.css and brand.css', () => {
