@@ -85,6 +85,9 @@ jobs:
           node --check tools/live-production-deep-matching.cjs
           node --check tools/mobile-runtime-smoke.cjs
           node --check kids/kids.js
+          node --check kids/immersive.js
+          node --check kids/lumi-assistant.js
+          node --check voice-input.js
           node --check ebooks/ebook-matcher.js
           node --check discover.js
           node --check app.js
