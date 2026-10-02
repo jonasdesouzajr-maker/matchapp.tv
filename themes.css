@@ -38,5 +38,3 @@ html[data-theme]:not(.kids-mode) :focus-visible{outline:3px solid var(--theme-se
 @media(prefers-reduced-motion:reduce){html[data-theme]:not(.kids-mode) *,html[data-theme]:not(.kids-mode) *::before,html[data-theme]:not(.kids-mode) *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 html.reduce-motion *,html.reduce-motion *::before,html.reduce-motion *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
 @media(forced-colors:active){.theme-choice[aria-pressed="true"]{outline:3px solid Highlight}.theme-swatch i{forced-color-adjust:none}}
-
-.ma-dark-toggle{position:fixed;right:12px;bottom:76px;z-index:40;min-height:36px;padding:0 12px;border-radius:999px;border:1px solid rgba(242,207,105,.7);background:#161222;color:#f2cf69;font:700 12px/1 system-ui,sans-serif}

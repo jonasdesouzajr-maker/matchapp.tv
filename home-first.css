@@ -170,7 +170,6 @@ html body.page-home.ma-first-screen .ma-find-btn{
   color:#fff!important;
   letter-spacing:.04em!important;
 }
-html body.page-home #ma-dark-toggle{bottom:calc(78px + env(safe-area-inset-bottom))!important}
 @media(prefers-reduced-motion:reduce){
   html body.page-home.ma-first-screen .marquee-item{transition:none!important}
 }
@@ -185,7 +184,7 @@ html body.page-home.ma-first-screen #trending-rail .trending-week-label{
   letter-spacing:.01em!important;text-transform:none!important;color:#f2cf69!important;
 }
 
-html body.page-home.ma-first-screen :is(#ma-first-screen,.home-ask-composer,.ma-find-btn,.marquee-item,.ma-also-link,.ma-dock-link,.ma-dark-toggle,.ma-ask-again){
+html body.page-home.ma-first-screen :is(#ma-first-screen,.home-ask-composer,.ma-find-btn,.marquee-item,.ma-also-link,.ma-dock-link,.ma-ask-again){
   transition:transform .22s ease,box-shadow .22s ease,background-color .22s ease,border-color .22s ease,opacity .22s ease!important;
 }
 html body.page-home.ma-first-screen .ma-find-btn:hover,
@@ -193,7 +192,7 @@ html body.page-home.ma-first-screen .ma-also-link:hover,
 html body.page-home.ma-first-screen .ma-dock-link:hover{transform:translateY(-1px)!important}
 html body.page-home.ma-first-screen .marquee-item:hover{transform:scale(1.04)!important}
 @media(prefers-reduced-motion:reduce){
-  html body.page-home.ma-first-screen :is(#ma-first-screen,.home-ask-composer,.ma-find-btn,.marquee-item,.ma-also-link,.ma-dock-link,.ma-dark-toggle,.ma-ask-again){transition:none!important}
+  html body.page-home.ma-first-screen :is(#ma-first-screen,.home-ask-composer,.ma-find-btn,.marquee-item,.ma-also-link,.ma-dock-link,.ma-ask-again){transition:none!important}
 }
 
 @keyframes ma-fade-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
@@ -206,6 +205,8 @@ html body.page-home.ma-first-screen #awareness-spotlight{animation-delay:.14s!im
   html body.page-home.ma-first-screen :is(#ma-first-screen,#trending-rail,#awareness-spotlight,#ma-also){animation:none!important}
 }
 
-html.reduce-motion body.page-home.ma-first-screen :is(#ma-first-screen,#trending-rail,#awareness-spotlight,#ma-also,.ma-find-btn,.marquee-item,.home-ask-composer,.ma-dock-link,.ma-dark-toggle,.ma-ask-again){
+html.reduce-motion body.page-home.ma-first-screen :is(#ma-first-screen,#trending-rail,#awareness-spotlight,#ma-also,.ma-find-btn,.marquee-item,.home-ask-composer,.ma-dock-link,.ma-ask-again){
   animation:none!important;transition:none!important;transform:none!important;
 }
+
+#ma-dark-toggle{display:none!important}
