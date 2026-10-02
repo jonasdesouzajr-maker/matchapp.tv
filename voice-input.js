@@ -48,6 +48,8 @@ function initVoiceInput(inputId,micBtnId,onFinalTranscript){
 
   let recognition=null;
   let listening=false;
+  const audioOnlyKids=inputId==='kids-question';
+  const voiceEvent=(name,detail={})=>{try{document.dispatchEvent(new CustomEvent(name,{detail:{inputId,...detail}}))}catch(_){}};
   const enhanced=!location.pathname.startsWith('/kids/') &&
     (inputId==='specific-search-input'||inputId==='discover-new-input');
   let prefix='',finalText='',interimText='',cancelled=false;
@@ -62,15 +64,18 @@ function initVoiceInput(inputId,micBtnId,onFinalTranscript){
   function tr(key,fallback){return (typeof t==='function'&&t(key))||fallback;}
   function grow(){if(window.autoGrowComposer)window.autoGrowComposer();}
   function finish(){
+    const wasListening=listening;
     listening=false;
     micBtn.classList.remove('mic-listening');
     input.placeholder=originalPlaceholder;
+    if(wasListening)voiceEvent('matchapp:voice-state',{state:'idle'});
   }
   function begin(){
     if(enhanced){prefix=input.value.trim();finalText='';interimText='';cancelled=false;}
     listening=true;
     micBtn.classList.add('mic-listening');
     input.placeholder=tr('voice.listening','🎙️ Listening... speak now');
+    voiceEvent('matchapp:voice-state',{state:'listening'});
   }
   function acceptTranscript(value){
     const raw=String(value||'').trim();
@@ -83,10 +88,13 @@ function initVoiceInput(inputId,micBtnId,onFinalTranscript){
     // Voice is a first-class input path: do not focus the textarea here.
     // On mobile, focusing it after dictation opens the software keyboard and
     // covers the conversation even though the user chose the microphone.
+    voiceEvent('matchapp:voice-transcript',{text:transcript});
     if(onFinalTranscript)onFinalTranscript(transcript);
   }
   function showError(code){
     finish();
+    voiceEvent('matchapp:voice-error',{code:String(code||'unavailable')});
+    if(audioOnlyKids)return;
     if(code==='not-allowed'||code==='permission-denied'||code==='service-not-allowed'){
       if(window.showToast)showToast(tr('voice.micDenied','🎙️ Microphone access was blocked — check your microphone permission.'),true);
     }else if(code==='no-speech'){
