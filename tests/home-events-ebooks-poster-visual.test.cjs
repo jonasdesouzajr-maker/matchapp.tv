@@ -42,7 +42,8 @@ test('Home events use the existing auto-swipe viewport with accessible left/righ
  assert.equal(next?.getAttribute('aria-controls'),'events-viewport');
  const shared=read('app.js'),events=read('global-events.js'),styles=read('events-cover.css');
  assert.match(shared,/\['marquee-viewport','events-viewport'\]/);
- assert.match(shared,/const autoDelay = vp\.id === 'marquee-viewport' \? 1050 : 6500/);
+ assert.match(shared,/FLOW_SECONDS_PER_TITLE = 6/);
+ assert.match(shared,/const autoDelay = 6500/);
  assert.match(shared,/const railDelay = vp\.id === 'events-viewport' \? 4000 : autoDelay/);
  assert.match(shared,/prefers-reduced-motion/);
  assert.match(events,/retainedEnded.*sort/);

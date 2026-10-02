@@ -88,7 +88,9 @@ test('separate TMDB refresh stays OIDC-secured and does not fabricate Home Top T
  assert.match(ingest,/origin_countries:originCountries\(record\),cast_members:castMembers\(record\)/);
  assert.match(ingest,/stage==="authorization"\?403:500/);
  assert.match(client,/homepageTrending/);
- assert.match(lock,/posters\.length===20/);
+ assert.match(lock,/posters\.length===40/);
+ assert.match(lock,/exactly 5 owner-approved UK identities/);
+ assert.match(lock,/exactly 5 owner-approved Canadian identities/);
  assert.match(lock,/news\.items\.length>=5/);
  assert.match(lock,/awareness\/current\.json/);
 });

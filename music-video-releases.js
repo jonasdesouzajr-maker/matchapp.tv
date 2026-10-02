@@ -1,5 +1,5 @@
 /* Adult editorial video additions. Exact official identities stay separate from
-   the locked ten TMDB titles and their ingestion/AI/matching mechanisms. */
+   the locked twenty TMDB titles and their ingestion/AI/matching mechanisms. */
 (function () {
     'use strict';
     const COPY = {
@@ -93,7 +93,7 @@
     function tile(r, duplicate) {
         const card=document.createElement('div');card.className='marquee-item';card.dataset.musicVideo=r.id;
         card.setAttribute('role','button');card.tabIndex=duplicate?-1:0;
-        if(duplicate)card.setAttribute('aria-hidden','true');
+        if(duplicate){card.setAttribute('aria-hidden','true');card.dataset.marqueeClone='1';}
         card.setAttribute('aria-label',intro(r));
         const img=document.createElement('img');img.dataset.maMedia='1';img.src=r.poster;img.alt=r.artist+' — '+r.title;img.width=480;img.height=360;img.loading='lazy';img.decoding='async';
         const cover=document.createElement('div');cover.className='music-video-cover';
@@ -129,13 +129,14 @@
     async function mount() {
         const track=document.getElementById('marquee-track');if(!track || track.querySelector('[data-music-video]'))return;
         const records=await all(), rows=Array.isArray(featuredIds)?records.filter(r=>featuredIds.includes(r.id)):records;if(!rows.length)return;
-        // Spread releases among the ten original film/TV cards. Move no
-        // original nodes, and mirror the same order in the seamless loop.
-        const originals=Array.from(track.children);
+        // Spread releases among the editorial film/TV cards. Move no original
+        // nodes, and mirror the same order in the duplicate half of the loop.
+        const originals=Array.from(track.children),baseCount=Math.floor(originals.length/2);
+        if(!baseCount||originals.length!==baseCount*2)return;
         rows.forEach((r,index)=>{
-            const after=Math.floor(index*10/rows.length);
-            track.insertBefore(tile(r,false),originals[after+1]||null);
-            if(originals[10])track.insertBefore(tile(r,true),originals[11+after]||null);
+            const after=Math.floor(index*baseCount/rows.length);
+            track.insertBefore(tile(r,false),originals[after+1]||originals[baseCount]||null);
+            if(originals[baseCount])track.insertBefore(tile(r,true),originals[baseCount+1+after]||null);
         });
         const viewport=track.closest('.marquee-viewport');if(viewport)viewport.scrollLeft=0;
         window.dispatchEvent(new Event('resize'));
