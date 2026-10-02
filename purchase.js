@@ -24,7 +24,7 @@
   try{await window.refreshQuotaStatus?.();await window.refreshCreditBalance?.();}catch(_){}
   try{await sb.rpc('record_user_activity',{p_type:'purchase',p_label:item.title,p_data:{plan}});}catch(_){}
   celebrate();stage('✓',text);
-  const h=document.querySelector('main .premium-card h1');if(h)h.textContent='Purchase complete';document.title='Purchase complete | MatchApp TV Ai';
+  const h=document.querySelector('main .premium-card h1');if(h)h.textContent='Purchase complete';document.title='Purchase complete | MatchApp Ai';
  }
  // Never infer a purchase from a Stripe redirect or button click.
 // Emit one first-party GTM event only after the signed-in backend confirms delivery.

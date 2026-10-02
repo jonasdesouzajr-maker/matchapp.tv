@@ -1,4 +1,4 @@
-/* MatchApp TV Ai — data-driven International Day cards in the Events rail.
+/* MatchApp Ai — data-driven International Day cards in the Events rail.
    Current day appears first. Ended days remain at the row end for 3 days, then disappear.
    A real event image is mandatory: no text-only/emoji placeholder posters are rendered. */
 (function () {
@@ -51,7 +51,7 @@
       eventAttendanceMode:'https://schema.org/OnlineEventAttendanceMode',description:day.summary||'',about:day.kicker||'International day',
       isAccessibleForFree:true,image:new URL(day.image,location.origin).href,
       location:{'@type':'VirtualLocation',url:new URL(askHref(day),location.origin).href},
-      organizer:{'@type':'Organization',name:day.sourceName||'MatchApp TV Ai',url:day.officialUrl||'https://matchapp.tv/'},
+      organizer:{'@type':'Organization',name:day.sourceName||'MatchApp Ai',url:day.officialUrl||'https://matchapp.tv/'},
       url:day.officialUrl||new URL(askHref(day),location.origin).href,
       keywords:Array.isArray(day.keywords)?day.keywords.join(', '):undefined,inLanguage:document.documentElement.lang||'en'
     });return node;

@@ -39,7 +39,7 @@ window.MATCHAPP_BUILD = '2026.09.30.1';
     if (path !== '/pricing' && path !== '/pricing/pricing.html') return;
 
     const vipDaily = 10;
-    document.title = 'MatchApp TV Ai VIP | 10 Included AI Actions Daily & Ad-Free Pass';
+    document.title = 'MatchApp Ai VIP | 10 Included AI Actions Daily & Ad-Free Pass';
     upsertMeta('description', 'MatchApp VIP includes 10 AI actions per day and Business includes 50. Included actions can be Matches or Ask AI; Extra Matches and Ask AI credits are separate top-ups.');
     upsertPropertyMeta('og:title', 'MatchApp VIP — 10 Included AI Actions Daily');
     upsertPropertyMeta('og:description', 'VIP includes 10 AI actions per day; Business includes 50. Included actions can be Matches or Ask AI, with separate top-ups after the daily allowance.');
@@ -106,7 +106,7 @@ window.MATCHAPP_BUILD = '2026.09.30.1';
         name: 'Ask AI What to Watch | MatchApp',
         url: 'https://matchapp.tv/discover.html',
         description: 'Voice- and text-enabled entertainment concierge with regional streaming, rental and cinema availability plus opt-in title alerts.',
-        isPartOf: { '@type': 'WebSite', name: 'MatchApp TV Ai', url: 'https://matchapp.tv/' },
+        isPartOf: { '@type': 'WebSite', name: 'MatchApp Ai', url: 'https://matchapp.tv/' },
         publisher: { '@type': 'Organization', name: 'MatchApp', url: 'https://matchapp.tv/', logo: { '@type': 'ImageObject', url: 'https://matchapp.tv/assets/brand/matchapp-official-icon-512.webp', width: 512, height: 512 } }
       });
     }

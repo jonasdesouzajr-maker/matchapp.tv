@@ -23,23 +23,15 @@
 
   function applyWordmark(){
     if(isKidsRoute()) return;
-    const code=lang();
     document.querySelectorAll('.app-title-main').forEach(host=>{
       host.classList.add('has-ma-local-wordmark');
-      host.querySelectorAll('.matchapp-wordmark,.matchapp-live-wordmark').forEach(el=>el.classList.add('ma-wordmark-source-hidden'));
-      let live=host.querySelector('.matchapp-local-wordmark');
-      if(!live){
-        live=document.createElement('span');
-        live.className='matchapp-local-wordmark';
-        live.innerHTML='<span class="matchapp-local-core">MatchApp</span><span class="matchapp-local-tv">TV</span><span class="matchapp-local-ai"></span>';
-        host.appendChild(live);
-      }
-      const ai=live.querySelector('.matchapp-local-ai');
-      const label=AI_LABELS[code]||AI_LABELS.en;
-      ai.textContent=label;
-      ai.dataset.long=String(label.length>3);
+      host.querySelectorAll('.matchapp-live-wordmark,.matchapp-local-wordmark').forEach(el=>el.remove());
+      host.querySelectorAll('.matchapp-wordmark').forEach(el=>{
+        el.classList.remove('ma-wordmark-source-hidden');
+        if(el.tagName==='IMG')el.alt='MatchApp Ai';
+      });
       const link=host.closest('.matchapp-brand-link');
-      if(link) link.setAttribute('aria-label',`MatchApp TV ${label}`);
+      if(link)link.setAttribute('aria-label','MatchApp Ai');
     });
   }
 
@@ -47,7 +39,7 @@
     const img=document.createElement('img');
     img.className='brand-logo ma-new-brand-logo ma-official-brand-icon';
     img.src=LOGO_ASSET;
-    img.alt='MatchApp TV Ai official icon';
+    img.alt='MatchApp Ai official icon';
     img.width=1536;
     img.height=512;
     img.decoding='async';
