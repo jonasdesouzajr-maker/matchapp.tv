@@ -1,0 +1,42 @@
+/* Floating Lumi assistant — compact, draggable, voice-only. */
+.kids-voice-backend{display:none!important}
+#kids-lumi-assistant{
+  --lumi-size:clamp(68px,7.2vw,88px);
+  position:fixed;z-index:2600;right:max(14px,env(safe-area-inset-right));bottom:max(18px,env(safe-area-inset-bottom));
+  width:var(--lumi-size);height:var(--lumi-size);min-width:var(--lumi-size);min-height:var(--lumi-size);
+  padding:0!important;margin:0!important;border:0!important;border-radius:50%!important;background:transparent!important;
+  box-shadow:none!important;touch-action:none;user-select:none;-webkit-user-select:none;cursor:grab;isolation:isolate;
+}
+#kids-lumi-assistant:active,#kids-lumi-assistant.is-dragging{cursor:grabbing}
+.kids-lumi-assistant-body{position:absolute;inset:5%;display:grid;place-items:center;border-radius:50%;transform-origin:50% 70%}
+.kids-lumi-assistant-body img{display:block;width:100%;height:100%;object-fit:contain;pointer-events:none;filter:drop-shadow(0 8px 12px #09031488)}
+.kids-lumi-assistant-ring{position:absolute;inset:5%;border-radius:50%;border:2px solid #fff2a955;box-shadow:0 0 0 4px #6ff7e81f,0 0 22px #8e8cff4d;pointer-events:none}
+.kids-lumi-assistant-mic{position:absolute;right:-2px;bottom:2px;display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:#241742;color:#fff;font-size:12px;border:2px solid #fff3b8;box-shadow:0 4px 9px #0005}
+.kids-lumi-assistant-wave{position:absolute;right:-10px;top:20%;display:flex;align-items:center;gap:2px;opacity:0;pointer-events:none}
+.kids-lumi-assistant-wave i{display:block;width:3px;height:11px;border-radius:9px;background:#9ee8e6;box-shadow:0 0 7px #9ee8e6}
+#kids-lumi-assistant[data-state="idle"] .kids-lumi-assistant-body{animation:lumiAssistantFloat 3.8s ease-in-out infinite!important}
+#kids-lumi-assistant[data-state="prompt"] .kids-lumi-assistant-body{animation:lumiAssistantWave .72s ease-in-out infinite!important}
+#kids-lumi-assistant[data-state="listening"] .kids-lumi-assistant-body{animation:lumiAssistantListen 1s ease-in-out infinite!important}
+#kids-lumi-assistant[data-state="listening"] .kids-lumi-assistant-ring{animation:lumiAssistantRing 1s ease-out infinite!important;border-color:#9ee8e6}
+#kids-lumi-assistant[data-state="thinking"] .kids-lumi-assistant-body{animation:lumiAssistantThink 1.05s ease-in-out infinite!important}
+#kids-lumi-assistant[data-state="speaking"] .kids-lumi-assistant-body{animation:lumiAssistantSpeak .58s ease-in-out infinite!important}
+#kids-lumi-assistant[data-state="speaking"] .kids-lumi-assistant-wave{opacity:1}
+#kids-lumi-assistant[data-state="speaking"] .kids-lumi-assistant-wave i:nth-child(1){animation:lumiWaveBar .42s ease-in-out infinite!important}
+#kids-lumi-assistant[data-state="speaking"] .kids-lumi-assistant-wave i:nth-child(2){animation:lumiWaveBar .42s ease-in-out .1s infinite!important;height:17px}
+#kids-lumi-assistant[data-state="speaking"] .kids-lumi-assistant-wave i:nth-child(3){animation:lumiWaveBar .42s ease-in-out .2s infinite!important;height:8px}
+#kids-lumi-assistant.is-dragging .kids-lumi-assistant-body{animation:none!important;transform:scale(1.04)!important}
+@keyframes lumiAssistantFloat{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-5px) rotate(2deg)}}
+@keyframes lumiAssistantWave{0%,100%{transform:rotate(-5deg) scale(1)}50%{transform:rotate(8deg) scale(1.05)}}
+@keyframes lumiAssistantListen{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-3px) scale(1.045)}}
+@keyframes lumiAssistantThink{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(5deg) translateY(-2px)}}
+@keyframes lumiAssistantSpeak{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-4px) scale(1.035)}}
+@keyframes lumiAssistantRing{0%{transform:scale(.92);opacity:.95}100%{transform:scale(1.2);opacity:0}}
+@keyframes lumiWaveBar{0%,100%{transform:scaleY(.45)}50%{transform:scaleY(1.25)}}
+@media(max-width:560px){#kids-lumi-assistant{--lumi-size:70px;right:max(10px,env(safe-area-inset-right));bottom:max(14px,env(safe-area-inset-bottom))}.kids-lumi-assistant-mic{width:22px;height:22px;font-size:11px}}
+@media(min-width:1600px){#kids-lumi-assistant{--lumi-size:88px}}
+@media(prefers-reduced-motion:reduce){
+ #kids-lumi-assistant .kids-lumi-assistant-body,#kids-lumi-assistant .kids-lumi-assistant-ring,#kids-lumi-assistant .kids-lumi-assistant-wave i{animation:none!important}
+}
+body.kids-paused #kids-lumi-assistant .kids-lumi-assistant-body,
+body.kids-paused #kids-lumi-assistant .kids-lumi-assistant-ring,
+body.kids-paused #kids-lumi-assistant .kids-lumi-assistant-wave i{animation:none!important}
