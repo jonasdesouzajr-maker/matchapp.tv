@@ -210,3 +210,10 @@ html.reduce-motion body.page-home.ma-first-screen :is(#ma-first-screen,#trending
 }
 
 #ma-dark-toggle{display:none!important}
+
+html body.page-home .ma-find-btn,html body.page-home .gold-btn{
+  letter-spacing:.03em;font-weight:750;
+}
+html body.page-home .spotlight-title,html body.page-home .ma-news-title,html body.page-home .trending-week-label{
+  letter-spacing:.01em;
+}

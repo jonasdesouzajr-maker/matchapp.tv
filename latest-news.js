@@ -312,7 +312,7 @@
     const deep=deepLinkState();
     const section=document.createElement('details');
     section.id='latest-news';section.className='ma-news premiere-disclosure ma-static-news';section.open=false;section.dataset.hasNew='false';
-    section.innerHTML=`<summary><span class="ma-news-summary-main"><span class="ma-news-title">Latest News</span><span class="ma-news-description">Verified entertainment, world news & sports · local + worldwide</span></span><span class="ma-news-new" role="status" aria-label="New verified news available"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M5 3h2v18H5V3Zm3 2h10.4l-1.9 4 1.9 4H8V5Z"/><circle class="ma-news-new-dot" cx="19" cy="5" r="3"/></svg><span>New</span></span></summary><div class="ma-news-panel"><div class="ma-news-empty">Loading verified entertainment, world news and sports headlines…</div></div>`;
+    section.innerHTML=`<summary><span class="ma-news-summary-main"><span class="ma-news-title">MatchApp Ai news</span><span class="ma-news-description">Verified headlines updated October 2, 2026</span></span><span class="ma-news-new" role="status" aria-label="New verified news available"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M5 3h2v18H5V3Zm3 2h10.4l-1.9 4 1.9 4H8V5Z"/><circle class="ma-news-new-dot" cx="19" cy="5" r="3"/></svg><span>New</span></span></summary><div class="ma-news-panel"><div class="ma-news-empty">Loading verified entertainment, world news and sports headlines…</div></div>`;
     // Bookworms may live inside the foldable Match/Ask stage on modern Home.
     // News is a separate Home section: place it AFTER the entire stage rather
     // than accidentally hiding it in the Match tab when the stage folds.

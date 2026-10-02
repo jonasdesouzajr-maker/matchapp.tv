@@ -19,23 +19,23 @@ const LANGS=['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko'
    image URL. Until it resolves, a branded plate holds the exact poster shape.
    --------------------------------------------------------------------------- */
 const PICK={
-  title:'Antártida',year:2026,country:'Brazil',countryCode:'BR',
-  kind:'movie',tmdbId:1401757,imdbId:'tt5691086',
-  director:'Bruno Safadi',author:'Claudia Jouvin',
+  title:'East of Eden',year:2026,country:'United States',countryCode:'US',
+  kind:'tv',tmdbId:0,imdbId:'',
+  director:'Zoe Kazan',author:'John Steinbeck',
   cast:['Andrea Beltrão','Marina Ruy Barbosa','Leandra Leal','Antonio Calloni','Lázaro Ramos','Tatiana Tiburcio','Renan Monteiro'],
   runtime:94,rating:'16',distributor:'Paris Filmes',releaseDate:'2026-09-17',
   // Theatrical right now. When the streaming window opens, flip `inCinemas`
   // to false and fill `streaming` — the card swaps the cinema ribbon and the
   // showtimes action for a "Where to watch" action on its own, with no other
   // edit anywhere.
-  inCinemas:true,
-  platform:'Cinemas',
+  inCinemas:false,
+  platform:'Netflix',
   streaming:null,
   poster:'',
   watchUrl:'',
-  sourceUrl:'https://www.imdb.com/title/tt5691086/',
+  sourceUrl:'https://www.netflix.com/',
   previewId:'VtxQvbsGNIk',
-  synopsis:'A brutal crime inside an isolated Brazilian research station in Antarctica turns a base of scientists and navy personnel into a pressure cooker, and the investigation has to be run from inside it.',
+  synopsis:'Zoe Kazan’s Netflix miniseries of John Steinbeck’s East of Eden, with Florence Pugh, arrived October 1, 2026.',
   cats:['movie'],moods:['intense and thrilling','dark and gritty','mind-bending'],
   vibes:['prestige and critically acclaimed','slow burn','award winning'],ratings:['mature adults only R rated']
 };
@@ -59,7 +59,7 @@ const PICK_COPY={
 'ko':{desc:'《안타르티다》(2026)는 브루노 사파디 감독, 클라우디아 주벤 각본의 브라질 스릴러다. 남극의 브라질 연구기지에서 결빙기 첫날 밤 젊은 과학자가 습격당하고, 기지의 모든 남자가 용의자가 된다. 2026년 9월 17일 브라질 극장 개봉.',cinema:'🎬 극장 상영 중',showtimes:'🏟️ 근처 극장',where:'▶ 시청처',eyebrow:'이번 주의 추천 영화',director:'감독',runtime:'분',preview:'공식 예고편',sourceNote:'정보·출연·개봉일은 IMDb와 배급사 발표로 확인했습니다.'},
 'zh':{desc:'《南极》（2026）是布鲁诺·萨法迪执导、克劳迪娅·乔文编剧的巴西悬疑片。南极一座巴西科考站越冬季的第一个夜晚，一名年轻女科学家遭到袭击，站内所有男性都成了嫌疑人。巴西影院自2026年9月17日起上映。',cinema:'🎬 正在影院上映',showtimes:'🏟️ 附近影院',where:'▶ 在哪里看',eyebrow:'本周主推影片',director:'导演',runtime:'分钟',preview:'官方预告片',sourceNote:'资料、演员和上映日期均对照 IMDb 与发行方公告核实。'}
 };
-function pickCopy(){return PICK_COPY[lang()]||PICK_COPY.en;}
+function pickCopy(){const c=PICK_COPY[lang()]||PICK_COPY.en;return Object.assign({},PICK_COPY.en,c,{desc:PICK_COPY.en.desc,eyebrow:'Top MatchApp Ai choice'});}
 
 /* The AI chat is the detail experience for this title: showtimes near the
    visitor, synopsis, cast, country of production and IMDb rating, in their
@@ -76,7 +76,7 @@ const AHS={title:'American Horror Story: 13',trailerId:'gQf4Vya5PbI',date:'2026-
 
 const COPY={
 'en':{
- weeklyHeading:'Top MatchApp Ai choice this week',weeklyEyebrow:'This week’s featured classic',
+ weeklyHeading:'Top MatchApp Ai choice',weeklyEyebrow:'This week’s featured classic',
  agataDesc:'A 1985 TV Globo romantic comedy-drama by Ivani Ribeiro. Jô Penteado and teacher Fábio Coutinho develop feelings after a sea excursion leaves their group stranded on an island. The 160-episode classic is available on Globoplay.',
  year:'Year',network:'Network',episodes:'episodes',rating:'Age rating',watch:'▶ Watch on Globoplay',save:'⭐ Save to Watch Later',notForMe:'👎 Not For Me',preview:'Official Globoplay preview',sources:'Verified sources',sourceNote:'Title facts and availability checked against Globoplay and Memória Globo.',
  ahsDesc:'American Horror Story season 13 premieres September 24, 2026 on FX and Hulu in the U.S., with Disney+ availability in Latin America.',ahsTrailer:'Official FX trailer',premieres:'Premieres',us:'FX & Hulu (U.S.)',latam:'Disney+ (Latin America)',ahsEpisodes:'13 episodes',openWeekly:'Open this week’s MatchApp choice',openAhs:'Open the AHS13 premiere',
