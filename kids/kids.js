@@ -282,15 +282,16 @@
     const img = document.getElementById('kid-' + slot + '-' + slug(item));
     if (!img) return;
     img.onerror = () => { img.onerror = null; img.style.visibility = 'hidden'; };
-    const lookup = fetchPoster(item);
-    // The registry was itself built through the secure proxy; it keeps every
-    // verified cover visible while fresh lookups respect the proxy rate limit.
+    // The reviewed artwork registry was already identity-checked through the
+    // secure source pipeline. Check it before scheduling any live TMDB work.
     await backupArtworkReady;
     const cached=backupArtwork[slug(item)];
     if(img.isConnected && cached?.title===item.title && String(cached.year)===item.year && cached.type===item.type && typeof cached.poster==='string' && /^https:\/\/(static\.tvmaze\.com|is[1-5]-ssl\.mzstatic\.com|image\.tmdb\.org)\//.test(cached.poster)){
-      img.onerror=()=>{img.onerror=null;img.src=makePoster(item);};img.src=cached.poster;
+      img.onerror=()=>{img.onerror=null;img.src=makePoster(item);};img.style.visibility='visible';img.src=cached.poster;
+      return;
     }
-    const r = await lookup;
+    // Only a real exact-cache miss may consume the bounded live source lookup.
+    const r = await fetchPoster(item);
     if (!img.isConnected) return;
     localizeCaption(item,img,r);
     if (!r) {
