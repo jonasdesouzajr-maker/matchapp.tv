@@ -39,8 +39,15 @@
     box.className = 'ma-cookie';
     box.setAttribute('role', 'dialog');
     box.innerHTML = '<p>We use essential cookies to run MatchApp. Analytics and Google AdSense may use cookies to measure visits and fund the free service. <a href="/cookies.html">Details</a>.</p><button type="button" class="ok">Accept</button><button type="button" class="no">Essential only</button>';
-    box.querySelector('.ok').onclick = function () { try { localStorage.setItem('match_cookie_choice', 'all'); } catch (_) {} box.remove(); };
-    box.querySelector('.no').onclick = function () { try { localStorage.setItem('match_cookie_choice', 'essential'); } catch (_) {} box.remove(); };
+    function signal(choice){
+      try{localStorage.setItem('match_cookie_choice', choice);}catch(_){}
+      const granted=choice==='all';
+      window.dataLayer=window.dataLayer||[];
+      window.dataLayer.push({event:'consent_update',consent:choice});
+      if(typeof window.gtag==='function')window.gtag('consent','update',{ad_storage:granted?'granted':'denied',analytics_storage:granted?'granted':'denied',ad_user_data:granted?'granted':'denied',ad_personalization:granted?'granted':'denied'});
+    }
+    box.querySelector('.ok').onclick = function () { signal('all'); box.remove(); };
+    box.querySelector('.no').onclick = function () { signal('essential'); box.remove(); };
     document.body.appendChild(box);
   }
 
