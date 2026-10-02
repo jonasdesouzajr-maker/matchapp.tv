@@ -63,6 +63,9 @@ jobs:
           node --check catalog-plus.js
           node --check sw.js
           node --check kids/kids.js
+          node --check kids/immersive.js
+          node --check kids/lumi-assistant.js
+          node --check voice-input.js
           node --check settings.js
           node --check profile.js
           npm test
