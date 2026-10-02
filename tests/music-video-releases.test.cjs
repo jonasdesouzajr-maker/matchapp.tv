@@ -4,7 +4,7 @@ const data=JSON.parse(fs.readFileSync('data/music-video-releases.json','utf8'));
 const featuredCount=data.featuredIds?.length||data.items.length;
 const script=fs.readFileSync('music-video-releases.js','utf8');
 function fixture(){
- const d=new JSDOM('<html lang="en"><div id="marquee-track">'+Array.from({length:52},(_,i)=>'<div class="marquee-item" '+(i>=26?'aria-hidden="true" tabindex="-1"':'role="button" tabindex="0")+'><img data-title="Film '+i%26+'"></div>').join('')+'</div><div id="grid"></div></html>',{url:'https://matchapp.tv/',runScripts:'outside-only'});
+ const d=new JSDOM('<html lang="en"><div id="marquee-track">'+Array.from({length:52},(_,i)=>'<div class="marquee-item" '+(i>=26?'aria-hidden="true" tabindex="-1"':'role="button" tabindex="0"')+'><img data-title="Film '+i%26+'"></div>').join('')+'</div><div id="grid"></div></html>',{url:'https://matchapp.tv/',runScripts:'outside-only'});
  // Test a fresh snapshot at its check date rather than expiring with wall time.
  d.window.Date.now=()=>Math.max(...data.items.map(r=>Date.parse(r.verifiedAt+'T12:00:00Z')),...data.items.map(r=>Date.parse(r.publishedAt)));
  d.window.fetch=async()=>({ok:true,json:async()=>data});d.window.eval(script);return d;

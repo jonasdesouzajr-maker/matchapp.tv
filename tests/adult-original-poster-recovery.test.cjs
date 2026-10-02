@@ -10,7 +10,7 @@ test('every Top Titles source matches the exact-title poster registry, including
  assert.ok(start>=0&&end>start);
  const registry=vm.runInNewContext(app.slice(start,end+3)+'\nVERIFIED_POSTERS',Object.create(null));
  const images=[...dom.querySelectorAll('#marquee-track .marquee-item img[data-title]')];
- assert.equal(images.length,20,'the established 10-title loop stays unchanged');
+ assert.equal(images.length,52,'the owner-approved 26-title loop must keep its identical second half');
  for(const img of images){
   assert.ok(registry[img.dataset.title],'missing exact-title registry record: '+img.dataset.title);
   assert.equal(img.getAttribute('src'),registry[img.dataset.title],img.dataset.title+' must not use stale or unrelated artwork');
@@ -99,19 +99,35 @@ test('same-poster TMDB size fallback and exact saved metadata recover broken ori
 test('all duplicated Home tiles retain the verified numeric film/TV identities',()=>{
  const dom=new JSDOM(read('index.html')).window.document;
  const expected=new Map([
-  ['Quem É Você?',[201778,'tv',1996]],
-  ['Vermelho Sangue',[226415,'tv',2025]],
-  ['Habeas Corpus',[308963,'tv',2026]],
-  ['Virtuosas',[1419806,'movie',2026]],
-  ['(Des)controle',[1369243,'movie',2026]],
-  ['Line of Fire',[321958,'tv',2026]],
-  ['Wicked',[402431,'movie',2024]],
-  ['You+Me - Against the World',[1641629,'movie',2026]],
-  ['The Love Hypothesis',[1032863,'movie',2026]],
-  ['American Hostage',[239618,'tv',2026]]
+  ["Quem É Você?",[201778,"tv",1996]],
+  ["Absolutely Fabulous",[4493,"tv",1992]],
+  ["Heartbreak High",[158154,"tv",2022]],
+  ["Schitt's Creek",[61662,"tv",2015]],
+  ["Alice in Borderland",[110316,"tv",2020]],
+  ["Wicked",[402431,"movie",2024]],
+  ["Vermelho Sangue",[226415,"tv",2025]],
+  ["Slow Horses",[95480,"tv",2022]],
+  ["The Survivors",[284605,"tv",2025]],
+  ["North of North",[249023,"tv",2025]],
+  ["Golden Kamuy -The Abashiri Prison Raid-",[1397201,"movie",2026]],
+  ["Line of Fire",[321958,"tv",2026]],
+  ["Habeas Corpus",[308963,"tv",2026]],
+  ["Black Mirror",[42009,"tv",2011]],
+  ["The Narrow Road to the Deep North",[238339,"tv",2025]],
+  ["Shoresy",[158756,"tv",2022]],
+  ["Last Samurai Standing",[252193,"tv",2025]],
+  ["American Hostage",[239618,"tv",2026]],
+  ["Virtuosas",[1419806,"movie",2026]],
+  ["Adolescence",[249042,"tv",2025]],
+  ["Letterkenny",[65798,"tv",2016]],
+  ["You+Me - Against the World",[1641629,"movie",2026]],
+  ["(Des)controle",[1369243,"movie",2026]],
+  ["The Gentlemen",[236235,"tv",2024]],
+  ["Murdoch Mysteries",[12786,"tv",2008]],
+  ["The Love Hypothesis",[1032863,"movie",2026]]
  ]);
  const imgs=[...dom.querySelectorAll('#marquee-track img[data-title]')];
- assert.equal(imgs.length,20);
+ assert.equal(imgs.length,52);
  for(const [title,identity] of expected){
   const duplicates=imgs.filter(img=>img.dataset.title===title);
   assert.equal(duplicates.length,2,'must keep the exact duplicate loop for '+title);

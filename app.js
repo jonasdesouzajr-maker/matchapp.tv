@@ -1257,7 +1257,22 @@ const VERIFIED_POSTERS = {
     "Wicked": "https://image.tmdb.org/t/p/w780/xDGbZ0JJ3mYaGKy4Nzd9Kph6M9L.jpg",
     "You+Me - Against the World": "https://image.tmdb.org/t/p/w780/bAbBNVplg7h79sm94OyHeKk8Phz.jpg",
     "The Love Hypothesis": "https://image.tmdb.org/t/p/w780/wlb6vunPuBjboYnmy4r3NlKZWji.jpg",
-    "American Hostage": "https://image.tmdb.org/t/p/w780/p3Ro0ngezX9aNZY6j3vYbpQqVhr.jpg"
+    "American Hostage": "https://image.tmdb.org/t/p/w780/p3Ro0ngezX9aNZY6j3vYbpQqVhr.jpg",
+    "Absolutely Fabulous": "https://image.tmdb.org/t/p/w780/s6HrSQwSwtzLlJYq2yeur3J5iR9.jpg",
+    "Heartbreak High": "https://image.tmdb.org/t/p/w780/1KTYMK7N2vRe8PowCyb799DbDRR.jpg",
+    "Schitt's Creek": "https://image.tmdb.org/t/p/w780/bqSgt3OZDvHnOfoZEr7l0jVrSqB.jpg",
+    "Alice in Borderland": "https://image.tmdb.org/t/p/w780/Ac8ruycRXzgcsndTZFK6ouGA0FA.jpg",
+    "The Survivors": "https://image.tmdb.org/t/p/w780/4Xgf1axYG97G7BYC661O27t9iYu.jpg",
+    "North of North": "https://image.tmdb.org/t/p/w780/yAtcsq5ciJ6TBfGzM0b6BzVCaPA.jpg",
+    "Golden Kamuy -The Abashiri Prison Raid-": "https://image.tmdb.org/t/p/w780/a9W2203QLRqBT3a6EVDECc8g9Y2.jpg",
+    "Black Mirror": "https://image.tmdb.org/t/p/w780/seN6rRfN0I6n8iDXjlSMk1QjNcq.jpg",
+    "The Narrow Road to the Deep North": "https://image.tmdb.org/t/p/w780/g0QMGxXtoNnMXz4QN2U05ijvqBe.jpg",
+    "Shoresy": "https://image.tmdb.org/t/p/w780/aOnZyGIJCkG3gCMLWInGWRpM3HT.jpg",
+    "Last Samurai Standing": "https://image.tmdb.org/t/p/w780/6t1G0Ugcj4vdBVFOgfwR26gyfRY.jpg",
+    "Adolescence": "https://image.tmdb.org/t/p/w780/tDHWWReefmOOjBCJZUck8cNwssk.jpg",
+    "Letterkenny": "https://image.tmdb.org/t/p/w780/zrB0Viy72GYKiLrtSs7SQVz5QWl.jpg",
+    "The Gentlemen": "https://image.tmdb.org/t/p/w780/tw3tzfXaSpmUZIB8ZNqNEGzMBCy.jpg",
+    "Murdoch Mysteries": "https://image.tmdb.org/t/p/w780/1S8gnT06MDkAmHmzDLSVughE0t0.jpg"
 };
 
 function getVerifiedPoster(title) {
