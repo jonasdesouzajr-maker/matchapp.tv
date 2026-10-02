@@ -24,11 +24,21 @@ test('global discovery guide regenerates deterministically with all actual inter
  assert.match(after,/<section class="lang-card" id="lang-ar" lang="ar" dir="rtl">/);
 });
 
-test('one useful indexable original guide, one correct canonical, no fabricated translated alternates',()=>{
+test('one useful indexable original guide, one correct canonical, and only verified regional hreflang alternates',()=>{
  const html=read(page);
  assert.match(html,/<link rel="canonical" href="https:\/\/matchapp\.tv\/guides\/worldwide-entertainment-discovery\/">/);
  assert.equal((html.match(/<h1>/g)||[]).length,1);
- assert(!/<link rel="alternate"[^>]+hreflang=/i.test(html));
+ const regional=[
+  ['en-AU','/au/'],['pt-BR','/br/'],['en-US','/us/'],
+  ['en-GB','/uk/'],['en-CA','/ca/'],['ja-JP','/jp/']
+ ];
+ const alternates=[...html.matchAll(/<link rel="alternate"[^>]+hreflang="([^"]+)"[^>]+href="([^"]+)">/gi)];
+ assert.equal(alternates.length,7,'Only six verified regions plus x-default may be advertised');
+ for(const [lang,route] of regional){
+  assert(html.includes('<link rel="alternate" hreflang="'+lang+'" href="https://matchapp.tv'+route+'">'),lang+' regional alternate missing');
+ }
+ assert(html.includes('<link rel="alternate" hreflang="x-default" href="'+url+'">'));
+ assert(!alternates.some(m=>/[?&]lang=/i.test(m[2])),'Do not advertise query-string language preferences as indexable alternates');
  assert(!/<meta name="keywords"/i.test(html),'Avoid keyword stuffing on the page');
  assert.match(html,/Audiobook links are checked against title and author/);
  assert.match(html,/Content and store availability vary by region/);
