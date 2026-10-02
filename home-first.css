@@ -195,3 +195,13 @@ html body.page-home.ma-first-screen .marquee-item:hover{transform:scale(1.04)!im
 @media(prefers-reduced-motion:reduce){
   html body.page-home.ma-first-screen :is(#ma-first-screen,.home-ask-composer,.ma-find-btn,.marquee-item,.ma-also-link,.ma-dock-link,.ma-dark-toggle,.ma-ask-again){transition:none!important}
 }
+
+@keyframes ma-fade-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+html body.page-home.ma-first-screen :is(#ma-first-screen,#trending-rail,#awareness-spotlight,#ma-also){
+  animation:ma-fade-in .45s ease both!important;
+}
+html body.page-home.ma-first-screen #trending-rail{animation-delay:.08s!important}
+html body.page-home.ma-first-screen #awareness-spotlight{animation-delay:.14s!important}
+@media(prefers-reduced-motion:reduce){
+  html body.page-home.ma-first-screen :is(#ma-first-screen,#trending-rail,#awareness-spotlight,#ma-also){animation:none!important}
+}
