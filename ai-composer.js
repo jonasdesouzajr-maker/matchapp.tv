@@ -55,7 +55,21 @@ function paintGlobal(){
 window.submitHomeAI=function(){
  const input=document.getElementById('specific-search-input'),q=input?.value.trim();
  if(!q){input?.setAttribute('aria-invalid','true');window.showToast?.(copy()[1],true);return false;}
- input.removeAttribute('aria-invalid');window.askAI?.(q);return true;
+ input.removeAttribute('aria-invalid');
+ let box=document.getElementById('ma-ai-answer');
+ if(!box){
+  box=document.createElement('section');
+  box.id='ma-ai-answer';
+  box.setAttribute('aria-live','polite');
+  input.closest('.home-ask-composer')?.insertAdjacentElement('afterend',box);
+ }
+ box.hidden=false;
+ box.innerHTML='<p class="ma-ai-answer-q"></p><p class="ma-ai-answer-body">Opening your answer…</p>';
+ box.querySelector('.ma-ai-answer-q').textContent=q;
+ box.querySelector('.ma-ai-answer-body').textContent='Opening your answer…';
+ if(typeof window.askAI==='function')window.askAI(q);
+ else location.href='/discover.html?q='+encodeURIComponent(q)+'&focus=start';
+ return true;
 };
 function paint(){
  paintGlobal();paintFoldLabels();paintRights();paintHeader();

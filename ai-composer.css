@@ -145,3 +145,8 @@ html body.page-home.ma-first-screen #search-box .ma-ai-quota{margin-top:6px!impo
   html body.ma-ia-home #ma-ai-entry #mic-btn-index{animation:none!important}
 }
 html body.page-home.ma-first-screen #ma-ai-entry .ma-ai-quota,html body.page-home.ma-first-screen #search-box .quota-note{display:none!important}
+html body.page-home #ma-ai-answer{display:block!important;visibility:visible!important;margin:10px 0 0!important;padding:12px 14px!important;border:1px solid rgba(242,207,105,.45)!important;border-radius:16px!important;background:#171226!important;color:#fff!important}
+html body.page-home #ma-ai-answer .ma-ai-answer-q{margin:0 0 4px!important;color:#f2cf69!important;font-size:13px!important}
+html body.page-home #ma-ai-answer .ma-ai-answer-body{margin:0!important;color:#fff!important;font-size:15px!important;line-height:1.45!important}
+html body.ai-chat-page #chat-log,html body.ai-chat-page .chat-assistant,html body.ai-chat-page .chat-answer-text{display:block!important;visibility:visible!important;opacity:1!important;color:#fff!important;height:auto!important;max-height:none!important}
+html body.ai-chat-page #chat-log{display:flex!important}

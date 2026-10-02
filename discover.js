@@ -2241,6 +2241,8 @@ async function runDiscovery() {
     document.title = `${q} — MatchApp Ai Concierge`;
     if (loadEl) loadEl.style.display = 'none';
     await askAndRender(q);
+    const log=document.getElementById('chat-log');
+    if(log){log.hidden=false;log.style.display='flex';log.scrollIntoView({behavior:'auto',block:'start'});}
 }
 
 document.addEventListener('DOMContentLoaded', () => { setTimeout(runDiscovery, 350); });
