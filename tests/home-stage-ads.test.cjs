@@ -102,8 +102,12 @@ test('owner-approved Together sponsorship follows its fold and retains the exact
 });
 
 
-test('live sponsor verification counts locked manual slots without flagging legitimate Auto ads',()=>{
+test('live sponsor verification follows the real locked container and ignores legitimate Auto-ad growth',()=>{
  const smoke=read('tools/live-production-smoke.cjs');
+ assert.ok(smoke.includes("sameLockedContainer:parent===card.parentElement&&!!parent?.matches('section.container')"));
+ assert.ok(smoke.includes('adjacent:card.nextElementSibling===ad'));
+ assert.ok(smoke.includes('sponsor.sameLockedContainer&&sponsor.adjacent'));
+ assert.ok(!smoke.includes("ad.parentElement.matches('main.page-wrapper')"),'Do not require a parent the locked homepage markup never uses');
  assert.ok(smoke.includes('manualCount:document.querySelectorAll('));
  assert.ok(smoke.includes('ins.adsbygoogle[data-ad-slot="2595698117"]'));
  assert.ok(smoke.includes('sponsor.manualCount===5'));

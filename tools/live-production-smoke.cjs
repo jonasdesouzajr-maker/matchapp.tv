@@ -220,15 +220,17 @@ async function aiQuestion(page,question,expected,label){
       if(!card||!ad||!ins)return {found:false};
       const a=ad.getBoundingClientRect(),c=card.getBoundingClientRect();
       const visible=getComputedStyle(ad).display!=='none'&&getComputedStyle(card).display!=='none';
+      const parent=ad.parentElement;
       return {found:true,follows:!!(card.compareDocumentPosition(ad)&Node.DOCUMENT_POSITION_FOLLOWING),
-        lockedParent:ad.parentElement.matches('main.page-wrapper'),
+        sameLockedContainer:parent===card.parentElement&&!!parent?.matches('section.container'),
+        adjacent:card.nextElementSibling===ad,
         header:!fold||fold.nextElementSibling===card,
         onScreenOrder:!visible||a.top>=c.bottom-3,
         responsive:ins.getAttribute('data-full-width-responsive')==='true',
         format:ins.getAttribute('data-ad-format'),manualCount:document.querySelectorAll('ins.adsbygoogle[data-ad-slot="2595698117"]').length,totalCount:document.querySelectorAll('ins.adsbygoogle').length};
     });
     record('Match Together ad follows complete card '+device.name,
-      sponsor.found&&sponsor.follows&&sponsor.lockedParent&&sponsor.header&&sponsor.onScreenOrder&&
+      sponsor.found&&sponsor.follows&&sponsor.sameLockedContainer&&sponsor.adjacent&&sponsor.header&&sponsor.onScreenOrder&&
       sponsor.responsive&&sponsor.format==='auto'&&sponsor.manualCount===5,JSON.stringify(sponsor));
     // Three bespoke, micro-sized intelligence effects, never a whole header
     // animation. Touch devices receive one-pass text glint with the same sparks.
