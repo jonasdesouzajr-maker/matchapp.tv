@@ -246,3 +246,17 @@ html body.page-home #trending-rail .marquee-item:not([data-music-video]) .marque
 html body.page-home #trending-rail .marquee-item:not([data-music-video])>img{
  width:100%!important;height:100%!important;aspect-ratio:2/3!important;object-fit:contain!important;
 }
+
+/* REGIONAL TOP TITLES CONTINUOUS LOOP — owner approved 2026-10-02.
+   26 unique editorial identities are followed by an identical 26-card copy.
+   Transform-only motion crosses that seam continuously; no scrollLeft reset. */
+html body.page-home #trending-rail .marquee-arrow{display:none!important}
+html body.page-home #trending-rail .marquee-viewport[data-matchapp-autoplay-active="1"]{overflow-x:hidden!important;overflow-y:hidden!important;touch-action:pan-y!important;overscroll-behavior-x:none!important;cursor:default!important}
+html body.page-home #trending-rail .marquee-track.is-marquee-flowing{scroll-snap-type:none!important;animation:maRegionalTopTitlesFlow var(--marquee-duration,130s) linear infinite!important;will-change:transform;backface-visibility:hidden}
+html body.page-home #trending-rail .marquee-viewport:focus-within .marquee-track.is-marquee-flowing,
+html body.page-home #trending-rail .marquee-track.is-marquee-flowing:has(.marquee-item:hover){animation-play-state:paused!important}
+@keyframes maRegionalTopTitlesFlow{from{transform:translate3d(0,0,0)}to{transform:translate3d(var(--marquee-end,-50%),0,0)}}
+@media(prefers-reduced-motion:reduce){
+ html body.page-home #trending-rail .marquee-track.is-marquee-flowing{animation:none!important;transform:none!important;will-change:auto!important}
+ html body.page-home #trending-rail .marquee-viewport[data-matchapp-autoplay-active="1"]{overflow-x:auto!important;touch-action:pan-x pan-y!important}
+}

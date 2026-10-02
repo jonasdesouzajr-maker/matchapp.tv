@@ -1764,6 +1764,37 @@ window.eventMatch = function (query) {
         vp.dataset.railReady = '1';
         vp.tabIndex = vp.tabIndex >= 0 ? vp.tabIndex : 0;
         const root = vp.closest('.marquee-wrapper,.events-wrapper,.ma-news-carousel-shell,.premium-card') || vp.parentElement;
+
+        // Top Titles is a true seamless marquee: the identical second half is
+        // the loop seam, so the user never sees a jump back to card one.
+        // Other rails keep their existing native scroll/autoplay controller.
+        if(vp.id==='marquee-viewport'){
+            const track=vp.querySelector('#marquee-track');
+            if(track){
+                vp.dataset.matchappAutoplayActive='1';
+                vp.tabIndex=-1;
+                track.classList.add('is-marquee-flowing');
+                const syncMarquee=()=>{
+                    const seam=track.querySelector('.marquee-item[data-loop-copy="1"]');
+                    if(!seam)return;
+                    track.style.setProperty('--marquee-end',(-seam.offsetLeft)+'px');
+                    const realCount=track.querySelectorAll('.marquee-item:not([aria-hidden="true"])').length;
+                    track.style.setProperty('--marquee-duration',Math.max(90,realCount*5)+'s');
+                };
+                syncMarquee();
+                window.addEventListener('resize',syncMarquee,{passive:true});
+                vp.addEventListener('keydown',e=>{
+                    if(e.key!=='Enter'&&e.key!==' ')return;
+                    const item=e.target.closest?.('.marquee-item[data-loop-copy="0"]');
+                    if(!item)return;
+                    e.preventDefault();
+                    const title=item.querySelector('img[data-title]')?.dataset.title;
+                    if(title)window.selectMarqueeItem?.(title);
+                });
+            }
+            updateArrows(vp);
+            return;
+        }
         // Autoplay runs only while visible, pauses while hovered, and holds
         // off for a while after any touch, drag, key or arrow press.
         let hovering = false, holdUntil = 0, visible = true;

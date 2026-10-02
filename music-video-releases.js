@@ -1,5 +1,5 @@
 /* Adult editorial video additions. Exact official identities stay separate from
-   the locked ten TMDB titles and their ingestion/AI/matching mechanisms. */
+   the locked Home film/TV identities and their ingestion/AI/matching mechanisms. */
 (function () {
     'use strict';
     const COPY = {
@@ -129,13 +129,15 @@
     async function mount() {
         const track=document.getElementById('marquee-track');if(!track || track.querySelector('[data-music-video]'))return;
         const records=await all(), rows=Array.isArray(featuredIds)?records.filter(r=>featuredIds.includes(r.id)):records;if(!rows.length)return;
-        // Spread releases among the ten original film/TV cards. Move no
-        // original nodes, and mirror the same order in the seamless loop.
-        const originals=Array.from(track.children);
+        // Spread releases among however many editorial film/TV identities the
+        // Home rail owns. Detect the mirrored halves instead of assuming ten.
+        const originals=Array.from(track.children).filter(node=>node.querySelector?.('img[data-title]'));
+        const uniqueCount=originals.length/2;
+        if(!Number.isInteger(uniqueCount)||uniqueCount<1)return;
         rows.forEach((r,index)=>{
-            const after=Math.floor(index*10/rows.length);
-            track.insertBefore(tile(r,false),originals[after+1]||null);
-            if(originals[10])track.insertBefore(tile(r,true),originals[11+after]||null);
+            const after=Math.floor(index*uniqueCount/rows.length);
+            track.insertBefore(tile(r,false),originals[after+1]||originals[uniqueCount]||null);
+            track.insertBefore(tile(r,true),originals[uniqueCount+after+1]||null);
         });
         const viewport=track.closest('.marquee-viewport');if(viewport)viewport.scrollLeft=0;
         window.dispatchEvent(new Event('resize'));

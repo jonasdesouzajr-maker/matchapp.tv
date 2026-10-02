@@ -46,16 +46,18 @@ function kidsKind(entry){
 function homepageTrending(){
   const html=read('index.html');
   const rail=html.match(/<div class="marquee-track" id="marquee-track">([\s\S]*?)<\/div>\s*<\/div>\s*<\/div>/)?.[1]||'';
-  const rows=[],seen=new Set();
-  const re=/<div class="marquee-item"[^>]*>[\s\S]*?<img[^>]*data-title="([^"]+)"[^>]*src="([^"]+)"/g;
+  const HOME_TOP_TITLES_COUNT=26,rows=[],seen=new Set();
+  const re=/<img([^>]*data-title="[^"]+"[^>]*)>/g;
   let m;
-  while((m=re.exec(rail))&&rows.length<10){
-    const title=m[1].replace(/&quot;/g,'"').replace(/&amp;/g,'&').trim();
+  while((m=re.exec(rail))&&rows.length<HOME_TOP_TITLES_COUNT){
+    const attrs=m[1],get=name=>attrs.match(new RegExp('\\b'+name+'="([^"]*)"'))?.[1]||'';
+    const title=get('data-title').replace(/&quot;/g,'"').replace(/&#39;/g,"'").replace(/&amp;/g,'&').trim();
     const key=normalize(title);if(!key||seen.has(key))continue;seen.add(key);
-    const poster=String(m[2]||'').match(/image\.tmdb\.org\/t\/p\/(?:w\d+|original)(\/[^?"']+)/i)?.[1]||null;
-    rows.push({title,year:null,media_kind:'other',poster_path:poster,homepage_trending:true,kids_approved:false,kids_age_bands:[]});
+    const poster=String(get('src')).match(/image\.tmdb\.org\/t\/p\/(?:w\d+|original)(\/[^?"']+)/i)?.[1]||null;
+    const tmdbId=Number(get('data-tmdb-id')),year=Number(get('data-tmdb-year')),kind=get('data-tmdb-kind');
+    rows.push({title,year:Number.isInteger(year)?year:null,media_kind:['movie','tv'].includes(kind)?kind:'other',tmdb_id:Number.isSafeInteger(tmdbId)&&tmdbId>0?tmdbId:null,poster_path:poster,homepage_trending:true,kids_approved:false,kids_age_bands:[]});
   }
-  if(rows.length!==10)throw new Error(`Expected exactly 10 homepage trending titles, found ${rows.length}`);
+  if(rows.length!==HOME_TOP_TITLES_COUNT)throw new Error(`Expected exactly ${HOME_TOP_TITLES_COUNT} homepage trending titles, found ${rows.length}`);
   return rows;
 }
 function buildCatalog(){
