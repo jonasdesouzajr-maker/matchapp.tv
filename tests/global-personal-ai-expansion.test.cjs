@@ -50,16 +50,19 @@ test('all adult match formats keep hard filters and no unrequested recycles',()=
  assert.match(books,/if\(verified.length\)return/);
 });
 
-test('home marquee keeps curated originals with native swipe tap suppression and keyboard activation',()=>{
+test('home marquee keeps 20 synchronized curated originals with seamless regional flow and keyboard activation',()=>{
  const section=home.match(/<div class="marquee-track" id="marquee-track">([\s\S]*?)<\/div>\s*<\/div>\s*<\/div>/)?.[1]||'';
  const cards=[...section.matchAll(/<img[^>]*data-title="([^"]+)"[^>]*data-tmdb-id="([^"]+)"[^>]*src="([^"]+)"/g)];
- assert.equal(cards.length,20);
- for(let i=0;i<10;i++)assert.deepEqual(cards[i].slice(1,4),cards[i+10].slice(1,4));
+ assert.equal(cards.length,40);
+ for(let i=0;i<20;i++)assert.deepEqual(cards[i].slice(1,4),cards[i+20].slice(1,4));
  assert(home.indexOf('/match-ai-rank.js')<home.indexOf('/app.js?v='));
- assert.equal((section.split('role="button"').length-1),10);
- assert.match(app,/if\(vp\.id==='marquee-viewport'\)/);
- assert.match(app,/vp\.addEventListener\('pointermove'/);
- assert.match(app,/e\.stopImmediatePropagation\(\)/);
+ assert.equal((section.split('role="button"').length-1),20);
+ assert.equal((section.match(/data-region-focus="UK"/g)||[]).length,10);
+ assert.equal((section.match(/data-region-focus="CA"/g)||[]).length,10);
+ assert.match(section,/data-title="Absolutely Fabulous"[^>]*data-tmdb-id="4493"[^>]*data-region-focus="UK"/);
+ assert.match(app,/if \(vp\.id === 'marquee-viewport' && !REDUCED\)/);
+ assert.match(app,/FLOW_SECONDS_PER_TITLE = 6/);
+ assert.match(app,/firstClone\.offsetLeft - track\.offsetLeft/);
  assert.match(app,/window\.selectMarqueeItem\?\.\(title\)/);
 });
 
