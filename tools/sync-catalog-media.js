@@ -45,7 +45,7 @@ function kidsKind(entry){
 }
 function homepageTrending(){
   const html=read('index.html');
-  const rail=html.match(/<div class="marquee-track" id="marquee-track">([\s\S]*?)<\/div>\s*<\/div>\s*<\/div>/)?.[1]||'';
+  const rail=html.match(/<div class="marquee-track" id="marquee-track"[^>]*>([\s\S]*?)<\/div>\s*<\/div>\s*<\/div>/)?.[1]||'';
   const HOME_TOP_TITLES_COUNT=26,rows=[],seen=new Set();
   const re=/<img([^>]*data-title="[^"]+"[^>]*)>/g;
   let m;

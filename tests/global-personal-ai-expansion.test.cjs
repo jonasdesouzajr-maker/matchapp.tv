@@ -50,8 +50,8 @@ test('all adult match formats keep hard filters and no unrequested recycles',()=
  assert.match(books,/if\(verified.length\)return/);
 });
 
-test('home marquee keeps curated originals with native swipe tap suppression and keyboard activation',()=>{
- const section=home.match(/<div class="marquee-track" id="marquee-track">([\s\S]*?)<\/div>\s*<\/div>\s*<\/div>/)?.[1]||'';
+test('home marquee keeps curated regional originals with seamless loop and keyboard activation',()=>{
+ const section=home.match(/<div class="marquee-track" id="marquee-track"[^>]*>([\s\S]*?)<\/div>\s*<\/div>\s*<\/div>/)?.[1]||'';
  const cards=[...section.matchAll(/<img[^>]*data-title="([^"]+)"[^>]*data-tmdb-id="([^"]+)"[^>]*src="([^"]+)"/g)];
  assert.equal(cards.length,52);
  for(let i=0;i<26;i++)assert.deepEqual(cards[i].slice(1,4),cards[i+26].slice(1,4));
@@ -59,8 +59,9 @@ test('home marquee keeps curated originals with native swipe tap suppression and
  assert.equal((section.split('role="button"').length-1),26);
  for(const title of ['Absolutely Fabulous','Slow Horses',"Schitt&#39;s Creek",'North of North','Alice in Borderland','Last Samurai Standing','Heartbreak High','The Survivors'])assert.ok(section.includes(title),title+' missing from regional Home rail');
  assert.match(app,/if\(vp\.id==='marquee-viewport'\)/);
- assert.match(app,/vp\.addEventListener\('pointermove'/);
- assert.match(app,/e\.stopImmediatePropagation\(\)/);
+ assert.match(app,/track\.classList\.add\('is-marquee-flowing'\)/);
+ assert.match(app,/track\.style\.setProperty\('--marquee-end'/);
+ assert.match(app,/Math\.max\(90,realCount\*5\)/);
  assert.match(app,/window\.selectMarqueeItem\?\.\(title\)/);
 });
 
