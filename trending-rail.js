@@ -29,12 +29,12 @@ function paint(data){
   const track=document.getElementById('marquee-track');
   const rail=document.getElementById('trending-rail');
   if(!track||!rail||!data||!Array.isArray(data.titles)||!data.titles.length)return;
-  rail.setAttribute('aria-label',shown);
-  let label=rail.querySelector('.trending-week-label');
-  if(!label){label=document.createElement('p');label.className='trending-week-label';rail.insertBefore(label, rail.firstChild);}
   const weekLabel={en:'Top titles this week','pt-BR':'Títulos em alta nesta semana',es:'Títulos top de esta semana',fr:'Titres phares de la semaine',de:'Top-Titel dieser Woche',it:'Titoli top di questa settimana',tr:'Bu haftanın öne çıkanları',ru:'Главные названия недели',ar:'أبرز العناوين هذا الأسبوع',hi:'इस हफ्ते के शीर्ष शीर्षक',id:'Judul teratas minggu ini',ja:'今週の注目タイトル',ko:'이번 주 인기 작품',zh:'本周热门标题'};
   const lang=String(document.documentElement.lang||localStorage.getItem('match_lang')||'en');
   const shown=weekLabel[lang]||weekLabel[lang.slice(0,2)]||data.label||weekLabel.en;
+  rail.setAttribute('aria-label',shown);
+  let label=rail.querySelector('.trending-week-label');
+  if(!label){label=document.createElement('p');label.className='trending-week-label';rail.insertBefore(label, rail.firstChild);}
   label.textContent=shown;
   track.replaceChildren();
   data.titles.forEach(item=>track.appendChild(card(item,false)));
