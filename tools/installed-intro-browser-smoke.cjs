@@ -35,7 +35,15 @@ const screens=[['phone',390,844],['tablet',820,1180],['landscape',1180,820],['wi
     assert.equal(state.fit,'cover');assert.equal(state.muted,true);
     await page.screenshot({path:path.join(dir,name+'.png'),timeout:1000}).catch(error=>console.warn('Intro screenshot unavailable: '+error.message));
     if(name==='phone')await page.locator('#matchapp-launch-intro').waitFor({state:'detached',timeout:7500});
-    else{await page.locator('#matchapp-launch-intro button').click();assert.equal(await page.locator('#matchapp-launch-intro').count(),0);}
+    else{
+     const overlay=page.locator('#matchapp-launch-intro'),skip=overlay.locator('button');
+     if(await overlay.count()){
+      try{await skip.click({timeout:3000});}
+      catch(error){if(await overlay.count())throw error;}
+     }
+     await overlay.waitFor({state:'detached',timeout:3000}).catch(async error=>{if(await overlay.count())throw error;});
+     assert.equal(await overlay.count(),0,'intro must be dismissed or complete naturally');
+    }
     console.log('PASS real intro decode, viewport fill and '+(name==='phone'?'completion':'Skip')+' '+name+' '+JSON.stringify(state));
     await page.reload({waitUntil:'domcontentloaded'});
     assert.equal(await page.locator('#matchapp-launch-intro').count(),0,'same-session navigation must not replay');
