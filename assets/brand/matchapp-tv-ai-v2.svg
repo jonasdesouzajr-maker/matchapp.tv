@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 104" width="600" height="104" role="img" aria-label="MatchApp TV Ai">
-  <title>MatchApp TV Ai — orbital intelligence wordmark</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 104" width="600" height="104" role="img" aria-label="MatchApp Ai">
+  <title>MatchApp Ai — orbital intelligence wordmark</title>
   <defs>
     <linearGradient id="brandFill" x1="0" y1="0" x2="1" y2="0">
       <stop offset="0" stop-color="#fff8da"/>
@@ -67,17 +67,9 @@
     </text>
   </g>
 
-  <!-- TV: slightly tighter and brighter so the full name reads as one title. -->
-  <g transform="translate(322 0)" filter="url(#brandGlow)">
-    <text class="brandType" x="0" y="73" fill="#fff8e4" stroke="#d4aa3e" stroke-opacity=".62" stroke-width="1" paint-order="stroke fill" font-size="47" letter-spacing="-.6">TV</text>
-    <text class="brandType motion" x="0" y="73" fill="none" stroke="#ffe588" stroke-width="1.35" stroke-linecap="round" stroke-dasharray="14 66" font-size="47" letter-spacing="-.6" opacity=".72">
-      TV
-      <animate attributeName="stroke-dashoffset" from="0" to="-160" dur="3.6s" repeatCount="indefinite"/>
-    </text>
-  </g>
 
   <!-- Ai: MatchApp's own orbital mark. The logo star is the satellite. -->
-  <g transform="translate(397 4)">
+  <g transform="translate(322 4)">
     <ellipse class="pulse" cx="101" cy="48" rx="91" ry="44" fill="url(#aiHalo)" opacity=".74">
       <animate class="motion" attributeName="opacity" values=".48;.82;.55;.74;.48" dur="3.8s" repeatCount="indefinite"/>
     </ellipse>

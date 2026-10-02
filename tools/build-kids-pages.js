@@ -43,7 +43,7 @@ function keywordSet(i){
     'safe kids entertainment',
     'age appropriate kids shows',
     'family entertainment finder',
-    'MatchApp Kids Mode'
+    'MatchApp Ai KIDS'
   ]).slice(0,28);
 }
 function titleName(i){return `${i.title}${i.year?' ('+i.year+')':''} for Kids · Age Guide & Where to Watch`;}
@@ -60,7 +60,7 @@ function metaDescription(i){
   return prefix+clipped+(/[.!?…]$/.test(clipped)?'':'.')+suffix;
 }
 function serpTitle(title){
-  const brand=' | MatchApp TV Ai Kids';
+  const brand=' | MatchApp Ai KIDS';
   const clean=String(title||'Kids title guide').replace(/\s+for Kids\s*·\s*Age Guide & Where to Watch$/i,' Kids Guide');
   const max=Math.max(20,60-brand.length);
   const clipped=clean.length<=max?clean:clean.slice(0,max-1).replace(/\s+\S*$/,'').trim()+'…';
@@ -68,7 +68,7 @@ function serpTitle(title){
 }
 function page(title,description,url,body,data,keywords,image){
   const searchTitle=serpTitle(title);
-  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${escape(searchTitle)}</title><meta name="description" content="${escape(description)}"><meta name="keywords" content="${escape(keywords.join(', '))}"><meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1"><meta name="author" content="MatchApp TV"><link rel="canonical" href="${url}"><link rel="alternate" hreflang="x-default" href="${url}"><meta property="og:type" content="website"><meta property="og:site_name" content="MatchApp TV"><meta property="og:title" content="${escape(title)}"><meta property="og:description" content="${escape(description)}"><meta property="og:url" content="${url}"><meta property="og:image" content="${image}"><meta property="og:image:alt" content="${escape(title)}"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${escape(title)}"><meta name="twitter:description" content="${escape(description)}"><meta name="twitter:image" content="${image}"><link rel="icon" href="/kids/kids-logo-sm.jpeg"><style>${style}</style><script type="application/ld+json">${JSON.stringify(data).replace(/</g,'\\u003c')}</script><link rel="stylesheet" href="/brand.css?v=194"></head><body class="kids-guide-page"><header><a href="/kids/" aria-label="MatchApp Ai Kids" class="matchapp-brand-link"><img src="/kids/kids-logo-sm.jpeg" alt="MatchApp Kids"><img class="matchapp-wordmark" src="/assets/brand/matchapp-tv-ai-v2.svg" alt="MatchApp Ai" width="368" height="66" decoding="async"></a><nav><a href="/kids/#kids-match-stage">Kids matching</a> · <a href="/kids/nostalgia/">Classic cartoon guide</a></nav></header><main>${body}</main><footer><a href="/kids/#kids-match-stage">Find an age-appropriate Kids match</a> · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a><p class="note">Viewing services set their own pricing, availability, dubbing and episode ratings. Ask a grown-up before opening another site. MatchApp is a discovery service.</p></footer><script src="/kids/title-artwork.js?v=186"></script></body></html>\n`;
+  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${escape(searchTitle)}</title><meta name="description" content="${escape(description)}"><meta name="keywords" content="${escape(keywords.join(', '))}"><meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1"><meta name="author" content="MatchApp Ai KIDS"><link rel="canonical" href="${url}"><link rel="alternate" hreflang="x-default" href="${url}"><meta property="og:type" content="website"><meta property="og:site_name" content="MatchApp Ai KIDS"><meta property="og:title" content="${escape(title)}"><meta property="og:description" content="${escape(description)}"><meta property="og:url" content="${url}"><meta property="og:image" content="${image}"><meta property="og:image:alt" content="${escape(title)}"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${escape(title)}"><meta name="twitter:description" content="${escape(description)}"><meta name="twitter:image" content="${image}"><link rel="icon" href="/kids/kids-logo-sm.jpeg"><style>${style}</style><script type="application/ld+json">${JSON.stringify(data).replace(/</g,'\\u003c')}</script><link rel="stylesheet" href="/brand.css?v=194"></head><body class="kids-guide-page"><header><a href="/kids/" aria-label="MatchApp Ai KIDS" class="matchapp-brand-link"><img src="/kids/kids-logo-sm.jpeg" alt="MatchApp Ai KIDS"><span class="matchapp-wordmark kids-wordmark" role="img" aria-label="MatchApp Ai KIDS">MatchApp Ai KIDS</span></a><nav><a href="/kids/#kids-match-stage">Kids matching</a> · <a href="/kids/nostalgia/">Classic cartoon guide</a></nav></header><main>${body}</main><footer><a href="/kids/#kids-match-stage">Find an age-appropriate Kids match</a> · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a><p class="note">Viewing services set their own pricing, availability, dubbing and episode ratings. Ask a grown-up before opening another site. MatchApp is a discovery service.</p></footer><script src="/kids/title-artwork.js?v=186"></script></body></html>\n`;
 }
 
 const urls=[];
@@ -106,12 +106,12 @@ for(const i of titles){
         image,
         keywords:keywords.join(', '),
         dateModified:SEO_REVISION,
-        isPartOf:{'@type':'WebSite',name:'MatchApp TV',url:`${SITE}/`},
+        isPartOf:{'@type':'WebSite',name:'MatchApp Ai KIDS',url:`${SITE}/`},
         about:creative,
         mainEntity:creative,
         audience:{'@type':'PeopleAudience',suggestedMinAge:bounds.min,suggestedMaxAge:bounds.max},
-        potentialAction:{'@type':'ViewAction',name:'Open the MatchApp Kids matcher',target:`${SITE}/kids/#kids-match-stage`},
-        publisher:{'@type':'Organization',name:'MatchApp TV',url:`${SITE}/`,logo:{'@type':'ImageObject',url:`${SITE}/logo.jpeg`}}
+        potentialAction:{'@type':'ViewAction',name:'Open the MatchApp Ai KIDS matcher',target:`${SITE}/kids/#kids-match-stage`},
+        publisher:{'@type':'Organization',name:'MatchApp Ai KIDS',url:`${SITE}/`,logo:{'@type':'ImageObject',url:`${SITE}/logo.jpeg`}}
       },
       {
         '@type':'BreadcrumbList',
@@ -129,12 +129,12 @@ const classics=titles.filter(i=>i.year&&Number(i.year)<2010),hub=`${SITE}/kids/n
 urls.push(hub);
 sitemapMeta[hub]=`${SEO_REVISION}T00:00:00Z`;
 fs.mkdirSync(path.join(root,'kids/nostalgia'),{recursive:true});
-const hubKeywords=uniq(['classic cartoons for kids','1950s cartoons','1960s cartoons','1970s cartoons','1980s cartoons','1990s cartoons','2000s cartoons','family cartoon nostalgia','classic animation where to watch','Woody Woodpecker kids','Pica-Pau kids','Garfield kids','DuckTales kids','Doug cartoon','Smurfs kids','Ben 10 kids','MatchApp Kids classics']);
+const hubKeywords=uniq(['classic cartoons for kids','1950s cartoons','1960s cartoons','1970s cartoons','1980s cartoons','1990s cartoons','2000s cartoons','family cartoon nostalgia','classic animation where to watch','Woody Woodpecker kids','Pica-Pau kids','Garfield kids','DuckTales kids','Doug cartoon','Smurfs kids','Ben 10 kids','MatchApp Ai KIDS classics']);
 const body='<h1>Classic cartoons to rediscover: the 1950s to the 2000s</h1><p>Woody Woodpecker (Pica-Pau), Garfield, DuckTales, Doug, the Smurfs and more: an editorial nostalgia collection for families, with original release years, parent notes and regional viewing links. These are favorites, not a popularity ranking.</p><p><a class="watch" href="/kids/#kids-match-stage">Match a cartoon by age, mood and decade</a></p>'+[1950,1960,1970,1980,1990,2000].map(d=>'<section><h2>'+d+'s cartoons & family films</h2><div class="list">'+classics.filter(i=>Number(i.year)>=d&&Number(i.year)<d+10).map(i=>'<article data-ages="'+i.ages.join(',')+'"><a href="/kids/titles/'+slug(i.title)+'/"><img data-kids-art="'+slug(i.title)+'" src="/kids/covers/'+slug(i.title)+'.svg" alt="'+escape(i.title)+' cover" width="160" height="240" loading="lazy"><h3>'+escape(i.title)+' ('+i.year+')</h3></a><p>'+escape(i.desc)+'</p><p>Age bands: '+i.ages.filter(v=>v!=='all').join(', ')+'</p></article>').join('')+'</div></section>').join('');
 const hubData={
   '@context':'https://schema.org',
   '@graph':[
-    {'@type':'CollectionPage',name:'Classic cartoon nostalgia guide',url:hub,dateModified:SEO_REVISION,isPartOf:{'@type':'WebSite',name:'MatchApp TV Ai',url:`${SITE}/`},keywords:hubKeywords.join(', '),description:'Classic cartoons from the 1950s–2000s with age guidance and original title pages linking to regional viewing guides.',mainEntity:{'@type':'ItemList',itemListElement:classics.map((i,index)=>({'@type':'ListItem',position:index+1,name:i.title,url:`${SITE}/kids/titles/${slug(i.title)}/`}))}},
+    {'@type':'CollectionPage',name:'Classic cartoon nostalgia guide',url:hub,dateModified:SEO_REVISION,isPartOf:{'@type':'WebSite',name:'MatchApp Ai KIDS',url:`${SITE}/`},keywords:hubKeywords.join(', '),description:'Classic cartoons from the 1950s–2000s with age guidance and original title pages linking to regional viewing guides.',mainEntity:{'@type':'ItemList',itemListElement:classics.map((i,index)=>({'@type':'ListItem',position:index+1,name:i.title,url:`${SITE}/kids/titles/${slug(i.title)}/`}))}},
     {'@type':'BreadcrumbList',itemListElement:[{'@type':'ListItem',position:1,name:'Kids Mode',item:`${SITE}/kids/`},{'@type':'ListItem',position:2,name:'Classic cartoons',item:hub}]}
   ]
 };

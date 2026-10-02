@@ -1,0 +1,48 @@
+name: Normalize MatchApp brand
+on:
+  push:
+    branches: [main]
+    paths:
+      - '**/*.html'
+      - 'tools/finalize-brand.js'
+      - 'tools/build-kids-pages.js'
+      - 'tools/build-world-discovery-guide.js'
+      - 'assets/brand/matchapp-tv-ai-v2.svg'
+      - 'brand.css'
+      - '.github/workflows/brand-normalize.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: brand-normalize-main
+  cancel-in-progress: true
+jobs:
+  normalize:
+    if: github.event_name == 'workflow_dispatch' || !contains(github.event.head_commit.message, '[brand-normalized]')
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: main
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - name: Normalize every public page to the canonical Adult/Kids brand
+        run: node tools/finalize-brand.js
+      - name: Verify brand normalizer contract
+        run: node --test tests/finalize-brand.test.cjs
+      - name: Commit normalized public pages when needed
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git diff --quiet -- '*.html'; then
+            echo 'Brand already normalized.'
+            exit 0
+          fi
+          git config user.name 'MatchApp Brand Bot'
+          git config user.email 'bot@matchapp.tv'
+          git add -- '*.html'
+          git commit -m 'Normalize public MatchApp branding [brand-normalized]'
+          git push origin HEAD:main

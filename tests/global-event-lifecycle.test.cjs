@@ -28,7 +28,7 @@ test('event generator computes every static badge and Home ordering',()=>{
 test('pricing and homepage branding fixes survive daily editorial builds',()=>{
  assert.doesNotMatch(read('pricing/pricing.html'),/Gemini AI finds a duplicate-free match/);
  const home=read('index.html');
- assert.doesNotMatch(home,/MatchApp TV Ai Ai/);
+ assert.doesNotMatch(home,/MatchApp Ai Ai/);
  assert.match(home,/<meta name="application-name" content="MatchApp Ai">/);
- assert.match(read('tools/finalize-brand.js'),/\(?! TV Ai\| Ai\\b\| iA\\b\)/);
+ assert.match(read('tools/finalize-brand.js'),/const ADULT='MatchApp Ai',KIDS='MatchApp Ai KIDS'/);
 });

@@ -469,3 +469,21 @@ html body.page-shell header.app-header.mh-topbox nav.mh-deck :is(
 /* Artwork/card buttons are deliberately excluded so posters keep their natural card shape. */
 /* MA-PILL-FINAL:END */
 
+
+
+/* Canonical Kids brand: Kids never reuses the adult wordmark artwork. */
+.kids-mode .kids-brand-copy .kids-wordmark,
+html[data-kids-mode] .kids-brand-copy .kids-wordmark,
+.kids-guide-page .kids-wordmark{
+  display:inline-flex!important;
+  width:auto!important;
+  max-width:100%!important;
+  height:auto!important;
+  aspect-ratio:auto!important;
+  align-items:center;
+  color:#fff4b8!important;
+  font:900 clamp(1.05rem,3.4vw,1.55rem)/1.05 system-ui,-apple-system,"Segoe UI",sans-serif!important;
+  letter-spacing:.01em!important;
+  text-shadow:0 2px 0 #6f3d8f,0 0 14px #83e7ff66!important;
+  white-space:nowrap;
+}
