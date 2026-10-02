@@ -1732,7 +1732,7 @@ window.eventMatch = function (query) {
 };
 
 // ----------------------------------------------------
-// SHARED RAIL CONTROLLER — native scroll-snap, no clones, no per-frame writes.
+// SHARED RAIL CONTROLLER — Top Titles uses a seamless compositor loop; Events retain bounded native scrolling.
 // ----------------------------------------------------
 (function () {
     const REDUCED = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
@@ -1751,6 +1751,40 @@ window.eventMatch = function (query) {
 
     function updateArrows(vp) {
         const root = vp.closest('.marquee-wrapper,.events-wrapper,.ma-news-carousel-shell,.premium-card') || vp.parentElement;
+        // Top Titles: continuous leftward compositor loop with no visible rewind.
+        if (vp.id === 'marquee-viewport' && !REDUCED) {
+            const track = vp.querySelector('#marquee-track');
+            if (!track) return;
+            const FLOW_SECONDS_PER_TITLE = 6;
+            let flowFrame = 0;
+            const syncFlow = () => {
+                const firstClone = track.querySelector('[data-marquee-clone="1"]');
+                if (!firstClone) return;
+                const uniqueCount = Array.from(track.children).findIndex(node => node.dataset.marqueeClone === '1');
+                const shift = Math.max(1, firstClone.offsetLeft - track.offsetLeft);
+                track.style.setProperty('--marquee-shift', shift + 'px');
+                track.style.setProperty('--marquee-duration', Math.max(96, uniqueCount * FLOW_SECONDS_PER_TITLE) + 's');
+                vp.dataset.matchappAutoplayActive = '1';
+                track.classList.add('is-marquee-flowing');
+            };
+            const queueFlowSync = () => {
+                if (flowFrame) cancelAnimationFrame(flowFrame);
+                flowFrame = requestAnimationFrame(() => { flowFrame = 0; syncFlow(); });
+            };
+            vp.addEventListener('keydown', e => {
+                if (e.key !== 'Enter' && e.key !== ' ') return;
+                const item = e.target.closest?.('.marquee-item:not([data-marquee-clone="1"])');
+                if (!item) return;
+                e.preventDefault();
+                const title = item.querySelector('img[data-title]')?.dataset.title;
+                if (title) window.selectMarqueeItem?.(title);
+            });
+            window.addEventListener('resize', queueFlowSync, {passive:true});
+            document.addEventListener('matchapp:marquee-refresh', queueFlowSync);
+            queueFlowSync();
+            return;
+        }
+
         if (!root) return;
         // Snap padding parks the first card a few px in, so the ends use a
         // small tolerance instead of exact 0 / max.
@@ -1767,7 +1801,7 @@ window.eventMatch = function (query) {
         // Autoplay runs only while visible, pauses while hovered, and holds
         // off for a while after any touch, drag, key or arrow press.
         let hovering = false, holdUntil = 0, visible = true;
-        const autoDelay = vp.id === 'marquee-viewport' ? 1050 : 6500;
+        const autoDelay = 6500;
         const railDelay = vp.id === 'events-viewport' ? 4000 : autoDelay;
         const HOLD_AFTER_TOUCH = 8000;
 
