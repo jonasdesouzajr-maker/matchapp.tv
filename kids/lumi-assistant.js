@@ -1,4 +1,4 @@
-/* Floating Lumi voice assistant — Kids Mode only. */
+/* Floating Luma voice assistant — Kids Mode only. */
 (function(){'use strict';
 if(window.__matchappLumiAssistant)return;window.__matchappLumiAssistant=true;
 const POS_KEY='match_kids_lumi_assistant_pos',VOICE_KEY='match_kids_lumi_voice';
@@ -108,7 +108,7 @@ function installEvents(){
 function boot(){
   if(!document.body.classList.contains('page-kids'))return;
   host=document.createElement('button');host.id='kids-lumi-assistant';host.type='button';host.dataset.state='idle';
-  host.setAttribute('aria-label',tr('assistantLabel','Ask Lumi a question by voice'));
+  host.setAttribute('aria-label',tr('assistantLabel','Ask Luma a question by voice'));
   host.innerHTML='<span class="kids-lumi-assistant-ring" aria-hidden="true"></span><span class="kids-lumi-assistant-body"><img src="/kids/lumi.svg?v=20261001-immersive1" alt="" width="96" height="96" draggable="false"><span class="kids-lumi-assistant-wave" aria-hidden="true"><i></i><i></i><i></i></span><span class="kids-lumi-assistant-mic" aria-hidden="true">🎙️</span></span>';
   document.body.appendChild(host);installDrag();installEvents();placeStored();
   host.addEventListener('click',()=>{if(Date.now()<suppressClickUntil)return;activate()});

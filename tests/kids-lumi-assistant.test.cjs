@@ -1,7 +1,7 @@
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
 const {JSDOM}=require('jsdom');const root=path.join(__dirname,'..'),read=p=>fs.readFileSync(path.join(root,p),'utf8');
 
-test('Kids page exposes only the voice-first Lumi assistant, not a typed Ask AI surface',()=>{
+test('Kids page exposes only the voice-first Luma assistant, not a typed Ask AI surface',()=>{
  const html=read('kids/index.html'),doc=new JSDOM(html).window.document;
  const backend=doc.querySelector('.kids-voice-backend');
  assert(backend,'voice backend remains available for the vetted Kids AI path');
@@ -10,10 +10,12 @@ test('Kids page exposes only the voice-first Lumi assistant, not a typed Ask AI 
  assert.match(html,/lumi-assistant\.css\?v=20261001-voice1/);
  assert.match(html,/lumi-assistant\.js\?v=20261001-voice2/);
  assert.match(html,/voice-input\.js\?v=20261001-lumi1/);
+ assert.match(html,/with Luma, a voice-first Kids assistant/);
+ assert.doesNotMatch(html,/with Lumi, a voice-first Kids assistant/);
  assert.match(html,/kids\/immersive\.js\?v=20261001-immersive7/);
 });
 
-test('Floating Lumi is compact, draggable, stateful and persists a safe viewport-relative position',()=>{
+test('Floating Luma is compact, draggable, stateful and persists a safe viewport-relative position',()=>{
  const js=read('kids/lumi-assistant.js'),css=read('kids/lumi-assistant.css');
  for(const token of ['pointerdown','pointermove','pointerup','setPointerCapture','match_kids_lumi_assistant_pos','localStorage.setItem','matchapp:voice-transcript','matchapp:kids-ai-result','matchapp:kids-ai-error'])assert(js.includes(token),token);
  assert.match(css,/--lumi-size:clamp\(68px,7\.2vw,88px\)/);
@@ -22,11 +24,11 @@ test('Floating Lumi is compact, draggable, stateful and persists a safe viewport
  assert.doesNotMatch(js,/innerHTML=.*(?:input|textarea)/i);
 });
 
-test('Tapping Lumi speaks the prompt, then starts the hidden Kids microphone and speaks the approved answer',async()=>{
+test('Tapping Luma speaks the prompt, then starts the hidden Kids microphone and speaks the approved answer',async()=>{
  const html='<!doctype html><body class="page-kids"><form id="kids-ask-form"><input id="kids-question"><button id="kids-mic" type="button"></button></form></body>';
  const dom=new JSDOM(html,{url:'https://matchapp.tv/kids/',runScripts:'outside-only'}),w=dom.window;
  let spoken=[],done=null,micClicks=0;
- w.MatchAppLumi={t:key=>({askQuestion:'Ask your question!',assistantLabel:'Ask Lumi a question by voice',asked:"Here's a safe idea.",empty:'Out of power.'}[key]||key),enable:()=>{},stop:()=>{},speak:(text,cb)=>{spoken.push(text);done=cb||null;return true}};
+ w.MatchAppLumi={t:key=>({askQuestion:'Ask your question!',assistantLabel:'Ask Luma a question by voice',asked:"Here's a safe idea.",empty:'Out of power.'}[key]||key),enable:()=>{},stop:()=>{},speak:(text,cb)=>{spoken.push(text);done=cb||null;return true}};
  Object.defineProperty(w.navigator,'mediaDevices',{value:{getUserMedia:async()=>({getTracks:()=>[{stop(){}}]})},configurable:true});
  w.document.getElementById('kids-mic').addEventListener('click',()=>{micClicks++});
  w.eval(read('kids/lumi-assistant.js'));
@@ -46,7 +48,7 @@ test('Tapping Lumi speaks the prompt, then starts the hidden Kids microphone and
  dom.window.close();
 });
 
-test('Lumi voice remains childlike, local-first and audio-only for Kids results',()=>{
+test('Luma voice remains childlike, local-first and audio-only for Kids results',()=>{
  const immersive=read('kids/immersive.js'),voice=read('voice-input.js'),kids=read('kids/kids.js');
  assert.match(immersive,/utter\.rate=1\.12/);assert.match(immersive,/utter\.pitch=1\.24/);
  assert.match(immersive,/voice\.localService/);assert.match(immersive,/askQuestion:'Ask your question!'/);

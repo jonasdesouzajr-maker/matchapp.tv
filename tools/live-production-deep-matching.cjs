@@ -185,7 +185,7 @@ async function guarded(browser,label,fn){
    await lumi.waitFor({state:'visible',timeout:10000});
    const box=await lumi.boundingBox();
    const voiceOnly=await page.evaluate(()=>{const backend=document.querySelector('.kids-voice-backend');return !!backend&&backend.hidden===true&&backend.getAttribute('aria-hidden')==='true'&&getComputedStyle(backend).display==='none'});
-   record('LIVE floating Lumi is compact and Kids Ask AI is voice-only',!!box&&box.width>=60&&box.width<=96&&box.height>=60&&box.height<=96&&voiceOnly,box?Math.round(box.width)+'x'+Math.round(box.height):'missing');
+   record('LIVE floating Luma is compact and Kids Ask AI is voice-only',!!box&&box.width>=60&&box.width<=96&&box.height>=60&&box.height<=96&&voiceOnly,box?Math.round(box.width)+'x'+Math.round(box.height):'missing');
    await page.evaluate(question=>{const input=document.getElementById('kids-question'),form=document.getElementById('kids-ask-form');input.value=question;input.dispatchEvent(new Event('input',{bubbles:true}));form.requestSubmit();},'Find a gentle funny animal cartoon from the approved Kids collection.');
    await page.waitForFunction(()=>document.getElementById('kids-chat')?.classList.contains('show')&&!document.getElementById('kids-send')?.disabled,null,{timeout:85000});
    const ans=await page.locator('#kids-answer').innerText();
