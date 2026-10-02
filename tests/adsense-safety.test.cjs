@@ -22,4 +22,7 @@ test('EEA UK and Switzerland deny Google storage and personalization before AdSe
     for(const region of protectedRegions)assert.ok(html.includes("'"+region+"'"),file+' missing protected region '+region);
     assert.ok(html.includes('wait_for_update:2000'),file+' must allow the certified CMP time to update consent');
   }
+  const eventBuilder=read('tools/build-global-events.js');
+  assert.match(eventBuilder,/function consentDefaults\(\)/,'event generator must own the protected-region consent default');
+  assert.match(eventBuilder,/ads\?consentDefaults\(\):''/,'monetized generated event pages must preserve consent defaults before Google tags');
 });

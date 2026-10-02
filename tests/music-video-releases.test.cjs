@@ -37,9 +37,11 @@ test('latest artist videos use dated exact official identities, descending dates
  assert.equal(await api.query('latest movies'),null);
  assert.equal((await api.query('latest music videos of Unknown Artist')).results.length,0);
  for(const artist of ['Lady Gaga','Shakira']){
-  const p=await api.query('latest videos of '+artist);assert.ok(p.results.length,artist);
+  const p=await api.query('latest videos of '+artist);
   const expected=data.items.filter(r=>r.artist.split(/\s+&\s+/).includes(artist)).sort((a,b)=>Date.parse(b.publishedAt)-Date.parse(a.publishedAt));
-  assert.equal(p.results[0]._musicVideoId,expected[0].id);
+  const fresh=expected.filter(r=>{const age=d.window.Date.now()-Date.parse(r.verifiedAt+'T00:00:00Z');return age>=0&&age<=2*86400000;});
+  if(fresh.length){assert.ok(p.results.length,artist);assert.equal(p.results[0]._musicVideoId,fresh[0].id);}
+  else{assert.equal(p.results.length,0,artist+' stale inventory must fail closed');assert.match(p.answer,/could not confirm|não consegui confirmar|no pude confirmar/i);}
  }
  assert.ok((await api.query('latest music videos of Lady Gaga & Doechii')).results.length);
  assert.ok((await api.query('latest videos of them',[{text:'Lady Gaga & Doechii'}])).results.length);

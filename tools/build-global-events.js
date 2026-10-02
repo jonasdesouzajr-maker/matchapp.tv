@@ -31,9 +31,23 @@ const cards=events.map(card).join('\n');
 const homeEvents=homeEventOrder(events,buildNow);
 const homeCards=homeEvents.map(card).join('\n');
 
+function consentDefaults(){return `<!-- GOOGLE CONSENT MODE: EEA + UK + Switzerland default denied until a certified CMP supplies consent. -->
+<script>
+window.dataLayer=window.dataLayer||[];
+window.gtag=window.gtag||function(){window.dataLayer.push(arguments);};
+window.gtag('consent','default',{
+  ad_storage:'denied',
+  analytics_storage:'denied',
+  ad_user_data:'denied',
+  ad_personalization:'denied',
+  wait_for_update:2000,
+  region:['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','IS','LI','NO','GB','CH']
+});
+<\/script>
+`;}
 function tracker(){return `<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-M7J3NNBN');<\/script>`;}
 function head({title,description,url,image,keywords,schema,ads=false}){
- return `<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+ return `${ads?consentDefaults():''}<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>${esc(title)} | MatchApp.tv</title><meta name="description" content="${esc(description)}"><meta name="keywords" content="${esc(keywords||'entertainment events, film festivals, Indian cinema, Mexico cultural events, comic cons, where to watch, MatchApp event guide')}">
 <link rel="canonical" href="${esc(url)}"><meta property="og:site_name" content="MatchApp TV Ai"><meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(description)}"><meta property="og:url" content="${esc(url)}"><meta property="og:type" content="website"><meta property="og:image" content="${esc(image)}"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="${esc(image)}">
 <link rel="icon" href="/logo.jpeg?v=2"><link rel="manifest" href="/manifest.json">
