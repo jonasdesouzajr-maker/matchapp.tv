@@ -2,7 +2,7 @@
 // The live deployment marker is served through multiple caches. A bare URL can
 // retain an old cached 404 even after the exact SHA succeeds with a query key.
 // Keep the marker a hard prerequisite while avoiding false release failures.
-async function fetchDeploymentMarker(base, {attempts=3, timeoutMs=20000, retryDelayMs=750, fetcher=globalThis.fetch}={}) {
+async function fetchDeploymentMarker(base, {attempts=12, timeoutMs=20000, retryDelayMs=2000, fetcher=globalThis.fetch}={}) {
   let problem='no successful response';
   for(let attempt=0;attempt<attempts;attempt++) {
     const url=new URL('/deployment-sha.txt',base);
