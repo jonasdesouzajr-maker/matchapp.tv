@@ -36,7 +36,7 @@ test('Tapping Lumi speaks the prompt, then starts the hidden Kids microphone and
  await new Promise(resolve=>setTimeout(resolve,0));
  assert.equal(spoken[0],'Ask your question!');
  assert.equal(micClicks,0,'listening waits until Lumi finishes the prompt');
- done();assert.equal(micClicks,1);
+ done();await new Promise(resolve=>setTimeout(resolve,0));assert.equal(micClicks,1);
  w.document.dispatchEvent(new w.CustomEvent('matchapp:voice-transcript',{detail:{inputId:'kids-question',text:'funny animals'}}));
  assert.equal(lumi.dataset.state,'thinking');
  w.document.dispatchEvent(new w.CustomEvent('matchapp:kids-ai-result',{detail:{speech:'Bluey. A playful family adventure.'}}));
