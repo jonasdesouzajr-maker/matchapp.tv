@@ -106,3 +106,42 @@ html.reduce-motion body.ai-chat-page.ma-ia-discover .discover-speak.speaking,htm
  html body.ai-chat-page.ma-ia-discover .discover-head{border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important}
  html body.ai-chat-page.ma-ia-discover #discover-new-input{border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important}
 }
+
+/* Gemini-style ask pill. Input spans the row; mic pops beside it. Handlers stay on the same ids. */
+@keyframes ma-ask-glow{0%{filter:hue-rotate(0deg)}100%{filter:hue-rotate(40deg)}}
+@keyframes ma-mic-pop{0%,100%{box-shadow:0 0 0 0 rgba(232,186,64,.45)}50%{box-shadow:0 0 0 8px rgba(232,186,64,0)}}
+html body.ma-ia-home #ma-ai-entry .home-ask-composer{
+  position:relative!important;display:flex!important;align-items:center!important;gap:8px!important;
+  width:100%!important;min-height:52px!important;margin:0!important;padding:6px 6px 6px 16px!important;
+  border:0!important;border-radius:999px!important;background:#171226!important;
+  box-shadow:0 0 0 1px rgba(242,207,105,.45),0 0 22px rgba(168,110,255,.35)!important;
+  overflow:visible!important;
+}
+html body.ma-ia-home #ma-ai-entry .home-ask-composer::before{
+  content:"";position:absolute;inset:-2px;border-radius:999px;z-index:-1;pointer-events:none;
+  background:conic-gradient(from 90deg,#f2cf69,#b88cff,#7ec8ff,#f2cf69);
+  animation:ma-ask-glow 4.5s linear infinite;opacity:.85;
+}
+html body.ma-ia-home #ma-ai-entry #specific-search-input{
+  flex:1 1 auto!important;width:auto!important;min-width:0!important;height:40px!important;min-height:40px!important;max-height:88px!important;
+  margin:0!important;padding:8px 0!important;border:0!important;border-radius:0!important;background:transparent!important;
+  font-size:16px!important;line-height:1.35!important;resize:none!important;
+}
+html body.ma-ia-home #ma-ai-entry #mic-btn-index{
+  display:inline-flex!important;align-items:center!important;justify-content:center!important;
+  width:42px!important;height:42px!important;min-width:42px!important;margin:0!important;padding:0!important;
+  border:0!important;border-radius:50%!important;background:radial-gradient(circle at 30% 30%,#ffe7a3,#e0b44a 55%,#8a6420)!important;
+  color:#1a1208!important;animation:ma-mic-pop 1.8s ease-out infinite!important;flex:0 0 auto!important;
+}
+html body.ma-ia-home #ma-ai-entry #mic-btn-index svg{width:20px!important;height:20px!important}
+html body.ma-ia-home #ma-ai-entry .home-ask-composer>.gold-btn{
+  width:42px!important;height:42px!important;min-width:42px!important;min-height:42px!important;margin:0!important;
+  border-radius:50%!important;background:#2a2140!important;
+}
+html body.page-home.ma-first-screen #ma-ai-entry .search-examples,
+html body.page-home.ma-first-screen #search-box .ma-ai-quota{margin-top:6px!important}
+@media(prefers-reduced-motion:reduce){
+  html body.ma-ia-home #ma-ai-entry .home-ask-composer::before,
+  html body.ma-ia-home #ma-ai-entry #mic-btn-index{animation:none!important}
+}
+html body.page-home.ma-first-screen #ma-ai-entry .ma-ai-quota,html body.page-home.ma-first-screen #search-box .quota-note{display:none!important}
