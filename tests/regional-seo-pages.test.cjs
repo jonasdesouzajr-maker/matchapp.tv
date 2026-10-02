@@ -23,6 +23,14 @@ test('regional landing pages have canonical and reciprocal hreflang cluster', ()
   }
 });
 
+test('worldwide x-default page reciprocates regional hreflang cluster', () => {
+  const html = fs.readFileSync(path.join(root, 'guides', 'worldwide-entertainment-discovery', 'index.html'), 'utf8');
+  for (const [code, lang] of regions) {
+    assert.ok(html.includes('hreflang="' + lang + '" href="https://matchapp.tv/' + code + '/"'));
+  }
+  assert.ok(html.includes('hreflang="x-default" href="https://matchapp.tv/guides/worldwide-entertainment-discovery/"'));
+});
+
 test('regional routes persist in sitemap generator and current sitemap', () => {
   const generator = fs.readFileSync(path.join(root, 'tools', 'update-sitemap.js'), 'utf8');
   const sitemap = fs.readFileSync(path.join(root, 'sitemap.xml'), 'utf8');
