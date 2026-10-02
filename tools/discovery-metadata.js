@@ -26,7 +26,7 @@ page('cooking/index.html', 'Cooking Channels & Recipe Videos with AI | MatchApp 
   'Find original recipe videos from Maangchi, Jamie Oliver, Rita Lobo and Chef John. Explore Korean and Brazilian cooking, and ask AI about techniques.',
   'original cooking channels, recipe videos, Korean cooking, Brazilian recipes, Maangchi recipes, Jamie Oliver recipes, Rita Lobo Panelinha, Food Wishes Chef John, receitas em vídeo, canais de culinária');
 page('anime.html', 'What Anime to Watch & Where to Stream | MatchApp Ai',
-  'Find anime movies and series by mood, genre and streaming service. Explore anime recommendations and ask MatchApp AI what to watch next.',
+  'Find anime movies and series by mood, genre and streaming service. Explore anime recommendations and ask MatchApp Ai what to watch next.',
   'what anime should I watch, anime recommendations, where to watch anime, anime finder, Japanese animation, anime para assistir, onde assistir anime');
 page('together.html', 'Match Together: What to Watch as a Couple | MatchApp Ai',
   'Choose what to watch together: combine two moods for a movie, series, anime or K-drama match. Invite a partner or friend with a shared session link.',
@@ -38,7 +38,7 @@ page('platforms/youtube/index.html', 'YouTube Channels & Videos to Watch | Match
   'Discover curated YouTube creators and videos across entertainment, music and more. Explore channels and ask AI for a recommendation by topic.',
   'what to watch on YouTube, YouTube creator discovery, YouTube channel recommendations, music videos, video podcasts, canais do YouTube');
 page('platforms/spotify/index.html', 'Spotify Music & Podcast Recommendations | MatchApp Ai',
-  'Explore curated Spotify music and podcasts for your mood. Discover listening ideas and ask MatchApp AI for a topic-focused recommendation.',
+  'Explore curated Spotify music and podcasts for your mood. Discover listening ideas and ask MatchApp Ai for a topic-focused recommendation.',
   'Spotify music discovery, podcast recommendations, what podcast should I listen to, music by mood, Spotify playlists, podcasts para ouvir');
 page('collections/movie/index.html', 'Movie Recommendations: What to Watch Tonight | MatchApp Ai',
   'Browse curated movies across comedy, romance, drama and more. Find a film for tonight and ask AI to match your mood, genre and viewing preferences.',
@@ -59,17 +59,17 @@ page('collections/youtube-channel/index.html', 'YouTube Creator & Channel Recomm
   'Explore curated YouTube creators across entertainment and specialist topics. Find a channel to follow and ask AI for recommendations by interest.',
   'YouTube channel recommendations, creator discovery, channels to follow, entertainment YouTube channels, canais para seguir');
 page('collections/youtube-shorts/index.html', 'Short Videos & YouTube Shorts to Discover | MatchApp Ai',
-  'Explore curated short-form videos for a quick watch. Discover creators and ask MatchApp AI for short entertainment that matches your interests.',
+  'Explore curated short-form videos for a quick watch. Discover creators and ask MatchApp Ai for short entertainment that matches your interests.',
   'YouTube Shorts discovery, short-form entertainment, quick videos to watch, short video recommendations');
 page('collections/classical-music/index.html', 'Classical Music for Focus, Calm & Discovery | MatchApp Ai',
-  'Explore curated classical recordings, performances and channels. Discover music for focus, calm or attentive listening with MatchApp AI.',
+  'Explore curated classical recordings, performances and channels. Discover music for focus, calm or attentive listening with MatchApp Ai.',
   'classical music discovery, classical music for focus, music for calm, classical performances');
 page('collections/gospel-and-faith/index.html', 'Gospel Music & Faith Content to Discover | MatchApp Ai',
-  'Explore curated gospel music, teaching and faith stories. Ask MatchApp AI for recommendations that match your interests and listening mood.',
+  'Explore curated gospel music, teaching and faith stories. Ask MatchApp Ai for recommendations that match your interests and listening mood.',
   'gospel music discovery, faith content, gospel recommendations, música gospel');
 const moods = [
   ['cozy-comfort-watch', 'Comfort Movies & Cozy Shows to Watch', 'Find curated comfort watches and gentle stories for a quiet evening. Explore cozy movies and shows, then ask AI for a comforting match.', 'comfort movies, cozy shows, comfort watch, cozy evening movies, filmes confortáveis'],
-  ['light-and-feel-good', 'Feel-Good Movies & Light Shows to Watch', 'Find curated feel-good movies and light entertainment for an easy evening. Ask MatchApp AI for an uplifting pick that fits your taste.', 'feel-good movies, light shows, uplifting movies, filmes leves'],
+  ['light-and-feel-good', 'Feel-Good Movies & Light Shows to Watch', 'Find curated feel-good movies and light entertainment for an easy evening. Ask MatchApp Ai for an uplifting pick that fits your taste.', 'feel-good movies, light shows, uplifting movies, filmes leves'],
   ['funny', 'Funny Movies & Comedy Shows to Watch', 'Browse curated comedies, sitcoms and stand-up. Find something funny to watch and ask AI for a comedy recommendation that matches your taste.', 'funny movies, comedy recommendations, sitcoms to watch, filmes de comédia'],
   ['romantic', 'Romantic Movies & K-Dramas for Date Night', 'Explore curated love stories, romantic movies and Korean dramas. Ask AI for a romance match for a date night or a quiet evening.', 'romantic movies, date night movies, romance recommendations, romantic K-dramas, filmes românticos'],
   ['intense-and-thrilling', 'Thriller Movies & Suspense Shows to Watch', 'Explore curated thrillers, crime dramas and survival stories. Ask AI for a tense movie or series that fits your mood and viewing preferences.', 'thriller recommendations, suspense movies, crime drama series, suspense para assistir'],

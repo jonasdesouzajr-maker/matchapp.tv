@@ -262,7 +262,7 @@
       const cred = await navigator.credentials.create({
         publicKey: {
           challenge: randomBytes(32),
-          rp: { name: 'MatchApp TV' },
+          rp: { name: 'MatchApp Ai KIDS' },
           user: {
             id: userId,
             name: 'matchapp-parent-' + Date.now(),

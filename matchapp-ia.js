@@ -1,4 +1,4 @@
-/* MatchApp IA 2026 — presentation-only information architecture.
+/* MatchApp Ai 2026 — presentation-only information architecture.
    Reuses existing MatchApp functions and DOM ids; no quota/auth/payment/matching rule changes. */
 (function(){
 'use strict';

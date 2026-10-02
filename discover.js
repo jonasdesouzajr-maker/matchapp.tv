@@ -110,10 +110,10 @@ function parseAIResponse(data) {
     // than dropping the user into offline mode over a missing closing brace.
     if (!parsed) {
         parsed = repairTruncatedJSON(raw);
-        if (parsed) console.warn('[MatchApp AI] Response was truncated; recovered it by repairing the JSON.');
+        if (parsed) console.warn('[MatchApp Ai] Response was truncated; recovered it by repairing the JSON.');
     }
     if (!parsed) {
-        console.error('[MatchApp AI] Could not parse response. finishReason:', data._finishReason,
+        console.error('[MatchApp Ai] Could not parse response. finishReason:', data._finishReason,
             '| model:', data._servedByModel, '\nFirst 400 chars:', String(raw).slice(0, 400));
         throw new Error('Bad AI format');
     }
@@ -189,11 +189,11 @@ async function askAIConversational(question, history) {
                 throw err;
             }
             if (attempt === 1) {
-                console.warn('[MatchApp AI] Transient failure; retrying once:', (error && error.message) || (data && data.error) || 'unknown');
+                console.warn('[MatchApp Ai] Transient failure; retrying once:', (error && error.message) || (data && data.error) || 'unknown');
                 continue;
             }
             const detail = (error && error.message) || (data && data.error) || 'unknown';
-            console.error('[MatchApp AI] Both attempts failed:', detail,
+            console.error('[MatchApp Ai] Both attempts failed:', detail,
                 '\n→ Run the diagnostic to see exactly why: open /ai-check.html on this site.');
             const err = new Error('AI unavailable: ' + detail);
             err.aiUnavailable = true;   // lets the caller word the message honestly
@@ -203,7 +203,7 @@ async function askAIConversational(question, history) {
                 e.aiUnavailable = true;
                 throw e;
             }
-            console.warn('[MatchApp AI] Transient first-attempt error; retrying once:', e.message || e);
+            console.warn('[MatchApp Ai] Transient first-attempt error; retrying once:', e.message || e);
         }
     }
     const err = new Error('AI unavailable');
@@ -1945,7 +1945,7 @@ function askAndRender(question) {
     const running = Promise.resolve().then(() => runAskAndRender(question)).catch(error => {
         // Even the independent source fallback can fail. Restore the composer
         // and stop its loader instead of leaving an unhandled rejection.
-        console.warn('[MatchApp AI] Request interrupted:',error?.message||error);
+        console.warn('[MatchApp Ai] Request interrupted:',error?.message||error);
         finishAiWorkflow();
         const loading=document.getElementById('discover-loading');
         if(loading)loading.style.display='none';
@@ -2038,7 +2038,7 @@ async function showMusicVideoInfoCard(id) {
     }
     currentThread.turns.push({ role: 'assistant', text, results: [], musicVideoId: id, ts: Date.now() });
     currentThread.updatedAt = Date.now(); persistCurrentThread();
-    document.title = title + ' — MatchApp AI Concierge';
+    document.title = title + ' — MatchApp Ai Concierge';
     document.getElementById('chat-log')?.scrollIntoView({ behavior: 'auto', block: 'start' });
     return true;
 }
@@ -2183,7 +2183,7 @@ async function showEventInfoCard(eventPath) {
         persistCurrentThread();
         refreshAiWorkspaceStatus();
         window.__MATCHAPP_EVENT_RENDERED = true;
-        document.title = `${title} — MatchApp AI Concierge`;
+        document.title = `${title} — MatchApp Ai Concierge`;
         const input = document.getElementById('discover-new-input');
         if (input) input.placeholder = `Ask a follow-up about ${title}…`;
         const log = document.getElementById('chat-log');
@@ -2227,7 +2227,7 @@ async function runDiscovery() {
     }
 
     if (title) {
-        document.title = `${title} — MatchApp AI Concierge`;
+        document.title = `${title} — MatchApp Ai Concierge`;
         if (loadEl) loadEl.style.display = 'none';
         await showTitleInfoCard(title);
         return;
@@ -2238,7 +2238,7 @@ async function runDiscovery() {
         if (emptyEl) emptyEl.style.display = 'block';
         return;
     }
-    document.title = `${q} — MatchApp AI Concierge`;
+    document.title = `${q} — MatchApp Ai Concierge`;
     if (loadEl) loadEl.style.display = 'none';
     await askAndRender(q);
 }

@@ -1,4 +1,4 @@
-/* MatchApp TV Ai — shared premium page shell (2026-09-21).
+/* MatchApp Ai — shared premium page shell (2026-09-21).
 
    Gives every non-Home, non-Kids route the same top box the Home landing
    uses, plus a labelled HOME control back to the landing. Presentation only:
