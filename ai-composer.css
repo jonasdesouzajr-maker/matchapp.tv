@@ -150,3 +150,30 @@ html body.page-home #ma-ai-answer .ma-ai-answer-q{margin:0 0 4px!important;color
 html body.page-home #ma-ai-answer .ma-ai-answer-body{margin:0!important;color:#fff!important;font-size:15px!important;line-height:1.45!important}
 html body.ai-chat-page #chat-log,html body.ai-chat-page .chat-assistant,html body.ai-chat-page .chat-answer-text{display:block!important;visibility:visible!important;opacity:1!important;color:#fff!important;height:auto!important;max-height:none!important}
 html body.ai-chat-page #chat-log{display:flex!important}
+
+/* Full-width ask pill. Glow is a border, not an oval over the text. */
+html body.page-home #search-box > .home-ask-composer,
+html body.ma-ia-home #ma-ai-entry .home-ask-composer{
+  display:flex!important;flex-wrap:nowrap!important;align-items:center!important;gap:8px!important;
+  width:100%!important;max-width:none!important;min-height:64px!important;box-sizing:border-box!important;
+  margin:0!important;padding:8px 8px 8px 18px!important;border-radius:999px!important;
+  background:#161222!important;border:0!important;position:relative!important;overflow:visible!important;
+  grid-template-columns:none!important;grid-template-areas:none!important;
+}
+html body.ma-ia-home #ma-ai-entry .home-ask-composer::before{
+  content:""!important;position:absolute!important;inset:-2px!important;border-radius:999px!important;z-index:-1!important;
+  background:linear-gradient(90deg,#f2cf69,#b88cff,#7ec8ff,#f2cf69)!important;background-size:200% 100%!important;
+  animation:ma-ask-sweep 3.6s linear infinite!important;filter:none!important;opacity:1!important;
+}
+@keyframes ma-ask-sweep{from{background-position:0 0}to{background-position:200% 0}}
+html body.ma-ia-home #ma-ai-entry #specific-search-input,
+html body.page-home #search-box > .home-ask-composer > #specific-search-input{
+  flex:1 1 auto!important;width:100%!important;min-width:0!important;height:44px!important;min-height:44px!important;max-height:88px!important;
+  margin:0!important;padding:8px 0!important;border:0!important;border-radius:0!important;background:transparent!important;
+  box-shadow:none!important;font:500 16px/1.35 Georgia,system-ui,sans-serif!important;resize:none!important;
+}
+html body.ma-ia-home #ma-ai-entry #mic-btn-index,
+html body.ma-ia-home #ma-ai-entry .home-ask-composer>.gold-btn{
+  flex:0 0 44px!important;width:44px!important;height:44px!important;min-width:44px!important;min-height:44px!important;
+  border-radius:50%!important;margin:0!important;
+}

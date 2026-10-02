@@ -704,5 +704,6 @@ html body:not(.kids-body) .poster-wall::after{
   }
 }
 
-#trending-rail .trending-week-label{margin:0 12px 8px;color:#f2cf69;font-size:12px;font-weight:750;letter-spacing:.04em;text-transform:uppercase}
+#trending-rail .trending-week-label{margin:2px 14px 10px;font-family:Georgia,serif;font-size:22px;font-weight:700;letter-spacing:.02em;text-transform:none;background:linear-gradient(90deg,#fff6d2,#f2cf69,#fff);-webkit-background-clip:text;background-clip:text;color:transparent;animation:ma-week-shimmer 2.8s ease-in-out infinite}
+@keyframes ma-week-shimmer{0%,100%{opacity:.8}50%{opacity:1}}
 #trending-rail .marquee-viewport{touch-action:pan-x}
