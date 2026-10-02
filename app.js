@@ -6118,12 +6118,12 @@ document.addEventListener('DOMContentLoaded', () => {
 // on FX and Hulu; internationally on Disney+.
 // ----------------------------------------------------
 const SPOTLIGHT = {
-    title: 'Carrie',
-    // Prime Video drop, October 7, 2026.
-    premiereUTC: Date.UTC(2026, 9, 7, 0, 0, 0),
-    platform: 'Prime Video',
-    synopsis: "Mike Flanagan's Carrie arrives on Prime Video on October 7, 2026, with Summer H. Howell in the title role.",
-    streamUrl: 'https://www.primevideo.com/'
+    title: 'American Horror Story: 13',
+    // 9pm ET = 01:00 UTC the following day
+    premiereUTC: Date.UTC(2026, 8, 25, 1, 0, 0), // month is 0-indexed: 8 = September
+    platform: 'Hulu',
+    synopsis: "American Horror Story returns for its thirteenth installment. The official FX premiere is September 24, 2026; check FX, Hulu or your regional Disney+ listing for availability.",
+    streamUrl: 'https://www.hulu.com/series/american-horror-story-fbf9ee3c-a5f0-4d1c-9de5-fb1f0e63dcbc'
 };
 
 function renderSpotlightCountdown() {
