@@ -181,8 +181,12 @@ async function guarded(browser,label,fn){
    const upstream=[];page.on('response',response=>{if(response.url().includes('/functions/v1/gemini-proxy'))upstream.push(response.status());});
    await open(page,'/kids/');await setupFreshGuardian(page);await consent(page);
    await page.locator('#kids-age').selectOption('6-8');
-   await page.locator('#kids-question').fill('I love Bluey. Find a gentle funny animal cartoon for a six-year-old from your approved Kids collection.');
-   await page.locator('#kids-send').click();
+   const lumi=page.locator('#kids-lumi-assistant');
+   await lumi.waitFor({state:'visible',timeout:10000});
+   const box=await lumi.boundingBox();
+   const voiceOnly=await page.evaluate(()=>{const backend=document.querySelector('.kids-voice-backend');return !!backend&&backend.hidden===true&&backend.getAttribute('aria-hidden')==='true'&&getComputedStyle(backend).display==='none'});
+   record('LIVE floating Lumi is compact and Kids Ask AI is voice-only',!!box&&box.width>=60&&box.width<=96&&box.height>=60&&box.height<=96&&voiceOnly,box?Math.round(box.width)+'x'+Math.round(box.height):'missing');
+   await page.evaluate(question=>{const input=document.getElementById('kids-question'),form=document.getElementById('kids-ask-form');input.value=question;input.dispatchEvent(new Event('input',{bubbles:true}));form.requestSubmit();},'Find a gentle funny animal cartoon from the approved Kids collection.');
    await page.waitForFunction(()=>document.getElementById('kids-chat')?.classList.contains('show')&&!document.getElementById('kids-send')?.disabled,null,{timeout:85000});
    const ans=await page.locator('#kids-answer').innerText();
    const rows=await page.locator('#kids-chat-results .kids-card').evaluateAll(nodes=>nodes.map(n=>n.dataset.title));
