@@ -341,7 +341,11 @@ function sourceCreativeWork(i){
   };
 }
 
-function canonicalBrand(s){return String(s??'').replace(/MatchApp TV Ai|MatchApp TV|MatchApp AI|MatchApp iA|MatchApp IA/g,'MatchApp Ai');}\n\nfunction page(i){
+const LEGACY_BRAND_SUFFIXES=['TV Ai','TV','AI','iA','IA'];
+const LEGACY_BRAND_RE=new RegExp('MatchApp (?:'+LEGACY_BRAND_SUFFIXES.join('|')+')','g');
+function canonicalBrand(s){return String(s??'').replace(LEGACY_BRAND_RE,'MatchApp Ai');}
+
+function page(i){
   const t=esc(i.title);
   const metaTitle=canonicalBrand(i.seo.meta_title);
   const metaDescription=canonicalBrand(i.seo.meta_description);

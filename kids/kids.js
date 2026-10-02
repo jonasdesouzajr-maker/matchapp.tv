@@ -1,5 +1,5 @@
 /* ============================================================
-   MatchApp Kids
+   MatchApp Ai KIDS
    Safety principle: AI never decides what is allowed. The local curated
    library and the selected age band are the allowlist. AI can rank/recognise
    titles, but a result is discarded unless it already exists in this list.

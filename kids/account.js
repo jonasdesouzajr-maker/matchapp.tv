@@ -1,4 +1,4 @@
-/* MatchApp Kids entitlement + history bridge.
+/* MatchApp Ai KIDS entitlement + history bridge.
    The grown-up account owns the entitlement, but Kids usage, top-ups, share
    rewards and title history are isolated from the adult Match/Ask AI system. */
 (function(){

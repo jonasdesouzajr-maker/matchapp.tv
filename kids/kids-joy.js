@@ -1,5 +1,5 @@
 /* ============================================================
-   MatchApp Kids joy (2026-09-22): a short, playful celebration when a
+   MatchApp Ai KIDS joy (2026-09-22): a short, playful celebration when a
    Kids match opens, plus a quick wiggle on the match buttons.
    Bounded by design: 16 small CSS shapes, transform/opacity only,
    ~1.2 s, removed after 1.7 s or immediately when the result closes.

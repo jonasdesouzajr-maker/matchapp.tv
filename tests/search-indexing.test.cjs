@@ -75,7 +75,7 @@ test('core pages carry unique 2026 entertainment keywords and stay ads/search re
  assert.match(discover,/micro-drama finder/);
  assert.match(pricing,/Ask AI credits/);
  assert.match(pricing,/OfferCatalog/);
- assert.match(kids,/Kids Mode MatchApp/);
+ assert.match(kids,/MatchApp Ai KIDS/);
  assert.match(together,/what should we watch tonight/);
  assert.match(read('purchase.html'),/noindex/);
  assert.match(read('ads.txt'),/google.com, pub-9541435081010948, DIRECT, f08c47fec0942fa0/);

@@ -1,4 +1,4 @@
-/* MatchApp Kids first-account tour — safe, short and grown-up aware. */
+/* MatchApp Ai KIDS first-account tour — safe, short and grown-up aware. */
 (function(){
 'use strict';
 const VERSION='v1',ELIGIBLE='matchapp_first_time_onboarding_v1',DONE='matchapp_onboarding_kids_v1';

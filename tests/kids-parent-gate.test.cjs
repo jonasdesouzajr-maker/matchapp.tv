@@ -34,5 +34,5 @@ test('Kids Android shell keeps the grown-up exit visible but protects the handof
 
 test('Kids page cache-busts the parental guardian release',()=>{
  const html=read('kids/index.html');
- assert.match(html,/\/kids\/kids-guardian\.js\?v=20260922-guardian2/);
+ assert.match(html,/\/kids\/kids-guardian\.js\?v=20261002-brand1/);
 });

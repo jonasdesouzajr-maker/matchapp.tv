@@ -52,7 +52,7 @@
 
   function enrichHead(){
     const keywords=document.querySelector('meta[name="keywords"]');
-    if(keywords)keywords.content='kids movie matcher, kids show matcher, safe cartoons for kids, age appropriate kids shows, family movies for kids, preschool shows ages 3-5, kids shows ages 6-8, family entertainment ages 9-12, educational kids shows, kids music, classic cartoons, 1950s cartoons, 1960s cartoons, 1970s cartoons, 1980s cartoons, 1990s cartoons, 2000s cartoons, where to watch kids movies, MatchApp Kids Mode';
+    if(keywords)keywords.content='kids movie matcher, kids show matcher, safe cartoons for kids, age appropriate kids shows, family movies for kids, preschool shows ages 3-5, kids shows ages 6-8, family entertainment ages 9-12, educational kids shows, kids music, classic cartoons, 1950s cartoons, 1960s cartoons, 1970s cartoons, 1980s cartoons, 1990s cartoons, 2000s cartoons, where to watch kids movies, MatchApp Ai KIDS';
   }
 
   function boot(){

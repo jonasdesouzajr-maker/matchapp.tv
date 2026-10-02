@@ -1,4 +1,4 @@
-/* MatchApp Kids — one owner-authorized grown-up-area AdSense banner.
+/* MatchApp Ai KIDS — one owner-authorized grown-up-area AdSense banner.
    It loads only when the parent information disclosure is opened.
    Native Kids Android remains ad-free. */
 (function(){
