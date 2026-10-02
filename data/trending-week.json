@@ -14,12 +14,30 @@
       "tmdbId": "",
       "poster": "",
       "keywords": [
-        "Monster",
+        "Monster The Lizzie Borden Story",
+        "where to watch Monster",
+        "Netflix trending series",
         "Lizzie Borden",
-        "Netflix",
-        "true crime",
-        "trending TV"
-      ]
+        "true crime this week"
+      ],
+      "description": "Netflix true-crime series in the Monster anthology about Lizzie Borden, the most-watched English-language show in the week of 25 September 2026.",
+      "genre": [
+        "True crime",
+        "Drama"
+      ],
+      "inLanguage": "en",
+      "seo": {
+        "title": "Where to watch Monster: The Lizzie Borden Story | MatchApp Ai",
+        "description": "Netflix true-crime series in the Monster anthology about Lizzie Borden, the most-watched English-language show in the week of 25 September 2026.",
+        "keywords": [
+          "Monster The Lizzie Borden Story",
+          "where to watch Monster",
+          "Netflix trending series",
+          "Lizzie Borden",
+          "true crime this week"
+        ],
+        "canonicalQuery": "Monster: The Lizzie Borden Story"
+      }
     },
     {
       "title": "UNABOMBER",
@@ -30,11 +48,30 @@
       "tmdbId": "",
       "poster": "",
       "keywords": [
-        "UNABOMBER",
-        "Netflix movie",
+        "UNABOMBER movie",
+        "where to watch UNABOMBER",
+        "Netflix movie this week",
         "Russell Crowe",
-        "trending movie"
-      ]
+        "Jacob Tremblay"
+      ],
+      "description": "Netflix film with Jacob Tremblay, Russell Crowe, Annabelle Wallis and Shailene Woodley, the top English-language movie debut for the week of 21 September 2026.",
+      "genre": [
+        "Drama",
+        "Crime"
+      ],
+      "inLanguage": "en",
+      "seo": {
+        "title": "Where to watch UNABOMBER | MatchApp Ai",
+        "description": "Netflix film with Jacob Tremblay, Russell Crowe, Annabelle Wallis and Shailene Woodley, the top English-language movie debut for the week of 21 September 2026.",
+        "keywords": [
+          "UNABOMBER movie",
+          "where to watch UNABOMBER",
+          "Netflix movie this week",
+          "Russell Crowe",
+          "Jacob Tremblay"
+        ],
+        "canonicalQuery": "UNABOMBER"
+      }
     },
     {
       "title": "Not a Stranger",
@@ -46,10 +83,27 @@
       "poster": "",
       "keywords": [
         "Not a Stranger",
-        "Turkish thriller",
-        "Netflix",
-        "non-English"
-      ]
+        "Turkish Netflix thriller",
+        "Elcin Sangu",
+        "non-English trending series"
+      ],
+      "description": "Turkish Netflix thriller led by Elçin Sangu, the top non-English series of the week.",
+      "genre": [
+        "Thriller",
+        "Drama"
+      ],
+      "inLanguage": "tr",
+      "seo": {
+        "title": "Where to watch Not a Stranger | MatchApp Ai",
+        "description": "Turkish Netflix thriller led by Elçin Sangu, the top non-English series of the week.",
+        "keywords": [
+          "Not a Stranger",
+          "Turkish Netflix thriller",
+          "Elcin Sangu",
+          "non-English trending series"
+        ],
+        "canonicalQuery": "Not a Stranger"
+      }
     },
     {
       "title": "Ted Lasso",
@@ -61,9 +115,27 @@
       "poster": "",
       "keywords": [
         "Ted Lasso",
-        "Apple TV",
-        "comedy"
-      ]
+        "where to watch Ted Lasso",
+        "Apple TV trending",
+        "soccer comedy"
+      ],
+      "description": "Apple TV comedy that led US attention rankings in the week of 25 September 2026.",
+      "genre": [
+        "Comedy",
+        "Sport"
+      ],
+      "inLanguage": "en",
+      "seo": {
+        "title": "Where to watch Ted Lasso | MatchApp Ai",
+        "description": "Apple TV comedy that led US attention rankings in the week of 25 September 2026.",
+        "keywords": [
+          "Ted Lasso",
+          "where to watch Ted Lasso",
+          "Apple TV trending",
+          "soccer comedy"
+        ],
+        "canonicalQuery": "Ted Lasso"
+      }
     },
     {
       "title": "The Gentlemen",
@@ -74,10 +146,26 @@
       "tmdbId": "236235",
       "poster": "https://image.tmdb.org/t/p/w780/tw3tzfXaSpmUZIB8ZNqNEGzMBCy.jpg",
       "keywords": [
-        "The Gentlemen",
-        "Netflix",
-        "Guy Ritchie"
-      ]
+        "The Gentlemen Netflix",
+        "where to watch The Gentlemen",
+        "Guy Ritchie series"
+      ],
+      "description": "Guy Ritchie Netflix series still in the weekly attention chart.",
+      "genre": [
+        "Crime",
+        "Comedy"
+      ],
+      "inLanguage": "en",
+      "seo": {
+        "title": "Where to watch The Gentlemen | MatchApp Ai",
+        "description": "Guy Ritchie Netflix series still in the weekly attention chart.",
+        "keywords": [
+          "The Gentlemen Netflix",
+          "where to watch The Gentlemen",
+          "Guy Ritchie series"
+        ],
+        "canonicalQuery": "The Gentlemen"
+      }
     },
     {
       "title": "Slow Horses",
@@ -89,9 +177,27 @@
       "poster": "",
       "keywords": [
         "Slow Horses",
-        "Apple TV",
-        "spy"
-      ]
+        "where to watch Slow Horses",
+        "Apple TV spy series",
+        "Gary Oldman"
+      ],
+      "description": "Apple TV spy series with Gary Oldman, still among the week's most-watched shows.",
+      "genre": [
+        "Spy",
+        "Thriller"
+      ],
+      "inLanguage": "en",
+      "seo": {
+        "title": "Where to watch Slow Horses | MatchApp Ai",
+        "description": "Apple TV spy series with Gary Oldman, still among the week's most-watched shows.",
+        "keywords": [
+          "Slow Horses",
+          "where to watch Slow Horses",
+          "Apple TV spy series",
+          "Gary Oldman"
+        ],
+        "canonicalQuery": "Slow Horses"
+      }
     },
     {
       "title": "Neagley",
@@ -103,9 +209,27 @@
       "poster": "",
       "keywords": [
         "Neagley",
-        "Reacher",
-        "Prime Video"
-      ]
+        "where to watch Neagley",
+        "Reacher spinoff",
+        "Prime Video trending"
+      ],
+      "description": "Prime Video series spun off from Reacher, in the weekly top attention list.",
+      "genre": [
+        "Action",
+        "Crime"
+      ],
+      "inLanguage": "en",
+      "seo": {
+        "title": "Where to watch Neagley | MatchApp Ai",
+        "description": "Prime Video series spun off from Reacher, in the weekly top attention list.",
+        "keywords": [
+          "Neagley",
+          "where to watch Neagley",
+          "Reacher spinoff",
+          "Prime Video trending"
+        ],
+        "canonicalQuery": "Neagley"
+      }
     },
     {
       "title": "MobLand",
@@ -117,9 +241,27 @@
       "poster": "",
       "keywords": [
         "MobLand",
-        "Paramount Plus",
-        "crime"
-      ]
+        "where to watch MobLand",
+        "Paramount Plus trending",
+        "crime series"
+      ],
+      "description": "Paramount+ crime series in the weekly attention top ten.",
+      "genre": [
+        "Crime",
+        "Drama"
+      ],
+      "inLanguage": "en",
+      "seo": {
+        "title": "Where to watch MobLand | MatchApp Ai",
+        "description": "Paramount+ crime series in the weekly attention top ten.",
+        "keywords": [
+          "MobLand",
+          "where to watch MobLand",
+          "Paramount Plus trending",
+          "crime series"
+        ],
+        "canonicalQuery": "MobLand"
+      }
     },
     {
       "title": "Widow's Bay",
@@ -131,8 +273,24 @@
       "poster": "",
       "keywords": [
         "Widow's Bay",
-        "Apple TV"
-      ]
+        "where to watch Widows Bay",
+        "Apple TV this week"
+      ],
+      "description": "Apple TV series in the weekly attention chart for 25 September to 1 October 2026.",
+      "genre": [
+        "Drama"
+      ],
+      "inLanguage": "en",
+      "seo": {
+        "title": "Where to watch Widow's Bay | MatchApp Ai",
+        "description": "Apple TV series in the weekly attention chart for 25 September to 1 October 2026.",
+        "keywords": [
+          "Widow's Bay",
+          "where to watch Widows Bay",
+          "Apple TV this week"
+        ],
+        "canonicalQuery": "Widow's Bay"
+      }
     },
     {
       "title": "East of Eden",
@@ -143,10 +301,27 @@
       "tmdbId": "",
       "poster": "",
       "keywords": [
-        "East of Eden",
-        "Netflix",
-        "Steinbeck"
-      ]
+        "East of Eden Netflix",
+        "where to watch East of Eden",
+        "Steinbeck series",
+        "new on Netflix"
+      ],
+      "description": "Netflix series reimagining Steinbeck's East of Eden, new this weekend.",
+      "genre": [
+        "Drama"
+      ],
+      "inLanguage": "en",
+      "seo": {
+        "title": "Where to watch East of Eden | MatchApp Ai",
+        "description": "Netflix series reimagining Steinbeck's East of Eden, new this weekend.",
+        "keywords": [
+          "East of Eden Netflix",
+          "where to watch East of Eden",
+          "Steinbeck series",
+          "new on Netflix"
+        ],
+        "canonicalQuery": "East of Eden"
+      }
     },
     {
       "title": "Lanterns",
@@ -158,10 +333,27 @@
       "poster": "",
       "keywords": [
         "Lanterns",
-        "HBO",
-        "DC",
-        "Green Lantern"
-      ]
+        "where to watch Lanterns",
+        "Green Lantern HBO",
+        "Max trending series"
+      ],
+      "description": "HBO and Max DC series Lanterns, the most popular TV show on Rotten Tomatoes this week.",
+      "genre": [
+        "Superhero",
+        "Drama"
+      ],
+      "inLanguage": "en",
+      "seo": {
+        "title": "Where to watch Lanterns | MatchApp Ai",
+        "description": "HBO and Max DC series Lanterns, the most popular TV show on Rotten Tomatoes this week.",
+        "keywords": [
+          "Lanterns",
+          "where to watch Lanterns",
+          "Green Lantern HBO",
+          "Max trending series"
+        ],
+        "canonicalQuery": "Lanterns"
+      }
     },
     {
       "title": "American Horror Story",
@@ -173,9 +365,26 @@
       "poster": "",
       "keywords": [
         "American Horror Story",
-        "FX",
-        "horror"
-      ]
+        "where to watch AHS",
+        "FX horror",
+        "trending horror series"
+      ],
+      "description": "FX horror anthology American Horror Story, in the weekly network attention chart.",
+      "genre": [
+        "Horror"
+      ],
+      "inLanguage": "en",
+      "seo": {
+        "title": "Where to watch American Horror Story | MatchApp Ai",
+        "description": "FX horror anthology American Horror Story, in the weekly network attention chart.",
+        "keywords": [
+          "American Horror Story",
+          "where to watch AHS",
+          "FX horror",
+          "trending horror series"
+        ],
+        "canonicalQuery": "American Horror Story"
+      }
     }
   ]
 }
