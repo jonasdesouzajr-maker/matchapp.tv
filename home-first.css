@@ -184,3 +184,14 @@ html body.page-home.ma-first-screen #trending-rail .trending-week-label{
   margin:4px 14px 10px!important;font-family:Georgia,serif!important;font-size:22px!important;font-weight:700!important;
   letter-spacing:.01em!important;text-transform:none!important;color:#f2cf69!important;
 }
+
+html body.page-home.ma-first-screen :is(#ma-first-screen,.home-ask-composer,.ma-find-btn,.marquee-item,.ma-also-link,.ma-dock-link,.ma-dark-toggle,.ma-ask-again){
+  transition:transform .22s ease,box-shadow .22s ease,background-color .22s ease,border-color .22s ease,opacity .22s ease!important;
+}
+html body.page-home.ma-first-screen .ma-find-btn:hover,
+html body.page-home.ma-first-screen .ma-also-link:hover,
+html body.page-home.ma-first-screen .ma-dock-link:hover{transform:translateY(-1px)!important}
+html body.page-home.ma-first-screen .marquee-item:hover{transform:scale(1.04)!important}
+@media(prefers-reduced-motion:reduce){
+  html body.page-home.ma-first-screen :is(#ma-first-screen,.home-ask-composer,.ma-find-btn,.marquee-item,.ma-also-link,.ma-dock-link,.ma-dark-toggle,.ma-ask-again){transition:none!important}
+}
