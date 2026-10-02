@@ -205,3 +205,7 @@ html body.page-home.ma-first-screen #awareness-spotlight{animation-delay:.14s!im
 @media(prefers-reduced-motion:reduce){
   html body.page-home.ma-first-screen :is(#ma-first-screen,#trending-rail,#awareness-spotlight,#ma-also){animation:none!important}
 }
+
+html.reduce-motion body.page-home.ma-first-screen :is(#ma-first-screen,#trending-rail,#awareness-spotlight,#ma-also,.ma-find-btn,.marquee-item,.home-ask-composer,.ma-dock-link,.ma-dark-toggle,.ma-ask-again){
+  animation:none!important;transition:none!important;transform:none!important;
+}

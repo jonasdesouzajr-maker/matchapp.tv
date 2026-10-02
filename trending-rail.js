@@ -52,7 +52,7 @@ function start(vp){
     vp.scrollLeft+=1.1;
     if(max>40&&vp.scrollLeft>=max)vp.scrollLeft-=max;
   };
-  const timer=setInterval(step,16);
+  const timer=setInterval(()=>{if(document.documentElement.classList.contains('reduce-motion'))return;step();},16);
   vp.addEventListener('mouseenter',()=>{hover=true;});
   vp.addEventListener('mouseleave',()=>{hover=false;});
   vp.addEventListener('touchstart',()=>{hold=Date.now()+6000;},{passive:true});
