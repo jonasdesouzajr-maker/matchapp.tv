@@ -1,0 +1,216 @@
+/* First-screen presentation. Kept out of locked Home polish slices. */
+body.page-home.ma-first-screen .matchapp-growth-disclosure,
+body.page-home.ma-first-screen .top-ask-wrap,
+body.page-home.ma-first-screen .mh-tagline,
+body.page-home.ma-first-screen .ma-brand-security,
+body.page-home.ma-first-screen #mh-topbox .sound-toggle-btn,
+body.page-home.ma-first-screen #lang-switcher-host,
+body.page-home.ma-first-screen #mh-topbox .ma-how-button,
+body.page-home.ma-guest #nav-logout-btn{
+  display:none!important;
+}
+body.page-home.ma-first-screen #ma-first-screen{
+  display:flex;flex-direction:column;gap:10px;margin:8px 12px 16px;padding:14px 12px 12px;
+  border:1px solid rgba(242,207,105,.38);border-radius:18px;background:#140e1e;
+}
+body.page-home.ma-first-screen .ma-first-label{
+  margin:0;color:#f2cf69;font-size:13px;font-weight:750;letter-spacing:.04em;text-transform:uppercase;
+}
+body.page-home.ma-first-screen .lazy-head[data-fold-key="askai"],
+body.page-home.ma-first-screen .lazy-head[data-fold-key="concierge"],
+body.page-home.ma-first-screen #ma-ai-entry h2,
+body.page-home.ma-first-screen #ma-concierge h2,
+body.page-home.ma-first-screen #search-box>p,
+body.page-home.ma-first-screen #questionnaire-box>h2,
+body.page-home.ma-first-screen .ma-watch-preview,
+body.page-home.ma-first-screen #search-box .gold-btn,
+body.page-home.ma-first-screen #questionnaire-box>button{
+  display:none!important;
+}
+body.page-home.ma-first-screen #ma-ai-entry,
+body.page-home.ma-first-screen #ma-concierge{
+  display:block!important;margin:0!important;padding:0!important;border:0!important;background:transparent!important;box-shadow:none!important;
+}
+body.page-home.ma-first-screen .ma-find-btn{
+  width:100%;min-height:48px;margin:2px 0 0;border-radius:14px;font-weight:750;
+}
+body.page-home.ma-first-screen #trending-rail{margin-top:8px}
+body.page-home.ma-first-screen #ma-also{
+  margin:14px 12px 8px;padding:0;
+}
+body.page-home.ma-first-screen .ma-also-label{
+  margin:0 0 8px;color:#bdb2d4;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+}
+body.page-home.ma-first-screen .ma-also-links{display:flex;gap:8px;overflow:auto}
+body.page-home.ma-first-screen .ma-also-link{
+  flex:0 0 auto;min-height:40px;padding:8px 12px;border:1px solid rgba(255,255,255,.14);border-radius:999px;
+  color:#f4efe8;text-decoration:none;font-size:13px;font-weight:650;
+}
+body.page-home.ma-first-screen .ma-slim-premiere{margin:8px 12px}
+body.page-home.ma-first-screen .ma-slim-premiere:not([open]) summary{min-height:44px}
+body.page-home.ma-first-screen #ma-dock{
+  position:fixed;left:0;right:0;bottom:0;z-index:80;display:grid;grid-template-columns:repeat(5,1fr);
+  gap:2px;padding:6px 6px calc(6px + env(safe-area-inset-bottom));border-top:1px solid rgba(255,255,255,.1);
+  background:rgba(10,7,16,.94);backdrop-filter:blur(10px);
+}
+body.page-home.ma-first-screen .ma-dock-link{
+  display:flex;align-items:center;justify-content:center;min-height:42px;border-radius:10px;
+  color:#cfc4df;text-decoration:none;font-size:11px;font-weight:700;
+}
+body.page-home.ma-first-screen .ma-dock-link[aria-current="page"]{color:#f2cf69;background:rgba(242,207,105,.1)}
+body.page-home.ma-first-screen{padding-bottom:72px}
+body.page-home.ma-first-screen .ma-cookie,
+body.page-home.ma-first-screen .mobile-ad-bottom{
+  bottom:calc(64px + env(safe-area-inset-bottom))!important;
+}
+
+@media(min-width:900px){
+  body.page-home.ma-first-screen #ma-dock{left:50%;right:auto;width:min(720px,calc(100% - 24px));transform:translateX(-50%);border:1px solid rgba(255,255,255,.1);border-radius:16px;bottom:10px}
+}
+
+/* Homepage Ask Ai: keep all three controls in separate mobile grid cells.
+   No sticky positioning or movement when the keyboard changes the viewport. */
+@media(max-width:640px){
+  html body.page-home #search-box > .home-ask-composer{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr) 50px!important;
+    grid-template-rows:auto auto!important;
+    grid-template-areas:"input mic" "send send"!important;
+    gap:10px!important;
+    align-items:stretch!important;
+    width:100%!important;
+    min-width:0!important;
+    height:auto!important;
+    box-sizing:border-box!important;
+  }
+  html body.page-home #search-box > .home-ask-composer > :is(input,button){
+    position:static!important;
+    inset:auto!important;
+    transform:none!important;
+    translate:none!important;
+    margin:0!important;
+    z-index:auto!important;
+    box-sizing:border-box!important;
+    animation:none!important;
+    transition:none!important;
+  }
+  html body.page-home #search-box > .home-ask-composer > #specific-search-input{
+    grid-area:input!important;
+    display:block!important;
+    width:100%!important;
+    min-width:0!important;
+    height:96px!important;
+    min-height:96px!important;
+    padding:12px!important;
+    color:#fff!important;
+    -webkit-text-fill-color:#fff!important;
+    caret-color:#ffe18a!important;
+    background:#171126!important;
+    border:1px solid #cbb3df!important;
+    opacity:1!important;
+    visibility:visible!important;
+    font-size:16px!important;
+    line-height:1.5!important;
+  }
+  html body.page-home #search-box > .home-ask-composer > #specific-search-input::placeholder{
+    color:#d7cee5!important;
+    -webkit-text-fill-color:#d7cee5!important;
+    opacity:1!important;
+  }
+  html body.page-home #search-box > .home-ask-composer > #mic-btn-index{
+    grid-area:mic!important;
+    width:50px!important;
+    height:56px!important;
+    min-height:56px!important;
+    align-self:start!important;
+  }
+  html body.page-home #search-box > .home-ask-composer > .gold-btn{
+    grid-area:send!important;
+    width:100%!important;
+    min-width:0!important;
+    height:48px!important;
+    min-height:48px!important;
+    padding:10px 16px!important;
+    font-size:16px!important;
+  }
+  html body.page-home #search-box > .home-ask-composer > button::before,
+  html body.page-home #search-box > .home-ask-composer > button::after{
+    display:none!important;
+    animation:none!important;
+  }
+}
+
+/* The matching panel is nested inside the concierge card. Keep only the
+   outer card and the real gold CTA; do not draw a second box under it. */
+html body.page-home #ma-concierge #questionnaire-box{
+  border:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+}
+html body.page-home #ma-concierge #questionnaire-box::after{
+  content:none!important;
+  display:none!important;
+}
+
+/* 2026-09-23 result poster: artwork is the hero; all details flow below it. */
+html body.page-home #result-box .res-media-row{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:12px!important;text-align:left!important;padding:0!important}
+html body.page-home #result-box .res-poster-col{width:100%!important;display:flex!important;justify-content:center!important}
+html body.page-home #result-box .poster-stage{display:flex!important;width:min(100%,560px)!important;max-width:560px!important;min-height:0!important;aspect-ratio:auto!important;align-items:center!important;justify-content:center!important;overflow:visible!important;border:2px solid #e5c158!important;border-radius:24px!important;background:#120824!important;box-shadow:0 0 0 1px rgba(255,243,163,.28),0 14px 34px rgba(0,0,0,.42),0 0 22px rgba(229,193,88,.2)!important}
+html body.page-home #result-box #res-poster-img{display:block;width:100%!important;height:auto!important;max-width:100%!important;max-height:none!important;object-fit:contain!important;object-position:center!important;border-radius:21px!important}
+html body.page-home #result-box .res-info-col{width:100%!important;display:flex!important;flex-direction:column!important;align-items:flex-start!important;gap:7px!important;padding:2px 2px 0!important}
+html body.page-home #result-box #res-title{margin:0!important}
+html body.page-home #result-box #res-factbar{margin:0 0 4px!important}
+@media(max-width:640px){
+ html body.page-home #result-box{padding:12px 12px 104px!important}
+ html body.page-home #result-box .poster-stage{width:100%!important;max-width:100%!important;border-radius:20px!important}
+ html body.page-home #result-box #res-poster-img{border-radius:17px!important}
+ html body.page-home #result-box .res-media-row{gap:10px!important;margin-bottom:12px!important}
+ html body.page-home #result-box .res-info-col{padding:0 2px!important}
+ html body.page-home #result-box #res-title{font-size:25px!important;line-height:1.15!important}
+}
+
+/* Desktop result hierarchy: poster leads, but must not consume multiple viewports. */
+@media(min-width:641px){
+ html body.page-home #result-box .poster-stage{width:min(38vw,380px)!important;max-width:380px!important;margin-inline:auto!important}
+ html body.page-home #result-box #res-poster-img{width:100%!important;height:auto!important;max-height:570px!important;object-fit:contain!important}
+ html body.page-home #result-box .res-info-col{max-width:760px!important;margin-inline:auto!important}
+}
+
+/* MA-SOUND-CONTROL:START
+   Visual-only adult sound control. Preserve the existing top-box grid slot and
+   dimensions; center a literal speaker state icon instead of the old music mark. */
+html body:not(.page-kids) .sound-toggle-btn{
+  align-items:center!important;
+  justify-content:center!important;
+}
+html body.page-home #mh-topbox .sound-toggle-btn::before,
+html body.page-home #mh-topbox .sound-toggle-btn::after{
+  content:none!important;
+  display:none!important;
+}
+html body:not(.page-kids) .sound-toggle-btn .sound-state-icon{
+  width:22px!important;
+  height:22px!important;
+  display:grid!important;
+  place-items:center!important;
+  margin:auto!important;
+  padding:0!important;
+  line-height:0!important;
+  pointer-events:none!important;
+  transform:none!important;
+}
+html body:not(.page-kids) .sound-toggle-btn .sound-state-icon svg{
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  overflow:visible!important;
+}
+html body:not(.page-kids) .sound-toggle-btn .sound-wave,
+html body:not(.page-kids) .sound-toggle-btn .sound-slash{
+  vector-effect:non-scaling-stroke;
+}
+html body:not(.page-kids) .sound-toggle-btn.is-muted .sound-state-icon{
+  opacity:.72;
+}
+/* MA-SOUND-CONTROL:END */
+

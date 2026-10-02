@@ -18,7 +18,7 @@ test('home awareness is localized, date-gated and matches committed campaign',()
     assert.ok(h.includes('data-awareness-end="'+c.endExclusive+'"'));
     assert.ok(h.includes(c.pageUrl));
   }else assert.doesNotMatch(h,/id="awareness-spotlight"/);
-  assert.match(h,/\/awareness\.js\?v=20260926-bottom2/);
+  assert.match(h,/\/awareness\.js\?v=20261002-october1/);
   assert.match(j,/today>=c\.startDate&&today<c\.endExclusive|t>=c\.startDate&&t<c\.endExclusive/);
   assert.match(j,/pt-BR/);
   assert.doesNotMatch(j,/setInterval|requestAnimationFrame/);

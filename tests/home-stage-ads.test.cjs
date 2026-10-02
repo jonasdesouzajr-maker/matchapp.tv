@@ -76,7 +76,7 @@ test('homepage keeps the locked desktop rails and responsive mobile slots',()=>{
   const guard=html.slice(html.indexOf('<style id="mobile-ad-blank-guard">'),html.indexOf('</style>',html.indexOf('<style id="mobile-ad-blank-guard">')));
   assert.doesNotMatch(guard,/min-height:250px/);
   assert.match(guard,/ma-inline-ad ins\.adsbygoogle[\s\S]*width:100%/);
-  assert.ok(html.includes('/ads-init.js?v=20261001-targeted1'));
+  assert.ok(html.includes('/ads-init.js?v=20261002-bodyunit1'));
   const init=read('ads-init.js');
   assert.match(init,/\.push\(\{element:slot\}\)/);
   assert.doesNotMatch(init,/\.push\(\{\}\)/);
