@@ -17,3 +17,7 @@ html.kids-mode .kids-quest-choice,html.kids-mode .kids-pill{transition:transform
 html.kids-mode .kids-quest-choice:hover,html.kids-mode .kids-pill:hover{transform:translateY(-2px)}
 html.kids-mode .kids-quest-choice:focus-visible,html.kids-mode .kids-pill:focus-visible{outline:3px solid #ffe18a;outline-offset:3px}
 html.kids-mode.reduce-motion .kids-quest-choice,html.kids-mode.reduce-motion .kids-pill,body.kids-paused .kids-quest-choice,body.kids-paused .kids-pill{transition:none;transform:none}
+html.kids-mode .kids-steps{display:flex;gap:.5rem;margin:.8rem 0 0;padding:0;list-style:none}
+html.kids-mode .kids-steps li{flex:1;min-height:44px;display:flex;align-items:center;justify-content:center;padding:.4rem .5rem;border-radius:999px;background:#ffffff14;color:#fff6d8;font-size:.78rem;font-weight:700;text-align:center}
+html.kids-mode .kids-primary,html.kids-mode .kids-secondary{min-height:48px}
+html.kids-mode .kids-quest-choice{min-height:48px}
