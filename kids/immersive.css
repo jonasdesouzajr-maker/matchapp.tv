@@ -35,3 +35,6 @@ html.kids-mode body{background:
   radial-gradient(ellipse at 50% 100%, #6d4dff 0%, transparent 42%),
   linear-gradient(165deg,#3a1d72 0%,#1d4f86 48%,#12304a 100%)!important}
 body.kids-paused,html.reduce-motion body{background-attachment:scroll}
+
+html.kids-mode body{font-family:"Nunito",system-ui,sans-serif!important}
+html.kids-mode :is(h1,h2,h3,.kids-primary,.kids-secondary){font-family:"Baloo 2","Nunito",system-ui,sans-serif!important}
