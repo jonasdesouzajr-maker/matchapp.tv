@@ -33,6 +33,7 @@ const path = require('path');
 const ROOT = path.join(__dirname, '..');
 const MIN_TITLES = 8;
 const SITE = 'https://matchapp.tv';
+const BRAND = 'MatchApp Ai';
 const LANGS = ['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh'];
 
 /* ---------- load the catalog straight out of app.js ---------- */
@@ -108,7 +109,7 @@ const PLAT_COPY = {
 function buildPage({ kind, key, title, lede, items, related }) {
     const s = slug(key);
     const url = `${SITE}/${kind}/${s}/`;
-    const suffix = ` Browse ${items.length} hand-picked titles on MatchApp.`;
+    const suffix = ` Browse ${items.length} hand-picked titles on ${BRAND}.`;
     let metaLead = String(lede || '').replace(/\s+/g, ' ').trim();
     if (metaLead.length + suffix.length > 155) {
         const maxLead = Math.max(48, 155 - suffix.length - 1);
@@ -144,7 +145,7 @@ function buildPage({ kind, key, title, lede, items, related }) {
     const breadcrumbLd = {
         "@context": "https://schema.org", "@type": "BreadcrumbList",
         "itemListElement": [
-            { "@type": "ListItem", "position": 1, "name": "MatchApp", "item": `${SITE}/` },
+            { "@type": "ListItem", "position": 1, "name": BRAND, "item": `${SITE}/` },
             { "@type": "ListItem", "position": 2, "name": kind === 'moods' ? 'Moods' : kind === 'platforms' ? 'Platforms' : 'Collections', "item": `${SITE}/${kind}/` },
             { "@type": "ListItem", "position": 3, "name": title, "item": url }
         ]
@@ -158,7 +159,7 @@ function buildPage({ kind, key, title, lede, items, related }) {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>${esc(title)} | MatchApp</title>
+<title>${esc(title)} | ${BRAND}</title>
 <meta name="description" content="${esc(metaDesc)}">
 <link rel="canonical" href="${url}">
 <meta name="robots" content="index, follow, max-image-preview:large">
@@ -168,12 +169,12 @@ function buildPage({ kind, key, title, lede, items, related }) {
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="${url}">
-<meta property="og:title" content="${esc(title)} | MatchApp">
+<meta property="og:title" content="${esc(title)} | ${BRAND}">
 <meta property="og:description" content="${esc(metaDesc)}">
 <meta property="og:image" content="${SITE}/og-image.jpg?v=2">
-<meta property="og:site_name" content="MatchApp">
+<meta property="og:site_name" content="${BRAND}">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="${esc(title)} | MatchApp">
+<meta name="twitter:title" content="${esc(title)} | ${BRAND}">
 <meta name="twitter:description" content="${esc(metaDesc)}">
 <meta name="twitter:image" content="${SITE}/og-image.jpg?v=2">
 
@@ -237,7 +238,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <main class="seo-wrap">
     <nav class="seo-crumbs" aria-label="Breadcrumb">
-        <a href="/">MatchApp</a> › <span>${esc(title)}</span>
+        <a href="/">${BRAND}</a> › <span>${esc(title)}</span>
     </nav>
 
     <header class="seo-hero">
@@ -254,7 +255,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <section class="seo-section">
         <h2>Not quite it?</h2>
-        <p class="seo-lede" style="margin-bottom:18px;">Tell MatchApp what you actually feel like and the AI concierge will work it out — in any of 14 languages, free, no account needed.</p>
+        <p class="seo-lede" style="margin-bottom:18px;">Tell ${BRAND} what you actually feel like and the AI concierge will work it out — in any of 14 languages, free, no account needed.</p>
         <div style="text-align:center;"><a class="seo-cta" href="/discover.html">Find my match →</a></div>
     </section>
 
