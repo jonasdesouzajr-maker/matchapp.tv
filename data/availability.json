@@ -161,72 +161,11 @@
       "kind": "movie",
       "year": 2024,
       "regions": {
-        "BR": {
-          "stream": [
-            "Disney Plus"
-          ],
-          "link": "https://www.themoviedb.org/movie/533535-deadpool-wolverine/watch?locale=BR"
-        },
         "US": {
           "stream": [
             "Disney Plus"
           ],
-          "rent": [
-            "Amazon Video",
-            "Apple TV Store",
-            "Google Play Movies",
-            "YouTube",
-            "Fandango At Home"
-          ],
-          "buy": [
-            "Amazon Video",
-            "Apple TV Store",
-            "Google Play Movies",
-            "YouTube",
-            "Fandango At Home"
-          ],
-          "link": "https://www.themoviedb.org/movie/533535-deadpool-wolverine/watch?locale=US"
-        },
-        "GB": {
-          "stream": [
-            "Disney Plus"
-          ],
-          "rent": [
-            "Apple TV Store",
-            "Rakuten TV",
-            "Amazon Video",
-            "Google Play Movies",
-            "YouTube"
-          ],
-          "buy": [
-            "Apple TV Store",
-            "Rakuten TV",
-            "Amazon Video",
-            "Google Play Movies",
-            "Sky Store",
-            "YouTube"
-          ],
-          "link": "https://www.themoviedb.org/movie/533535-deadpool-wolverine/watch?locale=GB"
-        },
-        "PT": {
-          "stream": [
-            "Disney Plus"
-          ],
-          "rent": [
-            "Apple TV Store",
-            "Google Play Movies",
-            "YouTube",
-            "Rakuten TV",
-            "Amazon Video"
-          ],
-          "buy": [
-            "Apple TV Store",
-            "Google Play Movies",
-            "YouTube",
-            "Rakuten TV",
-            "Amazon Video"
-          ],
-          "link": "https://www.themoviedb.org/movie/533535-deadpool-wolverine/watch?locale=PT"
+          "link": "https://www.themoviedb.org/movie/533535/watch?locale=US"
         }
       }
     },
@@ -733,7 +672,7 @@
         }
       }
     },
-    "Alcarràs": {
+    "Alcarr\u00e0s": {
       "tmdbId": 804251,
       "kind": "movie",
       "year": 2022,
@@ -889,32 +828,17 @@
       "kind": "movie",
       "year": 2024,
       "regions": {
-        "BR": {
-          "stream": [
-            "Netflix",
-            "Netflix Standard with Ads"
-          ],
-          "link": "https://www.themoviedb.org/movie/1163194/watch?locale=BR"
-        },
         "US": {
-          "stream": [
-            "Netflix",
-            "Netflix Standard with Ads"
-          ],
-          "link": "https://www.themoviedb.org/movie/1163194/watch?locale=US"
-        },
-        "GB": {
-          "stream": [
-            "Netflix",
-            "Netflix Standard with Ads"
-          ],
-          "link": "https://www.themoviedb.org/movie/1163194/watch?locale=GB"
-        },
-        "PT": {
           "stream": [
             "Netflix"
           ],
-          "link": "https://www.themoviedb.org/movie/1163194/watch?locale=PT"
+          "link": "https://www.themoviedb.org/movie/1163194/watch?locale=US"
+        },
+        "BR": {
+          "stream": [
+            "Netflix"
+          ],
+          "link": "https://www.themoviedb.org/movie/1163194/watch?locale=BR"
         }
       }
     },
@@ -1454,7 +1378,7 @@
         }
       }
     },
-    "Rubí": {
+    "Rub\u00ed": {
       "tmdbId": 12961,
       "kind": "tv",
       "year": 2004,
@@ -1514,7 +1438,7 @@
         }
       }
     },
-    "Pedro Páramo": {
+    "Pedro P\u00e1ramo": {
       "tmdbId": 1069387,
       "kind": "movie",
       "year": 2024,
@@ -1677,7 +1601,7 @@
         }
       }
     },
-    "Emilia Pérez": {
+    "Emilia P\u00e9rez": {
       "tmdbId": 974950,
       "kind": "movie",
       "year": 2024,
@@ -2634,7 +2558,7 @@
         }
       }
     },
-    "TÁR": {
+    "T\u00c1R": {
       "tmdbId": 817758,
       "kind": "movie",
       "year": 2022,
@@ -2983,6 +2907,19 @@
             "Apple TV Store"
           ],
           "link": "https://www.themoviedb.org/tv/23545-ask-this-old-house/watch?locale=GB"
+        }
+      }
+    },
+    "Weird: The Al Yankovic Story": {
+      "tmdbId": 928344,
+      "kind": "movie",
+      "year": 2022,
+      "regions": {
+        "US": {
+          "stream": [
+            "The Roku Channel"
+          ],
+          "link": "https://www.themoviedb.org/movie/928344/watch?locale=US"
         }
       }
     }

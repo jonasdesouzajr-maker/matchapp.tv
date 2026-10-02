@@ -122,7 +122,7 @@ function render(question,host){
  host.appendChild(section);
  // A publisher may block off-site icons, so keep its real name visible
  // until genuine icon art loads; never leave an empty placeholder.
- section.querySelectorAll('[data-reading-publisher-icon]').forEach(img=>{
+ section.querySelectorAll('[data-reading-publisher-icon]').forEach(img=>{img.addEventListener('error',()=>{img.src='/assets/brand/matchapp-ai-orbit-fullbleed.svg';img.hidden=false;},{once:true});
    const label=img.nextElementSibling;
    const sync=()=>{
      const loaded=img.complete&&img.naturalWidth>0;
