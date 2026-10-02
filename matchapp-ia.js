@@ -269,15 +269,15 @@ function presentFirstScreen(parts){
  const {hero,concierge,aiEntry,loading,result,trending,week}=parts;
  document.body.classList.add('ma-first-screen');
  let card=qs('#ma-first-screen');
- if(!card){card=el('section','ma-first-screen-card');card.id='ma-first-screen';card.setAttribute('aria-label','Find something to watch')}
+ if(!card){card=el('section','ma-first-screen-card');card.id='ma-first-screen';card.setAttribute('aria-label',c().find)}
  if(hero&&hero.parentNode)after(hero,card);
  if(aiEntry&&!isAdHost(aiEntry))card.appendChild(aiEntry);
  if(concierge&&!isAdHost(concierge))card.appendChild(concierge);
- if(!qs('.ma-first-label',card))card.insertBefore(el('p','ma-first-label','Find something to watch'),card.firstChild);
+ if(!qs('.ma-first-label',card))card.insertBefore(el('p','ma-first-label',c().find),card.firstChild);
  const askBtn=qs('#search-box .gold-btn');
  const matchBtn=qs('#questionnaire-box > button');
  if(askBtn&&matchBtn&&!qs('.ma-find-btn',card)){
-   const go=el('button','ma-find-btn gold-btn','Find my match');go.type='button';
+   const go=el('button','ma-find-btn gold-btn',c().match);go.type='button';
    const syncVisibleFilters=()=>{
      const read=id=>{const v=qs('#'+id)?.value||'';return v&&v!=='any'?[v]:[]};
      const patch={cat:read('q-category'),mood:read('q-mood'),plat:read('q-platform')};
@@ -506,6 +506,9 @@ function applyLanguage(){
    const send=qs('#search-box .gold-btn');if(send)send.textContent=t.send;
    const input=qs('#specific-search-input');if(input)input.placeholder=t.askph;
    const together=qs('.ma-together-link');if(together)together.textContent=t.together;
+  const first=qs('.ma-first-label');if(first)first.textContent=t.find;
+  const go=qs('.ma-find-btn');if(go)go.textContent=t.match;
+  qs('#ma-first-screen')?.setAttribute('aria-label',t.find);
  }
  if(isDiscover){const h=qs('.discover-title-copy h1');if(h)h.textContent=t.discover;const i=qs('#discover-new-input');if(i)i.placeholder=t.askph;const b=qs('.composer-send');if(b)b.textContent=t.send}
 }
