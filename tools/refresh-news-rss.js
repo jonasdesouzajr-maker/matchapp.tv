@@ -341,9 +341,11 @@ function sourceCreativeWork(i){
   };
 }
 
-function page(i){
+function canonicalBrand(s){return String(s??'').replace(/MatchApp TV Ai|MatchApp TV|MatchApp AI|MatchApp iA|MatchApp IA/g,'MatchApp Ai');}\n\nfunction page(i){
   const t=esc(i.title);
-  const d=esc(i.seo.meta_description);
+  const metaTitle=canonicalBrand(i.seo.meta_title);
+  const metaDescription=canonicalBrand(i.seo.meta_description);
+  const d=esc(metaDescription);
   const src=esc(i.source);
   const sourceDomain=esc(i.source_domain);
   const orig=esc(i.url);
@@ -367,7 +369,7 @@ function page(i){
         url:i.matchapp_url,
         datePublished:i.discovered_at,
         dateModified:i.seo.seo_generated_at||i.discovered_at,
-        description:i.seo.meta_description,
+        description:metaDescription,
         keywords:i.seo.keywords.join(', '),
         about:uniq([i.person,i.event_type,...i.seo.short_tail]).slice(0,10).map(name=>({'@type':'Thing',name})),
         mentions:uniq([...i.seo.entity_keywords,...i.seo.trend_keywords]).slice(0,10).map(name=>({'@type':'Thing',name})),
@@ -400,7 +402,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>${esc(i.seo.meta_title)}</title>
+<title>${esc(metaTitle)}</title>
 <meta name="description" content="${d}">
 <meta name="keywords" content="${kw}">
 <meta name="author" content="MatchApp Ai">
@@ -408,13 +410,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="canonical" href="${canon}">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="MatchApp Ai">
-<meta property="og:title" content="${esc(i.seo.meta_title)}">
+<meta property="og:title" content="${esc(metaTitle)}">
 <meta property="og:description" content="${d}">
 <meta property="og:url" content="${canon}">
 <meta property="article:published_time" content="${esc(i.discovered_at)}">
 <meta property="article:modified_time" content="${esc(i.seo.seo_generated_at||i.discovered_at)}">
 <meta property="article:section" content="${i.category==='sports'?'Sports News':i.category==='world'?'World News':'Entertainment News'}">
-<meta name="twitter:title" content="${esc(i.seo.meta_title)}">
+<meta name="twitter:title" content="${esc(metaTitle)}">
 <meta name="twitter:description" content="${d}">
 ${imageMeta}
 <script type="application/ld+json">${JSON.stringify(schema)}</script>
