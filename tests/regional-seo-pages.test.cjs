@@ -27,7 +27,7 @@ test('regional routes persist in sitemap generator and current sitemap', () => {
   const generator = fs.readFileSync(path.join(root, 'tools', 'update-sitemap.js'), 'utf8');
   const sitemap = fs.readFileSync(path.join(root, 'sitemap.xml'), 'utf8');
   for (const [code] of regions) {
-    assert.ok(generator.includes("\\${SITE}/" + code + "/"));
+    assert.ok(generator.includes("${SITE}/" + code + "/"));
     assert.ok(sitemap.includes('<loc>https://matchapp.tv/' + code + '/</loc>'));
   }
 });
