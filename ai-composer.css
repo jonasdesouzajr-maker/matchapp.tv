@@ -295,3 +295,101 @@ html body.page-home #ma-ai-entry .home-ask-composer>.gold-btn:focus-visible{
     height:46px!important;min-height:46px!important;padding-inline:15px!important;
   }
 }
+
+
+/* DISCOVER COMPOSER COHERENCE 2026-10-02
+   Mirror the refined Home interaction: one calm input pill, mic/send beside it,
+   no second rounded box around the entire composer. */
+html body.ai-chat-page.ma-ia-discover .newsearch-row{
+ display:grid!important;
+ grid-template-columns:minmax(0,1fr) 44px 44px!important;
+ grid-template-areas:"input mic send" "hint hint hint"!important;
+ align-items:center!important;
+ gap:8px!important;
+ width:100%!important;
+ min-width:0!important;
+ margin:18px 0 0!important;
+ padding:0!important;
+ border:0!important;
+ border-radius:0!important;
+ background:transparent!important;
+ box-shadow:none!important;
+ isolation:auto!important;
+}
+html body.ai-chat-page.ma-ia-discover .newsearch-row::before,
+html body.ai-chat-page.ma-ia-discover .newsearch-row::after{
+ content:none!important;
+ display:none!important;
+}
+html body.ai-chat-page.ma-ia-discover .composer{display:contents!important}
+html body.ai-chat-page.ma-ia-discover .composer-input-label{
+ position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;
+ overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important;
+}
+html body.ai-chat-page.ma-ia-discover #discover-new-input{
+ grid-area:input!important;
+ box-sizing:border-box!important;
+ width:100%!important;
+ min-width:0!important;
+ min-height:50px!important;
+ height:50px!important;
+ max-height:132px!important;
+ margin:0!important;
+ padding:12px 17px!important;
+ resize:none!important;
+ border:1px solid rgba(214,204,231,.22)!important;
+ border-radius:25px!important;
+ background:#17151d!important;
+ color:#f5f1f8!important;
+ -webkit-text-fill-color:#f5f1f8!important;
+ caret-color:#e8d9b2!important;
+ box-shadow:inset 0 1px 0 rgba(255,255,255,.035)!important;
+ font:500 16px/1.45 Inter,system-ui,sans-serif!important;
+ outline:0!important;
+}
+html body.ai-chat-page.ma-ia-discover #discover-new-input::placeholder{
+ color:rgba(226,219,234,.60)!important;
+}
+html body.ai-chat-page.ma-ia-discover #discover-new-input:focus{
+ border-color:rgba(211,190,238,.46)!important;
+ background:#1b1821!important;
+ box-shadow:0 0 0 3px rgba(170,140,205,.10)!important;
+}
+html body.ai-chat-page.ma-ia-discover #mic-btn-discover,
+html body.ai-chat-page.ma-ia-discover .composer-send{
+ align-self:center!important;
+ justify-self:center!important;
+ width:44px!important;height:44px!important;min-width:44px!important;min-height:44px!important;
+ margin:0!important;padding:0!important;
+ border:0!important;border-radius:50%!important;
+ background:rgba(255,255,255,.055)!important;
+ color:#d9cfdf!important;
+ box-shadow:none!important;
+ transform:none!important;
+ animation:none!important;
+}
+html body.ai-chat-page.ma-ia-discover #mic-btn-discover{grid-area:mic!important}
+html body.ai-chat-page.ma-ia-discover .composer-send{grid-area:send!important;font-size:0!important}
+html body.ai-chat-page.ma-ia-discover #mic-btn-discover:hover,
+html body.ai-chat-page.ma-ia-discover #mic-btn-discover:focus-visible,
+html body.ai-chat-page.ma-ia-discover .composer-send:hover,
+html body.ai-chat-page.ma-ia-discover .composer-send:focus-visible{
+ background:rgba(200,181,221,.12)!important;color:#f4edf8!important;
+}
+html body.ai-chat-page.ma-ia-discover .composer-hint{
+ grid-area:hint!important;
+ margin:0!important;padding:0 4px!important;
+ color:#9f95aa!important;font-size:11px!important;line-height:1.4!important;
+}
+@media(max-width:420px){
+ html body.ai-chat-page.ma-ia-discover .newsearch-row{
+  grid-template-columns:minmax(0,1fr) 40px 40px!important;gap:6px!important;
+ }
+ html body.ai-chat-page.ma-ia-discover #mic-btn-discover,
+ html body.ai-chat-page.ma-ia-discover .composer-send{
+  width:40px!important;height:40px!important;min-width:40px!important;min-height:40px!important;
+ }
+ html body.ai-chat-page.ma-ia-discover #discover-new-input{
+  min-height:46px!important;height:46px!important;padding-inline:15px!important;
+ }
+}
