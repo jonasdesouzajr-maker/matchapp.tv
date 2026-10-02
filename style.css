@@ -915,3 +915,14 @@ html body.page-home #spotlight-ahs13 .spotlight-poster>img#spotlight-poster-img{
 }
 /* MA-POSTER-INTEGRITY:END */
 
+/* MA-PILL-SYNC:START — owner-requested cross-page control consistency, 2026-10-01. */
+html:not(.kids-mode):not([data-kids-mode]) body:not(.page-kids):not(.kids-body) :where(
+  .gold-btn,.secondary-btn,.ma-primary,.ma-plan-cta,.credit-pack-btn,.dc-action,.spotlight-ask,.ai-new-chat,
+  .composer-send,.tg-btn-gold,.settings-save,.settings-reset,.ma-back-button,.mh-home-btn,.ma-how-button,
+  .ma-menu-button,.social-btn,.awareness-cta,.tg-entry,.top-ai-launch,.top-ask-go,.install-btn,.reg-join,.reg-home
+){border-radius:999px!important}
+:where(body.page-kids,body.kids-body,html.kids-mode body,html[data-kids-mode] body) :where(
+  .kids-primary,.kids-secondary,.kids-pill,.kids-tool,.kids-wallet-buy,.kids-quest-choice,.kids-watch,
+  .kids-voice-toggle,.kids-fx-toggle,.kids-quest-reveal
+){border-radius:999px!important}
+/* MA-PILL-SYNC:END */
