@@ -2,7 +2,11 @@
 const fs=require('node:fs'),path=require('node:path'),{JSDOM}=require('jsdom');
 const ROOT=path.join(__dirname,'..');
 const mark='<img class="matchapp-wordmark" src="/assets/brand/matchapp-tv-ai-v2.svg" alt="MatchApp TV Ai" width="368" height="66" decoding="async">';
-const name=text=>text.replace(/MatchApp(?:\.tv)?(?! TV Ai| Ai\b| iA\b)/g,'MatchApp TV Ai').replace(/MatchApp TV Ai AI /g,'MatchApp TV Ai ');
+const name=text=>String(text)
+  .replace(/MatchApp TV Ai(?:\\s+TV Ai|\\s+TV)+/g,'MatchApp TV Ai')
+  .replace(/MatchApp TV(?! Ai\\b)/g,'MatchApp TV Ai')
+  .replace(/MatchApp(?:\\.tv)?(?! TV\\b| Ai\\b| iA\\b)/g,'MatchApp TV Ai')
+  .replace(/MatchApp TV Ai AI\\b/g,'MatchApp TV Ai');
 function files(dir){return fs.readdirSync(dir,{withFileTypes:true}).flatMap(e=>['node_modules','.git'].includes(e.name)?[]:e.isDirectory()?files(path.join(dir,e.name)):/\.html$/.test(e.name)?[path.join(dir,e.name)]:[]);}
 function finalizeBrand(){let count=0;for(const file of files(ROOT)){
  let html=fs.readFileSync(file,'utf8');if(!/<body[\s>]/i.test(html)||file.includes('yandex_'))continue;
@@ -26,4 +30,4 @@ function finalizeBrand(){let count=0;for(const file of files(ROOT)){
  if(!doc.querySelector('link[href^="/brand.css"]'))html=html.replace('</head>','<link rel="stylesheet" href="/brand.css?v=192">\n</head>');
  if(html!==fs.readFileSync(file,'utf8')){fs.writeFileSync(file,html);count++;}dom.window.close();
  }return count;}
-module.exports={finalizeBrand};if(require.main===module)console.log('Brand and search identity updated on '+finalizeBrand()+' pages.');
+module.exports={finalizeBrand,name};if(require.main===module)console.log('Brand and search identity updated on '+finalizeBrand()+' pages.');
