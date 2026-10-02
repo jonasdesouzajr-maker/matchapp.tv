@@ -10,3 +10,10 @@ body.kids-paused :is(.kids-mascot,.kids-lumi-bubble,.kids-lumi-spark,.kids-quest
 
 /* Voice-only assistant: no on-screen Lumi speech bubbles. */
 .kids-lumi-bubble{display:none!important}
+
+/* Clearer Kids stage. Safety rules and ad slots stay unchanged. */
+html.kids-mode .kids-hero{border-radius:1.4rem}
+html.kids-mode .kids-quest-choice,html.kids-mode .kids-pill{transition:transform .2s ease,box-shadow .2s ease}
+html.kids-mode .kids-quest-choice:hover,html.kids-mode .kids-pill:hover{transform:translateY(-2px)}
+html.kids-mode .kids-quest-choice:focus-visible,html.kids-mode .kids-pill:focus-visible{outline:3px solid #ffe18a;outline-offset:3px}
+html.kids-mode.reduce-motion .kids-quest-choice,html.kids-mode.reduce-motion .kids-pill,body.kids-paused .kids-quest-choice,body.kids-paused .kids-pill{transition:none;transform:none}
