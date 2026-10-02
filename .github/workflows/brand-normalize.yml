@@ -7,6 +7,8 @@ on:
       - 'tools/finalize-brand.js'
       - 'tools/build-kids-pages.js'
       - 'tools/build-world-discovery-guide.js'
+      - 'tools/refresh-news-rss.js'
+      - 'tools/build-global-events.js'
       - 'assets/brand/matchapp-tv-ai-v2.svg'
       - 'brand.css'
       - '.github/workflows/brand-normalize.yml'
