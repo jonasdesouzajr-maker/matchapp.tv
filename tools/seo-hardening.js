@@ -23,8 +23,8 @@ function replaceOnce(text,from,to,label){
   return text.replace(from,to);
 }
 
-const matchAppOrg='{"@type":"Organization","name":"MatchApp TV Ai","url":"https://matchapp.tv/"}';
-const matchAppOrgLogo='{"@type":"Organization","name":"MatchApp TV Ai","url":"https://matchapp.tv/","logo":{"@type":"ImageObject","url":"'+LOGO+'","width":512,"height":512}}';
+const matchAppOrg='{"@type":"Organization","name":"MatchApp Ai","url":"https://matchapp.tv/"}';
+const matchAppOrgLogo='{"@type":"Organization","name":"MatchApp Ai","url":"https://matchapp.tv/","logo":{"@type":"ImageObject","url":"'+LOGO+'","width":512,"height":512}}';
 
 patch('index.html',src=>replaceOnce(src,matchAppOrg,matchAppOrgLogo,'homepage Service provider organization'));
 
