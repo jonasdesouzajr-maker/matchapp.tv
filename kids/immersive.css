@@ -26,3 +26,12 @@ html.kids-mode body{background:radial-gradient(ellipse at 15% 0%,#5a2d86 0%,tran
 html.kids-mode .kids-title-color{background:linear-gradient(90deg,#ffe38a,#9ee8e6);-webkit-background-clip:text;background-clip:text;color:transparent}
 html.kids-mode .kids-primary{background:linear-gradient(135deg,#ffe38a,#ff9f6e)!important;color:#35163f!important;box-shadow:0 .35rem 0 #b46d43,0 .6rem 1.4rem #ffcf7244!important}
 html.kids-mode .kids-steps li{background:linear-gradient(135deg,#ffffff18,#9ee8e622);border:1px solid #ffffff22}
+
+html.kids-mode body{background:
+  radial-gradient(circle at 12% 8%, #ffcf72 0 2px, transparent 3px),
+  radial-gradient(circle at 78% 18%, #fff 0 1.5px, transparent 2px),
+  radial-gradient(circle at 64% 6%, #9ee8e6 0 2px, transparent 3px),
+  radial-gradient(ellipse at 18% 0%, #7a3cae 0%, transparent 46%),
+  radial-gradient(ellipse at 100% 12%, #1f7f98 0%, transparent 40%),
+  linear-gradient(180deg,#1a1038 0%,#120c24 55%,#0c1020 100%)!important}
+body.kids-paused,html.reduce-motion body{background-attachment:scroll}
