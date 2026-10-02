@@ -34,10 +34,23 @@
           "where to watch Monster",
           "Netflix trending series",
           "Lizzie Borden",
-          "true crime this week"
+          "true crime this week",
+          "where to watch Monster The Lizzie Borden Story on Netflix",
+          "is Monster The Lizzie Borden Story worth watching this week",
+          "Monster Lizzie Borden true crime series streaming tonight"
         ],
-        "canonicalQuery": "Monster: The Lizzie Borden Story"
-      }
+        "canonicalQuery": "Monster: The Lizzie Borden Story",
+        "longTailKeywords": [
+          "where to watch Monster The Lizzie Borden Story on Netflix",
+          "is Monster The Lizzie Borden Story worth watching this week",
+          "Monster Lizzie Borden true crime series streaming tonight"
+        ]
+      },
+      "longTailKeywords": [
+        "where to watch Monster The Lizzie Borden Story on Netflix",
+        "is Monster The Lizzie Borden Story worth watching this week",
+        "Monster Lizzie Borden true crime series streaming tonight"
+      ]
     },
     {
       "title": "UNABOMBER",
@@ -68,10 +81,23 @@
           "where to watch UNABOMBER",
           "Netflix movie this week",
           "Russell Crowe",
-          "Jacob Tremblay"
+          "Jacob Tremblay",
+          "where to watch the UNABOMBER movie on Netflix",
+          "UNABOMBER Netflix movie with Russell Crowe streaming",
+          "new Netflix crime movie to watch this weekend"
         ],
-        "canonicalQuery": "UNABOMBER"
-      }
+        "canonicalQuery": "UNABOMBER",
+        "longTailKeywords": [
+          "where to watch the UNABOMBER movie on Netflix",
+          "UNABOMBER Netflix movie with Russell Crowe streaming",
+          "new Netflix crime movie to watch this weekend"
+        ]
+      },
+      "longTailKeywords": [
+        "where to watch the UNABOMBER movie on Netflix",
+        "UNABOMBER Netflix movie with Russell Crowe streaming",
+        "new Netflix crime movie to watch this weekend"
+      ]
     },
     {
       "title": "Not a Stranger",
@@ -100,10 +126,23 @@
           "Not a Stranger",
           "Turkish Netflix thriller",
           "Elcin Sangu",
-          "non-English trending series"
+          "non-English trending series",
+          "where to watch Not a Stranger Turkish thriller on Netflix",
+          "Not a Stranger Elcin Sangu series streaming tonight",
+          "best non-English Netflix thriller this week"
         ],
-        "canonicalQuery": "Not a Stranger"
-      }
+        "canonicalQuery": "Not a Stranger",
+        "longTailKeywords": [
+          "where to watch Not a Stranger Turkish thriller on Netflix",
+          "Not a Stranger Elcin Sangu series streaming tonight",
+          "best non-English Netflix thriller this week"
+        ]
+      },
+      "longTailKeywords": [
+        "where to watch Not a Stranger Turkish thriller on Netflix",
+        "Not a Stranger Elcin Sangu series streaming tonight",
+        "best non-English Netflix thriller this week"
+      ]
     },
     {
       "title": "Ted Lasso",
@@ -132,10 +171,23 @@
           "Ted Lasso",
           "where to watch Ted Lasso",
           "Apple TV trending",
-          "soccer comedy"
+          "soccer comedy",
+          "where to watch Ted Lasso on Apple TV",
+          "Ted Lasso season streaming this week",
+          "feel-good soccer comedy to watch tonight"
         ],
-        "canonicalQuery": "Ted Lasso"
-      }
+        "canonicalQuery": "Ted Lasso",
+        "longTailKeywords": [
+          "where to watch Ted Lasso on Apple TV",
+          "Ted Lasso season streaming this week",
+          "feel-good soccer comedy to watch tonight"
+        ]
+      },
+      "longTailKeywords": [
+        "where to watch Ted Lasso on Apple TV",
+        "Ted Lasso season streaming this week",
+        "feel-good soccer comedy to watch tonight"
+      ]
     },
     {
       "title": "The Gentlemen",
@@ -162,10 +214,23 @@
         "keywords": [
           "The Gentlemen Netflix",
           "where to watch The Gentlemen",
-          "Guy Ritchie series"
+          "Guy Ritchie series",
+          "where to watch The Gentlemen series on Netflix",
+          "Guy Ritchie The Gentlemen streaming tonight",
+          "crime comedy series like The Gentlemen"
         ],
-        "canonicalQuery": "The Gentlemen"
-      }
+        "canonicalQuery": "The Gentlemen",
+        "longTailKeywords": [
+          "where to watch The Gentlemen series on Netflix",
+          "Guy Ritchie The Gentlemen streaming tonight",
+          "crime comedy series like The Gentlemen"
+        ]
+      },
+      "longTailKeywords": [
+        "where to watch The Gentlemen series on Netflix",
+        "Guy Ritchie The Gentlemen streaming tonight",
+        "crime comedy series like The Gentlemen"
+      ]
     },
     {
       "title": "Slow Horses",
@@ -194,10 +259,23 @@
           "Slow Horses",
           "where to watch Slow Horses",
           "Apple TV spy series",
-          "Gary Oldman"
+          "Gary Oldman",
+          "where to watch Slow Horses on Apple TV",
+          "Slow Horses Gary Oldman spy series streaming",
+          "best spy thriller to watch this week"
         ],
-        "canonicalQuery": "Slow Horses"
-      }
+        "canonicalQuery": "Slow Horses",
+        "longTailKeywords": [
+          "where to watch Slow Horses on Apple TV",
+          "Slow Horses Gary Oldman spy series streaming",
+          "best spy thriller to watch this week"
+        ]
+      },
+      "longTailKeywords": [
+        "where to watch Slow Horses on Apple TV",
+        "Slow Horses Gary Oldman spy series streaming",
+        "best spy thriller to watch this week"
+      ]
     },
     {
       "title": "Neagley",
@@ -226,10 +304,23 @@
           "Neagley",
           "where to watch Neagley",
           "Reacher spinoff",
-          "Prime Video trending"
+          "Prime Video trending",
+          "where to watch Neagley on Prime Video",
+          "Reacher spinoff Neagley streaming tonight",
+          "action series like Reacher to watch this week"
         ],
-        "canonicalQuery": "Neagley"
-      }
+        "canonicalQuery": "Neagley",
+        "longTailKeywords": [
+          "where to watch Neagley on Prime Video",
+          "Reacher spinoff Neagley streaming tonight",
+          "action series like Reacher to watch this week"
+        ]
+      },
+      "longTailKeywords": [
+        "where to watch Neagley on Prime Video",
+        "Reacher spinoff Neagley streaming tonight",
+        "action series like Reacher to watch this week"
+      ]
     },
     {
       "title": "MobLand",
@@ -258,10 +349,23 @@
           "MobLand",
           "where to watch MobLand",
           "Paramount Plus trending",
-          "crime series"
+          "crime series",
+          "where to watch MobLand on Paramount Plus",
+          "MobLand crime series streaming this week",
+          "gangster series to watch tonight"
         ],
-        "canonicalQuery": "MobLand"
-      }
+        "canonicalQuery": "MobLand",
+        "longTailKeywords": [
+          "where to watch MobLand on Paramount Plus",
+          "MobLand crime series streaming this week",
+          "gangster series to watch tonight"
+        ]
+      },
+      "longTailKeywords": [
+        "where to watch MobLand on Paramount Plus",
+        "MobLand crime series streaming this week",
+        "gangster series to watch tonight"
+      ]
     },
     {
       "title": "Widow's Bay",
@@ -287,10 +391,23 @@
         "keywords": [
           "Widow's Bay",
           "where to watch Widows Bay",
-          "Apple TV this week"
+          "Apple TV this week",
+          "where to watch Widow's Bay on Apple TV",
+          "Widow's Bay series streaming this week",
+          "new Apple TV drama to watch tonight"
         ],
-        "canonicalQuery": "Widow's Bay"
-      }
+        "canonicalQuery": "Widow's Bay",
+        "longTailKeywords": [
+          "where to watch Widow's Bay on Apple TV",
+          "Widow's Bay series streaming this week",
+          "new Apple TV drama to watch tonight"
+        ]
+      },
+      "longTailKeywords": [
+        "where to watch Widow's Bay on Apple TV",
+        "Widow's Bay series streaming this week",
+        "new Apple TV drama to watch tonight"
+      ]
     },
     {
       "title": "East of Eden",
@@ -318,10 +435,23 @@
           "East of Eden Netflix",
           "where to watch East of Eden",
           "Steinbeck series",
-          "new on Netflix"
+          "new on Netflix",
+          "where to watch East of Eden on Netflix",
+          "East of Eden Steinbeck series streaming tonight",
+          "new Netflix drama to watch this weekend"
         ],
-        "canonicalQuery": "East of Eden"
-      }
+        "canonicalQuery": "East of Eden",
+        "longTailKeywords": [
+          "where to watch East of Eden on Netflix",
+          "East of Eden Steinbeck series streaming tonight",
+          "new Netflix drama to watch this weekend"
+        ]
+      },
+      "longTailKeywords": [
+        "where to watch East of Eden on Netflix",
+        "East of Eden Steinbeck series streaming tonight",
+        "new Netflix drama to watch this weekend"
+      ]
     },
     {
       "title": "Lanterns",
@@ -350,10 +480,23 @@
           "Lanterns",
           "where to watch Lanterns",
           "Green Lantern HBO",
-          "Max trending series"
+          "Max trending series",
+          "where to watch Lanterns on Max",
+          "Green Lantern HBO series streaming this week",
+          "Lanterns DC show to watch tonight"
         ],
-        "canonicalQuery": "Lanterns"
-      }
+        "canonicalQuery": "Lanterns",
+        "longTailKeywords": [
+          "where to watch Lanterns on Max",
+          "Green Lantern HBO series streaming this week",
+          "Lanterns DC show to watch tonight"
+        ]
+      },
+      "longTailKeywords": [
+        "where to watch Lanterns on Max",
+        "Green Lantern HBO series streaming this week",
+        "Lanterns DC show to watch tonight"
+      ]
     },
     {
       "title": "American Horror Story",
@@ -381,10 +524,23 @@
           "American Horror Story",
           "where to watch AHS",
           "FX horror",
-          "trending horror series"
+          "trending horror series",
+          "where to watch American Horror Story on FX",
+          "American Horror Story new season streaming tonight",
+          "scary series to watch this week"
         ],
-        "canonicalQuery": "American Horror Story"
-      }
+        "canonicalQuery": "American Horror Story",
+        "longTailKeywords": [
+          "where to watch American Horror Story on FX",
+          "American Horror Story new season streaming tonight",
+          "scary series to watch this week"
+        ]
+      },
+      "longTailKeywords": [
+        "where to watch American Horror Story on FX",
+        "American Horror Story new season streaming tonight",
+        "scary series to watch this week"
+      ]
     }
   ]
 }
