@@ -13,7 +13,7 @@ window.matchAppAdsInitialized=true;
 function adFreeAccount(){
  try{return /"is_ad_free"\s*:\s*true/.test(localStorage.getItem('match_profile')||'')}catch(_){return false}
 }
-function hostFor(slot){return slot.closest('.sidebar-ad-left,.sidebar-ad-right,.ad-banner-container,.mobile-ad-bottom,.premium-ad-frame,.ma-inline-ad')||slot.parentElement}
+function hostFor(slot){return slot.closest('.sidebar-ad-left,.sidebar-ad-right,.ad-banner-container,.mobile-ad-bottom,.premium-ad-frame,.ma-inline-ad')}
 function label(slot){
  const host=hostFor(slot);if(!host||host.querySelector('.ma-ad-label'))return;
  const tag=document.createElement('span');tag.className='ma-ad-label';tag.textContent='Advertisement';host.prepend(tag);
@@ -29,7 +29,8 @@ function monitor(slot){
 }
 function init(){
  if(adFreeAccount())return;
- const slots=[...document.querySelectorAll('ins.adsbygoogle')];
+ document.body.classList.remove('is-ad-empty');
+ const slots=[...document.querySelectorAll('ins.adsbygoogle')].filter(slot=>slot.getAttribute('data-ad-slot')&&hostFor(slot));
  const requested=new WeakSet();
  const request=slot=>{
    if(requested.has(slot)||slot.hasAttribute('data-adsbygoogle-status'))return;

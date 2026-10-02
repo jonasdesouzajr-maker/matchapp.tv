@@ -82,3 +82,8 @@ The owner directly authorized one subtle AdSense banner on the public Kids Mode 
 - Placement: inside the collapsed “A note for grown-ups” disclosure, away from the Kids matcher, result dialog, Ask AI input, wallet, guardian gate, and purchase controls.
 - Native app: the dedicated Kids Android WebView remains ad-free and never loads the Kids AdSense engine.
 - Future automation must not add a second Kids manual unit or expand this exception without another direct owner instruction.
+
+
+## Owner-authorized auto-ads body unit correction — 2026-10-02
+
+The owner asked to fix the AdSense error. Auto ads can insert an unfilled `ins.adsbygoogle` directly on `body` with no slot id. The initializer was treating that node as a manual unit, marking `body` empty and labeling the page Advertisement. Requests now stay on the five locked units that have `data-ad-slot` and a known host. Slot markup, publisher ID, slot ID, and the targeted `element` push are unchanged.
