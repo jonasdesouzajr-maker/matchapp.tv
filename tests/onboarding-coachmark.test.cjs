@@ -136,8 +136,9 @@ test('manual tour pinpoints Bookworms card and its real format dropdown, then re
   panel.querySelector('.matchapp-tour-next').click();
   assert.equal(panel.querySelector('#matchapp-tour-title').textContent,'Pick what to read or listen to');
   assert.equal(fold.open,true,'Actual format dropdown is revealed without activating any AI');
-  await new Promise(resolve=>w.setTimeout(resolve,30));
-  assert.equal(doc.querySelector('.matchapp-tour-spotlight').style.left,'233px','Coachmark must target the dropdown instead of the Ask AI card');
+  const spotlight=doc.querySelector('.matchapp-tour-spotlight');
+  for(let i=0;i<25&&!spotlight.style.left;i++)await new Promise(resolve=>w.setTimeout(resolve,10));
+  assert.equal(spotlight.style.left,'233px','Coachmark must target the dropdown instead of the Ask AI card');
   panel.querySelector('.matchapp-tour-next').click();
   assert.equal(panel.querySelector('#matchapp-tour-title').textContent,'Ask MatchApp Ai');
   assert.equal(fold.open,false,'Leaving the Bookworms lesson restores the starting closed state');

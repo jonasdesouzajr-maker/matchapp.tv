@@ -3,12 +3,13 @@ const {JSDOM}=require('jsdom');
 // Public read-only checks. Fetch only canonical URLs declared by the live site.
 async function auditLiveSearch(base='https://matchapp.tv',request=fetch,canonicalBase=base){
  const origin=new URL(base).origin,canonicalOrigin=new URL(canonicalBase).origin,issues=[];
+ const candidateOrigin=origin!==canonicalOrigin,maxAttempts=candidateOrigin?3:2,batchSize=candidateOrigin?2:8;
  async function get(url){
   const target=new URL(url);
   if(target.origin!==canonicalOrigin)throw Error('Noncanonical sitemap host: '+url);
   // PR candidates serve production metadata locally; validate canonical identity
   // separately from the address used to fetch the candidate's actual files.
-  for(let attempt=0;attempt<2;attempt++){
+  for(let attempt=0;attempt<maxAttempts;attempt++){
    try{
     const r=await request(origin+target.pathname+target.search,{signal:AbortSignal.timeout(12000),cache:'no-store'});
     if(r.status!==200)throw Error('HTTP '+r.status+' '+url);
@@ -17,7 +18,7 @@ async function auditLiveSearch(base='https://matchapp.tv',request=fetch,canonica
     // Only retry transient transport failures. Persistent HTTP, canonical and
     // content defects remain fatal; every final failure identifies its URL.
     const transient=['TimeoutError','AbortError','TypeError'].includes(error.name);
-    if(attempt===1||!transient)throw Error(url+': '+error.message,{cause:error});
+    if(attempt===maxAttempts-1||!transient)throw Error(url+': '+error.message,{cause:error});
     console.warn('Crawler transport retry '+url+': '+error.message);
     await new Promise(resolve=>setTimeout(resolve,250));
    }
@@ -35,7 +36,7 @@ async function auditLiveSearch(base='https://matchapp.tv',request=fetch,canonica
  const urls=[];
  for(const map of maps)urls.push(...locations((await get(map)).text,'urlset'));
  if(!urls.length||new Set(urls).size!==urls.length)issues.push('Empty or duplicate sitemap URLs');
- for(let i=0;i<urls.length;i+=8)await Promise.all(urls.slice(i,i+8).map(async url=>{
+ for(let i=0;i<urls.length;i+=batchSize)await Promise.all(urls.slice(i,i+batchSize).map(async url=>{
   let dom;
   try{
    const page=await get(url);dom=new JSDOM(page.text);const d=dom.window.document;

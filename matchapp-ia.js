@@ -106,7 +106,7 @@ function brandHeader(){
          '<span class="ma-brand-orb-stage" aria-hidden="true">'+
            '<img class="ma-brand-orb" src="'+(isHome?HOME_ICON:ICON)+'" alt="" width="260" height="260">'+
          '</span>'+
-         '<span class="ma-brand-copy" translate="no"><span class="ma-wordmark"><span class="ma-word-match">Match</span><span class="ma-word-app">app</span></span><span class="ma-word-ai" data-ma-brand-ai>Ai</span><span class="ma-brand-caption"><span class="ma-brand-tagline">Your new Entertainment Ai</span><span class="ma-brand-security" title="Connection encrypted over HTTPS and served through Cloudflare"><svg width="8" height="9" viewBox="0 0 12 14" aria-hidden="true" fill="none" stroke="currentColor"><path d="M6 1 11 3v4c0 3-5 6-5 6S1 10 1 7V3z"/><path d="m3.5 7 1.5 1.5 3.5-3.5"/></svg> Cloudflare · HTTPS</span></span></span>'+
+         '<span class="ma-brand-copy" translate="no"><span class="ma-wordmark"><span class="ma-word-match">Match</span><span class="ma-word-app">App</span></span><span class="ma-word-ai" data-ma-brand-ai>Ai</span><span class="ma-brand-caption"><span class="ma-brand-tagline">Your new Entertainment Ai</span><span class="ma-brand-security" title="Connection encrypted over HTTPS and served through Cloudflare"><svg width="8" height="9" viewBox="0 0 12 14" aria-hidden="true" fill="none" stroke="currentColor"><path d="M6 1 11 3v4c0 3-5 6-5 6S1 10 1 7V3z"/><path d="m3.5 7 1.5 1.5 3.5-3.5"/></svg> Cloudflare · HTTPS</span></span></span>'+
        '</a>'+
      '</div>';
    const homeOrb=qs('.ma-brand-orb',brand);
@@ -407,7 +407,7 @@ function prepareResponsiveAds(){
  });
 }
 function applyBrandLocale(){
- const name=isHome?'Matchapp Ai':'MatchApp Ai';
+ const name='MatchApp Ai';
  qsa('.ma-brand-lockup').forEach(brand=>{
   // Only the adult canonical lockups created by this runtime/page-shell.
   const ai=brand.querySelector('[data-ma-brand-ai]');if(!ai)return;

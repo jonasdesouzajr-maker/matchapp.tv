@@ -51,7 +51,13 @@ function capturePageError(device,error){
  }
  errors.push({device,page:'home',error:stack.slice(0,500)});
 }
-async function shot(page,name){try{await page.screenshot({path:path.join(dir,name+'.png'),animations:'disabled',timeout:20000});report.screens.push(name+'.png')}catch(e){record('screenshot '+name,false,String(e.message).slice(0,150))}}
+async function shot(page,name){
+ try{await page.screenshot({path:path.join(dir,name+'.png'),animations:'disabled',timeout:30000});report.screens.push(name+'.png');return true}
+ catch(first){
+  try{await page.screenshot({path:path.join(dir,name+'.png'),animations:'allow',timeout:20000});report.screens.push(name+'.png');return true}
+  catch(second){const issue=String(second.message||first.message).slice(0,180);record('screenshot '+name,false,issue);return false}
+ }
+}
 async function observed(page,url){
  // Observe ErrorEvent provenance as well as Playwright's sometimes opaque
  // pageerror (e.g. minified external exception name "W"). Never suppress it.
@@ -191,14 +197,14 @@ async function aiQuestion(page,question,expected,label){
       };
     });
     record('original integrated MatchApp Ai brand '+device.name,
-      identity.label==='Matchapp Ai'&&identity.ai==='Ai'&&!identity.tv&&!identity.detached&&
+      identity.label==='MatchApp Ai'&&identity.ai==='Ai'&&!identity.tv&&!identity.detached&&
       identity.logo&&identity.gradient&&identity.textInside&&Number(identity.weight)>=800,
       JSON.stringify(identity));
     if(device.name==='desktop'){
       await page.evaluate(()=>{if(typeof window.setLanguage!=='function')throw Error('Language switch unavailable');window.setLanguage('pt-BR')});
       await page.waitForFunction(()=>{
         const brand=document.querySelector('#mh-topbox .ma-brand-lockup');
-        return brand?.getAttribute('aria-label')==='Matchapp Ai'&&brand.querySelector('[data-ma-brand-ai]')?.textContent==='Ai';
+        return brand?.getAttribute('aria-label')==='MatchApp Ai'&&brand.querySelector('[data-ma-brand-ai]')?.textContent==='Ai';
       },null,{timeout:10000});
       const portuguese=await page.evaluate(()=>{
         const b=document.querySelector('#mh-topbox .ma-brand-lockup');
@@ -206,7 +212,7 @@ async function aiQuestion(page,question,expected,label){
           home:b?.querySelector('.ma-brand-home-link')?.getAttribute('aria-label')};
       });
       record('live Brazilian Portuguese MatchApp Ai brand',
-        portuguese.label==='Matchapp Ai'&&portuguese.ai==='Ai'&&portuguese.home==='Matchapp Ai home',
+        portuguese.label==='MatchApp Ai'&&portuguese.ai==='Ai'&&portuguese.home==='MatchApp Ai home',
         JSON.stringify(portuguese));
       await page.evaluate(()=>window.setLanguage('en'));
     }

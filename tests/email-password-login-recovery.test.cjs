@@ -3,7 +3,7 @@ const assert=require('node:assert/strict');
 const fs=require('node:fs'),path=require('node:path');
 const {JSDOM,VirtualConsole}=require('jsdom');
 const read=p=>fs.readFileSync(path.join(__dirname,'..',p),'utf8');
-const app=read('app.js');
+const app=read('app.js').replace(/\r\n/g,'\n');
 function section(start,end){
  const a=app.indexOf(start),b=app.indexOf(end,a);
  assert.ok(a>=0&&b>a,'expected live auth handler: '+start);

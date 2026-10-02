@@ -9,11 +9,11 @@ test('adult Home paints integrated MatchApp Ai beside the unchanged official orb
  const lockup=doc.querySelector('#mh-topbox #home-brand-lockup .ma-brand-lockup');
  assert.ok(lockup,'Canonical header must exist even before scripts run');
  const home=lockup.querySelector('a.ma-brand-home-link');
- assert.equal(home.getAttribute('aria-label'),'Matchapp Ai home');
+ assert.equal(home.getAttribute('aria-label'),'MatchApp Ai home');
  assert.match(home.querySelector('.ma-brand-orb').getAttribute('src'),/matchapp-home-orb-transparent\.webp/);
  assert.equal(home.querySelector('.ma-brand-orb').getAttribute('alt'),'','decorative image avoids repeated text');
  assert.equal(home.querySelector('.ma-word-match').textContent,'Match');
- assert.equal(home.querySelector('.ma-word-app').textContent,'app');
+ assert.equal(home.querySelector('.ma-word-app').textContent,'App');
  assert.equal(home.querySelector('[data-ma-brand-ai]').textContent,'Ai');
  assert.equal(lockup.querySelector('.ma-tv'),null,'No legacy TV word remains');
  assert.equal(lockup.querySelector('.ma-ai-brand-button'),null,'No orphaned glow-button Ai remains');
@@ -58,7 +58,7 @@ test('shared runtime fallback changes only the brand and rerenders English/PT-BR
  assert.doesNotThrow(()=>new vm.Script(js,{filename:'matchapp-ia.js'}));
  assert.match(js,/class="ma-word-ai" data-ma-brand-ai>Ai/);
  assert.match(js,/function applyBrandLocale\(\)/);
- assert.match(js,/const name=isHome\?'Matchapp Ai':'MatchApp Ai'/);
+ assert.match(js,/const name='MatchApp Ai'/);
  assert.match(js,/document\.addEventListener\('matchapp:langchange',\(\)=>setTimeout\(applyLanguage,0\)\)/);
  assert.doesNotMatch(js,/'<button type="button" class="ma-ai-brand-button"/);
  assert.match(js,/\.ma-tab/,'Existing dedicated Ask AI tab must not be removed');
@@ -104,9 +104,9 @@ test('normal submitted Android package inherits web typography; Kids remains sep
 });
 
 test('the Home brand survives automatic label translation and repeated language changes',async()=>{
- const w=new JSDOM('<body class="page-home"><a><span class="ma-brand-copy" translate="no"><span class="ma-wordmark"><span>Match</span><span>app</span></span><span>Ai</span></span></a></body>',{url:'https://matchapp.tv/',runScripts:'outside-only',pretendToBeVisual:true}).window;
+ const w=new JSDOM('<body class="page-home"><a><span class="ma-brand-copy" translate="no"><span class="ma-wordmark"><span>Match</span><span>App</span></span><span>Ai</span></span></a></body>',{url:'https://matchapp.tv/',runScripts:'outside-only',pretendToBeVisual:true}).window;
  w.eval(read('i18n.js'));w.eval(read('ai-composer.js'));w.document.dispatchEvent(new w.Event('DOMContentLoaded'));
- for(const lang of ['pt-BR','en','pt-BR','en']){w.setLanguage(lang);await new Promise(r=>setTimeout(r,25));assert.equal(w.document.querySelector('.ma-wordmark').textContent,'Matchapp');}
+ for(const lang of ['pt-BR','en','pt-BR','en']){w.setLanguage(lang);await new Promise(r=>setTimeout(r,25));assert.equal(w.document.querySelector('.ma-wordmark').textContent,'MatchApp');}
  w.close();
 });
 

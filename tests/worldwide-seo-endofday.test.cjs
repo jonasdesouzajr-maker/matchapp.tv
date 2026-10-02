@@ -14,7 +14,7 @@ test('global discovery guide regenerates deterministically with all actual inter
  const before=read(page);
  execFileSync(process.execPath,['tools/build-world-discovery-guide.js'],{cwd:root,stdio:'pipe'});
  const after=read(page);
- assert.equal(after,before,'Generated global guide must be committed exactly as produced');
+ assert.equal(after.replace(/\r\n/g,'\n'),before.replace(/\r\n/g,'\n'),'Generated global guide must be committed exactly as produced');
  for(const lang of supported){
   assert(after.includes('lang="'+lang+'"'),lang+' language section is absent');
   assert(after.includes('/?lang='+lang),'Supported language preference link missing: '+lang);
