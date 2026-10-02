@@ -8,12 +8,17 @@ const json=p=>JSON.parse(read(p));
 function requireCondition(ok,detail){if(!ok)throw Error('[content-rotation] '+detail);}
 const home=read('index.html');
 const marquee=home.match(/<div class="marquee-track" id="marquee-track">([\s\S]*?)<\/div>\s*<\/div>\s*<\/div>/)?.[1]||'';
-const posters=[...marquee.matchAll(/<img[^>]*data-title="([^"]+)"[^>]*src="([^"]+)"/g)]
-  .map(m=>({title:m[1],poster:m[2]}));
-requireCondition(posters.length===20,'Home Top Titles rail must contain 10 editorial titles plus the identical scroll-loop duplicate');
-const a=posters.slice(0,10),b=posters.slice(10);
-requireCondition(new Set(a.map(x=>x.title)).size===10,'Home Top Titles must have exactly 10 unique identities');
+const attr=(tag,name)=>tag.match(new RegExp('\\b'+name+'="([^"]*)"'))?.[1]||'';
+const posters=[...marquee.matchAll(/<img\b[^>]*data-title="[^"]+"[^>]*>/g)].map(m=>({
+  title:attr(m[0],'data-title'),poster:attr(m[0],'src'),region:attr(m[0],'data-region-focus'),tmdb:attr(m[0],'data-tmdb-id')
+}));
+requireCondition(posters.length===40,'Home Top Titles rail must contain 20 editorial titles plus the identical scroll-loop duplicate');
+const a=posters.slice(0,20),b=posters.slice(20);
+requireCondition(new Set(a.map(x=>x.title)).size===20,'Home Top Titles must have exactly 20 unique identities');
 requireCondition(a.every((p,i)=>p.title===b[i]?.title&&p.poster===b[i]?.poster),'Home Top Titles scroll-loop duplication is out of sync');
+requireCondition(a.filter(p=>p.region==='UK').length===5,'Home Top Titles must contain exactly 5 owner-approved UK identities');
+requireCondition(a.filter(p=>p.region==='CA').length===5,'Home Top Titles must contain exactly 5 owner-approved Canadian identities');
+requireCondition(a.some(p=>p.title==='Absolutely Fabulous'&&p.tmdb==='4493'&&p.region==='UK'),'Absolutely Fabulous BBC series identity must remain in the UK mix');
 requireCondition(a.every(p=>/^https:\/\/image\.tmdb\.org\/t\/p\/(?:w\d+|original)\/[A-Za-z0-9_.-]+/.test(p.poster)),
   'Home Top Titles must retain verified TMDB artwork, never placeholder graphics');
 const events=json('tools/global-events.json');
