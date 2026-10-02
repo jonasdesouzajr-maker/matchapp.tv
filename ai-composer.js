@@ -64,7 +64,7 @@ window.submitHomeAI=function(){
   input.closest('.home-ask-composer')?.insertAdjacentElement('afterend',box);
  }
  box.hidden=false;
- box.innerHTML='<p class="ma-ai-answer-q"></p><p class="ma-ai-answer-body">Opening your answer…</p>';
+ box.innerHTML='<span class="ma-spin" aria-hidden="true"></span><p class="ma-ai-answer-q"></p><p class="ma-ai-answer-body">Opening your answer…</p>';
  box.querySelector('.ma-ai-answer-q').textContent=q;
  box.querySelector('.ma-ai-answer-body').textContent='Opening your answer…';
  if(typeof window.askAI==='function')window.askAI(q);
