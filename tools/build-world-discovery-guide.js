@@ -130,8 +130,7 @@ return `<!doctype html>
 <title>What to Watch or Read Worldwide | MatchApp Ai</title>
 <meta name="description" content="Find movies, series, books and audiobooks by mood with MatchApp Ai. Search in 14 languages; explore curated guides for Brazil, Mexico, India and more.">
 <meta name="robots" content="index,follow,max-image-preview:large">
-<link rel="canonical" href="${url}">
-<meta property="og:type" content="website"><meta property="og:site_name" content="MatchApp TV Ai">
+<link rel="canonical" href="${url}">\n<link rel="alternate" hreflang="en-AU" href="${SITE}/au/">\n<link rel="alternate" hreflang="pt-BR" href="${SITE}/br/">\n<link rel="alternate" hreflang="en-US" href="${SITE}/us/">\n<link rel="alternate" hreflang="en-GB" href="${SITE}/uk/">\n<link rel="alternate" hreflang="en-CA" href="${SITE}/ca/">\n<link rel="alternate" hreflang="ja-JP" href="${SITE}/jp/">\n<link rel="alternate" hreflang="x-default" href="${url}">\n<meta property="og:type" content="website"><meta property="og:site_name" content="MatchApp TV Ai">
 <meta property="og:url" content="${url}"><meta property="og:title" content="Worldwide Entertainment Discovery | MatchApp Ai">
 <meta property="og:description" content="Learn how to find movies, series, books and audiobooks by mood in 14 languages, and browse regional entertainment guides.">
 <meta property="og:image" content="${SITE}/assets/brand/matchapp-official-icon-512.webp">
@@ -189,7 +188,12 @@ ${link("/discover.html","Ask AI")} ${link("/news/","Latest news")} ${link("/even
 <section aria-labelledby="regions"><h2 id="regions">Explore by region — and verify availability locally</h2>
 <p>These editorial routes introduce titles and cultural trends without promising every work is available on every platform or in every country. Your region determines which stores and streaming providers may be offered.</p>
 <div class="route-grid">
-<article class="route"><h3>Brazil / Brasil</h3><p>Filmes, séries, música e notícias em português.</p>${link("/guides/filmes-series-em-alta-brasil-setembro-2026/","Brazilian entertainment guide")}</article>
+<article class="route"><h3>Australia</h3><p>Australian-English discovery for films, series and region-aware viewing options.</p><a href="/au/" hreflang="en-AU">Explore MatchApp Australia</a></article>
+<article class="route"><h3>Brazil / Brasil</h3><p>Filmes, séries e descoberta por humor em português do Brasil.</p><a href="/br/" hreflang="pt-BR">Explorar MatchApp Brasil</a> · <a href="/guides/filmes-series-em-alta-brasil-setembro-2026/">Brazilian entertainment guide</a></article>
+<article class="route"><h3>United States</h3><p>US-English discovery for movies, TV and country-aware provider links.</p><a href="/us/" hreflang="en-US">Explore MatchApp US</a></article>
+<article class="route"><h3>United Kingdom</h3><p>British TV and film discovery, including UK titles already featured by MatchApp.</p><a href="/uk/" hreflang="en-GB">Explore MatchApp UK</a></article>
+<article class="route"><h3>Canada</h3><p>Canadian series and global entertainment discovery for Canadian viewers.</p><a href="/ca/" hreflang="en-CA">Explore MatchApp Canada</a></article>
+<article class="route"><h3>Japan / 日本</h3><p>日本の映画・ドラマと海外作品を気分から探せます。</p><a href="/jp/" hreflang="ja-JP">MatchApp Japan を見る</a></article>
 <article class="route"><h3>Mexico / México</h3><p>Películas, series y entretenimiento para explorar en español.</p>${link("/guides/peliculas-series-tendencia-mexico-septiembre-2026/","Mexico entertainment guide")} · ${link("/collections/mexican-series-films/","Mexican film and series collection")}</article>
 <article class="route"><h3>India / भारत</h3><p>Explore Indian cinema, Bollywood and Indian series, then check providers in your market.</p>${link("/collections/indian-cinema/","Indian cinema collection")}</article>
 </div></section>
