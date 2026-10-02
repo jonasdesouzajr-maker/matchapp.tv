@@ -385,3 +385,65 @@ html:not(.kids-mode):not([data-kids-mode]) body:not(.page-kids):not(.kids-body) 
   .kids-voice-toggle,.kids-fx-toggle,.kids-quest-reveal
 ){border-radius:999px!important}
 /* MA-PILL-SYNC:END */
+
+/* MA-KIDS-GUIDE-SYNC:START — keep generated Kids guides in the same visual family as Kids Mode. */
+body.kids-guide-page,
+body:has([data-kids-title]),
+body:has(.list article[data-ages]){
+  background:
+    radial-gradient(circle at 8% 5%,rgba(104,228,255,.14),transparent 26rem),
+    radial-gradient(circle at 92% 12%,rgba(255,114,199,.13),transparent 28rem),
+    linear-gradient(180deg,#21113e 0%,#160d31 100%)!important;
+  color:#fcf7ff!important;
+}
+:is(body.kids-guide-page,body:has([data-kids-title]),body:has(.list article[data-ages]))>header{
+  width:min(1050px,calc(100% - 24px))!important;
+  margin:14px auto 18px!important;padding:14px 16px!important;
+  border:1px solid rgba(255,255,255,.16)!important;border-radius:28px!important;
+  background:linear-gradient(135deg,rgba(49,24,83,.95),rgba(19,56,87,.9))!important;
+  box-shadow:0 14px 34px rgba(5,2,18,.3),inset 0 1px 0 rgba(255,255,255,.08)!important;
+}
+:is(body.kids-guide-page,body:has([data-kids-title]),body:has(.list article[data-ages]))>header nav{
+  display:flex!important;flex-wrap:wrap!important;gap:8px!important;align-items:center!important;
+}
+:is(body.kids-guide-page,body:has([data-kids-title]),body:has(.list article[data-ages]))>header nav>a,
+:is(body.kids-guide-page,body:has([data-kids-title]),body:has(.list article[data-ages])) :is(.watch,.matcher-link){
+  border-radius:999px!important;
+}
+:is(body.kids-guide-page,body:has([data-kids-title]),body:has(.list article[data-ages]))>header nav>a{
+  display:inline-flex!important;align-items:center!important;min-height:40px!important;padding:8px 14px!important;
+  border:1px solid rgba(255,255,255,.16)!important;background:rgba(255,255,255,.07)!important;
+  color:#fff0bd!important;text-decoration:none!important;font-weight:850!important;
+}
+:is(body.kids-guide-page,body:has([data-kids-title]),body:has(.list article[data-ages])) main>section,
+:is(body.kids-guide-page,body:has([data-kids-title]),body:has(.list article[data-ages])) .list>article{
+  border:1px solid rgba(255,255,255,.13)!important;
+  background:linear-gradient(145deg,rgba(54,32,82,.88),rgba(24,18,58,.9))!important;
+  box-shadow:0 12px 28px rgba(6,2,20,.22)!important;
+}
+:is(body.kids-guide-page,body:has([data-kids-title]),body:has(.list article[data-ages])) main>section{
+  border-radius:28px!important;padding:clamp(16px,3vw,28px)!important;
+}
+:is(body.kids-guide-page,body:has([data-kids-title]),body:has(.list article[data-ages])) .list>article{
+  border-radius:22px!important;
+}
+:is(body.kids-guide-page,body:has([data-kids-title]),body:has(.list article[data-ages])) :is(.watch,.matcher-link){
+  min-height:44px!important;padding:11px 17px!important;
+  display:inline-flex!important;align-items:center!important;justify-content:center!important;
+  font-weight:900!important;text-decoration:none!important;
+}
+:is(body.kids-guide-page,body:has([data-kids-title]),body:has(.list article[data-ages])) .watch{
+  border:1px solid #fff3b2!important;background:linear-gradient(135deg,#ffcf72,#ff9fbc)!important;
+  color:#28133f!important;box-shadow:0 4px 0 #9b5775,0 10px 24px rgba(10,3,22,.18)!important;
+}
+:is(body.kids-guide-page,body:has([data-kids-title]),body:has(.list article[data-ages])) .matcher-link{
+  border:1px solid rgba(104,228,255,.36)!important;background:rgba(104,228,255,.09)!important;color:#dffbff!important;
+}
+@media(max-width:640px){
+  :is(body.kids-guide-page,body:has([data-kids-title]),body:has(.list article[data-ages]))>header{
+    align-items:flex-start!important;flex-direction:column!important;border-radius:22px!important;
+  }
+  :is(body.kids-guide-page,body:has([data-kids-title]),body:has(.list article[data-ages]))>header nav{width:100%!important}
+}
+/* MA-KIDS-GUIDE-SYNC:END */
+
