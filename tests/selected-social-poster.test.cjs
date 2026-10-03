@@ -49,6 +49,9 @@ test('verified guest poster can be saved or shared without bypassing public-post
   assert.ok(proof.includes(token),'missing proof UI '+token);
  }
  assert.ok(proof.includes('not the image attachment'),'never claim attached image is independently verified');
+ assert.ok(proof.includes('Retry share setup'),'failed challenge has a visible retry action');
+ assert.ok(proof.includes("typeof navigator.share!=='function'"),'non-native-share browsers use the save/copy fallback');
+ assert.ok(proof.includes("modal.querySelector('[data-proof-save]')?.click()"),'share fallback still produces the poster');
  assert.ok(!read('kids/index.html').includes('ma-public-proof-poster'),'Kids Mode remains untouched');
 });
 
@@ -67,7 +70,7 @@ test('adult landing pages show brand wordmark previews while share cards retain 
    'property="og:image:width" content="1200"',
    'property="og:image:height" content="630"',
    'name="twitter:image" content="'+url+'"',
-   page==='index.html'?'verified-public-guest-share.js?v=20260928-three-shares1':'verified-public-guest-share.js?v=20260926-selectedposter1',
+   'verified-public-guest-share.js?v=20261002-shareposter-recovery1',
    'guest-share-rewards.css?v=20260926-selectedposter1'
   ])assert.ok(html.includes(fragment),page+' missing '+fragment);
  }
