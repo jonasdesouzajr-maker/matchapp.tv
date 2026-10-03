@@ -2,7 +2,7 @@
 const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
 const root=path.resolve(__dirname,'..'),read=p=>fs.readFileSync(path.join(root,p),'utf8');
 const flow=n=>read('.github/workflows/'+n+'.yml');
-const publishers=['midnight-content-rotation','news-refresh','awareness-rotation','availability','kids-seo-refresh','sitemap-refresh','seo-hardening','archive-international-day','sports-refresh'];
+const publishers=['midnight-content-rotation','news-refresh','awareness-rotation','availability','kids-seo-refresh','sitemap-refresh','seo-hardening','archive-international-day','sports-refresh','trending-refresh','music-video-refresh'];
 
 test('GrokBot and other agents inherit permanent owner-only workflow and data contracts',()=>{
  const agents=read('AGENTS.md'),policy=read('docs/EDITORIAL_AUTOMATION_LOCK.md'),owners=read('.github/CODEOWNERS');
@@ -30,6 +30,15 @@ test('daily midnight coordinates existing verified data owners and retries from 
  assert.doesNotMatch(yml,/\bgit add -A\s*(?:\n|\r|$)/,'Unscoped staging could commit unrelated private configuration');
  assert.match(yml,/if: steps\.publish\.outputs\.changed == '1'[\s\S]*?gh workflow run pages-deploy\.yml --ref main/,'GITHUB_TOKEN commits need an explicit validated Pages dispatch');
  assert.doesNotMatch(yml,/gh workflow run indexnow\.yml/,'IndexNow must wait for confirmed Pages deployment');
+});
+
+test('daily Top Titles refresh owns verified music-video discovery and SEO generation',()=>{
+ const daily=flow('trending-refresh'),manual=flow('music-video-refresh');
+ assert.match(daily,/cron: '15 3 \\* \\* \\*'/);assert.match(daily,/node tools\\/refresh-music-videos\\.js/);assert.match(daily,/node tools\\/refresh-trending\\.mjs/);
+ assert.ok(daily.indexOf('node tools/refresh-music-videos.js')<daily.indexOf('node tools/refresh-trending.mjs'));
+ assert.match(daily,/data\\/music-video-releases\\.json/);assert.match(daily,/data\\/trending-keywords\\.json/);assert.match(daily,/trending\\/this-week\\/index\\.html/);
+ assert.doesNotMatch(manual,/schedule:|cron:/);assert.match(manual,/workflow_dispatch:/);
+ const agents=read('AGENTS.md'),lock=read('docs/EDITORIAL_AUTOMATION_LOCK.md');for(const text of ['music-video discovery + SEO','VideoObject','manual recovery only'])assert.ok(agents.includes(text)||lock.includes(text),text);
 });
 
 test('hourly NEWS remains publisher sourced; awareness recovery cannot start another midnight refresh',()=>{
