@@ -38,8 +38,10 @@ function inCinemaWindow(item){
 function choose(data){
   const candidates=(data.titles||[]).filter(t=>t.kind==='movie'&&t.tmdbId&&t.poster&&t.description&&t.sourceRank);
   if(!candidates.length)throw new Error('No verified current movie candidate is available for the weekly choice.');
-  const strong=candidates.filter(t=>t.previewUrl&&(t.voteAverage==null||Number(t.voteAverage)>=5));
-  return (strong.length?strong:candidates)[0];
+  const watchable=candidates.filter(t=>streamingChoice(t)||inCinemaWindow(t));
+  const pool=watchable.length?watchable:candidates;
+  const strong=pool.filter(t=>t.previewUrl&&(t.voteAverage==null||Number(t.voteAverage)>=5));
+  return (strong.length?strong:pool)[0];
 }
 function buildPick(item,weekKey){
   const stream=streamingChoice(item),cinema=inCinemaWindow(item)&&!stream;
@@ -82,7 +84,7 @@ function write(pick){
 }
 function main(){
   const weekKey=isoWeekKey(),old=current();
-  if(old?.weekKey===weekKey&&old?.title&&!process.env.FORCE_WEEKLY_PICK){
+  if(old?.weekKey===weekKey&&old?.title&&(old?.streaming?.url||old?.inCinemas)&&!process.env.FORCE_WEEKLY_PICK){
     write(old);
     console.log(JSON.stringify({ok:true,changed:false,weekKey,title:old.title}));
     return;
