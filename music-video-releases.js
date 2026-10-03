@@ -18,10 +18,17 @@
         ko:['공식 뮤직비디오','YouTube 공개일','앨범 / 사운드트랙','감독','출연','YouTube에서 보기','공식 출처','확인일'],
         zh:['官方音乐视频','YouTube发布日期','专辑／原声带','导演','出演','在YouTube观看','官方来源','核实日期']
     };
+    const VIEW_LABEL = {
+        en:'views',pt:'visualizações',es:'visualizaciones',fr:'vues',de:'Aufrufe',it:'visualizzazioni',tr:'görüntüleme',
+        ru:'просмотров',ar:'مشاهدة',hi:'व्यूज़',id:'tayangan',ja:'再生',ko:'조회수',zh:'次观看'
+    };
     const lang = () => String(window.MATCH_LANG || document.documentElement.lang || 'en').split('-')[0].toLowerCase();
     const copy = () => COPY[lang()] || COPY.en;
     const releaseMonth = value => new Intl.DateTimeFormat(window.MATCH_LANG || document.documentElement.lang || 'en', {month:'short',year:'numeric',timeZone:'UTC'}).format(new Date(value));
     const date = value => new Intl.DateTimeFormat(window.MATCH_LANG || document.documentElement.lang || 'en', {dateStyle:'medium',timeZone:'UTC'}).format(new Date(value));
+    const fullViews = value => { const n=Number(value);return Number.isFinite(n)&&n>=0?new Intl.NumberFormat(window.MATCH_LANG || document.documentElement.lang || 'en').format(n):''; };
+    const posterViews = value => { const n=Number(value),label=VIEW_LABEL[lang()]||VIEW_LABEL.en;if(!Number.isFinite(n)||n<0)return '— '+label;const formatted=new Intl.NumberFormat(window.MATCH_LANG || document.documentElement.lang || 'en',{notation:n>=10000?'compact':'standard',maximumFractionDigits:1}).format(n);return formatted+' '+label; };
+    const shortVideoUrl = r => 'youtu.be/'+r.id;
     let inventory, featuredIds;
     async function all() {
         try {
@@ -69,7 +76,7 @@
         return {answer,results:selected.map(r=>({title:r.artist+' — '+r.title,type:'music video',_musicVideoId:r.id})),_live:false,_verifiedMusic:selected.length>0};
     }
     const get = async id => (await all()).find(r => r.id === id);
-    const intro = r => `${copy()[0]}: ${r.artist} — ${r.title}. ${copy()[1]}: ${date(r.publishedAt)}.`;
+    const intro = r => `${copy()[0]}: ${r.artist} — ${r.title}. ${copy()[1]}: ${date(r.publishedAt)}. ${posterViews(r.viewCount)}. ${r.url}`;
     function link(href, label) {
         const a=document.createElement('a');a.className='gold-btn';a.href=href;a.target='_blank';a.rel='noopener noreferrer';a.textContent=label;return a;
     }
@@ -81,7 +88,7 @@
         const img=document.createElement('img');img.dataset.maMedia='1';img.src=r.poster;img.alt=r.artist+' — '+r.title;img.width=480;img.height=360;img.decoding='async';poster.append(img);
         const body=document.createElement('div');body.className='discover-body';
         const heading=document.createElement('h2');heading.textContent=img.alt;body.append(heading);
-        const facts=[[copy()[0],r.channel],[copy()[1],date(r.publishedAt)],[copy()[2],r.album],[copy()[3],r.director],[copy()[4],r.cast.join(', ')],[copy()[7],date(r.verifiedAt+'T12:00:00Z')]];
+        const facts=[[copy()[0],r.channel],[copy()[1],date(r.publishedAt)],[VIEW_LABEL[lang()]||VIEW_LABEL.en,fullViews(r.viewCount)],[copy()[2],r.album],[copy()[3],r.director],[copy()[4],r.cast.join(', ')],[copy()[7],date(r.verifiedAt+'T12:00:00Z')]];
         facts.filter(([,value])=>value).forEach(([label,value])=>{const p=document.createElement('p');p.className='discover-music-info';p.textContent=label+': '+value;body.append(p);});
         if(r.durationSeconds){const time=document.createElement('p');time.className='discover-meta';time.textContent=Math.floor(r.durationSeconds/60)+':'+String(r.durationSeconds%60).padStart(2,'0');body.append(time);}
         const actions=document.createElement('div');actions.className='discover-actions';actions.append(link(r.url,copy()[5]),link(r.creditsSource,copy()[6]));body.append(actions);
@@ -104,8 +111,12 @@
         const frame=document.createElement('div');frame.className='music-cover-frame';frame.append(img);
         const caption=document.createElement('div');caption.className='music-video-caption';
         const title=document.createElement('span');title.className='music-cover-title';title.textContent=r.title;
-        const year=document.createElement('span');year.className='music-cover-year';year.textContent=releaseMonth(r.publishedAt);
-        caption.append(title,year);cover.append(header,frame,caption);card.append(cover);
+        const meta=document.createElement('div');meta.className='music-cover-meta';
+        const release=document.createElement('span');release.className='music-cover-release';release.textContent='📅 '+date(r.publishedAt);
+        const views=document.createElement('span');views.className='music-cover-views';views.textContent='▶ '+posterViews(r.viewCount);
+        meta.append(release,views);
+        const url=document.createElement('span');url.className='music-cover-link';url.textContent=shortVideoUrl(r);url.title=r.url;
+        caption.append(title,meta,url);cover.append(header,frame,caption);card.append(cover);
         // Sample only a tiny, same-origin copy for the surrounding UI palette.
         // The displayed original image is never edited, stretched or cropped.
         const tint=()=>{
@@ -144,7 +155,7 @@
     }
     async function localize() {
         const rows=await all();
-        document.querySelectorAll('[data-music-video]').forEach(card=>{const r=rows.find(x=>x.id===card.dataset.musicVideo);if(r){card.setAttribute('aria-label',intro(r));const release=card.querySelector('.music-cover-year');if(release)release.textContent=releaseMonth(r.publishedAt);}});
+        document.querySelectorAll('[data-music-video]').forEach(card=>{const r=rows.find(x=>x.id===card.dataset.musicVideo);if(r){card.setAttribute('aria-label',intro(r));const release=card.querySelector('.music-cover-release');if(release)release.textContent='📅 '+date(r.publishedAt);const views=card.querySelector('.music-cover-views');if(views)views.textContent='▶ '+posterViews(r.viewCount);const url=card.querySelector('.music-cover-link');if(url){url.textContent=shortVideoUrl(r);url.title=r.url;}}});
         document.querySelectorAll('.chat-bubble[data-music-video-id]').forEach(bubble=>{
             const r=rows.find(x=>x.id===bubble.dataset.musicVideoId);if(!r)return;
             const p=bubble.querySelector('.chat-answer-text');if(p)p.textContent=intro(r);
