@@ -370,3 +370,32 @@ html body.page-shell .credit-pack-btn{
     scroll-behavior:auto!important;
   }
 }
+
+/* Candidate visual QA follow-up: remove the legacy intro sweep that painted
+   rectangular strips directly behind the Ask heading/tagline. The top-box
+   ambient glimmer stays untouched. */
+html body.page-home #ma-ai-entry #search-box :is(h2,[data-i18n="search.hint"]){
+  overflow:visible!important;
+  isolation:auto!important;
+}
+html body.page-home #ma-ai-entry #search-box :is(h2,[data-i18n="search.hint"])::before{
+  content:none!important;
+  display:none!important;
+  animation:none!important;
+}
+
+/* Three Match packs should read as one balanced group on phones, not 2 + an
+   orphan aligned to the left. Four Ask-credit packs remain a normal 2x2. */
+@media(max-width:600px){
+  html body.page-shell #match-packs-section .credits-grid>.credit-pack:last-child:nth-child(odd){
+    grid-column:1/-1!important;
+    width:calc(50% - 5px)!important;
+    justify-self:center!important;
+  }
+}
+@media(max-width:340px){
+  html body.page-shell #match-packs-section .credits-grid>.credit-pack:last-child:nth-child(odd){
+    grid-column:auto!important;
+    width:100%!important;
+  }
+}
