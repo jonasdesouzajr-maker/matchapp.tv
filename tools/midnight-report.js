@@ -143,8 +143,10 @@ function main() {
   const eventsBefore = gitShowJson(beforeSha, 'tools/global-events.json', eventsNow);
   const dayNow = json('data/international-day.json', {});
   const dayBefore = gitShowJson(beforeSha, 'data/international-day.json', dayNow);
-  const pickNow = extractPickTitle(read('weekly-pick.js'));
-  const pickBefore = extractPickTitle(gitShow(beforeSha, 'weekly-pick.js') || read('weekly-pick.js'));
+  const generatedPickNow = json('data/weekly-pick.json', {});
+  const generatedPickBefore = gitShowJson(beforeSha, 'data/weekly-pick.json', generatedPickNow);
+  const pickNow = generatedPickNow?.title || extractPickTitle(read('weekly-pick.js'));
+  const pickBefore = generatedPickBefore?.title || extractPickTitle(gitShow(beforeSha, 'weekly-pick.js') || read('weekly-pick.js'));
   const keywordsNow = uniq([
     ...extractKeywords(htmlNow),
     ...(Array.isArray(dayNow.keywords) ? dayNow.keywords : [])
