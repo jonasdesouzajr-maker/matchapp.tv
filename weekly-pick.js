@@ -31,7 +31,7 @@ const PICK={
   inCinemas:true,
   platform:'Cinemas',
   streaming:null,
-  poster:'',
+  poster:'https://image.tmdb.org/t/p/w780/5bg61sH6kqPVWcBoFUDoe6eqfoX.jpg',
   watchUrl:'',
   sourceUrl:'https://www.imdb.com/title/tt5691086/',
   previewId:'VtxQvbsGNIk',
@@ -253,8 +253,11 @@ function ensureWeekly(){
   if(!d){
     const ask=pickAskUrl(), px=pickCopy();
     const ribbon=PICK.inCinemas?px.cinema:(PICK.streaming?px.where:'');
+    const art=PICK.poster
+      ? `<img src="${esc(PICK.poster)}" alt="${esc(PICK.title)} (${PICK.year}) official poster" referrerpolicy="no-referrer" loading="eager" decoding="async">`
+      : `<span class="weekly-pick-plate"><b>${esc(PICK.title)}</b><small>${PICK.year} · ${esc(PICK.country)}</small></span>`;
     d=document.createElement('details');d.id='weekly-pick-disclosure';d.className='premiere-disclosure weekly-pick-disclosure';d.open=true;
-    d.innerHTML=`<summary><span data-weekly="weeklyHeading"></span></summary><article id="weekly-pick" class="premium-card spotlight-card"><div class="spotlight-glow" aria-hidden="true"></div><div class="spotlight-inner"><a class="spotlight-poster" href="${esc(ask)}" aria-label="${esc(PICK.title)} (${PICK.year}) — details, cast and where to watch">${ribbon?`<span class="weekly-pick-ribbon${PICK.inCinemas?'':' is-streaming'}">${esc(ribbon)}</span>`:''}<span class="weekly-pick-plate"><b>${esc(PICK.title)}</b><small>${PICK.year} · ${esc(PICK.country)}</small></span></a><div class="spotlight-body"><span class="spotlight-eyebrow weekly-pick-eyebrow"></span><h2 class="spotlight-title"><a href="${esc(ask)}">${esc(PICK.title)}</a></h2><p class="spotlight-desc weekly-pick-desc"></p><div class="spotlight-meta weekly-pick-meta"></div><div class="weekly-pick-preview"></div><div class="weekly-pick-actions"><a class="gold-btn weekly-pick-primary" href="${esc(ask)}"></a><button class="gold-btn weekly-save" type="button" data-weekly="save"></button><button class="weekly-pick-dislike weekly-dislike" type="button" data-weekly="notForMe"></button></div><p class="weekly-pick-source"><strong data-weekly="sources"></strong>: <a href="${esc(PICK.sourceUrl)}" target="_blank" rel="noopener noreferrer">IMDb</a>. <span class="weekly-pick-sourcenote"></span></p></div></div></article>`;
+    d.innerHTML=`<summary><span data-weekly="weeklyHeading"></span></summary><article id="weekly-pick" class="premium-card spotlight-card"><div class="spotlight-glow" aria-hidden="true"></div><div class="spotlight-inner"><a class="spotlight-poster" href="${esc(ask)}" aria-label="${esc(PICK.title)} (${PICK.year}) — details, cast and where to watch">${ribbon?`<span class="weekly-pick-ribbon${PICK.inCinemas?'':' is-streaming'}">${esc(ribbon)}</span>`:''}${art}</a><div class="spotlight-body"><span class="spotlight-eyebrow weekly-pick-eyebrow"></span><h2 class="spotlight-title"><a href="${esc(ask)}">${esc(PICK.title)}</a></h2><p class="spotlight-desc weekly-pick-desc"></p><div class="spotlight-meta weekly-pick-meta"></div><div class="weekly-pick-preview"></div><div class="weekly-pick-actions"><a class="gold-btn weekly-pick-primary" href="${esc(ask)}"></a><button class="gold-btn weekly-save" type="button" data-weekly="save"></button><button class="weekly-pick-dislike weekly-dislike" type="button" data-weekly="notForMe"></button></div><p class="weekly-pick-source"><strong data-weekly="sources"></strong>: <a href="${esc(PICK.sourceUrl)}" target="_blank" rel="noopener noreferrer">IMDb</a>. <span class="weekly-pick-sourcenote"></span></p></div></div></article>`;
     const swift=document.getElementById('swifties-spotify');(swift||premiere).insertAdjacentElement('afterend',d);
     d.querySelector('.weekly-save').addEventListener('click',()=>record('save'));
     d.querySelector('.weekly-dislike').addEventListener('click',()=>record('dislike'));
