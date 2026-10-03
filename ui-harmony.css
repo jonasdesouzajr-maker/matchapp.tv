@@ -1,0 +1,401 @@
+/* MatchApp Ai visual harmony — 2026-10-03
+   Presentation-only final layer for the core adult surfaces.
+   No AdSense geometry, runtime handlers, matching, AI, auth, billing or quota logic. */
+
+body.page-home,
+body.ai-chat-page,
+body.page-shell{
+  --ma-ui-text:#f6f2fb;
+  --ma-ui-muted:#b8aec6;
+  --ma-ui-panel:rgba(15,12,23,.86);
+  --ma-ui-line:rgba(229,193,88,.28);
+  --ma-ui-line-soft:rgba(255,255,255,.10);
+  --ma-ui-violet:#8b5cf6;
+  --ma-ui-gold:#e5c158;
+  color:var(--ma-ui-text);
+  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-synthesis:none;
+  text-rendering:optimizeLegibility;
+}
+body.page-home :is(h1,h2,h3),
+body.ai-chat-page :is(h1,h2,h3),
+body.page-shell :is(h1,h2,h3){
+  font-family:Outfit,Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  text-wrap:balance;
+}
+body.page-home :is(p,li,label),
+body.ai-chat-page :is(p,li,label),
+body.page-shell :is(p,li,label){text-wrap:pretty}
+body.page-home :is(button,a,input,textarea,select):focus-visible,
+body.ai-chat-page :is(button,a,input,textarea,select):focus-visible,
+body.page-shell :is(button,a,input,textarea,select):focus-visible{
+  outline:2px solid #f0d27c!important;
+  outline-offset:3px!important;
+}
+body.page-home :is(button,a,input,textarea,select),
+body.ai-chat-page :is(button,a,input,textarea,select),
+body.page-shell :is(button,a,input,textarea,select){
+  -webkit-tap-highlight-color:transparent;
+}
+
+/* HOME — remove the stray highlight bars and let the Ask surface breathe. */
+html body.page-home #ma-ai-entry h2,
+html body.page-home #ma-ai-entry #search-box>p,
+html body.page-home #ma-ai-entry .concierge-tagline{
+  width:auto!important;
+  max-width:72ch!important;
+  margin-left:0!important;
+  margin-right:0!important;
+  padding:0!important;
+  border:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+}
+html body.page-home #ma-ai-entry h2{
+  margin-bottom:5px!important;
+  color:#faf6ff!important;
+  font-size:clamp(25px,3vw,34px)!important;
+  line-height:1.08!important;
+  letter-spacing:-.025em!important;
+}
+html body.page-home #ma-ai-entry #search-box>p,
+html body.page-home #ma-ai-entry .concierge-tagline{
+  margin-bottom:10px!important;
+  color:#c8bdcf!important;
+  font-size:clamp(12px,1.4vw,14px)!important;
+  line-height:1.45!important;
+}
+html body.page-home #ma-ai-entry .home-ask-composer{
+  filter:none!important;
+}
+html body.page-home #ma-ai-entry .home-ask-composer::before,
+html body.page-home #ma-ai-entry .home-ask-composer::after{
+  content:none!important;
+  display:none!important;
+  animation:none!important;
+}
+html body.page-home #ma-ai-entry #specific-search-input{
+  border-color:rgba(214,204,231,.26)!important;
+  background:rgba(18,15,25,.92)!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.04)!important;
+}
+html body.page-home #ma-ai-entry #specific-search-input:focus{
+  border-color:rgba(229,193,88,.55)!important;
+  box-shadow:0 0 0 3px rgba(229,193,88,.10)!important;
+}
+html body.page-home #ma-ai-entry :is(#mic-btn-index,.home-ask-composer>.gold-btn){
+  border:1px solid rgba(229,193,88,.32)!important;
+  background:linear-gradient(145deg,rgba(64,43,79,.90),rgba(24,18,31,.96))!important;
+  color:#f8e9b0!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 4px 12px rgba(0,0,0,.24)!important;
+}
+
+/* Home fold chrome: one rhythm, one radius, one readable label treatment. */
+html body.page-home :is(
+  .lazy-head[data-fold-key],
+  #latest-news>summary,
+  #premiere-disclosure>summary,
+  #weekly-pick-disclosure>summary,
+  #global-events .global-events-summary,
+  #cooking-home>summary,
+  #ebook-matcher-root .ebook-fold>summary,
+  #swifties-spotify .swifties-fold
+){
+  border-radius:15px!important;
+  border-color:rgba(229,193,88,.30)!important;
+  background:linear-gradient(180deg,rgba(16,13,21,.94),rgba(10,9,14,.94))!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.035)!important;
+}
+html body.page-home :is(
+  .lazy-head[data-fold-key] .lazy-head-label,
+  #latest-news .ma-news-title,
+  #premiere-disclosure>summary,
+  #weekly-pick-disclosure>summary,
+  #global-events .ge-sum-label
+){
+  color:#f7f1fb!important;
+  font-family:Outfit,Inter,sans-serif!important;
+  font-weight:700!important;
+  letter-spacing:-.01em!important;
+}
+
+/* The two first matching controls were the most obvious 320px overflow/clipping point. */
+html body.page-home #questionnaire-box .q-grid--primary{
+  min-width:0!important;
+  gap:8px!important;
+}
+html body.page-home #questionnaire-box .q-grid--primary>div{min-width:0!important}
+html body.page-home #questionnaire-box .q-grid--primary label{
+  margin:0 0 5px!important;
+  padding:0!important;
+  color:#c9bfd0!important;
+  font-size:11px!important;
+  line-height:1.15!important;
+  letter-spacing:.035em!important;
+}
+html body.page-home #questionnaire-box :is(#q-category,#q-mood){
+  box-sizing:border-box!important;
+  width:100%!important;
+  min-width:0!important;
+  height:44px!important;
+  min-height:44px!important;
+  padding:8px 30px 8px 11px!important;
+  border:1px solid rgba(213,190,231,.42)!important;
+  border-radius:12px!important;
+  background:#24182f!important;
+  color:#fff!important;
+  font:700 13px/1.2 Inter,system-ui,sans-serif!important;
+  text-overflow:ellipsis!important;
+}
+@media(max-width:340px){
+  html body.page-home #questionnaire-box .q-grid--primary{
+    grid-template-columns:1fr!important;
+  }
+}
+
+/* Latest News — titles stay editorial, but stop overwhelming narrow phones. */
+html body.page-home .ma-news-card{
+  border-radius:16px!important;
+  border-color:rgba(229,193,88,.26)!important;
+  background:rgba(11,10,16,.92)!important;
+}
+html body.page-home .ma-news-card h3{
+  color:#f8f4fb!important;
+  font-family:Outfit,Inter,sans-serif!important;
+  font-weight:700!important;
+  letter-spacing:-.012em!important;
+  line-height:1.22!important;
+}
+html body.page-home .ma-news-card :is(.ma-news-source,.ma-news-date,.ma-news-summary){
+  color:#b8aec3!important;
+}
+@media(max-width:560px){
+  html body.page-home .ma-news-card{
+    min-width:min(78vw,244px)!important;
+    max-width:min(78vw,244px)!important;
+  }
+  html body.page-home .ma-news-card-body{padding:12px!important}
+  html body.page-home .ma-news-card h3{
+    font-size:15px!important;
+    -webkit-line-clamp:4!important;
+    line-clamp:4!important;
+  }
+  html body.page-home .ma-news-card :is(.ma-news-source,.ma-news-date,.ma-news-summary){
+    font-size:10.5px!important;
+    line-height:1.35!important;
+  }
+}
+
+/* DISCOVER / Ask AI workspace — less floating chrome, clearer hierarchy. */
+html body.ai-chat-page .discover-head{
+  max-width:100%!important;
+  margin:0!important;
+  padding:clamp(10px,2.1vw,22px)!important;
+  border:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+}
+html body.ai-chat-page .discover-title-row,
+html body.ai-chat-page .discover-title-copy,
+html body.ai-chat-page .discover-title-copy h1,
+html body.ai-chat-page .concierge-tagline{
+  background:transparent!important;
+  box-shadow:none!important;
+}
+html body.ai-chat-page .discover-title-copy h1{
+  margin:0 0 4px!important;
+  padding:0!important;
+  color:#faf7ff!important;
+  font-size:clamp(26px,3.4vw,38px)!important;
+  line-height:1.08!important;
+  letter-spacing:-.03em!important;
+}
+html body.ai-chat-page .concierge-tagline{
+  margin:0!important;
+  padding:0!important;
+  color:#bdb2c8!important;
+  font-size:13px!important;
+  line-height:1.45!important;
+}
+html body.ai-chat-page .ma-ask-again{
+  display:inline-flex!important;
+  align-items:center!important;
+  min-height:38px!important;
+  margin:10px auto 12px 0!important;
+  padding:8px 13px!important;
+  border:1px solid rgba(229,193,88,.48)!important;
+  border-radius:999px!important;
+  background:rgba(19,15,27,.74)!important;
+  color:#f0d47e!important;
+  box-shadow:none!important;
+  font:750 12px/1 Inter,system-ui,sans-serif!important;
+}
+html body.ai-chat-page .newsearch-row{
+  border:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+}
+html body.ai-chat-page #discover-new-input{
+  border-color:rgba(214,204,231,.26)!important;
+  background:rgba(18,15,25,.94)!important;
+}
+html body.ai-chat-page :is(#mic-btn-discover,.composer-send){
+  border:1px solid rgba(229,193,88,.32)!important;
+  background:linear-gradient(145deg,rgba(64,43,79,.90),rgba(24,18,31,.96))!important;
+  color:#f8e9b0!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 4px 12px rgba(0,0,0,.24)!important;
+}
+html body.ai-chat-page .composer-hint{
+  color:#a99eb6!important;
+  font-size:11.5px!important;
+  line-height:1.4!important;
+}
+html body.ai-chat-page .ai-sidebar-toggle{
+  width:40px!important;
+  height:40px!important;
+  border-radius:12px!important;
+  background:rgba(15,11,22,.94)!important;
+  box-shadow:0 8px 22px rgba(0,0,0,.34)!important;
+}
+html body.ai-chat-page footer{
+  color:#a79caf!important;
+}
+html body.ai-chat-page footer a{color:#d9cde6!important}
+
+/* Shared page-shell header: compact and deliberate on small screens, without hiding controls. */
+@media(max-width:760px){
+  html body.ai-chat-page header.app-header.mh-topbox,
+  html body.page-shell header.app-header.mh-topbox{
+    gap:7px!important;
+    padding:8px 9px!important;
+    border-radius:18px!important;
+  }
+  html body.ai-chat-page header.app-header.mh-topbox>nav,
+  html body.page-shell header.app-header.mh-topbox>nav{
+    gap:5px!important;
+    align-items:center!important;
+  }
+  html body.ai-chat-page header.app-header.mh-topbox>nav>*,
+  html body.page-shell header.app-header.mh-topbox>nav>*{
+    min-height:36px!important;
+    height:auto!important;
+    padding:5px 8px!important;
+    border-radius:11px!important;
+    font-size:11px!important;
+    line-height:1.15!important;
+  }
+}
+@media(max-width:420px){
+  html body.ai-chat-page .wrap{
+    padding-left:10px!important;
+    padding-right:10px!important;
+  }
+  html body.ai-chat-page .discover-head{padding:8px 2px 10px!important}
+  html body.ai-chat-page .discover-title-copy h1{font-size:27px!important}
+  html body.ai-chat-page .concierge-tagline{font-size:12px!important}
+  html body.ai-chat-page .newsearch-row{
+    grid-template-columns:minmax(0,1fr) 40px 40px!important;
+    gap:6px!important;
+  }
+  html body.ai-chat-page #discover-new-input{
+    min-height:52px!important;
+    height:52px!important;
+    padding:10px 14px!important;
+    font-size:16px!important;
+  }
+  html body.ai-chat-page :is(#mic-btn-discover,.composer-send){
+    width:40px!important;
+    min-width:40px!important;
+    height:40px!important;
+    min-height:40px!important;
+  }
+  html body.ai-chat-page .composer-hint{font-size:10.5px!important}
+  html body.ai-chat-page .ai-sidebar-toggle{
+    left:10px!important;
+    width:38px!important;
+    height:38px!important;
+  }
+}
+
+/* PRICING — cards align, copy wraps gracefully, actions form a consistent baseline. */
+html body.page-shell .credits-section{
+  color:var(--ma-ui-text)!important;
+}
+html body.page-shell .credits-h{
+  color:#faf6ff!important;
+  font-family:Outfit,Inter,sans-serif!important;
+  font-size:clamp(21px,3vw,28px)!important;
+  letter-spacing:-.02em!important;
+}
+html body.page-shell .credits-lede,
+html body.page-shell .credits-note{
+  color:#b9afc5!important;
+}
+html body.page-shell .credits-grid{
+  align-items:stretch!important;
+}
+html body.page-shell .credit-pack{
+  min-width:0!important;
+  height:100%!important;
+  border-color:rgba(255,255,255,.11)!important;
+  border-radius:17px!important;
+  background:linear-gradient(180deg,rgba(28,22,40,.88),rgba(17,14,25,.88))!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.035)!important;
+}
+html body.page-shell .credit-pack-btn{
+  min-height:44px!important;
+  margin-top:auto!important;
+  border-radius:12px!important;
+  white-space:normal!important;
+  text-wrap:balance!important;
+}
+@media(max-width:600px){
+  html body.page-shell .credits-grid{gap:10px!important}
+  html body.page-shell .credit-pack{padding:20px 10px 16px!important}
+  html body.page-shell .credit-pack-unit{font-size:10px!important;letter-spacing:.06em!important}
+  html body.page-shell .credit-pack-price{font-size:17px!important}
+  html body.page-shell .credit-pack-btn{padding:10px 8px!important;font-size:13px!important}
+}
+@media(max-width:340px){
+  html body.page-shell .credits-grid{grid-template-columns:1fr!important}
+}
+
+/* Motion is decorative only. */
+@media(prefers-reduced-motion:reduce){
+  body.page-home *,
+  body.ai-chat-page *,
+  body.page-shell *{
+    scroll-behavior:auto!important;
+  }
+}
+
+/* Candidate visual QA follow-up: remove the legacy intro sweep that painted
+   rectangular strips directly behind the Ask heading/tagline. The top-box
+   ambient glimmer stays untouched. */
+html body.page-home #ma-ai-entry #search-box :is(h2,[data-i18n="search.hint"]){
+  overflow:visible!important;
+  isolation:auto!important;
+}
+html body.page-home #ma-ai-entry #search-box :is(h2,[data-i18n="search.hint"])::before{
+  content:none!important;
+  display:none!important;
+  animation:none!important;
+}
+
+/* Three Match packs should read as one balanced group on phones, not 2 + an
+   orphan aligned to the left. Four Ask-credit packs remain a normal 2x2. */
+@media(max-width:600px){
+  html body.page-shell #match-packs-section .credits-grid>.credit-pack:last-child:nth-child(odd){
+    grid-column:1/-1!important;
+    width:calc(50% - 5px)!important;
+    justify-self:center!important;
+  }
+}
+@media(max-width:340px){
+  html body.page-shell #match-packs-section .credits-grid>.credit-pack:last-child:nth-child(odd){
+    grid-column:auto!important;
+    width:100%!important;
+  }
+}

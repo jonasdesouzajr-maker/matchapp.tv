@@ -1,0 +1,102 @@
+/* MatchApp Ai KIDS visual harmony — 2026-10-03
+   Presentation only. Keep Kids safety, matching, Ask AI, grown-up gate and ad behavior untouched. */
+
+html body.page-kids{
+  font-family:Nunito,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-synthesis:none;
+  text-rendering:optimizeLegibility;
+}
+html body.page-kids :is(h1,h2,h3,.kids-brand-copy strong){
+  font-family:"Baloo 2",Nunito,system-ui,sans-serif;
+  text-wrap:balance;
+}
+html body.page-kids :is(p,li,label){text-wrap:pretty}
+html body.page-kids :is(button,a,input,select):focus-visible{
+  outline:3px solid #a8f5e3!important;
+  outline-offset:3px!important;
+}
+html body.page-kids :is(.kids-primary,.kids-secondary,.kids-pill,.kids-chip,.kids-watch){
+  min-height:44px;
+  box-sizing:border-box;
+}
+html body.page-kids .kids-primary{
+  background:linear-gradient(135deg,#ffe28b,#ffbf69)!important;
+  border:1px solid rgba(255,248,213,.72)!important;
+  color:#351a46!important;
+  box-shadow:0 .24rem 0 #b97743,0 .58rem 1.35rem rgba(0,0,0,.20)!important;
+}
+html body.page-kids .kids-secondary{
+  border-color:rgba(255,255,255,.30)!important;
+  background:linear-gradient(145deg,rgba(89,52,116,.76),rgba(44,27,70,.82))!important;
+  color:#fff7ff!important;
+}
+html body.page-kids .kids-card,
+html body.page-kids .kids-feature{
+  border-color:rgba(255,255,255,.16)!important;
+  box-shadow:0 .75rem 1.7rem rgba(10,4,18,.24)!important;
+}
+html body.page-kids .kids-card h3{
+  display:-webkit-box;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:2;
+  line-clamp:2;
+  overflow:hidden;
+}
+html body.page-kids .kids-card p{
+  display:-webkit-box;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:4;
+  line-clamp:4;
+  overflow:hidden;
+}
+@media(max-width:560px){
+  html body.page-kids .kids-header-inner{
+    gap:.55rem!important;
+    align-items:flex-start!important;
+  }
+  html body.page-kids :is(.kids-nav,.kids-tools,.kids-header-actions){
+    min-width:0!important;
+    max-width:100%!important;
+  }
+  html body.page-kids .kids-pill{
+    min-height:42px!important;
+    border-radius:999px!important;
+  }
+  html body.page-kids .kids-hero h1{
+    font-size:clamp(2.8rem,13vw,3.55rem)!important;
+    line-height:.98!important;
+  }
+  html body.page-kids .kids-hero-copy>p{
+    font-size:.92rem!important;
+    line-height:1.5!important;
+  }
+  html body.page-kids .kids-section-title-row{
+    flex-wrap:wrap!important;
+  }
+  html body.page-kids .kids-age-wrap{
+    width:100%!important;
+    max-width:100%!important;
+  }
+  html body.page-kids .kids-age-wrap select{
+    width:100%!important;
+    max-width:100%!important;
+  }
+  html body.page-kids .kids-card h3{font-size:1rem!important}
+  html body.page-kids .kids-card p{
+    font-size:.67rem!important;
+    -webkit-line-clamp:3;
+    line-clamp:3;
+  }
+}
+@media(max-width:360px){
+  html body.page-kids .kids-grid{grid-template-columns:1fr!important}
+  html body.page-kids .kids-card{
+    width:min(100%,290px)!important;
+    margin-inline:auto!important;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  html body.page-kids *{
+    scroll-behavior:auto!important;
+  }
+}
