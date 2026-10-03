@@ -63,6 +63,10 @@ function start(vp){
   window.addEventListener('pagehide',()=>clearInterval(timer),{once:true});
 }
 function boot(){
+  // Start the committed mirrored rail immediately. The async weekly refresh is
+  // an enhancement, never a prerequisite for motion; if that fetch is slow or
+  // unavailable, Top Titles must still keep auto-swiping.
+  start(document.getElementById('marquee-viewport'));
   Promise.all([
     fetch('/data/trending-week.json?v=20261002-week1',{cache:'no-store'}).then(r=>r.ok?r.json():null),
     fetch('/data/poster-identities.json?v=20261002-poster1',{cache:'force-cache'}).then(r=>r.ok?r.json():[]).catch(()=>[])
