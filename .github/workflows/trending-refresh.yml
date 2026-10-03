@@ -83,6 +83,7 @@ jobs:
           npm run build
 
       - name: Publish verified daily editorial refresh
+        id: publish
         shell: bash
         run: |
           set -euo pipefail
@@ -91,13 +92,15 @@ jobs:
           git add             data/music-video-releases.json             assets/music-videos             index.html             data/trending-week.json             data/trending-keywords.json             data/weekly-pick.json             weekly-pick-data.js             trending/this-week/index.html             featured/this-week/index.html             sitemap.xml sitemaps.xml
           if git diff --staged --quiet; then
             echo "Editorial content already current."
+            echo "changed=0" >> "$GITHUB_OUTPUT"
             exit 0
           fi
           git commit -m "Refresh daily Top Titles, music videos and SEO"
           git push origin HEAD:main
+          echo "changed=1" >> "$GITHUB_OUTPUT"
 
       - name: Validate and deploy bot-published main commit
-        if: success()
+        if: steps.publish.outputs.changed == '1'
         env:
           GH_TOKEN: ${{ github.token }}
         run: gh workflow run pages-deploy.yml --ref main
