@@ -19,7 +19,7 @@ function readMusicVideos(){
     const data=JSON.parse(fs.readFileSync(p,'utf8'));
     const featured=new Set(Array.isArray(data.featuredIds)?data.featuredIds:[]);
     return (Array.isArray(data.items)?data.items:[])
-      .filter(x=>x?.artist&&x?.title&&x?.poster&&/^https:\/\/www\.youtube\.com\/watch\?v=/.test(String(x.url||'')))
+      .filter(x=>x?.artist&&x?.title&&x?.poster&&Number.isFinite(Date.parse(x.publishedAt||''))&&Number.isSafeInteger(Number(x.viewCount))&&Number(x.viewCount)>=0&&/^https:\/\/www\.youtube\.com\/watch\?v=[\w-]{11}$/.test(String(x.url||'')))
       .sort((a,b)=>(featured.has(b.id)-featured.has(a.id))||(Date.parse(b.publishedAt||0)-Date.parse(a.publishedAt||0)))
       .slice(0,4)
       .map((x,i)=>{
@@ -32,12 +32,12 @@ function readMusicVideos(){
         ];
         return {
           title,kind:'music-video',year:y,origin:'',platform:'YouTube',tmdbId:null,
-          poster:x.poster,url:x.url,artist:x.artist,songTitle:x.title,publishedAt:x.publishedAt||'',
-          description:`Official ${x.artist} music video for “${x.title}”, released on YouTube.`,
+          poster:x.poster,url:x.url,artist:x.artist,songTitle:x.title,publishedAt:x.publishedAt||'',viewCount:Number(x.viewCount),viewCountCheckedAt:x.viewCountCheckedAt||'',channel:x.channel||'',channelUrl:x.channelUrl||'',
+          description:x.seo?.description||`Official ${x.artist} music video for “${x.title}”, released on YouTube ${String(x.publishedAt||'').slice(0,10)} with ${Number(x.viewCount).toLocaleString('en-US')} verified views at the latest daily check.`,
           genre:['Music video'],inLanguage:'en',
-          keywords:uniq([x.artist,x.title,'official music video','YouTube music video',`${y} music releases`,...(x.keywords||[])]),
-          longTailKeywords:longTail,
-          seo:{title:`${x.artist} – ${x.title} official music video | MatchApp Ai`,description:`Watch and discover the official ${x.artist} “${x.title}” music video and ask MatchApp Ai for release details.`,keywords:uniq([...(x.keywords||[]),...longTail]),canonicalQuery:title},
+          keywords:uniq([x.artist,x.title,'official music video','latest official music videos','YouTube music video',`${y} music releases`,`${x.artist} new music video`,...(x.keywords||[]),...(x.seo?.keywords||[])]),
+          longTailKeywords:uniq([...longTail,`${x.artist} ${x.title} release date`,`${x.artist} ${x.title} YouTube views`]),
+          seo:x.seo||{title:`${x.artist} – ${x.title} official music video | MatchApp Ai`,description:`Watch and discover the official ${x.artist} “${x.title}” music video, release date and latest verified YouTube views.`,keywords:uniq([...(x.keywords||[]),...longTail]),canonicalQuery:title},
           source:'verified-official-music-video',sourceRank:i+1
         };
       });
@@ -89,8 +89,13 @@ function jsonLd(data){
   const list=data.titles.map((t,i)=>{
     let item;
     if(t.kind==='music-video'){
-      item={'@type':'VideoObject',name:t.title,description:t.description,thumbnailUrl:`https://matchapp.tv${t.poster}`,contentUrl:t.url};
+      const videoId=String(t.url||'').match(/[?&]v=([\w-]{11})/)?.[1]||'';
+      item={'@type':'VideoObject',name:t.title,description:t.description,thumbnailUrl:`https://matchapp.tv${t.poster}`,contentUrl:t.url,url:t.url};
+      if(videoId)item.embedUrl='https://www.youtube.com/embed/'+videoId;
       if(t.publishedAt)item.uploadDate=t.publishedAt;
+      if(t.channel)item.creator={'@type':'MusicGroup',name:t.channel,...(t.channelUrl?{url:t.channelUrl}:{})};
+      if(Number.isSafeInteger(Number(t.viewCount)))item.interactionStatistic={'@type':'InteractionCounter',interactionType:{'@type':'WatchAction'},userInteractionCount:Number(t.viewCount)};
+      if(t.keywords?.length)item.keywords=t.keywords.join(', ');
     }else{
       item={'@type':t.kind==='movie'?'Movie':'TVSeries',name:t.title,description:t.description,image:t.poster};
       if(t.year)item.datePublished=String(t.year);
@@ -113,7 +118,7 @@ async function main(){
   const updated=new Date().toISOString();
   const data={
     schemaVersion:2,weekOf:mondayOfCurrentWeek(),updated,label:'Latest titles trending right now',
-    sourceNote:'Movie and TV positions refresh from MatchApp’s current TMDB daily trend metadata; verified official music-video releases are interleaved separately. Availability can vary by country.',
+    sourceNote:'Movie and TV positions refresh from MatchApp’s current TMDB daily trend metadata; verified official music-video releases from monitored top-artist channels refresh daily with release dates, YouTube view counts, direct links, keywords and structured metadata. Availability can vary by country.',
     titles
   };
   fs.writeFileSync(path.join(ROOT,'data/trending-week.json'),JSON.stringify(data,null,2)+'\n');
