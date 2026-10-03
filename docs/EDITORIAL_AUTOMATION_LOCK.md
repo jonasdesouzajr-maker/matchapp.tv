@@ -29,19 +29,20 @@ GitHub Actions and manual edits until the owner explicitly changes it.
 - **Sports news:** The owner-approved sports edition uses the public GDELT Project DOC 2.0 API to discover original publisher URLs, not restricted BBC Sport RSS syndication. `tools/refresh-sports-discovery.js` builds `news/sports.json` **twice daily at 11:17 and 23:17 UTC**. `tools/refresh-news-rss.js` remains the sole news HTML/SEO/archive/URL manifest generator and merges only fresh verified sports rows. Sports has a strictly path-filtered `on:push` self-check when its own workflow file changes, so the first deployment collects data immediately; recurring sports collection remains at 11:17 and 23:17 UTC. A mere crawl time change must never light the new-headline bell. The sports publisher uses the same serialized git lock, existing news carousel and original-source click behavior. Sports discovery copies no publisher images or article bodies, and identifies discovery time rather than inventing precise source publication dates. Errors leave previously committed news intact. The /news/ hub is already in the sitemap; thin source wrappers remain noindex.
 - **Regional authorized sports sources:** When GDELT cannot connect, the single optional The Conversation source adapter may read three documented sport-scoped French Atom topics (sport, athletes, Olympic games) and The Conversation Australian general Atom feed **only with a strict sports-title/URL filter**. All four stay within the same host and direct publisher attribution contract, use no publisher photos or article bodies, reject betting/promotion, and deduplicate repeated article URLs and headline variants across topics. Their research-oriented publishing frequency can yield fewer than two genuine new sports stories on some days; **never invent headlines, call a previous day's article breaking news, or use unlicensed sport feeds just to fill the carousel**.
 - **Top Titles:** owner amendment 2026-10-02 expands the Home marquee to
-  **exactly 26 unique editorial identities**: the prior ten plus five UK,
+  **exactly 26 unique film/TV editorial identities**: the prior ten plus five UK,
   five Canadian, three Japanese and three Australian selections, followed by
-  an identical 26-card copy for a seamless continuous leftward loop. Keep
+  an identical 26-card copy for a seamless continuous leftward loop. Verified official music-video release cards are a separate interleaved addition and do not count against those 26 film/TV identities. Keep
   verified official exact-title posters; never replace them with generic
   text, gradient or wrong-title artwork. Regional cards retain country
   identity, and Japanese cards may retain verified original Japanese titles
   alongside the international title. `catalog-media-ingest` refreshes
   server-authoritative TMDB metadata and country-aware providers; it enriches
-  the existing Home titles but does **not automatically replace** the Home
-  editor's curated identities. Updating the curated Home set requires a
+  the existing Home film/TV titles but does **not automatically replace** the Home
+  editor's curated identities. Updating the curated film/TV set requires a
   separate trusted editorial update using real identity, official art and the
   existing presentation/Ask Ai action; do not describe the separate TMDB feed
   as an automatic Home marquee update when it is not.
+  **Owner amendment 2026-10-03:** the daily `trending-refresh.yml` run is the scheduled owner for music-video discovery as part of Top Titles. It must check the monitored official top-artist channels before rebuilding the row, feature only newly/recently published exact official videos with a verified numeric view count, retain the latest eligible release per artist, and regenerate related keywords, metadata, Home VideoObject JSON-LD and `/trending/this-week/` SEO output. Each featured music video must expose its release date, latest verified views and direct official YouTube link. Natural artist/title/release/search-intent keywords and long-tail phrases are required; keyword stuffing, guessed popularity, unofficial uploads and fabricated metadata are forbidden. `music-video-refresh.yml` is manual recovery only so there is no competing scheduled writer.
 - Preserve exact naming "Latest titles trending right now" and all existing
   matching, Ask Ai, Kids gating, Android variants, AdSense and responsive UI.
 
@@ -50,7 +51,7 @@ GitHub Actions and manual edits until the owner explicitly changes it.
    `matchapp-content-publish` GitHub concurrency group, `cancel-in-progress:
    false`. Do not add parallel data owners or race two bots against Home,
    news, event URL manifests or the same sitemap.
-2. Midnight runs at 03:00 UTC (00:00 in São Paulo); hourly news uses
+2. Midnight runs at 03:00 UTC (00:00 in São Paulo); the daily Top Titles + official music-video refresh runs at 03:15 UTC (00:15 in São Paulo) and owns the scheduled music-video discovery/SEO pass; hourly news uses
    37 minutes past each hour; sports at 11:17/23:17 UTC; If GDELT's public DOC API cannot establish a secure connection, only the vetted The Conversation sports Atom feed provides directly attributed original-title links. SportBusy is not an authorized fallback because its current public Terms forbid commercial copying or redistribution absent separate written permission. Do not label it licensed or silently add it again. Don't copy any source photos, bodies or gambling promotions, and always distinguish publisher-provided dates from GDELT first-seen timestamps. awareness is a recovery/source recheck at
    03:45 UTC plus its existing daytime pass. Preserve scheduled/on-demand
    functionality and only change cadence if owner approves.
