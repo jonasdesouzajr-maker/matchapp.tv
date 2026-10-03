@@ -42,6 +42,11 @@ function confirmExistingRelease(prior,row,artist,channelId,info,checkedAt){
  return {...prior,publishedAt:row.publishedAt,verifiedAt:checkedAt};
 }
 function schema(items){return {'@context':'https://schema.org','@type':'ItemList',name:'Official music video releases on YouTube',numberOfItems:items.length,itemListElement:items.map((r,i)=>({'@type':'ListItem',position:i+1,item:{'@type':'VideoObject',name:r.artist+' — '+r.title,description:`${r.artist} official music video for ${r.title}. Released on YouTube ${r.publishedAt.slice(0,10)}.`,thumbnailUrl:['https://matchapp.tv'+r.poster],uploadDate:r.publishedAt,url:r.url,embedUrl:'https://www.youtube.com/embed/'+r.id,creator:{'@type':'MusicGroup',name:r.artist,url:r.channelUrl},keywords:r.keywords.join(', '),isAccessibleForFree:true,...(r.durationSeconds?{duration:'PT'+r.durationSeconds+'S'}:{}),...(Number.isSafeInteger(Number(r.viewCount))?{interactionStatistic:{'@type':'InteractionCounter',interactionType:{'@type':'WatchAction'},userInteractionCount:Number(r.viewCount)}}:{})}}))};}
+function seoForRelease(r){
+ const day=String(r.publishedAt||'').slice(0,10),views=Number.isSafeInteger(Number(r.viewCount))?Number(r.viewCount):null;
+ const keywords=[...new Set([...(r.keywords||[]),r.artist,r.title,`${r.artist} ${r.title} official music video`,`new ${r.artist} music video`,`${day.slice(0,4)} music video releases`,'latest official music videos','YouTube music video'].filter(Boolean))];
+ return {title:`${r.artist} — ${r.title} official music video | MatchApp Ai`,description:`Official ${r.artist} music video for “${r.title}”, released on YouTube ${day}${views!==null?` with ${views.toLocaleString('en-US')} verified views at the latest daily check`:''}.`,keywords,canonicalQuery:`${r.artist} ${r.title} official music video`};
+}
 async function refresh(){
  const file=path.join(ROOT,'data/music-video-releases.json'),old=JSON.parse(fs.readFileSync(file,'utf8'));
  const channels=JSON.parse(fs.readFileSync(path.join(ROOT,'data/music-video-artists.json'),'utf8'));
@@ -78,11 +83,11 @@ async function refresh(){
   }catch(error){console.error(artist.artist+': '+error.message);}
  }));
  if(!successes)throw Error('All official feeds unavailable; previous inventory retained');
- const sorted=[...byId.values()].sort((a,b)=>Date.parse(b.publishedAt)-Date.parse(a.publishedAt));
+ const sorted=[...byId.values()].sort((a,b)=>Date.parse(b.publishedAt)-Date.parse(a.publishedAt)).map(r=>{const next={...r,keywords:[...new Set((r.keywords||[]).filter(Boolean))]};return {...next,seo:seoForRelease(next)};});
  // Latest release per artist; retain older IDs for saved/deep-linked release cards.
  const seen=new Set(),featured=[];
  for(const r of sorted)if(Number.isSafeInteger(Number(r.viewCount))&&!seen.has(r.channelUrl.toLowerCase())&&featured.length<12){seen.add(r.channelUrl.toLowerCase());featured.push(r.id);}
- const updated={...old,items:sorted,featuredIds:featured};
+ const updated={...old,verifiedAt:new Date().toISOString().slice(0,10),items:sorted,featuredIds:featured};
  const homeFile=path.join(ROOT,'index.html'),home=fs.readFileSync(homeFile,'utf8');
  const marker=/<script\b(?=[^>]*\bid="music-video-releases-schema")[^>]*>[\s\S]*?<\/script>/;
  const replacement='<script type="application/ld+json" id="music-video-releases-schema">'+JSON.stringify(schema(sorted.filter(r=>featured.includes(r.id)))).replace(/</g,'\\u003c')+'</script>';
@@ -91,5 +96,5 @@ async function refresh(){
  fs.writeFileSync(file,JSON.stringify(updated,null,2)+'\n');
  console.log(`${successes}/${channels.length} official feeds checked; ${featured.length} featured videos; ${sorted.length} verified records.`);
 }
-module.exports={parseFeed,parseViewCount,schema,confirmExistingRelease};
+module.exports={parseFeed,parseViewCount,schema,confirmExistingRelease,seoForRelease};
 if(require.main===module)refresh().catch(e=>{console.error(e.message);process.exitCode=1;});
