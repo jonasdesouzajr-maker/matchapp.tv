@@ -16,7 +16,7 @@ test('main Android launcher uses official icon and no Google ads SDK',()=>{
  const manifest=read('android-studio/app/src/main/AndroidManifest.xml'),gradle=read('android-studio/app/build.gradle.kts'),launcher=read('android-studio/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml');
  assert.doesNotMatch(manifest,/com\.google\.android\.gms\.ads/);assert.doesNotMatch(gradle,/play-services-ads|ads-identifier/);assert.match(launcher,/@drawable\/matchapp_launcher_safe/);
  const safe=read('android-studio/app/src/main/res/drawable/matchapp_launcher_safe.xml');
- assert.match(safe,/@drawable\/matchapp_official_icon/);assert.match(safe,/android:inset="16%"/);
+ assert.match(safe,/@drawable\/ic_launcher_foreground/);assert.match(safe,/android:inset="0%"/);
 });
 
 

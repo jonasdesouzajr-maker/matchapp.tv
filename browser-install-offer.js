@@ -117,7 +117,7 @@
     node.id='ma-install-offer';
     node.setAttribute('role','region');
     node.innerHTML='<button class="ma-offer-close" type="button" aria-label="Close">×</button>'+
-      '<div class="ma-offer-head"><img src="/assets/brand/matchapp-ai-install-192.png?v=20260923-icon4" width="40" height="40" alt="">'+
+      '<div class="ma-offer-head"><img src="/assets/brand/matchapp-ai-install-192.png?v=20261003-premiumicon1" width="40" height="40" alt="">'+
       '<div><strong class="ma-offer-title"></strong><p class="ma-offer-description"></p></div></div>'+
       '<div class="ma-offer-actions"><button class="ma-offer-browser" type="button"></button>'+
       (PLAY_RELEASED?'<a class="ma-offer-play" target="_blank" rel="noopener noreferrer" href="'+PLAY+'"></a>':'<button class="ma-offer-play" type="button" disabled aria-disabled="true"></button>')+'</div>'+

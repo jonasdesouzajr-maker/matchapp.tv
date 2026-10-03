@@ -71,7 +71,7 @@
     el.hidden = true;
     el.setAttribute('role', 'dialog');
     el.setAttribute('aria-modal', 'true');
-    el.innerHTML = '<div class="ma-im-card"><button type="button" class="ma-im-close" hidden aria-label="Close">&times;</button><img src="/assets/brand/matchapp-ai-install-192.png?v=20260923-icon4" width="56" height="56" alt=""><div class="ma-im-success" hidden aria-hidden="true">✓</div><h2></h2><p></p><div class="ma-im-track"><div class="ma-im-fill"></div></div></div>';
+    el.innerHTML = '<div class="ma-im-card"><button type="button" class="ma-im-close" hidden aria-label="Close">&times;</button><img src="/assets/brand/matchapp-ai-install-192.png?v=20261003-premiumicon1" width="56" height="56" alt=""><div class="ma-im-success" hidden aria-hidden="true">✓</div><h2></h2><p></p><div class="ma-im-track"><div class="ma-im-fill"></div></div></div>';
     document.body.appendChild(el);
     el.querySelector('.ma-im-close').addEventListener('click', hide);
     if (adult) {

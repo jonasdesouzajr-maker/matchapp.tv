@@ -27,7 +27,7 @@
   video.setAttribute('playsinline', '');
   video.style.cssText = 'width:100%;height:100%;object-fit:cover;visibility:hidden;';
   var loading = document.createElement('img');
-  loading.src = '/assets/brand/matchapp-ai-install-192.png?v=20261001-circle-launch1';
+  loading.src = '/assets/brand/matchapp-ai-install-192.png?v=20261003-premiumicon1';
   loading.alt = '';
   loading.setAttribute('aria-hidden', 'true');
   loading.style.cssText = 'position:absolute;width:112px;height:112px;object-fit:contain;animation:matchapp-intro-glow 1.4s ease-in-out infinite;';
