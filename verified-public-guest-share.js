@@ -142,7 +142,7 @@ function open({kind,title,token,message,url,onNext}){
    caption.value=data.challenge+' https://matchapp.tv\n'+core+'\n#MatchAppAi #MatchAppTV #WhatToWatch #StreamingGuide #MovieNight';
    copy.disabled=false;verify.disabled=false;sharePoster.disabled=false;
    sharePoster.textContent=pt()?'📲 Compartilhar pôster':'📲 Share poster';
-   feedback.textContent=(kind==='watch_match'?(pt()?\`${3-data.remaining} de 3 compartilhamentos verificados. \`:\`${3-data.remaining} of 3 shares verified. \`):'')+
+   feedback.textContent=(kind==='watch_match'?(pt()?`${3-data.remaining} de 3 compartilhamentos verificados. `:`${3-data.remaining} of 3 shares verified. `):'')+
     (pt()?'Pronto. Publique uma nova postagem pública contendo esta legenda.':'Ready. Publish a NEW PUBLIC post containing the exact caption above, then paste its URL.');
   }).catch(e=>{
    if(current?.id!==thisOpen)return;
