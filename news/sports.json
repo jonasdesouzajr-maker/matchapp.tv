@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-03T01:57:36.829Z",
+  "updated_at": "2026-10-03T15:09:02.683Z",
   "source_policy": "Explicitly authorized attributed original publisher RSS/Atom headlines; directly linked canonical URLs, no article-body/image republication and no betting guides",
   "items": [
     {
@@ -30,22 +30,6 @@
       "sport": "Sports",
       "event_type": "Sports",
       "published_at": "2026-10-01T05:06:06.000Z",
-      "timestamp_kind": "published",
-      "discovery_source": "Authorized publisher RSS/Atom",
-      "image": null
-    },
-    {
-      "id": "a02cc1e5",
-      "title": "Cities keep shelling out taxpayer money for sports stadiums, yet the economics almost never makes sense",
-      "url": "https://theconversation.com/cities-keep-shelling-out-taxpayer-money-for-sports-stadiums-yet-the-economics-almost-never-makes-sense-292058",
-      "source": "The Conversation",
-      "source_domain": "theconversation.com",
-      "source_home": "https://theconversation.com",
-      "country": "GLOBAL",
-      "category": "sports",
-      "sport": "Sports",
-      "event_type": "Sports",
-      "published_at": "2026-09-29T12:43:12.000Z",
       "timestamp_kind": "published",
       "discovery_source": "Authorized publisher RSS/Atom",
       "image": null
