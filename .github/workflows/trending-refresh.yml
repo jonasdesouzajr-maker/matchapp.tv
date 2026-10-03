@@ -1,18 +1,30 @@
-name: Refresh top titles this week
+name: Refresh live Top Titles and weekly choice
+
 on:
   schedule:
-    - cron: '15 3 * * *' # 00:15 America/Sao_Paulo
+    - cron: '15 3 * * *' # 00:15 America/Sao_Paulo, after midnight content rotation
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/trending-refresh.yml'
+      - 'tools/live-editorial-data.mjs'
+      - 'tools/refresh-trending.mjs'
+      - 'tools/refresh-weekly-pick.mjs'
+
 permissions:
   contents: write
   actions: write
+  id-token: write
+
 concurrency:
   group: matchapp-content-publish
   cancel-in-progress: false
+
 jobs:
   refresh:
     runs-on: ubuntu-24.04
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v7
         with:
@@ -21,13 +33,55 @@ jobs:
       - uses: actions/setup-node@v7
         with:
           node-version: '24'
-      - name: Refresh trending metadata and SEO page
+          cache: npm
+
+      - name: Refresh verified catalog and TMDB daily trends
+        run: node tools/sync-catalog-media.js
+
+      - name: Refresh live Top Titles, entertainment keywords and SEO page
         run: node tools/refresh-trending.mjs
-      - name: Publish
+
+      - name: Refresh this week's featured choice
+        run: node tools/refresh-weekly-pick.mjs
+
+      - name: Rebuild sitemap and validate generated editorial content
         run: |
+          node tools/update-sitemap.js
+          node --check weekly-pick.js
+          node --check trending-rail.js
+          node --check tools/refresh-trending.mjs
+          node --check tools/refresh-weekly-pick.mjs
+          node tools/check-content-rotation.js
+          node - <<'NODE'
+          const fs=require('fs');
+          const trend=JSON.parse(fs.readFileSync('data/trending-week.json','utf8'));
+          const pick=JSON.parse(fs.readFileSync('data/weekly-pick.json','utf8'));
+          if(!Array.isArray(trend.titles)||trend.titles.length<16)throw Error('Top Titles refresh produced too few verified entries');
+          if(!pick.title||!pick.tmdbId||!pick.poster||!pick.synopsis)throw Error('Weekly choice is incomplete');
+          if(!fs.existsSync('featured/this-week/index.html'))throw Error('Weekly featured SEO page missing');
+          if(!fs.readFileSync('sitemap.xml','utf8').includes('https://matchapp.tv/featured/this-week/'))throw Error('Weekly featured page missing from sitemap');
+          console.log(JSON.stringify({topTitles:trend.titles.length,weeklyPick:pick.title,updated:trend.updated}));
+          NODE
+
+      - name: Install validation dependencies
+        run: npm ci --ignore-scripts
+
+      - name: Run SEO, AdSense, content and regression gates
+        run: |
+          npm run audit:site
+          npm test
+          npm run build
+
+      - name: Publish verified daily editorial refresh
+        shell: bash
+        run: |
+          set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/trending-week.json trending/this-week/index.html
-          if git diff --staged --quiet; then echo "already current"; exit 0; fi
-          git commit -m "Refresh top titles this week"
+          git add             data/trending-week.json             data/trending-keywords.json             data/weekly-pick.json             weekly-pick-data.js             trending/this-week/index.html             featured/this-week/index.html             sitemap.xml sitemaps.xml
+          if git diff --staged --quiet; then
+            echo "Editorial content already current."
+            exit 0
+          fi
+          git commit -m "Refresh live Top Titles and weekly choice"
           git push origin HEAD:main
