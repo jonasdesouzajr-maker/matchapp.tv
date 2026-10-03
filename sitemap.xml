@@ -14,7 +14,7 @@
     </url>
     <url>
         <loc>https://matchapp.tv/trending/this-week/</loc>
-        <lastmod>2026-10-02T20:26:43+00:00</lastmod>
+        <lastmod>2026-10-03T08:46:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
     </url>
@@ -165,6 +165,12 @@
     <url>
         <loc>https://matchapp.tv/featured/antartida/</loc>
         <lastmod>2026-10-02T11:24:46+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/featured/this-week/</loc>
+        <lastmod>2026-10-03T08:46:00+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
