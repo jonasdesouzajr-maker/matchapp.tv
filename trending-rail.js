@@ -29,6 +29,11 @@ function paint(data){
   const track=document.getElementById('marquee-track');
   const rail=document.getElementById('trending-rail');
   if(!track||!rail||!data||!Array.isArray(data.titles)||!data.titles.length)return;
+  // Music videos have their own verified portrait-card renderer with release
+  // date, views and direct YouTube URL. Never render them through the generic
+  // film/TV card path or users can see an image-only duplicate.
+  const editorialTitles=data.titles.filter(item=>item?.kind!=='music-video');
+  if(!editorialTitles.length)return;
   const weekLabel={en:'Top titles this week','pt-BR':'Títulos em alta nesta semana',es:'Títulos top de esta semana',fr:'Titres phares de la semaine',de:'Top-Titel dieser Woche',it:'Titoli top di questa settimana',tr:'Bu haftanın öne çıkanları',ru:'Главные названия недели',ar:'أبرز العناوين هذا الأسبوع',hi:'इस हफ्ते के शीर्ष शीर्षक',id:'Judul teratas minggu ini',ja:'今週の注目タイトル',ko:'이번 주 인기 작품',zh:'本周热门标题'};
   const lang=String(document.documentElement.lang||localStorage.getItem('match_lang')||'en');
   const shown=weekLabel[lang]||weekLabel[lang.slice(0,2)]||data.label||weekLabel.en;
@@ -37,10 +42,11 @@ function paint(data){
   if(!label){label=document.createElement('p');label.className='trending-week-label';rail.insertBefore(label, rail.firstChild);}
   label.textContent=shown;
   track.replaceChildren();
-  data.titles.forEach(item=>track.appendChild(card(item,false)));
-  data.titles.forEach(item=>track.appendChild(card(item,true)));
-  track.dataset.loopCount=String(data.titles.length);
+  editorialTitles.forEach(item=>track.appendChild(card(item,false)));
+  editorialTitles.forEach(item=>track.appendChild(card(item,true)));
+  track.dataset.loopCount=String(editorialTitles.length);
   start(document.getElementById('marquee-viewport'));
+  document.dispatchEvent(new CustomEvent('matchapp:trendingpainted',{detail:{count:editorialTitles.length}}));
 }
 function start(vp){
   if(!vp||vp.dataset.weekAuto==='1')return;
@@ -73,7 +79,7 @@ function boot(){
   ]).then(([data,identities])=>{
     if(!data||!Array.isArray(data.titles))return;
     const byTitle=new Map((Array.isArray(identities)?identities:[]).map(row=>[String(row?.title||'').trim().toLowerCase(),row]));
-    const titles=data.titles.map(item=>{
+    const titles=data.titles.filter(item=>item?.kind!=='music-video').map(item=>{
       const exact=byTitle.get(String(item?.title||'').trim().toLowerCase());
       return Object.assign({},item,{poster:item?.poster||exact?.posterLarge||exact?.poster||exact?.posterOriginal||''});
     }).filter(item=>item.poster);
