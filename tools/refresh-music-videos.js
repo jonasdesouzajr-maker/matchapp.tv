@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 'use strict';
 // Official-channel Atom feeds only. No AI-generated identities or credits.
+// Scheduled ownership: the daily Top Titles workflow runs this first; the standalone workflow is manual recovery only.
 const fs=require('node:fs'),path=require('node:path'),{JSDOM}=require('jsdom');
 const ROOT=path.join(__dirname,'..');
 const OFFICIAL=/\b(?:official (?:music )?video|videoclipe oficial|video oficial)\b/i;
