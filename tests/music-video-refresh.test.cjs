@@ -1,6 +1,6 @@
 'use strict';
 const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs');
-const {parseFeed,parseViewCount,schema,confirmExistingRelease}=require('../tools/refresh-music-videos.js');
+const {parseFeed,parseViewCount,schema,confirmExistingRelease,seoForRelease}=require('../tools/refresh-music-videos.js');
 const channel='UC1234567890123456789012';
 const entry=(title,owner=channel,date='2026-01-01T12:00:00Z')=>`<entry><yt:videoId>abcdefghijk</yt:videoId><yt:channelId>${owner}</yt:channelId><title>${title}</title><published>${date}</published><author><name>Artist</name></author></entry>`;
 const feed=rows=>`<feed xmlns="http://www.w3.org/2005/Atom" xmlns:yt="http://www.youtube.com/xml/schemas/2015">${rows}</feed>`;
@@ -26,10 +26,16 @@ test('public YouTube page parsing captures exact numeric view counts without inv
  assert.equal(parseViewCount('{"videoDetails":{"viewCount":"7654321"}}'),7654321);
  assert.equal(parseViewCount('<html>no count</html>'),null);
 });
-test('daily publisher retains shared serialization, complete validation and scoped staging',()=>{
- const y=fs.readFileSync('.github/workflows/music-video-refresh.yml','utf8');
- for(const text of ["cron: '10 3 * * *'",'group: matchapp-content-publish','cancel-in-progress: false','npm test','npm run audit:site','node tools/check-content-rotation.js','git reset --hard origin/main','gh workflow run pages-deploy.yml --ref main'])assert.ok(y.includes(text),text);
- assert.ok(!y.includes('git add -A'));assert.ok(!y.includes('continue-on-error'));
+test('daily Top Titles owns music-video discovery while the old workflow is manual recovery only',()=>{
+ const daily=fs.readFileSync('.github/workflows/trending-refresh.yml','utf8'),manual=fs.readFileSync('.github/workflows/music-video-refresh.yml','utf8');
+ for(const text of ["cron: '15 3 * * *'",'node tools/refresh-music-videos.js','node tools/refresh-trending.mjs','data/music-video-releases.json','data/trending-keywords.json','trending/this-week/index.html','group: matchapp-content-publish','cancel-in-progress: false','npm test','npm run audit:site','node tools/check-content-rotation.js','gh workflow run pages-deploy.yml --ref main'])assert.ok(daily.includes(text),text);
+ assert.ok(daily.indexOf('node tools/refresh-music-videos.js')<daily.indexOf('node tools/refresh-trending.mjs'),'music discovery must happen before Top Titles generation');
+ assert.doesNotMatch(manual,/schedule:|cron:/);assert.match(manual,/workflow_dispatch:/);
+ assert.ok(!daily.includes('git add -A'));assert.ok(!daily.includes('continue-on-error'));
+});
+test('music release SEO metadata includes exact identity, release date, keywords and verified views',()=>{
+ const r={artist:'Artist',title:'Song',publishedAt:'2026-10-03T12:00:00Z',viewCount:1234567,keywords:['official music video']};
+ const seo=seoForRelease(r);assert.match(seo.title,/Artist.*Song.*MatchApp Ai/);assert.match(seo.description,/2026-10-03/);assert.match(seo.description,/1,234,567 verified views/);assert.ok(seo.keywords.includes('latest official music videos'));assert.match(seo.canonicalQuery,/Artist Song official music video/);
 });
 test('SEO emits exact video identity and omits unavailable duration',()=>{
  const rows=JSON.parse(fs.readFileSync('data/music-video-releases.json','utf8')).items;
