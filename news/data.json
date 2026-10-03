@@ -1,10 +1,181 @@
 {
-  "generated_at": "2026-10-03T01:57:36.885Z",
-  "feed_version": "c25600fe",
+  "generated_at": "2026-10-03T07:03:34.334Z",
+  "feed_version": "49f19e65",
   "sports_updated_at": "2026-10-03T01:57:36.829Z",
   "source_policy": "direct-trusted-publisher-rss+google-trends-keyword-signals",
   "seo_policy": "per-story keyword snapshot at first discovery + source citation + stable archive",
   "items": [
+    {
+      "id": "36367861",
+      "title": "G7 to release millions of barrels of oil and diesel after Trump threat",
+      "url": "https://www.bbc.co.uk/news/articles/ck87zg8jnwngo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "published_at": "2026-10-03T04:38:31.000Z",
+      "discovered_at": "2026-10-03T00:42:17.937Z",
+      "event_type": "Release",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-03. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/2b12/live/fb4ac130-bee3-11f1-a64c-550be9e3c66b.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/g7-to-release-millions-of-barrels-of-oil-and-diesel-after-trump-threat-363678/",
+      "landing_url": "https://matchapp.tv/?news=36367861#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-02",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "release",
+          "100",
+          "million",
+          "barrels",
+          "oil",
+          "diesel"
+        ],
+        "long_tail": [
+          "G7 to release 100 million barrels of oil and diesel after Trump export ban threat 2026-10-02",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "release",
+          "100",
+          "million",
+          "barrels",
+          "oil",
+          "diesel"
+        ],
+        "freshness_keywords": [
+          "2026-10-02"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "G7 to release 100 million barrels of oil and diesel after…",
+        "meta_description": "World report published by BBC World on 2026-10-02. Open the original report for full context.",
+        "keywords": [
+          "world news",
+          "global headlines",
+          "release",
+          "100",
+          "million",
+          "barrels",
+          "oil",
+          "diesel",
+          "2026-10-02",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-03T00:42:17.937Z"
+      }
+    },
+    {
+      "id": "790792e6",
+      "title": "Pabllo Vittar faz a festa da carne ao se jogar na pista de 'Lost in lust', álbum que dilui o 'batidão tropical' da artista",
+      "url": "https://g1.globo.com/pop-arte/musica/blog/mauro-ferreira/post/2026/10/03/pabllo-vittar-faz-a-festa-da-carne-ao-se-jogar-na-pista-de-lost-in-lust-album-que-dilui-o-batidao-tropical-da-artista.ghtml",
+      "source": "G1",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "BR",
+      "published_at": "2026-10-03T03:02:00.000Z",
+      "discovered_at": "2026-10-03T07:03:34.334Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "Pabllo Vittar",
+      "description": "Pabllo Vittar: entertainment headline reported by G1. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://s2-g1.glbimg.com/vNZm4kEf1U1aJGavAGUzajzaXZg=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/N/b/8M2sdLSPy530gywJOrZw/pabllo-vittar-gabriel-renne.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/pabllo-vittar-faz-a-festa-da-carne-ao-se-jogar-na-pista-de-lost-in-lust-album-qu-790792/",
+      "landing_url": "https://matchapp.tv/?news=790792e6#latest-news",
+      "seo": {
+        "primary_keyword": "साहिबज़ादा फरहान",
+        "short_tail": [
+          "Pabllo Vittar",
+          "Pabllo Vittar news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje",
+          "साहिबज़ादा फरहान",
+          "प्रेमानंद महाराज",
+          "നിവിന് പോളി"
+        ],
+        "long_tail": [
+          "Pabllo Vittar latest news October 2026",
+          "Pabllo Vittar entertainment update 2026",
+          "Pabllo Vittar news 2026-10-03",
+          "latest entertainment news about Pabllo Vittar",
+          "pabllo vittar pabllo vittar faz festa latest update",
+          "G1 Pabllo Vittar entertainment",
+          "últimas notícias sobre Pabllo Vittar outubro 2026",
+          "Pabllo Vittar notícia de 2026-10-03",
+          "o que aconteceu com Pabllo Vittar"
+        ],
+        "trend_keywords": [
+          "साहिबज़ादा फरहान",
+          "प्रेमानंद महाराज",
+          "നിവിന് പോളി"
+        ],
+        "entity_keywords": [
+          "Pabllo Vittar",
+          "pabllo",
+          "vittar",
+          "faz",
+          "festa",
+          "carne",
+          "jogar"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-03",
+          "outubro 2026",
+          "Pabllo Vittar 2026"
+        ],
+        "source_keywords": [
+          "G1 Pabllo Vittar",
+          "g1.globo.com Pabllo Vittar",
+          "G1 entertainment news"
+        ],
+        "meta_title": "Pabllo Vittar faz a festa da carne ao se jogar na pista de…",
+        "meta_description": "Pabllo Vittar: Entertainment update reported by G1 on 2026-10-03. See verified context, publication time and the original source via MatchApp Ai.",
+        "keywords": [
+          "साहिबज़ादा फरहान",
+          "Pabllo Vittar",
+          "Pabllo Vittar news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje",
+          "प्रेमानंद महाराज",
+          "നിവിന് പോളി",
+          "Pabllo Vittar latest news October 2026",
+          "Pabllo Vittar entertainment update 2026",
+          "Pabllo Vittar news 2026-10-03",
+          "latest entertainment news about Pabllo Vittar",
+          "pabllo vittar pabllo vittar faz festa latest update",
+          "G1 Pabllo Vittar entertainment",
+          "últimas notícias sobre Pabllo Vittar outubro 2026",
+          "Pabllo Vittar notícia de 2026-10-03",
+          "o que aconteceu com Pabllo Vittar",
+          "pabllo",
+          "vittar",
+          "faz",
+          "festa",
+          "carne",
+          "jogar",
+          "October 2026",
+          "2026-10-03",
+          "outubro 2026",
+          "Pabllo Vittar 2026",
+          "G1 Pabllo Vittar",
+          "g1.globo.com Pabllo Vittar",
+          "G1 entertainment news"
+        ],
+        "seo_generated_at": "2026-10-03T07:03:34.334Z"
+      }
+    },
     {
       "id": "72730d3e",
       "title": "“Good Heavens”: Kathleen Turner Reacts to Michael Douglas’ Bombshell About Their Secret Romance During ‘Romancing the Stone’",
@@ -955,71 +1126,6 @@
           "The Hollywood Reporter entertainment news"
         ],
         "seo_generated_at": "2026-10-02T21:23:39.953Z"
-      }
-    },
-    {
-      "id": "36367861",
-      "title": "G7 to release 100 million barrels of oil and diesel after Trump export ban threat",
-      "url": "https://www.bbc.co.uk/news/articles/ck87zg8jnwngo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "published_at": "2026-10-02T20:25:19.000Z",
-      "discovered_at": "2026-10-03T00:42:17.937Z",
-      "event_type": "Release",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-02. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/1c16/live/be292300-be89-11f1-babe-4199b0e7ccea.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/g7-to-release-100-million-barrels-of-oil-and-diesel-after-trump-export-ban-threa-363678/",
-      "landing_url": "https://matchapp.tv/?news=36367861#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-02",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "release",
-          "100",
-          "million",
-          "barrels",
-          "oil",
-          "diesel"
-        ],
-        "long_tail": [
-          "G7 to release 100 million barrels of oil and diesel after Trump export ban threat 2026-10-02",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "release",
-          "100",
-          "million",
-          "barrels",
-          "oil",
-          "diesel"
-        ],
-        "freshness_keywords": [
-          "2026-10-02"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "G7 to release 100 million barrels of oil and diesel after…",
-        "meta_description": "World report published by BBC World on 2026-10-02. Open the original report for full context.",
-        "keywords": [
-          "world news",
-          "global headlines",
-          "release",
-          "100",
-          "million",
-          "barrels",
-          "oil",
-          "diesel",
-          "2026-10-02",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-03T00:42:17.937Z"
       }
     },
     {
@@ -2685,114 +2791,6 @@
           "g1.globo.com famosos lamentam morte influenciador"
         ],
         "seo_generated_at": "2026-10-02T01:47:47.891Z"
-      }
-    },
-    {
-      "id": "0da767a7",
-      "title": "Watch: Celebrity Traitors series two kicks off with a wild curveball",
-      "url": "https://www.bbc.co.uk/news/videos/cwd080ryxd42o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GB",
-      "published_at": "2026-10-01T21:51:56.000Z",
-      "discovered_at": "2026-10-02T08:57:30.447Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "",
-      "description": "entertainment headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/f5d4/live/efd96090-be39-11f1-babe-4199b0e7ccea.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/watch-celebrity-traitors-series-two-kicks-off-with-a-wild-curveball-0da767/",
-      "landing_url": "https://matchapp.tv/?news=0da767a7#latest-news",
-      "seo": {
-        "primary_keyword": "मच्छर",
-        "short_tail": [
-          "watch celebrity traitors series",
-          "watch celebrity traitors series news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "मच्छर",
-          "अभिजीत दीपके",
-          "याचिका",
-          "உதயநிதி ஸ்டாலின்"
-        ],
-        "long_tail": [
-          "watch celebrity traitors series latest news October 2026",
-          "watch celebrity traitors series entertainment update 2026",
-          "watch celebrity traitors series news 2026-10-01",
-          "latest entertainment news about watch celebrity traitors series",
-          "watch celebrity traitors series two kicks latest update",
-          "BBC watch celebrity traitors series entertainment",
-          "latest news about watch celebrity traitors series October 2026",
-          "watch celebrity traitors series entertainment news 2026-10-01",
-          "what happened with watch celebrity traitors series"
-        ],
-        "trend_keywords": [
-          "मच्छर",
-          "अभिजीत दीपके",
-          "याचिका",
-          "உதயநிதி ஸ்டாலின்"
-        ],
-        "entity_keywords": [
-          "watch",
-          "celebrity",
-          "traitors",
-          "series",
-          "two",
-          "kicks",
-          "off",
-          "wild"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-01",
-          "watch celebrity traitors series 2026"
-        ],
-        "source_keywords": [
-          "BBC watch celebrity traitors series",
-          "bbc.co.uk watch celebrity traitors series",
-          "BBC entertainment news"
-        ],
-        "meta_title": "Watch: Celebrity Traitors series two kicks off with a wild…",
-        "meta_description": "Entertainment update reported by BBC on 2026-10-01. See verified context, publication time and the original source via MatchApp TV.",
-        "keywords": [
-          "मच्छर",
-          "watch celebrity traitors series",
-          "watch celebrity traitors series news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "अभिजीत दीपके",
-          "याचिका",
-          "உதயநிதி ஸ்டாலின்",
-          "watch celebrity traitors series latest news October 2026",
-          "watch celebrity traitors series entertainment update 2026",
-          "watch celebrity traitors series news 2026-10-01",
-          "latest entertainment news about watch celebrity traitors series",
-          "watch celebrity traitors series two kicks latest update",
-          "BBC watch celebrity traitors series entertainment",
-          "latest news about watch celebrity traitors series October 2026",
-          "watch celebrity traitors series entertainment news 2026-10-01",
-          "what happened with watch celebrity traitors series",
-          "watch",
-          "celebrity",
-          "traitors",
-          "series",
-          "two",
-          "kicks",
-          "off",
-          "wild",
-          "October 2026",
-          "2026-10-01",
-          "watch celebrity traitors series 2026",
-          "BBC watch celebrity traitors series"
-        ],
-        "seo_generated_at": "2026-10-02T08:57:30.447Z"
       }
     },
     {
