@@ -29,7 +29,7 @@
     const fullViews = value => { const n=Number(value);return Number.isFinite(n)&&n>=0?new Intl.NumberFormat(window.MATCH_LANG || document.documentElement.lang || 'en').format(n):''; };
     const posterViews = value => { const n=Number(value),label=VIEW_LABEL[lang()]||VIEW_LABEL.en;if(!Number.isFinite(n)||n<0)return '— '+label;const formatted=new Intl.NumberFormat(window.MATCH_LANG || document.documentElement.lang || 'en',{notation:n>=10000?'compact':'standard',maximumFractionDigits:1}).format(n);return formatted+' '+label; };
     const shortVideoUrl = r => 'youtu.be/'+r.id;
-    let inventory, featuredIds;
+    let inventory, featuredIds, mounting=false;
     async function all() {
         try {
         if (!inventory) inventory = fetch('/data/music-video-releases.json?day='+new Date().toISOString().slice(0,10), {cache:'no-store',signal:AbortSignal.timeout(6500)}).then(r => {
@@ -138,20 +138,30 @@
         return card;
     }
     async function mount() {
-        const track=document.getElementById('marquee-track');if(!track || track.querySelector('[data-music-video]'))return;
-        const records=await all(), rows=Array.isArray(featuredIds)?records.filter(r=>featuredIds.includes(r.id)):records;if(!rows.length)return;
-        // Spread releases among however many editorial film/TV identities the
-        // Home rail owns. Detect the mirrored halves instead of assuming ten.
-        const originals=Array.from(track.children).filter(node=>node.querySelector?.('img[data-title]'));
-        const uniqueCount=originals.length/2;
-        if(!Number.isInteger(uniqueCount)||uniqueCount<1)return;
-        rows.forEach((r,index)=>{
-            const after=Math.floor(index*uniqueCount/rows.length);
-            track.insertBefore(tile(r,false),originals[after+1]||originals[uniqueCount]||null);
-            track.insertBefore(tile(r,true),originals[uniqueCount+after+1]||null);
-        });
-        const viewport=track.closest('.marquee-viewport');if(viewport)viewport.scrollLeft=0;
-        window.dispatchEvent(new Event('resize'));
+        const track=document.getElementById('marquee-track');
+        if(!track || track.querySelector('[data-music-video]') || mounting)return;
+        mounting=true;
+        try{
+            const records=await all();
+            if(!track.isConnected || track.querySelector('[data-music-video]'))return;
+            const selected=Array.isArray(featuredIds)?records.filter(r=>featuredIds.includes(r.id)):records;
+            // A Top Titles music-video card is only eligible once its required
+            // poster metadata is complete. Never fall back to an image-only tile.
+            const rows=selected.filter(r=>Date.parse(r.publishedAt)&&Number.isFinite(Number(r.viewCount))&&r.viewCount>=0&&/^https:\/\/www\.youtube\.com\/watch\?v=[\w-]{11}$/.test(r.url));
+            if(!rows.length)return;
+            // Spread releases among however many editorial film/TV identities the
+            // Home rail owns. Detect the mirrored halves instead of assuming ten.
+            const originals=Array.from(track.children).filter(node=>node.querySelector?.('img[data-title]'));
+            const uniqueCount=originals.length/2;
+            if(!Number.isInteger(uniqueCount)||uniqueCount<1)return;
+            rows.forEach((r,index)=>{
+                const after=Math.floor(index*uniqueCount/rows.length);
+                track.insertBefore(tile(r,false),originals[after+1]||originals[uniqueCount]||null);
+                track.insertBefore(tile(r,true),originals[uniqueCount+after+1]||null);
+            });
+            const viewport=track.closest('.marquee-viewport');if(viewport)viewport.scrollLeft=0;
+            window.dispatchEvent(new Event('resize'));
+        }finally{mounting=false;}
     }
     async function localize() {
         const rows=await all();
@@ -166,5 +176,8 @@
     }
     window.MatchAppMusicReleases={get,intro,paintCard,query,isVideoQuestion};
     document.addEventListener('matchapp:langchange',localize);
+    // The weekly rail can repaint after this script has mounted. Re-mount the
+    // verified music cards after that refresh so the rich metadata never vanishes.
+    document.addEventListener('matchapp:trendingpainted',mount);
     if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount,{once:true});else mount();
 })();
