@@ -167,7 +167,7 @@ test('guest with remaining share opportunities is shown previous result instead 
 test('new adult assets and premium design do not touch Kids',()=>{
  const home=read('index.html'),chat=read('discover.html');
  for(const page of [home,chat]){
-  assert.match(page,/verified-public-guest-share\.js\?v=202609(26-selectedposter1|28-three-shares1)/);
+  assert.match(page,/verified-public-guest-share\.js\?v=20261002-shareposter-recovery1/);
   assert.match(page,/guest-share-rewards\.css\?v=20260926-selectedposter1/);
  }
  assert.match(read('guest-share-rewards.js'),/finalizeVerified/);
