@@ -122,14 +122,14 @@ async function main(){
   const longTail=uniq(titles.flatMap(t=>t.longTailKeywords||[])).slice(0,100);
   fs.writeFileSync(path.join(ROOT,'data/trending-keywords.json'),JSON.stringify({updated,source:'current MatchApp entertainment trend feed',short,longTail},null,2)+'\n');
 
-  const headDescription=`What’s trending now: ${titles.slice(0,5).map(t=>t.title).join(', ')}. Current movies, TV series and official music-video releases with where-to-watch discovery.`;
+  const headDescription='Discover current movies, TV series and verified music videos trending now, with fresh title details and where-to-watch discovery from MatchApp Ai.';
   const cards=titles.map((t,i)=>`<article class="trend-card"><a href="/discover.html?q=${encodeURIComponent(t.seo?.canonicalQuery||t.title)}"><img src="${esc(t.poster)}" alt="${esc(t.title)}" width="260" height="390" loading="${i<4?'eager':'lazy'}" decoding="async"></a><div><p class="rank">#${i+1} · ${esc(t.kind==='music-video'?'music video':t.kind)}${t.platform?' · '+esc(t.platform):''}</p><h2><a href="/discover.html?q=${encodeURIComponent(t.seo?.canonicalQuery||t.title)}">${esc(t.title)}</a></h2><p>${esc(t.description)}</p><p class="meta">${esc([t.year,t.originName||t.origin,(t.genre||[]).slice(0,3).join(' · ')].filter(Boolean).join(' · '))}</p>${t.kind==='music-video'&&t.url?`<p><a href="${esc(t.url)}" rel="noopener noreferrer" target="_blank">Official YouTube video</a></p>`:''}</div></article>`).join('\n');
   const ld=JSON.stringify(jsonLd(data)).replace(/</g,'\\u003c');
   const html=`<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>What’s Trending Now: Movies, TV & Music Videos | MatchApp Ai</title>
 <meta name="description" content="${esc(headDescription)}">
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
-<link rel="canonical" href="https://matchapp.tv/trending/this-week/">
+<link rel="canonical" href="https://matchapp.tv/trending/this-week/">\n<link rel="icon" href="/assets/brand/matchapp-favicon-32.png" type="image/png">
 <meta property="og:type" content="website"><meta property="og:site_name" content="MatchApp Ai"><meta property="og:title" content="What’s Trending Now | MatchApp Ai"><meta property="og:description" content="${esc(headDescription)}"><meta property="og:url" content="https://matchapp.tv/trending/this-week/">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="What’s Trending Now | MatchApp Ai"><meta name="twitter:description" content="${esc(headDescription)}">
 <script type="application/ld+json">${ld}</script>
