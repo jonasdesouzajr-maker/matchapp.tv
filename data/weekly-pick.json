@@ -1,59 +1,59 @@
 {
   "auto": true,
   "weekKey": "2026-W40",
-  "selectedAt": "2026-10-03T08:46:00.570Z",
-  "title": "Doing Life",
+  "selectedAt": "2026-10-03T08:47:51.813Z",
+  "title": "Digger",
   "year": 2026,
   "country": "United States",
   "countryCode": "US",
   "kind": "movie",
-  "tmdbId": 1458857,
+  "tmdbId": 1248832,
   "imdbId": "",
   "director": "",
   "author": "",
   "cast": [
-    "Naomi Baker",
-    "Jay Reeves",
-    "Tamberla Perry",
-    "Karen Obilom"
+    "Tom Cruise",
+    "Riz Ahmed",
+    "John Goodman",
+    "Sandra Hüller"
   ],
-  "runtime": 112,
+  "runtime": 129,
   "rating": "R",
   "distributor": "",
-  "releaseDate": "",
-  "inCinemas": false,
-  "platform": "",
+  "releaseDate": "2026-10-01",
+  "inCinemas": true,
+  "platform": "Cinemas",
   "streaming": null,
-  "poster": "https://image.tmdb.org/t/p/w780/5nZVjsCk5tWyyhLGt5U2TxsR85w.jpg",
+  "poster": "https://image.tmdb.org/t/p/w780/1ATXKrIPJyKNwnJ6lcG088Sa6zi.jpg",
   "watchUrl": "",
-  "sourceUrl": "https://www.themoviedb.org/movie/1458857",
+  "sourceUrl": "https://www.themoviedb.org/movie/1248832",
   "sourceLabel": "TMDB",
-  "previewId": "zrOtmDQawas",
-  "synopsis": "A single mother and an incarcerated man forge an unlikely bond through heartfelt letters, unlocking a door to redemption, hope and love against all odds.",
+  "previewId": "job8V254NAE",
+  "synopsis": "The most powerful man in the world embarks on a frantic mission to prove he is humanity's savior before the disaster he's unleashed destroys everything.",
   "cats": [
     "movie"
   ],
   "moods": [],
   "vibes": [
-    "drama",
-    "romance"
+    "comedy",
+    "drama"
   ],
   "ratings": [],
   "genres": [
-    "Drama",
-    "Romance"
+    "Comedy",
+    "Drama"
   ],
   "keywords": [
-    "Doing Life",
-    "Doing Life 2026",
-    "where to watch Doing Life",
+    "Digger",
+    "Digger 2026",
+    "where to watch Digger",
+    "Comedy movie",
     "Drama movie",
-    "Romance movie",
-    "Naomi Baker",
-    "Jay Reeves",
-    "where to watch Doing Life 2026",
-    "Doing Life streaming in Brazil and United States",
-    "Doing Life cast synopsis trailer and where to watch",
-    "what Drama to watch this week"
+    "Tom Cruise",
+    "Riz Ahmed",
+    "where to watch Digger 2026",
+    "Digger streaming in Brazil and United States",
+    "Digger cast synopsis trailer and where to watch",
+    "what Comedy to watch this week"
   ]
 }
