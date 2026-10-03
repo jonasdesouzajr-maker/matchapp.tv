@@ -13,4 +13,6 @@ test('weekly rail defines its label before use and keeps auto-swipe',()=>{
   const refresh=src.indexOf('Promise.all([',boot);
   assert.ok(immediate>boot&&refresh>immediate,'committed rail starts before async weekly refresh');
   assert.match(src,/reduce-motion/);
+  assert.match(src,/filter\(item=>item\?\.kind!=='music-video'\)/,'generic rail excludes music videos');
+  assert.match(src,/matchapp:trendingpainted/,'weekly repaint notifies the verified music-card renderer');
 });
