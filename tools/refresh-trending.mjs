@@ -1,35 +1,141 @@
 import fs from 'node:fs';
 import path from 'node:path';
-const root=path.resolve(path.dirname(new URL(import.meta.url).pathname),'..');
-const src=path.join(root,'data/trending-week.json');
-const data=JSON.parse(fs.readFileSync(src,'utf8'));
-const today=new Date().toISOString().slice(0,10);
-data.updated=today;
-data.label='Top titles this week';
-fs.writeFileSync(src, JSON.stringify(data,null,2)+'\n');
-const items=data.titles.map((t)=>`<li><a href="/discover.html?q=${encodeURIComponent(t.title)}">${t.title}</a> <small>${t.platform||''} · ${t.year||''}</small><p>${t.seo?.description||t.description||''}</p></li>`).join('\n');
-const keywords=[...new Set(data.titles.flatMap(t=>[...(t.seo?.keywords||t.keywords||[]), ...(t.longTailKeywords||t.seo?.longTailKeywords||[])]))].join(', ');
-const trendFile=path.join(root,'data/google-trends-keywords.json');
-const trend=fs.existsSync(trendFile)?JSON.parse(fs.readFileSync(trendFile,'utf8')):{short:[],longTail:[]};
-const trendKeywords=[...(trend.short||[]), ...(trend.longTail||[])].join(', ');
-const list=data.titles.map((t,i)=>({"@type":"ListItem",position:i+1,item:{"@type":t.kind==='movie'?'Movie':'TVSeries',name:t.title,description:t.seo?.description||t.description,datePublished:String(t.year||''),inLanguage:t.inLanguage||'en',genre:t.genre||[],keywords:[...(t.seo?.keywords||t.keywords||[]), ...(t.longTailKeywords||[])].join(', ')}}));
-const html=`<!DOCTYPE html>
-<html lang="en"><head>
-<meta charset="utf-8">
-<title>Top titles this week | MatchApp Ai</title>
+import {fetchLiveTrending,primaryPlatform,platformNames,countryName} from './live-editorial-data.mjs';
+
+const ROOT=path.resolve(path.dirname(new URL(import.meta.url).pathname),'..');
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const uniq=a=>[...new Set(a.filter(Boolean))];
+const isoDay=d=>new Date(d).toISOString().slice(0,10);
+
+function mondayOfCurrentWeek(){
+  const d=new Date(), day=(d.getUTCDay()+6)%7;
+  d.setUTCDate(d.getUTCDate()-day);
+  return d.toISOString().slice(0,10);
+}
+function readMusicVideos(){
+  const p=path.join(ROOT,'data/music-video-releases.json');
+  if(!fs.existsSync(p))return [];
+  try{
+    const data=JSON.parse(fs.readFileSync(p,'utf8'));
+    const featured=new Set(Array.isArray(data.featuredIds)?data.featuredIds:[]);
+    return (Array.isArray(data.items)?data.items:[])
+      .filter(x=>x?.artist&&x?.title&&x?.poster&&/^https:\/\/www\.youtube\.com\/watch\?v=/.test(String(x.url||'')))
+      .sort((a,b)=>(featured.has(b.id)-featured.has(a.id))||(Date.parse(b.publishedAt||0)-Date.parse(a.publishedAt||0)))
+      .slice(0,4)
+      .map((x,i)=>{
+        const y=Number(String(x.publishedAt||'').slice(0,4))||new Date().getUTCFullYear();
+        const title=`${x.artist} — ${x.title}`;
+        const longTail=[
+          `${x.artist} ${x.title} official music video YouTube`,
+          `where to watch ${x.artist} ${x.title} music video`,
+          `new ${x.artist} music video ${y}`
+        ];
+        return {
+          title,kind:'music-video',year:y,origin:'',platform:'YouTube',tmdbId:null,
+          poster:x.poster,url:x.url,artist:x.artist,songTitle:x.title,publishedAt:x.publishedAt||'',
+          description:`Official ${x.artist} music video for “${x.title}”, released on YouTube.`,
+          genre:['Music video'],inLanguage:'en',
+          keywords:uniq([x.artist,x.title,'official music video','YouTube music video',`${y} music releases`,...(x.keywords||[])]),
+          longTailKeywords:longTail,
+          seo:{title:`${x.artist} – ${x.title} official music video | MatchApp Ai`,description:`Watch and discover the official ${x.artist} “${x.title}” music video and ask MatchApp Ai for release details.`,keywords:uniq([...(x.keywords||[]),...longTail]),canonicalQuery:title},
+          source:'verified-official-music-video',sourceRank:i+1
+        };
+      });
+  }catch{return [];}
+}
+function rowToTitle(row){
+  const genres=Array.isArray(row.genres)?row.genres.filter(Boolean):[];
+  const cast=(Array.isArray(row.cast_members)?row.cast_members:[]).map(x=>x?.name).filter(Boolean).slice(0,4);
+  const platforms=platformNames(row);
+  const platform=primaryPlatform(row);
+  const originCode=Array.isArray(row.origin_countries)?row.origin_countries[0]||'':'';
+  const overview=String(row.overview||'').trim();
+  const kindLabel=row.media_kind==='movie'?'movie':'series';
+  const short=uniq([
+    row.title,`${row.title} ${row.year||''}`.trim(),`where to watch ${row.title}`,
+    ...genres.slice(0,3).map(g=>`${g} ${kindLabel}`),
+    ...platforms.slice(0,2).map(p=>`${p} trending ${kindLabel}`),
+    ...cast.slice(0,2)
+  ]);
+  const longTail=uniq([
+    `where to watch ${row.title} ${row.year||''}`.trim(),
+    `${row.title} streaming in Brazil and United States`,
+    `${row.title} cast synopsis trailer and where to watch`,
+    `what ${genres[0]||kindLabel} to watch this week`
+  ]);
+  return {
+    title:row.title,kind:row.media_kind,year:row.year||'',origin:originCode,originName:countryName(originCode),
+    platform,platforms,tmdbId:String(row.tmdb_id),poster:row.poster_large_url||row.poster_url||row.poster_original_url||'',
+    description:overview,genre:genres,inLanguage:row.original_language||'en',cast,
+    previewUrl:row.preview_url||'',availability:row.availability||{},sourceRank:Number(row.trending_rank),
+    keywords:short,longTailKeywords:longTail,
+    seo:{title:`Where to watch ${row.title} (${row.year||'current'}) | MatchApp Ai`,description:overview.slice(0,158)||`Discover ${row.title}, current viewing options and title details with MatchApp Ai.`,keywords:uniq([...short,...longTail]),canonicalQuery:row.title}
+  };
+}
+function interleave(titles,videos){
+  if(!videos.length)return titles;
+  const base=titles.slice(0,Math.max(0,20-videos.length));
+  const out=[],slots=new Set([3,7,11,15].slice(0,videos.length));
+  let ti=0,vi=0;
+  for(let pos=0;out.length<20&&(ti<base.length||vi<videos.length);pos++){
+    if(slots.has(pos)&&vi<videos.length)out.push(videos[vi++]);
+    else if(ti<base.length)out.push(base[ti++]);
+    else if(vi<videos.length)out.push(videos[vi++]);
+  }
+  return out.slice(0,20);
+}
+function jsonLd(data){
+  const list=data.titles.map((t,i)=>{
+    let item;
+    if(t.kind==='music-video'){
+      item={'@type':'VideoObject',name:t.title,description:t.description,thumbnailUrl:`https://matchapp.tv${t.poster}`,contentUrl:t.url};
+      if(t.publishedAt)item.uploadDate=t.publishedAt;
+    }else{
+      item={'@type':t.kind==='movie'?'Movie':'TVSeries',name:t.title,description:t.description,image:t.poster};
+      if(t.year)item.datePublished=String(t.year);
+      if(t.genre?.length)item.genre=t.genre;
+      if(t.originName)item.countryOfOrigin={'@type':'Country',name:t.originName};
+    }
+    return {'@type':'ListItem',position:i+1,item};
+  });
+  return {'@context':'https://schema.org','@graph':[
+    {'@type':'WebPage','@id':'https://matchapp.tv/trending/this-week/#page',url:'https://matchapp.tv/trending/this-week/',name:'Movies, TV and music videos trending now | MatchApp Ai',description:'Fresh entertainment discovery from current movie and TV trend data plus verified official music-video releases.',dateModified:data.updated,isPartOf:{'@type':'WebSite',name:'MatchApp Ai',url:'https://matchapp.tv/'}},
+    {'@type':'ItemList','@id':'https://matchapp.tv/trending/this-week/#list',name:'Latest titles trending right now',numberOfItems:data.titles.length,itemListElement:list}
+  ]};
+}
+async function main(){
+  const live=(await fetchLiveTrending(20)).map(rowToTitle);
+  const music=readMusicVideos();
+  const titles=interleave(live,music);
+  if(titles.filter(x=>x.kind!=='music-video').length<12)throw new Error('Not enough verified live movie/TV titles to publish Top Titles.');
+
+  const updated=new Date().toISOString();
+  const data={
+    schemaVersion:2,weekOf:mondayOfCurrentWeek(),updated,label:'Latest titles trending right now',
+    sourceNote:'Movie and TV positions refresh from MatchApp’s current TMDB daily trend metadata; verified official music-video releases are interleaved separately. Availability can vary by country.',
+    titles
+  };
+  fs.writeFileSync(path.join(ROOT,'data/trending-week.json'),JSON.stringify(data,null,2)+'\n');
+
+  const short=uniq(titles.flatMap(t=>t.keywords||[])).slice(0,80);
+  const longTail=uniq(titles.flatMap(t=>t.longTailKeywords||[])).slice(0,100);
+  fs.writeFileSync(path.join(ROOT,'data/trending-keywords.json'),JSON.stringify({updated,source:'current MatchApp entertainment trend feed',short,longTail},null,2)+'\n');
+
+  const headDescription=`What’s trending now: ${titles.slice(0,5).map(t=>t.title).join(', ')}. Current movies, TV series and official music-video releases with where-to-watch discovery.`;
+  const cards=titles.map((t,i)=>`<article class="trend-card"><a href="/discover.html?q=${encodeURIComponent(t.seo?.canonicalQuery||t.title)}"><img src="${esc(t.poster)}" alt="${esc(t.title)}" width="260" height="390" loading="${i<4?'eager':'lazy'}" decoding="async"></a><div><p class="rank">#${i+1} · ${esc(t.kind==='music-video'?'music video':t.kind)}${t.platform?' · '+esc(t.platform):''}</p><h2><a href="/discover.html?q=${encodeURIComponent(t.seo?.canonicalQuery||t.title)}">${esc(t.title)}</a></h2><p>${esc(t.description)}</p><p class="meta">${esc([t.year,t.originName||t.origin,(t.genre||[]).slice(0,3).join(' · ')].filter(Boolean).join(' · '))}</p>${t.kind==='music-video'&&t.url?`<p><a href="${esc(t.url)}" rel="noopener noreferrer" target="_blank">Official YouTube video</a></p>`:''}</div></article>`).join('\n');
+  const ld=JSON.stringify(jsonLd(data)).replace(/</g,'\\u003c');
+  const html=`<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>What’s Trending Now: Movies, TV & Music Videos | MatchApp Ai</title>
+<meta name="description" content="${esc(headDescription)}">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
 <link rel="canonical" href="https://matchapp.tv/trending/this-week/">
-<meta name="description" content="What is trending this week on MatchApp: ${data.titles.slice(0,4).map(t=>t.title).join(', ')}.">
-<meta name="keywords" content="${keywords}${trendKeywords?', '+trendKeywords:''}">
-<script type="application/ld+json">${JSON.stringify({"@context":"https://schema.org","@type":"ItemList","name":"Top titles this week","dateModified":today,"itemListElement":list})}</script>
-</head><body>
-<main>
-<h1>Top titles this week</h1>
-<p>Updated ${today}. ${data.sourceNote||''}</p>
-<ol>${items}</ol>
-<p><a href="/">Find where to watch on MatchApp</a></p>
-</main>
-</body></html>
-`;
-fs.mkdirSync(path.join(root,'trending/this-week'),{recursive:true});
-fs.writeFileSync(path.join(root,'trending/this-week/index.html'), html);
-console.log('trending refreshed', data.titles.length, today);
+<meta property="og:type" content="website"><meta property="og:site_name" content="MatchApp Ai"><meta property="og:title" content="What’s Trending Now | MatchApp Ai"><meta property="og:description" content="${esc(headDescription)}"><meta property="og:url" content="https://matchapp.tv/trending/this-week/">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="What’s Trending Now | MatchApp Ai"><meta name="twitter:description" content="${esc(headDescription)}">
+<script type="application/ld+json">${ld}</script>
+<link rel="stylesheet" href="/brand.css?v=192"><style>body{margin:0;background:#130734;color:#f7f3ff;font:16px/1.55 Inter,system-ui,sans-serif}main,header,footer{width:min(1040px,92%);margin:auto}header{padding:22px 0}a{color:#f4d87e}.intro{max-width:780px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin:24px 0}.trend-card{display:grid;grid-template-columns:110px 1fr;gap:15px;padding:14px;border:1px solid rgba(229,193,88,.22);border-radius:20px;background:rgba(38,24,58,.82)}.trend-card img{width:110px;height:auto;aspect-ratio:2/3;object-fit:contain;border-radius:13px;background:#090612}.trend-card h2{font-size:1.08rem;margin:.2rem 0}.trend-card p{margin:.35rem 0}.rank,.meta{font-size:.78rem;color:#cfc4dc}footer{padding:34px 0}@media(max-width:520px){.trend-card{grid-template-columns:90px 1fr}.trend-card img{width:90px}}</style></head><body>
+<header><a href="/" aria-label="MatchApp Ai home">MatchApp Ai</a></header><main><h1>Latest titles trending right now</h1><p class="intro">${esc(data.sourceNote)} Updated ${esc(isoDay(updated))}. Rankings are discovery signals, not endorsements; streaming availability changes by region.</p><section class="grid">${cards}</section><p><a href="/#trending-rail">Browse Top Titles on the MatchApp Ai home page</a> · <a href="/discover.html">Ask MatchApp Ai what fits your mood</a></p></main><footer><a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · <a href="/cookies.html">Cookies</a></footer></body></html>`;
+  fs.mkdirSync(path.join(ROOT,'trending/this-week'),{recursive:true});
+  fs.writeFileSync(path.join(ROOT,'trending/this-week/index.html'),html);
+  console.log(JSON.stringify({ok:true,updated,titles:titles.length,movieTv:live.length,musicVideos:music.length,top:titles.slice(0,5).map(x=>x.title)}));
+}
+main().catch(err=>{console.error('[refresh-trending] '+(err?.stack||err));process.exitCode=1;});
