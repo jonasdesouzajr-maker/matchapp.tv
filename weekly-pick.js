@@ -39,6 +39,11 @@ const PICK={
   cats:['movie'],moods:['intense and thrilling','dark and gritty','mind-bending'],
   vibes:['prestige and critically acclaimed','slow burn','award winning'],ratings:['mature adults only R rated']
 };
+const AUTO_PICK=window.__MATCHAPP_WEEKLY_PICK__;
+if(AUTO_PICK&&AUTO_PICK.auto===true&&AUTO_PICK.title&&AUTO_PICK.tmdbId&&AUTO_PICK.poster&&AUTO_PICK.synopsis){
+  Object.assign(PICK,AUTO_PICK);
+}
+
 
 /* Title-specific copy, kept apart from the component's own COPY table so the
    featured title can change without touching the component's strings (and so
@@ -59,17 +64,42 @@ const PICK_COPY={
 'ko':{desc:'《안타르티다》(2026)는 브루노 사파디 감독, 클라우디아 주벤 각본의 브라질 스릴러다. 남극의 브라질 연구기지에서 결빙기 첫날 밤 젊은 과학자가 습격당하고, 기지의 모든 남자가 용의자가 된다. 2026년 9월 17일 브라질 극장 개봉.',cinema:'🎬 극장 상영 중',showtimes:'🏟️ 근처 극장',where:'▶ 시청처',eyebrow:'이번 주의 추천 영화',director:'감독',runtime:'분',preview:'공식 예고편',sourceNote:'정보·출연·개봉일은 IMDb와 배급사 발표로 확인했습니다.'},
 'zh':{desc:'《南极》（2026）是布鲁诺·萨法迪执导、克劳迪娅·乔文编剧的巴西悬疑片。南极一座巴西科考站越冬季的第一个夜晚，一名年轻女科学家遭到袭击，站内所有男性都成了嫌疑人。巴西影院自2026年9月17日起上映。',cinema:'🎬 正在影院上映',showtimes:'🏟️ 附近影院',where:'▶ 在哪里看',eyebrow:'本周主推影片',director:'导演',runtime:'分钟',preview:'官方预告片',sourceNote:'资料、演员和上映日期均对照 IMDb 与发行方公告核实。'}
 };
-function pickCopy(){return PICK_COPY[lang()]||PICK_COPY.en;}
+const AUTO_SOURCE_NOTE={
+'en':'Title facts and current availability refresh automatically from verified TMDB and JustWatch-backed metadata.',
+'pt-BR':'Os dados do título e a disponibilidade atual são atualizados automaticamente com metadados verificados do TMDB e do JustWatch.',
+'es':'Los datos del título y la disponibilidad actual se actualizan automáticamente con metadatos verificados de TMDB y JustWatch.',
+'fr':'Les informations du titre et sa disponibilité sont actualisées automatiquement à partir de métadonnées vérifiées TMDB et JustWatch.',
+'de':'Titeldaten und aktuelle Verfügbarkeit werden automatisch aus verifizierten TMDB- und JustWatch-Metadaten aktualisiert.',
+'it':'Dati del titolo e disponibilità attuale vengono aggiornati automaticamente da metadati verificati TMDB e JustWatch.',
+'tr':'Başlık bilgileri ve güncel izleme seçenekleri doğrulanmış TMDB ve JustWatch verilerinden otomatik yenilenir.',
+'ru':'Данные о произведении и текущая доступность автоматически обновляются по проверенным данным TMDB и JustWatch.',
+'ar':'يتم تحديث بيانات العنوان وخيارات المشاهدة الحالية تلقائيًا من بيانات TMDB وJustWatch الموثقة.',
+'hi':'शीर्षक की जानकारी और मौजूदा उपलब्धता सत्यापित TMDB और JustWatch डेटा से अपने-आप अपडेट होती है।',
+'id':'Fakta judul dan ketersediaan terbaru diperbarui otomatis dari metadata TMDB dan JustWatch yang terverifikasi.',
+'ja':'作品情報と現在の配信状況は、確認済みのTMDB・JustWatchメタデータから自動更新されます。',
+'ko':'작품 정보와 현재 시청 가능 여부는 검증된 TMDB 및 JustWatch 메타데이터에서 자동으로 갱신됩니다.',
+'zh':'作品资料和当前观看渠道会根据已验证的 TMDB 与 JustWatch 元数据自动更新。'
+};
+function pickCopy(){
+  const code=lang(),base={...(PICK_COPY[code]||PICK_COPY.en)};
+  if(PICK.auto===true){
+    base.desc=PICK.synopsis;
+    base.sourceNote=AUTO_SOURCE_NOTE[code]||AUTO_SOURCE_NOTE.en;
+  }
+  return base;
+}
 
 /* The AI chat is the detail experience for this title: showtimes near the
    visitor, synopsis, cast, country of production and IMDb rating, in their
    own language. Cinema-only titles ask for cinemas; once the streaming window
    opens the same handoff asks where to stream, rent or buy. */
 function pickAskUrl(){
+  const kind=PICK.kind==='tv'?'series':'film';
+  const maker=PICK.director?', directed by '+PICK.director:'';
   const q=PICK.inCinemas
-    ? 'Tell me about the film '+PICK.title+' ('+PICK.year+', '+PICK.country+', directed by '+PICK.director+
-      '). Which cinemas near me are showing it, and at what times? Also give the full synopsis, the cast, the country of production, the runtime and age rating, and its IMDb rating and reception.'
-    : 'Where can I watch the film '+PICK.title+' ('+PICK.year+', '+PICK.country+')? Give me every streaming, rent and buy option in my country, plus the full synopsis, the cast, the country of production and its IMDb rating and reception.';
+    ? 'Tell me about the '+kind+' '+PICK.title+' ('+PICK.year+', '+PICK.country+maker+
+      '). Which cinemas near me are showing it, and at what times? Also give the full synopsis, cast, country of production, runtime, age rating and reception.'
+    : 'Where can I watch the '+kind+' '+PICK.title+' ('+PICK.year+', '+PICK.country+')? Give me current streaming, rent and buy options in my country, plus synopsis, cast, country of production, runtime, age rating and reception.';
   return '/discover.html?q='+encodeURIComponent(q)+'&focus=start';
 }
 const AHS={title:'American Horror Story: 13',trailerId:'gQf4Vya5PbI',date:'2026-09-24'};
@@ -257,7 +287,7 @@ function ensureWeekly(){
       ? `<img src="${esc(PICK.poster)}" alt="${esc(PICK.title)} (${PICK.year}) official poster" referrerpolicy="no-referrer" loading="eager" decoding="async">`
       : `<span class="weekly-pick-plate"><b>${esc(PICK.title)}</b><small>${PICK.year} · ${esc(PICK.country)}</small></span>`;
     d=document.createElement('details');d.id='weekly-pick-disclosure';d.className='premiere-disclosure weekly-pick-disclosure';d.open=true;
-    d.innerHTML=`<summary><span data-weekly="weeklyHeading"></span></summary><article id="weekly-pick" class="premium-card spotlight-card"><div class="spotlight-glow" aria-hidden="true"></div><div class="spotlight-inner"><a class="spotlight-poster" href="${esc(ask)}" aria-label="${esc(PICK.title)} (${PICK.year}) — details, cast and where to watch">${ribbon?`<span class="weekly-pick-ribbon${PICK.inCinemas?'':' is-streaming'}">${esc(ribbon)}</span>`:''}${art}</a><div class="spotlight-body"><span class="spotlight-eyebrow weekly-pick-eyebrow"></span><h2 class="spotlight-title"><a href="${esc(ask)}">${esc(PICK.title)}</a></h2><p class="spotlight-desc weekly-pick-desc"></p><div class="spotlight-meta weekly-pick-meta"></div><div class="weekly-pick-preview"></div><div class="weekly-pick-actions"><a class="gold-btn weekly-pick-primary" href="${esc(ask)}"></a><button class="gold-btn weekly-save" type="button" data-weekly="save"></button><button class="weekly-pick-dislike weekly-dislike" type="button" data-weekly="notForMe"></button></div><p class="weekly-pick-source"><strong data-weekly="sources"></strong>: <a href="${esc(PICK.sourceUrl)}" target="_blank" rel="noopener noreferrer">IMDb</a>. <span class="weekly-pick-sourcenote"></span></p></div></div></article>`;
+    d.innerHTML=`<summary><span data-weekly="weeklyHeading"></span></summary><article id="weekly-pick" class="premium-card spotlight-card"><div class="spotlight-glow" aria-hidden="true"></div><div class="spotlight-inner"><a class="spotlight-poster" href="${esc(ask)}" aria-label="${esc(PICK.title)} (${PICK.year}) — details, cast and where to watch">${ribbon?`<span class="weekly-pick-ribbon${PICK.inCinemas?'':' is-streaming'}">${esc(ribbon)}</span>`:''}${art}</a><div class="spotlight-body"><span class="spotlight-eyebrow weekly-pick-eyebrow"></span><h2 class="spotlight-title"><a href="${esc(ask)}">${esc(PICK.title)}</a></h2><p class="spotlight-desc weekly-pick-desc"></p><div class="spotlight-meta weekly-pick-meta"></div><div class="weekly-pick-preview"></div><div class="weekly-pick-actions"><a class="gold-btn weekly-pick-primary" href="${esc(ask)}"></a><button class="gold-btn weekly-save" type="button" data-weekly="save"></button><button class="weekly-pick-dislike weekly-dislike" type="button" data-weekly="notForMe"></button></div><p class="weekly-pick-source"><strong data-weekly="sources"></strong>: <a href="${esc(PICK.sourceUrl)}" target="_blank" rel="noopener noreferrer">${esc(PICK.sourceLabel||'IMDb')}</a>. <span class="weekly-pick-sourcenote"></span></p></div></div></article>`;
     const swift=document.getElementById('swifties-spotify');(swift||premiere).insertAdjacentElement('afterend',d);
     d.querySelector('.weekly-save').addEventListener('click',()=>record('save'));
     d.querySelector('.weekly-dislike').addEventListener('click',()=>record('dislike'));
@@ -301,7 +331,7 @@ function apply(){
   }
   const ribbon=document.querySelector('#weekly-pick .weekly-pick-ribbon');
   if(ribbon)ribbon.textContent=PICK.inCinemas?px.cinema:(PICK.streaming?px.where:'');
-  const meta=document.querySelector('#weekly-pick .weekly-pick-meta');if(meta)meta.innerHTML=`<span class="spotlight-chip">📅 <strong>${esc(x.year)} ${PICK.year}</strong></span><span class="spotlight-chip">🎬 ${esc(px.director)}: ${esc(PICK.director)}</span><span class="spotlight-chip">🌎 ${esc(PICK.country)}</span><span class="spotlight-chip">⏱️ ${PICK.runtime} ${esc(px.runtime)}</span><span class="spotlight-chip">🔞 ${esc(x.rating)} ${esc(PICK.rating)}</span>`;
+  const meta=document.querySelector('#weekly-pick .weekly-pick-meta');if(meta){const chips=[`📅 <strong>${esc(x.year)} ${PICK.year}</strong>`,PICK.director?`🎬 ${esc(px.director)}: ${esc(PICK.director)}`:'',PICK.country?`🌎 ${esc(PICK.country)}`:'',PICK.runtime?`⏱️ ${PICK.runtime} ${esc(px.runtime)}`:'',PICK.rating?`🔞 ${esc(x.rating)} ${esc(PICK.rating)}`:''].filter(Boolean);meta.innerHTML=chips.map(v=>`<span class="spotlight-chip">${v}</span>`).join('');}
   const p=document.querySelector('#weekly-pick .weekly-pick-preview');if(p&&PICK.previewId)p.innerHTML=player(PICK.previewId,px.preview,`${px.preview} — ${PICK.title}`);
   const ahs=document.querySelector('#spotlight-ahs13');if(ahs){const desc=ahs.querySelector('.spotlight-desc');if(desc)desc.textContent=x.ahsDesc;const m=ahs.querySelector('.spotlight-meta');if(m)m.innerHTML=`<span class="spotlight-chip">📅 <strong>${esc(x.premieres)} ${esc(fmtDate(AHS.date))}</strong></span><span class="spotlight-chip">📺 ${esc(x.us)}</span><span class="spotlight-chip">🌎 ${esc(x.latam)}</span><span class="spotlight-chip">🎞️ ${esc(x.ahsEpisodes)}</span>`;const h=ahs.querySelector('.ahs13-official-trailer');if(h)h.innerHTML=player(AHS.trailerId,x.ahsTrailer,`${x.ahsTrailer} — ${AHS.title}`);const poster=ahs.querySelector('.spotlight-poster');if(poster)poster.setAttribute('aria-label',x.openAhs);}
   const sum=document.querySelector('#weekly-pick-disclosure summary');if(sum)sum.setAttribute('aria-label',x.openWeekly);
@@ -309,45 +339,39 @@ function apply(){
 }
 
 function enrichSeo(){
-  /* The standalone featured pages own their own metadata; only the homepage
-     card enriches the page it is rendered into. */
   if(document.querySelector('[data-weekly-page]'))return;
-  /* Long-tail and short terms for the featured title, added once. When the
-     featured title changes, this list changes with PICK — see
-     docs/DAILY_EVENT_AND_FEATURED_TITLE_CONTRACT.md. */
   const kw=document.querySelector('meta[name="keywords"]');
-  const extra=[
-    'Antártida','Antártida 2026','Antártida filme','Antártida filme 2026','filme Antártida Bruno Safadi',
-    'Antártida onde assistir','Antártida nos cinemas','Antártida sessões','Antártida horários cinema',
-    'Antártida elenco','Antártida sinopse','Antártida Marina Ruy Barbosa','Antártida Andrea Beltrão',
-    'Antártida Lázaro Ramos','Antártida Leandra Leal','Antártida Paris Filmes','Antártida IMDb',
-    'Antártida trailer oficial','suspense brasileiro 2026','filme brasileiro em cartaz',
-    'Antarctic 2026 film','Antarctic Brazilian thriller','where to watch Antártida',
-    'Antártida showtimes near me','new Brazilian movie 2026','thriller set in Antarctica',
-    'American Horror Story 13','AHS13','American Horror Story season 13 trailer','AHS 13 FX Hulu Disney+'
-  ].join(', ');
-  if(kw&&!kw.content.includes('Antártida onde assistir'))kw.content+=', '+extra;
-  // The featured title remains discoverable through keywords and the Movie
-  // JSON-LD below; keep the page's canonical search description short.
+  const genres=(Array.isArray(PICK.genres)&&PICK.genres.length?PICK.genres:['Thriller','Drama','Mystery']).filter(Boolean);
+  const cast=Array.isArray(PICK.cast)?PICK.cast.filter(Boolean):[];
+  const terms=(Array.isArray(PICK.keywords)&&PICK.keywords.length?PICK.keywords:[
+    PICK.title,PICK.title+' '+PICK.year,'where to watch '+PICK.title,PICK.title+' cast',PICK.title+' synopsis',
+    PICK.previewId?PICK.title+' official trailer':'',...genres.slice(0,3).map(g=>PICK.title+' '+g)
+  ]).filter(Boolean);
+  if(kw){
+    const existing=new Set(String(kw.content||'').split(',').map(s=>s.trim().toLowerCase()).filter(Boolean));
+    const add=terms.filter(t=>!existing.has(String(t).toLowerCase())).slice(0,20);
+    if(add.length)kw.content+=(kw.content?', ':'')+add.join(', ');
+  }
   if(!document.getElementById('weekly-pick-schema')){
-    const graph=[{
-      '@type':'Movie','@id':'https://matchapp.tv/featured/antartida/#movie',
-      name:PICK.title,alternateName:'Antarctic',
-      datePublished:PICK.releaseDate,
-      genre:['Thriller','Drama','Mystery'],
-      countryOfOrigin:{'@type':'Country',name:PICK.country},
-      director:{'@type':'Person',name:PICK.director},
-      author:{'@type':'Person',name:PICK.author},
-      actor:PICK.cast.map(name=>({'@type':'Person',name})),
-      contentRating:PICK.rating,
-      duration:'PT'+PICK.runtime+'M',
-      description:PICK.synopsis,
-      url:'https://matchapp.tv/featured/antartida/',
-      sameAs:[PICK.sourceUrl,'https://www.themoviedb.org/movie/'+PICK.tmdbId],
-      productionCompany:{'@type':'Organization',name:PICK.distributor}
-    }];
-    if(PICK.poster)graph[0].image=PICK.poster;
-    if(PICK.previewId)graph.push({'@type':'VideoObject',name:PICK.title+' — official trailer',uploadDate:'2026-08-26',thumbnailUrl:'https://i.ytimg.com/vi/'+PICK.previewId+'/hqdefault.jpg',contentUrl:'https://www.youtube.com/watch?v='+PICK.previewId,embedUrl:'https://www.youtube-nocookie.com/embed/'+PICK.previewId});
+    const canonical=PICK.auto===true?'https://matchapp.tv/featured/this-week/':'https://matchapp.tv/featured/antartida/';
+    const kind=PICK.kind==='tv'?'TVSeries':'Movie';
+    const entity={
+      '@type':kind,'@id':canonical+'#'+(kind==='Movie'?'movie':'series'),
+      name:PICK.title,datePublished:PICK.releaseDate||String(PICK.year),
+      genre:genres,description:PICK.synopsis,url:canonical
+    };
+    if(PICK.country)entity.countryOfOrigin={'@type':'Country',name:PICK.country};
+    if(PICK.director)entity.director={'@type':'Person',name:PICK.director};
+    if(PICK.author)entity.author={'@type':'Person',name:PICK.author};
+    if(cast.length)entity.actor=cast.map(name=>({'@type':'Person',name}));
+    if(PICK.rating)entity.contentRating=PICK.rating;
+    if(PICK.runtime)entity.duration='PT'+PICK.runtime+'M';
+    if(PICK.poster)entity.image=PICK.poster;
+    const sameAs=[PICK.sourceUrl,PICK.tmdbId?'https://www.themoviedb.org/'+(PICK.kind==='tv'?'tv':'movie')+'/'+PICK.tmdbId:''].filter(Boolean);
+    if(sameAs.length)entity.sameAs=sameAs;
+    if(PICK.distributor)entity.productionCompany={'@type':'Organization',name:PICK.distributor};
+    const graph=[entity];
+    if(PICK.previewId&&PICK.auto!==true)graph.push({'@type':'VideoObject',name:PICK.title+' — official trailer',uploadDate:'2026-08-26',thumbnailUrl:'https://i.ytimg.com/vi/'+PICK.previewId+'/hqdefault.jpg',contentUrl:'https://www.youtube.com/watch?v='+PICK.previewId,embedUrl:'https://www.youtube-nocookie.com/embed/'+PICK.previewId});
     graph.push({'@type':'VideoObject',name:'American Horror Story: 13 — Official Trailer | FX',uploadDate:'2026-09-10',thumbnailUrl:'https://i.ytimg.com/vi/'+AHS.trailerId+'/hqdefault.jpg',contentUrl:'https://www.youtube.com/watch?v='+AHS.trailerId,embedUrl:'https://www.youtube-nocookie.com/embed/'+AHS.trailerId});
     const node=document.createElement('script');node.id='weekly-pick-schema';node.type='application/ld+json';
     node.textContent=JSON.stringify({'@context':'https://schema.org','@graph':graph});
