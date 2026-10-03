@@ -34,10 +34,9 @@ test('daily midnight coordinates existing verified data owners and retries from 
 
 test('daily Top Titles refresh owns verified music-video discovery and SEO generation',()=>{
  const daily=flow('trending-refresh'),manual=flow('music-video-refresh');
- assert.match(daily,/cron: '15 3 \\* \\* \\*'/);assert.match(daily,/node tools\\/refresh-music-videos\\.js/);assert.match(daily,/node tools\\/refresh-trending\\.mjs/);
+ for(const text of ["cron: '15 3 * * *'",'node tools/refresh-music-videos.js','node tools/refresh-trending.mjs','data/music-video-releases.json','data/trending-keywords.json','trending/this-week/index.html'])assert.ok(daily.includes(text),text);
  assert.ok(daily.indexOf('node tools/refresh-music-videos.js')<daily.indexOf('node tools/refresh-trending.mjs'));
- assert.match(daily,/data\\/music-video-releases\\.json/);assert.match(daily,/data\\/trending-keywords\\.json/);assert.match(daily,/trending\\/this-week\\/index\\.html/);
- assert.doesNotMatch(manual,/schedule:|cron:/);assert.match(manual,/workflow_dispatch:/);
+ assert.ok(!manual.includes('schedule:')&&!manual.includes('cron:'));assert.ok(manual.includes('workflow_dispatch:'));
  const agents=read('AGENTS.md'),lock=read('docs/EDITORIAL_AUTOMATION_LOCK.md');for(const text of ['music-video discovery + SEO','VideoObject','manual recovery only'])assert.ok(agents.includes(text)||lock.includes(text),text);
 });
 
