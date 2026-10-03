@@ -17,6 +17,11 @@ test('official release identity, source, artwork and publication data agree',()=
  const seo=JSON.parse(home.getElementById('music-video-releases-schema').textContent);
  const shown=data.featuredIds?data.items.filter(r=>data.featuredIds.includes(r.id)):data.items;assert.equal(seo.numberOfItems,shown.length);seo.itemListElement.forEach((entry,i)=>{assert.equal(entry.item.url,shown[i].url);assert.equal(entry.item.thumbnailUrl[0],'https://matchapp.tv'+shown[i].poster);assert.equal(entry.item.uploadDate,shown[i].publishedAt);});
 });
+test('featured Top Titles music videos always have complete poster metadata',()=>{
+ const rows=data.featuredIds?data.items.filter(r=>data.featuredIds.includes(r.id)):data.items;
+ assert.ok(rows.length);
+ for(const r of rows){assert.ok(Date.parse(r.publishedAt));assert.ok(Number.isFinite(Number(r.viewCount))&&Number(r.viewCount)>=0,r.id+' missing viewCount');assert.equal(r.url,'https://www.youtube.com/watch?v='+r.id);}
+});
 test('music cards extend both loops without altering the regional film/TV identities',async()=>{
  const d=fixture();try{await settle();const cards=[...d.window.document.querySelector('#marquee-track').children],half=26+featuredCount;assert.equal(cards.length,52+featuredCount*2);assert.equal(cards.filter(c=>c.querySelector('img[data-title]')).length,52);assert.deepEqual(cards.slice(0,half).map(c=>c.dataset.musicVideo||c.textContent||c.querySelector('img').dataset.title),cards.slice(half).map(c=>c.dataset.musicVideo||c.textContent||c.querySelector('img').dataset.title));assert.equal(cards[0].getAttribute('role'),'button');assert.equal(cards[half].tabIndex,-1);assert.equal(cards[half].getAttribute('aria-hidden'),'true');}finally{d.window.close();}
 });
