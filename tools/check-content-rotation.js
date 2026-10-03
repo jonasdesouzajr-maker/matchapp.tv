@@ -19,6 +19,17 @@ for(const [origin,min] of Object.entries({GB:5,CA:5,JP:3,AU:3}))requireCondition
 requireCondition(a.some(p=>p.title==='Absolutely Fabulous'),'Home Top Titles must retain the owner-requested Absolutely Fabulous BBC series');
 requireCondition(a.every(p=>/^https:\/\/image\.tmdb\.org\/t\/p\/(?:w\d+|original)\/[A-Za-z0-9_.-]+/.test(p.poster)),
   'Home Top Titles must retain verified TMDB artwork, never placeholder graphics');
+const music=json('data/music-video-releases.json');
+const featuredVideos=(music.featuredIds||[]).map(id=>(music.items||[]).find(v=>v.id===id)).filter(Boolean);
+requireCondition(featuredVideos.length>=4,'Top Titles must retain at least four verified current music-video releases');
+for(const v of featuredVideos){
+  requireCondition(Number.isFinite(Date.parse(v.publishedAt)),'Music video lacks a verified release date: '+v.id);
+  requireCondition(Number.isSafeInteger(Number(v.viewCount))&&Number(v.viewCount)>=0,'Music video lacks a verified numeric view count: '+v.id);
+  requireCondition(v.url==='https://www.youtube.com/watch?v='+v.id,'Music video direct YouTube identity mismatch: '+v.id);
+  requireCondition(/^\/assets\/music-videos\/[\w-]{11}\.jpg$/.test(v.poster||''),'Music video poster identity mismatch: '+v.id);
+  requireCondition(Array.isArray(v.keywords)&&v.keywords.length>=4,'Music video keywords missing: '+v.id);
+  requireCondition(v.seo?.title&&v.seo?.description&&Array.isArray(v.seo?.keywords)&&v.seo.keywords.length>=5&&v.seo?.canonicalQuery,'Music video SEO metadata incomplete: '+v.id);
+}
 const events=json('tools/global-events.json');
 requireCondition(Array.isArray(events)&&events.length>0,'Verified global events inventory is empty');
 requireCondition(new Set(events.map(e=>e.slug)).size===events.length,'Duplicated global event slugs');
