@@ -3,11 +3,11 @@ const {test}=require('node:test'),assert=require('node:assert/strict'),fs=requir
 const data=JSON.parse(fs.readFileSync('data/music-video-releases.json','utf8'));
 const featuredCount=data.featuredIds?.length||data.items.length;
 const script=fs.readFileSync('music-video-releases.js','utf8');
-function fixture(){
+function fixture(payload=data){
  const d=new JSDOM('<html lang="en"><div id="marquee-track">'+Array.from({length:52},(_,i)=>'<div class="marquee-item" '+(i>=26?'aria-hidden="true" tabindex="-1"':'role="button" tabindex="0"')+'><img data-title="Film '+i%26+'"></div>').join('')+'</div><div id="grid"></div></html>',{url:'https://matchapp.tv/',runScripts:'outside-only'});
  // Test a fresh snapshot at its check date rather than expiring with wall time.
- d.window.Date.now=()=>Math.max(...data.items.map(r=>Date.parse(r.verifiedAt+'T12:00:00Z')),...data.items.map(r=>Date.parse(r.publishedAt)));
- d.window.fetch=async()=>({ok:true,json:async()=>data});d.window.eval(script);return d;
+ d.window.Date.now=()=>Math.max(...payload.items.map(r=>Date.parse(r.verifiedAt+'T12:00:00Z')),...payload.items.map(r=>Date.parse(r.publishedAt)));
+ d.window.fetch=async()=>({ok:true,json:async()=>payload});d.window.eval(script);return d;
 }
 const settle=()=>new Promise(r=>setTimeout(r,20));
 test('official release identity, source, artwork and publication data agree',()=>{
@@ -19,6 +19,10 @@ test('official release identity, source, artwork and publication data agree',()=
 });
 test('music cards extend both loops without altering the regional film/TV identities',async()=>{
  const d=fixture();try{await settle();const cards=[...d.window.document.querySelector('#marquee-track').children],half=26+featuredCount;assert.equal(cards.length,52+featuredCount*2);assert.equal(cards.filter(c=>c.querySelector('img[data-title]')).length,52);assert.deepEqual(cards.slice(0,half).map(c=>c.dataset.musicVideo||c.textContent||c.querySelector('img').dataset.title),cards.slice(half).map(c=>c.dataset.musicVideo||c.textContent||c.querySelector('img').dataset.title));assert.equal(cards[0].getAttribute('role'),'button');assert.equal(cards[half].tabIndex,-1);assert.equal(cards[half].getAttribute('aria-hidden'),'true');}finally{d.window.close();}
+});
+test('Top Titles music-video posters always expose release date, views and visible YouTube link',async()=>{
+ const first=data.items[0],payload={...data,items:data.items.map(r=>r.id===first.id?{...r,viewCount:1234567}:r),featuredIds:[first.id]};
+ const d=fixture(payload);try{await settle();const card=d.window.document.querySelector('[data-music-video="'+first.id+'"]');assert.ok(card);assert.ok(card.querySelector('.music-cover-release').textContent.trim());assert.match(card.querySelector('.music-cover-views').textContent,/views|visualiza|vues|Aufrufe|visualizzazioni|görüntüleme|просмотров|مشاهدة|व्यूज़|tayangan|再生|조회수|观看/i);assert.equal(card.querySelector('.music-cover-link').textContent,'youtu.be/'+first.id);assert.equal(card.querySelector('.music-cover-link').title,first.url);}finally{d.window.close();}
 });
 test('each exact release renders its official YouTube destination without invoking AI or TMDB',async()=>{
  const d=fixture();try{await settle();for(const r of data.items){const grid=d.window.document.getElementById('grid');await d.window.MatchAppMusicReleases.paintCard(r.id,grid);assert.equal(grid.querySelector('img').getAttribute('src'),r.poster);assert.equal(grid.querySelector('a').href,r.url);assert.ok(grid.textContent.includes(r.director));}assert.equal(await d.window.MatchAppMusicReleases.get('unverified-id'),undefined);}finally{d.window.close();}
