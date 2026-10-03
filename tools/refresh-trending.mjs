@@ -67,6 +67,7 @@ function rowToTitle(row){
     title:row.title,kind:row.media_kind,year:row.year||'',origin:originCode,originName:countryName(originCode),
     platform,platforms,tmdbId:String(row.tmdb_id),poster:row.poster_large_url||row.poster_url||row.poster_original_url||'',
     description:overview,genre:genres,inLanguage:row.original_language||'en',cast,
+    runtimeMinutes:Number(row.runtime_minutes)||null,contentRating:row.content_rating||'',voteAverage:row.vote_average==null?null:Number(row.vote_average),
     previewUrl:row.preview_url||'',availability:row.availability||{},sourceRank:Number(row.trending_rank),
     keywords:short,longTailKeywords:longTail,
     seo:{title:`Where to watch ${row.title} (${row.year||'current'}) | MatchApp Ai`,description:overview.slice(0,158)||`Discover ${row.title}, current viewing options and title details with MatchApp Ai.`,keywords:uniq([...short,...longTail]),canonicalQuery:row.title}
