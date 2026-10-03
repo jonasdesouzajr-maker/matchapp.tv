@@ -1,7 +1,7 @@
 /* Only the new release cards; the existing rail box and dimensions are reused. */
 .marquee-item[data-music-video] .music-video-cover {
     --music-cover-rgb:112,70,155;
-    position:absolute;inset:0;display:grid;grid-template-rows:minmax(0,1fr) auto minmax(0,1fr);
+    position:absolute;inset:0;display:grid;grid-template-rows:minmax(0,.8fr) auto minmax(0,1.35fr);
     container-type:inline-size;isolation:isolate;
     background:radial-gradient(ellipse at 15% 0%,rgba(var(--music-cover-rgb),.9),transparent 74%),
         radial-gradient(ellipse at 100% 100%,rgba(var(--music-cover-rgb),.7),transparent 75%),
@@ -31,7 +31,17 @@ html body.page-home #trending-rail .marquee-item[data-music-video] .music-cover-
 .marquee-item[data-music-video] .music-cover-title {
     font-size:clamp(13px,8.5cqw,22px);font-weight:850;line-height:1.12;text-wrap:balance;text-shadow:0 1px 4px #0008;
 }
-.marquee-item[data-music-video] .music-cover-year { color:#f5dfa0;font-size:clamp(8px,4.5cqw,10px);letter-spacing:.12em; }
+.marquee-item[data-music-video] .music-cover-meta {
+    width:100%;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:3px 7px;
+    color:#f5dfa0;font-size:clamp(7.5px,4.2cqw,9.5px);line-height:1.2;font-weight:700;
+}
+.marquee-item[data-music-video] .music-cover-release,
+.marquee-item[data-music-video] .music-cover-views { white-space:nowrap; }
+.marquee-item[data-music-video] .music-cover-link {
+    max-width:100%;font-size:clamp(7px,3.9cqw,9px);line-height:1.15;color:#fff;opacity:.88;
+    text-decoration:underline;text-decoration-color:#f5dfa066;text-underline-offset:2px;
+    overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+}
 .discover-music-card .discover-poster img { object-fit:contain; }
 .discover-music-card .discover-actions { flex-wrap:wrap; }
 .discover-music-card .discover-actions a { white-space:normal; overflow-wrap:anywhere; text-align:center; }
