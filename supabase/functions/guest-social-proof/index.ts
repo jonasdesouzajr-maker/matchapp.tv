@@ -9,8 +9,24 @@ import {verifyPublicSocialPost} from "./verification-core.mjs";
 const ORIGINS=new Set(["https://matchapp.tv","https://www.matchapp.tv","http://localhost:3000","http://localhost:8080"]);
 const uuid=v=>typeof v==="string"&&/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(v);
 const SUPABASE_URL=Deno.env.get("SUPABASE_URL")||"";
-const service=Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")||"";
-const publicKey=Deno.env.get("SUPABASE_ANON_KEY")||"";
+function envValues(name:string){
+ try{
+  const raw=Deno.env.get(name)||"";
+  if(!raw)return [];
+  const parsed=JSON.parse(raw);
+  return Object.values(parsed).filter((value):value is string=>typeof value==="string"&&value.length>0);
+ }catch(_){return [];}
+}
+const publicKeys=new Set([
+ Deno.env.get("SUPABASE_ANON_KEY")||"",
+ ...envValues("SUPABASE_PUBLISHABLE_KEYS"),
+ // Publishable keys are intentionally public. Keep currently enabled keys as
+ // compatibility fallbacks for older installed clients while Supabase rotates
+ // Edge Function environment variables to the new key model.
+ "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpreW12cXJtYmFibmdzcWJseXllIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODY4MDUyNDIsImV4cCI6MjEwMjM4MTI0Mn0._yEVFMfwVU6GBqQ8m3ljfOgA0HSLEDiKMOfYae6ZD8Q",
+ "sb_publishable_j3kQUhd_9JHfWdfiV3iWog_RpEltrOU"
+].filter(Boolean));
+const service=envValues("SUPABASE_SECRET_KEYS")[0]||Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")||"";
 const db=SUPABASE_URL&&service?createClient(SUPABASE_URL,service,{auth:{autoRefreshToken:false,persistSession:false}}):null;
 function cors(origin:string|null){return {
  "Access-Control-Allow-Origin":origin&&ORIGINS.has(origin)?origin:"https://matchapp.tv",
@@ -29,7 +45,7 @@ Deno.serve(async(req:Request)=>{
  // accidental invocation unrelated to the website. Correctness derives
  // from official public post metadata and the private transactional ledger.
  const key=req.headers.get("apikey")||"";
- if(!publicKey||key!==publicKey||!db)return response({ok:false,reason:"service_unavailable"},503,origin);
+ if(!key||!publicKeys.has(key)||!db)return response({ok:false,reason:"service_unavailable"},503,origin);
  try{
   const raw=await req.text();if(raw.length>2800)return response({ok:false,reason:"invalid_request"},400,origin);
   const body=JSON.parse(raw),action=String(body.action||"");
