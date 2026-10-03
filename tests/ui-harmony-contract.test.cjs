@@ -43,3 +43,14 @@ test('narrow-phone and responsive safeguards remain explicit',()=>{
   assert.match(kids,/@media\(max-width:360px\)/);
   assert.match(kids,/\.kids-primary/);
 });
+
+
+test('dedicated Ask page keeps the exact product brand and removes stray intro strips',()=>{
+  const ia=read('matchapp-ia.js');
+  const discover=read('discover.html');
+  const adult=read('ui-harmony.css');
+  assert.match(ia,/discover:'Ask MatchApp Ai'/);
+  assert.match(discover,/>Ask MatchApp Ai<\/h1>/);
+  assert.match(adult,/search\.hint.*::before/);
+  assert.match(adult,/#match-packs-section/);
+});
