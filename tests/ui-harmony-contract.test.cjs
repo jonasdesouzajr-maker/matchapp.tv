@@ -54,3 +54,19 @@ test('dedicated Ask page keeps the exact product brand and removes stray intro s
   assert.match(adult,/search\.hint.*::before/);
   assert.match(adult,/#match-packs-section/);
 });
+
+
+test('all shared page-shell routes load the final harmony layer',()=>{
+  const pages=[
+    'register.html','purchase.html','copyright.html','cookies.html','404.html','about.html','terms.html','reset.html',
+    'friends.html','termos.html','anime.html','updates.html','privacy.html','privacidade.html','together.html',
+    'discover.html','ebooks/index.html','pricing/pricing.html','profile/profile.html'
+  ];
+  for(const page of pages) assert.match(read(page),/\/ui-harmony\.css\?v=20261003-1/,page);
+});
+
+test('runtime pricing card layout preserves balanced three-pack groups on narrow screens',()=>{
+  const pricing=read('pricing.js');
+  assert.match(pricing,/purchase-panel\[data-kind=matches\].*last-child:nth-child\(odd\)/);
+  assert.match(pricing,/@media\(max-width:340px\).*purchase-pack-grid\{grid-template-columns:1fr\}/);
+});
