@@ -54,7 +54,7 @@ test('browsers without the H.264 profile use the same 1080p WebM intro',()=>{
 
 test('circular loading artwork gives way to playback without changing the startup deadline',()=>{
  const b=boot(),video=b.overlay().querySelector('video');
- assert.match(b.overlay().querySelector('img').src,/circle-launch1/);
+ assert.match(b.overlay().querySelector('img').src,/premiumicon1/);
  assert.equal(video.style.visibility,'hidden');
  assert.match(b.overlay().querySelector('style').textContent,/prefers-reduced-motion/);
  video.dispatchEvent(new b.w.Event('playing'));
