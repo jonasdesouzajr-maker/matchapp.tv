@@ -130,18 +130,28 @@ function open({kind,title,token,message,url,onNext}){
  copy.disabled=true;verify.disabled=true;sharePoster.disabled=true;caption.value='';link.value='';
  if(typeof fetch==='function')void posterFile().catch(()=>{});
  const thisOpen=Symbol();current={id:thisOpen,kind,title,token,onNext,proof:null,done:false};
- request({action:'start',kind}).then(data=>{
-  if(current?.id!==thisOpen)return;
-  current.proof=data;
-  // Keep the challenge first; TikTok captions can be truncated in previews.
-  // Place the unique code FIRST for truncated TikTok captions; keep the
-  // entire caption short enough for Bluesky's 300-character post limit.
-  const core=String(message||'Find your next movie, series or book with MatchApp Ai').replace(/\s+/g,' ').slice(0,105);
-  caption.value=data.challenge+' https://matchapp.tv\n'+core+'\n#MatchAppAi #MatchAppTV #WhatToWatch #StreamingGuide #MovieNight';
-  copy.disabled=false;verify.disabled=false;sharePoster.disabled=false;
-  feedback.textContent=(kind==='watch_match'?(pt()?`${3-data.remaining} de 3 compartilhamentos verificados. `:`${3-data.remaining} of 3 shares verified. `):'')+
-   (pt()?'Pronto. Publique uma nova postagem pública contendo esta legenda.':'Ready. Publish a NEW PUBLIC post containing the exact caption above, then paste its URL.');
- }).catch(e=>{if(current?.id!==thisOpen)return;feedback.textContent=explanation(e.message);});
+ const prepareProof=()=>{
+  if(current?.id!==thisOpen)return Promise.resolve();
+  feedback.textContent=pt()?'Criando seu código de verificação…':'Generating your private verification code…';
+  copy.disabled=true;verify.disabled=true;sharePoster.disabled=true;
+  sharePoster.textContent=pt()?'⏳ Preparando compartilhamento…':'⏳ Preparing share…';
+  return request({action:'start',kind}).then(data=>{
+   if(current?.id!==thisOpen)return;
+   current.proof=data;
+   const core=String(message||'Find your next movie, series or book with MatchApp Ai').replace(/\s+/g,' ').slice(0,105);
+   caption.value=data.challenge+' https://matchapp.tv\n'+core+'\n#MatchAppAi #MatchAppTV #WhatToWatch #StreamingGuide #MovieNight';
+   copy.disabled=false;verify.disabled=false;sharePoster.disabled=false;
+   sharePoster.textContent=pt()?'📲 Compartilhar pôster':'📲 Share poster';
+   feedback.textContent=(kind==='watch_match'?(pt()?\`${3-data.remaining} de 3 compartilhamentos verificados. \`:\`${3-data.remaining} of 3 shares verified. \`):'')+
+    (pt()?'Pronto. Publique uma nova postagem pública contendo esta legenda.':'Ready. Publish a NEW PUBLIC post containing the exact caption above, then paste its URL.');
+  }).catch(e=>{
+   if(current?.id!==thisOpen)return;
+   sharePoster.disabled=false;
+   sharePoster.textContent=pt()?'↻ Tentar preparar de novo':'↻ Retry share setup';
+   feedback.textContent=explanation(e.message);
+  });
+ };
+ void prepareProof();
  copy.onclick=async()=>{
   if(!current?.proof||current.id!==thisOpen)return;
   try{await navigator.clipboard.writeText(caption.value);
@@ -149,21 +159,31 @@ function open({kind,title,token,message,url,onNext}){
   }catch(_){caption.focus();caption.select();feedback.textContent='Select and copy the caption above.';}
  };
  sharePoster.onclick=async()=>{
-  if(!current?.proof||current.id!==thisOpen)return;
-  if(typeof navigator.share!=='function'||typeof navigator.canShare!=='function'){
-   feedback.textContent=pt()?'Salve o pôster e publique com a legenda e o código.':'Save the poster and publish it with your copied caption and verification code.';
-   return;
-  }
+  if(current?.id!==thisOpen)return;
+  if(!current.proof){void prepareProof();return;}
+  const fallback=async()=>{
+   // Android WebViews and installed PWAs can expose navigator.share without
+   // file sharing. Save the official poster + copy the proof caption instead;
+   // the actual reward still requires independent public-post verification.
+   modal.querySelector('[data-proof-save]')?.click();
+   let copied=false;
+   try{await navigator.clipboard.writeText(caption.value);copied=true;}catch(_){}
+   feedback.textContent=pt()
+    ?(copied?'Pôster salvo e legenda copiada. Publique e depois cole o link público abaixo.':'Pôster salvo. Copie a legenda acima, publique e depois cole o link público abaixo.')
+    :(copied?'Poster saved and caption copied. Publish it, then paste the PUBLIC post link below.':'Poster saved. Copy the caption above, publish it, then paste the PUBLIC post link below.');
+  };
+  if(typeof navigator.share!=='function'){await fallback();return;}
   try{
    const file=await posterFile();
-   if(!navigator.canShare({files:[file]})){
-    feedback.textContent=pt()?'Seu navegador não envia imagens diretamente. Salve e publique pelo aplicativo.':'Your browser cannot attach images directly. Save the poster, then upload it in your social app.';
-    return;
-   }
+   if(typeof navigator.canShare==='function'&&!navigator.canShare({files:[file]})){await fallback();return;}
    await navigator.share({files:[file],title:'MatchApp Ai | Find Your Perfect Match',text:caption.value});
    feedback.textContent=pt()?'Volte com o link da sua publicação pública para verificar o bônus.':'Come back with the PUBLIC post link to verify your reward. Opening a share sheet alone earns nothing.';
   }catch(e){
-   if(e?.name!=='AbortError')feedback.textContent=pt()?'Não foi possível enviar o pôster. Salve e publique manualmente.':'Could not attach the poster. Save it and upload it manually.';
+   if(e?.name==='AbortError'){
+    feedback.textContent=pt()?'Compartilhamento cancelado. Nenhum bônus foi usado.':'Sharing cancelled. No bonus was used.';
+    return;
+   }
+   await fallback();
   }
  };
  modal.querySelectorAll('[data-proof-platform]').forEach(button=>{
