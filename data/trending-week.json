@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
   "weekOf": "2026-09-28",
-  "updated": "2026-10-03T18:27:43.735Z",
+  "updated": "2026-10-04T09:45:30.546Z",
   "label": "Latest titles trending right now",
   "sourceNote": "Movie and TV positions refresh from MatchApp’s current TMDB daily trend metadata; verified official music-video releases from monitored top-artist channels refresh daily with release dates, YouTube view counts, direct links, keywords and structured metadata. Availability can vary by country.",
   "titles": [
@@ -169,72 +169,106 @@
       }
     },
     {
-      "title": "Coven Academy",
-      "kind": "tv",
+      "title": "Doing Life",
+      "kind": "movie",
       "year": 2026,
       "origin": "US",
       "originName": "United States",
-      "platform": "",
-      "platforms": [],
-      "tmdbId": "298505",
-      "poster": "https://image.tmdb.org/t/p/w780/f4R4YGeMQrXEu6jm3oAbSPeGC3M.jpg",
-      "description": "In the haunted heart of New Orleans, follow three teenage witches and their dangerously charming warlock peers at an elite magic boarding school where power is currency, secrets are lethal and attraction is a liability. Caught between ancient supernatural wars and forbidden love interests, the coven must decide how far they’re willing to go to protect their city—and themselves.",
+      "platform": "Netflix",
+      "platforms": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "tmdbId": "1458857",
+      "poster": "https://image.tmdb.org/t/p/w780/5nZVjsCk5tWyyhLGt5U2TxsR85w.jpg",
+      "description": "A single mother and an incarcerated man forge an unlikely bond through heartfelt letters, unlocking a door to redemption, hope and love against all odds.",
       "genre": [
-        "Mystery",
         "Drama",
-        "Comedy"
+        "Romance"
       ],
       "inLanguage": "en",
       "cast": [
-        "Malina Weissman",
-        "Malachi Barton",
-        "Jordan Leftwich",
-        "Ora Duplass"
+        "Naomi Baker",
+        "Jay Reeves",
+        "Tamberla Perry",
+        "Karen Obilom"
       ],
-      "runtimeMinutes": null,
-      "contentRating": "TV-PG",
-      "voteAverage": 8.3,
-      "previewUrl": "https://www.youtube.com/watch?v=zz9nAM9qa3c",
+      "runtimeMinutes": 112,
+      "contentRating": "R",
+      "voteAverage": 6.49,
+      "previewUrl": "https://www.youtube.com/watch?v=zrOtmDQawas",
       "availability": {
+        "BR": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/movie/1458857-doing-life/watch?locale=BR",
+          "rent": [],
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "cinema_release_date": null
+        },
+        "GB": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/movie/1458857-doing-life/watch?locale=GB",
+          "rent": [],
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "cinema_release_date": null
+        },
+        "US": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/movie/1458857-doing-life/watch?locale=US",
+          "rent": [],
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "cinema_release_date": null
+        },
         "source": "tmdb-watch-providers",
         "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/tv/298505"
+        "source_page_url": "https://www.themoviedb.org/movie/1458857"
       },
       "sourceRank": 3,
       "keywords": [
-        "Coven Academy",
-        "Coven Academy 2026",
-        "where to watch Coven Academy",
-        "Mystery series",
-        "Drama series",
-        "Comedy series",
-        "Malina Weissman",
-        "Malachi Barton"
+        "Doing Life",
+        "Doing Life 2026",
+        "where to watch Doing Life",
+        "Drama movie",
+        "Romance movie",
+        "Netflix trending movie",
+        "Netflix Standard with Ads trending movie",
+        "Naomi Baker",
+        "Jay Reeves"
       ],
       "longTailKeywords": [
-        "where to watch Coven Academy 2026",
-        "Coven Academy streaming in Brazil and United States",
-        "Coven Academy cast synopsis trailer and where to watch",
-        "what Mystery to watch this week"
+        "where to watch Doing Life 2026",
+        "Doing Life streaming in Brazil and United States",
+        "Doing Life cast synopsis trailer and where to watch",
+        "what Drama to watch this week"
       ],
       "seo": {
-        "title": "Where to watch Coven Academy (2026) | MatchApp Ai",
-        "description": "In the haunted heart of New Orleans, follow three teenage witches and their dangerously charming warlock peers at an elite magic boarding school where power i",
+        "title": "Where to watch Doing Life (2026) | MatchApp Ai",
+        "description": "A single mother and an incarcerated man forge an unlikely bond through heartfelt letters, unlocking a door to redemption, hope and love against all odds.",
         "keywords": [
-          "Coven Academy",
-          "Coven Academy 2026",
-          "where to watch Coven Academy",
-          "Mystery series",
-          "Drama series",
-          "Comedy series",
-          "Malina Weissman",
-          "Malachi Barton",
-          "where to watch Coven Academy 2026",
-          "Coven Academy streaming in Brazil and United States",
-          "Coven Academy cast synopsis trailer and where to watch",
-          "what Mystery to watch this week"
+          "Doing Life",
+          "Doing Life 2026",
+          "where to watch Doing Life",
+          "Drama movie",
+          "Romance movie",
+          "Netflix trending movie",
+          "Netflix Standard with Ads trending movie",
+          "Naomi Baker",
+          "Jay Reeves",
+          "where to watch Doing Life 2026",
+          "Doing Life streaming in Brazil and United States",
+          "Doing Life cast synopsis trailer and where to watch",
+          "what Drama to watch this week"
         ],
-        "canonicalQuery": "Coven Academy"
+        "canonicalQuery": "Doing Life"
       }
     },
     {
@@ -297,8 +331,74 @@
       "sourceRank": 1
     },
     {
-      "title": "Doing Life",
+      "title": "Kung Fu Soccer",
       "kind": "movie",
+      "year": 2026,
+      "origin": "HK",
+      "originName": "HK",
+      "platform": "",
+      "platforms": [],
+      "tmdbId": "1491920",
+      "poster": "https://image.tmdb.org/t/p/w780/6QgJQrClh9ej357yzLWgCxrjAmJ.jpg",
+      "description": "The \"Supreme Invincible Cup\" is about to begin, and a host of top teams are about to engage in an unprecedented showdown! But the Kung Fu Women's Soccer Team has been dealt a hellish script right from the start?! Their opponents are all highly skilled, and external pressure is mounting. The schemes on the field are one after another... Can they use their kung fu to turn the tide on the green field?",
+      "genre": [
+        "Action",
+        "Comedy"
+      ],
+      "inLanguage": "zh",
+      "cast": [
+        "Zhang Xiaofei",
+        "Dilraba Dilmurat",
+        "Zhang Yixing",
+        "Carina Lau"
+      ],
+      "runtimeMinutes": 106,
+      "contentRating": "",
+      "voteAverage": 6.2,
+      "previewUrl": "https://www.youtube.com/watch?v=hR6I5FaHpyI",
+      "availability": {
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/movie/1491920"
+      },
+      "sourceRank": 4,
+      "keywords": [
+        "Kung Fu Soccer",
+        "Kung Fu Soccer 2026",
+        "where to watch Kung Fu Soccer",
+        "Action movie",
+        "Comedy movie",
+        "Zhang Xiaofei",
+        "Dilraba Dilmurat"
+      ],
+      "longTailKeywords": [
+        "where to watch Kung Fu Soccer 2026",
+        "Kung Fu Soccer streaming in Brazil and United States",
+        "Kung Fu Soccer cast synopsis trailer and where to watch",
+        "what Action to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch Kung Fu Soccer (2026) | MatchApp Ai",
+        "description": "The \"Supreme Invincible Cup\" is about to begin, and a host of top teams are about to engage in an unprecedented showdown! But the Kung Fu Women's Soccer Team ",
+        "keywords": [
+          "Kung Fu Soccer",
+          "Kung Fu Soccer 2026",
+          "where to watch Kung Fu Soccer",
+          "Action movie",
+          "Comedy movie",
+          "Zhang Xiaofei",
+          "Dilraba Dilmurat",
+          "where to watch Kung Fu Soccer 2026",
+          "Kung Fu Soccer streaming in Brazil and United States",
+          "Kung Fu Soccer cast synopsis trailer and where to watch",
+          "what Action to watch this week"
+        ],
+        "canonicalQuery": "Kung Fu Soccer"
+      }
+    },
+    {
+      "title": "East of Eden",
+      "kind": "tv",
       "year": 2026,
       "origin": "US",
       "originName": "United States",
@@ -307,28 +407,27 @@
         "Netflix",
         "Netflix Standard with Ads"
       ],
-      "tmdbId": "1458857",
-      "poster": "https://image.tmdb.org/t/p/w780/5nZVjsCk5tWyyhLGt5U2TxsR85w.jpg",
-      "description": "A single mother and an incarcerated man forge an unlikely bond through heartfelt letters, unlocking a door to redemption, hope and love against all odds.",
+      "tmdbId": "258165",
+      "poster": "https://image.tmdb.org/t/p/w780/axdUor6gLMTrrB1UF4Qfy0TTSyX.jpg",
+      "description": "In the early 1900s, a fiercely independent woman drives a rift between two brothers, igniting a saga that unfolds across two generations.",
       "genre": [
-        "Drama",
-        "Romance"
+        "Drama"
       ],
       "inLanguage": "en",
       "cast": [
-        "Naomi Baker",
-        "Jay Reeves",
-        "Tamberla Perry",
-        "Karen Obilom"
+        "Florence Pugh",
+        "Christopher Abbott",
+        "Mike Faist",
+        "Hoon Lee"
       ],
-      "runtimeMinutes": 112,
-      "contentRating": "R",
-      "voteAverage": 5.89,
-      "previewUrl": "https://www.youtube.com/watch?v=zrOtmDQawas",
+      "runtimeMinutes": null,
+      "contentRating": "TV-MA",
+      "voteAverage": 8.2,
+      "previewUrl": "https://www.youtube.com/watch?v=M9NWvGZViCg",
       "availability": {
         "BR": {
           "buy": [],
-          "link": "https://www.themoviedb.org/movie/1458857-doing-life/watch?locale=BR",
+          "link": "https://www.themoviedb.org/tv/258165-east-of-eden/watch?locale=BR",
           "rent": [],
           "stream": [
             "Netflix",
@@ -338,7 +437,7 @@
         },
         "GB": {
           "buy": [],
-          "link": "https://www.themoviedb.org/movie/1458857-doing-life/watch?locale=GB",
+          "link": "https://www.themoviedb.org/tv/258165-east-of-eden/watch?locale=GB",
           "rent": [],
           "stream": [
             "Netflix",
@@ -346,9 +445,18 @@
           ],
           "cinema_release_date": null
         },
+        "PT": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/258165-east-of-eden/watch?locale=PT",
+          "rent": [],
+          "stream": [
+            "Netflix"
+          ],
+          "cinema_release_date": null
+        },
         "US": {
           "buy": [],
-          "link": "https://www.themoviedb.org/movie/1458857-doing-life/watch?locale=US",
+          "link": "https://www.themoviedb.org/tv/258165-east-of-eden/watch?locale=US",
           "rent": [],
           "stream": [
             "Netflix",
@@ -358,45 +466,420 @@
         },
         "source": "tmdb-watch-providers",
         "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1458857"
+        "source_page_url": "https://www.themoviedb.org/tv/258165"
       },
-      "sourceRank": 4,
+      "sourceRank": 5,
       "keywords": [
-        "Doing Life",
-        "Doing Life 2026",
-        "where to watch Doing Life",
-        "Drama movie",
-        "Romance movie",
-        "Netflix trending movie",
-        "Netflix Standard with Ads trending movie",
-        "Naomi Baker",
-        "Jay Reeves"
+        "East of Eden",
+        "East of Eden 2026",
+        "where to watch East of Eden",
+        "Drama series",
+        "Netflix trending series",
+        "Netflix Standard with Ads trending series",
+        "Florence Pugh",
+        "Christopher Abbott"
       ],
       "longTailKeywords": [
-        "where to watch Doing Life 2026",
-        "Doing Life streaming in Brazil and United States",
-        "Doing Life cast synopsis trailer and where to watch",
+        "where to watch East of Eden 2026",
+        "East of Eden streaming in Brazil and United States",
+        "East of Eden cast synopsis trailer and where to watch",
         "what Drama to watch this week"
       ],
       "seo": {
-        "title": "Where to watch Doing Life (2026) | MatchApp Ai",
-        "description": "A single mother and an incarcerated man forge an unlikely bond through heartfelt letters, unlocking a door to redemption, hope and love against all odds.",
+        "title": "Where to watch East of Eden (2026) | MatchApp Ai",
+        "description": "In the early 1900s, a fiercely independent woman drives a rift between two brothers, igniting a saga that unfolds across two generations.",
         "keywords": [
-          "Doing Life",
-          "Doing Life 2026",
-          "where to watch Doing Life",
-          "Drama movie",
-          "Romance movie",
-          "Netflix trending movie",
-          "Netflix Standard with Ads trending movie",
-          "Naomi Baker",
-          "Jay Reeves",
-          "where to watch Doing Life 2026",
-          "Doing Life streaming in Brazil and United States",
-          "Doing Life cast synopsis trailer and where to watch",
+          "East of Eden",
+          "East of Eden 2026",
+          "where to watch East of Eden",
+          "Drama series",
+          "Netflix trending series",
+          "Netflix Standard with Ads trending series",
+          "Florence Pugh",
+          "Christopher Abbott",
+          "where to watch East of Eden 2026",
+          "East of Eden streaming in Brazil and United States",
+          "East of Eden cast synopsis trailer and where to watch",
           "what Drama to watch this week"
         ],
-        "canonicalQuery": "Doing Life"
+        "canonicalQuery": "East of Eden"
+      }
+    },
+    {
+      "title": "Ranma1/2",
+      "kind": "tv",
+      "year": 2024,
+      "origin": "JP",
+      "originName": "Japan",
+      "platform": "Netflix",
+      "platforms": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "tmdbId": "259140",
+      "poster": "https://image.tmdb.org/t/p/w780/cDThx8yRYbdPOSgHbjihS4q7GYc.jpg",
+      "description": "Akane Tendo meets her new fiancé, Ranma Saotome, a martial arts prodigy with a twist: he magically transforms into a girl upon touching cold water.",
+      "genre": [
+        "Animation",
+        "Action & Adventure",
+        "Comedy"
+      ],
+      "inLanguage": "ja",
+      "cast": [
+        "Kappei Yamaguchi",
+        "Megumi Hayashibara",
+        "Noriko Hidaka"
+      ],
+      "runtimeMinutes": 23,
+      "contentRating": "TV-14",
+      "voteAverage": 8.07,
+      "previewUrl": "https://www.youtube.com/watch?v=GICvY-T6nKs",
+      "availability": {
+        "BR": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/259140-1-2/watch?locale=BR",
+          "rent": [],
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "cinema_release_date": null
+        },
+        "GB": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/259140-1-2/watch?locale=GB",
+          "rent": [],
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "cinema_release_date": null
+        },
+        "PT": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/259140-1-2/watch?locale=PT",
+          "rent": [],
+          "stream": [
+            "Netflix"
+          ],
+          "cinema_release_date": null
+        },
+        "US": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/259140-1-2/watch?locale=US",
+          "rent": [],
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "cinema_release_date": null
+        },
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/tv/259140"
+      },
+      "sourceRank": 6,
+      "keywords": [
+        "Ranma1/2",
+        "Ranma1/2 2024",
+        "where to watch Ranma1/2",
+        "Animation series",
+        "Action & Adventure series",
+        "Comedy series",
+        "Netflix trending series",
+        "Netflix Standard with Ads trending series",
+        "Kappei Yamaguchi",
+        "Megumi Hayashibara"
+      ],
+      "longTailKeywords": [
+        "where to watch Ranma1/2 2024",
+        "Ranma1/2 streaming in Brazil and United States",
+        "Ranma1/2 cast synopsis trailer and where to watch",
+        "what Animation to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch Ranma1/2 (2024) | MatchApp Ai",
+        "description": "Akane Tendo meets her new fiancé, Ranma Saotome, a martial arts prodigy with a twist: he magically transforms into a girl upon touching cold water.",
+        "keywords": [
+          "Ranma1/2",
+          "Ranma1/2 2024",
+          "where to watch Ranma1/2",
+          "Animation series",
+          "Action & Adventure series",
+          "Comedy series",
+          "Netflix trending series",
+          "Netflix Standard with Ads trending series",
+          "Kappei Yamaguchi",
+          "Megumi Hayashibara",
+          "where to watch Ranma1/2 2024",
+          "Ranma1/2 streaming in Brazil and United States",
+          "Ranma1/2 cast synopsis trailer and where to watch",
+          "what Animation to watch this week"
+        ],
+        "canonicalQuery": "Ranma1/2"
+      }
+    },
+    {
+      "title": "Taylor Swift — Patient Zero",
+      "kind": "music-video",
+      "year": 2026,
+      "origin": "",
+      "platform": "YouTube",
+      "tmdbId": null,
+      "poster": "/assets/music-videos/mw3kSNIxjqo.jpg",
+      "url": "https://www.youtube.com/watch?v=mw3kSNIxjqo",
+      "artist": "Taylor Swift",
+      "songTitle": "Patient Zero",
+      "publishedAt": "2026-09-29T22:00:19+00:00",
+      "viewCount": 10911499,
+      "viewCountCheckedAt": "2026-10-03",
+      "channel": "Taylor Swift",
+      "channelUrl": "https://www.youtube.com/@TaylorSwift",
+      "description": "Official Taylor Swift music video for “Patient Zero”, released on YouTube 2026-09-29 with 10,911,499 verified views at the latest daily check.",
+      "genre": [
+        "Music video"
+      ],
+      "inLanguage": "en",
+      "keywords": [
+        "Taylor Swift",
+        "Patient Zero",
+        "official music video",
+        "latest official music videos",
+        "YouTube music video",
+        "2026 music releases",
+        "Taylor Swift new music video",
+        "The Life of a Showgirl: The Encore",
+        "Taylor Swift Patient Zero official music video",
+        "new Taylor Swift music video",
+        "2026 music video releases"
+      ],
+      "longTailKeywords": [
+        "Taylor Swift Patient Zero official music video YouTube",
+        "where to watch Taylor Swift Patient Zero music video",
+        "new Taylor Swift music video 2026",
+        "Taylor Swift Patient Zero release date",
+        "Taylor Swift Patient Zero YouTube views"
+      ],
+      "seo": {
+        "title": "Taylor Swift — Patient Zero official music video | MatchApp Ai",
+        "description": "Official Taylor Swift music video for “Patient Zero”, released on YouTube 2026-09-29 with 10,911,499 verified views at the latest daily check.",
+        "keywords": [
+          "Taylor Swift",
+          "Patient Zero",
+          "official music video",
+          "YouTube music video",
+          "2026 music releases",
+          "The Life of a Showgirl: The Encore",
+          "Taylor Swift Patient Zero official music video",
+          "new Taylor Swift music video",
+          "2026 music video releases",
+          "latest official music videos"
+        ],
+        "canonicalQuery": "Taylor Swift Patient Zero official music video"
+      },
+      "source": "verified-official-music-video",
+      "sourceRank": 2
+    },
+    {
+      "title": "Lanterns",
+      "kind": "tv",
+      "year": 2026,
+      "origin": "US",
+      "originName": "United States",
+      "platform": "HBO Max",
+      "platforms": [
+        "HBO Max",
+        "Claro tv+",
+        "HBO Max Amazon Channel"
+      ],
+      "tmdbId": "95350",
+      "poster": "https://image.tmdb.org/t/p/w780/gpC7h43xPMEV3goYMQShfJbTtLq.jpg",
+      "description": "Two intergalactic cops, new recruit John Stewart and Lantern legend Hal Jordan, are drawn into a dark, Earth-based mystery as they investigate a murder in the American heartland.",
+      "genre": [
+        "Drama",
+        "Mystery",
+        "Sci-Fi & Fantasy"
+      ],
+      "inLanguage": "en",
+      "cast": [
+        "Kyle Chandler",
+        "Aaron Pierre",
+        "Kelly Macdonald"
+      ],
+      "runtimeMinutes": null,
+      "contentRating": "TV-MA",
+      "voteAverage": 8.38,
+      "previewUrl": "https://www.youtube.com/watch?v=7UIBOsuUwc4",
+      "availability": {
+        "BR": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/95350-lanterns/watch?locale=BR",
+          "rent": [],
+          "stream": [
+            "HBO Max",
+            "Claro tv+",
+            "HBO Max Amazon Channel"
+          ],
+          "cinema_release_date": null
+        },
+        "GB": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/95350-lanterns/watch?locale=GB",
+          "rent": [],
+          "stream": [
+            "HBO Max Amazon Channel",
+            "HBO Max"
+          ],
+          "cinema_release_date": null
+        },
+        "PT": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/95350-lanterns/watch?locale=PT",
+          "rent": [],
+          "stream": [
+            "HBO Max"
+          ],
+          "cinema_release_date": null
+        },
+        "US": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/95350-lanterns/watch?locale=US",
+          "rent": [],
+          "stream": [
+            "HBO Max Amazon Channel",
+            "HBO Max"
+          ],
+          "cinema_release_date": null
+        },
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/tv/95350"
+      },
+      "sourceRank": 7,
+      "keywords": [
+        "Lanterns",
+        "Lanterns 2026",
+        "where to watch Lanterns",
+        "Drama series",
+        "Mystery series",
+        "Sci-Fi & Fantasy series",
+        "HBO Max trending series",
+        "Claro tv+ trending series",
+        "Kyle Chandler",
+        "Aaron Pierre"
+      ],
+      "longTailKeywords": [
+        "where to watch Lanterns 2026",
+        "Lanterns streaming in Brazil and United States",
+        "Lanterns cast synopsis trailer and where to watch",
+        "what Drama to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch Lanterns (2026) | MatchApp Ai",
+        "description": "Two intergalactic cops, new recruit John Stewart and Lantern legend Hal Jordan, are drawn into a dark, Earth-based mystery as they investigate a murder in the",
+        "keywords": [
+          "Lanterns",
+          "Lanterns 2026",
+          "where to watch Lanterns",
+          "Drama series",
+          "Mystery series",
+          "Sci-Fi & Fantasy series",
+          "HBO Max trending series",
+          "Claro tv+ trending series",
+          "Kyle Chandler",
+          "Aaron Pierre",
+          "where to watch Lanterns 2026",
+          "Lanterns streaming in Brazil and United States",
+          "Lanterns cast synopsis trailer and where to watch",
+          "what Drama to watch this week"
+        ],
+        "canonicalQuery": "Lanterns"
+      }
+    },
+    {
+      "title": "Coven Academy",
+      "kind": "tv",
+      "year": 2026,
+      "origin": "US",
+      "originName": "United States",
+      "platform": "fuboTV",
+      "platforms": [
+        "fuboTV"
+      ],
+      "tmdbId": "298505",
+      "poster": "https://image.tmdb.org/t/p/w780/f4R4YGeMQrXEu6jm3oAbSPeGC3M.jpg",
+      "description": "A coven protects their magic school from a dark fate.",
+      "genre": [
+        "Mystery",
+        "Drama",
+        "Comedy"
+      ],
+      "inLanguage": "en",
+      "cast": [
+        "Malina Weissman",
+        "Malachi Barton",
+        "Jordan Leftwich",
+        "Ora Duplass"
+      ],
+      "runtimeMinutes": null,
+      "contentRating": "TV-PG",
+      "voteAverage": 7.7,
+      "previewUrl": "https://www.youtube.com/watch?v=zz9nAM9qa3c",
+      "availability": {
+        "US": {
+          "buy": [
+            "Amazon Video",
+            "Apple TV Store",
+            "Fandango At Home"
+          ],
+          "link": "https://www.themoviedb.org/tv/298505-coven-academy/watch?locale=US",
+          "rent": [],
+          "stream": [
+            "fuboTV"
+          ],
+          "cinema_release_date": null
+        },
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/tv/298505"
+      },
+      "sourceRank": 8,
+      "keywords": [
+        "Coven Academy",
+        "Coven Academy 2026",
+        "where to watch Coven Academy",
+        "Mystery series",
+        "Drama series",
+        "Comedy series",
+        "fuboTV trending series",
+        "Malina Weissman",
+        "Malachi Barton"
+      ],
+      "longTailKeywords": [
+        "where to watch Coven Academy 2026",
+        "Coven Academy streaming in Brazil and United States",
+        "Coven Academy cast synopsis trailer and where to watch",
+        "what Mystery to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch Coven Academy (2026) | MatchApp Ai",
+        "description": "A coven protects their magic school from a dark fate.",
+        "keywords": [
+          "Coven Academy",
+          "Coven Academy 2026",
+          "where to watch Coven Academy",
+          "Mystery series",
+          "Drama series",
+          "Comedy series",
+          "fuboTV trending series",
+          "Malina Weissman",
+          "Malachi Barton",
+          "where to watch Coven Academy 2026",
+          "Coven Academy streaming in Brazil and United States",
+          "Coven Academy cast synopsis trailer and where to watch",
+          "what Mystery to watch this week"
+        ],
+        "canonicalQuery": "Coven Academy"
       }
     },
     {
@@ -493,7 +976,7 @@
         "attribution": "JustWatch via TMDB",
         "source_page_url": "https://www.themoviedb.org/tv/220542"
       },
-      "sourceRank": 5,
+      "sourceRank": 9,
       "keywords": [
         "The Apothecary Diaries",
         "The Apothecary Diaries 2023",
@@ -532,473 +1015,6 @@
           "what Animation to watch this week"
         ],
         "canonicalQuery": "The Apothecary Diaries"
-      }
-    },
-    {
-      "title": "Kill Jackie",
-      "kind": "tv",
-      "year": 2026,
-      "origin": "GB",
-      "originName": "United Kingdom",
-      "platform": "Philo",
-      "platforms": [
-        "Philo",
-        "AMC Plus Apple TV channel",
-        "AMC+ Amazon Channel",
-        "AMC+ Roku Premium Channel",
-        "Amazon Prime Video",
-        "Amazon Prime Video with Ads",
-        "HBO Max"
-      ],
-      "tmdbId": "284558",
-      "poster": "https://image.tmdb.org/t/p/w780/vvMpr6wO4EMtA7lqftffTel5c1R.jpg",
-      "description": "Jackie Price has been living a wealthy, luxurious life for the past 20 years after escaping a dangerous past as an international cocaine dealer. But just as life begins to feel a little boring, she discovers that The Seven Demons, a group of the world’s most terrifying hitmen, have been hired to kill her.",
-      "genre": [
-        "Drama",
-        "Crime"
-      ],
-      "inLanguage": "en",
-      "cast": [
-        "Catherine Zeta-Jones",
-        "Daniel Ings",
-        "Sidse Babett Knudsen",
-        "Julian Rhind-Tutt"
-      ],
-      "runtimeMinutes": null,
-      "contentRating": "",
-      "voteAverage": 8.3,
-      "previewUrl": "https://www.youtube.com/watch?v=dKgTyq2-4w0",
-      "availability": {
-        "GB": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/284558-kill-jackie/watch?locale=GB",
-          "rent": [],
-          "stream": [
-            "Amazon Prime Video",
-            "Amazon Prime Video with Ads"
-          ],
-          "cinema_release_date": null
-        },
-        "PT": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/284558-kill-jackie/watch?locale=PT",
-          "rent": [],
-          "stream": [
-            "HBO Max"
-          ],
-          "cinema_release_date": null
-        },
-        "US": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/284558-kill-jackie/watch?locale=US",
-          "rent": [],
-          "stream": [
-            "Philo",
-            "AMC Plus Apple TV channel",
-            "AMC+ Amazon Channel",
-            "AMC+ Roku Premium Channel"
-          ],
-          "cinema_release_date": null
-        },
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/tv/284558"
-      },
-      "sourceRank": 6,
-      "keywords": [
-        "Kill Jackie",
-        "Kill Jackie 2026",
-        "where to watch Kill Jackie",
-        "Drama series",
-        "Crime series",
-        "Philo trending series",
-        "AMC Plus Apple TV channel trending series",
-        "Catherine Zeta-Jones",
-        "Daniel Ings"
-      ],
-      "longTailKeywords": [
-        "where to watch Kill Jackie 2026",
-        "Kill Jackie streaming in Brazil and United States",
-        "Kill Jackie cast synopsis trailer and where to watch",
-        "what Drama to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch Kill Jackie (2026) | MatchApp Ai",
-        "description": "Jackie Price has been living a wealthy, luxurious life for the past 20 years after escaping a dangerous past as an international cocaine dealer. But just as l",
-        "keywords": [
-          "Kill Jackie",
-          "Kill Jackie 2026",
-          "where to watch Kill Jackie",
-          "Drama series",
-          "Crime series",
-          "Philo trending series",
-          "AMC Plus Apple TV channel trending series",
-          "Catherine Zeta-Jones",
-          "Daniel Ings",
-          "where to watch Kill Jackie 2026",
-          "Kill Jackie streaming in Brazil and United States",
-          "Kill Jackie cast synopsis trailer and where to watch",
-          "what Drama to watch this week"
-        ],
-        "canonicalQuery": "Kill Jackie"
-      }
-    },
-    {
-      "title": "Taylor Swift — Patient Zero",
-      "kind": "music-video",
-      "year": 2026,
-      "origin": "",
-      "platform": "YouTube",
-      "tmdbId": null,
-      "poster": "/assets/music-videos/mw3kSNIxjqo.jpg",
-      "url": "https://www.youtube.com/watch?v=mw3kSNIxjqo",
-      "artist": "Taylor Swift",
-      "songTitle": "Patient Zero",
-      "publishedAt": "2026-09-29T22:00:19+00:00",
-      "viewCount": 10911499,
-      "viewCountCheckedAt": "2026-10-03",
-      "channel": "Taylor Swift",
-      "channelUrl": "https://www.youtube.com/@TaylorSwift",
-      "description": "Official Taylor Swift music video for “Patient Zero”, released on YouTube 2026-09-29 with 10,911,499 verified views at the latest daily check.",
-      "genre": [
-        "Music video"
-      ],
-      "inLanguage": "en",
-      "keywords": [
-        "Taylor Swift",
-        "Patient Zero",
-        "official music video",
-        "latest official music videos",
-        "YouTube music video",
-        "2026 music releases",
-        "Taylor Swift new music video",
-        "The Life of a Showgirl: The Encore",
-        "Taylor Swift Patient Zero official music video",
-        "new Taylor Swift music video",
-        "2026 music video releases"
-      ],
-      "longTailKeywords": [
-        "Taylor Swift Patient Zero official music video YouTube",
-        "where to watch Taylor Swift Patient Zero music video",
-        "new Taylor Swift music video 2026",
-        "Taylor Swift Patient Zero release date",
-        "Taylor Swift Patient Zero YouTube views"
-      ],
-      "seo": {
-        "title": "Taylor Swift — Patient Zero official music video | MatchApp Ai",
-        "description": "Official Taylor Swift music video for “Patient Zero”, released on YouTube 2026-09-29 with 10,911,499 verified views at the latest daily check.",
-        "keywords": [
-          "Taylor Swift",
-          "Patient Zero",
-          "official music video",
-          "YouTube music video",
-          "2026 music releases",
-          "The Life of a Showgirl: The Encore",
-          "Taylor Swift Patient Zero official music video",
-          "new Taylor Swift music video",
-          "2026 music video releases",
-          "latest official music videos"
-        ],
-        "canonicalQuery": "Taylor Swift Patient Zero official music video"
-      },
-      "source": "verified-official-music-video",
-      "sourceRank": 2
-    },
-    {
-      "title": "East of Eden",
-      "kind": "tv",
-      "year": 2026,
-      "origin": "US",
-      "originName": "United States",
-      "platform": "Netflix",
-      "platforms": [
-        "Netflix",
-        "Netflix Standard with Ads"
-      ],
-      "tmdbId": "258165",
-      "poster": "https://image.tmdb.org/t/p/w780/axdUor6gLMTrrB1UF4Qfy0TTSyX.jpg",
-      "description": "In the early 1900s, a fiercely independent woman drives a rift between two brothers, igniting a saga that unfolds across two generations.",
-      "genre": [
-        "Drama"
-      ],
-      "inLanguage": "en",
-      "cast": [
-        "Florence Pugh",
-        "Christopher Abbott",
-        "Mike Faist",
-        "Hoon Lee"
-      ],
-      "runtimeMinutes": null,
-      "contentRating": "TV-MA",
-      "voteAverage": 8.3,
-      "previewUrl": "https://www.youtube.com/watch?v=M9NWvGZViCg",
-      "availability": {
-        "BR": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/258165-east-of-eden/watch?locale=BR",
-          "rent": [],
-          "stream": [
-            "Netflix",
-            "Netflix Standard with Ads"
-          ],
-          "cinema_release_date": null
-        },
-        "GB": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/258165-east-of-eden/watch?locale=GB",
-          "rent": [],
-          "stream": [
-            "Netflix",
-            "Netflix Standard with Ads"
-          ],
-          "cinema_release_date": null
-        },
-        "PT": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/258165-east-of-eden/watch?locale=PT",
-          "rent": [],
-          "stream": [
-            "Netflix"
-          ],
-          "cinema_release_date": null
-        },
-        "US": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/258165-east-of-eden/watch?locale=US",
-          "rent": [],
-          "stream": [
-            "Netflix",
-            "Netflix Standard with Ads"
-          ],
-          "cinema_release_date": null
-        },
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/tv/258165"
-      },
-      "sourceRank": 7,
-      "keywords": [
-        "East of Eden",
-        "East of Eden 2026",
-        "where to watch East of Eden",
-        "Drama series",
-        "Netflix trending series",
-        "Netflix Standard with Ads trending series",
-        "Florence Pugh",
-        "Christopher Abbott"
-      ],
-      "longTailKeywords": [
-        "where to watch East of Eden 2026",
-        "East of Eden streaming in Brazil and United States",
-        "East of Eden cast synopsis trailer and where to watch",
-        "what Drama to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch East of Eden (2026) | MatchApp Ai",
-        "description": "In the early 1900s, a fiercely independent woman drives a rift between two brothers, igniting a saga that unfolds across two generations.",
-        "keywords": [
-          "East of Eden",
-          "East of Eden 2026",
-          "where to watch East of Eden",
-          "Drama series",
-          "Netflix trending series",
-          "Netflix Standard with Ads trending series",
-          "Florence Pugh",
-          "Christopher Abbott",
-          "where to watch East of Eden 2026",
-          "East of Eden streaming in Brazil and United States",
-          "East of Eden cast synopsis trailer and where to watch",
-          "what Drama to watch this week"
-        ],
-        "canonicalQuery": "East of Eden"
-      }
-    },
-    {
-      "title": "Verity",
-      "kind": "movie",
-      "year": 2026,
-      "origin": "US",
-      "originName": "United States",
-      "platform": "Cinemas",
-      "platforms": [],
-      "tmdbId": "1283515",
-      "poster": "https://image.tmdb.org/t/p/w780/dGSsPovyUW5XVekXcy7F2GyhTEh.jpg",
-      "description": "Lowen Ashleigh is hired by Jeremy Crawford to ghostwrite novels for his bestselling author wife Verity, who is unable to finish following an accident. Lowen gradually uncovers Verity's disturbing truths while residing at the Crawfords' home to work.",
-      "genre": [
-        "Mystery",
-        "Thriller"
-      ],
-      "inLanguage": "en",
-      "cast": [
-        "Dakota Johnson",
-        "Anne Hathaway",
-        "Josh Hartnett",
-        "Brady Wagner"
-      ],
-      "runtimeMinutes": 114,
-      "contentRating": "R",
-      "voteAverage": 6.6,
-      "previewUrl": "https://www.youtube.com/watch?v=xdPMKhjMSFs",
-      "availability": {
-        "BR": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-10-01"
-        },
-        "GB": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-10-02"
-        },
-        "US": {
-          "buy": [
-            "Fandango At Home"
-          ],
-          "link": "https://www.themoviedb.org/movie/1283515-verity/watch?locale=US",
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-10-02"
-        },
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1283515"
-      },
-      "sourceRank": 8,
-      "keywords": [
-        "Verity",
-        "Verity 2026",
-        "where to watch Verity",
-        "Mystery movie",
-        "Thriller movie",
-        "Dakota Johnson",
-        "Anne Hathaway"
-      ],
-      "longTailKeywords": [
-        "where to watch Verity 2026",
-        "Verity streaming in Brazil and United States",
-        "Verity cast synopsis trailer and where to watch",
-        "what Mystery to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch Verity (2026) | MatchApp Ai",
-        "description": "Lowen Ashleigh is hired by Jeremy Crawford to ghostwrite novels for his bestselling author wife Verity, who is unable to finish following an accident. Lowen g",
-        "keywords": [
-          "Verity",
-          "Verity 2026",
-          "where to watch Verity",
-          "Mystery movie",
-          "Thriller movie",
-          "Dakota Johnson",
-          "Anne Hathaway",
-          "where to watch Verity 2026",
-          "Verity streaming in Brazil and United States",
-          "Verity cast synopsis trailer and where to watch",
-          "what Mystery to watch this week"
-        ],
-        "canonicalQuery": "Verity"
-      }
-    },
-    {
-      "title": "The Uprising",
-      "kind": "movie",
-      "year": 2026,
-      "origin": "DE",
-      "originName": "Germany",
-      "platform": "Cinemas",
-      "platforms": [],
-      "tmdbId": "977942",
-      "poster": "https://image.tmdb.org/t/p/w780/7TUl15TOsIvndKlgMWTtLgtEzZP.jpg",
-      "description": "As war and plague devastate 14th-century England, a humble peasant ignites a rebellion, uniting an army of commoners to defy the King’s might in a desperate fight for justice and survival.",
-      "genre": [
-        "History",
-        "Drama"
-      ],
-      "inLanguage": "en",
-      "cast": [
-        "Andrew Garfield",
-        "Jamie Bell",
-        "Stephen Dillane",
-        "Woody Norman"
-      ],
-      "runtimeMinutes": 128,
-      "contentRating": "R",
-      "voteAverage": 7.9,
-      "previewUrl": "https://www.youtube.com/watch?v=lyhCxZN4Ro8",
-      "availability": {
-        "GB": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-10-09"
-        },
-        "PT": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-09-17"
-        },
-        "US": {
-          "buy": [
-            "Amazon Video",
-            "Apple TV Store",
-            "Google Play Movies",
-            "YouTube",
-            "Fandango At Home"
-          ],
-          "link": "https://www.themoviedb.org/movie/977942-the-uprising/watch?locale=US",
-          "rent": [
-            "Amazon Video",
-            "Apple TV Store",
-            "Google Play Movies",
-            "YouTube",
-            "Fandango At Home"
-          ],
-          "stream": [],
-          "cinema_release_date": "2026-09-10"
-        },
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/977942"
-      },
-      "sourceRank": 9,
-      "keywords": [
-        "The Uprising",
-        "The Uprising 2026",
-        "where to watch The Uprising",
-        "History movie",
-        "Drama movie",
-        "Andrew Garfield",
-        "Jamie Bell"
-      ],
-      "longTailKeywords": [
-        "where to watch The Uprising 2026",
-        "The Uprising streaming in Brazil and United States",
-        "The Uprising cast synopsis trailer and where to watch",
-        "what History to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch The Uprising (2026) | MatchApp Ai",
-        "description": "As war and plague devastate 14th-century England, a humble peasant ignites a rebellion, uniting an army of commoners to defy the King’s might in a desperate f",
-        "keywords": [
-          "The Uprising",
-          "The Uprising 2026",
-          "where to watch The Uprising",
-          "History movie",
-          "Drama movie",
-          "Andrew Garfield",
-          "Jamie Bell",
-          "where to watch The Uprising 2026",
-          "The Uprising streaming in Brazil and United States",
-          "The Uprising cast synopsis trailer and where to watch",
-          "what History to watch this week"
-        ],
-        "canonicalQuery": "The Uprising"
       }
     },
     {
@@ -1061,159 +1077,171 @@
       "sourceRank": 3
     },
     {
-      "title": "I Would Rather Die",
+      "title": "The Uprising",
+      "kind": "movie",
+      "year": 2026,
+      "origin": "DE",
+      "originName": "Germany",
+      "platform": "Cinemas",
+      "platforms": [],
+      "tmdbId": "977942",
+      "poster": "https://image.tmdb.org/t/p/w780/7TUl15TOsIvndKlgMWTtLgtEzZP.jpg",
+      "description": "As war and plague devastate 14th-century England, a humble peasant ignites a rebellion, uniting an army of commoners to defy the King’s might in a desperate fight for justice and survival.",
+      "genre": [
+        "History",
+        "Drama"
+      ],
+      "inLanguage": "en",
+      "cast": [
+        "Andrew Garfield",
+        "Jamie Bell",
+        "Stephen Dillane",
+        "Woody Norman"
+      ],
+      "runtimeMinutes": 128,
+      "contentRating": "R",
+      "voteAverage": 7.88,
+      "previewUrl": "https://www.youtube.com/watch?v=lyhCxZN4Ro8",
+      "availability": {
+        "GB": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-10-09"
+        },
+        "PT": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-09-17"
+        },
+        "US": {
+          "buy": [
+            "Amazon Video",
+            "Apple TV Store",
+            "Google Play Movies",
+            "YouTube",
+            "Fandango At Home"
+          ],
+          "link": "https://www.themoviedb.org/movie/977942-the-uprising/watch?locale=US",
+          "rent": [
+            "Amazon Video",
+            "Apple TV Store",
+            "Google Play Movies",
+            "YouTube",
+            "Fandango At Home"
+          ],
+          "stream": [],
+          "cinema_release_date": "2026-09-10"
+        },
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/movie/977942"
+      },
+      "sourceRank": 10,
+      "keywords": [
+        "The Uprising",
+        "The Uprising 2026",
+        "where to watch The Uprising",
+        "History movie",
+        "Drama movie",
+        "Andrew Garfield",
+        "Jamie Bell"
+      ],
+      "longTailKeywords": [
+        "where to watch The Uprising 2026",
+        "The Uprising streaming in Brazil and United States",
+        "The Uprising cast synopsis trailer and where to watch",
+        "what History to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch The Uprising (2026) | MatchApp Ai",
+        "description": "As war and plague devastate 14th-century England, a humble peasant ignites a rebellion, uniting an army of commoners to defy the King’s might in a desperate f",
+        "keywords": [
+          "The Uprising",
+          "The Uprising 2026",
+          "where to watch The Uprising",
+          "History movie",
+          "Drama movie",
+          "Andrew Garfield",
+          "Jamie Bell",
+          "where to watch The Uprising 2026",
+          "The Uprising streaming in Brazil and United States",
+          "The Uprising cast synopsis trailer and where to watch",
+          "what History to watch this week"
+        ],
+        "canonicalQuery": "The Uprising"
+      }
+    },
+    {
+      "title": "Magical Explorer",
       "kind": "tv",
       "year": 2026,
       "origin": "",
       "originName": "",
       "platform": "",
       "platforms": [],
-      "tmdbId": "335227",
-      "poster": "https://image.tmdb.org/t/p/w780/wCFvuoNaL4nk7HCFiH7uEm2CDEp.jpg",
-      "description": "The protagonist Archie, considered the school loser, is bitten by a zombie and finds himself at the center of a mission to save the city alongside his friends Cris and Brenda.",
+      "tmdbId": "335194",
+      "poster": "https://image.tmdb.org/t/p/w780/1mcErCeGi77UmV50E81fwvftdp2.jpg",
+      "description": "Reborn in his favorite bishojo game, Kousuke gets the worst role possible: the forgettable sidekick. But armed with his knowledge of the game and this world’s largest mana pool, he might even surpass the hero! Now Kousuke must rewrite his fate and battle his way toward the heroines’ happy endings!",
       "genre": [
-        "Action & Adventure",
-        "Comedy"
+        "Animation",
+        "Comedy",
+        "Action & Adventure"
       ],
-      "inLanguage": "es",
+      "inLanguage": "ja",
       "cast": [
-        "Fernanda Castillo",
-        "Luis Fernando Peña",
-        "Armando Hernández",
-        "Tiaré Scanda"
+        "Nobunaga Shimazaki",
+        "Saori Onishi",
+        "Ai Kakuma",
+        "Mao Ichimichi"
       ],
-      "runtimeMinutes": null,
-      "contentRating": "TV-MA",
-      "voteAverage": 9.6,
-      "previewUrl": "",
+      "runtimeMinutes": 24,
+      "contentRating": "",
+      "voteAverage": 10,
+      "previewUrl": "https://www.youtube.com/watch?v=XqrBfyUNYZs",
       "availability": {
         "source": "tmdb-watch-providers",
         "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/tv/335227"
-      },
-      "sourceRank": 10,
-      "keywords": [
-        "I Would Rather Die",
-        "I Would Rather Die 2026",
-        "where to watch I Would Rather Die",
-        "Action & Adventure series",
-        "Comedy series",
-        "Fernanda Castillo",
-        "Luis Fernando Peña"
-      ],
-      "longTailKeywords": [
-        "where to watch I Would Rather Die 2026",
-        "I Would Rather Die streaming in Brazil and United States",
-        "I Would Rather Die cast synopsis trailer and where to watch",
-        "what Action & Adventure to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch I Would Rather Die (2026) | MatchApp Ai",
-        "description": "The protagonist Archie, considered the school loser, is bitten by a zombie and finds himself at the center of a mission to save the city alongside his friends",
-        "keywords": [
-          "I Would Rather Die",
-          "I Would Rather Die 2026",
-          "where to watch I Would Rather Die",
-          "Action & Adventure series",
-          "Comedy series",
-          "Fernanda Castillo",
-          "Luis Fernando Peña",
-          "where to watch I Would Rather Die 2026",
-          "I Would Rather Die streaming in Brazil and United States",
-          "I Would Rather Die cast synopsis trailer and where to watch",
-          "what Action & Adventure to watch this week"
-        ],
-        "canonicalQuery": "I Would Rather Die"
-      }
-    },
-    {
-      "title": "WAR",
-      "kind": "tv",
-      "year": 2026,
-      "origin": "GB",
-      "originName": "United Kingdom",
-      "platform": "HBO Max",
-      "platforms": [
-        "HBO Max",
-        "HBO Max Amazon Channel"
-      ],
-      "tmdbId": "298852",
-      "poster": "https://image.tmdb.org/t/p/w780/AtCR5LMuvwepTi1kipKq878Rbuq.jpg",
-      "description": "An anthology series set in the elite world of London law following two rival firms, Cathcarts and Taylor & Byrne, as they face off in a different headline-making legal battle each season.",
-      "genre": [
-        "Drama"
-      ],
-      "inLanguage": "en",
-      "cast": [
-        "Dominic West",
-        "Sienna Miller",
-        "Phoebe Fox",
-        "James McArdle"
-      ],
-      "runtimeMinutes": null,
-      "contentRating": "TV-MA",
-      "voteAverage": 9.5,
-      "previewUrl": "https://www.youtube.com/watch?v=3pJGKhUxuNM",
-      "availability": {
-        "BR": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/298852-war/watch?locale=BR",
-          "rent": [],
-          "stream": [
-            "HBO Max",
-            "HBO Max Amazon Channel"
-          ],
-          "cinema_release_date": null
-        },
-        "US": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/298852-war/watch?locale=US",
-          "rent": [],
-          "stream": [
-            "HBO Max Amazon Channel",
-            "HBO Max"
-          ],
-          "cinema_release_date": null
-        },
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/tv/298852"
+        "source_page_url": "https://www.themoviedb.org/tv/335194"
       },
       "sourceRank": 11,
       "keywords": [
-        "WAR",
-        "WAR 2026",
-        "where to watch WAR",
-        "Drama series",
-        "HBO Max trending series",
-        "HBO Max Amazon Channel trending series",
-        "Dominic West",
-        "Sienna Miller"
+        "Magical Explorer",
+        "Magical Explorer 2026",
+        "where to watch Magical Explorer",
+        "Animation series",
+        "Comedy series",
+        "Action & Adventure series",
+        "Nobunaga Shimazaki",
+        "Saori Onishi"
       ],
       "longTailKeywords": [
-        "where to watch WAR 2026",
-        "WAR streaming in Brazil and United States",
-        "WAR cast synopsis trailer and where to watch",
-        "what Drama to watch this week"
+        "where to watch Magical Explorer 2026",
+        "Magical Explorer streaming in Brazil and United States",
+        "Magical Explorer cast synopsis trailer and where to watch",
+        "what Animation to watch this week"
       ],
       "seo": {
-        "title": "Where to watch WAR (2026) | MatchApp Ai",
-        "description": "An anthology series set in the elite world of London law following two rival firms, Cathcarts and Taylor & Byrne, as they face off in a different headline-mak",
+        "title": "Where to watch Magical Explorer (2026) | MatchApp Ai",
+        "description": "Reborn in his favorite bishojo game, Kousuke gets the worst role possible: the forgettable sidekick. But armed with his knowledge of the game and this world’s",
         "keywords": [
-          "WAR",
-          "WAR 2026",
-          "where to watch WAR",
-          "Drama series",
-          "HBO Max trending series",
-          "HBO Max Amazon Channel trending series",
-          "Dominic West",
-          "Sienna Miller",
-          "where to watch WAR 2026",
-          "WAR streaming in Brazil and United States",
-          "WAR cast synopsis trailer and where to watch",
-          "what Drama to watch this week"
+          "Magical Explorer",
+          "Magical Explorer 2026",
+          "where to watch Magical Explorer",
+          "Animation series",
+          "Comedy series",
+          "Action & Adventure series",
+          "Nobunaga Shimazaki",
+          "Saori Onishi",
+          "where to watch Magical Explorer 2026",
+          "Magical Explorer streaming in Brazil and United States",
+          "Magical Explorer cast synopsis trailer and where to watch",
+          "what Animation to watch this week"
         ],
-        "canonicalQuery": "WAR"
+        "canonicalQuery": "Magical Explorer"
       }
     },
     {
@@ -1254,7 +1282,7 @@
       ],
       "runtimeMinutes": null,
       "contentRating": "TV-MA",
-      "voteAverage": 8.46,
+      "voteAverage": 8.47,
       "previewUrl": "https://www.youtube.com/watch?v=qKGgw7Ob5f4",
       "availability": {
         "BR": {
@@ -1423,266 +1451,142 @@
       "sourceRank": 4
     },
     {
-      "title": "Runner",
+      "title": "Verity",
       "kind": "movie",
       "year": 2026,
       "origin": "US",
       "originName": "United States",
       "platform": "Cinemas",
       "platforms": [],
-      "tmdbId": "1377237",
-      "poster": "https://image.tmdb.org/t/p/w780/yBKMAIj7clP42UkFejhGDBBoTpb.jpg",
-      "description": "A former soldier is thrown into a brutal race against time when a critical medical delivery makes him and his unlikely partner the targets of a ruthless cartel. As the mission spirals into a deadly manhunt, every detour, delay, and bullet pushes them closer to failure. With betrayal closing in from every side, they must survive the chase and deliver their cargo to save the life of a little girl.",
+      "tmdbId": "1283515",
+      "poster": "https://image.tmdb.org/t/p/w780/dGSsPovyUW5XVekXcy7F2GyhTEh.jpg",
+      "description": "Lowen Ashleigh is hired by Jeremy Crawford to ghostwrite novels for his bestselling author wife Verity, who is unable to finish following an accident. Lowen gradually uncovers Verity's disturbing truths while residing at the Crawfords' home to work.",
       "genre": [
-        "Action",
-        "Comedy"
+        "Mystery",
+        "Thriller"
       ],
       "inLanguage": "en",
       "cast": [
-        "Alan Ritchson",
-        "Owen Wilson",
-        "Rodrigo Santoro",
-        "Leila George"
+        "Dakota Johnson",
+        "Anne Hathaway",
+        "Josh Hartnett",
+        "Brady Wagner"
       ],
-      "runtimeMinutes": 97,
-      "contentRating": "PG-13",
-      "voteAverage": 8.25,
-      "previewUrl": "https://www.youtube.com/watch?v=B6Z9MM1LhEA",
+      "runtimeMinutes": 114,
+      "contentRating": "R",
+      "voteAverage": 6.64,
+      "previewUrl": "https://www.youtube.com/watch?v=xdPMKhjMSFs",
       "availability": {
         "BR": {
           "buy": [],
           "link": null,
           "rent": [],
           "stream": [],
-          "cinema_release_date": "2026-10-08"
+          "cinema_release_date": "2026-10-01"
         },
         "GB": {
           "buy": [],
           "link": null,
           "rent": [],
           "stream": [],
-          "cinema_release_date": "2026-09-11"
-        },
-        "PT": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-09-17"
+          "cinema_release_date": "2026-10-02"
         },
         "US": {
-          "buy": [],
-          "link": null,
+          "buy": [
+            "Fandango At Home"
+          ],
+          "link": "https://www.themoviedb.org/movie/1283515-verity/watch?locale=US",
           "rent": [],
           "stream": [],
-          "cinema_release_date": "2026-09-07"
+          "cinema_release_date": "2026-10-02"
         },
         "source": "tmdb-watch-providers",
         "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1377237"
+        "source_page_url": "https://www.themoviedb.org/movie/1283515"
       },
       "sourceRank": 13,
       "keywords": [
-        "Runner",
-        "Runner 2026",
-        "where to watch Runner",
-        "Action movie",
-        "Comedy movie",
-        "Alan Ritchson",
-        "Owen Wilson"
+        "Verity",
+        "Verity 2026",
+        "where to watch Verity",
+        "Mystery movie",
+        "Thriller movie",
+        "Dakota Johnson",
+        "Anne Hathaway"
       ],
       "longTailKeywords": [
-        "where to watch Runner 2026",
-        "Runner streaming in Brazil and United States",
-        "Runner cast synopsis trailer and where to watch",
-        "what Action to watch this week"
+        "where to watch Verity 2026",
+        "Verity streaming in Brazil and United States",
+        "Verity cast synopsis trailer and where to watch",
+        "what Mystery to watch this week"
       ],
       "seo": {
-        "title": "Where to watch Runner (2026) | MatchApp Ai",
-        "description": "A former soldier is thrown into a brutal race against time when a critical medical delivery makes him and his unlikely partner the targets of a ruthless carte",
+        "title": "Where to watch Verity (2026) | MatchApp Ai",
+        "description": "Lowen Ashleigh is hired by Jeremy Crawford to ghostwrite novels for his bestselling author wife Verity, who is unable to finish following an accident. Lowen g",
         "keywords": [
-          "Runner",
-          "Runner 2026",
-          "where to watch Runner",
-          "Action movie",
-          "Comedy movie",
-          "Alan Ritchson",
-          "Owen Wilson",
-          "where to watch Runner 2026",
-          "Runner streaming in Brazil and United States",
-          "Runner cast synopsis trailer and where to watch",
-          "what Action to watch this week"
+          "Verity",
+          "Verity 2026",
+          "where to watch Verity",
+          "Mystery movie",
+          "Thriller movie",
+          "Dakota Johnson",
+          "Anne Hathaway",
+          "where to watch Verity 2026",
+          "Verity streaming in Brazil and United States",
+          "Verity cast synopsis trailer and where to watch",
+          "what Mystery to watch this week"
         ],
-        "canonicalQuery": "Runner"
+        "canonicalQuery": "Verity"
       }
     },
     {
-      "title": "Red Queen",
-      "kind": "tv",
-      "year": 2024,
-      "origin": "MX",
-      "originName": "Mexico",
-      "platform": "Amazon Prime Video",
-      "platforms": [
-        "Amazon Prime Video",
-        "Amazon Prime Video with Ads"
-      ],
-      "tmdbId": "203667",
-      "poster": "https://image.tmdb.org/t/p/w780/lk7LVXYSOO5rReR2jzLo8Le3cO1.jpg",
-      "description": "A gifted woman's intellect brings chance to lead covert European police force. But it backfires, costing her everything. Following murder at her home and kidnapped heiress, her ex-supervisor enlists a policeman's aid to reinstate her.",
-      "genre": [
-        "Action & Adventure",
-        "Mystery"
-      ],
-      "inLanguage": "es",
-      "cast": [
-        "Victoria Luengo",
-        "Hovik Keuchkerian",
-        "Karmele Larrinaga",
-        "Vicenta N'Dongo"
-      ],
-      "runtimeMinutes": null,
-      "contentRating": "TV-MA",
-      "voteAverage": 7,
-      "previewUrl": "https://www.youtube.com/watch?v=dYIXNAAOdFU",
-      "availability": {
-        "BR": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/203667-reina-roja/watch?locale=BR",
-          "rent": [],
-          "stream": [
-            "Amazon Prime Video",
-            "Amazon Prime Video with Ads"
-          ],
-          "cinema_release_date": null
-        },
-        "GB": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/203667-reina-roja/watch?locale=GB",
-          "rent": [],
-          "stream": [
-            "Amazon Prime Video",
-            "Amazon Prime Video with Ads"
-          ],
-          "cinema_release_date": null
-        },
-        "PT": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/203667-reina-roja/watch?locale=PT",
-          "rent": [],
-          "stream": [
-            "Amazon Prime Video"
-          ],
-          "cinema_release_date": null
-        },
-        "US": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/203667-reina-roja/watch?locale=US",
-          "rent": [],
-          "stream": [
-            "Amazon Prime Video",
-            "Amazon Prime Video with Ads"
-          ],
-          "cinema_release_date": null
-        },
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/tv/203667"
-      },
-      "sourceRank": 14,
-      "keywords": [
-        "Red Queen",
-        "Red Queen 2024",
-        "where to watch Red Queen",
-        "Action & Adventure series",
-        "Mystery series",
-        "Amazon Prime Video trending series",
-        "Amazon Prime Video with Ads trending series",
-        "Victoria Luengo",
-        "Hovik Keuchkerian"
-      ],
-      "longTailKeywords": [
-        "where to watch Red Queen 2024",
-        "Red Queen streaming in Brazil and United States",
-        "Red Queen cast synopsis trailer and where to watch",
-        "what Action & Adventure to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch Red Queen (2024) | MatchApp Ai",
-        "description": "A gifted woman's intellect brings chance to lead covert European police force. But it backfires, costing her everything. Following murder at her home and kidn",
-        "keywords": [
-          "Red Queen",
-          "Red Queen 2024",
-          "where to watch Red Queen",
-          "Action & Adventure series",
-          "Mystery series",
-          "Amazon Prime Video trending series",
-          "Amazon Prime Video with Ads trending series",
-          "Victoria Luengo",
-          "Hovik Keuchkerian",
-          "where to watch Red Queen 2024",
-          "Red Queen streaming in Brazil and United States",
-          "Red Queen cast synopsis trailer and where to watch",
-          "what Action & Adventure to watch this week"
-        ],
-        "canonicalQuery": "Red Queen"
-      }
-    },
-    {
-      "title": "Lanterns",
+      "title": "Kill Jackie",
       "kind": "tv",
       "year": 2026,
-      "origin": "US",
-      "originName": "United States",
-      "platform": "HBO Max",
+      "origin": "GB",
+      "originName": "United Kingdom",
+      "platform": "Philo",
       "platforms": [
-        "HBO Max",
-        "Claro tv+",
-        "HBO Max Amazon Channel"
+        "Philo",
+        "AMC Plus Apple TV channel",
+        "AMC+ Amazon Channel",
+        "AMC+ Roku Premium Channel",
+        "Amazon Prime Video",
+        "Amazon Prime Video with Ads",
+        "HBO Max"
       ],
-      "tmdbId": "95350",
-      "poster": "https://image.tmdb.org/t/p/w780/gpC7h43xPMEV3goYMQShfJbTtLq.jpg",
-      "description": "Two intergalactic cops, new recruit John Stewart and Lantern legend Hal Jordan, are drawn into a dark, Earth-based mystery as they investigate a murder in the American heartland.",
+      "tmdbId": "284558",
+      "poster": "https://image.tmdb.org/t/p/w780/vvMpr6wO4EMtA7lqftffTel5c1R.jpg",
+      "description": "Jackie Price has been living a wealthy, luxurious life for the past 20 years after escaping a dangerous past as an international cocaine dealer. But just as life begins to feel a little boring, she discovers that The Seven Demons, a group of the world’s most terrifying hitmen, have been hired to kill her.",
       "genre": [
         "Drama",
-        "Mystery",
-        "Sci-Fi & Fantasy"
+        "Crime"
       ],
       "inLanguage": "en",
       "cast": [
-        "Kyle Chandler",
-        "Aaron Pierre",
-        "Kelly Macdonald"
+        "Catherine Zeta-Jones",
+        "Daniel Ings",
+        "Sidse Babett Knudsen",
+        "Julian Rhind-Tutt"
       ],
       "runtimeMinutes": null,
-      "contentRating": "TV-MA",
-      "voteAverage": 8.37,
-      "previewUrl": "https://www.youtube.com/watch?v=7UIBOsuUwc4",
+      "contentRating": "",
+      "voteAverage": 7.18,
+      "previewUrl": "https://www.youtube.com/watch?v=dKgTyq2-4w0",
       "availability": {
-        "BR": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/95350-lanterns/watch?locale=BR",
-          "rent": [],
-          "stream": [
-            "HBO Max",
-            "Claro tv+",
-            "HBO Max Amazon Channel"
-          ],
-          "cinema_release_date": null
-        },
         "GB": {
           "buy": [],
-          "link": "https://www.themoviedb.org/tv/95350-lanterns/watch?locale=GB",
+          "link": "https://www.themoviedb.org/tv/284558-kill-jackie/watch?locale=GB",
           "rent": [],
           "stream": [
-            "HBO Max Amazon Channel",
-            "HBO Max"
+            "Amazon Prime Video",
+            "Amazon Prime Video with Ads"
           ],
           "cinema_release_date": null
         },
         "PT": {
           "buy": [],
-          "link": "https://www.themoviedb.org/tv/95350-lanterns/watch?locale=PT",
+          "link": "https://www.themoviedb.org/tv/284558-kill-jackie/watch?locale=PT",
           "rent": [],
           "stream": [
             "HBO Max"
@@ -1691,57 +1595,57 @@
         },
         "US": {
           "buy": [],
-          "link": "https://www.themoviedb.org/tv/95350-lanterns/watch?locale=US",
+          "link": "https://www.themoviedb.org/tv/284558-kill-jackie/watch?locale=US",
           "rent": [],
           "stream": [
-            "HBO Max Amazon Channel",
-            "HBO Max"
+            "Philo",
+            "AMC Plus Apple TV channel",
+            "AMC+ Amazon Channel",
+            "AMC+ Roku Premium Channel"
           ],
           "cinema_release_date": null
         },
         "source": "tmdb-watch-providers",
         "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/tv/95350"
+        "source_page_url": "https://www.themoviedb.org/tv/284558"
       },
-      "sourceRank": 15,
+      "sourceRank": 14,
       "keywords": [
-        "Lanterns",
-        "Lanterns 2026",
-        "where to watch Lanterns",
+        "Kill Jackie",
+        "Kill Jackie 2026",
+        "where to watch Kill Jackie",
         "Drama series",
-        "Mystery series",
-        "Sci-Fi & Fantasy series",
-        "HBO Max trending series",
-        "Claro tv+ trending series",
-        "Kyle Chandler",
-        "Aaron Pierre"
+        "Crime series",
+        "Philo trending series",
+        "AMC Plus Apple TV channel trending series",
+        "Catherine Zeta-Jones",
+        "Daniel Ings"
       ],
       "longTailKeywords": [
-        "where to watch Lanterns 2026",
-        "Lanterns streaming in Brazil and United States",
-        "Lanterns cast synopsis trailer and where to watch",
+        "where to watch Kill Jackie 2026",
+        "Kill Jackie streaming in Brazil and United States",
+        "Kill Jackie cast synopsis trailer and where to watch",
         "what Drama to watch this week"
       ],
       "seo": {
-        "title": "Where to watch Lanterns (2026) | MatchApp Ai",
-        "description": "Two intergalactic cops, new recruit John Stewart and Lantern legend Hal Jordan, are drawn into a dark, Earth-based mystery as they investigate a murder in the",
+        "title": "Where to watch Kill Jackie (2026) | MatchApp Ai",
+        "description": "Jackie Price has been living a wealthy, luxurious life for the past 20 years after escaping a dangerous past as an international cocaine dealer. But just as l",
         "keywords": [
-          "Lanterns",
-          "Lanterns 2026",
-          "where to watch Lanterns",
+          "Kill Jackie",
+          "Kill Jackie 2026",
+          "where to watch Kill Jackie",
           "Drama series",
-          "Mystery series",
-          "Sci-Fi & Fantasy series",
-          "HBO Max trending series",
-          "Claro tv+ trending series",
-          "Kyle Chandler",
-          "Aaron Pierre",
-          "where to watch Lanterns 2026",
-          "Lanterns streaming in Brazil and United States",
-          "Lanterns cast synopsis trailer and where to watch",
+          "Crime series",
+          "Philo trending series",
+          "AMC Plus Apple TV channel trending series",
+          "Catherine Zeta-Jones",
+          "Daniel Ings",
+          "where to watch Kill Jackie 2026",
+          "Kill Jackie streaming in Brazil and United States",
+          "Kill Jackie cast synopsis trailer and where to watch",
           "what Drama to watch this week"
         ],
-        "canonicalQuery": "Lanterns"
+        "canonicalQuery": "Kill Jackie"
       }
     },
     {
@@ -1804,7 +1708,7 @@
         "attribution": "JustWatch via TMDB",
         "source_page_url": "https://www.themoviedb.org/movie/1423191"
       },
-      "sourceRank": 16,
+      "sourceRank": 15,
       "keywords": [
         "Resident Evil",
         "Resident Evil 2026",
@@ -1839,6 +1743,118 @@
           "what Horror to watch this week"
         ],
         "canonicalQuery": "Resident Evil"
+      }
+    },
+    {
+      "title": "I Would Rather Die",
+      "kind": "tv",
+      "year": 2026,
+      "origin": "",
+      "originName": "",
+      "platform": "Amazon Prime Video",
+      "platforms": [
+        "Amazon Prime Video",
+        "Amazon Prime Video with Ads"
+      ],
+      "tmdbId": "335227",
+      "poster": "https://image.tmdb.org/t/p/w780/wCFvuoNaL4nk7HCFiH7uEm2CDEp.jpg",
+      "description": "The protagonist Archie, considered the school loser, is bitten by a zombie and finds himself at the center of a mission to save the city alongside his friends Cris and Brenda.",
+      "genre": [
+        "Action & Adventure",
+        "Comedy"
+      ],
+      "inLanguage": "es",
+      "cast": [
+        "Fernanda Castillo",
+        "Luis Fernando Peña",
+        "Armando Hernández",
+        "Tiaré Scanda"
+      ],
+      "runtimeMinutes": null,
+      "contentRating": "TV-MA",
+      "voteAverage": 8.3,
+      "previewUrl": "",
+      "availability": {
+        "BR": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/335227-prefiero-la-muerte/watch?locale=BR",
+          "rent": [],
+          "stream": [
+            "Amazon Prime Video",
+            "Amazon Prime Video with Ads"
+          ],
+          "cinema_release_date": null
+        },
+        "GB": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/335227-prefiero-la-muerte/watch?locale=GB",
+          "rent": [],
+          "stream": [
+            "Amazon Prime Video",
+            "Amazon Prime Video with Ads"
+          ],
+          "cinema_release_date": null
+        },
+        "PT": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/335227-prefiero-la-muerte/watch?locale=PT",
+          "rent": [],
+          "stream": [
+            "Amazon Prime Video"
+          ],
+          "cinema_release_date": null
+        },
+        "US": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/335227-prefiero-la-muerte/watch?locale=US",
+          "rent": [],
+          "stream": [
+            "Amazon Prime Video",
+            "Amazon Prime Video with Ads"
+          ],
+          "cinema_release_date": null
+        },
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/tv/335227"
+      },
+      "sourceRank": 16,
+      "keywords": [
+        "I Would Rather Die",
+        "I Would Rather Die 2026",
+        "where to watch I Would Rather Die",
+        "Action & Adventure series",
+        "Comedy series",
+        "Amazon Prime Video trending series",
+        "Amazon Prime Video with Ads trending series",
+        "Fernanda Castillo",
+        "Luis Fernando Peña"
+      ],
+      "longTailKeywords": [
+        "where to watch I Would Rather Die 2026",
+        "I Would Rather Die streaming in Brazil and United States",
+        "I Would Rather Die cast synopsis trailer and where to watch",
+        "what Action & Adventure to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch I Would Rather Die (2026) | MatchApp Ai",
+        "description": "The protagonist Archie, considered the school loser, is bitten by a zombie and finds himself at the center of a mission to save the city alongside his friends",
+        "keywords": [
+          "I Would Rather Die",
+          "I Would Rather Die 2026",
+          "where to watch I Would Rather Die",
+          "Action & Adventure series",
+          "Comedy series",
+          "Amazon Prime Video trending series",
+          "Amazon Prime Video with Ads trending series",
+          "Fernanda Castillo",
+          "Luis Fernando Peña",
+          "where to watch I Would Rather Die 2026",
+          "I Would Rather Die streaming in Brazil and United States",
+          "I Would Rather Die cast synopsis trailer and where to watch",
+          "what Action & Adventure to watch this week"
+        ],
+        "canonicalQuery": "I Would Rather Die"
       }
     }
   ]
