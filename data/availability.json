@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-03T10:20:02.641Z",
+  "generated": "2026-10-04T11:02:50.478Z",
   "source": "TMDB / JustWatch",
   "titles": {
     "The Bear": {
@@ -2972,6 +2972,7 @@
           "stream": [
             "Amazon Prime Video",
             "YouTube TV",
+            "PBS",
             "Amazon Prime Video with Ads",
             "Thirteen",
             "WETA+",
