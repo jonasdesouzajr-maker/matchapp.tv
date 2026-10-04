@@ -25,6 +25,7 @@ import android.webkit.WebSettings
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.FrameLayout
+import android.widget.ImageView
 import android.widget.Toast
 import android.widget.VideoView
 import androidx.activity.OnBackPressedCallback
@@ -53,6 +54,9 @@ class MainActivity : AppCompatActivity() {
     private var introHost: FrameLayout? = null
     private var introVideo: VideoView? = null
     private val introDeadline = Runnable { finishIntro() }
+    private var startupHost: FrameLayout? = null
+    private val startupDeadline = Runnable { finishStartupTransition() }
+    private val startupPrefs by lazy { getSharedPreferences(STARTUP_PREFS, MODE_PRIVATE) }
     private var lastUrl = HOME
 
     // Web UI (including the responsive Avatar Studio) is shared with matchapp.tv.
@@ -130,6 +134,7 @@ class MainActivity : AppCompatActivity() {
         web.webViewClient = MatchClient()
         web.webChromeClient = MatchChrome()
         web.addJavascriptInterface(NativeVoiceBridge(), "MatchAppNativeVoice")
+        web.addJavascriptInterface(NativeStartupBridge(), "MatchAppNativeStartup")
         web.setDownloadListener { url, _, contentDisposition, mime, _ ->
             val name = URLUtil.guessFileName(url, contentDisposition, mime)
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
@@ -163,7 +168,7 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-        if (savedInstanceState == null && intent.data == null) startIntro()
+        if (savedInstanceState == null && intent.data == null) startStartupExperience()
 
         val launch = resolveLaunchUrl(intent)
         lastUrl = launch
@@ -185,6 +190,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onPause() {
         finishIntro()
+        finishStartupTransition(immediate = true)
         super.onPause()
         web.onPause()
         CookieManager.getInstance().flush()
@@ -197,9 +203,75 @@ class MainActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         finishIntro()
+        finishStartupTransition(immediate = true)
         fullscreenHost.removeAllViews()
         web.destroy()
         super.onDestroy()
+    }
+
+    private fun startStartupExperience() {
+        if (startupPrefs.getBoolean(PREF_REGISTERED, false) ||
+            startupPrefs.getBoolean(PREF_INTRO_SEEN, false)
+        ) {
+            startStartupTransition()
+        } else {
+            startIntro()
+        }
+    }
+
+    private fun startStartupTransition() {
+        val root = findViewById<FrameLayout>(R.id.root)
+        val host = FrameLayout(this).apply {
+            setBackgroundColor(Color.parseColor("#10091A"))
+            isClickable = true
+            isFocusable = true
+        }
+        val logo = ImageView(this).apply {
+            setImageResource(R.drawable.matchapp_official_icon)
+            scaleType = ImageView.ScaleType.CENTER_INSIDE
+            alpha = 0f
+            scaleX = 0.94f
+            scaleY = 0.94f
+        }
+        val size = (92 * resources.displayMetrics.density).toInt()
+        host.addView(
+            logo,
+            FrameLayout.LayoutParams(size, size, android.view.Gravity.CENTER)
+        )
+        startupHost = host
+        root.addView(
+            host,
+            FrameLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT
+            )
+        )
+        logo.animate()
+            .alpha(1f)
+            .scaleX(1f)
+            .scaleY(1f)
+            .setDuration(280L)
+            .start()
+        root.postDelayed(startupDeadline, 3200L)
+    }
+
+    private fun finishStartupTransition(immediate: Boolean = false) {
+        findViewById<FrameLayout>(R.id.root)?.removeCallbacks(startupDeadline)
+        val host = startupHost ?: return
+        startupHost = null
+        if (immediate) {
+            (host.parent as? ViewGroup)?.removeView(host)
+            return
+        }
+        host.animate()
+            .alpha(0f)
+            .setDuration(240L)
+            .withEndAction { (host.parent as? ViewGroup)?.removeView(host) }
+            .start()
+    }
+
+    private fun markIntroSeen() {
+        startupPrefs.edit().putBoolean(PREF_INTRO_SEEN, true).apply()
     }
 
     // Playback is bundled, muted, finite, and independent of Home loading.
@@ -221,7 +293,10 @@ class MainActivity : AppCompatActivity() {
         }
         val skip = MaterialButton(this).apply {
             text = if (resources.configuration.locales[0].language == "pt") "Pular" else "Skip"
-            setOnClickListener { finishIntro() }
+            setOnClickListener {
+                markIntroSeen()
+                finishIntro()
+            }
         }
         introHost = host
         introVideo = video
@@ -233,10 +308,14 @@ class MainActivity : AppCompatActivity() {
             setMargins(margin, margin, margin, margin)
         })
         root.addView(host, FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT))
-        root.postDelayed(introDeadline, 6500)
+        root.postDelayed(introDeadline, 8000L)
         video.setOnPreparedListener { player ->
             player.setVolume(0f, 0f)
             player.isLooping = false
+            markIntroSeen()
+            root.removeCallbacks(introDeadline)
+            val playbackFailsafe = maxOf(player.duration.toLong(), 10000L) + 5000L
+            root.postDelayed(introDeadline, playbackFailsafe)
             video.start()
         }
         video.setOnCompletionListener { finishIntro() }
@@ -388,6 +467,7 @@ class MainActivity : AppCompatActivity() {
 
         override fun onPageFinished(view: WebView, url: String?) {
             splashKeep = false
+            finishStartupTransition()
             refresh.isRefreshing = false
             view.settings.cacheMode = WebSettings.LOAD_DEFAULT
             injectAppMode(view)
@@ -397,6 +477,7 @@ class MainActivity : AppCompatActivity() {
         override fun onReceivedError(view: WebView, request: WebResourceRequest, error: WebResourceError) {
             if (request.isForMainFrame) {
                 splashKeep = false
+                finishStartupTransition(immediate = true)
                 refresh.isRefreshing = false
                 if (!isOnline()) showOffline(true)
             }
@@ -451,6 +532,18 @@ class MainActivity : AppCompatActivity() {
             "window.matchAppNativeVoiceError&&window.matchAppNativeVoiceError($value);",
             null
         )
+    }
+
+    private inner class NativeStartupBridge {
+        @JavascriptInterface
+        fun markRegistered() {
+            runOnUiThread {
+                val current = runCatching { Uri.parse(web.url.orEmpty()) }.getOrNull()
+                if (current != null && isMatchAppHost(current.host.orEmpty())) {
+                    startupPrefs.edit().putBoolean(PREF_REGISTERED, true).apply()
+                }
+            }
+        }
     }
 
     private inner class NativeVoiceBridge {
@@ -550,6 +643,9 @@ class MainActivity : AppCompatActivity() {
     companion object {
         const val HOME = "https://matchapp.tv/?utm_source=android_app&appBuild=40"
         const val APP_UA = "MatchAppTVAndroid/1.1.36 MatchAppAiAndroid/1.1.36 MatchAppLaunchIntro/1"
+        private const val STARTUP_PREFS = "matchapp_startup"
+        private const val PREF_INTRO_SEEN = "intro_seen_v1"
+        private const val PREF_REGISTERED = "registered_v1"
         private const val APP_MODE_JS = """
             (function(){
               window.MATCHAPP_IS_AD_FREE = true;
