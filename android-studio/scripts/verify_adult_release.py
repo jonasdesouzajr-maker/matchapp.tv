@@ -16,10 +16,10 @@ template = content("play/assetlinks.json")
 
 assert 'namespace = "com.jonas.papercup"' in gradle
 assert 'applicationId = "com.jonas.papercup"' in gradle
-assert "targetSdk = 36" in gradle and "versionCode = 37" in gradle
+assert "targetSdk = 36" in gradle and "versionCode = 40" in gradle
 assert 'package="tv.matchapp.app"' not in manifest
 assert "package com.jonas.papercup" in activity
-assert "appBuild=37" in activity
+assert "appBuild=40" in activity
 assert "isKidsUri(target)" in activity
 assert "child.post { child.destroy() }" in activity
 assert 'applicationId = "tv.matchapp.kids"' in kids
@@ -47,6 +47,7 @@ app_link_filters=[
 assert any(any(d.attrib.get(android_ns+"host")=="matchapp.tv"
                and d.attrib.get(android_ns+"scheme")=="https"
                for d in f.findall("data")) for f in app_link_filters), "Adult app misses verified HTTPS App Links"
+assert not any(d.attrib.get(android_ns+"host")=="www.matchapp.tv" for f in app_link_filters for d in f.findall("data")), "Do not declare www.matchapp.tv: it redirects and cannot pass Android domain verification"
 # No native routing edits: a verified host-only filter covers all six requested
 # same-origin paths. Real Play-signed install verification remains a separate gate.
 default = gradle.split("defaultConfig {", 1)[1].split("buildTypes {", 1)[0]
