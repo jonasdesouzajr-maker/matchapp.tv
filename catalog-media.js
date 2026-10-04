@@ -212,7 +212,7 @@
       'Disney Plus':'Disney+','HBO Max':'Max','Max':'Max','Apple TV':'Apple TV+','Apple TV Store':'Apple TV+',
       'Paramount Plus':'Paramount+','Paramount Plus Basic with Ads':'Paramount+','Paramount Plus Essential':'Paramount+',
       'Paramount Plus Premium':'Paramount+','Hulu':'Hulu','Peacock Premium':'Peacock','Peacock Premium Plus':'Peacock',
-      'Globoplay':'Globoplay','Crunchyroll Amazon Channel':'Crunchyroll','Crunchyroll':'Crunchyroll',
+      'Globoplay':'Globoplay','+SBT':'+SBT','SBT+':'+SBT','SBT Plus':'+SBT','Crunchyroll Amazon Channel':'Crunchyroll','Crunchyroll':'Crunchyroll',
       'Rakuten Viki':'Viki','MUBI':'MUBI','Pure Flix':'Pure Flix','Angel Studios':'Angel Studios'
     };
     let mapped=aliases[raw]||raw;
@@ -222,6 +222,7 @@
     else if(/apple tv/i.test(raw))mapped='Apple TV+';
     else if(/paramount/i.test(raw))mapped='Paramount+';
     else if(/crunchyroll/i.test(raw))mapped='Crunchyroll';
+    else if(/^\+?sbt(?:\+|\s+plus)?$/i.test(raw))mapped='+SBT';
     try{
       if(typeof platformSearchUrl==='function'&&typeof PLATFORMS!=='undefined'&&PLATFORMS[mapped])return platformSearchUrl(mapped,title);
     }catch(_){}
@@ -236,6 +237,7 @@
       'Hulu':'https://www.hulu.com/search?q='+q,
       'Peacock':'https://www.peacocktv.com/search?q='+q,
       'Globoplay':'https://globoplay.globo.com/busca/?q='+q,
+      '+SBT':'https://mais.sbt.com.br/search',
       'Crunchyroll':'https://www.crunchyroll.com/search?q='+q,
       'Viki':'https://www.viki.com/search?q='+q,
       'MUBI':'https://mubi.com/search/'+q,
