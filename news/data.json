@@ -1,10 +1,283 @@
 {
-  "generated_at": "2026-10-04T02:50:22.631Z",
-  "feed_version": "771f87d1",
+  "generated_at": "2026-10-04T09:16:36.693Z",
+  "feed_version": "54796869",
   "sports_updated_at": "2026-10-04T02:39:59.277Z",
   "source_policy": "direct-trusted-publisher-rss+google-trends-keyword-signals",
   "seo_policy": "per-story keyword snapshot at first discovery + source citation + stable archive",
   "items": [
+    {
+      "id": "91910215",
+      "title": "Trust warns of 'tangible' climate threat to heritage sites",
+      "url": "https://www.bbc.co.uk/news/articles/c9vgy02038vko?at_medium=RSS&at_campaign=rss",
+      "source": "BBC Science",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "published_at": "2026-10-04T06:21:07.000Z",
+      "discovered_at": "2026-10-04T09:16:36.693Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC Science on 2026-10-04. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/ef57/live/d0ecdeb0-be33-11f1-883b-cfbfbf424e7e.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/trust-warns-of-tangible-climate-threat-to-heritage-sites-919102/",
+      "landing_url": "https://matchapp.tv/?news=91910215#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-04",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "trust",
+          "warns",
+          "tangible",
+          "climate",
+          "threat",
+          "heritage"
+        ],
+        "long_tail": [
+          "Trust warns of 'tangible' climate threat to heritage sites 2026-10-04",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "trust",
+          "warns",
+          "tangible",
+          "climate",
+          "threat",
+          "heritage"
+        ],
+        "freshness_keywords": [
+          "2026-10-04"
+        ],
+        "source_keywords": [
+          "BBC Science"
+        ],
+        "meta_title": "Trust warns of 'tangible' climate threat to heritage sites…",
+        "meta_description": "World report published by BBC Science on 2026-10-04. Open the original report for full context.",
+        "keywords": [
+          "world news",
+          "global headlines",
+          "trust",
+          "warns",
+          "tangible",
+          "climate",
+          "threat",
+          "heritage",
+          "2026-10-04",
+          "BBC Science"
+        ],
+        "seo_generated_at": "2026-10-04T09:16:36.693Z"
+      }
+    },
+    {
+      "id": "f8d08d4d",
+      "title": "The Feeling album recorded in a Sussex shed",
+      "url": "https://www.bbc.co.uk/news/articles/cm4gkggpzgygo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GB",
+      "published_at": "2026-10-04T06:13:59.000Z",
+      "discovered_at": "2026-10-04T09:16:36.693Z",
+      "event_type": "Music",
+      "category": "entertainment",
+      "person": "The Feeling",
+      "description": "The Feeling: music headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/6ed5/live/d68fe5f0-be4d-11f1-8828-9d9deece30a1.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/the-feeling-album-recorded-in-a-sussex-shed-f8d08d/",
+      "landing_url": "https://matchapp.tv/?news=f8d08d4d#latest-news",
+      "seo": {
+        "primary_keyword": "f1",
+        "short_tail": [
+          "The Feeling",
+          "The Feeling news",
+          "music",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "f1",
+          "f1 tv",
+          "पेंशन",
+          "महागाई भत्ता"
+        ],
+        "long_tail": [
+          "The Feeling latest news October 2026",
+          "The Feeling music update 2026",
+          "The Feeling news 2026-10-04",
+          "latest music news about The Feeling",
+          "feeling feeling album recorded sussex shed latest update",
+          "BBC The Feeling music",
+          "latest news about The Feeling October 2026",
+          "The Feeling entertainment news 2026-10-04",
+          "what happened with The Feeling"
+        ],
+        "trend_keywords": [
+          "f1",
+          "f1 tv",
+          "पेंशन",
+          "महागाई भत्ता"
+        ],
+        "entity_keywords": [
+          "The Feeling",
+          "feeling",
+          "album",
+          "recorded",
+          "sussex",
+          "shed"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-04",
+          "The Feeling 2026"
+        ],
+        "source_keywords": [
+          "BBC The Feeling",
+          "bbc.co.uk The Feeling",
+          "BBC entertainment news"
+        ],
+        "meta_title": "The Feeling album recorded in a Sussex shed |…",
+        "meta_description": "The Feeling: Music update reported by BBC on 2026-10-04. See verified context, publication time and the original source via MatchApp Ai.",
+        "keywords": [
+          "f1",
+          "The Feeling",
+          "The Feeling news",
+          "music",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "f1 tv",
+          "पेंशन",
+          "महागाई भत्ता",
+          "The Feeling latest news October 2026",
+          "The Feeling music update 2026",
+          "The Feeling news 2026-10-04",
+          "latest music news about The Feeling",
+          "feeling feeling album recorded sussex shed latest update",
+          "BBC The Feeling music",
+          "latest news about The Feeling October 2026",
+          "The Feeling entertainment news 2026-10-04",
+          "what happened with The Feeling",
+          "feeling",
+          "album",
+          "recorded",
+          "sussex",
+          "shed",
+          "October 2026",
+          "2026-10-04",
+          "The Feeling 2026",
+          "BBC The Feeling",
+          "bbc.co.uk The Feeling",
+          "BBC entertainment news"
+        ],
+        "seo_generated_at": "2026-10-04T09:16:36.693Z"
+      }
+    },
+    {
+      "id": "829ef112",
+      "title": "Taylor Swift Crashes Dakota Johnson’s ‘Saturday Night Live’ Hosting Stint: “My Literal Therapist!”",
+      "url": "https://www.hollywoodreporter.com/tv/tv-news/taylor-swift-dakota-johnson-saturday-night-live-1236721702/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "published_at": "2026-10-04T03:47:27.000Z",
+      "discovered_at": "2026-10-04T09:16:36.693Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "Taylor Swift Crashes Dakota",
+      "description": "Taylor Swift Crashes Dakota: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/Screenshot-2026-10-03-at-8.42.20-PM-e1791085578890.png?w=1440&h=810&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/taylor-swift-crashes-dakota-johnson-s-saturday-night-live-hosting-stint-my-liter-829ef1/",
+      "landing_url": "https://matchapp.tv/?news=829ef112#latest-news",
+      "seo": {
+        "primary_keyword": "f1",
+        "short_tail": [
+          "Taylor Swift Crashes Dakota",
+          "Taylor Swift Crashes Dakota news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "f1",
+          "f1 tv",
+          "पेंशन",
+          "महागाई भत्ता"
+        ],
+        "long_tail": [
+          "Taylor Swift Crashes Dakota latest news October 2026",
+          "Taylor Swift Crashes Dakota entertainment update 2026",
+          "Taylor Swift Crashes Dakota news 2026-10-04",
+          "latest entertainment news about Taylor Swift Crashes Dakota",
+          "taylor swift crashes dakota taylor swift latest update",
+          "The Hollywood Reporter Taylor Swift Crashes Dakota entertainment",
+          "latest news about Taylor Swift Crashes Dakota October 2026",
+          "Taylor Swift Crashes Dakota entertainment news 2026-10-04",
+          "what happened with Taylor Swift Crashes Dakota"
+        ],
+        "trend_keywords": [
+          "f1",
+          "f1 tv",
+          "पेंशन",
+          "महागाई भत्ता"
+        ],
+        "entity_keywords": [
+          "Taylor Swift Crashes Dakota",
+          "taylor",
+          "swift",
+          "crashes",
+          "dakota"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-04",
+          "Taylor Swift Crashes Dakota 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter Taylor Swift Crashes Dakota",
+          "hollywoodreporter.com Taylor Swift Crashes Dakota",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "Taylor Swift Crashes Dakota Johnson’s ‘Saturday Night…",
+        "meta_description": "Taylor Swift Crashes Dakota: Entertainment update reported by The Hollywood Reporter on 2026-10-04. See verified context, publication time and the original…",
+        "keywords": [
+          "f1",
+          "Taylor Swift Crashes Dakota",
+          "Taylor Swift Crashes Dakota news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "f1 tv",
+          "पेंशन",
+          "महागाई भत्ता",
+          "Taylor Swift Crashes Dakota latest news October 2026",
+          "Taylor Swift Crashes Dakota entertainment update 2026",
+          "Taylor Swift Crashes Dakota news 2026-10-04",
+          "latest entertainment news about Taylor Swift Crashes Dakota",
+          "taylor swift crashes dakota taylor swift latest update",
+          "The Hollywood Reporter Taylor Swift Crashes Dakota entertainment",
+          "latest news about Taylor Swift Crashes Dakota October 2026",
+          "Taylor Swift Crashes Dakota entertainment news 2026-10-04",
+          "what happened with Taylor Swift Crashes Dakota",
+          "taylor",
+          "swift",
+          "crashes",
+          "dakota",
+          "October 2026",
+          "2026-10-04",
+          "Taylor Swift Crashes Dakota 2026",
+          "The Hollywood Reporter Taylor Swift Crashes Dakota",
+          "hollywoodreporter.com Taylor Swift Crashes Dakota",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-04T09:16:36.693Z"
+      }
+    },
     {
       "id": "12d1a96c",
       "title": "The Celebrity Traitors connections that might surprise you",
@@ -434,6 +707,71 @@
       }
     },
     {
+      "id": "dfaf5bd1",
+      "title": "US father and son arrested after 'gas station heroin' deaths",
+      "url": "https://www.bbc.co.uk/news/articles/c6qjnlk4r2jjo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "published_at": "2026-10-03T22:39:06.000Z",
+      "discovered_at": "2026-10-04T09:16:36.693Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-03. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/7f8d/live/c8fc2220-bf72-11f1-9223-5724758dc624.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/us-father-and-son-arrested-after-gas-station-heroin-deaths-dfaf5b/",
+      "landing_url": "https://matchapp.tv/?news=dfaf5bd1#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-03",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "father",
+          "son",
+          "arrested",
+          "after",
+          "gas",
+          "station"
+        ],
+        "long_tail": [
+          "US father and son arrested after 'gas station heroin' deaths 2026-10-03",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "father",
+          "son",
+          "arrested",
+          "after",
+          "gas",
+          "station"
+        ],
+        "freshness_keywords": [
+          "2026-10-03"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "US father and son arrested after 'gas station heroin'…",
+        "meta_description": "World report published by BBC World on 2026-10-03. Open the original report for full context.",
+        "keywords": [
+          "world news",
+          "global headlines",
+          "father",
+          "son",
+          "arrested",
+          "after",
+          "gas",
+          "station",
+          "2026-10-03",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-04T09:16:36.693Z"
+      }
+    },
+    {
       "id": "08445d8a",
       "title": "Florence Pugh on How Zoe Kazan ‘East of Eden’ Collaboration Helped Boost Her Confidence",
       "url": "https://www.hollywoodreporter.com/tv/tv-features/florence-pugh-east-of-eden-zoe-kazan-boosted-confidence-1236721680/",
@@ -733,111 +1071,6 @@
           "G1 joao bosco all star"
         ],
         "seo_generated_at": "2026-10-03T17:34:31.371Z"
-      }
-    },
-    {
-      "id": "a83eab53",
-      "title": "Zach Bryan Wears ‘Free Palestine’ Shirt During Concert at Robert Kraft’s Gillette Stadium",
-      "url": "https://www.hollywoodreporter.com/music/music-news/zach-bryan-free-palestine-shirt-concert-gillette-stadium-1236721554/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "published_at": "2026-10-03T15:01:25.000Z",
-      "discovered_at": "2026-10-03T15:09:02.744Z",
-      "event_type": "Music",
-      "category": "entertainment",
-      "person": "Zach Bryan Wears",
-      "description": "Zach Bryan Wears: music headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/GettyImages-2270938577.jpg?w=1296&h=730&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/zach-bryan-wears-free-palestine-shirt-during-concert-at-robert-kraft-s-gillette--a83eab/",
-      "landing_url": "https://matchapp.tv/?news=a83eab53#latest-news",
-      "seo": {
-        "primary_keyword": "ge tv",
-        "short_tail": [
-          "Zach Bryan Wears",
-          "Zach Bryan Wears news",
-          "music",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "ge tv",
-          "షోయబ్ అక్తర్",
-          "மு. க. ஸ்டாலின்",
-          "കേരള"
-        ],
-        "long_tail": [
-          "Zach Bryan Wears latest news October 2026",
-          "Zach Bryan Wears music update 2026",
-          "Zach Bryan Wears news 2026-10-03",
-          "latest music news about Zach Bryan Wears",
-          "zach bryan wears zach bryan wears latest update",
-          "The Hollywood Reporter Zach Bryan Wears music",
-          "latest news about Zach Bryan Wears October 2026",
-          "Zach Bryan Wears entertainment news 2026-10-03",
-          "what happened with Zach Bryan Wears"
-        ],
-        "trend_keywords": [
-          "ge tv",
-          "షోయబ్ అక్తర్",
-          "மு. க. ஸ்டாலின்",
-          "കേരള"
-        ],
-        "entity_keywords": [
-          "Zach Bryan Wears",
-          "zach",
-          "bryan",
-          "wears",
-          "free",
-          "palestine"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-03",
-          "Zach Bryan Wears 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter Zach Bryan Wears",
-          "hollywoodreporter.com Zach Bryan Wears",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "Zach Bryan Wears ‘Free Palestine’ Shirt During Concert at…",
-        "meta_description": "Zach Bryan Wears: Music update reported by The Hollywood Reporter on 2026-10-03. See verified context, publication time and the original source via MatchApp…",
-        "keywords": [
-          "ge tv",
-          "Zach Bryan Wears",
-          "Zach Bryan Wears news",
-          "music",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "షోయబ్ అక్తర్",
-          "மு. க. ஸ்டாலின்",
-          "കേരള",
-          "Zach Bryan Wears latest news October 2026",
-          "Zach Bryan Wears music update 2026",
-          "Zach Bryan Wears news 2026-10-03",
-          "latest music news about Zach Bryan Wears",
-          "zach bryan wears zach bryan wears latest update",
-          "The Hollywood Reporter Zach Bryan Wears music",
-          "latest news about Zach Bryan Wears October 2026",
-          "Zach Bryan Wears entertainment news 2026-10-03",
-          "what happened with Zach Bryan Wears",
-          "zach",
-          "bryan",
-          "wears",
-          "free",
-          "palestine",
-          "October 2026",
-          "2026-10-03",
-          "Zach Bryan Wears 2026",
-          "The Hollywood Reporter Zach Bryan Wears",
-          "hollywoodreporter.com Zach Bryan Wears",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-03T15:09:02.744Z"
       }
     },
     {
@@ -1391,71 +1624,6 @@
           "there",
           "atlantic",
           "hurricanes",
-          "2026-10-02",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-03T00:42:17.937Z"
-      }
-    },
-    {
-      "id": "03c8f031",
-      "title": "US road rage killer's sentence quashed because AI video of victim was shown in court",
-      "url": "https://www.bbc.co.uk/news/articles/cwgkvygg5nzvo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "published_at": "2026-10-02T23:06:00.000Z",
-      "discovered_at": "2026-10-03T00:42:17.937Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-02. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/e47c/live/3978fa60-beaf-11f1-b48e-15cf4ddc906e.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/us-road-rage-killer-s-sentence-quashed-because-ai-video-of-victim-was-shown-in-c-03c8f0/",
-      "landing_url": "https://matchapp.tv/?news=03c8f031#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-02",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "road",
-          "rage",
-          "killer",
-          "sentence",
-          "quashed",
-          "because"
-        ],
-        "long_tail": [
-          "US road rage killer's sentence quashed because AI video of victim was shown in court 2026-10-02",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "road",
-          "rage",
-          "killer",
-          "sentence",
-          "quashed",
-          "because"
-        ],
-        "freshness_keywords": [
-          "2026-10-02"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "US road rage killer's sentence quashed because AI video of…",
-        "meta_description": "World report published by BBC World on 2026-10-02. Open the original report for full context.",
-        "keywords": [
-          "world news",
-          "global headlines",
-          "road",
-          "rage",
-          "killer",
-          "sentence",
-          "quashed",
-          "because",
           "2026-10-02",
           "BBC World"
         ],
@@ -2525,7 +2693,7 @@
       "id": "ec99cede",
       "title": "OpenAI fires workers for 'mishandling sensitive information'",
       "url": "https://www.bbc.co.uk/news/articles/c6y9z9r4ejzwo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
+      "source": "BBC Technology",
       "source_domain": "bbc.co.uk",
       "source_home": "https://www.bbc.co.uk",
       "country": "GLOBAL",
@@ -2534,7 +2702,7 @@
       "event_type": "Entertainment",
       "category": "world",
       "person": "",
-      "description": "World news reported by BBC World on 2026-10-02. MatchApp links to the original report for its complete context and ongoing updates.",
+      "description": "World news reported by BBC Technology on 2026-10-02. MatchApp links to the original report for its complete context and ongoing updates.",
       "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/136d/live/561b92b0-bdf9-11f1-a76b-bdcdab65a1b7.jpg",
       "matchapp_url": "https://matchapp.tv/news/articles/openai-fires-workers-for-mishandling-sensitive-information-ec99ce/",
       "landing_url": "https://matchapp.tv/?news=ec99cede#latest-news",
@@ -2691,114 +2859,6 @@
           "2026-10-02",
           "outubro 2026",
           "sangue suor ruptura elenco 2026"
-        ],
-        "seo_generated_at": "2026-10-02T08:57:30.447Z"
-      }
-    },
-    {
-      "id": "7c3da9d0",
-      "title": "Pabllo Vittar mira mercado internacional em disco frenético, mas sem o 'molho' da cantora",
-      "url": "https://g1.globo.com/pop-arte/musica/noticia/2026/10/02/pabllo-vittar-mira-mercado-internacional-em-disco-frenetico-mas-sem-o-molho-da-cantora.ghtml",
-      "source": "G1",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "BR",
-      "published_at": "2026-10-02T07:00:00.000Z",
-      "discovered_at": "2026-10-02T08:57:30.447Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "Pabllo Vittar",
-      "description": "Pabllo Vittar: entertainment headline reported by G1. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://s2-g1.glbimg.com/EJRQVvGuCCH7gkXq1yl1jatMDQA=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/H/o/dCoGd5SqKWfXyw65AEyA/pabllolost.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/pabllo-vittar-mira-mercado-internacional-em-disco-frenetico-mas-sem-o-molho-da-c-7c3da9/",
-      "landing_url": "https://matchapp.tv/?news=7c3da9d0#latest-news",
-      "seo": {
-        "primary_keyword": "मच्छर",
-        "short_tail": [
-          "Pabllo Vittar",
-          "Pabllo Vittar news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "मच्छर",
-          "अभिजीत दीपके",
-          "याचिका",
-          "உதயநிதி ஸ்டாலின்"
-        ],
-        "long_tail": [
-          "Pabllo Vittar latest news October 2026",
-          "Pabllo Vittar entertainment update 2026",
-          "Pabllo Vittar news 2026-10-02",
-          "latest entertainment news about Pabllo Vittar",
-          "pabllo vittar pabllo vittar mira mercado latest update",
-          "G1 Pabllo Vittar entertainment",
-          "últimas notícias sobre Pabllo Vittar outubro 2026",
-          "Pabllo Vittar notícia de 2026-10-02",
-          "o que aconteceu com Pabllo Vittar"
-        ],
-        "trend_keywords": [
-          "मच्छर",
-          "अभिजीत दीपके",
-          "याचिका",
-          "உதயநிதி ஸ்டாலின்"
-        ],
-        "entity_keywords": [
-          "Pabllo Vittar",
-          "pabllo",
-          "vittar",
-          "mira",
-          "mercado",
-          "internacional",
-          "disco"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-02",
-          "outubro 2026",
-          "Pabllo Vittar 2026"
-        ],
-        "source_keywords": [
-          "G1 Pabllo Vittar",
-          "g1.globo.com Pabllo Vittar",
-          "G1 entertainment news"
-        ],
-        "meta_title": "Pabllo Vittar mira mercado internacional em disco…",
-        "meta_description": "Pabllo Vittar: Entertainment update reported by G1 on 2026-10-02. See verified context, publication time and the original source via MatchApp TV.",
-        "keywords": [
-          "मच्छर",
-          "Pabllo Vittar",
-          "Pabllo Vittar news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "अभिजीत दीपके",
-          "याचिका",
-          "உதயநிதி ஸ்டாலின்",
-          "Pabllo Vittar latest news October 2026",
-          "Pabllo Vittar entertainment update 2026",
-          "Pabllo Vittar news 2026-10-02",
-          "latest entertainment news about Pabllo Vittar",
-          "pabllo vittar pabllo vittar mira mercado latest update",
-          "G1 Pabllo Vittar entertainment",
-          "últimas notícias sobre Pabllo Vittar outubro 2026",
-          "Pabllo Vittar notícia de 2026-10-02",
-          "o que aconteceu com Pabllo Vittar",
-          "pabllo",
-          "vittar",
-          "mira",
-          "mercado",
-          "internacional",
-          "disco",
-          "October 2026",
-          "2026-10-02",
-          "outubro 2026",
-          "Pabllo Vittar 2026",
-          "G1 Pabllo Vittar",
-          "g1.globo.com Pabllo Vittar"
         ],
         "seo_generated_at": "2026-10-02T08:57:30.447Z"
       }
@@ -3174,65 +3234,6 @@
           "BBC World"
         ],
         "seo_generated_at": "2026-10-01T02:09:51.445Z"
-      }
-    },
-    {
-      "id": "b63e79db",
-      "title": "The AI telling farmers when to harvest",
-      "url": "https://www.bbc.co.uk/news/articles/cgk53dkmyxko?at_medium=RSS&at_campaign=rss",
-      "source": "BBC Technology",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "published_at": "2026-09-30T23:02:21.000Z",
-      "discovered_at": "2026-09-30T23:11:50.261Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "The AI",
-      "description": "World news reported by BBC Technology on 2026-09-30. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/0645/live/cb36dd30-bd80-11f1-bc2e-018d645d8d21.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/the-ai-telling-farmers-when-to-harvest-b63e79/",
-      "landing_url": "https://matchapp.tv/?news=b63e79db#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-09-30",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "telling",
-          "farmers",
-          "when",
-          "harvest"
-        ],
-        "long_tail": [
-          "The AI telling farmers when to harvest 2026-09-30",
-          "world news September 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "telling",
-          "farmers",
-          "when",
-          "harvest"
-        ],
-        "freshness_keywords": [
-          "2026-09-30"
-        ],
-        "source_keywords": [
-          "BBC Technology"
-        ],
-        "meta_title": "The AI telling farmers when to harvest | World News |…",
-        "meta_description": "World report published by BBC Technology on 2026-09-30. Open the original report for full context.",
-        "keywords": [
-          "world news",
-          "global headlines",
-          "telling",
-          "farmers",
-          "when",
-          "harvest",
-          "2026-09-30",
-          "BBC Technology"
-        ],
-        "seo_generated_at": "2026-09-30T23:11:50.261Z"
       }
     }
   ]
