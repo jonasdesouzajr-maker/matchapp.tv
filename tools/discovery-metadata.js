@@ -34,6 +34,9 @@ page('together.html', 'Match Together: What to Watch as a Couple | MatchApp Ai',
 page('platforms/netflix/index.html', 'What to Watch on Netflix by Mood | MatchApp Ai',
   'Explore curated Netflix movies and series, then ask AI for a match by mood and genre. Check viewing options for your country before streaming.',
   'what to watch on Netflix, Netflix movie recommendations, Netflix series recommendations, Netflix recommendations by mood, o que assistir na Netflix');
+page('platforms/plus-sbt/index.html', '+SBT: Catálogo, Novelas, Séries e Filmes Grátis | MatchApp Ai',
+  'Explore o catálogo atual do +SBT com novelas, séries, animes, infantis, programas e filmes grátis. Abra títulos no streaming oficial e descubra o que assistir.',
+  '+SBT, catálogo +SBT, SBT streaming, streaming grátis Brasil, onde assistir SBT online, novelas SBT online, séries +SBT, filmes +SBT, desenhos +SBT, anime +SBT, assistir +SBT grátis, o que assistir no +SBT, catálogo de novelas +SBT, onde assistir A Usurpadora online, onde assistir Chiquititas 2013, A Caverna Encantada streaming, Doctor Who +SBT, Kamisama Kiss +SBT, Guerreiras Mágicas de Rayearth +SBT, Silvio Santos streaming, Geração Chiquititas +SBT');
 page('platforms/youtube/index.html', 'YouTube Channels & Videos to Watch | MatchApp Ai',
   'Discover curated YouTube creators and videos across entertainment, music and more. Explore channels and ask AI for a recommendation by topic.',
   'what to watch on YouTube, YouTube creator discovery, YouTube channel recommendations, music videos, video podcasts, canais do YouTube');

@@ -124,6 +124,7 @@ function main() {
 
     const events= readList('event-urls.json').map(loc => ({loc,freq:'weekly',pri:'0.7'}));
     const roku  = readList('roku-urls.json').map(loc => ({loc,freq:'weekly',pri:'0.7'}));
+    const plusSbt = readList('plus-sbt-urls.json').map(loc => ({loc,freq:'weekly',pri:'0.8'}));
 
     const newsMeta = readObject('news-sitemap-meta.json');
     const news  = newsUrlsFromDisk().map(loc => ({
@@ -135,7 +136,7 @@ function main() {
 
     const awareness = readList('awareness-urls.json').map(loc => ({loc,freq:'weekly',pri:'0.6'}));
 
-    const all = [...CORE, ...seo, ...watch, ...kids, ...events, ...roku, ...news, ...awareness];
+    const all = [...CORE, ...seo, ...watch, ...kids, ...events, ...roku, ...plusSbt, ...news, ...awareness];
     const seen = new Set();
     const unique = all.filter(u => (seen.has(u.loc) ? false : seen.add(u.loc)));
 

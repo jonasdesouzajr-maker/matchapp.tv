@@ -4,7 +4,9 @@ const HOSTS = Object.freeze({
   netflix: ['netflix.com'], prime: ['primevideo.com', 'amazon.com', 'amazon.com.br', 'amazon.co.uk', 'amazon.de', 'amazon.fr', 'amazon.it', 'amazon.es'],
   disney: ['disneyplus.com'], hbo: ['max.com', 'hbomax.com'], max: ['max.com', 'hbomax.com'],
   hulu: ['hulu.com'], apple: ['tv.apple.com'], paramount: ['paramountplus.com'],
-  peacock: ['peacocktv.com'], globoplay: ['globoplay.globo.com'], crunchyroll: ['crunchyroll.com'],
+  peacock: ['peacocktv.com'], globoplay: ['globoplay.globo.com'],
+  sbt: ['mais.sbt.com.br'], 'plus-sbt': ['mais.sbt.com.br'], plussbt: ['mais.sbt.com.br'],
+  crunchyroll: ['crunchyroll.com'],
   mubi: ['mubi.com'], tubi: ['tubitv.com'], roku: ['therokuchannel.roku.com', 'roku.com'],
   youtube: ['youtube.com', 'youtu.be'], itvx: ['itv.com'], pluto: ['pluto.tv']
 });

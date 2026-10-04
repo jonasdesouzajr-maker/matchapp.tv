@@ -329,6 +329,7 @@ function platformFallbackUrl(platform, title) {
         "Max": t => `https://www.max.com/search?q=${encodeURIComponent(t)}`,
         "Apple TV+": t => `https://tv.apple.com/search?term=${encodeURIComponent(t)}`,
         "Globoplay": t => `https://globoplay.globo.com/busca/?q=${encodeURIComponent(t)}`,
+        "+SBT": () => "https://mais.sbt.com.br/search",
         "Crunchyroll": t => `https://www.crunchyroll.com/search?q=${encodeURIComponent(t)}`,
         "Viki": t => `https://www.viki.com/search?q=${encodeURIComponent(t)}`,
         "Spotify": t => `https://open.spotify.com/search/${encodeURIComponent(t)}`,

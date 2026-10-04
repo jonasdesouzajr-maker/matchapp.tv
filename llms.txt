@@ -12,6 +12,7 @@ MatchApp recommends movies, TV series, K-drama, anime, novelas, vertical micro-d
 - Where to watch by country: https://matchapp.tv/where-to-watch/
 - Resident Evil (2026) viewing guide: https://matchapp.tv/where-to-watch/resident-evil-2026/
 - The Roku Channel / FAST TV: https://matchapp.tv/platforms/roku-channel/
+- +SBT / free Brazilian streaming catalog: https://matchapp.tv/platforms/plus-sbt/
 - Live events (Asian Games, F1 Baku, LoL Worlds): https://matchapp.tv/events-archive.html
 - Pricing (VIP, Extra Matches, Ask AI credits): https://matchapp.tv/pricing/pricing.html
 - About: https://matchapp.tv/about.html
