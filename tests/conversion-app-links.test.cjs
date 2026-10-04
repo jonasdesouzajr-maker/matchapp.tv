@@ -18,6 +18,7 @@ test('adult Android currently routes canonical matching, pricing and profile lin
  const activity=read('android-studio/app/src/main/java/com/jonas/papercup/MainActivity.kt');
  assert.match(manifest,/android:autoVerify="true"/);
  assert.match(manifest,/android:scheme="https" android:host="matchapp\.tv"/);
+ assert.doesNotMatch(manifest,/www\.matchapp\.tv/);
  assert.match(activity,/return data\.buildUpon\(\)\.scheme\("https"\)\.build\(\)\.toString\(\)/);
  assert.match(activity,/isKidsUri\(data\)/);
 });
