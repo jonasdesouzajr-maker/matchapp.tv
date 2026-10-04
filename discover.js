@@ -901,7 +901,7 @@ let DISCOVER_ITEMS = [];
 // could still trigger a live search that came back with an unrelated
 // result. Checking the platform Gemini itself returned is a reliable,
 // already-available signal — no guesswork needed.
-const HIGH_RISK_PLATFORMS_DISCOVER = new Set(['globoplay', 'reelshort', 'dramabox', 'shortmax', 'pure flix', 'angel studios']);
+const HIGH_RISK_PLATFORMS_DISCOVER = new Set(['globoplay', '+sbt', 'sbt+', 'reelshort', 'dramabox', 'shortmax', 'pure flix', 'angel studios']);
 
 function discoverFallbackPoster(item) {
     if (!item || !item.title) return '';
