@@ -1,21 +1,21 @@
 {
-  "version": "2026.09.30.1",
-  "date": "2026-09-30",
+  "version": "2026.10.04.1",
+  "date": "2026-10-04",
   "functional": true,
   "notes": {
-    "en": "Fixed stuck installation screens. Installed apps now check for updates and offer device uninstall instructions with a return Home option.",
-    "pt-BR": "Corrigidas telas de instalação travadas. Apps instalados verificam atualizações e oferecem instruções para desinstalar e voltar ao início.",
-    "es": "Corregidas pantallas de instalación bloqueadas. Las apps instaladas comprueban actualizaciones y ofrecen instrucciones para desinstalar y volver al inicio.",
-    "fr": "Installation débloquée, vérification des mises à jour et instructions de désinstallation avec retour à l’accueil.",
-    "de": "Festhängende Installation behoben. Updateprüfung und Deinstallationsanleitung mit Rückkehr zur Startseite.",
-    "it": "Risolta l’installazione bloccata. Controllo aggiornamenti e istruzioni di disinstallazione con ritorno alla Home.",
-    "tr": "Takılan kurulum ekranı düzeltildi. Güncelleme kontrolü ve ana sayfaya dönüş ile kaldırma talimatları.",
-    "ru": "Исправлено зависание установки. Проверка обновлений и инструкции по удалению с возвратом на главную.",
-    "ar": "تم إصلاح توقف شاشة التثبيت وإضافة التحقق من التحديثات وتعليمات إزالة التطبيق والعودة للرئيسية.",
-    "hi": "अटकी इंस्टॉलेशन स्क्रीन ठीक की। अपडेट जाँच और ऐप हटाने के निर्देश, होम पर लौटने के विकल्प के साथ।",
-    "id": "Layar pemasangan macet diperbaiki. Pemeriksaan pembaruan dan petunjuk penghapusan dengan opsi kembali ke beranda.",
-    "ja": "インストール画面の停止を修正。更新確認と削除手順、ホームへ戻る選択肢を追加。",
-    "ko": "멈춘 설치 화면을 수정했습니다. 업데이트 확인, 제거 안내 및 홈으로 돌아가기 옵션을 제공합니다.",
-    "zh": "修复安装界面卡住的问题。已安装应用可检查更新，并查看卸载步骤或返回首页。"
+    "en": "Added +SBT as a Brazil streaming source with verified official title links, catalog discovery and richer search metadata.",
+    "pt-BR": "Adicionado o +SBT como fonte de streaming no Brasil, com títulos verificados, links oficiais, descoberta de catálogo e metadados de busca mais ricos.",
+    "es": "Se añadió +SBT como fuente de streaming en Brasil, con títulos verificados, enlaces oficiales, descubrimiento de catálogo y metadatos de búsqueda enriquecidos.",
+    "fr": "+SBT est ajouté comme source de streaming au Brésil avec titres vérifiés, liens officiels, découverte du catalogue et métadonnées de recherche enrichies.",
+    "de": "+SBT wurde als brasilianische Streaming-Quelle mit verifizierten Titeln, offiziellen Links, Katalogsuche und erweiterten Suchmetadaten hinzugefügt.",
+    "it": "+SBT è stato aggiunto come fonte streaming per il Brasile con titoli verificati, link ufficiali, scoperta del catalogo e metadati di ricerca arricchiti.",
+    "tr": "+SBT, doğrulanmış başlıklar, resmi bağlantılar, katalog keşfi ve zengin arama meta verileriyle Brezilya yayın kaynağı olarak eklendi.",
+    "ru": "+SBT добавлен как источник стриминга в Бразилии: проверенные тайтлы, официальные ссылки, каталог и расширенные поисковые метаданные.",
+    "ar": "تمت إضافة +SBT كمصدر بث في البرازيل مع عناوين موثقة وروابط رسمية واكتشاف للكتالوج وبيانات بحث وصفية أغنى.",
+    "hi": "+SBT को ब्राज़ील स्ट्रीमिंग स्रोत के रूप में जोड़ा गया है, जिसमें सत्यापित शीर्षक, आधिकारिक लिंक, कैटलॉग खोज और समृद्ध सर्च मेटाडेटा शामिल हैं।",
+    "id": "+SBT ditambahkan sebagai sumber streaming Brasil dengan judul terverifikasi, tautan resmi, penemuan katalog, dan metadata pencarian yang lebih kaya.",
+    "ja": "+SBTをブラジル向け配信ソースとして追加し、検証済み作品、公式リンク、カタログ探索、検索メタデータを強化しました。",
+    "ko": "+SBT를 브라질 스트리밍 소스로 추가하고 검증된 타이틀, 공식 링크, 카탈로그 탐색 및 향상된 검색 메타데이터를 제공했습니다.",
+    "zh": "已将 +SBT 添加为巴西流媒体来源，并加入经过验证的片名、官方链接、目录发现和更丰富的搜索元数据。"
   }
 }
