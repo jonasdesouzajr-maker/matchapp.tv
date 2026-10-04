@@ -93,6 +93,53 @@
       }
     },
     {
+      "id": "Lufa9QAFFeY",
+      "artist": "ROSÉ",
+      "title": "new trick",
+      "album": "",
+      "publishedAt": "2026-09-17T23:00:06Z",
+      "durationSeconds": 182,
+      "director": "Dave Meyers",
+      "cast": [],
+      "channel": "ROSÉ",
+      "channelUrl": "https://www.youtube.com/@roses_are_rosie",
+      "source": "https://www.youtube.com/watch?v=Lufa9QAFFeY",
+      "creditsSource": "https://www.youtube.com/watch?v=Lufa9QAFFeY",
+      "url": "https://www.youtube.com/watch?v=Lufa9QAFFeY",
+      "thumbnail": "https://i.ytimg.com/vi/Lufa9QAFFeY/hqdefault.jpg",
+      "poster": "/assets/music-videos/Lufa9QAFFeY.jpg",
+      "verifiedAt": "2026-10-04",
+      "viewCount": 50148189,
+      "viewCountCheckedAt": "2026-10-04",
+      "keywords": [
+        "ROSÉ",
+        "new trick",
+        "official music video",
+        "YouTube music video",
+        "2026 music releases",
+        "Dave Meyers",
+        "Shot on iPhone 18 Pro"
+      ],
+      "seo": {
+        "title": "ROSÉ — new trick official music video | MatchApp Ai",
+        "description": "Official ROSÉ music video for “new trick”, released on YouTube 2026-09-17 with 50,148,189 verified views at the latest daily check.",
+        "keywords": [
+          "ROSÉ",
+          "new trick",
+          "official music video",
+          "YouTube music video",
+          "2026 music releases",
+          "Dave Meyers",
+          "Shot on iPhone 18 Pro",
+          "ROSÉ new trick official music video",
+          "new ROSÉ music video",
+          "2026 music video releases",
+          "latest official music videos"
+        ],
+        "canonicalQuery": "ROSÉ new trick official music video"
+      }
+    },
+    {
       "id": "XwCWKSO0F8s",
       "artist": "Taylor Swift",
       "title": "I Knew It, I Knew You (Piano Version)",
@@ -402,6 +449,7 @@
   "featuredIds": [
     "1l7wbZmdtys",
     "mw3kSNIxjqo",
+    "Lufa9QAFFeY",
     "afSgBNwmZrQ",
     "fcnDmrtj6Sk",
     "XXIX2WnfbpE",
