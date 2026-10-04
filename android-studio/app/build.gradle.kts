@@ -11,8 +11,8 @@ android {
         applicationId = "com.jonas.papercup"
         minSdk = 24
         targetSdk = 36
-        versionCode = 37
-        versionName = "1.1.35"
+        versionCode = 40
+        versionName = "1.1.36"
         // AdMob credentials staged; SDK disabled until real AdMob App ID is supplied.
         buildConfigField("String", "ADMOB_BANNER_ID", "\"ca-app-pub-9541435081010948/4843348278\"")
         buildConfigField("String", "ADMOB_REWARDED_ID", "\"\"")
