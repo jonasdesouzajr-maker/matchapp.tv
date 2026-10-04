@@ -11,6 +11,7 @@
     'Prime Video': { cats: ['movie','series','limited series','documentary','stand-up comedy special','reality show','anime','kids','Bollywood','European cinema','Nollywood','Gospel & Faith'] },
     'Disney+': { cats: ['movie','series','limited series','documentary','kids','anime'] },
     Max: { cats: ['movie','series','limited series','documentary','stand-up comedy special','reality show','kids','anime'] },
+    '+SBT': { cats: ['novela brasileira','telenovela','series','movie','documentary','reality show','kids','anime'] },
     Spotify: { cats: ['podcast','Spotify playlist','Spotify single','music album','audiobook','Gospel & Faith'] },
     'Apple Music': { cats: ['Spotify single','music album','Spotify playlist','Gospel & Faith'] },
     'Apple Podcasts': { cats: ['podcast','audiobook'] },
