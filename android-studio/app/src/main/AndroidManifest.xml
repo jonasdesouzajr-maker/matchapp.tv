@@ -58,7 +58,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data android:scheme="https" android:host="matchapp.tv" />
-                <data android:scheme="https" android:host="www.matchapp.tv" />
             </intent-filter>
         </activity>
     </application>
