@@ -57,6 +57,10 @@ test('browser install is real, consent-based, secure and localized',()=>{
   assert.match(js,/MatchApp Ai/);
   assert.match(js,/Add to Home Screen/);
   assert.match(js,/MatchAppTVAndroid/);
+  assert.match(js,/MATCHAPP_PLAY_PACKAGE = 'com\.jonas\.papercup'/);
+  assert.match(js,/MATCHAPP_PLAY_URL = 'https:\/\/play\.google\.com\/store\/apps\/details\?id='/);
+  assert.match(js,/platform\.isAndroid && !platform\.isNativeShell/);
+  assert.match(js,/intent:\/\/details\?id=/);
   assert.match(js,/navigator\.serviceWorker\.register\('\/sw\.js', \{ scope: '\/', updateViaCache: 'none' \}\)/);
   assert.match(state,/manifest-pt-br\.json/);
   assert.match(sw,/self\.addEventListener\('fetch', \(\) => \{\}\)/);
