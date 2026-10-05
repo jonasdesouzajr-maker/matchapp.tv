@@ -713,6 +713,34 @@ class MainActivity : AppCompatActivity() {
 
               document.querySelectorAll('ins.adsbygoogle,.ad-banner-container').forEach(function(el){ el.remove(); });
 
+              // Google Play policy guard: the Play-distributed Android app must never
+              // fall through to the website's Stripe checkout for digital goods.
+              // This guard is Android-only and will be replaced by the native Play
+              // purchase bridge once the Play catalog is activated.
+              if (!window.__matchAppAndroidBillingGuard) {
+                window.__matchAppAndroidBillingGuard = true;
+                document.addEventListener('click', function(e){
+                  var button = e.target && e.target.closest && e.target.closest(
+                    '#btn-ad_free,#btn-vip_monthly,#btn-vip_annual,#btn-business,' +
+                    '[data-match-pack],[data-credit-pack]'
+                  );
+                  if (!button) return;
+                  e.preventDefault();
+                  e.stopPropagation();
+                  if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+                  var key = button.id && button.id.indexOf('btn-') === 0
+                    ? button.id.slice(4)
+                    : (button.getAttribute('data-match-pack') || button.getAttribute('data-credit-pack') || '');
+                  var message = key === 'ad_free'
+                    ? 'MatchApp Ai for Android is already ad-free.'
+                    : 'Google Play purchases are being activated for this Android release. Please try again after the next Play update.';
+                  try {
+                    if (typeof window.showToast === 'function') window.showToast(message);
+                    else window.alert(message);
+                  } catch (_) {}
+                }, true);
+              }
+
               if (!window.__matchAppAndroidPremiumBound) {
                 window.__matchAppAndroidPremiumBound = true;
                 var bridge = window.MatchAppNativeExperience;

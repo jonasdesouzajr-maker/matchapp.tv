@@ -172,3 +172,18 @@ test('adult Android premium layer is native-only, tactile and reduced-motion saf
  assert.match(main,/prefers-reduced-motion:reduce/);
  assert.doesNotMatch(kids,/NativeExperienceBridge/);
 });
+
+
+test('adult Android is Play-Billing ready and cannot fall through to Stripe checkout',()=>{
+ const main=read('android-studio/app/src/main/java/com/jonas/papercup/MainActivity.kt');
+ const manifest=read('android-studio/app/src/main/AndroidManifest.xml');
+ const gradle=read('android-studio/app/build.gradle.kts');
+ const kidsManifest=read('android-studio/kidsapp/src/main/AndroidManifest.xml');
+ assert.match(manifest,/com\.android\.vending\.BILLING/);
+ assert.match(gradle,/com\.android\.billingclient:billing:9\.1\.0/);
+ assert.match(main,/__matchAppAndroidBillingGuard/);
+ assert.match(main,/must never[\s\S]*Stripe checkout for digital goods/);
+ assert.match(main,/#btn-vip_monthly,#btn-vip_annual,#btn-business/);
+ assert.match(main,/\[data-match-pack\],\[data-credit-pack\]/);
+ assert.doesNotMatch(kidsManifest,/com\.android\.vending\.BILLING/);
+});
