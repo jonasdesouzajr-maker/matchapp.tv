@@ -93,14 +93,17 @@ function installEvents(){
   });
   document.getElementById('kids-ask-form')?.addEventListener('submit',()=>{clearTimeout(listenTimer);listenTimer=0;setState('thinking')},true);
   document.addEventListener('matchapp:kids-ai-result',e=>{
+    if(e.detail?.voiceOrigin!==true){setState('idle');return}
     const text=String(e.detail?.speech||e.detail?.answer||e.detail?.title||'').trim();if(!text){setState('idle');return}
     setState('speaking');const full=(tr('asked',"Here's a safe idea.")+' '+text).trim();const ok=speak(full,()=>setState('idle'));if(!ok)setState('idle');
   });
   document.addEventListener('matchapp:kids-ai-error',e=>{
+    if(e.detail?.voiceOrigin!==true){setState('idle');return}
     const text=String(e.detail?.text||'').trim();if(!text){setState('idle');return}
     setState('speaking');const ok=speak(text,()=>setState('idle'));if(!ok)setState('idle');
   });
-  document.addEventListener('matchapp:kids-quota-empty',()=>{
+  document.addEventListener('matchapp:kids-quota-empty',e=>{
+    if(e.detail?.voiceOrigin!==true){setState('idle');return}
     setState('speaking');const ok=speak(tr('empty','Adventure power is empty. A grown-up can add more.'),()=>setState('idle'));if(!ok)setState('idle');
   });
   addEventListener('resize',placeStored,{passive:true});try{visualViewport?.addEventListener?.('resize',placeStored,{passive:true})}catch(_){}
