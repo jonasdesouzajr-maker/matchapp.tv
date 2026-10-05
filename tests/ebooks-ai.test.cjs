@@ -87,7 +87,7 @@ test('grown-up Android build is advanced for the E-books release',()=>{
  const gradle=read('android-studio/app/build.gradle.kts');
  const main=read('android-studio/app/src/main/java/com/jonas/papercup/MainActivity.kt');
  assert.match(gradle,/versionCode = 40/);
- assert.match(gradle,/versionName = "1\.1\.35"/);
+ assert.match(gradle,/versionName = "1\.1\.36"/);
  assert.match(main,/appBuild=40/);
- assert.match(main,/MatchAppAiAndroid\/1\.1\.35/);
+ assert.match(main,/MatchAppAiAndroid\/1\.1\.36/);
 });
