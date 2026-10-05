@@ -23,7 +23,7 @@ async function releaseItem(){
     if(state.preferences?.releases===false)return null;
     if(localStorage.getItem(releaseSeenKey(rel.version))==='1')return null;
     const lang=window.MATCH_LANG||'en';
-    return {id:'release:'+rel.version,kind:'system',title:'MatchApp '+rel.version+' is live',body:rel.notes[lang]||rel.notes.en,href:'/updates.html',createdAt:rel.date||new Date().toISOString(),localRelease:true,version:rel.version};
+    return {id:'release:'+rel.version,kind:'system',title:rel.title?.[lang]||rel.title?.en||('MatchApp '+rel.version+' is live'),body:rel.notes[lang]||rel.notes.en,href:String(rel.href||'/updates.html'),createdAt:rel.date||new Date().toISOString(),localRelease:true,version:rel.version};
   }catch(_){return null;}
 }
 function iconSvg(){
