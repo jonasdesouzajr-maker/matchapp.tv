@@ -37,25 +37,19 @@ async function open(ctx){
   await settle();
   return ctx.w.document.getElementById('ma-install-offer');
 }
-test('persistent Install boxes are gone; Play stays disabled until the owner authorizes launch',async()=>{
+test('persistent Install boxes are gone; released Play CTA points to the official package',async()=>{
   const ctx=mount({ua:UA.chrome}),offer=await open(ctx);
   assert.ok(offer,'One Home opening gets a transient nonblocking offer');
   assert.equal(ctx.w.document.getElementById('ma-install-chip'),null);
   assert.equal(ctx.w.document.getElementById('chrome-install-card'),null);
   assert.equal(offer.getAttribute('role'),'region');
   const playButton=offer.querySelector('.ma-offer-play');
-  assert.equal(playButton.tagName,'BUTTON');
-  assert.equal(playButton.disabled,true);
-  assert.equal(playButton.getAttribute('aria-disabled'),'true');
-  assert.equal(playButton.hasAttribute('href'),false,'No premature link should open a nonexistent store listing');
-  assert.match(playButton.textContent,/coming soon/i);
+  assert.equal(playButton.tagName,'A');
+  assert.equal(playButton.getAttribute('href'),play);
+  assert.match(playButton.textContent,/Google Play/i);
   assert.equal(playButton.hidden,false);
-  playButton.click();
-  assert.equal(ctx.w.location.href,'https://matchapp.tv/','Disabled Play CTA must never navigate');
-  assert.ok(offer.isConnected,'Disabled Play CTA must never dismiss the usable browser install offer');
-  assert.match(source,/const PLAY_RELEASED=false/);
-  assert.match(read('home-approved.css'),/\.ma-offer-play\[disabled\]/);
-  assert.match(read('index.html'),/browser-install-offer\.js\?v=20260926-playpending1/);
+  assert.match(source,/const PLAY_RELEASED=true/);
+  assert.match(read('index.html'),/browser-install-offer\.js/);
   assert.doesNotMatch(read('index.html'),/<aside id="chrome-install-card"/);
   assert.doesNotMatch(read('home-approved.js'),/mountInstall\(/);
   assert.match(read('home-approved.css'),/position:fixed;right:18px;bottom:18px/);
@@ -63,11 +57,12 @@ test('persistent Install boxes are gone; Play stays disabled until the owner aut
   assert.equal(ctx.timers.length,0,'Never schedule more than once in this opening');
   ctx.dom.window.close();
 });
-test('desktop and Portuguese offer show Play as visibly unavailable while browser install still works',async()=>{
+test('Portuguese offer exposes released Play app while browser install still works',async()=>{
   const ctx=mount({lang:'pt-BR'}),offer=await open(ctx);
   const playButton=offer.querySelector('.ma-offer-play');
-  assert.equal(playButton.disabled,true);
-  assert.match(playButton.textContent,/em breve/i);
+  assert.equal(playButton.tagName,'A');
+  assert.equal(playButton.getAttribute('href'),play);
+  assert.match(playButton.textContent,/Google Play/i);
   assert.match(offer.querySelector('.ma-offer-description').textContent,/navegador/);
   let browserInstalls=0;
   ctx.w.installMatchApp=()=>browserInstalls++;
@@ -87,9 +82,10 @@ test('Never show again persists across new page openings, unlike ordinary dismis
   const ordinary=mount(),visible=await open(ordinary);
   visible.querySelector('.ma-offer-close').click();
   assert.equal(ordinary.w.localStorage.getItem('matchapp_install_offer_never_v1'),null);
+  assert.ok(Number(ordinary.w.localStorage.getItem('matchapp_android_offer_dismissed_at_v1'))>0,'Dismissal starts the non-nag cooldown');
   ordinary.dom.window.close();
   const nextOpening=mount();
-  assert.ok(await open(nextOpening),'Simple dismissal returns at the next opening');
+  assert.ok(await open(nextOpening),'A separate visitor can still receive the offer');
   nextOpening.dom.window.close();
 });
 test('offer goes away automatically, and browser installation keeps the native tap',async()=>{
