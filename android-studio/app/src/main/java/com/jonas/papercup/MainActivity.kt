@@ -33,6 +33,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.core.view.WindowCompat
@@ -94,14 +95,17 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        WindowCompat.setDecorFitsSystemWindows(window, true)
-        window.statusBarColor = ContextCompat.getColor(this, R.color.ink)
+        // Keep the native shell immersive, but never place the interactive WebView
+        // underneath a status bar, punch-hole camera, or display cutout.
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+        window.statusBarColor = Color.TRANSPARENT
         window.navigationBarColor = ContextCompat.getColor(this, R.color.ink)
 
         web = findViewById(R.id.web)
         refresh = findViewById(R.id.refresh)
         offline = findViewById(R.id.offline)
         fullscreenHost = findViewById(R.id.fullscreen)
+        applySafeInsets()
         findViewById<MaterialButton>(R.id.retry).setOnClickListener { retry() }
 
         CookieManager.getInstance().setAcceptCookie(true)
@@ -176,6 +180,19 @@ class MainActivity : AppCompatActivity() {
             splashKeep = false
             showOffline(true)
         }
+    }
+
+    private fun applySafeInsets() {
+        // The background remains edge-to-edge. Only normal adult-app content is
+        // inset below system bars/camera cutouts; fullscreen intro/video remains immersive.
+        ViewCompat.setOnApplyWindowInsetsListener(refresh) { view, insets ->
+            val safe = insets.getInsets(
+                WindowInsetsCompat.Type.statusBars() or WindowInsetsCompat.Type.displayCutout()
+            )
+            view.setPadding(view.paddingLeft, safe.top, view.paddingRight, view.paddingBottom)
+            insets
+        }
+        ViewCompat.requestApplyInsets(refresh)
     }
 
     override fun onNewIntent(intent: Intent) {
@@ -329,8 +346,9 @@ class MainActivity : AppCompatActivity() {
         findViewById<FrameLayout>(R.id.root)?.removeCallbacks(introDeadline)
         val host = introHost ?: return
         introHost = null
-        WindowCompat.setDecorFitsSystemWindows(window, true)
+        WindowCompat.setDecorFitsSystemWindows(window, false)
         WindowCompat.getInsetsController(window, window.decorView).show(WindowInsetsCompat.Type.systemBars())
+        ViewCompat.requestApplyInsets(refresh)
         try { introVideo?.stopPlayback() } catch (_: Exception) { }
         introVideo = null
         (host.parent as? ViewGroup)?.removeView(host)
