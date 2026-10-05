@@ -1,0 +1,24 @@
+{
+  "packageName": "com.jonas.papercup",
+  "appName": "MatchApp Ai",
+  "targetCategory": "ENTERTAINMENT",
+  "supportWebsite": "https://matchapp.tv/",
+  "privacyPolicy": "https://matchapp.tv/privacy.html",
+  "supportEmail": "support@matchapp.tv",
+  "defaultLocale": "en-US",
+  "priorityLocales": [
+    "en-US",
+    "pt-BR"
+  ],
+  "consoleActions": [
+    "Correct pt-BR localized app name from MatchApp iA to MatchApp Ai",
+    "Change app category from Books & Reference to Entertainment",
+    "Replace legacy Google Sites website with https://matchapp.tv/",
+    "Replace legacy Google Sites privacy policy with https://matchapp.tv/privacy.html",
+    "Use support@matchapp.tv as the public support email if verified for Play support",
+    "Publish the optimized en-US and pt-BR store listing copy in this directory",
+    "Review Play-suggested tags and keep at most five that directly match movies, TV and entertainment discovery",
+    "After baseline metadata is live, run a store listing experiment on short description or feature graphic before changing multiple visual variables",
+    "Create country-targeted custom store listings for Brazil, United States and Australia when the Console offers the feature"
+  ]
+}

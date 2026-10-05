@@ -1,4 +1,4 @@
-# MatchApp Ai adult app — Play Console release checklist
+# MatchApp Ai adult app â€” Play Console release checklist
 
 ## October 4, 2026 release-unblock checkpoint
 - Release candidate **1.1.36 (code 40)** targets **Android 16 / API 36** and removes the unverifiable redirected `www.matchapp.tv` host from `android:autoVerify`; the live apex `https://matchapp.tv/.well-known/assetlinks.json` is the canonical association.
@@ -43,3 +43,12 @@ The adult native launcher now plays the bundled 4.5-second silent intro while Ho
 The intro now fills the native display with proportional center-crop, hides system bars only during playback, and restores Home bars on every exit. Web/PWA playback fills the available viewport with object-fit:cover. The encoded asset is 1080x1920, upscaled from the supplied 720x1260 video; upscaling does not add source detail. Chrome controls its PWA cold-launch icon and OS bars; website code cannot remove that screen. Native transparent launch-icon resources already suppress the logo, but installed APKs need a signed native update. Code 37 remains an unpublished candidate; its Play publication was not performed here.
 
 H.264 is encoded at level 4.1 for wider hardware compatibility. Browsers without that H.264 profile receive the same 1080x1920 WebM video; the native bundle uses MP4.
+
+## October 5, 2026 Play Store presence source of truth
+
+- Repository listing metadata now lives under android-studio/play/store-listing/ for en-US and pt-BR.
+- The Play Console target category is Entertainment, matching the app's primary movies/TV discovery experience.
+- Public support targets should use https://matchapp.tv/, https://matchapp.tv/privacy.html and support@matchapp.tv instead of the legacy Google Sites property.
+- The pt-BR app name must remain exactly MatchApp Ai, never MatchApp iA.
+- Store listing metadata can be updated without changing or replacing the currently released AAB. AAB/release-track changes remain a separate, explicit release task.
+- Run tests/play-store-presence.test.cjs before future Play metadata releases.
