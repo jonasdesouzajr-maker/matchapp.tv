@@ -6,9 +6,10 @@ const path = require('path');
 const root = path.join(__dirname, '..');
 const read = rel => fs.readFileSync(path.join(root, rel), 'utf8');
 
-test('Android page never points to the unpublished Play listing', () => {
+test('Android page points only to the released official Play package', () => {
   const html = read('android/index.html');
-  assert.match(html, /Google Play — Coming Soon/);
+  assert.match(html, /play\.google\.com\/store\/apps\/details\?id=com\.jonas\.papercup/);
+  assert.doesNotMatch(html, /Google Play — Coming Soon/);
   assert.doesNotMatch(html, /play\.google\.com\/store\/apps\/details\?id=tv\.matchapp\.app/);
 });
 
