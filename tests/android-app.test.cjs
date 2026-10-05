@@ -166,6 +166,9 @@ test('adult Android premium layer is native-only, tactile and reduced-motion saf
  assert.match(main,/HapticFeedbackConstants\.REJECT/);
  assert.match(main,/matchapp:match-success/);
  assert.match(main,/matchapp:ai-thinking/);
+ assert.match(main,/MutationObserver/);
+ assert.match(main,/androidRevealed/);
+ assert.match(main,/matchapp:voice-start/);
  assert.match(main,/prefers-reduced-motion:reduce/);
  assert.doesNotMatch(kids,/NativeExperienceBridge/);
 });
