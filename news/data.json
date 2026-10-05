@@ -1,10 +1,282 @@
 {
-  "generated_at": "2026-10-05T01:13:39.650Z",
-  "feed_version": "8e576f11",
+  "generated_at": "2026-10-05T07:39:25.944Z",
+  "feed_version": "ca0e384d",
   "sports_updated_at": "2026-10-04T02:39:59.277Z",
   "source_policy": "direct-trusted-publisher-rss+google-trends-keyword-signals",
   "seo_policy": "per-story keyword snapshot at first discovery + source citation + stable archive",
   "items": [
+    {
+      "id": "15b939e1",
+      "title": "Trump unveils 'Super Intelligence Force' to oversee AI policy",
+      "url": "https://www.bbc.co.uk/news/articles/cqj6jenp26zyo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "published_at": "2026-10-05T06:15:29.000Z",
+      "discovered_at": "2026-10-05T07:39:25.944Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-05. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/9a97/live/e8568220-c056-11f1-ba75-170165fdb734.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/trump-unveils-super-intelligence-force-to-oversee-ai-policy-15b939/",
+      "landing_url": "https://matchapp.tv/?news=15b939e1#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-05",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "trump",
+          "unveils",
+          "super",
+          "intelligence",
+          "force",
+          "oversee"
+        ],
+        "long_tail": [
+          "Trump unveils 'Super Intelligence Force' to oversee AI policy 2026-10-05",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "trump",
+          "unveils",
+          "super",
+          "intelligence",
+          "force",
+          "oversee"
+        ],
+        "freshness_keywords": [
+          "2026-10-05"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Trump unveils 'Super Intelligence Force' to oversee AI…",
+        "meta_description": "World report published by BBC World on 2026-10-05. Open the original report for full context.",
+        "keywords": [
+          "world news",
+          "global headlines",
+          "trump",
+          "unveils",
+          "super",
+          "intelligence",
+          "force",
+          "oversee",
+          "2026-10-05",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-05T07:39:25.944Z"
+      }
+    },
+    {
+      "id": "ee8af84f",
+      "title": "Charity tea room may close despite Ludwig filming",
+      "url": "https://www.bbc.co.uk/news/articles/cq39mgmyr94do?at_medium=RSS&at_campaign=rss",
+      "source": "BBC",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GB",
+      "published_at": "2026-10-05T05:31:01.000Z",
+      "discovered_at": "2026-10-05T07:39:25.944Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "",
+      "description": "entertainment headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/d319/live/0aba8c50-bce0-11f1-afec-ebbb2634c4cd.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/charity-tea-room-may-close-despite-ludwig-filming-ee8af8/",
+      "landing_url": "https://matchapp.tv/?news=ee8af84f#latest-news",
+      "seo": {
+        "primary_keyword": "రంజీ ట్రోఫీ",
+        "short_tail": [
+          "charity tea room may",
+          "charity tea room may news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "రంజీ ట్రోఫీ",
+          "जीएसटी परिषद"
+        ],
+        "long_tail": [
+          "charity tea room may latest news October 2026",
+          "charity tea room may entertainment update 2026",
+          "charity tea room may news 2026-10-05",
+          "latest entertainment news about charity tea room may",
+          "charity tea room may close despite latest update",
+          "BBC charity tea room may entertainment",
+          "latest news about charity tea room may October 2026",
+          "charity tea room may entertainment news 2026-10-05",
+          "what happened with charity tea room may"
+        ],
+        "trend_keywords": [
+          "రంజీ ట్రోఫీ",
+          "जीएसटी परिषद"
+        ],
+        "entity_keywords": [
+          "charity",
+          "tea",
+          "room",
+          "may",
+          "close",
+          "despite",
+          "ludwig",
+          "filming"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-05",
+          "charity tea room may 2026"
+        ],
+        "source_keywords": [
+          "BBC charity tea room may",
+          "bbc.co.uk charity tea room may",
+          "BBC entertainment news"
+        ],
+        "meta_title": "Charity tea room may close despite Ludwig filming |…",
+        "meta_description": "Entertainment update reported by BBC on 2026-10-05. See verified context, publication time and the original source via MatchApp Ai.",
+        "keywords": [
+          "రంజీ ట్రోఫీ",
+          "charity tea room may",
+          "charity tea room may news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "जीएसटी परिषद",
+          "charity tea room may latest news October 2026",
+          "charity tea room may entertainment update 2026",
+          "charity tea room may news 2026-10-05",
+          "latest entertainment news about charity tea room may",
+          "charity tea room may close despite latest update",
+          "BBC charity tea room may entertainment",
+          "latest news about charity tea room may October 2026",
+          "charity tea room may entertainment news 2026-10-05",
+          "what happened with charity tea room may",
+          "charity",
+          "tea",
+          "room",
+          "may",
+          "close",
+          "despite",
+          "ludwig",
+          "filming",
+          "October 2026",
+          "2026-10-05",
+          "charity tea room may 2026",
+          "BBC charity tea room may",
+          "bbc.co.uk charity tea room may",
+          "BBC entertainment news"
+        ],
+        "seo_generated_at": "2026-10-05T07:39:25.944Z"
+      }
+    },
+    {
+      "id": "47af15af",
+      "title": "Maria Bethânia lança single com três músicas do show '60 anos de carreira'",
+      "url": "https://g1.globo.com/pop-arte/musica/blog/mauro-ferreira/post/2026/10/05/maria-bethania-lanca-single-com-tres-musicas-do-show-60-anos-de-carreira.ghtml",
+      "source": "G1",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "BR",
+      "published_at": "2026-10-05T03:02:00.000Z",
+      "discovered_at": "2026-10-05T07:39:25.944Z",
+      "event_type": "Music",
+      "category": "entertainment",
+      "person": "Maria Bethânia",
+      "description": "Maria Bethânia: music headline reported by G1. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://s2-g1.glbimg.com/D6OdBr-5tPhKgFblE71LY9MWY_U=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/f/q/sDa6JkQrqeuBksbx3P2A/bethaniadvdfoto.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/maria-bethania-lanca-single-com-tres-musicas-do-show-60-anos-de-carreira-47af15/",
+      "landing_url": "https://matchapp.tv/?news=47af15af#latest-news",
+      "seo": {
+        "primary_keyword": "రంజీ ట్రోఫీ",
+        "short_tail": [
+          "Maria Bethânia",
+          "Maria Bethânia news",
+          "music",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje",
+          "రంజీ ట్రోఫీ",
+          "जीएसटी परिषद"
+        ],
+        "long_tail": [
+          "Maria Bethânia latest news October 2026",
+          "Maria Bethânia music update 2026",
+          "Maria Bethânia news 2026-10-05",
+          "latest music news about Maria Bethânia",
+          "maria bethania maria bethania lanca single latest update",
+          "G1 Maria Bethânia music",
+          "últimas notícias sobre Maria Bethânia outubro 2026",
+          "Maria Bethânia notícia de 2026-10-05",
+          "o que aconteceu com Maria Bethânia"
+        ],
+        "trend_keywords": [
+          "రంజీ ట్రోఫీ",
+          "जीएसटी परिषद"
+        ],
+        "entity_keywords": [
+          "Maria Bethânia",
+          "maria",
+          "bethania",
+          "lanca",
+          "single",
+          "tres",
+          "musicas"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-05",
+          "outubro 2026",
+          "Maria Bethânia 2026"
+        ],
+        "source_keywords": [
+          "G1 Maria Bethânia",
+          "g1.globo.com Maria Bethânia",
+          "G1 entertainment news"
+        ],
+        "meta_title": "Maria Bethânia lança single com três músicas do show '60…",
+        "meta_description": "Maria Bethânia: Music update reported by G1 on 2026-10-05. See verified context, publication time and the original source via MatchApp Ai.",
+        "keywords": [
+          "రంజీ ట్రోఫీ",
+          "Maria Bethânia",
+          "Maria Bethânia news",
+          "music",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje",
+          "जीएसटी परिषद",
+          "Maria Bethânia latest news October 2026",
+          "Maria Bethânia music update 2026",
+          "Maria Bethânia news 2026-10-05",
+          "latest music news about Maria Bethânia",
+          "maria bethania maria bethania lanca single latest update",
+          "G1 Maria Bethânia music",
+          "últimas notícias sobre Maria Bethânia outubro 2026",
+          "Maria Bethânia notícia de 2026-10-05",
+          "o que aconteceu com Maria Bethânia",
+          "maria",
+          "bethania",
+          "lanca",
+          "single",
+          "tres",
+          "musicas",
+          "October 2026",
+          "2026-10-05",
+          "outubro 2026",
+          "Maria Bethânia 2026",
+          "G1 Maria Bethânia",
+          "g1.globo.com Maria Bethânia",
+          "G1 entertainment news"
+        ],
+        "seo_generated_at": "2026-10-05T07:39:25.944Z"
+      }
+    },
     {
       "id": "ca3a31fa",
       "title": "Reggie McFadden, Actor-Comedian Known for ‘Def Comedy Jam’ and ‘In Living Color,’ Dies at 57",
@@ -311,6 +583,107 @@
       }
     },
     {
+      "id": "05321d25",
+      "title": "Matthew Rhys takes Best Actor at Bafta Cymru for performance in Netflix thriller",
+      "url": "https://www.bbc.co.uk/news/articles/c95yn0g587vxo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GB",
+      "published_at": "2026-10-04T20:55:57.000Z",
+      "discovered_at": "2026-10-05T07:39:25.944Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "Matthew Rhys",
+      "description": "Matthew Rhys: entertainment headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/64d0/live/0dcf11b0-c035-11f1-b87e-c7a3d30c1570.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/matthew-rhys-takes-best-actor-at-bafta-cymru-for-performance-in-netflix-thriller-05321d/",
+      "landing_url": "https://matchapp.tv/?news=05321d25#latest-news",
+      "seo": {
+        "primary_keyword": "రంజీ ట్రోఫీ",
+        "short_tail": [
+          "Matthew Rhys",
+          "Matthew Rhys news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "రంజీ ట్రోఫీ",
+          "जीएसटी परिषद"
+        ],
+        "long_tail": [
+          "Matthew Rhys latest news October 2026",
+          "Matthew Rhys entertainment update 2026",
+          "Matthew Rhys news 2026-10-04",
+          "latest entertainment news about Matthew Rhys",
+          "matthew rhys matthew rhys takes best latest update",
+          "BBC Matthew Rhys entertainment",
+          "latest news about Matthew Rhys October 2026",
+          "Matthew Rhys entertainment news 2026-10-04",
+          "what happened with Matthew Rhys"
+        ],
+        "trend_keywords": [
+          "రంజీ ట్రోఫీ",
+          "जीएसटी परिषद"
+        ],
+        "entity_keywords": [
+          "Matthew Rhys",
+          "matthew",
+          "rhys",
+          "takes",
+          "best",
+          "actor",
+          "bafta"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-04",
+          "Matthew Rhys 2026"
+        ],
+        "source_keywords": [
+          "BBC Matthew Rhys",
+          "bbc.co.uk Matthew Rhys",
+          "BBC entertainment news"
+        ],
+        "meta_title": "Matthew Rhys takes Best Actor at Bafta Cymru for…",
+        "meta_description": "Matthew Rhys: Entertainment update reported by BBC on 2026-10-04. See verified context, publication time and the original source via MatchApp Ai.",
+        "keywords": [
+          "రంజీ ట్రోఫీ",
+          "Matthew Rhys",
+          "Matthew Rhys news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "जीएसटी परिषद",
+          "Matthew Rhys latest news October 2026",
+          "Matthew Rhys entertainment update 2026",
+          "Matthew Rhys news 2026-10-04",
+          "latest entertainment news about Matthew Rhys",
+          "matthew rhys matthew rhys takes best latest update",
+          "BBC Matthew Rhys entertainment",
+          "latest news about Matthew Rhys October 2026",
+          "Matthew Rhys entertainment news 2026-10-04",
+          "what happened with Matthew Rhys",
+          "matthew",
+          "rhys",
+          "takes",
+          "best",
+          "actor",
+          "bafta",
+          "October 2026",
+          "2026-10-04",
+          "Matthew Rhys 2026",
+          "BBC Matthew Rhys",
+          "bbc.co.uk Matthew Rhys",
+          "BBC entertainment news"
+        ],
+        "seo_generated_at": "2026-10-05T07:39:25.944Z"
+      }
+    },
+    {
       "id": "4dea99aa",
       "title": "Claudette Soares lança em novembro álbum batizado com verso de música composta por Zélia Duncan e Ana Costa",
       "url": "https://g1.globo.com/pop-arte/musica/blog/mauro-ferreira/post/2026/10/04/claudette-soares-lanca-em-novembro-album-batizado-com-musica-feita-para-a-cantora-por-zelia-duncan-e-ana-costa.ghtml",
@@ -591,101 +964,6 @@
           "book director uncovers father 2026",
           "The Hollywood Reporter book director uncovers father",
           "hollywoodreporter.com book director uncovers father",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-04T18:45:52.148Z"
-      }
-    },
-    {
-      "id": "4eb5c913",
-      "title": "Marjoe Gortner, Child Preacher and ‘Earthquake,’ ‘Falcon Crest’ Actor, Dies at 82",
-      "url": "https://www.hollywoodreporter.com/movies/movie-news/marjoe-gortner-dead-child-preacher-earthquake-falcon-crest-1236721873/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "published_at": "2026-10-04T16:40:10.000Z",
-      "discovered_at": "2026-10-04T18:45:52.148Z",
-      "event_type": "Obituary",
-      "category": "entertainment",
-      "person": "Marjoe Gortner",
-      "description": "Marjoe Gortner: obituary headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/Marjoe-Gortner-getty-H-2026.png?w=1296&h=730&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/marjoe-gortner-child-preacher-and-earthquake-falcon-crest-actor-dies-at-82-4eb5c9/",
-      "landing_url": "https://matchapp.tv/?news=4eb5c913#latest-news",
-      "seo": {
-        "primary_keyword": "Marjoe Gortner latest news",
-        "short_tail": [
-          "Marjoe Gortner",
-          "Marjoe Gortner news",
-          "obituary",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "Marjoe Gortner latest news October 2026",
-          "Marjoe Gortner obituary update 2026",
-          "Marjoe Gortner news 2026-10-04",
-          "latest obituary news about Marjoe Gortner",
-          "marjoe gortner marjoe gortner child preacher latest update",
-          "The Hollywood Reporter Marjoe Gortner obituary",
-          "latest news about Marjoe Gortner October 2026",
-          "Marjoe Gortner entertainment news 2026-10-04",
-          "what happened with Marjoe Gortner"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Marjoe Gortner",
-          "marjoe",
-          "gortner",
-          "child",
-          "preacher",
-          "earthquake",
-          "falcon"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-04",
-          "Marjoe Gortner 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter Marjoe Gortner",
-          "hollywoodreporter.com Marjoe Gortner",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "Marjoe Gortner, Child Preacher and ‘Earthquake,’ ‘Falcon…",
-        "meta_description": "Marjoe Gortner: Obituary update reported by The Hollywood Reporter on 2026-10-04. See verified context, publication time and the original source via…",
-        "keywords": [
-          "Marjoe Gortner latest news",
-          "Marjoe Gortner",
-          "Marjoe Gortner news",
-          "obituary",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "Marjoe Gortner latest news October 2026",
-          "Marjoe Gortner obituary update 2026",
-          "Marjoe Gortner news 2026-10-04",
-          "latest obituary news about Marjoe Gortner",
-          "marjoe gortner marjoe gortner child preacher latest update",
-          "The Hollywood Reporter Marjoe Gortner obituary",
-          "latest news about Marjoe Gortner October 2026",
-          "Marjoe Gortner entertainment news 2026-10-04",
-          "what happened with Marjoe Gortner",
-          "marjoe",
-          "gortner",
-          "child",
-          "preacher",
-          "earthquake",
-          "falcon",
-          "October 2026",
-          "2026-10-04",
-          "Marjoe Gortner 2026",
-          "The Hollywood Reporter Marjoe Gortner",
-          "hollywoodreporter.com Marjoe Gortner",
           "The Hollywood Reporter entertainment news"
         ],
         "seo_generated_at": "2026-10-04T18:45:52.148Z"
@@ -1273,71 +1551,6 @@
           "BBC entertainment news"
         ],
         "seo_generated_at": "2026-10-04T02:40:07.582Z"
-      }
-    },
-    {
-      "id": "dfaf5bd1",
-      "title": "US father and son arrested after 'gas station heroin' deaths",
-      "url": "https://www.bbc.co.uk/news/articles/c6qjnlk4r2jjo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "published_at": "2026-10-03T22:39:06.000Z",
-      "discovered_at": "2026-10-04T09:16:36.693Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-03. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/7f8d/live/c8fc2220-bf72-11f1-9223-5724758dc624.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/us-father-and-son-arrested-after-gas-station-heroin-deaths-dfaf5b/",
-      "landing_url": "https://matchapp.tv/?news=dfaf5bd1#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-03",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "father",
-          "son",
-          "arrested",
-          "after",
-          "gas",
-          "station"
-        ],
-        "long_tail": [
-          "US father and son arrested after 'gas station heroin' deaths 2026-10-03",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "father",
-          "son",
-          "arrested",
-          "after",
-          "gas",
-          "station"
-        ],
-        "freshness_keywords": [
-          "2026-10-03"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "US father and son arrested after 'gas station heroin'…",
-        "meta_description": "World report published by BBC World on 2026-10-03. Open the original report for full context.",
-        "keywords": [
-          "world news",
-          "global headlines",
-          "father",
-          "son",
-          "arrested",
-          "after",
-          "gas",
-          "station",
-          "2026-10-03",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-04T09:16:36.693Z"
       }
     },
     {
@@ -2464,223 +2677,6 @@
       }
     },
     {
-      "id": "4724ab2e",
-      "title": "K-pop giants Stray Kids join BTS in boycotting the Grammys",
-      "url": "https://www.bbc.co.uk/news/articles/c5398kkx27ewo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GB",
-      "published_at": "2026-10-02T12:28:59.000Z",
-      "discovered_at": "2026-10-02T13:26:30.425Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "",
-      "description": "entertainment headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/213a/live/03511bd0-be59-11f1-8828-9d9deece30a1.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/k-pop-giants-stray-kids-join-bts-in-boycotting-the-grammys-4724ab/",
-      "landing_url": "https://matchapp.tv/?news=4724ab2e#latest-news",
-      "seo": {
-        "primary_keyword": "മഴ",
-        "short_tail": [
-          "pop giants stray kids",
-          "pop giants stray kids news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "മഴ",
-          "జబర్దస్త్",
-          "समाजवादी पार्टी",
-          "சிலிண்டர்"
-        ],
-        "long_tail": [
-          "pop giants stray kids latest news October 2026",
-          "pop giants stray kids entertainment update 2026",
-          "pop giants stray kids news 2026-10-02",
-          "latest entertainment news about pop giants stray kids",
-          "pop giants stray kids join bts latest update",
-          "BBC pop giants stray kids entertainment",
-          "latest news about pop giants stray kids October 2026",
-          "pop giants stray kids entertainment news 2026-10-02",
-          "what happened with pop giants stray kids"
-        ],
-        "trend_keywords": [
-          "മഴ",
-          "జబర్దస్త్",
-          "समाजवादी पार्टी",
-          "சிலிண்டர்"
-        ],
-        "entity_keywords": [
-          "pop",
-          "giants",
-          "stray",
-          "kids",
-          "join",
-          "bts",
-          "boycotting",
-          "grammys"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-02",
-          "pop giants stray kids 2026"
-        ],
-        "source_keywords": [
-          "BBC pop giants stray kids",
-          "bbc.co.uk pop giants stray kids",
-          "BBC entertainment news"
-        ],
-        "meta_title": "K-pop giants Stray Kids join BTS in boycotting the Grammys…",
-        "meta_description": "Entertainment update reported by BBC on 2026-10-02. See verified context, publication time and the original source via MatchApp Ai.",
-        "keywords": [
-          "മഴ",
-          "pop giants stray kids",
-          "pop giants stray kids news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "జబర్దస్త్",
-          "समाजवादी पार्टी",
-          "சிலிண்டர்",
-          "pop giants stray kids latest news October 2026",
-          "pop giants stray kids entertainment update 2026",
-          "pop giants stray kids news 2026-10-02",
-          "latest entertainment news about pop giants stray kids",
-          "pop giants stray kids join bts latest update",
-          "BBC pop giants stray kids entertainment",
-          "latest news about pop giants stray kids October 2026",
-          "pop giants stray kids entertainment news 2026-10-02",
-          "what happened with pop giants stray kids",
-          "pop",
-          "giants",
-          "stray",
-          "kids",
-          "join",
-          "bts",
-          "boycotting",
-          "grammys",
-          "October 2026",
-          "2026-10-02",
-          "pop giants stray kids 2026",
-          "BBC pop giants stray kids"
-        ],
-        "seo_generated_at": "2026-10-02T13:26:30.425Z"
-      }
-    },
-    {
-      "id": "611c4c04",
-      "title": "Trio de jazz Caixa Cubo toca Caetano Veloso e Gilberto Gil em 'Ultracooked', álbum programado para novembro",
-      "url": "https://g1.globo.com/pop-arte/musica/blog/mauro-ferreira/post/2026/10/02/trio-de-jazz-caixa-cubo-toca-caetano-veloso-e-gilberto-gil-em-ultracooked-album-programado-para-novembro.ghtml",
-      "source": "G1",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "BR",
-      "published_at": "2026-10-02T12:12:47.000Z",
-      "discovered_at": "2026-10-02T13:26:30.425Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "",
-      "description": "entertainment headline reported by G1. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://s2-g1.glbimg.com/3m3Bfe9_VRqO8Iw7-kDEDme21uU=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/W/d/ZM3hUFTlATYdNrsDTUAQ/caixa-cubo-4-credit-rebecca-figueiredo.jpeg",
-      "matchapp_url": "https://matchapp.tv/news/articles/trio-de-jazz-caixa-cubo-toca-caetano-veloso-e-gilberto-gil-em-ultracooked-album--611c4c/",
-      "landing_url": "https://matchapp.tv/?news=611c4c04#latest-news",
-      "seo": {
-        "primary_keyword": "മഴ",
-        "short_tail": [
-          "trio jazz caixa cubo",
-          "trio jazz caixa cubo news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "മഴ",
-          "జబర్దస్త్",
-          "समाजवादी पार्टी",
-          "சிலிண்டர்"
-        ],
-        "long_tail": [
-          "trio jazz caixa cubo latest news October 2026",
-          "trio jazz caixa cubo entertainment update 2026",
-          "trio jazz caixa cubo news 2026-10-02",
-          "latest entertainment news about trio jazz caixa cubo",
-          "trio jazz caixa cubo toca caetano latest update",
-          "G1 trio jazz caixa cubo entertainment",
-          "últimas notícias sobre trio jazz caixa cubo outubro 2026",
-          "trio jazz caixa cubo notícia de 2026-10-02",
-          "o que aconteceu com trio jazz caixa cubo"
-        ],
-        "trend_keywords": [
-          "മഴ",
-          "జబర్దస్త్",
-          "समाजवादी पार्टी",
-          "சிலிண்டர்"
-        ],
-        "entity_keywords": [
-          "trio",
-          "jazz",
-          "caixa",
-          "cubo",
-          "toca",
-          "caetano",
-          "veloso",
-          "gilberto"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-02",
-          "outubro 2026",
-          "trio jazz caixa cubo 2026"
-        ],
-        "source_keywords": [
-          "G1 trio jazz caixa cubo",
-          "g1.globo.com trio jazz caixa cubo",
-          "G1 entertainment news"
-        ],
-        "meta_title": "Trio de jazz Caixa Cubo toca Caetano Veloso e Gilberto Gil…",
-        "meta_description": "Entertainment update reported by G1 on 2026-10-02. See verified context, publication time and the original source via MatchApp Ai.",
-        "keywords": [
-          "മഴ",
-          "trio jazz caixa cubo",
-          "trio jazz caixa cubo news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "జబర్దస్త్",
-          "समाजवादी पार्टी",
-          "சிலிண்டர்",
-          "trio jazz caixa cubo latest news October 2026",
-          "trio jazz caixa cubo entertainment update 2026",
-          "trio jazz caixa cubo news 2026-10-02",
-          "latest entertainment news about trio jazz caixa cubo",
-          "trio jazz caixa cubo toca caetano latest update",
-          "G1 trio jazz caixa cubo entertainment",
-          "últimas notícias sobre trio jazz caixa cubo outubro 2026",
-          "trio jazz caixa cubo notícia de 2026-10-02",
-          "o que aconteceu com trio jazz caixa cubo",
-          "trio",
-          "jazz",
-          "caixa",
-          "cubo",
-          "toca",
-          "caetano",
-          "veloso",
-          "gilberto",
-          "October 2026",
-          "2026-10-02",
-          "outubro 2026",
-          "trio jazz caixa cubo 2026"
-        ],
-        "seo_generated_at": "2026-10-02T13:26:30.425Z"
-      }
-    },
-    {
       "id": "ec99cede",
       "title": "OpenAI fires workers for 'mishandling sensitive information'",
       "url": "https://www.bbc.co.uk/news/articles/c6y9z9r4ejzwo?at_medium=RSS&at_campaign=rss",
@@ -2962,95 +2958,6 @@
           "BBC Technology"
         ],
         "seo_generated_at": "2026-10-01T09:23:36.572Z"
-      }
-    },
-    {
-      "id": "b2489750",
-      "title": "With a former Wallaby’s ‘cruel’ diagnosis, is there a link between contact sports and MND?",
-      "url": "https://theconversation.com/with-a-former-wallabys-cruel-diagnosis-is-there-a-link-between-contact-sports-and-mnd-293330",
-      "source": "The Conversation",
-      "source_domain": "theconversation.com",
-      "source_home": "https://theconversation.com",
-      "country": "GLOBAL",
-      "category": "sports",
-      "sport": "Sports",
-      "event_type": "Sports",
-      "published_at": "2026-10-01T05:06:06.000Z",
-      "timestamp_kind": "published",
-      "discovery_source": "Authorized publisher RSS/Atom",
-      "image": null,
-      "discovered_at": "2026-10-01T17:22:59.467Z",
-      "person": "",
-      "description": "Sports coverage linked to the original publisher The Conversation. MatchApp records when it was indexed; open the source for full context.",
-      "matchapp_url": "https://matchapp.tv/news/articles/with-a-former-wallaby-s-cruel-diagnosis-is-there-a-link-between-contact-sports-a-b24897/",
-      "landing_url": "https://matchapp.tv/?news=b2489750#latest-news",
-      "seo": {
-        "primary_keyword": "former wallaby cruel diagnosis there sports news",
-        "short_tail": [
-          "Sports",
-          "sports news",
-          "latest sports news",
-          "today sports headlines",
-          "former",
-          "wallaby",
-          "cruel",
-          "diagnosis",
-          "there",
-          "link"
-        ],
-        "long_tail": [
-          "former wallaby cruel diagnosis there sports news 2026",
-          "former wallaby cruel diagnosis there latest update 2026-10-01",
-          "Sports latest news October 2026",
-          "The Conversation sports news indexed 2026-10-01",
-          "former wallaby cruel diagnosis there The Conversation original report"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "former",
-          "wallaby",
-          "cruel",
-          "diagnosis",
-          "there",
-          "link",
-          "between",
-          "contact"
-        ],
-        "freshness_keywords": [
-          "2026-10-01",
-          "October 2026"
-        ],
-        "source_keywords": [
-          "The Conversation",
-          "Sports The Conversation",
-          "The Conversation sports headlines"
-        ],
-        "meta_title": "With a former Wallaby’s ‘cruel’ diagnosis, is there a link…",
-        "meta_description": "Sports reporting indexed 2026-10-01. Open the original publisher through MatchApp Latest News.",
-        "keywords": [
-          "former wallaby cruel diagnosis there sports news",
-          "Sports",
-          "sports news",
-          "latest sports news",
-          "today sports headlines",
-          "former",
-          "wallaby",
-          "cruel",
-          "diagnosis",
-          "there",
-          "link",
-          "former wallaby cruel diagnosis there sports news 2026",
-          "former wallaby cruel diagnosis there latest update 2026-10-01",
-          "Sports latest news October 2026",
-          "The Conversation sports news indexed 2026-10-01",
-          "former wallaby cruel diagnosis there The Conversation original report",
-          "The Conversation",
-          "Sports The Conversation",
-          "The Conversation sports headlines",
-          "2026-10-01",
-          "October 2026"
-        ],
-        "seo_generated_at": "2026-10-01T17:22:59.520Z"
       }
     },
     {
