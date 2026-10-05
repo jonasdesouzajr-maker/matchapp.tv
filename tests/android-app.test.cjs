@@ -187,3 +187,16 @@ test('adult Android is Play-Billing ready and cannot fall through to Stripe chec
  assert.match(main,/\[data-match-pack\],\[data-credit-pack\]/);
  assert.doesNotMatch(kidsManifest,/com\.android\.vending\.BILLING/);
 });
+
+
+test('adult Android keeps Kids Mode unavailable in-app and offers the browser Kids experience',()=>{
+ const main=read('android-studio/app/src/main/java/com/jonas/papercup/MainActivity.kt');
+ assert.match(main,/MATCHAPP_ANDROID_KIDS_BLOCKED = true/);
+ assert.match(main,/MatchApp Ai Kids is coming soon to Google Play/);
+ assert.match(main,/MatchApp Kids normally in your smartphone browser/);
+ assert.match(main,/openKidsBrowser/);
+ assert.match(main,/https:\/\/matchapp\.tv\/kids\/\?utm_source=android_app&utm_medium=kids_notice/);
+ assert.match(main,/firstOrNull \{ it != packageName \}/);
+ assert.match(main,/#matchapp-kids-entry,.ma-kids-mode-entry/);
+ assert.doesNotMatch(main,/\.ma-kids-mode-entry,#matchapp-kids-entry' \+/);
+});

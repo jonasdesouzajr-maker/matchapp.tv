@@ -541,6 +541,28 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun openKidsInBrowser(): Boolean {
+        val uri = Uri.parse("https://matchapp.tv/kids/?utm_source=android_app&utm_medium=kids_notice")
+        val base = Intent(Intent.ACTION_VIEW, uri).addCategory(Intent.CATEGORY_BROWSABLE)
+        val externalPackage = packageManager
+            .queryIntentActivities(base, android.content.pm.PackageManager.MATCH_DEFAULT_ONLY)
+            .mapNotNull { it.activityInfo?.packageName }
+            .firstOrNull { it != packageName }
+
+        if (externalPackage.isNullOrBlank()) return false
+
+        return try {
+            startActivity(
+                Intent(base)
+                    .setPackage(externalPackage)
+                    .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            )
+            true
+        } catch (_: ActivityNotFoundException) {
+            false
+        }
+    }
+
     private fun sendVoiceResult(text: String) {
         val value = JSONObject.quote(text)
         web.evaluateJavascript(
@@ -578,6 +600,21 @@ class MainActivity : AppCompatActivity() {
                     "reject" -> web.performHapticFeedback(HapticFeedbackConstants.REJECT)
                     "context" -> web.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
                     else -> web.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP)
+                }
+            }
+        }
+
+        @JavascriptInterface
+        fun openKidsBrowser() {
+            runOnUiThread {
+                val current = runCatching { Uri.parse(web.url.orEmpty()) }.getOrNull()
+                if (current == null || !isMatchAppHost(current.host.orEmpty())) return@runOnUiThread
+                if (!openKidsInBrowser()) {
+                    Toast.makeText(
+                        this@MainActivity,
+                        "Open matchapp.tv/kids in your browser",
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
             }
         }
@@ -698,8 +735,7 @@ class MainActivity : AppCompatActivity() {
                 s.id = 'matchapp-android-shell';
                 s.textContent =
                   '.ad-banner-container,.sidebar-ad-left,.sidebar-ad-right,.mobile-ad-bottom,' +
-                  '.premium-ad-frame,ins.adsbygoogle,.ma-ad-label,#chrome-notice,.chrome-notice,.install-btn,' +
-                  '.ma-kids-mode-entry,#matchapp-kids-entry' +
+                  '.premium-ad-frame,ins.adsbygoogle,.ma-ad-label,#chrome-notice,.chrome-notice,.install-btn' +
                   '{display:none!important;height:0!important;min-height:0!important;overflow:hidden!important;' +
                   'padding:0!important;margin:0!important;border:0!important}' +
                   'html.matchapp-ai-android{--android-gold:#e5c158;--android-violet:#8d5cff}' +
@@ -712,6 +748,101 @@ class MainActivity : AppCompatActivity() {
               }
 
               document.querySelectorAll('ins.adsbygoogle,.ad-banner-container').forEach(function(el){ el.remove(); });
+
+              function configureAndroidKidsEntry() {
+                var kids = document.getElementById('matchapp-kids-entry') || document.querySelector('.ma-kids-mode-entry');
+                if (!kids) return;
+                kids.setAttribute('href','#');
+                kids.setAttribute('role','button');
+                kids.setAttribute('aria-haspopup','dialog');
+                kids.setAttribute('aria-label','MatchApp Ai Kids — coming soon to Google Play');
+                kids.setAttribute('title','MatchApp Ai Kids — coming soon to Google Play');
+                kids.style.opacity = '.76';
+                var label = kids.querySelector('span');
+                if (label) label.textContent = 'Kids · Soon';
+              }
+
+              function showAndroidKidsNotice() {
+                if (document.getElementById('matchapp-android-kids-notice')) return;
+                var lang = String(window.MATCH_LANG || document.documentElement.lang || 'en').toLowerCase();
+                var pt = lang.indexOf('pt') === 0;
+                var copy = pt ? {
+                  title: 'MatchApp Ai Kids em breve no Google Play',
+                  body: 'O app MatchApp Ai Kids ainda não está disponível dentro deste aplicativo. Enquanto isso, você pode usar o MatchApp Kids normalmente no navegador do seu smartphone.',
+                  open: 'Abrir MatchApp Kids no navegador',
+                  close: 'Agora não'
+                } : {
+                  title: 'MatchApp Ai Kids is coming soon to Google Play',
+                  body: 'MatchApp Ai Kids is not available inside this app yet. For now, you can use MatchApp Kids normally in your smartphone browser.',
+                  open: 'Open MatchApp Kids in browser',
+                  close: 'Not now'
+                };
+
+                var overlay = document.createElement('div');
+                overlay.id = 'matchapp-android-kids-notice';
+                overlay.setAttribute('role','dialog');
+                overlay.setAttribute('aria-modal','true');
+                overlay.setAttribute('aria-label',copy.title);
+                overlay.style.cssText = 'position:fixed;inset:0;z-index:2147483646;background:rgba(4,3,8,.82);backdrop-filter:blur(12px);display:flex;align-items:center;justify-content:center;padding:20px';
+
+                var card = document.createElement('div');
+                card.style.cssText = 'width:min(92vw,440px);background:linear-gradient(145deg,#171126,#090812);border:1px solid rgba(229,193,88,.48);border-radius:24px;padding:24px;box-shadow:0 24px 70px rgba(0,0,0,.55);text-align:center;color:#fff';
+
+                var logo = document.createElement('img');
+                logo.src = '/kids/kids-logo-sm.jpeg';
+                logo.alt = '';
+                logo.width = 62;
+                logo.height = 62;
+                logo.style.cssText = 'border-radius:50%;object-fit:cover;margin:0 auto 14px;display:block';
+
+                var title = document.createElement('h2');
+                title.textContent = copy.title;
+                title.style.cssText = 'margin:0 0 10px;font-size:20px;line-height:1.25;color:#f3d875';
+
+                var body = document.createElement('p');
+                body.textContent = copy.body;
+                body.style.cssText = 'margin:0 0 20px;color:#d7d1e2;font-size:14px;line-height:1.55';
+
+                var open = document.createElement('button');
+                open.type = 'button';
+                open.textContent = copy.open;
+                open.style.cssText = 'width:100%;border:0;border-radius:999px;padding:13px 16px;background:linear-gradient(135deg,#e5c158,#f4dd83);color:#17110a;font-weight:900;font-size:14px;cursor:pointer';
+
+                var close = document.createElement('button');
+                close.type = 'button';
+                close.textContent = copy.close;
+                close.style.cssText = 'width:100%;border:0;background:transparent;color:#aaa1bc;padding:12px 10px 2px;font-weight:700;font-size:13px;cursor:pointer';
+
+                function dismiss(){ overlay.remove(); }
+                open.addEventListener('click', function(){
+                  try { window.MatchAppNativeExperience && window.MatchAppNativeExperience.openKidsBrowser(); }
+                  catch (_) {}
+                  dismiss();
+                });
+                close.addEventListener('click', dismiss);
+                overlay.addEventListener('click', function(e){ if (e.target === overlay) dismiss(); });
+
+                card.append(logo,title,body,open,close);
+                overlay.appendChild(card);
+                document.body.appendChild(overlay);
+                requestAnimationFrame(function(){ open.focus(); });
+              }
+
+              configureAndroidKidsEntry();
+              setTimeout(configureAndroidKidsEntry, 450);
+              setTimeout(configureAndroidKidsEntry, 1400);
+
+              if (!window.__matchAppAndroidKidsNoticeBound) {
+                window.__matchAppAndroidKidsNoticeBound = true;
+                document.addEventListener('click', function(e){
+                  var kids = e.target && e.target.closest && e.target.closest('#matchapp-kids-entry,.ma-kids-mode-entry');
+                  if (!kids) return;
+                  e.preventDefault();
+                  e.stopPropagation();
+                  if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+                  showAndroidKidsNotice();
+                }, true);
+              }
 
               // Google Play policy guard: the Play-distributed Android app must never
               // fall through to the website's Stripe checkout for digital goods.
