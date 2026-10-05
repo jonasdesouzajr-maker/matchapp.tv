@@ -146,3 +146,12 @@ test('hosted native smoke bounds ADB setup, install and final diagnostics so run
  assert.match(smoke,/timeout 75s adb install -r "\$apk"/);
  assert.match(smoke,/timeout 20s adb logcat -d -v brief -t 2500/);
 });
+
+
+test('adult Android keeps immersive background while respecting status bar and camera cutout',()=>{
+ const main=read('android-studio/app/src/main/java/com/jonas/papercup/MainActivity.kt');
+ assert.match(main,/setDecorFitsSystemWindows\(window, false\)/);
+ assert.match(main,/WindowInsetsCompat\.Type\.statusBars\(\) or WindowInsetsCompat\.Type\.displayCutout\(\)/);
+ assert.match(main,/setOnApplyWindowInsetsListener\(refresh\)/);
+ assert.match(main,/setPadding\(view\.paddingLeft, safe\.top, view\.paddingRight, view\.paddingBottom\)/);
+});
