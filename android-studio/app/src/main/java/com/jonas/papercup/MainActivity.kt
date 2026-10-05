@@ -730,6 +730,28 @@ class MainActivity : AppCompatActivity() {
                 document.addEventListener('matchapp:match-reject', function(){ haptic('reject'); root.classList.remove('matchapp-android-thinking'); });
                 document.addEventListener('matchapp:ai-thinking', function(){ root.classList.add('matchapp-android-thinking'); });
                 document.addEventListener('matchapp:ai-done', function(){ haptic('success'); root.classList.remove('matchapp-android-thinking'); });
+
+                // Observe the existing working web runtime instead of replacing matching/AI logic.
+                var result = document.getElementById('result-box');
+                if (result && window.MutationObserver) {
+                  new MutationObserver(function(){
+                    var visible = !result.hidden && getComputedStyle(result).display !== 'none';
+                    var title = window.currentMatchIdentity && window.currentMatchIdentity.title;
+                    if (visible && title && result.dataset.androidRevealed !== String(title)) {
+                      result.dataset.androidRevealed = String(title);
+                      haptic('success');
+                      result.animate && result.animate(
+                        [{opacity:.35,transform:'translateY(12px) scale(.985)'},{opacity:1,transform:'translateY(0) scale(1)'}],
+                        {duration:520,easing:'cubic-bezier(.2,.8,.2,1)'}
+                      );
+                    }
+                  }).observe(result,{attributes:true,childList:true,subtree:true});
+                }
+
+                // Voice activity drives the Android AI presence without changing the shared AI engine.
+                document.addEventListener('matchapp:voice-start', function(){ root.classList.add('matchapp-android-thinking'); haptic('tap'); });
+                document.addEventListener('matchapp:voice-result', function(){ root.classList.remove('matchapp-android-thinking'); haptic('success'); });
+                document.addEventListener('matchapp:voice-error', function(){ root.classList.remove('matchapp-android-thinking'); haptic('reject'); });
               }
 
               if (!document.querySelector('link[data-cinema-dim]')) {
