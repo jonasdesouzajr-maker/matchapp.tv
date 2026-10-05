@@ -175,7 +175,9 @@ test('Ask AI composer stays visible and voice works in the active language',()=>
   assert.match(js,/utter\.lang = voice\?\.lang \|\| targetLang/);
   assert.doesNotMatch(js,/autoReadEnabled|match_voice_autoread/);
   assert.match(js,/speak\.onclick = \(\) => window\.readAloud\(text, speak\)/);
-  assert.match(js,/TTS is user-initiated only/);
+  assert.match(js,/const voiceOrigin = !!opts\?\.voiceOrigin/);
+  assert.match(js,/if \(voiceOrigin && String\(payload\.answer \|\| ''\)\.trim\(\)\) \{[\s\S]*window\.readAloud\(payload\.answer, bubble\.speakBtn\)/);
+  assert.match(js,/MatchAppVoiceOrigin\?\.consume/);
 });
 
 test('Ask AI has a bounded local catalogue recovery without polling or UI mutation',()=>{
