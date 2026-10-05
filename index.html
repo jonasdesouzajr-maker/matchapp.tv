@@ -3761,10 +3761,12 @@ html body.page-home #daily-match-checkin { padding: 11px 12px !important; }
     <script defer src="/match-fun-share.js?v=20260928-1"></script>
     <script src="/pricing.js?v=20260918-billing2"></script>
     <script src="/credits-ui.js?v=198"></script>
-    <script src="/voice-input.js?v=20260929-dictation1"></script>
+    <script src="/voice-input.js?v=20261005-voiceorigin1"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            initVoiceInput('specific-search-input', 'mic-btn-index');
+            initVoiceInput('specific-search-input', 'mic-btn-index', () => {
+                document.querySelector('#specific-search-input')?.closest('.home-ask-composer')?.querySelector('.gold-btn')?.click();
+            });
         });
     </script>
     <script>
