@@ -117,7 +117,7 @@ test('adult native Android WebView receives magazine-only update, Kids binaries 
  const gradle=read('android-studio/app/build.gradle.kts'),main=read('android-studio/app/src/main/java/com/jonas/papercup/MainActivity.kt');
  assert.match(gradle,/versionCode = 41/);assert.match(gradle,/versionName = "1\.1\.37"/);
  assert.match(main,/adult-mobile-match-ai-runtime-20260927-1/);
- assert.match(main,/MatchAppAiAndroid\/1\.1\.36/);
+ assert.match(main,/MatchAppAiAndroid\/1\.1\.37/);
  assert.match(main,/MATCHAPP_ANDROID_KIDS_BLOCKED/);
  assert.doesNotMatch(read('android-studio/kidsapp/src/main/java/tv/matchapp/kids/MainActivity.kt'),/adult-reading-magazines/);
 });
