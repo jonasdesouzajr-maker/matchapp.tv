@@ -678,8 +678,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val HOME = "https://matchapp.tv/?utm_source=android_app&appBuild=40"
-        const val APP_UA = "MatchAppTVAndroid/1.1.36 MatchAppAiAndroid/1.1.36 MatchAppLaunchIntro/1"
+        const val HOME = "https://matchapp.tv/?utm_source=android_app&appBuild=41"
+        const val APP_UA = "MatchAppTVAndroid/1.1.37 MatchAppAiAndroid/1.1.37 MatchAppLaunchIntro/1"
         private const val STARTUP_PREFS = "matchapp_startup"
         private const val PREF_INTRO_SEEN = "intro_seen_v1"
         private const val PREF_REGISTERED = "registered_v1"
