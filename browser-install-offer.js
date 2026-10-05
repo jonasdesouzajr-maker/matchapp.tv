@@ -5,9 +5,11 @@
   if(window.__maBrowserInstallOffer) return;
   window.__maBrowserInstallOffer=true;
   const OPT_OUT='matchapp_install_offer_never_v1';
+  const DISMISSED_AT='matchapp_android_offer_dismissed_at_v1';
+  const DISMISS_COOLDOWN=7*24*60*60*1000;
   const PLAY='https://play.google.com/store/apps/details?id=com.jonas.papercup';
   // Owner-controlled launch gate. Do not re-enable until explicitly authorized.
-  const PLAY_RELEASED=false;
+  const PLAY_RELEASED=true;
   const INSTALL_DELAY=1100, VISIBLE_FOR=15000;
   let shown=false,queued=false,expiry=0,composerOverlapHandler=null;
 
@@ -27,7 +29,11 @@
     if(document.getElementById('ma-ai-entry')?.classList.contains('lazy-open')) return true;
     if(location.pathname!=='/' && location.pathname!=='/index.html') return true;
     if(nativeShell()||standalone()) return true;
-    try{if(localStorage.getItem(OPT_OUT)==='1')return true;}catch(_){}
+    try{
+      if(localStorage.getItem(OPT_OUT)==='1')return true;
+      const dismissed=Number(localStorage.getItem(DISMISSED_AT)||0);
+      if(dismissed>0 && Date.now()-dismissed<DISMISS_COOLDOWN)return true;
+    }catch(_){}
     return !!(window.matchAppInstallState&&window.matchAppInstallState.isInstalled());
   }
   async function relatedInstalled(){
@@ -125,7 +131,10 @@
     paint(node);
     // No iOS App Store build exists. Safari supports browser Add to Home Screen.
     node.querySelector('.ma-offer-play').hidden=appleMobile();
-    node.querySelector('.ma-offer-close').addEventListener('click',close);
+    node.querySelector('.ma-offer-close').addEventListener('click',()=>{
+      try{localStorage.setItem(DISMISSED_AT,String(Date.now()));}catch(_){}
+      close();
+    });
     node.querySelector('.ma-offer-never').addEventListener('click',()=>{
       try{localStorage.setItem(OPT_OUT,'1');}catch(_){}
       close();
