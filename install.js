@@ -98,6 +98,14 @@ function platformInfo() {
     return { isIOS, isMac, isSafari, isStandalone, isTablet, isAndroid, iPadOS, isNativeShell };
 }
 
+function openMatchAppPlayStore() {
+    if (MATCHAPP_KIDS_INSTALL) return false;
+    const fallback = encodeURIComponent(MATCHAPP_PLAY_URL);
+    location.href = 'intent://details?id=' + MATCHAPP_PLAY_PACKAGE +
+        '#Intent;scheme=market;package=com.android.vending;S.browser_fallback_url=' + fallback + ';end';
+    return true;
+}
+
 function installButtons() {
     return Array.from(document.querySelectorAll('.install-btn'));
 }
@@ -114,6 +122,14 @@ function hideInstallButtons() {
 // consistent entry point instead of two competing prompts.
 window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
+    // Adult Android browser installs are routed to the official Google Play
+    // package. Keep the PWA event only for Kids and non-Android browsers.
+    if (!MATCHAPP_KIDS_INSTALL && platformInfo().isAndroid) {
+        deferredInstallPrompt = null;
+        showInstallButtons();
+        setTimeout(maybeShowInstallHint, 900);
+        return;
+    }
     deferredInstallPrompt = e;
     showInstallButtons();
     // Fires after page load on Chrome/Edge, so the hint is triggered here
@@ -397,13 +413,17 @@ window.addEventListener('resize', positionInstallBubble);
 window.addEventListener('orientationchange', () => setTimeout(positionInstallBubble, 120));
 
 function initInstall() {
-    const { isIOS, isMac, isStandalone, isNativeShell } = platformInfo();
+    const { isIOS, isMac, isAndroid, isStandalone, isNativeShell } = platformInfo();
 
     // Browser installation is offered only from the secure web origin, never inside the native Android shell.
     if (!secureInstallContext() || isNativeShell) { hideInstallButtons(); return; }
 
     // Already running as an installed app — nothing to install.
     if (isStandalone || window.matchAppInstallState?.isInstalled()) { hideInstallButtons(); return; }
+
+    // Android browser visitors always get a meaningful install action immediately:
+    // the official Google Play listing, not a competing PWA install.
+    if (isAndroid && !MATCHAPP_KIDS_INSTALL) { showInstallButtons(); setTimeout(maybeShowInstallHint, 900); return; }
 
     // iOS and desktop Safari have no install event to wait for, but the
     // manual path always exists, so the button is meaningful immediately.
