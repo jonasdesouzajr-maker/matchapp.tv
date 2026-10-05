@@ -2009,7 +2009,7 @@ function initComposer() {
 }
 document.addEventListener('DOMContentLoaded', initComposer);
 
-window.newDiscoverSearch = function (opts) {
+window.newDiscoverSearch = function () {
     const el = document.getElementById('discover-new-input');
     const hint = document.getElementById('discover-compose-help');
     const question = el?.value?.trim() || '';
@@ -2026,7 +2026,7 @@ window.newDiscoverSearch = function (opts) {
         return false;
     }
     if (hint?.dataset.initialCopy) hint.textContent = hint.dataset.initialCopy;
-    askAndRender(question, { voiceOrigin: opts?.voiceOrigin === true });
+    askAndRender(question);
     // Collapse back to one line once the question is sent.
     el.value = '';
     window.autoGrowComposer();
