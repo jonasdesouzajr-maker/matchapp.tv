@@ -121,13 +121,13 @@ test('Portuguese copy and browser-only iOS installation are supported',async()=>
   assert.equal(offer.querySelector('.ma-offer-play').hidden,true,'Do not imply an iOS Play app exists');
   assert.equal(offer.querySelector('.ma-offer-browser').hidden,false);
   assert.match(offer.querySelector('.ma-offer-browser').textContent,/Tela de Início/);
+  ctx.w.document.documentElement.lang='en';
+  ctx.w.document.dispatchEvent(new ctx.w.Event('matchapp:langchange'));
+  assert.equal(offer.querySelector('.ma-offer-never').textContent,'Never show this again');
   let browserInstalls=0;
   ctx.w.installMatchApp=()=>browserInstalls++;
   offer.querySelector('.ma-offer-browser').click();
   assert.equal(browserInstalls,1,'iOS keeps the browser Add to Home Screen flow');
-  ctx.w.document.documentElement.lang='en';
-  ctx.w.document.dispatchEvent(new ctx.w.Event('matchapp:langchange'));
-  assert.equal(offer.querySelector('.ma-offer-never').textContent,'Never show this again');
   ctx.dom.window.close();
 });
 test('desktop visitors keep browser installation without a mobile-store CTA',async()=>{
