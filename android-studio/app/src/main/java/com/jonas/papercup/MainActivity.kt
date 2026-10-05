@@ -10,9 +10,13 @@ import android.net.NetworkCapabilities
 import android.net.Uri
 import android.os.Bundle
 import android.os.Message
+import android.os.VibrationEffect
+import android.os.Vibrator
+import android.os.VibratorManager
 import android.speech.RecognizerIntent
 import android.view.View
 import android.view.ViewGroup
+import android.view.HapticFeedbackConstants
 import android.webkit.CookieManager
 import android.webkit.JavascriptInterface
 import android.webkit.URLUtil
@@ -139,6 +143,7 @@ class MainActivity : AppCompatActivity() {
         web.webChromeClient = MatchChrome()
         web.addJavascriptInterface(NativeVoiceBridge(), "MatchAppNativeVoice")
         web.addJavascriptInterface(NativeStartupBridge(), "MatchAppNativeStartup")
+        web.addJavascriptInterface(NativeExperienceBridge(), "MatchAppNativeExperience")
         web.setDownloadListener { url, _, contentDisposition, mime, _ ->
             val name = URLUtil.guessFileName(url, contentDisposition, mime)
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
@@ -564,6 +569,20 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private inner class NativeExperienceBridge {
+        @JavascriptInterface
+        fun haptic(kind: String?) {
+            runOnUiThread {
+                when (kind?.lowercase()) {
+                    "success" -> web.performHapticFeedback(HapticFeedbackConstants.CONFIRM)
+                    "reject" -> web.performHapticFeedback(HapticFeedbackConstants.REJECT)
+                    "context" -> web.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
+                    else -> web.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP)
+                }
+            }
+        }
+    }
+
     private inner class NativeVoiceBridge {
         @JavascriptInterface
         fun start(languageTag: String?) {
@@ -682,11 +701,36 @@ class MainActivity : AppCompatActivity() {
                   '.premium-ad-frame,ins.adsbygoogle,.ma-ad-label,#chrome-notice,.chrome-notice,.install-btn,' +
                   '.ma-kids-mode-entry,#matchapp-kids-entry' +
                   '{display:none!important;height:0!important;min-height:0!important;overflow:hidden!important;' +
-                  'padding:0!important;margin:0!important;border:0!important}';
+                  'padding:0!important;margin:0!important;border:0!important}' +
+                  'html.matchapp-ai-android{--android-gold:#e5c158;--android-violet:#8d5cff}' +
+                  'html.matchapp-ai-android :is(button,a,[role="button"],.pill,.card){-webkit-tap-highlight-color:transparent}' +
+                  'html.matchapp-ai-android :is(button,a,[role="button"]):active{transform:scale(.975);transition:transform 90ms ease}' +
+                  'html.matchapp-ai-android .matchapp-android-thinking{animation:matchappAndroidBreathe 1.15s ease-in-out infinite}' +
+                  '@keyframes matchappAndroidBreathe{50%{filter:drop-shadow(0 0 14px rgba(229,193,88,.55));transform:scale(1.015)}}' +
+                  '@media(prefers-reduced-motion:reduce){html.matchapp-ai-android *,html.matchapp-ai-android *:before,html.matchapp-ai-android *:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}}';
                 (document.head || root).appendChild(s);
               }
 
               document.querySelectorAll('ins.adsbygoogle,.ad-banner-container').forEach(function(el){ el.remove(); });
+
+              if (!window.__matchAppAndroidPremiumBound) {
+                window.__matchAppAndroidPremiumBound = true;
+                var bridge = window.MatchAppNativeExperience;
+                var haptic = function(kind){ try { bridge && bridge.haptic(kind || 'tap'); } catch(e){} };
+                document.addEventListener('click', function(e){
+                  var target = e.target && e.target.closest && e.target.closest('button,a,[role="button"]');
+                  if (target) haptic('tap');
+                }, true);
+                document.addEventListener('contextmenu', function(e){
+                  var card = e.target && e.target.closest && e.target.closest('[data-title],.title-card,.top-title-card,.result-card,.poster-card');
+                  if (card) haptic('context');
+                }, true);
+                document.addEventListener('matchapp:match-start', function(){ haptic('tap'); root.classList.add('matchapp-android-thinking'); });
+                document.addEventListener('matchapp:match-success', function(){ haptic('success'); root.classList.remove('matchapp-android-thinking'); });
+                document.addEventListener('matchapp:match-reject', function(){ haptic('reject'); root.classList.remove('matchapp-android-thinking'); });
+                document.addEventListener('matchapp:ai-thinking', function(){ root.classList.add('matchapp-android-thinking'); });
+                document.addEventListener('matchapp:ai-done', function(){ haptic('success'); root.classList.remove('matchapp-android-thinking'); });
+              }
 
               if (!document.querySelector('link[data-cinema-dim]')) {
                 var dim = document.createElement('link');
