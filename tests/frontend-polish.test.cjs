@@ -16,11 +16,13 @@ test('shared frontend polish is loaded last on every affected web surface',()=>{
   assert.match(read('kids/index.html'),/<body class="page-kids kids-body">/);
 });
 
-test('AI answers never auto-play and retain an explicit listen control',()=>{
+test('AI answers auto-play only for mic-origin prompts and retain an explicit listen control',()=>{
   const js=read('discover.js');
   assert.doesNotMatch(js,/autoReadEnabled|match_voice_autoread|match_voice_autoread_hint_seen/);
   assert.match(js,/speak\.onclick = \(\) => window\.readAloud\(text, speak\)/);
-  assert.match(js,/TTS is user-initiated only/);
+  assert.match(js,/const voiceOrigin = !!opts\?\.voiceOrigin/);
+  assert.match(js,/if \(voiceOrigin && String\(payload\.answer \|\| ''\)\.trim\(\)\) \{[\s\S]*window\.readAloud\(payload\.answer, bubble\.speakBtn\)/);
+  assert.match(js,/MatchAppVoiceOrigin\?\.consume/);
   const profile=read('profile/profile.html');
   assert.doesNotMatch(profile,/set-autoread|Read AI answers aloud/);
 });
