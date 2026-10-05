@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-04T11:02:50.478Z",
+  "generated": "2026-10-05T12:11:10.951Z",
   "source": "TMDB / JustWatch",
   "titles": {
     "The Bear": {
@@ -1080,6 +1080,40 @@
             "Netflix"
           ],
           "link": "https://www.themoviedb.org/movie/801526/watch?locale=PT"
+        }
+      }
+    },
+    "Heeramandi: The Diamond Bazaar": {
+      "tmdbId": 156716,
+      "kind": "tv",
+      "year": 2024,
+      "regions": {
+        "BR": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/156716/watch?locale=BR"
+        },
+        "US": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/156716/watch?locale=US"
+        },
+        "GB": {
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "link": "https://www.themoviedb.org/tv/156716/watch?locale=GB"
+        },
+        "PT": {
+          "stream": [
+            "Netflix"
+          ],
+          "link": "https://www.themoviedb.org/tv/156716/watch?locale=PT"
         }
       }
     },
@@ -2942,7 +2976,6 @@
         "US": {
           "stream": [
             "Amazon Prime Video",
-            "Philo",
             "YouTube TV",
             "Amazon Prime Video with Ads",
             "Thirteen",
