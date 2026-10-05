@@ -61,15 +61,43 @@
     return /^pt/i.test(String(document.documentElement.lang||navigator.language||'en'));
   }
   function copy(){
-    return pt()?{
-      title:'Leve o MatchApp Ai com você',
-      description:PLAY_RELEASED?'Prefere usar como aplicativo? Instale pelo navegador ou escolha o Google Play.':'Instale pelo navegador agora. O download pelo Google Play estará disponível após o lançamento.',
-      browser:'Instalar pelo navegador',play:PLAY_RELEASED?'Baixar no Google Play':'Google Play — em breve',
-      never:'Nunca mostrar novamente',close:'Fechar sugestão de instalação'
-    }:{
-      title:'Take MatchApp Ai with you',
-      description:PLAY_RELEASED?'Prefer the app experience? Install from your browser or choose Google Play.':'Install from your browser for now. Google Play downloads open after launch.',
-      browser:'Install from browser',play:PLAY_RELEASED?'Get it on Google Play':'Google Play — coming soon',
+    const android=androidMobile(),ios=appleMobile();
+    if(pt()){
+      if(android)return {
+        title:'Baixe o MatchApp Ai oficial',
+        description:'Você está no Android. Instale o MatchApp Ai oficial pelo Google Play para ter a melhor experiência no seu aparelho.',
+        browser:'Instalar pelo navegador',play:'Baixar no Google Play',
+        never:'Nunca mostrar novamente',close:'Fechar sugestão de instalação'
+      };
+      if(ios)return {
+        title:'Instale o MatchApp Ai no seu iPhone ou iPad',
+        description:'Adicione o MatchApp Ai à Tela de Início pelo navegador para abrir como um aplicativo.',
+        browser:'Adicionar à Tela de Início',play:'Google Play',
+        never:'Nunca mostrar novamente',close:'Fechar sugestão de instalação'
+      };
+      return {
+        title:'Instale o MatchApp Ai',
+        description:'Instale pelo navegador para abrir o MatchApp Ai como um aplicativo neste computador.',
+        browser:'Instalar pelo navegador',play:'Google Play',
+        never:'Nunca mostrar novamente',close:'Fechar sugestão de instalação'
+      };
+    }
+    if(android)return {
+      title:'Get the official MatchApp Ai app',
+      description:'You’re on Android. Install the official MatchApp Ai app from Google Play for the best experience on your device.',
+      browser:'Install from browser',play:'Get it on Google Play',
+      never:'Never show this again',close:'Dismiss app installation suggestion'
+    };
+    if(ios)return {
+      title:'Install MatchApp Ai on your iPhone or iPad',
+      description:'Add MatchApp Ai to your Home Screen from the browser so it opens like an app.',
+      browser:'Add to Home Screen',play:'Google Play',
+      never:'Never show this again',close:'Dismiss app installation suggestion'
+    };
+    return {
+      title:'Install MatchApp Ai',
+      description:'Install from your browser so MatchApp Ai opens like an app on this computer.',
+      browser:'Install from browser',play:'Google Play',
       never:'Never show this again',close:'Dismiss app installation suggestion'
     };
   }
@@ -108,12 +136,13 @@
     const ua=navigator.userAgent||'';
     return /iPhone|iPod|iPad/i.test(ua) || (/Macintosh/i.test(ua)&&navigator.maxTouchPoints>1);
   }
+  function androidMobile(){
+    return /Android/i.test(navigator.userAgent||'') && !nativeShell();
+  }
   function openPlay(event){
-    const ua=navigator.userAgent||'';
-    if(/Android/i.test(ua)&&/Chrome\//i.test(ua)&&!/EdgA|OPR\/|SamsungBrowser/i.test(ua)){
-      event.preventDefault();
-      location.href='intent://details?id=com.jonas.papercup#Intent;scheme=market;package=com.android.vending;S.browser_fallback_url='+encodeURIComponent(PLAY)+';end';
-    }
+    if(!androidMobile())return;
+    event.preventDefault();
+    location.href='intent://details?id=com.jonas.papercup#Intent;scheme=market;package=com.android.vending;S.browser_fallback_url='+encodeURIComponent(PLAY)+';end';
   }
   async function display(){
     if(shown||excluded())return;
@@ -129,8 +158,11 @@
       (PLAY_RELEASED?'<a class="ma-offer-play" target="_blank" rel="noopener noreferrer" href="'+PLAY+'"></a>':'<button class="ma-offer-play" type="button" disabled aria-disabled="true"></button>')+'</div>'+
       '<button class="ma-offer-never" type="button"></button>';
     paint(node);
-    // No iOS App Store build exists. Safari supports browser Add to Home Screen.
-    node.querySelector('.ma-offer-play').hidden=appleMobile();
+    // Device-aware install route: Android promotes the official Play app;
+    // iOS/iPadOS and desktop keep the genuine browser/PWA installation path.
+    const android=androidMobile();
+    node.querySelector('.ma-offer-browser').hidden=android;
+    node.querySelector('.ma-offer-play').hidden=!android;
     node.querySelector('.ma-offer-close').addEventListener('click',()=>{
       try{localStorage.setItem(DISMISSED_AT,String(Date.now()));}catch(_){}
       close();
