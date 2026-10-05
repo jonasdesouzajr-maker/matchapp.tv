@@ -3,9 +3,9 @@
 
 // Metadata for existing adult discovery pages. Never edits page bodies,
 // availability records, ratings, canonicals, language routing or UI.
-// Reviewed 2026-09-30 using settled Search Console queries, Netflix Tudum
-// (week of September 21), and YouTube's September Culture & Trends report.
-// These are relevant discovery intents, not measured keyword-volume claims.
+// Reviewed 2026-10-05 using settled Search Console queries through October 3,
+ // Google Trends, Netflix Tudum (week of September 21), and current streaming
+ // charts. These are relevant discovery intents, not keyword-volume guarantees.
 const fs = require('node:fs');
 const path = require('node:path');
 const ROOT = path.join(__dirname, '..');
@@ -14,26 +14,32 @@ function page(file, title, description, keywords) {
   pages[file] = { title, description, keywords: keywords.split(', ').filter(Boolean) };
 }
 page('index.html', 'What to Watch Tonight & Where to Stream | MatchApp Ai',
-  'Find what to watch and where to stream with AI; share a match with friends. Explore UK, Canada, Japan and Australia picks plus global entertainment.',
-  'what to watch tonight, where to watch, AI streaming concierge, latest streaming releases, AI movie recommendations, TV series recommendations, movies by mood, shows like my favorites, Match Together recommendations, date night movies, anime streaming guide, K-drama streaming guide, telenovelas, documentaries, cinema showtimes, streaming watchlist, multilingual voice search, o que assistir hoje, onde assistir, British TV series, UK streaming guide, Absolutely Fabulous BBC, Absolutely Fabulous complete series, Slow Horses, Black Mirror, Canadian TV series, Canada streaming guide, Schitt\'s Creek, North of North, Shoresy, Letterkenny, Murdoch Mysteries, Japanese TV series, Japanese drama streaming, 日本ドラマ, 今際の国のアリス, イクサガミ, ゴールデンカムイ 網走監獄襲撃編, Australian TV series, Australia streaming guide, Heartbreak High, The Survivors Australia, The Narrow Road to the Deep North series');
+  'Find what to watch tonight and where to stream it with MatchApp Ai. Get movie and TV picks by mood, current Netflix ideas, and share a match with friends.',
+  'what to watch tonight, where to watch, where to stream, what to stream tonight, find what to watch now, AI streaming concierge, latest streaming releases, movie recommendations, TV show recommendations, AI movie recommendations, movies by mood, TV shows by mood, Netflix recommendations, Netflix top 10, new on Netflix October 2026, streaming guide, Match Together, what to watch together, date night movies, anime recommendations, K-drama recommendations, where to watch anime, vertical micro-drama recommendations, AI magazine recommendations, cinema showtimes, streaming watchlist, listen to Spotify, listen to Apple Music, o que assistir hoje, onde assistir, filmes em alta Netflix Brasil, séries em alta Netflix Brasil, recomendações de filmes por humor');
 page('discover.html', 'Ask AI What to Watch, Read or Listen To | MatchApp Ai',
-  'Ask AI what to watch, read or hear: movies, anime, K-dramas, books, verified audiobooks and magazines, with regional streaming and official source links.',
-  'ask AI what to watch, voice entertainment search, movies like my favorites, anime recommendation AI, K-drama finder, book recommendation AI, audiobook recommendations, podcast discovery, perguntar à IA o que assistir');
+  'Ask MatchApp Ai what to watch, read or listen to: movies, anime, K-dramas, books, verified audiobooks, magazines and podcasts, with regional source links.',
+  'ask AI what to watch, AI movie recommendations, AI TV recommendations, where to watch a movie, where to stream a title, movies by mood, shows like my favorites, voice entertainment search, anime recommendation AI, K-drama finder, micro-drama finder, book recommendation AI, audiobook recommendations, AI magazine finder, podcast discovery, perguntar à IA o que assistir');
 page('ebooks/index.html', 'Book Recommendations AI: E-books & Audiobooks | MatchApp Ai',
   'Find your next e-book, verified audiobook or magazine by mood and genre, with original covers, official publishers and legal reading or listening sources.',
-  'AI ebook matcher, AI book recommendations, what book should I read next, books by mood, fantasy books, romance books, verified audiobook recommendations, legal free ebooks, public domain audiobooks, magazines by topic, o que ler agora, audiolivros, recomendações de livros');
+  'AI ebook matcher, AI book recommendations, what book should I read next, books by mood, fantasy books, romance books, verified audiobook recommendations, audiobook recommendations by genre, legal free ebooks, public domain audiobooks, AI magazine matcher, Discover magazines worldwide by subject and mood, magazines by topic, o que ler agora, audiolivros, recomendações de livros');
+page('about.html', 'About MatchApp Ai | Entertainment Discovery & Streaming Guide',
+  'Learn how MatchApp Ai helps people choose what to watch, find regional streaming options and discover entertainment by mood, format and platform.',
+  'about MatchApp Ai, AI entertainment concierge, entertainment discovery app, streaming guide, what to watch tonight app, where to watch movies');
+page('updates.html', 'What’s New in MatchApp Ai | App & Streaming Updates',
+  'See the latest MatchApp Ai improvements, Android release news, streaming discovery updates, Kids Mode changes and new entertainment features.',
+  'MatchApp Ai updates, MatchApp Ai Android, streaming discovery updates, entertainment app updates, Kids Mode updates, Match Together updates');
 page('cooking/index.html', 'Cooking Channels & Recipe Videos with AI | MatchApp Ai',
   'Find original recipe videos from Maangchi, Jamie Oliver, Rita Lobo and Chef John. Explore Korean and Brazilian cooking, and ask AI about techniques.',
   'original cooking channels, recipe videos, Korean cooking, Brazilian recipes, Maangchi recipes, Jamie Oliver recipes, Rita Lobo Panelinha, Food Wishes Chef John, receitas em vídeo, canais de culinária');
 page('anime.html', 'What Anime to Watch & Where to Stream | MatchApp Ai',
   'Find anime movies and series by mood, genre and streaming service. Explore anime recommendations and ask MatchApp Ai what to watch next.',
   'what anime should I watch, anime recommendations, where to watch anime, anime finder, Japanese animation, anime para assistir, onde assistir anime');
-page('together.html', 'Match Together: What to Watch as a Couple | MatchApp Ai',
-  'Choose what to watch together: combine two moods for a movie, series, anime or K-drama match. Invite a partner or friend with a shared session link.',
-  'match together, what to watch together, movies for couples, date night movies, shared movie recommendations, watch with friends, o que assistir em casal');
-page('platforms/netflix/index.html', 'What to Watch on Netflix by Mood | MatchApp Ai',
-  'Explore curated Netflix movies and series, then ask AI for a match by mood and genre. Check viewing options for your country before streaming.',
-  'what to watch on Netflix, Netflix movie recommendations, Netflix series recommendations, Netflix recommendations by mood, o que assistir na Netflix');
+page('together.html', 'Match Together: What to Watch Together | MatchApp Ai',
+  'Match Together combines two people’s moods and tastes to pick one movie, series, anime or K-drama. Invite a partner or friend with a private shared link.',
+  'Match Together, what to watch together, what should we watch tonight, movie night decider, movies for couples, date night movies, what to watch with friends, pick a movie together, shared movie recommendations, o que assistir em casal');
+page('platforms/netflix/index.html', 'What to Watch on Netflix: Top Picks by Mood | MatchApp Ai',
+  'Find what to watch on Netflix by mood and genre, including current 2026 picks and regional viewing links. Explore movies, series and recent Top 10 titles.',
+  'what to watch on Netflix, Netflix recommendations, Netflix movie recommendations, Netflix series recommendations, Netflix recommendations by mood, Netflix top 10, new on Netflix October 2026, Monster The Lizzie Borden Story, Why Did I Get Married Again, The Gentlemen, A Different World, o que assistir na Netflix');
 page('platforms/plus-sbt/index.html', '+SBT: Catálogo, Novelas, Séries e Filmes Grátis | MatchApp Ai',
   'Explore o catálogo atual do +SBT com novelas, séries, animes, infantis, programas e filmes grátis. Abra títulos no streaming oficial e descubra o que assistir.',
   '+SBT, catálogo +SBT, SBT streaming, streaming grátis Brasil, onde assistir SBT online, novelas SBT online, séries +SBT, filmes +SBT, desenhos +SBT, anime +SBT, assistir +SBT grátis, o que assistir no +SBT, catálogo de novelas +SBT, onde assistir A Usurpadora online, onde assistir Chiquititas 2013, A Caverna Encantada streaming, Doctor Who +SBT, Kamisama Kiss +SBT, Guerreiras Mágicas de Rayearth +SBT, Silvio Santos streaming, Geração Chiquititas +SBT');
@@ -117,7 +123,7 @@ function enrichMetadata(html, file) {
     const existing = head.match(/<meta\s+name="keywords"\s+content="([^"]*)"/i)?.[1] || '';
     // Keep the homepage concise; preserve legacy intents on topic pages. Terms are focused
     // on each page's actual content; never insert invisible body text.
-    const keywords = [...new Set([...(file === 'index.html' ? [] : existing.split(', ').filter(Boolean)), ...config.keywords])];
+    const keywords = [...new Set(config.keywords)];
     meta('keywords', keywords.join(', '));
     head = head.replace(/(<script\b[^>]*type="application\/ld\+json"[^>]*>)([\s\S]*?)(<\/script>)/gi, (all, open, text, close) => {
       const data = JSON.parse(text);
@@ -127,10 +133,10 @@ function enrichMetadata(html, file) {
           if (config.title) node.name = config.title;
           if (config.description) node.description = config.description;
           node.keywords = config.keywords;
-          node.dateModified = '2026-09-30';
+          node.dateModified = '2026-10-05';
         }
         if (file === 'index.html' && ['WebSite', 'SoftwareApplication'].includes(node['@type'])) {
-          node.keywords = [...new Set([...(node.keywords || []), ...config.keywords])];
+          node.keywords = config.keywords;
         }
         if (node['@graph']) node['@graph'].forEach(update);
       }
