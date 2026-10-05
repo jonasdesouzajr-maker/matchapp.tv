@@ -144,3 +144,29 @@ test('web manifests declare same existing adult Play package only for optional v
   }
   assert.doesNotMatch(read('kids/index.html'),/browser-install-offer/);
 });
+
+
+test('What’s New Play CTA is a mobile-ready pill using the canonical official listing',()=>{
+  const html=read('updates.html');
+  const dom=new JSDOM(html);
+  const button=dom.window.document.querySelector('.release-download-btn');
+  assert.ok(button,'Release page exposes a dedicated Google Play CTA');
+  assert.equal(button.getAttribute('href'),play);
+  assert.equal(button.getAttribute('target'),'_blank');
+  assert.match(button.getAttribute('rel')||'',/noopener/);
+  assert.match(button.getAttribute('rel')||'',/noreferrer/);
+  const css=[...dom.window.document.querySelectorAll('style')].map(x=>x.textContent).join('\n');
+  assert.match(css,/\.release-download-btn\{[^}]*display:inline-flex/);
+  assert.match(css,/\.release-download-btn\{[^}]*padding:/);
+  assert.match(css,/\.release-download-btn\{[^}]*border-radius:999px/);
+  assert.match(css,/\.release-download-btn\{[^}]*background:linear-gradient/);
+  assert.match(css,/\.release-download-btn:focus-visible\{/);
+  assert.match(css,/@media\(max-width:520px\)\{\.release-download-btn\{width:100%/);
+  dom.window.close();
+
+  for(const file of ['android/index.html','manifest.json','manifest-pt-br.json','release.json','browser-install-offer.js','install.js']){
+    const source=read(file);
+    assert.ok(source.includes(play),file+' must keep the verified direct Play listing');
+    assert.doesNotMatch(source,/play\.google\.com\/store\/(?:search|apps\?q=)/,file+' must not fall back to a Play search URL');
+  }
+});
