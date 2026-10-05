@@ -57,17 +57,16 @@ test('persistent Install boxes are gone; released Play CTA points to the officia
   assert.equal(ctx.timers.length,0,'Never schedule more than once in this opening');
   ctx.dom.window.close();
 });
-test('Portuguese offer exposes released Play app while browser install still works',async()=>{
-  const ctx=mount({lang:'pt-BR'}),offer=await open(ctx);
+test('Android browser offer leads only to the official Google Play app',async()=>{
+  const ctx=mount({lang:'pt-BR',ua:UA.chrome}),offer=await open(ctx);
   const playButton=offer.querySelector('.ma-offer-play');
+  const browserButton=offer.querySelector('.ma-offer-browser');
   assert.equal(playButton.tagName,'A');
   assert.equal(playButton.getAttribute('href'),play);
   assert.match(playButton.textContent,/Google Play/i);
-  assert.match(offer.querySelector('.ma-offer-description').textContent,/navegador/);
-  let browserInstalls=0;
-  ctx.w.installMatchApp=()=>browserInstalls++;
-  offer.querySelector('.ma-offer-browser').click();
-  assert.equal(browserInstalls,1,'Browser install must remain available during Play review');
+  assert.equal(playButton.hidden,false);
+  assert.equal(browserButton.hidden,true,'Android must not compete with the official Play install');
+  assert.match(offer.querySelector('.ma-offer-description').textContent,/Android/i);
   ctx.dom.window.close();
 });
 test('Never show again persists across new page openings, unlike ordinary dismissal',async()=>{
@@ -120,9 +119,21 @@ test('Portuguese copy and browser-only iOS installation are supported',async()=>
   assert.match(offer.querySelector('.ma-offer-title').textContent,/MatchApp Ai/);
   assert.match(offer.querySelector('.ma-offer-never').textContent,/Nunca mostrar/);
   assert.equal(offer.querySelector('.ma-offer-play').hidden,true,'Do not imply an iOS Play app exists');
+  assert.equal(offer.querySelector('.ma-offer-browser').hidden,false);
+  assert.match(offer.querySelector('.ma-offer-browser').textContent,/Tela de Início/);
+  let browserInstalls=0;
+  ctx.w.installMatchApp=()=>browserInstalls++;
+  offer.querySelector('.ma-offer-browser').click();
+  assert.equal(browserInstalls,1,'iOS keeps the browser Add to Home Screen flow');
   ctx.w.document.documentElement.lang='en';
   ctx.w.document.dispatchEvent(new ctx.w.Event('matchapp:langchange'));
   assert.equal(offer.querySelector('.ma-offer-never').textContent,'Never show this again');
+  ctx.dom.window.close();
+});
+test('desktop visitors keep browser installation without a mobile-store CTA',async()=>{
+  const ctx=mount({ua:UA.desktop}),offer=await open(ctx);
+  assert.equal(offer.querySelector('.ma-offer-browser').hidden,false);
+  assert.equal(offer.querySelector('.ma-offer-play').hidden,true);
   ctx.dom.window.close();
 });
 test('web manifests declare same existing adult Play package only for optional verified installation detection',()=>{
