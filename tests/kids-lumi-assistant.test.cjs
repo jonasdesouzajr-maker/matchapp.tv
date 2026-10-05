@@ -9,7 +9,7 @@ test('Kids page exposes only the voice-first Luma assistant, not a typed Ask AI 
  assert.equal(backend.getAttribute('aria-hidden'),'true');
  assert.match(html,/lumi-assistant\.css\?v=20261001-voice1/);
  assert.match(html,/lumi-assistant\.js\?v=20261002-luma1/);
- assert.match(html,/voice-input\.js\?v=20261001-lumi1/);
+ assert.match(html,/voice-input\.js\?v=20261005-voiceorigin1/);
  assert.match(html,/with Luma, a voice-first Kids assistant/);
  assert.doesNotMatch(html,/with Lumi, a voice-first Kids assistant/);
  assert.match(html,/kids\/immersive\.js\?v=20261002-luma2/);
@@ -41,7 +41,12 @@ test('Tapping Luma speaks the prompt, then starts the hidden Kids microphone and
  done();await new Promise(resolve=>setTimeout(resolve,0));assert.equal(micClicks,1);
  w.document.dispatchEvent(new w.CustomEvent('matchapp:voice-transcript',{detail:{inputId:'kids-question',text:'funny animals'}}));
  assert.equal(lumi.dataset.state,'thinking');
- w.document.dispatchEvent(new w.CustomEvent('matchapp:kids-ai-result',{detail:{speech:'Bluey. A playful family adventure.'}}));
+ const beforeTyped=spoken.length;
+ w.document.dispatchEvent(new w.CustomEvent('matchapp:kids-ai-result',{detail:{speech:'Typed answers stay silent.',voiceOrigin:false}}));
+ assert.equal(lumi.dataset.state,'idle');assert.equal(spoken.length,beforeTyped,'typed Kids answers must not auto-speak');
+ w.document.dispatchEvent(new w.CustomEvent('matchapp:voice-transcript',{detail:{inputId:'kids-question',text:'funny animals'}}));
+ assert.equal(lumi.dataset.state,'thinking');
+ w.document.dispatchEvent(new w.CustomEvent('matchapp:kids-ai-result',{detail:{speech:'Bluey. A playful family adventure.',voiceOrigin:true}}));
  assert.equal(lumi.dataset.state,'speaking');
  assert.match(spoken.at(-1),/Bluey\. A playful family adventure\./);
  done();assert.equal(lumi.dataset.state,'idle');
