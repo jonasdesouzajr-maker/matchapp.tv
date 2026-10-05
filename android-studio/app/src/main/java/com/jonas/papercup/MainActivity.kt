@@ -14,6 +14,8 @@ import android.os.VibrationEffect
 import android.os.Vibrator
 import android.os.VibratorManager
 import android.speech.RecognizerIntent
+import android.speech.tts.TextToSpeech
+import android.speech.tts.UtteranceProgressListener
 import android.view.View
 import android.view.ViewGroup
 import android.view.HapticFeedbackConstants
@@ -44,6 +46,7 @@ import androidx.core.view.WindowCompat
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.button.MaterialButton
 import org.json.JSONObject
+import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
 
@@ -63,6 +66,8 @@ class MainActivity : AppCompatActivity() {
     private val startupDeadline = Runnable { finishStartupTransition() }
     private val startupPrefs by lazy { getSharedPreferences(STARTUP_PREFS, MODE_PRIVATE) }
     private var lastUrl = HOME
+    private var voiceTts: TextToSpeech? = null
+    private var voiceTtsReady = false
 
     // Web UI (including the responsive Avatar Studio) is shared with matchapp.tv.
     // Keep production pages fresh so phone/tablet WebViews receive approved UI updates immediately.
@@ -109,6 +114,18 @@ class MainActivity : AppCompatActivity() {
         refresh = findViewById(R.id.refresh)
         offline = findViewById(R.id.offline)
         fullscreenHost = findViewById(R.id.fullscreen)
+        voiceTts = TextToSpeech(this) { status ->
+            voiceTtsReady = status == TextToSpeech.SUCCESS
+            if (voiceTtsReady) {
+                voiceTts?.setOnUtteranceProgressListener(object : UtteranceProgressListener() {
+                    override fun onStart(utteranceId: String?) = sendVoiceSpeakingState(true)
+                    override fun onDone(utteranceId: String?) = sendVoiceSpeakingState(false)
+                    @Deprecated("Deprecated in Java")
+                    override fun onError(utteranceId: String?) = sendVoiceSpeakingState(false)
+                    override fun onError(utteranceId: String?, errorCode: Int) = sendVoiceSpeakingState(false)
+                })
+            }
+        }
         applySafeInsets()
         findViewById<MaterialButton>(R.id.retry).setOnClickListener { retry() }
 
@@ -226,6 +243,10 @@ class MainActivity : AppCompatActivity() {
     override fun onDestroy() {
         finishIntro()
         finishStartupTransition(immediate = true)
+        voiceTts?.stop()
+        voiceTts?.shutdown()
+        voiceTts = null
+        voiceTtsReady = false
         fullscreenHost.removeAllViews()
         web.destroy()
         super.onDestroy()
@@ -579,6 +600,53 @@ class MainActivity : AppCompatActivity() {
         )
     }
 
+    private fun sendVoiceSpeakingState(active: Boolean) {
+        if (!::web.isInitialized) return
+        runOnUiThread {
+            web.evaluateJavascript(
+                "window.matchAppNativeSpeechState&&window.matchAppNativeSpeechState(" + active + ");",
+                null
+            )
+        }
+    }
+
+    private fun speakVoiceText(text: String?, languageTag: String?) {
+        val current = runCatching { Uri.parse(web.url.orEmpty()) }.getOrNull()
+        if (current == null || !isMatchAppHost(current.host.orEmpty())) {
+            sendVoiceError("not-allowed")
+            return
+        }
+        val value = text?.trim()?.take(4000).orEmpty()
+        val engine = voiceTts
+        if (value.isBlank() || engine == null || !voiceTtsReady) {
+            sendVoiceSpeakingState(false)
+            return
+        }
+        val tag = languageTag
+            ?.takeIf { it.matches(Regex("^[A-Za-z]{2,3}(-[A-Za-z]{2,4})?$")) }
+            ?: "en-US"
+        val locale = Locale.forLanguageTag(tag)
+        if (locale.language.isNotBlank()) {
+            val languageVoices = engine.voices
+                ?.filter { it.locale.language.equals(locale.language, ignoreCase = true) }
+                .orEmpty()
+            val localVoices = languageVoices.filterNot { it.isNetworkConnectionRequired }
+            val candidates = if (localVoices.isNotEmpty()) localVoices else languageVoices
+            val natural = Regex("neural|natural|enhanced|premium|studio", RegexOption.IGNORE_CASE)
+            val chosen = candidates.maxByOrNull { voice ->
+                var score = voice.quality
+                if (voice.locale.toLanguageTag().equals(locale.toLanguageTag(), ignoreCase = true)) score += 500
+                if (!voice.isNetworkConnectionRequired) score += 250
+                if (natural.containsMatchIn(voice.name)) score += 700
+                score
+            }
+            if (chosen != null) engine.voice = chosen else engine.language = locale
+        }
+        engine.setSpeechRate(0.98f)
+        engine.setPitch(1.0f)
+        engine.speak(value, TextToSpeech.QUEUE_FLUSH, null, "matchapp-ai-reply")
+    }
+
     private inner class NativeStartupBridge {
         @JavascriptInterface
         fun markRegistered() {
@@ -621,6 +689,19 @@ class MainActivity : AppCompatActivity() {
     }
 
     private inner class NativeVoiceBridge {
+        @JavascriptInterface
+        fun speak(text: String?, languageTag: String?) {
+            runOnUiThread { speakVoiceText(text, languageTag) }
+        }
+
+        @JavascriptInterface
+        fun stopSpeaking() {
+            runOnUiThread {
+                voiceTts?.stop()
+                sendVoiceSpeakingState(false)
+            }
+        }
+
         @JavascriptInterface
         fun start(languageTag: String?) {
             runOnUiThread {
