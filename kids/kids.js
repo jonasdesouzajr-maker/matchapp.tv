@@ -547,8 +547,8 @@
     } catch (_) { return []; }
   }
 
-  function emitKidsAIError(text,code){
-    try{document.dispatchEvent(new CustomEvent('matchapp:kids-ai-error',{detail:{text:String(text||'').trim(),code:String(code||'error')}}))}catch(_){}
+  function emitKidsAIError(text,code,voiceOrigin){
+    try{document.dispatchEvent(new CustomEvent('matchapp:kids-ai-error',{detail:{text:String(text||'').trim(),code:String(code||'error'),voiceOrigin:voiceOrigin===true}}))}catch(_){}
   }
 
   function clearChat() {
@@ -561,11 +561,12 @@
   async function askKids(question) {
     const answer=document.getElementById('kids-answer'),results=document.getElementById('kids-chat-results'),chat=document.getElementById('kids-chat');
     if(!question.trim()||!answer||!results||!chat||document.getElementById('kids-send')?.disabled)return;
+    const voiceOrigin=!!window.MatchAppVoiceOrigin?.consume?.(question);
     const version=++requestVersion,age=currentAge(),send=document.getElementById('kids-send'),form=document.getElementById('kids-ask-form');
     const quotaEmpty=()=>{
       answer.textContent=tr('quotaEmpty');send.disabled=false;form.setAttribute('aria-busy','false');
       const help=document.getElementById('kids-account-help');if(help)help.hidden=false;
-      document.dispatchEvent(new CustomEvent('matchapp:kids-quota-empty',{detail:{kind:'ask_ai'}}));
+      document.dispatchEvent(new CustomEvent('matchapp:kids-quota-empty',{detail:{kind:'ask_ai',voiceOrigin}}));
     };
     chat.classList.add('show');answer.textContent=tr('waiting');results.replaceChildren();send.disabled=true;form.setAttribute('aria-busy','true');
     try{
@@ -576,7 +577,7 @@
       if(Number.isFinite(remaining)&&Number.isFinite(credits)&&remaining<=0&&credits<=0){quotaEmpty();return;}
     }catch(_){
       if(version!==requestVersion||age!==currentAge())return;
-      answer.textContent=tr('quotaError');send.disabled=false;form.setAttribute('aria-busy','false');emitKidsAIError(answer.textContent,'quota-error');return;
+      answer.textContent=tr('quotaError');send.disabled=false;form.setAttribute('aria-busy','false');emitKidsAIError(answer.textContent,'quota-error',voiceOrigin);return;
     }
     let timer;
     const KIDS_AI_TIMEOUT_MS=60000;
@@ -595,7 +596,7 @@
     if(!chatPicks.length){
       answer.textContent=tr('noMatch');
       if(!aiApproved.length){const status=document.createElement('strong');status.textContent=tr('aiLocal');answer.prepend(status,document.createTextNode(' '));}
-      send.disabled=false;form.setAttribute('aria-busy','false');emitKidsAIError(answer.textContent,'no-match');chat.scrollIntoView({behavior:'auto',block:'nearest'});return;
+      send.disabled=false;form.setAttribute('aria-busy','false');emitKidsAIError(answer.textContent,'no-match',voiceOrigin);chat.scrollIntoView({behavior:'auto',block:'nearest'});return;
     }
     // Spend one Kids Ask AI allowance only after a usable, age-approved result
     // exists. Provider errors, timeouts and empty/fully-seen pools cost nothing.
@@ -606,14 +607,14 @@
       if(!quota?.allowed){chatPicks=[];results.replaceChildren();quotaEmpty();return;}
     }catch(_){
       if(version!==requestVersion||age!==currentAge())return;
-      chatPicks=[];results.replaceChildren();answer.textContent=tr('quotaError');send.disabled=false;form.setAttribute('aria-busy','false');emitKidsAIError(answer.textContent,'quota-error');return;
+      chatPicks=[];results.replaceChildren();answer.textContent=tr('quotaError');send.disabled=false;form.setAttribute('aria-busy','false');emitKidsAIError(answer.textContent,'quota-error',voiceOrigin);return;
     }
     answer.textContent=syn?lead.title+' — '+syn:lead.title;
     if(!aiApproved.length){const status=document.createElement('strong');status.textContent=tr('aiLocal');answer.prepend(status,document.createTextNode(' '));}
     results.innerHTML=chatPicks.map((x,i)=>cardHTML(x,true,'chat-'+i)).join('');
     chatPicks.forEach((x,i)=>hydratePoster(x,'chat-'+i));
     send.disabled=false;form.setAttribute('aria-busy','false');
-    document.dispatchEvent(new CustomEvent('matchapp:kids-ai-result',{detail:{count:chatPicks.length,title:lead?.title||'',speech:syn?lead.title+'. '+syn:lead.title,answer:answer.textContent}}));
+    document.dispatchEvent(new CustomEvent('matchapp:kids-ai-result',{detail:{count:chatPicks.length,title:lead?.title||'',speech:syn?lead.title+'. '+syn:lead.title,answer:answer.textContent,voiceOrigin}}));
     chat.scrollIntoView({behavior:'auto',block:'nearest'});
   }
 
