@@ -155,3 +155,17 @@ test('adult Android keeps immersive background while respecting status bar and c
  assert.match(main,/setOnApplyWindowInsetsListener\(refresh\)/);
  assert.match(main,/setPadding\(view\.paddingLeft, safe\.top, view\.paddingRight, view\.paddingBottom\)/);
 });
+
+
+test('adult Android premium layer is native-only, tactile and reduced-motion safe',()=>{
+ const main=read('android-studio/app/src/main/java/com/jonas/papercup/MainActivity.kt');
+ const kids=read('android-studio/kidsapp/src/main/java/tv/matchapp/kids/MainActivity.kt');
+ assert.match(main,/NativeExperienceBridge/);
+ assert.match(main,/MatchAppNativeExperience/);
+ assert.match(main,/HapticFeedbackConstants\.CONFIRM/);
+ assert.match(main,/HapticFeedbackConstants\.REJECT/);
+ assert.match(main,/matchapp:match-success/);
+ assert.match(main,/matchapp:ai-thinking/);
+ assert.match(main,/prefers-reduced-motion:reduce/);
+ assert.doesNotMatch(kids,/NativeExperienceBridge/);
+});
