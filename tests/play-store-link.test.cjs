@@ -164,9 +164,13 @@ test('What’s New Play CTA is a mobile-ready pill using the canonical official 
   assert.match(css,/@media\(max-width:520px\)\{\.release-download-btn\{width:100%/);
   dom.window.close();
 
-  for(const file of ['android/index.html','manifest.json','manifest-pt-br.json','release.json','browser-install-offer.js','install.js']){
+  for(const file of ['android/index.html','manifest.json','manifest-pt-br.json','release.json','browser-install-offer.js']){
     const source=read(file);
     assert.ok(source.includes(play),file+' must keep the verified direct Play listing');
     assert.doesNotMatch(source,/play\.google\.com\/store\/(?:search|apps\?q=)/,file+' must not fall back to a Play search URL');
   }
+  const install=read('install.js');
+  assert.match(install,/MATCHAPP_PLAY_PACKAGE = 'com\.jonas\.papercup'/);
+  assert.match(install,/MATCHAPP_PLAY_URL = 'https:\/\/play\.google\.com\/store\/apps\/details\?id=' \+ MATCHAPP_PLAY_PACKAGE/);
+  assert.doesNotMatch(install,/play\.google\.com\/store\/(?:search|apps\?q=)/);
 });
