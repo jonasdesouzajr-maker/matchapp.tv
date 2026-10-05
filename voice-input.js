@@ -13,6 +13,37 @@ const SPEECH_LANG_MAP = {
   'id':'id-ID','ja':'ja-JP','ko':'ko-KR','zh':'zh-CN'
 };
 
+const VOICE_ORIGIN_KEY='matchapp_voice_origin_v1';
+const VOICE_ORIGIN_TTL=120000;
+function voiceScope(){return location.pathname.startsWith('/kids')?'kids':'adult';}
+function normVoiceText(value){return String(value||'').trim().replace(/\s+/g,' ').toLocaleLowerCase();}
+function readVoiceOrigin(){
+  try{
+    const row=JSON.parse(sessionStorage.getItem(VOICE_ORIGIN_KEY)||'null');
+    if(!row||row.scope!==voiceScope()||Date.now()-Number(row.at||0)>VOICE_ORIGIN_TTL){
+      sessionStorage.removeItem(VOICE_ORIGIN_KEY);return null;
+    }
+    return row;
+  }catch(_){return null;}
+}
+function markVoiceOrigin(inputId,text){
+  try{sessionStorage.setItem(VOICE_ORIGIN_KEY,JSON.stringify({inputId:String(inputId||''),text:String(text||''),scope:voiceScope(),at:Date.now()}));}catch(_){}
+}
+function clearVoiceOrigin(inputId){
+  try{
+    const row=readVoiceOrigin();
+    if(!row||!inputId||row.inputId===inputId)sessionStorage.removeItem(VOICE_ORIGIN_KEY);
+  }catch(_){}
+}
+function consumeVoiceOrigin(text){
+  const row=readVoiceOrigin();
+  if(!row)return false;
+  const matches=normVoiceText(row.text)===normVoiceText(text);
+  try{sessionStorage.removeItem(VOICE_ORIGIN_KEY);}catch(_){}
+  return matches;
+}
+window.MatchAppVoiceOrigin=Object.freeze({consume:consumeVoiceOrigin,clear:clearVoiceOrigin,peek:()=>readVoiceOrigin()});
+
 function nativeVoiceAvailable(){
   try{return !!(window.MatchAppNativeVoice && typeof window.MatchAppNativeVoice.start === 'function');}
   catch(_){return false;}
@@ -88,7 +119,8 @@ function initVoiceInput(inputId,micBtnId,onFinalTranscript){
     // Voice is a first-class input path: do not focus the textarea here.
     // On mobile, focusing it after dictation opens the software keyboard and
     // covers the conversation even though the user chose the microphone.
-    voiceEvent('matchapp:voice-transcript',{text:transcript});
+    markVoiceOrigin(inputId,transcript);
+    voiceEvent('matchapp:voice-transcript',{text:transcript,voiceOrigin:true});
     if(onFinalTranscript)onFinalTranscript(transcript);
   }
   function showError(code){
@@ -108,8 +140,10 @@ function initVoiceInput(inputId,micBtnId,onFinalTranscript){
   window.matchAppNativeVoiceResult=acceptTranscript;
   window.matchAppNativeVoiceError=showError;
 
-  if(enhanced)input.addEventListener('input',event=>{
-    if(!event.isTrusted||!listening)return;
+  input.addEventListener('input',event=>{
+    if(!event.isTrusted)return;
+    clearVoiceOrigin(inputId);
+    if(!enhanced||!listening)return;
     cancelled=true;
     try{recognition?.abort();}catch(_){}
     finish();
