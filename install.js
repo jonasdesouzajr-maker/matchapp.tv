@@ -31,6 +31,8 @@ const MATCHAPP_KIDS_INSTALL_VERSION = '20260923-kidsinstall1';
 const MATCHAPP_KIDS_INSTALL = location.pathname === '/kids' || location.pathname.startsWith('/kids/');
 const MATCHAPP_KIDS_MANIFEST = '/kids/manifest.json';
 const MATCHAPP_KIDS_NAME = 'MatchApp Ai KIDS';
+const MATCHAPP_PLAY_PACKAGE = 'com.jonas.papercup';
+const MATCHAPP_PLAY_URL = 'https://play.google.com/store/apps/details?id=' + MATCHAPP_PLAY_PACKAGE;
 function matchAppInstallLocale() {
     const primary = String((navigator.languages && navigator.languages[0]) || navigator.language || 'en')
         .replace(/_/g, '-').toLowerCase();
@@ -83,7 +85,7 @@ function platformInfo() {
     // manual instructions. Chrome on Android fires beforeinstallprompt on
     // tablets exactly as it does on phones, so they only needed recognising.
     const isAndroid = /Android/.test(ua);
-    const isNativeShell = /MatchAppTVAndroid/i.test(ua);
+    const isNativeShell = /MatchAppTVAndroid|MatchAppAiAndroid|MatchAppAiKidsAndroid/i.test(ua);
     const isTablet = iPadOS
         || (/Android/.test(ua) && !/Mobile/.test(ua))   // Android tablets omit "Mobile"
         || /Tablet|PlayBook|Silk/.test(ua);
@@ -235,6 +237,15 @@ window.installMatchApp = async function () {
     if (!MATCHAPP_KIDS_INSTALL) window.matchAppInstallProgress?.cancel?.();
     if (!secureInstallContext()) {
         if (window.showToast) showToast('For your protection, MatchApp can only be installed from the secure matchapp.tv site.');
+        return;
+    }
+    const platform = platformInfo();
+    // Browser version on Android always leads to the official Google Play app.
+    // This is deliberately checked before PWA state so an Android website visit
+    // never substitutes a browser install for the native Play release.
+    if (!MATCHAPP_KIDS_INSTALL && platform.isAndroid && !platform.isNativeShell) {
+        if (window.dismissInstallBubble) window.dismissInstallBubble();
+        openMatchAppPlayStore();
         return;
     }
     if (window.matchAppInstallState?.isInstalled()) {
