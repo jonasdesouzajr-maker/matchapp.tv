@@ -38,6 +38,9 @@ self.addEventListener('push', (event) => {
         tag: String(payload.tag || 'matchapp-notification'),
         icon: '/assets/brand/matchapp-ai-install-192.png?v=20260922-install2',
         badge: '/assets/brand/matchapp-icon-192.png',
+        renotify: true,
+        silent: false,
+        vibrate: [70, 45, 120],
         data: { url }
     }));
 });
