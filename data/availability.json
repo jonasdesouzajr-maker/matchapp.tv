@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-05T12:11:10.951Z",
+  "generated": "2026-10-06T11:55:16.209Z",
   "source": "TMDB / JustWatch",
   "titles": {
     "The Bear": {
@@ -15,8 +15,8 @@
         },
         "US": {
           "stream": [
-            "Hulu",
             "Disney Plus",
+            "Hulu",
             "YouTube TV"
           ],
           "link": "https://www.themoviedb.org/tv/136315-the-bear/watch?locale=US"
@@ -370,9 +370,9 @@
         },
         "US": {
           "stream": [
-            "Hulu",
             "Netflix",
             "Amazon Prime Video",
+            "Hulu",
             "Crunchyroll",
             "Crunchyroll Amazon Channel",
             "Netflix Standard with Ads",
@@ -430,8 +430,8 @@
         },
         "US": {
           "stream": [
-            "Hulu",
             "Netflix",
+            "Hulu",
             "Crunchyroll",
             "Crunchyroll Amazon Channel",
             "Netflix Standard with Ads"
@@ -937,6 +937,7 @@
         "US": {
           "stream": [
             "Netflix",
+            "fuboTV",
             "Netflix Standard with Ads"
           ],
           "rent": [
@@ -2131,8 +2132,8 @@
         },
         "US": {
           "stream": [
-            "Hulu",
-            "Disney Plus"
+            "Disney Plus",
+            "Hulu"
           ],
           "link": "https://www.themoviedb.org/tv/246473/watch?locale=US"
         },
@@ -2234,8 +2235,8 @@
         },
         "US": {
           "stream": [
-            "Hulu",
             "Netflix",
+            "Hulu",
             "Crunchyroll",
             "Crunchyroll Amazon Channel",
             "Netflix Standard with Ads"
@@ -2651,6 +2652,9 @@
           "stream": [
             "Disney Plus"
           ],
+          "rent": [
+            "Amazon Video"
+          ],
           "buy": [
             "Apple TV Store",
             "Rakuten TV",
@@ -2662,6 +2666,9 @@
         "PT": {
           "stream": [
             "Disney Plus"
+          ],
+          "rent": [
+            "Amazon Video"
           ],
           "buy": [
             "Apple TV Store",
