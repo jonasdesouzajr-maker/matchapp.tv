@@ -73,17 +73,18 @@ window.MATCHAPP_BUILD = '2026.10.05.1';
     const path = location.pathname;
     ensureKidsEntry();
     if (path === '/' || path === '/index.html') {
-      document.title = 'What to Watch Tonight & Where to Stream | MatchApp Ai';
-      upsertMeta('description', 'Find what to watch tonight and where to stream it with MatchApp Ai. Get movie and TV picks by mood, current Netflix ideas, and share a match with friends.');
-      upsertPropertyMeta('og:title', 'What to Watch Tonight & Where to Stream | MatchApp Ai');
-      upsertPropertyMeta('og:description', 'Find what to watch tonight and where to stream it with MatchApp Ai. Get movie and TV picks by mood, current Netflix ideas, and share a match with friends.');
-      upsertMeta('twitter:title', 'What to Watch Tonight & Where to Stream | MatchApp Ai');
-      upsertMeta('twitter:description', 'Find what to watch tonight and where to stream it with MatchApp Ai. Get movie and TV picks by mood, current Netflix ideas, and share a match with friends.');
+      document.title = 'MatchApp Ai — What to Watch Tonight & Where to Stream';
+      upsertMeta('description', 'MatchApp Ai is an AI entertainment concierge for finding what to watch tonight and where to stream it, with picks by mood, regional availability guidance and Match Together for friends or couples.');
+      upsertPropertyMeta('og:title', 'MatchApp Ai — What to Watch Tonight & Where to Stream');
+      upsertPropertyMeta('og:description', 'MatchApp Ai is an AI entertainment concierge for finding what to watch tonight and where to stream it, with picks by mood, regional availability guidance and Match Together for friends or couples.');
+      upsertMeta('twitter:title', 'MatchApp Ai — What to Watch Tonight & Where to Stream');
+      upsertMeta('twitter:description', 'MatchApp Ai is an AI entertainment concierge for finding what to watch tonight and where to stream it, with picks by mood, regional availability guidance and Match Together for friends or couples.');
       upsertMeta('robots', 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1');
       addJsonLd('matchapp-organization-schema', {
         '@context': 'https://schema.org',
         '@type': 'Organization',
-        name: 'MatchApp',
+        name: 'MatchApp Ai',
+        alternateName: ['MatchApp', 'MatchApp.tv'],
         url: 'https://matchapp.tv/',
         logo: 'https://matchapp.tv/assets/brand/matchapp-official-icon-512.webp',
         email: 'support@matchapp.tv',
@@ -103,11 +104,11 @@ window.MATCHAPP_BUILD = '2026.10.05.1';
       addJsonLd('matchapp-discover-page-schema', {
         '@context': 'https://schema.org',
         '@type': 'WebPage',
-        name: 'Ask AI What to Watch | MatchApp',
+        name: 'Ask AI What to Watch | MatchApp Ai',
         url: 'https://matchapp.tv/discover.html',
         description: 'Voice- and text-enabled entertainment concierge with regional streaming, rental and cinema availability plus opt-in title alerts.',
         isPartOf: { '@type': 'WebSite', name: 'MatchApp Ai', url: 'https://matchapp.tv/' },
-        publisher: { '@type': 'Organization', name: 'MatchApp', url: 'https://matchapp.tv/', logo: { '@type': 'ImageObject', url: 'https://matchapp.tv/assets/brand/matchapp-official-icon-512.webp', width: 512, height: 512 } }
+        publisher: { '@type': 'Organization', name: 'MatchApp Ai', alternateName: ['MatchApp', 'MatchApp.tv'], url: 'https://matchapp.tv/', logo: { '@type': 'ImageObject', url: 'https://matchapp.tv/assets/brand/matchapp-official-icon-512.webp', width: 512, height: 512 } }
       });
     }
     normalizePricingTruth();
