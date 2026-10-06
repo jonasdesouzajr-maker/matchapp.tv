@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-10-04T02:39:59.277Z",
+  "updated_at": "2026-10-06T02:58:49.257Z",
   "source_policy": "Explicitly authorized attributed original publisher RSS/Atom headlines; directly linked canonical URLs, no article-body/image republication and no betting guides",
   "items": [
     {
-      "id": "1ed9fde2",
-      "title": "As private equity, politics and prediction markets reshape sports, is the press box up to the task?",
-      "url": "https://theconversation.com/as-private-equity-politics-and-prediction-markets-reshape-sports-is-the-press-box-up-to-the-task-292094",
+      "id": "bba45e4d",
+      "title": "Anger, remorse, conspiracy theories: how sports fans cope when their club does wrong",
+      "url": "https://theconversation.com/anger-remorse-conspiracy-theories-how-sports-fans-cope-when-their-club-does-wrong-293205",
       "source": "The Conversation",
       "source_domain": "theconversation.com",
       "source_home": "https://theconversation.com",
@@ -13,23 +13,7 @@
       "category": "sports",
       "sport": "Sports",
       "event_type": "Sports",
-      "published_at": "2026-10-01T12:41:57.000Z",
-      "timestamp_kind": "published",
-      "discovery_source": "Authorized publisher RSS/Atom",
-      "image": null
-    },
-    {
-      "id": "b2489750",
-      "title": "With a former Wallaby’s ‘cruel’ diagnosis, is there a link between contact sports and MND?",
-      "url": "https://theconversation.com/with-a-former-wallabys-cruel-diagnosis-is-there-a-link-between-contact-sports-and-mnd-293330",
-      "source": "The Conversation",
-      "source_domain": "theconversation.com",
-      "source_home": "https://theconversation.com",
-      "country": "GLOBAL",
-      "category": "sports",
-      "sport": "Sports",
-      "event_type": "Sports",
-      "published_at": "2026-10-01T05:06:06.000Z",
+      "published_at": "2026-10-05T00:31:38.000Z",
       "timestamp_kind": "published",
       "discovery_source": "Authorized publisher RSS/Atom",
       "image": null
