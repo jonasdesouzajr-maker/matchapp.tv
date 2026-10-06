@@ -51,6 +51,15 @@
     return FALLBACK_COUNTRY;
   }
 
+  function selectedLanguage(){
+    let raw='';
+    try{raw=String(window.MATCH_LANG||document.documentElement.lang||localStorage.getItem('match_lang')||navigator.language||'en');}catch(_){raw=String(window.MATCH_LANG||document.documentElement.lang||navigator.language||'en');}
+    const base=raw.toLowerCase().split('-')[0];
+    return ['en','pt','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh'].includes(base)?base:'en';
+  }
+  function itemLanguage(item){return String(item?.language||'').toLowerCase().split('-')[0];}
+  function languageMatches(item,language){const own=itemLanguage(item);return !own||own===language;}
+
   function fallbackImage(source,title){
     const src=esc(decodeEntities(source||'Trusted source').slice(0,28));
     const text=esc(decodeEntities(title||'Entertainment News').slice(0,36));
@@ -93,6 +102,8 @@
     article.className='ma-news-card';
     article.dataset.newsId=item.id||'';
     article.dataset.newsScope=scope;
+    article.dataset.newsCountry=String(item.country||'GLOBAL').toUpperCase();
+    article.dataset.newsLanguage=itemLanguage(item);
     article.dataset.newsCategory=item.category==='sports'?'sports':item.category==='world'?'world':'entertainment';
     if(seo.primary_keyword)article.dataset.primaryKeyword=decodeEntities(seo.primary_keyword);
 
@@ -268,26 +279,19 @@
     document.head.appendChild(s);
   }
 
-  function chooseItems(items,country,requestedNewsId=''){
-    // Preserve local-first entertainment discovery, reserve two worldwide
-    // slots for independently refreshed sports, then fill remaining world
-    // slots without duplication. No separate or conflicting news carousel.
-    const entertainment=items.filter(i=>i.category==='entertainment');
-    const world=items.filter(i=>i.category==='world').slice(0,MAX_WORLD);
-    const sports=items.filter(i=>i.category==='sports').slice(0,MAX_SPORTS);
-    const local=entertainment.filter(i=>i.country===country).slice(0,MAX_LOCAL);
+  function chooseItems(items,country,language,requestedNewsId=''){
+    // Local means the detected residence country only. Never pad a local lane
+    // with another country's headlines, and never relabel another country as
+    // global. The selected MatchApp language is part of the feed contract.
+    const eligible=items.filter(i=>languageMatches(i,language));
+    const entertainment=eligible.filter(i=>i.category==='entertainment');
+    const world=eligible.filter(i=>i.category==='world').slice(0,MAX_WORLD);
+    const sports=eligible.filter(i=>i.category==='sports').slice(0,MAX_SPORTS);
+    const local=entertainment.filter(i=>String(i.country||'').toUpperCase()===country).slice(0,MAX_LOCAL);
     const used=new Set([...local,...sports,...world].map(i=>i.id));
-    while(local.length<MAX_LOCAL){
-      const extra=entertainment.find(i=>!used.has(i.id)&&i.country!=='GLOBAL');
-      if(!extra)break;local.push(extra);used.add(extra.id);
-    }
     const globalLimit=Math.min(MAX_GLOBAL,MAX_TOTAL-local.length-sports.length-world.length);
-    const global=entertainment.filter(i=>!used.has(i.id)&&i.country==='GLOBAL').slice(0,globalLimit);
+    const global=entertainment.filter(i=>!used.has(i.id)&&String(i.country||'').toUpperCase()==='GLOBAL').slice(0,globalLimit);
     global.forEach(i=>used.add(i.id));
-    while(global.length<globalLimit){
-      const extra=entertainment.find(i=>!used.has(i.id));
-      if(!extra)break;global.push(extra);used.add(extra.id);
-    }
     let combined=[...local.map(item=>({item,scope:'local'})),
       ...global.map(item=>({item,scope:'global'})),
       ...world.map(item=>({item,scope:'world'})),
@@ -312,7 +316,7 @@
     const deep=deepLinkState();
     const section=document.createElement('details');
     section.id='latest-news';section.className='ma-news premiere-disclosure ma-static-news';section.open=false;section.dataset.hasNew='false';
-    section.innerHTML=`<summary><span class="ma-news-summary-main"><span class="ma-news-title">MatchApp Ai news</span><span class="ma-news-description">Verified headlines updated October 2, 2026</span></span><span class="ma-news-new" role="status" aria-label="New verified news available"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M5 3h2v18H5V3Zm3 2h10.4l-1.9 4 1.9 4H8V5Z"/><circle class="ma-news-new-dot" cx="19" cy="5" r="3"/></svg><span>New</span></span></summary><div class="ma-news-panel"><div class="ma-news-empty">Loading verified entertainment, world news and sports headlines…</div></div>`;
+    section.innerHTML=`<summary><span class="ma-news-summary-main"><span class="ma-news-title">MatchApp Ai news</span><span class="ma-news-description">Local + global headlines matched to country and language</span></span><span class="ma-news-new" role="status" aria-label="New verified news available"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M5 3h2v18H5V3Zm3 2h10.4l-1.9 4 1.9 4H8V5Z"/><circle class="ma-news-new-dot" cx="19" cy="5" r="3"/></svg><span>New</span></span></summary><div class="ma-news-panel"><div class="ma-news-empty">Loading verified entertainment, world news and sports headlines…</div></div>`;
     // Bookworms may live inside the foldable Match/Ask stage on modern Home.
     // News is a separate Home section: place it AFTER the entire stage rather
     // than accidentally hiding it in the Match tab when the stage folds.
@@ -362,14 +366,15 @@
       let seen='';try{seen=localStorage.getItem(SEEN_KEY)||'';}catch(_){}
       if(currentVersion&&currentVersion!==seen){section.dataset.hasNew='true';track('latest_news_new_available',{news_feed_version:currentVersion});}
 
-      const chosen=chooseItems(items,country,deep.requestedNewsId);panel.replaceChildren();
+      const language=selectedLanguage();
+      const chosen=chooseItems(items,country,language,deep.requestedNewsId);panel.replaceChildren();
       if(chosen.combined.length){carousel=rail(chosen.combined);panel.append(carousel);}else{const e=document.createElement('div');e.className='ma-news-empty';e.textContent='Fresh verified headlines are being prepared. Check back shortly.';panel.append(e);}
 
       const meta=document.createElement('div');meta.className='ma-news-meta';
       const sportStatus=chosen.sports.length?` · Sports ${esc(formatDate(payload.sports_updated_at||payload.generated_at))}`:'';
-      meta.innerHTML=`<span>News ${esc(formatDate(payload.generated_at||Date.now()))}${sportStatus}</span><span>Open original publisher ↗</span>`;panel.append(meta);
+      meta.innerHTML=`<span>News ${esc(formatDate(payload.generated_at||Date.now()))}${sportStatus}</span><span>Open news source ↗</span>`;panel.append(meta);
       if(deep.shouldOpen)openAndReveal(deep.requestedNewsId);else if(section.open&&carousel&&carousel.startAuto)window.setTimeout(()=>carousel.startAuto(),180);
-      track('latest_news_ready',{news_country:country,news_local_count:chosen.combined.filter(x=>x.scope==='local').length,news_global_count:chosen.combined.filter(x=>x.scope==='global').length,news_total_count:chosen.combined.length,news_sports_count:chosen.combined.filter(x=>x.scope==='sports').length,news_feed_version:currentVersion,news_deep_link:Boolean(deep.requestedNewsId)});
+      track('latest_news_ready',{news_country:country,news_language:language,news_local_count:chosen.combined.filter(x=>x.scope==='local').length,news_global_count:chosen.combined.filter(x=>x.scope==='global').length,news_total_count:chosen.combined.length,news_sports_count:chosen.combined.filter(x=>x.scope==='sports').length,news_feed_version:currentVersion,news_deep_link:Boolean(deep.requestedNewsId)});
     }catch(_){panel.innerHTML='<div class="ma-news-error">Latest News is temporarily unavailable. The rest of MatchApp is unaffected.</div>';}
   }
 
