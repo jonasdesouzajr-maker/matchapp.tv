@@ -173,6 +173,8 @@ test('latest news stays country-true, language-aware, and rebuilds SEO every ref
  assert.match(generator,/country:'GB',language:'en'/);
  assert.match(generator,/if\(!tw\.length\)return false/);
  assert.match(generator,/worldLanguages\.flatMap/);
+ assert.match(generator,/notícias do mundo/);
+ assert.match(generator,/últimas notícias/);
  assert.match(generator,/language:r\.feed\.language\|\|'en'/);
  assert.match(generator,/item\.seo=seoFor\(item,trends,generated\)/);
  assert.match(generator,/item\.seo=seoFor\(item,\[\],generated\)/);
