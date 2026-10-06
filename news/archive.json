@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-06T02:58:56.593Z",
+  "generated_at": "2026-10-06T03:18:01.018Z",
   "limit": 1000,
   "items": [
     {
@@ -2031,7 +2031,7 @@
       "id": "143400a2",
       "title": "Pentagon stops using Anthropic AI tools after blacklisting company, BBC told",
       "url": "https://www.bbc.co.uk/news/articles/c5j9x9pr0240o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
+      "source": "BBC Technology",
       "source_domain": "bbc.co.uk",
       "source_home": "https://www.bbc.co.uk",
       "country": "GLOBAL",
@@ -2040,7 +2040,7 @@
       "event_type": "Entertainment",
       "category": "world",
       "person": "",
-      "description": "World news reported by BBC World on 2026-10-05. MatchApp links to the original report for its complete context and ongoing updates.",
+      "description": "World news reported by BBC Technology on 2026-10-05. MatchApp links to the original report for its complete context and ongoing updates.",
       "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/c06c/live/0ca3aea0-c0c5-11f1-bc2e-018d645d8d21.jpg",
       "matchapp_url": "https://matchapp.tv/news/articles/pentagon-stops-using-anthropic-ai-tools-after-blacklisting-company-bbc-told-143400/",
       "landing_url": "https://matchapp.tv/?news=143400a2#latest-news",
