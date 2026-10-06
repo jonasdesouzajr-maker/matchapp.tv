@@ -48,7 +48,8 @@ if [ "$name" = node ] && [ "$1" = - ]; then cat >/dev/null; fi
 `;
   for(const name of ['git','node','npm'])fs.writeFileSync(path.join(binary,name),fake,{mode:0o755});
   const trace=path.join(dir,'trace'),output=path.join(dir,'output');
-  const run=spawnSync(BASH,['-c',script],{encoding:'utf8',env:{...process.env,PATH:bashPath(binary)+':/usr/bin:/bin',TRACE:bashPath(trace),COUNT:bashPath(path.join(dir,'count')),CONFLICTS:String(conflicts),FAIL_GATE:failGate,NOOP:noop?'1':'0',GITHUB_OUTPUT:bashPath(output)}});
+  const shellScript='export PATH="'+bashPath(binary)+':/usr/bin:/bin"\n'+script;
+  const run=spawnSync(BASH,['-c',shellScript],{encoding:'utf8',env:{...process.env,TRACE:bashPath(trace),COUNT:bashPath(path.join(dir,'count')),CONFLICTS:String(conflicts),FAIL_GATE:failGate,NOOP:noop?'1':'0',GITHUB_OUTPUT:bashPath(output)}});
   return {status:run.status,stderr:run.stderr,trace:fs.readFileSync(trace,'utf8').trim().split('\n'),output:fs.existsSync(output)?fs.readFileSync(output,'utf8'):''};
  }finally{fs.rmSync(dir,{recursive:true,force:true});}
 }
