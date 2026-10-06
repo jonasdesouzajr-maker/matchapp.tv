@@ -58,13 +58,14 @@ test('live phone/tablet/desktop smoke verifies the separate Home Ask composer an
  assert.match(smoke,/Ask AI empty Send is actionable/);
 });
 
-test('Ask AI closes only an overlapping install suggestion and prevents a new one mid-chat',()=>{
+test('bell-only install prompting cannot cover or steal focus from the Home Ask composer',()=>{
  const home=read('home-approved.js'),tab=read('matchapp-ia.js'),offer=read('browser-install-offer.js'),html=read('index.html');
  assert.doesNotMatch(home,/ma-hero-ask/);
- assert.match(tab,/qs\('#ma-install-offer \.ma-offer-close'\)\?\.click/);
- assert.match(offer,/classList\.contains\('ma-ask-tab'\)\) return true/);
  assert.match(tab,/requestAnimationFrame\(\(\)=>\{[\s\S]*?window\.scrollBy\(\{top:rect\.top-desiredTop,behavior:'instant'\}\)/);
- assert.match(html,/browser-install-offer\.js\?v=20260926-playpending1&amp;chat=20260929-overlap1/);
+ assert.match(offer,/notification-bell only/);
+ assert.match(offer,/MatchNotifications/);
+ assert.doesNotMatch(offer,/appendChild\(node\)|position:\s*fixed|composerOverlapHandler|closeIfOverlappingComposer/);
+ assert.match(html,/browser-install-offer\.js\?v=20261006-bellprompt1/);
  assert.doesNotMatch(tab.slice(tab.indexOf("ba.addEventListener('click',()=>{"),tab.indexOf("if(new URLSearchParams",tab.indexOf("ba.addEventListener('click',()=>{"))),/localStorage|focus\(/);
 });
 test('live smoke checks usable input and Send inside the phone viewport',()=>{
@@ -74,10 +75,11 @@ test('live smoke checks usable input and Send inside the phone viewport',()=>{
  assert.match(smoke,/controlsUsable&&!offerCoversControl/);
  assert.match(smoke,/offerCoversControl=!!offer&&!!offer\.getClientRects\(\)\.length/);
 });
-test('optional install invite dismisses when it would cover the Home Ask composer',()=>{
+test('install discovery is a nonblocking bell notification rather than a floating Home overlay',()=>{
  const s=read('browser-install-offer.js');
- assert.match(s,/function closeIfOverlappingComposer\(\)/);
- assert.match(s,/entry\.left<offer\.right&&entry\.right>offer\.left&&entry\.top<offer\.bottom&&entry\.bottom>offer\.top/);
- assert.match(s,/addEventListener\('scroll',composerOverlapHandler/);
- assert.match(s,/removeEventListener\('scroll',composerOverlapHandler/);
+ assert.match(s,/MAX_VISITS=2/);
+ assert.match(s,/pushLocal/);
+ assert.match(s,/kind:'install'/);
+ assert.doesNotMatch(s,/function closeIfOverlappingComposer\(\)|composerOverlapHandler/);
+ assert.match(s,/document\.getElementById\('ma-install-offer'\)\?\.remove\(\)/);
 });
