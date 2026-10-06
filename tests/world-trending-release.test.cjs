@@ -77,7 +77,7 @@ test('world news is gated to independent trusted publisher feeds and slots witho
  assert.ok(refresh.includes("category:isWorld?'world':'entertainment'"));
  assert.ok(latest.includes('const MAX_WORLD=2'));
  assert.ok(latest.includes("item.category==='world'?'world':'entertainment'"));
- assert.ok(latest.includes("items.filter(i=>i.category==='sports')"));
+ assert.ok(latest.includes("eligible.filter(i=>i.category==='sports')"));
  assert.ok(refresh.includes('World News'));
 });
 test('audiobook live audit waits for verified cover rather than accepting an unpainted placeholder',()=>{
