@@ -52,13 +52,25 @@ test('native/installed/Kids/associated installs are never prompted',async()=>{
    const ctx=mount(opts);await fire(ctx);assert.equal(ctx.items.length,0,JSON.stringify(opts));ctx.dom.window.close();
  }
 });
-test('notification center exposes local install notifications and bell keeps shaking while unread',()=>{
+test('notification center exposes local install notifications, branded arrival feedback and bulk delete',()=>{
  assert.match(notifications,/function pushLocal\(item\)/);
  assert.match(notifications,/item\?\.action==='install'/);
  assert.match(notifications,/window\.MatchNotifications=\{[^}]*pushLocal/);
+ assert.match(notifications,/data-notify-delete-all/);
+ assert.match(notifications,/function deleteAll\(\)/);
+ assert.match(notifications,/notifications_delete_all/);
+ assert.match(notifications,/function playNotificationSound\(\)/);
+ assert.match(notifications,/AudioContext/);
+ assert.match(notifications,/notification-arrived/);
  const css=read('notifications.css');
  assert.match(css,/has-notification svg\{animation:matchBellRing 3\.2s ease-in-out infinite/);
+ assert.match(css,/notification-arrived svg/);
+ assert.match(css,/data-notify-delete-all/);
  assert.match(css,/@media\(prefers-reduced-motion:reduce\)/);
+ const sw=read('sw.js');
+ assert.match(sw,/renotify: true/);
+ assert.match(sw,/silent: false/);
+ assert.match(sw,/vibrate: \[70, 45, 120\]/);
 });
 test('Android install action itself still routes to the one official Play package',()=>{
  assert.match(install,/MATCHAPP_PLAY_PACKAGE = 'com\.jonas\.papercup'/);
@@ -80,4 +92,12 @@ test('web manifests keep the verified adult Play package for related-install det
    assert.ok(manifest.related_applications.some(a=>a.platform==='play'&&a.id==='com.jonas.papercup'&&a.url===play));
  }
  assert.doesNotMatch(read('kids/index.html'),/browser-install-offer/);
+});
+
+test('bulk notification deletion migration is account-scoped and authenticated-only',()=>{
+ const sql=read('supabase/migrations/20261006153308_notification_delete_all.sql');
+ assert.match(sql,/where user_id=uid/);
+ assert.match(sql,/coalesce\(is_anonymous,false\)=false/);
+ assert.match(sql,/revoke all on function public\.notifications_delete_all\(\) from public, anon/);
+ assert.match(sql,/grant execute on function public\.notifications_delete_all\(\) to authenticated/);
 });
