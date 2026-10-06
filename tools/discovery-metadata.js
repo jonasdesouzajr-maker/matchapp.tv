@@ -13,8 +13,8 @@ const pages = {};
 function page(file, title, description, keywords) {
   pages[file] = { title, description, keywords: keywords.split(', ').filter(Boolean) };
 }
-page('index.html', 'What to Watch Tonight & Where to Stream | MatchApp Ai',
-  'Find what to watch tonight and where to stream it with MatchApp Ai. Get movie and TV picks by mood, current Netflix ideas, and share a match with friends.',
+page('index.html', 'MatchApp Ai — What to Watch Tonight & Where to Stream',
+  'MatchApp Ai is an AI entertainment concierge for finding what to watch tonight and where to stream it, with picks by mood, regional availability guidance and Match Together for friends or couples.',
   'what to watch tonight, where to watch, where to stream, what to stream tonight, find what to watch now, AI streaming concierge, latest streaming releases, movie recommendations, TV show recommendations, AI movie recommendations, movies by mood, TV shows by mood, Netflix recommendations, Netflix top 10, new on Netflix October 2026, streaming guide, Match Together, what to watch together, date night movies, anime recommendations, K-drama recommendations, where to watch anime, vertical micro-drama recommendations, AI magazine recommendations, cinema showtimes, streaming watchlist, listen to Spotify, listen to Apple Music, o que assistir hoje, onde assistir, filmes em alta Netflix Brasil, séries em alta Netflix Brasil, recomendações de filmes por humor');
 page('discover.html', 'Ask AI What to Watch, Read or Listen To | MatchApp Ai',
   'Ask MatchApp Ai what to watch, read or listen to: movies, anime, K-dramas, books, verified audiobooks, magazines and podcasts, with regional source links.',
@@ -34,8 +34,8 @@ page('cooking/index.html', 'Cooking Channels & Recipe Videos with AI | MatchApp 
 page('anime.html', 'What Anime to Watch & Where to Stream | MatchApp Ai',
   'Find anime movies and series by mood, genre and streaming service. Explore anime recommendations and ask MatchApp Ai what to watch next.',
   'what anime should I watch, anime recommendations, where to watch anime, anime finder, Japanese animation, anime para assistir, onde assistir anime');
-page('together.html', 'Match Together: What to Watch Together | MatchApp Ai',
-  'Match Together combines two people’s moods and tastes to pick one movie, series, anime or K-drama. Invite a partner or friend with a private shared link.',
+page('together.html', 'Match Together by MatchApp Ai | Pick What to Watch Together',
+  'Match Together by MatchApp Ai combines two people’s moods and tastes to pick one movie, series, anime or K-drama through a private shared match link.',
   'Match Together, what to watch together, what should we watch tonight, movie night decider, movies for couples, date night movies, what to watch with friends, pick a movie together, shared movie recommendations, o que assistir em casal');
 page('platforms/netflix/index.html', 'What to Watch on Netflix: Top Picks by Mood | MatchApp Ai',
   'Find what to watch on Netflix by mood and genre, including current 2026 picks and regional viewing links. Explore movies, series and recent Top 10 titles.',
