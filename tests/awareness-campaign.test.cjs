@@ -18,7 +18,7 @@ test('home awareness is localized, date-gated and matches committed campaign',()
     assert.ok(h.includes('data-awareness-end="'+c.endExclusive+'"'));
     assert.ok(h.includes(c.pageUrl));
   }else assert.doesNotMatch(h,/id="awareness-spotlight"/);
-  assert.match(h,/\/awareness\.js\?v=20261006-ribbon1/);
+  assert.match(h,/\/awareness\.js\?v=20261006-ribbon2/);
   assert.match(j,/today>=c\.startDate&&today<c\.endExclusive|t>=c\.startDate&&t<c\.endExclusive/);
   assert.match(j,/pt-BR/);
   assert.doesNotMatch(j,/setInterval|requestAnimationFrame/);
@@ -50,7 +50,7 @@ test('Live awareness refresh moves stale top card to bottom and never recreates 
  w.close();
 });
 
-test('October breast-cancer campaign uses sourced pink ribbon and never inherits September purple',()=>{const cal=JSON.parse(read('awareness/calendar.json')),oct=cal.events.find(e=>e.key==='breast-cancer-awareness-month'),cur=JSON.parse(read('awareness/current.json')).campaign,h=read('index.html'),j=read('awareness.js'),css=read('awareness.css');assert.ok(oct);assert.equal(oct.ribbonColor,'#F58695');assert.equal(oct.ribbonColorName,'pink');assert.match(oct.ribbonSourceUrl,/nationalbreastcancer\.org/);assert.match(oct.ribbonVerifyTerm,/pink ribbon/i);if(cur?.key==='breast-cancer-awareness-month'){assert.equal(cur.ribbonColor,'#F58695');assert.match(cur.ribbonSourceUrl,/nationalbreastcancer\.org/);}assert.match(h,/--awareness:#F58695/);assert.doesNotMatch(j,/#7b4db3/);assert.doesNotMatch(css,/--awareness:#7b4db3/);});
+test('October breast-cancer campaign uses sourced pink ribbon and never inherits September purple',()=>{const cal=JSON.parse(read('awareness/calendar.json')),oct=cal.events.find(e=>e.key==='breast-cancer-awareness-month'),cur=JSON.parse(read('awareness/current.json')).campaign,h=read('index.html'),j=read('awareness.js'),css=read('awareness.css');assert.ok(oct);assert.equal(oct.ribbonColor,'#F58695');assert.equal(oct.ribbonColorName,'pink');assert.match(oct.ribbonSourceUrl,/nationalbreastcancer\.org/);assert.match(oct.ribbonVerifyTerm,/pink ribbon/i);if(cur?.key==='breast-cancer-awareness-month'){assert.equal(cur.ribbonColor,'#F58695');assert.match(cur.ribbonSourceUrl,/nationalbreastcancer\.org/);}assert.match(h,/--awareness:#F58695/);assert.doesNotMatch(j,/#7b4db3/);assert.doesNotMatch(css,/--awareness:#7b4db3/);assert.match(css,/source-backed ribbon pop treatment/);assert.match(css,/awarenessRibbonPop/);assert.match(j,/awareness-ribbon-highlight/);});
 
 test('generated awareness SEO stays source-backed and refreshable on every bot run',()=>{
  const bot=read('tools/awareness-bot.mjs'),p=read('awareness/breast-cancer-awareness-month-2026/index.html');
