@@ -1,5 +1,12 @@
 # MatchApp Ai adult app â€” Play Console release checklist
 
+## October 7, 2026 publication candidate
+- Adult release candidate is **1.1.38 (code 42)**, package **com.jonas.papercup**, compile/target API 36.
+- Code 42 supersedes the already-uploaded code 41 candidate. Do not reuse code 41 for the new publication.
+- Do not call this candidate ready if the emulator/native validation is skipped: run the local Android emulator checks when hosted CI cannot provide one.
+- The final upload file must be signed with the existing protected Play upload key; GitHub's AAB artifact remains unsigned verification output only.
+
+
 ## October 4, 2026 release-unblock checkpoint
 - Release candidate **1.1.36 (code 40)** targets **Android 16 / API 36** and removes the unverifiable redirected `www.matchapp.tv` host from `android:autoVerify`; the live apex `https://matchapp.tv/.well-known/assetlinks.json` is the canonical association.
 - This directly addresses the two Play Console items shown on October 4: the API-36 update requirement and the failing web-domain App Links association.
@@ -27,7 +34,7 @@
 2. Run `./gradlew :app:assembleDebug :app:bundleRelease :kidsapp:assembleDebug`. The unsigned release bundle build tests compilation/minification but is NOT the final signed bundle.
 3. On a real phone and tablet, test adult launch, responsiveness, cinema-dim, screen rotation, login (including Google), AI matching and accurate source links, magazines, e-books, voice microphone, file chooser, browser handoffs, online/offline and back navigation. Confirm blocked Kids routes, no in-WebView adult XXX, no stray web ads or crashes.
 4. Run the same key tests on a release-signed candidate; test from the AAB distributed by a Play internal testing track if possible. Device, authentication, network, ad-consent and publisher-link behavior cannot be proved by GitHub compilation.
-5. Generate a signed **Android App Bundle** for `:app` only, using a private signing key not stored in Git. Verify package `com.jonas.papercup`, version code 40 (only if higher than Play's last uploaded version), target SDK 36, correct upload signing certificate and Play Console listing/data safety declarations.
+5. Generate a signed **Android App Bundle** for `:app` only, using a private signing key not stored in Git. Verify package `com.jonas.papercup`, version code 42 (higher than the already-uploaded code 41), target SDK 36, correct upload signing certificate and Play Console listing/data safety declarations.
 6. Website Digital Asset Links now use the recovered **Play app-signing** SHA-256. Verify live HTTPS JSON and Android App Links on the Play-distributed build; publishing an app is not required for staging this website file.
 
 STATUS: Build/static verification is automatable. Native AdMob activation, actual Play signing and physical-device release QA still require the missing owner inputs and tests.
