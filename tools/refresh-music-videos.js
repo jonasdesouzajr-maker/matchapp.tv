@@ -4,10 +4,12 @@
 // Scheduled ownership: the daily Top Titles workflow runs this first; the standalone workflow is manual recovery only.
 const fs=require('node:fs'),path=require('node:path'),{JSDOM}=require('jsdom');
 const ROOT=path.join(__dirname,'..');
+const billboardMusic=require('./billboard-music.js');
+const spotifyMusic=require('./spotify-music-videos.js');
 const OFFICIAL=/\b(?:official (?:music )?video|videoclipe oficial|video oficial)\b/i;
 const EXCLUDE=/\b(?:lyric|lyrics|audio|visualizer|teaser|trailer|reaction|behind the scenes|live performance|live at|shorts)\b/i;
-async function request(url,binary=false){
- const r=await fetch(url,{signal:AbortSignal.timeout(30000),headers:{'User-Agent':'Mozilla/5.0 (compatible; MatchAppEditorial/1.0)'}});
+async function request(url,binary=false,timeoutMs=30000){
+ const r=await fetch(url,{signal:AbortSignal.timeout(timeoutMs),headers:{'User-Agent':'Mozilla/5.0 (compatible; MatchAppEditorial/1.0)'}});
  if(!r.ok)throw Error('HTTP '+r.status+' '+url);
  return binary?Buffer.from(await r.arrayBuffer()):r.text();
 }
@@ -61,7 +63,7 @@ async function refresh(){
    if(!/^UC[\w-]{22}$/.test(channelId||''))throw Error('Official channel ID unavailable');
    const feedUrl='https://www.youtube.com/feeds/videos.xml?channel_id='+channelId;
    const rows=parseFeed(await request(feedUrl),channelId);successes++;
-   for(const row of rows.slice(0,2)){
+   for(const row of rows.filter((r,i)=>i<2||(old.billboard?.entries||[]).some(e=>billboardMusic.normalize(e.artist)===billboardMusic.normalize(artist.artist)&&billboardMusic.normalize(r.rawTitle.replace(/\s*[\[(]?(?:official (?:music )?video|videoclipe oficial|video oficial)[\])]?\s*/ig,' ').replace(new RegExp('^'+artist.artist.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'\\s*[-–—:]\\s*','i'),'').trim())===billboardMusic.normalize(e.title)))){
     const url='https://www.youtube.com/watch?v='+row.id;
     const info=JSON.parse(await request('https://www.youtube.com/oembed?url='+encodeURIComponent(url)+'&format=json'));
     const checkedAt=new Date().toISOString().slice(0,10);
@@ -71,7 +73,7 @@ async function refresh(){
     if(existing){byId.set(row.id,{...existing,...(viewCount!==null?{viewCount,viewCountCheckedAt:checkedAt}:{})});continue;}
     const thumbnail='https://i.ytimg.com/vi/'+row.id+'/hqdefault.jpg';let image;
     // YouTube's alternate image hosts serve the same exact video artwork.
-    for(const host of ['i.ytimg.com','i9.ytimg.com']){
+    for(const host of ['i.ytimg.com','i9.ytimg.com','img.youtube.com']){
      try{const candidate=await request('https://'+host+'/vi/'+row.id+'/hqdefault.jpg',true);
       if(candidate.length>=3000&&candidate[0]===255&&candidate[1]===216){image=candidate;break;}
      }catch(_){/* Try the other exact-video image host within the finite budget. */}
@@ -83,17 +85,35 @@ async function refresh(){
    }
   }catch(error){console.error(artist.artist+': '+error.message);}
  }));
+ // Chart hits can be older than the channel's Atom window. Recheck their
+ // already verified exact IDs too; never replace them with a recent different song.
+ const chartIds=[...new Set((old.billboard?.entries||[]).map(e=>e.videoId).filter(Boolean))].slice(0,10);
+ for(let i=0;i<chartIds.length;i+=3)await Promise.all(chartIds.slice(i,i+3).map(async id=>{
+  const r=byId.get(id);if(!r)return;
+  try{
+   const info=JSON.parse(await request('https://www.youtube.com/oembed?url='+encodeURIComponent(r.url)+'&format=json',false,10000));
+   const title=info.title.replace(/\s*[\[(]?(?:official (?:music )?video|videoclipe oficial|video oficial)[\])]?\s*/ig,' ').replace(new RegExp('^'+r.artist.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'\\s*[-–—:]\\s*','i'),'').trim();
+   if(info.author_url.toLowerCase()!==r.channelUrl.toLowerCase()||billboardMusic.normalize(title)!==billboardMusic.normalize(r.title)||!OFFICIAL.test(info.title)||EXCLUDE.test(info.title))throw Error('Chart video identity mismatch');
+   const html=await request(r.url+'&hl=en',false,10000),dom=new JSDOM(html);let published;
+   try{published=dom.window.document.querySelector('meta[itemprop="uploadDate"]')?.content;}finally{dom.window.close();}
+   if(!published||new Date(published).toISOString().slice(0,10)!==new Date(r.publishedAt).toISOString().slice(0,10))throw Error('Chart video publication mismatch');
+   const views=parseViewCount(html),checkedAt=new Date().toISOString().slice(0,10);
+   byId.set(id,{...r,verifiedAt:checkedAt,...(views!==null?{viewCount:views,viewCountCheckedAt:checkedAt}:{})});
+  }catch(error){console.error('[Billboard video] '+id+': '+error.message);}
+ }));
  if(!successes)throw Error('All official feeds unavailable; previous inventory retained');
  const sorted=[...byId.values()].sort((a,b)=>Date.parse(b.publishedAt)-Date.parse(a.publishedAt)).map(r=>{const next={...r,keywords:[...new Set((r.keywords||[]).filter(Boolean))]};return {...next,seo:seoForRelease(next)};});
  // Latest release per artist; retain older IDs for saved/deep-linked release cards.
  const seen=new Set(),featured=[];
  for(const r of sorted)if(Number.isSafeInteger(Number(r.viewCount))&&!seen.has(r.channelUrl.toLowerCase())&&featured.length<12){seen.add(r.channelUrl.toLowerCase());featured.push(r.id);}
- const updated={...old,verifiedAt:new Date().toISOString().slice(0,10),items:sorted,featuredIds:featured};
+ const billboard=await billboardMusic.refreshBillboard(old.billboard,sorted,url=>request(url,false,10000));
+ const spotifyVideos=await spotifyMusic.refreshSpotifyVideos(old.spotifyVideos,url=>request(url,false,10000));
+ const updated={...old,billboard,spotifyVideos,verifiedAt:new Date().toISOString().slice(0,10),items:sorted,featuredIds:featured};
  const homeFile=path.join(ROOT,'index.html'),home=fs.readFileSync(homeFile,'utf8');
  const marker=/<script\b(?=[^>]*\bid="music-video-releases-schema")[^>]*>[\s\S]*?<\/script>/;
  const replacement='<script type="application/ld+json" id="music-video-releases-schema">'+JSON.stringify(schema(sorted.filter(r=>featured.includes(r.id)))).replace(/</g,'\\u003c')+'</script>';
  if(!marker.test(home))throw Error('SEO ownership marker missing');
- fs.writeFileSync(homeFile,home.replace(marker,replacement));
+ fs.writeFileSync(homeFile,spotifyMusic.paintHome(billboardMusic.paintHome(home.replace(marker,replacement),billboard,sorted),spotifyVideos));
  fs.writeFileSync(file,JSON.stringify(updated,null,2)+'\n');
  console.log(`${successes}/${channels.length} official feeds checked; ${featured.length} featured videos; ${sorted.length} verified records.`);
 }

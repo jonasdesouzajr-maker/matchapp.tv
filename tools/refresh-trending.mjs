@@ -1,4 +1,6 @@
 import fs from 'node:fs';
+import billboardMusic from './billboard-music.js';
+import spotifyMusic from './spotify-music-videos.js';
 import path from 'node:path';
 import {fetchLiveTrending,primaryPlatform,platformNames,countryName} from './live-editorial-data.mjs';
 
@@ -123,23 +125,25 @@ async function main(){
   };
   fs.writeFileSync(path.join(ROOT,'data/trending-week.json'),JSON.stringify(data,null,2)+'\n');
 
-  const short=uniq(titles.flatMap(t=>t.keywords||[])).slice(0,80);
-  const longTail=uniq(titles.flatMap(t=>t.longTailKeywords||[])).slice(0,100);
+  const musicInventory=JSON.parse(fs.readFileSync(path.join(ROOT,'data/music-video-releases.json'),'utf8'));
+  const musicKeywords=[...billboardMusic.chartKeywords(musicInventory.billboard),...spotifyMusic.spotifyKeywords(musicInventory.spotifyVideos)];
+  const short=uniq([...musicKeywords,...titles.flatMap(t=>t.keywords||[])]).slice(0,80);
+  const longTail=uniq([...musicKeywords,...titles.flatMap(t=>t.longTailKeywords||[])]).slice(0,100);
   fs.writeFileSync(path.join(ROOT,'data/trending-keywords.json'),JSON.stringify({updated,source:'current MatchApp entertainment trend feed',short,longTail},null,2)+'\n');
 
-  const headDescription='Discover current movies, TV series and verified music videos trending now, with fresh title details and where-to-watch discovery from MatchApp Ai.';
+  const headDescription='Discover movies, TV, Billboard Hot 100 songs and official YouTube and Spotify music videos with dated sources and where-to-watch links from MatchApp Ai.';
   const cards=titles.map((t,i)=>`<article class="trend-card"><a href="/discover.html?q=${encodeURIComponent(t.seo?.canonicalQuery||t.title)}"><img src="${esc(t.poster)}" alt="${esc(t.title)}" width="260" height="390" loading="${i<4?'eager':'lazy'}" decoding="async"></a><div><p class="rank">#${i+1} · ${esc(t.kind==='music-video'?'music video':t.kind)}${t.platform?' · '+esc(t.platform):''}</p><h2><a href="/discover.html?q=${encodeURIComponent(t.seo?.canonicalQuery||t.title)}">${esc(t.title)}</a></h2><p>${esc(t.description)}</p><p class="meta">${esc([t.year,t.originName||t.origin,(t.genre||[]).slice(0,3).join(' · ')].filter(Boolean).join(' · '))}</p>${t.kind==='music-video'&&t.url?`<p><a href="${esc(t.url)}" rel="noopener noreferrer" target="_blank">Official YouTube video</a></p>`:''}</div></article>`).join('\n');
   const ld=JSON.stringify(jsonLd(data)).replace(/</g,'\\u003c');
   const html=`<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>What’s Trending Now: Movies, TV & Music Videos | MatchApp Ai</title>
+<title>Trending Movies, Billboard & Spotify Music Videos | MatchApp Ai</title>
 <meta name="description" content="${esc(headDescription)}">
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
 <link rel="canonical" href="https://matchapp.tv/trending/this-week/">\n<link rel="icon" href="/assets/brand/matchapp-favicon-32.png" type="image/png">
 <meta property="og:type" content="website"><meta property="og:site_name" content="MatchApp Ai"><meta property="og:title" content="What’s Trending Now | MatchApp Ai"><meta property="og:description" content="${esc(headDescription)}"><meta property="og:url" content="https://matchapp.tv/trending/this-week/">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="What’s Trending Now | MatchApp Ai"><meta name="twitter:description" content="${esc(headDescription)}">
 <script type="application/ld+json">${ld}</script>
-<link rel="stylesheet" href="/brand.css?v=192"><style>body{margin:0;background:#130734;color:#f7f3ff;font:16px/1.55 Inter,system-ui,sans-serif}main,header,footer{width:min(1040px,92%);margin:auto}header{padding:22px 0}a{color:#f4d87e}.intro{max-width:780px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin:24px 0}.trend-card{display:grid;grid-template-columns:110px 1fr;gap:15px;padding:14px;border:1px solid rgba(229,193,88,.22);border-radius:20px;background:rgba(38,24,58,.82)}.trend-card img{width:110px;height:auto;aspect-ratio:2/3;object-fit:contain;border-radius:13px;background:#090612}.trend-card h2{font-size:1.08rem;margin:.2rem 0}.trend-card p{margin:.35rem 0}.rank,.meta{font-size:.78rem;color:#cfc4dc}footer{padding:34px 0}@media(max-width:520px){.trend-card{grid-template-columns:90px 1fr}.trend-card img{width:90px}}</style></head><body>
-<header><a href="/" aria-label="MatchApp Ai home">MatchApp Ai</a></header><main><h1>Latest titles trending right now</h1><p class="intro">${esc(data.sourceNote)} Updated ${esc(isoDay(updated))}. Rankings are discovery signals, not endorsements; streaming availability changes by region.</p><section class="grid">${cards}</section><p><a href="/#trending-rail">Browse Top Titles on the MatchApp Ai home page</a> · <a href="/discover.html">Ask MatchApp Ai what fits your mood</a></p></main><footer><a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · <a href="/cookies.html">Cookies</a></footer></body></html>`;
+<link rel="stylesheet" href="/brand.css?v=192"><link rel="stylesheet" href="/billboard-music.css?v=20261006-1"><script defer src="/billboard-music.js?v=20261006-1"></script><style>body{margin:0;background:#130734;color:#f7f3ff;font:16px/1.55 Inter,system-ui,sans-serif}main,header,footer{width:min(1040px,92%);margin:auto}header{padding:22px 0}a{color:#f4d87e}.intro{max-width:780px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin:24px 0}.trend-card{display:grid;grid-template-columns:110px 1fr;gap:15px;padding:14px;border:1px solid rgba(229,193,88,.22);border-radius:20px;background:rgba(38,24,58,.82)}.trend-card img{width:110px;height:auto;aspect-ratio:2/3;object-fit:contain;border-radius:13px;background:#090612}.trend-card h2{font-size:1.08rem;margin:.2rem 0}.trend-card p{margin:.35rem 0}.rank,.meta{font-size:.78rem;color:#cfc4dc}footer{padding:34px 0}@media(max-width:520px){.trend-card{grid-template-columns:90px 1fr}.trend-card img{width:90px}}</style></head><body>
+<header><a href="/" aria-label="MatchApp Ai home">MatchApp Ai</a></header><main><h1>Latest titles trending right now</h1><p class="intro">${esc(data.sourceNote)} Updated ${esc(isoDay(updated))}. Rankings are discovery signals, not endorsements; streaming availability changes by region.</p><section class="grid">${cards}</section>${billboardMusic.renderBillboard(musicInventory.billboard,musicInventory.items,{fold:false})}${spotifyMusic.renderSpotify(musicInventory.spotifyVideos)}<p><a href="/#trending-rail">Browse Top Titles on the MatchApp Ai home page</a> · <a href="/discover.html">Ask MatchApp Ai what fits your mood</a></p></main><footer><a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · <a href="/cookies.html">Cookies</a></footer></body></html>`;
   fs.mkdirSync(path.join(ROOT,'trending/this-week'),{recursive:true});
   fs.writeFileSync(path.join(ROOT,'trending/this-week/index.html'),html);
   console.log(JSON.stringify({ok:true,updated,titles:titles.length,movieTv:live.length,musicVideos:music.length,top:titles.slice(0,5).map(x=>x.title)}));
