@@ -106,3 +106,63 @@
   .matchapp-notification-poster{width:56px;height:84px}
   .matchapp-notification-delete{top:8px;right:8px}
 }
+
+
+/* Notification arrival emphasis + bulk controls (Android WebView and browsers). */
+.matchapp-notification-toolbar{align-items:center;justify-content:flex-start;flex-wrap:wrap}
+.matchapp-notification-toolbar a{margin-left:auto}
+.matchapp-notification-toolbar button{min-height:36px;padding:0 9px;border-radius:9px}
+.matchapp-notification-toolbar [data-notify-delete-all]{
+  color:#ff7b86;
+  border:1px solid rgba(255,91,102,.30);
+  background:rgba(255,91,102,.075);
+}
+.matchapp-notification-toolbar [data-notify-delete-all]:hover,
+.matchapp-notification-toolbar [data-notify-delete-all]:focus-visible{
+  color:#ff9aa3;
+  border-color:rgba(255,91,102,.68);
+  background:rgba(255,91,102,.14);
+  outline:none;
+}
+.matchapp-notification-toolbar button:disabled{opacity:.42;cursor:not-allowed}
+.matchapp-notification-button.notification-arrived{
+  animation:matchBellArrivalGlow 1.15s ease both,matchBellGlow 2.8s ease-in-out 1.15s infinite;
+}
+.matchapp-notification-button.notification-arrived svg{
+  animation:matchBellArrival .92s cubic-bezier(.2,.9,.3,1) both;
+  transform-origin:50% 10%;
+}
+@keyframes matchBellArrival{
+  0%{transform:rotate(0) scale(1)}
+  12%{transform:rotate(19deg) scale(1.08)}
+  25%{transform:rotate(-16deg) scale(1.08)}
+  38%{transform:rotate(13deg) scale(1.06)}
+  51%{transform:rotate(-10deg) scale(1.05)}
+  64%{transform:rotate(7deg) scale(1.03)}
+  78%{transform:rotate(-4deg) scale(1.02)}
+  100%{transform:rotate(0) scale(1)}
+}
+@keyframes matchBellArrivalGlow{
+  0%,100%{box-shadow:0 0 0 1px rgba(229,193,88,.18),0 0 18px rgba(229,193,88,.26)}
+  45%{box-shadow:0 0 0 3px rgba(229,193,88,.30),0 0 34px rgba(229,193,88,.52)}
+}
+@media(max-width:600px){
+  .matchapp-notification-toolbar{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+    gap:8px;
+    padding:10px 12px;
+  }
+  .matchapp-notification-toolbar button{min-height:44px;width:100%}
+  .matchapp-notification-toolbar a{
+    grid-column:1/-1;
+    margin:0;
+    min-height:36px;
+    display:grid;
+    place-items:center;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .matchapp-notification-button.notification-arrived,
+  .matchapp-notification-button.notification-arrived svg{animation:none!important}
+}
