@@ -3,6 +3,22 @@ const {test}=require('node:test');
 const assert=require('node:assert/strict');
 const fs=require('node:fs'),os=require('node:os'),path=require('node:path');
 const {spawnSync}=require('node:child_process');
+function bashExecutable(){
+ if(process.platform!=='win32')return 'bash';
+ const override=process.env.MATCHAPP_BASH;
+ if(override&&fs.existsSync(override))return override;
+ const found=spawnSync('where.exe',['git'],{encoding:'utf8'});
+ const gitPath=String(found.stdout||'').split(/\r?\n/).map(x=>x.trim()).find(Boolean);
+ if(gitPath){
+  const root=path.dirname(path.dirname(gitPath));
+  for(const rel of ['bin/bash.exe','usr/bin/bash.exe']){
+   const candidate=path.join(root,...rel.split('/'));
+   if(fs.existsSync(candidate))return candidate;
+  }
+ }
+ return 'bash';
+}
+const BASH=bashExecutable();
 const workflow=fs.readFileSync(path.join(__dirname,'../.github/workflows/trending-refresh.yml'),'utf8');
 const section=workflow.split('      - name: Publish verified daily editorial refresh')[1].split('      - name: Validate and deploy')[0];
 const script=section.split('        run: |\n')[1].split('\n').map(line=>line.slice(10)).join('\n');
@@ -28,7 +44,7 @@ if [ "$name" = node ] && [ "$1" = - ]; then cat >/dev/null; fi
 `;
   for(const name of ['git','node','npm'])fs.writeFileSync(path.join(binary,name),fake,{mode:0o755});
   const trace=path.join(dir,'trace'),output=path.join(dir,'output');
-  const run=spawnSync('bash',['-c',script],{encoding:'utf8',env:{...process.env,PATH:binary+':'+process.env.PATH,TRACE:trace,COUNT:path.join(dir,'count'),CONFLICTS:String(conflicts),FAIL_GATE:failGate,NOOP:noop?'1':'0',GITHUB_OUTPUT:output}});
+  const run=spawnSync(BASH,['-c',script],{encoding:'utf8',env:{...process.env,PATH:binary+':'+process.env.PATH,TRACE:trace,COUNT:path.join(dir,'count'),CONFLICTS:String(conflicts),FAIL_GATE:failGate,NOOP:noop?'1':'0',GITHUB_OUTPUT:output}});
   return {status:run.status,stderr:run.stderr,trace:fs.readFileSync(trace,'utf8').trim().split('\n'),output:fs.existsSync(output)?fs.readFileSync(output,'utf8'):''};
  }finally{fs.rmSync(dir,{recursive:true,force:true});}
 }
