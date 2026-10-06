@@ -5,7 +5,7 @@ if(window.__MATCHAPP_NOTIFICATIONS_V2)return;
 window.__MATCHAPP_NOTIFICATIONS_V2=true;
 const VAPID_PUBLIC='BKGucCWkS-YsS6g4HnM9DYTmm1Thj-PxxVkz9hM09tGs29uABDXQgYbnF0Zooi7AnHFv7KlbPSbPErE4J76MOZs';
 let state={notifications:[],unread:0,preferences:{inApp:true,device:false,email:false,releases:true,purchases:true,friends:true,availability:true,suggestions:true,timezone:'UTC'},watches:[]};
-let button=null,panel=null,poll=null,busy=false,markingRead=false;
+let button=null,panel=null,poll=null,busy=false,markingRead=false,localItems=[];
 const desktopHover=()=>!!window.matchMedia?.('(hover: hover) and (pointer: fine)').matches;
 const $=s=>document.querySelector(s);
 const esc=s=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -16,6 +16,14 @@ async function rpc(action,payload={}){
   if(error)throw error;return data||{};
 }
 function releaseSeenKey(v){return 'match_notification_release_seen_'+String(v||'');}
+function localSeenKey(item){
+  if(item?.localKey)return 'match_notification_local_seen_'+String(item.localKey);
+  if(item?.localRelease&&item.version)return releaseSeenKey(item.version);
+  return '';
+}
+function localSeen(item){const key=localSeenKey(item);if(!key)return false;try{return localStorage.getItem(key)==='1'}catch(_){return false}}
+function localMark(item){const key=localSeenKey(item);if(!key)return;try{localStorage.setItem(key,'1')}catch(_){}}
+function localMarkAll(){(state.notifications||[]).filter(n=>n.localRelease||n.localKey).forEach(localMark);}
 async function releaseItem(){
   try{
     const r=await fetch('/release.json',{cache:'no-store'});if(!r.ok)return null;
@@ -70,17 +78,15 @@ function suggestionHref(item){
 function isExpiredSuggestion(item){
  return item?.kind==='suggestion'&&!item?.clickedAt&&item?.expiresAt&&new Date(item.expiresAt).getTime()<=Date.now();
 }
-function localReleaseMark(item){if(item?.localRelease&&item.version)try{localStorage.setItem(releaseSeenKey(item.version),'1')}catch(_){}}
-function localReleaseMarkAll(){state.notifications.filter(n=>n.localRelease).forEach(localReleaseMark);}
 async function markAllRead(){
  if(markingRead||state.unread<=0)return;
  markingRead=true;
  const previous=state.notifications;
  const now=new Date().toISOString();
  // Clear the visual unread state immediately. Server truth is reconciled below.
- localReleaseMarkAll();
+ localMarkAll();
  state.notifications=(state.notifications||[]).map(item=>
-   item.localRelease||item.readAt?item:{...item,readAt:now}
+   item.localRelease||item.localKey||item.readAt?item:{...item,readAt:now}
  );
  render();
  try{
@@ -99,8 +105,13 @@ async function markAllRead(){
  }
 }
 async function clickItem(item){
- localReleaseMark(item);
- if(!item.localRelease&&signed()){
+ localMark(item);
+ if(item?.action==='install'){
+   render();
+   if(typeof window.installMatchApp==='function')window.installMatchApp();
+   return;
+ }
+ if(!item.localRelease&&!item.localKey&&signed()){
    try{await change('clicked',{id:item.id},false);}catch(_){}
  }
  const href=item?.kind==='suggestion'?suggestionHref(item):item.href;
@@ -108,8 +119,9 @@ async function clickItem(item){
 }
 async function deleteItem(item){
  if(!item)return;
- if(item.localRelease){
-   localReleaseMark(item);
+ if(item.localRelease||item.localKey){
+   localMark(item);
+   localItems=localItems.filter(n=>String(n?.id)!==String(item.id));
    state.notifications=(state.notifications||[]).filter(n=>n!==item);
    render();
    return;
@@ -130,7 +142,7 @@ async function deleteItem(item){
 function render(){
  if(!button||!panel)return;
  const visible=(state.notifications||[]).filter(n=>categoryEnabled(n.kind)&&!isExpiredSuggestion(n));
- const unread=visible.filter(n=>!n.readAt&&!n.localRelease).length+visible.filter(n=>n.localRelease&&localStorage.getItem(releaseSeenKey(n.version))!=='1').length;
+ const unread=visible.filter(n=>(n.localRelease||n.localKey)?!localSeen(n):!n.readAt).length;
  state.unread=unread;
  const count=button.querySelector('.matchapp-notification-count');
  count.hidden=unread===0;count.textContent=unread>99?'99+':String(unread||'');
@@ -140,9 +152,9 @@ function render(){
  if(!visible.length){const empty=document.createElement('p');empty.className='matchapp-notification-empty';empty.textContent=signed()?'You’re all caught up.':'Sign in to follow titles, purchases and Match Together invitations.';list.appendChild(empty);}
  visible.forEach(item=>{
    const row=document.createElement('article');
-   row.className='matchapp-notification-item'+((!item.readAt&&!item.localRelease)||item.localRelease&&localStorage.getItem(releaseSeenKey(item.version))!=='1'?' is-unread':'')+(item.kind==='suggestion'?' is-suggestion':'');
+   row.className='matchapp-notification-item'+(((item.localRelease||item.localKey)?!localSeen(item):!item.readAt)?' is-unread':'')+(item.kind==='suggestion'?' is-suggestion':'');
    const openBtn=document.createElement('button');openBtn.type='button';openBtn.className='matchapp-notification-open';
-   const icons={availability:'▶',purchase:'✓',friend_request:'♡',match_together:'✦',system:'★',account:'●',suggestion:'✦'};
+   const icons={availability:'▶',purchase:'✓',friend_request:'♡',match_together:'✦',system:'★',account:'●',suggestion:'✦',install:'↓'};
    const poster=String(item?.payload?.posterUrl||'');
    const media=item.kind==='suggestion'&&/^https:\/\//i.test(poster)
      ?'<img class="matchapp-notification-poster" src="'+esc(poster)+'" alt="'+esc(String(item?.payload?.title||item.title||'Suggested title'))+'" loading="lazy" decoding="async">'
@@ -223,6 +235,11 @@ async function refresh(){
    }catch(_){}
  }
  state={...state,...server};
+ const queuedLocal=localItems.filter(item=>!localSeen(item));
+ if(queuedLocal.length){
+   const ids=new Set(queuedLocal.map(item=>String(item.id)));
+   state.notifications=[...queuedLocal,...(state.notifications||[]).filter(item=>!ids.has(String(item?.id)))];
+ }
  const release=await releaseItem();
  if(release){
    const already=(state.notifications||[]).some(n=>String(n?.payload?.version||'')===String(release.version));
@@ -243,8 +260,19 @@ async function followTitle(meta,region){
    return true;
  }catch(_){window.showToast?.('Could not follow this title right now.',true);return false;}
 }
+function pushLocal(item){
+ if(!item||!item.id||!item.localKey)return false;
+ if(localSeen(item))return false;
+ const next={kind:'system',createdAt:new Date().toISOString(),...item,localOnly:true};
+ const existing=localItems.findIndex(n=>String(n?.id)===String(next.id));
+ if(existing>=0)localItems[existing]=next;else localItems.unshift(next);
+ const ids=new Set(localItems.map(n=>String(n.id)));
+ state.notifications=[...localItems.filter(n=>!localSeen(n)),...(state.notifications||[]).filter(n=>!ids.has(String(n?.id)))];
+ render();
+ return true;
+}
 function authChanged(){refresh();if(poll)clearInterval(poll);poll=setInterval(()=>{if(!document.hidden)refresh();},60000);}
-window.MatchNotifications={refresh,open,close,followTitle,enableDevice,savePrefs,markAllRead,deleteItem};
+window.MatchNotifications={refresh,open,close,followTitle,enableDevice,savePrefs,markAllRead,deleteItem,pushLocal};
 document.addEventListener('matchapp:authchange',authChanged);
 document.addEventListener('matchapp:tastechange',()=>{if(signed())void refresh();});
 document.addEventListener('matchapp:historychange',()=>{if(signed())void refresh();});
