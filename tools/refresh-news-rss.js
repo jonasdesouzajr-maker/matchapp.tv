@@ -18,6 +18,7 @@ const FEEDS=[
   {url:'https://feeds.bbci.co.uk/news/technology/rss.xml',source:'BBC Technology',domains:['bbc.com','bbc.co.uk'],country:'GLOBAL',category:'world',language:'en'},
   {url:'https://feeds.bbci.co.uk/news/science_and_environment/rss.xml',source:'BBC Science',domains:['bbc.com','bbc.co.uk'],country:'GLOBAL',category:'world',language:'en'},
   {url:'https://g1.globo.com/dynamo/pop-arte/rss2.xml',source:'G1',domains:['g1.globo.com'],country:'BR',language:'pt'},
+  {url:'https://g1.globo.com/dynamo/mundo/rss2.xml',source:'G1 Mundo',domains:['g1.globo.com'],country:'GLOBAL',category:'world',language:'pt'},
   {url:'https://rss.cnn.com/rss/edition_entertainment.rss',source:'CNN',domains:['cnn.com'],country:'US',language:'en'},
   {url:'https://www.hollywoodreporter.com/feed/',source:'The Hollywood Reporter',domains:['hollywoodreporter.com'],country:'US',language:'en'},
   {url:'https://www.reutersagency.com/feed/?best-topics=entertainment&post_type=best',source:'Reuters',domains:['reuters.com','reutersagency.com'],country:'GLOBAL',language:'en'}
@@ -259,6 +260,7 @@ function seoFor(i,trends,generated){
   const topic=words(`${i.person} ${i.title}`).slice(0,10);
   const trend=trends.filter(t=>{
     const tw=words(t);
+    if(!tw.length)return false;
     const overlap=tw.filter(w=>topic.includes(w));
     return overlap.length>=Math.min(2,tw.length)||Boolean(i.person&&clean(t).toLowerCase().includes(i.person.toLowerCase()));
   }).slice(0,4);
