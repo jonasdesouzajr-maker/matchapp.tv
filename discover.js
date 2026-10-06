@@ -618,6 +618,9 @@ function enrichDiscoverItem(item, question) {
 
 async function enrichDiscoverMedia(item) {
     if (!item || !item.title) return item;
+    // Source-checked watch requests already resolved the exact ID, genre and
+    // requested country before their answer was displayed or charged.
+    if (item._watchVerified && item._catalogMedia) return item;
     // AI-provided platform labels are unverified hints. An unavailable source,
     // network failure, or audio request must never turn one into a claimed
     // country-specific streaming service or a wrong-title deep link.
@@ -1095,7 +1098,7 @@ async function hydrateDiscoverCard(item, idx) {
     }
     const availabilityHost = document.getElementById('discover-availability-' + idx);
     if (item._catalogMedia && window.MatchAppCatalogMedia?.renderAvailability) {
-        window.MatchAppCatalogMedia.renderAvailability(availabilityHost, item._catalogMedia, { title: item.title });
+        window.MatchAppCatalogMedia.renderAvailability(availabilityHost, item._catalogMedia, { title: item.title, region: item._watchRegion });
     }
     const previewHost = document.getElementById('discover-preview-' + idx);
     if (item._catalogMedia && window.MatchAppCatalogMedia?.renderPreview) {
@@ -1706,7 +1709,9 @@ async function renderResultsInto(grid, items, baseIndex) {
         const syn = document.querySelector(`[data-discover-idx="${baseIndex + i}"] .discover-synopsis`);
         if (syn && !syn.textContent.trim()) syn.textContent = it.synopsis || '';
     });
-    await attachRelated(grid, items, baseIndex);
+    // Related-title rails are not subject/region-filtered. Do not undo a
+    // documentary/streaming constraint by appending unrelated suggestions.
+    if (!items.some(item => item._watchVerified)) await attachRelated(grid, items, baseIndex);
 }
 
 /* ---------- The main ask flow ---------- */
@@ -1762,15 +1767,25 @@ async function runAskAndRender(question, opts) {
         .slice(0, -1)
         .map(t => ({ role: t.role, text: t.text }));
 
+    const watchConstraints = window.MatchAppWatchVerified?.constraints(question, history);
+    const watchQuestion = watchConstraints?.active
+        ? window.MatchAppWatchVerified.prompt(question, watchConstraints) : question;
+
     const bookIntent = detectBookIntent(question);
     const cookingIntent = !!window.MatchCooking?.isCooking(question);
     let payload, musicPayload, source = 'ai';
     try {
         musicPayload = await window.MatchAppMusicReleases?.query(question, history);
         if (musicPayload) payload = musicPayload;
-        else payload = await askAIConversational(question, history);
+        else payload = await askAIConversational(watchQuestion, history);
     }
     catch (e) { payload = cookingIntent ? {answer: /^pt/i.test(window.MATCH_LANG||'') ? 'A IA está indisponível agora. Explore abaixo as receitas e os vídeos originais dos criadores.' : 'AI is unavailable right now. Explore the original cooking sources and videos below.', results:[], _live:false} : await fallbackSearch(question, !!e.aiUnavailable); source = 'fallback'; }
+
+    if (watchConstraints?.active && !bookIntent && !cookingIntent && !musicPayload) {
+        const previous = currentThread.turns.slice(0,-1).flatMap(turn => turn.role==='assistant' ? (turn.results||[]) : []);
+        payload = await window.MatchAppWatchVerified.resolve(payload, watchConstraints, previous);
+        source = 'verified-watch';
+    }
 
     // Final bounded recovery: if AI parsing, the Edge Function, or the keyless
     // provider returns nothing, reuse the reviewed local catalogue under the
@@ -1780,7 +1795,7 @@ async function runAskAndRender(question, opts) {
     // Never overwrite its answer with an unrelated film-catalogue fallback.
     const wantsTitleRecommendations = !isFactualMediaQuestion(question) &&
         /\b(?:watch|recommend|suggest|stream|movie|movies|film|films|series|shows?|podcast|playlist|music|listen|similar|comedy|horror|romance|recommendation|assistir|filmes?|séries?|recomendar|recomende|indique|películas?)\b/i.test(mediaIntentQuestion(question));
-    if (!bookIntent && !cookingIntent && wantsTitleRecommendations && !musicPayload &&
+    if (!bookIntent && !cookingIntent && wantsTitleRecommendations && !musicPayload && !payload?._watchChecked &&
         (!payload?._live || !String(payload.answer || '').trim()) &&
         (!Array.isArray(payload?.results) || payload.results.length === 0)) {
         const local = catalogFallbackForQuestion(question);
@@ -1862,7 +1877,7 @@ async function runAskAndRender(question, opts) {
     if (offlineBadge) offlineBadge.style.display = payload._live || musicPayload ? 'none' : 'inline-flex';
 
     const bubble = appendAssistantBubble(payload.answer, bookIntent ? [] : (payload.results || []), { instant: false });
-    if(payload?._live !== true && !musicPayload && bubble?.wrap){
+    if(payload?._live !== true && !musicPayload && !payload?._watchChecked && bubble?.wrap){
         const notice=document.createElement('strong');
         notice.setAttribute('role','status');
         notice.textContent=window.matchRecoveryHeading?.() || 'TEMPORARY INTERRUPTION — PLEASE TRY AGAIN SHORTLY.';
@@ -1917,7 +1932,7 @@ async function runAskAndRender(question, opts) {
     let newItems = (bookIntent ? [] : (payload.results || []))
         .map(item => enrichDiscoverItem(item, question))
         .filter(item => item && item.title && !isDiscoverDisliked(item.title));
-    if (!bookIntent && wantsTitleRecommendations && !newItems.length && !musicPayload &&
+    if (!bookIntent && wantsTitleRecommendations && !newItems.length && !musicPayload && !payload?._watchChecked &&
         !payload?._live && window.matchPolicy && typeof CONTENT_CATALOG !== 'undefined') {
         newItems = CONTENT_CATALOG
             .filter(e => e && e.title && !isDiscoverDisliked(e.title) && window.matchPolicy.fitsQuestion(e, question))

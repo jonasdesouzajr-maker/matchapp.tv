@@ -692,10 +692,10 @@
     }
   }
 
-  function renderAvailability(host,meta,{title='',kids=false}={}){
+  function renderAvailability(host,meta,{title='',kids=false,region}={}){
     if(!host)return;host.replaceChildren();host.hidden=true;
     if(!meta||(kids&&meta.kids_approved!==true))return;
-    const actualTitle=title||meta.title||'',a=availability(meta),links=providerLinks(meta,actualTitle,a.region);
+    const actualTitle=title||meta.title||'',a=availability(meta,region),links=providerLinks(meta,actualTitle,a.region);
     const genres=(Array.isArray(meta.genres)?meta.genres:[]).filter(Boolean);
     const wrap=document.createElement('div');wrap.className='matchapp-title-availability';
     if(genres.length){
