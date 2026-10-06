@@ -61,3 +61,4 @@ enabled = true
 rp_display_name = "MatchApp.tv"
 rp_id = "matchapp.tv"
 rp_origins = ["https://matchapp.tv", "https://www.matchapp.tv"]
+\n\n# Public provider webhooks authenticate Resend/Meta signatures inside the function.\n[functions.support-agent]\nverify_jwt = false\n
