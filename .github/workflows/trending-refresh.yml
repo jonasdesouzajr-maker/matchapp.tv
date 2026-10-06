@@ -11,6 +11,8 @@ on:
       - 'tools/live-editorial-data.mjs'
       - 'tools/refresh-trending.mjs'
       - 'tools/refresh-music-videos.js'
+      - 'tools/billboard-music.js'
+      - 'tools/spotify-music-videos.js'
       - 'data/music-video-artists.json'
       - 'tools/refresh-weekly-pick.mjs'
 
@@ -89,15 +91,56 @@ jobs:
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add             data/music-video-releases.json             assets/music-videos             index.html             data/trending-week.json             data/trending-keywords.json             data/weekly-pick.json             weekly-pick-data.js             trending/this-week/index.html             featured/this-week/index.html             sitemap.xml sitemaps.xml
-          if git diff --staged --quiet; then
-            echo "Editorial content already current."
-            echo "changed=0" >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-          git commit -m "Refresh daily Top Titles, music videos and SEO"
-          git push origin HEAD:main
-          echo "changed=1" >> "$GITHUB_OUTPUT"
+          for attempt in 1 2 3; do
+            if [ "$attempt" -gt 1 ]; then
+              git fetch origin main
+              git reset --hard origin/main
+              # Discard this job's stale generated outputs; never rebase them.
+              node tools/refresh-music-videos.js
+              node tools/sync-catalog-media.js
+              node tools/refresh-trending.mjs
+              node tools/refresh-weekly-pick.mjs
+              node tools/update-sitemap.js
+              node --check weekly-pick.js
+              node --check trending-rail.js
+              node --check tools/refresh-trending.mjs
+              node --check tools/refresh-music-videos.js
+              node --check tools/refresh-weekly-pick.mjs
+              node tools/check-content-rotation.js
+              node - <<'NODE'
+              const fs=require('fs');
+              const trend=JSON.parse(fs.readFileSync('data/trending-week.json','utf8'));
+              const pick=JSON.parse(fs.readFileSync('data/weekly-pick.json','utf8'));
+              if(!Array.isArray(trend.titles)||trend.titles.length<16)throw Error('Top Titles refresh produced too few verified entries');
+              const music=JSON.parse(fs.readFileSync('data/music-video-releases.json','utf8'));
+              const featured=(music.featuredIds||[]).map(id=>music.items.find(x=>x.id===id)).filter(Boolean);
+              if(featured.length<4)throw Error('Top Titles refresh produced too few verified music-video releases');
+              for(const v of featured){if(!Date.parse(v.publishedAt)||!Number.isSafeInteger(Number(v.viewCount))||!/^https:\/\/www\.youtube\.com\/watch\?v=[\w-]{11}$/.test(v.url)||!v.seo?.title||!v.seo?.description||!Array.isArray(v.seo?.keywords)||v.seo.keywords.length<5)throw Error('Incomplete music-video metadata/SEO: '+v.id);}
+              if(!pick.title||!pick.tmdbId||!pick.poster||!pick.synopsis)throw Error('Weekly choice is incomplete');
+              if(!fs.existsSync('featured/this-week/index.html'))throw Error('Weekly featured SEO page missing');
+              if(!fs.readFileSync('sitemap.xml','utf8').includes('https://matchapp.tv/featured/this-week/'))throw Error('Weekly featured page missing from sitemap');
+              console.log(JSON.stringify({topTitles:trend.titles.length,weeklyPick:pick.title,updated:trend.updated}));
+          NODE
+
+              npm run audit:site
+              npm test
+              npm run build
+            fi
+            git add -- data/music-video-releases.json assets/music-videos index.html data/trending-week.json data/trending-keywords.json data/weekly-pick.json weekly-pick-data.js trending/this-week/index.html featured/this-week/index.html sitemap.xml sitemaps.xml
+            if git diff --staged --quiet; then
+              echo "Editorial content already current."
+              echo "changed=0" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            git commit -m "Refresh daily Top Titles, music videos and SEO"
+            if git push origin HEAD:main; then
+              echo "changed=1" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            echo "Remote main advanced; regenerate and revalidate before retry."
+          done
+          echo "::error::Daily editorial refresh did not safely publish after 3 attempts."
+          exit 1
 
       - name: Validate and deploy bot-published main commit
         if: steps.publish.outputs.changed == '1'
