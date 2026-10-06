@@ -51,3 +51,20 @@ test('Live awareness refresh moves stale top card to bottom and never recreates 
 });
 
 test('October breast-cancer campaign uses sourced pink ribbon and never inherits September purple',()=>{const cal=JSON.parse(read('awareness/calendar.json')),oct=cal.events.find(e=>e.key==='breast-cancer-awareness-month'),cur=JSON.parse(read('awareness/current.json')).campaign,h=read('index.html'),j=read('awareness.js'),css=read('awareness.css');assert.ok(oct);assert.equal(oct.ribbonColor,'#F58695');assert.equal(oct.ribbonColorName,'pink');assert.match(oct.ribbonSourceUrl,/nationalbreastcancer\.org/);assert.match(oct.ribbonVerifyTerm,/pink ribbon/i);if(cur?.key==='breast-cancer-awareness-month'){assert.equal(cur.ribbonColor,'#F58695');assert.match(cur.ribbonSourceUrl,/nationalbreastcancer\.org/);}assert.match(h,/--awareness:#F58695/);assert.doesNotMatch(j,/#7b4db3/);assert.doesNotMatch(css,/--awareness:#7b4db3/);});
+
+test('generated awareness SEO stays source-backed and refreshable on every bot run',()=>{
+ const bot=read('tools/awareness-bot.mjs'),p=read('awareness/breast-cancer-awareness-month-2026/index.html');
+ assert.match(bot,/MATCHAPP-AWARENESS-GENERATED/);
+ assert.match(bot,/seoSchema/);
+ assert.match(bot,/BreadcrumbList/);
+ assert.match(bot,/fs\.writeFileSync\(file,generic\(pageCampaign\)\)/);
+ assert.doesNotMatch(bot,/if\(!fs\.existsSync\(file\)\)fs\.writeFileSync\(file,generic\(c\)\)/);
+ assert.match(p,/application\/ld\+json/);
+ assert.match(p,/property="og:title"/);
+ assert.match(p,/name="twitter:card"/);
+ assert.match(p,/rel="canonical"/);
+ assert.match(p,/Breast Cancer Awareness Month 2026: Pink Ribbon, Dates & Official Resources \| MatchApp Ai/);
+ assert.match(p,/nationalbreastcancer\.org\/breast-cancer-ribbon/);
+ assert.match(p,/who\.int\/initiatives\/global-breast-cancer-initiative/);
+ assert.match(p,/<time datetime="2026-10-01">October 1, 2026<\/time>/);
+});
