@@ -13,14 +13,14 @@ const ARCHIVE_LIMIT=1000;
 const SPORTS_SNAPSHOT=path.join(NEWS,'sports.json');
 
 const FEEDS=[
-  {url:'https://feeds.bbci.co.uk/news/entertainment_and_arts/rss.xml',source:'BBC',domains:['bbc.com','bbc.co.uk'],country:'GB'},
-  {url:'https://feeds.bbci.co.uk/news/world/rss.xml',source:'BBC World',domains:['bbc.com','bbc.co.uk'],country:'GLOBAL',category:'world'},
-  {url:'https://feeds.bbci.co.uk/news/technology/rss.xml',source:'BBC Technology',domains:['bbc.com','bbc.co.uk'],country:'GLOBAL',category:'world'},
-  {url:'https://feeds.bbci.co.uk/news/science_and_environment/rss.xml',source:'BBC Science',domains:['bbc.com','bbc.co.uk'],country:'GLOBAL',category:'world'},
-  {url:'https://g1.globo.com/dynamo/pop-arte/rss2.xml',source:'G1',domains:['g1.globo.com'],country:'BR'},
-  {url:'https://rss.cnn.com/rss/edition_entertainment.rss',source:'CNN',domains:['cnn.com'],country:'US'},
-  {url:'https://www.hollywoodreporter.com/feed/',source:'The Hollywood Reporter',domains:['hollywoodreporter.com'],country:'US'},
-  {url:'https://www.reutersagency.com/feed/?best-topics=entertainment&post_type=best',source:'Reuters',domains:['reuters.com','reutersagency.com'],country:'GLOBAL'}
+  {url:'https://feeds.bbci.co.uk/news/entertainment_and_arts/rss.xml',source:'BBC',domains:['bbc.com','bbc.co.uk'],country:'GB',language:'en'},
+  {url:'https://feeds.bbci.co.uk/news/world/rss.xml',source:'BBC World',domains:['bbc.com','bbc.co.uk'],country:'GLOBAL',category:'world',language:'en'},
+  {url:'https://feeds.bbci.co.uk/news/technology/rss.xml',source:'BBC Technology',domains:['bbc.com','bbc.co.uk'],country:'GLOBAL',category:'world',language:'en'},
+  {url:'https://feeds.bbci.co.uk/news/science_and_environment/rss.xml',source:'BBC Science',domains:['bbc.com','bbc.co.uk'],country:'GLOBAL',category:'world',language:'en'},
+  {url:'https://g1.globo.com/dynamo/pop-arte/rss2.xml',source:'G1',domains:['g1.globo.com'],country:'BR',language:'pt'},
+  {url:'https://rss.cnn.com/rss/edition_entertainment.rss',source:'CNN',domains:['cnn.com'],country:'US',language:'en'},
+  {url:'https://www.hollywoodreporter.com/feed/',source:'The Hollywood Reporter',domains:['hollywoodreporter.com'],country:'US',language:'en'},
+  {url:'https://www.reutersagency.com/feed/?best-topics=entertainment&post_type=best',source:'Reuters',domains:['reuters.com','reutersagency.com'],country:'GLOBAL',language:'en'}
 ];
 
 const TREND_GEOS=['BR','US','GB','MX','IN'];
@@ -306,9 +306,14 @@ function seoFor(i,trends,generated){
   ]).slice(0,4);
 
   const primary=trend[0]||`${focus} latest news`;
-  const metaTitle=truncateWords(`${i.title} | Entertainment News | MatchApp Ai`,60);
+  const itemLanguage=String(i.language||'en').toLowerCase();
+  const metaTitle=truncateWords(itemLanguage.startsWith('pt')
+    ?`${i.title} | Notícias de entretenimento | MatchApp Ai`
+    :`${i.title} | Entertainment News | MatchApp Ai`,60);
   const metaDescription=truncateWords(
-    `${i.person?i.person+': ':''}${i.event_type} update reported by ${i.source} on ${isoDate}. See verified context, publication time and the original source via MatchApp Ai.`,
+    itemLanguage.startsWith('pt')
+      ?`${i.person?i.person+': ':''}Notícia publicada por ${i.source} em ${isoDate}. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.`
+      :`${i.person?i.person+': ':''}${i.event_type} update reported by ${i.source} on ${isoDate}. See verified context, publication time and the original source via MatchApp Ai.`,
     158
   );
 
@@ -395,7 +400,7 @@ function page(i){
   };
 
   return `<!doctype html>
-<html lang="en">
+<html lang="${i.language==='pt'?'pt-BR':(i.language||'en')}">
 <head>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -478,7 +483,7 @@ function hub(items,generated){
         name:'Latest Entertainment, World and Sports News',
         url:`${SITE}/news/`,
         dateModified:generated,
-        description:'An hourly refreshed entertainment and world-news index with twice-daily verified sports updates, original publisher links and source attribution.',
+        description:'An hourly refreshed entertainment and world-news index with country-aware and language-aware presentation, twice-daily verified sports updates, original publisher links and source attribution.',
         isPartOf:{'@type':'WebSite','@id':`${SITE}/#website`,url:`${SITE}/`,name:'MatchApp Ai'},
         about:[
           {'@type':'Thing',name:'Entertainment news'},
@@ -513,7 +518,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Latest Entertainment &amp; Sports News | MatchApp Ai</title>
-<meta name="description" content="Verified film, TV, music, world and sports reporting from named publishers. News refreshes hourly and sports updates twice daily, with original source links.">
+<meta name="description" content="Country-aware and language-aware film, TV, music, world and sports headlines from named publishers. News and SEO refresh hourly, with original source links.">
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
 <link rel="canonical" href="${SITE}/news/">
 <meta property="og:type" content="website">
@@ -534,7 +539,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <main style="max-width:1120px;margin:36px auto;padding:18px">
   <a href="/#latest-news">← MatchApp Latest News</a>
   <h1>Latest Entertainment, World and Sports News</h1>
-  <p>Verified entertainment and world news refreshed hourly plus trusted publisher sports links discovered twice daily. Each story opens its original publisher.</p>
+  <p>Country-aware and language-aware entertainment and world news refreshed hourly plus trusted publisher sports links discovered twice daily. SEO freshness metadata is rebuilt with every news refresh. Each story opens its source.</p>
   <section aria-labelledby="news-guide-title" style="margin:20px 0 28px;padding:20px;border:1px solid rgba(229,193,88,.22);border-radius:14px;background:rgba(24,16,38,.72)">
     <h2 id="news-guide-title" style="margin-top:0">How MatchApp Latest News works</h2>
     <p>MatchApp Latest News is an hourly entertainment and world-news index with twice-daily sports updates from named publishers. We do not republish full articles here. Each item identifies the publisher, preserves a direct link to the original report and shows enough context to help you decide what is worth opening.</p>
@@ -679,18 +684,25 @@ function enforceArticleAnalyticsOnDisk(){
       source_domain:hostname(url),
       source_home:origin(url),
       country:r.feed.country,
+      language:r.feed.language||'en',
       published_at:publishedAt,
       discovered_at:existing&&existing.discovered_at?existing.discovered_at:generated,
       event_type:ev,
       category:isWorld?'world':'entertainment',
       person:p,
-      description:isWorld?`World news reported by ${r.feed.source} on ${publishedAt.slice(0,10)}. MatchApp links to the original report for its complete context and ongoing updates.`:`${p?p+': ':''}${ev.toLowerCase()} headline reported by ${r.feed.source}. MatchApp verifies the publisher link and publication time; open the original report for full context.`,
+      description:isWorld
+        ?`World news reported by ${r.feed.source} on ${publishedAt.slice(0,10)}. MatchApp links to the original report for its complete context and ongoing updates.`
+        :(r.feed.language==='pt'
+          ?`Notícia de entretenimento publicada por ${r.feed.source}. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.`
+          :`${p?p+': ':''}${ev.toLowerCase()} headline reported by ${r.feed.source}. MatchApp verifies the publisher link and publication time; open the original report for full context.`),
       image:r.image,
       matchapp_url:matchappUrl,
       landing_url:`${SITE}/?news=${encodeURIComponent(id)}#latest-news`
     };
 
-    item.seo=existing&&existing.seo?existing.seo:seoFor(item,trends,generated);
+    // Rebuild SEO on every scheduled refresh so freshness/trend terms rotate
+    // with the current headline set instead of preserving stale metadata.
+    item.seo=seoFor(item,trends,generated);
     collected.push(item);
   }
 
@@ -698,13 +710,14 @@ function enforceArticleAnalyticsOnDisk(){
   const sports=sportsSnapshot.items.map(entry=>{
     const existing=priorById.get(entry.id);
     const item={...entry,
+      language:entry.language||(entry.country==='BR'?'pt':'en'),
       discovered_at:existing?.discovered_at||sportsSnapshot.updated_at||generated,
       person:'',
       description:entry.sport+' coverage linked to the original publisher '+entry.source+'. MatchApp records when it was indexed; open the source for full context.',
       matchapp_url:existing?.matchapp_url||`${SITE}/news/articles/${slug(entry.title)}-${entry.id.slice(0,6)}/`,
       landing_url:`${SITE}/?news=${encodeURIComponent(entry.id)}#latest-news`
     };
-    item.seo=existing?.seo||seoFor(item,[],generated);
+    item.seo=seoFor(item,[],generated);
     return item;
   });
   // Reserve both world and entertainment reporting without allowing either
