@@ -10,8 +10,12 @@
     "sourceName": "World Health Organization",
     "sourceUrl": "https://www.who.int/initiatives/global-breast-cancer-initiative",
     "pageUrl": "/awareness/breast-cancer-awareness-month-2026/",
-    "ribbonColor": "#c45c8a",
+    "ribbonColor": "#F58695",
     "theme": "",
-    "supportLine": "Early detection and timely care save lives. Reliable information first."
+    "supportLine": "Early detection and timely care save lives. Reliable information first.",
+    "ribbonColorName": "pink",
+    "ribbonSourceName": "National Breast Cancer Foundation",
+    "ribbonSourceUrl": "https://www.nationalbreastcancer.org/breast-cancer-ribbon/",
+    "ribbonVerifyTerm": "pink ribbon"
   }
 }

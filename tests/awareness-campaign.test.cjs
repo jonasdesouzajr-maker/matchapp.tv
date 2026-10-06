@@ -18,7 +18,7 @@ test('home awareness is localized, date-gated and matches committed campaign',()
     assert.ok(h.includes('data-awareness-end="'+c.endExclusive+'"'));
     assert.ok(h.includes(c.pageUrl));
   }else assert.doesNotMatch(h,/id="awareness-spotlight"/);
-  assert.match(h,/\/awareness\.js\?v=20261002-october1/);
+  assert.match(h,/\/awareness\.js\?v=20261006-ribbon1/);
   assert.match(j,/today>=c\.startDate&&today<c\.endExclusive|t>=c\.startDate&&t<c\.endExclusive/);
   assert.match(j,/pt-BR/);
   assert.doesNotMatch(j,/setInterval|requestAnimationFrame/);
@@ -26,7 +26,7 @@ test('home awareness is localized, date-gated and matches committed campaign',()
 });
 
 test('Alzheimer SEO page uses authoritative sources without partnership claim',()=>{const p=read('awareness/world-alzheimers-month-2026/index.html');assert.match(p,/World Alzheimer’s Month 2026/);assert.match(p,/The Earlier You Know, The More You Can Do/);assert.match(p,/September 21, 2026/);assert.match(p,/alzint\.org/);assert.match(p,/who\.int\/publications/);assert.match(p,/not claiming an official partnership/i);});
-test('bot is authoritative-source gated and controls expiry SEO',()=>{const b=read('tools/awareness-bot.mjs'),w=read('.github/workflows/awareness-rotation.yml'),s=read('tools/update-sitemap.js');for(const x of['who.int','alzint.org','un.org','worldcancerday.org'])assert.match(b,new RegExp(x.replaceAll('.','\\.')));assert.match(b,/noindex,follow/);assert.match(b,/syncHome/);assert.match(w,/git push origin HEAD:main/);assert.match(s,/awareness-urls\.json/);});
+test('bot is authoritative-source gated and controls expiry SEO',()=>{const b=read('tools/awareness-bot.mjs'),w=read('.github/workflows/awareness-rotation.yml'),s=read('tools/update-sitemap.js');for(const x of['who.int','alzint.org','un.org','worldcancerday.org','nationalbreastcancer.org'])assert.match(b,new RegExp(x.replaceAll('.','\\.')));assert.match(b,/noindex,follow/);assert.match(b,/syncHome/);assert.match(w,/git push origin HEAD:main/);assert.match(s,/awareness-urls\.json/);});
 test('Awareness spotlight stays at the bottom above SEO footer on each scheduled refresh',()=>{
  const h=read('index.html'),bot=read('tools/awareness-bot.mjs'),start=h.indexOf('<!-- AWARENESS-SPOTLIGHT:START -->');
  assert.ok(start>h.indexOf('</main>'),'Spotlight must follow the complete homepage main content');
@@ -49,3 +49,5 @@ test('Live awareness refresh moves stale top card to bottom and never recreates 
  assert.equal(w.document.querySelectorAll('#awareness-spotlight').length,1,'Must never duplicate awareness card');
  w.close();
 });
+
+test('October breast-cancer campaign uses sourced pink ribbon and never inherits September purple',()=>{const cal=JSON.parse(read('awareness/calendar.json')),oct=cal.events.find(e=>e.key==='breast-cancer-awareness-month'),cur=JSON.parse(read('awareness/current.json')).campaign,h=read('index.html'),j=read('awareness.js'),css=read('awareness.css');assert.ok(oct);assert.equal(oct.ribbonColor,'#F58695');assert.equal(oct.ribbonColorName,'pink');assert.match(oct.ribbonSourceUrl,/nationalbreastcancer\.org/);assert.match(oct.ribbonVerifyTerm,/pink ribbon/i);if(cur?.key==='breast-cancer-awareness-month'){assert.equal(cur.ribbonColor,'#F58695');assert.match(cur.ribbonSourceUrl,/nationalbreastcancer\.org/);}assert.match(h,/--awareness:#F58695/);assert.doesNotMatch(j,/#7b4db3/);assert.doesNotMatch(css,/--awareness:#7b4db3/);});
