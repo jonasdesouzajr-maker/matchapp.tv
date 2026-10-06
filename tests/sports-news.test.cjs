@@ -159,13 +159,21 @@ test('partial GDELT sports discovery is combined with eligible partner coverage 
 
 
 test('latest news stays country-true, language-aware, and rebuilds SEO every refresh',()=>{
- const home=read('latest-news.js'),live=read('live-news-loader.js'),generator=read('tools/refresh-news-rss.js');
+ const home=read('latest-news.js'),live=read('live-news-loader.js'),generator=read('tools/refresh-news-rss.js'),regional=read('supabase/functions/regional-news-rss/index.ts');
  assert.match(home,/function selectedLanguage\(\)/);
  assert.match(home,/String\(i\.country\|\|''\)\.toUpperCase\(\)===country/);
  assert.doesNotMatch(home,/i\.country!=='GLOBAL'/);
  assert.doesNotMatch(home,/while\(local\.length<MAX_LOCAL\)/);
  assert.match(live,/matchapp:langchange/);
+ assert.match(live,/regional-news-rss/);
+ assert.match(live,/Regional RSS/);
  assert.match(live,/language=\$\{encodeURIComponent\(lang\)\}/);
+ assert.match(regional,/NATION/);
+ assert.match(regional,/WORLD/);
+ assert.match(regional,/ALLOWED_LANGS/);
+ assert.match(regional,/provider:'Regional RSS'/);
+ assert.match(regional,/country:global\?'GLOBAL':cc/);
+ assert.match(regional,/source_policy:'country edition plus global edition in selected language'/);
  assert.doesNotMatch(live,/while\(local\.length<MAX_LOCAL\)/);
  assert.doesNotMatch(live,/while\(global\.length<MAX_GLOBAL\)/);
  assert.match(generator,/country:'BR',language:'pt'/);
