@@ -76,7 +76,7 @@ test('next adult Android version cold-loads only Match/Ask documents and preserv
  assert.match(main,/WebSettings\.LOAD_NO_CACHE/);
  assert.match(main,/window\.MATCHAPP_ANDROID = true/);
  assert.match(main,/MATCHAPP_ANDROID_KIDS_BLOCKED/);
- assert.match(gradle,/versionCode = 41/);
+ assert.match(gradle,/versionCode = 42/);
  assert.match(gradle,/versionName = "1\.1\.37"/);
  assert.doesNotMatch(read('android-studio/kidsapp/src/main/java/tv/matchapp/kids/MainActivity.kt'),/adult-mobile-match-ai-runtime-20260927-1/);
 });
