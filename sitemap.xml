@@ -14,13 +14,13 @@
     </url>
     <url>
         <loc>https://matchapp.tv/</loc>
-        <lastmod>2026-10-06T10:15:16+00:00</lastmod>
+        <lastmod>2026-10-06T10:20:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/trending/this-week/</loc>
-        <lastmod>2026-10-06T10:15:16+00:00</lastmod>
+        <lastmod>2026-10-06T10:20:16+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
     </url>
@@ -176,7 +176,7 @@
     </url>
     <url>
         <loc>https://matchapp.tv/featured/this-week/</loc>
-        <lastmod>2026-10-06T10:15:16+00:00</lastmod>
+        <lastmod>2026-10-06T10:20:16+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -212,7 +212,7 @@
     </url>
     <url>
         <loc>https://matchapp.tv/contact.html</loc>
-        <lastmod>2026-10-06T10:20:15+00:00</lastmod>
+        <lastmod>2026-10-06T10:20:16+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.4</priority>
     </url>
@@ -1424,7 +1424,7 @@
     </url>
     <url>
         <loc>https://matchapp.tv/news/</loc>
-        <lastmod>2026-10-06T09:43:22+00:00</lastmod>
+        <lastmod>2026-10-06T10:44:35+00:00</lastmod>
         <changefreq>hourly</changefreq>
         <priority>0.8</priority>
     </url>
