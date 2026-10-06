@@ -169,7 +169,10 @@ test('latest news stays country-true, language-aware, and rebuilds SEO every ref
  assert.doesNotMatch(live,/while\(local\.length<MAX_LOCAL\)/);
  assert.doesNotMatch(live,/while\(global\.length<MAX_GLOBAL\)/);
  assert.match(generator,/country:'BR',language:'pt'/);
+ assert.match(generator,/source:'G1 Mundo'[\s\S]*country:'GLOBAL'[\s\S]*language:'pt'/);
  assert.match(generator,/country:'GB',language:'en'/);
+ assert.match(generator,/if\(!tw\.length\)return false/);
+ assert.match(generator,/worldLanguages\.flatMap/);
  assert.match(generator,/language:r\.feed\.language\|\|'en'/);
  assert.match(generator,/item\.seo=seoFor\(item,trends,generated\)/);
  assert.match(generator,/item\.seo=seoFor\(item,\[\],generated\)/);
