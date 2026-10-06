@@ -101,3 +101,11 @@ test('bulk notification deletion migration is account-scoped and authenticated-o
  assert.match(sql,/revoke all on function public\.notifications_delete_all\(\) from public, anon/);
  assert.match(sql,/grant execute on function public\.notifications_delete_all\(\) to authenticated/);
 });
+
+test('bulk-delete RPC keeps the public surface invoker-only',()=>{
+ const sql=read('supabase/migrations/20261006153745_harden_notification_delete_all.sql');
+ assert.match(sql,/create or replace function match_private\.notifications_delete_all_impl\(\)/);
+ assert.match(sql,/where user_id=uid/);
+ assert.match(sql,/create or replace function public\.notifications_delete_all\(\)[\s\S]*security invoker/);
+ assert.match(sql,/revoke all on function public\.notifications_delete_all\(\) from public, anon/);
+});
