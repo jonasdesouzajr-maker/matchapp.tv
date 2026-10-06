@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-06T20:46:03.505Z",
+  "generated_at": "2026-10-06T20:47:01.843Z",
   "feed_version": "b7dd788e",
   "sports_updated_at": "2026-10-06T17:11:33.523Z",
   "source_policy": "direct-trusted-publisher-rss+google-trends-keyword-signals",
@@ -13,6 +13,7 @@
       "source_domain": "hollywoodreporter.com",
       "source_home": "https://www.hollywoodreporter.com",
       "country": "US",
+      "language": "en",
       "published_at": "2026-10-06T20:45:08.000Z",
       "discovered_at": "2026-10-06T20:46:03.505Z",
       "event_type": "Entertainment",
@@ -98,7 +99,7 @@
           "hollywoodreporter.com Saoirse Ronan Responds",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-06T20:46:03.505Z"
+        "seo_generated_at": "2026-10-06T20:47:01.843Z"
       }
     },
     {
@@ -109,6 +110,7 @@
       "source_domain": "bbc.co.uk",
       "source_home": "https://www.bbc.co.uk",
       "country": "GB",
+      "language": "en",
       "published_at": "2026-10-06T20:18:58.000Z",
       "discovered_at": "2026-10-06T17:11:33.583Z",
       "event_type": "Entertainment",
@@ -119,7 +121,7 @@
       "matchapp_url": "https://matchapp.tv/news/articles/paramount-takes-over-warner-bros-in-110bn-hollywood-merger-4d1d06/",
       "landing_url": "https://matchapp.tv/?news=4d1d0673#latest-news",
       "seo": {
-        "primary_keyword": "kp",
+        "primary_keyword": "hbo max paramount plus merger",
         "short_tail": [
           "paramount takes over warner",
           "paramount takes over warner news",
@@ -128,10 +130,8 @@
           "entertainment news",
           "celebrity news",
           "entertainment updates",
-          "kp",
-          "भारतीय नौसेना",
-          "స్లీపర్ బస్సు",
-          "தனுஷ்"
+          "hbo max paramount plus merger",
+          "કરોડ"
         ],
         "long_tail": [
           "paramount takes over warner latest news October 2026",
@@ -145,10 +145,8 @@
           "what happened with paramount takes over warner"
         ],
         "trend_keywords": [
-          "kp",
-          "भारतीय नौसेना",
-          "స్లీపర్ బస్సు",
-          "தனுஷ்"
+          "hbo max paramount plus merger",
+          "કરોડ"
         ],
         "entity_keywords": [
           "paramount",
@@ -173,7 +171,7 @@
         "meta_title": "Paramount takes over Warner Bros in $110bn Hollywood…",
         "meta_description": "Entertainment update reported by BBC on 2026-10-06. See verified context, publication time and the original source via MatchApp Ai.",
         "keywords": [
-          "kp",
+          "hbo max paramount plus merger",
           "paramount takes over warner",
           "paramount takes over warner news",
           "entertainment",
@@ -181,9 +179,7 @@
           "entertainment news",
           "celebrity news",
           "entertainment updates",
-          "भारतीय नौसेना",
-          "స్లీపర్ బస్సు",
-          "தனுஷ்",
+          "કરોડ",
           "paramount takes over warner latest news October 2026",
           "paramount takes over warner entertainment update 2026",
           "paramount takes over warner news 2026-10-06",
@@ -204,9 +200,11 @@
           "October 2026",
           "2026-10-06",
           "paramount takes over warner 2026",
-          "BBC paramount takes over warner"
+          "BBC paramount takes over warner",
+          "bbc.co.uk paramount takes over warner",
+          "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-06T17:11:33.583Z"
+        "seo_generated_at": "2026-10-06T20:47:01.843Z"
       }
     },
     {
@@ -217,12 +215,13 @@
       "source_domain": "g1.globo.com",
       "source_home": "https://g1.globo.com",
       "country": "BR",
+      "language": "pt",
       "published_at": "2026-10-06T19:48:58.000Z",
       "discovered_at": "2026-10-06T20:46:03.505Z",
       "event_type": "Entertainment",
       "category": "entertainment",
       "person": "",
-      "description": "entertainment headline reported by G1. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
       "image": "https://s2-g1.glbimg.com/_FzXJ7Al3nHzHnlj9txSbTarBRA=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/f/2/94BZmIQEWZu7je6seNWA/minha-melhor-amiga.jpg",
       "matchapp_url": "https://matchapp.tv/news/articles/minha-melhor-amiga-entra-para-a-lista-dos-10-filmes-brasileiros-mais-vistos-da-h-d79bc4/",
       "landing_url": "https://matchapp.tv/?news=d79bc4ab#latest-news",
@@ -274,7 +273,7 @@
           "G1 entertainment news"
         ],
         "meta_title": "'Minha Melhor Amiga' entra para a lista dos 10 filmes…",
-        "meta_description": "Entertainment update reported by G1 on 2026-10-06. See verified context, publication time and the original source via MatchApp Ai.",
+        "meta_description": "Notícia publicada por G1 em 2026-10-06. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
         "keywords": [
           "કરોડ",
           "minha melhor amiga entra",
@@ -309,7 +308,7 @@
           "g1.globo.com minha melhor amiga entra",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-06T20:46:03.505Z"
+        "seo_generated_at": "2026-10-06T20:47:01.843Z"
       }
     },
     {
@@ -320,6 +319,7 @@
       "source_domain": "hollywoodreporter.com",
       "source_home": "https://www.hollywoodreporter.com",
       "country": "US",
+      "language": "en",
       "published_at": "2026-10-06T19:44:14.000Z",
       "discovered_at": "2026-10-06T20:46:03.505Z",
       "event_type": "Entertainment",
@@ -407,7 +407,7 @@
           "hollywoodreporter.com DJ Jazzy Jeff",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-06T20:46:03.505Z"
+        "seo_generated_at": "2026-10-06T20:47:01.843Z"
       }
     },
     {
@@ -418,6 +418,7 @@
       "source_domain": "bbc.co.uk",
       "source_home": "https://www.bbc.co.uk",
       "country": "GB",
+      "language": "en",
       "published_at": "2026-10-06T18:42:58.000Z",
       "discovered_at": "2026-10-06T17:11:33.583Z",
       "event_type": "Entertainment",
@@ -428,7 +429,7 @@
       "matchapp_url": "https://matchapp.tv/news/articles/from-films-to-streaming-prices-how-the-warner-bros-deal-could-affect-you-ff6dd4/",
       "landing_url": "https://matchapp.tv/?news=ff6dd49c#latest-news",
       "seo": {
-        "primary_keyword": "kp",
+        "primary_keyword": "કરોડ",
         "short_tail": [
           "films streaming prices how",
           "films streaming prices how news",
@@ -437,10 +438,7 @@
           "entertainment news",
           "celebrity news",
           "entertainment updates",
-          "kp",
-          "भारतीय नौसेना",
-          "స్లీపర్ బస్సు",
-          "தனுஷ்"
+          "કરોડ"
         ],
         "long_tail": [
           "films streaming prices how latest news October 2026",
@@ -454,10 +452,7 @@
           "what happened with films streaming prices how"
         ],
         "trend_keywords": [
-          "kp",
-          "भारतीय नौसेना",
-          "స్లీపర్ బస్సు",
-          "தனுஷ்"
+          "કરોડ"
         ],
         "entity_keywords": [
           "films",
@@ -482,7 +477,7 @@
         "meta_title": "From films to streaming prices - how the Warner Bros deal…",
         "meta_description": "Entertainment update reported by BBC on 2026-10-06. See verified context, publication time and the original source via MatchApp Ai.",
         "keywords": [
-          "kp",
+          "કરોડ",
           "films streaming prices how",
           "films streaming prices how news",
           "entertainment",
@@ -490,9 +485,6 @@
           "entertainment news",
           "celebrity news",
           "entertainment updates",
-          "भारतीय नौसेना",
-          "స్లీపర్ బస్సు",
-          "தனுஷ்",
           "films streaming prices how latest news October 2026",
           "films streaming prices how entertainment update 2026",
           "films streaming prices how news 2026-10-06",
@@ -513,9 +505,11 @@
           "October 2026",
           "2026-10-06",
           "films streaming prices how 2026",
-          "BBC films streaming prices how"
+          "BBC films streaming prices how",
+          "bbc.co.uk films streaming prices how",
+          "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-06T17:11:33.583Z"
+        "seo_generated_at": "2026-10-06T20:47:01.843Z"
       }
     },
     {
@@ -526,6 +520,7 @@
       "source_domain": "hollywoodreporter.com",
       "source_home": "https://www.hollywoodreporter.com",
       "country": "US",
+      "language": "en",
       "published_at": "2026-10-06T18:36:26.000Z",
       "discovered_at": "2026-10-06T20:46:03.505Z",
       "event_type": "Release",
@@ -616,7 +611,7 @@
           "hollywoodreporter.com peacock good daughter trailer",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-06T20:46:03.505Z"
+        "seo_generated_at": "2026-10-06T20:47:01.843Z"
       }
     },
     {
@@ -627,6 +622,7 @@
       "source_domain": "hollywoodreporter.com",
       "source_home": "https://www.hollywoodreporter.com",
       "country": "US",
+      "language": "en",
       "published_at": "2026-10-06T18:30:33.000Z",
       "discovered_at": "2026-10-06T20:46:03.505Z",
       "event_type": "Entertainment",
@@ -717,7 +713,7 @@
           "hollywoodreporter.com spartacus creator steven deknight",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-06T20:46:03.505Z"
+        "seo_generated_at": "2026-10-06T20:47:01.843Z"
       }
     },
     {
@@ -728,6 +724,7 @@
       "source_domain": "hollywoodreporter.com",
       "source_home": "https://www.hollywoodreporter.com",
       "country": "US",
+      "language": "en",
       "published_at": "2026-10-06T18:30:18.000Z",
       "discovered_at": "2026-10-06T20:46:03.505Z",
       "event_type": "Entertainment",
@@ -815,7 +812,7 @@
           "hollywoodreporter.com Andrew Scott",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-06T20:46:03.505Z"
+        "seo_generated_at": "2026-10-06T20:47:01.843Z"
       }
     },
     {
@@ -826,6 +823,7 @@
       "source_domain": "bbc.co.uk",
       "source_home": "https://www.bbc.co.uk",
       "country": "GLOBAL",
+      "language": "en",
       "published_at": "2026-10-06T18:03:19.000Z",
       "discovered_at": "2026-10-06T20:46:03.505Z",
       "event_type": "Entertainment",
@@ -880,7 +878,7 @@
           "2026-10-06",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-06T20:46:03.505Z"
+        "seo_generated_at": "2026-10-06T20:47:01.843Z"
       }
     },
     {
@@ -891,17 +889,18 @@
       "source_domain": "g1.globo.com",
       "source_home": "https://g1.globo.com",
       "country": "BR",
+      "language": "pt",
       "published_at": "2026-10-06T17:11:34.000Z",
       "discovered_at": "2026-10-06T17:23:12.729Z",
       "event_type": "Entertainment",
       "category": "entertainment",
       "person": "Michael Douglas",
-      "description": "Michael Douglas: entertainment headline reported by G1. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
       "image": "https://s2-g1.glbimg.com/IW0A_2BOzQoYSm5mNE6FdHD9AOM=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/O/r/QgkbAcQV6xjsEU7Q5x7Q/monatgem.jpg",
       "matchapp_url": "https://matchapp.tv/news/articles/michael-douglas-revela-em-livro-romance-secreto-com-atriz-de-instinto-selvagem-7682aa/",
       "landing_url": "https://matchapp.tv/?news=7682aa88#latest-news",
       "seo": {
-        "primary_keyword": "michael douglas catherine zeta-jones marriage",
+        "primary_keyword": "કરોડ",
         "short_tail": [
           "Michael Douglas",
           "Michael Douglas news",
@@ -910,10 +909,7 @@
           "entertainment news",
           "notícias de entretenimento",
           "notícias hoje",
-          "michael douglas catherine zeta-jones marriage",
-          "भारतीय नौसेना",
-          "స్లీపర్ బస్సు",
-          "தனுஷ்"
+          "કરોડ"
         ],
         "long_tail": [
           "Michael Douglas latest news October 2026",
@@ -927,10 +923,7 @@
           "o que aconteceu com Michael Douglas"
         ],
         "trend_keywords": [
-          "michael douglas catherine zeta-jones marriage",
-          "भारतीय नौसेना",
-          "స్లీపర్ బస్సు",
-          "தனுஷ்"
+          "કરોડ"
         ],
         "entity_keywords": [
           "Michael Douglas",
@@ -953,9 +946,9 @@
           "G1 entertainment news"
         ],
         "meta_title": "Michael Douglas revela em livro romance secreto com atriz…",
-        "meta_description": "Michael Douglas: Entertainment update reported by G1 on 2026-10-06. See verified context, publication time and the original source via MatchApp Ai.",
+        "meta_description": "Michael Douglas: Notícia publicada por G1 em 2026-10-06. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
         "keywords": [
-          "michael douglas catherine zeta-jones marriage",
+          "કરોડ",
           "Michael Douglas",
           "Michael Douglas news",
           "entertainment",
@@ -963,9 +956,6 @@
           "entertainment news",
           "notícias de entretenimento",
           "notícias hoje",
-          "भारतीय नौसेना",
-          "స్లీపర్ బస్సు",
-          "தனுஷ்",
           "Michael Douglas latest news October 2026",
           "Michael Douglas entertainment update 2026",
           "Michael Douglas news 2026-10-06",
@@ -986,9 +976,10 @@
           "outubro 2026",
           "Michael Douglas 2026",
           "G1 Michael Douglas",
-          "g1.globo.com Michael Douglas"
+          "g1.globo.com Michael Douglas",
+          "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-06T17:23:12.729Z"
+        "seo_generated_at": "2026-10-06T20:47:01.843Z"
       }
     },
     {
@@ -999,17 +990,18 @@
       "source_domain": "g1.globo.com",
       "source_home": "https://g1.globo.com",
       "country": "BR",
+      "language": "pt",
       "published_at": "2026-10-06T16:32:59.000Z",
       "discovered_at": "2026-10-06T17:11:33.583Z",
       "event_type": "Entertainment",
       "category": "entertainment",
       "person": "",
-      "description": "entertainment headline reported by G1. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
       "image": "https://s2-g1.glbimg.com/449EkiC4rYno3WwskLZrNqPaEWU=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2023/0/x/Qb0gCpRTiL0EBvmVL7XQ/shakira-pique.jpg",
       "matchapp_url": "https://matchapp.tv/news/articles/shakira-e-pique-vao-a-justica-por-regime-de-visitas-dos-filhos-736d33/",
       "landing_url": "https://matchapp.tv/?news=736d33d2#latest-news",
       "seo": {
-        "primary_keyword": "kp",
+        "primary_keyword": "કરોડ",
         "short_tail": [
           "shakira pique vao justica",
           "shakira pique vao justica news",
@@ -1018,10 +1010,7 @@
           "entertainment news",
           "notícias de entretenimento",
           "notícias hoje",
-          "kp",
-          "भारतीय नौसेना",
-          "స్లీపర్ బస్సు",
-          "தனுஷ்"
+          "કરોડ"
         ],
         "long_tail": [
           "shakira pique vao justica latest news October 2026",
@@ -1035,10 +1024,7 @@
           "o que aconteceu com shakira pique vao justica"
         ],
         "trend_keywords": [
-          "kp",
-          "भारतीय नौसेना",
-          "స్లీపర్ బస్సు",
-          "தனுஷ்"
+          "કરોડ"
         ],
         "entity_keywords": [
           "shakira",
@@ -1061,9 +1047,9 @@
           "G1 entertainment news"
         ],
         "meta_title": "Shakira e Piqué vão à Justiça por regime de visitas dos…",
-        "meta_description": "Entertainment update reported by G1 on 2026-10-06. See verified context, publication time and the original source via MatchApp Ai.",
+        "meta_description": "Notícia publicada por G1 em 2026-10-06. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
         "keywords": [
-          "kp",
+          "કરોડ",
           "shakira pique vao justica",
           "shakira pique vao justica news",
           "entertainment",
@@ -1071,9 +1057,6 @@
           "entertainment news",
           "notícias de entretenimento",
           "notícias hoje",
-          "भारतीय नौसेना",
-          "స్లీపర్ బస్సు",
-          "தனுஷ்",
           "shakira pique vao justica latest news October 2026",
           "shakira pique vao justica entertainment update 2026",
           "shakira pique vao justica news 2026-10-06",
@@ -1094,9 +1077,11 @@
           "2026-10-06",
           "outubro 2026",
           "shakira pique vao justica 2026",
-          "G1 shakira pique vao justica"
+          "G1 shakira pique vao justica",
+          "g1.globo.com shakira pique vao justica",
+          "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-06T17:11:33.583Z"
+        "seo_generated_at": "2026-10-06T20:47:01.843Z"
       }
     },
     {
@@ -1107,17 +1092,18 @@
       "source_domain": "g1.globo.com",
       "source_home": "https://g1.globo.com",
       "country": "BR",
+      "language": "pt",
       "published_at": "2026-10-06T15:13:34.000Z",
       "discovered_at": "2026-10-06T17:11:33.583Z",
       "event_type": "Entertainment",
       "category": "entertainment",
       "person": "",
-      "description": "entertainment headline reported by G1. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
       "image": "https://s2-g1.glbimg.com/nUpgP67hBdm7WLL5sbrDI4Tj4IE=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/5/M/01AoxlQJ6a8yjtQydzzA/aldir2.jpg",
       "matchapp_url": "https://matchapp.tv/news/articles/luzes-e-sombras-da-relacao-visceral-de-aldir-blanc-com-a-mulher-mari-sa-freire-s-3749b8/",
       "landing_url": "https://matchapp.tv/?news=3749b813#latest-news",
       "seo": {
-        "primary_keyword": "kp",
+        "primary_keyword": "કરોડ",
         "short_tail": [
           "luzes sombras relacao visceral",
           "luzes sombras relacao visceral news",
@@ -1126,10 +1112,7 @@
           "entertainment news",
           "notícias de entretenimento",
           "notícias hoje",
-          "kp",
-          "भारतीय नौसेना",
-          "స్లీపర్ బస్సు",
-          "தனுஷ்"
+          "કરોડ"
         ],
         "long_tail": [
           "luzes sombras relacao visceral latest news October 2026",
@@ -1143,10 +1126,7 @@
           "o que aconteceu com luzes sombras relacao visceral"
         ],
         "trend_keywords": [
-          "kp",
-          "भारतीय नौसेना",
-          "స్లీపర్ బస్సు",
-          "தனுஷ்"
+          "કરોડ"
         ],
         "entity_keywords": [
           "luzes",
@@ -1170,9 +1150,9 @@
           "G1 entertainment news"
         ],
         "meta_title": "Luzes e sombras da relação visceral de Aldir Blanc com a…",
-        "meta_description": "Entertainment update reported by G1 on 2026-10-06. See verified context, publication time and the original source via MatchApp Ai.",
+        "meta_description": "Notícia publicada por G1 em 2026-10-06. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
         "keywords": [
-          "kp",
+          "કરોડ",
           "luzes sombras relacao visceral",
           "luzes sombras relacao visceral news",
           "entertainment",
@@ -1180,9 +1160,6 @@
           "entertainment news",
           "notícias de entretenimento",
           "notícias hoje",
-          "भारतीय नौसेना",
-          "స్లీపర్ బస్సు",
-          "தனுஷ்",
           "luzes sombras relacao visceral latest news October 2026",
           "luzes sombras relacao visceral entertainment update 2026",
           "luzes sombras relacao visceral news 2026-10-06",
@@ -1203,9 +1180,12 @@
           "October 2026",
           "2026-10-06",
           "outubro 2026",
-          "luzes sombras relacao visceral 2026"
+          "luzes sombras relacao visceral 2026",
+          "G1 luzes sombras relacao visceral",
+          "g1.globo.com luzes sombras relacao visceral",
+          "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-06T17:11:33.583Z"
+        "seo_generated_at": "2026-10-06T20:47:01.843Z"
       }
     },
     {
@@ -1216,17 +1196,18 @@
       "source_domain": "g1.globo.com",
       "source_home": "https://g1.globo.com",
       "country": "BR",
+      "language": "pt",
       "published_at": "2026-10-06T12:13:08.000Z",
       "discovered_at": "2026-10-06T17:11:33.583Z",
       "event_type": "Entertainment",
       "category": "entertainment",
       "person": "Jheny Santucci",
-      "description": "Jheny Santucci: entertainment headline reported by G1. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
       "image": "https://s2-g1.glbimg.com/EZNhiLOL9MAnF_lOtYw2n9DEtds=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/U/a/1Tcwm2ROebrVvLmL9UYg/design-sem-nome-2026-10-06t090711.516.png",
       "matchapp_url": "https://matchapp.tv/news/articles/jheny-santucci-anuncia-separacao-de-arthur-aguiar-apos-3-meses-e-nega-que-divida-49fb6c/",
       "landing_url": "https://matchapp.tv/?news=49fb6c60#latest-news",
       "seo": {
-        "primary_keyword": "kp",
+        "primary_keyword": "કરોડ",
         "short_tail": [
           "Jheny Santucci",
           "Jheny Santucci news",
@@ -1235,10 +1216,7 @@
           "entertainment news",
           "notícias de entretenimento",
           "notícias hoje",
-          "kp",
-          "भारतीय नौसेना",
-          "స్లీపర్ బస్సు",
-          "தனுஷ்"
+          "કરોડ"
         ],
         "long_tail": [
           "Jheny Santucci latest news October 2026",
@@ -1252,10 +1230,7 @@
           "o que aconteceu com Jheny Santucci"
         ],
         "trend_keywords": [
-          "kp",
-          "भारतीय नौसेना",
-          "స్లీపర్ బస్సు",
-          "தனுஷ்"
+          "કરોડ"
         ],
         "entity_keywords": [
           "Jheny Santucci",
@@ -1278,9 +1253,9 @@
           "G1 entertainment news"
         ],
         "meta_title": "Jheny Santucci anuncia separação de Arthur Aguiar após 3…",
-        "meta_description": "Jheny Santucci: Entertainment update reported by G1 on 2026-10-06. See verified context, publication time and the original source via MatchApp Ai.",
+        "meta_description": "Jheny Santucci: Notícia publicada por G1 em 2026-10-06. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
         "keywords": [
-          "kp",
+          "કરોડ",
           "Jheny Santucci",
           "Jheny Santucci news",
           "entertainment",
@@ -1288,9 +1263,6 @@
           "entertainment news",
           "notícias de entretenimento",
           "notícias hoje",
-          "भारतीय नौसेना",
-          "స్లీపర్ బస్సు",
-          "தனுஷ்",
           "Jheny Santucci latest news October 2026",
           "Jheny Santucci entertainment update 2026",
           "Jheny Santucci news 2026-10-06",
@@ -1311,9 +1283,10 @@
           "outubro 2026",
           "Jheny Santucci 2026",
           "G1 Jheny Santucci",
-          "g1.globo.com Jheny Santucci"
+          "g1.globo.com Jheny Santucci",
+          "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-06T17:11:33.583Z"
+        "seo_generated_at": "2026-10-06T20:47:01.843Z"
       }
     },
     {
@@ -1324,17 +1297,18 @@
       "source_domain": "g1.globo.com",
       "source_home": "https://g1.globo.com",
       "country": "BR",
+      "language": "pt",
       "published_at": "2026-10-06T11:36:17.000Z",
       "discovered_at": "2026-10-06T17:11:33.583Z",
       "event_type": "Entertainment",
       "category": "entertainment",
       "person": "",
-      "description": "entertainment headline reported by G1. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
       "image": "https://s2-g1.glbimg.com/5Ub18zBYsVrAjOCVRBgE-OFbZIA=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/X/D/WrgOwwSnyxjhVeAAQyfg/caleb-flynn-alleged-wife-murder-american-idol.webp",
       "matchapp_url": "https://matchapp.tv/news/articles/ex-participante-do-american-idol-e-condenado-a-prisao-perpetua-pelo-assassinato--4fabf6/",
       "landing_url": "https://matchapp.tv/?news=4fabf6bc#latest-news",
       "seo": {
-        "primary_keyword": "kp",
+        "primary_keyword": "કરોડ",
         "short_tail": [
           "participante american idol condenado",
           "participante american idol condenado news",
@@ -1343,10 +1317,7 @@
           "entertainment news",
           "notícias de entretenimento",
           "notícias hoje",
-          "kp",
-          "भारतीय नौसेना",
-          "స్లీపర్ బస్సు",
-          "தனுஷ்"
+          "કરોડ"
         ],
         "long_tail": [
           "participante american idol condenado latest news October 2026",
@@ -1360,10 +1331,7 @@
           "o que aconteceu com participante american idol condenado"
         ],
         "trend_keywords": [
-          "kp",
-          "भारतीय नौसेना",
-          "స్లీపర్ బస్సు",
-          "தனுஷ்"
+          "કરોડ"
         ],
         "entity_keywords": [
           "participante",
@@ -1387,9 +1355,9 @@
           "G1 entertainment news"
         ],
         "meta_title": "Ex-participante do 'American Idol' é condenado à prisão…",
-        "meta_description": "Entertainment update reported by G1 on 2026-10-06. See verified context, publication time and the original source via MatchApp Ai.",
+        "meta_description": "Notícia publicada por G1 em 2026-10-06. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
         "keywords": [
-          "kp",
+          "કરોડ",
           "participante american idol condenado",
           "participante american idol condenado news",
           "entertainment",
@@ -1397,9 +1365,6 @@
           "entertainment news",
           "notícias de entretenimento",
           "notícias hoje",
-          "भारतीय नौसेना",
-          "స్లీపర్ బస్సు",
-          "தனுஷ்",
           "participante american idol condenado latest news October 2026",
           "participante american idol condenado entertainment update 2026",
           "participante american idol condenado news 2026-10-06",
@@ -1420,9 +1385,12 @@
           "October 2026",
           "2026-10-06",
           "outubro 2026",
-          "participante american idol condenado 2026"
+          "participante american idol condenado 2026",
+          "G1 participante american idol condenado",
+          "g1.globo.com participante american idol condenado",
+          "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-06T17:11:33.583Z"
+        "seo_generated_at": "2026-10-06T20:47:01.843Z"
       }
     },
     {
@@ -1433,6 +1401,7 @@
       "source_domain": "bbc.co.uk",
       "source_home": "https://www.bbc.co.uk",
       "country": "GB",
+      "language": "en",
       "published_at": "2026-10-06T11:29:55.000Z",
       "discovered_at": "2026-10-06T17:11:33.583Z",
       "event_type": "Entertainment",
@@ -1443,7 +1412,7 @@
       "matchapp_url": "https://matchapp.tv/news/articles/rosie-o-donnell-and-julie-hesmondhalgh-to-appear-in-play-about-gisele-pelicot-ca-1f0814/",
       "landing_url": "https://matchapp.tv/?news=1f081450#latest-news",
       "seo": {
-        "primary_keyword": "kp",
+        "primary_keyword": "કરોડ",
         "short_tail": [
           "Rosie O'Donnell",
           "Rosie O'Donnell news",
@@ -1452,10 +1421,7 @@
           "entertainment news",
           "celebrity news",
           "entertainment updates",
-          "kp",
-          "भारतीय नौसेना",
-          "స్లీపర్ బస్సు",
-          "தனுஷ்"
+          "કરોડ"
         ],
         "long_tail": [
           "Rosie O'Donnell latest news October 2026",
@@ -1469,10 +1435,7 @@
           "what happened with Rosie O'Donnell"
         ],
         "trend_keywords": [
-          "kp",
-          "भारतीय नौसेना",
-          "స్లీపర్ బస్సు",
-          "தனுஷ்"
+          "કરોડ"
         ],
         "entity_keywords": [
           "Rosie O'Donnell",
@@ -1496,7 +1459,7 @@
         "meta_title": "Rosie O'Donnell and Julie Hesmondhalgh to appear in play…",
         "meta_description": "Rosie O'Donnell: Entertainment update reported by BBC on 2026-10-06. See verified context, publication time and the original source via MatchApp Ai.",
         "keywords": [
-          "kp",
+          "કરોડ",
           "Rosie O'Donnell",
           "Rosie O'Donnell news",
           "entertainment",
@@ -1504,9 +1467,6 @@
           "entertainment news",
           "celebrity news",
           "entertainment updates",
-          "भारतीय नौसेना",
-          "స్లీపర్ బస్సు",
-          "தனுஷ்",
           "Rosie O'Donnell latest news October 2026",
           "Rosie O'Donnell entertainment update 2026",
           "Rosie O'Donnell news 2026-10-06",
@@ -1529,7 +1489,7 @@
           "bbc.co.uk Rosie O'Donnell",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-06T17:11:33.583Z"
+        "seo_generated_at": "2026-10-06T20:47:01.843Z"
       }
     },
     {
@@ -1540,6 +1500,7 @@
       "source_domain": "bbc.co.uk",
       "source_home": "https://www.bbc.co.uk",
       "country": "GLOBAL",
+      "language": "en",
       "published_at": "2026-10-06T11:24:10.000Z",
       "discovered_at": "2026-10-06T17:11:33.583Z",
       "event_type": "Entertainment",
@@ -1594,7 +1555,7 @@
           "2026-10-06",
           "BBC Technology"
         ],
-        "seo_generated_at": "2026-10-06T17:11:33.583Z"
+        "seo_generated_at": "2026-10-06T20:47:01.843Z"
       }
     },
     {
@@ -1605,6 +1566,7 @@
       "source_domain": "bbc.co.uk",
       "source_home": "https://www.bbc.co.uk",
       "country": "GB",
+      "language": "en",
       "published_at": "2026-10-06T11:23:25.000Z",
       "discovered_at": "2026-10-06T17:11:33.583Z",
       "event_type": "Obituary",
@@ -1615,7 +1577,7 @@
       "matchapp_url": "https://matchapp.tv/news/articles/chart-topping-singer-and-television-host-lena-martell-dies-aged-86-4cff6a/",
       "landing_url": "https://matchapp.tv/?news=4cff6a99#latest-news",
       "seo": {
-        "primary_keyword": "kp",
+        "primary_keyword": "કરોડ",
         "short_tail": [
           "chart topping singer television",
           "chart topping singer television news",
@@ -1624,10 +1586,7 @@
           "entertainment news",
           "celebrity news",
           "entertainment updates",
-          "kp",
-          "भारतीय नौसेना",
-          "స్లీపర్ బస్సు",
-          "தனுஷ்"
+          "કરોડ"
         ],
         "long_tail": [
           "chart topping singer television latest news October 2026",
@@ -1641,10 +1600,7 @@
           "what happened with chart topping singer television"
         ],
         "trend_keywords": [
-          "kp",
-          "भारतीय नौसेना",
-          "స్లీపర్ బస్సు",
-          "தனுஷ்"
+          "કરોડ"
         ],
         "entity_keywords": [
           "chart",
@@ -1669,7 +1625,7 @@
         "meta_title": "Chart-topping singer and television host Lena Martell dies…",
         "meta_description": "Obituary update reported by BBC on 2026-10-06. See verified context, publication time and the original source via MatchApp Ai.",
         "keywords": [
-          "kp",
+          "કરોડ",
           "chart topping singer television",
           "chart topping singer television news",
           "obituary",
@@ -1677,9 +1633,6 @@
           "entertainment news",
           "celebrity news",
           "entertainment updates",
-          "भारतीय नौसेना",
-          "స్లీపర్ బస్సు",
-          "தனுஷ்",
           "chart topping singer television latest news October 2026",
           "chart topping singer television obituary update 2026",
           "chart topping singer television news 2026-10-06",
@@ -1700,9 +1653,11 @@
           "October 2026",
           "2026-10-06",
           "chart topping singer television 2026",
-          "BBC chart topping singer television"
+          "BBC chart topping singer television",
+          "bbc.co.uk chart topping singer television",
+          "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-06T17:11:33.583Z"
+        "seo_generated_at": "2026-10-06T20:47:01.843Z"
       }
     },
     {
@@ -1713,6 +1668,7 @@
       "source_domain": "bbc.co.uk",
       "source_home": "https://www.bbc.co.uk",
       "country": "GB",
+      "language": "en",
       "published_at": "2026-10-06T11:08:59.000Z",
       "discovered_at": "2026-10-06T17:11:33.583Z",
       "event_type": "Music",
@@ -1723,7 +1679,7 @@
       "matchapp_url": "https://matchapp.tv/news/articles/jade-thirlwall-says-working-on-blue-planet-iii-song-was-magical-26efe8/",
       "landing_url": "https://matchapp.tv/?news=26efe873#latest-news",
       "seo": {
-        "primary_keyword": "kp",
+        "primary_keyword": "કરોડ",
         "short_tail": [
           "Jade Thirlwall",
           "Jade Thirlwall news",
@@ -1732,10 +1688,7 @@
           "entertainment news",
           "celebrity news",
           "entertainment updates",
-          "kp",
-          "भारतीय नौसेना",
-          "స్లీపర్ బస్సు",
-          "தனுஷ்"
+          "કરોડ"
         ],
         "long_tail": [
           "Jade Thirlwall latest news October 2026",
@@ -1749,10 +1702,7 @@
           "what happened with Jade Thirlwall"
         ],
         "trend_keywords": [
-          "kp",
-          "भारतीय नौसेना",
-          "స్లీపర్ బస్సు",
-          "தனுஷ்"
+          "કરોડ"
         ],
         "entity_keywords": [
           "Jade Thirlwall",
@@ -1776,7 +1726,7 @@
         "meta_title": "Jade Thirlwall says working on Blue Planet III song was…",
         "meta_description": "Jade Thirlwall: Music update reported by BBC on 2026-10-06. See verified context, publication time and the original source via MatchApp Ai.",
         "keywords": [
-          "kp",
+          "કરોડ",
           "Jade Thirlwall",
           "Jade Thirlwall news",
           "music",
@@ -1784,9 +1734,6 @@
           "entertainment news",
           "celebrity news",
           "entertainment updates",
-          "भारतीय नौसेना",
-          "స్లీపర్ బస్సు",
-          "தனுஷ்",
           "Jade Thirlwall latest news October 2026",
           "Jade Thirlwall music update 2026",
           "Jade Thirlwall news 2026-10-06",
@@ -1809,7 +1756,7 @@
           "bbc.co.uk Jade Thirlwall",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-06T17:11:33.583Z"
+        "seo_generated_at": "2026-10-06T20:47:01.843Z"
       }
     },
     {
@@ -1820,17 +1767,18 @@
       "source_domain": "g1.globo.com",
       "source_home": "https://g1.globo.com",
       "country": "BR",
+      "language": "pt",
       "published_at": "2026-10-06T08:00:01.000Z",
       "discovered_at": "2026-10-06T09:43:22.667Z",
       "event_type": "Entertainment",
       "category": "entertainment",
       "person": "",
-      "description": "entertainment headline reported by G1. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
       "image": "https://s2-g1.glbimg.com/2euqp_zHbo8J6nbsvf6IZp5f17A=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/A/h/WBFinBQBSZrfTcCdnIyQ/alucinafoto.jpg",
       "matchapp_url": "https://matchapp.tv/news/articles/letras-de-belchior-no-album-alucinacao-refletem-o-brasil-de-1976-em-filme-que-ap-8e6dab/",
       "landing_url": "https://matchapp.tv/?news=8e6dabe2#latest-news",
       "seo": {
-        "primary_keyword": "వందే భారత్ ఎక్స్ప్రెస్",
+        "primary_keyword": "કરોડ",
         "short_tail": [
           "letras belchior album alucinacao",
           "letras belchior album alucinacao news",
@@ -1839,10 +1787,7 @@
           "entertainment news",
           "notícias de entretenimento",
           "notícias hoje",
-          "వందే భారత్ ఎక్స్ప్రెస్",
-          "क्राइम थ्रिलर",
-          "ഇന്ത്യന് ദേശീയ വനിതാ ക്രിക്കറ്റ് ടീം",
-          "సర్పంచి"
+          "કરોડ"
         ],
         "long_tail": [
           "letras belchior album alucinacao latest news October 2026",
@@ -1856,10 +1801,7 @@
           "o que aconteceu com letras belchior album alucinacao"
         ],
         "trend_keywords": [
-          "వందే భారత్ ఎక్స్ప్రెస్",
-          "क्राइम थ्रिलर",
-          "ഇന്ത്യന് ദേശീയ വനിതാ ക്രിക്കറ്റ് ടീം",
-          "సర్పంచి"
+          "કરોડ"
         ],
         "entity_keywords": [
           "letras",
@@ -1883,9 +1825,9 @@
           "G1 entertainment news"
         ],
         "meta_title": "Letras de Belchior no álbum 'Alucinação' refletem o Brasil…",
-        "meta_description": "Entertainment update reported by G1 on 2026-10-06. See verified context, publication time and the original source via MatchApp Ai.",
+        "meta_description": "Notícia publicada por G1 em 2026-10-06. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
         "keywords": [
-          "వందే భారత్ ఎక్స్ప్రెస్",
+          "કરોડ",
           "letras belchior album alucinacao",
           "letras belchior album alucinacao news",
           "entertainment",
@@ -1893,9 +1835,6 @@
           "entertainment news",
           "notícias de entretenimento",
           "notícias hoje",
-          "क्राइम थ्रिलर",
-          "ഇന്ത്യന് ദേശീയ വനിതാ ക്രിക്കറ്റ് ടീം",
-          "సర్పంచి",
           "letras belchior album alucinacao latest news October 2026",
           "letras belchior album alucinacao entertainment update 2026",
           "letras belchior album alucinacao news 2026-10-06",
@@ -1916,9 +1855,12 @@
           "October 2026",
           "2026-10-06",
           "outubro 2026",
-          "letras belchior album alucinacao 2026"
+          "letras belchior album alucinacao 2026",
+          "G1 letras belchior album alucinacao",
+          "g1.globo.com letras belchior album alucinacao",
+          "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-06T09:43:22.667Z"
+        "seo_generated_at": "2026-10-06T20:47:01.843Z"
       }
     },
     {
@@ -1929,6 +1871,7 @@
       "source_domain": "bbc.co.uk",
       "source_home": "https://www.bbc.co.uk",
       "country": "GLOBAL",
+      "language": "en",
       "published_at": "2026-10-06T06:01:12.000Z",
       "discovered_at": "2026-10-06T09:43:22.667Z",
       "event_type": "Entertainment",
@@ -1983,7 +1926,7 @@
           "2026-10-06",
           "BBC Science"
         ],
-        "seo_generated_at": "2026-10-06T09:43:22.667Z"
+        "seo_generated_at": "2026-10-06T20:47:01.843Z"
       }
     },
     {
@@ -1994,17 +1937,18 @@
       "source_domain": "g1.globo.com",
       "source_home": "https://g1.globo.com",
       "country": "BR",
+      "language": "pt",
       "published_at": "2026-10-06T05:00:00.000Z",
       "discovered_at": "2026-10-06T09:43:22.667Z",
       "event_type": "Awards",
       "category": "entertainment",
       "person": "",
-      "description": "awards headline reported by G1. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
       "image": "https://s2-g1.glbimg.com/4SPTBgm0nlcFxjWdLRE2-zgKDyw=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/P/m/qF8scyRsyQtaBQVBTGMA/bola-preta-foto1.jpg",
       "matchapp_url": "https://matchapp.tv/news/articles/a-bola-preta-cotado-ao-oscar-discute-questoes-de-identidade-de-forma-epica-e-ous-f2a3d9/",
       "landing_url": "https://matchapp.tv/?news=f2a3d953#latest-news",
       "seo": {
-        "primary_keyword": "వందే భారత్ ఎక్స్ప్రెస్",
+        "primary_keyword": "કરોડ",
         "short_tail": [
           "bola preta cotado oscar",
           "bola preta cotado oscar news",
@@ -2013,10 +1957,7 @@
           "entertainment news",
           "notícias de entretenimento",
           "notícias hoje",
-          "వందే భారత్ ఎక్స్ప్రెస్",
-          "क्राइम थ्रिलर",
-          "ഇന്ത്യന് ദേശീയ വനിതാ ക്രിക്കറ്റ് ടീം",
-          "సర్పంచి"
+          "કરોડ"
         ],
         "long_tail": [
           "bola preta cotado oscar latest news October 2026",
@@ -2030,10 +1971,7 @@
           "o que aconteceu com bola preta cotado oscar"
         ],
         "trend_keywords": [
-          "వందే భారత్ ఎక్స్ప్రెస్",
-          "क्राइम थ्रिलर",
-          "ഇന്ത്യന് ദേശീയ വനിതാ ക്രിക്കറ്റ് ടീം",
-          "సర్పంచి"
+          "કરોડ"
         ],
         "entity_keywords": [
           "bola",
@@ -2057,9 +1995,9 @@
           "G1 entertainment news"
         ],
         "meta_title": "'A bola preta', cotado ao Oscar, discute questões de…",
-        "meta_description": "Awards update reported by G1 on 2026-10-06. See verified context, publication time and the original source via MatchApp Ai.",
+        "meta_description": "Notícia publicada por G1 em 2026-10-06. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
         "keywords": [
-          "వందే భారత్ ఎక్స్ప్రెస్",
+          "કરોડ",
           "bola preta cotado oscar",
           "bola preta cotado oscar news",
           "awards",
@@ -2067,9 +2005,6 @@
           "entertainment news",
           "notícias de entretenimento",
           "notícias hoje",
-          "क्राइम थ्रिलर",
-          "ഇന്ത്യന് ദേശീയ വനിതാ ക്രിക്കറ്റ് ടീം",
-          "సర్పంచి",
           "bola preta cotado oscar latest news October 2026",
           "bola preta cotado oscar awards update 2026",
           "bola preta cotado oscar news 2026-10-06",
@@ -2090,9 +2025,12 @@
           "October 2026",
           "2026-10-06",
           "outubro 2026",
-          "bola preta cotado oscar 2026"
+          "bola preta cotado oscar 2026",
+          "G1 bola preta cotado oscar",
+          "g1.globo.com bola preta cotado oscar",
+          "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-06T09:43:22.667Z"
+        "seo_generated_at": "2026-10-06T20:47:01.843Z"
       }
     },
     {
@@ -2103,6 +2041,7 @@
       "source_domain": "bbc.co.uk",
       "source_home": "https://www.bbc.co.uk",
       "country": "GLOBAL",
+      "language": "en",
       "published_at": "2026-10-06T04:57:16.000Z",
       "discovered_at": "2026-10-06T09:43:22.667Z",
       "event_type": "Entertainment",
@@ -2157,7 +2096,7 @@
           "2026-10-06",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-06T09:43:22.667Z"
+        "seo_generated_at": "2026-10-06T20:47:01.843Z"
       }
     },
     {
@@ -2168,6 +2107,7 @@
       "source_domain": "bbc.co.uk",
       "source_home": "https://www.bbc.co.uk",
       "country": "GB",
+      "language": "en",
       "published_at": "2026-10-05T22:58:25.000Z",
       "discovered_at": "2026-10-05T23:20:34.793Z",
       "event_type": "Obituary",
@@ -2178,7 +2118,7 @@
       "matchapp_url": "https://matchapp.tv/news/articles/blue-planet-and-gandhi-composer-george-fenton-dies-aged-76-d68100/",
       "landing_url": "https://matchapp.tv/?news=d68100f6#latest-news",
       "seo": {
-        "primary_keyword": "george fenton",
+        "primary_keyword": "કરોડ",
         "short_tail": [
           "Blue Planet",
           "Blue Planet news",
@@ -2187,7 +2127,7 @@
           "entertainment news",
           "celebrity news",
           "entertainment updates",
-          "george fenton"
+          "કરોડ"
         ],
         "long_tail": [
           "Blue Planet latest news October 2026",
@@ -2201,7 +2141,7 @@
           "what happened with Blue Planet"
         ],
         "trend_keywords": [
-          "george fenton"
+          "કરોડ"
         ],
         "entity_keywords": [
           "Blue Planet",
@@ -2225,7 +2165,7 @@
         "meta_title": "Blue Planet and Gandhi composer George Fenton dies aged 76…",
         "meta_description": "Blue Planet: Obituary update reported by BBC on 2026-10-05. See verified context, publication time and the original source via MatchApp Ai.",
         "keywords": [
-          "george fenton",
+          "કરોડ",
           "Blue Planet",
           "Blue Planet news",
           "obituary",
@@ -2255,7 +2195,7 @@
           "bbc.co.uk Blue Planet",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-05T23:20:34.793Z"
+        "seo_generated_at": "2026-10-06T20:47:01.843Z"
       }
     },
     {
@@ -2266,6 +2206,7 @@
       "source_domain": "bbc.co.uk",
       "source_home": "https://www.bbc.co.uk",
       "country": "GB",
+      "language": "en",
       "published_at": "2026-10-05T20:30:05.000Z",
       "discovered_at": "2026-10-06T09:43:22.667Z",
       "event_type": "Entertainment",
@@ -2276,7 +2217,7 @@
       "matchapp_url": "https://matchapp.tv/news/articles/former-american-idol-contestant-sentenced-to-life-in-prison-for-murdering-wife-3cadd7/",
       "landing_url": "https://matchapp.tv/?news=3cadd769#latest-news",
       "seo": {
-        "primary_keyword": "వందే భారత్ ఎక్స్ప్రెస్",
+        "primary_keyword": "કરોડ",
         "short_tail": [
           "Former American Idol",
           "Former American Idol news",
@@ -2285,10 +2226,7 @@
           "entertainment news",
           "celebrity news",
           "entertainment updates",
-          "వందే భారత్ ఎక్స్ప్రెస్",
-          "क्राइम थ्रिलर",
-          "ഇന്ത്യന് ദേശീയ വനിതാ ക്രിക്കറ്റ് ടീം",
-          "సర్పంచి"
+          "કરોડ"
         ],
         "long_tail": [
           "Former American Idol latest news October 2026",
@@ -2302,10 +2240,7 @@
           "what happened with Former American Idol"
         ],
         "trend_keywords": [
-          "వందే భారత్ ఎక్స్ప్రెస్",
-          "क्राइम थ्रिलर",
-          "ഇന്ത്യന് ദേശീയ വനിതാ ക്രിക്കറ്റ് ടീം",
-          "సర్పంచి"
+          "કરોડ"
         ],
         "entity_keywords": [
           "Former American Idol",
@@ -2328,7 +2263,7 @@
         "meta_title": "Former American Idol contestant sentenced to life in…",
         "meta_description": "Former American Idol: Entertainment update reported by BBC on 2026-10-05. See verified context, publication time and the original source via MatchApp Ai.",
         "keywords": [
-          "వందే భారత్ ఎక్స్ప్రెస్",
+          "કરોડ",
           "Former American Idol",
           "Former American Idol news",
           "entertainment",
@@ -2336,9 +2271,6 @@
           "entertainment news",
           "celebrity news",
           "entertainment updates",
-          "क्राइम थ्रिलर",
-          "ഇന്ത്യന് ദേശീയ വനിതാ ക്രിക്കറ്റ് ടീം",
-          "సర్పంచి",
           "Former American Idol latest news October 2026",
           "Former American Idol entertainment update 2026",
           "Former American Idol news 2026-10-05",
@@ -2360,7 +2292,7 @@
           "bbc.co.uk Former American Idol",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-06T09:43:22.667Z"
+        "seo_generated_at": "2026-10-06T20:47:01.843Z"
       }
     },
     {
@@ -2371,17 +2303,18 @@
       "source_domain": "g1.globo.com",
       "source_home": "https://g1.globo.com",
       "country": "BR",
+      "language": "pt",
       "published_at": "2026-10-05T19:07:13.000Z",
       "discovered_at": "2026-10-05T23:20:34.793Z",
       "event_type": "Obituary",
       "category": "entertainment",
       "person": "Robert Kelker-Kelly",
-      "description": "Robert Kelker-Kelly: obituary headline reported by G1. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
       "image": "https://s2-g1.glbimg.com/0CDKEF2EVYbG0MHBBHCXE_Niu6M=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/A/o/uX869mT0a2SkhjFwgFLg/robert.jpg",
       "matchapp_url": "https://matchapp.tv/news/articles/robert-kelker-kelly-de-days-of-our-lives-morre-aos-62-anos-f9f945/",
       "landing_url": "https://matchapp.tv/?news=f9f9450e#latest-news",
       "seo": {
-        "primary_keyword": "Robert Kelker-Kelly latest news",
+        "primary_keyword": "કરોડ",
         "short_tail": [
           "Robert Kelker-Kelly",
           "Robert Kelker-Kelly news",
@@ -2389,7 +2322,8 @@
           "latest entertainment news",
           "entertainment news",
           "notícias de entretenimento",
-          "notícias hoje"
+          "notícias hoje",
+          "કરોડ"
         ],
         "long_tail": [
           "Robert Kelker-Kelly latest news October 2026",
@@ -2402,7 +2336,9 @@
           "Robert Kelker-Kelly notícia de 2026-10-05",
           "o que aconteceu com Robert Kelker-Kelly"
         ],
-        "trend_keywords": [],
+        "trend_keywords": [
+          "કરોડ"
+        ],
         "entity_keywords": [
           "Robert Kelker-Kelly",
           "robert",
@@ -2423,9 +2359,9 @@
           "G1 entertainment news"
         ],
         "meta_title": "Robert Kelker-Kelly, de 'Days of Our Lives', morre aos 62…",
-        "meta_description": "Robert Kelker-Kelly: Obituary update reported by G1 on 2026-10-05. See verified context, publication time and the original source via MatchApp Ai.",
+        "meta_description": "Robert Kelker-Kelly: Notícia publicada por G1 em 2026-10-05. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
         "keywords": [
-          "Robert Kelker-Kelly latest news",
+          "કરોડ",
           "Robert Kelker-Kelly",
           "Robert Kelker-Kelly news",
           "obituary",
@@ -2455,7 +2391,7 @@
           "g1.globo.com Robert Kelker-Kelly",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-05T23:20:34.793Z"
+        "seo_generated_at": "2026-10-06T20:47:01.843Z"
       }
     },
     {
@@ -2466,6 +2402,7 @@
       "source_domain": "bbc.co.uk",
       "source_home": "https://www.bbc.co.uk",
       "country": "GB",
+      "language": "en",
       "published_at": "2026-10-05T17:46:59.000Z",
       "discovered_at": "2026-10-05T23:20:34.793Z",
       "event_type": "Entertainment",
@@ -2476,7 +2413,7 @@
       "matchapp_url": "https://matchapp.tv/news/articles/it-s-been-a-terrible-year-for-farming-jeremy-clarkson-tells-tory-conference-e9212e/",
       "landing_url": "https://matchapp.tv/?news=e9212e7d#latest-news",
       "seo": {
-        "primary_keyword": "been terrible year farming latest news",
+        "primary_keyword": "કરોડ",
         "short_tail": [
           "been terrible year farming",
           "been terrible year farming news",
@@ -2484,7 +2421,8 @@
           "latest entertainment news",
           "entertainment news",
           "celebrity news",
-          "entertainment updates"
+          "entertainment updates",
+          "કરોડ"
         ],
         "long_tail": [
           "been terrible year farming latest news October 2026",
@@ -2497,7 +2435,9 @@
           "been terrible year farming entertainment news 2026-10-05",
           "what happened with been terrible year farming"
         ],
-        "trend_keywords": [],
+        "trend_keywords": [
+          "કરોડ"
+        ],
         "entity_keywords": [
           "been",
           "terrible",
@@ -2521,7 +2461,7 @@
         "meta_title": "It's been a terrible year for farming, Jeremy Clarkson…",
         "meta_description": "Entertainment update reported by BBC on 2026-10-05. See verified context, publication time and the original source via MatchApp Ai.",
         "keywords": [
-          "been terrible year farming latest news",
+          "કરોડ",
           "been terrible year farming",
           "been terrible year farming news",
           "entertainment",
@@ -2553,7 +2493,7 @@
           "bbc.co.uk been terrible year farming",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-05T23:20:34.793Z"
+        "seo_generated_at": "2026-10-06T20:47:01.843Z"
       }
     },
     {
@@ -2564,6 +2504,7 @@
       "source_domain": "bbc.co.uk",
       "source_home": "https://www.bbc.co.uk",
       "country": "GLOBAL",
+      "language": "en",
       "published_at": "2026-10-05T16:13:21.000Z",
       "discovered_at": "2026-10-05T17:22:19.239Z",
       "event_type": "Entertainment",
@@ -2602,10 +2543,10 @@
           "2026-10-05"
         ],
         "source_keywords": [
-          "BBC World"
+          "BBC Technology"
         ],
         "meta_title": "Pentagon stops using Anthropic AI tools after blacklisting…",
-        "meta_description": "World report published by BBC World on 2026-10-05. Open the original report for full context.",
+        "meta_description": "World report published by BBC Technology on 2026-10-05. Open the original report for full context.",
         "keywords": [
           "world news",
           "global headlines",
@@ -2616,9 +2557,9 @@
           "tools",
           "after",
           "2026-10-05",
-          "BBC World"
+          "BBC Technology"
         ],
-        "seo_generated_at": "2026-10-05T17:22:19.239Z"
+        "seo_generated_at": "2026-10-06T20:47:01.843Z"
       }
     },
     {
@@ -2629,17 +2570,18 @@
       "source_domain": "g1.globo.com",
       "source_home": "https://g1.globo.com",
       "country": "BR",
+      "language": "pt",
       "published_at": "2026-10-05T14:56:49.000Z",
       "discovered_at": "2026-10-05T17:22:19.239Z",
       "event_type": "Entertainment",
       "category": "entertainment",
       "person": "",
-      "description": "entertainment headline reported by G1. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
       "image": "https://s2-g1.glbimg.com/cjXKCP6_ar9xTVIbXZwVFC_YpMo=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/j/r/70mcdBRmaqYTJwwlBkPA/robertotibirica1.jpg",
       "matchapp_url": "https://matchapp.tv/news/articles/maestro-dos-sons-eruditos-falecido-aos-72-anos-roberto-tibirica-deixa-legado-que-c60474/",
       "landing_url": "https://matchapp.tv/?news=c6047438#latest-news",
       "seo": {
-        "primary_keyword": "g1 rj",
+        "primary_keyword": "કરોડ",
         "short_tail": [
           "maestro sons eruditos falecido",
           "maestro sons eruditos falecido news",
@@ -2648,10 +2590,7 @@
           "entertainment news",
           "notícias de entretenimento",
           "notícias hoje",
-          "g1 rj",
-          "ચાંદી",
-          "ஜேசன் சஞ்சய்",
-          "কর্মকর্তা"
+          "કરોડ"
         ],
         "long_tail": [
           "maestro sons eruditos falecido latest news October 2026",
@@ -2665,10 +2604,7 @@
           "o que aconteceu com maestro sons eruditos falecido"
         ],
         "trend_keywords": [
-          "g1 rj",
-          "ચાંદી",
-          "ஜேசன் சஞ்சய்",
-          "কর্মকর্তা"
+          "કરોડ"
         ],
         "entity_keywords": [
           "maestro",
@@ -2692,9 +2628,9 @@
           "G1 entertainment news"
         ],
         "meta_title": "Maestro dos sons eruditos, falecido aos 72 anos, Roberto…",
-        "meta_description": "Entertainment update reported by G1 on 2026-10-05. See verified context, publication time and the original source via MatchApp Ai.",
+        "meta_description": "Notícia publicada por G1 em 2026-10-05. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
         "keywords": [
-          "g1 rj",
+          "કરોડ",
           "maestro sons eruditos falecido",
           "maestro sons eruditos falecido news",
           "entertainment",
@@ -2702,9 +2638,6 @@
           "entertainment news",
           "notícias de entretenimento",
           "notícias hoje",
-          "ચાંદી",
-          "ஜேசன் சஞ்சய்",
-          "কর্মকর্তা",
           "maestro sons eruditos falecido latest news October 2026",
           "maestro sons eruditos falecido entertainment update 2026",
           "maestro sons eruditos falecido news 2026-10-05",
@@ -2725,9 +2658,12 @@
           "October 2026",
           "2026-10-05",
           "outubro 2026",
-          "maestro sons eruditos falecido 2026"
+          "maestro sons eruditos falecido 2026",
+          "G1 maestro sons eruditos falecido",
+          "g1.globo.com maestro sons eruditos falecido",
+          "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-05T17:22:19.239Z"
+        "seo_generated_at": "2026-10-06T20:47:01.843Z"
       }
     },
     {
@@ -2738,6 +2674,7 @@
       "source_domain": "bbc.co.uk",
       "source_home": "https://www.bbc.co.uk",
       "country": "GB",
+      "language": "en",
       "published_at": "2026-10-05T14:16:06.000Z",
       "discovered_at": "2026-10-05T17:22:19.239Z",
       "event_type": "Entertainment",
@@ -2748,7 +2685,7 @@
       "matchapp_url": "https://matchapp.tv/news/articles/rachel-jupp-is-a-bold-choice-for-bbc-news-chief-says-katie-razzall-d939ff/",
       "landing_url": "https://matchapp.tv/?news=d939ffaf#latest-news",
       "seo": {
-        "primary_keyword": "g1 rj",
+        "primary_keyword": "કરોડ",
         "short_tail": [
           "Rachel Jupp",
           "Rachel Jupp news",
@@ -2757,10 +2694,7 @@
           "entertainment news",
           "celebrity news",
           "entertainment updates",
-          "g1 rj",
-          "ચાંદી",
-          "ஜேசன் சஞ்சய்",
-          "কর্মকর্তা"
+          "કરોડ"
         ],
         "long_tail": [
           "Rachel Jupp latest news October 2026",
@@ -2774,10 +2708,7 @@
           "what happened with Rachel Jupp"
         ],
         "trend_keywords": [
-          "g1 rj",
-          "ચાંદી",
-          "ஜேசன் சஞ்சய்",
-          "কর্মকর্তা"
+          "કરોડ"
         ],
         "entity_keywords": [
           "Rachel Jupp",
@@ -2801,7 +2732,7 @@
         "meta_title": "Rachel Jupp is a bold choice for BBC News chief, says…",
         "meta_description": "Rachel Jupp: Entertainment update reported by BBC on 2026-10-05. See verified context, publication time and the original source via MatchApp Ai.",
         "keywords": [
-          "g1 rj",
+          "કરોડ",
           "Rachel Jupp",
           "Rachel Jupp news",
           "entertainment",
@@ -2809,9 +2740,6 @@
           "entertainment news",
           "celebrity news",
           "entertainment updates",
-          "ચાંદી",
-          "ஜேசன் சஞ்சய்",
-          "কর্মকর্তা",
           "Rachel Jupp latest news October 2026",
           "Rachel Jupp entertainment update 2026",
           "Rachel Jupp news 2026-10-05",
@@ -2834,7 +2762,7 @@
           "bbc.co.uk Rachel Jupp",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-05T17:22:19.239Z"
+        "seo_generated_at": "2026-10-06T20:47:01.843Z"
       }
     },
     {
@@ -2845,6 +2773,7 @@
       "source_domain": "bbc.co.uk",
       "source_home": "https://www.bbc.co.uk",
       "country": "GLOBAL",
+      "language": "en",
       "published_at": "2026-10-05T10:03:38.000Z",
       "discovered_at": "2026-10-05T07:39:25.944Z",
       "event_type": "Entertainment",
@@ -2860,46 +2789,46 @@
           "world news",
           "global headlines",
           "trump",
-          "unveils",
-          "super",
-          "intelligence",
-          "force",
-          "oversee"
+          "chooses",
+          "top",
+          "spy",
+          "boss",
+          "run"
         ],
         "long_tail": [
-          "Trump unveils 'Super Intelligence Force' to oversee AI policy 2026-10-05",
+          "Trump chooses top spy boss to run new AI taskforce 2026-10-05",
           "world news October 2026"
         ],
         "trend_keywords": [],
         "entity_keywords": [
           "trump",
-          "unveils",
-          "super",
-          "intelligence",
-          "force",
-          "oversee"
+          "chooses",
+          "top",
+          "spy",
+          "boss",
+          "run"
         ],
         "freshness_keywords": [
           "2026-10-05"
         ],
         "source_keywords": [
-          "BBC World"
+          "BBC Technology"
         ],
-        "meta_title": "Trump unveils 'Super Intelligence Force' to oversee AI…",
-        "meta_description": "World report published by BBC World on 2026-10-05. Open the original report for full context.",
+        "meta_title": "Trump chooses top spy boss to run new AI taskforce | World…",
+        "meta_description": "World report published by BBC Technology on 2026-10-05. Open the original report for full context.",
         "keywords": [
           "world news",
           "global headlines",
           "trump",
-          "unveils",
-          "super",
-          "intelligence",
-          "force",
-          "oversee",
+          "chooses",
+          "top",
+          "spy",
+          "boss",
+          "run",
           "2026-10-05",
-          "BBC World"
+          "BBC Technology"
         ],
-        "seo_generated_at": "2026-10-05T07:39:25.944Z"
+        "seo_generated_at": "2026-10-06T20:47:01.843Z"
       }
     },
     {
@@ -2917,6 +2846,7 @@
       "timestamp_kind": "published",
       "discovery_source": "Authorized publisher RSS/Atom",
       "image": null,
+      "language": "en",
       "discovered_at": "2026-10-06T02:58:49.257Z",
       "person": "",
       "description": "Sports coverage linked to the original publisher The Conversation. MatchApp records when it was indexed; open the source for full context.",
@@ -2988,7 +2918,7 @@
           "2026-10-05",
           "October 2026"
         ],
-        "seo_generated_at": "2026-10-06T02:58:56.593Z"
+        "seo_generated_at": "2026-10-06T20:47:01.843Z"
       }
     },
     {
@@ -2999,6 +2929,7 @@
       "source_domain": "bbc.co.uk",
       "source_home": "https://www.bbc.co.uk",
       "country": "GLOBAL",
+      "language": "en",
       "published_at": "2026-10-02T23:37:13.000Z",
       "discovered_at": "2026-10-03T00:42:17.937Z",
       "event_type": "Entertainment",
@@ -3037,10 +2968,10 @@
           "2026-10-02"
         ],
         "source_keywords": [
-          "BBC World"
+          "BBC Science"
         ],
         "meta_title": "Could El Niño mean there are no Atlantic hurricanes this…",
-        "meta_description": "World report published by BBC World on 2026-10-02. Open the original report for full context.",
+        "meta_description": "World report published by BBC Science on 2026-10-02. Open the original report for full context.",
         "keywords": [
           "world news",
           "global headlines",
@@ -3051,9 +2982,9 @@
           "atlantic",
           "hurricanes",
           "2026-10-02",
-          "BBC World"
+          "BBC Science"
         ],
-        "seo_generated_at": "2026-10-03T00:42:17.937Z"
+        "seo_generated_at": "2026-10-06T20:47:01.843Z"
       }
     },
     {
@@ -3064,6 +2995,7 @@
       "source_domain": "bbc.co.uk",
       "source_home": "https://www.bbc.co.uk",
       "country": "GLOBAL",
+      "language": "en",
       "published_at": "2026-10-02T08:20:32.000Z",
       "discovered_at": "2026-10-02T01:47:47.891Z",
       "event_type": "Entertainment",
@@ -3080,23 +3012,23 @@
           "global headlines",
           "openai",
           "fires",
-          "three",
           "workers",
-          "over",
-          "mishandling"
+          "mishandling",
+          "sensitive",
+          "information"
         ],
         "long_tail": [
-          "OpenAI fires three workers over mishandling 'sensitive information' 2026-10-02",
+          "OpenAI fires workers for 'mishandling sensitive information' 2026-10-02",
           "world news October 2026"
         ],
         "trend_keywords": [],
         "entity_keywords": [
           "openai",
           "fires",
-          "three",
           "workers",
-          "over",
-          "mishandling"
+          "mishandling",
+          "sensitive",
+          "information"
         ],
         "freshness_keywords": [
           "2026-10-02"
@@ -3104,21 +3036,21 @@
         "source_keywords": [
           "BBC Technology"
         ],
-        "meta_title": "OpenAI fires three workers over mishandling 'sensitive…",
+        "meta_title": "OpenAI fires workers for 'mishandling sensitive…",
         "meta_description": "World report published by BBC Technology on 2026-10-02. Open the original report for full context.",
         "keywords": [
           "world news",
           "global headlines",
           "openai",
           "fires",
-          "three",
           "workers",
-          "over",
           "mishandling",
+          "sensitive",
+          "information",
           "2026-10-02",
           "BBC Technology"
         ],
-        "seo_generated_at": "2026-10-02T01:47:47.891Z"
+        "seo_generated_at": "2026-10-06T20:47:01.843Z"
       }
     }
   ]
