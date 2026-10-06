@@ -227,9 +227,21 @@ function dateParts(value){
 
 function seoFor(i,trends,generated){
   if(i.category==='world'){
-    const {isoDate,monthEn,year}=dateParts(i.published_at);
+    const {isoDate,monthEn,monthPt,year}=dateParts(i.published_at);
     const topic=words(i.title).slice(0,6);
-    return {primary_keyword:'world news '+isoDate,short_tail:['world news','global headlines',...topic],long_tail:[i.title+' '+isoDate,'world news '+monthEn+' '+year],trend_keywords:[],entity_keywords:topic,freshness_keywords:[isoDate],source_keywords:[i.source],meta_title:truncateWords(i.title+' | World News | MatchApp Ai',60),meta_description:truncateWords('World report published by '+i.source+' on '+isoDate+'. Open the original report for full context.',158),keywords:uniq(['world news','global headlines',...topic,isoDate,i.source]),seo_generated_at:generated};
+    const pt=String(i.language||'en').toLowerCase().startsWith('pt');
+    const primary=pt?'notícias do mundo '+isoDate:'world news '+isoDate;
+    const short=pt?['notícias do mundo','notícias internacionais',...topic]:['world news','global headlines',...topic];
+    const long=pt?[i.title+' '+isoDate,'notícias mundiais '+monthPt+' '+year]:[i.title+' '+isoDate,'world news '+monthEn+' '+year];
+    return {
+      primary_keyword:primary,short_tail:short,long_tail:long,trend_keywords:[],entity_keywords:topic,
+      freshness_keywords:[isoDate],source_keywords:[i.source],
+      meta_title:truncateWords(i.title+(pt?' | Notícias do Mundo | MatchApp Ai':' | World News | MatchApp Ai'),60),
+      meta_description:truncateWords(pt
+        ?'Notícia internacional publicada por '+i.source+' em '+isoDate+'. Abra a fonte original para o contexto completo.'
+        :'World report published by '+i.source+' on '+isoDate+'. Open the original report for full context.',158),
+      keywords:uniq([primary,...short,...long,...topic,isoDate,i.source]),seo_generated_at:generated
+    };
   }
   if(i.category==='sports'){
     const topic=words(i.title).slice(0,8),sport=i.sport||'Sports';
@@ -307,8 +319,8 @@ function seoFor(i,trends,generated){
     `${i.source} entertainment news`
   ]).slice(0,4);
 
-  const primary=trend[0]||`${focus} latest news`;
   const itemLanguage=String(i.language||'en').toLowerCase();
+  const primary=trend[0]||(itemLanguage.startsWith('pt')?`${focus} últimas notícias`:`${focus} latest news`);
   const metaTitle=truncateWords(itemLanguage.startsWith('pt')
     ?`${i.title} | Notícias de entretenimento | MatchApp Ai`
     :`${i.title} | Entertainment News | MatchApp Ai`,60);
