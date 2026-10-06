@@ -45,7 +45,8 @@ test('only the adult pages that load Ask AI refresh the amended guarantee asset 
  const settings=read('settings.js');
  assert.match(settings,/src==='\/match-guarantee\.js'\?'20260926-guarantee-outage1'/);
  assert.match(settings,/src==='\/ai-composer\.js'\?'20260929-language-buttons3'/);
- for(const f of ['index.html','discover.html','together.html','pricing/pricing.html'])
+ assert(read('index.html').includes('/settings.js?v=20261006-installbell1'),'index.html');
+ for(const f of ['discover.html','together.html','pricing/pricing.html'])
    assert(read(f).includes('/settings.js?v=20260926-guarantee-outage1'),f);
 });
 
