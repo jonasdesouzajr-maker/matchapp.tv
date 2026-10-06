@@ -5,8 +5,8 @@ import android.webkit.WebResourceResponse
 import java.io.ByteArrayInputStream
 
 /**
- * The Play listing is ad-free. Block AdSense, DoubleClick and companion
- * ad scripts even if a page still contains leftover slots.
+ * The Android WebView stays free of website AdSense/DoubleClick requests.
+ * Android monetization is handled separately by the native AdMob controller.
  */
 object AdBlocker {
     private val empty by lazy {

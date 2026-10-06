@@ -12,9 +12,14 @@ test('both Android modules target API 36 and preserve route separation',()=>{
  for(const g of [mainG,kidsG]){assert.match(g,/compileSdk = 36/);assert.match(g,/targetSdk = 36/);assert.match(g,/versionCode = \d+/);assert.match(g,/versionName = "\d+\.\d+\.\d+"/);}
  assert.match(main,/https:\/\/matchapp\.tv\//);assert.match(kids,/https:\/\/matchapp\.tv\/kids\//);assert.match(main,/MATCHAPP_ANDROID_KIDS_BLOCKED/);assert.match(kids,/MATCHAPP_ANDROID_KIDS_ONLY/);
 });
-test('main Android launcher uses official icon and no Google ads SDK',()=>{
- const manifest=read('android-studio/app/src/main/AndroidManifest.xml'),gradle=read('android-studio/app/build.gradle.kts'),launcher=read('android-studio/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml');
- assert.doesNotMatch(manifest,/com\.google\.android\.gms\.ads/);assert.doesNotMatch(gradle,/play-services-ads|ads-identifier/);assert.match(launcher,/@drawable\/matchapp_launcher_safe/);
+test('main Android launcher uses official icon and consent-safe production native AdMob',()=>{
+ const manifest=read('android-studio/app/src/main/AndroidManifest.xml'),debugManifest=read('android-studio/app/src/debug/AndroidManifest.xml'),gradle=read('android-studio/app/build.gradle.kts'),admob=read('android-studio/app/src/main/java/com/jonas/papercup/AdMobController.kt'),main=read('android-studio/app/src/main/java/com/jonas/papercup/MainActivity.kt'),launcher=read('android-studio/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml');
+ assert.match(manifest,/MobileAdsInitProvider/);assert.match(manifest,/tools:node="remove"/);assert.match(manifest,/ca-app-pub-9541435081010948~6998171073/);assert.doesNotMatch(manifest,/ca-app-pub-3940256099942544~3347511713/);
+ assert.match(debugManifest,/ca-app-pub-3940256099942544~3347511713/);assert.match(debugManifest,/tools:replace="android:value"/);assert.match(gradle,/play-services-ads:25\.5\.0/);assert.match(gradle,/user-messaging-platform:4\.0\.0/);
+ assert.match(gradle,/ADMOB_ENABLED", "true"/);assert.match(gradle,/ca-app-pub-9541435081010948\/4843348278/);assert.match(gradle,/ca-app-pub-3940256099942544\/9214589741/);
+ for(const marker of ['requestConsentInfoUpdate','loadAndShowConsentFormIfRequired','canRequestAds','showPrivacyOptionsForm','MobileAds.initialize','getCurrentOrientationAnchoredAdaptiveBannerAdSize','fun setAdFree(adFree: Boolean)'])assert.match(admob,new RegExp(marker.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')));
+ for(const marker of ['setAdFree(adFree: Boolean)','syncNativeAdEntitlement','is_vip,is_business,is_ad_free'])assert.match(main,new RegExp(marker.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')));
+ assert.match(launcher,/@drawable\/matchapp_launcher_safe/);
  const safe=read('android-studio/app/src/main/res/drawable/matchapp_launcher_safe.xml');
  assert.match(safe,/@drawable\/ic_launcher_foreground/);assert.match(safe,/android:inset="0%"/);
 });

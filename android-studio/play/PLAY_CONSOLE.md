@@ -22,7 +22,7 @@ The resulting main-app bundle is generated under the `app/` build output.
 
 ## Main store listing
 
-Suggested positioning: MatchApp Ai is an ad-free Android entertainment concierge for movies, series, K-dramas, anime, novelas, podcasts, live entertainment discovery and where-to-watch guidance.
+Suggested positioning: MatchApp Ai is an Android entertainment concierge for movies, series, K-dramas, anime, novelas, podcasts, live entertainment discovery and where-to-watch guidance. Free accounts may see native ads; VIP, Business and eligible Ad-Free accounts do not.
 
 Use:
 
@@ -36,11 +36,11 @@ Privacy policy: `https://matchapp.tv/privacy.html`
 
 ## Ads
 
-The provided live banner ad unit is staged in BuildConfig, but the native Google Mobile Ads SDK is NOT enabled until the owner provides the matching Android AdMob App ID (the identifier containing `~`) and release consent handling is tested. The provided rewarded unit is a Google TEST ID; only DEBUG BuildConfig contains it, whereas RELEASE rewarded ID is blank. The WebView hides site AdSense independently. Declare the ads behavior of the actual release build, not of planned future integration.
+The adult release uses the owner-confirmed AdMob App ID `ca-app-pub-9541435081010948~6998171073` and live banner unit `ca-app-pub-9541435081010948/4843348278`. Google Mobile Ads 25.5.0 and UMP 4.0.0 are integrated natively. Banner requests are fail-closed until account entitlement is resolved and UMP reports that ads may be requested; VIP, Business and existing one-time Ad-Free accounts suppress native ads. DEBUG overrides the App ID/banner/rewarded IDs with Google's sample IDs only; RELEASE rewarded ID remains blank. Website AdSense stays blocked inside the WebView and Kids remains ad-free. The Play Console **Contains ads** declaration must match this release: **Yes**.
 
 ## Data safety and content declarations
 
-Complete Play Console declarations from the behavior of the release you are uploading. MatchApp uses HTTPS and may use account/authentication, profile/history and analytics behavior provided by the MatchApp service. Do not copy old declarations blindly if the app behavior or Play forms have changed.
+Complete Play Console declarations from the behavior of the release you are uploading. MatchApp uses HTTPS and may use account/authentication, profile/history and analytics behavior provided by the MatchApp service. Because the adult release includes Google Mobile Ads and targets API 36, the GMA library merges the normal `com.google.android.gms.permission.AD_ID` permission; review the Play Console Advertising ID and Data safety sections against the final merged release manifest/SDK behavior. Do not copy old declarations blindly if the app behavior or Play forms have changed.
 
 ## App Links
 

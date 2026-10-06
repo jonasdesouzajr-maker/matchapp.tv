@@ -7,7 +7,8 @@ Kids Mode is not sold inside this package.
 - Google Play Billing is used for digital purchases initiated inside the Play-distributed Android app.
 - Website/browser checkout remains on Stripe.
 - The Android WebView must never fall through to Stripe for digital goods.
-- The Android app is already ad-free, so there is no Android Ad-Free Pass SKU.
+- The Android app now uses native AdMob banners for free/guest accounts only. VIP, Business and an existing account-level one-time Ad-Free entitlement suppress native ads.
+- There is no standalone Google Play Ad-Free Pass SKU in the current catalog; do not route its website Stripe checkout through the Play-distributed app.
 
 ## Subscriptions
 

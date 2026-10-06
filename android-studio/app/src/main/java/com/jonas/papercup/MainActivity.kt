@@ -54,6 +54,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var refresh: SwipeRefreshLayout
     private lateinit var offline: View
     private lateinit var fullscreenHost: FrameLayout
+    private var adMobController: AdMobController? = null
 
     private var filePathCallback: ValueCallback<Array<Uri>>? = null
     private var customView: View? = null
@@ -114,6 +115,12 @@ class MainActivity : AppCompatActivity() {
         refresh = findViewById(R.id.refresh)
         offline = findViewById(R.id.offline)
         fullscreenHost = findViewById(R.id.fullscreen)
+        adMobController = AdMobController(
+            this,
+            findViewById(R.id.ad_shell),
+            findViewById(R.id.ad_container),
+            findViewById(R.id.ad_privacy)
+        ).also { it.start() }
         voiceTts = TextToSpeech(this) { status ->
             voiceTtsReady = status == TextToSpeech.SUCCESS
             if (voiceTtsReady) {
@@ -214,7 +221,14 @@ class MainActivity : AppCompatActivity() {
             view.setPadding(view.paddingLeft, safe.top, view.paddingRight, view.paddingBottom)
             insets
         }
+        val adShell = findViewById<View>(R.id.ad_shell)
+        ViewCompat.setOnApplyWindowInsetsListener(adShell) { view, insets ->
+            val navigation = insets.getInsets(WindowInsetsCompat.Type.navigationBars())
+            view.setPadding(view.paddingLeft, view.paddingTop, view.paddingRight, navigation.bottom)
+            insets
+        }
         ViewCompat.requestApplyInsets(refresh)
+        ViewCompat.requestApplyInsets(adShell)
     }
 
     override fun onNewIntent(intent: Intent) {
@@ -230,6 +244,7 @@ class MainActivity : AppCompatActivity() {
     override fun onPause() {
         finishIntro()
         finishStartupTransition(immediate = true)
+        adMobController?.pause()
         super.onPause()
         web.onPause()
         CookieManager.getInstance().flush()
@@ -238,11 +253,17 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         web.onResume()
+        adMobController?.resume()
+        // Re-resolve account entitlement after returning from browser/payment/account
+        // changes. APP_MODE_JS is idempotent and keeps paid users fail-closed.
+        injectAppMode(web)
     }
 
     override fun onDestroy() {
         finishIntro()
         finishStartupTransition(immediate = true)
+        adMobController?.destroy()
+        adMobController = null
         voiceTts?.stop()
         voiceTts?.shutdown()
         voiceTts = null
@@ -661,6 +682,15 @@ class MainActivity : AppCompatActivity() {
 
     private inner class NativeExperienceBridge {
         @JavascriptInterface
+        fun setAdFree(adFree: Boolean) {
+            runOnUiThread {
+                val current = runCatching { Uri.parse(web.url.orEmpty()) }.getOrNull()
+                if (current == null || !isMatchAppHost(current.host.orEmpty())) return@runOnUiThread
+                adMobController?.setAdFree(adFree)
+            }
+        }
+
+        @JavascriptInterface
         fun haptic(kind: String?) {
             runOnUiThread {
                 when (kind?.lowercase()) {
@@ -830,6 +860,67 @@ class MainActivity : AppCompatActivity() {
 
               document.querySelectorAll('ins.adsbygoogle,.ad-banner-container').forEach(function(el){ el.remove(); });
 
+              // Native AdMob is separate from the website's AdSense surface. Keep native
+              // ads OFF until account entitlement is known; paid/ad-free accounts therefore
+              // fail closed instead of briefly flashing a banner while auth hydrates.
+              function syncNativeAdEntitlement() {
+                var bridge = window.MatchAppNativeExperience;
+                if (!bridge || typeof bridge.setAdFree !== 'function') return;
+
+                var state = window.matchProfileState && window.matchProfileState.status;
+                if (state === 'signedout') {
+                  try { bridge.setAdFree(false); } catch (_) {}
+                  return;
+                }
+                if (window.isUserLoggedIn !== true) {
+                  try { bridge.setAdFree(true); } catch (_) {}
+                  return;
+                }
+
+                // Authenticated accounts remain ad-free while the authoritative profile
+                // row is resolved. VIP, Business and one-time Ad-Free entitlements all win.
+                try { bridge.setAdFree(true); } catch (_) {}
+                var client = window.supabaseClient;
+                if (!client || !client.from) return;
+
+                var sessionPromise;
+                try {
+                  sessionPromise = typeof window.ensureCompactMatchSession === 'function'
+                    ? window.ensureCompactMatchSession()
+                    : client.auth.getSession();
+                } catch (_) { return; }
+
+                Promise.resolve(sessionPromise).then(function(sessionResult){
+                  var user = sessionResult && sessionResult.data && sessionResult.data.session && sessionResult.data.session.user;
+                  if (!user || !user.id) return;
+                  return client.from('profiles')
+                    .select('is_vip,is_business,is_ad_free')
+                    .eq('id', user.id)
+                    .maybeSingle();
+                }).then(function(result){
+                  if (!result || result.error || !result.data) return;
+                  var profile = result.data;
+                  var adFree = profile.is_vip === true ||
+                    profile.is_business === true ||
+                    profile.is_ad_free === true;
+                  try { bridge.setAdFree(adFree); } catch (_) {}
+                }).catch(function(){
+                  // Keep the safe ad-free default on entitlement/network errors.
+                });
+              }
+
+              if (!window.__matchAppNativeAdEntitlementBound) {
+                window.__matchAppNativeAdEntitlementBound = true;
+                document.addEventListener('matchapp:authchange', function(){
+                  setTimeout(syncNativeAdEntitlement, 0);
+                });
+                document.addEventListener('matchapp:profilehydrated', function(){
+                  setTimeout(syncNativeAdEntitlement, 0);
+                });
+              }
+              setTimeout(syncNativeAdEntitlement, 450);
+              setTimeout(syncNativeAdEntitlement, 1600);
+
               function configureAndroidKidsEntry() {
                 var kids = document.getElementById('matchapp-kids-entry') || document.querySelector('.ma-kids-mode-entry');
                 if (!kids) return;
@@ -944,7 +1035,7 @@ class MainActivity : AppCompatActivity() {
                     ? button.id.slice(4)
                     : (button.getAttribute('data-match-pack') || button.getAttribute('data-credit-pack') || '');
                   var message = key === 'ad_free'
-                    ? 'MatchApp Ai for Android is already ad-free.'
+                    ? 'Ad-free access on Android is included with VIP and Business. Google Play purchases are being activated for this release.'
                     : 'Google Play purchases are being activated for this Android release. Please try again after the next Play update.';
                   try {
                     if (typeof window.showToast === 'function') window.showToast(message);

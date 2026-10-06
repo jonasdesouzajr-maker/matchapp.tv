@@ -22,12 +22,15 @@
 - Separately on 25 Sep 2026 the owner supplied the **Play Console App signing key certificate** SHA-256 `66:EB:B2:FF:31:C6:57:42:FB:D9:9E:0D:89:0A:B2:F1:56:E4:DA:5C:19:1A:AF:67:5A:DA:4E:D5:FF:EE:74:B8` along with the related App signing key certificate screenshot; the Upload key certificate section was blank before the first uploaded AAB. The root `.well-known/assetlinks.json` and local `play/assetlinks.json` now use this Play app-signing fingerprint and `com.jonas.papercup`.
 - A successful website deploy does not itself prove App Links verification. Confirm live assetlinks is reachable without redirect, and test real Play-distributed signed app. `www.matchapp.tv` is intentionally not declared by the adult manifest because that hostname redirects to `matchapp.tv`; only the canonical apex host is verified for Android App Links.
 
-## AdMob configuration and blockers
-- Owner's real *banner ad UNIT*: `ca-app-pub-9541435081010948/4843348278`, recorded in adult release BuildConfig.
-- Owner's *rewarded ad UNIT* `ca-app-pub-3940256099942544/5224354917` is Google's public sample/test ad ID. It is in adult DEBUG BuildConfig ONLY; the RELEASE rewarded ID remains blank.
-- Before activating native ads you MUST supply your Android **AdMob App ID**, e.g. `ca-app-pub-9541435081010948~XXXXXXXXXX` (notice `~`, not `/`). If rewards are desired in production, supply your own real rewarded ad unit too.
-- The Android shell intentionally does not include or initialize Google Mobile Ads until the valid app ID, consent handling and banner placement are added and tested. The native AAB is currently ad-free; it suppresses website AdSense separately. Never use Google's sample rewarded unit as a production unit or award real credits based solely on unverified JavaScript callbacks.
-- When native ads are implemented, validate test devices and user consent/privacy disclosures before testing live units. Keep immutable website AdSense placements and Kids app untouched.
+## AdMob configuration and release gates
+- Owner-confirmed production **AdMob App ID**: `ca-app-pub-9541435081010948~6998171073`.
+- Owner's production **banner ad unit**: `ca-app-pub-9541435081010948/4843348278`.
+- Google Mobile Ads **25.5.0** and UMP **4.0.0** are integrated in the adult native shell. The SDK is initialized only after UMP has refreshed consent and `canRequestAds()` is true.
+- Native banners are **free/guest tier only**. The bridge queries the authenticated `profiles` row and fails closed while entitlement is unknown; VIP, Business and existing one-time Ad-Free accounts suppress native ads.
+- Website AdSense stays blocked inside the Android WebView. The separate Kids app remains ad-free and receives no AdMob integration.
+- DEBUG overrides the production App ID/banner with Google's sample App ID/banner and keeps Google's sample rewarded unit `ca-app-pub-3940256099942544/5224354917`. RELEASE rewarded ID remains blank; do not award real credits from the sample unit.
+- Before production submission, use DEBUG/sample ads or an AdMob test-device configuration for device QA. Verify the UMP message and the **Privacy choices** entry point where required. Do not intentionally click live ads during testing.
+- The Play Console **Contains ads** declaration for this adult release must be **Yes**. If a production rewarded format is added later, create a real MatchApp Ai rewarded unit first and repeat consent/entitlement/device QA.
 
 ## Build and release gates
 1. Pull the latest `main`. Open the `android-studio` folder with Android Studio using JDK 17 and Android SDK API 36. Select the **app** module for the normal MatchApp Ai listing.
@@ -37,7 +40,7 @@
 5. Generate a signed **Android App Bundle** for `:app` only, using a private signing key not stored in Git. Verify package `com.jonas.papercup`, version code 42 (higher than the already-uploaded code 41), target SDK 36, correct upload signing certificate and Play Console listing/data safety declarations.
 6. Website Digital Asset Links now use the recovered **Play app-signing** SHA-256. Verify live HTTPS JSON and Android App Links on the Play-distributed build; publishing an app is not required for staging this website file.
 
-STATUS: Build/static verification is automatable. Native AdMob activation, actual Play signing and physical-device release QA still require the missing owner inputs and tests.
+STATUS: Production banner AdMob is now source-configured with owner-confirmed IDs and consent/entitlement gates. Build/static verification is automatable; physical-device ad/consent QA, final local signing and Play-track validation remain release gates.
 
 
 ## 27 September 2026 adult-only source candidate

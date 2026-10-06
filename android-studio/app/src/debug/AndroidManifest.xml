@@ -4,5 +4,11 @@
     <application
         android:networkSecurityConfig="@xml/network_security_config_debug"
         android:usesCleartextTraffic="true"
-        tools:replace="android:networkSecurityConfig,android:usesCleartextTraffic" />
+        tools:replace="android:networkSecurityConfig,android:usesCleartextTraffic">
+        <!-- Google's sample App ID is DEBUG-only; it overrides the production App ID safely. -->
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-3940256099942544~3347511713"
+            tools:replace="android:value" />
+    </application>
 </manifest>

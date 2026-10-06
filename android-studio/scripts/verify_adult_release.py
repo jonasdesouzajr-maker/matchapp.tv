@@ -10,7 +10,9 @@ def content(relative):
 
 gradle = content("app/build.gradle.kts")
 manifest = content("app/src/main/AndroidManifest.xml")
+debug_manifest = content("app/src/debug/AndroidManifest.xml")
 activity = content("app/src/main/java/com/jonas/papercup/MainActivity.kt")
+admob = content("app/src/main/java/com/jonas/papercup/AdMobController.kt")
 kids = content("kidsapp/build.gradle.kts")
 template = content("play/assetlinks.json")
 
@@ -53,8 +55,21 @@ assert not any(d.attrib.get(android_ns+"host")=="www.matchapp.tv" for f in app_l
 default = gradle.split("defaultConfig {", 1)[1].split("buildTypes {", 1)[0]
 debug = gradle.split("debug {", 1)[1].split("\n        }", 1)[0]
 assert "ca-app-pub-9541435081010948/4843348278" in default
+assert 'buildConfigField("Boolean", "ADMOB_ENABLED", "true")' in default
 assert "ADMOB_REWARDED_ID" in default
 assert "ca-app-pub-3940256099942544/5224354917" not in default
+assert 'buildConfigField("Boolean", "ADMOB_ENABLED", "true")' in debug
+assert "ca-app-pub-3940256099942544/9214589741" in debug
 assert "ca-app-pub-3940256099942544/5224354917" in debug
-assert "com.google.android.gms:play-services-ads" not in gradle, "SDK is blocked until a real AdMob APP ID and consent are provided"
-print("Adult Play static package, version, Kids separation and safe ad staging: PASS")
+assert "com.google.android.gms:play-services-ads:25.5.0" in gradle
+assert "com.google.android.ump:user-messaging-platform:4.0.0" in gradle
+assert "com.google.android.gms.ads.MobileAdsInitProvider" in manifest and 'tools:node="remove"' in manifest
+assert "ca-app-pub-9541435081010948~6998171073" in manifest
+assert "ca-app-pub-3940256099942544~3347511713" not in manifest
+assert "ca-app-pub-3940256099942544~3347511713" in debug_manifest
+assert 'tools:replace="android:value"' in debug_manifest
+for marker in ["requestConsentInfoUpdate", "loadAndShowConsentFormIfRequired", "canRequestAds", "showPrivacyOptionsForm", "MobileAds.initialize", "getCurrentOrientationAnchoredAdaptiveBannerAdSize", "fun setAdFree(adFree: Boolean)"]:
+    assert marker in admob, f"Missing consent-safe AdMob integration marker: {marker}"
+for marker in ["MatchAppNativeExperience", "setAdFree(adFree: Boolean)", "is_vip,is_business,is_ad_free", "syncNativeAdEntitlement"]:
+    assert marker in activity, f"Missing native ad-free entitlement bridge marker: {marker}"
+print("Adult Play static package, version, Kids separation, entitlement gating and production AdMob integration: PASS")

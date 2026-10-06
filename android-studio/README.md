@@ -27,7 +27,7 @@ These existing native modules are **live WebView shells**, not divergent forks o
 - Keeps the existing Android application ID for upgrade continuity
 - Kids Mode is intentionally hidden and `/kids/` routes are blocked inside the standard Android app
 - The separate **MatchApp Ai KIDS** app owns the dedicated Kids experience and parental exit flow
-- Web AdSense is disabled in the adult Android shell; the requested AdMob IDs are staged but native AdMob is NOT activated pending the real AdMob App ID and consent integration.
+- Web AdSense is disabled in the adult Android shell. Native AdMob is integrated separately for free/guest accounts using the MatchApp Ai production App ID/banner unit, with UMP consent and fail-closed VIP/Business/Ad-Free entitlement gating.
 - Supports authenticated sessions, Android back, pull-to-refresh, fullscreen media, file selection and offline state
 - WebView injects production `cinema-dim.css` on adult pages (same sheet as the website)
 
@@ -78,7 +78,7 @@ The project intentionally keeps the already proven MatchApp Android toolchain:
 
 - Android Gradle Plugin 8.13.2
 - Gradle 8.13
-- Kotlin 2.0.21
+- Kotlin 2.3.21
 - JDK 17
 - compileSdk 36
 - targetSdk 36
@@ -141,7 +141,7 @@ After final Play signing certificates exist, Digital Asset Links can be updated 
 
 ## Adult Play Console identity checkpoint (2026-09-25)
 
-The first Play Console listing supplied by the owner uses package ID **`com.jonas.papercup`**, so the normal adult `:app` Gradle namespace, application ID and Kotlin package were aligned; normal app version 1.1.32 (code 34). This package cannot update an installed legacy `tv.matchapp.app` package. **Verify your Play Console listing uses the exact package ID before signing.** Kids `:kidsapp` is unchanged. The production banner ad unit is staged in the adult BuildConfig. The provided rewarded ID is a Google demo ad unit included only in DEBUG; RELEASE rewarded ID is blank. The app remains ad-free while the real AdMob App ID (with `~`) and SDK/consent are unresolved. Full release checklist: `play/RELEASE_PREFLIGHT.md`.
+The first Play Console listing supplied by the owner uses package ID **`com.jonas.papercup`**, so the normal adult `:app` Gradle namespace, application ID and Kotlin package were aligned; normal app version 1.1.32 (code 34). This package cannot update an installed legacy `tv.matchapp.app` package. **Verify your Play Console listing uses the exact package ID before signing.** Kids `:kidsapp` is unchanged. The adult release now has the owner-confirmed production AdMob App ID and banner unit, Google Mobile Ads 25.5.0, UMP 4.0.0 and account-entitlement suppression for VIP/Business/Ad-Free users. Google's sample App ID/banner/rewarded units exist in DEBUG only; RELEASE rewarded ID remains blank. Full release checklist: `play/RELEASE_PREFLIGHT.md`.
 
 
 ## 26 September 2026 — Adult AAB candidate and ongoing WebView parity
@@ -162,4 +162,4 @@ HTTPS intent filter. The source tests do not claim the live apex or separate
 and an installed Play-distributed build. The adult version is
 `1.1.35` (`versionCode 37`); only the existing private upload keystore
 can sign an update. The workflow produces an **unsigned** AAB solely for
-owner-side signing. No Kids code or production AdMob activation is changed.
+owner-side signing. Kids remains isolated; production AdMob applies only to the adult free tier and is protected by UMP plus account-entitlement gating.

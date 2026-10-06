@@ -5,5 +5,6 @@
     <string name="offline_body">MatchApp needs a connection to find titles and where to watch them. Check your network and try again.</string>
     <string name="offline_retry">Try again</string>
     <string name="file_chooser_title">Choose a photo</string>
+    <string name="ad_privacy_choices">Privacy choices</string>
     <string name="kids_separate_app">Kids Mode is available in the separate MatchApp Ai KIDS app.</string>
 </resources>
