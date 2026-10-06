@@ -3,6 +3,7 @@
   'use strict';
   const V='20260923-videoaudit1';
   const PWA_V='20261003-premiumicon1';
+  const NEWS_V='20261006-localenews1';
   const INSTALL_MANIFEST_PT='/manifest-pt-br.json';
   const INSTALL_NAME_PT='MatchApp Ai';
   const INSTALL_NAME_EN='MatchApp Ai';
@@ -10,7 +11,7 @@
   const path=location.pathname;
   const isKids=path==='/kids'||path.startsWith('/kids/');
   const isHome=path==='/'||path==='/index.html';
-  function js(src){if(document.querySelector(`script[src^="${src}"]`))return;const s=document.createElement('script');s.src=src+'?v='+(src==='/match-speed.js'?'20260925-matchrestore1':src==='/weekly-pick.js'?'20261002-weekly-cover1':V);s.async=false;s.defer=true;document.head.appendChild(s);}
+  function js(src){if(document.querySelector(`script[src^="${src}"]`))return;const s=document.createElement('script');s.src=src+'?v='+(src==='/match-speed.js'?'20260925-matchrestore1':src==='/weekly-pick.js'?'20261002-weekly-cover1':(src==='/latest-news.js'||src==='/live-news-loader.js')?NEWS_V:V);s.async=false;s.defer=true;document.head.appendChild(s);}
   function upsertMeta(name,content){let m=document.querySelector(`meta[name="${name}"]`);if(!m){m=document.createElement('meta');m.name=name;document.head.appendChild(m);}m.content=content;}
   function brand(){
     if(isKids)return;
@@ -89,7 +90,7 @@
     if(appPages){js('/production-hardening.js');js('/shown-history.js');js('/match-speed.js');js('/catalog-media.js');}
     if(path==='/'||path==='/index.html'){
       const loadHomeEditorial=()=>{
-        js('/weekly-pick-data.js');js('/weekly-pick.js');js('/latest-news.js?v=20260925-sports1');js('/live-news-loader.js');js('/latest-news-image-guard.js');
+        js('/weekly-pick-data.js');js('/weekly-pick.js');js('/latest-news.js');js('/live-news-loader.js');js('/latest-news-image-guard.js');
       };
       const sentinel=document.getElementById('premiere-disclosure')||document.getElementById('swifties-spotify')||document.getElementById('global-events');
       if(sentinel&&'IntersectionObserver' in window){
