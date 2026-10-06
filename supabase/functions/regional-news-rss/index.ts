@@ -1,0 +1,44 @@
+import "jsr:@supabase/functions-js/edge-runtime.d.ts";
+
+const ALLOWED_LANGS=new Set(['en','pt','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh']);
+const EDITION:any={en:['en-US','en'],pt:['pt-BR','pt-419'],es:['es-419','es-419'],fr:['fr','fr'],de:['de','de'],it:['it','it'],tr:['tr','tr'],ru:['ru','ru'],ar:['ar','ar'],hi:['hi','hi'],id:['id','id'],ja:['ja','ja'],ko:['ko','ko'],zh:['zh-CN','zh-Hans']};
+const clean=(v:any)=>String(v??'').replace(/\s+/g,' ').trim();
+const decode=(v:any)=>clean(String(v??'').replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g,'$1').replace(/<[^>]+>/g,' ').replace(/&amp;/g,'&').replace(/&quot;/g,'"').replace(/&apos;|&#39;/g,"'").replace(/&lt;/g,'<').replace(/&gt;/g,'>'));
+const tag=(block:string,name:string)=>{const m=block.match(new RegExp('<'+name+'(?:\\s[^>]*)?>([\\s\\S]*?)<\\/'+name+'>','i'));return m?decode(m[1]):''};
+const sha=async(s:string)=>Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s)))).map(b=>b.toString(16).padStart(2,'0')).join('').slice(0,16);
+const countryName=(cc:string,l:string)=>{try{return clean(new Intl.DisplayNames([l==='pt'?'pt-BR':l,'en'],{type:'region'}).of(cc))||cc}catch{return cc}};
+const cors=(o:string|null)=>({'access-control-allow-origin':!o||o==='https://matchapp.tv'||o==='https://www.matchapp.tv'||o.startsWith('http://localhost:')?(o||'https://matchapp.tv'):'https://matchapp.tv','access-control-allow-methods':'GET,OPTIONS','access-control-allow-headers':'content-type','vary':'Origin'});
+
+async function pull(scope:'local'|'global',cc:string,l:string){
+  const e=EDITION[l]||EDITION.en;
+  const u=new URL('https://news.google.com/rss/headlines/section/topic/'+(scope==='local'?'NATION':'WORLD'));
+  u.searchParams.set('hl',e[0]);u.searchParams.set('gl',cc);u.searchParams.set('ceid',cc+':'+e[1]);
+  const r=await fetch(u,{headers:{accept:'application/rss+xml,application/xml,text/xml','user-agent':'MatchAppAiNews/1.0'},signal:AbortSignal.timeout(10000)});
+  if(!r.ok)throw new Error('RSS '+r.status);
+  const blocks=(await r.text()).match(/<item\b[\s\S]*?<\/item>/gi)||[];
+  const out:any[]=[],seen=new Set<string>();
+  for(const b of blocks){
+    let title=tag(b,'title');const url=tag(b,'link'),published=tag(b,'pubDate');
+    const sm=b.match(/<source\b[^>]*url=["']([^"']+)["'][^>]*>([\s\S]*?)<\/source>/i);
+    const sourceHome=sm?decode(sm[1]):'',source=sm?decode(sm[2]):'News source';
+    if(!title||!url.startsWith('https://news.google.com/'))continue;
+    if(source&&title.endsWith(' - '+source))title=title.slice(0,-(' - '+source).length).trim();
+    const key=title.toLowerCase();if(seen.has(key))continue;seen.add(key);
+    const id='regional-'+await sha(scope+'|'+url),global=scope==='global';
+    out.push({id,source,source_home:sourceHome,url,title,description:'',image:null,published_at:new Date(published||Date.now()).toISOString(),country:global?'GLOBAL':cc,language:l,category:'general',event_type:global?'Global news':'Local news',breaking:false,provider:'Regional RSS',scope,seo:{primary_keyword:global?(l==='pt'?'notícias do mundo':'global news'):(countryName(cc,l)+' '+(l==='pt'?'notícias':'news')),locale:global?l:(l+'-'+cc)}});
+    if(out.length>=(global?5:6))break;
+  }
+  return out;
+}
+Deno.serve(async req=>{
+  const o=req.headers.get('origin');
+  if(req.method==='OPTIONS')return new Response(null,{status:204,headers:cors(o)});
+  if(req.method!=='GET')return new Response('Method not allowed',{status:405,headers:cors(o)});
+  const u=new URL(req.url),cc=clean(u.searchParams.get('country')||'US').toUpperCase();
+  const raw=clean(u.searchParams.get('language')||'en').toLowerCase().split('-')[0],l=ALLOWED_LANGS.has(raw)?raw:'en';
+  if(!/^[A-Z]{2}$/.test(cc))return Response.json({ok:false,error:'invalid country'},{status:400,headers:cors(o)});
+  const warnings:string[]=[];let local:any[]=[],global:any[]=[];
+  try{local=await pull('local',cc,l)}catch(e){warnings.push('local:'+String((e as Error)?.message||e).slice(0,80))}
+  try{global=await pull('global',cc,l)}catch(e){warnings.push('global:'+String((e as Error)?.message||e).slice(0,80))}
+  return Response.json({ok:true,country:cc,language:l,generated_at:new Date().toISOString(),local_count:local.length,global_count:global.length,items:[...local,...global],source_policy:'country edition plus global edition in selected language',...(warnings.length?{warnings}:{})},{headers:{...cors(o),'content-type':'application/json; charset=utf-8','cache-control':'public,max-age=60,s-maxage=600'}});
+});
