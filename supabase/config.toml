@@ -42,6 +42,11 @@ verify_jwt = false
 [functions.notification-worker]
 verify_jwt = false
 
+# Public read-only regional news feed used by the shared Home/Android renderer.
+# It accepts only ISO country + allowlisted MatchApp language query values.
+[functions.regional-news-rss]
+verify_jwt = false
+
 # catalog-media-ingest is backend-only. Supabase's JWT gate is disabled because
 # the endpoint validates GitHub Actions' short-lived OIDC JWT itself before any
 # TMDB request or database write.
