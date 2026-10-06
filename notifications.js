@@ -18,6 +18,9 @@ function visibleNotifications(){
 function unreadKeys(){
   return new Set(visibleNotifications().filter(n=>(n.localRelease||n.localKey)?!localSeen(n):!n.readAt).map(notificationKey).filter(Boolean));
 }
+function notificationSoundAllowed(){
+  try{return localStorage.getItem('match_soundEnabled')!=='false';}catch(_){return true;}
+}
 function unlockNotificationSound(){
   if(notificationSoundUnlocked)return;
   const AudioContextCtor=window.AudioContext||window.webkitAudioContext;
@@ -29,7 +32,7 @@ function unlockNotificationSound(){
   }catch(_){}
 }
 function playNotificationSound(){
-  if(document.hidden||!notificationSoundUnlocked||!notificationAudio||notificationAudio.state!=='running')return false;
+  if(!notificationSoundAllowed()||document.hidden||!notificationSoundUnlocked||!notificationAudio||notificationAudio.state!=='running')return false;
   try{
     const ctx=notificationAudio,now=ctx.currentTime,master=ctx.createGain();
     master.gain.setValueAtTime(.0001,now);
@@ -371,7 +374,7 @@ function pushLocal(item){
  render();
  return true;
 }
-function authChanged(){refresh();if(poll)clearInterval(poll);poll=setInterval(()=>{if(!document.hidden)refresh();},60000);}
+function authChanged(){knownUnreadKeys=null;refresh();if(poll)clearInterval(poll);poll=setInterval(()=>{if(!document.hidden)refresh();},60000);}
 window.MatchNotifications={refresh,open,close,followTitle,enableDevice,savePrefs,markAllRead,deleteItem,deleteAll,pushLocal,playNotificationSound};
 document.addEventListener('matchapp:authchange',authChanged);
 document.addEventListener('matchapp:tastechange',()=>{if(signed())void refresh();});
