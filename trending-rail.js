@@ -1,4 +1,4 @@
-/* Top Titles: render the weekly file, auto-swipe left, stay clickable and swipeable. */
+/* Top Titles: render weekly data only. app.js is the single owner of autoplay and native two-way swipe. */
 (function(){
 'use strict';
 const HOME=location.pathname==='/'||location.pathname==='/index.html';
@@ -45,34 +45,12 @@ function paint(data){
   editorialTitles.forEach(item=>track.appendChild(card(item,false)));
   editorialTitles.forEach(item=>track.appendChild(card(item,true)));
   track.dataset.loopCount=String(editorialTitles.length);
-  start(document.getElementById('marquee-viewport'));
+  // app.js owns scroll state. Resync its invisible loop seam after a weekly repaint.
+  requestAnimationFrame(()=>window.dispatchEvent(new Event('resize')));
   document.dispatchEvent(new CustomEvent('matchapp:trendingpainted',{detail:{count:editorialTitles.length}}));
 }
-function start(vp){
-  if(!vp||vp.dataset.weekAuto==='1')return;
-  vp.dataset.weekAuto='1';
-  vp.style.overflowX='auto';
-  vp.style.touchAction='pan-x';
-  const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let hold=0,hover=false;
-  const step=()=>{
-    if(reduced||hover||Date.now()<hold||document.hidden)return;
-    const max=vp.scrollWidth/2;
-    vp.scrollLeft+=1.1;
-    if(max>40&&vp.scrollLeft>=max)vp.scrollLeft-=max;
-  };
-  const timer=setInterval(()=>{if(document.hidden||document.documentElement.classList.contains('reduce-motion'))return;if(!vp.isConnected){clearInterval(timer);return;}step();},48);
-  vp.addEventListener('mouseenter',()=>{hover=true;});
-  vp.addEventListener('mouseleave',()=>{hover=false;});
-  vp.addEventListener('touchstart',()=>{hold=Date.now()+6000;},{passive:true});
-  vp.addEventListener('wheel',()=>{hold=Date.now()+4000;},{passive:true});
-  window.addEventListener('pagehide',()=>clearInterval(timer),{once:true});
-}
 function boot(){
-  // Start the committed mirrored rail immediately. The async weekly refresh is
-  // an enhancement, never a prerequisite for motion; if that fetch is slow or
-  // unavailable, Top Titles must still keep auto-swiping.
-  start(document.getElementById('marquee-viewport'));
+  // The committed rail is already usable; app.js owns all motion so Android never has two scroll writers fighting a finger swipe.
   Promise.all([
     fetch('/data/trending-week.json?v=20261002-week1',{cache:'no-store'}).then(r=>r.ok?r.json():null),
     fetch('/data/poster-identities.json?v=20261002-poster1',{cache:'force-cache'}).then(r=>r.ok?r.json():[]).catch(()=>[])
