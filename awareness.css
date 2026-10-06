@@ -13,3 +13,94 @@
 @keyframes awarenessGlow{0%,100%{transform:translateY(0);filter:drop-shadow(0 0 8px color-mix(in srgb,var(--awareness) 55%,transparent))}50%{transform:translateY(-1px);filter:drop-shadow(0 0 15px color-mix(in srgb,var(--awareness) 82%,transparent))}}
 @media(max-width:640px){#awareness-spotlight{width:calc(100% - 16px);margin-top:6px}#awareness-spotlight .awareness-card{grid-template-columns:34px minmax(0,1fr);gap:9px;padding:9px 10px}#awareness-spotlight .awareness-ribbon{width:32px;height:42px}#awareness-spotlight .awareness-cta{grid-column:1/-1;width:100%;min-height:33px;box-sizing:border-box}.awareness-body{max-width:none}}
 @media(prefers-reduced-motion:reduce){#awareness-spotlight .awareness-ribbon{animation:none}#awareness-spotlight .awareness-cta{transition:none}}
+
+
+/* 2026-10-06 source-backed ribbon pop treatment.
+   Uses only --awareness, so every scheduled campaign automatically inherits its
+   verified ribbon color on browser, tablet and the Android WebView. */
+#awareness-spotlight .awareness-card{
+  isolation:isolate!important;
+  border-width:2px!important;
+  background:
+    radial-gradient(circle at 9% 48%,color-mix(in srgb,var(--awareness) 31%,transparent),transparent 25%),
+    linear-gradient(108deg,color-mix(in srgb,var(--awareness) 18%,#21132f),color-mix(in srgb,var(--awareness) 27%,#341c4e) 48%,color-mix(in srgb,var(--awareness) 12%,#170c29))!important;
+  box-shadow:
+    0 10px 34px color-mix(in srgb,var(--awareness) 28%,rgba(18,8,31,.72)),
+    inset 0 0 0 1px color-mix(in srgb,var(--awareness) 42%,rgba(255,255,255,.18)),
+    inset 0 1px 0 rgba(255,255,255,.18)!important;
+}
+#awareness-spotlight .awareness-card::before{
+  background:
+    radial-gradient(circle at 8.5% 50%,color-mix(in srgb,var(--awareness) 46%,transparent),transparent 22%),
+    linear-gradient(90deg,color-mix(in srgb,var(--awareness) 12%,transparent),transparent 38%)!important;
+}
+#awareness-spotlight .awareness-ribbon{
+  display:grid!important;
+  place-items:center!important;
+  width:58px!important;
+  height:70px!important;
+  margin:-4px 0!important;
+  border-radius:20px!important;
+  background:
+    radial-gradient(circle at 48% 38%,rgba(255,255,255,.28),transparent 30%),
+    radial-gradient(circle at 50% 52%,color-mix(in srgb,var(--awareness) 42%,transparent),transparent 70%)!important;
+  box-shadow:
+    0 0 0 1px color-mix(in srgb,var(--awareness) 46%,rgba(255,255,255,.25)),
+    0 0 22px color-mix(in srgb,var(--awareness) 72%,transparent),
+    inset 0 0 18px color-mix(in srgb,var(--awareness) 24%,transparent)!important;
+  filter:none!important;
+  animation:awarenessRibbonPop 3.4s ease-in-out infinite!important;
+}
+#awareness-spotlight .awareness-ribbon::before{
+  content:""!important;
+  position:absolute!important;
+  inset:-10px!important;
+  z-index:-1!important;
+  border-radius:26px!important;
+  background:radial-gradient(circle,color-mix(in srgb,var(--awareness) 38%,transparent),transparent 68%)!important;
+  filter:blur(7px)!important;
+  opacity:.9!important;
+  pointer-events:none!important;
+}
+#awareness-spotlight .awareness-ribbon svg{
+  position:relative!important;
+  z-index:1!important;
+  width:50px!important;
+  height:66px!important;
+  overflow:visible!important;
+  filter:
+    drop-shadow(0 2px 1px rgba(0,0,0,.36))
+    drop-shadow(0 0 8px color-mix(in srgb,var(--awareness) 88%,transparent))!important;
+}
+#awareness-spotlight .awareness-ribbon svg path:first-child{
+  stroke-width:7.2!important;
+  stroke:color-mix(in srgb,var(--awareness) 92%,#fff 8%)!important;
+}
+#awareness-spotlight .awareness-ribbon-highlight{
+  stroke:rgba(255,255,255,.58)!important;
+  stroke-width:2.4!important;
+  fill:none!important;
+  opacity:.95!important;
+}
+#awareness-spotlight .awareness-eyebrow{
+  color:color-mix(in srgb,var(--awareness) 46%,#fff 54%)!important;
+  text-shadow:0 0 12px color-mix(in srgb,var(--awareness) 48%,transparent)!important;
+}
+#awareness-spotlight .awareness-cta{
+  border-color:color-mix(in srgb,var(--awareness) 44%,rgba(255,255,255,.45))!important;
+  background:linear-gradient(180deg,rgba(255,255,255,.12),color-mix(in srgb,var(--awareness) 12%,rgba(255,255,255,.05)))!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.16),0 0 16px color-mix(in srgb,var(--awareness) 18%,transparent)!important;
+}
+@keyframes awarenessRibbonPop{
+  0%,100%{transform:translateY(0) scale(1);box-shadow:0 0 0 1px color-mix(in srgb,var(--awareness) 46%,rgba(255,255,255,.25)),0 0 20px color-mix(in srgb,var(--awareness) 64%,transparent),inset 0 0 18px color-mix(in srgb,var(--awareness) 24%,transparent)}
+  50%{transform:translateY(-2px) scale(1.055);box-shadow:0 0 0 2px color-mix(in srgb,var(--awareness) 58%,rgba(255,255,255,.34)),0 0 34px color-mix(in srgb,var(--awareness) 88%,transparent),inset 0 0 22px color-mix(in srgb,var(--awareness) 32%,transparent)}
+}
+@media(max-width:640px){
+  #awareness-spotlight .awareness-card{grid-template-columns:46px minmax(0,1fr)!important}
+  #awareness-spotlight .awareness-ribbon{width:44px!important;height:58px!important;margin:-2px 0!important;border-radius:16px!important}
+  #awareness-spotlight .awareness-ribbon svg{width:40px!important;height:54px!important}
+}
+@media(prefers-reduced-motion:reduce){
+  #awareness-spotlight .awareness-ribbon{animation:none!important}
+}
+html.reduce-motion #awareness-spotlight .awareness-ribbon{animation:none!important}
