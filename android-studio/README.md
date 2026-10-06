@@ -50,9 +50,9 @@ These existing native modules are **live WebView shells**, not divergent forks o
 
 Both Android modules remain WebView shells over live production:
 
-- Standard app (`:app`) release version: **1.1.36**
-- Standard app version code: **40**
-- Standard app launch: `https://matchapp.tv/?utm_source=android_app&appBuild=40`
+- Standard app (`:app`) release version: **1.1.38**
+- Standard app version code: **42**
+- Standard app launch: `https://matchapp.tv/?utm_source=android_app&appBuild=42`
 - October 4 Play compliance repair: the adult release remains `compileSdk 36` / `targetSdk 36` and declares only the canonical verified App Links host `matchapp.tv`; `www.matchapp.tv` is intentionally excluded because it redirects to the apex domain and Android domain verification does not follow that redirect.
 - Kids app (`:kidsapp`) release version: **1.1.25** / version code **27**
 - Kids app launch: `https://matchapp.tv/kids/?utm_source=android_kids_app&appBuild=27`
@@ -64,6 +64,13 @@ Both Android modules remain WebView shells over live production:
 - The Kids app blocks non-Kids routes internally and exposes only the guarded parent handoff to grown-up mode.
 
 Because these apps intentionally render the live web experience, the latest approved MatchApp UI/content/features do **not** need to be copied into Android source. Native Android files are changed only when routing, permissions, WebView behavior, package identity, or Android-specific presentation requires it.
+
+## October 7, 2026 adult Play publication candidate
+
+- Adult Play candidate: **MatchApp Ai 1.1.38 (versionCode 42)** for package `com.jonas.papercup`.
+- Code 42 intentionally advances beyond the already-uploaded code 41 bundle. Kids remains a separate unchanged package and is regression-tested only.
+- The release candidate must pass adult debug compilation, adult release bundle/minification, Kids debug isolation, local emulator launch/navigation checks, static release guards, AAB integrity checks, and upload-certificate verification before it is called ready.
+- A GitHub artifact is verification-only and unsigned. The Play-ready file must be signed locally with the protected existing upload key and kept outside Git.
 
 ## Android Studio Quail
 
