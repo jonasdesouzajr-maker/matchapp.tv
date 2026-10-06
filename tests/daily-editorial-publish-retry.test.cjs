@@ -19,6 +19,10 @@ function bashExecutable(){
  return 'bash';
 }
 const BASH=bashExecutable();
+function bashPath(value){
+ if(process.platform!=='win32')return value;
+ return String(value).replace(/^([A-Za-z]):[\\/]/,(_,drive)=>'/'+drive.toLowerCase()+'/').replace(/\\/g,'/');
+}
 const workflow=fs.readFileSync(path.join(__dirname,'../.github/workflows/trending-refresh.yml'),'utf8').replace(/\r\n/g,'\n');
 const section=workflow.split('      - name: Publish verified daily editorial refresh')[1].split('      - name: Validate and deploy')[0];
 const script=section.split('        run: |\n')[1].split('\n').map(line=>line.slice(10)).join('\n');
@@ -44,7 +48,7 @@ if [ "$name" = node ] && [ "$1" = - ]; then cat >/dev/null; fi
 `;
   for(const name of ['git','node','npm'])fs.writeFileSync(path.join(binary,name),fake,{mode:0o755});
   const trace=path.join(dir,'trace'),output=path.join(dir,'output');
-  const run=spawnSync(BASH,['-c',script],{encoding:'utf8',env:{...process.env,PATH:binary+':'+process.env.PATH,TRACE:trace,COUNT:path.join(dir,'count'),CONFLICTS:String(conflicts),FAIL_GATE:failGate,NOOP:noop?'1':'0',GITHUB_OUTPUT:output}});
+  const run=spawnSync(BASH,['-c',script],{encoding:'utf8',env:{...process.env,PATH:bashPath(binary)+':/usr/bin:/bin',TRACE:bashPath(trace),COUNT:bashPath(path.join(dir,'count')),CONFLICTS:String(conflicts),FAIL_GATE:failGate,NOOP:noop?'1':'0',GITHUB_OUTPUT:bashPath(output)}});
   return {status:run.status,stderr:run.stderr,trace:fs.readFileSync(trace,'utf8').trim().split('\n'),output:fs.existsSync(output)?fs.readFileSync(output,'utf8'):''};
  }finally{fs.rmSync(dir,{recursive:true,force:true});}
 }
