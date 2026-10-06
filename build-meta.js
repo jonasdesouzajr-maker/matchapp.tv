@@ -1,5 +1,5 @@
 // Functional release identifier must match release.json.
-window.MATCHAPP_BUILD = '2026.10.06.1';
+window.MATCHAPP_BUILD = '2026.10.06.2';
 
 
 /* Search freshness + truthfulness layer. */
@@ -120,7 +120,7 @@ window.MATCHAPP_BUILD = '2026.10.06.1';
 (function(){
   if(document.querySelector('script[data-matchapp-final-wiring]'))return;
   const s=document.createElement('script');
-  s.src='/final-wiring.js?v=20261002-weekly-cover1&icon=20261001-circle-launch1&brand=20261001-canonicalai1';
+  s.src='/final-wiring.js?v=20261006-localenews1&icon=20261001-circle-launch1&brand=20261001-canonicalai1';
   s.async=false; s.defer=true; s.dataset.matchappFinalWiring='1';
   document.head.appendChild(s);
 })();
