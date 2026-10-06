@@ -1,10 +1,572 @@
 {
-  "generated_at": "2026-10-06T20:52:22.333Z",
-  "feed_version": "40e38c37",
+  "generated_at": "2026-10-06T21:52:10.448Z",
+  "feed_version": "7ee51542",
   "sports_updated_at": "2026-10-06T17:11:33.523Z",
   "source_policy": "direct-trusted-publisher-rss+google-trends-keyword-signals",
   "seo_policy": "per-story keyword snapshot at first discovery + source citation + stable archive",
   "items": [
+    {
+      "id": "5ad65a9e",
+      "title": "US death row inmate Christa Pike conscious and speaking after failed execution, lawyers say",
+      "url": "https://www.bbc.co.uk/news/articles/c8kgezxn54qko?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-06T21:39:09.000Z",
+      "discovered_at": "2026-10-06T21:52:10.448Z",
+      "event_type": "Obituary",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-06. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/226c/live/7221efd0-c1c9-11f1-b8a9-47f21beea0a3.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/us-death-row-inmate-christa-pike-conscious-and-speaking-after-failed-execution-l-5ad65a/",
+      "landing_url": "https://matchapp.tv/?news=5ad65a9e#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-06",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "death",
+          "row",
+          "inmate",
+          "christa",
+          "pike",
+          "conscious"
+        ],
+        "long_tail": [
+          "US death row inmate Christa Pike conscious and speaking after failed execution, lawyers say 2026-10-06",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "death",
+          "row",
+          "inmate",
+          "christa",
+          "pike",
+          "conscious"
+        ],
+        "freshness_keywords": [
+          "2026-10-06"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "US death row inmate Christa Pike conscious and speaking…",
+        "meta_description": "World report published by BBC World on 2026-10-06. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-06",
+          "world news",
+          "global headlines",
+          "death",
+          "row",
+          "inmate",
+          "christa",
+          "pike",
+          "conscious",
+          "US death row inmate Christa Pike conscious and speaking after failed execution, lawyers say 2026-10-06",
+          "world news October 2026",
+          "2026-10-06",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-06T21:52:10.448Z"
+      }
+    },
+    {
+      "id": "6007734b",
+      "title": "Eva Marie Saint, atriz de 'Intriga Internacional' e vencedora do Oscar, morre aos 102 anos",
+      "url": "https://g1.globo.com/pop-arte/noticia/2026/10/06/eva-marie-saint-atriz-de-intriga-internacional-e-vencedora-do-oscar-morre-aos-102-anos.ghtml",
+      "source": "G1",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "BR",
+      "language": "pt",
+      "published_at": "2026-10-06T21:36:26.000Z",
+      "discovered_at": "2026-10-06T21:52:10.448Z",
+      "event_type": "Obituary",
+      "category": "entertainment",
+      "person": "Eva Marie Saint",
+      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
+      "image": "https://s2-g1.glbimg.com/1Mmb3QESb6OXnNlXXGJ0SCOUPg8=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2018/6/b/a87P9xTSezZIFBqoptxw/evamarie.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/eva-marie-saint-atriz-de-intriga-internacional-e-vencedora-do-oscar-morre-aos-10-600773/",
+      "landing_url": "https://matchapp.tv/?news=6007734b#latest-news",
+      "seo": {
+        "primary_keyword": "Eva Marie Saint últimas notícias",
+        "short_tail": [
+          "Eva Marie Saint",
+          "Eva Marie Saint news",
+          "obituary",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje"
+        ],
+        "long_tail": [
+          "Eva Marie Saint latest news October 2026",
+          "Eva Marie Saint obituary update 2026",
+          "Eva Marie Saint news 2026-10-06",
+          "latest obituary news about Eva Marie Saint",
+          "eva marie saint eva marie saint latest update",
+          "G1 Eva Marie Saint obituary",
+          "últimas notícias sobre Eva Marie Saint outubro 2026",
+          "Eva Marie Saint notícia de 2026-10-06",
+          "o que aconteceu com Eva Marie Saint"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "Eva Marie Saint",
+          "eva",
+          "marie",
+          "saint",
+          "atriz",
+          "intriga"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-06",
+          "outubro 2026",
+          "Eva Marie Saint 2026"
+        ],
+        "source_keywords": [
+          "G1 Eva Marie Saint",
+          "g1.globo.com Eva Marie Saint",
+          "G1 entertainment news"
+        ],
+        "meta_title": "Eva Marie Saint, atriz de 'Intriga Internacional' e…",
+        "meta_description": "Eva Marie Saint: Notícia publicada por G1 em 2026-10-06. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
+        "keywords": [
+          "Eva Marie Saint últimas notícias",
+          "Eva Marie Saint",
+          "Eva Marie Saint news",
+          "obituary",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje",
+          "Eva Marie Saint latest news October 2026",
+          "Eva Marie Saint obituary update 2026",
+          "Eva Marie Saint news 2026-10-06",
+          "latest obituary news about Eva Marie Saint",
+          "eva marie saint eva marie saint latest update",
+          "G1 Eva Marie Saint obituary",
+          "últimas notícias sobre Eva Marie Saint outubro 2026",
+          "Eva Marie Saint notícia de 2026-10-06",
+          "o que aconteceu com Eva Marie Saint",
+          "eva",
+          "marie",
+          "saint",
+          "atriz",
+          "intriga",
+          "October 2026",
+          "2026-10-06",
+          "outubro 2026",
+          "Eva Marie Saint 2026",
+          "G1 Eva Marie Saint",
+          "g1.globo.com Eva Marie Saint",
+          "G1 entertainment news"
+        ],
+        "seo_generated_at": "2026-10-06T21:52:10.448Z"
+      }
+    },
+    {
+      "id": "38e9278c",
+      "title": "Peste pneumônica: EUA pedem que cidadãos deixem a Rússia 'imediatamente'",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/06/peste-pneumonica-eua-pedem-para-que-cidadaos-deixem-a-russia-imediatamente.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-06T21:34:34.000Z",
+      "discovered_at": "2026-10-06T21:52:10.448Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-06. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/gKK6BALMwd6s_49wmSMOIfOYKIY=/2446x0/filters:format(jpeg)/https://i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/U/n/VH7wgiRZuAUTqhLyFzTg/2026-10-05t123405z-1235629747-rc2xwna9brlq-rtrmadp-3-russia-siberia-plague.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/peste-pneumonica-eua-pedem-que-cidadaos-deixem-a-russia-imediatamente-38e927/",
+      "landing_url": "https://matchapp.tv/?news=38e9278c#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-06",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "peste",
+          "pneumonica",
+          "eua",
+          "pedem",
+          "que",
+          "cidadaos"
+        ],
+        "long_tail": [
+          "Peste pneumônica: EUA pedem que cidadãos deixem a Rússia 'imediatamente' 2026-10-06",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "peste",
+          "pneumonica",
+          "eua",
+          "pedem",
+          "que",
+          "cidadaos"
+        ],
+        "freshness_keywords": [
+          "2026-10-06"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Peste pneumônica: EUA pedem que cidadãos deixem a Rússia…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-06. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-06",
+          "notícias do mundo",
+          "notícias internacionais",
+          "peste",
+          "pneumonica",
+          "eua",
+          "pedem",
+          "que",
+          "cidadaos",
+          "Peste pneumônica: EUA pedem que cidadãos deixem a Rússia 'imediatamente' 2026-10-06",
+          "notícias mundiais outubro 2026",
+          "2026-10-06",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-06T21:52:10.448Z"
+      }
+    },
+    {
+      "id": "3c941fff",
+      "title": "Watch: Riot police clash with school protesters and use tear gas in France",
+      "url": "https://www.bbc.co.uk/news/videos/cwm26078pkepo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-06T21:22:22.000Z",
+      "discovered_at": "2026-10-06T21:52:10.448Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-06. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/f413/live/3e649d70-c1c7-11f1-a64c-550be9e3c66b.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/watch-riot-police-clash-with-school-protesters-and-use-tear-gas-in-france-3c941f/",
+      "landing_url": "https://matchapp.tv/?news=3c941fff#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-06",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "watch",
+          "riot",
+          "police",
+          "clash",
+          "school",
+          "protesters"
+        ],
+        "long_tail": [
+          "Watch: Riot police clash with school protesters and use tear gas in France 2026-10-06",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "watch",
+          "riot",
+          "police",
+          "clash",
+          "school",
+          "protesters"
+        ],
+        "freshness_keywords": [
+          "2026-10-06"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Watch: Riot police clash with school protesters and use…",
+        "meta_description": "World report published by BBC World on 2026-10-06. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-06",
+          "world news",
+          "global headlines",
+          "watch",
+          "riot",
+          "police",
+          "clash",
+          "school",
+          "protesters",
+          "Watch: Riot police clash with school protesters and use tear gas in France 2026-10-06",
+          "world news October 2026",
+          "2026-10-06",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-06T21:52:10.448Z"
+      }
+    },
+    {
+      "id": "421728b7",
+      "title": "Eva Marie Saint, Graceful Star of the Silver Screen, Dies at 102",
+      "url": "https://www.hollywoodreporter.com/movies/movie-news/eva-marie-saint-dead-on-the-waterfront-north-by-northwest-1236723906/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-06T21:12:47.000Z",
+      "discovered_at": "2026-10-06T21:52:10.448Z",
+      "event_type": "Obituary",
+      "category": "entertainment",
+      "person": "Eva Marie Saint",
+      "description": "Eva Marie Saint: obituary headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/Eva-Marie-Saint-Obit-Template-Headshot-Everett-H-2026.jpg?w=1296&h=730&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/eva-marie-saint-graceful-star-of-the-silver-screen-dies-at-102-421728/",
+      "landing_url": "https://matchapp.tv/?news=421728b7#latest-news",
+      "seo": {
+        "primary_keyword": "Eva Marie Saint latest news",
+        "short_tail": [
+          "Eva Marie Saint",
+          "Eva Marie Saint news",
+          "obituary",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "Eva Marie Saint latest news October 2026",
+          "Eva Marie Saint obituary update 2026",
+          "Eva Marie Saint news 2026-10-06",
+          "latest obituary news about Eva Marie Saint",
+          "eva marie saint eva marie saint latest update",
+          "The Hollywood Reporter Eva Marie Saint obituary",
+          "latest news about Eva Marie Saint October 2026",
+          "Eva Marie Saint entertainment news 2026-10-06",
+          "what happened with Eva Marie Saint"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "Eva Marie Saint",
+          "eva",
+          "marie",
+          "saint",
+          "graceful",
+          "star"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-06",
+          "Eva Marie Saint 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter Eva Marie Saint",
+          "hollywoodreporter.com Eva Marie Saint",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "Eva Marie Saint, Graceful Star of the Silver Screen, Dies…",
+        "meta_description": "Eva Marie Saint: Obituary update reported by The Hollywood Reporter on 2026-10-06. See verified context, publication time and the original source via…",
+        "keywords": [
+          "Eva Marie Saint latest news",
+          "Eva Marie Saint",
+          "Eva Marie Saint news",
+          "obituary",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "Eva Marie Saint latest news October 2026",
+          "Eva Marie Saint obituary update 2026",
+          "Eva Marie Saint news 2026-10-06",
+          "latest obituary news about Eva Marie Saint",
+          "eva marie saint eva marie saint latest update",
+          "The Hollywood Reporter Eva Marie Saint obituary",
+          "latest news about Eva Marie Saint October 2026",
+          "Eva Marie Saint entertainment news 2026-10-06",
+          "what happened with Eva Marie Saint",
+          "eva",
+          "marie",
+          "saint",
+          "graceful",
+          "star",
+          "October 2026",
+          "2026-10-06",
+          "Eva Marie Saint 2026",
+          "The Hollywood Reporter Eva Marie Saint",
+          "hollywoodreporter.com Eva Marie Saint",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-06T21:52:10.448Z"
+      }
+    },
+    {
+      "id": "e61a5366",
+      "title": "Christa Pike, que sobreviveu a duas injeções letais nos EUA, está consciente e falando",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/06/mulher-que-sobreviveu-a-duas-injecoes-letais-nos-eua-esta-consciente-e-falando-diz-defesa.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-06T21:00:29.000Z",
+      "discovered_at": "2026-10-06T21:52:10.448Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "Christa Pike",
+      "description": "World news reported by G1 Mundo on 2026-10-06. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/Xks1bSlnZsCu6vaOwTXn0t342cQ=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/e/0/A2spI4QxyTaScvlW176A/ap26272676275211.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/christa-pike-que-sobreviveu-a-duas-injecoes-letais-nos-eua-esta-consciente-e-fal-e61a53/",
+      "landing_url": "https://matchapp.tv/?news=e61a5366#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-06",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "christa",
+          "pike",
+          "que",
+          "sobreviveu",
+          "duas",
+          "injecoes"
+        ],
+        "long_tail": [
+          "Christa Pike, que sobreviveu a duas injeções letais nos EUA, está consciente e falando 2026-10-06",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "christa",
+          "pike",
+          "que",
+          "sobreviveu",
+          "duas",
+          "injecoes"
+        ],
+        "freshness_keywords": [
+          "2026-10-06"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Christa Pike, que sobreviveu a duas injeções letais nos…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-06. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-06",
+          "notícias do mundo",
+          "notícias internacionais",
+          "christa",
+          "pike",
+          "que",
+          "sobreviveu",
+          "duas",
+          "injecoes",
+          "Christa Pike, que sobreviveu a duas injeções letais nos EUA, está consciente e falando 2026-10-06",
+          "notícias mundiais outubro 2026",
+          "2026-10-06",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-06T21:52:10.448Z"
+      }
+    },
+    {
+      "id": "f0f34964",
+      "title": "Freddie Jackson, “Rock Me Tonight” and “You Are My Lady” Singer, Dies at 69",
+      "url": "https://www.hollywoodreporter.com/music/music-news/freddie-jackson-dead-rock-me-tonight-you-are-my-lady-1236723891/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-06T20:57:28.000Z",
+      "discovered_at": "2026-10-06T21:52:10.448Z",
+      "event_type": "Obituary",
+      "category": "entertainment",
+      "person": "Freddie Jackson",
+      "description": "Freddie Jackson: obituary headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/Freddie-Jackson-Obit-Template-Headshot-Getty-H-2026.jpg?w=1296&h=730&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/freddie-jackson-rock-me-tonight-and-you-are-my-lady-singer-dies-at-69-f0f349/",
+      "landing_url": "https://matchapp.tv/?news=f0f34964#latest-news",
+      "seo": {
+        "primary_keyword": "Freddie Jackson latest news",
+        "short_tail": [
+          "Freddie Jackson",
+          "Freddie Jackson news",
+          "obituary",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "Freddie Jackson latest news October 2026",
+          "Freddie Jackson obituary update 2026",
+          "Freddie Jackson news 2026-10-06",
+          "latest obituary news about Freddie Jackson",
+          "freddie jackson freddie jackson rock tonight latest update",
+          "The Hollywood Reporter Freddie Jackson obituary",
+          "latest news about Freddie Jackson October 2026",
+          "Freddie Jackson entertainment news 2026-10-06",
+          "what happened with Freddie Jackson"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "Freddie Jackson",
+          "freddie",
+          "jackson",
+          "rock",
+          "tonight",
+          "you",
+          "lady"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-06",
+          "Freddie Jackson 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter Freddie Jackson",
+          "hollywoodreporter.com Freddie Jackson",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "Freddie Jackson, “Rock Me Tonight” and “You Are My Lady”…",
+        "meta_description": "Freddie Jackson: Obituary update reported by The Hollywood Reporter on 2026-10-06. See verified context, publication time and the original source via…",
+        "keywords": [
+          "Freddie Jackson latest news",
+          "Freddie Jackson",
+          "Freddie Jackson news",
+          "obituary",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "Freddie Jackson latest news October 2026",
+          "Freddie Jackson obituary update 2026",
+          "Freddie Jackson news 2026-10-06",
+          "latest obituary news about Freddie Jackson",
+          "freddie jackson freddie jackson rock tonight latest update",
+          "The Hollywood Reporter Freddie Jackson obituary",
+          "latest news about Freddie Jackson October 2026",
+          "Freddie Jackson entertainment news 2026-10-06",
+          "what happened with Freddie Jackson",
+          "freddie",
+          "jackson",
+          "rock",
+          "tonight",
+          "you",
+          "lady",
+          "October 2026",
+          "2026-10-06",
+          "Freddie Jackson 2026",
+          "The Hollywood Reporter Freddie Jackson",
+          "hollywoodreporter.com Freddie Jackson",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-06T21:52:10.448Z"
+      }
+    },
     {
       "id": "e66552bc",
       "title": "Saoirse Ronan Responds to Rumors That Husband Jack Lowden Will Be the Next James Bond",
@@ -96,7 +658,7 @@
           "hollywoodreporter.com Saoirse Ronan Responds",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-06T20:52:22.333Z"
+        "seo_generated_at": "2026-10-06T21:52:10.448Z"
       }
     },
     {
@@ -165,7 +727,7 @@
           "2026-10-06",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-06T20:52:22.333Z"
+        "seo_generated_at": "2026-10-06T21:52:10.448Z"
       }
     },
     {
@@ -234,7 +796,7 @@
           "2026-10-06",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-06T20:52:22.333Z"
+        "seo_generated_at": "2026-10-06T21:52:10.448Z"
       }
     },
     {
@@ -256,7 +818,7 @@
       "matchapp_url": "https://matchapp.tv/news/articles/paramount-takes-over-warner-bros-in-110bn-hollywood-merger-4d1d06/",
       "landing_url": "https://matchapp.tv/?news=4d1d0673#latest-news",
       "seo": {
-        "primary_keyword": "hbo max paramount plus merger",
+        "primary_keyword": "paramount takes over warner latest news",
         "short_tail": [
           "paramount takes over warner",
           "paramount takes over warner news",
@@ -264,8 +826,7 @@
           "latest entertainment news",
           "entertainment news",
           "celebrity news",
-          "entertainment updates",
-          "hbo max paramount plus merger"
+          "entertainment updates"
         ],
         "long_tail": [
           "paramount takes over warner latest news October 2026",
@@ -278,9 +839,7 @@
           "paramount takes over warner entertainment news 2026-10-06",
           "what happened with paramount takes over warner"
         ],
-        "trend_keywords": [
-          "hbo max paramount plus merger"
-        ],
+        "trend_keywords": [],
         "entity_keywords": [
           "paramount",
           "takes",
@@ -304,7 +863,7 @@
         "meta_title": "Paramount takes over Warner Bros in $110bn Hollywood…",
         "meta_description": "Entertainment update reported by BBC on 2026-10-06. See verified context, publication time and the original source via MatchApp Ai.",
         "keywords": [
-          "hbo max paramount plus merger",
+          "paramount takes over warner latest news",
           "paramount takes over warner",
           "paramount takes over warner news",
           "entertainment",
@@ -336,7 +895,7 @@
           "bbc.co.uk paramount takes over warner",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-06T20:52:22.333Z"
+        "seo_generated_at": "2026-10-06T21:52:10.448Z"
       }
     },
     {
@@ -405,7 +964,7 @@
           "2026-10-06",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-06T20:52:22.333Z"
+        "seo_generated_at": "2026-10-06T21:52:10.448Z"
       }
     },
     {
@@ -506,7 +1065,7 @@
           "g1.globo.com minha melhor amiga entra",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-06T20:52:22.333Z"
+        "seo_generated_at": "2026-10-06T21:52:10.448Z"
       }
     },
     {
@@ -602,7 +1161,7 @@
           "hollywoodreporter.com DJ Jazzy Jeff",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-06T20:52:22.333Z"
+        "seo_generated_at": "2026-10-06T21:52:10.448Z"
       }
     },
     {
@@ -671,7 +1230,7 @@
           "2026-10-06",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-06T20:52:22.333Z"
+        "seo_generated_at": "2026-10-06T21:52:10.448Z"
       }
     },
     {
@@ -740,7 +1299,7 @@
           "2026-10-06",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-06T20:52:22.333Z"
+        "seo_generated_at": "2026-10-06T21:52:10.448Z"
       }
     },
     {
@@ -809,7 +1368,7 @@
           "2026-10-06",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-06T20:52:22.333Z"
+        "seo_generated_at": "2026-10-06T21:52:10.448Z"
       }
     },
     {
@@ -908,7 +1467,7 @@
           "bbc.co.uk films streaming prices how",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-06T20:52:22.333Z"
+        "seo_generated_at": "2026-10-06T21:52:10.448Z"
       }
     },
     {
@@ -1007,7 +1566,7 @@
           "hollywoodreporter.com peacock good daughter trailer",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-06T20:52:22.333Z"
+        "seo_generated_at": "2026-10-06T21:52:10.448Z"
       }
     },
     {
@@ -1106,103 +1665,7 @@
           "hollywoodreporter.com spartacus creator steven deknight",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-06T20:52:22.333Z"
-      }
-    },
-    {
-      "id": "ea23e16a",
-      "title": "Andrew Scott on ‘Elsinore’ and Being an Out Gay Actor in 2026: “I’ve Been Able to Thrive in This Situation, and That Feels Genuinely Extraordinary”",
-      "url": "https://www.hollywoodreporter.com/movies/movie-news/andrew-scott-on-elsinore-and-being-an-out-gay-actor-in-2026-1236722049/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-10-06T18:30:18.000Z",
-      "discovered_at": "2026-10-06T20:46:03.505Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "Andrew Scott",
-      "description": "Andrew Scott: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/AC-temp-Andrew-Scott-getty-H-2026.png?w=1296&h=730&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/andrew-scott-on-elsinore-and-being-an-out-gay-actor-in-2026-i-ve-been-able-to-th-ea23e1/",
-      "landing_url": "https://matchapp.tv/?news=ea23e16a#latest-news",
-      "seo": {
-        "primary_keyword": "Andrew Scott latest news",
-        "short_tail": [
-          "Andrew Scott",
-          "Andrew Scott news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "Andrew Scott latest news October 2026",
-          "Andrew Scott entertainment update 2026",
-          "Andrew Scott news 2026-10-06",
-          "latest entertainment news about Andrew Scott",
-          "andrew scott andrew scott elsinore being latest update",
-          "The Hollywood Reporter Andrew Scott entertainment",
-          "latest news about Andrew Scott October 2026",
-          "Andrew Scott entertainment news 2026-10-06",
-          "what happened with Andrew Scott"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Andrew Scott",
-          "andrew",
-          "scott",
-          "elsinore",
-          "being",
-          "out",
-          "gay"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-06",
-          "Andrew Scott 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter Andrew Scott",
-          "hollywoodreporter.com Andrew Scott",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "Andrew Scott on ‘Elsinore’ and Being an Out Gay Actor in…",
-        "meta_description": "Andrew Scott: Entertainment update reported by The Hollywood Reporter on 2026-10-06. See verified context, publication time and the original source via…",
-        "keywords": [
-          "Andrew Scott latest news",
-          "Andrew Scott",
-          "Andrew Scott news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "Andrew Scott latest news October 2026",
-          "Andrew Scott entertainment update 2026",
-          "Andrew Scott news 2026-10-06",
-          "latest entertainment news about Andrew Scott",
-          "andrew scott andrew scott elsinore being latest update",
-          "The Hollywood Reporter Andrew Scott entertainment",
-          "latest news about Andrew Scott October 2026",
-          "Andrew Scott entertainment news 2026-10-06",
-          "what happened with Andrew Scott",
-          "andrew",
-          "scott",
-          "elsinore",
-          "being",
-          "out",
-          "gay",
-          "October 2026",
-          "2026-10-06",
-          "Andrew Scott 2026",
-          "The Hollywood Reporter Andrew Scott",
-          "hollywoodreporter.com Andrew Scott",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-06T20:52:22.333Z"
+        "seo_generated_at": "2026-10-06T21:52:10.448Z"
       }
     },
     {
@@ -1271,7 +1734,7 @@
           "2026-10-06",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-06T20:52:22.333Z"
+        "seo_generated_at": "2026-10-06T21:52:10.448Z"
       }
     },
     {
@@ -1340,7 +1803,7 @@
           "2026-10-06",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-06T20:52:22.333Z"
+        "seo_generated_at": "2026-10-06T21:52:10.448Z"
       }
     },
     {
@@ -1409,7 +1872,7 @@
           "2026-10-06",
           "BBC Technology"
         ],
-        "seo_generated_at": "2026-10-06T20:52:22.333Z"
+        "seo_generated_at": "2026-10-06T21:52:10.448Z"
       }
     },
     {
@@ -1478,7 +1941,7 @@
           "2026-10-06",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-06T20:52:22.333Z"
+        "seo_generated_at": "2026-10-06T21:52:10.448Z"
       }
     },
     {
@@ -1576,7 +2039,7 @@
           "g1.globo.com Michael Douglas",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-06T20:52:22.333Z"
+        "seo_generated_at": "2026-10-06T21:52:10.448Z"
       }
     },
     {
@@ -1645,7 +2108,7 @@
           "2026-10-06",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-06T20:52:22.333Z"
+        "seo_generated_at": "2026-10-06T21:52:10.448Z"
       }
     },
     {
@@ -1714,7 +2177,7 @@
           "2026-10-06",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-06T20:52:22.333Z"
+        "seo_generated_at": "2026-10-06T21:52:10.448Z"
       }
     },
     {
@@ -1813,214 +2276,7 @@
           "g1.globo.com shakira pique vao justica",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-06T20:52:22.333Z"
-      }
-    },
-    {
-      "id": "76e5f48a",
-      "title": "Brasileiro preso por usar fantasia do ICE teve de pagar fiança de R$ 29,5 mil",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/06/brasileiro-preso-por-usar-fantasia-do-ice-teve-de-pagar-fianca-de-r-295-mil.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-06T16:20:08.000Z",
-      "discovered_at": "2026-10-06T20:50:48.836Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-06. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/URsCFcrY46OD-6GfF_cYpnL6q94=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/R/R/pXIfVzSdCwxJcnjthmkg/danilo-silva.avif",
-      "matchapp_url": "https://matchapp.tv/news/articles/brasileiro-preso-por-usar-fantasia-do-ice-teve-de-pagar-fianca-de-r-29-5-mil-76e5f4/",
-      "landing_url": "https://matchapp.tv/?news=76e5f48a#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-06",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "brasileiro",
-          "preso",
-          "usar",
-          "fantasia",
-          "ice",
-          "teve"
-        ],
-        "long_tail": [
-          "Brasileiro preso por usar fantasia do ICE teve de pagar fiança de R$ 29,5 mil 2026-10-06",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "brasileiro",
-          "preso",
-          "usar",
-          "fantasia",
-          "ice",
-          "teve"
-        ],
-        "freshness_keywords": [
-          "2026-10-06"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Brasileiro preso por usar fantasia do ICE teve de pagar…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-06. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-06",
-          "notícias do mundo",
-          "notícias internacionais",
-          "brasileiro",
-          "preso",
-          "usar",
-          "fantasia",
-          "ice",
-          "teve",
-          "Brasileiro preso por usar fantasia do ICE teve de pagar fiança de R$ 29,5 mil 2026-10-06",
-          "notícias mundiais outubro 2026",
-          "2026-10-06",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-06T20:52:22.333Z"
-      }
-    },
-    {
-      "id": "849c7e80",
-      "title": "Kenya confirms its first Ebola death as outbreak spreads",
-      "url": "https://www.bbc.co.uk/news/articles/cqzrd7v1j163o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-06T16:02:32.000Z",
-      "discovered_at": "2026-10-06T20:50:48.836Z",
-      "event_type": "Obituary",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-06. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/535c/live/9ad923b0-c167-11f1-bc2e-018d645d8d21.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/kenya-confirms-its-first-ebola-death-as-outbreak-spreads-849c7e/",
-      "landing_url": "https://matchapp.tv/?news=849c7e80#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-06",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "kenya",
-          "confirms",
-          "its",
-          "first",
-          "ebola",
-          "death"
-        ],
-        "long_tail": [
-          "Kenya confirms its first Ebola death as outbreak spreads 2026-10-06",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "kenya",
-          "confirms",
-          "its",
-          "first",
-          "ebola",
-          "death"
-        ],
-        "freshness_keywords": [
-          "2026-10-06"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Kenya confirms its first Ebola death as outbreak spreads |…",
-        "meta_description": "World report published by BBC World on 2026-10-06. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-06",
-          "world news",
-          "global headlines",
-          "kenya",
-          "confirms",
-          "its",
-          "first",
-          "ebola",
-          "death",
-          "Kenya confirms its first Ebola death as outbreak spreads 2026-10-06",
-          "world news October 2026",
-          "2026-10-06",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-06T20:52:22.333Z"
-      }
-    },
-    {
-      "id": "05eef93b",
-      "title": "Alunos e professores protestam na França no maior dia da onda de mobilização",
-      "url": "https://g1.globo.com/educacao/noticia/2026/10/06/alunos-e-professores-protestam-na-franca-no-maior-dia-da-onda-de-mobilizacao.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-06T15:54:43.000Z",
-      "discovered_at": "2026-10-06T20:50:48.836Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-06. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/hLv4drEWbR6n9gHLLgg2ojR8Adg=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/1/e/LkhbGHSquO5HFXgTo7Gg/2026-10-06t140052z-1249465776-rc2pxnaiurgp-rtrmadp-3-france-protest.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/alunos-e-professores-protestam-na-franca-no-maior-dia-da-onda-de-mobilizacao-05eef9/",
-      "landing_url": "https://matchapp.tv/?news=05eef93b#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-06",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "alunos",
-          "professores",
-          "protestam",
-          "franca",
-          "maior",
-          "dia"
-        ],
-        "long_tail": [
-          "Alunos e professores protestam na França no maior dia da onda de mobilização 2026-10-06",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "alunos",
-          "professores",
-          "protestam",
-          "franca",
-          "maior",
-          "dia"
-        ],
-        "freshness_keywords": [
-          "2026-10-06"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Alunos e professores protestam na França no maior dia da…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-06. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-06",
-          "notícias do mundo",
-          "notícias internacionais",
-          "alunos",
-          "professores",
-          "protestam",
-          "franca",
-          "maior",
-          "dia",
-          "Alunos e professores protestam na França no maior dia da onda de mobilização 2026-10-06",
-          "notícias mundiais outubro 2026",
-          "2026-10-06",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-06T20:52:22.333Z"
+        "seo_generated_at": "2026-10-06T21:52:10.448Z"
       }
     },
     {
@@ -2121,73 +2377,7 @@
           "g1.globo.com luzes sombras relacao visceral",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-06T20:52:22.333Z"
-      }
-    },
-    {
-      "id": "2414dee5",
-      "title": "Watch: At the scene of student protests in Lille",
-      "url": "https://www.bbc.co.uk/news/videos/cwzd650e2jqdo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-06T15:02:56.000Z",
-      "discovered_at": "2026-10-06T20:50:48.836Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-06. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/fc0c/live/7e8d42e0-c199-11f1-bc2e-018d645d8d21.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/watch-at-the-scene-of-student-protests-in-lille-2414de/",
-      "landing_url": "https://matchapp.tv/?news=2414dee5#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-06",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "watch",
-          "scene",
-          "student",
-          "protests",
-          "lille"
-        ],
-        "long_tail": [
-          "Watch: At the scene of student protests in Lille 2026-10-06",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "watch",
-          "scene",
-          "student",
-          "protests",
-          "lille"
-        ],
-        "freshness_keywords": [
-          "2026-10-06"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Watch: At the scene of student protests in Lille | World…",
-        "meta_description": "World report published by BBC World on 2026-10-06. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-06",
-          "world news",
-          "global headlines",
-          "watch",
-          "scene",
-          "student",
-          "protests",
-          "lille",
-          "Watch: At the scene of student protests in Lille 2026-10-06",
-          "world news October 2026",
-          "2026-10-06",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-06T20:52:22.333Z"
+        "seo_generated_at": "2026-10-06T21:52:10.448Z"
       }
     },
     {
@@ -2285,7 +2475,7 @@
           "g1.globo.com Jheny Santucci",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-06T20:52:22.333Z"
+        "seo_generated_at": "2026-10-06T21:52:10.448Z"
       }
     },
     {
@@ -2386,7 +2576,7 @@
           "g1.globo.com participante american idol condenado",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-06T20:52:22.333Z"
+        "seo_generated_at": "2026-10-06T21:52:10.448Z"
       }
     },
     {
@@ -2482,7 +2672,7 @@
           "bbc.co.uk Rosie O'Donnell",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-06T20:52:22.333Z"
+        "seo_generated_at": "2026-10-06T21:52:10.448Z"
       }
     },
     {
@@ -2581,7 +2771,7 @@
           "bbc.co.uk chart topping singer television",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-06T20:52:22.333Z"
+        "seo_generated_at": "2026-10-06T21:52:10.448Z"
       }
     },
     {
@@ -2677,7 +2867,7 @@
           "bbc.co.uk Jade Thirlwall",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-06T20:52:22.333Z"
+        "seo_generated_at": "2026-10-06T21:52:10.448Z"
       }
     },
     {
@@ -2778,7 +2968,7 @@
           "g1.globo.com letras belchior album alucinacao",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-06T20:52:22.333Z"
+        "seo_generated_at": "2026-10-06T21:52:10.448Z"
       }
     },
     {
@@ -2879,7 +3069,7 @@
           "g1.globo.com bola preta cotado oscar",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-06T20:52:22.333Z"
+        "seo_generated_at": "2026-10-06T21:52:10.448Z"
       }
     },
     {
@@ -2975,7 +3165,7 @@
           "bbc.co.uk Blue Planet",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-06T20:52:22.333Z"
+        "seo_generated_at": "2026-10-06T21:52:10.448Z"
       }
     },
     {
@@ -3069,7 +3259,7 @@
           "bbc.co.uk Former American Idol",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-06T20:52:22.333Z"
+        "seo_generated_at": "2026-10-06T21:52:10.448Z"
       }
     },
     {
@@ -3165,7 +3355,7 @@
           "g1.globo.com Robert Kelker-Kelly",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-06T20:52:22.333Z"
+        "seo_generated_at": "2026-10-06T21:52:10.448Z"
       }
     },
     {
@@ -3264,204 +3454,7 @@
           "bbc.co.uk been terrible year farming",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-06T20:52:22.333Z"
-      }
-    },
-    {
-      "id": "c6047438",
-      "title": "Maestro dos sons eruditos, falecido aos 72 anos, Roberto Tibiriçá deixa legado que inclui atuação na área fonográfica",
-      "url": "https://g1.globo.com/pop-arte/musica/blog/mauro-ferreira/post/2026/10/05/maestro-dos-sons-eruditos-falecido-aos-72-anos-roberto-tibirica-deixa-legado-que-inclui-atuacao-na-area-fonografica.ghtml",
-      "source": "G1",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "BR",
-      "language": "pt",
-      "published_at": "2026-10-05T14:56:49.000Z",
-      "discovered_at": "2026-10-05T17:22:19.239Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "",
-      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
-      "image": "https://s2-g1.glbimg.com/cjXKCP6_ar9xTVIbXZwVFC_YpMo=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/j/r/70mcdBRmaqYTJwwlBkPA/robertotibirica1.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/maestro-dos-sons-eruditos-falecido-aos-72-anos-roberto-tibirica-deixa-legado-que-c60474/",
-      "landing_url": "https://matchapp.tv/?news=c6047438#latest-news",
-      "seo": {
-        "primary_keyword": "maestro sons eruditos falecido últimas notícias",
-        "short_tail": [
-          "maestro sons eruditos falecido",
-          "maestro sons eruditos falecido news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje"
-        ],
-        "long_tail": [
-          "maestro sons eruditos falecido latest news October 2026",
-          "maestro sons eruditos falecido entertainment update 2026",
-          "maestro sons eruditos falecido news 2026-10-05",
-          "latest entertainment news about maestro sons eruditos falecido",
-          "maestro sons eruditos falecido aos anos latest update",
-          "G1 maestro sons eruditos falecido entertainment",
-          "últimas notícias sobre maestro sons eruditos falecido outubro 2026",
-          "maestro sons eruditos falecido notícia de 2026-10-05",
-          "o que aconteceu com maestro sons eruditos falecido"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "maestro",
-          "sons",
-          "eruditos",
-          "falecido",
-          "aos",
-          "anos",
-          "roberto",
-          "tibirica"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-05",
-          "outubro 2026",
-          "maestro sons eruditos falecido 2026"
-        ],
-        "source_keywords": [
-          "G1 maestro sons eruditos falecido",
-          "g1.globo.com maestro sons eruditos falecido",
-          "G1 entertainment news"
-        ],
-        "meta_title": "Maestro dos sons eruditos, falecido aos 72 anos, Roberto…",
-        "meta_description": "Notícia publicada por G1 em 2026-10-05. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
-        "keywords": [
-          "maestro sons eruditos falecido últimas notícias",
-          "maestro sons eruditos falecido",
-          "maestro sons eruditos falecido news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "maestro sons eruditos falecido latest news October 2026",
-          "maestro sons eruditos falecido entertainment update 2026",
-          "maestro sons eruditos falecido news 2026-10-05",
-          "latest entertainment news about maestro sons eruditos falecido",
-          "maestro sons eruditos falecido aos anos latest update",
-          "G1 maestro sons eruditos falecido entertainment",
-          "últimas notícias sobre maestro sons eruditos falecido outubro 2026",
-          "maestro sons eruditos falecido notícia de 2026-10-05",
-          "o que aconteceu com maestro sons eruditos falecido",
-          "maestro",
-          "sons",
-          "eruditos",
-          "falecido",
-          "aos",
-          "anos",
-          "roberto",
-          "tibirica",
-          "October 2026",
-          "2026-10-05",
-          "outubro 2026",
-          "maestro sons eruditos falecido 2026",
-          "G1 maestro sons eruditos falecido",
-          "g1.globo.com maestro sons eruditos falecido",
-          "G1 entertainment news"
-        ],
-        "seo_generated_at": "2026-10-06T20:52:22.333Z"
-      }
-    },
-    {
-      "id": "d939ffaf",
-      "title": "Rachel Jupp is a bold choice for BBC News chief, says Katie Razzall",
-      "url": "https://www.bbc.co.uk/news/articles/cqwy79l7d78yo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GB",
-      "language": "en",
-      "published_at": "2026-10-05T14:16:06.000Z",
-      "discovered_at": "2026-10-05T17:22:19.239Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "Rachel Jupp",
-      "description": "Rachel Jupp: entertainment headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/efe1/live/f56baee0-c0d8-11f1-bdc6-179ac8d394b5.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/rachel-jupp-is-a-bold-choice-for-bbc-news-chief-says-katie-razzall-d939ff/",
-      "landing_url": "https://matchapp.tv/?news=d939ffaf#latest-news",
-      "seo": {
-        "primary_keyword": "Rachel Jupp latest news",
-        "short_tail": [
-          "Rachel Jupp",
-          "Rachel Jupp news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "Rachel Jupp latest news October 2026",
-          "Rachel Jupp entertainment update 2026",
-          "Rachel Jupp news 2026-10-05",
-          "latest entertainment news about Rachel Jupp",
-          "rachel jupp rachel jupp bold choice latest update",
-          "BBC Rachel Jupp entertainment",
-          "latest news about Rachel Jupp October 2026",
-          "Rachel Jupp entertainment news 2026-10-05",
-          "what happened with Rachel Jupp"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Rachel Jupp",
-          "rachel",
-          "jupp",
-          "bold",
-          "choice",
-          "bbc",
-          "news"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-05",
-          "Rachel Jupp 2026"
-        ],
-        "source_keywords": [
-          "BBC Rachel Jupp",
-          "bbc.co.uk Rachel Jupp",
-          "BBC entertainment news"
-        ],
-        "meta_title": "Rachel Jupp is a bold choice for BBC News chief, says…",
-        "meta_description": "Rachel Jupp: Entertainment update reported by BBC on 2026-10-05. See verified context, publication time and the original source via MatchApp Ai.",
-        "keywords": [
-          "Rachel Jupp latest news",
-          "Rachel Jupp",
-          "Rachel Jupp news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "Rachel Jupp latest news October 2026",
-          "Rachel Jupp entertainment update 2026",
-          "Rachel Jupp news 2026-10-05",
-          "latest entertainment news about Rachel Jupp",
-          "rachel jupp rachel jupp bold choice latest update",
-          "BBC Rachel Jupp entertainment",
-          "latest news about Rachel Jupp October 2026",
-          "Rachel Jupp entertainment news 2026-10-05",
-          "what happened with Rachel Jupp",
-          "rachel",
-          "jupp",
-          "bold",
-          "choice",
-          "bbc",
-          "news",
-          "October 2026",
-          "2026-10-05",
-          "Rachel Jupp 2026",
-          "BBC Rachel Jupp",
-          "bbc.co.uk Rachel Jupp",
-          "BBC entertainment news"
-        ],
-        "seo_generated_at": "2026-10-06T20:52:22.333Z"
+        "seo_generated_at": "2026-10-06T21:52:10.448Z"
       }
     },
     {
@@ -3551,7 +3544,7 @@
           "2026-10-05",
           "October 2026"
         ],
-        "seo_generated_at": "2026-10-06T20:52:22.333Z"
+        "seo_generated_at": "2026-10-06T21:52:10.448Z"
       }
     }
   ]
