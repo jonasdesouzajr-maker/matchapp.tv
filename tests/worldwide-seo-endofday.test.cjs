@@ -66,7 +66,7 @@ test('global route is internally linked, sitemapped and retained by the schedule
 test('news source summaries retain noindex while legitimate news hub stays indexable',()=>{
  const s=read('tools/refresh-news-rss.js');
  assert.match(s,/name="robots" content="noindex,follow"/);
- assert.match(s,/name="description" content="Verified film, TV, music/);
+ assert.match(s,/name="description" content="Country-aware and language-aware film, TV, music/);
 });
 
 test('existing regression harnesses cover adult matching, books, audio, Ask AI and touch viewports without Android emulator',()=>{
