@@ -4,173 +4,80 @@ const assert=require('node:assert/strict');
 const fs=require('node:fs'),path=require('node:path'),{JSDOM}=require('jsdom');
 const root=path.join(__dirname,'..'),read=name=>fs.readFileSync(path.join(root,name),'utf8');
 const source=read('browser-install-offer.js');
+const notifications=read('notifications.js');
+const settings=read('settings.js');
+const install=read('install.js');
 const play='https://play.google.com/store/apps/details?id=com.jonas.papercup';
 const UA={
-  chrome:'Mozilla/5.0 (Linux; Android 16; Pixel 9) AppleWebKit/537.36 Chrome/132.0 Mobile Safari/537.36',
-  desktop:'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/132.0 Safari/537.36',
-  ios:'Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 Version/18.0 Mobile Safari/604.1',
-  native:'Mozilla/5.0 (Linux; Android 16) MatchAppTVAndroid/1.1.32 MatchAppAiAndroid/1.1.32'
+ android:'Mozilla/5.0 (Linux; Android 16; Pixel 9) AppleWebKit/537.36 Chrome/132.0 Mobile Safari/537.36',
+ ios:'Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 Version/18.0 Mobile Safari/604.1',
+ mac:'Mozilla/5.0 (Macintosh; Intel Mac OS X 15_0) AppleWebKit/605.1.15 Version/18.0 Safari/605.1.15',
+ native:'Mozilla/5.0 (Linux; Android 16) MatchAppTVAndroid/1.1.32 MatchAppAiAndroid/1.1.32'
 };
 function mount(opts={}){
-  const page=opts.kids?'https://matchapp.tv/kids/':'https://matchapp.tv/';
-  const dom=new JSDOM('<!doctype html><html lang="'+(opts.lang||'en')+'"><head></head><body class="page-home"><div id="chrome-install-card"></div><div id="ma-install-chip"></div><main></main></body></html>',{url:page,runScripts:'outside-only'});
-  const w=dom.window;
-  Object.defineProperty(w.navigator,'userAgent',{value:opts.ua||UA.desktop,configurable:true});
-  Object.defineProperty(w.navigator,'getInstalledRelatedApps',{value:opts.related?()=>Promise.resolve(opts.related):undefined,configurable:true});
-  w.matchMedia=()=>({matches:!!opts.standalone,addListener(){},removeListener(){}});
-  w.matchAppInstallState={isInstalled:()=>!!opts.installed};
-  if(opts.never)w.localStorage.setItem('matchapp_install_offer_never_v1','1');
-  const timers=[],expiry=[];
-  const realTimeout=w.setTimeout.bind(w);
-  w.setTimeout=(fn,ms)=>{
-    if(ms===1100){timers.push(fn);return 991;}
-    if(ms===15000){expiry.push(fn);return 992;}
-    return realTimeout(fn,ms);
-  };
-  w.eval(source);
-  w.document.dispatchEvent(new w.Event('DOMContentLoaded'));
-  return {dom,w,timers,expiry};
+ const dom=new JSDOM('<!doctype html><html lang="'+(opts.lang||'en')+'"><head></head><body class="page-home"><main></main></body></html>',{url:opts.kids?'https://matchapp.tv/kids/':'https://matchapp.tv/',runScripts:'outside-only'});
+ const w=dom.window,items=[],timers=[];
+ Object.defineProperty(w.navigator,'userAgent',{value:opts.ua||UA.android,configurable:true});
+ Object.defineProperty(w.navigator,'maxTouchPoints',{value:opts.touch||0,configurable:true});
+ Object.defineProperty(w.navigator,'getInstalledRelatedApps',{value:opts.related?()=>Promise.resolve(opts.related):undefined,configurable:true});
+ w.matchMedia=()=>({matches:!!opts.standalone,addListener(){},removeListener(){}});
+ w.matchAppInstallState={isInstalled:()=>!!opts.installed};
+ w.MatchNotifications={pushLocal:item=>{items.push(item);return true}};
+ if(Number.isFinite(opts.visits))w.localStorage.setItem('matchapp_install_prompt_visits_v2',String(opts.visits));
+ const real=w.setTimeout.bind(w);
+ w.setTimeout=(fn,ms)=>{if(ms===1100){timers.push(fn);return 991}return real(fn,ms)};
+ w.eval(source);w.document.dispatchEvent(new w.Event('DOMContentLoaded'));
+ return {dom,w,items,timers};
 }
 const settle=()=>new Promise(resolve=>setImmediate(resolve));
-async function open(ctx){
-  if(ctx.timers.length)ctx.timers.shift()();
-  await settle();
-  return ctx.w.document.getElementById('ma-install-offer');
-}
-test('persistent Install boxes are gone; released Play CTA points to the official package',async()=>{
-  const ctx=mount({ua:UA.chrome}),offer=await open(ctx);
-  assert.ok(offer,'One Home opening gets a transient nonblocking offer');
-  assert.equal(ctx.w.document.getElementById('ma-install-chip'),null);
-  assert.equal(ctx.w.document.getElementById('chrome-install-card'),null);
-  assert.equal(offer.getAttribute('role'),'region');
-  const playButton=offer.querySelector('.ma-offer-play');
-  assert.equal(playButton.tagName,'A');
-  assert.equal(playButton.getAttribute('href'),play);
-  assert.match(playButton.textContent,/Google Play/i);
-  assert.equal(playButton.hidden,false);
-  assert.match(source,/const PLAY_RELEASED=true/);
-  assert.match(read('index.html'),/browser-install-offer\.js/);
-  assert.doesNotMatch(read('index.html'),/<aside id="chrome-install-card"/);
-  assert.doesNotMatch(read('home-approved.js'),/mountInstall\(/);
-  assert.match(read('home-approved.css'),/position:fixed;right:18px;bottom:18px/);
-  assert.match(source,/intent:\/\/details\?id=com\.jonas\.papercup/);
-  assert.equal(ctx.timers.length,0,'Never schedule more than once in this opening');
-  ctx.dom.window.close();
+async function fire(ctx){if(ctx.timers.length)ctx.timers.shift()();await settle();await settle();}
+test('Android browser prompting uses the notification bell and Google Play, never a floating/browser-install offer',async()=>{
+ const ctx=mount({ua:UA.android,visits:0});await fire(ctx);
+ assert.equal(ctx.items.length,1);assert.equal(ctx.items[0].kind,'install');assert.equal(ctx.items[0].action,'install');
+ assert.equal(ctx.items[0].href,play);assert.match(ctx.items[0].title,/Google Play/i);assert.match(ctx.items[0].body,/instead of installing from the browser/i);
+ assert.equal(ctx.w.localStorage.getItem('matchapp_install_prompt_visits_v2'),'1');
+ assert.equal(ctx.w.document.getElementById('ma-install-offer'),null);
+ ctx.dom.window.close();
 });
-test('Android browser offer leads only to the official Google Play app',async()=>{
-  const ctx=mount({lang:'pt-BR',ua:UA.chrome}),offer=await open(ctx);
-  const playButton=offer.querySelector('.ma-offer-play');
-  const browserButton=offer.querySelector('.ma-offer-browser');
-  assert.equal(playButton.tagName,'A');
-  assert.equal(playButton.getAttribute('href'),play);
-  assert.match(playButton.textContent,/Google Play/i);
-  assert.equal(playButton.hidden,false);
-  assert.equal(browserButton.hidden,true,'Android must not compete with the official Play install');
-  assert.match(offer.querySelector('.ma-offer-description').textContent,/Android/i);
-  ctx.dom.window.close();
+test('install bell prompt appears only on the first and second eligible Home visits',async()=>{
+ const second=mount({visits:1});await fire(second);assert.equal(second.items.length,1);assert.match(second.items[0].localKey,/-2$/);assert.equal(second.w.localStorage.getItem('matchapp_install_prompt_visits_v2'),'2');second.dom.window.close();
+ const third=mount({visits:2});await fire(third);assert.equal(third.items.length,0);third.dom.window.close();
 });
-test('Never show again persists across new page openings, unlike ordinary dismissal',async()=>{
-  const first=mount(),offer=await open(first);
-  offer.querySelector('.ma-offer-never').click();
-  assert.equal(first.w.localStorage.getItem('matchapp_install_offer_never_v1'),'1');
-  assert.equal(first.w.document.getElementById('ma-install-offer'),null);
-  first.dom.window.close();
-  const later=mount({never:true});
-  assert.equal(await open(later),null,'A new release must not reset this opt-out');
-  later.dom.window.close();
-  const ordinary=mount(),visible=await open(ordinary);
-  visible.querySelector('.ma-offer-close').click();
-  assert.equal(ordinary.w.localStorage.getItem('matchapp_install_offer_never_v1'),null);
-  assert.ok(Number(ordinary.w.localStorage.getItem('matchapp_android_offer_dismissed_at_v1'))>0,'Dismissal starts the non-nag cooldown');
-  ordinary.dom.window.close();
-  const nextOpening=mount();
-  assert.ok(await open(nextOpening),'A separate visitor can still receive the offer');
-  nextOpening.dom.window.close();
+test('iPhone and Mac prompts use the real Apple home-screen/app flow through the bell',async()=>{
+ const ios=mount({ua:UA.ios});await fire(ios);assert.equal(ios.items.length,1);assert.match(ios.items[0].title,/Home Screen/i);assert.equal(ios.items[0].action,'install');ios.dom.window.close();
+ const mac=mount({ua:UA.mac});await fire(mac);assert.equal(mac.items.length,1);assert.match(mac.items[0].body,/Dock/i);assert.equal(mac.items[0].action,'install');mac.dom.window.close();
 });
-test('offer goes away automatically, and browser installation keeps the native tap',async()=>{
-  const ctx=mount(),offer=await open(ctx);
-  assert.equal(ctx.expiry.length,1);
-  ctx.expiry[0]();
-  assert.equal(ctx.w.document.getElementById('ma-install-offer'),null);
-  assert.equal(ctx.w.localStorage.getItem('matchapp_install_offer_never_v1'),null);
-  ctx.dom.window.close();
-  const other=mount();
-  const visible=await open(other);
-  let taps=0;other.w.installMatchApp=()=>{taps++;};
-  visible.querySelector('.ma-offer-browser').click();
-  assert.equal(taps,1,'Must invoke real browser install path from the user click');
-  assert.equal(other.w.document.getElementById('ma-install-offer'),null);
-  other.dom.window.close();
+test('native/installed/Kids/associated installs are never prompted',async()=>{
+ for(const opts of [{ua:UA.native},{standalone:true},{installed:true},{kids:true},{related:[{platform:'play',id:'com.jonas.papercup'}]}]){
+   const ctx=mount(opts);await fire(ctx);assert.equal(ctx.items.length,0,JSON.stringify(opts));ctx.dom.window.close();
+ }
 });
-test('never prompt existing PWA, native Android app, Kids, or verified associated Play install',async()=>{
-  for(const opts of [{standalone:true},{installed:true},{ua:UA.native},{kids:true},{related:[{platform:'play',id:'com.jonas.papercup'}]},{related:[{platform:'webapp',id:'https://matchapp.tv/'}]}]){
-    const ctx=mount(opts);
-    assert.equal(await open(ctx),null,'Excluded install visitor: '+JSON.stringify(opts));
-    ctx.dom.window.close();
-  }
-  const live=mount();
-  assert.ok(await open(live));
-  live.w.dispatchEvent(new live.w.Event('appinstalled'));
-  assert.equal(live.w.document.getElementById('ma-install-offer'),null);
-  live.dom.window.close();
+test('notification center exposes local install notifications and bell keeps shaking while unread',()=>{
+ assert.match(notifications,/function pushLocal\(item\)/);
+ assert.match(notifications,/item\?\.action==='install'/);
+ assert.match(notifications,/window\.MatchNotifications=\{[^}]*pushLocal/);
+ const css=read('notifications.css');
+ assert.match(css,/has-notification svg\{animation:matchBellRing 3\.2s ease-in-out infinite/);
+ assert.match(css,/@media\(prefers-reduced-motion:reduce\)/);
 });
-test('Portuguese copy and browser-only iOS installation are supported',async()=>{
-  const ctx=mount({lang:'pt-BR',ua:UA.ios}),offer=await open(ctx);
-  assert.match(offer.querySelector('.ma-offer-title').textContent,/MatchApp Ai/);
-  assert.match(offer.querySelector('.ma-offer-never').textContent,/Nunca mostrar/);
-  assert.equal(offer.querySelector('.ma-offer-play').hidden,true,'Do not imply an iOS Play app exists');
-  assert.equal(offer.querySelector('.ma-offer-browser').hidden,false);
-  assert.match(offer.querySelector('.ma-offer-browser').textContent,/Tela de Início/);
-  ctx.w.document.documentElement.lang='en';
-  ctx.w.document.dispatchEvent(new ctx.w.Event('matchapp:langchange'));
-  assert.equal(offer.querySelector('.ma-offer-never').textContent,'Never show this again');
-  let browserInstalls=0;
-  ctx.w.installMatchApp=()=>browserInstalls++;
-  offer.querySelector('.ma-offer-browser').click();
-  assert.equal(browserInstalls,1,'iOS keeps the browser Add to Home Screen flow');
-  ctx.dom.window.close();
+test('Android install action itself still routes to the one official Play package',()=>{
+ assert.match(install,/MATCHAPP_PLAY_PACKAGE = 'com\.jonas\.papercup'/);
+ assert.match(install,/Browser version on Android always leads to the official Google Play app/);
+ assert.match(install,/platform\.isAndroid && !platform\.isNativeShell/);
+ assert.match(install,/openMatchAppPlayStore\(\)/);
+ assert.doesNotMatch(install,/play\.google\.com\/store\/(?:search|apps\?q=)/);
 });
-test('desktop visitors keep browser installation without a mobile-store CTA',async()=>{
-  const ctx=mount({ua:UA.desktop}),offer=await open(ctx);
-  assert.equal(offer.querySelector('.ma-offer-browser').hidden,false);
-  assert.equal(offer.querySelector('.ma-offer-play').hidden,true);
-  ctx.dom.window.close();
+test('Profile Settings contains a premium device-aware install destination',()=>{
+ assert.ok(settings.includes(play));
+ assert.match(settings,/matchapp-app-install-setting/);
+ assert.match(settings,/Download now on Google Play/);
+ assert.match(settings,/Add to Home Screen/);
+ assert.match(settings,/Add to Dock \/ Apps/);
 });
-test('web manifests declare same existing adult Play package only for optional verified installation detection',()=>{
-  for(const file of ['manifest.json','manifest-pt-br.json']){
-    const manifest=JSON.parse(read(file));
-    assert.ok(manifest.related_applications.some(a=>a.platform==='play'&&a.id==='com.jonas.papercup'&&a.url===play));
-    assert.equal(manifest.prefer_related_applications,false,'Browser PWA must remain a valid choice');
-  }
-  assert.doesNotMatch(read('kids/index.html'),/browser-install-offer/);
-});
-
-
-test('What’s New Play CTA is a mobile-ready pill using the canonical official listing',()=>{
-  const html=read('updates.html');
-  const dom=new JSDOM(html);
-  const button=dom.window.document.querySelector('.release-download-btn');
-  assert.ok(button,'Release page exposes a dedicated Google Play CTA');
-  assert.equal(button.getAttribute('href'),play);
-  assert.equal(button.getAttribute('target'),'_blank');
-  assert.match(button.getAttribute('rel')||'',/noopener/);
-  assert.match(button.getAttribute('rel')||'',/noreferrer/);
-  const css=[...dom.window.document.querySelectorAll('style')].map(x=>x.textContent).join('\n');
-  assert.match(css,/\.release-download-btn\{[^}]*display:inline-flex/);
-  assert.match(css,/\.release-download-btn\{[^}]*padding:/);
-  assert.match(css,/\.release-download-btn\{[^}]*border-radius:999px/);
-  assert.match(css,/\.release-download-btn\{[^}]*background:linear-gradient/);
-  assert.match(css,/\.release-download-btn:focus-visible\{/);
-  assert.match(css,/@media\(max-width:520px\)\{\.release-download-btn\{width:100%/);
-  dom.window.close();
-
-  for(const file of ['android/index.html','manifest.json','manifest-pt-br.json','release.json','browser-install-offer.js']){
-    const source=read(file);
-    assert.ok(source.includes(play),file+' must keep the verified direct Play listing');
-    assert.doesNotMatch(source,/play\.google\.com\/store\/(?:search|apps\?q=)/,file+' must not fall back to a Play search URL');
-  }
-  const install=read('install.js');
-  assert.match(install,/MATCHAPP_PLAY_PACKAGE = 'com\.jonas\.papercup'/);
-  assert.match(install,/MATCHAPP_PLAY_URL = 'https:\/\/play\.google\.com\/store\/apps\/details\?id=' \+ MATCHAPP_PLAY_PACKAGE/);
-  assert.doesNotMatch(install,/play\.google\.com\/store\/(?:search|apps\?q=)/);
+test('web manifests keep the verified adult Play package for related-install detection',()=>{
+ for(const file of ['manifest.json','manifest-pt-br.json']){
+   const manifest=JSON.parse(read(file));
+   assert.ok(manifest.related_applications.some(a=>a.platform==='play'&&a.id==='com.jonas.papercup'&&a.url===play));
+ }
+ assert.doesNotMatch(read('kids/index.html'),/browser-install-offer/);
 });
