@@ -21,11 +21,22 @@ GitHub Actions and manual edits until the owner explicitly changes it.
   awareness *observance* with no physical venue is a WebPage/observance
   resource, not a fabricated physical Event location. Keep a recently ended
   observance's indexed page and SEO active for the three-day retention window.
-- **News:** `tools/refresh-news-rss.js` is the single RSS/news source
-  generator; use named publishers, direct original URLs and dated metadata.
-  Fail closed on too few trusted headlines; preserve prior committed news
-  rather than push empty/stale data. Hourly refresh remains independent of
-  midnight, but writers must not compete for git publication.
+- **News:** `tools/refresh-news-rss.js` remains the single committed
+  news/HTML/SEO/archive generator. Its hourly run must rebuild SEO freshness
+  metadata on every refresh. The Home/Android live overlay uses the deployed
+  `regional-news-rss` edge source to request the detected ISO residence
+  country plus the user's selected MatchApp language. **Local** means that
+  exact country only; never pad it with another country's cards. **Global**
+  is a separate world edition in the same selected language. The live source
+  must preserve the named publisher attribution exposed by the regional feed,
+  while committed crawlable news continues to use named publishers, dated
+  metadata and direct original URLs. If a country/language source is
+  temporarily unavailable, show fewer cards rather than mislabel another
+  country as local. The live regional layer is part of the existing Latest
+  News rail, not a second carousel or competing git writer. Fail closed on too
+  few trusted committed headlines; preserve prior committed news rather than
+  push empty/stale data. Hourly refresh remains independent of midnight, but
+  writers must not compete for git publication.
 - **Sports news:** The owner-approved sports edition uses the public GDELT Project DOC 2.0 API to discover original publisher URLs, not restricted BBC Sport RSS syndication. `tools/refresh-sports-discovery.js` builds `news/sports.json` **twice daily at 11:17 and 23:17 UTC**. `tools/refresh-news-rss.js` remains the sole news HTML/SEO/archive/URL manifest generator and merges only fresh verified sports rows. Sports has a strictly path-filtered `on:push` self-check when its own workflow file changes, so the first deployment collects data immediately; recurring sports collection remains at 11:17 and 23:17 UTC. A mere crawl time change must never light the new-headline bell. The sports publisher uses the same serialized git lock, existing news carousel and original-source click behavior. Sports discovery copies no publisher images or article bodies, and identifies discovery time rather than inventing precise source publication dates. Errors leave previously committed news intact. The /news/ hub is already in the sitemap; thin source wrappers remain noindex.
 - **Regional authorized sports sources:** When GDELT cannot connect, the single optional The Conversation source adapter may read three documented sport-scoped French Atom topics (sport, athletes, Olympic games) and The Conversation Australian general Atom feed **only with a strict sports-title/URL filter**. All four stay within the same host and direct publisher attribution contract, use no publisher photos or article bodies, reject betting/promotion, and deduplicate repeated article URLs and headline variants across topics. Their research-oriented publishing frequency can yield fewer than two genuine new sports stories on some days; **never invent headlines, call a previous day's article breaking news, or use unlicensed sport feeds just to fill the carousel**.
 - **Top Titles:** owner amendment 2026-10-02 expands the Home marquee to
