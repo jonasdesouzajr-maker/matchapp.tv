@@ -1,14 +1,58 @@
 [
- {"artist":"Taylor Swift","channelUrl":"https://www.youtube.com/@TaylorSwift"},
- {"artist":"Lady Gaga","channelUrl":"https://www.youtube.com/@LadyGagaVEVO"},
- {"artist":"Ariana Grande","channelUrl":"https://www.youtube.com/@ArianaGrandeVevo"},
- {"artist":"Shakira","channelUrl":"https://www.youtube.com/@Shakira"},
- {"artist":"Sabrina Carpenter","channelUrl":"https://www.youtube.com/@sabrinacarpentervevo"},
- {"artist":"Bruno Mars","channelUrl":"https://www.youtube.com/@brunomars"},
- {"artist":"Billie Eilish","channelUrl":"https://www.youtube.com/@BillieEilish"},
- {"artist":"Dua Lipa","channelUrl":"https://www.youtube.com/@dualipa"},
- {"artist":"Ed Sheeran","channelUrl":"https://www.youtube.com/@EdSheeran"},
- {"artist":"Beyoncé","channelUrl":"https://www.youtube.com/@beyonce"},
- {"artist":"BLACKPINK","channelUrl":"https://www.youtube.com/@BLACKPINK"},
- {"artist":"KAROL G","channelUrl":"https://www.youtube.com/@KarolG"}
+  {
+    "artist": "Taylor Swift",
+    "channelUrl": "https://www.youtube.com/@TaylorSwift"
+  },
+  {
+    "artist": "Lady Gaga",
+    "channelUrl": "https://www.youtube.com/@LadyGagaVEVO"
+  },
+  {
+    "artist": "Ariana Grande",
+    "channelUrl": "https://www.youtube.com/@ArianaGrandeVevo"
+  },
+  {
+    "artist": "Shakira",
+    "channelUrl": "https://www.youtube.com/@Shakira"
+  },
+  {
+    "artist": "Sabrina Carpenter",
+    "channelUrl": "https://www.youtube.com/@sabrinacarpentervevo"
+  },
+  {
+    "artist": "Bruno Mars",
+    "channelUrl": "https://www.youtube.com/@brunomars"
+  },
+  {
+    "artist": "Billie Eilish",
+    "channelUrl": "https://www.youtube.com/@BillieEilish"
+  },
+  {
+    "artist": "Dua Lipa",
+    "channelUrl": "https://www.youtube.com/@dualipa"
+  },
+  {
+    "artist": "Ed Sheeran",
+    "channelUrl": "https://www.youtube.com/@EdSheeran"
+  },
+  {
+    "artist": "Beyoncé",
+    "channelUrl": "https://www.youtube.com/@beyonce"
+  },
+  {
+    "artist": "BLACKPINK",
+    "channelUrl": "https://www.youtube.com/@BLACKPINK"
+  },
+  {
+    "artist": "KAROL G",
+    "channelUrl": "https://www.youtube.com/@KarolG"
+  },
+  {
+    "artist": "Ella Langley",
+    "channelUrl": "https://www.youtube.com/@ellalangleyvevo4715"
+  },
+  {
+    "artist": "Olivia Rodrigo",
+    "channelUrl": "https://www.youtube.com/@OliviaRodrigoVEVO"
+  }
 ]
