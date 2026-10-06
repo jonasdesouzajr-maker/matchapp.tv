@@ -10,7 +10,7 @@
     ['/cookies.html', 'Cookies'],
     ['/terms.html', 'Terms'],
     ['/copyright.html', 'Copyright'],
-    ['mailto:support@matchapp.tv', 'Contact']
+    ['/contact.html', 'Contact']
   ];
 
   function isBot() {
