@@ -28,7 +28,7 @@ test('polished Kids styling is isolated to the parent accordion and footer, with
   assert(doc.querySelector(selector),'unchanged working control '+selector);
  }
  assert.doesNotMatch(page,/googletagmanager\.com/i);
- const ad=doc.querySelector('#kids-parent-ad ins.adsbygoogle');assert(ad,'the owner-authorized Kids ad remains isolated inside the grown-up disclosure');assert.equal(ad.dataset.tagForAgeTreatment,'1');
+ assert.equal(doc.querySelectorAll('ins.adsbygoogle').length,0,'Kids must remain AdSense-free');assert.doesNotMatch(page,/ca-pub-|googlesyndication|\/kids\/ads\.js|kids-parent-ad/i);
 });
 test('Kids footer has branded, distinct real navigation without sacrificing legal links or original translation keys',()=>{
  const doc=new JSDOM(read('kids/index.html')).window.document,footer=doc.querySelector('.kids-footer');
