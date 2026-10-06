@@ -156,3 +156,22 @@ test('partial GDELT sports discovery is combined with eligible partner coverage 
  assert.deepEqual(both.map(v=>v.id),['gdelt','conversation']);
  assert.equal(discover.mergeVerifiedSourceRows([],Array(15).fill(secondary)).length,1);
 });
+
+
+test('latest news stays country-true, language-aware, and rebuilds SEO every refresh',()=>{
+ const home=read('latest-news.js'),live=read('live-news-loader.js'),generator=read('tools/refresh-news-rss.js');
+ assert.match(home,/function selectedLanguage\(\)/);
+ assert.match(home,/String\(i\.country\|\|''\)\.toUpperCase\(\)===country/);
+ assert.doesNotMatch(home,/i\.country!=='GLOBAL'/);
+ assert.doesNotMatch(home,/while\(local\.length<MAX_LOCAL\)/);
+ assert.match(live,/matchapp:langchange/);
+ assert.match(live,/language=\$\{encodeURIComponent\(lang\)\}/);
+ assert.doesNotMatch(live,/while\(local\.length<MAX_LOCAL\)/);
+ assert.doesNotMatch(live,/while\(global\.length<MAX_GLOBAL\)/);
+ assert.match(generator,/country:'BR',language:'pt'/);
+ assert.match(generator,/country:'GB',language:'en'/);
+ assert.match(generator,/language:r\.feed\.language\|\|'en'/);
+ assert.match(generator,/item\.seo=seoFor\(item,trends,generated\)/);
+ assert.match(generator,/item\.seo=seoFor\(item,\[\],generated\)/);
+ assert.doesNotMatch(generator,/existing&&existing\.seo\?existing\.seo/);
+});
