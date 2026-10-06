@@ -1,5 +1,5 @@
 {
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "items": [
     {
       "id": "1l7wbZmdtys",
@@ -16,7 +16,7 @@
       "url": "https://www.youtube.com/watch?v=1l7wbZmdtys",
       "thumbnail": "https://i.ytimg.com/vi/1l7wbZmdtys/hqdefault.jpg",
       "poster": "/assets/music-videos/1l7wbZmdtys.jpg",
-      "verifiedAt": "2026-10-05",
+      "verifiedAt": "2026-10-06",
       "keywords": [
         "Bruno Mars",
         "Dance With Me",
@@ -62,7 +62,7 @@
       "creditsSource": "https://www.taylorswift.com/directed-projects/",
       "url": "https://www.youtube.com/watch?v=mw3kSNIxjqo",
       "thumbnail": "https://i.ytimg.com/vi/mw3kSNIxjqo/hqdefault.jpg",
-      "verifiedAt": "2026-10-05",
+      "verifiedAt": "2026-10-06",
       "keywords": [
         "Taylor Swift",
         "Patient Zero",
@@ -154,7 +154,7 @@
       "url": "https://www.youtube.com/watch?v=XwCWKSO0F8s",
       "thumbnail": "https://i.ytimg.com/vi/XwCWKSO0F8s/hqdefault.jpg",
       "poster": "/assets/music-videos/XwCWKSO0F8s.jpg",
-      "verifiedAt": "2026-10-05",
+      "verifiedAt": "2026-10-06",
       "keywords": [
         "Taylor Swift",
         "I Knew It, I Knew You (Piano Version)",
@@ -222,6 +222,94 @@
       }
     },
     {
+      "id": "Rt9tW3cMLhI",
+      "artist": "Olivia Rodrigo",
+      "title": "stupid song",
+      "publishedAt": "2026-06-11T21:00:06-07:00",
+      "album": "",
+      "director": "",
+      "cast": [],
+      "channel": "OliviaRodrigoVEVO",
+      "channelUrl": "https://www.youtube.com/@OliviaRodrigoVEVO",
+      "source": "https://www.youtube.com/watch?v=Rt9tW3cMLhI",
+      "creditsSource": "https://www.youtube.com/watch?v=Rt9tW3cMLhI",
+      "url": "https://www.youtube.com/watch?v=Rt9tW3cMLhI",
+      "thumbnail": "https://i.ytimg.com/vi/Rt9tW3cMLhI/hqdefault.jpg",
+      "artworkSource": "https://img.youtube.com/vi/Rt9tW3cMLhI/hqdefault.jpg",
+      "poster": "/assets/music-videos/Rt9tW3cMLhI.jpg",
+      "verifiedAt": "2026-10-06",
+      "viewCount": 37315920,
+      "viewCountCheckedAt": "2026-10-06",
+      "durationSeconds": 217,
+      "keywords": [
+        "Olivia Rodrigo",
+        "stupid song",
+        "official music video",
+        "Billboard Hot 100",
+        "YouTube music video"
+      ],
+      "seo": {
+        "title": "Olivia Rodrigo — stupid song official music video | MatchApp Ai",
+        "description": "Official Olivia Rodrigo music video for “stupid song”, released on YouTube 2026-06-11 with 37,315,920 verified views at the latest daily check.",
+        "keywords": [
+          "Olivia Rodrigo",
+          "stupid song",
+          "official music video",
+          "Billboard Hot 100",
+          "YouTube music video",
+          "Olivia Rodrigo stupid song official music video",
+          "new Olivia Rodrigo music video",
+          "2026 music video releases",
+          "latest official music videos"
+        ],
+        "canonicalQuery": "Olivia Rodrigo stupid song official music video"
+      }
+    },
+    {
+      "id": "82-jTNka3uc",
+      "artist": "Ariana Grande",
+      "title": "hate that i made you love me",
+      "publishedAt": "2026-06-01T08:00:06-07:00",
+      "album": "",
+      "director": "",
+      "cast": [],
+      "channel": "ArianaGrandeVevo",
+      "channelUrl": "https://www.youtube.com/@ArianaGrandeVevo",
+      "source": "https://www.youtube.com/watch?v=82-jTNka3uc",
+      "creditsSource": "https://www.youtube.com/watch?v=82-jTNka3uc",
+      "url": "https://www.youtube.com/watch?v=82-jTNka3uc",
+      "thumbnail": "https://i.ytimg.com/vi/82-jTNka3uc/hqdefault.jpg",
+      "artworkSource": "https://img.youtube.com/vi/82-jTNka3uc/hqdefault.jpg",
+      "poster": "/assets/music-videos/82-jTNka3uc.jpg",
+      "verifiedAt": "2026-10-06",
+      "viewCount": 98466529,
+      "viewCountCheckedAt": "2026-10-06",
+      "durationSeconds": 301,
+      "keywords": [
+        "Ariana Grande",
+        "hate that i made you love me",
+        "official music video",
+        "Billboard Hot 100",
+        "YouTube music video"
+      ],
+      "seo": {
+        "title": "Ariana Grande — hate that i made you love me official music video | MatchApp Ai",
+        "description": "Official Ariana Grande music video for “hate that i made you love me”, released on YouTube 2026-06-01 with 98,466,529 verified views at the latest daily check.",
+        "keywords": [
+          "Ariana Grande",
+          "hate that i made you love me",
+          "official music video",
+          "Billboard Hot 100",
+          "YouTube music video",
+          "Ariana Grande hate that i made you love me official music video",
+          "new Ariana Grande music video",
+          "2026 music video releases",
+          "latest official music videos"
+        ],
+        "canonicalQuery": "Ariana Grande hate that i made you love me official music video"
+      }
+    },
+    {
       "id": "fcnDmrtj6Sk",
       "artist": "Shakira & Burna Boy",
       "title": "Dai Dai",
@@ -281,7 +369,7 @@
       "creditsSource": "https://www.universal-music.co.jp/lady-gaga/news/2026-04-28/",
       "url": "https://www.youtube.com/watch?v=XXIX2WnfbpE",
       "thumbnail": "https://i.ytimg.com/vi/XXIX2WnfbpE/hqdefault.jpg",
-      "verifiedAt": "2026-10-05",
+      "verifiedAt": "2026-10-06",
       "keywords": [
         "Lady Gaga & Doechii",
         "RUNWAY",
@@ -330,7 +418,7 @@
       "creditsSource": "https://www.universal-music.co.jp/sabrina-carpenter/news/2026-04-07/",
       "url": "https://www.youtube.com/watch?v=KWoTyfPsqbE",
       "thumbnail": "https://i.ytimg.com/vi/KWoTyfPsqbE/hqdefault.jpg",
-      "verifiedAt": "2026-10-05",
+      "verifiedAt": "2026-10-06",
       "keywords": [
         "Sabrina Carpenter",
         "House Tour",
@@ -358,6 +446,50 @@
           "latest official music videos"
         ],
         "canonicalQuery": "Sabrina Carpenter House Tour official music video"
+      }
+    },
+    {
+      "id": "nUsrYVxrDwI",
+      "artist": "Ella Langley",
+      "title": "Choosin' Texas",
+      "publishedAt": "2026-04-01T15:30:06-07:00",
+      "album": "",
+      "director": "",
+      "cast": [],
+      "channel": "EllaLangleyVEVO",
+      "channelUrl": "https://www.youtube.com/@ellalangleyvevo4715",
+      "source": "https://www.youtube.com/watch?v=nUsrYVxrDwI",
+      "creditsSource": "https://www.youtube.com/watch?v=nUsrYVxrDwI",
+      "url": "https://www.youtube.com/watch?v=nUsrYVxrDwI",
+      "thumbnail": "https://i.ytimg.com/vi/nUsrYVxrDwI/hqdefault.jpg",
+      "artworkSource": "https://img.youtube.com/vi/nUsrYVxrDwI/hqdefault.jpg",
+      "poster": "/assets/music-videos/nUsrYVxrDwI.jpg",
+      "verifiedAt": "2026-10-06",
+      "viewCount": 97118475,
+      "viewCountCheckedAt": "2026-10-06",
+      "durationSeconds": 422,
+      "keywords": [
+        "Ella Langley",
+        "Choosin' Texas",
+        "official music video",
+        "Billboard Hot 100",
+        "YouTube music video"
+      ],
+      "seo": {
+        "title": "Ella Langley — Choosin' Texas official music video | MatchApp Ai",
+        "description": "Official Ella Langley music video for “Choosin' Texas”, released on YouTube 2026-04-01 with 97,118,475 verified views at the latest daily check.",
+        "keywords": [
+          "Ella Langley",
+          "Choosin' Texas",
+          "official music video",
+          "Billboard Hot 100",
+          "YouTube music video",
+          "Ella Langley Choosin' Texas official music video",
+          "new Ella Langley music video",
+          "2026 music video releases",
+          "latest official music videos"
+        ],
+        "canonicalQuery": "Ella Langley Choosin' Texas official music video"
       }
     },
     {
@@ -420,7 +552,7 @@
       "url": "https://www.youtube.com/watch?v=xGaZBfJOyAc",
       "thumbnail": "https://i.ytimg.com/vi/xGaZBfJOyAc/hqdefault.jpg",
       "poster": "/assets/music-videos/xGaZBfJOyAc.jpg",
-      "verifiedAt": "2026-10-05",
+      "verifiedAt": "2026-10-06",
       "keywords": [
         "Lady Gaga",
         "The Dead Dance",
@@ -444,138 +576,6 @@
         ],
         "canonicalQuery": "Lady Gaga The Dead Dance official music video"
       }
-    },
-    {
-      "id": "nUsrYVxrDwI",
-      "artist": "Ella Langley",
-      "title": "Choosin' Texas",
-      "publishedAt": "2026-04-01T15:30:06-07:00",
-      "album": "",
-      "director": "",
-      "cast": [],
-      "channel": "EllaLangleyVEVO",
-      "channelUrl": "https://www.youtube.com/@ellalangleyvevo4715",
-      "source": "https://www.youtube.com/watch?v=nUsrYVxrDwI",
-      "creditsSource": "https://www.youtube.com/watch?v=nUsrYVxrDwI",
-      "url": "https://www.youtube.com/watch?v=nUsrYVxrDwI",
-      "thumbnail": "https://i.ytimg.com/vi/nUsrYVxrDwI/hqdefault.jpg",
-      "artworkSource": "https://img.youtube.com/vi/nUsrYVxrDwI/hqdefault.jpg",
-      "poster": "/assets/music-videos/nUsrYVxrDwI.jpg",
-      "verifiedAt": "2026-10-06",
-      "viewCount": 97118475,
-      "viewCountCheckedAt": "2026-10-06",
-      "durationSeconds": 422,
-      "keywords": [
-        "Ella Langley",
-        "Choosin' Texas",
-        "official music video",
-        "Billboard Hot 100",
-        "YouTube music video"
-      ],
-      "seo": {
-        "title": "Ella Langley — Choosin' Texas official music video | MatchApp Ai",
-        "description": "Official Ella Langley music video for “Choosin' Texas”, released on YouTube 2026-04-01 with 97,118,475 verified views at the latest daily check.",
-        "keywords": [
-          "Ella Langley",
-          "Choosin' Texas",
-          "official music video",
-          "Billboard Hot 100",
-          "YouTube music video",
-          "Ella Langley Choosin' Texas official music video",
-          "new Ella Langley music video",
-          "2026 music video releases",
-          "latest official music videos"
-        ],
-        "canonicalQuery": "Ella Langley Choosin' Texas official music video"
-      }
-    },
-    {
-      "id": "82-jTNka3uc",
-      "artist": "Ariana Grande",
-      "title": "hate that i made you love me",
-      "publishedAt": "2026-06-01T08:00:06-07:00",
-      "album": "",
-      "director": "",
-      "cast": [],
-      "channel": "ArianaGrandeVevo",
-      "channelUrl": "https://www.youtube.com/@ArianaGrandeVevo",
-      "source": "https://www.youtube.com/watch?v=82-jTNka3uc",
-      "creditsSource": "https://www.youtube.com/watch?v=82-jTNka3uc",
-      "url": "https://www.youtube.com/watch?v=82-jTNka3uc",
-      "thumbnail": "https://i.ytimg.com/vi/82-jTNka3uc/hqdefault.jpg",
-      "artworkSource": "https://img.youtube.com/vi/82-jTNka3uc/hqdefault.jpg",
-      "poster": "/assets/music-videos/82-jTNka3uc.jpg",
-      "verifiedAt": "2026-10-06",
-      "viewCount": 98466529,
-      "viewCountCheckedAt": "2026-10-06",
-      "durationSeconds": 301,
-      "keywords": [
-        "Ariana Grande",
-        "hate that i made you love me",
-        "official music video",
-        "Billboard Hot 100",
-        "YouTube music video"
-      ],
-      "seo": {
-        "title": "Ariana Grande — hate that i made you love me official music video | MatchApp Ai",
-        "description": "Official Ariana Grande music video for “hate that i made you love me”, released on YouTube 2026-06-01 with 98,466,529 verified views at the latest daily check.",
-        "keywords": [
-          "Ariana Grande",
-          "hate that i made you love me",
-          "official music video",
-          "Billboard Hot 100",
-          "YouTube music video",
-          "Ariana Grande hate that i made you love me official music video",
-          "new Ariana Grande music video",
-          "2026 music video releases",
-          "latest official music videos"
-        ],
-        "canonicalQuery": "Ariana Grande hate that i made you love me official music video"
-      }
-    },
-    {
-      "id": "Rt9tW3cMLhI",
-      "artist": "Olivia Rodrigo",
-      "title": "stupid song",
-      "publishedAt": "2026-06-11T21:00:06-07:00",
-      "album": "",
-      "director": "",
-      "cast": [],
-      "channel": "OliviaRodrigoVEVO",
-      "channelUrl": "https://www.youtube.com/@OliviaRodrigoVEVO",
-      "source": "https://www.youtube.com/watch?v=Rt9tW3cMLhI",
-      "creditsSource": "https://www.youtube.com/watch?v=Rt9tW3cMLhI",
-      "url": "https://www.youtube.com/watch?v=Rt9tW3cMLhI",
-      "thumbnail": "https://i.ytimg.com/vi/Rt9tW3cMLhI/hqdefault.jpg",
-      "artworkSource": "https://img.youtube.com/vi/Rt9tW3cMLhI/hqdefault.jpg",
-      "poster": "/assets/music-videos/Rt9tW3cMLhI.jpg",
-      "verifiedAt": "2026-10-06",
-      "viewCount": 37315920,
-      "viewCountCheckedAt": "2026-10-06",
-      "durationSeconds": 217,
-      "keywords": [
-        "Olivia Rodrigo",
-        "stupid song",
-        "official music video",
-        "Billboard Hot 100",
-        "YouTube music video"
-      ],
-      "seo": {
-        "title": "Olivia Rodrigo — stupid song official music video | MatchApp Ai",
-        "description": "Official Olivia Rodrigo music video for “stupid song”, released on YouTube 2026-06-11 with 37,315,920 verified views at the latest daily check.",
-        "keywords": [
-          "Olivia Rodrigo",
-          "stupid song",
-          "official music video",
-          "Billboard Hot 100",
-          "YouTube music video",
-          "Olivia Rodrigo stupid song official music video",
-          "new Olivia Rodrigo music video",
-          "2026 music video releases",
-          "latest official music videos"
-        ],
-        "canonicalQuery": "Olivia Rodrigo stupid song official music video"
-      }
     }
   ],
   "featuredIds": [
@@ -583,9 +583,11 @@
     "mw3kSNIxjqo",
     "Lufa9QAFFeY",
     "afSgBNwmZrQ",
+    "Rt9tW3cMLhI",
     "fcnDmrtj6Sk",
     "XXIX2WnfbpE",
-    "KWoTyfPsqbE"
+    "KWoTyfPsqbE",
+    "nUsrYVxrDwI"
   ],
   "billboard": {
     "name": "Billboard Hot 100",
@@ -652,6 +654,21 @@
     ]
   },
   "spotifyVideos": [
+    {
+      "url": "https://open.spotify.com/genre/0JQ5DAqbMKFzYiKz8vBlF0",
+      "title": "VMA destination",
+      "kind": "video-collection",
+      "source": "https://newsroom.spotify.com/2026-09-25/mtv-vmas-partnership/",
+      "sourceTitle": "You Can Now Watch Legendary MTV VMA Performances on Spotify",
+      "announcedAt": "2026-09-25T14:00:58+00:00",
+      "verifiedAt": "2026-10-06",
+      "keywords": [
+        "VMA destination",
+        "Spotify music videos",
+        "official music videos on Spotify",
+        "Spotify video collection"
+      ]
+    },
     {
       "url": "https://open.spotify.com/track/0Om9WAB5RS09L80DyOfTNa",
       "title": "Tim McGraw",
