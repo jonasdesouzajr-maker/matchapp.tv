@@ -2,7 +2,7 @@ const {test}=require('node:test'),assert=require('node:assert/strict'),fs=requir
 const root=path.join(__dirname,'..'),read=f=>fs.readFileSync(path.join(root,f),'utf8');
 const adsScript=/pagead2\.googlesyndication\.com\/pagead\/js\/adsbygoogle\.js\?client=ca-pub-9541435081010948/;
 test('AdSense keeps the approved client and one Home initializer',()=>{const home=read('index.html'),init=read('ads-init.js'),settings=read('settings.js');assert.match(home,adsScript);assert.match(home,/google-adsense-account" content="ca-pub-9541435081010948"/);assert.equal((home.match(/src="\/ads-init\.js/g)||[]).length,1);assert.doesNotMatch(settings,/ads-serve\.js/);assert.match(init,/data-ad-status/);assert.match(init,/unfilled/);assert.match(init,/Advertisement/);});
-test('unsafe account chat Kids and support pages do not carry AdSense',()=>{for(const file of ['oauth/consent.html','discover.html','together.html','pricing/pricing.html','profile/profile.html','kids/index.html']){const html=read(file);assert.doesNotMatch(html,/<ins class="adsbygoogle"|pagead2\.googlesyndication\.com|ca-pub-/i,file);}});
+test('unsafe account chat Kids and support pages do not carry AdSense',()=>{for(const file of ['oauth/consent.html','discover.html','together.html','pricing/pricing.html','profile/profile.html','kids/index.html','contact.html']){const html=read(file);assert.doesNotMatch(html,/<ins class="adsbygoogle"|pagead2\.googlesyndication\.com|ca-pub-/i,file);}});
 test('automated news cards are not directly monetized',()=>{assert.doesNotMatch(read('latest-news.js'),/adsbygoogle|data-ad-slot=/);});
 
 
