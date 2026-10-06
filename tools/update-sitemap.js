@@ -53,6 +53,7 @@ const CORE = [
     { loc: `${SITE}/pricing/pricing.html`,      freq: 'weekly',  pri: '0.8' },
     { loc: `${SITE}/events-archive.html`,       freq: 'weekly',  pri: '0.6' },
     { loc: `${SITE}/about.html`,                freq: 'monthly', pri: '0.5' },
+    { loc: `${SITE}/contact.html`,              freq: 'monthly', pri: '0.4' },
     { loc: `${SITE}/privacy.html`,              freq: 'monthly', pri: '0.3' },
     { loc: `${SITE}/terms.html`,                freq: 'monthly', pri: '0.3' },
     { loc: `${SITE}/cookies.html`,              freq: 'monthly', pri: '0.3' },
