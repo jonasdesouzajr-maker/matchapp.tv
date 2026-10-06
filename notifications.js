@@ -5,11 +5,70 @@ if(window.__MATCHAPP_NOTIFICATIONS_V2)return;
 window.__MATCHAPP_NOTIFICATIONS_V2=true;
 const VAPID_PUBLIC='BKGucCWkS-YsS6g4HnM9DYTmm1Thj-PxxVkz9hM09tGs29uABDXQgYbnF0Zooi7AnHFv7KlbPSbPErE4J76MOZs';
 let state={notifications:[],unread:0,preferences:{inApp:true,device:false,email:false,releases:true,purchases:true,friends:true,availability:true,suggestions:true,timezone:'UTC'},watches:[]};
-let button=null,panel=null,poll=null,busy=false,markingRead=false,localItems=[];
+let button=null,panel=null,poll=null,busy=false,markingRead=false,deletingAll=false,localItems=[];
+let notificationAudio=null,notificationSoundUnlocked=false,knownUnreadKeys=null,arrivalPulseTimer=null;
 const desktopHover=()=>!!window.matchMedia?.('(hover: hover) and (pointer: fine)').matches;
 const $=s=>document.querySelector(s);
 const esc=s=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const signed=()=>window.isUserLoggedIn===true;
+function notificationKey(item){return String(item?.id||item?.localKey||item?.version||'');}
+function visibleNotifications(){
+  return (state.notifications||[]).filter(n=>categoryEnabled(n.kind)&&!isExpiredSuggestion(n));
+}
+function unreadKeys(){
+  return new Set(visibleNotifications().filter(n=>(n.localRelease||n.localKey)?!localSeen(n):!n.readAt).map(notificationKey).filter(Boolean));
+}
+function unlockNotificationSound(){
+  if(notificationSoundUnlocked)return;
+  const AudioContextCtor=window.AudioContext||window.webkitAudioContext;
+  if(!AudioContextCtor)return;
+  try{
+    notificationAudio=notificationAudio||new AudioContextCtor();
+    const resumed=notificationAudio.state==='suspended'?notificationAudio.resume():Promise.resolve();
+    Promise.resolve(resumed).then(()=>{notificationSoundUnlocked=notificationAudio?.state==='running';}).catch(()=>{});
+  }catch(_){}
+}
+function playNotificationSound(){
+  if(document.hidden||!notificationSoundUnlocked||!notificationAudio||notificationAudio.state!=='running')return false;
+  try{
+    const ctx=notificationAudio,now=ctx.currentTime,master=ctx.createGain();
+    master.gain.setValueAtTime(.0001,now);
+    master.gain.exponentialRampToValueAtTime(.115,now+.018);
+    master.gain.exponentialRampToValueAtTime(.0001,now+.92);
+    master.connect(ctx.destination);
+    [
+      [783.99,0,.42,'sine',.72],
+      [1174.66,.075,.5,'sine',.55],
+      [1567.98,.16,.58,'triangle',.24]
+    ].forEach(([freq,delay,duration,type,level])=>{
+      const osc=ctx.createOscillator(),gain=ctx.createGain(),start=now+delay,end=start+duration;
+      osc.type=type;osc.frequency.setValueAtTime(freq,start);
+      gain.gain.setValueAtTime(.0001,start);
+      gain.gain.exponentialRampToValueAtTime(level,start+.012);
+      gain.gain.exponentialRampToValueAtTime(.0001,end);
+      osc.connect(gain);gain.connect(master);osc.start(start);osc.stop(end+.02);
+    });
+    return true;
+  }catch(_){return false;}
+}
+function signalNotificationArrival(){
+  if(button){
+    button.classList.remove('notification-arrived');
+    void button.offsetWidth;
+    button.classList.add('notification-arrived');
+    if(arrivalPulseTimer)clearTimeout(arrivalPulseTimer);
+    arrivalPulseTimer=setTimeout(()=>button?.classList.remove('notification-arrived'),1250);
+  }
+  playNotificationSound();
+  try{if(!document.hidden&&typeof navigator.vibrate==='function')navigator.vibrate([45,35,80]);}catch(_){}
+}
+function syncArrivalSignal(){
+  if(knownUnreadKeys===null)return;
+  const next=unreadKeys();
+  const added=[...next].some(key=>!knownUnreadKeys.has(key));
+  knownUnreadKeys=next;
+  if(added)signalNotificationArrival();
+}
 async function rpc(action,payload={}){
   const sb=window.supabaseClient;if(!sb||!signed())throw new Error('Sign in required');
   const {data,error}=await sb.rpc('notifications_action',{p_action:action,p_payload:payload});
@@ -48,13 +107,16 @@ function mount(){
     const before=document.getElementById('profile-link-tab')||document.getElementById('nav-reg-btn')||null;nav.insertBefore(button,before);
   }else if(!button.querySelector('svg')){button.innerHTML=iconSvg();}
   panel=document.createElement('aside');panel.className='matchapp-notification-panel';panel.hidden=true;panel.setAttribute('aria-label','Notifications');
-  panel.innerHTML='<header><div><small>YOUR MATCHAPP</small><h2>Notifications</h2></div><button type="button" class="matchapp-notification-close" aria-label="Close">×</button></header><div class="matchapp-notification-toolbar"><button type="button" data-notify-read-all>Mark all read</button><a href="/updates.html">What’s new</a></div><div class="matchapp-notification-list"></div><details class="matchapp-notification-settings"><summary>Notification settings</summary><div class="matchapp-notification-prefs"></div></details>';
+  panel.innerHTML='<header><div><small>YOUR MATCHAPP</small><h2>Notifications</h2></div><button type="button" class="matchapp-notification-close" aria-label="Close">×</button></header><div class="matchapp-notification-toolbar"><button type="button" data-notify-read-all>Mark all read</button><button type="button" data-notify-delete-all>Delete all</button><a href="/updates.html">What’s new</a></div><div class="matchapp-notification-list"></div><details class="matchapp-notification-settings"><summary>Notification settings</summary><div class="matchapp-notification-prefs"></div></details>';
   document.body.appendChild(panel);
   button.addEventListener('click',()=>toggle());
   button.addEventListener('pointerenter',()=>{if(desktopHover()&&state.unread>0)void markAllRead();});
   panel.querySelector('.matchapp-notification-close').addEventListener('click',()=>close());
   panel.querySelector('[data-notify-read-all]').addEventListener('click',()=>{void markAllRead();});
+  panel.querySelector('[data-notify-delete-all]').addEventListener('click',()=>{void deleteAll();});
   document.addEventListener('click',e=>{if(!panel.hidden&&!panel.contains(e.target)&&!button.contains(e.target))close();});
+  document.addEventListener('pointerdown',unlockNotificationSound,{once:true,capture:true});
+  document.addEventListener('keydown',unlockNotificationSound,{once:true,capture:true});
   render();
 }
 function open(){if(!panel)return;panel.hidden=false;button?.setAttribute('aria-expanded','true');render();}
@@ -139,15 +201,52 @@ async function deleteItem(item){
  }
  render();
 }
+async function deleteAll(){
+ if(deletingAll)return false;
+ const current=state.notifications||[];
+ if(!current.length)return false;
+ const ok=window.confirm?.('Delete all notifications? This cannot be undone.');
+ if(ok===false)return false;
+ deletingAll=true;
+ const previousNotifications=current.slice();
+ const previousLocalItems=localItems.slice();
+ localMarkAll();
+ localItems=[];
+ state.notifications=[];
+ render();
+ try{
+   if(signed()){
+     const sb=window.supabaseClient;
+     if(!sb)throw new Error('Notification service unavailable');
+     const {error}=await sb.rpc('notifications_delete_all');
+     if(error)throw error;
+   }
+   knownUnreadKeys=new Set();
+   window.showToast?.('Notifications deleted.');
+   return true;
+ }catch(_){
+   localItems=previousLocalItems;
+   state.notifications=previousNotifications;
+   try{await refresh();}catch(__){render();}
+   window.showToast?.('Could not delete all notifications right now.',true);
+   return false;
+ }finally{
+   deletingAll=false;
+   render();
+ }
+}
 function render(){
  if(!button||!panel)return;
- const visible=(state.notifications||[]).filter(n=>categoryEnabled(n.kind)&&!isExpiredSuggestion(n));
+ const visible=visibleNotifications();
  const unread=visible.filter(n=>(n.localRelease||n.localKey)?!localSeen(n):!n.readAt).length;
  state.unread=unread;
  const count=button.querySelector('.matchapp-notification-count');
  count.hidden=unread===0;count.textContent=unread>99?'99+':String(unread||'');
  button.classList.toggle('has-notification',unread>0);
  button.setAttribute('aria-label',unread?`Notifications, ${unread} unread`:'Notifications');
+ const readAll=panel.querySelector('[data-notify-read-all]');if(readAll)readAll.disabled=unread===0||markingRead;
+ const deleteAllButton=panel.querySelector('[data-notify-delete-all]');if(deleteAllButton)deleteAllButton.disabled=visible.length===0||deletingAll;
+ syncArrivalSignal();
  const list=panel.querySelector('.matchapp-notification-list');list.replaceChildren();
  if(!visible.length){const empty=document.createElement('p');empty.className='matchapp-notification-empty';empty.textContent=signed()?'You’re all caught up.':'Sign in to follow titles, purchases and Match Together invitations.';list.appendChild(empty);}
  visible.forEach(item=>{
@@ -246,6 +345,7 @@ async function refresh(){
    if(!already)state.notifications=[release,...(state.notifications||[])];
  }
  render();
+ if(knownUnreadKeys===null)knownUnreadKeys=unreadKeys();
 }
 async function followTitle(meta,region){
  if(!signed()){window.openAuthModal?.();window.showToast?.('Sign in to follow this title.');return false;}
@@ -272,7 +372,7 @@ function pushLocal(item){
  return true;
 }
 function authChanged(){refresh();if(poll)clearInterval(poll);poll=setInterval(()=>{if(!document.hidden)refresh();},60000);}
-window.MatchNotifications={refresh,open,close,followTitle,enableDevice,savePrefs,markAllRead,deleteItem,pushLocal};
+window.MatchNotifications={refresh,open,close,followTitle,enableDevice,savePrefs,markAllRead,deleteItem,deleteAll,pushLocal,playNotificationSound};
 document.addEventListener('matchapp:authchange',authChanged);
 document.addEventListener('matchapp:tastechange',()=>{if(signed())void refresh();});
 document.addEventListener('matchapp:historychange',()=>{if(signed())void refresh();});
