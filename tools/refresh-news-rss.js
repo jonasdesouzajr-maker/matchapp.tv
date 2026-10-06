@@ -665,7 +665,9 @@ function enforceArticleAnalyticsOnDisk(){
 
     if(!isAllowed(url,r.feed)||title.length<18||title.length>220||RUMOR.test(title)||RUMOR.test(r.desc)||NON_NEWS.test(title))continue;
     const isWorld=r.feed.category==='world';
-    if(isWorld?!WORLD_TOPIC.test(`${title} ${r.desc}`):!TOPIC.test(`${title} ${r.desc}`))continue;
+    // Explicit world feeds are already publisher-curated; keep their top
+    // headlines broad instead of forcing entertainment-only topic matching.
+    if(!isWorld&&!TOPIC.test(`${title} ${r.desc}`))continue;
 
     const key=title.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,' ').trim();
     if(seen.has(key))continue;
@@ -725,8 +727,10 @@ function enforceArticleAnalyticsOnDisk(){
   // Reserve both world and entertainment reporting without allowing either
   // source group to crowd the other out as developing stories accelerate.
   const entertainment=collected.filter(i=>i.category==='entertainment').slice(0,24);
-  const world=collected.filter(i=>i.category==='world').slice(0,8);
-  const items=[...entertainment,...world,...sports].sort((a,b)=>b.published_at.localeCompare(a.published_at)).slice(0,44);
+  const worldPool=collected.filter(i=>i.category==='world');
+  const worldLanguages=[...new Set(worldPool.map(i=>i.language||'en'))];
+  const world=worldLanguages.flatMap(language=>worldPool.filter(i=>(i.language||'en')===language).slice(0,8));
+  const items=[...entertainment,...world,...sports].sort((a,b)=>b.published_at.localeCompare(a.published_at)).slice(0,52);
   await enrichMissingImages(items);
 
   if(items.length<5)throw new Error(`trusted publisher feeds returned only ${items.length} usable items`);
