@@ -74,11 +74,11 @@ window.MATCHAPP_BUILD = '2026.10.05.1';
     ensureKidsEntry();
     if (path === '/' || path === '/index.html') {
       document.title = 'MatchApp Ai — What to Watch Tonight & Where to Stream';
-      upsertMeta('description', 'MatchApp Ai helps you find what to watch tonight and where to stream it, with AI picks by mood, regional availability, and Match Together.');
+      upsertMeta('description', 'Find what to watch tonight and where to stream it with MatchApp Ai. Get picks by mood, regional availability, and share a match with friends.');
       upsertPropertyMeta('og:title', 'MatchApp Ai — What to Watch Tonight & Where to Stream');
-      upsertPropertyMeta('og:description', 'MatchApp Ai helps you find what to watch tonight and where to stream it, with AI picks by mood, regional availability, and Match Together.');
+      upsertPropertyMeta('og:description', 'Find what to watch tonight and where to stream it with MatchApp Ai. Get picks by mood, regional availability, and share a match with friends.');
       upsertMeta('twitter:title', 'MatchApp Ai — What to Watch Tonight & Where to Stream');
-      upsertMeta('twitter:description', 'MatchApp Ai helps you find what to watch tonight and where to stream it, with AI picks by mood, regional availability, and Match Together.');
+      upsertMeta('twitter:description', 'Find what to watch tonight and where to stream it with MatchApp Ai. Get picks by mood, regional availability, and share a match with friends.');
       upsertMeta('robots', 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1');
       addJsonLd('matchapp-organization-schema', {
         '@context': 'https://schema.org',
