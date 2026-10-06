@@ -19,7 +19,7 @@ function bashExecutable(){
  return 'bash';
 }
 const BASH=bashExecutable();
-const workflow=fs.readFileSync(path.join(__dirname,'../.github/workflows/trending-refresh.yml'),'utf8');
+const workflow=fs.readFileSync(path.join(__dirname,'../.github/workflows/trending-refresh.yml'),'utf8').replace(/\r\n/g,'\n');
 const section=workflow.split('      - name: Publish verified daily editorial refresh')[1].split('      - name: Validate and deploy')[0];
 const script=section.split('        run: |\n')[1].split('\n').map(line=>line.slice(10)).join('\n');
 function simulate({conflicts=1,failGate='',noop=false}={}){
