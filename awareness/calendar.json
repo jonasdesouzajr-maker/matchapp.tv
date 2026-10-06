@@ -209,8 +209,12 @@
       "sourceName": "World Health Organization",
       "sourceUrl": "https://www.who.int/initiatives/global-breast-cancer-initiative",
       "verifyTerm": "Breast Cancer Awareness Month",
-      "ribbonColor": "#c45c8a",
-      "supportLine": "Early detection and timely care save lives. Reliable information first."
+      "ribbonColor": "#F58695",
+      "supportLine": "Early detection and timely care save lives. Reliable information first.",
+      "ribbonColorName": "pink",
+      "ribbonSourceName": "National Breast Cancer Foundation",
+      "ribbonSourceUrl": "https://www.nationalbreastcancer.org/breast-cancer-ribbon/",
+      "ribbonVerifyTerm": "pink ribbon"
     },
     {
       "key": "world-mental-health-day",
@@ -249,5 +253,5 @@
       "supportLine": "Awareness, dignity and evidence-based information help challenge stigma."
     }
   ],
-  "lastReviewed": "2026-09-24"
+  "lastReviewed": "2026-10-06"
 }
