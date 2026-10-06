@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
   "weekOf": "2026-10-05",
-  "updated": "2026-10-06T08:23:21.391Z",
+  "updated": "2026-10-06T10:15:15.980Z",
   "label": "Latest titles trending right now",
   "sourceNote": "Movie and TV positions refresh from MatchApp’s current TMDB daily trend metadata; verified official music-video releases from monitored top-artist channels refresh daily with release dates, YouTube view counts, direct links, keywords and structured metadata. Availability can vary by country.",
   "titles": [
@@ -30,7 +30,7 @@
       ],
       "runtimeMinutes": 145,
       "contentRating": "PG-13",
-      "voteAverage": 7.99,
+      "voteAverage": 8.11,
       "previewUrl": "https://www.youtube.com/watch?v=P3uI5sLosKU",
       "availability": {
         "BR": {
@@ -449,100 +449,6 @@
       }
     },
     {
-      "title": "Digger",
-      "kind": "movie",
-      "year": 2026,
-      "origin": "US",
-      "originName": "United States",
-      "platform": "Cinemas",
-      "platforms": [],
-      "tmdbId": "1248832",
-      "poster": "https://image.tmdb.org/t/p/w780/1ATXKrIPJyKNwnJ6lcG088Sa6zi.jpg",
-      "description": "The most powerful man in the world embarks on a frantic mission to prove he is humanity's savior before the disaster he's unleashed destroys everything.",
-      "genre": [
-        "Comedy",
-        "Drama"
-      ],
-      "inLanguage": "en",
-      "cast": [
-        "Tom Cruise",
-        "Riz Ahmed",
-        "John Goodman",
-        "Sandra Hüller"
-      ],
-      "runtimeMinutes": 129,
-      "contentRating": "R",
-      "voteAverage": 7.5,
-      "previewUrl": "https://www.youtube.com/watch?v=job8V254NAE",
-      "availability": {
-        "BR": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-10-01"
-        },
-        "GB": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-10-02"
-        },
-        "PT": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-10-01"
-        },
-        "US": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-10-02"
-        },
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1248832"
-      },
-      "sourceRank": 5,
-      "keywords": [
-        "Digger",
-        "Digger 2026",
-        "where to watch Digger",
-        "Comedy movie",
-        "Drama movie",
-        "Tom Cruise",
-        "Riz Ahmed"
-      ],
-      "longTailKeywords": [
-        "where to watch Digger 2026",
-        "Digger streaming in Brazil and United States",
-        "Digger cast synopsis trailer and where to watch",
-        "what Comedy to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch Digger (2026) | MatchApp Ai",
-        "description": "The most powerful man in the world embarks on a frantic mission to prove he is humanity's savior before the disaster he's unleashed destroys everything.",
-        "keywords": [
-          "Digger",
-          "Digger 2026",
-          "where to watch Digger",
-          "Comedy movie",
-          "Drama movie",
-          "Tom Cruise",
-          "Riz Ahmed",
-          "where to watch Digger 2026",
-          "Digger streaming in Brazil and United States",
-          "Digger cast synopsis trailer and where to watch",
-          "what Comedy to watch this week"
-        ],
-        "canonicalQuery": "Digger"
-      }
-    },
-    {
       "title": "Onslaught",
       "kind": "movie",
       "year": 2026,
@@ -602,7 +508,7 @@
         "attribution": "JustWatch via TMDB",
         "source_page_url": "https://www.themoviedb.org/movie/1284046"
       },
-      "sourceRank": 6,
+      "sourceRank": 5,
       "keywords": [
         "Onslaught",
         "Onslaught 2026",
@@ -637,6 +543,100 @@
           "what Action to watch this week"
         ],
         "canonicalQuery": "Onslaught"
+      }
+    },
+    {
+      "title": "Digger",
+      "kind": "movie",
+      "year": 2026,
+      "origin": "US",
+      "originName": "United States",
+      "platform": "Cinemas",
+      "platforms": [],
+      "tmdbId": "1248832",
+      "poster": "https://image.tmdb.org/t/p/w780/1ATXKrIPJyKNwnJ6lcG088Sa6zi.jpg",
+      "description": "The most powerful man in the world embarks on a frantic mission to prove he is humanity's savior before the disaster he's unleashed destroys everything.",
+      "genre": [
+        "Comedy",
+        "Drama"
+      ],
+      "inLanguage": "en",
+      "cast": [
+        "Tom Cruise",
+        "Riz Ahmed",
+        "John Goodman",
+        "Sandra Hüller"
+      ],
+      "runtimeMinutes": 129,
+      "contentRating": "R",
+      "voteAverage": 7.5,
+      "previewUrl": "https://www.youtube.com/watch?v=job8V254NAE",
+      "availability": {
+        "BR": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-10-01"
+        },
+        "GB": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-10-02"
+        },
+        "PT": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-10-01"
+        },
+        "US": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-10-02"
+        },
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/movie/1248832"
+      },
+      "sourceRank": 6,
+      "keywords": [
+        "Digger",
+        "Digger 2026",
+        "where to watch Digger",
+        "Comedy movie",
+        "Drama movie",
+        "Tom Cruise",
+        "Riz Ahmed"
+      ],
+      "longTailKeywords": [
+        "where to watch Digger 2026",
+        "Digger streaming in Brazil and United States",
+        "Digger cast synopsis trailer and where to watch",
+        "what Comedy to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch Digger (2026) | MatchApp Ai",
+        "description": "The most powerful man in the world embarks on a frantic mission to prove he is humanity's savior before the disaster he's unleashed destroys everything.",
+        "keywords": [
+          "Digger",
+          "Digger 2026",
+          "where to watch Digger",
+          "Comedy movie",
+          "Drama movie",
+          "Tom Cruise",
+          "Riz Ahmed",
+          "where to watch Digger 2026",
+          "Digger streaming in Brazil and United States",
+          "Digger cast synopsis trailer and where to watch",
+          "what Comedy to watch this week"
+        ],
+        "canonicalQuery": "Digger"
       }
     },
     {
@@ -869,7 +869,7 @@
         "Lee Kyu-sung"
       ],
       "runtimeMinutes": null,
-      "contentRating": "",
+      "contentRating": "TV-14",
       "voteAverage": 10,
       "previewUrl": "https://www.youtube.com/watch?v=krkX6h9h1i0",
       "availability": {
@@ -913,100 +913,93 @@
       }
     },
     {
-      "title": "Resident Evil",
+      "title": "The Fix",
       "kind": "movie",
       "year": 2026,
       "origin": "US",
       "originName": "United States",
-      "platform": "Cinemas",
-      "platforms": [],
-      "tmdbId": "1423191",
-      "poster": "https://image.tmdb.org/t/p/w780/i7UyjfPio0VFHB9rBUZSFyhOoM8.jpg",
-      "description": "Medical courier Bryan unwittingly finds himself fighting for survival as one fateful, horrifying night collapses around him in chaos.",
+      "platform": "Sky Go",
+      "platforms": [
+        "Sky Go",
+        "Now TV Cinema"
+      ],
+      "tmdbId": "1228834",
+      "poster": "https://image.tmdb.org/t/p/w780/yopXjun3ICFfJci2ukcEzceZjUs.jpg",
+      "description": "Disillusioned by the end of the war in Afghanistan, a group of disgraced, war-torn ex-CIA operatives set out to Tehran to take down a life-changing score.",
       "genre": [
-        "Horror",
-        "Science Fiction",
-        "Adventure"
+        "Action",
+        "Thriller"
       ],
       "inLanguage": "en",
       "cast": [
-        "Austin Abrams",
-        "Paul Walter Hauser",
-        "Kali Reis",
-        "Zach Cherry"
+        "Zachary Levi",
+        "Liam Neeson",
+        "Wes Chatham",
+        "Titus Welliver"
       ],
-      "runtimeMinutes": 95,
+      "runtimeMinutes": 142,
       "contentRating": "R",
-      "voteAverage": 7.3,
-      "previewUrl": "https://www.youtube.com/watch?v=mNd1gb19A-c",
+      "voteAverage": 6.98,
+      "previewUrl": "https://www.youtube.com/watch?v=l5Luvr9TRRc",
       "availability": {
-        "BR": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-09-17"
-        },
         "GB": {
           "buy": [],
-          "link": null,
+          "link": "https://www.themoviedb.org/movie/1228834-the-fix/watch?locale=GB",
           "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-09-18"
-        },
-        "PT": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-09-17"
+          "stream": [
+            "Sky Go",
+            "Now TV Cinema"
+          ],
+          "cinema_release_date": null
         },
         "US": {
           "buy": [],
           "link": null,
           "rent": [],
           "stream": [],
-          "cinema_release_date": "2026-09-18"
+          "cinema_release_date": "2026-09-11"
         },
         "source": "tmdb-watch-providers",
         "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1423191"
+        "source_page_url": "https://www.themoviedb.org/movie/1228834"
       },
       "sourceRank": 9,
       "keywords": [
-        "Resident Evil",
-        "Resident Evil 2026",
-        "where to watch Resident Evil",
-        "Horror movie",
-        "Science Fiction movie",
-        "Adventure movie",
-        "Austin Abrams",
-        "Paul Walter Hauser"
+        "The Fix",
+        "The Fix 2026",
+        "where to watch The Fix",
+        "Action movie",
+        "Thriller movie",
+        "Sky Go trending movie",
+        "Now TV Cinema trending movie",
+        "Zachary Levi",
+        "Liam Neeson"
       ],
       "longTailKeywords": [
-        "where to watch Resident Evil 2026",
-        "Resident Evil streaming in Brazil and United States",
-        "Resident Evil cast synopsis trailer and where to watch",
-        "what Horror to watch this week"
+        "where to watch The Fix 2026",
+        "The Fix streaming in Brazil and United States",
+        "The Fix cast synopsis trailer and where to watch",
+        "what Action to watch this week"
       ],
       "seo": {
-        "title": "Where to watch Resident Evil (2026) | MatchApp Ai",
-        "description": "Medical courier Bryan unwittingly finds himself fighting for survival as one fateful, horrifying night collapses around him in chaos.",
+        "title": "Where to watch The Fix (2026) | MatchApp Ai",
+        "description": "Disillusioned by the end of the war in Afghanistan, a group of disgraced, war-torn ex-CIA operatives set out to Tehran to take down a life-changing score.",
         "keywords": [
-          "Resident Evil",
-          "Resident Evil 2026",
-          "where to watch Resident Evil",
-          "Horror movie",
-          "Science Fiction movie",
-          "Adventure movie",
-          "Austin Abrams",
-          "Paul Walter Hauser",
-          "where to watch Resident Evil 2026",
-          "Resident Evil streaming in Brazil and United States",
-          "Resident Evil cast synopsis trailer and where to watch",
-          "what Horror to watch this week"
+          "The Fix",
+          "The Fix 2026",
+          "where to watch The Fix",
+          "Action movie",
+          "Thriller movie",
+          "Sky Go trending movie",
+          "Now TV Cinema trending movie",
+          "Zachary Levi",
+          "Liam Neeson",
+          "where to watch The Fix 2026",
+          "The Fix streaming in Brazil and United States",
+          "The Fix cast synopsis trailer and where to watch",
+          "what Action to watch this week"
         ],
-        "canonicalQuery": "Resident Evil"
+        "canonicalQuery": "The Fix"
       }
     },
     {
@@ -1073,92 +1066,100 @@
       "sourceRank": 3
     },
     {
-      "title": "Verity",
+      "title": "Resident Evil",
       "kind": "movie",
       "year": 2026,
       "origin": "US",
       "originName": "United States",
       "platform": "Cinemas",
       "platforms": [],
-      "tmdbId": "1283515",
-      "poster": "https://image.tmdb.org/t/p/w780/97y0RdzRIeZ2j6se98hRQpxz3eR.jpg",
-      "description": "Lowen Ashleigh is hired by Jeremy Crawford to ghostwrite novels for his bestselling author wife Verity, who is unable to finish following an accident. Lowen gradually uncovers Verity's disturbing truths while residing at the Crawfords' home to work.",
+      "tmdbId": "1423191",
+      "poster": "https://image.tmdb.org/t/p/w780/i7UyjfPio0VFHB9rBUZSFyhOoM8.jpg",
+      "description": "Medical courier Bryan unwittingly finds himself fighting for survival as one fateful, horrifying night collapses around him in chaos.",
       "genre": [
-        "Mystery",
-        "Thriller"
+        "Horror",
+        "Science Fiction",
+        "Adventure"
       ],
       "inLanguage": "en",
       "cast": [
-        "Dakota Johnson",
-        "Anne Hathaway",
-        "Josh Hartnett",
-        "Brady Wagner"
+        "Austin Abrams",
+        "Paul Walter Hauser",
+        "Kali Reis",
+        "Zach Cherry"
       ],
-      "runtimeMinutes": 114,
+      "runtimeMinutes": 95,
       "contentRating": "R",
-      "voteAverage": 6.55,
-      "previewUrl": "https://www.youtube.com/watch?v=xdPMKhjMSFs",
+      "voteAverage": 7.3,
+      "previewUrl": "https://www.youtube.com/watch?v=mNd1gb19A-c",
       "availability": {
         "BR": {
           "buy": [],
           "link": null,
           "rent": [],
           "stream": [],
-          "cinema_release_date": "2026-10-01"
+          "cinema_release_date": "2026-09-17"
         },
         "GB": {
           "buy": [],
           "link": null,
           "rent": [],
           "stream": [],
-          "cinema_release_date": "2026-10-02"
+          "cinema_release_date": "2026-09-18"
         },
-        "US": {
-          "buy": [
-            "Fandango At Home"
-          ],
-          "link": "https://www.themoviedb.org/movie/1283515-verity/watch?locale=US",
+        "PT": {
+          "buy": [],
+          "link": null,
           "rent": [],
           "stream": [],
-          "cinema_release_date": "2026-10-02"
+          "cinema_release_date": "2026-09-17"
+        },
+        "US": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-09-18"
         },
         "source": "tmdb-watch-providers",
         "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1283515"
+        "source_page_url": "https://www.themoviedb.org/movie/1423191"
       },
       "sourceRank": 10,
       "keywords": [
-        "Verity",
-        "Verity 2026",
-        "where to watch Verity",
-        "Mystery movie",
-        "Thriller movie",
-        "Dakota Johnson",
-        "Anne Hathaway"
+        "Resident Evil",
+        "Resident Evil 2026",
+        "where to watch Resident Evil",
+        "Horror movie",
+        "Science Fiction movie",
+        "Adventure movie",
+        "Austin Abrams",
+        "Paul Walter Hauser"
       ],
       "longTailKeywords": [
-        "where to watch Verity 2026",
-        "Verity streaming in Brazil and United States",
-        "Verity cast synopsis trailer and where to watch",
-        "what Mystery to watch this week"
+        "where to watch Resident Evil 2026",
+        "Resident Evil streaming in Brazil and United States",
+        "Resident Evil cast synopsis trailer and where to watch",
+        "what Horror to watch this week"
       ],
       "seo": {
-        "title": "Where to watch Verity (2026) | MatchApp Ai",
-        "description": "Lowen Ashleigh is hired by Jeremy Crawford to ghostwrite novels for his bestselling author wife Verity, who is unable to finish following an accident. Lowen g",
+        "title": "Where to watch Resident Evil (2026) | MatchApp Ai",
+        "description": "Medical courier Bryan unwittingly finds himself fighting for survival as one fateful, horrifying night collapses around him in chaos.",
         "keywords": [
-          "Verity",
-          "Verity 2026",
-          "where to watch Verity",
-          "Mystery movie",
-          "Thriller movie",
-          "Dakota Johnson",
-          "Anne Hathaway",
-          "where to watch Verity 2026",
-          "Verity streaming in Brazil and United States",
-          "Verity cast synopsis trailer and where to watch",
-          "what Mystery to watch this week"
+          "Resident Evil",
+          "Resident Evil 2026",
+          "where to watch Resident Evil",
+          "Horror movie",
+          "Science Fiction movie",
+          "Adventure movie",
+          "Austin Abrams",
+          "Paul Walter Hauser",
+          "where to watch Resident Evil 2026",
+          "Resident Evil streaming in Brazil and United States",
+          "Resident Evil cast synopsis trailer and where to watch",
+          "what Horror to watch this week"
         ],
-        "canonicalQuery": "Verity"
+        "canonicalQuery": "Resident Evil"
       }
     },
     {
@@ -1264,72 +1265,92 @@
       }
     },
     {
-      "title": "PSYREN",
-      "kind": "tv",
+      "title": "Verity",
+      "kind": "movie",
       "year": 2026,
-      "origin": "JP",
-      "originName": "Japan",
-      "platform": "",
+      "origin": "US",
+      "originName": "United States",
+      "platform": "Cinemas",
       "platforms": [],
-      "tmdbId": "297903",
-      "poster": "https://image.tmdb.org/t/p/w780/3imj2VLU77bLOyJ4aPnEUlpJZDX.jpg",
-      "description": "One day, high schooler Ageha Yoshina picks up a mysterious red phone card. Days later, his childhood friend, Sakurako Amamiya, who possessed the same card, suddenly vanishes. In search of her, he's drawn into rumors of a nationwide string of mysterious disappearances by a secret organization known as Psyren. When he accesses the group, a deadly game that changes his fate forever begins.",
+      "tmdbId": "1283515",
+      "poster": "https://image.tmdb.org/t/p/w780/97y0RdzRIeZ2j6se98hRQpxz3eR.jpg",
+      "description": "Lowen Ashleigh is hired by Jeremy Crawford to ghostwrite novels for his bestselling author wife Verity, who is unable to finish following an accident. Lowen gradually uncovers Verity's disturbing truths while residing at the Crawfords' home to work.",
       "genre": [
-        "Action & Adventure",
-        "Sci-Fi & Fantasy",
-        "Animation"
+        "Mystery",
+        "Thriller"
       ],
-      "inLanguage": "ja",
+      "inLanguage": "en",
       "cast": [
-        "Rikuya Yasuda",
-        "Mayuko Kazama",
-        "Shunsuke Takeuchi",
-        "Soma Saito"
+        "Dakota Johnson",
+        "Anne Hathaway",
+        "Josh Hartnett",
+        "Brady Wagner"
       ],
-      "runtimeMinutes": null,
-      "contentRating": "",
-      "voteAverage": 0,
-      "previewUrl": "https://www.youtube.com/watch?v=WS2spKg_z8M",
+      "runtimeMinutes": 114,
+      "contentRating": "R",
+      "voteAverage": 6.55,
+      "previewUrl": "https://www.youtube.com/watch?v=xdPMKhjMSFs",
       "availability": {
+        "BR": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-10-01"
+        },
+        "GB": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-10-02"
+        },
+        "US": {
+          "buy": [
+            "Fandango At Home"
+          ],
+          "link": "https://www.themoviedb.org/movie/1283515-verity/watch?locale=US",
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-10-02"
+        },
         "source": "tmdb-watch-providers",
         "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/tv/297903"
+        "source_page_url": "https://www.themoviedb.org/movie/1283515"
       },
       "sourceRank": 12,
       "keywords": [
-        "PSYREN",
-        "PSYREN 2026",
-        "where to watch PSYREN",
-        "Action & Adventure series",
-        "Sci-Fi & Fantasy series",
-        "Animation series",
-        "Rikuya Yasuda",
-        "Mayuko Kazama"
+        "Verity",
+        "Verity 2026",
+        "where to watch Verity",
+        "Mystery movie",
+        "Thriller movie",
+        "Dakota Johnson",
+        "Anne Hathaway"
       ],
       "longTailKeywords": [
-        "where to watch PSYREN 2026",
-        "PSYREN streaming in Brazil and United States",
-        "PSYREN cast synopsis trailer and where to watch",
-        "what Action & Adventure to watch this week"
+        "where to watch Verity 2026",
+        "Verity streaming in Brazil and United States",
+        "Verity cast synopsis trailer and where to watch",
+        "what Mystery to watch this week"
       ],
       "seo": {
-        "title": "Where to watch PSYREN (2026) | MatchApp Ai",
-        "description": "One day, high schooler Ageha Yoshina picks up a mysterious red phone card. Days later, his childhood friend, Sakurako Amamiya, who possessed the same card, su",
+        "title": "Where to watch Verity (2026) | MatchApp Ai",
+        "description": "Lowen Ashleigh is hired by Jeremy Crawford to ghostwrite novels for his bestselling author wife Verity, who is unable to finish following an accident. Lowen g",
         "keywords": [
-          "PSYREN",
-          "PSYREN 2026",
-          "where to watch PSYREN",
-          "Action & Adventure series",
-          "Sci-Fi & Fantasy series",
-          "Animation series",
-          "Rikuya Yasuda",
-          "Mayuko Kazama",
-          "where to watch PSYREN 2026",
-          "PSYREN streaming in Brazil and United States",
-          "PSYREN cast synopsis trailer and where to watch",
-          "what Action & Adventure to watch this week"
+          "Verity",
+          "Verity 2026",
+          "where to watch Verity",
+          "Mystery movie",
+          "Thriller movie",
+          "Dakota Johnson",
+          "Anne Hathaway",
+          "where to watch Verity 2026",
+          "Verity streaming in Brazil and United States",
+          "Verity cast synopsis trailer and where to watch",
+          "what Mystery to watch this week"
         ],
-        "canonicalQuery": "PSYREN"
+        "canonicalQuery": "Verity"
       }
     },
     {
@@ -1390,6 +1411,232 @@
       },
       "source": "verified-official-music-video",
       "sourceRank": 4
+    },
+    {
+      "title": "Other Mommy",
+      "kind": "movie",
+      "year": 2026,
+      "origin": "US",
+      "originName": "United States",
+      "platform": "Cinemas",
+      "platforms": [],
+      "tmdbId": "1400837",
+      "poster": "https://image.tmdb.org/t/p/w780/fGRNCssTRrhYZxNzykGGCoMsAVq.jpg",
+      "description": "Young Bela forms a relationship with a sinister entity in her home that looks uncannily like her own mother, drawing her into a terrifying and increasingly dark world.",
+      "genre": [
+        "Horror"
+      ],
+      "inLanguage": "en",
+      "cast": [
+        "Jessica Chastain",
+        "Arabella Olivia Clark",
+        "Jay Duplass",
+        "Dichen Lachman"
+      ],
+      "runtimeMinutes": 93,
+      "contentRating": "R",
+      "voteAverage": 0,
+      "previewUrl": "https://www.youtube.com/watch?v=-mnTITqqiT0",
+      "availability": {
+        "BR": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-10-08"
+        },
+        "GB": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-10-09"
+        },
+        "PT": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-10-08"
+        },
+        "US": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-10-09"
+        },
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/movie/1400837"
+      },
+      "sourceRank": 13,
+      "keywords": [
+        "Other Mommy",
+        "Other Mommy 2026",
+        "where to watch Other Mommy",
+        "Horror movie",
+        "Jessica Chastain",
+        "Arabella Olivia Clark"
+      ],
+      "longTailKeywords": [
+        "where to watch Other Mommy 2026",
+        "Other Mommy streaming in Brazil and United States",
+        "Other Mommy cast synopsis trailer and where to watch",
+        "what Horror to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch Other Mommy (2026) | MatchApp Ai",
+        "description": "Young Bela forms a relationship with a sinister entity in her home that looks uncannily like her own mother, drawing her into a terrifying and increasingly da",
+        "keywords": [
+          "Other Mommy",
+          "Other Mommy 2026",
+          "where to watch Other Mommy",
+          "Horror movie",
+          "Jessica Chastain",
+          "Arabella Olivia Clark",
+          "where to watch Other Mommy 2026",
+          "Other Mommy streaming in Brazil and United States",
+          "Other Mommy cast synopsis trailer and where to watch",
+          "what Horror to watch this week"
+        ],
+        "canonicalQuery": "Other Mommy"
+      }
+    },
+    {
+      "title": "PSYREN",
+      "kind": "tv",
+      "year": 2026,
+      "origin": "JP",
+      "originName": "Japan",
+      "platform": "",
+      "platforms": [],
+      "tmdbId": "297903",
+      "poster": "https://image.tmdb.org/t/p/w780/3imj2VLU77bLOyJ4aPnEUlpJZDX.jpg",
+      "description": "One day, high schooler Ageha Yoshina picks up a mysterious red phone card. Days later, his childhood friend, Sakurako Amamiya, who possessed the same card, suddenly vanishes. In search of her, he's drawn into rumors of a nationwide string of mysterious disappearances by a secret organization known as Psyren. When he accesses the group, a deadly game that changes his fate forever begins.",
+      "genre": [
+        "Action & Adventure",
+        "Sci-Fi & Fantasy",
+        "Animation"
+      ],
+      "inLanguage": "ja",
+      "cast": [
+        "Rikuya Yasuda",
+        "Mayuko Kazama",
+        "Shunsuke Takeuchi",
+        "Soma Saito"
+      ],
+      "runtimeMinutes": null,
+      "contentRating": "",
+      "voteAverage": 0,
+      "previewUrl": "https://www.youtube.com/watch?v=WS2spKg_z8M",
+      "availability": {
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/tv/297903"
+      },
+      "sourceRank": 14,
+      "keywords": [
+        "PSYREN",
+        "PSYREN 2026",
+        "where to watch PSYREN",
+        "Action & Adventure series",
+        "Sci-Fi & Fantasy series",
+        "Animation series",
+        "Rikuya Yasuda",
+        "Mayuko Kazama"
+      ],
+      "longTailKeywords": [
+        "where to watch PSYREN 2026",
+        "PSYREN streaming in Brazil and United States",
+        "PSYREN cast synopsis trailer and where to watch",
+        "what Action & Adventure to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch PSYREN (2026) | MatchApp Ai",
+        "description": "One day, high schooler Ageha Yoshina picks up a mysterious red phone card. Days later, his childhood friend, Sakurako Amamiya, who possessed the same card, su",
+        "keywords": [
+          "PSYREN",
+          "PSYREN 2026",
+          "where to watch PSYREN",
+          "Action & Adventure series",
+          "Sci-Fi & Fantasy series",
+          "Animation series",
+          "Rikuya Yasuda",
+          "Mayuko Kazama",
+          "where to watch PSYREN 2026",
+          "PSYREN streaming in Brazil and United States",
+          "PSYREN cast synopsis trailer and where to watch",
+          "what Action & Adventure to watch this week"
+        ],
+        "canonicalQuery": "PSYREN"
+      }
+    },
+    {
+      "title": "So What's Wrong with Getting Reborn as a Goblin?",
+      "kind": "tv",
+      "year": 2026,
+      "origin": "JP",
+      "originName": "Japan",
+      "platform": "",
+      "platforms": [],
+      "tmdbId": "316694",
+      "poster": "https://image.tmdb.org/t/p/w780/3EMDTHdIMRRKbNCjTkAGg1hMiCG.jpg",
+      "description": "When office worker Akira Yagami gives his life saving a child, he awakens in another world as a weak goblin. But luckily, he’s granted a unique skill that extends his lifespan decades beyond their species limit and allows him to inherit the abilities of fallen goblins. In a realm of powerful races like demons and elves, Akira’s rise to becoming the strongest goblin begins.",
+      "genre": [
+        "Animation",
+        "Sci-Fi & Fantasy"
+      ],
+      "inLanguage": "ja",
+      "cast": [
+        "Kikunosuke Toya",
+        "Yoko Hikasa",
+        "Azusa Tachibana",
+        "Banjo Ginga"
+      ],
+      "runtimeMinutes": null,
+      "contentRating": "",
+      "voteAverage": 0,
+      "previewUrl": "",
+      "availability": {
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/tv/316694"
+      },
+      "sourceRank": 15,
+      "keywords": [
+        "So What's Wrong with Getting Reborn as a Goblin?",
+        "So What's Wrong with Getting Reborn as a Goblin? 2026",
+        "where to watch So What's Wrong with Getting Reborn as a Goblin?",
+        "Animation series",
+        "Sci-Fi & Fantasy series",
+        "Kikunosuke Toya",
+        "Yoko Hikasa"
+      ],
+      "longTailKeywords": [
+        "where to watch So What's Wrong with Getting Reborn as a Goblin? 2026",
+        "So What's Wrong with Getting Reborn as a Goblin? streaming in Brazil and United States",
+        "So What's Wrong with Getting Reborn as a Goblin? cast synopsis trailer and where to watch",
+        "what Animation to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch So What's Wrong with Getting Reborn as a Goblin? (2026) | MatchApp Ai",
+        "description": "When office worker Akira Yagami gives his life saving a child, he awakens in another world as a weak goblin. But luckily, he’s granted a unique skill that ext",
+        "keywords": [
+          "So What's Wrong with Getting Reborn as a Goblin?",
+          "So What's Wrong with Getting Reborn as a Goblin? 2026",
+          "where to watch So What's Wrong with Getting Reborn as a Goblin?",
+          "Animation series",
+          "Sci-Fi & Fantasy series",
+          "Kikunosuke Toya",
+          "Yoko Hikasa",
+          "where to watch So What's Wrong with Getting Reborn as a Goblin? 2026",
+          "So What's Wrong with Getting Reborn as a Goblin? streaming in Brazil and United States",
+          "So What's Wrong with Getting Reborn as a Goblin? cast synopsis trailer and where to watch",
+          "what Animation to watch this week"
+        ],
+        "canonicalQuery": "So What's Wrong with Getting Reborn as a Goblin?"
+      }
     },
     {
       "title": "East of Eden",
@@ -1463,7 +1710,7 @@
         "attribution": "JustWatch via TMDB",
         "source_page_url": "https://www.themoviedb.org/tv/258165"
       },
-      "sourceRank": 13,
+      "sourceRank": 16,
       "keywords": [
         "East of Eden",
         "East of Eden 2026",
@@ -1498,282 +1745,6 @@
           "what Drama to watch this week"
         ],
         "canonicalQuery": "East of Eden"
-      }
-    },
-    {
-      "title": "So What's Wrong with Getting Reborn as a Goblin?",
-      "kind": "tv",
-      "year": 2026,
-      "origin": "JP",
-      "originName": "Japan",
-      "platform": "",
-      "platforms": [],
-      "tmdbId": "316694",
-      "poster": "https://image.tmdb.org/t/p/w780/3EMDTHdIMRRKbNCjTkAGg1hMiCG.jpg",
-      "description": "When office worker Akira Yagami gives his life saving a child, he awakens in another world as a weak goblin. But luckily, he’s granted a unique skill that extends his lifespan decades beyond their species limit and allows him to inherit the abilities of fallen goblins. In a realm of powerful races like demons and elves, Akira’s rise to becoming the strongest goblin begins.",
-      "genre": [
-        "Animation",
-        "Sci-Fi & Fantasy"
-      ],
-      "inLanguage": "ja",
-      "cast": [
-        "Kikunosuke Toya",
-        "Yoko Hikasa",
-        "Azusa Tachibana",
-        "Banjo Ginga"
-      ],
-      "runtimeMinutes": null,
-      "contentRating": "",
-      "voteAverage": 0,
-      "previewUrl": "",
-      "availability": {
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/tv/316694"
-      },
-      "sourceRank": 14,
-      "keywords": [
-        "So What's Wrong with Getting Reborn as a Goblin?",
-        "So What's Wrong with Getting Reborn as a Goblin? 2026",
-        "where to watch So What's Wrong with Getting Reborn as a Goblin?",
-        "Animation series",
-        "Sci-Fi & Fantasy series",
-        "Kikunosuke Toya",
-        "Yoko Hikasa"
-      ],
-      "longTailKeywords": [
-        "where to watch So What's Wrong with Getting Reborn as a Goblin? 2026",
-        "So What's Wrong with Getting Reborn as a Goblin? streaming in Brazil and United States",
-        "So What's Wrong with Getting Reborn as a Goblin? cast synopsis trailer and where to watch",
-        "what Animation to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch So What's Wrong with Getting Reborn as a Goblin? (2026) | MatchApp Ai",
-        "description": "When office worker Akira Yagami gives his life saving a child, he awakens in another world as a weak goblin. But luckily, he’s granted a unique skill that ext",
-        "keywords": [
-          "So What's Wrong with Getting Reborn as a Goblin?",
-          "So What's Wrong with Getting Reborn as a Goblin? 2026",
-          "where to watch So What's Wrong with Getting Reborn as a Goblin?",
-          "Animation series",
-          "Sci-Fi & Fantasy series",
-          "Kikunosuke Toya",
-          "Yoko Hikasa",
-          "where to watch So What's Wrong with Getting Reborn as a Goblin? 2026",
-          "So What's Wrong with Getting Reborn as a Goblin? streaming in Brazil and United States",
-          "So What's Wrong with Getting Reborn as a Goblin? cast synopsis trailer and where to watch",
-          "what Animation to watch this week"
-        ],
-        "canonicalQuery": "So What's Wrong with Getting Reborn as a Goblin?"
-      }
-    },
-    {
-      "title": "Obsession",
-      "kind": "movie",
-      "year": 2026,
-      "origin": "US",
-      "originName": "United States",
-      "platform": "Claro tv+",
-      "platforms": [
-        "Claro tv+",
-        "Peacock Premium",
-        "Peacock Premium Plus"
-      ],
-      "tmdbId": "1339713",
-      "poster": "https://image.tmdb.org/t/p/w780/bRwnj8WEKBCvmfeUNOukJPwB43K.jpg",
-      "description": "After breaking the mysterious \"One Wish Willow\" to win his crush's heart, a hopeless romantic finds himself getting exactly what he asked for but soon discovers that some desires come at a dark, sinister price.",
-      "genre": [
-        "Horror",
-        "Thriller"
-      ],
-      "inLanguage": "en",
-      "cast": [
-        "Michael Johnston",
-        "Inde Navarrette",
-        "Cooper Tomlinson",
-        "Megan Lawless"
-      ],
-      "runtimeMinutes": 109,
-      "contentRating": "R",
-      "voteAverage": 8.18,
-      "previewUrl": "https://www.youtube.com/watch?v=gMC8kkwbIQQ",
-      "availability": {
-        "BR": {
-          "buy": [
-            "Apple TV Store",
-            "Amazon Video"
-          ],
-          "link": "https://www.themoviedb.org/movie/1339713-obsession/watch?locale=BR",
-          "rent": [
-            "Apple TV Store",
-            "Amazon Video"
-          ],
-          "stream": [
-            "Claro tv+"
-          ],
-          "cinema_release_date": "2026-05-14"
-        },
-        "GB": {
-          "buy": [
-            "Apple TV Store",
-            "Amazon Video",
-            "Sky Store"
-          ],
-          "link": "https://www.themoviedb.org/movie/1339713-obsession/watch?locale=GB",
-          "rent": [
-            "Apple TV Store",
-            "Amazon Video",
-            "Sky Store"
-          ],
-          "stream": [],
-          "cinema_release_date": "2026-05-15"
-        },
-        "PT": {
-          "buy": [
-            "Apple TV Store",
-            "Rakuten TV",
-            "Amazon Video"
-          ],
-          "link": "https://www.themoviedb.org/movie/1339713-obsession/watch?locale=PT",
-          "rent": [
-            "Apple TV Store",
-            "Rakuten TV",
-            "Amazon Video"
-          ],
-          "stream": [],
-          "cinema_release_date": "2026-05-14"
-        },
-        "US": {
-          "buy": [
-            "Amazon Video",
-            "Apple TV Store",
-            "Google Play Movies",
-            "YouTube",
-            "Fandango At Home"
-          ],
-          "link": "https://www.themoviedb.org/movie/1339713-obsession/watch?locale=US",
-          "rent": [
-            "Amazon Video",
-            "Apple TV Store",
-            "Google Play Movies",
-            "YouTube",
-            "Fandango At Home"
-          ],
-          "stream": [
-            "Peacock Premium",
-            "Peacock Premium Plus"
-          ],
-          "cinema_release_date": "2026-05-15"
-        },
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1339713"
-      },
-      "sourceRank": 15,
-      "keywords": [
-        "Obsession",
-        "Obsession 2026",
-        "where to watch Obsession",
-        "Horror movie",
-        "Thriller movie",
-        "Claro tv+ trending movie",
-        "Peacock Premium trending movie",
-        "Michael Johnston",
-        "Inde Navarrette"
-      ],
-      "longTailKeywords": [
-        "where to watch Obsession 2026",
-        "Obsession streaming in Brazil and United States",
-        "Obsession cast synopsis trailer and where to watch",
-        "what Horror to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch Obsession (2026) | MatchApp Ai",
-        "description": "After breaking the mysterious \"One Wish Willow\" to win his crush's heart, a hopeless romantic finds himself getting exactly what he asked for but soon discove",
-        "keywords": [
-          "Obsession",
-          "Obsession 2026",
-          "where to watch Obsession",
-          "Horror movie",
-          "Thriller movie",
-          "Claro tv+ trending movie",
-          "Peacock Premium trending movie",
-          "Michael Johnston",
-          "Inde Navarrette",
-          "where to watch Obsession 2026",
-          "Obsession streaming in Brazil and United States",
-          "Obsession cast synopsis trailer and where to watch",
-          "what Horror to watch this week"
-        ],
-        "canonicalQuery": "Obsession"
-      }
-    },
-    {
-      "title": "Black Clover",
-      "kind": "tv",
-      "year": 2017,
-      "origin": "JP",
-      "originName": "Japan",
-      "platform": "",
-      "platforms": [],
-      "tmdbId": "73223",
-      "poster": "https://image.tmdb.org/t/p/w780/kaMisKeOoTBPxPkbC3OW7Wgt6ON.jpg",
-      "description": "Asta and Yuno are two orphans who want the same thing: to become the Wizard King. Locked in a friendly rivalry, they work hard towards their goal. While Yuno excels at magic, Asta has a problem uncommon in this world: he has no powers! But, on the day they receive their grimoires, they surprise everyone. To reach their goal, they’ll each find their own path to greatness—with or without magic.",
-      "genre": [
-        "Animation",
-        "Action & Adventure",
-        "Sci-Fi & Fantasy"
-      ],
-      "inLanguage": "ja",
-      "cast": [
-        "Gakuto Kajiwara",
-        "Nobunaga Shimazaki",
-        "Kana Yuuki",
-        "Junichi Suwabe"
-      ],
-      "runtimeMinutes": 24,
-      "contentRating": "TV-14",
-      "voteAverage": 8.51,
-      "previewUrl": "https://www.youtube.com/watch?v=QwNWY6z93O4",
-      "availability": {
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/tv/73223"
-      },
-      "sourceRank": 16,
-      "keywords": [
-        "Black Clover",
-        "Black Clover 2017",
-        "where to watch Black Clover",
-        "Animation series",
-        "Action & Adventure series",
-        "Sci-Fi & Fantasy series",
-        "Gakuto Kajiwara",
-        "Nobunaga Shimazaki"
-      ],
-      "longTailKeywords": [
-        "where to watch Black Clover 2017",
-        "Black Clover streaming in Brazil and United States",
-        "Black Clover cast synopsis trailer and where to watch",
-        "what Animation to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch Black Clover (2017) | MatchApp Ai",
-        "description": "Asta and Yuno are two orphans who want the same thing: to become the Wizard King. Locked in a friendly rivalry, they work hard towards their goal. While Yuno ",
-        "keywords": [
-          "Black Clover",
-          "Black Clover 2017",
-          "where to watch Black Clover",
-          "Animation series",
-          "Action & Adventure series",
-          "Sci-Fi & Fantasy series",
-          "Gakuto Kajiwara",
-          "Nobunaga Shimazaki",
-          "where to watch Black Clover 2017",
-          "Black Clover streaming in Brazil and United States",
-          "Black Clover cast synopsis trailer and where to watch",
-          "what Animation to watch this week"
-        ],
-        "canonicalQuery": "Black Clover"
       }
     }
   ]

@@ -14,13 +14,13 @@
     </url>
     <url>
         <loc>https://matchapp.tv/</loc>
-        <lastmod>2026-10-06T09:43:42+00:00</lastmod>
+        <lastmod>2026-10-06T10:15:16+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/trending/this-week/</loc>
-        <lastmod>2026-10-06T09:43:42+00:00</lastmod>
+        <lastmod>2026-10-06T10:15:16+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
     </url>
@@ -176,7 +176,7 @@
     </url>
     <url>
         <loc>https://matchapp.tv/featured/this-week/</loc>
-        <lastmod>2026-10-06T09:43:42+00:00</lastmod>
+        <lastmod>2026-10-06T10:15:16+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -188,7 +188,7 @@
     </url>
     <url>
         <loc>https://matchapp.tv/together.html</loc>
-        <lastmod>2026-10-05T18:09:58+00:00</lastmod>
+        <lastmod>2026-10-06T09:57:59+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -200,7 +200,7 @@
     </url>
     <url>
         <loc>https://matchapp.tv/events-archive.html</loc>
-        <lastmod>2026-10-06T09:43:42+00:00</lastmod>
+        <lastmod>2026-10-06T09:44:17+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
     </url>
@@ -1286,7 +1286,7 @@
     </url>
     <url>
         <loc>https://matchapp.tv/events/asian-games-2026/</loc>
-        <lastmod>2026-10-06T09:43:42+00:00</lastmod>
+        <lastmod>2026-10-06T09:44:17+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
@@ -1298,7 +1298,7 @@
     </url>
     <url>
         <loc>https://matchapp.tv/events/calgary-international-film-festival-2026/</loc>
-        <lastmod>2026-10-06T09:43:42+00:00</lastmod>
+        <lastmod>2026-10-06T09:44:17+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
@@ -1370,7 +1370,7 @@
     </url>
     <url>
         <loc>https://matchapp.tv/events/kota-dussehra-2026/</loc>
-        <lastmod>2026-10-06T09:43:42+00:00</lastmod>
+        <lastmod>2026-10-06T09:59:06+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>

@@ -593,65 +593,65 @@
     "name": "Billboard Hot 100",
     "region": "US",
     "chartDate": "2026-10-10",
-    "verifiedAt": "2026-10-06",
-    "sourceUrl": "https://www.billboard.com/lists/taylor-swift-patient-zero-hot-100-number-one-debut/",
+    "sourceUrl": "https://www.billboard.com/charts/hot-100/",
     "chartUrl": "https://www.billboard.com/charts/hot-100/",
     "entries": [
       {
         "rank": 1,
-        "artist": "Taylor Swift",
         "title": "Patient Zero",
+        "artist": "Taylor Swift",
         "videoId": "mw3kSNIxjqo"
       },
       {
         "rank": 2,
-        "artist": "Ella Langley",
         "title": "Choosin' Texas",
+        "artist": "Ella Langley",
         "videoId": "nUsrYVxrDwI"
       },
       {
         "rank": 3,
-        "artist": "Taylor Swift",
-        "title": "Cleveland!"
+        "title": "Cleveland!",
+        "artist": "Taylor Swift"
       },
       {
         "rank": 4,
-        "artist": "Taylor Swift",
-        "title": "Babylon"
+        "title": "Babylon",
+        "artist": "Taylor Swift"
       },
       {
         "rank": 5,
-        "artist": "Taylor Swift",
-        "title": "Pink Clouding"
+        "title": "Pink Clouding",
+        "artist": "Taylor Swift"
       },
       {
         "rank": 6,
-        "artist": "Stella Lefty",
-        "title": "Boston"
+        "title": "Boston",
+        "artist": "Stella Lefty"
       },
       {
         "rank": 7,
-        "artist": "Morgan Wallen",
-        "title": "Been By Now"
+        "title": "Been By Now",
+        "artist": "Morgan Wallen"
       },
       {
         "rank": 8,
-        "artist": "Ariana Grande",
         "title": "Hate That I Made You Love Me",
+        "artist": "Ariana Grande",
         "videoId": "82-jTNka3uc"
       },
       {
         "rank": 9,
-        "artist": "Olivia Rodrigo",
         "title": "Stupid Song",
+        "artist": "Olivia Rodrigo",
         "videoId": "Rt9tW3cMLhI"
       },
       {
         "rank": 10,
-        "artist": "Tame Impala & JENNIE",
-        "title": "Dracula"
+        "title": "Dracula",
+        "artist": "Tame Impala & JENNIE"
       }
-    ]
+    ],
+    "verifiedAt": "2026-10-06"
   },
   "spotifyVideos": [
     {
