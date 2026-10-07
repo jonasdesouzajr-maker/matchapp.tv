@@ -37,9 +37,7 @@ function paint(data){
   // The owner-curated 26 identities are Home's authority; daily trend data
   // belongs to the discovery guide and must not replace this complete rail.
   const committed=Array.from(track.querySelectorAll('img[data-title]'));
-  const originals=committed.slice(0,26);
-  if(committed.length===52 && new Set(originals.map(img=>img.dataset.title)).size===26 &&
-    originals.every((img,i)=>img.dataset.title===committed[i+26].dataset.title && img.getAttribute('src')===committed[i+26].getAttribute('src'))){
+  if(committed.length===52){
     document.dispatchEvent(new CustomEvent('matchapp:trendingpainted',{detail:{count:26}}));
     return;
   }
