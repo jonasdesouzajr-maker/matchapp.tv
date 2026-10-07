@@ -170,6 +170,9 @@ test('latest news stays country-true, language-aware, and rebuilds SEO every ref
  assert.match(live,/function ensureTrack\(section\)/);
  assert.match(live,/panel\.querySelector\('\.ma-news-empty,\.ma-news-error'\)\?\.remove\(\)/);
  assert.match(live,/const track=ensureTrack\(section\)/);
+ assert.match(live,/async function refresh\(force=false\)/);
+ assert.match(live,/if\(running\|\|\(!force&&document\.hidden\)\)return/);
+ assert.match(live,/refresh\(true\);timer=window\.setInterval\(\(\)=>refresh\(false\),REFRESH_MS\)/);
  assert.match(live,/language=\$\{encodeURIComponent\(lang\)\}/);
  assert.match(regional,/NATION/);
  assert.match(regional,/WORLD/);
