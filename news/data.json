@@ -1,10 +1,180 @@
 {
-  "generated_at": "2026-10-07T01:46:51.899Z",
-  "feed_version": "289c1b54",
-  "sports_updated_at": "2026-10-06T17:11:33.523Z",
+  "generated_at": "2026-10-07T02:24:02.254Z",
+  "feed_version": "8ccc0795",
+  "sports_updated_at": "2026-10-07T02:24:02.207Z",
   "source_policy": "direct-trusted-publisher-rss+google-trends-keyword-signals",
   "seo_policy": "per-story keyword snapshot at first discovery + source citation + stable archive",
   "items": [
+    {
+      "id": "547958c3",
+      "title": "Saga de Leandro & Leonardo da roça à fama vira cinebiografia filmada a partir de novembro por Jayme Monjardim",
+      "url": "https://g1.globo.com/pop-arte/musica/blog/mauro-ferreira/post/2026/10/06/saga-de-leandro-and-leonardo-da-roca-a-fama-vira-cinebiografia-filmada-a-partir-de-novembro-por-jayme-monjardim.ghtml",
+      "source": "G1",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "BR",
+      "language": "pt",
+      "published_at": "2026-10-07T02:12:31.000Z",
+      "discovered_at": "2026-10-07T02:24:02.254Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "",
+      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
+      "image": "https://s2-g1.glbimg.com/i56-yPDR-LWt7hHQExB61od7AUI=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/b/k/6p6GXLTy2DjJoxkw4Osg/leandroleonardo.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/saga-de-leandro-leonardo-da-roca-a-fama-vira-cinebiografia-filmada-a-partir-de-n-547958/",
+      "landing_url": "https://matchapp.tv/?news=547958c3#latest-news",
+      "seo": {
+        "primary_keyword": "saga leandro leonardo roca últimas notícias",
+        "short_tail": [
+          "saga leandro leonardo roca",
+          "saga leandro leonardo roca news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje"
+        ],
+        "long_tail": [
+          "saga leandro leonardo roca latest news October 2026",
+          "saga leandro leonardo roca entertainment update 2026",
+          "saga leandro leonardo roca news 2026-10-07",
+          "latest entertainment news about saga leandro leonardo roca",
+          "saga leandro leonardo roca fama vira latest update",
+          "G1 saga leandro leonardo roca entertainment",
+          "últimas notícias sobre saga leandro leonardo roca outubro 2026",
+          "saga leandro leonardo roca notícia de 2026-10-07",
+          "o que aconteceu com saga leandro leonardo roca"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "saga",
+          "leandro",
+          "leonardo",
+          "roca",
+          "fama",
+          "vira",
+          "cinebiografia",
+          "filmada"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-07",
+          "outubro 2026",
+          "saga leandro leonardo roca 2026"
+        ],
+        "source_keywords": [
+          "G1 saga leandro leonardo roca",
+          "g1.globo.com saga leandro leonardo roca",
+          "G1 entertainment news"
+        ],
+        "meta_title": "Saga de Leandro & Leonardo da roça à fama vira…",
+        "meta_description": "Notícia publicada por G1 em 2026-10-07. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
+        "keywords": [
+          "saga leandro leonardo roca últimas notícias",
+          "saga leandro leonardo roca",
+          "saga leandro leonardo roca news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje",
+          "saga leandro leonardo roca latest news October 2026",
+          "saga leandro leonardo roca entertainment update 2026",
+          "saga leandro leonardo roca news 2026-10-07",
+          "latest entertainment news about saga leandro leonardo roca",
+          "saga leandro leonardo roca fama vira latest update",
+          "G1 saga leandro leonardo roca entertainment",
+          "últimas notícias sobre saga leandro leonardo roca outubro 2026",
+          "saga leandro leonardo roca notícia de 2026-10-07",
+          "o que aconteceu com saga leandro leonardo roca",
+          "saga",
+          "leandro",
+          "leonardo",
+          "roca",
+          "fama",
+          "vira",
+          "cinebiografia",
+          "filmada",
+          "October 2026",
+          "2026-10-07",
+          "outubro 2026",
+          "saga leandro leonardo roca 2026",
+          "G1 saga leandro leonardo roca",
+          "g1.globo.com saga leandro leonardo roca",
+          "G1 entertainment news"
+        ],
+        "seo_generated_at": "2026-10-07T02:24:02.254Z"
+      }
+    },
+    {
+      "id": "ec70415c",
+      "title": "Fort Hood shooter to be executed by firing squad - a first for US military since World War Two",
+      "url": "https://www.bbc.co.uk/news/articles/cq8ezkkkrpy1o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-07T02:06:23.000Z",
+      "discovered_at": "2026-10-07T02:24:02.254Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "Fort Hood",
+      "description": "World news reported by BBC World on 2026-10-07. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/ae19/live/2431ba60-c171-11f1-a64c-550be9e3c66b.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/fort-hood-shooter-to-be-executed-by-firing-squad-a-first-for-us-military-since-w-ec7041/",
+      "landing_url": "https://matchapp.tv/?news=ec70415c#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-07",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "fort",
+          "hood",
+          "shooter",
+          "executed",
+          "firing",
+          "squad"
+        ],
+        "long_tail": [
+          "Fort Hood shooter to be executed by firing squad - a first for US military since World War Two 2026-10-07",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "fort",
+          "hood",
+          "shooter",
+          "executed",
+          "firing",
+          "squad"
+        ],
+        "freshness_keywords": [
+          "2026-10-07"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Fort Hood shooter to be executed by firing squad - a first…",
+        "meta_description": "World report published by BBC World on 2026-10-07. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-07",
+          "world news",
+          "global headlines",
+          "fort",
+          "hood",
+          "shooter",
+          "executed",
+          "firing",
+          "squad",
+          "Fort Hood shooter to be executed by firing squad - a first for US military since World War Two 2026-10-07",
+          "world news October 2026",
+          "2026-10-07",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-07T02:24:02.254Z"
+      }
+    },
     {
       "id": "1141bde0",
       "title": "Apple and Dolby Bringing Dolby Atmos to Live Formula 1 Coverage",
@@ -99,7 +269,7 @@
           "hollywoodreporter.com apple dolby bringing dolby",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T01:46:51.899Z"
+        "seo_generated_at": "2026-10-07T02:24:02.254Z"
       }
     },
     {
@@ -191,7 +361,7 @@
           "hollywoodreporter.com Jack White Slams Trump",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T01:46:51.899Z"
+        "seo_generated_at": "2026-10-07T02:24:02.254Z"
       }
     },
     {
@@ -260,7 +430,7 @@
           "2026-10-07",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-07T01:46:51.899Z"
+        "seo_generated_at": "2026-10-07T02:24:02.254Z"
       }
     },
     {
@@ -329,7 +499,7 @@
           "2026-10-07",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-07T01:46:51.899Z"
+        "seo_generated_at": "2026-10-07T02:24:02.254Z"
       }
     },
     {
@@ -423,7 +593,7 @@
           "hollywoodreporter.com Olympian Amber Glenn",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T01:46:51.899Z"
+        "seo_generated_at": "2026-10-07T02:24:02.254Z"
       }
     },
     {
@@ -492,7 +662,7 @@
           "2026-10-06",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-07T01:46:51.899Z"
+        "seo_generated_at": "2026-10-07T02:24:02.254Z"
       }
     },
     {
@@ -561,7 +731,7 @@
           "2026-10-06",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-07T01:46:51.899Z"
+        "seo_generated_at": "2026-10-07T02:24:02.254Z"
       }
     },
     {
@@ -630,7 +800,7 @@
           "2026-10-06",
           "BBC Technology"
         ],
-        "seo_generated_at": "2026-10-07T01:46:51.899Z"
+        "seo_generated_at": "2026-10-07T02:24:02.254Z"
       }
     },
     {
@@ -699,7 +869,7 @@
           "2026-10-06",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-07T01:46:51.899Z"
+        "seo_generated_at": "2026-10-07T02:24:02.254Z"
       }
     },
     {
@@ -795,7 +965,7 @@
           "g1.globo.com Eva Marie Saint",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T01:46:51.899Z"
+        "seo_generated_at": "2026-10-07T02:24:02.254Z"
       }
     },
     {
@@ -864,7 +1034,7 @@
           "2026-10-06",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-07T01:46:51.899Z"
+        "seo_generated_at": "2026-10-07T02:24:02.254Z"
       }
     },
     {
@@ -933,7 +1103,7 @@
           "2026-10-06",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-07T01:46:51.899Z"
+        "seo_generated_at": "2026-10-07T02:24:02.254Z"
       }
     },
     {
@@ -1002,7 +1172,7 @@
           "2026-10-06",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-07T01:46:51.899Z"
+        "seo_generated_at": "2026-10-07T02:24:02.254Z"
       }
     },
     {
@@ -1071,7 +1241,7 @@
           "2026-10-06",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-07T01:46:51.899Z"
+        "seo_generated_at": "2026-10-07T02:24:02.254Z"
       }
     },
     {
@@ -1140,7 +1310,7 @@
           "2026-10-06",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-07T01:46:51.899Z"
+        "seo_generated_at": "2026-10-07T02:24:02.254Z"
       }
     },
     {
@@ -1239,7 +1409,7 @@
           "bbc.co.uk paramount takes over warner",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T01:46:51.899Z"
+        "seo_generated_at": "2026-10-07T02:24:02.254Z"
       }
     },
     {
@@ -1308,7 +1478,7 @@
           "2026-10-06",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-07T01:46:51.899Z"
+        "seo_generated_at": "2026-10-07T02:24:02.254Z"
       }
     },
     {
@@ -1409,7 +1579,7 @@
           "g1.globo.com minha melhor amiga entra",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T01:46:51.899Z"
+        "seo_generated_at": "2026-10-07T02:24:02.254Z"
       }
     },
     {
@@ -1478,7 +1648,7 @@
           "2026-10-06",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-07T01:46:51.899Z"
+        "seo_generated_at": "2026-10-07T02:24:02.254Z"
       }
     },
     {
@@ -1547,7 +1717,7 @@
           "2026-10-06",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-07T01:46:51.899Z"
+        "seo_generated_at": "2026-10-07T02:24:02.254Z"
       }
     },
     {
@@ -1646,7 +1816,7 @@
           "bbc.co.uk films streaming prices how",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T01:46:51.899Z"
+        "seo_generated_at": "2026-10-07T02:24:02.254Z"
       }
     },
     {
@@ -1715,76 +1885,7 @@
           "2026-10-06",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-07T01:46:51.899Z"
-      }
-    },
-    {
-      "id": "92b454d8",
-      "title": "Tear gas in Paris and Marseille as school protests grow across France",
-      "url": "https://www.bbc.co.uk/news/articles/c8x23706pvz3o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-06T18:03:19.000Z",
-      "discovered_at": "2026-10-06T20:46:03.505Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-06. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/8aed/live/289aad70-c1ab-11f1-8fa2-19a1e9b6288f.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/tear-gas-in-paris-and-marseille-as-school-protests-grow-across-france-92b454/",
-      "landing_url": "https://matchapp.tv/?news=92b454d8#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-06",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "tear",
-          "gas",
-          "paris",
-          "marseille",
-          "school",
-          "protests"
-        ],
-        "long_tail": [
-          "Tear gas in Paris and Marseille as school protests grow across France 2026-10-06",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "tear",
-          "gas",
-          "paris",
-          "marseille",
-          "school",
-          "protests"
-        ],
-        "freshness_keywords": [
-          "2026-10-06"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Tear gas in Paris and Marseille as school protests grow…",
-        "meta_description": "World report published by BBC World on 2026-10-06. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-06",
-          "world news",
-          "global headlines",
-          "tear",
-          "gas",
-          "paris",
-          "marseille",
-          "school",
-          "protests",
-          "Tear gas in Paris and Marseille as school protests grow across France 2026-10-06",
-          "world news October 2026",
-          "2026-10-06",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-07T01:46:51.899Z"
+        "seo_generated_at": "2026-10-07T02:24:02.254Z"
       }
     },
     {
@@ -1882,7 +1983,7 @@
           "g1.globo.com Michael Douglas",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T01:46:51.899Z"
+        "seo_generated_at": "2026-10-07T02:24:02.254Z"
       }
     },
     {
@@ -1981,7 +2082,7 @@
           "g1.globo.com shakira pique vao justica",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T01:46:51.899Z"
+        "seo_generated_at": "2026-10-07T02:24:02.254Z"
       }
     },
     {
@@ -2082,7 +2183,7 @@
           "g1.globo.com luzes sombras relacao visceral",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T01:46:51.899Z"
+        "seo_generated_at": "2026-10-07T02:24:02.254Z"
       }
     },
     {
@@ -2180,7 +2281,7 @@
           "g1.globo.com Jheny Santucci",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T01:46:51.899Z"
+        "seo_generated_at": "2026-10-07T02:24:02.254Z"
       }
     },
     {
@@ -2281,7 +2382,7 @@
           "g1.globo.com participante american idol condenado",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T01:46:51.899Z"
+        "seo_generated_at": "2026-10-07T02:24:02.254Z"
       }
     },
     {
@@ -2377,7 +2478,7 @@
           "bbc.co.uk Rosie O'Donnell",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T01:46:51.899Z"
+        "seo_generated_at": "2026-10-07T02:24:02.254Z"
       }
     },
     {
@@ -2476,7 +2577,7 @@
           "bbc.co.uk chart topping singer television",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T01:46:51.899Z"
+        "seo_generated_at": "2026-10-07T02:24:02.254Z"
       }
     },
     {
@@ -2572,7 +2673,7 @@
           "bbc.co.uk Jade Thirlwall",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T01:46:51.899Z"
+        "seo_generated_at": "2026-10-07T02:24:02.254Z"
       }
     },
     {
@@ -2673,7 +2774,7 @@
           "g1.globo.com letras belchior album alucinacao",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T01:46:51.899Z"
+        "seo_generated_at": "2026-10-07T02:24:02.254Z"
       }
     },
     {
@@ -2774,7 +2875,7 @@
           "g1.globo.com bola preta cotado oscar",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T01:46:51.899Z"
+        "seo_generated_at": "2026-10-07T02:24:02.254Z"
       }
     },
     {
@@ -2870,7 +2971,7 @@
           "bbc.co.uk Blue Planet",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T01:46:51.899Z"
+        "seo_generated_at": "2026-10-07T02:24:02.254Z"
       }
     },
     {
@@ -2964,7 +3065,7 @@
           "bbc.co.uk Former American Idol",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T01:46:51.899Z"
+        "seo_generated_at": "2026-10-07T02:24:02.254Z"
       }
     },
     {
@@ -3060,7 +3161,7 @@
           "g1.globo.com Robert Kelker-Kelly",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T01:46:51.899Z"
+        "seo_generated_at": "2026-10-07T02:24:02.254Z"
       }
     },
     {
@@ -3159,7 +3260,7 @@
           "bbc.co.uk been terrible year farming",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T01:46:51.899Z"
+        "seo_generated_at": "2026-10-07T02:24:02.254Z"
       }
     },
     {
@@ -3260,7 +3361,7 @@
           "g1.globo.com maestro sons eruditos falecido",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T01:46:51.899Z"
+        "seo_generated_at": "2026-10-07T02:24:02.254Z"
       }
     },
     {
@@ -3356,108 +3457,7 @@
           "bbc.co.uk Rachel Jupp",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T01:46:51.899Z"
-      }
-    },
-    {
-      "id": "5f15390c",
-      "title": "'O Outro Lado das Redes': Aaron Sorkin volta a focar no Facebook e mira em Zuckerberg em novo filme",
-      "url": "https://g1.globo.com/pop-arte/cinema/noticia/2026/10/05/o-outro-lado-das-redes-aaron-sorkin-volta-a-focar-no-facebook-e-mira-em-zuckerberg-em-novo-filme.ghtml",
-      "source": "G1",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "BR",
-      "language": "pt",
-      "published_at": "2026-10-05T14:01:09.000Z",
-      "discovered_at": "2026-10-05T17:22:19.239Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "",
-      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
-      "image": "https://s2-g1.glbimg.com/9giAHc9sNO5HhH-4ezZKiaRVUiA=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/7/D/fMeCN7RCiBayRjgOYhrA/filme-o-outro-lado-das-redes.webp",
-      "matchapp_url": "https://matchapp.tv/news/articles/o-outro-lado-das-redes-aaron-sorkin-volta-a-focar-no-facebook-e-mira-em-zuckerbe-5f1539/",
-      "landing_url": "https://matchapp.tv/?news=5f15390c#latest-news",
-      "seo": {
-        "primary_keyword": "outro lado redes aaron últimas notícias",
-        "short_tail": [
-          "outro lado redes aaron",
-          "outro lado redes aaron news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje"
-        ],
-        "long_tail": [
-          "outro lado redes aaron latest news October 2026",
-          "outro lado redes aaron entertainment update 2026",
-          "outro lado redes aaron news 2026-10-05",
-          "latest entertainment news about outro lado redes aaron",
-          "outro lado redes aaron sorkin volta latest update",
-          "G1 outro lado redes aaron entertainment",
-          "últimas notícias sobre outro lado redes aaron outubro 2026",
-          "outro lado redes aaron notícia de 2026-10-05",
-          "o que aconteceu com outro lado redes aaron"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "outro",
-          "lado",
-          "redes",
-          "aaron",
-          "sorkin",
-          "volta",
-          "focar",
-          "facebook"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-05",
-          "outubro 2026",
-          "outro lado redes aaron 2026"
-        ],
-        "source_keywords": [
-          "G1 outro lado redes aaron",
-          "g1.globo.com outro lado redes aaron",
-          "G1 entertainment news"
-        ],
-        "meta_title": "'O Outro Lado das Redes': Aaron Sorkin volta a focar no…",
-        "meta_description": "Notícia publicada por G1 em 2026-10-05. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
-        "keywords": [
-          "outro lado redes aaron últimas notícias",
-          "outro lado redes aaron",
-          "outro lado redes aaron news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "outro lado redes aaron latest news October 2026",
-          "outro lado redes aaron entertainment update 2026",
-          "outro lado redes aaron news 2026-10-05",
-          "latest entertainment news about outro lado redes aaron",
-          "outro lado redes aaron sorkin volta latest update",
-          "G1 outro lado redes aaron entertainment",
-          "últimas notícias sobre outro lado redes aaron outubro 2026",
-          "outro lado redes aaron notícia de 2026-10-05",
-          "o que aconteceu com outro lado redes aaron",
-          "outro",
-          "lado",
-          "redes",
-          "aaron",
-          "sorkin",
-          "volta",
-          "focar",
-          "facebook",
-          "October 2026",
-          "2026-10-05",
-          "outubro 2026",
-          "outro lado redes aaron 2026",
-          "G1 outro lado redes aaron",
-          "g1.globo.com outro lado redes aaron",
-          "G1 entertainment news"
-        ],
-        "seo_generated_at": "2026-10-07T01:46:51.899Z"
+        "seo_generated_at": "2026-10-07T02:24:02.254Z"
       }
     },
     {
@@ -3547,7 +3547,7 @@
           "2026-10-05",
           "October 2026"
         ],
-        "seo_generated_at": "2026-10-07T01:46:51.899Z"
+        "seo_generated_at": "2026-10-07T02:24:02.254Z"
       }
     }
   ]
