@@ -410,8 +410,16 @@
       const payload=await res.json();
       const items=(Array.isArray(payload.items)?payload.items:[]).filter(trustedItem);
       const language=selectedLanguage();
+      section.dataset.newsDetectedCountry=country;
+      section.dataset.newsSelectedLanguage=language;
       const staticChoice=chooseItems(items,country,language,deep.requestedNewsId);
       const regional=await fetchRegional(country,language);
+      const regionalTrusted=regional.items.filter(item=>trustedRegionalItem(item,country,language));
+      section.dataset.newsRegionalRaw=String(regional.items.length);
+      section.dataset.newsRegionalTrusted=String(regionalTrusted.length);
+      section.dataset.newsRegionalOk=regional.payload?.ok?'true':'false';
+      section.dataset.newsRegionalCountry=String(regional.payload?.country||'');
+      section.dataset.newsRegionalLanguage=String(regional.payload?.language||'');
       currentVersion=String(regional.payload?.feed_version||payload.feed_version||'');
       let seen='';try{seen=localStorage.getItem(SEEN_KEY)||'';}catch(_){}
       if(currentVersion&&currentVersion!==seen){section.dataset.hasNew='true';track('latest_news_new_available',{news_feed_version:currentVersion});}
