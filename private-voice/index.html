@@ -1,87 +1,62 @@
 <!doctype html>
-<html lang="en"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="robots" content="noindex,nofollow,noarchive,nosnippet"><meta name="referrer" content="no-referrer">
+<html lang="en" data-private-voice>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#050b14">
 <title>Private Voice · MatchApp Ai</title>
 <style>
-:root{color-scheme:dark;--level:.04}*{box-sizing:border-box}html,body{min-height:100%;margin:0}body{font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;background:radial-gradient(circle at 50% 12%,#0d3157 0,transparent 34%),linear-gradient(#07111f,#02060b 78%);color:#f5f8ff;display:grid;place-items:center;padding:20px}.shell{width:min(620px,100%);background:linear-gradient(180deg,rgba(12,26,44,.98),rgba(5,12,22,.99));border:1px solid #17334f;border-radius:30px;padding:24px 20px;box-shadow:0 28px 80px #0009}.top{display:flex;justify-content:space-between;align-items:center;gap:12px}.brand{font-weight:850;font-size:20px}.brand b{color:#22a0ff}.privacy{font-size:12px;color:#a5b6c8;border:1px solid #2c4158;border-radius:99px;padding:7px 10px}.avatar-wrap{width:min(390px,84vw);aspect-ratio:1;margin:18px auto;position:relative;display:grid;place-items:center}.ring{position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle,transparent 61%,#178cff44 67%,#178cff 69%,transparent 72%);filter:drop-shadow(0 0 calc(15px + var(--level)*65px) #178cffc0);transform:scale(calc(1 + var(--level)*.04));transition:.08s}.avatar{width:92%;height:92%;border-radius:50%;object-fit:cover;border:1px solid #62b5ff99;box-shadow:0 0 0 5px #178cff12,0 20px 70px #0008}.status{text-align:center;min-height:58px}.status strong{font-size:18px}.status p{margin:7px 0 0;color:#92a5bb;font-size:14px}.controls{display:flex;justify-content:center;gap:12px;margin-top:18px}.btn{border:0;border-radius:999px;padding:14px 20px;font-weight:780;font-size:15px;cursor:pointer}.btn:disabled{opacity:.42;cursor:not-allowed}.start{background:linear-gradient(135deg,#137eff,#30a9ff);color:white}.end{background:#182334;color:white;border:1px solid #ffffff12}.end.live{background:#ff4d57}.wave{height:28px;display:flex;align-items:center;justify-content:center;gap:3px;margin-top:12px}.wave i{display:block;width:3px;height:8px;border-radius:4px;background:#2b9fff;transform:scaleY(calc(.65 + var(--level)*7));opacity:calc(.35 + var(--level)*4);transition:.07s}.wave i:nth-child(3n){height:14px}.note{text-align:center;color:#667c94;font-size:11px;line-height:1.45;margin-top:18px}.error{color:#ff9298}.mic-help{display:none;text-align:center;margin:10px auto 0;color:#b7c7d8;font-size:12px;line-height:1.5;max-width:430px}.mic-help.show{display:block}.open-browser{display:none;background:#24364b;color:#fff;border:1px solid #4c6a88}.open-browser.show{display:inline-block}@media(max-width:520px){.controls{flex-direction:column}.btn{width:100%}.shell{border-radius:22px}}
+:root{color-scheme:dark;--level:.03;--blue:#2498ff;--blue2:#66c3ff;--ink:#f6f8fb;--muted:#8ea2b8}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:#03070d}
+body{min-height:100svh;display:grid;place-items:center;padding:max(14px,env(safe-area-inset-top)) 14px max(14px,env(safe-area-inset-bottom));font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:radial-gradient(70% 44% at 50% 0%,#0b3159 0%,#06111f 54%,transparent 100%),linear-gradient(180deg,#06101c 0%,#03070d 100%)}
+.panel{width:min(440px,100%);border:1px solid rgba(91,142,190,.24);border-radius:26px;padding:18px;background:linear-gradient(180deg,rgba(9,22,37,.96),rgba(4,10,18,.98));box-shadow:0 28px 80px rgba(0,0,0,.46);overflow:hidden}
+.header{display:flex;align-items:center;justify-content:space-between;gap:12px}.identity{display:flex;align-items:center;min-width:0;gap:10px}.spark{width:32px;height:32px;display:grid;place-items:center;border-radius:50%;background:radial-gradient(circle at 35% 30%,#ffe7a2,#bf8a21 56%,#47310c);box-shadow:0 0 18px rgba(231,184,74,.2);font-size:14px;color:#101820}.identity-copy{min-width:0}.identity-copy strong{display:block;font-size:16px;line-height:1.1;letter-spacing:-.01em}.identity-copy small{display:block;margin-top:3px;color:var(--muted);font-size:11px;letter-spacing:.04em;text-transform:uppercase}.owner{flex:none;border:1px solid rgba(123,164,204,.26);border-radius:999px;padding:7px 10px;color:#b7c8d9;background:rgba(255,255,255,.025);font-size:11px}
+.portrait{position:relative;width:clamp(196px,56vw,252px);aspect-ratio:1;margin:20px auto 16px;display:grid;place-items:center}.halo{position:absolute;inset:5%;border-radius:50%;box-shadow:0 0 calc(18px + var(--level)*60px) rgba(36,152,255,.42),0 0 0 calc(1px + var(--level)*2px) rgba(61,174,255,.3);transform:scale(calc(1 + var(--level)*.026));transition:transform 80ms linear,box-shadow 80ms linear}.avatar{position:relative;width:100%;height:100%;border-radius:50%;object-fit:cover;display:block;filter:saturate(.96) contrast(1.02);box-shadow:0 18px 42px rgba(0,0,0,.34)}.live-dot{position:absolute;right:7%;bottom:9%;width:13px;height:13px;border-radius:50%;background:#57697c;border:3px solid #07111d;box-shadow:0 0 0 1px rgba(255,255,255,.06);transition:.2s}body[data-state="live"] .live-dot{background:#3fe59a;box-shadow:0 0 16px rgba(63,229,154,.65)}
+.status{text-align:center;padding:0 8px}.status strong{display:block;font-size:18px;letter-spacing:-.015em}.status p{min-height:38px;margin:7px auto 0;max-width:350px;color:var(--muted);font-size:13px;line-height:1.48}.status.error strong{color:#ff9aa3}
+.wave{height:23px;margin:5px 0 10px;display:flex;align-items:center;justify-content:center;gap:3px;opacity:0;transition:opacity .18s}body[data-state="connecting"] .wave,body[data-state="live"] .wave{opacity:1}.wave i{width:3px;height:7px;border-radius:6px;background:linear-gradient(var(--blue2),var(--blue));transform:scaleY(calc(.65 + var(--level)*6));opacity:calc(.42 + var(--level)*4);transition:70ms linear}.wave i:nth-child(2n){height:12px}.wave i:nth-child(3n){height:17px}
+.actions{display:grid;gap:9px;margin-top:2px}button{font:inherit}.primary,.secondary{width:100%;min-height:50px;border-radius:999px;font-weight:760;font-size:14px;cursor:pointer;transition:transform .15s ease,opacity .15s ease,background .15s ease}.primary{border:0;color:white;background:linear-gradient(135deg,#167dff,#34adff);box-shadow:0 10px 30px rgba(28,139,255,.17)}.primary:active,.secondary:active{transform:scale(.985)}.primary:disabled{opacity:.48;cursor:wait}.primary.danger{background:linear-gradient(135deg,#a92e3b,#e65360);box-shadow:none}.secondary{border:1px solid rgba(119,158,197,.25);background:rgba(255,255,255,.035);color:#d8e5f2}.secondary[hidden]{display:none}
+.tip{display:none;margin:11px 4px 0;padding:10px 12px;border-radius:14px;background:rgba(36,152,255,.07);border:1px solid rgba(64,158,241,.12);color:#9fb4c9;font-size:11px;line-height:1.45;text-align:center}.tip.show{display:block}.footer{margin-top:14px;text-align:center;color:#5f748a;font-size:10px;line-height:1.45}
+@media(max-width:430px){body{place-items:start center;padding-top:max(10px,env(safe-area-inset-top))}.panel{border-radius:22px;padding:15px}.portrait{margin-top:15px;margin-bottom:12px}.status strong{font-size:17px}.primary,.secondary{min-height:48px}}
+@media(max-height:720px){.portrait{width:190px;margin:12px auto 8px}.status p{min-height:30px}.footer{margin-top:9px}}@media(prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.105.0/dist/umd/supabase.js"></script>
-<link rel="stylesheet" href="/brand.css?v=195">
-</head><body>
-<div class="matchapp-brand-bar"><a class="matchapp-brand-link" href="/" aria-label="MatchApp Ai"><img class="matchapp-wordmark" src="/assets/brand/matchapp-tv-ai-v2.svg" alt="MatchApp Ai" width="600" height="104" decoding="async"></a></div>
-<main class="shell">
-<div class="top"><div class="brand">MatchApp <b>Ai</b> · Private</div><div class="privacy">Owner only</div></div>
-<div class="avatar-wrap"><div class="ring"></div><img id="avatarImg" class="avatar" alt="Private assistant avatar" src="/private-voice/avatar.jpg?v=2"></div>
-<div class="status"><strong id="state">Checking private access…</strong><p id="sub">Your MatchApp session stays in your browser.</p></div>
+</head>
+<body data-state="checking">
+<main class="panel" aria-live="polite">
+<header class="header"><div class="identity"><span class="spark" aria-hidden="true">✦</span><div class="identity-copy"><strong>MatchApp Ai</strong><small>Private voice</small></div></div><span class="owner">Owner only</span></header>
+<section class="portrait" aria-label="Private assistant avatar"><div class="halo" aria-hidden="true"></div><img class="avatar" src="/private-voice/avatar.jpg?v=5" alt="Private assistant avatar" width="320" height="320" decoding="async"><span class="live-dot" aria-hidden="true"></span></section>
+<section id="status" class="status"><strong id="stateTitle">Checking private access…</strong><p id="stateDetail">Securing your MatchApp session.</p></section>
 <div class="wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-<div class="controls"><button id="start" class="btn start" disabled>Start private voice</button><button id="end" class="btn end" disabled>End</button><button id="openBrowser" class="btn open-browser">Open in Chrome</button></div><div id="micHelp" class="mic-help"></div>
-<div class="note">Private prototype · Cedar voice · not indexed · voice access requires your signed-in MatchApp account.</div>
+<div class="actions"><button id="primary" class="primary" type="button" disabled>Checking…</button><button id="secondary" class="secondary" type="button" hidden></button></div>
+<div id="tip" class="tip"></div><div class="footer">Cedar voice · OpenAI Realtime · private prototype · not indexed</div>
+</main>
 <script>
 const SUPABASE_URL="https://zkymvqrmbabngsqblyye.supabase.co";
 const SUPABASE_ANON_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpreW12cXJtYmFibmdzcWJseXllIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODY4MDUyNDIsImV4cCI6MjEwMjM4MTI0Mn0._yEVFMfwVU6GBqQ8m3ljfOgA0HSLEDiKMOfYae6ZD8Q";
+const CLEAN_URL="https://matchapp.tv/private-voice/";
 const sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY);
-const state=document.getElementById("state"),sub=document.getElementById("sub"),start=document.getElementById("start"),end=document.getElementById("end"),openBrowser=document.getElementById("openBrowser"),micHelp=document.getElementById("micHelp");
-let pc=null,localStream=null,remoteAudio=null,raf=0,audioCtx=null,localAnalyser=null,remoteAnalyser=null;
-function setState(a,b,err=false){state.textContent=a;state.classList.toggle("error",err);sub.textContent=b||""}
-function showMicHelp(message){
-  setState("Microphone access needed",message,true);
-  micHelp.textContent="Android: open this page in Chrome, tap the site controls/lock icon, allow Microphone, then tap Start private voice again.";
-  micHelp.classList.add("show");openBrowser.classList.add("show");start.disabled=false;start.textContent="Try microphone again";
-}
-function clearMicHelp(){micHelp.classList.remove("show");openBrowser.classList.remove("show");start.textContent="Start private voice"}
-openBrowser.addEventListener("click",()=>{
-  const clean="https://matchapp.tv/private-voice/";
-  if(/Android/i.test(navigator.userAgent)){
-    location.href="intent://matchapp.tv/private-voice/#Intent;scheme=https;package=com.android.chrome;S.browser_fallback_url="+encodeURIComponent(clean)+";end";
-  }else{window.open(clean,"_blank","noopener")}
-});
-async function authReady(){
-  const {data:{session}}=await sb.auth.getSession();
-  if(!session){setState("Sign in to MatchApp Ai first","Open matchapp.tv, sign in, then reload this private page.",true);return null}
-  const {data:{user},error}=await sb.auth.getUser();
-  if(error||!user){setState("Session needs refreshing","Sign in again on MatchApp Ai, then reload.",true);return null}
-  start.disabled=false;setState("Private access ready","Tap start when you want to talk.");try{const p=await navigator.permissions?.query({name:"microphone"});if(p?.state==="denied")showMicHelp("The browser has microphone permission blocked for this page.")}catch{}return session
-}
-function rms(analyser){
-  if(!analyser)return 0;const a=new Uint8Array(analyser.fftSize);analyser.getByteTimeDomainData(a);
-  let s=0;for(const v of a){const x=(v-128)/128;s+=x*x}return Math.sqrt(s/a.length)
-}
-function meter(){
-  const lv=Math.min(1,rms(localAnalyser)*5),rv=Math.min(1,rms(remoteAnalyser)*6),v=Math.max(lv,rv,.025);
-  document.documentElement.style.setProperty("--level",String(v));
-  if(pc&&pc.connectionState==="connected"){if(rv>.07)setState("Speaking…","Cedar voice · private session");else if(lv>.06)setState("Listening…","Speak naturally; you can interrupt.");else setState("Connected","I’m here.")}
-  raf=requestAnimationFrame(meter)
-}
-async function analyserFor(stream){
-  audioCtx=audioCtx||new (window.AudioContext||window.webkitAudioContext)();await audioCtx.resume();
-  const src=audioCtx.createMediaStreamSource(stream),an=audioCtx.createAnalyser();an.fftSize=256;src.connect(an);return an
-}
-async function waitIce(peer){
-  if(peer.iceGatheringState==="complete")return;
-  await new Promise(r=>{const f=()=>{if(peer.iceGatheringState==="complete"){peer.removeEventListener("icegatheringstatechange",f);r()}};peer.addEventListener("icegatheringstatechange",f);setTimeout(r,1800)})
-}
-async function startVoice(){
-  clearMicHelp();start.disabled=true;setState("Starting private voice…","Requesting microphone and secure voice session.");
-  try{
-    const {data:{session}}=await sb.auth.getSession();if(!session)throw new Error("Please sign in to MatchApp Ai first.");
-    if(!navigator.mediaDevices?.getUserMedia){const x=new Error("Microphone is unavailable in this browser.");x.name="NotAllowedError";throw x}
-    localStream=await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:true,noiseSuppression:true,autoGainControl:true}});
-    localAnalyser=await analyserFor(localStream);
-    pc=new RTCPeerConnection();localStream.getTracks().forEach(t=>pc.addTrack(t,localStream));
-    remoteAudio=new Audio();remoteAudio.autoplay=true;
-    pc.ontrack=async e=>{remoteAudio.srcObject=e.streams[0];await remoteAudio.play().catch(()=>{});remoteAnalyser=await analyserFor(e.streams[0])};
-    const dc=pc.createDataChannel("oai-events");
-    dc.onopen=()=>{try{dc.send(JSON.stringify({type:"response.create",response:{instructions:"Greet Jonas in one short, warm sentence and then wait for him to speak."}}))}catch{}};
-    dc.onmessage=e=>{try{const x=JSON.parse(e.data);if(x.type==="error")setState("Voice hiccup","The session returned an error. End and try again.",true)}catch{}};
-    pc.onconnectionstatechange=()=>{if(pc.connectionState==="connected"){end.disabled=false;end.classList.add("live");meter()}else if(["failed","closed","disconnected"].includes(pc.connectionState)){stopVoice()}};
-    const offer=await pc.createOffer();await pc.setLocalDescription(offer);await waitIce(pc);
-    const res=await fetch(SUPABASE_URL+"/functions/v1/private-voice-call",{method:"POST",headers:{"Authorization":"Bearer "+session.access_token,"apikey":SUPABASE_ANON_KEY,"Content-Type":"application/json"},body:JSON.stringify({sdp:pc.localDescription.sdp})});
-    const answer=await res.text();if(!res.ok)throw new Error(res.status===403?"This MatchApp account is not authorized for the private prototype.":"Voice session could not start.");
-    await pc.setRemoteDescription({type:"answer",sdp:answer});end.disabled=false;end.classList.add("live");
-  }catch(e){if(e?.name==="NotAllowedError"||e?.name==="SecurityError"){showMicHelp("The browser denied microphone access. This often happens inside an in-app browser.");}else{setState("Couldn’t start",e?.message||"Private voice failed to start.",true);start.disabled=false}stopMedia()}
-}
-function stopMedia(){if(localStream){localStream.getTracks().forEach(t=>t.stop());localStream=null}if(remoteAudio){remoteAudio.pause();remoteAudio.srcObject=null;remoteAudio=null}}
-function stopVoice(){if(raf)cancelAnimationFrame(raf);raf=0;stopMedia();if(pc){try{pc.close()}catch{}pc=null}remoteAnalyser=localAnalyser=null;end.disabled=true;end.classList.remove("live");start.disabled=false;document.documentElement.style.setProperty("--level",".04");setState("Private access ready","Tap start when you want to talk.")}
-start.addEventListener("click",startVoice);end.addEventListener("click",stopVoice);window.addEventListener("pagehide",stopMedia);authReady();
-</script></main></body></html>
+const el={status:document.getElementById("status"),title:document.getElementById("stateTitle"),detail:document.getElementById("stateDetail"),primary:document.getElementById("primary"),secondary:document.getElementById("secondary"),tip:document.getElementById("tip")};
+const ua=navigator.userAgent||"";const isAndroid=/Android/i.test(ua);const likelyEmbedded=/ChatGPT|;\s*wv\)|FBAN|FBAV|Instagram|TikTok|Line\//i.test(ua+" "+document.referrer+" "+location.search);
+let action="none",secondaryAction="none",pc=null,dc=null,localStream=null,remoteAudio=null,audioCtx=null,localAnalyser=null,remoteAnalyser=null,raf=0,connectTimer=0;
+function setView(state,title,detail,primaryLabel,nextAction,{secondaryLabel="",secondaryNext="none",tip="",error=false}={}){document.body.dataset.state=state;el.status.classList.toggle("error",error);el.title.textContent=title;el.detail.textContent=detail;el.primary.textContent=primaryLabel;el.primary.disabled=!primaryLabel||state==="connecting";el.primary.classList.toggle("danger",state==="live");action=nextAction;el.secondary.hidden=!secondaryLabel;el.secondary.textContent=secondaryLabel;secondaryAction=secondaryNext;el.tip.textContent=tip;el.tip.classList.toggle("show",Boolean(tip))}
+function openChrome(){const target=CLEAN_URL+"?external=1&v=5";if(isAndroid){const intent="intent://matchapp.tv/private-voice/?external=1&v=5#Intent;scheme=https;package=com.android.chrome;S.browser_fallback_url="+encodeURIComponent(target)+";end";location.href=intent}else{window.open(target,"_blank","noopener")}}
+async function signIn(){setView("connecting","Opening secure sign-in…","You will return here after Google sign-in.","Signing in…","none");const {error}=await sb.auth.signInWithOAuth({provider:"google",options:{redirectTo:CLEAN_URL+"?auth=1&v=5"}});if(error)setView("error","Sign-in could not start",error.message,"Try sign-in again","signin",{error:true})}
+function showMicBlocked(){setView("blocked","Microphone blocked here",isAndroid?"This browser cannot use the microphone for this call. Continue in Chrome.":"Allow microphone access in your browser settings, then try again.",isAndroid?"Open in Chrome":"Try microphone again",isAndroid?"chrome":"start",{secondaryLabel:isAndroid?"Try here again":"",secondaryNext:"start",tip:isAndroid?"Chrome will open this same private page. If asked, allow Microphone. If you are not signed in there yet, use the secure sign-in button once.":"Use the site controls beside the address bar and set Microphone to Allow.",error:true})}
+function cleanup(){clearTimeout(connectTimer);connectTimer=0;if(raf)cancelAnimationFrame(raf);raf=0;if(dc){try{dc.close()}catch{}dc=null}if(localStream){localStream.getTracks().forEach(t=>t.stop());localStream=null}if(remoteAudio){try{remoteAudio.pause()}catch{}remoteAudio.srcObject=null;remoteAudio=null}if(pc){try{pc.close()}catch{}pc=null}localAnalyser=remoteAnalyser=null;document.documentElement.style.setProperty("--level",".03")}
+function rms(analyser){if(!analyser)return 0;const a=new Uint8Array(analyser.fftSize);analyser.getByteTimeDomainData(a);let s=0;for(const v of a){const x=(v-128)/128;s+=x*x}return Math.sqrt(s/a.length)}
+function meter(){const lv=Math.min(1,rms(localAnalyser)*5),rv=Math.min(1,rms(remoteAnalyser)*6),level=Math.max(lv,rv,.03);document.documentElement.style.setProperty("--level",String(level));if(pc?.connectionState==="connected"){if(rv>.065){el.title.textContent="Speaking…";el.detail.textContent="Cedar · private Realtime voice"}else if(lv>.055){el.title.textContent="Listening…";el.detail.textContent="Speak naturally — interruptions are supported."}else{el.title.textContent="Connected";el.detail.textContent="I’m here."}}raf=requestAnimationFrame(meter)}
+async function analyserFor(stream){audioCtx=audioCtx||new (window.AudioContext||window.webkitAudioContext)();if(audioCtx.state==="suspended")await audioCtx.resume();const src=audioCtx.createMediaStreamSource(stream),an=audioCtx.createAnalyser();an.fftSize=256;src.connect(an);return an}
+async function waitForIce(peer){if(peer.iceGatheringState==="complete")return;await new Promise((resolve,reject)=>{const timeout=setTimeout(()=>{peer.removeEventListener("icegatheringstatechange",onState);reject(new Error("Timed out while preparing the secure voice connection."))},10000);function onState(){if(peer.iceGatheringState!=="complete")return;clearTimeout(timeout);peer.removeEventListener("icegatheringstatechange",onState);resolve()}peer.addEventListener("icegatheringstatechange",onState);onState()})}
+async function startVoice(){cleanup();setView("connecting","Starting private voice…","Requesting microphone and preparing a secure Realtime connection.","Connecting…","none");try{const {data:{session}}=await sb.auth.getSession();if(!session){setView("signin","Private sign-in required","Sign in to your MatchApp account to unlock this owner-only voice page.","Sign in securely","signin");return}if(!window.isSecureContext||!navigator.mediaDevices?.getUserMedia){showMicBlocked();return}
+localStream=await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:true,noiseSuppression:true,autoGainControl:true},video:false});localAnalyser=await analyserFor(localStream);pc=new RTCPeerConnection();localStream.getAudioTracks().forEach(t=>pc.addTrack(t,localStream));remoteAudio=document.createElement("audio");remoteAudio.autoplay=true;remoteAudio.playsInline=true;pc.ontrack=async e=>{remoteAudio.srcObject=e.streams[0];await remoteAudio.play().catch(()=>{});remoteAnalyser=await analyserFor(e.streams[0])};
+dc=pc.createDataChannel("oai-events");dc.addEventListener("open",()=>{try{dc.send(JSON.stringify({type:"response.create",response:{instructions:"Greet Jonas in one short, natural sentence, then wait for him to speak."}}))}catch{}});dc.addEventListener("message",e=>{try{const x=JSON.parse(e.data);if(x.type==="error")setView("error","Voice session error","The Realtime session returned an error.","Try again","start",{error:true})}catch{}});dc.addEventListener("close",()=>{if(pc&&pc.connectionState!=="closed"){cleanup();setView("ready","Private voice ended","Ready whenever you want another call.","Start private voice","start")}});
+pc.addEventListener("connectionstatechange",()=>{if(!pc)return;if(pc.connectionState==="connected"){clearTimeout(connectTimer);setView("live","Connected","I’m here.","End private voice","stop");meter()}else if(["failed","disconnected"].includes(pc.connectionState)){cleanup();setView("error","Connection dropped","The secure voice connection ended unexpectedly.","Reconnect","start",{error:true})}});
+const offer=await pc.createOffer();await pc.setLocalDescription(offer);await waitForIce(pc);const sdp=pc.localDescription?.sdp;if(!sdp)throw new Error("Missing local voice connection offer.");const res=await fetch(SUPABASE_URL+"/functions/v1/private-voice-call",{method:"POST",headers:{Authorization:"Bearer "+session.access_token,apikey:SUPABASE_ANON_KEY,"Content-Type":"application/json"},body:JSON.stringify({sdp})});const answer=await res.text();if(!res.ok){if(res.status===401){setView("signin","Session expired","Sign in again to continue.","Sign in securely","signin");return}if(res.status===403){setView("error","Owner access required","This signed-in MatchApp account is not authorized for this private page.","Return to MatchApp","home",{error:true});return}throw new Error(answer||"Voice service could not start.")}await pc.setRemoteDescription({type:"answer",sdp:answer});connectTimer=setTimeout(()=>{if(pc&&pc.connectionState!=="connected"){cleanup();setView("error","Connection timed out","The voice service did not finish connecting.","Try again","start",{error:true})}},15000)
+}catch(e){const name=e?.name||"",msg=String(e?.message||"Private voice could not start.");cleanup();if(name==="NotAllowedError"||name==="SecurityError"){showMicBlocked();return}if(name==="NotFoundError"){setView("error","No microphone found","Connect or enable a microphone, then try again.","Try again","start",{error:true});return}if(name==="NotReadableError"||name==="AbortError"){setView("error","Microphone is busy","Another app may be using the microphone. Close it and try again.","Try again","start",{error:true});return}setView("error","Couldn’t start private voice",msg.length<120?msg:"The secure voice session could not start.","Try again","start",{error:true})}}
+async function checkAccess(){const {data:{session}}=await sb.auth.getSession();if(!session){setView("signin","Private sign-in required","Sign in to your MatchApp account to continue.","Sign in securely","signin");return}const {data:{user},error}=await sb.auth.getUser();if(error||!user){setView("signin","Session needs refreshing","Sign in again to refresh private access.","Sign in securely","signin");return}if(isAndroid&&likelyEmbedded&&!location.search.includes("external=1")){setView("blocked","Use Chrome for voice","This in-app browser does not provide reliable microphone access.","Open in Chrome","chrome",{secondaryLabel:"Try here anyway",secondaryNext:"start",tip:"Chrome keeps the microphone permission under your control and is the reliable path for this private call."});return}try{const permission=await navigator.permissions?.query({name:"microphone"});if(permission?.state==="denied"){showMicBlocked();return}}catch{}setView("ready","Ready when you are","Cedar · private Realtime voice","Start private voice","start")}
+el.primary.addEventListener("click",()=>{if(action==="start")startVoice();else if(action==="stop"){cleanup();setView("ready","Private voice ended","Ready whenever you want another call.","Start private voice","start")}else if(action==="chrome")openChrome();else if(action==="signin")signIn();else if(action==="home")location.href="/"});el.secondary.addEventListener("click",()=>{if(secondaryAction==="start")startVoice()});window.addEventListener("pagehide",cleanup);document.addEventListener("visibilitychange",()=>{if(document.hidden&&pc?.connectionState!=="connected"&&document.body.dataset.state==="connecting")cleanup()});checkAccess();
+</script>
+</body>
+</html>

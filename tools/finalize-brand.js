@@ -28,6 +28,7 @@ function finalizeBrand(){
   let html=fs.readFileSync(file,'utf8');
   if(!/<body[\s>]/i.test(html)||file.includes('yandex_'))continue;
   const rel=path.relative(ROOT,file).replace(/\\/g,'/');
+  if(rel.startsWith('private-voice/'))continue;
   const kids=rel==='kids/index.html'||rel.startsWith('kids/');
   html=name(html,kids);
   if(kids){
