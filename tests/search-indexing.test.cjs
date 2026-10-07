@@ -112,3 +112,12 @@ test('public navigation uses canonical root instead of index.html',()=>{
   assert.doesNotMatch(src,/location\.href\s*=\s*["']\/?index\.html["']/i,file+' must not navigate to the alternate home URL');
  }
 });
+
+
+test('anime finder keeps crawlable regional discovery depth',()=>{
+ const anime=read('anime.html');
+ assert.match(anime,/Start with a viewing goal, not a popularity chart/);
+ for(const href of ['/where-to-watch/frieren-beyond-journey-s-end/','/where-to-watch/jujutsu-kaisen/','/where-to-watch/hell-s-paradise/','/collections/anime/']) assert.ok(anime.includes('href="'+href+'"'),href);
+ assert.match(anime,/"dateModified":"2026-10-07"/);
+ assert.match(anime,/"mainEntity":\{"@type":"ItemList"/);
+});
