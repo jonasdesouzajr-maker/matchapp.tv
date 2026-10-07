@@ -102,8 +102,8 @@
     return track;
   }
 
-  async function refresh(){
-    if(running||document.hidden)return;running=true;
+  async function refresh(force=false){
+    if(running||(!force&&document.hidden))return;running=true;
     try{
       const section=document.getElementById('latest-news');if(!section)return;const track=ensureTrack(section);if(!track)return;
       if(!staticCards||!staticCards.length)staticCards=[...track.children].filter(el=>!el.dataset.newsProvider);
@@ -144,7 +144,7 @@
     const section=document.getElementById('latest-news');if(!section)return false;
     if(section.dataset.newsdataBridge==='1')return true;section.dataset.newsdataBridge='1';
     section.addEventListener('toggle',()=>{if(section.open&&lastVersion){try{localStorage.setItem(SEEN_KEY,lastVersion);}catch(_){}section.dataset.hasNew='false';}});
-    refresh();timer=window.setInterval(refresh,REFRESH_MS);document.addEventListener('visibilitychange',()=>{if(!document.hidden)refresh();});document.addEventListener('matchapp:langchange',()=>refresh());return true;
+    refresh(true);timer=window.setInterval(()=>refresh(false),REFRESH_MS);document.addEventListener('visibilitychange',()=>{if(!document.hidden)refresh(true);});document.addEventListener('matchapp:langchange',()=>refresh(true));return true;
   }
 
   if(!attach()){
