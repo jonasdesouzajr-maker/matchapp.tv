@@ -13,6 +13,7 @@ Disallow: /$/
 Disallow: /%24
 Disallow: /404.html
 Disallow: /android-studio/
+Disallow: /private-voice/
 
 User-agent: GPTBot
 Allow: /
