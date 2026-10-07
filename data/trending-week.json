@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
   "weekOf": "2026-10-05",
-  "updated": "2026-10-07T11:31:06.324Z",
+  "updated": "2026-10-07T11:50:56.820Z",
   "label": "Latest titles trending right now",
   "sourceNote": "Movie and TV positions refresh from MatchApp’s current TMDB daily trend metadata; verified official music-video releases from monitored top-artist channels refresh daily with release dates, YouTube view counts, direct links, keywords and structured metadata. Availability can vary by country.",
   "titles": [
@@ -376,7 +376,7 @@
       ],
       "runtimeMinutes": 92,
       "contentRating": "R",
-      "voteAverage": 5.94,
+      "voteAverage": 5.84,
       "previewUrl": "https://www.youtube.com/watch?v=AMLCbpM1fRQ",
       "availability": {
         "BR": {
@@ -567,97 +567,69 @@
       }
     },
     {
-      "title": "Digger",
-      "kind": "movie",
+      "title": "Carrie",
+      "kind": "tv",
       "year": 2026,
       "origin": "US",
       "originName": "United States",
-      "platform": "Cinemas",
+      "platform": "",
       "platforms": [],
-      "tmdbId": "1248832",
-      "poster": "https://image.tmdb.org/t/p/w780/1ATXKrIPJyKNwnJ6lcG088Sa6zi.jpg",
-      "description": "The most powerful man in the world embarks on a frantic mission to prove he is humanity's savior before the disaster he's unleashed destroys everything.",
+      "tmdbId": "288673",
+      "poster": "https://image.tmdb.org/t/p/w780/eXjk4W4robXs7l1YXwaXMv4f2qb.jpg",
+      "description": "Misfit teenager Carrie White has spent her life in seclusion with her domineering mother, Margaret. After her father's sudden death, Carrie finds herself contending with the challenges of attending public high school, a bullying scandal, and the emergence of mysterious telekinetic powers.",
       "genre": [
-        "Comedy",
+        "Mystery",
         "Drama"
       ],
       "inLanguage": "en",
       "cast": [
-        "Tom Cruise",
-        "Riz Ahmed",
-        "John Goodman",
-        "Sandra Hüller"
+        "Summer H. Howell",
+        "Samantha Sloyan",
+        "Siena Agudong",
+        "Alison Thornton"
       ],
-      "runtimeMinutes": 129,
-      "contentRating": "R",
+      "runtimeMinutes": null,
+      "contentRating": "TV-MA",
       "voteAverage": 7.5,
-      "previewUrl": "https://www.youtube.com/watch?v=job8V254NAE",
+      "previewUrl": "https://www.youtube.com/watch?v=jkUw2nh6fT0",
       "availability": {
-        "BR": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-10-01"
-        },
-        "GB": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-10-02"
-        },
-        "PT": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-10-01"
-        },
-        "US": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-10-02"
-        },
         "source": "tmdb-watch-providers",
         "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1248832"
+        "source_page_url": "https://www.themoviedb.org/tv/288673"
       },
       "sourceRank": 6,
       "keywords": [
-        "Digger",
-        "Digger 2026",
-        "where to watch Digger",
-        "Comedy movie",
-        "Drama movie",
-        "Tom Cruise",
-        "Riz Ahmed"
+        "Carrie",
+        "Carrie 2026",
+        "where to watch Carrie",
+        "Mystery series",
+        "Drama series",
+        "Summer H. Howell",
+        "Samantha Sloyan"
       ],
       "longTailKeywords": [
-        "where to watch Digger 2026",
-        "Digger streaming in Brazil and United States",
-        "Digger cast synopsis trailer and where to watch",
-        "what Comedy to watch this week"
+        "where to watch Carrie 2026",
+        "Carrie streaming in Brazil and United States",
+        "Carrie cast synopsis trailer and where to watch",
+        "what Mystery to watch this week"
       ],
       "seo": {
-        "title": "Where to watch Digger (2026) | MatchApp Ai",
-        "description": "The most powerful man in the world embarks on a frantic mission to prove he is humanity's savior before the disaster he's unleashed destroys everything.",
+        "title": "Where to watch Carrie (2026) | MatchApp Ai",
+        "description": "Misfit teenager Carrie White has spent her life in seclusion with her domineering mother, Margaret. After her father's sudden death, Carrie finds herself cont",
         "keywords": [
-          "Digger",
-          "Digger 2026",
-          "where to watch Digger",
-          "Comedy movie",
-          "Drama movie",
-          "Tom Cruise",
-          "Riz Ahmed",
-          "where to watch Digger 2026",
-          "Digger streaming in Brazil and United States",
-          "Digger cast synopsis trailer and where to watch",
-          "what Comedy to watch this week"
+          "Carrie",
+          "Carrie 2026",
+          "where to watch Carrie",
+          "Mystery series",
+          "Drama series",
+          "Summer H. Howell",
+          "Samantha Sloyan",
+          "where to watch Carrie 2026",
+          "Carrie streaming in Brazil and United States",
+          "Carrie cast synopsis trailer and where to watch",
+          "what Mystery to watch this week"
         ],
-        "canonicalQuery": "Digger"
+        "canonicalQuery": "Carrie"
       }
     },
     {
@@ -722,139 +694,97 @@
       "sourceRank": 2
     },
     {
-      "title": "Carrie",
-      "kind": "tv",
+      "title": "Digger",
+      "kind": "movie",
       "year": 2026,
       "origin": "US",
       "originName": "United States",
-      "platform": "",
+      "platform": "Cinemas",
       "platforms": [],
-      "tmdbId": "288673",
-      "poster": "https://image.tmdb.org/t/p/w780/eXjk4W4robXs7l1YXwaXMv4f2qb.jpg",
-      "description": "Misfit teenager Carrie White has spent her life in seclusion with her domineering mother, Margaret. After her father's sudden death, Carrie finds herself contending with the challenges of attending public high school, a bullying scandal, and the emergence of mysterious telekinetic powers.",
+      "tmdbId": "1248832",
+      "poster": "https://image.tmdb.org/t/p/w780/1ATXKrIPJyKNwnJ6lcG088Sa6zi.jpg",
+      "description": "The most powerful man in the world embarks on a frantic mission to prove he is humanity's savior before the disaster he's unleashed destroys everything.",
       "genre": [
-        "Mystery",
+        "Comedy",
         "Drama"
       ],
       "inLanguage": "en",
       "cast": [
-        "Summer H. Howell",
-        "Samantha Sloyan",
-        "Siena Agudong",
-        "Alison Thornton"
+        "Tom Cruise",
+        "Riz Ahmed",
+        "John Goodman",
+        "Sandra Hüller"
       ],
-      "runtimeMinutes": null,
-      "contentRating": "TV-MA",
+      "runtimeMinutes": 129,
+      "contentRating": "R",
       "voteAverage": 7.5,
-      "previewUrl": "https://www.youtube.com/watch?v=jkUw2nh6fT0",
+      "previewUrl": "https://www.youtube.com/watch?v=job8V254NAE",
       "availability": {
+        "BR": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-10-01"
+        },
+        "GB": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-10-02"
+        },
+        "PT": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-10-01"
+        },
+        "US": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-10-02"
+        },
         "source": "tmdb-watch-providers",
         "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/tv/288673"
+        "source_page_url": "https://www.themoviedb.org/movie/1248832"
       },
       "sourceRank": 7,
       "keywords": [
-        "Carrie",
-        "Carrie 2026",
-        "where to watch Carrie",
-        "Mystery series",
-        "Drama series",
-        "Summer H. Howell",
-        "Samantha Sloyan"
+        "Digger",
+        "Digger 2026",
+        "where to watch Digger",
+        "Comedy movie",
+        "Drama movie",
+        "Tom Cruise",
+        "Riz Ahmed"
       ],
       "longTailKeywords": [
-        "where to watch Carrie 2026",
-        "Carrie streaming in Brazil and United States",
-        "Carrie cast synopsis trailer and where to watch",
-        "what Mystery to watch this week"
+        "where to watch Digger 2026",
+        "Digger streaming in Brazil and United States",
+        "Digger cast synopsis trailer and where to watch",
+        "what Comedy to watch this week"
       ],
       "seo": {
-        "title": "Where to watch Carrie (2026) | MatchApp Ai",
-        "description": "Misfit teenager Carrie White has spent her life in seclusion with her domineering mother, Margaret. After her father's sudden death, Carrie finds herself cont",
+        "title": "Where to watch Digger (2026) | MatchApp Ai",
+        "description": "The most powerful man in the world embarks on a frantic mission to prove he is humanity's savior before the disaster he's unleashed destroys everything.",
         "keywords": [
-          "Carrie",
-          "Carrie 2026",
-          "where to watch Carrie",
-          "Mystery series",
-          "Drama series",
-          "Summer H. Howell",
-          "Samantha Sloyan",
-          "where to watch Carrie 2026",
-          "Carrie streaming in Brazil and United States",
-          "Carrie cast synopsis trailer and where to watch",
-          "what Mystery to watch this week"
+          "Digger",
+          "Digger 2026",
+          "where to watch Digger",
+          "Comedy movie",
+          "Drama movie",
+          "Tom Cruise",
+          "Riz Ahmed",
+          "where to watch Digger 2026",
+          "Digger streaming in Brazil and United States",
+          "Digger cast synopsis trailer and where to watch",
+          "what Comedy to watch this week"
         ],
-        "canonicalQuery": "Carrie"
-      }
-    },
-    {
-      "title": "The Laid-Off Cheat-Granting Mage Enjoys a Second Lease on Life",
-      "kind": "tv",
-      "year": 2026,
-      "origin": "JP",
-      "originName": "Japan",
-      "platform": "",
-      "platforms": [],
-      "tmdbId": "313346",
-      "poster": "https://image.tmdb.org/t/p/w780/rncb111IIBmIIO9I9ENW0Xc8mca.jpg",
-      "description": "Rein spent years enhancing his guildmates’ gear with magic, only to be expelled the moment he enchanted everything. Unfazed, Rein steals back his magic, pours it into his own sword, and makes the best of his newfound freedom as he sets off as an adventurer. Along the way, Rein gathers a band of fellow outcasts and together they fight monsters and carve out their place in an enchanted world.",
-      "genre": [
-        "Animation",
-        "Comedy",
-        "Action & Adventure",
-        "Sci-Fi & Fantasy"
-      ],
-      "inLanguage": "ja",
-      "cast": [
-        "Daiki Yamashita",
-        "Lynn",
-        "Yoshino Aoyama",
-        "Miyu Tomita"
-      ],
-      "runtimeMinutes": null,
-      "contentRating": "",
-      "voteAverage": 0,
-      "previewUrl": "https://www.youtube.com/watch?v=GyWstaOY6qk",
-      "availability": {
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/tv/313346"
-      },
-      "sourceRank": 8,
-      "keywords": [
-        "The Laid-Off Cheat-Granting Mage Enjoys a Second Lease on Life",
-        "The Laid-Off Cheat-Granting Mage Enjoys a Second Lease on Life 2026",
-        "where to watch The Laid-Off Cheat-Granting Mage Enjoys a Second Lease on Life",
-        "Animation series",
-        "Comedy series",
-        "Action & Adventure series",
-        "Daiki Yamashita",
-        "Lynn"
-      ],
-      "longTailKeywords": [
-        "where to watch The Laid-Off Cheat-Granting Mage Enjoys a Second Lease on Life 2026",
-        "The Laid-Off Cheat-Granting Mage Enjoys a Second Lease on Life streaming in Brazil and United States",
-        "The Laid-Off Cheat-Granting Mage Enjoys a Second Lease on Life cast synopsis trailer and where to watch",
-        "what Animation to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch The Laid-Off Cheat-Granting Mage Enjoys a Second Lease on Life (2026) | MatchApp Ai",
-        "description": "Rein spent years enhancing his guildmates’ gear with magic, only to be expelled the moment he enchanted everything. Unfazed, Rein steals back his magic, pours",
-        "keywords": [
-          "The Laid-Off Cheat-Granting Mage Enjoys a Second Lease on Life",
-          "The Laid-Off Cheat-Granting Mage Enjoys a Second Lease on Life 2026",
-          "where to watch The Laid-Off Cheat-Granting Mage Enjoys a Second Lease on Life",
-          "Animation series",
-          "Comedy series",
-          "Action & Adventure series",
-          "Daiki Yamashita",
-          "Lynn",
-          "where to watch The Laid-Off Cheat-Granting Mage Enjoys a Second Lease on Life 2026",
-          "The Laid-Off Cheat-Granting Mage Enjoys a Second Lease on Life streaming in Brazil and United States",
-          "The Laid-Off Cheat-Granting Mage Enjoys a Second Lease on Life cast synopsis trailer and where to watch",
-          "what Animation to watch this week"
-        ],
-        "canonicalQuery": "The Laid-Off Cheat-Granting Mage Enjoys a Second Lease on Life"
+        "canonicalQuery": "Digger"
       }
     },
     {
@@ -869,7 +799,8 @@
       "poster": "https://image.tmdb.org/t/p/w780/fGRNCssTRrhYZxNzykGGCoMsAVq.jpg",
       "description": "Young Bela forms a relationship with a sinister entity in her home that looks uncannily like her own mother, drawing her into a terrifying and increasingly dark world.",
       "genre": [
-        "Horror"
+        "Horror",
+        "Thriller"
       ],
       "inLanguage": "en",
       "cast": [
@@ -915,12 +846,13 @@
         "attribution": "JustWatch via TMDB",
         "source_page_url": "https://www.themoviedb.org/movie/1400837"
       },
-      "sourceRank": 9,
+      "sourceRank": 8,
       "keywords": [
         "Other Mommy",
         "Other Mommy 2026",
         "where to watch Other Mommy",
         "Horror movie",
+        "Thriller movie",
         "Jessica Chastain",
         "Arabella Olivia Clark"
       ],
@@ -938,6 +870,7 @@
           "Other Mommy 2026",
           "where to watch Other Mommy",
           "Horror movie",
+          "Thriller movie",
           "Jessica Chastain",
           "Arabella Olivia Clark",
           "where to watch Other Mommy 2026",
@@ -946,6 +879,118 @@
           "what Horror to watch this week"
         ],
         "canonicalQuery": "Other Mommy"
+      }
+    },
+    {
+      "title": "Ted Lasso",
+      "kind": "tv",
+      "year": 2020,
+      "origin": "US",
+      "originName": "United States",
+      "platform": "Apple TV",
+      "platforms": [
+        "Apple TV",
+        "Apple TV Amazon Channel"
+      ],
+      "tmdbId": "97546",
+      "poster": "https://image.tmdb.org/t/p/w780/uRHsiw1wLxPHFXkkv4Ix1s0O6f4.jpg",
+      "description": "Ted Lasso, an American football coach, moves to England when he's hired to manage a soccer team—despite having no experience. With cynical players and a doubtful town, will he get them to see the Ted Lasso Way?",
+      "genre": [
+        "Drama",
+        "Comedy"
+      ],
+      "inLanguage": "en",
+      "cast": [
+        "Jason Sudeikis",
+        "Hannah Waddingham",
+        "Jeremy Swift",
+        "Brett Goldstein"
+      ],
+      "runtimeMinutes": null,
+      "contentRating": "TV-MA",
+      "voteAverage": 8.36,
+      "previewUrl": "https://www.youtube.com/watch?v=BwPcMIDFVKw",
+      "availability": {
+        "BR": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/97546-ted-lasso/watch?locale=BR",
+          "rent": [],
+          "stream": [
+            "Apple TV",
+            "Apple TV Amazon Channel"
+          ],
+          "cinema_release_date": null
+        },
+        "GB": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/97546-ted-lasso/watch?locale=GB",
+          "rent": [],
+          "stream": [
+            "Apple TV",
+            "Apple TV Amazon Channel"
+          ],
+          "cinema_release_date": null
+        },
+        "PT": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/97546-ted-lasso/watch?locale=PT",
+          "rent": [],
+          "stream": [
+            "Apple TV"
+          ],
+          "cinema_release_date": null
+        },
+        "US": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/97546-ted-lasso/watch?locale=US",
+          "rent": [],
+          "stream": [
+            "Apple TV",
+            "Apple TV Amazon Channel"
+          ],
+          "cinema_release_date": null
+        },
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/tv/97546"
+      },
+      "sourceRank": 9,
+      "keywords": [
+        "Ted Lasso",
+        "Ted Lasso 2020",
+        "where to watch Ted Lasso",
+        "Drama series",
+        "Comedy series",
+        "Apple TV trending series",
+        "Apple TV Amazon Channel trending series",
+        "Jason Sudeikis",
+        "Hannah Waddingham"
+      ],
+      "longTailKeywords": [
+        "where to watch Ted Lasso 2020",
+        "Ted Lasso streaming in Brazil and United States",
+        "Ted Lasso cast synopsis trailer and where to watch",
+        "what Drama to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch Ted Lasso (2020) | MatchApp Ai",
+        "description": "Ted Lasso, an American football coach, moves to England when he's hired to manage a soccer team—despite having no experience. With cynical players and a doubt",
+        "keywords": [
+          "Ted Lasso",
+          "Ted Lasso 2020",
+          "where to watch Ted Lasso",
+          "Drama series",
+          "Comedy series",
+          "Apple TV trending series",
+          "Apple TV Amazon Channel trending series",
+          "Jason Sudeikis",
+          "Hannah Waddingham",
+          "where to watch Ted Lasso 2020",
+          "Ted Lasso streaming in Brazil and United States",
+          "Ted Lasso cast synopsis trailer and where to watch",
+          "what Drama to watch this week"
+        ],
+        "canonicalQuery": "Ted Lasso"
       }
     },
     {
@@ -1105,194 +1150,162 @@
       }
     },
     {
-      "title": "Ted Lasso",
+      "title": "The Laid-Off Cheat-Granting Mage Enjoys a Second Lease on Life",
       "kind": "tv",
-      "year": 2020,
-      "origin": "US",
-      "originName": "United States",
-      "platform": "Apple TV",
-      "platforms": [
-        "Apple TV",
-        "Apple TV Amazon Channel"
-      ],
-      "tmdbId": "97546",
-      "poster": "https://image.tmdb.org/t/p/w780/uRHsiw1wLxPHFXkkv4Ix1s0O6f4.jpg",
-      "description": "Ted Lasso, an American football coach, moves to England when he's hired to manage a soccer team—despite having no experience. With cynical players and a doubtful town, will he get them to see the Ted Lasso Way?",
+      "year": 2026,
+      "origin": "JP",
+      "originName": "Japan",
+      "platform": "",
+      "platforms": [],
+      "tmdbId": "313346",
+      "poster": "https://image.tmdb.org/t/p/w780/rncb111IIBmIIO9I9ENW0Xc8mca.jpg",
+      "description": "Rein spent years enhancing his guildmates’ gear with magic, only to be expelled the moment he enchanted everything. Unfazed, Rein steals back his magic, pours it into his own sword, and makes the best of his newfound freedom as he sets off as an adventurer. Along the way, Rein gathers a band of fellow outcasts and together they fight monsters and carve out their place in an enchanted world.",
       "genre": [
-        "Drama",
-        "Comedy"
+        "Animation",
+        "Comedy",
+        "Action & Adventure",
+        "Sci-Fi & Fantasy"
       ],
-      "inLanguage": "en",
+      "inLanguage": "ja",
       "cast": [
-        "Jason Sudeikis",
-        "Hannah Waddingham",
-        "Jeremy Swift",
-        "Brett Goldstein"
+        "Daiki Yamashita",
+        "Lynn",
+        "Yoshino Aoyama",
+        "Miyu Tomita"
       ],
       "runtimeMinutes": null,
-      "contentRating": "TV-MA",
-      "voteAverage": 8.36,
-      "previewUrl": "https://www.youtube.com/watch?v=BwPcMIDFVKw",
+      "contentRating": "",
+      "voteAverage": 0,
+      "previewUrl": "https://www.youtube.com/watch?v=GyWstaOY6qk",
       "availability": {
-        "BR": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/97546-ted-lasso/watch?locale=BR",
-          "rent": [],
-          "stream": [
-            "Apple TV",
-            "Apple TV Amazon Channel"
-          ],
-          "cinema_release_date": null
-        },
-        "GB": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/97546-ted-lasso/watch?locale=GB",
-          "rent": [],
-          "stream": [
-            "Apple TV",
-            "Apple TV Amazon Channel"
-          ],
-          "cinema_release_date": null
-        },
-        "PT": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/97546-ted-lasso/watch?locale=PT",
-          "rent": [],
-          "stream": [
-            "Apple TV"
-          ],
-          "cinema_release_date": null
-        },
-        "US": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/97546-ted-lasso/watch?locale=US",
-          "rent": [],
-          "stream": [
-            "Apple TV",
-            "Apple TV Amazon Channel"
-          ],
-          "cinema_release_date": null
-        },
         "source": "tmdb-watch-providers",
         "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/tv/97546"
+        "source_page_url": "https://www.themoviedb.org/tv/313346"
       },
       "sourceRank": 11,
       "keywords": [
-        "Ted Lasso",
-        "Ted Lasso 2020",
-        "where to watch Ted Lasso",
-        "Drama series",
+        "The Laid-Off Cheat-Granting Mage Enjoys a Second Lease on Life",
+        "The Laid-Off Cheat-Granting Mage Enjoys a Second Lease on Life 2026",
+        "where to watch The Laid-Off Cheat-Granting Mage Enjoys a Second Lease on Life",
+        "Animation series",
         "Comedy series",
-        "Apple TV trending series",
-        "Apple TV Amazon Channel trending series",
-        "Jason Sudeikis",
-        "Hannah Waddingham"
+        "Action & Adventure series",
+        "Daiki Yamashita",
+        "Lynn"
       ],
       "longTailKeywords": [
-        "where to watch Ted Lasso 2020",
-        "Ted Lasso streaming in Brazil and United States",
-        "Ted Lasso cast synopsis trailer and where to watch",
-        "what Drama to watch this week"
+        "where to watch The Laid-Off Cheat-Granting Mage Enjoys a Second Lease on Life 2026",
+        "The Laid-Off Cheat-Granting Mage Enjoys a Second Lease on Life streaming in Brazil and United States",
+        "The Laid-Off Cheat-Granting Mage Enjoys a Second Lease on Life cast synopsis trailer and where to watch",
+        "what Animation to watch this week"
       ],
       "seo": {
-        "title": "Where to watch Ted Lasso (2020) | MatchApp Ai",
-        "description": "Ted Lasso, an American football coach, moves to England when he's hired to manage a soccer team—despite having no experience. With cynical players and a doubt",
+        "title": "Where to watch The Laid-Off Cheat-Granting Mage Enjoys a Second Lease on Life (2026) | MatchApp Ai",
+        "description": "Rein spent years enhancing his guildmates’ gear with magic, only to be expelled the moment he enchanted everything. Unfazed, Rein steals back his magic, pours",
         "keywords": [
-          "Ted Lasso",
-          "Ted Lasso 2020",
-          "where to watch Ted Lasso",
-          "Drama series",
+          "The Laid-Off Cheat-Granting Mage Enjoys a Second Lease on Life",
+          "The Laid-Off Cheat-Granting Mage Enjoys a Second Lease on Life 2026",
+          "where to watch The Laid-Off Cheat-Granting Mage Enjoys a Second Lease on Life",
+          "Animation series",
           "Comedy series",
-          "Apple TV trending series",
-          "Apple TV Amazon Channel trending series",
-          "Jason Sudeikis",
-          "Hannah Waddingham",
-          "where to watch Ted Lasso 2020",
-          "Ted Lasso streaming in Brazil and United States",
-          "Ted Lasso cast synopsis trailer and where to watch",
-          "what Drama to watch this week"
+          "Action & Adventure series",
+          "Daiki Yamashita",
+          "Lynn",
+          "where to watch The Laid-Off Cheat-Granting Mage Enjoys a Second Lease on Life 2026",
+          "The Laid-Off Cheat-Granting Mage Enjoys a Second Lease on Life streaming in Brazil and United States",
+          "The Laid-Off Cheat-Granting Mage Enjoys a Second Lease on Life cast synopsis trailer and where to watch",
+          "what Animation to watch this week"
         ],
-        "canonicalQuery": "Ted Lasso"
+        "canonicalQuery": "The Laid-Off Cheat-Granting Mage Enjoys a Second Lease on Life"
       }
     },
     {
-      "title": "Between Steps",
-      "kind": "tv",
+      "title": "Verity",
+      "kind": "movie",
       "year": 2026,
-      "origin": "KR",
-      "originName": "South Korea",
-      "platform": "Hulu",
-      "platforms": [
-        "Hulu"
-      ],
-      "tmdbId": "307106",
-      "poster": "https://image.tmdb.org/t/p/w780/pGqcErS76y8bcvZZSFUefdZOg2x.jpg",
-      "description": "Minjae, a former swimmer, lost a leg to illness. Now a PhD student, he's built a quiet, controlled life, until Yujin, a master's student starting over after losing her way, throws it off balance. In a robotics lab, their romance turns fiery, bittersweet, and tender.",
+      "origin": "US",
+      "originName": "United States",
+      "platform": "Cinemas",
+      "platforms": [],
+      "tmdbId": "1283515",
+      "poster": "https://image.tmdb.org/t/p/w780/97y0RdzRIeZ2j6se98hRQpxz3eR.jpg",
+      "description": "Lowen Ashleigh is hired by Jeremy Crawford to ghostwrite novels for his bestselling author wife Verity, who is unable to finish following an accident. Lowen gradually uncovers Verity's disturbing truths while residing at the Crawfords' home to work.",
       "genre": [
-        "Drama",
-        "Comedy"
+        "Mystery",
+        "Thriller"
       ],
-      "inLanguage": "ko",
+      "inLanguage": "en",
       "cast": [
-        "Choo Young-woo",
-        "Kim So-hyun",
-        "Kim Min",
-        "Lee Kyu-sung"
+        "Anne Hathaway",
+        "Dakota Johnson",
+        "Josh Hartnett",
+        "Brady Wagner"
       ],
-      "runtimeMinutes": null,
-      "contentRating": "TV-14",
-      "voteAverage": 10,
-      "previewUrl": "https://www.youtube.com/watch?v=krkX6h9h1i0",
+      "runtimeMinutes": 114,
+      "contentRating": "R",
+      "voteAverage": 6.45,
+      "previewUrl": "https://www.youtube.com/watch?v=xdPMKhjMSFs",
       "availability": {
-        "US": {
+        "BR": {
           "buy": [],
-          "link": "https://www.themoviedb.org/tv/307106/watch?locale=US",
+          "link": null,
           "rent": [],
-          "stream": [
-            "Hulu"
+          "stream": [],
+          "cinema_release_date": "2026-10-01"
+        },
+        "GB": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-10-02"
+        },
+        "US": {
+          "buy": [
+            "Fandango At Home"
           ],
-          "cinema_release_date": null
+          "link": "https://www.themoviedb.org/movie/1283515-verity/watch?locale=US",
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-10-02"
         },
         "source": "tmdb-watch-providers",
         "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/tv/307106"
+        "source_page_url": "https://www.themoviedb.org/movie/1283515"
       },
       "sourceRank": 12,
       "keywords": [
-        "Between Steps",
-        "Between Steps 2026",
-        "where to watch Between Steps",
-        "Drama series",
-        "Comedy series",
-        "Hulu trending series",
-        "Choo Young-woo",
-        "Kim So-hyun"
+        "Verity",
+        "Verity 2026",
+        "where to watch Verity",
+        "Mystery movie",
+        "Thriller movie",
+        "Anne Hathaway",
+        "Dakota Johnson"
       ],
       "longTailKeywords": [
-        "where to watch Between Steps 2026",
-        "Between Steps streaming in Brazil and United States",
-        "Between Steps cast synopsis trailer and where to watch",
-        "what Drama to watch this week"
+        "where to watch Verity 2026",
+        "Verity streaming in Brazil and United States",
+        "Verity cast synopsis trailer and where to watch",
+        "what Mystery to watch this week"
       ],
       "seo": {
-        "title": "Where to watch Between Steps (2026) | MatchApp Ai",
-        "description": "Minjae, a former swimmer, lost a leg to illness. Now a PhD student, he's built a quiet, controlled life, until Yujin, a master's student starting over after l",
+        "title": "Where to watch Verity (2026) | MatchApp Ai",
+        "description": "Lowen Ashleigh is hired by Jeremy Crawford to ghostwrite novels for his bestselling author wife Verity, who is unable to finish following an accident. Lowen g",
         "keywords": [
-          "Between Steps",
-          "Between Steps 2026",
-          "where to watch Between Steps",
-          "Drama series",
-          "Comedy series",
-          "Hulu trending series",
-          "Choo Young-woo",
-          "Kim So-hyun",
-          "where to watch Between Steps 2026",
-          "Between Steps streaming in Brazil and United States",
-          "Between Steps cast synopsis trailer and where to watch",
-          "what Drama to watch this week"
+          "Verity",
+          "Verity 2026",
+          "where to watch Verity",
+          "Mystery movie",
+          "Thriller movie",
+          "Anne Hathaway",
+          "Dakota Johnson",
+          "where to watch Verity 2026",
+          "Verity streaming in Brazil and United States",
+          "Verity cast synopsis trailer and where to watch",
+          "what Mystery to watch this week"
         ],
-        "canonicalQuery": "Between Steps"
+        "canonicalQuery": "Verity"
       }
     },
     {
@@ -1359,92 +1372,82 @@
       "sourceRank": 4
     },
     {
-      "title": "Verity",
-      "kind": "movie",
+      "title": "Between Steps",
+      "kind": "tv",
       "year": 2026,
-      "origin": "US",
-      "originName": "United States",
-      "platform": "Cinemas",
-      "platforms": [],
-      "tmdbId": "1283515",
-      "poster": "https://image.tmdb.org/t/p/w780/97y0RdzRIeZ2j6se98hRQpxz3eR.jpg",
-      "description": "Lowen Ashleigh is hired by Jeremy Crawford to ghostwrite novels for his bestselling author wife Verity, who is unable to finish following an accident. Lowen gradually uncovers Verity's disturbing truths while residing at the Crawfords' home to work.",
+      "origin": "KR",
+      "originName": "South Korea",
+      "platform": "Hulu",
+      "platforms": [
+        "Hulu"
+      ],
+      "tmdbId": "307106",
+      "poster": "https://image.tmdb.org/t/p/w780/pGqcErS76y8bcvZZSFUefdZOg2x.jpg",
+      "description": "Minjae, a former swimmer, lost a leg to illness. Now a PhD student, he's built a quiet, controlled life, until Yujin, a master's student starting over after losing her way, throws it off balance. In a robotics lab, their romance turns fiery, bittersweet, and tender.",
       "genre": [
-        "Mystery",
-        "Thriller"
+        "Drama",
+        "Comedy"
       ],
-      "inLanguage": "en",
+      "inLanguage": "ko",
       "cast": [
-        "Anne Hathaway",
-        "Dakota Johnson",
-        "Josh Hartnett",
-        "Brady Wagner"
+        "Choo Young-woo",
+        "Kim So-hyun",
+        "Kim Min",
+        "Lee Kyu-sung"
       ],
-      "runtimeMinutes": 114,
-      "contentRating": "R",
-      "voteAverage": 6.45,
-      "previewUrl": "https://www.youtube.com/watch?v=xdPMKhjMSFs",
+      "runtimeMinutes": null,
+      "contentRating": "TV-14",
+      "voteAverage": 10,
+      "previewUrl": "https://www.youtube.com/watch?v=krkX6h9h1i0",
       "availability": {
-        "BR": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-10-01"
-        },
-        "GB": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-10-02"
-        },
         "US": {
-          "buy": [
-            "Fandango At Home"
-          ],
-          "link": "https://www.themoviedb.org/movie/1283515-verity/watch?locale=US",
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/307106/watch?locale=US",
           "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-10-02"
+          "stream": [
+            "Hulu"
+          ],
+          "cinema_release_date": null
         },
         "source": "tmdb-watch-providers",
         "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1283515"
+        "source_page_url": "https://www.themoviedb.org/tv/307106"
       },
       "sourceRank": 13,
       "keywords": [
-        "Verity",
-        "Verity 2026",
-        "where to watch Verity",
-        "Mystery movie",
-        "Thriller movie",
-        "Anne Hathaway",
-        "Dakota Johnson"
+        "Between Steps",
+        "Between Steps 2026",
+        "where to watch Between Steps",
+        "Drama series",
+        "Comedy series",
+        "Hulu trending series",
+        "Choo Young-woo",
+        "Kim So-hyun"
       ],
       "longTailKeywords": [
-        "where to watch Verity 2026",
-        "Verity streaming in Brazil and United States",
-        "Verity cast synopsis trailer and where to watch",
-        "what Mystery to watch this week"
+        "where to watch Between Steps 2026",
+        "Between Steps streaming in Brazil and United States",
+        "Between Steps cast synopsis trailer and where to watch",
+        "what Drama to watch this week"
       ],
       "seo": {
-        "title": "Where to watch Verity (2026) | MatchApp Ai",
-        "description": "Lowen Ashleigh is hired by Jeremy Crawford to ghostwrite novels for his bestselling author wife Verity, who is unable to finish following an accident. Lowen g",
+        "title": "Where to watch Between Steps (2026) | MatchApp Ai",
+        "description": "Minjae, a former swimmer, lost a leg to illness. Now a PhD student, he's built a quiet, controlled life, until Yujin, a master's student starting over after l",
         "keywords": [
-          "Verity",
-          "Verity 2026",
-          "where to watch Verity",
-          "Mystery movie",
-          "Thriller movie",
-          "Anne Hathaway",
-          "Dakota Johnson",
-          "where to watch Verity 2026",
-          "Verity streaming in Brazil and United States",
-          "Verity cast synopsis trailer and where to watch",
-          "what Mystery to watch this week"
+          "Between Steps",
+          "Between Steps 2026",
+          "where to watch Between Steps",
+          "Drama series",
+          "Comedy series",
+          "Hulu trending series",
+          "Choo Young-woo",
+          "Kim So-hyun",
+          "where to watch Between Steps 2026",
+          "Between Steps streaming in Brazil and United States",
+          "Between Steps cast synopsis trailer and where to watch",
+          "what Drama to watch this week"
         ],
-        "canonicalQuery": "Verity"
+        "canonicalQuery": "Between Steps"
       }
     },
     {
@@ -1517,69 +1520,88 @@
       }
     },
     {
-      "title": "The Cold Sato-san Is Only Sweet to Me",
+      "title": "Small Prophets",
       "kind": "tv",
       "year": 2026,
-      "origin": "JP",
-      "originName": "Japan",
-      "platform": "",
-      "platforms": [],
-      "tmdbId": "316891",
-      "poster": "https://image.tmdb.org/t/p/w780/eInC49veg0lHg13BaBiKmQiPk6U.jpg",
-      "description": "Sato may be the most beautiful girl in school but she's also the coldest, never smiling at anyone. When her classmate Oshio spots her at a café, he learns Sato's secret: she's actually just shy and clumsy. As Sato and Oshio bond over their shared interests in photography and desserts, a sweet romance starts to blossom between two socially awkward people.",
+      "origin": "GB",
+      "originName": "United Kingdom",
+      "platform": "BBC iPlayer",
+      "platforms": [
+        "BBC iPlayer"
+      ],
+      "tmdbId": "312693",
+      "poster": "https://image.tmdb.org/t/p/w780/hbWv5sI8vHGSlw4nGhTc7DK5Kjg.jpg",
+      "description": "The magical and mundane unfold in a suburban shed as a lonely man stumbles on the supernatural.",
       "genre": [
-        "Animation",
-        "Comedy"
+        "Comedy",
+        "Drama",
+        "Mystery"
       ],
-      "inLanguage": "ja",
+      "inLanguage": "en",
       "cast": [
-        "Miku Ito",
-        "Hiiro Ishibashi",
-        "Miyu Tomita",
-        "Chiaki Kobayashi"
+        "Pearce Quigley",
+        "Michael Palin",
+        "Lauren Patel",
+        "Mackenzie Crook"
       ],
-      "runtimeMinutes": 24,
-      "contentRating": "",
-      "voteAverage": 0,
-      "previewUrl": "",
+      "runtimeMinutes": null,
+      "contentRating": "12",
+      "voteAverage": 8.04,
+      "previewUrl": "https://www.youtube.com/watch?v=W7vdQWnaZts",
       "availability": {
+        "GB": {
+          "buy": [
+            "Apple TV Store",
+            "Sky Store"
+          ],
+          "link": "https://www.themoviedb.org/tv/312693-small-prophets/watch?locale=GB",
+          "rent": [],
+          "stream": [
+            "BBC iPlayer"
+          ],
+          "cinema_release_date": null
+        },
         "source": "tmdb-watch-providers",
         "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/tv/316891"
+        "source_page_url": "https://www.themoviedb.org/tv/312693"
       },
       "sourceRank": 15,
       "keywords": [
-        "The Cold Sato-san Is Only Sweet to Me",
-        "The Cold Sato-san Is Only Sweet to Me 2026",
-        "where to watch The Cold Sato-san Is Only Sweet to Me",
-        "Animation series",
+        "Small Prophets",
+        "Small Prophets 2026",
+        "where to watch Small Prophets",
         "Comedy series",
-        "Miku Ito",
-        "Hiiro Ishibashi"
+        "Drama series",
+        "Mystery series",
+        "BBC iPlayer trending series",
+        "Pearce Quigley",
+        "Michael Palin"
       ],
       "longTailKeywords": [
-        "where to watch The Cold Sato-san Is Only Sweet to Me 2026",
-        "The Cold Sato-san Is Only Sweet to Me streaming in Brazil and United States",
-        "The Cold Sato-san Is Only Sweet to Me cast synopsis trailer and where to watch",
-        "what Animation to watch this week"
+        "where to watch Small Prophets 2026",
+        "Small Prophets streaming in Brazil and United States",
+        "Small Prophets cast synopsis trailer and where to watch",
+        "what Comedy to watch this week"
       ],
       "seo": {
-        "title": "Where to watch The Cold Sato-san Is Only Sweet to Me (2026) | MatchApp Ai",
-        "description": "Sato may be the most beautiful girl in school but she's also the coldest, never smiling at anyone. When her classmate Oshio spots her at a café, he learns Sat",
+        "title": "Where to watch Small Prophets (2026) | MatchApp Ai",
+        "description": "The magical and mundane unfold in a suburban shed as a lonely man stumbles on the supernatural.",
         "keywords": [
-          "The Cold Sato-san Is Only Sweet to Me",
-          "The Cold Sato-san Is Only Sweet to Me 2026",
-          "where to watch The Cold Sato-san Is Only Sweet to Me",
-          "Animation series",
+          "Small Prophets",
+          "Small Prophets 2026",
+          "where to watch Small Prophets",
           "Comedy series",
-          "Miku Ito",
-          "Hiiro Ishibashi",
-          "where to watch The Cold Sato-san Is Only Sweet to Me 2026",
-          "The Cold Sato-san Is Only Sweet to Me streaming in Brazil and United States",
-          "The Cold Sato-san Is Only Sweet to Me cast synopsis trailer and where to watch",
-          "what Animation to watch this week"
+          "Drama series",
+          "Mystery series",
+          "BBC iPlayer trending series",
+          "Pearce Quigley",
+          "Michael Palin",
+          "where to watch Small Prophets 2026",
+          "Small Prophets streaming in Brazil and United States",
+          "Small Prophets cast synopsis trailer and where to watch",
+          "what Comedy to watch this week"
         ],
-        "canonicalQuery": "The Cold Sato-san Is Only Sweet to Me"
+        "canonicalQuery": "Small Prophets"
       }
     },
     {
