@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-07T08:30:11.063Z",
-  "feed_version": "c86f9e45",
+  "generated_at": "2026-10-07T09:11:46.051Z",
+  "feed_version": "92cf8155",
   "sports_updated_at": "2026-10-07T02:24:02.207Z",
   "source_policy": "direct-trusted-publisher-rss+google-trends-keyword-signals",
   "seo_policy": "per-story keyword snapshot at first discovery + source citation + stable archive",
@@ -101,7 +101,7 @@
           "hollywoodreporter.com harry potter themed christmas",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T08:30:11.063Z"
+        "seo_generated_at": "2026-10-07T09:11:46.051Z"
       }
     },
     {
@@ -202,7 +202,7 @@
           "g1.globo.com musical sobre gonzaguinha tem",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T08:30:11.063Z"
+        "seo_generated_at": "2026-10-07T09:11:46.051Z"
       }
     },
     {
@@ -301,7 +301,76 @@
           "hollywoodreporter.com concrete land debut feature",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T08:30:11.063Z"
+        "seo_generated_at": "2026-10-07T09:11:46.051Z"
+      }
+    },
+    {
+      "id": "2efce67f",
+      "title": "India's opposition leader dragged onto bus as police break up protest",
+      "url": "https://www.bbc.co.uk/news/articles/crpdgvx82831o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-07T07:45:47.000Z",
+      "discovered_at": "2026-10-07T09:11:46.051Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-07. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/40b1/live/bf4abdf0-c21e-11f1-babe-4199b0e7ccea.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/india-s-opposition-leader-dragged-onto-bus-as-police-break-up-protest-2efce6/",
+      "landing_url": "https://matchapp.tv/?news=2efce67f#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-07",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "india",
+          "opposition",
+          "leader",
+          "dragged",
+          "onto",
+          "bus"
+        ],
+        "long_tail": [
+          "India's opposition leader dragged onto bus as police break up protest 2026-10-07",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "india",
+          "opposition",
+          "leader",
+          "dragged",
+          "onto",
+          "bus"
+        ],
+        "freshness_keywords": [
+          "2026-10-07"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "India's opposition leader dragged onto bus as police break…",
+        "meta_description": "World report published by BBC World on 2026-10-07. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-07",
+          "world news",
+          "global headlines",
+          "india",
+          "opposition",
+          "leader",
+          "dragged",
+          "onto",
+          "bus",
+          "India's opposition leader dragged onto bus as police break up protest 2026-10-07",
+          "world news October 2026",
+          "2026-10-07",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-07T09:11:46.051Z"
       }
     },
     {
@@ -319,7 +388,7 @@
       "category": "entertainment",
       "person": "",
       "description": "obituary headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/9368/live/a22689e0-c221-11f1-b7d8-6f930589c871.jpg",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/98d6/live/7a402d70-c229-11f1-babe-4199b0e7ccea.jpg",
       "matchapp_url": "https://matchapp.tv/news/articles/oscar-winning-actress-eva-marie-saint-dies-aged-102-cc5850/",
       "landing_url": "https://matchapp.tv/?news=cc585028#latest-news",
       "seo": {
@@ -400,7 +469,7 @@
           "bbc.co.uk oscar winning actress eva",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T08:30:11.063Z"
+        "seo_generated_at": "2026-10-07T09:11:46.051Z"
       }
     },
     {
@@ -469,7 +538,7 @@
           "2026-10-07",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-07T08:30:11.063Z"
+        "seo_generated_at": "2026-10-07T09:11:46.051Z"
       }
     },
     {
@@ -535,7 +604,7 @@
           "2026-10-07",
           "BBC Technology"
         ],
-        "seo_generated_at": "2026-10-07T08:30:11.063Z"
+        "seo_generated_at": "2026-10-07T09:11:46.051Z"
       }
     },
     {
@@ -604,7 +673,7 @@
           "2026-10-07",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-07T08:30:11.063Z"
+        "seo_generated_at": "2026-10-07T09:11:46.051Z"
       }
     },
     {
@@ -705,103 +774,7 @@
           "g1.globo.com rodas samba musical regravacoes",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T08:30:11.063Z"
-      }
-    },
-    {
-      "id": "f139d1e3",
-      "title": "Jimmy McGovern claims young offender institution staff 'lazy'",
-      "url": "https://www.bbc.co.uk/news/articles/cmy56le7wr6zo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GB",
-      "language": "en",
-      "published_at": "2026-10-07T05:44:14.000Z",
-      "discovered_at": "2026-10-07T08:30:11.063Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "Jimmy McGovern",
-      "description": "Jimmy McGovern: entertainment headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/e204/live/29400aa0-c1aa-11f1-8fa2-19a1e9b6288f.png",
-      "matchapp_url": "https://matchapp.tv/news/articles/jimmy-mcgovern-claims-young-offender-institution-staff-lazy-f139d1/",
-      "landing_url": "https://matchapp.tv/?news=f139d1e3#latest-news",
-      "seo": {
-        "primary_keyword": "Jimmy McGovern latest news",
-        "short_tail": [
-          "Jimmy McGovern",
-          "Jimmy McGovern news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "Jimmy McGovern latest news October 2026",
-          "Jimmy McGovern entertainment update 2026",
-          "Jimmy McGovern news 2026-10-07",
-          "latest entertainment news about Jimmy McGovern",
-          "jimmy mcgovern jimmy mcgovern claims young latest update",
-          "BBC Jimmy McGovern entertainment",
-          "latest news about Jimmy McGovern October 2026",
-          "Jimmy McGovern entertainment news 2026-10-07",
-          "what happened with Jimmy McGovern"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Jimmy McGovern",
-          "jimmy",
-          "mcgovern",
-          "claims",
-          "young",
-          "offender",
-          "institution"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-07",
-          "Jimmy McGovern 2026"
-        ],
-        "source_keywords": [
-          "BBC Jimmy McGovern",
-          "bbc.co.uk Jimmy McGovern",
-          "BBC entertainment news"
-        ],
-        "meta_title": "Jimmy McGovern claims young offender institution staff…",
-        "meta_description": "Jimmy McGovern: Entertainment update reported by BBC on 2026-10-07. See verified context, publication time and the original source via MatchApp Ai.",
-        "keywords": [
-          "Jimmy McGovern latest news",
-          "Jimmy McGovern",
-          "Jimmy McGovern news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "Jimmy McGovern latest news October 2026",
-          "Jimmy McGovern entertainment update 2026",
-          "Jimmy McGovern news 2026-10-07",
-          "latest entertainment news about Jimmy McGovern",
-          "jimmy mcgovern jimmy mcgovern claims young latest update",
-          "BBC Jimmy McGovern entertainment",
-          "latest news about Jimmy McGovern October 2026",
-          "Jimmy McGovern entertainment news 2026-10-07",
-          "what happened with Jimmy McGovern",
-          "jimmy",
-          "mcgovern",
-          "claims",
-          "young",
-          "offender",
-          "institution",
-          "October 2026",
-          "2026-10-07",
-          "Jimmy McGovern 2026",
-          "BBC Jimmy McGovern",
-          "bbc.co.uk Jimmy McGovern",
-          "BBC entertainment news"
-        ],
-        "seo_generated_at": "2026-10-07T08:30:11.063Z"
+        "seo_generated_at": "2026-10-07T09:11:46.051Z"
       }
     },
     {
@@ -870,7 +843,7 @@
           "2026-10-07",
           "BBC Science"
         ],
-        "seo_generated_at": "2026-10-07T08:30:11.063Z"
+        "seo_generated_at": "2026-10-07T09:11:46.051Z"
       }
     },
     {
@@ -939,7 +912,7 @@
           "2026-10-07",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-07T08:30:11.063Z"
+        "seo_generated_at": "2026-10-07T09:11:46.051Z"
       }
     },
     {
@@ -1005,7 +978,7 @@
           "2026-10-07",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-07T08:30:11.063Z"
+        "seo_generated_at": "2026-10-07T09:11:46.051Z"
       }
     },
     {
@@ -1074,7 +1047,7 @@
           "2026-10-07",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-07T08:30:11.063Z"
+        "seo_generated_at": "2026-10-07T09:11:46.051Z"
       }
     },
     {
@@ -1143,7 +1116,7 @@
           "2026-10-07",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-07T08:30:11.063Z"
+        "seo_generated_at": "2026-10-07T09:11:46.051Z"
       }
     },
     {
@@ -1212,7 +1185,7 @@
           "2026-10-07",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-07T08:30:11.063Z"
+        "seo_generated_at": "2026-10-07T09:11:46.051Z"
       }
     },
     {
@@ -1281,7 +1254,7 @@
           "2026-10-07",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-07T08:30:11.063Z"
+        "seo_generated_at": "2026-10-07T09:11:46.051Z"
       }
     },
     {
@@ -1377,7 +1350,7 @@
           "hollywoodreporter.com Malcolm Spellman",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T08:30:11.063Z"
+        "seo_generated_at": "2026-10-07T09:11:46.051Z"
       }
     },
     {
@@ -1478,7 +1451,7 @@
           "g1.globo.com saga leandro leonardo roca",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T08:30:11.063Z"
+        "seo_generated_at": "2026-10-07T09:11:46.051Z"
       }
     },
     {
@@ -1575,7 +1548,7 @@
           "hollywoodreporter.com apple dolby bringing dolby",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T08:30:11.063Z"
+        "seo_generated_at": "2026-10-07T09:11:46.051Z"
       }
     },
     {
@@ -1667,7 +1640,7 @@
           "hollywoodreporter.com Jack White Slams Trump",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T08:30:11.063Z"
+        "seo_generated_at": "2026-10-07T09:11:46.051Z"
       }
     },
     {
@@ -1736,7 +1709,7 @@
           "2026-10-07",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-07T08:30:11.063Z"
+        "seo_generated_at": "2026-10-07T09:11:46.051Z"
       }
     },
     {
@@ -1805,76 +1778,7 @@
           "2026-10-06",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-07T08:30:11.063Z"
-      }
-    },
-    {
-      "id": "8b5259d2",
-      "title": "A beautiful Himalayan bird is changing its voice due to human activity, research shows",
-      "url": "https://www.bbc.co.uk/news/articles/cq9868z88rexo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-06T23:07:44.000Z",
-      "discovered_at": "2026-10-07T01:46:51.899Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-06. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/641f/live/0b408380-c075-11f1-aa5a-7b59b59b45bf.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/a-beautiful-himalayan-bird-is-changing-its-voice-due-to-human-activity-research--8b5259/",
-      "landing_url": "https://matchapp.tv/?news=8b5259d2#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-06",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "beautiful",
-          "himalayan",
-          "bird",
-          "changing",
-          "its",
-          "voice"
-        ],
-        "long_tail": [
-          "A beautiful Himalayan bird is changing its voice due to human activity, research shows 2026-10-06",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "beautiful",
-          "himalayan",
-          "bird",
-          "changing",
-          "its",
-          "voice"
-        ],
-        "freshness_keywords": [
-          "2026-10-06"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "A beautiful Himalayan bird is changing its voice due to…",
-        "meta_description": "World report published by BBC World on 2026-10-06. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-06",
-          "world news",
-          "global headlines",
-          "beautiful",
-          "himalayan",
-          "bird",
-          "changing",
-          "its",
-          "voice",
-          "A beautiful Himalayan bird is changing its voice due to human activity, research shows 2026-10-06",
-          "world news October 2026",
-          "2026-10-06",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-07T08:30:11.063Z"
+        "seo_generated_at": "2026-10-07T09:11:46.051Z"
       }
     },
     {
@@ -1966,7 +1870,7 @@
           "bbc.co.uk Braid-creator Jonathan Blow",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T08:30:11.063Z"
+        "seo_generated_at": "2026-10-07T09:11:46.051Z"
       }
     },
     {
@@ -2062,7 +1966,7 @@
           "g1.globo.com Eva Marie Saint",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T08:30:11.063Z"
+        "seo_generated_at": "2026-10-07T09:11:46.051Z"
       }
     },
     {
@@ -2131,7 +2035,7 @@
           "2026-10-06",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-07T08:30:11.063Z"
+        "seo_generated_at": "2026-10-07T09:11:46.051Z"
       }
     },
     {
@@ -2200,7 +2104,7 @@
           "2026-10-06",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-07T08:30:11.063Z"
+        "seo_generated_at": "2026-10-07T09:11:46.051Z"
       }
     },
     {
@@ -2269,7 +2173,7 @@
           "2026-10-06",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-07T08:30:11.063Z"
+        "seo_generated_at": "2026-10-07T09:11:46.051Z"
       }
     },
     {
@@ -2368,7 +2272,7 @@
           "bbc.co.uk paramount takes over warner",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T08:30:11.063Z"
+        "seo_generated_at": "2026-10-07T09:11:46.051Z"
       }
     },
     {
@@ -2469,7 +2373,7 @@
           "g1.globo.com minha melhor amiga entra",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T08:30:11.063Z"
+        "seo_generated_at": "2026-10-07T09:11:46.051Z"
       }
     },
     {
@@ -2568,7 +2472,7 @@
           "bbc.co.uk amazon wins global rights",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T08:30:11.063Z"
+        "seo_generated_at": "2026-10-07T09:11:46.051Z"
       }
     },
     {
@@ -2667,7 +2571,7 @@
           "bbc.co.uk films streaming prices how",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T08:30:11.063Z"
+        "seo_generated_at": "2026-10-07T09:11:46.051Z"
       }
     },
     {
@@ -2765,7 +2669,7 @@
           "g1.globo.com Michael Douglas",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T08:30:11.063Z"
+        "seo_generated_at": "2026-10-07T09:11:46.051Z"
       }
     },
     {
@@ -2864,7 +2768,7 @@
           "g1.globo.com shakira pique vao justica",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T08:30:11.063Z"
+        "seo_generated_at": "2026-10-07T09:11:46.051Z"
       }
     },
     {
@@ -2965,7 +2869,7 @@
           "g1.globo.com luzes sombras relacao visceral",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T08:30:11.063Z"
+        "seo_generated_at": "2026-10-07T09:11:46.051Z"
       }
     },
     {
@@ -3063,7 +2967,7 @@
           "g1.globo.com Jheny Santucci",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T08:30:11.063Z"
+        "seo_generated_at": "2026-10-07T09:11:46.051Z"
       }
     },
     {
@@ -3164,7 +3068,7 @@
           "g1.globo.com participante american idol condenado",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T08:30:11.063Z"
+        "seo_generated_at": "2026-10-07T09:11:46.051Z"
       }
     },
     {
@@ -3260,7 +3164,7 @@
           "bbc.co.uk Rosie O'Donnell",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T08:30:11.063Z"
+        "seo_generated_at": "2026-10-07T09:11:46.051Z"
       }
     },
     {
@@ -3359,7 +3263,7 @@
           "bbc.co.uk chart topping singer television",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T08:30:11.063Z"
+        "seo_generated_at": "2026-10-07T09:11:46.051Z"
       }
     },
     {
@@ -3455,7 +3359,108 @@
           "bbc.co.uk Jade Thirlwall",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T08:30:11.063Z"
+        "seo_generated_at": "2026-10-07T09:11:46.051Z"
+      }
+    },
+    {
+      "id": "8e6dabe2",
+      "title": "Letras de Belchior no álbum 'Alucinação' refletem o Brasil de 1976 em filme que apresenta recorte do país há 50 anos",
+      "url": "https://g1.globo.com/pop-arte/musica/blog/mauro-ferreira/post/2026/10/06/letras-de-belchior-no-album-alucinacao-refletem-o-brasil-de-1976-em-filme-que-apresenta-recorte-do-pais-ha-50-anos.ghtml",
+      "source": "G1",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "BR",
+      "language": "pt",
+      "published_at": "2026-10-06T08:00:01.000Z",
+      "discovered_at": "2026-10-06T09:43:22.667Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "",
+      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
+      "image": "https://s2-g1.glbimg.com/2euqp_zHbo8J6nbsvf6IZp5f17A=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/A/h/WBFinBQBSZrfTcCdnIyQ/alucinafoto.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/letras-de-belchior-no-album-alucinacao-refletem-o-brasil-de-1976-em-filme-que-ap-8e6dab/",
+      "landing_url": "https://matchapp.tv/?news=8e6dabe2#latest-news",
+      "seo": {
+        "primary_keyword": "letras belchior album alucinacao últimas notícias",
+        "short_tail": [
+          "letras belchior album alucinacao",
+          "letras belchior album alucinacao news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje"
+        ],
+        "long_tail": [
+          "letras belchior album alucinacao latest news October 2026",
+          "letras belchior album alucinacao entertainment update 2026",
+          "letras belchior album alucinacao news 2026-10-06",
+          "latest entertainment news about letras belchior album alucinacao",
+          "letras belchior album alucinacao refletem brasil latest update",
+          "G1 letras belchior album alucinacao entertainment",
+          "últimas notícias sobre letras belchior album alucinacao outubro 2026",
+          "letras belchior album alucinacao notícia de 2026-10-06",
+          "o que aconteceu com letras belchior album alucinacao"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "letras",
+          "belchior",
+          "album",
+          "alucinacao",
+          "refletem",
+          "brasil",
+          "1976",
+          "filme"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-06",
+          "outubro 2026",
+          "letras belchior album alucinacao 2026"
+        ],
+        "source_keywords": [
+          "G1 letras belchior album alucinacao",
+          "g1.globo.com letras belchior album alucinacao",
+          "G1 entertainment news"
+        ],
+        "meta_title": "Letras de Belchior no álbum 'Alucinação' refletem o Brasil…",
+        "meta_description": "Notícia publicada por G1 em 2026-10-06. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
+        "keywords": [
+          "letras belchior album alucinacao últimas notícias",
+          "letras belchior album alucinacao",
+          "letras belchior album alucinacao news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje",
+          "letras belchior album alucinacao latest news October 2026",
+          "letras belchior album alucinacao entertainment update 2026",
+          "letras belchior album alucinacao news 2026-10-06",
+          "latest entertainment news about letras belchior album alucinacao",
+          "letras belchior album alucinacao refletem brasil latest update",
+          "G1 letras belchior album alucinacao entertainment",
+          "últimas notícias sobre letras belchior album alucinacao outubro 2026",
+          "letras belchior album alucinacao notícia de 2026-10-06",
+          "o que aconteceu com letras belchior album alucinacao",
+          "letras",
+          "belchior",
+          "album",
+          "alucinacao",
+          "refletem",
+          "brasil",
+          "1976",
+          "filme",
+          "October 2026",
+          "2026-10-06",
+          "outubro 2026",
+          "letras belchior album alucinacao 2026",
+          "G1 letras belchior album alucinacao",
+          "g1.globo.com letras belchior album alucinacao",
+          "G1 entertainment news"
+        ],
+        "seo_generated_at": "2026-10-07T09:11:46.051Z"
       }
     },
     {
@@ -3545,7 +3550,7 @@
           "2026-10-05",
           "October 2026"
         ],
-        "seo_generated_at": "2026-10-07T08:30:11.063Z"
+        "seo_generated_at": "2026-10-07T09:11:46.051Z"
       }
     }
   ]
