@@ -1,10 +1,1694 @@
 {
-  "generated_at": "2026-10-07T17:49:47.639Z",
-  "feed_version": "041a9e4a",
+  "generated_at": "2026-10-07T22:14:01.272Z",
+  "feed_version": "4e955723",
   "sports_updated_at": "2026-10-07T17:49:47.577Z",
   "source_policy": "direct-trusted-publisher-rss+google-trends-keyword-signals",
   "seo_policy": "per-story keyword snapshot at first discovery + source citation + stable archive",
   "items": [
+    {
+      "id": "e8901cdd",
+      "title": "Spanish pensioner whose eviction sparked nationwide protests dies, union says",
+      "url": "https://www.bbc.co.uk/news/articles/c6e3x21ev9wwo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-07T21:40:24.000Z",
+      "discovered_at": "2026-10-07T22:14:01.272Z",
+      "event_type": "Obituary",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-07. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/d9ee/live/06010330-c283-11f1-98ea-35e6bf307fc9.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/spanish-pensioner-whose-eviction-sparked-nationwide-protests-dies-union-says-e8901c/",
+      "landing_url": "https://matchapp.tv/?news=e8901cdd#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-07",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "spanish",
+          "pensioner",
+          "whose",
+          "eviction",
+          "sparked",
+          "nationwide"
+        ],
+        "long_tail": [
+          "Spanish pensioner whose eviction sparked nationwide protests dies, union says 2026-10-07",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "spanish",
+          "pensioner",
+          "whose",
+          "eviction",
+          "sparked",
+          "nationwide"
+        ],
+        "freshness_keywords": [
+          "2026-10-07"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Spanish pensioner whose eviction sparked nationwide…",
+        "meta_description": "World report published by BBC World on 2026-10-07. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-07",
+          "world news",
+          "global headlines",
+          "spanish",
+          "pensioner",
+          "whose",
+          "eviction",
+          "sparked",
+          "nationwide",
+          "Spanish pensioner whose eviction sparked nationwide protests dies, union says 2026-10-07",
+          "world news October 2026",
+          "2026-10-07",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-07T22:14:01.272Z"
+      }
+    },
+    {
+      "id": "2884470b",
+      "title": "Em carta, deputados dos EUA acusam governo Trump de tentar influenciar a eleição no Brasil",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/07/em-carta-deputados-dos-eua-acusam-governo-trump-de-tentar-influenciar-a-eleicao-no-brasil.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-07T21:25:08.000Z",
+      "discovered_at": "2026-10-07T22:14:01.272Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-07. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/TF2K9TmRGEIwXYARUg1hp7x_gQo=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2025/F/I/VQzfjySGqMqrAhH1vPLQ/2025-10-08t211343z-948749520-rc2x7haha9rp-rtrmadp-3-usa-trump.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/em-carta-deputados-dos-eua-acusam-governo-trump-de-tentar-influenciar-a-eleicao--288447/",
+      "landing_url": "https://matchapp.tv/?news=2884470b#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-07",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "carta",
+          "deputados",
+          "eua",
+          "acusam",
+          "governo",
+          "trump"
+        ],
+        "long_tail": [
+          "Em carta, deputados dos EUA acusam governo Trump de tentar influenciar a eleição no Brasil 2026-10-07",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "carta",
+          "deputados",
+          "eua",
+          "acusam",
+          "governo",
+          "trump"
+        ],
+        "freshness_keywords": [
+          "2026-10-07"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Em carta, deputados dos EUA acusam governo Trump de tentar…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-07. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-07",
+          "notícias do mundo",
+          "notícias internacionais",
+          "carta",
+          "deputados",
+          "eua",
+          "acusam",
+          "governo",
+          "trump",
+          "Em carta, deputados dos EUA acusam governo Trump de tentar influenciar a eleição no Brasil 2026-10-07",
+          "notícias mundiais outubro 2026",
+          "2026-10-07",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-07T22:14:01.272Z"
+      }
+    },
+    {
+      "id": "be677851",
+      "title": "Catherine Hardwicke Tapped to Direct Bronte Studios’ Female-Led Western ‘American River’",
+      "url": "https://www.hollywoodreporter.com/movies/movie-news/catherine-hardwicke-bronte-female-western-american-river-1236724856/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-07T21:03:58.000Z",
+      "discovered_at": "2026-10-07T22:14:01.272Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "Catherine Hardwicke Tapped",
+      "description": "Catherine Hardwicke Tapped: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/GettyImages-2180135078.jpg?crop=0px%2C89px%2C2656px%2C1488px&resize=1440%2C810",
+      "matchapp_url": "https://matchapp.tv/news/articles/catherine-hardwicke-tapped-to-direct-bronte-studios-female-led-western-american--be6778/",
+      "landing_url": "https://matchapp.tv/?news=be677851#latest-news",
+      "seo": {
+        "primary_keyword": "Catherine Hardwicke Tapped latest news",
+        "short_tail": [
+          "Catherine Hardwicke Tapped",
+          "Catherine Hardwicke Tapped news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "Catherine Hardwicke Tapped latest news October 2026",
+          "Catherine Hardwicke Tapped entertainment update 2026",
+          "Catherine Hardwicke Tapped news 2026-10-07",
+          "latest entertainment news about Catherine Hardwicke Tapped",
+          "catherine hardwicke tapped catherine hardwicke tapped latest update",
+          "The Hollywood Reporter Catherine Hardwicke Tapped entertainment",
+          "latest news about Catherine Hardwicke Tapped October 2026",
+          "Catherine Hardwicke Tapped entertainment news 2026-10-07",
+          "what happened with Catherine Hardwicke Tapped"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "Catherine Hardwicke Tapped",
+          "catherine",
+          "hardwicke",
+          "tapped",
+          "direct",
+          "bronte"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-07",
+          "Catherine Hardwicke Tapped 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter Catherine Hardwicke Tapped",
+          "hollywoodreporter.com Catherine Hardwicke Tapped",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "Catherine Hardwicke Tapped to Direct Bronte Studios’…",
+        "meta_description": "Catherine Hardwicke Tapped: Entertainment update reported by The Hollywood Reporter on 2026-10-07. See verified context, publication time and the original…",
+        "keywords": [
+          "Catherine Hardwicke Tapped latest news",
+          "Catherine Hardwicke Tapped",
+          "Catherine Hardwicke Tapped news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "Catherine Hardwicke Tapped latest news October 2026",
+          "Catherine Hardwicke Tapped entertainment update 2026",
+          "Catherine Hardwicke Tapped news 2026-10-07",
+          "latest entertainment news about Catherine Hardwicke Tapped",
+          "catherine hardwicke tapped catherine hardwicke tapped latest update",
+          "The Hollywood Reporter Catherine Hardwicke Tapped entertainment",
+          "latest news about Catherine Hardwicke Tapped October 2026",
+          "Catherine Hardwicke Tapped entertainment news 2026-10-07",
+          "what happened with Catherine Hardwicke Tapped",
+          "catherine",
+          "hardwicke",
+          "tapped",
+          "direct",
+          "bronte",
+          "October 2026",
+          "2026-10-07",
+          "Catherine Hardwicke Tapped 2026",
+          "The Hollywood Reporter Catherine Hardwicke Tapped",
+          "hollywoodreporter.com Catherine Hardwicke Tapped",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-07T22:14:01.272Z"
+      }
+    },
+    {
+      "id": "7f0f1051",
+      "title": "‘Crew Girl’ Star Miku Martineau on Rowing Boot Camp and Love Triangles",
+      "url": "https://www.hollywoodreporter.com/tv/tv-features/crew-girl-miku-martineau-interview-1236724069/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-07T21:01:53.000Z",
+      "discovered_at": "2026-10-07T22:14:01.272Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "",
+      "description": "entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/9120_R1.jpg?w=1440&h=810&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/crew-girl-star-miku-martineau-on-rowing-boot-camp-and-love-triangles-7f0f10/",
+      "landing_url": "https://matchapp.tv/?news=7f0f1051#latest-news",
+      "seo": {
+        "primary_keyword": "crew girl star miku latest news",
+        "short_tail": [
+          "crew girl star miku",
+          "crew girl star miku news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "crew girl star miku latest news October 2026",
+          "crew girl star miku entertainment update 2026",
+          "crew girl star miku news 2026-10-07",
+          "latest entertainment news about crew girl star miku",
+          "crew girl star miku martineau rowing latest update",
+          "The Hollywood Reporter crew girl star miku entertainment",
+          "latest news about crew girl star miku October 2026",
+          "crew girl star miku entertainment news 2026-10-07",
+          "what happened with crew girl star miku"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "crew",
+          "girl",
+          "star",
+          "miku",
+          "martineau",
+          "rowing",
+          "boot",
+          "camp"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-07",
+          "crew girl star miku 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter crew girl star miku",
+          "hollywoodreporter.com crew girl star miku",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "‘Crew Girl’ Star Miku Martineau on Rowing Boot Camp and…",
+        "meta_description": "Entertainment update reported by The Hollywood Reporter on 2026-10-07. See verified context, publication time and the original source via MatchApp Ai.",
+        "keywords": [
+          "crew girl star miku latest news",
+          "crew girl star miku",
+          "crew girl star miku news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "crew girl star miku latest news October 2026",
+          "crew girl star miku entertainment update 2026",
+          "crew girl star miku news 2026-10-07",
+          "latest entertainment news about crew girl star miku",
+          "crew girl star miku martineau rowing latest update",
+          "The Hollywood Reporter crew girl star miku entertainment",
+          "latest news about crew girl star miku October 2026",
+          "crew girl star miku entertainment news 2026-10-07",
+          "what happened with crew girl star miku",
+          "crew",
+          "girl",
+          "star",
+          "miku",
+          "martineau",
+          "rowing",
+          "boot",
+          "camp",
+          "October 2026",
+          "2026-10-07",
+          "crew girl star miku 2026",
+          "The Hollywood Reporter crew girl star miku",
+          "hollywoodreporter.com crew girl star miku",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-07T22:14:01.272Z"
+      }
+    },
+    {
+      "id": "232a0df5",
+      "title": "‘Beware Boiúna’ Star Jessica Rothe Talks Her Prolific Return to Horror and Retooling ‘Happy Death Day 3’",
+      "url": "https://www.hollywoodreporter.com/movies/movie-features/beware-boiuna-star-jessica-rothe-happy-death-day-3-1236724688/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-07T20:59:57.000Z",
+      "discovered_at": "2026-10-07T22:14:01.272Z",
+      "event_type": "Obituary",
+      "category": "entertainment",
+      "person": "",
+      "description": "obituary headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/dsf0053c-H-2026.jpg?w=1296&h=730&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/beware-boiuna-star-jessica-rothe-talks-her-prolific-return-to-horror-and-retooli-232a0d/",
+      "landing_url": "https://matchapp.tv/?news=232a0df5#latest-news",
+      "seo": {
+        "primary_keyword": "beware boiuna star jessica latest news",
+        "short_tail": [
+          "beware boiuna star jessica",
+          "beware boiuna star jessica news",
+          "obituary",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "beware boiuna star jessica latest news October 2026",
+          "beware boiuna star jessica obituary update 2026",
+          "beware boiuna star jessica news 2026-10-07",
+          "latest obituary news about beware boiuna star jessica",
+          "beware boiuna star jessica rothe talks latest update",
+          "The Hollywood Reporter beware boiuna star jessica obituary",
+          "latest news about beware boiuna star jessica October 2026",
+          "beware boiuna star jessica entertainment news 2026-10-07",
+          "what happened with beware boiuna star jessica"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "beware",
+          "boiuna",
+          "star",
+          "jessica",
+          "rothe",
+          "talks",
+          "her",
+          "prolific"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-07",
+          "beware boiuna star jessica 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter beware boiuna star jessica",
+          "hollywoodreporter.com beware boiuna star jessica",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "‘Beware Boiúna’ Star Jessica Rothe Talks Her Prolific…",
+        "meta_description": "Obituary update reported by The Hollywood Reporter on 2026-10-07. See verified context, publication time and the original source via MatchApp Ai.",
+        "keywords": [
+          "beware boiuna star jessica latest news",
+          "beware boiuna star jessica",
+          "beware boiuna star jessica news",
+          "obituary",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "beware boiuna star jessica latest news October 2026",
+          "beware boiuna star jessica obituary update 2026",
+          "beware boiuna star jessica news 2026-10-07",
+          "latest obituary news about beware boiuna star jessica",
+          "beware boiuna star jessica rothe talks latest update",
+          "The Hollywood Reporter beware boiuna star jessica obituary",
+          "latest news about beware boiuna star jessica October 2026",
+          "beware boiuna star jessica entertainment news 2026-10-07",
+          "what happened with beware boiuna star jessica",
+          "beware",
+          "boiuna",
+          "star",
+          "jessica",
+          "rothe",
+          "talks",
+          "her",
+          "prolific",
+          "October 2026",
+          "2026-10-07",
+          "beware boiuna star jessica 2026",
+          "The Hollywood Reporter beware boiuna star jessica",
+          "hollywoodreporter.com beware boiuna star jessica",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-07T22:14:01.272Z"
+      }
+    },
+    {
+      "id": "e6897251",
+      "title": "Michael Kearns, Actor, Activist and ‘Jerker’ Director, Dies at 76",
+      "url": "https://www.hollywoodreporter.com/news/general-news/michael-kearns-dead-jerker-director-gay-activist-1236724870/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-07T20:35:43.000Z",
+      "discovered_at": "2026-10-07T22:14:01.272Z",
+      "event_type": "Obituary",
+      "category": "entertainment",
+      "person": "Michael Kearns",
+      "description": "Michael Kearns: obituary headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/Michael-Kearns-Obit-Template-Headshot-Getty-H-2026.jpg?w=1296&h=730&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/michael-kearns-actor-activist-and-jerker-director-dies-at-76-e68972/",
+      "landing_url": "https://matchapp.tv/?news=e6897251#latest-news",
+      "seo": {
+        "primary_keyword": "Michael Kearns latest news",
+        "short_tail": [
+          "Michael Kearns",
+          "Michael Kearns news",
+          "obituary",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "Michael Kearns latest news October 2026",
+          "Michael Kearns obituary update 2026",
+          "Michael Kearns news 2026-10-07",
+          "latest obituary news about Michael Kearns",
+          "michael kearns michael kearns actor activist latest update",
+          "The Hollywood Reporter Michael Kearns obituary",
+          "latest news about Michael Kearns October 2026",
+          "Michael Kearns entertainment news 2026-10-07",
+          "what happened with Michael Kearns"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "Michael Kearns",
+          "michael",
+          "kearns",
+          "actor",
+          "activist",
+          "jerker",
+          "director"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-07",
+          "Michael Kearns 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter Michael Kearns",
+          "hollywoodreporter.com Michael Kearns",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "Michael Kearns, Actor, Activist and ‘Jerker’ Director,…",
+        "meta_description": "Michael Kearns: Obituary update reported by The Hollywood Reporter on 2026-10-07. See verified context, publication time and the original source via…",
+        "keywords": [
+          "Michael Kearns latest news",
+          "Michael Kearns",
+          "Michael Kearns news",
+          "obituary",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "Michael Kearns latest news October 2026",
+          "Michael Kearns obituary update 2026",
+          "Michael Kearns news 2026-10-07",
+          "latest obituary news about Michael Kearns",
+          "michael kearns michael kearns actor activist latest update",
+          "The Hollywood Reporter Michael Kearns obituary",
+          "latest news about Michael Kearns October 2026",
+          "Michael Kearns entertainment news 2026-10-07",
+          "what happened with Michael Kearns",
+          "michael",
+          "kearns",
+          "actor",
+          "activist",
+          "jerker",
+          "director",
+          "October 2026",
+          "2026-10-07",
+          "Michael Kearns 2026",
+          "The Hollywood Reporter Michael Kearns",
+          "hollywoodreporter.com Michael Kearns",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-07T22:14:01.272Z"
+      }
+    },
+    {
+      "id": "adf0824f",
+      "title": "OpenAI says teen ChatGPT use limited but research finds it an 'unacceptable risk'",
+      "url": "https://www.bbc.co.uk/news/articles/cwz0vrmxkvy4o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC Technology",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-07T20:34:17.000Z",
+      "discovered_at": "2026-10-07T22:14:01.272Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC Technology on 2026-10-07. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/8459/live/4bc569a0-c27f-11f1-98ea-35e6bf307fc9.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/openai-says-teen-chatgpt-use-limited-but-research-finds-it-an-unacceptable-risk-adf082/",
+      "landing_url": "https://matchapp.tv/?news=adf0824f#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-07",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "openai",
+          "says",
+          "teen",
+          "chatgpt",
+          "use",
+          "limited"
+        ],
+        "long_tail": [
+          "OpenAI says teen ChatGPT use limited but research finds it an 'unacceptable risk' 2026-10-07",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "openai",
+          "says",
+          "teen",
+          "chatgpt",
+          "use",
+          "limited"
+        ],
+        "freshness_keywords": [
+          "2026-10-07"
+        ],
+        "source_keywords": [
+          "BBC Technology"
+        ],
+        "meta_title": "OpenAI says teen ChatGPT use limited but research finds it…",
+        "meta_description": "World report published by BBC Technology on 2026-10-07. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-07",
+          "world news",
+          "global headlines",
+          "openai",
+          "says",
+          "teen",
+          "chatgpt",
+          "use",
+          "limited",
+          "OpenAI says teen ChatGPT use limited but research finds it an 'unacceptable risk' 2026-10-07",
+          "world news October 2026",
+          "2026-10-07",
+          "BBC Technology"
+        ],
+        "seo_generated_at": "2026-10-07T22:14:01.272Z"
+      }
+    },
+    {
+      "id": "8b4fe0ac",
+      "title": "Chinese runner dropped by sponsor after riding bike during marathon",
+      "url": "https://www.bbc.co.uk/news/articles/c3y0enr9e078o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-07T20:29:31.000Z",
+      "discovered_at": "2026-10-07T22:14:01.272Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-07. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/ce1d/live/375c7f80-c27f-11f1-98ea-35e6bf307fc9.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/chinese-runner-dropped-by-sponsor-after-riding-bike-during-marathon-8b4fe0/",
+      "landing_url": "https://matchapp.tv/?news=8b4fe0ac#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-07",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "chinese",
+          "runner",
+          "dropped",
+          "sponsor",
+          "after",
+          "riding"
+        ],
+        "long_tail": [
+          "Chinese runner dropped by sponsor after riding bike during marathon 2026-10-07",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "chinese",
+          "runner",
+          "dropped",
+          "sponsor",
+          "after",
+          "riding"
+        ],
+        "freshness_keywords": [
+          "2026-10-07"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Chinese runner dropped by sponsor after riding bike during…",
+        "meta_description": "World report published by BBC World on 2026-10-07. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-07",
+          "world news",
+          "global headlines",
+          "chinese",
+          "runner",
+          "dropped",
+          "sponsor",
+          "after",
+          "riding",
+          "Chinese runner dropped by sponsor after riding bike during marathon 2026-10-07",
+          "world news October 2026",
+          "2026-10-07",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-07T22:14:01.272Z"
+      }
+    },
+    {
+      "id": "6259a811",
+      "title": "Israelis mourn 7 October attack victims three years after deadly Hamas raid",
+      "url": "https://www.bbc.co.uk/news/articles/cwkgj0g30m5jo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-07T20:27:03.000Z",
+      "discovered_at": "2026-10-07T22:14:01.272Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-07. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/d466/live/028c9160-c28d-11f1-81d9-d568e8babc26.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/israelis-mourn-7-october-attack-victims-three-years-after-deadly-hamas-raid-6259a8/",
+      "landing_url": "https://matchapp.tv/?news=6259a811#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-07",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "israelis",
+          "mourn",
+          "october",
+          "attack",
+          "victims",
+          "three"
+        ],
+        "long_tail": [
+          "Israelis mourn 7 October attack victims three years after deadly Hamas raid 2026-10-07",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "israelis",
+          "mourn",
+          "october",
+          "attack",
+          "victims",
+          "three"
+        ],
+        "freshness_keywords": [
+          "2026-10-07"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Israelis mourn 7 October attack victims three years after…",
+        "meta_description": "World report published by BBC World on 2026-10-07. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-07",
+          "world news",
+          "global headlines",
+          "israelis",
+          "mourn",
+          "october",
+          "attack",
+          "victims",
+          "three",
+          "Israelis mourn 7 October attack victims three years after deadly Hamas raid 2026-10-07",
+          "world news October 2026",
+          "2026-10-07",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-07T22:14:01.272Z"
+      }
+    },
+    {
+      "id": "b57064fb",
+      "title": "Maduro e esposa serão acusados de tortura contra cidadãos americanos, diz agência",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/07/maduro-e-esposa-devem-receber-novas-acusacoes-por-tortura-contra-cidadaos-americanos-diz-tv.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-07T20:23:00.000Z",
+      "discovered_at": "2026-10-07T22:14:01.272Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-07. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/wi1_VbwrzE3fNqUSfxcjXP-SIew=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/X/E/FaUFxIQeWN1zo6d7I4BQ/fotojet-66-.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/maduro-e-esposa-serao-acusados-de-tortura-contra-cidadaos-americanos-diz-agencia-b57064/",
+      "landing_url": "https://matchapp.tv/?news=b57064fb#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-07",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "maduro",
+          "esposa",
+          "serao",
+          "acusados",
+          "tortura",
+          "contra"
+        ],
+        "long_tail": [
+          "Maduro e esposa serão acusados de tortura contra cidadãos americanos, diz agência 2026-10-07",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "maduro",
+          "esposa",
+          "serao",
+          "acusados",
+          "tortura",
+          "contra"
+        ],
+        "freshness_keywords": [
+          "2026-10-07"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Maduro e esposa serão acusados de tortura contra cidadãos…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-07. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-07",
+          "notícias do mundo",
+          "notícias internacionais",
+          "maduro",
+          "esposa",
+          "serao",
+          "acusados",
+          "tortura",
+          "contra",
+          "Maduro e esposa serão acusados de tortura contra cidadãos americanos, diz agência 2026-10-07",
+          "notícias mundiais outubro 2026",
+          "2026-10-07",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-07T22:14:01.272Z"
+      }
+    },
+    {
+      "id": "e8b37ec2",
+      "title": "Músico é condenado à prisão por fraudar plataformas de streaming com 'ouvintes fantasmas'",
+      "url": "https://g1.globo.com/pop-arte/noticia/2026/10/07/musico-e-condenado-a-prisao-por-fraudar-plataformas-de-streaming-com-ouvintes-fantasmas.ghtml",
+      "source": "G1",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "BR",
+      "language": "pt",
+      "published_at": "2026-10-07T19:55:15.000Z",
+      "discovered_at": "2026-10-07T22:14:01.272Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "",
+      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
+      "image": "https://s2-g1.glbimg.com/jVnwF2yKQjtC-Xm6CZiWulyMXao=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/m/B/RpPDViTLGMs7RG47C4DA/fotos-g1-1920-x-1080-px-2026-10-07t164913.764.png",
+      "matchapp_url": "https://matchapp.tv/news/articles/musico-e-condenado-a-prisao-por-fraudar-plataformas-de-streaming-com-ouvintes-fa-e8b37e/",
+      "landing_url": "https://matchapp.tv/?news=e8b37ec2#latest-news",
+      "seo": {
+        "primary_keyword": "musico condenado prisao fraudar últimas notícias",
+        "short_tail": [
+          "musico condenado prisao fraudar",
+          "musico condenado prisao fraudar news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje"
+        ],
+        "long_tail": [
+          "musico condenado prisao fraudar latest news October 2026",
+          "musico condenado prisao fraudar entertainment update 2026",
+          "musico condenado prisao fraudar news 2026-10-07",
+          "latest entertainment news about musico condenado prisao fraudar",
+          "musico condenado prisao fraudar plataformas streaming latest update",
+          "G1 musico condenado prisao fraudar entertainment",
+          "últimas notícias sobre musico condenado prisao fraudar outubro 2026",
+          "musico condenado prisao fraudar notícia de 2026-10-07",
+          "o que aconteceu com musico condenado prisao fraudar"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "musico",
+          "condenado",
+          "prisao",
+          "fraudar",
+          "plataformas",
+          "streaming",
+          "ouvintes",
+          "fantasmas"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-07",
+          "outubro 2026",
+          "musico condenado prisao fraudar 2026"
+        ],
+        "source_keywords": [
+          "G1 musico condenado prisao fraudar",
+          "g1.globo.com musico condenado prisao fraudar",
+          "G1 entertainment news"
+        ],
+        "meta_title": "Músico é condenado à prisão por fraudar plataformas de…",
+        "meta_description": "Notícia publicada por G1 em 2026-10-07. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
+        "keywords": [
+          "musico condenado prisao fraudar últimas notícias",
+          "musico condenado prisao fraudar",
+          "musico condenado prisao fraudar news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje",
+          "musico condenado prisao fraudar latest news October 2026",
+          "musico condenado prisao fraudar entertainment update 2026",
+          "musico condenado prisao fraudar news 2026-10-07",
+          "latest entertainment news about musico condenado prisao fraudar",
+          "musico condenado prisao fraudar plataformas streaming latest update",
+          "G1 musico condenado prisao fraudar entertainment",
+          "últimas notícias sobre musico condenado prisao fraudar outubro 2026",
+          "musico condenado prisao fraudar notícia de 2026-10-07",
+          "o que aconteceu com musico condenado prisao fraudar",
+          "musico",
+          "condenado",
+          "prisao",
+          "fraudar",
+          "plataformas",
+          "streaming",
+          "ouvintes",
+          "fantasmas",
+          "October 2026",
+          "2026-10-07",
+          "outubro 2026",
+          "musico condenado prisao fraudar 2026",
+          "G1 musico condenado prisao fraudar",
+          "g1.globo.com musico condenado prisao fraudar",
+          "G1 entertainment news"
+        ],
+        "seo_generated_at": "2026-10-07T22:14:01.272Z"
+      }
+    },
+    {
+      "id": "d44aac35",
+      "title": "The “Rape of Christ” Scene from 1971’s ‘The Devils’ Is Back. Is the World Finally Ready?",
+      "url": "https://www.hollywoodreporter.com/movies/movie-features/devils-rape-of-christ-ken-russell-warner-bros-clockwork-1236724719/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-07T19:54:28.000Z",
+      "discovered_at": "2026-10-07T22:14:01.272Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "",
+      "description": "entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/rev-1-2_-_KR71_-_CANNES_KEY_SET_-_FULL_RES_High_Res_JPEG-H-2026.jpg?w=1296&h=730&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/the-rape-of-christ-scene-from-1971-s-the-devils-is-back-is-the-world-finally-rea-d44aac/",
+      "landing_url": "https://matchapp.tv/?news=d44aac35#latest-news",
+      "seo": {
+        "primary_keyword": "rape christ scene 1971 latest news",
+        "short_tail": [
+          "rape christ scene 1971",
+          "rape christ scene 1971 news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "rape christ scene 1971 latest news October 2026",
+          "rape christ scene 1971 entertainment update 2026",
+          "rape christ scene 1971 news 2026-10-07",
+          "latest entertainment news about rape christ scene 1971",
+          "rape christ scene 1971 devils back latest update",
+          "The Hollywood Reporter rape christ scene 1971 entertainment",
+          "latest news about rape christ scene 1971 October 2026",
+          "rape christ scene 1971 entertainment news 2026-10-07",
+          "what happened with rape christ scene 1971"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "rape",
+          "christ",
+          "scene",
+          "1971",
+          "devils",
+          "back",
+          "world",
+          "finally"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-07",
+          "rape christ scene 1971 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter rape christ scene 1971",
+          "hollywoodreporter.com rape christ scene 1971",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "The “Rape of Christ” Scene from 1971’s ‘The Devils’ Is…",
+        "meta_description": "Entertainment update reported by The Hollywood Reporter on 2026-10-07. See verified context, publication time and the original source via MatchApp Ai.",
+        "keywords": [
+          "rape christ scene 1971 latest news",
+          "rape christ scene 1971",
+          "rape christ scene 1971 news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "rape christ scene 1971 latest news October 2026",
+          "rape christ scene 1971 entertainment update 2026",
+          "rape christ scene 1971 news 2026-10-07",
+          "latest entertainment news about rape christ scene 1971",
+          "rape christ scene 1971 devils back latest update",
+          "The Hollywood Reporter rape christ scene 1971 entertainment",
+          "latest news about rape christ scene 1971 October 2026",
+          "rape christ scene 1971 entertainment news 2026-10-07",
+          "what happened with rape christ scene 1971",
+          "rape",
+          "christ",
+          "scene",
+          "1971",
+          "devils",
+          "back",
+          "world",
+          "finally",
+          "October 2026",
+          "2026-10-07",
+          "rape christ scene 1971 2026",
+          "The Hollywood Reporter rape christ scene 1971",
+          "hollywoodreporter.com rape christ scene 1971",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-07T22:14:01.272Z"
+      }
+    },
+    {
+      "id": "c7430c13",
+      "title": "Canada suspends plans to expand assisted dying to people with mental illness",
+      "url": "https://www.bbc.co.uk/news/articles/cqd09g0gj50ko?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-07T19:30:51.000Z",
+      "discovered_at": "2026-10-07T17:49:47.639Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-07. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/f330/live/0e148220-c285-11f1-bc2e-018d645d8d21.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/canada-suspends-plans-to-expand-assisted-dying-to-people-with-mental-illness-c7430c/",
+      "landing_url": "https://matchapp.tv/?news=c7430c13#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-07",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "canada",
+          "suspends",
+          "plans",
+          "expand",
+          "assisted",
+          "dying"
+        ],
+        "long_tail": [
+          "Canada suspends plans to expand assisted dying to people with mental illness 2026-10-07",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "canada",
+          "suspends",
+          "plans",
+          "expand",
+          "assisted",
+          "dying"
+        ],
+        "freshness_keywords": [
+          "2026-10-07"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Canada suspends plans to expand assisted dying to people…",
+        "meta_description": "World report published by BBC World on 2026-10-07. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-07",
+          "world news",
+          "global headlines",
+          "canada",
+          "suspends",
+          "plans",
+          "expand",
+          "assisted",
+          "dying",
+          "Canada suspends plans to expand assisted dying to people with mental illness 2026-10-07",
+          "world news October 2026",
+          "2026-10-07",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-07T22:14:01.272Z"
+      }
+    },
+    {
+      "id": "81555afd",
+      "title": "Crítico dos juros nos EUA, Trump acusa dirigentes do Fed de quererem 'ver o país ir mal'",
+      "url": "https://g1.globo.com/economia/noticia/2026/10/07/trump-dirigentes-fed.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-07T19:18:31.000Z",
+      "discovered_at": "2026-10-07T22:14:01.272Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-07. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/q_X9bDngvtfwfoZNgVt7BAbAfEI=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/a/B/ds967IQEiSI3hs7NvFTA/2026-10-07t180124z-1019285318-rc2iyna3g6ts-rtrmadp-3-usa-trump.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/critico-dos-juros-nos-eua-trump-acusa-dirigentes-do-fed-de-quererem-ver-o-pais-i-81555a/",
+      "landing_url": "https://matchapp.tv/?news=81555afd#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-07",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "critico",
+          "juros",
+          "eua",
+          "trump",
+          "acusa",
+          "dirigentes"
+        ],
+        "long_tail": [
+          "Crítico dos juros nos EUA, Trump acusa dirigentes do Fed de quererem 'ver o país ir mal' 2026-10-07",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "critico",
+          "juros",
+          "eua",
+          "trump",
+          "acusa",
+          "dirigentes"
+        ],
+        "freshness_keywords": [
+          "2026-10-07"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Crítico dos juros nos EUA, Trump acusa dirigentes do Fed…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-07. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-07",
+          "notícias do mundo",
+          "notícias internacionais",
+          "critico",
+          "juros",
+          "eua",
+          "trump",
+          "acusa",
+          "dirigentes",
+          "Crítico dos juros nos EUA, Trump acusa dirigentes do Fed de quererem 'ver o país ir mal' 2026-10-07",
+          "notícias mundiais outubro 2026",
+          "2026-10-07",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-07T22:14:01.272Z"
+      }
+    },
+    {
+      "id": "69596dbd",
+      "title": "Morre aos 87 anos mulher que foi despejada e virou símbolo da luta por moradia na Espanha",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/07/morre-aos-87-anos-mulher-que-se-tornou-simbolo-da-luta-contra-despejos-na-espanha.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-07T18:53:42.000Z",
+      "discovered_at": "2026-10-07T22:14:01.272Z",
+      "event_type": "Obituary",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-07. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/Yd04aQFEy9SiHMspXdNZykQYtf8=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/R/w/qpbqRfTbALepnQtxayIw/captura-de-tela-2026-09-29-091008.png",
+      "matchapp_url": "https://matchapp.tv/news/articles/morre-aos-87-anos-mulher-que-foi-despejada-e-virou-simbolo-da-luta-por-moradia-n-69596d/",
+      "landing_url": "https://matchapp.tv/?news=69596dbd#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-07",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "morre",
+          "aos",
+          "anos",
+          "mulher",
+          "que",
+          "foi"
+        ],
+        "long_tail": [
+          "Morre aos 87 anos mulher que foi despejada e virou símbolo da luta por moradia na Espanha 2026-10-07",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "morre",
+          "aos",
+          "anos",
+          "mulher",
+          "que",
+          "foi"
+        ],
+        "freshness_keywords": [
+          "2026-10-07"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Morre aos 87 anos mulher que foi despejada e virou símbolo…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-07. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-07",
+          "notícias do mundo",
+          "notícias internacionais",
+          "morre",
+          "aos",
+          "anos",
+          "mulher",
+          "que",
+          "foi",
+          "Morre aos 87 anos mulher que foi despejada e virou símbolo da luta por moradia na Espanha 2026-10-07",
+          "notícias mundiais outubro 2026",
+          "2026-10-07",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-07T22:14:01.272Z"
+      }
+    },
+    {
+      "id": "da961de5",
+      "title": "Christa Pike está com raiva e confusa após sobreviver à execução, diz advogado",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/07/christa-pike-esta-com-raiva-e-confusa-apos-sobreviver-a-execucao-diz-advogado.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-07T18:52:02.000Z",
+      "discovered_at": "2026-10-07T22:14:01.272Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "Christa Pike",
+      "description": "World news reported by G1 Mundo on 2026-10-07. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/HDK2ke8q3xiVWdFGMTwrMZisG2M=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/j/W/XLzzudQs295Kyy1E4Blw/2026-10-01t075544z-184107085-rc2ptnayxsrm-rtrmadp-3-tennessee-execution.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/christa-pike-esta-com-raiva-e-confusa-apos-sobreviver-a-execucao-diz-advogado-da961d/",
+      "landing_url": "https://matchapp.tv/?news=da961de5#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-07",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "christa",
+          "pike",
+          "esta",
+          "raiva",
+          "confusa",
+          "apos"
+        ],
+        "long_tail": [
+          "Christa Pike está com raiva e confusa após sobreviver à execução, diz advogado 2026-10-07",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "christa",
+          "pike",
+          "esta",
+          "raiva",
+          "confusa",
+          "apos"
+        ],
+        "freshness_keywords": [
+          "2026-10-07"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Christa Pike está com raiva e confusa após sobreviver à…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-07. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-07",
+          "notícias do mundo",
+          "notícias internacionais",
+          "christa",
+          "pike",
+          "esta",
+          "raiva",
+          "confusa",
+          "apos",
+          "Christa Pike está com raiva e confusa após sobreviver à execução, diz advogado 2026-10-07",
+          "notícias mundiais outubro 2026",
+          "2026-10-07",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-07T22:14:01.272Z"
+      }
+    },
+    {
+      "id": "d83e27f2",
+      "title": "Pitty revela a capa e os nomes das 13 músicas do sexto álbum solo de estúdio após o controverso single 'Sobremesa'",
+      "url": "https://g1.globo.com/pop-arte/musica/blog/mauro-ferreira/post/2026/10/07/pitty-revela-a-capa-e-os-nomes-das-13-musicas-do-sexto-album-solo-de-estudio-apos-o-controverso-single-sobremesa.ghtml",
+      "source": "G1",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "BR",
+      "language": "pt",
+      "published_at": "2026-10-07T18:50:06.000Z",
+      "discovered_at": "2026-10-07T22:14:01.272Z",
+      "event_type": "Music",
+      "category": "entertainment",
+      "person": "",
+      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
+      "image": "https://s2-g1.glbimg.com/1vKpTCwqjiodM6HVU5WxmK4vgYo=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/e/P/RpWaJERimeC4lwdNtoqA/capa-album-pitty.jpeg",
+      "matchapp_url": "https://matchapp.tv/news/articles/pitty-revela-a-capa-e-os-nomes-das-13-musicas-do-sexto-album-solo-de-estudio-apo-d83e27/",
+      "landing_url": "https://matchapp.tv/?news=d83e27f2#latest-news",
+      "seo": {
+        "primary_keyword": "pitty revela capa nomes últimas notícias",
+        "short_tail": [
+          "pitty revela capa nomes",
+          "pitty revela capa nomes news",
+          "music",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje"
+        ],
+        "long_tail": [
+          "pitty revela capa nomes latest news October 2026",
+          "pitty revela capa nomes music update 2026",
+          "pitty revela capa nomes news 2026-10-07",
+          "latest music news about pitty revela capa nomes",
+          "pitty revela capa nomes musicas sexto latest update",
+          "G1 pitty revela capa nomes music",
+          "últimas notícias sobre pitty revela capa nomes outubro 2026",
+          "pitty revela capa nomes notícia de 2026-10-07",
+          "o que aconteceu com pitty revela capa nomes"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "pitty",
+          "revela",
+          "capa",
+          "nomes",
+          "musicas",
+          "sexto",
+          "album",
+          "solo"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-07",
+          "outubro 2026",
+          "pitty revela capa nomes 2026"
+        ],
+        "source_keywords": [
+          "G1 pitty revela capa nomes",
+          "g1.globo.com pitty revela capa nomes",
+          "G1 entertainment news"
+        ],
+        "meta_title": "Pitty revela a capa e os nomes das 13 músicas do sexto…",
+        "meta_description": "Notícia publicada por G1 em 2026-10-07. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
+        "keywords": [
+          "pitty revela capa nomes últimas notícias",
+          "pitty revela capa nomes",
+          "pitty revela capa nomes news",
+          "music",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje",
+          "pitty revela capa nomes latest news October 2026",
+          "pitty revela capa nomes music update 2026",
+          "pitty revela capa nomes news 2026-10-07",
+          "latest music news about pitty revela capa nomes",
+          "pitty revela capa nomes musicas sexto latest update",
+          "G1 pitty revela capa nomes music",
+          "últimas notícias sobre pitty revela capa nomes outubro 2026",
+          "pitty revela capa nomes notícia de 2026-10-07",
+          "o que aconteceu com pitty revela capa nomes",
+          "pitty",
+          "revela",
+          "capa",
+          "nomes",
+          "musicas",
+          "sexto",
+          "album",
+          "solo",
+          "October 2026",
+          "2026-10-07",
+          "outubro 2026",
+          "pitty revela capa nomes 2026",
+          "G1 pitty revela capa nomes",
+          "g1.globo.com pitty revela capa nomes",
+          "G1 entertainment news"
+        ],
+        "seo_generated_at": "2026-10-07T22:14:01.272Z"
+      }
+    },
+    {
+      "id": "eb10812f",
+      "title": "Alvo de protestos, Rubio associa valores da Grécia Antiga ao lema 'America First': 'Poder sem remorso'",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/07/em-atenas-rubio-associa-valores-da-grecia-antiga-ao-lema-america-first-busca-por-poder-sem-remorso.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-07T18:47:35.000Z",
+      "discovered_at": "2026-10-07T22:14:01.272Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-07. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/88bUVMRGsE_-VwxbCXRAvU03nT8=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/O/5/q6NksJQ0e7ulmN7oWeAQ/2026-10-07t161124z-1903797484-rc2fynazkqxs-rtrmadp-3-usa-rubio-europe-greece.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/alvo-de-protestos-rubio-associa-valores-da-grecia-antiga-ao-lema-america-first-p-eb1081/",
+      "landing_url": "https://matchapp.tv/?news=eb10812f#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-07",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "alvo",
+          "protestos",
+          "rubio",
+          "associa",
+          "valores",
+          "grecia"
+        ],
+        "long_tail": [
+          "Alvo de protestos, Rubio associa valores da Grécia Antiga ao lema 'America First': 'Poder sem remorso' 2026-10-07",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "alvo",
+          "protestos",
+          "rubio",
+          "associa",
+          "valores",
+          "grecia"
+        ],
+        "freshness_keywords": [
+          "2026-10-07"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Alvo de protestos, Rubio associa valores da Grécia Antiga…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-07. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-07",
+          "notícias do mundo",
+          "notícias internacionais",
+          "alvo",
+          "protestos",
+          "rubio",
+          "associa",
+          "valores",
+          "grecia",
+          "Alvo de protestos, Rubio associa valores da Grécia Antiga ao lema 'America First': 'Poder sem remorso' 2026-10-07",
+          "notícias mundiais outubro 2026",
+          "2026-10-07",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-07T22:14:01.272Z"
+      }
+    },
+    {
+      "id": "25a768bd",
+      "title": "Trump to speak to Putin about plague lab worker's death in Russia",
+      "url": "https://www.bbc.co.uk/news/articles/cqgm0vrl3xp7o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-07T18:27:40.000Z",
+      "discovered_at": "2026-10-07T17:49:47.639Z",
+      "event_type": "Obituary",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-07. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/3744/live/6325d7d0-c18d-11f1-83c7-97e75190a976.png",
+      "matchapp_url": "https://matchapp.tv/news/articles/trump-to-speak-to-putin-about-plague-lab-worker-s-death-in-russia-25a768/",
+      "landing_url": "https://matchapp.tv/?news=25a768bd#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-07",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "trump",
+          "speak",
+          "putin",
+          "about",
+          "plague",
+          "lab"
+        ],
+        "long_tail": [
+          "Trump to speak to Putin about plague lab worker's death in Russia 2026-10-07",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "trump",
+          "speak",
+          "putin",
+          "about",
+          "plague",
+          "lab"
+        ],
+        "freshness_keywords": [
+          "2026-10-07"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Trump to speak to Putin about plague lab worker's death in…",
+        "meta_description": "World report published by BBC World on 2026-10-07. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-07",
+          "world news",
+          "global headlines",
+          "trump",
+          "speak",
+          "putin",
+          "about",
+          "plague",
+          "lab",
+          "Trump to speak to Putin about plague lab worker's death in Russia 2026-10-07",
+          "world news October 2026",
+          "2026-10-07",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-07T22:14:01.272Z"
+      }
+    },
+    {
+      "id": "b267d4dc",
+      "title": "Children killed while they slept as Russian missile kills 19 in block of flats",
+      "url": "https://www.bbc.co.uk/news/articles/ckr5ym098vdeo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-07T18:12:58.000Z",
+      "discovered_at": "2026-10-07T17:49:47.639Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-07. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/519e/live/6e49e580-c268-11f1-babe-4199b0e7ccea.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/children-killed-while-they-slept-as-russian-missile-kills-19-in-block-of-flats-b267d4/",
+      "landing_url": "https://matchapp.tv/?news=b267d4dc#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-07",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "children",
+          "killed",
+          "while",
+          "they",
+          "slept",
+          "russian"
+        ],
+        "long_tail": [
+          "Children killed while they slept as Russian missile kills 19 in block of flats 2026-10-07",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "children",
+          "killed",
+          "while",
+          "they",
+          "slept",
+          "russian"
+        ],
+        "freshness_keywords": [
+          "2026-10-07"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Children killed while they slept as Russian missile kills…",
+        "meta_description": "World report published by BBC World on 2026-10-07. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-07",
+          "world news",
+          "global headlines",
+          "children",
+          "killed",
+          "while",
+          "they",
+          "slept",
+          "russian",
+          "Children killed while they slept as Russian missile kills 19 in block of flats 2026-10-07",
+          "world news October 2026",
+          "2026-10-07",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-07T22:14:01.272Z"
+      }
+    },
+    {
+      "id": "5c431c15",
+      "title": "Lulu Santos ganha o 10º Prêmio UBC pela excelência pop de cancioneiro autoral que cruza pontes e gerações",
+      "url": "https://g1.globo.com/pop-arte/musica/blog/mauro-ferreira/post/2026/10/07/lulu-santos-ganha-o-10o-premio-ubc-pela-excelencia-pop-de-cancioneiro-autoral-que-cruza-pontes-e-geracoes.ghtml",
+      "source": "G1",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "BR",
+      "language": "pt",
+      "published_at": "2026-10-07T17:57:31.000Z",
+      "discovered_at": "2026-10-07T22:14:01.272Z",
+      "event_type": "Awards",
+      "category": "entertainment",
+      "person": "Lulu Santos",
+      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
+      "image": "https://s2-g1.glbimg.com/rSkygOzt2K6D1_rNo4NW7joSOK8=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/q/u/YKsAzLRe6QlAA3Sv5WYQ/lulualexsantana.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/lulu-santos-ganha-o-10-premio-ubc-pela-excelencia-pop-de-cancioneiro-autoral-que-5c431c/",
+      "landing_url": "https://matchapp.tv/?news=5c431c15#latest-news",
+      "seo": {
+        "primary_keyword": "Lulu Santos últimas notícias",
+        "short_tail": [
+          "Lulu Santos",
+          "Lulu Santos news",
+          "awards",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje"
+        ],
+        "long_tail": [
+          "Lulu Santos latest news October 2026",
+          "Lulu Santos awards update 2026",
+          "Lulu Santos news 2026-10-07",
+          "latest awards news about Lulu Santos",
+          "lulu santos lulu santos ganha premio latest update",
+          "G1 Lulu Santos awards",
+          "últimas notícias sobre Lulu Santos outubro 2026",
+          "Lulu Santos notícia de 2026-10-07",
+          "o que aconteceu com Lulu Santos"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "Lulu Santos",
+          "lulu",
+          "santos",
+          "ganha",
+          "premio",
+          "ubc",
+          "pela"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-07",
+          "outubro 2026",
+          "Lulu Santos 2026"
+        ],
+        "source_keywords": [
+          "G1 Lulu Santos",
+          "g1.globo.com Lulu Santos",
+          "G1 entertainment news"
+        ],
+        "meta_title": "Lulu Santos ganha o 10º Prêmio UBC pela excelência pop de…",
+        "meta_description": "Lulu Santos: Notícia publicada por G1 em 2026-10-07. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
+        "keywords": [
+          "Lulu Santos últimas notícias",
+          "Lulu Santos",
+          "Lulu Santos news",
+          "awards",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje",
+          "Lulu Santos latest news October 2026",
+          "Lulu Santos awards update 2026",
+          "Lulu Santos news 2026-10-07",
+          "latest awards news about Lulu Santos",
+          "lulu santos lulu santos ganha premio latest update",
+          "G1 Lulu Santos awards",
+          "últimas notícias sobre Lulu Santos outubro 2026",
+          "Lulu Santos notícia de 2026-10-07",
+          "o que aconteceu com Lulu Santos",
+          "lulu",
+          "santos",
+          "ganha",
+          "premio",
+          "ubc",
+          "pela",
+          "October 2026",
+          "2026-10-07",
+          "outubro 2026",
+          "Lulu Santos 2026",
+          "G1 Lulu Santos",
+          "g1.globo.com Lulu Santos",
+          "G1 entertainment news"
+        ],
+        "seo_generated_at": "2026-10-07T22:14:01.272Z"
+      }
+    },
     {
       "id": "bbffa81b",
       "title": "France halts use of stun grenades after boy's hand blown off in student protests",
@@ -71,7 +1755,7 @@
           "2026-10-07",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-07T17:49:47.639Z"
+        "seo_generated_at": "2026-10-07T22:14:01.272Z"
       }
     },
     {
@@ -172,267 +1856,7 @@
           "g1.globo.com fosse voce passa bastao",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T17:49:47.639Z"
-      }
-    },
-    {
-      "id": "c7430c13",
-      "title": "Canada suspends plans to expand assisted dying to people with mental illness",
-      "url": "https://www.bbc.co.uk/news/articles/cqd09g0gj50ko?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-07T17:29:46.000Z",
-      "discovered_at": "2026-10-07T17:49:47.639Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-07. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/304d/live/e5ca5340-c26a-11f1-b278-615cdfb74f16.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/canada-suspends-plans-to-expand-assisted-dying-to-people-with-mental-illness-c7430c/",
-      "landing_url": "https://matchapp.tv/?news=c7430c13#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-07",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "canada",
-          "suspends",
-          "plans",
-          "expand",
-          "assisted",
-          "dying"
-        ],
-        "long_tail": [
-          "Canada suspends plans to expand assisted dying to people with mental illness 2026-10-07",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "canada",
-          "suspends",
-          "plans",
-          "expand",
-          "assisted",
-          "dying"
-        ],
-        "freshness_keywords": [
-          "2026-10-07"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Canada suspends plans to expand assisted dying to people…",
-        "meta_description": "World report published by BBC World on 2026-10-07. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-07",
-          "world news",
-          "global headlines",
-          "canada",
-          "suspends",
-          "plans",
-          "expand",
-          "assisted",
-          "dying",
-          "Canada suspends plans to expand assisted dying to people with mental illness 2026-10-07",
-          "world news October 2026",
-          "2026-10-07",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-07T17:49:47.639Z"
-      }
-    },
-    {
-      "id": "3fa7a839",
-      "title": "Inside the ‘Verity’ House: Designing a “Fever Dream” You Can’t Escape",
-      "url": "https://www.hollywoodreporter.com/movies/movie-features/verity-movie-house-location-design-colleen-hoover-1236720646/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-10-07T17:04:41.000Z",
-      "discovered_at": "2026-10-07T17:49:47.639Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "",
-      "description": "entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/VerityHouseSplit.jpg?w=1296&h=730&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/inside-the-verity-house-designing-a-fever-dream-you-can-t-escape-3fa7a8/",
-      "landing_url": "https://matchapp.tv/?news=3fa7a839#latest-news",
-      "seo": {
-        "primary_keyword": "inside verity house designing latest news",
-        "short_tail": [
-          "inside verity house designing",
-          "inside verity house designing news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "inside verity house designing latest news October 2026",
-          "inside verity house designing entertainment update 2026",
-          "inside verity house designing news 2026-10-07",
-          "latest entertainment news about inside verity house designing",
-          "inside verity house designing fever dream latest update",
-          "The Hollywood Reporter inside verity house designing entertainment",
-          "latest news about inside verity house designing October 2026",
-          "inside verity house designing entertainment news 2026-10-07",
-          "what happened with inside verity house designing"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "inside",
-          "verity",
-          "house",
-          "designing",
-          "fever",
-          "dream",
-          "you",
-          "can"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-07",
-          "inside verity house designing 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter inside verity house designing",
-          "hollywoodreporter.com inside verity house designing",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "Inside the ‘Verity’ House: Designing a “Fever Dream” You…",
-        "meta_description": "Entertainment update reported by The Hollywood Reporter on 2026-10-07. See verified context, publication time and the original source via MatchApp Ai.",
-        "keywords": [
-          "inside verity house designing latest news",
-          "inside verity house designing",
-          "inside verity house designing news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "inside verity house designing latest news October 2026",
-          "inside verity house designing entertainment update 2026",
-          "inside verity house designing news 2026-10-07",
-          "latest entertainment news about inside verity house designing",
-          "inside verity house designing fever dream latest update",
-          "The Hollywood Reporter inside verity house designing entertainment",
-          "latest news about inside verity house designing October 2026",
-          "inside verity house designing entertainment news 2026-10-07",
-          "what happened with inside verity house designing",
-          "inside",
-          "verity",
-          "house",
-          "designing",
-          "fever",
-          "dream",
-          "you",
-          "can",
-          "October 2026",
-          "2026-10-07",
-          "inside verity house designing 2026",
-          "The Hollywood Reporter inside verity house designing",
-          "hollywoodreporter.com inside verity house designing",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-07T17:49:47.639Z"
-      }
-    },
-    {
-      "id": "3e8dd54f",
-      "title": "James Gunn Fires Back at Fan Who Snarked: “Who Asked for a ‘Clayface’ Movie?”",
-      "url": "https://www.hollywoodreporter.com/movies/movie-news/james-gunn-clayface-movie-1236724447/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-10-07T17:00:03.000Z",
-      "discovered_at": "2026-10-07T17:49:47.639Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "James Gunn Fires Back",
-      "description": "James Gunn Fires Back: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/09/rev-1-CLAY-02881_High_Res_JPEG-H-2026.jpg?w=1296&h=730&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/james-gunn-fires-back-at-fan-who-snarked-who-asked-for-a-clayface-movie-3e8dd5/",
-      "landing_url": "https://matchapp.tv/?news=3e8dd54f#latest-news",
-      "seo": {
-        "primary_keyword": "James Gunn Fires Back latest news",
-        "short_tail": [
-          "James Gunn Fires Back",
-          "James Gunn Fires Back news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "James Gunn Fires Back latest news October 2026",
-          "James Gunn Fires Back entertainment update 2026",
-          "James Gunn Fires Back news 2026-10-07",
-          "latest entertainment news about James Gunn Fires Back",
-          "james gunn fires back james gunn latest update",
-          "The Hollywood Reporter James Gunn Fires Back entertainment",
-          "latest news about James Gunn Fires Back October 2026",
-          "James Gunn Fires Back entertainment news 2026-10-07",
-          "what happened with James Gunn Fires Back"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "James Gunn Fires Back",
-          "james",
-          "gunn",
-          "fires",
-          "back"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-07",
-          "James Gunn Fires Back 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter James Gunn Fires Back",
-          "hollywoodreporter.com James Gunn Fires Back",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "James Gunn Fires Back at Fan Who Snarked: “Who Asked for a…",
-        "meta_description": "James Gunn Fires Back: Entertainment update reported by The Hollywood Reporter on 2026-10-07. See verified context, publication time and the original source…",
-        "keywords": [
-          "James Gunn Fires Back latest news",
-          "James Gunn Fires Back",
-          "James Gunn Fires Back news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "James Gunn Fires Back latest news October 2026",
-          "James Gunn Fires Back entertainment update 2026",
-          "James Gunn Fires Back news 2026-10-07",
-          "latest entertainment news about James Gunn Fires Back",
-          "james gunn fires back james gunn latest update",
-          "The Hollywood Reporter James Gunn Fires Back entertainment",
-          "latest news about James Gunn Fires Back October 2026",
-          "James Gunn Fires Back entertainment news 2026-10-07",
-          "what happened with James Gunn Fires Back",
-          "james",
-          "gunn",
-          "fires",
-          "back",
-          "October 2026",
-          "2026-10-07",
-          "James Gunn Fires Back 2026",
-          "The Hollywood Reporter James Gunn Fires Back",
-          "hollywoodreporter.com James Gunn Fires Back",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-07T17:49:47.639Z"
+        "seo_generated_at": "2026-10-07T22:14:01.272Z"
       }
     },
     {
@@ -501,7 +1925,7 @@
           "2026-10-07",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-07T17:49:47.639Z"
+        "seo_generated_at": "2026-10-07T22:14:01.272Z"
       }
     },
     {
@@ -570,722 +1994,7 @@
           "2026-10-07",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-07T17:49:47.639Z"
-      }
-    },
-    {
-      "id": "85ab6994",
-      "title": "Best New Artist: It’s Ella Langley’s Grammy to Lose",
-      "url": "https://www.hollywoodreporter.com/music/music-features/grammys-2027-best-new-artist-predictions-1236723319/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-10-07T16:30:00.000Z",
-      "discovered_at": "2026-10-07T17:49:47.639Z",
-      "event_type": "Awards",
-      "category": "entertainment",
-      "person": "Best New Artist",
-      "description": "Best New Artist: awards headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/18fea_music_bestnewartists-SPLASH-2026.jpg?w=1440&h=810&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/best-new-artist-it-s-ella-langley-s-grammy-to-lose-85ab69/",
-      "landing_url": "https://matchapp.tv/?news=85ab6994#latest-news",
-      "seo": {
-        "primary_keyword": "Best New Artist latest news",
-        "short_tail": [
-          "Best New Artist",
-          "Best New Artist news",
-          "awards",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "Best New Artist latest news October 2026",
-          "Best New Artist awards update 2026",
-          "Best New Artist news 2026-10-07",
-          "latest awards news about Best New Artist",
-          "best new artist best new artist latest update",
-          "The Hollywood Reporter Best New Artist awards",
-          "latest news about Best New Artist October 2026",
-          "Best New Artist entertainment news 2026-10-07",
-          "what happened with Best New Artist"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Best New Artist",
-          "best",
-          "new",
-          "artist",
-          "ella",
-          "langley"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-07",
-          "Best New Artist 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter Best New Artist",
-          "hollywoodreporter.com Best New Artist",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "Best New Artist: It’s Ella Langley’s Grammy to Lose |…",
-        "meta_description": "Best New Artist: Awards update reported by The Hollywood Reporter on 2026-10-07. See verified context, publication time and the original source via MatchApp…",
-        "keywords": [
-          "Best New Artist latest news",
-          "Best New Artist",
-          "Best New Artist news",
-          "awards",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "Best New Artist latest news October 2026",
-          "Best New Artist awards update 2026",
-          "Best New Artist news 2026-10-07",
-          "latest awards news about Best New Artist",
-          "best new artist best new artist latest update",
-          "The Hollywood Reporter Best New Artist awards",
-          "latest news about Best New Artist October 2026",
-          "Best New Artist entertainment news 2026-10-07",
-          "what happened with Best New Artist",
-          "best",
-          "new",
-          "artist",
-          "ella",
-          "langley",
-          "October 2026",
-          "2026-10-07",
-          "Best New Artist 2026",
-          "The Hollywood Reporter Best New Artist",
-          "hollywoodreporter.com Best New Artist",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-07T17:49:47.639Z"
-      }
-    },
-    {
-      "id": "733b136c",
-      "title": "França convoca embaixador do Irã por campanha de desinformação sobre protestos estudantis",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/07/franca-convoca-embaixador-do-ira-por-campanha-de-desinformacao-sobre-protestos-estudantis.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-07T16:12:10.000Z",
-      "discovered_at": "2026-10-07T17:49:47.639Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-07. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/f6palfm--sX7V3_atQ9X5ISz8jM=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/h/q/dZIptBRmCcewAmTsNP0g/globo-canal-4-20261006-2000-frame-91068.jpeg",
-      "matchapp_url": "https://matchapp.tv/news/articles/franca-convoca-embaixador-do-ira-por-campanha-de-desinformacao-sobre-protestos-e-733b13/",
-      "landing_url": "https://matchapp.tv/?news=733b136c#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-07",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "franca",
-          "convoca",
-          "embaixador",
-          "ira",
-          "campanha",
-          "desinformacao"
-        ],
-        "long_tail": [
-          "França convoca embaixador do Irã por campanha de desinformação sobre protestos estudantis 2026-10-07",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "franca",
-          "convoca",
-          "embaixador",
-          "ira",
-          "campanha",
-          "desinformacao"
-        ],
-        "freshness_keywords": [
-          "2026-10-07"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "França convoca embaixador do Irã por campanha de…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-07. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-07",
-          "notícias do mundo",
-          "notícias internacionais",
-          "franca",
-          "convoca",
-          "embaixador",
-          "ira",
-          "campanha",
-          "desinformacao",
-          "França convoca embaixador do Irã por campanha de desinformação sobre protestos estudantis 2026-10-07",
-          "notícias mundiais outubro 2026",
-          "2026-10-07",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-07T17:49:47.639Z"
-      }
-    },
-    {
-      "id": "3d0fc407",
-      "title": "Blue Planet III ventures into darkest depths of ocean",
-      "url": "https://www.bbc.co.uk/news/articles/c5pvgzvlepr1o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC Science",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-07T16:07:21.000Z",
-      "discovered_at": "2026-10-07T17:49:47.639Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "Blue Planet III",
-      "description": "World news reported by BBC Science on 2026-10-07. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/d5f8/live/1b1aff90-c25c-11f1-bc2e-018d645d8d21.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/blue-planet-iii-ventures-into-darkest-depths-of-ocean-3d0fc4/",
-      "landing_url": "https://matchapp.tv/?news=3d0fc407#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-07",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "blue",
-          "planet",
-          "iii",
-          "ventures",
-          "into",
-          "darkest"
-        ],
-        "long_tail": [
-          "Blue Planet III ventures into darkest depths of ocean 2026-10-07",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "blue",
-          "planet",
-          "iii",
-          "ventures",
-          "into",
-          "darkest"
-        ],
-        "freshness_keywords": [
-          "2026-10-07"
-        ],
-        "source_keywords": [
-          "BBC Science"
-        ],
-        "meta_title": "Blue Planet III ventures into darkest depths of ocean |…",
-        "meta_description": "World report published by BBC Science on 2026-10-07. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-07",
-          "world news",
-          "global headlines",
-          "blue",
-          "planet",
-          "iii",
-          "ventures",
-          "into",
-          "darkest",
-          "Blue Planet III ventures into darkest depths of ocean 2026-10-07",
-          "world news October 2026",
-          "2026-10-07",
-          "BBC Science"
-        ],
-        "seo_generated_at": "2026-10-07T17:49:47.639Z"
-      }
-    },
-    {
-      "id": "6af67099",
-      "title": "Israelis demand accountability over 7 October failures three years after attacks",
-      "url": "https://www.bbc.co.uk/news/articles/c5zjx7xx3487o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-07T16:00:18.000Z",
-      "discovered_at": "2026-10-07T17:49:47.639Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-07. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/80cb/live/9b494cf0-c25f-11f1-babe-4199b0e7ccea.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/israelis-demand-accountability-over-7-october-failures-three-years-after-attacks-6af670/",
-      "landing_url": "https://matchapp.tv/?news=6af67099#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-07",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "israelis",
-          "demand",
-          "accountability",
-          "over",
-          "october",
-          "failures"
-        ],
-        "long_tail": [
-          "Israelis demand accountability over 7 October failures three years after attacks 2026-10-07",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "israelis",
-          "demand",
-          "accountability",
-          "over",
-          "october",
-          "failures"
-        ],
-        "freshness_keywords": [
-          "2026-10-07"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Israelis demand accountability over 7 October failures…",
-        "meta_description": "World report published by BBC World on 2026-10-07. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-07",
-          "world news",
-          "global headlines",
-          "israelis",
-          "demand",
-          "accountability",
-          "over",
-          "october",
-          "failures",
-          "Israelis demand accountability over 7 October failures three years after attacks 2026-10-07",
-          "world news October 2026",
-          "2026-10-07",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-07T17:49:47.639Z"
-      }
-    },
-    {
-      "id": "48dcad44",
-      "title": "Tropical Storm Isaias forecast to become first Atlantic hurricane of 2026",
-      "url": "https://www.bbc.co.uk/weather/articles/cw146l6pnvx0o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC Science",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-07T15:46:46.000Z",
-      "discovered_at": "2026-10-07T17:49:47.639Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "Tropical Storm Isaias",
-      "description": "World news reported by BBC Science on 2026-10-07. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/c868/live/e94d1330-c22f-11f1-be2f-0fbd447d6e43.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/tropical-storm-isaias-forecast-to-become-first-atlantic-hurricane-of-2026-48dcad/",
-      "landing_url": "https://matchapp.tv/?news=48dcad44#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-07",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "tropical",
-          "storm",
-          "isaias",
-          "forecast",
-          "become",
-          "first"
-        ],
-        "long_tail": [
-          "Tropical Storm Isaias forecast to become first Atlantic hurricane of 2026 2026-10-07",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "tropical",
-          "storm",
-          "isaias",
-          "forecast",
-          "become",
-          "first"
-        ],
-        "freshness_keywords": [
-          "2026-10-07"
-        ],
-        "source_keywords": [
-          "BBC Science"
-        ],
-        "meta_title": "Tropical Storm Isaias forecast to become first Atlantic…",
-        "meta_description": "World report published by BBC Science on 2026-10-07. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-07",
-          "world news",
-          "global headlines",
-          "tropical",
-          "storm",
-          "isaias",
-          "forecast",
-          "become",
-          "first",
-          "Tropical Storm Isaias forecast to become first Atlantic hurricane of 2026 2026-10-07",
-          "world news October 2026",
-          "2026-10-07",
-          "BBC Science"
-        ],
-        "seo_generated_at": "2026-10-07T17:49:47.639Z"
-      }
-    },
-    {
-      "id": "0c2c6be1",
-      "title": "Espanha aprova 21 medidas urgentes para enfrentar crise habitacional após protestos",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/07/espanha-aprova-21-medidas-urgentes-para-enfrentar-crise-habitacional-apos-protestos.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-07T15:09:56.000Z",
-      "discovered_at": "2026-10-07T17:49:47.639Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-07. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/u-0cMEn_VGuzhCvIZ7ItcKPU6xw=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/3/V/nVBYkCRdCD5RFSs0GqdQ/ap26278854037490.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/espanha-aprova-21-medidas-urgentes-para-enfrentar-crise-habitacional-apos-protes-0c2c6b/",
-      "landing_url": "https://matchapp.tv/?news=0c2c6be1#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-07",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "espanha",
-          "aprova",
-          "medidas",
-          "urgentes",
-          "enfrentar",
-          "crise"
-        ],
-        "long_tail": [
-          "Espanha aprova 21 medidas urgentes para enfrentar crise habitacional após protestos 2026-10-07",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "espanha",
-          "aprova",
-          "medidas",
-          "urgentes",
-          "enfrentar",
-          "crise"
-        ],
-        "freshness_keywords": [
-          "2026-10-07"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Espanha aprova 21 medidas urgentes para enfrentar crise…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-07. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-07",
-          "notícias do mundo",
-          "notícias internacionais",
-          "espanha",
-          "aprova",
-          "medidas",
-          "urgentes",
-          "enfrentar",
-          "crise",
-          "Espanha aprova 21 medidas urgentes para enfrentar crise habitacional após protestos 2026-10-07",
-          "notícias mundiais outubro 2026",
-          "2026-10-07",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-07T17:49:47.639Z"
-      }
-    },
-    {
-      "id": "989750ac",
-      "title": "World's largest penguin colony hit by 'alarming' decline in numbers",
-      "url": "https://www.bbc.co.uk/news/articles/cr9dzy24g2l7o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC Science",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-07T15:00:35.000Z",
-      "discovered_at": "2026-10-07T17:49:47.639Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC Science on 2026-10-07. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/ad33/live/1a300bd0-c0c6-11f1-a5b0-6f550c662e91.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/world-s-largest-penguin-colony-hit-by-alarming-decline-in-numbers-989750/",
-      "landing_url": "https://matchapp.tv/?news=989750ac#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-07",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "world",
-          "largest",
-          "penguin",
-          "colony",
-          "hit",
-          "alarming"
-        ],
-        "long_tail": [
-          "World's largest penguin colony hit by 'alarming' decline in numbers 2026-10-07",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "world",
-          "largest",
-          "penguin",
-          "colony",
-          "hit",
-          "alarming"
-        ],
-        "freshness_keywords": [
-          "2026-10-07"
-        ],
-        "source_keywords": [
-          "BBC Science"
-        ],
-        "meta_title": "World's largest penguin colony hit by 'alarming' decline…",
-        "meta_description": "World report published by BBC Science on 2026-10-07. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-07",
-          "world news",
-          "global headlines",
-          "world",
-          "largest",
-          "penguin",
-          "colony",
-          "hit",
-          "alarming",
-          "World's largest penguin colony hit by 'alarming' decline in numbers 2026-10-07",
-          "world news October 2026",
-          "2026-10-07",
-          "BBC Science"
-        ],
-        "seo_generated_at": "2026-10-07T17:49:47.639Z"
-      }
-    },
-    {
-      "id": "b267d4dc",
-      "title": "Zelensky condemns 'vile' large-scale Russian attacks that killed 24",
-      "url": "https://www.bbc.co.uk/news/articles/ckr5ym098vdeo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-07T14:53:43.000Z",
-      "discovered_at": "2026-10-07T17:49:47.639Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-07. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/6db9/live/1690bf80-c23b-11f1-be2f-0fbd447d6e43.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/zelensky-condemns-vile-large-scale-russian-attacks-that-killed-24-b267d4/",
-      "landing_url": "https://matchapp.tv/?news=b267d4dc#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-07",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "zelensky",
-          "condemns",
-          "vile",
-          "large",
-          "scale",
-          "russian"
-        ],
-        "long_tail": [
-          "Zelensky condemns 'vile' large-scale Russian attacks that killed 24 2026-10-07",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "zelensky",
-          "condemns",
-          "vile",
-          "large",
-          "scale",
-          "russian"
-        ],
-        "freshness_keywords": [
-          "2026-10-07"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Zelensky condemns 'vile' large-scale Russian attacks that…",
-        "meta_description": "World report published by BBC World on 2026-10-07. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-07",
-          "world news",
-          "global headlines",
-          "zelensky",
-          "condemns",
-          "vile",
-          "large",
-          "scale",
-          "russian",
-          "Zelensky condemns 'vile' large-scale Russian attacks that killed 24 2026-10-07",
-          "world news October 2026",
-          "2026-10-07",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-07T17:49:47.639Z"
-      }
-    },
-    {
-      "id": "25a768bd",
-      "title": "Trump to speak to Putin about plague lab worker's death in Russia",
-      "url": "https://www.bbc.co.uk/news/articles/cqgm0vrl3xp7o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-07T14:50:28.000Z",
-      "discovered_at": "2026-10-07T17:49:47.639Z",
-      "event_type": "Obituary",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-07. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/3744/live/6325d7d0-c18d-11f1-83c7-97e75190a976.png",
-      "matchapp_url": "https://matchapp.tv/news/articles/trump-to-speak-to-putin-about-plague-lab-worker-s-death-in-russia-25a768/",
-      "landing_url": "https://matchapp.tv/?news=25a768bd#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-07",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "trump",
-          "speak",
-          "putin",
-          "about",
-          "plague",
-          "lab"
-        ],
-        "long_tail": [
-          "Trump to speak to Putin about plague lab worker's death in Russia 2026-10-07",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "trump",
-          "speak",
-          "putin",
-          "about",
-          "plague",
-          "lab"
-        ],
-        "freshness_keywords": [
-          "2026-10-07"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Trump to speak to Putin about plague lab worker's death in…",
-        "meta_description": "World report published by BBC World on 2026-10-07. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-07",
-          "world news",
-          "global headlines",
-          "trump",
-          "speak",
-          "putin",
-          "about",
-          "plague",
-          "lab",
-          "Trump to speak to Putin about plague lab worker's death in Russia 2026-10-07",
-          "world news October 2026",
-          "2026-10-07",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-07T17:49:47.639Z"
-      }
-    },
-    {
-      "id": "33668e5a",
-      "title": "VÍDEO: prefeito de subúrbio de Paris protege manifestantes da polícia e é atingido por gás de pimenta",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/07/video-prefeito-saint-denis-suburbios-paris-protege-manifestantes-colirio-gas-de-pimenta.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-07T13:58:09.000Z",
-      "discovered_at": "2026-10-07T17:49:47.639Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-07. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/kQN6pci3E5khQ2CMXzJRMVmZd7A=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/Z/B/VP2dIBRkahT5vONMbERA/design-sem-nome-2026-10-07t110744.925.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/video-prefeito-de-suburbio-de-paris-protege-manifestantes-da-policia-e-e-atingid-33668e/",
-      "landing_url": "https://matchapp.tv/?news=33668e5a#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-07",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "video",
-          "prefeito",
-          "suburbio",
-          "paris",
-          "protege",
-          "manifestantes"
-        ],
-        "long_tail": [
-          "VÍDEO: prefeito de subúrbio de Paris protege manifestantes da polícia e é atingido por gás de pimenta 2026-10-07",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "video",
-          "prefeito",
-          "suburbio",
-          "paris",
-          "protege",
-          "manifestantes"
-        ],
-        "freshness_keywords": [
-          "2026-10-07"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "VÍDEO: prefeito de subúrbio de Paris protege manifestantes…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-07. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-07",
-          "notícias do mundo",
-          "notícias internacionais",
-          "video",
-          "prefeito",
-          "suburbio",
-          "paris",
-          "protege",
-          "manifestantes",
-          "VÍDEO: prefeito de subúrbio de Paris protege manifestantes da polícia e é atingido por gás de pimenta 2026-10-07",
-          "notícias mundiais outubro 2026",
-          "2026-10-07",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-07T17:49:47.639Z"
+        "seo_generated_at": "2026-10-07T22:14:01.272Z"
       }
     },
     {
@@ -1307,7 +2016,7 @@
       "matchapp_url": "https://matchapp.tv/news/articles/como-e-escolhido-o-vencedor-do-premio-nobel-de-literatura-efe91a/",
       "landing_url": "https://matchapp.tv/?news=efe91a27#latest-news",
       "seo": {
-        "primary_keyword": "premio nobel de química",
+        "primary_keyword": "como escolhido vencedor premio últimas notícias",
         "short_tail": [
           "como escolhido vencedor premio",
           "como escolhido vencedor premio news",
@@ -1315,8 +2024,7 @@
           "latest entertainment news",
           "entertainment news",
           "notícias de entretenimento",
-          "notícias hoje",
-          "premio nobel de química"
+          "notícias hoje"
         ],
         "long_tail": [
           "como escolhido vencedor premio latest news October 2026",
@@ -1329,9 +2037,7 @@
           "como escolhido vencedor premio notícia de 2026-10-07",
           "o que aconteceu com como escolhido vencedor premio"
         ],
-        "trend_keywords": [
-          "premio nobel de química"
-        ],
+        "trend_keywords": [],
         "entity_keywords": [
           "como",
           "escolhido",
@@ -1354,7 +2060,7 @@
         "meta_title": "Como é escolhido o vencedor do Prêmio Nobel de Literatura…",
         "meta_description": "Notícia publicada por G1 em 2026-10-07. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
         "keywords": [
-          "premio nobel de química",
+          "como escolhido vencedor premio últimas notícias",
           "como escolhido vencedor premio",
           "como escolhido vencedor premio news",
           "awards",
@@ -1385,7 +2091,7 @@
           "g1.globo.com como escolhido vencedor premio",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T17:49:47.639Z"
+        "seo_generated_at": "2026-10-07T22:14:01.272Z"
       }
     },
     {
@@ -1481,7 +2187,7 @@
           "g1.globo.com Morre Juarez Machado",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T17:49:47.639Z"
+        "seo_generated_at": "2026-10-07T22:14:01.272Z"
       }
     },
     {
@@ -1577,214 +2283,7 @@
           "bbc.co.uk King Charles",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T17:49:47.639Z"
-      }
-    },
-    {
-      "id": "046b51e1",
-      "title": "Papa menciona Nossa Senhora Aparecida em Audiência Geral no Vaticano e pede que padroeira proteja brasileiros",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/07/papa-menciona-nossa-senhora-aparecida-em-audiencia-geral-no-vaticano.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-07T12:18:19.000Z",
-      "discovered_at": "2026-10-07T17:49:47.639Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-07. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/rH838HO_2wU4bmV-q18T6msY6SA=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/W/G/mNiRH4QpaYnlMVBqBmAA/2026-10-07t075830z-316687081-rc27ynanj3g4-rtrmadp-3-pope-audience.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/papa-menciona-nossa-senhora-aparecida-em-audiencia-geral-no-vaticano-e-pede-que--046b51/",
-      "landing_url": "https://matchapp.tv/?news=046b51e1#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-07",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "papa",
-          "menciona",
-          "nossa",
-          "senhora",
-          "aparecida",
-          "audiencia"
-        ],
-        "long_tail": [
-          "Papa menciona Nossa Senhora Aparecida em Audiência Geral no Vaticano e pede que padroeira proteja brasileiros 2026-10-07",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "papa",
-          "menciona",
-          "nossa",
-          "senhora",
-          "aparecida",
-          "audiencia"
-        ],
-        "freshness_keywords": [
-          "2026-10-07"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Papa menciona Nossa Senhora Aparecida em Audiência Geral…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-07. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-07",
-          "notícias do mundo",
-          "notícias internacionais",
-          "papa",
-          "menciona",
-          "nossa",
-          "senhora",
-          "aparecida",
-          "audiencia",
-          "Papa menciona Nossa Senhora Aparecida em Audiência Geral no Vaticano e pede que padroeira proteja brasileiros 2026-10-07",
-          "notícias mundiais outubro 2026",
-          "2026-10-07",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-07T17:49:47.639Z"
-      }
-    },
-    {
-      "id": "fa4b4e27",
-      "title": "O antifeminismo nos EUA: mulheres que defendem renunciar ao voto e delegá-los aos homens",
-      "url": "https://g1.globo.com/mundo/blog/sandra-cohen/post/2026/10/07/o-antifeminismo-nos-eua-mulheres-que-defendem-renunciar-ao-voto-e-delega-los-aos-homens.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-07T11:51:56.000Z",
-      "discovered_at": "2026-10-07T17:49:47.639Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-07. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/-lEvnWzVbvXqY340AHKVsxdkWJ8=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/8/t/8eAejHQkmgAaWtXGUuRw/design-sem-nome-2026-10-07t093800.213.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/o-antifeminismo-nos-eua-mulheres-que-defendem-renunciar-ao-voto-e-delega-los-aos-fa4b4e/",
-      "landing_url": "https://matchapp.tv/?news=fa4b4e27#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-07",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "antifeminismo",
-          "eua",
-          "mulheres",
-          "que",
-          "defendem",
-          "renunciar"
-        ],
-        "long_tail": [
-          "O antifeminismo nos EUA: mulheres que defendem renunciar ao voto e delegá-los aos homens 2026-10-07",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "antifeminismo",
-          "eua",
-          "mulheres",
-          "que",
-          "defendem",
-          "renunciar"
-        ],
-        "freshness_keywords": [
-          "2026-10-07"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "O antifeminismo nos EUA: mulheres que defendem renunciar…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-07. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-07",
-          "notícias do mundo",
-          "notícias internacionais",
-          "antifeminismo",
-          "eua",
-          "mulheres",
-          "que",
-          "defendem",
-          "renunciar",
-          "O antifeminismo nos EUA: mulheres que defendem renunciar ao voto e delegá-los aos homens 2026-10-07",
-          "notícias mundiais outubro 2026",
-          "2026-10-07",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-07T17:49:47.639Z"
-      }
-    },
-    {
-      "id": "aefb8919",
-      "title": "Noruega quer proibir uso de óculos inteligentes em locais públicos",
-      "url": "https://g1.globo.com/tecnologia/noticia/2026/10/07/noruega-quer-proibir-uso-de-oculos-inteligentes-em-locais-publicos.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-07T11:42:43.000Z",
-      "discovered_at": "2026-10-07T17:49:47.639Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-07. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/iPlsfOcs65PVkspqgVEUju1GHJM=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/v/i/tgVvuOTpCzgNEiHBAYtg/fotojet-2026-04-27t110038.465.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/noruega-quer-proibir-uso-de-oculos-inteligentes-em-locais-publicos-aefb89/",
-      "landing_url": "https://matchapp.tv/?news=aefb8919#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-07",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "noruega",
-          "quer",
-          "proibir",
-          "uso",
-          "oculos",
-          "inteligentes"
-        ],
-        "long_tail": [
-          "Noruega quer proibir uso de óculos inteligentes em locais públicos 2026-10-07",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "noruega",
-          "quer",
-          "proibir",
-          "uso",
-          "oculos",
-          "inteligentes"
-        ],
-        "freshness_keywords": [
-          "2026-10-07"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Noruega quer proibir uso de óculos inteligentes em locais…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-07. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-07",
-          "notícias do mundo",
-          "notícias internacionais",
-          "noruega",
-          "quer",
-          "proibir",
-          "uso",
-          "oculos",
-          "inteligentes",
-          "Noruega quer proibir uso de óculos inteligentes em locais públicos 2026-10-07",
-          "notícias mundiais outubro 2026",
-          "2026-10-07",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-07T17:49:47.639Z"
+        "seo_generated_at": "2026-10-07T22:14:01.272Z"
       }
     },
     {
@@ -1885,7 +2384,7 @@
           "g1.globo.com daniel retoma projeto duas",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T17:49:47.639Z"
+        "seo_generated_at": "2026-10-07T22:14:01.272Z"
       }
     },
     {
@@ -1984,7 +2483,7 @@
           "bbc.co.uk gavin stacey creators jones",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T17:49:47.639Z"
+        "seo_generated_at": "2026-10-07T22:14:01.272Z"
       }
     },
     {
@@ -2085,7 +2584,7 @@
           "g1.globo.com musical sobre gonzaguinha tem",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T17:49:47.639Z"
+        "seo_generated_at": "2026-10-07T22:14:01.272Z"
       }
     },
     {
@@ -2184,7 +2683,7 @@
           "bbc.co.uk oscar winning actress eva",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T17:49:47.639Z"
+        "seo_generated_at": "2026-10-07T22:14:01.272Z"
       }
     },
     {
@@ -2285,7 +2784,7 @@
           "g1.globo.com rodas samba musical regravacoes",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T17:49:47.639Z"
+        "seo_generated_at": "2026-10-07T22:14:01.272Z"
       }
     },
     {
@@ -2386,7 +2885,7 @@
           "g1.globo.com saga leandro leonardo roca",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T17:49:47.639Z"
+        "seo_generated_at": "2026-10-07T22:14:01.272Z"
       }
     },
     {
@@ -2478,7 +2977,7 @@
           "bbc.co.uk Braid-creator Jonathan Blow",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T17:49:47.639Z"
+        "seo_generated_at": "2026-10-07T22:14:01.272Z"
       }
     },
     {
@@ -2574,7 +3073,7 @@
           "g1.globo.com Eva Marie Saint",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T17:49:47.639Z"
+        "seo_generated_at": "2026-10-07T22:14:01.272Z"
       }
     },
     {
@@ -2673,7 +3172,7 @@
           "bbc.co.uk paramount takes over warner",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T17:49:47.639Z"
+        "seo_generated_at": "2026-10-07T22:14:01.272Z"
       }
     },
     {
@@ -2774,7 +3273,7 @@
           "g1.globo.com minha melhor amiga entra",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T17:49:47.639Z"
+        "seo_generated_at": "2026-10-07T22:14:01.272Z"
       }
     },
     {
@@ -2873,7 +3372,7 @@
           "bbc.co.uk amazon wins global rights",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T17:49:47.639Z"
+        "seo_generated_at": "2026-10-07T22:14:01.272Z"
       }
     },
     {
@@ -2972,504 +3471,7 @@
           "bbc.co.uk films streaming prices how",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T17:49:47.639Z"
-      }
-    },
-    {
-      "id": "7682aa88",
-      "title": "Michael Douglas revela em livro romance secreto com atriz de 'Instinto Selvagem'",
-      "url": "https://g1.globo.com/pop-arte/noticia/2026/10/06/michael-douglas-revela-em-livro-romance-secreto-com-atriz-de-instinto-selvagem.ghtml",
-      "source": "G1",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "BR",
-      "language": "pt",
-      "published_at": "2026-10-06T17:11:34.000Z",
-      "discovered_at": "2026-10-06T17:23:12.729Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "Michael Douglas",
-      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
-      "image": "https://s2-g1.glbimg.com/IW0A_2BOzQoYSm5mNE6FdHD9AOM=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/O/r/QgkbAcQV6xjsEU7Q5x7Q/monatgem.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/michael-douglas-revela-em-livro-romance-secreto-com-atriz-de-instinto-selvagem-7682aa/",
-      "landing_url": "https://matchapp.tv/?news=7682aa88#latest-news",
-      "seo": {
-        "primary_keyword": "Michael Douglas últimas notícias",
-        "short_tail": [
-          "Michael Douglas",
-          "Michael Douglas news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje"
-        ],
-        "long_tail": [
-          "Michael Douglas latest news October 2026",
-          "Michael Douglas entertainment update 2026",
-          "Michael Douglas news 2026-10-06",
-          "latest entertainment news about Michael Douglas",
-          "michael douglas michael douglas revela livro latest update",
-          "G1 Michael Douglas entertainment",
-          "últimas notícias sobre Michael Douglas outubro 2026",
-          "Michael Douglas notícia de 2026-10-06",
-          "o que aconteceu com Michael Douglas"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Michael Douglas",
-          "michael",
-          "douglas",
-          "revela",
-          "livro",
-          "romance",
-          "secreto"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-06",
-          "outubro 2026",
-          "Michael Douglas 2026"
-        ],
-        "source_keywords": [
-          "G1 Michael Douglas",
-          "g1.globo.com Michael Douglas",
-          "G1 entertainment news"
-        ],
-        "meta_title": "Michael Douglas revela em livro romance secreto com atriz…",
-        "meta_description": "Michael Douglas: Notícia publicada por G1 em 2026-10-06. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
-        "keywords": [
-          "Michael Douglas últimas notícias",
-          "Michael Douglas",
-          "Michael Douglas news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "Michael Douglas latest news October 2026",
-          "Michael Douglas entertainment update 2026",
-          "Michael Douglas news 2026-10-06",
-          "latest entertainment news about Michael Douglas",
-          "michael douglas michael douglas revela livro latest update",
-          "G1 Michael Douglas entertainment",
-          "últimas notícias sobre Michael Douglas outubro 2026",
-          "Michael Douglas notícia de 2026-10-06",
-          "o que aconteceu com Michael Douglas",
-          "michael",
-          "douglas",
-          "revela",
-          "livro",
-          "romance",
-          "secreto",
-          "October 2026",
-          "2026-10-06",
-          "outubro 2026",
-          "Michael Douglas 2026",
-          "G1 Michael Douglas",
-          "g1.globo.com Michael Douglas",
-          "G1 entertainment news"
-        ],
-        "seo_generated_at": "2026-10-07T17:49:47.639Z"
-      }
-    },
-    {
-      "id": "736d33d2",
-      "title": "Shakira e Piqué vão à Justiça por regime de visitas dos filhos",
-      "url": "https://g1.globo.com/pop-arte/noticia/2026/10/06/shakira-e-pique-vao-a-justica-por-regime-de-visitas-dos-filhos.ghtml",
-      "source": "G1",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "BR",
-      "language": "pt",
-      "published_at": "2026-10-06T16:32:59.000Z",
-      "discovered_at": "2026-10-06T17:11:33.583Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "",
-      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
-      "image": "https://s2-g1.glbimg.com/449EkiC4rYno3WwskLZrNqPaEWU=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2023/0/x/Qb0gCpRTiL0EBvmVL7XQ/shakira-pique.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/shakira-e-pique-vao-a-justica-por-regime-de-visitas-dos-filhos-736d33/",
-      "landing_url": "https://matchapp.tv/?news=736d33d2#latest-news",
-      "seo": {
-        "primary_keyword": "shakira pique vao justica últimas notícias",
-        "short_tail": [
-          "shakira pique vao justica",
-          "shakira pique vao justica news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje"
-        ],
-        "long_tail": [
-          "shakira pique vao justica latest news October 2026",
-          "shakira pique vao justica entertainment update 2026",
-          "shakira pique vao justica news 2026-10-06",
-          "latest entertainment news about shakira pique vao justica",
-          "shakira pique vao justica regime visitas latest update",
-          "G1 shakira pique vao justica entertainment",
-          "últimas notícias sobre shakira pique vao justica outubro 2026",
-          "shakira pique vao justica notícia de 2026-10-06",
-          "o que aconteceu com shakira pique vao justica"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "shakira",
-          "pique",
-          "vao",
-          "justica",
-          "regime",
-          "visitas",
-          "filhos"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-06",
-          "outubro 2026",
-          "shakira pique vao justica 2026"
-        ],
-        "source_keywords": [
-          "G1 shakira pique vao justica",
-          "g1.globo.com shakira pique vao justica",
-          "G1 entertainment news"
-        ],
-        "meta_title": "Shakira e Piqué vão à Justiça por regime de visitas dos…",
-        "meta_description": "Notícia publicada por G1 em 2026-10-06. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
-        "keywords": [
-          "shakira pique vao justica últimas notícias",
-          "shakira pique vao justica",
-          "shakira pique vao justica news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "shakira pique vao justica latest news October 2026",
-          "shakira pique vao justica entertainment update 2026",
-          "shakira pique vao justica news 2026-10-06",
-          "latest entertainment news about shakira pique vao justica",
-          "shakira pique vao justica regime visitas latest update",
-          "G1 shakira pique vao justica entertainment",
-          "últimas notícias sobre shakira pique vao justica outubro 2026",
-          "shakira pique vao justica notícia de 2026-10-06",
-          "o que aconteceu com shakira pique vao justica",
-          "shakira",
-          "pique",
-          "vao",
-          "justica",
-          "regime",
-          "visitas",
-          "filhos",
-          "October 2026",
-          "2026-10-06",
-          "outubro 2026",
-          "shakira pique vao justica 2026",
-          "G1 shakira pique vao justica",
-          "g1.globo.com shakira pique vao justica",
-          "G1 entertainment news"
-        ],
-        "seo_generated_at": "2026-10-07T17:49:47.639Z"
-      }
-    },
-    {
-      "id": "3749b813",
-      "title": "Luzes e sombras da relação visceral de Aldir Blanc com a mulher Mari Sá Freire são expostas em filme amoroso que abre o relicário afetivo do compositor",
-      "url": "https://g1.globo.com/pop-arte/musica/blog/mauro-ferreira/post/2026/10/06/luzes-e-sombras-da-relacao-visceral-de-aldir-blanc-com-a-mulher-mari-de-sa-freire-e-exposta-em-filme-amoroso-que-abre-o-relicario-afetivo-do-compositor.ghtml",
-      "source": "G1",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "BR",
-      "language": "pt",
-      "published_at": "2026-10-06T15:13:34.000Z",
-      "discovered_at": "2026-10-06T17:11:33.583Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "",
-      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
-      "image": "https://s2-g1.glbimg.com/nUpgP67hBdm7WLL5sbrDI4Tj4IE=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/5/M/01AoxlQJ6a8yjtQydzzA/aldir2.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/luzes-e-sombras-da-relacao-visceral-de-aldir-blanc-com-a-mulher-mari-sa-freire-s-3749b8/",
-      "landing_url": "https://matchapp.tv/?news=3749b813#latest-news",
-      "seo": {
-        "primary_keyword": "luzes sombras relacao visceral últimas notícias",
-        "short_tail": [
-          "luzes sombras relacao visceral",
-          "luzes sombras relacao visceral news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje"
-        ],
-        "long_tail": [
-          "luzes sombras relacao visceral latest news October 2026",
-          "luzes sombras relacao visceral entertainment update 2026",
-          "luzes sombras relacao visceral news 2026-10-06",
-          "latest entertainment news about luzes sombras relacao visceral",
-          "luzes sombras relacao visceral aldir blanc latest update",
-          "G1 luzes sombras relacao visceral entertainment",
-          "últimas notícias sobre luzes sombras relacao visceral outubro 2026",
-          "luzes sombras relacao visceral notícia de 2026-10-06",
-          "o que aconteceu com luzes sombras relacao visceral"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "luzes",
-          "sombras",
-          "relacao",
-          "visceral",
-          "aldir",
-          "blanc",
-          "mulher",
-          "mari"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-06",
-          "outubro 2026",
-          "luzes sombras relacao visceral 2026"
-        ],
-        "source_keywords": [
-          "G1 luzes sombras relacao visceral",
-          "g1.globo.com luzes sombras relacao visceral",
-          "G1 entertainment news"
-        ],
-        "meta_title": "Luzes e sombras da relação visceral de Aldir Blanc com a…",
-        "meta_description": "Notícia publicada por G1 em 2026-10-06. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
-        "keywords": [
-          "luzes sombras relacao visceral últimas notícias",
-          "luzes sombras relacao visceral",
-          "luzes sombras relacao visceral news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "luzes sombras relacao visceral latest news October 2026",
-          "luzes sombras relacao visceral entertainment update 2026",
-          "luzes sombras relacao visceral news 2026-10-06",
-          "latest entertainment news about luzes sombras relacao visceral",
-          "luzes sombras relacao visceral aldir blanc latest update",
-          "G1 luzes sombras relacao visceral entertainment",
-          "últimas notícias sobre luzes sombras relacao visceral outubro 2026",
-          "luzes sombras relacao visceral notícia de 2026-10-06",
-          "o que aconteceu com luzes sombras relacao visceral",
-          "luzes",
-          "sombras",
-          "relacao",
-          "visceral",
-          "aldir",
-          "blanc",
-          "mulher",
-          "mari",
-          "October 2026",
-          "2026-10-06",
-          "outubro 2026",
-          "luzes sombras relacao visceral 2026",
-          "G1 luzes sombras relacao visceral",
-          "g1.globo.com luzes sombras relacao visceral",
-          "G1 entertainment news"
-        ],
-        "seo_generated_at": "2026-10-07T17:49:47.639Z"
-      }
-    },
-    {
-      "id": "49fb6c60",
-      "title": "Jheny Santucci anuncia separação de Arthur Aguiar após 3 meses e nega que dívidas tenham motivado decisão",
-      "url": "https://g1.globo.com/pop-arte/noticia/2026/10/06/jheny-santucci-anuncia-separacao-de-arthur-aguiar-menos-de-3-meses-apos-casamento.ghtml",
-      "source": "G1",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "BR",
-      "language": "pt",
-      "published_at": "2026-10-06T12:13:08.000Z",
-      "discovered_at": "2026-10-06T17:11:33.583Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "Jheny Santucci",
-      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
-      "image": "https://s2-g1.glbimg.com/EZNhiLOL9MAnF_lOtYw2n9DEtds=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/U/a/1Tcwm2ROebrVvLmL9UYg/design-sem-nome-2026-10-06t090711.516.png",
-      "matchapp_url": "https://matchapp.tv/news/articles/jheny-santucci-anuncia-separacao-de-arthur-aguiar-apos-3-meses-e-nega-que-divida-49fb6c/",
-      "landing_url": "https://matchapp.tv/?news=49fb6c60#latest-news",
-      "seo": {
-        "primary_keyword": "Jheny Santucci últimas notícias",
-        "short_tail": [
-          "Jheny Santucci",
-          "Jheny Santucci news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje"
-        ],
-        "long_tail": [
-          "Jheny Santucci latest news October 2026",
-          "Jheny Santucci entertainment update 2026",
-          "Jheny Santucci news 2026-10-06",
-          "latest entertainment news about Jheny Santucci",
-          "jheny santucci jheny santucci anuncia separacao latest update",
-          "G1 Jheny Santucci entertainment",
-          "últimas notícias sobre Jheny Santucci outubro 2026",
-          "Jheny Santucci notícia de 2026-10-06",
-          "o que aconteceu com Jheny Santucci"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Jheny Santucci",
-          "jheny",
-          "santucci",
-          "anuncia",
-          "separacao",
-          "arthur",
-          "aguiar"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-06",
-          "outubro 2026",
-          "Jheny Santucci 2026"
-        ],
-        "source_keywords": [
-          "G1 Jheny Santucci",
-          "g1.globo.com Jheny Santucci",
-          "G1 entertainment news"
-        ],
-        "meta_title": "Jheny Santucci anuncia separação de Arthur Aguiar após 3…",
-        "meta_description": "Jheny Santucci: Notícia publicada por G1 em 2026-10-06. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
-        "keywords": [
-          "Jheny Santucci últimas notícias",
-          "Jheny Santucci",
-          "Jheny Santucci news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "Jheny Santucci latest news October 2026",
-          "Jheny Santucci entertainment update 2026",
-          "Jheny Santucci news 2026-10-06",
-          "latest entertainment news about Jheny Santucci",
-          "jheny santucci jheny santucci anuncia separacao latest update",
-          "G1 Jheny Santucci entertainment",
-          "últimas notícias sobre Jheny Santucci outubro 2026",
-          "Jheny Santucci notícia de 2026-10-06",
-          "o que aconteceu com Jheny Santucci",
-          "jheny",
-          "santucci",
-          "anuncia",
-          "separacao",
-          "arthur",
-          "aguiar",
-          "October 2026",
-          "2026-10-06",
-          "outubro 2026",
-          "Jheny Santucci 2026",
-          "G1 Jheny Santucci",
-          "g1.globo.com Jheny Santucci",
-          "G1 entertainment news"
-        ],
-        "seo_generated_at": "2026-10-07T17:49:47.639Z"
-      }
-    },
-    {
-      "id": "4fabf6bc",
-      "title": "Ex-participante do 'American Idol' é condenado à prisão perpétua pelo assassinato da esposa",
-      "url": "https://g1.globo.com/pop-arte/noticia/2026/10/06/ex-participante-do-american-idol-e-condenado-a-prisao-perpetua-pelo-assassinato-da-esposa.ghtml",
-      "source": "G1",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "BR",
-      "language": "pt",
-      "published_at": "2026-10-06T11:36:17.000Z",
-      "discovered_at": "2026-10-06T17:11:33.583Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "",
-      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
-      "image": "https://s2-g1.glbimg.com/5Ub18zBYsVrAjOCVRBgE-OFbZIA=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/X/D/WrgOwwSnyxjhVeAAQyfg/caleb-flynn-alleged-wife-murder-american-idol.webp",
-      "matchapp_url": "https://matchapp.tv/news/articles/ex-participante-do-american-idol-e-condenado-a-prisao-perpetua-pelo-assassinato--4fabf6/",
-      "landing_url": "https://matchapp.tv/?news=4fabf6bc#latest-news",
-      "seo": {
-        "primary_keyword": "participante american idol condenado últimas notícias",
-        "short_tail": [
-          "participante american idol condenado",
-          "participante american idol condenado news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje"
-        ],
-        "long_tail": [
-          "participante american idol condenado latest news October 2026",
-          "participante american idol condenado entertainment update 2026",
-          "participante american idol condenado news 2026-10-06",
-          "latest entertainment news about participante american idol condenado",
-          "participante american idol condenado prisao perpetua latest update",
-          "G1 participante american idol condenado entertainment",
-          "últimas notícias sobre participante american idol condenado outubro 2026",
-          "participante american idol condenado notícia de 2026-10-06",
-          "o que aconteceu com participante american idol condenado"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "participante",
-          "american",
-          "idol",
-          "condenado",
-          "prisao",
-          "perpetua",
-          "pelo",
-          "assassinato"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-06",
-          "outubro 2026",
-          "participante american idol condenado 2026"
-        ],
-        "source_keywords": [
-          "G1 participante american idol condenado",
-          "g1.globo.com participante american idol condenado",
-          "G1 entertainment news"
-        ],
-        "meta_title": "Ex-participante do 'American Idol' é condenado à prisão…",
-        "meta_description": "Notícia publicada por G1 em 2026-10-06. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
-        "keywords": [
-          "participante american idol condenado últimas notícias",
-          "participante american idol condenado",
-          "participante american idol condenado news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "participante american idol condenado latest news October 2026",
-          "participante american idol condenado entertainment update 2026",
-          "participante american idol condenado news 2026-10-06",
-          "latest entertainment news about participante american idol condenado",
-          "participante american idol condenado prisao perpetua latest update",
-          "G1 participante american idol condenado entertainment",
-          "últimas notícias sobre participante american idol condenado outubro 2026",
-          "participante american idol condenado notícia de 2026-10-06",
-          "o que aconteceu com participante american idol condenado",
-          "participante",
-          "american",
-          "idol",
-          "condenado",
-          "prisao",
-          "perpetua",
-          "pelo",
-          "assassinato",
-          "October 2026",
-          "2026-10-06",
-          "outubro 2026",
-          "participante american idol condenado 2026",
-          "G1 participante american idol condenado",
-          "g1.globo.com participante american idol condenado",
-          "G1 entertainment news"
-        ],
-        "seo_generated_at": "2026-10-07T17:49:47.639Z"
+        "seo_generated_at": "2026-10-07T22:14:01.272Z"
       }
     },
     {
@@ -3559,7 +3561,7 @@
           "2026-10-05",
           "October 2026"
         ],
-        "seo_generated_at": "2026-10-07T17:49:47.639Z"
+        "seo_generated_at": "2026-10-07T22:14:01.272Z"
       }
     }
   ]
