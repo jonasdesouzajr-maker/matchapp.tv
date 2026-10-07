@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-07T09:30:33.379Z",
+  "generated_at": "2026-10-07T09:42:02.008Z",
   "feed_version": "92cf8155",
   "sports_updated_at": "2026-10-07T02:24:02.207Z",
   "source_policy": "direct-trusted-publisher-rss+google-trends-keyword-signals",
@@ -101,7 +101,7 @@
           "hollywoodreporter.com harry potter themed christmas",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T09:30:33.379Z"
+        "seo_generated_at": "2026-10-07T09:42:02.008Z"
       }
     },
     {
@@ -202,7 +202,7 @@
           "g1.globo.com musical sobre gonzaguinha tem",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T09:30:33.379Z"
+        "seo_generated_at": "2026-10-07T09:42:02.008Z"
       }
     },
     {
@@ -301,7 +301,7 @@
           "hollywoodreporter.com concrete land debut feature",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T09:30:33.379Z"
+        "seo_generated_at": "2026-10-07T09:42:02.008Z"
       }
     },
     {
@@ -370,7 +370,7 @@
           "2026-10-07",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-07T09:30:33.379Z"
+        "seo_generated_at": "2026-10-07T09:42:02.008Z"
       }
     },
     {
@@ -469,12 +469,12 @@
           "bbc.co.uk oscar winning actress eva",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T09:30:33.379Z"
+        "seo_generated_at": "2026-10-07T09:42:02.008Z"
       }
     },
     {
       "id": "68ec8e97",
-      "title": "Rússia ataca a Ucrânia com drones e mísseis; Zelensky diz que 11 pessoas morreram",
+      "title": "Bombardeio russo deixa 15 mortos na Ucrânia; Zelensky diz que ataque a civis 'foi presente de aniversário de Putin'",
       "url": "https://g1.globo.com/mundo/noticia/2026/10/07/russia-ataca-a-ucrania-com-drones-e-misseis.ghtml",
       "source": "G1 Mundo",
       "source_domain": "g1.globo.com",
@@ -488,31 +488,31 @@
       "person": "",
       "description": "World news reported by G1 Mundo on 2026-10-07. MatchApp links to the original report for its complete context and ongoing updates.",
       "image": "https://s2-g1.glbimg.com/OBa9aBBIs5150-b5CO3SfoM8GQg=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/i/D/b1h2zdTC2AId3UE4OxaQ/2026-10-07t054732z-733734594-rc22yna4p69k-rtrmadp-3-ukraine-crisis-attack-kyiv.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/russia-ataca-a-ucrania-com-drones-e-misseis-zelensky-diz-que-11-pessoas-morreram-68ec8e/",
+      "matchapp_url": "https://matchapp.tv/news/articles/bombardeio-russo-deixa-15-mortos-na-ucrania-zelensky-diz-que-ataque-a-civis-foi--68ec8e/",
       "landing_url": "https://matchapp.tv/?news=68ec8e97#latest-news",
       "seo": {
         "primary_keyword": "notícias do mundo 2026-10-07",
         "short_tail": [
           "notícias do mundo",
           "notícias internacionais",
-          "russia",
-          "ataca",
+          "bombardeio",
+          "russo",
+          "deixa",
+          "mortos",
           "ucrania",
-          "drones",
-          "misseis",
           "zelensky"
         ],
         "long_tail": [
-          "Rússia ataca a Ucrânia com drones e mísseis; Zelensky diz que 11 pessoas morreram 2026-10-07",
+          "Bombardeio russo deixa 15 mortos na Ucrânia; Zelensky diz que ataque a civis 'foi presente de aniversário de Putin' 2026-10-07",
           "notícias mundiais outubro 2026"
         ],
         "trend_keywords": [],
         "entity_keywords": [
-          "russia",
-          "ataca",
+          "bombardeio",
+          "russo",
+          "deixa",
+          "mortos",
           "ucrania",
-          "drones",
-          "misseis",
           "zelensky"
         ],
         "freshness_keywords": [
@@ -521,24 +521,24 @@
         "source_keywords": [
           "G1 Mundo"
         ],
-        "meta_title": "Rússia ataca a Ucrânia com drones e mísseis; Zelensky diz…",
+        "meta_title": "Bombardeio russo deixa 15 mortos na Ucrânia; Zelensky diz…",
         "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-07. Abra a fonte original para o contexto completo.",
         "keywords": [
           "notícias do mundo 2026-10-07",
           "notícias do mundo",
           "notícias internacionais",
-          "russia",
-          "ataca",
+          "bombardeio",
+          "russo",
+          "deixa",
+          "mortos",
           "ucrania",
-          "drones",
-          "misseis",
           "zelensky",
-          "Rússia ataca a Ucrânia com drones e mísseis; Zelensky diz que 11 pessoas morreram 2026-10-07",
+          "Bombardeio russo deixa 15 mortos na Ucrânia; Zelensky diz que ataque a civis 'foi presente de aniversário de Putin' 2026-10-07",
           "notícias mundiais outubro 2026",
           "2026-10-07",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-07T09:30:33.379Z"
+        "seo_generated_at": "2026-10-07T09:42:02.008Z"
       }
     },
     {
@@ -604,7 +604,7 @@
           "2026-10-07",
           "BBC Technology"
         ],
-        "seo_generated_at": "2026-10-07T09:30:33.379Z"
+        "seo_generated_at": "2026-10-07T09:42:02.008Z"
       }
     },
     {
@@ -673,7 +673,7 @@
           "2026-10-07",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-07T09:30:33.379Z"
+        "seo_generated_at": "2026-10-07T09:42:02.008Z"
       }
     },
     {
@@ -774,7 +774,7 @@
           "g1.globo.com rodas samba musical regravacoes",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T09:30:33.379Z"
+        "seo_generated_at": "2026-10-07T09:42:02.008Z"
       }
     },
     {
@@ -843,7 +843,7 @@
           "2026-10-07",
           "BBC Science"
         ],
-        "seo_generated_at": "2026-10-07T09:30:33.379Z"
+        "seo_generated_at": "2026-10-07T09:42:02.008Z"
       }
     },
     {
@@ -912,7 +912,7 @@
           "2026-10-07",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-07T09:30:33.379Z"
+        "seo_generated_at": "2026-10-07T09:42:02.008Z"
       }
     },
     {
@@ -978,7 +978,7 @@
           "2026-10-07",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-07T09:30:33.379Z"
+        "seo_generated_at": "2026-10-07T09:42:02.008Z"
       }
     },
     {
@@ -1047,7 +1047,7 @@
           "2026-10-07",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-07T09:30:33.379Z"
+        "seo_generated_at": "2026-10-07T09:42:02.008Z"
       }
     },
     {
@@ -1116,7 +1116,7 @@
           "2026-10-07",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-07T09:30:33.379Z"
+        "seo_generated_at": "2026-10-07T09:42:02.008Z"
       }
     },
     {
@@ -1185,7 +1185,7 @@
           "2026-10-07",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-07T09:30:33.379Z"
+        "seo_generated_at": "2026-10-07T09:42:02.008Z"
       }
     },
     {
@@ -1254,7 +1254,7 @@
           "2026-10-07",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-07T09:30:33.379Z"
+        "seo_generated_at": "2026-10-07T09:42:02.008Z"
       }
     },
     {
@@ -1350,7 +1350,7 @@
           "hollywoodreporter.com Malcolm Spellman",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T09:30:33.379Z"
+        "seo_generated_at": "2026-10-07T09:42:02.008Z"
       }
     },
     {
@@ -1451,7 +1451,7 @@
           "g1.globo.com saga leandro leonardo roca",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T09:30:33.379Z"
+        "seo_generated_at": "2026-10-07T09:42:02.008Z"
       }
     },
     {
@@ -1548,7 +1548,7 @@
           "hollywoodreporter.com apple dolby bringing dolby",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T09:30:33.379Z"
+        "seo_generated_at": "2026-10-07T09:42:02.008Z"
       }
     },
     {
@@ -1640,7 +1640,7 @@
           "hollywoodreporter.com Jack White Slams Trump",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T09:30:33.379Z"
+        "seo_generated_at": "2026-10-07T09:42:02.008Z"
       }
     },
     {
@@ -1709,7 +1709,7 @@
           "2026-10-07",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-07T09:30:33.379Z"
+        "seo_generated_at": "2026-10-07T09:42:02.008Z"
       }
     },
     {
@@ -1778,7 +1778,7 @@
           "2026-10-06",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-07T09:30:33.379Z"
+        "seo_generated_at": "2026-10-07T09:42:02.008Z"
       }
     },
     {
@@ -1870,7 +1870,7 @@
           "bbc.co.uk Braid-creator Jonathan Blow",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T09:30:33.379Z"
+        "seo_generated_at": "2026-10-07T09:42:02.008Z"
       }
     },
     {
@@ -1966,7 +1966,7 @@
           "g1.globo.com Eva Marie Saint",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T09:30:33.379Z"
+        "seo_generated_at": "2026-10-07T09:42:02.008Z"
       }
     },
     {
@@ -2035,7 +2035,7 @@
           "2026-10-06",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-07T09:30:33.379Z"
+        "seo_generated_at": "2026-10-07T09:42:02.008Z"
       }
     },
     {
@@ -2104,7 +2104,7 @@
           "2026-10-06",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-07T09:30:33.379Z"
+        "seo_generated_at": "2026-10-07T09:42:02.008Z"
       }
     },
     {
@@ -2173,7 +2173,7 @@
           "2026-10-06",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-07T09:30:33.379Z"
+        "seo_generated_at": "2026-10-07T09:42:02.008Z"
       }
     },
     {
@@ -2272,7 +2272,7 @@
           "bbc.co.uk paramount takes over warner",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T09:30:33.379Z"
+        "seo_generated_at": "2026-10-07T09:42:02.008Z"
       }
     },
     {
@@ -2373,7 +2373,7 @@
           "g1.globo.com minha melhor amiga entra",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T09:30:33.379Z"
+        "seo_generated_at": "2026-10-07T09:42:02.008Z"
       }
     },
     {
@@ -2472,7 +2472,7 @@
           "bbc.co.uk amazon wins global rights",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T09:30:33.379Z"
+        "seo_generated_at": "2026-10-07T09:42:02.008Z"
       }
     },
     {
@@ -2571,7 +2571,7 @@
           "bbc.co.uk films streaming prices how",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T09:30:33.379Z"
+        "seo_generated_at": "2026-10-07T09:42:02.008Z"
       }
     },
     {
@@ -2669,7 +2669,7 @@
           "g1.globo.com Michael Douglas",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T09:30:33.379Z"
+        "seo_generated_at": "2026-10-07T09:42:02.008Z"
       }
     },
     {
@@ -2768,7 +2768,7 @@
           "g1.globo.com shakira pique vao justica",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T09:30:33.379Z"
+        "seo_generated_at": "2026-10-07T09:42:02.008Z"
       }
     },
     {
@@ -2869,7 +2869,7 @@
           "g1.globo.com luzes sombras relacao visceral",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T09:30:33.379Z"
+        "seo_generated_at": "2026-10-07T09:42:02.008Z"
       }
     },
     {
@@ -2967,7 +2967,7 @@
           "g1.globo.com Jheny Santucci",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T09:30:33.379Z"
+        "seo_generated_at": "2026-10-07T09:42:02.008Z"
       }
     },
     {
@@ -3068,7 +3068,7 @@
           "g1.globo.com participante american idol condenado",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T09:30:33.379Z"
+        "seo_generated_at": "2026-10-07T09:42:02.008Z"
       }
     },
     {
@@ -3164,7 +3164,7 @@
           "bbc.co.uk Rosie O'Donnell",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T09:30:33.379Z"
+        "seo_generated_at": "2026-10-07T09:42:02.008Z"
       }
     },
     {
@@ -3263,7 +3263,7 @@
           "bbc.co.uk chart topping singer television",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T09:30:33.379Z"
+        "seo_generated_at": "2026-10-07T09:42:02.008Z"
       }
     },
     {
@@ -3364,7 +3364,7 @@
           "g1.globo.com letras belchior album alucinacao",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T09:30:33.379Z"
+        "seo_generated_at": "2026-10-07T09:42:02.008Z"
       }
     },
     {
@@ -3465,7 +3465,7 @@
           "g1.globo.com bola preta cotado oscar",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T09:30:33.379Z"
+        "seo_generated_at": "2026-10-07T09:42:02.008Z"
       }
     },
     {
@@ -3555,7 +3555,7 @@
           "2026-10-05",
           "October 2026"
         ],
-        "seo_generated_at": "2026-10-07T09:30:33.379Z"
+        "seo_generated_at": "2026-10-07T09:42:02.008Z"
       }
     }
   ]
