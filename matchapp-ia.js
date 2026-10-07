@@ -332,7 +332,7 @@ function mountHome(){
  }
  if(trending){
    const h=qs('h4',trending);if(h)h.textContent=t.latest;
-   const seen=new Set();qsa('.marquee-item',trending).forEach(card=>{const name=(qs('img',card)?.alt||'').trim().toLowerCase();if(name&&seen.has(name))card.remove();else if(name)seen.add(name)});
+   const seen=new Set();qsa('.marquee-item',trending).forEach(card=>{if(card.dataset.loopCopy==='1'||card.getAttribute('aria-hidden')==='true')return;const name=(qs('img',card)?.alt||'').trim().toLowerCase();if(name&&seen.has(name))card.remove();else if(name)seen.add(name)});
  }
  document.addEventListener('matchapp:criteriachange',()=>renderQuick(form));
  document.body.classList.add('ma-ia-ready');

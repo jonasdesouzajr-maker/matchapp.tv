@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
   "weekOf": "2026-10-05",
-  "updated": "2026-10-07T10:14:04.469Z",
+  "updated": "2026-10-07T11:31:06.324Z",
   "label": "Latest titles trending right now",
   "sourceNote": "Movie and TV positions refresh from MatchApp’s current TMDB daily trend metadata; verified official music-video releases from monitored top-artist channels refresh daily with release dates, YouTube view counts, direct links, keywords and structured metadata. Availability can vary by country.",
   "titles": [
@@ -304,11 +304,11 @@
       "artist": "Bruno Mars",
       "songTitle": "Dance With Me",
       "publishedAt": "2026-10-01T16:00:04+00:00",
-      "viewCount": 3212077,
-      "viewCountCheckedAt": "2026-10-03",
+      "viewCount": 7585340,
+      "viewCountCheckedAt": "2026-10-07",
       "channel": "Bruno Mars",
       "channelUrl": "https://www.youtube.com/@brunomars",
-      "description": "Official Bruno Mars music video for “Dance With Me”, released on YouTube 2026-10-01 with 3,212,077 verified views at the latest daily check.",
+      "description": "Official Bruno Mars music video for “Dance With Me”, released on YouTube 2026-10-01 with 7,585,340 verified views at the latest daily check.",
       "genre": [
         "Music video"
       ],
@@ -322,7 +322,7 @@
         "2026 music releases",
         "Bruno Mars new music video",
         "Bruno Mars Dance With Me official music video",
-        "new Bruno Mars music video",
+        "Bruno Mars music videos",
         "2026 music video releases"
       ],
       "longTailKeywords": [
@@ -334,7 +334,7 @@
       ],
       "seo": {
         "title": "Bruno Mars — Dance With Me official music video | MatchApp Ai",
-        "description": "Official Bruno Mars music video for “Dance With Me”, released on YouTube 2026-10-01 with 3,212,077 verified views at the latest daily check.",
+        "description": "Official Bruno Mars music video for “Dance With Me”, released on YouTube 2026-10-01 with 7,585,340 verified views at the latest daily check.",
         "keywords": [
           "Bruno Mars",
           "Dance With Me",
@@ -342,7 +342,7 @@
           "YouTube music video",
           "2026 music releases",
           "Bruno Mars Dance With Me official music video",
-          "new Bruno Mars music video",
+          "Bruno Mars music videos",
           "2026 music video releases",
           "latest official music videos"
         ],
@@ -672,11 +672,11 @@
       "artist": "Taylor Swift",
       "songTitle": "Patient Zero",
       "publishedAt": "2026-09-29T22:00:19+00:00",
-      "viewCount": 10911499,
-      "viewCountCheckedAt": "2026-10-03",
+      "viewCount": 15120501,
+      "viewCountCheckedAt": "2026-10-07",
       "channel": "Taylor Swift",
       "channelUrl": "https://www.youtube.com/@TaylorSwift",
-      "description": "Official Taylor Swift music video for “Patient Zero”, released on YouTube 2026-09-29 with 10,911,499 verified views at the latest daily check.",
+      "description": "Official Taylor Swift music video for “Patient Zero”, released on YouTube 2026-09-29 with 15,120,501 verified views at the latest daily check.",
       "genre": [
         "Music video"
       ],
@@ -691,7 +691,7 @@
         "Taylor Swift new music video",
         "The Life of a Showgirl: The Encore",
         "Taylor Swift Patient Zero official music video",
-        "new Taylor Swift music video",
+        "Taylor Swift music videos",
         "2026 music video releases"
       ],
       "longTailKeywords": [
@@ -703,7 +703,7 @@
       ],
       "seo": {
         "title": "Taylor Swift — Patient Zero official music video | MatchApp Ai",
-        "description": "Official Taylor Swift music video for “Patient Zero”, released on YouTube 2026-09-29 with 10,911,499 verified views at the latest daily check.",
+        "description": "Official Taylor Swift music video for “Patient Zero”, released on YouTube 2026-09-29 with 15,120,501 verified views at the latest daily check.",
         "keywords": [
           "Taylor Swift",
           "Patient Zero",
@@ -712,7 +712,7 @@
           "2026 music releases",
           "The Life of a Showgirl: The Encore",
           "Taylor Swift Patient Zero official music video",
-          "new Taylor Swift music video",
+          "Taylor Swift music videos",
           "2026 music video releases",
           "latest official music videos"
         ],
@@ -949,64 +949,60 @@
       }
     },
     {
-      "title": "ROSÉ — new trick",
+      "title": "BTS — Merry Go Round",
       "kind": "music-video",
       "year": 2026,
       "origin": "",
       "platform": "YouTube",
       "tmdbId": null,
-      "poster": "/assets/music-videos/Lufa9QAFFeY.jpg",
-      "url": "https://www.youtube.com/watch?v=Lufa9QAFFeY",
-      "artist": "ROSÉ",
-      "songTitle": "new trick",
-      "publishedAt": "2026-09-17T23:00:06Z",
-      "viewCount": 50148189,
-      "viewCountCheckedAt": "2026-10-04",
-      "channel": "ROSÉ",
-      "channelUrl": "https://www.youtube.com/@roses_are_rosie",
-      "description": "Official ROSÉ music video for “new trick”, released on YouTube 2026-09-17 with 50,148,189 verified views at the latest daily check.",
+      "poster": "/assets/music-videos/eJXL4-4m5nY.jpg",
+      "url": "https://www.youtube.com/watch?v=eJXL4-4m5nY",
+      "artist": "BTS",
+      "songTitle": "Merry Go Round",
+      "publishedAt": "2026-09-25T15:00:01+00:00",
+      "viewCount": 9810583,
+      "viewCountCheckedAt": "2026-10-07",
+      "channel": "BANGTANTV",
+      "channelUrl": "https://www.youtube.com/@BTS",
+      "description": "Official BTS music video for “Merry Go Round”, released on YouTube 2026-09-25 with 9,810,583 verified views at the latest daily check.",
       "genre": [
         "Music video"
       ],
       "inLanguage": "en",
       "keywords": [
-        "ROSÉ",
-        "new trick",
+        "BTS",
+        "Merry Go Round",
         "official music video",
         "latest official music videos",
         "YouTube music video",
         "2026 music releases",
-        "ROSÉ new music video",
-        "Dave Meyers",
-        "Shot on iPhone 18 Pro",
-        "ROSÉ new trick official music video",
-        "new ROSÉ music video",
+        "BTS new music video",
+        "BTS Merry Go Round official music video",
+        "BTS music videos",
         "2026 music video releases"
       ],
       "longTailKeywords": [
-        "ROSÉ new trick official music video YouTube",
-        "where to watch ROSÉ new trick music video",
-        "new ROSÉ music video 2026",
-        "ROSÉ new trick release date",
-        "ROSÉ new trick YouTube views"
+        "BTS Merry Go Round official music video YouTube",
+        "where to watch BTS Merry Go Round music video",
+        "new BTS music video 2026",
+        "BTS Merry Go Round release date",
+        "BTS Merry Go Round YouTube views"
       ],
       "seo": {
-        "title": "ROSÉ — new trick official music video | MatchApp Ai",
-        "description": "Official ROSÉ music video for “new trick”, released on YouTube 2026-09-17 with 50,148,189 verified views at the latest daily check.",
+        "title": "BTS — Merry Go Round official music video | MatchApp Ai",
+        "description": "Official BTS music video for “Merry Go Round”, released on YouTube 2026-09-25 with 9,810,583 verified views at the latest daily check.",
         "keywords": [
-          "ROSÉ",
-          "new trick",
+          "BTS",
+          "Merry Go Round",
           "official music video",
           "YouTube music video",
           "2026 music releases",
-          "Dave Meyers",
-          "Shot on iPhone 18 Pro",
-          "ROSÉ new trick official music video",
-          "new ROSÉ music video",
+          "BTS Merry Go Round official music video",
+          "BTS music videos",
           "2026 music video releases",
           "latest official music videos"
         ],
-        "canonicalQuery": "ROSÉ new trick official music video"
+        "canonicalQuery": "BTS Merry Go Round official music video"
       },
       "source": "verified-official-music-video",
       "sourceRank": 3
@@ -1300,60 +1296,64 @@
       }
     },
     {
-      "title": "Ariana Grande — petal",
+      "title": "ROSÉ — new trick",
       "kind": "music-video",
       "year": 2026,
       "origin": "",
       "platform": "YouTube",
       "tmdbId": null,
-      "poster": "/assets/music-videos/afSgBNwmZrQ.jpg",
-      "url": "https://www.youtube.com/watch?v=afSgBNwmZrQ",
-      "artist": "Ariana Grande",
-      "songTitle": "petal",
-      "publishedAt": "2026-07-31T15:00:00Z",
-      "viewCount": 34548638,
-      "viewCountCheckedAt": "2026-10-03",
-      "channel": "ArianaGrandeVevo",
-      "channelUrl": "https://www.youtube.com/@ArianaGrandeVevo",
-      "description": "Official Ariana Grande music video for “petal”, released on YouTube 2026-07-31 with 34,548,638 verified views at the latest daily check.",
+      "poster": "/assets/music-videos/Lufa9QAFFeY.jpg",
+      "url": "https://www.youtube.com/watch?v=Lufa9QAFFeY",
+      "artist": "ROSÉ",
+      "songTitle": "new trick",
+      "publishedAt": "2026-09-17T23:00:06Z",
+      "viewCount": 50148189,
+      "viewCountCheckedAt": "2026-10-04",
+      "channel": "ROSÉ",
+      "channelUrl": "https://www.youtube.com/@roses_are_rosie",
+      "description": "Official ROSÉ music video for “new trick”, released on YouTube 2026-09-17 with 50,148,189 verified views at the latest daily check.",
       "genre": [
         "Music video"
       ],
       "inLanguage": "en",
       "keywords": [
-        "Ariana Grande",
-        "petal",
+        "ROSÉ",
+        "new trick",
         "official music video",
         "latest official music videos",
         "YouTube music video",
         "2026 music releases",
-        "Ariana Grande new music video",
-        "Ariana Grande petal official music video",
-        "new Ariana Grande music video",
+        "ROSÉ new music video",
+        "Dave Meyers",
+        "Shot on iPhone 18 Pro",
+        "ROSÉ new trick official music video",
+        "ROSÉ music videos",
         "2026 music video releases"
       ],
       "longTailKeywords": [
-        "Ariana Grande petal official music video YouTube",
-        "where to watch Ariana Grande petal music video",
-        "new Ariana Grande music video 2026",
-        "Ariana Grande petal release date",
-        "Ariana Grande petal YouTube views"
+        "ROSÉ new trick official music video YouTube",
+        "where to watch ROSÉ new trick music video",
+        "new ROSÉ music video 2026",
+        "ROSÉ new trick release date",
+        "ROSÉ new trick YouTube views"
       ],
       "seo": {
-        "title": "Ariana Grande — petal official music video | MatchApp Ai",
-        "description": "Official Ariana Grande music video for “petal”, released on YouTube 2026-07-31 with 34,548,638 verified views at the latest daily check.",
+        "title": "ROSÉ — new trick official music video | MatchApp Ai",
+        "description": "Official ROSÉ music video for “new trick”, released on YouTube 2026-09-17 with 50,148,189 verified views at the latest daily check.",
         "keywords": [
-          "Ariana Grande",
-          "petal",
+          "ROSÉ",
+          "new trick",
           "official music video",
           "YouTube music video",
           "2026 music releases",
-          "Ariana Grande petal official music video",
-          "new Ariana Grande music video",
+          "Dave Meyers",
+          "Shot on iPhone 18 Pro",
+          "ROSÉ new trick official music video",
+          "ROSÉ music videos",
           "2026 music video releases",
           "latest official music videos"
         ],
-        "canonicalQuery": "Ariana Grande petal official music video"
+        "canonicalQuery": "ROSÉ new trick official music video"
       },
       "source": "verified-official-music-video",
       "sourceRank": 4

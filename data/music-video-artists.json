@@ -54,5 +54,17 @@
   {
     "artist": "Olivia Rodrigo",
     "channelUrl": "https://www.youtube.com/@OliviaRodrigoVEVO"
+  },
+  {
+    "artist": "The Weeknd",
+    "channelUrl": "https://www.youtube.com/@TheWeeknd"
+  },
+  {
+    "artist": "Bad Bunny",
+    "channelUrl": "https://www.youtube.com/@BadBunnyPR"
+  },
+  {
+    "artist": "BTS",
+    "channelUrl": "https://www.youtube.com/@BTS"
   }
 ]
