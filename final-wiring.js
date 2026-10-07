@@ -3,7 +3,7 @@
   'use strict';
   const V='20260923-videoaudit1';
   const PWA_V='20261003-premiumicon1';
-  const NEWS_V='20261007-localenews7';
+  const NEWS_V='20261007-localenews8';
   const INSTALL_MANIFEST_PT='/manifest-pt-br.json';
   const INSTALL_NAME_PT='MatchApp Ai';
   const INSTALL_NAME_EN='MatchApp Ai';
