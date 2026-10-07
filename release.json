@@ -1,10 +1,10 @@
 {
-  "version": "2026.10.07.2",
+  "version": "2026.10.07.3",
   "date": "2026-10-07",
   "functional": true,
   "notes": {
-    "en": "Latest News now hydrates country-local and global headlines immediately on first load, including Android WebView lifecycle states, while background polling still pauses when hidden.",
-    "pt-BR": "As Últimas Notícias agora carregam imediatamente notícias locais do país e globais no primeiro acesso, inclusive nos estados de ciclo de vida do WebView Android; a atualização em segundo plano continua pausada quando oculto.",
+    "en": "Latest News now waits for the complete news panel before attaching the live country/language bridge, eliminating an initialization race that could leave non-static locales empty on Android or web.",
+    "pt-BR": "As Últimas Notícias agora aguardam o painel de notícias estar completo antes de conectar o feed ao vivo por país/idioma, eliminando uma condição de corrida que podia deixar alguns países vazios no Android ou web.",
     "es": "Últimas Noticias ahora mantiene los titulares locales vinculados al país detectado y los titulares globales en el idioma elegido, también en Android. El SEO de noticias se renueva en cada actualización programada.",
     "fr": "Les dernières actualités gardent désormais les titres locaux liés au pays détecté et les titres mondiaux dans la langue choisie, y compris sur Android. Le SEO des actualités est régénéré à chaque actualisation planifiée.",
     "de": "Latest News ordnet lokale Schlagzeilen jetzt ausschließlich dem erkannten Land zu und globale Schlagzeilen der gewählten Sprache – auch auf Android. Die News-SEO-Daten werden bei jeder geplanten Aktualisierung neu erstellt.",
