@@ -135,7 +135,7 @@
     img.width=240;
     img.height=135;
     img.referrerPolicy='no-referrer';
-    img.alt=item.category==='sports'?`Sports news: ${title}`:item.category==='world'?`World news from ${sourceName}: ${title}`:item.person?`${decodeEntities(item.person)} — ${decodeEntities(item.event_type||'entertainment news')}`:(seo.primary_keyword?`${decodeEntities(seo.primary_keyword)}: ${title}`:`Entertainment news: ${title}`);
+    img.alt=item.category==='sports'?`Sports news: ${title}`:item.category==='world'?`World news from ${sourceName}: ${title}`:item.category==='general'?`News from ${sourceName}: ${title}`:item.person?`${decodeEntities(item.person)} — ${decodeEntities(item.event_type||'entertainment news')}`:(seo.primary_keyword?`${decodeEntities(seo.primary_keyword)}: ${title}`:`Entertainment news: ${title}`);
     const logo=publisherLogo(item);
     const branded=()=>{img.classList.add('ma-news-source-logo');img.src=fallbackImage(sourceName,title);};
     const useLogo=()=>{
@@ -409,13 +409,12 @@
       if(!res.ok)throw new Error('feed unavailable');
       const payload=await res.json();
       const items=(Array.isArray(payload.items)?payload.items:[]).filter(trustedItem);
-      currentVersion=String(payload.feed_version||'');
-      let seen='';try{seen=localStorage.getItem(SEEN_KEY)||'';}catch(_){}
-      if(currentVersion&&currentVersion!==seen){section.dataset.hasNew='true';track('latest_news_new_available',{news_feed_version:currentVersion});}
-
       const language=selectedLanguage();
       const staticChoice=chooseItems(items,country,language,deep.requestedNewsId);
       const regional=await fetchRegional(country,language);
+      currentVersion=String(regional.payload?.feed_version||payload.feed_version||'');
+      let seen='';try{seen=localStorage.getItem(SEEN_KEY)||'';}catch(_){}
+      if(currentVersion&&currentVersion!==seen){section.dataset.hasNew='true';track('latest_news_new_available',{news_feed_version:currentVersion});}
       const chosen=mergeRegionalItems(regional.items,staticChoice,country,language,deep.requestedNewsId);
       panel.replaceChildren();
       if(chosen.combined.length){carousel=rail(chosen.combined);panel.append(carousel);}else{const e=document.createElement('div');e.className='ma-news-empty';e.textContent='Fresh verified headlines are being prepared. Check back shortly.';panel.append(e);}
