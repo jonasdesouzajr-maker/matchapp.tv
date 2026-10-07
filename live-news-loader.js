@@ -147,7 +147,7 @@
     if(section.dataset.newsdataBridge==='1'){refresh(true);return true;}
     section.dataset.newsdataBridge='1';
     section.addEventListener('toggle',()=>{if(section.open&&lastVersion){try{localStorage.setItem(SEEN_KEY,lastVersion);}catch(_){}section.dataset.hasNew='false';}});
-    refresh(true);timer=window.setInterval(()=>refresh(false),REFRESH_MS);document.addEventListener('visibilitychange',()=>{if(!document.hidden)refresh(true);});document.addEventListener('matchapp:langchange',()=>refresh(true));return true;
+    refresh(true);timer=window.setInterval(()=>refresh(false),REFRESH_MS);document.addEventListener('visibilitychange',()=>{if(!document.hidden)refresh(true);});document.addEventListener('matchapp:langchange',()=>refresh(true));document.addEventListener('matchapp:news-static-ready',()=>refresh(true));return true;
   }
 
   if(!attach()){
