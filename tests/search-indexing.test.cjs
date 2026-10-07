@@ -103,3 +103,12 @@ test('current discovery pages have crawlable internal links and structured data'
  assert.match(android,/play\.google\.com\/store\/apps\/details\?id=com\.jonas\.papercup/);
  assert.match(android,/href="\/guides\/streaming-music-books-october-2026\/"/);
 });
+
+
+test('public navigation uses canonical root instead of index.html',()=>{
+ for(const file of ['privacy.html','terms.html','callback.html']){
+  const src=read(file);
+  assert.doesNotMatch(src,/href=["']\/?index\.html["']/i,file+' must not link to the alternate home URL');
+  assert.doesNotMatch(src,/location\.href\s*=\s*["']\/?index\.html["']/i,file+' must not navigate to the alternate home URL');
+ }
+});
