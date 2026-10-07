@@ -180,6 +180,12 @@ test('latest news stays country-true, language-aware, and rebuilds SEO every ref
  assert.match(home,/signalStaticReady\(country,language,'ready'\)/);
  assert.match(home,/signalStaticReady\('',selectedLanguage\(\),'error'\)/);
  assert.match(live,/matchapp:news-static-ready/);
+ assert.match(home,/REGIONAL_API/);
+ assert.match(home,/function trustedRegionalItem\(item,country,language\)/);
+ assert.match(home,/function mergeRegionalItems\(regionalItems,staticChoice,country,language/);
+ assert.match(home,/async function fetchRegional\(country,language\)/);
+ assert.match(home,/regional\.payload\?\.feed_version\|\|payload\.feed_version/);
+ assert.match(regional,/feed_version:feedVersion/);
  assert.match(live,/language=\$\{encodeURIComponent\(lang\)\}/);
  assert.match(regional,/NATION/);
  assert.match(regional,/WORLD/);
