@@ -92,3 +92,14 @@ test('core pages carry unique 2026 entertainment keywords and stay ads/search re
  assert.doesNotMatch(read('sitemap.xml'),/llms\.txt/);
  assert.doesNotMatch(read('sitemap.xml'),/purchase\.html/);
 });
+
+test('current discovery pages have crawlable internal links and structured data',()=>{
+ const home=read('index.html'),about=read('about.html'),android=read('android/index.html');
+ assert.match(home,/href="\/guides\/streaming-music-books-october-2026\/"/);
+ assert.match(home,/href="\/anime\.html"/);
+ assert.match(about,/"@type":"AboutPage"/);
+ assert.match(about,/href="\/android\/"/);
+ assert.match(android,/"@type":"SoftwareApplication"/);
+ assert.match(android,/play\.google\.com\/store\/apps\/details\?id=com\.jonas\.papercup/);
+ assert.match(android,/href="\/guides\/streaming-music-books-october-2026\/"/);
+});
