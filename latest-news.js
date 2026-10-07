@@ -3,6 +3,7 @@
   'use strict';
 
   const DATA='/news/data.json';
+  const REGIONAL_API='https://zkymvqrmbabngsqblyye.supabase.co/functions/v1/regional-news-rss';
   const FALLBACK_COUNTRY='US';
   const MAX_LOCAL=5;
   const MAX_GLOBAL=3;
@@ -30,6 +31,15 @@
     const declared=String(item?.source_domain||'').toLowerCase().replace(/^www\./,'');
     const linked=domainOf(item?.url||'');
     return Boolean(declared&&linked&&trustedDomain(declared)&&trustedDomain(linked));
+  }
+  function trustedRegionalItem(item,country,language){
+    if(window.MatchAppContentSafety?.isExplicit?.(item))return false;
+    if(String(item?.provider||'')!=='Regional RSS')return false;
+    const linked=domainOf(item?.url||'');
+    const sourceHome=safeUrl(item?.source_home);
+    const ownCountry=String(item?.country||'').toUpperCase();
+    const ownLanguage=itemLanguage(item);
+    return linked==='news.google.com'&&Boolean(sourceHome)&&ownLanguage===language&&(ownCountry===country||ownCountry==='GLOBAL');
   }
   function track(event,data={}){try{window.dataLayer=window.dataLayer||[];window.dataLayer.push({event,...data});}catch(_){}}
 
@@ -108,7 +118,7 @@
     article.dataset.newsScope=scope;
     article.dataset.newsCountry=String(item.country||'GLOBAL').toUpperCase();
     article.dataset.newsLanguage=itemLanguage(item);
-    article.dataset.newsCategory=item.category==='sports'?'sports':item.category==='world'?'world':'entertainment';
+    article.dataset.newsCategory=item.category==='sports'?'sports':item.category==='world'?'world':item.category==='general'?'news':'entertainment';
     if(seo.primary_keyword)article.dataset.primaryKeyword=decodeEntities(seo.primary_keyword);
 
     const a=document.createElement('a');
@@ -310,6 +320,39 @@
     return {local,global,sports,combined:combined.slice(0,MAX_TOTAL)};
   }
 
+  function mergeRegionalItems(regionalItems,staticChoice,country,language,requestedNewsId=''){
+    const compatible=regionalItems.filter(item=>trustedRegionalItem(item,country,language));
+    const local=compatible.filter(item=>String(item.country||'').toUpperCase()===country&&String(item.scope||'local')==='local').slice(0,MAX_LOCAL);
+    const global=compatible.filter(item=>String(item.country||'').toUpperCase()==='GLOBAL'&&String(item.scope||'global')==='global').slice(0,MAX_GLOBAL);
+    const used=new Set([...local,...global].map(item=>item.id));
+    const staticLocal=(staticChoice.combined||[]).filter(x=>x.scope==='local'&&!used.has(x.item.id));
+    const staticGlobal=(staticChoice.combined||[]).filter(x=>x.scope==='global'&&!used.has(x.item.id));
+    for(const row of staticLocal){if(local.length>=MAX_LOCAL)break;local.push(row.item);used.add(row.item.id);}
+    for(const row of staticGlobal){if(global.length>=MAX_GLOBAL)break;global.push(row.item);used.add(row.item.id);}
+    const world=(staticChoice.combined||[]).filter(x=>x.scope==='world'&&!used.has(x.item.id)).slice(0,MAX_WORLD);
+    const sports=(staticChoice.combined||[]).filter(x=>x.scope==='sports'&&!used.has(x.item.id)).slice(0,MAX_SPORTS);
+    let combined=[
+      ...local.map(item=>({item,scope:'local'})),
+      ...global.map(item=>({item,scope:'global'})),
+      ...world,
+      ...sports
+    ];
+    if(requestedNewsId){
+      const requested=(staticChoice.combined||[]).find(x=>x.item.id===requestedNewsId);
+      if(requested&&!combined.some(x=>x.item.id===requested.item.id))combined=[requested,...combined];
+    }
+    return {local,global,sports: sports.map(x=>x.item),combined:combined.slice(0,MAX_TOTAL)};
+  }
+
+  async function fetchRegional(country,language){
+    try{
+      const r=await fetch(`${REGIONAL_API}?country=${encodeURIComponent(country)}&language=${encodeURIComponent(language)}`,{cache:'no-store',headers:{accept:'application/json'}});
+      if(!r.ok)throw new Error(`HTTP ${r.status}`);
+      const payload=await r.json();
+      return {payload,items:Array.isArray(payload.items)?payload.items:[]};
+    }catch(_){return {payload:null,items:[]};}
+  }
+
   async function boot(){
     if(!['/','/index.html'].includes(location.pathname))return;
     installStyle();
@@ -371,14 +414,18 @@
       if(currentVersion&&currentVersion!==seen){section.dataset.hasNew='true';track('latest_news_new_available',{news_feed_version:currentVersion});}
 
       const language=selectedLanguage();
-      const chosen=chooseItems(items,country,language,deep.requestedNewsId);panel.replaceChildren();
+      const staticChoice=chooseItems(items,country,language,deep.requestedNewsId);
+      const regional=await fetchRegional(country,language);
+      const chosen=mergeRegionalItems(regional.items,staticChoice,country,language,deep.requestedNewsId);
+      panel.replaceChildren();
       if(chosen.combined.length){carousel=rail(chosen.combined);panel.append(carousel);}else{const e=document.createElement('div');e.className='ma-news-empty';e.textContent='Fresh verified headlines are being prepared. Check back shortly.';panel.append(e);}
 
       const meta=document.createElement('div');meta.className='ma-news-meta';
       const sportStatus=chosen.sports.length?` · Sports ${esc(formatDate(payload.sports_updated_at||payload.generated_at))}`:'';
-      meta.innerHTML=`<span>News ${esc(formatDate(payload.generated_at||Date.now()))}${sportStatus}</span><span>Open news source ↗</span>`;panel.append(meta);
+      const newsUpdated=regional.payload?.generated_at||payload.generated_at||Date.now();
+      meta.innerHTML=`<span>News ${esc(formatDate(newsUpdated))}${sportStatus}</span><span>Open news source ↗</span>`;panel.append(meta);
       if(deep.shouldOpen)openAndReveal(deep.requestedNewsId);else if(section.open&&carousel&&carousel.startAuto)window.setTimeout(()=>carousel.startAuto(),180);
-      track('latest_news_ready',{news_country:country,news_language:language,news_local_count:chosen.combined.filter(x=>x.scope==='local').length,news_global_count:chosen.combined.filter(x=>x.scope==='global').length,news_total_count:chosen.combined.length,news_sports_count:chosen.combined.filter(x=>x.scope==='sports').length,news_feed_version:currentVersion,news_deep_link:Boolean(deep.requestedNewsId)});
+      track('latest_news_ready',{news_country:country,news_language:language,news_local_count:chosen.combined.filter(x=>x.scope==='local').length,news_global_count:chosen.combined.filter(x=>x.scope==='global').length,news_total_count:chosen.combined.length,news_sports_count:chosen.combined.filter(x=>x.scope==='sports').length,news_feed_version:currentVersion,news_regional_count:regional.items.length,news_deep_link:Boolean(deep.requestedNewsId)});
       signalStaticReady(country,language,'ready');
     }catch(_){
       panel.innerHTML='<div class="ma-news-error">Latest News is temporarily unavailable. The rest of MatchApp is unaffected.</div>';
