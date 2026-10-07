@@ -16,7 +16,7 @@ test('public home and Ask AI descriptions remain consistent with live metadata a
   assert.match(featured,/weekly-pick-schema/,'preserve original weekly Movie schema');
   assert.match(home,/\/build-meta\.js\?v=20261002-weekly-cover1&amp;seo=20260928-2/,'home must load refreshed metadata runtime');
   assert.match(discover,/\/build-meta\.js\?v=20260924-runtime2&amp;seo=20260928-2/,'Ask AI must load refreshed metadata runtime');
-  assert.match(live,/20261007-localenews7/,'refreshed home bootstrap must reload wiring');
+  assert.match(live,/20261007-localenews8/,'refreshed home bootstrap must reload wiring');
   const wiring=fs.readFileSync('final-wiring.js','utf8');
   assert.match(wiring,/20261002-weekly-cover1/,'weekly script must get a fresh browser cache version');
 });
