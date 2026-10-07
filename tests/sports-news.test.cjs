@@ -167,6 +167,9 @@ test('latest news stays country-true, language-aware, and rebuilds SEO every ref
  assert.match(live,/matchapp:langchange/);
  assert.match(live,/regional-news-rss/);
  assert.match(live,/Regional RSS/);
+ assert.match(live,/function ensureTrack\(section\)/);
+ assert.match(live,/panel\.querySelector\('\.ma-news-empty,\.ma-news-error'\)\?\.remove\(\)/);
+ assert.match(live,/const track=ensureTrack\(section\)/);
  assert.match(live,/language=\$\{encodeURIComponent\(lang\)\}/);
  assert.match(regional,/NATION/);
  assert.match(regional,/WORLD/);
