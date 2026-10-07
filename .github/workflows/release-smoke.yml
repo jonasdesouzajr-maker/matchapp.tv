@@ -64,7 +64,7 @@ jobs:
     # The hosted guest may have no external route. Each app therefore receives
     # its own fresh emulator and a DEBUG-only adb-reverse mirror of the exact
     # checked-out web tree; production/release builds remain HTTPS-only.
-    if: github.event_name == 'workflow_dispatch' || (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success' && contains(github.event.workflow_run.head_commit.message, '[android-emulator-check]'))
+    if: github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success' && contains(github.event.workflow_run.head_commit.message, '[android-emulator-check]')
     strategy:
       fail-fast: false
       matrix:
