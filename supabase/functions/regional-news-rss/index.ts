@@ -89,5 +89,7 @@ Deno.serve(async req=>{
   const warnings:string[]=[];let local:any[]=[],global:any[]=[];
   try{local=await pull('local',cc,l)}catch(e){warnings.push('local:'+String((e as Error)?.message||e).slice(0,80))}
   try{global=await pull('global',cc,l)}catch(e){warnings.push('global:'+String((e as Error)?.message||e).slice(0,80))}
-  return Response.json({ok:true,country:cc,language:l,generated_at:new Date().toISOString(),local_count:local.length,global_count:global.length,items:[...local,...global],source_policy:'country edition plus global edition in selected language',...(warnings.length?{warnings}:{})},{headers:{...cors(o),'content-type':'application/json; charset=utf-8','cache-control':'public,max-age=60,s-maxage=600'}});
+  const items=[...local,...global];
+  const feedVersion='regional-'+await sha(cc+'|'+l+'|'+items.map(item=>item.id).join('|'));
+  return Response.json({ok:true,country:cc,language:l,generated_at:new Date().toISOString(),feed_version:feedVersion,local_count:local.length,global_count:global.length,items,source_policy:'country edition plus global edition in selected language',...(warnings.length?{warnings}:{})},{headers:{...cors(o),'content-type':'application/json; charset=utf-8','cache-control':'public,max-age=60,s-maxage=600'}});
 });
