@@ -14,7 +14,7 @@
     </url>
     <url>
         <loc>https://matchapp.tv/</loc>
-        <lastmod>2026-10-06T19:00:23+00:00</lastmod>
+        <lastmod>2026-10-07T08:21:02+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
@@ -134,7 +134,7 @@
     </url>
     <url>
         <loc>https://matchapp.tv/android/</loc>
-        <lastmod>2026-10-05T13:08:48+00:00</lastmod>
+        <lastmod>2026-10-07T08:21:11+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
     </url>
@@ -206,7 +206,7 @@
     </url>
     <url>
         <loc>https://matchapp.tv/about.html</loc>
-        <lastmod>2026-10-05T18:09:58+00:00</lastmod>
+        <lastmod>2026-10-07T08:21:07+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
     </url>
@@ -218,13 +218,13 @@
     </url>
     <url>
         <loc>https://matchapp.tv/privacy.html</loc>
-        <lastmod>2026-10-03T13:54:51+00:00</lastmod>
+        <lastmod>2026-10-07T08:29:45+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.3</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/terms.html</loc>
-        <lastmod>2026-10-03T13:54:51+00:00</lastmod>
+        <lastmod>2026-10-07T08:29:48+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.3</priority>
     </url>
@@ -1424,7 +1424,7 @@
     </url>
     <url>
         <loc>https://matchapp.tv/news/</loc>
-        <lastmod>2026-10-07T02:24:02+00:00</lastmod>
+        <lastmod>2026-10-07T08:30:11+00:00</lastmod>
         <changefreq>hourly</changefreq>
         <priority>0.8</priority>
     </url>
