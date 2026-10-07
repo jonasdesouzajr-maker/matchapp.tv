@@ -31,8 +31,8 @@ page('updates.html', 'What’s New in MatchApp Ai | App & Streaming Updates',
 page('cooking/index.html', 'Cooking Channels & Recipe Videos with AI | MatchApp Ai',
   'Find original recipe videos from Maangchi, Jamie Oliver, Rita Lobo and Chef John. Explore Korean and Brazilian cooking, and ask AI about techniques.',
   'original cooking channels, recipe videos, Korean cooking, Brazilian recipes, Maangchi recipes, Jamie Oliver recipes, Rita Lobo Panelinha, Food Wishes Chef John, receitas em vídeo, canais de culinária');
-page('anime.html', 'What Anime to Watch & Where to Stream | MatchApp Ai',
-  'Find anime movies and series by mood, genre and streaming service. Explore anime recommendations and ask MatchApp Ai what to watch next.',
+page('anime.html', 'Anime Recommendations by Mood & Where to Watch | MatchApp Ai',
+  'Find anime recommendations by mood and genre, compare movies and series, and check where anime streams by country with MatchApp Ai.',
   'what anime should I watch, anime recommendations, where to watch anime, anime finder, Japanese animation, anime para assistir, onde assistir anime');
 page('together.html', 'Match Together by MatchApp Ai | Pick What to Watch Together',
   'Match Together by MatchApp Ai combines two people’s moods and tastes to pick one movie, series, anime or K-drama through a private shared match link.',
