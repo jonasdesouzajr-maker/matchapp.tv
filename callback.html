@@ -57,10 +57,10 @@
                 if (window.supabaseClient) {
                     const { data: { session } } = await window.supabaseClient.auth.getSession();
                     if (session) {
-                        window.location.href = 'index.html';
+                        window.location.href = '/';
                     } else {
                         // If it fails, send them back so they can try again.
-                        window.location.href = 'index.html'; 
+                        window.location.href = '/'; 
                     }
                 } else {
                     // BUG FIXED: this branch didn't exist before. If Supabase's
@@ -70,7 +70,7 @@
                     // sit on this screen indefinitely. Now it degrades the same
                     // way the other two outcomes already do: back to the
                     // homepage, where they can simply try signing in again.
-                    window.location.href = 'index.html';
+                    window.location.href = '/';
                 }
             }, 2500); // Gives the aesthetic loading screen 2.5 seconds to shine
         });
