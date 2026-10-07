@@ -24,14 +24,42 @@ const tag=(block:string,name:string)=>{const m=block.match(new RegExp('<'+name+'
 const sha=async(s:string)=>Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s)))).map(b=>b.toString(16).padStart(2,'0')).join('').slice(0,16);
 const countryName=(cc:string,l:string)=>{try{return clean(new Intl.DisplayNames([l==='pt'?'pt-BR':l,'en'],{type:'region'}).of(cc))||cc}catch{return cc}};
 const cors=(o:string|null)=>({'access-control-allow-origin':!o||o==='https://matchapp.tv'||o==='https://www.matchapp.tv'||o.startsWith('http://localhost:')?(o||'https://matchapp.tv'):'https://matchapp.tv','access-control-allow-methods':'GET,OPTIONS','access-control-allow-headers':'content-type','vary':'Origin'});
+const CACHE=new Map<string,{freshUntil:number,staleUntil:number,items:any[]}>();
+const sleep=(ms:number)=>new Promise(resolve=>setTimeout(resolve,ms));
+async function fetchXml(url:string){
+  let last='unavailable';
+  for(let attempt=0;attempt<2;attempt++){
+    try{
+      const r=await fetch(url,{headers:{accept:'application/rss+xml,application/xml,text/xml','user-agent':'MatchAppAiNews/1.1 (+https://matchapp.tv/)'},signal:AbortSignal.timeout(7000)});
+      if(r.ok)return await r.text();
+      last='HTTP '+r.status;
+      if(r.status<500&&r.status!==429)break;
+    }catch(e){last=String((e as Error)?.message||e).slice(0,80)}
+    await sleep(250*(attempt+1));
+  }
+  throw new Error(last);
+}
 
 async function pull(scope:'local'|'global',cc:string,l:string){
+  const cacheKey=scope+':'+cc+':'+l,now=Date.now(),cached=CACHE.get(cacheKey);
+  if(cached&&cached.freshUntil>now)return cached.items;
   const e=EDITION[l]||EDITION.en;
-  const u=new URL('https://news.google.com/rss/headlines/section/topic/'+(scope==='local'?'NATION':'WORLD'));
-  u.searchParams.set('hl',e[0]);u.searchParams.set('gl',cc);u.searchParams.set('ceid',cc+':'+e[1]);
-  const r=await fetch(u,{headers:{accept:'application/rss+xml,application/xml,text/xml','user-agent':'MatchAppAiNews/1.0'},signal:AbortSignal.timeout(10000)});
-  if(!r.ok)throw new Error('RSS '+r.status);
-  const blocks=(await r.text()).match(/<item\b[\s\S]*?<\/item>/gi)||[];
+  const primary=new URL('https://news.google.com/rss/headlines/section/topic/'+(scope==='local'?'NATION':'WORLD'));
+  primary.searchParams.set('hl',e[0]);primary.searchParams.set('gl',cc);primary.searchParams.set('ceid',cc+':'+e[1]);
+  const labels=LABELS[l]||LABELS.en;
+  const fallback=new URL('https://news.google.com/rss/search');
+  const query=scope==='local'?(countryName(cc,l)+' when:1d'):(labels.seoGlobal+' when:1d');
+  fallback.searchParams.set('q',query);fallback.searchParams.set('hl',e[0]);fallback.searchParams.set('gl',cc);fallback.searchParams.set('ceid',cc+':'+e[1]);
+  let xml='';
+  const errors:string[]=[];
+  for(const candidate of [primary.href,fallback.href]){
+    try{xml=await fetchXml(candidate);if(xml)break}catch(e){errors.push(String((e as Error)?.message||e).slice(0,80))}
+  }
+  if(!xml){
+    if(cached&&cached.staleUntil>now)return cached.items;
+    throw new Error(errors.join(' / ')||'regional news unavailable');
+  }
+  const blocks=xml.match(/<item\b[\s\S]*?<\/item>/gi)||[];
   const out:any[]=[],seen=new Set<string>();
   for(const b of blocks){
     let title=tag(b,'title');const url=tag(b,'link'),published=tag(b,'pubDate');
@@ -44,6 +72,11 @@ async function pull(scope:'local'|'global',cc:string,l:string){
     out.push({id,source,source_home:sourceHome,url,title,description:labels.open,image:null,published_at:new Date(published||Date.now()).toISOString(),country:global?'GLOBAL':cc,language:l,category:'general',event_type:global?labels.global:labels.local,breaking:false,provider:'Regional RSS',scope,seo:{primary_keyword:global?labels.seoGlobal:(countryName(cc,l)+' '+labels.seoLocal),locale:global?l:(l+'-'+cc),intent:global?'global top news':'local top news',keywords:[title,global?labels.seoGlobal:(countryName(cc,l)+' '+labels.seoLocal)]}});
     if(out.length>=(global?5:6))break;
   }
+  if(!out.length){
+    if(cached&&cached.staleUntil>now)return cached.items;
+    throw new Error('regional feed returned no usable items');
+  }
+  CACHE.set(cacheKey,{freshUntil:now+10*60_000,staleUntil:now+6*60*60_000,items:out});
   return out;
 }
 Deno.serve(async req=>{
