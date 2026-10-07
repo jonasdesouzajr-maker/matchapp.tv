@@ -1,4 +1,4 @@
-/* MatchApp NewsData live bridge — overlays server-ingested headlines onto the existing Latest News rail only. */
+/* MatchApp locale-aware live news bridge — overlays country + global headlines onto the existing Latest News rail. */
 (function(){
   'use strict';
   const API='https://zkymvqrmbabngsqblyye.supabase.co/functions/v1/regional-news-rss';
@@ -83,10 +83,29 @@
     return [...local.map(item=>({item,scope:'local'})),...global.map(item=>({item,scope:'global'}))].slice(0,MAX_TOTAL);
   }
 
+  function ensureTrack(section){
+    let track=section?.querySelector('.ma-news-track');
+    if(track)return track;
+    const panel=section?.querySelector('.ma-news-panel');
+    if(!panel)return null;
+    panel.querySelector('.ma-news-empty,.ma-news-error')?.remove();
+    const shell=document.createElement('div');shell.className='ma-news-carousel-shell';shell.dataset.liveBootstrap='1';
+    const prev=document.createElement('button');prev.className='ma-news-arrow ma-news-arrow-prev';prev.type='button';prev.textContent='‹';prev.setAttribute('aria-label','Previous news');
+    const next=document.createElement('button');next.className='ma-news-arrow ma-news-arrow-next';next.type='button';next.textContent='›';next.setAttribute('aria-label','Next news');
+    track=document.createElement('div');track.className='ma-news-track';track.setAttribute('role','list');track.setAttribute('aria-label','Latest local and global news');
+    const step=()=>Math.max(140,track.querySelector('.ma-news-card')?.getBoundingClientRect().width||160)+8;
+    const move=dir=>track.scrollBy({left:dir*step(),behavior:'smooth'});
+    prev.addEventListener('click',()=>move(-1));next.addEventListener('click',()=>move(1));
+    shell.append(prev,track,next);
+    const meta=panel.querySelector('.ma-news-meta');
+    if(meta)panel.insertBefore(shell,meta);else panel.prepend(shell);
+    return track;
+  }
+
   async function refresh(){
     if(running||document.hidden)return;running=true;
     try{
-      const section=document.getElementById('latest-news');const track=section?.querySelector('.ma-news-track');if(!section||!track)return;
+      const section=document.getElementById('latest-news');if(!section)return;const track=ensureTrack(section);if(!track)return;
       if(!staticCards||!staticCards.length)staticCards=[...track.children].filter(el=>!el.dataset.newsProvider);
       const cc=await country(),lang=language();const r=await fetch(`${API}?country=${encodeURIComponent(cc)}&language=${encodeURIComponent(lang)}`,{cache:'no-store',headers:{accept:'application/json'}});if(!r.ok)throw new Error(`HTTP ${r.status}`);
       const payload=await r.json();const items=(Array.isArray(payload.items)?payload.items:[]).filter(trusted);if(!items.length)return;
@@ -100,7 +119,7 @@
         return true;
       });
       const requestedCard=requested?fallback.find(el=>el.dataset.newsId===requested):null;
-      // NewsData has its own live reporting, but must not evict the separate
+      // The live regional feed must not evict the separate
       // trusted publisher world and twice-daily verified sports snapshots.
       // Preserve the original source card/link; never copy its photo.
       const reservedWorld=fallback.filter(el=>el.dataset.newsScope==='world').slice(0,MAX_WORLD);
