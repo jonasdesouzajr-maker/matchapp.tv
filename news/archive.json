@@ -1,7 +1,170 @@
 {
-  "generated_at": "2026-10-08T09:25:28.026Z",
+  "generated_at": "2026-10-08T09:52:27.929Z",
   "limit": 1000,
   "items": [
+    {
+      "id": "7ad84d0a",
+      "title": "Asos warns customers about full extent of data breach after BBC contacted by hackers",
+      "url": "https://www.bbc.co.uk/news/articles/c3zxjdw5ywgpo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC Technology",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-08T09:45:28.000Z",
+      "discovered_at": "2026-10-08T09:52:27.929Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC Technology on 2026-10-08. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/3198/live/821569d0-c2fa-11f1-bc2e-018d645d8d21.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/asos-warns-customers-about-full-extent-of-data-breach-after-bbc-contacted-by-hac-7ad84d/",
+      "landing_url": "https://matchapp.tv/?news=7ad84d0a#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-08",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "asos",
+          "warns",
+          "customers",
+          "about",
+          "full",
+          "extent"
+        ],
+        "long_tail": [
+          "Asos warns customers about full extent of data breach after BBC contacted by hackers 2026-10-08",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "asos",
+          "warns",
+          "customers",
+          "about",
+          "full",
+          "extent"
+        ],
+        "freshness_keywords": [
+          "2026-10-08"
+        ],
+        "source_keywords": [
+          "BBC Technology"
+        ],
+        "meta_title": "Asos warns customers about full extent of data breach…",
+        "meta_description": "World report published by BBC Technology on 2026-10-08. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-08",
+          "world news",
+          "global headlines",
+          "asos",
+          "warns",
+          "customers",
+          "about",
+          "full",
+          "extent",
+          "Asos warns customers about full extent of data breach after BBC contacted by hackers 2026-10-08",
+          "world news October 2026",
+          "2026-10-08",
+          "BBC Technology"
+        ],
+        "seo_generated_at": "2026-10-08T09:52:27.929Z"
+      }
+    },
+    {
+      "id": "63060a95",
+      "title": "Actor Simon Pegg reveals ADHD diagnosis: 'It's just who I am'",
+      "url": "https://www.bbc.co.uk/news/articles/ckn9rg24drw1o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GB",
+      "language": "en",
+      "published_at": "2026-10-08T09:35:30.000Z",
+      "discovered_at": "2026-10-08T09:52:27.929Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "Actor Simon Pegg",
+      "description": "Actor Simon Pegg: entertainment headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/9529/live/29b19700-c2f0-11f1-89a3-9b445bfcfe23.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/actor-simon-pegg-reveals-adhd-diagnosis-it-s-just-who-i-am-63060a/",
+      "landing_url": "https://matchapp.tv/?news=63060a95#latest-news",
+      "seo": {
+        "primary_keyword": "Actor Simon Pegg latest news",
+        "short_tail": [
+          "Actor Simon Pegg",
+          "Actor Simon Pegg news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "Actor Simon Pegg latest news October 2026",
+          "Actor Simon Pegg entertainment update 2026",
+          "Actor Simon Pegg news 2026-10-08",
+          "latest entertainment news about Actor Simon Pegg",
+          "actor simon pegg actor simon pegg latest update",
+          "BBC Actor Simon Pegg entertainment",
+          "latest news about Actor Simon Pegg October 2026",
+          "Actor Simon Pegg entertainment news 2026-10-08",
+          "what happened with Actor Simon Pegg"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "Actor Simon Pegg",
+          "actor",
+          "simon",
+          "pegg",
+          "reveals",
+          "adhd"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-08",
+          "Actor Simon Pegg 2026"
+        ],
+        "source_keywords": [
+          "BBC Actor Simon Pegg",
+          "bbc.co.uk Actor Simon Pegg",
+          "BBC entertainment news"
+        ],
+        "meta_title": "Actor Simon Pegg reveals ADHD diagnosis: 'It's just who I…",
+        "meta_description": "Actor Simon Pegg: Entertainment update reported by BBC on 2026-10-08. See verified context, publication time and the original source via MatchApp Ai.",
+        "keywords": [
+          "Actor Simon Pegg latest news",
+          "Actor Simon Pegg",
+          "Actor Simon Pegg news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "Actor Simon Pegg latest news October 2026",
+          "Actor Simon Pegg entertainment update 2026",
+          "Actor Simon Pegg news 2026-10-08",
+          "latest entertainment news about Actor Simon Pegg",
+          "actor simon pegg actor simon pegg latest update",
+          "BBC Actor Simon Pegg entertainment",
+          "latest news about Actor Simon Pegg October 2026",
+          "Actor Simon Pegg entertainment news 2026-10-08",
+          "what happened with Actor Simon Pegg",
+          "actor",
+          "simon",
+          "pegg",
+          "reveals",
+          "adhd",
+          "October 2026",
+          "2026-10-08",
+          "Actor Simon Pegg 2026",
+          "BBC Actor Simon Pegg",
+          "bbc.co.uk Actor Simon Pegg",
+          "BBC entertainment news"
+        ],
+        "seo_generated_at": "2026-10-08T09:52:27.929Z"
+      }
+    },
     {
       "id": "23fa6cd5",
       "title": "Segundo ataque em escola na Polônia em apenas 2 dias deixa morto e feridos",
@@ -68,7 +231,7 @@
           "2026-10-08",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-08T09:25:28.026Z"
+        "seo_generated_at": "2026-10-08T09:52:27.929Z"
       }
     },
     {
@@ -206,7 +369,7 @@
           "2026-10-08",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-08T09:25:28.026Z"
+        "seo_generated_at": "2026-10-08T09:52:27.929Z"
       }
     },
     {
@@ -275,7 +438,7 @@
           "2026-10-08",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-08T09:25:28.026Z"
+        "seo_generated_at": "2026-10-08T09:52:27.929Z"
       }
     },
     {
@@ -369,7 +532,7 @@
           "hollywoodreporter.com The Hollywood Reporter Honors",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-08T09:25:28.026Z"
+        "seo_generated_at": "2026-10-08T09:52:27.929Z"
       }
     },
     {
@@ -438,7 +601,7 @@
           "2026-10-08",
           "BBC Science"
         ],
-        "seo_generated_at": "2026-10-08T09:25:28.026Z"
+        "seo_generated_at": "2026-10-08T09:52:27.929Z"
       }
     },
     {
@@ -507,7 +670,7 @@
           "2026-10-08",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-08T09:25:28.026Z"
+        "seo_generated_at": "2026-10-08T09:52:27.929Z"
       }
     },
     {
@@ -576,7 +739,7 @@
           "2026-10-08",
           "BBC Science"
         ],
-        "seo_generated_at": "2026-10-08T09:25:28.026Z"
+        "seo_generated_at": "2026-10-08T09:52:27.929Z"
       }
     },
     {
@@ -598,7 +761,7 @@
       "matchapp_url": "https://matchapp.tv/news/articles/below-review-josh-hartnett-battles-a-sea-creature-in-netflix-s-likably-silly-new-b2062c/",
       "landing_url": "https://matchapp.tv/?news=b2062c7a#latest-news",
       "seo": {
-        "primary_keyword": "below netflix",
+        "primary_keyword": "below review josh hartnett latest news",
         "short_tail": [
           "below review josh hartnett",
           "below review josh hartnett news",
@@ -606,8 +769,7 @@
           "latest entertainment news",
           "entertainment news",
           "celebrity news",
-          "entertainment updates",
-          "below netflix"
+          "entertainment updates"
         ],
         "long_tail": [
           "below review josh hartnett latest news October 2026",
@@ -620,9 +782,7 @@
           "below review josh hartnett entertainment news 2026-10-08",
           "what happened with below review josh hartnett"
         ],
-        "trend_keywords": [
-          "below netflix"
-        ],
+        "trend_keywords": [],
         "entity_keywords": [
           "below",
           "review",
@@ -646,7 +806,7 @@
         "meta_title": "‘Below’ Review: Josh Hartnett Battles a Sea Creature in…",
         "meta_description": "Entertainment update reported by The Hollywood Reporter on 2026-10-08. See verified context, publication time and the original source via MatchApp Ai.",
         "keywords": [
-          "below netflix",
+          "below review josh hartnett latest news",
           "below review josh hartnett",
           "below review josh hartnett news",
           "entertainment",
@@ -678,7 +838,7 @@
           "hollywoodreporter.com below review josh hartnett",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-08T09:25:28.026Z"
+        "seo_generated_at": "2026-10-08T09:52:27.929Z"
       }
     },
     {
@@ -776,7 +936,7 @@
           "g1.globo.com Chris Isaak",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-08T09:25:28.026Z"
+        "seo_generated_at": "2026-10-08T09:52:27.929Z"
       }
     },
     {
@@ -877,7 +1037,7 @@
           "g1.globo.com hope primeiro impacto abre",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-08T09:25:28.026Z"
+        "seo_generated_at": "2026-10-08T09:52:27.929Z"
       }
     },
     {
@@ -975,7 +1135,7 @@
           "g1.globo.com Zeca Pagodinho",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-08T09:25:28.026Z"
+        "seo_generated_at": "2026-10-08T09:52:27.929Z"
       }
     },
     {
@@ -1070,7 +1230,7 @@
           "bbc.co.uk suffragette role gift says",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-08T09:25:28.026Z"
+        "seo_generated_at": "2026-10-08T09:52:27.929Z"
       }
     },
     {
@@ -1139,7 +1299,7 @@
           "2026-10-08",
           "BBC Science"
         ],
-        "seo_generated_at": "2026-10-08T09:25:28.026Z"
+        "seo_generated_at": "2026-10-08T09:52:27.929Z"
       }
     },
     {
@@ -1208,7 +1368,7 @@
           "2026-10-08",
           "BBC Science"
         ],
-        "seo_generated_at": "2026-10-08T09:25:28.026Z"
+        "seo_generated_at": "2026-10-08T09:52:27.929Z"
       }
     },
     {
@@ -1372,7 +1532,7 @@
           "bbc.co.uk won gladiators now love",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-08T09:25:28.026Z"
+        "seo_generated_at": "2026-10-08T09:52:27.929Z"
       }
     },
     {
@@ -1468,7 +1628,7 @@
           "bbc.co.uk Outspoken Indian",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-08T09:25:28.026Z"
+        "seo_generated_at": "2026-10-08T09:52:27.929Z"
       }
     },
     {
@@ -1566,7 +1726,7 @@
           "g1.globo.com Juliana Linhares",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-08T09:25:28.026Z"
+        "seo_generated_at": "2026-10-08T09:52:27.929Z"
       }
     },
     {
@@ -1867,7 +2027,7 @@
           "hollywoodreporter.com An Emotional Andrew Scott",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-08T09:25:28.026Z"
+        "seo_generated_at": "2026-10-08T09:52:27.929Z"
       }
     },
     {
@@ -1966,7 +2126,7 @@
           "hollywoodreporter.com louis theroux podcast double",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-08T09:25:28.026Z"
+        "seo_generated_at": "2026-10-08T09:52:27.929Z"
       }
     },
     {
@@ -2060,7 +2220,7 @@
           "hollywoodreporter.com For Israeli Actress Noa",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-08T09:25:28.026Z"
+        "seo_generated_at": "2026-10-08T09:52:27.929Z"
       }
     },
     {
@@ -2129,7 +2289,7 @@
           "2026-10-07",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-08T09:25:28.026Z"
+        "seo_generated_at": "2026-10-08T09:52:27.929Z"
       }
     },
     {
@@ -2223,7 +2383,7 @@
           "hollywoodreporter.com Catherine Hardwicke Tapped",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-08T09:25:28.026Z"
+        "seo_generated_at": "2026-10-08T09:52:27.929Z"
       }
     },
     {
@@ -2793,7 +2953,7 @@
           "2026-10-07",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-08T09:25:28.026Z"
+        "seo_generated_at": "2026-10-08T09:52:27.929Z"
       }
     },
     {
@@ -2894,7 +3054,7 @@
           "g1.globo.com musico condenado prisao fraudar",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-08T09:25:28.026Z"
+        "seo_generated_at": "2026-10-08T09:52:27.929Z"
       }
     },
     {
@@ -3131,7 +3291,7 @@
           "2026-10-07",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-08T09:25:28.026Z"
+        "seo_generated_at": "2026-10-08T09:52:27.929Z"
       }
     },
     {
@@ -3200,7 +3360,7 @@
           "2026-10-07",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-08T09:25:28.026Z"
+        "seo_generated_at": "2026-10-08T09:52:27.929Z"
       }
     },
     {
@@ -3269,7 +3429,7 @@
           "2026-10-07",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-08T09:25:28.026Z"
+        "seo_generated_at": "2026-10-08T09:52:27.929Z"
       }
     },
     {
@@ -3370,7 +3530,7 @@
           "g1.globo.com pitty revela capa nomes",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-08T09:25:28.026Z"
+        "seo_generated_at": "2026-10-08T09:52:27.929Z"
       }
     },
     {
@@ -3439,7 +3599,7 @@
           "2026-10-07",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-08T09:25:28.026Z"
+        "seo_generated_at": "2026-10-08T09:52:27.929Z"
       }
     },
     {
@@ -3675,7 +3835,7 @@
           "g1.globo.com Lulu Santos",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-08T09:25:28.026Z"
+        "seo_generated_at": "2026-10-08T09:52:27.929Z"
       }
     },
     {
@@ -3766,7 +3926,7 @@
       "matchapp_url": "https://matchapp.tv/news/articles/se-eu-fosse-voce-3-passa-bastao-para-novo-casal-em-comedia-pouco-engracada-g1-ja-6c6045/",
       "landing_url": "https://matchapp.tv/?news=6c60451c#latest-news",
       "seo": {
-        "primary_keyword": "por você",
+        "primary_keyword": "fosse voce passa bastao últimas notícias",
         "short_tail": [
           "fosse voce passa bastao",
           "fosse voce passa bastao news",
@@ -3774,8 +3934,7 @@
           "latest entertainment news",
           "entertainment news",
           "notícias de entretenimento",
-          "notícias hoje",
-          "por você"
+          "notícias hoje"
         ],
         "long_tail": [
           "fosse voce passa bastao latest news October 2026",
@@ -3788,9 +3947,7 @@
           "fosse voce passa bastao notícia de 2026-10-07",
           "o que aconteceu com fosse voce passa bastao"
         ],
-        "trend_keywords": [
-          "por você"
-        ],
+        "trend_keywords": [],
         "entity_keywords": [
           "fosse",
           "voce",
@@ -3815,7 +3972,7 @@
         "meta_title": "'Se eu fosse você 3' passa bastão para novo casal em…",
         "meta_description": "Notícia publicada por G1 em 2026-10-07. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
         "keywords": [
-          "por você",
+          "fosse voce passa bastao últimas notícias",
           "fosse voce passa bastao",
           "fosse voce passa bastao news",
           "entertainment",
@@ -3848,7 +4005,7 @@
           "g1.globo.com fosse voce passa bastao",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-08T09:25:28.026Z"
+        "seo_generated_at": "2026-10-08T09:52:27.929Z"
       }
     },
     {
@@ -4108,7 +4265,7 @@
           "2026-10-07",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-08T02:14:15.245Z"
+        "seo_generated_at": "2026-10-08T09:52:27.929Z"
       }
     },
     {
@@ -4782,7 +4939,7 @@
           "g1.globo.com como escolhido vencedor premio",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-08T09:25:28.026Z"
+        "seo_generated_at": "2026-10-08T09:52:27.929Z"
       }
     },
     {
@@ -4878,7 +5035,7 @@
           "g1.globo.com Morre Juarez Machado",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-08T09:25:28.026Z"
+        "seo_generated_at": "2026-10-08T09:52:27.929Z"
       }
     },
     {
@@ -4974,7 +5131,7 @@
           "bbc.co.uk King Charles",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-08T09:25:28.026Z"
+        "seo_generated_at": "2026-10-08T09:52:27.929Z"
       }
     },
     {
@@ -5282,7 +5439,7 @@
           "g1.globo.com daniel retoma projeto duas",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-08T09:25:28.026Z"
+        "seo_generated_at": "2026-10-08T09:52:27.929Z"
       }
     },
     {
@@ -5381,7 +5538,7 @@
           "bbc.co.uk gavin stacey creators jones",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-08T09:25:28.026Z"
+        "seo_generated_at": "2026-10-08T09:52:27.929Z"
       }
     },
     {
@@ -5581,7 +5738,7 @@
           "g1.globo.com musical sobre gonzaguinha tem",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-08T09:25:28.026Z"
+        "seo_generated_at": "2026-10-08T09:52:27.929Z"
       }
     },
     {
@@ -16811,7 +16968,7 @@
           "2026-10-05",
           "October 2026"
         ],
-        "seo_generated_at": "2026-10-08T09:25:28.026Z"
+        "seo_generated_at": "2026-10-08T09:52:27.929Z"
       }
     },
     {
