@@ -69,6 +69,7 @@ class MainActivity : AppCompatActivity() {
     private var lastUrl = HOME
     private var voiceTts: TextToSpeech? = null
     private var voiceTtsReady = false
+    private var pendingVoiceUtterance: Pair<String, String?>? = null
 
     // Web UI (including the responsive Avatar Studio) is shared with matchapp.tv.
     // Keep production pages fresh so phone/tablet WebViews receive approved UI updates immediately.
@@ -131,6 +132,13 @@ class MainActivity : AppCompatActivity() {
                     override fun onError(utteranceId: String?) = sendVoiceSpeakingState(false)
                     override fun onError(utteranceId: String?, errorCode: Int) = sendVoiceSpeakingState(false)
                 })
+                runOnUiThread {
+                    val pending = pendingVoiceUtterance
+                    pendingVoiceUtterance = null
+                    if (pending != null) speakVoiceText(pending.first, pending.second)
+                }
+            } else {
+                pendingVoiceUtterance = null
             }
         }
         applySafeInsets()
@@ -291,7 +299,7 @@ class MainActivity : AppCompatActivity() {
             isFocusable = true
         }
         val logo = ImageView(this).apply {
-            setImageResource(R.drawable.matchapp_official_icon)
+            setImageResource(R.drawable.ic_launcher_foreground)
             scaleType = ImageView.ScaleType.CENTER_INSIDE
             alpha = 0f
             scaleX = 0.94f
@@ -639,10 +647,14 @@ class MainActivity : AppCompatActivity() {
         }
         val value = text?.trim()?.take(4000).orEmpty()
         val engine = voiceTts
-        if (value.isBlank() || engine == null || !voiceTtsReady) {
-            sendVoiceSpeakingState(false)
+        if (value.isBlank()) return
+        if (engine == null || !voiceTtsReady) {
+            // TTS initialization is asynchronous on fresh installs. Preserve the
+            // latest requested spoken reply rather than silently dropping it.
+            pendingVoiceUtterance = value to languageTag
             return
         }
+        pendingVoiceUtterance = null
         val tag = languageTag
             ?.takeIf { it.matches(Regex("^[A-Za-z]{2,3}(-[A-Za-z]{2,4})?$")) }
             ?: "en-US"
@@ -715,7 +727,7 @@ class MainActivity : AppCompatActivity() {
                         var keys=Object.keys(localStorage).filter(function(k){return /^sb-.+-auth-token$/.test(k)});
                         for(var i=0;i<keys.length;i++){
                           var s=JSON.parse(localStorage.getItem(keys[i])||'null');
-                          if(s&&s.user&&s.user.id==='141e60f1-1945-47da-85e8-c492e984496b'&&s.access_token){return s.access_token}
+                          if(s&&s.user&&s.user.id&&s.access_token){return s.access_token}
                         }
                         return '';
                       }catch(e){return ''}
@@ -762,6 +774,7 @@ class MainActivity : AppCompatActivity() {
         @JavascriptInterface
         fun stopSpeaking() {
             runOnUiThread {
+                pendingVoiceUtterance = null
                 voiceTts?.stop()
                 sendVoiceSpeakingState(false)
             }
@@ -1040,21 +1053,15 @@ class MainActivity : AppCompatActivity() {
               function setupNativeVoiceAvatarLauncher() {
                 if (!document.body || document.getElementById('matchapp-android-avatar-launcher')) return;
                 if (!window.MatchAppNativeExperience || !window.MatchAppNativeExperience.openVoiceAvatar) return;
-                var owner = false;
-                try {
-                  Object.keys(localStorage).forEach(function(k){
-                    if (!/^sb-.+-auth-token$/.test(k)) return;
-                    var s=JSON.parse(localStorage.getItem(k)||'null');
-                    if(s&&s.user&&s.user.id==='141e60f1-1945-47da-85e8-c492e984496b'&&s.access_token)owner=true;
-                  });
-                }catch(e){}
-                if (!owner) return;
+                // Keep the entry discoverable before and after Google sign-in.
+                // The native bridge obtains the session only when tapped; the backend
+                // remains owner/JWT-gated until server-side voice quotas are ready.
                 var launch=document.createElement('button');
                 launch.type='button';
                 launch.id='matchapp-android-avatar-launcher';
                 launch.setAttribute('aria-label','Talk to MatchApp Ai avatar');
-                launch.textContent='✦ Avatar';
-                launch.style.cssText='position:fixed;right:14px;bottom:82px;z-index:2147483200;border:1px solid rgba(236,202,117,.68);border-radius:999px;padding:10px 15px;min-height:44px;line-height:22px;font-size:12px;font-weight:800;color:#1e1326;background:linear-gradient(120deg,#f6d885,#b99aef);box-shadow:0 8px 30px rgba(15,6,29,.4);cursor:pointer;';
+                launch.textContent='✦ Jonas AI';
+                launch.style.cssText='position:fixed;right:14px;bottom:112px;z-index:2147483200;border:1px solid rgba(236,202,117,.68);border-radius:999px;padding:10px 15px;min-height:44px;line-height:22px;font-size:12px;font-weight:800;color:#1e1326;background:linear-gradient(120deg,#f6d885,#b99aef);box-shadow:0 8px 30px rgba(15,6,29,.4);cursor:pointer;';
                 launch.addEventListener('click',function(event){
                   event.preventDefault();
                   try{window.MatchAppNativeExperience.openVoiceAvatar()}catch(e){}
@@ -1070,6 +1077,64 @@ class MainActivity : AppCompatActivity() {
                   setTimeout(setupNativeVoiceAvatarLauncher,350);
                 });
               }
+
+              // Only the installed Android shell gets gesture and speech handoff
+              // recovery. Keep shared site scripts, desktop, and Kids untouched.
+              function installAndroidInteractionRecovery() {
+                if(!window.__matchappAndroidVoiceSubmitBound){
+                  window.__matchappAndroidVoiceSubmitBound=true;
+                  document.addEventListener('matchapp:voice-transcript',function(event){
+                    var data=event.detail||{}, value=String(data.text||'').trim();
+                    if(!value || (data.inputId!=='discover-new-input' && data.inputId!=='specific-search-input'))return;
+                    // The existing final-recognition callback submits synchronously.
+                    // Rescue only if the text is still waiting after it has returned;
+                    // this avoids a second AI call or a second credit debit.
+                    setTimeout(function(){
+                      var field=document.getElementById(data.inputId);
+                      if(!field || String(field.value||'').trim()!==value)return;
+                      if(data.inputId==='discover-new-input' && typeof window.newDiscoverSearch==='function'){
+                        window.newDiscoverSearch();
+                      }else if(data.inputId==='specific-search-input'){
+                        field.closest('.home-ask-composer')?.querySelector('.gold-btn')?.click();
+                      }
+                    },400);
+                  });
+                }
+                var vp=document.getElementById('marquee-viewport');
+                if(!vp || vp.dataset.androidSwipeReady==='1')return;
+                vp.dataset.androidSwipeReady='1';
+                vp.style.setProperty('overflow-x','auto','important');
+                vp.style.setProperty('touch-action','pan-y','important');
+                var start=null, suppressTapUntil=0;
+                vp.addEventListener('touchstart',function(e){
+                  if(e.touches.length!==1)return;
+                  var touch=e.touches[0];
+                  start={x:touch.clientX,y:touch.clientY,scroll:vp.scrollLeft,moved:false};
+                  vp.__railHold?.();
+                },{passive:true});
+                vp.addEventListener('touchmove',function(e){
+                  if(!start || e.touches.length!==1)return;
+                  var touch=e.touches[0],dx=start.x-touch.clientX,dy=start.y-touch.clientY;
+                  if(!start.moved && Math.abs(dx)<10)return;
+                  if(!start.moved && Math.abs(dx)<=Math.abs(dy)*1.18)return;
+                  start.moved=true;
+                  if(e.cancelable)e.preventDefault();
+                  vp.scrollLeft=start.scroll+dx;
+                  vp.__railHold?.();
+                  suppressTapUntil=Date.now()+550;
+                },{passive:false});
+                function finishAndroidSwipe(){start=null;}
+                vp.addEventListener('touchend',finishAndroidSwipe,{passive:true});
+                vp.addEventListener('touchcancel',finishAndroidSwipe,{passive:true});
+                vp.addEventListener('click',function(e){
+                  if(Date.now()<suppressTapUntil && e.target.closest?.('.marquee-item')){
+                    e.preventDefault();e.stopImmediatePropagation();
+                  }
+                },true);
+              }
+              installAndroidInteractionRecovery();
+              setTimeout(installAndroidInteractionRecovery,500);
+              setTimeout(installAndroidInteractionRecovery,1500);
 
               configureAndroidKidsEntry();
               setTimeout(configureAndroidKidsEntry, 450);

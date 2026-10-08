@@ -42,7 +42,9 @@ test('Native launcher does not modify browser, Kids or checkout and stays owner-
  assert.match(main,/MatchAppNativeExperience\.openVoiceAvatar/);
  assert.match(main,/localStorage\.getItem\(keys\[i\]\)/);
  assert.match(main,/VoiceAvatarActivity\.EXTRA_TOKEN/);
- assert.match(main,/user\.id==='141e60f1-1945-47da-85e8-c492e984496b'/);
+ assert.match(main,/if\(s&&s\.user&&s\.user\.id&&s\.access_token\)/);
+ assert.match(main,/setupNativeVoiceAvatarLauncher/);
+ assert.doesNotMatch(main,/if\(!owner\) return;/);
  assert.ok(!fs.existsSync(path.join(root,'avatar-ai')));
 });
 test('Audio motion uses local amplitudes, is explicitly not phoneme accurate, and honours reduced motion',()=>{
