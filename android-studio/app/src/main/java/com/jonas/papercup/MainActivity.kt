@@ -1,5 +1,9 @@
 package com.jonas.papercup
 
+import android.Manifest
+import android.content.pm.PackageManager
+import android.speech.SpeechRecognizer
+import android.speech.RecognitionListener
 import android.annotation.SuppressLint
 import android.content.ActivityNotFoundException
 import android.content.Intent
@@ -71,7 +75,12 @@ class MainActivity : AppCompatActivity() {
     private var voiceTtsReady = false
     private var pendingVoiceUtterance: Pair<String, String?>? = null
     private var homeVoiceRecognition = false
+    private var inlineRecognizer: SpeechRecognizer? = null
+    private var pendingRecognitionLang = "en-US"
+    private var voicePersona = "jonas"
+    private var activeSpeechId = ""
     private val androidAvatarHomeJs by lazy { assets.open("avatar-ai/home-preview.js").bufferedReader().use { it.readText() } }
+    private val androidAvatarCompanionJs by lazy { assets.open("avatar-ai/companion-v44.js").bufferedReader().use { it.readText() } }
     private val avatarImageLoader by lazy { androidx.webkit.WebViewAssetLoader.Builder().addPathHandler("/assets/", androidx.webkit.WebViewAssetLoader.AssetsPathHandler(this)).build() }
 
     // Web UI (including the responsive Avatar Studio) is shared with matchapp.tv.
@@ -86,18 +95,11 @@ class MainActivity : AppCompatActivity() {
         filePathCallback = null
     }
 
-    private val voiceRecognizer = registerForActivityResult(
-        ActivityResultContracts.StartActivityForResult()
-    ) { result ->
-        val transcript = result.data
-            ?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS)
-            ?.firstOrNull()
-            ?.trim()
-        if (result.resultCode == android.app.Activity.RESULT_OK && !transcript.isNullOrBlank()) {
-            sendVoiceResult(transcript)
-        } else {
-            sendVoiceError("no-speech")
-        }
+    private val audioPermission = registerForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { granted ->
+        if (granted) startInlineRecognition(pendingRecognitionLang)
+        else sendVoiceError("permission-denied")
     }
 
     @SuppressLint("SetJavaScriptEnabled")
@@ -125,15 +127,15 @@ class MainActivity : AppCompatActivity() {
             findViewById(R.id.ad_container),
             findViewById(R.id.ad_privacy)
         ).also { it.start() }
-        voiceTts = TextToSpeech(this) { status ->
+        voiceTts = TextToSpeech(this, { status ->
             voiceTtsReady = status == TextToSpeech.SUCCESS
             if (voiceTtsReady) {
                 voiceTts?.setOnUtteranceProgressListener(object : UtteranceProgressListener() {
-                    override fun onStart(utteranceId: String?) = sendVoiceSpeakingState(true)
-                    override fun onDone(utteranceId: String?) = sendVoiceSpeakingState(false)
+                    override fun onStart(utteranceId: String?) = if (utteranceId == activeSpeechId) sendVoiceSpeakingState(true) else Unit
+                    override fun onDone(utteranceId: String?) = if (utteranceId == activeSpeechId) sendVoiceSpeakingState(false) else Unit
                     @Deprecated("Deprecated in Java")
-                    override fun onError(utteranceId: String?) = sendVoiceSpeakingState(false)
-                    override fun onError(utteranceId: String?, errorCode: Int) = sendVoiceSpeakingState(false)
+                    override fun onError(utteranceId: String?) = if (utteranceId == activeSpeechId) sendVoiceSpeakingState(false) else Unit
+                    override fun onError(utteranceId: String?, errorCode: Int) = if (utteranceId == activeSpeechId) sendVoiceSpeakingState(false) else Unit
                 })
                 runOnUiThread {
                     val pending = pendingVoiceUtterance
@@ -143,7 +145,7 @@ class MainActivity : AppCompatActivity() {
             } else {
                 pendingVoiceUtterance = null
             }
-        }
+        }, "com.google.android.tts")
         applySafeInsets()
         findViewById<MaterialButton>(R.id.retry).setOnClickListener { retry() }
 
@@ -173,6 +175,7 @@ class MainActivity : AppCompatActivity() {
                 .replace(" Version/4.0 ", " ")
             userAgentString = "$chromeUa $APP_UA"
         }
+        if (BuildConfig.DEBUG) WebView.setWebContentsDebuggingEnabled(true)
         web.setBackgroundColor(Color.parseColor("#101010"))
         web.webViewClient = MatchClient()
         web.webChromeClient = MatchChrome()
@@ -275,6 +278,9 @@ class MainActivity : AppCompatActivity() {
         finishStartupTransition(immediate = true)
         adMobController?.destroy()
         adMobController = null
+        inlineRecognizer?.cancel()
+        inlineRecognizer?.destroy()
+        inlineRecognizer = null
         voiceTts?.stop()
         voiceTts?.shutdown()
         voiceTts = null
@@ -507,6 +513,7 @@ class MainActivity : AppCompatActivity() {
         val uri = runCatching { Uri.parse(view.url.orEmpty()) }.getOrNull()
         if (uri != null && isAdultAiDocument(uri) && uri.scheme == "https") {
             view.evaluateJavascript(androidAvatarHomeJs, null)
+            view.evaluateJavascript(androidAvatarCompanionJs, null)
         }
     }
 
@@ -543,6 +550,10 @@ class MainActivity : AppCompatActivity() {
             }
             if (uri != null && isAdultAiDocument(uri)) view.settings.cacheMode = WebSettings.LOAD_NO_CACHE
             lastUrl = url ?: lastUrl
+            injectAppMode(view)
+        }
+
+        override fun onPageCommitVisible(view: WebView, url: String?) {
             injectAppMode(view)
         }
 
@@ -622,21 +633,19 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun sendVoiceResult(text: String) {
-        if (homeVoiceRecognition) {
-            homeVoiceRecognition = false
-            // Opening the native avatar here consumes the transcript once.
-            // Do not hand it to the website's auto-submit handler as well.
-            web.evaluateJavascript("window.matchappAndroidAvatarHome?.open(" + JSONObject.quote(text) + ");", null)
-            return
-        }
+        sendVoiceListeningState("idle")
+        homeVoiceRecognition = false
+        // Keep final transcripts in the existing quota-checked Ask AI + speech flow.
         val value = JSONObject.quote(text)
         web.evaluateJavascript(
-            "window.matchAppNativeVoiceResult&&window.matchAppNativeVoiceResult($value);",
+            "if (!(window.matchappAvatarVoiceCommand && window.matchappAvatarVoiceCommand($value))) {" +
+                "window.matchAppNativeVoiceResult&&window.matchAppNativeVoiceResult($value);}",
             null
         )
     }
 
     private fun sendVoiceError(code: String) {
+        sendVoiceListeningState("idle")
         homeVoiceRecognition = false
         val value = JSONObject.quote(code)
         web.evaluateJavascript(
@@ -645,11 +654,76 @@ class MainActivity : AppCompatActivity() {
         )
     }
 
+    private fun sendVoiceListeningState(state: String) {
+        if (!::web.isInitialized) return
+        val safe = JSONObject.quote(state)
+        runOnUiThread {
+            web.evaluateJavascript("document.dispatchEvent(new CustomEvent('matchapp:voice-state',{detail:{state:" + safe + "}}));", null)
+        }
+    }
+
+    private fun startInlineRecognition(lang: String) {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
+            pendingRecognitionLang = lang
+            audioPermission.launch(Manifest.permission.RECORD_AUDIO)
+            return
+        }
+        if (!SpeechRecognizer.isRecognitionAvailable(this)) {
+            sendVoiceError("unavailable")
+            return
+        }
+        inlineRecognizer?.cancel()
+        inlineRecognizer?.destroy()
+        inlineRecognizer = try { SpeechRecognizer.createSpeechRecognizer(this) } catch (_: Exception) {
+            sendVoiceError("unavailable")
+            return
+        }
+        inlineRecognizer?.setRecognitionListener(object : RecognitionListener {
+            override fun onReadyForSpeech(params: Bundle?) { sendVoiceListeningState("listening") }
+            override fun onBeginningOfSpeech() { sendVoiceListeningState("listening") }
+            override fun onRmsChanged(rmsdB: Float) = Unit
+            override fun onBufferReceived(buffer: ByteArray?) = Unit
+            override fun onEndOfSpeech() { sendVoiceListeningState("processing") }
+            override fun onError(error: Int) {
+                sendVoiceError(if (error == SpeechRecognizer.ERROR_NO_MATCH ||
+                    error == SpeechRecognizer.ERROR_SPEECH_TIMEOUT) "no-speech" else "unavailable")
+            }
+            override fun onResults(results: Bundle?) {
+                val transcript = results?.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION)
+                    ?.firstOrNull()?.trim()
+                if (!transcript.isNullOrBlank()) sendVoiceResult(transcript)
+                else sendVoiceError("no-speech")
+            }
+            override fun onPartialResults(partialResults: Bundle?) {
+                // Never submit partial hypotheses or charge credits twice.
+                val partial = partialResults?.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION)
+                    ?.firstOrNull()?.trim()?.take(300).orEmpty()
+                if (partial.isNotBlank()) web.evaluateJavascript(
+                    "document.dispatchEvent(new CustomEvent('matchapp:voice-partial',{detail:{text:" +
+                        JSONObject.quote(partial) + "}}));", null
+                )
+            }
+            override fun onEvent(eventType: Int, params: Bundle?) = Unit
+        })
+        val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH).apply {
+            putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
+            putExtra(RecognizerIntent.EXTRA_LANGUAGE, lang)
+            putExtra(RecognizerIntent.EXTRA_PARTIAL_RESULTS, true)
+            putExtra(RecognizerIntent.EXTRA_MAX_RESULTS, 1)
+        }
+        try {
+            sendVoiceListeningState("listening")
+            inlineRecognizer?.startListening(intent)
+        } catch (_: Exception) {
+            sendVoiceError("unavailable")
+        }
+    }
+
     private fun sendVoiceSpeakingState(active: Boolean) {
         if (!::web.isInitialized) return
         runOnUiThread {
             web.evaluateJavascript(
-                "window.matchAppNativeSpeechState&&window.matchAppNativeSpeechState(" + active + ");",
+                "window.matchAppNativeSpeechState&&window.matchAppNativeSpeechState(" + active + ");document.dispatchEvent(new CustomEvent('matchapp:avatar-speech',{detail:{speaking:" + active + "}}));",
                 null
             )
         }
@@ -679,21 +753,23 @@ class MainActivity : AppCompatActivity() {
             val languageVoices = engine.voices
                 ?.filter { it.locale.language.equals(locale.language, ignoreCase = true) }
                 .orEmpty()
-            val localVoices = languageVoices.filterNot { it.isNetworkConnectionRequired }
-            val candidates = if (localVoices.isNotEmpty()) localVoices else languageVoices
-            val natural = Regex("neural|natural|enhanced|premium|studio", RegexOption.IGNORE_CASE)
-            val chosen = candidates.maxByOrNull { voice ->
-                var score = voice.quality
-                if (voice.locale.toLanguageTag().equals(locale.toLanguageTag(), ignoreCase = true)) score += 500
-                if (!voice.isNetworkConnectionRequired) score += 250
-                if (natural.containsMatchIn(voice.name)) score += 700
-                score
+            val chosen = AvatarVoicePolicy.choose(languageVoices, voicePersona, locale)
+            if (chosen == null || engine.setVoice(chosen) != TextToSpeech.SUCCESS) {
+                engine.stop()
+                sendVoiceSpeakingState(false)
+                web.evaluateJavascript("document.dispatchEvent(new CustomEvent('matchapp:avatar-voice-unavailable'));", null)
+                return
             }
-            if (chosen != null) engine.voice = chosen else engine.language = locale
+            if (BuildConfig.DEBUG) android.util.Log.i("MatchAppVoice", "persona=$voicePersona voice=${chosen.name} locale=${chosen.locale}")
         }
         engine.setSpeechRate(0.98f)
         engine.setPitch(1.0f)
-        engine.speak(value, TextToSpeech.QUEUE_FLUSH, null, "matchapp-ai-reply")
+        web.evaluateJavascript("document.dispatchEvent(new CustomEvent('matchapp:avatar-answer',{detail:{text:" + JSONObject.quote(value) + "}}));", null)
+        activeSpeechId = "matchapp-ai-reply-${System.nanoTime()}"
+        if (engine.speak(value, TextToSpeech.QUEUE_FLUSH, null, activeSpeechId) == TextToSpeech.ERROR) {
+            sendVoiceSpeakingState(false)
+            sendVoiceError("speech-unavailable")
+        }
     }
 
     private inner class NativeStartupBridge {
@@ -788,6 +864,22 @@ class MainActivity : AppCompatActivity() {
 
     private inner class NativeVoiceBridge {
         @JavascriptInterface
+        fun setPersona(persona: String?) {
+            runOnUiThread {
+                val current = runCatching { Uri.parse(web.url.orEmpty()) }.getOrNull()
+                if (current != null && isMatchAppHost(current.host.orEmpty()) && !isKidsUri(current)) {
+                    val next = if (persona == "aureya") "aureya" else "jonas"
+                    if (next != voicePersona) {
+                        pendingVoiceUtterance = null
+                        voiceTts?.stop()
+                        sendVoiceSpeakingState(false)
+                    }
+                    voicePersona = next
+                }
+            }
+        }
+
+        @JavascriptInterface
         fun speak(text: String?, languageTag: String?) {
             runOnUiThread { speakVoiceText(text, languageTag) }
         }
@@ -798,6 +890,14 @@ class MainActivity : AppCompatActivity() {
                 pendingVoiceUtterance = null
                 voiceTts?.stop()
                 sendVoiceSpeakingState(false)
+            }
+        }
+
+        @JavascriptInterface
+        fun stopListening() {
+            runOnUiThread {
+                inlineRecognizer?.cancel()
+                sendVoiceListeningState("idle")
             }
         }
 
@@ -813,16 +913,7 @@ class MainActivity : AppCompatActivity() {
                 val lang = languageTag
                     ?.takeIf { it.matches(Regex("^[A-Za-z]{2,3}(-[A-Za-z]{2,4})?$")) }
                     ?: "en-US"
-                val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH).apply {
-                    putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
-                    putExtra(RecognizerIntent.EXTRA_LANGUAGE, lang)
-                    putExtra(RecognizerIntent.EXTRA_MAX_RESULTS, 1)
-                }
-                try {
-                    voiceRecognizer.launch(intent)
-                } catch (_: ActivityNotFoundException) {
-                    sendVoiceError("unavailable")
-                }
+                startInlineRecognition(lang)
             }
         }
     }
@@ -896,8 +987,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val HOME = "https://matchapp.tv/?utm_source=android_app&appBuild=42"
-        const val APP_UA = "MatchAppTVAndroid/1.1.38 MatchAppAiAndroid/1.1.38 MatchAppLaunchIntro/1"
+        const val HOME = "https://matchapp.tv/?utm_source=android_app&appBuild=44"
+        const val APP_UA = "MatchAppTVAndroid/1.1.40 MatchAppAiAndroid/1.1.40 MatchAppLaunchIntro/1"
         private const val STARTUP_PREFS = "matchapp_startup"
         private const val PREF_INTRO_SEEN = "intro_seen_v1"
         private const val PREF_REGISTERED = "registered_v1"
@@ -919,6 +1010,7 @@ class MainActivity : AppCompatActivity() {
                   '.premium-ad-frame,ins.adsbygoogle,.ma-ad-label,#chrome-notice,.chrome-notice,.install-btn' +
                   '{display:none!important;height:0!important;min-height:0!important;overflow:hidden!important;' +
                   'padding:0!important;margin:0!important;border:0!important}' +
+                  'html #matchapp-kids-entry,html .ma-kids-mode-entry{display:none!important}' +
                   'html.matchapp-ai-android{--android-gold:#e5c158;--android-violet:#8d5cff}' +
                   'html.matchapp-ai-android :is(button,a,[role="button"],.pill,.card){-webkit-tap-highlight-color:transparent}' +
                   'html.matchapp-ai-android :is(button,a,[role="button"]):active{transform:scale(.975);transition:transform 90ms ease}' +
@@ -992,16 +1084,12 @@ class MainActivity : AppCompatActivity() {
               setTimeout(syncNativeAdEntitlement, 1600);
 
               function configureAndroidKidsEntry() {
-                var kids = document.getElementById('matchapp-kids-entry') || document.querySelector('.ma-kids-mode-entry');
-                if (!kids) return;
-                kids.setAttribute('href','#');
-                kids.setAttribute('role','button');
-                kids.setAttribute('aria-haspopup','dialog');
-                kids.setAttribute('aria-label','MatchApp Ai Kids — coming soon to Google Play');
-                kids.setAttribute('title','MatchApp Ai Kids — coming soon to Google Play');
-                kids.style.opacity = '.76';
-                var label = kids.querySelector('span');
-                if (label) label.textContent = 'Kids · Soon';
+                document.querySelectorAll('#matchapp-kids-entry,.ma-kids-mode-entry').forEach(function(kids){
+                  kids.hidden = true;
+                  kids.style.setProperty('display','none','important');
+                  kids.setAttribute('aria-hidden','true');
+                  kids.setAttribute('tabindex','-1');
+                });
               }
 
               function showAndroidKidsNotice() {
@@ -1072,33 +1160,8 @@ class MainActivity : AppCompatActivity() {
 
               // Owner beta: launcher appears only inside the Android app, never on the website.
               // Server-side Realtime remains owner-gated until a metered public usage policy exists.
-              function setupNativeVoiceAvatarLauncher() {
-                if (!document.body || document.getElementById('matchapp-android-avatar-launcher')) return;
-                if (!window.MatchAppNativeExperience || !window.MatchAppNativeExperience.openVoiceAvatar) return;
-                // Keep the entry discoverable before and after Google sign-in.
-                // The native bridge obtains the session only when tapped; the backend
-                // remains owner/JWT-gated until server-side voice quotas are ready.
-                var launch=document.createElement('button');
-                launch.type='button';
-                launch.id='matchapp-android-avatar-launcher';
-                launch.setAttribute('aria-label','Talk to MatchApp Ai avatar');
-                launch.textContent='✦ Jonas AI';
-                launch.style.cssText='position:fixed;right:14px;bottom:112px;z-index:2147483200;border:1px solid rgba(236,202,117,.68);border-radius:999px;padding:10px 15px;min-height:44px;line-height:22px;font-size:12px;font-weight:800;color:#1e1326;background:linear-gradient(120deg,#f6d885,#b99aef);box-shadow:0 8px 30px rgba(15,6,29,.4);cursor:pointer;';
-                launch.addEventListener('click',function(event){
-                  event.preventDefault();
-                  try{if(window.matchappAndroidAvatarHome&&window.matchappAndroidAvatarHome.open)window.matchappAndroidAvatarHome.open('');else window.MatchAppNativeExperience.openVoiceAvatar()}catch(e){}
-                });
-                document.body.appendChild(launch);
-              }
-              setupNativeVoiceAvatarLauncher();
-              setTimeout(setupNativeVoiceAvatarLauncher,700);
-              setTimeout(setupNativeVoiceAvatarLauncher,1800);
-              if(!window.__matchAppAvatarLauncherBound){
-                window.__matchAppAvatarLauncherBound=true;
-                document.addEventListener('matchapp:authchange',function(){
-                  setTimeout(setupNativeVoiceAvatarLauncher,350);
-                });
-              }
+              // Avatar controls belong inside Ask AI, never above other controls.
+              document.getElementById('matchapp-android-avatar-launcher')?.remove();
 
               // Only the installed Android shell gets gesture and speech handoff
               // recovery. Keep shared site scripts, desktop, and Kids untouched.

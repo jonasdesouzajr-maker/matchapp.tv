@@ -3,10 +3,10 @@ const test=require('node:test'),assert=require('node:assert/strict'),fs=require(
 const root=path.join(__dirname,'..'),main=fs.readFileSync(path.join(root,'android-studio/app/src/main/java/com/jonas/papercup/MainActivity.kt'),'utf8');
 const base=path.join(root,'android-studio/app/src/main/res');
 function dims(file){const buf=fs.readFileSync(file);assert.equal(buf.subarray(0,8).toString('hex'),'89504e470d0a1a0a');return [buf.readUInt32BE(16),buf.readUInt32BE(20)];}
-test('Jonas AI is discoverable before sign-in without opening voice sessions anonymously',()=>{
- assert.match(main,/launch\.textContent='✦ Jonas AI'/);
+test('Private voice activity remains protected after removing the floating launcher',()=>{
+ assert.doesNotMatch(main,/launch\.textContent='✦ Jonas AI'/);
  assert.match(main,/openVoiceAvatar\(\)/);
- assert.match(main,/setupNativeVoiceAvatarLauncher\(\)/);
+ assert.doesNotMatch(main,/setupNativeVoiceAvatarLauncher\(\)/);
  assert.doesNotMatch(main,/if\(!owner\) return;/);
  assert.match(main,/if \(token\.length !in 100\.\.6000\)/);
  assert.match(main,/VoiceAvatarActivity\.EXTRA_TOKEN, token/);
