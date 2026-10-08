@@ -1,0 +1,54 @@
+'use strict';
+const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
+const base=path.join(__dirname,'..','android-studio','app'),main=fs.readFileSync(path.join(base,'src/main/java/com/jonas/papercup/MainActivity.kt'),'utf8');
+const activity=fs.readFileSync(path.join(base,'src/main/java/com/jonas/papercup/VoiceAvatarActivity.kt'),'utf8');
+const home=fs.readFileSync(path.join(base,'src/main/assets/avatar-ai/home-preview.js'),'utf8');
+const session=fs.readFileSync(path.join(base,'src/main/assets/avatar-ai/index.html'),'utf8');
+const gradle=fs.readFileSync(path.join(base,'build.gradle.kts'),'utf8');
+test('version 43 keeps the production package untouched for Play review later',()=>{
+  assert.match(gradle,/applicationId = "com\.jonas\.papercup"/);
+  assert.match(gradle,/versionCode = 43/);
+  assert.match(gradle,/versionName = "1\.1\.39"/);
+  assert.match(gradle,/applicationIdSuffix = "\.debug"/);
+});
+test('Home preview locally animates without calling metered Realtime services',()=>{
+  assert.doesNotThrow(()=>new vm.Script(home,{filename:'home-preview.js'}));
+  assert.match(home,/ma-avatar-home/);
+  assert.match(home,/requestAnimationFrame\(frame\)/);
+  assert.match(home,/prefers-reduced-motion:reduce/);
+  assert.doesNotMatch(home,/\/v1\/realtime\/calls|OPENAI_API_KEY|new RTCPeerConnection/);
+  assert.match(main,/androidAvatarHomeJs/);
+  assert.match(main,/isAdultAiDocument\(uri\)/);
+});
+test('two photo assets and choice are restricted to signed-in user',()=>{
+  for (const f of ['jonas.jpg','aureya.jpg'])assert.ok(fs.statSync(path.join(base,'src/main/assets/avatar-ai',f)).size>7000);
+  assert.match(home,/preferred_ai_avatar/);
+  assert.match(home,/matchapp_android_ai_persona_/);
+  assert.match(home,/function signup\(\)/);
+  assert.match(home,/if\(!getSession\(\)\)\{signup\(\);return\}/);
+  assert.match(home,/window\.openAuthModal/);
+  assert.match(home,/openVoiceAvatarForPersona/);
+});
+test('spoken Home prompts route once into persona-specific voice conversation',()=>{
+  assert.match(main,/if \(homeVoiceRecognition\)/);
+  assert.match(main,/homeVoiceRecognition = false/);
+  assert.match(main,/window\.matchappAndroidAvatarHome\?\.open/);
+  assert.match(main,/VoiceAvatarActivity\.EXTRA_PROMPT/);
+  assert.match(main,/VoiceAvatarActivity\.EXTRA_PERSONA/);
+  assert.match(activity,/mediaPlaybackRequiresUserGesture = question\.isBlank\(\)/);
+  assert.match(activity,/window\.MatchAppAvatar && window\.MatchAppAvatar\.init/);
+  const js=session.match(/<script>([\s\S]*?)<\/script>/);
+  assert.ok(js);
+  assert.doesNotThrow(()=>new vm.Script(js[1],{filename:'avatar-session.js'}));
+  assert.match(session,/conversation\.item\.create/);
+  assert.match(session,/response\.create/);
+  assert.match(session,/session\.update/);
+  assert.match(session,/voice:"marin"/);
+});
+test('typed input retains text-first Ask AI and opens optional voice chat',()=>{
+  assert.match(home,/ma-av-text-to-voice/);
+  assert.match(home,/window\.MatchAppNativeExperience/);
+  assert.match(home,/window\.supabaseClient\.from\('profiles'\)/);
+  assert.match(main,/fun openVoiceAvatarForPersona/);
+  assert.doesNotMatch(home,/newDiscoverSearch\(\)/);
+});

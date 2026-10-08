@@ -48,6 +48,8 @@ class VoiceAvatarActivity : AppCompatActivity() {
         val token = intent.getStringExtra(EXTRA_TOKEN).orEmpty().takeIf {
             it.length in 100..6000 && it.none { char -> char.isWhitespace() }
         }.orEmpty()
+        val persona = if (intent.getStringExtra(EXTRA_PERSONA) == "aureya") "aureya" else "jonas"
+        val question = intent.getStringExtra(EXTRA_PROMPT).orEmpty().take(1000)
         // Bearer token exists only in process memory: never persisted in a URL or file.
         player = WebView(this).apply {
             setBackgroundColor(Color.rgb(9,7,18))
@@ -56,7 +58,8 @@ class VoiceAvatarActivity : AppCompatActivity() {
             settings.allowFileAccess = false
             settings.allowContentAccess = false
             settings.javaScriptCanOpenWindowsAutomatically = false
-            settings.mediaPlaybackRequiresUserGesture = true
+            // The incoming Home microphone gesture explicitly starts a voice call.
+            settings.mediaPlaybackRequiresUserGesture = question.isBlank()
             settings.mixedContentMode = WebSettings.MIXED_CONTENT_NEVER_ALLOW
             webViewClient = object : WebViewClient() {
                 override fun shouldInterceptRequest(view: WebView, request: WebResourceRequest): WebResourceResponse? =
@@ -72,7 +75,7 @@ class VoiceAvatarActivity : AppCompatActivity() {
                 override fun onPageFinished(view: WebView, url: String?) {
                     if (url?.startsWith(ASSET_ORIGIN) == true) {
                         view.evaluateJavascript(
-                            "window.MatchAppAvatar && window.MatchAppAvatar.init(" + JSONObject.quote(token) + ");",
+                            "window.MatchAppAvatar && window.MatchAppAvatar.init(" + JSONObject.quote(token) + "," + JSONObject.quote(persona) + "," + JSONObject.quote(question) + ");",
                             null
                         )
                     }
@@ -122,6 +125,8 @@ class VoiceAvatarActivity : AppCompatActivity() {
     }
     companion object {
         const val EXTRA_TOKEN = "matchapp_avatar_access_token"
+        const val EXTRA_PERSONA = "matchapp_avatar_persona"
+        const val EXTRA_PROMPT = "matchapp_avatar_initial_prompt"
         private const val ASSET_ORIGIN = "https://appassets.androidplatform.net/assets/avatar-ai/index.html"
     }
 }

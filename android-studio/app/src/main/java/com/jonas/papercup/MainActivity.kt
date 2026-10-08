@@ -70,6 +70,9 @@ class MainActivity : AppCompatActivity() {
     private var voiceTts: TextToSpeech? = null
     private var voiceTtsReady = false
     private var pendingVoiceUtterance: Pair<String, String?>? = null
+    private var homeVoiceRecognition = false
+    private val androidAvatarHomeJs by lazy { assets.open("avatar-ai/home-preview.js").bufferedReader().use { it.readText() } }
+    private val avatarImageLoader by lazy { androidx.webkit.WebViewAssetLoader.Builder().addPathHandler("/assets/", androidx.webkit.WebViewAssetLoader.AssetsPathHandler(this)).build() }
 
     // Web UI (including the responsive Avatar Studio) is shared with matchapp.tv.
     // Keep production pages fresh so phone/tablet WebViews receive approved UI updates immediately.
@@ -501,6 +504,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun injectAppMode(view: WebView) {
         view.evaluateJavascript(APP_MODE_JS, null)
+        val uri = runCatching { Uri.parse(view.url.orEmpty()) }.getOrNull()
+        if (uri != null && isAdultAiDocument(uri) && uri.scheme == "https") {
+            view.evaluateJavascript(androidAvatarHomeJs, null)
+        }
     }
 
     private inner class MatchClient : WebViewClient() {
@@ -517,7 +524,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         override fun shouldInterceptRequest(view: WebView, request: WebResourceRequest): WebResourceResponse? {
-            return AdBlocker.intercept(request.url.toString())
+            return avatarImageLoader.shouldInterceptRequest(request.url)
+                ?: AdBlocker.intercept(request.url.toString())
         }
 
         @Deprecated("Deprecated in Java")
@@ -614,6 +622,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun sendVoiceResult(text: String) {
+        if (homeVoiceRecognition) {
+            homeVoiceRecognition = false
+            // Opening the native avatar here consumes the transcript once.
+            // Do not hand it to the website's auto-submit handler as well.
+            web.evaluateJavascript("window.matchappAndroidAvatarHome?.open(" + JSONObject.quote(text) + ");", null)
+            return
+        }
         val value = JSONObject.quote(text)
         web.evaluateJavascript(
             "window.matchAppNativeVoiceResult&&window.matchAppNativeVoiceResult($value);",
@@ -622,6 +637,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun sendVoiceError(code: String) {
+        homeVoiceRecognition = false
         val value = JSONObject.quote(code)
         web.evaluateJavascript(
             "window.matchAppNativeVoiceError&&window.matchAppNativeVoiceError($value);",
@@ -715,7 +731,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         @JavascriptInterface
-        fun openVoiceAvatar() {
+        fun openVoiceAvatar() = openVoiceAvatarForPersona("", "jonas")
+
+        @JavascriptInterface
+        fun openVoiceAvatarForPersona(prompt: String?, persona: String?) {
             runOnUiThread {
                 val page = runCatching { Uri.parse(web.url.orEmpty()) }.getOrNull()
                 if (page == null || page.scheme != "https" || !isMatchAppHost(page.host.orEmpty()) || isKidsUri(page)) return@runOnUiThread
@@ -744,6 +763,8 @@ class MainActivity : AppCompatActivity() {
                     startActivity(
                         Intent(this@MainActivity, VoiceAvatarActivity::class.java)
                             .putExtra(VoiceAvatarActivity.EXTRA_TOKEN, token)
+                            .putExtra(VoiceAvatarActivity.EXTRA_PERSONA, if (persona == "aureya") "aureya" else "jonas")
+                            .putExtra(VoiceAvatarActivity.EXTRA_PROMPT, prompt.orEmpty().take(1000))
                     )
                 }
             }
@@ -788,6 +809,7 @@ class MainActivity : AppCompatActivity() {
                     sendVoiceError("not-allowed")
                     return@runOnUiThread
                 }
+                homeVoiceRecognition = current.path.orEmpty() == "/" || current.path.orEmpty() == "/index.html"
                 val lang = languageTag
                     ?.takeIf { it.matches(Regex("^[A-Za-z]{2,3}(-[A-Za-z]{2,4})?$")) }
                     ?: "en-US"
@@ -1064,7 +1086,7 @@ class MainActivity : AppCompatActivity() {
                 launch.style.cssText='position:fixed;right:14px;bottom:112px;z-index:2147483200;border:1px solid rgba(236,202,117,.68);border-radius:999px;padding:10px 15px;min-height:44px;line-height:22px;font-size:12px;font-weight:800;color:#1e1326;background:linear-gradient(120deg,#f6d885,#b99aef);box-shadow:0 8px 30px rgba(15,6,29,.4);cursor:pointer;';
                 launch.addEventListener('click',function(event){
                   event.preventDefault();
-                  try{window.MatchAppNativeExperience.openVoiceAvatar()}catch(e){}
+                  try{if(window.matchappAndroidAvatarHome&&window.matchappAndroidAvatarHome.open)window.matchappAndroidAvatarHome.open('');else window.MatchAppNativeExperience.openVoiceAvatar()}catch(e){}
                 });
                 document.body.appendChild(launch);
               }

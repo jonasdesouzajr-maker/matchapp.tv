@@ -33,8 +33,8 @@ body[data-mode="speaking"] .portrait-wrap:before{box-shadow:0 0 calc(25px + var(
 <div class="matchapp-brand-bar"><a class="matchapp-brand-link" href="/" aria-label="MatchApp Ai"><img class="matchapp-wordmark" src="/assets/brand/matchapp-tv-ai-v2.svg" alt="MatchApp Ai" width="600" height="104" decoding="async"></a></div>
 
 <div class="shell"><div class="ambient"></div>
-<header class="top"><button id="back" class="back" aria-label="Return to MatchApp Ai">‹</button><div class="brand">MatchApp <em>Ai</em><small>Voice avatar · Android</small></div><span class="privacy">● Beta</span></header>
-<main class="stage"><div class="portrait-wrap"><canvas id="face" class="face" aria-label="Jonas, AI avatar portrait"></canvas><div class="glimmer"></div><div class="status-dot"></div></div>
+<header class="top"><button id="back" class="back" aria-label="Return to MatchApp Ai">‹</button><div class="brand">MatchApp <em>Ai</em><small id="avatar-subtitle">Voice avatar · Android</small></div><span class="privacy">● Beta</span></header>
+<main class="stage"><div class="portrait-wrap"><canvas id="face" class="face" aria-label="AI avatar portrait"></canvas><div class="glimmer"></div><div class="status-dot"></div></div>
 <div class="status" role="status" aria-live="polite"><h1 id="title">Ready to talk</h1><p id="description">Natural voice, with subtle real-time facial movement.</p></div>
 <div class="wave" id="wave" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div></main>
 <footer class="actions"><button id="primary" class="main-btn">Start conversation</button><button id="secondary" class="secondary" hidden>Mute microphone</button><div class="foot"><strong>MatchApp Ai</strong> · Voice powered by OpenAI Realtime<br>Face movement is audio-reactive, not phoneme-accurate lip-sync.</div></footer>
@@ -45,11 +45,17 @@ body[data-mode="speaking"] .portrait-wrap:before{box-shadow:0 0 calc(25px + var(
 // No internet-hosted avatar renderer, external JS package or browser page is used.
 const $ = id => document.getElementById(id);
 const face=$("face"),canvas=face.getContext("2d",{alpha:false}),img=new Image();img.src="jonas.jpg";
+let persona="jonas",initialPrompt="";
 const wave=[...$("wave").children];let jwt="",pc=null,dc=null,mic=null,audio=null,ctx=null,inMeter=null,outMeter=null,frame=0,mode="ready",muted=false,connectingTimer=0;
 let mouth=0,speech=0,blinkAt=performance.now()+3100,blink=0,blinkStart=-2000,prevTime=0,missingImage=false;
 let visemes=[],currentViseme="a",lastVisemeAt=0;
 const minimal=matchMedia("(prefers-reduced-motion:reduce)").matches;
-const sessionReady=new Promise(resolve=>{window.MatchAppAvatar={init:token=>{jwt=String(token||"");resolve(jwt)}};setTimeout(()=>resolve(jwt),5000)});
+const sessionReady=new Promise(resolve=>{window.MatchAppAvatar={init:(token,selected,question)=>{
+ jwt=String(token||"");persona=selected==="aureya"?"aureya":"jonas";initialPrompt=String(question||"").slice(0,1000);
+ img.src=persona==="aureya"?"aureya.jpg":"jonas.jpg";
+ const name=persona==="aureya"?"Aureya":"Jonas";$("avatar-subtitle").textContent=name+" · Voice avatar";face.setAttribute("aria-label",name+" AI avatar portrait");
+ resolve(jwt);
+}};setTimeout(()=>resolve(jwt),5000)});
 const setStatus=(state,title,description)=>{
   mode=state;document.body.dataset.mode=state;$("title").textContent=title;$("description").textContent=description;
   const live=["connected","listening","speaking"].includes(state);
@@ -68,10 +74,10 @@ function faceFrame(t){
  canvas.drawImage(img,0,0,sw,sh,0,0,w,h);
  // The photo itself remains the reference; facial regions are re-projected from the same image.
  if(!minimal){
-   const eyeY=.315*h,eyeh=.040*h;
+   const eyeY=(persona==="aureya"?.365:.315)*h,eyeh=.040*h;
    if(blink>.02){
      // Compressed eye texture evokes natural lids, no cartoon dots or overlays.
-     for(const eyeX of [.335,.565]){
+     for(const eyeX of (persona==="aureya"?[.36,.57]:[.335,.565])){
        const ex=eyeX*w,ew=.12*w,srcX=eyeX*iw,srcY=.29*ih,srcW=.12*iw,srcH=.060*ih;
        canvas.drawImage(img,srcX,srcY,srcW,srcH,ex,eyeY,ew,Math.max(1,eyeh*(1-blink*.91)));
      }
@@ -81,8 +87,10 @@ function faceFrame(t){
    const m=Math.max(0,Math.min(1,mouth));
    const rounded=/[ouqw]/.test(currentViseme),wide=/[ei]/.test(currentViseme);
    if(m>.026){
-     const sx=.390*iw,sy=.431*ih,mw=.225*iw,mh=.065*ih;
-     const dx=.390*w,dy=.431*h,dw=.225*w,dh=.065*h;
+     const px=persona==="aureya"?.405:.390,py=persona==="aureya"?.535:.431;
+     const mw=.205*iw,mh=.060*ih;
+     const sx=px*iw,sy=py*ih;
+     const dx=px*w,dy=py*h,dw=.205*w,dh=.060*h;
      canvas.save();canvas.beginPath();canvas.ellipse(dx+dw/2,dy+dh/2,dw*.54,dh*(.58+.34*m),0,0,Math.PI*2);canvas.clip();
      const scaleX=rounded?(.98-.12*m):wide?(1+.08*m):1;
      canvas.drawImage(img,sx,sy,mw,mh,dx+dw*(1-scaleX)/2,dy-dh*.11*m,dw*scaleX,dh*(1+.32*m));canvas.restore();
@@ -142,7 +150,16 @@ async function start(){
   audio=document.createElement("audio");audio.autoplay=true;audio.playsInline=true;audio.style.display="none";document.body.appendChild(audio);
   pc.ontrack=e=>{const stream=e.streams&&e.streams[0];if(!stream)return;audio.srcObject=stream;audio.play().catch(()=>{});outMeter=analyser(stream)};
   dc=pc.createDataChannel("oai-events");
-  dc.onopen=()=>dc.send(JSON.stringify({type:"response.create",response:{instructions:"Greet the listener in one natural sentence and invite them to speak."}}));
+  dc.onopen=()=>{
+    // Match the selected avatar with a suitable Realtime voice before first speech.
+    // These are model-provided voices; the portrait is not presented as a real person.
+    if(persona==="aureya")dc.send(JSON.stringify({type:"session.update",session:{audio:{output:{voice:"marin"}}}}));
+    if(initialPrompt){
+      const question=initialPrompt;initialPrompt="";
+      dc.send(JSON.stringify({type:"conversation.item.create",item:{type:"message",role:"user",content:[{type:"input_text",text:question}]}}));
+      dc.send(JSON.stringify({type:"response.create"}));
+    }else dc.send(JSON.stringify({type:"response.create",response:{instructions:"Greet the listener in one natural sentence and invite them to speak."}}));
+  };
   dc.onmessage=e=>{try{const event=JSON.parse(e.data);
    if(event.type==="response.output_audio_transcript.delta"||event.type==="response.audio_transcript.delta"){
     const chunk=String(event.delta||"").toLowerCase().replace(/[^a-zà-ÿ]/g,"");
@@ -157,7 +174,7 @@ async function start(){
   if(!sdp)throw Error("Voice offer unavailable.");
   const res=await fetch("https://zkymvqrmbabngsqblyye.supabase.co/functions/v1/private-voice-call",{
    method:"POST",headers:{"Authorization":"Bearer "+jwt,"apikey":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpreW12cXJtYmFibmdzcWJseXllIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODY4MDUyNDIsImV4cCI6MjEwMjM4MTI0Mn0._yEVFMfwVU6GBqQ8m3ljfOgA0HSLEDiKMOfYae6ZD8Q","Content-Type":"application/json"},
-   body:JSON.stringify({sdp})
+   body:JSON.stringify({sdp,persona})
   });
   if(!res.ok){if(res.status===401)throw Error("Your login expired. Sign in again.");if(res.status===403)throw Error("Avatar voice beta is not enabled on this account yet.");throw Error("Voice could not connect (HTTP "+res.status+").")}
   const answer=await res.text();await pc.setRemoteDescription({type:"answer",sdp:answer});
@@ -170,6 +187,9 @@ $("secondary").addEventListener("click",()=>{if(!mic)return;muted=!muted;mic.get
 $("back").addEventListener("click",()=>{stop();window.location.href="matchapp-avatar://close"});
 document.addEventListener("visibilitychange",()=>{if(document.hidden){stop();setStatus("ready","Call paused","Return to the app to start another conversation.")}});
 window.addEventListener("pagehide",stop);
-sessionReady.then(t=>{if(!t)setStatus("error","Sign in required","Open MatchApp Ai, sign in, then start the avatar again.")});
+sessionReady.then(t=>{
+ if(!t){setStatus("error","Sign in required","Open MatchApp Ai, sign in, then start the avatar again.");return;}
+ if(initialPrompt)start();
+});
 </script>
 </body></html>
