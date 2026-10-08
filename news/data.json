@@ -1,10 +1,1706 @@
 {
-  "generated_at": "2026-10-08T17:52:59.514Z",
-  "feed_version": "a0b98d12",
+  "generated_at": "2026-10-08T22:23:59.626Z",
+  "feed_version": "65a16e6a",
   "sports_updated_at": "2026-10-08T17:52:59.456Z",
   "source_policy": "direct-trusted-publisher-rss+google-trends-keyword-signals",
   "seo_policy": "per-story keyword snapshot at first discovery + source citation + stable archive",
   "items": [
+    {
+      "id": "8fd01290",
+      "title": "Fort Hood attacker's execution by firing squad will be livestreamed, Pentagon says",
+      "url": "https://www.bbc.co.uk/news/articles/cmy0r96xygx6o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-08T22:21:56.000Z",
+      "discovered_at": "2026-10-08T22:23:59.626Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "Fort Hood",
+      "description": "World news reported by BBC World on 2026-10-08. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/0816/live/4b8745c0-c35c-11f1-8787-a95282cfe51d.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/fort-hood-attacker-s-execution-by-firing-squad-will-be-livestreamed-pentagon-say-8fd012/",
+      "landing_url": "https://matchapp.tv/?news=8fd01290#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-08",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "fort",
+          "hood",
+          "attacker",
+          "execution",
+          "firing",
+          "squad"
+        ],
+        "long_tail": [
+          "Fort Hood attacker's execution by firing squad will be livestreamed, Pentagon says 2026-10-08",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "fort",
+          "hood",
+          "attacker",
+          "execution",
+          "firing",
+          "squad"
+        ],
+        "freshness_keywords": [
+          "2026-10-08"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Fort Hood attacker's execution by firing squad will be…",
+        "meta_description": "World report published by BBC World on 2026-10-08. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-08",
+          "world news",
+          "global headlines",
+          "fort",
+          "hood",
+          "attacker",
+          "execution",
+          "firing",
+          "squad",
+          "Fort Hood attacker's execution by firing squad will be livestreamed, Pentagon says 2026-10-08",
+          "world news October 2026",
+          "2026-10-08",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-08T22:23:59.626Z"
+      }
+    },
+    {
+      "id": "040d3732",
+      "title": "Cerca de 20 mil vão às ruas de Madri após morte de idosa despejada de casa",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/08/cerca-de-20-mil-vao-as-ruas-de-madri-apos-morte-de-idosa-despejada-de-casa.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-08T21:49:20.000Z",
+      "discovered_at": "2026-10-08T22:23:59.626Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-08. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/hvSUwvFeq9TEYUMW3G4t2VGwhMc=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/i/x/qPIVb0SMyFvB4WwGphlQ/2026-10-08t191823z-435363033-rc27zna50ay5-rtrmadp-3-spain-housing-maricarmen-protest.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/cerca-de-20-mil-vao-as-ruas-de-madri-apos-morte-de-idosa-despejada-de-casa-040d37/",
+      "landing_url": "https://matchapp.tv/?news=040d3732#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-08",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "cerca",
+          "mil",
+          "vao",
+          "ruas",
+          "madri",
+          "apos"
+        ],
+        "long_tail": [
+          "Cerca de 20 mil vão às ruas de Madri após morte de idosa despejada de casa 2026-10-08",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "cerca",
+          "mil",
+          "vao",
+          "ruas",
+          "madri",
+          "apos"
+        ],
+        "freshness_keywords": [
+          "2026-10-08"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Cerca de 20 mil vão às ruas de Madri após morte de idosa…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-08. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-08",
+          "notícias do mundo",
+          "notícias internacionais",
+          "cerca",
+          "mil",
+          "vao",
+          "ruas",
+          "madri",
+          "apos",
+          "Cerca de 20 mil vão às ruas de Madri após morte de idosa despejada de casa 2026-10-08",
+          "notícias mundiais outubro 2026",
+          "2026-10-08",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-08T22:23:59.626Z"
+      }
+    },
+    {
+      "id": "3db433ab",
+      "title": "What Americans think about the death penalty",
+      "url": "https://www.bbc.co.uk/news/videos/cjx236wl9416o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-08T21:49:14.000Z",
+      "discovered_at": "2026-10-08T22:23:59.626Z",
+      "event_type": "Obituary",
+      "category": "world",
+      "person": "What Americans",
+      "description": "World news reported by BBC World on 2026-10-08. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/3234/live/1c3e8760-c361-11f1-a64c-550be9e3c66b.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/what-americans-think-about-the-death-penalty-3db433/",
+      "landing_url": "https://matchapp.tv/?news=3db433ab#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-08",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "what",
+          "americans",
+          "think",
+          "about",
+          "death",
+          "penalty"
+        ],
+        "long_tail": [
+          "What Americans think about the death penalty 2026-10-08",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "what",
+          "americans",
+          "think",
+          "about",
+          "death",
+          "penalty"
+        ],
+        "freshness_keywords": [
+          "2026-10-08"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "What Americans think about the death penalty | World News…",
+        "meta_description": "World report published by BBC World on 2026-10-08. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-08",
+          "world news",
+          "global headlines",
+          "what",
+          "americans",
+          "think",
+          "about",
+          "death",
+          "penalty",
+          "What Americans think about the death penalty 2026-10-08",
+          "world news October 2026",
+          "2026-10-08",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-08T22:23:59.626Z"
+      }
+    },
+    {
+      "id": "fd2f09fd",
+      "title": "Streaming Ratings: ‘Toy Story 5’ Reaches No. 1 With Disney+ Premiere",
+      "url": "https://www.hollywoodreporter.com/tv/tv-news/streaming-ratings-sept-21-27-2026-1236725686/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-08T21:47:34.000Z",
+      "discovered_at": "2026-10-08T22:23:59.626Z",
+      "event_type": "Release",
+      "category": "entertainment",
+      "person": "Streaming Ratings",
+      "description": "Streaming Ratings: release headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/05/TOYSTORY5-ONLINE-USE_t610_210f.pub16.460-H-2026.jpg?w=1296&h=730&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/streaming-ratings-toy-story-5-reaches-no-1-with-disney-premiere-fd2f09/",
+      "landing_url": "https://matchapp.tv/?news=fd2f09fd#latest-news",
+      "seo": {
+        "primary_keyword": "Streaming Ratings latest news",
+        "short_tail": [
+          "Streaming Ratings",
+          "Streaming Ratings news",
+          "release",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "Streaming Ratings latest news October 2026",
+          "Streaming Ratings release update 2026",
+          "Streaming Ratings news 2026-10-08",
+          "latest release news about Streaming Ratings",
+          "streaming ratings streaming ratings toy story latest update",
+          "The Hollywood Reporter Streaming Ratings release",
+          "latest news about Streaming Ratings October 2026",
+          "Streaming Ratings entertainment news 2026-10-08",
+          "what happened with Streaming Ratings"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "Streaming Ratings",
+          "streaming",
+          "ratings",
+          "toy",
+          "story",
+          "reaches",
+          "disney"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-08",
+          "Streaming Ratings 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter Streaming Ratings",
+          "hollywoodreporter.com Streaming Ratings",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "Streaming Ratings: ‘Toy Story 5’ Reaches No. 1 With…",
+        "meta_description": "Streaming Ratings: Release update reported by The Hollywood Reporter on 2026-10-08. See verified context, publication time and the original source via…",
+        "keywords": [
+          "Streaming Ratings latest news",
+          "Streaming Ratings",
+          "Streaming Ratings news",
+          "release",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "Streaming Ratings latest news October 2026",
+          "Streaming Ratings release update 2026",
+          "Streaming Ratings news 2026-10-08",
+          "latest release news about Streaming Ratings",
+          "streaming ratings streaming ratings toy story latest update",
+          "The Hollywood Reporter Streaming Ratings release",
+          "latest news about Streaming Ratings October 2026",
+          "Streaming Ratings entertainment news 2026-10-08",
+          "what happened with Streaming Ratings",
+          "streaming",
+          "ratings",
+          "toy",
+          "story",
+          "reaches",
+          "disney",
+          "October 2026",
+          "2026-10-08",
+          "Streaming Ratings 2026",
+          "The Hollywood Reporter Streaming Ratings",
+          "hollywoodreporter.com Streaming Ratings",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-08T22:23:59.626Z"
+      }
+    },
+    {
+      "id": "329a33b3",
+      "title": "White House blocks Microsoft from foreign worker hiring program",
+      "url": "https://www.bbc.co.uk/news/articles/ck5yngl2y4gpo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC Technology",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-08T21:37:35.000Z",
+      "discovered_at": "2026-10-08T22:23:59.626Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "White House",
+      "description": "World news reported by BBC Technology on 2026-10-08. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/d7e9/live/ec86f2b0-c346-11f1-9a39-31b474234113.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/white-house-blocks-microsoft-from-foreign-worker-hiring-program-329a33/",
+      "landing_url": "https://matchapp.tv/?news=329a33b3#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-08",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "white",
+          "house",
+          "blocks",
+          "microsoft",
+          "foreign",
+          "worker"
+        ],
+        "long_tail": [
+          "White House blocks Microsoft from foreign worker hiring program 2026-10-08",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "white",
+          "house",
+          "blocks",
+          "microsoft",
+          "foreign",
+          "worker"
+        ],
+        "freshness_keywords": [
+          "2026-10-08"
+        ],
+        "source_keywords": [
+          "BBC Technology"
+        ],
+        "meta_title": "White House blocks Microsoft from foreign worker hiring…",
+        "meta_description": "World report published by BBC Technology on 2026-10-08. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-08",
+          "world news",
+          "global headlines",
+          "white",
+          "house",
+          "blocks",
+          "microsoft",
+          "foreign",
+          "worker",
+          "White House blocks Microsoft from foreign worker hiring program 2026-10-08",
+          "world news October 2026",
+          "2026-10-08",
+          "BBC Technology"
+        ],
+        "seo_generated_at": "2026-10-08T22:23:59.626Z"
+      }
+    },
+    {
+      "id": "5e5963a1",
+      "title": "Swiss Queer Film Fest Drops Israeli Film After Boycott Threats: “We’re Not Sundance, Right?”",
+      "url": "https://www.hollywoodreporter.com/movies/movie-news/queer-film-fest-drops-israeli-film-tell-me-everything-1236725708/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-08T21:25:32.000Z",
+      "discovered_at": "2026-10-08T22:23:59.626Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "Swiss Queer Film Fest",
+      "description": "Swiss Queer Film Fest: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/Tell_Me_Everything-Still_1-H-2026.jpg?w=1296&h=730&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/swiss-queer-film-fest-drops-israeli-film-after-boycott-threats-we-re-not-sundanc-5e5963/",
+      "landing_url": "https://matchapp.tv/?news=5e5963a1#latest-news",
+      "seo": {
+        "primary_keyword": "Swiss Queer Film Fest latest news",
+        "short_tail": [
+          "Swiss Queer Film Fest",
+          "Swiss Queer Film Fest news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "Swiss Queer Film Fest latest news October 2026",
+          "Swiss Queer Film Fest entertainment update 2026",
+          "Swiss Queer Film Fest news 2026-10-08",
+          "latest entertainment news about Swiss Queer Film Fest",
+          "swiss queer film fest swiss queer latest update",
+          "The Hollywood Reporter Swiss Queer Film Fest entertainment",
+          "latest news about Swiss Queer Film Fest October 2026",
+          "Swiss Queer Film Fest entertainment news 2026-10-08",
+          "what happened with Swiss Queer Film Fest"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "Swiss Queer Film Fest",
+          "swiss",
+          "queer",
+          "film",
+          "fest"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-08",
+          "Swiss Queer Film Fest 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter Swiss Queer Film Fest",
+          "hollywoodreporter.com Swiss Queer Film Fest",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "Swiss Queer Film Fest Drops Israeli Film After Boycott…",
+        "meta_description": "Swiss Queer Film Fest: Entertainment update reported by The Hollywood Reporter on 2026-10-08. See verified context, publication time and the original source…",
+        "keywords": [
+          "Swiss Queer Film Fest latest news",
+          "Swiss Queer Film Fest",
+          "Swiss Queer Film Fest news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "Swiss Queer Film Fest latest news October 2026",
+          "Swiss Queer Film Fest entertainment update 2026",
+          "Swiss Queer Film Fest news 2026-10-08",
+          "latest entertainment news about Swiss Queer Film Fest",
+          "swiss queer film fest swiss queer latest update",
+          "The Hollywood Reporter Swiss Queer Film Fest entertainment",
+          "latest news about Swiss Queer Film Fest October 2026",
+          "Swiss Queer Film Fest entertainment news 2026-10-08",
+          "what happened with Swiss Queer Film Fest",
+          "swiss",
+          "queer",
+          "film",
+          "fest",
+          "October 2026",
+          "2026-10-08",
+          "Swiss Queer Film Fest 2026",
+          "The Hollywood Reporter Swiss Queer Film Fest",
+          "hollywoodreporter.com Swiss Queer Film Fest",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-08T22:23:59.626Z"
+      }
+    },
+    {
+      "id": "5f3d8b7d",
+      "title": "Marvel Sets ‘Zodiac’ Live-Action Series for 2028, Adds ‘Marvel Zombies’ Specials",
+      "url": "https://www.hollywoodreporter.com/tv/tv-news/marvel-sets-zodiac-live-action-series-for-2028-1236725743/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-08T21:11:27.000Z",
+      "discovered_at": "2026-10-08T22:23:59.626Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "Marvel Sets",
+      "description": "Marvel Sets: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2025/09/PCA9270_comp_v901.1097_R-H-2025.jpg?w=1296&h=730&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/marvel-sets-zodiac-live-action-series-for-2028-adds-marvel-zombies-specials-5f3d8b/",
+      "landing_url": "https://matchapp.tv/?news=5f3d8b7d#latest-news",
+      "seo": {
+        "primary_keyword": "marvel zodiac",
+        "short_tail": [
+          "Marvel Sets",
+          "Marvel Sets news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "marvel zodiac",
+          "zodiac marvel"
+        ],
+        "long_tail": [
+          "Marvel Sets latest news October 2026",
+          "Marvel Sets entertainment update 2026",
+          "Marvel Sets news 2026-10-08",
+          "latest entertainment news about Marvel Sets",
+          "marvel sets marvel sets zodiac live latest update",
+          "The Hollywood Reporter Marvel Sets entertainment",
+          "latest news about Marvel Sets October 2026",
+          "Marvel Sets entertainment news 2026-10-08",
+          "what happened with Marvel Sets"
+        ],
+        "trend_keywords": [
+          "marvel zodiac",
+          "zodiac marvel"
+        ],
+        "entity_keywords": [
+          "Marvel Sets",
+          "marvel",
+          "sets",
+          "zodiac",
+          "live",
+          "action",
+          "series"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-08",
+          "Marvel Sets 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter Marvel Sets",
+          "hollywoodreporter.com Marvel Sets",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "Marvel Sets ‘Zodiac’ Live-Action Series for 2028, Adds…",
+        "meta_description": "Marvel Sets: Entertainment update reported by The Hollywood Reporter on 2026-10-08. See verified context, publication time and the original source via…",
+        "keywords": [
+          "marvel zodiac",
+          "Marvel Sets",
+          "Marvel Sets news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "zodiac marvel",
+          "Marvel Sets latest news October 2026",
+          "Marvel Sets entertainment update 2026",
+          "Marvel Sets news 2026-10-08",
+          "latest entertainment news about Marvel Sets",
+          "marvel sets marvel sets zodiac live latest update",
+          "The Hollywood Reporter Marvel Sets entertainment",
+          "latest news about Marvel Sets October 2026",
+          "Marvel Sets entertainment news 2026-10-08",
+          "what happened with Marvel Sets",
+          "marvel",
+          "sets",
+          "zodiac",
+          "live",
+          "action",
+          "series",
+          "October 2026",
+          "2026-10-08",
+          "Marvel Sets 2026",
+          "The Hollywood Reporter Marvel Sets",
+          "hollywoodreporter.com Marvel Sets",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-08T22:23:59.626Z"
+      }
+    },
+    {
+      "id": "73271683",
+      "title": "‘Crazy Rich Asians’ Series Greenlit at HBO With Film’s Stars, Creative Team Returning",
+      "url": "https://www.hollywoodreporter.com/tv/tv-news/crazy-rich-asians-hbo-series-order-1236725707/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-08T21:00:20.000Z",
+      "discovered_at": "2026-10-08T22:23:59.626Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "",
+      "description": "entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2022/03/Crazy-Rich-Asians-Still-Everett-MCDCRRI_EC058-H-2022.jpg?w=1296&h=730&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/crazy-rich-asians-series-greenlit-at-hbo-with-film-s-stars-creative-team-returni-732716/",
+      "landing_url": "https://matchapp.tv/?news=73271683#latest-news",
+      "seo": {
+        "primary_keyword": "crazy rich asians series latest news",
+        "short_tail": [
+          "crazy rich asians series",
+          "crazy rich asians series news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "crazy rich asians series latest news October 2026",
+          "crazy rich asians series entertainment update 2026",
+          "crazy rich asians series news 2026-10-08",
+          "latest entertainment news about crazy rich asians series",
+          "crazy rich asians series greenlit hbo latest update",
+          "The Hollywood Reporter crazy rich asians series entertainment",
+          "latest news about crazy rich asians series October 2026",
+          "crazy rich asians series entertainment news 2026-10-08",
+          "what happened with crazy rich asians series"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "crazy",
+          "rich",
+          "asians",
+          "series",
+          "greenlit",
+          "hbo",
+          "film",
+          "stars"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-08",
+          "crazy rich asians series 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter crazy rich asians series",
+          "hollywoodreporter.com crazy rich asians series",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "‘Crazy Rich Asians’ Series Greenlit at HBO With Film’s…",
+        "meta_description": "Entertainment update reported by The Hollywood Reporter on 2026-10-08. See verified context, publication time and the original source via MatchApp Ai.",
+        "keywords": [
+          "crazy rich asians series latest news",
+          "crazy rich asians series",
+          "crazy rich asians series news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "crazy rich asians series latest news October 2026",
+          "crazy rich asians series entertainment update 2026",
+          "crazy rich asians series news 2026-10-08",
+          "latest entertainment news about crazy rich asians series",
+          "crazy rich asians series greenlit hbo latest update",
+          "The Hollywood Reporter crazy rich asians series entertainment",
+          "latest news about crazy rich asians series October 2026",
+          "crazy rich asians series entertainment news 2026-10-08",
+          "what happened with crazy rich asians series",
+          "crazy",
+          "rich",
+          "asians",
+          "series",
+          "greenlit",
+          "hbo",
+          "film",
+          "stars",
+          "October 2026",
+          "2026-10-08",
+          "crazy rich asians series 2026",
+          "The Hollywood Reporter crazy rich asians series",
+          "hollywoodreporter.com crazy rich asians series",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-08T22:23:59.626Z"
+      }
+    },
+    {
+      "id": "ccbf52df",
+      "title": "Pelotão de fuzilamento: Estados Unidos terão primeira execução pública em 90 anos",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/08/primeiro-fuzilamento-militar-dos-eua-em-65-anos-sera-transmito-ao-publico-diz-site.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-08T20:55:45.000Z",
+      "discovered_at": "2026-10-08T22:23:59.626Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-08. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/J2ktclpF_zxoqE54YSrvskewi94=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/A/V/ZpbSHNSAA4K1B46X2eCg/2431ba60-c171-11f1-a64c-550be9e3c66b.jpg-1-.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/pelotao-de-fuzilamento-estados-unidos-terao-primeira-execucao-publica-em-90-anos-ccbf52/",
+      "landing_url": "https://matchapp.tv/?news=ccbf52df#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-08",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "pelotao",
+          "fuzilamento",
+          "estados",
+          "unidos",
+          "terao",
+          "primeira"
+        ],
+        "long_tail": [
+          "Pelotão de fuzilamento: Estados Unidos terão primeira execução pública em 90 anos 2026-10-08",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "pelotao",
+          "fuzilamento",
+          "estados",
+          "unidos",
+          "terao",
+          "primeira"
+        ],
+        "freshness_keywords": [
+          "2026-10-08"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Pelotão de fuzilamento: Estados Unidos terão primeira…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-08. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-08",
+          "notícias do mundo",
+          "notícias internacionais",
+          "pelotao",
+          "fuzilamento",
+          "estados",
+          "unidos",
+          "terao",
+          "primeira",
+          "Pelotão de fuzilamento: Estados Unidos terão primeira execução pública em 90 anos 2026-10-08",
+          "notícias mundiais outubro 2026",
+          "2026-10-08",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-08T22:23:59.626Z"
+      }
+    },
+    {
+      "id": "21dbc3bb",
+      "title": "Outspoken Indian actor Nana Patekar dies suddenly at 75",
+      "url": "https://www.bbc.co.uk/news/articles/cj3vqr5rknpeo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GB",
+      "language": "en",
+      "published_at": "2026-10-08T20:38:11.000Z",
+      "discovered_at": "2026-10-08T09:25:28.026Z",
+      "event_type": "Obituary",
+      "category": "entertainment",
+      "person": "Outspoken Indian",
+      "description": "Outspoken Indian: obituary headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/ab69/live/59fe1be0-c30e-11f1-a64c-550be9e3c66b.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/outspoken-indian-actor-nana-patekar-dies-suddenly-at-75-21dbc3/",
+      "landing_url": "https://matchapp.tv/?news=21dbc3bb#latest-news",
+      "seo": {
+        "primary_keyword": "Outspoken Indian latest news",
+        "short_tail": [
+          "Outspoken Indian",
+          "Outspoken Indian news",
+          "obituary",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "Outspoken Indian latest news October 2026",
+          "Outspoken Indian obituary update 2026",
+          "Outspoken Indian news 2026-10-08",
+          "latest obituary news about Outspoken Indian",
+          "outspoken indian outspoken indian actor nana latest update",
+          "BBC Outspoken Indian obituary",
+          "latest news about Outspoken Indian October 2026",
+          "Outspoken Indian entertainment news 2026-10-08",
+          "what happened with Outspoken Indian"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "Outspoken Indian",
+          "outspoken",
+          "indian",
+          "actor",
+          "nana",
+          "patekar",
+          "dies"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-08",
+          "Outspoken Indian 2026"
+        ],
+        "source_keywords": [
+          "BBC Outspoken Indian",
+          "bbc.co.uk Outspoken Indian",
+          "BBC entertainment news"
+        ],
+        "meta_title": "Outspoken Indian actor Nana Patekar dies suddenly at 75 |…",
+        "meta_description": "Outspoken Indian: Obituary update reported by BBC on 2026-10-08. See verified context, publication time and the original source via MatchApp Ai.",
+        "keywords": [
+          "Outspoken Indian latest news",
+          "Outspoken Indian",
+          "Outspoken Indian news",
+          "obituary",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "Outspoken Indian latest news October 2026",
+          "Outspoken Indian obituary update 2026",
+          "Outspoken Indian news 2026-10-08",
+          "latest obituary news about Outspoken Indian",
+          "outspoken indian outspoken indian actor nana latest update",
+          "BBC Outspoken Indian obituary",
+          "latest news about Outspoken Indian October 2026",
+          "Outspoken Indian entertainment news 2026-10-08",
+          "what happened with Outspoken Indian",
+          "outspoken",
+          "indian",
+          "actor",
+          "nana",
+          "patekar",
+          "dies",
+          "October 2026",
+          "2026-10-08",
+          "Outspoken Indian 2026",
+          "BBC Outspoken Indian",
+          "bbc.co.uk Outspoken Indian",
+          "BBC entertainment news"
+        ],
+        "seo_generated_at": "2026-10-08T22:23:59.626Z"
+      }
+    },
+    {
+      "id": "2195a81e",
+      "title": "Condenada por 7 assassinatos em caso Charles Manson pode deixar prisão após 56 anos",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/08/condenada-por-7-assassinatos-em-caso-charles-manson-pode-deixar-prisao-apos-56-anos.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-08T20:34:47.000Z",
+      "discovered_at": "2026-10-08T22:23:59.626Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-08. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/la4u_ee1lsjNBFOUBs60qpu5bLE=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/K/q/3z9pu6SFAIMCj1DsJqtQ/patricia-krenwinkel.webp",
+      "matchapp_url": "https://matchapp.tv/news/articles/condenada-por-7-assassinatos-em-caso-charles-manson-pode-deixar-prisao-apos-56-a-2195a8/",
+      "landing_url": "https://matchapp.tv/?news=2195a81e#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-08",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "condenada",
+          "assassinatos",
+          "caso",
+          "charles",
+          "manson",
+          "pode"
+        ],
+        "long_tail": [
+          "Condenada por 7 assassinatos em caso Charles Manson pode deixar prisão após 56 anos 2026-10-08",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "condenada",
+          "assassinatos",
+          "caso",
+          "charles",
+          "manson",
+          "pode"
+        ],
+        "freshness_keywords": [
+          "2026-10-08"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Condenada por 7 assassinatos em caso Charles Manson pode…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-08. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-08",
+          "notícias do mundo",
+          "notícias internacionais",
+          "condenada",
+          "assassinatos",
+          "caso",
+          "charles",
+          "manson",
+          "pode",
+          "Condenada por 7 assassinatos em caso Charles Manson pode deixar prisão após 56 anos 2026-10-08",
+          "notícias mundiais outubro 2026",
+          "2026-10-08",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-08T22:23:59.626Z"
+      }
+    },
+    {
+      "id": "e04e7ff0",
+      "title": "‘Eternally Yours’ Review: CBS’ Vampire Comedy From ‘Ghosts’ Creators Is Severely Anemic",
+      "url": "https://www.hollywoodreporter.com/tv/tv-reviews/eternally-yours-review-cbs-vampires-1236725129/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-08T20:02:52.000Z",
+      "discovered_at": "2026-10-08T22:23:59.626Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "",
+      "description": "entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/3244330_EY_S1_0231b_f-2.jpg?w=1440&h=810&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/eternally-yours-review-cbs-vampire-comedy-from-ghosts-creators-is-severely-anemi-e04e7f/",
+      "landing_url": "https://matchapp.tv/?news=e04e7ff0#latest-news",
+      "seo": {
+        "primary_keyword": "eternally yours review cbs latest news",
+        "short_tail": [
+          "eternally yours review cbs",
+          "eternally yours review cbs news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "eternally yours review cbs latest news October 2026",
+          "eternally yours review cbs entertainment update 2026",
+          "eternally yours review cbs news 2026-10-08",
+          "latest entertainment news about eternally yours review cbs",
+          "eternally yours review cbs vampire comedy latest update",
+          "The Hollywood Reporter eternally yours review cbs entertainment",
+          "latest news about eternally yours review cbs October 2026",
+          "eternally yours review cbs entertainment news 2026-10-08",
+          "what happened with eternally yours review cbs"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "eternally",
+          "yours",
+          "review",
+          "cbs",
+          "vampire",
+          "comedy",
+          "ghosts",
+          "creators"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-08",
+          "eternally yours review cbs 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter eternally yours review cbs",
+          "hollywoodreporter.com eternally yours review cbs",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "‘Eternally Yours’ Review: CBS’ Vampire Comedy From…",
+        "meta_description": "Entertainment update reported by The Hollywood Reporter on 2026-10-08. See verified context, publication time and the original source via MatchApp Ai.",
+        "keywords": [
+          "eternally yours review cbs latest news",
+          "eternally yours review cbs",
+          "eternally yours review cbs news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "eternally yours review cbs latest news October 2026",
+          "eternally yours review cbs entertainment update 2026",
+          "eternally yours review cbs news 2026-10-08",
+          "latest entertainment news about eternally yours review cbs",
+          "eternally yours review cbs vampire comedy latest update",
+          "The Hollywood Reporter eternally yours review cbs entertainment",
+          "latest news about eternally yours review cbs October 2026",
+          "eternally yours review cbs entertainment news 2026-10-08",
+          "what happened with eternally yours review cbs",
+          "eternally",
+          "yours",
+          "review",
+          "cbs",
+          "vampire",
+          "comedy",
+          "ghosts",
+          "creators",
+          "October 2026",
+          "2026-10-08",
+          "eternally yours review cbs 2026",
+          "The Hollywood Reporter eternally yours review cbs",
+          "hollywoodreporter.com eternally yours review cbs",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-08T22:23:59.626Z"
+      }
+    },
+    {
+      "id": "be605aa8",
+      "title": "BBC Inside Science",
+      "url": "https://www.bbc.co.uk/sounds/play/w3ct9788?at_medium=RSS&at_campaign=rss",
+      "source": "BBC Science",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-08T20:00:00.000Z",
+      "discovered_at": "2026-10-08T16:53:44.433Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "BBC Inside Science",
+      "description": "World news reported by BBC Science on 2026-10-08. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/images/ic/240x135/p0m1ww2j.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/bbc-inside-science-be605a/",
+      "landing_url": "https://matchapp.tv/?news=be605aa8#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-08",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "bbc",
+          "inside",
+          "science"
+        ],
+        "long_tail": [
+          "BBC Inside Science 2026-10-08",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "bbc",
+          "inside",
+          "science"
+        ],
+        "freshness_keywords": [
+          "2026-10-08"
+        ],
+        "source_keywords": [
+          "BBC Science"
+        ],
+        "meta_title": "BBC Inside Science | World News | MatchApp Ai",
+        "meta_description": "World report published by BBC Science on 2026-10-08. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-08",
+          "world news",
+          "global headlines",
+          "bbc",
+          "inside",
+          "science",
+          "BBC Inside Science 2026-10-08",
+          "world news October 2026",
+          "2026-10-08",
+          "BBC Science"
+        ],
+        "seo_generated_at": "2026-10-08T22:23:59.626Z"
+      }
+    },
+    {
+      "id": "585e8a3a",
+      "title": "Ryan Murphy Says He’d “Never” Do Another All-Star ‘AHS’ Season as Big as 13 Again",
+      "url": "https://www.hollywoodreporter.com/tv/tv-features/ryan-murphy-american-horror-story-season-13-ending-future-1236720747/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-08T19:49:21.000Z",
+      "discovered_at": "2026-10-08T22:23:59.626Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "Ryan Murphy Says He’d",
+      "description": "Ryan Murphy Says He’d: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/ahs-ryan-murphy.jpg?w=1440&h=810&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/ryan-murphy-says-he-d-never-do-another-all-star-ahs-season-as-big-as-13-again-585e8a/",
+      "landing_url": "https://matchapp.tv/?news=585e8a3a#latest-news",
+      "seo": {
+        "primary_keyword": "Ryan Murphy Says He’d latest news",
+        "short_tail": [
+          "Ryan Murphy Says He’d",
+          "Ryan Murphy Says He’d news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "Ryan Murphy Says He’d latest news October 2026",
+          "Ryan Murphy Says He’d entertainment update 2026",
+          "Ryan Murphy Says He’d news 2026-10-08",
+          "latest entertainment news about Ryan Murphy Says He’d",
+          "ryan murphy says ryan murphy says latest update",
+          "The Hollywood Reporter Ryan Murphy Says He’d entertainment",
+          "latest news about Ryan Murphy Says He’d October 2026",
+          "Ryan Murphy Says He’d entertainment news 2026-10-08",
+          "what happened with Ryan Murphy Says He’d"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "Ryan Murphy Says He’d",
+          "ryan",
+          "murphy",
+          "says",
+          "never",
+          "another"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-08",
+          "Ryan Murphy Says He’d 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter Ryan Murphy Says He’d",
+          "hollywoodreporter.com Ryan Murphy Says He’d",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "Ryan Murphy Says He’d “Never” Do Another All-Star ‘AHS’…",
+        "meta_description": "Ryan Murphy Says He’d: Entertainment update reported by The Hollywood Reporter on 2026-10-08. See verified context, publication time and the original source…",
+        "keywords": [
+          "Ryan Murphy Says He’d latest news",
+          "Ryan Murphy Says He’d",
+          "Ryan Murphy Says He’d news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "Ryan Murphy Says He’d latest news October 2026",
+          "Ryan Murphy Says He’d entertainment update 2026",
+          "Ryan Murphy Says He’d news 2026-10-08",
+          "latest entertainment news about Ryan Murphy Says He’d",
+          "ryan murphy says ryan murphy says latest update",
+          "The Hollywood Reporter Ryan Murphy Says He’d entertainment",
+          "latest news about Ryan Murphy Says He’d October 2026",
+          "Ryan Murphy Says He’d entertainment news 2026-10-08",
+          "what happened with Ryan Murphy Says He’d",
+          "ryan",
+          "murphy",
+          "says",
+          "never",
+          "another",
+          "October 2026",
+          "2026-10-08",
+          "Ryan Murphy Says He’d 2026",
+          "The Hollywood Reporter Ryan Murphy Says He’d",
+          "hollywoodreporter.com Ryan Murphy Says He’d",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-08T22:23:59.626Z"
+      }
+    },
+    {
+      "id": "344a729e",
+      "title": "Eduardo Bolsonaro teve 'green card' concedido pelo governo Trump; relembre",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/08/eduardo-bolsonaro-teve-green-card-concedido-pelo-governo-trump-relembre.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-08T19:41:32.000Z",
+      "discovered_at": "2026-10-08T22:23:59.626Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "Eduardo Bolsonaro",
+      "description": "World news reported by G1 Mundo on 2026-10-08. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/LXlmF4C7e7yhvif2fMRwK5xRuRI=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/f/X/ScbtZBQeWK3vJ52d7Q8A/whatsapp-image-2026-07-20-at-18.06.59.jpeg",
+      "matchapp_url": "https://matchapp.tv/news/articles/eduardo-bolsonaro-teve-green-card-concedido-pelo-governo-trump-relembre-344a72/",
+      "landing_url": "https://matchapp.tv/?news=344a729e#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-08",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "eduardo",
+          "bolsonaro",
+          "teve",
+          "green",
+          "card",
+          "concedido"
+        ],
+        "long_tail": [
+          "Eduardo Bolsonaro teve 'green card' concedido pelo governo Trump; relembre 2026-10-08",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "eduardo",
+          "bolsonaro",
+          "teve",
+          "green",
+          "card",
+          "concedido"
+        ],
+        "freshness_keywords": [
+          "2026-10-08"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Eduardo Bolsonaro teve 'green card' concedido pelo governo…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-08. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-08",
+          "notícias do mundo",
+          "notícias internacionais",
+          "eduardo",
+          "bolsonaro",
+          "teve",
+          "green",
+          "card",
+          "concedido",
+          "Eduardo Bolsonaro teve 'green card' concedido pelo governo Trump; relembre 2026-10-08",
+          "notícias mundiais outubro 2026",
+          "2026-10-08",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-08T22:23:59.626Z"
+      }
+    },
+    {
+      "id": "a2509b9f",
+      "title": "BBC on Hurricane Isaias and its expected Gulf Coast landfall",
+      "url": "https://www.bbc.co.uk/news/videos/ckz65l2gne1po?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-08T19:39:32.000Z",
+      "discovered_at": "2026-10-08T22:23:59.626Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-08. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/b74f/live/9b2c8e90-c34e-11f1-bc2e-018d645d8d21.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/bbc-on-hurricane-isaias-and-its-expected-gulf-coast-landfall-a2509b/",
+      "landing_url": "https://matchapp.tv/?news=a2509b9f#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-08",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "bbc",
+          "hurricane",
+          "isaias",
+          "its",
+          "expected",
+          "gulf"
+        ],
+        "long_tail": [
+          "BBC on Hurricane Isaias and its expected Gulf Coast landfall 2026-10-08",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "bbc",
+          "hurricane",
+          "isaias",
+          "its",
+          "expected",
+          "gulf"
+        ],
+        "freshness_keywords": [
+          "2026-10-08"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "BBC on Hurricane Isaias and its expected Gulf Coast…",
+        "meta_description": "World report published by BBC World on 2026-10-08. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-08",
+          "world news",
+          "global headlines",
+          "bbc",
+          "hurricane",
+          "isaias",
+          "its",
+          "expected",
+          "gulf",
+          "BBC on Hurricane Isaias and its expected Gulf Coast landfall 2026-10-08",
+          "world news October 2026",
+          "2026-10-08",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-08T22:23:59.626Z"
+      }
+    },
+    {
+      "id": "21385789",
+      "title": "‘Cyberpunk 2077’ Live Action Film in Development at Paramount Pictures",
+      "url": "https://www.hollywoodreporter.com/movies/movie-news/cyberpunk-2077-film-paramount-pictures-1236725629/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-08T19:27:56.000Z",
+      "discovered_at": "2026-10-08T22:23:59.626Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "",
+      "description": "entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2019/08/cyberpunk_2077_0.jpg?w=1296&h=730&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/cyberpunk-2077-live-action-film-in-development-at-paramount-pictures-213857/",
+      "landing_url": "https://matchapp.tv/?news=21385789#latest-news",
+      "seo": {
+        "primary_keyword": "cyberpunk 2077 live action latest news",
+        "short_tail": [
+          "cyberpunk 2077 live action",
+          "cyberpunk 2077 live action news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "cyberpunk 2077 live action latest news October 2026",
+          "cyberpunk 2077 live action entertainment update 2026",
+          "cyberpunk 2077 live action news 2026-10-08",
+          "latest entertainment news about cyberpunk 2077 live action",
+          "cyberpunk 2077 live action film development latest update",
+          "The Hollywood Reporter cyberpunk 2077 live action entertainment",
+          "latest news about cyberpunk 2077 live action October 2026",
+          "cyberpunk 2077 live action entertainment news 2026-10-08",
+          "what happened with cyberpunk 2077 live action"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "cyberpunk",
+          "2077",
+          "live",
+          "action",
+          "film",
+          "development",
+          "paramount",
+          "pictures"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-08",
+          "cyberpunk 2077 live action 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter cyberpunk 2077 live action",
+          "hollywoodreporter.com cyberpunk 2077 live action",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "‘Cyberpunk 2077’ Live Action Film in Development at…",
+        "meta_description": "Entertainment update reported by The Hollywood Reporter on 2026-10-08. See verified context, publication time and the original source via MatchApp Ai.",
+        "keywords": [
+          "cyberpunk 2077 live action latest news",
+          "cyberpunk 2077 live action",
+          "cyberpunk 2077 live action news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "cyberpunk 2077 live action latest news October 2026",
+          "cyberpunk 2077 live action entertainment update 2026",
+          "cyberpunk 2077 live action news 2026-10-08",
+          "latest entertainment news about cyberpunk 2077 live action",
+          "cyberpunk 2077 live action film development latest update",
+          "The Hollywood Reporter cyberpunk 2077 live action entertainment",
+          "latest news about cyberpunk 2077 live action October 2026",
+          "cyberpunk 2077 live action entertainment news 2026-10-08",
+          "what happened with cyberpunk 2077 live action",
+          "cyberpunk",
+          "2077",
+          "live",
+          "action",
+          "film",
+          "development",
+          "paramount",
+          "pictures",
+          "October 2026",
+          "2026-10-08",
+          "cyberpunk 2077 live action 2026",
+          "The Hollywood Reporter cyberpunk 2077 live action",
+          "hollywoodreporter.com cyberpunk 2077 live action",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-08T22:23:59.626Z"
+      }
+    },
+    {
+      "id": "f0613b5c",
+      "title": "Protesters blame 'vulture funds' for Spain's housing crisis",
+      "url": "https://www.bbc.co.uk/news/articles/c3j4790elkx7o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-08T19:10:06.000Z",
+      "discovered_at": "2026-10-08T22:23:59.626Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-08. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/6230/live/587d61f0-c353-11f1-9a39-31b474234113.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/protesters-blame-vulture-funds-for-spain-s-housing-crisis-f0613b/",
+      "landing_url": "https://matchapp.tv/?news=f0613b5c#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-08",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "protesters",
+          "blame",
+          "vulture",
+          "funds",
+          "spain",
+          "housing"
+        ],
+        "long_tail": [
+          "Protesters blame 'vulture funds' for Spain's housing crisis 2026-10-08",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "protesters",
+          "blame",
+          "vulture",
+          "funds",
+          "spain",
+          "housing"
+        ],
+        "freshness_keywords": [
+          "2026-10-08"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Protesters blame 'vulture funds' for Spain's housing…",
+        "meta_description": "World report published by BBC World on 2026-10-08. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-08",
+          "world news",
+          "global headlines",
+          "protesters",
+          "blame",
+          "vulture",
+          "funds",
+          "spain",
+          "housing",
+          "Protesters blame 'vulture funds' for Spain's housing crisis 2026-10-08",
+          "world news October 2026",
+          "2026-10-08",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-08T22:23:59.626Z"
+      }
+    },
+    {
+      "id": "9847546f",
+      "title": "CW Morgan, ator da franquia 'Pânico', morre aos 72 anos",
+      "url": "https://g1.globo.com/pop-arte/cinema/noticia/2026/10/08/cw-morgan-ator-da-franquia-panico-morre-aos-72-anos.ghtml",
+      "source": "G1",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "BR",
+      "language": "pt",
+      "published_at": "2026-10-08T18:57:19.000Z",
+      "discovered_at": "2026-10-08T22:23:59.626Z",
+      "event_type": "Obituary",
+      "category": "entertainment",
+      "person": "CW Morgan",
+      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
+      "image": "https://s2-g1.glbimg.com/vQfaVmaW9yjL5Fn777U4Q2jxPsM=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/C/C/e0Vf2CSlqb0MW52gVlQQ/fotos-g1-1920-x-1080-px-2026-10-08t154057.690.png",
+      "matchapp_url": "https://matchapp.tv/news/articles/cw-morgan-ator-da-franquia-panico-morre-aos-72-anos-984754/",
+      "landing_url": "https://matchapp.tv/?news=9847546f#latest-news",
+      "seo": {
+        "primary_keyword": "CW Morgan últimas notícias",
+        "short_tail": [
+          "CW Morgan",
+          "CW Morgan news",
+          "obituary",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje"
+        ],
+        "long_tail": [
+          "CW Morgan latest news October 2026",
+          "CW Morgan obituary update 2026",
+          "CW Morgan news 2026-10-08",
+          "latest obituary news about CW Morgan",
+          "morgan morgan ator franquia panico morre latest update",
+          "G1 CW Morgan obituary",
+          "últimas notícias sobre CW Morgan outubro 2026",
+          "CW Morgan notícia de 2026-10-08",
+          "o que aconteceu com CW Morgan"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "CW Morgan",
+          "morgan",
+          "ator",
+          "franquia",
+          "panico",
+          "morre",
+          "aos",
+          "anos"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-08",
+          "outubro 2026",
+          "CW Morgan 2026"
+        ],
+        "source_keywords": [
+          "G1 CW Morgan",
+          "g1.globo.com CW Morgan",
+          "G1 entertainment news"
+        ],
+        "meta_title": "CW Morgan, ator da franquia 'Pânico', morre aos 72 anos |…",
+        "meta_description": "CW Morgan: Notícia publicada por G1 em 2026-10-08. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
+        "keywords": [
+          "CW Morgan últimas notícias",
+          "CW Morgan",
+          "CW Morgan news",
+          "obituary",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje",
+          "CW Morgan latest news October 2026",
+          "CW Morgan obituary update 2026",
+          "CW Morgan news 2026-10-08",
+          "latest obituary news about CW Morgan",
+          "morgan morgan ator franquia panico morre latest update",
+          "G1 CW Morgan obituary",
+          "últimas notícias sobre CW Morgan outubro 2026",
+          "CW Morgan notícia de 2026-10-08",
+          "o que aconteceu com CW Morgan",
+          "morgan",
+          "ator",
+          "franquia",
+          "panico",
+          "morre",
+          "aos",
+          "anos",
+          "October 2026",
+          "2026-10-08",
+          "outubro 2026",
+          "CW Morgan 2026",
+          "G1 CW Morgan",
+          "g1.globo.com CW Morgan",
+          "G1 entertainment news"
+        ],
+        "seo_generated_at": "2026-10-08T22:23:59.626Z"
+      }
+    },
+    {
+      "id": "ea39801b",
+      "title": "Adidas sues Australian label White Fox over four stripes design",
+      "url": "https://www.bbc.co.uk/news/articles/c9e8ld448km8o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-08T18:17:28.000Z",
+      "discovered_at": "2026-10-08T22:23:59.626Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-08. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/690e/live/fcec4c60-c33a-11f1-a64c-550be9e3c66b.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/adidas-sues-australian-label-white-fox-over-four-stripes-design-ea3980/",
+      "landing_url": "https://matchapp.tv/?news=ea39801b#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-08",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "adidas",
+          "sues",
+          "australian",
+          "label",
+          "white",
+          "fox"
+        ],
+        "long_tail": [
+          "Adidas sues Australian label White Fox over four stripes design 2026-10-08",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "adidas",
+          "sues",
+          "australian",
+          "label",
+          "white",
+          "fox"
+        ],
+        "freshness_keywords": [
+          "2026-10-08"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Adidas sues Australian label White Fox over four stripes…",
+        "meta_description": "World report published by BBC World on 2026-10-08. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-08",
+          "world news",
+          "global headlines",
+          "adidas",
+          "sues",
+          "australian",
+          "label",
+          "white",
+          "fox",
+          "Adidas sues Australian label White Fox over four stripes design 2026-10-08",
+          "world news October 2026",
+          "2026-10-08",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-08T22:23:59.626Z"
+      }
+    },
+    {
+      "id": "4bf25994",
+      "title": "More than 800,000 hours of sewage spills in Wales last year, report claims",
+      "url": "https://www.bbc.co.uk/news/articles/cqwy74e8nyggo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC Science",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-08T18:05:35.000Z",
+      "discovered_at": "2026-10-08T22:23:59.626Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC Science on 2026-10-08. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/eee8/live/5d456bf0-c340-11f1-b521-0bbd7e4f1f2e.png",
+      "matchapp_url": "https://matchapp.tv/news/articles/more-than-800-000-hours-of-sewage-spills-in-wales-last-year-report-claims-4bf259/",
+      "landing_url": "https://matchapp.tv/?news=4bf25994#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-08",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "more",
+          "than",
+          "800",
+          "000",
+          "hours",
+          "sewage"
+        ],
+        "long_tail": [
+          "More than 800,000 hours of sewage spills in Wales last year, report claims 2026-10-08",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "more",
+          "than",
+          "800",
+          "000",
+          "hours",
+          "sewage"
+        ],
+        "freshness_keywords": [
+          "2026-10-08"
+        ],
+        "source_keywords": [
+          "BBC Science"
+        ],
+        "meta_title": "More than 800,000 hours of sewage spills in Wales last…",
+        "meta_description": "World report published by BBC Science on 2026-10-08. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-08",
+          "world news",
+          "global headlines",
+          "more",
+          "than",
+          "800",
+          "000",
+          "hours",
+          "sewage",
+          "More than 800,000 hours of sewage spills in Wales last year, report claims 2026-10-08",
+          "world news October 2026",
+          "2026-10-08",
+          "BBC Science"
+        ],
+        "seo_generated_at": "2026-10-08T22:23:59.626Z"
+      }
+    },
     {
       "id": "90f6b33c",
       "title": "Após morte de Rick, Renner anuncia carreira solo e projeto em homenagem ao sertanejo",
@@ -103,81 +1799,81 @@
           "g1.globo.com apos morte rick renner",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-08T17:52:59.514Z"
+        "seo_generated_at": "2026-10-08T22:23:59.626Z"
       }
     },
     {
-      "id": "5fbc1e1f",
-      "title": "Venezuela's ex-leader Nicolás Maduro charged with conspiracy to commit torture",
-      "url": "https://www.bbc.co.uk/news/articles/c5pvgn7xvxpzo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
+      "id": "5e20f831",
+      "title": "Trump chama de 'inimigo' quem usar termo 'IA' em vez de 'superinteligência'",
+      "url": "https://g1.globo.com/tecnologia/noticia/2026/10/08/trump-tratara-como-inimigo-quem-nao-disser-superinteligencia-em-vez-de-ia.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
       "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-08T17:38:59.000Z",
-      "discovered_at": "2026-10-08T16:53:44.433Z",
+      "language": "pt",
+      "published_at": "2026-10-08T17:37:48.000Z",
+      "discovered_at": "2026-10-08T22:23:59.626Z",
       "event_type": "Entertainment",
       "category": "world",
       "person": "",
-      "description": "World news reported by BBC World on 2026-10-08. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/bcd9/live/df938ae0-c329-11f1-9981-cf94ea240e40.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/venezuela-s-ex-leader-nicolas-maduro-charged-with-conspiracy-to-commit-torture-5fbc1e/",
-      "landing_url": "https://matchapp.tv/?news=5fbc1e1f#latest-news",
+      "description": "World news reported by G1 Mundo on 2026-10-08. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/XjKgQYad1evpIJbA5Dp7hLlNqLM=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/N/A/ycpnFDQAaLddLGgAXg6Q/2026-09-25t050004z-1220685222-rc2fonaxyb3l-rtrmadp-3-usa-trump-diplomacy.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/trump-chama-de-inimigo-quem-usar-termo-ia-em-vez-de-superinteligencia-5e20f8/",
+      "landing_url": "https://matchapp.tv/?news=5e20f831#latest-news",
       "seo": {
-        "primary_keyword": "world news 2026-10-08",
+        "primary_keyword": "notícias do mundo 2026-10-08",
         "short_tail": [
-          "world news",
-          "global headlines",
-          "venezuela",
-          "leader",
-          "nicolas",
-          "maduro",
-          "charged",
-          "conspiracy"
+          "notícias do mundo",
+          "notícias internacionais",
+          "trump",
+          "chama",
+          "inimigo",
+          "quem",
+          "usar",
+          "termo"
         ],
         "long_tail": [
-          "Venezuela's ex-leader Nicolás Maduro charged with conspiracy to commit torture 2026-10-08",
-          "world news October 2026"
+          "Trump chama de 'inimigo' quem usar termo 'IA' em vez de 'superinteligência' 2026-10-08",
+          "notícias mundiais outubro 2026"
         ],
         "trend_keywords": [],
         "entity_keywords": [
-          "venezuela",
-          "leader",
-          "nicolas",
-          "maduro",
-          "charged",
-          "conspiracy"
+          "trump",
+          "chama",
+          "inimigo",
+          "quem",
+          "usar",
+          "termo"
         ],
         "freshness_keywords": [
           "2026-10-08"
         ],
         "source_keywords": [
-          "BBC World"
+          "G1 Mundo"
         ],
-        "meta_title": "Venezuela's ex-leader Nicolás Maduro charged with…",
-        "meta_description": "World report published by BBC World on 2026-10-08. Open the original report for full context.",
+        "meta_title": "Trump chama de 'inimigo' quem usar termo 'IA' em vez de…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-08. Abra a fonte original para o contexto completo.",
         "keywords": [
-          "world news 2026-10-08",
-          "world news",
-          "global headlines",
-          "venezuela",
-          "leader",
-          "nicolas",
-          "maduro",
-          "charged",
-          "conspiracy",
-          "Venezuela's ex-leader Nicolás Maduro charged with conspiracy to commit torture 2026-10-08",
-          "world news October 2026",
+          "notícias do mundo 2026-10-08",
+          "notícias do mundo",
+          "notícias internacionais",
+          "trump",
+          "chama",
+          "inimigo",
+          "quem",
+          "usar",
+          "termo",
+          "Trump chama de 'inimigo' quem usar termo 'IA' em vez de 'superinteligência' 2026-10-08",
+          "notícias mundiais outubro 2026",
           "2026-10-08",
-          "BBC World"
+          "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-08T17:52:59.514Z"
+        "seo_generated_at": "2026-10-08T22:23:59.626Z"
       }
     },
     {
       "id": "a01512a3",
-      "title": "Welsh actress follows in footsteps of Florence Pugh and Benedict Cumberbatch in line-up",
+      "title": "Welsh actress follows in footsteps of Florence Pugh and Benedict Cumberbatch",
       "url": "https://www.bbc.co.uk/news/articles/crlykne01022o?at_medium=RSS&at_campaign=rss",
       "source": "BBC",
       "source_domain": "bbc.co.uk",
@@ -191,7 +1887,7 @@
       "person": "",
       "description": "entertainment headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
       "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/148e/live/1b628870-c323-11f1-babe-4199b0e7ccea.png",
-      "matchapp_url": "https://matchapp.tv/news/articles/welsh-actress-follows-in-footsteps-of-florence-pugh-and-benedict-cumberbatch-in--a01512/",
+      "matchapp_url": "https://matchapp.tv/news/articles/welsh-actress-follows-in-footsteps-of-florence-pugh-and-benedict-cumberbatch-a01512/",
       "landing_url": "https://matchapp.tv/?news=a01512a3#latest-news",
       "seo": {
         "primary_keyword": "welsh actress follows footsteps latest news",
@@ -271,131 +1967,32 @@
           "bbc.co.uk welsh actress follows footsteps",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-08T17:52:59.514Z"
+        "seo_generated_at": "2026-10-08T22:23:59.626Z"
       }
     },
     {
-      "id": "76fa50b7",
-      "title": "“Where Is My Husband!” Inside the Song That Made Raye All The Rage",
-      "url": "https://www.hollywoodreporter.com/music/music-features/raye-where-is-my-husband-making-of-song-1236723326/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
+      "id": "b5ab9ad2",
+      "title": "Black and African cinema hub opens in London",
+      "url": "https://www.bbc.co.uk/news/articles/cmx28wd59j4zo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GB",
       "language": "en",
-      "published_at": "2026-10-08T17:30:00.000Z",
-      "discovered_at": "2026-10-08T17:52:59.514Z",
-      "event_type": "Music",
-      "category": "entertainment",
-      "person": "",
-      "description": "music headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/18fea_music_song-SPLASH-2026.jpg?w=1440&h=810&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/where-is-my-husband-inside-the-song-that-made-raye-all-the-rage-76fa50/",
-      "landing_url": "https://matchapp.tv/?news=76fa50b7#latest-news",
-      "seo": {
-        "primary_keyword": "where husband inside song latest news",
-        "short_tail": [
-          "where husband inside song",
-          "where husband inside song news",
-          "music",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "where husband inside song latest news October 2026",
-          "where husband inside song music update 2026",
-          "where husband inside song news 2026-10-08",
-          "latest music news about where husband inside song",
-          "where husband inside song made raye latest update",
-          "The Hollywood Reporter where husband inside song music",
-          "latest news about where husband inside song October 2026",
-          "where husband inside song entertainment news 2026-10-08",
-          "what happened with where husband inside song"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "where",
-          "husband",
-          "inside",
-          "song",
-          "made",
-          "raye",
-          "all",
-          "rage"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-08",
-          "where husband inside song 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter where husband inside song",
-          "hollywoodreporter.com where husband inside song",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "“Where Is My Husband!” Inside the Song That Made Raye All…",
-        "meta_description": "Music update reported by The Hollywood Reporter on 2026-10-08. See verified context, publication time and the original source via MatchApp Ai.",
-        "keywords": [
-          "where husband inside song latest news",
-          "where husband inside song",
-          "where husband inside song news",
-          "music",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "where husband inside song latest news October 2026",
-          "where husband inside song music update 2026",
-          "where husband inside song news 2026-10-08",
-          "latest music news about where husband inside song",
-          "where husband inside song made raye latest update",
-          "The Hollywood Reporter where husband inside song music",
-          "latest news about where husband inside song October 2026",
-          "where husband inside song entertainment news 2026-10-08",
-          "what happened with where husband inside song",
-          "where",
-          "husband",
-          "inside",
-          "song",
-          "made",
-          "raye",
-          "all",
-          "rage",
-          "October 2026",
-          "2026-10-08",
-          "where husband inside song 2026",
-          "The Hollywood Reporter where husband inside song",
-          "hollywoodreporter.com where husband inside song",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-08T17:52:59.514Z"
-      }
-    },
-    {
-      "id": "f069c833",
-      "title": "TV’s So White Again: Diversity Now Seen as “Optional”",
-      "url": "https://www.hollywoodreporter.com/tv/tv-features/tvs-so-white-again-diversity-optional-1236725287/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-10-08T17:17:26.000Z",
-      "discovered_at": "2026-10-08T17:52:59.514Z",
+      "published_at": "2026-10-08T17:36:46.000Z",
+      "discovered_at": "2026-10-08T22:23:59.626Z",
       "event_type": "Entertainment",
       "category": "entertainment",
-      "person": "TV’s So White Again",
-      "description": "TV’s So White Again: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/18rep_page5_tvsowhite.jpg?w=1440&h=810&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/tv-s-so-white-again-diversity-now-seen-as-optional-f069c8/",
-      "landing_url": "https://matchapp.tv/?news=f069c833#latest-news",
+      "person": "",
+      "description": "entertainment headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/d121/live/cc6768b0-c338-11f1-9981-cf94ea240e40.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/black-and-african-cinema-hub-opens-in-london-b5ab9a/",
+      "landing_url": "https://matchapp.tv/?news=b5ab9ad2#latest-news",
       "seo": {
-        "primary_keyword": "TV’s So White Again latest news",
+        "primary_keyword": "black african cinema hub latest news",
         "short_tail": [
-          "TV’s So White Again",
-          "TV’s So White Again news",
+          "black african cinema hub",
+          "black african cinema hub news",
           "entertainment",
           "latest entertainment news",
           "entertainment news",
@@ -403,213 +2000,74 @@
           "entertainment updates"
         ],
         "long_tail": [
-          "TV’s So White Again latest news October 2026",
-          "TV’s So White Again entertainment update 2026",
-          "TV’s So White Again news 2026-10-08",
-          "latest entertainment news about TV’s So White Again",
-          "white again white again diversity now latest update",
-          "The Hollywood Reporter TV’s So White Again entertainment",
-          "latest news about TV’s So White Again October 2026",
-          "TV’s So White Again entertainment news 2026-10-08",
-          "what happened with TV’s So White Again"
+          "black african cinema hub latest news October 2026",
+          "black african cinema hub entertainment update 2026",
+          "black african cinema hub news 2026-10-08",
+          "latest entertainment news about black african cinema hub",
+          "black african cinema hub opens london latest update",
+          "BBC black african cinema hub entertainment",
+          "latest news about black african cinema hub October 2026",
+          "black african cinema hub entertainment news 2026-10-08",
+          "what happened with black african cinema hub"
         ],
         "trend_keywords": [],
         "entity_keywords": [
-          "TV’s So White Again",
-          "white",
-          "again",
-          "diversity",
-          "now",
-          "seen",
-          "optional"
+          "black",
+          "african",
+          "cinema",
+          "hub",
+          "opens",
+          "london"
         ],
         "freshness_keywords": [
           "October 2026",
           "2026-10-08",
-          "TV’s So White Again 2026"
+          "black african cinema hub 2026"
         ],
         "source_keywords": [
-          "The Hollywood Reporter TV’s So White Again",
-          "hollywoodreporter.com TV’s So White Again",
-          "The Hollywood Reporter entertainment news"
+          "BBC black african cinema hub",
+          "bbc.co.uk black african cinema hub",
+          "BBC entertainment news"
         ],
-        "meta_title": "TV’s So White Again: Diversity Now Seen as “Optional” |…",
-        "meta_description": "TV’s So White Again: Entertainment update reported by The Hollywood Reporter on 2026-10-08. See verified context, publication time and the original source…",
+        "meta_title": "Black and African cinema hub opens in London |…",
+        "meta_description": "Entertainment update reported by BBC on 2026-10-08. See verified context, publication time and the original source via MatchApp Ai.",
         "keywords": [
-          "TV’s So White Again latest news",
-          "TV’s So White Again",
-          "TV’s So White Again news",
+          "black african cinema hub latest news",
+          "black african cinema hub",
+          "black african cinema hub news",
           "entertainment",
           "latest entertainment news",
           "entertainment news",
           "celebrity news",
           "entertainment updates",
-          "TV’s So White Again latest news October 2026",
-          "TV’s So White Again entertainment update 2026",
-          "TV’s So White Again news 2026-10-08",
-          "latest entertainment news about TV’s So White Again",
-          "white again white again diversity now latest update",
-          "The Hollywood Reporter TV’s So White Again entertainment",
-          "latest news about TV’s So White Again October 2026",
-          "TV’s So White Again entertainment news 2026-10-08",
-          "what happened with TV’s So White Again",
-          "white",
-          "again",
-          "diversity",
-          "now",
-          "seen",
-          "optional",
+          "black african cinema hub latest news October 2026",
+          "black african cinema hub entertainment update 2026",
+          "black african cinema hub news 2026-10-08",
+          "latest entertainment news about black african cinema hub",
+          "black african cinema hub opens london latest update",
+          "BBC black african cinema hub entertainment",
+          "latest news about black african cinema hub October 2026",
+          "black african cinema hub entertainment news 2026-10-08",
+          "what happened with black african cinema hub",
+          "black",
+          "african",
+          "cinema",
+          "hub",
+          "opens",
+          "london",
           "October 2026",
           "2026-10-08",
-          "TV’s So White Again 2026",
-          "The Hollywood Reporter TV’s So White Again",
-          "hollywoodreporter.com TV’s So White Again",
-          "The Hollywood Reporter entertainment news"
+          "black african cinema hub 2026",
+          "BBC black african cinema hub",
+          "bbc.co.uk black african cinema hub",
+          "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-08T17:52:59.514Z"
-      }
-    },
-    {
-      "id": "a2a00bbf",
-      "title": "US deportations to African countries unlawful and exploit suffering, rights group says",
-      "url": "https://www.bbc.co.uk/news/articles/c9p8gn55433jo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-08T17:16:32.000Z",
-      "discovered_at": "2026-10-08T16:53:44.433Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-08. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/85e7/live/fdeabc50-c308-11f1-8f04-85217d686658.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/us-deportations-to-african-countries-unlawful-and-exploit-suffering-rights-group-a2a00b/",
-      "landing_url": "https://matchapp.tv/?news=a2a00bbf#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-08",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "deportations",
-          "african",
-          "countries",
-          "unlawful",
-          "exploit",
-          "suffering"
-        ],
-        "long_tail": [
-          "US deportations to African countries unlawful and exploit suffering, rights group says 2026-10-08",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "deportations",
-          "african",
-          "countries",
-          "unlawful",
-          "exploit",
-          "suffering"
-        ],
-        "freshness_keywords": [
-          "2026-10-08"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "US deportations to African countries unlawful and exploit…",
-        "meta_description": "World report published by BBC World on 2026-10-08. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-08",
-          "world news",
-          "global headlines",
-          "deportations",
-          "african",
-          "countries",
-          "unlawful",
-          "exploit",
-          "suffering",
-          "US deportations to African countries unlawful and exploit suffering, rights group says 2026-10-08",
-          "world news October 2026",
-          "2026-10-08",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-08T17:52:59.514Z"
-      }
-    },
-    {
-      "id": "48dcad44",
-      "title": "First Hurricane of the Atlantic season due to hit the Gulf coast",
-      "url": "https://www.bbc.co.uk/weather/articles/cw146l6pnvx0o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC Science",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-08T17:15:33.000Z",
-      "discovered_at": "2026-10-07T17:49:47.639Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "First Hurricane",
-      "description": "World news reported by BBC Science on 2026-10-08. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/5e38/live/728421a0-c309-11f1-8f04-85217d686658.png",
-      "matchapp_url": "https://matchapp.tv/news/articles/first-hurricane-of-the-atlantic-season-due-to-hit-the-gulf-coast-48dcad/",
-      "landing_url": "https://matchapp.tv/?news=48dcad44#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-08",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "first",
-          "hurricane",
-          "atlantic",
-          "season",
-          "due",
-          "hit"
-        ],
-        "long_tail": [
-          "First Hurricane of the Atlantic season due to hit the Gulf coast 2026-10-08",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "first",
-          "hurricane",
-          "atlantic",
-          "season",
-          "due",
-          "hit"
-        ],
-        "freshness_keywords": [
-          "2026-10-08"
-        ],
-        "source_keywords": [
-          "BBC Science"
-        ],
-        "meta_title": "First Hurricane of the Atlantic season due to hit the Gulf…",
-        "meta_description": "World report published by BBC Science on 2026-10-08. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-08",
-          "world news",
-          "global headlines",
-          "first",
-          "hurricane",
-          "atlantic",
-          "season",
-          "due",
-          "hit",
-          "First Hurricane of the Atlantic season due to hit the Gulf coast 2026-10-08",
-          "world news October 2026",
-          "2026-10-08",
-          "BBC Science"
-        ],
-        "seo_generated_at": "2026-10-08T17:52:59.514Z"
+        "seo_generated_at": "2026-10-08T22:23:59.626Z"
       }
     },
     {
       "id": "4259651a",
-      "title": "Batalha em Paris: VÍDEO mostra confronto entre policiais e estudantes durante protestos pela educação",
+      "title": "Batalha e ruas tomadas em Paris: VÍDEO mostra confronto entre policiais e estudantes em protestos pela educação",
       "url": "https://g1.globo.com/mundo/noticia/2026/10/08/batalha-em-paris-video-mostra-confronto-entre-policiais-e-estudantes-durante-protestos-pela-educacao.ghtml",
       "source": "G1 Mundo",
       "source_domain": "g1.globo.com",
@@ -623,7 +2081,7 @@
       "person": "",
       "description": "World news reported by G1 Mundo on 2026-10-08. MatchApp links to the original report for its complete context and ongoing updates.",
       "image": "https://s2-g1.glbimg.com/SGsUkY3_lf82uJWhx5AWMP6cigw=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/U/E/rAM56KSyuTXa8fnz5hQQ/2026-10-08t170422z-480987310-rc24znabfdh5-rtrmadp-3-france-protest.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/batalha-em-paris-video-mostra-confronto-entre-policiais-e-estudantes-durante-pro-425965/",
+      "matchapp_url": "https://matchapp.tv/news/articles/batalha-e-ruas-tomadas-em-paris-video-mostra-confronto-entre-policiais-e-estudan-425965/",
       "landing_url": "https://matchapp.tv/?news=4259651a#latest-news",
       "seo": {
         "primary_keyword": "notícias do mundo 2026-10-08",
@@ -631,24 +2089,24 @@
           "notícias do mundo",
           "notícias internacionais",
           "batalha",
+          "ruas",
+          "tomadas",
           "paris",
           "video",
-          "mostra",
-          "confronto",
-          "entre"
+          "mostra"
         ],
         "long_tail": [
-          "Batalha em Paris: VÍDEO mostra confronto entre policiais e estudantes durante protestos pela educação 2026-10-08",
+          "Batalha e ruas tomadas em Paris: VÍDEO mostra confronto entre policiais e estudantes em protestos pela educação 2026-10-08",
           "notícias mundiais outubro 2026"
         ],
         "trend_keywords": [],
         "entity_keywords": [
           "batalha",
+          "ruas",
+          "tomadas",
           "paris",
           "video",
-          "mostra",
-          "confronto",
-          "entre"
+          "mostra"
         ],
         "freshness_keywords": [
           "2026-10-08"
@@ -656,405 +2114,93 @@
         "source_keywords": [
           "G1 Mundo"
         ],
-        "meta_title": "Batalha em Paris: VÍDEO mostra confronto entre policiais e…",
+        "meta_title": "Batalha e ruas tomadas em Paris: VÍDEO mostra confronto…",
         "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-08. Abra a fonte original para o contexto completo.",
         "keywords": [
           "notícias do mundo 2026-10-08",
           "notícias do mundo",
           "notícias internacionais",
           "batalha",
+          "ruas",
+          "tomadas",
           "paris",
           "video",
           "mostra",
-          "confronto",
-          "entre",
-          "Batalha em Paris: VÍDEO mostra confronto entre policiais e estudantes durante protestos pela educação 2026-10-08",
+          "Batalha e ruas tomadas em Paris: VÍDEO mostra confronto entre policiais e estudantes em protestos pela educação 2026-10-08",
           "notícias mundiais outubro 2026",
           "2026-10-08",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-08T17:52:59.514Z"
+        "seo_generated_at": "2026-10-08T22:23:59.626Z"
       }
     },
     {
-      "id": "db6230de",
-      "title": "Worst Girl in America: The Rebirth of Slayyyter",
-      "url": "https://www.hollywoodreporter.com/music/music-features/slayyyter-interview-underground-pop-star-1236723323/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-10-08T17:00:00.000Z",
-      "discovered_at": "2026-10-08T17:52:59.514Z",
+      "id": "60a6dd79",
+      "title": "EUA barram Microsoft e outras big techs de contratar estrangeiros por programa que leva ao green card; veja lista",
+      "url": "https://g1.globo.com/trabalho-e-carreira/noticia/2026/10/08/eua-big-techs-contratar-estrangeiros-programa-green-card.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-08T16:52:20.000Z",
+      "discovered_at": "2026-10-08T22:23:59.626Z",
       "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "Worst Girl",
-      "description": "Worst Girl: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/Slayyyter-women-in-music-billboard-2026-ashley-osborn-4_ext-H-2026.jpg?w=1296&h=730&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/worst-girl-in-america-the-rebirth-of-slayyyter-db6230/",
-      "landing_url": "https://matchapp.tv/?news=db6230de#latest-news",
-      "seo": {
-        "primary_keyword": "Worst Girl latest news",
-        "short_tail": [
-          "Worst Girl",
-          "Worst Girl news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "Worst Girl latest news October 2026",
-          "Worst Girl entertainment update 2026",
-          "Worst Girl news 2026-10-08",
-          "latest entertainment news about Worst Girl",
-          "worst girl worst girl america rebirth latest update",
-          "The Hollywood Reporter Worst Girl entertainment",
-          "latest news about Worst Girl October 2026",
-          "Worst Girl entertainment news 2026-10-08",
-          "what happened with Worst Girl"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Worst Girl",
-          "worst",
-          "girl",
-          "america",
-          "rebirth",
-          "slayyyter"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-08",
-          "Worst Girl 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter Worst Girl",
-          "hollywoodreporter.com Worst Girl",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "Worst Girl in America: The Rebirth of Slayyyter |…",
-        "meta_description": "Worst Girl: Entertainment update reported by The Hollywood Reporter on 2026-10-08. See verified context, publication time and the original source via…",
-        "keywords": [
-          "Worst Girl latest news",
-          "Worst Girl",
-          "Worst Girl news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "Worst Girl latest news October 2026",
-          "Worst Girl entertainment update 2026",
-          "Worst Girl news 2026-10-08",
-          "latest entertainment news about Worst Girl",
-          "worst girl worst girl america rebirth latest update",
-          "The Hollywood Reporter Worst Girl entertainment",
-          "latest news about Worst Girl October 2026",
-          "Worst Girl entertainment news 2026-10-08",
-          "what happened with Worst Girl",
-          "worst",
-          "girl",
-          "america",
-          "rebirth",
-          "slayyyter",
-          "October 2026",
-          "2026-10-08",
-          "Worst Girl 2026",
-          "The Hollywood Reporter Worst Girl",
-          "hollywoodreporter.com Worst Girl",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-08T17:52:59.514Z"
-      }
-    },
-    {
-      "id": "21dbc3bb",
-      "title": "Outspoken Indian actor Nana Patekar dies suddenly at 75",
-      "url": "https://www.bbc.co.uk/news/articles/cj3vqr5rknpeo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GB",
-      "language": "en",
-      "published_at": "2026-10-08T16:54:37.000Z",
-      "discovered_at": "2026-10-08T09:25:28.026Z",
-      "event_type": "Obituary",
-      "category": "entertainment",
-      "person": "Outspoken Indian",
-      "description": "Outspoken Indian: obituary headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/ab69/live/59fe1be0-c30e-11f1-a64c-550be9e3c66b.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/outspoken-indian-actor-nana-patekar-dies-suddenly-at-75-21dbc3/",
-      "landing_url": "https://matchapp.tv/?news=21dbc3bb#latest-news",
-      "seo": {
-        "primary_keyword": "Outspoken Indian latest news",
-        "short_tail": [
-          "Outspoken Indian",
-          "Outspoken Indian news",
-          "obituary",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "Outspoken Indian latest news October 2026",
-          "Outspoken Indian obituary update 2026",
-          "Outspoken Indian news 2026-10-08",
-          "latest obituary news about Outspoken Indian",
-          "outspoken indian outspoken indian actor nana latest update",
-          "BBC Outspoken Indian obituary",
-          "latest news about Outspoken Indian October 2026",
-          "Outspoken Indian entertainment news 2026-10-08",
-          "what happened with Outspoken Indian"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Outspoken Indian",
-          "outspoken",
-          "indian",
-          "actor",
-          "nana",
-          "patekar",
-          "dies"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-08",
-          "Outspoken Indian 2026"
-        ],
-        "source_keywords": [
-          "BBC Outspoken Indian",
-          "bbc.co.uk Outspoken Indian",
-          "BBC entertainment news"
-        ],
-        "meta_title": "Outspoken Indian actor Nana Patekar dies suddenly at 75 |…",
-        "meta_description": "Outspoken Indian: Obituary update reported by BBC on 2026-10-08. See verified context, publication time and the original source via MatchApp Ai.",
-        "keywords": [
-          "Outspoken Indian latest news",
-          "Outspoken Indian",
-          "Outspoken Indian news",
-          "obituary",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "Outspoken Indian latest news October 2026",
-          "Outspoken Indian obituary update 2026",
-          "Outspoken Indian news 2026-10-08",
-          "latest obituary news about Outspoken Indian",
-          "outspoken indian outspoken indian actor nana latest update",
-          "BBC Outspoken Indian obituary",
-          "latest news about Outspoken Indian October 2026",
-          "Outspoken Indian entertainment news 2026-10-08",
-          "what happened with Outspoken Indian",
-          "outspoken",
-          "indian",
-          "actor",
-          "nana",
-          "patekar",
-          "dies",
-          "October 2026",
-          "2026-10-08",
-          "Outspoken Indian 2026",
-          "BBC Outspoken Indian",
-          "bbc.co.uk Outspoken Indian",
-          "BBC entertainment news"
-        ],
-        "seo_generated_at": "2026-10-08T17:52:59.514Z"
-      }
-    },
-    {
-      "id": "c6ae01b7",
-      "title": "Clive Davis Grammy Party Will Return in 2027",
-      "url": "https://www.hollywoodreporter.com/music/music-news/clive-davis-grammy-party-return-2027-1236725478/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-10-08T16:42:48.000Z",
-      "discovered_at": "2026-10-08T16:53:44.433Z",
-      "event_type": "Awards",
-      "category": "entertainment",
-      "person": "Clive Davis Grammy Party",
-      "description": "Clive Davis Grammy Party: awards headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/GettyImages-1976116595-H-2026.jpg?w=1296&h=730&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/clive-davis-grammy-party-will-return-in-2027-c6ae01/",
-      "landing_url": "https://matchapp.tv/?news=c6ae01b7#latest-news",
-      "seo": {
-        "primary_keyword": "Clive Davis Grammy Party latest news",
-        "short_tail": [
-          "Clive Davis Grammy Party",
-          "Clive Davis Grammy Party news",
-          "awards",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "Clive Davis Grammy Party latest news October 2026",
-          "Clive Davis Grammy Party awards update 2026",
-          "Clive Davis Grammy Party news 2026-10-08",
-          "latest awards news about Clive Davis Grammy Party",
-          "clive davis grammy party clive davis latest update",
-          "The Hollywood Reporter Clive Davis Grammy Party awards",
-          "latest news about Clive Davis Grammy Party October 2026",
-          "Clive Davis Grammy Party entertainment news 2026-10-08",
-          "what happened with Clive Davis Grammy Party"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Clive Davis Grammy Party",
-          "clive",
-          "davis",
-          "grammy",
-          "party"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-08",
-          "Clive Davis Grammy Party 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter Clive Davis Grammy Party",
-          "hollywoodreporter.com Clive Davis Grammy Party",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "Clive Davis Grammy Party Will Return in 2027 |…",
-        "meta_description": "Clive Davis Grammy Party: Awards update reported by The Hollywood Reporter on 2026-10-08. See verified context, publication time and the original source via…",
-        "keywords": [
-          "Clive Davis Grammy Party latest news",
-          "Clive Davis Grammy Party",
-          "Clive Davis Grammy Party news",
-          "awards",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "Clive Davis Grammy Party latest news October 2026",
-          "Clive Davis Grammy Party awards update 2026",
-          "Clive Davis Grammy Party news 2026-10-08",
-          "latest awards news about Clive Davis Grammy Party",
-          "clive davis grammy party clive davis latest update",
-          "The Hollywood Reporter Clive Davis Grammy Party awards",
-          "latest news about Clive Davis Grammy Party October 2026",
-          "Clive Davis Grammy Party entertainment news 2026-10-08",
-          "what happened with Clive Davis Grammy Party",
-          "clive",
-          "davis",
-          "grammy",
-          "party",
-          "October 2026",
-          "2026-10-08",
-          "Clive Davis Grammy Party 2026",
-          "The Hollywood Reporter Clive Davis Grammy Party",
-          "hollywoodreporter.com Clive Davis Grammy Party",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-08T17:52:59.514Z"
-      }
-    },
-    {
-      "id": "582df5c6",
-      "title": "‘Other Mommy’ First Reactions: “Jessica Chastain’s Worst Movie in a Long Time”",
-      "url": "https://www.hollywoodreporter.com/movies/movie-news/other-mommy-reviews-jessica-chastain-1236725365/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-10-08T16:37:08.000Z",
-      "discovered_at": "2026-10-08T16:53:44.433Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
+      "category": "world",
       "person": "",
-      "description": "entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/07/2599_FP_1144452U_00089480R-H-2026.jpg?w=1296&h=730&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/other-mommy-first-reactions-jessica-chastain-s-worst-movie-in-a-long-time-582df5/",
-      "landing_url": "https://matchapp.tv/?news=582df5c6#latest-news",
+      "description": "World news reported by G1 Mundo on 2026-10-08. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/Qpl06-sGXrl-ysZi-I0x0qomhjw=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/N/G/qqkfCrS7GppLyZfyEmJw/2026-10-08t151531z-677537681-rc23znavohhj-rtrmadp-3-usa-vance.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/eua-barram-microsoft-e-outras-big-techs-de-contratar-estrangeiros-por-programa-q-60a6dd/",
+      "landing_url": "https://matchapp.tv/?news=60a6dd79#latest-news",
       "seo": {
-        "primary_keyword": "other mommy first reactions latest news",
+        "primary_keyword": "notícias do mundo 2026-10-08",
         "short_tail": [
-          "other mommy first reactions",
-          "other mommy first reactions news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
+          "notícias do mundo",
+          "notícias internacionais",
+          "eua",
+          "barram",
+          "microsoft",
+          "outras",
+          "big",
+          "techs"
         ],
         "long_tail": [
-          "other mommy first reactions latest news October 2026",
-          "other mommy first reactions entertainment update 2026",
-          "other mommy first reactions news 2026-10-08",
-          "latest entertainment news about other mommy first reactions",
-          "other mommy first reactions jessica chastain latest update",
-          "The Hollywood Reporter other mommy first reactions entertainment",
-          "latest news about other mommy first reactions October 2026",
-          "other mommy first reactions entertainment news 2026-10-08",
-          "what happened with other mommy first reactions"
+          "EUA barram Microsoft e outras big techs de contratar estrangeiros por programa que leva ao green card; veja lista 2026-10-08",
+          "notícias mundiais outubro 2026"
         ],
         "trend_keywords": [],
         "entity_keywords": [
-          "other",
-          "mommy",
-          "first",
-          "reactions",
-          "jessica",
-          "chastain",
-          "worst",
-          "movie"
+          "eua",
+          "barram",
+          "microsoft",
+          "outras",
+          "big",
+          "techs"
         ],
         "freshness_keywords": [
-          "October 2026",
-          "2026-10-08",
-          "other mommy first reactions 2026"
+          "2026-10-08"
         ],
         "source_keywords": [
-          "The Hollywood Reporter other mommy first reactions",
-          "hollywoodreporter.com other mommy first reactions",
-          "The Hollywood Reporter entertainment news"
+          "G1 Mundo"
         ],
-        "meta_title": "‘Other Mommy’ First Reactions: “Jessica Chastain’s Worst…",
-        "meta_description": "Entertainment update reported by The Hollywood Reporter on 2026-10-08. See verified context, publication time and the original source via MatchApp Ai.",
+        "meta_title": "EUA barram Microsoft e outras big techs de contratar…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-08. Abra a fonte original para o contexto completo.",
         "keywords": [
-          "other mommy first reactions latest news",
-          "other mommy first reactions",
-          "other mommy first reactions news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "other mommy first reactions latest news October 2026",
-          "other mommy first reactions entertainment update 2026",
-          "other mommy first reactions news 2026-10-08",
-          "latest entertainment news about other mommy first reactions",
-          "other mommy first reactions jessica chastain latest update",
-          "The Hollywood Reporter other mommy first reactions entertainment",
-          "latest news about other mommy first reactions October 2026",
-          "other mommy first reactions entertainment news 2026-10-08",
-          "what happened with other mommy first reactions",
-          "other",
-          "mommy",
-          "first",
-          "reactions",
-          "jessica",
-          "chastain",
-          "worst",
-          "movie",
-          "October 2026",
+          "notícias do mundo 2026-10-08",
+          "notícias do mundo",
+          "notícias internacionais",
+          "eua",
+          "barram",
+          "microsoft",
+          "outras",
+          "big",
+          "techs",
+          "EUA barram Microsoft e outras big techs de contratar estrangeiros por programa que leva ao green card; veja lista 2026-10-08",
+          "notícias mundiais outubro 2026",
           "2026-10-08",
-          "other mommy first reactions 2026",
-          "The Hollywood Reporter other mommy first reactions",
-          "hollywoodreporter.com other mommy first reactions",
-          "The Hollywood Reporter entertainment news"
+          "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-08T17:52:59.514Z"
+        "seo_generated_at": "2026-10-08T22:23:59.626Z"
       }
     },
     {
@@ -1155,305 +2301,7 @@
           "g1.globo.com habeas corpus marjorie estiano",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-08T17:52:59.514Z"
-      }
-    },
-    {
-      "id": "67240025",
-      "title": "Russian strike on buses kills at least 30, say officials, as deadly attacks on Ukraine surge",
-      "url": "https://www.bbc.co.uk/news/articles/c875pwq134l3o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-08T16:31:29.000Z",
-      "discovered_at": "2026-10-08T16:53:44.433Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-08. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/0a5b/live/25d71060-c2fa-11f1-b8c6-6d610e41a5d9.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/russian-strike-on-buses-kills-at-least-30-say-officials-as-deadly-attacks-on-ukr-672400/",
-      "landing_url": "https://matchapp.tv/?news=67240025#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-08",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "russian",
-          "strike",
-          "buses",
-          "kills",
-          "least",
-          "say"
-        ],
-        "long_tail": [
-          "Russian strike on buses kills at least 30, say officials, as deadly attacks on Ukraine surge 2026-10-08",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "russian",
-          "strike",
-          "buses",
-          "kills",
-          "least",
-          "say"
-        ],
-        "freshness_keywords": [
-          "2026-10-08"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Russian strike on buses kills at least 30, say officials,…",
-        "meta_description": "World report published by BBC World on 2026-10-08. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-08",
-          "world news",
-          "global headlines",
-          "russian",
-          "strike",
-          "buses",
-          "kills",
-          "least",
-          "say",
-          "Russian strike on buses kills at least 30, say officials, as deadly attacks on Ukraine surge 2026-10-08",
-          "world news October 2026",
-          "2026-10-08",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-08T17:52:59.514Z"
-      }
-    },
-    {
-      "id": "1bc57247",
-      "title": "The 55 Legal Heavyweights Behind the Hitmakers",
-      "url": "https://www.hollywoodreporter.com/music/music-features/music-lawyers-2026-power-list-1236723468/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-10-08T16:30:00.000Z",
-      "discovered_at": "2026-10-08T16:53:44.433Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "",
-      "description": "entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/NEW-18bob_music_lawyers_main_NO_BADGE_w-SPLASH-2026.jpg?w=1440&h=810&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/the-55-legal-heavyweights-behind-the-hitmakers-1bc572/",
-      "landing_url": "https://matchapp.tv/?news=1bc57247#latest-news",
-      "seo": {
-        "primary_keyword": "legal heavyweights behind hitmakers latest news",
-        "short_tail": [
-          "legal heavyweights behind hitmakers",
-          "legal heavyweights behind hitmakers news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "legal heavyweights behind hitmakers latest news October 2026",
-          "legal heavyweights behind hitmakers entertainment update 2026",
-          "legal heavyweights behind hitmakers news 2026-10-08",
-          "latest entertainment news about legal heavyweights behind hitmakers",
-          "legal heavyweights behind hitmakers latest update",
-          "The Hollywood Reporter legal heavyweights behind hitmakers entertainment",
-          "latest news about legal heavyweights behind hitmakers October 2026",
-          "legal heavyweights behind hitmakers entertainment news 2026-10-08",
-          "what happened with legal heavyweights behind hitmakers"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "legal",
-          "heavyweights",
-          "behind",
-          "hitmakers"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-08",
-          "legal heavyweights behind hitmakers 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter legal heavyweights behind hitmakers",
-          "hollywoodreporter.com legal heavyweights behind hitmakers",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "The 55 Legal Heavyweights Behind the Hitmakers |…",
-        "meta_description": "Entertainment update reported by The Hollywood Reporter on 2026-10-08. See verified context, publication time and the original source via MatchApp Ai.",
-        "keywords": [
-          "legal heavyweights behind hitmakers latest news",
-          "legal heavyweights behind hitmakers",
-          "legal heavyweights behind hitmakers news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "legal heavyweights behind hitmakers latest news October 2026",
-          "legal heavyweights behind hitmakers entertainment update 2026",
-          "legal heavyweights behind hitmakers news 2026-10-08",
-          "latest entertainment news about legal heavyweights behind hitmakers",
-          "legal heavyweights behind hitmakers latest update",
-          "The Hollywood Reporter legal heavyweights behind hitmakers entertainment",
-          "latest news about legal heavyweights behind hitmakers October 2026",
-          "legal heavyweights behind hitmakers entertainment news 2026-10-08",
-          "what happened with legal heavyweights behind hitmakers",
-          "legal",
-          "heavyweights",
-          "behind",
-          "hitmakers",
-          "October 2026",
-          "2026-10-08",
-          "legal heavyweights behind hitmakers 2026",
-          "The Hollywood Reporter legal heavyweights behind hitmakers",
-          "hollywoodreporter.com legal heavyweights behind hitmakers",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-08T17:52:59.514Z"
-      }
-    },
-    {
-      "id": "7ad84d0a",
-      "title": "Asos hackers took more personal details than first revealed, BBC finds",
-      "url": "https://www.bbc.co.uk/news/articles/c3zxjdw5ywgpo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC Technology",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-08T16:29:33.000Z",
-      "discovered_at": "2026-10-08T09:52:27.929Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC Technology on 2026-10-08. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/ef63/live/b1b98540-c30e-11f1-a64c-550be9e3c66b.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/asos-hackers-took-more-personal-details-than-first-revealed-bbc-finds-7ad84d/",
-      "landing_url": "https://matchapp.tv/?news=7ad84d0a#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-08",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "asos",
-          "hackers",
-          "took",
-          "more",
-          "personal",
-          "details"
-        ],
-        "long_tail": [
-          "Asos hackers took more personal details than first revealed, BBC finds 2026-10-08",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "asos",
-          "hackers",
-          "took",
-          "more",
-          "personal",
-          "details"
-        ],
-        "freshness_keywords": [
-          "2026-10-08"
-        ],
-        "source_keywords": [
-          "BBC Technology"
-        ],
-        "meta_title": "Asos hackers took more personal details than first…",
-        "meta_description": "World report published by BBC Technology on 2026-10-08. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-08",
-          "world news",
-          "global headlines",
-          "asos",
-          "hackers",
-          "took",
-          "more",
-          "personal",
-          "details",
-          "Asos hackers took more personal details than first revealed, BBC finds 2026-10-08",
-          "world news October 2026",
-          "2026-10-08",
-          "BBC Technology"
-        ],
-        "seo_generated_at": "2026-10-08T17:52:59.514Z"
-      }
-    },
-    {
-      "id": "5be71ec2",
-      "title": "Zambia signs US health deal after disputes over data-sharing",
-      "url": "https://www.bbc.co.uk/news/articles/cqd09eyk0g8no?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-08T16:24:05.000Z",
-      "discovered_at": "2026-10-08T16:53:44.433Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-08. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/026e/live/4ba24bd0-c330-11f1-9981-cf94ea240e40.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/zambia-signs-us-health-deal-after-disputes-over-data-sharing-5be71e/",
-      "landing_url": "https://matchapp.tv/?news=5be71ec2#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-08",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "zambia",
-          "signs",
-          "health",
-          "deal",
-          "after",
-          "disputes"
-        ],
-        "long_tail": [
-          "Zambia signs US health deal after disputes over data-sharing 2026-10-08",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "zambia",
-          "signs",
-          "health",
-          "deal",
-          "after",
-          "disputes"
-        ],
-        "freshness_keywords": [
-          "2026-10-08"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Zambia signs US health deal after disputes over…",
-        "meta_description": "World report published by BBC World on 2026-10-08. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-08",
-          "world news",
-          "global headlines",
-          "zambia",
-          "signs",
-          "health",
-          "deal",
-          "after",
-          "disputes",
-          "Zambia signs US health deal after disputes over data-sharing 2026-10-08",
-          "world news October 2026",
-          "2026-10-08",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-08T17:52:59.514Z"
+        "seo_generated_at": "2026-10-08T22:23:59.626Z"
       }
     },
     {
@@ -1522,373 +2370,7 @@
           "2026-10-08",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-08T17:52:59.514Z"
-      }
-    },
-    {
-      "id": "045845ac",
-      "title": "South Korea recalls Ukraine envoy over prisoner-of-war row",
-      "url": "https://www.bbc.co.uk/news/articles/ckwy48rrz95vo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-08T16:23:09.000Z",
-      "discovered_at": "2026-10-08T16:53:44.433Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "South Korea",
-      "description": "World news reported by BBC World on 2026-10-08. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/f15e/live/fb9d5240-c2fa-11f1-b8c6-6d610e41a5d9.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/south-korea-recalls-ukraine-envoy-over-prisoner-of-war-row-045845/",
-      "landing_url": "https://matchapp.tv/?news=045845ac#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-08",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "south",
-          "korea",
-          "recalls",
-          "ukraine",
-          "envoy",
-          "over"
-        ],
-        "long_tail": [
-          "South Korea recalls Ukraine envoy over prisoner-of-war row 2026-10-08",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "south",
-          "korea",
-          "recalls",
-          "ukraine",
-          "envoy",
-          "over"
-        ],
-        "freshness_keywords": [
-          "2026-10-08"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "South Korea recalls Ukraine envoy over prisoner-of-war row…",
-        "meta_description": "World report published by BBC World on 2026-10-08. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-08",
-          "world news",
-          "global headlines",
-          "south",
-          "korea",
-          "recalls",
-          "ukraine",
-          "envoy",
-          "over",
-          "South Korea recalls Ukraine envoy over prisoner-of-war row 2026-10-08",
-          "world news October 2026",
-          "2026-10-08",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-08T17:52:59.514Z"
-      }
-    },
-    {
-      "id": "a831acd1",
-      "title": "Mandíbula quebrada, perda de visão, mão explodida: violência policial marca terceira semana de protestos na França",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/08/mandibula-qubrada-perda-de-visao-mao-explodida-violencia-policial-marca-terceira-semana-de-protestos-na-franca.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-08T16:16:58.000Z",
-      "discovered_at": "2026-10-08T16:53:44.433Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-08. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/D7mAtZSAIQjUkkdGnLnH1cXK76c=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/8/A/eVSBsBQAWdIBBXj96gzA/2026-10-08t160841z-1346267210-rc23znawgurk-rtrmadp-3-france-protest.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/mandibula-quebrada-perda-de-visao-mao-explodida-violencia-policial-marca-terceir-a831ac/",
-      "landing_url": "https://matchapp.tv/?news=a831acd1#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-08",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "mandibula",
-          "quebrada",
-          "perda",
-          "visao",
-          "mao",
-          "explodida"
-        ],
-        "long_tail": [
-          "Mandíbula quebrada, perda de visão, mão explodida: violência policial marca terceira semana de protestos na França 2026-10-08",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "mandibula",
-          "quebrada",
-          "perda",
-          "visao",
-          "mao",
-          "explodida"
-        ],
-        "freshness_keywords": [
-          "2026-10-08"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Mandíbula quebrada, perda de visão, mão explodida:…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-08. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-08",
-          "notícias do mundo",
-          "notícias internacionais",
-          "mandibula",
-          "quebrada",
-          "perda",
-          "visao",
-          "mao",
-          "explodida",
-          "Mandíbula quebrada, perda de visão, mão explodida: violência policial marca terceira semana de protestos na França 2026-10-08",
-          "notícias mundiais outubro 2026",
-          "2026-10-08",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-08T17:52:59.514Z"
-      }
-    },
-    {
-      "id": "5478bb48",
-      "title": "‘Inside Out 2’ Director Kelsey Mann Signs with UTA (Exclusive)",
-      "url": "https://www.hollywoodreporter.com/movies/movie-news/inside-out-2-director-kelsey-mann-signs-with-uta-1236724689/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-10-08T16:12:01.000Z",
-      "discovered_at": "2026-10-08T16:53:44.433Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "",
-      "description": "entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/GettyImages-2157046845-H-2026.jpg?w=1296&h=730&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/inside-out-2-director-kelsey-mann-signs-with-uta-exclusive-5478bb/",
-      "landing_url": "https://matchapp.tv/?news=5478bb48#latest-news",
-      "seo": {
-        "primary_keyword": "inside out director kelsey latest news",
-        "short_tail": [
-          "inside out director kelsey",
-          "inside out director kelsey news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "inside out director kelsey latest news October 2026",
-          "inside out director kelsey entertainment update 2026",
-          "inside out director kelsey news 2026-10-08",
-          "latest entertainment news about inside out director kelsey",
-          "inside out director kelsey mann signs latest update",
-          "The Hollywood Reporter inside out director kelsey entertainment",
-          "latest news about inside out director kelsey October 2026",
-          "inside out director kelsey entertainment news 2026-10-08",
-          "what happened with inside out director kelsey"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "inside",
-          "out",
-          "director",
-          "kelsey",
-          "mann",
-          "signs",
-          "uta",
-          "exclusive"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-08",
-          "inside out director kelsey 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter inside out director kelsey",
-          "hollywoodreporter.com inside out director kelsey",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "‘Inside Out 2’ Director Kelsey Mann Signs with UTA…",
-        "meta_description": "Entertainment update reported by The Hollywood Reporter on 2026-10-08. See verified context, publication time and the original source via MatchApp Ai.",
-        "keywords": [
-          "inside out director kelsey latest news",
-          "inside out director kelsey",
-          "inside out director kelsey news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "inside out director kelsey latest news October 2026",
-          "inside out director kelsey entertainment update 2026",
-          "inside out director kelsey news 2026-10-08",
-          "latest entertainment news about inside out director kelsey",
-          "inside out director kelsey mann signs latest update",
-          "The Hollywood Reporter inside out director kelsey entertainment",
-          "latest news about inside out director kelsey October 2026",
-          "inside out director kelsey entertainment news 2026-10-08",
-          "what happened with inside out director kelsey",
-          "inside",
-          "out",
-          "director",
-          "kelsey",
-          "mann",
-          "signs",
-          "uta",
-          "exclusive",
-          "October 2026",
-          "2026-10-08",
-          "inside out director kelsey 2026",
-          "The Hollywood Reporter inside out director kelsey",
-          "hollywoodreporter.com inside out director kelsey",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-08T17:52:59.514Z"
-      }
-    },
-    {
-      "id": "be605aa8",
-      "title": "BBC Inside Science",
-      "url": "https://www.bbc.co.uk/sounds/play/w3ct9788?at_medium=RSS&at_campaign=rss",
-      "source": "BBC Science",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-08T16:00:00.000Z",
-      "discovered_at": "2026-10-08T16:53:44.433Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "BBC Inside Science",
-      "description": "World news reported by BBC Science on 2026-10-08. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/images/ic/240x135/p0m1ww2j.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/bbc-inside-science-be605a/",
-      "landing_url": "https://matchapp.tv/?news=be605aa8#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-08",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "bbc",
-          "inside",
-          "science"
-        ],
-        "long_tail": [
-          "BBC Inside Science 2026-10-08",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "bbc",
-          "inside",
-          "science"
-        ],
-        "freshness_keywords": [
-          "2026-10-08"
-        ],
-        "source_keywords": [
-          "BBC Science"
-        ],
-        "meta_title": "BBC Inside Science | World News | MatchApp Ai",
-        "meta_description": "World report published by BBC Science on 2026-10-08. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-08",
-          "world news",
-          "global headlines",
-          "bbc",
-          "inside",
-          "science",
-          "BBC Inside Science 2026-10-08",
-          "world news October 2026",
-          "2026-10-08",
-          "BBC Science"
-        ],
-        "seo_generated_at": "2026-10-08T17:52:59.514Z"
-      }
-    },
-    {
-      "id": "58b44bcb",
-      "title": "Polícia britânica fez buscas ilegais em casas do ex-príncipe Andrew sobre envolvimento no caso Epstein",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/08/policia-britanica-fez-buscas-ilegais-em-casas-do-ex-principe-andrew-sobre-envolvimento-no-caso-epstein.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-08T15:48:24.000Z",
-      "discovered_at": "2026-10-08T16:53:44.433Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-08. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/ZzAylSmkVps9xN6GwC5FPQGXPFg=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/G/P/NtCCLVROKni4RpQ8KHvA/2026-02-19t191727z-948764426-rc27pjaadhqq-rtrmadp-3-usa-epstein-britain-andrew.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/policia-britanica-fez-buscas-ilegais-em-casas-do-ex-principe-andrew-sobre-envolv-58b44b/",
-      "landing_url": "https://matchapp.tv/?news=58b44bcb#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-08",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "policia",
-          "britanica",
-          "fez",
-          "buscas",
-          "ilegais",
-          "casas"
-        ],
-        "long_tail": [
-          "Polícia britânica fez buscas ilegais em casas do ex-príncipe Andrew sobre envolvimento no caso Epstein 2026-10-08",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "policia",
-          "britanica",
-          "fez",
-          "buscas",
-          "ilegais",
-          "casas"
-        ],
-        "freshness_keywords": [
-          "2026-10-08"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Polícia britânica fez buscas ilegais em casas do…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-08. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-08",
-          "notícias do mundo",
-          "notícias internacionais",
-          "policia",
-          "britanica",
-          "fez",
-          "buscas",
-          "ilegais",
-          "casas",
-          "Polícia britânica fez buscas ilegais em casas do ex-príncipe Andrew sobre envolvimento no caso Epstein 2026-10-08",
-          "notícias mundiais outubro 2026",
-          "2026-10-08",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-08T17:52:59.514Z"
+        "seo_generated_at": "2026-10-08T22:23:59.626Z"
       }
     },
     {
@@ -1989,145 +2471,7 @@
           "g1.globo.com lollapalooza 2027 anuncia line",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-08T17:52:59.514Z"
-      }
-    },
-    {
-      "id": "518aa145",
-      "title": "‘Green card’ na mira: EUA suspendem programa de vistos da Microsoft e outras big techs, diz vice de Trump",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/08/ofensiva-contra-estrangeiros-vice-de-trump-diz-que-eua-suspenderam-programa-de-vistos-da-microsoft.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-08T14:31:17.000Z",
-      "discovered_at": "2026-10-08T16:53:44.433Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-08. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/Qpl06-sGXrl-ysZi-I0x0qomhjw=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/N/G/qqkfCrS7GppLyZfyEmJw/2026-10-08t151531z-677537681-rc23znavohhj-rtrmadp-3-usa-vance.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/green-card-na-mira-eua-suspendem-programa-de-vistos-da-microsoft-e-outras-big-te-518aa1/",
-      "landing_url": "https://matchapp.tv/?news=518aa145#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-08",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "green",
-          "card",
-          "mira",
-          "eua",
-          "suspendem",
-          "programa"
-        ],
-        "long_tail": [
-          "‘Green card’ na mira: EUA suspendem programa de vistos da Microsoft e outras big techs, diz vice de Trump 2026-10-08",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "green",
-          "card",
-          "mira",
-          "eua",
-          "suspendem",
-          "programa"
-        ],
-        "freshness_keywords": [
-          "2026-10-08"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "‘Green card’ na mira: EUA suspendem programa de vistos da…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-08. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-08",
-          "notícias do mundo",
-          "notícias internacionais",
-          "green",
-          "card",
-          "mira",
-          "eua",
-          "suspendem",
-          "programa",
-          "‘Green card’ na mira: EUA suspendem programa de vistos da Microsoft e outras big techs, diz vice de Trump 2026-10-08",
-          "notícias mundiais outubro 2026",
-          "2026-10-08",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-08T17:52:59.514Z"
-      }
-    },
-    {
-      "id": "3249ee64",
-      "title": "VÍDEO: Forças do Iêmen atropelam combatentes houthis em 'batalha final' por Estreito de Bab el-Mandeb",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/08/video-forcas-do-iemen-atropelam-combatentes-houthis-em-batalha-final-por-estreito-de-bab-el-mandeb.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-08T14:24:31.000Z",
-      "discovered_at": "2026-10-08T16:53:44.433Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-08. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/hZD9AurHpq4bYDHEpgXJCW1-Lm4=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/3/q/BoAk6xTR6UycGXlMwigw/mapa.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/video-forcas-do-iemen-atropelam-combatentes-houthis-em-batalha-final-por-estreit-3249ee/",
-      "landing_url": "https://matchapp.tv/?news=3249ee64#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-08",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "video",
-          "forcas",
-          "iemen",
-          "atropelam",
-          "combatentes",
-          "houthis"
-        ],
-        "long_tail": [
-          "VÍDEO: Forças do Iêmen atropelam combatentes houthis em 'batalha final' por Estreito de Bab el-Mandeb 2026-10-08",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "video",
-          "forcas",
-          "iemen",
-          "atropelam",
-          "combatentes",
-          "houthis"
-        ],
-        "freshness_keywords": [
-          "2026-10-08"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "VÍDEO: Forças do Iêmen atropelam combatentes houthis em…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-08. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-08",
-          "notícias do mundo",
-          "notícias internacionais",
-          "video",
-          "forcas",
-          "iemen",
-          "atropelam",
-          "combatentes",
-          "houthis",
-          "VÍDEO: Forças do Iêmen atropelam combatentes houthis em 'batalha final' por Estreito de Bab el-Mandeb 2026-10-08",
-          "notícias mundiais outubro 2026",
-          "2026-10-08",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-08T17:52:59.514Z"
+        "seo_generated_at": "2026-10-08T22:23:59.626Z"
       }
     },
     {
@@ -2228,76 +2572,7 @@
           "g1.globo.com alegrias uivos maria alcina",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-08T17:52:59.514Z"
-      }
-    },
-    {
-      "id": "c3bad002",
-      "title": "Eleitores de Trump não estão animados para votar nas eleições de meio de mandato, aponta Reuters/Ipsos",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/08/eleitores-de-trump-nao-estao-animados-para-votar-nas-eleicoes-de-meio-de-mandato-aponta-reuters-ipsos.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-08T14:21:15.000Z",
-      "discovered_at": "2026-10-08T16:53:44.433Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-08. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/XjKgQYad1evpIJbA5Dp7hLlNqLM=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/N/A/ycpnFDQAaLddLGgAXg6Q/2026-09-25t050004z-1220685222-rc2fonaxyb3l-rtrmadp-3-usa-trump-diplomacy.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/eleitores-de-trump-nao-estao-animados-para-votar-nas-eleicoes-de-meio-de-mandato-c3bad0/",
-      "landing_url": "https://matchapp.tv/?news=c3bad002#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-08",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "eleitores",
-          "trump",
-          "nao",
-          "estao",
-          "animados",
-          "votar"
-        ],
-        "long_tail": [
-          "Eleitores de Trump não estão animados para votar nas eleições de meio de mandato, aponta Reuters/Ipsos 2026-10-08",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "eleitores",
-          "trump",
-          "nao",
-          "estao",
-          "animados",
-          "votar"
-        ],
-        "freshness_keywords": [
-          "2026-10-08"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Eleitores de Trump não estão animados para votar nas…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-08. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-08",
-          "notícias do mundo",
-          "notícias internacionais",
-          "eleitores",
-          "trump",
-          "nao",
-          "estao",
-          "animados",
-          "votar",
-          "Eleitores de Trump não estão animados para votar nas eleições de meio de mandato, aponta Reuters/Ipsos 2026-10-08",
-          "notícias mundiais outubro 2026",
-          "2026-10-08",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-08T17:52:59.514Z"
+        "seo_generated_at": "2026-10-08T22:23:59.626Z"
       }
     },
     {
@@ -2387,76 +2662,7 @@
           "2026-10-08",
           "October 2026"
         ],
-        "seo_generated_at": "2026-10-08T17:52:59.514Z"
-      }
-    },
-    {
-      "id": "a1f9cbc6",
-      "title": "Governo Trump acusa Maduro e esposa de cometer tortura",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/08/novas-acusacoes-contra-maduro-e-esposa-audiencia-nova-york.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-08T13:55:11.000Z",
-      "discovered_at": "2026-10-08T16:53:44.433Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "Governo Trump",
-      "description": "World news reported by G1 Mundo on 2026-10-08. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/wi1_VbwrzE3fNqUSfxcjXP-SIew=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/X/E/FaUFxIQeWN1zo6d7I4BQ/fotojet-66-.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/governo-trump-acusa-maduro-e-esposa-de-cometer-tortura-a1f9cb/",
-      "landing_url": "https://matchapp.tv/?news=a1f9cbc6#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-08",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "governo",
-          "trump",
-          "acusa",
-          "maduro",
-          "esposa",
-          "cometer"
-        ],
-        "long_tail": [
-          "Governo Trump acusa Maduro e esposa de cometer tortura 2026-10-08",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "governo",
-          "trump",
-          "acusa",
-          "maduro",
-          "esposa",
-          "cometer"
-        ],
-        "freshness_keywords": [
-          "2026-10-08"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Governo Trump acusa Maduro e esposa de cometer tortura |…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-08. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-08",
-          "notícias do mundo",
-          "notícias internacionais",
-          "governo",
-          "trump",
-          "acusa",
-          "maduro",
-          "esposa",
-          "cometer",
-          "Governo Trump acusa Maduro e esposa de cometer tortura 2026-10-08",
-          "notícias mundiais outubro 2026",
-          "2026-10-08",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-08T17:52:59.514Z"
+        "seo_generated_at": "2026-10-08T22:23:59.626Z"
       }
     },
     {
@@ -2552,7 +2758,7 @@
           "bbc.co.uk Gaten Matarazzo",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-08T17:52:59.514Z"
+        "seo_generated_at": "2026-10-08T22:23:59.626Z"
       }
     },
     {
@@ -2651,7 +2857,7 @@
           "g1.globo.com nobel literatura relembre vencedores",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-08T17:52:59.514Z"
+        "seo_generated_at": "2026-10-08T22:23:59.626Z"
       }
     },
     {
@@ -2750,7 +2956,7 @@
           "bbc.co.uk how folk band football",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-08T17:52:59.514Z"
+        "seo_generated_at": "2026-10-08T22:23:59.626Z"
       }
     },
     {
@@ -2846,7 +3052,7 @@
           "bbc.co.uk Paul McCartney's",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-08T17:52:59.514Z"
+        "seo_generated_at": "2026-10-08T22:23:59.626Z"
       }
     },
     {
@@ -2868,7 +3074,7 @@
       "matchapp_url": "https://matchapp.tv/news/articles/actor-simon-pegg-reveals-adhd-diagnosis-it-s-just-who-i-am-63060a/",
       "landing_url": "https://matchapp.tv/?news=63060a95#latest-news",
       "seo": {
-        "primary_keyword": "Actor Simon Pegg latest news",
+        "primary_keyword": "simon",
         "short_tail": [
           "Actor Simon Pegg",
           "Actor Simon Pegg news",
@@ -2876,7 +3082,8 @@
           "latest entertainment news",
           "entertainment news",
           "celebrity news",
-          "entertainment updates"
+          "entertainment updates",
+          "simon"
         ],
         "long_tail": [
           "Actor Simon Pegg latest news October 2026",
@@ -2889,7 +3096,9 @@
           "Actor Simon Pegg entertainment news 2026-10-08",
           "what happened with Actor Simon Pegg"
         ],
-        "trend_keywords": [],
+        "trend_keywords": [
+          "simon"
+        ],
         "entity_keywords": [
           "Actor Simon Pegg",
           "actor",
@@ -2911,7 +3120,7 @@
         "meta_title": "Actor Simon Pegg reveals ADHD diagnosis: 'It's just who I…",
         "meta_description": "Actor Simon Pegg: Entertainment update reported by BBC on 2026-10-08. See verified context, publication time and the original source via MatchApp Ai.",
         "keywords": [
-          "Actor Simon Pegg latest news",
+          "simon",
           "Actor Simon Pegg",
           "Actor Simon Pegg news",
           "entertainment",
@@ -2929,7 +3138,6 @@
           "Actor Simon Pegg entertainment news 2026-10-08",
           "what happened with Actor Simon Pegg",
           "actor",
-          "simon",
           "pegg",
           "reveals",
           "adhd",
@@ -2940,7 +3148,7 @@
           "bbc.co.uk Actor Simon Pegg",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-08T17:52:59.514Z"
+        "seo_generated_at": "2026-10-08T22:23:59.626Z"
       }
     },
     {
@@ -3038,7 +3246,7 @@
           "g1.globo.com Chris Isaak",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-08T17:52:59.514Z"
+        "seo_generated_at": "2026-10-08T22:23:59.626Z"
       }
     },
     {
@@ -3139,7 +3347,7 @@
           "g1.globo.com hope primeiro impacto abre",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-08T17:52:59.514Z"
+        "seo_generated_at": "2026-10-08T22:23:59.626Z"
       }
     },
     {
@@ -3237,7 +3445,7 @@
           "g1.globo.com Zeca Pagodinho",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-08T17:52:59.514Z"
+        "seo_generated_at": "2026-10-08T22:23:59.626Z"
       }
     },
     {
@@ -3332,200 +3540,7 @@
           "bbc.co.uk suffragette role gift says",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-08T17:52:59.514Z"
-      }
-    },
-    {
-      "id": "f69187f3",
-      "title": "'I won Gladiators - now I'd love to become one'",
-      "url": "https://www.bbc.co.uk/news/articles/ckpqgz8x8jqeo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GB",
-      "language": "en",
-      "published_at": "2026-10-08T05:03:43.000Z",
-      "discovered_at": "2026-10-08T09:25:28.026Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "",
-      "description": "entertainment headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/34b9/live/14592e10-c0d2-11f1-a5b0-6f550c662e91.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/i-won-gladiators-now-i-d-love-to-become-one-f69187/",
-      "landing_url": "https://matchapp.tv/?news=f69187f3#latest-news",
-      "seo": {
-        "primary_keyword": "won gladiators now love latest news",
-        "short_tail": [
-          "won gladiators now love",
-          "won gladiators now love news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "won gladiators now love latest news October 2026",
-          "won gladiators now love entertainment update 2026",
-          "won gladiators now love news 2026-10-08",
-          "latest entertainment news about won gladiators now love",
-          "won gladiators now love become one latest update",
-          "BBC won gladiators now love entertainment",
-          "latest news about won gladiators now love October 2026",
-          "won gladiators now love entertainment news 2026-10-08",
-          "what happened with won gladiators now love"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "won",
-          "gladiators",
-          "now",
-          "love",
-          "become",
-          "one"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-08",
-          "won gladiators now love 2026"
-        ],
-        "source_keywords": [
-          "BBC won gladiators now love",
-          "bbc.co.uk won gladiators now love",
-          "BBC entertainment news"
-        ],
-        "meta_title": "'I won Gladiators - now I'd love to become one' |…",
-        "meta_description": "Entertainment update reported by BBC on 2026-10-08. See verified context, publication time and the original source via MatchApp Ai.",
-        "keywords": [
-          "won gladiators now love latest news",
-          "won gladiators now love",
-          "won gladiators now love news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "won gladiators now love latest news October 2026",
-          "won gladiators now love entertainment update 2026",
-          "won gladiators now love news 2026-10-08",
-          "latest entertainment news about won gladiators now love",
-          "won gladiators now love become one latest update",
-          "BBC won gladiators now love entertainment",
-          "latest news about won gladiators now love October 2026",
-          "won gladiators now love entertainment news 2026-10-08",
-          "what happened with won gladiators now love",
-          "won",
-          "gladiators",
-          "now",
-          "love",
-          "become",
-          "one",
-          "October 2026",
-          "2026-10-08",
-          "won gladiators now love 2026",
-          "BBC won gladiators now love",
-          "bbc.co.uk won gladiators now love",
-          "BBC entertainment news"
-        ],
-        "seo_generated_at": "2026-10-08T17:52:59.514Z"
-      }
-    },
-    {
-      "id": "ee5c901e",
-      "title": "Juliana Linhares faz em janeiro, no Rio, a gravação audiovisual do show 'Até cansar o cansaço', destaque de 2026",
-      "url": "https://g1.globo.com/pop-arte/musica/blog/mauro-ferreira/post/2026/10/08/juliana-linhares-faz-em-janeiro-no-rio-a-gravacao-audiovisual-do-show-ate-cansar-o-cansaco-destaque-de-2026.ghtml",
-      "source": "G1",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "BR",
-      "language": "pt",
-      "published_at": "2026-10-08T03:01:00.000Z",
-      "discovered_at": "2026-10-08T09:25:28.026Z",
-      "event_type": "Music",
-      "category": "entertainment",
-      "person": "Juliana Linhares",
-      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
-      "image": "https://s2-g1.glbimg.com/ZSHSMucU0c3BTGYY3nOa5W-7KNg=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/A/P/9NBDClSE6tFxCyQtaPvQ/julianashowrodrigo.jpeg",
-      "matchapp_url": "https://matchapp.tv/news/articles/juliana-linhares-faz-em-janeiro-no-rio-a-gravacao-audiovisual-do-show-ate-cansar-ee5c90/",
-      "landing_url": "https://matchapp.tv/?news=ee5c901e#latest-news",
-      "seo": {
-        "primary_keyword": "Juliana Linhares últimas notícias",
-        "short_tail": [
-          "Juliana Linhares",
-          "Juliana Linhares news",
-          "music",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje"
-        ],
-        "long_tail": [
-          "Juliana Linhares latest news October 2026",
-          "Juliana Linhares music update 2026",
-          "Juliana Linhares news 2026-10-08",
-          "latest music news about Juliana Linhares",
-          "juliana linhares juliana linhares faz janeiro latest update",
-          "G1 Juliana Linhares music",
-          "últimas notícias sobre Juliana Linhares outubro 2026",
-          "Juliana Linhares notícia de 2026-10-08",
-          "o que aconteceu com Juliana Linhares"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Juliana Linhares",
-          "juliana",
-          "linhares",
-          "faz",
-          "janeiro",
-          "rio",
-          "gravacao"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-08",
-          "outubro 2026",
-          "Juliana Linhares 2026"
-        ],
-        "source_keywords": [
-          "G1 Juliana Linhares",
-          "g1.globo.com Juliana Linhares",
-          "G1 entertainment news"
-        ],
-        "meta_title": "Juliana Linhares faz em janeiro, no Rio, a gravação…",
-        "meta_description": "Juliana Linhares: Notícia publicada por G1 em 2026-10-08. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
-        "keywords": [
-          "Juliana Linhares últimas notícias",
-          "Juliana Linhares",
-          "Juliana Linhares news",
-          "music",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "Juliana Linhares latest news October 2026",
-          "Juliana Linhares music update 2026",
-          "Juliana Linhares news 2026-10-08",
-          "latest music news about Juliana Linhares",
-          "juliana linhares juliana linhares faz janeiro latest update",
-          "G1 Juliana Linhares music",
-          "últimas notícias sobre Juliana Linhares outubro 2026",
-          "Juliana Linhares notícia de 2026-10-08",
-          "o que aconteceu com Juliana Linhares",
-          "juliana",
-          "linhares",
-          "faz",
-          "janeiro",
-          "rio",
-          "gravacao",
-          "October 2026",
-          "2026-10-08",
-          "outubro 2026",
-          "Juliana Linhares 2026",
-          "G1 Juliana Linhares",
-          "g1.globo.com Juliana Linhares",
-          "G1 entertainment news"
-        ],
-        "seo_generated_at": "2026-10-08T17:52:59.514Z"
+        "seo_generated_at": "2026-10-08T22:23:59.626Z"
       }
     }
   ]
