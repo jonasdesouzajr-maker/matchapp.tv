@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
   "weekOf": "2026-10-05",
-  "updated": "2026-10-07T11:50:56.820Z",
+  "updated": "2026-10-08T08:19:49.919Z",
   "label": "Latest titles trending right now",
   "sourceNote": "Movie and TV positions refresh from MatchApp’s current TMDB daily trend metadata; verified official music-video releases from monitored top-artist channels refresh daily with release dates, YouTube view counts, direct links, keywords and structured metadata. Availability can vary by country.",
   "titles": [
@@ -11,8 +11,10 @@
       "year": 2026,
       "origin": "US",
       "originName": "United States",
-      "platform": "Cinemas",
-      "platforms": [],
+      "platform": "Claro tv+",
+      "platforms": [
+        "Claro tv+"
+      ],
       "tmdbId": "969681",
       "poster": "https://image.tmdb.org/t/p/w780/bjiS5ipwxb9JFy3XRRN4OAilSeX.jpg",
       "description": "Fighting crime full-time as Spider-Man in a world that doesn't remember him—and the pressure of seeing his old friends move on without him—sparks a change in Peter Parker he may not have the power to control. But that transformation might also be the only thing that can stop a shocking new threat to the city and those he loves - a powerful villain no one can even see.",
@@ -30,40 +32,66 @@
       ],
       "runtimeMinutes": 145,
       "contentRating": "PG-13",
-      "voteAverage": 8.22,
+      "voteAverage": 8.3,
       "previewUrl": "https://www.youtube.com/watch?v=P3uI5sLosKU",
       "availability": {
         "BR": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
+          "buy": [
+            "Apple TV Store",
+            "Amazon Video"
+          ],
+          "link": "https://www.themoviedb.org/movie/969681-spider-man-brand-new-day/watch?locale=BR",
+          "rent": [
+            "Apple TV Store",
+            "Amazon Video"
+          ],
+          "stream": [
+            "Claro tv+"
+          ],
           "cinema_release_date": "2026-07-29"
         },
         "GB": {
-          "buy": [],
+          "buy": [
+            "Apple TV Store",
+            "Rakuten TV",
+            "Amazon Video",
+            "Sky Store"
+          ],
           "link": "https://www.themoviedb.org/movie/969681-spider-man-brand-new-day/watch?locale=GB",
           "rent": [
-            "Amazon Video"
+            "Apple TV Store",
+            "Rakuten TV",
+            "Amazon Video",
+            "Sky Store"
           ],
           "stream": [],
           "cinema_release_date": "2026-07-29"
         },
         "PT": {
           "buy": [
+            "Apple TV Store",
+            "Rakuten TV",
             "Amazon Video"
           ],
           "link": "https://www.themoviedb.org/movie/969681-spider-man-brand-new-day/watch?locale=PT",
           "rent": [
+            "Apple TV Store",
+            "Rakuten TV",
             "Amazon Video"
           ],
           "stream": [],
           "cinema_release_date": null
         },
         "US": {
-          "buy": [],
-          "link": null,
-          "rent": [],
+          "buy": [
+            "Amazon Video",
+            "Apple TV Store"
+          ],
+          "link": "https://www.themoviedb.org/movie/969681-spider-man-brand-new-day/watch?locale=US",
+          "rent": [
+            "Amazon Video",
+            "Apple TV Store"
+          ],
           "stream": [],
           "cinema_release_date": "2026-07-31"
         },
@@ -79,6 +107,7 @@
         "Science Fiction movie",
         "Action movie",
         "Adventure movie",
+        "Claro tv+ trending movie",
         "Tom Holland",
         "Sadie Sink"
       ],
@@ -98,6 +127,7 @@
           "Science Fiction movie",
           "Action movie",
           "Adventure movie",
+          "Claro tv+ trending movie",
           "Tom Holland",
           "Sadie Sink",
           "where to watch Spider-Man: Brand New Day 2026",
@@ -106,6 +136,72 @@
           "what Science Fiction to watch this week"
         ],
         "canonicalQuery": "Spider-Man: Brand New Day"
+      }
+    },
+    {
+      "title": "Carrie",
+      "kind": "tv",
+      "year": 2026,
+      "origin": "US",
+      "originName": "United States",
+      "platform": "",
+      "platforms": [],
+      "tmdbId": "288673",
+      "poster": "https://image.tmdb.org/t/p/w780/eXjk4W4robXs7l1YXwaXMv4f2qb.jpg",
+      "description": "After her father's sudden, untimely death thrusts her into the unforgiving ecosystem of public high school, Carrie is forced to navigate a viral bullying scandal that tears through her community, the relentless pressure and casual cruelty of the social-media age, and the awakening of mysterious telekinetic powers that rise alongside her adolescence.",
+      "genre": [
+        "Mystery",
+        "Drama"
+      ],
+      "inLanguage": "en",
+      "cast": [
+        "Summer H. Howell",
+        "Samantha Sloyan",
+        "Siena Agudong",
+        "Alison Thornton"
+      ],
+      "runtimeMinutes": null,
+      "contentRating": "TV-MA",
+      "voteAverage": 8.5,
+      "previewUrl": "https://www.youtube.com/watch?v=jkUw2nh6fT0",
+      "availability": {
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/tv/288673"
+      },
+      "sourceRank": 2,
+      "keywords": [
+        "Carrie",
+        "Carrie 2026",
+        "where to watch Carrie",
+        "Mystery series",
+        "Drama series",
+        "Summer H. Howell",
+        "Samantha Sloyan"
+      ],
+      "longTailKeywords": [
+        "where to watch Carrie 2026",
+        "Carrie streaming in Brazil and United States",
+        "Carrie cast synopsis trailer and where to watch",
+        "what Mystery to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch Carrie (2026) | MatchApp Ai",
+        "description": "After her father's sudden, untimely death thrusts her into the unforgiving ecosystem of public high school, Carrie is forced to navigate a viral bullying scan",
+        "keywords": [
+          "Carrie",
+          "Carrie 2026",
+          "where to watch Carrie",
+          "Mystery series",
+          "Drama series",
+          "Summer H. Howell",
+          "Samantha Sloyan",
+          "where to watch Carrie 2026",
+          "Carrie streaming in Brazil and United States",
+          "Carrie cast synopsis trailer and where to watch",
+          "what Mystery to watch this week"
+        ],
+        "canonicalQuery": "Carrie"
       }
     },
     {
@@ -131,7 +227,7 @@
       ],
       "runtimeMinutes": 98,
       "contentRating": "PG-13",
-      "voteAverage": 6.82,
+      "voteAverage": 7.14,
       "previewUrl": "https://www.youtube.com/watch?v=Krs0VDIjhmE",
       "availability": {
         "BR": {
@@ -149,8 +245,12 @@
           "cinema_release_date": "2026-09-09"
         },
         "US": {
-          "buy": [],
-          "link": null,
+          "buy": [
+            "Amazon Video",
+            "Apple TV Store",
+            "Fandango At Home"
+          ],
+          "link": "https://www.themoviedb.org/movie/1101412-fall-2-deadpoint/watch?locale=US",
           "rent": [],
           "stream": [],
           "cinema_release_date": "2026-09-02"
@@ -159,7 +259,7 @@
         "attribution": "JustWatch via TMDB",
         "source_page_url": "https://www.themoviedb.org/movie/1101412"
       },
-      "sourceRank": 2,
+      "sourceRank": 3,
       "keywords": [
         "Fall 2: Deadpoint",
         "Fall 2: Deadpoint 2026",
@@ -190,106 +290,6 @@
           "what Thriller to watch this week"
         ],
         "canonicalQuery": "Fall 2: Deadpoint"
-      }
-    },
-    {
-      "title": "Insidious: Out of the Further",
-      "kind": "movie",
-      "year": 2026,
-      "origin": "US",
-      "originName": "United States",
-      "platform": "Cinemas",
-      "platforms": [],
-      "tmdbId": "1291595",
-      "poster": "https://image.tmdb.org/t/p/w780/4tTrW9dXCByS5wt2pXVWb58zNjz.jpg",
-      "description": "Gemma, a young mother raising her daughter in the house she grew up in, discovers she can travel into The Further, where she possesses an ability to bring what lives there back to the real world.",
-      "genre": [
-        "Horror",
-        "Thriller"
-      ],
-      "inLanguage": "en",
-      "cast": [
-        "Amelia Eve",
-        "Island Austin",
-        "Brandon Perea",
-        "Lin Shaye"
-      ],
-      "runtimeMinutes": 106,
-      "contentRating": "PG-13",
-      "voteAverage": 7.19,
-      "previewUrl": "https://www.youtube.com/watch?v=gXjurDkYnEM",
-      "availability": {
-        "BR": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-08-20"
-        },
-        "GB": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/movie/1291595-insidious-out-of-the-further/watch?locale=GB",
-          "rent": [
-            "Amazon Video"
-          ],
-          "stream": [],
-          "cinema_release_date": "2026-08-21"
-        },
-        "PT": {
-          "buy": [
-            "Amazon Video"
-          ],
-          "link": "https://www.themoviedb.org/movie/1291595-insidious-out-of-the-further/watch?locale=PT",
-          "rent": [
-            "Amazon Video"
-          ],
-          "stream": [],
-          "cinema_release_date": "2026-08-20"
-        },
-        "US": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-08-21"
-        },
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1291595"
-      },
-      "sourceRank": 3,
-      "keywords": [
-        "Insidious: Out of the Further",
-        "Insidious: Out of the Further 2026",
-        "where to watch Insidious: Out of the Further",
-        "Horror movie",
-        "Thriller movie",
-        "Amelia Eve",
-        "Island Austin"
-      ],
-      "longTailKeywords": [
-        "where to watch Insidious: Out of the Further 2026",
-        "Insidious: Out of the Further streaming in Brazil and United States",
-        "Insidious: Out of the Further cast synopsis trailer and where to watch",
-        "what Horror to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch Insidious: Out of the Further (2026) | MatchApp Ai",
-        "description": "Gemma, a young mother raising her daughter in the house she grew up in, discovers she can travel into The Further, where she possesses an ability to bring wha",
-        "keywords": [
-          "Insidious: Out of the Further",
-          "Insidious: Out of the Further 2026",
-          "where to watch Insidious: Out of the Further",
-          "Horror movie",
-          "Thriller movie",
-          "Amelia Eve",
-          "Island Austin",
-          "where to watch Insidious: Out of the Further 2026",
-          "Insidious: Out of the Further streaming in Brazil and United States",
-          "Insidious: Out of the Further cast synopsis trailer and where to watch",
-          "what Horror to watch this week"
-        ],
-        "canonicalQuery": "Insidious: Out of the Further"
       }
     },
     {
@@ -352,103 +352,6 @@
       "sourceRank": 1
     },
     {
-      "title": "Onslaught",
-      "kind": "movie",
-      "year": 2026,
-      "origin": "US",
-      "originName": "United States",
-      "platform": "Cinemas",
-      "platforms": [],
-      "tmdbId": "1284046",
-      "poster": "https://image.tmdb.org/t/p/w780/cOGtvhc6Ij9KvzM6jZsfQyg0B0O.jpg",
-      "description": "When a rogue squad of genetically engineered super soldiers break loose in the desert, a badass Army sniper must unleash hell to protect her young daughter.",
-      "genre": [
-        "Action",
-        "Horror",
-        "Thriller"
-      ],
-      "inLanguage": "en",
-      "cast": [
-        "Adria Arjona",
-        "Dan Stevens",
-        "Eric Wareheim",
-        "Reginald VelJohnson"
-      ],
-      "runtimeMinutes": 92,
-      "contentRating": "R",
-      "voteAverage": 5.84,
-      "previewUrl": "https://www.youtube.com/watch?v=AMLCbpM1fRQ",
-      "availability": {
-        "BR": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-10-01"
-        },
-        "GB": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-12-11"
-        },
-        "PT": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-09-03"
-        },
-        "US": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-09-04"
-        },
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1284046"
-      },
-      "sourceRank": 4,
-      "keywords": [
-        "Onslaught",
-        "Onslaught 2026",
-        "where to watch Onslaught",
-        "Action movie",
-        "Horror movie",
-        "Thriller movie",
-        "Adria Arjona",
-        "Dan Stevens"
-      ],
-      "longTailKeywords": [
-        "where to watch Onslaught 2026",
-        "Onslaught streaming in Brazil and United States",
-        "Onslaught cast synopsis trailer and where to watch",
-        "what Action to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch Onslaught (2026) | MatchApp Ai",
-        "description": "When a rogue squad of genetically engineered super soldiers break loose in the desert, a badass Army sniper must unleash hell to protect her young daughter.",
-        "keywords": [
-          "Onslaught",
-          "Onslaught 2026",
-          "where to watch Onslaught",
-          "Action movie",
-          "Horror movie",
-          "Thriller movie",
-          "Adria Arjona",
-          "Dan Stevens",
-          "where to watch Onslaught 2026",
-          "Onslaught streaming in Brazil and United States",
-          "Onslaught cast synopsis trailer and where to watch",
-          "what Action to watch this week"
-        ],
-        "canonicalQuery": "Onslaught"
-      }
-    },
-    {
       "title": "Lanterns",
       "kind": "tv",
       "year": 2026,
@@ -476,7 +379,7 @@
       ],
       "runtimeMinutes": null,
       "contentRating": "TV-MA",
-      "voteAverage": 8.34,
+      "voteAverage": 8.33,
       "previewUrl": "https://www.youtube.com/watch?v=7UIBOsuUwc4",
       "availability": {
         "BR": {
@@ -491,7 +394,10 @@
           "cinema_release_date": null
         },
         "GB": {
-          "buy": [],
+          "buy": [
+            "Apple TV Store",
+            "Amazon Video"
+          ],
           "link": "https://www.themoviedb.org/tv/95350-lanterns/watch?locale=GB",
           "rent": [],
           "stream": [
@@ -525,7 +431,7 @@
         "attribution": "JustWatch via TMDB",
         "source_page_url": "https://www.themoviedb.org/tv/95350"
       },
-      "sourceRank": 5,
+      "sourceRank": 4,
       "keywords": [
         "Lanterns",
         "Lanterns 2026",
@@ -567,69 +473,229 @@
       }
     },
     {
-      "title": "Carrie",
-      "kind": "tv",
+      "title": "Insidious: Out of the Further",
+      "kind": "movie",
       "year": 2026,
       "origin": "US",
       "originName": "United States",
-      "platform": "",
+      "platform": "Cinemas",
       "platforms": [],
-      "tmdbId": "288673",
-      "poster": "https://image.tmdb.org/t/p/w780/eXjk4W4robXs7l1YXwaXMv4f2qb.jpg",
-      "description": "Misfit teenager Carrie White has spent her life in seclusion with her domineering mother, Margaret. After her father's sudden death, Carrie finds herself contending with the challenges of attending public high school, a bullying scandal, and the emergence of mysterious telekinetic powers.",
+      "tmdbId": "1291595",
+      "poster": "https://image.tmdb.org/t/p/w780/4tTrW9dXCByS5wt2pXVWb58zNjz.jpg",
+      "description": "Gemma, a young mother raising her daughter in the house she grew up in, discovers she can travel into The Further, the purgatorial realm of lost souls at the heart of the Insidious universe. When something evil comes after her, Gemma discovers an ability that changes everything: she doesn't just enter The Further, she can bring what lives there back to the real world. Once the demons realize her power, our world becomes their playground.",
       "genre": [
-        "Mystery",
-        "Drama"
+        "Horror",
+        "Thriller"
       ],
       "inLanguage": "en",
       "cast": [
-        "Summer H. Howell",
-        "Samantha Sloyan",
-        "Siena Agudong",
-        "Alison Thornton"
+        "Amelia Eve",
+        "Island Austin",
+        "Brandon Perea",
+        "Lin Shaye"
       ],
-      "runtimeMinutes": null,
-      "contentRating": "TV-MA",
-      "voteAverage": 7.5,
-      "previewUrl": "https://www.youtube.com/watch?v=jkUw2nh6fT0",
+      "runtimeMinutes": 106,
+      "contentRating": "PG-13",
+      "voteAverage": 7.49,
+      "previewUrl": "https://www.youtube.com/watch?v=gXjurDkYnEM",
       "availability": {
+        "BR": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-08-20"
+        },
+        "GB": {
+          "buy": [
+            "Apple TV Store",
+            "Rakuten TV",
+            "Amazon Video",
+            "Sky Store"
+          ],
+          "link": "https://www.themoviedb.org/movie/1291595-insidious-out-of-the-further/watch?locale=GB",
+          "rent": [
+            "Apple TV Store",
+            "Rakuten TV",
+            "Amazon Video",
+            "Sky Store"
+          ],
+          "stream": [],
+          "cinema_release_date": "2026-08-21"
+        },
+        "PT": {
+          "buy": [
+            "Apple TV Store",
+            "Rakuten TV",
+            "Amazon Video"
+          ],
+          "link": "https://www.themoviedb.org/movie/1291595-insidious-out-of-the-further/watch?locale=PT",
+          "rent": [
+            "Apple TV Store",
+            "Rakuten TV",
+            "Amazon Video"
+          ],
+          "stream": [],
+          "cinema_release_date": "2026-08-20"
+        },
+        "US": {
+          "buy": [
+            "Amazon Video",
+            "Apple TV Store",
+            "Fandango At Home"
+          ],
+          "link": "https://www.themoviedb.org/movie/1291595-insidious-out-of-the-further/watch?locale=US",
+          "rent": [
+            "Amazon Video",
+            "Apple TV Store",
+            "Fandango At Home"
+          ],
+          "stream": [],
+          "cinema_release_date": "2026-08-21"
+        },
         "source": "tmdb-watch-providers",
         "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/tv/288673"
+        "source_page_url": "https://www.themoviedb.org/movie/1291595"
+      },
+      "sourceRank": 5,
+      "keywords": [
+        "Insidious: Out of the Further",
+        "Insidious: Out of the Further 2026",
+        "where to watch Insidious: Out of the Further",
+        "Horror movie",
+        "Thriller movie",
+        "Amelia Eve",
+        "Island Austin"
+      ],
+      "longTailKeywords": [
+        "where to watch Insidious: Out of the Further 2026",
+        "Insidious: Out of the Further streaming in Brazil and United States",
+        "Insidious: Out of the Further cast synopsis trailer and where to watch",
+        "what Horror to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch Insidious: Out of the Further (2026) | MatchApp Ai",
+        "description": "Gemma, a young mother raising her daughter in the house she grew up in, discovers she can travel into The Further, the purgatorial realm of lost souls at the ",
+        "keywords": [
+          "Insidious: Out of the Further",
+          "Insidious: Out of the Further 2026",
+          "where to watch Insidious: Out of the Further",
+          "Horror movie",
+          "Thriller movie",
+          "Amelia Eve",
+          "Island Austin",
+          "where to watch Insidious: Out of the Further 2026",
+          "Insidious: Out of the Further streaming in Brazil and United States",
+          "Insidious: Out of the Further cast synopsis trailer and where to watch",
+          "what Horror to watch this week"
+        ],
+        "canonicalQuery": "Insidious: Out of the Further"
+      }
+    },
+    {
+      "title": "Onslaught",
+      "kind": "movie",
+      "year": 2026,
+      "origin": "US",
+      "originName": "United States",
+      "platform": "Cinemas",
+      "platforms": [],
+      "tmdbId": "1284046",
+      "poster": "https://image.tmdb.org/t/p/w780/qg5U3trH8yEk94Iee9pFFxy8VzK.jpg",
+      "description": "When a rogue squad of genetically engineered super soldiers break loose in the desert, a badass Army sniper must unleash hell to protect her young daughter.",
+      "genre": [
+        "Action",
+        "Horror",
+        "Thriller"
+      ],
+      "inLanguage": "en",
+      "cast": [
+        "Adria Arjona",
+        "Dan Stevens",
+        "Eric Wareheim",
+        "Reginald VelJohnson"
+      ],
+      "runtimeMinutes": 92,
+      "contentRating": "R",
+      "voteAverage": 5.7,
+      "previewUrl": "https://www.youtube.com/watch?v=AMLCbpM1fRQ",
+      "availability": {
+        "BR": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-10-01"
+        },
+        "GB": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-12-11"
+        },
+        "PT": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-09-03"
+        },
+        "US": {
+          "buy": [
+            "Amazon Video",
+            "Apple TV Store",
+            "Fandango At Home"
+          ],
+          "link": "https://www.themoviedb.org/movie/1284046-onslaught/watch?locale=US",
+          "rent": [
+            "Amazon Video",
+            "Apple TV Store",
+            "Fandango At Home",
+            "Plex"
+          ],
+          "stream": [],
+          "cinema_release_date": "2026-09-04"
+        },
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/movie/1284046"
       },
       "sourceRank": 6,
       "keywords": [
-        "Carrie",
-        "Carrie 2026",
-        "where to watch Carrie",
-        "Mystery series",
-        "Drama series",
-        "Summer H. Howell",
-        "Samantha Sloyan"
+        "Onslaught",
+        "Onslaught 2026",
+        "where to watch Onslaught",
+        "Action movie",
+        "Horror movie",
+        "Thriller movie",
+        "Adria Arjona",
+        "Dan Stevens"
       ],
       "longTailKeywords": [
-        "where to watch Carrie 2026",
-        "Carrie streaming in Brazil and United States",
-        "Carrie cast synopsis trailer and where to watch",
-        "what Mystery to watch this week"
+        "where to watch Onslaught 2026",
+        "Onslaught streaming in Brazil and United States",
+        "Onslaught cast synopsis trailer and where to watch",
+        "what Action to watch this week"
       ],
       "seo": {
-        "title": "Where to watch Carrie (2026) | MatchApp Ai",
-        "description": "Misfit teenager Carrie White has spent her life in seclusion with her domineering mother, Margaret. After her father's sudden death, Carrie finds herself cont",
+        "title": "Where to watch Onslaught (2026) | MatchApp Ai",
+        "description": "When a rogue squad of genetically engineered super soldiers break loose in the desert, a badass Army sniper must unleash hell to protect her young daughter.",
         "keywords": [
-          "Carrie",
-          "Carrie 2026",
-          "where to watch Carrie",
-          "Mystery series",
-          "Drama series",
-          "Summer H. Howell",
-          "Samantha Sloyan",
-          "where to watch Carrie 2026",
-          "Carrie streaming in Brazil and United States",
-          "Carrie cast synopsis trailer and where to watch",
-          "what Mystery to watch this week"
+          "Onslaught",
+          "Onslaught 2026",
+          "where to watch Onslaught",
+          "Action movie",
+          "Horror movie",
+          "Thriller movie",
+          "Adria Arjona",
+          "Dan Stevens",
+          "where to watch Onslaught 2026",
+          "Onslaught streaming in Brazil and United States",
+          "Onslaught cast synopsis trailer and where to watch",
+          "what Action to watch this week"
         ],
-        "canonicalQuery": "Carrie"
+        "canonicalQuery": "Onslaught"
       }
     },
     {
@@ -694,191 +760,69 @@
       "sourceRank": 2
     },
     {
-      "title": "Digger",
-      "kind": "movie",
+      "title": "Merry Berry Love",
+      "kind": "tv",
       "year": 2026,
-      "origin": "US",
-      "originName": "United States",
-      "platform": "Cinemas",
+      "origin": "JP",
+      "originName": "Japan",
+      "platform": "",
       "platforms": [],
-      "tmdbId": "1248832",
-      "poster": "https://image.tmdb.org/t/p/w780/1ATXKrIPJyKNwnJ6lcG088Sa6zi.jpg",
-      "description": "The most powerful man in the world embarks on a frantic mission to prove he is humanity's savior before the disaster he's unleashed destroys everything.",
+      "tmdbId": "305551",
+      "poster": "https://image.tmdb.org/t/p/w780/av7wQdYaicBCCUFQ6jRlm9ylZx4.jpg",
+      "description": "When star Korean spatial designer Lee Yubin loses everything, he heads off to a Japanese island. There, he meets Karin, a resilient strawberry farmer. Hailing from different worlds, their lives collide in a big misunderstanding. Buckle up for \"Merry Berry Love,\" a sweet and sour Korea-Japan rom-com.",
       "genre": [
         "Comedy",
         "Drama"
       ],
-      "inLanguage": "en",
+      "inLanguage": "ja",
       "cast": [
-        "Tom Cruise",
-        "Riz Ahmed",
-        "John Goodman",
-        "Sandra Hüller"
+        "Ji Chang-wook",
+        "Mio Imada",
+        "Nam Yoon-su",
+        "Rinka Kumada"
       ],
-      "runtimeMinutes": 129,
-      "contentRating": "R",
-      "voteAverage": 7.5,
-      "previewUrl": "https://www.youtube.com/watch?v=job8V254NAE",
+      "runtimeMinutes": null,
+      "contentRating": "TV-PG",
+      "voteAverage": 9,
+      "previewUrl": "https://www.youtube.com/watch?v=3c68oabNkJs",
       "availability": {
-        "BR": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-10-01"
-        },
-        "GB": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-10-02"
-        },
-        "PT": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-10-01"
-        },
-        "US": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-10-02"
-        },
         "source": "tmdb-watch-providers",
         "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1248832"
+        "source_page_url": "https://www.themoviedb.org/tv/305551"
       },
       "sourceRank": 7,
       "keywords": [
-        "Digger",
-        "Digger 2026",
-        "where to watch Digger",
-        "Comedy movie",
-        "Drama movie",
-        "Tom Cruise",
-        "Riz Ahmed"
+        "Merry Berry Love",
+        "Merry Berry Love 2026",
+        "where to watch Merry Berry Love",
+        "Comedy series",
+        "Drama series",
+        "Ji Chang-wook",
+        "Mio Imada"
       ],
       "longTailKeywords": [
-        "where to watch Digger 2026",
-        "Digger streaming in Brazil and United States",
-        "Digger cast synopsis trailer and where to watch",
+        "where to watch Merry Berry Love 2026",
+        "Merry Berry Love streaming in Brazil and United States",
+        "Merry Berry Love cast synopsis trailer and where to watch",
         "what Comedy to watch this week"
       ],
       "seo": {
-        "title": "Where to watch Digger (2026) | MatchApp Ai",
-        "description": "The most powerful man in the world embarks on a frantic mission to prove he is humanity's savior before the disaster he's unleashed destroys everything.",
+        "title": "Where to watch Merry Berry Love (2026) | MatchApp Ai",
+        "description": "When star Korean spatial designer Lee Yubin loses everything, he heads off to a Japanese island. There, he meets Karin, a resilient strawberry farmer. Hailing",
         "keywords": [
-          "Digger",
-          "Digger 2026",
-          "where to watch Digger",
-          "Comedy movie",
-          "Drama movie",
-          "Tom Cruise",
-          "Riz Ahmed",
-          "where to watch Digger 2026",
-          "Digger streaming in Brazil and United States",
-          "Digger cast synopsis trailer and where to watch",
+          "Merry Berry Love",
+          "Merry Berry Love 2026",
+          "where to watch Merry Berry Love",
+          "Comedy series",
+          "Drama series",
+          "Ji Chang-wook",
+          "Mio Imada",
+          "where to watch Merry Berry Love 2026",
+          "Merry Berry Love streaming in Brazil and United States",
+          "Merry Berry Love cast synopsis trailer and where to watch",
           "what Comedy to watch this week"
         ],
-        "canonicalQuery": "Digger"
-      }
-    },
-    {
-      "title": "Other Mommy",
-      "kind": "movie",
-      "year": 2026,
-      "origin": "US",
-      "originName": "United States",
-      "platform": "Cinemas",
-      "platforms": [],
-      "tmdbId": "1400837",
-      "poster": "https://image.tmdb.org/t/p/w780/fGRNCssTRrhYZxNzykGGCoMsAVq.jpg",
-      "description": "Young Bela forms a relationship with a sinister entity in her home that looks uncannily like her own mother, drawing her into a terrifying and increasingly dark world.",
-      "genre": [
-        "Horror",
-        "Thriller"
-      ],
-      "inLanguage": "en",
-      "cast": [
-        "Jessica Chastain",
-        "Arabella Olivia Clark",
-        "Jay Duplass",
-        "Dichen Lachman"
-      ],
-      "runtimeMinutes": 93,
-      "contentRating": "R",
-      "voteAverage": 5.5,
-      "previewUrl": "https://www.youtube.com/watch?v=-mnTITqqiT0",
-      "availability": {
-        "BR": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-10-08"
-        },
-        "GB": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-10-09"
-        },
-        "PT": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-10-08"
-        },
-        "US": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-10-09"
-        },
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1400837"
-      },
-      "sourceRank": 8,
-      "keywords": [
-        "Other Mommy",
-        "Other Mommy 2026",
-        "where to watch Other Mommy",
-        "Horror movie",
-        "Thriller movie",
-        "Jessica Chastain",
-        "Arabella Olivia Clark"
-      ],
-      "longTailKeywords": [
-        "where to watch Other Mommy 2026",
-        "Other Mommy streaming in Brazil and United States",
-        "Other Mommy cast synopsis trailer and where to watch",
-        "what Horror to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch Other Mommy (2026) | MatchApp Ai",
-        "description": "Young Bela forms a relationship with a sinister entity in her home that looks uncannily like her own mother, drawing her into a terrifying and increasingly da",
-        "keywords": [
-          "Other Mommy",
-          "Other Mommy 2026",
-          "where to watch Other Mommy",
-          "Horror movie",
-          "Thriller movie",
-          "Jessica Chastain",
-          "Arabella Olivia Clark",
-          "where to watch Other Mommy 2026",
-          "Other Mommy streaming in Brazil and United States",
-          "Other Mommy cast synopsis trailer and where to watch",
-          "what Horror to watch this week"
-        ],
-        "canonicalQuery": "Other Mommy"
+        "canonicalQuery": "Merry Berry Love"
       }
     },
     {
@@ -954,7 +898,7 @@
         "attribution": "JustWatch via TMDB",
         "source_page_url": "https://www.themoviedb.org/tv/97546"
       },
-      "sourceRank": 9,
+      "sourceRank": 8,
       "keywords": [
         "Ted Lasso",
         "Ted Lasso 2020",
@@ -991,6 +935,121 @@
           "what Drama to watch this week"
         ],
         "canonicalQuery": "Ted Lasso"
+      }
+    },
+    {
+      "title": "Last Seen",
+      "kind": "tv",
+      "year": 2026,
+      "origin": "GB",
+      "originName": "United Kingdom",
+      "platform": "Apple TV",
+      "platforms": [
+        "Apple TV",
+        "Apple TV Amazon Channel"
+      ],
+      "tmdbId": "258230",
+      "poster": "https://image.tmdb.org/t/p/w780/vozJZjHv0Yyv4PjoOxF5tVMUGFI.jpg",
+      "description": "When emergency dispatcher Ian Ridley receives a frantic call from a teenager he believes could be his long-missing daughter, he stops at nothing to find her.",
+      "genre": [
+        "Crime",
+        "Drama",
+        "Mystery"
+      ],
+      "inLanguage": "en",
+      "cast": [
+        "Patrick Brammall",
+        "Brendan Cowell",
+        "Maxine Peake",
+        "Daniel Henshall"
+      ],
+      "runtimeMinutes": null,
+      "contentRating": "TV-MA",
+      "voteAverage": 7.8,
+      "previewUrl": "https://www.youtube.com/watch?v=M8nHySkLb64",
+      "availability": {
+        "BR": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/258230-last-seen/watch?locale=BR",
+          "rent": [],
+          "stream": [
+            "Apple TV",
+            "Apple TV Amazon Channel"
+          ],
+          "cinema_release_date": null
+        },
+        "GB": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/258230-last-seen/watch?locale=GB",
+          "rent": [],
+          "stream": [
+            "Apple TV",
+            "Apple TV Amazon Channel"
+          ],
+          "cinema_release_date": null
+        },
+        "PT": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/258230-last-seen/watch?locale=PT",
+          "rent": [],
+          "stream": [
+            "Apple TV"
+          ],
+          "cinema_release_date": null
+        },
+        "US": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/258230-last-seen/watch?locale=US",
+          "rent": [],
+          "stream": [
+            "Apple TV",
+            "Apple TV Amazon Channel"
+          ],
+          "cinema_release_date": null
+        },
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/tv/258230"
+      },
+      "sourceRank": 9,
+      "keywords": [
+        "Last Seen",
+        "Last Seen 2026",
+        "where to watch Last Seen",
+        "Crime series",
+        "Drama series",
+        "Mystery series",
+        "Apple TV trending series",
+        "Apple TV Amazon Channel trending series",
+        "Patrick Brammall",
+        "Brendan Cowell"
+      ],
+      "longTailKeywords": [
+        "where to watch Last Seen 2026",
+        "Last Seen streaming in Brazil and United States",
+        "Last Seen cast synopsis trailer and where to watch",
+        "what Crime to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch Last Seen (2026) | MatchApp Ai",
+        "description": "When emergency dispatcher Ian Ridley receives a frantic call from a teenager he believes could be his long-missing daughter, he stops at nothing to find her.",
+        "keywords": [
+          "Last Seen",
+          "Last Seen 2026",
+          "where to watch Last Seen",
+          "Crime series",
+          "Drama series",
+          "Mystery series",
+          "Apple TV trending series",
+          "Apple TV Amazon Channel trending series",
+          "Patrick Brammall",
+          "Brendan Cowell",
+          "where to watch Last Seen 2026",
+          "Last Seen streaming in Brazil and United States",
+          "Last Seen cast synopsis trailer and where to watch",
+          "what Crime to watch this week"
+        ],
+        "canonicalQuery": "Last Seen"
       }
     },
     {
@@ -1053,6 +1112,194 @@
       "sourceRank": 3
     },
     {
+      "title": "Other Mommy",
+      "kind": "movie",
+      "year": 2026,
+      "origin": "US",
+      "originName": "United States",
+      "platform": "Cinemas",
+      "platforms": [],
+      "tmdbId": "1400837",
+      "poster": "https://image.tmdb.org/t/p/w780/fGRNCssTRrhYZxNzykGGCoMsAVq.jpg",
+      "description": "Young Bela forms a relationship with a sinister entity in her home that looks uncannily like her own mother, drawing her into a terrifying and increasingly dark world.",
+      "genre": [
+        "Horror",
+        "Thriller"
+      ],
+      "inLanguage": "en",
+      "cast": [
+        "Jessica Chastain",
+        "Arabella Olivia Clark",
+        "Jay Duplass",
+        "Dichen Lachman"
+      ],
+      "runtimeMinutes": 93,
+      "contentRating": "R",
+      "voteAverage": 9,
+      "previewUrl": "https://www.youtube.com/watch?v=-mnTITqqiT0",
+      "availability": {
+        "BR": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-10-08"
+        },
+        "GB": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-10-09"
+        },
+        "PT": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-10-08"
+        },
+        "US": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-10-09"
+        },
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/movie/1400837"
+      },
+      "sourceRank": 10,
+      "keywords": [
+        "Other Mommy",
+        "Other Mommy 2026",
+        "where to watch Other Mommy",
+        "Horror movie",
+        "Thriller movie",
+        "Jessica Chastain",
+        "Arabella Olivia Clark"
+      ],
+      "longTailKeywords": [
+        "where to watch Other Mommy 2026",
+        "Other Mommy streaming in Brazil and United States",
+        "Other Mommy cast synopsis trailer and where to watch",
+        "what Horror to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch Other Mommy (2026) | MatchApp Ai",
+        "description": "Young Bela forms a relationship with a sinister entity in her home that looks uncannily like her own mother, drawing her into a terrifying and increasingly da",
+        "keywords": [
+          "Other Mommy",
+          "Other Mommy 2026",
+          "where to watch Other Mommy",
+          "Horror movie",
+          "Thriller movie",
+          "Jessica Chastain",
+          "Arabella Olivia Clark",
+          "where to watch Other Mommy 2026",
+          "Other Mommy streaming in Brazil and United States",
+          "Other Mommy cast synopsis trailer and where to watch",
+          "what Horror to watch this week"
+        ],
+        "canonicalQuery": "Other Mommy"
+      }
+    },
+    {
+      "title": "Digger",
+      "kind": "movie",
+      "year": 2026,
+      "origin": "US",
+      "originName": "United States",
+      "platform": "Cinemas",
+      "platforms": [],
+      "tmdbId": "1248832",
+      "poster": "https://image.tmdb.org/t/p/w780/1ATXKrIPJyKNwnJ6lcG088Sa6zi.jpg",
+      "description": "The most powerful man in the world embarks on a frantic mission to prove he is humanity's savior before the disaster he's unleashed destroys everything.",
+      "genre": [
+        "Comedy",
+        "Drama"
+      ],
+      "inLanguage": "en",
+      "cast": [
+        "Tom Cruise",
+        "Riz Ahmed",
+        "John Goodman",
+        "Sandra Hüller"
+      ],
+      "runtimeMinutes": 129,
+      "contentRating": "R",
+      "voteAverage": 7.53,
+      "previewUrl": "https://www.youtube.com/watch?v=job8V254NAE",
+      "availability": {
+        "BR": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-10-01"
+        },
+        "GB": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-10-02"
+        },
+        "PT": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-10-01"
+        },
+        "US": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-10-02"
+        },
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/movie/1248832"
+      },
+      "sourceRank": 11,
+      "keywords": [
+        "Digger",
+        "Digger 2026",
+        "where to watch Digger",
+        "Comedy movie",
+        "Drama movie",
+        "Tom Cruise",
+        "Riz Ahmed"
+      ],
+      "longTailKeywords": [
+        "where to watch Digger 2026",
+        "Digger streaming in Brazil and United States",
+        "Digger cast synopsis trailer and where to watch",
+        "what Comedy to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch Digger (2026) | MatchApp Ai",
+        "description": "The most powerful man in the world embarks on a frantic mission to prove he is humanity's savior before the disaster he's unleashed destroys everything.",
+        "keywords": [
+          "Digger",
+          "Digger 2026",
+          "where to watch Digger",
+          "Comedy movie",
+          "Drama movie",
+          "Tom Cruise",
+          "Riz Ahmed",
+          "where to watch Digger 2026",
+          "Digger streaming in Brazil and United States",
+          "Digger cast synopsis trailer and where to watch",
+          "what Comedy to watch this week"
+        ],
+        "canonicalQuery": "Digger"
+      }
+    },
+    {
       "title": "Resident Evil",
       "kind": "movie",
       "year": 2026,
@@ -1077,7 +1324,7 @@
       ],
       "runtimeMinutes": 95,
       "contentRating": "R",
-      "voteAverage": 7.3,
+      "voteAverage": 7.32,
       "previewUrl": "https://www.youtube.com/watch?v=mNd1gb19A-c",
       "availability": {
         "BR": {
@@ -1112,7 +1359,7 @@
         "attribution": "JustWatch via TMDB",
         "source_page_url": "https://www.themoviedb.org/movie/1423191"
       },
-      "sourceRank": 10,
+      "sourceRank": 12,
       "keywords": [
         "Resident Evil",
         "Resident Evil 2026",
@@ -1147,165 +1394,6 @@
           "what Horror to watch this week"
         ],
         "canonicalQuery": "Resident Evil"
-      }
-    },
-    {
-      "title": "The Laid-Off Cheat-Granting Mage Enjoys a Second Lease on Life",
-      "kind": "tv",
-      "year": 2026,
-      "origin": "JP",
-      "originName": "Japan",
-      "platform": "",
-      "platforms": [],
-      "tmdbId": "313346",
-      "poster": "https://image.tmdb.org/t/p/w780/rncb111IIBmIIO9I9ENW0Xc8mca.jpg",
-      "description": "Rein spent years enhancing his guildmates’ gear with magic, only to be expelled the moment he enchanted everything. Unfazed, Rein steals back his magic, pours it into his own sword, and makes the best of his newfound freedom as he sets off as an adventurer. Along the way, Rein gathers a band of fellow outcasts and together they fight monsters and carve out their place in an enchanted world.",
-      "genre": [
-        "Animation",
-        "Comedy",
-        "Action & Adventure",
-        "Sci-Fi & Fantasy"
-      ],
-      "inLanguage": "ja",
-      "cast": [
-        "Daiki Yamashita",
-        "Lynn",
-        "Yoshino Aoyama",
-        "Miyu Tomita"
-      ],
-      "runtimeMinutes": null,
-      "contentRating": "",
-      "voteAverage": 0,
-      "previewUrl": "https://www.youtube.com/watch?v=GyWstaOY6qk",
-      "availability": {
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/tv/313346"
-      },
-      "sourceRank": 11,
-      "keywords": [
-        "The Laid-Off Cheat-Granting Mage Enjoys a Second Lease on Life",
-        "The Laid-Off Cheat-Granting Mage Enjoys a Second Lease on Life 2026",
-        "where to watch The Laid-Off Cheat-Granting Mage Enjoys a Second Lease on Life",
-        "Animation series",
-        "Comedy series",
-        "Action & Adventure series",
-        "Daiki Yamashita",
-        "Lynn"
-      ],
-      "longTailKeywords": [
-        "where to watch The Laid-Off Cheat-Granting Mage Enjoys a Second Lease on Life 2026",
-        "The Laid-Off Cheat-Granting Mage Enjoys a Second Lease on Life streaming in Brazil and United States",
-        "The Laid-Off Cheat-Granting Mage Enjoys a Second Lease on Life cast synopsis trailer and where to watch",
-        "what Animation to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch The Laid-Off Cheat-Granting Mage Enjoys a Second Lease on Life (2026) | MatchApp Ai",
-        "description": "Rein spent years enhancing his guildmates’ gear with magic, only to be expelled the moment he enchanted everything. Unfazed, Rein steals back his magic, pours",
-        "keywords": [
-          "The Laid-Off Cheat-Granting Mage Enjoys a Second Lease on Life",
-          "The Laid-Off Cheat-Granting Mage Enjoys a Second Lease on Life 2026",
-          "where to watch The Laid-Off Cheat-Granting Mage Enjoys a Second Lease on Life",
-          "Animation series",
-          "Comedy series",
-          "Action & Adventure series",
-          "Daiki Yamashita",
-          "Lynn",
-          "where to watch The Laid-Off Cheat-Granting Mage Enjoys a Second Lease on Life 2026",
-          "The Laid-Off Cheat-Granting Mage Enjoys a Second Lease on Life streaming in Brazil and United States",
-          "The Laid-Off Cheat-Granting Mage Enjoys a Second Lease on Life cast synopsis trailer and where to watch",
-          "what Animation to watch this week"
-        ],
-        "canonicalQuery": "The Laid-Off Cheat-Granting Mage Enjoys a Second Lease on Life"
-      }
-    },
-    {
-      "title": "Verity",
-      "kind": "movie",
-      "year": 2026,
-      "origin": "US",
-      "originName": "United States",
-      "platform": "Cinemas",
-      "platforms": [],
-      "tmdbId": "1283515",
-      "poster": "https://image.tmdb.org/t/p/w780/97y0RdzRIeZ2j6se98hRQpxz3eR.jpg",
-      "description": "Lowen Ashleigh is hired by Jeremy Crawford to ghostwrite novels for his bestselling author wife Verity, who is unable to finish following an accident. Lowen gradually uncovers Verity's disturbing truths while residing at the Crawfords' home to work.",
-      "genre": [
-        "Mystery",
-        "Thriller"
-      ],
-      "inLanguage": "en",
-      "cast": [
-        "Anne Hathaway",
-        "Dakota Johnson",
-        "Josh Hartnett",
-        "Brady Wagner"
-      ],
-      "runtimeMinutes": 114,
-      "contentRating": "R",
-      "voteAverage": 6.45,
-      "previewUrl": "https://www.youtube.com/watch?v=xdPMKhjMSFs",
-      "availability": {
-        "BR": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-10-01"
-        },
-        "GB": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-10-02"
-        },
-        "US": {
-          "buy": [
-            "Fandango At Home"
-          ],
-          "link": "https://www.themoviedb.org/movie/1283515-verity/watch?locale=US",
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-10-02"
-        },
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1283515"
-      },
-      "sourceRank": 12,
-      "keywords": [
-        "Verity",
-        "Verity 2026",
-        "where to watch Verity",
-        "Mystery movie",
-        "Thriller movie",
-        "Anne Hathaway",
-        "Dakota Johnson"
-      ],
-      "longTailKeywords": [
-        "where to watch Verity 2026",
-        "Verity streaming in Brazil and United States",
-        "Verity cast synopsis trailer and where to watch",
-        "what Mystery to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch Verity (2026) | MatchApp Ai",
-        "description": "Lowen Ashleigh is hired by Jeremy Crawford to ghostwrite novels for his bestselling author wife Verity, who is unable to finish following an accident. Lowen g",
-        "keywords": [
-          "Verity",
-          "Verity 2026",
-          "where to watch Verity",
-          "Mystery movie",
-          "Thriller movie",
-          "Anne Hathaway",
-          "Dakota Johnson",
-          "where to watch Verity 2026",
-          "Verity streaming in Brazil and United States",
-          "Verity cast synopsis trailer and where to watch",
-          "what Mystery to watch this week"
-        ],
-        "canonicalQuery": "Verity"
       }
     },
     {
@@ -1372,151 +1460,92 @@
       "sourceRank": 4
     },
     {
-      "title": "Between Steps",
-      "kind": "tv",
+      "title": "Verity",
+      "kind": "movie",
       "year": 2026,
-      "origin": "KR",
-      "originName": "South Korea",
-      "platform": "Hulu",
-      "platforms": [
-        "Hulu"
-      ],
-      "tmdbId": "307106",
-      "poster": "https://image.tmdb.org/t/p/w780/pGqcErS76y8bcvZZSFUefdZOg2x.jpg",
-      "description": "Minjae, a former swimmer, lost a leg to illness. Now a PhD student, he's built a quiet, controlled life, until Yujin, a master's student starting over after losing her way, throws it off balance. In a robotics lab, their romance turns fiery, bittersweet, and tender.",
+      "origin": "US",
+      "originName": "United States",
+      "platform": "Cinemas",
+      "platforms": [],
+      "tmdbId": "1283515",
+      "poster": "https://image.tmdb.org/t/p/w780/zPHfsaiMZT1HNz1ZS55iyLKZkFG.jpg",
+      "description": "Lowen Ashleigh is hired by Jeremy Crawford to ghostwrite novels for his bestselling author wife Verity, who is unable to finish following an accident. Lowen gradually uncovers Verity's disturbing truths while residing at the Crawfords' home to work.",
       "genre": [
-        "Drama",
-        "Comedy"
+        "Mystery",
+        "Thriller"
       ],
-      "inLanguage": "ko",
+      "inLanguage": "en",
       "cast": [
-        "Choo Young-woo",
-        "Kim So-hyun",
-        "Kim Min",
-        "Lee Kyu-sung"
+        "Anne Hathaway",
+        "Dakota Johnson",
+        "Josh Hartnett",
+        "Brady Wagner"
       ],
-      "runtimeMinutes": null,
-      "contentRating": "TV-14",
-      "voteAverage": 10,
-      "previewUrl": "https://www.youtube.com/watch?v=krkX6h9h1i0",
+      "runtimeMinutes": 114,
+      "contentRating": "R",
+      "voteAverage": 6.44,
+      "previewUrl": "https://www.youtube.com/watch?v=xdPMKhjMSFs",
       "availability": {
-        "US": {
+        "BR": {
           "buy": [],
-          "link": "https://www.themoviedb.org/tv/307106/watch?locale=US",
+          "link": null,
           "rent": [],
-          "stream": [
-            "Hulu"
+          "stream": [],
+          "cinema_release_date": "2026-10-01"
+        },
+        "GB": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-10-02"
+        },
+        "US": {
+          "buy": [
+            "Fandango At Home"
           ],
-          "cinema_release_date": null
+          "link": "https://www.themoviedb.org/movie/1283515-verity/watch?locale=US",
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-10-02"
         },
         "source": "tmdb-watch-providers",
         "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/tv/307106"
+        "source_page_url": "https://www.themoviedb.org/movie/1283515"
       },
       "sourceRank": 13,
       "keywords": [
-        "Between Steps",
-        "Between Steps 2026",
-        "where to watch Between Steps",
-        "Drama series",
-        "Comedy series",
-        "Hulu trending series",
-        "Choo Young-woo",
-        "Kim So-hyun"
+        "Verity",
+        "Verity 2026",
+        "where to watch Verity",
+        "Mystery movie",
+        "Thriller movie",
+        "Anne Hathaway",
+        "Dakota Johnson"
       ],
       "longTailKeywords": [
-        "where to watch Between Steps 2026",
-        "Between Steps streaming in Brazil and United States",
-        "Between Steps cast synopsis trailer and where to watch",
-        "what Drama to watch this week"
+        "where to watch Verity 2026",
+        "Verity streaming in Brazil and United States",
+        "Verity cast synopsis trailer and where to watch",
+        "what Mystery to watch this week"
       ],
       "seo": {
-        "title": "Where to watch Between Steps (2026) | MatchApp Ai",
-        "description": "Minjae, a former swimmer, lost a leg to illness. Now a PhD student, he's built a quiet, controlled life, until Yujin, a master's student starting over after l",
+        "title": "Where to watch Verity (2026) | MatchApp Ai",
+        "description": "Lowen Ashleigh is hired by Jeremy Crawford to ghostwrite novels for his bestselling author wife Verity, who is unable to finish following an accident. Lowen g",
         "keywords": [
-          "Between Steps",
-          "Between Steps 2026",
-          "where to watch Between Steps",
-          "Drama series",
-          "Comedy series",
-          "Hulu trending series",
-          "Choo Young-woo",
-          "Kim So-hyun",
-          "where to watch Between Steps 2026",
-          "Between Steps streaming in Brazil and United States",
-          "Between Steps cast synopsis trailer and where to watch",
-          "what Drama to watch this week"
+          "Verity",
+          "Verity 2026",
+          "where to watch Verity",
+          "Mystery movie",
+          "Thriller movie",
+          "Anne Hathaway",
+          "Dakota Johnson",
+          "where to watch Verity 2026",
+          "Verity streaming in Brazil and United States",
+          "Verity cast synopsis trailer and where to watch",
+          "what Mystery to watch this week"
         ],
-        "canonicalQuery": "Between Steps"
-      }
-    },
-    {
-      "title": "Nia Liston: The Merciless Maiden",
-      "kind": "tv",
-      "year": 2026,
-      "origin": "JP",
-      "originName": "Japan",
-      "platform": "",
-      "platforms": [],
-      "tmdbId": "312850",
-      "poster": "https://image.tmdb.org/t/p/w780/vsEJaex0keh3dmBC9sVymiKfSwA.jpg",
-      "description": "A dying girl is saved when a fallen warrior’s soul is placed in her body, giving her new life, healing powers, and an unstoppable thirst for battle that brings chaos in its wake.",
-      "genre": [
-        "Sci-Fi & Fantasy",
-        "Animation",
-        "Comedy"
-      ],
-      "inLanguage": "ja",
-      "cast": [
-        "Honoka Inoue",
-        "Fuka Izumi",
-        "Rina Honnizumi",
-        "Rina Hidaka"
-      ],
-      "runtimeMinutes": null,
-      "contentRating": "",
-      "voteAverage": 0,
-      "previewUrl": "https://www.youtube.com/watch?v=KwPUWeVbQdo",
-      "availability": {
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/tv/312850"
-      },
-      "sourceRank": 14,
-      "keywords": [
-        "Nia Liston: The Merciless Maiden",
-        "Nia Liston: The Merciless Maiden 2026",
-        "where to watch Nia Liston: The Merciless Maiden",
-        "Sci-Fi & Fantasy series",
-        "Animation series",
-        "Comedy series",
-        "Honoka Inoue",
-        "Fuka Izumi"
-      ],
-      "longTailKeywords": [
-        "where to watch Nia Liston: The Merciless Maiden 2026",
-        "Nia Liston: The Merciless Maiden streaming in Brazil and United States",
-        "Nia Liston: The Merciless Maiden cast synopsis trailer and where to watch",
-        "what Sci-Fi & Fantasy to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch Nia Liston: The Merciless Maiden (2026) | MatchApp Ai",
-        "description": "A dying girl is saved when a fallen warrior’s soul is placed in her body, giving her new life, healing powers, and an unstoppable thirst for battle that bring",
-        "keywords": [
-          "Nia Liston: The Merciless Maiden",
-          "Nia Liston: The Merciless Maiden 2026",
-          "where to watch Nia Liston: The Merciless Maiden",
-          "Sci-Fi & Fantasy series",
-          "Animation series",
-          "Comedy series",
-          "Honoka Inoue",
-          "Fuka Izumi",
-          "where to watch Nia Liston: The Merciless Maiden 2026",
-          "Nia Liston: The Merciless Maiden streaming in Brazil and United States",
-          "Nia Liston: The Merciless Maiden cast synopsis trailer and where to watch",
-          "what Sci-Fi & Fantasy to watch this week"
-        ],
-        "canonicalQuery": "Nia Liston: The Merciless Maiden"
+        "canonicalQuery": "Verity"
       }
     },
     {
@@ -1530,7 +1559,7 @@
         "BBC iPlayer"
       ],
       "tmdbId": "312693",
-      "poster": "https://image.tmdb.org/t/p/w780/hbWv5sI8vHGSlw4nGhTc7DK5Kjg.jpg",
+      "poster": "https://image.tmdb.org/t/p/w780/39pC4gr8GTD7dDcuoGLbbyZSyTk.jpg",
       "description": "The magical and mundane unfold in a suburban shed as a lonely man stumbles on the supernatural.",
       "genre": [
         "Comedy",
@@ -1545,8 +1574,8 @@
         "Mackenzie Crook"
       ],
       "runtimeMinutes": null,
-      "contentRating": "12",
-      "voteAverage": 8.04,
+      "contentRating": "TV-MA",
+      "voteAverage": 8.1,
       "previewUrl": "https://www.youtube.com/watch?v=W7vdQWnaZts",
       "availability": {
         "GB": {
@@ -1565,7 +1594,7 @@
         "attribution": "JustWatch via TMDB",
         "source_page_url": "https://www.themoviedb.org/tv/312693"
       },
-      "sourceRank": 15,
+      "sourceRank": 14,
       "keywords": [
         "Small Prophets",
         "Small Prophets 2026",
@@ -1605,112 +1634,135 @@
       }
     },
     {
-      "title": "East of Eden",
+      "title": "Inside The Circle",
       "kind": "tv",
       "year": 2026,
-      "origin": "US",
-      "originName": "United States",
-      "platform": "Netflix",
-      "platforms": [
-        "Netflix",
-        "Netflix Standard with Ads"
-      ],
-      "tmdbId": "258165",
-      "poster": "https://image.tmdb.org/t/p/w780/axdUor6gLMTrrB1UF4Qfy0TTSyX.jpg",
-      "description": "In the early 1900s, a fiercely independent woman drives a rift between two brothers, igniting a saga that unfolds across two generations.",
+      "origin": "MX",
+      "originName": "Mexico",
+      "platform": "",
+      "platforms": [],
+      "tmdbId": "290233",
+      "poster": "https://image.tmdb.org/t/p/w780/3JpnP8fYVb9B9FuvdGT4ZkRRYZJ.jpg",
+      "description": "Four lifelong friends are caught in a web of blackmail when a leaked video threatens to expose the secrets that could destroy their friendship.",
       "genre": [
-        "Drama"
+        "Drama",
+        "Mystery"
       ],
-      "inLanguage": "en",
+      "inLanguage": "es",
       "cast": [
-        "Florence Pugh",
-        "Christopher Abbott",
-        "Mike Faist",
-        "Hoon Lee"
+        "Zuria Vega",
+        "Osvaldo Benavides",
+        "Raúl Briones",
+        "Michel Brown"
       ],
       "runtimeMinutes": null,
-      "contentRating": "TV-MA",
-      "voteAverage": 7.93,
-      "previewUrl": "https://www.youtube.com/watch?v=M9NWvGZViCg",
+      "contentRating": "16",
+      "voteAverage": 9,
+      "previewUrl": "",
       "availability": {
-        "BR": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/258165-east-of-eden/watch?locale=BR",
-          "rent": [],
-          "stream": [
-            "Netflix",
-            "Netflix Standard with Ads"
-          ],
-          "cinema_release_date": null
-        },
-        "GB": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/258165-east-of-eden/watch?locale=GB",
-          "rent": [],
-          "stream": [
-            "Netflix",
-            "Netflix Standard with Ads"
-          ],
-          "cinema_release_date": null
-        },
-        "PT": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/258165-east-of-eden/watch?locale=PT",
-          "rent": [],
-          "stream": [
-            "Netflix"
-          ],
-          "cinema_release_date": null
-        },
-        "US": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/258165-east-of-eden/watch?locale=US",
-          "rent": [],
-          "stream": [
-            "Netflix",
-            "Netflix Standard with Ads"
-          ],
-          "cinema_release_date": null
-        },
         "source": "tmdb-watch-providers",
         "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/tv/258165"
+        "source_page_url": "https://www.themoviedb.org/tv/290233"
       },
-      "sourceRank": 16,
+      "sourceRank": 15,
       "keywords": [
-        "East of Eden",
-        "East of Eden 2026",
-        "where to watch East of Eden",
+        "Inside The Circle",
+        "Inside The Circle 2026",
+        "where to watch Inside The Circle",
         "Drama series",
-        "Netflix trending series",
-        "Netflix Standard with Ads trending series",
-        "Florence Pugh",
-        "Christopher Abbott"
+        "Mystery series",
+        "Zuria Vega",
+        "Osvaldo Benavides"
       ],
       "longTailKeywords": [
-        "where to watch East of Eden 2026",
-        "East of Eden streaming in Brazil and United States",
-        "East of Eden cast synopsis trailer and where to watch",
+        "where to watch Inside The Circle 2026",
+        "Inside The Circle streaming in Brazil and United States",
+        "Inside The Circle cast synopsis trailer and where to watch",
         "what Drama to watch this week"
       ],
       "seo": {
-        "title": "Where to watch East of Eden (2026) | MatchApp Ai",
-        "description": "In the early 1900s, a fiercely independent woman drives a rift between two brothers, igniting a saga that unfolds across two generations.",
+        "title": "Where to watch Inside The Circle (2026) | MatchApp Ai",
+        "description": "Four lifelong friends are caught in a web of blackmail when a leaked video threatens to expose the secrets that could destroy their friendship.",
         "keywords": [
-          "East of Eden",
-          "East of Eden 2026",
-          "where to watch East of Eden",
+          "Inside The Circle",
+          "Inside The Circle 2026",
+          "where to watch Inside The Circle",
           "Drama series",
-          "Netflix trending series",
-          "Netflix Standard with Ads trending series",
-          "Florence Pugh",
-          "Christopher Abbott",
-          "where to watch East of Eden 2026",
-          "East of Eden streaming in Brazil and United States",
-          "East of Eden cast synopsis trailer and where to watch",
+          "Mystery series",
+          "Zuria Vega",
+          "Osvaldo Benavides",
+          "where to watch Inside The Circle 2026",
+          "Inside The Circle streaming in Brazil and United States",
+          "Inside The Circle cast synopsis trailer and where to watch",
           "what Drama to watch this week"
         ],
-        "canonicalQuery": "East of Eden"
+        "canonicalQuery": "Inside The Circle"
+      }
+    },
+    {
+      "title": "Less of a Stranger",
+      "kind": "movie",
+      "year": 2026,
+      "origin": "PL",
+      "originName": "PL",
+      "platform": "",
+      "platforms": [],
+      "tmdbId": "1620080",
+      "poster": "https://image.tmdb.org/t/p/w780/cXCoJk9AzGzfOSNCRDnLhfhyJHD.jpg",
+      "description": "A film inspired by the life of Polish rock legend Jan Borysewicz. A story of music, rebellion, and freedom in a world where dreams often collide with a grim reality.",
+      "genre": [
+        "Drama",
+        "Music"
+      ],
+      "inLanguage": "pl",
+      "cast": [
+        "Mikołaj Bukrewicz",
+        "Patryk Pietrzak",
+        "Hubert Miłkowski",
+        "Krzysztof Oleksyn"
+      ],
+      "runtimeMinutes": 120,
+      "contentRating": "16",
+      "voteAverage": 0,
+      "previewUrl": "https://www.youtube.com/watch?v=jx0RiYbSuuc",
+      "availability": {
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/movie/1620080"
+      },
+      "sourceRank": 16,
+      "keywords": [
+        "Less of a Stranger",
+        "Less of a Stranger 2026",
+        "where to watch Less of a Stranger",
+        "Drama movie",
+        "Music movie",
+        "Mikołaj Bukrewicz",
+        "Patryk Pietrzak"
+      ],
+      "longTailKeywords": [
+        "where to watch Less of a Stranger 2026",
+        "Less of a Stranger streaming in Brazil and United States",
+        "Less of a Stranger cast synopsis trailer and where to watch",
+        "what Drama to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch Less of a Stranger (2026) | MatchApp Ai",
+        "description": "A film inspired by the life of Polish rock legend Jan Borysewicz. A story of music, rebellion, and freedom in a world where dreams often collide with a grim r",
+        "keywords": [
+          "Less of a Stranger",
+          "Less of a Stranger 2026",
+          "where to watch Less of a Stranger",
+          "Drama movie",
+          "Music movie",
+          "Mikołaj Bukrewicz",
+          "Patryk Pietrzak",
+          "where to watch Less of a Stranger 2026",
+          "Less of a Stranger streaming in Brazil and United States",
+          "Less of a Stranger cast synopsis trailer and where to watch",
+          "what Drama to watch this week"
+        ],
+        "canonicalQuery": "Less of a Stranger"
       }
     }
   ]
