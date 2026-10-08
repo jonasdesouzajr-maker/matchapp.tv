@@ -18,6 +18,9 @@ test('Voice final transcript automatically triggers the existing Ask AI pipeline
  assert.match(main,/String\(field\.value\|\|''\)\.trim\(\)!==value/);
  assert.match(main,/window\.newDiscoverSearch\(\)/);
  assert.match(main,/pendingVoiceUtterance = value to languageTag/);
+ assert.match(main,/speechPlayer\.__humanPatched/);
+ assert.match(main,/window\.readAloud=speechPlayer\.__original/);
+ assert.match(main,/window\.MatchAppNativeVoice\.speak/);
  assert.match(main,/if \(pending != null\) speakVoiceText\(pending\.first, pending\.second\)/);
  assert.match(main,/pendingVoiceUtterance = null/);
  assert.match(main,/data\.inputId==='specific-search-input'/);

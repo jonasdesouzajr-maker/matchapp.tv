@@ -1081,6 +1081,15 @@ class MainActivity : AppCompatActivity() {
               // Only the installed Android shell gets gesture and speech handoff
               // recovery. Keep shared site scripts, desktop, and Kids untouched.
               function installAndroidInteractionRecovery() {
+                // Conversation polish wraps readAloud with browser-only speechSynthesis.
+                // Restore the original player on Android so it uses our native TTS
+                // bridge, including automatic replies after microphone prompts.
+                var speechPlayer=window.readAloud;
+                if(window.MatchAppNativeVoice && typeof window.MatchAppNativeVoice.speak==='function' &&
+                   typeof speechPlayer==='function' && speechPlayer.__humanPatched &&
+                   typeof speechPlayer.__original==='function') {
+                  window.readAloud=speechPlayer.__original;
+                }
                 if(!window.__matchappAndroidVoiceSubmitBound){
                   window.__matchappAndroidVoiceSubmitBound=true;
                   document.addEventListener('matchapp:voice-transcript',function(event){
