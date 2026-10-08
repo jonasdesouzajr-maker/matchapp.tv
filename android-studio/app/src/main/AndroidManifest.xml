@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="com.android.vending.BILLING" />
     <queries>
@@ -52,6 +53,12 @@
         <provider
             android:name="com.google.android.gms.ads.MobileAdsInitProvider"
             tools:node="remove" />
+
+        <activity
+            android:name=".VoiceAvatarActivity"
+            android:exported="false"
+            android:screenOrientation="unspecified"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
 
         <activity
             android:name=".MainActivity"

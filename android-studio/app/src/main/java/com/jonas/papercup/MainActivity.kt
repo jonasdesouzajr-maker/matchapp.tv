@@ -703,6 +703,41 @@ class MainActivity : AppCompatActivity() {
         }
 
         @JavascriptInterface
+        fun openVoiceAvatar() {
+            runOnUiThread {
+                val page = runCatching { Uri.parse(web.url.orEmpty()) }.getOrNull()
+                if (page == null || page.scheme != "https" || !isMatchAppHost(page.host.orEmpty()) || isKidsUri(page)) return@runOnUiThread
+                // The token is read only from first-party MatchApp auth storage on its own origin.
+                // The owner's session still requires backend JWT authorization.
+                val readSession = """
+                    (function(){
+                      try {
+                        var keys=Object.keys(localStorage).filter(function(k){return /^sb-.+-auth-token$/.test(k)});
+                        for(var i=0;i<keys.length;i++){
+                          var s=JSON.parse(localStorage.getItem(keys[i])||'null');
+                          if(s&&s.user&&s.user.id==='141e60f1-1945-47da-85e8-c492e984496b'&&s.access_token){return s.access_token}
+                        }
+                        return '';
+                      }catch(e){return ''}
+                    })();
+                """.trimIndent()
+                web.evaluateJavascript(readSession) { encoded ->
+                    val token = runCatching {
+                        JSONObject("{\"token\":" + encoded + "}").optString("token", "")
+                    }.getOrDefault("")
+                    if (token.length !in 100..6000) {
+                        Toast.makeText(this@MainActivity, "Sign in with your MatchApp account to test Avatar AI.", Toast.LENGTH_LONG).show()
+                        return@evaluateJavascript
+                    }
+                    startActivity(
+                        Intent(this@MainActivity, VoiceAvatarActivity::class.java)
+                            .putExtra(VoiceAvatarActivity.EXTRA_TOKEN, token)
+                    )
+                }
+            }
+        }
+
+        @JavascriptInterface
         fun openKidsBrowser() {
             runOnUiThread {
                 val current = runCatching { Uri.parse(web.url.orEmpty()) }.getOrNull()
@@ -998,6 +1033,42 @@ class MainActivity : AppCompatActivity() {
                 overlay.appendChild(card);
                 document.body.appendChild(overlay);
                 requestAnimationFrame(function(){ open.focus(); });
+              }
+
+              // Owner beta: launcher appears only inside the Android app, never on the website.
+              // Server-side Realtime remains owner-gated until a metered public usage policy exists.
+              function setupNativeVoiceAvatarLauncher() {
+                if (!document.body || document.getElementById('matchapp-android-avatar-launcher')) return;
+                if (!window.MatchAppNativeExperience || !window.MatchAppNativeExperience.openVoiceAvatar) return;
+                var owner = false;
+                try {
+                  Object.keys(localStorage).forEach(function(k){
+                    if (!/^sb-.+-auth-token$/.test(k)) return;
+                    var s=JSON.parse(localStorage.getItem(k)||'null');
+                    if(s&&s.user&&s.user.id==='141e60f1-1945-47da-85e8-c492e984496b'&&s.access_token)owner=true;
+                  });
+                }catch(e){}
+                if (!owner) return;
+                var launch=document.createElement('button');
+                launch.type='button';
+                launch.id='matchapp-android-avatar-launcher';
+                launch.setAttribute('aria-label','Talk to MatchApp Ai avatar');
+                launch.textContent='✦ Avatar';
+                launch.style.cssText='position:fixed;right:14px;bottom:82px;z-index:2147483200;border:1px solid rgba(236,202,117,.68);border-radius:999px;padding:10px 15px;min-height:44px;line-height:22px;font-size:12px;font-weight:800;color:#1e1326;background:linear-gradient(120deg,#f6d885,#b99aef);box-shadow:0 8px 30px rgba(15,6,29,.4);cursor:pointer;';
+                launch.addEventListener('click',function(event){
+                  event.preventDefault();
+                  try{window.MatchAppNativeExperience.openVoiceAvatar()}catch(e){}
+                });
+                document.body.appendChild(launch);
+              }
+              setupNativeVoiceAvatarLauncher();
+              setTimeout(setupNativeVoiceAvatarLauncher,700);
+              setTimeout(setupNativeVoiceAvatarLauncher,1800);
+              if(!window.__matchAppAvatarLauncherBound){
+                window.__matchAppAvatarLauncherBound=true;
+                document.addEventListener('matchapp:authchange',function(){
+                  setTimeout(setupNativeVoiceAvatarLauncher,350);
+                });
               }
 
               configureAndroidKidsEntry();
