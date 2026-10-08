@@ -13,10 +13,10 @@
 .brand{flex:1;text-align:center;line-height:1.2;font-size:17px;font-weight:800;letter-spacing:-.01em}.brand em{font-style:normal;color:var(--gold)}.brand small{display:block;color:var(--sub);font-size:10px;font-weight:650;letter-spacing:.17em;margin-top:5px;text-transform:uppercase}
 .privacy{font-size:10px;white-space:nowrap;color:#eacb80;background:rgba(236,194,97,.08);padding:8px 10px;border:1px solid rgba(236,194,97,.22);border-radius:99px}
 .stage{flex:1;min-height:0;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:12px}
-.portrait-wrap{width:min(76vw,39dvh,350px);max-height:48dvh;aspect-ratio:3/4;position:relative;border-radius:47% 47% 42% 42%/37% 37% 34% 34%;filter:drop-shadow(0 25px 38px rgba(0,0,0,.38))}
-.portrait-wrap:before{content:"";position:absolute;inset:-9px;border-radius:inherit;border:1.5px solid rgba(237,201,105,.65);box-shadow:0 0 37px rgba(155,99,255,.2),inset 0 0 16px rgba(236,196,102,.1);pointer-events:none;z-index:2;transition:box-shadow .35s}
+.portrait-wrap{width:min(72vw,46dvh,280px);aspect-ratio:1;position:relative;border-radius:50%;filter:drop-shadow(0 18px 28px rgba(0,0,0,.42))}
+.portrait-wrap:before{content:"";position:absolute;inset:-8px;border-radius:50%;border:2px solid rgba(237,201,105,.78);box-shadow:0 0 28px rgba(155,99,255,.28),inset 0 0 12px rgba(236,196,102,.12);pointer-events:none;z-index:2;transition:box-shadow .35s}
 body[data-mode="speaking"] .portrait-wrap:before{box-shadow:0 0 calc(25px + var(--volume)*65px) rgba(163,116,255,.5),inset 0 0 12px rgba(236,196,102,.18)}
-.face{width:100%;height:100%;display:block;border-radius:inherit;object-fit:cover;object-position:50% 30%;background:#1b1626}
+.face{width:100%;height:100%;display:block;border-radius:50%;object-fit:cover;object-position:center 22%;background:#1b1626}
 .glimmer{position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:linear-gradient(135deg,rgba(251,218,154,.10),transparent 35%,transparent 66%,rgba(132,93,222,.14));mix-blend-mode:screen}
 .status-dot{position:absolute;right:3%;bottom:9%;width:15px;height:15px;border-radius:50%;border:3px solid #130d22;background:#8c809d;z-index:3}body[data-mode="connected"] .status-dot,body[data-mode="listening"] .status-dot,body[data-mode="speaking"] .status-dot{background:#66efb0;box-shadow:0 0 17px rgba(95,235,183,.8)}
 .status{text-align:center;padding-top:9px}.status h1{margin:0;font-size:clamp(20px,3dvh,26px);line-height:1.2;font-weight:820;letter-spacing:-.03em}.status p{color:var(--sub);font-size:12px;margin:7px auto;max-width:320px;min-height:30px}
@@ -24,8 +24,8 @@ body[data-mode="speaking"] .portrait-wrap:before{box-shadow:0 0 calc(25px + var(
 .actions{padding:0 0 4px;display:grid;gap:13px}.main-btn{width:100%;min-height:56px;border-radius:999px;border:0;background:linear-gradient(107deg,#a98af3,#e4bb69 92%);color:#1a1124;font-weight:850;font-size:15px;box-shadow:0 12px 32px rgba(151,105,244,.16)}.main-btn:disabled{opacity:.55}.main-btn.end{background:rgba(234,116,138,.10);border:1px solid rgba(246,147,155,.46);color:#f9d0d1;box-shadow:none}
 .secondary{width:100%;min-height:43px;background:transparent;color:#ddd2f3;border:1px solid rgba(220,207,244,.19);border-radius:999px;font-size:12px}.secondary[hidden]{display:none}
 .foot{text-align:center;font-size:10px;color:#8e849e;margin-top:4px}.foot strong{color:#d5bf85}
-@media(min-width:700px){.shell{padding-top:27px;padding-bottom:25px}.portrait-wrap{width:min(38vw,350px)}}
-@media(max-height:710px){.stage{gap:4px}.portrait-wrap{width:min(65vw,36dvh)}.status p{margin:4px auto}.status h1{font-size:19px}.wave{height:33px}}
+@media(min-width:700px){.shell{padding-top:27px;padding-bottom:25px}.portrait-wrap{width:min(34vw,280px)}}
+@media(max-height:710px){.stage{gap:4px}.portrait-wrap{width:min(52vw,34dvh)}.status p{margin:4px auto}.status h1{font-size:19px}.wave{height:33px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
 </style><link rel="stylesheet" href="/brand.css?v=195">
 </head>
@@ -34,7 +34,7 @@ body[data-mode="speaking"] .portrait-wrap:before{box-shadow:0 0 calc(25px + var(
 
 <div class="shell"><div class="ambient"></div>
 <header class="top"><button id="back" class="back" aria-label="Return to MatchApp Ai">‹</button><div class="brand">MatchApp <em>Ai</em><small>Voice avatar · Android</small></div><span class="privacy">● Beta</span></header>
-<main class="stage"><div class="portrait-wrap"><canvas id="face" class="face" aria-label="Jonas, AI avatar portrait"></canvas><div class="glimmer"></div><div class="status-dot"></div></div>
+<main class="stage"><div class="portrait-wrap"><canvas id="face" class="face" aria-label="Jonas, created AI avatar"></canvas><div class="glimmer"></div><div class="status-dot"></div></div>
 <div class="status" role="status" aria-live="polite"><h1 id="title">Ready to talk</h1><p id="description">Natural voice, with subtle real-time facial movement.</p></div>
 <div class="wave" id="wave" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div></main>
 <footer class="actions"><button id="primary" class="main-btn">Start conversation</button><button id="secondary" class="secondary" hidden>Mute microphone</button><div class="foot"><strong>MatchApp Ai</strong> · Voice powered by OpenAI Realtime<br>Face movement is audio-reactive, not phoneme-accurate lip-sync.</div></footer>
@@ -44,7 +44,7 @@ body[data-mode="speaking"] .portrait-wrap:before{box-shadow:0 0 calc(25px + var(
 // All markup, UI and identity artwork are bundled inside the Android application.
 // No internet-hosted avatar renderer, external JS package or browser page is used.
 const $ = id => document.getElementById(id);
-const face=$("face"),canvas=face.getContext("2d",{alpha:false}),img=new Image();img.src="jonas.jpg";
+const face=$("face"),canvas=face.getContext("2d",{alpha:false}),img=new Image();img.src="created-avatar.jpg";
 const wave=[...$("wave").children];let jwt="",pc=null,dc=null,mic=null,audio=null,ctx=null,inMeter=null,outMeter=null,frame=0,mode="ready",muted=false,connectingTimer=0;
 let mouth=0,speech=0,blinkAt=performance.now()+3100,blink=0,blinkStart=-2000,prevTime=0,missingImage=false;
 let visemes=[],currentViseme="a",lastVisemeAt=0;
@@ -63,31 +63,18 @@ function faceFrame(t){
  if(!img.complete||!img.naturalWidth){if(!missingImage){canvas.fillStyle="#23172f";canvas.fillRect(0,0,face.width,face.height)}return}
  const w=face.width,h=face.height,iw=img.naturalWidth,ih=img.naturalHeight;
  canvas.clearRect(0,0,w,h);
- // Asset was chosen from Jonas's existing digital-twin photo (portrait 3:4).
- const sw=iw,sh=ih;
- canvas.drawImage(img,0,0,sw,sh,0,0,w,h);
- // The photo itself remains the reference; facial regions are re-projected from the same image.
- if(!minimal){
-   const eyeY=.315*h,eyeh=.040*h;
-   if(blink>.02){
-     // Compressed eye texture evokes natural lids, no cartoon dots or overlays.
-     for(const eyeX of [.335,.565]){
-       const ex=eyeX*w,ew=.12*w,srcX=eyeX*iw,srcY=.29*ih,srcW=.12*iw,srcH=.060*ih;
-       canvas.drawImage(img,srcX,srcY,srcW,srcH,ex,eyeY,ew,Math.max(1,eyeh*(1-blink*.91)));
-     }
-   }
-   // Small displacement of the actual moustache/lip texture, driven by assistant audio.
-   // This is a low-cost waveform-based approximation, NOT fabricated phoneme timing.
-   const m=Math.max(0,Math.min(1,mouth));
-   const rounded=/[ouqw]/.test(currentViseme),wide=/[ei]/.test(currentViseme);
-   if(m>.026){
-     const sx=.390*iw,sy=.431*ih,mw=.225*iw,mh=.065*ih;
-     const dx=.390*w,dy=.431*h,dw=.225*w,dh=.065*h;
-     canvas.save();canvas.beginPath();canvas.ellipse(dx+dw/2,dy+dh/2,dw*.54,dh*(.58+.34*m),0,0,Math.PI*2);canvas.clip();
-     const scaleX=rounded?(.98-.12*m):wide?(1+.08*m):1;
-     canvas.drawImage(img,sx,sy,mw,mh,dx+dw*(1-scaleX)/2,dy-dh*.11*m,dw*scaleX,dh*(1+.32*m));canvas.restore();
-   }
+ canvas.save();
+ canvas.beginPath();
+ canvas.arc(w/2,h/2,Math.min(w,h)/2-1,0,Math.PI*2);
+ canvas.clip();
+ const scale=Math.max(w/iw,h/ih)*(1+Math.max(0,mouth)*.035);
+ const dw=iw*scale,dh=ih*scale;
+ canvas.drawImage(img,(w-dw)/2,(h-dh)/2-h*.03,dw,dh);
+ if(!minimal && blink>.08){
+   canvas.fillStyle="rgba(10,7,16,"+(blink*.42)+")";
+   canvas.fillRect(w*.2,h*.33,w*.6,Math.max(2,h*.055*blink));
  }
+ canvas.restore();
 }
 function draw(t){
  const dt=Math.min(60,Math.max(0,t-prevTime||16));prevTime=t;
@@ -112,7 +99,7 @@ function draw(t){
  wave.forEach((el,i)=>{const v=Math.min(1,output*.9+input*.4);const p=.55+(.4+.3*Math.sin(i*1.4+t/155))*(v*3);el.style.transform="scaleY("+Math.max(.48,p)+")"});
  frame=requestAnimationFrame(draw);
 }
-img.onload=()=>{face.width=480;face.height=640;faceFrame(0)};
+img.onload=()=>{face.width=640;face.height=640;faceFrame(0)};
 img.onerror=()=>{missingImage=true;setStatus("error","Avatar portrait unavailable","Reinstall the latest Android build.");};
 frame=requestAnimationFrame(draw);
 async function waitForIce(peer){
