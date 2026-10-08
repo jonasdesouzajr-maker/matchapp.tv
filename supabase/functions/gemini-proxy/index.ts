@@ -290,14 +290,14 @@ KIDS MODE IS ACTIVE. This is a hard safety boundary. Only suggest content clearl
 // finishReason: MAX_TOKENS with unparseable output. The frontend caught the
 // parse error and showed a generic "offline" badge, hiding the real cause.
 //
-// Fixes: a much larger budget, thinking disabled (this task doesn't need
-// chain-of-thought), and native structured output so valid JSON is guaranteed
+// Fixes: a much larger output limit, model-default thinking (compatible with
+// upcoming Gemini releases), and native structured output so valid JSON is guaranteed
 // rather than merely requested in the prompt.
 function buildGenerationConfig(isDiscover: boolean, isProposals = false, isRank = false) {
   const base = {
-    temperature: 0.65,
     maxOutputTokens: 8192,
-    thinkingConfig: { thinkingBudget: 0 },
+    // Omit thinkingConfig: upcoming models reject thinkingBudget, and support
+    // for thinkingLevel differs by model. The model default is forward-compatible.
     responseMimeType: "application/json",
   };
 
@@ -762,7 +762,7 @@ Deno.serve(async (req: Request) => {
               }),
             }
           );
-          // Some model variants reject optional thinking/schema fields with
+          // Some model variants reject optional structured-output fields with
           // INVALID_ARGUMENT (400). Retry that model ONCE with portable JSON
           // settings. Never retry a 429: Google spend caps are project-wide,
           // and retrying would consume limiter headroom without helping.
@@ -774,7 +774,7 @@ Deno.serve(async (req: Request) => {
                 headers: {"Content-Type":"application/json","x-goog-api-key":route.key},
                 body: JSON.stringify({
                   contents:[{parts:[{text:prompt}]}],
-                  generationConfig:{temperature:0.45,maxOutputTokens:8192,responseMimeType:"application/json"},
+                  generationConfig:{maxOutputTokens:8192,responseMimeType:"application/json"},
                 }),
               }
             );
