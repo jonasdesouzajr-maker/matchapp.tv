@@ -27,8 +27,11 @@ body[data-mode="speaking"] .portrait-wrap:before{box-shadow:0 0 calc(25px + var(
 @media(min-width:700px){.shell{padding-top:27px;padding-bottom:25px}.portrait-wrap{width:min(38vw,350px)}}
 @media(max-height:710px){.stage{gap:4px}.portrait-wrap{width:min(65vw,36dvh)}.status p{margin:4px auto}.status h1{font-size:19px}.wave{height:33px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
-</style></head>
+</style><link rel="stylesheet" href="/brand.css?v=195">
+</head>
 <body data-mode="ready">
+<div class="matchapp-brand-bar"><a class="matchapp-brand-link" href="/" aria-label="MatchApp Ai"><img class="matchapp-wordmark" src="/assets/brand/matchapp-tv-ai-v2.svg" alt="MatchApp Ai" width="600" height="104" decoding="async"></a></div>
+
 <div class="shell"><div class="ambient"></div>
 <header class="top"><button id="back" class="back" aria-label="Return to MatchApp Ai">‹</button><div class="brand">MatchApp <em>Ai</em><small>Voice avatar · Android</small></div><span class="privacy">● Beta</span></header>
 <main class="stage"><div class="portrait-wrap"><canvas id="face" class="face" aria-label="Jonas, AI avatar portrait"></canvas><div class="glimmer"></div><div class="status-dot"></div></div>
