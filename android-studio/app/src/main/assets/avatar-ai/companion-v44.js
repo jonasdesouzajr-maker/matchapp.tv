@@ -22,6 +22,8 @@ function attach(){
  node.dataset.companionV44='1';node.dataset.open='false';
  var photo=node.querySelector('.ma-av-portrait'),copy=node.querySelector('.ma-av-copy');
  if(!photo||!copy)return false;
+ var stateBadge=node.querySelector('#ma-av-state');
+ if(stateBadge)node.appendChild(stateBadge);
  // Avatar settings must be reachable from the compact expanded companion panel.
  var settings=node.querySelector('#ma-av-settings');
  if(settings)copy.insertBefore(settings,copy.querySelector('.ma-av-controls'));

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-07T11:39:53.836Z",
+  "generated": "2026-10-08T11:54:49.503Z",
   "source": "TMDB / JustWatch",
   "titles": {
     "The Bear": {
@@ -2636,8 +2636,11 @@
         },
         "US": {
           "rent": [
+            "Amazon Video",
+            "Apple TV Store",
             "Google Play Movies",
-            "YouTube"
+            "YouTube",
+            "Fandango At Home"
           ],
           "buy": [
             "Amazon Video",
@@ -2653,7 +2656,10 @@
             "Disney Plus"
           ],
           "rent": [
-            "Amazon Video"
+            "Apple TV Store",
+            "Rakuten TV",
+            "Amazon Video",
+            "Sky Store"
           ],
           "buy": [
             "Apple TV Store",
@@ -2668,6 +2674,8 @@
             "Disney Plus"
           ],
           "rent": [
+            "Apple TV Store",
+            "Rakuten TV",
             "Amazon Video"
           ],
           "buy": [

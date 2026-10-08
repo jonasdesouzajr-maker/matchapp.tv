@@ -1016,6 +1016,17 @@ class MainActivity : AppCompatActivity() {
                   'html.matchapp-ai-android :is(button,a,[role="button"]):active{transform:scale(.975);transition:transform 90ms ease}' +
                   'html.matchapp-ai-android .matchapp-android-thinking{animation:matchappAndroidBreathe 1.15s ease-in-out infinite}' +
                   '@keyframes matchappAndroidBreathe{50%{filter:drop-shadow(0 0 14px rgba(229,193,88,.55));transform:scale(1.015)}}' +
+                  '#matchapp-android-avatar-launcher{position:relative;z-index:40;display:flex;flex-direction:column;align-items:center;gap:8px;width:max-content;max-width:100%;margin:8px auto 4px;pointer-events:none}' +
+                  '#matchapp-android-avatar-launcher button,#matchapp-android-avatar-launcher .jonas-copy{pointer-events:auto}' +
+                  '#matchapp-android-avatar-launcher .jonas-face{width:var(--jonas-size,156px);height:var(--jonas-size,156px);padding:0;border:3px solid #e5c158;border-radius:50%;overflow:hidden;background:#140c22;box-shadow:0 12px 32px rgba(0,0,0,.45),0 0 0 6px rgba(229,193,88,.16)}' +
+                  '#matchapp-android-avatar-launcher .jonas-face img{width:100%;height:100%;display:block;object-fit:cover;object-position:center 18%;border-radius:50%}' +
+                  '#matchapp-android-avatar-launcher .jonas-copy{max-width:min(78vw,280px);text-align:center;color:#f7f2ff;text-shadow:0 2px 10px #000}' +
+                  '#matchapp-android-avatar-launcher .jonas-copy strong{display:block;font-size:13px}' +
+                  '#matchapp-android-avatar-launcher .jonas-copy span{display:block;margin-top:3px;font-size:12px;line-height:1.35;color:#ddd4ef}' +
+                  '#matchapp-android-avatar-launcher.is-compact{position:fixed;z-index:2147483000;top:max(8px, env(safe-area-inset-top));right:12px;left:auto;margin:0;flex-direction:row;gap:8px;padding:4px 10px 4px 4px;border-radius:999px;background:rgba(10,7,18,.92);border:1px solid rgba(229,193,88,.5);transform:none}' +
+                  '#matchapp-android-avatar-launcher.is-compact .jonas-copy span,#matchapp-android-avatar-launcher.is-compact .jonas-live{display:none}' +
+                  '#matchapp-android-avatar-launcher .jonas-live{min-height:32px;padding:0 8px;border:0;background:transparent;color:#e5c158;font-size:11px;font-weight:800;text-decoration:underline}' +
+                  '#matchapp-android-avatar-spacer{width:100%;pointer-events:none}' +
                   '@media(prefers-reduced-motion:reduce){html.matchapp-ai-android *,html.matchapp-ai-android *:before,html.matchapp-ai-android *:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}}';
                 (document.head || root).appendChild(s);
               }
@@ -1174,6 +1185,18 @@ class MainActivity : AppCompatActivity() {
                    typeof speechPlayer==='function' && speechPlayer.__humanPatched &&
                    typeof speechPlayer.__original==='function') {
                   window.readAloud=speechPlayer.__original;
+                  speechPlayer=window.readAloud;
+                }
+                if(typeof speechPlayer==='function' && !speechPlayer.__avatarCaption){
+                  var captioned=function(text, btn){
+                    var cap=document.getElementById('matchapp-android-avatar-caption');
+                    var spoken=String(text||'').replace(/\s+/g,' ').trim();
+                    if(cap && spoken) cap.textContent=spoken.slice(0, 220);
+                    return speechPlayer.call(this, text, btn);
+                  };
+                  captioned.__avatarCaption=true;
+                  captioned.__original=speechPlayer.__original||speechPlayer;
+                  window.readAloud=captioned;
                 }
                 if(!window.__matchappAndroidVoiceSubmitBound){
                   window.__matchappAndroidVoiceSubmitBound=true;
@@ -1229,6 +1252,7 @@ class MainActivity : AppCompatActivity() {
               installAndroidInteractionRecovery();
               setTimeout(installAndroidInteractionRecovery,500);
               setTimeout(installAndroidInteractionRecovery,1500);
+              setTimeout(installAndroidInteractionRecovery,3200);
 
               configureAndroidKidsEntry();
               setTimeout(configureAndroidKidsEntry, 450);

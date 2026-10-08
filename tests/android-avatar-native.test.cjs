@@ -12,10 +12,12 @@ const activity=read(app+'java/com/jonas/papercup/VoiceAvatarActivity.kt');
 const main=read(app+'java/com/jonas/papercup/MainActivity.kt');
 const manifest=read(app+'AndroidManifest.xml');
 
-test('Android-only avatar is bundled with a real Jonas photo and no remote animation provider',()=>{
- assert.ok(fs.statSync(path.join(root,app,'assets/avatar-ai/jonas.jpg')).size>20000);
+test('Android-only avatar uses the created circular face, not the real photo',()=>{
+ assert.ok(fs.statSync(path.join(root,app,'assets/avatar-ai/created-avatar.jpg')).size>8000);
  assert.match(html,/<canvas id="face"/);
- assert.match(html,/img\.src="jonas\.jpg"/);
+ assert.match(html,/img\.src="created-avatar\.jpg"/);
+ assert.match(html,/border-radius:50%/);
+ assert.doesNotMatch(html,/img\.src="jonas\.jpg"/);
  assert.doesNotMatch(html,/<script[^>]+src=/i);
  assert.doesNotMatch(html,/heygen\.ai|liveavatar\.com|elevenlabs/i);
  assert.match(html,/mouth/);assert.match(html,/blink/);assert.match(html,/breath/);

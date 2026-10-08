@@ -23,6 +23,7 @@ test('v44 companion is a circular, viewport-fixed, scroll-independent avatar',as
  try{
   assert.equal(node.parentElement,w.document.body);
   assert.equal(node.dataset.companionV44,'1');
+  assert.equal(node.querySelector('#ma-av-state').parentElement,node);
   assert.equal(node.dataset.open,'false');
   assert.match(w.document.getElementById('ma-companion-v44-style').textContent,/position:fixed!important/);
   assert.match(w.document.getElementById('ma-companion-v44-style').textContent,/border-radius:50%!important/);
