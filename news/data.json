@@ -1,10 +1,148 @@
 {
-  "generated_at": "2026-10-07T22:14:01.272Z",
-  "feed_version": "4e955723",
+  "generated_at": "2026-10-08T02:14:15.245Z",
+  "feed_version": "502d78e5",
   "sports_updated_at": "2026-10-07T17:49:47.577Z",
   "source_policy": "direct-trusted-publisher-rss+google-trends-keyword-signals",
   "seo_policy": "per-story keyword snapshot at first discovery + source citation + stable archive",
   "items": [
+    {
+      "id": "f08f8de2",
+      "title": "AI chip boom pushes Samsung profits to record $80bn",
+      "url": "https://www.bbc.co.uk/news/articles/c687z8127302o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC Technology",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-08T01:59:54.000Z",
+      "discovered_at": "2026-10-08T02:14:15.245Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC Technology on 2026-10-08. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/2882/live/c97d4d10-c2b4-11f1-a0fd-81bd2aaa775c.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/ai-chip-boom-pushes-samsung-profits-to-record-80bn-f08f8d/",
+      "landing_url": "https://matchapp.tv/?news=f08f8de2#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-08",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "chip",
+          "boom",
+          "pushes",
+          "samsung",
+          "profits",
+          "record"
+        ],
+        "long_tail": [
+          "AI chip boom pushes Samsung profits to record $80bn 2026-10-08",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "chip",
+          "boom",
+          "pushes",
+          "samsung",
+          "profits",
+          "record"
+        ],
+        "freshness_keywords": [
+          "2026-10-08"
+        ],
+        "source_keywords": [
+          "BBC Technology"
+        ],
+        "meta_title": "AI chip boom pushes Samsung profits to record $80bn |…",
+        "meta_description": "World report published by BBC Technology on 2026-10-08. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-08",
+          "world news",
+          "global headlines",
+          "chip",
+          "boom",
+          "pushes",
+          "samsung",
+          "profits",
+          "record",
+          "AI chip boom pushes Samsung profits to record $80bn 2026-10-08",
+          "world news October 2026",
+          "2026-10-08",
+          "BBC Technology"
+        ],
+        "seo_generated_at": "2026-10-08T02:14:15.245Z"
+      }
+    },
+    {
+      "id": "0fcbfcb8",
+      "title": "Japan beer giants raided over alleged price-fixing cartel",
+      "url": "https://www.bbc.co.uk/news/articles/cm5yn3592xk9o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-08T00:53:46.000Z",
+      "discovered_at": "2026-10-08T02:14:15.245Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-08. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/adce/live/8f5568b0-c21f-11f1-b7d8-6f930589c871.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/japan-beer-giants-raided-over-alleged-price-fixing-cartel-0fcbfc/",
+      "landing_url": "https://matchapp.tv/?news=0fcbfcb8#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-08",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "japan",
+          "beer",
+          "giants",
+          "raided",
+          "over",
+          "alleged"
+        ],
+        "long_tail": [
+          "Japan beer giants raided over alleged price-fixing cartel 2026-10-08",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "japan",
+          "beer",
+          "giants",
+          "raided",
+          "over",
+          "alleged"
+        ],
+        "freshness_keywords": [
+          "2026-10-08"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Japan beer giants raided over alleged price-fixing cartel…",
+        "meta_description": "World report published by BBC World on 2026-10-08. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-08",
+          "world news",
+          "global headlines",
+          "japan",
+          "beer",
+          "giants",
+          "raided",
+          "over",
+          "alleged",
+          "Japan beer giants raided over alleged price-fixing cartel 2026-10-08",
+          "world news October 2026",
+          "2026-10-08",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-08T02:14:15.245Z"
+      }
+    },
     {
       "id": "e8901cdd",
       "title": "Spanish pensioner whose eviction sparked nationwide protests dies, union says",
@@ -14,17 +152,17 @@
       "source_home": "https://www.bbc.co.uk",
       "country": "GLOBAL",
       "language": "en",
-      "published_at": "2026-10-07T21:40:24.000Z",
+      "published_at": "2026-10-08T00:09:17.000Z",
       "discovered_at": "2026-10-07T22:14:01.272Z",
       "event_type": "Obituary",
       "category": "world",
       "person": "",
-      "description": "World news reported by BBC World on 2026-10-07. MatchApp links to the original report for its complete context and ongoing updates.",
+      "description": "World news reported by BBC World on 2026-10-08. MatchApp links to the original report for its complete context and ongoing updates.",
       "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/d9ee/live/06010330-c283-11f1-98ea-35e6bf307fc9.jpg",
       "matchapp_url": "https://matchapp.tv/news/articles/spanish-pensioner-whose-eviction-sparked-nationwide-protests-dies-union-says-e8901c/",
       "landing_url": "https://matchapp.tv/?news=e8901cdd#latest-news",
       "seo": {
-        "primary_keyword": "world news 2026-10-07",
+        "primary_keyword": "world news 2026-10-08",
         "short_tail": [
           "world news",
           "global headlines",
@@ -36,7 +174,7 @@
           "nationwide"
         ],
         "long_tail": [
-          "Spanish pensioner whose eviction sparked nationwide protests dies, union says 2026-10-07",
+          "Spanish pensioner whose eviction sparked nationwide protests dies, union says 2026-10-08",
           "world news October 2026"
         ],
         "trend_keywords": [],
@@ -49,15 +187,15 @@
           "nationwide"
         ],
         "freshness_keywords": [
-          "2026-10-07"
+          "2026-10-08"
         ],
         "source_keywords": [
           "BBC World"
         ],
         "meta_title": "Spanish pensioner whose eviction sparked nationwide…",
-        "meta_description": "World report published by BBC World on 2026-10-07. Open the original report for full context.",
+        "meta_description": "World report published by BBC World on 2026-10-08. Open the original report for full context.",
         "keywords": [
-          "world news 2026-10-07",
+          "world news 2026-10-08",
           "world news",
           "global headlines",
           "spanish",
@@ -66,12 +204,368 @@
           "eviction",
           "sparked",
           "nationwide",
-          "Spanish pensioner whose eviction sparked nationwide protests dies, union says 2026-10-07",
+          "Spanish pensioner whose eviction sparked nationwide protests dies, union says 2026-10-08",
           "world news October 2026",
-          "2026-10-07",
+          "2026-10-08",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-07T22:14:01.272Z"
+        "seo_generated_at": "2026-10-08T02:14:15.245Z"
+      }
+    },
+    {
+      "id": "43a4fe12",
+      "title": "Fuel prices added to Google Maps as petrol and diesel costs soar",
+      "url": "https://www.bbc.co.uk/news/articles/ckx2d4ddjn2eo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC Technology",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-07T23:50:29.000Z",
+      "discovered_at": "2026-10-08T02:14:15.245Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC Technology on 2026-10-07. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/6e42/live/60b35020-c25c-11f1-a64c-550be9e3c66b.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/fuel-prices-added-to-google-maps-as-petrol-and-diesel-costs-soar-43a4fe/",
+      "landing_url": "https://matchapp.tv/?news=43a4fe12#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-07",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "fuel",
+          "prices",
+          "added",
+          "google",
+          "maps",
+          "petrol"
+        ],
+        "long_tail": [
+          "Fuel prices added to Google Maps as petrol and diesel costs soar 2026-10-07",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "fuel",
+          "prices",
+          "added",
+          "google",
+          "maps",
+          "petrol"
+        ],
+        "freshness_keywords": [
+          "2026-10-07"
+        ],
+        "source_keywords": [
+          "BBC Technology"
+        ],
+        "meta_title": "Fuel prices added to Google Maps as petrol and diesel…",
+        "meta_description": "World report published by BBC Technology on 2026-10-07. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-07",
+          "world news",
+          "global headlines",
+          "fuel",
+          "prices",
+          "added",
+          "google",
+          "maps",
+          "petrol",
+          "Fuel prices added to Google Maps as petrol and diesel costs soar 2026-10-07",
+          "world news October 2026",
+          "2026-10-07",
+          "BBC Technology"
+        ],
+        "seo_generated_at": "2026-10-08T02:14:15.245Z"
+      }
+    },
+    {
+      "id": "313f1c36",
+      "title": "An Emotional Andrew Scott and ‘Elsinore’ Kick Off a Starry 2026 London Film Festival",
+      "url": "https://www.hollywoodreporter.com/movies/movie-news/andrew-scott-olivia-colman-elsinore-london-film-fest-2026-1236724385/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-07T23:41:20.000Z",
+      "discovered_at": "2026-10-08T02:14:15.245Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "An Emotional Andrew Scott",
+      "description": "An Emotional Andrew Scott: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/FotoJet-2026-10-08T002505.462.jpg?w=1440&h=810&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/an-emotional-andrew-scott-and-elsinore-kick-off-a-starry-2026-london-film-festiv-313f1c/",
+      "landing_url": "https://matchapp.tv/?news=313f1c36#latest-news",
+      "seo": {
+        "primary_keyword": "An Emotional Andrew Scott latest news",
+        "short_tail": [
+          "An Emotional Andrew Scott",
+          "An Emotional Andrew Scott news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "An Emotional Andrew Scott latest news October 2026",
+          "An Emotional Andrew Scott entertainment update 2026",
+          "An Emotional Andrew Scott news 2026-10-07",
+          "latest entertainment news about An Emotional Andrew Scott",
+          "emotional andrew scott emotional andrew scott latest update",
+          "The Hollywood Reporter An Emotional Andrew Scott entertainment",
+          "latest news about An Emotional Andrew Scott October 2026",
+          "An Emotional Andrew Scott entertainment news 2026-10-07",
+          "what happened with An Emotional Andrew Scott"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "An Emotional Andrew Scott",
+          "emotional",
+          "andrew",
+          "scott",
+          "elsinore",
+          "kick"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-07",
+          "An Emotional Andrew Scott 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter An Emotional Andrew Scott",
+          "hollywoodreporter.com An Emotional Andrew Scott",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "An Emotional Andrew Scott and ‘Elsinore’ Kick Off a Starry…",
+        "meta_description": "An Emotional Andrew Scott: Entertainment update reported by The Hollywood Reporter on 2026-10-07. See verified context, publication time and the original…",
+        "keywords": [
+          "An Emotional Andrew Scott latest news",
+          "An Emotional Andrew Scott",
+          "An Emotional Andrew Scott news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "An Emotional Andrew Scott latest news October 2026",
+          "An Emotional Andrew Scott entertainment update 2026",
+          "An Emotional Andrew Scott news 2026-10-07",
+          "latest entertainment news about An Emotional Andrew Scott",
+          "emotional andrew scott emotional andrew scott latest update",
+          "The Hollywood Reporter An Emotional Andrew Scott entertainment",
+          "latest news about An Emotional Andrew Scott October 2026",
+          "An Emotional Andrew Scott entertainment news 2026-10-07",
+          "what happened with An Emotional Andrew Scott",
+          "emotional",
+          "andrew",
+          "scott",
+          "elsinore",
+          "kick",
+          "October 2026",
+          "2026-10-07",
+          "An Emotional Andrew Scott 2026",
+          "The Hollywood Reporter An Emotional Andrew Scott",
+          "hollywoodreporter.com An Emotional Andrew Scott",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-08T02:14:15.245Z"
+      }
+    },
+    {
+      "id": "864d2cdc",
+      "title": "‘The Louis Theroux Podcast’ to Double Spotify Output, Unveils Season 9 Guests (Exclusive)",
+      "url": "https://www.hollywoodreporter.com/business/digital/louis-theroux-podcast-spotify-season-9-1236724332/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-07T23:01:00.000Z",
+      "discovered_at": "2026-10-08T02:14:15.245Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "",
+      "description": "entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2024/06/FotoJet-78.jpg?w=1440&h=810&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/the-louis-theroux-podcast-to-double-spotify-output-unveils-season-9-guests-exclu-864d2c/",
+      "landing_url": "https://matchapp.tv/?news=864d2cdc#latest-news",
+      "seo": {
+        "primary_keyword": "louis theroux podcast double latest news",
+        "short_tail": [
+          "louis theroux podcast double",
+          "louis theroux podcast double news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "louis theroux podcast double latest news October 2026",
+          "louis theroux podcast double entertainment update 2026",
+          "louis theroux podcast double news 2026-10-07",
+          "latest entertainment news about louis theroux podcast double",
+          "louis theroux podcast double spotify output latest update",
+          "The Hollywood Reporter louis theroux podcast double entertainment",
+          "latest news about louis theroux podcast double October 2026",
+          "louis theroux podcast double entertainment news 2026-10-07",
+          "what happened with louis theroux podcast double"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "louis",
+          "theroux",
+          "podcast",
+          "double",
+          "spotify",
+          "output",
+          "unveils",
+          "season"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-07",
+          "louis theroux podcast double 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter louis theroux podcast double",
+          "hollywoodreporter.com louis theroux podcast double",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "‘The Louis Theroux Podcast’ to Double Spotify Output,…",
+        "meta_description": "Entertainment update reported by The Hollywood Reporter on 2026-10-07. See verified context, publication time and the original source via MatchApp Ai.",
+        "keywords": [
+          "louis theroux podcast double latest news",
+          "louis theroux podcast double",
+          "louis theroux podcast double news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "louis theroux podcast double latest news October 2026",
+          "louis theroux podcast double entertainment update 2026",
+          "louis theroux podcast double news 2026-10-07",
+          "latest entertainment news about louis theroux podcast double",
+          "louis theroux podcast double spotify output latest update",
+          "The Hollywood Reporter louis theroux podcast double entertainment",
+          "latest news about louis theroux podcast double October 2026",
+          "louis theroux podcast double entertainment news 2026-10-07",
+          "what happened with louis theroux podcast double",
+          "louis",
+          "theroux",
+          "podcast",
+          "double",
+          "spotify",
+          "output",
+          "unveils",
+          "season",
+          "October 2026",
+          "2026-10-07",
+          "louis theroux podcast double 2026",
+          "The Hollywood Reporter louis theroux podcast double",
+          "hollywoodreporter.com louis theroux podcast double",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-08T02:14:15.245Z"
+      }
+    },
+    {
+      "id": "ab83df5a",
+      "title": "For Israeli Actress Noa Cohen, October 7 Is Both Personal and Professional",
+      "url": "https://www.hollywoodreporter.com/movies/movie-features/october-7-movies-best-our-loves-nova-noa-1236724989/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-07T22:14:35.000Z",
+      "discovered_at": "2026-10-08T02:14:15.245Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "For Israeli Actress Noa",
+      "description": "For Israeli Actress Noa: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/noacohen_283ca8.jpg?crop=0px%2C105px%2C3984px%2C2229px&resize=1440%2C810",
+      "matchapp_url": "https://matchapp.tv/news/articles/for-israeli-actress-noa-cohen-october-7-is-both-personal-and-professional-ab83df/",
+      "landing_url": "https://matchapp.tv/?news=ab83df5a#latest-news",
+      "seo": {
+        "primary_keyword": "For Israeli Actress Noa latest news",
+        "short_tail": [
+          "For Israeli Actress Noa",
+          "For Israeli Actress Noa news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "For Israeli Actress Noa latest news October 2026",
+          "For Israeli Actress Noa entertainment update 2026",
+          "For Israeli Actress Noa news 2026-10-07",
+          "latest entertainment news about For Israeli Actress Noa",
+          "israeli actress noa israeli actress noa latest update",
+          "The Hollywood Reporter For Israeli Actress Noa entertainment",
+          "latest news about For Israeli Actress Noa October 2026",
+          "For Israeli Actress Noa entertainment news 2026-10-07",
+          "what happened with For Israeli Actress Noa"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "For Israeli Actress Noa",
+          "israeli",
+          "actress",
+          "noa",
+          "cohen",
+          "october"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-07",
+          "For Israeli Actress Noa 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter For Israeli Actress Noa",
+          "hollywoodreporter.com For Israeli Actress Noa",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "For Israeli Actress Noa Cohen, October 7 Is Both Personal…",
+        "meta_description": "For Israeli Actress Noa: Entertainment update reported by The Hollywood Reporter on 2026-10-07. See verified context, publication time and the original…",
+        "keywords": [
+          "For Israeli Actress Noa latest news",
+          "For Israeli Actress Noa",
+          "For Israeli Actress Noa news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "For Israeli Actress Noa latest news October 2026",
+          "For Israeli Actress Noa entertainment update 2026",
+          "For Israeli Actress Noa news 2026-10-07",
+          "latest entertainment news about For Israeli Actress Noa",
+          "israeli actress noa israeli actress noa latest update",
+          "The Hollywood Reporter For Israeli Actress Noa entertainment",
+          "latest news about For Israeli Actress Noa October 2026",
+          "For Israeli Actress Noa entertainment news 2026-10-07",
+          "what happened with For Israeli Actress Noa",
+          "israeli",
+          "actress",
+          "noa",
+          "cohen",
+          "october",
+          "October 2026",
+          "2026-10-07",
+          "For Israeli Actress Noa 2026",
+          "The Hollywood Reporter For Israeli Actress Noa",
+          "hollywoodreporter.com For Israeli Actress Noa",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-08T02:14:15.245Z"
       }
     },
     {
@@ -140,7 +634,7 @@
           "2026-10-07",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-07T22:14:01.272Z"
+        "seo_generated_at": "2026-10-08T02:14:15.245Z"
       }
     },
     {
@@ -234,7 +728,7 @@
           "hollywoodreporter.com Catherine Hardwicke Tapped",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T22:14:01.272Z"
+        "seo_generated_at": "2026-10-08T02:14:15.245Z"
       }
     },
     {
@@ -333,7 +827,7 @@
           "hollywoodreporter.com crew girl star miku",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T22:14:01.272Z"
+        "seo_generated_at": "2026-10-08T02:14:15.245Z"
       }
     },
     {
@@ -432,103 +926,7 @@
           "hollywoodreporter.com beware boiuna star jessica",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T22:14:01.272Z"
-      }
-    },
-    {
-      "id": "e6897251",
-      "title": "Michael Kearns, Actor, Activist and ‘Jerker’ Director, Dies at 76",
-      "url": "https://www.hollywoodreporter.com/news/general-news/michael-kearns-dead-jerker-director-gay-activist-1236724870/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-10-07T20:35:43.000Z",
-      "discovered_at": "2026-10-07T22:14:01.272Z",
-      "event_type": "Obituary",
-      "category": "entertainment",
-      "person": "Michael Kearns",
-      "description": "Michael Kearns: obituary headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/Michael-Kearns-Obit-Template-Headshot-Getty-H-2026.jpg?w=1296&h=730&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/michael-kearns-actor-activist-and-jerker-director-dies-at-76-e68972/",
-      "landing_url": "https://matchapp.tv/?news=e6897251#latest-news",
-      "seo": {
-        "primary_keyword": "Michael Kearns latest news",
-        "short_tail": [
-          "Michael Kearns",
-          "Michael Kearns news",
-          "obituary",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "Michael Kearns latest news October 2026",
-          "Michael Kearns obituary update 2026",
-          "Michael Kearns news 2026-10-07",
-          "latest obituary news about Michael Kearns",
-          "michael kearns michael kearns actor activist latest update",
-          "The Hollywood Reporter Michael Kearns obituary",
-          "latest news about Michael Kearns October 2026",
-          "Michael Kearns entertainment news 2026-10-07",
-          "what happened with Michael Kearns"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Michael Kearns",
-          "michael",
-          "kearns",
-          "actor",
-          "activist",
-          "jerker",
-          "director"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-07",
-          "Michael Kearns 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter Michael Kearns",
-          "hollywoodreporter.com Michael Kearns",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "Michael Kearns, Actor, Activist and ‘Jerker’ Director,…",
-        "meta_description": "Michael Kearns: Obituary update reported by The Hollywood Reporter on 2026-10-07. See verified context, publication time and the original source via…",
-        "keywords": [
-          "Michael Kearns latest news",
-          "Michael Kearns",
-          "Michael Kearns news",
-          "obituary",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "Michael Kearns latest news October 2026",
-          "Michael Kearns obituary update 2026",
-          "Michael Kearns news 2026-10-07",
-          "latest obituary news about Michael Kearns",
-          "michael kearns michael kearns actor activist latest update",
-          "The Hollywood Reporter Michael Kearns obituary",
-          "latest news about Michael Kearns October 2026",
-          "Michael Kearns entertainment news 2026-10-07",
-          "what happened with Michael Kearns",
-          "michael",
-          "kearns",
-          "actor",
-          "activist",
-          "jerker",
-          "director",
-          "October 2026",
-          "2026-10-07",
-          "Michael Kearns 2026",
-          "The Hollywood Reporter Michael Kearns",
-          "hollywoodreporter.com Michael Kearns",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-07T22:14:01.272Z"
+        "seo_generated_at": "2026-10-08T02:14:15.245Z"
       }
     },
     {
@@ -597,7 +995,7 @@
           "2026-10-07",
           "BBC Technology"
         ],
-        "seo_generated_at": "2026-10-07T22:14:01.272Z"
+        "seo_generated_at": "2026-10-08T02:14:15.245Z"
       }
     },
     {
@@ -666,7 +1064,7 @@
           "2026-10-07",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-07T22:14:01.272Z"
+        "seo_generated_at": "2026-10-08T02:14:15.245Z"
       }
     },
     {
@@ -735,7 +1133,7 @@
           "2026-10-07",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-07T22:14:01.272Z"
+        "seo_generated_at": "2026-10-08T02:14:15.245Z"
       }
     },
     {
@@ -804,7 +1202,7 @@
           "2026-10-07",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-07T22:14:01.272Z"
+        "seo_generated_at": "2026-10-08T02:14:15.245Z"
       }
     },
     {
@@ -905,106 +1303,7 @@
           "g1.globo.com musico condenado prisao fraudar",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T22:14:01.272Z"
-      }
-    },
-    {
-      "id": "d44aac35",
-      "title": "The “Rape of Christ” Scene from 1971’s ‘The Devils’ Is Back. Is the World Finally Ready?",
-      "url": "https://www.hollywoodreporter.com/movies/movie-features/devils-rape-of-christ-ken-russell-warner-bros-clockwork-1236724719/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-10-07T19:54:28.000Z",
-      "discovered_at": "2026-10-07T22:14:01.272Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "",
-      "description": "entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/rev-1-2_-_KR71_-_CANNES_KEY_SET_-_FULL_RES_High_Res_JPEG-H-2026.jpg?w=1296&h=730&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/the-rape-of-christ-scene-from-1971-s-the-devils-is-back-is-the-world-finally-rea-d44aac/",
-      "landing_url": "https://matchapp.tv/?news=d44aac35#latest-news",
-      "seo": {
-        "primary_keyword": "rape christ scene 1971 latest news",
-        "short_tail": [
-          "rape christ scene 1971",
-          "rape christ scene 1971 news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "rape christ scene 1971 latest news October 2026",
-          "rape christ scene 1971 entertainment update 2026",
-          "rape christ scene 1971 news 2026-10-07",
-          "latest entertainment news about rape christ scene 1971",
-          "rape christ scene 1971 devils back latest update",
-          "The Hollywood Reporter rape christ scene 1971 entertainment",
-          "latest news about rape christ scene 1971 October 2026",
-          "rape christ scene 1971 entertainment news 2026-10-07",
-          "what happened with rape christ scene 1971"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "rape",
-          "christ",
-          "scene",
-          "1971",
-          "devils",
-          "back",
-          "world",
-          "finally"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-07",
-          "rape christ scene 1971 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter rape christ scene 1971",
-          "hollywoodreporter.com rape christ scene 1971",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "The “Rape of Christ” Scene from 1971’s ‘The Devils’ Is…",
-        "meta_description": "Entertainment update reported by The Hollywood Reporter on 2026-10-07. See verified context, publication time and the original source via MatchApp Ai.",
-        "keywords": [
-          "rape christ scene 1971 latest news",
-          "rape christ scene 1971",
-          "rape christ scene 1971 news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "rape christ scene 1971 latest news October 2026",
-          "rape christ scene 1971 entertainment update 2026",
-          "rape christ scene 1971 news 2026-10-07",
-          "latest entertainment news about rape christ scene 1971",
-          "rape christ scene 1971 devils back latest update",
-          "The Hollywood Reporter rape christ scene 1971 entertainment",
-          "latest news about rape christ scene 1971 October 2026",
-          "rape christ scene 1971 entertainment news 2026-10-07",
-          "what happened with rape christ scene 1971",
-          "rape",
-          "christ",
-          "scene",
-          "1971",
-          "devils",
-          "back",
-          "world",
-          "finally",
-          "October 2026",
-          "2026-10-07",
-          "rape christ scene 1971 2026",
-          "The Hollywood Reporter rape christ scene 1971",
-          "hollywoodreporter.com rape christ scene 1971",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-07T22:14:01.272Z"
+        "seo_generated_at": "2026-10-08T02:14:15.245Z"
       }
     },
     {
@@ -1073,7 +1372,7 @@
           "2026-10-07",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-07T22:14:01.272Z"
+        "seo_generated_at": "2026-10-08T02:14:15.245Z"
       }
     },
     {
@@ -1142,7 +1441,7 @@
           "2026-10-07",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-07T22:14:01.272Z"
+        "seo_generated_at": "2026-10-08T02:14:15.245Z"
       }
     },
     {
@@ -1211,7 +1510,7 @@
           "2026-10-07",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-07T22:14:01.272Z"
+        "seo_generated_at": "2026-10-08T02:14:15.245Z"
       }
     },
     {
@@ -1280,7 +1579,7 @@
           "2026-10-07",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-07T22:14:01.272Z"
+        "seo_generated_at": "2026-10-08T02:14:15.245Z"
       }
     },
     {
@@ -1381,7 +1680,7 @@
           "g1.globo.com pitty revela capa nomes",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T22:14:01.272Z"
+        "seo_generated_at": "2026-10-08T02:14:15.245Z"
       }
     },
     {
@@ -1450,145 +1749,7 @@
           "2026-10-07",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-07T22:14:01.272Z"
-      }
-    },
-    {
-      "id": "25a768bd",
-      "title": "Trump to speak to Putin about plague lab worker's death in Russia",
-      "url": "https://www.bbc.co.uk/news/articles/cqgm0vrl3xp7o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-07T18:27:40.000Z",
-      "discovered_at": "2026-10-07T17:49:47.639Z",
-      "event_type": "Obituary",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-07. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/3744/live/6325d7d0-c18d-11f1-83c7-97e75190a976.png",
-      "matchapp_url": "https://matchapp.tv/news/articles/trump-to-speak-to-putin-about-plague-lab-worker-s-death-in-russia-25a768/",
-      "landing_url": "https://matchapp.tv/?news=25a768bd#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-07",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "trump",
-          "speak",
-          "putin",
-          "about",
-          "plague",
-          "lab"
-        ],
-        "long_tail": [
-          "Trump to speak to Putin about plague lab worker's death in Russia 2026-10-07",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "trump",
-          "speak",
-          "putin",
-          "about",
-          "plague",
-          "lab"
-        ],
-        "freshness_keywords": [
-          "2026-10-07"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Trump to speak to Putin about plague lab worker's death in…",
-        "meta_description": "World report published by BBC World on 2026-10-07. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-07",
-          "world news",
-          "global headlines",
-          "trump",
-          "speak",
-          "putin",
-          "about",
-          "plague",
-          "lab",
-          "Trump to speak to Putin about plague lab worker's death in Russia 2026-10-07",
-          "world news October 2026",
-          "2026-10-07",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-07T22:14:01.272Z"
-      }
-    },
-    {
-      "id": "b267d4dc",
-      "title": "Children killed while they slept as Russian missile kills 19 in block of flats",
-      "url": "https://www.bbc.co.uk/news/articles/ckr5ym098vdeo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-07T18:12:58.000Z",
-      "discovered_at": "2026-10-07T17:49:47.639Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-07. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/519e/live/6e49e580-c268-11f1-babe-4199b0e7ccea.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/children-killed-while-they-slept-as-russian-missile-kills-19-in-block-of-flats-b267d4/",
-      "landing_url": "https://matchapp.tv/?news=b267d4dc#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-07",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "children",
-          "killed",
-          "while",
-          "they",
-          "slept",
-          "russian"
-        ],
-        "long_tail": [
-          "Children killed while they slept as Russian missile kills 19 in block of flats 2026-10-07",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "children",
-          "killed",
-          "while",
-          "they",
-          "slept",
-          "russian"
-        ],
-        "freshness_keywords": [
-          "2026-10-07"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Children killed while they slept as Russian missile kills…",
-        "meta_description": "World report published by BBC World on 2026-10-07. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-07",
-          "world news",
-          "global headlines",
-          "children",
-          "killed",
-          "while",
-          "they",
-          "slept",
-          "russian",
-          "Children killed while they slept as Russian missile kills 19 in block of flats 2026-10-07",
-          "world news October 2026",
-          "2026-10-07",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-07T22:14:01.272Z"
+        "seo_generated_at": "2026-10-08T02:14:15.245Z"
       }
     },
     {
@@ -1686,76 +1847,7 @@
           "g1.globo.com Lulu Santos",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T22:14:01.272Z"
-      }
-    },
-    {
-      "id": "bbffa81b",
-      "title": "France halts use of stun grenades after boy's hand blown off in student protests",
-      "url": "https://www.bbc.co.uk/news/articles/cqzjx7z2r4gko?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-07T17:47:31.000Z",
-      "discovered_at": "2026-10-07T17:49:47.639Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-07. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/b147/live/114ad2c0-c229-11f1-babe-4199b0e7ccea.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/france-halts-use-of-stun-grenades-after-boy-s-hand-blown-off-in-student-protests-bbffa8/",
-      "landing_url": "https://matchapp.tv/?news=bbffa81b#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-07",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "france",
-          "halts",
-          "use",
-          "stun",
-          "grenades",
-          "after"
-        ],
-        "long_tail": [
-          "France halts use of stun grenades after boy's hand blown off in student protests 2026-10-07",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "france",
-          "halts",
-          "use",
-          "stun",
-          "grenades",
-          "after"
-        ],
-        "freshness_keywords": [
-          "2026-10-07"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "France halts use of stun grenades after boy's hand blown…",
-        "meta_description": "World report published by BBC World on 2026-10-07. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-07",
-          "world news",
-          "global headlines",
-          "france",
-          "halts",
-          "use",
-          "stun",
-          "grenades",
-          "after",
-          "France halts use of stun grenades after boy's hand blown off in student protests 2026-10-07",
-          "world news October 2026",
-          "2026-10-07",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-07T22:14:01.272Z"
+        "seo_generated_at": "2026-10-08T02:14:15.245Z"
       }
     },
     {
@@ -1856,7 +1948,7 @@
           "g1.globo.com fosse voce passa bastao",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T22:14:01.272Z"
+        "seo_generated_at": "2026-10-08T02:14:15.245Z"
       }
     },
     {
@@ -1925,7 +2017,7 @@
           "2026-10-07",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-07T22:14:01.272Z"
+        "seo_generated_at": "2026-10-08T02:14:15.245Z"
       }
     },
     {
@@ -1994,7 +2086,7 @@
           "2026-10-07",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-07T22:14:01.272Z"
+        "seo_generated_at": "2026-10-08T02:14:15.245Z"
       }
     },
     {
@@ -2091,7 +2183,7 @@
           "g1.globo.com como escolhido vencedor premio",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T22:14:01.272Z"
+        "seo_generated_at": "2026-10-08T02:14:15.245Z"
       }
     },
     {
@@ -2187,7 +2279,7 @@
           "g1.globo.com Morre Juarez Machado",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T22:14:01.272Z"
+        "seo_generated_at": "2026-10-08T02:14:15.245Z"
       }
     },
     {
@@ -2283,7 +2375,7 @@
           "bbc.co.uk King Charles",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T22:14:01.272Z"
+        "seo_generated_at": "2026-10-08T02:14:15.245Z"
       }
     },
     {
@@ -2384,7 +2476,7 @@
           "g1.globo.com daniel retoma projeto duas",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T22:14:01.272Z"
+        "seo_generated_at": "2026-10-08T02:14:15.245Z"
       }
     },
     {
@@ -2483,7 +2575,7 @@
           "bbc.co.uk gavin stacey creators jones",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T22:14:01.272Z"
+        "seo_generated_at": "2026-10-08T02:14:15.245Z"
       }
     },
     {
@@ -2584,7 +2676,7 @@
           "g1.globo.com musical sobre gonzaguinha tem",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T22:14:01.272Z"
+        "seo_generated_at": "2026-10-08T02:14:15.245Z"
       }
     },
     {
@@ -2683,7 +2775,7 @@
           "bbc.co.uk oscar winning actress eva",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T22:14:01.272Z"
+        "seo_generated_at": "2026-10-08T02:14:15.245Z"
       }
     },
     {
@@ -2784,7 +2876,7 @@
           "g1.globo.com rodas samba musical regravacoes",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T22:14:01.272Z"
+        "seo_generated_at": "2026-10-08T02:14:15.245Z"
       }
     },
     {
@@ -2885,7 +2977,7 @@
           "g1.globo.com saga leandro leonardo roca",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T22:14:01.272Z"
+        "seo_generated_at": "2026-10-08T02:14:15.245Z"
       }
     },
     {
@@ -2977,7 +3069,7 @@
           "bbc.co.uk Braid-creator Jonathan Blow",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T22:14:01.272Z"
+        "seo_generated_at": "2026-10-08T02:14:15.245Z"
       }
     },
     {
@@ -3073,7 +3165,7 @@
           "g1.globo.com Eva Marie Saint",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T22:14:01.272Z"
+        "seo_generated_at": "2026-10-08T02:14:15.245Z"
       }
     },
     {
@@ -3172,7 +3264,7 @@
           "bbc.co.uk paramount takes over warner",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T22:14:01.272Z"
+        "seo_generated_at": "2026-10-08T02:14:15.245Z"
       }
     },
     {
@@ -3273,7 +3365,7 @@
           "g1.globo.com minha melhor amiga entra",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T22:14:01.272Z"
+        "seo_generated_at": "2026-10-08T02:14:15.245Z"
       }
     },
     {
@@ -3372,106 +3464,7 @@
           "bbc.co.uk amazon wins global rights",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-07T22:14:01.272Z"
-      }
-    },
-    {
-      "id": "ff6dd49c",
-      "title": "From films to streaming prices - how the Warner Bros deal could affect you",
-      "url": "https://www.bbc.co.uk/news/articles/cm62ep294qxlo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GB",
-      "language": "en",
-      "published_at": "2026-10-06T18:42:58.000Z",
-      "discovered_at": "2026-10-06T17:11:33.583Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "",
-      "description": "entertainment headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/ed6f/live/020cc800-c1a6-11f1-bc2e-018d645d8d21.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/from-films-to-streaming-prices-how-the-warner-bros-deal-could-affect-you-ff6dd4/",
-      "landing_url": "https://matchapp.tv/?news=ff6dd49c#latest-news",
-      "seo": {
-        "primary_keyword": "films streaming prices how latest news",
-        "short_tail": [
-          "films streaming prices how",
-          "films streaming prices how news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "films streaming prices how latest news October 2026",
-          "films streaming prices how entertainment update 2026",
-          "films streaming prices how news 2026-10-06",
-          "latest entertainment news about films streaming prices how",
-          "films streaming prices how warner bros latest update",
-          "BBC films streaming prices how entertainment",
-          "latest news about films streaming prices how October 2026",
-          "films streaming prices how entertainment news 2026-10-06",
-          "what happened with films streaming prices how"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "films",
-          "streaming",
-          "prices",
-          "how",
-          "warner",
-          "bros",
-          "deal",
-          "could"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-06",
-          "films streaming prices how 2026"
-        ],
-        "source_keywords": [
-          "BBC films streaming prices how",
-          "bbc.co.uk films streaming prices how",
-          "BBC entertainment news"
-        ],
-        "meta_title": "From films to streaming prices - how the Warner Bros deal…",
-        "meta_description": "Entertainment update reported by BBC on 2026-10-06. See verified context, publication time and the original source via MatchApp Ai.",
-        "keywords": [
-          "films streaming prices how latest news",
-          "films streaming prices how",
-          "films streaming prices how news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "films streaming prices how latest news October 2026",
-          "films streaming prices how entertainment update 2026",
-          "films streaming prices how news 2026-10-06",
-          "latest entertainment news about films streaming prices how",
-          "films streaming prices how warner bros latest update",
-          "BBC films streaming prices how entertainment",
-          "latest news about films streaming prices how October 2026",
-          "films streaming prices how entertainment news 2026-10-06",
-          "what happened with films streaming prices how",
-          "films",
-          "streaming",
-          "prices",
-          "how",
-          "warner",
-          "bros",
-          "deal",
-          "could",
-          "October 2026",
-          "2026-10-06",
-          "films streaming prices how 2026",
-          "BBC films streaming prices how",
-          "bbc.co.uk films streaming prices how",
-          "BBC entertainment news"
-        ],
-        "seo_generated_at": "2026-10-07T22:14:01.272Z"
+        "seo_generated_at": "2026-10-08T02:14:15.245Z"
       }
     },
     {
@@ -3561,7 +3554,7 @@
           "2026-10-05",
           "October 2026"
         ],
-        "seo_generated_at": "2026-10-07T22:14:01.272Z"
+        "seo_generated_at": "2026-10-08T02:14:15.245Z"
       }
     }
   ]
