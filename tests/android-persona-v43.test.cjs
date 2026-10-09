@@ -20,8 +20,9 @@ test('Home preview locally animates without calling metered Realtime services',(
   assert.match(main,/androidAvatarHomeJs/);
   assert.match(main,/isAdultAiDocument\(uri\)/);
 });
-test('two photo assets and choice are restricted to signed-in user',()=>{
-  for (const f of ['jonas.jpg','aureya.jpg'])assert.ok(fs.statSync(path.join(base,'src/main/assets/avatar-ai',f)).size>7000);
+test('only the Jonas photo is distributed; companion settings remain signed-in',()=>{
+  assert.ok(fs.statSync(path.join(base,'src/main/assets/avatar-ai','jonas.jpg')).size>7000);
+  assert.equal(fs.existsSync(path.join(base,'src/main/assets/avatar-ai','aureya.jpg')),false);
   assert.match(home,/preferred_ai_avatar/);
   assert.match(home,/matchapp_android_ai_persona_/);
   assert.match(home,/function signup\(\)/);
