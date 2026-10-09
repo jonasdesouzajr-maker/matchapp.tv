@@ -255,6 +255,7 @@ function onMicCapture(){
   if(status)status.textContent=e.detail?.state==='listening'?words('Listening…','Ouvindo…'):words('Your entertainment companion','Sua companhia de entretenimento');
  });
 }
+document.addEventListener('matchapp:avatar-state',function(e){setAvatarState(e.detail?.state||'idle')});
 document.addEventListener('matchapp:avatar-answer',function(e){if(e.detail?.text)showReply(e.detail.text)});
 document.addEventListener('matchapp:avatar-speech',function(e){setAvatarState(e.detail?.speaking?'speaking':'idle')});
 document.addEventListener('matchapp:voice-transcript',function(){setAvatarState('thinking')});
@@ -262,7 +263,7 @@ document.addEventListener('matchapp:avatar-voice-unavailable',function(){
  setAvatarState('idle');
  var status=document.getElementById('ma-av-help');if(status)status.textContent=words('A '+(preferred()==='jonas'?'male':'female')+' voice is unavailable for this language on your phone. Enable a matching voice in Android Text-to-speech settings and try Listen again.','Não há voz '+(preferred()==='jonas'?'masculina':'feminina')+' disponível neste idioma no aparelho. Ative uma voz correspondente nas configurações de texto para voz do Android e tente Ouvir novamente.');
 });
-function boot(){install();onMicCapture();window.matchappAndroidAvatarHome={preferred:preferred,showPicker:selector,open:startConversation,render:renderAvatar,refresh:install};
+function boot(){install();onMicCapture();window.matchappAndroidAvatarHome={preferred:preferred,showPicker:selector,open:startConversation,speak:speakReply,showReply:showReply,render:renderAvatar,refresh:install};
  document.addEventListener('matchapp:authchange',syncUser);
  document.addEventListener('matchapp:langchange',renderAvatar);
  document.addEventListener('visibilitychange',syncUser);

@@ -12,7 +12,7 @@ async function setup(){
  const dom=new JSDOM('<html lang="en"><head></head><body><section><article id="search-box"><div class="home-ask-composer"><input id="specific-search-input"><button class="gold-btn">Send</button><button id="mic-btn-index">Mic</button></div></article></section></body></html>',{url:'https://matchapp.tv/',runScripts:'outside-only'});
  const w=dom.window;w.matchMedia=()=>({matches:false});
  const events={mic:0,stop:0};
- w.MatchAppNativeVoice={setPersona(){},stopSpeaking(){events.stop++},start(){events.mic++},stopListening(){events.cancel=true}};
+ w.MatchAppNativeVoice={setPersona(){},stopSpeaking(){events.stop++},start(){events.mic++},stopListening(){events.cancel=true},speak(text){events.greeting=text}};
  w.document.getElementById('mic-btn-index').onclick=()=>events.mic++;
  w.eval(preview);w.eval(companion);
  await new Promise(r=>setTimeout(r,20));
@@ -29,16 +29,28 @@ test('v44 companion is a circular, viewport-fixed, scroll-independent avatar',as
   assert.match(w.document.getElementById('ma-companion-v44-style').textContent,/border-radius:50%!important/);
   assert.equal(w.document.querySelector('#search-box #ma-avatar-home'),null);
   assert.equal(w.document.querySelectorAll('#ma-avatar-home').length,1);
-  assert.equal(node.querySelector('#ma-av-settings').parentElement,node.querySelector('.ma-av-copy'));
+  assert.equal(node.querySelector('#ma-av-settings').parentElement,node.querySelector('.ma-av-controls'));
   w.eval(companion);assert.equal(w.document.querySelectorAll('#ma-avatar-home').length,1);
  }finally{dom.window.close()}
 });
-test('circle always responds and menu opens change-avatar flow without taking over the chat',async()=>{
+test('portrait opens chat, greets before listening, and close cancels the microphone',async()=>{
  const {dom,w,node,events}=await setup();
  try{
   node.querySelector('.ma-av-portrait').dispatchEvent(new w.KeyboardEvent('keydown',{key:'Enter',bubbles:true}));
+  assert.equal(node.dataset.open,'true');
+  assert.equal(events.mic,0);
+  assert.match(events.greeting,/Hi, I'm Jonas/);
+  w.document.dispatchEvent(new w.CustomEvent('matchapp:avatar-speech',{detail:{speaking:true}}));
+  w.document.dispatchEvent(new w.CustomEvent('matchapp:avatar-speech',{detail:{speaking:false}}));
+  await new Promise(r=>setTimeout(r,220));
   assert.equal(events.mic,1);
   assert.equal(node.dataset.state,'listening');
+  node.querySelector('#ma-av-dismiss').click();
+  assert.equal(node.dataset.open,'false');
+  assert.equal(events.cancel,true);
+  assert.equal(node.querySelector('.ma-av-copy').inert,true);
+  assert.ok(node.contains(w.document.querySelector('.home-ask-composer')));
+  assert.ok(w.document.documentElement.classList.contains('ma-avatar-chat-installed'));
   node.querySelector('#ma-av-menu').click();
   assert.equal(node.dataset.open,'true');
   node.querySelector('#ma-av-settings').click();

@@ -6,6 +6,10 @@ import android.speech.SpeechRecognizer
 import android.speech.RecognitionListener
 import android.annotation.SuppressLint
 import android.content.ActivityNotFoundException
+import android.content.ComponentName
+import android.provider.Settings
+import android.speech.RecognitionService
+import android.util.Log
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Color
@@ -76,6 +80,7 @@ class MainActivity : AppCompatActivity() {
     private var pendingVoiceUtterance: Pair<String, String?>? = null
     private var homeVoiceRecognition = false
     private var inlineRecognizer: SpeechRecognizer? = null
+    private var recognitionGeneration = 0
     private var pendingRecognitionLang = "en-US"
     private var voicePersona = "jonas"
     private var activeSpeechId = ""
@@ -672,29 +677,52 @@ class MainActivity : AppCompatActivity() {
             sendVoiceError("unavailable")
             return
         }
+        val generation = ++recognitionGeneration
         inlineRecognizer?.cancel()
         inlineRecognizer?.destroy()
-        inlineRecognizer = try { SpeechRecognizer.createSpeechRecognizer(this) } catch (_: Exception) {
+        // Resolve only installed, enabled recognition services visible to this app.
+        val services = packageManager.queryIntentServices(Intent(RecognitionService.SERVICE_INTERFACE), 0)
+            .mapNotNull { it.serviceInfo?.takeIf { service -> service.enabled && service.exported }
+                ?.let { service -> ComponentName(service.packageName, service.name) } }
+        val configured = Settings.Secure.getString(contentResolver, "voice_recognition_service")
+            ?.let { ComponentName.unflattenFromString(it) }
+        val service = services.firstOrNull { it == configured } ?: services.firstOrNull()
+        inlineRecognizer = try {
+            if (service != null) SpeechRecognizer.createSpeechRecognizer(this, service)
+            else SpeechRecognizer.createSpeechRecognizer(this)
+        } catch (_: Exception) {
             sendVoiceError("unavailable")
             return
         }
         inlineRecognizer?.setRecognitionListener(object : RecognitionListener {
-            override fun onReadyForSpeech(params: Bundle?) { sendVoiceListeningState("listening") }
-            override fun onBeginningOfSpeech() { sendVoiceListeningState("listening") }
+            override fun onReadyForSpeech(params: Bundle?) { if (generation == recognitionGeneration) sendVoiceListeningState("listening") }
+            override fun onBeginningOfSpeech() { if (generation == recognitionGeneration) sendVoiceListeningState("listening") }
             override fun onRmsChanged(rmsdB: Float) = Unit
             override fun onBufferReceived(buffer: ByteArray?) = Unit
-            override fun onEndOfSpeech() { sendVoiceListeningState("processing") }
+            override fun onEndOfSpeech() { if (generation == recognitionGeneration) sendVoiceListeningState("processing") }
             override fun onError(error: Int) {
-                sendVoiceError(if (error == SpeechRecognizer.ERROR_NO_MATCH ||
-                    error == SpeechRecognizer.ERROR_SPEECH_TIMEOUT) "no-speech" else "unavailable")
+                if (generation != recognitionGeneration) return
+                Log.w("MatchAppVoice", "Recognition error=$error service=${service?.flattenToShortString()}")
+                sendVoiceError(when (error) {
+                    SpeechRecognizer.ERROR_NO_MATCH, SpeechRecognizer.ERROR_SPEECH_TIMEOUT -> "no-speech"
+                    SpeechRecognizer.ERROR_INSUFFICIENT_PERMISSIONS -> "permission-denied"
+                    SpeechRecognizer.ERROR_NETWORK, SpeechRecognizer.ERROR_NETWORK_TIMEOUT -> "network"
+                    SpeechRecognizer.ERROR_AUDIO -> "audio"
+                    SpeechRecognizer.ERROR_RECOGNIZER_BUSY -> "busy"
+                    SpeechRecognizer.ERROR_LANGUAGE_NOT_SUPPORTED, SpeechRecognizer.ERROR_LANGUAGE_UNAVAILABLE -> "language"
+                    else -> "unavailable"
+                })
             }
             override fun onResults(results: Bundle?) {
+                if (generation != recognitionGeneration) return
+                recognitionGeneration++
                 val transcript = results?.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION)
                     ?.firstOrNull()?.trim()
                 if (!transcript.isNullOrBlank()) sendVoiceResult(transcript)
                 else sendVoiceError("no-speech")
             }
             override fun onPartialResults(partialResults: Bundle?) {
+                if (generation != recognitionGeneration) return
                 // Never submit partial hypotheses or charge credits twice.
                 val partial = partialResults?.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION)
                     ?.firstOrNull()?.trim()?.take(300).orEmpty()
@@ -896,6 +924,7 @@ class MainActivity : AppCompatActivity() {
         @JavascriptInterface
         fun stopListening() {
             runOnUiThread {
+                recognitionGeneration++
                 inlineRecognizer?.cancel()
                 sendVoiceListeningState("idle")
             }
@@ -987,8 +1016,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val HOME = "https://matchapp.tv/?utm_source=android_app&appBuild=44"
-        const val APP_UA = "MatchAppTVAndroid/1.1.40 MatchAppAiAndroid/1.1.40 MatchAppLaunchIntro/1"
+        const val HOME = "https://matchapp.tv/?utm_source=android_app&appBuild=45"
+        const val APP_UA = "MatchAppTVAndroid/1.1.41 MatchAppAiAndroid/1.1.41 MatchAppLaunchIntro/1"
         private const val STARTUP_PREFS = "matchapp_startup"
         private const val PREF_INTRO_SEEN = "intro_seen_v1"
         private const val PREF_REGISTERED = "registered_v1"
