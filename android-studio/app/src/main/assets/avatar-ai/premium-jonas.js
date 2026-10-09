@@ -43,8 +43,21 @@ html.matchapp-ai-android body #ma-avatar-home[data-open="true"]{
  right:12px!important;left:auto!important;top:auto!important;
  bottom:max(86px,var(--ma-companion-bottom,16px))!important;
  width:min(420px,calc(100vw - 24px))!important;
- height:min(625px,calc(var(--ma-chat-vh,100dvh) - 115px))!important;
+ height:min(455px,calc(var(--ma-chat-vh,100dvh) - 115px))!important;
  min-height:240px!important;border-radius:25px!important;overflow:visible!important
+}
+html.matchapp-ai-android body #ma-avatar-home[data-open="true"][data-has-conversation="true"]{
+ height:min(620px,calc(var(--ma-chat-vh,100dvh) - 115px))!important
+}
+html.matchapp-ai-android body #jonas-plus-box{
+ inset:auto 12px max(86px,env(safe-area-inset-bottom)) auto!important;
+ width:min(420px,calc(100vw - 24px))!important;
+ height:min(590px,calc(100dvh - 115px))!important;
+ max-height:none!important;border-radius:25px!important;
+ background:linear-gradient(165deg,#2b1c39,#14101e)!important
+}
+html.matchapp-ai-android body #jonas-plus-shade{
+ background:#05020a6b!important;backdrop-filter:blur(2px)!important
 }
 html.matchapp-ai-android body #ma-avatar-home[data-open="true"] .ma-av-copy{
  position:absolute!important;inset:0!important;
@@ -183,6 +196,8 @@ html.reduce-motion body #ma-avatar-home *{animation:none!important;transition:no
 function polish(){
  var root=document.getElementById('ma-avatar-home');
  if(!root)return;
+ var hasConversation=!!root.querySelector('#chat-log .chat-bubble, #chat-log .chat-answer-text');
+ if(root.dataset.hasConversation!==String(hasConversation))root.dataset.hasConversation=String(hasConversation);
  var dismiss=root.querySelector('#ma-av-dismiss');
  if(dismiss){dismiss.textContent='×';dismiss.title='Close Jonas';}
  var menu=root.querySelector('#ma-av-menu');
@@ -197,11 +212,22 @@ function polish(){
  var photo=root.querySelector('.ma-av-portrait');
  if(photo)photo.setAttribute('aria-label','Open Jonas conversation; drag to move');
 }
+var watched=false;
+function watchConversation(){
+ if(watched)return;
+ var root=document.getElementById('ma-avatar-home');
+ if(!root)return;
+ watched=true;
+ var observer=new MutationObserver(function(mutations){
+  if(mutations.some(function(m){return m.type==='childList'}))polish();
+ });
+ observer.observe(root,{subtree:true,childList:true});
+}
 window.__matchappJonasPremium47={refresh:polish};
-polish();
-document.addEventListener('DOMContentLoaded',polish,{once:true});
+polish();watchConversation();
+document.addEventListener('DOMContentLoaded',function(){polish();watchConversation()},{once:true});
 var retries=0,timer=setInterval(function(){
- polish();
+ polish();watchConversation();
  if(document.getElementById('ma-avatar-home')||++retries>30)clearInterval(timer);
 },240);
 })();
