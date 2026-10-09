@@ -43,8 +43,6 @@ class VoiceAvatarActivity : AppCompatActivity() {
     @SuppressLint("SetJavaScriptEnabled")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        window.statusBarColor = Color.rgb(9,7,18)
-        window.navigationBarColor = Color.rgb(9,7,18)
         val token = intent.getStringExtra(EXTRA_TOKEN).orEmpty().takeIf {
             it.length in 100..6000 && it.none { char -> char.isWhitespace() }
         }.orEmpty()

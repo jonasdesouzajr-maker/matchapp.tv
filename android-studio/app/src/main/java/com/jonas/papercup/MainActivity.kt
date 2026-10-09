@@ -123,8 +123,7 @@ class MainActivity : AppCompatActivity() {
         // Keep the native shell immersive, but never place the interactive WebView
         // underneath a status bar, punch-hole camera, or display cutout.
         WindowCompat.setDecorFitsSystemWindows(window, false)
-        window.statusBarColor = Color.TRANSPARENT
-        window.navigationBarColor = ContextCompat.getColor(this, R.color.ink)
+        // Fixed legacy system-bar colors are supplied by Theme.MatchApp.
 
         web = findViewById(R.id.web)
         refresh = findViewById(R.id.refresh)
@@ -164,7 +163,6 @@ class MainActivity : AppCompatActivity() {
         web.settings.apply {
             javaScriptEnabled = true
             domStorageEnabled = true
-            databaseEnabled = true
             loadsImagesAutomatically = true
             mixedContentMode = WebSettings.MIXED_CONTENT_COMPATIBILITY_MODE
             // Always cold-load current production HTML/assets when the Android

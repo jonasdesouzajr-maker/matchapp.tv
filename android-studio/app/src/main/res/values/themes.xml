@@ -4,11 +4,18 @@
         <item name="colorPrimary">@color/gold</item>
         <item name="colorOnPrimary">@color/ink</item>
         <item name="colorSecondary">@color/gold_deep</item>
-        <item name="android:statusBarColor">@color/ink</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:navigationBarColor">@color/ink</item>
         <item name="android:windowBackground">@color/ink</item>
         <item name="android:windowLightStatusBar">false</item>
         <item name="materialButtonStyle">@style/Widget.MatchApp.Button</item>
+    </style>
+
+    <!-- Legacy Android bar colors; edge-to-edge versions draw the existing app background. -->
+    <style name="Theme.MatchApp.Voice" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:statusBarColor">#090712</item>
+        <item name="android:navigationBarColor">#090712</item>
+        <item name="android:windowBackground">#090712</item>
     </style>
 
     <style name="Theme.MatchApp.Splash" parent="Theme.SplashScreen">

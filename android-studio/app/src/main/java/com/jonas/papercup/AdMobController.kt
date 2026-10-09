@@ -122,7 +122,7 @@ class AdMobController(
                 ?: activity.resources.displayMetrics.widthPixels
             val widthDp = (widthPixels / density).toInt().coerceAtLeast(1)
             val adaptiveSize =
-                AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(activity, widthDp)
+                AdSize.getLargeAnchoredAdaptiveBannerAdSize(activity, widthDp)
 
             val nextAdView = AdView(activity).apply {
                 adUnitId = BuildConfig.ADMOB_BANNER_ID

@@ -64,7 +64,7 @@
             android:name=".VoiceAvatarActivity"
             android:exported="false"
             android:screenOrientation="unspecified"
-            android:theme="@style/Theme.AppCompat.NoActionBar" />
+            android:theme="@style/Theme.MatchApp.Voice" />
 
         <activity
             android:name=".MainActivity"
