@@ -1,7 +1,7 @@
 (function(){
 'use strict';
 if(!window.MatchAppNativeVoice&&!window.MATCHAPP_ANDROID)return;
-if(!/^(?:\/|\/index\.html|\/discover\.html)$/.test(location.pathname))return;
+if(/^\/kids(?:\/|$)/.test(location.pathname))return;
 if(window.__matchappCompanionV44){window.__matchappCompanionV44.refresh();return}
 var key='matchapp_android_chat_open',node,photo,copy,content,close,opened=false,greeting=false,speechStarted=false,greetingTimer;
 function loc(en,pt){return /^pt/i.test(window.MATCH_LANG||document.documentElement.lang||'en')?pt:en}
@@ -70,7 +70,7 @@ function open(shouldGreet){
  photo.setAttribute('aria-expanded','true');
  photo.setAttribute('aria-label',loc('Talk to your AI avatar','Falar com seu avatar de IA'));
  if(wasOpen||!shouldGreet)return;
- var name=node.dataset.persona==='aureya'?'Aureya':'Jonas';
+ var name='Jonas';
  var text=loc("Hi, I'm "+name+". What can I help you watch, read or listen to today?",'Olá, sou '+name+'. O que você quer assistir, ler ou ouvir hoje?');
  window.MatchAppNativeVoice?.stopSpeaking?.();
  window.matchappAndroidAvatarHome?.showReply?.(text);
@@ -150,7 +150,7 @@ function avatarCommand(text){
  var input=String(text||'').trim();
  if(!/(?:change|switch|wrong|different|male|female|mudar|trocar|errad[ao]|masculin[ao]|feminin[ao])/i.test(input)||!/(?:voice|avatar|voz|personagem|assistente)/i.test(input))return false;
  open(false);
- window.matchappAndroidAvatarHome?.showReply?.(loc('Use Change avatar to choose Jonas or Aureya. Jonas uses a male Android text-to-speech voice; Aureya uses a female voice.','Use Trocar avatar para escolher Jonas ou Aureya. Jonas usa voz masculina e Aureya usa voz feminina.'));
+ window.matchappAndroidAvatarHome?.showReply?.(loc('Jonas is your sole AI companion. Speech language follows your Android text-to-speech settings.','Jonas é seu único assistente de IA. O idioma de voz segue as configurações de fala do Android.'));
  return true;
 }
 window.matchappAvatarVoiceCommand=avatarCommand;
