@@ -29,7 +29,7 @@ const MATCH_PACKS=[{key:'matches_5',matches:5,price:'$0.99'},{key:'matches_25',m
 const KIDS_MATCH_PACKS=[{key:'kids_matches_5',matches:5,price:'$0.99'},{key:'kids_matches_25',matches:25,price:'$2.99',badge:'Most popular'},{key:'kids_matches_50',matches:50,price:'$4.99',badge:'Best value'}];
 const KIDS_CREDIT_PACKS=[{key:'kids_credits_25',credits:25,price:'$2.99'},{key:'kids_credits_75',credits:75,price:'$6.99',badge:'Most popular'},{key:'kids_credits_200',credits:200,price:'$14.99',badge:'Best value'}];
 window.CREDIT_PACKS=CREDIT_PACKS;window.MATCH_PACKS=MATCH_PACKS;window.KIDS_MATCH_PACKS=KIDS_MATCH_PACKS;window.KIDS_CREDIT_PACKS=KIDS_CREDIT_PACKS;
-const ALL_KEYS=new Set([...Object.keys(STRIPE_LINKS)]);
+const ALL_KEYS=new Set([...Object.keys(STRIPE_LINKS),'jonas_chat_monthly']);
 function notify(message,isError){if(typeof window.showToast==='function')window.showToast(message,isError);else try{alert(message)}catch(_){}}
 function productButton(key){return document.getElementById('btn-'+key)||document.querySelector('[data-match-pack="'+key+'"],[data-credit-pack="'+key+'"],[data-kids-match-pack="'+key+'"],[data-kids-credit-pack="'+key+'"],[data-match="'+key+'"],[data-pack="'+key+'"],[data-product="'+key+'"]')}
 function paymentLinkUrl(key,user){const base=STRIPE_LINKS[key];if(!base)return'';const u=new URL(base);if(user?.id)u.searchParams.set('client_reference_id',user.id);if(user?.email)u.searchParams.set('prefilled_email',user.email);return u.toString()}
@@ -57,6 +57,15 @@ async function ensureSignInControl(){
 async function startVerifiedCheckout(product,button){
   const key=String(product||'');
   if(!ALL_KEYS.has(key)){notify(pt('billing.error','Could not start checkout. Please try again.'),true);return}
+  // Google Play-distributed Android digital subscriptions must use compliant
+  // Play Billing (or a formally enrolled alternative). Do not steer to Stripe.
+  if(key==='jonas_chat_monthly'&&(
+     typeof window.MatchAppNativeVoice!=='undefined'||
+     document.documentElement.classList.contains('matchapp-ai-android')||
+     /;\\s*wv[);]/i.test(navigator.userAgent||''))){
+    notify(pt('billing.play','Jonas Plus in-app purchase is coming soon. Existing web subscriptions work when signed in.'),true);
+    return;
+  }
   ensureAuthModal();
   const sb=window.supabaseClient,el=button||productButton(key),original=el?.textContent;
   let session=null,user=null;
