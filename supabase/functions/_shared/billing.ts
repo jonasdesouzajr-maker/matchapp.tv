@@ -7,6 +7,7 @@ export const PRODUCTS:Record<string,BillingProduct>={
  vip_monthly:{url:'https://buy.stripe.com/bJe7sL6WdfRQ94adwtcfK08',mode:'subscription',amount:499,brl:990,interval:'month'},
  vip_annual:{url:'https://buy.stripe.com/6oU6oH2FX8po1BI9gdcfK0f',mode:'subscription',amount:3999,brl:7990,interval:'year'},
  business:{url:'https://buy.stripe.com/4gM00ja8peNMdkq641cfK0e',mode:'subscription',amount:4900,brl:14990,interval:'month'},
+ jonas_chat_monthly:{url:'',mode:'subscription',amount:999,brl:3990,interval:'month'},
  credits_25:{url:'https://buy.stripe.com/14A9ATdkB8po4NU641cfK0a',mode:'payment',amount:299,brl:490},
  credits_75:{url:'https://buy.stripe.com/aFaeVdeoF9ts4NU9gdcfK0b',mode:'payment',amount:699,brl:990},
  credits_200:{url:'https://buy.stripe.com/8x2aEXgwN5dc4NUakhcfK0c',mode:'payment',amount:1499,brl:1990},
@@ -26,6 +27,7 @@ const BRL_PRICES:Record<string,string>={
  vip_monthly:'price_1UG14UFRuUuhrLPGSsGvVZiL',
  vip_annual:'price_1UG14ZFRuUuhrLPGROre5ieP',
  business:'price_1UG14fFRuUuhrLPGuRXlPHP6',
+ jonas_chat_monthly:'price_1UOcmIFRuUuhrLPGShRDWzYn',
  credits_25:'price_1UG14kFRuUuhrLPGMRpkVSga',
  credits_75:'price_1UG14qFRuUuhrLPGpGkli5vO',
  credits_200:'price_1UG14vFRuUuhrLPGMEJbIth1',
@@ -56,6 +58,23 @@ export async function catalog(stripe:any):Promise<CatalogEntry[]>{
  }
  const result:CatalogEntry[]=[];
  for(const [key,product] of Object.entries(PRODUCTS)){
+  // Jonas Plus uses authenticated hosted Checkout only: no public Payment Link
+  // can bypass session metadata, access controls, or server-side metering.
+  if(key==='jonas_chat_monthly'){
+   const prices=[
+    {id:'price_1UOci8FRuUuhrLPG5Y6g6ng0',currency:'usd' as const,amount:999},
+    {id:'price_1UOcmIFRuUuhrLPGShRDWzYn',currency:'brl' as const,amount:3990}
+   ];
+   for(const candidate of prices){
+    try{
+     const price=await stripe.prices.retrieve(candidate.id);
+     if(price.active!==false&&price.currency===candidate.currency&&price.unit_amount===candidate.amount
+        &&cadenceOk(price,product))
+      result.push({key,link:null,price:price.id,currency:candidate.currency,mode:'subscription',active:true});
+    }catch(_){console.error('[billing] Jonas Chat Plus price unavailable');}
+   }
+   continue;
+  }
   const link=links.find((l:any)=>l.url===product.url);
   if(link){
    const items=await stripe.paymentLinks.listLineItems(link.id,{limit:2,expand:['data.price']});
