@@ -83,7 +83,9 @@ async function refresh(){
  catch(e){usage=null;active=false;notify(e.message);display();return false}
 }
 function isPricing(){return /^\/pricing(?:\/pricing\.html|\/)?$/.test(location.pathname)}
-function brazil(){return window.MatchBillingMarket?.market==='BR'||pt()}
+function brazil(){return window.MatchBillingMarket?.market==='BR'&&
+  Array.isArray(window.MatchBillingMarket.activeProducts)&&
+  window.MatchBillingMarket.activeProducts.includes('jonas_chat_monthly')}
 async function checkout(){
  if(play())return;
  if(typeof window.startVerifiedCheckout==='function')return window.startVerifiedCheckout('jonas_chat_monthly',$('jonas-plus-buy'));
