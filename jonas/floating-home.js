@@ -14,7 +14,105 @@
  var panel=root.querySelector('#ma-jonas-home-panel');
  var close=root.querySelector('#ma-jonas-home-close');
  var input=root.querySelector('#ma-jonas-home-input');
- var opened=false;
+ var opened=false,dragging=null,suppressClick=false;
+ var storageKey='matchapp-jonas-inline-position-v1';
+ var dock=null,returnButton=null;
+ function homeEntry(){return document.getElementById('ma-ai-entry')}
+ function mountInline(){
+  var entry=homeEntry();
+  if(!entry||root.classList.contains('is-floating'))return false;
+  if(!dock){
+   dock=document.createElement('div');dock.id='ma-jonas-inline-dock';dock.className='jh-inline-dock';
+   var text=document.createElement('div');text.className='jh-inline-copy';
+   text.innerHTML='<span class="jh-inline-eyebrow" data-jh-en="YOUR ENTERTAINMENT COMPANION" data-jh-pt="SEU ASSISTENTE DE ENTRETENIMENTO">YOUR ENTERTAINMENT COMPANION</span><strong>Jonas</strong><small data-jh-en="Tap to talk. Drag him anywhere." data-jh-pt="Toque para conversar. Arraste para onde quiser.">Tap to talk. Drag him anywhere.</small>';
+   returnButton=document.createElement('button');returnButton.type='button';returnButton.className='jh-return';
+   returnButton.setAttribute('data-jh-en','Bring Jonas back');returnButton.setAttribute('data-jh-pt','Trazer Jonas de volta');
+   returnButton.textContent='Bring Jonas back';returnButton.hidden=true;
+   returnButton.addEventListener('click',function(){returnHome(true)});
+   dock.append(root,text,returnButton);
+  }
+  if(dock.parentElement!==entry)entry.insertBefore(dock,entry.firstChild);
+  var oldHeading=entry.previousElementSibling;
+  if(oldHeading&&oldHeading.classList.contains('lazy-head')){
+   oldHeading.classList.add('ma-jonas-legacy-head');
+   oldHeading.style.setProperty('display','none','important');
+   oldHeading.setAttribute('aria-hidden','true');oldHeading.tabIndex=-1;
+  }
+  if(root.parentElement!==dock)dock.insertBefore(root,dock.firstChild);
+  root.classList.remove('is-floating');root.style.removeProperty('left');root.style.removeProperty('top');
+  root.style.removeProperty('right');root.style.removeProperty('bottom');
+  document.body.classList.add('ma-jonas-inline');
+  if(returnButton)returnButton.hidden=true;
+  return true;
+ }
+ function clamp(n,min,max){return Math.max(min,Math.min(max,n))}
+ function setFloating(x,y){
+  if(root.parentElement!==document.body)document.body.appendChild(root);
+  root.classList.add('is-floating');
+  var size=bubble.getBoundingClientRect();
+  var w=Math.max(72,size.width||82),h=Math.max(72,size.height||82);
+  var maxX=Math.max(8,innerWidth-w-8),maxY=Math.max(8,innerHeight-h-8);
+  root.style.setProperty('left',Math.round(clamp(x,8,maxX))+'px','important');
+  root.style.setProperty('top',Math.round(clamp(y,8,maxY))+'px','important');
+  root.style.setProperty('right','auto','important');root.style.setProperty('bottom','auto','important');
+  if(returnButton)returnButton.hidden=false;
+ }
+ function restorePosition(){
+  try{
+   var pos=JSON.parse(localStorage.getItem(storageKey)||'null');
+   if(!pos||!Number.isFinite(pos.x)||!Number.isFinite(pos.y))return;
+   setFloating(pos.x*Math.max(1,innerWidth-bubble.offsetWidth),pos.y*Math.max(1,innerHeight-bubble.offsetHeight));
+  }catch(_){/* Unavailable storage simply leaves Jonas in his section. */}
+ }
+ function returnHome(clear){
+  setOpen(false);
+  if(clear)try{localStorage.removeItem(storageKey)}catch(_){}
+  root.classList.remove('is-floating');
+  mountInline();translate();
+ }
+ function savePosition(){
+  try{
+   var r=root.getBoundingClientRect();
+   localStorage.setItem(storageKey,JSON.stringify({x:r.left/Math.max(1,innerWidth-r.width),y:r.top/Math.max(1,innerHeight-r.height)}));
+  }catch(_){/* optional preference */}
+ }
+ function positionPanel(){
+  if(!root.classList.contains('is-floating'))return;
+  var r=root.getBoundingClientRect();
+  var panelW=Math.min(355,innerWidth-24),panelH=Math.min(370,innerHeight-130);
+  panel.style.setProperty('left',r.left+panelW>innerWidth-12?'auto':'0');
+  panel.style.setProperty('right',r.left+panelW>innerWidth-12?'0':'auto');
+  if(r.top<panelH+12){panel.style.setProperty('top',(r.height+12)+'px');panel.style.setProperty('bottom','auto');}
+  else{panel.style.setProperty('top','auto');panel.style.setProperty('bottom',(r.height+12)+'px');}
+ }
+ function startDrag(event){
+  if(event.button!==0 && event.pointerType==='mouse')return;
+  var r=root.getBoundingClientRect();
+  dragging={id:event.pointerId,x:event.clientX,y:event.clientY,left:r.left,top:r.top,moved:false};
+  if(bubble.setPointerCapture)bubble.setPointerCapture(event.pointerId);
+ }
+ function moveDrag(event){
+  if(!dragging||dragging.id!==event.pointerId)return;
+  var dx=event.clientX-dragging.x,dy=event.clientY-dragging.y;
+  if(!dragging.moved&&Math.hypot(dx,dy)<9)return;
+  if(!dragging.moved){dragging.moved=true;setOpen(false);}
+  setFloating(dragging.left+dx,dragging.top+dy);
+ }
+ function endDrag(event){
+  if(!dragging||dragging.id!==event.pointerId)return;
+  if(dragging.moved){suppressClick=true;savePosition();setTimeout(function(){suppressClick=false},120);}
+  dragging=null;
+ }
+ bubble.addEventListener('pointerdown',startDrag);
+ // The root moves to document.body at drag-start; global listeners keep
+ // tracking even when DOM reparenting releases native pointer capture.
+ window.addEventListener('pointermove',moveDrag,{passive:true});
+ window.addEventListener('pointerup',endDrag);
+ window.addEventListener('pointercancel',endDrag);
+ window.addEventListener('resize',function(){
+  if(!root.classList.contains('is-floating'))return;
+  var r=root.getBoundingClientRect();setFloating(r.left,r.top);if(opened)positionPanel();
+ });
  var getLocale=function(){
   var selected=String(window.MATCH_LANG||document.documentElement.lang||navigator.language||'en');
   return /^pt(?:-|$)/i.test(selected)?'pt':'en';
@@ -22,6 +120,9 @@
  function translate(){
   var pt=getLocale()==='pt';
   root.querySelectorAll('[data-jh-en][data-jh-pt]').forEach(function(el){
+   el.textContent=pt?el.dataset.jhPt:el.dataset.jhEn;
+  });
+  if(dock)dock.querySelectorAll('.jh-inline-copy [data-jh-en][data-jh-pt],.jh-return[data-jh-en][data-jh-pt]').forEach(function(el){
    el.textContent=pt?el.dataset.jhPt:el.dataset.jhEn;
   });
   root.querySelectorAll('[data-jh-placeholder-en][data-jh-placeholder-pt]').forEach(function(el){
@@ -45,14 +146,27 @@
   bubble.setAttribute('aria-expanded',String(next));
   root.classList.toggle('is-open',next);
   if(next){
-   translate();
+   translate();positionPanel();
+   // An in-flow conversation should become visible immediately even when
+   // the user opens Jonas near the bottom edge of a short phone screen.
+   if(!root.classList.contains('is-floating')&&dock){
+    requestAnimationFrame(function(){
+     if(opened&&dock.isConnected&&typeof dock.scrollIntoView==='function'){
+      var reduced=!!window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches;
+      dock.scrollIntoView({block:'start',behavior:reduced?'instant':'smooth'});
+     }
+    });
+   }
    if(window.matchMedia&&window.matchMedia('(pointer: fine)').matches)input.focus({preventScroll:true});
    else close.focus({preventScroll:true});
   }else{
    bubble.focus({preventScroll:true});
   }
  }
- bubble.addEventListener('click',function(){setOpen(!opened)});
+ bubble.addEventListener('click',function(){
+  if(suppressClick){suppressClick=false;return;}
+  setOpen(!opened);
+ });
  close.addEventListener('click',function(){setOpen(false)});
  document.addEventListener('keydown',function(ev){
   if(!opened)return;
@@ -65,5 +179,23 @@
  document.addEventListener('matchapp:language-changed',translate);
  window.addEventListener('languagechange',translate);
  if(window.MutationObserver)new MutationObserver(translate).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
+ function hideLateAskHeading(){
+  var entry=homeEntry(),head=entry?.previousElementSibling;
+  if(!head?.matches?.('.lazy-head'))head=document.querySelector('.lazy-head[data-fold-key="askai"]');
+  if(!head)return;
+  if(!head.classList.contains('ma-jonas-legacy-head'))head.classList.add('ma-jonas-legacy-head');
+  if(head.style.getPropertyValue('display')!=='none'||head.style.getPropertyPriority('display')!=='important')
+   head.style.setProperty('display','none','important');
+  if(head.getAttribute('aria-hidden')!=='true')head.setAttribute('aria-hidden','true');
+  head.tabIndex=-1;
+ }
+ mountInline();
+ var outer=homeEntry()?.parentElement;
+ if(outer&&window.MutationObserver)new MutationObserver(hideLateAskHeading).observe(outer,{childList:true,subtree:false});
+ hideLateAskHeading();
+ setTimeout(hideLateAskHeading,120);
+ setTimeout(hideLateAskHeading,1100);
+ document.addEventListener('matchapp:langchange',hideLateAskHeading);
+ restorePosition();
  translate();
 })();
