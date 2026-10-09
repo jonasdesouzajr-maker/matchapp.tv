@@ -1,7 +1,23 @@
 {
-  "updated_at": "2026-10-09T02:57:01.701Z",
+  "updated_at": "2026-10-09T17:27:05.611Z",
   "source_policy": "Explicitly authorized attributed original publisher RSS/Atom headlines; directly linked canonical URLs, no article-body/image republication and no betting guides",
   "items": [
+    {
+      "id": "535ff993",
+      "title": "What makes an Olympic emblem memorable – and does Brisbane’s new design fit the bill?",
+      "url": "https://theconversation.com/what-makes-an-olympic-emblem-memorable-and-does-brisbanes-new-design-fit-the-bill-293810",
+      "source": "The Conversation",
+      "source_domain": "theconversation.com",
+      "source_home": "https://theconversation.com",
+      "country": "GLOBAL",
+      "category": "sports",
+      "sport": "Sports",
+      "event_type": "Sports",
+      "published_at": "2026-10-09T03:41:24.000Z",
+      "timestamp_kind": "published",
+      "discovery_source": "Authorized publisher RSS/Atom",
+      "image": null
+    },
     {
       "id": "85bda206",
       "title": "Voici comment un camp d’été a transformé l’éducation physique au Québec",
