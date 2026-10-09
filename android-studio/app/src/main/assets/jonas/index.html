@@ -23,7 +23,7 @@
         <button class="nav-link" data-page="discover">Discover</button>
         <button class="nav-link" data-page="saved">My space</button>
       </nav>
-      <div class="header-right"><span class="local-badge"><span class="green-dot"></span> Private preview</span></div>
+      <div class="header-right"><label class="native-language-label" for="jonas-language">Language</label><select id="jonas-language" class="native-language-select" aria-label="Conversation language"></select></div>
     </header>
 
     <main class="app-main">
@@ -37,7 +37,7 @@
             <button class="main-cta" id="talk-hero">Talk to Jonas <span aria-hidden="true">↗</span></button>
             <div class="hero-facts"><span>✦ Natural voice and text</span><span>✦ Your language</span><span>✦ Everywhere in the app</span></div>
           </div>
-          <div class="hero-art" aria-hidden="true"><div class="orb orb-back"></div><div class="orb orb-mid"></div><div class="orb orb-front"><img id="hero-face" src="faces/jonas/rest.jpg" alt=""/><img id="hero-expression" src="faces/jonas/rest.jpg" alt="" aria-hidden="true"/></div><div class="orb-sheen"></div></div>
+          <div class="hero-art" aria-label="Jonas AI portrait and conversation launcher"><div class="orb orb-back"></div><div class="orb orb-mid"></div><div class="orb orb-front"><img id="hero-face" src="faces/jonas/rest.jpg" alt=""/><img id="hero-expression" src="faces/jonas/rest.jpg" alt="" aria-hidden="true"/></div><div class="orb-sheen"></div></div>
         </div>
         <div class="section-heading"><div><span class="eyebrow">JONAS PLUS</span><h2>Plan, limits, and billing</h2></div></div>
         <section class="plan-card" aria-label="Jonas Plus on Android">
@@ -47,8 +47,8 @@
             <li>150 chats every 7 days</li>
             <li>450 chats each paid monthly cycle</li>
           </ul>
-          <p>On the MatchApp app, Jonas Plus is checked on the server with your account. This preview does not sell a plan, restore a Play purchase, or open Stripe checkout.</p>
-          <p class="plan-state">Google Play billing is not active in this build. Purchase, restore, and manage stay unavailable until that catalog is enabled.</p>
+          <p>Jonas Plus access is checked securely through your MatchApp Ai account. Available credits and features depend on your membership.</p>
+          <p class="plan-state">Google Play purchases and subscription restores are not available in this Android version.</p>
         </section>
         <div class="section-heading"><div><span class="eyebrow">CURATED FOR THE MOMENT</span><h2>Where will your mood take you?</h2></div><button class="text-link" data-page="discover">Explore more <span>→</span></button></div>
         <div class="mood-grid">
@@ -91,12 +91,12 @@
       </section>
 
       <section class="view" data-view="saved" aria-labelledby="saved-heading" hidden>
-        <div class="inner-view"><span class="eyebrow">YOUR OWN CORNER</span><h1 id="saved-heading">Your space</h1><p>Conversations stay on this device while the preview is open. Save a useful reply here to find it later.</p>
+        <div class="inner-view"><span class="eyebrow">YOUR OWN CORNER</span><h1 id="saved-heading">Your space</h1><p>Saved replies remain on your device so you can revisit or delete them in My space.</p>
           <div id="saved-list" class="saved-list" aria-live="polite"></div>
         </div>
       </section>
     </main>
-    <footer class="app-footer"><span>© 2026 MatchApp Ai · All rights reserved.</span><span>Android preview · Not the Play Store release</span></footer>
+    <footer class="app-footer"><span>© 2026 MatchApp Ai · All rights reserved.</span><span>Android · MatchApp Ai</span></footer>
   </div>
 
   <div id="chat-backdrop" class="chat-backdrop" hidden></div>
@@ -116,6 +116,8 @@
   <button id="jonas-bubble" class="jonas-bubble" type="button" aria-label="Open Jonas. Drag to move." aria-expanded="false" aria-controls="chat-sheet">
     <span class="bubble-aura" aria-hidden="true"></span><span class="bubble-crop"><img id="bubble-face" src="faces/jonas/rest.jpg" alt=""/><img id="bubble-expression" src="faces/jonas/rest.jpg" alt="" aria-hidden="true"/></span><span class="bubble-pulse" aria-hidden="true"></span>
   </button>
+  <script src="../avatar-ai/jonas-locales.js"></script>
   <script src="jonas.js"></script>
+  <link rel="stylesheet" href="native-single.css"/>
 </body>
 </html>
