@@ -90,6 +90,8 @@ class MainActivity : AppCompatActivity() {
     private val androidAvatarCompanionJs by lazy { assets.open("avatar-ai/companion-v44.js").bufferedReader().use { it.readText() } }
     private val jonasPaidChatJs by lazy { assets.open("avatar-ai/jonas-chat-plus.js").bufferedReader().use { it.readText() } }
     private val jonasPremiumJs by lazy { assets.open("avatar-ai/premium-jonas.js").bufferedReader().use { it.readText() } }
+    private val androidSurfacePolishJs by lazy { assets.open("avatar-ai/android-surface-polish.js").bufferedReader().use { it.readText() } }
+    private val androidHeaderPanelsJs by lazy { assets.open("avatar-ai/android-header-panels.js").bufferedReader().use { it.readText() } }
     private val avatarImageLoader by lazy { androidx.webkit.WebViewAssetLoader.Builder().addPathHandler("/assets/", androidx.webkit.WebViewAssetLoader.AssetsPathHandler(this)).build() }
 
     // Web UI (including the responsive Avatar Studio) is shared with matchapp.tv.
@@ -238,6 +240,7 @@ class MainActivity : AppCompatActivity() {
         web.evaluateJavascript(
             """
             (function() {
+              if (window.matchappAndroidCloseHeaderPanel && window.matchappAndroidCloseHeaderPanel()) return true;
               var sheet = document.getElementById('chat-sheet');
               if (sheet && !sheet.hidden) {
                 var close = document.getElementById('close-chat');
@@ -324,13 +327,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun startStartupExperience() {
-        if (startupPrefs.getBoolean(PREF_REGISTERED, false) ||
-            startupPrefs.getBoolean(PREF_INTRO_SEEN, false)
-        ) {
-            startStartupTransition()
-        } else {
-            startIntro()
-        }
+        // The owner-approved full-screen opening video is the normal cold-start
+        // experience for the installed Android app, not just a first-run ad.
+        // Deep links and activity recreation already bypass this call.
+        startIntro()
     }
 
     private fun startStartupTransition() {
@@ -424,7 +424,9 @@ class MainActivity : AppCompatActivity() {
         root.addView(host, FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT))
         root.postDelayed(introDeadline, 8000L)
         video.setOnPreparedListener { player ->
-            player.setVolume(0f, 0f)
+            // Restore the intro's original soundtrack at the device's media volume.
+            // The OS media volume (including mute) remains authoritative.
+            player.setVolume(1f, 1f)
             player.isLooping = false
             markIntroSeen()
             root.removeCallbacks(introDeadline)
@@ -568,7 +570,7 @@ class MainActivity : AppCompatActivity() {
         if (uri != null && uri.scheme == "https" &&
             isMatchAppHost(uri.host.orEmpty()) && !isKidsUri(uri)) {
             view.evaluateJavascript(
-                "if(document.body){" + androidAvatarHomeJs + ";" + androidAvatarCompanionJs + ";" + jonasPaidChatJs + ";" + jonasPremiumJs + "}",
+                "if(document.body){" + androidAvatarHomeJs + ";" + androidAvatarCompanionJs + ";" + jonasPaidChatJs + ";" + jonasPremiumJs + ";" + androidSurfacePolishJs + ";" + androidHeaderPanelsJs + "}",
                 null
             )
         }

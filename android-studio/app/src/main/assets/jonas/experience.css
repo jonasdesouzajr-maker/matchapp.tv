@@ -132,3 +132,18 @@ body.chat-is-open .jonas-bubble{opacity:0;pointer-events:none}
  .chat-sheet{top:auto;height:min(500px,calc(100dvh - 28px - var(--keyboard)))}
 }
 
+
+/* Premium, explicitly confirmed local saved-reply deletion. */
+.saved-item{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:start;gap:12px;
+ transition:opacity .27s ease,transform .27s cubic-bezier(.2,.8,.3,1),max-height .27s ease;
+ max-height:1000px;min-width:0;overflow:hidden}
+.saved-item-copy{margin:0;min-width:0;line-height:1.65;white-space:pre-wrap;overflow-wrap:break-word;word-break:normal}
+.saved-item-trash{box-sizing:border-box;display:grid;place-items:center;min-width:43px;min-height:43px;
+ border-radius:13px;border:1px solid rgba(225,184,113,.6);background:#2b1b38;color:#ffe0a6;
+ font:750 12px system-ui;cursor:pointer;transition:background .2s,transform .2s,border-color .2s}
+.saved-item-trash:hover{background:#3b2749;border-color:#ffe0a6}
+.saved-item-trash:active{transform:scale(.93)}
+.saved-item-trash.is-armed{padding:0 12px;background:#583040;color:#ffe4e3;border-color:#e4a3b4}
+.saved-item-trash:focus-visible{outline:2px solid #ffe5ac;outline-offset:2px}
+.saved-item.is-removing{opacity:0;transform:translateX(36px) scale(.95);max-height:0;padding-top:0;padding-bottom:0}
+@media(prefers-reduced-motion:reduce){.saved-item,.saved-item-trash{transition:none!important}}

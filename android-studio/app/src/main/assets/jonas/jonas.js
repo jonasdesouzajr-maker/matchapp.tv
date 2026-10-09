@@ -96,8 +96,42 @@
       root.appendChild(p); return;
     }
     for (const row of values.slice(0, 20)) {
-      const div = document.createElement("div");
-      div.className = "saved-item"; div.textContent = String(row.text || "");
+      const div = document.createElement("article");
+      div.className = "saved-item";
+      const content = document.createElement("p");
+      content.className = "saved-item-copy";
+      content.textContent = String(row.text || "");
+      const remove = document.createElement("button");
+      remove.type = "button";
+      remove.className = "saved-item-trash";
+      remove.setAttribute("aria-label", "Delete this saved reply");
+      remove.title = "Delete saved reply";
+      remove.innerHTML = '<svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M10 4h4M6.5 7l1 13h9l1-13M10 11v6M14 11v6"/></svg>';
+      let armed = false;
+      remove.addEventListener("click", () => {
+        if (!armed) {
+          armed = true;
+          remove.textContent = "Delete?";
+          remove.setAttribute("aria-label", "Confirm deleting this saved reply");
+          remove.classList.add("is-armed");
+          return;
+        }
+        div.classList.add("is-removing");
+        remove.disabled = true;
+        const commit = () => {
+          const latest = safeLoad(SAVED_KEY, []);
+          if (Array.isArray(latest)) {
+            // Compare the saved value, not a stale index if another reply arrived.
+            const at = latest.findIndex((item) => item.savedAt === row.savedAt && item.text === row.text);
+            if (at >= 0) latest.splice(at, 1);
+            safeStore(SAVED_KEY, latest);
+          }
+          renderSaved();
+        };
+        if (window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches) commit();
+        else window.setTimeout(commit, 270);
+      });
+      div.append(content, remove);
       root.appendChild(div);
     }
   }
