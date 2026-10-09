@@ -207,7 +207,7 @@ function open(){css();buildDialog();lastFocus=document.activeElement;box.hidden=
 function hide(){if(!box)return;box.hidden=true;$('jonas-plus-shade').hidden=true;
  if(lastFocus?.isConnected)lastFocus.focus({preventScroll:true});}
 function entry(){
- if(play()||!/^\/(?:index\.html|discover\.html)?$/.test(location.pathname)||$('jonas-plus-entry'))return;
+ if(!/^\/(?:index\.html|discover\.html)?$/.test(location.pathname)||$('jonas-plus-entry'))return;
  var base=$('ma-ai-entry')||document.querySelector('.home-ask-composer,.newsearch-row');
  if(!base)return;
  var button=label('button','✦ Jonas Chat Plus','jp-btn secondary','jonas-plus-entry');
