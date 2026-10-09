@@ -118,3 +118,24 @@ test('My space deletes a saved reply only after the explicit trash confirmation'
   assert.match(w.document.getElementById('saved-list').textContent,/No saved replies/);
  }finally{w.close();}
 });
+
+test('Discover presents six illustrated, labeled cards with original AI prompts',()=>{
+ const html=read('assets/jonas/index.html');
+ const css=read('assets/jonas/experience.css');
+ const dom=new JSDOM(html);
+ const cards=[...dom.window.document.querySelectorAll('[data-view="discover"] .discovery-card')];
+ assert.equal(cards.length,6);
+ assert.equal(new Set(cards.map(x=>x.dataset.art)).size,6);
+ for(const card of cards){
+   assert.ok(card.dataset.prompt.length>28,'each tile preserves its meaningful prompt');
+   assert.ok(card.querySelector('.discovery-art svg path,.discovery-art svg rect,.discovery-art svg circle'),
+     'every card must have bundled, independent vector artwork');
+   assert.ok(card.querySelector('.discovery-caption strong')?.textContent.trim(),
+     'every card has a visible title');
+   assert.ok(card.querySelector('.discovery-caption small')?.textContent.trim(),
+     'every card explains what it does');
+ }
+ assert.match(css,/\.discovery-grid \.discovery-card\[data-art="music"\]/);
+ assert.match(css,/@media\(max-width:355px\)/);
+ dom.window.close();
+});
