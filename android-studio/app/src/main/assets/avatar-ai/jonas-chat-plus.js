@@ -193,7 +193,7 @@ async function send(text){
   }
   if($('jonas-plus-voice')?.checked&&window.speechSynthesis){
    try{speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(answer.slice(0,1100));
-    u.lang=window.MATCH_LANG||navigator.language;speechSynthesis.speak(u);}catch(e){}
+    u.lang=window.MatchAppJonasLocale?.speech()||window.MATCH_LANG||navigator.language;speechSynthesis.speak(u);}catch(e){}
   }
  }catch(e){message('assistant',e.message||t('Try again later.','Tente mais tarde.'));
   if(/limit|subscription|allowance|assinatura/i.test(e.message||''))void refresh();

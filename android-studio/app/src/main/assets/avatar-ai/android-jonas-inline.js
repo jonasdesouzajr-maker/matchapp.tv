@@ -76,7 +76,7 @@ function localize(){
  caption.querySelector('small').textContent=pt?'Toque no rosto do Jonas para conversar.':'Tap Jonas to chat.';
 }
 function place(){
- if(!document.body||!document.body.classList.contains('page-home'))return;
+ if(!document?.body||!document.body.classList.contains('page-home'))return;
  var heading=document.getElementById('ma-ai-entry')?.previousElementSibling;
  if(heading&&heading.classList.contains('lazy-head')){
   heading.classList.add('ma-jonas-legacy-head');
@@ -85,7 +85,7 @@ function place(){
  }
  var source=document.getElementById('search-box');
  var avatar=document.getElementById('ma-avatar-home');
- if(!source||!avatar)return;
+ if(!source||!avatar||avatar.dataset.open==='true')return;
  if(!source.contains(avatar))source.insertBefore(avatar,source.firstChild);
  var caption=document.getElementById('ma-jonas-inline-caption');
  if(!caption){
@@ -96,6 +96,7 @@ function place(){
  document.body.classList.add('ma-jonas-inline');
  localize();
 }
+window.matchappAndroidJonasInlinePlace=place;
 place();
 document.addEventListener('DOMContentLoaded',place,{once:true});
 document.addEventListener('matchapp:langchange',localize);

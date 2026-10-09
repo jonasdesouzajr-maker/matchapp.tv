@@ -3,8 +3,12 @@
 if(!window.MatchAppNativeVoice&&!window.MATCHAPP_ANDROID)return;
 if(/^\/kids(?:\/|$)/.test(location.pathname))return;
 if(window.__matchappCompanionV44){window.__matchappCompanionV44.refresh();return}
-var key='matchapp_android_chat_open',node,photo,copy,content,close,opened=false,greeting=false,speechStarted=false,greetingTimer;
-function loc(en,pt){return /^pt/i.test(window.MATCH_LANG||document.documentElement.lang||'en')?pt:en}
+var key='matchapp_android_chat_open',node,photo,copy,content,close,opened=false,greeting=false,speechStarted=false,greetingTimer,textMode=false;
+function loc(en,pt){
+ var keys={'Close chat':'close','Talk to your AI avatar':'mic','Open chat':'mic','Ask Jonas anything…':'placeholder'};
+ if(window.MatchAppJonasLocale&&keys[en])return window.MatchAppJonasLocale.t(keys[en]);
+ return /^pt/i.test(window.MATCH_LANG||document.documentElement.lang||'en')?pt:en;
+}
 function remember(value){try{sessionStorage.setItem(key,value?'1':'0')}catch(_){}}
 function remembered(){try{return sessionStorage.getItem(key)==='1'}catch(_){return false}}
 var css=document.createElement('style');css.id='ma-companion-v44-style';
@@ -62,38 +66,43 @@ html.matchapp-ai-android body #ma-avatar-home[data-open="true"]{left:auto!import
 function state(s){document.dispatchEvent(new CustomEvent('matchapp:avatar-state',{detail:{state:s}}))}
 function cancelGreeting(){clearTimeout(greetingTimer);greeting=false;speechStarted=false}
 function listen(){
- if(!opened)return;
+  if(!opened||textMode)return;
  cancelGreeting();
  window.matchappAndroidAvatarHome?.open?.('');
 }
 function open(shouldGreet){
  if(!attach())return;
- var wasOpen=opened;opened=true;node.dataset.open='true';remember(true);copy.inert=false;
+   var wasOpen=opened;opened=true;
+  if(node.parentElement!==document.body)document.body.appendChild(node);
+  node.dataset.open='true';remember(true);copy.inert=false;
  photo.setAttribute('aria-expanded','true');
  photo.setAttribute('aria-label',loc('Talk to your AI avatar','Falar com seu avatar de IA'));
  if(wasOpen)return;
- // Chat opens silently. Microphone and read-aloud require explicit actions.
- if(shouldGreet){
-  var prior=document.getElementById('ma-av-reply');
-  if(!prior||prior.hidden||!prior.textContent.trim())
-   window.matchappAndroidAvatarHome?.showReply?.(
-    loc("Hi! I'm Jonas. What would you like to explore?",
-        "Oi! Sou Jonas. O que você gostaria de descobrir?"));
- }
- if(shouldGreet)window.setTimeout(function(){
-  if(!opened)return;
-  var input=document.getElementById('specific-search-input')||
-   document.getElementById('discover-new-input')||
-   document.getElementById('ma-jonas-global-input');
-  if(input)input.focus({preventScroll:true});
- },150);
+   // Only a real tap (not a drag or a remembered session) starts the greeting.
+  // Android native TTS ends with matchapp:avatar-speech and then native STT starts.
+  if(shouldGreet){
+   textMode=false;cancelGreeting();greeting=true;speechStarted=false;
+   var hello=window.MatchAppJonasLocale?.t('greeting')||loc("Hi, I'm Jonas! What would you like to discover?",
+     "Olá, sou o Jonas! O que você gostaria de descobrir?");
+   window.matchappAndroidAvatarHome?.showReply?.(hello);
+   state('speaking');
+   if(window.MatchAppNativeVoice?.speak){
+    try{window.MatchAppNativeVoice.speak(hello,window.MatchAppJonasLocale?.speech()||loc('en-US','pt-BR'))}
+    catch(_){cancelGreeting();window.setTimeout(listen,180)}
+   }else{cancelGreeting();window.setTimeout(listen,180)}
+   greetingTimer=setTimeout(function(){
+    if(greeting&&opened&&!textMode){cancelGreeting();listen()}
+   },8500);
+  }
 }
 function dismiss(){
- opened=false;remember(false);cancelGreeting();
- node.dataset.open='false';copy.inert=true;photo.setAttribute('aria-expanded','false');
+   opened=false;remember(false);cancelGreeting();textMode=false;
+  node.dataset.open='false';copy.inert=true;photo.setAttribute('aria-expanded','false');
  window.MatchAppNativeVoice?.stopListening?.();window.MatchAppNativeVoice?.stopSpeaking?.();state('idle');photo.focus({preventScroll:true});
- // Closing chat must not navigate away from Discover.
-}
+   // Return Jonas to his original homepage slot after the chat closes.
+  window.matchappAndroidJonasInlinePlace?.();
+  // Closing chat must not navigate away from Discover.
+ }
 function wireChat(){
  if(!content)return;
  if(location.pathname==='/discover.html'){
@@ -127,7 +136,7 @@ function wireChat(){
   if(composer&&content.contains(composer)){
    document.documentElement.classList.add('ma-avatar-chat-installed');
    // Native shell recovery has stronger display rules than the shared stylesheet.
-   ['ma-ai-entry','search-box'].forEach(function(id){var legacy=document.getElementById(id);if(legacy){legacy.hidden=true;legacy.style.setProperty('display','none','important')}});
+       if(!document.body.classList.contains('page-home'))['ma-ai-entry','search-box'].forEach(function(id){var legacy=document.getElementById(id);if(legacy){legacy.hidden=true;legacy.style.setProperty('display','none','important')}});
   }
  }
 }
@@ -167,7 +176,7 @@ function dragEnd(e){
 }
 function attach(){
  var el=document.getElementById('ma-avatar-home');if(!el)return false;
- if(el.parentElement!==document.body)document.body.appendChild(el);
+   if(opened&&el.parentElement!==document.body)document.body.appendChild(el);
  if(el.dataset.companionV44==='1'){wireChat();return true}
  node=el;photo=node.querySelector('.ma-av-portrait');copy=node.querySelector('.ma-av-copy');if(!photo||!copy)return false;
  node.dataset.companionV44='1';node.dataset.open='false';copy.inert=true;
@@ -203,11 +212,11 @@ function attach(){
  cancel.onclick=function(){cancelGreeting();window.MatchAppNativeVoice?.stopListening?.();state('idle');cancel.hidden=true};
  document.addEventListener('matchapp:voice-state',function(e){cancel.hidden=e.detail?.state!=='listening'});
  wireChat();
- if(remembered()||location.pathname==='/discover.html')open(false);
+   if(location.pathname==='/discover.html')open(false);
  return true;
 }
 document.addEventListener('matchapp:avatar-speech',function(e){
- if(!greeting||!opened)return;
+   if(!greeting||!opened||textMode)return;
  if(e.detail?.speaking)speechStarted=true;
  else if(speechStarted){cancelGreeting();setTimeout(listen,180)}
 });
@@ -238,7 +247,14 @@ document.addEventListener('matchapp:voice-partial',function(e){
  if(!opened)return;var input=document.getElementById('specific-search-input')||document.getElementById('discover-new-input');
  if(input&&e.detail?.text){input.value=e.detail.text;window.autoGrowComposer?.()}
 });
-document.addEventListener('keydown',function(e){if(e.key==='Escape'&&opened)dismiss()});
+ document.addEventListener('beforeinput',function(e){
+  if(!opened||!e.isTrusted||!e.target?.matches?.('#specific-search-input,#discover-new-input,#ma-jonas-global-input'))return;
+  // Typing wins. Never restart speech or STT for this conversation.
+  textMode=true;cancelGreeting();
+  window.MatchAppNativeVoice?.stopListening?.();window.MatchAppNativeVoice?.stopSpeaking?.();
+  state('idle');
+ },true);
+ document.addEventListener('keydown',function(e){if(e.key==='Escape'&&opened)dismiss()});
 document.addEventListener('visibilitychange',function(){if(document.hidden){cancelGreeting();window.MatchAppNativeVoice?.stopListening?.();window.MatchAppNativeVoice?.stopSpeaking?.();state('idle')}});
 function avatarCommand(text){
  var input=String(text||'').trim();
