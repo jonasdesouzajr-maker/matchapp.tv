@@ -92,6 +92,7 @@ class MainActivity : AppCompatActivity() {
     private val jonasPremiumJs by lazy { assets.open("avatar-ai/premium-jonas.js").bufferedReader().use { it.readText() } }
     private val androidSurfacePolishJs by lazy { assets.open("avatar-ai/android-surface-polish.js").bufferedReader().use { it.readText() } }
     private val androidHeaderPanelsJs by lazy { assets.open("avatar-ai/android-header-panels.js").bufferedReader().use { it.readText() } }
+    private val androidJonasInlineJs by lazy { assets.open("avatar-ai/android-jonas-inline.js").bufferedReader().use { it.readText() } }
     private val avatarImageLoader by lazy { androidx.webkit.WebViewAssetLoader.Builder().addPathHandler("/assets/", androidx.webkit.WebViewAssetLoader.AssetsPathHandler(this)).build() }
 
     // Web UI (including the responsive Avatar Studio) is shared with matchapp.tv.
@@ -570,7 +571,7 @@ class MainActivity : AppCompatActivity() {
         if (uri != null && uri.scheme == "https" &&
             isMatchAppHost(uri.host.orEmpty()) && !isKidsUri(uri)) {
             view.evaluateJavascript(
-                "if(document.body){" + androidAvatarHomeJs + ";" + androidAvatarCompanionJs + ";" + jonasPaidChatJs + ";" + jonasPremiumJs + ";" + androidSurfacePolishJs + ";" + androidHeaderPanelsJs + "}",
+                "if(document.body){" + androidAvatarHomeJs + ";" + androidAvatarCompanionJs + ";" + jonasPaidChatJs + ";" + jonasPremiumJs + ";" + androidSurfacePolishJs + ";" + androidHeaderPanelsJs + ";" + androidJonasInlineJs + "}",
                 null
             )
         }
