@@ -474,7 +474,13 @@ function polish(){
  var hasConversation=!!root.querySelector('#chat-log .chat-bubble, #chat-log .chat-answer-text');
  if(root.dataset.hasConversation!==String(hasConversation))root.dataset.hasConversation=String(hasConversation);
  var dismiss=root.querySelector('#ma-av-dismiss');
- if(dismiss){dismiss.textContent='×';dismiss.title=loc('Close Jonas','Fechar Jonas');}
+ if(dismiss){
+  // Replacing textContent on every MutationObserver callback creates an
+  // unbounded childList feedback loop that can freeze the Android WebView.
+  if(dismiss.textContent!=='×')dismiss.textContent='×';
+  var dismissTitle=loc('Close Jonas','Fechar Jonas');
+  if(dismiss.title!==dismissTitle)dismiss.title=dismissTitle;
+ }
  var menu=root.querySelector('#ma-av-menu');
  if(menu)menu.hidden=true;
  var talk=root.querySelector('#ma-av-talk');

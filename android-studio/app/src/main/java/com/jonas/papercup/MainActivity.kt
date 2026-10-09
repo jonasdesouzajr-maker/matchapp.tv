@@ -217,8 +217,7 @@ class MainActivity : AppCompatActivity() {
                 when {
                     introHost != null -> finishIntro()
                     customView != null -> hideCustomView()
-                    web.canGoBack() -> web.goBack()
-                    else -> finish()
+                    else -> closeActiveChatOrNavigateBack()
                 }
             }
         })
@@ -230,6 +229,32 @@ class MainActivity : AppCompatActivity() {
         if (isPackagedJonasPage(Uri.parse(launch)) || isDebugSmokeUrl(launch) || isOnline()) web.loadUrl(launch) else {
             splashKeep = false
             showOffline(true)
+        }
+    }
+
+    private fun closeActiveChatOrNavigateBack() {
+        // Android Back must dismiss the active Jonas sheet before leaving the app.
+        // Handle both the packaged preview and the injected production companion.
+        web.evaluateJavascript(
+            """
+            (function() {
+              var sheet = document.getElementById('chat-sheet');
+              if (sheet && !sheet.hidden) {
+                var close = document.getElementById('close-chat');
+                if (close) { close.click(); return true; }
+              }
+              var avatar = document.querySelector('#ma-avatar-home[data-open="true"]');
+              if (avatar) {
+                var dismiss = avatar.querySelector('#ma-av-dismiss');
+                if (dismiss) { dismiss.click(); return true; }
+              }
+              return false;
+            })();
+            """.trimIndent()
+        ) { handled ->
+            if (handled != "true") {
+                if (web.canGoBack()) web.goBack() else finish()
+            }
         }
     }
 
