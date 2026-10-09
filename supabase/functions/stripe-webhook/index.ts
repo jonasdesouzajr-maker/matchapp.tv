@@ -2,6 +2,7 @@
 import Stripe from 'https://esm.sh/stripe@17.7.0?target=deno';
 import {createClient} from 'https://esm.sh/@supabase/supabase-js@2.105.0';
 import {verifiedCheckout,deliver,catalog} from '../_shared/billing.ts';
+import {JONAS_CHAT_PRICE_IDS,deliverJonasCheckout,syncJonasSubscription} from '../_shared/jonas-billing.ts';
 const stripe=new Stripe(Deno.env.get('STRIPE_SECRET_KEY')??'',{apiVersion:'2025-01-27.acacia',httpClient:Stripe.createFetchHttpClient()});
 const cryptoProvider=Stripe.createSubtleCryptoProvider();
 const db=createClient(Deno.env.get('SUPABASE_URL')??'',Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')??'');
@@ -26,12 +27,27 @@ Deno.serve(async(req:Request)=>{
    if(session.payment_status==='paid'){
     const verified=await verifiedCheckout(stripe,session);
     if(!verified)throw new Error('Paid checkout requires reconciliation');
-    await deliver(db,session,verified);uid=verified.user;plan=verified.product.key;
+    if(verified.product.key==='jonas_chat_monthly')await deliverJonasCheckout(db,stripe,session,verified.user);
+    else await deliver(db,session,verified);
+    uid=verified.user;plan=verified.product.key;
    }
   }else if(['customer.subscription.updated','customer.subscription.deleted'].includes(event.type)){
    const id=(event.data.object as Stripe.Subscription).id;
    const sub=await stripe.subscriptions.retrieve(id);
    const customer=typeof sub.customer==='string'?sub.customer:sub.customer.id;
+   if(sub.items.data.some(item=>JONAS_CHAT_PRICE_IDS.has(item.price?.id))){
+     const existing=await db.from('jonas_chat_subscriptions')
+       .select('user_id').eq('stripe_subscription_id',sub.id).maybeSingle();
+     if(existing.error)throw new Error('Jonas entitlement lookup pending');
+     const candidate=existing.data?.user_id||sub.metadata?.matchapp_user||null;
+     if(!candidate||!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(candidate))
+       throw new Error('Jonas subscription owner unresolved');
+     if(existing.data?.user_id&&sub.metadata?.matchapp_user&&existing.data.user_id!==sub.metadata.matchapp_user)
+       throw new Error('Jonas subscription owner mismatch');
+     const synced=await syncJonasSubscription(db,sub,candidate,false);
+     if(!synced)throw new Error('Jonas subscription update waiting for checkout');
+     uid=candidate;plan='jonas_chat_monthly';
+   } else {
    // Ignore stale notifications belonging to a different subscription.
    const result=await db.from('profiles').select('id,ad_free_purchased').eq('stripe_customer_id',customer).eq('stripe_subscription_id',sub.id).maybeSingle();
    if(result.error)throw new Error('Account lookup pending');
@@ -45,10 +61,29 @@ Deno.serve(async(req:Request)=>{
     else if(sub.status==='active'&&product){Object.assign(patch,{is_vip:true,is_business:product.key==='business',is_ad_free:true,subscription_plan:product.key});}
     const update=await db.from('profiles').update(patch).eq('id',uid).eq('stripe_subscription_id',sub.id);if(update.error)throw new Error('Subscription delivery pending');
    }
+   }
   }else if(event.type==='invoice.payment_succeeded'){
    const invoice=event.data.object as Stripe.Invoice;
    if(typeof invoice.customer==='string'){
     const result=await db.from('profiles').select('id').eq('stripe_customer_id',invoice.customer).maybeSingle();if(result.error)throw new Error('Account lookup pending');uid=result.data?.id||null;
+    if(!uid){const jonas=await db.from('jonas_chat_subscriptions').select('user_id').eq('stripe_customer_id',invoice.customer).maybeSingle();if(jonas.error)throw new Error('Jonas invoice lookup pending');uid=jonas.data?.user_id||null;}
+    const invoiceSub=(invoice as any).parent?.subscription_details?.subscription||(invoice as any).subscription||null;
+    const subscriptionId=typeof invoiceSub==='string'?invoiceSub:invoiceSub?.id;
+    if(subscriptionId){
+     const sub=await stripe.subscriptions.retrieve(subscriptionId);
+     if(sub.items.data.some(item=>JONAS_CHAT_PRICE_IDS.has(item.price?.id))){
+      const previous=await db.from('jonas_chat_subscriptions').select('user_id').eq('stripe_subscription_id',sub.id).maybeSingle();
+      if(previous.error)throw new Error('Jonas renewal lookup pending');
+      const owner=previous.data?.user_id||sub.metadata?.matchapp_user||null;
+      if(!owner||!(/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(owner)))
+       throw new Error('Jonas renewal owner unverified');
+      if(previous.data?.user_id&&sub.metadata?.matchapp_user&&previous.data.user_id!==sub.metadata.matchapp_user)
+       throw new Error('Jonas renewal owner conflict');
+      if(!await syncJonasSubscription(db,sub,owner,false))
+       throw new Error('Jonas renewal waiting for checkout reconciliation');
+      uid=owner;plan='jonas_chat_monthly';
+     }
+    }
    }
   }
   await record(event.id,event.type,uid,plan);
