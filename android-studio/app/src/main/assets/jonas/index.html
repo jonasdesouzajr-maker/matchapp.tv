@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+  <meta name="theme-color" content="#100814"/>
+  <meta name="description" content="Meet Jonas, the interactive entertainment companion of MatchApp Ai."/>
+  <title>MatchApp Ai — Jonas Companion</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="experience.css"/>
+</head>
+<body>
+  <div class="ambient-field" aria-hidden="true"><i></i><i></i><i></i></div>
+  <div class="shell-app">
+    <header class="topbar">
+      <a class="logo" href="#home" data-page="home" aria-label="MatchApp Ai Home">
+        <span class="logo-orbit" aria-hidden="true">✦</span>
+        <span>MatchApp <em>Ai</em><small>Your entertainment universe</small></span>
+      </a>
+      <nav class="primary-nav" aria-label="App navigation">
+        <button class="nav-link active" data-page="home" aria-current="page">Home</button>
+        <button class="nav-link" data-page="discover">Discover</button>
+        <button class="nav-link" data-page="saved">My space</button>
+      </nav>
+      <div class="header-right"><span class="local-badge"><span class="green-dot"></span> Private preview</span></div>
+    </header>
+
+    <main class="app-main">
+      <section class="view active" data-view="home" aria-labelledby="home-heading">
+        <div class="home-hero">
+          <div class="home-glow" aria-hidden="true"></div>
+          <div class="hero-copy">
+            <span class="eyebrow"><span class="spark">✧</span> INTELLIGENCE MEETS ENTERTAINMENT</span>
+            <h1 id="home-heading">Your universe.<br/><span>One conversation away.</span></h1>
+            <p>Discover stories, explore titles, and get recommendations that actually fit your mood. Jonas is with you wherever you go.</p>
+            <button class="main-cta" id="talk-hero">Talk to Jonas <span aria-hidden="true">↗</span></button>
+            <div class="hero-facts"><span>✦ Natural voice and text</span><span>✦ Your language</span><span>✦ Everywhere in the app</span></div>
+          </div>
+          <div class="hero-art" aria-hidden="true"><div class="orb orb-back"></div><div class="orb orb-mid"></div><div class="orb orb-front"><img id="hero-face" src="faces/jonas/rest.jpg" alt=""/><img id="hero-expression" src="faces/jonas/rest.jpg" alt="" aria-hidden="true"/></div><div class="orb-sheen"></div></div>
+        </div>
+        <div class="section-heading"><div><span class="eyebrow">CURATED FOR THE MOMENT</span><h2>Where will your mood take you?</h2></div><button class="text-link" data-page="discover">Explore more <span>→</span></button></div>
+        <div class="mood-grid">
+          <button class="mood-card" data-prompt="Find me a beautifully made film for a calm and cozy evening. Ask my country first if necessary."><span class="mood-icon">☾</span><span class="mood-content"><strong>Slow evening</strong><small>Find your comfort film</small></span><span class="arrow">↗</span></button>
+          <button class="mood-card" data-prompt="Recommend an outstanding documentary series available in my country. First ask for my country and streaming platforms."><span class="mood-icon">◈</span><span class="mood-content"><strong>Something real</strong><small>Documentaries that stay with you</small></span><span class="arrow">↗</span></button>
+          <button class="mood-card" data-prompt="Help me discover an addictive new TV series. Ask for my mood and streaming services."><span class="mood-icon">✳</span><span class="mood-content"><strong>One more episode</strong><small>Series worth getting hooked on</small></span><span class="arrow">↗</span></button>
+          <button class="mood-card" data-prompt="What should I listen to or watch on YouTube tonight? Ask my music taste."><span class="mood-icon">♫</span><span class="mood-content"><strong>Press play</strong><small>Music, videos and more</small></span><span class="arrow">↗</span></button>
+        </div>
+      </section>
+
+      <section class="view" data-view="discover" aria-labelledby="discover-heading" hidden>
+        <div class="inner-view"><span class="eyebrow">GO BEYOND THE EXPECTED</span><h1 id="discover-heading">Discover with Jonas</h1><p>Pick a question to start an intelligent conversation—without leaving this screen.</p>
+          <div class="discovery-grid">
+            <button data-prompt="Find critically acclaimed Brazilian movies from the last five years and tell me what makes them special. Do not guess streaming services.">Brazilian cinema <span>↗</span></button>
+            <button data-prompt="What are some brilliant recent crime documentary series? Ask me where I live and what I subscribe to.">True stories <span>↗</span></button>
+            <button data-prompt="Recommend an incredible anime series for someone who loves character development and beautiful animation.">Anime nights <span>↗</span></button>
+            <button data-prompt="I want a personalized film recommendation. Ask me three short questions, one at a time.">Surprise my mood <span>↗</span></button>
+            <button data-prompt="Can we explore great books and audiobooks? Ask my favorite genres first.">Read & listen <span>↗</span></button>
+            <button data-prompt="What is a good way to explore music video releases without confusing unofficial edits with official artist videos?">Music discoveries <span>↗</span></button>
+          </div>
+        </div>
+      </section>
+
+      <section class="view" data-view="saved" aria-labelledby="saved-heading" hidden>
+        <div class="inner-view"><span class="eyebrow">YOUR OWN CORNER</span><h1 id="saved-heading">Your space</h1><p>Conversations stay on this device while the preview is open. Save a useful reply here to find it later.</p>
+          <div id="saved-list" class="saved-list" aria-live="polite"></div>
+        </div>
+      </section>
+    </main>
+    <footer class="app-footer"><span>© 2026 MatchApp Ai · All rights reserved.</span><span>Python preview · Not the Play Store release</span></footer>
+  </div>
+
+  <div id="chat-backdrop" class="chat-backdrop" hidden></div>
+  <aside id="chat-sheet" class="chat-sheet" role="dialog" aria-modal="true" aria-labelledby="chat-heading" hidden>
+    <header class="sheet-head">
+      <div class="sheet-identity"><span class="sheet-presence" aria-hidden="true"></span><span><strong id="chat-heading">Jonas</strong><small>Your MatchApp Ai companion</small></span></div>
+      <div class="sheet-actions"><button id="save-reply" class="icon-button" title="Save last reply" aria-label="Save last reply">☆</button><button id="close-chat" class="icon-button" aria-label="Close conversation">×</button></div>
+    </header>
+    <div class="chat-messages" id="chat-messages" role="log" aria-live="polite" aria-relevant="additions text">
+      <div class="chat-entry bot"><span>Jonas</span><p>Hi, I'm Jonas. What can we explore today? You can type or talk to me.</p></div>
+    </div>
+    <div id="chat-state" class="chat-state" role="status" aria-live="polite">Ready when you are</div>
+    <form id="chat-form" class="chat-form"><input id="chat-input" type="text" maxlength="2000" autocomplete="off" aria-label="Your message" placeholder="Ask Jonas anything…" required/><button id="mic-button" type="button" aria-label="Start microphone" title="Talk to Jonas">♬</button><button id="send-button" type="submit" aria-label="Send message">➤</button></form>
+    <p class="privacy-note">Your questions are sent to the selected AI provider when configured. AI can make mistakes.</p>
+  </aside>
+
+  <button id="jonas-bubble" class="jonas-bubble" type="button" aria-label="Open Jonas. Drag to move." aria-expanded="false" aria-controls="chat-sheet">
+    <span class="bubble-aura" aria-hidden="true"></span><span class="bubble-crop"><img id="bubble-face" src="faces/jonas/rest.jpg" alt=""/><img id="bubble-expression" src="faces/jonas/rest.jpg" alt="" aria-hidden="true"/></span><span class="bubble-pulse" aria-hidden="true"></span>
+  </button>
+  <script src="jonas.js"></script>
+</body>
+</html>

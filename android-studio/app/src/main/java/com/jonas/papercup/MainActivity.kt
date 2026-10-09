@@ -54,6 +54,8 @@ import androidx.core.view.WindowCompat
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.button.MaterialButton
 import org.json.JSONObject
+import java.net.HttpURLConnection
+import java.net.URL
 import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
@@ -185,6 +187,7 @@ class MainActivity : AppCompatActivity() {
         web.webViewClient = MatchClient()
         web.webChromeClient = MatchChrome()
         web.addJavascriptInterface(NativeVoiceBridge(), "MatchAppNativeVoice")
+        web.addJavascriptInterface(JonasAiBridge(), "MatchAppNativeAI")
         web.addJavascriptInterface(NativeStartupBridge(), "MatchAppNativeStartup")
         web.addJavascriptInterface(NativeExperienceBridge(), "MatchAppNativeExperience")
         web.setDownloadListener { url, _, contentDisposition, mime, _ ->
@@ -224,7 +227,7 @@ class MainActivity : AppCompatActivity() {
 
         val launch = resolveLaunchUrl(intent)
         lastUrl = launch
-        if (isDebugSmokeUrl(launch) || isOnline()) web.loadUrl(launch) else {
+        if (isPackagedJonasPage(Uri.parse(launch)) || isDebugSmokeUrl(launch) || isOnline()) web.loadUrl(launch) else {
             splashKeep = false
             showOffline(true)
         }
@@ -458,9 +461,15 @@ class MainActivity : AppCompatActivity() {
     private fun isDebugSmokeUrl(url: String?): Boolean = debugSmokeUri(url) != null
 
     // Test-only voice access for the USB-reversed local Jonas Python preview.
+    private fun isPackagedJonasPage(uri: Uri?): Boolean =
+        BuildConfig.BUILD_TYPE == "preview" && uri?.scheme == "https" &&
+            uri.host == "appassets.androidplatform.net" &&
+            uri.path == "/assets/jonas/index.html"
+
     private fun isTrustedVoicePage(uri: Uri): Boolean =
         (isMatchAppHost(uri.host.orEmpty()) && !isKidsUri(uri)) ||
-        (BuildConfig.DEBUG && debugSmokeUri(uri.toString()) != null && uri.port == 8877)
+        (BuildConfig.DEBUG && debugSmokeUri(uri.toString()) != null && uri.port == 8877) ||
+        isPackagedJonasPage(uri)
 
     private fun debugSmokeLaunch(intent: Intent?): String? =
         intent?.getStringExtra("matchapp_smoke_url")
@@ -499,6 +508,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun resolveLaunchUrl(intent: Intent?): String {
+        if (BuildConfig.BUILD_TYPE == "preview" &&
+            intent?.action == Intent.ACTION_MAIN &&
+            intent.hasCategory(Intent.CATEGORY_LAUNCHER)) {
+            return "https://appassets.androidplatform.net/assets/jonas/index.html"
+        }
         debugSmokeLaunch(intent)?.let { return it }
         // Dedicated Jonas Python preview for the separate debug APK only.
         // The Google Play release never uses a localhost server or this route.
@@ -901,13 +915,104 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    // Preview-only bridge: the bundled UI uses the existing metered Supabase proxy.
+    // The legacy anon JWT is PUBLIC by design; the upstream rate limiter still applies.
+    // No secret provider API keys are shipped to Android.
+    private inner class JonasAiBridge {
+        private fun deliver(id: String, reply: String, error: String) {
+            runOnUiThread {
+                if (!isPackagedJonasPage(runCatching { Uri.parse(web.url.orEmpty()) }.getOrNull())) return@runOnUiThread
+                val js = "window.matchAppNativeAiResult&&window.matchAppNativeAiResult(" +
+                    JSONObject.quote(id) + "," + JSONObject.quote(reply) + "," + JSONObject.quote(error) + ");"
+                web.evaluateJavascript(js, null)
+            }
+        }
+
+        @JavascriptInterface
+        fun ask(data: String?) {
+            if (data == null || data.length > 16000) return
+            runOnUiThread {
+                if (!isPackagedJonasPage(runCatching { Uri.parse(web.url.orEmpty()) }.getOrNull())) return@runOnUiThread
+                Thread {
+                    var id = ""
+                    var answer = ""
+                    var error = "Jonas cannot connect right now. Please try again shortly."
+                    try {
+                        val input = JSONObject(data)
+                        id = input.optString("id", "").take(72)
+                        require(id.matches(Regex("^[a-zA-Z0-9_-]{1,72}$"))) { "Invalid request id" }
+                        val messages = input.optJSONArray("messages")
+                            ?: throw IllegalArgumentException("Missing messages")
+                        require(messages.length() in 1..12) { "Conversation too long" }
+                        val latest = messages.optJSONObject(messages.length() - 1)
+                            ?: throw IllegalArgumentException("Last message missing")
+                        require(latest.optString("role") == "user") { "Invalid last message" }
+                        val question = latest.optString("content").trim().take(600)
+                        require(question.isNotEmpty()) { "Question missing" }
+                        val history = org.json.JSONArray()
+                        for (i in 0 until messages.length() - 1) {
+                            val row = messages.optJSONObject(i) ?: continue
+                            val role = row.optString("role")
+                            if (role != "user" && role != "assistant") continue
+                            val text = row.optString("content").take(600)
+                            if (text.isNotBlank()) history.put(JSONObject().put("role", role).put("text", text))
+                        }
+                        val key = BuildConfig.MATCHAPP_ANON_KEY
+                        require(key.isNotBlank()) { "Provider not configured" }
+                        val body = JSONObject()
+                            .put("mode", "discover")
+                            .put("persona", "Jonas")
+                            .put("kidsMode", false)
+                            .put("question", question)
+                            .put("history", history)
+                            .put("country", "")
+                            .put("lang", input.optString("locale", "en").take(8))
+                            .toString()
+                        val conn = URL("https://zkymvqrmbabngsqblyye.supabase.co/functions/v1/gemini-proxy")
+                            .openConnection() as HttpURLConnection
+                        try {
+                            conn.requestMethod = "POST"
+                            conn.connectTimeout = 12000
+                            conn.readTimeout = 68000
+                            conn.doOutput = true
+                            conn.setRequestProperty("Content-Type", "application/json")
+                            conn.setRequestProperty("apikey", key)
+                            conn.setRequestProperty("Authorization", "Bearer " + key)
+                            conn.outputStream.use { stream ->
+                                stream.write(body.toByteArray(Charsets.UTF_8))
+                            }
+                            val status = conn.responseCode
+                            if (status == 429) {
+                                error = "Jonas is getting many questions. Please try again shortly."
+                            } else if (status == 200) {
+                                val responseText = conn.inputStream.bufferedReader(Charsets.UTF_8)
+                                    .use { it.readText().take(150000) }
+                                val outer = JSONObject(responseText)
+                                val content = outer.getJSONArray("candidates").getJSONObject(0)
+                                    .getJSONObject("content").getJSONArray("parts")
+                                    .getJSONObject(0).getString("text")
+                                answer = JSONObject(content).optString("answer", "").take(7000)
+                                if (answer.isNotBlank()) error = ""
+                            }
+                        } finally {
+                            conn.disconnect()
+                        }
+                    } catch (_: Exception) {
+                        // Never expose upstream tokens, URLs or exception traces to the web UI.
+                    }
+                    if (id.isNotBlank()) deliver(id, answer, error)
+                }.start()
+            }
+        }
+    }
+
     private inner class NativeVoiceBridge {
         @JavascriptInterface
         fun setPersona(persona: String?) {
             runOnUiThread {
                 val current = runCatching { Uri.parse(web.url.orEmpty()) }.getOrNull()
                 if (current != null && isMatchAppHost(current.host.orEmpty()) && !isKidsUri(current)) {
-                    val next = if (persona == "aureya") "aureya" else "jonas"
+                    val next = "jonas"
                     if (next != voicePersona) {
                         pendingVoiceUtterance = null
                         voiceTts?.stop()
@@ -1040,6 +1145,9 @@ class MainActivity : AppCompatActivity() {
               window.MATCHAPP_ANDROID_KIDS_BLOCKED = true;
               try { localStorage.setItem('match_ad_free','true'); } catch (e) {}
               var root = document.documentElement;
+              // onPageStarted can fire before the DOM root exists. A later
+              // onPageCommitVisible/onPageFinished injection will safely apply it.
+              if (!root) return;
               root.classList.add('ads-empty','matchapp-android','matchapp-ai-android','is-chrome');
 
               if (!document.getElementById('matchapp-android-shell')) {

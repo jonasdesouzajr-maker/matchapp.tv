@@ -1,3 +1,14 @@
+import java.util.Properties
+
+val localSettings = Properties().apply {
+    val file = rootProject.file("local.properties")
+    if (file.isFile) file.inputStream().use { load(it) }
+}
+val previewAnonKey = localSettings.getProperty("matchappAnonKey")
+    ?: System.getenv("MATCHAPP_SUPABASE_ANON_KEY")
+    ?: ""
+val quotedPreviewAnonKey = "\"" + previewAnonKey.replace("\\", "\\\\").replace("\"", "\\\"") + "\""
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -13,6 +24,7 @@ android {
         targetSdk = 36
         versionCode = 45
         versionName = "1.1.41"
+        buildConfigField("String", "MATCHAPP_ANON_KEY", "\"\"")
         // Production banner is enabled only after the native entitlement + UMP consent gates allow it.
         buildConfigField("Boolean", "ADMOB_ENABLED", "true")
         buildConfigField("String", "ADMOB_BANNER_ID", "\"ca-app-pub-9541435081010948/4843348278\"")
@@ -27,6 +39,17 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+        }
+        create("preview") {
+            initWith(getByName("debug"))
+            applicationIdSuffix = ".preview"
+            versionNameSuffix = "-preview"
+            isDebuggable = true
+            // QA builds never serve real ads or interfere with production placements.
+            buildConfigField("Boolean", "ADMOB_ENABLED", "false")
+            buildConfigField("String", "ADMOB_BANNER_ID", "\"\"")
+            buildConfigField("String", "ADMOB_REWARDED_ID", "\"\"")
+            buildConfigField("String", "MATCHAPP_ANON_KEY", quotedPreviewAnonKey)
         }
         debug {
             isMinifyEnabled = false
