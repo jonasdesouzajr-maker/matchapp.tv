@@ -67,6 +67,23 @@ Deno.serve(async(req:Request)=>{
    if(typeof invoice.customer==='string'){
     const result=await db.from('profiles').select('id').eq('stripe_customer_id',invoice.customer).maybeSingle();if(result.error)throw new Error('Account lookup pending');uid=result.data?.id||null;
     if(!uid){const jonas=await db.from('jonas_chat_subscriptions').select('user_id').eq('stripe_customer_id',invoice.customer).maybeSingle();if(jonas.error)throw new Error('Jonas invoice lookup pending');uid=jonas.data?.user_id||null;}
+    const invoiceSub=(invoice as any).parent?.subscription_details?.subscription||(invoice as any).subscription||null;
+    const subscriptionId=typeof invoiceSub==='string'?invoiceSub:invoiceSub?.id;
+    if(subscriptionId){
+     const sub=await stripe.subscriptions.retrieve(subscriptionId);
+     if(sub.items.data.some(item=>JONAS_CHAT_PRICE_IDS.has(item.price?.id))){
+      const previous=await db.from('jonas_chat_subscriptions').select('user_id').eq('stripe_subscription_id',sub.id).maybeSingle();
+      if(previous.error)throw new Error('Jonas renewal lookup pending');
+      const owner=previous.data?.user_id||sub.metadata?.matchapp_user||null;
+      if(!owner||!(/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(owner)))
+       throw new Error('Jonas renewal owner unverified');
+      if(previous.data?.user_id&&sub.metadata?.matchapp_user&&previous.data.user_id!==sub.metadata.matchapp_user)
+       throw new Error('Jonas renewal owner conflict');
+      if(!await syncJonasSubscription(db,sub,owner,false))
+       throw new Error('Jonas renewal waiting for checkout reconciliation');
+      uid=owner;plan='jonas_chat_monthly';
+     }
+    }
    }
   }
   await record(event.id,event.type,uid,plan);
