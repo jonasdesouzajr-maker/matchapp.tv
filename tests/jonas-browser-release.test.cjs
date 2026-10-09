@@ -16,7 +16,7 @@ const portalCss=load('jonas/entry.css');
 test('browser Jonas has its own canonical, original analytics, and secure first-party AI routing',()=>{
  const dom=new JSDOM(page,{url:'https://matchapp.tv/jonas/'});
  const doc=dom.window.document;
- assert.equal(doc.title,'Discover with Jonas | MatchApp Ai');
+ assert.equal(doc.title,'Jonas AI: What to Watch & Where | MatchApp Ai');
  assert.equal(doc.querySelectorAll('h1').length,1,'Google receives one document-level H1');
  assert.equal(doc.querySelector('#discover-heading').tagName,'H2');
  assert.equal(doc.querySelector('link[rel="canonical"]')?.href,'https://matchapp.tv/jonas/');

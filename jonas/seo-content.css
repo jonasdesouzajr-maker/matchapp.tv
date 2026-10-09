@@ -1,0 +1,18 @@
+/* Crawlable, useful information below the interactive Jonas experience. */
+.jonas-seo-guide{max-width:1130px;margin:35px auto 40px;padding:30px clamp(16px,3.5vw,38px);border:1px solid rgba(218,182,116,.33);border-radius:25px;background:linear-gradient(150deg,rgba(50,31,66,.76),rgba(21,12,32,.86));color:#efe5f6;box-shadow:inset 0 1px 0 #fff5d314}
+.jonas-seo-heading>span{display:block;margin-bottom:10px;font:700 11px system-ui;letter-spacing:.14em;color:#f4cb82}
+.jonas-seo-guide :is(h2,h3){letter-spacing:-.025em;color:#fff6e8;line-height:1.22}
+.jonas-seo-guide h2{font-size:clamp(21px,3vw,30px);margin:0 0 13px}
+.jonas-seo-guide h3{font-size:clamp(16px,2vw,19px);margin:0 0 10px}
+.jonas-seo-guide p{font:400 clamp(13px,1.6vw,15px)/1.72 system-ui;margin:0 0 13px;color:#d9c9e3}
+.jonas-seo-heading p{max-width:850px}
+.jonas-seo-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:22px 0 29px}
+.jonas-seo-grid article{background:#ffffff09;border:1px solid #efcf9029;border-radius:17px;padding:19px;min-width:0}
+.jonas-seo-guide a{color:#f4d391;text-decoration:underline;text-underline-offset:3px}
+.jonas-seo-guide a:focus-visible,.jonas-seo-guide summary:focus-visible{outline:2px solid #ffe4a1;outline-offset:3px}
+.jonas-seo-faq{border-top:1px solid #ffe3a32a;padding-top:20px}
+.jonas-seo-faq details{border-bottom:1px solid #ffe8bd28;padding:14px 0}
+.jonas-seo-faq summary{font:700 clamp(14px,1.7vw,16px)/1.4 system-ui;color:#ffe7bf;cursor:pointer;list-style-position:inside}
+.jonas-seo-faq details p{margin:9px 0 3px;padding-left:17px}
+@media(max-width:720px){.jonas-seo-guide{margin:19px 13px 28px;padding:20px 15px;border-radius:20px}.jonas-seo-grid{grid-template-columns:1fr;gap:10px}.jonas-seo-grid article{padding:14px}}
+@media(prefers-reduced-motion:reduce){.jonas-seo-guide *{animation:none!important;transition:none!important}}
