@@ -94,6 +94,28 @@ function wireChat(){
   if(document.getElementById('chat-log'))document.documentElement.classList.add('ma-avatar-chat-discover');
  }else{
   var composer=document.querySelector('.home-ask-composer');if(composer&&!content.contains(composer))content.appendChild(composer);
+  if(!composer && !content.querySelector('#ma-jonas-continue')){
+   var form=document.createElement('div');form.id='ma-jonas-continue';
+   form.style.cssText='display:flex;flex-direction:column;gap:8px;width:100%;padding:9px;box-sizing:border-box';
+   var note=document.createElement('p');
+   note.textContent=loc('Ask Jonas from anywhere. Your question continues in the full MatchApp Ai conversation with your existing account and credits.','Pergunte ao Jonas de qualquer tela. Sua pergunta continua no chat completo do MatchApp Ai com sua conta e seus créditos.');
+   note.style.cssText='font:400 12px/1.5 system-ui;color:#ddcfea;margin:4px 0';
+   var input=document.createElement('textarea');
+   input.id='ma-jonas-global-input';input.maxLength=1200;input.rows=3;
+   input.placeholder=loc('Ask Jonas anything…','Pergunte qualquer coisa ao Jonas…');
+   input.style.cssText='width:100%;box-sizing:border-box;padding:12px;min-height:78px;max-height:140px;resize:vertical;border-radius:13px;background:#140e20;color:white;border:1px solid #b99b65';
+   var send=document.createElement('button');send.type='button';
+   send.textContent=loc('Continue with Jonas','Continuar com Jonas');
+   send.style.cssText='min-height:44px;border-radius:99px;background:#eac878;color:#201329;font:700 13px system-ui';
+   function submitGlobal(){
+    var text=input.value.trim();if(!text)return;
+    try{sessionStorage.setItem('ma-jonas-pending-question',text.slice(0,1200))}catch(_){}
+    remember(true);location.href='/discover.html';
+   }
+   send.addEventListener('click',submitGlobal);
+   input.addEventListener('keydown',function(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();submitGlobal()}});
+   form.append(note,input,send);content.appendChild(form);
+  }
   if(composer&&content.contains(composer)){
    document.documentElement.classList.add('ma-avatar-chat-installed');
    // Native shell recovery has stronger display rules than the shared stylesheet.
@@ -202,7 +224,17 @@ function viewport(){
  node.style.setProperty('--ma-chat-vh',h+'px');
  node.style.setProperty('--ma-companion-bottom',Math.max(16,window.innerHeight-h-offset+16)+'px');
 }
-function refresh(){attach();wireChat();viewport()}
+function resumeQuestion(){
+ if(location.pathname!='/discover.html')return;
+ var text='';try{text=sessionStorage.getItem('ma-jonas-pending-question')||''}catch(_){}
+ if(!text)return;
+ var input=document.getElementById('discover-new-input');
+ if(!input||typeof window.newDiscoverSearch!=='function')return;
+ try{sessionStorage.removeItem('ma-jonas-pending-question')}catch(_){}
+ input.value=text;input.dispatchEvent(new Event('input',{bubbles:true}));
+ window.newDiscoverSearch();
+}
+function refresh(){attach();wireChat();viewport();resumeQuestion()}
 window.__matchappCompanionV44={refresh:refresh,open:open,close:dismiss,listen:listen};
 window.visualViewport?.addEventListener('resize',viewport);window.addEventListener('resize',function(){viewport();restoreBubblePosition()});
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',refresh,{once:true});else refresh();
