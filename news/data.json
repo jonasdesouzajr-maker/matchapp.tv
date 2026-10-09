@@ -1,10 +1,104 @@
 {
-  "generated_at": "2026-10-09T02:31:54.459Z",
-  "feed_version": "ebda86ff",
-  "sports_updated_at": "2026-10-08T17:52:59.456Z",
+  "generated_at": "2026-10-09T02:57:08.947Z",
+  "feed_version": "077f835e",
+  "sports_updated_at": "2026-10-09T02:57:01.701Z",
   "source_policy": "direct-trusted-publisher-rss+google-trends-keyword-signals",
   "seo_policy": "per-story keyword snapshot at first discovery + source citation + stable archive",
   "items": [
+    {
+      "id": "80d82874",
+      "title": "Alfonso Cuarón Reflects on Making ‘Harry Potter’: “Two of the Most Beautiful Years of My Life”",
+      "url": "https://www.hollywoodreporter.com/movies/movie-news/alfonso-cuaron-harry-potter-children-of-men-busan-1236725983/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-09T02:46:35.000Z",
+      "discovered_at": "2026-10-09T02:57:08.947Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "Alfonso Cuarón Reflects",
+      "description": "Alfonso Cuarón Reflects: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/GettyImages-2299144667.jpg?w=1296&h=730&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/alfonso-cuaron-reflects-on-making-harry-potter-two-of-the-most-beautiful-years-o-80d828/",
+      "landing_url": "https://matchapp.tv/?news=80d82874#latest-news",
+      "seo": {
+        "primary_keyword": "Alfonso Cuarón Reflects latest news",
+        "short_tail": [
+          "Alfonso Cuarón Reflects",
+          "Alfonso Cuarón Reflects news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "Alfonso Cuarón Reflects latest news October 2026",
+          "Alfonso Cuarón Reflects entertainment update 2026",
+          "Alfonso Cuarón Reflects news 2026-10-09",
+          "latest entertainment news about Alfonso Cuarón Reflects",
+          "alfonso cuaron reflects alfonso cuaron reflects latest update",
+          "The Hollywood Reporter Alfonso Cuarón Reflects entertainment",
+          "latest news about Alfonso Cuarón Reflects October 2026",
+          "Alfonso Cuarón Reflects entertainment news 2026-10-09",
+          "what happened with Alfonso Cuarón Reflects"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "Alfonso Cuarón Reflects",
+          "alfonso",
+          "cuaron",
+          "reflects",
+          "making",
+          "harry"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-09",
+          "Alfonso Cuarón Reflects 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter Alfonso Cuarón Reflects",
+          "hollywoodreporter.com Alfonso Cuarón Reflects",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "Alfonso Cuarón Reflects on Making ‘Harry Potter’: “Two of…",
+        "meta_description": "Alfonso Cuarón Reflects: Entertainment update reported by The Hollywood Reporter on 2026-10-09. See verified context, publication time and the original…",
+        "keywords": [
+          "Alfonso Cuarón Reflects latest news",
+          "Alfonso Cuarón Reflects",
+          "Alfonso Cuarón Reflects news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "Alfonso Cuarón Reflects latest news October 2026",
+          "Alfonso Cuarón Reflects entertainment update 2026",
+          "Alfonso Cuarón Reflects news 2026-10-09",
+          "latest entertainment news about Alfonso Cuarón Reflects",
+          "alfonso cuaron reflects alfonso cuaron reflects latest update",
+          "The Hollywood Reporter Alfonso Cuarón Reflects entertainment",
+          "latest news about Alfonso Cuarón Reflects October 2026",
+          "Alfonso Cuarón Reflects entertainment news 2026-10-09",
+          "what happened with Alfonso Cuarón Reflects",
+          "alfonso",
+          "cuaron",
+          "reflects",
+          "making",
+          "harry",
+          "October 2026",
+          "2026-10-09",
+          "Alfonso Cuarón Reflects 2026",
+          "The Hollywood Reporter Alfonso Cuarón Reflects",
+          "hollywoodreporter.com Alfonso Cuarón Reflects",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-09T02:57:08.947Z"
+      }
+    },
     {
       "id": "0d89362e",
       "title": "‘Social Reckoning’ Faces Box Office Challenge With ‘Other Mommy’ Set to Scare Away Competition",
@@ -101,7 +195,7 @@
           "hollywoodreporter.com social reckoning faces box",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-09T02:31:54.459Z"
+        "seo_generated_at": "2026-10-09T02:57:08.947Z"
       }
     },
     {
@@ -193,7 +287,7 @@
           "hollywoodreporter.com Anne Hathaway Gives Tom",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-09T02:31:54.459Z"
+        "seo_generated_at": "2026-10-09T02:57:08.947Z"
       }
     },
     {
@@ -262,7 +356,7 @@
           "2026-10-09",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-09T02:31:54.459Z"
+        "seo_generated_at": "2026-10-09T02:57:08.947Z"
       }
     },
     {
@@ -361,7 +455,7 @@
           "hollywoodreporter.com other mommy review jessica",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-09T02:31:54.459Z"
+        "seo_generated_at": "2026-10-09T02:57:08.947Z"
       }
     },
     {
@@ -453,7 +547,7 @@
           "hollywoodreporter.com Newport Beach Film Fest",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-09T02:31:54.459Z"
+        "seo_generated_at": "2026-10-09T02:57:08.947Z"
       }
     },
     {
@@ -522,7 +616,7 @@
           "2026-10-08",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-09T02:31:54.459Z"
+        "seo_generated_at": "2026-10-09T02:57:08.947Z"
       }
     },
     {
@@ -591,7 +685,7 @@
           "2026-10-08",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-09T02:31:54.459Z"
+        "seo_generated_at": "2026-10-09T02:57:08.947Z"
       }
     },
     {
@@ -660,7 +754,7 @@
           "2026-10-08",
           "BBC Technology"
         ],
-        "seo_generated_at": "2026-10-09T02:31:54.459Z"
+        "seo_generated_at": "2026-10-09T02:57:08.947Z"
       }
     },
     {
@@ -759,7 +853,7 @@
           "bbc.co.uk emotions run high round",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-09T02:31:54.459Z"
+        "seo_generated_at": "2026-10-09T02:57:08.947Z"
       }
     },
     {
@@ -828,7 +922,7 @@
           "2026-10-08",
           "BBC Science"
         ],
-        "seo_generated_at": "2026-10-09T02:31:54.459Z"
+        "seo_generated_at": "2026-10-09T02:57:08.947Z"
       }
     },
     {
@@ -927,7 +1021,7 @@
           "hollywoodreporter.com social reckoning filmmaker aaron",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-09T02:31:54.459Z"
+        "seo_generated_at": "2026-10-09T02:57:08.947Z"
       }
     },
     {
@@ -996,7 +1090,7 @@
           "2026-10-08",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-09T02:31:54.459Z"
+        "seo_generated_at": "2026-10-09T02:57:08.947Z"
       }
     },
     {
@@ -1065,7 +1159,7 @@
           "2026-10-08",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-09T02:31:54.459Z"
+        "seo_generated_at": "2026-10-09T02:57:08.947Z"
       }
     },
     {
@@ -1161,7 +1255,7 @@
           "hollywoodreporter.com Streaming Ratings",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-09T02:31:54.459Z"
+        "seo_generated_at": "2026-10-09T02:57:08.947Z"
       }
     },
     {
@@ -1230,99 +1324,7 @@
           "2026-10-08",
           "BBC Technology"
         ],
-        "seo_generated_at": "2026-10-09T02:31:54.459Z"
-      }
-    },
-    {
-      "id": "5e5963a1",
-      "title": "Swiss Queer Film Fest Drops Israeli Film After Boycott Threats: “We’re Not Sundance, Right?”",
-      "url": "https://www.hollywoodreporter.com/movies/movie-news/queer-film-fest-drops-israeli-film-tell-me-everything-1236725708/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-10-08T21:25:32.000Z",
-      "discovered_at": "2026-10-08T22:23:59.626Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "Swiss Queer Film Fest",
-      "description": "Swiss Queer Film Fest: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/Tell_Me_Everything-Still_1-H-2026.jpg?w=1296&h=730&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/swiss-queer-film-fest-drops-israeli-film-after-boycott-threats-we-re-not-sundanc-5e5963/",
-      "landing_url": "https://matchapp.tv/?news=5e5963a1#latest-news",
-      "seo": {
-        "primary_keyword": "Swiss Queer Film Fest latest news",
-        "short_tail": [
-          "Swiss Queer Film Fest",
-          "Swiss Queer Film Fest news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "Swiss Queer Film Fest latest news October 2026",
-          "Swiss Queer Film Fest entertainment update 2026",
-          "Swiss Queer Film Fest news 2026-10-08",
-          "latest entertainment news about Swiss Queer Film Fest",
-          "swiss queer film fest swiss queer latest update",
-          "The Hollywood Reporter Swiss Queer Film Fest entertainment",
-          "latest news about Swiss Queer Film Fest October 2026",
-          "Swiss Queer Film Fest entertainment news 2026-10-08",
-          "what happened with Swiss Queer Film Fest"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Swiss Queer Film Fest",
-          "swiss",
-          "queer",
-          "film",
-          "fest"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-08",
-          "Swiss Queer Film Fest 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter Swiss Queer Film Fest",
-          "hollywoodreporter.com Swiss Queer Film Fest",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "Swiss Queer Film Fest Drops Israeli Film After Boycott…",
-        "meta_description": "Swiss Queer Film Fest: Entertainment update reported by The Hollywood Reporter on 2026-10-08. See verified context, publication time and the original source…",
-        "keywords": [
-          "Swiss Queer Film Fest latest news",
-          "Swiss Queer Film Fest",
-          "Swiss Queer Film Fest news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "Swiss Queer Film Fest latest news October 2026",
-          "Swiss Queer Film Fest entertainment update 2026",
-          "Swiss Queer Film Fest news 2026-10-08",
-          "latest entertainment news about Swiss Queer Film Fest",
-          "swiss queer film fest swiss queer latest update",
-          "The Hollywood Reporter Swiss Queer Film Fest entertainment",
-          "latest news about Swiss Queer Film Fest October 2026",
-          "Swiss Queer Film Fest entertainment news 2026-10-08",
-          "what happened with Swiss Queer Film Fest",
-          "swiss",
-          "queer",
-          "film",
-          "fest",
-          "October 2026",
-          "2026-10-08",
-          "Swiss Queer Film Fest 2026",
-          "The Hollywood Reporter Swiss Queer Film Fest",
-          "hollywoodreporter.com Swiss Queer Film Fest",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-09T02:31:54.459Z"
+        "seo_generated_at": "2026-10-09T02:57:08.947Z"
       }
     },
     {
@@ -1391,7 +1393,7 @@
           "2026-10-08",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-09T02:31:54.459Z"
+        "seo_generated_at": "2026-10-09T02:57:08.947Z"
       }
     },
     {
@@ -1487,7 +1489,7 @@
           "bbc.co.uk Outspoken Indian",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-09T02:31:54.459Z"
+        "seo_generated_at": "2026-10-09T02:57:08.947Z"
       }
     },
     {
@@ -1556,7 +1558,7 @@
           "2026-10-08",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-09T02:31:54.459Z"
+        "seo_generated_at": "2026-10-09T02:57:08.947Z"
       }
     },
     {
@@ -1616,7 +1618,7 @@
           "2026-10-08",
           "BBC Science"
         ],
-        "seo_generated_at": "2026-10-09T02:31:54.459Z"
+        "seo_generated_at": "2026-10-09T02:57:08.947Z"
       }
     },
     {
@@ -1685,7 +1687,7 @@
           "2026-10-08",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-09T02:31:54.459Z"
+        "seo_generated_at": "2026-10-09T02:57:08.947Z"
       }
     },
     {
@@ -1785,7 +1787,7 @@
           "g1.globo.com CW Morgan",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-09T02:31:54.459Z"
+        "seo_generated_at": "2026-10-09T02:57:08.947Z"
       }
     },
     {
@@ -1886,7 +1888,7 @@
           "g1.globo.com apos morte rick renner",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-09T02:31:54.459Z"
+        "seo_generated_at": "2026-10-09T02:57:08.947Z"
       }
     },
     {
@@ -1955,7 +1957,7 @@
           "2026-10-08",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-09T02:31:54.459Z"
+        "seo_generated_at": "2026-10-09T02:57:08.947Z"
       }
     },
     {
@@ -2054,7 +2056,7 @@
           "bbc.co.uk welsh actress follows footsteps",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-09T02:31:54.459Z"
+        "seo_generated_at": "2026-10-09T02:57:08.947Z"
       }
     },
     {
@@ -2149,7 +2151,7 @@
           "bbc.co.uk black african cinema hub",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-09T02:31:54.459Z"
+        "seo_generated_at": "2026-10-09T02:57:08.947Z"
       }
     },
     {
@@ -2218,7 +2220,7 @@
           "2026-10-08",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-09T02:31:54.459Z"
+        "seo_generated_at": "2026-10-09T02:57:08.947Z"
       }
     },
     {
@@ -2287,7 +2289,7 @@
           "2026-10-08",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-09T02:31:54.459Z"
+        "seo_generated_at": "2026-10-09T02:57:08.947Z"
       }
     },
     {
@@ -2388,7 +2390,7 @@
           "g1.globo.com habeas corpus marjorie estiano",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-09T02:31:54.459Z"
+        "seo_generated_at": "2026-10-09T02:57:08.947Z"
       }
     },
     {
@@ -2457,7 +2459,7 @@
           "2026-10-08",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-09T02:31:54.459Z"
+        "seo_generated_at": "2026-10-09T02:57:08.947Z"
       }
     },
     {
@@ -2558,7 +2560,7 @@
           "g1.globo.com lollapalooza 2027 anuncia line",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-09T02:31:54.459Z"
+        "seo_generated_at": "2026-10-09T02:57:08.947Z"
       }
     },
     {
@@ -2659,7 +2661,7 @@
           "g1.globo.com alegrias uivos maria alcina",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-09T02:31:54.459Z"
+        "seo_generated_at": "2026-10-09T02:57:08.947Z"
       }
     },
     {
@@ -2749,7 +2751,7 @@
           "2026-10-08",
           "October 2026"
         ],
-        "seo_generated_at": "2026-10-09T02:31:54.459Z"
+        "seo_generated_at": "2026-10-09T02:57:08.947Z"
       }
     },
     {
@@ -2845,7 +2847,7 @@
           "bbc.co.uk Gaten Matarazzo",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-09T02:31:54.459Z"
+        "seo_generated_at": "2026-10-09T02:57:08.947Z"
       }
     },
     {
@@ -2944,7 +2946,7 @@
           "g1.globo.com nobel literatura relembre vencedores",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-09T02:31:54.459Z"
+        "seo_generated_at": "2026-10-09T02:57:08.947Z"
       }
     },
     {
@@ -3043,7 +3045,7 @@
           "bbc.co.uk how folk band football",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-09T02:31:54.459Z"
+        "seo_generated_at": "2026-10-09T02:57:08.947Z"
       }
     },
     {
@@ -3139,7 +3141,7 @@
           "bbc.co.uk Paul McCartney's",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-09T02:31:54.459Z"
+        "seo_generated_at": "2026-10-09T02:57:08.947Z"
       }
     },
     {
@@ -3233,7 +3235,7 @@
           "bbc.co.uk Actor Simon Pegg",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-09T02:31:54.459Z"
+        "seo_generated_at": "2026-10-09T02:57:08.947Z"
       }
     },
     {
@@ -3331,7 +3333,7 @@
           "g1.globo.com Chris Isaak",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-09T02:31:54.459Z"
+        "seo_generated_at": "2026-10-09T02:57:08.947Z"
       }
     },
     {
@@ -3432,7 +3434,7 @@
           "g1.globo.com hope primeiro impacto abre",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-09T02:31:54.459Z"
+        "seo_generated_at": "2026-10-09T02:57:08.947Z"
       }
     },
     {
@@ -3530,7 +3532,7 @@
           "g1.globo.com Zeca Pagodinho",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-09T02:31:54.459Z"
+        "seo_generated_at": "2026-10-09T02:57:08.947Z"
       }
     }
   ]
