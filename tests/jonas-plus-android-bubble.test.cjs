@@ -60,6 +60,9 @@ test('Android uses bundled first-party JS and a single shared draggable bubble',
  assert.equal(android,src);
  assert.match(kotlin,/assets\.open\("avatar-ai\/jonas-chat-plus\.js"\)/);
  assert.match(kotlin,/androidAvatarCompanionJs \+ ";" \+ jonasPaidChatJs/);
+ assert.match(kotlin,/debugSmokeLaunch\(intent\)\?\.let \{ return it \}/);
+ assert.match(kotlin,/const val HOME = "https:\/\/matchapp\.tv\//);
+ assert.doesNotMatch(kotlin,/return "http:\/\/127\.0\.0\.1:8877\/"/);
  assert.match(native,/plus\.openFromBubble\(\)/);
  assert.match(native,/openingPlus/);
  assert.match(native,/pointerdown/);
