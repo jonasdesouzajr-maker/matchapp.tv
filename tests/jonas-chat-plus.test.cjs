@@ -18,6 +18,7 @@ test('Jonas checkout requires first-party auth and never changes existing VIP pl
  assert.match(c,/auth\.auth\.getUser\(token\)/);
  assert.match(c,/reserve_stripe_request/);
  assert.match(c,/deliverJonasCheckout/);
+ assert.match(c,/Jonas Chat Plus is already active for this account/);
  assert.match(c,/subscription_data=\{metadata:/);
  assert.match(c,/stripe\.billingPortal\.sessions\.create/);
  assert.match(c,/verified\.product\.key==='jonas_chat_monthly'/);
@@ -30,6 +31,8 @@ test('paid fulfillment is Stripe-verified and cancellation cannot toggle VIP fla
  assert.match(b,/JONAS_CHAT_PRICE_IDS/);
  assert.match(w,/webhooks\.constructEventAsync/);
  assert.match(w,/syncJonasSubscription/);
+ assert.match(w,/Jonas renewal owner conflict/);
+ assert.match(w,/invoiceSub=/);
  assert.match(w,/if\(sub\.items\.data\.some\(item=>JONAS_CHAT_PRICE_IDS\.has/);
  assert.match(w,/else \{\s*\/\/ Ignore stale notifications belonging to a different subscription/);
 });
