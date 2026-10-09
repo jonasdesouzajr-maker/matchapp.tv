@@ -33,18 +33,19 @@ test('v44 companion is a circular, viewport-fixed, scroll-independent avatar',as
   w.eval(companion);assert.equal(w.document.querySelectorAll('#ma-avatar-home').length,1);
  }finally{dom.window.close()}
 });
-test('portrait opens chat, greets before listening, and close cancels the microphone',async()=>{
+test('portrait opens the conversation silently, never auto-starts the microphone, and close cancels speech',async()=>{
  const {dom,w,node,events}=await setup();
  try{
   node.querySelector('.ma-av-portrait').dispatchEvent(new w.KeyboardEvent('keydown',{key:'Enter',bubbles:true}));
   assert.equal(node.dataset.open,'true');
   assert.equal(events.mic,0);
-  assert.match(events.greeting,/Hi, I'm Jonas/);
+  assert.equal(events.greeting,undefined,'opening must not synthesize an unsolicited voice');
+  assert.match(node.querySelector('#ma-av-reply').textContent,/Hi! I'm Jonas/);
   w.document.dispatchEvent(new w.CustomEvent('matchapp:avatar-speech',{detail:{speaking:true}}));
   w.document.dispatchEvent(new w.CustomEvent('matchapp:avatar-speech',{detail:{speaking:false}}));
   await new Promise(r=>setTimeout(r,220));
-  assert.equal(events.mic,1);
-  assert.equal(node.dataset.state,'listening');
+  assert.equal(events.mic,0,'spoken greeting completion must never auto-start listening');
+  assert.notEqual(node.dataset.state,'listening');
   node.querySelector('#ma-av-dismiss').click();
   assert.equal(node.dataset.open,'false');
   assert.equal(events.cancel,true);
