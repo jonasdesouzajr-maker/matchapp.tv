@@ -57,7 +57,9 @@ test('website and Android use the same signed-in entitlement, but Play does not 
  assert.match(ui,/if\(play\(\)\)return/);
  assert.match(ui,/R\$ 39,90/);
  assert.match(ui,/\$9\.99/);
- assert.match(ui,/390/);
+ assert.match(ui,/450/);
+ assert.match(ui,/150/);
+ assert.match(ui,/30/);
  for(const file of ['index.html','discover.html','pricing/pricing.html','profile/profile.html']){
   assert.match(source(file),/jonas-chat-plus\.js/);
  }
