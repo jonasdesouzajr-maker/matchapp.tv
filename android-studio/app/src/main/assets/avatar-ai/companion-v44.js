@@ -55,6 +55,8 @@ html.ma-avatar-chat-discover .discover-head{display:none!important}
 @media(max-height:650px){#ma-avatar-home{--face:108px!important}}
 @media(prefers-reduced-motion:reduce){#ma-avatar-home,#ma-avatar-home *{animation:none!important;transition:none!important}}
 html.reduce-motion #ma-avatar-home,html.reduce-motion #ma-avatar-home *{animation:none!important;transition:none!important}
+html.matchapp-ai-android body #ma-avatar-home[data-placed="true"]:not([data-open="true"]){left:var(--ma-bubble-x)!important;top:var(--ma-bubble-y)!important;right:auto!important;bottom:auto!important}
+html.matchapp-ai-android body #ma-avatar-home[data-open="true"]{left:auto!important;top:auto!important;right:12px!important;bottom:max(16px,env(safe-area-inset-bottom))!important}
 `;
 (document.head||document.documentElement).appendChild(css);
 function state(s){document.dispatchEvent(new CustomEvent('matchapp:avatar-state',{detail:{state:s}}))}
@@ -99,6 +101,40 @@ function wireChat(){
   }
  }
 }
+
+var positionKey='matchapp-jonas-global-position-v1',moving=null,ignoreTapUntil=0;
+function setBubblePosition(x,y,save){
+ if(!node||opened)return;
+ var w=node.offsetWidth||96,h=node.offsetHeight||96;
+ x=Math.max(8,Math.min(window.innerWidth-w-8,x));
+ y=Math.max(48,Math.min(window.innerHeight-h-8,y));
+ node.dataset.placed='true';node.style.setProperty('--ma-bubble-x',x+'px');
+ node.style.setProperty('--ma-bubble-y',y+'px');
+ if(save)try{localStorage.setItem(positionKey,JSON.stringify({x:x,y:y}))}catch(_){}
+}
+function restoreBubblePosition(){
+ try{var p=JSON.parse(localStorage.getItem(positionKey)||'null');
+  if(p&&Number.isFinite(p.x)&&Number.isFinite(p.y))setBubblePosition(p.x,p.y,false);
+ }catch(_){}
+}
+function dragStart(e){
+ if(opened||(!e.isPrimary&&e.pointerType==='touch'))return;
+ var rect=node.getBoundingClientRect();
+ moving={id:e.pointerId,x:rect.left,y:rect.top,sx:e.clientX,sy:e.clientY,moved:false};
+ try{photo.setPointerCapture(e.pointerId)}catch(_){}
+}
+function dragMove(e){
+ if(!moving||moving.id!==e.pointerId||opened)return;
+ var dx=e.clientX-moving.sx,dy=e.clientY-moving.sy;
+ if(Math.hypot(dx,dy)>10)moving.moved=true;
+ if(moving.moved)setBubblePosition(moving.x+dx,moving.y+dy,false);
+}
+function dragEnd(e){
+ if(!moving||moving.id!==e.pointerId)return;
+ if(moving.moved){ignoreTapUntil=Date.now()+420;var r=node.getBoundingClientRect();
+  setBubblePosition(r.left,r.top,true)}
+ moving=null;
+}
 function attach(){
  var el=document.getElementById('ma-avatar-home');if(!el)return false;
  if(el.parentElement!==document.body)document.body.appendChild(el);
@@ -113,8 +149,9 @@ function attach(){
  close=document.createElement('button');close.id='ma-av-dismiss';close.type='button';close.textContent='×';close.setAttribute('aria-label',loc('Close chat','Fechar conversa'));node.appendChild(close);close.onclick=dismiss;
  var menu=document.createElement('button');menu.id='ma-av-menu';menu.type='button';menu.textContent='⋯';menu.setAttribute('aria-label',loc('Open chat','Abrir conversa'));node.appendChild(menu);menu.onclick=function(){open(false)};
  photo.setAttribute('role','button');photo.setAttribute('tabindex','0');photo.setAttribute('aria-expanded','false');photo.setAttribute('aria-label',loc('Talk to your AI avatar','Falar com seu avatar de IA'));
- photo.addEventListener('click',function(){if(opened)listen();else open(true)});
+ photo.addEventListener('click',function(){if(Date.now()<ignoreTapUntil)return;if(opened)listen();else open(true)});
  photo.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();if(opened)listen();else open(true)}});
+ photo.style.touchAction='none';photo.addEventListener('pointerdown',dragStart);photo.addEventListener('pointermove',dragMove);photo.addEventListener('pointerup',dragEnd);photo.addEventListener('pointercancel',dragEnd);restoreBubblePosition();
  var cancel=document.createElement('button');cancel.id='ma-av-cancel-mic';cancel.type='button';cancel.textContent=loc('Cancel microphone','Cancelar microfone');cancel.hidden=true;controls.appendChild(cancel);
  cancel.onclick=function(){cancelGreeting();window.MatchAppNativeVoice?.stopListening?.();state('idle');cancel.hidden=true};
  document.addEventListener('matchapp:voice-state',function(e){cancel.hidden=e.detail?.state!=='listening'});
@@ -167,7 +204,7 @@ function viewport(){
 }
 function refresh(){attach();wireChat();viewport()}
 window.__matchappCompanionV44={refresh:refresh,open:open,close:dismiss,listen:listen};
-window.visualViewport?.addEventListener('resize',viewport);window.addEventListener('resize',viewport);
+window.visualViewport?.addEventListener('resize',viewport);window.addEventListener('resize',function(){viewport();restoreBubblePosition()});
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',refresh,{once:true});else refresh();
 var attempts=0,check=setInterval(function(){if(attach()||++attempts>30)clearInterval(check)},300);
 setInterval(refresh,1200);
