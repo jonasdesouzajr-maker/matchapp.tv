@@ -9,6 +9,7 @@ var pt=()=>/^pt/i.test(window.MATCH_LANG||document.documentElement.lang||navigat
 var t=(en,br)=>pt()?br:en;
 var play=()=>!!window.MatchAppNativeVoice||document.documentElement.classList.contains('matchapp-ai-android')||/;\s*wv[);]/i.test(navigator.userAgent||'');
 var usage=null,active=false,loading=false,history=[],box=null,lastFocus=null;
+var availableUSD=false,availableBRL=false,billingChecked=false,billingReady=false;
 function el(tag,cls,id){var x=document.createElement(tag);if(cls)x.className=cls;if(id)x.id=id;return x}
 function label(tag,text,cls,id){var x=el(tag,cls,id);x.textContent=text;return x}
 function notify(text){var x=$('jonas-plus-status');if(x)x.textContent=text}
@@ -71,8 +72,12 @@ function allowances(){
 }
 function display(){
  notify(allowances());
- var b=$('jonas-plus-buy');if(b){b.hidden=active;b.disabled=play();b.textContent=play()?
-   t('Purchase in Android coming soon','Compra pelo Android em breve'):t('Subscribe to Jonas Plus','Assinar Jonas Plus');}
+ var b=$('jonas-plus-buy');if(b){b.hidden=active;
+  b.disabled=play()||!billingReady;
+  b.textContent=play()?t('Purchase in Android coming soon','Compra no Android em breve'):
+   !billingReady?t('Payment temporarily unavailable','Pagamento temporariamente indisponível'):
+    t('Subscribe to Jonas Plus','Assinar Jonas Plus');
+ }
  var m=$('jonas-plus-manage');if(m)m.hidden=!active||play();
  var q=$('jonas-plus-start');if(q)q.disabled=!active;
  var remain=$('jonas-plus-remaining');if(remain)remain.textContent=allowances();
@@ -83,11 +88,25 @@ async function refresh(){
  catch(e){usage=null;active=false;notify(e.message);display();return false}
 }
 function isPricing(){return /^\/pricing(?:\/pricing\.html|\/)?$/.test(location.pathname)}
-function brazil(){return window.MatchBillingMarket?.market==='BR'&&
-  Array.isArray(window.MatchBillingMarket.activeProducts)&&
-  window.MatchBillingMarket.activeProducts.includes('jonas_chat_monthly')}
+function brazil(){return window.MatchBillingMarket?.market==='BR'&&availableBRL}
+async function checkCheckoutAvailability(){
+ try{
+  await window.MatchBillingMarket?.ready;
+  var x=await window.supabaseClient?.functions?.invoke('stripe-checkout',{
+   body:{action:'availability',products:['jonas_chat_monthly']}
+  });
+  if(x?.error||!x?.data)throw Error('Unavailable catalog');
+  availableUSD=x.data.usd_products?.jonas_chat_monthly===true;
+  availableBRL=x.data.products?.jonas_chat_monthly===true;
+ }catch(_){availableUSD=false;availableBRL=false;}
+ billingChecked=true;
+ billingReady=window.MatchBillingMarket?.market==='BR'?availableBRL:availableUSD;
+ display();
+}
 async function checkout(){
  if(play())return;
+ if(!billingChecked)await checkCheckoutAvailability();
+ if(!billingReady){notify(t('Secure payment is temporarily unavailable. Please try later.','Pagamento seguro temporariamente indisponível. Tente novamente mais tarde.'));return;}
  if(typeof window.startVerifiedCheckout==='function')return window.startVerifiedCheckout('jonas_chat_monthly',$('jonas-plus-buy'));
  try{
   var body={product:'jonas_chat_monthly',lang:window.MATCH_LANG||'en',
@@ -143,7 +162,7 @@ function pricing(){
  'Cobrança mensal. Cancele a qualquer momento. Acesso até o fim do período pago. Tributos podem incidir.'));
  card.append(row,desc,limits,actions,status,fine);
  parent.parentNode?.insertBefore(card,parent);
- display();void refresh();
+ display();void refresh();void checkCheckoutAvailability();
  if(window.MatchBillingMarket?.ready?.then)window.MatchBillingMarket.ready.then(()=>{
   price.firstChild.textContent=brazil()?'R$ 39,90':'$9.99';
  }).catch(()=>{});
