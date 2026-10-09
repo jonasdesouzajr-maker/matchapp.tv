@@ -38,15 +38,10 @@ test('Android asset origin, backend JWT, microphone permission and call stop are
  assert.match(html,/Authorization":"Bearer "\+jwt/);
  assert.match(html,/functions\/v1\/private-voice-call/);
 });
-test('Native launcher does not modify browser, Kids or checkout and stays owner-gated',()=>{
- assert.match(main,/openVoiceAvatar\(\)/);
- assert.match(main,/matchapp-android-avatar-launcher/);
- assert.match(main,/MatchAppNativeExperience\.openVoiceAvatar/);
- assert.match(main,/localStorage\.getItem\(keys\[i\]\)/);
+test('Duplicate native launcher is removed while private activity retains token protection',()=>{
+ assert.match(main,/getElementById\('matchapp-android-avatar-launcher'\)\?\.remove\(\)/);
+ assert.doesNotMatch(main,/setupNativeVoiceAvatarLauncher/);
  assert.match(main,/VoiceAvatarActivity\.EXTRA_TOKEN/);
- assert.match(main,/if\(s&&s\.user&&s\.user\.id&&s\.access_token\)/);
- assert.match(main,/setupNativeVoiceAvatarLauncher/);
- assert.doesNotMatch(main,/if\(!owner\) return;/);
  assert.ok(!fs.existsSync(path.join(root,'avatar-ai')));
 });
 test('Audio motion uses local amplitudes, is explicitly not phoneme accurate, and honours reduced motion',()=>{
@@ -56,4 +51,13 @@ test('Audio motion uses local amplitudes, is explicitly not phoneme accurate, an
  assert.match(html,/not phoneme-accurate lip-sync/i);
  assert.match(html,/window\.addEventListener\("pagehide",stop\)/);
  assert.match(html,/document\.addEventListener\("visibilitychange"/);
+});
+
+test('Home avatar preference state uses declared variables and valid JavaScript',()=>{
+ const preview=read(app+'assets/avatar-ai/home-preview.js');
+ assert.doesNotThrow(()=>new vm.Script(preview,{filename:'home-preview.js'}));
+ assert.match(preview,/lastLoadedUser=''/);
+ assert.match(preview,/cloudChangeAt=Date\.now\(\)/);
+ assert.doesNotMatch(preview,/choiceChangedAt/);
+ assert.match(preview,/mic-btn-index/);
 });
