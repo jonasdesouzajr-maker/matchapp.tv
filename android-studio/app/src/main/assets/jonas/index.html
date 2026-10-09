@@ -39,6 +39,17 @@
           </div>
           <div class="hero-art" aria-hidden="true"><div class="orb orb-back"></div><div class="orb orb-mid"></div><div class="orb orb-front"><img id="hero-face" src="faces/jonas/rest.jpg" alt=""/><img id="hero-expression" src="faces/jonas/rest.jpg" alt="" aria-hidden="true"/></div><div class="orb-sheen"></div></div>
         </div>
+        <div class="section-heading"><div><span class="eyebrow">JONAS PLUS</span><h2>Plan, limits, and billing</h2></div></div>
+        <section class="plan-card" aria-label="Jonas Plus on Android">
+          <div class="plan-top"><div><span class="eyebrow">MATCHAPP AI</span><h3>Jonas Plus</h3></div><strong>Account entitlement</strong></div>
+          <ul>
+            <li>30 chats every 24 hours</li>
+            <li>150 chats every 7 days</li>
+            <li>450 chats each paid monthly cycle</li>
+          </ul>
+          <p>On the MatchApp app, Jonas Plus is checked on the server with your account. This preview does not sell a plan, restore a Play purchase, or open Stripe checkout.</p>
+          <p class="plan-state">Google Play billing is not active in this build. Purchase, restore, and manage stay unavailable until that catalog is enabled.</p>
+        </section>
         <div class="section-heading"><div><span class="eyebrow">CURATED FOR THE MOMENT</span><h2>Where will your mood take you?</h2></div><button class="text-link" data-page="discover">Explore more <span>→</span></button></div>
         <div class="mood-grid">
           <button class="mood-card" data-prompt="Find me a beautifully made film for a calm and cozy evening. Ask my country first if necessary."><span class="mood-icon">☾</span><span class="mood-content"><strong>Slow evening</strong><small>Find your comfort film</small></span><span class="arrow">↗</span></button>
@@ -67,13 +78,13 @@
         </div>
       </section>
     </main>
-    <footer class="app-footer"><span>© 2026 MatchApp Ai · All rights reserved.</span><span>Python preview · Not the Play Store release</span></footer>
+    <footer class="app-footer"><span>© 2026 MatchApp Ai · All rights reserved.</span><span>Android preview · Not the Play Store release</span></footer>
   </div>
 
   <div id="chat-backdrop" class="chat-backdrop" hidden></div>
   <aside id="chat-sheet" class="chat-sheet" role="dialog" aria-modal="true" aria-labelledby="chat-heading" hidden>
     <header class="sheet-head">
-      <div class="sheet-identity"><span class="sheet-presence" aria-hidden="true"></span><span><strong id="chat-heading">Jonas</strong><small>Your MatchApp Ai companion</small></span></div>
+      <div class="sheet-identity"><span class="sheet-presence"><img id="sheet-face" src="faces/jonas/rest.jpg" alt="Jonas"/><img id="sheet-expression" src="faces/jonas/rest.jpg" alt="" aria-hidden="true"/></span><span><strong id="chat-heading">Jonas</strong><small>Your MatchApp Ai companion</small></span></div>
       <div class="sheet-actions"><button id="save-reply" class="icon-button" title="Save last reply" aria-label="Save last reply">☆</button><button id="close-chat" class="icon-button" aria-label="Close conversation">×</button></div>
     </header>
     <div class="chat-messages" id="chat-messages" role="log" aria-live="polite" aria-relevant="additions text">

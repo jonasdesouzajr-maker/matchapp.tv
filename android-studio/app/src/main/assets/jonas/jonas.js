@@ -16,6 +16,7 @@
   const avatarPairs = [
     [face, $("bubble-expression")],
     [$("hero-face"), $("hero-expression")],
+    [$("sheet-face"), $("sheet-expression")],
   ];
   let activeFrame = 0;
   let faceFrame = "rest";
@@ -139,7 +140,7 @@
       let step = 0;
       audioAnimation = setInterval(() => {
         if (speaking && mine === epoch) setExpression(shapes[(step++) % shapes.length]);
-      }, 130);
+      }, 220);
       const finish = () => {
         if (mine !== epoch) return;
         speaking = false; bubble.classList.remove("is-speaking");
@@ -174,7 +175,7 @@
     utter.onend = done; utter.onerror = done;
     speaking = true; bubble.classList.add("is-speaking"); uiStatus("Jonas is speaking…");
     let i = 0;
-    audioAnimation = setInterval(() => { if (speaking) setExpression(shapes[(i++) % shapes.length]); }, 125);
+    audioAnimation = setInterval(() => { if (speaking) setExpression(shapes[(i++) % shapes.length]); }, 220);
     speechSynthesis.speak(utter);
   }
   // Production secrets never live here. The preview Android native bridge talks
@@ -270,7 +271,13 @@
     } catch (error) {
       const note = error.name === "AbortError" ? "The request timed out. Try again." : error.message || "Jonas is unavailable.";
       messageHistory.pop();
-      addEntry("assistant", note);
+      const failed = addEntry("assistant", note);
+      const retry = document.createElement("button");
+      retry.type = "button";
+      retry.className = "retry-ask";
+      retry.textContent = "Try again";
+      retry.addEventListener("click", () => { retry.disabled = true; void send(text); });
+      failed.appendChild(retry);
       uiStatus("Couldn't connect");
     } finally {
       clearTimeout(timeout);
@@ -407,7 +414,16 @@
     if (ignoreClick) { ignoreClick = false; return; }
     toggleChat();
   });
+  function trackKeyboard() {
+    const vv = window.visualViewport;
+    const overlap = vv ? Math.max(0, window.innerHeight - vv.height - vv.offsetTop) : 0;
+    document.documentElement.style.setProperty("--keyboard", overlap + "px");
+  }
+  trackKeyboard();
+  window.visualViewport?.addEventListener("resize", trackKeyboard);
+  window.visualViewport?.addEventListener("scroll", trackKeyboard);
   window.addEventListener("resize", () => {
+    trackKeyboard();
     if (!bubble.style.left) return;
     const rect = bubble.getBoundingClientRect(); setPosition(rect.left, rect.top);
   });
