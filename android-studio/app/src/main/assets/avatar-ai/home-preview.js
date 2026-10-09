@@ -39,7 +39,7 @@ function words(en,pt){return locale()==='pt'?pt:en}
 function signup(){
  // Registration and sign-in happen in MatchApp Ai's existing first-party flow.
  var dialog=document.createElement('div');dialog.className='ma-avatar-dialog';
- dialog.innerHTML='<section role="dialog" aria-modal="true" aria-label="Avatar sign in"><h3>'+words('Meet your AI avatar','Conheça seu avatar de IA')+'</h3><p>'+words('Create your free MatchApp Ai account or sign in to choose Jonas or Aureya and save your AI avatar settings.','Crie sua conta gratuita do MatchApp Ai ou entre para escolher Jonas ou Aureya e salvar as preferências.')+'</p><div class="ma-av-buttons"><button data-av-auth="register">'+words('Create free account','Criar conta grátis')+'</button><button data-av-auth="signin">'+words('Sign in','Entrar')+'</button></div><button class="ma-av-close" aria-label="Close">×</button></section>';
+ dialog.innerHTML='<section role="dialog" aria-modal="true" aria-label="Avatar sign in"><h3>'+words('Meet your AI avatar','Conheça seu avatar de IA')+'</h3><p>'+words('Create your free MatchApp Ai account or sign in to save your Jonas companion settings.','Crie sua conta gratuita do MatchApp Ai ou entre para salvar as configurações do Jonas.')+'</p><div class="ma-av-buttons"><button data-av-auth="register">'+words('Create free account','Criar conta grátis')+'</button><button data-av-auth="signin">'+words('Sign in','Entrar')+'</button></div><button class="ma-av-close" aria-label="Close">×</button></section>';
  dialog.querySelector('.ma-av-close').onclick=function(){dialog.remove()};
  dialog.addEventListener('click',function(e){
   if(e.target===dialog){dialog.remove();return}
@@ -77,7 +77,7 @@ function save(name){
 function selector(){
  if(!getSession()){signup();return}
  var dialog=document.createElement('div');dialog.className='ma-avatar-dialog';
- dialog.innerHTML='<section role="dialog" aria-modal="true" aria-label="Choose AI avatar"><h3>'+words('Your AI avatar','Seu avatar de IA')+'</h3><p>'+words('Choose one AI face. Only your selection appears on Home. You can change it at any time.','Escolha um avatar. Apenas o escolhido aparece na página inicial. Você pode alterá-lo a qualquer momento.')+'</p><div class="ma-av-choice"></div><button class="ma-av-close">'+words('Close','Fechar')+'</button></section>';
+ dialog.innerHTML='<section role="dialog" aria-modal="true" aria-label="Jonas companion settings"><h3>'+words('Jonas settings','Seu avatar de IA')+'</h3><p>'+words('Jonas is your sole MatchApp Ai companion. Your account can save his settings.','Jonas é seu único assistente MatchApp Ai. Sua conta pode salvar as configurações dele.')+'</p><div class="ma-av-choice"></div><button class="ma-av-close">'+words('Close','Fechar')+'</button></section>';
  var chooser=dialog.querySelector('.ma-av-choice');
  Object.keys(PERSONAS).forEach(function(name){
   var option=document.createElement('button');option.dataset.persona=name;
