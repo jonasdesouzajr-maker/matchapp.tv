@@ -5,45 +5,52 @@
 <meta name="theme-color" content="#090712">
 <title>MatchApp Ai · Android Avatar</title>
 <style>
-:root{color-scheme:dark;--gold:#edc969;--violet:#885cff;--text:#f8f6ff;--sub:#beb7d1;--volume:0}
-*{box-sizing:border-box}html,body{height:100%;margin:0;overflow:hidden}body{font:500 15px/1.5 Inter,system-ui,Roboto,sans-serif;color:var(--text);background:radial-gradient(ellipse 90% 52% at 50% 30%,#2b174a 0%,#100a20 52%,#07060e 100%);display:flex;flex-direction:column}button{font:inherit;touch-action:manipulation}
-.matchapp-brand-bar{flex:none;display:flex;justify-content:center;padding:max(8px,env(safe-area-inset-top)) 16px 0}
-.matchapp-brand-bar img{height:28px;width:auto;display:block}
-.shell{flex:1;min-height:0;width:100%;display:flex;flex-direction:column;padding:12px max(20px,env(safe-area-inset-right)) max(20px,env(safe-area-inset-bottom)) max(20px,env(safe-area-inset-left));max-width:640px;margin:auto;position:relative;isolation:isolate}
-.ambient{pointer-events:none;position:absolute;inset:0;z-index:-1;background:radial-gradient(circle at 50% 42%,rgba(153,99,255,.18),transparent 52%)}
-.top{display:flex;align-items:center;justify-content:space-between;gap:12px}.back{width:44px;height:44px;display:grid;place-items:center;color:#f7f1ff;background:rgba(255,255,255,.05);border:1px solid rgba(224,190,112,.32);border-radius:50%;font-size:22px}
-.brand{flex:1;text-align:center;line-height:1.15;font-size:17px;font-weight:800;letter-spacing:-.02em}.brand em{font-style:normal;color:var(--gold)}.brand small{display:block;color:var(--sub);font-size:10px;font-weight:650;letter-spacing:.16em;margin-top:4px;text-transform:uppercase}
-.privacy{font-size:10px;white-space:nowrap;color:#eacb80;background:rgba(236,194,97,.08);padding:8px 10px;border:1px solid rgba(236,194,97,.28);border-radius:99px}
-.stage{flex:1;min-height:0;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:14px}
-.stage-copy{display:flex;flex-direction:column;align-items:center;gap:8px;width:min(100%,420px);min-width:0}
-.portrait-wrap{width:min(70vw,44dvh,292px);aspect-ratio:1;position:relative;border-radius:50%;filter:drop-shadow(0 22px 34px rgba(0,0,0,.48))}
-.portrait-wrap:before{content:"";position:absolute;inset:-9px;border-radius:50%;border:2px solid rgba(240,215,160,.9);box-shadow:0 0 0 7px rgba(201,161,92,.12),0 0 32px rgba(155,99,255,.28);pointer-events:none;z-index:2;transition:box-shadow .35s}
-body[data-mode="speaking"] .portrait-wrap:before{box-shadow:0 0 calc(22px + var(--volume)*70px) rgba(163,116,255,.55),0 0 0 7px rgba(255,227,173,.16)}
-body[data-mode="listening"] .portrait-wrap:before{box-shadow:0 0 28px rgba(125,231,223,.45),0 0 0 7px rgba(125,231,223,.16)}
-body[data-mode="error"] .portrait-wrap:before{box-shadow:0 0 0 7px rgba(234,116,138,.16);border-color:rgba(246,170,180,.8)}
+:root{color-scheme:dark;--gold:#edc969;--text:#f8f6ff;--sub:#cbbfd8;--volume:0}
+*{box-sizing:border-box}html,body{height:100%;margin:0;overflow:hidden}
+body{font:500 15px/1.45 Inter,system-ui,Roboto,sans-serif;color:var(--text);background:#100816;display:flex;flex-direction:column}
+button{font:inherit;touch-action:manipulation;cursor:pointer}
+.shell{flex:1;min-height:0;width:100%;display:flex;flex-direction:column;padding:max(12px,env(safe-area-inset-top)) max(20px,env(safe-area-inset-right)) max(16px,env(safe-area-inset-bottom)) max(20px,env(safe-area-inset-left));max-width:480px;margin:auto;position:relative;isolation:isolate}
+.ambient{pointer-events:none;position:absolute;inset:0;z-index:-1;background:radial-gradient(circle at 50% 36%,rgba(232,197,120,.13),transparent 26%),radial-gradient(circle at 50% 34%,rgba(86,42,112,.35),transparent 48%)}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:56px}
+.back{width:44px;height:44px;display:grid;place-items:center;color:#f7f1ff;background:rgba(255,255,255,.04);border:1px solid rgba(224,190,112,.28);border-radius:50%;font-size:22px}
+.brand{flex:1;text-align:center;line-height:1.1;font-size:18px;font-weight:750;letter-spacing:-.03em}.brand em{font-style:normal;color:var(--gold)}.brand small{display:block;color:var(--sub);font-size:11px;font-weight:600;letter-spacing:.12em;margin-top:5px;text-transform:uppercase}
+.privacy{font-size:11px;white-space:nowrap;color:#ead7a4;background:rgba(236,194,97,.08);padding:8px 12px;border:1px solid rgba(236,194,97,.28);border-radius:99px}
+.stage{flex:1;min-height:0;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:22px}
+.stage-copy{display:flex;flex-direction:column;align-items:center;gap:12px;width:min(100%,420px);min-width:0}
+.portrait-wrap{width:min(68vw,42dvh,280px);aspect-ratio:1;position:relative;border-radius:50%;filter:drop-shadow(0 18px 28px rgba(0,0,0,.45))}
+.portrait-wrap:before{content:"";position:absolute;inset:-8px;border-radius:50%;border:2px solid rgba(240,215,160,.92);box-shadow:0 0 0 6px rgba(201,161,92,.12);pointer-events:none;z-index:2;transition:box-shadow .35s}
+body[data-mode="speaking"] .portrait-wrap:before{box-shadow:0 0 calc(18px + var(--volume)*48px) rgba(232,197,120,.45),0 0 0 6px rgba(255,227,173,.16)}
+body[data-mode="listening"] .portrait-wrap:before{box-shadow:0 0 22px rgba(125,231,223,.4),0 0 0 6px rgba(125,231,223,.16)}
+body[data-mode="error"] .portrait-wrap:before{box-shadow:0 0 0 6px rgba(234,116,138,.16);border-color:rgba(246,170,180,.85)}
 .face{width:100%;height:100%;display:block;border-radius:50%;object-fit:cover;object-position:center 22%;background:#1b1626}
-.glimmer{position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:linear-gradient(135deg,rgba(251,218,154,.12),transparent 38%,transparent 68%,rgba(132,93,222,.16));mix-blend-mode:screen}
-.status-dot{position:absolute;right:4%;bottom:8%;width:16px;height:16px;border-radius:50%;border:3px solid #130d22;background:#8c809d;z-index:3}body[data-mode="connected"] .status-dot,body[data-mode="listening"] .status-dot,body[data-mode="speaking"] .status-dot{background:#66efb0;box-shadow:0 0 17px rgba(95,235,183,.8)}
-.status{text-align:center;padding-top:8px;max-width:360px}.status h1{margin:0;font-size:clamp(22px,3.2dvh,28px);line-height:1.15;font-weight:800;letter-spacing:-.035em}.status p{color:var(--sub);font-size:13px;line-height:1.45;margin:8px auto 0;max-width:340px;min-height:36px}
-.wave{display:flex;align-items:center;justify-content:center;height:42px;gap:4px}.wave span{background:linear-gradient(180deg,#efcd82,#9a7ff2);width:3px;height:10px;border-radius:8px;transform-origin:center;transition:transform 70ms ease-out}
-.actions{padding:4px 0 2px;display:grid;gap:10px}.main-btn{width:100%;min-height:56px;border-radius:999px;border:0;background:linear-gradient(107deg,#f0d7a2,#c99645 70%,#a98af3);color:#1a1124;font-weight:800;font-size:15px;letter-spacing:-.01em;box-shadow:0 14px 30px rgba(201,150,69,.16)}.main-btn:disabled{opacity:.55}.main-btn.end{background:rgba(234,116,138,.1);border:1px solid rgba(246,147,155,.5);color:#f9d0d1;box-shadow:none}
-.secondary{width:100%;min-height:44px;background:transparent;color:#ddd2f3;border:1px solid rgba(220,207,244,.22);border-radius:999px;font-size:13px}.secondary[hidden]{display:none}
-.foot{text-align:center;font-size:11px;line-height:1.45;color:#8e849e;margin-top:2px}.foot strong{color:#d5bf85}
-@media(min-width:840px){.shell{max-width:980px;padding-top:20px;display:grid;grid-template-columns:minmax(240px,340px) minmax(280px,440px);grid-template-rows:auto minmax(0,1fr) auto;column-gap:56px;row-gap:14px;align-items:center;justify-content:center}.top{grid-column:1 / -1}.stage{display:contents}.portrait-wrap{grid-column:1;grid-row:2 / span 2;width:min(34vw,320px);justify-self:center}.stage-copy{grid-column:2;grid-row:2;align-items:flex-start;align-self:end;width:100%;max-width:440px}.status{text-align:left;max-width:none}.status p{margin-left:0}.wave{justify-content:flex-start;width:100%;height:48px}.actions{grid-column:2;grid-row:3;align-self:start;width:100%;max-width:none;margin:0}.foot{text-align:left}}
-@media(max-height:710px){.stage{gap:6px}.portrait-wrap{width:min(52vw,34dvh)}.status p{margin-top:4px}.status h1{font-size:20px}.wave{height:28px}}
-@media(min-width:840px) and (max-height:710px){.shell{column-gap:32px}.portrait-wrap{width:min(30vw,42dvh,260px)}.stage-copy{gap:6px}}
+.glimmer{position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:linear-gradient(145deg,rgba(251,218,154,.1),transparent 42%);mix-blend-mode:screen}
+.status-dot{position:absolute;right:13%;bottom:15%;width:14px;height:14px;border-radius:50%;border:3px solid #140c1e;background:#8d829c;z-index:4;opacity:0}
+body[data-mode="connected"] .status-dot,body[data-mode="listening"] .status-dot,body[data-mode="speaking"] .status-dot{opacity:1;background:#66efb0;box-shadow:0 0 12px rgba(95,235,183,.7)}
+body[data-mode="error"] .status-dot{opacity:1;background:#f08aa0}
+.status{text-align:center;width:100%}.status h1{margin:0;font-size:28px;line-height:1.15;font-weight:750;letter-spacing:-.035em}.status p{color:var(--sub);font-size:14px;line-height:1.45;margin:8px auto 0;max-width:320px;min-height:0}
+.wave{display:flex;align-items:center;justify-content:center;height:32px;gap:5px;width:100%}
+.wave span{background:#e7c98a;width:3px;height:8px;border-radius:99px;transform-origin:center;opacity:.9;transition:transform 70ms ease-out}
+.wave span:nth-child(2),.wave span:nth-child(8){height:14px}.wave span:nth-child(3),.wave span:nth-child(7){height:20px}.wave span:nth-child(4),.wave span:nth-child(6){height:26px}.wave span:nth-child(5){height:32px}
+.actions{width:100%;padding:8px 0 0;display:grid;gap:10px}
+.main-btn{width:100%;min-height:56px;border-radius:999px;border:0;background:linear-gradient(180deg,#f6e2b4,#d4a85a);color:#1c1224;font-weight:750;font-size:16px;letter-spacing:-.01em;box-shadow:0 12px 28px rgba(201,150,69,.2)}
+.main-btn:disabled{opacity:.55}.main-btn:active{filter:brightness(1.06)}
+.main-btn.end{background:transparent;border:1px solid rgba(246,147,155,.55);color:#f6d4d6;box-shadow:none}
+.secondary{width:100%;min-height:44px;background:transparent;color:#ddd2f3;border:1px solid rgba(220,207,244,.22);border-radius:999px;font-size:14px}.secondary[hidden]{display:none}
+.foot{text-align:center;font-size:12px;line-height:1.45;color:#9b90a8;margin:2px 0 0;text-wrap:balance}.foot strong{color:#d5bf85;font-weight:650}
+@media(min-width:840px){.stage{flex-direction:row;align-items:center;justify-content:center;gap:64px}.shell{max-width:980px}.ambient{background:radial-gradient(circle at 32% 50%,rgba(232,197,120,.12),transparent 22%),radial-gradient(circle at 32% 48%,rgba(86,42,112,.32),transparent 40%)}.portrait-wrap{width:min(34vw,320px);flex:none}.stage-copy{align-items:flex-start;width:min(420px,40vw);gap:14px}.status{text-align:left}.status p{margin-left:0}.wave{justify-content:flex-start}.actions{width:100%;max-width:none;margin:0}.foot{text-align:left}}
+@media(max-height:710px){.stage{gap:12px}.portrait-wrap{width:min(46vw,34dvh)}.status h1{font-size:22px}.status p{margin-top:4px}.wave{height:24px}.main-btn{min-height:48px}}
+@media(min-width:840px) and (max-height:710px){.stage{gap:36px}.portrait-wrap{width:min(28vw,46dvh,240px)}.stage-copy{gap:8px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
-</style><link rel="stylesheet" href="/brand.css?v=195">
+</style>
 </head>
 <body data-mode="ready">
-<div class="matchapp-brand-bar"><a class="matchapp-brand-link" href="/" aria-label="MatchApp Ai"><img class="matchapp-wordmark" src="/assets/brand/matchapp-tv-ai-v2.svg" alt="MatchApp Ai" width="600" height="104" decoding="async"></a></div>
-
 <div class="shell"><div class="ambient"></div>
-<header class="top"><button id="back" class="back" aria-label="Return to MatchApp Ai">‹</button><div class="brand">MatchApp <em>Ai</em><small id="avatar-subtitle">Voice avatar · Android</small></div><span class="privacy">● Beta</span></header>
+<header class="top"><button id="back" class="back" aria-label="Return to MatchApp Ai">‹</button><div class="brand">MatchApp <em>Ai</em><small id="avatar-subtitle">Jonas · Voice</small></div><span class="privacy">Beta</span></header>
 <main class="stage"><div class="portrait-wrap"><canvas id="face" class="face" aria-label="AI avatar portrait"></canvas><div class="glimmer"></div><div class="status-dot"></div></div>
 <div class="stage-copy"><div class="status" role="status" aria-live="polite"><h1 id="title">Ready to talk</h1><p id="description">Natural voice, with subtle real-time facial movement.</p></div>
-<div class="wave" id="wave" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div></div></main>
-<footer class="actions"><button id="primary" class="main-btn">Start conversation</button><button id="secondary" class="secondary" hidden>Mute microphone</button><div class="foot"><strong>MatchApp Ai</strong> · Voice powered by OpenAI Realtime<br>Face movement is audio-reactive, not phoneme-accurate lip-sync.</div></footer>
+<div class="wave" id="wave" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+<footer class="actions"><button id="primary" class="main-btn">Start conversation</button><button id="secondary" class="secondary" hidden>Mute microphone</button><div class="foot">Face movement is audio-reactive, not phoneme-accurate lip-sync.</div></footer>
+</div></main>
 </div>
 <script>
 "use strict";
