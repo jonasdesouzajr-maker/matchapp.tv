@@ -36,12 +36,20 @@ test('typed greeting stays silent; spoken greeting uses selected persona and rep
   input.value='Hello Kitty';const click=new w.MouseEvent('click',{bubbles:true,cancelable:true});send.dispatchEvent(click);assert.equal(click.defaultPrevented,false);
  }finally{dom.window.close()}
 });
-test('registered choice changes both portrait and voice; guest options remain gated',async()=>{
+test('Jonas is the only account avatar; obsolete persona choices cannot override him',async()=>{
  const {dom,w,calls}=await setup(true);try{
-  w.document.getElementById('ma-av-settings').click();w.document.querySelector('[data-persona="aureya"]').click();
-  assert.equal(w.document.getElementById('ma-avatar-home').dataset.persona,'aureya');
-  assert.equal(calls.persona.at(-1),'aureya');assert.equal(w.localStorage.getItem('matchapp_android_ai_persona_test-user'),'aureya');
-  w.eval(source);assert.equal(w.document.querySelectorAll('#ma-avatar-home').length,1);
+  w.localStorage.setItem('matchapp_android_ai_persona_test-user','aureya');
+  w.document.getElementById('ma-av-settings').click();
+  assert.equal(w.document.querySelector('[data-persona="aureya"]'),null);
+  assert.equal(w.document.getElementById('ma-avatar-home').dataset.persona,'jonas');
+  assert.equal(calls.persona.at(-1),'jonas');
+  w.eval(source);
+  assert.equal(w.document.querySelectorAll('#ma-avatar-home').length,1);
+  assert.equal(w.document.getElementById('ma-avatar-home').dataset.persona,'jonas');
  }finally{dom.window.close()}
- const guest=await setup();try{guest.w.document.getElementById('ma-av-settings').click();assert.ok(guest.w.document.querySelector('[data-av-auth="register"]'))}finally{guest.dom.window.close()}
+ const guest=await setup();try{
+  guest.w.document.getElementById('ma-av-settings').click();
+  assert.equal(guest.w.document.querySelector('[data-persona="aureya"]'),null);
+  assert.ok(guest.w.document.querySelector('[data-av-auth="register"]'));
+ }finally{guest.dom.window.close()}
 });
