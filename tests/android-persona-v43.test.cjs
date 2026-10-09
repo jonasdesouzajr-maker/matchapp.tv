@@ -7,8 +7,8 @@ const session=fs.readFileSync(path.join(base,'src/main/assets/avatar-ai/index.ht
 const gradle=fs.readFileSync(path.join(base,'build.gradle.kts'),'utf8');
 test('version 44 keeps the production package untouched for Play review later',()=>{
   assert.match(gradle,/applicationId = "com\.jonas\.papercup"/);
-  assert.match(gradle,/versionCode = 44/);
-  assert.match(gradle,/versionName = "1\.1\.40"/);
+  assert.match(gradle,/versionCode = 45/);
+  assert.match(gradle,/versionName = "1\.1\.41"/);
   assert.match(gradle,/applicationIdSuffix = "\.debug"/);
 });
 test('Home preview locally animates without calling metered Realtime services',()=>{
