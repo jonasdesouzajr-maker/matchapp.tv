@@ -82,6 +82,11 @@ test('voice stage stays a single local script and a circular created face',()=>{
  assert.match(voice,/visemeAmount/);
  assert.match(voice,/not phoneme-accurate lip-sync/i);
  assert.match(voice,/img\.src="created-avatar\.jpg"/);
+ assert.match(voice,/class="stage-copy"/);
+ assert.match(voice,/stage-copy[\s\S]*id="wave"[\s\S]*<\/div><\/main>/);
+ assert.match(voice,/grid-column:2;grid-row:3/);
+ assert.match(voice,/canvas\.ellipse\(/);
+ assert.doesNotMatch(voice,/visemeAmount\(currentViseme\)\*speech\)\*\.04/);
  const scripts=[...voice.matchAll(/<script>([\s\S]*?)<\/script>/gi)];
  assert.equal(scripts.length,1);
  assert.doesNotThrow(()=>new vm.Script(scripts[0][1],{filename:'voice-avatar-index.js'}));
