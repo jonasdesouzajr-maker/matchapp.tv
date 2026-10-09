@@ -228,14 +228,21 @@ function open(){css();buildDialog();lastFocus=document.activeElement;box.hidden=
 function hide(){if(!box)return;box.hidden=true;$('jonas-plus-shade').hidden=true;
  if(lastFocus?.isConnected)lastFocus.focus({preventScroll:true});}
 function entry(){
- if(!/^\/(?:index\.html|discover\.html)?$/.test(location.pathname)||$('jonas-plus-entry'))return;
+ // Android uses the sole floating Jonas avatar. Do not add a second chat launcher.
+ if(play()||!/^\/(?:index\.html|discover\.html)?$/.test(location.pathname)||$('jonas-plus-entry'))return;
  var base=$('ma-ai-entry')||document.querySelector('.home-ask-composer,.newsearch-row');
  if(!base)return;
  var button=label('button','✦ Jonas Chat Plus','jp-btn secondary','jonas-plus-entry');
  button.type='button';button.onclick=open;
  base.parentNode?.insertBefore(button,base.nextSibling);
 }
+async function openFromBubble(){
+ // Entitlement is checked against the server on every activation; a browser flag
+ // alone must never unlock a paid request. Non-subscribers retain Ask AI.
+ if(!(await refresh()))return false;
+ open();return true;
+}
 function init(){css();pricing();entry();}
-window.MatchAppJonasPlus={open,refresh,isActive:()=>active,checkout,manage};
+window.MatchAppJonasPlus={open,openFromBubble,refresh,isActive:()=>active,checkout,manage};
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
 })();
