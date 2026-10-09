@@ -1,0 +1,95 @@
+/* Browser-specific companion shell: shares the Android artwork and layout, but
+   keeps subscriptions, matching, AI credit checks, and Kids Mode on the website. */
+:root{color-scheme:dark}
+body.matchapp-browser-jonas{min-height:100dvh}
+.logo{letter-spacing:-.025em}
+.logo:focus-visible,.browser-link:focus-visible,.web-plan-actions a:focus-visible{
+ outline:2px solid #ffe8b5;outline-offset:4px
+}
+.topbar{min-width:0}
+.primary-nav{min-width:0}
+.primary-nav .nav-link{
+ display:flex;align-items:center;justify-content:center;text-decoration:none;line-height:1.3;
+ transition:background-color .2s,transform .2s,color .2s
+}
+.primary-nav .nav-link:active{transform:scale(.96)}
+.browser-links{
+ display:flex;align-items:center;justify-content:center;gap:10px;
+ padding:15px 0 0;margin:0;min-width:0
+}
+.browser-link{
+ box-sizing:border-box;display:flex;align-items:center;justify-content:center;
+ min-height:41px;padding:9px 15px;border-radius:999px;
+ border:1px solid rgba(240,211,146,.30);color:#e8d9f0;
+ background:linear-gradient(145deg,#2b1c3a,#171021);
+ box-shadow:inset 0 1px 0 rgba(255,255,255,.04);
+ font-size:12px;font-weight:700;text-align:center;text-decoration:none;
+ transition:transform .22s ease,background-color .22s ease,border-color .22s ease,box-shadow .22s ease
+}
+.browser-link-primary{
+ color:#29172d;border-color:#f5daa2;
+ background:linear-gradient(125deg,#ffe2a3,#d8aa59);
+ box-shadow:0 5px 22px rgba(207,157,79,.14)
+}
+.browser-link:hover{border-color:#ffe3aa;box-shadow:0 4px 20px #b28a794a;transform:translateY(-2px)}
+.browser-link:active{transform:scale(.97)}
+.browser-kids{border-color:rgba(174,218,199,.45);color:#cbf1df}
+.web-plan-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:14px 0 16px}
+.web-plan-actions a{
+ box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;gap:10px;
+ min-height:48px;padding:13px 15px;border:1px solid rgba(238,208,150,.48);
+ border-radius:14px;background:linear-gradient(135deg,#43314c,#25182e);
+ text-decoration:none;color:#ffead1;font-size:13px;font-weight:700;
+ transition:transform .22s ease,border-color .22s ease,background-color .22s ease
+}
+.web-plan-actions a:hover{transform:translateY(-2px);border-color:#f8dfa7;background:#42304e}
+.web-plan-actions span{color:#f7d98c;font-size:17px;flex:none}
+.plan-card h3{font-size:clamp(20px,3vw,28px);line-height:1.2;max-width:450px}
+.plan-state a,.app-footer a{color:#f4d391;text-decoration:underline;text-underline-offset:3px}
+#save-reply{display:none!important}
+.chat-sheet .privacy-note{font-size:10px;line-height:1.5}
+.inner-view,.plan-card,.home-hero{box-shadow:0 18px 50px rgba(0,0,0,.28)}
+@media(min-width:900px){
+ .browser-links{justify-content:flex-end}
+ .inner-view{margin:0 auto;max-width:1130px}
+ .discovery-grid .discovery-card{min-height:230px}
+ .discovery-grid .discovery-art svg{width:145px;height:120px}
+}
+@media(max-width:700px){
+ .shell-app{padding:0 16px}
+ .browser-links{gap:7px;padding:12px 0 1px;display:grid;grid-template-columns:1.12fr 1fr .85fr}
+ .browser-link{font-size:clamp(10px,2.65vw,12px);padding:8px 5px;min-height:39px;line-height:1.25}
+ .web-plan-actions{grid-template-columns:1fr}
+ .plan-top{align-items:flex-start}
+ .plan-top strong{font-size:10px;white-space:nowrap;padding:6px 8px}
+ .app-footer{flex-wrap:wrap;line-height:1.5}
+ .primary-nav .nav-link{padding:11px 4px}
+}
+@media(max-width:390px){
+ .shell-app{padding:0 13px}
+ .browser-links{gap:5px}
+ .browser-link{min-height:40px;padding:7px 4px;font-size:10px}
+ .plan-card{padding:15px}
+}
+@media(prefers-reduced-motion:reduce){
+ .browser-link,.web-plan-actions a,.primary-nav .nav-link{transition:none!important;transform:none!important}
+}
+
+/* One document-level H1; visually preserve the Discover tab's editorial heading. */
+.inner-view h2#discover-heading,.inner-view h2#saved-heading{
+ font-size:clamp(38px,5vw,62px);margin:15px 0 12px;
+ font-weight:800;letter-spacing:-.025em;line-height:1.13
+}
+@media(max-width:620px){.inner-view h2#discover-heading,.inner-view h2#saved-heading{font-size:clamp(32px,8.4vw,44px)}}
+
+/* Keep Jonas persistent without obscuring Discover's small-screen controls. */
+@media(max-width:620px){
+ body.matchapp-browser-jonas:has([data-view="discover"].active) .jonas-bubble{
+  width:63px;height:63px;right:max(3px,env(safe-area-inset-right));
+  bottom:max(11px,env(safe-area-inset-bottom))
+ }
+ body.matchapp-browser-jonas:has([data-view="discover"].active) .bubble-aura{inset:-5px;filter:blur(4px)}
+ body.matchapp-browser-jonas:has([data-view="discover"].active) .bubble-pulse{
+  width:13px;height:13px;right:4px;bottom:4px;border-width:2px
+ }
+}

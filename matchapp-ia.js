@@ -150,6 +150,7 @@ function brandHeader(){
      action('Theme','◐',()=>{const themes=['aurora','cinema','ocean','sunrise','arcade'],cur=window.MatchSettings?.get?.('theme')||'aurora',next=themes[(Math.max(0,themes.indexOf(cur))+1)%themes.length];window.MatchSettings?.set?.('theme',next);document.documentElement.dataset.theme=next;window.showToast?.('Theme: '+next)}),
      action('Lazy Mode','⚡',()=>{if(!document.body.classList.contains('ma-signed-in')){window.showToast?.('Sign in to use Lazy Mode.');return}const lazy=qs('.lazy-toggle');if(lazy)safeClick(lazy);else window.setLazyMode?.(true)}),
      action('Daily check-in','✓',()=>{document.body.classList.add('ma-checkin-open');const box=qs('#daily-match-checkin');if(box){box.style.display='block';box.scrollIntoView({behavior:'smooth',block:'center'})}}),
+     link('Jonas experience','/jonas/','✦'),
      link('Pricing','/pricing/pricing.html','♢'),
      action('Install app','↓',()=>{if(typeof window.installMatchApp==='function')window.installMatchApp();else location.href='/android/'}),
      link('Settings','/profile/profile.html#settings','⚙'),

@@ -1,0 +1,32 @@
+/* Android-inspired premium Jonas portal on the existing MatchApp Ai homepage.
+   Placement is separate from locked Match Together / AdSense containers. */
+.ma-jonas-web-entry{
+ box-sizing:border-box;position:relative;isolation:isolate;display:grid;
+ grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:13px;
+ margin:15px auto 22px!important;padding:14px 17px!important;
+ border-radius:19px;border:1px solid rgba(244,212,144,.7);
+ background:radial-gradient(circle at 15% 25%,#8958b44a,transparent 45%),linear-gradient(130deg,#422a59,#20132e);
+ box-shadow:0 15px 33px #0005,inset 0 1px 0 #ffefd32b;
+ color:#fdf5ff!important;text-decoration:none!important;max-width:100%;
+ overflow:hidden;min-height:71px;
+ transition:transform .26s cubic-bezier(.22,1,.36,1),border-color .26s,box-shadow .26s
+}
+.ma-jonas-web-entry::before{
+ content:"";position:absolute;inset:-45%;z-index:-1;pointer-events:none;
+ background:linear-gradient(110deg,transparent 38%,#ffe9c31e 50%,transparent 62%);
+ transform:translateX(-65%);animation:maJonasEntrySweep 9s ease-in-out infinite
+}
+.ma-jonas-web-entry:hover{border-color:#ffe4aa;transform:translateY(-2px);box-shadow:0 18px 43px #0007,0 0 21px #cda3f83a}
+.ma-jonas-web-entry:focus-visible{outline:2px solid #ffebba;outline-offset:3px}
+.ma-jonas-web-symbol{
+ display:grid;place-items:center;width:44px;height:44px;border-radius:50%;
+ border:1px solid #ffe2a4;background:radial-gradient(circle,#553875,#291833);
+ color:#ffe7aa;font-size:24px;box-shadow:0 0 0 4px #d3aa6830
+}
+.ma-jonas-web-copy{min-width:0;display:flex;flex-direction:column;gap:3px}
+.ma-jonas-web-copy strong{font-size:clamp(15px,3.8vw,19px);font-weight:800;letter-spacing:-.015em;line-height:1.2;color:#ffe9b8}
+.ma-jonas-web-copy small{font-size:clamp(11px,2.7vw,13px);color:#d8c7df;line-height:1.35;font-weight:500}
+.ma-jonas-web-arrow{font-size:23px;color:#ffe2a4;padding:0 3px}
+@keyframes maJonasEntrySweep{0%,15%{transform:translateX(-65%)}75%,100%{transform:translateX(65%)}}
+@media(max-width:450px){.ma-jonas-web-entry{padding:12px 11px!important;gap:10px;border-radius:16px}.ma-jonas-web-symbol{width:38px;height:38px;font-size:20px}}
+@media(prefers-reduced-motion:reduce){.ma-jonas-web-entry,.ma-jonas-web-entry::before{animation:none!important;transition:none!important;transform:none!important}}
