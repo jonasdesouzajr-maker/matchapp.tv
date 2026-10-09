@@ -20,7 +20,7 @@ template = content("play/assetlinks.json")
 assert 'namespace = "com.jonas.papercup"' in gradle
 assert 'applicationId = "com.jonas.papercup"' in gradle
 assert "targetSdk = 36" in gradle
-match = re.search(r"\\bversionCode\\s*=\\s*(\\d+)", gradle)
+match = re.search(r"\bversionCode\s*=\s*(\d+)", gradle)
 assert match is not None, "Missing numeric Android versionCode"
 version_code = int(match.group(1))
 assert version_code >= 43, "Release candidate must exceed the previous Play code 42"
