@@ -24,7 +24,7 @@ internal object AvatarVoicePolicy {
     }
 
     fun choose(voices: List<Voice>, persona: String, locale: Locale): Voice? {
-        val requested = if (persona == "aureya") "female" else "male"
+        val requested = "male"
         return voices.filter {
             it.locale.language == locale.language && gender(it.name, it.features.orEmpty()) == requested &&
                 "notInstalled" !in it.features.orEmpty()
