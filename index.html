@@ -1683,6 +1683,7 @@ html body.page-home #mh-topbox .mh-deck>.sound-toggle-btn,html body.page-home #m
 <link rel="stylesheet" href="/billboard-music.css?v=20261006-1">
 <script defer src="/billboard-music.js?v=20261006-1"></script>
     <link rel="stylesheet" href="/jonas/entry.css?v=20261009"/>
+    <link rel="stylesheet" href="/jonas/floating-home.css?v=20261009-1"/>
 </head>
 <body class="page-home">
     <!-- Google Tag Manager (noscript) -->
@@ -3845,6 +3846,35 @@ const footerYearEl = document.getElementById('footer-year');
             <button onclick="closeNotForMeChooser()" class="nfm-cancel" data-i18n="nfm.cancel">Cancel</button>
         </div>
     </div>
+    <!-- Persistent first-party Jonas bubble, Home only. AI requests remain on /discover.html. -->
+    <aside id="ma-jonas-home" aria-label="Jonas floating companion">
+        <section id="ma-jonas-home-panel" class="jh-popover" role="dialog" aria-modal="false" aria-label="Chat with Jonas" hidden>
+            <header class="jh-header">
+                <span class="jh-medallion" aria-hidden="true">✦</span>
+                <span class="jh-title"><strong>Jonas</strong><small data-jh-en="Your entertainment companion" data-jh-pt="Seu companheiro de entretenimento">Your entertainment companion</small></span>
+                <button id="ma-jonas-home-close" class="jh-close" type="button" aria-label="Close conversation">×</button>
+            </header>
+            <div class="jh-content">
+                <p class="jh-greeting" data-jh-en="Hi! I'm Jonas. What shall we discover? Ask me about movies, series, books, music, or anything worth exploring." data-jh-pt="Olá! Sou o Jonas. O que vamos descobrir? Pergunte sobre filmes, séries, livros, música e muito mais.">Hi! I'm Jonas. What shall we discover? Ask me about movies, series, books, music, or anything worth exploring.</p>
+                <form class="jh-form" action="/discover.html" method="get">
+                    <input id="ma-jonas-home-input" class="jh-input" name="q" type="text" maxlength="2000" required autocomplete="off" placeholder="Ask Jonas anything…" aria-label="Your question for Jonas" data-jh-placeholder-en="Ask Jonas anything…" data-jh-placeholder-pt="Pergunte qualquer coisa ao Jonas…"/>
+                    <input type="hidden" name="focus" value="start"/>
+                    <button class="jh-send" type="submit" aria-label="Send question to MatchApp Ai" title="Send question">➤</button>
+                </form>
+                <div class="jh-suggestions" aria-label="Conversation suggestions">
+                    <a class="jh-suggestion" href="/discover.html?q=Recommend%20a%20documentary%20series%20available%20in%20Brazil&amp;focus=start" data-jh-query-en="Recommend a documentary series available in Brazil" data-jh-query-pt="Recomende uma série documental disponível no Brasil" data-jh-en="Discover documentaries" data-jh-pt="Descobrir documentários">Discover documentaries</a>
+                    <a class="jh-suggestion" href="/discover.html?q=Find%20a%20great%20movie%20for%20tonight&amp;focus=start" data-jh-query-en="Find a great movie for tonight" data-jh-query-pt="Encontre um ótimo filme para hoje à noite" data-jh-en="Surprise my mood" data-jh-pt="Surpreenda meu humor">Surprise my mood</a>
+                </div>
+            </div>
+            <footer class="jh-footer"><a class="jh-full" href="/jonas/" data-jh-en="Explore Jonas ↗" data-jh-pt="Explorar Jonas ↗">Explore Jonas ↗</a><span class="jh-footnote" data-jh-en="Powered by MatchApp Ai" data-jh-pt="Tecnologia MatchApp Ai">Powered by MatchApp Ai</span></footer>
+        </section>
+        <button id="ma-jonas-home-bubble" class="jh-bubble" type="button" aria-label="Chat with Jonas" aria-controls="ma-jonas-home-panel" aria-expanded="false">
+            <span class="jh-halo" aria-hidden="true"></span>
+            <span class="jh-portrait"><img src="/jonas/faces/jonas/rest.jpg" alt="" width="96" height="96" decoding="async" fetchpriority="low"/></span>
+            <span class="jh-online" aria-hidden="true"></span>
+        </button>
+    </aside>
+    <script defer src="/jonas/floating-home.js?v=20261009-1"></script>
 <script src="/passkeys.js?v=187"></script>
 <script src="/app-updates.js?v=20260927-mobilefresh1&amp;installfix=20260930-1&amp;brand=20261001-canonicalai1"></script>
 <script defer src="/ads-init.js?v=20261002-bodyunit1"></script>

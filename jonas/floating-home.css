@@ -1,0 +1,47 @@
+/* MatchApp Ai — first-party Jonas floating concierge, Home only.
+   Independently scoped: never changes matching, ads, billing, or Kids UI. */
+#ma-jonas-home{--jh-gold:#f3d68b;--jh-lilac:#c9a8ec;position:fixed;right:max(15px,env(safe-area-inset-right));bottom:max(88px,calc(76px + env(safe-area-inset-bottom)));z-index:980;isolation:isolate;font-family:Outfit,system-ui,-apple-system,sans-serif;color:#fef8ff}
+#ma-jonas-home[hidden],#ma-jonas-home-panel[hidden],html.matchapp-ai-android #ma-jonas-home,html[data-kids-mode] #ma-jonas-home,body.kids-mode #ma-jonas-home{display:none!important}
+#ma-jonas-home *{box-sizing:border-box}
+#ma-jonas-home button,#ma-jonas-home input{font:inherit}
+#ma-jonas-home .jh-bubble{position:relative;display:grid;place-items:center;width:82px;height:82px;padding:0;border-radius:50%;border:0;background:transparent;color:#fff;cursor:pointer;touch-action:none;box-shadow:none;filter:none;transition:transform .24s ease}
+#ma-jonas-home .jh-bubble:hover{transform:translateY(-3px)}
+#ma-jonas-home .jh-bubble:active{transform:scale(.96)}
+#ma-jonas-home .jh-halo{position:absolute;inset:-6px;border-radius:50%;background:conic-gradient(from 15deg,#ffe3a4,#a673d4,#f0ba69,#ffe3a4);opacity:.85;filter:blur(5px);animation:jh-halo-drift 9s ease-in-out infinite;pointer-events:none}
+#ma-jonas-home .jh-portrait{position:absolute;inset:2px;overflow:hidden;border-radius:50%;border:3px solid var(--jh-gold);background:#24152b;box-shadow:0 0 0 4px #e6bf7f24,0 13px 33px #0009,0 0 28px #cca0fa5c}
+#ma-jonas-home .jh-portrait img{display:block;width:100%;height:100%;border-radius:50%;object-fit:cover;object-position:center 17%;pointer-events:none}
+#ma-jonas-home .jh-online{position:absolute;right:5px;bottom:5px;width:18px;height:18px;border:3px solid #251432;border-radius:50%;background:#64e5af;box-shadow:0 0 12px #67e8b185;pointer-events:none}
+#ma-jonas-home .jh-bubble:focus-visible,#ma-jonas-home :is(button,a,input):focus-visible{outline:2px solid #fff0b8;outline-offset:4px}
+#ma-jonas-home .jh-popover{position:absolute;right:0;bottom:99px;width:min(355px,calc(100vw - 24px));max-width:calc(100vw - 24px);min-width:0;overflow:hidden;border-radius:24px;border:1px solid #f0d18d9c;background:radial-gradient(ellipse at 84% 0%,#593576,#261634 50%,#130b20);box-shadow:0 20px 66px #000c,0 0 37px #b17fda36,inset 0 1px 0 #fff5e924;transform-origin:95% 100%;animation:jh-panel-in .28s cubic-bezier(.2,1,.3,1);max-height:calc(100dvh - 130px)}
+#ma-jonas-home .jh-header{display:flex;align-items:center;gap:12px;padding:15px 15px 13px;border-bottom:1px solid #edd29b32}
+#ma-jonas-home .jh-medallion{flex:none;display:grid;place-items:center;width:42px;height:42px;border-radius:50%;border:1px solid #ffe5a4;background:linear-gradient(125deg,#4c2e63,#251535);box-shadow:0 0 17px #ca8af947;color:#ffe2a2;font-size:23px}
+#ma-jonas-home .jh-title{flex:1;min-width:0;display:flex;flex-direction:column;gap:1px;line-height:1.25}
+#ma-jonas-home .jh-title strong{font-size:17px;letter-spacing:-.02em;color:#ffe9b5;font-weight:800}
+#ma-jonas-home .jh-title small{font-size:11px;color:#d9c5e7;font-weight:500}
+#ma-jonas-home .jh-close{display:grid;place-items:center;flex:none;width:38px;height:38px;padding:0;border-radius:13px;border:1px solid #edce905c;background:#32203f;color:#f9e9ca;font-size:25px;line-height:1;cursor:pointer}
+#ma-jonas-home .jh-close:hover{background:#4b315c}
+#ma-jonas-home .jh-content{padding:16px;display:flex;flex-direction:column;gap:13px;overflow:auto;max-height:calc(100dvh - 230px);overscroll-behavior:contain}
+#ma-jonas-home .jh-greeting{margin:0;font-size:13px;color:#e1d3e9;line-height:1.55}
+#ma-jonas-home .jh-greeting strong{color:#fff0bc}
+#ma-jonas-home .jh-form{display:flex;gap:8px;align-items:center;min-width:0}
+#ma-jonas-home .jh-input{flex:1;min-width:0;min-height:44px;padding:10px 12px;border:1px solid #e3c18680;border-radius:13px;background:#140c22;color:#fff8ff;font-size:13px;line-height:1.3;outline:none}
+#ma-jonas-home .jh-input::placeholder{color:#a899b9}
+#ma-jonas-home .jh-input:focus{border-color:#ffe3a4;box-shadow:0 0 0 2px #e2b76826}
+#ma-jonas-home .jh-send{flex:none;display:grid;place-items:center;width:45px;height:44px;padding:0;border:1px solid #ffe9b0;border-radius:13px;background:linear-gradient(135deg,#ffdfa1,#cf9c4b);color:#22142e;font-weight:800;font-size:23px;cursor:pointer;transition:filter .2s,transform .2s}
+#ma-jonas-home .jh-send:hover{filter:brightness(1.09)}
+#ma-jonas-home .jh-send:active{transform:scale(.95)}
+#ma-jonas-home .jh-suggestions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+#ma-jonas-home .jh-suggestion{display:flex;align-items:center;min-height:43px;padding:9px 11px;border:1px solid #e4bf8275;border-radius:12px;color:#f3e6fa!important;background:#30203e;text-decoration:none!important;text-align:left;font-size:12px;font-weight:650;line-height:1.3;transition:border-color .2s,background-color .2s}
+#ma-jonas-home .jh-suggestion:hover{border-color:#ffe3ac;background:#493057}
+#ma-jonas-home .jh-footer{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:11px 15px;border-top:1px solid #edce8e2f;background:#1b1127}
+#ma-jonas-home .jh-full{color:#f6da9b;text-decoration:underline;text-underline-offset:3px;font-size:12px;font-weight:700}
+#ma-jonas-home .jh-footnote{color:#b8a3c7;font-size:10px;line-height:1.3;text-align:right}
+@keyframes jh-halo-drift{0%,100%{opacity:.67;filter:blur(5px)}50%{opacity:.94;filter:blur(8px)}}
+@keyframes jh-panel-in{from{opacity:0;transform:translateY(15px) scale(.9)}to{opacity:1;transform:none}}
+@media(min-width:700px){#ma-jonas-home{bottom:max(24px,env(safe-area-inset-bottom));right:max(24px,env(safe-area-inset-right))}#ma-jonas-home .jh-bubble{width:92px;height:92px}#ma-jonas-home .jh-popover{bottom:110px}}
+/* Keep the concierge entirely outside the locked desktop AdSense side rails. */
+@media(min-width:1180px){#ma-jonas-home{right:max(205px,calc((100vw - 980px)/2))}}
+@media(max-width:374px){#ma-jonas-home{right:12px}#ma-jonas-home .jh-bubble{width:73px;height:73px}#ma-jonas-home .jh-popover{bottom:86px}#ma-jonas-home .jh-suggestions{grid-template-columns:1fr}#ma-jonas-home .jh-content{padding:13px}}
+@media(max-height:560px){#ma-jonas-home{bottom:max(12px,env(safe-area-inset-bottom))}#ma-jonas-home .jh-popover{bottom:87px;max-height:calc(100dvh - 100px)}}
+@media(prefers-reduced-motion:reduce){#ma-jonas-home .jh-halo,#ma-jonas-home .jh-popover{animation:none!important}#ma-jonas-home .jh-bubble,#ma-jonas-home .jh-send,#ma-jonas-home .jh-suggestion{transition:none!important}}
+@media print{#ma-jonas-home{display:none!important}}
