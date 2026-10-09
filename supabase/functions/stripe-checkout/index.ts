@@ -1,20 +1,48 @@
 import Stripe from 'https://esm.sh/stripe@17.7.0?target=deno';
 import {createClient} from 'https://esm.sh/@supabase/supabase-js@2.105.0';
 import {catalog,PRODUCTS,verifiedCheckout,deliver} from '../_shared/billing.ts';
+import {deliverJonasCheckout} from '../_shared/jonas-billing.ts';
 const stripe=new Stripe(Deno.env.get('STRIPE_SECRET_KEY')??'',{apiVersion:'2025-09-30.clover',httpClient:Stripe.createFetchHttpClient()});
 const url=Deno.env.get('SUPABASE_URL')??'',anon=Deno.env.get('SUPABASE_ANON_KEY')??'';const admin=createClient(url,Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')??'');
 const origins=new Set(['https://matchapp.tv','https://www.matchapp.tv','http://127.0.0.1:8899','http://localhost:8899']);const langs=new Set(['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh']);
 Deno.serve(async(req:Request)=>{const origin=req.headers.get('origin')||'';const headers={'Content-Type':'application/json','Cache-Control':'no-store','Vary':'Origin','Access-Control-Allow-Headers':'authorization,apikey,x-client-info,content-type','Access-Control-Allow-Methods':'POST,OPTIONS',...(origins.has(origin)?{'Access-Control-Allow-Origin':origin}:{})};const reply=(body:unknown,status=200)=>new Response(JSON.stringify(body),{status,headers});if(req.method==='OPTIONS')return new Response(null,{status:204,headers});if(req.method!=='POST')return reply({error:'Method not allowed'},405);if(origin&&!origins.has(origin))return reply({error:'Origin not allowed'},403);
  try{const body=await req.json();
-  if(body.action==='availability'){const requested=(Array.isArray(body.products)?body.products:Object.keys(PRODUCTS)).map((k:any)=>String(k)).filter((k:string)=>!!PRODUCTS[k]).slice(0,20);const entries=await catalog(stripe);const products:Object=Object.fromEntries(requested.map((k:string)=>[k,entries.some(p=>p.key===k&&p.currency==='brl'&&p.active)]));return reply({currency:'brl',products,payment_methods:'stripe-managed'});}
+  if(body.action==='availability'){const requested=(Array.isArray(body.products)?body.products:Object.keys(PRODUCTS)).map((k:any)=>String(k)).filter((k:string)=>!!PRODUCTS[k]).slice(0,20);const entries=await catalog(stripe);const products:Object=Object.fromEntries(requested.map((k:string)=>[k,entries.some(p=>p.key===k&&p.currency==='brl'&&p.active)]));const usd_products:Object=Object.fromEntries(requested.map((k:string)=>[k,entries.some(p=>p.key===k&&p.currency==='usd'&&p.active)]));return reply({currency:'brl',products,usd_products,payment_methods:'stripe-managed'});}
   const token=(req.headers.get('authorization')||'').replace(/^Bearer /i,'');const auth=createClient(url,anon,{auth:{persistSession:false},global:{headers:{Authorization:'Bearer '+token}}});const {data:{user},error}=await auth.auth.getUser(token);if(error||!user)return reply({error:'Sign in required'},401);
-  if(body.action==='status'){if(typeof body.session_id!=='string'||!/^cs_(test_|live_)?[A-Za-z0-9]+$/.test(body.session_id))return reply({error:'Invalid checkout'},400);const receipt=await auth.rpc('purchase_status',{p_session_id:body.session_id});if(!receipt.error&&receipt.data?.delivered===true)return reply({...receipt.data,state:'delivered'});const limit=await admin.rpc('reserve_stripe_request',{p_user_id:user.id});if(limit.error||limit.data!==true)return reply({error:'Please wait before checking again'},429);const session=await stripe.checkout.sessions.retrieve(body.session_id);if(session.client_reference_id!==user.id)return reply({error:'Checkout unavailable'},404);if(session.payment_status!=='paid')return reply({delivered:false,state:session.status==='expired'?'failed':'pending'});const verified=await verifiedCheckout(stripe,session);if(!verified)return reply({delivered:false,state:'pending'});const delivery=await deliver(admin,session,verified);return reply({...delivery,state:'delivered'});}
-  const product=PRODUCTS[body.product];if(!product)return reply({error:'Unknown product'},400);const limit=await admin.rpc('reserve_stripe_request',{p_user_id:user.id});if(limit.error||limit.data!==true)return reply({error:'Please wait before starting checkout'},429);
+  if(body.action==='portal'){
+   // Only the actual account owner may open a Stripe customer billing portal.
+   const {data:entitlement,error:entitlementError}=await admin
+     .from('jonas_chat_subscriptions').select('stripe_customer_id').eq('user_id',user.id).maybeSingle();
+   if(entitlementError)return reply({error:'Billing temporarily unavailable'},503);
+   const customer=entitlement?.stripe_customer_id;
+   if(!customer||!/^cus_[A-Za-z0-9]+$/.test(customer))
+     return reply({error:'No Jonas Chat subscription to manage'},404);
+   const portal=await stripe.billingPortal.sessions.create({
+     customer,return_url:'https://matchapp.tv/pricing/pricing.html',
+     configuration:'bpc_1UOd9AFRuUuhrLPGbrKCqPBK'
+   });
+   if(!portal.url?.startsWith('https://billing.stripe.com/'))
+     return reply({error:'Billing portal unavailable'},503);
+   return reply({url:portal.url});
+  }
+  if(body.action==='status'){if(typeof body.session_id!=='string'||!/^cs_(test_|live_)?[A-Za-z0-9]+$/.test(body.session_id))return reply({error:'Invalid checkout'},400);const receipt=await auth.rpc('purchase_status',{p_session_id:body.session_id});if(!receipt.error&&receipt.data?.delivered===true)return reply({...receipt.data,state:'delivered'});const limit=await admin.rpc('reserve_stripe_request',{p_user_id:user.id});if(limit.error||limit.data!==true)return reply({error:'Please wait before checking again'},429);const session=await stripe.checkout.sessions.retrieve(body.session_id);if(session.client_reference_id!==user.id)return reply({error:'Checkout unavailable'},404);if(session.payment_status!=='paid')return reply({delivered:false,state:session.status==='expired'?'failed':'pending'});const verified=await verifiedCheckout(stripe,session);if(!verified)return reply({delivered:false,state:'pending'});const delivery=verified.product.key==='jonas_chat_monthly'?await deliverJonasCheckout(admin,stripe,session,verified.user):await deliver(admin,session,verified);return reply({...delivery,state:'delivered'});}
+  const product=PRODUCTS[body.product];if(!product)return reply({error:'Unknown product'},400);
+  if(body.product==='jonas_chat_monthly'){
+   // Do not let a user create multiple paid Jonas subscriptions by revisiting Checkout.
+   const {data:existing,error:subscriptionError}=await admin.from('jonas_chat_subscriptions')
+     .select('status,period_end').eq('user_id',user.id).maybeSingle();
+   if(subscriptionError)return reply({error:'Billing verification temporarily unavailable'},503);
+   if(existing&&['active','trialing'].includes(existing.status)&&
+      existing.period_end&&Date.parse(existing.period_end)>Date.now())
+     return reply({error:'Jonas Chat Plus is already active for this account'},409);
+  }
+  const limit=await admin.rpc('reserve_stripe_request',{p_user_id:user.id});if(limit.error||limit.data!==true)return reply({error:'Please wait before starting checkout'},429);
   const wantsBR=body.market==='BR'&&body.currency==='brl';const currency=wantsBR?'brl':'usd';const entry=(await catalog(stripe)).find(p=>p.key===body.product&&p.currency===currency&&p.active);if(!entry)return reply({error:wantsBR?'Brazil payment setup is not active yet':'Product temporarily unavailable'},503);
   const lang=langs.has(body.lang)?body.lang:'en';const params:any={mode:product.mode,line_items:[{price:entry.price,quantity:1}],client_reference_id:user.id,metadata:{matchapp_product:entry.key,matchapp_user:user.id,matchapp_market:wantsBR?'BR':'INTL'},success_url:'https://matchapp.tv/purchase.html?session_id={CHECKOUT_SESSION_ID}&lang='+encodeURIComponent(lang),cancel_url:'https://matchapp.tv/pricing/pricing.html?lang='+encodeURIComponent(lang),locale:wantsBR?'pt-BR':(['ar','hi'].includes(lang)?'auto':lang),billing_address_collection:'auto',phone_number_collection:{enabled:false},automatic_tax:{enabled:false},tax_id_collection:{enabled:false,required:'never'},name_collection:{business:{enabled:false},individual:{enabled:false}}};
   if(typeof user.email==='string'&&user.email.includes('@'))params.customer_email=user.email;
   // Do not force Pix. Stripe Checkout presents the merchant-enabled methods that are eligible for this BRL session. This keeps card checkout working even before Stripe grants Pix access, while eligible one-time BRL sessions can surface Pix automatically.
   // Checkout must not require Organization, business name, tax ID or phone. Payment method (and Stripe's receipt email) is enough.
+  if(entry.key==='jonas_chat_monthly')params.subscription_data={metadata:{matchapp_user:user.id,matchapp_product:entry.key}};
   const session=await stripe.checkout.sessions.create(params,{idempotencyKey:'matchapp-'+user.id+'-'+entry.key+'-'+currency+'-'+lang+'-'+Math.floor(Date.now()/60000)});if(!session.url?.startsWith('https://checkout.stripe.com/'))throw new Error('Checkout unavailable');return reply({url:session.url});
  }catch(_){console.error('[stripe-checkout] Payment or delivery temporarily unavailable');return reply({error:'Payment temporarily unavailable'},503);}
 });
