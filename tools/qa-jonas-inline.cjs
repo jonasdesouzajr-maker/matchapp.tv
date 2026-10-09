@@ -25,6 +25,7 @@ const server=http.createServer((req,res)=>{try{let p=decodeURIComponent(new URL(
   await page.screenshot({path:path.join(process.env.USERPROFILE||root,'ma-jonas-inline-'+name+'.png'),animations:'disabled'});
   await page.locator('#ma-jonas-home-bubble').click({force:true});
   assert.equal(await page.locator('#ma-jonas-home-panel').isVisible(),true,'chat open '+name);
+  await page.screenshot({path:path.join(process.env.USERPROFILE||root,'ma-jonas-chat-open-'+name+'.png'),animations:'disabled'});
   await page.locator('#ma-jonas-home-close').click({force:true});
   const r=await page.locator('#ma-jonas-home-bubble').boundingBox();
   await page.mouse.move(r.x+r.width/2,r.y+r.height/2);

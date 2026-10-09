@@ -29,8 +29,8 @@ test('official homepage includes exactly one fixed Jonas portrait bubble and loc
  assert.equal(launcher.getAttribute('aria-expanded'),'false');
  assert.equal(launcher.querySelector('img')?.getAttribute('src'),'/jonas/faces/jonas/rest.jpg');
  assert.ok(fs.existsSync(path.join(ROOT,'jonas/faces/jonas/rest.jpg')));
- assert.ok(home.includes('/jonas/floating-home.js?v=20261009-inline2'));
- assert.ok(home.includes('/jonas/floating-home.css?v=20261009-inline2'));
+ assert.ok(home.includes('/jonas/floating-home.js?v=20261009-l14'));
+ assert.ok(home.includes('/jonas/floating-home.css?v=20261009-chat3'));
  assert.match(css,/#ma-jonas-home\{[^}]*position:fixed/);
  assert.match(css,/@media\(max-width:374px\)/);
  dom.window.close();

@@ -14,10 +14,10 @@
  var panel=root.querySelector('#ma-jonas-home-panel');
  var close=root.querySelector('#ma-jonas-home-close');
  var input=root.querySelector('#ma-jonas-home-input');
- var opened=false,dragging=null,suppressClick=false;
+ var opened=false,dragging=null,suppressClick=false,stageFloating=false,stagePosition=null,lastAppliedLang=null;
  var storageKey='matchapp-jonas-inline-position-v1';
  var dock=null,returnButton=null;
- function homeEntry(){return document.getElementById('ma-ai-entry')}
+ function homeEntry(){return document?.getElementById?.('ma-ai-entry')||null}
  function mountInline(){
   var entry=homeEntry();
   if(!entry||root.classList.contains('is-floating'))return false;
@@ -77,7 +77,7 @@
   }catch(_){/* optional preference */}
  }
  function positionPanel(){
-  if(!root.classList.contains('is-floating'))return;
+  if(root.classList.contains('is-chat-stage')||!root.classList.contains('is-floating'))return;
   var r=root.getBoundingClientRect();
   var panelW=Math.min(355,innerWidth-24),panelH=Math.min(370,innerHeight-130);
   panel.style.setProperty('left',r.left+panelW>innerWidth-12?'auto':'0');
@@ -118,6 +118,7 @@
   return /^pt(?:-|$)/i.test(selected)?'pt':'en';
  };
  function translate(){
+  if(!document?.querySelector||!document.documentElement)return;
   var pt=getLocale()==='pt';
   root.querySelectorAll('[data-jh-en][data-jh-pt]').forEach(function(el){
    el.textContent=pt?el.dataset.jhPt:el.dataset.jhEn;
@@ -138,13 +139,55 @@
   var send=root.querySelector('.jh-send');
   send.setAttribute('aria-label',pt?'Enviar pergunta ao MatchApp Ai':'Send question to MatchApp Ai');
   panel.setAttribute('aria-label',pt?'Converse com Jonas':'Chat with Jonas');
+  // The top-box selector governs Jonas too: all fourteen existing locales.
+  var locale=window.MatchAppJonasLocale;
+  if(locale){
+   var d=locale.get(),set=function(selector,value){var el=document.querySelector(selector);if(el&&value)el.textContent=value};
+   set('#ma-jonas-home .jh-title small',d.companion);
+   set('#ma-jonas-home .jh-greeting',d.greeting);
+   set('#ma-jonas-inline-dock .jh-inline-eyebrow',d.eyebrow);
+   set('#ma-jonas-inline-dock .jh-inline-copy small',d.hint);
+   set('#ma-jonas-inline-dock .jh-return',locale.lang()==='en'?'Bring Jonas back':d.explore);
+   set('#ma-jonas-home .jh-suggestions .jh-suggestion:first-child',d.doc);
+   set('#ma-jonas-home .jh-suggestions .jh-suggestion:last-child',d.mood);
+   set('#ma-jonas-home .jh-full',d.explore);
+   set('#ma-jonas-home .jh-footnote',window.MatchAppJonasLocale.lang()==='en'?d.companion:'MatchApp Ai');
+   input.placeholder=d.placeholder;
+   bubble.setAttribute('aria-label',d.mic);close.setAttribute('aria-label',d.close);
+   send.setAttribute('aria-label',d.send);
+   panel.setAttribute('aria-label','Jonas — '+d.companion);
+   var mic=root.querySelector('#ma-jonas-home-mic');if(mic){mic.setAttribute('aria-label',d.mic);mic.title=d.mic}
+   root.querySelectorAll('.jh-suggestion').forEach(function(el,i){
+    el.href='/discover.html?q='+encodeURIComponent(i?d.qmood:d.qdoc)+'&focus=start';
+   });
+   panel.setAttribute('dir',locale.lang()==='ar'?'rtl':'ltr');
+   if(lastAppliedLang!==locale.lang()){
+    lastAppliedLang=locale.lang();
+    root.dispatchEvent(new CustomEvent('matchapp:jonas-language',{detail:{lang:lastAppliedLang}}));
+   }
+  }
  }
  function setOpen(next){
   if(opened===next)return;
+  if(next){
+   stageFloating=root.classList.contains('is-floating');
+   var r=root.getBoundingClientRect();stagePosition={left:r.left,top:r.top};
+   if(root.parentElement!==document.body)document.body.appendChild(root);
+   root.classList.add('is-chat-stage');
+   ['top','bottom','left','right'].forEach(function(key){panel.style.removeProperty(key)});
+   document.body.classList.add('ma-jonas-chat-open');
+  }
   opened=next;
   panel.hidden=!next;
   bubble.setAttribute('aria-expanded',String(next));
   root.classList.toggle('is-open',next);
+  if(!next){
+   root.dispatchEvent(new CustomEvent('matchapp:jonas-close'));
+   root.classList.remove('is-chat-stage');
+   document.body.classList.remove('ma-jonas-chat-open');
+   if(stageFloating&&stagePosition)setFloating(stagePosition.left,stagePosition.top);
+   else {root.classList.remove('is-floating');mountInline();}
+  }
   if(next){
    translate();positionPanel();
    // An in-flow conversation should become visible immediately even when
@@ -157,8 +200,8 @@
      }
     });
    }
-   if(window.matchMedia&&window.matchMedia('(pointer: fine)').matches)input.focus({preventScroll:true});
-   else close.focus({preventScroll:true});
+   close.focus({preventScroll:true});
+   root.dispatchEvent(new CustomEvent('matchapp:jonas-open'));
   }else{
    bubble.focus({preventScroll:true});
   }
@@ -167,6 +210,7 @@
   if(suppressClick){suppressClick=false;return;}
   setOpen(!opened);
  });
+ root.addEventListener('click',function(e){if(opened&&e.target===root)setOpen(false)});
  close.addEventListener('click',function(){setOpen(false)});
  document.addEventListener('keydown',function(ev){
   if(!opened)return;
@@ -180,6 +224,7 @@
  window.addEventListener('languagechange',translate);
  if(window.MutationObserver)new MutationObserver(translate).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
  function hideLateAskHeading(){
+  if(!document?.querySelector)return;
   var entry=homeEntry(),head=entry?.previousElementSibling;
   if(!head?.matches?.('.lazy-head'))head=document.querySelector('.lazy-head[data-fold-key="askai"]');
   if(!head)return;
@@ -196,6 +241,7 @@
  setTimeout(hideLateAskHeading,120);
  setTimeout(hideLateAskHeading,1100);
  document.addEventListener('matchapp:langchange',hideLateAskHeading);
+ document.addEventListener('matchapp:langchange',translate);
  restorePosition();
  translate();
 })();

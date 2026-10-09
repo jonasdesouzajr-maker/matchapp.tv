@@ -1,0 +1,77 @@
+/* Open Jonas as one complete premium chat stage, not a cramped popover.
+   The original portrait remains in his inline dock when the stage closes. */
+body.ma-jonas-chat-open{overflow:hidden!important}
+body.ma-jonas-inline #ma-jonas-home.is-chat-stage{
+ position:fixed!important;inset:0!important;left:0!important;top:0!important;
+ width:100vw!important;height:100dvh!important;max-width:none!important;
+ min-height:0!important;margin:0!important;padding:14px!important;
+ display:flex!important;align-items:flex-end!important;justify-content:center!important;
+ background:rgba(5,3,13,.78)!important;backdrop-filter:blur(8px);
+ border:0!important;border-radius:0!important;z-index:2147483300!important;
+ overflow:visible!important;isolation:isolate!important
+}
+body.ma-jonas-inline #ma-jonas-home.is-chat-stage .jh-bubble{display:none!important}
+body.ma-jonas-inline #ma-jonas-home.is-chat-stage .jh-popover{
+ box-sizing:border-box!important;position:relative!important;inset:auto!important;
+ left:auto!important;top:auto!important;right:auto!important;bottom:auto!important;
+ display:flex!important;flex-direction:column!important;
+ width:min(420px,calc(100vw - 24px))!important;max-width:calc(100vw - 24px)!important;
+ height:min(515px,calc(100dvh - 34px))!important;max-height:calc(100dvh - 34px)!important;
+ border-radius:27px!important;transform:none!important;transform-origin:center bottom!important;
+ overflow:hidden!important;box-shadow:0 24px 70px #000b,0 0 28px #c99aee24!important;
+ background:radial-gradient(circle at 25% 0%,#5b386e 0%,#291936 44%,#160e24 94%)!important
+}
+body.ma-jonas-inline #ma-jonas-home.is-chat-stage .jh-header{
+ padding:15px 16px!important;min-height:77px;gap:12px;
+ background:linear-gradient(100deg,#342141,#21152f)
+}
+body.ma-jonas-inline #ma-jonas-home.is-chat-stage .jh-medallion{
+ width:52px;height:52px;overflow:hidden;padding:0;box-shadow:0 0 0 3px #ffe0a034,0 6px 18px #0006
+}
+body.ma-jonas-inline #ma-jonas-home.is-chat-stage .jh-medallion img{
+ display:block;width:100%;height:100%;object-fit:cover;object-position:center 18%;border-radius:inherit
+}
+body.ma-jonas-inline #ma-jonas-home.is-chat-stage .jh-title strong{font-size:19px}
+body.ma-jonas-inline #ma-jonas-home.is-chat-stage .jh-content{
+ display:flex;flex-direction:column;justify-content:flex-start;gap:13px;
+ flex:1 1 auto;min-height:0;max-height:none!important;overflow-y:auto;
+ padding:19px 16px 14px!important;overscroll-behavior:contain
+}
+body.ma-jonas-inline #ma-jonas-home.is-chat-stage .jh-greeting{
+ padding:15px 16px;border-radius:19px 19px 19px 7px;
+ background:linear-gradient(155deg,#423052,#30213e);border:1px solid #eed09b30;
+ font-size:14px;line-height:1.55;color:#f5eafb;box-shadow:0 7px 18px #0002
+}
+body.ma-jonas-inline #ma-jonas-home.is-chat-stage .jh-voice-status{
+ flex:none;color:#eed4a2;background:#392445;border:1px solid #e4c48b55;
+ border-radius:12px;padding:9px 11px;font:580 12px/1.4 system-ui;min-height:36px
+}
+body.ma-jonas-inline #ma-jonas-home.is-chat-stage .jh-form{display:grid;grid-template-columns:minmax(0,1fr) 44px 44px;gap:7px;align-items:center}
+body.ma-jonas-inline #ma-jonas-home.is-chat-stage .jh-input{font-size:14px;min-height:47px;padding:10px 11px}
+body.ma-jonas-inline #ma-jonas-home.is-chat-stage .jh-mic{
+ display:grid;place-items:center;height:44px;width:44px;min-width:44px;
+ padding:0;border-radius:13px;border:1px solid #d8ba85a6;
+ background:#3a294a;color:#f6d599;font-size:23px;cursor:pointer
+}
+body.ma-jonas-inline #ma-jonas-home.is-chat-stage.jh-listening .jh-mic{
+ border-color:#65efcb;background:#214b46;color:#b1ffe8;box-shadow:0 0 0 3px #65efc522
+}
+body.ma-jonas-inline #ma-jonas-home.is-chat-stage .jh-send{width:44px;height:44px}
+body.ma-jonas-inline #ma-jonas-home.is-chat-stage .jh-suggestions{gap:7px}
+body.ma-jonas-inline #ma-jonas-home.is-chat-stage .jh-suggestion{min-height:38px;font-size:11px}
+body.ma-jonas-inline #ma-jonas-home.is-chat-stage .jh-footer{
+ min-height:50px;margin-top:auto;padding:12px 16px!important
+}
+body.ma-jonas-inline #ma-jonas-home.is-chat-stage .jh-close{width:42px;height:42px}
+@media(min-width:740px){
+ body.ma-jonas-inline #ma-jonas-home.is-chat-stage{align-items:center!important;padding:24px!important}
+ body.ma-jonas-inline #ma-jonas-home.is-chat-stage .jh-popover{height:min(545px,calc(100dvh - 48px))!important}
+}
+@media(max-height:520px){
+ body.ma-jonas-inline #ma-jonas-home.is-chat-stage{padding:7px!important}
+ body.ma-jonas-inline #ma-jonas-home.is-chat-stage .jh-popover{height:calc(100dvh - 14px)!important;max-height:calc(100dvh - 14px)!important}
+ body.ma-jonas-inline #ma-jonas-home.is-chat-stage .jh-header{min-height:54px;padding:6px 12px!important}
+ body.ma-jonas-inline #ma-jonas-home.is-chat-stage .jh-greeting{padding:9px;font-size:12px}
+ body.ma-jonas-inline #ma-jonas-home.is-chat-stage .jh-content{padding:9px 12px!important}
+}
+@media(prefers-reduced-motion:reduce){body.ma-jonas-inline #ma-jonas-home.is-chat-stage .jh-popover{animation:none!important}}
