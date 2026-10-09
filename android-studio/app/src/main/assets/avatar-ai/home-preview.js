@@ -195,12 +195,12 @@ var pictures={};
 function renderAvatar(){
  avatar=preferred();
  if(!preview)return;
- preview.querySelector('#ma-av-name').textContent=words('Meet ','Conheça ')+PERSONAS[avatar].name+' ✦';
+ preview.querySelector('#ma-av-name').textContent=PERSONAS[avatar].name+' ✦';
  preview.dataset.persona=avatar;
  preview.querySelector('.ma-reference-art')?.setAttribute('aria-label',PERSONAS[avatar].name+' — MatchApp Ai');
  window.MatchAppNativeVoice?.setPersona?.(avatar);
  setAvatarState(avatarState);
- preview.querySelector('#ma-av-help').textContent=words('Your entertainment AI • Ready when you are','Sua IA de entretenimento • Pronta para conversar');
+ preview.querySelector('#ma-av-help').textContent=words('Your personal AI companion','Seu assistente pessoal de IA');
  preview.querySelector('#ma-av-talk').textContent=words('Chat with ','Conversar com ')+PERSONAS[avatar].name;
  preview.querySelector('#ma-av-settings').textContent=words('About Jonas','Sobre Jonas');
  var stop=preview.querySelector('#ma-av-stop');if(stop)stop.textContent=words('Stop','Parar');
