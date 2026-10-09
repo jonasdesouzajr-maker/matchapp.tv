@@ -88,6 +88,7 @@ class MainActivity : AppCompatActivity() {
     private var activeSpeechId = ""
     private val androidAvatarHomeJs by lazy { assets.open("avatar-ai/home-preview.js").bufferedReader().use { it.readText() } }
     private val androidAvatarCompanionJs by lazy { assets.open("avatar-ai/companion-v44.js").bufferedReader().use { it.readText() } }
+    private val jonasPaidChatJs by lazy { assets.open("avatar-ai/jonas-chat-plus.js").bufferedReader().use { it.readText() } }
     private val avatarImageLoader by lazy { androidx.webkit.WebViewAssetLoader.Builder().addPathHandler("/assets/", androidx.webkit.WebViewAssetLoader.AssetsPathHandler(this)).build() }
 
     // Web UI (including the responsive Avatar Studio) is shared with matchapp.tv.
@@ -547,7 +548,7 @@ class MainActivity : AppCompatActivity() {
         if (uri != null && uri.scheme == "https" &&
             isMatchAppHost(uri.host.orEmpty()) && !isKidsUri(uri)) {
             view.evaluateJavascript(
-                "if(document.body){" + androidAvatarHomeJs + ";" + androidAvatarCompanionJs + "}",
+                "if(document.body){" + androidAvatarHomeJs + ";" + androidAvatarCompanionJs + ";" + jonasPaidChatJs + "}",
                 null
             )
         }
