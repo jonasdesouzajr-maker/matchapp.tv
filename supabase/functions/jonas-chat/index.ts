@@ -98,6 +98,7 @@ Deno.serve(async req=>{
    .filter((m:any)=>m.content);
  const requestId=crypto.randomUUID();
  let reserved=false;
+ let reservedAllowance:any=null;
  try{
   // Fail CLOSED if PostgreSQL cannot atomically validate entitlement and quota.
   const {data:gate,error}=await admin.rpc('jonas_reserve_chat',{p_user_id:userId,p_request_id:requestId});
@@ -107,6 +108,7 @@ Deno.serve(async req=>{
    return json({error:statusReason(reason),reason,limits},reason==='subscription_required'?402:429,origin);
   }
   reserved=true;
+  reservedAllowance=gate;
  }catch{return json({error:'Jonas usage limits cannot be verified right now.'},503,origin);}
  const fail=async(code:number,message:string)=>{
   if(reserved){
@@ -141,9 +143,9 @@ Deno.serve(async req=>{
   const answer=safeText(result?.choices?.[0]?.message?.content,3600);
   if(!answer)return await fail(503,'Jonas could not finish the answer. Please try again.');
   return json({answer,provider:'jonas',request_id:requestId,remaining:{
-    day:gateValueFallback(body,'day'),week:gateValueFallback(body,'week')
+    day:reservedAllowance.remaining_today,week:reservedAllowance.remaining_week,
+    cycle:reservedAllowance.remaining_cycle
   }},200,origin);
  }catch{return await fail(503,'Jonas cannot connect right now. Please try again shortly.');}
  finally{clearTimeout(timer);}
 });
-function gateValueFallback(_body:any,_type:string){return null;} // status endpoint gives authoritative usage
