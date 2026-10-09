@@ -515,12 +515,8 @@ class MainActivity : AppCompatActivity() {
             return "https://appassets.androidplatform.net/assets/jonas/index.html"
         }
         debugSmokeLaunch(intent)?.let { return it }
-        // Dedicated Jonas Python preview for the separate debug APK only.
-        // The Google Play release never uses a localhost server or this route.
-        if (BuildConfig.DEBUG && intent?.action == Intent.ACTION_MAIN &&
-            intent.hasCategory(Intent.CATEGORY_LAUNCHER)) {
-            return "http://127.0.0.1:8877/"
-        }
+        // Normal debug launches use the real adult site. Local smoke testing
+        // requires an explicit matchapp_smoke_url intent instead.
         val data = intent?.data
         if (data != null && (data.scheme == "https" || data.scheme == "http")) {
             if (isMatchAppHost(data.host.orEmpty()) && !isKidsUri(data)) {
