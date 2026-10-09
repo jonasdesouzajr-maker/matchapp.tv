@@ -18,7 +18,8 @@ Deno.serve(async(req:Request)=>{const origin=req.headers.get('origin')||'';const
    if(!customer||!/^cus_[A-Za-z0-9]+$/.test(customer))
      return reply({error:'No Jonas Chat subscription to manage'},404);
    const portal=await stripe.billingPortal.sessions.create({
-     customer,return_url:'https://matchapp.tv/pricing/pricing.html'
+     customer,return_url:'https://matchapp.tv/pricing/pricing.html',
+     configuration:'bpc_1UOd9AFRuUuhrLPGbrKCqPBK'
    });
    if(!portal.url?.startsWith('https://billing.stripe.com/'))
      return reply({error:'Billing portal unavailable'},503);
