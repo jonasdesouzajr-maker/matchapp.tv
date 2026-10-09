@@ -898,7 +898,7 @@ class MainActivity : AppCompatActivity() {
                     startActivity(
                         Intent(this@MainActivity, VoiceAvatarActivity::class.java)
                             .putExtra(VoiceAvatarActivity.EXTRA_TOKEN, token)
-                            .putExtra(VoiceAvatarActivity.EXTRA_PERSONA, if (persona == "aureya") "aureya" else "jonas")
+                            .putExtra(VoiceAvatarActivity.EXTRA_PERSONA, "jonas")
                             .putExtra(VoiceAvatarActivity.EXTRA_PROMPT, prompt.orEmpty().take(1000))
                     )
                 }
