@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-08T11:54:49.503Z",
+  "generated": "2026-10-09T11:46:39.537Z",
   "source": "TMDB / JustWatch",
   "titles": {
     "The Bear": {
@@ -48,6 +48,7 @@
         },
         "US": {
           "stream": [
+            "Disney Plus",
             "Hulu"
           ],
           "link": "https://www.themoviedb.org/tv/126308-shogun/watch?locale=US"
@@ -937,7 +938,6 @@
         "US": {
           "stream": [
             "Netflix",
-            "fuboTV",
             "Netflix Standard with Ads"
           ],
           "rent": [
@@ -2635,6 +2635,9 @@
           "link": "https://www.themoviedb.org/movie/1084244-toy-story-5/watch?locale=BR"
         },
         "US": {
+          "stream": [
+            "Disney Plus"
+          ],
           "rent": [
             "Amazon Video",
             "Apple TV Store",
