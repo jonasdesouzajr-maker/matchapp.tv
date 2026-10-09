@@ -209,7 +209,7 @@ function avatarCommand(text){
  var input=String(text||'').trim();
  if(!/(?:change|switch|wrong|different|male|female|mudar|trocar|errad[ao]|masculin[ao]|feminin[ao])/i.test(input)||!/(?:voice|avatar|voz|personagem|assistente)/i.test(input))return false;
  open(false);
- window.matchappAndroidAvatarHome?.showReply?.(loc('Jonas is your sole AI companion. Speech language follows your Android text-to-speech settings.','Jonas é seu único assistente de IA. O idioma de voz segue as configurações de fala do Android.'));
+ window.matchappAndroidAvatarHome?.showReply?.(loc('Jonas is your sole AI companion. He uses a male Android text-to-speech voice when available; choose a compatible voice in your device settings.','Jonas é seu único assistente de IA. O idioma de voz segue as configurações de fala do Android.'));
  return true;
 }
 window.matchappAvatarVoiceCommand=avatarCommand;
