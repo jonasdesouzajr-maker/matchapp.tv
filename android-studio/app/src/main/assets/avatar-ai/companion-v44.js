@@ -169,10 +169,22 @@ function attach(){
  copy.appendChild(content);
  var controls=node.querySelector('.ma-av-controls'),settings=node.querySelector('#ma-av-settings');if(settings)controls.appendChild(settings);
  close=document.createElement('button');close.id='ma-av-dismiss';close.type='button';close.textContent='×';close.setAttribute('aria-label',loc('Close chat','Fechar conversa'));node.appendChild(close);close.onclick=dismiss;
- var menu=document.createElement('button');menu.id='ma-av-menu';menu.type='button';menu.textContent='⋯';menu.setAttribute('aria-label',loc('Open chat','Abrir conversa'));node.appendChild(menu);menu.onclick=function(){open(false)};
+ var openingPlus=false;
+ function activateJonas(shouldGreet){
+  if(Date.now()<ignoreTapUntil||openingPlus)return;
+  if(opened){if(shouldGreet)listen();return;}
+  var plus=window.MatchAppJonasPlus;
+  if(plus&&typeof plus.openFromBubble==='function'){
+   openingPlus=true;
+   Promise.resolve(plus.openFromBubble()).then(function(hasPlus){
+    openingPlus=false;if(!hasPlus)open(shouldGreet);
+   }).catch(function(){openingPlus=false;open(shouldGreet);});
+  }else open(shouldGreet);
+ }
+ var menu=document.createElement('button');menu.id='ma-av-menu';menu.type='button';menu.textContent='⋯';menu.setAttribute('aria-label',loc('Open chat','Abrir conversa'));node.appendChild(menu);menu.onclick=function(){activateJonas(false)};
  photo.setAttribute('role','button');photo.setAttribute('tabindex','0');photo.setAttribute('aria-expanded','false');photo.setAttribute('aria-label',loc('Talk to your AI avatar','Falar com seu avatar de IA'));
- photo.addEventListener('click',function(){if(Date.now()<ignoreTapUntil)return;if(opened)listen();else open(true)});
- photo.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();if(opened)listen();else open(true)}});
+ photo.addEventListener('click',function(){activateJonas(true)});
+ photo.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();activateJonas(true)}});
  photo.style.touchAction='none';photo.addEventListener('pointerdown',dragStart);photo.addEventListener('pointermove',dragMove);photo.addEventListener('pointerup',dragEnd);photo.addEventListener('pointercancel',dragEnd);restoreBubblePosition();
  var cancel=document.createElement('button');cancel.id='ma-av-cancel-mic';cancel.type='button';cancel.textContent=loc('Cancel microphone','Cancelar microfone');cancel.hidden=true;controls.appendChild(cancel);
  cancel.onclick=function(){cancelGreeting();window.MatchAppNativeVoice?.stopListening?.();state('idle');cancel.hidden=true};
