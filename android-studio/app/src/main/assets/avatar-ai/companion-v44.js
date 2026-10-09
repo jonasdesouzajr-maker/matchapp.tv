@@ -92,7 +92,11 @@ function wireChat(){
   if(document.getElementById('chat-log'))document.documentElement.classList.add('ma-avatar-chat-discover');
  }else{
   var composer=document.querySelector('.home-ask-composer');if(composer&&!content.contains(composer))content.appendChild(composer);
-  if(composer&&content.contains(composer))document.documentElement.classList.add('ma-avatar-chat-installed');
+  if(composer&&content.contains(composer)){
+   document.documentElement.classList.add('ma-avatar-chat-installed');
+   // Native shell recovery has stronger display rules than the shared stylesheet.
+   ['ma-ai-entry','search-box'].forEach(function(id){var legacy=document.getElementById(id);if(legacy){legacy.hidden=true;legacy.style.setProperty('display','none','important')}});
+  }
  }
 }
 function attach(){

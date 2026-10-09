@@ -51,6 +51,8 @@ test('portrait opens chat, greets before listening, and close cancels the microp
   assert.equal(node.querySelector('.ma-av-copy').inert,true);
   assert.ok(node.contains(w.document.querySelector('.home-ask-composer')));
   assert.ok(w.document.documentElement.classList.contains('ma-avatar-chat-installed'));
+  assert.equal(w.document.getElementById('search-box').style.getPropertyPriority('display'),'important');
+  assert.equal(w.document.getElementById('search-box').hidden,true);
   node.querySelector('#ma-av-menu').click();
   assert.equal(node.dataset.open,'true');
   node.querySelector('#ma-av-settings').click();
