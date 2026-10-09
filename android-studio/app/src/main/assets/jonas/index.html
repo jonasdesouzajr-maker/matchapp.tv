@@ -23,7 +23,7 @@
         <button class="nav-link" data-page="discover">Discover</button>
         <button class="nav-link" data-page="saved">My space</button>
       </nav>
-      <div class="header-right"><span class="local-badge"><span class="green-dot"></span> Private preview</span></div>
+      <div class="header-right"><label class="native-language-label" for="jonas-language">Language</label><select id="jonas-language" class="native-language-select" aria-label="Conversation language"></select></div>
     </header>
 
     <main class="app-main">
@@ -37,7 +37,7 @@
             <button class="main-cta" id="talk-hero">Talk to Jonas <span aria-hidden="true">↗</span></button>
             <div class="hero-facts"><span>✦ Natural voice and text</span><span>✦ Your language</span><span>✦ Everywhere in the app</span></div>
           </div>
-          <div class="hero-art" aria-hidden="true"><div class="orb orb-back"></div><div class="orb orb-mid"></div><div class="orb orb-front"><img id="hero-face" src="faces/jonas/rest.jpg" alt=""/><img id="hero-expression" src="faces/jonas/rest.jpg" alt="" aria-hidden="true"/></div><div class="orb-sheen"></div></div>
+          <div class="hero-art" aria-label="Jonas AI portrait and conversation launcher"><div class="orb orb-back"></div><div class="orb orb-mid"></div><div class="orb orb-front"><img id="hero-face" src="faces/jonas/rest.jpg" alt=""/><img id="hero-expression" src="faces/jonas/rest.jpg" alt="" aria-hidden="true"/></div><div class="orb-sheen"></div></div>
         </div>
         <div class="section-heading"><div><span class="eyebrow">JONAS PLUS</span><h2>Plan, limits, and billing</h2></div></div>
         <section class="plan-card" aria-label="Jonas Plus on Android">
@@ -47,8 +47,8 @@
             <li>150 chats every 7 days</li>
             <li>450 chats each paid monthly cycle</li>
           </ul>
-          <p>On the MatchApp app, Jonas Plus is checked on the server with your account. This preview does not sell a plan, restore a Play purchase, or open Stripe checkout.</p>
-          <p class="plan-state">Google Play billing is not active in this build. Purchase, restore, and manage stay unavailable until that catalog is enabled.</p>
+          <p>Jonas Plus access is checked securely through your MatchApp Ai account. Available credits and features depend on your membership.</p>
+          <p class="plan-state">Google Play purchases and subscription restores are not available in this Android version.</p>
         </section>
         <div class="section-heading"><div><span class="eyebrow">CURATED FOR THE MOMENT</span><h2>Where will your mood take you?</h2></div><button class="text-link" data-page="discover">Explore more <span>→</span></button></div>
         <div class="mood-grid">
@@ -62,23 +62,41 @@
       <section class="view" data-view="discover" aria-labelledby="discover-heading" hidden>
         <div class="inner-view"><span class="eyebrow">GO BEYOND THE EXPECTED</span><h1 id="discover-heading">Discover with Jonas</h1><p>Pick a question to start an intelligent conversation—without leaving this screen.</p>
           <div class="discovery-grid">
-            <button data-prompt="Find critically acclaimed Brazilian movies from the last five years and tell me what makes them special. Do not guess streaming services.">Brazilian cinema <span>↗</span></button>
-            <button data-prompt="What are some brilliant recent crime documentary series? Ask me where I live and what I subscribe to.">True stories <span>↗</span></button>
-            <button data-prompt="Recommend an incredible anime series for someone who loves character development and beautiful animation.">Anime nights <span>↗</span></button>
-            <button data-prompt="I want a personalized film recommendation. Ask me three short questions, one at a time.">Surprise my mood <span>↗</span></button>
-            <button data-prompt="Can we explore great books and audiobooks? Ask my favorite genres first.">Read & listen <span>↗</span></button>
-            <button data-prompt="What is a good way to explore music video releases without confusing unofficial edits with official artist videos?">Music discoveries <span>↗</span></button>
+            <button class="discovery-card" data-art="brazil" data-prompt="Find critically acclaimed Brazilian movies from the last five years and tell me what makes them special. Do not guess streaming services.">
+              <span class="discovery-art" aria-hidden="true"><svg viewBox="0 0 120 100" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"><rect x="24" y="36" width="74" height="48" rx="9"/><path d="M24 50h74M33 36l10 14M52 36l10 14M72 36l10 14"/><path d="m56 59 15 8-15 8z" fill="currentColor" stroke="none"/><path d="M18 32l6-10 10 3M92 31l7-10" stroke-width="2"/></svg></span>
+              <span class="discovery-caption"><strong>Brazilian cinema</strong><small>Bold stories & voices</small></span><span class="discovery-arrow" aria-hidden="true">↗</span>
+            </button>
+            <button class="discovery-card" data-art="stories" data-prompt="What are some brilliant recent crime documentary series? Ask me where I live and what I subscribe to.">
+              <span class="discovery-art" aria-hidden="true"><svg viewBox="0 0 120 100" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"><rect x="25" y="15" width="51" height="65" rx="7"/><path d="M35 30h24M35 40h16M35 50h11"/><circle cx="72" cy="60" r="20"/><path d="m87 75 16 15" stroke-width="7" stroke-linecap="round"/><path d="m64 59 5 5 10-11" stroke-width="2.5"/></svg></span>
+              <span class="discovery-caption"><strong>True stories</strong><small>Uncover the unexpected</small></span><span class="discovery-arrow" aria-hidden="true">↗</span>
+            </button>
+            <button class="discovery-card" data-art="anime" data-prompt="Recommend an incredible anime series for someone who loves character development and beautiful animation.">
+              <span class="discovery-art" aria-hidden="true"><svg viewBox="0 0 120 100" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"><path d="M83 18A35 35 0 1 0 99 69 34 34 0 0 1 83 18Z" fill="currentColor" fill-opacity=".12"/><path d="M83 18A35 35 0 1 0 99 69 34 34 0 0 1 83 18Z"/><path d="m28 23 3 7 7 3-7 3-3 7-3-7-7-3 7-3z" fill="currentColor" stroke="none"/><path d="m88 12 2 4 4 2-4 2-2 4-2-4-4-2 4-2z" fill="currentColor" stroke="none"/></svg></span>
+              <span class="discovery-caption"><strong>Anime nights</strong><small>Worlds beyond reality</small></span><span class="discovery-arrow" aria-hidden="true">↗</span>
+            </button>
+            <button class="discovery-card" data-art="surprise" data-prompt="I want a personalized film recommendation. Ask me three short questions, one at a time.">
+              <span class="discovery-art" aria-hidden="true"><svg viewBox="0 0 120 100" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"><path d="M60 18 88 45 60 86 32 45Z" fill="currentColor" fill-opacity=".10"/><path d="M60 18 88 45 60 86 32 45Z"/><path d="M32 45h56M60 18 49 45l11 41 11-41z"/><path d="m20 14 2 5 5 2-5 2-2 5-2-5-5-2 5-2zM99 22v13M93 28h13M101 73v12M95 79h12" stroke-width="2.5"/></svg></span>
+              <span class="discovery-caption"><strong>Surprise my mood</strong><small>Something made for you</small></span><span class="discovery-arrow" aria-hidden="true">↗</span>
+            </button>
+            <button class="discovery-card" data-art="reading" data-prompt="Can we explore great books and audiobooks? Ask my favorite genres first.">
+              <span class="discovery-art" aria-hidden="true"><svg viewBox="0 0 120 100" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"><path d="M59 31C48 23 34 22 22 28v54c13-7 27-4 37 3 10-7 24-10 37-3V28c-12-6-26-5-37 3z" fill="currentColor" fill-opacity=".08"/><path d="M59 31C48 23 34 22 22 28v54c13-7 27-4 37 3 10-7 24-10 37-3V28c-12-6-26-5-37 3zM59 31v54M32 42c8-2 14-1 18 2M32 54c8-2 14-1 18 2M70 43c6-2 11-2 16 0"/><path d="M73 58c7 3 7 11 0 14M81 54c11 7 11 16 0 23" stroke-width="2.3"/></svg></span>
+              <span class="discovery-caption"><strong>Read & listen</strong><small>Pages, stories & sound</small></span><span class="discovery-arrow" aria-hidden="true">↗</span>
+            </button>
+            <button class="discovery-card" data-art="music" data-prompt="What is a good way to explore music video releases without confusing unofficial edits with official artist videos?">
+              <span class="discovery-art" aria-hidden="true"><svg viewBox="0 0 120 100" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"><circle cx="59" cy="50" r="34" fill="currentColor" fill-opacity=".07"/><circle cx="59" cy="50" r="34"/><circle cx="59" cy="50" r="22" stroke-width="1.6"/><circle cx="59" cy="50" r="7" fill="currentColor" fill-opacity=".42"/><path d="M98 22v38a9 9 0 1 1-4-8V23l16-4v29" stroke-width="3" stroke-linecap="round"/></svg></span>
+              <span class="discovery-caption"><strong>Music discoveries</strong><small>Fresh sounds & visuals</small></span><span class="discovery-arrow" aria-hidden="true">↗</span>
+            </button>
           </div>
         </div>
       </section>
 
       <section class="view" data-view="saved" aria-labelledby="saved-heading" hidden>
-        <div class="inner-view"><span class="eyebrow">YOUR OWN CORNER</span><h1 id="saved-heading">Your space</h1><p>Conversations stay on this device while the preview is open. Save a useful reply here to find it later.</p>
+        <div class="inner-view"><span class="eyebrow">YOUR OWN CORNER</span><h1 id="saved-heading">Your space</h1><p>Saved replies remain on your device so you can revisit or delete them in My space.</p>
           <div id="saved-list" class="saved-list" aria-live="polite"></div>
         </div>
       </section>
     </main>
-    <footer class="app-footer"><span>© 2026 MatchApp Ai · All rights reserved.</span><span>Android preview · Not the Play Store release</span></footer>
+    <footer class="app-footer"><span>© 2026 MatchApp Ai · All rights reserved.</span><span>Android · MatchApp Ai</span></footer>
   </div>
 
   <div id="chat-backdrop" class="chat-backdrop" hidden></div>
@@ -98,6 +116,8 @@
   <button id="jonas-bubble" class="jonas-bubble" type="button" aria-label="Open Jonas. Drag to move." aria-expanded="false" aria-controls="chat-sheet">
     <span class="bubble-aura" aria-hidden="true"></span><span class="bubble-crop"><img id="bubble-face" src="faces/jonas/rest.jpg" alt=""/><img id="bubble-expression" src="faces/jonas/rest.jpg" alt="" aria-hidden="true"/></span><span class="bubble-pulse" aria-hidden="true"></span>
   </button>
+  <script src="../avatar-ai/jonas-locales.js"></script>
   <script src="jonas.js"></script>
+  <link rel="stylesheet" href="native-single.css"/>
 </body>
 </html>

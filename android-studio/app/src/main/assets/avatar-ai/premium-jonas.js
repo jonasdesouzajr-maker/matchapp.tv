@@ -139,11 +139,18 @@ html.matchapp-ai-android body #ma-avatar-home .ma-reference-art{opacity:0!import
 html.matchapp-ai-android body #ma-avatar-home .ma-jonas-live{
  position:absolute!important;inset:0!important;border-radius:inherit!important;overflow:hidden!important;z-index:1!important
 }
-html.matchapp-ai-android body #ma-avatar-home .ma-jonas-frame{
+html.matchapp-ai-android body #ma-avatar-home :is(.ma-jonas-base,.ma-jonas-frame){
  position:absolute!important;inset:0!important;width:100%!important;height:100%!important;
  object-fit:cover!important;object-position:center 16%!important;border-radius:50%!important;
- opacity:0!important;transition:opacity .2s cubic-bezier(.22,1,.36,1)!important;
  pointer-events:none!important
+}
+html.matchapp-ai-android body #ma-avatar-home .ma-jonas-base{opacity:1!important;z-index:1!important}
+html.matchapp-ai-android body #ma-avatar-home .ma-jonas-frame{
+ z-index:2!important;clip-path:ellipse(25% 17% at 50% 72%)!important;
+ opacity:0!important;transition:opacity .14s ease-out!important;
+}
+html.matchapp-ai-android body #ma-avatar-home .ma-jonas-frame.is-blink{
+ clip-path:ellipse(38% 16% at 50% 42%)!important
 }
 html.matchapp-ai-android body #ma-avatar-home .ma-jonas-frame.is-show{opacity:1!important}
 html.matchapp-ai-android body #ma-avatar-home.ma-face-fallback .ma-reference-art{
@@ -151,10 +158,10 @@ html.matchapp-ai-android body #ma-avatar-home.ma-face-fallback .ma-reference-art
 }
 html.matchapp-ai-android body #ma-avatar-home.ma-face-fallback .ma-jonas-live{display:none!important}
 html.matchapp-ai-android body #ma-avatar-home[data-state="idle"] .ma-av-portrait{
- animation:maPremiumBreath 6.5s ease-in-out infinite!important
+ animation:none!important
 }
 html.matchapp-ai-android body #ma-avatar-home[data-state="speaking"] .ma-av-portrait{
- border-color:#ffe3ad!important;animation:maPremiumSpeak 1.6s ease-in-out infinite!important
+ border-color:#ffe3ad!important;animation:none!important
 }
 html.matchapp-ai-android body #ma-avatar-home[data-state="listening"] .ma-av-portrait{border-color:#8ef0e4!important}
 html.matchapp-ai-android body #ma-avatar-home[data-state="thinking"] .ma-av-portrait{border-color:#c9b6ff!important}
@@ -205,10 +212,26 @@ html.matchapp-ai-android body #ma-avatar-home #ma-av-stop{
  background:#4a2433!important;border-color:#e0a0b0!important;color:#ffd7df!important
 }
 html.matchapp-ai-android body #ma-avatar-home .ma-av-chat-content{
- flex:1 1 auto!important;min-height:0!important;max-height:none!important;
+ flex:1 1 auto!important;min-height:0!important;min-width:0!important;width:100%!important;max-width:100%!important;max-height:none!important;
  display:flex!important;flex-direction:column!important;gap:10px!important;
  padding:2px 2px 4px!important;overflow-y:auto!important;overflow-x:hidden!important;
  overscroll-behavior:contain!important;-webkit-overflow-scrolling:touch!important
+}
+/* Prevent min-content shrink from turning AI responses into vertical letters. */
+html.matchapp-ai-android body #ma-avatar-home .ma-av-chat-content #chat-log{
+ box-sizing:border-box!important;display:block!important;flex:1 1 auto!important;
+ width:100%!important;max-width:100%!important;min-width:0!important;
+}
+html.matchapp-ai-android body #ma-avatar-home .ma-av-chat-content .chat-results-grid{
+ box-sizing:border-box!important;display:grid!important;grid-template-columns:minmax(0,1fr)!important;
+ width:100%!important;max-width:100%!important;min-width:0!important;
+}
+html.matchapp-ai-android body #ma-avatar-home .ma-av-chat-content #chat-log :is(
+ .chat-bubble:not(.self),.chat-answer-text,.chat-answer,.chat-message,.chat-entry.bot){
+ box-sizing:border-box!important;display:block!important;float:none!important;
+ flex:1 1 auto!important;min-width:0!important;width:100%!important;max-width:100%!important;
+ white-space:pre-wrap!important;overflow-wrap:break-word!important;word-break:normal!important;
+ line-height:1.55!important
 }
 html.matchapp-ai-android body #ma-avatar-home #ma-av-reply:not([hidden]){
  align-self:flex-start!important;width:fit-content!important;max-width:92%!important;
@@ -333,7 +356,7 @@ html.matchapp-ai-android body #ma-avatar-home #ma-jonas-voice-notice{
 html.reduce-motion body #ma-avatar-home *{animation:none!important;transition:none!important}
 `;
 (document.head||document.documentElement).appendChild(style);
-var faceSlot=0,faceName='rest',speakTimer=0,blinkTimer=0,shownState='';
+var faceSlot=0,faceName='rest',faceRequest=0,speakTimer=0,blinkTimer=0,shownState='';
 function reduced(){
  try{
   if(document.documentElement.classList.contains('reduce-motion'))return true;
@@ -345,9 +368,12 @@ function mountFaces(portrait){
  if(!portrait||portrait.querySelector('.ma-jonas-live'))return;
  var live=document.createElement('span');
  live.className='ma-jonas-live';
+ var base=document.createElement('img');
+ base.className='ma-jonas-base';base.alt='Jonas';base.decoding='async';base.src=FACE+'rest.jpg';
+ live.appendChild(base);
  for(var i=0;i<2;i++){
   var img=document.createElement('img');
-  img.className='ma-jonas-frame'+(i===0?' is-show':'');
+  img.className='ma-jonas-frame';
   img.alt=i===0?'Jonas':'';
   if(i)img.setAttribute('aria-hidden','true');
   img.decoding='async';
@@ -363,15 +389,37 @@ function mountFaces(portrait){
 function alive(){return typeof document!=='undefined'&&document&&typeof document.getElementById==='function'}
 function showFace(name){
  if(!alive())return;
- if(!name)name='rest';
- if(reduced())name='rest';
+ if(!name||reduced())name='rest';
  var frames=document.querySelectorAll('#ma-avatar-home .ma-jonas-frame');
  if(frames.length<2||name===faceName)return;
- faceName=name;faceSlot=1-faceSlot;
- var incoming=frames[faceSlot],outgoing=frames[1-faceSlot];
- incoming.src=FACE+name+'.jpg';
- incoming.classList.add('is-show');
- outgoing.classList.remove('is-show');
+ var request=++faceRequest;
+ if(name==='rest'){
+  faceName=name;
+  frames.forEach(function(frame){frame.classList.remove('is-show')});
+  return;
+ }
+ // Keep the base face and border absolutely steady. Only the expressive
+ // mouth/eyes region overlays it, and only once its new image has loaded.
+ var probe=new Image();var url=FACE+name+'.jpg',drawn=false;
+ function display(){
+  if(drawn||request!==faceRequest||!alive())return;
+  drawn=true;
+  faceName=name;
+  var next=1-faceSlot,incoming=frames[next],outgoing=frames[faceSlot];
+  incoming.src=url;
+  incoming.classList.toggle('is-blink',name==='blink');
+  incoming.classList.remove('is-show');
+  requestAnimationFrame(function(){
+   if(request!==faceRequest)return;
+   incoming.classList.add('is-show');
+   setTimeout(function(){if(request===faceRequest)outgoing.classList.remove('is-show')},155);
+  });
+  faceSlot=next;
+ }
+ probe.onload=display;
+ probe.onerror=function(){if(request===faceRequest){faceName='rest';frames.forEach(function(f){f.classList.remove('is-show')})}};
+ probe.src=url;
+ if(probe.complete&&probe.naturalWidth)display();
 }
 function syncExpression(){
  if(!alive())return;
@@ -389,7 +437,7 @@ function syncExpression(){
    var current=document.getElementById('ma-avatar-home');
    if(!current||current.dataset.state!=='speaking'){clearInterval(speakTimer);speakTimer=0;return}
    step=(step+1)%shapes.length;showFace(shapes[step]);
-  },240);
+  },360);
   return;
  }
  showFace(state==='listening'?'smile':'rest');
@@ -474,7 +522,13 @@ function polish(){
  var hasConversation=!!root.querySelector('#chat-log .chat-bubble, #chat-log .chat-answer-text');
  if(root.dataset.hasConversation!==String(hasConversation))root.dataset.hasConversation=String(hasConversation);
  var dismiss=root.querySelector('#ma-av-dismiss');
- if(dismiss){dismiss.textContent='×';dismiss.title=loc('Close Jonas','Fechar Jonas');}
+ if(dismiss){
+  // Replacing textContent on every MutationObserver callback creates an
+  // unbounded childList feedback loop that can freeze the Android WebView.
+  if(dismiss.textContent!=='×')dismiss.textContent='×';
+  var dismissTitle=loc('Close Jonas','Fechar Jonas');
+  if(dismiss.title!==dismissTitle)dismiss.title=dismissTitle;
+ }
  var menu=root.querySelector('#ma-av-menu');
  if(menu)menu.hidden=true;
  var talk=root.querySelector('#ma-av-talk');

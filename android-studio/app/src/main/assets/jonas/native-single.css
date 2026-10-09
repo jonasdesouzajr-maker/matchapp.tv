@@ -1,0 +1,52 @@
+/* Single Jonas: the actual chat launcher lives in the home hero, never on
+   the bottom-right of the screen. Mobile and tablet render real native UI. */
+.hero-art .orb-front{display:none!important}
+.hero-art{isolation:isolate;min-height:270px!important;padding:15px 0;cursor:default}
+.hero-art .jonas-bubble{position:relative!important;inset:auto!important;top:auto!important;left:auto!important;right:auto!important;bottom:auto!important;z-index:4!important;display:grid!important;place-items:center!important;justify-self:center;align-self:center;width:clamp(174px,23vw,260px)!important;height:clamp(174px,23vw,260px)!important;min-width:0!important;min-height:0!important;max-width:100%!important;max-height:100%!important;touch-action:manipulation;border-radius:50%;border:0;background:transparent;box-shadow:none}
+.hero-art .jonas-bubble .bubble-crop{width:100%;height:100%;border:4px solid #f1d186;box-shadow:0 0 0 8px #dfb96923,0 11px 39px #0007,0 0 35px #c89beb48}
+.hero-art .jonas-bubble .bubble-aura{inset:-12px;opacity:.7}
+.hero-art .jonas-bubble .bubble-pulse{right:8px;bottom:9px;width:19px;height:19px}
+.hero-art .orb-back,.hero-art .orb-mid{pointer-events:none}
+.header-right{display:flex;gap:7px;align-items:center}
+.native-language-label{position:absolute;width:1px;height:1px;clip:rect(0,0,0,0);overflow:hidden}
+.native-language-select{max-width:155px;min-height:42px;padding:8px 11px;background:#24152d;border:1px solid #d0ac73;border-radius:999px;color:#f6e6cb;font:650 12px system-ui}
+.native-language-select:focus-visible{outline:2px solid #fbe09f;outline-offset:2px}
+[data-view="discover"].active .discovery-card{min-height:180px}
+@media(max-width:620px){
+ .hero-art{min-height:225px!important;height:245px!important;padding:8px}
+ .hero-art .jonas-bubble{width:190px!important;height:190px!important}
+ .home-hero{gap:4px!important}
+ .hero-copy{padding-top:8px!important}
+ .header-right{margin-left:auto}
+ .native-language-select{max-width:126px;font-size:11px}
+}
+@media(max-width:380px){.hero-art{height:215px!important;min-height:210px!important}.hero-art .jonas-bubble{width:168px!important;height:168px!important}}
+@media(prefers-reduced-motion:reduce){.hero-art .jonas-bubble .bubble-crop{animation:none!important}}
+
+/* Galaxy and narrow device polish: language next to brand, no blank header row. */
+@media(max-width:620px){
+ .topbar{display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;align-items:center!important;gap:8px!important;padding:13px 0 10px!important;min-height:0!important}
+ .topbar .logo{grid-column:1!important;grid-row:1!important;min-width:0!important;font-size:18px!important;line-height:1.18!important;letter-spacing:-.02em}
+ .topbar .logo small{font-size:10px!important;line-height:1.2!important}
+ .topbar .header-right{grid-column:2!important;grid-row:1!important;margin:0!important;max-width:112px!important;justify-self:end!important}
+ .topbar .primary-nav{grid-column:1/-1!important;grid-row:2!important;margin:6px 0 0!important;width:100%!important}
+ .native-language-select{max-width:112px!important;min-height:38px!important;padding:6px 8px!important;font-size:10.5px!important}
+ .home-hero{display:flex!important;flex-direction:column!important;min-height:0!important;gap:0!important}
+ .hero-art{order:-1!important;height:200px!important;min-height:195px!important;max-height:205px!important;padding:0!important}
+ .hero-art .jonas-bubble{width:166px!important;height:166px!important}
+ .hero-copy{padding:12px 17px 18px!important}
+ .hero-copy h1{font-size:clamp(26px,7vw,33px)!important;line-height:1.12!important;margin:8px 0!important}
+ .hero-copy p{font-size:12px!important;line-height:1.46!important;margin:10px 0!important}
+ .hero-copy .eyebrow{font-size:9px!important;letter-spacing:.11em!important}
+ .home-hero .main-cta{min-height:44px!important;padding:10px 18px!important;font-size:13px!important}
+ .hero-facts{gap:8px!important;margin-top:9px!important;font-size:10px!important;flex-wrap:wrap!important}
+ .home-hero .home-glow{pointer-events:none}
+}
+@media(max-width:360px){
+ .topbar .logo{font-size:16px!important}
+ .topbar .logo small{font-size:9px!important}
+ .native-language-select{max-width:98px!important;font-size:10px!important}
+ .hero-art{height:183px!important;min-height:181px!important}
+ .hero-art .jonas-bubble{width:154px!important;height:154px!important}
+ .hero-copy{padding:10px 14px 16px!important}
+}

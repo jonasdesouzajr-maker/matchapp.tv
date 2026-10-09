@@ -12,6 +12,7 @@
   let audioAnimation = null, blinkClock = null, drag = null, ignoreClick = false;
   const shapes = ["aa", "oh", "ee", "rest"];
   const birthday = "October 10";
+  let voiceTextMode=false;
   // Double-buffered facial frames for smooth crossfades: never flash empty images.
   const avatarPairs = [
     [face, $("bubble-expression")],
@@ -41,6 +42,8 @@
     }
   }
   const heroArt = document.querySelector(".hero-art");
+  // One Jonas avatar: move the actual conversation launcher into the hero.
+  if(heroArt){heroArt.querySelector(".orb-front")?.setAttribute("hidden","");heroArt.appendChild(bubble);bubble.classList.add("is-inline");}
   if (heroArt && window.matchMedia("(pointer: fine)").matches &&
       !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     heroArt.addEventListener("pointermove", (event) => {
@@ -96,8 +99,42 @@
       root.appendChild(p); return;
     }
     for (const row of values.slice(0, 20)) {
-      const div = document.createElement("div");
-      div.className = "saved-item"; div.textContent = String(row.text || "");
+      const div = document.createElement("article");
+      div.className = "saved-item";
+      const content = document.createElement("p");
+      content.className = "saved-item-copy";
+      content.textContent = String(row.text || "");
+      const remove = document.createElement("button");
+      remove.type = "button";
+      remove.className = "saved-item-trash";
+      remove.setAttribute("aria-label", "Delete this saved reply");
+      remove.title = "Delete saved reply";
+      remove.innerHTML = '<svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M10 4h4M6.5 7l1 13h9l1-13M10 11v6M14 11v6"/></svg>';
+      let armed = false;
+      remove.addEventListener("click", () => {
+        if (!armed) {
+          armed = true;
+          remove.textContent = "Delete?";
+          remove.setAttribute("aria-label", "Confirm deleting this saved reply");
+          remove.classList.add("is-armed");
+          return;
+        }
+        div.classList.add("is-removing");
+        remove.disabled = true;
+        const commit = () => {
+          const latest = safeLoad(SAVED_KEY, []);
+          if (Array.isArray(latest)) {
+            // Compare the saved value, not a stale index if another reply arrived.
+            const at = latest.findIndex((item) => item.savedAt === row.savedAt && item.text === row.text);
+            if (at >= 0) latest.splice(at, 1);
+            safeStore(SAVED_KEY, latest);
+          }
+          renderSaved();
+        };
+        if (window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches) commit();
+        else window.setTimeout(commit, 270);
+      });
+      div.append(content, remove);
       root.appendChild(div);
     }
   }
@@ -130,10 +167,12 @@
     setMicGlyph(false); micButton.setAttribute("aria-label", "Start microphone");
   }
   function voiceLanguage() {
+    if(window.MatchAppJonasLocale?.speech)return window.MatchAppJonasLocale.speech();
     const lang = (navigator.language || "en-US").toLowerCase();
     return lang.startsWith("pt") ? "pt-BR" : lang.startsWith("es") ? "es-ES" : navigator.language || "en-US";
   }
-  function useVoice(text) {
+  function useVoice(text,onDone) {
+    let handed=false;const handoff=()=>{if(handed)return;handed=true;if(typeof onDone==="function")onDone()};
     if (window.MatchAppNativeVoice?.speak) {
       const mine = ++epoch;
       speaking = true; bubble.classList.add("is-speaking"); uiStatus("Jonas is speaking…");
@@ -145,7 +184,7 @@
         if (mine !== epoch) return;
         speaking = false; bubble.classList.remove("is-speaking");
         clearInterval(audioAnimation); audioAnimation = null;
-        setExpression("rest"); uiStatus("Ready when you are");
+        setExpression("rest"); uiStatus("Ready when you are"); handoff();
       };
       window.matchAppNativeSpeechState = (active) => { if (!active) finish(); };
       document.addEventListener("matchapp:avatar-voice-unavailable", finish, { once: true });
@@ -170,7 +209,7 @@
       if (myEpoch !== epoch) return;
       speaking = false; bubble.classList.remove("is-speaking");
       clearInterval(audioAnimation); audioAnimation = null;
-      setExpression("rest"); uiStatus("Ready when you are");
+      setExpression("rest"); uiStatus("Ready when you are"); handoff();
     };
     utter.onend = done; utter.onerror = done;
     speaking = true; bubble.classList.add("is-speaking"); uiStatus("Jonas is speaking…");
@@ -342,6 +381,12 @@
       listening = false; uiStatus("Microphone permission is unavailable.");
     }
   }
+  function greetOnTap(){
+    voiceTextMode=false;
+    const greeting=window.MatchAppJonasLocale?.t('greeting')||"Hi, I'm Jonas. What would you like to discover?";
+    const first=log.querySelector('.chat-entry.bot p');if(first)first.textContent=greeting;
+    useVoice(greeting,()=>{if(open&&!voiceTextMode)startListening()});
+  }
   function showChat() {
     open = true; sheet.hidden = false; backdrop.hidden = false;
     bubble.setAttribute("aria-expanded", "true");
@@ -360,8 +405,8 @@
   function toggleChat() {
     if (open) hideChat();
     else {
-      showChat();
-      if (!speaking && !listening) {
+      showChat();greetOnTap();
+       if (!speaking && !listening) {
         setExpression("smile");
         setTimeout(() => { if (!speaking && !listening) setExpression("rest"); }, 480);
       }
@@ -375,6 +420,7 @@
     };
   }
   function setPosition(left, top, persist = false) {
+    if(heroArt&&bubble.parentElement===heroArt)return;
     const p = clampPosition(left, top);
     bubble.style.left = p.x + "px"; bubble.style.top = p.y + "px";
     bubble.style.right = "auto"; bubble.style.bottom = "auto";
@@ -382,7 +428,7 @@
                                       y: p.y / Math.max(1, innerHeight - bubble.offsetHeight) });
   }
   const previous = safeLoad(POS_KEY, null);
-  if (previous && Number.isFinite(previous.x) && Number.isFinite(previous.y)) {
+  if (!heroArt && previous && Number.isFinite(previous.x) && Number.isFinite(previous.y)) {
     setPosition(previous.x * (innerWidth - bubble.offsetWidth), previous.y * (innerHeight - bubble.offsetHeight));
   }
   bubble.addEventListener("pointerdown", (event) => {
@@ -457,17 +503,30 @@
     if (listening && event.detail?.state === "processing") uiStatus("Turning speech into text…");
   });
 
+  // The same fourteen languages offered on the website drive Android TTS/STT
+  // and the secure AI request language. No language change requires reloading.
+  const languageSelect=$("jonas-language"),localeCodes=window.MatchAppJonasLocale?.codes||["en"];
+  const nativeNames={"en":"English","pt-BR":"Português (BR)","es":"Español","fr":"Français","de":"Deutsch","it":"Italiano","tr":"Türkçe","ru":"Русский","ar":"العربية","hi":"हिन्दी","id":"Indonesia","ja":"日本語","ko":"한국어","zh":"中文"};
+  for(const code of localeCodes){const option=document.createElement("option");option.value=code;option.textContent=nativeNames[code]||code;languageSelect.appendChild(option)}
+  let savedLang;try{savedLang=localStorage.getItem("match_lang")}catch{}
+  let initial=savedLang||navigator.language||"en";if(initial.toLowerCase().startsWith("pt"))initial="pt-BR";else if(!localeCodes.includes(initial))initial=initial.split("-")[0].toLowerCase();
+  if(!localeCodes.includes(initial))initial="en";
+  function refreshLanguage(code){window.MATCH_LANG=code;document.documentElement.lang=code;document.documentElement.dir=code==="ar"?"rtl":"ltr";languageSelect.value=code;input.placeholder=window.MatchAppJonasLocale?.t("placeholder")||"Ask Jonas anything…";let first=log.querySelector(".chat-entry.bot p");if(first)first.textContent=window.MatchAppJonasLocale?.t("greeting")||first.textContent}
+  refreshLanguage(initial);
+  languageSelect.addEventListener("change",e=>{if(open)stopVoice();try{localStorage.setItem("match_lang",e.target.value)}catch{}refreshLanguage(e.target.value)});
   document.querySelectorAll("[data-page]").forEach((button) => button.addEventListener("click", (event) => {
     event.preventDefault(); go(button.dataset.page);
   }));
   document.querySelectorAll("[data-prompt]").forEach((button) => button.addEventListener("click", () => {
     showChat(); void send(button.dataset.prompt);
   }));
-  $("talk-hero").addEventListener("click", showChat);
+  $("talk-hero").addEventListener("click", ()=>{showChat();greetOnTap()});
   closeButton.addEventListener("click", hideChat);
   backdrop.addEventListener("click", hideChat);
   $("save-reply").addEventListener("click", saveReply);
   micButton.addEventListener("click", startListening);
+  input.addEventListener("beforeinput",e=>{if(e.isTrusted&&open){voiceTextMode=true;if(speaking||listening)stopVoice()}});
+  input.addEventListener("keydown",e=>{if(e.isTrusted&&open&&!["Tab","Escape","Enter"].includes(e.key)){voiceTextMode=true;if(speaking||listening)stopVoice()}});
   document.addEventListener("keydown", (event) => { if (event.key === "Escape" && open) hideChat(); });
   form.addEventListener("submit", (event) => {
     event.preventDefault(); const value = input.value.trim();

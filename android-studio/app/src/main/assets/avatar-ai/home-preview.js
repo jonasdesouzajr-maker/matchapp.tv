@@ -175,7 +175,7 @@ function speakReply(text){
  if(!text)return;
  window.MatchAppNativeVoice?.setPersona?.(preferred());
  if(window.MatchAppNativeVoice&&typeof window.MatchAppNativeVoice.speak==='function'){
-  window.MatchAppNativeVoice.speak(text,window.MATCH_LANG||document.documentElement.lang||'en-US');
+  window.MatchAppNativeVoice.speak(text,window.MatchAppJonasLocale?.speech()||window.MATCH_LANG||document.documentElement.lang||'en-US');
  }else if(typeof window.readAloud==='function')window.readAloud(text);
 }
 function showReply(text){
