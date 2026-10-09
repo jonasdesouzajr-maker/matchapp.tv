@@ -26,7 +26,17 @@ Deno.serve(async(req:Request)=>{const origin=req.headers.get('origin')||'';const
    return reply({url:portal.url});
   }
   if(body.action==='status'){if(typeof body.session_id!=='string'||!/^cs_(test_|live_)?[A-Za-z0-9]+$/.test(body.session_id))return reply({error:'Invalid checkout'},400);const receipt=await auth.rpc('purchase_status',{p_session_id:body.session_id});if(!receipt.error&&receipt.data?.delivered===true)return reply({...receipt.data,state:'delivered'});const limit=await admin.rpc('reserve_stripe_request',{p_user_id:user.id});if(limit.error||limit.data!==true)return reply({error:'Please wait before checking again'},429);const session=await stripe.checkout.sessions.retrieve(body.session_id);if(session.client_reference_id!==user.id)return reply({error:'Checkout unavailable'},404);if(session.payment_status!=='paid')return reply({delivered:false,state:session.status==='expired'?'failed':'pending'});const verified=await verifiedCheckout(stripe,session);if(!verified)return reply({delivered:false,state:'pending'});const delivery=verified.product.key==='jonas_chat_monthly'?await deliverJonasCheckout(admin,stripe,session,verified.user):await deliver(admin,session,verified);return reply({...delivery,state:'delivered'});}
-  const product=PRODUCTS[body.product];if(!product)return reply({error:'Unknown product'},400);const limit=await admin.rpc('reserve_stripe_request',{p_user_id:user.id});if(limit.error||limit.data!==true)return reply({error:'Please wait before starting checkout'},429);
+  const product=PRODUCTS[body.product];if(!product)return reply({error:'Unknown product'},400);
+  if(body.product==='jonas_chat_monthly'){
+   // Do not let a user create multiple paid Jonas subscriptions by revisiting Checkout.
+   const {data:existing,error:subscriptionError}=await admin.from('jonas_chat_subscriptions')
+     .select('status,period_end').eq('user_id',user.id).maybeSingle();
+   if(subscriptionError)return reply({error:'Billing verification temporarily unavailable'},503);
+   if(existing&&['active','trialing'].includes(existing.status)&&
+      existing.period_end&&Date.parse(existing.period_end)>Date.now())
+     return reply({error:'Jonas Chat Plus is already active for this account'},409);
+  }
+  const limit=await admin.rpc('reserve_stripe_request',{p_user_id:user.id});if(limit.error||limit.data!==true)return reply({error:'Please wait before starting checkout'},429);
   const wantsBR=body.market==='BR'&&body.currency==='brl';const currency=wantsBR?'brl':'usd';const entry=(await catalog(stripe)).find(p=>p.key===body.product&&p.currency===currency&&p.active);if(!entry)return reply({error:wantsBR?'Brazil payment setup is not active yet':'Product temporarily unavailable'},503);
   const lang=langs.has(body.lang)?body.lang:'en';const params:any={mode:product.mode,line_items:[{price:entry.price,quantity:1}],client_reference_id:user.id,metadata:{matchapp_product:entry.key,matchapp_user:user.id,matchapp_market:wantsBR?'BR':'INTL'},success_url:'https://matchapp.tv/purchase.html?session_id={CHECKOUT_SESSION_ID}&lang='+encodeURIComponent(lang),cancel_url:'https://matchapp.tv/pricing/pricing.html?lang='+encodeURIComponent(lang),locale:wantsBR?'pt-BR':(['ar','hi'].includes(lang)?'auto':lang),billing_address_collection:'auto',phone_number_collection:{enabled:false},automatic_tax:{enabled:false},tax_id_collection:{enabled:false,required:'never'},name_collection:{business:{enabled:false},individual:{enabled:false}}};
   if(typeof user.email==='string'&&user.email.includes('@'))params.customer_email=user.email;
