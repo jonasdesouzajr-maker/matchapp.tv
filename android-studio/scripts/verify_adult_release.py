@@ -2,6 +2,7 @@
 """Static regression guards for the adult Play package. NOT device or AdMob QA."""
 from pathlib import Path
 import json
+import re
 import xml.etree.ElementTree as ET
 
 root = Path(__file__).resolve().parents[1]
@@ -18,10 +19,14 @@ template = content("play/assetlinks.json")
 
 assert 'namespace = "com.jonas.papercup"' in gradle
 assert 'applicationId = "com.jonas.papercup"' in gradle
-assert "targetSdk = 36" in gradle and "versionCode = 42" in gradle
+assert "targetSdk = 36" in gradle
+match = re.search(r"\\bversionCode\\s*=\\s*(\\d+)", gradle)
+assert match is not None, "Missing numeric Android versionCode"
+version_code = int(match.group(1))
+assert version_code >= 43, "Release candidate must exceed the previous Play code 42"
 assert 'package="tv.matchapp.app"' not in manifest
 assert "package com.jonas.papercup" in activity
-assert "appBuild=42" in activity
+assert f"appBuild={version_code}" in activity, "Android HOME appBuild must match versionCode"
 assert "isKidsUri(target)" in activity
 assert "child.post { child.destroy() }" in activity
 assert 'applicationId = "tv.matchapp.kids"' in kids
