@@ -541,9 +541,15 @@ class MainActivity : AppCompatActivity() {
     private fun injectAppMode(view: WebView) {
         view.evaluateJavascript(APP_MODE_JS, null)
         val uri = runCatching { Uri.parse(view.url.orEmpty()) }.getOrNull()
-        if (uri != null && isAdultAiDocument(uri) && uri.scheme == "https") {
-            view.evaluateJavascript(androidAvatarHomeJs, null)
-            view.evaluateJavascript(androidAvatarCompanionJs, null)
+        // The first-party production website retains sign-in, credits, and catalog.
+        // Inject the persistent Jonas interface across its adult pages only;
+        // DOM-ready guard avoids the WebView onPageStarted null-root race.
+        if (uri != null && uri.scheme == "https" &&
+            isMatchAppHost(uri.host.orEmpty()) && !isKidsUri(uri)) {
+            view.evaluateJavascript(
+                "if(document.body){" + androidAvatarHomeJs + ";" + androidAvatarCompanionJs + "}",
+                null
+            )
         }
     }
 
