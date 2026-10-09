@@ -457,6 +457,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun isDebugSmokeUrl(url: String?): Boolean = debugSmokeUri(url) != null
 
+    // Test-only voice access for the USB-reversed local Jonas Python preview.
+    private fun isTrustedVoicePage(uri: Uri): Boolean =
+        (isMatchAppHost(uri.host.orEmpty()) && !isKidsUri(uri)) ||
+        (BuildConfig.DEBUG && debugSmokeUri(uri.toString()) != null && uri.port == 8877)
+
     private fun debugSmokeLaunch(intent: Intent?): String? =
         intent?.getStringExtra("matchapp_smoke_url")
             ?.let { debugSmokeUri(it)?.toString() }
@@ -759,7 +764,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun speakVoiceText(text: String?, languageTag: String?) {
         val current = runCatching { Uri.parse(web.url.orEmpty()) }.getOrNull()
-        if (current == null || !isMatchAppHost(current.host.orEmpty())) {
+        if (current == null || !isTrustedVoicePage(current)) {
             sendVoiceError("not-allowed")
             return
         }
@@ -934,7 +939,7 @@ class MainActivity : AppCompatActivity() {
         fun start(languageTag: String?) {
             runOnUiThread {
                 val current = runCatching { Uri.parse(web.url.orEmpty()) }.getOrNull()
-                if (current == null || !isMatchAppHost(current.host.orEmpty())) {
+                if (current == null || !isTrustedVoicePage(current)) {
                     sendVoiceError("not-allowed")
                     return@runOnUiThread
                 }
