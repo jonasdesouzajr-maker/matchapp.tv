@@ -71,20 +71,24 @@ function open(shouldGreet){
  var wasOpen=opened;opened=true;node.dataset.open='true';remember(true);copy.inert=false;
  photo.setAttribute('aria-expanded','true');
  photo.setAttribute('aria-label',loc('Talk to your AI avatar','Falar com seu avatar de IA'));
- if(wasOpen||!shouldGreet)return;
- var name='Jonas';
- var text=loc("Hi, I'm "+name+". What can I help you watch, read or listen to today?",'Olá, sou '+name+'. O que você quer assistir, ler ou ouvir hoje?');
- window.MatchAppNativeVoice?.stopSpeaking?.();
- window.matchappAndroidAvatarHome?.showReply?.(text);
- greeting=true;speechStarted=false;
- window.matchappAndroidAvatarHome?.speak?.(text);
- greetingTimer=setTimeout(function(){if(greeting&&opened){cancelGreeting();state('idle');window.matchappAndroidAvatarHome?.showReply?.(loc('Tap the microphone to speak, or type below.','Toque no microfone para falar ou digite abaixo.'));}},15000);
+ if(wasOpen)return;
+ // Chat opens silently. Microphone and read-aloud require explicit actions.
+ if(shouldGreet)window.matchappAndroidAvatarHome?.showReply?.(
+   loc("Hi! I'm Jonas. What would you like to explore?",
+       "Oi! Sou Jonas. O que você gostaria de descobrir?"));
+ if(shouldGreet)window.setTimeout(function(){
+  if(!opened)return;
+  var input=document.getElementById('specific-search-input')||
+   document.getElementById('discover-new-input')||
+   document.getElementById('ma-jonas-global-input');
+  if(input)input.focus({preventScroll:true});
+ },150);
 }
 function dismiss(){
  opened=false;remember(false);cancelGreeting();
  node.dataset.open='false';copy.inert=true;photo.setAttribute('aria-expanded','false');
  window.MatchAppNativeVoice?.stopListening?.();window.MatchAppNativeVoice?.stopSpeaking?.();state('idle');photo.focus({preventScroll:true});
- if(location.pathname==='/discover.html')setTimeout(function(){if(!opened)location.href='/'},340);
+ // Closing chat must not navigate away from Discover.
 }
 function wireChat(){
  if(!content)return;
@@ -172,7 +176,12 @@ function attach(){
  var openingPlus=false;
  function activateJonas(shouldGreet){
   if(Date.now()<ignoreTapUntil||openingPlus)return;
-  if(opened){if(shouldGreet)listen();return;}
+  if(opened){var input=document.getElementById('specific-search-input')||
+    document.getElementById('discover-new-input')||
+    document.getElementById('ma-jonas-global-input');
+   if(input)input.focus({preventScroll:true});
+   return;
+  }
   var plus=window.MatchAppJonasPlus;
   if(plus&&typeof plus.openFromBubble==='function'){
    openingPlus=true;
@@ -209,7 +218,17 @@ document.addEventListener('matchapp:voice-error',function(e){
   'language':loc('This speech language is not installed. Choose another language or type below.','Este idioma de voz não está instalado. Escolha outro idioma ou digite abaixo.'),
   'permission-denied':loc('Allow microphone access in Android app settings, then tap the microphone.','Permita acesso ao microfone nas configurações do Android e toque no microfone.')
  };
- window.matchappAndroidAvatarHome?.showReply?.(messages[e.detail?.code]||loc('Android could not start speech recognition. You can type below, or enable a speech recognition service in Android settings.','O Android não iniciou o reconhecimento de voz. Digite abaixo ou ative um serviço de reconhecimento de voz nas configurações.'));
+ var reason=messages[e.detail?.code]||
+  loc('Microphone temporarily unavailable. You can still type to Jonas.',
+      'Microfone temporariamente indisponível. Você ainda pode digitar para Jonas.');
+ var note=document.getElementById('ma-jonas-voice-notice');
+ if(!note&&copy){note=document.createElement('p');note.id='ma-jonas-voice-notice';
+  note.setAttribute('role','status');copy.appendChild(note);}
+ if(note){note.textContent=reason;note.hidden=false;clearTimeout(note._hideTimer);
+  note._hideTimer=setTimeout(function(){note.hidden=true},5500)}
+ (document.getElementById('specific-search-input')||
+  document.getElementById('discover-new-input')||
+  document.getElementById('ma-jonas-global-input'))?.focus({preventScroll:true});
 });
 document.addEventListener('matchapp:voice-partial',function(e){
  if(!opened)return;var input=document.getElementById('specific-search-input')||document.getElementById('discover-new-input');
