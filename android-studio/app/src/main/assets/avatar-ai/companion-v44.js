@@ -73,9 +73,13 @@ function open(shouldGreet){
  photo.setAttribute('aria-label',loc('Talk to your AI avatar','Falar com seu avatar de IA'));
  if(wasOpen)return;
  // Chat opens silently. Microphone and read-aloud require explicit actions.
- if(shouldGreet)window.matchappAndroidAvatarHome?.showReply?.(
-   loc("Hi! I'm Jonas. What would you like to explore?",
-       "Oi! Sou Jonas. O que você gostaria de descobrir?"));
+ if(shouldGreet){
+  var prior=document.getElementById('ma-av-reply');
+  if(!prior||prior.hidden||!prior.textContent.trim())
+   window.matchappAndroidAvatarHome?.showReply?.(
+    loc("Hi! I'm Jonas. What would you like to explore?",
+        "Oi! Sou Jonas. O que você gostaria de descobrir?"));
+ }
  if(shouldGreet)window.setTimeout(function(){
   if(!opened)return;
   var input=document.getElementById('specific-search-input')||
