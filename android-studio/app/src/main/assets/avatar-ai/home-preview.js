@@ -7,13 +7,13 @@ if(!document.getElementById('matchapp-android-no-kids-entry')){
  kidsStyle.textContent='html #matchapp-kids-entry,html .ma-kids-mode-entry{display:none!important}';
  (document.head||document.documentElement).appendChild(kidsStyle);
 }
-if(!/^(?:\/|\/index\.html|\/discover\.html)$/.test(location.pathname))return;
+if(/^\/kids(?:\/|$)/.test(location.pathname))return;
 if(window.__matchappAndroidAvatarHomeInstalled){window.matchappAndroidAvatarHome?.refresh?.();return;}
 window.__matchappAndroidAvatarHomeInstalled=true;
 var ORIGIN='https://appassets.androidplatform.net/assets/avatar-ai/';
 var ART=ORIGIN+'approved-reference.jpg';
 var avatarState='idle',stateDeadline=null;
-var PERSONAS={jonas:{name:'Jonas',img:ORIGIN+'jonas.jpg'},aureya:{name:'Aureya',img:ORIGIN+'aureya.jpg'}};
+var PERSONAS={jonas:{name:'Jonas',img:ORIGIN+'jonas.jpg'}};
 var currentUserId='',preview=null,avatar='jonas',lastTitle='',hydratedUser='',lastLoadedUser='',cloudChangeAt=0;
 var motion=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
 function getSession(){
@@ -29,7 +29,7 @@ function getSession(){
 function key(user){return 'matchapp_android_ai_persona_'+user;}
 function preferred(){
  var s=getSession();currentUserId=s&&s.user?s.user.id:'';
- try{return currentUserId&&localStorage.getItem(key(currentUserId))==='aureya'?'aureya':'jonas'}catch(_){return 'jonas'}
+ return 'jonas';
 }
 function locale(){
  var l=(window.MATCH_LANG||document.documentElement.lang||'en').toLowerCase();
@@ -110,7 +110,7 @@ html.matchapp-ai-android #ma-avatar-home .ma-av-portrait{position:relative;flex:
 #ma-avatar-home:after{display:none}
 #ma-avatar-home #ma-av-photo{display:none}
 #ma-avatar-home .ma-reference-art{position:absolute;inset:0;background-image:url('${ART}');background-repeat:no-repeat;background-size:295.38% 153.6%;background-position:28.05% 0;animation:maPortraitBreathe 7s ease-in-out infinite;transform-origin:50% 60%}
-#ma-avatar-home[data-persona="aureya"] .ma-reference-art{background-size:288% 149.93%;background-position:100% 0}
+
 #ma-avatar-home[data-persona="jonas"][data-state="listening"] .ma-reference-art{background-size:auto 445.22%;background-position:19.30% 87.53%}
 #ma-avatar-home[data-persona="jonas"][data-state="thinking"] .ma-reference-art{background-size:auto 445.22%;background-position:39.05% 87.53%}
 #ma-avatar-home[data-persona="jonas"][data-state="speaking"] .ma-reference-art{background-size:auto 445.22%;background-position:98.09% 87.53%}
@@ -125,7 +125,7 @@ html.matchapp-ai-android #ma-avatar-home .ma-av-portrait{position:relative;flex:
 @keyframes maVoicePulse{to{opacity:.4;transform:scale(1.5)}}
 #ma-avatar-home #ma-av-stop{background:#26172b;color:#f4dda7}
 .ma-choice-art{display:block;width:100%;height:128px;border-radius:12px;background-image:url('${ART}');background-size:295.38% 153.6%;background-position:28.05% 0}
-.ma-choice-art[data-persona="aureya"]{background-size:288% 149.93%;background-position:100% 0}
+
 @media(prefers-reduced-motion:reduce){#ma-avatar-home .ma-reference-art,#ma-av-state:before{animation:none!important}}
 `;
 document.head.appendChild(css);
@@ -144,6 +144,10 @@ function install(){
  if(!home&&location.pathname==='/discover.html'){
   var row=document.querySelector('.newsearch-row');
   if(row){home=document.getElementById('ma-avatar-discover-host');if(!home){home=document.createElement('section');home.id='ma-avatar-discover-host';row.parentElement.insertBefore(home,row)}}
+ }
+ if(!home && document.body && !/^\/kids(?:\/|$)/.test(location.pathname)) {
+  home=document.getElementById('ma-avatar-global-host');
+  if(!home){home=document.createElement('section');home.id='ma-avatar-global-host';document.body.appendChild(home)}
  }
  var entry=document.getElementById('ma-ai-entry'),rail=document.getElementById('trending-rail');
  if(entry&&rail&&entry.parentElement===rail.parentElement&&entry.nextElementSibling!==rail)rail.before(entry);
@@ -198,7 +202,7 @@ function renderAvatar(){
  setAvatarState(avatarState);
  preview.querySelector('#ma-av-help').textContent=words('Your entertainment AI • Ready when you are','Sua IA de entretenimento • Pronta para conversar');
  preview.querySelector('#ma-av-talk').textContent=words('Chat with ','Conversar com ')+PERSONAS[avatar].name;
- preview.querySelector('#ma-av-settings').textContent=words('Change avatar','Trocar avatar');
+ preview.querySelector('#ma-av-settings').textContent=words('About Jonas','Sobre Jonas');
  var stop=preview.querySelector('#ma-av-stop');if(stop)stop.textContent=words('Stop','Parar');
  var image=preview.querySelector('#ma-av-photo');
  if(image){image.removeAttribute('src');image.alt=''}
