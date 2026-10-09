@@ -96,6 +96,13 @@ Deno.serve(async req=>{
  const history=suppliedHistory.filter((m:any)=>m&&['user','assistant'].includes(m.role)&&typeof m.content==='string')
    .map((m:any)=>({role:m.role,content:safeText(m.content,HISTORY_TEXT_LIMIT)}))
    .filter((m:any)=>m.content);
+ // Retry attempts are counted even when upstream requests later fail/refund,
+ // so repeated timeouts cannot create uncapped provider costs.
+ try{
+  const {data:attempt,error:attemptError}=await admin.rpc('jonas_track_attempt',{p_user_id:userId});
+  if(attemptError||!attempt)return json({error:'Jonas is temporarily unavailable; please retry later.'},503,origin);
+  if(attempt.allowed!==true)return json({error:'Too many chat attempts. Please wait before trying again.',reason:'retry_limit'},429,origin);
+ }catch{return json({error:'Jonas usage protection is temporarily unavailable.'},503,origin);}
  const requestId=crypto.randomUUID();
  let reserved=false;
  let reservedAllowance:any=null;
