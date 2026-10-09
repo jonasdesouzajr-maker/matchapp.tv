@@ -223,8 +223,8 @@ function buildDialog(){
  form.append(input,button);box.append(header,log,remaining,voice,form);
  shade.onclick=hide;document.body.append(shade,box);document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!box.hidden)hide()});
 }
-function open(){css();buildDialog();lastFocus=document.activeElement;box.hidden=false;$('jonas-plus-shade').hidden=false;
- $('jonas-plus-close').focus({preventScroll:true});void refresh();}
+function open(alreadyChecked=false){css();buildDialog();lastFocus=document.activeElement;box.hidden=false;$('jonas-plus-shade').hidden=false;
+ $('jonas-plus-close').focus({preventScroll:true});if(!alreadyChecked)void refresh();}
 function hide(){if(!box)return;box.hidden=true;$('jonas-plus-shade').hidden=true;
  if(lastFocus?.isConnected)lastFocus.focus({preventScroll:true});}
 function entry(){
@@ -240,7 +240,7 @@ async function openFromBubble(){
  // Entitlement is checked against the server on every activation; a browser flag
  // alone must never unlock a paid request. Non-subscribers retain Ask AI.
  if(!(await refresh()))return false;
- open();return true;
+ open(true);return true;
 }
 function init(){css();pricing();entry();}
 window.MatchAppJonasPlus={open,openFromBubble,refresh,isActive:()=>active,checkout,manage};
