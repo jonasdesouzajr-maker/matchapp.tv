@@ -48,7 +48,7 @@ class VoiceAvatarActivity : AppCompatActivity() {
         val token = intent.getStringExtra(EXTRA_TOKEN).orEmpty().takeIf {
             it.length in 100..6000 && it.none { char -> char.isWhitespace() }
         }.orEmpty()
-        val persona = if (intent.getStringExtra(EXTRA_PERSONA) == "aureya") "aureya" else "jonas"
+        val persona = "jonas"
         val question = intent.getStringExtra(EXTRA_PROMPT).orEmpty().take(1000)
         // Bearer token exists only in process memory: never persisted in a URL or file.
         player = WebView(this).apply {
