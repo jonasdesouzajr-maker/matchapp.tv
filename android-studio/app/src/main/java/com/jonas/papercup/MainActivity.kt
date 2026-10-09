@@ -500,6 +500,12 @@ class MainActivity : AppCompatActivity() {
 
     private fun resolveLaunchUrl(intent: Intent?): String {
         debugSmokeLaunch(intent)?.let { return it }
+        // Dedicated Jonas Python preview for the separate debug APK only.
+        // The Google Play release never uses a localhost server or this route.
+        if (BuildConfig.DEBUG && intent?.action == Intent.ACTION_MAIN &&
+            intent.hasCategory(Intent.CATEGORY_LAUNCHER)) {
+            return "http://127.0.0.1:8877/"
+        }
         val data = intent?.data
         if (data != null && (data.scheme == "https" || data.scheme == "http")) {
             if (isMatchAppHost(data.host.orEmpty()) && !isKidsUri(data)) {
