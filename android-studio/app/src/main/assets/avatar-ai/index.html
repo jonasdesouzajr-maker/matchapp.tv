@@ -51,9 +51,9 @@ let mouth=0,speech=0,blinkAt=performance.now()+3100,blink=0,blinkStart=-2000,pre
 let visemes=[],currentViseme="a",lastVisemeAt=0;
 const minimal=matchMedia("(prefers-reduced-motion:reduce)").matches;
 const sessionReady=new Promise(resolve=>{window.MatchAppAvatar={init:(token,selected,question)=>{
- jwt=String(token||"");persona=selected==="aureya"?"aureya":"jonas";initialPrompt=String(question||"").slice(0,1000);
- img.src=persona==="aureya"?"aureya.jpg":"created-avatar.jpg";
- const name=persona==="aureya"?"Aureya":"Jonas";$("avatar-subtitle").textContent=name+" · Voice avatar";face.setAttribute("aria-label",name+" AI avatar portrait");
+ jwt=String(token||"");persona="jonas";initialPrompt=String(question||"").slice(0,1000);
+ img.src="created-avatar.jpg";
+ const name="Jonas";$("avatar-subtitle").textContent=name+" · Voice avatar";face.setAttribute("aria-label",name+" AI avatar portrait");
  resolve(jwt);
 }};setTimeout(()=>resolve(jwt),5000)});
 const setStatus=(state,title,description)=>{
@@ -138,7 +138,6 @@ async function start(){
   dc.onopen=()=>{
     // Match the selected avatar with a suitable Realtime voice before first speech.
     // These are model-provided voices; the portrait is not presented as a real person.
-    if(persona==="aureya")dc.send(JSON.stringify({type:"session.update",session:{audio:{output:{voice:"marin"}}}}));
     if(initialPrompt){
       const question=initialPrompt;initialPrompt="";
       dc.send(JSON.stringify({type:"conversation.item.create",item:{type:"message",role:"user",content:[{type:"input_text",text:question}]}}));
