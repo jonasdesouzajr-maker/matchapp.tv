@@ -20,7 +20,7 @@ test('the premium walkthrough has complete authored text in every supported loca
 });
 test('stable spotlight anchors and Android Kids exclusion are part of v9',()=>{
  const source=read('onboarding-tour.js');
- assert.match(source,/const VERSION='v9'/);
+ assert.match(source,/const VERSION='v10'/);
  assert.match(source,/selector:'#trending-rail,#trending-rail/);
  assert.match(source,/selector:'#ma-jonas-home-bubble,#search-box h2/);
  assert.match(source,/if\(step\.key==='kids'&&isAndroid\)return false/);
@@ -31,9 +31,9 @@ test('stable spotlight anchors and Android Kids exclusion are part of v9',()=>{
  assert.match(source,/function score\(c\)/);
 });
 test('homepage loads localized copy before the versioned guide, without changing Kids site',()=>{
- const html=read('index.html'),a=html.indexOf('/onboarding-tour-locales-20261010.js'),b=html.indexOf('/onboarding-tour.js?v=20261010-tour-v9');
+ const html=read('index.html'),a=html.indexOf('/onboarding-tour-locales-20261010.js'),b=html.indexOf('/onboarding-tour.js?v=20261010-tour-v10');
  assert.ok(a>=0&&a<b);
- assert.ok(html.includes('/onboarding-tour.css?v=20261010-tour-v9'));
+ assert.ok(html.includes('/onboarding-tour.css?v=20261010-tour-v10'));
  assert.ok(read('kids/index.html').length>100);
 });
 test('guide animations respect reduced motion and Arabic writing direction',()=>{

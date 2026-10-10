@@ -2,7 +2,7 @@
 (function(){
 'use strict';
 
-const VERSION='v9';
+const VERSION='v10';
 let stepIndex=0,steps=[],panel=null,spot=null,active=false,repositionRaf=0,touchX=null,lastTarget=null;
 let focusGuardInstalled=false;
 let bookFoldBeforeTour=null,bookFoldForcedOpen=false;
@@ -97,8 +97,8 @@ function firstVisible(list){
 function buildSteps(){
  const defs=[
   {key:'pick',selector:'.lazy-head[data-fold-key="concierge"],#ma-tab-match'},
-  {key:'mood',selector:'.ma-watch-preview label:last-child,.ma-quick .ma-filter-row.ma-mood-block'},
-  {key:'format',selector:'.ma-watch-preview label:first-child,.ma-quick .ma-filter-row:nth-child(2)'},
+  {key:'mood',selector:'.ma-quick .ma-filter-row.ma-mood-block,.ma-watch-preview label:last-child'},
+  {key:'format',selector:'.ma-quick .ma-filter-row:nth-child(2),.ma-watch-preview label:first-child'},
   {key:'platform',selector:'.ma-quick .ma-filter-row:nth-child(3)'},
   {key:'more',selector:'.match-more-filters>summary,.match-more-filters',mode:'filters'},
   // These two steps belong to the SEPARATE Bookworms card directly beneath
@@ -258,9 +258,17 @@ function removeFocusGuard(){
 function revealTarget(el){
  const vp=viewport(),r=el.getBoundingClientRect();
  const guardTop=vp.top+18,guardBottom=vp.bottom-18;
- const outside=r.bottom<guardTop||r.top>guardBottom||r.right<vp.left+12||r.left>vp.right-12;
+ // A clipped target is not a usable spotlight. On short Android WebView
+ // screens, scroll the FULL field into view before drawing its pointer.
+ const outside=r.top<guardTop||r.bottom>guardBottom||
+   r.left<vp.left+12||r.right>vp.right-12;
  if(outside){
-  try{el.scrollIntoView({behavior:reduced()?'auto':'smooth',block:'center',inline:'nearest'})}catch(_){}
+  try{
+   const center=r.top+r.height/2,desired=vp.top+vp.height*.41;
+   window.scrollBy({top:center-desired,behavior:'instant'});
+  }catch(_){
+   try{el.scrollIntoView({behavior:'auto',block:'center',inline:'nearest'})}catch(__){}
+  }
   return;
  }
  if(vp.width>700||!panel)return;
@@ -412,7 +420,10 @@ function show(i){
 
  // Reposition after smooth scrolling settles and re-blur any input that a
  // normal target click tried to focus while the tour is still open.
- [90,220,420].forEach(ms=>setTimeout(()=>{blurActive();place()},reduced()?0:ms));
+ [90,220,420,700].forEach(ms=>setTimeout(()=>{
+  if(!active||steps[stepIndex]!==step)return;
+  blurActive();place();
+ },reduced()?0:ms));
 }
 
 function close(){
