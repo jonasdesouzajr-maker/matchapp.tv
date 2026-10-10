@@ -76,16 +76,19 @@
   root.dataset.voiceMode='text';
   statusText('Text mode · Voice is off','Modo texto · Voz desativada');
  }
+ var nativeListening=false;
  function listen(token){
   if(token!==session||mode!=='voice'||panel.hidden)return;
-  // The installed Android WebView does not expose the browser SpeechRecognition
+  // Keep recognition active while the Android system recognizer takes focus.`n  // The resulting transcript arrives on the same WebView after Activity resumes.`n  // The installed Android WebView does not expose the browser SpeechRecognition
   // API reliably. Use the existing native recognizer bridge instead and preserve
   // the voice-origin marker through the authorized /discover.html navigation.
   if(window.MatchAppNativeVoice&&typeof window.MatchAppNativeVoice.start==='function'){
+   nativeListening=true;
    var oldNativeResult=window.matchAppNativeVoiceResult;
    var oldNativeError=window.matchAppNativeVoiceError;
    function returnToQuestion(transcript){
     if(token!==session||mode!=='voice'||panel.hidden){if(typeof oldNativeResult==='function')oldNativeResult(transcript);return}
+    nativeListening=false;
     var words=String(transcript||'').trim();
     if(!words)return;
     input.value=words;
@@ -97,7 +100,7 @@
    window.matchAppNativeVoiceResult=returnToQuestion;
    window.matchAppNativeVoiceError=function(code){
     if(token!==session||mode!=='voice'){if(typeof oldNativeError==='function')oldNativeError(code);return}
-    root.classList.remove('jh-listening');mic?.setAttribute('aria-pressed','false');
+    nativeListening=false;root.classList.remove('jh-listening');mic?.setAttribute('aria-pressed','false');
     statusText('Microphone unavailable. Tap to retry or type.','Microfone indisponível. Toque para tentar novamente ou digite.');
    };
    root.classList.add('jh-listening');mic?.setAttribute('aria-pressed','true');
@@ -205,7 +208,7 @@
  input?.addEventListener('keydown',function(e){if(e.isTrusted&&!['Tab','Escape','Enter'].includes(e.key))switchToText()});
  input?.addEventListener('focus',function(e){if(e.isTrusted&&input.value.trim())switchToText()});
  form?.addEventListener('submit',function(){switchToText()});
- document.addEventListener('visibilitychange',function(){if(document.hidden){++session;mode='idle';stopVoice()}});
+ document.addEventListener('visibilitychange',function(){if(document.hidden&&!nativeListening){++session;mode='idle';stopVoice()}});
  window.addEventListener('pagehide',function(){++session;mode='idle';stopVoice()});
  statusText('Tap Jonas to talk · or start typing','Toque no Jonas para falar · ou digite');
 })();
