@@ -195,14 +195,18 @@ test('adult Android is Play-Billing ready and cannot fall through to Stripe chec
 });
 
 
-test('adult Android keeps Kids Mode unavailable in-app and offers the browser Kids experience',()=>{
+test('adult Android excludes all Kids Mode UI and browser actions without touching website Kids',()=>{
  const main=read('android-studio/app/src/main/java/com/jonas/papercup/MainActivity.kt');
+ const home=read('index.html');
+ const css=read('jonas/android-hide-kids-20261010.css');
  assert.match(main,/MATCHAPP_ANDROID_KIDS_BLOCKED = true/);
- assert.match(main,/MatchApp Ai Kids is coming soon to Google Play/);
- assert.match(main,/MatchApp Kids normally in your smartphone browser/);
- assert.match(main,/openKidsBrowser/);
- assert.match(main,/https:\/\/matchapp\.tv\/kids\/\?utm_source=android_app&utm_medium=kids_notice/);
- assert.match(main,/firstOrNull \{ it != packageName \}/);
- assert.match(main,/#matchapp-kids-entry,.ma-kids-mode-entry/);
- assert.doesNotMatch(main,/\.ma-kids-mode-entry,#matchapp-kids-entry' \+/);
+ assert.match(main,/function stripAndroidKids\(\)/);
+ assert.match(main,/__matchAppAndroidKidsRemoved/);
+ assert.match(main,/\.remove\(\)/);
+ assert.match(main,/if \(isKidsUri\(uri\)\)/);
+ assert.match(main,/#matchapp-kids-entry/);
+ assert.doesNotMatch(main,/showAndroidKidsNotice|configureAndroidKidsEntry|fun openKidsBrowser|fun openKidsInBrowser/);
+ assert.ok(home.includes('/jonas/android-hide-kids-20261010.css'));
+ assert.match(css,/html\.matchapp-ai-android #matchapp-kids-entry/);
+ assert.ok(read('kids/index.html').length>100,'website Kids remains available');
 });
