@@ -186,3 +186,38 @@ html.matchapp-tour-active{scroll-behavior:auto}
 @media(prefers-reduced-motion:reduce){
   .matchapp-tour-spotlight,.matchapp-tour-progress span{transition:none!important;animation:none!important}
 }
+
+/* 2026-10-10 precise premium spotlight: no decorative canvas or inert hit zones. */
+.matchapp-tour-spotlight::before{
+ content:"";position:absolute;inset:-5px;border:1px solid rgba(255,236,164,.60);
+ border-radius:inherit;pointer-events:none;
+ animation:matchappTourOrbit 2.1s ease-in-out infinite;
+}
+.matchapp-tour-card.is-entering > :not(.matchapp-tour-pointer){
+ animation:matchappTourContentEnter .3s cubic-bezier(.19,1,.22,1) both;
+}
+.matchapp-tour-card::before{
+ content:"";position:absolute!important;z-index:0!important;inset:0;
+ background:linear-gradient(110deg,transparent 22%,rgba(255,234,160,.07) 43%,transparent 64%);
+ background-size:230% 100%;border-radius:inherit;pointer-events:none;
+ animation:matchappTourSheen 6s ease-in-out infinite;
+}
+.matchapp-tour-card[dir="rtl"]{text-align:right}
+.matchapp-tour-card[dir="rtl"] .matchapp-tour-actions{flex-direction:row-reverse}
+.matchapp-tour-card[dir="rtl"] .matchapp-tour-meta{direction:rtl}
+@keyframes matchappTourOrbit{
+ 0%,100%{opacity:.4;transform:scale(1)}
+ 50%{opacity:.85;transform:scale(1.025)}
+}
+@keyframes matchappTourContentEnter{
+ from{opacity:.05;transform:translateY(7px);filter:blur(2px)}
+ to{opacity:1;transform:translateY(0);filter:blur(0)}
+}
+@keyframes matchappTourSheen{
+ 0%,38%{background-position:155% 0}
+ 68%,100%{background-position:-90% 0}
+}
+@media(prefers-reduced-motion:reduce){
+ .matchapp-tour-spotlight::before,.matchapp-tour-card.is-entering > :not(.matchapp-tour-pointer),
+ .matchapp-tour-card::before{animation:none!important;transition:none!important}
+}
