@@ -52,6 +52,8 @@ class VoiceAvatarActivity : AppCompatActivity() {
         player = WebView(this).apply {
             setBackgroundColor(Color.rgb(9,7,18))
             settings.javaScriptEnabled = true
+            // First-party avatar CSS and JavaScript can refresh independently of this signed native shell.
+            settings.cacheMode = WebSettings.LOAD_NO_CACHE
             settings.domStorageEnabled = false
             settings.allowFileAccess = false
             settings.allowContentAccess = false

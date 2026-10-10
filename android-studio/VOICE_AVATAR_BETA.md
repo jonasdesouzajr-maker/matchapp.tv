@@ -28,3 +28,13 @@ Run `node --test tests/android-avatar-native.test.cjs` and
 The debug APK is signed with Android's debug key and must **never** be uploaded to Google Play; a separately signed, incremented release AAB requires device QA and rollout approval.
 
 No browser or Kids UI was changed. Do not automatically bump the existing Play release (v42) for an unverified avatar feature.
+
+## Remote-editable avatar (Android v48+)
+- Android's signed local asset page remains the secure credential-bootstrap shell at appassets.androidplatform.net.
+- Jonas animation, voice frontend, speech handling and UI behavior now live in first-party https://matchapp.tv/jonas/android-avatar/runtime.js.
+- UI style is remotely edited in https://matchapp.tv/jonas/android-avatar/experience.css.
+- Original face image and markup remain packaged as a fallback structure. Changes to its HTML structure still require a new bundle; use remote JS for live DOM changes.
+- The main top box and floating Jonas are already loaded from matchapp.tv and can be updated with normal website deployments.
+- Deploy first-party changes and invalidate CDN caches; users reopen the avatar to load latest changes. Never remotely ship executable Android binaries.
+- Native WebView, microphone permissions, signed assets, AdMob, Play Billing, SDKs or manifest changes still require a Google Play AAB.
+- Never log JWTs or add third-party scripts; preserve backend owner gating, quotas and policy compliance.

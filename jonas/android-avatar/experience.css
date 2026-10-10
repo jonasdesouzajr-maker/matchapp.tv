@@ -1,0 +1,22 @@
+:root{color-scheme:dark;--gold:#edc969;--violet:#885cff;--text:#f8f6ff;--sub:#beb7d1;--volume:0}
+*{box-sizing:border-box}html,body{height:100%;margin:0;overflow:hidden}body{font:500 15px/1.5 Inter,system-ui,Roboto,sans-serif;color:var(--text);background:radial-gradient(ellipse 90% 52% at 50% 30%,#2b174a 0%,#100a20 52%,#07060e 100%)}button{font:inherit;touch-action:manipulation}
+.shell{min-height:100dvh;display:flex;flex-direction:column;padding:max(14px,env(safe-area-inset-top)) 20px max(20px,env(safe-area-inset-bottom));max-width:570px;margin:auto;position:relative;isolation:isolate}
+.ambient{pointer-events:none;position:absolute;inset:0;z-index:-1;background:radial-gradient(circle at 50% 52%,rgba(153,99,255,.15),transparent 50%)}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px}.back{width:43px;height:43px;display:grid;place-items:center;color:#f7f1ff;background:rgba(255,255,255,.04);border:1px solid rgba(224,190,112,.25);border-radius:50%;font-size:21px}
+.brand{flex:1;text-align:center;line-height:1.2;font-size:17px;font-weight:800;letter-spacing:-.01em}.brand em{font-style:normal;color:var(--gold)}.brand small{display:block;color:var(--sub);font-size:10px;font-weight:650;letter-spacing:.17em;margin-top:5px;text-transform:uppercase}
+.privacy{font-size:10px;white-space:nowrap;color:#eacb80;background:rgba(236,194,97,.08);padding:8px 10px;border:1px solid rgba(236,194,97,.22);border-radius:99px}
+.stage{flex:1;min-height:0;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:12px}
+.portrait-wrap{width:min(72vw,46dvh,280px);aspect-ratio:1;position:relative;border-radius:50%;filter:drop-shadow(0 18px 28px rgba(0,0,0,.42))}
+.portrait-wrap:before{content:"";position:absolute;inset:-8px;border-radius:50%;border:2px solid rgba(237,201,105,.78);box-shadow:0 0 28px rgba(155,99,255,.28),inset 0 0 12px rgba(236,196,102,.12);pointer-events:none;z-index:2;transition:box-shadow .35s}
+body[data-mode="speaking"] .portrait-wrap:before{box-shadow:0 0 calc(25px + var(--volume)*65px) rgba(163,116,255,.5),inset 0 0 12px rgba(236,196,102,.18)}
+.face{width:100%;height:100%;display:block;border-radius:50%;object-fit:cover;object-position:center 22%;background:#1b1626}
+.glimmer{position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:linear-gradient(135deg,rgba(251,218,154,.10),transparent 35%,transparent 66%,rgba(132,93,222,.14));mix-blend-mode:screen}
+.status-dot{position:absolute;right:3%;bottom:9%;width:15px;height:15px;border-radius:50%;border:3px solid #130d22;background:#8c809d;z-index:3}body[data-mode="connected"] .status-dot,body[data-mode="listening"] .status-dot,body[data-mode="speaking"] .status-dot{background:#66efb0;box-shadow:0 0 17px rgba(95,235,183,.8)}
+.status{text-align:center;padding-top:9px}.status h1{margin:0;font-size:clamp(20px,3dvh,26px);line-height:1.2;font-weight:820;letter-spacing:-.03em}.status p{color:var(--sub);font-size:12px;margin:7px auto;max-width:320px;min-height:30px}
+.wave{display:flex;align-items:center;justify-content:center;height:44px;gap:4px}.wave span{background:linear-gradient(180deg,#efcd82,#9a7ff2);width:3.5px;height:10px;border-radius:8px;transform-origin:center;transition:transform 65ms ease-out}
+.actions{padding:0 0 4px;display:grid;gap:13px}.main-btn{width:100%;min-height:56px;border-radius:999px;border:0;background:linear-gradient(107deg,#a98af3,#e4bb69 92%);color:#1a1124;font-weight:850;font-size:15px;box-shadow:0 12px 32px rgba(151,105,244,.16)}.main-btn:disabled{opacity:.55}.main-btn.end{background:rgba(234,116,138,.10);border:1px solid rgba(246,147,155,.46);color:#f9d0d1;box-shadow:none}
+.secondary{width:100%;min-height:43px;background:transparent;color:#ddd2f3;border:1px solid rgba(220,207,244,.19);border-radius:999px;font-size:12px}.secondary[hidden]{display:none}
+.foot{text-align:center;font-size:10px;color:#8e849e;margin-top:4px}.foot strong{color:#d5bf85}
+@media(min-width:700px){.shell{padding-top:27px;padding-bottom:25px}.portrait-wrap{width:min(34vw,280px)}}
+@media(max-height:710px){.stage{gap:4px}.portrait-wrap{width:min(52vw,34dvh)}.status p{margin:4px auto}.status h1{font-size:19px}.wave{height:33px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
