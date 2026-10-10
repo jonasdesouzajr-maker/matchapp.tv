@@ -26,7 +26,7 @@
  function approved(v,tag){
   if(!v||!v.name||!v.lang)return false;
   var name=String(v.name).trim(),lang=language(tag),actual=language(v.lang);
-  if(!lang||lang!==actual||reject.test(name))return false;
+  if(!lang||lang!==actual||reject.test(name)||v.localService!==true)return false;
   // An explicitly marked male system voice is acceptable only for this language.
   if(/(?:^|[\s(\[_-])male(?:$|[\s)\]_-])/i.test(name))return true;
   return (maleNames[lang]||[]).some(function(pattern){return pattern.test(name)});
