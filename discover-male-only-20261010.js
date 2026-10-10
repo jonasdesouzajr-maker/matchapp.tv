@@ -1,0 +1,2267 @@
+/* ============================================================
+   © 2026 MatchApp.tv — All Rights Reserved.
+   Proprietary source code. Not licensed for reproduction, scraping,
+   or reuse in competing products. See /terms.html Section 4.
+   ============================================================ */
+
+/* ============================================================
+   MatchApp — AI NATURAL-LANGUAGE DISCOVERY
+   Powers discover.html. Takes a plain-language question such as
+   "Is there a TV show about Medecins Sans Frontieres?" and returns
+   a real conversational answer (spoken and written) plus a ranked
+   list of matching titles.
+
+   BUG FIX (podcast-only results): the previous fallback searched
+   movie + tvShow + podcast media for every question, unconditionally.
+   iTunes' podcast search is far looser than its movie/show search —
+   almost any phrase returns dozens of podcasts, while offbeat movie
+   questions often return zero — so after filtering, results were
+   frequently 100% podcasts regardless of what was asked. This
+   version detects whether the question is actually about audio
+   content before ever touching the podcast/music catalogs.
+
+   Falls back to the keyless iTunes catalog if the AI proxy is
+   unavailable, so the page never comes back empty — but the
+   fallback is now honestly labelled as offline mode rather than
+   presented as if it were the full conversational AI.
+   ============================================================ */
+
+const DISCOVER_MAX = 12;
+
+function getQueryParam(name) {
+    try { return new URLSearchParams(window.location.search).get(name) || ''; }
+    catch (e) { return ''; }
+}
+
+function keepConversationAtStart() {
+    return getQueryParam('focus') === 'start';
+}
+
+/* ---------- Intent detection ---------- */
+// Decides whether the question is actually about audio (podcasts, music,
+// playlists, singles, audiobooks) so the fallback never pulls in podcasts
+// for a question about a movie. (The AI Concierge path does its own,
+// identical intent check server-side, in the Edge Function.)
+function mediaIntentQuestion(q) {
+  // Only discard explicit *exclusions* of media at the end of a clause.
+  // A negative mention is not a positive format request.
+  return String(q||'').replace(/\b(?:do\s+not|don't|dont|avoid)\s+(?:recommend|suggest|include|show|give|offer)\s+(?:(?:me|any)\s+)*(?:e-?books?|books?|audio\s?books?|music|films?|movies?|tv\s+shows?|series|magazines?|podcasts?)(?:\s+(?:or|and)\s+(?:e-?books?|books?|audio\s?books?|music|films?|movies?|tv\s+shows?|series|magazines?|podcasts?))*(?=\s*(?:[.!?]|$))/gi,' ');
+}
+function detectAudioIntent(q) {
+    q=mediaIntentQuestion(q);
+    return /\b(podcast|playlist|song|songs|music|album|albums|single|singles|audiobook|spotify|listen|radio show)\b/i.test(q);
+}
+function detectBookIntent(q) {
+    q=mediaIntentQuestion(q);
+    // Books and narrated book editions have an independent verified matcher.
+    // Never treat one as a Spotify music track or TMDB film request.
+    return /\b(e-?books?|books?|audio\s?books?|novels?|reading|kindle|librivox|livros?|audiolivros?|libros?|audiolibros?|magazines?|revistas?)\b/i.test(q) || /雑誌|オーディオブック/u.test(q);
+}
+
+/* ---------- AI conversational answer ---------- */
+
+// Attempts to salvage JSON that was cut off mid-object (the classic symptom of
+// a model hitting its token ceiling). Closes any unterminated string, then any
+// still-open brackets, in the right order. Returns null if it's beyond saving.
+function repairTruncatedJSON(raw) {
+    let s = raw.slice(raw.indexOf('{'));
+    // Drop trailing partial fragments so we don't close a half-written key or
+    // an object that only has an opening brace. Order matters: strip the most
+    // specific patterns first.
+    s = s.replace(/,\s*\{\s*"[^"]*$/, '')   // ,{"tit      → partial key in a new object
+         .replace(/,\s*"[^"]*$/, '')        // ,"tit       → partial key
+         .replace(/,\s*\{\s*$/, '')         // ,{          → empty trailing object
+         .replace(/,\s*$/, '');             // trailing comma
+
+    let inStr = false, esc = false;
+    const stack = [];
+    for (const ch of s) {
+        if (esc) { esc = false; continue; }
+        if (ch === '\\') { esc = true; continue; }
+        if (ch === '"') { inStr = !inStr; continue; }
+        if (inStr) continue;
+        if (ch === '{' || ch === '[') stack.push(ch);
+        else if (ch === '}' || ch === ']') stack.pop();
+    }
+    if (inStr) s += '"';
+    while (stack.length) s += (stack.pop() === '{' ? '}' : ']');
+
+    try { return JSON.parse(s); } catch (e) { return null; }
+}
+
+function parseAIResponse(data) {
+    if (!data) throw new Error('AI unavailable');
+    if (data.error) throw new Error(data.error);
+    if (!data.candidates || !data.candidates[0]) throw new Error('AI unavailable');
+
+    // Gemini may split valid JSON across multiple text parts. Assemble them before parsing.
+    const raw = (Array.isArray(data.candidates[0]?.content?.parts)
+        ? data.candidates[0].content.parts.map(p => typeof p?.text === 'string' ? p.text : '').join('')
+        : '').trim();
+    if (!raw) throw new Error('Empty AI answer');
+    const s = raw.indexOf('{'), e = raw.lastIndexOf('}');
+    if (s === -1) throw new Error('Bad AI format');
+
+    let parsed = null;
+    if (e !== -1) {
+        try { parsed = JSON.parse(raw.substring(s, e + 1)); } catch (err) { parsed = null; }
+    }
+    // Last resort before giving up: try to repair a truncated payload rather
+    // than dropping the user into offline mode over a missing closing brace.
+    if (!parsed) {
+        parsed = repairTruncatedJSON(raw);
+        if (parsed) console.warn('[MatchApp Ai] Response was truncated; recovered it by repairing the JSON.');
+    }
+    if (!parsed) {
+        console.error('[MatchApp Ai] Could not parse response. finishReason:', data._finishReason,
+            '| model:', data._servedByModel, '\nFirst 400 chars:', String(raw).slice(0, 400));
+        throw new Error('Bad AI format');
+    }
+    if (!parsed.answer) throw new Error('Empty AI answer');
+    parsed.results = parsed.results || [];
+    parsed._live = true;
+    return parsed;
+}
+
+async function askAIConversational(question, history) {
+    if (!window.supabaseClient) {
+        const err = new Error('No backend');
+        err.aiUnavailable = true;
+        throw err;
+    }
+
+    // The prompt engineering lives in the gemini-proxy Edge Function, so the
+    // client sends structured params rather than a pre-built prompt string.
+    const country = localStorage.getItem('match_user_country') || '';
+    const age = localStorage.getItem('match_user_age') || '';
+    const lang = window.MATCH_LANG || 'en';
+    // Nickname so the AI can address the user by name. Optional by design —
+    // an empty string simply means the AI stays neutral rather than guessing.
+    const nickname = (typeof window.getUserNickname === 'function') ? window.getUserNickname() : '';
+    const displayQuestion=question+'\n\nResponse language: '+lang+'. Use this selected language for the answer and every result description, regardless of the question language.';
+    const body = { mode: 'discover', question:displayQuestion, lang, country, age, nickname, history: history || [] };
+
+    // The proxy can try four models, each with a 20-second upstream deadline.
+    // An 8-second browser timeout discarded healthy answers and retried live
+    // requests unnecessarily, contributing to rate limits and offline badges.
+    // Leave room for the entire verified proxy chain; do not retry timed-out
+    // in-flight work, which might still be consuming model capacity.
+    const AI_TIMEOUT_MS = 90000;
+    const withTimeout = async (promise) => {
+        let timer;
+        try {
+            return await Promise.race([
+                promise,
+                new Promise((_, reject) => {
+                    timer = setTimeout(() => reject(new Error('AI request timed out')), AI_TIMEOUT_MS);
+                })
+            ]);
+        } finally {
+            if (timer !== undefined) clearTimeout(timer);
+        }
+    };
+
+    // A confirmed provider quota from this page's matching flow is not
+    // recoverable by calling the same exhausted keys again immediately.
+    if(Date.now()<Number(window.__matchappAIDownUntil||0)){
+        const err=new Error('AI providers are temporarily quota-limited');
+        err.aiUnavailable=true;
+        err.aiTerminal=true;
+        throw err;
+    }
+    // Two attempts of the SAME contract, not a fallback to a different one.
+    // A transient cold-start/network failure gets one bounded retry, while the
+    // request/response schema remains identical on both attempts.
+    for (let attempt = 1; attempt <= 2; attempt++) {
+        try {
+            const { data, error } = await withTimeout(
+                window.supabaseClient.functions.invoke('gemini-proxy', { body }));
+            if (!error && data && !data.error) return parseAIResponse(data);
+            // A second call cannot fix invalid credentials, a bad client
+            // request, or a quota/rate-limit response; it only makes those
+            // failures worse and needlessly burns provider capacity.
+            const status = Number(error?.context?.status || data?.status || 0);
+            if(status===429)window.__matchappAIDownUntil=Date.now()+45000;
+            if (status === 429 || (status >= 400 && status < 500 && status !== 408)) {
+                const err = new Error(status === 429 ? 'AI is busy; please try again shortly.' : 'AI request rejected.');
+                err.aiUnavailable = true;
+                err.aiTerminal = true;
+                throw err;
+            }
+            if (attempt === 1) {
+                console.warn('[MatchApp Ai] Transient failure; retrying once:', (error && error.message) || (data && data.error) || 'unknown');
+                continue;
+            }
+            const detail = (error && error.message) || (data && data.error) || 'unknown';
+            console.error('[MatchApp Ai] Both attempts failed:', detail,
+                '\n→ Run the diagnostic to see exactly why: open /ai-check.html on this site.');
+            const err = new Error('AI unavailable: ' + detail);
+            err.aiUnavailable = true;   // lets the caller word the message honestly
+            throw err;
+        } catch (e) {
+            if (attempt === 2 || e.aiTerminal || String(e.message || '').includes('timed out')) {
+                e.aiUnavailable = true;
+                throw e;
+            }
+            console.warn('[MatchApp Ai] Transient first-attempt error; retrying once:', e.message || e);
+        }
+    }
+    const err = new Error('AI unavailable');
+    err.aiUnavailable = true;
+    throw err;
+}
+
+/* ---------- Independent factual source for AI outages ---------- */
+// A factual film question must NEVER fall through to an unrelated movie card.
+// Use the existing exact-identity TMDB lookup and separately verified credits;
+// no generated director, release date or guessed streaming link is accepted.
+function isFactualMediaQuestion(question) {
+    const q=mediaIntentQuestion(question);
+    return /\b(?:who\s+directed|director\s+(?:of|for)|name\s+the\s+director|release\s+(?:date|year)|what\s+year\s+was\s+.+released|when\s+was\s+.+released)\b/i.test(q) &&
+        !/\b(?:recommend|suggest|what\s+should\s+i\s+watch)\b/i.test(q);
+}
+function requestedMovieTitle(question) {
+    const quoted=String(question).match(/[“"']([^“"']{2,85})[”"']/);
+    if(quoted)return quoted[1].trim();
+    // Give priority to titles already present in our reviewed shelf.
+    if(typeof CONTENT_CATALOG!=='undefined' && Array.isArray(CONTENT_CATALOG)) {
+        const q=' '+String(question).toLowerCase().replace(/[^\p{L}\p{N}]+/gu,' ')+' ';
+        const found=CONTENT_CATALOG.filter(x=>x&&typeof x.title==='string'&&
+            Array.isArray(x.cats)&&x.cats.some(c=>/movie|film|anime/i.test(c)) &&
+            q.includes(' '+x.title.toLowerCase().replace(/[^\p{L}\p{N}]+/gu,' ')+' '))
+            .sort((a,b)=>b.title.length-a.title.length)[0];
+        if(found)return found.title;
+    }
+    // Common fact syntax: "director and release year of Spirited Away".
+    const named=String(question).match(/\b(?:film|movie|series|of|for|about|called|named)\s+([A-Z][\p{L}\p{N}'-]+(?:\s+[A-Z][\p{L}\p{N}'-]+){1,5})/u);
+    return named?named[1].trim():'';
+}
+// Original publisher credits are a deterministic backup for EXACT film
+// identities when TMDB is unreachable. Extend ONLY with original-source
+// confirmed works, never with guessed film facts or fuzzy title matches.
+// Studio Ghibli primary source: https://www.ghibli.jp/works/chihiro/
+// The studio explicitly credits director Hayao Miyazaki and release 2001.
+const EDITORIAL_FILM_CREDITS=Object.freeze([
+    Object.freeze({title:'Spirited Away',year:'2001',director:'Hayao Miyazaki',
+      source:'https://www.ghibli.jp/works/chihiro/',publisher:'Studio Ghibli'})
+]);
+async function sourceVerifiedFilmFacts(question) {
+    if(!isFactualMediaQuestion(question))return null;
+    const requested=requestedMovieTitle(question);
+    if(!requested)return null;
+    const norm=x=>String(x||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+        .toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
+    const year=String(question).match(/\b(?:19|20)\d{2}\b/)?.[0]||'';
+    const publisher=EDITORIAL_FILM_CREDITS.find(x=>norm(x.title)===norm(requested) && (!year||x.year===year));
+    if(publisher) {
+        const lang=window.MATCH_LANG||'en';
+        const answer=/^pt/.test(lang)
+            ? publisher.title+' ('+publisher.year+') foi dirigido por '+publisher.director+'. Fonte original verificada: '+publisher.publisher+'. O chat de IA está temporariamente indisponível.'
+            : /^es/.test(lang)
+            ? publisher.title+' ('+publisher.year+') fue dirigida por '+publisher.director+'. Fuente original verificada: '+publisher.publisher+'. El chat de IA está temporalmente no disponible.'
+            : publisher.title+' ('+publisher.year+') was directed by '+publisher.director+'. Verified original publisher: '+publisher.publisher+'. Conversational AI is temporarily unavailable.';
+        return {answer,results:[],_live:false,verifiedSource:publisher.source};
+    }
+    if(typeof window.tmdbLookup!=='function'||typeof window.tmdbRelated!=='function')return null;
+    try {
+        const movie=await window.tmdbLookup(requested,{kind:'movie',cats:['movie'],year,priority:true});
+        if(!movie || movie.kind!=='movie' || movie.adult===true ||
+            !Number.isSafeInteger(movie.tmdbId) || movie.tmdbId<=0)return null;
+        if(![movie.title,movie.originalTitle].some(t=>norm(t)===norm(requested)))return null;
+        if(year && String(movie.year)!==year)return null;
+        const info=await window.tmdbRelated(movie.tmdbId,'movie');
+        const director=String(info?.director?.name||'').trim();
+        if(!director || !/^\d{4}$/.test(String(movie.year||'')))return null;
+        const lang=window.MATCH_LANG||'en';
+        const answer=/^pt/.test(lang)
+          ? movie.title+' ('+movie.year+') foi dirigido por '+director+'. Fonte verificada: The Movie Database (TMDB). O chat de IA está temporariamente indisponível.'
+          : /^es/.test(lang)
+          ? movie.title+' ('+movie.year+') fue dirigida por '+director+'. Fuente verificada: The Movie Database (TMDB). El chat de IA está temporalmente no disponible.'
+          : movie.title+' ('+movie.year+') was directed by '+director+'. Verified film source: The Movie Database (TMDB). Conversational AI is temporarily unavailable.';
+        return {answer,results:[],_live:false,verifiedSource:'https://www.themoviedb.org/movie/'+movie.tmdbId};
+    }catch(_){return null;}
+}
+
+/* ---------- Keyless fallback (intent-aware — the actual bug fix) ---------- */
+function stripQuestionWords(q) {
+    return q.replace(/^(is|are|was|were|does|do|did|can|could|what|which|who|where|when|why|how|show me|find me|any|there)\b/gi, ' ')
+            .replace(/\b(a|an|the|about|on|for|with|tv|show|shows|series|movie|movies|film|films|please|me)\b/gi, ' ')
+            .replace(/[?!.,]/g, ' ')
+            .replace(/\s+/g, ' ')
+            .trim();
+}
+
+async function fallbackSearch(question, aiWasDown) {
+    if (detectBookIntent(question)) {
+        // Use a bibliographically identified book, never an invented audio edition.
+        // The real Bookworms source cards provide official Apple/Audible searches,
+        // and the dedicated matcher independently checks an EXACT audio edition.
+        const lang=window.MATCH_LANG||'en';
+        const listed=window.MatchAppReadingAI?.selectBooks?.(question)||[];
+        const norm=x=>String(x||'').toLowerCase().replace(/[^\p{L}\p{N}]+/gu,' ').trim();
+        const q=norm(question);
+        const named=listed.find(x=>x?.title&&q.includes(norm(x.title))&&norm(x.title).length>4);
+        const identity=named?named.title+' by '+named.author:'';
+        const audiobook=window.MatchAppReadingAI?.intent?.(question)==='audiobook';
+        const answer=/^pt/.test(lang)
+          ? (identity?identity+'. ':'')+'O chat de IA está temporariamente indisponível. Confira as buscas oficiais abaixo e use o Match E-books Ai para verificar uma edição em áudio exata antes da compra.'
+          : /^es/.test(lang)
+          ? (identity?identity+'. ':'')+'El chat de IA no está disponible temporalmente. Consulta las búsquedas oficiales abajo y verifica la edición exacta antes de comprar.'
+          : (identity?identity+'. ':'')+'Conversational AI is temporarily unavailable. '+
+            (audiobook?'Check the official Apple Books and Audible searches below, then use Match E-books Ai to verify an exact audiobook edition before purchase or listening.':'Use the official bookstore and publisher links below to check editions and availability.')+
+            ' Store search results do not by themselves verify an edition or listening rights.';
+        return {answer,results:[],_live:false};
+    }
+    if(isFactualMediaQuestion(question)) {
+        const source=await sourceVerifiedFilmFacts(question);
+        if(source)return source;
+        const lang=window.MATCH_LANG||'en';
+        const answer=/^pt/.test(lang)?'O chat de IA está indisponível. Não consegui confirmar esses dados em uma fonte de cinema; tente novamente mais tarde.':
+          /^es/.test(lang)?'El chat de IA está temporalmente no disponible. No pude verificar esos datos en una fuente cinematográfica; vuelve a intentarlo.':
+          'Conversational AI is temporarily unavailable, and I could not independently verify those film facts. Please try again later.';
+        return {answer,results:[],_live:false};
+    }
+    const audioIntent = detectAudioIntent(question);
+    const podcastIntent = /\b(podcast|podcasts|radio show)\b/i.test(question);
+    const musicIntent = audioIntent && !podcastIntent;
+    const trendIntent = /\b(top|trend|trending|popular|hits?|charts?|new music)\b/i.test(question);
+    const term = musicIntent && trendIntent ? 'top hits 2026' : (stripQuestionWords(question) || question);
+    // Only the media types that actually match intent are searched — this is
+    // the fix for the "only podcasts" bug. A question about a movie will
+    // never touch the podcast catalog at all now.
+    const mediaTypes = podcastIntent ? ['podcast'] : (musicIntent ? ['musicTrack'] : ['movie', 'tvShow']);
+
+    const out = [];
+    for (const media of mediaTypes) {
+        try {
+            const res = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(term)}&media=${media}&limit=8`);
+            if (!res.ok) continue;
+            const data = await res.json();
+            (data.results || []).forEach(r => {
+                const title = r.trackName || r.collectionName;
+                if (!title || out.some(o => o.title === title)) return;
+                const genre = String(r.primaryGenreName || '');
+                const row = {
+                    title,
+                    year: r.releaseDate ? String(r.releaseDate).substring(0, 4) : '',
+                    type: media === 'tvShow' ? 'series' : (media === 'podcast' ? 'podcast' : (media === 'musicTrack' ? 'music' : 'movie')),
+                    platform: 'any',
+                    synopsis: r.longDescription || r.shortDescription || `${genre}${r.artistName ? ' — ' + r.artistName : ''}`.trim(),
+                    _meta: {
+                        artwork: (r.artworkUrl100 || '').replace('100x100bb', '600x900bb'),
+                        preview: r.previewUrl || null,
+                        storeUrl: r.trackViewUrl || r.collectionViewUrl || null
+                    }
+                };
+                if (window.matchPolicy && !window.matchPolicy.fitsQuestion(row, question)) return;
+                out.push(row);
+            });
+        } catch (e) { /* try next media type */ }
+    }
+
+    const offlineNote = (typeof t === 'function') ? t('discover.offlineNote') : "Our AI concierge is temporarily offline, so here's what our catalog found for you:";
+    const noResults = (typeof t === 'function') ? t('discover.noResults') : `We couldn't find a confident match for "${question}". Try rephrasing with a title, topic or person.`;
+    // When the AI itself was unreachable, saying "try rephrasing" blames the
+    // user for a question that was probably fine, and sends them off rewording
+    // it repeatedly to no effect. Say what actually happened instead.
+    const aiDown = (typeof t === 'function') ? t('discover.aiDown')
+        : "Our AI concierge couldn't be reached just now — this is on our side, not your question. Please try again in a moment.";
+
+    const emptyMessage = aiWasDown ? aiDown : noResults;
+
+    return {
+        answer: out.length ? `${offlineNote} “${question}”` : emptyMessage,
+        results: out.slice(0, DISCOVER_MAX),
+        _live: false
+    };
+}
+
+function catalogFallbackForQuestion(question) {
+    if (detectBookIntent(question)) return []; // Film catalogue is not the Books catalogue.
+    if (typeof CONTENT_CATALOG === 'undefined' || !Array.isArray(CONTENT_CATALOG)) return [];
+    const policy = window.matchPolicy;
+    return CONTENT_CATALOG
+        .filter(e => {
+            if (!e || !e.title || isDiscoverDisliked(e.title) || policy?.known?.().has(policy.key(e.title))) return false;
+            if (typeof window.tasteAllowsEntry === 'function' && !window.tasteAllowsEntry(e)) return false;
+            return !policy || policy.fitsQuestion(e, question);
+        })
+        .slice(0, DISCOVER_MAX)
+        .map(e => ({
+            title: e.title,
+            year: e.year || '',
+            type: (e.cats && e.cats[0]) || '',
+            platform: e.platform || '',
+            synopsis: e.synopsis || '',
+            cats: e.cats,
+            moods: e.moods,
+            watchUrl: e.watchUrl || ''
+        }));
+}
+
+/* ---------- Typewriter reveal ---------- */
+// Makes the answer feel spoken/written by a person rather than dumped on
+// screen — mirrors how the loading meter narration already behaves.
+function typewriterReveal(el, text, speedMs) {
+    return new Promise(resolve => {
+        el.textContent = '';
+        el.style.display = 'block';
+        let i = 0;
+        const step = () => {
+            if (i <= text.length) {
+                el.textContent = text.slice(0, i);
+                i += Math.max(1, Math.round(text.length / 90)); // scales with length, feels natural either way
+                setTimeout(step, speedMs);
+            } else {
+                el.textContent = text;
+                resolve();
+            }
+        };
+        step();
+    });
+}
+
+/* ---------- Text-to-speech ("read aloud") ---------- */
+// Fully client-side via the Web Speech API — no backend needed. Voice and
+// speed come from the user's Profile > Voice & AI settings (localStorage),
+// with a sensible default matched to the current UI language.
+const TTS_LANG_MAP = {
+    'en': 'en-US', 'pt-BR': 'pt-BR', 'es': 'es-ES', 'fr': 'fr-FR', 'de': 'de-DE',
+    'it': 'it-IT', 'tr': 'tr-TR', 'ru': 'ru-RU', 'ar': 'ar-SA', 'hi': 'hi-IN',
+    'id': 'id-ID', 'ja': 'ja-JP', 'ko': 'ko-KR', 'zh': 'zh-CN'
+};
+
+function ttsTargetLang(lang) {
+    return TTS_LANG_MAP[lang] || lang || 'en-US';
+}
+function voiceMatchesLang(voice, lang) {
+    if (!voice || !voice.lang) return false;
+    const target = ttsTargetLang(lang).toLowerCase();
+    const base = target.split('-')[0];
+    const actual = voice.lang.toLowerCase();
+    return actual === target || actual.startsWith(target + '-') || actual.split('-')[0] === base;
+}
+function pickVoiceForLang(voices, lang) {
+    const saved = localStorage.getItem('match_voice_name');
+    if (saved) {
+        const exact = voices.find(v => v.name === saved && voiceMatchesLang(v, lang));
+        if (exact) return exact;
+    }
+    const target = ttsTargetLang(lang).toLowerCase();
+    const base = target.split('-')[0];
+    return voices.find(v => v.lang && v.lang.toLowerCase() === target)
+        || voices.find(v => v.lang && v.lang.toLowerCase().startsWith(target + '-'))
+        || voices.find(v => v.lang && v.lang.toLowerCase().split('-')[0] === base)
+        || null;
+}
+
+window.readAloud = function(text, btn) {
+    const nativeTts = !!(window.MatchAppNativeVoice && typeof window.MatchAppNativeVoice.speak === 'function');
+    if (!nativeTts && !('speechSynthesis' in window)) {
+        if (window.showToast) showToast((typeof t === 'function' ? t('discover.noTts') : 'Voice playback is not supported in this browser.'), true);
+        return;
+    }
+    // Toggle off if this button is already speaking.
+    if (btn && btn.classList.contains('speaking')) {
+        if (nativeTts) { try { window.MatchAppNativeVoice.stopSpeaking?.(); } catch (_) {} }
+        else speechSynthesis.cancel();
+        btn.classList.remove('speaking');
+        return;
+    }
+    const uiLang = window.MATCH_LANG || 'en';
+    const targetLang = ttsTargetLang(uiLang);
+    document.querySelectorAll('.discover-speak.speaking').forEach(b => b.classList.remove('speaking'));
+    if (btn) btn.classList.add('speaking');
+    if (nativeTts) {
+        window.matchAppNativeSpeechState = active => { if (!active && btn) btn.classList.remove('speaking'); };
+        try { window.MatchAppNativeVoice.speak(String(text || ''), targetLang); return; }
+        catch (_) { if (btn) btn.classList.remove('speaking'); }
+    }
+    speechSynthesis.cancel();
+    const utter = new SpeechSynthesisUtterance(text);
+    const voices = speechSynthesis.getVoices();
+
+    // Honour the user's choices from Profile > Settings. resolveVoice falls
+    // back to language matching when they have not picked one, or when the
+    // voice they picked is no longer installed on this device — an OS voice
+    // can be removed, and a stale voiceURI would otherwise silently mute
+    // playback rather than degrade to a sensible default.
+    const S = window.MatchSettings;
+    // Discovery is the continuation of Jonas: never read his answer with
+    // an unknown or female system voice, even if Settings picked one earlier.
+    const voice = window.MatchAppJonasVoicePolicy?.select?.(voices, targetLang) || null;
+    if (!voice) {
+        if (btn) btn.classList.remove('speaking');
+        window.showToast?.('An approved masculine voice is not installed. The answer remains readable.', true);
+        return;
+    }
+    utter.voice = voice;
+    utter.lang = voice.lang;
+    utter.rate = S ? S.get('voiceRate') : 1;
+    utter.pitch = 1;
+
+    utter.onend = () => { if (btn) btn.classList.remove('speaking'); };
+    utter.onerror = () => { if (btn) btn.classList.remove('speaking'); };
+    speechSynthesis.speak(utter);
+};
+
+/* ---------- Rendering ---------- */
+function escapeDiscoverHtml(value) {
+    return String(value == null ? '' : value)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+}
+
+function discoverLabel(key, fallback) {
+    return (typeof t === 'function' && t(key)) || fallback;
+}
+
+function justWatchLocale() {
+    const country = (typeof localStorage !== 'undefined' && (localStorage.getItem('match_user_country') || '').trim()) || '';
+    const named = {
+        Brazil: 'br', Brasil: 'br', 'United States': 'us', USA: 'us', 'United Kingdom': 'gb', UK: 'gb',
+        Mexico: 'mx', Spain: 'es', France: 'fr', Germany: 'de', Italy: 'it', Turkey: 'tr', Russia: 'ru',
+        India: 'in', Indonesia: 'id', Japan: 'jp', 'South Korea': 'kr', China: 'cn', Portugal: 'pt',
+        Argentina: 'ar', Canada: 'ca', Australia: 'au'
+    };
+    if (named[country]) return named[country];
+    if (/^[A-Za-z]{2}$/.test(country)) return country.toLowerCase();
+    const lang = window.MATCH_LANG || 'en';
+    return ({ 'pt-BR': 'br', es: 'mx', fr: 'fr', de: 'de', it: 'it', tr: 'tr', ru: 'ru', ar: 'eg', hi: 'in', id: 'id', ja: 'jp', ko: 'kr', zh: 'cn' })[lang] || 'us';
+}
+
+function discoverWatchUrl(item) {
+    const title = (item && (item.title || item.displayTitle)) || '';
+    // The dedicated matcher performs exact bookstore/audio edition checks.
+    // Model-invented retailer or audiobook links must never become "buy now".
+    if (/\b(book|ebook|e-book|audiobook|novel|magazine)\b/i.test(String(item?.type || '')))
+        return '/#ebook-matcher-root';
+    const isAudio = /podcast|album|music|audiobook/i.test((item && item.type) || '');
+    // Verification failures and unverified AI platform hints must NEVER send
+    // users to a guessed streaming service, including stale catalogue links.
+    // A country-specific title search is accurate without claiming availability.
+    if (item?._availabilityVerified === false && !isAudio) {
+        return `https://www.justwatch.com/${justWatchLocale()}/search?q=${encodeURIComponent(title)}`;
+    }
+    if (item && item._viewing && item._viewing.href) return item._viewing.href;
+    if (item && item.watchUrl) return item.watchUrl;
+    if (typeof platformSearchUrl === 'function' && item && item.platform && item.platform !== 'any' &&
+        typeof PLATFORMS !== 'undefined' && PLATFORMS[item.platform]) {
+        const url = platformSearchUrl(item.platform, title);
+        if (url && !/justwatch\.com\/us\//i.test(url)) return url;
+    }
+    try {
+        if (typeof CONTENT_CATALOG !== 'undefined') {
+            const e = CONTENT_CATALOG.find(x => x.title === item.title);
+            if (e && e.platform && e.platform !== 'any' && typeof platformSearchUrl === 'function') {
+                const url = platformSearchUrl(e.platform, e.title);
+                if (url && !/justwatch\.com\/us\//i.test(url)) return url;
+            }
+        }
+    } catch (err) {}
+    if (/audiobook/i.test((item && item.type) || '')) return '/#ebook-matcher-root';
+    if (isAudio) return `https://open.spotify.com/search/${encodeURIComponent(title)}`;
+    return `https://www.justwatch.com/${justWatchLocale()}/search?q=${encodeURIComponent(title)}`;
+}
+
+// Hard exclusions for titles MatchApp knows (blocked categories and blocked
+// origin countries) apply to Ask AI suggestions exactly as they do to Matches.
+var discoverCatalogIndex = null, discoverCatalogSize = -1;
+function discoverCatalogEntry(title) {
+    if (typeof CONTENT_CATALOG === 'undefined' || !Array.isArray(CONTENT_CATALOG)) return null;
+    if (!discoverCatalogIndex || discoverCatalogSize !== CONTENT_CATALOG.length) {
+        discoverCatalogIndex = new Map();
+        CONTENT_CATALOG.forEach(e => { if (e && e.title) discoverCatalogIndex.set(String(e.title).toLowerCase(), e); });
+        discoverCatalogSize = CONTENT_CATALOG.length;
+    }
+    return discoverCatalogIndex.get(String(title).toLowerCase()) || null;
+}
+
+function isDiscoverDisliked(title) {
+    if (!title) return false;
+    try {
+        const list = JSON.parse(localStorage.getItem('match_dislikedList') || '[]');
+        if (list.some(i => (i.title || i) === title)) return true;
+    } catch (e) {}
+    try {
+        if ((window.MATCH_TASTE?.exclude || []).some(x => String(x).toLowerCase() === String(title).toLowerCase())) return true;
+    } catch (e) {}
+    try {
+        const entry = discoverCatalogEntry(title);
+        if (entry) {
+            if (typeof window.isBlockedEntry === 'function' && window.isBlockedEntry(entry)) return true;
+            if (typeof entryPassesPreferenceExclusions === 'function' && !entryPassesPreferenceExclusions(entry)) return true;
+        }
+    } catch (e) {}
+    return false;
+}
+
+function enrichDiscoverItem(item, question) {
+    if (!item || !item.title) return null;
+    if (item._musicVideoId || /music|song|album|single/i.test(item.type || '')) return item;
+    const policy = window.matchPolicy;
+    if (policy && question && !policy.fitsQuestion(item, question)) return null;
+    try {
+        if (typeof CONTENT_CATALOG !== 'undefined') {
+            const k = policy ? policy.key(item.title) : String(item.title).toLowerCase();
+            const e = CONTENT_CATALOG.find(x => x && (policy ? policy.key(x.title) === k : x.title === item.title));
+            if (e) {
+                item.title = e.title;
+                if (!item.synopsis) item.synopsis = e.synopsis;
+                if (!item.platform || item.platform === 'any') item.platform = e.platform;
+                if (!item.year) item.year = e.year || '';
+                if (!item.type) item.type = (e.cats && e.cats[0]) || item.type || '';
+                item.cats = e.cats;
+                item.moods = e.moods;
+                if (e.watchUrl) item.watchUrl = item.watchUrl || e.watchUrl;
+            }
+        }
+    } catch (err) {}
+    return item;
+}
+
+async function enrichDiscoverMedia(item) {
+    if (!item || !item.title) return item;
+    // AI-provided platform labels are unverified hints. An unavailable source,
+    // network failure, or audio request must never turn one into a claimed
+    // country-specific streaming service or a wrong-title deep link.
+    const unverified = () => {
+        if (item.platform && item.platform !== 'any') item._aiPlatformHint = item.platform;
+        item.platform = '';
+        item._availabilityVerified = false;
+        item._viewing = null;
+        return item;
+    };
+    const isAudio = /podcast|music|album|audiobook|song/i.test(String(item.type || ''));
+    const isBook = /\b(book|ebook|e-book|audiobook|novel)\b/i.test(String(item.type || ''));
+    // Audiobooks use the separate verified book matching flow, not TMDB film
+    // provider metadata. The card's generic audio destination is a search,
+    // never a promise that a particular narrator/edition is available.
+    if (isAudio || isBook) { delete item._catalogMedia; delete item._tmdb; }
+    if (isAudio || isBook || !window.MatchAppCatalogMedia?.lookup) return unverified();
+    try {
+        const rawType = String(item.type || '').toLowerCase();
+        const kind = /movie|film/.test(rawType) ? 'movie' : (/series|tv|show|drama|anime|novela|documentary/.test(rawType) ? 'tv' : '');
+        let meta = await window.MatchAppCatalogMedia.lookup(item.title, {
+            year: item.year || '',
+            kind: kind || ''
+        });
+        if (meta && window.MatchAppCatalogMedia.refreshExact) {
+            meta = await window.MatchAppCatalogMedia.refreshExact(meta);
+        }
+        if (!meta && window.MatchAppCatalogMedia.lookupLive) {
+            meta = await window.MatchAppCatalogMedia.lookupLive(item.title, {
+                year: item.year || '',
+                kind: kind || '',
+                cats: item.cats || []
+            });
+        }
+        if (!meta) return unverified();
+        item._catalogMedia = meta;
+        // Exact identity is not proof of regional provider availability.
+        item._availabilityVerified = false;
+        if (meta.year) item.year = meta.year;
+        if (meta.overview) { item.synopsis = meta.overview; item.synopsisLang='en'; }
+        if (Array.isArray(meta.genres) && meta.genres.length) item.realGenres = meta.genres.slice(0, 8);
+        if (!item.type || item.type === 'any') item.type = meta.media_kind === 'tv' ? 'series' : (meta.media_kind || item.type);
+        item._viewing = window.MatchAppCatalogMedia.viewingTarget?.(meta, item.title) || null;
+        const verifiedModes=new Set(['stream','rent','buy','cinema']);
+        item._availabilityVerified=Boolean(item._viewing && verifiedModes.has(item._viewing.mode));
+        // The model's platform is only a hint. Never present it as verified.
+        item.platform=item._viewing?.provider&&item._availabilityVerified?item._viewing.provider:'';
+    } catch (_) { return unverified(); }
+    return item;
+}
+
+function itemFromTitle(name) {
+    const wanted = titleKey(name);
+    if (!wanted) return { title: String(name || '').trim(), year: '', type: '', platform: '', synopsis: '' };
+    let entry = null;
+    try {
+        if (typeof CONTENT_CATALOG !== 'undefined' && Array.isArray(CONTENT_CATALOG)) {
+            entry = CONTENT_CATALOG.find(e => e && titleKey(e.title) === wanted) || null;
+        }
+    } catch (err) { entry = null; }
+    if (!entry) return { title: String(name || '').trim(), year: '', type: '', platform: '', synopsis: '' };
+    return {
+        title: entry.title,
+        year: entry.year || '',
+        type: (entry.cats && entry.cats[0]) || '',
+        platform: entry.platform || '',
+        synopsis: entry.synopsis || '',
+        cats: entry.cats,
+        moods: entry.moods,
+        watchUrl: entry.watchUrl || '',
+        _fromCatalog: true
+    };
+}
+
+function discoverIsEpisodic(item) {
+    const blob = [item && item.type].concat((item && item.cats) || []).join(' ').toLowerCase();
+    if (/\b(movie|film|short film)\b/.test(blob) && !/\bseries\b/.test(blob)) return false;
+    return true;
+}
+
+function discoverWhereLabel(item) {
+    if (item?._viewing?.mode === 'cinema') return discoverLabel('discover.inCinemas', 'In cinemas');
+    const p = item && item.platform && item.platform !== 'any' ? String(item.platform) : '';
+    return p;
+}
+
+function discoverStartLabel(item) {
+    const year = parseInt(item && item.year, 10);
+    if (!year) return '';
+    const nowY = new Date().getFullYear();
+    if (item?._viewing?.mode === 'cinema') return discoverLabel('discover.inCinemas', 'In cinemas');
+    if (year > nowY) return discoverLabel('discover.startsIn', 'Starts {year}').replace('{year}', String(year));
+    if (year === nowY && item?._viewing?.mode === 'stream') return discoverLabel('discover.nowStreaming', 'Now streaming');
+    if (year === nowY) return discoverLabel('discover.premiered', 'Premiered {year}').replace('{year}', String(year));
+    if (discoverIsEpisodic(item)) return discoverLabel('discover.sinceYear', 'Since {year}').replace('{year}', String(year));
+    return discoverLabel('discover.premiered', 'Premiered {year}').replace('{year}', String(year));
+}
+
+function discoverFactsHTML(item) {
+    const where = discoverWhereLabel(item);
+    const when = discoverStartLabel(item);
+    if (!where && !when) return '';
+    const rows = [];
+    if (where) {
+        rows.push(`<div class="discover-fact"><span class="discover-fact-k">${escapeDiscoverHtml(discoverLabel('discover.whereToWatch', 'Where to watch'))}</span> <span class="discover-where">${escapeDiscoverHtml(where)}</span></div>`);
+    }
+    if (when) {
+        rows.push(`<div class="discover-fact"><span class="discover-fact-k">${escapeDiscoverHtml(discoverLabel('discover.whenItStarts', 'When it starts'))}</span> <span class="discover-when">${escapeDiscoverHtml(when)}</span></div>`);
+    }
+    return `<div class="discover-facts">${rows.join('')}</div>`;
+}
+
+function paintDiscoverFacts(item, idx) {
+    const card = document.querySelector(`[data-discover-idx="${idx}"]`);
+    if (!card) return;
+    const html = discoverFactsHTML(item);
+    let facts = card.querySelector('.discover-facts');
+    if (!html) {
+        if (facts) facts.remove();
+        return;
+    }
+    if (facts) {
+        facts.outerHTML = html;
+        return;
+    }
+    const syn = card.querySelector('.discover-synopsis');
+    const metaEl = card.querySelector('.discover-meta');
+    const wrap = document.createElement('div');
+    wrap.innerHTML = html.trim();
+    const node = wrap.firstElementChild;
+    if (!node) return;
+    if (syn) syn.parentNode.insertBefore(node, syn);
+    else if (metaEl) metaEl.after(node);
+    else {
+        const body = card.querySelector('.discover-body');
+        if (body) body.appendChild(node);
+    }
+}
+
+let lastDiscoverQuestion = '';
+
+function catalogCousins(item, take) {
+    take = take || 4;
+    if (typeof CONTENT_CATALOG === 'undefined' || !Array.isArray(CONTENT_CATALOG) || !item || !item.title) return [];
+    let self = null;
+    try { self = CONTENT_CATALOG.find(e => e.title === item.title) || null; } catch (e) { self = null; }
+    const cats = new Set([].concat(self?.cats || [], item.type ? [item.type] : []));
+    const moods = new Set(self?.moods || []);
+    const cast = new Set(self?.cast || []);
+    const platform = self?.platform || item.platform;
+    const FORMAT_CATS = new Set(['movie','series','limited series','short film','YouTube channel','YouTube Shorts','podcast']);
+    return CONTENT_CATALOG
+        .filter(e => e && e.title && e.title !== item.title && !isDiscoverDisliked(e.title))
+        .filter(e => !window.matchPolicy || window.matchPolicy.sameFamily(self || item, e))
+        .map(e => {
+            let s = 0;
+            (e.cast || []).forEach(c => { if (cast.has(c)) s += 40; });
+            (e.cats || []).forEach(c => { if (cats.has(c)) s += FORMAT_CATS.has(c) ? 4 : 20; });
+            (e.moods || []).forEach(m => { if (moods.has(m)) s += 16; });
+            if (platform && e.platform === platform) s += 4;
+            if (self?.year && e.year && Math.abs(Number(e.year) - Number(self.year)) <= 5) s += 3;
+            return { e, s };
+        })
+        .filter(x => x.s >= 16)
+        .sort((a, b) => b.s - a.s)
+        .slice(0, take)
+        .map(({ e }) => ({
+            title: e.title,
+            year: e.year || '',
+            type: (e.cats && e.cats[0]) || item.type || '',
+            platform: e.platform || '',
+            synopsis: e.synopsis || '',
+            synopsisLang: 'en',
+            why: 'idea',
+            _fromCatalog: true
+        }));
+}
+
+/* Artwork is presentation-only; recommendation identity stays unchanged. */
+function discoverPosterUrl(item) {
+    let pinned='';
+    try{pinned=typeof getVerifiedPoster==='function'?getVerifiedPoster(item.title)||'':'';}catch(_){}
+    const cm=item._catalogMedia||{};
+    return [pinned,item._meta?.artwork,cm.poster_original_url,cm.poster_large_url,cm.poster_url,item._resolved?.artwork]
+      .find(url=>/^https:\/\/(?:image\.tmdb\.org|is\d+-ssl\.mzstatic\.com)\//i.test(String(url||'')))||'';
+}
+function setDiscoverPoster(img,item,url,fallback) {
+    if(!url)return;
+    item._posterExhausted=false;
+    const variants=window.MatchAppCatalogMedia?.posterVariants?.(url)||[url];
+    let index=0;
+    img.onerror=()=>{
+        if(!img.isConnected)return;
+        index++;
+        img.src=variants[index]||fallback;
+        if(index>=variants.length){img.onerror=null;item._posterExhausted=true;item._resolved={...(item._resolved||{}),artwork:fallback};}
+    };
+    img.src=variants[0]||url;
+}
+let discoverComposerNode=null;
+function parkDiscoverComposer() {
+    const row=discoverComposerNode||document.querySelector('.newsearch-row');
+    const log=document.getElementById('chat-log');
+    if(row&&log){discoverComposerNode=row;log.insertAdjacentElement('afterend',row);}
+}
+function placeDiscoverComposer(wrap,grid) {
+    const row=discoverComposerNode||document.querySelector('.newsearch-row');
+    if(row){discoverComposerNode=row;wrap.insertBefore(row,grid);}
+}
+
+function discoverCardHTML(item, idx) {
+    const rawTitle = String(item.displayTitle || item.title || '');
+    const title = (typeof window.sanitizeDisplayText === 'function')
+        ? window.sanitizeDisplayText(rawTitle, ['title'])
+        : rawTitle;
+    const safe = escapeDiscoverHtml(title);
+    const meta = escapeDiscoverHtml([item.year, item.type, item.platform && item.platform !== 'any' ? item.platform : '']
+        .filter(Boolean).join(' · '));
+    const isAudio = /podcast|album|music|audiobook/i.test(item.type || '');
+    const cinemaOnly = item?._viewing?.mode === 'cinema';
+    const verifiedStream = item?._viewing?.mode === 'stream';
+    const watchLabel = cinemaOnly
+        ? discoverLabel('discover.cinemaShowtimes', '🎟️ Cinemas & showtimes')
+        : (verifiedStream
+            ? (isAudio ? discoverLabel('res.listennow', '🎧 Listen Now') : discoverLabel('discover.watchNow', '▶ Watch Now'))
+            : discoverLabel('discover.whereToWatch', 'Where to Watch'));
+    const saveLabel = discoverLabel('res.watchlater', '⭐ Watch Later');
+    const nfmLabel = discoverLabel('res.notforme', '👎 Not For Me');
+    const whyText = item.why === 'director'
+        ? discoverLabel('discover.sameDirector', 'Same director') + (item.directorName ? ' · ' + item.directorName : '')
+        : (item.why === 'idea' ? discoverLabel('discover.sameIdea', 'Same idea') : '');
+    const synopsis = escapeDiscoverHtml((typeof window.sanitizeDisplayText === 'function'
+        ? window.sanitizeDisplayText(item.synopsis, ['synopsis'])
+        : item.synopsis) || '');
+    const lang = window.MATCH_LANG || 'en';
+    const facts = discoverFactsHTML(item);
+    const categories = Array.isArray(item.realGenres) && item.realGenres.length
+        ? `<div class="discover-categories" aria-label="${escapeDiscoverHtml(discoverLabel('discover.categories','Genres'))}">${item.realGenres.slice(0,8).map(c => `<span class="discover-category">${escapeDiscoverHtml(c)}</span>`).join('')}</div>`
+        : '';
+    const ribbon = cinemaOnly ? `<span class="discover-cinema-ribbon">${escapeDiscoverHtml(discoverLabel('discover.inCinemas','In cinemas'))}</span>` : '';
+    const metaLine = facts
+        ? (item.type ? `<div class="discover-meta">${escapeDiscoverHtml(item.type)}</div>` : '')
+        : (meta ? `<div class="discover-meta">${meta}</div>` : '');
+    return `
+    <article class="discover-card${item.why ? ' is-related' : ''}" data-discover-idx="${idx}">
+        <div class="discover-poster">
+            ${ribbon}
+            <img id="dp-${idx}" src="${escapeDiscoverHtml(discoverPosterUrl(item)||discoverFallbackPoster(item))}" alt="${safe}" loading="${idx < 3 ? 'eager' : 'lazy'}" decoding="async" width="342" height="513">
+            <div class="discover-rank">${item.why ? '＋' : '#' + (idx + 1)}</div>
+        </div>
+        <div class="discover-body">
+            ${whyText ? `<div class="discover-why">${escapeDiscoverHtml(whyText)}</div>` : ''}
+            <h3 data-src-text="${escapeDiscoverHtml(item.title || title)}" data-locale-painted="${lang}">${safe}</h3>
+            ${metaLine}
+            ${facts}
+            ${categories}
+            <div id="discover-availability-${idx}" class="matchapp-card-availability" hidden></div>
+            <p class="discover-synopsis" data-result-title="${escapeDiscoverHtml(item.title || title)}" data-result-year="${escapeDiscoverHtml(item.year || '')}" data-result-kind="${escapeDiscoverHtml(item._catalogMedia?.media_kind || item._tmdb?.kind || (/movie|film/i.test(item.type || '') ? 'movie' : /series|tv|show|novela|drama|anime/i.test(item.type || '') ? 'tv' : ''))}" data-source-lang="${escapeDiscoverHtml(item.synopsisLang || lang)}">${synopsis}</p>
+            <div id="discover-preview-${idx}" class="discover-card-preview" hidden></div>
+            <div class="discover-actions">
+                <a id="dl-${idx}" class="gold-btn discover-play${cinemaOnly ? ' is-cinema' : ''}" href="#" target="_blank" rel="noopener">${watchLabel}</a>
+                <button type="button" class="discover-save" onclick="saveDiscoverItem(${idx})" id="ds-${idx}">${saveLabel}</button>
+                <button type="button" class="discover-nfm" onclick="notForMeDiscoverItem(${idx})" id="dn-${idx}">${nfmLabel}</button>
+            </div>
+        </div>
+    </article>`;
+}
+
+function paintDiscoverGenres(item, idx) {
+    const card = document.querySelector(`[data-discover-idx="${idx}"]`);
+    if (!card) return;
+    const genres = Array.isArray(item?.realGenres) ? item.realGenres.filter(Boolean).slice(0, 8) : [];
+    let host = card.querySelector('.discover-categories');
+    if (!genres.length) { host?.remove(); return; }
+    const html = `<div class="discover-categories" aria-label="${escapeDiscoverHtml(discoverLabel('discover.categories','Genres'))}">${genres.map(g => `<span class="discover-category">${escapeDiscoverHtml(g)}</span>`).join('')}</div>`;
+    if (host) { host.outerHTML = html; return; }
+    const synopsis = card.querySelector('.discover-synopsis');
+    synopsis?.insertAdjacentHTML('beforebegin', html);
+}
+
+let DISCOVER_ITEMS = [];
+
+// Platforms where iTunes/TVMaze coverage is unreliable enough that a live
+// lookup is more likely to return something WRONG than nothing at all —
+// this is what "A Gata Comeu" (Globoplay) exposed: the AI chat path had none
+// of the protections app.js's main match render already had (verified
+// poster registry, category/platform-based skip), so a Globoplay title
+// could still trigger a live search that came back with an unrelated
+// result. Checking the platform Gemini itself returned is a reliable,
+// already-available signal — no guesswork needed.
+const HIGH_RISK_PLATFORMS_DISCOVER = new Set(['globoplay', '+sbt', 'sbt+', 'reelshort', 'dramabox', 'shortmax', 'pure flix', 'angel studios']);
+
+function discoverFallbackPoster(item) {
+    if (!item || !item.title) return '';
+    const meta = {
+        cats: item.type ? [item.type] : [],
+        moods: Array.isArray(item.moods) ? item.moods : [],
+        platform: item.platform || '',
+        synopsis: item.synopsis || item.overview || ''
+    };
+    if (typeof generatedCover === 'function') return generatedCover(item.title, meta);
+    if (typeof generateLocalPosterSVG === 'function') return generateLocalPosterSVG(item.title, meta);
+    return '';
+}
+
+async function hydrateDiscoverCard(item, idx) {
+    window.MatchAppTitleIdentity?.paint(document.querySelector(`[data-discover-idx="${idx}"] h3`),{...item,kind:item._catalogMedia?.media_kind||item._tmdb?.kind||(/movie|film/i.test(item.type||'')?'movie':/series|tv|show|novela|drama|anime/i.test(item.type||'')?'tv':item.type)});
+    // A former undeclared rawType crashed TV genre enrichment for some answers.
+    const rawType=String(item?.type||'').toLowerCase();
+    const img = document.getElementById('dp-' + idx);
+    const link = document.getElementById('dl-' + idx);
+    if (!img) return;
+
+    const fallbackArtwork = discoverFallbackPoster(item);
+    const readyArtwork=discoverPosterUrl(item);
+    img.src = fallbackArtwork;
+    if(readyArtwork)setDiscoverPoster(img,item,readyArtwork,fallbackArtwork);
+    item._fallbackArtwork = fallbackArtwork;
+
+    // Hand-verified art (parity with app.js's render path) always wins —
+    // no lookup can beat a known-correct image.
+    const verified = !/music|song|album|single/i.test(rawType) && (typeof getVerifiedPoster === 'function') ? getVerifiedPoster(item.title) : null;
+
+    // AI-chat titles come from Gemini's free-form knowledge, not our curated
+    // catalog, so they're inherently less trustworthy than a match-engine
+    // result — meaning the bar for "risk a live lookup at all" should be
+    // LOWER here, not the same. If the platform Gemini named is one where
+    // external catalogs have unreliable coverage, or the category-check
+    // flags it, skip every live lookup entirely rather than gambling on the
+    // relevance guard catching a bad result.
+    const platformIsHighRisk = item.platform && HIGH_RISK_PLATFORMS_DISCOVER.has(String(item.platform).toLowerCase());
+    const categoryIsHighRisk = (typeof isHighRiskCategory === 'function') && isHighRiskCategory(item.type, item.title);
+    const skipLiveLookup = platformIsHighRisk || categoryIsHighRisk;
+
+    let meta = item._meta || null;
+    if (!meta && item._catalogMedia) {
+        const cm = item._catalogMedia;
+        meta = {
+            artwork: cm.poster_original_url || cm.poster_large_url || cm.poster_url || '',
+            year: cm.year || item.year || '',
+            overview: cm.overview || '',
+            tmdbId: cm.tmdb_id || null,
+            kind: cm.media_kind || '',
+            source: 'catalog-media',
+            title: cm.title || item.title,
+            genres: Array.isArray(cm.genres) ? cm.genres.slice(0, 8) : []
+        };
+    }
+    const visualType = !/podcast|album|music|audiobook/i.test(item.type || '');
+    // Missing artwork is not a completed lookup. Reuse the exact source ID
+    // when available, including for translated titles.
+    if ((!meta || !meta.artwork) && !skipLiveLookup && !verified && visualType &&
+        window.MatchAppCatalogMedia?.resolvePoster) {
+        try {
+            const kind=/movie|film/i.test(item.type||'')?'movie':/series|tv|drama|anime|novela|show|documentary/i.test(item.type||'')?'tv':'';
+            const identity=item._catalogMedia||{};
+            const resolved=await window.MatchAppCatalogMedia.resolvePoster(item.title,{
+                year:item.year||'',kind:identity.media_kind||meta?.kind||kind,
+                tmdbId:identity.tmdb_id||meta?.tmdbId||null,cats:item.cats||[]
+            });
+            if(resolved?.url){
+                const cm=resolved.meta||{};
+                meta={...(meta||{}),artwork:resolved.url,year:cm.year||item.year,
+                  tmdbId:cm.tmdb_id||meta?.tmdbId,kind:cm.media_kind||meta?.kind||kind,
+                  source:'tmdb',title:cm.title||item.title,overview:cm.overview||meta?.overview||'',
+                  genres:cm.genres||meta?.genres||[]};
+            }
+        }catch(_){}
+    }
+    if ((!meta || !meta.artwork) && !skipLiveLookup && !verified && visualType && typeof window.tmdbLookup === 'function') {
+        const kind = /movie|film/i.test(item.type || '') ? 'movie' : /series|tv|drama|anime|novela|show|documentary/i.test(item.type || '') ? 'tv' : '';
+        const tmdb = await window.tmdbLookup(item.title, { year: item.year || '', kind });
+        if (tmdb && (tmdb.posterLarge || tmdb.poster)) {
+            meta = { artwork: tmdb.posterLarge || tmdb.poster, year: tmdb.year || item.year || '', overview: tmdb.overview || '', tmdbId: tmdb.tmdbId, kind: tmdb.kind, source: 'tmdb', title: tmdb.title, genres: Array.isArray(tmdb.genres) ? tmdb.genres.slice(0,8) : [] };
+            item._tmdb = tmdb;
+        }
+    }
+    // Show artwork before optional synopsis/preview services finish.
+    const earlyArtwork=verified||meta?.artwork||readyArtwork;
+    if(earlyArtwork)setDiscoverPoster(img,item,earlyArtwork,fallbackArtwork);
+    let richMeta = null;
+    if (!item._catalogMedia && !skipLiveLookup && !/music|song|album|single/i.test(rawType) && typeof getRichMetadata === 'function') {
+        // Apple metadata is exact-identity guarded in app.js. Keep it separate
+        // from TMDB artwork so it can supply a genuine preview and source genre
+        // even when TMDB already supplied the poster.
+        let chatHints = {};
+        try {
+            if (typeof CONTENT_CATALOG !== 'undefined') {
+                const e = CONTENT_CATALOG.find(x => x.title === item.title);
+                if (e) chatHints = { year: e.year, country: e.country, countryCode: e.countryCode };
+            }
+        } catch (err) {}
+        richMeta = await getRichMetadata(item.title, item.type || '', chatHints);
+        if (!meta && !verified && richMeta) meta = richMeta;
+    }
+    // The TVMaze secondary attempt is deliberately NOT used for AI-chat
+    // results at all (unlike the main match render, which does use it for
+    // catalog-sourced titles). A curated catalog entry's title is something
+    // we wrote and know precisely; an AI-chat title is Gemini's free-form
+    // best guess — stacking a second, looser lookup on top of that is where
+    // the remaining risk lived, for a real-cover gain that isn't worth it
+    // here.
+
+    if (Array.isArray(item._catalogMedia?.genres) && item._catalogMedia.genres.length) {
+        item.realGenres = item._catalogMedia.genres.slice(0, 8);
+    } else if (Array.isArray(meta?.genres) && meta.genres.length) {
+        item.realGenres = meta.genres.slice(0, 8);
+    } else if (richMeta?.genre) {
+        item.realGenres = [String(richMeta.genre)];
+    } else if (!item.realGenres?.length && typeof fetchTitleMeta === 'function' &&
+               /series|tv|show|drama|anime|novela|documentary/i.test(rawType) &&
+               !/movie|film/i.test(rawType) && !skipLiveLookup) {
+        try {
+            const tvMeta = await fetchTitleMeta(item.title, { year: item.year || '' });
+            if (Array.isArray(tvMeta?.genres) && tvMeta.genres.length) item.realGenres = tvMeta.genres.slice(0, 8);
+        } catch (_) {}
+    }
+    paintDiscoverGenres(item, idx);
+
+    let resolvedArtwork = item._posterExhausted ? fallbackArtwork : (verified || meta?.artwork || readyArtwork || fallbackArtwork);
+    if(resolvedArtwork!==fallbackArtwork && img.getAttribute('src')===fallbackArtwork)
+        setDiscoverPoster(img,item,resolvedArtwork,fallbackArtwork);
+    // If no external artwork survives the verified lookup chain, keep the
+    // synopsis-aware MatchApp poster and persist that same artwork into
+    // history / Watch Later instead of saving a blank poster URL.
+    item._resolved = Object.assign({}, meta || {}, {
+        artwork: resolvedArtwork,
+        source: verified ? 'verified' : ((meta && meta.source) || 'matchapp-generated')
+    });
+
+    if (meta && meta.overview) {
+        const lang = window.MATCH_LANG || 'en';
+        const short = !item.synopsis || String(item.synopsis).length < 24;
+        const preferLocalized = lang !== 'en' && meta.source === 'tmdb';
+        if (short || preferLocalized) {
+            item.synopsis = meta.overview;
+            item.synopsisLang='en';
+            const syn = document.querySelector(`[data-discover-idx="${idx}"] .discover-synopsis`);
+            if (syn) syn.dataset.sourceLang='en';
+            if (syn) syn.textContent = (typeof window.sanitizeDisplayText === 'function')
+                ? window.sanitizeDisplayText(meta.overview, ['synopsis'])
+                : meta.overview;
+        }
+    }
+    if (meta && meta.title && meta.source === 'tmdb') {
+        item.displayTitle = meta.title;
+        const h3 = document.querySelector(`[data-discover-idx="${idx}"] h3`);
+        if (h3) h3.textContent = meta.title;
+    }
+
+    if (link) {
+        const isAudio = /podcast|album|music|audiobook/i.test(item.type || '');
+        const cinemaOnly = item?._viewing?.mode === 'cinema';
+        const verifiedStream = item?._viewing?.mode === 'stream';
+        const url = verifiedStream ? discoverWatchUrl(item) : '';
+        link.href = url || '#discover-availability-' + idx;
+        link.textContent = cinemaOnly
+            ? discoverLabel('discover.cinemaShowtimes', '🎟️ Cinemas & showtimes')
+            : (verifiedStream
+                ? (isAudio ? discoverLabel('res.listennow', '🎧 Listen Now') : discoverLabel('discover.watchNow', '▶ Watch Now'))
+                : discoverLabel('discover.whereToWatch', 'Where to Watch'));
+        link.classList.toggle('is-cinema', cinemaOnly);
+        if (!verifiedStream) {
+            link.removeAttribute('target');
+            link.removeAttribute('rel');
+            link.addEventListener('click', e => {
+                e.preventDefault();
+                const host=document.getElementById('discover-availability-' + idx);
+                host?.scrollIntoView({behavior:'smooth',block:'center'});
+                host?.classList.add('is-highlighted');
+                setTimeout(()=>host?.classList.remove('is-highlighted'),1400);
+            });
+        }
+        item._url = url || '';
+    }
+    const availabilityHost = document.getElementById('discover-availability-' + idx);
+    if (item._catalogMedia && window.MatchAppCatalogMedia?.renderAvailability) {
+        window.MatchAppCatalogMedia.renderAvailability(availabilityHost, item._catalogMedia, { title: item.title });
+    }
+    const previewHost = document.getElementById('discover-preview-' + idx);
+    if (item._catalogMedia && window.MatchAppCatalogMedia?.renderPreview) {
+        window.MatchAppCatalogMedia.renderPreview(previewHost, item._catalogMedia, { title: item.title });
+    } else if (previewHost) {
+        previewHost.replaceChildren();
+        previewHost.hidden = true;
+        const previewUrl = String(richMeta?.preview || '');
+        const storeUrl = String(richMeta?.storeUrl || '');
+        const realVideo = richMeta && typeof isVideoPreview === 'function' && isVideoPreview(richMeta) &&
+            /^https:\/\/(?:video-ssl|audio-ssl)\.itunes\.apple\.com\//i.test(previewUrl);
+        if (realVideo) {
+            const label = document.createElement('div');
+            label.className = 'matchapp-media-preview-label';
+            label.textContent = discoverLabel('discover.preview', 'Preview');
+            const video = document.createElement('video');
+            video.controls = true; video.preload = 'metadata'; video.playsInline = true; video.src = previewUrl;
+            video.setAttribute('aria-label', item.title + ' preview');
+            previewHost.append(label, video);
+            if (/^https:\/\//.test(storeUrl)) {
+                const source = document.createElement('a'); source.href = storeUrl; source.target = '_blank'; source.rel = 'noopener noreferrer';
+                source.className = 'matchapp-title-page-btn'; source.textContent = discoverLabel('discover.titlePage','Open title page');
+                previewHost.appendChild(source);
+            }
+            previewHost.hidden = false;
+        } else {
+            let titlePage = '';
+            if (Number.isSafeInteger(Number(meta?.tmdbId)) && ['movie','tv'].includes(meta?.kind)) {
+                titlePage = 'https://www.themoviedb.org/' + meta.kind + '/' + meta.tmdbId;
+            } else if (/^https:\/\//.test(storeUrl)) titlePage = storeUrl;
+            if (titlePage) {
+                const label = document.createElement('div'); label.className = 'matchapp-media-preview-label'; label.textContent = discoverLabel('discover.preview','Preview');
+                const source = document.createElement('a'); source.href = titlePage; source.target = '_blank'; source.rel = 'noopener noreferrer';
+                source.className = 'matchapp-title-page-btn'; source.textContent = discoverLabel('discover.titlePage','Open title page');
+                previewHost.append(label, source); previewHost.hidden = false;
+            }
+        }
+    }
+    if (meta && meta.year && !item.year) item.year = meta.year;
+    paintDiscoverFacts(item, idx);
+}
+
+window.saveDiscoverItem = function (idx) {
+    const item = DISCOVER_ITEMS[idx];
+    if (!item) return;
+    let list = [];
+    try { list = JSON.parse(localStorage.getItem('match_savedList') || '[]'); } catch (e) {}
+    if (list.some(i => (i.title || i) === item.title)) {
+        if (window.showToast) showToast(`"${item.title}" ${typeof t === 'function' ? t('discover.alreadySaved') : 'is already saved.'}`);
+        return;
+    }
+    list.unshift({
+        title: item.title,
+        posterUrl: (item._resolved && item._resolved.artwork) || '',
+        platform: item.platform && item.platform !== 'any' ? item.platform : '',
+        streamUrl: item._url || '',
+        isAudio: /podcast|album|music/i.test(item.type || ''),
+        addedAt: Date.now()
+    });
+    localStorage.setItem('match_savedList', JSON.stringify(list));
+    const btn = document.getElementById('ds-' + idx);
+    if (btn) { btn.textContent = '✓'; btn.classList.add('saved'); }
+    if (window.showToast) showToast(`⭐ "${item.title}" ${typeof t === 'function' ? t('discover.savedToast') : 'saved to Watch Later'}`);
+};
+
+window.notForMeDiscoverItem = function (idx) {
+    const item = DISCOVER_ITEMS[idx];
+    if (!item || !item.title) return;
+    let list = [];
+    try { list = JSON.parse(localStorage.getItem('match_dislikedList') || '[]'); } catch (e) {}
+    if (!list.some(i => (i.title || i) === item.title)) {
+        list.unshift({
+            title: item.title,
+            posterUrl: (item._resolved && item._resolved.artwork) || '',
+            platform: item.platform && item.platform !== 'any' ? item.platform : '',
+            streamUrl: item._url || '',
+            addedAt: Date.now()
+        });
+        localStorage.setItem('match_dislikedList', JSON.stringify(list));
+    }
+    try {
+        window.matchPolicy?.remember?.({
+            title: item.title,
+            posterUrl: (item._resolved && item._resolved.artwork) || '',
+            streamUrl: item._url || '',
+            reason: 'Ask AI'
+        }, 'dislike');
+    } catch (e) {}
+    const card = document.querySelector(`[data-discover-idx="${idx}"]`);
+    if (card) card.classList.add('is-hidden');
+    if (window.showToast) showToast(discoverLabel('discover.hiddenToast', 'Hidden. You can restore it from History.'));
+};
+
+function titleKey(title) {
+    return String(title || '').normalize('NFKC').toLowerCase().replace(/[^\p{L}\p{N}]/gu, '');
+}
+
+async function localizeRelatedItem(item) {
+    const lang = window.MATCH_LANG || 'en';
+    if (lang === 'en') return item;
+    // TMDB overviews were already requested in MATCH_LANG. Do not spend Ask AI
+    // credits translating related titles — official localized names only.
+    try {
+        if (item.title && typeof window.localizedTitle === 'function') {
+            const named = await window.localizedTitle(item.title, { year: item.year, kind: item.kind || '' });
+            if (named) item.displayTitle = named;
+        }
+    } catch (e) {}
+    return item;
+}
+
+function relatedFromTmdb(pack, source) {
+    if (!pack || !Array.isArray(pack.related)) return [];
+    return pack.related.map(r => ({
+        title: r.originalTitle || r.title,
+        displayTitle: r.title,
+        year: r.year || '',
+        type: r.kind === 'movie' ? 'movie' : 'series',
+        platform: source.platform || '',
+        synopsis: r.overview || '',
+        synopsisLang: window.MATCH_LANG || 'en',
+        why: r.why === 'director' ? 'director' : 'idea',
+        directorName: r.directorName || (pack.director && pack.director.name) || '',
+        _meta: r.poster ? { artwork: r.poster, year: r.year, overview: r.overview, tmdbId: r.tmdbId, kind: r.kind, source: 'tmdb', title: r.title } : null,
+        _tmdb: r
+    }));
+}
+
+async function attachRelated(grid, seedItems, baseIndex) {
+    if (!grid || !seedItems || !seedItems.length) return;
+    const seen = new Set(DISCOVER_ITEMS.map(i => titleKey(i.title)));
+    const collected = [];
+
+    const tmdbSeeds = seedItems.filter(i => i && i._tmdb && Number.isSafeInteger(i._tmdb.tmdbId)).slice(0, 2);
+    if (tmdbSeeds.length && typeof window.tmdbRelated === 'function') {
+        const packs = await Promise.all(tmdbSeeds.map(i => window.tmdbRelated(i._tmdb.tmdbId, i._tmdb.kind || 'movie').catch(() => null)));
+        packs.forEach((pack, i) => {
+            relatedFromTmdb(pack, tmdbSeeds[i]).forEach(row => collected.push(row));
+        });
+    }
+
+    seedItems.slice(0, 3).forEach(item => {
+        catalogCousins(item, 3).forEach(row => collected.push(row));
+    });
+
+    const unique = [];
+    for (const row of collected) {
+        const k = titleKey(row.title);
+        if (!k || seen.has(k) || isDiscoverDisliked(row.title)) continue;
+        if (window.matchPolicy) {
+            if (lastDiscoverQuestion && !window.matchPolicy.fitsQuestion(row, lastDiscoverQuestion)) continue;
+            if (seedItems.some(s => s && !window.matchPolicy.sameFamily(s, row))) continue;
+        }
+        seen.add(k);
+        unique.push(row);
+        if (unique.length >= 6) break;
+    }
+    if (!unique.length) return;
+
+    for (const row of unique) await localizeRelatedItem(row);
+
+    const heading = document.createElement('h3');
+    heading.className = 'discover-related-head';
+    heading.textContent = discoverLabel('discover.moreLike', 'More in the same vein');
+    grid.appendChild(heading);
+
+    const start = DISCOVER_ITEMS.length;
+    unique.forEach((row, i) => {
+        DISCOVER_ITEMS.push(row);
+        const wrap = document.createElement('div');
+        wrap.innerHTML = discoverCardHTML(row, start + i).trim();
+        const card = wrap.firstElementChild;
+        if (card) grid.appendChild(card);
+    });
+    await Promise.all(unique.map((row, i) => hydrateDiscoverCard(row, start + i)));
+}
+
+function relabelDiscoverCards() {
+    document.querySelectorAll('.discover-related-head').forEach(el => {
+        el.textContent = discoverLabel('discover.moreLike', 'More in the same vein');
+    });
+    document.querySelectorAll('.discover-card').forEach(card => {
+        const idx = Number(card.getAttribute('data-discover-idx'));
+        const item = DISCOVER_ITEMS[idx];
+        if (!item) return;
+        const isAudio = /podcast|album|music|audiobook/i.test(item.type || '');
+        const play = card.querySelector('.discover-play');
+        if (play) play.textContent = isAudio ? discoverLabel('res.listennow', '🎧 Listen Now') : discoverLabel('discover.watchNow', '▶ Watch Now');
+        const save = card.querySelector('.discover-save');
+        if (save && !save.classList.contains('saved')) save.textContent = discoverLabel('res.watchlater', '⭐ Watch Later');
+        const nfm = card.querySelector('.discover-nfm');
+        if (nfm) nfm.textContent = discoverLabel('res.notforme', '👎 Not For Me');
+        const why = card.querySelector('.discover-why');
+        if (why && item.why === 'director') why.textContent = discoverLabel('discover.sameDirector', 'Same director') + (item.directorName ? ' · ' + item.directorName : '');
+        else if (why && item.why === 'idea') why.textContent = discoverLabel('discover.sameIdea', 'Same idea');
+        paintDiscoverFacts(item, idx);
+    });
+}
+document.addEventListener('matchapp:langchange', relabelDiscoverCards);
+
+/* ---------- Boot ---------- */
+/* ============================================================
+   MATCHAPP AI WORKSPACE UI
+   Sidebar state, live quota meters and staged thinking progress.
+   These are presentation helpers around the existing quota/chat engine;
+   they never invent allowance values or bypass checkDailyLimit().
+   ============================================================ */
+let aiWorkflowTimer = null;
+
+window.toggleAiSidebar = function(force) {
+    const body = document.body;
+    if (!body) return;
+    const mobile = window.matchMedia('(max-width: 980px)').matches;
+    if (mobile) {
+        const open = typeof force === 'boolean' ? force : !body.classList.contains('ai-sidebar-open');
+        body.classList.toggle('ai-sidebar-open', open);
+        return;
+    }
+    const collapsed = typeof force === 'boolean' ? !force : !body.classList.contains('ai-sidebar-collapsed');
+    body.classList.toggle('ai-sidebar-collapsed', collapsed);
+    try { localStorage.setItem('match_ai_sidebar_collapsed', collapsed ? '1' : '0'); } catch (_) {}
+};
+
+function localAiQuotaStatus() {
+    const today = new Date().toLocaleDateString();
+    const storedDay = localStorage.getItem('match_lastDate');
+    const used = storedDay === today ? Math.max(0, parseInt(localStorage.getItem('match_dailyCount') || '0', 10) || 0) : 0;
+    const limit = 3;
+    return { authenticated:false, anon:true, used, limit, remaining:Math.max(0, limit - used), credits:Math.max(0, Number.parseInt(localStorage.getItem('match_guestBonusAiPrompts_v1')||'0',10)||0) };
+}
+
+function renderAiQuotaStatus(status) {
+    status = status || localAiQuotaStatus();
+    const value = document.getElementById('ai-usage-value');
+    const fill = document.getElementById('ai-usage-fill');
+    const credits = document.getElementById('ai-credit-line');
+    const newChat = document.getElementById('ai-new-chat');
+    const limit = Math.max(0, Number(status.limit) || 0);
+    const remaining = Math.max(0, Number(status.remaining) || 0);
+    const used = Math.max(0, Number.isFinite(Number(status.used)) ? Number(status.used) : Math.max(0, limit - remaining));
+    const paidCredits = Math.max(0, Number(status.credits) || 0);
+    const pct = limit > 0 ? Math.max(0, Math.min(100, (used / limit) * 100)) : 0;
+
+    if (value) value.textContent = limit ? (remaining + ' of ' + limit + ' daily left') : 'Ready';
+    if (fill) fill.style.width = pct + '%';
+    if (credits) {
+        credits.textContent = status.anon
+            ? (remaining > 0 ? 'Guest allowance · 2 social-share bonuses total available to try.' : paidCredits > 0 ? paidCredits + ' free share AI prompt' + (paidCredits===1?'':'s') + ' available.' : (window.MatchAppGuestShare?.remainingShares?.() > 0 ? 'Share your last AI reply above to unlock +1 prompt.' : 'Guest preview complete · register free for +10 Matches and +10 AI prompts.'))
+            : (paidCredits + ' Ask AI credit' + (paidCredits === 1 ? '' : 's') + ' available after your included allowance.');
+    }
+    if (newChat) {
+        const locked = remaining <= 0 && paidCredits <= 0;
+        newChat.disabled = locked;
+        newChat.title = locked ? 'No AI allowance or Ask AI credits remaining' : 'Start a new conversation';
+    }
+    lastAiCostState = { remaining, limit, paidCredits };
+    paintAiSendCost();
+}
+
+// Cost line under the Ask AI send button: what one question uses and what is
+// left, in the visitor's language. Display only — quota stays server-side.
+const AI_COST_COPY = {
+ "en": {
+  "left": "Each question uses 1 AI action · {remaining} of {limit} left today",
+  "credits": "Your daily AI actions are used up — each question now uses 1 Ask AI credit ({credits} left)",
+  "none": "No AI actions left today — get Ask AI credits or come back tomorrow"
+ },
+ "pt-BR": {
+  "left": "Cada pergunta usa 1 ação de IA · restam {remaining} de {limit} hoje",
+  "credits": "Suas ações diárias de IA acabaram — cada pergunta agora usa 1 crédito do Ask AI (restam {credits})",
+  "none": "Sem ações de IA hoje — compre créditos do Ask AI ou volte amanhã"
+ },
+ "es": {
+  "left": "Cada pregunta usa 1 acción de IA · te quedan {remaining} de {limit} hoy",
+  "credits": "Tus acciones diarias de IA se agotaron: cada pregunta usa ahora 1 crédito de Ask AI (quedan {credits})",
+  "none": "No te quedan acciones de IA hoy: consigue créditos de Ask AI o vuelve mañana"
+ },
+ "fr": {
+  "left": "Chaque question utilise 1 action IA · il en reste {remaining} sur {limit} aujourd’hui",
+  "credits": "Vos actions IA du jour sont épuisées — chaque question utilise désormais 1 crédit Ask AI ({credits} restants)",
+  "none": "Plus d’actions IA aujourd’hui — obtenez des crédits Ask AI ou revenez demain"
+ },
+ "de": {
+  "left": "Jede Frage nutzt 1 KI-Aktion · heute noch {remaining} von {limit}",
+  "credits": "Deine täglichen KI-Aktionen sind aufgebraucht – jede Frage nutzt jetzt 1 Ask-AI-Guthaben ({credits} übrig)",
+  "none": "Heute keine KI-Aktionen mehr – hol dir Ask-AI-Guthaben oder komm morgen wieder"
+ },
+ "it": {
+  "left": "Ogni domanda usa 1 azione IA · te ne restano {remaining} su {limit} oggi",
+  "credits": "Le azioni IA di oggi sono finite: ogni domanda usa ora 1 credito Ask AI (ne restano {credits})",
+  "none": "Nessuna azione IA rimasta oggi: prendi crediti Ask AI o torna domani"
+ },
+ "tr": {
+  "left": "Her soru 1 yapay zekâ işlemi kullanır · bugün {limit} işlemden {remaining} kaldı",
+  "credits": "Günlük yapay zekâ işlemleriniz bitti — her soru artık 1 Ask AI kredisi kullanır ({credits} kaldı)",
+  "none": "Bugün yapay zekâ işlemi kalmadı — Ask AI kredisi alın ya da yarın tekrar gelin"
+ },
+ "ru": {
+  "left": "Каждый вопрос расходует 1 действие ИИ · сегодня осталось {remaining} из {limit}",
+  "credits": "Дневные действия ИИ закончились — теперь каждый вопрос расходует 1 кредит Ask AI (осталось {credits})",
+  "none": "Сегодня действий ИИ не осталось — купите кредиты Ask AI или возвращайтесь завтра"
+ },
+ "ar": {
+  "left": "كل سؤال يستخدم إجراء ذكاء اصطناعي واحداً · تبقّى لك اليوم {remaining} من {limit}",
+  "credits": "انتهت إجراءات الذكاء الاصطناعي اليومية — كل سؤال يستخدم الآن رصيداً واحداً من Ask AI (المتبقي {credits})",
+  "none": "لا توجد إجراءات ذكاء اصطناعي متبقية اليوم — احصل على رصيد Ask AI أو عد غداً"
+ },
+ "hi": {
+  "left": "हर सवाल 1 AI एक्शन लेता है · आज {limit} में से {remaining} बचे हैं",
+  "credits": "आज के AI एक्शन खत्म हो गए — अब हर सवाल 1 Ask AI क्रेडिट लेगा ({credits} बचे)",
+  "none": "आज कोई AI एक्शन नहीं बचा — Ask AI क्रेडिट लें या कल फिर आएँ"
+ },
+ "id": {
+  "left": "Setiap pertanyaan memakai 1 aksi AI · sisa {remaining} dari {limit} hari ini",
+  "credits": "Aksi AI harianmu sudah habis — setiap pertanyaan kini memakai 1 kredit Ask AI (sisa {credits})",
+  "none": "Aksi AI hari ini sudah habis — dapatkan kredit Ask AI atau kembali besok"
+ },
+ "ja": {
+  "left": "質問1回につきAIアクションを1回使います · 本日の残り {remaining}/{limit}",
+  "credits": "本日のAIアクションを使い切りました。質問1回につきAsk AIクレジットを1つ使います（残り{credits}）",
+  "none": "本日のAIアクションは残っていません。Ask AIクレジットを入手するか、明日またお試しください"
+ },
+ "ko": {
+  "left": "질문 1회에 AI 액션 1회가 사용돼요 · 오늘 {limit}회 중 {remaining}회 남음",
+  "credits": "오늘의 AI 액션을 모두 사용했어요. 이제 질문마다 Ask AI 크레딧 1개가 사용돼요 ({credits}개 남음)",
+  "none": "오늘 남은 AI 액션이 없어요. Ask AI 크레딧을 구매하거나 내일 다시 오세요"
+ },
+ "zh": {
+  "left": "每个问题消耗 1 次 AI 操作 · 今天还剩 {remaining}/{limit} 次",
+  "credits": "今日 AI 操作已用完——现在每个问题消耗 1 个 Ask AI 点数（剩余 {credits} 个）",
+  "none": "今天没有剩余的 AI 操作——请购买 Ask AI 点数或明天再来"
+ }
+};
+var lastAiCostState = null;
+function aiCostLang() {
+    const low = String(window.MATCH_LANG || document.documentElement.getAttribute('lang') || 'en').toLowerCase();
+    if (low.startsWith('pt')) return 'pt-BR';
+    if (low.startsWith('zh')) return 'zh';
+    const keys = Object.keys(AI_COST_COPY);
+    return keys.find(k => k.toLowerCase() === low) || keys.find(k => k.split('-')[0] === low.split('-')[0]) || 'en';
+}
+function paintAiSendCost() {
+    try {
+        const st = lastAiCostState;
+        const send = document.querySelector('.newsearch-row .composer-send');
+        if (!st || !send) return;
+        if (!document.getElementById('ai-send-cost-style')) {
+            const style = document.createElement('style');
+            style.id = 'ai-send-cost-style';
+            style.textContent = '.ai-send-cost{flex:1 0 100%;margin:4px 2px 0;font:500 12.5px/1.4 Inter,"Segoe UI",system-ui,sans-serif;color:#cbbfdc}.ai-send-cost[hidden]{display:none!important}';
+            document.head.appendChild(style);
+        }
+        let el = document.getElementById('ai-send-cost');
+        if (!el) {
+            el = document.createElement('p');
+            el.id = 'ai-send-cost';
+            el.className = 'ai-send-cost';
+            send.insertAdjacentElement('afterend', el);
+        }
+        const copy = AI_COST_COPY[aiCostLang()] || AI_COST_COPY.en;
+        const fill = (text, vars) => Object.keys(vars).reduce((acc, k) => acc.split('{' + k + '}').join(String(vars[k])), text);
+        if (!st.limit && !st.remaining && !st.paidCredits) { el.hidden = true; return; }
+        el.textContent = st.remaining > 0
+            ? fill(copy.left, { remaining: st.remaining, limit: st.limit || st.remaining })
+            : (st.paidCredits > 0 ? fill(copy.credits, { credits: st.paidCredits }) : copy.none);
+        el.hidden = false;
+    } catch (_) {}
+}
+document.addEventListener('matchapp:langchange', () => setTimeout(paintAiSendCost, 0));
+
+async function refreshAiWorkspaceStatus() {
+    let status = null;
+    try {
+        if (typeof window.refreshQuotaStatus === 'function') status = await window.refreshQuotaStatus();
+    } catch (_) {}
+    renderAiQuotaStatus(status || localAiQuotaStatus());
+    return status;
+}
+window.refreshAiWorkspaceStatus = refreshAiWorkspaceStatus;
+
+function setAiWorkflow(progress, label, activeStep) {
+    const fill = document.getElementById('ai-workflow-fill');
+    const text = document.getElementById('ai-thinking-label');
+    if (fill) fill.style.width = Math.max(4, Math.min(100, progress)) + '%';
+    if (text && label) text.textContent = label;
+    ['understand','match','answer'].forEach(step => {
+        const el = document.getElementById('ai-step-' + step);
+        if (el) el.classList.toggle('active', step === activeStep);
+    });
+}
+
+function startAiWorkflow() {
+    if (aiWorkflowTimer) clearInterval(aiWorkflowTimer);
+    let p = 7;
+    setAiWorkflow(p, 'Understanding your request…', 'understand');
+    aiWorkflowTimer = setInterval(() => {
+        p = Math.min(91, p + (p < 40 ? 7 : p < 72 ? 4 : 2));
+        if (p < 40) setAiWorkflow(p, 'Understanding your request…', 'understand');
+        else if (p < 74) setAiWorkflow(p, 'Matching titles and sources…', 'match');
+        else setAiWorkflow(p, 'Composing your answer…', 'answer');
+    }, 520);
+}
+
+function finishAiWorkflow() {
+    if (aiWorkflowTimer) clearInterval(aiWorkflowTimer);
+    aiWorkflowTimer = null;
+    setAiWorkflow(100, 'Answer ready', 'answer');
+}
+window.startAiWorkflow = startAiWorkflow;
+window.finishAiWorkflow = finishAiWorkflow;
+
+function initAiWorkspace() {
+    try {
+        if (window.matchMedia('(min-width: 981px)').matches && localStorage.getItem('match_ai_sidebar_collapsed') === '1') {
+            document.body.classList.add('ai-sidebar-collapsed');
+        }
+    } catch (_) {}
+    refreshAiWorkspaceStatus();
+    setTimeout(refreshAiWorkspaceStatus, 900);
+    setTimeout(refreshAiWorkspaceStatus, 2400);
+}
+document.addEventListener('DOMContentLoaded', initAiWorkspace);
+
+/* ============================================================
+   CONVERSATIONAL CHAT ENGINE
+   Ask AI is now a real multi-turn conversation rather than a
+   one-shot search. Each thread is saved to localStorage so a user
+   can come back and keep going, and each *turn* consumes one from
+   the included daily allowance (3 guest / 5 registered /
+   10 VIP / 50 Business) — the same accounting the match engine uses.
+   ============================================================ */
+
+const CHAT_STORE_KEY = 'match_chatThreads';
+const CHAT_MAX_THREADS = 20;
+
+let currentThread = null;   // { id, title, turns: [{role, text, results, ts}], createdAt, updatedAt }
+
+function loadThreads() {
+    try { return JSON.parse(localStorage.getItem(CHAT_STORE_KEY) || '[]'); }
+    catch (e) { return []; }
+}
+function saveThreads(threads) {
+    try {
+        localStorage.setItem(CHAT_STORE_KEY, JSON.stringify(threads.slice(0, CHAT_MAX_THREADS)));
+    } catch (e) { /* quota exceeded — non-fatal, chat still works this session */ }
+}
+function persistCurrentThread() {
+    if (!currentThread || !currentThread.turns.length) return;
+    const threads = loadThreads().filter(t => t.id !== currentThread.id);
+    threads.unshift(currentThread);
+    saveThreads(threads);
+    renderThreadList();
+}
+function newThreadId() { return 't' + Date.now() + Math.random().toString(36).slice(2, 7); }
+
+window.startNewChat = function () {
+    const btn = document.getElementById('ai-new-chat');
+    if (btn && btn.disabled) {
+        window.location.href = '/pricing/pricing.html?from=ask-ai#credits';
+        return;
+    }
+    currentThread = null;
+    const log = document.getElementById('chat-log');
+    if (log) { parkDiscoverComposer(); log.innerHTML = ''; }
+    const empty = document.getElementById('discover-empty');
+    if (empty) empty.style.display = 'none';
+    const input = document.getElementById('discover-new-input');
+    if (input) { input.value = ''; window.autoGrowComposer?.(); }
+    history.replaceState(null, '', '/discover.html');
+    document.title = 'Talk to Our AI Concierge — MatchApp';
+    renderThreadList();
+    refreshAiWorkspaceStatus();
+    if (window.matchMedia('(max-width: 980px)').matches) window.toggleAiSidebar(false);
+};
+
+window.openThread = function (id) {
+    const t = loadThreads().find(x => x.id === id);
+    if (!t) return;
+    currentThread = t;
+    const log = document.getElementById('chat-log');
+    if (log) { parkDiscoverComposer(); log.innerHTML = ''; }
+    DISCOVER_ITEMS = [];
+    t.turns.forEach(turn => {
+        if (turn.role === 'user') {
+            lastDiscoverQuestion = turn.text || lastDiscoverQuestion;
+            appendUserBubble(turn.text);
+        }
+        else {
+            const bubble = appendAssistantBubble(turn.text, turn.results || [], { instant: true });
+            if (turn.musicVideoId && bubble) {
+                bubble.wrap.dataset.musicVideoId = turn.musicVideoId;
+                window.MatchAppMusicReleases?.paintCard(turn.musicVideoId, bubble.grid);
+            }
+            const visible = (turn.results || []).filter(item => item && item.title && !isDiscoverDisliked(item.title));
+            if (bubble && visible.length) {
+                const baseIndex = DISCOVER_ITEMS.length;
+                DISCOVER_ITEMS = DISCOVER_ITEMS.concat(visible);
+                renderResultsInto(bubble.grid, visible, baseIndex);
+            }
+        }
+    });
+    renderThreadList();
+    if (window.matchMedia('(max-width: 980px)').matches) window.toggleAiSidebar(false);
+    const log2 = document.getElementById('chat-log');
+    if (log2) log2.scrollIntoView({ behavior: 'smooth', block: 'start' });
+};
+
+window.deleteThread = function (id, ev) {
+    if (ev) ev.stopPropagation();
+    saveThreads(loadThreads().filter(t => t.id !== id));
+    if (currentThread && currentThread.id === id) window.startNewChat();
+    else renderThreadList();
+};
+
+function renderThreadList() {
+    const host = document.getElementById('chat-history-list');
+    if (!host) return;
+    const threads = loadThreads();
+    if (!threads.length) {
+        host.innerHTML = `<p class="chat-history-empty">${typeof t === 'function' ? t('chat.noHistory') : 'No saved conversations yet.'}</p>`;
+        return;
+    }
+    host.innerHTML = threads.map(th => `
+        <div class="chat-thread-item ${currentThread && currentThread.id === th.id ? 'active' : ''}" onclick="openThread('${th.id}')">
+            <span class="chat-thread-title">${(th.title || 'Conversation').replace(/</g, '&lt;').slice(0, 60)}</span>
+            <button class="chat-thread-del" onclick="deleteThread('${th.id}', event)" aria-label="Delete conversation">✕</button>
+        </div>`).join('');
+}
+
+/* ---------- Bubble rendering ---------- */
+function appendUserBubble(text) {
+    const log = document.getElementById('chat-log');
+    if (!log) return;
+    const div = document.createElement('div');
+    div.className = 'chat-bubble chat-user';
+    div.textContent = text;
+    log.appendChild(div);
+    return div;
+}
+
+function appendAssistantBubble(text, results, opts) {
+    const log = document.getElementById('chat-log');
+    if (!log) return null;
+    const wrap = document.createElement('div');
+    wrap.className = 'chat-bubble chat-assistant';
+    wrap.dataset.guestShareEligible = opts?.instant ? '0' : '1';
+
+    const row = document.createElement('div');
+    row.className = 'chat-answer-row';
+
+    const avatar = document.createElement('img');
+    avatar.className = 'chat-avatar';
+    avatar.src = '/assets/brand/matchapp-ai-orbit-fullbleed.svg?v=1';
+    avatar.alt = '';
+    avatar.width = 34;
+    avatar.height = 34;
+    row.appendChild(avatar);
+
+    const p = document.createElement('p');
+    p.className = 'chat-answer-text';
+    row.appendChild(p);
+
+    const speak = document.createElement('button');
+    speak.className = 'discover-speak';
+    const playbackLabel = typeof t === 'function' ? t('discover.readAloud') : 'Read answer aloud';
+    speak.title = playbackLabel || 'Read answer aloud';
+    speak.setAttribute('aria-label', playbackLabel || 'Read answer aloud');
+    speak.innerHTML = "<svg viewBox=\"0 0 48 48\" width=\"30\" height=\"30\" aria-hidden=\"true\" focusable=\"false\">\r\n                            <path d=\"M8,20 Q4,24 8,28\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" opacity=\"0.55\"/>\r\n                            <path d=\"M3,17 Q-3,24 3,31\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" opacity=\"0.3\"/>\r\n                            <path d=\"M40,20 Q44,24 40,28\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" opacity=\"0.55\"/>\r\n                            <path d=\"M45,17 Q51,24 45,31\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" opacity=\"0.3\"/>\r\n                            <rect x=\"18\" y=\"6\" width=\"12\" height=\"21\" rx=\"6\" fill=\"currentColor\"/>\r\n                            <path d=\"M13,21 a11,11 0 0 0 22,0\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3\" stroke-linecap=\"round\"/>\r\n                            <line x1=\"24\" y1=\"32\" x2=\"24\" y2=\"38\" stroke=\"currentColor\" stroke-width=\"3\" stroke-linecap=\"round\"/>\r\n                            <line x1=\"17\" y1=\"38\" x2=\"31\" y2=\"38\" stroke=\"currentColor\" stroke-width=\"3\" stroke-linecap=\"round\"/>\r\n                        </svg>";
+    speak.onclick = () => window.readAloud(text, speak);
+    row.appendChild(speak);
+
+    wrap.appendChild(row);
+
+    const grid = document.createElement('div');
+    grid.className = 'chat-results-grid';
+    wrap.appendChild(grid);
+    placeDiscoverComposer(wrap,grid);
+
+    log.appendChild(wrap);
+    // One visible guest prompt at the TOP of newly generated AI answers.
+    // History re-renders and uncharged instant refusals do not grant rewards.
+    if (!opts?.instant) window.MatchAppGuestShare?.decorateAiBubble?.(wrap);
+
+    if (opts && opts.instant) p.textContent = text;
+    return { wrap, textEl: p, grid, speakBtn: speak };
+}
+
+async function renderResultsInto(grid, items, baseIndex) {
+    await window.matchPolicy?.ready();
+    if (!Array.isArray(items)) return;
+    if(items.length && items.every(item=>item._musicVideoId)) {
+        grid.replaceChildren();
+        for(const item of items)await window.MatchAppMusicReleases?.paintCard(item._musicVideoId,grid,true);
+        return;
+    }
+    items = (await Promise.all(items
+        .map(item => enrichDiscoverItem(item, lastDiscoverQuestion))
+        .filter(Boolean)
+        .map(item => enrichDiscoverMedia(item))))
+        .filter(item => item && item.title && !isDiscoverDisliked(item.title));
+    grid.replaceChildren();
+    if (!items || !items.length) return;
+    grid.innerHTML = items.map((it, i) => discoverCardHTML(it, baseIndex + i)).join('');
+    grid.style.display = 'grid';
+    await Promise.all(items.map((it, i) => hydrateDiscoverCard(it, baseIndex + i)));
+    items.forEach((it, i) => {
+        if (it.synopsis) return;
+        const syn = document.querySelector(`[data-discover-idx="${baseIndex + i}"] .discover-synopsis`);
+        if (syn && !syn.textContent.trim()) syn.textContent = it.synopsis || '';
+    });
+    await attachRelated(grid, items, baseIndex);
+}
+
+/* ---------- The main ask flow ---------- */
+async function runAskAndRender(question, opts) {
+    if (!question || !question.trim()) return;
+    const voiceOrigin = !!opts?.voiceOrigin;
+    question = question.trim();
+    // Global MatchApp editorial policy: never use AI or provider lookups to
+    // locate XXX/pornographic content, and never charge for that refusal.
+    if (window.MatchAppContentSafety?.isPornographicRequest?.(question)) {
+        appendUserBubble(question);
+        const lang = String(window.MATCH_LANG || 'en');
+        const answer = /^pt/.test(lang)
+          ? 'O MatchApp não recomenda conteúdo pornográfico. Posso ajudar com revistas, livros, filmes e audiolivros convencionais.'
+          : /^es/.test(lang)
+          ? 'MatchApp no recomienda contenido pornográfico. Puedo ayudarte con revistas, libros, películas y audiolibros convencionales.'
+          : 'MatchApp does not recommend pornographic or XXX content. I can help find mainstream magazines, books, films and audiobooks instead.';
+        appendAssistantBubble(answer, [], { instant: true });
+        return;
+    }
+
+    const loadEl = document.getElementById('discover-loading');
+    const emptyEl = document.getElementById('discover-empty');
+    if (emptyEl) emptyEl.style.display = 'none';
+
+    // Verify allowance without spending it before contacting paid providers.
+    // A failed or unusable AI response must never consume a guest or paid credit.
+    if (typeof window.matchAllowanceBeforeLookup === 'function' && !(await window.matchAllowanceBeforeLookup('ask_ai'))) {
+        refreshAiWorkspaceStatus();
+        return;
+    }
+    refreshAiWorkspaceStatus();
+
+    if (!currentThread) {
+        currentThread = { id: newThreadId(), title: question.slice(0, 60), turns: [], createdAt: Date.now(), updatedAt: Date.now() };
+    }
+
+    appendUserBubble(question);
+    currentThread.turns.push({ role: 'user', text: question, ts: Date.now() });
+
+    // Auto-scroll to the loading animation so the user sees work happening.
+    if (loadEl) {
+        loadEl.style.display = 'block';
+        startAiWorkflow();
+        if (!keepConversationAtStart()) setTimeout(() => loadEl.scrollIntoView({ behavior: 'smooth', block: 'center' }), 80);
+    }
+
+    const input = document.getElementById('discover-new-input');
+    if (input) input.value = '';
+
+    // Pass prior turns so follow-ups keep context.
+    const history = currentThread.turns
+        .slice(0, -1)
+        .map(t => ({ role: t.role, text: t.text }));
+
+    const bookIntent = detectBookIntent(question);
+    const cookingIntent = !!window.MatchCooking?.isCooking(question);
+    let payload, musicPayload, source = 'ai';
+    try {
+        musicPayload = await window.MatchAppMusicReleases?.query(question, history);
+        if (musicPayload) payload = musicPayload;
+        else payload = await askAIConversational(question, history);
+    }
+    catch (e) { payload = cookingIntent ? {answer: /^pt/i.test(window.MATCH_LANG||'') ? 'A IA está indisponível agora. Explore abaixo as receitas e os vídeos originais dos criadores.' : 'AI is unavailable right now. Explore the original cooking sources and videos below.', results:[], _live:false} : await fallbackSearch(question, !!e.aiUnavailable); source = 'fallback'; }
+
+    // Final bounded recovery: if AI parsing, the Edge Function, or the keyless
+    // provider returns nothing, reuse the reviewed local catalogue under the
+    // exact same policy. This adds no polling/observers and cannot loosen the
+    // user's genre/taste exclusions.
+    // A perfectly good conversational AI reply may have zero title cards.
+    // Never overwrite its answer with an unrelated film-catalogue fallback.
+    const wantsTitleRecommendations = !isFactualMediaQuestion(question) &&
+        /\b(?:watch|recommend|suggest|stream|movie|movies|film|films|series|shows?|podcast|playlist|music|listen|similar|comedy|horror|romance|recommendation|assistir|filmes?|séries?|recomendar|recomende|indique|películas?)\b/i.test(mediaIntentQuestion(question));
+    if (!bookIntent && !cookingIntent && wantsTitleRecommendations && !musicPayload &&
+        (!payload?._live || !String(payload.answer || '').trim()) &&
+        (!Array.isArray(payload?.results) || payload.results.length === 0)) {
+        const local = catalogFallbackForQuestion(question);
+        if (local.length) {
+            payload = payload || {};
+            payload.results = local;
+            payload._live = false;
+            source = source === 'ai' ? 'catalog-recovery' : source + '+catalog';
+            const offlineNote = (typeof t === 'function') ? t('discover.offlineNote') : "Our AI concierge is temporarily offline, so here's what our catalog found for you:";
+            payload.answer = `${offlineNote} “${question}”`;
+        }
+    }
+    // Defense in depth: a prompt restriction alone cannot guarantee the
+    // model won't return an explicit item; filter it before any UI/history use.
+    if (payload) {
+        payload.results = window.MatchAppContentSafety?.safeEntries?.(payload.results || []) || (payload.results || []);
+        if (window.MatchAppContentSafety?.isExplicit?.(payload.answer)) {
+            payload.answer = 'I can help with mainstream entertainment, books and magazines, but not pornographic content.';
+            payload.results = [];
+        }
+    }
+    // Only audiovisual cards may enter film match history. Books and recipes
+    // have separate, verified discovery destinations and are not film matches.
+    if (payload && (bookIntent || cookingIntent)) payload.results = [];
+    lastDiscoverQuestion = question;
+
+    // Same unconditional safety net as the match engine: no matter which
+    // upstream path produced this, raw JSON-looking text can never reach
+    // the chat bubble.
+    if (typeof window.sanitizeDisplayText === 'function' && payload && payload.answer) {
+        payload.answer = window.sanitizeDisplayText(payload.answer, ['answer', 'synopsis', 'text']);
+    }
+
+    // Only a verified, successful live answer earns a debit. Offline source
+    // fallbacks and transport/JSON failures remain free.
+    if (payload?._live === true && String(payload.answer || '').trim() &&
+        typeof checkDailyLimit === 'function' && !(await checkDailyLimit('ask_ai'))) {
+        if (loadEl) { finishAiWorkflow(); loadEl.style.display = 'none'; }
+        await refreshAiWorkspaceStatus();
+        appendAssistantBubble((typeof window.t === 'function' ? window.t('credits.retry') : '') ||
+            'Your allowance changed while the answer was generated. No result was charged; try again.', [], { instant:true });
+        return;
+    }
+    await refreshAiWorkspaceStatus();
+
+    // Routed through the shared track() helper so this reaches GTM's
+    // dataLayer — a direct gtag() call is a no-op under a GTM container.
+    if (typeof window.track === 'function') {
+        window.track('ai_search', { search_term: question, source: source, results: (payload.results || []).length });
+    }
+
+    try {
+        window.MatchActivity?.log?.('ai', question);
+        (payload.results || []).forEach(item => {
+            if (!item || !item.title || !/^(movie|film|series|tv|tvshow|documentary|anime|stand-up comedy special|k-drama|telenovela|short film|show)$/i.test(String(item.type || ''))) return;
+            const title = (typeof window.sanitizeDisplayText === 'function')
+                ? window.sanitizeDisplayText(String(item.title), ['title'])
+                : String(item.title);
+            if (!title || /^\s*[{\[]/.test(title)) return;
+            window.MatchActivity?.log?.('ai', title, {
+                source: 'ask-ai',
+                posterUrl: item.posterUrl || item.artwork || ''
+            });
+            window.matchPolicy?.remember?.({
+                title: title,
+                posterUrl: item.posterUrl || item.artwork || '',
+                streamUrl: item.watchUrl || item.url || '',
+                reason: 'Ask AI'
+            }, 'ai');
+        });
+    } catch (_) {}
+
+    if (loadEl) {
+        finishAiWorkflow();
+        setTimeout(() => { loadEl.style.display = 'none'; }, 220);
+    }
+
+    const offlineBadge = document.getElementById('discover-offline-badge');
+    if (offlineBadge) offlineBadge.style.display = payload._live || musicPayload ? 'none' : 'inline-flex';
+
+    const bubble = appendAssistantBubble(payload.answer, bookIntent ? [] : (payload.results || []), { instant: false });
+    if(payload?._live !== true && !musicPayload && bubble?.wrap){
+        const notice=document.createElement('strong');
+        notice.setAttribute('role','status');
+        notice.textContent=window.matchRecoveryHeading?.() || 'TEMPORARY INTERRUPTION — PLEASE TRY AGAIN SHORTLY.';
+        bubble.wrap.prepend(notice);
+    }
+    if(cookingIntent && bubble?.wrap){
+      const sources=document.createElement('section');sources.className='cooking-chat-sources';sources.setAttribute('aria-label','Original cooking sources');
+      const route=document.createElement('a');route.className='gold-btn';route.href='/cooking/?q='+encodeURIComponent(question);route.textContent=/^pt/i.test(window.MATCH_LANG||'')?'Explorar receitas e vídeos originais':/^es/i.test(window.MATCH_LANG||'')?'Explorar recetas y vídeos originales':/^fr/i.test(window.MATCH_LANG||'')?'Explorer les recettes et vidéos originales':/^de/i.test(window.MATCH_LANG||'')?'Originalrezepte und Videos ansehen':'Explore original recipes & videos';sources.append(route);
+      window.MatchCooking.channels.forEach(c=>{const p=document.createElement('p'),a=document.createElement('a');a.href=c.url;a.textContent=c.name+' · '+c.specialty;p.append(a);sources.append(p);});bubble.wrap.append(sources);
+    }
+    // Only attach the exact numbered TMDB record returned from verified
+    // lookup+credits. Plain AI prose and fuzzy title suggestions get no link.
+    if(bubble?.wrap && (/^https:\/\/www\.themoviedb\.org\/movie\/\d+$/.test(payload?.verifiedSource||'') || payload?.verifiedSource==='https://www.ghibli.jp/works/chihiro/')) {
+        const sourceLink=document.createElement('a');
+        sourceLink.className='gold-btn discover-verified-source';
+        sourceLink.href=payload.verifiedSource;
+        sourceLink.target='_blank';
+        sourceLink.rel='noopener noreferrer';
+        sourceLink.textContent='Verified original film and director source ↗';
+        bubble.wrap.appendChild(sourceLink);
+    }
+    if (bubble?.wrap && bookIntent) {
+        const route = document.createElement('a');
+        const readingFormat = window.MatchAppReadingAI?.intent?.(question) || 'ebook';
+        route.href = '/?reading=' + encodeURIComponent(readingFormat) + '#ebook-matcher-root';
+        route.className = 'gold-btn discover-book-matcher-link';
+        const lang = window.MATCH_LANG || 'en';
+        route.textContent = /^pt/.test(lang)
+            ? '📚🎧📰 Verificar livros, audiolivros e revistas'
+            : /^es/.test(lang)
+            ? '📚🎧📰 Verificar libros, audiolibros y revistas'
+            : '📚🎧📰 Verify e-books, audiobooks and magazines';
+        route.setAttribute('aria-label', route.textContent);
+        bubble.wrap.appendChild(route);
+        window.MatchAppReadingAI?.render?.(question, bubble.wrap);
+    }
+
+    // Auto-scroll to the response before the typewriter starts.
+    if (bubble && bubble.wrap && !keepConversationAtStart()) {
+        setTimeout(() => bubble.wrap.scrollIntoView({ behavior: 'smooth', block: 'center' }), 60);
+    }
+
+    if (bubble) {
+        await typewriterReveal(bubble.textEl, payload.answer, 14);
+        // A mic-origin prompt gets a natural spoken reply. Typed prompts stay silent.
+        if (voiceOrigin && String(payload.answer || '').trim()) {
+            window.readAloud(payload.answer, bubble.speakBtn);
+        }
+    }
+
+    const baseIndex = DISCOVER_ITEMS.length;
+    let newItems = (bookIntent ? [] : (payload.results || []))
+        .map(item => enrichDiscoverItem(item, question))
+        .filter(item => item && item.title && !isDiscoverDisliked(item.title));
+    if (!bookIntent && wantsTitleRecommendations && !newItems.length && !musicPayload &&
+        !payload?._live && window.matchPolicy && typeof CONTENT_CATALOG !== 'undefined') {
+        newItems = CONTENT_CATALOG
+            .filter(e => e && e.title && !isDiscoverDisliked(e.title) && window.matchPolicy.fitsQuestion(e, question))
+            .slice(0, 6)
+            .map(e => enrichDiscoverItem({
+                title: e.title, year: e.year || '', type: (e.cats && e.cats[0]) || '',
+                platform: e.platform || '', synopsis: e.synopsis || '', cats: e.cats, moods: e.moods,
+                watchUrl: e.watchUrl || ''
+            }, question))
+            .filter(Boolean);
+    }
+    DISCOVER_ITEMS = DISCOVER_ITEMS.concat(newItems);
+    if (bubble && newItems.length) await renderResultsInto(bubble.grid, newItems, baseIndex);
+
+    currentThread.turns.push({ role: 'assistant', text: payload.answer, results: newItems, ts: Date.now() });
+    currentThread.updatedAt = Date.now();
+    persistCurrentThread();
+    refreshAiWorkspaceStatus();
+
+    // Keep the follow-up box in view so continuing the conversation is obvious.
+    const row = document.querySelector('.newsearch-row');
+    if (!keepConversationAtStart()) {
+        if (row) setTimeout(() => row.scrollIntoView({ behavior: 'smooth', block: 'center' }), 400);
+    } else {
+        const log = document.getElementById('chat-log');
+        if (log) setTimeout(() => log.scrollIntoView({ behavior: 'auto', block: 'start' }), 20);
+    }
+}
+
+// The button, keyboard and voice can submit the same question together.
+ // Keep one allowance debit and one answer in flight on this page at a time.
+let askInFlight = null;
+function askAndRender(question, opts) {
+    if (askInFlight) return askInFlight;
+    const markedVoice = opts?.voiceOrigin === true ||
+        (!!window.MatchAppVoiceOrigin?.consume && window.MatchAppVoiceOrigin.consume(question));
+    const running = Promise.resolve().then(() => runAskAndRender(question, { voiceOrigin: markedVoice })).catch(error => {
+        // Even the independent source fallback can fail. Restore the composer
+        // and stop its loader instead of leaving an unhandled rejection.
+        console.warn('[MatchApp Ai] Request interrupted:',error?.message||error);
+        finishAiWorkflow();
+        const loading=document.getElementById('discover-loading');
+        if(loading)loading.style.display='none';
+        const input=document.getElementById('discover-new-input');
+        if(input && !input.value)input.value=question;
+        window.showToast?.('Ask AI could not complete this request. Your question is ready to retry.',true,{recovery:true});
+        return null;
+    });
+    askInFlight = running;
+    running.finally(() => {
+        if (askInFlight === running) askInFlight = null;
+    }).catch(() => {}); // The caller's promise retains the original error.
+    return running;
+}
+
+/* ---------- Auto-growing composer ----------
+   The ask field is a textarea now, so it has to be resized manually: reset to
+   auto first (otherwise it can only ever grow, never shrink back), then match
+   the content height up to the CSS max, after which it scrolls. Exposed on
+   window so voice dictation can trigger a resize as words stream in. */
+window.autoGrowComposer = function () {
+    const el = document.getElementById('discover-new-input');
+    if (!el) return;
+    el.style.height = 'auto';
+    const max = 190;
+    const next = Math.min(el.scrollHeight, max);
+    el.style.height = next + 'px';
+    const wrap = el.closest('.composer');
+    if (wrap) wrap.classList.toggle('is-tall', el.scrollHeight > max);
+};
+
+function initComposer() {
+    const el = document.getElementById('discover-new-input');
+    if (!el) return;
+
+    el.addEventListener('input', window.autoGrowComposer);
+
+    el.addEventListener('keydown', (e) => {
+        // Enter sends, Shift+Enter makes a new line. IME composition must be
+        // left alone or Enter would submit mid-word in Japanese, Korean and
+        // Chinese input, where Enter is how you accept a candidate.
+        if (e.key === 'Enter' && !e.shiftKey && !e.isComposing) {
+            e.preventDefault();
+            window.newDiscoverSearch();
+        }
+    });
+
+    window.autoGrowComposer();
+}
+document.addEventListener('DOMContentLoaded', initComposer);
+
+window.newDiscoverSearch = function () {
+    const el = document.getElementById('discover-new-input');
+    const hint = document.getElementById('discover-compose-help');
+    const question = el?.value?.trim() || '';
+    if (!question) {
+        // A tap on the real chat's Send button must never appear broken.
+        // Prompt visibly, but do not focus the input or open the keyboard.
+        if (hint) {
+            if (!hint.dataset.initialCopy) hint.dataset.initialCopy = hint.textContent || '';
+            const lang = String(window.MATCH_LANG || document.documentElement.lang || 'en').toLowerCase();
+            hint.textContent = lang.startsWith('pt')
+                ? 'Digite uma pergunta ou toque no microfone para falar com o MatchApp Ai.'
+                : 'Type a question, or tap the microphone to ask MatchApp Ai.';
+        }
+        return false;
+    }
+    if (hint?.dataset.initialCopy) hint.textContent = hint.dataset.initialCopy;
+    askAndRender(question);
+    // Collapse back to one line once the question is sent.
+    el.value = '';
+    window.autoGrowComposer();
+    return true;
+};
+
+/* ---------- Boot ---------- */
+async function showMusicVideoInfoCard(id) {
+    const release = await window.MatchAppMusicReleases?.get(id);
+    if (!release) return false;
+    for (const name of ['discover-empty', 'discover-loading']) {
+        const el = document.getElementById(name); if (el) el.style.display = 'none';
+    }
+    const title = release.artist + ' — ' + release.title;
+    if (!currentThread) currentThread = { id: newThreadId(), title: title.slice(0, 60), turns: [], createdAt: Date.now(), updatedAt: Date.now() };
+    const text = window.MatchAppMusicReleases.intro(release);
+    const bubble = appendAssistantBubble(text, [], { instant: true });
+    if (bubble) {
+        bubble.wrap.dataset.musicVideoId = id;
+        await window.MatchAppMusicReleases.paintCard(id, bubble.grid);
+    }
+    currentThread.turns.push({ role: 'assistant', text, results: [], musicVideoId: id, ts: Date.now() });
+    currentThread.updatedAt = Date.now(); persistCurrentThread();
+    document.title = title + ' — MatchApp Ai Concierge';
+    document.getElementById('chat-log')?.scrollIntoView({ behavior: 'auto', block: 'start' });
+    return true;
+}
+
+async function showTitleInfoCard(titleName) {
+    titleName = String(titleName || '').trim();
+    if (!titleName) return;
+    await window.matchPolicy?.ready();
+
+    const emptyEl = document.getElementById('discover-empty');
+    const loadEl = document.getElementById('discover-loading');
+    if (emptyEl) emptyEl.style.display = 'none';
+    if (loadEl) loadEl.style.display = 'none';
+
+    let item = enrichDiscoverItem(itemFromTitle(titleName), '') || itemFromTitle(titleName);
+    item = await enrichDiscoverMedia(item);
+    lastDiscoverQuestion = '';
+    DISCOVER_ITEMS = [];
+
+    if (!currentThread) {
+        currentThread = { id: newThreadId(), title: item.title.slice(0, 60), turns: [], createdAt: Date.now(), updatedAt: Date.now() };
+    }
+
+    const intro = discoverLabel(
+        'discover.titleCardIntro',
+        "Here's {title} — spoiler-free synopsis, where to watch it, and when it started. Ask a follow-up if you want more."
+    ).replace(/\{title\}/g, item.title);
+
+    const bubble = appendAssistantBubble(intro, [item], { instant: true });
+    DISCOVER_ITEMS = [item];
+    if (bubble && bubble.grid) {
+        const grid = bubble.grid;
+        grid.innerHTML = discoverCardHTML(item, 0);
+        grid.style.display = 'grid';
+        await hydrateDiscoverCard(item, 0);
+        await attachRelated(grid, [item], 0);
+    }
+
+    currentThread.turns.push({ role: 'assistant', text: intro, results: [item], ts: Date.now() });
+    currentThread.updatedAt = Date.now();
+    persistCurrentThread();
+
+    if (typeof window.track === 'function') {
+        window.track('title_info_card', { title: item.title, source: 'trending' });
+    }
+    const log = document.getElementById('chat-log');
+    if (log) setTimeout(() => log.scrollIntoView({ behavior: 'auto', block: 'start' }), 20);
+}
+
+
+async function showEventInfoCard(eventPath) {
+    let path = '';
+    try {
+        const u = new URL(String(eventPath || ''), location.origin);
+        if (u.origin === location.origin && u.pathname.startsWith('/events/')) path = u.pathname;
+    } catch (_) {}
+    if (!path) return false;
+
+    const emptyEl = document.getElementById('discover-empty');
+    const loadEl = document.getElementById('discover-loading');
+    if (emptyEl) emptyEl.style.display = 'none';
+    if (loadEl) loadEl.style.display = 'none';
+
+    try {
+        const response = await fetch(path, { credentials: 'same-origin' });
+        if (!response.ok) return false;
+        const doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        const hero = doc.querySelector('.event-detail-hero');
+        const title = (doc.querySelector('h1')?.textContent || 'Event').trim();
+        const image = hero?.querySelector('img')?.getAttribute('src') || '';
+        const paras = [...(hero?.querySelectorAll('p') || [])].map(p => p.textContent.trim()).filter(Boolean);
+        const meta = paras[0] || '';
+        const copy = paras.find(p => p.length > 80) || paras[1] || '';
+        const links = [...doc.querySelectorAll('.global-event-links a[href]')]
+            .map(a => ({ label: a.textContent.trim(), href: a.getAttribute('href') || '' }))
+            .filter(x => /^https:\/\//.test(x.href));
+        let preview = doc.querySelector('iframe[src*="youtube-nocookie.com/embed/"]')?.getAttribute('src') || '';
+        if (!preview) {
+            for (const link of links) {
+                try {
+                    const u = new URL(link.href);
+                    const id = /(?:^|\.)youtube\.com$/.test(u.hostname) ? u.searchParams.get('v') : (u.hostname === 'youtu.be' ? u.pathname.slice(1) : '');
+                    if (/^[A-Za-z0-9_-]{6,32}$/.test(id || '')) { preview = 'https://www.youtube-nocookie.com/embed/' + id; break; }
+                } catch (_) {}
+            }
+        }
+
+        if (!currentThread) {
+            currentThread = { id: newThreadId(), title: title.slice(0, 60), turns: [], createdAt: Date.now(), updatedAt: Date.now() };
+        }
+
+        const intro = [title, meta, copy].filter(Boolean).join(' — ');
+        const bubble = appendAssistantBubble(intro, [], { instant: true });
+        if (bubble?.grid) {
+            const grid = bubble.grid;
+            grid.style.display = 'grid';
+            grid.innerHTML = `
+                <article class="discover-event-card">
+                    ${image ? `<img src="${escapeDiscoverHtml(image)}" alt="${escapeDiscoverHtml(title)}" loading="eager">` : ''}
+                    <div>
+                        <p style="color:#E5C158;font-weight:900;margin:0 0 8px">EVENT</p>
+                        <h2>${escapeDiscoverHtml(title)}</h2>
+                        ${meta ? `<p class="discover-event-meta">${escapeDiscoverHtml(meta)}</p>` : ''}
+                        ${copy ? `<p class="discover-event-copy">${escapeDiscoverHtml(copy)}</p>` : ''}
+                        ${preview ? `<iframe class="discover-event-preview" src="${escapeDiscoverHtml(preview)}" title="${escapeDiscoverHtml(title)} preview" loading="lazy" allow="accelerometer; autoplay; encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe>` : ''}
+                        <div class="discover-event-actions"></div>
+                    </div>
+                </article>`;
+            const actions = grid.querySelector('.discover-event-actions');
+            if (actions) {
+                const page = document.createElement('a');
+                page.href = path;
+                page.textContent = 'Open event page';
+                actions.appendChild(page);
+                links.slice(0, 8).forEach(link => {
+                    const a = document.createElement('a');
+                    a.href = link.href;
+                    a.target = '_blank';
+                    a.rel = 'noopener noreferrer';
+                    a.textContent = link.label || 'Official link';
+                    actions.appendChild(a);
+                });
+                const save = document.createElement('button');
+                save.type = 'button';
+                save.textContent = 'Save event';
+                save.addEventListener('click', () => {
+                    try {
+                        const key = 'match_savedEvents';
+                        const rows = JSON.parse(localStorage.getItem(key) || '[]');
+                        const list = Array.isArray(rows) ? rows : [];
+                        if (!list.some(x => x && x.path === path)) list.unshift({ title, path, image, savedAt: Date.now() });
+                        localStorage.setItem(key, JSON.stringify(list.slice(0, 100)));
+                        window.showToast?.('Event saved.');
+                    } catch (_) {}
+                });
+                actions.appendChild(save);
+            }
+        }
+
+        currentThread.turns.push({ role: 'assistant', text: intro, results: [], event: { title, path, meta, copy, links }, ts: Date.now() });
+        currentThread.updatedAt = Date.now();
+        persistCurrentThread();
+        refreshAiWorkspaceStatus();
+        window.__MATCHAPP_EVENT_RENDERED = true;
+        document.title = `${title} — MatchApp Ai Concierge`;
+        const input = document.getElementById('discover-new-input');
+        if (input) input.placeholder = `Ask a follow-up about ${title}…`;
+        const log = document.getElementById('chat-log');
+        if (log) setTimeout(() => log.scrollIntoView({ behavior: 'auto', block: 'start' }), 20);
+        return true;
+    } catch (_) {
+        return false;
+    }
+}
+
+async function runDiscovery() {
+    renderThreadList();
+    const musicVideoId = getQueryParam('video').trim();
+    const title = getQueryParam('title').trim();
+    const eventPath = getQueryParam('event').trim();
+    const q = getQueryParam('q').trim();
+    const forceNew = getQueryParam('new') === '1';
+    const loadEl = document.getElementById('discover-loading');
+    const emptyEl = document.getElementById('discover-empty');
+
+    // The homepage Ai wordmark is an explicit "new chat" action.
+    // A fresh page normally starts with currentThread=null anyway, but this
+    // makes that contract deliberate and future-proof if navigation becomes
+    // client-side later. No credit is consumed until the user actually asks.
+    if (forceNew) {
+        currentThread = null;
+        DISCOVER_ITEMS = [];
+        const log = document.getElementById('chat-log');
+        if (log) { parkDiscoverComposer(); log.innerHTML = ''; }
+        history.replaceState(null, '', '/discover.html');
+    }
+
+    if (musicVideoId && await showMusicVideoInfoCard(musicVideoId)) return;
+
+    if (eventPath) {
+        if (loadEl) loadEl.style.display = 'none';
+        const shown = await showEventInfoCard(eventPath);
+        if (shown) return;
+        try { location.href = new URL(eventPath, location.origin).pathname; } catch (_) {}
+        return;
+    }
+
+    if (title) {
+        document.title = `${title} — MatchApp Ai Concierge`;
+        if (loadEl) loadEl.style.display = 'none';
+        await showTitleInfoCard(title);
+        return;
+    }
+
+    if (!q) {
+        if (loadEl) loadEl.style.display = 'none';
+        if (emptyEl) emptyEl.style.display = 'block';
+        return;
+    }
+    document.title = `${q} — MatchApp Ai Concierge`;
+    if (loadEl) loadEl.style.display = 'none';
+    await askAndRender(q);
+    const log=document.getElementById('chat-log');
+    if(log){log.hidden=false;log.style.display='flex';log.scrollIntoView({behavior:'auto',block:'start'});}
+}
+
+document.addEventListener('DOMContentLoaded', () => { setTimeout(runDiscovery, 40); });
