@@ -84,7 +84,7 @@ html body.page-home.ma-jonas-inline #ma-jonas-home.is-chat-stage {
   max-height:none!important;max-width:none!important;min-height:0!important;
   margin:0!important;padding:clamp(10px,2vw,22px)!important;
   display:flex!important;align-items:center!important;justify-content:center!important;
-  background:rgba(8,5,16,.83)!important;backdrop-filter:blur(12px)!important;
+  background:radial-gradient(ellipse at 50% 25%,rgba(98,66,125,.86),rgba(37,25,54,.95) 66%,#100b20 100%)!important;backdrop-filter:blur(10px)!important;
   z-index:2147483300!important;overflow:hidden!important;
 }
 html body.page-home.ma-jonas-inline #ma-jonas-home.is-chat-stage .jh-bubble {display:none!important}
@@ -92,7 +92,7 @@ html body.page-home.ma-jonas-inline #ma-jonas-home.is-chat-stage .jh-popover {
   box-sizing:border-box!important;position:relative!important;inset:auto!important;
   display:flex!important;flex-direction:column!important;flex-shrink:1!important;
   width:min(480px,100%)!important;max-width:100%!important;
-  height:min(715px,calc(100dvh - 20px))!important;max-height:calc(100dvh - 20px)!important;
+  height:min(625px,calc(100dvh - 20px))!important;max-height:calc(100dvh - 20px)!important;
   min-height:0!important;margin:0!important;padding:0!important;
   border-radius:29px!important;border:1px solid #f0cd8c88!important;
   background:radial-gradient(circle at 40% 0%,#49305d,#24162e 49%,#130d1e 100%)!important;
