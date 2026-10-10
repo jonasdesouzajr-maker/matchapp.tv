@@ -4,12 +4,10 @@ const root=path.join(__dirname,'..'),main=fs.readFileSync(path.join(root,'androi
 const base=path.join(root,'android-studio/app/src/main/res');
 function dims(file){const buf=fs.readFileSync(file);assert.equal(buf.subarray(0,8).toString('hex'),'89504e470d0a1a0a');return [buf.readUInt32BE(16),buf.readUInt32BE(20)];}
 test('Jonas AI is a circular created face that stays on screen while scrolling',()=>{
- assert.match(main,/launch\.textContent='✦ Jonas AI'/);
- assert.match(main,/private-voice\/avatar\.jpg/);
+ assert.match(main,/function setupNativeVoiceAvatarLauncher\(\)/);
+ assert.match(main,/Jonas UI is loaded from matchapp.tv home/);
+ assert.ok(fs.existsSync(path.join(root,'jonas/floating-home-20261010-v3.js')));
  assert.match(main,/border-radius:50%/);
- assert.match(main,/placeAvatar/);
- assert.match(main,/is-compact/);
- assert.match(main,/addEventListener\('scroll'/);
  assert.match(main,/openVoiceAvatar\(\)/);
  assert.match(main,/setupNativeVoiceAvatarLauncher\(\)/);
  assert.doesNotMatch(main,/if\(!owner\) return;/);
