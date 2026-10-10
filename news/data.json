@@ -1,52 +1,52 @@
 {
-  "generated_at": "2026-10-10T16:14:49.577Z",
-  "feed_version": "fc8332a6",
+  "generated_at": "2026-10-10T19:29:13.776Z",
+  "feed_version": "a2ee75dc",
   "sports_updated_at": "2026-10-10T16:14:42.293Z",
   "source_policy": "direct-trusted-publisher-rss+google-trends-keyword-signals",
   "seo_policy": "per-story keyword snapshot at first discovery + source citation + stable archive",
   "items": [
     {
-      "id": "cd95a0b2",
-      "title": "Christa Pike discharged from hospital and returned to prison, her lawyers say",
-      "url": "https://www.bbc.co.uk/news/articles/cmlyle97pqd7o?at_medium=RSS&at_campaign=rss",
+      "id": "d613db04",
+      "title": "'Time for Ukraine to get new president,' says Trump after Zelensky condemns diesel deal",
+      "url": "https://www.bbc.co.uk/news/articles/cqe8r5l7n92jo?at_medium=RSS&at_campaign=rss",
       "source": "BBC World",
       "source_domain": "bbc.co.uk",
       "source_home": "https://www.bbc.co.uk",
       "country": "GLOBAL",
       "language": "en",
-      "published_at": "2026-10-10T15:58:06.000Z",
-      "discovered_at": "2026-10-10T16:14:49.577Z",
+      "published_at": "2026-10-10T19:28:28.000Z",
+      "discovered_at": "2026-10-10T19:29:13.776Z",
       "event_type": "Entertainment",
       "category": "world",
-      "person": "Christa Pike",
+      "person": "",
       "description": "World news reported by BBC World on 2026-10-10. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/cafe/live/bfd91a70-c4bf-11f1-a64c-550be9e3c66b.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/christa-pike-discharged-from-hospital-and-returned-to-prison-her-lawyers-say-cd95a0/",
-      "landing_url": "https://matchapp.tv/?news=cd95a0b2#latest-news",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/99c5/live/3203eb90-c4d2-11f1-a64c-550be9e3c66b.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/time-for-ukraine-to-get-new-president-says-trump-after-zelensky-condemns-diesel--d613db/",
+      "landing_url": "https://matchapp.tv/?news=d613db04#latest-news",
       "seo": {
         "primary_keyword": "world news 2026-10-10",
         "short_tail": [
           "world news",
           "global headlines",
-          "christa",
-          "pike",
-          "discharged",
-          "hospital",
-          "returned",
-          "prison"
+          "time",
+          "ukraine",
+          "get",
+          "new",
+          "president",
+          "says"
         ],
         "long_tail": [
-          "Christa Pike discharged from hospital and returned to prison, her lawyers say 2026-10-10",
+          "'Time for Ukraine to get new president,' says Trump after Zelensky condemns diesel deal 2026-10-10",
           "world news October 2026"
         ],
         "trend_keywords": [],
         "entity_keywords": [
-          "christa",
-          "pike",
-          "discharged",
-          "hospital",
-          "returned",
-          "prison"
+          "time",
+          "ukraine",
+          "get",
+          "new",
+          "president",
+          "says"
         ],
         "freshness_keywords": [
           "2026-10-10"
@@ -54,24 +54,1133 @@
         "source_keywords": [
           "BBC World"
         ],
-        "meta_title": "Christa Pike discharged from hospital and returned to…",
+        "meta_title": "'Time for Ukraine to get new president,' says Trump after…",
         "meta_description": "World report published by BBC World on 2026-10-10. Open the original report for full context.",
         "keywords": [
           "world news 2026-10-10",
           "world news",
           "global headlines",
-          "christa",
-          "pike",
-          "discharged",
-          "hospital",
-          "returned",
-          "prison",
-          "Christa Pike discharged from hospital and returned to prison, her lawyers say 2026-10-10",
+          "time",
+          "ukraine",
+          "get",
+          "new",
+          "president",
+          "says",
+          "'Time for Ukraine to get new president,' says Trump after Zelensky condemns diesel deal 2026-10-10",
           "world news October 2026",
           "2026-10-10",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-10T16:14:49.577Z"
+        "seo_generated_at": "2026-10-10T19:29:13.776Z"
+      }
+    },
+    {
+      "id": "40239b0c",
+      "title": "Four dead and thousands without power after Hurricane Isaias lashes US",
+      "url": "https://www.bbc.co.uk/news/articles/cmje5x80yg70o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-10T19:08:17.000Z",
+      "discovered_at": "2026-10-10T19:29:13.776Z",
+      "event_type": "Obituary",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-10. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/dfd2/live/7e8f55f0-c4df-11f1-9a39-31b474234113.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/four-dead-and-thousands-without-power-after-hurricane-isaias-lashes-us-40239b/",
+      "landing_url": "https://matchapp.tv/?news=40239b0c#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-10",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "four",
+          "dead",
+          "thousands",
+          "without",
+          "power",
+          "after"
+        ],
+        "long_tail": [
+          "Four dead and thousands without power after Hurricane Isaias lashes US 2026-10-10",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "four",
+          "dead",
+          "thousands",
+          "without",
+          "power",
+          "after"
+        ],
+        "freshness_keywords": [
+          "2026-10-10"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Four dead and thousands without power after Hurricane…",
+        "meta_description": "World report published by BBC World on 2026-10-10. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-10",
+          "world news",
+          "global headlines",
+          "four",
+          "dead",
+          "thousands",
+          "without",
+          "power",
+          "after",
+          "Four dead and thousands without power after Hurricane Isaias lashes US 2026-10-10",
+          "world news October 2026",
+          "2026-10-10",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-10T19:29:13.776Z"
+      }
+    },
+    {
+      "id": "ab220149",
+      "title": "Oscars: U.K. Selects Iran Doc ‘Rehearsals for a Revolution’ as Best International Feature Entry",
+      "url": "https://www.hollywoodreporter.com/movies/movie-news/oscars-uk-rehearsals-for-a-revolution-international-feature-1236726918/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-10T18:41:19.000Z",
+      "discovered_at": "2026-10-10T19:29:13.776Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "",
+      "description": "entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/05/Rehearsals-for-a-Revolution-200358-H-2026.jpg?w=1296&h=730&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/oscars-u-k-selects-iran-doc-rehearsals-for-a-revolution-as-best-international-fe-ab2201/",
+      "landing_url": "https://matchapp.tv/?news=ab220149#latest-news",
+      "seo": {
+        "primary_keyword": "oscars selects iran doc latest news",
+        "short_tail": [
+          "oscars selects iran doc",
+          "oscars selects iran doc news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "oscars selects iran doc latest news October 2026",
+          "oscars selects iran doc entertainment update 2026",
+          "oscars selects iran doc news 2026-10-10",
+          "latest entertainment news about oscars selects iran doc",
+          "oscars selects iran doc rehearsals revolution latest update",
+          "The Hollywood Reporter oscars selects iran doc entertainment",
+          "latest news about oscars selects iran doc October 2026",
+          "oscars selects iran doc entertainment news 2026-10-10",
+          "what happened with oscars selects iran doc"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "oscars",
+          "selects",
+          "iran",
+          "doc",
+          "rehearsals",
+          "revolution",
+          "best",
+          "international"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-10",
+          "oscars selects iran doc 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter oscars selects iran doc",
+          "hollywoodreporter.com oscars selects iran doc",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "Oscars: U.K. Selects Iran Doc ‘Rehearsals for a…",
+        "meta_description": "Entertainment update reported by The Hollywood Reporter on 2026-10-10. See verified context, publication time and the original source via MatchApp Ai.",
+        "keywords": [
+          "oscars selects iran doc latest news",
+          "oscars selects iran doc",
+          "oscars selects iran doc news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "oscars selects iran doc latest news October 2026",
+          "oscars selects iran doc entertainment update 2026",
+          "oscars selects iran doc news 2026-10-10",
+          "latest entertainment news about oscars selects iran doc",
+          "oscars selects iran doc rehearsals revolution latest update",
+          "The Hollywood Reporter oscars selects iran doc entertainment",
+          "latest news about oscars selects iran doc October 2026",
+          "oscars selects iran doc entertainment news 2026-10-10",
+          "what happened with oscars selects iran doc",
+          "oscars",
+          "selects",
+          "iran",
+          "doc",
+          "rehearsals",
+          "revolution",
+          "best",
+          "international",
+          "October 2026",
+          "2026-10-10",
+          "oscars selects iran doc 2026",
+          "The Hollywood Reporter oscars selects iran doc",
+          "hollywoodreporter.com oscars selects iran doc",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-10T19:29:13.776Z"
+      }
+    },
+    {
+      "id": "12303909",
+      "title": "Several injured in attack on airport in Saudi capital Riyadh",
+      "url": "https://www.bbc.co.uk/news/articles/cw33x4y8k82no?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-10T18:37:10.000Z",
+      "discovered_at": "2026-10-10T19:29:13.776Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-10. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/882f/live/23bf5530-c4c1-11f1-9ce9-55293bd7f0d9.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/several-injured-in-attack-on-airport-in-saudi-capital-riyadh-123039/",
+      "landing_url": "https://matchapp.tv/?news=12303909#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-10",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "several",
+          "injured",
+          "attack",
+          "airport",
+          "saudi",
+          "capital"
+        ],
+        "long_tail": [
+          "Several injured in attack on airport in Saudi capital Riyadh 2026-10-10",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "several",
+          "injured",
+          "attack",
+          "airport",
+          "saudi",
+          "capital"
+        ],
+        "freshness_keywords": [
+          "2026-10-10"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Several injured in attack on airport in Saudi capital…",
+        "meta_description": "World report published by BBC World on 2026-10-10. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-10",
+          "world news",
+          "global headlines",
+          "several",
+          "injured",
+          "attack",
+          "airport",
+          "saudi",
+          "capital",
+          "Several injured in attack on airport in Saudi capital Riyadh 2026-10-10",
+          "world news October 2026",
+          "2026-10-10",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-10T19:29:13.776Z"
+      }
+    },
+    {
+      "id": "27fd11cf",
+      "title": "Expedition hopes to find aviator Amelia Earhart's plane on remote island",
+      "url": "https://www.bbc.co.uk/news/articles/c3y0e871rk4vo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-10T18:22:29.000Z",
+      "discovered_at": "2026-10-10T19:29:13.776Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-10. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/c416/live/81c8f6c0-c4d7-11f1-9a39-31b474234113.png",
+      "matchapp_url": "https://matchapp.tv/news/articles/expedition-hopes-to-find-aviator-amelia-earhart-s-plane-on-remote-island-27fd11/",
+      "landing_url": "https://matchapp.tv/?news=27fd11cf#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-10",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "expedition",
+          "hopes",
+          "find",
+          "aviator",
+          "amelia",
+          "earhart"
+        ],
+        "long_tail": [
+          "Expedition hopes to find aviator Amelia Earhart's plane on remote island 2026-10-10",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "expedition",
+          "hopes",
+          "find",
+          "aviator",
+          "amelia",
+          "earhart"
+        ],
+        "freshness_keywords": [
+          "2026-10-10"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Expedition hopes to find aviator Amelia Earhart's plane on…",
+        "meta_description": "World report published by BBC World on 2026-10-10. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-10",
+          "world news",
+          "global headlines",
+          "expedition",
+          "hopes",
+          "find",
+          "aviator",
+          "amelia",
+          "earhart",
+          "Expedition hopes to find aviator Amelia Earhart's plane on remote island 2026-10-10",
+          "world news October 2026",
+          "2026-10-10",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-10T19:29:13.776Z"
+      }
+    },
+    {
+      "id": "77496e30",
+      "title": "Petroleiro explode após atingir mina no Estreito de Ormuz, afirma Guarda Revolucionária do Irã",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/10/petroleiro-explode-apos-atingir-mina-no-estreito-de-ormuz-afirma-guarda-revolucionaria-do-ira.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-10T18:21:13.000Z",
+      "discovered_at": "2026-10-10T19:29:13.776Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-10. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/zsmfODQH5bmwVuFzpBJBlU2RTMY=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/y/U/IueoH0RuiQRx5MJuKhcw/2026-08-17t134126z-1571278001-rc2c0naakvh3-rtrmadp-3-iran-crisis-oman-hormuz.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/petroleiro-explode-apos-atingir-mina-no-estreito-de-ormuz-afirma-guarda-revoluci-77496e/",
+      "landing_url": "https://matchapp.tv/?news=77496e30#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-10",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "petroleiro",
+          "explode",
+          "apos",
+          "atingir",
+          "mina",
+          "estreito"
+        ],
+        "long_tail": [
+          "Petroleiro explode após atingir mina no Estreito de Ormuz, afirma Guarda Revolucionária do Irã 2026-10-10",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "petroleiro",
+          "explode",
+          "apos",
+          "atingir",
+          "mina",
+          "estreito"
+        ],
+        "freshness_keywords": [
+          "2026-10-10"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Petroleiro explode após atingir mina no Estreito de Ormuz,…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-10. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-10",
+          "notícias do mundo",
+          "notícias internacionais",
+          "petroleiro",
+          "explode",
+          "apos",
+          "atingir",
+          "mina",
+          "estreito",
+          "Petroleiro explode após atingir mina no Estreito de Ormuz, afirma Guarda Revolucionária do Irã 2026-10-10",
+          "notícias mundiais outubro 2026",
+          "2026-10-10",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-10T19:29:13.776Z"
+      }
+    },
+    {
+      "id": "cd95a0b2",
+      "title": "US murderer Christa Pike discharged from hospital 10 days after failed execution",
+      "url": "https://www.bbc.co.uk/news/articles/cmlyle97pqd7o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-10T17:44:26.000Z",
+      "discovered_at": "2026-10-10T16:14:49.577Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-10. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/05ed/live/df926130-c4d0-11f1-bc2e-018d645d8d21.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/us-murderer-christa-pike-discharged-from-hospital-10-days-after-failed-execution-cd95a0/",
+      "landing_url": "https://matchapp.tv/?news=cd95a0b2#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-10",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "murderer",
+          "christa",
+          "pike",
+          "discharged",
+          "hospital",
+          "days"
+        ],
+        "long_tail": [
+          "US murderer Christa Pike discharged from hospital 10 days after failed execution 2026-10-10",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "murderer",
+          "christa",
+          "pike",
+          "discharged",
+          "hospital",
+          "days"
+        ],
+        "freshness_keywords": [
+          "2026-10-10"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "US murderer Christa Pike discharged from hospital 10 days…",
+        "meta_description": "World report published by BBC World on 2026-10-10. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-10",
+          "world news",
+          "global headlines",
+          "murderer",
+          "christa",
+          "pike",
+          "discharged",
+          "hospital",
+          "days",
+          "US murderer Christa Pike discharged from hospital 10 days after failed execution 2026-10-10",
+          "world news October 2026",
+          "2026-10-10",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-10T19:29:13.776Z"
+      }
+    },
+    {
+      "id": "501c6278",
+      "title": "Por que a China considera uma ameaça a IA que imita as relações humanas",
+      "url": "https://g1.globo.com/tecnologia/noticia/2026/10/10/por-que-a-china-considera-uma-ameaca-a-ia-que-imita-as-relacoes-humanas.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-10T17:44:06.000Z",
+      "discovered_at": "2026-10-10T19:29:13.776Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-10. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/CoidVg3Hr8_GPy31iEsaGAMJlAo=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2025/P/F/WKUU8VRDqAcz3KW0v9Cw/2025-01-27t125916z-1824444031-rc2cicawpv3t-rtrmadp-3-deepseek-markets.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/por-que-a-china-considera-uma-ameaca-a-ia-que-imita-as-relacoes-humanas-501c62/",
+      "landing_url": "https://matchapp.tv/?news=501c6278#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-10",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "que",
+          "china",
+          "considera",
+          "ameaca",
+          "que",
+          "imita"
+        ],
+        "long_tail": [
+          "Por que a China considera uma ameaça a IA que imita as relações humanas 2026-10-10",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "que",
+          "china",
+          "considera",
+          "ameaca",
+          "que",
+          "imita"
+        ],
+        "freshness_keywords": [
+          "2026-10-10"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Por que a China considera uma ameaça a IA que imita as…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-10. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-10",
+          "notícias do mundo",
+          "notícias internacionais",
+          "que",
+          "china",
+          "considera",
+          "ameaca",
+          "imita",
+          "Por que a China considera uma ameaça a IA que imita as relações humanas 2026-10-10",
+          "notícias mundiais outubro 2026",
+          "2026-10-10",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-10T19:29:13.776Z"
+      }
+    },
+    {
+      "id": "78762951",
+      "title": "Remembering ‘Romeo + Juliet’: When Baz Luhrmann Put Leo in an Hawaiian Shirt",
+      "url": "https://www.hollywoodreporter.com/movies/movie-news/romeo-juliet-baz-luhrmann-turns-30-1236723460/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-10T17:30:00.000Z",
+      "discovered_at": "2026-10-10T19:29:13.776Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "",
+      "description": "entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/18endpg_romeojuliet-SPLASH-2026.jpg?w=1440&h=810&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/remembering-romeo-juliet-when-baz-luhrmann-put-leo-in-an-hawaiian-shirt-787629/",
+      "landing_url": "https://matchapp.tv/?news=78762951#latest-news",
+      "seo": {
+        "primary_keyword": "remembering romeo juliet when latest news",
+        "short_tail": [
+          "remembering romeo juliet when",
+          "remembering romeo juliet when news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "remembering romeo juliet when latest news October 2026",
+          "remembering romeo juliet when entertainment update 2026",
+          "remembering romeo juliet when news 2026-10-10",
+          "latest entertainment news about remembering romeo juliet when",
+          "remembering romeo juliet when baz luhrmann latest update",
+          "The Hollywood Reporter remembering romeo juliet when entertainment",
+          "latest news about remembering romeo juliet when October 2026",
+          "remembering romeo juliet when entertainment news 2026-10-10",
+          "what happened with remembering romeo juliet when"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "remembering",
+          "romeo",
+          "juliet",
+          "when",
+          "baz",
+          "luhrmann",
+          "put",
+          "leo"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-10",
+          "remembering romeo juliet when 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter remembering romeo juliet when",
+          "hollywoodreporter.com remembering romeo juliet when",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "Remembering ‘Romeo + Juliet’: When Baz Luhrmann Put Leo in…",
+        "meta_description": "Entertainment update reported by The Hollywood Reporter on 2026-10-10. See verified context, publication time and the original source via MatchApp Ai.",
+        "keywords": [
+          "remembering romeo juliet when latest news",
+          "remembering romeo juliet when",
+          "remembering romeo juliet when news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "remembering romeo juliet when latest news October 2026",
+          "remembering romeo juliet when entertainment update 2026",
+          "remembering romeo juliet when news 2026-10-10",
+          "latest entertainment news about remembering romeo juliet when",
+          "remembering romeo juliet when baz luhrmann latest update",
+          "The Hollywood Reporter remembering romeo juliet when entertainment",
+          "latest news about remembering romeo juliet when October 2026",
+          "remembering romeo juliet when entertainment news 2026-10-10",
+          "what happened with remembering romeo juliet when",
+          "remembering",
+          "romeo",
+          "juliet",
+          "when",
+          "baz",
+          "luhrmann",
+          "put",
+          "leo",
+          "October 2026",
+          "2026-10-10",
+          "remembering romeo juliet when 2026",
+          "The Hollywood Reporter remembering romeo juliet when",
+          "hollywoodreporter.com remembering romeo juliet when",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-10T19:29:13.776Z"
+      }
+    },
+    {
+      "id": "f7deb552",
+      "title": "Nicolas Cage Teases ‘True Detective’ Role, Says He “Probably” Won’t Work With Prime Video Again After Refusing to Sign AI Waiver for ‘Spider-Noir’",
+      "url": "https://www.hollywoodreporter.com/tv/tv-news/nicolas-cage-true-detective-anti-ai-amazon-spider-noir-1236726924/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-10T17:04:54.000Z",
+      "discovered_at": "2026-10-10T19:29:13.776Z",
+      "event_type": "Casting",
+      "category": "entertainment",
+      "person": "Nicolas Cage Teases",
+      "description": "Nicolas Cage Teases: casting headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/Nicolas-Cage.jpg?w=1440&h=810&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/nicolas-cage-teases-true-detective-role-says-he-probably-won-t-work-with-prime-v-f7deb5/",
+      "landing_url": "https://matchapp.tv/?news=f7deb552#latest-news",
+      "seo": {
+        "primary_keyword": "Nicolas Cage Teases latest news",
+        "short_tail": [
+          "Nicolas Cage Teases",
+          "Nicolas Cage Teases news",
+          "casting",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "Nicolas Cage Teases latest news October 2026",
+          "Nicolas Cage Teases casting update 2026",
+          "Nicolas Cage Teases news 2026-10-10",
+          "latest casting news about Nicolas Cage Teases",
+          "nicolas cage teases nicolas cage teases latest update",
+          "The Hollywood Reporter Nicolas Cage Teases casting",
+          "latest news about Nicolas Cage Teases October 2026",
+          "Nicolas Cage Teases entertainment news 2026-10-10",
+          "what happened with Nicolas Cage Teases"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "Nicolas Cage Teases",
+          "nicolas",
+          "cage",
+          "teases",
+          "true",
+          "detective"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-10",
+          "Nicolas Cage Teases 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter Nicolas Cage Teases",
+          "hollywoodreporter.com Nicolas Cage Teases",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "Nicolas Cage Teases ‘True Detective’ Role, Says He…",
+        "meta_description": "Nicolas Cage Teases: Casting update reported by The Hollywood Reporter on 2026-10-10. See verified context, publication time and the original source via…",
+        "keywords": [
+          "Nicolas Cage Teases latest news",
+          "Nicolas Cage Teases",
+          "Nicolas Cage Teases news",
+          "casting",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "Nicolas Cage Teases latest news October 2026",
+          "Nicolas Cage Teases casting update 2026",
+          "Nicolas Cage Teases news 2026-10-10",
+          "latest casting news about Nicolas Cage Teases",
+          "nicolas cage teases nicolas cage teases latest update",
+          "The Hollywood Reporter Nicolas Cage Teases casting",
+          "latest news about Nicolas Cage Teases October 2026",
+          "Nicolas Cage Teases entertainment news 2026-10-10",
+          "what happened with Nicolas Cage Teases",
+          "nicolas",
+          "cage",
+          "teases",
+          "true",
+          "detective",
+          "October 2026",
+          "2026-10-10",
+          "Nicolas Cage Teases 2026",
+          "The Hollywood Reporter Nicolas Cage Teases",
+          "hollywoodreporter.com Nicolas Cage Teases",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-10T19:29:13.776Z"
+      }
+    },
+    {
+      "id": "e0a60a79",
+      "title": "Wagner Moura, Fernando Meirelles, Petra Costa e mais nomes do cinema divulgam carta aberta sobre eleições",
+      "url": "https://g1.globo.com/pop-arte/cinema/noticia/2026/10/10/wagner-moura-fernando-meirelles-petra-costa-e-mais-nomes-do-cinema-divulgam-carta-sobre-eleicoes.ghtml",
+      "source": "G1",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "BR",
+      "language": "pt",
+      "published_at": "2026-10-10T16:40:14.000Z",
+      "discovered_at": "2026-10-10T19:29:13.776Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "Wagner Moura",
+      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
+      "image": "https://s2-g1.glbimg.com/vRJ6aqMCXvxcm2Igc4TixN8JSmE=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/H/T/wXKJLETbe2we4Y9YkAJQ/cartaaberta.png",
+      "matchapp_url": "https://matchapp.tv/news/articles/wagner-moura-fernando-meirelles-petra-costa-e-mais-nomes-do-cinema-divulgam-cart-e0a60a/",
+      "landing_url": "https://matchapp.tv/?news=e0a60a79#latest-news",
+      "seo": {
+        "primary_keyword": "Wagner Moura últimas notícias",
+        "short_tail": [
+          "Wagner Moura",
+          "Wagner Moura news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje"
+        ],
+        "long_tail": [
+          "Wagner Moura latest news October 2026",
+          "Wagner Moura entertainment update 2026",
+          "Wagner Moura news 2026-10-10",
+          "latest entertainment news about Wagner Moura",
+          "wagner moura wagner moura fernando meirelles latest update",
+          "G1 Wagner Moura entertainment",
+          "últimas notícias sobre Wagner Moura outubro 2026",
+          "Wagner Moura notícia de 2026-10-10",
+          "o que aconteceu com Wagner Moura"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "Wagner Moura",
+          "wagner",
+          "moura",
+          "fernando",
+          "meirelles",
+          "petra",
+          "costa"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-10",
+          "outubro 2026",
+          "Wagner Moura 2026"
+        ],
+        "source_keywords": [
+          "G1 Wagner Moura",
+          "g1.globo.com Wagner Moura",
+          "G1 entertainment news"
+        ],
+        "meta_title": "Wagner Moura, Fernando Meirelles, Petra Costa e mais nomes…",
+        "meta_description": "Wagner Moura: Notícia publicada por G1 em 2026-10-10. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
+        "keywords": [
+          "Wagner Moura últimas notícias",
+          "Wagner Moura",
+          "Wagner Moura news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje",
+          "Wagner Moura latest news October 2026",
+          "Wagner Moura entertainment update 2026",
+          "Wagner Moura news 2026-10-10",
+          "latest entertainment news about Wagner Moura",
+          "wagner moura wagner moura fernando meirelles latest update",
+          "G1 Wagner Moura entertainment",
+          "últimas notícias sobre Wagner Moura outubro 2026",
+          "Wagner Moura notícia de 2026-10-10",
+          "o que aconteceu com Wagner Moura",
+          "wagner",
+          "moura",
+          "fernando",
+          "meirelles",
+          "petra",
+          "costa",
+          "October 2026",
+          "2026-10-10",
+          "outubro 2026",
+          "Wagner Moura 2026",
+          "G1 Wagner Moura",
+          "g1.globo.com Wagner Moura",
+          "G1 entertainment news"
+        ],
+        "seo_generated_at": "2026-10-10T19:29:13.776Z"
+      }
+    },
+    {
+      "id": "4fa1eefa",
+      "title": "Homem morre após entrar em jaula de tigre em zoológico no Reino Unido",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/10/homem-fica-ferido-apos-entrar-jaula-tigre-zoologico-reino-unido.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-10T16:37:08.000Z",
+      "discovered_at": "2026-10-10T19:29:13.776Z",
+      "event_type": "Obituary",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-10. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/bL3OGS5lx1gpuYUTSrcswVbOhWg=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/Q/C/di4ThXSwSZpUEDYGWF1Q/design-sem-nome-2026-10-10t135551.014.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/homem-morre-apos-entrar-em-jaula-de-tigre-em-zoologico-no-reino-unido-4fa1ee/",
+      "landing_url": "https://matchapp.tv/?news=4fa1eefa#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-10",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "homem",
+          "morre",
+          "apos",
+          "entrar",
+          "jaula",
+          "tigre"
+        ],
+        "long_tail": [
+          "Homem morre após entrar em jaula de tigre em zoológico no Reino Unido 2026-10-10",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "homem",
+          "morre",
+          "apos",
+          "entrar",
+          "jaula",
+          "tigre"
+        ],
+        "freshness_keywords": [
+          "2026-10-10"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Homem morre após entrar em jaula de tigre em zoológico no…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-10. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-10",
+          "notícias do mundo",
+          "notícias internacionais",
+          "homem",
+          "morre",
+          "apos",
+          "entrar",
+          "jaula",
+          "tigre",
+          "Homem morre após entrar em jaula de tigre em zoológico no Reino Unido 2026-10-10",
+          "notícias mundiais outubro 2026",
+          "2026-10-10",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-10T19:29:13.776Z"
+      }
+    },
+    {
+      "id": "1eccf961",
+      "title": "Assustados, moradores passam noite nas ruas após terremotos no Panamá",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/10/assustados-moradores-passam-noite-nas-ruas-apos-terremotos-no-panama.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-10T16:29:40.000Z",
+      "discovered_at": "2026-10-10T19:29:13.776Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-10. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/-31tMlKilchEnbZ76TWq8jlozhA=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/x/l/JjjqBiSt2KHwGZSvK2Nw/ap26282718200597.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/assustados-moradores-passam-noite-nas-ruas-apos-terremotos-no-panama-1eccf9/",
+      "landing_url": "https://matchapp.tv/?news=1eccf961#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-10",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "assustados",
+          "moradores",
+          "passam",
+          "noite",
+          "ruas",
+          "apos"
+        ],
+        "long_tail": [
+          "Assustados, moradores passam noite nas ruas após terremotos no Panamá 2026-10-10",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "assustados",
+          "moradores",
+          "passam",
+          "noite",
+          "ruas",
+          "apos"
+        ],
+        "freshness_keywords": [
+          "2026-10-10"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Assustados, moradores passam noite nas ruas após…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-10. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-10",
+          "notícias do mundo",
+          "notícias internacionais",
+          "assustados",
+          "moradores",
+          "passam",
+          "noite",
+          "ruas",
+          "apos",
+          "Assustados, moradores passam noite nas ruas após terremotos no Panamá 2026-10-10",
+          "notícias mundiais outubro 2026",
+          "2026-10-10",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-10T19:29:13.776Z"
+      }
+    },
+    {
+      "id": "c5f09904",
+      "title": "‘Other Mommy’ Delivering $28M in Box Office Debut as ‘Social Reckoning’ Gets Quiet Start",
+      "url": "https://www.hollywoodreporter.com/movies/movie-news/other-mommy-box-office-social-reckoning-opening-1236726908/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-10T16:27:18.000Z",
+      "discovered_at": "2026-10-10T19:29:13.776Z",
+      "event_type": "Release",
+      "category": "entertainment",
+      "person": "",
+      "description": "release headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/09/2599_D016_00144RC-H-2026.jpg?w=1296&h=730&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/other-mommy-delivering-28m-in-box-office-debut-as-social-reckoning-gets-quiet-st-c5f099/",
+      "landing_url": "https://matchapp.tv/?news=c5f09904#latest-news",
+      "seo": {
+        "primary_keyword": "other mommy delivering 28m latest news",
+        "short_tail": [
+          "other mommy delivering 28m",
+          "other mommy delivering 28m news",
+          "release",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "other mommy delivering 28m latest news October 2026",
+          "other mommy delivering 28m release update 2026",
+          "other mommy delivering 28m news 2026-10-10",
+          "latest release news about other mommy delivering 28m",
+          "other mommy delivering 28m box office latest update",
+          "The Hollywood Reporter other mommy delivering 28m release",
+          "latest news about other mommy delivering 28m October 2026",
+          "other mommy delivering 28m entertainment news 2026-10-10",
+          "what happened with other mommy delivering 28m"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "other",
+          "mommy",
+          "delivering",
+          "28m",
+          "box",
+          "office",
+          "debut",
+          "social"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-10",
+          "other mommy delivering 28m 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter other mommy delivering 28m",
+          "hollywoodreporter.com other mommy delivering 28m",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "‘Other Mommy’ Delivering $28M in Box Office Debut as…",
+        "meta_description": "Release update reported by The Hollywood Reporter on 2026-10-10. See verified context, publication time and the original source via MatchApp Ai.",
+        "keywords": [
+          "other mommy delivering 28m latest news",
+          "other mommy delivering 28m",
+          "other mommy delivering 28m news",
+          "release",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "other mommy delivering 28m latest news October 2026",
+          "other mommy delivering 28m release update 2026",
+          "other mommy delivering 28m news 2026-10-10",
+          "latest release news about other mommy delivering 28m",
+          "other mommy delivering 28m box office latest update",
+          "The Hollywood Reporter other mommy delivering 28m release",
+          "latest news about other mommy delivering 28m October 2026",
+          "other mommy delivering 28m entertainment news 2026-10-10",
+          "what happened with other mommy delivering 28m",
+          "other",
+          "mommy",
+          "delivering",
+          "28m",
+          "box",
+          "office",
+          "debut",
+          "social",
+          "October 2026",
+          "2026-10-10",
+          "other mommy delivering 28m 2026",
+          "The Hollywood Reporter other mommy delivering 28m",
+          "hollywoodreporter.com other mommy delivering 28m",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-10T19:29:13.776Z"
+      }
+    },
+    {
+      "id": "3ccc1216",
+      "title": "Ataque a tiros deixa 9 mortos, incluindo duas crianças, nos EUA",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/10/ataque-a-tiros-deixa-9-mortos-incluindo-duas-criancas-nos-eua.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-10T16:20:23.000Z",
+      "discovered_at": "2026-10-10T19:29:13.776Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-10. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/OJCs1ipxAdXHfxcAPNkTyXF84-Y=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/E/5/BKdyEOTuOBWdrlI4yBjg/ap26283596855724.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/ataque-a-tiros-deixa-9-mortos-incluindo-duas-criancas-nos-eua-3ccc12/",
+      "landing_url": "https://matchapp.tv/?news=3ccc1216#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-10",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "ataque",
+          "tiros",
+          "deixa",
+          "mortos",
+          "incluindo",
+          "duas"
+        ],
+        "long_tail": [
+          "Ataque a tiros deixa 9 mortos, incluindo duas crianças, nos EUA 2026-10-10",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "ataque",
+          "tiros",
+          "deixa",
+          "mortos",
+          "incluindo",
+          "duas"
+        ],
+        "freshness_keywords": [
+          "2026-10-10"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Ataque a tiros deixa 9 mortos, incluindo duas crianças,…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-10. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-10",
+          "notícias do mundo",
+          "notícias internacionais",
+          "ataque",
+          "tiros",
+          "deixa",
+          "mortos",
+          "incluindo",
+          "duas",
+          "Ataque a tiros deixa 9 mortos, incluindo duas crianças, nos EUA 2026-10-10",
+          "notícias mundiais outubro 2026",
+          "2026-10-10",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-10T19:29:13.776Z"
       }
     },
     {
@@ -140,7 +1249,7 @@
           "2026-10-10",
           "BBC Technology"
         ],
-        "seo_generated_at": "2026-10-10T16:14:49.577Z"
+        "seo_generated_at": "2026-10-10T19:29:13.776Z"
       }
     },
     {
@@ -209,7 +1318,7 @@
           "2026-10-10",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-10T16:14:49.577Z"
+        "seo_generated_at": "2026-10-10T19:29:13.776Z"
       }
     },
     {
@@ -278,7 +1387,7 @@
           "2026-10-10",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-10T16:14:49.577Z"
+        "seo_generated_at": "2026-10-10T19:29:13.776Z"
       }
     },
     {
@@ -377,7 +1486,7 @@
           "hollywoodreporter.com amc mayfair witches salem",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-10T16:14:49.577Z"
+        "seo_generated_at": "2026-10-10T19:29:13.776Z"
       }
     },
     {
@@ -446,7 +1555,7 @@
           "2026-10-10",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-10T16:14:49.577Z"
+        "seo_generated_at": "2026-10-10T19:29:13.776Z"
       }
     },
     {
@@ -515,76 +1624,7 @@
           "2026-10-10",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-10T16:14:49.577Z"
-      }
-    },
-    {
-      "id": "cdca422f",
-      "title": "IA da Anthropic envia denúncia falsa sobre homicídio à polícia dos EUA",
-      "url": "https://g1.globo.com/tecnologia/noticia/2026/10/10/ia-da-anthropic-envia-denuncia-falsa-sobre-homicidio-a-policia-dos-eua.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-10T15:13:50.000Z",
-      "discovered_at": "2026-10-10T16:14:49.577Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-10. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/eEN6vhMRCSOwCfe4ADREMhd_Aec=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/n/F/sadFfXSUuMRiXnUbwZ5A/2026-06-30t235818z-1842503695-rc2unla3osw3-rtrmadp-3-usa-anthropic-fable.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/ia-da-anthropic-envia-denuncia-falsa-sobre-homicidio-a-policia-dos-eua-cdca42/",
-      "landing_url": "https://matchapp.tv/?news=cdca422f#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-10",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "anthropic",
-          "envia",
-          "denuncia",
-          "falsa",
-          "sobre",
-          "homicidio"
-        ],
-        "long_tail": [
-          "IA da Anthropic envia denúncia falsa sobre homicídio à polícia dos EUA 2026-10-10",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "anthropic",
-          "envia",
-          "denuncia",
-          "falsa",
-          "sobre",
-          "homicidio"
-        ],
-        "freshness_keywords": [
-          "2026-10-10"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "IA da Anthropic envia denúncia falsa sobre homicídio à…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-10. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-10",
-          "notícias do mundo",
-          "notícias internacionais",
-          "anthropic",
-          "envia",
-          "denuncia",
-          "falsa",
-          "sobre",
-          "homicidio",
-          "IA da Anthropic envia denúncia falsa sobre homicídio à polícia dos EUA 2026-10-10",
-          "notícias mundiais outubro 2026",
-          "2026-10-10",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-10T16:14:49.577Z"
+        "seo_generated_at": "2026-10-10T19:29:13.776Z"
       }
     },
     {
@@ -653,421 +1693,7 @@
           "2026-10-10",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-10T16:14:49.577Z"
-      }
-    },
-    {
-      "id": "1de9fb5c",
-      "title": "Drone strike by Sudan paramilitary kills 41 near Ethiopian border, rights group says",
-      "url": "https://www.bbc.co.uk/news/articles/c8vgx9ew571wo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-10T14:49:32.000Z",
-      "discovered_at": "2026-10-10T16:14:49.577Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-10. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/a17b/live/c6c5e2c0-c4b8-11f1-a64c-550be9e3c66b.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/drone-strike-by-sudan-paramilitary-kills-41-near-ethiopian-border-rights-group-s-1de9fb/",
-      "landing_url": "https://matchapp.tv/?news=1de9fb5c#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-10",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "drone",
-          "strike",
-          "sudan",
-          "paramilitary",
-          "kills",
-          "near"
-        ],
-        "long_tail": [
-          "Drone strike by Sudan paramilitary kills 41 near Ethiopian border, rights group says 2026-10-10",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "drone",
-          "strike",
-          "sudan",
-          "paramilitary",
-          "kills",
-          "near"
-        ],
-        "freshness_keywords": [
-          "2026-10-10"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Drone strike by Sudan paramilitary kills 41 near Ethiopian…",
-        "meta_description": "World report published by BBC World on 2026-10-10. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-10",
-          "world news",
-          "global headlines",
-          "drone",
-          "strike",
-          "sudan",
-          "paramilitary",
-          "kills",
-          "near",
-          "Drone strike by Sudan paramilitary kills 41 near Ethiopian border, rights group says 2026-10-10",
-          "world news October 2026",
-          "2026-10-10",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-10T16:14:49.577Z"
-      }
-    },
-    {
-      "id": "26642edc",
-      "title": "Trump announces deal for Russian diesel as Zelensky calls it a gift to Putin",
-      "url": "https://www.bbc.co.uk/news/articles/cm1dwgr666wno?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-10T14:24:14.000Z",
-      "discovered_at": "2026-10-09T21:12:52.869Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-10. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/8c49/live/850032c0-c470-11f1-94f2-dbc7ff6db92b.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/trump-announces-deal-for-russian-diesel-as-zelensky-calls-it-a-gift-to-putin-26642e/",
-      "landing_url": "https://matchapp.tv/?news=26642edc#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-10",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "trump",
-          "announces",
-          "deal",
-          "russian",
-          "diesel",
-          "zelensky"
-        ],
-        "long_tail": [
-          "Trump announces deal for Russian diesel as Zelensky calls it a gift to Putin 2026-10-10",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "trump",
-          "announces",
-          "deal",
-          "russian",
-          "diesel",
-          "zelensky"
-        ],
-        "freshness_keywords": [
-          "2026-10-10"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Trump announces deal for Russian diesel as Zelensky calls…",
-        "meta_description": "World report published by BBC World on 2026-10-10. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-10",
-          "world news",
-          "global headlines",
-          "trump",
-          "announces",
-          "deal",
-          "russian",
-          "diesel",
-          "zelensky",
-          "Trump announces deal for Russian diesel as Zelensky calls it a gift to Putin 2026-10-10",
-          "world news October 2026",
-          "2026-10-10",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-10T16:14:49.577Z"
-      }
-    },
-    {
-      "id": "02bc0911",
-      "title": "Russian glide bomb attack on Zaporizhzhia kills at least 15 people",
-      "url": "https://www.bbc.co.uk/news/articles/cwvgdpv642g5o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-10T14:16:50.000Z",
-      "discovered_at": "2026-10-10T14:40:56.970Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-10. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/98ce/live/569e8e50-c49c-11f1-869c-8f95c437952a.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/russian-glide-bomb-attack-on-zaporizhzhia-kills-at-least-15-people-02bc09/",
-      "landing_url": "https://matchapp.tv/?news=02bc0911#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-10",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "russian",
-          "glide",
-          "bomb",
-          "attack",
-          "zaporizhzhia",
-          "kills"
-        ],
-        "long_tail": [
-          "Russian glide bomb attack on Zaporizhzhia kills at least 15 people 2026-10-10",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "russian",
-          "glide",
-          "bomb",
-          "attack",
-          "zaporizhzhia",
-          "kills"
-        ],
-        "freshness_keywords": [
-          "2026-10-10"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Russian glide bomb attack on Zaporizhzhia kills at least…",
-        "meta_description": "World report published by BBC World on 2026-10-10. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-10",
-          "world news",
-          "global headlines",
-          "russian",
-          "glide",
-          "bomb",
-          "attack",
-          "zaporizhzhia",
-          "kills",
-          "Russian glide bomb attack on Zaporizhzhia kills at least 15 people 2026-10-10",
-          "world news October 2026",
-          "2026-10-10",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-10T16:14:49.577Z"
-      }
-    },
-    {
-      "id": "a5a0a33e",
-      "title": "Terremoto no Panamá tem mais de 80 réplicas; entenda por que a terra continua tremendo e se é possível prever novos abalos",
-      "url": "https://g1.globo.com/meio-ambiente/noticia/2026/10/10/terremoto-no-panama-tem-mais-de-80-replicas-entenda-por-que-a-terra-continua-tremendo-e-se-e-possivel-prever-novos-abalos.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-10T14:14:07.000Z",
-      "discovered_at": "2026-10-10T14:40:56.970Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-10. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/UezYXwo92rgvPgKSnCecjFeF1_Q=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/M/u/6Z4wsjR4Sp8CyKXlvNfQ/globo-canal-4-20261009-2000-frame-129954.jpeg",
-      "matchapp_url": "https://matchapp.tv/news/articles/terremoto-no-panama-tem-mais-de-80-replicas-entenda-por-que-a-terra-continua-tre-a5a0a3/",
-      "landing_url": "https://matchapp.tv/?news=a5a0a33e#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-10",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "terremoto",
-          "panama",
-          "tem",
-          "mais",
-          "replicas",
-          "entenda"
-        ],
-        "long_tail": [
-          "Terremoto no Panamá tem mais de 80 réplicas; entenda por que a terra continua tremendo e se é possível prever novos abalos 2026-10-10",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "terremoto",
-          "panama",
-          "tem",
-          "mais",
-          "replicas",
-          "entenda"
-        ],
-        "freshness_keywords": [
-          "2026-10-10"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Terremoto no Panamá tem mais de 80 réplicas; entenda por…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-10. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-10",
-          "notícias do mundo",
-          "notícias internacionais",
-          "terremoto",
-          "panama",
-          "tem",
-          "mais",
-          "replicas",
-          "entenda",
-          "Terremoto no Panamá tem mais de 80 réplicas; entenda por que a terra continua tremendo e se é possível prever novos abalos 2026-10-10",
-          "notícias mundiais outubro 2026",
-          "2026-10-10",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-10T16:14:49.577Z"
-      }
-    },
-    {
-      "id": "d879de4b",
-      "title": "Trump critica vencedora do Nobel da Paz e diz que deveria ter vencido o prêmio: 'Que absurdo!'",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/10/trump-critica-vencedora-do-nobel-da-paz-e-diz-que-deveria-ter-vencido-o-premio-que-absurdo.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-10T14:09:50.000Z",
-      "discovered_at": "2026-10-10T14:40:56.970Z",
-      "event_type": "Awards",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-10. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/QCGPIEydovbdfQZ8XmgMBihWkks=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/9/T/Uv6YAaQS2N2tjxzP5sUQ/meow-meow-meow-meow-68-.png",
-      "matchapp_url": "https://matchapp.tv/news/articles/trump-critica-vencedora-do-nobel-da-paz-e-diz-que-deveria-ter-vencido-o-premio-q-d879de/",
-      "landing_url": "https://matchapp.tv/?news=d879de4b#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-10",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "trump",
-          "critica",
-          "vencedora",
-          "nobel",
-          "paz",
-          "diz"
-        ],
-        "long_tail": [
-          "Trump critica vencedora do Nobel da Paz e diz que deveria ter vencido o prêmio: 'Que absurdo!' 2026-10-10",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "trump",
-          "critica",
-          "vencedora",
-          "nobel",
-          "paz",
-          "diz"
-        ],
-        "freshness_keywords": [
-          "2026-10-10"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Trump critica vencedora do Nobel da Paz e diz que deveria…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-10. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-10",
-          "notícias do mundo",
-          "notícias internacionais",
-          "trump",
-          "critica",
-          "vencedora",
-          "nobel",
-          "paz",
-          "diz",
-          "Trump critica vencedora do Nobel da Paz e diz que deveria ter vencido o prêmio: 'Que absurdo!' 2026-10-10",
-          "notícias mundiais outubro 2026",
-          "2026-10-10",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-10T16:14:49.577Z"
-      }
-    },
-    {
-      "id": "fed1090e",
-      "title": "Papa Leão XIV diz que pena de morte é 'inadmissível' em meio a planos dos EUA de transmitir execução ao vivo",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/10/papa-leao-xiv-diz-que-pena-de-morte-e-inadmissivel-em-meio-a-planos-dos-eua-de-transmitir-execucao-ao-vivo.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-10T13:54:24.000Z",
-      "discovered_at": "2026-10-10T14:40:56.970Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "Papa Leão XIV",
-      "description": "World news reported by G1 Mundo on 2026-10-10. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/2y9ayGdoetliBmfOSgZ5yJSrbRA=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2025/q/h/HR4QuBQxSQkwdgNz7UEA/fotojet-2025-05-09t080633.783.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/papa-leao-xiv-diz-que-pena-de-morte-e-inadmissivel-em-meio-a-planos-dos-eua-de-t-fed109/",
-      "landing_url": "https://matchapp.tv/?news=fed1090e#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-10",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "papa",
-          "leao",
-          "xiv",
-          "diz",
-          "que",
-          "pena"
-        ],
-        "long_tail": [
-          "Papa Leão XIV diz que pena de morte é 'inadmissível' em meio a planos dos EUA de transmitir execução ao vivo 2026-10-10",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "papa",
-          "leao",
-          "xiv",
-          "diz",
-          "que",
-          "pena"
-        ],
-        "freshness_keywords": [
-          "2026-10-10"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Papa Leão XIV diz que pena de morte é 'inadmissível' em…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-10. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-10",
-          "notícias do mundo",
-          "notícias internacionais",
-          "papa",
-          "leao",
-          "xiv",
-          "diz",
-          "que",
-          "pena",
-          "Papa Leão XIV diz que pena de morte é 'inadmissível' em meio a planos dos EUA de transmitir execução ao vivo 2026-10-10",
-          "notícias mundiais outubro 2026",
-          "2026-10-10",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-10T16:14:49.577Z"
+        "seo_generated_at": "2026-10-10T19:29:13.776Z"
       }
     },
     {
@@ -1166,7 +1792,7 @@
           "hollywoodreporter.com ray gunn review sam",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-10T16:14:49.577Z"
+        "seo_generated_at": "2026-10-10T19:29:13.776Z"
       }
     },
     {
@@ -1264,145 +1890,7 @@
           "g1.globo.com Marisa Monte",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-10T16:14:49.577Z"
-      }
-    },
-    {
-      "id": "a8017317",
-      "title": "Hundreds protest over data centre plans",
-      "url": "https://www.bbc.co.uk/news/articles/cm78pwq47vp1o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC Science",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-10T13:40:03.000Z",
-      "discovered_at": "2026-10-10T14:40:56.970Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC Science on 2026-10-10. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/e776/live/7a3be9e0-c4a9-11f1-a64c-550be9e3c66b.png",
-      "matchapp_url": "https://matchapp.tv/news/articles/hundreds-protest-over-data-centre-plans-a80173/",
-      "landing_url": "https://matchapp.tv/?news=a8017317#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-10",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "hundreds",
-          "protest",
-          "over",
-          "data",
-          "centre",
-          "plans"
-        ],
-        "long_tail": [
-          "Hundreds protest over data centre plans 2026-10-10",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "hundreds",
-          "protest",
-          "over",
-          "data",
-          "centre",
-          "plans"
-        ],
-        "freshness_keywords": [
-          "2026-10-10"
-        ],
-        "source_keywords": [
-          "BBC Science"
-        ],
-        "meta_title": "Hundreds protest over data centre plans | World News |…",
-        "meta_description": "World report published by BBC Science on 2026-10-10. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-10",
-          "world news",
-          "global headlines",
-          "hundreds",
-          "protest",
-          "over",
-          "data",
-          "centre",
-          "plans",
-          "Hundreds protest over data centre plans 2026-10-10",
-          "world news October 2026",
-          "2026-10-10",
-          "BBC Science"
-        ],
-        "seo_generated_at": "2026-10-10T16:14:49.577Z"
-      }
-    },
-    {
-      "id": "bfe485bb",
-      "title": "Cortes de Trump tiram cobertura de saúde de milhares de refugiados e imigrantes legais nos EUA",
-      "url": "https://g1.globo.com/saude/noticia/2026/10/10/cortes-de-trump-tiram-cobertura-de-saude-de-milhares-de-refugiados-e-imigrantes-legais-nos-eua.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-10T13:32:41.000Z",
-      "discovered_at": "2026-10-10T14:40:56.970Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-10. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/pcdoES4nfVMzrIzEMfMd2xN29zU=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/s/9/O5Tp7CQauks4jhde05gA/ap26282716538077.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/cortes-de-trump-tiram-cobertura-de-saude-de-milhares-de-refugiados-e-imigrantes--bfe485/",
-      "landing_url": "https://matchapp.tv/?news=bfe485bb#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-10",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "cortes",
-          "trump",
-          "tiram",
-          "cobertura",
-          "saude",
-          "milhares"
-        ],
-        "long_tail": [
-          "Cortes de Trump tiram cobertura de saúde de milhares de refugiados e imigrantes legais nos EUA 2026-10-10",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "cortes",
-          "trump",
-          "tiram",
-          "cobertura",
-          "saude",
-          "milhares"
-        ],
-        "freshness_keywords": [
-          "2026-10-10"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Cortes de Trump tiram cobertura de saúde de milhares de…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-10. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-10",
-          "notícias do mundo",
-          "notícias internacionais",
-          "cortes",
-          "trump",
-          "tiram",
-          "cobertura",
-          "saude",
-          "milhares",
-          "Cortes de Trump tiram cobertura de saúde de milhares de refugiados e imigrantes legais nos EUA 2026-10-10",
-          "notícias mundiais outubro 2026",
-          "2026-10-10",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-10T16:14:49.577Z"
+        "seo_generated_at": "2026-10-10T19:29:13.776Z"
       }
     },
     {
@@ -1503,7 +1991,7 @@
           "g1.globo.com minha globinho viva web",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-10T16:14:49.577Z"
+        "seo_generated_at": "2026-10-10T19:29:13.776Z"
       }
     },
     {
@@ -1597,7 +2085,7 @@
           "hollywoodreporter.com Naomi Ackie Discusses",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-10T16:14:49.577Z"
+        "seo_generated_at": "2026-10-10T19:29:13.776Z"
       }
     },
     {
@@ -1696,7 +2184,7 @@
           "bbc.co.uk screams haunting scenes deadly",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-10T16:14:49.577Z"
+        "seo_generated_at": "2026-10-10T19:29:13.776Z"
       }
     },
     {
@@ -1796,106 +2284,7 @@
           "g1.globo.com TV Globinho",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-10T16:14:49.577Z"
-      }
-    },
-    {
-      "id": "8ace7a80",
-      "title": "‘Bedford Park’ Star Moon Choi Charts Her Own Path Between Korea and Hollywood",
-      "url": "https://www.hollywoodreporter.com/movies/movie-features/bedford-park-moon-choi-korea-hollywood-1236726874/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-10-10T09:28:15.000Z",
-      "discovered_at": "2026-10-10T14:40:56.970Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "",
-      "description": "entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/01/Bedford-Park-Key-Still-e1769272353567.jpeg?w=1440&h=810&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/bedford-park-star-moon-choi-charts-her-own-path-between-korea-and-hollywood-8ace7a/",
-      "landing_url": "https://matchapp.tv/?news=8ace7a80#latest-news",
-      "seo": {
-        "primary_keyword": "bedford park star moon latest news",
-        "short_tail": [
-          "bedford park star moon",
-          "bedford park star moon news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "bedford park star moon latest news October 2026",
-          "bedford park star moon entertainment update 2026",
-          "bedford park star moon news 2026-10-10",
-          "latest entertainment news about bedford park star moon",
-          "bedford park star moon choi charts latest update",
-          "The Hollywood Reporter bedford park star moon entertainment",
-          "latest news about bedford park star moon October 2026",
-          "bedford park star moon entertainment news 2026-10-10",
-          "what happened with bedford park star moon"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "bedford",
-          "park",
-          "star",
-          "moon",
-          "choi",
-          "charts",
-          "her",
-          "own"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-10",
-          "bedford park star moon 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter bedford park star moon",
-          "hollywoodreporter.com bedford park star moon",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "‘Bedford Park’ Star Moon Choi Charts Her Own Path Between…",
-        "meta_description": "Entertainment update reported by The Hollywood Reporter on 2026-10-10. See verified context, publication time and the original source via MatchApp Ai.",
-        "keywords": [
-          "bedford park star moon latest news",
-          "bedford park star moon",
-          "bedford park star moon news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "bedford park star moon latest news October 2026",
-          "bedford park star moon entertainment update 2026",
-          "bedford park star moon news 2026-10-10",
-          "latest entertainment news about bedford park star moon",
-          "bedford park star moon choi charts latest update",
-          "The Hollywood Reporter bedford park star moon entertainment",
-          "latest news about bedford park star moon October 2026",
-          "bedford park star moon entertainment news 2026-10-10",
-          "what happened with bedford park star moon",
-          "bedford",
-          "park",
-          "star",
-          "moon",
-          "choi",
-          "charts",
-          "her",
-          "own",
-          "October 2026",
-          "2026-10-10",
-          "bedford park star moon 2026",
-          "The Hollywood Reporter bedford park star moon",
-          "hollywoodreporter.com bedford park star moon",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-10T16:14:49.577Z"
+        "seo_generated_at": "2026-10-10T19:29:13.776Z"
       }
     },
     {
@@ -1996,7 +2385,7 @@
           "g1.globo.com kbrum poe reggae album",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-10T16:14:49.577Z"
+        "seo_generated_at": "2026-10-10T19:29:13.776Z"
       }
     },
     {
@@ -2095,7 +2484,7 @@
           "g1.globo.com saiba como giulia conheceu",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-10T16:14:49.577Z"
+        "seo_generated_at": "2026-10-10T19:29:13.776Z"
       }
     },
     {
@@ -2193,482 +2582,7 @@
           "bbc.co.uk country music star ella",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-10T16:14:49.577Z"
-      }
-    },
-    {
-      "id": "2b395753",
-      "title": "BlumFest Haunts New York Comic Con 2026: All the Highlights From Blumhouse Atomic Monster",
-      "url": "https://www.hollywoodreporter.com/movies/movie-news/blumfest-new-york-comic-con-2026-highlights-1236726806/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-10-10T01:14:29.000Z",
-      "discovered_at": "2026-10-10T02:20:38.599Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "BlumFest Haunts New York",
-      "description": "BlumFest Haunts New York: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/GettyImages-2299448677-e1791594489759.jpg?w=1440&h=810&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/blumfest-haunts-new-york-comic-con-2026-all-the-highlights-from-blumhouse-atomic-2b3957/",
-      "landing_url": "https://matchapp.tv/?news=2b395753#latest-news",
-      "seo": {
-        "primary_keyword": "BlumFest Haunts New York latest news",
-        "short_tail": [
-          "BlumFest Haunts New York",
-          "BlumFest Haunts New York news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "BlumFest Haunts New York latest news October 2026",
-          "BlumFest Haunts New York entertainment update 2026",
-          "BlumFest Haunts New York news 2026-10-10",
-          "latest entertainment news about BlumFest Haunts New York",
-          "blumfest haunts new york blumfest haunts latest update",
-          "The Hollywood Reporter BlumFest Haunts New York entertainment",
-          "latest news about BlumFest Haunts New York October 2026",
-          "BlumFest Haunts New York entertainment news 2026-10-10",
-          "what happened with BlumFest Haunts New York"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "BlumFest Haunts New York",
-          "blumfest",
-          "haunts",
-          "new",
-          "york"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-10",
-          "BlumFest Haunts New York 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter BlumFest Haunts New York",
-          "hollywoodreporter.com BlumFest Haunts New York",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "BlumFest Haunts New York Comic Con 2026: All the…",
-        "meta_description": "BlumFest Haunts New York: Entertainment update reported by The Hollywood Reporter on 2026-10-10. See verified context, publication time and the original…",
-        "keywords": [
-          "BlumFest Haunts New York latest news",
-          "BlumFest Haunts New York",
-          "BlumFest Haunts New York news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "BlumFest Haunts New York latest news October 2026",
-          "BlumFest Haunts New York entertainment update 2026",
-          "BlumFest Haunts New York news 2026-10-10",
-          "latest entertainment news about BlumFest Haunts New York",
-          "blumfest haunts new york blumfest haunts latest update",
-          "The Hollywood Reporter BlumFest Haunts New York entertainment",
-          "latest news about BlumFest Haunts New York October 2026",
-          "BlumFest Haunts New York entertainment news 2026-10-10",
-          "what happened with BlumFest Haunts New York",
-          "blumfest",
-          "haunts",
-          "new",
-          "york",
-          "October 2026",
-          "2026-10-10",
-          "BlumFest Haunts New York 2026",
-          "The Hollywood Reporter BlumFest Haunts New York",
-          "hollywoodreporter.com BlumFest Haunts New York",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-10T16:14:49.577Z"
-      }
-    },
-    {
-      "id": "6f973b01",
-      "title": "‘14th’ Review: Ava DuVernay Delivers Another Essential and Compelling Constitutional Deep Dive for Netflix",
-      "url": "https://www.hollywoodreporter.com/movies/movie-reviews/14th-review-ava-duvernay-netflix-documentary-1236726558/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-10-10T01:00:00.000Z",
-      "discovered_at": "2026-10-10T01:12:11.442Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "",
-      "description": "entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/14th-2.jpg?w=1200&h=810&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/14th-review-ava-duvernay-delivers-another-essential-and-compelling-constitutiona-6f973b/",
-      "landing_url": "https://matchapp.tv/?news=6f973b01#latest-news",
-      "seo": {
-        "primary_keyword": "14th review ava duvernay latest news",
-        "short_tail": [
-          "14th review ava duvernay",
-          "14th review ava duvernay news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "14th review ava duvernay latest news October 2026",
-          "14th review ava duvernay entertainment update 2026",
-          "14th review ava duvernay news 2026-10-10",
-          "latest entertainment news about 14th review ava duvernay",
-          "14th review ava duvernay delivers another latest update",
-          "The Hollywood Reporter 14th review ava duvernay entertainment",
-          "latest news about 14th review ava duvernay October 2026",
-          "14th review ava duvernay entertainment news 2026-10-10",
-          "what happened with 14th review ava duvernay"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "14th",
-          "review",
-          "ava",
-          "duvernay",
-          "delivers",
-          "another",
-          "essential",
-          "compelling"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-10",
-          "14th review ava duvernay 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter 14th review ava duvernay",
-          "hollywoodreporter.com 14th review ava duvernay",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "‘14th’ Review: Ava DuVernay Delivers Another Essential and…",
-        "meta_description": "Entertainment update reported by The Hollywood Reporter on 2026-10-10. See verified context, publication time and the original source via MatchApp Ai.",
-        "keywords": [
-          "14th review ava duvernay latest news",
-          "14th review ava duvernay",
-          "14th review ava duvernay news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "14th review ava duvernay latest news October 2026",
-          "14th review ava duvernay entertainment update 2026",
-          "14th review ava duvernay news 2026-10-10",
-          "latest entertainment news about 14th review ava duvernay",
-          "14th review ava duvernay delivers another latest update",
-          "The Hollywood Reporter 14th review ava duvernay entertainment",
-          "latest news about 14th review ava duvernay October 2026",
-          "14th review ava duvernay entertainment news 2026-10-10",
-          "what happened with 14th review ava duvernay",
-          "14th",
-          "review",
-          "ava",
-          "duvernay",
-          "delivers",
-          "another",
-          "essential",
-          "compelling",
-          "October 2026",
-          "2026-10-10",
-          "14th review ava duvernay 2026",
-          "The Hollywood Reporter 14th review ava duvernay",
-          "hollywoodreporter.com 14th review ava duvernay",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-10T16:14:49.577Z"
-      }
-    },
-    {
-      "id": "a2dcc675",
-      "title": "Roseanne Barr’s Self-Produced TV Series Now Courting Distributors, Co-Creator Says",
-      "url": "https://www.hollywoodreporter.com/tv/tv-news/roseanne-barrs-indie-tv-series-distributors-co-creator-1236726679/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-10-10T00:09:26.000Z",
-      "discovered_at": "2026-10-10T01:12:11.442Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "Roseanne Barr’s Self-Produced TV",
-      "description": "Roseanne Barr’s Self-Produced TV: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/GettyImages-2151989340-H-2026.jpg?w=1296&h=730&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/roseanne-barr-s-self-produced-tv-series-now-courting-distributors-co-creator-say-a2dcc6/",
-      "landing_url": "https://matchapp.tv/?news=a2dcc675#latest-news",
-      "seo": {
-        "primary_keyword": "Roseanne Barr’s Self-Produced TV latest news",
-        "short_tail": [
-          "Roseanne Barr’s Self-Produced TV",
-          "Roseanne Barr’s Self-Produced TV news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "Roseanne Barr’s Self-Produced TV latest news October 2026",
-          "Roseanne Barr’s Self-Produced TV entertainment update 2026",
-          "Roseanne Barr’s Self-Produced TV news 2026-10-10",
-          "latest entertainment news about Roseanne Barr’s Self-Produced TV",
-          "roseanne barr self produced roseanne barr latest update",
-          "The Hollywood Reporter Roseanne Barr’s Self-Produced TV entertainment",
-          "latest news about Roseanne Barr’s Self-Produced TV October 2026",
-          "Roseanne Barr’s Self-Produced TV entertainment news 2026-10-10",
-          "what happened with Roseanne Barr’s Self-Produced TV"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Roseanne Barr’s Self-Produced TV",
-          "roseanne",
-          "barr",
-          "self",
-          "produced"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-10",
-          "Roseanne Barr’s Self-Produced TV 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter Roseanne Barr’s Self-Produced TV",
-          "hollywoodreporter.com Roseanne Barr’s Self-Produced TV",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "Roseanne Barr’s Self-Produced TV Series Now Courting…",
-        "meta_description": "Roseanne Barr’s Self-Produced TV: Entertainment update reported by The Hollywood Reporter on 2026-10-10. See verified context, publication time and the…",
-        "keywords": [
-          "Roseanne Barr’s Self-Produced TV latest news",
-          "Roseanne Barr’s Self-Produced TV",
-          "Roseanne Barr’s Self-Produced TV news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "Roseanne Barr’s Self-Produced TV latest news October 2026",
-          "Roseanne Barr’s Self-Produced TV entertainment update 2026",
-          "Roseanne Barr’s Self-Produced TV news 2026-10-10",
-          "latest entertainment news about Roseanne Barr’s Self-Produced TV",
-          "roseanne barr self produced roseanne barr latest update",
-          "The Hollywood Reporter Roseanne Barr’s Self-Produced TV entertainment",
-          "latest news about Roseanne Barr’s Self-Produced TV October 2026",
-          "Roseanne Barr’s Self-Produced TV entertainment news 2026-10-10",
-          "what happened with Roseanne Barr’s Self-Produced TV",
-          "roseanne",
-          "barr",
-          "self",
-          "produced",
-          "October 2026",
-          "2026-10-10",
-          "Roseanne Barr’s Self-Produced TV 2026",
-          "The Hollywood Reporter Roseanne Barr’s Self-Produced TV",
-          "hollywoodreporter.com Roseanne Barr’s Self-Produced TV",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-10T16:14:49.577Z"
-      }
-    },
-    {
-      "id": "2cda2787",
-      "title": "Iliza Shlesinger and Mira Sorvino to Receive Top Honors at San Diego International Film Festival",
-      "url": "https://www.hollywoodreporter.com/movies/movie-news/san-diego-film-festival-2026-honorees-iliza-mira-sorvino-1236726731/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-10-09T23:07:46.000Z",
-      "discovered_at": "2026-10-10T01:12:11.442Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "Iliza Shlesinger",
-      "description": "Iliza Shlesinger: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/GettyImages-2295433994.jpg?crop=0px%2C276px%2C4032px%2C2256px&resize=1440%2C810",
-      "matchapp_url": "https://matchapp.tv/news/articles/iliza-shlesinger-and-mira-sorvino-to-receive-top-honors-at-san-diego-internation-2cda27/",
-      "landing_url": "https://matchapp.tv/?news=2cda2787#latest-news",
-      "seo": {
-        "primary_keyword": "Iliza Shlesinger latest news",
-        "short_tail": [
-          "Iliza Shlesinger",
-          "Iliza Shlesinger news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "Iliza Shlesinger latest news October 2026",
-          "Iliza Shlesinger entertainment update 2026",
-          "Iliza Shlesinger news 2026-10-09",
-          "latest entertainment news about Iliza Shlesinger",
-          "iliza shlesinger iliza shlesinger mira sorvino latest update",
-          "The Hollywood Reporter Iliza Shlesinger entertainment",
-          "latest news about Iliza Shlesinger October 2026",
-          "Iliza Shlesinger entertainment news 2026-10-09",
-          "what happened with Iliza Shlesinger"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Iliza Shlesinger",
-          "iliza",
-          "shlesinger",
-          "mira",
-          "sorvino",
-          "receive",
-          "top"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-09",
-          "Iliza Shlesinger 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter Iliza Shlesinger",
-          "hollywoodreporter.com Iliza Shlesinger",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "Iliza Shlesinger and Mira Sorvino to Receive Top Honors at…",
-        "meta_description": "Iliza Shlesinger: Entertainment update reported by The Hollywood Reporter on 2026-10-09. See verified context, publication time and the original source via…",
-        "keywords": [
-          "Iliza Shlesinger latest news",
-          "Iliza Shlesinger",
-          "Iliza Shlesinger news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "Iliza Shlesinger latest news October 2026",
-          "Iliza Shlesinger entertainment update 2026",
-          "Iliza Shlesinger news 2026-10-09",
-          "latest entertainment news about Iliza Shlesinger",
-          "iliza shlesinger iliza shlesinger mira sorvino latest update",
-          "The Hollywood Reporter Iliza Shlesinger entertainment",
-          "latest news about Iliza Shlesinger October 2026",
-          "Iliza Shlesinger entertainment news 2026-10-09",
-          "what happened with Iliza Shlesinger",
-          "iliza",
-          "shlesinger",
-          "mira",
-          "sorvino",
-          "receive",
-          "top",
-          "October 2026",
-          "2026-10-09",
-          "Iliza Shlesinger 2026",
-          "The Hollywood Reporter Iliza Shlesinger",
-          "hollywoodreporter.com Iliza Shlesinger",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-10T16:14:49.577Z"
-      }
-    },
-    {
-      "id": "356cfee6",
-      "title": "LaKeith Stanfield, Ben Mendelsohn to Star in ‘Molepeople’ for Atomic Monster, Paramount Primal (Exclusive)",
-      "url": "https://www.hollywoodreporter.com/movies/movie-news/lakeith-stanfield-ben-mendelsohn-molepeople-1236726689/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-10-09T23:04:03.000Z",
-      "discovered_at": "2026-10-10T01:12:11.442Z",
-      "event_type": "Casting",
-      "category": "entertainment",
-      "person": "LaKeith Stanfield",
-      "description": "LaKeith Stanfield: casting headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/LaKeith-Stanfield-Ben-Mendelsohn-Split-Getty-H-2026.jpg?w=1296&h=730&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/lakeith-stanfield-ben-mendelsohn-to-star-in-molepeople-for-atomic-monster-paramo-356cfe/",
-      "landing_url": "https://matchapp.tv/?news=356cfee6#latest-news",
-      "seo": {
-        "primary_keyword": "LaKeith Stanfield latest news",
-        "short_tail": [
-          "LaKeith Stanfield",
-          "LaKeith Stanfield news",
-          "casting",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "LaKeith Stanfield latest news October 2026",
-          "LaKeith Stanfield casting update 2026",
-          "LaKeith Stanfield news 2026-10-09",
-          "latest casting news about LaKeith Stanfield",
-          "lakeith stanfield lakeith stanfield ben mendelsohn latest update",
-          "The Hollywood Reporter LaKeith Stanfield casting",
-          "latest news about LaKeith Stanfield October 2026",
-          "LaKeith Stanfield entertainment news 2026-10-09",
-          "what happened with LaKeith Stanfield"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "LaKeith Stanfield",
-          "lakeith",
-          "stanfield",
-          "ben",
-          "mendelsohn",
-          "star",
-          "molepeople"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-09",
-          "LaKeith Stanfield 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter LaKeith Stanfield",
-          "hollywoodreporter.com LaKeith Stanfield",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "LaKeith Stanfield, Ben Mendelsohn to Star in ‘Molepeople’…",
-        "meta_description": "LaKeith Stanfield: Casting update reported by The Hollywood Reporter on 2026-10-09. See verified context, publication time and the original source via…",
-        "keywords": [
-          "LaKeith Stanfield latest news",
-          "LaKeith Stanfield",
-          "LaKeith Stanfield news",
-          "casting",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "LaKeith Stanfield latest news October 2026",
-          "LaKeith Stanfield casting update 2026",
-          "LaKeith Stanfield news 2026-10-09",
-          "latest casting news about LaKeith Stanfield",
-          "lakeith stanfield lakeith stanfield ben mendelsohn latest update",
-          "The Hollywood Reporter LaKeith Stanfield casting",
-          "latest news about LaKeith Stanfield October 2026",
-          "LaKeith Stanfield entertainment news 2026-10-09",
-          "what happened with LaKeith Stanfield",
-          "lakeith",
-          "stanfield",
-          "ben",
-          "mendelsohn",
-          "star",
-          "molepeople",
-          "October 2026",
-          "2026-10-09",
-          "LaKeith Stanfield 2026",
-          "The Hollywood Reporter LaKeith Stanfield",
-          "hollywoodreporter.com LaKeith Stanfield",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-10T16:14:49.577Z"
+        "seo_generated_at": "2026-10-10T19:29:13.776Z"
       }
     },
     {
@@ -2767,101 +2681,7 @@
           "bbc.co.uk ashe too scared cancel",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-10T16:14:49.577Z"
-      }
-    },
-    {
-      "id": "27b67e9b",
-      "title": "Israeli Americans Protest ‘NAZA’ Los Angeles Screening as Doc Releases Theatrically in U.S.",
-      "url": "https://www.hollywoodreporter.com/movies/movie-news/israeli-americans-protest-naza-los-angeles-screening-1236726709/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-10-09T22:48:31.000Z",
-      "discovered_at": "2026-10-10T01:12:11.442Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "Israeli Americans Protest",
-      "description": "Israeli Americans Protest: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/IAC_Los_Angeles_NAZA_Protest_2026-10-09_1_11630378673884714229-e1791583957250.jpg?w=1440&h=810&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/israeli-americans-protest-naza-los-angeles-screening-as-doc-releases-theatricall-27b67e/",
-      "landing_url": "https://matchapp.tv/?news=27b67e9b#latest-news",
-      "seo": {
-        "primary_keyword": "Israeli Americans Protest latest news",
-        "short_tail": [
-          "Israeli Americans Protest",
-          "Israeli Americans Protest news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "Israeli Americans Protest latest news October 2026",
-          "Israeli Americans Protest entertainment update 2026",
-          "Israeli Americans Protest news 2026-10-09",
-          "latest entertainment news about Israeli Americans Protest",
-          "israeli americans protest israeli americans protest latest update",
-          "The Hollywood Reporter Israeli Americans Protest entertainment",
-          "latest news about Israeli Americans Protest October 2026",
-          "Israeli Americans Protest entertainment news 2026-10-09",
-          "what happened with Israeli Americans Protest"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Israeli Americans Protest",
-          "israeli",
-          "americans",
-          "protest",
-          "naza",
-          "los"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-09",
-          "Israeli Americans Protest 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter Israeli Americans Protest",
-          "hollywoodreporter.com Israeli Americans Protest",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "Israeli Americans Protest ‘NAZA’ Los Angeles Screening as…",
-        "meta_description": "Israeli Americans Protest: Entertainment update reported by The Hollywood Reporter on 2026-10-09. See verified context, publication time and the original…",
-        "keywords": [
-          "Israeli Americans Protest latest news",
-          "Israeli Americans Protest",
-          "Israeli Americans Protest news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "Israeli Americans Protest latest news October 2026",
-          "Israeli Americans Protest entertainment update 2026",
-          "Israeli Americans Protest news 2026-10-09",
-          "latest entertainment news about Israeli Americans Protest",
-          "israeli americans protest israeli americans protest latest update",
-          "The Hollywood Reporter Israeli Americans Protest entertainment",
-          "latest news about Israeli Americans Protest October 2026",
-          "Israeli Americans Protest entertainment news 2026-10-09",
-          "what happened with Israeli Americans Protest",
-          "israeli",
-          "americans",
-          "protest",
-          "naza",
-          "los",
-          "October 2026",
-          "2026-10-09",
-          "Israeli Americans Protest 2026",
-          "The Hollywood Reporter Israeli Americans Protest",
-          "hollywoodreporter.com Israeli Americans Protest",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-10T16:14:49.577Z"
+        "seo_generated_at": "2026-10-10T19:29:13.776Z"
       }
     },
     {
@@ -2960,7 +2780,7 @@
           "bbc.co.uk hollywood actor luke evans",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-10T16:14:49.577Z"
+        "seo_generated_at": "2026-10-10T19:29:13.776Z"
       }
     },
     {
@@ -3054,7 +2874,7 @@
           "g1.globo.com Coletivo Pra Gira Girar",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-10T16:14:49.577Z"
+        "seo_generated_at": "2026-10-10T19:29:13.776Z"
       }
     },
     {
@@ -3152,7 +2972,7 @@
           "g1.globo.com MC PH",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-10T16:14:49.577Z"
+        "seo_generated_at": "2026-10-10T19:29:13.776Z"
       }
     },
     {
@@ -3253,7 +3073,7 @@
           "g1.globo.com ator pretty little liars",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-10T16:14:49.577Z"
+        "seo_generated_at": "2026-10-10T19:29:13.776Z"
       }
     },
     {
@@ -3347,7 +3167,7 @@
           "bbc.co.uk Crazy Rich Asians",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-10T16:14:49.577Z"
+        "seo_generated_at": "2026-10-10T19:29:13.776Z"
       }
     },
     {
@@ -3443,7 +3263,207 @@
           "bbc.co.uk Alison Hammond",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-10T16:14:49.577Z"
+        "seo_generated_at": "2026-10-10T19:29:13.776Z"
+      }
+    },
+    {
+      "id": "43ca0950",
+      "title": "Causa da morte de LuLu LoveBottom, criador de conteúdo adulto, é revelada",
+      "url": "https://g1.globo.com/pop-arte/noticia/2026/10/09/causa-da-morte-de-lulu-lovebottom-criador-de-conteudo-adulto-e-revelada.ghtml",
+      "source": "G1",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "BR",
+      "language": "pt",
+      "published_at": "2026-10-09T10:34:58.000Z",
+      "discovered_at": "2026-10-09T16:32:32.326Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "",
+      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
+      "image": "https://s2-g1.glbimg.com/Kt7A3U-bFinrN9agY7hjzcCpPZ0=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/R/g/X00DrTQxGkiaxGkxRE2Q/fotos-g1-1920-x-1080-px-2026-09-09t173933.904.png",
+      "matchapp_url": "https://matchapp.tv/news/articles/causa-da-morte-de-lulu-lovebottom-criador-de-conteudo-adulto-e-revelada-43ca09/",
+      "landing_url": "https://matchapp.tv/?news=43ca0950#latest-news",
+      "seo": {
+        "primary_keyword": "causa morte lulu lovebottom últimas notícias",
+        "short_tail": [
+          "causa morte lulu lovebottom",
+          "causa morte lulu lovebottom news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje"
+        ],
+        "long_tail": [
+          "causa morte lulu lovebottom latest news October 2026",
+          "causa morte lulu lovebottom entertainment update 2026",
+          "causa morte lulu lovebottom news 2026-10-09",
+          "latest entertainment news about causa morte lulu lovebottom",
+          "causa morte lulu lovebottom criador conteudo latest update",
+          "G1 causa morte lulu lovebottom entertainment",
+          "últimas notícias sobre causa morte lulu lovebottom outubro 2026",
+          "causa morte lulu lovebottom notícia de 2026-10-09",
+          "o que aconteceu com causa morte lulu lovebottom"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "causa",
+          "morte",
+          "lulu",
+          "lovebottom",
+          "criador",
+          "conteudo",
+          "adulto",
+          "revelada"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-09",
+          "outubro 2026",
+          "causa morte lulu lovebottom 2026"
+        ],
+        "source_keywords": [
+          "G1 causa morte lulu lovebottom",
+          "g1.globo.com causa morte lulu lovebottom",
+          "G1 entertainment news"
+        ],
+        "meta_title": "Causa da morte de LuLu LoveBottom, criador de conteúdo…",
+        "meta_description": "Notícia publicada por G1 em 2026-10-09. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
+        "keywords": [
+          "causa morte lulu lovebottom últimas notícias",
+          "causa morte lulu lovebottom",
+          "causa morte lulu lovebottom news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje",
+          "causa morte lulu lovebottom latest news October 2026",
+          "causa morte lulu lovebottom entertainment update 2026",
+          "causa morte lulu lovebottom news 2026-10-09",
+          "latest entertainment news about causa morte lulu lovebottom",
+          "causa morte lulu lovebottom criador conteudo latest update",
+          "G1 causa morte lulu lovebottom entertainment",
+          "últimas notícias sobre causa morte lulu lovebottom outubro 2026",
+          "causa morte lulu lovebottom notícia de 2026-10-09",
+          "o que aconteceu com causa morte lulu lovebottom",
+          "causa",
+          "morte",
+          "lulu",
+          "lovebottom",
+          "criador",
+          "conteudo",
+          "adulto",
+          "revelada",
+          "October 2026",
+          "2026-10-09",
+          "outubro 2026",
+          "causa morte lulu lovebottom 2026",
+          "G1 causa morte lulu lovebottom",
+          "g1.globo.com causa morte lulu lovebottom",
+          "G1 entertainment news"
+        ],
+        "seo_generated_at": "2026-10-10T19:29:13.776Z"
+      }
+    },
+    {
+      "id": "8c4ca276",
+      "title": "Video game Cyberpunk 2077 to get live-action movie adaptation",
+      "url": "https://www.bbc.co.uk/news/articles/c60e048r02lgo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GB",
+      "language": "en",
+      "published_at": "2026-10-09T10:08:56.000Z",
+      "discovered_at": "2026-10-09T16:32:32.326Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "",
+      "description": "entertainment headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/21d0/live/b8bcb880-c3c7-11f1-bc2e-018d645d8d21.png",
+      "matchapp_url": "https://matchapp.tv/news/articles/video-game-cyberpunk-2077-to-get-live-action-movie-adaptation-8c4ca2/",
+      "landing_url": "https://matchapp.tv/?news=8c4ca276#latest-news",
+      "seo": {
+        "primary_keyword": "video game cyberpunk 2077 latest news",
+        "short_tail": [
+          "video game cyberpunk 2077",
+          "video game cyberpunk 2077 news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "video game cyberpunk 2077 latest news October 2026",
+          "video game cyberpunk 2077 entertainment update 2026",
+          "video game cyberpunk 2077 news 2026-10-09",
+          "latest entertainment news about video game cyberpunk 2077",
+          "video game cyberpunk 2077 get live latest update",
+          "BBC video game cyberpunk 2077 entertainment",
+          "latest news about video game cyberpunk 2077 October 2026",
+          "video game cyberpunk 2077 entertainment news 2026-10-09",
+          "what happened with video game cyberpunk 2077"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "video",
+          "game",
+          "cyberpunk",
+          "2077",
+          "get",
+          "live",
+          "action",
+          "movie"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-09",
+          "video game cyberpunk 2077 2026"
+        ],
+        "source_keywords": [
+          "BBC video game cyberpunk 2077",
+          "bbc.co.uk video game cyberpunk 2077",
+          "BBC entertainment news"
+        ],
+        "meta_title": "Video game Cyberpunk 2077 to get live-action movie…",
+        "meta_description": "Entertainment update reported by BBC on 2026-10-09. See verified context, publication time and the original source via MatchApp Ai.",
+        "keywords": [
+          "video game cyberpunk 2077 latest news",
+          "video game cyberpunk 2077",
+          "video game cyberpunk 2077 news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "video game cyberpunk 2077 latest news October 2026",
+          "video game cyberpunk 2077 entertainment update 2026",
+          "video game cyberpunk 2077 news 2026-10-09",
+          "latest entertainment news about video game cyberpunk 2077",
+          "video game cyberpunk 2077 get live latest update",
+          "BBC video game cyberpunk 2077 entertainment",
+          "latest news about video game cyberpunk 2077 October 2026",
+          "video game cyberpunk 2077 entertainment news 2026-10-09",
+          "what happened with video game cyberpunk 2077",
+          "video",
+          "game",
+          "cyberpunk",
+          "2077",
+          "get",
+          "live",
+          "action",
+          "movie",
+          "October 2026",
+          "2026-10-09",
+          "video game cyberpunk 2077 2026",
+          "BBC video game cyberpunk 2077",
+          "bbc.co.uk video game cyberpunk 2077",
+          "BBC entertainment news"
+        ],
+        "seo_generated_at": "2026-10-10T19:29:13.776Z"
       }
     },
     {
@@ -3533,7 +3553,7 @@
           "2026-10-09",
           "October 2026"
         ],
-        "seo_generated_at": "2026-10-10T16:14:49.577Z"
+        "seo_generated_at": "2026-10-10T19:29:13.776Z"
       }
     },
     {
@@ -3623,7 +3643,7 @@
           "2026-10-08",
           "October 2026"
         ],
-        "seo_generated_at": "2026-10-10T16:14:49.577Z"
+        "seo_generated_at": "2026-10-10T19:29:13.776Z"
       }
     }
   ]
