@@ -1,0 +1,597 @@
+/* MatchApp Ai — unified luxury visual system, Oct 10 2026.
+ * Presentation only. Preserve ad slots, poster ratios, handlers, forms, billing.
+ * Kids uses its own visual language in /kids/luxe-kids-browser.css. */
+:root{
+ --ma-luxe-ink:#100a1e;--ma-luxe-glass:rgba(34,18,58,.90);
+ --ma-luxe-glass-dark:rgba(21,12,38,.96);
+ --ma-luxe-line:rgba(246,208,139,.37);
+ --ma-luxe-gold:#f2d08c;--ma-luxe-soft:#d8c5ef;
+ --ma-luxe-shadow:0 14px 34px rgba(4,1,18,.35),inset 0 1px 0 rgba(255,255,255,.065);
+}
+html:not(.kids-mode){color-scheme:dark}
+html body:not(.page-kids):not(.kids-body){
+ --premium-radius:21px;
+ -webkit-font-smoothing:antialiased;
+ text-rendering:optimizeLegibility;
+}
+html body:not(.page-kids):not(.kids-body) :is(
+ .premium-card,.match-result-card,.match-card,.pricing-card,
+ .profile-card,.settings-card,.faq-card,.info-card,.concierge-card,
+ .topic-card,.streaming-card,.feature-card,.content-card,
+ .chat-bubble-assistant,.chat-response,.page-section,.page-panel
+ ){
+ border-radius:clamp(16px,2vw,24px);
+ border-color:var(--ma-luxe-line);
+ box-shadow:var(--ma-luxe-shadow);
+}
+html body:not(.page-kids):not(.kids-body) :is(
+ input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),
+ textarea,select
+ ){
+ min-width:0;
+ border-radius:12px;
+}
+html body:not(.page-kids):not(.kids-body) :is(
+ .gold-btn,.premium-btn,.action-pill,.nav-pill,.pill,.primary-action,
+ .profile-action,.settings-action,.streaming-link
+ ){
+ border-radius:999px;
+ font-weight:700;
+ letter-spacing:.008em;
+ transition:background-color .18s ease,border-color .18s ease,
+  box-shadow .18s ease,transform .18s ease;
+}
+html body:not(.page-kids):not(.kids-body) :is(
+ button,a,input,select,textarea
+ ):focus-visible{
+ outline:2px solid #f5d28e!important;
+ outline-offset:3px!important;
+}
+@media(hover:hover){
+ html body:not(.page-kids):not(.kids-body) :is(
+  .gold-btn,.premium-btn,.action-pill,.nav-pill,.pill,.primary-action
+ ):not(:disabled):hover{
+  transform:translateY(-1px);
+  box-shadow:0 8px 22px rgba(84,38,128,.20);
+ }
+}
+html body:not(.page-kids):not(.kids-body) :is(
+ .page-shell,.main-shell,.content-shell,.profile-container,.pricing-container
+ ){
+ max-width:100%;
+}
+html body:not(.page-kids):not(.kids-body) :is(
+ .section-heading,.section-title,.guide-title,.price-title
+ ){
+ letter-spacing:-.025em;
+ text-wrap:balance;
+}
+/* Precise homepage: one organized glass card with ample breathing room. */
+html body.page-home #mh-topbox.app-header.ma-home-header{
+ display:flex!important;
+ flex-direction:column!important;
+ align-items:stretch!important;
+ position:relative;
+ isolation:isolate;
+ padding:clamp(14px,2vw,24px)!important;
+ gap:clamp(11px,1.6vw,17px)!important;
+ width:calc(100% - 16px)!important;
+ max-width:min(1320px,calc(100vw - 20px))!important;
+ margin:9px auto 13px!important;
+ border:1px solid rgba(244,202,134,.7)!important;
+ border-radius:clamp(18px,2.6vw,30px)!important;
+ background:
+ radial-gradient(ellipse at 8% 5%,rgba(166,80,230,.25),transparent 48%),
+ radial-gradient(ellipse at 96% 96%,rgba(126,47,184,.29),transparent 55%),
+ linear-gradient(138deg,rgba(53,31,83,.96),rgba(22,11,47,.97))!important;
+ box-shadow:0 15px 52px rgba(4,1,14,.45),inset 0 1px 0 rgba(255,247,220,.15),
+  0 0 22px rgba(161,93,225,.12)!important;
+ overflow:visible!important;
+}
+html body.page-home #mh-topbox.ma-home-header::before{
+ content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;
+ border-top:1px solid rgba(255,231,175,.40);z-index:-1;
+}
+html body.page-home #mh-topbox .mh-head{
+ order:0!important;display:flex!important;align-items:center!important;
+ justify-content:center!important;flex-direction:column!important;
+ width:100%!important;min-width:0;gap:3px!important;
+ padding:0!important;margin:0!important;
+}
+html body.page-home #mh-topbox #home-brand-lockup.ma-brand-stage{
+ display:flex!important;max-width:100%!important;width:auto!important;
+ justify-content:center!important;padding:0!important;margin:0 auto!important;
+}
+html body.page-home #mh-topbox .ma-brand-lockup{width:100%!important;max-width:100%!important;}
+html body.page-home #mh-topbox .ma-brand-home-link{
+ display:flex!important;align-items:center!important;justify-content:center!important;
+ flex-wrap:nowrap!important;gap:clamp(18px,3.6vw,47px)!important;
+ max-width:100%!important;min-width:0!important;
+ text-decoration:none!important;
+}
+html body.page-home #mh-topbox .ma-brand-orb-stage{
+ flex:none!important;width:clamp(52px,10vw,112px)!important;
+ height:clamp(52px,10vw,112px)!important;
+ margin:0!important;transform:none!important;
+ filter:drop-shadow(0 0 10px rgba(226,170,94,.24));
+}
+html body.page-home #mh-topbox .ma-brand-orb{max-width:100%!important;max-height:100%!important;}
+html body.page-home #mh-topbox .ma-brand-copy{
+ display:flex!important;flex-direction:row!important;flex-wrap:wrap!important;
+ align-items:baseline!important;align-content:center!important;
+ justify-content:flex-start!important;column-gap:clamp(5px,1vw,12px)!important;
+ row-gap:6px!important;min-width:0!important;width:auto!important;max-width:100%!important;
+}
+html body.page-home #mh-topbox .ma-brand-copy .ma-wordmark,
+html body.page-home #mh-topbox .ma-brand-copy .ma-word-ai{
+ position:static!important;float:none!important;transform:none!important;
+ letter-spacing:-.065em!important;
+ line-height:1.02!important;
+ margin:0!important;
+}
+html body.page-home #mh-topbox .ma-brand-copy .ma-wordmark{
+ font-size:clamp(27px,4.7vw,71px)!important;
+ white-space:nowrap!important;
+}
+html body.page-home #mh-topbox .ma-brand-copy .ma-word-ai{
+ font-size:clamp(29px,4.9vw,74px)!important;
+ white-space:nowrap!important;
+}
+html body.page-home #mh-topbox .ma-brand-copy .ma-brand-caption{
+ flex:1 0 100%!important;
+ display:flex!important;align-items:center!important;justify-content:flex-start!important;
+ flex-wrap:wrap!important;gap:8px clamp(12px,2vw,22px)!important;
+ margin:2px 0 0!important;padding:0!important;
+ text-align:start!important;
+}
+html body.page-home #mh-topbox .ma-brand-tagline{
+ display:inline-block!important;font-size:clamp(10px,1.45vw,19px)!important;
+ line-height:1.35!important;letter-spacing:-.02em!important;
+ word-spacing:normal!important;white-space:normal!important;
+ font-weight:550!important;color:#e4d2ff!important;
+ text-shadow:none!important;margin:0!important;
+}
+html body.page-home #mh-topbox .ma-brand-security{
+ display:inline-flex!important;align-items:center!important;gap:7px!important;
+ padding:0 0 0 clamp(9px,1.2vw,20px)!important;
+ border-left:1px solid rgba(230,194,245,.25)!important;
+ color:#d9cee8!important;white-space:nowrap!important;
+ font-size:clamp(9px,1.1vw,14px)!important;
+ font-weight:550!important;line-height:1.3!important;
+}
+html body.page-home #mh-topbox .ma-brand-security svg{
+ width:clamp(12px,1.5vw,19px)!important;height:clamp(13px,1.6vw,20px)!important;
+ flex:none;stroke-width:1.8;
+}
+html body.page-home #mh-topbox .mh-head>.mh-tagline{display:none!important}
+/* Existing working sound, language, notifications, sign-in and profile controls. */
+html body.page-home #mh-topbox.app-header>nav.mh-deck{
+ order:1!important;display:flex!important;flex-wrap:wrap!important;
+ align-items:center!important;justify-content:center!important;
+ gap:8px!important;width:100%!important;padding:0!important;
+ min-width:0!important;margin:0!important;
+}
+html body.page-home #mh-topbox.app-header>nav.mh-deck>*{
+ flex:0 1 auto!important;min-width:0!important;
+ min-height:38px!important;
+ margin:0!important;
+}
+html body.page-home #mh-topbox :is(
+ .sound-toggle-btn,.matchapp-notification-button,#profile-link-tab,
+ #nav-reg-btn,#nav-logout-btn,#quota-badge,.install-btn
+ ){
+ border:1px solid rgba(199,158,237,.35)!important;
+ border-radius:999px!important;
+ background:linear-gradient(145deg,rgba(75,37,109,.58),rgba(29,15,50,.78))!important;
+ box-shadow:inset 0 1px 0 rgba(255,255,255,.10),0 5px 14px rgba(5,1,13,.25)!important;
+ color:#f1e4ff!important;
+ padding:8px 13px!important;
+ transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease;
+}
+html body.page-home #mh-topbox #nav-reg-btn{
+ background:linear-gradient(130deg,#f5d994,#d7a652)!important;
+ color:#23152e!important;border-color:rgba(255,237,179,.8)!important;
+ text-transform:none!important;
+}
+html body.page-home #mh-topbox #lang-switcher-host select{
+ background:rgba(25,13,46,.72)!important;
+ border:1px solid rgba(199,158,237,.45)!important;
+ border-radius:999px!important;padding:8px 15px!important;
+ color:#f3e6ff!important;
+}
+html body.page-home #mh-topbox .install-wrap{max-width:100%!important}
+/* Functional shortcuts matching the approved mockup; no inert controls. */
+html body.page-home #mh-topbox .ma-luxe-shortcuts{
+ order:2!important;width:100%;min-width:0;
+ display:grid;grid-template-columns:repeat(6,minmax(0,1fr));
+ gap:clamp(6px,1.1vw,13px);
+ align-items:stretch;margin:2px 0 0;padding:0;
+}
+html body.page-home #mh-topbox .ma-luxe-shortcut{
+ display:flex;align-items:center;justify-content:center;
+ gap:9px;min-width:0;min-height:clamp(40px,4.9vw,56px);
+ padding:9px 10px;border-radius:999px;
+ text-align:center;text-decoration:none!important;
+ font-size:clamp(11px,1.22vw,16px);font-weight:740;line-height:1.15;
+ color:#efdcff!important;white-space:nowrap;
+ border:1px solid rgba(180,117,237,.51);
+ background:linear-gradient(143deg,rgba(88,42,129,.50),rgba(32,14,58,.86));
+ box-shadow:inset 0 1px 0 rgba(253,232,255,.11),0 5px 12px rgba(8,3,18,.28);
+ transition:transform .18s ease,border-color .18s ease,background-color .18s ease;
+}
+html body.page-home #mh-topbox .ma-luxe-shortcut svg{
+ width:clamp(15px,1.6vw,21px);height:clamp(15px,1.6vw,21px);
+ flex:none;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;
+}
+html body.page-home #mh-topbox .ma-luxe-shortcut[aria-current="page"]{
+ border-color:#ffe6aa;color:#ffe2a3!important;
+ background:linear-gradient(135deg,rgba(119,74,46,.72),rgba(64,29,62,.78));
+ box-shadow:0 0 0 1px rgba(250,202,107,.16),0 3px 17px rgba(206,132,55,.14),inset 0 1px 0 rgba(255,235,174,.18);
+}
+@media(hover:hover){
+ html body.page-home #mh-topbox .ma-luxe-shortcut:hover{
+  transform:translateY(-2px);border-color:rgba(249,211,156,.82);
+  box-shadow:0 7px 18px rgba(122,49,198,.25);
+ }
+}
+html.matchapp-ai-android body.page-home #mh-topbox .ma-browser-kids,
+html.matchapp-android body.page-home #mh-topbox .ma-browser-kids{
+ display:none!important
+}
+/* Medium screens show three easy-to-tap shortcuts per row; never squash names. */
+@media(max-width:900px){
+ html body.page-home #mh-topbox .ma-luxe-shortcuts{grid-template-columns:repeat(3,minmax(0,1fr))}
+ html body.page-home #mh-topbox .ma-brand-home-link{gap:clamp(15px,3vw,24px)!important}
+ html body.page-home #mh-topbox .ma-brand-copy .ma-wordmark{font-size:clamp(29px,5vw,45px)!important}
+ html body.page-home #mh-topbox .ma-brand-copy .ma-word-ai{font-size:clamp(31px,5.15vw,48px)!important}
+ html body.page-home #mh-topbox .ma-brand-orb-stage{width:clamp(55px,11vw,86px)!important;height:clamp(55px,11vw,86px)!important}
+}
+@media(max-width:560px){
+ html body.page-home #mh-topbox.app-header.ma-home-header{
+  padding:13px 13px 15px!important;gap:11px!important;
+  margin:7px auto 10px!important;
+ }
+ html body.page-home #mh-topbox .ma-brand-home-link{
+  justify-content:flex-start!important;gap:clamp(16px,4vw,24px)!important;
+  width:100%!important;
+ }
+ html body.page-home #mh-topbox .ma-brand-copy .ma-wordmark{
+  font-size:clamp(24px,6.3vw,33px)!important;letter-spacing:-.065em!important;
+ }
+ html body.page-home #mh-topbox .ma-brand-copy .ma-word-ai{
+  font-size:clamp(25px,6.5vw,34px)!important;
+ }
+ html body.page-home #mh-topbox .ma-brand-orb-stage{
+  width:clamp(57px,16vw,79px)!important;height:clamp(57px,16vw,79px)!important;
+ }
+ html body.page-home #mh-topbox .ma-brand-copy{column-gap:5px!important;row-gap:4px!important}
+ html body.page-home #mh-topbox .ma-brand-copy .ma-brand-caption{
+  gap:5px 9px!important;margin-top:2px!important;
+ }
+ html body.page-home #mh-topbox .ma-brand-tagline{
+  font-size:clamp(9px,2.8vw,12px)!important;line-height:1.3!important;
+ }
+ html body.page-home #mh-topbox .ma-brand-security{
+  padding-left:8px!important;font-size:9px!important;
+ }
+ html body.page-home #mh-topbox.app-header>nav.mh-deck{
+  justify-content:center!important;gap:7px!important;
+ }
+ html body.page-home #mh-topbox.app-header>nav.mh-deck>*{
+  min-height:35px!important;
+ }
+ html body.page-home #mh-topbox #nav-reg-btn{flex:1 1 38%!important;max-width:none!important}
+ html body.page-home #mh-topbox .ma-luxe-shortcuts{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
+ html body.page-home #mh-topbox .ma-luxe-shortcut{min-height:41px;padding:8px 5px;gap:6px;font-size:11px;letter-spacing:-.015em}
+ html body.page-home #mh-topbox .ma-luxe-shortcut svg{width:16px;height:16px}
+}
+@media(max-width:355px){
+ html body.page-home #mh-topbox .ma-brand-orb-stage{width:50px!important;height:50px!important}
+ html body.page-home #mh-topbox .ma-brand-copy .ma-wordmark{font-size:23px!important}
+ html body.page-home #mh-topbox .ma-brand-copy .ma-word-ai{font-size:24px!important}
+ html body.page-home #mh-topbox .ma-luxe-shortcut{font-size:10px;gap:3px}
+}
+/* Page families: safe surface harmonization without rewriting poster/cards geometry. */
+html body:not(.page-home):not(.page-kids):not(.kids-body) :is(
+ header.app-header,.page-header,.profile-header,.pricing-header
+ ){
+ border-radius:clamp(15px,2vw,25px);
+ border-color:rgba(234,196,135,.40);
+ background:linear-gradient(135deg,rgba(53,30,82,.94),rgba(20,12,40,.94));
+ box-shadow:var(--ma-luxe-shadow);
+}
+html body:not(.page-kids):not(.kids-body) :is(
+ .page-shell-card,.pricing-plan,.membership-card,.profile-panel,
+ .settings-panel,.discovery-panel,.match-together-card,.guide-card,
+ .section-panel,.answer-card,.modal-content
+ ){
+ border-radius:clamp(16px,2vw,24px);
+ border-color:rgba(236,192,131,.34);
+ background-image:linear-gradient(148deg,rgba(102,53,145,.11),transparent 50%);
+}
+html body:not(.page-kids):not(.kids-body) :is(
+ .pricing-plan .gold-btn,.plan-cta,.profile-save,.settings-save,
+ .match-cta,.chat-send
+ ){
+ min-height:40px;
+ border-radius:999px;
+}
+html body:not(.page-kids):not(.kids-body) :is(
+ .premium-card,.pricing-plan,.profile-panel,.guide-card,.section-panel
+ ) :is(h2,h3,strong){
+ text-wrap:balance;
+}
+@media(prefers-reduced-motion:reduce){
+ html body:not(.page-kids):not(.kids-body) :is(
+  .ma-luxe-shortcut,.premium-btn,.gold-btn,.pill,.action-pill
+ ){transition:none!important;animation:none!important}
+}
+
+/* The original home-script inserts an extra Kids launcher into the utility deck.
+   Our dedicated browser navigation now owns this entry; keep one visible Kids button. */
+html body.page-home #mh-topbox .mh-deck #matchapp-kids-entry{
+ display:none!important;
+}
+
+
+/* Final proportion pass against approved premium-header visual.
+   Existing JS also decorates header navs, so these rules are intentionally
+   more specific than its generic header-actions rules. */
+html body.page-home #mh-topbox.app-header.ma-home-header .ma-luxe-shortcuts.ma-header-actions,
+html body.page-home #mh-topbox.app-header.ma-home-header .ma-luxe-shortcuts{
+ display:grid!important;
+ width:100%!important;max-width:100%!important;min-width:0!important;
+ flex:none!important;
+ justify-content:stretch!important;justify-items:stretch!important;
+ grid-template-columns:repeat(6,minmax(0,1fr))!important;
+ gap:clamp(7px,1vw,12px)!important;
+ margin:2px 0 0!important;padding:0!important;
+}
+html body.page-home #mh-topbox.app-header.ma-home-header .ma-luxe-shortcuts .ma-luxe-shortcut{
+ min-width:0!important;width:100%!important;max-width:none!important;
+ box-sizing:border-box!important;justify-content:center!important;
+}
+html body.page-home #mh-topbox .ma-brand-orb-stage .ma-brand-orb{
+ width:100%!important;height:100%!important;
+ object-fit:contain!important;max-width:100%!important;
+ transform:none!important;
+}
+@media(min-width:901px){
+ html body.page-home #mh-topbox.app-header .mh-head{
+  align-items:stretch!important;justify-content:flex-start!important;
+ }
+ html body.page-home #mh-topbox #home-brand-lockup.ma-brand-stage{
+  width:100%!important;max-width:100%!important;justify-content:flex-start!important;
+ }
+ html body.page-home #mh-topbox .ma-brand-home-link{
+  width:100%!important;justify-content:flex-start!important;
+  padding-left:clamp(18px,2vw,45px)!important;
+  gap:clamp(28px,3.2vw,48px)!important;
+ }
+ html body.page-home #mh-topbox .ma-brand-orb-stage{
+  width:clamp(85px,9vw,124px)!important;height:clamp(85px,9vw,124px)!important;
+ }
+ html body.page-home #mh-topbox .ma-brand-copy{
+  width:calc(100% - 165px)!important;max-width:none!important;
+ }
+ html body.page-home #mh-topbox .ma-brand-copy .ma-wordmark{
+  font-size:clamp(48px,5.1vw,73px)!important;
+ }
+ html body.page-home #mh-topbox .ma-brand-copy .ma-word-ai{
+  font-size:clamp(50px,5.25vw,76px)!important;
+ }
+ html body.page-home #mh-topbox .ma-brand-copy .ma-brand-caption{
+  width:100%!important;gap:8px 20px!important;justify-content:flex-start!important;
+ }
+ html body.page-home #mh-topbox.app-header>nav.mh-deck{
+  justify-content:flex-end!important;
+ }
+}
+@media(max-width:900px){
+ html body.page-home #mh-topbox.app-header.ma-home-header .ma-luxe-shortcuts{
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+ }
+}
+@media(max-width:560px){
+ html body.page-home #mh-topbox .ma-brand-orb-stage{
+  width:clamp(64px,16vw,82px)!important;
+  height:clamp(64px,16vw,82px)!important;
+ }
+ html body.page-home #mh-topbox .ma-brand-home-link{
+  gap:clamp(17px,4vw,25px)!important;
+ }
+ html body.page-home #mh-topbox .ma-brand-copy .ma-wordmark{
+  font-size:clamp(26px,6.6vw,35px)!important;
+ }
+ html body.page-home #mh-topbox .ma-brand-copy .ma-word-ai{
+  font-size:clamp(28px,6.8vw,37px)!important;
+ }
+ html body.page-home #mh-topbox .ma-brand-copy .ma-brand-caption{
+  justify-content:flex-start!important;align-items:center!important;
+ }
+ html body.page-home #mh-topbox .ma-brand-tagline{
+  max-width:100%;font-size:clamp(10px,2.75vw,12px)!important;
+ }
+ html body.page-home #mh-topbox .ma-brand-security{
+  flex:none!important;display:inline-flex!important;
+  max-width:100%;white-space:nowrap!important;
+ }
+ html body.page-home #mh-topbox .ma-luxe-shortcuts .ma-luxe-shortcut{
+  min-height:43px!important;padding:8px 4px!important;
+ }
+}
+
+/* Mobile hero: fill the available row instead of centering a tiny lockup. */
+@media(max-width:560px){
+ html body.page-home #mh-topbox #home-brand-lockup.ma-brand-stage{
+  width:100%!important;max-width:100%!important;
+  justify-content:flex-start!important;padding-left:4px!important;
+ }
+ html body.page-home #mh-topbox .ma-brand-lockup{width:100%!important}
+ html body.page-home #mh-topbox .ma-brand-home-link{
+  width:100%!important;justify-content:flex-start!important;
+  gap:clamp(16px,4vw,22px)!important;
+ }
+ html body.page-home #mh-topbox .ma-brand-orb-stage{
+  width:clamp(70px,20vw,85px)!important;
+  height:clamp(70px,20vw,85px)!important;
+ }
+ html body.page-home #mh-topbox .ma-brand-copy{
+  width:calc(100% - 100px)!important;max-width:none!important;
+ }
+}
+@media(max-width:355px){
+ html body.page-home #mh-topbox .ma-brand-orb-stage{
+  width:63px!important;height:63px!important;
+ }
+ html body.page-home #mh-topbox .ma-brand-copy{
+  width:calc(100% - 85px)!important;
+ }
+}
+
+/* Premium components on every adult flow: headings, cards, fields, results,
+   posters, controls and dialogs. No poster crop, dimensions, data or handlers. */
+html body:not(.page-kids):not(.kids-body){
+ --ma-premium-surface:linear-gradient(147deg,rgba(64,35,99,.93) 0%,rgba(25,14,45,.965) 100%);
+ --ma-premium-surface-subtle:linear-gradient(150deg,rgba(70,39,103,.72),rgba(24,14,43,.86));
+ --ma-premium-frame:rgba(235,193,125,.46);
+ --ma-premium-frame-soft:rgba(201,155,238,.35);
+ --ma-premium-heading:#fff5ec;
+ --ma-premium-body:#e5d9f0;
+ --ma-premium-muted:#bfb0d2;
+}
+/* Contextual surface layer — strictly scoped to known app containers. */
+html body:not(.page-kids):not(.kids-body) :is(
+ .premium-card,.portfolio-panel,.pf-card,.tg-card,.friend-panel,
+ .ai-usage-card,.ai-sidebar-fold,.nfm-box,.passkey-box,
+ .awareness-card,.spotlight-card,.auth-form-section,
+ .credits-section,.price-card,.plan-card,.modal-content
+ ){
+ border:1px solid var(--ma-premium-frame)!important;
+ border-radius:clamp(17px,2.25vw,25px)!important;
+ background-image:var(--ma-premium-surface)!important;
+ box-shadow:0 9px 30px rgba(3,1,15,.34),inset 0 1px 0 rgba(255,247,234,.075)!important;
+}
+html body:not(.page-kids):not(.kids-body) :is(
+ .premium-card,.portfolio-panel,.pf-card,.tg-card,.friend-panel,
+ .ai-usage-card,.ai-sidebar-fold,.nfm-box,.passkey-box
+ ) :is(h1,h2,h3,h4){
+ color:var(--ma-premium-heading);
+ letter-spacing:-.025em;
+ text-shadow:0 1px 9px rgba(27,10,40,.26);
+ text-wrap:balance;
+}
+html body:not(.page-kids):not(.kids-body) :is(
+ .premium-card,.portfolio-panel,.pf-card,.tg-card,.friend-panel,
+ .ai-usage-card,.ai-sidebar-fold,.nfm-box,.passkey-box
+ ) :is(p,small,.muted,.subtext,.tg-sub,.pf-card-sub){
+ line-height:1.55;
+}
+/* Form groups, both login/profile and entertainment selection. */
+html body:not(.page-kids):not(.kids-body) :is(
+ .tg-field,.phone-auth-field,.auth-password-field,
+ .setting-control,.input-group,.form-group,.field-wrap,.filter-control
+ ){
+ min-width:0;border-radius:clamp(12px,1.4vw,18px);
+}
+html body:not(.page-kids):not(.kids-body) :is(
+ .tg-field,.phone-auth-field,.auth-password-field,.setting-control,
+ .input-group,.form-group,.filter-control
+ ) :is(input:not([type=checkbox]):not([type=radio]):not([type=range]),select,textarea){
+ border:1px solid var(--ma-premium-frame-soft);
+ border-radius:clamp(12px,1.4vw,17px);
+ background:linear-gradient(140deg,rgba(19,12,39,.91),rgba(41,21,64,.88));
+ color:#f7f1ff;
+ box-shadow:inset 0 1px 0 rgba(255,255,255,.055);
+}
+/* Conversational input and result treatments, retaining existing heights. */
+html body.ai-chat-page :is(.composer,.newsearch-row){
+ border-radius:clamp(14px,2vw,22px);
+}
+html body.ai-chat-page :is(.composer textarea,.composer input,#discover-new-input){
+ border:1px solid rgba(224,192,139,.5);
+ border-radius:15px;
+ background:rgba(20,11,37,.93);
+ color:#f9f1ff;
+ box-shadow:inset 0 1px 0 rgba(255,255,255,.07);
+}
+html body.ai-chat-page :is(.chat-message,.assistant-message,.ai-answer,.chat-bubble,.chat-response){
+ border-radius:clamp(14px,1.8vw,22px);
+}
+html body.ai-chat-page :is(.chat-message.assistant,.assistant-message,.chat-response){
+ border-color:rgba(224,192,139,.34);
+ box-shadow:0 5px 18px rgba(7,1,19,.22);
+}
+html body:not(.page-kids):not(.kids-body) :is(
+ .gold-btn,.tg-btn,.social-btn,.home-btn,.secondary-btn,
+ .icon-btn,.composer-send,.ma-ask-again,.passkey-button,
+ .rematch-btn,.nfm-btn,.nfm-btn-primary,.auth-link-btn,
+ .trailer-yt-btn,.tg-send-btn,.tg-icon-btn,.chrome-btn
+ ){
+ border-radius:999px!important;
+ font-weight:720!important;
+ letter-spacing:.005em;
+ transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;
+}
+html body:not(.page-kids):not(.kids-body) :is(
+ .tg-btn,.secondary-btn,.icon-btn,.ma-ask-again,.social-btn,.home-btn,
+ .passkey-button,.tg-icon-btn,.auth-link-btn
+ ):not(:disabled){
+ border:1px solid rgba(196,149,232,.38);
+ background-image:linear-gradient(142deg,rgba(77,42,113,.63),rgba(29,16,51,.87));
+ box-shadow:inset 0 1px 0 rgba(255,255,255,.095),0 4px 13px rgba(5,1,14,.20);
+}
+html body:not(.page-kids):not(.kids-body) :is(
+ .tg-btn-gold,.nfm-btn-primary,.gold-btn,.composer-send
+ ):not(:disabled){
+ border:1px solid rgba(250,227,164,.50);
+ box-shadow:inset 0 1px 0 rgba(255,252,225,.19),0 5px 16px rgba(103,60,25,.22);
+}
+html body:not(.page-kids):not(.kids-body) :is(
+ .modal-overlay,.auth-modal,.dialog-backdrop
+ ) :is(.modal-content,.auth-card,.dialog-panel){
+ border-radius:clamp(18px,2.5vw,27px);
+ border:1px solid var(--ma-premium-frame);
+ box-shadow:0 23px 72px rgba(5,0,18,.55),inset 0 1px 0 rgba(255,245,232,.1);
+}
+html body:not(.page-kids):not(.kids-body) :is(
+ .poster-stage,.res-poster-col,.spotlight-poster,.tg-result-poster,
+ .event-poster-link,.poster-frame,.poster-wrap,.streaming-poster
+ ){
+ border-radius:clamp(13px,1.65vw,20px);
+ border-color:rgba(240,201,126,.45);
+ box-shadow:0 8px 26px rgba(3,1,13,.34),0 0 0 1px rgba(219,167,92,.1);
+}
+/* Poster art NEVER gets crop/resize rules: only change its surrounding frame. */
+html body:not(.page-kids):not(.kids-body) :is(
+ .premium-card,.tg-card,.friend-panel,.pricing-plan
+ ) :is(a,button):focus-visible{
+ outline:2px solid #ffe19f!important;
+ outline-offset:3px!important;
+}
+/* Title identity and small metadata — keep legible and calm. */
+html body:not(.page-kids):not(.kids-body) :is(
+ .premium-card,.tg-card,.friend-panel,.portfolio-panel,
+ .ai-usage-card,.nfm-box
+ ) :is(.meta,.metadata,.eyebrow,.kicker,.badge-label){
+ font-size:clamp(10px,.95vw,12px);
+ letter-spacing:.02em;
+}
+/* Improve readability inside narrow app/webview columns. */
+@media(max-width:560px){
+ html body:not(.page-kids):not(.kids-body) :is(
+  .premium-card,.tg-card,.friend-panel,.portfolio-panel,.modal-content
+ ){
+  max-width:100%;
+  min-width:0;
+ }
+ html body:not(.page-kids):not(.kids-body) :is(
+  .tg-btn,.gold-btn,.composer-send,.secondary-btn,.passkey-button
+ ){max-width:100%}
+}
+@media(prefers-reduced-motion:reduce){
+ html body:not(.page-kids):not(.kids-body) :is(
+  .tg-btn,.gold-btn,.social-btn,.home-btn,.secondary-btn,.icon-btn,
+  .composer-send,.ma-ask-again,.passkey-button,.rematch-btn,.nfm-btn
+ ){transition:none!important}
+}
