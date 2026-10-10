@@ -12,6 +12,7 @@ test('Jonas never speaks in female-only or unnamed voice configurations',()=>{
  assert.equal(choose([voice('Female Male'),voice('Jenny Female')],'en-US'),null);
  assert.equal(choose([], 'en-US'),null);
  assert.equal(choose([voice('Daniel','fr-FR')],'en-US'),null);
+ assert.equal(choose([{name:'Daniel',lang:'en-US',localService:false}],'en-US'),null,'network voice must not trigger default fallback');
  assert.equal(choose([voice('Daniel'),voice('Samantha')],'en-US').name,'Daniel');
  assert.equal(choose([voice('Google UK English Male','en-GB')],'en-US').name,'Google UK English Male');
 });
