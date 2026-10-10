@@ -177,6 +177,7 @@ class MainActivity : AppCompatActivity() {
         web.addJavascriptInterface(NativeVoiceBridge(), "MatchAppNativeVoice")
         web.addJavascriptInterface(NativeStartupBridge(), "MatchAppNativeStartup")
         web.addJavascriptInterface(NativeExperienceBridge(), "MatchAppNativeExperience")
+        web.addJavascriptInterface(NativeAuthBridge(), "MatchAppNativeAuth")
         web.setDownloadListener { url, _, contentDisposition, mime, _ ->
             val name = URLUtil.guessFileName(url, contentDisposition, mime)
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
@@ -760,6 +761,40 @@ class MainActivity : AppCompatActivity() {
                 val current = runCatching { Uri.parse(web.url.orEmpty()) }.getOrNull()
                 if (current != null && isMatchAppHost(current.host.orEmpty())) {
                     startupPrefs.edit().putBoolean(PREF_REGISTERED, true).apply()
+                }
+            }
+        }
+    }
+
+    /**
+     * Open Google OAuth only in the OS browser/account chooser.
+     * The callback stays on the verified MatchApp HTTPS App Link and returns to
+     * this same WebView, preserving the PKCE verifier and the local auth session.
+     */
+    private inner class NativeAuthBridge {
+        @JavascriptInterface
+        fun openOAuth(url: String?) {
+            runOnUiThread {
+                val source = runCatching { Uri.parse(web.url.orEmpty()) }.getOrNull()
+                if (source?.scheme != "https" || !isMatchAppHost(source.host.orEmpty()) ||
+                    isKidsUri(source) || url.isNullOrBlank() || url.length > 8192) return@runOnUiThread
+                val target = runCatching { Uri.parse(url) }.getOrNull() ?: return@runOnUiThread
+                if (target.scheme != "https" ||
+                    target.host != "zkymvqrmbabngsqblyye.supabase.co" ||
+                    target.path != "/auth/v1/authorize" ||
+                    target.getQueryParameter("provider") != "google") return@runOnUiThread
+                val redirect = runCatching {
+                    Uri.parse(target.getQueryParameter("redirect_to").orEmpty())
+                }.getOrNull()
+                if (redirect?.scheme != "https" ||
+                    !isMatchAppHost(redirect.host.orEmpty()) ||
+                    redirect.path != "/index.html") return@runOnUiThread
+                try {
+                    startActivity(Intent(Intent.ACTION_VIEW, target).apply {
+                        addCategory(Intent.CATEGORY_BROWSABLE)
+                    })
+                } catch (_: ActivityNotFoundException) {
+                    Toast.makeText(this@MainActivity, "Install or enable a browser to continue with Google.", Toast.LENGTH_LONG).show()
                 }
             }
         }

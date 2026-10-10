@@ -54,6 +54,22 @@ function setStatus(text,state='info'){
   node.dataset.state=state;
   node.hidden=!text;
 }
+function friendlySmsError(error, step) {
+  const raw=String(error?.message||'');
+  const code=String(error?.code||'').toLowerCase();
+  const s=(raw+' '+code).toLowerCase();
+  const pt=(window.MATCH_LANG||document.documentElement.lang||'').toLowerCase().startsWith('pt');
+  const es=(window.MATCH_LANG||document.documentElement.lang||'').toLowerCase().startsWith('es');
+  if (/rate limit|too many|over_request|over_email/.test(s))
+    return pt?'Muitas tentativas. Aguarde antes de solicitar outro código.':es?'Demasiados intentos. Espera antes de pedir otro código.':'Too many attempts. Wait before requesting another code.';
+  if (/invalid|expired|otp_expired|token/.test(s) && step==='verify')
+    return pt?'Código inválido ou expirado. Confira o SMS ou solicite outro código.':es?'Código no válido o caducado. Revisa el SMS o pide otro código.':'Invalid or expired code. Check the SMS or request a new code.';
+  if (/twilio|provider|sms|phone|delivery|sending|unsupported|configured/.test(s))
+    return pt?'Não foi possível enviar SMS agora. Confira o número com DDI e tente mais tarde ou entre com Google/e-mail.':es?'No se pudo enviar SMS. Comprueba el prefijo internacional o entra con Google/correo.':'SMS could not be delivered. Check the country code or sign in with Google/email and try again later.';
+  if (/fetch|network|failed to connect|offline/.test(s))
+    return pt?'Falha de conexão. Confira sua internet e tente novamente.':es?'Error de conexión. Comprueba internet e inténtalo de nuevo.':'Connection failed. Check your internet and retry.';
+  return raw|| (step==='verify'?'Code verification failed.':'Could not send the SMS code.');
+}
 function normalizePhone(value){
   let v=String(value||'').trim().replace(/[\s().-]/g,'');
   if(v.startsWith('00'))v='+'+v.slice(2);
@@ -141,7 +157,7 @@ async function sendCode(){
     if(code){code.value='';setTimeout(()=>code.focus(),40);}
     startCountdown();
   }catch(error){
-    setStatus(error?.message||'Could not send the SMS code.','error');
+    setStatus(friendlySmsError(error,'send'),'error');
   }finally{
     if(btn)btn.disabled=false;
   }
@@ -177,7 +193,7 @@ async function verifyCode(){
     // The Profile Hub validates the same server session before opening fields.
     window.location.assign('/profile/profile.html?welcome=phone');
   }catch(error){
-    setStatus(error?.message||'That code could not be verified.','error');
+    setStatus(friendlySmsError(error,'verify'),'error');
   }finally{
     if(btn)btn.disabled=false;
   }

@@ -10,7 +10,7 @@ const SUPABASE_URL = 'https://zkymvqrmbabngsqblyye.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpreW12cXJtYmFibmdzcWJseXllIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODY4MDUyNDIsImV4cCI6MjEwMjM4MTI0Mn0._yEVFMfwVU6GBqQ8m3ljfOgA0HSLEDiKMOfYae6ZD8Q';
 
 let supabaseClient = null;
-try { if (window.supabase) supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {auth:{experimental:{passkey:true}}}); } catch (e) {}
+try { if (window.supabase) supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {auth:{experimental:{passkey:true},flowType:(window.MatchAppNativeAuth && typeof window.MatchAppNativeAuth.openOAuth==='function')?'pkce':'implicit'}}); } catch (e) {}
 window.supabaseClient = supabaseClient;
 
 let globalMatchTitle = ""; let globalMatchPoster = ""; let globalPlatform = ""; let isUserLoggedIn = false; window.isUserLoggedIn = false;
@@ -2285,16 +2285,40 @@ window.handleEmailLogin = async function() {
 // existed in auth.js, but that file isn't loaded by index.html at all anymore.
 async function loginWithOAuthProvider(provider, label) {
     const msgEl = document.getElementById('auth-message');
+    const showError = (reason) => {
+        if (!msgEl) return;
+        msgEl.style.display = 'block';
+        msgEl.style.color = '#ffb9c1';
+        msgEl.style.background = 'rgba(220,66,91,.12)';
+        msgEl.innerText = label + ': ' + reason;
+    };
     if (!supabaseClient) {
-        if (msgEl) { msgEl.style.display = 'block'; msgEl.style.color = '#ff5252'; msgEl.style.background = 'rgba(255,0,0,0.1)'; msgEl.innerText = "Database connection offline."; }
+        showError('Sign-in is temporarily unavailable. Please check your connection.');
         return;
     }
-    const { error } = await supabaseClient.auth.signInWithOAuth({
-        provider,
-        options: { redirectTo: window.location.origin + '/index.html' }
-    });
-    if (error && msgEl) {
-        msgEl.style.display = 'block'; msgEl.style.color = '#ff5252'; msgEl.style.background = 'rgba(255,0,0,0.1)'; msgEl.innerText = label + " Login Error: " + error.message;
+    // Google blocks embedded WebView OAuth. Installed Android uses the system
+    // account chooser in a trusted browser and returns through verified App Links.
+    // PKCE verifier remains in the app WebView's first-party Supabase auth storage.
+    const nativeGoogle = provider === 'google' &&
+        typeof window.MatchAppNativeAuth?.openOAuth === 'function';
+    try {
+        const { data, error } = await supabaseClient.auth.signInWithOAuth({
+            provider,
+            options: {
+                redirectTo: window.location.origin + '/index.html',
+                queryParams: provider === 'google' ? {prompt:'select_account'} : {},
+                ...(nativeGoogle ? {skipBrowserRedirect:true} : {})
+            }
+        });
+        if (error) throw error;
+        if (nativeGoogle) {
+            if (!data?.url || !/^https:\/\/zkymvqrmbabngsqblyye\.supabase\.co\/auth\/v1\/authorize\?/.test(data.url)) {
+                throw new Error('Could not create a secure Google account selection session.');
+            }
+            window.MatchAppNativeAuth.openOAuth(data.url);
+        }
+    } catch (error) {
+        showError(error?.message || 'Could not start Google sign-in. Try again.');
     }
 }
 window.loginWithGoogle = () => loginWithOAuthProvider('google','Google');

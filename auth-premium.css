@@ -1,0 +1,36 @@
+/* MatchApp Ai authenticated entry, visually aligned with the premium Home hero.
+   ONLY the sign-in dialog is affected; no changes to checkout, poster cards, Kids or ads. */
+#main-auth-modal{box-sizing:border-box;padding:clamp(10px,3vw,25px);background:rgba(7,5,15,.82)!important;backdrop-filter:blur(22px)!important}
+#main-auth-modal .premium-card{box-sizing:border-box;width:min(100%,460px)!important;max-width:460px!important;max-height:calc(100dvh - 30px);overflow-y:auto;overscroll-behavior:contain;margin:0!important;padding:clamp(20px,4vw,32px)!important;border:1px solid rgba(237,201,105,.58)!important;border-radius:28px!important;background:radial-gradient(circle at 50% -10%,rgba(108,65,180,.29),transparent 57%),linear-gradient(155deg,#211434 0%,#110d21 65%,#0b0917 100%)!important;box-shadow:0 26px 75px rgba(0,0,0,.60),inset 0 1px 0 rgba(255,240,194,.12)!important;color:#f7f2ff}
+#main-auth-modal .auth-brand{display:flex!important;align-items:center;justify-content:center;gap:13px;margin:0 auto 16px;max-width:100%;min-height:54px}
+#main-auth-modal .auth-brand-orb{width:48px;height:48px;object-fit:contain;flex:none;filter:drop-shadow(0 0 15px rgba(229,193,88,.2))}
+#main-auth-modal .auth-brand-word{font-family:Outfit,Inter,sans-serif;font-size:clamp(21px,5vw,26px);font-weight:800;letter-spacing:-.04em;white-space:nowrap}
+#main-auth-modal .auth-brand-word b{color:#edc969;font-weight:800}
+#main-auth-modal .auth-brand-tv{display:none!important}
+#main-auth-modal h3[data-i18n="auth.unlockTitle"]{font-family:Outfit,Inter,sans-serif;font-size:17px!important;line-height:1.3;letter-spacing:.02em;margin:0 32px 19px!important;text-transform:none!important;color:#f1d68f!important}
+#main-auth-modal .auth-close{position:absolute;right:14px;top:13px;border:1px solid rgba(241,212,138,.3);border-radius:50%;width:35px;height:35px;display:grid;place-items:center;background:#271b37;color:#f6e7c6;z-index:4;font-size:24px;line-height:1}
+#main-auth-modal .google-signin-btn,#main-auth-modal .phone-auth-entry{box-sizing:border-box;width:100%;min-height:48px;display:flex;justify-content:center;align-items:center;gap:12px;padding:11px 15px;border-radius:999px!important;font-family:Outfit,Inter,sans-serif;font-size:13px;font-weight:750;letter-spacing:.01em;transition:border-color .2s,box-shadow .2s,transform .2s}
+#main-auth-modal .google-signin-btn{background:linear-gradient(110deg,#f5e7c8,#edc969)!important;color:#23152e!important;border:1px solid #ffedb4!important;box-shadow:0 9px 25px rgba(224,179,82,.20)}
+#main-auth-modal .google-signin-btn:hover{box-shadow:0 0 20px rgba(229,193,88,.38)}
+#main-auth-modal .google-signin-btn svg{width:19px;height:19px;flex:none}
+#main-auth-modal .phone-auth-entry{margin:11px 0 0!important;background:rgba(100,74,147,.21)!important;color:#f3e7ff!important;border:1px solid rgba(204,182,247,.37)!important}
+#main-auth-modal .phone-auth-entry svg{width:18px;height:18px;flex:none}
+#main-auth-modal [hidden]{display:none!important}
+#main-auth-modal .phone-auth-panel{margin-top:11px;padding:15px;border-radius:20px;background:rgba(8,6,18,.58);border:1px solid rgba(229,193,88,.22)}
+#main-auth-modal #phone-auth-title{font:750 16px/1.35 Outfit,Inter,sans-serif;margin:0 0 8px;color:#f8df9d}
+#main-auth-modal #phone-auth-help,#main-auth-modal #phone-auth-code-help,#main-auth-modal .auth-hint{font-size:12px;line-height:1.55;color:#c4b7d7}
+#main-auth-modal .phone-auth-field,#main-auth-modal input[type=email],#main-auth-modal input[type=password],#main-auth-modal input[type=text],#main-auth-modal input[type=tel]{box-sizing:border-box;max-width:100%;background:rgba(7,6,19,.84)!important;color:#fff!important;border:1px solid rgba(205,184,242,.36)!important;border-radius:14px!important;min-height:45px;font-size:14px;padding:11px 14px;outline-offset:2px}
+#main-auth-modal .phone-auth-field{display:block;width:100%;margin:10px 0}
+#main-auth-modal .phone-auth-field:focus,#main-auth-modal input:focus{border-color:#edc969!important;box-shadow:0 0 0 3px rgba(229,193,88,.12)}
+#main-auth-modal .phone-auth-action,#main-auth-modal .phone-auth-secondary{box-sizing:border-box;width:100%;min-height:43px;border-radius:999px!important;font:750 13px Outfit,Inter,sans-serif;margin-top:8px}
+#main-auth-modal .phone-auth-action{color:#22132a!important;background:linear-gradient(110deg,#f5df9b,#dcb364)!important;border:0}
+#main-auth-modal .phone-auth-secondary{background:transparent!important;color:#ead7fa!important;border:1px solid rgba(200,178,238,.31)}
+#main-auth-modal .auth-divider{margin:16px 0;color:#c5b8d4}
+#main-auth-modal .auth-tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:5px;border-radius:999px;background:rgba(10,7,25,.72);border:1px solid rgba(227,199,127,.2);margin-top:13px!important}
+#main-auth-modal .auth-tab{min-width:0;text-align:center;padding:11px 9px!important;border-radius:999px!important;color:#cabedd}
+#main-auth-modal .auth-tab.active{background:rgba(237,201,105,.18)!important;color:#f4dc99!important}
+#main-auth-modal .auth-form-section input{box-sizing:border-box;max-width:100%}
+#main-auth-modal .gold-btn,#main-auth-modal .passkey-button{border-radius:999px!important;min-height:44px;font-weight:750}
+#main-auth-modal #auth-message,#main-auth-modal .phone-auth-status{font-size:12px!important;line-height:1.5;overflow-wrap:anywhere}
+@media(max-width:540px){#main-auth-modal{padding:10px}#main-auth-modal .premium-card{padding:17px!important;max-height:calc(100dvh - 20px)}#main-auth-modal .auth-brand{margin-bottom:11px}#main-auth-modal .auth-brand-orb{width:43px;height:43px}#main-auth-modal h3[data-i18n="auth.unlockTitle"]{font-size:16px!important}}
+@media(prefers-reduced-motion:reduce){#main-auth-modal *{transition:none!important}}
