@@ -1,6 +1,6 @@
 'use strict';
 const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs');
-const {parseFeed,parseViewCount,schema,confirmExistingRelease,seoForRelease,releaseTitle}=require('../tools/refresh-music-videos.js');
+const {parseFeed,parseViewCount,parseDurationSeconds,isFullMusicVideoDuration,schema,confirmExistingRelease,seoForRelease,releaseTitle}=require('../tools/refresh-music-videos.js');
 const channel='UC1234567890123456789012';
 const entry=(title,owner=channel,date='2026-01-01T12:00:00Z')=>`<entry><yt:videoId>abcdefghijk</yt:videoId><yt:channelId>${owner}</yt:channelId><title>${title}</title><published>${date}</published><author><name>Artist</name></author></entry>`;
 const feed=rows=>`<feed xmlns="http://www.w3.org/2005/Atom" xmlns:yt="http://www.youtube.com/xml/schemas/2015">${rows}</feed>`;
@@ -25,6 +25,14 @@ test('public YouTube page parsing captures exact numeric view counts without inv
  assert.equal(parseViewCount('<meta itemprop="interactionCount" content="1234567">'),1234567);
  assert.equal(parseViewCount('{"videoDetails":{"viewCount":"7654321"}}'),7654321);
  assert.equal(parseViewCount('<html>no count</html>'),null);
+});
+test('public YouTube duration parsing identifies ultra-short promotional clips',()=>{
+ assert.equal(parseDurationSeconds('{"videoDetails":{"lengthSeconds":"10"}}'),10);
+ assert.equal(parseDurationSeconds('<meta itemprop="duration" content="PT3M12S">'),192);
+ assert.equal(parseDurationSeconds('<html>no duration</html>'),null);
+ assert.equal(isFullMusicVideoDuration(10),false);
+ assert.equal(isFullMusicVideoDuration(30),true);
+ assert.equal(isFullMusicVideoDuration(null),true);
 });
 test('official MV releases qualify only on the monitored owner channel, while behind-scenes and audio stay excluded',()=>{
  const rows=parseFeed(feed(entry('BTS ‘Song’ Official MV')+entry('BTS ‘Song’ Official MV Behind the Scenes')+entry('BTS Song (Official Audio)')+entry('BTS ‘Song’ Official MV','UCimpostor')),channel);
