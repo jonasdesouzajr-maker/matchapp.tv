@@ -14,6 +14,10 @@ import android.os.VibrationEffect
 import android.os.Vibrator
 import android.os.VibratorManager
 import android.speech.RecognizerIntent
+import android.speech.RecognitionListener
+import android.speech.SpeechRecognizer
+import android.Manifest
+import android.content.pm.PackageManager
 import android.speech.tts.TextToSpeech
 import android.speech.tts.UtteranceProgressListener
 import android.view.View
@@ -83,18 +87,15 @@ class MainActivity : AppCompatActivity() {
         filePathCallback = null
     }
 
-    private val voiceRecognizer = registerForActivityResult(
-        ActivityResultContracts.StartActivityForResult()
-    ) { result ->
-        val transcript = result.data
-            ?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS)
-            ?.firstOrNull()
-            ?.trim()
-        if (result.resultCode == android.app.Activity.RESULT_OK && !transcript.isNullOrBlank()) {
-            sendVoiceResult(transcript)
-        } else {
-            sendVoiceError("no-speech")
-        }
+    // Inline Android SpeechRecognizer: keeps Jonas visible instead of opening
+    // the Google full-screen speech intent. Never records until a user taps mic.
+    private var inlineVoiceRecognizer: SpeechRecognizer? = null
+    private var requestedVoiceLanguage = "en-US"
+    private val microphonePermission = registerForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { granted ->
+        if (granted) startInlineRecognition(requestedVoiceLanguage)
+        else sendVoiceError("permission-denied")
     }
 
     @SuppressLint("SetJavaScriptEnabled")
@@ -272,6 +273,8 @@ class MainActivity : AppCompatActivity() {
         finishStartupTransition(immediate = true)
         adMobController?.destroy()
         adMobController = null
+        inlineVoiceRecognizer?.destroy()
+        inlineVoiceRecognizer = null
         voiceTts?.stop()
         voiceTts?.shutdown()
         voiceTts = null
@@ -599,6 +602,76 @@ class MainActivity : AppCompatActivity() {
         )
     }
 
+    private fun sendVoicePartial(text: String) {
+        val value = JSONObject.quote(text)
+        web.evaluateJavascript(
+            "window.matchAppNativeVoicePartial&&window.matchAppNativeVoicePartial($value);",
+            null
+        )
+    }
+
+    private fun startInlineRecognition(language: String) {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO)
+            != PackageManager.PERMISSION_GRANTED) {
+            requestedVoiceLanguage = language
+            microphonePermission.launch(Manifest.permission.RECORD_AUDIO)
+            return
+        }
+        if (!SpeechRecognizer.isRecognitionAvailable(this)) {
+            sendVoiceError("unavailable")
+            return
+        }
+        inlineVoiceRecognizer?.destroy()
+        inlineVoiceRecognizer = null
+        val recognizer = try { SpeechRecognizer.createSpeechRecognizer(this) }
+                         catch (_: Exception) { sendVoiceError("unavailable"); return }
+        inlineVoiceRecognizer = recognizer
+        recognizer.setRecognitionListener(object : RecognitionListener {
+            override fun onReadyForSpeech(params: Bundle?) {}
+            override fun onBeginningOfSpeech() {}
+            override fun onRmsChanged(rmsdB: Float) {}
+            override fun onBufferReceived(buffer: ByteArray?) {}
+            override fun onEndOfSpeech() {}
+            override fun onError(error: Int) {
+                if (inlineVoiceRecognizer !== recognizer) return
+                inlineVoiceRecognizer = null
+                recognizer.destroy()
+                sendVoiceError(when(error) {
+                    SpeechRecognizer.ERROR_NO_MATCH, SpeechRecognizer.ERROR_SPEECH_TIMEOUT -> "no-speech"
+                    SpeechRecognizer.ERROR_INSUFFICIENT_PERMISSIONS -> "permission-denied"
+                    else -> "unavailable"
+                })
+            }
+            override fun onResults(results: Bundle?) {
+                if (inlineVoiceRecognizer !== recognizer) return
+                inlineVoiceRecognizer = null
+                recognizer.destroy()
+                val transcript = results?.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION)
+                    ?.firstOrNull()?.trim()
+                if (transcript.isNullOrBlank()) sendVoiceError("no-speech")
+                else sendVoiceResult(transcript)
+            }
+            override fun onPartialResults(partialResults: Bundle?) {
+                if (inlineVoiceRecognizer !== recognizer) return
+                partialResults?.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION)
+                    ?.firstOrNull()?.trim()?.takeIf { it.isNotBlank() }?.let(::sendVoicePartial)
+            }
+            override fun onEvent(eventType: Int, params: Bundle?) {}
+        })
+        val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH).apply {
+            putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
+            putExtra(RecognizerIntent.EXTRA_LANGUAGE, language)
+            putExtra(RecognizerIntent.EXTRA_PARTIAL_RESULTS, true)
+            putExtra(RecognizerIntent.EXTRA_MAX_RESULTS, 1)
+        }
+        try { recognizer.startListening(intent) }
+        catch (_: Exception) {
+            inlineVoiceRecognizer = null
+            recognizer.destroy()
+            sendVoiceError("unavailable")
+        }
+    }
+
     private fun sendVoiceError(code: String) {
         val value = JSONObject.quote(code)
         web.evaluateJavascript(
@@ -778,16 +851,7 @@ class MainActivity : AppCompatActivity() {
                 val lang = languageTag
                     ?.takeIf { it.matches(Regex("^[A-Za-z]{2,3}(-[A-Za-z]{2,4})?$")) }
                     ?: "en-US"
-                val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH).apply {
-                    putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
-                    putExtra(RecognizerIntent.EXTRA_LANGUAGE, lang)
-                    putExtra(RecognizerIntent.EXTRA_MAX_RESULTS, 1)
-                }
-                try {
-                    voiceRecognizer.launch(intent)
-                } catch (_: ActivityNotFoundException) {
-                    sendVoiceError("unavailable")
-                }
+                startInlineRecognition(lang)
             }
         }
     }

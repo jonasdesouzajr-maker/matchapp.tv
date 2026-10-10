@@ -139,6 +139,10 @@ function initVoiceInput(inputId,micBtnId,onFinalTranscript){
   /* Android apps call these after the device recognizer closes. */
   window.matchAppNativeVoiceResult=acceptTranscript;
   window.matchAppNativeVoiceError=showError;
+  window.matchAppNativeVoicePartial=value=>{
+    if(!enhanced||!listening||cancelled)return;
+    paintTranscript([prefix,String(value||'').trim()].filter(Boolean).join(' '));
+  };
 
   input.addEventListener('input',event=>{
     if(!event.isTrusted)return;

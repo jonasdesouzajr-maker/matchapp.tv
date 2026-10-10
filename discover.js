@@ -456,6 +456,19 @@ function pickVoiceForLang(voices, lang) {
 }
 
 window.readAloud = function(text, btn) {
+    // Only the verified Jonas cloud voice or approved male OS voice may play here.
+    // This also animates his face during manually requested read-aloud.
+    if(window.MatchAppJonasStage?.speak) {
+        if(btn?.classList.contains('speaking')) {
+            window.MatchAppJonasStage.stop();
+            btn.classList.remove('speaking');
+            return;
+        }
+        document.querySelectorAll('.discover-speak.speaking').forEach(b=>b.classList.remove('speaking'));
+        if(btn)btn.classList.add('speaking');
+        window.MatchAppJonasStage.speak(text,{autoListen:false}).finally(()=>btn?.classList.remove('speaking'));
+        return;
+    }
     const nativeTts = !!(window.MatchAppNativeVoice && typeof window.MatchAppNativeVoice.speak === 'function');
     if (!nativeTts && !('speechSynthesis' in window)) {
         if (window.showToast) showToast((typeof t === 'function' ? t('discover.noTts') : 'Voice playback is not supported in this browser.'), true);
@@ -1733,7 +1746,10 @@ async function runAskAndRender(question, opts) {
         currentThread.updatedAt=Date.now();persistCurrentThread();
         const field=document.getElementById('discover-new-input');if(field)field.value='';
         const empty=document.getElementById('discover-empty');if(empty)empty.style.display='none';
-        if(voiceOrigin)window.MatchAppJonasSpeech?.speak?.(reply,window.MatchAppJonasLocale?.speech?.()||window.MATCH_LANG||'en',{});
+        if(voiceOrigin) {
+            if(window.MatchAppJonasStage?.speak) window.MatchAppJonasStage.speak(reply,{autoListen:true});
+            else window.MatchAppJonasSpeech?.speak?.(reply,window.MatchAppJonasLocale?.speech?.()||window.MATCH_LANG||'en',{});
+        }
         return;
     }
     // Global MatchApp editorial policy: never use AI or provider lookups to
@@ -1931,7 +1947,9 @@ async function runAskAndRender(question, opts) {
         await typewriterReveal(bubble.textEl, payload.answer, 14);
         // A mic-origin prompt gets a natural spoken reply. Typed prompts stay silent.
         if (voiceOrigin && String(payload.answer || '').trim()) {
-            window.readAloud(payload.answer, bubble.speakBtn);
+            if (window.MatchAppJonasStage?.speak) {
+                window.MatchAppJonasStage.speak(payload.answer,{autoListen:true});
+            } else window.readAloud(payload.answer, bubble.speakBtn);
         }
     }
 

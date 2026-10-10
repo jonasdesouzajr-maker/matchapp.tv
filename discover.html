@@ -321,6 +321,8 @@
 <script defer src="/title-identity.js?v=20260930-1"></script>
 <link rel="stylesheet" href="/ui-harmony.css?v=20261003-1">
 <link rel="stylesheet" href="/jonas/discover-mobile-repair-20261010.css?v=3">
+<link rel="stylesheet" href="/jonas/discover-editorial-20261010.css?v=1">
+<link rel="stylesheet" href="/jonas/discovery-avatar-stage-20261010.css?v=1">
 </head>
 <body class="ai-chat-page">
     <!-- Google Tag Manager (noscript) -->
@@ -429,6 +431,37 @@
 <p style="text-align:center; color:#8f85a8; font-size:12.5px; margin:24px 0 4px 0;"><span data-i18n="support.ideas">💌 Got an idea for MatchApp? We read every email —</span> <a href="mailto:support@matchapp.tv" style="color:var(--gold); text-decoration:none; font-weight:bold;">support@matchapp.tv</a> <span style="color:#6f6880;">·</span> <a href="https://wa.me/5521988214594" target="_blank" rel="noopener noreferrer" style="color:#25D366; text-decoration:none; font-weight:bold;">WhatsApp</a></p>
     </main>
 
+    <section class="ma-discover-editorial" aria-labelledby="ma-discover-how-to">
+      <span class="editorial-eyebrow">Practical entertainment discovery</span>
+      <h2 id="ma-discover-how-to">How to ask for a recommendation you can actually use</h2>
+      <p>A recommendation is more helpful when it answers both <strong>what fits your taste</strong> and <strong>where you can find it</strong>. MatchApp Ai combines your question with entertainment metadata and the available viewing or reading sources. You can refine the result in the same conversation. Start with your country, the type of title you want and any subscriptions you already have. This avoids suggestions that sound relevant but cannot easily be watched where you live.</p>
+      <div class="editorial-columns">
+        <div>
+          <h3>1. Give the AI enough context</h3>
+          <p>Instead of asking for a good film, describe how you want to feel, your preferred language and your time limit. For a family viewing night, mention the viewers' ages and whether subtitles are acceptable. If you dislike a particular genre or want to avoid a subject, say that explicitly. A useful question is specific enough to narrow the choice but still leaves room for discovery.</p>
+          <p class="editorial-example">“I'm in Brazil with Netflix and Prime Video. Recommend a suspenseful documentary series with episodes under an hour. Nothing about serial killers, please.”</p>
+        </div>
+        <div>
+          <h3>2. Check the specific version</h3>
+          <p>A film may have a theatrical cut and an extended edition. A series can share its name with an unrelated remake. A book may have an audiobook, e-book or print edition with different regional sellers. Confirm the original title, release year, author or cast before choosing a provider. For audiobooks, a search link is not confirmation that a narrated edition exists.</p>
+          <p class="editorial-example">“Do you mean the original series or the remake? Give me the original title and release year before showing a viewing link.”</p>
+        </div>
+        <div>
+          <h3>3. Treat viewing links as a starting point</h3>
+          <p>Streaming rights, catalogues, languages and subscription tiers change. A title may be included with a service in one country and offered as a rental in another. Check the actual provider page before paying, subscribing or planning a viewing session. If the app cannot establish a reliable viewing destination, ask for alternative distributors or search again with a different platform.</p>
+          <p class="editorial-example">“Only include options available in Portugal. Tell me whether each is included with a subscription, rented separately or not yet verified.”</p>
+        </div>
+        <div>
+          <h3>4. Keep refining in the conversation</h3>
+          <p>Tell Jonas which recommendation you have already seen or disliked, and why. You can ask for a lighter tone, a shorter runtime, original-language audio, less violence or a different country of origin. Refinements work better than repeating the same broad query. When the catalogue does not produce a confident answer, a clear limitation is better than an invented title or a misleading source.</p>
+          <p class="editorial-example">“I have seen that one. Find a more recent Brazilian film with a similar atmosphere, but avoid horror.”</p>
+        </div>
+      </div>
+      <h3>How MatchApp Ai handles sources and AI limitations</h3>
+      <p>MatchApp Ai is an entertainment-discovery tool, not a streaming provider, publisher or ticket seller. AI-generated descriptions can contain mistakes or lack current provider data. Poster artwork, ratings and catalogue entries come from their respective owners and data sources; their presence does not prove that a title is playable through a particular subscription. News and chart information should be checked against the cited publisher, and user reviews should not be confused with independently verified ratings.</p>
+      <p>For browsing without a conversation, start with our <a href="/guides/worldwide-entertainment-discovery/">worldwide entertainment guide</a> or <a href="/guides/what-to-watch-september-2026/">editorial viewing guide</a>. If a title, description or provider link looks wrong, <a href="/contact.html">contact MatchApp Ai</a> so we can investigate. For details about the product and its purpose, read <a href="/about.html">About MatchApp Ai</a>.</p>
+    </section>
+
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.105.0/dist/umd/supabase.js"></script>
     <script src="/settings.js?v=20260926-guarantee-outage1&amp;matching=20260928-session1"></script>
     <script src="/matching-policy.js?v=20260926-conflicts2"></script>
@@ -455,6 +488,7 @@
     <script src="/jonas/discovery-speech-lock-20261010.js"></script>
     <script src="/title-experience.js?v=20260918-notify2&amp;music=20260930-1"></script>
     <script src="/voice-input.js?v=20261005-voiceorigin1"></script>
+    <script src="/jonas/discovery-avatar-stage-20261010.js?v=1"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             initVoiceInput('discover-new-input', 'mic-btn-discover', () => window.newDiscoverSearch());

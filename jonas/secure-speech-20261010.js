@@ -74,9 +74,21 @@
      return await new Promise(function(resolve){
       var node=audioContext.createBufferSource(),ended=false;
       source=node;node.buffer=decoded;node.connect(audioContext.destination);
-      node.onended=function(){if(ended)return;ended=true;if(source===node)source=null;if(token===epoch)opts.onEnd?.(true);resolve(true)};
+      var meterFrame=0;
+      node.onended=function(){if(ended)return;ended=true;cancelAnimationFrame(meterFrame);if(source===node)source=null;if(token===epoch)opts.onEnd?.(true);resolve(true)};
       opts.onStart?.();
       node.start(0);
+      if(typeof opts.onLevel==='function'){
+       var samples=decoded.getChannelData(0),rate=decoded.sampleRate,startAt=audioContext.currentTime;
+       var meter=function(){
+        if(ended||token!==epoch)return;
+        var pos=Math.floor(Math.max(0,audioContext.currentTime-startAt)*rate),sum=0,num=0;
+        for(var i=pos;i<Math.min(samples.length,pos+1800);i+=32){sum+=samples[i]*samples[i];num++}
+        opts.onLevel(Math.min(1,Math.sqrt(sum/Math.max(1,num))*5));
+        meterFrame=requestAnimationFrame(meter);
+       };
+       meterFrame=requestAnimationFrame(meter);
+      }
      });
     }catch(e){if(token!==epoch)return false}
    }

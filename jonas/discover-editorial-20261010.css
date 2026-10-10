@@ -1,0 +1,10 @@
+/* Original, accessible Discovery help for visitors and AdSense crawlers. */
+.ma-discover-editorial{max-width:980px;margin:25px auto 45px;padding:24px clamp(17px,3vw,32px);background:linear-gradient(145deg,#1a1230,#120e22);border:1px solid rgba(232,195,115,.29);border-radius:24px;color:#eee8f5;line-height:1.68}
+.ma-discover-editorial h2{font-size:clamp(20px,3vw,28px);color:#f5d894;margin:8px 0 11px}
+.ma-discover-editorial h3{font-size:17px;color:#f0d69e;margin:15px 0 7px}
+.ma-discover-editorial p{font-size:14px;margin:8px 0 12px;color:#d7d0e6}
+.ma-discover-editorial a{color:#f3d28e;text-decoration:underline;text-underline-offset:3px}
+.ma-discover-editorial .editorial-eyebrow{font-size:12px;font-weight:700;letter-spacing:.12em;color:#bba8db;text-transform:uppercase}
+.ma-discover-editorial .editorial-columns{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 28px}
+.ma-discover-editorial .editorial-example{background:#241934;border-left:3px solid #e6c074;padding:11px 14px;border-radius:8px;font-size:14px;color:#f4e8cb}
+@media(max-width:680px){.ma-discover-editorial{margin:18px 12px 40px;padding:18px 16px;border-radius:18px}.ma-discover-editorial .editorial-columns{grid-template-columns:1fr}}
