@@ -16,8 +16,10 @@ test('Jonas AI is a circular created face that stays on screen while scrolling',
  assert.match(main,/if \(token\.length !in 100\.\.6000\)/);
  assert.match(main,/VoiceAvatarActivity\.EXTRA_TOKEN, token/);
  assert.match(main,/isMatchAppHost\(page\.host\.orEmpty\(\)\) \|\| isKidsUri\(page\)/);
- assert.match(main,/femaleVoice\.containsMatchIn\(name\) -> 0\.78f/);
- assert.match(main,/maleVoice\.containsMatchIn\(name\)\) score \+= 2000/);
+ assert.match(main,/!chooseJonasVoice\(engine, locale\)/);
+ assert.match(main,/val eligible = engine\.voices\.orEmpty\(\)/);
+ assert.match(main,/filterNot \{ femaleOrUnknownGender\.containsMatchIn/);
+ assert.doesNotMatch(main,/engine\.setPitch\(0\.78f\)|engine\.setPitch\(0\.88f\)|engine\.language = locale/);
 });
 test('Voice final transcript automatically triggers the existing Ask AI pipeline once',()=>{
  assert.match(main,/matchapp:voice-transcript/);
