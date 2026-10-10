@@ -12,7 +12,7 @@ test('final wiring activates title integrity, no-repeat history, speed guard and
   assert.match(wiring,/production-hardening\.js/);
   assert.match(wiring,/shown-history\.js/);
   assert.match(wiring,/match-speed\.js/);
-  assert.match(wiring,/human-conversation\.js/);
+  assert.match(wiring,/human-conversation-male-only-20261010\.js/);
   assert.match(wiring,/match-packs-section/);
   assert.match(hardening,/Kingdom-class fix/);
   assert.match(hardening,/platform:'any'/);
