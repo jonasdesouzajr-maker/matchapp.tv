@@ -29,12 +29,10 @@
   if(image&&image.complete&&image.naturalWidth>0){mouth.src=image.src;mouth.style.opacity='1'}
  }
  function voiceFor(lang){
-  var all=window.speechSynthesis?.getVoices?.()||[],lc=lang.toLowerCase();
-  var matching=all.filter(function(v){return v.lang.toLowerCase()===lc});
-  if(!matching.length)matching=all.filter(function(v){return v.lang.toLowerCase().split('-')[0]===lc.split('-')[0]});
-  // Choose a natural male voice that matches Jonas's adult portrait where installed.
-  var male=/\b(male|daniel|alex|aaron|david|james|thomas|george|oliver|arthur|fred|ricardo|diego|rishi|paulo|antonio|jorge|marcelo|mark|andrew|lucas|felipe|pedro|hugo|henri|pierre|giuseppe|lorenzo|sean|ryan)\b/i;
-  return matching.find(function(v){return male.test(v.name)&&v.localService})||matching.find(function(v){return male.test(v.name)})||matching.find(function(v){return v.localService})||matching[0]||null;
+  // Never fall back to the device's first/default voice, which may be female.
+  var policy=window.MatchAppJonasVoicePolicy;
+  if(!policy)return null;
+  try{return policy.select(window.speechSynthesis?.getVoices?.()||[],lang)}catch(_){return null}
  }
  function animateMouth(){
   clearInterval(mouthTimer);var frames=['aa','ee','oh','rest'];var pos=0;
@@ -128,8 +126,14 @@
   try{
    // stopVoice already cancelled the previous utterance; calling cancel twice
    // in the same user activation can swallow Chrome/Android's first greeting.
-   spoken=new SpeechSynthesisUtterance(message);spoken.lang=locale()?.speech()||(isPt()?'pt-BR':'en-US');
-   spoken.voice=voiceFor(spoken.lang);
+   var lang=locale()?.speech()||(isPt()?'pt-BR':'en-US');
+   var selected=voiceFor(lang);
+   if(!selected){
+    status.textContent=locale()?.t('unsupported')||'A verified masculine voice is unavailable. You can still type or talk.';
+    finish();return;
+   }
+   spoken=new SpeechSynthesisUtterance(message);spoken.lang=lang;
+   spoken.voice=selected;
    spoken.rate=.94;spoken.pitch=.85;spoken.volume=1;
    spoken.onstart=function(){if(token===session){started=true;animateMouth()}};
    spoken.onboundary=function(e){if(token!==session||!started)return;var ch=message.charAt(e.charIndex||0).toLowerCase();face(/[oou]/.test(ch)?'oh':/[eiiy]/.test(ch)?'ee':'aa')};
