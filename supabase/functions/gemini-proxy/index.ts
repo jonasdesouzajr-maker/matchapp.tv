@@ -80,7 +80,7 @@ const MODEL_CHAIN = [
 // tell us about a newer model worth promoting, or confirm that a removed one
 // is still dead. This list is probe-only: nothing here serves traffic until
 // it is explicitly moved into MODEL_CHAIN.
-const DIAGNOSTIC_PROBE_MODELS = [...FREE_MODEL_CHAIN, ...MODEL_CHAIN];
+const DIAGNOSTIC_PROBE_MODELS = [...new Set(["gemini-3.8-flash", ...FREE_MODEL_CHAIN, ...MODEL_CHAIN])];
 
 // ============================================================
 // CORS — ALLOW LIST, NOT "*"
