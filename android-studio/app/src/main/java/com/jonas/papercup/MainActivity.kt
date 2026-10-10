@@ -687,6 +687,7 @@ class MainActivity : AppCompatActivity() {
             RegexOption.IGNORE_CASE
         )
         val eligible = engine.voices.orEmpty()
+            .filterNot { it.isNetworkConnectionRequired }
             .filter { it.locale.language.equals(locale.language, ignoreCase = true) }
             .filter { approvedMale.containsMatchIn(it.name.orEmpty()) }
             .filterNot { femaleOrUnknownGender.containsMatchIn(it.name.orEmpty()) }
