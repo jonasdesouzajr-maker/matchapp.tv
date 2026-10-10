@@ -84,7 +84,7 @@ Deno.serve(async(req:Request)=>{
  // or client-issued credit claim can raise these limits.
  const trustedIp=(req.headers.get("cf-connecting-ip")||req.headers.get("x-forwarded-for")||"unknown").split(",").slice(-1)[0].trim().slice(0,120);
  const bucket=await fingerprint(userId?"user:"+userId:"guest:"+trustedIp);
- const {data:allowed,error:limitError}=await admin.rpc("jonas_speech_reserve",{p_bucket:bucket,p_limit:userId?20:3,p_global_limit:400});
+ const {data:allowed,error:limitError}=await admin.rpc("jonas_speech_reserve",{p_bucket:bucket,p_limit:userId?35:12,p_global_limit:700});
  if(limitError||allowed!==true)return result({error:"speech_limit_reached"},429,origin);
  const speech=await synth(text,localeMap[language]);
  if(!speech)return result({error:"speech_provider_unavailable"},503,origin);
