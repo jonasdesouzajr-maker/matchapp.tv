@@ -1,7 +1,727 @@
 {
-  "generated_at": "2026-10-10T14:40:56.970Z",
+  "generated_at": "2026-10-10T16:14:49.577Z",
   "limit": 1000,
   "items": [
+    {
+      "id": "cd95a0b2",
+      "title": "Christa Pike discharged from hospital and returned to prison, her lawyers say",
+      "url": "https://www.bbc.co.uk/news/articles/cmlyle97pqd7o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-10T15:58:06.000Z",
+      "discovered_at": "2026-10-10T16:14:49.577Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "Christa Pike",
+      "description": "World news reported by BBC World on 2026-10-10. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/cafe/live/bfd91a70-c4bf-11f1-a64c-550be9e3c66b.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/christa-pike-discharged-from-hospital-and-returned-to-prison-her-lawyers-say-cd95a0/",
+      "landing_url": "https://matchapp.tv/?news=cd95a0b2#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-10",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "christa",
+          "pike",
+          "discharged",
+          "hospital",
+          "returned",
+          "prison"
+        ],
+        "long_tail": [
+          "Christa Pike discharged from hospital and returned to prison, her lawyers say 2026-10-10",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "christa",
+          "pike",
+          "discharged",
+          "hospital",
+          "returned",
+          "prison"
+        ],
+        "freshness_keywords": [
+          "2026-10-10"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Christa Pike discharged from hospital and returned to…",
+        "meta_description": "World report published by BBC World on 2026-10-10. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-10",
+          "world news",
+          "global headlines",
+          "christa",
+          "pike",
+          "discharged",
+          "hospital",
+          "returned",
+          "prison",
+          "Christa Pike discharged from hospital and returned to prison, her lawyers say 2026-10-10",
+          "world news October 2026",
+          "2026-10-10",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-10T16:14:49.577Z"
+      }
+    },
+    {
+      "id": "bee9e895",
+      "title": "King warns malicious online actors are evolving tactics",
+      "url": "https://www.bbc.co.uk/news/articles/cme3xl7d18z2o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC Technology",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-10T15:56:32.000Z",
+      "discovered_at": "2026-10-10T16:14:49.577Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC Technology on 2026-10-10. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/d98d/live/0d6d7c40-c4c0-11f1-9ce9-55293bd7f0d9.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/king-warns-malicious-online-actors-are-evolving-tactics-bee9e8/",
+      "landing_url": "https://matchapp.tv/?news=bee9e895#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-10",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "king",
+          "warns",
+          "malicious",
+          "online",
+          "actors",
+          "evolving"
+        ],
+        "long_tail": [
+          "King warns malicious online actors are evolving tactics 2026-10-10",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "king",
+          "warns",
+          "malicious",
+          "online",
+          "actors",
+          "evolving"
+        ],
+        "freshness_keywords": [
+          "2026-10-10"
+        ],
+        "source_keywords": [
+          "BBC Technology"
+        ],
+        "meta_title": "King warns malicious online actors are evolving tactics |…",
+        "meta_description": "World report published by BBC Technology on 2026-10-10. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-10",
+          "world news",
+          "global headlines",
+          "king",
+          "warns",
+          "malicious",
+          "online",
+          "actors",
+          "evolving",
+          "King warns malicious online actors are evolving tactics 2026-10-10",
+          "world news October 2026",
+          "2026-10-10",
+          "BBC Technology"
+        ],
+        "seo_generated_at": "2026-10-10T16:14:49.577Z"
+      }
+    },
+    {
+      "id": "59370a23",
+      "title": "'Escudo das Américas' de Trump tenta impor 'cerco' contra o Brasil sob argumento 'falso' de combate ao crime, diz Amorim",
+      "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/10/escudo-das-americas-de-trump-tenta-impor-cerco-e-dominacao-contra-o-brasil-sob-argumento-falso-de-combate-a-crime-diz-amorim.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-10T15:42:27.000Z",
+      "discovered_at": "2026-10-10T16:14:49.577Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-10. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/6vPnWD4g5eJTED0xVJ4AKfKy3hc=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2025/U/Q/rf1rbnTGmPB0TKa6WDNw/lula-brics-mcamgo-abr-26022025-6.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/escudo-das-americas-de-trump-tenta-impor-cerco-contra-o-brasil-sob-argumento-fal-59370a/",
+      "landing_url": "https://matchapp.tv/?news=59370a23#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-10",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "escudo",
+          "americas",
+          "trump",
+          "tenta",
+          "impor",
+          "cerco"
+        ],
+        "long_tail": [
+          "'Escudo das Américas' de Trump tenta impor 'cerco' contra o Brasil sob argumento 'falso' de combate ao crime, diz Amorim 2026-10-10",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "escudo",
+          "americas",
+          "trump",
+          "tenta",
+          "impor",
+          "cerco"
+        ],
+        "freshness_keywords": [
+          "2026-10-10"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "'Escudo das Américas' de Trump tenta impor 'cerco' contra…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-10. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-10",
+          "notícias do mundo",
+          "notícias internacionais",
+          "escudo",
+          "americas",
+          "trump",
+          "tenta",
+          "impor",
+          "cerco",
+          "'Escudo das Américas' de Trump tenta impor 'cerco' contra o Brasil sob argumento 'falso' de combate ao crime, diz Amorim 2026-10-10",
+          "notícias mundiais outubro 2026",
+          "2026-10-10",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-10T16:14:49.577Z"
+      }
+    },
+    {
+      "id": "003dd83b",
+      "title": "Presidente palestino adia eleições para setembro de 2027",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/10/presidente-palestino-adia-eleicao-para-setembro-de-2027.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-10T15:26:04.000Z",
+      "discovered_at": "2026-10-10T16:14:49.577Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-10. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/gInAZT8Xlm83Psvs4ADXHdGovok=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2021/D/W/qBl8hiRKu7jfNROdyWOA/2021-12-11t084854z-2136806046-rc2b0r9z8lxj-rtrmadp-3-palestinians-politics-election.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/presidente-palestino-adia-eleicoes-para-setembro-de-2027-003dd8/",
+      "landing_url": "https://matchapp.tv/?news=003dd83b#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-10",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "presidente",
+          "palestino",
+          "adia",
+          "eleicoes",
+          "setembro",
+          "2027"
+        ],
+        "long_tail": [
+          "Presidente palestino adia eleições para setembro de 2027 2026-10-10",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "presidente",
+          "palestino",
+          "adia",
+          "eleicoes",
+          "setembro",
+          "2027"
+        ],
+        "freshness_keywords": [
+          "2026-10-10"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Presidente palestino adia eleições para setembro de 2027 |…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-10. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-10",
+          "notícias do mundo",
+          "notícias internacionais",
+          "presidente",
+          "palestino",
+          "adia",
+          "eleicoes",
+          "setembro",
+          "2027",
+          "Presidente palestino adia eleições para setembro de 2027 2026-10-10",
+          "notícias mundiais outubro 2026",
+          "2026-10-10",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-10T16:14:49.577Z"
+      }
+    },
+    {
+      "id": "f7c6319b",
+      "title": "AMC’s ‘Mayfair Witches: Salem Coven’ Gets December Debut as Catherine Zeta-Jones, Carrie-Anne Moss Tease ‘Kill Jackie’ and ‘Yaga’ at NYCC",
+      "url": "https://www.hollywoodreporter.com/tv/tv-news/amc-mayfair-witches-season-3-yaga-kill-jackie-teasers-1236726907/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-10T15:24:27.000Z",
+      "discovered_at": "2026-10-10T16:14:49.577Z",
+      "event_type": "Release",
+      "category": "entertainment",
+      "person": "",
+      "description": "release headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/Mayfair.jpg?w=1440&h=810&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/amc-s-mayfair-witches-salem-coven-gets-december-debut-as-catherine-zeta-jones-ca-f7c631/",
+      "landing_url": "https://matchapp.tv/?news=f7c6319b#latest-news",
+      "seo": {
+        "primary_keyword": "amc mayfair witches salem latest news",
+        "short_tail": [
+          "amc mayfair witches salem",
+          "amc mayfair witches salem news",
+          "release",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "amc mayfair witches salem latest news October 2026",
+          "amc mayfair witches salem release update 2026",
+          "amc mayfair witches salem news 2026-10-10",
+          "latest release news about amc mayfair witches salem",
+          "amc mayfair witches salem coven gets latest update",
+          "The Hollywood Reporter amc mayfair witches salem release",
+          "latest news about amc mayfair witches salem October 2026",
+          "amc mayfair witches salem entertainment news 2026-10-10",
+          "what happened with amc mayfair witches salem"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "amc",
+          "mayfair",
+          "witches",
+          "salem",
+          "coven",
+          "gets",
+          "december",
+          "debut"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-10",
+          "amc mayfair witches salem 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter amc mayfair witches salem",
+          "hollywoodreporter.com amc mayfair witches salem",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "AMC’s ‘Mayfair Witches: Salem Coven’ Gets December Debut…",
+        "meta_description": "Release update reported by The Hollywood Reporter on 2026-10-10. See verified context, publication time and the original source via MatchApp Ai.",
+        "keywords": [
+          "amc mayfair witches salem latest news",
+          "amc mayfair witches salem",
+          "amc mayfair witches salem news",
+          "release",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "amc mayfair witches salem latest news October 2026",
+          "amc mayfair witches salem release update 2026",
+          "amc mayfair witches salem news 2026-10-10",
+          "latest release news about amc mayfair witches salem",
+          "amc mayfair witches salem coven gets latest update",
+          "The Hollywood Reporter amc mayfair witches salem release",
+          "latest news about amc mayfair witches salem October 2026",
+          "amc mayfair witches salem entertainment news 2026-10-10",
+          "what happened with amc mayfair witches salem",
+          "amc",
+          "mayfair",
+          "witches",
+          "salem",
+          "coven",
+          "gets",
+          "december",
+          "debut",
+          "October 2026",
+          "2026-10-10",
+          "amc mayfair witches salem 2026",
+          "The Hollywood Reporter amc mayfair witches salem",
+          "hollywoodreporter.com amc mayfair witches salem",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-10T16:14:49.577Z"
+      }
+    },
+    {
+      "id": "782d0eff",
+      "title": "Nobel peace laureate says US sanctions on ICC 'unacceptable'",
+      "url": "https://www.bbc.co.uk/news/articles/cqkgjrpmr47vo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-10T15:23:47.000Z",
+      "discovered_at": "2026-10-10T16:14:49.577Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-10. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/8690/live/4429a2a0-c4b5-11f1-9ce9-55293bd7f0d9.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/nobel-peace-laureate-says-us-sanctions-on-icc-unacceptable-782d0e/",
+      "landing_url": "https://matchapp.tv/?news=782d0eff#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-10",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "nobel",
+          "peace",
+          "laureate",
+          "says",
+          "sanctions",
+          "icc"
+        ],
+        "long_tail": [
+          "Nobel peace laureate says US sanctions on ICC 'unacceptable' 2026-10-10",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "nobel",
+          "peace",
+          "laureate",
+          "says",
+          "sanctions",
+          "icc"
+        ],
+        "freshness_keywords": [
+          "2026-10-10"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Nobel peace laureate says US sanctions on ICC…",
+        "meta_description": "World report published by BBC World on 2026-10-10. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-10",
+          "world news",
+          "global headlines",
+          "nobel",
+          "peace",
+          "laureate",
+          "says",
+          "sanctions",
+          "icc",
+          "Nobel peace laureate says US sanctions on ICC 'unacceptable' 2026-10-10",
+          "world news October 2026",
+          "2026-10-10",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-10T16:14:49.577Z"
+      }
+    },
+    {
+      "id": "0f8ac4e9",
+      "title": "Mulher que sobreviveu a duas doses de injeção letal recebe alta hospitalar e volta à prisão nos EUA",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/10/mulher-que-sobreviveu-a-duas-doses-de-injecao-letal-recebe-alta-hospitalar-e-volta-a-prisao-nos-eua.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-10T15:22:15.000Z",
+      "discovered_at": "2026-10-10T16:14:49.577Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-10. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/88MbnCNyfKAJewPLC2rRBVAepqI=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/2/k/xa75PYRZekFcvBJXNsBQ/a55a9aa0-c304-11f1-bc2e-018d645d8d21.jpg.webp",
+      "matchapp_url": "https://matchapp.tv/news/articles/mulher-que-sobreviveu-a-duas-doses-de-injecao-letal-recebe-alta-hospitalar-e-vol-0f8ac4/",
+      "landing_url": "https://matchapp.tv/?news=0f8ac4e9#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-10",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "mulher",
+          "que",
+          "sobreviveu",
+          "duas",
+          "doses",
+          "injecao"
+        ],
+        "long_tail": [
+          "Mulher que sobreviveu a duas doses de injeção letal recebe alta hospitalar e volta à prisão nos EUA 2026-10-10",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "mulher",
+          "que",
+          "sobreviveu",
+          "duas",
+          "doses",
+          "injecao"
+        ],
+        "freshness_keywords": [
+          "2026-10-10"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Mulher que sobreviveu a duas doses de injeção letal recebe…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-10. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-10",
+          "notícias do mundo",
+          "notícias internacionais",
+          "mulher",
+          "que",
+          "sobreviveu",
+          "duas",
+          "doses",
+          "injecao",
+          "Mulher que sobreviveu a duas doses de injeção letal recebe alta hospitalar e volta à prisão nos EUA 2026-10-10",
+          "notícias mundiais outubro 2026",
+          "2026-10-10",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-10T16:14:49.577Z"
+      }
+    },
+    {
+      "id": "cdca422f",
+      "title": "IA da Anthropic envia denúncia falsa sobre homicídio à polícia dos EUA",
+      "url": "https://g1.globo.com/tecnologia/noticia/2026/10/10/ia-da-anthropic-envia-denuncia-falsa-sobre-homicidio-a-policia-dos-eua.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-10T15:13:50.000Z",
+      "discovered_at": "2026-10-10T16:14:49.577Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-10. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/eEN6vhMRCSOwCfe4ADREMhd_Aec=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/n/F/sadFfXSUuMRiXnUbwZ5A/2026-06-30t235818z-1842503695-rc2unla3osw3-rtrmadp-3-usa-anthropic-fable.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/ia-da-anthropic-envia-denuncia-falsa-sobre-homicidio-a-policia-dos-eua-cdca42/",
+      "landing_url": "https://matchapp.tv/?news=cdca422f#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-10",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "anthropic",
+          "envia",
+          "denuncia",
+          "falsa",
+          "sobre",
+          "homicidio"
+        ],
+        "long_tail": [
+          "IA da Anthropic envia denúncia falsa sobre homicídio à polícia dos EUA 2026-10-10",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "anthropic",
+          "envia",
+          "denuncia",
+          "falsa",
+          "sobre",
+          "homicidio"
+        ],
+        "freshness_keywords": [
+          "2026-10-10"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "IA da Anthropic envia denúncia falsa sobre homicídio à…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-10. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-10",
+          "notícias do mundo",
+          "notícias internacionais",
+          "anthropic",
+          "envia",
+          "denuncia",
+          "falsa",
+          "sobre",
+          "homicidio",
+          "IA da Anthropic envia denúncia falsa sobre homicídio à polícia dos EUA 2026-10-10",
+          "notícias mundiais outubro 2026",
+          "2026-10-10",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-10T16:14:49.577Z"
+      }
+    },
+    {
+      "id": "bad7be91",
+      "title": "Woman injures three people in third Poland school knife attack in a week",
+      "url": "https://www.bbc.co.uk/news/articles/cv8ezd246z1wo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-10T14:58:55.000Z",
+      "discovered_at": "2026-10-10T16:14:49.577Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-10. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/82b6/live/15d89210-c4b7-11f1-9ce9-55293bd7f0d9.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/woman-injures-three-people-in-third-poland-school-knife-attack-in-a-week-bad7be/",
+      "landing_url": "https://matchapp.tv/?news=bad7be91#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-10",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "woman",
+          "injures",
+          "three",
+          "people",
+          "third",
+          "poland"
+        ],
+        "long_tail": [
+          "Woman injures three people in third Poland school knife attack in a week 2026-10-10",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "woman",
+          "injures",
+          "three",
+          "people",
+          "third",
+          "poland"
+        ],
+        "freshness_keywords": [
+          "2026-10-10"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Woman injures three people in third Poland school knife…",
+        "meta_description": "World report published by BBC World on 2026-10-10. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-10",
+          "world news",
+          "global headlines",
+          "woman",
+          "injures",
+          "three",
+          "people",
+          "third",
+          "poland",
+          "Woman injures three people in third Poland school knife attack in a week 2026-10-10",
+          "world news October 2026",
+          "2026-10-10",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-10T16:14:49.577Z"
+      }
+    },
+    {
+      "id": "1de9fb5c",
+      "title": "Drone strike by Sudan paramilitary kills 41 near Ethiopian border, rights group says",
+      "url": "https://www.bbc.co.uk/news/articles/c8vgx9ew571wo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-10T14:49:32.000Z",
+      "discovered_at": "2026-10-10T16:14:49.577Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-10. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/a17b/live/c6c5e2c0-c4b8-11f1-a64c-550be9e3c66b.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/drone-strike-by-sudan-paramilitary-kills-41-near-ethiopian-border-rights-group-s-1de9fb/",
+      "landing_url": "https://matchapp.tv/?news=1de9fb5c#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-10",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "drone",
+          "strike",
+          "sudan",
+          "paramilitary",
+          "kills",
+          "near"
+        ],
+        "long_tail": [
+          "Drone strike by Sudan paramilitary kills 41 near Ethiopian border, rights group says 2026-10-10",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "drone",
+          "strike",
+          "sudan",
+          "paramilitary",
+          "kills",
+          "near"
+        ],
+        "freshness_keywords": [
+          "2026-10-10"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Drone strike by Sudan paramilitary kills 41 near Ethiopian…",
+        "meta_description": "World report published by BBC World on 2026-10-10. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-10",
+          "world news",
+          "global headlines",
+          "drone",
+          "strike",
+          "sudan",
+          "paramilitary",
+          "kills",
+          "near",
+          "Drone strike by Sudan paramilitary kills 41 near Ethiopian border, rights group says 2026-10-10",
+          "world news October 2026",
+          "2026-10-10",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-10T16:14:49.577Z"
+      }
+    },
     {
       "id": "26642edc",
       "title": "Trump announces deal for Russian diesel as Zelensky calls it a gift to Putin",
@@ -68,7 +788,7 @@
           "2026-10-10",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-10T14:40:56.970Z"
+        "seo_generated_at": "2026-10-10T16:14:49.577Z"
       }
     },
     {
@@ -137,7 +857,7 @@
           "2026-10-10",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-10T14:40:56.970Z"
+        "seo_generated_at": "2026-10-10T16:14:49.577Z"
       }
     },
     {
@@ -206,7 +926,7 @@
           "2026-10-10",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-10T14:40:56.970Z"
+        "seo_generated_at": "2026-10-10T16:14:49.577Z"
       }
     },
     {
@@ -275,7 +995,7 @@
           "2026-10-10",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-10T14:40:56.970Z"
+        "seo_generated_at": "2026-10-10T16:14:49.577Z"
       }
     },
     {
@@ -293,7 +1013,7 @@
       "category": "world",
       "person": "Papa Leão XIV",
       "description": "World news reported by G1 Mundo on 2026-10-10. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/NbM_-ziXDLuYm9vPYuuhKJe5yH0=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/X/C/3k5Ci5RwSzPTV7cIYvJw/afp-20260928-c9jf7ut-v1-highres-francevaticanreligionpope.jpg",
+      "image": "https://s2-g1.glbimg.com/2y9ayGdoetliBmfOSgZ5yJSrbRA=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2025/q/h/HR4QuBQxSQkwdgNz7UEA/fotojet-2025-05-09t080633.783.jpg",
       "matchapp_url": "https://matchapp.tv/news/articles/papa-leao-xiv-diz-que-pena-de-morte-e-inadmissivel-em-meio-a-planos-dos-eua-de-t-fed109/",
       "landing_url": "https://matchapp.tv/?news=fed1090e#latest-news",
       "seo": {
@@ -344,7 +1064,7 @@
           "2026-10-10",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-10T14:40:56.970Z"
+        "seo_generated_at": "2026-10-10T16:14:49.577Z"
       }
     },
     {
@@ -443,7 +1163,7 @@
           "hollywoodreporter.com ray gunn review sam",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-10T14:40:56.970Z"
+        "seo_generated_at": "2026-10-10T16:14:49.577Z"
       }
     },
     {
@@ -541,7 +1261,7 @@
           "g1.globo.com Marisa Monte",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-10T14:40:56.970Z"
+        "seo_generated_at": "2026-10-10T16:14:49.577Z"
       }
     },
     {
@@ -610,7 +1330,7 @@
           "2026-10-10",
           "BBC Science"
         ],
-        "seo_generated_at": "2026-10-10T14:40:56.970Z"
+        "seo_generated_at": "2026-10-10T16:14:49.577Z"
       }
     },
     {
@@ -679,7 +1399,7 @@
           "2026-10-10",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-10T14:40:56.970Z"
+        "seo_generated_at": "2026-10-10T16:14:49.577Z"
       }
     },
     {
@@ -1125,7 +1845,7 @@
           "g1.globo.com minha globinho viva web",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-10T14:40:56.970Z"
+        "seo_generated_at": "2026-10-10T16:14:49.577Z"
       }
     },
     {
@@ -1219,7 +1939,7 @@
           "hollywoodreporter.com Naomi Ackie Discusses",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-10T14:40:56.970Z"
+        "seo_generated_at": "2026-10-10T16:14:49.577Z"
       }
     },
     {
@@ -1456,7 +2176,7 @@
           "bbc.co.uk screams haunting scenes deadly",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-10T14:40:56.970Z"
+        "seo_generated_at": "2026-10-10T16:14:49.577Z"
       }
     },
     {
@@ -1556,7 +2276,7 @@
           "g1.globo.com TV Globinho",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-10T14:40:56.970Z"
+        "seo_generated_at": "2026-10-10T16:14:49.577Z"
       }
     },
     {
@@ -1793,7 +2513,7 @@
           "hollywoodreporter.com bedford park star moon",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-10T14:40:56.970Z"
+        "seo_generated_at": "2026-10-10T16:14:49.577Z"
       }
     },
     {
@@ -2170,7 +2890,7 @@
           "g1.globo.com kbrum poe reggae album",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-10T14:40:56.970Z"
+        "seo_generated_at": "2026-10-10T16:14:49.577Z"
       }
     },
     {
@@ -3028,7 +3748,7 @@
           "g1.globo.com saiba como giulia conheceu",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-10T14:40:56.970Z"
+        "seo_generated_at": "2026-10-10T16:14:49.577Z"
       }
     },
     {
@@ -3126,7 +3846,7 @@
           "bbc.co.uk country music star ella",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-10T14:40:56.970Z"
+        "seo_generated_at": "2026-10-10T16:14:49.577Z"
       }
     },
     {
@@ -3287,7 +4007,7 @@
           "hollywoodreporter.com BlumFest Haunts New York",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-10T14:40:56.970Z"
+        "seo_generated_at": "2026-10-10T16:14:49.577Z"
       }
     },
     {
@@ -3386,7 +4106,7 @@
           "hollywoodreporter.com 14th review ava duvernay",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-10T14:40:56.970Z"
+        "seo_generated_at": "2026-10-10T16:14:49.577Z"
       }
     },
     {
@@ -3547,7 +4267,7 @@
           "hollywoodreporter.com Roseanne Barr’s Self-Produced TV",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-10T14:40:56.970Z"
+        "seo_generated_at": "2026-10-10T16:14:49.577Z"
       }
     },
     {
@@ -3850,7 +4570,7 @@
           "hollywoodreporter.com Iliza Shlesinger",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-10T14:40:56.970Z"
+        "seo_generated_at": "2026-10-10T16:14:49.577Z"
       }
     },
     {
@@ -3946,7 +4666,7 @@
           "hollywoodreporter.com LaKeith Stanfield",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-10T14:40:56.970Z"
+        "seo_generated_at": "2026-10-10T16:14:49.577Z"
       }
     },
     {
@@ -4114,7 +4834,7 @@
           "bbc.co.uk ashe too scared cancel",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-10T14:40:56.970Z"
+        "seo_generated_at": "2026-10-10T16:14:49.577Z"
       }
     },
     {
@@ -4208,7 +4928,7 @@
           "hollywoodreporter.com Israeli Americans Protest",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-10T14:40:56.970Z"
+        "seo_generated_at": "2026-10-10T16:14:49.577Z"
       }
     },
     {
@@ -6667,7 +7387,7 @@
           "bbc.co.uk hollywood actor luke evans",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-10T14:40:56.970Z"
+        "seo_generated_at": "2026-10-10T16:14:49.577Z"
       }
     },
     {
@@ -7090,7 +7810,7 @@
           "g1.globo.com Coletivo Pra Gira Girar",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-10T14:40:56.970Z"
+        "seo_generated_at": "2026-10-10T16:14:49.577Z"
       }
     },
     {
@@ -8239,7 +8959,7 @@
           "g1.globo.com MC PH",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-10T14:40:56.970Z"
+        "seo_generated_at": "2026-10-10T16:14:49.577Z"
       }
     },
     {
@@ -9055,7 +9775,7 @@
           "g1.globo.com ator pretty little liars",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-10T14:40:56.970Z"
+        "seo_generated_at": "2026-10-10T16:14:49.577Z"
       }
     },
     {
@@ -9287,7 +10007,7 @@
           "bbc.co.uk Crazy Rich Asians",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-10T14:40:56.970Z"
+        "seo_generated_at": "2026-10-10T16:14:49.577Z"
       }
     },
     {
@@ -9383,7 +10103,7 @@
           "bbc.co.uk Alison Hammond",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-10T14:40:56.970Z"
+        "seo_generated_at": "2026-10-10T16:14:49.577Z"
       }
     },
     {
@@ -11621,7 +12341,7 @@
           "2026-10-09",
           "October 2026"
         ],
-        "seo_generated_at": "2026-10-10T14:40:56.970Z"
+        "seo_generated_at": "2026-10-10T16:14:49.577Z"
       }
     },
     {
@@ -17461,7 +18181,7 @@
           "2026-10-08",
           "October 2026"
         ],
-        "seo_generated_at": "2026-10-10T14:40:56.970Z"
+        "seo_generated_at": "2026-10-10T16:14:49.577Z"
       }
     },
     {
@@ -91223,951 +91943,6 @@
           "BBC entertainment news"
         ],
         "seo_generated_at": "2026-09-18T21:04:09.404Z"
-      }
-    },
-    {
-      "id": "1bf28586",
-      "title": "Zoë Bell Is Ready for Round Two",
-      "url": "https://www.hollywoodreporter.com/movies/movie-news/zoe-bell-tarantino-xena-oscars-stunt-category-1236702510/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "published_at": "2026-09-17T21:00:00.000Z",
-      "discovered_at": "2026-09-17T22:49:48.557Z",
-      "event_type": "Entertainment",
-      "person": "Zoë Bell Is Ready",
-      "description": "Zoë Bell Is Ready: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": null,
-      "matchapp_url": "https://matchapp.tv/news/articles/zoe-bell-is-ready-for-round-two-1bf285/",
-      "landing_url": "https://matchapp.tv/?news=1bf28586#latest-news",
-      "seo": {
-        "primary_keyword": "Zoë Bell Is Ready latest news",
-        "short_tail": [
-          "Zoë Bell Is Ready",
-          "Zoë Bell Is Ready news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "Zoë Bell Is Ready latest news September 2026",
-          "Zoë Bell Is Ready entertainment update 2026",
-          "Zoë Bell Is Ready news 2026-09-17",
-          "latest entertainment news about Zoë Bell Is Ready",
-          "zoe bell ready zoe bell ready latest update",
-          "The Hollywood Reporter Zoë Bell Is Ready entertainment",
-          "latest news about Zoë Bell Is Ready September 2026",
-          "Zoë Bell Is Ready entertainment news 2026-09-17",
-          "what happened with Zoë Bell Is Ready"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Zoë Bell Is Ready",
-          "zoe",
-          "bell",
-          "ready",
-          "round",
-          "two"
-        ],
-        "freshness_keywords": [
-          "September 2026",
-          "2026-09-17",
-          "Zoë Bell Is Ready 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter Zoë Bell Is Ready",
-          "hollywoodreporter.com Zoë Bell Is Ready",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "Zoë Bell Is Ready for Round Two | Entertainment News |…",
-        "meta_description": "Zoë Bell Is Ready: Entertainment update reported by The Hollywood Reporter on 2026-09-17. See verified context, publication time and the original source via…",
-        "keywords": [
-          "Zoë Bell Is Ready latest news",
-          "Zoë Bell Is Ready",
-          "Zoë Bell Is Ready news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "Zoë Bell Is Ready latest news September 2026",
-          "Zoë Bell Is Ready entertainment update 2026",
-          "Zoë Bell Is Ready news 2026-09-17",
-          "latest entertainment news about Zoë Bell Is Ready",
-          "zoe bell ready zoe bell ready latest update",
-          "The Hollywood Reporter Zoë Bell Is Ready entertainment",
-          "latest news about Zoë Bell Is Ready September 2026",
-          "Zoë Bell Is Ready entertainment news 2026-09-17",
-          "what happened with Zoë Bell Is Ready",
-          "zoe",
-          "bell",
-          "ready",
-          "round",
-          "two",
-          "September 2026",
-          "2026-09-17",
-          "Zoë Bell Is Ready 2026",
-          "The Hollywood Reporter Zoë Bell Is Ready",
-          "hollywoodreporter.com Zoë Bell Is Ready",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-09-17T22:49:48.557Z"
-      }
-    },
-    {
-      "id": "14c270c3",
-      "title": "Disney Names New Streaming Boss In Major Shake Up of Direct-to-Consumer Division",
-      "url": "https://www.hollywoodreporter.com/business/business-news/disney-streaming-chairman-adam-smith-joe-earley-tv-1236704657/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "published_at": "2026-09-17T21:00:00.000Z",
-      "discovered_at": "2026-09-17T22:49:48.557Z",
-      "event_type": "Entertainment",
-      "person": "Disney Names New Streaming",
-      "description": "Disney Names New Streaming: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": null,
-      "matchapp_url": "https://matchapp.tv/news/articles/disney-names-new-streaming-boss-in-major-shake-up-of-direct-to-consumer-division-14c270/",
-      "landing_url": "https://matchapp.tv/?news=14c270c3#latest-news",
-      "seo": {
-        "primary_keyword": "Disney Names New Streaming latest news",
-        "short_tail": [
-          "Disney Names New Streaming",
-          "Disney Names New Streaming news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "Disney Names New Streaming latest news September 2026",
-          "Disney Names New Streaming entertainment update 2026",
-          "Disney Names New Streaming news 2026-09-17",
-          "latest entertainment news about Disney Names New Streaming",
-          "disney names new streaming disney names latest update",
-          "The Hollywood Reporter Disney Names New Streaming entertainment",
-          "latest news about Disney Names New Streaming September 2026",
-          "Disney Names New Streaming entertainment news 2026-09-17",
-          "what happened with Disney Names New Streaming"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Disney Names New Streaming",
-          "disney",
-          "names",
-          "new",
-          "streaming"
-        ],
-        "freshness_keywords": [
-          "September 2026",
-          "2026-09-17",
-          "Disney Names New Streaming 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter Disney Names New Streaming",
-          "hollywoodreporter.com Disney Names New Streaming",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "Disney Names New Streaming Boss In Major Shake Up of…",
-        "meta_description": "Disney Names New Streaming: Entertainment update reported by The Hollywood Reporter on 2026-09-17. See verified context, publication time and the original…",
-        "keywords": [
-          "Disney Names New Streaming latest news",
-          "Disney Names New Streaming",
-          "Disney Names New Streaming news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "Disney Names New Streaming latest news September 2026",
-          "Disney Names New Streaming entertainment update 2026",
-          "Disney Names New Streaming news 2026-09-17",
-          "latest entertainment news about Disney Names New Streaming",
-          "disney names new streaming disney names latest update",
-          "The Hollywood Reporter Disney Names New Streaming entertainment",
-          "latest news about Disney Names New Streaming September 2026",
-          "Disney Names New Streaming entertainment news 2026-09-17",
-          "what happened with Disney Names New Streaming",
-          "disney",
-          "names",
-          "new",
-          "streaming",
-          "September 2026",
-          "2026-09-17",
-          "Disney Names New Streaming 2026",
-          "The Hollywood Reporter Disney Names New Streaming",
-          "hollywoodreporter.com Disney Names New Streaming",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-09-17T22:49:48.557Z"
-      }
-    },
-    {
-      "id": "d21ffeda",
-      "title": "How &#8216;S.W.A.T.: Exiles&#8217; Evolves the Franchise: &#8220;It&#8217;s Darker, Edgier,&#8221; Says Star Shemar Moore (Exclusive)",
-      "url": "https://www.hollywoodreporter.com/tv/tv-features/swat-exiles-darker-hondo-shemar-moore-interview-1236704740/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "published_at": "2026-09-17T20:58:23.000Z",
-      "discovered_at": "2026-09-17T22:49:48.557Z",
-      "event_type": "Entertainment",
-      "person": "",
-      "description": "entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": null,
-      "matchapp_url": "https://matchapp.tv/news/articles/how-8216-s-w-a-t-exiles-8217-evolves-the-franchise-8220-it-8217-s-darker-edgier--d21ffe/",
-      "landing_url": "https://matchapp.tv/?news=d21ffeda#latest-news",
-      "seo": {
-        "primary_keyword": "how 8216 exiles 8217 latest news",
-        "short_tail": [
-          "how 8216 exiles 8217",
-          "how 8216 exiles 8217 news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "how 8216 exiles 8217 latest news September 2026",
-          "how 8216 exiles 8217 entertainment update 2026",
-          "how 8216 exiles 8217 news 2026-09-17",
-          "latest entertainment news about how 8216 exiles 8217",
-          "how 8216 exiles 8217 evolves franchise latest update",
-          "The Hollywood Reporter how 8216 exiles 8217 entertainment",
-          "latest news about how 8216 exiles 8217 September 2026",
-          "how 8216 exiles 8217 entertainment news 2026-09-17",
-          "what happened with how 8216 exiles 8217"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "how",
-          "8216",
-          "exiles",
-          "8217",
-          "evolves",
-          "franchise",
-          "8220"
-        ],
-        "freshness_keywords": [
-          "September 2026",
-          "2026-09-17",
-          "how 8216 exiles 8217 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter how 8216 exiles 8217",
-          "hollywoodreporter.com how 8216 exiles 8217",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "How &#8216;S.W.A.T.: Exiles&#8217; Evolves the Franchise:…",
-        "meta_description": "Entertainment update reported by The Hollywood Reporter on 2026-09-17. See verified context, publication time and the original source via MatchApp TV.",
-        "keywords": [
-          "how 8216 exiles 8217 latest news",
-          "how 8216 exiles 8217",
-          "how 8216 exiles 8217 news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "how 8216 exiles 8217 latest news September 2026",
-          "how 8216 exiles 8217 entertainment update 2026",
-          "how 8216 exiles 8217 news 2026-09-17",
-          "latest entertainment news about how 8216 exiles 8217",
-          "how 8216 exiles 8217 evolves franchise latest update",
-          "The Hollywood Reporter how 8216 exiles 8217 entertainment",
-          "latest news about how 8216 exiles 8217 September 2026",
-          "how 8216 exiles 8217 entertainment news 2026-09-17",
-          "what happened with how 8216 exiles 8217",
-          "how",
-          "8216",
-          "exiles",
-          "8217",
-          "evolves",
-          "franchise",
-          "8220",
-          "September 2026",
-          "2026-09-17",
-          "how 8216 exiles 8217 2026",
-          "The Hollywood Reporter how 8216 exiles 8217",
-          "hollywoodreporter.com how 8216 exiles 8217",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-09-17T22:49:48.557Z"
-      }
-    },
-    {
-      "id": "ed8fab3e",
-      "title": "Survival Tips From Oldenburg&#8217;s Resident Provocateur: Edgar Pera",
-      "url": "https://www.hollywoodreporter.com/movies/movie-news/oldenburg-festival-director-edgar-pera-interview-1236703622/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "published_at": "2026-09-17T20:00:00.000Z",
-      "discovered_at": "2026-09-17T20:10:24.364Z",
-      "event_type": "Entertainment",
-      "person": "Survival Tips From Oldenburg",
-      "description": "Survival Tips From Oldenburg: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": null,
-      "matchapp_url": "https://matchapp.tv/news/articles/survival-tips-from-oldenburg-8217-s-resident-provocateur-edgar-pera-ed8fab/",
-      "landing_url": "https://matchapp.tv/?news=ed8fab3e#latest-news",
-      "seo": {
-        "primary_keyword": "Survival Tips From Oldenburg latest news",
-        "short_tail": [
-          "Survival Tips From Oldenburg",
-          "Survival Tips From Oldenburg news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "Survival Tips From Oldenburg latest news September 2026",
-          "Survival Tips From Oldenburg entertainment update 2026",
-          "Survival Tips From Oldenburg news 2026-09-17",
-          "latest entertainment news about Survival Tips From Oldenburg",
-          "survival tips oldenburg survival tips oldenburg latest update",
-          "The Hollywood Reporter Survival Tips From Oldenburg entertainment",
-          "latest news about Survival Tips From Oldenburg September 2026",
-          "Survival Tips From Oldenburg entertainment news 2026-09-17",
-          "what happened with Survival Tips From Oldenburg"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Survival Tips From Oldenburg",
-          "survival",
-          "tips",
-          "oldenburg",
-          "8217",
-          "resident"
-        ],
-        "freshness_keywords": [
-          "September 2026",
-          "2026-09-17",
-          "Survival Tips From Oldenburg 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter Survival Tips From Oldenburg",
-          "hollywoodreporter.com Survival Tips From Oldenburg",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "Survival Tips From Oldenburg&#8217;s Resident Provocateur: Edgar…",
-        "meta_description": "Survival Tips From Oldenburg: Entertainment update reported by The Hollywood Reporter on 2026-09-17. See verified context, publication time and the original…",
-        "keywords": [
-          "Survival Tips From Oldenburg latest news",
-          "Survival Tips From Oldenburg",
-          "Survival Tips From Oldenburg news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "Survival Tips From Oldenburg latest news September 2026",
-          "Survival Tips From Oldenburg entertainment update 2026",
-          "Survival Tips From Oldenburg news 2026-09-17",
-          "latest entertainment news about Survival Tips From Oldenburg",
-          "survival tips oldenburg survival tips oldenburg latest update",
-          "The Hollywood Reporter Survival Tips From Oldenburg entertainment",
-          "latest news about Survival Tips From Oldenburg September 2026",
-          "Survival Tips From Oldenburg entertainment news 2026-09-17",
-          "what happened with Survival Tips From Oldenburg",
-          "survival",
-          "tips",
-          "oldenburg",
-          "8217",
-          "resident",
-          "September 2026",
-          "2026-09-17",
-          "Survival Tips From Oldenburg 2026",
-          "The Hollywood Reporter Survival Tips From Oldenburg",
-          "hollywoodreporter.com Survival Tips From Oldenburg",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-09-17T20:10:24.364Z"
-      }
-    },
-    {
-      "id": "92a8ece4",
-      "title": "Lady Gaga e Michael Polansky são pais de uma menina, diz site",
-      "url": "https://g1.globo.com/pop-arte/noticia/2026/09/17/lady-gaga-e-michael-polansky-sao-pais-de-uma-menina-diz-site.ghtml",
-      "source": "G1",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "BR",
-      "published_at": "2026-09-17T18:31:46.000Z",
-      "discovered_at": "2026-09-17T19:15:08.304Z",
-      "event_type": "Entertainment",
-      "person": "Lady Gaga",
-      "description": "Lady Gaga: entertainment headline reported by G1. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://s2-g1.glbimg.com/ydlsMloydo1ZdVk8Gash8sBDxEE=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/u/i/8vUOG7QAeM0h3vUHTRgw/ap26033027094044.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/lady-gaga-e-michael-polansky-sao-pais-de-uma-menina-diz-site-92a8ec/",
-      "landing_url": "https://matchapp.tv/?news=92a8ece4#latest-news",
-      "seo": {
-        "primary_keyword": "Lady Gaga latest news",
-        "short_tail": [
-          "Lady Gaga",
-          "Lady Gaga news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje"
-        ],
-        "long_tail": [
-          "Lady Gaga latest news September 2026",
-          "Lady Gaga entertainment update 2026",
-          "Lady Gaga news 2026-09-17",
-          "latest entertainment news about Lady Gaga",
-          "lady gaga lady gaga michael polansky latest update",
-          "G1 Lady Gaga entertainment",
-          "últimas notícias sobre Lady Gaga setembro 2026",
-          "Lady Gaga notícia de 2026-09-17",
-          "o que aconteceu com Lady Gaga"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Lady Gaga",
-          "lady",
-          "gaga",
-          "michael",
-          "polansky",
-          "sao",
-          "pais"
-        ],
-        "freshness_keywords": [
-          "September 2026",
-          "2026-09-17",
-          "setembro 2026",
-          "Lady Gaga 2026"
-        ],
-        "source_keywords": [
-          "G1 Lady Gaga",
-          "g1.globo.com Lady Gaga",
-          "G1 entertainment news"
-        ],
-        "meta_title": "Lady Gaga e Michael Polansky são pais de uma menina, diz site |…",
-        "meta_description": "Lady Gaga: Entertainment update reported by G1 on 2026-09-17. See verified context, publication time and the original source via MatchApp TV.",
-        "keywords": [
-          "Lady Gaga latest news",
-          "Lady Gaga",
-          "Lady Gaga news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "Lady Gaga latest news September 2026",
-          "Lady Gaga entertainment update 2026",
-          "Lady Gaga news 2026-09-17",
-          "latest entertainment news about Lady Gaga",
-          "lady gaga lady gaga michael polansky latest update",
-          "G1 Lady Gaga entertainment",
-          "últimas notícias sobre Lady Gaga setembro 2026",
-          "Lady Gaga notícia de 2026-09-17",
-          "o que aconteceu com Lady Gaga",
-          "lady",
-          "gaga",
-          "michael",
-          "polansky",
-          "sao",
-          "pais",
-          "September 2026",
-          "2026-09-17",
-          "setembro 2026",
-          "Lady Gaga 2026",
-          "G1 Lady Gaga",
-          "g1.globo.com Lady Gaga",
-          "G1 entertainment news"
-        ],
-        "seo_generated_at": "2026-09-17T19:15:08.304Z"
-      }
-    },
-    {
-      "id": "e02b58cb",
-      "title": "Law &#038; Crime Signs With WME (Exclusive)",
-      "url": "https://www.hollywoodreporter.com/tv/tv-news/law-and-crime-signs-with-wme-exclusive-dan-abrams-court-tv-1236704660/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "published_at": "2026-09-17T17:53:54.000Z",
-      "discovered_at": "2026-09-17T19:15:08.304Z",
-      "event_type": "Entertainment",
-      "person": "",
-      "description": "entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": null,
-      "matchapp_url": "https://matchapp.tv/news/articles/law-038-crime-signs-with-wme-exclusive-e02b58/",
-      "landing_url": "https://matchapp.tv/?news=e02b58cb#latest-news",
-      "seo": {
-        "primary_keyword": "law 038 crime signs latest news",
-        "short_tail": [
-          "law 038 crime signs",
-          "law 038 crime signs news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "law 038 crime signs latest news September 2026",
-          "law 038 crime signs entertainment update 2026",
-          "law 038 crime signs news 2026-09-17",
-          "latest entertainment news about law 038 crime signs",
-          "law 038 crime signs wme exclusive latest update",
-          "The Hollywood Reporter law 038 crime signs entertainment",
-          "latest news about law 038 crime signs September 2026",
-          "law 038 crime signs entertainment news 2026-09-17",
-          "what happened with law 038 crime signs"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "law",
-          "038",
-          "crime",
-          "signs",
-          "wme",
-          "exclusive"
-        ],
-        "freshness_keywords": [
-          "September 2026",
-          "2026-09-17",
-          "law 038 crime signs 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter law 038 crime signs",
-          "hollywoodreporter.com law 038 crime signs",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "Law &#038; Crime Signs With WME (Exclusive) | Latest Entertainment…",
-        "meta_description": "Entertainment update reported by The Hollywood Reporter on 2026-09-17. See verified context, publication time and the original source via MatchApp TV.",
-        "keywords": [
-          "law 038 crime signs latest news",
-          "law 038 crime signs",
-          "law 038 crime signs news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "law 038 crime signs latest news September 2026",
-          "law 038 crime signs entertainment update 2026",
-          "law 038 crime signs news 2026-09-17",
-          "latest entertainment news about law 038 crime signs",
-          "law 038 crime signs wme exclusive latest update",
-          "The Hollywood Reporter law 038 crime signs entertainment",
-          "latest news about law 038 crime signs September 2026",
-          "law 038 crime signs entertainment news 2026-09-17",
-          "what happened with law 038 crime signs",
-          "law",
-          "038",
-          "crime",
-          "signs",
-          "wme",
-          "exclusive",
-          "September 2026",
-          "2026-09-17",
-          "law 038 crime signs 2026",
-          "The Hollywood Reporter law 038 crime signs",
-          "hollywoodreporter.com law 038 crime signs",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-09-17T19:15:08.304Z"
-      }
-    },
-    {
-      "id": "0ec17c4e",
-      "title": "&#8216;Monster: The Lizzie Borden Story&#8217; Team on Painting a Portrait of Female Rage — and Leaning into Lesbian Theories",
-      "url": "https://www.hollywoodreporter.com/tv/tv-news/monster-lizzie-borden-story-female-rage-lesbian-theories-1236704571/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "published_at": "2026-09-17T17:45:44.000Z",
-      "discovered_at": "2026-09-17T19:15:08.304Z",
-      "event_type": "Entertainment",
-      "person": "",
-      "description": "entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": null,
-      "matchapp_url": "https://matchapp.tv/news/articles/8216-monster-the-lizzie-borden-story-8217-team-on-painting-a-portrait-of-female--0ec17c/",
-      "landing_url": "https://matchapp.tv/?news=0ec17c4e#latest-news",
-      "seo": {
-        "primary_keyword": "8216 monster lizzie borden latest news",
-        "short_tail": [
-          "8216 monster lizzie borden",
-          "8216 monster lizzie borden news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "8216 monster lizzie borden latest news September 2026",
-          "8216 monster lizzie borden entertainment update 2026",
-          "8216 monster lizzie borden news 2026-09-17",
-          "latest entertainment news about 8216 monster lizzie borden",
-          "8216 monster lizzie borden story 8217 latest update",
-          "The Hollywood Reporter 8216 monster lizzie borden entertainment",
-          "latest news about 8216 monster lizzie borden September 2026",
-          "8216 monster lizzie borden entertainment news 2026-09-17",
-          "what happened with 8216 monster lizzie borden"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "8216",
-          "monster",
-          "lizzie",
-          "borden",
-          "story",
-          "8217",
-          "team",
-          "painting"
-        ],
-        "freshness_keywords": [
-          "September 2026",
-          "2026-09-17",
-          "8216 monster lizzie borden 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter 8216 monster lizzie borden",
-          "hollywoodreporter.com 8216 monster lizzie borden",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "&#8216;Monster: The Lizzie Borden Story&#8217; Team on Painting a…",
-        "meta_description": "Entertainment update reported by The Hollywood Reporter on 2026-09-17. See verified context, publication time and the original source via MatchApp TV.",
-        "keywords": [
-          "8216 monster lizzie borden latest news",
-          "8216 monster lizzie borden",
-          "8216 monster lizzie borden news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "8216 monster lizzie borden latest news September 2026",
-          "8216 monster lizzie borden entertainment update 2026",
-          "8216 monster lizzie borden news 2026-09-17",
-          "latest entertainment news about 8216 monster lizzie borden",
-          "8216 monster lizzie borden story 8217 latest update",
-          "The Hollywood Reporter 8216 monster lizzie borden entertainment",
-          "latest news about 8216 monster lizzie borden September 2026",
-          "8216 monster lizzie borden entertainment news 2026-09-17",
-          "what happened with 8216 monster lizzie borden",
-          "8216",
-          "monster",
-          "lizzie",
-          "borden",
-          "story",
-          "8217",
-          "team",
-          "painting",
-          "September 2026",
-          "2026-09-17",
-          "8216 monster lizzie borden 2026",
-          "The Hollywood Reporter 8216 monster lizzie borden",
-          "hollywoodreporter.com 8216 monster lizzie borden",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-09-17T19:15:08.304Z"
-      }
-    },
-    {
-      "id": "735fdc8f",
-      "title": "Ed Sheeran perde mais de 300 mil seguidores após expulsão de rapper da turnê",
-      "url": "https://g1.globo.com/pop-arte/musica/noticia/2026/09/17/ed-sheeran-perde-mais-de-300-mil-seguidores-apos-expulsao-de-rapper-da-turne.ghtml",
-      "source": "G1",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "BR",
-      "published_at": "2026-09-17T17:41:25.000Z",
-      "discovered_at": "2026-09-17T19:15:08.304Z",
-      "event_type": "Entertainment",
-      "person": "Ed Sheeran",
-      "description": "Ed Sheeran: entertainment headline reported by G1. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://s2-g1.glbimg.com/DE6NjmE3BUbaZ10-kzOaCN4MlJQ=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2024/5/B/cHvWk6T9OFFVSvNNMhFg/ed-sheeran-rock-in-rio-2024-ag-2.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/ed-sheeran-perde-mais-de-300-mil-seguidores-apos-expulsao-de-rapper-da-turne-735fdc/",
-      "landing_url": "https://matchapp.tv/?news=735fdc8f#latest-news",
-      "seo": {
-        "primary_keyword": "what happened with ed sheeran",
-        "short_tail": [
-          "Ed Sheeran",
-          "Ed Sheeran news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "what happened with ed sheeran"
-        ],
-        "long_tail": [
-          "Ed Sheeran latest news September 2026",
-          "Ed Sheeran entertainment update 2026",
-          "Ed Sheeran news 2026-09-17",
-          "latest entertainment news about Ed Sheeran",
-          "sheeran sheeran perde mais 300 mil latest update",
-          "G1 Ed Sheeran entertainment",
-          "últimas notícias sobre Ed Sheeran setembro 2026",
-          "Ed Sheeran notícia de 2026-09-17",
-          "o que aconteceu com Ed Sheeran"
-        ],
-        "trend_keywords": [
-          "what happened with ed sheeran"
-        ],
-        "entity_keywords": [
-          "Ed Sheeran",
-          "sheeran",
-          "perde",
-          "mais",
-          "300",
-          "mil",
-          "seguidores",
-          "apos"
-        ],
-        "freshness_keywords": [
-          "September 2026",
-          "2026-09-17",
-          "setembro 2026",
-          "Ed Sheeran 2026"
-        ],
-        "source_keywords": [
-          "G1 Ed Sheeran",
-          "g1.globo.com Ed Sheeran",
-          "G1 entertainment news"
-        ],
-        "meta_title": "Ed Sheeran perde mais de 300 mil seguidores após expulsão de…",
-        "meta_description": "Ed Sheeran: Entertainment update reported by G1 on 2026-09-17. See verified context, publication time and the original source via MatchApp TV.",
-        "keywords": [
-          "what happened with ed sheeran",
-          "Ed Sheeran",
-          "Ed Sheeran news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "Ed Sheeran latest news September 2026",
-          "Ed Sheeran entertainment update 2026",
-          "Ed Sheeran news 2026-09-17",
-          "latest entertainment news about Ed Sheeran",
-          "sheeran sheeran perde mais 300 mil latest update",
-          "G1 Ed Sheeran entertainment",
-          "últimas notícias sobre Ed Sheeran setembro 2026",
-          "Ed Sheeran notícia de 2026-09-17",
-          "o que aconteceu com Ed Sheeran",
-          "sheeran",
-          "perde",
-          "mais",
-          "300",
-          "mil",
-          "seguidores",
-          "apos",
-          "September 2026",
-          "2026-09-17",
-          "setembro 2026",
-          "Ed Sheeran 2026",
-          "G1 Ed Sheeran",
-          "g1.globo.com Ed Sheeran",
-          "G1 entertainment news"
-        ],
-        "seo_generated_at": "2026-09-17T19:15:08.304Z"
-      }
-    },
-    {
-      "id": "73f6d395",
-      "title": "Edie Falco to Star in Fox Legal Drama",
-      "url": "https://www.hollywoodreporter.com/tv/tv-news/edie-falco-fox-legal-drama-katie-greaves-1236704659/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "published_at": "2026-09-17T17:33:58.000Z",
-      "discovered_at": "2026-09-17T19:15:08.304Z",
-      "event_type": "Casting",
-      "person": "Edie Falco",
-      "description": "Edie Falco: casting headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": null,
-      "matchapp_url": "https://matchapp.tv/news/articles/edie-falco-to-star-in-fox-legal-drama-73f6d3/",
-      "landing_url": "https://matchapp.tv/?news=73f6d395#latest-news",
-      "seo": {
-        "primary_keyword": "Edie Falco latest news",
-        "short_tail": [
-          "Edie Falco",
-          "Edie Falco news",
-          "casting",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "Edie Falco latest news September 2026",
-          "Edie Falco casting update 2026",
-          "Edie Falco news 2026-09-17",
-          "latest casting news about Edie Falco",
-          "edie falco edie falco star fox latest update",
-          "The Hollywood Reporter Edie Falco casting",
-          "latest news about Edie Falco September 2026",
-          "Edie Falco entertainment news 2026-09-17",
-          "what happened with Edie Falco"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Edie Falco",
-          "edie",
-          "falco",
-          "star",
-          "fox",
-          "legal",
-          "drama"
-        ],
-        "freshness_keywords": [
-          "September 2026",
-          "2026-09-17",
-          "Edie Falco 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter Edie Falco",
-          "hollywoodreporter.com Edie Falco",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "Edie Falco to Star in Fox Legal Drama | Latest Entertainment News…",
-        "meta_description": "Edie Falco: Casting update reported by The Hollywood Reporter on 2026-09-17. See verified context, publication time and the original source via MatchApp TV.",
-        "keywords": [
-          "Edie Falco latest news",
-          "Edie Falco",
-          "Edie Falco news",
-          "casting",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "Edie Falco latest news September 2026",
-          "Edie Falco casting update 2026",
-          "Edie Falco news 2026-09-17",
-          "latest casting news about Edie Falco",
-          "edie falco edie falco star fox latest update",
-          "The Hollywood Reporter Edie Falco casting",
-          "latest news about Edie Falco September 2026",
-          "Edie Falco entertainment news 2026-09-17",
-          "what happened with Edie Falco",
-          "edie",
-          "falco",
-          "star",
-          "fox",
-          "legal",
-          "drama",
-          "September 2026",
-          "2026-09-17",
-          "Edie Falco 2026",
-          "The Hollywood Reporter Edie Falco",
-          "hollywoodreporter.com Edie Falco",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-09-17T19:15:08.304Z"
-      }
-    },
-    {
-      "id": "c491a454",
-      "title": "&#8216;JAŸ-Z in 8&#8217; Review: Rick Rubin&#8217;s Handsomely Made HBO Docuseries Impresses and Exasperates in Equal Measure",
-      "url": "https://www.hollywoodreporter.com/tv/tv-reviews/jay-z-in-8-review-hbo-rick-rubin-1236704066/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "published_at": "2026-09-17T17:27:30.000Z",
-      "discovered_at": "2026-09-17T19:15:08.304Z",
-      "event_type": "Entertainment",
-      "person": "",
-      "description": "entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": null,
-      "matchapp_url": "https://matchapp.tv/news/articles/8216-jay-z-in-8-8217-review-rick-rubin-8217-s-handsomely-made-hbo-docuseries-imp-c491a4/",
-      "landing_url": "https://matchapp.tv/?news=c491a454#latest-news",
-      "seo": {
-        "primary_keyword": "8216 jay 8217 review latest news",
-        "short_tail": [
-          "8216 jay 8217 review",
-          "8216 jay 8217 review news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "8216 jay 8217 review latest news September 2026",
-          "8216 jay 8217 review entertainment update 2026",
-          "8216 jay 8217 review news 2026-09-17",
-          "latest entertainment news about 8216 jay 8217 review",
-          "8216 jay 8217 review rick rubin latest update",
-          "The Hollywood Reporter 8216 jay 8217 review entertainment",
-          "latest news about 8216 jay 8217 review September 2026",
-          "8216 jay 8217 review entertainment news 2026-09-17",
-          "what happened with 8216 jay 8217 review"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "8216",
-          "jay",
-          "8217",
-          "review",
-          "rick",
-          "rubin",
-          "handsomely"
-        ],
-        "freshness_keywords": [
-          "September 2026",
-          "2026-09-17",
-          "8216 jay 8217 review 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter 8216 jay 8217 review",
-          "hollywoodreporter.com 8216 jay 8217 review",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "&#8216;JAŸ-Z in 8&#8217; Review: Rick Rubin&#8217;s Handsomely…",
-        "meta_description": "Entertainment update reported by The Hollywood Reporter on 2026-09-17. See verified context, publication time and the original source via MatchApp TV.",
-        "keywords": [
-          "8216 jay 8217 review latest news",
-          "8216 jay 8217 review",
-          "8216 jay 8217 review news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "8216 jay 8217 review latest news September 2026",
-          "8216 jay 8217 review entertainment update 2026",
-          "8216 jay 8217 review news 2026-09-17",
-          "latest entertainment news about 8216 jay 8217 review",
-          "8216 jay 8217 review rick rubin latest update",
-          "The Hollywood Reporter 8216 jay 8217 review entertainment",
-          "latest news about 8216 jay 8217 review September 2026",
-          "8216 jay 8217 review entertainment news 2026-09-17",
-          "what happened with 8216 jay 8217 review",
-          "8216",
-          "jay",
-          "8217",
-          "review",
-          "rick",
-          "rubin",
-          "handsomely",
-          "September 2026",
-          "2026-09-17",
-          "8216 jay 8217 review 2026",
-          "The Hollywood Reporter 8216 jay 8217 review",
-          "hollywoodreporter.com 8216 jay 8217 review",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-09-17T19:15:08.304Z"
       }
     }
   ]
