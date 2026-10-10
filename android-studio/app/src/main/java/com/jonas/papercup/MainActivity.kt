@@ -659,54 +659,47 @@ class MainActivity : AppCompatActivity() {
             ?.takeIf { it.matches(Regex("^[A-Za-z]{2,3}(-[A-Za-z]{2,4})?$")) }
             ?: "en-US"
         val locale = Locale.forLanguageTag(tag)
-        if (locale.language.isNotBlank()) chooseJonasVoice(engine, locale)
+        // Fail closed instead of speaking using Android's default (often female) TTS.
+        if (locale.language.isBlank() || !chooseJonasVoice(engine, locale)) {
+            sendVoiceSpeakingState(false)
+            return
+        }
         engine.setSpeechRate(0.98f)
         engine.speak(value, TextToSpeech.QUEUE_FLUSH, null, "matchapp-ai-reply")
     }
 
     /**
-     * Jonas is a male avatar. A higher-quality female system voice must not win,
-     * and a female-only device is pitched down so the greeting does not sound like a woman.
+     * Android TTS does not expose a trustworthy voice-gender field. Never use
+     * language defaults or pitch-shift female/unknown voices into a "male" voice.
+     * If a voice cannot be positively identified, keep Jonas silent (text works).
      */
-    private fun chooseJonasVoice(engine: TextToSpeech, locale: Locale) {
-        val languageVoices = engine.voices
-            ?.filter { it.locale.language.equals(locale.language, ignoreCase = true) }
-            .orEmpty()
-        val localVoices = languageVoices.filterNot { it.isNetworkConnectionRequired }
-        val candidates = if (localVoices.isNotEmpty()) localVoices else languageVoices
-        val natural = Regex("neural|natural|enhanced|premium|studio", RegexOption.IGNORE_CASE)
-        val maleVoice = Regex(
-            "(^|[^a-z])(male|man|guy|david|daniel|mark|george|fred|jorge|ricardo|carlos)([^a-z]|$)|x-iom|x-tpd|x-iob|-m\\d",
+    private fun chooseJonasVoice(engine: TextToSpeech, locale: Locale): Boolean {
+        val approvedMale = Regex(
+            "(^|[^a-z])(male|man|guy|david|daniel|mark|george|fred|aaron|alex|arthur|" +
+                "oliver|ryan|andrew|ricardo|jorge|pablo|diego|paulo|thiago|antonio|" +
+                "henri|thomas|luca|stefan|conrad|pavel|dmitry|hamed|hemant|ichiro|" +
+                "keita|madhur|yunxi|yunyang|injoon|hyunsu)([^a-z]|$)",
             RegexOption.IGNORE_CASE
         )
-        val femaleVoice = Regex(
-            "(^|[^a-z])(female|woman|girl|samantha|aria|jenny|ava|zira|susan|karen|helena|luciana|francisca|joana)([^a-z]|$)|x-sfg|x-tpf|x-iog|-f\\d",
+        val femaleOrUnknownGender = Regex(
+            "(^|[^a-z])(female|woman|girl|samantha|jenny|aria|zira|susan|ava|" +
+                "karen|helena|luciana|joana)([^a-z]|$)|x-sfg|x-tpf|x-iog|-f\\d",
             RegexOption.IGNORE_CASE
         )
-        val chosen = candidates.maxByOrNull { voice ->
-            val name = voice.name.orEmpty()
-            var score = voice.quality
-            if (voice.locale.toLanguageTag().equals(locale.toLanguageTag(), ignoreCase = true)) score += 500
-            if (!voice.isNetworkConnectionRequired) score += 250
-            if (natural.containsMatchIn(name)) score += 400
-            if (maleVoice.containsMatchIn(name)) score += 2000
-            if (femaleVoice.containsMatchIn(name)) score -= 2000
-            score
-        }
-        if (chosen == null) {
-            engine.language = locale
-            engine.setPitch(0.88f)
-            return
-        }
-        engine.voice = chosen
-        val name = chosen.name.orEmpty()
-        engine.setPitch(
-            when {
-                maleVoice.containsMatchIn(name) -> 0.96f
-                femaleVoice.containsMatchIn(name) -> 0.78f
-                else -> 0.88f
-            }
-        )
+        val eligible = engine.voices.orEmpty()
+            .filterNot { it.isNetworkConnectionRequired }
+            .filter { it.locale.language.equals(locale.language, ignoreCase = true) }
+            .filter { approvedMale.containsMatchIn(it.name.orEmpty()) }
+            .filterNot { femaleOrUnknownGender.containsMatchIn(it.name.orEmpty()) }
+        val selected = eligible.maxByOrNull { candidate ->
+            (if (candidate.locale.toLanguageTag().equals(locale.toLanguageTag(), true)) 1000 else 0) +
+                (if (!candidate.isNetworkConnectionRequired) 200 else 0) + candidate.quality
+        } ?: return false
+        return runCatching {
+            engine.voice = selected
+            engine.setPitch(1.0f)
+            engine.voice?.name == selected.name
+        }.getOrDefault(false)
     }
 
     private inner class NativeStartupBridge {

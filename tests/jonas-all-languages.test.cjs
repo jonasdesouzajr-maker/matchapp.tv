@@ -1,7 +1,7 @@
 'use strict';
 const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),{JSDOM}=require('jsdom');
 const root=path.resolve(__dirname,'..'),read=rel=>fs.readFileSync(path.join(root,rel),'utf8');
-const localeCode=read('jonas/locales.js'),widget=read('jonas/floating-home.js'),voice=read('jonas/floating-voice.js'),homepage=read('index.html');
+const localeCode=read('jonas/locales.js'),widget=read('jonas/floating-home.js'),voice=read('jonas/floating-voice.js'),policy=read('jonas/male-voice-policy-20261010.js'),homepage=read('index.html');
 const start=homepage.indexOf('<aside id="ma-jonas-home"'),markup=homepage.slice(start,homepage.indexOf('</aside>',start)+8);
 function fixture(lang){
  const dom=new JSDOM('<!doctype html><html lang="'+lang+'"><body class="page-home"><div id="ma-ai-entry"><div id="search-box"><textarea id="specific-search-input"></textarea></div></div>'+markup+'</body></html>',{url:'https://matchapp.tv/',runScripts:'outside-only',pretendToBeVisual:true});
@@ -9,9 +9,9 @@ function fixture(lang){
  w.MATCH_LANG=lang;w.matchMedia=()=>({matches:false});
  w.navigator.mediaDevices={getUserMedia:()=>{voiceState.permission++;return Promise.resolve({getTracks:()=>[{stop(){}}]})}};
  w.SpeechSynthesisUtterance=class{constructor(text){this.text=text}};
- w.speechSynthesis={cancel(){},speak:u=>voiceState.said.push(u),getVoices:()=>[]};
+ w.speechSynthesis={cancel(){},speak:u=>voiceState.said.push(u),getVoices:()=>[{name:'Male voice',lang:lang==='pt-BR'?'pt-BR':lang+'-'+lang.toUpperCase(),localService:true}]};
  w.SpeechRecognition=class{start(){voiceState.langs.push(this.lang)}abort(){}};
- w.eval(localeCode);w.eval(widget);w.eval(voice);
+ w.eval(localeCode);w.eval(widget);w.eval(policy);w.eval(voice);
  return {dom,w,doc:w.document,state:voiceState};
 }
 test('every supported top-box language has localized Jonas UI and a BCP47 voice code',()=>{
