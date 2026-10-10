@@ -27,7 +27,13 @@ const words={
 'de':['Bereit zuzuhören','Jonas spricht','Ich höre zu...','Ich denke nach'],
 'it':['Pronto ad ascoltare','Jonas sta parlando','Ti ascolto...','Sto pensando'],
 'ja':['お話をどうぞ','Jonasが話しています','聞いています','考えています'],
-'ko':['들을 준비가 됐어요','Jonas가 말하고 있어요','듣고 있어요','생각하고 있어요']
+'ko':['들을 준비가 됐어요','Jonas가 말하고 있어요','듣고 있어요','생각하고 있어요'],
+'tr':['Dinlemeye hazırım','Jonas konuşuyor','Dinliyorum... konuşabilirsiniz','Sorunuzu düşünüyorum'],
+'ru':['Готов слушать','Йонас говорит','Слушаю... говорите','Обдумываю ваш вопрос'],
+'ar':['جاهز للاستماع','يوناس يتحدث','أستمع إليك الآن','أفكر في سؤالك'],
+'hi':['सुनने के लिए तैयार','जोनास बोल रहा है','सुन रहा हूँ... बोलिए','आपके प्रश्न पर विचार कर रहा हूँ'],
+'id':['Siap mendengarkan','Jonas sedang berbicara','Mendengarkan... silakan bicara','Sedang memikirkan pertanyaan Anda'],
+'zh':['准备聆听','Jonas 正在说话','正在聆听，请说话','正在思考你的问题']
 };
 function labels(){const l=String(window.MATCH_LANG||document.documentElement.lang||navigator.language||'en').toLowerCase();return words[l.split('-')[0]]||words.en}
 function change(state){el.dataset.state=state;status.textContent=labels()[{idle:0,speaking:1,listening:2,thinking:3}[state]??0];mic.setAttribute('aria-pressed',String(state==='listening'))}
