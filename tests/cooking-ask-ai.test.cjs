@@ -9,7 +9,7 @@ test('adult cooking Ask AI is source-bound and uses existing quota, never cinema
   assert.match(ask,/!bookIntent && !cookingIntent && wantsTitleRecommendations/);
   assert.match(ask,/bookIntent \|\| cookingIntent/);
   assert(ask.includes("window.MatchCooking.channels.forEach"));
-  assert(html.indexOf('/cooking/catalog.js?v=')<html.indexOf('/discover.js?v='));
+  assert(html.indexOf('/cooking/catalog.js?v=')<html.indexOf('/discover-male-only-20261010.js'));
   assert(!fs.readFileSync('kids/index.html','utf8').includes('/cooking/catalog.js'));
 });
 
