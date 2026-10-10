@@ -78,6 +78,34 @@
  }
  function listen(token){
   if(token!==session||mode!=='voice'||panel.hidden)return;
+  // The installed Android WebView does not expose the browser SpeechRecognition
+  // API reliably. Use the existing native recognizer bridge instead and preserve
+  // the voice-origin marker through the authorized /discover.html navigation.
+  if(window.MatchAppNativeVoice&&typeof window.MatchAppNativeVoice.start==='function'){
+   var oldNativeResult=window.matchAppNativeVoiceResult;
+   var oldNativeError=window.matchAppNativeVoiceError;
+   function returnToQuestion(transcript){
+    if(token!==session||mode!=='voice'||panel.hidden){if(typeof oldNativeResult==='function')oldNativeResult(transcript);return}
+    var words=String(transcript||'').trim();
+    if(!words)return;
+    input.value=words;
+    try{sessionStorage.setItem('matchapp_voice_origin_v1',JSON.stringify({inputId:'ma-jonas-home-input',text:words,scope:'adult',at:Date.now()}))}catch(_){}
+    ++session;mode='idle';stopVoice();
+    if(form?.requestSubmit)form.requestSubmit();
+    else location.assign('/discover.html?q='+encodeURIComponent(words)+'&focus=start');
+   }
+   window.matchAppNativeVoiceResult=returnToQuestion;
+   window.matchAppNativeVoiceError=function(code){
+    if(token!==session||mode!=='voice'){if(typeof oldNativeError==='function')oldNativeError(code);return}
+    root.classList.remove('jh-listening');mic?.setAttribute('aria-pressed','false');
+    statusText('Microphone unavailable. Tap to retry or type.','Microfone indisponível. Toque para tentar novamente ou digite.');
+   };
+   root.classList.add('jh-listening');mic?.setAttribute('aria-pressed','true');
+   statusText('Listening — speak now.','Ouvindo — pode falar.');
+   try{window.MatchAppNativeVoice.start(locale()?.speech()||window.MATCH_LANG||'en-US')}
+   catch(_){window.matchAppNativeVoiceError?.('unavailable')}
+   return;
+  }
   var Engine=window.SpeechRecognition||window.webkitSpeechRecognition;
   if(!Engine){statusText('Voice recognition is unavailable here. You can type instead.','Reconhecimento de voz indisponível aqui. Você pode digitar.');return;}
   stopRecognition();
@@ -94,6 +122,7 @@
     }
     if(transcript.trim()){input.value=transcript.trim();status.textContent=input.value}
     if(isFinal&&input.value.trim()){
+     try{sessionStorage.setItem('matchapp_voice_origin_v1',JSON.stringify({inputId:'ma-jonas-home-input',text:input.value.trim(),scope:'adult',at:Date.now()}))}catch(_){}
      ++session;mode='idle';stopVoice();
      status.textContent=input.value;
      if(form?.requestSubmit)form.requestSubmit();
