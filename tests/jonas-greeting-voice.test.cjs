@@ -4,6 +4,7 @@ const root=path.join(__dirname,'..');
 const home=fs.readFileSync(path.join(root,'index.html'),'utf8');
 const host=fs.readFileSync(path.join(root,'jonas/floating-home.js'),'utf8');
 const voice=fs.readFileSync(path.join(root,'jonas/floating-voice.js'),'utf8');
+const policy=fs.readFileSync(path.join(root,'jonas/male-voice-policy-20261010.js'),'utf8');
 const css=fs.readFileSync(path.join(root,'jonas/floating-chat.css'),'utf8');
 const markup=home.slice(home.indexOf('<aside id="ma-jonas-home"'),home.indexOf('</aside>',home.indexOf('<aside id="ma-jonas-home"'))+'</aside>'.length);
 function fixture(){
@@ -13,12 +14,12 @@ function fixture(){
  w.matchMedia=()=>({matches:false});
  w.navigator.mediaDevices={getUserMedia:()=>{state.permission++;return Promise.resolve({getTracks:()=>[{stop:()=>{}}]})}};
  w.SpeechSynthesisUtterance=class{constructor(text){this.text=text}};
- w.speechSynthesis={cancel:()=>{},speak:u=>state.greeted.push(u),getVoices:()=>[]};
+ w.speechSynthesis={cancel:()=>{},speak:u=>state.greeted.push(u),getVoices:()=>[{name:'Daniel',lang:'en-US',localService:true}]};
  w.SpeechRecognition=class{constructor(){state.rec=this}start(){state.started++}abort(){state.aborted++}};
  w.eval(host);
  const field=w.document.getElementById('ma-jonas-home-input');const add=field.addEventListener.bind(field);
  field.addEventListener=function(type,callback,options){if(type==='beforeinput')state.typed=callback;return add(type,callback,options)};
- w.eval(voice);
+ w.eval(policy);w.eval(voice);
  const form=w.document.querySelector('.jh-form');form.requestSubmit=()=>state.submitted++;
  return {dom,w,doc:w.document,state};
 }
@@ -48,7 +49,8 @@ test('Jonas prefers a matching masculine voice and moves his face only while spe
  assert.equal(doc.getElementById('ma-jonas-home').classList.contains('jh-speaking'),false);
  state.greeted[0].onstart();
  assert.ok(doc.getElementById('ma-jonas-home').classList.contains('jh-speaking'));
- assert.match(doc.querySelector('.jh-medallion img').src,/\/smile\.jpg$/);
+ assert.ok(doc.getElementById('ma-jonas-home').classList.contains('jh-speaking'));
+ assert.ok(doc.querySelector('.jh-mouth-layer'));
  state.greeted[0].onend();
  assert.ok(!doc.getElementById('ma-jonas-home').classList.contains('jh-speaking'));
  assert.match(doc.querySelector('.jh-medallion img').src,/\/rest\.jpg$/);
@@ -89,5 +91,26 @@ test('explicit text mode disables voice but leaves the official text form usable
  assert.match(doc.getElementById('ma-jonas-home-status').textContent,/Text mode/);
  field.value='Find a great drama';doc.querySelector('.jh-form').requestSubmit();
  assert.equal(state.submitted,1);
+ dom.window.close();
+});
+
+test('female-only voices never produce speech; microphone/text remain functional',()=>{
+ const {dom,w,doc,state}=fixture();
+ w.speechSynthesis.getVoices=()=>[
+  {name:'Samantha',lang:'en-US',localService:true},
+  {name:'Google US English',lang:'en-US',localService:true}
+ ];
+ doc.getElementById('ma-jonas-home-bubble').click();
+ assert.equal(state.greeted.length,0,'no female or unspecified synthesized greeting');
+ assert.equal(state.started,1,'speech recognition still starts');
+ assert.match(doc.getElementById('ma-jonas-home-input').getAttribute('name'),/q/);
+ dom.window.close();
+});
+test('no enumerated voices never triggers browser default voice',()=>{
+ const {dom,w,doc,state}=fixture();
+ w.speechSynthesis.getVoices=()=>[];
+ doc.getElementById('ma-jonas-home-bubble').click();
+ assert.equal(state.greeted.length,0);
+ assert.equal(state.started,1);
  dom.window.close();
 });
