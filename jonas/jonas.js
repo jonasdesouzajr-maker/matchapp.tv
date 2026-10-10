@@ -164,10 +164,19 @@
     setMicGlyph(false); micButton.setAttribute("aria-label", "Start microphone");
   }
   function voiceLanguage() {
-    const lang = (navigator.language || "en-US").toLowerCase();
-    return lang.startsWith("pt") ? "pt-BR" : lang.startsWith("es") ? "es-ES" : navigator.language || "en-US";
+    return window.MatchAppJonasLocale?.speech?.() || navigator.language || "en-US";
   }
-  function useVoice(text) {
+  function pickVoice(language) {
+    const voices = speechSynthesis.getVoices?.() || [];
+    const exact = voices.filter(v => v.lang.toLowerCase() === language.toLowerCase());
+    const same = voices.filter(v => v.lang.split("-")[0].toLowerCase() === language.split("-")[0].toLowerCase());
+    const choices = exact.length ? exact : same;
+    const adultMale = /\b(male|daniel|alex|aaron|david|james|thomas|george|oliver|arthur|fred|ricardo|diego|rishi|paulo|antonio|jorge|marcelo|mark|andrew|lucas|felipe|pedro|hugo|henri|pierre|giuseppe|lorenzo|sean|ryan)\b/i;
+    return choices.find(v => adultMale.test(v.name) && v.localService) ||
+           choices.find(v => adultMale.test(v.name)) ||
+           choices.find(v => v.localService) || choices[0] || null;
+  }
+  function useVoice(text, onDone) {
     if (window.MatchAppNativeVoice?.speak) {
       const mine = ++epoch;
       speaking = true; bubble.classList.add("is-speaking"); uiStatus("Jonas is speaking…");
@@ -176,10 +185,11 @@
         if (speaking && mine === epoch) setExpression(shapes[(step++) % shapes.length]);
       }, 220);
       const finish = () => {
-        if (mine !== epoch) return;
+        if (mine !== epoch || !speaking) return;
         speaking = false; bubble.classList.remove("is-speaking");
         clearInterval(audioAnimation); audioAnimation = null;
         setExpression("rest"); uiStatus("Ready when you are");
+        if (typeof onDone === "function" && open) onDone();
       };
       window.matchAppNativeSpeechState = (active) => { if (!active) finish(); };
       document.addEventListener("matchapp:avatar-voice-unavailable", finish, { once: true });
@@ -197,20 +207,32 @@
     utter.lang = voiceLanguage();
     utter.pitch = .89;
     utter.rate = .97;
-    const voices = speechSynthesis.getVoices();
-    const local = voices.filter((v) => v.lang.toLowerCase().startsWith(utter.lang.slice(0, 2).toLowerCase()));
-    utter.voice = local.find((v) => /male|daniel|alex|ricardo|diego|rishi|fred|aaron/i.test(v.name)) || local[0] || null;
+    utter.voice = pickVoice(utter.lang);
+    utter.pitch = .85; utter.rate = .94; utter.volume = 1;
+    let speechStarted = false;
     const done = () => {
-      if (myEpoch !== epoch) return;
+      if (myEpoch !== epoch || !speaking) return;
       speaking = false; bubble.classList.remove("is-speaking");
       clearInterval(audioAnimation); audioAnimation = null;
       setExpression("rest"); uiStatus("Ready when you are");
+      if (typeof onDone === "function" && open) onDone();
+    };
+    utter.onstart = () => {
+      if (myEpoch !== epoch) return;
+      speechStarted = true;
+      bubble.classList.add("is-speaking"); uiStatus("Jonas is speaking…");
+      let i = 0;
+      audioAnimation = setInterval(() => { if (speaking) setExpression(shapes[(i++) % shapes.length]); }, 170);
+    };
+    utter.onboundary = e => {
+      if (myEpoch !== epoch || !speechStarted) return;
+      const next = String(text).charAt(e.charIndex || 0).toLowerCase();
+      setExpression(/[ou]/.test(next) ? "oh" : /[eiiy]/.test(next) ? "ee" : "aa");
     };
     utter.onend = done; utter.onerror = done;
-    speaking = true; bubble.classList.add("is-speaking"); uiStatus("Jonas is speaking…");
-    let i = 0;
-    audioAnimation = setInterval(() => { if (speaking) setExpression(shapes[(i++) % shapes.length]); }, 220);
-    speechSynthesis.speak(utter);
+    speaking = true;
+    try { speechSynthesis.speak(utter); speechSynthesis.resume?.(); }
+    catch { done(); }
   }
   // Production secrets never live here. The preview Android native bridge talks
   // to the already-metered MatchApp Ai Edge Function using a public anon JWT.
@@ -382,13 +404,23 @@
       listening = false; uiStatus("Microphone permission is unavailable.");
     }
   }
-  function showChat() {
+  function showChat(greetOnOpen = false) {
+    const wasOpen = open;
     open = true; sheet.hidden = false; backdrop.hidden = false;
     bubble.setAttribute("aria-expanded", "true");
     document.body.classList.add("chat-is-open");
     uiStatus(busy ? "Thinking…" : "Ready when you are");
-    // Do not raise the software keyboard when Jonas is merely opened.
-    // Users can tap the composer explicitly to type, or use the microphone.
+    if (greetOnOpen && !wasOpen && !busy) {
+      const greeting = window.MatchAppJonasLocale?.t?.("greeting") || "Hi, I'm Jonas. What would you like to discover?";
+      const first = log.querySelector(".chat-entry.bot p");
+      if (first) first.textContent = greeting;
+      if (speaking || listening) stopVoice();
+      useVoice(greeting, () => {
+        // Speech comes first. Recognition is activated only after Jonas finishes.
+        if (open && !busy && !input.value.trim() && !document.hidden) startListening();
+      });
+    }
+    // Keep the keyboard down until the user explicitly types.
   }
   function hideChat() {
     open = false; sheet.hidden = true; backdrop.hidden = true;
@@ -399,13 +431,7 @@
   }
   function toggleChat() {
     if (open) hideChat();
-    else {
-      showChat();
-      if (!speaking && !listening) {
-        setExpression("smile");
-        setTimeout(() => { if (!speaking && !listening) setExpression("rest"); }, 480);
-      }
-    }
+    else showChat(true);
   }
   function clampPosition(left, top) {
     const w = bubble.offsetWidth, h = bubble.offsetHeight;
@@ -503,12 +529,16 @@
   document.querySelectorAll("[data-prompt]").forEach((button) => button.addEventListener("click", () => {
     showChat(); void send(button.dataset.prompt);
   }));
-  $("talk-hero").addEventListener("click", showChat);
+  $("talk-hero").addEventListener("click", () => showChat(true));
   closeButton.addEventListener("click", hideChat);
   backdrop.addEventListener("click", hideChat);
   $("save-reply").addEventListener("click", saveReply);
   micButton.addEventListener("click", startListening);
   document.addEventListener("keydown", (event) => { if (event.key === "Escape" && open) hideChat(); });
+  input.addEventListener("beforeinput", (event) => {
+    // Typing always wins over an automatic voice greeting.
+    if (event.isTrusted && speaking && !busy) stopVoice();
+  });
   form.addEventListener("submit", (event) => {
     event.preventDefault(); const value = input.value.trim();
     if (!value) return;

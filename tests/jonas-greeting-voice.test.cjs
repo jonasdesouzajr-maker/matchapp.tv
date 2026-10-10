@@ -22,18 +22,36 @@ function fixture(){
  const form=w.document.querySelector('.jh-form');form.requestSubmit=()=>state.submitted++;
  return {dom,w,doc:w.document,state};
 }
-test('a genuine bubble tap opens the full stage, greets once, and asks for mic access',async()=>{
+test('a genuine bubble tap greets audibly without opening the microphone while speaking',async()=>{
  const {dom,w,doc,state}=fixture();doc.getElementById('ma-jonas-home-bubble').click();
  assert.equal(doc.getElementById('ma-jonas-home-panel').hidden,false);
  assert.equal(doc.getElementById('ma-jonas-home').parentElement,doc.body);
  assert.ok(doc.getElementById('ma-jonas-home').classList.contains('is-chat-stage'));
  assert.ok(doc.body.classList.contains('ma-jonas-chat-open'));
  assert.equal(state.greeted.length,1);assert.match(state.greeted[0].text,/Hi, I'm Jonas/);
- assert.equal(state.permission,1);
+ assert.equal(state.permission,0,'microphone capture must not mute the greeting');
  assert.equal(state.started,0,'wait for greeting to finish before listening');
  state.greeted[0].onend();assert.equal(state.started,1);
  assert.match(doc.getElementById('ma-jonas-home-status').textContent,/greeting|microphone/i);
  assert.match(css,/\.is-chat-stage/);
+ dom.window.close();
+});
+test('Jonas prefers a matching masculine voice and moves his face only while speaking',()=>{
+ const {dom,doc,w,state}=fixture();
+ w.speechSynthesis.getVoices=()=>[
+  {name:'Woman US',lang:'en-US',localService:true},
+  {name:'Daniel',lang:'en-US',localService:true},
+  {name:'Daniel French',lang:'fr-FR',localService:true}
+ ];
+ doc.getElementById('ma-jonas-home-bubble').click();
+ assert.equal(state.greeted[0].voice.name,'Daniel');
+ assert.equal(doc.getElementById('ma-jonas-home').classList.contains('jh-speaking'),false);
+ state.greeted[0].onstart();
+ assert.ok(doc.getElementById('ma-jonas-home').classList.contains('jh-speaking'));
+ assert.match(doc.querySelector('.jh-medallion img').src,/\/smile\.jpg$/);
+ state.greeted[0].onend();
+ assert.ok(!doc.getElementById('ma-jonas-home').classList.contains('jh-speaking'));
+ assert.match(doc.querySelector('.jh-medallion img').src,/\/rest\.jpg$/);
  dom.window.close();
 });
 test('recognized voice question goes through the existing authenticated /discover route',()=>{

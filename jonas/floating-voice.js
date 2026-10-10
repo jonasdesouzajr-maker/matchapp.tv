@@ -8,7 +8,27 @@
  window.__matchappJonasVoice=true;
  var input=root.querySelector('#ma-jonas-home-input'),form=root.querySelector('.jh-form');
  var mic=root.querySelector('#ma-jonas-home-mic'),status=root.querySelector('#ma-jonas-home-status');
- var recognition=null,mode='idle',session=0,spoken=null,timeout=0,guard=0;
+ var recognition=null,mode='idle',session=0,spoken=null,timeout=0,guard=0,mouthTimer=0;
+ var portrait=root.querySelector('.jh-medallion img');
+ var faceBase='/jonas/faces/jonas/';
+ ['rest','smile','aa','ee','oh'].forEach(function(name){var image=new Image();image.src=faceBase+name+'.jpg'});
+ try{window.speechSynthesis?.getVoices?.()}catch(_){}
+ function face(name){if(portrait)portrait.src=faceBase+name+'.jpg'}
+ function voiceFor(lang){
+  var all=window.speechSynthesis?.getVoices?.()||[],lc=lang.toLowerCase();
+  var matching=all.filter(function(v){return v.lang.toLowerCase()===lc});
+  if(!matching.length)matching=all.filter(function(v){return v.lang.toLowerCase().split('-')[0]===lc.split('-')[0]});
+  // Choose a natural male voice that matches Jonas's adult portrait where installed.
+  var male=/\b(male|daniel|alex|aaron|david|james|thomas|george|oliver|arthur|fred|ricardo|diego|rishi|paulo|antonio|jorge|marcelo|mark|andrew|lucas|felipe|pedro|hugo|henri|pierre|giuseppe|lorenzo|sean|ryan)\b/i;
+  return matching.find(function(v){return male.test(v.name)&&v.localService})||matching.find(function(v){return male.test(v.name)})||matching.find(function(v){return v.localService})||matching[0]||null;
+ }
+ function animateMouth(){
+  clearInterval(mouthTimer);var frames=['aa','ee','oh','rest'];var pos=0;
+  face('smile');root.classList.add('jh-speaking');
+  mouthTimer=setInterval(function(){if(!document.hidden)face(frames[pos++%frames.length])},150);
+ }
+ function resetMouth(){clearInterval(mouthTimer);mouthTimer=0;face('rest');root.classList.remove('jh-speaking')}
+
  function locale(){return window.MatchAppJonasLocale}
  function isPt(){return /^pt/i.test(window.MATCH_LANG||document.documentElement.lang||navigator.language||'en')}
  function label(en,pt){return isPt()?pt:en}
@@ -33,7 +53,7 @@
  function stopVoice(){
   clearTimeout(timeout);clearTimeout(guard);stopRecognition();
   try{if(spoken&&'speechSynthesis' in window)window.speechSynthesis.cancel()}catch(_){}
-  spoken=null;
+  spoken=null;resetMouth();
   root.classList.remove('jh-listening','jh-greeting');
   if(mic){mic.setAttribute('aria-pressed','false');mic.title=label('Start voice input','Iniciar entrada por voz')}
  }
@@ -82,33 +102,35 @@
  function greet(token){
   var message=locale()?.t('greeting')||label("Hi, I'm Jonas. What would you like to discover?","Olá, sou o Jonas. O que você gostaria de descobrir?");
   root.classList.add('jh-greeting');statusText('Jonas is greeting you…','Jonas está dando as boas-vindas…');
-  var complete=false;
-  function finish(){if(complete)return;complete=true;root.classList.remove('jh-greeting');if(token===session&&mode==='voice')listen(token)}
-  timeout=setTimeout(finish,4500);
+  var complete=false,started=false;
+  function finish(){
+   if(complete)return;complete=true;clearTimeout(timeout);resetMouth();
+   root.classList.remove('jh-greeting');
+   if(token===session&&mode==='voice')listen(token);
+  }
+  // The greeting is visible even if the OS has no usable synthesized voice.
   if(!('speechSynthesis' in window)||!('SpeechSynthesisUtterance' in window)){finish();return;}
+  timeout=setTimeout(function(){if(token===session)finish()},11000);
   try{
-   window.speechSynthesis.cancel();
+   // stopVoice already cancelled the previous utterance; calling cancel twice
+   // in the same user activation can swallow Chrome/Android's first greeting.
    spoken=new SpeechSynthesisUtterance(message);spoken.lang=locale()?.speech()||(isPt()?'pt-BR':'en-US');
-   var voices=window.speechSynthesis.getVoices?.()||[];
-   var best=voices.find(function(v){return v.lang.toLowerCase()===spoken.lang.toLowerCase()})||voices.find(function(v){return v.lang.split('-')[0].toLowerCase()===spoken.lang.split('-')[0].toLowerCase()});
-   if(best)spoken.voice=best;
-   spoken.rate=.95;spoken.pitch=1;spoken.onend=finish;spoken.onerror=finish;
+   spoken.voice=voiceFor(spoken.lang);
+   spoken.rate=.94;spoken.pitch=.85;spoken.volume=1;
+   spoken.onstart=function(){if(token===session){started=true;animateMouth()}};
+   spoken.onboundary=function(e){if(token!==session||!started)return;var ch=message.charAt(e.charIndex||0).toLowerCase();face(/[oou]/.test(ch)?'oh':/[eiiy]/.test(ch)?'ee':'aa')};
+   spoken.onend=finish;spoken.onerror=finish;
    window.speechSynthesis.speak(spoken);
+   window.speechSynthesis.resume?.();
   }catch(_){finish()}
  }
  function startVoice(automatic){
   ++session;var token=session;mode='voice';root.dataset.voiceMode='voice';stopVoice();
-  if(!panel.hidden){
-   // Permission request originates from the actual avatar tap. The temporary
-   // stream is released immediately: speech recognition owns recording thereafter.
-   if(automatic&&navigator.mediaDevices?.getUserMedia){
-    try{navigator.mediaDevices.getUserMedia({audio:true}).then(function(stream){
-      stream.getTracks().forEach(function(t){t.stop()});
-    }).catch(function(){if(token===session&&mode==='voice')statusText('Please allow microphone access, or type instead.','Permita acesso ao microfone ou digite.')});}catch(_){}
-   }
-   if(automatic)greet(token);
-   else {statusText('Starting microphone…','Iniciando microfone…');listen(token)}
-  }
+  if(panel.hidden)return;
+  // Requesting a microphone stream while TTS starts ducks/silences Android
+  // Chrome audio. Speak first; browser recognition requests permission next.
+  if(automatic)greet(token);
+  else {statusText('Starting microphone…','Iniciando microfone…');listen(token)}
  }
  root.addEventListener('matchapp:jonas-open',function(){startVoice(true)});
  root.addEventListener('matchapp:jonas-close',function(){++session;mode='idle';stopVoice()});
