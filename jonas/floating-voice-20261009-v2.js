@@ -1,0 +1,154 @@
+/* Jonas: greeting + mic opt-in from a real tap; typing always wins.
+   The recognized query goes through the original authenticated MatchApp Ai route.
+   No API keys, parallel AI engine, or background recording. */
+(function(){
+ 'use strict';
+ var root=document.getElementById('ma-jonas-home'),panel=document.getElementById('ma-jonas-home-panel');
+ if(!root||!panel||window.MATCHAPP_ANDROID||window.__matchappJonasVoice)return;
+ window.__matchappJonasVoice=true;
+ var input=root.querySelector('#ma-jonas-home-input'),form=root.querySelector('.jh-form');
+ var mic=root.querySelector('#ma-jonas-home-mic'),status=root.querySelector('#ma-jonas-home-status');
+ var recognition=null,mode='idle',session=0,spoken=null,timeout=0,guard=0,mouthTimer=0;
+ var portrait=root.querySelector('.jh-medallion img');
+ var faceBase='/jonas/faces/jonas/';
+ ['rest','smile','aa','ee','oh'].forEach(function(name){var image=new Image();image.src=faceBase+name+'.jpg'});
+ try{window.speechSynthesis?.getVoices?.()}catch(_){}
+ function face(name){if(portrait)portrait.src=faceBase+name+'.jpg'}
+ function voiceFor(lang){
+  var all=window.speechSynthesis?.getVoices?.()||[],lc=lang.toLowerCase();
+  var matching=all.filter(function(v){return v.lang.toLowerCase()===lc});
+  if(!matching.length)matching=all.filter(function(v){return v.lang.toLowerCase().split('-')[0]===lc.split('-')[0]});
+  // Choose a natural male voice that matches Jonas's adult portrait where installed.
+  var male=/\b(male|daniel|alex|aaron|david|james|thomas|george|oliver|arthur|fred|ricardo|diego|rishi|paulo|antonio|jorge|marcelo|mark|andrew|lucas|felipe|pedro|hugo|henri|pierre|giuseppe|lorenzo|sean|ryan)\b/i;
+  return matching.find(function(v){return male.test(v.name)&&v.localService})||matching.find(function(v){return male.test(v.name)})||matching.find(function(v){return v.localService})||matching[0]||null;
+ }
+ function animateMouth(){
+  clearInterval(mouthTimer);var frames=['aa','ee','oh','rest'];var pos=0;
+  face('smile');root.classList.add('jh-speaking');
+  mouthTimer=setInterval(function(){if(!document.hidden)face(frames[pos++%frames.length])},150);
+ }
+ function resetMouth(){clearInterval(mouthTimer);mouthTimer=0;face('rest');root.classList.remove('jh-speaking')}
+
+ function locale(){return window.MatchAppJonasLocale}
+ function isPt(){return /^pt/i.test(window.MATCH_LANG||document.documentElement.lang||navigator.language||'en')}
+ function label(en,pt){return isPt()?pt:en}
+ function statusText(en,pt){
+  if(!status)return;
+  var key={
+   'Tap Jonas to talk · or start typing':'ready',
+   'Jonas is greeting you…':'speaking','Listening… speak now':'listening',
+   'Starting microphone…':'mic','Text mode · Voice is off':'text',
+   'Speech recognition is unavailable here. You can type instead.':'unsupported',
+   'Microphone unavailable or denied. You can type instead.':'denied',
+   'Please allow microphone access, or type instead.':'permission',
+   'Could not hear you. Tap the microphone to try again.':'permission',
+   'Automatic listening was blocked. Tap the microphone to retry.':'permission',
+   'Speak now, or tap the microphone to retry.':'listening'
+  }[en];
+  status.textContent=(key&&locale()?.t(key))||label(en,pt);
+ }
+ function stopRecognition(){
+  if(recognition){var r=recognition;recognition=null;r.onresult=null;r.onend=null;r.onerror=null;try{r.abort()}catch(_){}}
+ }
+ function stopVoice(){
+  clearTimeout(timeout);clearTimeout(guard);stopRecognition();
+  try{if(spoken&&'speechSynthesis' in window)window.speechSynthesis.cancel()}catch(_){}
+  spoken=null;resetMouth();
+  root.classList.remove('jh-listening','jh-greeting');
+  if(mic){mic.setAttribute('aria-pressed','false');mic.title=label('Start voice input','Iniciar entrada por voz')}
+ }
+ function switchToText(){
+  if(mode==='text')return;
+  ++session;mode='text';stopVoice();
+  root.dataset.voiceMode='text';
+  statusText('Text mode · Voice is off','Modo texto · Voz desativada');
+ }
+ function listen(token){
+  if(token!==session||mode!=='voice'||panel.hidden)return;
+  var Engine=window.SpeechRecognition||window.webkitSpeechRecognition;
+  if(!Engine){statusText('Voice recognition is unavailable here. You can type instead.','Reconhecimento de voz indisponível aqui. Você pode digitar.');return;}
+  stopRecognition();
+  try{
+   var r=new Engine();recognition=r;r.lang=locale()?.speech()||window.MATCH_LANG||document.documentElement.lang||navigator.language||'en-US';
+   r.continuous=false;r.interimResults=true;r.maxAlternatives=1;
+   r.onstart=function(){if(token!==session||mode!=='voice')return;root.classList.add('jh-listening');mic?.setAttribute('aria-pressed','true');statusText('Listening… speak now','Ouvindo… pode falar')};
+   r.onresult=function(e){
+    if(token!==session||mode!=='voice')return;
+    var transcript='',isFinal=false;
+    for(var i=e.resultIndex;i<e.results.length;i++){
+     transcript+=e.results[i][0]?.transcript||'';
+     if(e.results[i].isFinal)isFinal=true;
+    }
+    if(transcript.trim()){input.value=transcript.trim();status.textContent=input.value}
+    if(isFinal&&input.value.trim()){
+     ++session;mode='idle';stopVoice();
+     status.textContent=input.value;
+     if(form?.requestSubmit)form.requestSubmit();
+     else location.assign('/discover.html?q='+encodeURIComponent(input.value.trim())+'&focus=start');
+    }
+   };
+   r.onerror=function(e){
+    if(token!==session||mode!=='voice')return;
+    var denied=['not-allowed','service-not-allowed','audio-capture'].includes(e.error);
+    stopRecognition();root.classList.remove('jh-listening');mic?.setAttribute('aria-pressed','false');
+    statusText(denied?'Microphone unavailable or denied. You can type instead.':'Could not hear you. Tap the microphone to try again.',
+     denied?'Microfone indisponível ou sem permissão. Você pode digitar.':'Não consegui ouvir. Toque no microfone para tentar novamente.');
+   };
+   r.onend=function(){if(token===session){root.classList.remove('jh-listening');mic?.setAttribute('aria-pressed','false')}};
+   r.start();
+   guard=setTimeout(function(){if(token===session&&mode==='voice'&&!input.value.trim())statusText('Speak now, or tap the microphone to retry.','Fale agora ou toque no microfone para tentar de novo.')},11000);
+  }catch(_){statusText('Automatic listening was blocked. Tap the microphone to retry.','A escuta automática foi bloqueada. Toque no microfone para tentar de novo.')}
+ }
+ function greet(token){
+  var message=locale()?.t('greeting')||label("Hi, I'm Jonas. What would you like to discover?","Olá, sou o Jonas. O que você gostaria de descobrir?");
+  root.classList.add('jh-greeting');statusText('Jonas is greeting you…','Jonas está dando as boas-vindas…');
+  var complete=false,started=false;
+  function finish(){
+   if(complete)return;complete=true;clearTimeout(timeout);resetMouth();
+   root.classList.remove('jh-greeting');
+   if(token===session&&mode==='voice')listen(token);
+  }
+  // The greeting is visible even if the OS has no usable synthesized voice.
+  if(!('speechSynthesis' in window)||!('SpeechSynthesisUtterance' in window)){finish();return;}
+  timeout=setTimeout(function(){if(token===session)finish()},11000);
+  try{
+   // stopVoice already cancelled the previous utterance; calling cancel twice
+   // in the same user activation can swallow Chrome/Android's first greeting.
+   spoken=new SpeechSynthesisUtterance(message);spoken.lang=locale()?.speech()||(isPt()?'pt-BR':'en-US');
+   spoken.voice=voiceFor(spoken.lang);
+   spoken.rate=.94;spoken.pitch=.85;spoken.volume=1;
+   spoken.onstart=function(){if(token===session){started=true;animateMouth()}};
+   spoken.onboundary=function(e){if(token!==session||!started)return;var ch=message.charAt(e.charIndex||0).toLowerCase();face(/[oou]/.test(ch)?'oh':/[eiiy]/.test(ch)?'ee':'aa')};
+   spoken.onend=finish;spoken.onerror=finish;
+   window.speechSynthesis.speak(spoken);
+   window.speechSynthesis.resume?.();
+  }catch(_){finish()}
+ }
+ function startVoice(automatic){
+  ++session;var token=session;mode='voice';root.dataset.voiceMode='voice';stopVoice();
+  if(panel.hidden)return;
+  // Requesting a microphone stream while TTS starts ducks/silences Android
+  // Chrome audio. Speak first; browser recognition requests permission next.
+  if(automatic)greet(token);
+  else {statusText('Starting microphone…','Iniciando microfone…');listen(token)}
+ }
+ root.addEventListener('matchapp:jonas-open',function(){startVoice(true)});
+ root.addEventListener('matchapp:jonas-close',function(){++session;mode='idle';stopVoice()});
+ root.addEventListener('matchapp:jonas-language',function(){
+  if(mode==='voice'&&!panel.hidden){startVoice(true);return}
+  if(mode==='text')statusText('Text mode · Voice is off','Modo texto · Voz desativada');
+  else statusText('Tap Jonas to talk · or start typing','Toque no Jonas para falar · ou digite');
+ });
+ mic?.addEventListener('click',function(e){
+  e.stopPropagation();
+  if(mode==='voice'&&root.classList.contains('jh-listening')){switchToText();return;}
+  startVoice(false);
+ });
+ input?.addEventListener('beforeinput',function(e){if(e.isTrusted)switchToText()});
+ input?.addEventListener('keydown',function(e){if(e.isTrusted&&!['Tab','Escape','Enter'].includes(e.key))switchToText()});
+ input?.addEventListener('focus',function(e){if(e.isTrusted&&input.value.trim())switchToText()});
+ form?.addEventListener('submit',function(){switchToText()});
+ document.addEventListener('visibilitychange',function(){if(document.hidden){++session;mode='idle';stopVoice()}});
+ window.addEventListener('pagehide',function(){++session;mode='idle';stopVoice()});
+ statusText('Tap Jonas to talk · or start typing','Toque no Jonas para falar · ou digite');
+})();
