@@ -31,3 +31,27 @@ border:0;color:#251632;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.3)}
 #jonas-voice-stage[data-state="speaking"] .jds-indicator{background:#83f0ba;box-shadow:0 0 11px #83f0ba}
 @media(max-width:420px){#jonas-voice-stage.jonas-voice-stage{gap:11px;padding:9px 11px;min-height:94px;border-radius:17px}#jonas-voice-stage .jds-portrait{width:75px;height:75px;flex-basis:75px}#jonas-voice-stage .jds-copy strong{font-size:16px}#jonas-voice-stage .jds-state{font-size:11px}}
 @media(prefers-reduced-motion:reduce){#jonas-voice-stage *{animation:none!important;transition:none!important}}
+
+/* Lifeline: never flash the portrait. Eyes and mouth overlay only their own area. */
+#jonas-voice-stage .jds-eyes{
+ display:block;position:absolute;inset:0;width:100%;height:100%;
+ object-fit:cover;object-position:center 20%;border-radius:50%;
+ clip-path:inset(0 0 51% 0);pointer-events:none;z-index:3;opacity:0;
+}
+#jonas-voice-stage .jds-portrait{
+ transform-origin:center 55%;animation:jds-breathe 4200ms ease-in-out infinite;
+}
+#jonas-voice-stage[data-state="speaking"] .jds-portrait{
+ animation:jds-speaking-breathe 4600ms ease-in-out infinite;
+}
+@keyframes jds-breathe{
+ 0%,100%{transform:translateY(.6px) scale(1)}
+ 48%{transform:translateY(-1.2px) scale(1.010)}
+}
+@keyframes jds-speaking-breathe{
+ 0%,100%{transform:translateY(.4px) scale(1)}
+ 48%{transform:translateY(-.9px) scale(1.006)}
+}
+@media(prefers-reduced-motion:reduce){
+ #jonas-voice-stage .jds-portrait{animation:none!important;transform:none!important}
+}

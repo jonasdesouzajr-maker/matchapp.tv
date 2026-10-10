@@ -24,6 +24,7 @@ const server=http.createServer((req,res)=>{
    });
    await page.goto('http://127.0.0.1:'+port+'/discover.html',{waitUntil:'domcontentloaded',timeout:30000});
    await page.waitForSelector('#jonas-voice-stage .jds-rest',{timeout:20000});
+   await page.waitForFunction(()=>document.querySelector('#jonas-voice-stage .jds-rest')?.naturalWidth>0,{timeout:20000});
    const first=await page.evaluate(()=>{
      const el=document.getElementById('jonas-voice-stage'),rect=el.getBoundingClientRect();
      return {width:rect.width,overflow:document.documentElement.scrollWidth>innerWidth,visible:rect.width>100&&rect.height>75,face:el.querySelector('.jds-rest').naturalWidth,service:typeof window.MatchAppJonasStage?.speak};

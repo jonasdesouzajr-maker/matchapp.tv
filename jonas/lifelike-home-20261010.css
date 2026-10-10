@@ -1,0 +1,28 @@
+/* Alive but subtle: preserve the exact head artwork and all existing layout. */
+#ma-jonas-home .jh-medallion {
+ transform-origin:center 57%;
+ animation:jh-portrait-breathe 4200ms ease-in-out infinite;
+}
+#ma-jonas-home.jh-speaking .jh-medallion {
+ animation:jh-speaking-breathe 4600ms ease-in-out infinite;
+}
+#ma-jonas-home .jh-portrait img.jh-blink-layer {
+ position:absolute!important;inset:0!important;width:100%!important;height:100%!important;
+ object-fit:cover!important;object-position:center 19%!important;
+ clip-path:inset(0 0 50% 0)!important;pointer-events:none!important;
+ border:0!important;opacity:0;border-radius:50%!important;z-index:4!important;
+}
+#ma-jonas-home .jh-medallion img.jh-blink-layer {
+ clip-path:inset(0 0 50% 0)!important;z-index:4!important;
+}
+@keyframes jh-portrait-breathe{
+ 0%,100%{transform:translateY(.5px) scale(1)}
+ 48%{transform:translateY(-1.2px) scale(1.010)}
+}
+@keyframes jh-speaking-breathe{
+ 0%,100%{transform:translateY(.35px) scale(1)}
+ 48%{transform:translateY(-.85px) scale(1.006)}
+}
+@media(prefers-reduced-motion:reduce){
+ #ma-jonas-home .jh-medallion{animation:none!important;transform:none!important}
+}

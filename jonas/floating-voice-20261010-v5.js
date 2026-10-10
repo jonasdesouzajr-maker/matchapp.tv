@@ -10,7 +10,10 @@
  var mic=root.querySelector('#ma-jonas-home-mic'),status=root.querySelector('#ma-jonas-home-status');
  var recognition=null,mode='idle',session=0,spoken=null,timeout=0,guard=0,mouthTimer=0;
  var portrait=root.querySelector('.jh-medallion img');
- var faceBase='/jonas/faces/jonas/',frames={},mouth=null;
+ var faceBase='/jonas/faces/jonas/',frames={},mouth=null,eyeLayers=[],blinkTimer=0,blinkClose=0;
+ var mouthFrame='rest',mouthTarget=0,mouthLevel=0,mouthMeterAt=0,mouthLastSwitch=0,mouthQuietSince=0,mouthRunning=false;
+ var mouthBoundary='rest',mouthBoundaryUntil=0;
+ var reduceMotion=window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches||false;
  ['rest','smile','aa','ee','oh'].forEach(function(name){var img=new Image();img.decoding='async';img.src=faceBase+name+'.jpg';frames[name]=img});
  if(portrait){
   // Never swap the whole head image: only the mouth moves, so eyes and face
@@ -21,12 +24,31 @@
   portrait.parentNode.style.position='relative';
   portrait.parentNode.appendChild(mouth);
  }
+ // Blink overlays affect only the upper face, not the full portrait/bubble.
+ [root.querySelector('.jh-medallion'),root.querySelector('.jh-portrait')].forEach(function(parent){
+  if(!parent)return;
+  var eyes=document.createElement('img');
+  eyes.className='jh-blink-layer';eyes.src=faceBase+'blink.jpg';eyes.alt='';
+  eyes.setAttribute('aria-hidden','true');
+  eyes.style.cssText='position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 19%;clip-path:inset(0 0 50% 0);opacity:0;pointer-events:none;border-radius:50%;z-index:4';
+  parent.appendChild(eyes);eyeLayers.push(eyes);
+ });
+ function scheduleBlink(){
+  clearTimeout(blinkTimer);if(reduceMotion)return;
+  blinkTimer=setTimeout(function(){
+   if(!document.hidden)eyeLayers.forEach(function(eyes){if(eyes.complete&&eyes.naturalWidth)eyes.style.opacity='1'});
+   clearTimeout(blinkClose);
+   blinkClose=setTimeout(function(){eyeLayers.forEach(function(e){e.style.opacity='0'})},150);
+   scheduleBlink();
+  },(mouthRunning?3450:2900)+Math.random()*2650);
+ }
+ scheduleBlink();
  try{window.speechSynthesis?.getVoices?.()}catch(_){}
  function face(name){
-  if(!mouth)return;
-  if(name==='rest'){mouth.style.opacity='0';return}
+  if(!mouth||name===mouthFrame)return;
+  if(name==='rest'){mouthFrame='rest';mouth.style.opacity='0';return}
   var image=frames[name];
-  if(image&&image.complete&&image.naturalWidth>0){mouth.src=image.src;mouth.style.opacity='1'}
+  if(image&&image.complete&&image.naturalWidth>0){mouthFrame=name;mouth.src=image.src;mouth.style.opacity='1'}
  }
  function voiceFor(lang){
   // Never fall back to the device's first/default voice, which may be female.
@@ -34,12 +56,45 @@
   if(!policy)return null;
   try{return policy.select(window.speechSynthesis?.getVoices?.()||[],lang)}catch(_){return null}
  }
- function animateMouth(){
-  clearInterval(mouthTimer);var frames=['aa','ee','oh','rest'];var pos=0;
-  face('smile');root.classList.add('jh-speaking');
-  mouthTimer=setInterval(function(){if(!document.hidden)face(frames[pos++%frames.length])},150);
+ function onAudioLevel(value){
+  if(!Number.isFinite(value))return;
+  mouthTarget=Math.max(0,Math.min(1,value));mouthMeterAt=performance.now();
  }
- function resetMouth(){clearInterval(mouthTimer);mouthTimer=0;face('rest');root.classList.remove('jh-speaking')}
+ function onVoiceBoundary(char){
+  mouthBoundary=/[oou]/i.test(char)?'oh':/[eiiy]/i.test(char)?'ee':'aa';
+  mouthBoundaryUntil=performance.now()+160;
+ }
+ function tickMouth(now){
+  if(!mouthRunning)return;
+  if(document.hidden){mouthTimer=requestAnimationFrame(tickMouth);return}
+  var levelNow=(now-mouthMeterAt<200)?mouthTarget:0;
+  mouthLevel+=(levelNow-mouthLevel)*(levelNow>mouthLevel?.22:.15);
+  var quiet=mouthLevel<.05;
+  if(quiet&&!mouthQuietSince)mouthQuietSince=now;
+  if(!quiet)mouthQuietSince=0;
+  var next='rest';
+  if(!quiet){
+   next=mouthLevel>=.34?'aa':mouthLevel>=.16?'oh':'ee';
+  }else if(now<mouthBoundaryUntil){
+   // Native browser TTS may not expose audio samples: use a short boundary
+   // gesture, then close the lips until its next word.
+   next=mouthBoundary;
+  }
+  if(mouthQuietSince&&now-mouthQuietSince>=190)next='rest';
+  if(now-mouthLastSwitch>=115&&next!==mouthFrame){
+   face(next);mouthLastSwitch=now;
+  }
+  mouthTimer=requestAnimationFrame(tickMouth);
+ }
+ function animateMouth(){
+  resetMouth();mouthRunning=true;root.classList.add('jh-speaking');
+  mouthTimer=requestAnimationFrame(tickMouth);
+ }
+ function resetMouth(){
+  mouthRunning=false;cancelAnimationFrame(mouthTimer);mouthTimer=0;
+  mouthTarget=0;mouthLevel=0;mouthMeterAt=0;mouthQuietSince=0;mouthLastSwitch=0;mouthBoundaryUntil=0;
+  face('rest');root.classList.remove('jh-speaking');
+ }
 
  function locale(){return window.MatchAppJonasLocale}
  function isPt(){return /^pt/i.test(window.MATCH_LANG||document.documentElement.lang||navigator.language||'en')}
@@ -157,6 +212,7 @@
    window.MatchAppJonasSpeech.unlock();
    window.MatchAppJonasSpeech.speak(message,locale()?.speech()||window.MATCH_LANG||'en',{
     onStart:function(){if(token===session&&mode==='voice')animateMouth()},
+    onLevel:function(v){if(token===session)onAudioLevel(v)},
     onEnd:function(){if(token===session)finish()},
     onError:function(){if(token===session)statusText('Speech recognition is unavailable here. You can type instead.','Voz indisponível. Você pode digitar.')}
    });
@@ -178,7 +234,7 @@
    spoken.voice=selected;
    spoken.rate=.94;spoken.pitch=.85;spoken.volume=1;
    spoken.onstart=function(){if(token===session){started=true;animateMouth()}};
-   spoken.onboundary=function(e){if(token!==session||!started)return;var ch=message.charAt(e.charIndex||0).toLowerCase();face(/[oou]/.test(ch)?'oh':/[eiiy]/.test(ch)?'ee':'aa')};
+   spoken.onboundary=function(e){if(token!==session||!started)return;var ch=message.charAt(e.charIndex||0).toLowerCase();onVoiceBoundary(ch)};
    spoken.onend=finish;spoken.onerror=finish;
    window.speechSynthesis.speak(spoken);
    window.speechSynthesis.resume?.();
