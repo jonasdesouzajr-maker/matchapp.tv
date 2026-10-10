@@ -1,0 +1,197 @@
+/* Jonas browser experience v4. Scoped to the public home. Original match/Ask
+   nodes remain available if the assistant cannot initialize. */
+html body.page-home.ma-jonas-inline #ma-ai-entry {
+  display:block!important;position:relative!important;visibility:visible!important;
+  width:100%!important;max-width:100%!important;min-width:0!important;
+  padding:0!important;margin:14px auto 25px!important;background:none!important;
+  border:0!important;box-shadow:none!important;overflow:visible!important;
+}
+html body.page-home.ma-jonas-inline #ma-ai-entry > :not(#ma-jonas-inline-dock),
+html body.page-home.ma-jonas-inline #ma-ai-entry #ma-panel-ask,
+html body.page-home.ma-jonas-inline #ma-ai-entry #search-box,
+html body.page-home.ma-jonas-inline .lazy-head[data-fold-key="askai"],
+html body.page-home.ma-jonas-inline .ma-jonas-web-entry {
+  display:none!important;visibility:hidden!important;
+}
+html body.page-home.ma-jonas-inline #ma-jonas-inline-dock {
+  box-sizing:border-box!important;isolation:isolate!important;
+  position:relative!important;display:grid!important;
+  grid-template-columns:minmax(155px, .68fr) minmax(0,1.32fr)!important;
+  align-items:center!important;justify-items:stretch!important;
+  gap:clamp(15px,3vw,34px)!important;max-width:100%!important;width:100%!important;
+  min-height:206px!important;padding:clamp(18px,3.5vw,28px)!important;margin:0!important;
+  border:1px solid rgba(245,209,142,.66)!important;border-radius:28px!important;
+  background:radial-gradient(ellipse at 15% 25%,rgba(168,104,208,.28),transparent 56%),
+             radial-gradient(ellipse at 85% 110%,rgba(204,140,73,.15),transparent 54%),
+             linear-gradient(135deg,#291a37 0%,#151020 80%)!important;
+  box-shadow:inset 0 1px 0 rgba(255,247,224,.18),0 18px 50px rgba(8,3,18,.38)!important;
+  overflow:hidden!important;
+}
+html body.page-home.ma-jonas-inline #ma-jonas-inline-dock::after {
+  content:"";position:absolute;inset:-70%;pointer-events:none;z-index:-1;
+  background:conic-gradient(from 0deg at 50% 50%,transparent 0deg,rgba(255,224,155,.055) 70deg,transparent 130deg,transparent 360deg);
+  animation:jh-breath 18s linear infinite;opacity:.75;
+}
+@keyframes jh-breath{to{transform:rotate(360deg)}}
+html body.page-home.ma-jonas-inline #ma-jonas-home:not(.is-floating):not(.is-chat-stage) {
+  display:grid!important;place-items:center!important;position:relative!important;
+  width:100%!important;height:auto!important;min-height:165px!important;
+  left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;
+  margin:0!important;max-width:none!important;z-index:1!important;
+}
+html body.page-home.ma-jonas-inline #ma-jonas-home:not(.is-floating):not(.is-chat-stage) .jh-bubble {
+  display:grid!important;place-items:center!important;position:relative!important;
+  width:158px!important;height:158px!important;max-width:100%!important;
+  border:0!important;border-radius:50%!important;clip-path:circle(50%);
+  overflow:visible!important;cursor:pointer!important;transform:none!important;
+  touch-action:none!important;transition:filter .24s ease,transform .24s ease!important;
+}
+html body.page-home.ma-jonas-inline #ma-jonas-home:not(.is-floating):not(.is-chat-stage) .jh-bubble:hover {transform:scale(1.025)!important}
+html body.page-home.ma-jonas-inline #ma-jonas-home .jh-portrait,
+html body.page-home.ma-jonas-inline #ma-jonas-home .jh-portrait img {
+  border-radius:50%!important;clip-path:circle(50%)!important;overflow:hidden!important;
+  object-fit:cover!important;object-position:center 19%!important;aspect-ratio:1!important;
+}
+html body.page-home.ma-jonas-inline #ma-jonas-inline-dock .jh-inline-copy {
+  display:flex!important;flex-direction:column!important;align-items:flex-start!important;
+  gap:8px!important;max-width:100%!important;margin:0!important;
+  text-align:left!important;min-width:0!important;grid-column:auto!important;
+}
+html body.page-home.ma-jonas-inline #ma-jonas-inline-dock .jh-inline-eyebrow {
+  color:#e6c788!important;letter-spacing:.1em!important;font:750 11px/1.4 system-ui,sans-serif!important;
+}
+html body.page-home.ma-jonas-inline #ma-jonas-inline-dock .jh-inline-copy strong {
+  color:#fff2d2!important;font:800 clamp(28px,4vw,42px)/1.08 Outfit,system-ui,sans-serif!important;
+  letter-spacing:-.03em!important;
+}
+html body.page-home.ma-jonas-inline #ma-jonas-inline-dock .jh-inline-copy small {
+  color:#e4d8eb!important;font:450 14px/1.5 system-ui,sans-serif!important;
+  max-width:33ch!important;overflow-wrap:anywhere!important;
+}
+html body.page-home.ma-jonas-inline .jh-launch-label {
+  color:#24152a!important;background:linear-gradient(115deg,#ffe8b2,#dcaf6e)!important;
+  border:1px solid #ffe7b0!important;border-radius:999px!important;
+  font:750 13px/1.1 system-ui,sans-serif!important;min-height:43px!important;
+  padding:11px 19px!important;box-shadow:0 7px 20px #04020844!important;
+  cursor:pointer!important;margin:6px 0 0!important;max-width:100%!important;
+}
+html body.page-home.ma-jonas-inline #ma-jonas-inline-dock .jh-return[hidden] {display:none!important}
+html body.page-home.ma-jonas-inline #ma-jonas-inline-dock:has(.jh-return:not([hidden])) .jh-launch-label {display:none!important}
+
+/* Full conversation: a single face-forward stage, not a second AI card. */
+html body.page-home.ma-jonas-inline #ma-jonas-home.is-chat-stage {
+  box-sizing:border-box!important;position:fixed!important;inset:0!important;width:100vw!important;height:100dvh!important;
+  max-height:none!important;max-width:none!important;min-height:0!important;
+  margin:0!important;padding:clamp(10px,2vw,22px)!important;
+  display:flex!important;align-items:center!important;justify-content:center!important;
+  background:radial-gradient(ellipse at 50% 25%,rgba(98,66,125,.86),rgba(37,25,54,.95) 66%,#100b20 100%)!important;backdrop-filter:blur(10px)!important;
+  z-index:2147483300!important;overflow:hidden!important;
+}
+html body.page-home.ma-jonas-inline #ma-jonas-home.is-chat-stage .jh-bubble {display:none!important}
+html body.page-home.ma-jonas-inline #ma-jonas-home.is-chat-stage .jh-popover {
+  box-sizing:border-box!important;position:relative!important;inset:auto!important;
+  display:flex!important;flex-direction:column!important;flex-shrink:1!important;
+  width:min(480px,100%)!important;max-width:100%!important;
+  height:min(575px,calc(100dvh - 20px))!important;max-height:calc(100dvh - 20px)!important;
+  min-height:0!important;margin:0!important;padding:0!important;
+  border-radius:29px!important;border:1px solid #f0cd8c88!important;
+  background:radial-gradient(circle at 40% 0%,#49305d,#24162e 49%,#130d1e 100%)!important;
+  box-shadow:0 24px 85px #000c,inset 0 1px 0 #fff3d51f!important;
+  overflow:hidden!important;transform:none!important;
+}
+html body.page-home.ma-jonas-inline #ma-jonas-home.is-chat-stage .jh-header {
+  display:flex!important;flex-direction:column!important;align-items:center!important;
+  justify-content:center!important;flex:none!important;min-height:0!important;
+  position:relative!important;gap:9px!important;padding:18px 52px 10px!important;
+  background:radial-gradient(ellipse at 50% 20%,#65427a55,transparent 75%)!important;
+  border:0!important;
+}
+html body.page-home.ma-jonas-inline #ma-jonas-home.is-chat-stage .jh-medallion {
+  display:block!important;position:relative!important;flex:none!important;
+  width:clamp(128px,21dvh,172px)!important;height:clamp(128px,21dvh,172px)!important;
+  padding:0!important;border-radius:50%!important;clip-path:circle(50%)!important;
+  border:3px solid #f1d396!important;overflow:hidden!important;
+  background:#2d1b36!important;box-shadow:0 0 0 6px #f3d69b16,0 10px 38px #0008!important;
+}
+html body.page-home.ma-jonas-inline #ma-jonas-home.is-chat-stage .jh-medallion img {
+  position:absolute!important;inset:0!important;width:100%!important;height:100%!important;
+  border:0!important;border-radius:50%!important;object-fit:cover!important;
+  object-position:center 19%!important;background:transparent!important;pointer-events:none!important;
+}
+html body.page-home.ma-jonas-inline #ma-jonas-home.is-chat-stage .jh-medallion img.jh-mouth-layer {
+  opacity:0;clip-path:inset(53% 0 0 0);transition:opacity .1s ease!important;
+}
+html body.page-home.ma-jonas-inline #ma-jonas-home.is-chat-stage .jh-title {
+  display:flex!important;flex-direction:column!important;align-items:center!important;
+  text-align:center!important;gap:3px!important;width:100%!important;
+}
+html body.page-home.ma-jonas-inline #ma-jonas-home.is-chat-stage .jh-title strong {
+  font:800 20px/1.2 Outfit,system-ui,sans-serif!important;color:#ffeac0!important;
+}
+html body.page-home.ma-jonas-inline #ma-jonas-home.is-chat-stage .jh-title small {
+  font:500 12px/1.4 system-ui,sans-serif!important;color:#d7c3df!important;
+}
+html body.page-home.ma-jonas-inline #ma-jonas-home.is-chat-stage .jh-close {
+  position:absolute!important;right:12px!important;top:12px!important;
+  width:44px!important;height:44px!important;border-radius:50%!important;z-index:2!important;
+}
+html body.page-home.ma-jonas-inline #ma-jonas-home.is-chat-stage .jh-content {
+  display:flex!important;flex:1 1 auto!important;flex-direction:column!important;
+  justify-content:flex-start!important;min-height:0!important;overflow-y:auto!important;
+  gap:12px!important;padding:10px clamp(15px,4vw,26px) 16px!important;
+}
+html body.page-home.ma-jonas-inline #ma-jonas-home.is-chat-stage .jh-greeting {
+  margin:0!important;padding:12px 15px!important;max-width:100%!important;
+  font:500 14px/1.48 system-ui,sans-serif!important;color:#f6e9fa!important;
+  border:1px solid #eecb903e!important;border-radius:17px!important;
+  background:linear-gradient(125deg,#493151,#2d203a)!important;
+}
+html body.page-home.ma-jonas-inline #ma-jonas-home.is-chat-stage .jh-voice-status {
+  min-height:0!important;padding:8px 11px!important;margin:0!important;
+  font:650 12px/1.35 system-ui,sans-serif!important;color:#f5dba2!important;
+}
+html body.page-home.ma-jonas-inline #ma-jonas-home.is-chat-stage .jh-form {
+  display:grid!important;grid-template-columns:minmax(0,1fr) 48px 48px!important;
+  gap:7px!important;align-items:center!important;min-height:52px!important;
+}
+html body.page-home.ma-jonas-inline #ma-jonas-home.is-chat-stage .jh-input {
+  width:100%!important;min-width:0!important;min-height:49px!important;
+  font-size:15px!important;background:#130f21!important;border-radius:14px!important;
+}
+html body.page-home.ma-jonas-inline #ma-jonas-home.is-chat-stage :is(.jh-send,.jh-mic) {
+  width:48px!important;height:48px!important;border-radius:14px!important;
+  display:grid!important;place-items:center!important;
+}
+html body.page-home.ma-jonas-inline #ma-jonas-home.is-chat-stage .jh-footer {
+  display:flex!important;flex:none!important;margin:0!important;min-height:44px!important;
+  padding:9px clamp(15px,4vw,25px)!important;
+}
+@media (max-width:520px) {
+  html body.page-home.ma-jonas-inline #ma-jonas-inline-dock {
+    grid-template-columns:1fr!important;justify-items:center!important;
+    min-height:0!important;padding:18px 18px 22px!important;gap:8px!important;
+  }
+  html body.page-home.ma-jonas-inline #ma-jonas-home:not(.is-floating):not(.is-chat-stage) {
+    height:148px!important;min-height:148px!important;
+  }
+  html body.page-home.ma-jonas-inline #ma-jonas-home:not(.is-floating):not(.is-chat-stage) .jh-bubble {
+    width:139px!important;height:139px!important;
+  }
+  html body.page-home.ma-jonas-inline #ma-jonas-inline-dock .jh-inline-copy {
+    align-items:center!important;text-align:center!important;
+  }
+  html body.page-home.ma-jonas-inline #ma-jonas-inline-dock .jh-inline-copy strong {font-size:27px!important}
+  html body.page-home.ma-jonas-inline #ma-jonas-inline-dock .jh-inline-copy small {font-size:13px!important}
+}
+@media (max-height:670px) {
+  html body.page-home.ma-jonas-inline #ma-jonas-home.is-chat-stage .jh-medallion {
+    width:112px!important;height:112px!important;
+  }
+  html body.page-home.ma-jonas-inline #ma-jonas-home.is-chat-stage .jh-header {padding-top:10px!important;gap:3px!important}
+  html body.page-home.ma-jonas-inline #ma-jonas-home.is-chat-stage .jh-suggestions {display:none!important}
+  html body.page-home.ma-jonas-inline #ma-jonas-home.is-chat-stage .jh-content {gap:7px!important}
+}
+@media (prefers-reduced-motion:reduce) {
+  html body.page-home.ma-jonas-inline #ma-jonas-inline-dock::after {animation:none!important}
+  html body.page-home.ma-jonas-inline #ma-jonas-home .jh-mouth-layer {transition:none!important}
+}

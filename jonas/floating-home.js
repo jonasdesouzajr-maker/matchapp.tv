@@ -25,6 +25,12 @@
    dock=document.createElement('div');dock.id='ma-jonas-inline-dock';dock.className='jh-inline-dock';
    var text=document.createElement('div');text.className='jh-inline-copy';
    text.innerHTML='<span class="jh-inline-eyebrow" data-jh-en="YOUR ENTERTAINMENT COMPANION" data-jh-pt="SEU ASSISTENTE DE ENTRETENIMENTO">YOUR ENTERTAINMENT COMPANION</span><strong>Jonas</strong><small data-jh-en="Tap to talk. Drag him anywhere." data-jh-pt="Toque para conversar. Arraste para onde quiser.">Tap to talk. Drag him anywhere.</small>';
+   var talk=document.createElement('button');
+   talk.type='button';talk.className='jh-launch-label';
+   talk.setAttribute('data-jh-en','Talk to Jonas');talk.setAttribute('data-jh-pt','Conversar com Jonas');
+   talk.textContent='Talk to Jonas';
+   talk.addEventListener('click',function(){setOpen(true)});
+   text.appendChild(talk);
    returnButton=document.createElement('button');returnButton.type='button';returnButton.className='jh-return';
    returnButton.setAttribute('data-jh-en','Bring Jonas back');returnButton.setAttribute('data-jh-pt','Trazer Jonas de volta');
    returnButton.textContent='Bring Jonas back';returnButton.hidden=true;
@@ -147,6 +153,7 @@
    set('#ma-jonas-home .jh-greeting',d.greeting);
    set('#ma-jonas-inline-dock .jh-inline-eyebrow',d.eyebrow);
    set('#ma-jonas-inline-dock .jh-inline-copy small',d.hint);
+   set('#ma-jonas-inline-dock .jh-launch-label',d.mic);
    set('#ma-jonas-inline-dock .jh-return',locale.lang()==='en'?'Bring Jonas back':d.explore);
    set('#ma-jonas-home .jh-suggestions .jh-suggestion:first-child',d.doc);
    set('#ma-jonas-home .jh-suggestions .jh-suggestion:last-child',d.mood);

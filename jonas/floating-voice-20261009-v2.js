@@ -10,10 +10,24 @@
  var mic=root.querySelector('#ma-jonas-home-mic'),status=root.querySelector('#ma-jonas-home-status');
  var recognition=null,mode='idle',session=0,spoken=null,timeout=0,guard=0,mouthTimer=0;
  var portrait=root.querySelector('.jh-medallion img');
- var faceBase='/jonas/faces/jonas/';
- ['rest','smile','aa','ee','oh'].forEach(function(name){var image=new Image();image.src=faceBase+name+'.jpg'});
+ var faceBase='/jonas/faces/jonas/',frames={},mouth=null;
+ ['rest','smile','aa','ee','oh'].forEach(function(name){var img=new Image();img.decoding='async';img.src=faceBase+name+'.jpg';frames[name]=img});
+ if(portrait){
+  // Never swap the whole head image: only the mouth moves, so eyes and face
+  // remain stable without flashes during speech synthesis.
+  mouth=document.createElement('img');
+  mouth.className='jh-mouth-layer';mouth.alt='';mouth.setAttribute('aria-hidden','true');
+  mouth.style.cssText='position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 19%;clip-path:inset(54% 0 0 0);opacity:0;pointer-events:none;border-radius:50%';
+  portrait.parentNode.style.position='relative';
+  portrait.parentNode.appendChild(mouth);
+ }
  try{window.speechSynthesis?.getVoices?.()}catch(_){}
- function face(name){if(portrait)portrait.src=faceBase+name+'.jpg'}
+ function face(name){
+  if(!mouth)return;
+  if(name==='rest'){mouth.style.opacity='0';return}
+  var image=frames[name];
+  if(image&&image.complete&&image.naturalWidth>0){mouth.src=image.src;mouth.style.opacity='1'}
+ }
  function voiceFor(lang){
   var all=window.speechSynthesis?.getVoices?.()||[],lc=lang.toLowerCase();
   var matching=all.filter(function(v){return v.lang.toLowerCase()===lc});
