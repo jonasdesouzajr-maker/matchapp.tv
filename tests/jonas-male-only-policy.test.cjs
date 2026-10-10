@@ -21,8 +21,8 @@ test('all actual browser entrypoints load the voice policy before Jonas synthesi
  assert.ok(home.includes('secure-speech-20261010.js'));
  assert.ok(jonas.includes('secure-speech-20261010.js'));
  assert.ok(home.indexOf('male-voice-policy-20261010.js')<home.indexOf('floating-voice-20261010-v4.js'));
- assert.ok(jonas.indexOf('male-voice-policy-20261010.js')<jonas.indexOf('jonas-20261010-v4.js'));
- for(const p of ['jonas/floating-voice-20261010-v4.js','jonas/jonas-20261010-v4.js']){
+ assert.ok(jonas.indexOf('male-voice-policy-20261010.js')<jonas.indexOf('jonas-20261010-v3.js'));
+ for(const p of ['jonas/floating-voice-20261010-v4.js','jonas/jonas-20261010-v3.js']){
   const script=read(p);
   assert.match(script,/MatchAppJonasVoicePolicy/);
   assert.doesNotMatch(script,/matching\[0\]\|\|null|choices\[0\]\|\|null/);
