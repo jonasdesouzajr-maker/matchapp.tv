@@ -65,7 +65,7 @@ test('fresh mobile JS URLs are the only required HTML changes; desktop UI struct
   assert.match(html,/global=20260927-ranked1&amp;mobilefresh=20260927-1/);
   assert.match(html,/app-updates\.js\?v=20260927-mobilefresh1/);
  }
- assert.match(ask,/discover\.js\?v=20260925-intent1[^"]*mobilefresh=20260927-1/);
+ assert.match(ask,/discover-male-only-20261010\.js/,'immutable voice-safe Ask entrypoint');
  assert.match(UPDATES,/!IS_MOBILE_ADULT\|\|IS_NATIVE_ADULT\|\|!isStandalone\(\)/);
  assert.doesNotMatch(UPDATES,/localStorage\.clear\(/);
 });
