@@ -1618,7 +1618,7 @@
 <script src="/themes.js?v=20261002-dark1&old=187"></script>
 <link rel="stylesheet" href="/poster-wall.css?v=20261002-recovery1&old=20260922-global1"><script defer src="/poster-wall.js?v=20260922-global1"></script><script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://matchapp.tv/#organization","name":"MatchApp Ai","url":"https://matchapp.tv/","logo":"https://matchapp.tv/assets/brand/matchapp-official-icon-512.webp","contactPoint":{"@type":"ContactPoint","contactType":"customer support","telephone":"+5521988214594","email":"support@matchapp.tv"},"sameAs":["https://wa.me/5521988214594","https://instagram.com/matchapp.tv","https://www.tiktok.com/@matchapp_ai"]}</script><link rel="stylesheet" href="/brand.css?v=194">
 <link rel="stylesheet" href="/daily-checkin.css?v=20260921-checkin2"><link rel="stylesheet" href="/international-day.css?v=20260924-dayof4"><link rel="stylesheet" href="/notifications.css?v=20261006-bellsound-deleteall2" data-home-support="notifications">
-<link rel="stylesheet" href="/onboarding-tour.css?v=20260924-coach3" data-home-support="onboarding">
+<link rel="stylesheet" href="/onboarding-tour.css?v=20261010-tour-v9" data-home-support="onboarding">
 <link rel="stylesheet" href="/taste-profile.css?v=20260919-stable3" data-home-support="taste">
 <link rel="stylesheet" href="/profile-card.css?v=20260919-stable3" data-home-support="profile-card">
 <link rel="stylesheet" href="/preference-exclusions.css?v=20260919-stable3" data-home-support="preferences">
@@ -1686,6 +1686,7 @@ html body.page-home #mh-topbox .mh-deck>.sound-toggle-btn,html body.page-home #m
     <link rel="stylesheet" href="/jonas/floating-home-20261010-v3.css"/>
     <link rel="stylesheet" href="/jonas/floating-chat.css?v=20261009-chat3"/>
     <link rel="stylesheet" href="/jonas/home-rebuild-20261010.css?v=4" />
+<link rel="stylesheet" href="/jonas/android-hide-kids-20261010.css">
 </head>
 <body class="page-home">
     <!-- Google Tag Manager (noscript) -->
@@ -3863,7 +3864,7 @@ const footerYearEl = document.getElementById('footer-year');
             <div class="jh-content">
                 <p class="jh-greeting" data-jh-en="Hi! I'm Jonas. What shall we discover? Ask me about movies, series, books, music, or anything worth exploring." data-jh-pt="Olá! Sou o Jonas. O que vamos descobrir? Pergunte sobre filmes, séries, livros, música e muito mais.">Hi! I'm Jonas. What shall we discover? Ask me about movies, series, books, music, or anything worth exploring.</p>
                 <div id="ma-jonas-home-status" class="jh-voice-status" role="status" aria-live="polite">Tap Jonas to talk · or start typing</div>
-                <form class="jh-form" action="/discover.html" method="get">
+                <form class="jh-form" action="/discover.html" method="get"><input type="hidden" name="from" value="jonas">
                     <input id="ma-jonas-home-input" class="jh-input" name="q" type="text" maxlength="2000" required autocomplete="off" placeholder="Ask Jonas anything…" aria-label="Your question for Jonas" data-jh-placeholder-en="Ask Jonas anything…" data-jh-placeholder-pt="Pergunte qualquer coisa ao Jonas…"/>
                     <input type="hidden" name="focus" value="start"/>
                     <button id="ma-jonas-home-mic" class="jh-mic" type="button" aria-label="Start voice input" aria-pressed="false" title="Start voice input"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="2.5" width="6" height="12" rx="3"/><path d="M5 10.5a7 7 0 0 0 14 0M12 17.5V22M8 22h8"/></svg></button>
@@ -3884,15 +3885,23 @@ const footerYearEl = document.getElementById('footer-year');
     </aside>
     <script defer src="/jonas/locales-20261009-v2.js"></script>
     <script defer src="/jonas/floating-home-20261010-v3.js"></script>
+<script>
+document.addEventListener('click',function(event){
+  var a=event.target&&event.target.closest&&event.target.closest('#ma-jonas-home .jh-suggestion');
+  if(!a||!a.href)return;
+  try{var u=new URL(a.href,location.origin);if(u.origin===location.origin&&u.pathname==='/discover.html'){u.searchParams.set('from','jonas');a.href=u.pathname+u.search}}catch(_){}
+},true);
+</script>
     <script defer src="/jonas/male-voice-policy-20261010.js"></script>
     <script defer src="/jonas/secure-speech-20261010.js"></script>
-    <script defer src="/jonas/floating-voice-20261010-v4.js"></script>
+    <script defer src="/jonas/floating-voice-20261010-v5.js"></script>
 <script src="/passkeys.js?v=187"></script>
 <script src="/app-updates.js?v=20260927-mobilefresh1&amp;installfix=20260930-1&amp;brand=20261001-canonicalai1"></script>
 <script defer src="/ads-init.js?v=20261002-bodyunit1"></script>
 <script src="/global-events.js?v=20260924-event4"></script><script defer src="/international-day.js?v=20260924-dayof4"></script>
 <script src="/title-captions.js?v=20260921-ui2&amp;auth=20260926-emailsingle1"></script><script defer src="/gold-sheen.js?v=20260921-ui2"></script><script src="/daily-checkin.js?v=20260927-bubble1"></script>
-<script defer src="/onboarding-tour.js?v=20260926-bookworms7&amp;ui=20260930-guide-locales8"></script>
+<script defer src="/onboarding-tour-locales-20261010.js"></script>
+<script defer src="/onboarding-tour.js?v=20261010-tour-v9"></script>
 <script defer src="/match-insights.js?v=20260922-insights1"></script>
 </body>
 </html>

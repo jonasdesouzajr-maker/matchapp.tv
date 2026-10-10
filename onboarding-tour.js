@@ -2,10 +2,12 @@
 (function(){
 'use strict';
 
-const VERSION='v8';
+const VERSION='v9';
 let stepIndex=0,steps=[],panel=null,spot=null,active=false,repositionRaf=0,touchX=null,lastTarget=null;
 let focusGuardInstalled=false;
 let bookFoldBeforeTour=null,bookFoldForcedOpen=false;
+let matchFoldBeforeTour=null,matchFoldForcedOpen=false;
+let filtersBeforeTour=null,filtersForcedOpen=false;
 
 const copy={
  en:{
@@ -54,22 +56,14 @@ const walkthroughCopy={
  zh:['点击这里','下一步','返回','完成','关闭','选择类别和心情后，会展开类型、平台、题材和年代筛选。','打开阅读卡片，选择电子书、有声书或杂志及条件，查看原始封面和官方链接。','输入或使用麦克风，然后点击发送。指南不会自动打开键盘。','滑动海报并点击作品，查看详细信息和观看平台。','打开独立儿童模式，内容已按年龄审核。','点击头像打开个人资料和偏好，或登录。']
 };
 const tr=()=>{
- const l=String(window.MATCH_LANG||document.documentElement.lang||'en');if(copy[l])return copy[l];
- const row=walkthroughCopy[l]||walkthroughCopy[l.split('-')[0]];if(!row)return copy.en;
- const text=(selector,key)=>document.querySelector(selector)?.textContent.trim()||window.t?.(key)||'';
- return {
-  pick:[text('.lazy-head[data-fold-key="concierge"] .lazy-head-label','how.s1.title'),row[5]],
-  mood:[text('.ma-mood-block .ma-filter-label','how.s1.title'),row[5]],
-  format:[text('.ma-quick .ma-filter-row:nth-child(2) .ma-filter-label','how.s1.title'),row[5]],
-  platform:[text('.ma-quick .ma-filter-row:nth-child(3) .ma-filter-label','how.s1.title'),row[5]],
-  more:[window.t?.('crit.more')||'',row[5]],
-  book:[text('#ebook-matcher-root .ebook-fold>summary','how.s2.title'),row[6]],
-  bookFormat:[text('#ebook-matcher-root label:has([data-ebook-select="format"])','how.s2.title').split('\n')[0],row[6]],
-  ai:[text('#search-box h2','discover.title'),row[7]],latest:[text('#trending-rail h2','how.s2.title'),row[8]],
-  kids:[text('.ma-kids-mode-entry span','nav.home'),row[9]],profile:[window.t?.('nav.profile')||'',row[10]],
-  tap:row[0],next:row[1],back:row[2],finish:row[3],skip:row[4],counter:(a,b)=>a+' / '+b
- };
+ const language=String(window.MATCH_LANG||document.documentElement.lang||'en').trim();
+ const codes=window.MatchAppGuideLocales;
+ if(codes)return codes[language]||codes[language.split('-')[0]]||codes.en;
+ // Preserve the English self-contained guide for offline and isolated tests;
+ // the localized asset is always loaded before this file in production.
+ return copy[language]||copy.en;
 };
+
 const home=()=>location.pathname==='/'||location.pathname==='/index.html';
 const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
 const clamp=(n,min,max)=>Math.min(Math.max(n,min),max);
@@ -111,16 +105,23 @@ function buildSteps(){
   // #questionnaire-box; never aim the coachmark at Ask AI for book matching.
   {key:'book',selector:'#ebook-matcher-root .ebook-fold>summary'},
   {key:'bookFormat',selector:'#ebook-matcher-root .ebook-select[data-ebook-select="format"]',mode:'book-form'},
-  {key:'ai',selector:'#search-box h2,#ma-tab-ask'},
-  {key:'latest',selector:'#trending-rail .marquee-item:nth-child(2),#trending-rail .marquee-item,#trending-rail'},
+  {key:'ai',selector:'#ma-jonas-home-bubble,#search-box h2,#ma-tab-ask'},
+  {key:'latest',selector:'#trending-rail,#trending-rail .marquee-item:nth-child(2),#trending-rail .marquee-item'},
   {key:'kids',selector:'#matchapp-kids-entry,.ma-kids-mode-entry'},
   {key:'profile',selector:'#profile-link-tab,#nav-reg-btn,[data-avatar-slot]'}
  ];
  // Format is deliberately inside a collapsed <details>; only include its
  // step when Bookworms and its real format dropdown are already mounted.
- return defs.filter(step=>step.mode==='book-form'
-  ? !!document.querySelector(step.selector) && !!firstVisible('#ebook-matcher-root .ebook-fold>summary')
-  : !!firstVisible(step.selector));
+ const matchIntro=firstVisible('.lazy-head[data-fold-key="concierge"]');
+ const isAndroid=!!window.MATCHAPP_ANDROID||document.documentElement.classList.contains('matchapp-ai-android');
+ return defs.filter(step=>{
+  if(step.key==='kids'&&isAndroid)return false;
+  if(step.mode==='book-form')
+   return !!document.querySelector(step.selector)&&!!firstVisible('#ebook-matcher-root .ebook-fold>summary');
+  if(['mood','format','platform','more'].includes(step.key)&&matchIntro)
+   return !!document.querySelector(step.selector);
+  return !!firstVisible(step.selector);
+ });
 }
 
 function ensureUi(){
@@ -176,8 +177,30 @@ function restoreBookFold(){
  if(fold&&bookFoldBeforeTour!==null)fold.open=bookFoldBeforeTour;
  bookFoldForcedOpen=false;
 }
+function restoreMatchFold(){
+ if(!matchFoldForcedOpen)return;
+ const head=document.querySelector('.lazy-head[data-fold-key="concierge"]');
+ if(head&&matchFoldBeforeTour===false&&head.getAttribute('aria-expanded')==='true')head.click();
+ matchFoldForcedOpen=false;
+}
+function restoreFilters(){
+ if(!filtersForcedOpen)return;
+ const fold=document.querySelector('.match-more-filters');
+ if(fold&&filtersBeforeTour===false)fold.open=false;
+ filtersForcedOpen=false;
+}
+function openMatchFold(){
+ const head=document.querySelector('.lazy-head[data-fold-key="concierge"]');
+ if(!head)return;
+ if(matchFoldBeforeTour===null)matchFoldBeforeTour=head.getAttribute('aria-expanded')==='true';
+ if(head.getAttribute('aria-expanded')!=='true'){
+  head.click();
+  matchFoldForcedOpen=true;
+ }
+}
 
 function prep(step,el){
+ if(['mood','format','platform','more'].includes(step.key))openMatchFold();
  if(step.mode==='book-form'){
   const fold=document.querySelector('#ebook-matcher-root .ebook-fold');
   if(fold){
@@ -190,7 +213,10 @@ function prep(step,el){
  if(step.key==='pick')document.getElementById('ma-tab-match')?.click();
  if(step.mode==='filters'){
   const d=el.matches?.('details')?el:el.closest?.('details');
-  if(d)d.open=true;
+  if(d){
+   if(filtersBeforeTour===null)filtersBeforeTour=d.open;
+   if(!d.open){d.open=true;filtersForcedOpen=true}
+  }
  }
 }
 
@@ -310,11 +336,15 @@ function place(){
    {side:'left',x:r.left-gap-w,y:cy-h/2}
   ];
   const order=vp.width<=700?['below','above','right','left']:['right','left','below','above'];
-  candidates.sort((a,b)=>{
-   const ao=overflowScore(a.x,a.y,w,h,vp,edge),bo=overflowScore(b.x,b.y,w,h,vp,edge);
-   if(ao!==bo)return ao-bo;
-   return order.indexOf(a.side)-order.indexOf(b.side);
-  });
+  function score(c){
+    const overflow=overflowScore(c.x,c.y,w,h,vp,edge);
+    const x=clamp(c.x,vp.left+edge,vp.right-w-edge);
+    const y=clamp(c.y,vp.top+edge,vp.bottom-h-edge);
+    const overlap=Math.max(0,Math.min(x+w,r.right)-Math.max(x,r.left))*
+                  Math.max(0,Math.min(y+h,r.bottom)-Math.max(y,r.top));
+    return overlap*3+overflow*25+order.indexOf(c.side);
+   }
+   candidates.sort((a,b)=>score(a)-score(b));
 
   const best=candidates[0];
   const x=clamp(best.x,vp.left+edge,vp.right-w-edge);
@@ -335,19 +365,32 @@ function show(i){
  stepIndex=Math.min(Math.max(i,0),steps.length-1);
  const step=steps[stepIndex];
  if(step.key!=='bookFormat')restoreBookFold();
+ if(step.key!=='more')restoreFilters();
+ if(!['pick','mood','format','platform','more'].includes(step.key))restoreMatchFold();
  // A real format dropdown is hidden by the native collapsed Bookworms card.
  // First find its visible summary, expand the card for this ONE tour step,
  // and only then measure/highlight the actual selector on any screen size.
  const entrySelector=step.mode==='book-form'?'#ebook-matcher-root .ebook-fold>summary':step.selector;
  let el=firstVisible(entrySelector);
+ if(!el&&['mood','format','platform','more'].includes(step.key))
+  el=firstVisible('.lazy-head[data-fold-key="concierge"]');
  if(!el){steps.splice(stepIndex,1);return steps.length?show(Math.min(stepIndex,steps.length-1)):close()}
 
  blurActive();
  prep(step,el);
  el=firstVisible(step.selector)||el;
-
+ // Never highlight the folded heading while describing one of its inner
+ // controls. Real target is resolved after the section opens.
+ if(['mood','format','platform','more'].includes(step.key)&&
+    el.matches?.('.lazy-head[data-fold-key="concierge"]')){
+   setTimeout(()=>{if(active&&steps[stepIndex]===step)show(stepIndex)},90);
+   return;
+ }
  const t=tr(),pair=t[step.key]||copy.en[step.key];
- panel.querySelector('.matchapp-tour-badge').textContent='MATCHAPP ✦ '+(window.t?.('how.title')||t.pick[0]);
+ panel.querySelector('.matchapp-tour-badge').textContent='MatchApp Ai';
+ panel.lang=String(window.MATCH_LANG||document.documentElement.lang||'en');
+ panel.dir=panel.lang.split('-')[0]==='ar'?'rtl':'ltr';
+ panel.dataset.step=step.key;
  panel.querySelector('.matchapp-tour-skip').textContent=t.skip;
  panel.querySelector('.matchapp-tour-count').textContent=t.counter(stepIndex+1,steps.length);
  panel.querySelector('.matchapp-tour-icon').textContent=icons[step.key]||'✦';
@@ -360,6 +403,9 @@ function show(i){
  panel.querySelector('.matchapp-tour-progress span').style.width=((stepIndex+1)/steps.length*100)+'%';
 
  panel.hidden=false;spot.hidden=false;
+ panel.classList.remove('is-entering');
+ void panel.offsetWidth;
+ panel.classList.add('is-entering');
  document.documentElement.classList.add('matchapp-tour-active');
  revealTarget(el);
  place();
@@ -374,7 +420,11 @@ function close(){
  active=false;
  blurActive();
  restoreBookFold();
+ restoreMatchFold();
+ restoreFilters();
  bookFoldBeforeTour=null;
+ filtersBeforeTour=null;
+ matchFoldBeforeTour=null;
  removeFocusGuard();
  if(panel)panel.hidden=true;
  if(spot)spot.hidden=true;
@@ -389,6 +439,10 @@ function start(){
  // Restore exactly the visitor's initial Bookworms open/collapsed state.
  bookFoldBeforeTour=document.querySelector('#ebook-matcher-root .ebook-fold')?.open??null;
  bookFoldForcedOpen=false;
+ matchFoldBeforeTour=document.querySelector('.lazy-head[data-fold-key="concierge"]')?.getAttribute('aria-expanded')==='true';
+ matchFoldForcedOpen=false;
+ filtersBeforeTour=document.querySelector('.match-more-filters')?.open??null;
+ filtersForcedOpen=false;
  ensureUi();
  active=true;
  installFocusGuard();

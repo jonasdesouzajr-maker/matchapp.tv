@@ -2274,7 +2274,7 @@ async function runDiscovery() {
     }
     document.title = `${q} — MatchApp Ai Concierge`;
     if (loadEl) loadEl.style.display = 'none';
-    await askAndRender(q);
+    await askAndRender(q, {voiceOrigin: getQueryParam('from') === 'jonas'});
     const log=document.getElementById('chat-log');
     if(log){log.hidden=false;log.style.display='flex';log.scrollIntoView({behavior:'auto',block:'start'});}
 }

@@ -1,0 +1,23 @@
+/* Native Android alone: remove every Kids entry before native DOM cleanup.
+   Kids Mode remains available on matchapp.tv in ordinary browsers. */
+html.matchapp-ai-android #matchapp-kids-entry,
+html.matchapp-ai-android .ma-kids-mode-entry,
+html.matchapp-ai-android a[href^="/kids"],
+html.matchapp-ai-android a[href^="https://matchapp.tv/kids"],
+html.matchapp-ai-android [data-matchapp-kids-entry],
+html.matchapp-ai-android button[data-mode="kids"]{display:none!important}
+
+/* After removing Kids, let How it works fill the now-empty second row. */
+@media(max-width:980px){
+ html.matchapp-ai-android .mh-deck.ma-header-actions .ma-how-button{
+  grid-column:1 / 11!important;
+  grid-row:2!important;
+  width:100%!important;
+  max-width:none!important;
+  justify-self:stretch!important;
+ }
+ html.matchapp-ai-android .mh-deck.ma-header-actions .ma-menu-wrap{
+  grid-column:11 / 13!important;
+  grid-row:2!important;
+ }
+}
