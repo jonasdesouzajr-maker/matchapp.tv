@@ -1,0 +1,512 @@
+/* MatchApp Ai premium header fidelity: scoped surgical override, not a new theme.
+   Fixes legacy dynamic !important rules which won over premium-unified CSS.
+   Preserves existing buttons, handlers, credits, locale, notification, and ads. */
+html body.page-home header#mh-topbox#mh-topbox.app-header.ma-home-header{
+ display:flex!important;
+ flex-direction:column!important;
+ align-items:stretch!important;
+ justify-content:flex-start!important;
+ width:calc(100% - 24px)!important;
+ max-width:1320px!important;
+ min-width:0!important;
+ height:auto!important;
+ padding:clamp(16px,2vw,25px)!important;
+ margin:12px auto 16px!important;
+ gap:clamp(10px,1.6vw,15px)!important;
+ overflow:visible!important;
+ border:1px solid rgba(238,191,110,.72)!important;
+ border-radius:clamp(22px,2.8vw,29px)!important;
+ background:
+  radial-gradient(ellipse at 10% 4%,rgba(154,77,223,.27),transparent 55%),
+  radial-gradient(ellipse at 93% 100%,rgba(119,58,188,.2),transparent 66%),
+  linear-gradient(124deg,#3e255d 0%,#30204c 46%,#211637 100%)!important;
+ box-shadow:0 20px 45px rgba(7,3,25,.38),inset 0 1px rgba(255,232,175,.22)!important;
+ isolation:isolate;
+}
+html body.page-home header#mh-topbox#mh-topbox .mh-head{
+ display:block!important;
+ width:100%!important;
+ height:auto!important;
+ margin:0!important;
+ padding:0!important;
+ min-width:0!important;
+ flex:none!important;
+ order:0!important;
+}
+html body.page-home header#mh-topbox#mh-topbox #home-brand-lockup.ma-brand-stage,
+html body.page-home header#mh-topbox#mh-topbox .ma-brand-lockup{
+ width:100%!important;
+ max-width:100%!important;
+ display:block!important;
+ margin:0!important;
+ padding:0!important;
+ min-width:0!important;
+}
+html body.page-home header#mh-topbox#mh-topbox .ma-brand-home-link{
+ display:flex!important;
+ width:100%!important;
+ min-height:85px!important;
+ min-width:0!important;
+ max-width:100%!important;
+ justify-content:flex-start!important;
+ align-items:center!important;
+ flex-wrap:nowrap!important;
+ gap:clamp(19px,3vw,35px)!important;
+ margin:0!important;
+ padding:0 clamp(3px,1.4vw,12px)!important;
+ text-decoration:none!important;
+}
+html body.page-home header#mh-topbox#mh-topbox .ma-brand-orb-stage{
+ display:block!important;
+ width:clamp(74px,9vw,110px)!important;
+ height:clamp(74px,9vw,110px)!important;
+ min-width:clamp(74px,9vw,110px)!important;
+ max-width:clamp(74px,9vw,110px)!important;
+ flex:0 0 auto!important;
+ margin:0!important;
+ padding:0!important;
+ transform:none!important;
+ border:0!important;
+ overflow:visible!important;
+ filter:drop-shadow(0 2px 13px rgba(245,182,99,.22));
+}
+html body.page-home header#mh-topbox#mh-topbox .ma-brand-orb-stage img.ma-brand-orb{
+ width:100%!important;
+ height:100%!important;
+ min-width:0!important;
+ max-width:100%!important;
+ max-height:100%!important;
+ object-fit:contain!important;
+ display:block!important;
+ position:static!important;
+ transform:none!important;
+ margin:0!important;
+}
+html body.page-home header#mh-topbox#mh-topbox .ma-brand-copy{
+ display:flex!important;
+ flex:1 1 auto!important;
+ flex-direction:row!important;
+ align-content:center!important;
+ align-items:baseline!important;
+ justify-content:flex-start!important;
+ flex-wrap:wrap!important;
+ gap:3px clamp(4px,.6vw,11px)!important;
+ width:auto!important;
+ min-width:0!important;
+ max-width:100%!important;
+ padding:0!important;
+ margin:0!important;
+ height:auto!important;
+ overflow:visible!important;
+}
+html body.page-home header#mh-topbox#mh-topbox .ma-brand-copy .ma-wordmark,
+html body.page-home header#mh-topbox#mh-topbox .ma-brand-copy .ma-word-ai{
+ display:inline-block!important;
+ flex:0 0 auto!important;
+ margin:0!important;
+ padding:0!important;
+ width:auto!important;
+ height:auto!important;
+ position:static!important;
+ transform:none!important;
+ line-height:1.04!important;
+ vertical-align:baseline!important;
+ letter-spacing:-.062em!important;
+ white-space:nowrap!important;
+}
+html body.page-home header#mh-topbox#mh-topbox .ma-wordmark{font-size:clamp(34px,5vw,69px)!important}
+html body.page-home header#mh-topbox#mh-topbox .ma-word-ai{font-size:clamp(35px,5.1vw,71px)!important}
+html body.page-home header#mh-topbox#mh-topbox .ma-brand-caption{
+ display:flex!important;
+ flex:1 0 100%!important;
+ flex-wrap:wrap!important;
+ align-items:center!important;
+ justify-content:flex-start!important;
+ gap:5px 15px!important;
+ width:100%!important;
+ max-width:100%!important;
+ min-width:0!important;
+ height:auto!important;
+ padding:0!important;
+ margin:4px 0 0!important;
+ line-height:1.28!important;
+ text-align:left!important;
+}
+html body.page-home header#mh-topbox#mh-topbox .ma-brand-caption .ma-brand-tagline{
+ display:inline-block!important;
+ flex:0 1 auto!important;
+ white-space:normal!important;
+ word-spacing:normal!important;
+ width:auto!important;
+ max-width:100%!important;
+ font-size:clamp(11px,1.25vw,16px)!important;
+ line-height:1.35!important;
+ font-weight:550!important;
+ color:#e6d8f2!important;
+ letter-spacing:0!important;
+ margin:0!important;
+}
+html body.page-home header#mh-topbox#mh-topbox .ma-brand-caption .ma-brand-security{
+ display:inline-flex!important;
+ align-items:center!important;
+ flex:0 0 auto!important;
+ gap:6px!important;
+ margin:0!important;
+ padding:0 0 0 12px!important;
+ border-left:1px solid rgba(235,214,255,.36)!important;
+ white-space:nowrap!important;
+ color:#e0d6ef!important;
+ font-size:clamp(10px,.94vw,13px)!important;
+ font-weight:570!important;
+}
+html body.page-home header#mh-topbox#mh-topbox .ma-brand-caption .ma-brand-security svg{
+ width:14px!important;height:16px!important;flex:none!important;
+}
+html body.page-home header#mh-topbox#mh-topbox .mh-head>.mh-tagline{display:none!important}
+/* Original account/notification controls retain all their event handlers. */
+html body.page-home header#mh-topbox#mh-topbox>nav.mh-deck.ma-header-actions{
+ display:grid!important;
+ flex:none!important;
+ order:1!important;
+ grid-template-columns:repeat(12,minmax(0,1fr))!important;
+ grid-auto-rows:minmax(39px,auto)!important;
+ justify-items:stretch!important;
+ align-items:stretch!important;
+ gap:7px!important;
+ width:100%!important;
+ min-width:0!important;
+ max-width:100%!important;
+ height:auto!important;
+ margin:0!important;
+ padding:13px 0 0!important;
+ border-top:1px solid rgba(233,187,133,.22)!important;
+ background:transparent!important;
+}
+html body.page-home header#mh-topbox#mh-topbox>nav.mh-deck.ma-header-actions>*{
+ min-width:0!important;
+ max-width:none!important;
+ min-height:39px!important;
+ height:39px!important;
+ margin:0!important;
+ box-sizing:border-box!important;
+ align-self:stretch!important;
+ justify-self:stretch!important;
+}
+html body.page-home header#mh-topbox#mh-topbox>nav.mh-deck #lang-switcher-host{
+ order:1!important;grid-area:1 / 1 / auto / 6!important;
+ display:flex!important;width:100%!important;
+ border:1px solid rgba(197,151,238,.35)!important;
+ border-radius:14px!important;
+ background:linear-gradient(145deg,rgba(23,12,43,.92),rgba(43,22,75,.86))!important;
+ overflow:hidden!important;
+}
+html body.page-home header#mh-topbox#mh-topbox>nav.mh-deck #lang-switcher-host :is(select,button){
+ display:flex!important;min-width:0!important;width:100%!important;
+ max-width:100%!important;height:100%!important;
+ border:0!important;border-radius:13px!important;
+ background:transparent!important;color:#f8f1ff!important;
+ padding:0 7px!important;
+ font-size:clamp(12px,1vw,14px)!important;
+ white-space:nowrap!important;
+}
+html body.page-home header#mh-topbox#mh-topbox>nav.mh-deck>.sound-toggle-btn{
+ order:2!important;grid-area:1 / 6 / auto / 8!important;
+}
+html body.page-home header#mh-topbox#mh-topbox>nav.mh-deck>.matchapp-notification-button{
+ order:3!important;grid-area:1 / 8 / auto / 10!important;
+}
+html body.page-home header#mh-topbox#mh-topbox>nav.mh-deck>#nav-reg-btn{
+ order:4!important;grid-area:1 / 10 / auto / 13!important;
+}
+html body.page-home header#mh-topbox#mh-topbox>nav.mh-deck>#profile-link-tab{
+ order:4!important;grid-area:1 / 9 / auto / 11!important;
+}
+html body.page-home header#mh-topbox#mh-topbox>nav.mh-deck>#nav-logout-btn{
+ order:5!important;grid-area:1 / 11 / auto / 13!important;
+}
+html body.page-home header#mh-topbox#mh-topbox>nav.mh-deck:has(#nav-logout-btn:not([style*="display: none"])) #lang-switcher-host{
+ grid-column:1 / 5!important;
+}
+html body.page-home header#mh-topbox#mh-topbox>nav.mh-deck:has(#nav-logout-btn:not([style*="display: none"]))>.sound-toggle-btn{
+ grid-column:5 / 7!important;
+}
+html body.page-home header#mh-topbox#mh-topbox>nav.mh-deck:has(#nav-logout-btn:not([style*="display: none"]))>.matchapp-notification-button{
+ grid-column:7 / 9!important;
+}
+html body.page-home header#mh-topbox#mh-topbox>nav.mh-deck>.ma-how-button{
+ order:7!important;grid-area:2 / 1 / auto / 10!important;
+}
+html body.page-home header#mh-topbox#mh-topbox>nav.mh-deck>.ma-menu-wrap{
+ order:8!important;grid-area:2 / 10 / auto / 13!important;
+ overflow:visible!important;
+}
+html body.page-home header#mh-topbox#mh-topbox>nav.mh-deck>#quota-badge{
+ order:9!important;grid-area:3 / 4 / auto / 10!important;
+ justify-self:center!important;
+ align-self:center!important;
+ height:29px!important;
+ min-height:29px!important;
+ width:auto!important;
+ max-width:100%!important;
+ padding:4px 13px!important;
+ border-radius:999px!important;
+ border:1px solid rgba(222,180,126,.38)!important;
+ background:rgba(34,19,57,.8)!important;
+ font-weight:650!important;
+ white-space:nowrap!important;
+ box-shadow:none!important;
+}
+html body.page-home header#mh-topbox#mh-topbox>nav.mh-deck>#matchapp-kids-entry{
+ display:none!important;
+}
+/* No bright beveled skeuomorphic buttons: even weight, subtle glass surfaces. */
+html body.page-home header#mh-topbox#mh-topbox>nav.mh-deck :is(
+ .sound-toggle-btn,.matchapp-notification-button,#profile-link-tab,#nav-logout-btn,.ma-how-button,
+ .ma-menu-wrap>.ma-menu-button,.ma-menu-wrap>button
+ ){
+ min-height:39px!important;
+ height:39px!important;
+ max-width:100%!important;
+ padding:6px 8px!important;
+ border:1px solid rgba(189,147,228,.42)!important;
+ border-radius:14px!important;
+ background:linear-gradient(148deg,rgba(78,43,108,.78),rgba(31,18,53,.84))!important;
+ color:#eee0fc!important;
+ font-weight:650!important;
+ font-size:clamp(12px,1vw,14px)!important;
+ box-shadow:inset 0 1px rgba(255,250,255,.10),0 3px 9px rgba(7,2,19,.14)!important;
+ text-shadow:none!important;
+}
+html body.page-home header#mh-topbox#mh-topbox>nav.mh-deck #nav-reg-btn{
+ height:39px!important;min-height:39px!important;
+ border-radius:14px!important;
+ font-size:clamp(12px,1vw,14px)!important;
+ padding:5px 7px!important;
+ background:linear-gradient(130deg,#f3d38f,#daa753)!important;
+ color:#2a1734!important;
+ text-transform:none!important;
+ box-shadow:inset 0 1px rgba(255,255,255,.40),0 3px 9px rgba(50,25,4,.22)!important;
+}
+html body.page-home header#mh-topbox#mh-topbox>nav.mh-deck .ma-how-button{width:100%!important}
+html body.page-home header#mh-topbox#mh-topbox>nav.mh-deck .ma-menu-wrap{
+ display:flex!important;align-items:stretch!important;justify-content:stretch!important;
+}
+html body.page-home header#mh-topbox#mh-topbox>nav.mh-deck .ma-menu-wrap > button{
+ width:100%!important;flex:1!important;
+}
+/* One coherent, useful navigation bar. */
+html body.page-home header#mh-topbox#mh-topbox>nav.ma-luxe-shortcuts{
+ display:grid!important;
+ flex:none!important;
+ order:2!important;
+ grid-template-columns:repeat(6,minmax(0,1fr))!important;
+ gap:9px!important;
+ width:100%!important;
+ max-width:100%!important;
+ min-width:0!important;
+ height:auto!important;
+ margin:0!important;
+ padding:11px 0 0!important;
+ border-top:1px solid rgba(233,187,133,.22)!important;
+ justify-content:stretch!important;
+ align-items:stretch!important;
+}
+html body.page-home header#mh-topbox#mh-topbox>nav.ma-luxe-shortcuts>a.ma-luxe-shortcut{
+ width:100%!important;
+ min-width:0!important;
+ max-width:none!important;
+ min-height:42px!important;
+ height:auto!important;
+ border-radius:15px!important;
+ border:1px solid rgba(183,121,225,.46)!important;
+ background:linear-gradient(145deg,rgba(88,43,125,.57),rgba(34,18,60,.83))!important;
+ color:#f2e4ff!important;
+ box-shadow:inset 0 1px rgba(255,255,255,.06)!important;
+ font-size:clamp(11px,1vw,14px)!important;
+ font-weight:650!important;
+ padding:10px 6px!important;
+ gap:6px!important;
+ line-height:1.15!important;
+ text-align:center!important;
+ text-decoration:none!important;
+}
+html body.page-home header#mh-topbox#mh-topbox>nav.ma-luxe-shortcuts>a.ma-luxe-shortcut[aria-current="page"]{
+ color:#fbe4a6!important;
+ border-color:rgba(242,201,139,.88)!important;
+ background:linear-gradient(145deg,rgba(111,76,76,.66),rgba(65,35,75,.76))!important;
+ box-shadow:inset 0 1px rgba(255,237,192,.17)!important;
+}
+html body.page-home header#mh-topbox#mh-topbox>nav.ma-luxe-shortcuts>a.ma-luxe-shortcut svg{
+ width:16px!important;height:16px!important;flex:none!important;
+}
+/* Tablet + Samsung mobile layouts use balanced three-column shortcuts. */
+@media(max-width:900px){
+ html body.page-home header#mh-topbox#mh-topbox>nav.ma-luxe-shortcuts{
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  gap:8px!important;
+ }
+}
+@media(max-width:560px){
+ html body.page-home header#mh-topbox#mh-topbox.app-header.ma-home-header{
+  padding:14px 15px 16px!important;
+  gap:10px!important;
+ }
+ html body.page-home header#mh-topbox#mh-topbox .ma-brand-home-link{
+  min-height:75px!important;
+  gap:18px!important;
+  padding:0 3px!important;
+ }
+ html body.page-home header#mh-topbox#mh-topbox .ma-brand-orb-stage{
+  width:72px!important;height:72px!important;
+  min-width:72px!important;max-width:72px!important;
+ }
+ html body.page-home header#mh-topbox#mh-topbox .ma-brand-copy .ma-wordmark{
+  font-size:clamp(29px,8vw,35px)!important;
+ }
+ html body.page-home header#mh-topbox#mh-topbox .ma-brand-copy .ma-word-ai{
+  font-size:clamp(30px,8.2vw,36px)!important;
+ }
+ html body.page-home header#mh-topbox#mh-topbox .ma-brand-caption{
+  gap:4px 10px!important;margin-top:3px!important;
+ }
+ html body.page-home header#mh-topbox#mh-topbox .ma-brand-tagline{
+  font-size:clamp(10px,2.7vw,12px)!important;
+ }
+ html body.page-home header#mh-topbox#mh-topbox .ma-brand-caption .ma-brand-security{
+  border-left:0!important;
+  padding-left:0!important;
+  font-size:10px!important;
+  color:#cfc0df!important;
+ }
+ html body.page-home header#mh-topbox#mh-topbox>nav.mh-deck.ma-header-actions{
+  padding-top:10px!important;gap:6px!important;grid-auto-rows:38px!important;
+ }
+ html body.page-home header#mh-topbox#mh-topbox>nav.mh-deck.ma-header-actions>*{
+  min-height:38px!important;height:38px!important;
+ }
+ html body.page-home header#mh-topbox#mh-topbox>nav.mh-deck :is(
+  .sound-toggle-btn,.matchapp-notification-button,#profile-link-tab,#nav-logout-btn,.ma-how-button,
+  .ma-menu-wrap>button
+ ){
+  min-height:38px!important;height:38px!important;
+ }
+ html body.page-home header#mh-topbox#mh-topbox>nav.ma-luxe-shortcuts{
+  gap:7px!important;padding-top:10px!important;
+ }
+ html body.page-home header#mh-topbox#mh-topbox>nav.ma-luxe-shortcuts>a.ma-luxe-shortcut{
+  min-height:39px!important;
+  font-size:11px!important;
+  padding:8px 4px!important;
+  border-radius:13px!important;
+ }
+}
+@media(max-width:355px){
+ html body.page-home header#mh-topbox#mh-topbox .ma-brand-orb-stage{
+  width:62px!important;height:62px!important;min-width:62px!important;max-width:62px!important;
+ }
+ html body.page-home header#mh-topbox#mh-topbox .ma-brand-home-link{gap:12px!important}
+ html body.page-home header#mh-topbox#mh-topbox .ma-brand-copy .ma-wordmark{font-size:27px!important}
+ html body.page-home header#mh-topbox#mh-topbox .ma-brand-copy .ma-word-ai{font-size:28px!important}
+}
+
+/* Signed-in economy: credit quota shares help/settings row, never a third band. */
+html body.page-home header#mh-topbox#mh-topbox>nav.mh-deck:has(#quota-badge:not([style*="display:none"]):not([style*="display: none"]))>#quota-badge{
+ grid-area:2 / 1 / auto / 5!important;
+ width:100%!important;
+ max-width:none!important;
+ min-height:38px!important;
+ height:38px!important;
+ margin:0!important;
+ padding:5px 4px!important;
+ justify-self:stretch!important;
+ align-self:stretch!important;
+ justify-content:center!important;
+ font-size:clamp(10px,2.55vw,12px)!important;
+ gap:5px!important;
+ text-align:center!important;
+ white-space:nowrap!important;
+}
+html body.page-home header#mh-topbox#mh-topbox>nav.mh-deck:has(#quota-badge:not([style*="display:none"]):not([style*="display: none"]))>.ma-how-button{
+ grid-area:2 / 5 / auto / 11!important;
+}
+html body.page-home header#mh-topbox#mh-topbox>nav.mh-deck:has(#quota-badge:not([style*="display:none"]):not([style*="display: none"]))>.ma-menu-wrap{
+ grid-area:2 / 11 / auto / 13!important;
+}
+html body.page-home header#mh-topbox#mh-topbox>nav.mh-deck #lang-switcher-host#lang-switcher-host{
+ min-height:39px!important;height:39px!important;align-self:stretch!important;
+}
+html body.page-home header#mh-topbox#mh-topbox>nav.mh-deck>.ma-menu-wrap.ma-menu-wrap{
+ min-height:39px!important;height:39px!important;align-self:stretch!important;
+}
+html body.page-home header#mh-topbox#mh-topbox>nav.mh-deck:has(#quota-badge:not([style*="display:none"]):not([style*="display: none"])) #lang-switcher-host{
+ grid-column:1 / 5!important;
+}
+/* Prevent needlessly tall shortcut row while retaining comfortable tap targets. */
+@media(max-width:560px){
+ html body.page-home header#mh-topbox#mh-topbox.app-header.ma-home-header{
+  gap:8px!important;padding-top:13px!important;padding-bottom:13px!important;
+ }
+ html body.page-home header#mh-topbox#mh-topbox>nav.ma-luxe-shortcuts{
+  gap:6px!important;padding-top:8px!important;
+ }
+ html body.page-home header#mh-topbox#mh-topbox>nav.ma-luxe-shortcuts>a.ma-luxe-shortcut{
+  min-height:38px!important;
+ }
+ html body.page-home header#mh-topbox#mh-topbox>nav.mh-deck #lang-switcher-host#lang-switcher-host,
+ html body.page-home header#mh-topbox#mh-topbox>nav.mh-deck>.ma-menu-wrap.ma-menu-wrap{
+  min-height:38px!important;height:38px!important;
+ }
+}
+
+/* Desktop uses the approved editorial hierarchy: identity left, tools right. */
+@media(min-width:1100px){
+ html body.page-home header#mh-topbox#mh-topbox.app-header.ma-home-header{
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) minmax(470px,580px)!important;
+  grid-template-rows:auto auto!important;
+  align-items:center!important;
+  column-gap:clamp(20px,3vw,42px)!important;
+  row-gap:16px!important;
+  padding:20px 26px 23px!important;
+ }
+ html body.page-home header#mh-topbox#mh-topbox>.mh-head{
+  grid-column:1!important;grid-row:1!important;
+  order:0!important;
+  width:100%!important;
+  align-self:center!important;
+ }
+ html body.page-home header#mh-topbox#mh-topbox .ma-brand-home-link{
+  gap:clamp(24px,2.7vw,36px)!important;
+ }
+ html body.page-home header#mh-topbox#mh-topbox .ma-brand-orb-stage{
+  width:clamp(86px,8vw,108px)!important;
+  height:clamp(86px,8vw,108px)!important;
+  min-width:clamp(86px,8vw,108px)!important;
+  max-width:clamp(86px,8vw,108px)!important;
+ }
+ html body.page-home header#mh-topbox#mh-topbox .ma-wordmark{
+  font-size:clamp(46px,4.1vw,61px)!important;
+ }
+ html body.page-home header#mh-topbox#mh-topbox .ma-word-ai{
+  font-size:clamp(48px,4.2vw,63px)!important;
+ }
+ html body.page-home header#mh-topbox#mh-topbox>nav.mh-deck.ma-header-actions{
+  grid-column:2!important;grid-row:1!important;
+  order:1!important;
+  align-self:center!important;
+  padding:0!important;
+  margin:0!important;
+  width:100%!important;
+  border-top:0!important;
+ }
+ html body.page-home header#mh-topbox#mh-topbox>nav.ma-luxe-shortcuts{
+  grid-column:1 / -1!important;grid-row:2!important;
+  margin:0!important;
+  padding-top:15px!important;
+  order:2!important;
+  gap:11px!important;
+ }
+ html body.page-home header#mh-topbox#mh-topbox>nav.ma-luxe-shortcuts>a.ma-luxe-shortcut{
+  min-height:43px!important;font-size:14px!important;
+ }
+}
