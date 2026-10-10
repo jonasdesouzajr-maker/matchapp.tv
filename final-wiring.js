@@ -104,7 +104,7 @@
         addEventListener('load',()=>setTimeout(loadHomeEditorial,600),{once:true});
       }
     }
-    if(path==='/discover.html')js('/human-conversation-male-only-20261010.js');
+    if(path==='/discover.html')js('/human-conversation-cloud-20261010.js');
     document.addEventListener('click',quotaRoute,true);
     document.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.closest?.('#quota-badge'))quotaRoute(e);},true);
   }

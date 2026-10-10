@@ -1721,6 +1721,21 @@ async function runAskAndRender(question, opts) {
     if (!question || !question.trim()) return;
     const voiceOrigin = !!opts?.voiceOrigin;
     question = question.trim();
+    // Short greetings are conversation, not an entertainment title query.
+    // Respond immediately, do not consume credits or query provider catalogues.
+    const helloOnly=/^(?:hi|hello|hey|hey there|hi there|hola|olá|ola|oi|bom dia|boa tarde|boa noite|bonjour|salut|hallo|guten tag|ciao|buongiorno|merhaba|привет|здравствуйте|مرحبا|أهلا|नमस्ते|halo|hai|こんにちは|こんばんは|おはよう|안녕하세요|안녕|你好|您好)[\s!?.،。！]*$/iu;
+    if(helloOnly.test(question)){
+        const reply=window.MatchAppJonasLocale?.t?.('greeting')||"Hi, I'm Jonas. What would you like to discover?";
+        if(!currentThread)currentThread={id:newThreadId(),title:question.slice(0,60),turns:[],createdAt:Date.now(),updatedAt:Date.now()};
+        appendUserBubble(question);
+        appendAssistantBubble(reply,[],{instant:true});
+        currentThread.turns.push({role:'user',text:question,ts:Date.now()},{role:'assistant',text:reply,results:[],ts:Date.now()});
+        currentThread.updatedAt=Date.now();persistCurrentThread();
+        const field=document.getElementById('discover-new-input');if(field)field.value='';
+        const empty=document.getElementById('discover-empty');if(empty)empty.style.display='none';
+        if(voiceOrigin)window.MatchAppJonasSpeech?.speak?.(reply,window.MatchAppJonasLocale?.speech?.()||window.MATCH_LANG||'en',{});
+        return;
+    }
     // Global MatchApp editorial policy: never use AI or provider lookups to
     // locate XXX/pornographic content, and never charge for that refusal.
     if (window.MatchAppContentSafety?.isPornographicRequest?.(question)) {

@@ -78,7 +78,7 @@ test('native intro is bundled, duration-aware, one-time and destroyed on backgro
  assert.doesNotMatch(s,/setImageResource\(R\.drawable\.matchapp_official_icon\)/);
  assert.match(s,/setOnErrorListener/);
  assert.match(s,/override fun onPause\(\) \{\s*finishIntro\(\)\s*finishStartupTransition\(immediate = true\)/);
- assert.match(s,/mediaPlaybackRequiresUserGesture = true/);
+ assert.match(s,/mediaPlaybackRequiresUserGesture = false/);
  assert.match(s,/savedInstanceState == null && intent\.data == null\) startStartupExperience\(\)/);
  assert.ok(fs.statSync('assets/brand/matchapp-launch-intro-hd.mp4').size>1000000);
  assert.equal(fs.readFileSync('assets/brand/matchapp-launch-intro-hd.mp4').compare(fs.readFileSync('android-studio/app/src/main/res/raw/matchapp_launch_intro.mp4')),0);

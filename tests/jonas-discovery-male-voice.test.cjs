@@ -11,6 +11,6 @@ test('all discover answer read-aloud routes must use approved masculine voices',
  assert.match(human,/MatchAppJonasVoicePolicy\?\.select\?/);
  assert.match(human,/if \(!v\) \{/);
  assert.doesNotMatch(human,/S\?\.resolveVoice\s*\?/);
- assert.match(read('final-wiring.js'),/human-conversation-male-only-20261010/);
- assert.match(read('build-meta.js'),/final-wiring\.js\?v=20261010-malevoice/);
+ assert.match(read('final-wiring.js'),/human-conversation-cloud-20261010/);
+ assert.match(read('build-meta.js'),/final-wiring\.js\?v=20261010-cloudvoice2/);
 });

@@ -41,7 +41,8 @@ test('Android asset origin, backend JWT, microphone permission and call stop are
 test('Native launcher does not modify browser, Kids or checkout and stays owner-gated',()=>{
  assert.match(main,/openVoiceAvatar\(\)/);
  assert.match(main,/matchapp-android-avatar-launcher/);
- assert.match(main,/MatchAppNativeExperience\.openVoiceAvatar/);
+ assert.match(main,/document.getElementById\('matchapp-android-avatar-launcher'\)\?\.remove\(\)/);
+ assert.match(fs.readFileSync(path.join(root,'jonas/floating-home-20261010-v3.js'),'utf8'),/ma-jonas-inline/);
  assert.match(main,/localStorage\.getItem\(keys\[i\]\)/);
  assert.match(main,/VoiceAvatarActivity\.EXTRA_TOKEN/);
  assert.match(main,/if\(s&&s\.user&&s\.user\.id&&s\.access_token\)/);

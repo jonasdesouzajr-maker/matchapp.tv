@@ -6,8 +6,8 @@ const path=require('node:path');
 const {JSDOM}=require('jsdom');
 const ROOT=path.resolve(__dirname,'..');
 const home=fs.readFileSync(path.join(ROOT,'index.html'),'utf8');
-const js=fs.readFileSync(path.join(ROOT,'jonas/floating-home.js'),'utf8');
-const css=fs.readFileSync(path.join(ROOT,'jonas/floating-home.css'),'utf8');
+const js=fs.readFileSync(path.join(ROOT,'jonas/floating-home-20261010-v3.js'),'utf8');
+const css=fs.readFileSync(path.join(ROOT,'jonas/floating-home-20261010-v3.css'),'utf8');
 const start=home.indexOf('<aside id="ma-jonas-home"');
 const end=home.indexOf('</aside>',start);
 const markup=home.slice(start,end+8);
@@ -29,8 +29,8 @@ test('official homepage includes exactly one fixed Jonas portrait bubble and loc
  assert.equal(launcher.getAttribute('aria-expanded'),'false');
  assert.equal(launcher.querySelector('img')?.getAttribute('src'),'/jonas/faces/jonas/rest.jpg');
  assert.ok(fs.existsSync(path.join(ROOT,'jonas/faces/jonas/rest.jpg')));
- assert.match(home,/\/jonas\/floating-home\.js\?v=20261009-/);
- assert.ok(home.includes('/jonas/floating-home.css?v=20261009-chat3'));
+ assert.match(home,/\/jonas\/floating-home-20261010-v3\.js/);
+ assert.ok(home.includes('/jonas/floating-home-20261010-v3.css'));
  assert.match(css,/#ma-jonas-home\{[^}]*position:fixed/);
  assert.match(css,/@media\(max-width:374px\)/);
  dom.window.close();
@@ -83,13 +83,13 @@ test('Portuguese locale updates controls and suggestion questions',async()=>{
  assert.match(decodeURIComponent(d.querySelector('.jh-suggestion').href),/Recommend a documentary/);
  dom.window.close();
 });
-test('native Android and Kids routes never show an overlapping second widget',()=>{
+test('native Android shows the remote homepage Jonas but Kids and other routes stay isolated',()=>{
  for(const options of [{url:'https://matchapp.tv/',native:true},{url:'https://matchapp.tv/kids/'},{url:'https://matchapp.tv/discover.html'}]){
   const dom=scene(options.url,{native:options.native});
-  assert.equal(dom.window.document.getElementById('ma-jonas-home').hidden,true);
+  assert.equal(dom.window.document.getElementById('ma-jonas-home').hidden,!!options.native===false);
   dom.window.close();
  }
- assert.match(css,/html\.matchapp-ai-android #ma-jonas-home/);
+ assert.doesNotMatch(css,/html\.matchapp-ai-android #ma-jonas-home/);
 });
 test('widget is independent of locked AdSense units and existing navigation',()=>{
  const index=home.indexOf('id="ma-jonas-home"'),ads=home.indexOf('data-ad-slot="2595698117"');

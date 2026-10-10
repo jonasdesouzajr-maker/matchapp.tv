@@ -156,7 +156,7 @@ class MainActivity : AppCompatActivity() {
             // Always cold-load current production HTML/assets when the Android
             // activity starts; normal caching resumes after the first page finishes.
             cacheMode = WebSettings.LOAD_NO_CACHE
-            mediaPlaybackRequiresUserGesture = true
+            mediaPlaybackRequiresUserGesture = false
             setSupportMultipleWindows(true)
             javaScriptCanOpenWindowsAutomatically = true
             useWideViewPort = true
@@ -1084,82 +1084,13 @@ class MainActivity : AppCompatActivity() {
               // Owner beta: launcher appears only inside the Android app, never on the website.
               // Server-side Realtime remains owner-gated until a metered public usage policy exists.
               function setupNativeVoiceAvatarLauncher() {
-                if (!document.body || document.getElementById('matchapp-android-avatar-launcher')) return;
-                if (!window.MatchAppNativeExperience || !window.MatchAppNativeExperience.openVoiceAvatar) return;
-                var launch=document.createElement('div');
-                launch.id='matchapp-android-avatar-launcher';
-                launch.setAttribute('role','group');
-                launch.setAttribute('aria-label','Talk to MatchApp Ai avatar');
-                launch.textContent='✦ Jonas AI';
-                launch.innerHTML=''
-                  +'<button type="button" class="jonas-face" aria-label="Start voice chat with Jonas AI">'
-                  +'<img alt="" width="280" height="280" src="https://matchapp.tv/private-voice/avatar.jpg?v=5">'
-                  +'</button>'
-                  +'<div class="jonas-copy"><strong>\u2726 Jonas AI</strong><span id="matchapp-android-avatar-caption">Your entertainment AI</span></div>'
-                  +'<button type="button" class="jonas-live">Live avatar</button>';
-                var anchor=document.getElementById('ma-ai-entry')||document.getElementById('search-box');
-                var spacer=document.createElement('div');
-                spacer.id='matchapp-android-avatar-spacer';
-                if(anchor&&anchor.parentNode){
-                  anchor.parentNode.insertBefore(spacer, anchor);
-                  anchor.parentNode.insertBefore(launch, anchor);
-                }else{
-                  document.body.appendChild(spacer);
-                  document.body.appendChild(launch);
-                }
-                function startHomeVoice(event){
-                  if(event){event.preventDefault();}
-                  launch.classList.add('is-listening');
-                  var mic=document.getElementById('mic-btn-index');
-                  if(mic){mic.click();return;}
-                  try{window.MatchAppNativeVoice&&window.MatchAppNativeVoice.start('en-US');}catch(e){}
-                }
-                launch.querySelector('.jonas-face').addEventListener('click', startHomeVoice);
-                launch.querySelector('.jonas-live').addEventListener('click', function(event){
-                  event.preventDefault();
-                  try{window.MatchAppNativeExperience.openVoiceAvatar()}catch(e){}
-                });
-                function placeAvatar(){
-                  var y=window.scrollY||document.documentElement.scrollTop||0;
-                  var origin=spacer.getBoundingClientRect().top+y;
-                  var passed=y>origin+12;
-                  var size=passed?64:Math.round(156-Math.min(1,y/320)*28);
-                  launch.style.setProperty('--jonas-size', size+'px');
-                  launch.classList.toggle('is-compact', passed);
-                  if(passed){
-                    launch.style.position='fixed';
-                    launch.style.top='max(8px, env(safe-area-inset-top))';
-                    launch.style.right='12px';
-                    launch.style.left='auto';
-                    launch.style.transform='none';
-                    spacer.style.height='168px';
-                  }else{
-                    launch.style.position='relative';
-                    launch.style.top='auto';
-                    launch.style.right='auto';
-                    launch.style.left='auto';
-                    launch.style.transform='none';
-                    spacer.style.height='0px';
-                  }
-                }
-                placeAvatar();
-                if(!window.__matchappAvatarScroll){
-                  window.__matchappAvatarScroll=true;
-                  var ticking=false;
-                  window.addEventListener('scroll', function(){
-                    if(ticking)return;
-                    ticking=true;
-                    requestAnimationFrame(function(){ticking=false;placeAvatar();});
-                  }, {passive:true});
-                }
-                if(!window.__matchappAvatarCaption){
-                  window.__matchappAvatarCaption=true;
-                  document.addEventListener('matchapp:voice-result', function(){
-                    launch.classList.remove('is-listening');
-                  });
-                }
+                // Since 2026-10-10 Jonas UI is loaded from matchapp.tv home,
+                // not hardcoded native HTML. That allows layout/voice fixes
+                // without uploading another Play Store AAB.
+                document.getElementById('matchapp-android-avatar-launcher')?.remove();
+                document.getElementById('matchapp-android-avatar-spacer')?.remove();
               }
-              setupNativeVoiceAvatarLauncher();
+                            setupNativeVoiceAvatarLauncher();
               setTimeout(setupNativeVoiceAvatarLauncher,700);
               setTimeout(setupNativeVoiceAvatarLauncher,1800);
               if(!window.__matchAppAvatarLauncherBound){
@@ -1176,7 +1107,7 @@ class MainActivity : AppCompatActivity() {
                 // Restore the original player on Android so it uses our native TTS
                 // bridge, including automatic replies after microphone prompts.
                 var speechPlayer=window.readAloud;
-                if(window.MatchAppNativeVoice && typeof window.MatchAppNativeVoice.speak==='function' &&
+                if(!window.MatchAppJonasSpeech && window.MatchAppNativeVoice && typeof window.MatchAppNativeVoice.speak==='function' &&
                    typeof speechPlayer==='function' && speechPlayer.__humanPatched &&
                    typeof speechPlayer.__original==='function') {
                   window.readAloud=speechPlayer.__original;
