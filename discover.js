@@ -487,11 +487,18 @@ window.readAloud = function(text, btn) {
     // can be removed, and a stale voiceURI would otherwise silently mute
     // playback rather than degrade to a sensible default.
     const S = window.MatchSettings;
-    const voice = pickVoiceForLang(voices, uiLang);
-    if (voice) utter.voice = voice;
-    utter.lang = voice?.lang || targetLang;
-    utter.rate  = S ? S.get('voiceRate')  : parseFloat(localStorage.getItem('match_voice_rate') || '1');
-    utter.pitch = S ? S.get('voicePitch') : 1;
+    // Discovery is the continuation of Jonas: never read his answer with
+    // an unknown or female system voice, even if Settings picked one earlier.
+    const voice = window.MatchAppJonasVoicePolicy?.select?.(voices, targetLang) || null;
+    if (!voice) {
+        if (btn) btn.classList.remove('speaking');
+        window.showToast?.('An approved masculine voice is not installed. The answer remains readable.', true);
+        return;
+    }
+    utter.voice = voice;
+    utter.lang = voice.lang;
+    utter.rate = S ? S.get('voiceRate') : 1;
+    utter.pitch = 1;
 
     utter.onend = () => { if (btn) btn.classList.remove('speaking'); };
     utter.onerror = () => { if (btn) btn.classList.remove('speaking'); };
