@@ -172,7 +172,8 @@ test('Ask AI composer stays visible and voice works in the active language',()=>
   assert.doesNotMatch(voice,/style\.display\s*=\s*['"]none['"]/);
   assert.match(js,/const TTS_LANG_MAP/);
   assert.match(js,/function voiceMatchesLang/);
-  assert.match(js,/utter\.lang = voice\?\.lang \|\| targetLang/);
+  assert.match(js,/MatchAppJonasVoicePolicy\?\.select\?/);
+  assert.match(js,/if \(!voice\) \{/);
   assert.doesNotMatch(js,/autoReadEnabled|match_voice_autoread/);
   assert.match(js,/speak\.onclick = \(\) => window\.readAloud\(text, speak\)/);
   assert.match(js,/const voiceOrigin = !!opts\?\.voiceOrigin/);
