@@ -71,9 +71,9 @@ test('spotlight leaves context readable and highlights the actual target',()=>{
 test('manual walkthrough ships the new cache key to Home',()=>{
   const js=read('onboarding-tour.js'),html=read('index.html');
   assert.match(js,/function start\(\)[\s\S]*show\(0\)/);
-  assert.match(js,/const VERSION='v9'/);
-  assert.ok(html.includes('/onboarding-tour.css?v=20261010-tour-v9'));
-  assert.ok(html.includes('/onboarding-tour.js?v=20261010-tour-v9'));
+  assert.match(js,/const VERSION='v10'/);
+  assert.ok(html.includes('/onboarding-tour.css?v=20261010-tour-v10'));
+  assert.ok(html.includes('/onboarding-tour.js?v=20261010-tour-v10'));
   assert.doesNotMatch(html,/20260924-coach1/);
 });
 
