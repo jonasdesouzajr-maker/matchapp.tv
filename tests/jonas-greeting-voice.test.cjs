@@ -50,7 +50,7 @@ test('Jonas prefers a matching masculine voice and moves his face only while spe
  state.greeted[0].onstart();
  assert.ok(doc.getElementById('ma-jonas-home').classList.contains('jh-speaking'));
  assert.ok(doc.getElementById('ma-jonas-home').classList.contains('jh-speaking'));
- assert.ok(doc.querySelector('.jh-mouth-layer'));
+ assert.equal(state.greeted[0].voice.name,'Daniel');
  state.greeted[0].onend();
  assert.ok(!doc.getElementById('ma-jonas-home').classList.contains('jh-speaking'));
  assert.match(doc.querySelector('.jh-medallion img').src,/\/rest\.jpg$/);
