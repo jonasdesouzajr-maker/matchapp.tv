@@ -9,7 +9,7 @@ function fixture(lang){
  w.MATCH_LANG=lang;w.matchMedia=()=>({matches:false});
  w.navigator.mediaDevices={getUserMedia:()=>{voiceState.permission++;return Promise.resolve({getTracks:()=>[{stop(){}}]})}};
  w.SpeechSynthesisUtterance=class{constructor(text){this.text=text}};
- w.speechSynthesis={cancel(){},speak:u=>voiceState.said.push(u),getVoices:()=>[{name:'Male voice',lang:lang==='pt-BR'?'pt-BR':lang+'-'+lang.toUpperCase()}]};
+ w.speechSynthesis={cancel(){},speak:u=>voiceState.said.push(u),getVoices:()=>[{name:'Male voice',lang:lang==='pt-BR'?'pt-BR':lang+'-'+lang.toUpperCase(),localService:true}]};
  w.SpeechRecognition=class{start(){voiceState.langs.push(this.lang)}abort(){}};
  w.eval(localeCode);w.eval(widget);w.eval(policy);w.eval(voice);
  return {dom,w,doc:w.document,state:voiceState};
