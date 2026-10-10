@@ -79,12 +79,18 @@
     let voices = [];
     try { voices = S?.listVoices ? await S.listVoices() : speechSynthesis.getVoices(); } catch (_) { voices = speechSynthesis.getVoices(); }
     const utter = new SpeechSynthesisUtterance(String(textValue || ''));
-    const v = S?.resolveVoice ? S.resolveVoice(voices, lang()) : null;
-    if (v) { utter.voice = v; utter.lang = v.lang; } else utter.lang = lang();
+    // Never let account voice preferences or OS defaults switch Jonas female.
+    const v = window.MatchAppJonasVoicePolicy?.select?.(voices, lang()) || null;
+    if (!v) {
+      window.showToast?.('An approved masculine voice is not installed. The answer remains readable.', true);
+      return;
+    }
+    utter.voice = v;
+    utter.lang = v.lang;
     const configuredRate = Number(S?.get?.('voiceRate'));
     const configuredPitch = Number(S?.get?.('voicePitch'));
     utter.rate = Number.isFinite(configuredRate) && configuredRate > 0 ? configuredRate : .96;
-    utter.pitch = Number.isFinite(configuredPitch) && configuredPitch > 0 ? configuredPitch : .98;
+    utter.pitch = 1; // Do not morph Jonas's selected natural voice.
     utter.volume = 1;
     document.querySelectorAll('.discover-speak.speaking').forEach(b => b.classList.remove('speaking'));
     if (btn) btn.classList.add('speaking');
