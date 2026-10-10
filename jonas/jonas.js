@@ -167,14 +167,13 @@
     return window.MatchAppJonasLocale?.speech?.() || navigator.language || "en-US";
   }
   function pickVoice(language) {
-    const voices = speechSynthesis.getVoices?.() || [];
-    const exact = voices.filter(v => v.lang.toLowerCase() === language.toLowerCase());
-    const same = voices.filter(v => v.lang.split("-")[0].toLowerCase() === language.split("-")[0].toLowerCase());
-    const choices = exact.length ? exact : same;
-    const adultMale = /\b(male|daniel|alex|aaron|david|james|thomas|george|oliver|arthur|fred|ricardo|diego|rishi|paulo|antonio|jorge|marcelo|mark|andrew|lucas|felipe|pedro|hugo|henri|pierre|giuseppe|lorenzo|sean|ryan)\b/i;
-    return choices.find(v => adultMale.test(v.name) && v.localService) ||
-           choices.find(v => adultMale.test(v.name)) ||
-           choices.find(v => v.localService) || choices[0] || null;
+    // The browser cannot expose reliable gender metadata. Use the reviewed
+    // allowlist only; never use the first available voice or the OS default.
+    try {
+      return window.MatchAppJonasVoicePolicy?.select?.(
+        speechSynthesis.getVoices?.() || [], language
+      ) || null;
+    } catch { return null; }
   }
   function useVoice(text, onDone) {
     if (window.MatchAppNativeVoice?.speak) {
@@ -207,8 +206,14 @@
     utter.lang = voiceLanguage();
     utter.pitch = .89;
     utter.rate = .97;
-    utter.voice = pickVoice(utter.lang);
-    utter.pitch = .85; utter.rate = .94; utter.volume = 1;
+    const approvedVoice = pickVoice(utter.lang);
+    if (!approvedVoice) {
+      uiStatus("No approved masculine voice installed. Jonas remains available by text.");
+      if (typeof onDone === "function" && open) onDone();
+      return;
+    }
+    utter.voice = approvedVoice;
+    utter.pitch = 1; utter.rate = .94; utter.volume = 1;
     let speechStarted = false;
     const done = () => {
       if (myEpoch !== epoch || !speaking) return;
