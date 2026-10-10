@@ -4,7 +4,8 @@ const root=path.join(__dirname,'..');
 const read=p=>fs.readFileSync(path.join(root,p),'utf8');
 test('all discover answer read-aloud routes must use approved masculine voices',()=>{
  const html=read('discover.html'),answer=read('discover-male-only-20261010.js'),human=read('human-conversation-male-only-20261010.js');
- assert.ok(html.indexOf('male-voice-policy-20261010.js')<html.indexOf('discover-male-only-20261010.js'));
+ assert.ok(html.indexOf('male-voice-policy-20261010.js')<html.indexOf('discover.js?v='));
+ assert.match(html,/discovery-speech-lock-20261010\.js/);
  assert.match(answer,/MatchAppJonasVoicePolicy\?\.select\?/);
  assert.match(answer,/if \(!voice\) \{/);
  assert.match(human,/MatchAppJonasVoicePolicy\?\.select\?/);
