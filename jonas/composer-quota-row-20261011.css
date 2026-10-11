@@ -29,3 +29,15 @@ html body.ai-chat-page.ma-ia-discover main.wrap section.premium-card.discover-he
  border:0!important;overflow:hidden!important;clip-path:inset(50%)!important;
  white-space:nowrap!important;
 }
+/* Empty Send is a visible, non-billable validation message. The default
+   helper remains screen-reader accessible until feedback is needed. */
+html body.ai-chat-page.ma-ia-discover main.wrap section.premium-card.discover-head .newsearch-row>#discover-compose-help[data-error="1"]{
+ position:static!important;left:auto!important;top:auto!important;
+ order:2!important;flex:0 0 auto!important;align-self:stretch!important;
+ display:block!important;width:100%!important;height:auto!important;
+ max-width:100%!important;min-height:18px!important;
+ padding:5px 7px 0!important;margin:2px 0 0!important;
+ clip-path:none!important;overflow:visible!important;
+ white-space:normal!important;text-align:center!important;
+ color:#f6dca0!important;font:650 11px/1.4 Inter,system-ui,sans-serif!important;
+}

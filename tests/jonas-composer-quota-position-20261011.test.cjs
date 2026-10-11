@@ -22,8 +22,28 @@ test('CSS keeps quota accessible and composer controls intact',()=>{
  assert.match(css,/>#ai-send-cost\{/);
  assert.match(css,/\.newsearch-row>#discover-compose-help\{/);
  assert.match(css,/clip-path:inset\(50%\)!important/);
- assert.match(html,/composer-quota-row-20261011\.css\?v=20261011-quota1/);
- assert.match(html,/quota=20261011-row1/);
+ assert.match(html,/composer-quota-row-20261011\.css\?v=20261011-quota2/);
+ assert.match(html,/quota=20261011-row2/);
  assert.match(html,/id="mic-btn-discover"/);
  assert.match(html,/onclick="newDiscoverSearch\(\)"/);
+});
+
+test('empty Send shows a visible non-chargeable prompt, valid Send restores the quiet helper',()=>{
+ const source=read('discover.js'),start=source.indexOf('window.newDiscoverSearch = function ()'),end=source.indexOf('/* ---------- Boot ---------- */',start);
+ assert.ok(start>0&&end>start);
+ const dom=new JSDOM('<textarea id="discover-new-input"></textarea><div id="discover-compose-help">Type a question, or tap the microphone.</div>',{url:'https://matchapp.tv/discover.html'});
+ const {window}=dom,{document}=window;
+ let submitted=[];
+ window.autoGrowComposer=()=>{};
+ const install=new Function('window','document','navigator','askAndRender',source.slice(start,end));
+ install(window,document,window.navigator,q=>submitted.push(q));
+ assert.equal(window.newDiscoverSearch(),false);
+ assert.equal(document.getElementById('discover-compose-help').dataset.error,'1');
+ assert.equal(submitted.length,0,'empty Send must not call or charge AI');
+ document.getElementById('discover-new-input').value='A documentary series';
+ assert.equal(window.newDiscoverSearch(),true);
+ assert.equal(document.getElementById('discover-compose-help').dataset.error,undefined);
+ assert.equal(document.getElementById('discover-compose-help').textContent,'Type a question, or tap the microphone.');
+ assert.deepEqual(submitted,['A documentary series']);
+ dom.close?.();
 });

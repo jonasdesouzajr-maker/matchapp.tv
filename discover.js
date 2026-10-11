@@ -2108,6 +2108,7 @@ window.newDiscoverSearch = function () {
         // Prompt visibly, but do not focus the input or open the keyboard.
         if (hint) {
             if (!hint.dataset.initialCopy) hint.dataset.initialCopy = hint.textContent || '';
+            hint.dataset.error = '1';
             const lang = String(window.MATCH_LANG || document.documentElement.lang || 'en').toLowerCase();
             hint.textContent = lang.startsWith('pt')
                 ? 'Digite uma pergunta ou toque no microfone para falar com o MatchApp Ai.'
@@ -2115,7 +2116,10 @@ window.newDiscoverSearch = function () {
         }
         return false;
     }
-    if (hint?.dataset.initialCopy) hint.textContent = hint.dataset.initialCopy;
+    if (hint) {
+        delete hint.dataset.error;
+        if (hint.dataset.initialCopy) hint.textContent = hint.dataset.initialCopy;
+    }
     // Closing the Android soft keyboard before results resize the page avoids
     // the viewport pulling the follow-up composer down into the footer.
     if (el && document.activeElement === el &&
