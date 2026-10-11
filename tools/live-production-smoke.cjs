@@ -311,13 +311,17 @@ async function aiQuestion(page,question,expected,label){
     // Exercise real clicks so a header covering history cannot pass silently.
     const historyFold=page.locator('.ai-sidebar-fold');
     if(await historyFold.isVisible()&&device.width>980)await historyFold.click();
-    await page.locator('#ai-sidebar-toggle').click({timeout:12000});
+    // Jonas has one deliberate header History action; the duplicate floating
+    // hamburger is hidden. Exercise the visible real action on every viewport.
+    const visibleHistory=page.locator('.jonas-top-history');
+    if(await visibleHistory.isVisible())await visibleHistory.click({timeout:12000});
+    else await page.locator('#ai-sidebar-toggle').click({timeout:12000});
     await page.waitForFunction(()=>{
       const panel=document.getElementById('ai-sidebar')?.getBoundingClientRect();
       return panel&&panel.left>=-1&&panel.right>0;
     },null,{timeout:5000});
     const history=await page.evaluate(()=>{
-      const button=document.getElementById('ai-sidebar-toggle');
+      const button=document.querySelector('.jonas-top-history')||document.getElementById('ai-sidebar-toggle');
       const panel=document.getElementById('ai-sidebar');
       const header=document.querySelector('header.app-header').getBoundingClientRect();
       const rect=panel.getBoundingClientRect();
