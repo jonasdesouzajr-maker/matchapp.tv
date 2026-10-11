@@ -41,6 +41,10 @@
     brand.setAttribute('aria-label', name);
     var home = brand.querySelector('.ma-brand-home-link');
     if (home) home.setAttribute('aria-label', name + ' home');
+    var match = brand.querySelector('.ma-word-match');
+    var app = brand.querySelector('.ma-word-app');
+    if (match && match.textContent !== 'Match') match.textContent = 'Match';
+    if (app && app.textContent !== 'App') app.textContent = 'App';
     var ai = brand.querySelector('[data-ma-brand-ai]');
     if (ai && ai.textContent !== ('Ai')) {
       ai.textContent = 'Ai';
@@ -72,6 +76,8 @@
     host.id = 'shell-brand-lockup';
     var lockup = el('div', 'ma-brand-lockup');
     lockup.setAttribute('aria-label', brandName());
+    lockup.setAttribute('translate', 'no');
+    lockup.classList.add('notranslate');
 
     var link = el('a', 'ma-brand-home-link');
     link.href = '/';
@@ -89,12 +95,17 @@
     stage.appendChild(orb);
 
     var copy = el('span', 'ma-brand-copy');
+    copy.setAttribute('translate', 'no');
+    copy.classList.add('notranslate');
     var word = el('span', 'ma-wordmark');
     word.appendChild(el('span', 'ma-word-match', 'Match'));
     word.appendChild(el('span', 'ma-word-app', 'App'));
-    copy.appendChild(word);
-    copy.appendChild(el('span', 'ma-word-ai', 'Ai'));
-    copy.querySelector('.ma-word-ai').setAttribute('data-ma-brand-ai', '');
+    var titleLine = el('span', 'ma-brand-title-line');
+    titleLine.appendChild(word);
+    var aiWord = el('span', 'ma-word-ai', 'Ai');
+    aiWord.setAttribute('data-ma-brand-ai', '');
+    titleLine.appendChild(aiWord);
+    copy.appendChild(titleLine);
 
     link.appendChild(stage);
     link.appendChild(copy);

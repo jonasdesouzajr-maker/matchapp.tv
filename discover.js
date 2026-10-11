@@ -848,6 +848,28 @@ function placeDiscoverComposer(wrap,grid) {
     if(row){discoverComposerNode=row;wrap.insertBefore(row,grid);}
 }
 
+function shareDiscoverItem(idx) {
+    // UI shortcut to the existing verified share/reward implementation.
+    // Neither copying a link nor opening a share sheet grants credit.
+    const card = document.querySelector('[data-discover-idx="' + idx + '"]');
+    const bubble = card?.closest('.chat-assistant');
+    const reward = bubble?.querySelector('.ma-guest-trial-button');
+    if (reward && !reward.hidden && reward.dataset.offer === 'share') {
+        reward.click();
+        return;
+    }
+    const title = card?.querySelector('h3')?.textContent?.trim() || 'MatchApp Ai';
+    const message = title + ' · MatchApp Ai';
+    const url = 'https://matchapp.tv/discover.html';
+    if (navigator.share) {
+        navigator.share({title:message,text:'Discover entertainment with MatchApp Ai.',url}).catch(()=>{});
+    } else if (navigator.clipboard?.writeText) {
+        navigator.clipboard.writeText(message + ' ' + url)
+            .then(()=>window.showToast?.('Link copied. Share verification is required for rewards.'))
+            .catch(()=>{});
+    }
+}
+
 function discoverCardHTML(item, idx) {
     const rawTitle = String(item.displayTitle || item.title || '');
     const title = (typeof window.sanitizeDisplayText === 'function')
@@ -866,6 +888,7 @@ function discoverCardHTML(item, idx) {
             : discoverLabel('discover.whereToWatch', 'Where to Watch'));
     const saveLabel = discoverLabel('res.watchlater', '⭐ Watch Later');
     const nfmLabel = discoverLabel('res.notforme', '👎 Not For Me');
+    const shareLabel = /^pt/i.test(window.MATCH_LANG||'') ? '↗ Compartilhar' : /^es/i.test(window.MATCH_LANG||'') ? '↗ Compartir' : '↗ Share';
     const whyText = item.why === 'director'
         ? discoverLabel('discover.sameDirector', 'Same director') + (item.directorName ? ' · ' + item.directorName : '')
         : (item.why === 'idea' ? discoverLabel('discover.sameIdea', 'Same idea') : '');
@@ -901,6 +924,7 @@ function discoverCardHTML(item, idx) {
                 <a id="dl-${idx}" class="gold-btn discover-play${cinemaOnly ? ' is-cinema' : ''}" href="#" target="_blank" rel="noopener">${watchLabel}</a>
                 <button type="button" class="discover-save" onclick="saveDiscoverItem(${idx})" id="ds-${idx}">${saveLabel}</button>
                 <button type="button" class="discover-nfm" onclick="notForMeDiscoverItem(${idx})" id="dn-${idx}">${nfmLabel}</button>
+                <button type="button" class="discover-share" onclick="shareDiscoverItem(${idx})" id="dshare-${idx}" aria-label="${shareLabel}">${shareLabel}</button>
             </div>
         </div>
     </article>`;
@@ -1957,6 +1981,15 @@ async function runAskAndRender(question, opts) {
     let newItems = (bookIntent ? [] : (payload.results || []))
         .map(item => enrichDiscoverItem(item, question))
         .filter(item => item && item.title && !isDiscoverDisliked(item.title));
+    // Presentation-only: exact catalog identity mentioned in a prose-only
+    // Jonas reply uses the existing card poster, synopsis and action controls.
+    // No new AI prompt, quota debit, or invented viewing provider.
+    if (!newItems.length && payload?._live === true && wantsTitleRecommendations &&
+        !bookIntent && !cookingIntent && !musicPayload) {
+        const displayItem = await window.MatchAppJonasTitlePresentation?.fromAnswer?.(payload.answer);
+        if (displayItem && !isDiscoverDisliked(displayItem.title))
+            newItems = [enrichDiscoverItem(displayItem, question)];
+    }
     if (!bookIntent && wantsTitleRecommendations && !newItems.length && !musicPayload &&
         !payload?._live && window.matchPolicy && typeof CONTENT_CATALOG !== 'undefined') {
         newItems = CONTENT_CATALOG
