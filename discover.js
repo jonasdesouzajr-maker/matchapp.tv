@@ -2010,10 +2010,16 @@ async function runAskAndRender(question, opts) {
     persistCurrentThread();
     refreshAiWorkspaceStatus();
 
-    // Keep the follow-up box in view so continuing the conversation is obvious.
+    // Keep the next question visible without centering the last row into the
+    // footer while Android's visual viewport is recovering from its keyboard.
     const row = document.querySelector('.newsearch-row');
     if (!keepConversationAtStart()) {
-        if (row) setTimeout(() => row.scrollIntoView({ behavior: 'smooth', block: 'center' }), 400);
+        if (row) setTimeout(() => {
+            const android = window.MATCHAPP_ANDROID || /MatchAppAiAndroid\//i.test(navigator.userAgent || '');
+            if (android) {
+                (bubble?.wrap || row).scrollIntoView({ behavior: 'smooth', block: 'start' });
+            } else row.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 400);
     } else {
         const log = document.getElementById('chat-log');
         if (log) setTimeout(() => log.scrollIntoView({ behavior: 'auto', block: 'start' }), 20);
@@ -2099,6 +2105,12 @@ window.newDiscoverSearch = function () {
         return false;
     }
     if (hint?.dataset.initialCopy) hint.textContent = hint.dataset.initialCopy;
+    // Closing the Android soft keyboard before results resize the page avoids
+    // the viewport pulling the follow-up composer down into the footer.
+    if (el && document.activeElement === el &&
+        (window.MATCHAPP_ANDROID || /MatchAppAiAndroid\//i.test(navigator.userAgent || ''))) {
+        el.blur();
+    }
     askAndRender(question);
     // Collapse back to one line once the question is sent.
     el.value = '';
