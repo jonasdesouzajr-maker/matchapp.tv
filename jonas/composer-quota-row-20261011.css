@@ -1,0 +1,49 @@
+/* Jonas: one complete composer; account quota follows it as a secondary line.
+   Layout only. The send, microphone, quota and plan logic stay unchanged. */
+html body.ai-chat-page.ma-ia-discover main.wrap section.premium-card.discover-head .newsearch-row{
+ display:flex!important;flex-direction:column!important;flex-wrap:nowrap!important;
+ align-items:stretch!important;gap:0!important;height:auto!important;
+ padding-bottom:calc(12px + env(safe-area-inset-bottom,0px))!important;
+}
+html body.ai-chat-page.ma-ia-discover main.wrap section.premium-card.discover-head .newsearch-row>.composer{
+ flex:0 0 auto!important;width:100%!important;min-width:0!important;
+ box-sizing:border-box!important;
+}
+html body.ai-chat-page.ma-ia-discover main.wrap section.premium-card.discover-head .newsearch-row>#ai-send-cost{
+ position:static!important;order:1!important;flex:0 0 auto!important;
+ display:block!important;width:100%!important;max-width:100%!important;
+ min-height:15px!important;box-sizing:border-box!important;
+ margin:6px 0 0!important;padding:0 5px!important;
+ text-align:center!important;color:#ded0e8!important;
+ font:600 clamp(10px,2.55vw,11px)/1.4 Inter,system-ui,sans-serif!important;
+ letter-spacing:-.01em!important;white-space:normal!important;
+ overflow-wrap:break-word!important;word-break:normal!important;
+}
+html body.ai-chat-page.ma-ia-discover main.wrap section.premium-card.discover-head .newsearch-row>#ai-send-cost[hidden]{
+ display:none!important;
+}
+/* Retain the input helper for screen readers; never overlay it on quotas. */
+html body.ai-chat-page.ma-ia-discover main.wrap section.premium-card.discover-head .newsearch-row>#discover-compose-help{
+ position:absolute!important;left:auto!important;top:auto!important;
+ width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;
+ border:0!important;overflow:hidden!important;clip-path:inset(50%)!important;
+ white-space:nowrap!important;
+}
+/* Empty Send is a visible, non-billable validation message. The default
+   helper remains screen-reader accessible until feedback is needed. */
+html body.ai-chat-page.ma-ia-discover main.wrap section.premium-card.discover-head .newsearch-row>#discover-compose-help[data-error="1"]{
+ position:static!important;left:auto!important;top:auto!important;
+ order:2!important;flex:0 0 auto!important;align-self:stretch!important;
+ display:block!important;width:100%!important;height:auto!important;
+ max-width:100%!important;min-height:18px!important;
+ padding:5px 7px 0!important;margin:2px 0 0!important;
+ clip-path:none!important;overflow:visible!important;
+ white-space:normal!important;text-align:center!important;
+ color:#f6dca0!important;font:650 11px/1.4 Inter,system-ui,sans-serif!important;
+}
+/* Jonas alone: shared shell may inject the browser Kids Mode shortcut.
+   Keep browser Kids Mode on Home and its own pages; do not create a stranded
+   sixth header item in the compact Ask AI navigation. */
+html body.ai-chat-page.page-shell header.mh-topbox nav.mh-deck #matchapp-kids-entry{
+ display:none!important;
+}

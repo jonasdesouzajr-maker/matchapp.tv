@@ -1503,7 +1503,13 @@ function paintAiSendCost() {
             el = document.createElement('p');
             el.id = 'ai-send-cost';
             el.className = 'ai-send-cost';
-            send.insertAdjacentElement('afterend', el);
+        }
+        // Presentation-only: a quota status is not a fourth control inside
+        // the mic/send grid. Keep the same quota calculation and live text,
+        // but place the existing node directly below the whole composer.
+        const composer = send.closest('.composer');
+        if (composer && (el.parentElement !== composer.parentElement || el.previousElementSibling !== composer)) {
+            composer.insertAdjacentElement('afterend', el);
         }
         const copy = AI_COST_COPY[aiCostLang()] || AI_COST_COPY.en;
         const fill = (text, vars) => Object.keys(vars).reduce((acc, k) => acc.split('{' + k + '}').join(String(vars[k])), text);
@@ -2102,6 +2108,7 @@ window.newDiscoverSearch = function () {
         // Prompt visibly, but do not focus the input or open the keyboard.
         if (hint) {
             if (!hint.dataset.initialCopy) hint.dataset.initialCopy = hint.textContent || '';
+            hint.dataset.error = '1';
             const lang = String(window.MATCH_LANG || document.documentElement.lang || 'en').toLowerCase();
             hint.textContent = lang.startsWith('pt')
                 ? 'Digite uma pergunta ou toque no microfone para falar com o MatchApp Ai.'
@@ -2109,7 +2116,10 @@ window.newDiscoverSearch = function () {
         }
         return false;
     }
-    if (hint?.dataset.initialCopy) hint.textContent = hint.dataset.initialCopy;
+    if (hint) {
+        delete hint.dataset.error;
+        if (hint.dataset.initialCopy) hint.textContent = hint.dataset.initialCopy;
+    }
     // Closing the Android soft keyboard before results resize the page avoids
     // the viewport pulling the follow-up composer down into the footer.
     if (el && document.activeElement === el &&
