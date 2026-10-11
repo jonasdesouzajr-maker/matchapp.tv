@@ -88,8 +88,14 @@ html body.ai-chat-page #jonas-voice-stage .jds-mouth{
 html body.ai-chat-page #jonas-voice-stage .jds-eyes{z-index:4;}
 html body.ai-chat-page #jonas-voice-stage .jds-halo{z-index:5;}
 html body.ai-chat-page #jonas-voice-stage[data-state="thinking"] .jds-expression{opacity:.10;}
-html body.ai-chat-page #jonas-voice-stage[data-state="listening"] .jds-expression{opacity:.29;}
-html body.ai-chat-page #jonas-voice-stage[data-state="speaking"] .jds-expression{opacity:.06;}
+html body.ai-chat-page #jonas-voice-stage[data-state="speaking"] .jds-expression{opacity:.12;}
+/* Localized expression and audio-driven head motion, never blink the whole orb. */
+html body.ai-chat-page #jonas-voice-stage[data-state="speaking"] .jds-portrait{
+ animation:none!important;transform:translateY(var(--jds-head-y,0px)) scale(var(--jds-head-scale,1));
+ transition:transform 88ms ease-out;
+}
+html body.ai-chat-page #jonas-voice-stage[data-state="listening"] .jds-expression{opacity:.62;}
+html body.ai-chat-page #jonas-voice-stage[data-state="thinking"] .jds-indicator{background:#d9b4ff;box-shadow:0 0 8px #d9b4ff88;}
 html body.ai-chat-page #jonas-voice-stage[data-state="idle"] .jds-expression{opacity:.5;}
 @media(max-width:760px){
  html body.ai-chat-page .wrap .premium-card.discover-head{
@@ -111,11 +117,14 @@ html body.ai-chat-page #jonas-voice-stage[data-state="idle"] .jds-expression{opa
 @media(max-height:610px){
  html body.ai-chat-page .wrap .premium-card.discover-head{
   height:var(--jonas-workspace-height,calc(100dvh - 95px))!important;
-  min-height:310px!important;
+  min-height:230px!important;
  }
  html body.ai-chat-page .discover-head .ai-session-strip{display:none!important;}
 }
 @media(prefers-reduced-motion:reduce){
  html body.ai-chat-page .discover-head #chat-log{scroll-behavior:auto;}
  html body.ai-chat-page #jonas-voice-stage .jds-expression{transition:none!important;}
+ html body.ai-chat-page #jonas-voice-stage[data-state="speaking"] .jds-portrait{
+  transform:none!important;transition:none!important;
+ }
 }

@@ -22,3 +22,16 @@ test('Jonas changes expression and speech visemes only from speech-level and pla
  assert.match(speech,/utter\.onboundary=function/);
  assert.match(speech,/options\.onLevel\?\.\(\.24\)/);
 });
+test('cookie notice never obscures Jonas composer and no code path scrolls the whole document on replies',()=>{
+ const workspace=read('jonas/chat-workspace-20261011.js');
+ const css=read('jonas/chat-workspace-20261011.css');
+ const chat=read('discover.js');
+ const avatar=read('jonas/discovery-avatar-stage-20261010.js');
+ assert.match(workspace,/document\.querySelector\('body > \.ma-cookie'\)/);
+ assert.match(workspace,/MutationObserver/);
+ assert.match(workspace,/Math\.min\(viewportBottom-10,cookieTop\)/);
+ assert.doesNotMatch(chat,/scrollIntoView\s*\(/);
+ assert.match(css,/--jds-head-y/);
+ assert.match(avatar,/--jds-head-y/);
+ assert.match(avatar,/--jds-head-scale/);
+});
