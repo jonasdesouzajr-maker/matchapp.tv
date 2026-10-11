@@ -191,7 +191,8 @@
     return '';
   }
   function availability(meta,region){
-    const code=region||regionCode(),root=meta?.availability||{},row=root?.[code]||{};
+    const pinnedRegion=String(meta?._verified_doc_region||'').toUpperCase();
+    const code=region||(/^[A-Z]{2}$/.test(pinnedRegion)?pinnedRegion:regionCode()),root=meta?.availability||{},row=root?.[code]||{};
     const uniq=list=>[...new Set((Array.isArray(list)?list:[]).map(v=>String(v||'').trim()).filter(Boolean))];
     const streams=uniq(row.stream),rent=uniq(row.rent),buy=uniq(row.buy);
     const cinemaDate=/^\d{4}-\d{2}-\d{2}$/.test(String(row.cinema_release_date||''))?String(row.cinema_release_date):'';
@@ -692,10 +693,10 @@
     }
   }
 
-  function renderAvailability(host,meta,{title='',kids=false}={}){
+  function renderAvailability(host,meta,{title='',kids=false,region=''}={}){
     if(!host)return;host.replaceChildren();host.hidden=true;
     if(!meta||(kids&&meta.kids_approved!==true))return;
-    const actualTitle=title||meta.title||'',a=availability(meta),links=providerLinks(meta,actualTitle,a.region);
+    const actualTitle=title||meta.title||'',a=availability(meta,region),links=providerLinks(meta,actualTitle,a.region);
     const genres=(Array.isArray(meta.genres)?meta.genres:[]).filter(Boolean);
     const wrap=document.createElement('div');wrap.className='matchapp-title-availability';
     if(genres.length){
