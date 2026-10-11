@@ -1,10 +1,661 @@
 {
-  "generated_at": "2026-10-11T16:39:14.800Z",
+  "generated_at": "2026-10-11T20:31:58.413Z",
   "limit": 1000,
   "items": [
     {
+      "id": "ce87b58f",
+      "title": "Orangutans released back into Borneo forest after devastating fires",
+      "url": "https://www.bbc.co.uk/news/articles/cwvgde0m2d73o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-11T19:08:04.000Z",
+      "discovered_at": "2026-10-11T20:31:58.413Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-11. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/7e90/live/35c07920-c5a8-11f1-9a39-31b474234113.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/orangutans-released-back-into-borneo-forest-after-devastating-fires-ce87b5/",
+      "landing_url": "https://matchapp.tv/?news=ce87b58f#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-11",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "orangutans",
+          "released",
+          "back",
+          "into",
+          "borneo",
+          "forest"
+        ],
+        "long_tail": [
+          "Orangutans released back into Borneo forest after devastating fires 2026-10-11",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "orangutans",
+          "released",
+          "back",
+          "into",
+          "borneo",
+          "forest"
+        ],
+        "freshness_keywords": [
+          "2026-10-11"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Orangutans released back into Borneo forest after…",
+        "meta_description": "World report published by BBC World on 2026-10-11. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-11",
+          "world news",
+          "global headlines",
+          "orangutans",
+          "released",
+          "back",
+          "into",
+          "borneo",
+          "forest",
+          "Orangutans released back into Borneo forest after devastating fires 2026-10-11",
+          "world news October 2026",
+          "2026-10-11",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-11T20:31:58.413Z"
+      }
+    },
+    {
+      "id": "0b7838ce",
+      "title": "Aeroportos da Arábia Saudita voltam a ser bombardeados; Houthis reivindicam ataques",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/11/aeroportos-da-arabia-saudita-voltam-a-ser-atacados.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-11T19:06:43.000Z",
+      "discovered_at": "2026-10-11T20:31:58.413Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-11. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/dqVRYC2QwR6_jndcL4tIM7V_YFM=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/R/4/kbhva9QuOfkgYN21RCfg/2026-10-10t193830z-1401625215-rc2i0oa6ps94-rtrmadp-3-iran-crisis-saudi-airport.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/aeroportos-da-arabia-saudita-voltam-a-ser-bombardeados-houthis-reivindicam-ataqu-0b7838/",
+      "landing_url": "https://matchapp.tv/?news=0b7838ce#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-11",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "aeroportos",
+          "arabia",
+          "saudita",
+          "voltam",
+          "ser",
+          "bombardeados"
+        ],
+        "long_tail": [
+          "Aeroportos da Arábia Saudita voltam a ser bombardeados; Houthis reivindicam ataques 2026-10-11",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "aeroportos",
+          "arabia",
+          "saudita",
+          "voltam",
+          "ser",
+          "bombardeados"
+        ],
+        "freshness_keywords": [
+          "2026-10-11"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Aeroportos da Arábia Saudita voltam a ser bombardeados;…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-11. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-11",
+          "notícias do mundo",
+          "notícias internacionais",
+          "aeroportos",
+          "arabia",
+          "saudita",
+          "voltam",
+          "ser",
+          "bombardeados",
+          "Aeroportos da Arábia Saudita voltam a ser bombardeados; Houthis reivindicam ataques 2026-10-11",
+          "notícias mundiais outubro 2026",
+          "2026-10-11",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-11T20:31:58.413Z"
+      }
+    },
+    {
+      "id": "98a844ef",
+      "title": "‘Carrie’ Star Samantha Sloyan Finds the Love Inside Horror’s Most Nefarious Mother",
+      "url": "https://www.hollywoodreporter.com/tv/tv-features/carrie-ending-samantha-sloyan-margaret-white-interview-1236717193/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-11T18:15:00.000Z",
+      "discovered_at": "2026-10-11T20:31:58.413Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "",
+      "description": "entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/09/SS_SH_Carrie_HUN0778_retouch.jpg?w=1296&h=730&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/carrie-star-samantha-sloyan-finds-the-love-inside-horror-s-most-nefarious-mother-98a844/",
+      "landing_url": "https://matchapp.tv/?news=98a844ef#latest-news",
+      "seo": {
+        "primary_keyword": "carrie star samantha sloyan latest news",
+        "short_tail": [
+          "carrie star samantha sloyan",
+          "carrie star samantha sloyan news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "carrie star samantha sloyan latest news October 2026",
+          "carrie star samantha sloyan entertainment update 2026",
+          "carrie star samantha sloyan news 2026-10-11",
+          "latest entertainment news about carrie star samantha sloyan",
+          "carrie star samantha sloyan finds love latest update",
+          "The Hollywood Reporter carrie star samantha sloyan entertainment",
+          "latest news about carrie star samantha sloyan October 2026",
+          "carrie star samantha sloyan entertainment news 2026-10-11",
+          "what happened with carrie star samantha sloyan"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "carrie",
+          "star",
+          "samantha",
+          "sloyan",
+          "finds",
+          "love",
+          "inside",
+          "horror"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-11",
+          "carrie star samantha sloyan 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter carrie star samantha sloyan",
+          "hollywoodreporter.com carrie star samantha sloyan",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "‘Carrie’ Star Samantha Sloyan Finds the Love Inside…",
+        "meta_description": "Entertainment update reported by The Hollywood Reporter on 2026-10-11. See verified context, publication time and the original source via MatchApp Ai.",
+        "keywords": [
+          "carrie star samantha sloyan latest news",
+          "carrie star samantha sloyan",
+          "carrie star samantha sloyan news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "carrie star samantha sloyan latest news October 2026",
+          "carrie star samantha sloyan entertainment update 2026",
+          "carrie star samantha sloyan news 2026-10-11",
+          "latest entertainment news about carrie star samantha sloyan",
+          "carrie star samantha sloyan finds love latest update",
+          "The Hollywood Reporter carrie star samantha sloyan entertainment",
+          "latest news about carrie star samantha sloyan October 2026",
+          "carrie star samantha sloyan entertainment news 2026-10-11",
+          "what happened with carrie star samantha sloyan",
+          "carrie",
+          "star",
+          "samantha",
+          "sloyan",
+          "finds",
+          "love",
+          "inside",
+          "horror",
+          "October 2026",
+          "2026-10-11",
+          "carrie star samantha sloyan 2026",
+          "The Hollywood Reporter carrie star samantha sloyan",
+          "hollywoodreporter.com carrie star samantha sloyan",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-11T20:31:58.413Z"
+      }
+    },
+    {
+      "id": "267e62b3",
+      "title": "Corredor Andes-Atlântico: o que se sabe sobre o ambicioso projeto dos EUA para acessar recursos estratégicos da Argentina (e competir com a China)",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/11/corredor-andes-atlantico-o-que-se-sabe-sobre-o-ambicioso-projeto-dos-eua-para-acessar-recursos-estrategicos-da-argentina-e-competir-com-a-china.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-11T17:57:35.000Z",
+      "discovered_at": "2026-10-11T20:31:58.413Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "Corredor Andes-Atlântico",
+      "description": "World news reported by G1 Mundo on 2026-10-11. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/_4V3y2EoLl-XxGz0LENqd-ML5fE=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/D/X/KLCjZCRIuUrXCq4bdanQ/vacamuerta.png",
+      "matchapp_url": "https://matchapp.tv/news/articles/corredor-andes-atlantico-o-que-se-sabe-sobre-o-ambicioso-projeto-dos-eua-para-ac-267e62/",
+      "landing_url": "https://matchapp.tv/?news=267e62b3#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-11",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "corredor",
+          "andes",
+          "atlantico",
+          "que",
+          "sabe",
+          "sobre"
+        ],
+        "long_tail": [
+          "Corredor Andes-Atlântico: o que se sabe sobre o ambicioso projeto dos EUA para acessar recursos estratégicos da Argentina (e competir com a China) 2026-10-11",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "corredor",
+          "andes",
+          "atlantico",
+          "que",
+          "sabe",
+          "sobre"
+        ],
+        "freshness_keywords": [
+          "2026-10-11"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Corredor Andes-Atlântico: o que se sabe sobre o ambicioso…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-11. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-11",
+          "notícias do mundo",
+          "notícias internacionais",
+          "corredor",
+          "andes",
+          "atlantico",
+          "que",
+          "sabe",
+          "sobre",
+          "Corredor Andes-Atlântico: o que se sabe sobre o ambicioso projeto dos EUA para acessar recursos estratégicos da Argentina (e competir com a China) 2026-10-11",
+          "notícias mundiais outubro 2026",
+          "2026-10-11",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-11T20:31:58.413Z"
+      }
+    },
+    {
+      "id": "09cec1f6",
+      "title": "Poland detains man suspected of planning assassination of PM Tusk",
+      "url": "https://www.bbc.co.uk/news/articles/c6n9rvynl5p5o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-11T17:27:24.000Z",
+      "discovered_at": "2026-10-11T20:31:58.413Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-11. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/187d/live/a4be0650-c592-11f1-9d5a-23156cc094cf.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/poland-detains-man-suspected-of-planning-assassination-of-pm-tusk-09cec1/",
+      "landing_url": "https://matchapp.tv/?news=09cec1f6#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-11",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "poland",
+          "detains",
+          "man",
+          "suspected",
+          "planning",
+          "assassination"
+        ],
+        "long_tail": [
+          "Poland detains man suspected of planning assassination of PM Tusk 2026-10-11",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "poland",
+          "detains",
+          "man",
+          "suspected",
+          "planning",
+          "assassination"
+        ],
+        "freshness_keywords": [
+          "2026-10-11"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Poland detains man suspected of planning assassination of…",
+        "meta_description": "World report published by BBC World on 2026-10-11. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-11",
+          "world news",
+          "global headlines",
+          "poland",
+          "detains",
+          "man",
+          "suspected",
+          "planning",
+          "assassination",
+          "Poland detains man suspected of planning assassination of PM Tusk 2026-10-11",
+          "world news October 2026",
+          "2026-10-11",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-11T20:31:58.413Z"
+      }
+    },
+    {
+      "id": "6563c1b8",
+      "title": "Saudi capital airport hit by second Houthi strike in two days",
+      "url": "https://www.bbc.co.uk/news/articles/cr93znyk44e1o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-11T16:41:37.000Z",
+      "discovered_at": "2026-10-11T20:31:58.413Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-11. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/01f0/live/59d06e70-c57a-11f1-a64c-550be9e3c66b.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/saudi-capital-airport-hit-by-second-houthi-strike-in-two-days-6563c1/",
+      "landing_url": "https://matchapp.tv/?news=6563c1b8#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-11",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "saudi",
+          "capital",
+          "airport",
+          "hit",
+          "second",
+          "houthi"
+        ],
+        "long_tail": [
+          "Saudi capital airport hit by second Houthi strike in two days 2026-10-11",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "saudi",
+          "capital",
+          "airport",
+          "hit",
+          "second",
+          "houthi"
+        ],
+        "freshness_keywords": [
+          "2026-10-11"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Saudi capital airport hit by second Houthi strike in two…",
+        "meta_description": "World report published by BBC World on 2026-10-11. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-11",
+          "world news",
+          "global headlines",
+          "saudi",
+          "capital",
+          "airport",
+          "hit",
+          "second",
+          "houthi",
+          "Saudi capital airport hit by second Houthi strike in two days 2026-10-11",
+          "world news October 2026",
+          "2026-10-11",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-11T20:31:58.413Z"
+      }
+    },
+    {
+      "id": "b063feab",
+      "title": "Carregador portátil pega fogo durante voo na Índia, e avião faz pouso de emergência",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/11/carregador-portatil-pega-fogo-durante-voo-na-india-e-aviao-faz-pouso-de-emergencia.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-11T16:36:28.000Z",
+      "discovered_at": "2026-10-11T20:31:58.413Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-11. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/dhWUApfatZ1DxI2iW8iOetJ_CjQ=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/S/W/bphnpdQ26GtCuKGd4s1A/indian-1200x800.png",
+      "matchapp_url": "https://matchapp.tv/news/articles/carregador-portatil-pega-fogo-durante-voo-na-india-e-aviao-faz-pouso-de-emergenc-b063fe/",
+      "landing_url": "https://matchapp.tv/?news=b063feab#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-11",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "carregador",
+          "portatil",
+          "pega",
+          "fogo",
+          "durante",
+          "voo"
+        ],
+        "long_tail": [
+          "Carregador portátil pega fogo durante voo na Índia, e avião faz pouso de emergência 2026-10-11",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "carregador",
+          "portatil",
+          "pega",
+          "fogo",
+          "durante",
+          "voo"
+        ],
+        "freshness_keywords": [
+          "2026-10-11"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Carregador portátil pega fogo durante voo na Índia, e…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-11. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-11",
+          "notícias do mundo",
+          "notícias internacionais",
+          "carregador",
+          "portatil",
+          "pega",
+          "fogo",
+          "durante",
+          "voo",
+          "Carregador portátil pega fogo durante voo na Índia, e avião faz pouso de emergência 2026-10-11",
+          "notícias mundiais outubro 2026",
+          "2026-10-11",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-11T20:31:58.413Z"
+      }
+    },
+    {
+      "id": "88155fc3",
+      "title": "Trump anuncia trégua energética entre Rússia e Ucrânia; o que se sabe",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/11/trump-anuncia-tregua-energetica-entre-russia-e-ucrania-o-que-se-sabe.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-11T16:34:50.000Z",
+      "discovered_at": "2026-10-11T20:31:58.413Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-11. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/AQwHRQZJ1CQewd-j2S9mR4lf8PU=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/g/R/YUcIclScyn3leIA5yPEA/novo-projeto-4-.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/trump-anuncia-tregua-energetica-entre-russia-e-ucrania-o-que-se-sabe-88155f/",
+      "landing_url": "https://matchapp.tv/?news=88155fc3#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-11",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "trump",
+          "anuncia",
+          "tregua",
+          "energetica",
+          "entre",
+          "russia"
+        ],
+        "long_tail": [
+          "Trump anuncia trégua energética entre Rússia e Ucrânia; o que se sabe 2026-10-11",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "trump",
+          "anuncia",
+          "tregua",
+          "energetica",
+          "entre",
+          "russia"
+        ],
+        "freshness_keywords": [
+          "2026-10-11"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Trump anuncia trégua energética entre Rússia e Ucrânia; o…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-11. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-11",
+          "notícias do mundo",
+          "notícias internacionais",
+          "trump",
+          "anuncia",
+          "tregua",
+          "energetica",
+          "entre",
+          "russia",
+          "Trump anuncia trégua energética entre Rússia e Ucrânia; o que se sabe 2026-10-11",
+          "notícias mundiais outubro 2026",
+          "2026-10-11",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-11T20:31:58.413Z"
+      }
+    },
+    {
+      "id": "4b107539",
+      "title": "Barco vira, e 139 morrem ao tentar ir de Djibuti para o Iêmen, uma das principais rotas migratórias do Golfo",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/11/barco-vira-e-pessoas-morrem-ao-tentar-ir-de-djibuti-para-o-iemen.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-11T16:34:36.000Z",
+      "discovered_at": "2026-10-11T20:31:58.413Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-11. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/-uGno1jbAKsAtCmlW4kskYb2f3k=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/u/K/vpAfsdTXKZrMlmCSqyYQ/2026-10-11t151134z-30047978-rc221oank0rk-rtrmadp-3-yemen-crisis-migrants.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/barco-vira-e-139-morrem-ao-tentar-ir-de-djibuti-para-o-iemen-uma-das-principais--4b1075/",
+      "landing_url": "https://matchapp.tv/?news=4b107539#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-11",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "barco",
+          "vira",
+          "139",
+          "morrem",
+          "tentar",
+          "djibuti"
+        ],
+        "long_tail": [
+          "Barco vira, e 139 morrem ao tentar ir de Djibuti para o Iêmen, uma das principais rotas migratórias do Golfo 2026-10-11",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "barco",
+          "vira",
+          "139",
+          "morrem",
+          "tentar",
+          "djibuti"
+        ],
+        "freshness_keywords": [
+          "2026-10-11"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Barco vira, e 139 morrem ao tentar ir de Djibuti para o…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-11. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-11",
+          "notícias do mundo",
+          "notícias internacionais",
+          "barco",
+          "vira",
+          "139",
+          "morrem",
+          "tentar",
+          "djibuti",
+          "Barco vira, e 139 morrem ao tentar ir de Djibuti para o Iêmen, uma das principais rotas migratórias do Golfo 2026-10-11",
+          "notícias mundiais outubro 2026",
+          "2026-10-11",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-11T20:31:58.413Z"
+      }
+    },
+    {
       "id": "cc518446",
-      "title": "Riyadh airport attack another dangerous moment in already tense conflict",
+      "title": "Riyadh airport attacks another dangerous moment in already tense conflict",
       "url": "https://www.bbc.co.uk/news/articles/cr4g1pwxxlq1o?at_medium=RSS&at_campaign=rss",
       "source": "BBC World",
       "source_domain": "bbc.co.uk",
@@ -18,7 +669,7 @@
       "person": "",
       "description": "World news reported by BBC World on 2026-10-11. MatchApp links to the original report for its complete context and ongoing updates.",
       "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/9c45/live/701466b0-c565-11f1-bd33-db1f7eaf2b30.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/riyadh-airport-attack-another-dangerous-moment-in-already-tense-conflict-cc5184/",
+      "matchapp_url": "https://matchapp.tv/news/articles/riyadh-airport-attacks-another-dangerous-moment-in-already-tense-conflict-cc5184/",
       "landing_url": "https://matchapp.tv/?news=cc518446#latest-news",
       "seo": {
         "primary_keyword": "world news 2026-10-11",
@@ -27,20 +678,20 @@
           "global headlines",
           "riyadh",
           "airport",
-          "attack",
+          "attacks",
           "another",
           "dangerous",
           "moment"
         ],
         "long_tail": [
-          "Riyadh airport attack another dangerous moment in already tense conflict 2026-10-11",
+          "Riyadh airport attacks another dangerous moment in already tense conflict 2026-10-11",
           "world news October 2026"
         ],
         "trend_keywords": [],
         "entity_keywords": [
           "riyadh",
           "airport",
-          "attack",
+          "attacks",
           "another",
           "dangerous",
           "moment"
@@ -51,7 +702,7 @@
         "source_keywords": [
           "BBC World"
         ],
-        "meta_title": "Riyadh airport attack another dangerous moment in already…",
+        "meta_title": "Riyadh airport attacks another dangerous moment in already…",
         "meta_description": "World report published by BBC World on 2026-10-11. Open the original report for full context.",
         "keywords": [
           "world news 2026-10-11",
@@ -59,16 +710,16 @@
           "global headlines",
           "riyadh",
           "airport",
-          "attack",
+          "attacks",
           "another",
           "dangerous",
           "moment",
-          "Riyadh airport attack another dangerous moment in already tense conflict 2026-10-11",
+          "Riyadh airport attacks another dangerous moment in already tense conflict 2026-10-11",
           "world news October 2026",
           "2026-10-11",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-11T16:39:14.800Z"
+        "seo_generated_at": "2026-10-11T20:31:58.413Z"
       }
     },
     {
@@ -137,7 +788,7 @@
           "2026-10-11",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-11T16:39:14.800Z"
+        "seo_generated_at": "2026-10-11T20:31:58.413Z"
       }
     },
     {
@@ -206,7 +857,7 @@
           "2026-10-11",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-11T16:39:14.800Z"
+        "seo_generated_at": "2026-10-11T20:31:58.413Z"
       }
     },
     {
@@ -304,7 +955,7 @@
           "hollywoodreporter.com R.L. Stine’s",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T16:39:14.800Z"
+        "seo_generated_at": "2026-10-11T20:31:58.413Z"
       }
     },
     {
@@ -322,7 +973,7 @@
       "category": "world",
       "person": "",
       "description": "World news reported by BBC Science on 2026-10-11. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/9024/live/b945e1d0-bffa-11f1-8c3e-3b2eab095459.jpeg",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/0320/live/b6c07290-c5a4-11f1-9a39-31b474234113.jpg",
       "matchapp_url": "https://matchapp.tv/news/articles/owners-fear-healthy-dog-died-due-to-orange-substance-exposure-on-contaminated-la-b2c24f/",
       "landing_url": "https://matchapp.tv/?news=b2c24f6e#latest-news",
       "seo": {
@@ -373,7 +1024,7 @@
           "2026-10-11",
           "BBC Science"
         ],
-        "seo_generated_at": "2026-10-11T16:39:14.800Z"
+        "seo_generated_at": "2026-10-11T20:31:58.413Z"
       }
     },
     {
@@ -442,7 +1093,7 @@
           "2026-10-11",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-11T16:39:14.800Z"
+        "seo_generated_at": "2026-10-11T20:31:58.413Z"
       }
     },
     {
@@ -538,7 +1189,7 @@
           "hollywoodreporter.com Javier Bardem",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T16:39:14.800Z"
+        "seo_generated_at": "2026-10-11T20:31:58.413Z"
       }
     },
     {
@@ -607,7 +1258,7 @@
           "2026-10-11",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-11T16:39:14.800Z"
+        "seo_generated_at": "2026-10-11T20:31:58.413Z"
       }
     },
     {
@@ -676,7 +1327,7 @@
           "2026-10-11",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-11T16:39:14.800Z"
+        "seo_generated_at": "2026-10-11T20:31:58.413Z"
       }
     },
     {
@@ -770,7 +1421,7 @@
           "hollywoodreporter.com John Malkovich Says",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T16:39:14.800Z"
+        "seo_generated_at": "2026-10-11T20:31:58.413Z"
       }
     },
     {
@@ -868,7 +1519,7 @@
           "g1.globo.com Maria Rita",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T16:39:14.800Z"
+        "seo_generated_at": "2026-10-11T20:31:58.413Z"
       }
     },
     {
@@ -1036,7 +1687,7 @@
           "hollywoodreporter.com wildwood review laika ambitious",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T16:39:14.800Z"
+        "seo_generated_at": "2026-10-11T20:31:58.413Z"
       }
     },
     {
@@ -1105,7 +1756,7 @@
           "2026-10-11",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-11T16:39:14.800Z"
+        "seo_generated_at": "2026-10-11T20:31:58.413Z"
       }
     },
     {
@@ -2162,7 +2813,7 @@
           "hollywoodreporter.com Netflix Has Used AI",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T16:39:14.800Z"
+        "seo_generated_at": "2026-10-11T20:31:58.413Z"
       }
     },
     {
@@ -2431,7 +3082,7 @@
           "g1.globo.com tom chega hoje aos",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T16:39:14.800Z"
+        "seo_generated_at": "2026-10-11T20:31:58.413Z"
       }
     },
     {
@@ -2861,7 +3512,7 @@
           "bbc.co.uk inside room what like",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T16:39:14.800Z"
+        "seo_generated_at": "2026-10-11T20:31:58.413Z"
       }
     },
     {
@@ -4486,7 +5137,7 @@
           "g1.globo.com Wagner Moura",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T16:39:14.800Z"
+        "seo_generated_at": "2026-10-11T20:31:58.413Z"
       }
     },
     {
@@ -5916,7 +6567,7 @@
           "g1.globo.com Marisa Monte",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T16:39:14.800Z"
+        "seo_generated_at": "2026-10-11T20:31:58.413Z"
       }
     },
     {
@@ -6500,7 +7151,7 @@
           "g1.globo.com minha globinho viva web",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T16:39:14.800Z"
+        "seo_generated_at": "2026-10-11T20:31:58.413Z"
       }
     },
     {
@@ -6831,7 +7482,7 @@
           "bbc.co.uk screams haunting scenes deadly",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T16:39:14.800Z"
+        "seo_generated_at": "2026-10-11T20:31:58.413Z"
       }
     },
     {
@@ -6931,7 +7582,7 @@
           "g1.globo.com TV Globinho",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T16:39:14.800Z"
+        "seo_generated_at": "2026-10-11T20:31:58.413Z"
       }
     },
     {
@@ -7545,7 +8196,7 @@
           "g1.globo.com kbrum poe reggae album",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T16:39:14.800Z"
+        "seo_generated_at": "2026-10-11T20:31:58.413Z"
       }
     },
     {
@@ -8403,7 +9054,7 @@
           "g1.globo.com saiba como giulia conheceu",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T16:39:14.800Z"
+        "seo_generated_at": "2026-10-11T20:31:58.413Z"
       }
     },
     {
@@ -8501,7 +9152,7 @@
           "bbc.co.uk country music star ella",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T16:39:14.800Z"
+        "seo_generated_at": "2026-10-11T20:31:58.413Z"
       }
     },
     {
@@ -9489,7 +10140,7 @@
           "bbc.co.uk ashe too scared cancel",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T16:39:14.800Z"
+        "seo_generated_at": "2026-10-11T20:31:58.413Z"
       }
     },
     {
@@ -12042,7 +12693,7 @@
           "bbc.co.uk hollywood actor luke evans",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T16:39:14.800Z"
+        "seo_generated_at": "2026-10-11T20:31:58.413Z"
       }
     },
     {
@@ -12465,7 +13116,7 @@
           "g1.globo.com Coletivo Pra Gira Girar",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T16:39:14.800Z"
+        "seo_generated_at": "2026-10-11T20:31:58.413Z"
       }
     },
     {
@@ -13614,7 +14265,7 @@
           "g1.globo.com MC PH",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T16:39:14.800Z"
+        "seo_generated_at": "2026-10-11T20:31:58.413Z"
       }
     },
     {
@@ -14430,7 +15081,7 @@
           "g1.globo.com ator pretty little liars",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T16:39:14.800Z"
+        "seo_generated_at": "2026-10-11T20:31:58.413Z"
       }
     },
     {
@@ -14662,7 +15313,7 @@
           "bbc.co.uk Crazy Rich Asians",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T16:39:14.800Z"
+        "seo_generated_at": "2026-10-11T20:31:58.413Z"
       }
     },
     {
@@ -14758,7 +15409,7 @@
           "bbc.co.uk Alison Hammond",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T02:08:42.801Z"
+        "seo_generated_at": "2026-10-11T20:31:58.413Z"
       }
     },
     {
@@ -16996,7 +17647,7 @@
           "2026-10-09",
           "October 2026"
         ],
-        "seo_generated_at": "2026-10-11T16:39:14.800Z"
+        "seo_generated_at": "2026-10-11T20:31:58.413Z"
       }
     },
     {
@@ -22836,7 +23487,7 @@
           "2026-10-08",
           "October 2026"
         ],
-        "seo_generated_at": "2026-10-11T16:39:14.800Z"
+        "seo_generated_at": "2026-10-11T20:31:58.413Z"
       }
     },
     {
@@ -90016,884 +90667,6 @@
           "The Hollywood Reporter entertainment news"
         ],
         "seo_generated_at": "2026-09-18T17:03:36.534Z"
-      }
-    },
-    {
-      "id": "478e73a6",
-      "title": "Ed Sheeran admits 'mistakes' at first show since Macklemore controversy",
-      "url": "https://www.bbc.co.uk/news/articles/cm780ll1de18o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GB",
-      "published_at": "2026-09-20T04:49:11.000Z",
-      "discovered_at": "2026-09-20T08:44:35.486Z",
-      "event_type": "Music",
-      "person": "Ed Sheeran",
-      "description": "Ed Sheeran: music headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/846c/live/65039890-b494-11f1-8153-85d44903e598.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/ed-sheeran-admits-mistakes-at-first-show-since-macklemore-controversy-478e73/",
-      "landing_url": "https://matchapp.tv/?news=478e73a6#latest-news",
-      "seo": {
-        "primary_keyword": "Ed Sheeran latest news",
-        "short_tail": [
-          "Ed Sheeran",
-          "Ed Sheeran news",
-          "music",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "Ed Sheeran latest news September 2026",
-          "Ed Sheeran music update 2026",
-          "Ed Sheeran news 2026-09-20",
-          "latest music news about Ed Sheeran",
-          "sheeran sheeran admits mistakes first show latest update",
-          "BBC Ed Sheeran music",
-          "latest news about Ed Sheeran September 2026",
-          "Ed Sheeran entertainment news 2026-09-20",
-          "what happened with Ed Sheeran"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Ed Sheeran",
-          "sheeran",
-          "admits",
-          "mistakes",
-          "first",
-          "show",
-          "since",
-          "macklemore"
-        ],
-        "freshness_keywords": [
-          "September 2026",
-          "2026-09-20",
-          "Ed Sheeran 2026"
-        ],
-        "source_keywords": [
-          "BBC Ed Sheeran",
-          "bbc.co.uk Ed Sheeran",
-          "BBC entertainment news"
-        ],
-        "meta_title": "Ed Sheeran admits 'mistakes' at first show since…",
-        "meta_description": "Ed Sheeran: Music update reported by BBC on 2026-09-20. See verified context, publication time and the original source via MatchApp TV.",
-        "keywords": [
-          "Ed Sheeran latest news",
-          "Ed Sheeran",
-          "Ed Sheeran news",
-          "music",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "Ed Sheeran latest news September 2026",
-          "Ed Sheeran music update 2026",
-          "Ed Sheeran news 2026-09-20",
-          "latest music news about Ed Sheeran",
-          "sheeran sheeran admits mistakes first show latest update",
-          "BBC Ed Sheeran music",
-          "latest news about Ed Sheeran September 2026",
-          "Ed Sheeran entertainment news 2026-09-20",
-          "what happened with Ed Sheeran",
-          "sheeran",
-          "admits",
-          "mistakes",
-          "first",
-          "show",
-          "since",
-          "macklemore",
-          "September 2026",
-          "2026-09-20",
-          "Ed Sheeran 2026",
-          "BBC Ed Sheeran",
-          "bbc.co.uk Ed Sheeran",
-          "BBC entertainment news"
-        ],
-        "seo_generated_at": "2026-09-20T08:44:35.486Z"
-      }
-    },
-    {
-      "id": "ba0db158",
-      "title": "Maria Bethânia entra de vez na era dos festivais",
-      "url": "https://g1.globo.com/pop-arte/musica/blog/mauro-ferreira/post/2026/09/20/maria-bethania-entra-de-vez-na-era-dos-festivais.ghtml",
-      "source": "G1",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "BR",
-      "published_at": "2026-09-20T03:02:00.000Z",
-      "discovered_at": "2026-09-20T06:08:53.187Z",
-      "event_type": "Entertainment",
-      "person": "Maria Bethânia",
-      "description": "Maria Bethânia: entertainment headline reported by G1. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://s2-g1.glbimg.com/fGPSVrwQQGmm-eExiIEH5x91PoA=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/i/j/RhCfd0QnynYbgFLBYuMQ/maria-bethania-guilherme-nabhan.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/maria-bethania-entra-de-vez-na-era-dos-festivais-ba0db1/",
-      "landing_url": "https://matchapp.tv/?news=ba0db158#latest-news",
-      "seo": {
-        "primary_keyword": "f",
-        "short_tail": [
-          "Maria Bethânia",
-          "Maria Bethânia news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "f"
-        ],
-        "long_tail": [
-          "Maria Bethânia latest news September 2026",
-          "Maria Bethânia entertainment update 2026",
-          "Maria Bethânia news 2026-09-20",
-          "latest entertainment news about Maria Bethânia",
-          "maria bethania maria bethania entra vez latest update",
-          "G1 Maria Bethânia entertainment",
-          "últimas notícias sobre Maria Bethânia setembro 2026",
-          "Maria Bethânia notícia de 2026-09-20",
-          "o que aconteceu com Maria Bethânia"
-        ],
-        "trend_keywords": [
-          "f"
-        ],
-        "entity_keywords": [
-          "Maria Bethânia",
-          "maria",
-          "bethania",
-          "entra",
-          "vez",
-          "era",
-          "festivais"
-        ],
-        "freshness_keywords": [
-          "September 2026",
-          "2026-09-20",
-          "setembro 2026",
-          "Maria Bethânia 2026"
-        ],
-        "source_keywords": [
-          "G1 Maria Bethânia",
-          "g1.globo.com Maria Bethânia",
-          "G1 entertainment news"
-        ],
-        "meta_title": "Maria Bethânia entra de vez na era dos festivais |…",
-        "meta_description": "Maria Bethânia: Entertainment update reported by G1 on 2026-09-20. See verified context, publication time and the original source via MatchApp TV.",
-        "keywords": [
-          "f",
-          "Maria Bethânia",
-          "Maria Bethânia news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "Maria Bethânia latest news September 2026",
-          "Maria Bethânia entertainment update 2026",
-          "Maria Bethânia news 2026-09-20",
-          "latest entertainment news about Maria Bethânia",
-          "maria bethania maria bethania entra vez latest update",
-          "G1 Maria Bethânia entertainment",
-          "últimas notícias sobre Maria Bethânia setembro 2026",
-          "Maria Bethânia notícia de 2026-09-20",
-          "o que aconteceu com Maria Bethânia",
-          "maria",
-          "bethania",
-          "entra",
-          "vez",
-          "era",
-          "festivais",
-          "September 2026",
-          "2026-09-20",
-          "setembro 2026",
-          "Maria Bethânia 2026",
-          "G1 Maria Bethânia",
-          "g1.globo.com Maria Bethânia",
-          "G1 entertainment news"
-        ],
-        "seo_generated_at": "2026-09-20T06:08:53.187Z"
-      }
-    },
-    {
-      "id": "53b55db3",
-      "title": "Fiuk comprova que é bom de marketing ao anunciar o retorno da banda Hori em (esvaziado) show solo de 'despedida'",
-      "url": "https://g1.globo.com/pop-arte/musica/blog/mauro-ferreira/post/2026/09/20/fiuk-comprova-que-e-bom-de-marketing-ao-anunciar-o-retorno-da-banda-hori-em-esvaziado-show-solo-de-despedida.ghtml",
-      "source": "G1",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "BR",
-      "published_at": "2026-09-20T03:00:00.000Z",
-      "discovered_at": "2026-09-20T06:08:53.187Z",
-      "event_type": "Music",
-      "person": "",
-      "description": "music headline reported by G1. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://s2-g1.glbimg.com/opCTOW0RuqDj3aOiOis2IP_jBmQ=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/X/i/JOoK2tR8AsRazW8VSBHA/fiukinstagram.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/fiuk-comprova-que-e-bom-de-marketing-ao-anunciar-o-retorno-da-banda-hori-em-esva-53b55d/",
-      "landing_url": "https://matchapp.tv/?news=53b55db3#latest-news",
-      "seo": {
-        "primary_keyword": "f",
-        "short_tail": [
-          "fiuk comprova que bom",
-          "fiuk comprova que bom news",
-          "music",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "f"
-        ],
-        "long_tail": [
-          "fiuk comprova que bom latest news September 2026",
-          "fiuk comprova que bom music update 2026",
-          "fiuk comprova que bom news 2026-09-20",
-          "latest music news about fiuk comprova que bom",
-          "fiuk comprova que bom marketing anunciar latest update",
-          "G1 fiuk comprova que bom music",
-          "últimas notícias sobre fiuk comprova que bom setembro 2026",
-          "fiuk comprova que bom notícia de 2026-09-20",
-          "o que aconteceu com fiuk comprova que bom"
-        ],
-        "trend_keywords": [
-          "f"
-        ],
-        "entity_keywords": [
-          "fiuk",
-          "comprova",
-          "que",
-          "bom",
-          "marketing",
-          "anunciar",
-          "retorno",
-          "banda"
-        ],
-        "freshness_keywords": [
-          "September 2026",
-          "2026-09-20",
-          "setembro 2026",
-          "fiuk comprova que bom 2026"
-        ],
-        "source_keywords": [
-          "G1 fiuk comprova que bom",
-          "g1.globo.com fiuk comprova que bom",
-          "G1 entertainment news"
-        ],
-        "meta_title": "Fiuk comprova que é bom de marketing ao anunciar o retorno…",
-        "meta_description": "Music update reported by G1 on 2026-09-20. See verified context, publication time and the original source via MatchApp TV.",
-        "keywords": [
-          "f",
-          "fiuk comprova que bom",
-          "fiuk comprova que bom news",
-          "music",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "fiuk comprova que bom latest news September 2026",
-          "fiuk comprova que bom music update 2026",
-          "fiuk comprova que bom news 2026-09-20",
-          "latest music news about fiuk comprova que bom",
-          "fiuk comprova que bom marketing anunciar latest update",
-          "G1 fiuk comprova que bom music",
-          "últimas notícias sobre fiuk comprova que bom setembro 2026",
-          "fiuk comprova que bom notícia de 2026-09-20",
-          "o que aconteceu com fiuk comprova que bom",
-          "fiuk",
-          "comprova",
-          "que",
-          "bom",
-          "marketing",
-          "anunciar",
-          "retorno",
-          "banda",
-          "September 2026",
-          "2026-09-20",
-          "setembro 2026",
-          "fiuk comprova que bom 2026",
-          "G1 fiuk comprova que bom",
-          "g1.globo.com fiuk comprova que bom",
-          "G1 entertainment news"
-        ],
-        "seo_generated_at": "2026-09-20T06:08:53.187Z"
-      }
-    },
-    {
-      "id": "1e304312",
-      "title": "'As mulheres de 60 não querem ter corpo de 30', diz Débora Bloch",
-      "url": "https://g1.globo.com/globo-reporter/noticia/2026/09/20/as-mulheres-de-60-nao-querem-ter-corpo-de-30-diz-debora-bloch.ghtml",
-      "source": "G1",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "BR",
-      "published_at": "2026-09-20T03:00:00.000Z",
-      "discovered_at": "2026-09-20T06:08:53.187Z",
-      "event_type": "Entertainment",
-      "person": "",
-      "description": "entertainment headline reported by G1. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://s2-g1.glbimg.com/XhsPf7lx1zsj_amNtphxaM5QIqI=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/K/W/Knok7ASB2GPpXscIokRQ/g0493705-frame-11634.jpeg",
-      "matchapp_url": "https://matchapp.tv/news/articles/as-mulheres-de-60-nao-querem-ter-corpo-de-30-diz-debora-bloch-1e3043/",
-      "landing_url": "https://matchapp.tv/?news=1e304312#latest-news",
-      "seo": {
-        "primary_keyword": "f",
-        "short_tail": [
-          "mulheres nao querem ter",
-          "mulheres nao querem ter news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "f"
-        ],
-        "long_tail": [
-          "mulheres nao querem ter latest news September 2026",
-          "mulheres nao querem ter entertainment update 2026",
-          "mulheres nao querem ter news 2026-09-20",
-          "latest entertainment news about mulheres nao querem ter",
-          "mulheres nao querem ter corpo diz latest update",
-          "G1 mulheres nao querem ter entertainment",
-          "últimas notícias sobre mulheres nao querem ter setembro 2026",
-          "mulheres nao querem ter notícia de 2026-09-20",
-          "o que aconteceu com mulheres nao querem ter"
-        ],
-        "trend_keywords": [
-          "f"
-        ],
-        "entity_keywords": [
-          "mulheres",
-          "nao",
-          "querem",
-          "ter",
-          "corpo",
-          "diz",
-          "debora",
-          "bloch"
-        ],
-        "freshness_keywords": [
-          "September 2026",
-          "2026-09-20",
-          "setembro 2026",
-          "mulheres nao querem ter 2026"
-        ],
-        "source_keywords": [
-          "G1 mulheres nao querem ter",
-          "g1.globo.com mulheres nao querem ter",
-          "G1 entertainment news"
-        ],
-        "meta_title": "'As mulheres de 60 não querem ter corpo de 30', diz Débora…",
-        "meta_description": "Entertainment update reported by G1 on 2026-09-20. See verified context, publication time and the original source via MatchApp TV.",
-        "keywords": [
-          "f",
-          "mulheres nao querem ter",
-          "mulheres nao querem ter news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "mulheres nao querem ter latest news September 2026",
-          "mulheres nao querem ter entertainment update 2026",
-          "mulheres nao querem ter news 2026-09-20",
-          "latest entertainment news about mulheres nao querem ter",
-          "mulheres nao querem ter corpo diz latest update",
-          "G1 mulheres nao querem ter entertainment",
-          "últimas notícias sobre mulheres nao querem ter setembro 2026",
-          "mulheres nao querem ter notícia de 2026-09-20",
-          "o que aconteceu com mulheres nao querem ter",
-          "mulheres",
-          "nao",
-          "querem",
-          "ter",
-          "corpo",
-          "diz",
-          "debora",
-          "bloch",
-          "September 2026",
-          "2026-09-20",
-          "setembro 2026",
-          "mulheres nao querem ter 2026",
-          "G1 mulheres nao querem ter",
-          "g1.globo.com mulheres nao querem ter",
-          "G1 entertainment news"
-        ],
-        "seo_generated_at": "2026-09-20T06:08:53.187Z"
-      }
-    },
-    {
-      "id": "c4e3df59",
-      "title": "Ruby Rose Remembers Hayden Panettiere: &#8220;We Had Everything in Common&#8221;",
-      "url": "https://www.hollywoodreporter.com/tv/tv-news/ruby-rose-mourns-hayden-panettiere-tribute-1236706180/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "published_at": "2026-09-20T02:02:05.000Z",
-      "discovered_at": "2026-09-20T06:08:53.187Z",
-      "event_type": "Entertainment",
-      "person": "Ruby Rose Remembers Hayden",
-      "description": "Ruby Rose Remembers Hayden: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/09/Ruby-Hayden-Getty-H-2026.jpg?w=1296&h=730&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/ruby-rose-remembers-hayden-panettiere-8220-we-had-everything-in-common-8221-c4e3df/",
-      "landing_url": "https://matchapp.tv/?news=c4e3df59#latest-news",
-      "seo": {
-        "primary_keyword": "f",
-        "short_tail": [
-          "Ruby Rose Remembers Hayden",
-          "Ruby Rose Remembers Hayden news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "f"
-        ],
-        "long_tail": [
-          "Ruby Rose Remembers Hayden latest news September 2026",
-          "Ruby Rose Remembers Hayden entertainment update 2026",
-          "Ruby Rose Remembers Hayden news 2026-09-20",
-          "latest entertainment news about Ruby Rose Remembers Hayden",
-          "ruby rose remembers hayden ruby rose latest update",
-          "The Hollywood Reporter Ruby Rose Remembers Hayden entertainment",
-          "latest news about Ruby Rose Remembers Hayden September 2026",
-          "Ruby Rose Remembers Hayden entertainment news 2026-09-20",
-          "what happened with Ruby Rose Remembers Hayden"
-        ],
-        "trend_keywords": [
-          "f"
-        ],
-        "entity_keywords": [
-          "Ruby Rose Remembers Hayden",
-          "ruby",
-          "rose",
-          "remembers",
-          "hayden"
-        ],
-        "freshness_keywords": [
-          "September 2026",
-          "2026-09-20",
-          "Ruby Rose Remembers Hayden 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter Ruby Rose Remembers Hayden",
-          "hollywoodreporter.com Ruby Rose Remembers Hayden",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "Ruby Rose Remembers Hayden Panettiere: &#8220;We Had…",
-        "meta_description": "Ruby Rose Remembers Hayden: Entertainment update reported by The Hollywood Reporter on 2026-09-20. See verified context, publication time and the original…",
-        "keywords": [
-          "f",
-          "Ruby Rose Remembers Hayden",
-          "Ruby Rose Remembers Hayden news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "Ruby Rose Remembers Hayden latest news September 2026",
-          "Ruby Rose Remembers Hayden entertainment update 2026",
-          "Ruby Rose Remembers Hayden news 2026-09-20",
-          "latest entertainment news about Ruby Rose Remembers Hayden",
-          "ruby rose remembers hayden ruby rose latest update",
-          "The Hollywood Reporter Ruby Rose Remembers Hayden entertainment",
-          "latest news about Ruby Rose Remembers Hayden September 2026",
-          "Ruby Rose Remembers Hayden entertainment news 2026-09-20",
-          "what happened with Ruby Rose Remembers Hayden",
-          "ruby",
-          "rose",
-          "remembers",
-          "hayden",
-          "September 2026",
-          "2026-09-20",
-          "Ruby Rose Remembers Hayden 2026",
-          "The Hollywood Reporter Ruby Rose Remembers Hayden",
-          "hollywoodreporter.com Ruby Rose Remembers Hayden",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-09-20T06:08:53.187Z"
-      }
-    },
-    {
-      "id": "92009b05",
-      "title": "Pato Fu lança em outubro álbum ao vivo em que revê o disco 'Gol de quem?' com BNegão, Coral, Tom Zé e Zélia Duncan",
-      "url": "https://g1.globo.com/pop-arte/musica/blog/mauro-ferreira/post/2026/09/19/pato-fu-lanca-em-outubro-album-ao-vivo-em-que-rebobina-o-disco-gol-de-quem-com-bnegao-tom-ze-e-zelia-duncan.ghtml",
-      "source": "G1",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "BR",
-      "published_at": "2026-09-20T01:23:34.000Z",
-      "discovered_at": "2026-09-20T06:08:53.187Z",
-      "event_type": "Release",
-      "person": "Pato Fu",
-      "description": "Pato Fu: release headline reported by G1. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://s2-g1.glbimg.com/o_pqgM2N3gpA71zU-adNbm-Fh7M=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/f/G/wbeFKFRTKJ5nFp7GMkBw/gol-de-quem-0032.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/pato-fu-lanca-em-outubro-album-ao-vivo-em-que-reve-o-disco-gol-de-quem-com-bnega-92009b/",
-      "landing_url": "https://matchapp.tv/?news=92009b05#latest-news",
-      "seo": {
-        "primary_keyword": "f",
-        "short_tail": [
-          "Pato Fu",
-          "Pato Fu news",
-          "release",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "f"
-        ],
-        "long_tail": [
-          "Pato Fu latest news September 2026",
-          "Pato Fu release update 2026",
-          "Pato Fu news 2026-09-20",
-          "latest release news about Pato Fu",
-          "pato pato lanca outubro album vivo latest update",
-          "G1 Pato Fu release",
-          "últimas notícias sobre Pato Fu setembro 2026",
-          "Pato Fu notícia de 2026-09-20",
-          "o que aconteceu com Pato Fu"
-        ],
-        "trend_keywords": [
-          "f"
-        ],
-        "entity_keywords": [
-          "Pato Fu",
-          "pato",
-          "lanca",
-          "outubro",
-          "album",
-          "vivo",
-          "que",
-          "rebobina"
-        ],
-        "freshness_keywords": [
-          "September 2026",
-          "2026-09-20",
-          "setembro 2026",
-          "Pato Fu 2026"
-        ],
-        "source_keywords": [
-          "G1 Pato Fu",
-          "g1.globo.com Pato Fu",
-          "G1 entertainment news"
-        ],
-        "meta_title": "Pato Fu lança em outubro álbum ao vivo em que rebobina o…",
-        "meta_description": "Pato Fu: Release update reported by G1 on 2026-09-20. See verified context, publication time and the original source via MatchApp TV.",
-        "keywords": [
-          "f",
-          "Pato Fu",
-          "Pato Fu news",
-          "release",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "Pato Fu latest news September 2026",
-          "Pato Fu release update 2026",
-          "Pato Fu news 2026-09-20",
-          "latest release news about Pato Fu",
-          "pato pato lanca outubro album vivo latest update",
-          "G1 Pato Fu release",
-          "últimas notícias sobre Pato Fu setembro 2026",
-          "Pato Fu notícia de 2026-09-20",
-          "o que aconteceu com Pato Fu",
-          "pato",
-          "lanca",
-          "outubro",
-          "album",
-          "vivo",
-          "que",
-          "rebobina",
-          "September 2026",
-          "2026-09-20",
-          "setembro 2026",
-          "Pato Fu 2026",
-          "G1 Pato Fu",
-          "g1.globo.com Pato Fu",
-          "G1 entertainment news"
-        ],
-        "seo_generated_at": "2026-09-20T06:08:53.187Z"
-      }
-    },
-    {
-      "id": "9bfe22f4",
-      "title": "Marcos Sacramento 'bebe da chama' do samba em show que transpõe a roda do cantor para o palco com certa vibração",
-      "url": "https://g1.globo.com/pop-arte/musica/blog/mauro-ferreira/post/2026/09/19/marcos-sacramento-bebe-da-chama-do-samba-em-show-que-traz-a-roda-do-cantor-para-o-palco-com-certa-vibracao.ghtml",
-      "source": "G1",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "BR",
-      "published_at": "2026-09-20T01:12:52.000Z",
-      "discovered_at": "2026-09-20T06:08:53.187Z",
-      "event_type": "Music",
-      "person": "Marcos Sacramento",
-      "description": "Marcos Sacramento: music headline reported by G1. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://s2-g1.glbimg.com/7yTv7UTo4TCSAQe7Mc4Jbk0gScM=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/G/d/7WEYLOSLGcMHJitHyezg/sacramento5.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/marcos-sacramento-bebe-da-chama-do-samba-em-show-que-transpoe-a-roda-do-cantor-p-9bfe22/",
-      "landing_url": "https://matchapp.tv/?news=9bfe22f4#latest-news",
-      "seo": {
-        "primary_keyword": "f",
-        "short_tail": [
-          "Marcos Sacramento",
-          "Marcos Sacramento news",
-          "music",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "f"
-        ],
-        "long_tail": [
-          "Marcos Sacramento latest news September 2026",
-          "Marcos Sacramento music update 2026",
-          "Marcos Sacramento news 2026-09-20",
-          "latest music news about Marcos Sacramento",
-          "marcos sacramento marcos sacramento bebe chama latest update",
-          "G1 Marcos Sacramento music",
-          "últimas notícias sobre Marcos Sacramento setembro 2026",
-          "Marcos Sacramento notícia de 2026-09-20",
-          "o que aconteceu com Marcos Sacramento"
-        ],
-        "trend_keywords": [
-          "f"
-        ],
-        "entity_keywords": [
-          "Marcos Sacramento",
-          "marcos",
-          "sacramento",
-          "bebe",
-          "chama",
-          "samba",
-          "show"
-        ],
-        "freshness_keywords": [
-          "September 2026",
-          "2026-09-20",
-          "setembro 2026",
-          "Marcos Sacramento 2026"
-        ],
-        "source_keywords": [
-          "G1 Marcos Sacramento",
-          "g1.globo.com Marcos Sacramento",
-          "G1 entertainment news"
-        ],
-        "meta_title": "Marcos Sacramento 'bebe da chama' do samba em show que…",
-        "meta_description": "Marcos Sacramento: Music update reported by G1 on 2026-09-20. See verified context, publication time and the original source via MatchApp TV.",
-        "keywords": [
-          "f",
-          "Marcos Sacramento",
-          "Marcos Sacramento news",
-          "music",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "Marcos Sacramento latest news September 2026",
-          "Marcos Sacramento music update 2026",
-          "Marcos Sacramento news 2026-09-20",
-          "latest music news about Marcos Sacramento",
-          "marcos sacramento marcos sacramento bebe chama latest update",
-          "G1 Marcos Sacramento music",
-          "últimas notícias sobre Marcos Sacramento setembro 2026",
-          "Marcos Sacramento notícia de 2026-09-20",
-          "o que aconteceu com Marcos Sacramento",
-          "marcos",
-          "sacramento",
-          "bebe",
-          "chama",
-          "samba",
-          "show",
-          "September 2026",
-          "2026-09-20",
-          "setembro 2026",
-          "Marcos Sacramento 2026",
-          "G1 Marcos Sacramento",
-          "g1.globo.com Marcos Sacramento",
-          "G1 entertainment news"
-        ],
-        "seo_generated_at": "2026-09-20T06:08:53.187Z"
-      }
-    },
-    {
-      "id": "f10b4896",
-      "title": "Ed Sheeran Addresses Macklemore Backlash During Philadelphia Tour Stop: “This Wasn’t The Easy Option”",
-      "url": "https://www.hollywoodreporter.com/music/music-news/ed-sheeran-macklemore-controversy-palestine-protests-concert-1236706177/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "published_at": "2026-09-20T00:57:25.000Z",
-      "discovered_at": "2026-09-20T01:02:03.063Z",
-      "event_type": "Music",
-      "person": "Ed Sheeran Addresses Macklemore",
-      "description": "Ed Sheeran Addresses Macklemore: music headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/09/GettyImages-2251931026-e1789860622316.jpg?w=1440&h=810&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/ed-sheeran-addresses-macklemore-backlash-during-philadelphia-tour-stop-this-wasn-f10b48/",
-      "landing_url": "https://matchapp.tv/?news=f10b4896#latest-news",
-      "seo": {
-        "primary_keyword": "Ed Sheeran Says latest news",
-        "short_tail": [
-          "Ed Sheeran Says",
-          "Ed Sheeran Says news",
-          "music",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "Ed Sheeran Says latest news September 2026",
-          "Ed Sheeran Says music update 2026",
-          "Ed Sheeran Says news 2026-09-20",
-          "latest music news about Ed Sheeran Says",
-          "sheeran says sheeran says what happening latest update",
-          "The Hollywood Reporter Ed Sheeran Says music",
-          "latest news about Ed Sheeran Says September 2026",
-          "Ed Sheeran Says entertainment news 2026-09-20",
-          "what happened with Ed Sheeran Says"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Ed Sheeran Says",
-          "sheeran",
-          "says",
-          "what",
-          "happening",
-          "gaza",
-          "catastrophic"
-        ],
-        "freshness_keywords": [
-          "September 2026",
-          "2026-09-20",
-          "Ed Sheeran Says 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter Ed Sheeran Says",
-          "hollywoodreporter.com Ed Sheeran Says",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "Ed Sheeran Says “What Is Happening in Gaza Is…",
-        "meta_description": "Ed Sheeran Says: Music update reported by The Hollywood Reporter on 2026-09-20. See verified context, publication time and the original source via MatchApp…",
-        "keywords": [
-          "Ed Sheeran Says latest news",
-          "Ed Sheeran Says",
-          "Ed Sheeran Says news",
-          "music",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "Ed Sheeran Says latest news September 2026",
-          "Ed Sheeran Says music update 2026",
-          "Ed Sheeran Says news 2026-09-20",
-          "latest music news about Ed Sheeran Says",
-          "sheeran says sheeran says what happening latest update",
-          "The Hollywood Reporter Ed Sheeran Says music",
-          "latest news about Ed Sheeran Says September 2026",
-          "Ed Sheeran Says entertainment news 2026-09-20",
-          "what happened with Ed Sheeran Says",
-          "sheeran",
-          "says",
-          "what",
-          "happening",
-          "gaza",
-          "catastrophic",
-          "September 2026",
-          "2026-09-20",
-          "Ed Sheeran Says 2026",
-          "The Hollywood Reporter Ed Sheeran Says",
-          "hollywoodreporter.com Ed Sheeran Says",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-09-20T01:02:03.063Z"
-      }
-    },
-    {
-      "id": "82f10467",
-      "title": "Melissa Barrera Says It&#8217;s &#8220;Beautiful&#8221; to See Macklemore Receive Support After Ed Sheeran Tour Firing: &#8220;I Didn’t Get That When It Happened to Me&#8221;",
-      "url": "https://www.hollywoodreporter.com/music/music-news/melissa-barrera-macklemore-palestine-ed-sheeran-1236706164/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "published_at": "2026-09-19T23:24:51.000Z",
-      "discovered_at": "2026-09-20T00:21:40.893Z",
-      "event_type": "Music",
-      "person": "Melissa Barrera Says It",
-      "description": "Melissa Barrera Says It: music headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/09/Melissa-Mackelmore-Getty-H-2026.jpg?w=1296&h=730&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/melissa-barrera-says-it-8217-s-8220-beautiful-8221-to-see-macklemore-receive-sup-82f104/",
-      "landing_url": "https://matchapp.tv/?news=82f10467#latest-news",
-      "seo": {
-        "primary_keyword": "Melissa Barrera Says It latest news",
-        "short_tail": [
-          "Melissa Barrera Says It",
-          "Melissa Barrera Says It news",
-          "music",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "Melissa Barrera Says It latest news September 2026",
-          "Melissa Barrera Says It music update 2026",
-          "Melissa Barrera Says It news 2026-09-19",
-          "latest music news about Melissa Barrera Says It",
-          "melissa barrera says melissa barrera says latest update",
-          "The Hollywood Reporter Melissa Barrera Says It music",
-          "latest news about Melissa Barrera Says It September 2026",
-          "Melissa Barrera Says It entertainment news 2026-09-19",
-          "what happened with Melissa Barrera Says It"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Melissa Barrera Says It",
-          "melissa",
-          "barrera",
-          "says",
-          "8217",
-          "8220"
-        ],
-        "freshness_keywords": [
-          "September 2026",
-          "2026-09-19",
-          "Melissa Barrera Says It 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter Melissa Barrera Says It",
-          "hollywoodreporter.com Melissa Barrera Says It",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "Melissa Barrera Says It&#8217;s &#8220;Beautiful&#8221; to…",
-        "meta_description": "Melissa Barrera Says It: Music update reported by The Hollywood Reporter on 2026-09-19. See verified context, publication time and the original source via…",
-        "keywords": [
-          "Melissa Barrera Says It latest news",
-          "Melissa Barrera Says It",
-          "Melissa Barrera Says It news",
-          "music",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "Melissa Barrera Says It latest news September 2026",
-          "Melissa Barrera Says It music update 2026",
-          "Melissa Barrera Says It news 2026-09-19",
-          "latest music news about Melissa Barrera Says It",
-          "melissa barrera says melissa barrera says latest update",
-          "The Hollywood Reporter Melissa Barrera Says It music",
-          "latest news about Melissa Barrera Says It September 2026",
-          "Melissa Barrera Says It entertainment news 2026-09-19",
-          "what happened with Melissa Barrera Says It",
-          "melissa",
-          "barrera",
-          "says",
-          "8217",
-          "8220",
-          "September 2026",
-          "2026-09-19",
-          "Melissa Barrera Says It 2026",
-          "The Hollywood Reporter Melissa Barrera Says It",
-          "hollywoodreporter.com Melissa Barrera Says It",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-09-20T00:21:40.893Z"
       }
     }
   ]
