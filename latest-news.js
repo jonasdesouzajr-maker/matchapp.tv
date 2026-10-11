@@ -413,6 +413,23 @@
       section.dataset.newsDetectedCountry=country;
       section.dataset.newsSelectedLanguage=language;
       const staticChoice=chooseItems(items,country,language,deep.requestedNewsId);
+      // Render independently verified publisher headlines as soon as the
+      // local snapshot is ready. A slow regional feed must never leave an
+      // opened News panel stuck on a loading message. Keep the existing
+      // trustedItem and country/language eligibility gates unchanged.
+      if(staticChoice.combined.length){
+        panel.replaceChildren();
+        carousel=rail(staticChoice.combined);
+        panel.append(carousel);
+        const earlyMeta=document.createElement('div');
+        earlyMeta.className='ma-news-meta';
+        earlyMeta.textContent='Verified headlines · '+formatDate(payload.generated_at||Date.now());
+        panel.append(earlyMeta);
+        section.dataset.newsStaticPainted='true';
+        if(section.open&&carousel.startAuto)carousel.startAuto();
+      }
+      // The regional result enriches these existing verified results later.
+      // Preserve the original fallback/error behavior when no source qualifies.
       const regional=await fetchRegional(country,language);
       const regionalTrusted=regional.items.filter(item=>trustedRegionalItem(item,country,language));
       section.dataset.newsRegionalRaw=String(regional.items.length);
