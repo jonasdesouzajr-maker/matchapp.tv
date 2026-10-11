@@ -335,8 +335,9 @@ body.profile-page-v3 .profile-hub-row{min-height:70px!important;border-radius:18
 <link rel="stylesheet" href="/ui-harmony.css?v=20261003-1">
 <link rel="stylesheet" href="/premium-unified-20261010.css?v=20261010-luxe1">
 <link rel="stylesheet" href="/premium-finish-20261011.css?v=20261011-a1">
+<link rel="stylesheet" href="/profile-security-20261011.css?v=20261011-security1">
 </head>
-<body>
+<body class="matchapp-profile">
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7J3NNBN"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -518,7 +519,31 @@ body.profile-page-v3 .profile-hub-row{min-height:70px!important;border-radius:18
                     </details>
                 </div>
 
-                <div class="premium-card"><section class="passkey-box" aria-labelledby="passkey-title"><h3 id="passkey-title" data-passkey-text="title">Device sign-in</h3><p class="passkey-help" data-passkey-text="help">Use your device unlock to sign in again. MatchApp never receives your biometrics or PIN.</p><button type="button" class="passkey-button" data-passkey-action="add" data-passkey-text="add">Add a passkey</button><a class="passkey-sign-in" data-passkey-sign-in-first href="/?signIn=1" data-passkey-text="signInFirst">Sign in first</a><p class="passkey-status" data-passkey-status role="status" aria-live="polite"></p><div id="passkey-list" class="passkey-list"></div></section></div><div class="portfolio-tabs">
+                <div class="premium-card profile-security-card"><section class="passkey-box" aria-labelledby="passkey-title"><h3 id="passkey-title" data-passkey-text="title">Device sign-in</h3><p class="passkey-help" data-passkey-text="help">Use your device unlock to sign in again. MatchApp never receives your biometrics or PIN.</p><p data-passkey-identity class="passkey-identity" hidden></p><button type="button" class="passkey-button" data-passkey-action="add" data-passkey-text="add">Add a passkey</button><a class="passkey-sign-in" data-passkey-sign-in-first href="/?signIn=1" data-passkey-text="signInFirst">Sign in first</a><p class="passkey-status" data-passkey-status role="status" aria-live="polite"></p><div id="passkey-list" class="passkey-list"></div></section></div>
+                <div class="premium-card profile-security-card" id="profile-phone-security">
+                  <section class="profile-phone-box" aria-labelledby="pf-phone-title">
+                    <h3 id="pf-phone-title">Phone &amp; SMS preferences</h3>
+                    <p id="pf-phone-intro">Add your number to this signed-in account. Select a country instead of typing a plus sign or international code.</p>
+                    <p id="pf-phone-signedout" role="status">Checking your account…</p>
+                    <div id="pf-phone-entry" hidden>
+                      <p id="pf-phone-current" class="pf-phone-current" hidden></p>
+                      <div class="pf-phone-grid">
+                        <label><span id="pf-phone-country-label">Country</span><select id="pf-phone-country" autocomplete="tel-country-code" aria-label="Country calling code"></select></label>
+                        <label><span id="pf-phone-number-label">Mobile number</span><input id="pf-phone-number" type="tel" inputmode="numeric" pattern="[0-9]*" autocomplete="tel-national" maxlength="18" placeholder="11999999999" aria-describedby="pf-phone-intro"></label>
+                      </div>
+                      <button type="button" id="pf-phone-send" class="passkey-button">Send verification SMS</button>
+                      <div id="pf-phone-code-row" hidden>
+                        <label for="pf-phone-code">SMS code</label>
+                        <input id="pf-phone-code" type="text" inputmode="numeric" pattern="[0-9]*" autocomplete="one-time-code" maxlength="6" placeholder="6-digit SMS code">
+                        <div class="pf-phone-buttons"><button type="button" id="pf-phone-verify">Confirm number</button><button type="button" id="pf-phone-resend">Resend SMS</button></div>
+                      </div>
+                      <label class="pf-phone-consent"><input id="pf-sms-consent" type="checkbox" disabled><span id="pf-phone-sms-label">Allow optional SMS communications from MatchApp Ai</span></label>
+                      <p id="pf-phone-sms-help">Optional and off by default. Verification messages do not require marketing consent.</p>
+                    </div>
+                    <p id="pf-phone-status" role="status" aria-live="polite"></p>
+                  </section>
+                </div>
+                <div class="portfolio-tabs">
                     <button id="tab-history" class="portfolio-tab active" onclick="switchPortfolioTab('history')"><span data-i18n="profile.historyTab">◷ History</span> <span id="count-history" class="tab-count">0</span></button>
                     <button id="tab-watchlater" class="portfolio-tab" onclick="switchPortfolioTab('watchlater')"><span data-i18n="profile.watchLaterTab">⭐ Watch Later</span> <span id="count-watchlater" class="tab-count">0</span></button>
                     <button id="tab-seenit" class="portfolio-tab" onclick="switchPortfolioTab('seenit')"><span data-i18n="profile.seenTab">👁️ Seen It</span> <span id="count-seenit" class="tab-count">0</span></button>
@@ -575,7 +600,9 @@ body.profile-page-v3 .profile-hub-row{min-height:70px!important;border-radius:18
     <script data-registration-upgrade="1" src="/registration-upgrade.js?v=20260927-confirm1"></script>
     <script src="/portfolio-history.js?v=20260924-ui2"></script>
     <script src="/tv.js?v=187"></script>
-<script src="/passkeys.js?v=187"></script>
+<script src="/passkeys.js?v=20261011-session1"></script>
+<script src="/libphonenumber-max-1.12.25.js?v=1"></script>
+<script defer src="/profile-phone-20261011.js?v=20261011-phone1"></script>
 <script src="/app-updates.js?v=202&amp;installfix=20260930-1&amp;brand=20261001-canonicalai1"></script>
 <script src="/title-captions.js?v=20260929-avatar1"></script><script defer src="/page-shell.js?v=20261011-brandlock1" data-page-shell="1"></script>
 <script id="profile-hub-actions">document.addEventListener('DOMContentLoaded',()=>{document.querySelectorAll('[data-profile-target]').forEach(btn=>btn.addEventListener('click',()=>{const el=document.getElementById(btn.dataset.profileTarget);if(!el)return;const opening=el.hidden;document.querySelectorAll('.profile-hub-target').forEach(x=>{x.hidden=true;x.classList.remove('profile-hub-open')});if(opening){el.hidden=false;el.classList.add('profile-hub-open');requestAnimationFrame(()=>el.scrollIntoView({behavior:'smooth',block:'start'}))}}));});</script><script id="verified-email-profile-entry">
