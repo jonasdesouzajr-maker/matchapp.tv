@@ -1136,7 +1136,7 @@ async function hydrateDiscoverCard(item, idx) {
             link.addEventListener('click', e => {
                 e.preventDefault();
                 const host=document.getElementById('discover-availability-' + idx);
-                host?.scrollIntoView({behavior:'smooth',block:'center'});
+                if(host) revealJonasTurn(host);
                 host?.classList.add('is-highlighted');
                 setTimeout(()=>host?.classList.remove('is-highlighted'),1400);
             });
@@ -1650,7 +1650,7 @@ window.openThread = function (id) {
     renderThreadList();
     if (window.matchMedia('(max-width: 980px)').matches) window.toggleAiSidebar(false);
     const log2 = document.getElementById('chat-log');
-    if (log2) log2.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (log2) log2.scrollTop=Math.max(0,log2.scrollHeight-log2.clientHeight);
 };
 
 window.deleteThread = function (id, ev) {
@@ -2129,7 +2129,7 @@ async function showMusicVideoInfoCard(id) {
     currentThread.turns.push({ role: 'assistant', text, results: [], musicVideoId: id, ts: Date.now() });
     currentThread.updatedAt = Date.now(); persistCurrentThread();
     document.title = title + ' — MatchApp Ai Concierge';
-    document.getElementById('chat-log')?.scrollIntoView({ behavior: 'auto', block: 'start' });
+    if (bubble?.wrap) revealJonasTurn(bubble.wrap);
     return true;
 }
 
@@ -2175,7 +2175,7 @@ async function showTitleInfoCard(titleName) {
         window.track('title_info_card', { title: item.title, source: 'trending' });
     }
     const log = document.getElementById('chat-log');
-    if (log) setTimeout(() => log.scrollIntoView({ behavior: 'auto', block: 'start' }), 20);
+    if (log) setTimeout(() => revealJonasTurn(log.lastElementChild),20);
 }
 
 
@@ -2277,7 +2277,7 @@ async function showEventInfoCard(eventPath) {
         const input = document.getElementById('discover-new-input');
         if (input) input.placeholder = `Ask a follow-up about ${title}…`;
         const log = document.getElementById('chat-log');
-        if (log) setTimeout(() => log.scrollIntoView({ behavior: 'auto', block: 'start' }), 20);
+        if (log) setTimeout(() => revealJonasTurn(log.lastElementChild),20);
         return true;
     } catch (_) {
         return false;
@@ -2332,7 +2332,7 @@ async function runDiscovery() {
     if (loadEl) loadEl.style.display = 'none';
     await askAndRender(q, {voiceOrigin: getQueryParam('from') === 'jonas'});
     const log=document.getElementById('chat-log');
-    if(log){log.hidden=false;log.style.display='flex';log.scrollIntoView({behavior:'auto',block:'start'});}
+    if(log){log.hidden=false;log.style.display='flex';revealJonasTurn(log.lastElementChild);}
 }
 
 document.addEventListener('DOMContentLoaded', () => { setTimeout(runDiscovery, 40); });

@@ -65,6 +65,9 @@ function animate(now){
   lastFrameAt=now;
  }
  el.style.setProperty('--jds-pulse',String(Math.min(.68,level*.7)));
+ // The portrait follows actual speech amplitude, not a looping bob or blinking frame.
+ el.style.setProperty('--jds-head-y',(-level*1.8).toFixed(2)+'px');
+ el.style.setProperty('--jds-head-scale',(1+level*.012).toFixed(4));
  raf=requestAnimationFrame(animate);
 }
 function scheduleBlink(){
@@ -85,6 +88,8 @@ function stopMotion(){
  active=false;cancelAnimationFrame(raf);raf=0;
  level=0;meterLevel=0;meterAt=0;silenceAt=0;lastFrameAt=0;
  showFrame('rest');el.style.setProperty('--jds-pulse','0');
+ el.style.setProperty('--jds-head-y','0px');
+ el.style.setProperty('--jds-head-scale','1');
 }
 function beginSpeaking(){
  clearTimeout(timer);stopMotion();
@@ -113,6 +118,8 @@ function speak(text,opts){
     const name=meterLevel>=.23?'aa':meterLevel>=.09?'oh':meterLevel>=SILENCE_GATE?'ee':'rest';
     showFrame(name);lastFrameAt=meterAt;
     el.style.setProperty('--jds-pulse',String(Math.min(.68,meterLevel*.7)));
+    el.style.setProperty('--jds-head-y',(-meterLevel*1.8).toFixed(2)+'px');
+    el.style.setProperty('--jds-head-scale',(1+meterLevel*.012).toFixed(4));
    }
   },
   onEnd:ok=>endSpeaking(ok&&opts?.autoListen===true),

@@ -10,19 +10,37 @@
    raf=0;
    const panel=document.querySelector('body.ai-chat-page .discover-head');
    if(!panel)return;
-   const top=panel.getBoundingClientRect().top+window.scrollY;
+   const top=panel.getBoundingClientRect().top;
    const viewport=window.visualViewport;
    const keyboardVisible=!!(viewport&&viewport.height<window.innerHeight-110);
-   // VisualViewport height tracks Android keyboard; ordinary screen uses a
-   // stable layout viewport so a minor browser-toolbar shift is not a jump.
-   const height=keyboardVisible?viewport.height:document.documentElement.clientHeight;
-   const free=Math.max(290,Math.floor(height-top-10));
+   // Work from viewport coordinates, not document scroll offsets. The cookie
+   // notice and Android keyboard must never cover the anchored composer.
+   const viewportBottom=keyboardVisible
+    ? viewport.offsetTop+viewport.height
+    : document.documentElement.clientHeight;
+   const cookie=document.querySelector('body > .ma-cookie');
+   const cookieRect=cookie?.getBoundingClientRect();
+   const cookieTop=cookieRect&&cookieRect.height>0&&getComputedStyle(cookie).display!=='none'
+    ? cookieRect.top-9:Infinity;
+   const free=Math.max(keyboardVisible?230:260,Math.floor(Math.min(viewportBottom-10,cookieTop)-top));
    panel.style.setProperty('--jonas-workspace-height',free+'px');
   });
  }
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',fit,{once:true});else fit();
  window.addEventListener('resize',fit,{passive:true});
  window.visualViewport?.addEventListener('resize',fit,{passive:true});
+ // Consent appears after boot and may disappear without a viewport resize.
+ function watchCookie(){
+  if(!document.body)return;
+  const observer=new MutationObserver(records=>{
+   if(records.some(record=>[...record.addedNodes,...record.removedNodes].some(node=>
+    node.nodeType===1 && node.classList?.contains('ma-cookie'))))fit();
+  });
+  observer.observe(document.body,{childList:true});
+  fit();
+ }
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',watchCookie,{once:true});
+ else watchCookie();
  setTimeout(fit,420);
  setTimeout(fit,1200);
 })();
