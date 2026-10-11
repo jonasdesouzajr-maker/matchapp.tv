@@ -1,0 +1,443 @@
+/* MatchApp Ai premium finishing layer — presentational only.
+ * Adult Home, shared app shell, Jonas discovery, account/profile and plans.
+ * No auth, billing, rewards, matching, streaming or Kids Mode modifications.
+ */
+:root{
+ --ma-finish-edge:rgba(241,200,119,.36);
+ --ma-finish-aura:0 18px 44px rgba(6,2,20,.39), inset 0 1px rgba(255,249,220,.13);
+ --ma-finish-card:linear-gradient(150deg,rgba(48,27,74,.95),rgba(21,12,37,.96) 62%,rgba(16,9,30,.97));
+ --ma-finish-muted:#d1c1dc;
+}
+html body:not(.page-kids):not(.kids-body):not([data-kids-mode]) :is(header.app-header,.mh-topbox,#mh-topbox){
+ border:1px solid rgba(243,201,123,.42)!important;
+ border-radius:clamp(20px,3vw,28px)!important;
+ background:radial-gradient(ellipse at 8% 0%,rgba(106,62,139,.33),transparent 54%),linear-gradient(132deg,rgba(45,25,68,.97),rgba(19,10,34,.975))!important;
+ box-shadow:var(--ma-finish-aura)!important;
+ backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+}
+html body.page-shell header.app-header.mh-topbox{
+ max-width:min(1120px,calc(100% - 20px))!important;
+ margin:10px auto 17px!important;
+ padding:clamp(11px,2.4vw,20px) clamp(13px,3.4vw,25px)!important;
+ gap:clamp(8px,1.5vw,16px)!important;
+}
+html body.page-shell .mh-topbox .ma-brand-home-link,
+html body.page-home #mh-topbox .ma-brand-home-link{
+ display:flex!important;align-items:center!important;min-width:0!important;
+ gap:clamp(13px,2.25vw,25px)!important;
+ text-decoration:none!important;
+}
+html body.page-shell .mh-topbox .ma-brand-copy,
+html body.page-home #mh-topbox .ma-brand-copy{min-width:0!important;overflow:visible!important}
+html body.page-shell .mh-topbox .ma-wordmark,
+html body.page-home #mh-topbox .ma-wordmark{
+ display:inline-flex!important;align-items:baseline!important;white-space:nowrap!important;
+ font-weight:830!important;letter-spacing:-.052em!important;line-height:1.08!important;
+ text-shadow:0 3px 15px rgba(0,0,0,.35)!important;
+}
+html body.page-shell .mh-topbox .ma-word-ai,
+html body.page-home #mh-topbox .ma-word-ai{white-space:nowrap!important;line-height:1.08!important}
+html body.page-shell .mh-topbox .ma-brand-orb-stage{
+ flex:0 0 auto!important;width:clamp(52px,8vw,78px)!important;
+ height:clamp(52px,8vw,78px)!important;
+ border-radius:50%!important;overflow:visible!important;
+}
+html body.page-shell .mh-topbox .ma-brand-orb-stage img{
+ display:block!important;width:100%!important;height:100%!important;object-fit:contain!important;
+ filter:drop-shadow(0 4px 11px rgba(226,169,77,.20));
+}
+html body.page-shell .mh-topbox .mh-tagline{
+ color:var(--ma-finish-muted)!important;font-size:clamp(11px,1.25vw,13px)!important;
+ line-height:1.32!important;margin:5px 0 0!important;letter-spacing:.01em!important;
+}
+html body.page-shell .mh-topbox>nav.mh-deck{
+ align-items:center!important;align-content:center!important;gap:8px!important;
+ margin:0!important;min-width:0!important;
+}
+html body.page-shell .mh-topbox>nav.mh-deck :is(button,a,select),
+html body.page-home #mh-topbox :is(.mh-home-btn,.ma-luxe-shortcut,.install-btn,.matchapp-notification-button){
+ border-radius:clamp(12px,1.6vw,16px)!important;
+ min-height:42px!important;
+ box-shadow:inset 0 1px rgba(255,255,255,.09),0 5px 16px rgba(5,1,14,.24)!important;
+ transition:border-color .2s ease,background .2s ease,transform .2s ease,box-shadow .2s ease;
+}
+html body.page-shell .mh-topbox>nav.mh-deck :is(button,a):focus-visible,
+html body.page-home #mh-topbox :is(a,button):focus-visible{
+ outline:2px solid #ffe4a1!important;outline-offset:3px!important;
+}
+html body.page-shell .mh-topbox .mh-home-btn{
+ border:1px solid rgba(250,214,147,.39)!important;
+ background:linear-gradient(146deg,rgba(87,51,114,.66),rgba(34,19,56,.88))!important;
+ padding-inline:clamp(12px,2vw,18px)!important;letter-spacing:.04em!important;
+}
+html body:not(.page-kids):not(.kids-body) :is(.premium-card,.pf-card,.pf-fold,.pf-action-card,.pf-panel,.plan-card,.price-card,.friend-panel,.tg-card){
+ border:1px solid var(--ma-finish-edge)!important;
+ border-radius:clamp(17px,2.4vw,25px)!important;
+ background:var(--ma-finish-card)!important;
+ box-shadow:var(--ma-finish-aura)!important;
+}
+html body:not(.page-kids):not(.kids-body) :is(.pf-card,.pf-fold,.pf-action-card,.friend-panel,.tg-card,.plan-card,.price-card){
+ overflow-wrap:anywhere;min-width:0;
+}
+html body:not(.page-kids):not(.kids-body) :is(.pf-card,.pf-fold,.premium-card,.tg-card,.price-card) :is(h2,h3,strong){
+ letter-spacing:-.018em;text-wrap:balance;
+}
+html body:not(.page-kids):not(.kids-body) :is(.pf-card,.pf-fold,.premium-card,.tg-card,.price-card) :is(p,small,.description){
+ color:var(--ma-finish-muted);line-height:1.55;
+}
+html body:not(.page-kids):not(.kids-body) :is(.pf-action-card,.pf-card,button,.gold-btn,a){-webkit-tap-highlight-color:transparent}
+html body:not(.page-kids):not(.kids-body) :is(.pf-card,.premium-card,.tg-card,.price-card) :is(input,select,textarea){
+ max-width:100%;box-sizing:border-box;
+}
+html body.ai-chat-page .chat-bubble.chat-assistant{
+ background:var(--ma-finish-card)!important;
+ border:1px solid var(--ma-finish-edge)!important;
+ border-radius:23px!important;
+ box-shadow:var(--ma-finish-aura)!important;
+ max-width:100%!important;min-width:0!important;overflow-wrap:anywhere;
+}
+html body.ai-chat-page .chat-results-grid{
+ display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,310px),1fr));
+ width:100%;min-width:0;gap:clamp(12px,2.1vw,19px);margin-top:15px;
+}
+html body.ai-chat-page .chat-results-grid:empty{display:none!important}
+html body.ai-chat-page .chat-results-grid .discover-card{
+ display:grid;grid-template-columns:minmax(112px,32%) minmax(0,1fr);
+ width:100%;min-width:0;gap:clamp(12px,2vw,20px);align-items:start;
+ padding:clamp(12px,1.7vw,20px);
+ border:1px solid rgba(239,201,131,.45);
+ border-radius:21px;
+ background:linear-gradient(139deg,rgba(48,28,72,.95),rgba(18,10,34,.98));
+ box-shadow:0 11px 28px rgba(5,1,15,.28),inset 0 1px rgba(255,255,255,.07);
+}
+html body.ai-chat-page .chat-results-grid .discover-poster{
+ position:relative;min-width:0;overflow:hidden;border-radius:15px;
+ border:1px solid rgba(242,201,125,.35);background:#170c26;
+}
+html body.ai-chat-page .chat-results-grid .discover-poster img{
+ display:block;width:100%;height:auto;aspect-ratio:2 / 3;object-fit:contain;
+}
+html body.ai-chat-page .chat-results-grid .discover-body{
+ display:flex;flex-direction:column;min-width:0;gap:8px;align-self:stretch;
+}
+html body.ai-chat-page .chat-results-grid .discover-body h3{
+ font-size:clamp(18px,2vw,24px);line-height:1.13;letter-spacing:-.025em;
+ margin:0;color:#fff6ed;
+}
+html body.ai-chat-page .chat-results-grid .discover-synopsis{
+ color:#dfd1e9!important;font-size:clamp(12px,1.35vw,14px);line-height:1.56;margin:5px 0 8px;
+ max-height:11.2em;overflow:auto;overscroll-behavior:contain;
+}
+html body.ai-chat-page .chat-results-grid .discover-actions{
+ margin-top:auto;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+ gap:8px!important;align-items:stretch;
+}
+html body.ai-chat-page .chat-results-grid .discover-actions :is(a,button){
+ box-sizing:border-box;min-width:0;width:100%;min-height:42px!important;
+ border-radius:13px!important;
+ display:inline-flex;align-items:center;justify-content:center;
+ text-align:center;line-height:1.28;font-size:clamp(11px,1.28vw,13px)!important;
+ font-weight:700;white-space:normal;overflow-wrap:anywhere;padding:9px 8px!important;
+}
+html body.ai-chat-page .chat-results-grid .discover-actions .discover-play{
+ background:linear-gradient(140deg,#ffe29c,#d9a64c)!important;color:#21102d!important;
+ border:1px solid rgba(255,237,178,.9)!important;
+}
+html body.ai-chat-page .chat-results-grid .discover-actions :is(.discover-save,.discover-nfm,.discover-share){
+ background:linear-gradient(147deg,rgba(83,48,113,.75),rgba(33,18,56,.9));
+ color:#f7eaff;border:1px solid rgba(221,174,237,.36);
+}
+html body.ai-chat-page .chat-results-grid .discover-actions .discover-share{
+ grid-column:span 2;letter-spacing:.01em;
+}
+html body.ai-chat-page .chat-results-grid :is(.discover-meta,.discover-facts,.discover-category){
+ color:#dec9ea;font-size:clamp(10px,1.12vw,12px);
+}
+html body.ai-chat-page .chat-results-grid .matchapp-card-availability[hidden]{display:none!important}
+@media(max-width:760px){
+ html body.page-shell header.app-header.mh-topbox{
+  width:calc(100% - 16px)!important;margin:8px auto 15px!important;
+  padding:12px!important;
+ }
+ html body.page-shell .mh-topbox .mh-head{min-width:0;width:100%;padding:0 2px!important}
+ html body.page-shell .mh-topbox .ma-brand-home-link{gap:14px!important;width:100%}
+ html body.page-shell .mh-topbox .ma-wordmark{font-size:clamp(24px,6vw,33px)!important}
+ html body.page-shell .mh-topbox .ma-word-ai{font-size:clamp(24px,6.1vw,34px)!important}
+ html body.page-shell .mh-topbox>nav.mh-deck{display:flex!important;flex-wrap:wrap!important;gap:7px!important}
+ html body.page-shell .mh-topbox>nav.mh-deck>*{max-width:100%;min-width:40px!important}
+ html body.page-shell .mh-topbox .mh-home-btn{min-height:42px!important;padding:8px 12px!important}
+ html body.page-shell .mh-topbox .ma-brand-orb-stage{width:clamp(54px,14.5vw,70px)!important;height:clamp(54px,14.5vw,70px)!important}
+ html body.ai-chat-page .chat-results-grid{grid-template-columns:minmax(0,1fr)}
+ html body.ai-chat-page .chat-results-grid .discover-card{grid-template-columns:minmax(100px,35%) minmax(0,1fr)}
+}
+@media(max-width:390px){
+ html body.page-shell .mh-topbox .ma-brand-orb-stage{width:49px!important;height:49px!important}
+ html body.page-shell .mh-topbox .ma-brand-home-link{gap:11px!important}
+ html body.page-shell .mh-topbox .ma-wordmark{font-size:23px!important}
+ html body.page-shell .mh-topbox .ma-word-ai{font-size:23px!important}
+ html body.ai-chat-page .chat-results-grid .discover-card{display:flex;flex-direction:column;align-items:stretch}
+ html body.ai-chat-page .chat-results-grid .discover-poster{width:min(185px,62%);margin:auto}
+ html body.ai-chat-page .chat-results-grid .discover-actions{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(prefers-reduced-motion:reduce){
+ html body:not(.page-kids):not(.kids-body) :is(header.app-header,button,.gold-btn,.premium-card){transition:none!important}
+}
+
+/* Last-word overrides for the legacy compact discovery card. Those older
+ * selectors set 80-96px posters and 36px controls with !important, so equal-
+ * or higher-specificity rules are required to restore the premium treatment. */
+html body.ai-chat-page.ma-ia-discover:not(.tv-mode) .chat-results-grid{
+ grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr))!important;
+ gap:16px!important;
+}
+html body.ai-chat-page.ma-ia-discover:not(.tv-mode) .chat-results-grid .discover-card{
+ display:grid!important;grid-template-columns:minmax(118px,33%) minmax(0,1fr)!important;
+ padding:clamp(13px,2vw,18px)!important;gap:clamp(13px,2vw,18px)!important;
+ border-radius:20px!important;text-align:start!important;
+}
+html body.ai-chat-page.ma-ia-discover:not(.tv-mode) .chat-results-grid .discover-poster{
+ width:100%!important;min-width:0!important;height:auto!important;
+ max-height:none!important;aspect-ratio:auto!important;overflow:hidden!important;
+ border-radius:14px!important;
+}
+html body.ai-chat-page.ma-ia-discover:not(.tv-mode) .chat-results-grid .discover-poster img{
+ width:100%!important;height:auto!important;aspect-ratio:2/3!important;
+ object-fit:contain!important;
+}
+html body.ai-chat-page.ma-ia-discover:not(.tv-mode) .chat-results-grid .discover-body h3{
+ font-size:clamp(17px,1.8vw,23px)!important;line-height:1.15!important;margin:0 0 5px!important;
+}
+html body.ai-chat-page.ma-ia-discover:not(.tv-mode) .chat-results-grid .discover-actions{
+ display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;
+ gap:8px!important;width:100%!important;
+}
+html body.ai-chat-page.ma-ia-discover:not(.tv-mode) .chat-results-grid .discover-actions :is(.discover-play,.discover-save,.discover-nfm,.discover-share){
+ min-height:42px!important;padding:9px 8px!important;border-radius:13px!important;
+ font-size:clamp(11px,1.25vw,13px)!important;line-height:1.25!important;
+}
+html body.ai-chat-page.ma-ia-discover:not(.tv-mode) .chat-results-grid .discover-actions .discover-share{
+ grid-column:1 / -1!important;
+}
+@media(max-width:620px){
+ html body.ai-chat-page.ma-ia-discover:not(.tv-mode) .chat-results-grid{grid-template-columns:minmax(0,1fr)!important}
+ html body.ai-chat-page.ma-ia-discover:not(.tv-mode) .chat-results-grid .discover-card{
+  grid-template-columns:minmax(116px,35%) minmax(0,1fr)!important;
+ }
+}
+@media(max-width:350px){
+ html body.ai-chat-page.ma-ia-discover:not(.tv-mode) .chat-results-grid .discover-card{
+  display:flex!important;flex-direction:column!important;
+ }
+ html body.ai-chat-page.ma-ia-discover:not(.tv-mode) .chat-results-grid .discover-poster{
+  width:min(190px,60%)!important;margin-inline:auto!important;
+ }
+}
+
+/* The actual Profile hub rows and avatar entry (not the old pf-card class)
+ * share the same premium visual contract as the main header. */
+html body.page-shell .main-layout,
+html body.page-shell .main-layout>.container{
+ max-width:min(100%,920px)!important;min-width:0!important;
+}
+html body.page-shell .profile-hub{padding:0!important;min-width:0!important}
+html body.page-shell .profile-hub-intro{padding:clamp(8px,2vw,16px) 4px 19px!important}
+html body.page-shell .profile-hub-intro h1{
+ font-size:clamp(26px,4.7vw,36px)!important;font-weight:820!important;
+ line-height:1.16!important;color:#fff7f0!important;letter-spacing:-.045em!important;
+}
+html body.page-shell .profile-hub-intro p{
+ font-size:clamp(13px,1.65vw,15px)!important;color:var(--ma-finish-muted)!important;
+ line-height:1.5!important;
+}
+html body.page-shell .profile-hub-menu{display:grid!important;gap:10px!important;min-width:0!important}
+html body.page-shell .profile-hub-menu .profile-hub-row{
+ display:grid!important;grid-template-columns:50px minmax(0,1fr) 22px!important;
+ align-items:center!important;gap:clamp(10px,1.4vw,15px)!important;
+ min-height:76px!important;width:100%!important;max-width:100%!important;
+ margin:0!important;padding:clamp(12px,1.7vw,17px)!important;
+ border:1px solid rgba(226,187,129,.34)!important;border-radius:20px!important;
+ background:var(--ma-finish-card)!important;color:#fff9f1!important;
+ box-shadow:0 8px 27px rgba(5,1,16,.25),inset 0 1px rgba(255,255,255,.07)!important;
+ text-align:start!important;text-decoration:none!important;
+ cursor:pointer!important;box-sizing:border-box!important;
+ transition:border-color .18s,transform .18s,box-shadow .18s!important;
+}
+html body.page-shell .profile-hub-menu .profile-hub-row:is(:hover,:focus-visible){
+ border-color:rgba(255,215,136,.78)!important;
+ box-shadow:0 14px 32px rgba(5,1,17,.33),inset 0 1px rgba(255,255,255,.1)!important;
+ transform:translateY(-1px);
+}
+html body.page-shell .profile-hub-menu .profile-hub-row>span:first-child{
+ width:45px;height:45px;display:grid;place-items:center;
+ border:1px solid rgba(236,196,116,.22);border-radius:14px;
+ background:linear-gradient(150deg,rgba(93,57,129,.53),rgba(26,16,44,.82));
+ color:#f4d17f!important;font-size:23px!important;line-height:1!important;
+}
+html body.page-shell .profile-hub-menu .profile-hub-row>span:nth-child(2){
+ min-width:0!important;display:block!important;
+}
+html body.page-shell .profile-hub-menu .profile-hub-row strong{
+ font-size:clamp(15px,1.8vw,17px)!important;font-weight:740!important;
+ letter-spacing:-.013em!important;color:#fff4e9!important;
+ line-height:1.24!important;
+}
+html body.page-shell .profile-hub-menu .profile-hub-row small{
+ font-size:clamp(11.5px,1.5vw,13px)!important;
+ color:#d1bfdf!important;line-height:1.45!important;
+ margin-top:5px!important;
+}
+html body.page-shell .profile-hub-menu .profile-hub-row b{
+ font-size:27px!important;font-weight:600!important;color:#f9d689!important;
+}
+html body.page-shell .match-avatar-maker .ma-av-entry{
+ display:grid!important;grid-template-columns:88px minmax(0,1fr) auto!important;
+ gap:clamp(13px,2vw,21px)!important;align-items:center!important;
+ padding:clamp(17px,2.5vw,27px)!important;
+ border:1px solid rgba(246,205,127,.46)!important;
+ border-radius:24px!important;background:var(--ma-finish-card)!important;
+ box-shadow:var(--ma-finish-aura)!important;min-width:0!important;
+}
+html body.page-shell .match-avatar-maker .ma-av-entry-copy h2{
+ font-size:clamp(19px,2.5vw,26px)!important;letter-spacing:-.035em!important;
+ line-height:1.18!important;margin:7px 0 8px!important;color:#fff6ee!important;
+}
+html body.page-shell .match-avatar-maker .ma-av-entry-copy p{
+ font-size:clamp(12px,1.5vw,14px)!important;color:#d5c6e1!important;
+ line-height:1.54!important;
+}
+html body.page-shell .match-avatar-maker .ma-av-entry-btn{
+ min-height:46px!important;padding:12px clamp(15px,2vw,22px)!important;
+ border-radius:16px!important;
+ border:1px solid rgba(255,237,166,.8)!important;
+ color:#261529!important;box-shadow:inset 0 1px rgba(255,255,255,.58),0 7px 17px rgba(136,89,27,.22)!important;
+}
+@media(max-width:650px){
+ html body.page-shell .main-layout{padding:0 0 34px!important;width:calc(100% - 18px)!important}
+ html body.page-shell .match-avatar-maker .ma-av-entry{
+  grid-template-columns:70px minmax(0,1fr)!important;padding:16px!important;gap:12px!important;
+ }
+ html body.page-shell .match-avatar-maker .ma-av-entry-circle{width:68px!important;height:68px!important}
+ html body.page-shell .match-avatar-maker .ma-av-entry-btn{
+  grid-column:1/-1!important;width:100%!important;
+  min-height:45px!important;
+ }
+ html body.page-shell .profile-hub-menu .profile-hub-row{
+  grid-template-columns:42px minmax(0,1fr) 18px!important;
+  min-height:73px!important;padding:12px!important;gap:11px!important;border-radius:18px!important;
+ }
+ html body.page-shell .profile-hub-menu .profile-hub-row>span:first-child{
+  width:41px;height:41px;border-radius:13px;font-size:21px!important;
+ }
+}
+
+/* Home hero brand: restore readable subtitle and security badge on their own line.
+ * Prior miniature mobile caption had a width:0 and 7px font, causing overlap. */
+html body.page-home #mh-topbox .ma-brand-copy{
+ display:grid!important;grid-template-columns:max-content max-content!important;
+ align-content:center!important;align-items:baseline!important;
+ column-gap:.14em!important;row-gap:5px!important;
+ white-space:normal!important;width:auto!important;
+ flex:1 1 auto!important;
+}
+html body.page-home #mh-topbox .ma-brand-copy .ma-wordmark{
+ grid-column:1!important;white-space:nowrap!important;
+}
+html body.page-home #mh-topbox .ma-brand-copy .ma-word-ai{
+ grid-column:2!important;white-space:nowrap!important;
+}
+html body.page-home #mh-topbox .ma-brand-copy .ma-brand-caption{
+ grid-column:1/-1!important;width:100%!important;min-width:0!important;max-width:100%!important;
+ display:flex!important;align-items:center!important;justify-content:flex-start!important;
+ flex-wrap:wrap!important;gap:5px 11px!important;
+ margin:0!important;padding:0!important;opacity:1!important;
+ color:#e6d4f0!important;font-size:clamp(10px,2.55vw,13px)!important;
+ font-weight:550!important;line-height:1.35!important;white-space:normal!important;
+}
+html body.page-home #mh-topbox .ma-brand-copy .ma-brand-caption .ma-brand-tagline{
+ font-size:inherit!important;line-height:inherit!important;
+ margin:0!important;white-space:normal!important;
+}
+html body.page-home #mh-topbox .ma-brand-copy .ma-brand-caption .ma-brand-security{
+ font-size:clamp(9px,2.12vw,11px)!important;line-height:1.25!important;
+ padding:3px 7px!important;white-space:nowrap!important;
+}
+@media(max-width:560px){
+ html body.page-home #mh-topbox .ma-brand-copy .ma-brand-caption{
+  gap:3px 6px!important;font-size:clamp(10px,2.55vw,12px)!important;
+ }
+ html body.page-home #mh-topbox .ma-brand-copy .ma-brand-caption .ma-brand-security{
+  font-size:9px!important;
+ }
+}
+
+/* Ask workspace has 5 actions: three balanced controls, then two.
+ * Prevent an isolated settings icon on a third line. */
+@media(max-width:760px){
+ html body.ai-chat-page.page-shell header.app-header.mh-topbox>nav.mh-deck{
+  display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  align-items:stretch!important;justify-content:stretch!important;gap:7px!important;
+  width:100%!important;max-width:none!important;
+ }
+ html body.ai-chat-page.page-shell header.app-header.mh-topbox>nav.mh-deck>*{
+  min-width:0!important;width:100%!important;max-width:none!important;
+  min-height:41px!important;margin:0!important;padding:7px 5px!important;
+  font-size:clamp(10px,2.7vw,12px)!important;justify-content:center!important;line-height:1.2!important;
+ }
+ html body.ai-chat-page.page-shell header.app-header.mh-topbox>nav.mh-deck .ma-menu-wrap,
+ html body.ai-chat-page.page-shell header.app-header.mh-topbox>nav.mh-deck .ma-menu-button{
+  width:100%!important;max-width:none!important;min-width:0!important;
+ }
+}
+
+
+/* Page-shell hero tone follows the settled Home brand without changing controls. */
+html body.page-shell header.app-header.mh-topbox{
+ background:radial-gradient(ellipse at 6% 0%,rgba(161,109,188,.42),transparent 59%),linear-gradient(130deg,rgba(91,53,123,.975),rgba(48,27,77,.98) 73%,rgba(26,14,45,.985))!important;
+ border-color:rgba(247,209,136,.64)!important;
+}
+@media(max-width:760px){
+ html body.ai-chat-page.page-shell header.app-header.mh-topbox>nav.mh-deck{
+  grid-template-columns:repeat(6,minmax(0,1fr))!important;
+ }
+ html body.ai-chat-page.page-shell header.app-header.mh-topbox>nav.mh-deck>*{
+  grid-column:span 2!important;
+ }
+ html body.ai-chat-page.page-shell header.app-header.mh-topbox>nav.mh-deck>:is(.ma-kids-mode-entry,.ma-menu-wrap){
+  grid-column:span 3!important;
+ }
+ html body.page-shell header.app-header.mh-topbox .ma-brand-orb-stage{
+  width:clamp(53px,15vw,65px)!important;height:clamp(53px,15vw,65px)!important;
+ }
+}
+
+/* Canonical header layout: title is atomic; captions stay in normal flow. */
+html body.page-shell header.app-header.mh-topbox .ma-brand-copy{
+ display:flex!important;flex-direction:column!important;flex-wrap:nowrap!important;
+ align-items:flex-start!important;justify-content:center!important;gap:5px!important;
+ flex:1 1 auto!important;min-width:0!important;width:auto!important;max-width:100%!important;
+ position:static!important;min-height:0!important;white-space:normal!important;
+}
+html body:not(.page-kids):not(.kids-body) .ma-brand-title-line{
+ display:inline-flex!important;align-items:baseline!important;justify-content:flex-start!important;
+ flex:0 0 auto!important;gap:.12em!important;white-space:nowrap!important;
+ grid-column:1 / -1!important;max-width:100%!important;
+}
+html body.page-shell header.app-header.mh-topbox .ma-brand-title-line :is(.ma-wordmark,.ma-word-ai){
+ display:inline-flex!important;position:static!important;flex:none!important;
+ width:auto!important;max-width:none!important;min-width:0!important;
+ margin:0!important;padding:0!important;transform:none!important;
+ font-size:clamp(23px,6vw,34px)!important;line-height:1.08!important;
+ white-space:nowrap!important;
+}
+html body.page-shell header.app-header.mh-topbox .ma-brand-caption{
+ position:static!important;display:flex!important;flex-direction:column!important;
+ align-items:flex-start!important;gap:4px!important;width:100%!important;max-width:100%!important;
+ margin:0!important;padding:0!important;white-space:normal!important;
+ font-size:clamp(11px,1.3vw,13px)!important;line-height:1.35!important;color:#e7dbeb!important;
+}
+html body.page-shell header.app-header.mh-topbox .ma-brand-tagline{
+ font-size:inherit!important;line-height:inherit!important;white-space:normal!important;margin:0!important;
+}
+html body.page-shell header.app-header.mh-topbox .ma-brand-security{
+ font-size:10px!important;line-height:1.25!important;padding:3px 7px!important;white-space:normal!important;
+}
