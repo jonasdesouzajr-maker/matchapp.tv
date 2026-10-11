@@ -47,14 +47,14 @@ test('new Ask runtime reaches phones, iPhones, tablets and live Android WebView 
  assert.match(home,/id="profile-link-tab" href="\/profile\/profile\.html/);
 });
 
-test('live phone/tablet/desktop smoke verifies the separate Home Ask composer and empty Send',()=>{
+test('live phone/tablet/desktop smoke verifies the current Jonas Ask composer and empty Send',()=>{
  const smoke=read('tools/live-production-smoke.cjs');
- assert.match(smoke,/page\.locator\('#ma-ai-entry #specific-search-input'\)/);
- assert.match(smoke,/Separate Home Ask AI composer is visible and unfocused/);
- assert.match(smoke,/getElementById\('ma-ai-entry'\)/);
+ assert.match(smoke,/page\.locator\('#ma-jonas-home-bubble'\)/);
+ assert.match(smoke,/Home Jonas Ask AI composer is visible and unfocused/);
+ assert.match(smoke,/getElementById\('ma-jonas-home-panel'\)/);
  assert.doesNotMatch(smoke,/page\.locator\('#ma-tab-ask'\)\.click/);
  assert.match(smoke,/noAutoKeyboard/);
- assert.match(smoke,/waitForFunction\(\(\)=>\{[\s\S]*input\.top>=0&&input\.bottom<=bottom&&send\.top>=0&&send\.bottom<=bottom/);
+ assert.match(smoke,/ir\.top>=0&&ir\.bottom<=innerHeight&&sr\.top>=0&&sr\.bottom<=innerHeight/);
  assert.match(smoke,/Ask AI empty Send is actionable/);
 });
 
@@ -70,10 +70,9 @@ test('bell-only install prompting cannot cover or steal focus from the Home Ask 
 });
 test('live smoke checks usable input and Send inside the phone viewport',()=>{
  const smoke=read('tools/live-production-smoke.cjs');
- assert.match(smoke,/const dockSpace=dock&&getComputedStyle\(dock\)\.display/);
- assert.match(smoke,/input\.bottom<=bottom&&send\.top>=0&&send\.bottom<=bottom/);
- assert.match(smoke,/controlsUsable&&!offerCoversControl/);
- assert.match(smoke,/offerCoversControl=!!offer&&!!offer\.getClientRects\(\)\.length/);
+ assert.match(smoke,/const ir=input\?\.getBoundingClientRect\(\),sr=send\?\.getBoundingClientRect\(\)/);
+ assert.match(smoke,/ir\.bottom<=innerHeight&&sr\.top>=0&&sr\.bottom<=innerHeight/);
+ assert.match(smoke,/launcher\?\.getAttribute\('aria-expanded'\)==='true'/);
 });
 test('install discovery is a nonblocking bell notification rather than a floating Home overlay',()=>{
  const s=read('browser-install-offer.js');
