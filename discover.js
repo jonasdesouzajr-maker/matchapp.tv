@@ -2045,7 +2045,7 @@ async function runAskAndRender(question, opts) {
             newItems = [enrichDiscoverItem(displayItem, question)];
     }
     if (!bookIntent && wantsTitleRecommendations && !newItems.length && !musicPayload &&
-        !payload?._live && !payload?._docVerified && window.matchPolicy && typeof CONTENT_CATALOG !== 'undefined') {
+        !payload?._live && window.matchPolicy && !payload?._docVerified && typeof CONTENT_CATALOG !== 'undefined') {
         newItems = CONTENT_CATALOG
             .filter(e => e && e.title && !isDiscoverDisliked(e.title) && window.matchPolicy.fitsQuestion(e, question))
             .slice(0, 6)

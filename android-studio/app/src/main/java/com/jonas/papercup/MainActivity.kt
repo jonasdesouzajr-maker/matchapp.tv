@@ -523,7 +523,7 @@ class MainActivity : AppCompatActivity() {
         // The native shell only loads this same-origin, remotely maintained UI.
         // Future Jonas panel layout and conversational fixes do not require AAB updates.
         val url = runCatching { Uri.parse(view.url.orEmpty()) }.getOrNull() ?: return
-        if (!isMatchAppHost(url.host.orEmpty()) || isKidsUri(url)) return
+        if ((!isMatchAppHost(url.host.orEmpty()) && !isDebugSmokeUrl(url.toString())) || isKidsUri(url)) return
         view.evaluateJavascript(
             """
             (function() {
@@ -924,7 +924,8 @@ class MainActivity : AppCompatActivity() {
         fun start(languageTag: String?) {
             runOnUiThread {
                 val current = runCatching { Uri.parse(web.url.orEmpty()) }.getOrNull()
-                if (current == null || !isMatchAppHost(current.host.orEmpty())) {
+                if (current == null ||
+                    (!isMatchAppHost(current.host.orEmpty()) && !isDebugSmokeUrl(current.toString()))) {
                     sendVoiceError("not-allowed")
                     return@runOnUiThread
                 }
