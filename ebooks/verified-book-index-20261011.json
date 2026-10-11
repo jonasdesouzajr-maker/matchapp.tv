@@ -1,6 +1,6 @@
 {
     "schema":  1,
-    "source":  "Open Library",
+    "source":  "Open Library + Apple Books",
     "collectedAt":  "2026-10-11",
     "entries":  [
                     {
@@ -57,6 +57,83 @@
                         "rating":  null,
                         "count":  null,
                         "url":  "https://openlibrary.org/works/OL45345800W"
+                    },
+                    {
+                        "title":  "Crime e Castigo",
+                        "author":  "Fiódor Dostoiévski",
+                        "source":  "Apple Books",
+                        "cover":  "https://is1-ssl.mzstatic.com/image/thumb/Publication221/v4/a5/c0/32/a5c03294-20ea-e318-d522-58029bab1cb4/e2fd1176-1fe1-467c-b16a-e73eddc1be7b_cover_image.jpg/600x600bb.jpg",
+                        "year":  2025,
+                        "pages":  null,
+                        "rating":  4.5,
+                        "count":  84,
+                        "url":  "https://books.apple.com/br/book/crime-e-castigo/id6740782743?uo=4"
+                    },
+                    {
+                        "title":  "A Revolução dos Bichos",
+                        "author":  "George Orwell",
+                        "source":  "Apple Books",
+                        "cover":  "https://is1-ssl.mzstatic.com/image/thumb/Publication69/v4/db/2f/9f/db2f9f0e-f479-6d61-606a-392eb8f32cf4/1013936511.jpg/600x600bb.jpg",
+                        "year":  2007,
+                        "pages":  null,
+                        "rating":  4.5,
+                        "count":  304,
+                        "url":  "https://books.apple.com/br/book/a-revolu%C3%A7%C3%A3o-dos-bichos/id1093717363?uo=4"
+                    },
+                    {
+                        "title":  "O voo da vespa",
+                        "author":  "Ken Follett",
+                        "source":  "Apple Books",
+                        "cover":  "https://is1-ssl.mzstatic.com/image/thumb/Publication115/v4/ce/e6/f3/cee6f352-e1ae-adbe-a808-bc47cb176a1a/9788580417104_202107061511.jpg/600x600bb.jpg",
+                        "year":  2017,
+                        "pages":  null,
+                        "rating":  4.5,
+                        "count":  5,
+                        "url":  "https://books.apple.com/br/book/o-voo-da-vespa/id1552929207?uo=4"
+                    },
+                    {
+                        "title":  "A estranha na cama",
+                        "author":  "Raphael Montes",
+                        "source":  "Apple Books",
+                        "cover":  "https://is1-ssl.mzstatic.com/image/thumb/Publication221/v4/1b/1c/f1/1b1cf1b6-02fa-667c-6f22-aa41409c1db3/1067586691.jpg/600x600bb.jpg",
+                        "year":  2026,
+                        "pages":  null,
+                        "rating":  4.5,
+                        "count":  52,
+                        "url":  "https://books.apple.com/br/book/a-estranha-na-cama/id6795229164?uo=4"
+                    },
+                    {
+                        "title":  "Fury in Death",
+                        "author":  "J. D. Robb",
+                        "source":  "Apple Books",
+                        "cover":  "https://is1-ssl.mzstatic.com/image/thumb/Publication211/v4/08/42/f2/0842f215-fc3c-9d5b-b739-1ae4086c8b12/9781250414571.jpg/600x600bb.jpg",
+                        "year":  2026,
+                        "pages":  null,
+                        "rating":  4.5,
+                        "count":  754,
+                        "url":  "https://books.apple.com/us/book/fury-in-death/id6757708274?uo=4"
+                    },
+                    {
+                        "title":  "The Thoroughbreds",
+                        "author":  "Elin Hilderbrand \u0026 Shelby Cunningham",
+                        "source":  "Apple Books",
+                        "cover":  "https://is1-ssl.mzstatic.com/image/thumb/Publication211/v4/56/8c/09/568c09c7-7e60-c2f4-b28f-ca0a67855ed4/9780316567947.jpg/600x600bb.jpg",
+                        "year":  2026,
+                        "pages":  null,
+                        "rating":  4.5,
+                        "count":  258,
+                        "url":  "https://books.apple.com/us/book/the-thoroughbreds/id6758432680?uo=4"
+                    },
+                    {
+                        "title":  "Hollow Bones",
+                        "author":  "Jodi Picoult",
+                        "source":  "Apple Books",
+                        "cover":  "https://is1-ssl.mzstatic.com/image/thumb/Publication221/v4/00/58/18/00581833-06cf-e33d-98ed-4ed338184bbb/9780593726266.d.jpg/600x600bb.jpg",
+                        "year":  2026,
+                        "pages":  null,
+                        "rating":  4.5,
+                        "count":  350,
+                        "url":  "https://books.apple.com/us/book/hollow-bones/id6756904796?uo=4"
                     }
                 ]
 }
