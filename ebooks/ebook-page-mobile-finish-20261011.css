@@ -73,3 +73,30 @@ html body.ebook-page .ebook-top-rail{scroll-padding-left:5px!important;}
  }
  html body.ebook-page header.ebook-page-top a.ebook-hub-brand .ebook-text-wordmark{font-size:19px!important;}
 }
+/* The shared canonical-logo controller upgrades .ma-brand-orb to
+   img.brand-logo.ma-official-brand-icon after DOMContentLoaded.
+   Constrain the final rendered node too, not just the original placeholder. */
+html body.ebook-page header.ebook-page-top a.ebook-hub-brand img.brand-logo,
+html body.ebook-page header.ebook-page-top a.ebook-hub-brand img[data-matchapp-canonical-logo]{
+ display:block!important;position:static!important;transform:none!important;
+ width:52px!important;height:52px!important;
+ min-width:52px!important;min-height:52px!important;
+ max-width:52px!important;max-height:52px!important;
+ flex:0 0 52px!important;object-fit:contain!important;
+ padding:0!important;margin:0!important;border:0!important;
+}
+@media(max-width:355px){
+ html body.ebook-page header.ebook-page-top a.ebook-hub-brand img.brand-logo,
+ html body.ebook-page header.ebook-page-top a.ebook-hub-brand img[data-matchapp-canonical-logo]{
+  width:44px!important;height:44px!important;
+  min-width:44px!important;min-height:44px!important;
+  max-width:44px!important;max-height:44px!important;flex-basis:44px!important;
+ }
+}
+/* Verified hub covers are hydrated only once their cards enter view.
+   Render the image absolutely while loading so its fallback remains in place. */
+html body.ebook-page .ebook-top-cover>img[data-top-cover]:not([hidden]){
+ position:absolute!important;inset:0!important;
+ width:100%!important;height:100%!important;object-fit:contain!important;
+ z-index:1!important;pointer-events:none!important;
+}
