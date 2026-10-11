@@ -1,7 +1,850 @@
 {
-  "generated_at": "2026-10-11T02:08:42.801Z",
+  "generated_at": "2026-10-11T09:16:04.293Z",
   "limit": 1000,
   "items": [
+    {
+      "id": "c53044cf",
+      "title": "A jovem que se casou aos 15 anos para fugir de abusos do padrasto e virou advogada 'popstar' na internet",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/11/a-jovem-que-se-casou-aos-15-anos-para-fugir-de-abusos-do-padrasto-e-virou-advogada-popstar-na-internet.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-11T09:00:00.000Z",
+      "discovered_at": "2026-10-11T09:16:04.293Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-11. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/xKBkC0gKpfwFQLEFQEJ_6ggadDE=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/2/T/DMbaGsQSiEvmSM1qLawA/montagem-horizontal-1280x720px-2-.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/a-jovem-que-se-casou-aos-15-anos-para-fugir-de-abusos-do-padrasto-e-virou-advoga-c53044/",
+      "landing_url": "https://matchapp.tv/?news=c53044cf#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-11",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "jovem",
+          "que",
+          "casou",
+          "aos",
+          "anos",
+          "fugir"
+        ],
+        "long_tail": [
+          "A jovem que se casou aos 15 anos para fugir de abusos do padrasto e virou advogada 'popstar' na internet 2026-10-11",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "jovem",
+          "que",
+          "casou",
+          "aos",
+          "anos",
+          "fugir"
+        ],
+        "freshness_keywords": [
+          "2026-10-11"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "A jovem que se casou aos 15 anos para fugir de abusos do…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-11. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-11",
+          "notícias do mundo",
+          "notícias internacionais",
+          "jovem",
+          "que",
+          "casou",
+          "aos",
+          "anos",
+          "fugir",
+          "A jovem que se casou aos 15 anos para fugir de abusos do padrasto e virou advogada 'popstar' na internet 2026-10-11",
+          "notícias mundiais outubro 2026",
+          "2026-10-11",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
+      }
+    },
+    {
+      "id": "c77f7654",
+      "title": "Delhi sees more protests as 'cockroach' group's leaders released",
+      "url": "https://www.bbc.co.uk/news/articles/c84g179n2393o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-11T08:50:21.000Z",
+      "discovered_at": "2026-10-11T09:16:04.293Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-11. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/1a96/live/07c16320-c53c-11f1-ae34-756aa0b18b99.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/delhi-sees-more-protests-as-cockroach-group-s-leaders-released-c77f76/",
+      "landing_url": "https://matchapp.tv/?news=c77f7654#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-11",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "delhi",
+          "sees",
+          "more",
+          "protests",
+          "cockroach",
+          "group"
+        ],
+        "long_tail": [
+          "Delhi sees more protests as 'cockroach' group's leaders released 2026-10-11",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "delhi",
+          "sees",
+          "more",
+          "protests",
+          "cockroach",
+          "group"
+        ],
+        "freshness_keywords": [
+          "2026-10-11"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Delhi sees more protests as 'cockroach' group's leaders…",
+        "meta_description": "World report published by BBC World on 2026-10-11. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-11",
+          "world news",
+          "global headlines",
+          "delhi",
+          "sees",
+          "more",
+          "protests",
+          "cockroach",
+          "group",
+          "Delhi sees more protests as 'cockroach' group's leaders released 2026-10-11",
+          "world news October 2026",
+          "2026-10-11",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
+      }
+    },
+    {
+      "id": "23fbe44e",
+      "title": "FMI alerta: disparadas e choques de preços podem ser mais frequentes e afetar inflação por anos",
+      "url": "https://g1.globo.com/economia/noticia/2026/10/11/fmi-alerta-disparadas-e-choques-de-precos-podem-ser-mais-frequentes-e-afetar-inflacao-por-anos.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-11T08:00:01.000Z",
+      "discovered_at": "2026-10-11T09:16:04.293Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-11. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/_lmVwMlNO_776vG_9bH66EQgqec=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/Y/Q/gK6psQSC6QRAbKoS7ZBA/thumb-videos-g1.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/fmi-alerta-disparadas-e-choques-de-precos-podem-ser-mais-frequentes-e-afetar-inf-23fbe4/",
+      "landing_url": "https://matchapp.tv/?news=23fbe44e#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-11",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "fmi",
+          "alerta",
+          "disparadas",
+          "choques",
+          "precos",
+          "podem"
+        ],
+        "long_tail": [
+          "FMI alerta: disparadas e choques de preços podem ser mais frequentes e afetar inflação por anos 2026-10-11",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "fmi",
+          "alerta",
+          "disparadas",
+          "choques",
+          "precos",
+          "podem"
+        ],
+        "freshness_keywords": [
+          "2026-10-11"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "FMI alerta: disparadas e choques de preços podem ser mais…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-11. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-11",
+          "notícias do mundo",
+          "notícias internacionais",
+          "fmi",
+          "alerta",
+          "disparadas",
+          "choques",
+          "precos",
+          "podem",
+          "FMI alerta: disparadas e choques de preços podem ser mais frequentes e afetar inflação por anos 2026-10-11",
+          "notícias mundiais outubro 2026",
+          "2026-10-11",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
+      }
+    },
+    {
+      "id": "ea1347cc",
+      "title": "Quem é o homem mais rico da África — e por que ele quer vender parte de seu império",
+      "url": "https://g1.globo.com/economia/noticia/2026/10/11/quem-e-o-homem-mais-rico-da-africa-e-por-que-ele-quer-vender-parte-de-seu-imperio.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-11T08:00:00.000Z",
+      "discovered_at": "2026-10-11T09:16:04.293Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-11. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/6A38OxCOBil0uPrQUcAo5RDWn7w=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/v/4/WFgelSR9qoYhzJBCRkNg/hr5nzyicpvnjperjnsvriaatqu.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/quem-e-o-homem-mais-rico-da-africa-e-por-que-ele-quer-vender-parte-de-seu-imperi-ea1347/",
+      "landing_url": "https://matchapp.tv/?news=ea1347cc#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-11",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "quem",
+          "homem",
+          "mais",
+          "rico",
+          "africa",
+          "que"
+        ],
+        "long_tail": [
+          "Quem é o homem mais rico da África — e por que ele quer vender parte de seu império 2026-10-11",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "quem",
+          "homem",
+          "mais",
+          "rico",
+          "africa",
+          "que"
+        ],
+        "freshness_keywords": [
+          "2026-10-11"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Quem é o homem mais rico da África — e por que ele quer…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-11. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-11",
+          "notícias do mundo",
+          "notícias internacionais",
+          "quem",
+          "homem",
+          "mais",
+          "rico",
+          "africa",
+          "que",
+          "Quem é o homem mais rico da África — e por que ele quer vender parte de seu império 2026-10-11",
+          "notícias mundiais outubro 2026",
+          "2026-10-11",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
+      }
+    },
+    {
+      "id": "ac6a890d",
+      "title": "'Google russo' fecha centro de dados após ataque com drones; é o 3º caso em poucos dias",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/11/google-russo-fecha-centro-de-dados-apos-ataque-com-drones-e-o-3o-caso-em-poucos-dias.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-11T07:33:14.000Z",
+      "discovered_at": "2026-10-11T09:16:04.293Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-11. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/yZf7UYfcd4yvGp74zDK27FmV4SA=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/g/I/lwDwqTQ6GpTDq8TBXYYw/2026-10-08t115241z-715538642-rc2zyna3wy9p-rtrmadp-3-ukraine-crisis-russia-yandex-ugccon.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/google-russo-fecha-centro-de-dados-apos-ataque-com-drones-e-o-3-caso-em-poucos-d-ac6a89/",
+      "landing_url": "https://matchapp.tv/?news=ac6a890d#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-11",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "google",
+          "russo",
+          "fecha",
+          "centro",
+          "dados",
+          "apos"
+        ],
+        "long_tail": [
+          "'Google russo' fecha centro de dados após ataque com drones; é o 3º caso em poucos dias 2026-10-11",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "google",
+          "russo",
+          "fecha",
+          "centro",
+          "dados",
+          "apos"
+        ],
+        "freshness_keywords": [
+          "2026-10-11"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "'Google russo' fecha centro de dados após ataque com…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-11. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-11",
+          "notícias do mundo",
+          "notícias internacionais",
+          "google",
+          "russo",
+          "fecha",
+          "centro",
+          "dados",
+          "apos",
+          "'Google russo' fecha centro de dados após ataque com drones; é o 3º caso em poucos dias 2026-10-11",
+          "notícias mundiais outubro 2026",
+          "2026-10-11",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
+      }
+    },
+    {
+      "id": "399afca2",
+      "title": "Council exceeds Surrey tree planting target",
+      "url": "https://www.bbc.co.uk/news/articles/cr4g1wy331pdo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC Science",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-11T07:04:06.000Z",
+      "discovered_at": "2026-10-11T09:16:04.293Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC Science on 2026-10-11. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/1225/live/d826b5a0-c4bb-11f1-9ce9-55293bd7f0d9.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/council-exceeds-surrey-tree-planting-target-399afc/",
+      "landing_url": "https://matchapp.tv/?news=399afca2#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-11",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "council",
+          "exceeds",
+          "surrey",
+          "tree",
+          "planting",
+          "target"
+        ],
+        "long_tail": [
+          "Council exceeds Surrey tree planting target 2026-10-11",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "council",
+          "exceeds",
+          "surrey",
+          "tree",
+          "planting",
+          "target"
+        ],
+        "freshness_keywords": [
+          "2026-10-11"
+        ],
+        "source_keywords": [
+          "BBC Science"
+        ],
+        "meta_title": "Council exceeds Surrey tree planting target | World News |…",
+        "meta_description": "World report published by BBC Science on 2026-10-11. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-11",
+          "world news",
+          "global headlines",
+          "council",
+          "exceeds",
+          "surrey",
+          "tree",
+          "planting",
+          "target",
+          "Council exceeds Surrey tree planting target 2026-10-11",
+          "world news October 2026",
+          "2026-10-11",
+          "BBC Science"
+        ],
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
+      }
+    },
+    {
+      "id": "71400eff",
+      "title": "'I watched Apollo 17 launch with Neil Armstrong'",
+      "url": "https://www.bbc.co.uk/news/articles/ckdd86nglrggo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC Science",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-11T06:32:51.000Z",
+      "discovered_at": "2026-10-11T09:16:04.293Z",
+      "event_type": "Release",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC Science on 2026-10-11. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/7038/live/a71143e0-c3cb-11f1-8fc5-335d62f6730b.png",
+      "matchapp_url": "https://matchapp.tv/news/articles/i-watched-apollo-17-launch-with-neil-armstrong-71400e/",
+      "landing_url": "https://matchapp.tv/?news=71400eff#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-11",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "watched",
+          "apollo",
+          "launch",
+          "neil",
+          "armstrong"
+        ],
+        "long_tail": [
+          "'I watched Apollo 17 launch with Neil Armstrong' 2026-10-11",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "watched",
+          "apollo",
+          "launch",
+          "neil",
+          "armstrong"
+        ],
+        "freshness_keywords": [
+          "2026-10-11"
+        ],
+        "source_keywords": [
+          "BBC Science"
+        ],
+        "meta_title": "'I watched Apollo 17 launch with Neil Armstrong' | World…",
+        "meta_description": "World report published by BBC Science on 2026-10-11. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-11",
+          "world news",
+          "global headlines",
+          "watched",
+          "apollo",
+          "launch",
+          "neil",
+          "armstrong",
+          "'I watched Apollo 17 launch with Neil Armstrong' 2026-10-11",
+          "world news October 2026",
+          "2026-10-11",
+          "BBC Science"
+        ],
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
+      }
+    },
+    {
+      "id": "3d59019a",
+      "title": "Netflix Has Used AI on About 300 Titles, but “Human Touch Is Critical,” Exec Says in Busan",
+      "url": "https://www.hollywoodreporter.com/business/business-news/netflix-ai-300-titles-busan-film-fest-1236727138/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-11T05:12:50.000Z",
+      "discovered_at": "2026-10-11T09:16:04.293Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "Netflix Has Used AI",
+      "description": "Netflix Has Used AI: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/AI-in-Filmmaking_2.jpg?w=1296&h=730&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/netflix-has-used-ai-on-about-300-titles-but-human-touch-is-critical-exec-says-in-3d5901/",
+      "landing_url": "https://matchapp.tv/?news=3d59019a#latest-news",
+      "seo": {
+        "primary_keyword": "Netflix Has Used AI latest news",
+        "short_tail": [
+          "Netflix Has Used AI",
+          "Netflix Has Used AI news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "Netflix Has Used AI latest news October 2026",
+          "Netflix Has Used AI entertainment update 2026",
+          "Netflix Has Used AI news 2026-10-11",
+          "latest entertainment news about Netflix Has Used AI",
+          "netflix has used netflix has used latest update",
+          "The Hollywood Reporter Netflix Has Used AI entertainment",
+          "latest news about Netflix Has Used AI October 2026",
+          "Netflix Has Used AI entertainment news 2026-10-11",
+          "what happened with Netflix Has Used AI"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "Netflix Has Used AI",
+          "netflix",
+          "has",
+          "used",
+          "about",
+          "300"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-11",
+          "Netflix Has Used AI 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter Netflix Has Used AI",
+          "hollywoodreporter.com Netflix Has Used AI",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "Netflix Has Used AI on About 300 Titles, but “Human Touch…",
+        "meta_description": "Netflix Has Used AI: Entertainment update reported by The Hollywood Reporter on 2026-10-11. See verified context, publication time and the original source…",
+        "keywords": [
+          "Netflix Has Used AI latest news",
+          "Netflix Has Used AI",
+          "Netflix Has Used AI news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "Netflix Has Used AI latest news October 2026",
+          "Netflix Has Used AI entertainment update 2026",
+          "Netflix Has Used AI news 2026-10-11",
+          "latest entertainment news about Netflix Has Used AI",
+          "netflix has used netflix has used latest update",
+          "The Hollywood Reporter Netflix Has Used AI entertainment",
+          "latest news about Netflix Has Used AI October 2026",
+          "Netflix Has Used AI entertainment news 2026-10-11",
+          "what happened with Netflix Has Used AI",
+          "netflix",
+          "has",
+          "used",
+          "about",
+          "300",
+          "October 2026",
+          "2026-10-11",
+          "Netflix Has Used AI 2026",
+          "The Hollywood Reporter Netflix Has Used AI",
+          "hollywoodreporter.com Netflix Has Used AI",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
+      }
+    },
+    {
+      "id": "aa744a24",
+      "title": "US justice department investigates TV networks over Trump pool coverage",
+      "url": "https://www.bbc.co.uk/news/articles/c9vgregzk6gro?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-11T05:05:43.000Z",
+      "discovered_at": "2026-10-11T09:16:04.293Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-11. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/1dbb/live/9bb34c30-c53a-11f1-ae34-756aa0b18b99.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/us-justice-department-investigates-tv-networks-over-trump-pool-coverage-aa744a/",
+      "landing_url": "https://matchapp.tv/?news=aa744a24#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-11",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "justice",
+          "department",
+          "investigates",
+          "networks",
+          "over",
+          "trump"
+        ],
+        "long_tail": [
+          "US justice department investigates TV networks over Trump pool coverage 2026-10-11",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "justice",
+          "department",
+          "investigates",
+          "networks",
+          "over",
+          "trump"
+        ],
+        "freshness_keywords": [
+          "2026-10-11"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "US justice department investigates TV networks over Trump…",
+        "meta_description": "World report published by BBC World on 2026-10-11. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-11",
+          "world news",
+          "global headlines",
+          "justice",
+          "department",
+          "investigates",
+          "networks",
+          "over",
+          "trump",
+          "US justice department investigates TV networks over Trump pool coverage 2026-10-11",
+          "world news October 2026",
+          "2026-10-11",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
+      }
+    },
+    {
+      "id": "7b521cea",
+      "title": "‘Treasure Island’ Review: David Oyelowo and Hayley Atwell Can Only Breathe So Much Life Into MGM+’s Handsome but Undercooked Pirate Adventure",
+      "url": "https://www.hollywoodreporter.com/tv/tv-reviews/treasure-island-review-david-oyelowo-hayley-atwell-mgm-plus-1236726456/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-11T03:40:02.000Z",
+      "discovered_at": "2026-10-11T09:16:04.293Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "",
+      "description": "entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/TRIS_S1_UT_103_280126_BORCRI_0309_R_3000.jpg?crop=0px%2C111px%2C3000px%2C1679px&resize=1440%2C810",
+      "matchapp_url": "https://matchapp.tv/news/articles/treasure-island-review-david-oyelowo-and-hayley-atwell-can-only-breathe-so-much--7b521c/",
+      "landing_url": "https://matchapp.tv/?news=7b521cea#latest-news",
+      "seo": {
+        "primary_keyword": "treasure island review david latest news",
+        "short_tail": [
+          "treasure island review david",
+          "treasure island review david news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "treasure island review david latest news October 2026",
+          "treasure island review david entertainment update 2026",
+          "treasure island review david news 2026-10-11",
+          "latest entertainment news about treasure island review david",
+          "treasure island review david oyelowo hayley latest update",
+          "The Hollywood Reporter treasure island review david entertainment",
+          "latest news about treasure island review david October 2026",
+          "treasure island review david entertainment news 2026-10-11",
+          "what happened with treasure island review david"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "treasure",
+          "island",
+          "review",
+          "david",
+          "oyelowo",
+          "hayley",
+          "atwell",
+          "can"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-11",
+          "treasure island review david 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter treasure island review david",
+          "hollywoodreporter.com treasure island review david",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "‘Treasure Island’ Review: David Oyelowo and Hayley Atwell…",
+        "meta_description": "Entertainment update reported by The Hollywood Reporter on 2026-10-11. See verified context, publication time and the original source via MatchApp Ai.",
+        "keywords": [
+          "treasure island review david latest news",
+          "treasure island review david",
+          "treasure island review david news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "treasure island review david latest news October 2026",
+          "treasure island review david entertainment update 2026",
+          "treasure island review david news 2026-10-11",
+          "latest entertainment news about treasure island review david",
+          "treasure island review david oyelowo hayley latest update",
+          "The Hollywood Reporter treasure island review david entertainment",
+          "latest news about treasure island review david October 2026",
+          "treasure island review david entertainment news 2026-10-11",
+          "what happened with treasure island review david",
+          "treasure",
+          "island",
+          "review",
+          "david",
+          "oyelowo",
+          "hayley",
+          "atwell",
+          "can",
+          "October 2026",
+          "2026-10-11",
+          "treasure island review david 2026",
+          "The Hollywood Reporter treasure island review david",
+          "hollywoodreporter.com treasure island review david",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
+      }
+    },
+    {
+      "id": "32f8c2b6",
+      "title": "Tom Zé chega hoje aos 90 anos como o tropicalista desgarrado e inquieto que sempre confunde para explicar",
+      "url": "https://g1.globo.com/pop-arte/musica/blog/mauro-ferreira/post/2026/10/11/tom-ze-chega-hoje-aos-90-anos-como-o-tropicalista-desgarrado-e-inquieto-que-sempre-confunde-para-explicar.ghtml",
+      "source": "G1",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "BR",
+      "language": "pt",
+      "published_at": "2026-10-11T03:01:00.000Z",
+      "discovered_at": "2026-10-11T09:16:04.293Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "",
+      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
+      "image": "https://s2-g1.glbimg.com/E9pDd9VSE1hzGDP1BmSKZWbXESw=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/t/U/dAAN6qTBuueN3ItwYjIQ/tomzefernandolaszlo.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/tom-ze-chega-hoje-aos-90-anos-como-o-tropicalista-desgarrado-e-inquieto-que-semp-32f8c2/",
+      "landing_url": "https://matchapp.tv/?news=32f8c2b6#latest-news",
+      "seo": {
+        "primary_keyword": "tom chega hoje aos últimas notícias",
+        "short_tail": [
+          "tom chega hoje aos",
+          "tom chega hoje aos news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje"
+        ],
+        "long_tail": [
+          "tom chega hoje aos latest news October 2026",
+          "tom chega hoje aos entertainment update 2026",
+          "tom chega hoje aos news 2026-10-11",
+          "latest entertainment news about tom chega hoje aos",
+          "tom chega hoje aos anos como latest update",
+          "G1 tom chega hoje aos entertainment",
+          "últimas notícias sobre tom chega hoje aos outubro 2026",
+          "tom chega hoje aos notícia de 2026-10-11",
+          "o que aconteceu com tom chega hoje aos"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "tom",
+          "chega",
+          "hoje",
+          "aos",
+          "anos",
+          "como",
+          "tropicalista",
+          "desgarrado"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-11",
+          "outubro 2026",
+          "tom chega hoje aos 2026"
+        ],
+        "source_keywords": [
+          "G1 tom chega hoje aos",
+          "g1.globo.com tom chega hoje aos",
+          "G1 entertainment news"
+        ],
+        "meta_title": "Tom Zé chega hoje aos 90 anos como o tropicalista…",
+        "meta_description": "Notícia publicada por G1 em 2026-10-11. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
+        "keywords": [
+          "tom chega hoje aos últimas notícias",
+          "tom chega hoje aos",
+          "tom chega hoje aos news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje",
+          "tom chega hoje aos latest news October 2026",
+          "tom chega hoje aos entertainment update 2026",
+          "tom chega hoje aos news 2026-10-11",
+          "latest entertainment news about tom chega hoje aos",
+          "tom chega hoje aos anos como latest update",
+          "G1 tom chega hoje aos entertainment",
+          "últimas notícias sobre tom chega hoje aos outubro 2026",
+          "tom chega hoje aos notícia de 2026-10-11",
+          "o que aconteceu com tom chega hoje aos",
+          "tom",
+          "chega",
+          "hoje",
+          "aos",
+          "anos",
+          "como",
+          "tropicalista",
+          "desgarrado",
+          "October 2026",
+          "2026-10-11",
+          "outubro 2026",
+          "tom chega hoje aos 2026",
+          "G1 tom chega hoje aos",
+          "g1.globo.com tom chega hoje aos",
+          "G1 entertainment news"
+        ],
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
+      }
+    },
     {
       "id": "d613db04",
       "title": "'Time for Ukraine to get new president,' says Trump after Zelensky condemns diesel deal",
@@ -68,7 +911,7 @@
           "2026-10-11",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-11T02:08:42.801Z"
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
       }
     },
     {
@@ -162,7 +1005,7 @@
           "hollywoodreporter.com Justice Department Investigating TV",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T02:08:42.801Z"
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
       }
     },
     {
@@ -261,7 +1104,7 @@
           "hollywoodreporter.com blade runner 2099 drops",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T02:08:42.801Z"
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
       }
     },
     {
@@ -429,7 +1272,7 @@
           "bbc.co.uk inside room what like",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T02:08:42.801Z"
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
       }
     },
     {
@@ -498,7 +1341,7 @@
           "2026-10-10",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-11T02:08:42.801Z"
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
       }
     },
     {
@@ -592,7 +1435,7 @@
           "hollywoodreporter.com Joseph Gordon-Levitt Says Instead",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T02:08:42.801Z"
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
       }
     },
     {
@@ -661,7 +1504,7 @@
           "2026-10-10",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-11T02:08:42.801Z"
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
       }
     },
     {
@@ -755,7 +1598,7 @@
           "hollywoodreporter.com Chris Rock Takes",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T02:08:42.801Z"
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
       }
     },
     {
@@ -824,7 +1667,7 @@
           "2026-10-10",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-11T02:08:42.801Z"
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
       }
     },
     {
@@ -918,7 +1761,7 @@
           "hollywoodreporter.com Ava DuVernay Sounds",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T02:08:42.801Z"
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
       }
     },
     {
@@ -1014,7 +1857,7 @@
           "hollywoodreporter.com Anime Series",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T02:08:42.801Z"
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
       }
     },
     {
@@ -1083,7 +1926,7 @@
           "2026-10-10",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-11T02:08:42.801Z"
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
       }
     },
     {
@@ -1251,7 +2094,7 @@
           "2026-10-10",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-11T02:08:42.801Z"
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
       }
     },
     {
@@ -1320,7 +2163,7 @@
           "2026-10-10",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-11T02:08:42.801Z"
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
       }
     },
     {
@@ -1626,7 +2469,7 @@
           "2026-10-10",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-11T02:08:42.801Z"
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
       }
     },
     {
@@ -2054,7 +2897,7 @@
           "g1.globo.com Wagner Moura",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T02:08:42.801Z"
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
       }
     },
     {
@@ -3484,7 +4327,7 @@
           "g1.globo.com Marisa Monte",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T02:08:42.801Z"
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
       }
     },
     {
@@ -4068,7 +4911,7 @@
           "g1.globo.com minha globinho viva web",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T02:08:42.801Z"
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
       }
     },
     {
@@ -4399,7 +5242,7 @@
           "bbc.co.uk screams haunting scenes deadly",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T02:08:42.801Z"
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
       }
     },
     {
@@ -4499,7 +5342,7 @@
           "g1.globo.com TV Globinho",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T02:08:42.801Z"
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
       }
     },
     {
@@ -5113,7 +5956,7 @@
           "g1.globo.com kbrum poe reggae album",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T02:08:42.801Z"
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
       }
     },
     {
@@ -5971,7 +6814,7 @@
           "g1.globo.com saiba como giulia conheceu",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T02:08:42.801Z"
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
       }
     },
     {
@@ -6069,7 +6912,7 @@
           "bbc.co.uk country music star ella",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T02:08:42.801Z"
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
       }
     },
     {
@@ -7057,7 +7900,7 @@
           "bbc.co.uk ashe too scared cancel",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T02:08:42.801Z"
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
       }
     },
     {
@@ -9610,7 +10453,7 @@
           "bbc.co.uk hollywood actor luke evans",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T02:08:42.801Z"
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
       }
     },
     {
@@ -10033,7 +10876,7 @@
           "g1.globo.com Coletivo Pra Gira Girar",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T02:08:42.801Z"
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
       }
     },
     {
@@ -11182,7 +12025,7 @@
           "g1.globo.com MC PH",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T02:08:42.801Z"
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
       }
     },
     {
@@ -11998,7 +12841,7 @@
           "g1.globo.com ator pretty little liars",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T02:08:42.801Z"
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
       }
     },
     {
@@ -12230,7 +13073,7 @@
           "bbc.co.uk Crazy Rich Asians",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T02:08:42.801Z"
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
       }
     },
     {
@@ -14564,7 +15407,7 @@
           "2026-10-09",
           "October 2026"
         ],
-        "seo_generated_at": "2026-10-11T02:08:42.801Z"
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
       }
     },
     {
@@ -20404,7 +21247,7 @@
           "2026-10-08",
           "October 2026"
         ],
-        "seo_generated_at": "2026-10-11T02:08:42.801Z"
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
       }
     },
     {
@@ -90481,1044 +91324,6 @@
           "The Hollywood Reporter entertainment news"
         ],
         "seo_generated_at": "2026-09-18T21:04:09.404Z"
-      }
-    },
-    {
-      "id": "158fcfe5",
-      "title": "Netflix Stock Falls After Wells Fargo Downgrade: &#8220;Engagement Trends Look Worrying to Us&#8221;",
-      "url": "https://www.hollywoodreporter.com/business/digital/netflix-stock-falls-wells-fargo-downgrade-engagement-trends-1236705628/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "published_at": "2026-09-18T20:24:50.000Z",
-      "discovered_at": "2026-09-18T21:04:09.404Z",
-      "event_type": "Entertainment",
-      "person": "Netflix Stock Falls After",
-      "description": "Netflix Stock Falls After: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/02/GettyImages-2263201197.jpg?w=1440&h=810&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/netflix-stock-falls-after-wells-fargo-downgrade-8220-engagement-trends-look-worr-158fcf/",
-      "landing_url": "https://matchapp.tv/?news=158fcfe5#latest-news",
-      "seo": {
-        "primary_keyword": "b3",
-        "short_tail": [
-          "Netflix Stock Falls After",
-          "Netflix Stock Falls After news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "b3"
-        ],
-        "long_tail": [
-          "Netflix Stock Falls After latest news September 2026",
-          "Netflix Stock Falls After entertainment update 2026",
-          "Netflix Stock Falls After news 2026-09-18",
-          "latest entertainment news about Netflix Stock Falls After",
-          "netflix stock falls after netflix stock latest update",
-          "The Hollywood Reporter Netflix Stock Falls After entertainment",
-          "latest news about Netflix Stock Falls After September 2026",
-          "Netflix Stock Falls After entertainment news 2026-09-18",
-          "what happened with Netflix Stock Falls After"
-        ],
-        "trend_keywords": [
-          "b3"
-        ],
-        "entity_keywords": [
-          "Netflix Stock Falls After",
-          "netflix",
-          "stock",
-          "falls",
-          "after"
-        ],
-        "freshness_keywords": [
-          "September 2026",
-          "2026-09-18",
-          "Netflix Stock Falls After 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter Netflix Stock Falls After",
-          "hollywoodreporter.com Netflix Stock Falls After",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "Netflix Stock Falls After Wells Fargo Downgrade:…",
-        "meta_description": "Netflix Stock Falls After: Entertainment update reported by The Hollywood Reporter on 2026-09-18. See verified context, publication time and the original…",
-        "keywords": [
-          "b3",
-          "Netflix Stock Falls After",
-          "Netflix Stock Falls After news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "Netflix Stock Falls After latest news September 2026",
-          "Netflix Stock Falls After entertainment update 2026",
-          "Netflix Stock Falls After news 2026-09-18",
-          "latest entertainment news about Netflix Stock Falls After",
-          "netflix stock falls after netflix stock latest update",
-          "The Hollywood Reporter Netflix Stock Falls After entertainment",
-          "latest news about Netflix Stock Falls After September 2026",
-          "Netflix Stock Falls After entertainment news 2026-09-18",
-          "what happened with Netflix Stock Falls After",
-          "netflix",
-          "stock",
-          "falls",
-          "after",
-          "September 2026",
-          "2026-09-18",
-          "Netflix Stock Falls After 2026",
-          "The Hollywood Reporter Netflix Stock Falls After",
-          "hollywoodreporter.com Netflix Stock Falls After",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-09-18T21:04:09.404Z"
-      }
-    },
-    {
-      "id": "532b4514",
-      "title": "João Merín faz 'Sinfonia de reis' com Thalma de Freitas em álbum autoral em que reúne Max B.O. e Rincon Sapiência",
-      "url": "https://g1.globo.com/pop-arte/musica/blog/mauro-ferreira/post/2026/09/18/joao-merin-faz-sinfonia-de-reis-com-thalma-de-freitas-em-album-autoral-em-que-reune-max-bo-e-rincon-sapiencia.ghtml",
-      "source": "G1",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "BR",
-      "published_at": "2026-09-18T20:18:50.000Z",
-      "discovered_at": "2026-09-18T21:04:09.404Z",
-      "event_type": "Entertainment",
-      "person": "João Merín",
-      "description": "João Merín: entertainment headline reported by G1. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://s2-g1.glbimg.com/daWFg0bT6x6UNLOUMCum2A7Fh3Q=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/L/M/nOCnKPQXa9JXKc12hj3w/mbnl-3000x3000-plataformas.png",
-      "matchapp_url": "https://matchapp.tv/news/articles/joao-merin-faz-sinfonia-de-reis-com-thalma-de-freitas-em-album-autoral-em-que-re-532b45/",
-      "landing_url": "https://matchapp.tv/?news=532b4514#latest-news",
-      "seo": {
-        "primary_keyword": "b3",
-        "short_tail": [
-          "João Merín",
-          "João Merín news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "b3"
-        ],
-        "long_tail": [
-          "João Merín latest news September 2026",
-          "João Merín entertainment update 2026",
-          "João Merín news 2026-09-18",
-          "latest entertainment news about João Merín",
-          "joao merin joao merin faz sinfonia latest update",
-          "G1 João Merín entertainment",
-          "últimas notícias sobre João Merín setembro 2026",
-          "João Merín notícia de 2026-09-18",
-          "o que aconteceu com João Merín"
-        ],
-        "trend_keywords": [
-          "b3"
-        ],
-        "entity_keywords": [
-          "João Merín",
-          "joao",
-          "merin",
-          "faz",
-          "sinfonia",
-          "reis",
-          "thalma"
-        ],
-        "freshness_keywords": [
-          "September 2026",
-          "2026-09-18",
-          "setembro 2026",
-          "João Merín 2026"
-        ],
-        "source_keywords": [
-          "G1 João Merín",
-          "g1.globo.com João Merín",
-          "G1 entertainment news"
-        ],
-        "meta_title": "João Merín faz 'Sinfonia de reis' com Thalma de Freitas em…",
-        "meta_description": "João Merín: Entertainment update reported by G1 on 2026-09-18. See verified context, publication time and the original source via MatchApp TV.",
-        "keywords": [
-          "b3",
-          "João Merín",
-          "João Merín news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "João Merín latest news September 2026",
-          "João Merín entertainment update 2026",
-          "João Merín news 2026-09-18",
-          "latest entertainment news about João Merín",
-          "joao merin joao merin faz sinfonia latest update",
-          "G1 João Merín entertainment",
-          "últimas notícias sobre João Merín setembro 2026",
-          "João Merín notícia de 2026-09-18",
-          "o que aconteceu com João Merín",
-          "joao",
-          "merin",
-          "faz",
-          "sinfonia",
-          "reis",
-          "thalma",
-          "September 2026",
-          "2026-09-18",
-          "setembro 2026",
-          "João Merín 2026",
-          "G1 João Merín",
-          "g1.globo.com João Merín",
-          "G1 entertainment news"
-        ],
-        "seo_generated_at": "2026-09-18T21:04:09.404Z"
-      }
-    },
-    {
-      "id": "5de24757",
-      "title": "Kelly Osbourne Reveals Why She Cut Ties With “Polar Opposite” Sister",
-      "url": "https://www.hollywoodreporter.com/lifestyle/lifestyle-news/kelly-osbourne-why-cut-ties-older-sister-aimee-1236705563/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "published_at": "2026-09-18T19:17:06.000Z",
-      "discovered_at": "2026-09-18T21:04:09.404Z",
-      "event_type": "Entertainment",
-      "person": "Kelly Osbourne Reveals Why",
-      "description": "Kelly Osbourne Reveals Why: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2024/01/Kelly-Osbourne-getty-H-2024.jpg?w=1296&h=730&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/kelly-osbourne-reveals-why-she-cut-ties-with-polar-opposite-sister-5de247/",
-      "landing_url": "https://matchapp.tv/?news=5de24757#latest-news",
-      "seo": {
-        "primary_keyword": "b3",
-        "short_tail": [
-          "Kelly Osbourne Reveals Why",
-          "Kelly Osbourne Reveals Why news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "b3"
-        ],
-        "long_tail": [
-          "Kelly Osbourne Reveals Why latest news September 2026",
-          "Kelly Osbourne Reveals Why entertainment update 2026",
-          "Kelly Osbourne Reveals Why news 2026-09-18",
-          "latest entertainment news about Kelly Osbourne Reveals Why",
-          "kelly osbourne reveals why kelly osbourne latest update",
-          "The Hollywood Reporter Kelly Osbourne Reveals Why entertainment",
-          "latest news about Kelly Osbourne Reveals Why September 2026",
-          "Kelly Osbourne Reveals Why entertainment news 2026-09-18",
-          "what happened with Kelly Osbourne Reveals Why"
-        ],
-        "trend_keywords": [
-          "b3"
-        ],
-        "entity_keywords": [
-          "Kelly Osbourne Reveals Why",
-          "kelly",
-          "osbourne",
-          "reveals",
-          "why"
-        ],
-        "freshness_keywords": [
-          "September 2026",
-          "2026-09-18",
-          "Kelly Osbourne Reveals Why 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter Kelly Osbourne Reveals Why",
-          "hollywoodreporter.com Kelly Osbourne Reveals Why",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "Kelly Osbourne Reveals Why She Cut Ties With “Polar…",
-        "meta_description": "Kelly Osbourne Reveals Why: Entertainment update reported by The Hollywood Reporter on 2026-09-18. See verified context, publication time and the original…",
-        "keywords": [
-          "b3",
-          "Kelly Osbourne Reveals Why",
-          "Kelly Osbourne Reveals Why news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "Kelly Osbourne Reveals Why latest news September 2026",
-          "Kelly Osbourne Reveals Why entertainment update 2026",
-          "Kelly Osbourne Reveals Why news 2026-09-18",
-          "latest entertainment news about Kelly Osbourne Reveals Why",
-          "kelly osbourne reveals why kelly osbourne latest update",
-          "The Hollywood Reporter Kelly Osbourne Reveals Why entertainment",
-          "latest news about Kelly Osbourne Reveals Why September 2026",
-          "Kelly Osbourne Reveals Why entertainment news 2026-09-18",
-          "what happened with Kelly Osbourne Reveals Why",
-          "kelly",
-          "osbourne",
-          "reveals",
-          "why",
-          "September 2026",
-          "2026-09-18",
-          "Kelly Osbourne Reveals Why 2026",
-          "The Hollywood Reporter Kelly Osbourne Reveals Why",
-          "hollywoodreporter.com Kelly Osbourne Reveals Why",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-09-18T21:04:09.404Z"
-      }
-    },
-    {
-      "id": "4578edda",
-      "title": "Alan Ritchson in Talks to Star in Sony&#8217;s &#8216;Helldivers&#8217; Video Game Adaptation",
-      "url": "https://www.hollywoodreporter.com/movies/movie-news/alan-ritchson-replaces-jason-momoa-helldivers-movie-1236705311/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "published_at": "2026-09-18T17:00:00.000Z",
-      "discovered_at": "2026-09-18T17:03:36.534Z",
-      "event_type": "Casting",
-      "person": "Alan Ritchson",
-      "description": "Alan Ritchson: casting headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": null,
-      "matchapp_url": "https://matchapp.tv/news/articles/alan-ritchson-in-talks-to-star-in-sony-8217-s-8216-helldivers-8217-video-game-ad-4578ed/",
-      "landing_url": "https://matchapp.tv/?news=4578edda#latest-news",
-      "seo": {
-        "primary_keyword": "Alan Ritchson latest news",
-        "short_tail": [
-          "Alan Ritchson",
-          "Alan Ritchson news",
-          "casting",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "Alan Ritchson latest news September 2026",
-          "Alan Ritchson casting update 2026",
-          "Alan Ritchson news 2026-09-18",
-          "latest casting news about Alan Ritchson",
-          "alan ritchson alan ritchson talks star latest update",
-          "The Hollywood Reporter Alan Ritchson casting",
-          "latest news about Alan Ritchson September 2026",
-          "Alan Ritchson entertainment news 2026-09-18",
-          "what happened with Alan Ritchson"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Alan Ritchson",
-          "alan",
-          "ritchson",
-          "talks",
-          "star",
-          "sony",
-          "8217"
-        ],
-        "freshness_keywords": [
-          "September 2026",
-          "2026-09-18",
-          "Alan Ritchson 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter Alan Ritchson",
-          "hollywoodreporter.com Alan Ritchson",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "Alan Ritchson in Talks to Star in Sony&#8217;s…",
-        "meta_description": "Alan Ritchson: Casting update reported by The Hollywood Reporter on 2026-09-18. See verified context, publication time and the original source via MatchApp…",
-        "keywords": [
-          "Alan Ritchson latest news",
-          "Alan Ritchson",
-          "Alan Ritchson news",
-          "casting",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "Alan Ritchson latest news September 2026",
-          "Alan Ritchson casting update 2026",
-          "Alan Ritchson news 2026-09-18",
-          "latest casting news about Alan Ritchson",
-          "alan ritchson alan ritchson talks star latest update",
-          "The Hollywood Reporter Alan Ritchson casting",
-          "latest news about Alan Ritchson September 2026",
-          "Alan Ritchson entertainment news 2026-09-18",
-          "what happened with Alan Ritchson",
-          "alan",
-          "ritchson",
-          "talks",
-          "star",
-          "sony",
-          "8217",
-          "September 2026",
-          "2026-09-18",
-          "Alan Ritchson 2026",
-          "The Hollywood Reporter Alan Ritchson",
-          "hollywoodreporter.com Alan Ritchson",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-09-18T17:03:36.534Z"
-      }
-    },
-    {
-      "id": "0079418a",
-      "title": "Carly Rae Jepsen on How Sofia Coppola&#8217;s &#8216;Marie Antoinette&#8217; and an Overdue Vacation Inspired Her New Single &#8220;Versailles&#8221;",
-      "url": "https://www.hollywoodreporter.com/music/music-news/carly-rae-jepsen-unpacks-marie-antoinette-versailles-1236705309/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "published_at": "2026-09-18T16:38:21.000Z",
-      "discovered_at": "2026-09-18T17:03:36.534Z",
-      "event_type": "Music",
-      "person": "Carly Rae Jepsen",
-      "description": "Carly Rae Jepsen: music headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": null,
-      "matchapp_url": "https://matchapp.tv/news/articles/carly-rae-jepsen-on-how-sofia-coppola-8217-s-8216-marie-antoinette-8217-and-an-o-007941/",
-      "landing_url": "https://matchapp.tv/?news=0079418a#latest-news",
-      "seo": {
-        "primary_keyword": "Carly Rae Jepsen latest news",
-        "short_tail": [
-          "Carly Rae Jepsen",
-          "Carly Rae Jepsen news",
-          "music",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "Carly Rae Jepsen latest news September 2026",
-          "Carly Rae Jepsen music update 2026",
-          "Carly Rae Jepsen news 2026-09-18",
-          "latest music news about Carly Rae Jepsen",
-          "carly rae jepsen carly rae jepsen latest update",
-          "The Hollywood Reporter Carly Rae Jepsen music",
-          "latest news about Carly Rae Jepsen September 2026",
-          "Carly Rae Jepsen entertainment news 2026-09-18",
-          "what happened with Carly Rae Jepsen"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Carly Rae Jepsen",
-          "carly",
-          "rae",
-          "jepsen",
-          "how",
-          "sofia"
-        ],
-        "freshness_keywords": [
-          "September 2026",
-          "2026-09-18",
-          "Carly Rae Jepsen 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter Carly Rae Jepsen",
-          "hollywoodreporter.com Carly Rae Jepsen",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "Carly Rae Jepsen on How Sofia Coppola&#8217;s &#8216;Marie…",
-        "meta_description": "Carly Rae Jepsen: Music update reported by The Hollywood Reporter on 2026-09-18. See verified context, publication time and the original source via MatchApp…",
-        "keywords": [
-          "Carly Rae Jepsen latest news",
-          "Carly Rae Jepsen",
-          "Carly Rae Jepsen news",
-          "music",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "Carly Rae Jepsen latest news September 2026",
-          "Carly Rae Jepsen music update 2026",
-          "Carly Rae Jepsen news 2026-09-18",
-          "latest music news about Carly Rae Jepsen",
-          "carly rae jepsen carly rae jepsen latest update",
-          "The Hollywood Reporter Carly Rae Jepsen music",
-          "latest news about Carly Rae Jepsen September 2026",
-          "Carly Rae Jepsen entertainment news 2026-09-18",
-          "what happened with Carly Rae Jepsen",
-          "carly",
-          "rae",
-          "jepsen",
-          "how",
-          "sofia",
-          "September 2026",
-          "2026-09-18",
-          "Carly Rae Jepsen 2026",
-          "The Hollywood Reporter Carly Rae Jepsen",
-          "hollywoodreporter.com Carly Rae Jepsen",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-09-18T17:03:36.534Z"
-      }
-    },
-    {
-      "id": "b9e15dd4",
-      "title": "Nicole Wallace Joins Josh Heuston in Amazon MGM’s ‘Throttled’ Adaptation",
-      "url": "https://www.hollywoodreporter.com/movies/movie-news/nicole-wallace-joins-josh-heuston-throttled-film-adaptation-1236704810/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "published_at": "2026-09-18T16:00:00.000Z",
-      "discovered_at": "2026-09-18T17:03:36.534Z",
-      "event_type": "Casting",
-      "person": "Nicole Wallace Joins Josh",
-      "description": "Nicole Wallace Joins Josh: casting headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": null,
-      "matchapp_url": "https://matchapp.tv/news/articles/nicole-wallace-joins-josh-heuston-in-amazon-mgm-s-throttled-adaptation-b9e15d/",
-      "landing_url": "https://matchapp.tv/?news=b9e15dd4#latest-news",
-      "seo": {
-        "primary_keyword": "Nicole Wallace Joins Josh latest news",
-        "short_tail": [
-          "Nicole Wallace Joins Josh",
-          "Nicole Wallace Joins Josh news",
-          "casting",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "Nicole Wallace Joins Josh latest news September 2026",
-          "Nicole Wallace Joins Josh casting update 2026",
-          "Nicole Wallace Joins Josh news 2026-09-18",
-          "latest casting news about Nicole Wallace Joins Josh",
-          "nicole wallace joins josh nicole wallace latest update",
-          "The Hollywood Reporter Nicole Wallace Joins Josh casting",
-          "latest news about Nicole Wallace Joins Josh September 2026",
-          "Nicole Wallace Joins Josh entertainment news 2026-09-18",
-          "what happened with Nicole Wallace Joins Josh"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Nicole Wallace Joins Josh",
-          "nicole",
-          "wallace",
-          "joins",
-          "josh"
-        ],
-        "freshness_keywords": [
-          "September 2026",
-          "2026-09-18",
-          "Nicole Wallace Joins Josh 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter Nicole Wallace Joins Josh",
-          "hollywoodreporter.com Nicole Wallace Joins Josh",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "Nicole Wallace Joins Josh Heuston in Amazon MGM’s…",
-        "meta_description": "Nicole Wallace Joins Josh: Casting update reported by The Hollywood Reporter on 2026-09-18. See verified context, publication time and the original source…",
-        "keywords": [
-          "Nicole Wallace Joins Josh latest news",
-          "Nicole Wallace Joins Josh",
-          "Nicole Wallace Joins Josh news",
-          "casting",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "Nicole Wallace Joins Josh latest news September 2026",
-          "Nicole Wallace Joins Josh casting update 2026",
-          "Nicole Wallace Joins Josh news 2026-09-18",
-          "latest casting news about Nicole Wallace Joins Josh",
-          "nicole wallace joins josh nicole wallace latest update",
-          "The Hollywood Reporter Nicole Wallace Joins Josh casting",
-          "latest news about Nicole Wallace Joins Josh September 2026",
-          "Nicole Wallace Joins Josh entertainment news 2026-09-18",
-          "what happened with Nicole Wallace Joins Josh",
-          "nicole",
-          "wallace",
-          "joins",
-          "josh",
-          "September 2026",
-          "2026-09-18",
-          "Nicole Wallace Joins Josh 2026",
-          "The Hollywood Reporter Nicole Wallace Joins Josh",
-          "hollywoodreporter.com Nicole Wallace Joins Josh",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-09-18T17:03:36.534Z"
-      }
-    },
-    {
-      "id": "c3fca002",
-      "title": "&#8216;Once Upon a Time in Harlem&#8217; Wins Library of Congress Lavine/Ken Burns Prize for Film (Exclusive)",
-      "url": "https://www.hollywoodreporter.com/movies/movie-news/once-upon-a-time-in-harlem-library-of-congress-ken-burns-prize-1236705139/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "published_at": "2026-09-18T16:00:00.000Z",
-      "discovered_at": "2026-09-18T17:03:36.534Z",
-      "event_type": "Awards",
-      "person": "",
-      "description": "awards headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": null,
-      "matchapp_url": "https://matchapp.tv/news/articles/8216-once-upon-a-time-in-harlem-8217-wins-library-of-congress-lavine-ken-burns-p-c3fca0/",
-      "landing_url": "https://matchapp.tv/?news=c3fca002#latest-news",
-      "seo": {
-        "primary_keyword": "8216 once upon time latest news",
-        "short_tail": [
-          "8216 once upon time",
-          "8216 once upon time news",
-          "awards",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "8216 once upon time latest news September 2026",
-          "8216 once upon time awards update 2026",
-          "8216 once upon time news 2026-09-18",
-          "latest awards news about 8216 once upon time",
-          "8216 once upon time harlem 8217 latest update",
-          "The Hollywood Reporter 8216 once upon time awards",
-          "latest news about 8216 once upon time September 2026",
-          "8216 once upon time entertainment news 2026-09-18",
-          "what happened with 8216 once upon time"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "8216",
-          "once",
-          "upon",
-          "time",
-          "harlem",
-          "8217",
-          "wins",
-          "library"
-        ],
-        "freshness_keywords": [
-          "September 2026",
-          "2026-09-18",
-          "8216 once upon time 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter 8216 once upon time",
-          "hollywoodreporter.com 8216 once upon time",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "&#8216;Once Upon a Time in Harlem&#8217; Wins Library of…",
-        "meta_description": "Awards update reported by The Hollywood Reporter on 2026-09-18. See verified context, publication time and the original source via MatchApp TV.",
-        "keywords": [
-          "8216 once upon time latest news",
-          "8216 once upon time",
-          "8216 once upon time news",
-          "awards",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "8216 once upon time latest news September 2026",
-          "8216 once upon time awards update 2026",
-          "8216 once upon time news 2026-09-18",
-          "latest awards news about 8216 once upon time",
-          "8216 once upon time harlem 8217 latest update",
-          "The Hollywood Reporter 8216 once upon time awards",
-          "latest news about 8216 once upon time September 2026",
-          "8216 once upon time entertainment news 2026-09-18",
-          "what happened with 8216 once upon time",
-          "8216",
-          "once",
-          "upon",
-          "time",
-          "harlem",
-          "8217",
-          "wins",
-          "library",
-          "September 2026",
-          "2026-09-18",
-          "8216 once upon time 2026",
-          "The Hollywood Reporter 8216 once upon time",
-          "hollywoodreporter.com 8216 once upon time",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-09-18T17:03:36.534Z"
-      }
-    },
-    {
-      "id": "a3a32e50",
-      "title": "Ex-BBB Milena estará na TV Globinho: 'Jamais imaginaria que faria parte de um projeto tão lindo'",
-      "url": "https://g1.globo.com/pop-arte/tv-e-series/noticia/2026/09/18/ex-bbb-milena-estara-no-especial-da-tv-globinho-jamais-imaginaria-que-faria-parte-de-um-projeto-tao-lindo.ghtml",
-      "source": "G1",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "BR",
-      "published_at": "2026-09-18T15:36:31.000Z",
-      "discovered_at": "2026-09-18T17:03:36.534Z",
-      "event_type": "Entertainment",
-      "person": "Ex-BBB Milena",
-      "description": "Ex-BBB Milena: entertainment headline reported by G1. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://s2-g1.glbimg.com/dvDaSwhM2y97VsxEI6YkMUUseQE=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/V/Q/kIUAOLRBunD4du9uY2rQ/fotos-g1-1920-x-1080-px-2026-09-05t210333.326.png",
-      "matchapp_url": "https://matchapp.tv/news/articles/ex-bbb-milena-estara-na-tv-globinho-jamais-imaginaria-que-faria-parte-de-um-proj-a3a32e/",
-      "landing_url": "https://matchapp.tv/?news=a3a32e50#latest-news",
-      "seo": {
-        "primary_keyword": "Ex-BBB Milena latest news",
-        "short_tail": [
-          "Ex-BBB Milena",
-          "Ex-BBB Milena news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje"
-        ],
-        "long_tail": [
-          "Ex-BBB Milena latest news September 2026",
-          "Ex-BBB Milena entertainment update 2026",
-          "Ex-BBB Milena news 2026-09-18",
-          "latest entertainment news about Ex-BBB Milena",
-          "bbb milena bbb milena estara globinho latest update",
-          "G1 Ex-BBB Milena entertainment",
-          "últimas notícias sobre Ex-BBB Milena setembro 2026",
-          "Ex-BBB Milena notícia de 2026-09-18",
-          "o que aconteceu com Ex-BBB Milena"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Ex-BBB Milena",
-          "bbb",
-          "milena",
-          "estara",
-          "globinho",
-          "jamais",
-          "imaginaria"
-        ],
-        "freshness_keywords": [
-          "September 2026",
-          "2026-09-18",
-          "setembro 2026",
-          "Ex-BBB Milena 2026"
-        ],
-        "source_keywords": [
-          "G1 Ex-BBB Milena",
-          "g1.globo.com Ex-BBB Milena",
-          "G1 entertainment news"
-        ],
-        "meta_title": "Ex-BBB Milena estará na TV Globinho: 'Jamais imaginaria…",
-        "meta_description": "Ex-BBB Milena: Entertainment update reported by G1 on 2026-09-18. See verified context, publication time and the original source via MatchApp TV.",
-        "keywords": [
-          "Ex-BBB Milena latest news",
-          "Ex-BBB Milena",
-          "Ex-BBB Milena news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "Ex-BBB Milena latest news September 2026",
-          "Ex-BBB Milena entertainment update 2026",
-          "Ex-BBB Milena news 2026-09-18",
-          "latest entertainment news about Ex-BBB Milena",
-          "bbb milena bbb milena estara globinho latest update",
-          "G1 Ex-BBB Milena entertainment",
-          "últimas notícias sobre Ex-BBB Milena setembro 2026",
-          "Ex-BBB Milena notícia de 2026-09-18",
-          "o que aconteceu com Ex-BBB Milena",
-          "bbb",
-          "milena",
-          "estara",
-          "globinho",
-          "jamais",
-          "imaginaria",
-          "September 2026",
-          "2026-09-18",
-          "setembro 2026",
-          "Ex-BBB Milena 2026",
-          "G1 Ex-BBB Milena",
-          "g1.globo.com Ex-BBB Milena",
-          "G1 entertainment news"
-        ],
-        "seo_generated_at": "2026-09-18T17:03:36.534Z"
-      }
-    },
-    {
-      "id": "a7da13c8",
-      "title": "&#8216;Masc&#8217; Review: A Neurodivergent Gay Man Navigates the World in a Striking and Distinctive Debut Feature",
-      "url": "https://www.hollywoodreporter.com/movies/movie-reviews/masc-review-joshua-griffin-bertil-nilsson-1236704737/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "published_at": "2026-09-18T15:32:01.000Z",
-      "discovered_at": "2026-09-18T17:03:36.534Z",
-      "event_type": "Release",
-      "person": "",
-      "description": "release headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": null,
-      "matchapp_url": "https://matchapp.tv/news/articles/8216-masc-8217-review-a-neurodivergent-gay-man-navigates-the-world-in-a-striking-a7da13/",
-      "landing_url": "https://matchapp.tv/?news=a7da13c8#latest-news",
-      "seo": {
-        "primary_keyword": "8216 masc 8217 review latest news",
-        "short_tail": [
-          "8216 masc 8217 review",
-          "8216 masc 8217 review news",
-          "release",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "8216 masc 8217 review latest news September 2026",
-          "8216 masc 8217 review release update 2026",
-          "8216 masc 8217 review news 2026-09-18",
-          "latest release news about 8216 masc 8217 review",
-          "8216 masc 8217 review neurodivergent gay latest update",
-          "The Hollywood Reporter 8216 masc 8217 review release",
-          "latest news about 8216 masc 8217 review September 2026",
-          "8216 masc 8217 review entertainment news 2026-09-18",
-          "what happened with 8216 masc 8217 review"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "8216",
-          "masc",
-          "8217",
-          "review",
-          "neurodivergent",
-          "gay",
-          "man",
-          "navigates"
-        ],
-        "freshness_keywords": [
-          "September 2026",
-          "2026-09-18",
-          "8216 masc 8217 review 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter 8216 masc 8217 review",
-          "hollywoodreporter.com 8216 masc 8217 review",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "&#8216;Masc&#8217; Review: A Neurodivergent Gay Man…",
-        "meta_description": "Release update reported by The Hollywood Reporter on 2026-09-18. See verified context, publication time and the original source via MatchApp TV.",
-        "keywords": [
-          "8216 masc 8217 review latest news",
-          "8216 masc 8217 review",
-          "8216 masc 8217 review news",
-          "release",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "8216 masc 8217 review latest news September 2026",
-          "8216 masc 8217 review release update 2026",
-          "8216 masc 8217 review news 2026-09-18",
-          "latest release news about 8216 masc 8217 review",
-          "8216 masc 8217 review neurodivergent gay latest update",
-          "The Hollywood Reporter 8216 masc 8217 review release",
-          "latest news about 8216 masc 8217 review September 2026",
-          "8216 masc 8217 review entertainment news 2026-09-18",
-          "what happened with 8216 masc 8217 review",
-          "8216",
-          "masc",
-          "8217",
-          "review",
-          "neurodivergent",
-          "gay",
-          "man",
-          "navigates",
-          "September 2026",
-          "2026-09-18",
-          "8216 masc 8217 review 2026",
-          "The Hollywood Reporter 8216 masc 8217 review",
-          "hollywoodreporter.com 8216 masc 8217 review",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-09-18T17:03:36.534Z"
-      }
-    },
-    {
-      "id": "ace86775",
-      "title": "Tenko and Coronation Street actress Stephanie Cole dies aged 84",
-      "url": "https://www.bbc.co.uk/news/articles/ckz7zg4ez0peo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GB",
-      "published_at": "2026-09-18T15:27:01.000Z",
-      "discovered_at": "2026-09-18T17:03:36.534Z",
-      "event_type": "Obituary",
-      "person": "",
-      "description": "obituary headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/c64f/live/17cdc8a0-b36f-11f1-b1d1-571ed4d7ff2c.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/tenko-and-coronation-street-actress-stephanie-cole-dies-aged-84-ace867/",
-      "landing_url": "https://matchapp.tv/?news=ace86775#latest-news",
-      "seo": {
-        "primary_keyword": "tenko coronation street actress latest news",
-        "short_tail": [
-          "tenko coronation street actress",
-          "tenko coronation street actress news",
-          "obituary",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "tenko coronation street actress latest news September 2026",
-          "tenko coronation street actress obituary update 2026",
-          "tenko coronation street actress news 2026-09-18",
-          "latest obituary news about tenko coronation street actress",
-          "tenko coronation street actress stephanie cole latest update",
-          "BBC tenko coronation street actress obituary",
-          "latest news about tenko coronation street actress September 2026",
-          "tenko coronation street actress entertainment news 2026-09-18",
-          "what happened with tenko coronation street actress"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "tenko",
-          "coronation",
-          "street",
-          "actress",
-          "stephanie",
-          "cole",
-          "dies",
-          "aged"
-        ],
-        "freshness_keywords": [
-          "September 2026",
-          "2026-09-18",
-          "tenko coronation street actress 2026"
-        ],
-        "source_keywords": [
-          "BBC tenko coronation street actress",
-          "bbc.co.uk tenko coronation street actress",
-          "BBC entertainment news"
-        ],
-        "meta_title": "Tenko and Coronation Street actress Stephanie Cole dies…",
-        "meta_description": "Obituary update reported by BBC on 2026-09-18. See verified context, publication time and the original source via MatchApp TV.",
-        "keywords": [
-          "tenko coronation street actress latest news",
-          "tenko coronation street actress",
-          "tenko coronation street actress news",
-          "obituary",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "tenko coronation street actress latest news September 2026",
-          "tenko coronation street actress obituary update 2026",
-          "tenko coronation street actress news 2026-09-18",
-          "latest obituary news about tenko coronation street actress",
-          "tenko coronation street actress stephanie cole latest update",
-          "BBC tenko coronation street actress obituary",
-          "latest news about tenko coronation street actress September 2026",
-          "tenko coronation street actress entertainment news 2026-09-18",
-          "what happened with tenko coronation street actress",
-          "tenko",
-          "coronation",
-          "street",
-          "actress",
-          "stephanie",
-          "cole",
-          "dies",
-          "aged",
-          "September 2026",
-          "2026-09-18",
-          "tenko coronation street actress 2026",
-          "BBC tenko coronation street actress",
-          "bbc.co.uk tenko coronation street actress",
-          "BBC entertainment news"
-        ],
-        "seo_generated_at": "2026-09-18T17:03:36.534Z"
-      }
-    },
-    {
-      "id": "be05ab7b",
-      "title": "Harry Potter and the goblet of no booze",
-      "url": "https://www.bbc.co.uk/news/articles/cw14dmd77je3o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GB",
-      "published_at": "2026-09-18T15:01:35.000Z",
-      "discovered_at": "2026-09-18T17:03:36.534Z",
-      "event_type": "Entertainment",
-      "person": "Harry Potter",
-      "description": "Harry Potter: entertainment headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/2826/live/ba2b7ef0-b359-11f1-b949-71f91f81d1ab.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/harry-potter-and-the-goblet-of-no-booze-be05ab/",
-      "landing_url": "https://matchapp.tv/?news=be05ab7b#latest-news",
-      "seo": {
-        "primary_keyword": "Harry Potter latest news",
-        "short_tail": [
-          "Harry Potter",
-          "Harry Potter news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "Harry Potter latest news September 2026",
-          "Harry Potter entertainment update 2026",
-          "Harry Potter news 2026-09-18",
-          "latest entertainment news about Harry Potter",
-          "harry potter harry potter goblet booze latest update",
-          "BBC Harry Potter entertainment",
-          "latest news about Harry Potter September 2026",
-          "Harry Potter entertainment news 2026-09-18",
-          "what happened with Harry Potter"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Harry Potter",
-          "harry",
-          "potter",
-          "goblet",
-          "booze"
-        ],
-        "freshness_keywords": [
-          "September 2026",
-          "2026-09-18",
-          "Harry Potter 2026"
-        ],
-        "source_keywords": [
-          "BBC Harry Potter",
-          "bbc.co.uk Harry Potter",
-          "BBC entertainment news"
-        ],
-        "meta_title": "Harry Potter and the goblet of no booze | Entertainment…",
-        "meta_description": "Harry Potter: Entertainment update reported by BBC on 2026-09-18. See verified context, publication time and the original source via MatchApp TV.",
-        "keywords": [
-          "Harry Potter latest news",
-          "Harry Potter",
-          "Harry Potter news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "Harry Potter latest news September 2026",
-          "Harry Potter entertainment update 2026",
-          "Harry Potter news 2026-09-18",
-          "latest entertainment news about Harry Potter",
-          "harry potter harry potter goblet booze latest update",
-          "BBC Harry Potter entertainment",
-          "latest news about Harry Potter September 2026",
-          "Harry Potter entertainment news 2026-09-18",
-          "what happened with Harry Potter",
-          "harry",
-          "potter",
-          "goblet",
-          "booze",
-          "September 2026",
-          "2026-09-18",
-          "Harry Potter 2026",
-          "BBC Harry Potter",
-          "bbc.co.uk Harry Potter",
-          "BBC entertainment news"
-        ],
-        "seo_generated_at": "2026-09-18T17:03:36.534Z"
       }
     }
   ]

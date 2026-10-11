@@ -1,10 +1,853 @@
 {
-  "generated_at": "2026-10-11T02:08:42.801Z",
-  "feed_version": "dc136237",
+  "generated_at": "2026-10-11T09:16:04.293Z",
+  "feed_version": "bc732ee6",
   "sports_updated_at": "2026-10-11T01:54:03.712Z",
   "source_policy": "direct-trusted-publisher-rss+google-trends-keyword-signals",
   "seo_policy": "per-story keyword snapshot at first discovery + source citation + stable archive",
   "items": [
+    {
+      "id": "c53044cf",
+      "title": "A jovem que se casou aos 15 anos para fugir de abusos do padrasto e virou advogada 'popstar' na internet",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/11/a-jovem-que-se-casou-aos-15-anos-para-fugir-de-abusos-do-padrasto-e-virou-advogada-popstar-na-internet.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-11T09:00:00.000Z",
+      "discovered_at": "2026-10-11T09:16:04.293Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-11. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/xKBkC0gKpfwFQLEFQEJ_6ggadDE=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/2/T/DMbaGsQSiEvmSM1qLawA/montagem-horizontal-1280x720px-2-.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/a-jovem-que-se-casou-aos-15-anos-para-fugir-de-abusos-do-padrasto-e-virou-advoga-c53044/",
+      "landing_url": "https://matchapp.tv/?news=c53044cf#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-11",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "jovem",
+          "que",
+          "casou",
+          "aos",
+          "anos",
+          "fugir"
+        ],
+        "long_tail": [
+          "A jovem que se casou aos 15 anos para fugir de abusos do padrasto e virou advogada 'popstar' na internet 2026-10-11",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "jovem",
+          "que",
+          "casou",
+          "aos",
+          "anos",
+          "fugir"
+        ],
+        "freshness_keywords": [
+          "2026-10-11"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "A jovem que se casou aos 15 anos para fugir de abusos do…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-11. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-11",
+          "notícias do mundo",
+          "notícias internacionais",
+          "jovem",
+          "que",
+          "casou",
+          "aos",
+          "anos",
+          "fugir",
+          "A jovem que se casou aos 15 anos para fugir de abusos do padrasto e virou advogada 'popstar' na internet 2026-10-11",
+          "notícias mundiais outubro 2026",
+          "2026-10-11",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
+      }
+    },
+    {
+      "id": "c77f7654",
+      "title": "Delhi sees more protests as 'cockroach' group's leaders released",
+      "url": "https://www.bbc.co.uk/news/articles/c84g179n2393o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-11T08:50:21.000Z",
+      "discovered_at": "2026-10-11T09:16:04.293Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-11. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/1a96/live/07c16320-c53c-11f1-ae34-756aa0b18b99.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/delhi-sees-more-protests-as-cockroach-group-s-leaders-released-c77f76/",
+      "landing_url": "https://matchapp.tv/?news=c77f7654#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-11",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "delhi",
+          "sees",
+          "more",
+          "protests",
+          "cockroach",
+          "group"
+        ],
+        "long_tail": [
+          "Delhi sees more protests as 'cockroach' group's leaders released 2026-10-11",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "delhi",
+          "sees",
+          "more",
+          "protests",
+          "cockroach",
+          "group"
+        ],
+        "freshness_keywords": [
+          "2026-10-11"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Delhi sees more protests as 'cockroach' group's leaders…",
+        "meta_description": "World report published by BBC World on 2026-10-11. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-11",
+          "world news",
+          "global headlines",
+          "delhi",
+          "sees",
+          "more",
+          "protests",
+          "cockroach",
+          "group",
+          "Delhi sees more protests as 'cockroach' group's leaders released 2026-10-11",
+          "world news October 2026",
+          "2026-10-11",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
+      }
+    },
+    {
+      "id": "23fbe44e",
+      "title": "FMI alerta: disparadas e choques de preços podem ser mais frequentes e afetar inflação por anos",
+      "url": "https://g1.globo.com/economia/noticia/2026/10/11/fmi-alerta-disparadas-e-choques-de-precos-podem-ser-mais-frequentes-e-afetar-inflacao-por-anos.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-11T08:00:01.000Z",
+      "discovered_at": "2026-10-11T09:16:04.293Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-11. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/_lmVwMlNO_776vG_9bH66EQgqec=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/Y/Q/gK6psQSC6QRAbKoS7ZBA/thumb-videos-g1.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/fmi-alerta-disparadas-e-choques-de-precos-podem-ser-mais-frequentes-e-afetar-inf-23fbe4/",
+      "landing_url": "https://matchapp.tv/?news=23fbe44e#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-11",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "fmi",
+          "alerta",
+          "disparadas",
+          "choques",
+          "precos",
+          "podem"
+        ],
+        "long_tail": [
+          "FMI alerta: disparadas e choques de preços podem ser mais frequentes e afetar inflação por anos 2026-10-11",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "fmi",
+          "alerta",
+          "disparadas",
+          "choques",
+          "precos",
+          "podem"
+        ],
+        "freshness_keywords": [
+          "2026-10-11"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "FMI alerta: disparadas e choques de preços podem ser mais…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-11. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-11",
+          "notícias do mundo",
+          "notícias internacionais",
+          "fmi",
+          "alerta",
+          "disparadas",
+          "choques",
+          "precos",
+          "podem",
+          "FMI alerta: disparadas e choques de preços podem ser mais frequentes e afetar inflação por anos 2026-10-11",
+          "notícias mundiais outubro 2026",
+          "2026-10-11",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
+      }
+    },
+    {
+      "id": "ea1347cc",
+      "title": "Quem é o homem mais rico da África — e por que ele quer vender parte de seu império",
+      "url": "https://g1.globo.com/economia/noticia/2026/10/11/quem-e-o-homem-mais-rico-da-africa-e-por-que-ele-quer-vender-parte-de-seu-imperio.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-11T08:00:00.000Z",
+      "discovered_at": "2026-10-11T09:16:04.293Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-11. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/6A38OxCOBil0uPrQUcAo5RDWn7w=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/v/4/WFgelSR9qoYhzJBCRkNg/hr5nzyicpvnjperjnsvriaatqu.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/quem-e-o-homem-mais-rico-da-africa-e-por-que-ele-quer-vender-parte-de-seu-imperi-ea1347/",
+      "landing_url": "https://matchapp.tv/?news=ea1347cc#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-11",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "quem",
+          "homem",
+          "mais",
+          "rico",
+          "africa",
+          "que"
+        ],
+        "long_tail": [
+          "Quem é o homem mais rico da África — e por que ele quer vender parte de seu império 2026-10-11",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "quem",
+          "homem",
+          "mais",
+          "rico",
+          "africa",
+          "que"
+        ],
+        "freshness_keywords": [
+          "2026-10-11"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Quem é o homem mais rico da África — e por que ele quer…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-11. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-11",
+          "notícias do mundo",
+          "notícias internacionais",
+          "quem",
+          "homem",
+          "mais",
+          "rico",
+          "africa",
+          "que",
+          "Quem é o homem mais rico da África — e por que ele quer vender parte de seu império 2026-10-11",
+          "notícias mundiais outubro 2026",
+          "2026-10-11",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
+      }
+    },
+    {
+      "id": "ac6a890d",
+      "title": "'Google russo' fecha centro de dados após ataque com drones; é o 3º caso em poucos dias",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/11/google-russo-fecha-centro-de-dados-apos-ataque-com-drones-e-o-3o-caso-em-poucos-dias.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-11T07:33:14.000Z",
+      "discovered_at": "2026-10-11T09:16:04.293Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-11. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/yZf7UYfcd4yvGp74zDK27FmV4SA=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/g/I/lwDwqTQ6GpTDq8TBXYYw/2026-10-08t115241z-715538642-rc2zyna3wy9p-rtrmadp-3-ukraine-crisis-russia-yandex-ugccon.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/google-russo-fecha-centro-de-dados-apos-ataque-com-drones-e-o-3-caso-em-poucos-d-ac6a89/",
+      "landing_url": "https://matchapp.tv/?news=ac6a890d#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-11",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "google",
+          "russo",
+          "fecha",
+          "centro",
+          "dados",
+          "apos"
+        ],
+        "long_tail": [
+          "'Google russo' fecha centro de dados após ataque com drones; é o 3º caso em poucos dias 2026-10-11",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "google",
+          "russo",
+          "fecha",
+          "centro",
+          "dados",
+          "apos"
+        ],
+        "freshness_keywords": [
+          "2026-10-11"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "'Google russo' fecha centro de dados após ataque com…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-11. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-11",
+          "notícias do mundo",
+          "notícias internacionais",
+          "google",
+          "russo",
+          "fecha",
+          "centro",
+          "dados",
+          "apos",
+          "'Google russo' fecha centro de dados após ataque com drones; é o 3º caso em poucos dias 2026-10-11",
+          "notícias mundiais outubro 2026",
+          "2026-10-11",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
+      }
+    },
+    {
+      "id": "399afca2",
+      "title": "Council exceeds Surrey tree planting target",
+      "url": "https://www.bbc.co.uk/news/articles/cr4g1wy331pdo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC Science",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-11T07:04:06.000Z",
+      "discovered_at": "2026-10-11T09:16:04.293Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC Science on 2026-10-11. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/1225/live/d826b5a0-c4bb-11f1-9ce9-55293bd7f0d9.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/council-exceeds-surrey-tree-planting-target-399afc/",
+      "landing_url": "https://matchapp.tv/?news=399afca2#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-11",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "council",
+          "exceeds",
+          "surrey",
+          "tree",
+          "planting",
+          "target"
+        ],
+        "long_tail": [
+          "Council exceeds Surrey tree planting target 2026-10-11",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "council",
+          "exceeds",
+          "surrey",
+          "tree",
+          "planting",
+          "target"
+        ],
+        "freshness_keywords": [
+          "2026-10-11"
+        ],
+        "source_keywords": [
+          "BBC Science"
+        ],
+        "meta_title": "Council exceeds Surrey tree planting target | World News |…",
+        "meta_description": "World report published by BBC Science on 2026-10-11. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-11",
+          "world news",
+          "global headlines",
+          "council",
+          "exceeds",
+          "surrey",
+          "tree",
+          "planting",
+          "target",
+          "Council exceeds Surrey tree planting target 2026-10-11",
+          "world news October 2026",
+          "2026-10-11",
+          "BBC Science"
+        ],
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
+      }
+    },
+    {
+      "id": "71400eff",
+      "title": "'I watched Apollo 17 launch with Neil Armstrong'",
+      "url": "https://www.bbc.co.uk/news/articles/ckdd86nglrggo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC Science",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-11T06:32:51.000Z",
+      "discovered_at": "2026-10-11T09:16:04.293Z",
+      "event_type": "Release",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC Science on 2026-10-11. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/7038/live/a71143e0-c3cb-11f1-8fc5-335d62f6730b.png",
+      "matchapp_url": "https://matchapp.tv/news/articles/i-watched-apollo-17-launch-with-neil-armstrong-71400e/",
+      "landing_url": "https://matchapp.tv/?news=71400eff#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-11",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "watched",
+          "apollo",
+          "launch",
+          "neil",
+          "armstrong"
+        ],
+        "long_tail": [
+          "'I watched Apollo 17 launch with Neil Armstrong' 2026-10-11",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "watched",
+          "apollo",
+          "launch",
+          "neil",
+          "armstrong"
+        ],
+        "freshness_keywords": [
+          "2026-10-11"
+        ],
+        "source_keywords": [
+          "BBC Science"
+        ],
+        "meta_title": "'I watched Apollo 17 launch with Neil Armstrong' | World…",
+        "meta_description": "World report published by BBC Science on 2026-10-11. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-11",
+          "world news",
+          "global headlines",
+          "watched",
+          "apollo",
+          "launch",
+          "neil",
+          "armstrong",
+          "'I watched Apollo 17 launch with Neil Armstrong' 2026-10-11",
+          "world news October 2026",
+          "2026-10-11",
+          "BBC Science"
+        ],
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
+      }
+    },
+    {
+      "id": "3d59019a",
+      "title": "Netflix Has Used AI on About 300 Titles, but “Human Touch Is Critical,” Exec Says in Busan",
+      "url": "https://www.hollywoodreporter.com/business/business-news/netflix-ai-300-titles-busan-film-fest-1236727138/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-11T05:12:50.000Z",
+      "discovered_at": "2026-10-11T09:16:04.293Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "Netflix Has Used AI",
+      "description": "Netflix Has Used AI: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/AI-in-Filmmaking_2.jpg?w=1296&h=730&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/netflix-has-used-ai-on-about-300-titles-but-human-touch-is-critical-exec-says-in-3d5901/",
+      "landing_url": "https://matchapp.tv/?news=3d59019a#latest-news",
+      "seo": {
+        "primary_keyword": "Netflix Has Used AI latest news",
+        "short_tail": [
+          "Netflix Has Used AI",
+          "Netflix Has Used AI news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "Netflix Has Used AI latest news October 2026",
+          "Netflix Has Used AI entertainment update 2026",
+          "Netflix Has Used AI news 2026-10-11",
+          "latest entertainment news about Netflix Has Used AI",
+          "netflix has used netflix has used latest update",
+          "The Hollywood Reporter Netflix Has Used AI entertainment",
+          "latest news about Netflix Has Used AI October 2026",
+          "Netflix Has Used AI entertainment news 2026-10-11",
+          "what happened with Netflix Has Used AI"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "Netflix Has Used AI",
+          "netflix",
+          "has",
+          "used",
+          "about",
+          "300"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-11",
+          "Netflix Has Used AI 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter Netflix Has Used AI",
+          "hollywoodreporter.com Netflix Has Used AI",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "Netflix Has Used AI on About 300 Titles, but “Human Touch…",
+        "meta_description": "Netflix Has Used AI: Entertainment update reported by The Hollywood Reporter on 2026-10-11. See verified context, publication time and the original source…",
+        "keywords": [
+          "Netflix Has Used AI latest news",
+          "Netflix Has Used AI",
+          "Netflix Has Used AI news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "Netflix Has Used AI latest news October 2026",
+          "Netflix Has Used AI entertainment update 2026",
+          "Netflix Has Used AI news 2026-10-11",
+          "latest entertainment news about Netflix Has Used AI",
+          "netflix has used netflix has used latest update",
+          "The Hollywood Reporter Netflix Has Used AI entertainment",
+          "latest news about Netflix Has Used AI October 2026",
+          "Netflix Has Used AI entertainment news 2026-10-11",
+          "what happened with Netflix Has Used AI",
+          "netflix",
+          "has",
+          "used",
+          "about",
+          "300",
+          "October 2026",
+          "2026-10-11",
+          "Netflix Has Used AI 2026",
+          "The Hollywood Reporter Netflix Has Used AI",
+          "hollywoodreporter.com Netflix Has Used AI",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
+      }
+    },
+    {
+      "id": "aa744a24",
+      "title": "US justice department investigates TV networks over Trump pool coverage",
+      "url": "https://www.bbc.co.uk/news/articles/c9vgregzk6gro?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-11T05:05:43.000Z",
+      "discovered_at": "2026-10-11T09:16:04.293Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-11. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/1dbb/live/9bb34c30-c53a-11f1-ae34-756aa0b18b99.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/us-justice-department-investigates-tv-networks-over-trump-pool-coverage-aa744a/",
+      "landing_url": "https://matchapp.tv/?news=aa744a24#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-11",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "justice",
+          "department",
+          "investigates",
+          "networks",
+          "over",
+          "trump"
+        ],
+        "long_tail": [
+          "US justice department investigates TV networks over Trump pool coverage 2026-10-11",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "justice",
+          "department",
+          "investigates",
+          "networks",
+          "over",
+          "trump"
+        ],
+        "freshness_keywords": [
+          "2026-10-11"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "US justice department investigates TV networks over Trump…",
+        "meta_description": "World report published by BBC World on 2026-10-11. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-11",
+          "world news",
+          "global headlines",
+          "justice",
+          "department",
+          "investigates",
+          "networks",
+          "over",
+          "trump",
+          "US justice department investigates TV networks over Trump pool coverage 2026-10-11",
+          "world news October 2026",
+          "2026-10-11",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
+      }
+    },
+    {
+      "id": "7b521cea",
+      "title": "‘Treasure Island’ Review: David Oyelowo and Hayley Atwell Can Only Breathe So Much Life Into MGM+’s Handsome but Undercooked Pirate Adventure",
+      "url": "https://www.hollywoodreporter.com/tv/tv-reviews/treasure-island-review-david-oyelowo-hayley-atwell-mgm-plus-1236726456/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-11T03:40:02.000Z",
+      "discovered_at": "2026-10-11T09:16:04.293Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "",
+      "description": "entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/TRIS_S1_UT_103_280126_BORCRI_0309_R_3000.jpg?crop=0px%2C111px%2C3000px%2C1679px&resize=1440%2C810",
+      "matchapp_url": "https://matchapp.tv/news/articles/treasure-island-review-david-oyelowo-and-hayley-atwell-can-only-breathe-so-much--7b521c/",
+      "landing_url": "https://matchapp.tv/?news=7b521cea#latest-news",
+      "seo": {
+        "primary_keyword": "treasure island review david latest news",
+        "short_tail": [
+          "treasure island review david",
+          "treasure island review david news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "treasure island review david latest news October 2026",
+          "treasure island review david entertainment update 2026",
+          "treasure island review david news 2026-10-11",
+          "latest entertainment news about treasure island review david",
+          "treasure island review david oyelowo hayley latest update",
+          "The Hollywood Reporter treasure island review david entertainment",
+          "latest news about treasure island review david October 2026",
+          "treasure island review david entertainment news 2026-10-11",
+          "what happened with treasure island review david"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "treasure",
+          "island",
+          "review",
+          "david",
+          "oyelowo",
+          "hayley",
+          "atwell",
+          "can"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-11",
+          "treasure island review david 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter treasure island review david",
+          "hollywoodreporter.com treasure island review david",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "‘Treasure Island’ Review: David Oyelowo and Hayley Atwell…",
+        "meta_description": "Entertainment update reported by The Hollywood Reporter on 2026-10-11. See verified context, publication time and the original source via MatchApp Ai.",
+        "keywords": [
+          "treasure island review david latest news",
+          "treasure island review david",
+          "treasure island review david news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "treasure island review david latest news October 2026",
+          "treasure island review david entertainment update 2026",
+          "treasure island review david news 2026-10-11",
+          "latest entertainment news about treasure island review david",
+          "treasure island review david oyelowo hayley latest update",
+          "The Hollywood Reporter treasure island review david entertainment",
+          "latest news about treasure island review david October 2026",
+          "treasure island review david entertainment news 2026-10-11",
+          "what happened with treasure island review david",
+          "treasure",
+          "island",
+          "review",
+          "david",
+          "oyelowo",
+          "hayley",
+          "atwell",
+          "can",
+          "October 2026",
+          "2026-10-11",
+          "treasure island review david 2026",
+          "The Hollywood Reporter treasure island review david",
+          "hollywoodreporter.com treasure island review david",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
+      }
+    },
+    {
+      "id": "32f8c2b6",
+      "title": "Tom Zé chega hoje aos 90 anos como o tropicalista desgarrado e inquieto que sempre confunde para explicar",
+      "url": "https://g1.globo.com/pop-arte/musica/blog/mauro-ferreira/post/2026/10/11/tom-ze-chega-hoje-aos-90-anos-como-o-tropicalista-desgarrado-e-inquieto-que-sempre-confunde-para-explicar.ghtml",
+      "source": "G1",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "BR",
+      "language": "pt",
+      "published_at": "2026-10-11T03:01:00.000Z",
+      "discovered_at": "2026-10-11T09:16:04.293Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "",
+      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
+      "image": "https://s2-g1.glbimg.com/E9pDd9VSE1hzGDP1BmSKZWbXESw=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/t/U/dAAN6qTBuueN3ItwYjIQ/tomzefernandolaszlo.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/tom-ze-chega-hoje-aos-90-anos-como-o-tropicalista-desgarrado-e-inquieto-que-semp-32f8c2/",
+      "landing_url": "https://matchapp.tv/?news=32f8c2b6#latest-news",
+      "seo": {
+        "primary_keyword": "tom chega hoje aos últimas notícias",
+        "short_tail": [
+          "tom chega hoje aos",
+          "tom chega hoje aos news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje"
+        ],
+        "long_tail": [
+          "tom chega hoje aos latest news October 2026",
+          "tom chega hoje aos entertainment update 2026",
+          "tom chega hoje aos news 2026-10-11",
+          "latest entertainment news about tom chega hoje aos",
+          "tom chega hoje aos anos como latest update",
+          "G1 tom chega hoje aos entertainment",
+          "últimas notícias sobre tom chega hoje aos outubro 2026",
+          "tom chega hoje aos notícia de 2026-10-11",
+          "o que aconteceu com tom chega hoje aos"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "tom",
+          "chega",
+          "hoje",
+          "aos",
+          "anos",
+          "como",
+          "tropicalista",
+          "desgarrado"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-11",
+          "outubro 2026",
+          "tom chega hoje aos 2026"
+        ],
+        "source_keywords": [
+          "G1 tom chega hoje aos",
+          "g1.globo.com tom chega hoje aos",
+          "G1 entertainment news"
+        ],
+        "meta_title": "Tom Zé chega hoje aos 90 anos como o tropicalista…",
+        "meta_description": "Notícia publicada por G1 em 2026-10-11. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
+        "keywords": [
+          "tom chega hoje aos últimas notícias",
+          "tom chega hoje aos",
+          "tom chega hoje aos news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje",
+          "tom chega hoje aos latest news October 2026",
+          "tom chega hoje aos entertainment update 2026",
+          "tom chega hoje aos news 2026-10-11",
+          "latest entertainment news about tom chega hoje aos",
+          "tom chega hoje aos anos como latest update",
+          "G1 tom chega hoje aos entertainment",
+          "últimas notícias sobre tom chega hoje aos outubro 2026",
+          "tom chega hoje aos notícia de 2026-10-11",
+          "o que aconteceu com tom chega hoje aos",
+          "tom",
+          "chega",
+          "hoje",
+          "aos",
+          "anos",
+          "como",
+          "tropicalista",
+          "desgarrado",
+          "October 2026",
+          "2026-10-11",
+          "outubro 2026",
+          "tom chega hoje aos 2026",
+          "G1 tom chega hoje aos",
+          "g1.globo.com tom chega hoje aos",
+          "G1 entertainment news"
+        ],
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
+      }
+    },
     {
       "id": "d613db04",
       "title": "'Time for Ukraine to get new president,' says Trump after Zelensky condemns diesel deal",
@@ -71,7 +914,7 @@
           "2026-10-11",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-11T02:08:42.801Z"
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
       }
     },
     {
@@ -165,7 +1008,7 @@
           "hollywoodreporter.com Justice Department Investigating TV",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T02:08:42.801Z"
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
       }
     },
     {
@@ -264,76 +1107,7 @@
           "hollywoodreporter.com blade runner 2099 drops",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T02:08:42.801Z"
-      }
-    },
-    {
-      "id": "12303909",
-      "title": "Twelve killed in attack on airport in Saudi capital Riyadh",
-      "url": "https://www.bbc.co.uk/news/articles/cw33x4y8k82no?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-11T00:21:52.000Z",
-      "discovered_at": "2026-10-10T19:29:13.776Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-11. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/5c68/live/40a0f7d0-c507-11f1-a64c-550be9e3c66b.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/twelve-killed-in-attack-on-airport-in-saudi-capital-riyadh-123039/",
-      "landing_url": "https://matchapp.tv/?news=12303909#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-11",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "twelve",
-          "killed",
-          "attack",
-          "airport",
-          "saudi",
-          "capital"
-        ],
-        "long_tail": [
-          "Twelve killed in attack on airport in Saudi capital Riyadh 2026-10-11",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "twelve",
-          "killed",
-          "attack",
-          "airport",
-          "saudi",
-          "capital"
-        ],
-        "freshness_keywords": [
-          "2026-10-11"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Twelve killed in attack on airport in Saudi capital Riyadh…",
-        "meta_description": "World report published by BBC World on 2026-10-11. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-11",
-          "world news",
-          "global headlines",
-          "twelve",
-          "killed",
-          "attack",
-          "airport",
-          "saudi",
-          "capital",
-          "Twelve killed in attack on airport in Saudi capital Riyadh 2026-10-11",
-          "world news October 2026",
-          "2026-10-11",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-11T02:08:42.801Z"
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
       }
     },
     {
@@ -432,7 +1206,7 @@
           "bbc.co.uk inside room what like",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T02:08:42.801Z"
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
       }
     },
     {
@@ -501,7 +1275,7 @@
           "2026-10-10",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-11T02:08:42.801Z"
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
       }
     },
     {
@@ -595,7 +1369,7 @@
           "hollywoodreporter.com Joseph Gordon-Levitt Says Instead",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T02:08:42.801Z"
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
       }
     },
     {
@@ -664,7 +1438,7 @@
           "2026-10-10",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-11T02:08:42.801Z"
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
       }
     },
     {
@@ -758,7 +1532,7 @@
           "hollywoodreporter.com Chris Rock Takes",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T02:08:42.801Z"
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
       }
     },
     {
@@ -827,7 +1601,7 @@
           "2026-10-10",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-11T02:08:42.801Z"
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
       }
     },
     {
@@ -921,7 +1695,7 @@
           "hollywoodreporter.com Ava DuVernay Sounds",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T02:08:42.801Z"
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
       }
     },
     {
@@ -1017,7 +1791,7 @@
           "hollywoodreporter.com Anime Series",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T02:08:42.801Z"
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
       }
     },
     {
@@ -1086,106 +1860,7 @@
           "2026-10-10",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-11T02:08:42.801Z"
-      }
-    },
-    {
-      "id": "b8cad5da",
-      "title": "‘Star Trek: Starfleet Academy’ Season 2 to Premiere March 2027, Bill Nighy and Rosemarie DeWitt to Guest Star",
-      "url": "https://www.hollywoodreporter.com/tv/tv-news/star-trek-starfleet-academy-season-2-premiere-bill-nighy-1236726989/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-10-10T20:15:00.000Z",
-      "discovered_at": "2026-10-10T22:53:45.587Z",
-      "event_type": "Release",
-      "category": "entertainment",
-      "person": "",
-      "description": "release headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/startrek.jpg?w=1440&h=810&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/star-trek-starfleet-academy-season-2-to-premiere-march-2027-bill-nighy-and-rosem-b8cad5/",
-      "landing_url": "https://matchapp.tv/?news=b8cad5da#latest-news",
-      "seo": {
-        "primary_keyword": "star trek starfleet academy latest news",
-        "short_tail": [
-          "star trek starfleet academy",
-          "star trek starfleet academy news",
-          "release",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "star trek starfleet academy latest news October 2026",
-          "star trek starfleet academy release update 2026",
-          "star trek starfleet academy news 2026-10-10",
-          "latest release news about star trek starfleet academy",
-          "star trek starfleet academy season premiere latest update",
-          "The Hollywood Reporter star trek starfleet academy release",
-          "latest news about star trek starfleet academy October 2026",
-          "star trek starfleet academy entertainment news 2026-10-10",
-          "what happened with star trek starfleet academy"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "star",
-          "trek",
-          "starfleet",
-          "academy",
-          "season",
-          "premiere",
-          "march",
-          "2027"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-10",
-          "star trek starfleet academy 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter star trek starfleet academy",
-          "hollywoodreporter.com star trek starfleet academy",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "‘Star Trek: Starfleet Academy’ Season 2 to Premiere March…",
-        "meta_description": "Release update reported by The Hollywood Reporter on 2026-10-10. See verified context, publication time and the original source via MatchApp Ai.",
-        "keywords": [
-          "star trek starfleet academy latest news",
-          "star trek starfleet academy",
-          "star trek starfleet academy news",
-          "release",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "star trek starfleet academy latest news October 2026",
-          "star trek starfleet academy release update 2026",
-          "star trek starfleet academy news 2026-10-10",
-          "latest release news about star trek starfleet academy",
-          "star trek starfleet academy season premiere latest update",
-          "The Hollywood Reporter star trek starfleet academy release",
-          "latest news about star trek starfleet academy October 2026",
-          "star trek starfleet academy entertainment news 2026-10-10",
-          "what happened with star trek starfleet academy",
-          "star",
-          "trek",
-          "starfleet",
-          "academy",
-          "season",
-          "premiere",
-          "march",
-          "2027",
-          "October 2026",
-          "2026-10-10",
-          "star trek starfleet academy 2026",
-          "The Hollywood Reporter star trek starfleet academy",
-          "hollywoodreporter.com star trek starfleet academy",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-11T02:08:42.801Z"
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
       }
     },
     {
@@ -1254,7 +1929,7 @@
           "2026-10-10",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-11T02:08:42.801Z"
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
       }
     },
     {
@@ -1323,145 +1998,7 @@
           "2026-10-10",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-11T02:08:42.801Z"
-      }
-    },
-    {
-      "id": "a198a0e2",
-      "title": "Watch: 'Time for Ukraine to get a new president', says Trump",
-      "url": "https://www.bbc.co.uk/news/videos/cwkg50dgpml7o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-10T19:25:03.000Z",
-      "discovered_at": "2026-10-10T22:53:45.587Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-10. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/c9f8/live/c42726c0-c4de-11f1-9a39-31b474234113.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/watch-time-for-ukraine-to-get-a-new-president-says-trump-a198a0/",
-      "landing_url": "https://matchapp.tv/?news=a198a0e2#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-10",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "watch",
-          "time",
-          "ukraine",
-          "get",
-          "new",
-          "president"
-        ],
-        "long_tail": [
-          "Watch: 'Time for Ukraine to get a new president', says Trump 2026-10-10",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "watch",
-          "time",
-          "ukraine",
-          "get",
-          "new",
-          "president"
-        ],
-        "freshness_keywords": [
-          "2026-10-10"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Watch: 'Time for Ukraine to get a new president', says…",
-        "meta_description": "World report published by BBC World on 2026-10-10. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-10",
-          "world news",
-          "global headlines",
-          "watch",
-          "time",
-          "ukraine",
-          "get",
-          "new",
-          "president",
-          "Watch: 'Time for Ukraine to get a new president', says Trump 2026-10-10",
-          "world news October 2026",
-          "2026-10-10",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-11T02:08:42.801Z"
-      }
-    },
-    {
-      "id": "27fd11cf",
-      "title": "Expedition hopes to find aviator Amelia Earhart's plane on remote island",
-      "url": "https://www.bbc.co.uk/news/articles/c3y0e871rk4vo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-10T18:22:29.000Z",
-      "discovered_at": "2026-10-10T19:29:13.776Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-10. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/c416/live/81c8f6c0-c4d7-11f1-9a39-31b474234113.png",
-      "matchapp_url": "https://matchapp.tv/news/articles/expedition-hopes-to-find-aviator-amelia-earhart-s-plane-on-remote-island-27fd11/",
-      "landing_url": "https://matchapp.tv/?news=27fd11cf#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-10",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "expedition",
-          "hopes",
-          "find",
-          "aviator",
-          "amelia",
-          "earhart"
-        ],
-        "long_tail": [
-          "Expedition hopes to find aviator Amelia Earhart's plane on remote island 2026-10-10",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "expedition",
-          "hopes",
-          "find",
-          "aviator",
-          "amelia",
-          "earhart"
-        ],
-        "freshness_keywords": [
-          "2026-10-10"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Expedition hopes to find aviator Amelia Earhart's plane on…",
-        "meta_description": "World report published by BBC World on 2026-10-10. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-10",
-          "world news",
-          "global headlines",
-          "expedition",
-          "hopes",
-          "find",
-          "aviator",
-          "amelia",
-          "earhart",
-          "Expedition hopes to find aviator Amelia Earhart's plane on remote island 2026-10-10",
-          "world news October 2026",
-          "2026-10-10",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-11T02:08:42.801Z"
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
       }
     },
     {
@@ -1530,144 +2067,7 @@
           "2026-10-10",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-11T02:08:42.801Z"
-      }
-    },
-    {
-      "id": "cd95a0b2",
-      "title": "US murderer Christa Pike discharged from hospital 10 days after failed execution",
-      "url": "https://www.bbc.co.uk/news/articles/cmlyle97pqd7o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-10T17:44:26.000Z",
-      "discovered_at": "2026-10-10T16:14:49.577Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-10. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/05ed/live/df926130-c4d0-11f1-bc2e-018d645d8d21.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/us-murderer-christa-pike-discharged-from-hospital-10-days-after-failed-execution-cd95a0/",
-      "landing_url": "https://matchapp.tv/?news=cd95a0b2#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-10",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "murderer",
-          "christa",
-          "pike",
-          "discharged",
-          "hospital",
-          "days"
-        ],
-        "long_tail": [
-          "US murderer Christa Pike discharged from hospital 10 days after failed execution 2026-10-10",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "murderer",
-          "christa",
-          "pike",
-          "discharged",
-          "hospital",
-          "days"
-        ],
-        "freshness_keywords": [
-          "2026-10-10"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "US murderer Christa Pike discharged from hospital 10 days…",
-        "meta_description": "World report published by BBC World on 2026-10-10. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-10",
-          "world news",
-          "global headlines",
-          "murderer",
-          "christa",
-          "pike",
-          "discharged",
-          "hospital",
-          "days",
-          "US murderer Christa Pike discharged from hospital 10 days after failed execution 2026-10-10",
-          "world news October 2026",
-          "2026-10-10",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-11T02:08:42.801Z"
-      }
-    },
-    {
-      "id": "501c6278",
-      "title": "Por que a China considera uma ameaça a IA que imita as relações humanas",
-      "url": "https://g1.globo.com/tecnologia/noticia/2026/10/10/por-que-a-china-considera-uma-ameaca-a-ia-que-imita-as-relacoes-humanas.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-10T17:44:06.000Z",
-      "discovered_at": "2026-10-10T19:29:13.776Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-10. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/CoidVg3Hr8_GPy31iEsaGAMJlAo=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2025/P/F/WKUU8VRDqAcz3KW0v9Cw/2025-01-27t125916z-1824444031-rc2cicawpv3t-rtrmadp-3-deepseek-markets.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/por-que-a-china-considera-uma-ameaca-a-ia-que-imita-as-relacoes-humanas-501c62/",
-      "landing_url": "https://matchapp.tv/?news=501c6278#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-10",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "que",
-          "china",
-          "considera",
-          "ameaca",
-          "que",
-          "imita"
-        ],
-        "long_tail": [
-          "Por que a China considera uma ameaça a IA que imita as relações humanas 2026-10-10",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "que",
-          "china",
-          "considera",
-          "ameaca",
-          "que",
-          "imita"
-        ],
-        "freshness_keywords": [
-          "2026-10-10"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Por que a China considera uma ameaça a IA que imita as…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-10. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-10",
-          "notícias do mundo",
-          "notícias internacionais",
-          "que",
-          "china",
-          "considera",
-          "ameaca",
-          "imita",
-          "Por que a China considera uma ameaça a IA que imita as relações humanas 2026-10-10",
-          "notícias mundiais outubro 2026",
-          "2026-10-10",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-11T02:08:42.801Z"
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
       }
     },
     {
@@ -1765,214 +2165,7 @@
           "g1.globo.com Wagner Moura",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T02:08:42.801Z"
-      }
-    },
-    {
-      "id": "4fa1eefa",
-      "title": "Homem morre após entrar em jaula de tigre em zoológico no Reino Unido",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/10/homem-fica-ferido-apos-entrar-jaula-tigre-zoologico-reino-unido.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-10T16:37:08.000Z",
-      "discovered_at": "2026-10-10T19:29:13.776Z",
-      "event_type": "Obituary",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-10. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/bL3OGS5lx1gpuYUTSrcswVbOhWg=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/Q/C/di4ThXSwSZpUEDYGWF1Q/design-sem-nome-2026-10-10t135551.014.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/homem-morre-apos-entrar-em-jaula-de-tigre-em-zoologico-no-reino-unido-4fa1ee/",
-      "landing_url": "https://matchapp.tv/?news=4fa1eefa#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-10",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "homem",
-          "morre",
-          "apos",
-          "entrar",
-          "jaula",
-          "tigre"
-        ],
-        "long_tail": [
-          "Homem morre após entrar em jaula de tigre em zoológico no Reino Unido 2026-10-10",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "homem",
-          "morre",
-          "apos",
-          "entrar",
-          "jaula",
-          "tigre"
-        ],
-        "freshness_keywords": [
-          "2026-10-10"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Homem morre após entrar em jaula de tigre em zoológico no…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-10. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-10",
-          "notícias do mundo",
-          "notícias internacionais",
-          "homem",
-          "morre",
-          "apos",
-          "entrar",
-          "jaula",
-          "tigre",
-          "Homem morre após entrar em jaula de tigre em zoológico no Reino Unido 2026-10-10",
-          "notícias mundiais outubro 2026",
-          "2026-10-10",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-11T02:08:42.801Z"
-      }
-    },
-    {
-      "id": "1eccf961",
-      "title": "Assustados, moradores passam noite nas ruas após terremotos no Panamá",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/10/assustados-moradores-passam-noite-nas-ruas-apos-terremotos-no-panama.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-10T16:29:40.000Z",
-      "discovered_at": "2026-10-10T19:29:13.776Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-10. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/-31tMlKilchEnbZ76TWq8jlozhA=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/x/l/JjjqBiSt2KHwGZSvK2Nw/ap26282718200597.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/assustados-moradores-passam-noite-nas-ruas-apos-terremotos-no-panama-1eccf9/",
-      "landing_url": "https://matchapp.tv/?news=1eccf961#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-10",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "assustados",
-          "moradores",
-          "passam",
-          "noite",
-          "ruas",
-          "apos"
-        ],
-        "long_tail": [
-          "Assustados, moradores passam noite nas ruas após terremotos no Panamá 2026-10-10",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "assustados",
-          "moradores",
-          "passam",
-          "noite",
-          "ruas",
-          "apos"
-        ],
-        "freshness_keywords": [
-          "2026-10-10"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Assustados, moradores passam noite nas ruas após…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-10. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-10",
-          "notícias do mundo",
-          "notícias internacionais",
-          "assustados",
-          "moradores",
-          "passam",
-          "noite",
-          "ruas",
-          "apos",
-          "Assustados, moradores passam noite nas ruas após terremotos no Panamá 2026-10-10",
-          "notícias mundiais outubro 2026",
-          "2026-10-10",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-11T02:08:42.801Z"
-      }
-    },
-    {
-      "id": "3ccc1216",
-      "title": "Ataque a tiros deixa 9 mortos, incluindo duas crianças, nos EUA",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/10/ataque-a-tiros-deixa-9-mortos-incluindo-duas-criancas-nos-eua.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-10T16:20:23.000Z",
-      "discovered_at": "2026-10-10T19:29:13.776Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-10. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/OJCs1ipxAdXHfxcAPNkTyXF84-Y=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/E/5/BKdyEOTuOBWdrlI4yBjg/ap26283596855724.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/ataque-a-tiros-deixa-9-mortos-incluindo-duas-criancas-nos-eua-3ccc12/",
-      "landing_url": "https://matchapp.tv/?news=3ccc1216#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-10",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "ataque",
-          "tiros",
-          "deixa",
-          "mortos",
-          "incluindo",
-          "duas"
-        ],
-        "long_tail": [
-          "Ataque a tiros deixa 9 mortos, incluindo duas crianças, nos EUA 2026-10-10",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "ataque",
-          "tiros",
-          "deixa",
-          "mortos",
-          "incluindo",
-          "duas"
-        ],
-        "freshness_keywords": [
-          "2026-10-10"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Ataque a tiros deixa 9 mortos, incluindo duas crianças,…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-10. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-10",
-          "notícias do mundo",
-          "notícias internacionais",
-          "ataque",
-          "tiros",
-          "deixa",
-          "mortos",
-          "incluindo",
-          "duas",
-          "Ataque a tiros deixa 9 mortos, incluindo duas crianças, nos EUA 2026-10-10",
-          "notícias mundiais outubro 2026",
-          "2026-10-10",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-11T02:08:42.801Z"
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
       }
     },
     {
@@ -2070,7 +2263,7 @@
           "g1.globo.com Marisa Monte",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T02:08:42.801Z"
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
       }
     },
     {
@@ -2171,7 +2364,7 @@
           "g1.globo.com minha globinho viva web",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T02:08:42.801Z"
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
       }
     },
     {
@@ -2270,7 +2463,7 @@
           "bbc.co.uk screams haunting scenes deadly",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T02:08:42.801Z"
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
       }
     },
     {
@@ -2370,7 +2563,7 @@
           "g1.globo.com TV Globinho",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T02:08:42.801Z"
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
       }
     },
     {
@@ -2471,7 +2664,7 @@
           "g1.globo.com kbrum poe reggae album",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T02:08:42.801Z"
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
       }
     },
     {
@@ -2570,7 +2763,7 @@
           "g1.globo.com saiba como giulia conheceu",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T02:08:42.801Z"
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
       }
     },
     {
@@ -2668,7 +2861,7 @@
           "bbc.co.uk country music star ella",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T02:08:42.801Z"
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
       }
     },
     {
@@ -2767,7 +2960,7 @@
           "bbc.co.uk ashe too scared cancel",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T02:08:42.801Z"
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
       }
     },
     {
@@ -2866,7 +3059,7 @@
           "bbc.co.uk hollywood actor luke evans",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T02:08:42.801Z"
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
       }
     },
     {
@@ -2960,7 +3153,7 @@
           "g1.globo.com Coletivo Pra Gira Girar",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T02:08:42.801Z"
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
       }
     },
     {
@@ -3058,7 +3251,7 @@
           "g1.globo.com MC PH",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T02:08:42.801Z"
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
       }
     },
     {
@@ -3159,7 +3352,7 @@
           "g1.globo.com ator pretty little liars",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T02:08:42.801Z"
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
       }
     },
     {
@@ -3253,204 +3446,7 @@
           "bbc.co.uk Crazy Rich Asians",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T02:08:42.801Z"
-      }
-    },
-    {
-      "id": "e40be047",
-      "title": "Alison Hammond: 'I thought I was having heart attack on air'",
-      "url": "https://www.bbc.co.uk/news/articles/cq5yn75pgyjjo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GB",
-      "language": "en",
-      "published_at": "2026-10-09T10:52:34.000Z",
-      "discovered_at": "2026-10-09T16:32:32.326Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "Alison Hammond",
-      "description": "Alison Hammond: entertainment headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/d1d2/live/2852f9e0-c3cb-11f1-8fc5-335d62f6730b.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/alison-hammond-i-thought-i-was-having-heart-attack-on-air-e40be0/",
-      "landing_url": "https://matchapp.tv/?news=e40be047#latest-news",
-      "seo": {
-        "primary_keyword": "Alison Hammond latest news",
-        "short_tail": [
-          "Alison Hammond",
-          "Alison Hammond news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "Alison Hammond latest news October 2026",
-          "Alison Hammond entertainment update 2026",
-          "Alison Hammond news 2026-10-09",
-          "latest entertainment news about Alison Hammond",
-          "alison hammond alison hammond thought having latest update",
-          "BBC Alison Hammond entertainment",
-          "latest news about Alison Hammond October 2026",
-          "Alison Hammond entertainment news 2026-10-09",
-          "what happened with Alison Hammond"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Alison Hammond",
-          "alison",
-          "hammond",
-          "thought",
-          "having",
-          "heart",
-          "attack"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-09",
-          "Alison Hammond 2026"
-        ],
-        "source_keywords": [
-          "BBC Alison Hammond",
-          "bbc.co.uk Alison Hammond",
-          "BBC entertainment news"
-        ],
-        "meta_title": "Alison Hammond: 'I thought I was having heart attack on…",
-        "meta_description": "Alison Hammond: Entertainment update reported by BBC on 2026-10-09. See verified context, publication time and the original source via MatchApp Ai.",
-        "keywords": [
-          "Alison Hammond latest news",
-          "Alison Hammond",
-          "Alison Hammond news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "Alison Hammond latest news October 2026",
-          "Alison Hammond entertainment update 2026",
-          "Alison Hammond news 2026-10-09",
-          "latest entertainment news about Alison Hammond",
-          "alison hammond alison hammond thought having latest update",
-          "BBC Alison Hammond entertainment",
-          "latest news about Alison Hammond October 2026",
-          "Alison Hammond entertainment news 2026-10-09",
-          "what happened with Alison Hammond",
-          "alison",
-          "hammond",
-          "thought",
-          "having",
-          "heart",
-          "attack",
-          "October 2026",
-          "2026-10-09",
-          "Alison Hammond 2026",
-          "BBC Alison Hammond",
-          "bbc.co.uk Alison Hammond",
-          "BBC entertainment news"
-        ],
-        "seo_generated_at": "2026-10-11T02:08:42.801Z"
-      }
-    },
-    {
-      "id": "43ca0950",
-      "title": "Causa da morte de LuLu LoveBottom, criador de conteúdo adulto, é revelada",
-      "url": "https://g1.globo.com/pop-arte/noticia/2026/10/09/causa-da-morte-de-lulu-lovebottom-criador-de-conteudo-adulto-e-revelada.ghtml",
-      "source": "G1",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "BR",
-      "language": "pt",
-      "published_at": "2026-10-09T10:34:58.000Z",
-      "discovered_at": "2026-10-09T16:32:32.326Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "",
-      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
-      "image": "https://s2-g1.glbimg.com/Kt7A3U-bFinrN9agY7hjzcCpPZ0=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/R/g/X00DrTQxGkiaxGkxRE2Q/fotos-g1-1920-x-1080-px-2026-09-09t173933.904.png",
-      "matchapp_url": "https://matchapp.tv/news/articles/causa-da-morte-de-lulu-lovebottom-criador-de-conteudo-adulto-e-revelada-43ca09/",
-      "landing_url": "https://matchapp.tv/?news=43ca0950#latest-news",
-      "seo": {
-        "primary_keyword": "causa morte lulu lovebottom últimas notícias",
-        "short_tail": [
-          "causa morte lulu lovebottom",
-          "causa morte lulu lovebottom news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje"
-        ],
-        "long_tail": [
-          "causa morte lulu lovebottom latest news October 2026",
-          "causa morte lulu lovebottom entertainment update 2026",
-          "causa morte lulu lovebottom news 2026-10-09",
-          "latest entertainment news about causa morte lulu lovebottom",
-          "causa morte lulu lovebottom criador conteudo latest update",
-          "G1 causa morte lulu lovebottom entertainment",
-          "últimas notícias sobre causa morte lulu lovebottom outubro 2026",
-          "causa morte lulu lovebottom notícia de 2026-10-09",
-          "o que aconteceu com causa morte lulu lovebottom"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "causa",
-          "morte",
-          "lulu",
-          "lovebottom",
-          "criador",
-          "conteudo",
-          "adulto",
-          "revelada"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-09",
-          "outubro 2026",
-          "causa morte lulu lovebottom 2026"
-        ],
-        "source_keywords": [
-          "G1 causa morte lulu lovebottom",
-          "g1.globo.com causa morte lulu lovebottom",
-          "G1 entertainment news"
-        ],
-        "meta_title": "Causa da morte de LuLu LoveBottom, criador de conteúdo…",
-        "meta_description": "Notícia publicada por G1 em 2026-10-09. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
-        "keywords": [
-          "causa morte lulu lovebottom últimas notícias",
-          "causa morte lulu lovebottom",
-          "causa morte lulu lovebottom news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "causa morte lulu lovebottom latest news October 2026",
-          "causa morte lulu lovebottom entertainment update 2026",
-          "causa morte lulu lovebottom news 2026-10-09",
-          "latest entertainment news about causa morte lulu lovebottom",
-          "causa morte lulu lovebottom criador conteudo latest update",
-          "G1 causa morte lulu lovebottom entertainment",
-          "últimas notícias sobre causa morte lulu lovebottom outubro 2026",
-          "causa morte lulu lovebottom notícia de 2026-10-09",
-          "o que aconteceu com causa morte lulu lovebottom",
-          "causa",
-          "morte",
-          "lulu",
-          "lovebottom",
-          "criador",
-          "conteudo",
-          "adulto",
-          "revelada",
-          "October 2026",
-          "2026-10-09",
-          "outubro 2026",
-          "causa morte lulu lovebottom 2026",
-          "G1 causa morte lulu lovebottom",
-          "g1.globo.com causa morte lulu lovebottom",
-          "G1 entertainment news"
-        ],
-        "seo_generated_at": "2026-10-11T02:08:42.801Z"
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
       }
     },
     {
@@ -3540,7 +3536,7 @@
           "2026-10-09",
           "October 2026"
         ],
-        "seo_generated_at": "2026-10-11T02:08:42.801Z"
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
       }
     },
     {
@@ -3630,7 +3626,7 @@
           "2026-10-08",
           "October 2026"
         ],
-        "seo_generated_at": "2026-10-11T02:08:42.801Z"
+        "seo_generated_at": "2026-10-11T09:16:04.293Z"
       }
     }
   ]
