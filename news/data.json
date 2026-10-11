@@ -1,52 +1,660 @@
 {
-  "generated_at": "2026-10-11T09:37:11.751Z",
-  "feed_version": "1705e69a",
+  "generated_at": "2026-10-11T15:56:23.590Z",
+  "feed_version": "07bc7989",
   "sports_updated_at": "2026-10-11T01:54:03.712Z",
   "source_policy": "direct-trusted-publisher-rss+google-trends-keyword-signals",
   "seo_policy": "per-story keyword snapshot at first discovery + source citation + stable archive",
   "items": [
     {
-      "id": "7ebdf237",
-      "title": "Houthis emitem alerta de risco para novos ataques a aeroportos da Arábia Saudita",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/11/houthis-emitem-alerta-de-risco-para-novos-ataques-a-aeroportos-da-arabia-saudita.ghtml",
+      "id": "cc518446",
+      "title": "Riyadh airport attack another dangerous moment in already tense conflict",
+      "url": "https://www.bbc.co.uk/news/articles/cr4g1pwxxlq1o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-11T15:32:32.000Z",
+      "discovered_at": "2026-10-11T15:56:23.590Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-11. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/9c45/live/701466b0-c565-11f1-bd33-db1f7eaf2b30.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/riyadh-airport-attack-another-dangerous-moment-in-already-tense-conflict-cc5184/",
+      "landing_url": "https://matchapp.tv/?news=cc518446#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-11",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "riyadh",
+          "airport",
+          "attack",
+          "another",
+          "dangerous",
+          "moment"
+        ],
+        "long_tail": [
+          "Riyadh airport attack another dangerous moment in already tense conflict 2026-10-11",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "riyadh",
+          "airport",
+          "attack",
+          "another",
+          "dangerous",
+          "moment"
+        ],
+        "freshness_keywords": [
+          "2026-10-11"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Riyadh airport attack another dangerous moment in already…",
+        "meta_description": "World report published by BBC World on 2026-10-11. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-11",
+          "world news",
+          "global headlines",
+          "riyadh",
+          "airport",
+          "attack",
+          "another",
+          "dangerous",
+          "moment",
+          "Riyadh airport attack another dangerous moment in already tense conflict 2026-10-11",
+          "world news October 2026",
+          "2026-10-11",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-11T15:56:23.590Z"
+      }
+    },
+    {
+      "id": "247efd53",
+      "title": "Children among 139 dead after boat capsizes off Djibouti, UN says",
+      "url": "https://www.bbc.co.uk/news/articles/cwy7lxx60dg5o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-11T15:32:23.000Z",
+      "discovered_at": "2026-10-11T15:56:23.590Z",
+      "event_type": "Obituary",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-11. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/5a58/live/88e5f7c0-c589-11f1-a64c-550be9e3c66b.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/children-among-139-dead-after-boat-capsizes-off-djibouti-un-says-247efd/",
+      "landing_url": "https://matchapp.tv/?news=247efd53#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-11",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "children",
+          "among",
+          "139",
+          "dead",
+          "after",
+          "boat"
+        ],
+        "long_tail": [
+          "Children among 139 dead after boat capsizes off Djibouti, UN says 2026-10-11",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "children",
+          "among",
+          "139",
+          "dead",
+          "after",
+          "boat"
+        ],
+        "freshness_keywords": [
+          "2026-10-11"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Children among 139 dead after boat capsizes off Djibouti,…",
+        "meta_description": "World report published by BBC World on 2026-10-11. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-11",
+          "world news",
+          "global headlines",
+          "children",
+          "among",
+          "139",
+          "dead",
+          "after",
+          "boat",
+          "Children among 139 dead after boat capsizes off Djibouti, UN says 2026-10-11",
+          "world news October 2026",
+          "2026-10-11",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-11T15:56:23.590Z"
+      }
+    },
+    {
+      "id": "3b36d17a",
+      "title": "Poland stabbings driven by online glorification of violence, Tusk says",
+      "url": "https://www.bbc.co.uk/news/articles/ckp8gyd65z2go?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-11T15:18:52.000Z",
+      "discovered_at": "2026-10-11T15:56:23.590Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-11. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/5288/live/10c1e1e0-c585-11f1-80f2-5bd1e5df7ada.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/poland-stabbings-driven-by-online-glorification-of-violence-tusk-says-3b36d1/",
+      "landing_url": "https://matchapp.tv/?news=3b36d17a#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-11",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "poland",
+          "stabbings",
+          "driven",
+          "online",
+          "glorification",
+          "violence"
+        ],
+        "long_tail": [
+          "Poland stabbings driven by online glorification of violence, Tusk says 2026-10-11",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "poland",
+          "stabbings",
+          "driven",
+          "online",
+          "glorification",
+          "violence"
+        ],
+        "freshness_keywords": [
+          "2026-10-11"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Poland stabbings driven by online glorification of…",
+        "meta_description": "World report published by BBC World on 2026-10-11. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-11",
+          "world news",
+          "global headlines",
+          "poland",
+          "stabbings",
+          "driven",
+          "online",
+          "glorification",
+          "violence",
+          "Poland stabbings driven by online glorification of violence, Tusk says 2026-10-11",
+          "world news October 2026",
+          "2026-10-11",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-11T15:56:23.590Z"
+      }
+    },
+    {
+      "id": "8f88fb12",
+      "title": "R.L. Stine’s ‘The Babysitter’ Adaptation Coming to Tubi in 2027 (Exclusive)",
+      "url": "https://www.hollywoodreporter.com/movies/movie-news/tubi-the-babysitter-movie-r-l-stine-2027-1236727014/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-11T15:15:00.000Z",
+      "discovered_at": "2026-10-11T15:56:23.590Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "R.L. Stine’s",
+      "description": "R.L. Stine’s: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/the-babysitter.jpg?w=1440&h=810&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/r-l-stine-s-the-babysitter-adaptation-coming-to-tubi-in-2027-exclusive-8f88fb/",
+      "landing_url": "https://matchapp.tv/?news=8f88fb12#latest-news",
+      "seo": {
+        "primary_keyword": "R.L. Stine’s latest news",
+        "short_tail": [
+          "R.L. Stine’s",
+          "R.L. Stine’s news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "R.L. Stine’s latest news October 2026",
+          "R.L. Stine’s entertainment update 2026",
+          "R.L. Stine’s news 2026-10-11",
+          "latest entertainment news about R.L. Stine’s",
+          "stine stine babysitter adaptation coming tubi latest update",
+          "The Hollywood Reporter R.L. Stine’s entertainment",
+          "latest news about R.L. Stine’s October 2026",
+          "R.L. Stine’s entertainment news 2026-10-11",
+          "what happened with R.L. Stine’s"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "R.L. Stine’s",
+          "stine",
+          "babysitter",
+          "adaptation",
+          "coming",
+          "tubi",
+          "2027",
+          "exclusive"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-11",
+          "R.L. Stine’s 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter R.L. Stine’s",
+          "hollywoodreporter.com R.L. Stine’s",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "R.L. Stine’s ‘The Babysitter’ Adaptation Coming to Tubi in…",
+        "meta_description": "R.L. Stine’s: Entertainment update reported by The Hollywood Reporter on 2026-10-11. See verified context, publication time and the original source via…",
+        "keywords": [
+          "R.L. Stine’s latest news",
+          "R.L. Stine’s",
+          "R.L. Stine’s news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "R.L. Stine’s latest news October 2026",
+          "R.L. Stine’s entertainment update 2026",
+          "R.L. Stine’s news 2026-10-11",
+          "latest entertainment news about R.L. Stine’s",
+          "stine stine babysitter adaptation coming tubi latest update",
+          "The Hollywood Reporter R.L. Stine’s entertainment",
+          "latest news about R.L. Stine’s October 2026",
+          "R.L. Stine’s entertainment news 2026-10-11",
+          "what happened with R.L. Stine’s",
+          "stine",
+          "babysitter",
+          "adaptation",
+          "coming",
+          "tubi",
+          "2027",
+          "exclusive",
+          "October 2026",
+          "2026-10-11",
+          "R.L. Stine’s 2026",
+          "The Hollywood Reporter R.L. Stine’s",
+          "hollywoodreporter.com R.L. Stine’s",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-11T15:56:23.590Z"
+      }
+    },
+    {
+      "id": "b2c24f6e",
+      "title": "Owners fear 'healthy' dog died due to orange substance exposure on contaminated land",
+      "url": "https://www.bbc.co.uk/news/articles/cqx2z2xx0k2lo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC Science",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-11T14:48:51.000Z",
+      "discovered_at": "2026-10-11T15:56:23.590Z",
+      "event_type": "Obituary",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC Science on 2026-10-11. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/9024/live/b945e1d0-bffa-11f1-8c3e-3b2eab095459.jpeg",
+      "matchapp_url": "https://matchapp.tv/news/articles/owners-fear-healthy-dog-died-due-to-orange-substance-exposure-on-contaminated-la-b2c24f/",
+      "landing_url": "https://matchapp.tv/?news=b2c24f6e#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-11",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "owners",
+          "fear",
+          "healthy",
+          "dog",
+          "died",
+          "due"
+        ],
+        "long_tail": [
+          "Owners fear 'healthy' dog died due to orange substance exposure on contaminated land 2026-10-11",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "owners",
+          "fear",
+          "healthy",
+          "dog",
+          "died",
+          "due"
+        ],
+        "freshness_keywords": [
+          "2026-10-11"
+        ],
+        "source_keywords": [
+          "BBC Science"
+        ],
+        "meta_title": "Owners fear 'healthy' dog died due to orange substance…",
+        "meta_description": "World report published by BBC Science on 2026-10-11. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-11",
+          "world news",
+          "global headlines",
+          "owners",
+          "fear",
+          "healthy",
+          "dog",
+          "died",
+          "due",
+          "Owners fear 'healthy' dog died due to orange substance exposure on contaminated land 2026-10-11",
+          "world news October 2026",
+          "2026-10-11",
+          "BBC Science"
+        ],
+        "seo_generated_at": "2026-10-11T15:56:23.590Z"
+      }
+    },
+    {
+      "id": "9c456bbe",
+      "title": "Ukraine strikes Yandex data centre in third attack on Russian tech giant",
+      "url": "https://www.bbc.co.uk/news/articles/cw0k0g57mk3zo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-11T14:38:10.000Z",
+      "discovered_at": "2026-10-11T15:56:23.590Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-11. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/92b1/live/fca86430-c56c-11f1-a64c-550be9e3c66b.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/ukraine-strikes-yandex-data-centre-in-third-attack-on-russian-tech-giant-9c456b/",
+      "landing_url": "https://matchapp.tv/?news=9c456bbe#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-11",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "ukraine",
+          "strikes",
+          "yandex",
+          "data",
+          "centre",
+          "third"
+        ],
+        "long_tail": [
+          "Ukraine strikes Yandex data centre in third attack on Russian tech giant 2026-10-11",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "ukraine",
+          "strikes",
+          "yandex",
+          "data",
+          "centre",
+          "third"
+        ],
+        "freshness_keywords": [
+          "2026-10-11"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Ukraine strikes Yandex data centre in third attack on…",
+        "meta_description": "World report published by BBC World on 2026-10-11. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-11",
+          "world news",
+          "global headlines",
+          "ukraine",
+          "strikes",
+          "yandex",
+          "data",
+          "centre",
+          "third",
+          "Ukraine strikes Yandex data centre in third attack on Russian tech giant 2026-10-11",
+          "world news October 2026",
+          "2026-10-11",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-11T15:56:23.590Z"
+      }
+    },
+    {
+      "id": "8c0c3571",
+      "title": "Javier Bardem on Declining ‘Skyfall’ Role, Pitching to Sam Mendes: “What If He Wants to Have Sex With Mr. Bond?”",
+      "url": "https://www.hollywoodreporter.com/movies/movie-news/javier-bardem-skyfall-bond-bunker-bfi-london-film-festival-1236727169/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-11T14:27:21.000Z",
+      "discovered_at": "2026-10-11T15:56:23.590Z",
+      "event_type": "Casting",
+      "category": "entertainment",
+      "person": "Javier Bardem",
+      "description": "Javier Bardem: casting headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/FotoJet-2026-10-11T152106.448.jpg?w=1440&h=810&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/javier-bardem-on-declining-skyfall-role-pitching-to-sam-mendes-what-if-he-wants--8c0c35/",
+      "landing_url": "https://matchapp.tv/?news=8c0c3571#latest-news",
+      "seo": {
+        "primary_keyword": "Javier Bardem latest news",
+        "short_tail": [
+          "Javier Bardem",
+          "Javier Bardem news",
+          "casting",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "Javier Bardem latest news October 2026",
+          "Javier Bardem casting update 2026",
+          "Javier Bardem news 2026-10-11",
+          "latest casting news about Javier Bardem",
+          "javier bardem javier bardem declining skyfall latest update",
+          "The Hollywood Reporter Javier Bardem casting",
+          "latest news about Javier Bardem October 2026",
+          "Javier Bardem entertainment news 2026-10-11",
+          "what happened with Javier Bardem"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "Javier Bardem",
+          "javier",
+          "bardem",
+          "declining",
+          "skyfall",
+          "role",
+          "pitching"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-11",
+          "Javier Bardem 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter Javier Bardem",
+          "hollywoodreporter.com Javier Bardem",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "Javier Bardem on Declining ‘Skyfall’ Role, Pitching to Sam…",
+        "meta_description": "Javier Bardem: Casting update reported by The Hollywood Reporter on 2026-10-11. See verified context, publication time and the original source via MatchApp…",
+        "keywords": [
+          "Javier Bardem latest news",
+          "Javier Bardem",
+          "Javier Bardem news",
+          "casting",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "Javier Bardem latest news October 2026",
+          "Javier Bardem casting update 2026",
+          "Javier Bardem news 2026-10-11",
+          "latest casting news about Javier Bardem",
+          "javier bardem javier bardem declining skyfall latest update",
+          "The Hollywood Reporter Javier Bardem casting",
+          "latest news about Javier Bardem October 2026",
+          "Javier Bardem entertainment news 2026-10-11",
+          "what happened with Javier Bardem",
+          "javier",
+          "bardem",
+          "declining",
+          "skyfall",
+          "role",
+          "pitching",
+          "October 2026",
+          "2026-10-11",
+          "Javier Bardem 2026",
+          "The Hollywood Reporter Javier Bardem",
+          "hollywoodreporter.com Javier Bardem",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-11T15:56:23.590Z"
+      }
+    },
+    {
+      "id": "ac45ba13",
+      "title": "Trump diz que Ucrânia e Rússia concordaram com 'cessar-fogo energético'",
+      "url": "https://g1.globo.com/mundo/ucrania-russia/noticia/2026/10/11/trump-diz-que-ucrania-e-russia-concordaram-com-cessar-fogo-energetico.ghtml",
       "source": "G1 Mundo",
       "source_domain": "g1.globo.com",
       "source_home": "https://g1.globo.com",
       "country": "GLOBAL",
       "language": "pt",
-      "published_at": "2026-10-11T09:28:02.000Z",
-      "discovered_at": "2026-10-11T09:37:11.751Z",
+      "published_at": "2026-10-11T14:21:53.000Z",
+      "discovered_at": "2026-10-11T15:56:23.590Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-11. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/CQEHtmwpqvxvMn3ZxMGYug7wAGk=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/3/l/YCknLDQ3CbYEQstRRZqA/2026-10-10t002837z-1091946746-rc200oa5olyz-rtrmadp-3-usa-trump.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/trump-diz-que-ucrania-e-russia-concordaram-com-cessar-fogo-energetico-ac45ba/",
+      "landing_url": "https://matchapp.tv/?news=ac45ba13#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-11",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "trump",
+          "diz",
+          "que",
+          "ucrania",
+          "russia",
+          "concordaram"
+        ],
+        "long_tail": [
+          "Trump diz que Ucrânia e Rússia concordaram com 'cessar-fogo energético' 2026-10-11",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "trump",
+          "diz",
+          "que",
+          "ucrania",
+          "russia",
+          "concordaram"
+        ],
+        "freshness_keywords": [
+          "2026-10-11"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Trump diz que Ucrânia e Rússia concordaram com…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-11. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-11",
+          "notícias do mundo",
+          "notícias internacionais",
+          "trump",
+          "diz",
+          "que",
+          "ucrania",
+          "russia",
+          "concordaram",
+          "Trump diz que Ucrânia e Rússia concordaram com 'cessar-fogo energético' 2026-10-11",
+          "notícias mundiais outubro 2026",
+          "2026-10-11",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-11T15:56:23.590Z"
+      }
+    },
+    {
+      "id": "576110b0",
+      "title": "Houthis acusam Arábia Saudita de ataque contra aeroporto do Iêmen; coalização saudita fala em novo bombardeio a Riade",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/11/arabia-saudita-realiza-ataque-contra-aeroporto-internacional-do-iemen-diz-tv.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-11T13:59:30.000Z",
+      "discovered_at": "2026-10-11T15:56:23.590Z",
       "event_type": "Entertainment",
       "category": "world",
       "person": "",
       "description": "World news reported by G1 Mundo on 2026-10-11. MatchApp links to the original report for its complete context and ongoing updates.",
       "image": "https://s2-g1.glbimg.com/dqVRYC2QwR6_jndcL4tIM7V_YFM=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/R/4/kbhva9QuOfkgYN21RCfg/2026-10-10t193830z-1401625215-rc2i0oa6ps94-rtrmadp-3-iran-crisis-saudi-airport.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/houthis-emitem-alerta-de-risco-para-novos-ataques-a-aeroportos-da-arabia-saudita-7ebdf2/",
-      "landing_url": "https://matchapp.tv/?news=7ebdf237#latest-news",
+      "matchapp_url": "https://matchapp.tv/news/articles/houthis-acusam-arabia-saudita-de-ataque-contra-aeroporto-do-iemen-coalizacao-sau-576110/",
+      "landing_url": "https://matchapp.tv/?news=576110b0#latest-news",
       "seo": {
         "primary_keyword": "notícias do mundo 2026-10-11",
         "short_tail": [
           "notícias do mundo",
           "notícias internacionais",
           "houthis",
-          "emitem",
-          "alerta",
-          "risco",
-          "novos",
-          "ataques"
+          "acusam",
+          "arabia",
+          "saudita",
+          "ataque",
+          "contra"
         ],
         "long_tail": [
-          "Houthis emitem alerta de risco para novos ataques a aeroportos da Arábia Saudita 2026-10-11",
+          "Houthis acusam Arábia Saudita de ataque contra aeroporto do Iêmen; coalização saudita fala em novo bombardeio a Riade 2026-10-11",
           "notícias mundiais outubro 2026"
         ],
         "trend_keywords": [],
         "entity_keywords": [
           "houthis",
-          "emitem",
-          "alerta",
-          "risco",
-          "novos",
-          "ataques"
+          "acusam",
+          "arabia",
+          "saudita",
+          "ataque",
+          "contra"
         ],
         "freshness_keywords": [
           "2026-10-11"
@@ -54,68 +662,428 @@
         "source_keywords": [
           "G1 Mundo"
         ],
-        "meta_title": "Houthis emitem alerta de risco para novos ataques a…",
+        "meta_title": "Houthis acusam Arábia Saudita de ataque contra aeroporto…",
         "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-11. Abra a fonte original para o contexto completo.",
         "keywords": [
           "notícias do mundo 2026-10-11",
           "notícias do mundo",
           "notícias internacionais",
           "houthis",
-          "emitem",
-          "alerta",
-          "risco",
-          "novos",
-          "ataques",
-          "Houthis emitem alerta de risco para novos ataques a aeroportos da Arábia Saudita 2026-10-11",
+          "acusam",
+          "arabia",
+          "saudita",
+          "ataque",
+          "contra",
+          "Houthis acusam Arábia Saudita de ataque contra aeroporto do Iêmen; coalização saudita fala em novo bombardeio a Riade 2026-10-11",
           "notícias mundiais outubro 2026",
           "2026-10-11",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-11T09:37:11.751Z"
+        "seo_generated_at": "2026-10-11T15:56:23.590Z"
       }
     },
     {
-      "id": "c53044cf",
-      "title": "A jovem que se casou aos 15 anos para fugir de abusos do padrasto e virou advogada 'popstar' na internet",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/11/a-jovem-que-se-casou-aos-15-anos-para-fugir-de-abusos-do-padrasto-e-virou-advogada-popstar-na-internet.ghtml",
+      "id": "d17fbd4a",
+      "title": "John Malkovich Says an Oscars Campaign “Is the Only Way to Get People to Go to the Theaters Now”",
+      "url": "https://www.hollywoodreporter.com/movies/movie-news/john-malkovich-oscars-campaign-wild-horse-nine-film-movie-1236727173/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-11T13:55:51.000Z",
+      "discovered_at": "2026-10-11T15:56:23.590Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "John Malkovich Says",
+      "description": "John Malkovich Says: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/FotoJet-2026-10-11T142241.980.jpg?w=1440&h=810&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/john-malkovich-says-an-oscars-campaign-is-the-only-way-to-get-people-to-go-to-th-d17fbd/",
+      "landing_url": "https://matchapp.tv/?news=d17fbd4a#latest-news",
+      "seo": {
+        "primary_keyword": "John Malkovich Says latest news",
+        "short_tail": [
+          "John Malkovich Says",
+          "John Malkovich Says news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "John Malkovich Says latest news October 2026",
+          "John Malkovich Says entertainment update 2026",
+          "John Malkovich Says news 2026-10-11",
+          "latest entertainment news about John Malkovich Says",
+          "john malkovich says john malkovich says latest update",
+          "The Hollywood Reporter John Malkovich Says entertainment",
+          "latest news about John Malkovich Says October 2026",
+          "John Malkovich Says entertainment news 2026-10-11",
+          "what happened with John Malkovich Says"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "John Malkovich Says",
+          "john",
+          "malkovich",
+          "says",
+          "oscars",
+          "campaign"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-11",
+          "John Malkovich Says 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter John Malkovich Says",
+          "hollywoodreporter.com John Malkovich Says",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "John Malkovich Says an Oscars Campaign “Is the Only Way to…",
+        "meta_description": "John Malkovich Says: Entertainment update reported by The Hollywood Reporter on 2026-10-11. See verified context, publication time and the original source…",
+        "keywords": [
+          "John Malkovich Says latest news",
+          "John Malkovich Says",
+          "John Malkovich Says news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "John Malkovich Says latest news October 2026",
+          "John Malkovich Says entertainment update 2026",
+          "John Malkovich Says news 2026-10-11",
+          "latest entertainment news about John Malkovich Says",
+          "john malkovich says john malkovich says latest update",
+          "The Hollywood Reporter John Malkovich Says entertainment",
+          "latest news about John Malkovich Says October 2026",
+          "John Malkovich Says entertainment news 2026-10-11",
+          "what happened with John Malkovich Says",
+          "john",
+          "malkovich",
+          "says",
+          "oscars",
+          "campaign",
+          "October 2026",
+          "2026-10-11",
+          "John Malkovich Says 2026",
+          "The Hollywood Reporter John Malkovich Says",
+          "hollywoodreporter.com John Malkovich Says",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-11T15:56:23.590Z"
+      }
+    },
+    {
+      "id": "afa6b766",
+      "title": "Maria Rita volta a se agigantar como cantora no show 'Redescobrir vol. 2', embalada pelo colo da mãe, Elis Regina",
+      "url": "https://g1.globo.com/pop-arte/musica/blog/mauro-ferreira/post/2026/10/11/maria-rita-volta-a-se-agigantar-como-cantora-no-show-redescobrir-vol-2-embalada-pelo-colo-da-mae-elis-regina.ghtml",
+      "source": "G1",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "BR",
+      "language": "pt",
+      "published_at": "2026-10-11T13:52:32.000Z",
+      "discovered_at": "2026-10-11T15:56:23.590Z",
+      "event_type": "Music",
+      "category": "entertainment",
+      "person": "Maria Rita",
+      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
+      "image": "https://s2-g1.glbimg.com/aQTFQA3bS0IoOSCWZvrwtOIuH1E=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/t/w/I23ROoTPS1mcBQuiuZdg/maria-rita-00-10-2026-foto-ricardo-nunes-contato-21-96974-7000-4130.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/maria-rita-volta-a-se-agigantar-como-cantora-no-show-redescobrir-vol-2-embalada--afa6b7/",
+      "landing_url": "https://matchapp.tv/?news=afa6b766#latest-news",
+      "seo": {
+        "primary_keyword": "Maria Rita últimas notícias",
+        "short_tail": [
+          "Maria Rita",
+          "Maria Rita news",
+          "music",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje"
+        ],
+        "long_tail": [
+          "Maria Rita latest news October 2026",
+          "Maria Rita music update 2026",
+          "Maria Rita news 2026-10-11",
+          "latest music news about Maria Rita",
+          "maria rita maria rita volta agigantar latest update",
+          "G1 Maria Rita music",
+          "últimas notícias sobre Maria Rita outubro 2026",
+          "Maria Rita notícia de 2026-10-11",
+          "o que aconteceu com Maria Rita"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "Maria Rita",
+          "maria",
+          "rita",
+          "volta",
+          "agigantar",
+          "como",
+          "cantora"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-11",
+          "outubro 2026",
+          "Maria Rita 2026"
+        ],
+        "source_keywords": [
+          "G1 Maria Rita",
+          "g1.globo.com Maria Rita",
+          "G1 entertainment news"
+        ],
+        "meta_title": "Maria Rita volta a se agigantar como cantora no show…",
+        "meta_description": "Maria Rita: Notícia publicada por G1 em 2026-10-11. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
+        "keywords": [
+          "Maria Rita últimas notícias",
+          "Maria Rita",
+          "Maria Rita news",
+          "music",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje",
+          "Maria Rita latest news October 2026",
+          "Maria Rita music update 2026",
+          "Maria Rita news 2026-10-11",
+          "latest music news about Maria Rita",
+          "maria rita maria rita volta agigantar latest update",
+          "G1 Maria Rita music",
+          "últimas notícias sobre Maria Rita outubro 2026",
+          "Maria Rita notícia de 2026-10-11",
+          "o que aconteceu com Maria Rita",
+          "maria",
+          "rita",
+          "volta",
+          "agigantar",
+          "como",
+          "cantora",
+          "October 2026",
+          "2026-10-11",
+          "outubro 2026",
+          "Maria Rita 2026",
+          "G1 Maria Rita",
+          "g1.globo.com Maria Rita",
+          "G1 entertainment news"
+        ],
+        "seo_generated_at": "2026-10-11T15:56:23.590Z"
+      }
+    },
+    {
+      "id": "67ccfc76",
+      "title": "Pope Leo to have surgery after lump found on lung",
+      "url": "https://www.bbc.co.uk/news/articles/c6m2dnngvw8xo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-11T13:38:55.000Z",
+      "discovered_at": "2026-10-11T15:56:23.590Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "Pope Leo",
+      "description": "World news reported by BBC World on 2026-10-11. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/13bb/live/c2ac8480-c569-11f1-bd33-db1f7eaf2b30.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/pope-leo-to-have-surgery-after-lump-found-on-lung-67ccfc/",
+      "landing_url": "https://matchapp.tv/?news=67ccfc76#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-11",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "pope",
+          "leo",
+          "have",
+          "surgery",
+          "after",
+          "lump"
+        ],
+        "long_tail": [
+          "Pope Leo to have surgery after lump found on lung 2026-10-11",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "pope",
+          "leo",
+          "have",
+          "surgery",
+          "after",
+          "lump"
+        ],
+        "freshness_keywords": [
+          "2026-10-11"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Pope Leo to have surgery after lump found on lung | World…",
+        "meta_description": "World report published by BBC World on 2026-10-11. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-11",
+          "world news",
+          "global headlines",
+          "pope",
+          "leo",
+          "have",
+          "surgery",
+          "after",
+          "lump",
+          "Pope Leo to have surgery after lump found on lung 2026-10-11",
+          "world news October 2026",
+          "2026-10-11",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-11T15:56:23.590Z"
+      }
+    },
+    {
+      "id": "33b024d5",
+      "title": "‘Wildwood’ Review: Laika’s Ambitious Stop-Motion Epic Is Both a Technical and Emotional Triumph",
+      "url": "https://www.hollywoodreporter.com/movies/movie-reviews/wildwood-review-laika-travis-knight-1236726335/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-11T13:15:00.000Z",
+      "discovered_at": "2026-10-11T15:56:23.590Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "",
+      "description": "entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/1e795f68-9513-11f1-b569-1e077de57b30_WW_PrueGeneral_2048x858px_RGB-H-2026.jpg?w=1296&h=730&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/wildwood-review-laika-s-ambitious-stop-motion-epic-is-both-a-technical-and-emoti-33b024/",
+      "landing_url": "https://matchapp.tv/?news=33b024d5#latest-news",
+      "seo": {
+        "primary_keyword": "wildwood review laika ambitious latest news",
+        "short_tail": [
+          "wildwood review laika ambitious",
+          "wildwood review laika ambitious news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "wildwood review laika ambitious latest news October 2026",
+          "wildwood review laika ambitious entertainment update 2026",
+          "wildwood review laika ambitious news 2026-10-11",
+          "latest entertainment news about wildwood review laika ambitious",
+          "wildwood review laika ambitious stop motion latest update",
+          "The Hollywood Reporter wildwood review laika ambitious entertainment",
+          "latest news about wildwood review laika ambitious October 2026",
+          "wildwood review laika ambitious entertainment news 2026-10-11",
+          "what happened with wildwood review laika ambitious"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "wildwood",
+          "review",
+          "laika",
+          "ambitious",
+          "stop",
+          "motion",
+          "epic",
+          "both"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-11",
+          "wildwood review laika ambitious 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter wildwood review laika ambitious",
+          "hollywoodreporter.com wildwood review laika ambitious",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "‘Wildwood’ Review: Laika’s Ambitious Stop-Motion Epic Is…",
+        "meta_description": "Entertainment update reported by The Hollywood Reporter on 2026-10-11. See verified context, publication time and the original source via MatchApp Ai.",
+        "keywords": [
+          "wildwood review laika ambitious latest news",
+          "wildwood review laika ambitious",
+          "wildwood review laika ambitious news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "wildwood review laika ambitious latest news October 2026",
+          "wildwood review laika ambitious entertainment update 2026",
+          "wildwood review laika ambitious news 2026-10-11",
+          "latest entertainment news about wildwood review laika ambitious",
+          "wildwood review laika ambitious stop motion latest update",
+          "The Hollywood Reporter wildwood review laika ambitious entertainment",
+          "latest news about wildwood review laika ambitious October 2026",
+          "wildwood review laika ambitious entertainment news 2026-10-11",
+          "what happened with wildwood review laika ambitious",
+          "wildwood",
+          "review",
+          "laika",
+          "ambitious",
+          "stop",
+          "motion",
+          "epic",
+          "both",
+          "October 2026",
+          "2026-10-11",
+          "wildwood review laika ambitious 2026",
+          "The Hollywood Reporter wildwood review laika ambitious",
+          "hollywoodreporter.com wildwood review laika ambitious",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-11T15:56:23.590Z"
+      }
+    },
+    {
+      "id": "71a18910",
+      "title": "Em Ceuta, polícia remove último acampamento de imigrantes em praia antes de visita do rei",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/11/em-ceuta-policia-remove-ultimo-acampamento-de-imigrantes-em-praia-antes-de-visita-do-rei.ghtml",
       "source": "G1 Mundo",
       "source_domain": "g1.globo.com",
       "source_home": "https://g1.globo.com",
       "country": "GLOBAL",
       "language": "pt",
-      "published_at": "2026-10-11T09:00:00.000Z",
-      "discovered_at": "2026-10-11T09:16:04.293Z",
+      "published_at": "2026-10-11T12:12:15.000Z",
+      "discovered_at": "2026-10-11T15:56:23.590Z",
       "event_type": "Entertainment",
       "category": "world",
-      "person": "",
+      "person": "Em Ceuta",
       "description": "World news reported by G1 Mundo on 2026-10-11. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/xKBkC0gKpfwFQLEFQEJ_6ggadDE=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/2/T/DMbaGsQSiEvmSM1qLawA/montagem-horizontal-1280x720px-2-.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/a-jovem-que-se-casou-aos-15-anos-para-fugir-de-abusos-do-padrasto-e-virou-advoga-c53044/",
-      "landing_url": "https://matchapp.tv/?news=c53044cf#latest-news",
+      "image": "https://s2-g1.glbimg.com/JLf4dcSDuHek4TlvVJyUwui4LMc=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/S/y/DMNeTaQK2tcadu3nk6Aw/novo-projeto-3-.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/em-ceuta-policia-remove-ultimo-acampamento-de-imigrantes-em-praia-antes-de-visit-71a189/",
+      "landing_url": "https://matchapp.tv/?news=71a18910#latest-news",
       "seo": {
         "primary_keyword": "notícias do mundo 2026-10-11",
         "short_tail": [
           "notícias do mundo",
           "notícias internacionais",
-          "jovem",
-          "que",
-          "casou",
-          "aos",
-          "anos",
-          "fugir"
+          "ceuta",
+          "policia",
+          "remove",
+          "ultimo",
+          "acampamento",
+          "imigrantes"
         ],
         "long_tail": [
-          "A jovem que se casou aos 15 anos para fugir de abusos do padrasto e virou advogada 'popstar' na internet 2026-10-11",
+          "Em Ceuta, polícia remove último acampamento de imigrantes em praia antes de visita do rei 2026-10-11",
           "notícias mundiais outubro 2026"
         ],
         "trend_keywords": [],
         "entity_keywords": [
-          "jovem",
-          "que",
-          "casou",
-          "aos",
-          "anos",
-          "fugir"
+          "ceuta",
+          "policia",
+          "remove",
+          "ultimo",
+          "acampamento",
+          "imigrantes"
         ],
         "freshness_keywords": [
           "2026-10-11"
@@ -123,43 +1091,250 @@
         "source_keywords": [
           "G1 Mundo"
         ],
-        "meta_title": "A jovem que se casou aos 15 anos para fugir de abusos do…",
+        "meta_title": "Em Ceuta, polícia remove último acampamento de imigrantes…",
         "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-11. Abra a fonte original para o contexto completo.",
         "keywords": [
           "notícias do mundo 2026-10-11",
           "notícias do mundo",
           "notícias internacionais",
-          "jovem",
-          "que",
-          "casou",
-          "aos",
-          "anos",
-          "fugir",
-          "A jovem que se casou aos 15 anos para fugir de abusos do padrasto e virou advogada 'popstar' na internet 2026-10-11",
+          "ceuta",
+          "policia",
+          "remove",
+          "ultimo",
+          "acampamento",
+          "imigrantes",
+          "Em Ceuta, polícia remove último acampamento de imigrantes em praia antes de visita do rei 2026-10-11",
           "notícias mundiais outubro 2026",
           "2026-10-11",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-11T09:37:11.751Z"
+        "seo_generated_at": "2026-10-11T15:56:23.590Z"
+      }
+    },
+    {
+      "id": "8dc5fd9a",
+      "title": "Papa Leão XIV: maioria dos nódulos pulmonares é benigna, mas risco aumenta com a idade; entenda",
+      "url": "https://g1.globo.com/saude/noticia/2026/10/11/papa-leao-xiv-maioria-dos-nodulos-pulmonares-e-benigna-mas-risco-aumenta-com-a-idade-entenda.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-11T12:05:16.000Z",
+      "discovered_at": "2026-10-11T15:56:23.590Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "Papa Leão XIV",
+      "description": "World news reported by G1 Mundo on 2026-10-11. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/krMjtdt5EbVYN-KlCM5CCWVXMBg=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/6/8/ZA5tuORaAfvDEuAKI4Qg/afp-20261011-d2wa2zn-v1-highres-vaticanreligionpopeangelus.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/papa-leao-xiv-maioria-dos-nodulos-pulmonares-e-benigna-mas-risco-aumenta-com-a-i-8dc5fd/",
+      "landing_url": "https://matchapp.tv/?news=8dc5fd9a#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-11",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "papa",
+          "leao",
+          "xiv",
+          "maioria",
+          "nodulos",
+          "pulmonares"
+        ],
+        "long_tail": [
+          "Papa Leão XIV: maioria dos nódulos pulmonares é benigna, mas risco aumenta com a idade; entenda 2026-10-11",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "papa",
+          "leao",
+          "xiv",
+          "maioria",
+          "nodulos",
+          "pulmonares"
+        ],
+        "freshness_keywords": [
+          "2026-10-11"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Papa Leão XIV: maioria dos nódulos pulmonares é benigna,…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-11. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-11",
+          "notícias do mundo",
+          "notícias internacionais",
+          "papa",
+          "leao",
+          "xiv",
+          "maioria",
+          "nodulos",
+          "pulmonares",
+          "Papa Leão XIV: maioria dos nódulos pulmonares é benigna, mas risco aumenta com a idade; entenda 2026-10-11",
+          "notícias mundiais outubro 2026",
+          "2026-10-11",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-11T15:56:23.590Z"
+      }
+    },
+    {
+      "id": "78a89d71",
+      "title": "Homes and bridges swept away as fresh floods hit Nepal",
+      "url": "https://www.bbc.co.uk/news/articles/ck86zppejjw3o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-11T12:03:52.000Z",
+      "discovered_at": "2026-10-11T15:56:23.590Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-11. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/9cf2/live/9cbf47b0-c56b-11f1-9a39-31b474234113.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/homes-and-bridges-swept-away-as-fresh-floods-hit-nepal-78a89d/",
+      "landing_url": "https://matchapp.tv/?news=78a89d71#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-11",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "homes",
+          "bridges",
+          "swept",
+          "away",
+          "fresh",
+          "floods"
+        ],
+        "long_tail": [
+          "Homes and bridges swept away as fresh floods hit Nepal 2026-10-11",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "homes",
+          "bridges",
+          "swept",
+          "away",
+          "fresh",
+          "floods"
+        ],
+        "freshness_keywords": [
+          "2026-10-11"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Homes and bridges swept away as fresh floods hit Nepal |…",
+        "meta_description": "World report published by BBC World on 2026-10-11. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-11",
+          "world news",
+          "global headlines",
+          "homes",
+          "bridges",
+          "swept",
+          "away",
+          "fresh",
+          "floods",
+          "Homes and bridges swept away as fresh floods hit Nepal 2026-10-11",
+          "world news October 2026",
+          "2026-10-11",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-11T15:56:23.590Z"
+      }
+    },
+    {
+      "id": "598576eb",
+      "title": "Zelensky rebate Trump e diz que Ucrânia só interromperá ataques se a Rússia fizer o mesmo",
+      "url": "https://g1.globo.com/mundo/ucrania-russia/noticia/2026/10/11/zelensky-rebate-trump-e-diz-que-ucrania-so-interrompera-ataques-se-a-russia-tambem-os-parar.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-11T11:40:01.000Z",
+      "discovered_at": "2026-10-11T15:56:23.590Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-11. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/9lXi2SMYvBigiYI5KgHfldlWUQA=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2025/A/G/toVFKBTzAkGvGI0iBsAw/2025-08-18t175855z-1199898741-rc2t9ga1ofld-rtrmadp-3-ukraine-crisis-summit.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/zelensky-rebate-trump-e-diz-que-ucrania-so-interrompera-ataques-se-a-russia-fize-598576/",
+      "landing_url": "https://matchapp.tv/?news=598576eb#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-11",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "zelensky",
+          "rebate",
+          "trump",
+          "diz",
+          "que",
+          "ucrania"
+        ],
+        "long_tail": [
+          "Zelensky rebate Trump e diz que Ucrânia só interromperá ataques se a Rússia fizer o mesmo 2026-10-11",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "zelensky",
+          "rebate",
+          "trump",
+          "diz",
+          "que",
+          "ucrania"
+        ],
+        "freshness_keywords": [
+          "2026-10-11"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Zelensky rebate Trump e diz que Ucrânia só interromperá…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-11. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-11",
+          "notícias do mundo",
+          "notícias internacionais",
+          "zelensky",
+          "rebate",
+          "trump",
+          "diz",
+          "que",
+          "ucrania",
+          "Zelensky rebate Trump e diz que Ucrânia só interromperá ataques se a Rússia fizer o mesmo 2026-10-11",
+          "notícias mundiais outubro 2026",
+          "2026-10-11",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-11T15:56:23.590Z"
       }
     },
     {
       "id": "c77f7654",
-      "title": "Delhi sees more protests as 'cockroach' group's leaders released",
+      "title": "Delhi sees more protests as freed 'cockroach' group's leaders vow to fight on",
       "url": "https://www.bbc.co.uk/news/articles/c84g179n2393o?at_medium=RSS&at_campaign=rss",
       "source": "BBC World",
       "source_domain": "bbc.co.uk",
       "source_home": "https://www.bbc.co.uk",
       "country": "GLOBAL",
       "language": "en",
-      "published_at": "2026-10-11T08:50:21.000Z",
+      "published_at": "2026-10-11T11:11:42.000Z",
       "discovered_at": "2026-10-11T09:16:04.293Z",
       "event_type": "Entertainment",
       "category": "world",
       "person": "",
       "description": "World news reported by BBC World on 2026-10-11. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/1a96/live/07c16320-c53c-11f1-ae34-756aa0b18b99.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/delhi-sees-more-protests-as-cockroach-group-s-leaders-released-c77f76/",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/e56a/live/17da0620-c561-11f1-9cae-455625013d45.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/delhi-sees-more-protests-as-freed-cockroach-group-s-leaders-vow-to-fight-on-c77f76/",
       "landing_url": "https://matchapp.tv/?news=c77f7654#latest-news",
       "seo": {
         "primary_keyword": "world news 2026-10-11",
@@ -170,11 +1345,11 @@
           "sees",
           "more",
           "protests",
-          "cockroach",
-          "group"
+          "freed",
+          "cockroach"
         ],
         "long_tail": [
-          "Delhi sees more protests as 'cockroach' group's leaders released 2026-10-11",
+          "Delhi sees more protests as freed 'cockroach' group's leaders vow to fight on 2026-10-11",
           "world news October 2026"
         ],
         "trend_keywords": [],
@@ -183,8 +1358,8 @@
           "sees",
           "more",
           "protests",
-          "cockroach",
-          "group"
+          "freed",
+          "cockroach"
         ],
         "freshness_keywords": [
           "2026-10-11"
@@ -192,7 +1367,7 @@
         "source_keywords": [
           "BBC World"
         ],
-        "meta_title": "Delhi sees more protests as 'cockroach' group's leaders…",
+        "meta_title": "Delhi sees more protests as freed 'cockroach' group's…",
         "meta_description": "World report published by BBC World on 2026-10-11. Open the original report for full context.",
         "keywords": [
           "world news 2026-10-11",
@@ -202,58 +1377,58 @@
           "sees",
           "more",
           "protests",
+          "freed",
           "cockroach",
-          "group",
-          "Delhi sees more protests as 'cockroach' group's leaders released 2026-10-11",
+          "Delhi sees more protests as freed 'cockroach' group's leaders vow to fight on 2026-10-11",
           "world news October 2026",
           "2026-10-11",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-11T09:37:11.751Z"
+        "seo_generated_at": "2026-10-11T15:56:23.590Z"
       }
     },
     {
-      "id": "23fbe44e",
-      "title": "FMI alerta: disparadas e choques de preços podem ser mais frequentes e afetar inflação por anos",
-      "url": "https://g1.globo.com/economia/noticia/2026/10/11/fmi-alerta-disparadas-e-choques-de-precos-podem-ser-mais-frequentes-e-afetar-inflacao-por-anos.ghtml",
+      "id": "70d57104",
+      "title": "Papa Leão XIV anuncia operação para retirar nódulo do pulmão em estágio 'muito inicial'",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/11/papa-leao-xiv-anuncia-operacao-para-retirar-nodulo-do-pulmao.ghtml",
       "source": "G1 Mundo",
       "source_domain": "g1.globo.com",
       "source_home": "https://g1.globo.com",
       "country": "GLOBAL",
       "language": "pt",
-      "published_at": "2026-10-11T08:00:01.000Z",
-      "discovered_at": "2026-10-11T09:16:04.293Z",
+      "published_at": "2026-10-11T10:32:52.000Z",
+      "discovered_at": "2026-10-11T15:56:23.590Z",
       "event_type": "Entertainment",
       "category": "world",
-      "person": "",
+      "person": "Papa Leão XIV",
       "description": "World news reported by G1 Mundo on 2026-10-11. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/_lmVwMlNO_776vG_9bH66EQgqec=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/Y/Q/gK6psQSC6QRAbKoS7ZBA/thumb-videos-g1.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/fmi-alerta-disparadas-e-choques-de-precos-podem-ser-mais-frequentes-e-afetar-inf-23fbe4/",
-      "landing_url": "https://matchapp.tv/?news=23fbe44e#latest-news",
+      "image": "https://s2-g1.glbimg.com/krMjtdt5EbVYN-KlCM5CCWVXMBg=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/6/8/ZA5tuORaAfvDEuAKI4Qg/afp-20261011-d2wa2zn-v1-highres-vaticanreligionpopeangelus.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/papa-leao-xiv-anuncia-operacao-para-retirar-nodulo-do-pulmao-em-estagio-muito-in-70d571/",
+      "landing_url": "https://matchapp.tv/?news=70d57104#latest-news",
       "seo": {
         "primary_keyword": "notícias do mundo 2026-10-11",
         "short_tail": [
           "notícias do mundo",
           "notícias internacionais",
-          "fmi",
-          "alerta",
-          "disparadas",
-          "choques",
-          "precos",
-          "podem"
+          "papa",
+          "leao",
+          "xiv",
+          "anuncia",
+          "operacao",
+          "retirar"
         ],
         "long_tail": [
-          "FMI alerta: disparadas e choques de preços podem ser mais frequentes e afetar inflação por anos 2026-10-11",
+          "Papa Leão XIV anuncia operação para retirar nódulo do pulmão em estágio 'muito inicial' 2026-10-11",
           "notícias mundiais outubro 2026"
         ],
         "trend_keywords": [],
         "entity_keywords": [
-          "fmi",
-          "alerta",
-          "disparadas",
-          "choques",
-          "precos",
-          "podem"
+          "papa",
+          "leao",
+          "xiv",
+          "anuncia",
+          "operacao",
+          "retirar"
         ],
         "freshness_keywords": [
           "2026-10-11"
@@ -261,137 +1436,68 @@
         "source_keywords": [
           "G1 Mundo"
         ],
-        "meta_title": "FMI alerta: disparadas e choques de preços podem ser mais…",
+        "meta_title": "Papa Leão XIV anuncia operação para retirar nódulo do…",
         "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-11. Abra a fonte original para o contexto completo.",
         "keywords": [
           "notícias do mundo 2026-10-11",
           "notícias do mundo",
           "notícias internacionais",
-          "fmi",
-          "alerta",
-          "disparadas",
-          "choques",
-          "precos",
-          "podem",
-          "FMI alerta: disparadas e choques de preços podem ser mais frequentes e afetar inflação por anos 2026-10-11",
+          "papa",
+          "leao",
+          "xiv",
+          "anuncia",
+          "operacao",
+          "retirar",
+          "Papa Leão XIV anuncia operação para retirar nódulo do pulmão em estágio 'muito inicial' 2026-10-11",
           "notícias mundiais outubro 2026",
           "2026-10-11",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-11T09:37:11.751Z"
+        "seo_generated_at": "2026-10-11T15:56:23.590Z"
       }
     },
     {
-      "id": "ea1347cc",
-      "title": "Quem é o homem mais rico da África — e por que ele quer vender parte de seu império",
-      "url": "https://g1.globo.com/economia/noticia/2026/10/11/quem-e-o-homem-mais-rico-da-africa-e-por-que-ele-quer-vender-parte-de-seu-imperio.ghtml",
+      "id": "1695624c",
+      "title": "O que se sabe sobre ataque a aeroporto na Arábia Saudita que matou 12 e feriu mais de 300",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/11/o-que-se-sabe-sobre-ataque-a-aeroporto-na-arabia-saudita-que-matou-12-e-feriu-mais-300.ghtml",
       "source": "G1 Mundo",
       "source_domain": "g1.globo.com",
       "source_home": "https://g1.globo.com",
       "country": "GLOBAL",
       "language": "pt",
-      "published_at": "2026-10-11T08:00:00.000Z",
-      "discovered_at": "2026-10-11T09:16:04.293Z",
+      "published_at": "2026-10-11T10:30:31.000Z",
+      "discovered_at": "2026-10-11T15:56:23.590Z",
       "event_type": "Entertainment",
       "category": "world",
       "person": "",
       "description": "World news reported by G1 Mundo on 2026-10-11. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/6A38OxCOBil0uPrQUcAo5RDWn7w=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/v/4/WFgelSR9qoYhzJBCRkNg/hr5nzyicpvnjperjnsvriaatqu.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/quem-e-o-homem-mais-rico-da-africa-e-por-que-ele-quer-vender-parte-de-seu-imperi-ea1347/",
-      "landing_url": "https://matchapp.tv/?news=ea1347cc#latest-news",
+      "image": "https://s2-g1.glbimg.com/o1D15QSdMfSZXEaKsQoKVb4gs30=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/R/x/D4RCnURlm6F9AX3xifrQ/novo-projeto-2-.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/o-que-se-sabe-sobre-ataque-a-aeroporto-na-arabia-saudita-que-matou-12-e-feriu-ma-169562/",
+      "landing_url": "https://matchapp.tv/?news=1695624c#latest-news",
       "seo": {
         "primary_keyword": "notícias do mundo 2026-10-11",
         "short_tail": [
           "notícias do mundo",
           "notícias internacionais",
-          "quem",
-          "homem",
-          "mais",
-          "rico",
-          "africa",
-          "que"
-        ],
-        "long_tail": [
-          "Quem é o homem mais rico da África — e por que ele quer vender parte de seu império 2026-10-11",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "quem",
-          "homem",
-          "mais",
-          "rico",
-          "africa",
-          "que"
-        ],
-        "freshness_keywords": [
-          "2026-10-11"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Quem é o homem mais rico da África — e por que ele quer…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-11. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-11",
-          "notícias do mundo",
-          "notícias internacionais",
-          "quem",
-          "homem",
-          "mais",
-          "rico",
-          "africa",
           "que",
-          "Quem é o homem mais rico da África — e por que ele quer vender parte de seu império 2026-10-11",
-          "notícias mundiais outubro 2026",
-          "2026-10-11",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-11T09:37:11.751Z"
-      }
-    },
-    {
-      "id": "ac6a890d",
-      "title": "'Google russo' fecha centro de dados após ataque com drones; é o 3º caso em poucos dias",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/11/google-russo-fecha-centro-de-dados-apos-ataque-com-drones-e-o-3o-caso-em-poucos-dias.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-11T07:33:14.000Z",
-      "discovered_at": "2026-10-11T09:16:04.293Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-11. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/yZf7UYfcd4yvGp74zDK27FmV4SA=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/g/I/lwDwqTQ6GpTDq8TBXYYw/2026-10-08t115241z-715538642-rc2zyna3wy9p-rtrmadp-3-ukraine-crisis-russia-yandex-ugccon.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/google-russo-fecha-centro-de-dados-apos-ataque-com-drones-e-o-3-caso-em-poucos-d-ac6a89/",
-      "landing_url": "https://matchapp.tv/?news=ac6a890d#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-11",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "google",
-          "russo",
-          "fecha",
-          "centro",
-          "dados",
-          "apos"
+          "sabe",
+          "sobre",
+          "ataque",
+          "aeroporto",
+          "arabia"
         ],
         "long_tail": [
-          "'Google russo' fecha centro de dados após ataque com drones; é o 3º caso em poucos dias 2026-10-11",
+          "O que se sabe sobre ataque a aeroporto na Arábia Saudita que matou 12 e feriu mais de 300 2026-10-11",
           "notícias mundiais outubro 2026"
         ],
         "trend_keywords": [],
         "entity_keywords": [
-          "google",
-          "russo",
-          "fecha",
-          "centro",
-          "dados",
-          "apos"
+          "que",
+          "sabe",
+          "sobre",
+          "ataque",
+          "aeroporto",
+          "arabia"
         ],
         "freshness_keywords": [
           "2026-10-11"
@@ -399,159 +1505,93 @@
         "source_keywords": [
           "G1 Mundo"
         ],
-        "meta_title": "'Google russo' fecha centro de dados após ataque com…",
+        "meta_title": "O que se sabe sobre ataque a aeroporto na Arábia Saudita…",
         "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-11. Abra a fonte original para o contexto completo.",
         "keywords": [
           "notícias do mundo 2026-10-11",
           "notícias do mundo",
           "notícias internacionais",
-          "google",
-          "russo",
-          "fecha",
-          "centro",
-          "dados",
-          "apos",
-          "'Google russo' fecha centro de dados após ataque com drones; é o 3º caso em poucos dias 2026-10-11",
+          "que",
+          "sabe",
+          "sobre",
+          "ataque",
+          "aeroporto",
+          "arabia",
+          "O que se sabe sobre ataque a aeroporto na Arábia Saudita que matou 12 e feriu mais de 300 2026-10-11",
           "notícias mundiais outubro 2026",
           "2026-10-11",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-11T09:37:11.751Z"
+        "seo_generated_at": "2026-10-11T15:56:23.590Z"
       }
     },
     {
-      "id": "399afca2",
-      "title": "Council exceeds Surrey tree planting target",
-      "url": "https://www.bbc.co.uk/news/articles/cr4g1wy331pdo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC Science",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
+      "id": "2b28f171",
+      "title": "Deslizamento de terra provoca nova enchente no Nepal e alerta de evacuação",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/11/deslizamento-de-terra-provoca-nova-enchente-no-nepal-e-alerta-de-evacuacao.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
       "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-11T07:04:06.000Z",
-      "discovered_at": "2026-10-11T09:16:04.293Z",
+      "language": "pt",
+      "published_at": "2026-10-11T10:21:30.000Z",
+      "discovered_at": "2026-10-11T15:56:23.590Z",
       "event_type": "Entertainment",
       "category": "world",
       "person": "",
-      "description": "World news reported by BBC Science on 2026-10-11. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/1225/live/d826b5a0-c4bb-11f1-9ce9-55293bd7f0d9.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/council-exceeds-surrey-tree-planting-target-399afc/",
-      "landing_url": "https://matchapp.tv/?news=399afca2#latest-news",
+      "description": "World news reported by G1 Mundo on 2026-10-11. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/5JsnAIwz0ywVI9sDmM4WcKeT6VY=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/8/K/0nNmBuTduAeyG32pjqJQ/2026-08-30t133732z-35845283-rc2x8nafc30j-rtrmadp-3-nepal-floods.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/deslizamento-de-terra-provoca-nova-enchente-no-nepal-e-alerta-de-evacuacao-2b28f1/",
+      "landing_url": "https://matchapp.tv/?news=2b28f171#latest-news",
       "seo": {
-        "primary_keyword": "world news 2026-10-11",
+        "primary_keyword": "notícias do mundo 2026-10-11",
         "short_tail": [
-          "world news",
-          "global headlines",
-          "council",
-          "exceeds",
-          "surrey",
-          "tree",
-          "planting",
-          "target"
+          "notícias do mundo",
+          "notícias internacionais",
+          "deslizamento",
+          "terra",
+          "provoca",
+          "nova",
+          "enchente",
+          "nepal"
         ],
         "long_tail": [
-          "Council exceeds Surrey tree planting target 2026-10-11",
-          "world news October 2026"
+          "Deslizamento de terra provoca nova enchente no Nepal e alerta de evacuação 2026-10-11",
+          "notícias mundiais outubro 2026"
         ],
         "trend_keywords": [],
         "entity_keywords": [
-          "council",
-          "exceeds",
-          "surrey",
-          "tree",
-          "planting",
-          "target"
+          "deslizamento",
+          "terra",
+          "provoca",
+          "nova",
+          "enchente",
+          "nepal"
         ],
         "freshness_keywords": [
           "2026-10-11"
         ],
         "source_keywords": [
-          "BBC Science"
+          "G1 Mundo"
         ],
-        "meta_title": "Council exceeds Surrey tree planting target | World News |…",
-        "meta_description": "World report published by BBC Science on 2026-10-11. Open the original report for full context.",
+        "meta_title": "Deslizamento de terra provoca nova enchente no Nepal e…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-11. Abra a fonte original para o contexto completo.",
         "keywords": [
-          "world news 2026-10-11",
-          "world news",
-          "global headlines",
-          "council",
-          "exceeds",
-          "surrey",
-          "tree",
-          "planting",
-          "target",
-          "Council exceeds Surrey tree planting target 2026-10-11",
-          "world news October 2026",
+          "notícias do mundo 2026-10-11",
+          "notícias do mundo",
+          "notícias internacionais",
+          "deslizamento",
+          "terra",
+          "provoca",
+          "nova",
+          "enchente",
+          "nepal",
+          "Deslizamento de terra provoca nova enchente no Nepal e alerta de evacuação 2026-10-11",
+          "notícias mundiais outubro 2026",
           "2026-10-11",
-          "BBC Science"
+          "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-11T09:37:11.751Z"
-      }
-    },
-    {
-      "id": "71400eff",
-      "title": "'I watched Apollo 17 launch with Neil Armstrong'",
-      "url": "https://www.bbc.co.uk/news/articles/ckdd86nglrggo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC Science",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-11T06:32:51.000Z",
-      "discovered_at": "2026-10-11T09:16:04.293Z",
-      "event_type": "Release",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC Science on 2026-10-11. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/7038/live/a71143e0-c3cb-11f1-8fc5-335d62f6730b.png",
-      "matchapp_url": "https://matchapp.tv/news/articles/i-watched-apollo-17-launch-with-neil-armstrong-71400e/",
-      "landing_url": "https://matchapp.tv/?news=71400eff#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-11",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "watched",
-          "apollo",
-          "launch",
-          "neil",
-          "armstrong"
-        ],
-        "long_tail": [
-          "'I watched Apollo 17 launch with Neil Armstrong' 2026-10-11",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "watched",
-          "apollo",
-          "launch",
-          "neil",
-          "armstrong"
-        ],
-        "freshness_keywords": [
-          "2026-10-11"
-        ],
-        "source_keywords": [
-          "BBC Science"
-        ],
-        "meta_title": "'I watched Apollo 17 launch with Neil Armstrong' | World…",
-        "meta_description": "World report published by BBC Science on 2026-10-11. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-11",
-          "world news",
-          "global headlines",
-          "watched",
-          "apollo",
-          "launch",
-          "neil",
-          "armstrong",
-          "'I watched Apollo 17 launch with Neil Armstrong' 2026-10-11",
-          "world news October 2026",
-          "2026-10-11",
-          "BBC Science"
-        ],
-        "seo_generated_at": "2026-10-11T09:37:11.751Z"
+        "seo_generated_at": "2026-10-11T15:56:23.590Z"
       }
     },
     {
@@ -645,76 +1685,7 @@
           "hollywoodreporter.com Netflix Has Used AI",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T09:37:11.751Z"
-      }
-    },
-    {
-      "id": "aa744a24",
-      "title": "US justice department investigates TV networks over Trump pool coverage",
-      "url": "https://www.bbc.co.uk/news/articles/c9vgregzk6gro?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-11T05:05:43.000Z",
-      "discovered_at": "2026-10-11T09:16:04.293Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-11. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/1dbb/live/9bb34c30-c53a-11f1-ae34-756aa0b18b99.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/us-justice-department-investigates-tv-networks-over-trump-pool-coverage-aa744a/",
-      "landing_url": "https://matchapp.tv/?news=aa744a24#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-11",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "justice",
-          "department",
-          "investigates",
-          "networks",
-          "over",
-          "trump"
-        ],
-        "long_tail": [
-          "US justice department investigates TV networks over Trump pool coverage 2026-10-11",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "justice",
-          "department",
-          "investigates",
-          "networks",
-          "over",
-          "trump"
-        ],
-        "freshness_keywords": [
-          "2026-10-11"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "US justice department investigates TV networks over Trump…",
-        "meta_description": "World report published by BBC World on 2026-10-11. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-11",
-          "world news",
-          "global headlines",
-          "justice",
-          "department",
-          "investigates",
-          "networks",
-          "over",
-          "trump",
-          "US justice department investigates TV networks over Trump pool coverage 2026-10-11",
-          "world news October 2026",
-          "2026-10-11",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-11T09:37:11.751Z"
+        "seo_generated_at": "2026-10-11T15:56:23.590Z"
       }
     },
     {
@@ -813,7 +1784,7 @@
           "hollywoodreporter.com treasure island review david",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T09:37:11.751Z"
+        "seo_generated_at": "2026-10-11T15:56:23.590Z"
       }
     },
     {
@@ -914,76 +1885,7 @@
           "g1.globo.com tom chega hoje aos",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T09:37:11.751Z"
-      }
-    },
-    {
-      "id": "d613db04",
-      "title": "'Time for Ukraine to get new president,' says Trump after Zelensky condemns diesel deal",
-      "url": "https://www.bbc.co.uk/news/articles/cqe8r5l7n92jo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-11T01:41:29.000Z",
-      "discovered_at": "2026-10-10T19:29:13.776Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-11. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/57e8/live/ab163790-c50e-11f1-9f41-61faa76b4354.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/time-for-ukraine-to-get-new-president-says-trump-after-zelensky-condemns-diesel--d613db/",
-      "landing_url": "https://matchapp.tv/?news=d613db04#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-11",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "time",
-          "ukraine",
-          "get",
-          "new",
-          "president",
-          "says"
-        ],
-        "long_tail": [
-          "'Time for Ukraine to get new president,' says Trump after Zelensky condemns diesel deal 2026-10-11",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "time",
-          "ukraine",
-          "get",
-          "new",
-          "president",
-          "says"
-        ],
-        "freshness_keywords": [
-          "2026-10-11"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "'Time for Ukraine to get new president,' says Trump after…",
-        "meta_description": "World report published by BBC World on 2026-10-11. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-11",
-          "world news",
-          "global headlines",
-          "time",
-          "ukraine",
-          "get",
-          "new",
-          "president",
-          "says",
-          "'Time for Ukraine to get new president,' says Trump after Zelensky condemns diesel deal 2026-10-11",
-          "world news October 2026",
-          "2026-10-11",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-11T09:37:11.751Z"
+        "seo_generated_at": "2026-10-11T15:56:23.590Z"
       }
     },
     {
@@ -1077,7 +1979,7 @@
           "hollywoodreporter.com Justice Department Investigating TV",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T09:37:11.751Z"
+        "seo_generated_at": "2026-10-11T15:56:23.590Z"
       }
     },
     {
@@ -1176,7 +2078,7 @@
           "hollywoodreporter.com blade runner 2099 drops",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T09:37:11.751Z"
+        "seo_generated_at": "2026-10-11T15:56:23.590Z"
       }
     },
     {
@@ -1194,7 +2096,7 @@
       "category": "entertainment",
       "person": "",
       "description": "entertainment headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/1ce5/live/85c0dd40-c308-11f1-8f04-85217d686658.jpg",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/28da/live/88bf0310-c56e-11f1-bd33-db1f7eaf2b30.jpg",
       "matchapp_url": "https://matchapp.tv/news/articles/inside-the-room-what-it-was-like-to-be-with-blackpink-s-lisa-as-race-scandal-eru-143d50/",
       "landing_url": "https://matchapp.tv/?news=143d505e#latest-news",
       "seo": {
@@ -1275,799 +2177,7 @@
           "bbc.co.uk inside room what like",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T09:37:11.751Z"
-      }
-    },
-    {
-      "id": "40239b0c",
-      "title": "Four dead and thousands without power after Hurricane Isaias lashes US",
-      "url": "https://www.bbc.co.uk/news/articles/cmje5x80yg70o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-10T23:19:55.000Z",
-      "discovered_at": "2026-10-10T19:29:13.776Z",
-      "event_type": "Obituary",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-10. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/a454/live/61dbc890-c4e3-11f1-a793-e9d00826e617.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/four-dead-and-thousands-without-power-after-hurricane-isaias-lashes-us-40239b/",
-      "landing_url": "https://matchapp.tv/?news=40239b0c#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-10",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "four",
-          "dead",
-          "thousands",
-          "without",
-          "power",
-          "after"
-        ],
-        "long_tail": [
-          "Four dead and thousands without power after Hurricane Isaias lashes US 2026-10-10",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "four",
-          "dead",
-          "thousands",
-          "without",
-          "power",
-          "after"
-        ],
-        "freshness_keywords": [
-          "2026-10-10"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Four dead and thousands without power after Hurricane…",
-        "meta_description": "World report published by BBC World on 2026-10-10. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-10",
-          "world news",
-          "global headlines",
-          "four",
-          "dead",
-          "thousands",
-          "without",
-          "power",
-          "after",
-          "Four dead and thousands without power after Hurricane Isaias lashes US 2026-10-10",
-          "world news October 2026",
-          "2026-10-10",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-11T09:37:11.751Z"
-      }
-    },
-    {
-      "id": "10fbfd74",
-      "title": "Joseph Gordon-Levitt Says Instead of Being Afraid of AI, “We Should Be Concerned About the People Building AI”",
-      "url": "https://www.hollywoodreporter.com/movies/movie-news/joseph-gordon-levitt-concern-people-building-ai-1236727031/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-10-10T22:48:07.000Z",
-      "discovered_at": "2026-10-10T22:53:45.587Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "Joseph Gordon-Levitt Says Instead",
-      "description": "Joseph Gordon-Levitt Says Instead: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/06/GettyImages-2258756988.jpg?crop=0px%2C357px%2C5994px%2C3358px&resize=1440%2C810",
-      "matchapp_url": "https://matchapp.tv/news/articles/joseph-gordon-levitt-says-instead-of-being-afraid-of-ai-we-should-be-concerned-a-10fbfd/",
-      "landing_url": "https://matchapp.tv/?news=10fbfd74#latest-news",
-      "seo": {
-        "primary_keyword": "Joseph Gordon-Levitt Says Instead latest news",
-        "short_tail": [
-          "Joseph Gordon-Levitt Says Instead",
-          "Joseph Gordon-Levitt Says Instead news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "Joseph Gordon-Levitt Says Instead latest news October 2026",
-          "Joseph Gordon-Levitt Says Instead entertainment update 2026",
-          "Joseph Gordon-Levitt Says Instead news 2026-10-10",
-          "latest entertainment news about Joseph Gordon-Levitt Says Instead",
-          "joseph gordon levitt says instead joseph latest update",
-          "The Hollywood Reporter Joseph Gordon-Levitt Says Instead entertainment",
-          "latest news about Joseph Gordon-Levitt Says Instead October 2026",
-          "Joseph Gordon-Levitt Says Instead entertainment news 2026-10-10",
-          "what happened with Joseph Gordon-Levitt Says Instead"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Joseph Gordon-Levitt Says Instead",
-          "joseph",
-          "gordon",
-          "levitt",
-          "says",
-          "instead"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-10",
-          "Joseph Gordon-Levitt Says Instead 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter Joseph Gordon-Levitt Says Instead",
-          "hollywoodreporter.com Joseph Gordon-Levitt Says Instead",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "Joseph Gordon-Levitt Says Instead of Being Afraid of AI,…",
-        "meta_description": "Joseph Gordon-Levitt Says Instead: Entertainment update reported by The Hollywood Reporter on 2026-10-10. See verified context, publication time and the…",
-        "keywords": [
-          "Joseph Gordon-Levitt Says Instead latest news",
-          "Joseph Gordon-Levitt Says Instead",
-          "Joseph Gordon-Levitt Says Instead news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "Joseph Gordon-Levitt Says Instead latest news October 2026",
-          "Joseph Gordon-Levitt Says Instead entertainment update 2026",
-          "Joseph Gordon-Levitt Says Instead news 2026-10-10",
-          "latest entertainment news about Joseph Gordon-Levitt Says Instead",
-          "joseph gordon levitt says instead joseph latest update",
-          "The Hollywood Reporter Joseph Gordon-Levitt Says Instead entertainment",
-          "latest news about Joseph Gordon-Levitt Says Instead October 2026",
-          "Joseph Gordon-Levitt Says Instead entertainment news 2026-10-10",
-          "what happened with Joseph Gordon-Levitt Says Instead",
-          "joseph",
-          "gordon",
-          "levitt",
-          "says",
-          "instead",
-          "October 2026",
-          "2026-10-10",
-          "Joseph Gordon-Levitt Says Instead 2026",
-          "The Hollywood Reporter Joseph Gordon-Levitt Says Instead",
-          "hollywoodreporter.com Joseph Gordon-Levitt Says Instead",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-11T09:37:11.751Z"
-      }
-    },
-    {
-      "id": "5370b0b1",
-      "title": "Young men live in fear of being snatched off the streets and sold to Myanmar's army",
-      "url": "https://www.bbc.co.uk/news/articles/c680zlny0gk4o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-10T22:13:08.000Z",
-      "discovered_at": "2026-10-11T01:54:03.775Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-10. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/6204/live/aaaf6ea0-c21d-11f1-b7d8-6f930589c871.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/young-men-live-in-fear-of-being-snatched-off-the-streets-and-sold-to-myanmar-s-a-5370b0/",
-      "landing_url": "https://matchapp.tv/?news=5370b0b1#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-10",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "young",
-          "men",
-          "live",
-          "fear",
-          "being",
-          "snatched"
-        ],
-        "long_tail": [
-          "Young men live in fear of being snatched off the streets and sold to Myanmar's army 2026-10-10",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "young",
-          "men",
-          "live",
-          "fear",
-          "being",
-          "snatched"
-        ],
-        "freshness_keywords": [
-          "2026-10-10"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Young men live in fear of being snatched off the streets…",
-        "meta_description": "World report published by BBC World on 2026-10-10. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-10",
-          "world news",
-          "global headlines",
-          "young",
-          "men",
-          "live",
-          "fear",
-          "being",
-          "snatched",
-          "Young men live in fear of being snatched off the streets and sold to Myanmar's army 2026-10-10",
-          "world news October 2026",
-          "2026-10-10",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-11T09:37:11.751Z"
-      }
-    },
-    {
-      "id": "33d336a8",
-      "title": "Chris Rock Takes a Scalpel to L.A. in ‘Misty Green,’ Makes a Star of Rosalind Eleazar",
-      "url": "https://www.hollywoodreporter.com/movies/movie-features/misty-green-chris-rock-rosalind-eleazar-nyff-1236727022/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-10-10T21:57:20.000Z",
-      "discovered_at": "2026-10-10T22:53:45.587Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "Chris Rock Takes",
-      "description": "Chris Rock Takes: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/https___cdn.sanity.io_images_xq1bjtf4_production_ee6833b1a4153d2053bcda851c7fe084ab10768c-3840x1596-1.jpg?w=1440&h=810&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/chris-rock-takes-a-scalpel-to-l-a-in-misty-green-makes-a-star-of-rosalind-eleaza-33d336/",
-      "landing_url": "https://matchapp.tv/?news=33d336a8#latest-news",
-      "seo": {
-        "primary_keyword": "Chris Rock Takes latest news",
-        "short_tail": [
-          "Chris Rock Takes",
-          "Chris Rock Takes news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "Chris Rock Takes latest news October 2026",
-          "Chris Rock Takes entertainment update 2026",
-          "Chris Rock Takes news 2026-10-10",
-          "latest entertainment news about Chris Rock Takes",
-          "chris rock takes chris rock takes latest update",
-          "The Hollywood Reporter Chris Rock Takes entertainment",
-          "latest news about Chris Rock Takes October 2026",
-          "Chris Rock Takes entertainment news 2026-10-10",
-          "what happened with Chris Rock Takes"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Chris Rock Takes",
-          "chris",
-          "rock",
-          "takes",
-          "scalpel",
-          "misty"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-10",
-          "Chris Rock Takes 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter Chris Rock Takes",
-          "hollywoodreporter.com Chris Rock Takes",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "Chris Rock Takes a Scalpel to L.A. in ‘Misty Green,’ Makes…",
-        "meta_description": "Chris Rock Takes: Entertainment update reported by The Hollywood Reporter on 2026-10-10. See verified context, publication time and the original source via…",
-        "keywords": [
-          "Chris Rock Takes latest news",
-          "Chris Rock Takes",
-          "Chris Rock Takes news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "Chris Rock Takes latest news October 2026",
-          "Chris Rock Takes entertainment update 2026",
-          "Chris Rock Takes news 2026-10-10",
-          "latest entertainment news about Chris Rock Takes",
-          "chris rock takes chris rock takes latest update",
-          "The Hollywood Reporter Chris Rock Takes entertainment",
-          "latest news about Chris Rock Takes October 2026",
-          "Chris Rock Takes entertainment news 2026-10-10",
-          "what happened with Chris Rock Takes",
-          "chris",
-          "rock",
-          "takes",
-          "scalpel",
-          "misty",
-          "October 2026",
-          "2026-10-10",
-          "Chris Rock Takes 2026",
-          "The Hollywood Reporter Chris Rock Takes",
-          "hollywoodreporter.com Chris Rock Takes",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-11T09:37:11.751Z"
-      }
-    },
-    {
-      "id": "02bc0911",
-      "title": "Russian glide bomb attack on Zaporizhzhia kills at least 20 people",
-      "url": "https://www.bbc.co.uk/news/articles/cwvgdpv642g5o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-10T20:51:12.000Z",
-      "discovered_at": "2026-10-10T14:40:56.970Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-10. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/98ce/live/569e8e50-c49c-11f1-869c-8f95c437952a.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/russian-glide-bomb-attack-on-zaporizhzhia-kills-at-least-20-people-02bc09/",
-      "landing_url": "https://matchapp.tv/?news=02bc0911#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-10",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "russian",
-          "glide",
-          "bomb",
-          "attack",
-          "zaporizhzhia",
-          "kills"
-        ],
-        "long_tail": [
-          "Russian glide bomb attack on Zaporizhzhia kills at least 20 people 2026-10-10",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "russian",
-          "glide",
-          "bomb",
-          "attack",
-          "zaporizhzhia",
-          "kills"
-        ],
-        "freshness_keywords": [
-          "2026-10-10"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Russian glide bomb attack on Zaporizhzhia kills at least…",
-        "meta_description": "World report published by BBC World on 2026-10-10. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-10",
-          "world news",
-          "global headlines",
-          "russian",
-          "glide",
-          "bomb",
-          "attack",
-          "zaporizhzhia",
-          "kills",
-          "Russian glide bomb attack on Zaporizhzhia kills at least 20 people 2026-10-10",
-          "world news October 2026",
-          "2026-10-10",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-11T09:37:11.751Z"
-      }
-    },
-    {
-      "id": "bfe1561f",
-      "title": "Ava DuVernay Sounds the Alarm Over the “Erosion of Democracy” at ’14th’ World Premiere: “We Need to Fight”",
-      "url": "https://www.hollywoodreporter.com/movies/movie-news/ava-duvernay-need-to-fight-democracy-14th-premiere-1236726993/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-10-10T20:31:10.000Z",
-      "discovered_at": "2026-10-10T22:53:45.587Z",
-      "event_type": "Release",
-      "category": "entertainment",
-      "person": "Ava DuVernay Sounds",
-      "description": "Ava DuVernay Sounds: release headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/GettyImages-2299454055.jpg?w=1440&h=810&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/ava-duvernay-sounds-the-alarm-over-the-erosion-of-democracy-at-14th-world-premie-bfe156/",
-      "landing_url": "https://matchapp.tv/?news=bfe1561f#latest-news",
-      "seo": {
-        "primary_keyword": "Ava DuVernay Sounds latest news",
-        "short_tail": [
-          "Ava DuVernay Sounds",
-          "Ava DuVernay Sounds news",
-          "release",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "Ava DuVernay Sounds latest news October 2026",
-          "Ava DuVernay Sounds release update 2026",
-          "Ava DuVernay Sounds news 2026-10-10",
-          "latest release news about Ava DuVernay Sounds",
-          "ava duvernay sounds ava duvernay sounds latest update",
-          "The Hollywood Reporter Ava DuVernay Sounds release",
-          "latest news about Ava DuVernay Sounds October 2026",
-          "Ava DuVernay Sounds entertainment news 2026-10-10",
-          "what happened with Ava DuVernay Sounds"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Ava DuVernay Sounds",
-          "ava",
-          "duvernay",
-          "sounds",
-          "alarm",
-          "over"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-10",
-          "Ava DuVernay Sounds 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter Ava DuVernay Sounds",
-          "hollywoodreporter.com Ava DuVernay Sounds",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "Ava DuVernay Sounds the Alarm Over the “Erosion of…",
-        "meta_description": "Ava DuVernay Sounds: Release update reported by The Hollywood Reporter on 2026-10-10. See verified context, publication time and the original source via…",
-        "keywords": [
-          "Ava DuVernay Sounds latest news",
-          "Ava DuVernay Sounds",
-          "Ava DuVernay Sounds news",
-          "release",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "Ava DuVernay Sounds latest news October 2026",
-          "Ava DuVernay Sounds release update 2026",
-          "Ava DuVernay Sounds news 2026-10-10",
-          "latest release news about Ava DuVernay Sounds",
-          "ava duvernay sounds ava duvernay sounds latest update",
-          "The Hollywood Reporter Ava DuVernay Sounds release",
-          "latest news about Ava DuVernay Sounds October 2026",
-          "Ava DuVernay Sounds entertainment news 2026-10-10",
-          "what happened with Ava DuVernay Sounds",
-          "ava",
-          "duvernay",
-          "sounds",
-          "alarm",
-          "over",
-          "October 2026",
-          "2026-10-10",
-          "Ava DuVernay Sounds 2026",
-          "The Hollywood Reporter Ava DuVernay Sounds",
-          "hollywoodreporter.com Ava DuVernay Sounds",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-11T09:37:11.751Z"
-      }
-    },
-    {
-      "id": "f7fd7b63",
-      "title": "Anime Series ‘Sentinel 6’ in Development With NBA and NFL Pros Michael Carter-Williams and Jamaal Williams as EPs",
-      "url": "https://www.hollywoodreporter.com/tv/tv-news/anime-sentinel-6-king-vader-lesean-thomas-nfl-nba-veterans-1236726994/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-10-10T20:30:00.000Z",
-      "discovered_at": "2026-10-10T22:53:45.587Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "Anime Series",
-      "description": "Anime Series: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/6.jpg?w=1440&h=810&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/anime-series-sentinel-6-in-development-with-nba-and-nfl-pros-michael-carter-will-f7fd7b/",
-      "landing_url": "https://matchapp.tv/?news=f7fd7b63#latest-news",
-      "seo": {
-        "primary_keyword": "Anime Series latest news",
-        "short_tail": [
-          "Anime Series",
-          "Anime Series news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "Anime Series latest news October 2026",
-          "Anime Series entertainment update 2026",
-          "Anime Series news 2026-10-10",
-          "latest entertainment news about Anime Series",
-          "anime series anime series sentinel development latest update",
-          "The Hollywood Reporter Anime Series entertainment",
-          "latest news about Anime Series October 2026",
-          "Anime Series entertainment news 2026-10-10",
-          "what happened with Anime Series"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Anime Series",
-          "anime",
-          "series",
-          "sentinel",
-          "development",
-          "nba",
-          "nfl"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-10",
-          "Anime Series 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter Anime Series",
-          "hollywoodreporter.com Anime Series",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "Anime Series ‘Sentinel 6’ in Development With NBA and NFL…",
-        "meta_description": "Anime Series: Entertainment update reported by The Hollywood Reporter on 2026-10-10. See verified context, publication time and the original source via…",
-        "keywords": [
-          "Anime Series latest news",
-          "Anime Series",
-          "Anime Series news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "Anime Series latest news October 2026",
-          "Anime Series entertainment update 2026",
-          "Anime Series news 2026-10-10",
-          "latest entertainment news about Anime Series",
-          "anime series anime series sentinel development latest update",
-          "The Hollywood Reporter Anime Series entertainment",
-          "latest news about Anime Series October 2026",
-          "Anime Series entertainment news 2026-10-10",
-          "what happened with Anime Series",
-          "anime",
-          "series",
-          "sentinel",
-          "development",
-          "nba",
-          "nfl",
-          "October 2026",
-          "2026-10-10",
-          "Anime Series 2026",
-          "The Hollywood Reporter Anime Series",
-          "hollywoodreporter.com Anime Series",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-11T09:37:11.751Z"
-      }
-    },
-    {
-      "id": "0fe85a96",
-      "title": "OMS diz que causa da morte de funcionária de laboratório que estuda peste na Rússia segue desconhecida",
-      "url": "https://g1.globo.com/saude/noticia/2026/10/10/oms-diz-que-causa-da-morte-de-funcionaria-de-laboratorio-que-estuda-peste-na-russia-segue-desconhecida.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-10T20:26:41.000Z",
-      "discovered_at": "2026-10-10T22:53:45.587Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-10. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/K7kmK3rg_82dqGPgJKP_HsUy8TA=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/R/g/dZrGpJRLeAQRIWcGSY1w/ap26280458330634.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/oms-diz-que-causa-da-morte-de-funcionaria-de-laboratorio-que-estuda-peste-na-rus-0fe85a/",
-      "landing_url": "https://matchapp.tv/?news=0fe85a96#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-10",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "oms",
-          "diz",
-          "que",
-          "causa",
-          "morte",
-          "funcionaria"
-        ],
-        "long_tail": [
-          "OMS diz que causa da morte de funcionária de laboratório que estuda peste na Rússia segue desconhecida 2026-10-10",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "oms",
-          "diz",
-          "que",
-          "causa",
-          "morte",
-          "funcionaria"
-        ],
-        "freshness_keywords": [
-          "2026-10-10"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "OMS diz que causa da morte de funcionária de laboratório…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-10. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-10",
-          "notícias do mundo",
-          "notícias internacionais",
-          "oms",
-          "diz",
-          "que",
-          "causa",
-          "morte",
-          "funcionaria",
-          "OMS diz que causa da morte de funcionária de laboratório que estuda peste na Rússia segue desconhecida 2026-10-10",
-          "notícias mundiais outubro 2026",
-          "2026-10-10",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-11T09:37:11.751Z"
-      }
-    },
-    {
-      "id": "0e27ba70",
-      "title": "Ganhadora do Nobel da Paz reage contra sanções dos EUA ao Tribunal Penal Internacional: 'Inaceitáveis'",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/10/ganhadora-do-nobel-da-paz-reage-contra-sancoes-dos-eua-ao-tribunal-penal-internacional-inaceitaveis.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-10T20:03:33.000Z",
-      "discovered_at": "2026-10-10T22:53:45.587Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-10. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/QCGPIEydovbdfQZ8XmgMBihWkks=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/9/T/Uv6YAaQS2N2tjxzP5sUQ/meow-meow-meow-meow-68-.png",
-      "matchapp_url": "https://matchapp.tv/news/articles/ganhadora-do-nobel-da-paz-reage-contra-sancoes-dos-eua-ao-tribunal-penal-interna-0e27ba/",
-      "landing_url": "https://matchapp.tv/?news=0e27ba70#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-10",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "ganhadora",
-          "nobel",
-          "paz",
-          "reage",
-          "contra",
-          "sancoes"
-        ],
-        "long_tail": [
-          "Ganhadora do Nobel da Paz reage contra sanções dos EUA ao Tribunal Penal Internacional: 'Inaceitáveis' 2026-10-10",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "ganhadora",
-          "nobel",
-          "paz",
-          "reage",
-          "contra",
-          "sancoes"
-        ],
-        "freshness_keywords": [
-          "2026-10-10"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Ganhadora do Nobel da Paz reage contra sanções dos EUA ao…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-10. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-10",
-          "notícias do mundo",
-          "notícias internacionais",
-          "ganhadora",
-          "nobel",
-          "paz",
-          "reage",
-          "contra",
-          "sancoes",
-          "Ganhadora do Nobel da Paz reage contra sanções dos EUA ao Tribunal Penal Internacional: 'Inaceitáveis' 2026-10-10",
-          "notícias mundiais outubro 2026",
-          "2026-10-10",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-11T09:37:11.751Z"
-      }
-    },
-    {
-      "id": "e1b364f8",
-      "title": "Trump rebate Zelensky sobre diesel russo e sugere que Ucrânia tenha novo líder",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/10/trump-rebate-zelensky-sobre-diesel-russo-e-sugere-que-ucrania-tenha-novo-lider.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-10T19:57:40.000Z",
-      "discovered_at": "2026-10-10T22:53:45.587Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-10. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/9lXi2SMYvBigiYI5KgHfldlWUQA=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2025/A/G/toVFKBTzAkGvGI0iBsAw/2025-08-18t175855z-1199898741-rc2t9ga1ofld-rtrmadp-3-ukraine-crisis-summit.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/trump-rebate-zelensky-sobre-diesel-russo-e-sugere-que-ucrania-tenha-novo-lider-e1b364/",
-      "landing_url": "https://matchapp.tv/?news=e1b364f8#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-10",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "trump",
-          "rebate",
-          "zelensky",
-          "sobre",
-          "diesel",
-          "russo"
-        ],
-        "long_tail": [
-          "Trump rebate Zelensky sobre diesel russo e sugere que Ucrânia tenha novo líder 2026-10-10",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "trump",
-          "rebate",
-          "zelensky",
-          "sobre",
-          "diesel",
-          "russo"
-        ],
-        "freshness_keywords": [
-          "2026-10-10"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Trump rebate Zelensky sobre diesel russo e sugere que…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-10. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-10",
-          "notícias do mundo",
-          "notícias internacionais",
-          "trump",
-          "rebate",
-          "zelensky",
-          "sobre",
-          "diesel",
-          "russo",
-          "Trump rebate Zelensky sobre diesel russo e sugere que Ucrânia tenha novo líder 2026-10-10",
-          "notícias mundiais outubro 2026",
-          "2026-10-10",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-11T09:37:11.751Z"
+        "seo_generated_at": "2026-10-11T15:56:23.590Z"
       }
     },
     {
@@ -2165,7 +2275,7 @@
           "g1.globo.com Wagner Moura",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T09:37:11.751Z"
+        "seo_generated_at": "2026-10-11T15:56:23.590Z"
       }
     },
     {
@@ -2263,7 +2373,7 @@
           "g1.globo.com Marisa Monte",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T09:37:11.751Z"
+        "seo_generated_at": "2026-10-11T15:56:23.590Z"
       }
     },
     {
@@ -2364,7 +2474,7 @@
           "g1.globo.com minha globinho viva web",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T09:37:11.751Z"
+        "seo_generated_at": "2026-10-11T15:56:23.590Z"
       }
     },
     {
@@ -2463,7 +2573,7 @@
           "bbc.co.uk screams haunting scenes deadly",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T09:37:11.751Z"
+        "seo_generated_at": "2026-10-11T15:56:23.590Z"
       }
     },
     {
@@ -2563,7 +2673,7 @@
           "g1.globo.com TV Globinho",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T09:37:11.751Z"
+        "seo_generated_at": "2026-10-11T15:56:23.590Z"
       }
     },
     {
@@ -2664,7 +2774,7 @@
           "g1.globo.com kbrum poe reggae album",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T09:37:11.751Z"
+        "seo_generated_at": "2026-10-11T15:56:23.590Z"
       }
     },
     {
@@ -2763,7 +2873,7 @@
           "g1.globo.com saiba como giulia conheceu",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T09:37:11.751Z"
+        "seo_generated_at": "2026-10-11T15:56:23.590Z"
       }
     },
     {
@@ -2861,7 +2971,7 @@
           "bbc.co.uk country music star ella",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T09:37:11.751Z"
+        "seo_generated_at": "2026-10-11T15:56:23.590Z"
       }
     },
     {
@@ -2960,7 +3070,7 @@
           "bbc.co.uk ashe too scared cancel",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T09:37:11.751Z"
+        "seo_generated_at": "2026-10-11T15:56:23.590Z"
       }
     },
     {
@@ -3059,7 +3169,7 @@
           "bbc.co.uk hollywood actor luke evans",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T09:37:11.751Z"
+        "seo_generated_at": "2026-10-11T15:56:23.590Z"
       }
     },
     {
@@ -3153,7 +3263,7 @@
           "g1.globo.com Coletivo Pra Gira Girar",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T09:37:11.751Z"
+        "seo_generated_at": "2026-10-11T15:56:23.590Z"
       }
     },
     {
@@ -3251,7 +3361,7 @@
           "g1.globo.com MC PH",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T09:37:11.751Z"
+        "seo_generated_at": "2026-10-11T15:56:23.590Z"
       }
     },
     {
@@ -3352,101 +3462,7 @@
           "g1.globo.com ator pretty little liars",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-11T09:37:11.751Z"
-      }
-    },
-    {
-      "id": "d49e7336",
-      "title": "Crazy Rich Asians to return as TV show with original film's stars",
-      "url": "https://www.bbc.co.uk/news/articles/cm5yne8k6zw8o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GB",
-      "language": "en",
-      "published_at": "2026-10-09T10:54:21.000Z",
-      "discovered_at": "2026-10-09T16:32:32.326Z",
-      "event_type": "Music",
-      "category": "entertainment",
-      "person": "Crazy Rich Asians",
-      "description": "Crazy Rich Asians: music headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/3b16/live/28721870-c3bc-11f1-9798-abffda1e61e7.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/crazy-rich-asians-to-return-as-tv-show-with-original-film-s-stars-d49e73/",
-      "landing_url": "https://matchapp.tv/?news=d49e7336#latest-news",
-      "seo": {
-        "primary_keyword": "Crazy Rich Asians latest news",
-        "short_tail": [
-          "Crazy Rich Asians",
-          "Crazy Rich Asians news",
-          "music",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "Crazy Rich Asians latest news October 2026",
-          "Crazy Rich Asians music update 2026",
-          "Crazy Rich Asians news 2026-10-09",
-          "latest music news about Crazy Rich Asians",
-          "crazy rich asians crazy rich asians latest update",
-          "BBC Crazy Rich Asians music",
-          "latest news about Crazy Rich Asians October 2026",
-          "Crazy Rich Asians entertainment news 2026-10-09",
-          "what happened with Crazy Rich Asians"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Crazy Rich Asians",
-          "crazy",
-          "rich",
-          "asians",
-          "return",
-          "show"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-09",
-          "Crazy Rich Asians 2026"
-        ],
-        "source_keywords": [
-          "BBC Crazy Rich Asians",
-          "bbc.co.uk Crazy Rich Asians",
-          "BBC entertainment news"
-        ],
-        "meta_title": "Crazy Rich Asians to return as TV show with original…",
-        "meta_description": "Crazy Rich Asians: Music update reported by BBC on 2026-10-09. See verified context, publication time and the original source via MatchApp Ai.",
-        "keywords": [
-          "Crazy Rich Asians latest news",
-          "Crazy Rich Asians",
-          "Crazy Rich Asians news",
-          "music",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "Crazy Rich Asians latest news October 2026",
-          "Crazy Rich Asians music update 2026",
-          "Crazy Rich Asians news 2026-10-09",
-          "latest music news about Crazy Rich Asians",
-          "crazy rich asians crazy rich asians latest update",
-          "BBC Crazy Rich Asians music",
-          "latest news about Crazy Rich Asians October 2026",
-          "Crazy Rich Asians entertainment news 2026-10-09",
-          "what happened with Crazy Rich Asians",
-          "crazy",
-          "rich",
-          "asians",
-          "return",
-          "show",
-          "October 2026",
-          "2026-10-09",
-          "Crazy Rich Asians 2026",
-          "BBC Crazy Rich Asians",
-          "bbc.co.uk Crazy Rich Asians",
-          "BBC entertainment news"
-        ],
-        "seo_generated_at": "2026-10-11T09:37:11.751Z"
+        "seo_generated_at": "2026-10-11T15:56:23.590Z"
       }
     },
     {
@@ -3536,7 +3552,7 @@
           "2026-10-09",
           "October 2026"
         ],
-        "seo_generated_at": "2026-10-11T09:37:11.751Z"
+        "seo_generated_at": "2026-10-11T15:56:23.590Z"
       }
     },
     {
@@ -3626,7 +3642,7 @@
           "2026-10-08",
           "October 2026"
         ],
-        "seo_generated_at": "2026-10-11T09:37:11.751Z"
+        "seo_generated_at": "2026-10-11T15:56:23.590Z"
       }
     }
   ]
