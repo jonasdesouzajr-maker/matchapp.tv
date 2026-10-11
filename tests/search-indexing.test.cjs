@@ -78,7 +78,7 @@ test('core pages carry unique 2026 entertainment keywords and stay ads/search re
  assert.match(kids,/MatchApp Ai KIDS/);
  assert.match(together,/what should we watch tonight/);
  assert.match(home,/<title>MatchApp Ai — What to Watch Tonight &amp; Where to Stream<\/title>/);
- assert.match(together,/<title>Match Together by MatchApp Ai \| Pick What to Watch Together<\/title>/);
+ assert.match(together,/<title>Match Together: What to Watch Tonight \| MatchApp Ai<\/title>/);
  const runtimeMeta=read('build-meta.js');
  assert.match(runtimeMeta,/name: 'MatchApp Ai',[\s\S]{0,220}alternateName: \['MatchApp', 'MatchApp\.tv'\]/);
  assert.match(runtimeMeta,/Ask AI What to Watch \| MatchApp Ai/);
