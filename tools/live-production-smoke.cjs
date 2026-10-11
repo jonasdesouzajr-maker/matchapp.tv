@@ -287,44 +287,23 @@ async function aiQuestion(page,question,expected,label){
     const bookFields=await ebook.locator('select[data-ebook-select]').count();
     record('real compact reading controls '+device.name,bookFields===7,
       'seven live dropdowns preserve ebook, verified audio and magazine choices');
-    // Ask starts open; open it only if a prior interaction folded it. Do not auto-focus.
-    const askHead=page.locator('.lazy-head[data-fold-key="askai"]');
-    if(await askHead.getAttribute('aria-expanded')!=='true')await askHead.click();
-    const aiEntry=page.locator('#ma-ai-entry'),homeInput=page.locator('#ma-ai-entry #specific-search-input');
-    await aiEntry.waitFor({state:'visible',timeout:12000});
+    // Exercise the current Jonas launcher. The retired inline Home composer stays
+    // hidden intentionally and must not be treated as the user-facing Ask surface.
+    const askLauncher=page.locator('#ma-jonas-home-bubble'),homeInput=page.locator('#ma-jonas-home-input');
+    await askLauncher.waitFor({state:'visible',timeout:12000});
+    if(!await homeInput.isVisible())await askLauncher.click();
     await homeInput.waitFor({state:'visible',timeout:12000});
-    await aiEntry.scrollIntoViewIfNeeded({timeout:12000});
-    // Check composer controls after layout settles, without focusing the input.
-    await page.waitForFunction(()=>{
-      const input=document.getElementById('specific-search-input')?.getBoundingClientRect();
-      const send=document.querySelector('#search-box .gold-btn')?.getBoundingClientRect();
-      const offer=document.getElementById('ma-install-offer'),offerRect=offer?.getBoundingClientRect();
-      const dock=document.getElementById('ma-dock');
-      const dockSpace=dock&&getComputedStyle(dock).display!=='none'?dock.getBoundingClientRect().height+14:14;
-      const bottom=innerHeight-dockSpace;
-      const offerCoversControl=!!offer&&!!offer.getClientRects().length&&!!offerRect&&[input,send].some(r=>r&&r.left<offerRect.right&&r.right>offerRect.left&&r.top<offerRect.bottom&&r.bottom>offerRect.top);
-      return !!input&&!!send&&input.width>60&&send.width>=32&&
-        input.top>=0&&input.bottom<=bottom&&send.top>=0&&send.bottom<=bottom&&
-        (!matchMedia('(max-width: 600px)').matches||input.height>=36)&&!offerCoversControl;
-    },null,{timeout:3500}).catch(()=>{});
     const activeAsk=await page.evaluate(()=>{
-      const entry=document.getElementById('ma-ai-entry'),form=document.getElementById('search-box');
-      const input=document.getElementById('specific-search-input'),rect=form?.getBoundingClientRect();
-      const ir=input?.getBoundingClientRect(),sr=form?.querySelector('.gold-btn')?.getBoundingClientRect();
-      const offer=document.getElementById('ma-install-offer'),offerRect=offer?.getBoundingClientRect();
-      const dock=document.getElementById('ma-dock');
-      const dockSpace=dock&&getComputedStyle(dock).display!=='none'?dock.getBoundingClientRect().height+14:14;
-      const safeBottom=innerHeight-dockSpace;
-      const controlsUsable=!!ir&&!!sr&&ir.width>60&&sr.width>=32&&
-        (!matchMedia('(max-width: 600px)').matches||ir.height>=36)&&
-        ir.top>=0&&ir.bottom<=safeBottom&&sr.top>=0&&sr.bottom<=safeBottom;
-      const offerCoversControl=!!offer&&!!offer.getClientRects().length&&!!offerRect&&[ir,sr].some(r=>r&&r.left<offerRect.right&&r.right>offerRect.left&&r.top<offerRect.bottom&&r.bottom>offerRect.top);
-      return {open:!!entry&&!entry.hidden&&entry.getClientRects().length>0,
-        visible:controlsUsable&&!offerCoversControl,
-        position:rect?{top:Math.round(rect.top),bottom:Math.round(rect.bottom),viewport:innerHeight,scrollY:scrollY,inputTop:Math.round(ir?.top||0),inputHeight:Math.round(ir?.height||0),sendWidth:Math.round(sr?.width||0),sendBottom:Math.round(sr?.bottom||0),safeBottom:Math.round(safeBottom)}:null,
+      const launcher=document.getElementById('ma-jonas-home-bubble');
+      const panel=document.getElementById('ma-jonas-home-panel');
+      const input=document.getElementById('ma-jonas-home-input');
+      const send=panel?.querySelector('button[type="submit"]');
+      const ir=input?.getBoundingClientRect(),sr=send?.getBoundingClientRect();
+      return {open:launcher?.getAttribute('aria-expanded')==='true'&&!panel?.hidden,
+        visible:!!ir&&!!sr&&ir.width>60&&sr.width>=32&&ir.top>=0&&ir.bottom<=innerHeight&&sr.top>=0&&sr.bottom<=innerHeight,
         noAutoKeyboard:document.activeElement!==input};
     });
-    record('Separate Home Ask AI composer is visible and unfocused '+device.name,
+    record('Home Jonas Ask AI composer is visible and unfocused '+device.name,
       activeAsk.open&&activeAsk.visible&&activeAsk.noAutoKeyboard,JSON.stringify(activeAsk));
     await shot(page,device.name+'-home-ask-open');
     await observed(page,'/discover.html');

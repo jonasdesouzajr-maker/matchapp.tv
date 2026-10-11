@@ -8,6 +8,7 @@ const billboardMusic=require('./billboard-music.js');
 const spotifyMusic=require('./spotify-music-videos.js');
 const OFFICIAL=/\b(?:official (?:music )?video|official mv|videoclipe oficial|video oficial)\b/i;
 const EXCLUDE=/\b(?:lyric|lyrics|audio|visualizer|teaser|trailer|reaction|behind the scenes|live performance|live at|shorts)\b/i;
+const MIN_MUSIC_VIDEO_SECONDS=30;
 function releaseTitle(rawTitle,artist){
  const label=String(artist).replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
  const clean=String(rawTitle).replace(/\s*[\[(]?(?:official (?:music )?video|official mv|videoclipe oficial|video oficial)[\])]?\s*/ig,' ').trim();
@@ -41,6 +42,16 @@ function parseViewCount(html){
  for(const pattern of patterns){const m=text.match(pattern);if(m){const n=Number(m[1]);if(Number.isSafeInteger(n)&&n>=0)return n;}}
  return null;
 }
+function parseDurationSeconds(html){
+ const text=String(html||'');
+ const seconds=text.match(/"lengthSeconds":"(\d+)"/);
+ if(seconds){const n=Number(seconds[1]);if(Number.isSafeInteger(n)&&n>=0)return n;}
+ const iso=text.match(/itemprop=["']duration["'][^>]*content=["']PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?["']/i);
+ if(!iso)return null;
+ const n=Number(iso[1]||0)*3600+Number(iso[2]||0)*60+Number(iso[3]||0);
+ return Number.isSafeInteger(n)?n:null;
+}
+function isFullMusicVideoDuration(seconds){return seconds===null||seconds>=MIN_MUSIC_VIDEO_SECONDS;}
 function confirmExistingRelease(prior,row,artist,channelId,info,checkedAt){
  const author=String(info.author_url||'').replace(/\/$/,'').toLowerCase();
  if(![artist.channelUrl.toLowerCase(),'https://www.youtube.com/channel/'+channelId.toLowerCase()].includes(author)||info.title!==row.rawTitle)throw Error('Video author/title identity mismatch');
@@ -73,10 +84,16 @@ async function refresh(){
     const url='https://www.youtube.com/watch?v='+row.id;
     const info=JSON.parse(await request('https://www.youtube.com/oembed?url='+encodeURIComponent(url)+'&format=json'));
     const checkedAt=new Date().toISOString().slice(0,10);
-    let viewCount=null;
-    try{viewCount=parseViewCount(await request(url+'&hl=en'));}catch(_){/* Retain last verified count on a transient YouTube page failure. */}
+    let viewCount=null,durationSeconds=null;
+    try{const watchHtml=await request(url+'&hl=en');viewCount=parseViewCount(watchHtml);durationSeconds=parseDurationSeconds(watchHtml);}catch(_){/* Retain last verified metadata on a transient YouTube page failure. */}
+    if(!isFullMusicVideoDuration(durationSeconds)){
+     byId.delete(row.id);
+     const rejectedPoster=path.join(ROOT,'assets/music-videos',row.id+'.jpg');
+     if(fs.existsSync(rejectedPoster))fs.unlinkSync(rejectedPoster);
+     continue;
+    }
     const existing=confirmExistingRelease(byId.get(row.id),row,artist,channelId,info,checkedAt);
-    if(existing){byId.set(row.id,{...existing,...(viewCount!==null?{viewCount,viewCountCheckedAt:checkedAt}:{})});continue;}
+    if(existing){byId.set(row.id,{...existing,...(durationSeconds!==null?{durationSeconds}:{}),...(viewCount!==null?{viewCount,viewCountCheckedAt:checkedAt}:{})});continue;}
     const thumbnail='https://i.ytimg.com/vi/'+row.id+'/hqdefault.jpg';let image;
     // YouTube's alternate image hosts serve the same exact video artwork.
     for(const host of ['i.ytimg.com','i9.ytimg.com','img.youtube.com']){
@@ -87,7 +104,7 @@ async function refresh(){
     if(!image)throw Error('Original thumbnail unavailable');
     const poster='/assets/music-videos/'+row.id+'.jpg';fs.mkdirSync(path.join(ROOT,'assets/music-videos'),{recursive:true});fs.writeFileSync(path.join(ROOT,poster),image);
     const title=releaseTitle(row.rawTitle,artist.artist);
-    byId.set(row.id,{id:row.id,artist:artist.artist,title,album:'',publishedAt:row.publishedAt,director:'',cast:[],channel:info.author_name,channelUrl:artist.channelUrl,source:url,creditsSource:url,url,thumbnail,poster,verifiedAt:new Date().toISOString().slice(0,10),...(viewCount!==null?{viewCount,viewCountCheckedAt:checkedAt}:{}),keywords:[artist.artist,title,'official music video','YouTube music video',new Date(row.publishedAt).getUTCFullYear()+' music releases']});
+    byId.set(row.id,{id:row.id,artist:artist.artist,title,album:'',publishedAt:row.publishedAt,director:'',cast:[],channel:info.author_name,channelUrl:artist.channelUrl,source:url,creditsSource:url,url,thumbnail,poster,verifiedAt:new Date().toISOString().slice(0,10),...(durationSeconds!==null?{durationSeconds}:{}),...(viewCount!==null?{viewCount,viewCountCheckedAt:checkedAt}:{}),keywords:[artist.artist,title,'official music video','YouTube music video',new Date(row.publishedAt).getUTCFullYear()+' music releases']});
    }
   }catch(error){console.error(artist.artist+': '+error.message);}
  }));
@@ -123,5 +140,5 @@ async function refresh(){
  fs.writeFileSync(file,JSON.stringify(updated,null,2)+'\n');
  console.log(`${successes}/${channels.length} official feeds checked; ${featured.length} featured videos; ${sorted.length} verified records.`);
 }
-module.exports={parseFeed,parseViewCount,schema,confirmExistingRelease,seoForRelease,releaseTitle};
+module.exports={parseFeed,parseViewCount,parseDurationSeconds,isFullMusicVideoDuration,schema,confirmExistingRelease,seoForRelease,releaseTitle};
 if(require.main===module)refresh().catch(e=>{console.error(e.message);process.exitCode=1;});

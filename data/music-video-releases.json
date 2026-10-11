@@ -2,46 +2,6 @@
   "verifiedAt": "2026-10-11",
   "items": [
     {
-      "id": "z1h3CrRQr2w",
-      "artist": "Bruno Mars",
-      "title": "The Romantic presents… Dance With Me, the 💔🌹",
-      "album": "",
-      "publishedAt": "2026-10-09T19:53:57+00:00",
-      "director": "",
-      "cast": [],
-      "channel": "Bruno Mars",
-      "channelUrl": "https://www.youtube.com/@brunomars",
-      "source": "https://www.youtube.com/watch?v=z1h3CrRQr2w",
-      "creditsSource": "https://www.youtube.com/watch?v=z1h3CrRQr2w",
-      "url": "https://www.youtube.com/watch?v=z1h3CrRQr2w",
-      "thumbnail": "https://i.ytimg.com/vi/z1h3CrRQr2w/hqdefault.jpg",
-      "poster": "/assets/music-videos/z1h3CrRQr2w.jpg",
-      "verifiedAt": "2026-10-11",
-      "keywords": [
-        "Bruno Mars",
-        "The Romantic presents… Dance With Me, the 💔🌹",
-        "official music video",
-        "YouTube music video",
-        "2026 music releases"
-      ],
-      "seo": {
-        "title": "Bruno Mars — The Romantic presents… Dance With Me, the 💔🌹 official music video | MatchApp Ai",
-        "description": "Official Bruno Mars music video for “The Romantic presents… Dance With Me, the 💔🌹”, released on YouTube 2026-10-09.",
-        "keywords": [
-          "Bruno Mars",
-          "The Romantic presents… Dance With Me, the 💔🌹",
-          "official music video",
-          "YouTube music video",
-          "2026 music releases",
-          "Bruno Mars The Romantic presents… Dance With Me, the 💔🌹 official music video",
-          "Bruno Mars music videos",
-          "2026 music video releases",
-          "latest official music videos"
-        ],
-        "canonicalQuery": "Bruno Mars The Romantic presents… Dance With Me, the 💔🌹 official music video"
-      }
-    },
-    {
       "id": "1l7wbZmdtys",
       "artist": "Bruno Mars",
       "title": "Dance With Me",
@@ -64,11 +24,11 @@
         "YouTube music video",
         "2026 music releases"
       ],
-      "viewCount": 7585340,
-      "viewCountCheckedAt": "2026-10-07",
+      "viewCount": 11389234,
+      "viewCountCheckedAt": "2026-10-11",
       "seo": {
         "title": "Bruno Mars — Dance With Me official music video | MatchApp Ai",
-        "description": "Official Bruno Mars music video for “Dance With Me”, released on YouTube 2026-10-01 with 7,585,340 verified views at the latest daily check.",
+        "description": "Official Bruno Mars music video for “Dance With Me”, released on YouTube 2026-10-01 with 11,389,234 verified views at the latest daily check.",
         "keywords": [
           "Bruno Mars",
           "Dance With Me",
@@ -81,7 +41,8 @@
           "latest official music videos"
         ],
         "canonicalQuery": "Bruno Mars Dance With Me official music video"
-      }
+      },
+      "durationSeconds": 220
     },
     {
       "id": "mw3kSNIxjqo",
@@ -112,11 +73,11 @@
         "The Life of a Showgirl: The Encore"
       ],
       "poster": "/assets/music-videos/mw3kSNIxjqo.jpg",
-      "viewCount": 15120501,
-      "viewCountCheckedAt": "2026-10-07",
+      "viewCount": 18032193,
+      "viewCountCheckedAt": "2026-10-11",
       "seo": {
         "title": "Taylor Swift — Patient Zero official music video | MatchApp Ai",
-        "description": "Official Taylor Swift music video for “Patient Zero”, released on YouTube 2026-09-29 with 15,120,501 verified views at the latest daily check.",
+        "description": "Official Taylor Swift music video for “Patient Zero”, released on YouTube 2026-09-29 with 18,032,193 verified views at the latest daily check.",
         "keywords": [
           "Taylor Swift",
           "Patient Zero",
@@ -148,8 +109,8 @@
       "thumbnail": "https://i.ytimg.com/vi/eJXL4-4m5nY/hqdefault.jpg",
       "poster": "/assets/music-videos/eJXL4-4m5nY.jpg",
       "verifiedAt": "2026-10-11",
-      "viewCount": 9810583,
-      "viewCountCheckedAt": "2026-10-07",
+      "viewCount": 10283474,
+      "viewCountCheckedAt": "2026-10-11",
       "keywords": [
         "BTS",
         "Merry Go Round",
@@ -159,7 +120,7 @@
       ],
       "seo": {
         "title": "BTS — Merry Go Round official music video | MatchApp Ai",
-        "description": "Official BTS music video for “Merry Go Round”, released on YouTube 2026-09-25 with 9,810,583 verified views at the latest daily check.",
+        "description": "Official BTS music video for “Merry Go Round”, released on YouTube 2026-09-25 with 10,283,474 verified views at the latest daily check.",
         "keywords": [
           "BTS",
           "Merry Go Round",
@@ -174,7 +135,7 @@
         "canonicalQuery": "BTS Merry Go Round official music video"
       },
       "sourceTitle": "BTS (방탄소년단) ‘Merry Go Round’ Official MV",
-      "durationSeconds": 259
+      "durationSeconds": 258
     },
     {
       "id": "Lufa9QAFFeY",
@@ -248,7 +209,7 @@
       ],
       "seo": {
         "title": "Taylor Swift — I Knew It, I Knew You (Piano Version) official music video | MatchApp Ai",
-        "description": "Official Taylor Swift music video for “I Knew It, I Knew You (Piano Version)”, released on YouTube 2026-08-29 with 2,243,016 verified views at the latest daily check.",
+        "description": "Official Taylor Swift music video for “I Knew It, I Knew You (Piano Version)”, released on YouTube 2026-08-29 with 2,274,323 verified views at the latest daily check.",
         "keywords": [
           "Taylor Swift",
           "I Knew It, I Knew You (Piano Version)",
@@ -262,8 +223,9 @@
         ],
         "canonicalQuery": "Taylor Swift I Knew It, I Knew You (Piano Version) official music video"
       },
-      "viewCount": 2243016,
-      "viewCountCheckedAt": "2026-10-07"
+      "viewCount": 2274323,
+      "viewCountCheckedAt": "2026-10-11",
+      "durationSeconds": 196
     },
     {
       "id": "afSgBNwmZrQ",
@@ -323,9 +285,9 @@
       "thumbnail": "https://i.ytimg.com/vi/Rt9tW3cMLhI/hqdefault.jpg",
       "artworkSource": "https://img.youtube.com/vi/Rt9tW3cMLhI/hqdefault.jpg",
       "poster": "/assets/music-videos/Rt9tW3cMLhI.jpg",
-      "verifiedAt": "2026-10-07",
-      "viewCount": 37592579,
-      "viewCountCheckedAt": "2026-10-07",
+      "verifiedAt": "2026-10-11",
+      "viewCount": 38542977,
+      "viewCountCheckedAt": "2026-10-11",
       "durationSeconds": 217,
       "keywords": [
         "Olivia Rodrigo",
@@ -336,7 +298,7 @@
       ],
       "seo": {
         "title": "Olivia Rodrigo — stupid song official music video | MatchApp Ai",
-        "description": "Official Olivia Rodrigo music video for “stupid song”, released on YouTube 2026-06-11 with 37,592,579 verified views at the latest daily check.",
+        "description": "Official Olivia Rodrigo music video for “stupid song”, released on YouTube 2026-06-11 with 38,542,977 verified views at the latest daily check.",
         "keywords": [
           "Olivia Rodrigo",
           "stupid song",
@@ -367,9 +329,9 @@
       "thumbnail": "https://i.ytimg.com/vi/82-jTNka3uc/hqdefault.jpg",
       "artworkSource": "https://img.youtube.com/vi/82-jTNka3uc/hqdefault.jpg",
       "poster": "/assets/music-videos/82-jTNka3uc.jpg",
-      "verifiedAt": "2026-10-07",
-      "viewCount": 98993821,
-      "viewCountCheckedAt": "2026-10-07",
+      "verifiedAt": "2026-10-11",
+      "viewCount": 100766286,
+      "viewCountCheckedAt": "2026-10-11",
       "durationSeconds": 301,
       "keywords": [
         "Ariana Grande",
@@ -380,7 +342,7 @@
       ],
       "seo": {
         "title": "Ariana Grande — hate that i made you love me official music video | MatchApp Ai",
-        "description": "Official Ariana Grande music video for “hate that i made you love me”, released on YouTube 2026-06-01 with 98,993,821 verified views at the latest daily check.",
+        "description": "Official Ariana Grande music video for “hate that i made you love me”, released on YouTube 2026-06-01 with 100,766,286 verified views at the latest daily check.",
         "keywords": [
           "Ariana Grande",
           "hate that i made you love me",
@@ -465,11 +427,11 @@
         "The Devil Wears Prada 2 (Music From The Motion Picture)"
       ],
       "poster": "/assets/music-videos/XXIX2WnfbpE.jpg",
-      "viewCount": 29323759,
-      "viewCountCheckedAt": "2026-10-07",
+      "viewCount": 29530663,
+      "viewCountCheckedAt": "2026-10-11",
       "seo": {
         "title": "Lady Gaga & Doechii — RUNWAY official music video | MatchApp Ai",
-        "description": "Official Lady Gaga & Doechii music video for “RUNWAY”, released on YouTube 2026-04-27 with 29,323,759 verified views at the latest daily check.",
+        "description": "Official Lady Gaga & Doechii music video for “RUNWAY”, released on YouTube 2026-04-27 with 29,530,663 verified views at the latest daily check.",
         "keywords": [
           "Lady Gaga & Doechii",
           "RUNWAY",
@@ -514,11 +476,11 @@
         "Man’s Best Friend"
       ],
       "poster": "/assets/music-videos/KWoTyfPsqbE.jpg",
-      "viewCount": 39501949,
-      "viewCountCheckedAt": "2026-10-07",
+      "viewCount": 39825739,
+      "viewCountCheckedAt": "2026-10-11",
       "seo": {
         "title": "Sabrina Carpenter — House Tour official music video | MatchApp Ai",
-        "description": "Official Sabrina Carpenter music video for “House Tour”, released on YouTube 2026-04-06 with 39,501,949 verified views at the latest daily check.",
+        "description": "Official Sabrina Carpenter music video for “House Tour”, released on YouTube 2026-04-06 with 39,825,739 verified views at the latest daily check.",
         "keywords": [
           "Sabrina Carpenter",
           "House Tour",
@@ -550,9 +512,9 @@
       "thumbnail": "https://i.ytimg.com/vi/nUsrYVxrDwI/hqdefault.jpg",
       "artworkSource": "https://img.youtube.com/vi/nUsrYVxrDwI/hqdefault.jpg",
       "poster": "/assets/music-videos/nUsrYVxrDwI.jpg",
-      "verifiedAt": "2026-10-07",
-      "viewCount": 97535590,
-      "viewCountCheckedAt": "2026-10-07",
+      "verifiedAt": "2026-10-11",
+      "viewCount": 99322028,
+      "viewCountCheckedAt": "2026-10-11",
       "durationSeconds": 422,
       "keywords": [
         "Ella Langley",
@@ -563,7 +525,7 @@
       ],
       "seo": {
         "title": "Ella Langley — Choosin' Texas official music video | MatchApp Ai",
-        "description": "Official Ella Langley music video for “Choosin' Texas”, released on YouTube 2026-04-01 with 97,535,590 verified views at the latest daily check.",
+        "description": "Official Ella Langley music video for “Choosin' Texas”, released on YouTube 2026-04-01 with 99,322,028 verified views at the latest daily check.",
         "keywords": [
           "Ella Langley",
           "Choosin' Texas",
@@ -648,7 +610,7 @@
       ],
       "seo": {
         "title": "Lady Gaga — The Dead Dance official music video | MatchApp Ai",
-        "description": "Official Lady Gaga music video for “The Dead Dance”, released on YouTube 2025-09-03 with 77,540,542 verified views at the latest daily check.",
+        "description": "Official Lady Gaga music video for “The Dead Dance”, released on YouTube 2025-09-03 with 77,767,440 verified views at the latest daily check.",
         "keywords": [
           "Lady Gaga",
           "The Dead Dance",
@@ -662,8 +624,9 @@
         ],
         "canonicalQuery": "Lady Gaga The Dead Dance official music video"
       },
-      "viewCount": 77540542,
-      "viewCountCheckedAt": "2026-10-07"
+      "viewCount": 77767440,
+      "viewCountCheckedAt": "2026-10-11",
+      "durationSeconds": 287
     },
     {
       "id": "vmbyVU9w47Y",
@@ -681,8 +644,8 @@
       "thumbnail": "https://i.ytimg.com/vi/vmbyVU9w47Y/hqdefault.jpg",
       "poster": "/assets/music-videos/vmbyVU9w47Y.jpg",
       "verifiedAt": "2026-10-11",
-      "viewCount": 49830960,
-      "viewCountCheckedAt": "2026-10-07",
+      "viewCount": 50064789,
+      "viewCountCheckedAt": "2026-10-11",
       "keywords": [
         "Bad Bunny & Chuwi",
         "WELTiTA",
@@ -693,7 +656,7 @@
       ],
       "seo": {
         "title": "Bad Bunny & Chuwi — WELTiTA official music video | MatchApp Ai",
-        "description": "Official Bad Bunny & Chuwi music video for “WELTiTA”, released on YouTube 2025-08-23 with 49,830,960 verified views at the latest daily check.",
+        "description": "Official Bad Bunny & Chuwi music video for “WELTiTA”, released on YouTube 2025-08-23 with 50,064,789 verified views at the latest daily check.",
         "keywords": [
           "Bad Bunny & Chuwi",
           "WELTiTA",
@@ -727,8 +690,8 @@
       "thumbnail": "https://i.ytimg.com/vi/KU5V5WZVcVE/hqdefault.jpg",
       "poster": "/assets/music-videos/KU5V5WZVcVE.jpg",
       "verifiedAt": "2026-10-11",
-      "viewCount": 164948673,
-      "viewCountCheckedAt": "2026-10-07",
+      "viewCount": 165805387,
+      "viewCountCheckedAt": "2026-10-11",
       "keywords": [
         "Bad Bunny",
         "NUEVAYoL",
@@ -739,7 +702,7 @@
       ],
       "seo": {
         "title": "Bad Bunny — NUEVAYoL official music video | MatchApp Ai",
-        "description": "Official Bad Bunny music video for “NUEVAYoL”, released on YouTube 2025-07-04 with 164,948,673 verified views at the latest daily check.",
+        "description": "Official Bad Bunny music video for “NUEVAYoL”, released on YouTube 2025-07-04 with 165,805,387 verified views at the latest daily check.",
         "keywords": [
           "Bad Bunny",
           "NUEVAYoL",
@@ -755,7 +718,7 @@
         "canonicalQuery": "Bad Bunny NUEVAYoL official music video"
       },
       "sourceTitle": "BAD BUNNY - NUEVAYoL (Video Oficial) | DeBÍ TiRAR MáS FOToS",
-      "durationSeconds": 224
+      "durationSeconds": 223
     }
   ],
   "featuredIds": [
