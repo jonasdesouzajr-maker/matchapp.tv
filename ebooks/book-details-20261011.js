@@ -32,8 +32,10 @@
    const u=new URL(url);
    if(u.protocol!=='https:')return null;
    if(u.hostname==='covers.openlibrary.org'&&/^\/b\/id\/\d+-[ML]\.jpg$/.test(u.pathname))return u.href;
-   if(['books.google.com','books.googleusercontent.com','books.googleusercontent.com'].includes(u.hostname)&&
+   if(['books.google.com','books.googleusercontent.com'].includes(u.hostname)&&
       /^\/books\/content/.test(u.pathname))return u.href;
+   if(/^is[0-9]+-ssl\.mzstatic\.com$/.test(u.hostname)&&
+      /^\/image\/thumb\/.+\/(?:100x100|600x600)bb\.jpg$/.test(u.pathname))return u.href;
   }catch(_){}
   return null;
  }
@@ -52,23 +54,32 @@
   };
  }
  // Same-origin source-verified snapshot avoids cross-origin browser CORS failures.
- // The generator stores only exact title+author matches fetched from Open Library.
+ // The generators store only exact title+author Open Library or Apple Books records.
  let verifiedIndexPromise=null;
  async function fromVerifiedIndex(book){
   if(typeof window==='undefined')return null;
-  if(!verifiedIndexPromise)verifiedIndexPromise=getJSON('/ebooks/verified-book-index-20261011.json?v=20261011-a1')
+  if(!verifiedIndexPromise)verifiedIndexPromise=getJSON('/ebooks/verified-book-index-20261011.json?v=20261011-a2')
    .then(data=>Array.isArray(data?.entries)?data.entries:[]).catch(()=>[]);
   const rows=await verifiedIndexPromise;
   const match=rows.find(entry=>equal(entry?.title,book.title)&&equal(entry?.author,book.author));
-  if(!match||match.source!=='Open Library'||!cleanCover(match.cover))return null;
+  if(!match||!['Open Library','Apple Books'].includes(match.source)||!cleanCover(match.cover))return null;
   return {
-   source:'Open Library',
+   source:match.source,
    cover:cleanCover(match.cover),
    year:Number.isInteger(match.year)&&match.year>=1500&&match.year<=2026?match.year:null,
    pages:Number.isInteger(match.pages)&&match.pages>0?match.pages:null,
    rating:Number.isFinite(match.rating)&&match.rating>=0&&match.rating<=5&&Number.isInteger(match.count)&&match.count>0?match.rating:null,
    count:Number.isInteger(match.count)&&match.count>0?match.count:null,
-   url:typeof match.url==='string'&&/^https:\/\/openlibrary\.org\/works\/OL\d+W$/.test(match.url)?match.url:null
+   url:(()=>{
+    if(typeof match.url!=='string')return null;
+    try{
+     const u=new URL(match.url);
+     if(u.protocol!=='https:')return null;
+     if(match.source==='Open Library'&&u.hostname==='openlibrary.org'&&/^\/works\/OL\d+W$/.test(u.pathname))return u.href;
+     if(match.source==='Apple Books'&&u.hostname==='books.apple.com'&&/^\/(?:br|us)\/book\/[^/]+\/id\d+$/.test(u.pathname))return u.href;
+    }catch(_){}
+    return null;
+   })()
   };
  }
  async function lookup(book){
@@ -108,7 +119,7 @@
   const a=[];
   if(data.year)a.push((pt?'Ano catalogado':'Catalog year')+' '+data.year);
   if(data.pages)a.push(data.pages+(pt?' páginas':' pages'));
-  if(data.rating!==null&&data.count)a.push('★ '+data.rating.toFixed(1)+'/5 · '+data.count.toLocaleString(pt?'pt-BR':'en-US')+(pt?' avaliações':' ratings')+' · Open Library');
+  if(data.rating!==null&&data.count)a.push('★ '+data.rating.toFixed(1)+'/5 · '+data.count.toLocaleString(pt?'pt-BR':'en-US')+(pt?' avaliações':' ratings')+' · '+(data.source==='Apple Books'?'Apple Books':'Open Library'));
   else a.push(pt?'Avaliação não disponível':'Rating not available');
   if(kind==='audiobook')a.push(pt?'A capa e a avaliação pertencem à obra, não necessariamente à narração':'Cover and ratings describe the book, not a specific recording');
   return a;
@@ -124,8 +135,8 @@
   box.hidden=false;
   for(const line of lines){const span=document.createElement('span');span.textContent=line;box.append(span)}
   const source=document.createElement('small');source.className='ebook-meta-source';
-  const sourceName=data.source==='Google Books'?'Google Books':'Open Library';
-  source.textContent='Source: '+sourceName+(data.url?' · work-level metadata':' · bibliographic search');
+  const sourceName=['Google Books','Apple Books'].includes(data.source)?data.source:'Open Library';
+  source.textContent='Source: '+sourceName+(data.url?(sourceName==='Apple Books'?' · verified store edition':' · work-level metadata'):' · bibliographic search');
   if(data.url){const a=document.createElement('a');a.href=data.url;a.rel='noopener noreferrer';a.target='_blank';a.textContent=source.textContent;box.append(a)}
   else box.append(source);
  }
@@ -138,12 +149,18 @@
   if(existing&&!existing.hidden&&existing.naturalWidth>0)return;
   const img=existing||document.createElement('img'),fallback=frame.querySelector('[data-top-fallback],[data-ebook-cover-fallback],.ebook-cover-fallback');
   if(!existing){img.hidden=true;frame.prepend(img)}
-  img.loading='lazy';img.decoding='async';img.alt=book.title+' — '+book.author+' (source cover)';
-  const onLoad=()=>{if(img.naturalWidth>30){img.hidden=false;if(fallback)fallback.hidden=true}};
-  const onError=()=>{img.hidden=true;if(fallback)fallback.hidden=false};
+  // The hub hydrates only visible cards. A hidden, lazy-loaded <img> never
+  // starts a request in Chrome; keep it renderable but transparent while the
+  // original text fallback stays visible. Only reveal verified pixels on load.
+  img.loading='eager';img.decoding='async';img.alt=book.title+' — '+book.author+' (source cover)';
+  img.style.opacity='0';img.hidden=false;
+  const onLoad=()=>{if(img.naturalWidth>30){img.style.opacity='1';img.hidden=false;if(fallback)fallback.hidden=true}};
+  const onError=()=>{img.style.opacity='0';img.hidden=true;if(fallback)fallback.hidden=false};
   img.addEventListener('load',onLoad,{once:true});img.addEventListener('error',onError,{once:true});
   img.src=data.cover;
-  if(img.complete){if(img.naturalWidth>30)onLoad();else if(img.naturalWidth===0)onError()}
+  // Do not interpret an empty image's initial complete=true as a network
+  // failure; the real error event is authoritative and keeps fallback art.
+  if(img.complete&&img.naturalWidth>30)onLoad();
  }
  async function hydrate(host,book,options){
   if(!host||!book?.title||!book?.author)return null;
