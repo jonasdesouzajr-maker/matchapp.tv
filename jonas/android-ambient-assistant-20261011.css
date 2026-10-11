@@ -1,0 +1,27 @@
+/* Android-only ambient Jonas. All colors, sizing and motion are server-editable.
+   Never touches Kids, AdSense, Matching or the native Play Billing entitlement. */
+html.matchapp-ai-android #ma-jonas-home,
+html.matchapp-ai-android #matchapp-android-avatar-launcher,
+html.matchapp-ai-android #matchapp-android-avatar-spacer {display:none!important}
+#ma-ambient-jonas{--ja-gold:#f5d38f;--ja-ink:#1a1128;position:fixed;z-index:2147483200;left:auto;top:auto;right:16px;bottom:max(90px,env(safe-area-inset-bottom));width:78px;height:78px;pointer-events:auto;touch-action:none;isolation:isolate}
+#ma-ambient-jonas[hidden],#ma-ambient-panel[hidden]{display:none!important}
+#ma-ambient-jonas *{box-sizing:border-box}
+#ma-ambient-jonas .ja-bubble{width:76px;height:76px;position:relative;display:block;padding:2px;border:2px solid var(--ja-gold);border-radius:50%;background:radial-gradient(circle,#573570 0%,#20132c 75%);box-shadow:0 5px 22px #000a,0 0 0 4px #dbbd7340,0 0 24px #b16be04b;cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent}
+#ma-ambient-jonas .ja-bubble:active{cursor:grabbing}
+#ma-ambient-jonas .ja-bubble img{width:100%;height:100%;border-radius:50%;object-fit:cover;object-position:center 18%;pointer-events:none}
+#ma-ambient-jonas .ja-live{position:absolute;right:3px;bottom:4px;width:15px;height:15px;border-radius:50%;border:2px solid #281834;background:#65dfaa;box-shadow:0 0 10px #3ca978;pointer-events:none}
+#ma-ambient-jonas button:focus-visible,#ma-ambient-panel button:focus-visible{outline:2px solid white;outline-offset:3px}
+#ma-ambient-panel{position:fixed!important;z-index:2147483300!important;left:12px;right:12px;bottom:max(13px,env(safe-area-inset-bottom));width:min(444px,calc(100vw - 24px));height:min(73dvh,680px);max-height:calc(100dvh - 52px);margin:0 auto;display:flex;flex-direction:column;border:1px solid #eac984b0;border-radius:25px;background:#21162f;box-shadow:0 20px 62px #000b,0 0 0 9999px #08040f45;overflow:hidden;transform-origin:var(--ja-origin-x,95%) var(--ja-origin-y,100%);animation:ja-rise .29s cubic-bezier(.15,.85,.2,1)}
+#ma-ambient-panel .ja-panel-head{height:61px;flex:none;display:flex;gap:12px;align-items:center;padding:8px 11px 8px 14px;border-bottom:1px solid #f6d79938;background:linear-gradient(110deg,#47305e,#241630)}
+#ma-ambient-panel .ja-face{width:42px;height:42px;border:2px solid #e3c47e;border-radius:50%;object-fit:cover;object-position:center 20%;flex:none}
+#ma-ambient-panel .ja-head-text{display:flex;flex-direction:column;min-width:0;flex:1;line-height:1.25}
+#ma-ambient-panel .ja-head-text strong{color:#ffe7ae;font:800 16px/1.2 Outfit,system-ui,sans-serif}
+#ma-ambient-panel .ja-head-text span{color:#d9c9e6;font:500 11px/1.4 system-ui;white-space:nowrap;text-overflow:ellipsis;overflow:hidden}
+#ma-ambient-panel .ja-close{border:1px solid #d9bc8a77;border-radius:12px;background:#352543;color:#ffe6b4;font:800 27px/1 system-ui;flex:none;width:42px;height:42px;cursor:pointer}
+#ma-ambient-panel .ja-hello{margin:0;padding:8px 14px;color:#e7d5ee;background:#291936;font:500 12px/1.45 system-ui;max-height:55px;overflow:hidden}
+#ma-ambient-panel iframe{min-width:0;width:100%;min-height:0;flex:1;border:0;background:#140d23;display:block}
+#ma-ambient-panel .ja-wait{color:#d1b8dc;padding:12px;font:500 12px system-ui}
+@keyframes ja-rise{from{opacity:0;transform:scale(.25)}to{opacity:1;transform:none}}
+@media(min-width:700px){#ma-ambient-panel{right:22px;left:auto;margin:0;height:min(78dvh,740px)}}
+@media(max-height:610px){#ma-ambient-panel{height:calc(100dvh - 20px);max-height:none;bottom:8px}#ma-ambient-panel .ja-hello{display:none}}
+@media(prefers-reduced-motion:reduce){#ma-ambient-panel{animation:none}}

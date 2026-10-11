@@ -93,11 +93,14 @@ class MainActivity : AppCompatActivity() {
     // the Google full-screen speech intent. Never records until a user taps mic.
     private var inlineVoiceRecognizer: SpeechRecognizer? = null
     private var requestedVoiceLanguage = "en-US"
+    private var microphonePermissionPending = false
     private val microphonePermission = registerForActivityResult(
         ActivityResultContracts.RequestPermission()
     ) { granted ->
-        if (granted) startInlineRecognition(requestedVoiceLanguage)
-        else sendVoiceError("permission-denied")
+        val waiting = microphonePermissionPending
+        microphonePermissionPending = false
+        if (granted && waiting) startInlineRecognition(requestedVoiceLanguage)
+        else if (!granted && waiting) sendVoiceError("permission-denied")
     }
 
     @SuppressLint("SetJavaScriptEnabled")
@@ -516,6 +519,25 @@ class MainActivity : AppCompatActivity() {
         view.evaluateJavascript(APP_MODE_JS, null)
     }
 
+    private fun injectAmbientJonas(view: WebView) {
+        // The native shell only loads this same-origin, remotely maintained UI.
+        // Future Jonas panel layout and conversational fixes do not require AAB updates.
+        val url = runCatching { Uri.parse(view.url.orEmpty()) }.getOrNull() ?: return
+        if (!isMatchAppHost(url.host.orEmpty()) || isKidsUri(url)) return
+        view.evaluateJavascript(
+            """
+            (function() {
+              if (window.top !== window || document.getElementById('matchapp-ambient-jonas-script')) return;
+              var script = document.createElement('script');
+              script.id = 'matchapp-ambient-jonas-script';
+              script.async = true;
+              script.src = '/jonas/android-ambient-assistant-20261011.js?live=' + Date.now();
+              (document.head || document.documentElement).appendChild(script);
+            })();
+            """.trimIndent(), null
+        )
+    }
+
     private inner class MatchClient : WebViewClient() {
         override fun shouldOverrideUrlLoading(view: WebView, request: WebResourceRequest): Boolean {
             if (isAdultAiDocument(request.url)) view.settings.cacheMode = WebSettings.LOAD_NO_CACHE
@@ -557,6 +579,7 @@ class MainActivity : AppCompatActivity() {
             refresh.isRefreshing = false
             view.settings.cacheMode = WebSettings.LOAD_DEFAULT
             injectAppMode(view)
+            injectAmbientJonas(view)
             CookieManager.getInstance().flush()
         }
 
@@ -624,6 +647,7 @@ class MainActivity : AppCompatActivity() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO)
             != PackageManager.PERMISSION_GRANTED) {
             requestedVoiceLanguage = language
+            microphonePermissionPending = true
             microphonePermission.launch(Manifest.permission.RECORD_AUDIO)
             return
         }
@@ -881,6 +905,18 @@ class MainActivity : AppCompatActivity() {
                 pendingVoiceUtterance = null
                 voiceTts?.stop()
                 sendVoiceSpeakingState(false)
+            }
+        }
+
+        @JavascriptInterface
+        fun stop() {
+            // Closing Jonas's overlay immediately releases Android recognition;
+            // the page beneath the overlay remains exactly where the user left it.
+            runOnUiThread {
+                inlineVoiceRecognizer?.cancel()
+                inlineVoiceRecognizer?.destroy()
+                inlineVoiceRecognizer = null
+                microphonePermissionPending = false
             }
         }
 
