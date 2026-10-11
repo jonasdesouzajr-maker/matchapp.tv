@@ -40,7 +40,13 @@ async function setup(page){
      await page.waitForFunction(()=>typeof window.triggerMatch==='function'&&typeof window.setMatchCriteria==='function',null,{timeout:23000});
      // Legacy native windows play the intro before Home accepts gestures.
      const intro=page.locator('#matchapp-launch-intro');
-     if(await intro.isVisible())await intro.locator('button').click({timeout:2000});
+     if(await intro.isVisible()){
+       // Video completion removes the overlay asynchronously. A detached Skip
+       // button is valid auto-completion, not a broken mobile interaction.
+       await intro.locator('button').click({timeout:2000}).catch(async err=>{
+         if(await intro.isVisible().catch(()=>false))throw err;
+       });
+     }
      await intro.waitFor({state:'detached',timeout:7500});
      const runtime=await page.evaluate(()=>({touch:navigator.maxTouchPoints>0,mobileViewport:document.documentElement.clientWidth<=window.innerWidth+2,build:window.MATCHAPP_BUILD,quota:localStorage.getItem('match_dailyCount')||'0'}));
      pass(device.name+' proper touch-enabled bootstrap',runtime.touch&&runtime.mobileViewport,JSON.stringify(runtime));
