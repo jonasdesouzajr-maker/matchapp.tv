@@ -131,7 +131,7 @@
   root.dataset.voiceMode='text';
   statusText('Text mode · Voice is off','Modo texto · Voz desativada');
  }
- var nativeListening=false;
+ var nativeListening=false,nativeRecoveries=0;
  function listen(token){
   if(token!==session||mode!=='voice'||panel.hidden)return;
   // Keep recognition active while the Android system recognizer takes focus.`n  // The resulting transcript arrives on the same WebView after Activity resumes.`n  // The installed Android WebView does not expose the browser SpeechRecognition
@@ -155,6 +155,17 @@
    window.matchAppNativeVoiceResult=returnToQuestion;
    window.matchAppNativeVoiceError=function(code){
     if(token!==session||mode!=='voice'){if(typeof oldNativeError==='function')oldNativeError(code);return}
+    // Android's first recognizer launch may fail immediately after RECORD_AUDIO
+    // was just granted. Retry one transient unavailable error, never denials.
+    if(String(code)==='unavailable'&&nativeRecoveries<1){
+     nativeRecoveries++;
+     nativeListening=false;root.classList.remove('jh-listening');mic?.setAttribute('aria-pressed','false');
+     statusText('Starting microphone…','Iniciando microfone…');
+     setTimeout(function(){
+      if(token===session&&mode==='voice'&&!panel.hidden)listen(token);
+     },850);
+     return;
+    }
     nativeListening=false;root.classList.remove('jh-listening');mic?.setAttribute('aria-pressed','false');
     statusText('Microphone unavailable. Tap to retry or type.','Microfone indisponível. Toque para tentar novamente ou digite.');
    };
