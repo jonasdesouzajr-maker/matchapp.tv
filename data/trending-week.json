@@ -1,124 +1,120 @@
 {
   "schemaVersion": 2,
   "weekOf": "2026-10-05",
-  "updated": "2026-10-11T09:58:54.083Z",
+  "updated": "2026-10-11T11:40:52.028Z",
   "label": "Latest titles trending right now",
   "sourceNote": "Movie and TV positions refresh from MatchApp’s current TMDB daily trend metadata; verified official music-video releases from monitored top-artist channels refresh daily with release dates, YouTube view counts, direct links, keywords and structured metadata. Availability can vary by country.",
   "titles": [
     {
-      "title": "LINK CLICK",
-      "kind": "tv",
-      "year": 2021,
-      "origin": "CN",
-      "originName": "China",
-      "platform": "Crunchyroll",
+      "title": "Animals",
+      "kind": "movie",
+      "year": 2026,
+      "origin": "US",
+      "originName": "United States",
+      "platform": "Netflix",
       "platforms": [
-        "Crunchyroll",
-        "Crunchyroll Amazon Channel"
+        "Netflix",
+        "Netflix Standard with Ads"
       ],
-      "tmdbId": "123542",
-      "poster": "https://image.tmdb.org/t/p/w780/wo9jwu5qMvXzhW2cyy5E6hOVs92.jpg",
-      "description": "Using superpowers to enter their clientele’s photos one by one, Cheng Xiaoshi and Lu Guang take their work seriously at “Time Photo Studio,” a small photography shop set in the backdrop of a modern metropolis. Each job can be full of danger, but nothing is more important than fulfilling every order, no matter the scale…or peril involved!",
+      "tmdbId": "1236045",
+      "poster": "https://image.tmdb.org/t/p/w780/cyltXU1lAGhRFBuHQIMWBAPj8fI.jpg",
+      "description": "When the son of an L.A. mayoral candidate is kidnapped, he and his wife have a few hours to come up with the ransom payment. With most of their money spent on his political campaign, they have to get their hands dirty and expose a side of their lives they never intended to see the light of day.",
       "genre": [
-        "Animation",
-        "Sci-Fi & Fantasy",
-        "Mystery",
+        "Thriller",
         "Drama"
       ],
-      "inLanguage": "zh",
+      "inLanguage": "en",
       "cast": [
-        "Su Shangqing",
-        "Yang Tianxiang",
-        "Li Shimeng"
+        "Ben Affleck",
+        "Kerry Washington",
+        "Gillian Anderson",
+        "Steven Yeun"
       ],
-      "runtimeMinutes": 23,
-      "contentRating": "14",
-      "voteAverage": 8.2,
-      "previewUrl": "https://www.youtube.com/watch?v=HxoR_7jVBCM",
+      "runtimeMinutes": 106,
+      "contentRating": "R",
+      "voteAverage": 7.44,
+      "previewUrl": "https://www.youtube.com/watch?v=ZkN2M4ODdys",
       "availability": {
         "BR": {
           "buy": [],
-          "link": "https://www.themoviedb.org/tv/123542/watch?locale=BR",
+          "link": "https://www.themoviedb.org/movie/1236045-animals/watch?locale=BR",
           "rent": [],
           "stream": [
-            "Crunchyroll",
-            "Crunchyroll Amazon Channel"
+            "Netflix",
+            "Netflix Standard with Ads"
           ],
           "cinema_release_date": null
         },
         "GB": {
           "buy": [],
-          "link": "https://www.themoviedb.org/tv/123542/watch?locale=GB",
+          "link": "https://www.themoviedb.org/movie/1236045-animals/watch?locale=GB",
           "rent": [],
           "stream": [
-            "Crunchyroll",
-            "Crunchyroll Amazon Channel"
+            "Netflix",
+            "Netflix Standard with Ads"
           ],
           "cinema_release_date": null
         },
         "PT": {
           "buy": [],
-          "link": "https://www.themoviedb.org/tv/123542/watch?locale=PT",
+          "link": "https://www.themoviedb.org/movie/1236045-animals/watch?locale=PT",
           "rent": [],
           "stream": [
-            "Crunchyroll",
-            "Crunchyroll Amazon Channel"
+            "Netflix"
           ],
           "cinema_release_date": null
         },
         "US": {
           "buy": [],
-          "link": "https://www.themoviedb.org/tv/123542/watch?locale=US",
+          "link": "https://www.themoviedb.org/movie/1236045-animals/watch?locale=US",
           "rent": [],
           "stream": [
-            "Crunchyroll",
-            "Crunchyroll Amazon Channel"
+            "Netflix",
+            "Netflix Standard with Ads"
           ],
-          "cinema_release_date": null
+          "cinema_release_date": "2026-10-09"
         },
         "source": "tmdb-watch-providers",
         "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/tv/123542"
+        "source_page_url": "https://www.themoviedb.org/movie/1236045"
       },
       "sourceRank": 1,
       "keywords": [
-        "LINK CLICK",
-        "LINK CLICK 2021",
-        "where to watch LINK CLICK",
-        "Animation series",
-        "Sci-Fi & Fantasy series",
-        "Mystery series",
-        "Crunchyroll trending series",
-        "Crunchyroll Amazon Channel trending series",
-        "Su Shangqing",
-        "Yang Tianxiang"
+        "Animals",
+        "Animals 2026",
+        "where to watch Animals",
+        "Thriller movie",
+        "Drama movie",
+        "Netflix trending movie",
+        "Netflix Standard with Ads trending movie",
+        "Ben Affleck",
+        "Kerry Washington"
       ],
       "longTailKeywords": [
-        "where to watch LINK CLICK 2021",
-        "LINK CLICK streaming in Brazil and United States",
-        "LINK CLICK cast synopsis trailer and where to watch",
-        "what Animation to watch this week"
+        "where to watch Animals 2026",
+        "Animals streaming in Brazil and United States",
+        "Animals cast synopsis trailer and where to watch",
+        "what Thriller to watch this week"
       ],
       "seo": {
-        "title": "Where to watch LINK CLICK (2021) | MatchApp Ai",
-        "description": "Using superpowers to enter their clientele’s photos one by one, Cheng Xiaoshi and Lu Guang take their work seriously at “Time Photo Studio,” a small photograp",
+        "title": "Where to watch Animals (2026) | MatchApp Ai",
+        "description": "When the son of an L.A. mayoral candidate is kidnapped, he and his wife have a few hours to come up with the ransom payment. With most of their money spent on",
         "keywords": [
-          "LINK CLICK",
-          "LINK CLICK 2021",
-          "where to watch LINK CLICK",
-          "Animation series",
-          "Sci-Fi & Fantasy series",
-          "Mystery series",
-          "Crunchyroll trending series",
-          "Crunchyroll Amazon Channel trending series",
-          "Su Shangqing",
-          "Yang Tianxiang",
-          "where to watch LINK CLICK 2021",
-          "LINK CLICK streaming in Brazil and United States",
-          "LINK CLICK cast synopsis trailer and where to watch",
-          "what Animation to watch this week"
+          "Animals",
+          "Animals 2026",
+          "where to watch Animals",
+          "Thriller movie",
+          "Drama movie",
+          "Netflix trending movie",
+          "Netflix Standard with Ads trending movie",
+          "Ben Affleck",
+          "Kerry Washington",
+          "where to watch Animals 2026",
+          "Animals streaming in Brazil and United States",
+          "Animals cast synopsis trailer and where to watch",
+          "what Thriller to watch this week"
         ],
-        "canonicalQuery": "LINK CLICK"
+        "canonicalQuery": "Animals"
       }
     },
     {
@@ -237,115 +233,119 @@
       }
     },
     {
-      "title": "Animals",
-      "kind": "movie",
-      "year": 2026,
-      "origin": "US",
-      "originName": "United States",
-      "platform": "Netflix",
+      "title": "LINK CLICK",
+      "kind": "tv",
+      "year": 2021,
+      "origin": "CN",
+      "originName": "China",
+      "platform": "Crunchyroll",
       "platforms": [
-        "Netflix",
-        "Netflix Standard with Ads"
+        "Crunchyroll",
+        "Crunchyroll Amazon Channel"
       ],
-      "tmdbId": "1236045",
-      "poster": "https://image.tmdb.org/t/p/w780/cyltXU1lAGhRFBuHQIMWBAPj8fI.jpg",
-      "description": "When the son of an L.A. mayoral candidate is kidnapped, he and his wife have a few hours to come up with the ransom payment. With most of their money spent on his political campaign, they have to get their hands dirty and expose a side of their lives they never intended to see the light of day.",
+      "tmdbId": "123542",
+      "poster": "https://image.tmdb.org/t/p/w780/wo9jwu5qMvXzhW2cyy5E6hOVs92.jpg",
+      "description": "Using superpowers to enter their clientele’s photos one by one, Cheng Xiaoshi and Lu Guang take their work seriously at “Time Photo Studio,” a small photography shop set in the backdrop of a modern metropolis. Each job can be full of danger, but nothing is more important than fulfilling every order, no matter the scale…or peril involved!",
       "genre": [
-        "Thriller",
+        "Animation",
+        "Sci-Fi & Fantasy",
+        "Mystery",
         "Drama"
       ],
-      "inLanguage": "en",
+      "inLanguage": "zh",
       "cast": [
-        "Ben Affleck",
-        "Kerry Washington",
-        "Gillian Anderson",
-        "Steven Yeun"
+        "Su Shangqing",
+        "Yang Tianxiang",
+        "Li Shimeng"
       ],
-      "runtimeMinutes": 106,
-      "contentRating": "R",
-      "voteAverage": 7.45,
-      "previewUrl": "https://www.youtube.com/watch?v=ZkN2M4ODdys",
+      "runtimeMinutes": 23,
+      "contentRating": "14",
+      "voteAverage": 8.2,
+      "previewUrl": "https://www.youtube.com/watch?v=HxoR_7jVBCM",
       "availability": {
         "BR": {
           "buy": [],
-          "link": "https://www.themoviedb.org/movie/1236045-animals/watch?locale=BR",
+          "link": "https://www.themoviedb.org/tv/123542/watch?locale=BR",
           "rent": [],
           "stream": [
-            "Netflix",
-            "Netflix Standard with Ads"
+            "Crunchyroll",
+            "Crunchyroll Amazon Channel"
           ],
           "cinema_release_date": null
         },
         "GB": {
           "buy": [],
-          "link": "https://www.themoviedb.org/movie/1236045-animals/watch?locale=GB",
+          "link": "https://www.themoviedb.org/tv/123542/watch?locale=GB",
           "rent": [],
           "stream": [
-            "Netflix",
-            "Netflix Standard with Ads"
+            "Crunchyroll",
+            "Crunchyroll Amazon Channel"
           ],
           "cinema_release_date": null
         },
         "PT": {
           "buy": [],
-          "link": "https://www.themoviedb.org/movie/1236045-animals/watch?locale=PT",
+          "link": "https://www.themoviedb.org/tv/123542/watch?locale=PT",
           "rent": [],
           "stream": [
-            "Netflix"
+            "Crunchyroll",
+            "Crunchyroll Amazon Channel"
           ],
           "cinema_release_date": null
         },
         "US": {
           "buy": [],
-          "link": "https://www.themoviedb.org/movie/1236045-animals/watch?locale=US",
+          "link": "https://www.themoviedb.org/tv/123542/watch?locale=US",
           "rent": [],
           "stream": [
-            "Netflix",
-            "Netflix Standard with Ads"
+            "Crunchyroll",
+            "Crunchyroll Amazon Channel"
           ],
-          "cinema_release_date": "2026-10-09"
+          "cinema_release_date": null
         },
         "source": "tmdb-watch-providers",
         "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1236045"
+        "source_page_url": "https://www.themoviedb.org/tv/123542"
       },
       "sourceRank": 3,
       "keywords": [
-        "Animals",
-        "Animals 2026",
-        "where to watch Animals",
-        "Thriller movie",
-        "Drama movie",
-        "Netflix trending movie",
-        "Netflix Standard with Ads trending movie",
-        "Ben Affleck",
-        "Kerry Washington"
+        "LINK CLICK",
+        "LINK CLICK 2021",
+        "where to watch LINK CLICK",
+        "Animation series",
+        "Sci-Fi & Fantasy series",
+        "Mystery series",
+        "Crunchyroll trending series",
+        "Crunchyroll Amazon Channel trending series",
+        "Su Shangqing",
+        "Yang Tianxiang"
       ],
       "longTailKeywords": [
-        "where to watch Animals 2026",
-        "Animals streaming in Brazil and United States",
-        "Animals cast synopsis trailer and where to watch",
-        "what Thriller to watch this week"
+        "where to watch LINK CLICK 2021",
+        "LINK CLICK streaming in Brazil and United States",
+        "LINK CLICK cast synopsis trailer and where to watch",
+        "what Animation to watch this week"
       ],
       "seo": {
-        "title": "Where to watch Animals (2026) | MatchApp Ai",
-        "description": "When the son of an L.A. mayoral candidate is kidnapped, he and his wife have a few hours to come up with the ransom payment. With most of their money spent on",
+        "title": "Where to watch LINK CLICK (2021) | MatchApp Ai",
+        "description": "Using superpowers to enter their clientele’s photos one by one, Cheng Xiaoshi and Lu Guang take their work seriously at “Time Photo Studio,” a small photograp",
         "keywords": [
-          "Animals",
-          "Animals 2026",
-          "where to watch Animals",
-          "Thriller movie",
-          "Drama movie",
-          "Netflix trending movie",
-          "Netflix Standard with Ads trending movie",
-          "Ben Affleck",
-          "Kerry Washington",
-          "where to watch Animals 2026",
-          "Animals streaming in Brazil and United States",
-          "Animals cast synopsis trailer and where to watch",
-          "what Thriller to watch this week"
+          "LINK CLICK",
+          "LINK CLICK 2021",
+          "where to watch LINK CLICK",
+          "Animation series",
+          "Sci-Fi & Fantasy series",
+          "Mystery series",
+          "Crunchyroll trending series",
+          "Crunchyroll Amazon Channel trending series",
+          "Su Shangqing",
+          "Yang Tianxiang",
+          "where to watch LINK CLICK 2021",
+          "LINK CLICK streaming in Brazil and United States",
+          "LINK CLICK cast synopsis trailer and where to watch",
+          "what Animation to watch this week"
         ],
-        "canonicalQuery": "Animals"
+        "canonicalQuery": "LINK CLICK"
       }
     },
     {
@@ -360,11 +360,11 @@
       "artist": "Bruno Mars",
       "songTitle": "Dance With Me",
       "publishedAt": "2026-10-01T16:00:04+00:00",
-      "viewCount": 7585340,
-      "viewCountCheckedAt": "2026-10-07",
+      "viewCount": 11389234,
+      "viewCountCheckedAt": "2026-10-11",
       "channel": "Bruno Mars",
       "channelUrl": "https://www.youtube.com/@brunomars",
-      "description": "Official Bruno Mars music video for “Dance With Me”, released on YouTube 2026-10-01 with 7,585,340 verified views at the latest daily check.",
+      "description": "Official Bruno Mars music video for “Dance With Me”, released on YouTube 2026-10-01 with 11,389,234 verified views at the latest daily check.",
       "genre": [
         "Music video"
       ],
@@ -390,7 +390,7 @@
       ],
       "seo": {
         "title": "Bruno Mars — Dance With Me official music video | MatchApp Ai",
-        "description": "Official Bruno Mars music video for “Dance With Me”, released on YouTube 2026-10-01 with 7,585,340 verified views at the latest daily check.",
+        "description": "Official Bruno Mars music video for “Dance With Me”, released on YouTube 2026-10-01 with 11,389,234 verified views at the latest daily check.",
         "keywords": [
           "Bruno Mars",
           "Dance With Me",
@@ -437,7 +437,7 @@
       ],
       "runtimeMinutes": null,
       "contentRating": "TV-MA",
-      "voteAverage": 8.33,
+      "voteAverage": 8.37,
       "previewUrl": "https://www.youtube.com/watch?v=jkUw2nh6fT0",
       "availability": {
         "BR": {
@@ -789,11 +789,11 @@
       "artist": "Taylor Swift",
       "songTitle": "Patient Zero",
       "publishedAt": "2026-09-29T22:00:19+00:00",
-      "viewCount": 15120501,
-      "viewCountCheckedAt": "2026-10-07",
+      "viewCount": 18032193,
+      "viewCountCheckedAt": "2026-10-11",
       "channel": "Taylor Swift",
       "channelUrl": "https://www.youtube.com/@TaylorSwift",
-      "description": "Official Taylor Swift music video for “Patient Zero”, released on YouTube 2026-09-29 with 15,120,501 verified views at the latest daily check.",
+      "description": "Official Taylor Swift music video for “Patient Zero”, released on YouTube 2026-09-29 with 18,032,193 verified views at the latest daily check.",
       "genre": [
         "Music video"
       ],
@@ -820,7 +820,7 @@
       ],
       "seo": {
         "title": "Taylor Swift — Patient Zero official music video | MatchApp Ai",
-        "description": "Official Taylor Swift music video for “Patient Zero”, released on YouTube 2026-09-29 with 15,120,501 verified views at the latest daily check.",
+        "description": "Official Taylor Swift music video for “Patient Zero”, released on YouTube 2026-09-29 with 18,032,193 verified views at the latest daily check.",
         "keywords": [
           "Taylor Swift",
           "Patient Zero",
@@ -908,69 +908,69 @@
       }
     },
     {
-      "title": "Natural High",
+      "title": "Treasure Island",
       "kind": "tv",
-      "year": 2023,
-      "origin": "CN",
-      "originName": "China",
+      "year": 2026,
+      "origin": "US",
+      "originName": "United States",
       "platform": "",
       "platforms": [],
-      "tmdbId": "231620",
-      "poster": "https://image.tmdb.org/t/p/w780/oC2MuEWxnLVTyYw70XoK2HFf7nW.jpg",
-      "description": "Come and join Shen Teng and his friends as they step away from the bustling crowded cities and reconnect with the beautiful wild nature.",
+      "tmdbId": "333101",
+      "poster": "https://image.tmdb.org/t/p/w780/o79kVEpMG6FSr5qyiBmVuc3IGWD.jpg",
+      "description": "When Jim Hawkins gets his hands on a legendary treasure map, his mother Bess's clever and decisive actions leave him holding valuable knowledge that puts both of their lives in danger. Sailing aboard The Hispaniola, Jim and Bess are caught between the charming, terrifying pirate Long John Silver, and the debonair, duplicitous British agent Aaron Graham. Jim has to grow up fast as he and his mother fight for survival on a voyage where alliances shift, secrets multiply and peril closes in from all sides.",
       "genre": [
-        "Reality",
-        "Comedy"
+        "Drama",
+        "Action & Adventure"
       ],
-      "inLanguage": "zh",
+      "inLanguage": "en",
       "cast": [
-        "Shen Teng",
-        "Bai Jingting",
-        "Jia Bing",
-        "Hu Xianxu"
+        "David Oyelowo",
+        "Hayley Atwell",
+        "Jack Huston",
+        "Tomer Capone"
       ],
-      "runtimeMinutes": 75,
+      "runtimeMinutes": null,
       "contentRating": "",
-      "voteAverage": 7.5,
-      "previewUrl": "",
+      "voteAverage": 1,
+      "previewUrl": "https://www.youtube.com/watch?v=UsFVIvngwRA",
       "availability": {
         "source": "tmdb-watch-providers",
         "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/tv/231620"
+        "source_page_url": "https://www.themoviedb.org/tv/333101"
       },
       "sourceRank": 8,
       "keywords": [
-        "Natural High",
-        "Natural High 2023",
-        "where to watch Natural High",
-        "Reality series",
-        "Comedy series",
-        "Shen Teng",
-        "Bai Jingting"
+        "Treasure Island",
+        "Treasure Island 2026",
+        "where to watch Treasure Island",
+        "Drama series",
+        "Action & Adventure series",
+        "David Oyelowo",
+        "Hayley Atwell"
       ],
       "longTailKeywords": [
-        "where to watch Natural High 2023",
-        "Natural High streaming in Brazil and United States",
-        "Natural High cast synopsis trailer and where to watch",
-        "what Reality to watch this week"
+        "where to watch Treasure Island 2026",
+        "Treasure Island streaming in Brazil and United States",
+        "Treasure Island cast synopsis trailer and where to watch",
+        "what Drama to watch this week"
       ],
       "seo": {
-        "title": "Where to watch Natural High (2023) | MatchApp Ai",
-        "description": "Come and join Shen Teng and his friends as they step away from the bustling crowded cities and reconnect with the beautiful wild nature.",
+        "title": "Where to watch Treasure Island (2026) | MatchApp Ai",
+        "description": "When Jim Hawkins gets his hands on a legendary treasure map, his mother Bess's clever and decisive actions leave him holding valuable knowledge that puts both",
         "keywords": [
-          "Natural High",
-          "Natural High 2023",
-          "where to watch Natural High",
-          "Reality series",
-          "Comedy series",
-          "Shen Teng",
-          "Bai Jingting",
-          "where to watch Natural High 2023",
-          "Natural High streaming in Brazil and United States",
-          "Natural High cast synopsis trailer and where to watch",
-          "what Reality to watch this week"
+          "Treasure Island",
+          "Treasure Island 2026",
+          "where to watch Treasure Island",
+          "Drama series",
+          "Action & Adventure series",
+          "David Oyelowo",
+          "Hayley Atwell",
+          "where to watch Treasure Island 2026",
+          "Treasure Island streaming in Brazil and United States",
+          "Treasure Island cast synopsis trailer and where to watch",
+          "what Drama to watch this week"
         ],
-        "canonicalQuery": "Natural High"
+        "canonicalQuery": "Treasure Island"
       }
     },
     {
@@ -1048,11 +1048,11 @@
       "artist": "BTS",
       "songTitle": "Merry Go Round",
       "publishedAt": "2026-09-25T15:00:01+00:00",
-      "viewCount": 9810583,
-      "viewCountCheckedAt": "2026-10-07",
+      "viewCount": 10283474,
+      "viewCountCheckedAt": "2026-10-11",
       "channel": "BANGTANTV",
       "channelUrl": "https://www.youtube.com/@BTS",
-      "description": "Official BTS music video for “Merry Go Round”, released on YouTube 2026-09-25 with 9,810,583 verified views at the latest daily check.",
+      "description": "Official BTS music video for “Merry Go Round”, released on YouTube 2026-09-25 with 10,283,474 verified views at the latest daily check.",
       "genre": [
         "Music video"
       ],
@@ -1078,7 +1078,7 @@
       ],
       "seo": {
         "title": "BTS — Merry Go Round official music video | MatchApp Ai",
-        "description": "Official BTS music video for “Merry Go Round”, released on YouTube 2026-09-25 with 9,810,583 verified views at the latest daily check.",
+        "description": "Official BTS music video for “Merry Go Round”, released on YouTube 2026-09-25 with 10,283,474 verified views at the latest daily check.",
         "keywords": [
           "BTS",
           "Merry Go Round",
@@ -1094,6 +1094,72 @@
       },
       "source": "verified-official-music-video",
       "sourceRank": 3
+    },
+    {
+      "title": "Natural High",
+      "kind": "tv",
+      "year": 2023,
+      "origin": "CN",
+      "originName": "China",
+      "platform": "",
+      "platforms": [],
+      "tmdbId": "231620",
+      "poster": "https://image.tmdb.org/t/p/w780/oC2MuEWxnLVTyYw70XoK2HFf7nW.jpg",
+      "description": "Come and join Shen Teng and his friends as they step away from the bustling crowded cities and reconnect with the beautiful wild nature.",
+      "genre": [
+        "Reality",
+        "Comedy"
+      ],
+      "inLanguage": "zh",
+      "cast": [
+        "Shen Teng",
+        "Bai Jingting",
+        "Jia Bing",
+        "Hu Xianxu"
+      ],
+      "runtimeMinutes": 75,
+      "contentRating": "",
+      "voteAverage": 7.5,
+      "previewUrl": "",
+      "availability": {
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/tv/231620"
+      },
+      "sourceRank": 10,
+      "keywords": [
+        "Natural High",
+        "Natural High 2023",
+        "where to watch Natural High",
+        "Reality series",
+        "Comedy series",
+        "Shen Teng",
+        "Bai Jingting"
+      ],
+      "longTailKeywords": [
+        "where to watch Natural High 2023",
+        "Natural High streaming in Brazil and United States",
+        "Natural High cast synopsis trailer and where to watch",
+        "what Reality to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch Natural High (2023) | MatchApp Ai",
+        "description": "Come and join Shen Teng and his friends as they step away from the bustling crowded cities and reconnect with the beautiful wild nature.",
+        "keywords": [
+          "Natural High",
+          "Natural High 2023",
+          "where to watch Natural High",
+          "Reality series",
+          "Comedy series",
+          "Shen Teng",
+          "Bai Jingting",
+          "where to watch Natural High 2023",
+          "Natural High streaming in Brazil and United States",
+          "Natural High cast synopsis trailer and where to watch",
+          "what Reality to watch this week"
+        ],
+        "canonicalQuery": "Natural High"
+      }
     },
     {
       "title": "Black Clover",
@@ -1127,7 +1193,7 @@
         "attribution": "JustWatch via TMDB",
         "source_page_url": "https://www.themoviedb.org/tv/73223"
       },
-      "sourceRank": 10,
+      "sourceRank": 11,
       "keywords": [
         "Black Clover",
         "Black Clover 2017",
@@ -1244,7 +1310,7 @@
         "attribution": "JustWatch via TMDB",
         "source_page_url": "https://www.themoviedb.org/tv/95350"
       },
-      "sourceRank": 11,
+      "sourceRank": 12,
       "keywords": [
         "Lanterns",
         "Lanterns 2026",
@@ -1283,100 +1349,6 @@
           "what Drama to watch this week"
         ],
         "canonicalQuery": "Lanterns"
-      }
-    },
-    {
-      "title": "Digger",
-      "kind": "movie",
-      "year": 2026,
-      "origin": "US",
-      "originName": "United States",
-      "platform": "Cinemas",
-      "platforms": [],
-      "tmdbId": "1248832",
-      "poster": "https://image.tmdb.org/t/p/w780/1ATXKrIPJyKNwnJ6lcG088Sa6zi.jpg",
-      "description": "The most powerful man in the world embarks on a frantic mission to prove he is humanity's savior before the disaster he's unleashed destroys everything.",
-      "genre": [
-        "Comedy",
-        "Drama"
-      ],
-      "inLanguage": "en",
-      "cast": [
-        "Tom Cruise",
-        "Riz Ahmed",
-        "John Goodman",
-        "Sandra Hüller"
-      ],
-      "runtimeMinutes": 129,
-      "contentRating": "R",
-      "voteAverage": 7.51,
-      "previewUrl": "https://www.youtube.com/watch?v=job8V254NAE",
-      "availability": {
-        "BR": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-10-01"
-        },
-        "GB": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-10-02"
-        },
-        "PT": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-10-01"
-        },
-        "US": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-10-02"
-        },
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1248832"
-      },
-      "sourceRank": 12,
-      "keywords": [
-        "Digger",
-        "Digger 2026",
-        "where to watch Digger",
-        "Comedy movie",
-        "Drama movie",
-        "Tom Cruise",
-        "Riz Ahmed"
-      ],
-      "longTailKeywords": [
-        "where to watch Digger 2026",
-        "Digger streaming in Brazil and United States",
-        "Digger cast synopsis trailer and where to watch",
-        "what Comedy to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch Digger (2026) | MatchApp Ai",
-        "description": "The most powerful man in the world embarks on a frantic mission to prove he is humanity's savior before the disaster he's unleashed destroys everything.",
-        "keywords": [
-          "Digger",
-          "Digger 2026",
-          "where to watch Digger",
-          "Comedy movie",
-          "Drama movie",
-          "Tom Cruise",
-          "Riz Ahmed",
-          "where to watch Digger 2026",
-          "Digger streaming in Brazil and United States",
-          "Digger cast synopsis trailer and where to watch",
-          "what Comedy to watch this week"
-        ],
-        "canonicalQuery": "Digger"
       }
     },
     {
@@ -1443,6 +1415,100 @@
       "sourceRank": 4
     },
     {
+      "title": "Digger",
+      "kind": "movie",
+      "year": 2026,
+      "origin": "US",
+      "originName": "United States",
+      "platform": "Cinemas",
+      "platforms": [],
+      "tmdbId": "1248832",
+      "poster": "https://image.tmdb.org/t/p/w780/1ATXKrIPJyKNwnJ6lcG088Sa6zi.jpg",
+      "description": "The most powerful man in the world embarks on a frantic mission to prove he is humanity's savior before the disaster he's unleashed destroys everything.",
+      "genre": [
+        "Comedy",
+        "Drama"
+      ],
+      "inLanguage": "en",
+      "cast": [
+        "Tom Cruise",
+        "Riz Ahmed",
+        "John Goodman",
+        "Sandra Hüller"
+      ],
+      "runtimeMinutes": 129,
+      "contentRating": "R",
+      "voteAverage": 7.53,
+      "previewUrl": "https://www.youtube.com/watch?v=job8V254NAE",
+      "availability": {
+        "BR": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-10-01"
+        },
+        "GB": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-10-02"
+        },
+        "PT": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-10-01"
+        },
+        "US": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-10-02"
+        },
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/movie/1248832"
+      },
+      "sourceRank": 13,
+      "keywords": [
+        "Digger",
+        "Digger 2026",
+        "where to watch Digger",
+        "Comedy movie",
+        "Drama movie",
+        "Tom Cruise",
+        "Riz Ahmed"
+      ],
+      "longTailKeywords": [
+        "where to watch Digger 2026",
+        "Digger streaming in Brazil and United States",
+        "Digger cast synopsis trailer and where to watch",
+        "what Comedy to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch Digger (2026) | MatchApp Ai",
+        "description": "The most powerful man in the world embarks on a frantic mission to prove he is humanity's savior before the disaster he's unleashed destroys everything.",
+        "keywords": [
+          "Digger",
+          "Digger 2026",
+          "where to watch Digger",
+          "Comedy movie",
+          "Drama movie",
+          "Tom Cruise",
+          "Riz Ahmed",
+          "where to watch Digger 2026",
+          "Digger streaming in Brazil and United States",
+          "Digger cast synopsis trailer and where to watch",
+          "what Comedy to watch this week"
+        ],
+        "canonicalQuery": "Digger"
+      }
+    },
+    {
       "title": "Resident Evil",
       "kind": "movie",
       "year": 2026,
@@ -1467,7 +1533,7 @@
       ],
       "runtimeMinutes": 95,
       "contentRating": "R",
-      "voteAverage": 7.32,
+      "voteAverage": 7.3,
       "previewUrl": "https://www.youtube.com/watch?v=mNd1gb19A-c",
       "availability": {
         "BR": {
@@ -1502,7 +1568,7 @@
         "attribution": "JustWatch via TMDB",
         "source_page_url": "https://www.themoviedb.org/movie/1423191"
       },
-      "sourceRank": 13,
+      "sourceRank": 14,
       "keywords": [
         "Resident Evil",
         "Resident Evil 2026",
@@ -1540,69 +1606,135 @@
       }
     },
     {
-      "title": "Treasure Island",
-      "kind": "tv",
+      "title": "Insidious: Out of the Further",
+      "kind": "movie",
       "year": 2026,
       "origin": "US",
       "originName": "United States",
-      "platform": "",
-      "platforms": [],
-      "tmdbId": "333101",
-      "poster": "https://image.tmdb.org/t/p/w780/o79kVEpMG6FSr5qyiBmVuc3IGWD.jpg",
-      "description": "When Jim Hawkins gets his hands on a legendary treasure map, his mother Bess's clever and decisive actions leave him holding valuable knowledge that puts both of their lives in danger. Sailing aboard The Hispaniola, Jim and Bess are caught between the charming, terrifying pirate Long John Silver, and the debonair, duplicitous British agent Aaron Graham. Jim has to grow up fast as he and his mother fight for survival on a voyage where alliances shift, secrets multiply and peril closes in from all sides.",
+      "platform": "Claro tv+",
+      "platforms": [
+        "Claro tv+"
+      ],
+      "tmdbId": "1291595",
+      "poster": "https://image.tmdb.org/t/p/w780/4tTrW9dXCByS5wt2pXVWb58zNjz.jpg",
+      "description": "Gemma, a young mother raising her daughter in the house she grew up in, discovers she can travel into The Further, the purgatorial realm of lost souls at the heart of the Insidious universe. When something evil comes after her, Gemma discovers an ability that changes everything: she doesn't just enter The Further, she can bring what lives there back to the real world. Once the demons realize her power, our world becomes their playground.",
       "genre": [
-        "Drama",
-        "Action & Adventure"
+        "Horror",
+        "Thriller"
       ],
       "inLanguage": "en",
       "cast": [
-        "David Oyelowo",
-        "Hayley Atwell",
-        "Jack Huston",
-        "Tomer Capone"
+        "Amelia Eve",
+        "Island Austin",
+        "Brandon Perea",
+        "Lin Shaye"
       ],
-      "runtimeMinutes": null,
-      "contentRating": "",
-      "voteAverage": 1,
-      "previewUrl": "https://www.youtube.com/watch?v=UsFVIvngwRA",
+      "runtimeMinutes": 106,
+      "contentRating": "PG-13",
+      "voteAverage": 7.64,
+      "previewUrl": "https://www.youtube.com/watch?v=gXjurDkYnEM",
       "availability": {
+        "BR": {
+          "buy": [
+            "Apple TV Store",
+            "Amazon Video"
+          ],
+          "link": "https://www.themoviedb.org/movie/1291595-insidious-out-of-the-further/watch?locale=BR",
+          "rent": [
+            "Apple TV Store",
+            "Amazon Video"
+          ],
+          "stream": [
+            "Claro tv+"
+          ],
+          "cinema_release_date": "2026-08-20"
+        },
+        "GB": {
+          "buy": [
+            "Apple TV Store",
+            "Rakuten TV",
+            "Amazon Video",
+            "Sky Store"
+          ],
+          "link": "https://www.themoviedb.org/movie/1291595-insidious-out-of-the-further/watch?locale=GB",
+          "rent": [
+            "Apple TV Store",
+            "Rakuten TV",
+            "Amazon Video",
+            "Sky Store"
+          ],
+          "stream": [],
+          "cinema_release_date": "2026-08-21"
+        },
+        "PT": {
+          "buy": [
+            "Apple TV Store",
+            "Rakuten TV",
+            "Amazon Video"
+          ],
+          "link": "https://www.themoviedb.org/movie/1291595-insidious-out-of-the-further/watch?locale=PT",
+          "rent": [
+            "Apple TV Store",
+            "Rakuten TV",
+            "Amazon Video"
+          ],
+          "stream": [],
+          "cinema_release_date": "2026-08-20"
+        },
+        "US": {
+          "buy": [
+            "Amazon Video",
+            "Apple TV Store",
+            "Fandango At Home"
+          ],
+          "link": "https://www.themoviedb.org/movie/1291595-insidious-out-of-the-further/watch?locale=US",
+          "rent": [
+            "Amazon Video",
+            "Apple TV Store",
+            "Fandango At Home"
+          ],
+          "stream": [],
+          "cinema_release_date": "2026-08-21"
+        },
         "source": "tmdb-watch-providers",
         "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/tv/333101"
+        "source_page_url": "https://www.themoviedb.org/movie/1291595"
       },
-      "sourceRank": 14,
+      "sourceRank": 15,
       "keywords": [
-        "Treasure Island",
-        "Treasure Island 2026",
-        "where to watch Treasure Island",
-        "Drama series",
-        "Action & Adventure series",
-        "David Oyelowo",
-        "Hayley Atwell"
+        "Insidious: Out of the Further",
+        "Insidious: Out of the Further 2026",
+        "where to watch Insidious: Out of the Further",
+        "Horror movie",
+        "Thriller movie",
+        "Claro tv+ trending movie",
+        "Amelia Eve",
+        "Island Austin"
       ],
       "longTailKeywords": [
-        "where to watch Treasure Island 2026",
-        "Treasure Island streaming in Brazil and United States",
-        "Treasure Island cast synopsis trailer and where to watch",
-        "what Drama to watch this week"
+        "where to watch Insidious: Out of the Further 2026",
+        "Insidious: Out of the Further streaming in Brazil and United States",
+        "Insidious: Out of the Further cast synopsis trailer and where to watch",
+        "what Horror to watch this week"
       ],
       "seo": {
-        "title": "Where to watch Treasure Island (2026) | MatchApp Ai",
-        "description": "When Jim Hawkins gets his hands on a legendary treasure map, his mother Bess's clever and decisive actions leave him holding valuable knowledge that puts both",
+        "title": "Where to watch Insidious: Out of the Further (2026) | MatchApp Ai",
+        "description": "Gemma, a young mother raising her daughter in the house she grew up in, discovers she can travel into The Further, the purgatorial realm of lost souls at the ",
         "keywords": [
-          "Treasure Island",
-          "Treasure Island 2026",
-          "where to watch Treasure Island",
-          "Drama series",
-          "Action & Adventure series",
-          "David Oyelowo",
-          "Hayley Atwell",
-          "where to watch Treasure Island 2026",
-          "Treasure Island streaming in Brazil and United States",
-          "Treasure Island cast synopsis trailer and where to watch",
-          "what Drama to watch this week"
+          "Insidious: Out of the Further",
+          "Insidious: Out of the Further 2026",
+          "where to watch Insidious: Out of the Further",
+          "Horror movie",
+          "Thriller movie",
+          "Claro tv+ trending movie",
+          "Amelia Eve",
+          "Island Austin",
+          "where to watch Insidious: Out of the Further 2026",
+          "Insidious: Out of the Further streaming in Brazil and United States",
+          "Insidious: Out of the Further cast synopsis trailer and where to watch",
+          "what Horror to watch this week"
         ],
-        "canonicalQuery": "Treasure Island"
+        "canonicalQuery": "Insidious: Out of the Further"
       }
     },
     {
@@ -1668,7 +1800,7 @@
         "attribution": "JustWatch via TMDB",
         "source_page_url": "https://www.themoviedb.org/tv/289423"
       },
-      "sourceRank": 15,
+      "sourceRank": 16,
       "keywords": [
         "Take Charge of My Heart",
         "Take Charge of My Heart 2026",
@@ -1705,124 +1837,6 @@
           "what Sci-Fi & Fantasy to watch this week"
         ],
         "canonicalQuery": "Take Charge of My Heart"
-      }
-    },
-    {
-      "title": "Avatar: Seven Havens",
-      "kind": "tv",
-      "year": 2026,
-      "origin": "US",
-      "originName": "United States",
-      "platform": "Paramount Plus",
-      "platforms": [
-        "Paramount Plus",
-        "Paramount+ Amazon Channel",
-        "Paramount Plus Apple TV channel",
-        "Paramount Plus Premium",
-        "Paramount Plus Essential",
-        "Paramount Plus Basic with Ads"
-      ],
-      "tmdbId": "284833",
-      "poster": "https://image.tmdb.org/t/p/w780/u62d0BPqsdv2TUDifcMmoePbHPL.jpg",
-      "description": "In a world shattered by a devastating cataclysm, a young Earthbender discovers she's the new Avatar after Korra. But in this dangerous era, that title marks her as humanity's destroyer, not its savior. Hunted by both human and spirit enemies, she and her long-lost twin must uncover their mysterious origins and save the Seven Havens before civilization's last strongholds collapse.",
-      "genre": [
-        "Animation",
-        "Action & Adventure",
-        "Sci-Fi & Fantasy",
-        "Family"
-      ],
-      "inLanguage": "en",
-      "cast": [
-        "Saheli Khan",
-        "Aishwarya 'Aishu' Devan",
-        "Major Curda",
-        "Akshay Khanna"
-      ],
-      "runtimeMinutes": null,
-      "contentRating": "TV-Y7",
-      "voteAverage": 8.8,
-      "previewUrl": "https://www.youtube.com/watch?v=nhdh962_ee0",
-      "availability": {
-        "BR": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/284833-avatar-seven-havens/watch?locale=BR",
-          "rent": [],
-          "stream": [
-            "Paramount Plus",
-            "Paramount+ Amazon Channel",
-            "Paramount Plus Apple TV channel",
-            "Paramount Plus Premium"
-          ],
-          "cinema_release_date": null
-        },
-        "GB": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/284833-avatar-seven-havens/watch?locale=GB",
-          "rent": [],
-          "stream": [
-            "Paramount Plus",
-            "Paramount+ Amazon Channel",
-            "Paramount Plus Apple TV channel",
-            "Paramount Plus Premium",
-            "Paramount Plus Basic with Ads"
-          ],
-          "cinema_release_date": null
-        },
-        "US": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/284833-avatar-seven-havens/watch?locale=US",
-          "rent": [],
-          "stream": [
-            "Paramount Plus Premium",
-            "Paramount Plus Essential",
-            "Paramount Plus Apple TV channel",
-            "Paramount+ Amazon Channel"
-          ],
-          "cinema_release_date": null
-        },
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/tv/284833"
-      },
-      "sourceRank": 16,
-      "keywords": [
-        "Avatar: Seven Havens",
-        "Avatar: Seven Havens 2026",
-        "where to watch Avatar: Seven Havens",
-        "Animation series",
-        "Action & Adventure series",
-        "Sci-Fi & Fantasy series",
-        "Paramount Plus trending series",
-        "Paramount+ Amazon Channel trending series",
-        "Saheli Khan",
-        "Aishwarya 'Aishu' Devan"
-      ],
-      "longTailKeywords": [
-        "where to watch Avatar: Seven Havens 2026",
-        "Avatar: Seven Havens streaming in Brazil and United States",
-        "Avatar: Seven Havens cast synopsis trailer and where to watch",
-        "what Animation to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch Avatar: Seven Havens (2026) | MatchApp Ai",
-        "description": "In a world shattered by a devastating cataclysm, a young Earthbender discovers she's the new Avatar after Korra. But in this dangerous era, that title marks h",
-        "keywords": [
-          "Avatar: Seven Havens",
-          "Avatar: Seven Havens 2026",
-          "where to watch Avatar: Seven Havens",
-          "Animation series",
-          "Action & Adventure series",
-          "Sci-Fi & Fantasy series",
-          "Paramount Plus trending series",
-          "Paramount+ Amazon Channel trending series",
-          "Saheli Khan",
-          "Aishwarya 'Aishu' Devan",
-          "where to watch Avatar: Seven Havens 2026",
-          "Avatar: Seven Havens streaming in Brazil and United States",
-          "Avatar: Seven Havens cast synopsis trailer and where to watch",
-          "what Animation to watch this week"
-        ],
-        "canonicalQuery": "Avatar: Seven Havens"
       }
     }
   ]
