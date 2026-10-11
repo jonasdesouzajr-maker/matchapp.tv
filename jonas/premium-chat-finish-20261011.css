@@ -298,3 +298,23 @@ html body.ai-chat-page .discover-head .composer textarea{
   grid-column:5!important;grid-row:1!important;
  }
 }
+
+/* Samsung real-device QA: quota status is a deliberate secondary line,
+   not a label trapped beneath the microphone or Android navigation bar. */
+html body.ai-chat-page.ma-ia-discover main.wrap section.premium-card.discover-head .newsearch-row{
+ padding-bottom:calc(16px + env(safe-area-inset-bottom,0px))!important;
+}
+html body.ai-chat-page.ma-ia-discover main.wrap section.premium-card.discover-head .newsearch-row #discover-compose-help{
+ display:block!important;clear:both!important;position:static!important;
+ width:100%!important;max-width:100%!important;min-height:17px!important;
+ box-sizing:border-box!important;margin:7px 0 3px!important;
+ padding:0 4px!important;text-align:center!important;
+ font-size:clamp(9px,2.35vw,10.5px)!important;
+ line-height:1.35!important;letter-spacing:-.015em!important;
+ color:#cfc1db!important;overflow-wrap:normal!important;
+}
+@media(max-width:360px){
+ html body.ai-chat-page.ma-ia-discover main.wrap section.premium-card.discover-head .newsearch-row #discover-compose-help{
+  font-size:9px!important;white-space:normal!important;
+ }
+}

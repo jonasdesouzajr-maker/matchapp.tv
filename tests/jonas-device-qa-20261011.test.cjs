@@ -9,7 +9,8 @@ test('Jonas smartphone header uses a one-row grid without duplicate hamburger',(
  assert.match(css,/\.mh-home-label\{\s*display:none!important/);
  assert.match(css,/#ai-sidebar-toggle\{display:none!important/);
  assert.match(css,/nav\.mh-deck:has\(>\.ma-menu-wrap\)/);
- assert.match(html,/premium-chat-finish-20261011\.css\?v=20261011-deviceqa5-release1/);
+ assert.match(html,/premium-chat-finish-20261011\.css\?v=20261011-deviceqa6/);
+ assert.match(html,/id="ai-sidebar-toggle"[^>]+hidden aria-hidden="true"[^>]+display:none!important/);
  assert.match(html,/onclick="toggleAiSidebar\(true\)"/);
  assert.match(html,/id="lang-switcher-host"/);
 });
