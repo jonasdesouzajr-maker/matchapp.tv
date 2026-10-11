@@ -6,21 +6,21 @@ if(window.MatchAppJonasStage || !/\/discover\.html$/.test(location.pathname))ret
 const home=document.querySelector('.discover-head'),log=document.getElementById('chat-log'),input=document.getElementById('discover-new-input');
 if(!home||!log||!input)return;
 const base='/jonas/faces/jonas/';
-const names=['rest','aa','ee','oh','blink'];
+const names=['rest','aa','ee','oh','blink','smile'];
 const frames={};
 names.forEach(n=>{let i=new Image();i.src=base+n+'.jpg';frames[n]=i;});
 const el=document.createElement('section');
 el.id='jonas-voice-stage';
 el.className='jonas-voice-stage';
 el.setAttribute('aria-label','Jonas speaking avatar');
-el.innerHTML='<div class="jds-portrait" aria-hidden="true"><img class="jds-rest" src="'+base+'rest.jpg" alt=""><img class="jds-mouth" alt="" aria-hidden="true"><img class="jds-eyes" src="'+base+'blink.jpg" alt="" aria-hidden="true"><span class="jds-halo"></span></div>'+
+el.innerHTML='<div class="jds-portrait" aria-hidden="true"><img class="jds-rest" src="'+base+'rest.jpg" alt=""><img class="jds-expression" src="'+base+'smile.jpg" alt="" aria-hidden="true"><img class="jds-mouth" alt="" aria-hidden="true"><img class="jds-eyes" src="'+base+'blink.jpg" alt="" aria-hidden="true"><span class="jds-halo"></span></div>'+
 '<div class="jds-copy"><strong>Jonas <span class="jds-indicator" aria-hidden="true"></span></strong><span class="jds-state" id="jds-state" role="status" aria-live="polite"></span></div>'+
 '<button type="button" id="jds-microphone" class="jds-mic" aria-label="Speak with Jonas" title="Speak with Jonas"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="2.5" width="6" height="12" rx="3"/><path d="M5 10.5a7 7 0 0 0 14 0M12 17.5V22M8 22h8"/></svg></button>';
 home.insertBefore(el,log);
 const mouth=el.querySelector('.jds-mouth'),eyes=el.querySelector('.jds-eyes'),status=el.querySelector('.jds-state'),mic=el.querySelector('#jds-microphone');
 let active=false,timer=0,raf=0,voiceTurn=new URLSearchParams(location.search).get('from')==='jonas',level=0,frame='rest';
 let meterLevel=0,meterAt=0,lastFrameAt=0,silenceAt=0,blinkTimer=0,blinkCloseTimer=0;
-const SILENCE_GATE=.05,PHRASE_PAUSE_MS=190,FRAME_HOLD_MS=115;
+const SILENCE_GATE=.022,PHRASE_PAUSE_MS=175,FRAME_HOLD_MS=100;
 const reducedMotion=window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches||false;
 const words={
 'en':['Ready to listen','Jonas is speaking','Listening... speak now','Thinking about your question'],
@@ -59,7 +59,7 @@ function animate(now){
  else silenceAt=0;
  const quietFor=silenceAt?now-silenceAt:0;
  const next=quietFor>=PHRASE_PAUSE_MS?'rest'
-  :level>=.34?'aa':level>=.16?'oh':level>=SILENCE_GATE?'ee':'rest';
+  :level>=.23?'aa':level>=.09?'oh':level>=SILENCE_GATE?'ee':'rest';
  if(now-lastFrameAt>=FRAME_HOLD_MS && frame!==next){
   showFrame(next);
   lastFrameAt=now;
@@ -103,7 +103,18 @@ function speak(text,opts){
  change('thinking');
  return service.speak(x,window.MatchAppJonasLocale?.speech?.()||window.MATCH_LANG||'en',{
   onStart:beginSpeaking,
-  onLevel:v=>{if(Number.isFinite(v)){meterLevel=Math.min(1,Math.max(0,v));meterAt=performance.now()} },
+  onLevel:v=>{
+   if(!Number.isFinite(v))return;
+   meterLevel=Math.min(1,Math.max(0,v)*1.5);
+   meterAt=performance.now();
+   // Update from measured speech even when WebView throttles animation frames.
+   // No mouth cycle is invented in silence or after speech finishes.
+   if(active&&meterAt-lastFrameAt>=FRAME_HOLD_MS){
+    const name=meterLevel>=.23?'aa':meterLevel>=.09?'oh':meterLevel>=SILENCE_GATE?'ee':'rest';
+    showFrame(name);lastFrameAt=meterAt;
+    el.style.setProperty('--jds-pulse',String(Math.min(.68,meterLevel*.7)));
+   }
+  },
   onEnd:ok=>endSpeaking(ok&&opts?.autoListen===true),
   onError:()=>endSpeaking(false)
  }).catch(()=>{endSpeaking(false);return false});

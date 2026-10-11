@@ -20,16 +20,18 @@ function environment(){
  vm.runInContext(['discoverPosterUrl','setDiscoverPoster','parkDiscoverComposer','placeDiscoverComposer','appendAssistantBubble'].map(functionSource).join('\n')+'\nlet discoverComposerNode=null;',context);
  return {context,page,log,row,input,images};
 }
-test('one existing composer moves between the answer and cards, surviving chat reset',()=>{
+test('one composer remains below the chat, never jumping into expanding answers',()=>{
  const e=environment();let calls=0;e.input.oninput=()=>calls++;
  const a=e.context.appendAssistantBubble('First',[],{instant:true});
- assert.deepEqual(a.wrap.children.map(n=>n.className),['chat-answer-row','newsearch-row','chat-results-grid']);
+ assert.deepEqual(a.wrap.children.map(n=>n.className),['chat-answer-row','chat-results-grid']);
  assert(a.speakBtn.innerHTML.includes('viewBox="0 0 48 48"'));
  const b=e.context.appendAssistantBubble('Second',[],{instant:true});
- assert(!a.wrap.children.includes(e.row));assert(b.wrap.children.includes(e.row));
+ assert(!a.wrap.children.includes(e.row));assert(!b.wrap.children.includes(e.row));
+ assert.equal(e.row.parent,e.page);
  e.context.parkDiscoverComposer();e.log.innerHTML='';
  const c=e.context.appendAssistantBubble('New',[],{instant:true});
- assert(c.wrap.children.includes(e.row));assert.equal(e.row.children[0],e.input);e.input.oninput();assert.equal(calls,1);
+ assert(!c.wrap.children.includes(e.row));assert.equal(e.row.parent,e.page);
+ assert.equal(e.row.children[0],e.input);e.input.oninput();assert.equal(calls,1);
 });
 test('poster errors retry source sizes then stop at an honest fallback',()=>{
  const e=environment(),img=new Element('img'),item={};

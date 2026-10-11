@@ -844,8 +844,14 @@ function parkDiscoverComposer() {
     if(row&&log){discoverComposerNode=row;log.insertAdjacentElement('afterend',row);}
 }
 function placeDiscoverComposer(wrap,grid) {
-    const row=discoverComposerNode||document.querySelector('.newsearch-row');
-    if(row){discoverComposerNode=row;wrap.insertBefore(row,grid);}
+    // Preserve one composer below the conversation, not inside each reply.
+    parkDiscoverComposer();
+}
+function revealJonasTurn(node) {
+    const log=document.getElementById('chat-log');
+    if(!log || !node || !log.contains(node) || keepConversationAtStart()) return;
+    const top=node.getBoundingClientRect().top-log.getBoundingClientRect().top+log.scrollTop-12;
+    log.scrollTop=Math.max(0,top);
 }
 
 function shareDiscoverItem(idx) {
@@ -1806,14 +1812,15 @@ async function runAskAndRender(question, opts) {
         currentThread = { id: newThreadId(), title: question.slice(0, 60), turns: [], createdAt: Date.now(), updatedAt: Date.now() };
     }
 
-    appendUserBubble(question);
+    const userBubble=appendUserBubble(question);
     currentThread.turns.push({ role: 'user', text: question, ts: Date.now() });
+    revealJonasTurn(userBubble);
 
-    // Auto-scroll to the loading animation so the user sees work happening.
     if (loadEl) {
+        // One loading element, inside the conversation rather than below it.
+        document.getElementById('chat-log')?.appendChild(loadEl);
         loadEl.style.display = 'block';
         startAiWorkflow();
-        if (!keepConversationAtStart()) setTimeout(() => loadEl.scrollIntoView({ behavior: 'smooth', block: 'center' }), 80);
     }
 
     const input = document.getElementById('discover-new-input');
@@ -1962,10 +1969,8 @@ async function runAskAndRender(question, opts) {
         window.MatchAppReadingAI?.render?.(question, bubble.wrap);
     }
 
-    // Auto-scroll to the response before the typewriter starts.
-    if (bubble && bubble.wrap && !keepConversationAtStart()) {
-        setTimeout(() => bubble.wrap.scrollIntoView({ behavior: 'smooth', block: 'center' }), 60);
-    }
+    // Reveal the beginning of the response inside the chat pane once.
+    if (bubble?.wrap) revealJonasTurn(bubble.wrap);
 
     if (bubble) {
         await typewriterReveal(bubble.textEl, payload.answer, 14);
@@ -2010,20 +2015,8 @@ async function runAskAndRender(question, opts) {
     persistCurrentThread();
     refreshAiWorkspaceStatus();
 
-    // Keep the next question visible without centering the last row into the
-    // footer while Android's visual viewport is recovering from its keyboard.
-    const row = document.querySelector('.newsearch-row');
-    if (!keepConversationAtStart()) {
-        if (row) setTimeout(() => {
-            const android = window.MATCHAPP_ANDROID || /MatchAppAiAndroid\//i.test(navigator.userAgent || '');
-            if (android) {
-                (bubble?.wrap || row).scrollIntoView({ behavior: 'smooth', block: 'start' });
-            } else row.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }, 400);
-    } else {
-        const log = document.getElementById('chat-log');
-        if (log) setTimeout(() => log.scrollIntoView({ behavior: 'auto', block: 'start' }), 20);
-    }
+    // Do not jump to the composer after typing. It remains visible below
+    // the conversation and the person keeps their reading position.
 }
 
 // The button, keyboard and voice can submit the same question together.

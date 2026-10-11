@@ -24,5 +24,7 @@ for(const p of ['index.html','discover.html']){
 const source=fs.readFileSync(path.join(root,'discover.js'),'utf8');
 assert.match(source,/document\.activeElement === el/);
 assert.match(source,/el\.blur\(\);/);
-assert.match(source,/\(bubble\?\.wrap \|\| row\)\.scrollIntoView/);
+assert.match(source,/function revealJonasTurn\(node\)/);
+assert.match(source,/log\.scrollTop=/);
+assert.doesNotMatch(source,/\(bubble\?\.wrap \|\| row\)\.scrollIntoView/);
 console.log('PASS: Android early no-Kids isolation, browsers unaffected, both entry pages bootstrap early, Android keyboard scroll protection');

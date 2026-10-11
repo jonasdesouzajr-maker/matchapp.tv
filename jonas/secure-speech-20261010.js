@@ -38,6 +38,14 @@
     var utter=new SpeechSynthesisUtterance(text);
     utter.voice=voice;utter.lang=voice.lang;utter.pitch=1;utter.rate=1;
     utter.onstart=function(){if(token===epoch)options.onStart?.()};
+    // Browser TTS has no decoded PCM meter. Word boundary events provide
+    // genuine speech timing for the existing avatar's mouth, without a timer
+    // that falsely animates when audio is muted or not actually speaking.
+    utter.onboundary=function(event){
+     if(token!==epoch||event.name==='sentence')return;
+     options.onLevel?.(.24);
+     setTimeout(function(){if(token===epoch)options.onLevel?.(0)},110);
+    };
     utter.onend=function(){finish(true)};
     utter.onerror=function(){finish(false)};
     synthesis.speak(utter);
