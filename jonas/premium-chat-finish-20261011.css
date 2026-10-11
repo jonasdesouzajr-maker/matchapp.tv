@@ -186,3 +186,115 @@ html body.ai-chat-page .discover-head #chat-log .chat-answer-text .jonas-speech-
   transition:none!important;
  }
 }
+/* Device QA correction, 2026-10-11: production Samsung SM-S918B showed
+ * a stranded second-row settings/language pill and a floating duplicate
+ * history hamburger. Keep the original handlers and accessibility intact. */
+html body.ai-chat-page #ai-sidebar-toggle{display:none!important;}
+html body.ai-chat-page .discover-head #chat-log:empty{
+ background:
+  radial-gradient(ellipse at 50% 45%,rgba(96,58,124,.17),transparent 66%),
+  linear-gradient(160deg,rgba(16,12,31,.78),rgba(18,14,36,.82))!important;
+}
+html body.ai-chat-page .discover-head #chat-log:empty::before{
+ content:"✦";display:grid;place-items:center;
+ width:100%!important;min-height:100%!important;
+ color:rgba(236,193,119,.33);font-size:30px!important;
+ line-height:1!important;letter-spacing:0!important;
+}
+html body.ai-chat-page .discover-head .newsearch-row{
+ padding-bottom:calc(8px + env(safe-area-inset-bottom,0px))!important;
+}
+html body.ai-chat-page .discover-head #discover-compose-help,
+html body.ai-chat-page .discover-head .composer-hint{
+ display:block!important;position:static!important;
+ box-sizing:border-box!important;width:100%!important;
+ max-width:100%!important;margin:5px 0 1px!important;
+ padding:0 9px!important;text-align:left!important;
+ white-space:normal!important;font-size:10px!important;
+ line-height:1.35!important;overflow-wrap:normal!important;
+ color:#d2c3de!important;
+}
+html body.ai-chat-page .discover-head .composer textarea{
+ overflow-y:auto!important;max-height:min(28vh,124px)!important;
+}
+@media(max-width:800px){
+ html body.ai-chat-page.page-shell header.app-header.mh-topbox{
+  width:calc(100% - 20px)!important;
+  padding:12px!important;row-gap:7px!important;
+ }
+ html body.ai-chat-page.page-shell header.mh-topbox .mh-tagline{display:none!important;}
+ html body.ai-chat-page.page-shell header.mh-topbox .mh-head{
+  width:100%!important;min-width:0!important;
+  align-items:flex-start!important;justify-content:center!important;
+ }
+ html body.ai-chat-page.page-shell header.mh-topbox .ma-brand-home-link{
+  gap:16px!important;justify-content:flex-start!important;
+ }
+ html body.ai-chat-page.page-shell header.mh-topbox>nav.mh-deck{
+  display:grid!important;
+  grid-template-columns:42px minmax(0,1.12fr) minmax(0,.90fr) 42px!important;
+  grid-template-rows:43px!important;
+  grid-auto-flow:row!important;column-gap:6px!important;row-gap:0!important;
+  align-items:center!important;justify-content:stretch!important;
+  width:100%!important;max-width:100%!important;
+  flex-wrap:nowrap!important;padding:0!important;margin:0!important;
+ }
+ html body.ai-chat-page.page-shell header.mh-topbox>nav.mh-deck>*{
+  box-sizing:border-box!important;min-width:0!important;
+  min-height:43px!important;max-height:43px!important;
+  height:43px!important;width:100%!important;max-width:100%!important;
+  padding:0!important;margin:0!important;
+ }
+ html body.ai-chat-page.page-shell header.mh-topbox>nav.mh-deck .mh-home-btn{
+  grid-column:1!important;grid-row:1!important;
+  width:42px!important;min-width:42px!important;padding:0!important;
+ }
+ html body.ai-chat-page.page-shell header.mh-topbox>nav.mh-deck .mh-home-label{
+  display:none!important;
+ }
+ html body.ai-chat-page.page-shell header.mh-topbox>nav.mh-deck .jonas-top-new{
+  grid-column:2!important;grid-row:1!important;padding:0 5px!important;
+ }
+ html body.ai-chat-page.page-shell header.mh-topbox>nav.mh-deck .jonas-top-history{
+  grid-column:3!important;grid-row:1!important;padding:0 4px!important;
+ }
+ html body.ai-chat-page.page-shell header.mh-topbox>nav.mh-deck #lang-switcher-host{
+  grid-column:4!important;grid-row:1!important;
+  display:flex!important;align-items:center!important;
+  justify-content:center!important;min-width:0!important;
+  width:42px!important;max-width:42px!important;overflow:visible!important;
+ }
+ html body.ai-chat-page.page-shell header.mh-topbox>nav.mh-deck #lang-switcher-host :is(select,button){
+  box-sizing:border-box!important;min-width:42px!important;max-width:42px!important;
+  width:42px!important;height:43px!important;min-height:43px!important;
+  border-radius:13px!important;
+ }
+ html body.ai-chat-page.page-shell header.mh-topbox>nav.mh-deck .ma-menu-wrap{
+  grid-column:4!important;grid-row:1!important;
+  width:42px!important;max-width:42px!important;
+ }
+ html body.ai-chat-page .discover-head .newsearch-row{
+  padding-bottom:calc(13px + env(safe-area-inset-bottom,0px))!important;
+ }
+}
+@media(max-width:355px){
+ html body.ai-chat-page.page-shell header.mh-topbox>nav.mh-deck{
+  grid-template-columns:39px minmax(0,1.08fr) minmax(0,.88fr) 39px!important;
+  column-gap:4px!important;
+ }
+ html body.ai-chat-page.page-shell header.mh-topbox>nav.mh-deck .jonas-top-new,
+ html body.ai-chat-page.page-shell header.mh-topbox>nav.mh-deck .jonas-top-history{
+  font-size:10px!important;gap:4px!important;
+ }
+}
+
+/* Allow both compact language select and an optional independent settings
+   menu if the shared shell adds one, without overlapping either control. */
+@media(max-width:800px){
+ html body.ai-chat-page.page-shell header.mh-topbox>nav.mh-deck:has(>.ma-menu-wrap){
+  grid-template-columns:40px minmax(0,1.10fr) minmax(0,.95fr) 40px 40px!important;
+ }
+ html body.ai-chat-page.page-shell header.mh-topbox>nav.mh-deck:has(>.ma-menu-wrap) .ma-menu-wrap{
+  grid-column:5!important;grid-row:1!important;
+ }
+}
