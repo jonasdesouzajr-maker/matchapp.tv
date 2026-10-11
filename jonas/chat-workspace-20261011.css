@@ -1,0 +1,121 @@
+/* Fixed conversation workspace: a single message viewport and anchored composer. */
+html body.ai-chat-page .wrap .premium-card.discover-head{
+ display:flex!important;flex-direction:column!important;
+ box-sizing:border-box!important;
+ height:var(--jonas-workspace-height,clamp(480px,calc(100dvh - 205px),860px))!important;
+ min-height:0!important;max-height:none!important;
+ overflow:hidden!important;
+ border:1px solid rgba(232,196,125,.46)!important;
+ background:linear-gradient(165deg,rgba(38,23,63,.97),rgba(16,12,32,.98))!important;
+ box-shadow:0 14px 40px #05021366!important;
+}
+html body.ai-chat-page .discover-head .discover-title-row{
+ flex:0 0 auto!important;margin-bottom:9px!important;
+}
+html body.ai-chat-page .discover-head .ai-session-strip{
+ flex:0 0 auto!important;gap:6px!important;margin:5px 0 10px!important;
+}
+html body.ai-chat-page #jonas-voice-stage.jonas-voice-stage{
+ flex:0 0 auto!important;position:relative!important;top:auto!important;
+ width:100%!important;margin:0 0 10px!important;min-height:89px!important;
+ background:linear-gradient(132deg,rgba(66,40,90,.96),rgba(28,17,50,.99))!important;
+ box-shadow:0 7px 18px #06021150!important;
+}
+html body.ai-chat-page .discover-head #chat-log{
+ display:flex!important;flex:1 1 auto!important;min-height:0!important;
+ overflow-x:hidden!important;overflow-y:auto!important;
+ overscroll-behavior:contain;scrollbar-width:thin;
+ scrollbar-color:#af85cb55 transparent;
+ scroll-behavior:auto;scroll-padding-top:12px;
+ border:1px solid rgba(176,137,208,.18);
+ border-radius:17px;padding:13px!important;margin:0 0 10px!important;
+ gap:12px!important;
+ background:linear-gradient(180deg,rgba(12,9,27,.56),rgba(22,15,38,.62))!important;
+}
+html body.ai-chat-page .discover-head #chat-log:empty::before{
+ content:"";display:block;min-height:15px;
+}
+html body.ai-chat-page .discover-head #chat-log .chat-user{
+ max-width:min(85%,540px)!important;align-self:flex-end!important;
+ box-shadow:0 5px 17px #0004!important;border:1px solid #ffffff20!important;
+}
+html body.ai-chat-page .discover-head #chat-log .chat-assistant{
+ width:100%!important;max-width:100%!important;min-width:0!important;
+ box-sizing:border-box!important;align-self:stretch!important;
+ margin:0!important;
+ background:linear-gradient(133deg,rgba(62,42,86,.64),rgba(26,19,47,.82))!important;
+ border:1px solid rgba(235,194,123,.35)!important;
+ border-radius:16px!important;
+}
+html body.ai-chat-page .discover-head #chat-log .chat-answer-row{
+ display:flex!important;align-items:flex-start!important;gap:10px!important;
+}
+html body.ai-chat-page .discover-head #chat-log .chat-answer-text{
+ min-width:0!important;flex:1 1 auto!important;line-height:1.56!important;
+ white-space:pre-wrap;overflow-wrap:anywhere;
+}
+html body.ai-chat-page .discover-head #chat-log .chat-results-grid{
+ width:100%!important;min-width:0!important;max-width:100%!important;
+}
+html body.ai-chat-page .discover-head #discover-loading{
+ display:block;flex:0 0 auto!important;
+ padding:10px!important;margin:0!important;
+ border-radius:14px!important;
+ background:#35234b!important;
+}
+html body.ai-chat-page .discover-head #discover-loading[style*="display: none"]{display:none!important;}
+html body.ai-chat-page .discover-head > .newsearch-row{
+ flex:0 0 auto!important;position:relative!important;
+ width:100%!important;margin:0!important;padding:0!important;
+ z-index:2!important;
+}
+html body.ai-chat-page .discover-head .newsearch-row .composer{
+ border-radius:17px!important;
+ background:linear-gradient(130deg,#38274e,#1d1532)!important;
+ box-shadow:0 6px 16px #0006!important;
+}
+html body.ai-chat-page .discover-head .ma-ask-again{display:none!important;}
+html body.ai-chat-page #jonas-voice-stage .jds-expression{
+ position:absolute;inset:0;width:100%;height:100%;
+ border-radius:50%;object-fit:cover;object-position:center 20%;
+ pointer-events:none;z-index:2;clip-path:inset(54% 0 17% 0);
+ opacity:.54;transition:opacity 280ms ease;
+}
+html body.ai-chat-page #jonas-voice-stage .jds-mouth{
+ z-index:3;clip-path:inset(54% 0 17% 0);
+ transition:opacity 75ms linear;
+}
+html body.ai-chat-page #jonas-voice-stage .jds-eyes{z-index:4;}
+html body.ai-chat-page #jonas-voice-stage .jds-halo{z-index:5;}
+html body.ai-chat-page #jonas-voice-stage[data-state="thinking"] .jds-expression{opacity:.10;}
+html body.ai-chat-page #jonas-voice-stage[data-state="listening"] .jds-expression{opacity:.29;}
+html body.ai-chat-page #jonas-voice-stage[data-state="speaking"] .jds-expression{opacity:.06;}
+html body.ai-chat-page #jonas-voice-stage[data-state="idle"] .jds-expression{opacity:.5;}
+@media(max-width:760px){
+ html body.ai-chat-page .wrap .premium-card.discover-head{
+  height:var(--jonas-workspace-height,clamp(460px,calc(100dvh - 180px),860px))!important;
+  margin:0 auto 10px!important;padding:12px!important;
+ }
+ html body.ai-chat-page .discover-head #chat-log{
+  padding:10px!important;border-radius:14px!important;
+ }
+ html body.ai-chat-page .discover-head .ai-session-strip{
+  overflow-x:auto!important;flex-wrap:nowrap!important;
+  scrollbar-width:none;
+ }
+ html body.ai-chat-page .discover-head .ai-session-chip{white-space:nowrap!important;}
+ html body.ai-chat-page .discover-head #jonas-voice-stage{
+  gap:10px!important;padding:9px 10px!important;
+ }
+}
+@media(max-height:610px){
+ html body.ai-chat-page .wrap .premium-card.discover-head{
+  height:var(--jonas-workspace-height,calc(100dvh - 95px))!important;
+  min-height:310px!important;
+ }
+ html body.ai-chat-page .discover-head .ai-session-strip{display:none!important;}
+}
+@media(prefers-reduced-motion:reduce){
+ html body.ai-chat-page .discover-head #chat-log{scroll-behavior:auto;}
+ html body.ai-chat-page #jonas-voice-stage .jds-expression{transition:none!important;}
+}
