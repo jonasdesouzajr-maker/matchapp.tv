@@ -1,0 +1,62 @@
+{
+    "schema":  1,
+    "source":  "Open Library",
+    "collectedAt":  "2026-10-11",
+    "entries":  [
+                    {
+                        "title":  "Odisseia",
+                        "author":  "Homero",
+                        "source":  "Open Library",
+                        "cover":  "https://covers.openlibrary.org/b/id/12606729-L.jpg",
+                        "year":  2011,
+                        "pages":  null,
+                        "rating":  null,
+                        "count":  null,
+                        "url":  "https://openlibrary.org/works/OL27281886W"
+                    },
+                    {
+                        "title":  "A Metamorfose",
+                        "author":  "Franz Kafka",
+                        "source":  "Open Library",
+                        "cover":  "https://covers.openlibrary.org/b/id/13219431-L.jpg",
+                        "year":  2017,
+                        "pages":  104,
+                        "rating":  3,
+                        "count":  2,
+                        "url":  "https://openlibrary.org/works/OL28594550W"
+                    },
+                    {
+                        "title":  "Verity",
+                        "author":  "Colleen Hoover",
+                        "source":  "Open Library",
+                        "cover":  "https://covers.openlibrary.org/b/id/8747160-L.jpg",
+                        "year":  2018,
+                        "pages":  340,
+                        "rating":  3.875,
+                        "count":  128,
+                        "url":  "https://openlibrary.org/works/OL20068530W"
+                    },
+                    {
+                        "title":  "Theo of Golden",
+                        "author":  "Allen Levi",
+                        "source":  "Open Library",
+                        "cover":  "https://covers.openlibrary.org/b/id/15205233-L.jpg",
+                        "year":  2023,
+                        "pages":  400,
+                        "rating":  4,
+                        "count":  5,
+                        "url":  "https://openlibrary.org/works/OL36475397W"
+                    },
+                    {
+                        "title":  "We Chase Shadows",
+                        "author":  "Richard Osman",
+                        "source":  "Open Library",
+                        "cover":  "https://covers.openlibrary.org/b/id/15258077-L.jpg",
+                        "year":  2026,
+                        "pages":  null,
+                        "rating":  null,
+                        "count":  null,
+                        "url":  "https://openlibrary.org/works/OL45345800W"
+                    }
+                ]
+}

@@ -1,0 +1,75 @@
+/* Samsung QA: unify E-books header/hero with the compact MatchApp Ai shell.
+   No changes to matching, affiliate URLs, ordering, Kids or consent. */
+html body.ebook-page header.ebook-page-top{
+ display:flex!important;align-items:center!important;justify-content:space-between!important;
+ box-sizing:border-box!important;
+ width:min(1160px,calc(100% - 20px))!important;max-width:1160px!important;
+ margin:10px auto 12px!important;padding:11px 15px!important;gap:15px!important;
+ border:1px solid rgba(229,192,126,.56)!important;border-radius:21px!important;
+ background:radial-gradient(circle at 7% 0%,rgba(145,85,162,.26),transparent 60%),linear-gradient(125deg,#392148,#211631)!important;
+ box-shadow:0 9px 22px #0a061b77!important;
+}
+html body.ebook-page header.ebook-page-top>a.ebook-hub-brand{
+ display:inline-flex!important;align-items:center!important;justify-content:flex-start!important;
+ gap:13px!important;min-width:0!important;max-width:100%!important;
+ flex:0 1 auto!important;width:auto!important;height:auto!important;
+ padding:0!important;margin:0!important;border:0!important;
+ background:none!important;box-shadow:none!important;text-decoration:none!important;
+}
+html body.ebook-page header.ebook-page-top a.ebook-hub-brand img.ma-brand-orb{
+ display:block!important;position:static!important;transform:none!important;
+ width:clamp(46px,8vw,58px)!important;height:clamp(46px,8vw,58px)!important;
+ max-width:58px!important;max-height:58px!important;
+ min-width:46px!important;min-height:46px!important;
+ flex:0 0 auto!important;object-fit:contain!important;
+ margin:0!important;padding:0!important;
+}
+html body.ebook-page header.ebook-page-top a.ebook-hub-brand .ebook-text-wordmark{
+ display:inline-flex!important;align-items:baseline!important;flex:0 1 auto!important;
+ width:auto!important;min-width:0!important;max-width:100%!important;
+ padding:0!important;margin:0!important;white-space:nowrap!important;
+ font-family:Outfit,Inter,system-ui,sans-serif!important;
+ font-size:clamp(22px,2.7vw,32px)!important;font-weight:900!important;
+ line-height:1.05!important;letter-spacing:-.045em!important;
+}
+html body.ebook-page .ebook-page-hero{
+ box-sizing:border-box!important;width:min(1100px,calc(100% - 20px))!important;
+ margin:0 auto 15px!important;padding:19px 22px!important;
+ border-radius:21px!important;
+ border:1px solid rgba(224,183,117,.35)!important;
+ background:linear-gradient(145deg,rgba(43,27,60,.94),rgba(18,14,33,.91))!important;
+ box-shadow:0 9px 23px #06031552!important;
+}
+html body.ebook-page .ebook-page-hero h1{
+ font-size:clamp(25px,3.5vw,40px)!important;line-height:1.15!important;
+ letter-spacing:-.025em!important;margin:9px 0 12px!important;
+}
+html body.ebook-page .ebook-page-hero p:not(.ebook-page-eyebrow){
+ font-size:13px!important;line-height:1.55!important;
+}
+html body.ebook-page .ebook-page-hero a.ebook-page-cta{
+ display:inline-flex!important;align-items:center!important;justify-content:center!important;
+ max-width:100%!important;min-height:44px!important;box-sizing:border-box!important;
+ margin:16px 0 0!important;padding:10px 16px!important;border-radius:14px!important;
+ font-size:13px!important;line-height:1.35!important;text-align:center!important;
+ text-decoration:none!important;
+}
+html body.ebook-page .ebook-hub-top{box-sizing:border-box!important;padding:14px!important;}
+html body.ebook-page .ebook-top-rail{scroll-padding-left:5px!important;}
+@media(max-width:700px){
+ html body.ebook-page header.ebook-page-top{padding:10px 12px!important;min-height:74px!important;}
+ html body.ebook-page header.ebook-page-top a.ebook-hub-brand{gap:12px!important;}
+ html body.ebook-page header.ebook-page-top a.ebook-hub-brand img.ma-brand-orb{
+  width:52px!important;height:52px!important;min-width:52px!important;max-width:52px!important;
+ }
+ html body.ebook-page header.ebook-page-top a.ebook-hub-brand .ebook-text-wordmark{
+  font-size:clamp(20px,5.9vw,28px)!important;
+ }
+ html body.ebook-page .ebook-page-hero{padding:17px 15px!important;}
+}
+@media(max-width:355px){
+ html body.ebook-page header.ebook-page-top a.ebook-hub-brand img.ma-brand-orb{
+  width:44px!important;height:44px!important;min-width:44px!important;max-width:44px!important;
+ }
+ html body.ebook-page header.ebook-page-top a.ebook-hub-brand .ebook-text-wordmark{font-size:19px!important;}
+}

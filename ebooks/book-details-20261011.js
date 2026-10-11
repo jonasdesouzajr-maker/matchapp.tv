@@ -51,14 +51,34 @@
    url:row?.key&&/^\/works\/OL\d+W$/.test(row.key)?'https://openlibrary.org'+row.key:null
   };
  }
+ // Same-origin source-verified snapshot avoids cross-origin browser CORS failures.
+ // The generator stores only exact title+author matches fetched from Open Library.
+ let verifiedIndexPromise=null;
+ async function fromVerifiedIndex(book){
+  if(typeof window==='undefined')return null;
+  if(!verifiedIndexPromise)verifiedIndexPromise=getJSON('/ebooks/verified-book-index-20261011.json?v=20261011-a1')
+   .then(data=>Array.isArray(data?.entries)?data.entries:[]).catch(()=>[]);
+  const rows=await verifiedIndexPromise;
+  const match=rows.find(entry=>equal(entry?.title,book.title)&&equal(entry?.author,book.author));
+  if(!match||match.source!=='Open Library'||!cleanCover(match.cover))return null;
+  return {
+   source:'Open Library',
+   cover:cleanCover(match.cover),
+   year:Number.isInteger(match.year)&&match.year>=1500&&match.year<=2026?match.year:null,
+   pages:Number.isInteger(match.pages)&&match.pages>0?match.pages:null,
+   rating:Number.isFinite(match.rating)&&match.rating>=0&&match.rating<=5&&Number.isInteger(match.count)&&match.count>0?match.rating:null,
+   count:Number.isInteger(match.count)&&match.count>0?match.count:null,
+   url:typeof match.url==='string'&&/^https:\/\/openlibrary\.org\/works\/OL\d+W$/.test(match.url)?match.url:null
+  };
+ }
  async function lookup(book){
   const key=norm(book.title)+'::'+norm(book.author);
   if(cache.has(key))return cache.get(key);
   if(pending.has(key))return pending.get(key);
   const job=(async()=>{
    const params=new URLSearchParams({title:book.title,author:book.author,limit:'8',fields:'key,title,author_name,cover_i,first_publish_year,number_of_pages_median,ratings_average,ratings_count'});
-   let details=null;
-   try{
+   let details=await fromVerifiedIndex(book).catch(()=>null);
+   if(!details)try{
     const data=await getJSON('https://openlibrary.org/search.json?'+params);
     const row=openLibraryMatch(book,data.docs);
     if(row)details=result(book,row,'Open Library');
@@ -86,7 +106,7 @@
   const l=String(typeof document!=='undefined'?document.documentElement.lang:'en').toLowerCase();
   const pt=l.startsWith('pt');
   const a=[];
-  if(data.year)a.push((pt?'Publicado':'Published')+' '+data.year);
+  if(data.year)a.push((pt?'Ano catalogado':'Catalog year')+' '+data.year);
   if(data.pages)a.push(data.pages+(pt?' páginas':' pages'));
   if(data.rating!==null&&data.count)a.push('★ '+data.rating.toFixed(1)+'/5 · '+data.count.toLocaleString(pt?'pt-BR':'en-US')+(pt?' avaliações':' ratings')+' · Open Library');
   else a.push(pt?'Avaliação não disponível':'Rating not available');
@@ -103,7 +123,9 @@
   if(!lines.length){box.hidden=true;return}
   box.hidden=false;
   for(const line of lines){const span=document.createElement('span');span.textContent=line;box.append(span)}
-  const source=document.createElement('small');source.className='ebook-meta-source';source.textContent= data.url?'Source: Open Library · work-level metadata':'Source: Open Library · bibliographic search';
+  const source=document.createElement('small');source.className='ebook-meta-source';
+  const sourceName=data.source==='Google Books'?'Google Books':'Open Library';
+  source.textContent='Source: '+sourceName+(data.url?' · work-level metadata':' · bibliographic search');
   if(data.url){const a=document.createElement('a');a.href=data.url;a.rel='noopener noreferrer';a.target='_blank';a.textContent=source.textContent;box.append(a)}
   else box.append(source);
  }
