@@ -1,7 +1,7 @@
 ﻿const fs = require('node:fs');
 const vm = require('node:vm');
 const assert = require('node:assert/strict');
-const source = fs.readFileSync('E:/android/MatchAppAi-AndroidReleaseFix-20261011/jonas/floating-voice-20261010-v5.js','utf8');
+const source = fs.readFileSync(require('node:path').join(__dirname,'..','jonas','floating-voice-20261010-v5.js'),'utf8');
 function testCase(code, expected, cancelBeforeRetry=false){
  const events={}, timers=[]; const active=new Set(); let calls=0;
  const cls={add(...x){x.forEach(y=>active.add(y))},remove(...x){x.forEach(y=>active.delete(y))},contains(x){return active.has(x)}};
