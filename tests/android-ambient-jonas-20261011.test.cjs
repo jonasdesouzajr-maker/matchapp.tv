@@ -40,7 +40,8 @@ test('dragging persists bubble position without opening a chat',()=>{
 });
 test('native wrapper loads remotely editable same-origin script and can cancel mic on close',()=>{
  assert.match(kotlin,/fun injectAmbientJonas\(view: WebView\)/);
- assert.match(kotlin,/if \(!isMatchAppHost\(url\.host\.orEmpty\(\)\) \|\| isKidsUri\(url\)\) return/);
+ assert.match(kotlin,/!isMatchAppHost\(url\.host\.orEmpty\(\)\) && !isDebugSmokeUrl\(url\.toString\(\)\)/);
+ assert.match(kotlin,/isKidsUri\(url\)\) return/);
  assert.match(kotlin,/injectAmbientJonas\(view\)/);
  assert.match(kotlin,/fun stop\(\)\s*\{/);
  assert.match(kotlin,/inlineVoiceRecognizer\?\.cancel\(\)/);
