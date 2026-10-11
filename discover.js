@@ -1987,7 +1987,7 @@ async function runAskAndRender(question, opts) {
                 }).catch(()=>narration?.finish?.());
             } else {
                 bubble.textEl.textContent=payload.answer;
-                window.readAloud(payload.answer,bubble.speakBtn);
+                window.readAloud(payload.answer, bubble.speakBtn);
             }
         } else {
             await typewriterReveal(bubble.textEl,payload.answer,8);

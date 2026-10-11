@@ -112,7 +112,7 @@ test('Bookworms keeps its own previous violet crest, immediate position and all 
  assert.equal(saved?.getAttribute('src'),'/assets/brand/matchapp-fold-saved.svg');
  assert.equal(saved?.getAttribute('alt'),'');
  win.close();
- assert.match(read('index.html'),/ebook-matcher\.js\?v=20261001-coverquality1/);
+ assert.match(read('index.html'),/ebook-matcher\.js\?v=20261011-meta1/);
  assert.doesNotMatch(read('kids/index.html'),/fold-colors\.css|matchapp-fold-/);
 });
 
