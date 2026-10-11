@@ -1,0 +1,31 @@
+/* Ask AI header only: keep the real Settings menu hit target equal to its grid slot.
+   Presentation fix; existing menu listeners, settings, Kids, and AI flows remain intact. */
+@media (max-width: 800px) {
+  html body.ai-chat-page.page-shell header.mh-topbox > nav.mh-deck:has(> .ma-menu-wrap) > .ma-menu-wrap {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-sizing: border-box !important;
+    width: 40px !important;
+    min-width: 40px !important;
+    max-width: 40px !important;
+    padding: 0 !important;
+    overflow: visible !important;
+  }
+  html body.ai-chat-page.page-shell header.mh-topbox > nav.mh-deck > .ma-menu-wrap > button.ma-menu-button {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-sizing: border-box !important;
+    flex: 0 0 40px !important;
+    width: 40px !important;
+    min-width: 40px !important;
+    max-width: 40px !important;
+    height: 43px !important;
+    min-height: 43px !important;
+    max-height: 43px !important;
+    padding: 9px !important;
+    margin: 0 !important;
+    border-radius: 13px !important;
+  }
+}
