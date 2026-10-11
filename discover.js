@@ -1973,12 +1973,24 @@ async function runAskAndRender(question, opts) {
     if (bubble?.wrap) revealJonasTurn(bubble.wrap);
 
     if (bubble) {
-        await typewriterReveal(bubble.textEl, payload.answer, 14);
-        // A mic-origin prompt gets a natural spoken reply. Typed prompts stay silent.
+        // Start voice as soon as the answer arrives, not after ~1.3 seconds of
+        // decorative typewriter delay. Follow the actual playback progress in
+        // the transcript; the voice stage alone owns post-speech mic rearming.
         if (voiceOrigin && String(payload.answer || '').trim()) {
+            const narration=window.MatchAppJonasNarration;
             if (window.MatchAppJonasStage?.speak) {
-                window.MatchAppJonasStage.speak(payload.answer,{autoListen:true});
-            } else window.readAloud(payload.answer, bubble.speakBtn);
+                narration?.prepare?.(bubble.textEl,payload.answer);
+                window.MatchAppJonasStage.speak(payload.answer,{
+                    autoListen:true,
+                    onProgress:p=>narration?.advance?.(p),
+                    onComplete:()=>narration?.finish?.()
+                }).catch(()=>narration?.finish?.());
+            } else {
+                bubble.textEl.textContent=payload.answer;
+                window.readAloud(payload.answer, bubble.speakBtn);
+            }
+        } else {
+            await typewriterReveal(bubble.textEl,payload.answer,8);
         }
     }
 

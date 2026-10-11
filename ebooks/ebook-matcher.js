@@ -415,7 +415,7 @@ function renderTop(root){
    '</div></div></article>';
  }).join('');
  const cards=[...host.querySelectorAll('.ebook-top-card')];
- const hydrate=card=>{if(card.dataset.coverHydrated==='1')return;card.dataset.coverHydrated='1';const i=Number(card.dataset.ebookTopCard),b=items[i];if(!b)return;hydrateCover(b,card.querySelector('[data-top-cover]'),card.querySelector('[data-top-fallback]'));};
+ const hydrate=card=>{if(card.dataset.coverHydrated==='1')return;card.dataset.coverHydrated='1';const i=Number(card.dataset.ebookTopCard),b=items[i];if(!b)return;hydrateCover(b,card.querySelector('[data-top-cover]'),card.querySelector('[data-top-fallback]'));window.MatchAppBookDetails?.hydrate?.(card,b,{format:'ebook'});};
  if('IntersectionObserver'in window){
   const io=new IntersectionObserver(entries=>entries.forEach(x=>{if(x.isIntersecting){hydrate(x.target);io.unobserve(x.target)}}),{rootMargin:'180px'});
   cards.forEach(c=>io.observe(c));
@@ -432,9 +432,14 @@ function audioLinksHTML(audio){
  const preview=audio?.apple?.verified&&audio.apple.previewUrl?
   '<label class="ebook-audio-preview-label">'+esc(lang()==='pt-BR'?'Prévia oficial da edição em áudio':lang()==='es'?'Muestra oficial de audiolibro':lang()==='ja'?'公式オーディオ試聴':'Official audiobook sample')+'</label>'+
   '<audio class="ebook-audio-preview" controls preload="none" src="'+esc(audio.apple.previewUrl)+'"></audio>':'';
+ const edition=audio?.apple?.verified?audio.apple:null;
+ const minutes=edition?.durationSeconds?Math.round(edition.durationSeconds/60):null;
+ const details=[minutes?(lang()==='pt-BR'?'Duração: ':'Duration: ')+minutes+' min':null,
+  edition?.releaseYear?(lang()==='pt-BR'?'Edição de ':'Edition year ')+edition.releaseYear:null].filter(Boolean);
+ const editionFacts=details.length?'<p class="ebook-audio-note">'+esc(details.join(' · '))+' · Apple Books</p>':'';
  return (vlinks?'<h5>'+esc(tr('audioLinks'))+'</h5><div class="ebook-provider-row">'+vlinks+'</div>':
   '<p class="ebook-audio-note">'+esc(tr('audioNone'))+'</p>')+
-  preview+'<h5>'+esc(tr('audioSearch'))+'</h5><div class="ebook-provider-row">'+
+  editionFacts+preview+'<h5>'+esc(tr('audioSearch'))+'</h5><div class="ebook-provider-row">'+
   searches.map(item=>'<a class="ebook-provider ebook-audio-search" href="'+esc(item.url)+
    '" target="_blank" rel="noopener noreferrer" data-ebook-provider="'+esc(item.provider)+'">'+
    esc(item.label)+' ↗</a>').join('')+'</div>'+
@@ -535,6 +540,7 @@ function renderResult(root,book,p,relaxed,audio,magazine,pick){
  window.MatchAppGuestShare?.decorateBookResult?.(host,book.title,p.format);
  const img=host.querySelector('[data-ebook-cover]'),fall=host.querySelector('[data-ebook-cover-fallback]');
  hydrateCover(book,img,fall,audio);
+ window.MatchAppBookDetails?.hydrate?.(host,book,{format:audio?'audiobook':'ebook',verifiedAudio:!!audio?.apple});
  if(audio)paintAudio(root,book,audio);
  host.scrollIntoView({behavior:(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)?'auto':'smooth',block:'nearest'});
  analytics('ebook_match_reveal',{ebook_id:book.id,ebook_title:book.title,ebook_access:p.access,ebook_format:p.format,relaxed:!!relaxed});

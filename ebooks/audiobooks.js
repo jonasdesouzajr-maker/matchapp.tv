@@ -75,7 +75,9 @@
    return Object.freeze({provider:'Apple Books',url,title:name,
     author:String(row.artistName||''),verified:true,kind:'paid',region:iso,
     coverUrl:safeAppleArtwork(row.artworkUrl600)||safeAppleArtwork(row.artworkUrl100),
-    previewUrl:safeApplePreview(row.previewUrl)});
+    previewUrl:safeApplePreview(row.previewUrl),
+    durationSeconds:Number.isFinite(row.trackTimeMillis)&&row.trackTimeMillis>0?Math.round(row.trackTimeMillis/1000):null,
+    releaseYear:/^\d{4}-\d\d-\d\d/.test(String(row.releaseDate||''))?Number(String(row.releaseDate).slice(0,4)):null});
   }
   return null;
  }

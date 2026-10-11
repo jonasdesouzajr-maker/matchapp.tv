@@ -326,8 +326,9 @@
 <link rel="stylesheet" href="/jonas/discovery-avatar-stage-20261010.css?v=20261010-life1">
 <link rel="stylesheet" href="/premium-unified-20261010.css?v=20261010-luxe1">
 <link rel="stylesheet" href="/jonas/discover-composer-final-20261010.css?v=20261010-v4">
-<link rel="stylesheet" href="/premium-finish-20261011.css?v=20261011-a1">
+<link rel="stylesheet" href="/premium-finish-20261011.css?v=20261011-grid3">
 <link rel="stylesheet" href="/jonas/chat-workspace-20261011.css?v=20261011-viewport2">
+<link rel="stylesheet" href="/jonas/premium-chat-finish-20261011.css?v=20261011-final3">
 <script defer src="/jonas/chat-workspace-20261011.js?v=20261011-viewport2"></script>
 </head>
 <body class="ai-chat-page">
@@ -344,12 +345,14 @@
             <img width="60" height="60" src="/logo.jpeg?v=2" alt="MatchApp Logo" class="brand-logo">
             <span class="app-title-main"><img class="matchapp-wordmark" src="/assets/brand/matchapp-tv-ai-v2.svg" alt="MatchApp Ai" width="368" height="66" decoding="async"></span>
         </a>
-        <nav style="display:flex; gap:12px; align-items:center;">
-            <button class="install-btn" style="display:none;" onclick="installMatchApp()" aria-label="Install MatchApp" data-i18n-aria="install.aria">📲 <span class="install-label" data-i18n="install.btn">Install</span></button>
-
+        <nav aria-label="Jonas conversation navigation" class="jonas-top-actions">
+            <button type="button" class="jonas-top-new" id="jonas-header-new-chat" onclick="startNewChat()" aria-label="New chat">
+              <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span data-jonas-head="new">New chat</span>
+            </button>
+            <button type="button" class="jonas-top-history" onclick="toggleAiSidebar(true)" aria-label="Conversation history">
+              <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 2.5-6.3M3 4v5h5"/><path d="M12 7v5l3 2"/></svg><span data-jonas-head="history">History</span>
+            </button>
             <div id="lang-switcher-host"></div>
-            <a href="/" class="icon-btn home-btn" aria-label="Home" title="Home" data-i18n-aria="nav.home"><svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true" focusable="false"><path d="M3 11.2 12 4l9 7.2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.5 9.8V19a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1V9.8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M9.8 20v-5.2h4.4V20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-            <a href="/" class="gold-btn" style="padding:11px 18px; font-size:13px; width:auto;" data-i18n="discover.newMatch">⚡ New Match</a>
         </nav>
     </header>
     <button id="ai-sidebar-toggle" class="ai-sidebar-toggle" type="button" onclick="toggleAiSidebar()" aria-label="Open conversation history" title="Conversation history">☰</button>
@@ -492,13 +495,14 @@
     <script src="/cooking/catalog.js?v=20260929-1"></script>
     <script src="/jonas/male-voice-policy-20261010.js"></script>
     <script src="/jonas/locales-20261009-v2.js"></script>
-    <script src="/jonas/secure-speech-20261010.js?v=20261011-convo1"></script>
+    <script src="/jonas/secure-speech-20261010.js?v=20261011-final3"></script>
     <script src="/jonas/title-card-presentation-20261011.js?v=20261011-a1"></script>
-<script src="/discover.js?v=20260925-intent1&amp;cooking=20260929-1&amp;guest=20260926-guesttrial1&amp;offline=20260926-sourcematch1&amp;mobilefresh=20260927-1&amp;askbtn=20260927-1&amp;recovery=20260929-2&amp;posters=20260929-chat1&amp;composer=20260929-abovecards1&amp;music=20260930-recovery3&amp;language=20260930-fix2&amp;brand=20261001-canonicalai1&amp;sbt=20261004-1&amp;jonas=voice20261010&amp;jonas=voiceanswers20261010&amp;visual=20261011-a1&amp;chatfix=20261011-convo1&amp;viewport=20261011-2"></script>
+<script src="/jonas/narrated-transcript-20261011.js?v=20261011-final3"></script>
+<script src="/discover.js?v=20260925-intent1&amp;cooking=20260929-1&amp;guest=20260926-guesttrial1&amp;offline=20260926-sourcematch1&amp;mobilefresh=20260927-1&amp;askbtn=20260927-1&amp;recovery=20260929-2&amp;posters=20260929-chat1&amp;composer=20260929-abovecards1&amp;music=20260930-recovery3&amp;language=20260930-fix2&amp;brand=20261001-canonicalai1&amp;sbt=20261004-1&amp;jonas=voice20261010&amp;jonas=voiceanswers20261010&amp;visual=20261011-a1&amp;chatfix=20261011-convo1&amp;viewport=20261011-2&amp;speech=20261011-final3"></script>
     <script src="/jonas/discovery-speech-lock-20261010.js"></script>
     <script src="/title-experience.js?v=20260918-notify2&amp;music=20260930-1"></script>
     <script src="/voice-input.js?v=20261005-voiceorigin1"></script>
-    <script src="/jonas/discovery-avatar-stage-20261010.js?v=20261011-viewport2"></script>
+    <script src="/jonas/discovery-avatar-stage-20261010.js?v=20261011-final3"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             initVoiceInput('discover-new-input', 'mic-btn-discover', () => window.newDiscoverSearch());
