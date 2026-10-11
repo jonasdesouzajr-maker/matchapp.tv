@@ -22,7 +22,7 @@ test('CSS keeps quota accessible and composer controls intact',()=>{
  assert.match(css,/>#ai-send-cost\{/);
  assert.match(css,/\.newsearch-row>#discover-compose-help\{/);
  assert.match(css,/clip-path:inset\(50%\)!important/);
- assert.match(html,/composer-quota-row-20261011\.css\?v=20261011-quota2/);
+ assert.match(html,/composer-quota-row-20261011\.css\?v=20261011-quota3/);
  assert.match(html,/quota=20261011-row2/);
  assert.match(html,/id="mic-btn-discover"/);
  assert.match(html,/onclick="newDiscoverSearch\(\)"/);
@@ -46,4 +46,13 @@ test('empty Send shows a visible non-chargeable prompt, valid Send restores the 
  assert.equal(document.getElementById('discover-compose-help').textContent,'Type a question, or tap the microphone.');
  assert.deepEqual(submitted,['A documentary series']);
  dom.close?.();
+});
+
+test('Jonas Ask AI navigation does not get a stretched Kids shortcut while Home retains Kids Mode',()=>{
+ const css=read('jonas/composer-quota-row-20261011.css');
+ const home=read('index.html');
+ const discover=read('discover.html');
+ assert.match(css,/html body\.ai-chat-page\.page-shell header\.mh-topbox nav\.mh-deck #matchapp-kids-entry\{\s*display:none!important/s);
+ assert.match(home,/kids/i,'browser Kids Mode remains reachable from the home page');
+ assert.match(discover,/jonas-top-history/,'conversation history stays accessible');
 });

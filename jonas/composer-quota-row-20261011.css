@@ -41,3 +41,9 @@ html body.ai-chat-page.ma-ia-discover main.wrap section.premium-card.discover-he
  white-space:normal!important;text-align:center!important;
  color:#f6dca0!important;font:650 11px/1.4 Inter,system-ui,sans-serif!important;
 }
+/* Jonas alone: shared shell may inject the browser Kids Mode shortcut.
+   Keep browser Kids Mode on Home and its own pages; do not create a stranded
+   sixth header item in the compact Ask AI navigation. */
+html body.ai-chat-page.page-shell header.mh-topbox nav.mh-deck #matchapp-kids-entry{
+ display:none!important;
+}
