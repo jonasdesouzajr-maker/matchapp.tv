@@ -441,3 +441,51 @@ html body.page-shell header.app-header.mh-topbox .ma-brand-tagline{
 html body.page-shell header.app-header.mh-topbox .ma-brand-security{
  font-size:10px!important;line-height:1.25!important;padding:3px 7px!important;white-space:normal!important;
 }
+
+/* Universal adult 4px rhythm — visual surfaces only; explicitly avoids Ads,
+   Kids, overlays, billing logic, document scroll and poster aspect ratios. */
+:where(body.page-home,body.ai-chat-page,body.page-shell,body.ebook-page):not(.page-kids):not(.kids-body):not([data-kids-mode]){
+ --ma-grid-unit:4px;
+ --ma-grid-gap:12px;
+ --ma-grid-gap-tight:8px;
+ --ma-grid-radius:20px;
+ --ma-grid-radius-inner:13px;
+ --ma-grid-field-height:44px;
+ --ma-grid-pad:clamp(13px,1.8vw,20px);
+}
+html :is(body.page-home,body.ai-chat-page,body.page-shell,body.ebook-page):not(.page-kids):not(.kids-body)
+ main :is(.premium-card,.pf-card,.pf-fold,.pf-panel,.pf-action-card,.plan-card,.price-card,
+ .ebook-top-card,.ebook-result,.ebook-seo-card,.ebook-hub-magazines,.ebook-hub-top,.discover-card){
+ box-sizing:border-box!important;min-width:0!important;max-width:100%;
+ border-radius:var(--ma-grid-radius)!important;
+}
+html :is(body.page-home,body.ai-chat-page,body.page-shell,body.ebook-page):not(.page-kids):not(.kids-body)
+ main :is(.ebook-field,.ebook-select-field,.pf-field,.form-group,.discover-field){
+ box-sizing:border-box;min-width:0;max-width:100%;
+}
+html :is(body.page-home,body.ai-chat-page,body.page-shell,body.ebook-page):not(.page-kids):not(.kids-body)
+ main :is(.ebook-fields,.ebook-chips,.ebook-provider-row,.ebook-result-actions,.ebook-source-links,
+ .pf-actions,.discover-actions,.chat-results-grid){
+ gap:var(--ma-grid-gap-tight);
+}
+html :is(body.page-home,body.ai-chat-page,body.page-shell,body.ebook-page):not(.page-kids):not(.kids-body)
+ main :is(.ebook-select,.ebook-chip,.ebook-provider,.ebook-match-cta,.ebook-audio-check,.pf-btn,
+ .pf-action,.discover-actions>button,.discover-actions>a){
+ box-sizing:border-box;min-width:0;max-width:100%;min-height:var(--ma-grid-field-height);
+ border-radius:var(--ma-grid-radius-inner);
+}
+html :is(body.page-home,body.ai-chat-page,body.page-shell,body.ebook-page):not(.page-kids):not(.kids-body)
+ main :is(.ebook-fields,.ebook-provider-row,.ebook-top-rail,.ebook-result,.ebook-result-grid,
+ .pf-actions,.chat-results-grid) > *{
+ min-width:0;box-sizing:border-box;
+}
+html :is(body.page-home,body.ai-chat-page,body.page-shell,body.ebook-page):not(.page-kids):not(.kids-body)
+ main :is(.ebook-select,.pf-input,.pf-select,.discover-input,textarea,input[type="search"],input[type="tel"]){
+ max-width:100%;box-sizing:border-box;
+}
+@media(max-width:600px){
+ html :is(body.page-home,body.ai-chat-page,body.page-shell,body.ebook-page):not(.page-kids):not(.kids-body)
+ main :is(.premium-card,.pf-card,.pf-panel,.ebook-result,.ebook-seo-card,.ebook-hub-magazines){
+ border-radius:18px!important;
+ }
+}

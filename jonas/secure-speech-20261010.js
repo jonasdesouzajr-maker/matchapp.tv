@@ -33,7 +33,7 @@
   if(!voice||!window.SpeechSynthesisUtterance||token!==epoch)return Promise.resolve(false);
   return new Promise(function(resolve){
    var done=false;
-   var finish=function(ok){if(done)return;done=true;if(token===epoch)options.onEnd?.(ok);resolve(ok)};
+   var finish=function(ok){if(done)return;done=true;if(token===epoch){if(ok)options.onProgress?.(1);options.onEnd?.(ok)}resolve(ok)};
    try{
     var utter=new SpeechSynthesisUtterance(text);
     utter.voice=voice;utter.lang=voice.lang;utter.pitch=1;utter.rate=1;
@@ -44,6 +44,7 @@
     utter.onboundary=function(event){
      if(token!==epoch||event.name==='sentence')return;
      options.onLevel?.(.24);
+     if(Number.isFinite(event.charIndex)&&text.length)options.onProgress?.(Math.min(.99,event.charIndex/text.length));
      setTimeout(function(){if(token===epoch)options.onLevel?.(0)},110);
     };
     utter.onend=function(){finish(true)};
@@ -60,7 +61,7 @@
   var chosen=lang(language);
   var controller=new AbortController();
   abort=controller;
-  var timeout=setTimeout(function(){controller.abort()},21000);
+  var timeout=setTimeout(function(){controller.abort()},12000);
   try{
    var headers={'Content-Type':'application/json'};
    try{
@@ -83,14 +84,16 @@
       var node=audioContext.createBufferSource(),ended=false;
       source=node;node.buffer=decoded;node.connect(audioContext.destination);
       var meterFrame=0;
-      node.onended=function(){if(ended)return;ended=true;cancelAnimationFrame(meterFrame);if(source===node)source=null;if(token===epoch)opts.onEnd?.(true);resolve(true)};
+      node.onended=function(){if(ended)return;ended=true;cancelAnimationFrame(meterFrame);if(source===node)source=null;if(token===epoch){opts.onProgress?.(1);opts.onEnd?.(true)}resolve(true)};
       opts.onStart?.();
       node.start(0);
       if(typeof opts.onLevel==='function'){
        var samples=decoded.getChannelData(0),rate=decoded.sampleRate,startAt=audioContext.currentTime;
        var meter=function(){
         if(ended||token!==epoch)return;
-        var pos=Math.floor(Math.max(0,audioContext.currentTime-startAt)*rate),sum=0,num=0;
+        var elapsed=Math.max(0,audioContext.currentTime-startAt);
+        opts.onProgress?.(Math.min(.995,elapsed/Math.max(.1,decoded.duration)));
+        var pos=Math.floor(elapsed*rate),sum=0,num=0;
         for(var i=pos;i<Math.min(samples.length,pos+1800);i+=32){sum+=samples[i]*samples[i];num++}
         opts.onLevel(Math.min(1,Math.sqrt(sum/Math.max(1,num))*5));
         meterFrame=requestAnimationFrame(meter);
@@ -103,7 +106,8 @@
    return await new Promise(function(resolve,reject){
     var audio=new Audio(),url=URL.createObjectURL(blob),finished=false;
     htmlAudio=audio;audio.preload='auto';audio.src=url;
-    function end(ok){if(finished)return;finished=true;URL.revokeObjectURL(url);if(htmlAudio===audio)htmlAudio=null;if(token===epoch)opts.onEnd?.(ok);resolve(ok)}
+    function end(ok){if(finished)return;finished=true;URL.revokeObjectURL(url);if(htmlAudio===audio)htmlAudio=null;if(token===epoch){if(ok)opts.onProgress?.(1);opts.onEnd?.(ok)}resolve(ok)}
+    audio.ontimeupdate=function(){if(token===epoch&&Number.isFinite(audio.duration)&&audio.duration>0)opts.onProgress?.(Math.min(.995,audio.currentTime/audio.duration))};
     audio.onended=function(){end(true)};
     audio.onerror=function(){end(false)};
     audio.play().then(function(){if(token===epoch)opts.onStart?.()}).catch(function(){URL.revokeObjectURL(url);reject(new Error('playback_blocked'))});

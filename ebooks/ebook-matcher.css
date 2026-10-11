@@ -581,3 +581,53 @@ html body.page-home #ebook-matcher-root .ebook-fold>summary:focus-visible{
 /* Real publisher-provided audiobook edition samples only. */
 #ebook-matcher-root .ebook-audio-preview{display:block;width:min(100%,420px);max-width:100%;min-height:44px;margin:10px 0}
 #ebook-matcher-root .ebook-audio-preview-label{display:block;font-size:13px;font-weight:700;color:#e5c158}
+
+/* 2026-10-11: genuine cover and verified bibliographic metadata, unified Bookworms grid. */
+:where(.ebook-top-card,.ebook-result) .ebook-verified-meta{
+ display:flex;flex-wrap:wrap;align-items:center;gap:6px;
+ margin:10px 0 12px;padding:0;border:0;background:none;
+}
+:where(.ebook-top-card,.ebook-result) .ebook-verified-meta span,
+:where(.ebook-top-card,.ebook-result) .ebook-verified-meta :is(a,small){
+ display:inline-flex;align-items:center;max-width:100%;min-width:0;
+ padding:5px 8px;border-radius:8px;
+ border:1px solid rgba(218,185,126,.28);background:rgba(228,191,132,.07);
+ color:#ecdcf3;font-size:11px;font-weight:650;line-height:1.3;overflow-wrap:anywhere;
+}
+:where(.ebook-top-card,.ebook-result) .ebook-verified-meta a{
+ color:#ffe2a2!important;text-decoration:underline;text-underline-offset:2px;
+}
+:where(.ebook-top-card,.ebook-result) .ebook-verified-meta .ebook-meta-source{
+ background:transparent;border-color:transparent;padding-inline:0;opacity:.82;
+}
+.ebook-top-cover>img:not([hidden]){width:100%;height:100%;display:block;object-fit:contain;}
+.ebook-top-cover>img[hidden]{display:none!important;}
+.ebook-page .ebook-hub-top,.ebook-page .ebook-hub-magazines,.ebook-page .ebook-seo-grid,
+.ebook-page .ebook-page-hero{box-sizing:border-box;max-width:1160px;width:calc(100% - 24px);margin-inline:auto;}
+.ebook-page .ebook-hub-top,.ebook-page .ebook-hub-magazines{padding:16px!important;}
+/* Home: one disclosure, no bordered pill trapped inside a second framed box. */
+html body.page-home #ebook-matcher-root details.ebook-home-picks{
+ border:0!important;border-radius:0!important;padding:0!important;
+ background:transparent!important;box-shadow:none!important;overflow:visible!important;
+ margin:12px 0 0!important;
+}
+html body.page-home #ebook-matcher-root details.ebook-home-picks>summary{
+ box-sizing:border-box!important;width:100%!important;min-height:48px!important;
+ display:flex!important;align-items:center!important;justify-content:space-between!important;
+ margin:0!important;padding:10px 13px!important;
+ background:linear-gradient(130deg,rgba(74,48,98,.88),rgba(38,26,59,.90))!important;
+ border:1px solid rgba(231,191,123,.48)!important;
+ border-radius:14px!important;color:#ffe6a8!important;
+ box-shadow:0 5px 13px rgba(8,4,18,.23)!important;
+ font-size:13px!important;font-weight:750!important;
+}
+html body.page-home #ebook-matcher-root details.ebook-home-picks[open]>summary{
+ border-radius:14px!important;border-color:#e6c583!important;
+}
+html body.page-home #ebook-matcher-root details.ebook-home-picks .ebook-top-section{
+ border:0!important;margin:10px 0 0!important;padding:12px 0 0!important;
+ background:transparent!important;box-shadow:none!important;
+}
+html body.page-home #ebook-matcher-root details.ebook-home-picks .ebook-top-rail{padding-bottom:12px!important;}
+@media(max-width:620px){.ebook-page .ebook-hub-top,.ebook-page .ebook-hub-magazines{padding:12px!important;}
+ .ebook-page .ebook-top-rail{grid-auto-columns:minmax(156px,min(75vw,218px));}}

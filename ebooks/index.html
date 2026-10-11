@@ -27,7 +27,7 @@
 <link rel="stylesheet" href="/themes.css?v=187">
 <link rel="stylesheet" href="/brand.css?v=192">
 <link rel="stylesheet" href="/page-shell.css?v=20260926-ai-energy2">
-<link rel="stylesheet" href="/ebooks/ebook-matcher.css?v=20260926-publishericon2">
+<link rel="stylesheet" href="/ebooks/ebook-matcher.css?v=20261011-meta1">
 <style>
 body.ebook-page{margin:0;background:#080610;color:#fff;min-height:100vh}
 .ebook-page-top{max-width:1160px;margin:0 auto;padding:18px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px}
@@ -64,7 +64,7 @@ display:flex;flex-direction:column;align-items:center;justify-content:center;gap
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"CollectionPage","@id":"https://matchapp.tv/ebooks/#page","name":"Book Recommendations AI: E-books & Audiobooks | MatchApp Ai","url":"https://matchapp.tv/ebooks/","description":"Find your next e-book, verified audiobook or magazine by mood and genre, with original covers, official publishers and legal reading or listening sources.","dateModified":"2026-10-05","isPartOf":{"@type":"WebSite","name":"MatchApp Ai","url":"https://matchapp.tv/","alternateName":["MatchApp","MatchApp.tv"]},"about":[{"@type":"Thing","name":"E-books"},{"@type":"Thing","name":"AI book recommendations"},{"@type":"Thing","name":"Fantasy books"},{"@type":"Thing","name":"Science fiction books"},{"@type":"Thing","name":"Romance books"},{"@type":"Thing","name":"Mystery and thriller books"},{"@type":"Thing","name":"Classic literature"},{"@type":"Thing","name":"Psychology and philosophy books"},{"@type":"Thing","name":"Business and technology books"},{"@type":"Thing","name":"Legal public-domain e-books"},{"@type":"Thing","name":"Global magazines by topic"},{"@type":"Thing","name":"Official magazine issues and original publisher covers"}],"keywords":["AI ebook matcher","AI book recommendations","what book should I read next","books by mood","fantasy books","romance books","verified audiobook recommendations","audiobook recommendations by genre","legal free ebooks","public domain audiobooks","AI magazine matcher","Discover magazines worldwide by subject and mood","magazines by topic","o que ler agora","audiolivros","recomendações de livros"],"publisher":{"@type":"Organization","name":"MatchApp Ai","url":"https://matchapp.tv/","logo":{"@type":"ImageObject","url":"https://matchapp.tv/assets/brand/matchapp-official-icon-512.webp"}}},{"@type":"Service","@id":"https://matchapp.tv/ebooks/#matcher","name":"MatchApp E-books Ai","serviceType":"AI e-book, audiobook and magazine recommendation and discovery","url":"https://matchapp.tv/#ebook-matcher-root","provider":{"@type":"Organization","name":"MatchApp Ai","url":"https://matchapp.tv/","logo":{"@type":"ImageObject","url":"https://matchapp.tv/assets/brand/matchapp-official-icon-512.webp","width":512,"height":512}},"areaServed":"Worldwide","description":"Matches readers to curated e-books, independently checked audiobook editions and opt-in world magazines by subject and mood, with original publisher links."},{"@type":"ItemList","name":"E-book matching categories","numberOfItems":28,"itemListElement":[{"@type":"ListItem","position":1,"name":"Fantasy"},{"@type":"ListItem","position":2,"name":"Science fiction"},{"@type":"ListItem","position":3,"name":"Romance"},{"@type":"ListItem","position":4,"name":"Mystery"},{"@type":"ListItem","position":5,"name":"Thriller"},{"@type":"ListItem","position":6,"name":"Horror"},{"@type":"ListItem","position":7,"name":"Gothic"},{"@type":"ListItem","position":8,"name":"Literary fiction"},{"@type":"ListItem","position":9,"name":"Contemporary fiction"},{"@type":"ListItem","position":10,"name":"Historical fiction"},{"@type":"ListItem","position":11,"name":"Classics"},{"@type":"ListItem","position":12,"name":"Adventure"},{"@type":"ListItem","position":13,"name":"Dystopian"},{"@type":"ListItem","position":14,"name":"Magical realism"},{"@type":"ListItem","position":15,"name":"Comedy"},{"@type":"ListItem","position":16,"name":"Memoir"},{"@type":"ListItem","position":17,"name":"Biography"},{"@type":"ListItem","position":18,"name":"Nonfiction"},{"@type":"ListItem","position":19,"name":"True crime"},{"@type":"ListItem","position":20,"name":"Self-help"},{"@type":"ListItem","position":21,"name":"Psychology"},{"@type":"ListItem","position":22,"name":"Philosophy"},{"@type":"ListItem","position":23,"name":"Business"},{"@type":"ListItem","position":24,"name":"Economics"},{"@type":"ListItem","position":25,"name":"Technology"},{"@type":"ListItem","position":26,"name":"Science"},{"@type":"ListItem","position":27,"name":"History"},{"@type":"ListItem","position":28,"name":"Nature"}]}]}</script>
 <link rel="stylesheet" href="/ui-harmony.css?v=20261003-1">
-<link rel="stylesheet" href="/premium-finish-20261011.css?v=20261011-a1">
+<link rel="stylesheet" href="/premium-finish-20261011.css?v=20261011-grid3">
 </head>
 <body class="ebook-page">
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7J3NNBN" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -122,6 +122,8 @@ display:flex;flex-direction:column;align-items:center;justify-content:center;gap
 <script src="/ebooks/magazines.js?v=20260926-publishericon2"></script>
 <script src="/ebooks/affiliate-links.js?v=20260925-amzmag1"></script>
 <script src="/ebooks/audiobooks.js?v=20260926-catalogscale1"></script>
+<script src="/ebooks/cover-identity.js?v=20261001-coverquality1"></script>
+<script src="/ebooks/book-details-20261011.js?v=20261011-meta1"></script>
 <script>
 (function(){
  const host=document.getElementById('ebook-hub-top'),items=window.MATCHAPP_TOP_EBOOKS||[];if(!host)return;
@@ -137,8 +139,26 @@ display:flex;flex-direction:column;align-items:center;justify-content:center;gap
    const paid=!!(aff&&aff.isAffiliateLink(buy));
    const freeUrl='https://www.gutenberg.org/ebooks/search/?query='+q(b);
    const initials=b.title.split(/\s+/).filter(Boolean).slice(0,3).map(x=>x[0]).join('').toUpperCase();
-   return '<article class="ebook-top-card"><div class="ebook-top-cover"><div class="ebook-cover-fallback"><span>'+esc(initials)+'</span><strong>'+esc(b.title)+'</strong><small>'+esc(b.author)+'</small></div></div><div class="ebook-top-copy"><span class="ebook-top-badge">'+esc(b.badge)+'</span><h3>'+esc(b.title)+'</h3><p class="ebook-top-author">'+esc(b.author)+'</p><p class="ebook-top-genre">'+esc(b.genre)+'</p><div class="ebook-top-actions">'+(free?'<a class="ebook-provider ebook-free" href="'+freeUrl+'" target="_blank" rel="noopener noreferrer">Legal free edition ↗</a>':'')+'<a class="ebook-provider" href="'+esc(buy)+'" target="_blank" rel="'+(paid?'sponsored ':'')+'noopener noreferrer"'+(paid?' data-ebook-affiliate="amazon-br"':'')+'>'+(paid?'Kindle · '+esc(aff.paidLabel(navigator.language)):'Find / buy e-book')+' ↗</a>'+(paid?'<small class="ebook-rights">'+esc(aff.disclosure(navigator.language))+'</small>':'')+'<a class="ebook-top-source" href="'+esc(b.sourceUrl)+'" target="_blank" rel="noopener noreferrer">Chart source · '+esc(b.source)+'</a></div></div></article>';
+   return '<article class="ebook-top-card"><div class="ebook-top-cover"><img data-top-cover alt="" hidden><div class="ebook-cover-fallback"><span>'+esc(initials)+'</span><strong>'+esc(b.title)+'</strong><small>'+esc(b.author)+'</small></div></div><div class="ebook-top-copy"><span class="ebook-top-badge">'+esc(b.badge)+'</span><h3>'+esc(b.title)+'</h3><p class="ebook-top-author">'+esc(b.author)+'</p><p class="ebook-top-genre">'+esc(b.genre)+'</p><div class="ebook-top-actions">'+(free?'<a class="ebook-provider ebook-free" href="'+freeUrl+'" target="_blank" rel="noopener noreferrer">Legal free edition ↗</a>':'')+'<a class="ebook-provider" href="'+esc(buy)+'" target="_blank" rel="'+(paid?'sponsored ':'')+'noopener noreferrer"'+(paid?' data-ebook-affiliate="amazon-br"':'')+'>'+(paid?'Kindle · '+esc(aff.paidLabel(navigator.language)):'Find / buy e-book')+' ↗</a>'+(paid?'<small class="ebook-rights">'+esc(aff.disclosure(navigator.language))+'</small>':'')+'<a class="ebook-top-source" href="'+esc(b.sourceUrl)+'" target="_blank" rel="noopener noreferrer">Chart source · '+esc(b.source)+'</a></div></div></article>';
  }).join('');
+ const cards=[...host.querySelectorAll('.ebook-top-card')];
+ const hydrate=(card,i)=>{
+   if(card.dataset.metadataRequested==='1')return;
+   card.dataset.metadataRequested='1';
+   const book=ordered[i];
+   if(book)window.MatchAppBookDetails?.hydrate?.(card,book,{format:'ebook'});
+ };
+ if('IntersectionObserver' in window){
+   const observer=new IntersectionObserver(entries=>{
+     for(const entry of entries){
+       if(!entry.isIntersecting)continue;
+       const index=cards.indexOf(entry.target);
+       if(index>=0)hydrate(entry.target,index);
+       observer.unobserve(entry.target);
+     }
+   },{rootMargin:'250px'});
+   cards.forEach(card=>observer.observe(card));
+ }else cards.slice(0,6).forEach((card,i)=>hydrate(card,i));
  host.addEventListener('click',e=>{if(e.target.closest('[data-ebook-affiliate="amazon-br"]')){window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'ebook_affiliate_click',provider:'Amazon Brazil',surface:'ebook_hub'})}});
 })();
 </script>

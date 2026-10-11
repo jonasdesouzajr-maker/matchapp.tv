@@ -97,7 +97,7 @@ function beginSpeaking(){
 }
 function endSpeaking(auto){
  stopMotion();change('idle');
- if(auto && voiceTurn && !document.hidden)timer=setTimeout(()=>{if(voiceTurn && document.activeElement!==input)mic.click()},750);
+ if(auto && voiceTurn && !document.hidden)timer=setTimeout(()=>{if(voiceTurn && document.activeElement!==input && !document.hidden)mic.click()},380);
 }
 function speak(text,opts){
  clearTimeout(timer);voiceTurn=opts?.autoListen===true;
@@ -122,8 +122,9 @@ function speak(text,opts){
     el.style.setProperty('--jds-head-scale',(1+meterLevel*.012).toFixed(4));
    }
   },
-  onEnd:ok=>endSpeaking(ok&&opts?.autoListen===true),
-  onError:()=>endSpeaking(false)
+  onProgress:progress=>opts?.onProgress?.(progress),
+  onEnd:ok=>{opts?.onComplete?.(ok);endSpeaking(ok&&opts?.autoListen===true)},
+  onError:()=>{opts?.onComplete?.(false);endSpeaking(false)}
  }).catch(()=>{endSpeaking(false);return false});
 }
 mic.addEventListener('click',()=>{voiceTurn=true;stopMotion();change('listening');document.getElementById('mic-btn-discover')?.click()});
