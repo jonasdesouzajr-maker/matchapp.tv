@@ -20,6 +20,8 @@
   };
   let busy = false;
   let signedIn = false;
+  let authReady = false;
+  let confirmedUserId = null;
   let listVersion = 0;
   const client = () => window.supabaseClient;
   const t = key => (STRINGS[window.MATCH_LANG || document.documentElement.lang] || {})[key] || STRINGS.en[key];
@@ -34,8 +36,10 @@
   }
   function render() {
     document.querySelectorAll('[data-passkey-text]').forEach(el => { el.textContent = t(el.dataset.passkeyText); });
-    document.querySelectorAll('[data-passkey-action]').forEach(el => { el.disabled = busy || !supported() || (el.dataset.passkeyAction === 'add' && !signedIn); });
-    const login = document.querySelector('[data-passkey-sign-in-first]'); if (login) login.hidden = signedIn;
+    document.querySelectorAll('[data-passkey-action]').forEach(el => { el.disabled = busy || !authReady || !supported() || (el.dataset.passkeyAction === 'add' && !signedIn); });
+    const login = document.querySelector('[data-passkey-sign-in-first]'); if (login) login.hidden = !authReady || signedIn;
+    const identity = document.querySelector('[data-passkey-identity]');
+    if (identity) { identity.hidden = !signedIn; identity.textContent = (window.MATCH_LANG || '').startsWith('pt') ? 'Conta autenticada. Adicione um acesso seguro a esta mesma conta.' : 'Signed in. Add a secure sign-in method to this same account.'; }
     if (!supported()) message('unsupported');
   }
   async function loadList() {
@@ -88,10 +92,39 @@
   function boot() {
     render();
     document.querySelectorAll('[data-passkey-action]').forEach(b => b.addEventListener('click', () => run(b.dataset.passkeyAction)));
-    client()?.auth.getSession().then(({data}) => { signedIn = !!data?.session?.user; render(); loadList(); }).catch(() => {});
-    // Do not await another Auth operation inside its callback (SDK lock).
-    client()?.auth.onAuthStateChange((_event, session) => { signedIn = !!session?.user; setTimeout(() => { render(); loadList(); },0); });
+    document.querySelector('[data-passkey-sign-in-first]')?.addEventListener('click', event => {
+      if (typeof window.openAuthModal === 'function') {
+        event.preventDefault();
+        window.openAuthModal();
+      }
+    });
+    // Get the server-validated user rather than treating a delayed local-session
+    // callback (common after Google OAuth in Android) as a definitive sign-out.
+    let epoch = 0;
+    async function refreshAuth(){
+      const request = ++epoch;
+      try {
+        const result = await client()?.auth?.getUser?.();
+        if (request !== epoch) return;
+        confirmedUserId = !result?.error ? result?.data?.user?.id || null : null;
+        signedIn = !!confirmedUserId;
+        authReady = true;
+        render(); loadList();
+      } catch (_) { if(request===epoch){authReady=true;confirmedUserId=null;signedIn=false;render();} }
+    }
+    window.MatchAppPasskeyRefresh = refreshAuth;
+    // SDK auth callback holds its session lock; defer all API requests.
+    client()?.auth.onAuthStateChange((event, session) => {
+      if (event === 'SIGNED_OUT') { ++epoch;signedIn=false;confirmedUserId=null;authReady=true;render();loadList();return; }
+      if (session?.user) { signedIn=true;confirmedUserId=session.user.id;authReady=true;render(); }
+      setTimeout(refreshAuth, 0);
+    });
+    document.addEventListener('matchapp:authchange', ()=>setTimeout(refreshAuth,0));
+    document.addEventListener('matchapp:profilehydrated', ()=>setTimeout(refreshAuth,0));
+    document.addEventListener('visibilitychange',()=>{if(!document.hidden)refreshAuth();});
+    window.addEventListener('focus',refreshAuth);
     document.addEventListener('matchapp:langchange', () => { render(); loadList(); });
+    refreshAuth();
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded',boot); else boot();
 })();

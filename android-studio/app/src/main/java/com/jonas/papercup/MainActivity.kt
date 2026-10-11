@@ -34,6 +34,8 @@ import android.webkit.WebResourceResponse
 import android.webkit.WebSettings
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import androidx.webkit.WebSettingsCompat
+import androidx.webkit.WebViewFeature
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.Toast
@@ -151,6 +153,13 @@ class MainActivity : AppCompatActivity() {
         web.settings.apply {
             javaScriptEnabled = true
             domStorageEnabled = true
+            // WebAuthn via Android Credential Manager for signed-in passkey enrollment.
+            if (WebViewFeature.isFeatureSupported(WebViewFeature.WEB_AUTHENTICATION)) {
+                WebSettingsCompat.setWebAuthenticationSupport(
+                    this,
+                    WebSettingsCompat.WEB_AUTHENTICATION_SUPPORT_FOR_APP
+                )
+            }
             databaseEnabled = true
             loadsImagesAutomatically = true
             mixedContentMode = WebSettings.MIXED_CONTENT_COMPATIBILITY_MODE
