@@ -671,7 +671,7 @@ Deno.serve(async (req: Request) => {
     const acceptDiscoverAnswer = (answer: string) => body?.kidsMode === true ||
       !unsupportedReadingRefusal(String(body?.question||''),answer);
     // One strict adult request budget across all independent providers.
-    const providerDeadline = openAiEligible ? Date.now() + (isRankMode || isProposalMode ? 43_000 : 58_000) : Number.POSITIVE_INFINITY;
+    const providerDeadline = openAiEligible ? Date.now() + (isDiscoverMode ? 26_000 : isRankMode || isProposalMode ? 43_000 : 58_000) : Number.POSITIVE_INFINITY;
     const groqReserveMs = openAiEligible && groqApiKey ? 8_000 : 0;
     if (openAiEligible && openRouterApiKey && Date.now() < providerDeadline) {
       const answer = await callOpenRouterFirst({
@@ -719,6 +719,7 @@ Deno.serve(async (req: Request) => {
       if (openAiEligible && groqApiKey && Date.now() < providerDeadline) {
       const answer = await callGroqBackup({
         req,prompt,key:groqApiKey,
+        deadline:isDiscoverMode ? providerDeadline : undefined,
         mode:isDiscoverMode ? "discover" : isRankMode ? "rank_candidates" : isProposalMode ? "match_proposals" : "legacy",
         allowedCandidateIds:rankCandidateIds,cors:corsHeaders,acceptDiscoverAnswer,
         blockXXX:hasBlockedXXXDestination,
@@ -744,7 +745,7 @@ Deno.serve(async (req: Request) => {
         // its own deadline, so a slow model costs one timeout and falls
         // through to the next instead of costing the whole request.
         const ac = new AbortController();
-        const timer = setTimeout(() => ac.abort(), Math.min(PER_MODEL_TIMEOUT_MS, Math.max(1, providerDeadline - Date.now() - groqReserveMs)));
+        const timer = setTimeout(() => ac.abort(), Math.min(isDiscoverMode && body?.kidsMode !== true ? 8_000 : PER_MODEL_TIMEOUT_MS, Math.max(1, providerDeadline - Date.now() - groqReserveMs)));
         let geminiRes: Response;
         try {
           geminiRes = await fetch(

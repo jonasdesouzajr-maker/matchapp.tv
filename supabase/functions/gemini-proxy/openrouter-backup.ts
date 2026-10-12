@@ -24,7 +24,7 @@ export async function callOpenRouterFirst(args: RouterArgs): Promise<Response|nu
   const {req,prompt,mode,key,cors,blockXXX,explicitXXX}=args;
   if (!key || Deno.env.get("OPENROUTER_DISABLED")==="true" || Date.now()<unavailableUntil) return null;
   const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(),OPENROUTER_TIMEOUT_MS);
+  const timer = setTimeout(() => controller.abort(),mode==="discover"?6_000:OPENROUTER_TIMEOUT_MS);
   try {
     const format = schemaFor(mode);
     const result = await fetch("https://openrouter.ai/api/v1/chat/completions",{

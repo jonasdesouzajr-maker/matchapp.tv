@@ -11,6 +11,7 @@ type GroqArgs = {
   explicitXXX: (text: string) => boolean;
   allowedCandidateIds?: string[];
   acceptDiscoverAnswer?: (answer: string) => boolean;
+  deadline?: number;
 };
 
 // Both current production models support strict JSON-schema responses.
@@ -23,8 +24,10 @@ export async function callGroqBackup(args: GroqArgs): Promise<Response|null> {
   if (!key || Deno.env.get("GROQ_DISABLED")==="true" || Date.now()<unavailableUntil) return null;
   const format = schemaFor(mode);
   for (const model of GROQ_MODEL_CHAIN) {
+    const remaining=args.deadline ? args.deadline-Date.now() : GROQ_MODEL_TIMEOUT_MS;
+    if(remaining<=0)return null;
     const controller=new AbortController();
-    const timer=setTimeout(()=>controller.abort(),GROQ_MODEL_TIMEOUT_MS);
+    const timer=setTimeout(()=>controller.abort(),Math.min(GROQ_MODEL_TIMEOUT_MS,remaining));
     try {
       const result=await fetch("https://api.groq.com/openai/v1/chat/completions",{
         method:"POST",signal:controller.signal,
