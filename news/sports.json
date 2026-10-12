@@ -1,7 +1,23 @@
 {
-  "updated_at": "2026-10-12T02:24:30.318Z",
+  "updated_at": "2026-10-12T20:18:05.724Z",
   "source_policy": "Explicitly authorized attributed original publisher RSS/Atom headlines; directly linked canonical URLs, no article-body/image republication and no betting guides",
   "items": [
+    {
+      "id": "46154106",
+      "title": "What’s in a name? Enough to ensnare Australia, NZ and PNG in a legal battle over the rugby team name ‘Chiefs’",
+      "url": "https://theconversation.com/whats-in-a-name-enough-to-ensnare-australia-nz-and-png-in-a-legal-battle-over-the-rugby-team-name-chiefs-294045",
+      "source": "The Conversation",
+      "source_domain": "theconversation.com",
+      "source_home": "https://theconversation.com",
+      "country": "GLOBAL",
+      "category": "sports",
+      "sport": "Sports",
+      "event_type": "Sports",
+      "published_at": "2026-10-12T03:16:50.000Z",
+      "timestamp_kind": "published",
+      "discovery_source": "Authorized publisher RSS/Atom",
+      "image": null
+    },
     {
       "id": "535ff993",
       "title": "What makes an Olympic emblem memorable – and does Brisbane’s new design fit the bill?",
@@ -14,22 +30,6 @@
       "sport": "Sports",
       "event_type": "Sports",
       "published_at": "2026-10-09T03:41:24.000Z",
-      "timestamp_kind": "published",
-      "discovery_source": "Authorized publisher RSS/Atom",
-      "image": null
-    },
-    {
-      "id": "85bda206",
-      "title": "Voici comment un camp d’été a transformé l’éducation physique au Québec",
-      "url": "https://theconversation.com/voici-comment-un-camp-dete-a-transforme-leducation-physique-au-quebec-289434",
-      "source": "The Conversation",
-      "source_domain": "theconversation.com",
-      "source_home": "https://theconversation.com",
-      "country": "GLOBAL",
-      "category": "sports",
-      "sport": "Sports",
-      "event_type": "Sports",
-      "published_at": "2026-10-08T14:07:32.000Z",
       "timestamp_kind": "published",
       "discovery_source": "Authorized publisher RSS/Atom",
       "image": null
