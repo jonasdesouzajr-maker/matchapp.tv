@@ -1,10 +1,1371 @@
 {
-  "generated_at": "2026-10-12T10:08:35.166Z",
-  "feed_version": "03f4c12e",
+  "generated_at": "2026-10-12T13:28:12.771Z",
+  "feed_version": "aa4939a9",
   "sports_updated_at": "2026-10-12T02:24:30.318Z",
   "source_policy": "direct-trusted-publisher-rss+google-trends-keyword-signals",
   "seo_policy": "per-story keyword snapshot at first discovery + source citation + stable archive",
   "items": [
+    {
+      "id": "d1b0e6e7",
+      "title": "CoComelon Is Ready to Grow Up",
+      "url": "https://www.hollywoodreporter.com/business/business-news/cocomelon-grows-up-movie-disney-streaming-1236726556/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-12T13:24:10.000Z",
+      "discovered_at": "2026-10-12T13:28:12.771Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "CoComelon Is Ready",
+      "description": "CoComelon Is Ready: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/CCM_m0350_0290_lighting_comp_4K_v004.1040.jpg?crop=176px%2C0px%2C2914px%2C1631px&resize=1440%2C810",
+      "matchapp_url": "https://matchapp.tv/news/articles/cocomelon-is-ready-to-grow-up-d1b0e6/",
+      "landing_url": "https://matchapp.tv/?news=d1b0e6e7#latest-news",
+      "seo": {
+        "primary_keyword": "CoComelon Is Ready latest news",
+        "short_tail": [
+          "CoComelon Is Ready",
+          "CoComelon Is Ready news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "CoComelon Is Ready latest news October 2026",
+          "CoComelon Is Ready entertainment update 2026",
+          "CoComelon Is Ready news 2026-10-12",
+          "latest entertainment news about CoComelon Is Ready",
+          "cocomelon ready cocomelon ready grow latest update",
+          "The Hollywood Reporter CoComelon Is Ready entertainment",
+          "latest news about CoComelon Is Ready October 2026",
+          "CoComelon Is Ready entertainment news 2026-10-12",
+          "what happened with CoComelon Is Ready"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "CoComelon Is Ready",
+          "cocomelon",
+          "ready",
+          "grow"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-12",
+          "CoComelon Is Ready 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter CoComelon Is Ready",
+          "hollywoodreporter.com CoComelon Is Ready",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "CoComelon Is Ready to Grow Up | Entertainment News |…",
+        "meta_description": "CoComelon Is Ready: Entertainment update reported by The Hollywood Reporter on 2026-10-12. See verified context, publication time and the original source…",
+        "keywords": [
+          "CoComelon Is Ready latest news",
+          "CoComelon Is Ready",
+          "CoComelon Is Ready news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "CoComelon Is Ready latest news October 2026",
+          "CoComelon Is Ready entertainment update 2026",
+          "CoComelon Is Ready news 2026-10-12",
+          "latest entertainment news about CoComelon Is Ready",
+          "cocomelon ready cocomelon ready grow latest update",
+          "The Hollywood Reporter CoComelon Is Ready entertainment",
+          "latest news about CoComelon Is Ready October 2026",
+          "CoComelon Is Ready entertainment news 2026-10-12",
+          "what happened with CoComelon Is Ready",
+          "cocomelon",
+          "ready",
+          "grow",
+          "October 2026",
+          "2026-10-12",
+          "CoComelon Is Ready 2026",
+          "The Hollywood Reporter CoComelon Is Ready",
+          "hollywoodreporter.com CoComelon Is Ready",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-12T13:28:12.771Z"
+      }
+    },
+    {
+      "id": "46087bb9",
+      "title": "AI minister warns 'likely' UK's cyber defences will be breached",
+      "url": "https://www.bbc.co.uk/news/articles/cr78pe09y05xo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC Technology",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-12T13:06:18.000Z",
+      "discovered_at": "2026-10-12T13:28:12.771Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC Technology on 2026-10-12. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/02d7/live/ff638950-c62c-11f1-af2e-773141c7e84a.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/ai-minister-warns-likely-uk-s-cyber-defences-will-be-breached-46087b/",
+      "landing_url": "https://matchapp.tv/?news=46087bb9#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-12",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "minister",
+          "warns",
+          "likely",
+          "cyber",
+          "defences",
+          "will"
+        ],
+        "long_tail": [
+          "AI minister warns 'likely' UK's cyber defences will be breached 2026-10-12",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "minister",
+          "warns",
+          "likely",
+          "cyber",
+          "defences",
+          "will"
+        ],
+        "freshness_keywords": [
+          "2026-10-12"
+        ],
+        "source_keywords": [
+          "BBC Technology"
+        ],
+        "meta_title": "AI minister warns 'likely' UK's cyber defences will be…",
+        "meta_description": "World report published by BBC Technology on 2026-10-12. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-12",
+          "world news",
+          "global headlines",
+          "minister",
+          "warns",
+          "likely",
+          "cyber",
+          "defences",
+          "will",
+          "AI minister warns 'likely' UK's cyber defences will be breached 2026-10-12",
+          "world news October 2026",
+          "2026-10-12",
+          "BBC Technology"
+        ],
+        "seo_generated_at": "2026-10-12T13:28:12.771Z"
+      }
+    },
+    {
+      "id": "fa63d9c2",
+      "title": "Brasileira é presa em Bali, na Indonésia, por transportar cocaína no xampu",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/12/brasileira-e-presa-na-indonesia-por-transportar-cocaina-no-xampu.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-12T12:58:33.000Z",
+      "discovered_at": "2026-10-12T13:28:12.771Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-12. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://g1.globo.com/mundo/noticia/2026/10/12/None",
+      "matchapp_url": "https://matchapp.tv/news/articles/brasileira-e-presa-em-bali-na-indonesia-por-transportar-cocaina-no-xampu-fa63d9/",
+      "landing_url": "https://matchapp.tv/?news=fa63d9c2#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-12",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "brasileira",
+          "presa",
+          "bali",
+          "indonesia",
+          "transportar",
+          "cocaina"
+        ],
+        "long_tail": [
+          "Brasileira é presa em Bali, na Indonésia, por transportar cocaína no xampu 2026-10-12",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "brasileira",
+          "presa",
+          "bali",
+          "indonesia",
+          "transportar",
+          "cocaina"
+        ],
+        "freshness_keywords": [
+          "2026-10-12"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Brasileira é presa em Bali, na Indonésia, por transportar…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-12. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-12",
+          "notícias do mundo",
+          "notícias internacionais",
+          "brasileira",
+          "presa",
+          "bali",
+          "indonesia",
+          "transportar",
+          "cocaina",
+          "Brasileira é presa em Bali, na Indonésia, por transportar cocaína no xampu 2026-10-12",
+          "notícias mundiais outubro 2026",
+          "2026-10-12",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-12T13:28:12.771Z"
+      }
+    },
+    {
+      "id": "5bc59241",
+      "title": "Russell Brand appears in court for start of rape trial",
+      "url": "https://www.bbc.co.uk/news/articles/cmqxn0lw25r3o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GB",
+      "language": "en",
+      "published_at": "2026-10-12T12:44:38.000Z",
+      "discovered_at": "2026-10-12T10:08:35.166Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "Russell Brand",
+      "description": "Russell Brand: entertainment headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/014e/live/0c686930-c63d-11f1-b99d-0127a94fa1d0.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/russell-brand-appears-in-court-for-start-of-rape-trial-5bc592/",
+      "landing_url": "https://matchapp.tv/?news=5bc59241#latest-news",
+      "seo": {
+        "primary_keyword": "Russell Brand latest news",
+        "short_tail": [
+          "Russell Brand",
+          "Russell Brand news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "Russell Brand latest news October 2026",
+          "Russell Brand entertainment update 2026",
+          "Russell Brand news 2026-10-12",
+          "latest entertainment news about Russell Brand",
+          "russell brand russell brand appears court latest update",
+          "BBC Russell Brand entertainment",
+          "latest news about Russell Brand October 2026",
+          "Russell Brand entertainment news 2026-10-12",
+          "what happened with Russell Brand"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "Russell Brand",
+          "russell",
+          "brand",
+          "appears",
+          "court",
+          "start",
+          "rape"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-12",
+          "Russell Brand 2026"
+        ],
+        "source_keywords": [
+          "BBC Russell Brand",
+          "bbc.co.uk Russell Brand",
+          "BBC entertainment news"
+        ],
+        "meta_title": "Russell Brand appears in court for start of rape trial |…",
+        "meta_description": "Russell Brand: Entertainment update reported by BBC on 2026-10-12. See verified context, publication time and the original source via MatchApp Ai.",
+        "keywords": [
+          "Russell Brand latest news",
+          "Russell Brand",
+          "Russell Brand news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "Russell Brand latest news October 2026",
+          "Russell Brand entertainment update 2026",
+          "Russell Brand news 2026-10-12",
+          "latest entertainment news about Russell Brand",
+          "russell brand russell brand appears court latest update",
+          "BBC Russell Brand entertainment",
+          "latest news about Russell Brand October 2026",
+          "Russell Brand entertainment news 2026-10-12",
+          "what happened with Russell Brand",
+          "russell",
+          "brand",
+          "appears",
+          "court",
+          "start",
+          "rape",
+          "October 2026",
+          "2026-10-12",
+          "Russell Brand 2026",
+          "BBC Russell Brand",
+          "bbc.co.uk Russell Brand",
+          "BBC entertainment news"
+        ],
+        "seo_generated_at": "2026-10-12T13:28:12.771Z"
+      }
+    },
+    {
+      "id": "482324e5",
+      "title": "Filha de Joelma, Natália Sarraff lança o primeiro álbum, 'Fases', com 12 faixas no universo rítmico paraense da mãe",
+      "url": "https://g1.globo.com/pop-arte/musica/blog/mauro-ferreira/post/2026/10/12/filha-de-joelma-natalia-sarraff-lanca-o-primeiro-album-fases-com-12-faixas-no-universo-ritmico-paraense-da-mae.ghtml",
+      "source": "G1",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "BR",
+      "language": "pt",
+      "published_at": "2026-10-12T12:19:29.000Z",
+      "discovered_at": "2026-10-12T13:28:12.771Z",
+      "event_type": "Release",
+      "category": "entertainment",
+      "person": "",
+      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
+      "image": "https://s2-g1.glbimg.com/CjI5GcZTKrWpPnDuXfgpfFdVl5U=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/s/O/XInPXPQliafb9ebluB7w/nataliasarraff.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/filha-de-joelma-natalia-sarraff-lanca-o-primeiro-album-fases-com-12-faixas-no-un-482324/",
+      "landing_url": "https://matchapp.tv/?news=482324e5#latest-news",
+      "seo": {
+        "primary_keyword": "filha joelma natalia sarraff últimas notícias",
+        "short_tail": [
+          "filha joelma natalia sarraff",
+          "filha joelma natalia sarraff news",
+          "release",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje"
+        ],
+        "long_tail": [
+          "filha joelma natalia sarraff latest news October 2026",
+          "filha joelma natalia sarraff release update 2026",
+          "filha joelma natalia sarraff news 2026-10-12",
+          "latest release news about filha joelma natalia sarraff",
+          "filha joelma natalia sarraff lanca primeiro latest update",
+          "G1 filha joelma natalia sarraff release",
+          "últimas notícias sobre filha joelma natalia sarraff outubro 2026",
+          "filha joelma natalia sarraff notícia de 2026-10-12",
+          "o que aconteceu com filha joelma natalia sarraff"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "filha",
+          "joelma",
+          "natalia",
+          "sarraff",
+          "lanca",
+          "primeiro",
+          "album",
+          "fases"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-12",
+          "outubro 2026",
+          "filha joelma natalia sarraff 2026"
+        ],
+        "source_keywords": [
+          "G1 filha joelma natalia sarraff",
+          "g1.globo.com filha joelma natalia sarraff",
+          "G1 entertainment news"
+        ],
+        "meta_title": "Filha de Joelma, Natália Sarraff lança o primeiro álbum,…",
+        "meta_description": "Notícia publicada por G1 em 2026-10-12. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
+        "keywords": [
+          "filha joelma natalia sarraff últimas notícias",
+          "filha joelma natalia sarraff",
+          "filha joelma natalia sarraff news",
+          "release",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje",
+          "filha joelma natalia sarraff latest news October 2026",
+          "filha joelma natalia sarraff release update 2026",
+          "filha joelma natalia sarraff news 2026-10-12",
+          "latest release news about filha joelma natalia sarraff",
+          "filha joelma natalia sarraff lanca primeiro latest update",
+          "G1 filha joelma natalia sarraff release",
+          "últimas notícias sobre filha joelma natalia sarraff outubro 2026",
+          "filha joelma natalia sarraff notícia de 2026-10-12",
+          "o que aconteceu com filha joelma natalia sarraff",
+          "filha",
+          "joelma",
+          "natalia",
+          "sarraff",
+          "lanca",
+          "primeiro",
+          "album",
+          "fases",
+          "October 2026",
+          "2026-10-12",
+          "outubro 2026",
+          "filha joelma natalia sarraff 2026",
+          "G1 filha joelma natalia sarraff",
+          "g1.globo.com filha joelma natalia sarraff",
+          "G1 entertainment news"
+        ],
+        "seo_generated_at": "2026-10-12T13:28:12.771Z"
+      }
+    },
+    {
+      "id": "d8b2e2b8",
+      "title": "Pupil arrested after two teachers shot at French school",
+      "url": "https://www.bbc.co.uk/news/articles/cm2keg7910gvo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-12T12:18:45.000Z",
+      "discovered_at": "2026-10-12T13:28:12.771Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-12. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/c65c/live/757924d0-c621-11f1-b048-6946f232cb95.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/pupil-arrested-after-two-teachers-shot-at-french-school-d8b2e2/",
+      "landing_url": "https://matchapp.tv/?news=d8b2e2b8#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-12",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "pupil",
+          "arrested",
+          "after",
+          "two",
+          "teachers",
+          "shot"
+        ],
+        "long_tail": [
+          "Pupil arrested after two teachers shot at French school 2026-10-12",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "pupil",
+          "arrested",
+          "after",
+          "two",
+          "teachers",
+          "shot"
+        ],
+        "freshness_keywords": [
+          "2026-10-12"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Pupil arrested after two teachers shot at French school |…",
+        "meta_description": "World report published by BBC World on 2026-10-12. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-12",
+          "world news",
+          "global headlines",
+          "pupil",
+          "arrested",
+          "after",
+          "two",
+          "teachers",
+          "shot",
+          "Pupil arrested after two teachers shot at French school 2026-10-12",
+          "world news October 2026",
+          "2026-10-12",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-12T13:28:12.771Z"
+      }
+    },
+    {
+      "id": "7b8e3bf8",
+      "title": "YouTube Making Nice with Legacy TV",
+      "url": "https://www.hollywoodreporter.com/tv/tv-news/youtube-on-working-with-legacy-tv-mipcom-1236727664/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-12T12:18:38.000Z",
+      "discovered_at": "2026-10-12T13:28:12.771Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "YouTube Making Nice",
+      "description": "YouTube Making Nice: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2025/10/FotoJet-2025-10-13T152034.706.jpg?w=1440&h=810&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/youtube-making-nice-with-legacy-tv-7b8e3b/",
+      "landing_url": "https://matchapp.tv/?news=7b8e3bf8#latest-news",
+      "seo": {
+        "primary_keyword": "YouTube Making Nice latest news",
+        "short_tail": [
+          "YouTube Making Nice",
+          "YouTube Making Nice news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "YouTube Making Nice latest news October 2026",
+          "YouTube Making Nice entertainment update 2026",
+          "YouTube Making Nice news 2026-10-12",
+          "latest entertainment news about YouTube Making Nice",
+          "youtube making nice youtube making nice latest update",
+          "The Hollywood Reporter YouTube Making Nice entertainment",
+          "latest news about YouTube Making Nice October 2026",
+          "YouTube Making Nice entertainment news 2026-10-12",
+          "what happened with YouTube Making Nice"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "YouTube Making Nice",
+          "youtube",
+          "making",
+          "nice",
+          "legacy"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-12",
+          "YouTube Making Nice 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter YouTube Making Nice",
+          "hollywoodreporter.com YouTube Making Nice",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "YouTube Making Nice with Legacy TV | Entertainment News |…",
+        "meta_description": "YouTube Making Nice: Entertainment update reported by The Hollywood Reporter on 2026-10-12. See verified context, publication time and the original source…",
+        "keywords": [
+          "YouTube Making Nice latest news",
+          "YouTube Making Nice",
+          "YouTube Making Nice news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "YouTube Making Nice latest news October 2026",
+          "YouTube Making Nice entertainment update 2026",
+          "YouTube Making Nice news 2026-10-12",
+          "latest entertainment news about YouTube Making Nice",
+          "youtube making nice youtube making nice latest update",
+          "The Hollywood Reporter YouTube Making Nice entertainment",
+          "latest news about YouTube Making Nice October 2026",
+          "YouTube Making Nice entertainment news 2026-10-12",
+          "what happened with YouTube Making Nice",
+          "youtube",
+          "making",
+          "nice",
+          "legacy",
+          "October 2026",
+          "2026-10-12",
+          "YouTube Making Nice 2026",
+          "The Hollywood Reporter YouTube Making Nice",
+          "hollywoodreporter.com YouTube Making Nice",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-12T13:28:12.771Z"
+      }
+    },
+    {
+      "id": "cc1852ad",
+      "title": "Who are the Houthis, and why are they so hard to fight?",
+      "url": "https://www.bbc.co.uk/news/videos/cmy56nzd6y69o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-12T12:15:01.000Z",
+      "discovered_at": "2026-10-12T13:28:12.771Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-12. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/242f/live/3aabb7c0-c633-11f1-a64c-550be9e3c66b.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/who-are-the-houthis-and-why-are-they-so-hard-to-fight-cc1852/",
+      "landing_url": "https://matchapp.tv/?news=cc1852ad#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-12",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "who",
+          "houthis",
+          "why",
+          "they",
+          "hard",
+          "fight"
+        ],
+        "long_tail": [
+          "Who are the Houthis, and why are they so hard to fight? 2026-10-12",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "who",
+          "houthis",
+          "why",
+          "they",
+          "hard",
+          "fight"
+        ],
+        "freshness_keywords": [
+          "2026-10-12"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Who are the Houthis, and why are they so hard to fight? |…",
+        "meta_description": "World report published by BBC World on 2026-10-12. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-12",
+          "world news",
+          "global headlines",
+          "who",
+          "houthis",
+          "why",
+          "they",
+          "hard",
+          "fight",
+          "Who are the Houthis, and why are they so hard to fight? 2026-10-12",
+          "world news October 2026",
+          "2026-10-12",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-12T13:28:12.771Z"
+      }
+    },
+    {
+      "id": "bbb4e297",
+      "title": "Appeal for major energy storage system rejected",
+      "url": "https://www.bbc.co.uk/news/articles/cwvgdej69m2ro?at_medium=RSS&at_campaign=rss",
+      "source": "BBC Science",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-12T12:10:34.000Z",
+      "discovered_at": "2026-10-12T13:28:12.771Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC Science on 2026-10-12. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/d706/live/71a87db0-c635-11f1-9a39-31b474234113.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/appeal-for-major-energy-storage-system-rejected-bbb4e2/",
+      "landing_url": "https://matchapp.tv/?news=bbb4e297#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-12",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "appeal",
+          "major",
+          "energy",
+          "storage",
+          "system",
+          "rejected"
+        ],
+        "long_tail": [
+          "Appeal for major energy storage system rejected 2026-10-12",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "appeal",
+          "major",
+          "energy",
+          "storage",
+          "system",
+          "rejected"
+        ],
+        "freshness_keywords": [
+          "2026-10-12"
+        ],
+        "source_keywords": [
+          "BBC Science"
+        ],
+        "meta_title": "Appeal for major energy storage system rejected | World…",
+        "meta_description": "World report published by BBC Science on 2026-10-12. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-12",
+          "world news",
+          "global headlines",
+          "appeal",
+          "major",
+          "energy",
+          "storage",
+          "system",
+          "rejected",
+          "Appeal for major energy storage system rejected 2026-10-12",
+          "world news October 2026",
+          "2026-10-12",
+          "BBC Science"
+        ],
+        "seo_generated_at": "2026-10-12T13:28:12.771Z"
+      }
+    },
+    {
+      "id": "86f2acec",
+      "title": "Julie Hesmondhalgh left Celebrity Traitors 'with my head held high'",
+      "url": "https://www.bbc.co.uk/news/articles/c6lyen88dwdno?at_medium=RSS&at_campaign=rss",
+      "source": "BBC",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GB",
+      "language": "en",
+      "published_at": "2026-10-12T11:35:08.000Z",
+      "discovered_at": "2026-10-12T13:28:12.771Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "Julie Hesmondhalgh",
+      "description": "Julie Hesmondhalgh: entertainment headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/a9b3/live/40d96f70-c624-11f1-b048-6946f232cb95.png",
+      "matchapp_url": "https://matchapp.tv/news/articles/julie-hesmondhalgh-left-celebrity-traitors-with-my-head-held-high-86f2ac/",
+      "landing_url": "https://matchapp.tv/?news=86f2acec#latest-news",
+      "seo": {
+        "primary_keyword": "Julie Hesmondhalgh latest news",
+        "short_tail": [
+          "Julie Hesmondhalgh",
+          "Julie Hesmondhalgh news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "Julie Hesmondhalgh latest news October 2026",
+          "Julie Hesmondhalgh entertainment update 2026",
+          "Julie Hesmondhalgh news 2026-10-12",
+          "latest entertainment news about Julie Hesmondhalgh",
+          "julie hesmondhalgh julie hesmondhalgh left celebrity latest update",
+          "BBC Julie Hesmondhalgh entertainment",
+          "latest news about Julie Hesmondhalgh October 2026",
+          "Julie Hesmondhalgh entertainment news 2026-10-12",
+          "what happened with Julie Hesmondhalgh"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "Julie Hesmondhalgh",
+          "julie",
+          "hesmondhalgh",
+          "left",
+          "celebrity",
+          "traitors",
+          "head"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-12",
+          "Julie Hesmondhalgh 2026"
+        ],
+        "source_keywords": [
+          "BBC Julie Hesmondhalgh",
+          "bbc.co.uk Julie Hesmondhalgh",
+          "BBC entertainment news"
+        ],
+        "meta_title": "Julie Hesmondhalgh left Celebrity Traitors 'with my head…",
+        "meta_description": "Julie Hesmondhalgh: Entertainment update reported by BBC on 2026-10-12. See verified context, publication time and the original source via MatchApp Ai.",
+        "keywords": [
+          "Julie Hesmondhalgh latest news",
+          "Julie Hesmondhalgh",
+          "Julie Hesmondhalgh news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "Julie Hesmondhalgh latest news October 2026",
+          "Julie Hesmondhalgh entertainment update 2026",
+          "Julie Hesmondhalgh news 2026-10-12",
+          "latest entertainment news about Julie Hesmondhalgh",
+          "julie hesmondhalgh julie hesmondhalgh left celebrity latest update",
+          "BBC Julie Hesmondhalgh entertainment",
+          "latest news about Julie Hesmondhalgh October 2026",
+          "Julie Hesmondhalgh entertainment news 2026-10-12",
+          "what happened with Julie Hesmondhalgh",
+          "julie",
+          "hesmondhalgh",
+          "left",
+          "celebrity",
+          "traitors",
+          "head",
+          "October 2026",
+          "2026-10-12",
+          "Julie Hesmondhalgh 2026",
+          "BBC Julie Hesmondhalgh",
+          "bbc.co.uk Julie Hesmondhalgh",
+          "BBC entertainment news"
+        ],
+        "seo_generated_at": "2026-10-12T13:28:12.771Z"
+      }
+    },
+    {
+      "id": "18bfcc93",
+      "title": "Tom Cruise film Digger forecast to lose $245m at box office",
+      "url": "https://www.bbc.co.uk/news/articles/cke8re5v1pgmo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GB",
+      "language": "en",
+      "published_at": "2026-10-12T11:29:18.000Z",
+      "discovered_at": "2026-10-12T13:28:12.771Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "Tom Cruise",
+      "description": "Tom Cruise: entertainment headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/f0b2/live/e4909ea0-c637-11f1-bc2e-018d645d8d21.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/tom-cruise-film-digger-forecast-to-lose-245m-at-box-office-18bfcc/",
+      "landing_url": "https://matchapp.tv/?news=18bfcc93#latest-news",
+      "seo": {
+        "primary_keyword": "digger",
+        "short_tail": [
+          "Tom Cruise",
+          "Tom Cruise news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "digger"
+        ],
+        "long_tail": [
+          "Tom Cruise latest news October 2026",
+          "Tom Cruise entertainment update 2026",
+          "Tom Cruise news 2026-10-12",
+          "latest entertainment news about Tom Cruise",
+          "tom cruise tom cruise film digger latest update",
+          "BBC Tom Cruise entertainment",
+          "latest news about Tom Cruise October 2026",
+          "Tom Cruise entertainment news 2026-10-12",
+          "what happened with Tom Cruise"
+        ],
+        "trend_keywords": [
+          "digger"
+        ],
+        "entity_keywords": [
+          "Tom Cruise",
+          "tom",
+          "cruise",
+          "film",
+          "digger",
+          "forecast",
+          "lose"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-12",
+          "Tom Cruise 2026"
+        ],
+        "source_keywords": [
+          "BBC Tom Cruise",
+          "bbc.co.uk Tom Cruise",
+          "BBC entertainment news"
+        ],
+        "meta_title": "Tom Cruise film Digger forecast to lose $245m at box…",
+        "meta_description": "Tom Cruise: Entertainment update reported by BBC on 2026-10-12. See verified context, publication time and the original source via MatchApp Ai.",
+        "keywords": [
+          "digger",
+          "Tom Cruise",
+          "Tom Cruise news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "Tom Cruise latest news October 2026",
+          "Tom Cruise entertainment update 2026",
+          "Tom Cruise news 2026-10-12",
+          "latest entertainment news about Tom Cruise",
+          "tom cruise tom cruise film digger latest update",
+          "BBC Tom Cruise entertainment",
+          "latest news about Tom Cruise October 2026",
+          "Tom Cruise entertainment news 2026-10-12",
+          "what happened with Tom Cruise",
+          "tom",
+          "cruise",
+          "film",
+          "forecast",
+          "lose",
+          "October 2026",
+          "2026-10-12",
+          "Tom Cruise 2026",
+          "BBC Tom Cruise",
+          "bbc.co.uk Tom Cruise",
+          "BBC entertainment news"
+        ],
+        "seo_generated_at": "2026-10-12T13:28:12.771Z"
+      }
+    },
+    {
+      "id": "cbcf1d85",
+      "title": "Zelensky diz que Rússia mantém ataques à Ucrânia apesar de cessar-fogo anunciado por Trump",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/12/zelensky-diz-que-russia-mantem-ataques-a-ucrania-apesar-de-cessar-fogo-anunciado-por-trump.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-12T11:23:02.000Z",
+      "discovered_at": "2026-10-12T13:28:12.771Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-12. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/6wVLSyk2AsPNXhi8FcJuRycSbnk=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/V/n/uvuNYSS5GfUJwxAiBwpg/ap26284505552183.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/zelensky-diz-que-russia-mantem-ataques-a-ucrania-apesar-de-cessar-fogo-anunciado-cbcf1d/",
+      "landing_url": "https://matchapp.tv/?news=cbcf1d85#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-12",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "zelensky",
+          "diz",
+          "que",
+          "russia",
+          "mantem",
+          "ataques"
+        ],
+        "long_tail": [
+          "Zelensky diz que Rússia mantém ataques à Ucrânia apesar de cessar-fogo anunciado por Trump 2026-10-12",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "zelensky",
+          "diz",
+          "que",
+          "russia",
+          "mantem",
+          "ataques"
+        ],
+        "freshness_keywords": [
+          "2026-10-12"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Zelensky diz que Rússia mantém ataques à Ucrânia apesar de…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-12. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-12",
+          "notícias do mundo",
+          "notícias internacionais",
+          "zelensky",
+          "diz",
+          "que",
+          "russia",
+          "mantem",
+          "ataques",
+          "Zelensky diz que Rússia mantém ataques à Ucrânia apesar de cessar-fogo anunciado por Trump 2026-10-12",
+          "notícias mundiais outubro 2026",
+          "2026-10-12",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-12T13:28:12.771Z"
+      }
+    },
+    {
+      "id": "5a80f682",
+      "title": "MC PH é entrevistado no g1 Ouviu ao vivo desta quarta-feira (14)",
+      "url": "https://g1.globo.com/pop-arte/musica/ao-vivo/mc-ph-e-entrevistado-no-g1-ouviu-ao-vivo-desta-quarta-feira-14.ghtml",
+      "source": "G1",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "BR",
+      "language": "pt",
+      "published_at": "2026-10-12T11:03:55.000Z",
+      "discovered_at": "2026-10-09T16:32:32.326Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "MC PH",
+      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
+      "image": "https://s2-g1.glbimg.com/QdqS5ehw8WMJWVRmNgO4iECMXuQ=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/4/H/M3Vi4iT3OCAM9BF8vFcw/mc-ph.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/mc-ph-e-entrevistado-no-g1-ouviu-ao-vivo-desta-quarta-feira-14-5a80f6/",
+      "landing_url": "https://matchapp.tv/?news=5a80f682#latest-news",
+      "seo": {
+        "primary_keyword": "MC PH últimas notícias",
+        "short_tail": [
+          "MC PH",
+          "MC PH news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje"
+        ],
+        "long_tail": [
+          "MC PH latest news October 2026",
+          "MC PH entertainment update 2026",
+          "MC PH news 2026-10-12",
+          "latest entertainment news about MC PH",
+          "entrevistado ouviu vivo desta quarta feira latest update",
+          "G1 MC PH entertainment",
+          "últimas notícias sobre MC PH outubro 2026",
+          "MC PH notícia de 2026-10-12",
+          "o que aconteceu com MC PH"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "MC PH",
+          "entrevistado",
+          "ouviu",
+          "vivo",
+          "desta",
+          "quarta",
+          "feira"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-12",
+          "outubro 2026",
+          "MC PH 2026"
+        ],
+        "source_keywords": [
+          "G1 MC PH",
+          "g1.globo.com MC PH",
+          "G1 entertainment news"
+        ],
+        "meta_title": "MC PH é entrevistado no g1 Ouviu ao vivo desta…",
+        "meta_description": "MC PH: Notícia publicada por G1 em 2026-10-12. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
+        "keywords": [
+          "MC PH últimas notícias",
+          "MC PH",
+          "MC PH news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje",
+          "MC PH latest news October 2026",
+          "MC PH entertainment update 2026",
+          "MC PH news 2026-10-12",
+          "latest entertainment news about MC PH",
+          "entrevistado ouviu vivo desta quarta feira latest update",
+          "G1 MC PH entertainment",
+          "últimas notícias sobre MC PH outubro 2026",
+          "MC PH notícia de 2026-10-12",
+          "o que aconteceu com MC PH",
+          "entrevistado",
+          "ouviu",
+          "vivo",
+          "desta",
+          "quarta",
+          "feira",
+          "October 2026",
+          "2026-10-12",
+          "outubro 2026",
+          "MC PH 2026",
+          "G1 MC PH",
+          "g1.globo.com MC PH",
+          "G1 entertainment news"
+        ],
+        "seo_generated_at": "2026-10-12T13:28:12.771Z"
+      }
+    },
+    {
+      "id": "f1fd3d97",
+      "title": "Operação do papa Leão XIV para retirada de nódulo ocorrerá na terça-feira",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/12/vaticano-diz-que-papa-leao-xiv-mantera-agenda-apos-operacao-para-retirar-nodulo-do-pulmao.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-12T10:36:12.000Z",
+      "discovered_at": "2026-10-12T13:28:12.771Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-12. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/q7UKe71IrpikYfxT8tjUKaMScHA=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/E/M/ArzfBmQz2aL2myWrA8zw/2026-10-12t104124z-137535752-rc2l1oaries7-rtrmadp-3-pope-health-1-.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/operacao-do-papa-leao-xiv-para-retirada-de-nodulo-ocorrera-na-terca-feira-f1fd3d/",
+      "landing_url": "https://matchapp.tv/?news=f1fd3d97#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-12",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "operacao",
+          "papa",
+          "leao",
+          "xiv",
+          "retirada",
+          "nodulo"
+        ],
+        "long_tail": [
+          "Operação do papa Leão XIV para retirada de nódulo ocorrerá na terça-feira 2026-10-12",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "operacao",
+          "papa",
+          "leao",
+          "xiv",
+          "retirada",
+          "nodulo"
+        ],
+        "freshness_keywords": [
+          "2026-10-12"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Operação do papa Leão XIV para retirada de nódulo ocorrerá…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-12. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-12",
+          "notícias do mundo",
+          "notícias internacionais",
+          "operacao",
+          "papa",
+          "leao",
+          "xiv",
+          "retirada",
+          "nodulo",
+          "Operação do papa Leão XIV para retirada de nódulo ocorrerá na terça-feira 2026-10-12",
+          "notícias mundiais outubro 2026",
+          "2026-10-12",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-12T13:28:12.771Z"
+      }
+    },
+    {
+      "id": "0202ae2f",
+      "title": "Saudi minister vows 'serious response' to Houthi attacks on airports",
+      "url": "https://www.bbc.co.uk/news/articles/cjly0zqq27e4o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-12T10:28:47.000Z",
+      "discovered_at": "2026-10-12T13:28:12.771Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-12. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/b82e/live/50a18f00-c629-11f1-a509-ab6554d795a2.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/saudi-minister-vows-serious-response-to-houthi-attacks-on-airports-0202ae/",
+      "landing_url": "https://matchapp.tv/?news=0202ae2f#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-12",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "saudi",
+          "minister",
+          "vows",
+          "serious",
+          "response",
+          "houthi"
+        ],
+        "long_tail": [
+          "Saudi minister vows 'serious response' to Houthi attacks on airports 2026-10-12",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "saudi",
+          "minister",
+          "vows",
+          "serious",
+          "response",
+          "houthi"
+        ],
+        "freshness_keywords": [
+          "2026-10-12"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Saudi minister vows 'serious response' to Houthi attacks…",
+        "meta_description": "World report published by BBC World on 2026-10-12. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-12",
+          "world news",
+          "global headlines",
+          "saudi",
+          "minister",
+          "vows",
+          "serious",
+          "response",
+          "houthi",
+          "Saudi minister vows 'serious response' to Houthi attacks on airports 2026-10-12",
+          "world news October 2026",
+          "2026-10-12",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-12T13:28:12.771Z"
+      }
+    },
+    {
+      "id": "917d0d59",
+      "title": "Women's billion-dollar boom leaves players behind, says Fifpro",
+      "url": "https://www.bbc.co.uk/sport/football/articles/cmd7qn1g0xrxo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-12T10:04:50.000Z",
+      "discovered_at": "2026-10-12T13:28:12.771Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-12. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/779a/live/b7058b10-c616-11f1-bc2e-018d645d8d21.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/women-s-billion-dollar-boom-leaves-players-behind-says-fifpro-917d0d/",
+      "landing_url": "https://matchapp.tv/?news=917d0d59#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-12",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "women",
+          "billion",
+          "dollar",
+          "boom",
+          "leaves",
+          "players"
+        ],
+        "long_tail": [
+          "Women's billion-dollar boom leaves players behind, says Fifpro 2026-10-12",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "women",
+          "billion",
+          "dollar",
+          "boom",
+          "leaves",
+          "players"
+        ],
+        "freshness_keywords": [
+          "2026-10-12"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Women's billion-dollar boom leaves players behind, says…",
+        "meta_description": "World report published by BBC World on 2026-10-12. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-12",
+          "world news",
+          "global headlines",
+          "women",
+          "billion",
+          "dollar",
+          "boom",
+          "leaves",
+          "players",
+          "Women's billion-dollar boom leaves players behind, says Fifpro 2026-10-12",
+          "world news October 2026",
+          "2026-10-12",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-12T13:28:12.771Z"
+      }
+    },
+    {
+      "id": "2bf0b713",
+      "title": "Watch: CCTV shows people take cover as missile hits Riyadh airport",
+      "url": "https://www.bbc.co.uk/news/videos/cj4g17wz7gv0o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-12T09:38:03.000Z",
+      "discovered_at": "2026-10-12T13:28:12.771Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-12. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/317e/live/50e05140-c61f-11f1-8c89-b96b8469b965.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/watch-cctv-shows-people-take-cover-as-missile-hits-riyadh-airport-2bf0b7/",
+      "landing_url": "https://matchapp.tv/?news=2bf0b713#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-12",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "watch",
+          "cctv",
+          "shows",
+          "people",
+          "take",
+          "cover"
+        ],
+        "long_tail": [
+          "Watch: CCTV shows people take cover as missile hits Riyadh airport 2026-10-12",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "watch",
+          "cctv",
+          "shows",
+          "people",
+          "take",
+          "cover"
+        ],
+        "freshness_keywords": [
+          "2026-10-12"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Watch: CCTV shows people take cover as missile hits Riyadh…",
+        "meta_description": "World report published by BBC World on 2026-10-12. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-12",
+          "world news",
+          "global headlines",
+          "watch",
+          "cctv",
+          "shows",
+          "people",
+          "take",
+          "cover",
+          "Watch: CCTV shows people take cover as missile hits Riyadh airport 2026-10-12",
+          "world news October 2026",
+          "2026-10-12",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-12T13:28:12.771Z"
+      }
+    },
     {
       "id": "36e3cae8",
       "title": "Russell Brand Arrives at London Court for Start of Rape Trial",
@@ -96,7 +1457,7 @@
           "hollywoodreporter.com Russell Brand Arrives",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T10:08:35.166Z"
+        "seo_generated_at": "2026-10-12T13:28:12.771Z"
       }
     },
     {
@@ -114,7 +1475,7 @@
       "category": "world",
       "person": "",
       "description": "World news reported by G1 Mundo on 2026-10-12. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/N4Q2OPz1lVvGSkR7n67-2sltwQk=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/B/v/PF6AdGR7CkMKWfq7Hx3w/2026-10-11t221012z-1-lwd928111102026rp1-rtrwnev-c-9281-iran-crisis-saudi-airport-cctv-ezgif.com-video-to-gif-converter.gif",
+      "image": "https://s2-g1.glbimg.com/MmhnVpMdIUuiWQYlognc_DuIYKA=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/A/d/aA0aW6RkSgzPx8VTvdLw/design-sem-nome-2026-10-12t073039.135.jpg",
       "matchapp_url": "https://matchapp.tv/news/articles/video-mostra-momento-em-que-missil-houthi-atinge-terminal-de-aeroporto-em-riade--d1ec10/",
       "landing_url": "https://matchapp.tv/?news=d1ec1056#latest-news",
       "seo": {
@@ -165,7 +1526,7 @@
           "2026-10-12",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-12T10:08:35.166Z"
+        "seo_generated_at": "2026-10-12T13:28:12.771Z"
       }
     },
     {
@@ -234,7 +1595,7 @@
           "2026-10-12",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-12T10:08:35.166Z"
+        "seo_generated_at": "2026-10-12T13:28:12.771Z"
       }
     },
     {
@@ -333,7 +1694,7 @@
           "hollywoodreporter.com sumo spirit weighs nothing",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T10:08:35.166Z"
+        "seo_generated_at": "2026-10-12T13:28:12.771Z"
       }
     },
     {
@@ -402,7 +1763,7 @@
           "2026-10-12",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-12T10:08:35.166Z"
+        "seo_generated_at": "2026-10-12T13:28:12.771Z"
       }
     },
     {
@@ -471,7 +1832,7 @@
           "2026-10-12",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-12T10:08:35.166Z"
+        "seo_generated_at": "2026-10-12T13:28:12.771Z"
       }
     },
     {
@@ -563,103 +1924,7 @@
           "hollywoodreporter.com Quentin Tarantino’s West End",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T10:08:35.166Z"
-      }
-    },
-    {
-      "id": "5bc59241",
-      "title": "Russell Brand arrives at court for start of rape trial",
-      "url": "https://www.bbc.co.uk/news/articles/cmqxn0lw25r3o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GB",
-      "language": "en",
-      "published_at": "2026-10-12T08:16:21.000Z",
-      "discovered_at": "2026-10-12T10:08:35.166Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "Russell Brand",
-      "description": "Russell Brand: entertainment headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/6225/live/4ecd7f30-c611-11f1-aae8-850c1751d51d.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/russell-brand-arrives-at-court-for-start-of-rape-trial-5bc592/",
-      "landing_url": "https://matchapp.tv/?news=5bc59241#latest-news",
-      "seo": {
-        "primary_keyword": "Russell Brand latest news",
-        "short_tail": [
-          "Russell Brand",
-          "Russell Brand news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "Russell Brand latest news October 2026",
-          "Russell Brand entertainment update 2026",
-          "Russell Brand news 2026-10-12",
-          "latest entertainment news about Russell Brand",
-          "russell brand russell brand arrives court latest update",
-          "BBC Russell Brand entertainment",
-          "latest news about Russell Brand October 2026",
-          "Russell Brand entertainment news 2026-10-12",
-          "what happened with Russell Brand"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Russell Brand",
-          "russell",
-          "brand",
-          "arrives",
-          "court",
-          "start",
-          "rape"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-12",
-          "Russell Brand 2026"
-        ],
-        "source_keywords": [
-          "BBC Russell Brand",
-          "bbc.co.uk Russell Brand",
-          "BBC entertainment news"
-        ],
-        "meta_title": "Russell Brand arrives at court for start of rape trial |…",
-        "meta_description": "Russell Brand: Entertainment update reported by BBC on 2026-10-12. See verified context, publication time and the original source via MatchApp Ai.",
-        "keywords": [
-          "Russell Brand latest news",
-          "Russell Brand",
-          "Russell Brand news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "Russell Brand latest news October 2026",
-          "Russell Brand entertainment update 2026",
-          "Russell Brand news 2026-10-12",
-          "latest entertainment news about Russell Brand",
-          "russell brand russell brand arrives court latest update",
-          "BBC Russell Brand entertainment",
-          "latest news about Russell Brand October 2026",
-          "Russell Brand entertainment news 2026-10-12",
-          "what happened with Russell Brand",
-          "russell",
-          "brand",
-          "arrives",
-          "court",
-          "start",
-          "rape",
-          "October 2026",
-          "2026-10-12",
-          "Russell Brand 2026",
-          "BBC Russell Brand",
-          "bbc.co.uk Russell Brand",
-          "BBC entertainment news"
-        ],
-        "seo_generated_at": "2026-10-12T10:08:35.166Z"
+        "seo_generated_at": "2026-10-12T13:28:12.771Z"
       }
     },
     {
@@ -755,7 +2020,7 @@
           "hollywoodreporter.com What’s Selling",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T10:08:35.166Z"
+        "seo_generated_at": "2026-10-12T13:28:12.771Z"
       }
     },
     {
@@ -851,7 +2116,7 @@
           "hollywoodreporter.com Mirren Mack",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T10:08:35.166Z"
+        "seo_generated_at": "2026-10-12T13:28:12.771Z"
       }
     },
     {
@@ -920,7 +2185,7 @@
           "2026-10-12",
           "BBC Technology"
         ],
-        "seo_generated_at": "2026-10-12T10:08:35.166Z"
+        "seo_generated_at": "2026-10-12T13:28:12.771Z"
       }
     },
     {
@@ -1019,7 +2284,7 @@
           "bbc.co.uk teen who discovered her",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T10:08:35.166Z"
+        "seo_generated_at": "2026-10-12T13:28:12.771Z"
       }
     },
     {
@@ -1088,283 +2353,7 @@
           "2026-10-12",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-12T10:08:35.166Z"
-      }
-    },
-    {
-      "id": "123f7154",
-      "title": "Watch: How did Roman Abramovich's advisors help hide his wealth?",
-      "url": "https://www.bbc.co.uk/news/videos/c9rkynp1m01mo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-12T06:35:02.000Z",
-      "discovered_at": "2026-10-12T07:34:51.016Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-12. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/ee18/live/7d514870-c623-11f1-a64c-550be9e3c66b.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/watch-how-did-roman-abramovich-s-advisors-help-hide-his-wealth-123f71/",
-      "landing_url": "https://matchapp.tv/?news=123f7154#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-12",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "watch",
-          "how",
-          "did",
-          "roman",
-          "abramovich",
-          "advisors"
-        ],
-        "long_tail": [
-          "Watch: How did Roman Abramovich's advisors help hide his wealth? 2026-10-12",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "watch",
-          "how",
-          "did",
-          "roman",
-          "abramovich",
-          "advisors"
-        ],
-        "freshness_keywords": [
-          "2026-10-12"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Watch: How did Roman Abramovich's advisors help hide his…",
-        "meta_description": "World report published by BBC World on 2026-10-12. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-12",
-          "world news",
-          "global headlines",
-          "watch",
-          "how",
-          "did",
-          "roman",
-          "abramovich",
-          "advisors",
-          "Watch: How did Roman Abramovich's advisors help hide his wealth? 2026-10-12",
-          "world news October 2026",
-          "2026-10-12",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-12T10:08:35.166Z"
-      }
-    },
-    {
-      "id": "fd3b2bfe",
-      "title": "China impõe sanções a ministros do Paraguai e de Belize por relações com Taiwan",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/12/china-sancoes-paraguai-belize.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-12T05:29:10.000Z",
-      "discovered_at": "2026-10-12T06:27:20.586Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-12. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/UP3UlCVBTAp7-NN4ApftQsO3ZXI=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/k/X/BriymrRT64pWWRj8IgxA/2026-05-12t155628z-719402366-rc2k7laws077-rtrmadp-3-taiwan-dailylife.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/china-impoe-sancoes-a-ministros-do-paraguai-e-de-belize-por-relacoes-com-taiwan-fd3b2b/",
-      "landing_url": "https://matchapp.tv/?news=fd3b2bfe#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-12",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "china",
-          "impoe",
-          "sancoes",
-          "ministros",
-          "paraguai",
-          "belize"
-        ],
-        "long_tail": [
-          "China impõe sanções a ministros do Paraguai e de Belize por relações com Taiwan 2026-10-12",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "china",
-          "impoe",
-          "sancoes",
-          "ministros",
-          "paraguai",
-          "belize"
-        ],
-        "freshness_keywords": [
-          "2026-10-12"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "China impõe sanções a ministros do Paraguai e de Belize…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-12. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-12",
-          "notícias do mundo",
-          "notícias internacionais",
-          "china",
-          "impoe",
-          "sancoes",
-          "ministros",
-          "paraguai",
-          "belize",
-          "China impõe sanções a ministros do Paraguai e de Belize por relações com Taiwan 2026-10-12",
-          "notícias mundiais outubro 2026",
-          "2026-10-12",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-12T10:08:35.166Z"
-      }
-    },
-    {
-      "id": "532401ef",
-      "title": "'Prepare for the unthinkable' warning over autumn flooding",
-      "url": "https://www.bbc.co.uk/news/articles/cm4g1pqyqzqwo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC Science",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-12T05:24:10.000Z",
-      "discovered_at": "2026-10-11T23:56:08.840Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC Science on 2026-10-12. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/1025/live/7f85ec80-c543-11f1-b4f1-2359026a88ee.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/prepare-for-the-unthinkable-warning-over-autumn-flooding-532401/",
-      "landing_url": "https://matchapp.tv/?news=532401ef#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-12",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "prepare",
-          "unthinkable",
-          "warning",
-          "over",
-          "autumn",
-          "flooding"
-        ],
-        "long_tail": [
-          "'Prepare for the unthinkable' warning over autumn flooding 2026-10-12",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "prepare",
-          "unthinkable",
-          "warning",
-          "over",
-          "autumn",
-          "flooding"
-        ],
-        "freshness_keywords": [
-          "2026-10-12"
-        ],
-        "source_keywords": [
-          "BBC Science"
-        ],
-        "meta_title": "'Prepare for the unthinkable' warning over autumn flooding…",
-        "meta_description": "World report published by BBC Science on 2026-10-12. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-12",
-          "world news",
-          "global headlines",
-          "prepare",
-          "unthinkable",
-          "warning",
-          "over",
-          "autumn",
-          "flooding",
-          "'Prepare for the unthinkable' warning over autumn flooding 2026-10-12",
-          "world news October 2026",
-          "2026-10-12",
-          "BBC Science"
-        ],
-        "seo_generated_at": "2026-10-12T10:08:35.166Z"
-      }
-    },
-    {
-      "id": "9260364d",
-      "title": "Documents falsified to evade tax on Abramovich's wealth, BBC finds",
-      "url": "https://www.bbc.co.uk/news/articles/c64g1l5389kvo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-12T05:00:52.000Z",
-      "discovered_at": "2026-10-12T06:27:20.586Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-12. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/abc3/live/b06f9880-c621-11f1-bc2e-018d645d8d21.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/documents-falsified-to-evade-tax-on-abramovich-s-wealth-bbc-finds-926036/",
-      "landing_url": "https://matchapp.tv/?news=9260364d#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-12",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "documents",
-          "falsified",
-          "evade",
-          "tax",
-          "abramovich",
-          "wealth"
-        ],
-        "long_tail": [
-          "Documents falsified to evade tax on Abramovich's wealth, BBC finds 2026-10-12",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "documents",
-          "falsified",
-          "evade",
-          "tax",
-          "abramovich",
-          "wealth"
-        ],
-        "freshness_keywords": [
-          "2026-10-12"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Documents falsified to evade tax on Abramovich's wealth,…",
-        "meta_description": "World report published by BBC World on 2026-10-12. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-12",
-          "world news",
-          "global headlines",
-          "documents",
-          "falsified",
-          "evade",
-          "tax",
-          "abramovich",
-          "wealth",
-          "Documents falsified to evade tax on Abramovich's wealth, BBC finds 2026-10-12",
-          "world news October 2026",
-          "2026-10-12",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-12T10:08:35.166Z"
+        "seo_generated_at": "2026-10-12T13:28:12.771Z"
       }
     },
     {
@@ -1465,214 +2454,7 @@
           "g1.globo.com detonautas lanca dia criancas",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T10:08:35.166Z"
-      }
-    },
-    {
-      "id": "b4a8f0c3",
-      "title": "A nova onda de protestos de jovens do movimento das 'baratas' na Índia em imagens",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/12/a-nova-onda-de-protestos-de-jovens-do-movimento-das-baratas-na-india-em-imagens.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-12T03:00:01.000Z",
-      "discovered_at": "2026-10-12T06:27:20.586Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-12. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/JYB1c-KYXrN85p3oGoXrYAxoLMo=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/e/1/3QanO2TfW6nHFEtLCKnA/manifestante.png",
-      "matchapp_url": "https://matchapp.tv/news/articles/a-nova-onda-de-protestos-de-jovens-do-movimento-das-baratas-na-india-em-imagens-b4a8f0/",
-      "landing_url": "https://matchapp.tv/?news=b4a8f0c3#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-12",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "nova",
-          "onda",
-          "protestos",
-          "jovens",
-          "movimento",
-          "baratas"
-        ],
-        "long_tail": [
-          "A nova onda de protestos de jovens do movimento das 'baratas' na Índia em imagens 2026-10-12",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "nova",
-          "onda",
-          "protestos",
-          "jovens",
-          "movimento",
-          "baratas"
-        ],
-        "freshness_keywords": [
-          "2026-10-12"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "A nova onda de protestos de jovens do movimento das…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-12. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-12",
-          "notícias do mundo",
-          "notícias internacionais",
-          "nova",
-          "onda",
-          "protestos",
-          "jovens",
-          "movimento",
-          "baratas",
-          "A nova onda de protestos de jovens do movimento das 'baratas' na Índia em imagens 2026-10-12",
-          "notícias mundiais outubro 2026",
-          "2026-10-12",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-12T10:08:35.166Z"
-      }
-    },
-    {
-      "id": "1e0a4211",
-      "title": "'A Casa dos Segredos': a luxuosa mansão usada pelo Reino Unido para espionar generais nazistas e que mudou a história da 2ª Guerra Mundial",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/12/a-casa-dos-segredos-a-luxuosa-mansao-usada-pelo-reino-unido-para-espionar-generais-nazistas-e-que-mudou-a-historia-da-2a-guerra-mundial.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-12T03:00:00.000Z",
-      "discovered_at": "2026-10-12T06:27:20.586Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-12. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/kF0mA7qNrj-nNpxZtYgSv_hTX5c=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/A/y/xtwue0QA2xHJRxIilBnQ/foto-original-1200x800.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/a-casa-dos-segredos-a-luxuosa-mansao-usada-pelo-reino-unido-para-espionar-genera-1e0a42/",
-      "landing_url": "https://matchapp.tv/?news=1e0a4211#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-12",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "casa",
-          "segredos",
-          "luxuosa",
-          "mansao",
-          "usada",
-          "pelo"
-        ],
-        "long_tail": [
-          "'A Casa dos Segredos': a luxuosa mansão usada pelo Reino Unido para espionar generais nazistas e que mudou a história da 2ª Guerra Mundial 2026-10-12",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "casa",
-          "segredos",
-          "luxuosa",
-          "mansao",
-          "usada",
-          "pelo"
-        ],
-        "freshness_keywords": [
-          "2026-10-12"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "'A Casa dos Segredos': a luxuosa mansão usada pelo Reino…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-12. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-12",
-          "notícias do mundo",
-          "notícias internacionais",
-          "casa",
-          "segredos",
-          "luxuosa",
-          "mansao",
-          "usada",
-          "pelo",
-          "'A Casa dos Segredos': a luxuosa mansão usada pelo Reino Unido para espionar generais nazistas e que mudou a história da 2ª Guerra Mundial 2026-10-12",
-          "notícias mundiais outubro 2026",
-          "2026-10-12",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-12T10:08:35.166Z"
-      }
-    },
-    {
-      "id": "9de3998d",
-      "title": "Watch: Endangered orangutans released back into the wild after Borneo fires",
-      "url": "https://www.bbc.co.uk/news/videos/c6073z5rvrk3o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-11T23:48:25.000Z",
-      "discovered_at": "2026-10-11T23:56:08.840Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-11. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/352a/live/d99810b0-c5ff-11f1-b084-2bd4636c4658.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/watch-endangered-orangutans-released-back-into-the-wild-after-borneo-fires-9de399/",
-      "landing_url": "https://matchapp.tv/?news=9de3998d#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-11",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "watch",
-          "endangered",
-          "orangutans",
-          "released",
-          "back",
-          "into"
-        ],
-        "long_tail": [
-          "Watch: Endangered orangutans released back into the wild after Borneo fires 2026-10-11",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "watch",
-          "endangered",
-          "orangutans",
-          "released",
-          "back",
-          "into"
-        ],
-        "freshness_keywords": [
-          "2026-10-11"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Watch: Endangered orangutans released back into the wild…",
-        "meta_description": "World report published by BBC World on 2026-10-11. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-11",
-          "world news",
-          "global headlines",
-          "watch",
-          "endangered",
-          "orangutans",
-          "released",
-          "back",
-          "into",
-          "Watch: Endangered orangutans released back into the wild after Borneo fires 2026-10-11",
-          "world news October 2026",
-          "2026-10-11",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-12T10:08:35.166Z"
+        "seo_generated_at": "2026-10-12T13:28:12.771Z"
       }
     },
     {
@@ -1768,309 +2550,7 @@
           "bbc.co.uk Robert Pattinson",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T10:08:35.166Z"
-      }
-    },
-    {
-      "id": "623506d4",
-      "title": "Iconic Australian band Powderfinger announce first tour in 17 years",
-      "url": "https://www.bbc.co.uk/news/articles/c680zyx8gkkjo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-11T23:33:24.000Z",
-      "discovered_at": "2026-10-12T06:27:20.586Z",
-      "event_type": "Music",
-      "category": "world",
-      "person": "Iconic Australian",
-      "description": "World news reported by BBC World on 2026-10-11. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/7b81/live/4fbceb10-c5cb-11f1-80ee-03c5cf1148e2.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/iconic-australian-band-powderfinger-announce-first-tour-in-17-years-623506/",
-      "landing_url": "https://matchapp.tv/?news=623506d4#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-11",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "iconic",
-          "australian",
-          "band",
-          "powderfinger",
-          "announce",
-          "first"
-        ],
-        "long_tail": [
-          "Iconic Australian band Powderfinger announce first tour in 17 years 2026-10-11",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "iconic",
-          "australian",
-          "band",
-          "powderfinger",
-          "announce",
-          "first"
-        ],
-        "freshness_keywords": [
-          "2026-10-11"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Iconic Australian band Powderfinger announce first tour in…",
-        "meta_description": "World report published by BBC World on 2026-10-11. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-11",
-          "world news",
-          "global headlines",
-          "iconic",
-          "australian",
-          "band",
-          "powderfinger",
-          "announce",
-          "first",
-          "Iconic Australian band Powderfinger announce first tour in 17 years 2026-10-11",
-          "world news October 2026",
-          "2026-10-11",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-12T10:08:35.166Z"
-      }
-    },
-    {
-      "id": "70e57b00",
-      "title": "Jake Johnson Teases New Project With ‘New Girl’ Co-Star Damon Wayans Jr.",
-      "url": "https://www.hollywoodreporter.com/tv/tv-news/jake-johnson-new-project-new-girl-damon-wayans-jr-1236727360/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-10-11T23:23:19.000Z",
-      "discovered_at": "2026-10-11T23:56:08.840Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "Jake Johnson Teases New",
-      "description": "Jake Johnson Teases New: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/GettyImages-474033192.jpg?crop=0px%2C120px%2C3000px%2C1679px&resize=1440%2C810",
-      "matchapp_url": "https://matchapp.tv/news/articles/jake-johnson-teases-new-project-with-new-girl-co-star-damon-wayans-jr-70e57b/",
-      "landing_url": "https://matchapp.tv/?news=70e57b00#latest-news",
-      "seo": {
-        "primary_keyword": "ej johnson",
-        "short_tail": [
-          "Jake Johnson Teases New",
-          "Jake Johnson Teases New news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "ej johnson"
-        ],
-        "long_tail": [
-          "Jake Johnson Teases New latest news October 2026",
-          "Jake Johnson Teases New entertainment update 2026",
-          "Jake Johnson Teases New news 2026-10-11",
-          "latest entertainment news about Jake Johnson Teases New",
-          "jake johnson teases new jake johnson latest update",
-          "The Hollywood Reporter Jake Johnson Teases New entertainment",
-          "latest news about Jake Johnson Teases New October 2026",
-          "Jake Johnson Teases New entertainment news 2026-10-11",
-          "what happened with Jake Johnson Teases New"
-        ],
-        "trend_keywords": [
-          "ej johnson"
-        ],
-        "entity_keywords": [
-          "Jake Johnson Teases New",
-          "jake",
-          "johnson",
-          "teases",
-          "new"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-11",
-          "Jake Johnson Teases New 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter Jake Johnson Teases New",
-          "hollywoodreporter.com Jake Johnson Teases New",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "Jake Johnson Teases New Project With ‘New Girl’ Co-Star…",
-        "meta_description": "Jake Johnson Teases New: Entertainment update reported by The Hollywood Reporter on 2026-10-11. See verified context, publication time and the original…",
-        "keywords": [
-          "ej johnson",
-          "Jake Johnson Teases New",
-          "Jake Johnson Teases New news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "Jake Johnson Teases New latest news October 2026",
-          "Jake Johnson Teases New entertainment update 2026",
-          "Jake Johnson Teases New news 2026-10-11",
-          "latest entertainment news about Jake Johnson Teases New",
-          "jake johnson teases new jake johnson latest update",
-          "The Hollywood Reporter Jake Johnson Teases New entertainment",
-          "latest news about Jake Johnson Teases New October 2026",
-          "Jake Johnson Teases New entertainment news 2026-10-11",
-          "what happened with Jake Johnson Teases New",
-          "jake",
-          "johnson",
-          "teases",
-          "new",
-          "October 2026",
-          "2026-10-11",
-          "Jake Johnson Teases New 2026",
-          "The Hollywood Reporter Jake Johnson Teases New",
-          "hollywoodreporter.com Jake Johnson Teases New",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-12T10:08:35.166Z"
-      }
-    },
-    {
-      "id": "c85d70cd",
-      "title": "Trump faces growing backlash over plans to import diesel from Russia",
-      "url": "https://www.bbc.co.uk/news/articles/cjn5v21py07vo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-11T23:18:45.000Z",
-      "discovered_at": "2026-10-12T06:27:20.586Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-11. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/c44f/live/e68c78a0-c5c9-11f1-9042-5f0794d5e895.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/trump-faces-growing-backlash-over-plans-to-import-diesel-from-russia-c85d70/",
-      "landing_url": "https://matchapp.tv/?news=c85d70cd#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-11",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "trump",
-          "faces",
-          "growing",
-          "backlash",
-          "over",
-          "plans"
-        ],
-        "long_tail": [
-          "Trump faces growing backlash over plans to import diesel from Russia 2026-10-11",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "trump",
-          "faces",
-          "growing",
-          "backlash",
-          "over",
-          "plans"
-        ],
-        "freshness_keywords": [
-          "2026-10-11"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Trump faces growing backlash over plans to import diesel…",
-        "meta_description": "World report published by BBC World on 2026-10-11. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-11",
-          "world news",
-          "global headlines",
-          "trump",
-          "faces",
-          "growing",
-          "backlash",
-          "over",
-          "plans",
-          "Trump faces growing backlash over plans to import diesel from Russia 2026-10-11",
-          "world news October 2026",
-          "2026-10-11",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-12T10:08:35.166Z"
-      }
-    },
-    {
-      "id": "d969e173",
-      "title": "American ranchers wrestle with soaring costs - and their loyalty to Trump",
-      "url": "https://www.bbc.co.uk/news/articles/c6d7q5z17gp5o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-11T23:13:51.000Z",
-      "discovered_at": "2026-10-11T23:56:08.840Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-11. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/ef78/live/3cd40f10-c34b-11f1-9ef0-9f3abff8feb9.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/american-ranchers-wrestle-with-soaring-costs-and-their-loyalty-to-trump-d969e1/",
-      "landing_url": "https://matchapp.tv/?news=d969e173#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-11",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "american",
-          "ranchers",
-          "wrestle",
-          "soaring",
-          "costs",
-          "their"
-        ],
-        "long_tail": [
-          "American ranchers wrestle with soaring costs - and their loyalty to Trump 2026-10-11",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "american",
-          "ranchers",
-          "wrestle",
-          "soaring",
-          "costs",
-          "their"
-        ],
-        "freshness_keywords": [
-          "2026-10-11"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "American ranchers wrestle with soaring costs - and their…",
-        "meta_description": "World report published by BBC World on 2026-10-11. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-11",
-          "world news",
-          "global headlines",
-          "american",
-          "ranchers",
-          "wrestle",
-          "soaring",
-          "costs",
-          "their",
-          "American ranchers wrestle with soaring costs - and their loyalty to Trump 2026-10-11",
-          "world news October 2026",
-          "2026-10-11",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-12T10:08:35.166Z"
+        "seo_generated_at": "2026-10-12T13:28:12.771Z"
       }
     },
     {
@@ -2166,7 +2646,7 @@
           "g1.globo.com Morre Edson Silva",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T10:08:35.166Z"
+        "seo_generated_at": "2026-10-12T13:28:12.771Z"
       }
     },
     {
@@ -2260,7 +2740,7 @@
           "bbc.co.uk Sacha Baron Cohen",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T10:08:35.166Z"
+        "seo_generated_at": "2026-10-12T13:28:12.771Z"
       }
     },
     {
@@ -2356,7 +2836,7 @@
           "bbc.co.uk Dolly Parton's",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T10:08:35.166Z"
+        "seo_generated_at": "2026-10-12T13:28:12.771Z"
       }
     },
     {
@@ -2454,7 +2934,7 @@
           "g1.globo.com Maria Rita",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T10:08:35.166Z"
+        "seo_generated_at": "2026-10-12T13:28:12.771Z"
       }
     },
     {
@@ -2555,7 +3035,7 @@
           "g1.globo.com tom chega hoje aos",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T10:08:35.166Z"
+        "seo_generated_at": "2026-10-12T13:28:12.771Z"
       }
     },
     {
@@ -2654,7 +3134,7 @@
           "bbc.co.uk inside room what like",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T10:08:35.166Z"
+        "seo_generated_at": "2026-10-12T13:28:12.771Z"
       }
     },
     {
@@ -2752,7 +3232,7 @@
           "g1.globo.com Wagner Moura",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T10:08:35.166Z"
+        "seo_generated_at": "2026-10-12T13:28:12.771Z"
       }
     },
     {
@@ -2850,7 +3330,7 @@
           "g1.globo.com Marisa Monte",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T10:08:35.166Z"
+        "seo_generated_at": "2026-10-12T13:28:12.771Z"
       }
     },
     {
@@ -2951,504 +3431,7 @@
           "g1.globo.com minha globinho viva web",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T10:08:35.166Z"
-      }
-    },
-    {
-      "id": "94c91e6a",
-      "title": "Screams, haunting scenes and deadly hide-and-seek, as Celebrity Traitors heats up",
-      "url": "https://www.bbc.co.uk/news/articles/cwr5y3m59027o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GB",
-      "language": "en",
-      "published_at": "2026-10-10T11:46:35.000Z",
-      "discovered_at": "2026-10-10T01:12:11.442Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "",
-      "description": "entertainment headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/1b8f/live/377c04f0-c46d-11f1-85a0-5d7be70ae17d.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/screams-haunting-scenes-and-deadly-hide-and-seek-as-celebrity-traitors-heats-up-94c91e/",
-      "landing_url": "https://matchapp.tv/?news=94c91e6a#latest-news",
-      "seo": {
-        "primary_keyword": "screams haunting scenes deadly latest news",
-        "short_tail": [
-          "screams haunting scenes deadly",
-          "screams haunting scenes deadly news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "screams haunting scenes deadly latest news October 2026",
-          "screams haunting scenes deadly entertainment update 2026",
-          "screams haunting scenes deadly news 2026-10-10",
-          "latest entertainment news about screams haunting scenes deadly",
-          "screams haunting scenes deadly hide seek latest update",
-          "BBC screams haunting scenes deadly entertainment",
-          "latest news about screams haunting scenes deadly October 2026",
-          "screams haunting scenes deadly entertainment news 2026-10-10",
-          "what happened with screams haunting scenes deadly"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "screams",
-          "haunting",
-          "scenes",
-          "deadly",
-          "hide",
-          "seek",
-          "celebrity",
-          "traitors"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-10",
-          "screams haunting scenes deadly 2026"
-        ],
-        "source_keywords": [
-          "BBC screams haunting scenes deadly",
-          "bbc.co.uk screams haunting scenes deadly",
-          "BBC entertainment news"
-        ],
-        "meta_title": "Screams, haunting scenes and deadly hide-and-seek, as…",
-        "meta_description": "Entertainment update reported by BBC on 2026-10-10. See verified context, publication time and the original source via MatchApp Ai.",
-        "keywords": [
-          "screams haunting scenes deadly latest news",
-          "screams haunting scenes deadly",
-          "screams haunting scenes deadly news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "screams haunting scenes deadly latest news October 2026",
-          "screams haunting scenes deadly entertainment update 2026",
-          "screams haunting scenes deadly news 2026-10-10",
-          "latest entertainment news about screams haunting scenes deadly",
-          "screams haunting scenes deadly hide seek latest update",
-          "BBC screams haunting scenes deadly entertainment",
-          "latest news about screams haunting scenes deadly October 2026",
-          "screams haunting scenes deadly entertainment news 2026-10-10",
-          "what happened with screams haunting scenes deadly",
-          "screams",
-          "haunting",
-          "scenes",
-          "deadly",
-          "hide",
-          "seek",
-          "celebrity",
-          "traitors",
-          "October 2026",
-          "2026-10-10",
-          "screams haunting scenes deadly 2026",
-          "BBC screams haunting scenes deadly",
-          "bbc.co.uk screams haunting scenes deadly",
-          "BBC entertainment news"
-        ],
-        "seo_generated_at": "2026-10-12T10:08:35.166Z"
-      }
-    },
-    {
-      "id": "d2d7dbe5",
-      "title": "TV Globinho: veja que horas e como será a edição especial do programa",
-      "url": "https://g1.globo.com/pop-arte/tv-e-series/noticia/2026/10/10/tv-globinho-veja-que-horas-e-como-sera-a-edicao-especial-do-programa.ghtml",
-      "source": "G1",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "BR",
-      "language": "pt",
-      "published_at": "2026-10-10T10:33:31.000Z",
-      "discovered_at": "2026-10-10T14:40:56.970Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "TV Globinho",
-      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
-      "image": "https://s2-g1.glbimg.com/0_27aJOEfeONZ26uH-v7q3Kd4AY=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/A/F/v035P6TBAkrpEDy9NHvw/whatsapp-image-2026-10-01-at-14.41.36.jpeg",
-      "matchapp_url": "https://matchapp.tv/news/articles/tv-globinho-veja-que-horas-e-como-sera-a-edicao-especial-do-programa-d2d7db/",
-      "landing_url": "https://matchapp.tv/?news=d2d7dbe5#latest-news",
-      "seo": {
-        "primary_keyword": "TV Globinho últimas notícias",
-        "short_tail": [
-          "TV Globinho",
-          "TV Globinho news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje"
-        ],
-        "long_tail": [
-          "TV Globinho latest news October 2026",
-          "TV Globinho entertainment update 2026",
-          "TV Globinho news 2026-10-10",
-          "latest entertainment news about TV Globinho",
-          "globinho globinho veja que horas como latest update",
-          "G1 TV Globinho entertainment",
-          "últimas notícias sobre TV Globinho outubro 2026",
-          "TV Globinho notícia de 2026-10-10",
-          "o que aconteceu com TV Globinho"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "TV Globinho",
-          "globinho",
-          "veja",
-          "que",
-          "horas",
-          "como",
-          "sera",
-          "edicao"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-10",
-          "outubro 2026",
-          "TV Globinho 2026"
-        ],
-        "source_keywords": [
-          "G1 TV Globinho",
-          "g1.globo.com TV Globinho",
-          "G1 entertainment news"
-        ],
-        "meta_title": "TV Globinho: veja que horas e como será a edição especial…",
-        "meta_description": "TV Globinho: Notícia publicada por G1 em 2026-10-10. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
-        "keywords": [
-          "TV Globinho últimas notícias",
-          "TV Globinho",
-          "TV Globinho news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "TV Globinho latest news October 2026",
-          "TV Globinho entertainment update 2026",
-          "TV Globinho news 2026-10-10",
-          "latest entertainment news about TV Globinho",
-          "globinho globinho veja que horas como latest update",
-          "G1 TV Globinho entertainment",
-          "últimas notícias sobre TV Globinho outubro 2026",
-          "TV Globinho notícia de 2026-10-10",
-          "o que aconteceu com TV Globinho",
-          "globinho",
-          "veja",
-          "que",
-          "horas",
-          "como",
-          "sera",
-          "edicao",
-          "October 2026",
-          "2026-10-10",
-          "outubro 2026",
-          "TV Globinho 2026",
-          "G1 TV Globinho",
-          "g1.globo.com TV Globinho",
-          "G1 entertainment news"
-        ],
-        "seo_generated_at": "2026-10-12T10:08:35.166Z"
-      }
-    },
-    {
-      "id": "ee9efc0c",
-      "title": "Kbrum põe fé no reggae com o álbum 'Raggaleluia', lançado no embalo do feat com Anitta em funk de 'Equilibrium II'",
-      "url": "https://g1.globo.com/pop-arte/musica/blog/mauro-ferreira/post/2026/10/10/kbrum-poe-fe-no-reggae-com-o-album-raggaleluia-lancado-no-embalo-do-feat-com-anitta-em-funk-de-equilibrium-ii.ghtml",
-      "source": "G1",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "BR",
-      "language": "pt",
-      "published_at": "2026-10-10T07:00:00.000Z",
-      "discovered_at": "2026-10-10T07:42:28.554Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "",
-      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
-      "image": "https://s2-g1.glbimg.com/tkJD2lmfRzY9PuuSCDSJ8K77LaU=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/z/C/vy1U0HSJmoYg8j9dxABA/creditos-por-wander-scheeffer-kbrum-photoshoot-22.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/kbrum-poe-fe-no-reggae-com-o-album-raggaleluia-lancado-no-embalo-do-feat-com-ani-ee9efc/",
-      "landing_url": "https://matchapp.tv/?news=ee9efc0c#latest-news",
-      "seo": {
-        "primary_keyword": "kbrum poe reggae album últimas notícias",
-        "short_tail": [
-          "kbrum poe reggae album",
-          "kbrum poe reggae album news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje"
-        ],
-        "long_tail": [
-          "kbrum poe reggae album latest news October 2026",
-          "kbrum poe reggae album entertainment update 2026",
-          "kbrum poe reggae album news 2026-10-10",
-          "latest entertainment news about kbrum poe reggae album",
-          "kbrum poe reggae album raggaleluia lancado latest update",
-          "G1 kbrum poe reggae album entertainment",
-          "últimas notícias sobre kbrum poe reggae album outubro 2026",
-          "kbrum poe reggae album notícia de 2026-10-10",
-          "o que aconteceu com kbrum poe reggae album"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "kbrum",
-          "poe",
-          "reggae",
-          "album",
-          "raggaleluia",
-          "lancado",
-          "embalo",
-          "feat"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-10",
-          "outubro 2026",
-          "kbrum poe reggae album 2026"
-        ],
-        "source_keywords": [
-          "G1 kbrum poe reggae album",
-          "g1.globo.com kbrum poe reggae album",
-          "G1 entertainment news"
-        ],
-        "meta_title": "Kbrum põe fé no reggae com o álbum 'Raggaleluia', lançado…",
-        "meta_description": "Notícia publicada por G1 em 2026-10-10. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
-        "keywords": [
-          "kbrum poe reggae album últimas notícias",
-          "kbrum poe reggae album",
-          "kbrum poe reggae album news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "kbrum poe reggae album latest news October 2026",
-          "kbrum poe reggae album entertainment update 2026",
-          "kbrum poe reggae album news 2026-10-10",
-          "latest entertainment news about kbrum poe reggae album",
-          "kbrum poe reggae album raggaleluia lancado latest update",
-          "G1 kbrum poe reggae album entertainment",
-          "últimas notícias sobre kbrum poe reggae album outubro 2026",
-          "kbrum poe reggae album notícia de 2026-10-10",
-          "o que aconteceu com kbrum poe reggae album",
-          "kbrum",
-          "poe",
-          "reggae",
-          "album",
-          "raggaleluia",
-          "lancado",
-          "embalo",
-          "feat",
-          "October 2026",
-          "2026-10-10",
-          "outubro 2026",
-          "kbrum poe reggae album 2026",
-          "G1 kbrum poe reggae album",
-          "g1.globo.com kbrum poe reggae album",
-          "G1 entertainment news"
-        ],
-        "seo_generated_at": "2026-10-12T10:08:35.166Z"
-      }
-    },
-    {
-      "id": "1e931bdb",
-      "title": "Saiba como Giulia Be conheceu o herdeiro da família Kennedy",
-      "url": "https://g1.globo.com/pop-arte/noticia/2026/10/10/saiba-como-giulia-be-conheceu-o-herdeiro-da-familia-kennedy.ghtml",
-      "source": "G1",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "BR",
-      "language": "pt",
-      "published_at": "2026-10-10T03:10:00.000Z",
-      "discovered_at": "2026-10-10T07:42:28.554Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "",
-      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
-      "image": "https://s2-g1.glbimg.com/qjmDXyvgv61SW1V_qCBDV4uJ9CM=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/w/U/TsAasPRQyeYznAoYLd2w/imagem-cortada.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/saiba-como-giulia-be-conheceu-o-herdeiro-da-familia-kennedy-1e931b/",
-      "landing_url": "https://matchapp.tv/?news=1e931bdb#latest-news",
-      "seo": {
-        "primary_keyword": "saiba como giulia conheceu últimas notícias",
-        "short_tail": [
-          "saiba como giulia conheceu",
-          "saiba como giulia conheceu news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje"
-        ],
-        "long_tail": [
-          "saiba como giulia conheceu latest news October 2026",
-          "saiba como giulia conheceu entertainment update 2026",
-          "saiba como giulia conheceu news 2026-10-10",
-          "latest entertainment news about saiba como giulia conheceu",
-          "saiba como giulia conheceu herdeiro familia latest update",
-          "G1 saiba como giulia conheceu entertainment",
-          "últimas notícias sobre saiba como giulia conheceu outubro 2026",
-          "saiba como giulia conheceu notícia de 2026-10-10",
-          "o que aconteceu com saiba como giulia conheceu"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "saiba",
-          "como",
-          "giulia",
-          "conheceu",
-          "herdeiro",
-          "familia",
-          "kennedy"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-10",
-          "outubro 2026",
-          "saiba como giulia conheceu 2026"
-        ],
-        "source_keywords": [
-          "G1 saiba como giulia conheceu",
-          "g1.globo.com saiba como giulia conheceu",
-          "G1 entertainment news"
-        ],
-        "meta_title": "Saiba como Giulia Be conheceu o herdeiro da família…",
-        "meta_description": "Notícia publicada por G1 em 2026-10-10. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
-        "keywords": [
-          "saiba como giulia conheceu últimas notícias",
-          "saiba como giulia conheceu",
-          "saiba como giulia conheceu news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "saiba como giulia conheceu latest news October 2026",
-          "saiba como giulia conheceu entertainment update 2026",
-          "saiba como giulia conheceu news 2026-10-10",
-          "latest entertainment news about saiba como giulia conheceu",
-          "saiba como giulia conheceu herdeiro familia latest update",
-          "G1 saiba como giulia conheceu entertainment",
-          "últimas notícias sobre saiba como giulia conheceu outubro 2026",
-          "saiba como giulia conheceu notícia de 2026-10-10",
-          "o que aconteceu com saiba como giulia conheceu",
-          "saiba",
-          "como",
-          "giulia",
-          "conheceu",
-          "herdeiro",
-          "familia",
-          "kennedy",
-          "October 2026",
-          "2026-10-10",
-          "outubro 2026",
-          "saiba como giulia conheceu 2026",
-          "G1 saiba como giulia conheceu",
-          "g1.globo.com saiba como giulia conheceu",
-          "G1 entertainment news"
-        ],
-        "seo_generated_at": "2026-10-12T10:08:35.166Z"
-      }
-    },
-    {
-      "id": "49fc2e76",
-      "title": "US country music star Ella Langley cancels show due to 'security threat'",
-      "url": "https://www.bbc.co.uk/news/articles/cm79pdlywqd4o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GB",
-      "language": "en",
-      "published_at": "2026-10-10T02:02:54.000Z",
-      "discovered_at": "2026-10-10T07:42:28.554Z",
-      "event_type": "Music",
-      "category": "entertainment",
-      "person": "",
-      "description": "music headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/ab10/live/c3d14350-b6a0-11f1-bc1f-3f186ca4140c.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/us-country-music-star-ella-langley-cancels-show-due-to-security-threat-49fc2e/",
-      "landing_url": "https://matchapp.tv/?news=49fc2e76#latest-news",
-      "seo": {
-        "primary_keyword": "country music star ella latest news",
-        "short_tail": [
-          "country music star ella",
-          "country music star ella news",
-          "music",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "country music star ella latest news October 2026",
-          "country music star ella music update 2026",
-          "country music star ella news 2026-10-10",
-          "latest music news about country music star ella",
-          "country music star ella langley cancels latest update",
-          "BBC country music star ella music",
-          "latest news about country music star ella October 2026",
-          "country music star ella entertainment news 2026-10-10",
-          "what happened with country music star ella"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "country",
-          "music",
-          "star",
-          "ella",
-          "langley",
-          "cancels",
-          "show",
-          "due"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-10",
-          "country music star ella 2026"
-        ],
-        "source_keywords": [
-          "BBC country music star ella",
-          "bbc.co.uk country music star ella",
-          "BBC entertainment news"
-        ],
-        "meta_title": "US country music star Ella Langley cancels show due to…",
-        "meta_description": "Music update reported by BBC on 2026-10-10. See verified context, publication time and the original source via MatchApp Ai.",
-        "keywords": [
-          "country music star ella latest news",
-          "country music star ella",
-          "country music star ella news",
-          "music",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "country music star ella latest news October 2026",
-          "country music star ella music update 2026",
-          "country music star ella news 2026-10-10",
-          "latest music news about country music star ella",
-          "country music star ella langley cancels latest update",
-          "BBC country music star ella music",
-          "latest news about country music star ella October 2026",
-          "country music star ella entertainment news 2026-10-10",
-          "what happened with country music star ella",
-          "country",
-          "star",
-          "ella",
-          "langley",
-          "cancels",
-          "show",
-          "due",
-          "October 2026",
-          "2026-10-10",
-          "country music star ella 2026",
-          "BBC country music star ella",
-          "bbc.co.uk country music star ella",
-          "BBC entertainment news"
-        ],
-        "seo_generated_at": "2026-10-12T10:08:35.166Z"
+        "seo_generated_at": "2026-10-12T13:28:12.771Z"
       }
     },
     {
@@ -3538,7 +3521,7 @@
           "2026-10-09",
           "October 2026"
         ],
-        "seo_generated_at": "2026-10-12T10:08:35.166Z"
+        "seo_generated_at": "2026-10-12T13:28:12.771Z"
       }
     },
     {
@@ -3628,7 +3611,7 @@
           "2026-10-08",
           "October 2026"
         ],
-        "seo_generated_at": "2026-10-12T10:08:35.166Z"
+        "seo_generated_at": "2026-10-12T13:28:12.771Z"
       }
     }
   ]
