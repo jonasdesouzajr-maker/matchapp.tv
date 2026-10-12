@@ -2,6 +2,10 @@
 html.matchapp-ambient-frame,html.matchapp-ambient-frame body.ai-chat-page{height:100%!important;min-height:0!important;overflow:hidden!important;background:#140c21!important}
 html.matchapp-ambient-frame body.ai-chat-page{padding:0!important;margin:0!important}
 html.matchapp-ambient-frame body.ai-chat-page>:is(.app-header,.ma-trust,.luxury-bg,.ai-sidebar,.ai-sidebar-scrim,.ai-sidebar-toggle,.matchapp-ambient-jonas,.ma-cookie),html.matchapp-ambient-frame #ma-ambient-jonas{display:none!important}
+html.matchapp-ambient-frame body.ai-chat-page header.app-header.ma-global-header.ma-header-ready,
+html.matchapp-ambient-frame body.ai-chat-page main.wrap .discover-head #jonas-voice-stage,
+html.matchapp-ambient-frame body.ai-chat-page main.wrap .discover-head .discover-title-row,
+html.matchapp-ambient-frame body.ai-chat-page main.wrap .discover-head .ai-session-strip{display:none!important;height:0!important;min-height:0!important;padding:0!important;margin:0!important;border:0!important}
 html.matchapp-ambient-frame body.ai-chat-page main.wrap{display:flex!important;flex-direction:column!important;max-width:none!important;width:100%!important;height:100dvh!important;min-height:0!important;margin:0!important;padding:0!important;overflow:hidden!important}
 html.matchapp-ambient-frame .wrap>.discover-head{box-sizing:border-box!important;display:flex!important;flex-direction:column!important;flex:1 1 auto!important;min-height:0!important;max-height:100dvh!important;width:100%!important;margin:0!important;padding:6px 9px 8px!important;border:0!important;border-radius:0!important;box-shadow:none!important;background:#171026!important;--jonas-workspace-height:100dvh!important}
 html.matchapp-ambient-frame .discover-head>.discover-title-row,html.matchapp-ambient-frame .discover-head>.ai-session-strip,html.matchapp-ambient-frame .discover-head>.ma-ask-again,html.matchapp-ambient-frame .discover-head>.offline-badge{display:none!important}

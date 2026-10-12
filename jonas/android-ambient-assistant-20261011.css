@@ -2,7 +2,9 @@
    Never touches Kids, AdSense, Matching or the native Play Billing entitlement. */
 html.matchapp-ai-android #ma-jonas-home,
 html.matchapp-ai-android #matchapp-android-avatar-launcher,
-html.matchapp-ai-android #matchapp-android-avatar-spacer {display:none!important}
+html.matchapp-ai-android #matchapp-android-avatar-spacer,
+html.matchapp-ai-android body.ma-jonas-inline #ma-ai-entry,
+html.matchapp-ai-android #ma-jonas-inline-dock {display:none!important}
 #ma-ambient-jonas{--ja-gold:#f5d38f;--ja-ink:#1a1128;position:fixed;z-index:2147483200;left:auto;top:auto;right:16px;bottom:max(90px,env(safe-area-inset-bottom));width:78px;height:78px;pointer-events:auto;touch-action:none;isolation:isolate}
 #ma-ambient-jonas[hidden],#ma-ambient-panel[hidden]{display:none!important}
 #ma-ambient-jonas *{box-sizing:border-box}

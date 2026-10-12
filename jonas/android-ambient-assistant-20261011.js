@@ -11,6 +11,7 @@
  window.__matchappAmbientJonas=true;
  var asset='/jonas/android-ambient-assistant-20261011.css?live='+Date.now(),frame=null,panel=null,root=null,bubble=null;
  var open=false,epoch=0,ready=false,drag=null,skipClick=false,activeTitle='',helloTimer=0;
+ var greetStarted=0,greetingFinished=0,pendingListen=0,pendingCloud=0,restoreNativeState=null;
  var key='matchapp_jonas_ambient_position_v1';
  var labels={
   en:{hello:"Hi, I'm Jonas. How can I help?",subject:'I can tell you more about this title.',close:'Close Jonas chat',open:'Talk to Jonas',state:'Your conversation stays over this page'},
@@ -50,7 +51,10 @@
   var l=document.createElement('link');l.rel='stylesheet';l.href=asset;l.dataset.maAmbientStyle='1';(document.head||document.documentElement).appendChild(l);
  }
  function stopConversation(){
-  clearTimeout(helloTimer);epoch++;
+  clearTimeout(helloTimer);epoch++;pendingListen=0;pendingCloud=0;
+  if(restoreNativeState){window.matchAppNativeSpeechState=restoreNativeState.previous;restoreNativeState=null}
+  try{window.MatchAppNativeVoice?.stopSpeaking?.()}catch(_){}
+  try{frame?.contentWindow?.document?.activeElement?.blur?.()}catch(_){}
   try{frame?.contentWindow?.MatchAppVoiceControls?.stop?.()}catch(_){}
   try{frame?.contentWindow?.MatchAppJonasStage?.stop?.()}catch(_){}
   try{frame?.contentWindow?.MatchAppJonasSpeech?.stop?.()}catch(_){}
@@ -66,26 +70,87 @@
     if(!button.classList.contains('mic-listening'))button.click();
   }catch(_){}
  }
- function spokenGreeting(token){
-  if(!open||token!==epoch||!ready)return;
-  var fired=false;
-  function activate(){if(fired||!open||token!==epoch)return;fired=true;listen()}
-  var speech;
+ function restoreSpeakingCallback(){
+  if(!restoreNativeState)return;
+  window.matchAppNativeSpeechState=restoreNativeState.previous;
+  restoreNativeState=null;
+ }
+ function finishGreeting(token){
+  if(!open||token!==epoch||greetingFinished===token)return;
+  greetingFinished=token;
+  clearTimeout(helloTimer);restoreSpeakingCallback();pendingCloud=0;
+  if(!ready){pendingListen=token;return}
+  pendingListen=0;listen();
+ }
+ function cloudGreeting(token){
+  if(!open||token!==epoch)return;
+  clearTimeout(helloTimer);restoreSpeakingCallback();
+  if(!ready){pendingCloud=token;helloTimer=setTimeout(()=>finishGreeting(token),3600);return}
+  pendingCloud=0;
+  var voice;
   try{
    var w=frame.contentWindow;
    w.MatchAppJonasSpeech?.unlock?.();
-   speech=w.MatchAppJonasStage?.speak?.(greeting(),{autoListen:false,onComplete:activate});
+   voice=w.MatchAppJonasStage?.speak?.(locale().hello,{autoListen:false,onComplete:()=>finishGreeting(token)});
   }catch(_){}
-  if(!speech){helloTimer=setTimeout(activate,250);return}
-  // Only selected masculine synthesis is permitted by the established policy.
-  // If audio stalls or the user has no usable male voice, listening still starts.
-  helloTimer=setTimeout(activate,13500);
+  if(!voice){helloTimer=setTimeout(()=>finishGreeting(token),120);return}
+  // Network speech must not block the next microphone turn for twelve seconds.
+  helloTimer=setTimeout(()=>{
+   try{frame?.contentWindow?.MatchAppJonasStage?.stop?.()}catch(_){}
+   finishGreeting(token);
+  },4200);
+ }
+ function spokenGreeting(token){
+  if(!open||token!==epoch||greetStarted===token)return;
+  greetStarted=token;
+  var bridge=window.MatchAppNativeVoice;
+  if(!bridge?.speak){cloudGreeting(token);return}
+  var started=false,previous=window.matchAppNativeSpeechState;
+  restoreNativeState={previous:previous};
+  window.matchAppNativeSpeechState=function(active){
+   try{if(typeof previous==='function')previous(active)}catch(_){}
+   if(!open||token!==epoch)return;
+   if(active){
+    started=true;clearTimeout(helloTimer);
+    helloTimer=setTimeout(()=>{
+     try{bridge.stopSpeaking?.()}catch(_){}
+     finishGreeting(token);
+    },5500);
+   }else if(started){
+    finishGreeting(token);
+   }else{
+    cloudGreeting(token);
+   }
+  };
+  try{
+   // Native Android TTS is local and starts without a remote synthesis roundtrip.
+   // Kotlin refuses any voice whose masculine identity cannot be verified.
+   bridge.speak(locale().hello,String(window.MATCH_LANG||document.documentElement.lang||'en-US'));
+  }catch(_){cloudGreeting(token);return}
+  helloTimer=setTimeout(()=>{
+   if(!started&&open&&token===epoch){
+    try{bridge.stopSpeaking?.()}catch(_){}
+    cloudGreeting(token);
+   }
+  },1150);
  }
  function embedStyle(){
   if(!frame?.contentDocument)return;
   try{
    var doc=frame.contentDocument;
    doc.documentElement.classList.add('matchapp-ambient-frame');
+   // This embedded chat is not a second MatchApp page. Remove duplicate
+   // headers and the oversized voice-stage card, retaining their JS handlers.
+   // Inline !important takes precedence over late site layout injections.
+   function compactChrome(){
+     doc.querySelectorAll('header.app-header,#jonas-voice-stage,.discover-title-row,.ai-session-strip').forEach(function(el){
+       if(el.style.getPropertyValue('display')!=='none'||el.style.getPropertyPriority('display')!=='important')
+         el.style.setProperty('display','none','important');
+     });
+   }
+   compactChrome();
+   // The scoped stylesheet also hides these nodes after late layout scripts.
+   // Avoid observing style mutations: site layout routines update them often.
    if(!doc.querySelector('link[data-ma-ambient-embed]')){
      var sheet=doc.createElement('link');sheet.rel='stylesheet';sheet.dataset.maAmbientEmbed='1';
      sheet.href='/jonas/android-ambient-embed-20261011.css?live='+Date.now();doc.head.appendChild(sheet);
@@ -95,7 +160,10 @@
  function onFrameLoad(){
   try{if(frame.contentWindow.location.origin!==location.origin||frame.contentWindow.location.pathname!=='/discover.html')return}catch(_){return}
   ready=true;embedStyle();panel.querySelector('.ja-hello').textContent=greeting();
-  if(open)spokenGreeting(epoch);
+  if(!open)return;
+  if(pendingCloud===epoch){cloudGreeting(epoch);return}
+  if(pendingListen===epoch){pendingListen=0;listen();return}
+  spokenGreeting(epoch);
  }
  function frameUrl(title){
   var u=new URL('/discover.html',location.origin);u.searchParams.set('ambient','1');
@@ -126,7 +194,9 @@
   // Otherwise the existing iframe remains alive, retaining conversation state.
   if(!frame||frame.dataset.title!==activeTitle){
     createFrame(activeTitle);frame.dataset.title=activeTitle;
-  }else if(ready)spokenGreeting(epoch);
+  }
+  // Speech starts on the tap, not after loading the chat iframe.
+  spokenGreeting(epoch);
   document.addEventListener('keydown',escapeKey);
  }
  function closePanel(){
@@ -151,8 +221,18 @@
    window[fn]=function(value){return handleNative(kind,value,prev)};
   });
  }
+ function removeLegacyJonas(){
+  // One assistant entry point on Android, never an additional home/inline dock.
+  if(location.pathname!=='/' && location.pathname!=='/index.html')return;
+  document.querySelectorAll('#ma-ai-entry,#ma-jonas-inline-dock,#ma-jonas-home,.ma-jonas-web-entry,#matchapp-android-avatar-launcher').forEach(function(el){
+    el.style.setProperty('display','none','important');
+    el.setAttribute('aria-hidden','true');
+  });
+ }
  function build(){
   css();
+  removeLegacyJonas();
+  document.addEventListener('matchapp:authchange',removeLegacyJonas);
   root=document.createElement('div');root.id='ma-ambient-jonas';
   root.innerHTML='<button type="button" class="ja-bubble" aria-label="Talk to Jonas" aria-haspopup="dialog"><img src="/jonas/faces/jonas/rest.jpg" alt=""><span class="ja-live" aria-hidden="true"></span></button>';
   bubble=root.firstElementChild;
@@ -183,6 +263,8 @@
   window.addEventListener('pagehide',stopConversation);
   window.addEventListener('matchapp:language-changed',function(){bubble.ariaLabel=locale().open});
   routeNative();restore();
+  // Keep Jonas dormant/lightweight. Native greeting happens on tap while
+  // the single conversation frame initializes only when the user opens it.
   window.MatchAppAmbientJonas=Object.freeze({open:openPanel,close:closePanel,getContext:contextTitle,isOpen:()=>open});
  }
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',build,{once:true});else build();

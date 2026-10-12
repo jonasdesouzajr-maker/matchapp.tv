@@ -2016,8 +2016,21 @@ async function runAskAndRender(question, opts) {
         if (voiceOrigin && String(payload.answer || '').trim()) {
             const narration=window.MatchAppJonasNarration;
             if (window.MatchAppJonasStage?.speak) {
-                narration?.prepare?.(bubble.textEl,payload.answer);
-                window.MatchAppJonasStage.speak(payload.answer,{
+                const ambient = window.top !== window &&
+                    new URLSearchParams(location.search).get('ambient') === '1';
+                const fullReply = String(payload.answer || '').trim();
+                // The card and entire answer appear immediately. For floating
+                // voice turns, speak a short natural excerpt instead of waiting
+                // for cloud synthesis of a 650-character monologue.
+                let audibleReply = fullReply;
+                if (ambient && fullReply.length > 280) {
+                    const first = fullReply.slice(0,280).replace(/\s+/g,' ');
+                    const endings = [first.lastIndexOf('. '),first.lastIndexOf('! '),first.lastIndexOf('? ')];
+                    const last = Math.max(...endings);
+                    audibleReply = last >= 110 ? first.slice(0,last+1) : first;
+                }
+                narration?.prepare?.(bubble.textEl,fullReply,ambient?audibleReply.length:650);
+                window.MatchAppJonasStage.speak(audibleReply,{
                     autoListen:true,
                     onProgress:p=>narration?.advance?.(p),
                     onComplete:()=>narration?.finish?.()
@@ -2027,7 +2040,12 @@ async function runAskAndRender(question, opts) {
                 window.readAloud(payload.answer, bubble.speakBtn);
             }
         } else {
-            await typewriterReveal(bubble.textEl,payload.answer,8);
+            // The compact Jonas overlay behaves like a live conversation:
+            // show the finished reply at once, without a per-character delay.
+            const ambient = window.top !== window &&
+                new URLSearchParams(location.search).get('ambient') === '1';
+            if (ambient) bubble.textEl.textContent = payload.answer;
+            else await typewriterReveal(bubble.textEl,payload.answer,8);
         }
     }
 

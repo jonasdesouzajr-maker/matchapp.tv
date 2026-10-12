@@ -726,7 +726,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun speakVoiceText(text: String?, languageTag: String?) {
         val current = runCatching { Uri.parse(web.url.orEmpty()) }.getOrNull()
-        if (current == null || !isMatchAppHost(current.host.orEmpty())) {
+        if (current == null ||
+            (!isMatchAppHost(current.host.orEmpty()) && !isDebugSmokeUrl(current.toString()))) {
             sendVoiceError("not-allowed")
             return
         }

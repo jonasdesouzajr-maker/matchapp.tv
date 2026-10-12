@@ -8,19 +8,21 @@ function scene(route='/',enabled=true){
  const dom=new JSDOM('<!doctype html><html lang="en"><head></head><body><main><div id="result-box" style="display:block"><h2 id="res-title">Some Documentary</h2></div><section id="original-page">Original page stays visible</section></main></body></html>',{url:'https://matchapp.tv'+route,runScripts:'outside-only'});
  const w=dom.window;w.__MATCHAPP_AMBIENT_QA__=enabled;w.currentMatchIdentity={title:'Some Documentary'};
  w.innerWidth=384;w.innerHeight=780;
- let stopped=0;w.MatchAppNativeVoice={stop(){stopped++}};
+ let stopped=0,spoken=[];w.MatchAppNativeVoice={stop(){stopped++},stopSpeaking(){},speak(text,lang){spoken.push({text,lang})}};
  w.eval(src);w.document.dispatchEvent(new w.Event('DOMContentLoaded'));
- return {w,dom,stops:()=>stopped};
+ return {w,dom,stops:()=>stopped,spoken:()=>spoken};
 }
 test('never auto-inserts Jonas into public website or Kids Mode',()=>{
  const publicWeb=scene('/',false);assert.equal(publicWeb.w.document.querySelector('#ma-ambient-jonas'),null);publicWeb.dom.window.close();
  const kids=scene('/kids/',true);assert.equal(kids.w.document.querySelector('#ma-ambient-jonas'),null);kids.dom.window.close();
 });
 test('fixed bubble opens same-origin source-backed title conversation without navigating the result page',()=>{
- const {w,dom,stops}=scene();const root=w.document.getElementById('ma-ambient-jonas'),bubble=root.querySelector('.ja-bubble');
+ const {w,dom,stops,spoken}=scene();const root=w.document.getElementById('ma-ambient-jonas'),bubble=root.querySelector('.ja-bubble');
  assert.ok(root&&bubble);assert.equal(w.MatchAppAmbientJonas.getContext(),'Some Documentary');
  bubble.click();let panel=w.document.getElementById('ma-ambient-panel');
  assert.equal(panel.hidden,false);assert.equal(root.hidden,true);
+ assert.equal(spoken().length,1,'native greeting must start on bubble tap');
+ assert.match(spoken()[0].text,/Jonas/i);
  const iframe=panel.querySelector('iframe');
  assert.equal(new URL(iframe.src).origin,'https://matchapp.tv');
  assert.equal(new URL(iframe.src).searchParams.get('title'),'Some Documentary');
@@ -46,4 +48,15 @@ test('native wrapper loads remotely editable same-origin script and can cancel m
  assert.match(kotlin,/fun stop\(\)\s*\{/);
  assert.match(kotlin,/inlineVoiceRecognizer\?\.cancel\(\)/);
  assert.match(kotlin,/android-ambient-assistant-20261011\.js\?live=/);
+ const css=fs.readFileSync(path.join(root,'jonas','android-ambient-assistant-20261011.css'),'utf8');
+ assert.match(css,/html\.matchapp-ai-android body\.ma-jonas-inline #ma-ai-entry/);
+ assert.match(css,/transform-origin:var\(--ja-origin-x/);
+ const embed=fs.readFileSync(path.join(root,'jonas','android-ambient-embed-20261011.css'),'utf8');
+ assert.match(embed,/header\.app-header\.ma-global-header/);
+ assert.match(embed,/#jonas-voice-stage/);
+ assert.doesNotMatch(src,/13500|new MutationObserver|Warm the authenticated same-origin chat/);
+ assert.match(src,/spokenGreeting\(epoch\)/);
+ const discover=fs.readFileSync(path.join(root,'discover.js'),'utf8');
+ assert.match(discover,/ambient\?audibleReply\.length:650/);
+ assert.match(discover,/if \(ambient\) bubble\.textEl\.textContent = payload\.answer/);
 });
