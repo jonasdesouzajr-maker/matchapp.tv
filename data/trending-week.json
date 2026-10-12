@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
   "weekOf": "2026-10-12",
-  "updated": "2026-10-12T10:46:22.183Z",
+  "updated": "2026-10-12T11:32:00.110Z",
   "label": "Latest titles trending right now",
   "sourceNote": "Movie and TV positions refresh from MatchApp’s current TMDB daily trend metadata; verified official music-video releases from monitored top-artist channels refresh daily with release dates, YouTube view counts, direct links, keywords and structured metadata. Availability can vary by country.",
   "titles": [
@@ -265,11 +265,11 @@
       "artist": "Bruno Mars",
       "songTitle": "Dance With Me",
       "publishedAt": "2026-10-01T16:00:04+00:00",
-      "viewCount": 11389234,
-      "viewCountCheckedAt": "2026-10-11",
+      "viewCount": 12080630,
+      "viewCountCheckedAt": "2026-10-12",
       "channel": "Bruno Mars",
       "channelUrl": "https://www.youtube.com/@brunomars",
-      "description": "Official Bruno Mars music video for “Dance With Me”, released on YouTube 2026-10-01 with 11,389,234 verified views at the latest daily check.",
+      "description": "Official Bruno Mars music video for “Dance With Me”, released on YouTube 2026-10-01 with 12,080,630 verified views at the latest daily check.",
       "genre": [
         "Music video"
       ],
@@ -295,7 +295,7 @@
       ],
       "seo": {
         "title": "Bruno Mars — Dance With Me official music video | MatchApp Ai",
-        "description": "Official Bruno Mars music video for “Dance With Me”, released on YouTube 2026-10-01 with 11,389,234 verified views at the latest daily check.",
+        "description": "Official Bruno Mars music video for “Dance With Me”, released on YouTube 2026-10-01 with 12,080,630 verified views at the latest daily check.",
         "keywords": [
           "Bruno Mars",
           "Dance With Me",
@@ -652,11 +652,11 @@
       "artist": "Taylor Swift",
       "songTitle": "Patient Zero",
       "publishedAt": "2026-09-29T22:00:19+00:00",
-      "viewCount": 18032193,
-      "viewCountCheckedAt": "2026-10-11",
+      "viewCount": 18638188,
+      "viewCountCheckedAt": "2026-10-12",
       "channel": "Taylor Swift",
       "channelUrl": "https://www.youtube.com/@TaylorSwift",
-      "description": "Official Taylor Swift music video for “Patient Zero”, released on YouTube 2026-09-29 with 18,032,193 verified views at the latest daily check.",
+      "description": "Official Taylor Swift music video for “Patient Zero”, released on YouTube 2026-09-29 with 18,638,188 verified views at the latest daily check.",
       "genre": [
         "Music video"
       ],
@@ -683,7 +683,7 @@
       ],
       "seo": {
         "title": "Taylor Swift — Patient Zero official music video | MatchApp Ai",
-        "description": "Official Taylor Swift music video for “Patient Zero”, released on YouTube 2026-09-29 with 18,032,193 verified views at the latest daily check.",
+        "description": "Official Taylor Swift music video for “Patient Zero”, released on YouTube 2026-09-29 with 18,638,188 verified views at the latest daily check.",
         "keywords": [
           "Taylor Swift",
           "Patient Zero",
@@ -1060,11 +1060,11 @@
       "artist": "BTS",
       "songTitle": "Merry Go Round",
       "publishedAt": "2026-09-25T15:00:01+00:00",
-      "viewCount": 10283474,
-      "viewCountCheckedAt": "2026-10-11",
+      "viewCount": 10394796,
+      "viewCountCheckedAt": "2026-10-12",
       "channel": "BANGTANTV",
       "channelUrl": "https://www.youtube.com/@BTS",
-      "description": "Official BTS music video for “Merry Go Round”, released on YouTube 2026-09-25 with 10,283,474 verified views at the latest daily check.",
+      "description": "Official BTS music video for “Merry Go Round”, released on YouTube 2026-09-25 with 10,394,796 verified views at the latest daily check.",
       "genre": [
         "Music video"
       ],
@@ -1090,7 +1090,7 @@
       ],
       "seo": {
         "title": "BTS — Merry Go Round official music video | MatchApp Ai",
-        "description": "Official BTS music video for “Merry Go Round”, released on YouTube 2026-09-25 with 10,283,474 verified views at the latest daily check.",
+        "description": "Official BTS music video for “Merry Go Round”, released on YouTube 2026-09-25 with 10,394,796 verified views at the latest daily check.",
         "keywords": [
           "BTS",
           "Merry Go Round",
