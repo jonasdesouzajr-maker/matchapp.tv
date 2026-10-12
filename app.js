@@ -1882,6 +1882,37 @@ window.eventMatch = function (query) {
                 };
                 vp.addEventListener('pointerup',finishGesture,{passive:true});
                 vp.addEventListener('pointercancel',finishGesture,{passive:true});
+                if(ANDROID_KINETIC){
+                    // Android often sends pointercancel when native scrolling takes
+                    // over. Track the real touch samples independently so the
+                    // fling strength survives and still respects OS scrolling.
+                    let touchFling=null;
+                    vp.addEventListener('touchstart',event=>{
+                        const t=event.touches[0];if(!t)return;
+                        touchFling={x:t.clientX,y:t.clientY,lastX:t.clientX,at:performance.now(),speed:0,moved:false};
+                    },{passive:true});
+                    vp.addEventListener('touchmove',event=>{
+                        if(!touchFling)return;
+                        const t=event.touches[0];if(!t)return;
+                        const now=performance.now(),dt=Math.max(1,now-touchFling.at);
+                        if(Math.abs(t.clientX-touchFling.x)>7)touchFling.moved=true;
+                        if(dt>=8){
+                            const velocity=Math.max(-1.9,Math.min(1.9,(touchFling.lastX-t.clientX)/dt));
+                            touchFling.speed=touchFling.speed*.35+velocity*.65;
+                        }
+                        touchFling.lastX=t.clientX;touchFling.at=now;
+                    },{passive:true});
+                    const endTouch=()=>{
+                        if(touchFling?.moved){
+                            kineticSpeed=Math.max(-1.9,Math.min(1.9,touchFling.speed));
+                            nativeMomentumUntil=performance.now()+320;
+                            swipeUntil=Date.now()+450;
+                        }
+                        touchFling=null;
+                    };
+                    vp.addEventListener('touchend',endTouch,{passive:true});
+                    vp.addEventListener('touchcancel',()=>{touchFling=null},{passive:true});
+                }
                 vp.addEventListener('click',e=>{
                     if(Date.now()<swipeUntil&&e.target.closest?.('.marquee-item')){
                         e.preventDefault();e.stopImmediatePropagation();
