@@ -1,6 +1,8 @@
 package com.jonas.papercup
 
 import android.app.Activity
+import android.os.Looper
+import android.util.Log
 import android.view.View
 import android.widget.FrameLayout
 import android.widget.LinearLayout
@@ -35,6 +37,29 @@ class AdMobController(
     private var entitlementAdFree = true
     private var bannerRequestStarted = false
     private var bannerLoaded = false
+    private var destroyed = false
+    private var adInitFailed = false
+    private var bannerGeneration = 0
+
+    // UMP callbacks, native ad surfaces and visibility belong to the UI thread.
+    // A dismissed consent sheet must never update a destroyed Activity.
+    private fun withLiveActivity(action: () -> Unit) {
+        val safe = {
+            if (!destroyed && !activity.isFinishing && !activity.isDestroyed) action()
+        }
+        if (Looper.myLooper() == Looper.getMainLooper()) safe()
+        else activity.runOnUiThread { safe() }
+    }
+
+    private fun suppressAds(error: Throwable) {
+        Log.e("MatchAppAdConsent", "Native advertising was suspended; app remains usable", error)
+        withLiveActivity {
+            adInitFailed = true
+            clearBanner()
+            privacyButton.visibility = View.GONE
+            updateShellVisibility()
+        }
+    }
 
     fun start() {
         shell.visibility = View.GONE
@@ -42,14 +67,20 @@ class AdMobController(
         if (!BuildConfig.ADMOB_ENABLED || BuildConfig.ADMOB_BANNER_ID.isBlank()) return
 
         privacyButton.setOnClickListener {
-            if (entitlementAdFree) return@setOnClickListener
-            UserMessagingPlatform.showPrivacyOptionsForm(activity) {
-                updatePrivacyUi()
-                if (consentInformation.canRequestAds()) {
-                    reloadBannerAfterPrivacyChange()
-                } else {
-                    clearBanner()
+            if (entitlementAdFree || !isConsentUiAvailable()) return@setOnClickListener
+            try {
+                UserMessagingPlatform.showPrivacyOptionsForm(activity) {
+                    withLiveActivity {
+                        updatePrivacyUi()
+                        if (consentInformation.canRequestAds()) {
+                            bannerContainer.postDelayed({
+                                withLiveActivity { reloadBannerAfterPrivacyChange() }
+                            }, 350L)
+                        } else clearBanner()
+                    }
                 }
+            } catch (error: RuntimeException) {
+                suppressAds(error)
             }
         }
     }
@@ -59,8 +90,17 @@ class AdMobController(
      * resolves the authenticated profile. Guests/free accounts explicitly open
      * the UMP flow, so a slow login can never flash an ad to a paying member.
      */
+    private fun isConsentUiAvailable(): Boolean =
+        !destroyed && !activity.isFinishing && !activity.isDestroyed
+
     fun setAdFree(adFree: Boolean) {
-        if (!BuildConfig.ADMOB_ENABLED || BuildConfig.ADMOB_BANNER_ID.isBlank()) return
+        if (!BuildConfig.ADMOB_ENABLED || BuildConfig.ADMOB_BANNER_ID.isBlank() || destroyed) return
+        // NativeExperience bridge normally dispatches on the UI thread; reject
+        // asynchronous re-entry without racing the consent sheet's lifecycle.
+        if (Looper.myLooper() != Looper.getMainLooper()) {
+            withLiveActivity { setAdFree(adFree) }
+            return
+        }
         entitlementAdFree = adFree
         if (adFree) {
             privacyButton.visibility = View.GONE
@@ -78,75 +118,121 @@ class AdMobController(
     }
 
     private fun startConsentFlow() {
-        if (consentFlowStarted || entitlementAdFree) return
+        if (consentFlowStarted || entitlementAdFree || !isConsentUiAvailable()) return
         consentFlowStarted = true
-        val requestParameters = ConsentRequestParameters.Builder().build()
-
-        consentInformation.requestConsentInfoUpdate(
-            activity,
-            requestParameters,
-            {
-                updatePrivacyUi()
-                // A previous-session decision may already permit an ad request.
-                maybeRequestAds()
-                UserMessagingPlatform.loadAndShowConsentFormIfRequired(activity) {
-                    updatePrivacyUi()
-                    maybeRequestAds()
+        try {
+            val requestParameters = ConsentRequestParameters.Builder().build()
+            consentInformation.requestConsentInfoUpdate(
+                activity,
+                requestParameters,
+                {
+                    withLiveActivity {
+                        updatePrivacyUi()
+                        // Previously saved consent can permit ads before a form appears.
+                        maybeRequestAds()
+                        try {
+                            UserMessagingPlatform.loadAndShowConsentFormIfRequired(activity) {
+                                // Do not construct AdView in the same frame as
+                                // the consent dialog's dismissal on Samsung WebView.
+                                withLiveActivity {
+                                    updatePrivacyUi()
+                                    bannerContainer.postDelayed({
+                                        withLiveActivity { maybeRequestAds() }
+                                    }, 350L)
+                                }
+                            }
+                        } catch (error: RuntimeException) {
+                            suppressAds(error)
+                        }
+                    }
+                },
+                {
+                    withLiveActivity {
+                        // A failed refresh never silently grants permission.
+                        updatePrivacyUi()
+                        maybeRequestAds()
+                    }
                 }
-            },
-            {
-                // A transient consent-info refresh failure must not discard a still-valid
-                // consent state from an earlier session.
-                updatePrivacyUi()
-                maybeRequestAds()
-            }
-        )
+            )
+        } catch (error: RuntimeException) {
+            suppressAds(error)
+        }
     }
 
     private fun maybeRequestAds() {
-        if (!BuildConfig.ADMOB_ENABLED || entitlementAdFree || adsInitialized || !consentInformation.canRequestAds()) return
-        adsInitialized = true
+        if (!isConsentUiAvailable() || !BuildConfig.ADMOB_ENABLED ||
+            entitlementAdFree || adsInitialized || adInitFailed ||
+            !consentInformation.canRequestAds()
+        ) return
+        adsInitialized = true // Claim single init before launching the worker.
         Thread {
-            MobileAds.initialize(activity) {
-                activity.runOnUiThread { loadBanner() }
+            try {
+                // Google recommends background initialization to avoid ANRs.
+                MobileAds.initialize(activity.applicationContext) {
+                    withLiveActivity {
+                        if (!entitlementAdFree && consentInformation.canRequestAds()) loadBanner()
+                    }
+                }
+            } catch (error: RuntimeException) {
+                suppressAds(error)
+            } catch (error: LinkageError) {
+                suppressAds(error)
             }
         }.start()
     }
 
     private fun loadBanner() {
-        if (entitlementAdFree || bannerRequestStarted || !consentInformation.canRequestAds()) return
+        if (!isConsentUiAvailable() || entitlementAdFree || bannerRequestStarted ||
+            adInitFailed || !consentInformation.canRequestAds()
+        ) return
         bannerRequestStarted = true
+        val generation = ++bannerGeneration
         bannerContainer.post {
-            val density = activity.resources.displayMetrics.density
-            val widthPixels = bannerContainer.width.takeIf { it > 0 }
-                ?: activity.resources.displayMetrics.widthPixels
-            val widthDp = (widthPixels / density).toInt().coerceAtLeast(1)
-            val adaptiveSize =
-                AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(activity, widthDp)
+            if (!isConsentUiAvailable() || entitlementAdFree ||
+                adInitFailed || !consentInformation.canRequestAds() ||
+                generation != bannerGeneration
+            ) {
+                if (generation == bannerGeneration) bannerRequestStarted = false
+                return@post
+            }
+            try {
+                val density = activity.resources.displayMetrics.density
+                val widthPixels = bannerContainer.width.takeIf { it > 0 }
+                    ?: activity.resources.displayMetrics.widthPixels
+                val widthDp = (widthPixels / density).toInt().coerceAtLeast(1)
+                val adaptiveSize =
+                    AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(activity, widthDp)
 
-            val nextAdView = AdView(activity).apply {
-                adUnitId = BuildConfig.ADMOB_BANNER_ID
-                setAdSize(adaptiveSize)
-                adListener = object : AdListener() {
-                    override fun onAdLoaded() {
-                        bannerLoaded = true
-                        updateShellVisibility()
-                    }
-
-                    override fun onAdFailedToLoad(error: LoadAdError) {
-                        bannerRequestStarted = false
-                        bannerLoaded = false
-                        bannerContainer.removeAllViews()
-                        updateShellVisibility()
+                val nextAdView = AdView(activity).apply {
+                    adUnitId = BuildConfig.ADMOB_BANNER_ID
+                    setAdSize(adaptiveSize)
+                    adListener = object : AdListener() {
+                        override fun onAdLoaded() {
+                            if (generation != bannerGeneration || destroyed) return
+                            bannerLoaded = true
+                            updateShellVisibility()
+                        }
+                        override fun onAdFailedToLoad(error: LoadAdError) {
+                            if (generation != bannerGeneration || destroyed) return
+                            bannerLoaded = false
+                            bannerRequestStarted = false
+                            // Avoid destroying the view while its callback is executing.
+                            bannerContainer.post { if (generation == bannerGeneration && !destroyed) clearBanner() }
+                        }
                     }
                 }
+                adView?.destroy()
+                adView = nextAdView
+                bannerContainer.removeAllViews()
+                bannerContainer.addView(nextAdView)
+                nextAdView.loadAd(AdRequest.Builder().build())
+            } catch (error: RuntimeException) {
+                bannerRequestStarted = false
+                suppressAds(error)
+            } catch (error: LinkageError) {
+                bannerRequestStarted = false
+                suppressAds(error)
             }
-
-            adView?.destroy()
-            adView = nextAdView
-            bannerContainer.removeAllViews()
-            bannerContainer.addView(nextAdView)
-            nextAdView.loadAd(AdRequest.Builder().build())
         }
     }
 
@@ -160,9 +246,10 @@ class AdMobController(
     }
 
     private fun clearBanner() {
+        bannerGeneration++ // Invalidate delayed callbacks after privacy changes.
         bannerLoaded = false
         bannerRequestStarted = false
-        adView?.destroy()
+        runCatching { adView?.destroy() }
         adView = null
         bannerContainer.removeAllViews()
         updateShellVisibility()
@@ -183,14 +270,16 @@ class AdMobController(
     }
 
     fun pause() {
-        adView?.pause()
+        if (!destroyed) runCatching { adView?.pause() }.onFailure { suppressAds(it) }
     }
 
     fun resume() {
-        adView?.resume()
+        if (!destroyed) runCatching { adView?.resume() }.onFailure { suppressAds(it) }
     }
 
     fun destroy() {
+        if (destroyed) return
+        destroyed = true
         clearBanner()
         privacyButton.setOnClickListener(null)
     }
