@@ -655,6 +655,25 @@ async function enrichDiscoverMedia(item) {
     // never a promise that a particular narrator/edition is available.
     if (isAudio || isBook) { delete item._catalogMedia; delete item._tmdb; }
     if (isAudio || isBook || !window.MatchAppCatalogMedia?.lookup) return unverified();
+    // An exact, source-verified documentary carries its requested streaming
+    // region. Do not replace that country with the site's generic locale or
+    // perform a fuzzy second title lookup after the TMDB ID was pinned.
+    const docRegion = String(item._verifiedDocRegion || '').toUpperCase();
+    const pinnedDoc = item._catalogMedia;
+    const docStreams = pinnedDoc?.availability?.[docRegion]?.stream;
+    if (/^[A-Z]{2}$/.test(docRegion) && pinnedDoc?.media_kind === 'tv' &&
+        Number.isSafeInteger(Number(pinnedDoc.tmdb_id)) &&
+        Array.isArray(pinnedDoc.genres) &&
+        pinnedDoc.genres.some(g => String(g).toLowerCase().trim() === 'documentary') &&
+        Array.isArray(docStreams) && docStreams.length) {
+        if (pinnedDoc.year) item.year = pinnedDoc.year;
+        if (pinnedDoc.overview) { item.synopsis = pinnedDoc.overview; item.synopsisLang = 'en'; }
+        item.realGenres = pinnedDoc.genres.slice(0, 8);
+        item._viewing = window.MatchAppCatalogMedia.viewingTarget?.(pinnedDoc, item.title, docRegion) || null;
+        item._availabilityVerified = item._viewing?.mode === 'stream' && !!item._viewing.href;
+        item.platform = item._availabilityVerified ? item._viewing.provider : '';
+        return item;
+    }
     try {
         const rawType = String(item.type || '').toLowerCase();
         const kind = /movie|film/.test(rawType) ? 'movie' : (/series|tv|show|drama|anime|novela|documentary/.test(rawType) ? 'tv' : '');
@@ -1145,7 +1164,7 @@ async function hydrateDiscoverCard(item, idx) {
     }
     const availabilityHost = document.getElementById('discover-availability-' + idx);
     if (item._catalogMedia && window.MatchAppCatalogMedia?.renderAvailability) {
-        window.MatchAppCatalogMedia.renderAvailability(availabilityHost, item._catalogMedia, { title: item.title });
+        window.MatchAppCatalogMedia.renderAvailability(availabilityHost, item._catalogMedia, { title: item.title, region: item._verifiedDocRegion || '' });
     }
     const previewHost = document.getElementById('discover-preview-' + idx);
     if (item._catalogMedia && window.MatchAppCatalogMedia?.renderPreview) {
@@ -1841,9 +1860,20 @@ async function runAskAndRender(question, opts) {
     const cookingIntent = !!window.MatchCooking?.isCooking(question);
     let payload, musicPayload, source = 'ai';
     try {
-        musicPayload = await window.MatchAppMusicReleases?.query(question, history);
-        if (musicPayload) payload = musicPayload;
-        else payload = await askAIConversational(question, history);
+        // Documentary television-series requests require a real TV genre and
+        // country-specific provider listing. Never bill or display prose-only
+        // AI guesses as if they were verified programme recommendations.
+        if (window.MatchAppVerifiedDocumentaries?.matches?.(question)) {
+            payload = await window.MatchAppVerifiedDocumentaries.resolve(question, {
+                lang: window.MATCH_LANG || 'en',
+                country: localStorage.getItem('match_user_country') || ''
+            });
+            source = 'verified-documentary-series';
+        } else {
+            musicPayload = await window.MatchAppMusicReleases?.query(question, history);
+            if (musicPayload) payload = musicPayload;
+            else payload = await askAIConversational(question, history);
+        }
     }
     catch (e) { payload = cookingIntent ? {answer: /^pt/i.test(window.MATCH_LANG||'') ? 'A IA está indisponível agora. Explore abaixo as receitas e os vídeos originais dos criadores.' : 'AI is unavailable right now. Explore the original cooking sources and videos below.', results:[], _live:false} : await fallbackSearch(question, !!e.aiUnavailable); source = 'fallback'; }
 
@@ -1856,6 +1886,7 @@ async function runAskAndRender(question, opts) {
     const wantsTitleRecommendations = !isFactualMediaQuestion(question) &&
         /\b(?:watch|recommend|suggest|stream|movie|movies|film|films|series|shows?|podcast|playlist|music|listen|similar|comedy|horror|romance|recommendation|assistir|filmes?|séries?|recomendar|recomende|indique|películas?)\b/i.test(mediaIntentQuestion(question));
     if (!bookIntent && !cookingIntent && wantsTitleRecommendations && !musicPayload &&
+        !payload?._docVerified &&
         (!payload?._live || !String(payload.answer || '').trim()) &&
         (!Array.isArray(payload?.results) || payload.results.length === 0)) {
         const local = catalogFallbackForQuestion(question);
@@ -1934,10 +1965,10 @@ async function runAskAndRender(question, opts) {
     }
 
     const offlineBadge = document.getElementById('discover-offline-badge');
-    if (offlineBadge) offlineBadge.style.display = payload._live || musicPayload ? 'none' : 'inline-flex';
+    if (offlineBadge) offlineBadge.style.display = payload._live || musicPayload || payload?._docVerified ? 'none' : 'inline-flex';
 
     const bubble = appendAssistantBubble(payload.answer, bookIntent ? [] : (payload.results || []), { instant: false });
-    if(payload?._live !== true && !musicPayload && bubble?.wrap){
+    if(payload?._live !== true && !musicPayload && !payload?._docVerified && bubble?.wrap){
         const notice=document.createElement('strong');
         notice.setAttribute('role','status');
         notice.textContent=window.matchRecoveryHeading?.() || 'TEMPORARY INTERRUPTION — PLEASE TRY AGAIN SHORTLY.';
@@ -1985,8 +2016,21 @@ async function runAskAndRender(question, opts) {
         if (voiceOrigin && String(payload.answer || '').trim()) {
             const narration=window.MatchAppJonasNarration;
             if (window.MatchAppJonasStage?.speak) {
-                narration?.prepare?.(bubble.textEl,payload.answer);
-                window.MatchAppJonasStage.speak(payload.answer,{
+                const ambient = window.top !== window &&
+                    new URLSearchParams(location.search).get('ambient') === '1';
+                const fullReply = String(payload.answer || '').trim();
+                // The card and entire answer appear immediately. For floating
+                // voice turns, speak a short natural excerpt instead of waiting
+                // for cloud synthesis of a 650-character monologue.
+                let audibleReply = fullReply;
+                if (ambient && fullReply.length > 280) {
+                    const first = fullReply.slice(0,280).replace(/\s+/g,' ');
+                    const endings = [first.lastIndexOf('. '),first.lastIndexOf('! '),first.lastIndexOf('? ')];
+                    const last = Math.max(...endings);
+                    audibleReply = last >= 110 ? first.slice(0,last+1) : first;
+                }
+                narration?.prepare?.(bubble.textEl,fullReply,ambient?audibleReply.length:650);
+                window.MatchAppJonasStage.speak(audibleReply,{
                     autoListen:true,
                     onProgress:p=>narration?.advance?.(p),
                     onComplete:()=>narration?.finish?.()
@@ -1996,7 +2040,12 @@ async function runAskAndRender(question, opts) {
                 window.readAloud(payload.answer, bubble.speakBtn);
             }
         } else {
-            await typewriterReveal(bubble.textEl,payload.answer,8);
+            // The compact Jonas overlay behaves like a live conversation:
+            // show the finished reply at once, without a per-character delay.
+            const ambient = window.top !== window &&
+                new URLSearchParams(location.search).get('ambient') === '1';
+            if (ambient) bubble.textEl.textContent = payload.answer;
+            else await typewriterReveal(bubble.textEl,payload.answer,8);
         }
     }
 
@@ -2014,7 +2063,7 @@ async function runAskAndRender(question, opts) {
             newItems = [enrichDiscoverItem(displayItem, question)];
     }
     if (!bookIntent && wantsTitleRecommendations && !newItems.length && !musicPayload &&
-        !payload?._live && window.matchPolicy && typeof CONTENT_CATALOG !== 'undefined') {
+        !payload?._live && window.matchPolicy && !payload?._docVerified && typeof CONTENT_CATALOG !== 'undefined') {
         newItems = CONTENT_CATALOG
             .filter(e => e && e.title && !isDiscoverDisliked(e.title) && window.matchPolicy.fitsQuestion(e, question))
             .slice(0, 6)

@@ -22,14 +22,15 @@
   }
   return pieces.filter(Boolean);
  }
- function prepare(element,text){
+ function prepare(element,text,spokenLimit=650){
   finish();
   if(!element)return null;
   element.replaceChildren();
-  // Voice service currently speaks at most 650 characters. Highlight only what
-  // was actually spoken; never mark the remaining response as narrated.
+  // Only highlight speech actually requested from TTS, never long text that
+  // the compact assistant displayed but has not spoken.
   const full=String(text||'');
-  const spoken=full.trim().slice(0,650);
+  const maxSpoken=Number.isFinite(spokenLimit)?Math.max(1,Math.min(650,Math.round(spokenLimit))):650;
+  const spoken=full.trim().slice(0,maxSpoken);
   const lines=split(spoken),nodes=[];
   for(const part of lines){
    const node=document.createElement('span');

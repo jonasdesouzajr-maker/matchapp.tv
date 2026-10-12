@@ -101,6 +101,16 @@ function initVoiceInput(inputId,micBtnId,onFinalTranscript){
     input.placeholder=originalPlaceholder;
     if(wasListening)voiceEvent('matchapp:voice-state',{state:'idle'});
   }
+  if(inputId==='discover-new-input'){
+    // Called only by the same-origin Android Jonas conversation overlay when
+    // closing. Stop immediately, no new request or credit debit.
+    window.MatchAppVoiceControls=Object.freeze({stop:()=>{
+      cancelled=true;
+      try{recognition?.abort()}catch(_){}
+      recognition=null;
+      finish();
+    }});
+  }
   function begin(){
     if(enhanced){prefix=input.value.trim();finalText='';interimText='';cancelled=false;}
     listening=true;
