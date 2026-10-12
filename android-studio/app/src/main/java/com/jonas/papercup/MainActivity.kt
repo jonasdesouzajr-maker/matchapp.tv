@@ -538,6 +538,30 @@ class MainActivity : AppCompatActivity() {
         )
     }
 
+    private fun debugAmbientPreview(url: String): WebResourceResponse? {
+        // Debug APK alone can preview unreleased Jonas UI while visiting the
+        // actual first-party origin; release/AAB bundles never ship these assets.
+        if (!BuildConfig.DEBUG) return null
+        val uri = runCatching { Uri.parse(url) }.getOrNull() ?: return null
+        if (uri.scheme != "https" || !isMatchAppHost(uri.host.orEmpty())) return null
+        val relative = when (uri.path.orEmpty()) {
+            "/jonas/android-ambient-assistant-20261011.js" -> "jonas/android-ambient-assistant-20261011.js"
+            "/jonas/android-ambient-assistant-20261011.css" -> "jonas/android-ambient-assistant-20261011.css"
+            "/jonas/android-ambient-embed-20261011.css" -> "jonas/android-ambient-embed-20261011.css"
+            "/jonas/narrated-transcript-20261011.js" -> "jonas/narrated-transcript-20261011.js"
+            "/voice-input.js" -> "voice-input.js"
+            "/discover.js" -> "discover.js"
+            else -> return null
+        }
+        return runCatching {
+            val mime = if (relative.endsWith(".css")) "text/css" else "application/javascript"
+            WebResourceResponse(mime, "UTF-8", assets.open("ambient-preview/$relative")).apply {
+                responseHeaders = mapOf("Cache-Control" to "no-store",
+                    "Access-Control-Allow-Origin" to "https://matchapp.tv")
+            }
+        }.getOrNull()
+    }
+
     private inner class MatchClient : WebViewClient() {
         override fun shouldOverrideUrlLoading(view: WebView, request: WebResourceRequest): Boolean {
             if (isAdultAiDocument(request.url)) view.settings.cacheMode = WebSettings.LOAD_NO_CACHE
@@ -552,12 +576,12 @@ class MainActivity : AppCompatActivity() {
         }
 
         override fun shouldInterceptRequest(view: WebView, request: WebResourceRequest): WebResourceResponse? {
-            return AdBlocker.intercept(request.url.toString())
+            return debugAmbientPreview(request.url.toString()) ?: AdBlocker.intercept(request.url.toString())
         }
 
         @Deprecated("Deprecated in Java")
         override fun shouldInterceptRequest(view: WebView, url: String): WebResourceResponse? {
-            return AdBlocker.intercept(url)
+            return debugAmbientPreview(url) ?: AdBlocker.intercept(url)
         }
 
         override fun onPageStarted(view: WebView, url: String?, favicon: Bitmap?) {
