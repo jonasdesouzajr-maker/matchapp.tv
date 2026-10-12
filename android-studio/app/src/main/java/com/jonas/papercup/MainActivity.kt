@@ -75,6 +75,7 @@ class MainActivity : AppCompatActivity() {
     private var lastUrl = HOME
     private var voiceTts: TextToSpeech? = null
     private var voiceTtsReady = false
+    private var currentVoiceText = ""
     private var pendingVoiceUtterance: Pair<String, String?>? = null
 
     // Web UI (including the responsive Avatar Studio) is shared with matchapp.tv.
@@ -133,6 +134,13 @@ class MainActivity : AppCompatActivity() {
             if (voiceTtsReady) {
                 voiceTts?.setOnUtteranceProgressListener(object : UtteranceProgressListener() {
                     override fun onStart(utteranceId: String?) = sendVoiceSpeakingState(true)
+                    override fun onRangeStart(utteranceId: String?, start: Int, end: Int, frame: Int) {
+                        if (utteranceId != "matchapp-ai-reply") return
+                        val snapshot = currentVoiceText
+                        if (start >= 0 && end > start && end <= snapshot.length) {
+                            sendVoiceWordRange(snapshot.substring(start, end).take(35))
+                        }
+                    }
                     override fun onDone(utteranceId: String?) = sendVoiceSpeakingState(false)
                     @Deprecated("Deprecated in Java")
                     override fun onError(utteranceId: String?) = sendVoiceSpeakingState(false)
@@ -773,6 +781,17 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun sendVoiceWordRange(fragment: String) {
+        if (!::web.isInitialized || fragment.isBlank()) return
+        // Only actual TTS word timing is forwarded; no synthetic phoneme clock.
+        runOnUiThread {
+            web.evaluateJavascript(
+                "window.matchAppNativeSpeechWord&&window.matchAppNativeSpeechWord(" +
+                    JSONObject.quote(fragment) + ");", null
+            )
+        }
+    }
+
     private fun speakVoiceText(text: String?, languageTag: String?) {
         val current = runCatching { Uri.parse(web.url.orEmpty()) }.getOrNull()
         if (current == null ||
@@ -800,6 +819,7 @@ class MainActivity : AppCompatActivity() {
             return
         }
         engine.setSpeechRate(0.98f)
+        currentVoiceText = value
         engine.speak(value, TextToSpeech.QUEUE_FLUSH, null, "matchapp-ai-reply")
     }
 
@@ -953,6 +973,7 @@ class MainActivity : AppCompatActivity() {
         fun stopSpeaking() {
             runOnUiThread {
                 pendingVoiceUtterance = null
+                currentVoiceText = ""
                 voiceTts?.stop()
                 sendVoiceSpeakingState(false)
             }
