@@ -13,13 +13,13 @@ const el=document.createElement('section');
 el.id='jonas-voice-stage';
 el.className='jonas-voice-stage';
 el.setAttribute('aria-label','Jonas speaking avatar');
-el.innerHTML='<div class="jds-portrait" aria-hidden="true"><img class="jds-rest" src="'+base+'rest.jpg" alt=""><img class="jds-expression" src="'+base+'smile.jpg" alt="" aria-hidden="true"><img class="jds-mouth" alt="" aria-hidden="true"><img class="jds-eyes" src="'+base+'blink.jpg" alt="" aria-hidden="true"><span class="jds-halo"></span></div>'+
+el.innerHTML='<div class="jds-portrait" aria-hidden="true"><img class="jds-rest" src="'+base+'rest.jpg" alt=""><img class="jds-expression" src="'+base+'smile.jpg" alt="" aria-hidden="true"><img class="jds-mouth" alt="" aria-hidden="true"><img class="jds-mouth jds-mouth-next" alt="" aria-hidden="true"><img class="jds-eyes" src="'+base+'blink.jpg" alt="" aria-hidden="true"><span class="jds-halo"></span></div>'+
 '<div class="jds-copy"><strong>Jonas <span class="jds-indicator" aria-hidden="true"></span></strong><span class="jds-state" id="jds-state" role="status" aria-live="polite"></span></div>'+
 '<button type="button" id="jds-microphone" class="jds-mic" aria-label="Speak with Jonas" title="Speak with Jonas"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="2.5" width="6" height="12" rx="3"/><path d="M5 10.5a7 7 0 0 0 14 0M12 17.5V22M8 22h8"/></svg></button>';
 home.insertBefore(el,log);
-const mouth=el.querySelector('.jds-mouth'),eyes=el.querySelector('.jds-eyes'),status=el.querySelector('.jds-state'),mic=el.querySelector('#jds-microphone');
+const mouth=el.querySelector('.jds-mouth'),mouthNext=el.querySelector('.jds-mouth-next'),eyes=el.querySelector('.jds-eyes'),status=el.querySelector('.jds-state'),mic=el.querySelector('#jds-microphone');
 let active=false,timer=0,raf=0,voiceTurn=new URLSearchParams(location.search).get('from')==='jonas',level=0,frame='rest';
-let meterLevel=0,meterAt=0,lastFrameAt=0,silenceAt=0,blinkTimer=0,blinkCloseTimer=0;
+let meterLevel=0,meterAt=0,lastFrameAt=0,silenceAt=0,blinkTimer=0,blinkCloseTimer=0,frontMouth=mouth;
 const SILENCE_GATE=.022,PHRASE_PAUSE_MS=175,FRAME_HOLD_MS=100;
 const reducedMotion=window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches||false;
 const words={
@@ -42,12 +42,23 @@ function labels(){const l=String(window.MATCH_LANG||document.documentElement.lan
 function change(state){el.dataset.state=state;status.textContent=labels()[{idle:0,speaking:1,listening:2,thinking:3}[state]??0];mic.setAttribute('aria-pressed',String(state==='listening'))}
 function showFrame(name){
  if(frame===name)return;
- let i=frames[name];
- if(!i||!i.complete||!i.naturalWidth)return;
+ const image=frames[name];
+ if(name!=='rest'&&(!image||!image.complete||!image.naturalWidth))return;
  frame=name;
- if(name==='rest'){mouth.style.opacity='0';return}
- mouth.src=i.src;
- mouth.style.opacity='1';
+ if(name==='rest'){
+  mouth.style.opacity='0';mouthNext.style.opacity='0';
+  return;
+ }
+ // Crossfade two preloaded, mouth-only facial images. Never replace a
+ // visible bitmap in place: that produces the abrupt face-region flashing.
+ const next=frontMouth===mouth?mouthNext:mouth,prev=frontMouth;
+ next.src=image.src;
+ next.style.opacity='0';
+ // Reflow the small overlay only on phoneme changes, never the whole portrait.
+ void next.offsetWidth;
+ next.style.opacity='1';
+ prev.style.opacity='0';
+ frontMouth=next;
 }
 function animate(now){
  if(!active)return;
@@ -72,20 +83,21 @@ function animate(now){
 }
 function scheduleBlink(){
  clearTimeout(blinkTimer);
- if(reducedMotion)return;
- // Longer, unpatterned breaks between natural, brief eyelid closures.
- const delay=(el.dataset.state==='speaking'?3500:2800)+Math.random()*2800;
+ // No motion at all in text/idle mode; eyelids animate only with real speech.
+ if(reducedMotion||el.dataset.state!=='speaking'||document.hidden)return;
+ const delay=2800+Math.random()*3000;
  blinkTimer=setTimeout(function(){
-  if(!document.hidden && eyes?.complete && eyes.naturalWidth){
+  if(el.dataset.state==='speaking'&&!document.hidden&&eyes?.complete&&eyes.naturalWidth){
    eyes.style.opacity='1';
    clearTimeout(blinkCloseTimer);
-   blinkCloseTimer=setTimeout(()=>{eyes.style.opacity='0'},145);
+   blinkCloseTimer=setTimeout(()=>{eyes.style.opacity='0'},170);
   }
   scheduleBlink();
  },delay);
 }
 function stopMotion(){
  active=false;cancelAnimationFrame(raf);raf=0;
+ clearTimeout(blinkTimer);clearTimeout(blinkCloseTimer);eyes.style.opacity='0';
  level=0;meterLevel=0;meterAt=0;silenceAt=0;lastFrameAt=0;
  showFrame('rest');el.style.setProperty('--jds-pulse','0');
  el.style.setProperty('--jds-head-y','0px');
@@ -93,7 +105,7 @@ function stopMotion(){
 }
 function beginSpeaking(){
  clearTimeout(timer);stopMotion();
- active=true;change('speaking');raf=requestAnimationFrame(animate);
+ active=true;change('speaking');scheduleBlink();raf=requestAnimationFrame(animate);
 }
 function endSpeaking(auto){
  stopMotion();change('idle');
@@ -142,5 +154,4 @@ document.addEventListener('matchapp:langchange',()=>change(el.dataset.state||'id
 document.addEventListener('matchapp:languagechange',()=>change(el.dataset.state||'idle'));
 window.MatchAppJonasStage={speak,stop:()=>{clearTimeout(timer);window.MatchAppJonasSpeech?.stop?.();endSpeaking(false)},activateVoice:()=>{voiceTurn=true},el};
 change('idle');
-scheduleBlink();
 })();
