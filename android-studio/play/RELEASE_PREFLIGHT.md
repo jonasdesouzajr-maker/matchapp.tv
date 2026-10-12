@@ -1,5 +1,12 @@
 # MatchApp Ai adult app â€” Play Console release checklist
 
+## October 12, 2026 Android UI candidate — 1.1.51 (code 51)
+- Changes: approved metallic adaptive launcher icon; native TTS word-boundary timing for Jonas greeting; remote-editable Jonas composer, bubble drag, spoken avatar and Top Titles kinetic glide.
+- Keep the existing package `com.jonas.papercup`, AdMob consent and signing certificate. Never publish unsigned CI output.
+- Before production: verify Play Console highest active/uploaded version code is below 51, use protected upload keystore, test signed bundle through Play on a real device, verify icon mask, voice start/fallback, mic permissions, carousel momentum and no crashes. Confirm production track and rollout separately.
+
+
+
 ## October 7, 2026 publication candidate
 - Adult release candidate is **1.1.38 (code 42)**, package **com.jonas.papercup**, compile/target API 36.
 - Code 42 supersedes the already-uploaded code 41 candidate. Do not reuse code 41 for the new publication.
