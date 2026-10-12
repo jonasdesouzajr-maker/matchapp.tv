@@ -36,7 +36,7 @@
  function flushDrag(){dragRaf=0;if(!drag||!drag.moved)return;var v=viewport();var nx=clamp(drag.x+drag.dx,8,Math.max(8,v.width-84)),ny=clamp(drag.y+drag.dy,8,Math.max(8,v.height-84));root.style.transform='translate3d('+(nx-drag.x)+'px,'+(ny-drag.y)+'px,0)';}
  function stopDragFrame(){if(dragRaf){cancelAnimationFrame(dragRaf);dragRaf=0;}}
  function stopFling(){if(flingRaf){cancelAnimationFrame(flingRaf);flingRaf=0;var rect=root.getBoundingClientRect();root.style.transform='';setPosition(rect.left,rect.top);}}
- function coastBubble(fromX,fromY,toX,toY,ms){
+ function coastBubble(fromX,fromY,toX,toY,ms,dragStartX,dragStartY){
    var begin=0;
    function coast(now){
      if(!begin)begin=now;
@@ -45,8 +45,8 @@
      if(t<1)flingRaf=requestAnimationFrame(coast);
      else{flingRaf=0;root.style.transform='';setPosition(toX,toY);store()}
    }
-   // Drag's origin is the CSS left/top, so motion stays GPU-composited.
-   var dragStartX=parseFloat(root.style.left)||0,dragStartY=parseFloat(root.style.top)||0;
+   // The original bubble can be positioned using right/bottom rather than
+   // left/top; always use the measured drag origin, never parseStyle(auto).
    flingRaf=requestAnimationFrame(coast);
  }
  function store(){try{var r=root.getBoundingClientRect(),v=viewport();localStorage.setItem(key,JSON.stringify({x:r.left/Math.max(1,v.width-76),y:r.top/Math.max(1,v.height-76)}))}catch(_){}}
@@ -346,7 +346,7 @@ html.matchapp-ai-android #ma-jonas-home,html.matchapp-ai-android #matchapp-andro
       var toX=clamp(x+drag.vx*155,8,Math.max(8,v.width-84));
       var toY=clamp(y+drag.vy*155,8,Math.max(8,v.height-84));
       if(impulse>.12&&Math.hypot(toX-x,toY-y)>4)
-        coastBubble(x,y,toX,toY,clamp(impulse*250,180,420));
+        coastBubble(x,y,toX,toY,clamp(impulse*250,180,420),drag.x,drag.y);
       else{root.style.transform='';setPosition(x,y);store();}
       skipClick=true;
       setTimeout(function(){skipClick=false},480);
