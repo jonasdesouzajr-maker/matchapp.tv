@@ -47,3 +47,18 @@ test('Top Titles uses velocity-responsive continuation only in Android',()=>{
  assert.match(js,/drag\.speed/);
  assert.match(js,/const MARQUEE_AUTO_MS=4200/);
 });
+
+test('Android voice timing drives stable Jonas speech-only mouth animation',()=>{
+ const native=read('android-studio/app/src/main/java/com/jonas/papercup/MainActivity.kt');
+ const ambient=read('jonas/android-ambient-assistant-20261011.js');
+ const css=read('jonas/android-ambient-assistant-20261011.css');
+ assert.match(native,/override fun onRangeStart\(/);
+ assert.match(native,/sendVoiceWordRange\(/);
+ assert.match(native,/JSONObject\.quote\(fragment\)/);
+ assert.match(ambient,/matchAppNativeSpeechWord/);
+ assert.match(ambient,/ja-mouth-a/);
+ assert.match(ambient,/ja-mouth-b/);
+ assert.match(ambient,/function faceSpeech\(/);
+ assert.match(css,/\[data-speaking="1"\]/);
+ assert.match(css,/ja-natural-breathe/);
+});
