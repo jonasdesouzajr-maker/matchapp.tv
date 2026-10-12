@@ -16,7 +16,7 @@
   }
   // Capture multiword names spoken without quotation marks (e.g. a TV
   // title containing a hyphen). Exact source identity is still required below.
-  const capitalized=/\b([A-Z][\p{L}\d]*(?:[-’'][A-Z\d][\p{L}\d]*)?(?:\s+(?:[A-Z][\p{L}\d]*(?:[-’'][A-Z\d][\p{L}\d]*)?|and|of|the)){1,4})\b/gu;
+  const capitalized=/\b([A-Z][\p{L}\d]*(?:[-’'][A-Za-z\d][\p{L}\d]*)?(?:\s+(?:[A-Z][\p{L}\d]*(?:[-’'][A-Za-z\d][\p{L}\d]*)?|and|of|the)){1,4})\b/gu;
   for(const m of text.matchAll(capitalized)){add(m[1]);for(const part of m[1].split(/\s+(?:and|or)\s+/))add(part);if(names.length>=10)break}
   // Conservative title-cased fallback for plain spoken prose: exact lookup
   // will reject phrases that aren't an actual movie or series identity.

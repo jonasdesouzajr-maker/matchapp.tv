@@ -49,3 +49,9 @@ test('filtered cards keep their original Watch Later and dismiss action indices'
  await ctx.renderResultsInto(grid,[{title:'Dark Crime',type:'series'},{title:'Ted Lasso',type:'series'}],4);
  assert.match(grid.innerHTML,/data-index="5"/);assert.doesNotMatch(grid.innerHTML,/Dark Crime/);dom.window.close();
 });
+
+test('spoken possessive titles retain their exact identity',async()=>{
+ const title="Schitt's Creek";const window={MatchAppCatalogMedia:{lookup:async name=>name===title?{title,media_kind:'tv',genres:['Comedy']}:null}};
+ vm.runInNewContext(read('jonas/title-card-presentation-20261011.js'),{window});
+ const cards=await window.MatchAppJonasTitlePresentation.fromAnswers("Schitt's Creek is a warm comedy.");assert.equal(cards[0]?.title,title);
+});
