@@ -1,10 +1,456 @@
 {
-  "generated_at": "2026-10-12T02:24:36.526Z",
-  "feed_version": "633da056",
+  "generated_at": "2026-10-12T06:27:20.586Z",
+  "feed_version": "817f184c",
   "sports_updated_at": "2026-10-12T02:24:30.318Z",
   "source_policy": "direct-trusted-publisher-rss+google-trends-keyword-signals",
   "seo_policy": "per-story keyword snapshot at first discovery + source citation + stable archive",
   "items": [
+    {
+      "id": "fd3b2bfe",
+      "title": "China impõe sanções a ministros do Paraguai e de Belize por relações com Taiwan",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/12/china-sancoes-paraguai-belize.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-12T05:29:10.000Z",
+      "discovered_at": "2026-10-12T06:27:20.586Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-12. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/UP3UlCVBTAp7-NN4ApftQsO3ZXI=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/k/X/BriymrRT64pWWRj8IgxA/2026-05-12t155628z-719402366-rc2k7laws077-rtrmadp-3-taiwan-dailylife.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/china-impoe-sancoes-a-ministros-do-paraguai-e-de-belize-por-relacoes-com-taiwan-fd3b2b/",
+      "landing_url": "https://matchapp.tv/?news=fd3b2bfe#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-12",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "china",
+          "impoe",
+          "sancoes",
+          "ministros",
+          "paraguai",
+          "belize"
+        ],
+        "long_tail": [
+          "China impõe sanções a ministros do Paraguai e de Belize por relações com Taiwan 2026-10-12",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "china",
+          "impoe",
+          "sancoes",
+          "ministros",
+          "paraguai",
+          "belize"
+        ],
+        "freshness_keywords": [
+          "2026-10-12"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "China impõe sanções a ministros do Paraguai e de Belize…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-12. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-12",
+          "notícias do mundo",
+          "notícias internacionais",
+          "china",
+          "impoe",
+          "sancoes",
+          "ministros",
+          "paraguai",
+          "belize",
+          "China impõe sanções a ministros do Paraguai e de Belize por relações com Taiwan 2026-10-12",
+          "notícias mundiais outubro 2026",
+          "2026-10-12",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-12T06:27:20.586Z"
+      }
+    },
+    {
+      "id": "532401ef",
+      "title": "'Prepare for the unthinkable' warning over autumn flooding",
+      "url": "https://www.bbc.co.uk/news/articles/cm4g1pqyqzqwo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC Science",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-12T05:24:10.000Z",
+      "discovered_at": "2026-10-11T23:56:08.840Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC Science on 2026-10-12. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/1025/live/7f85ec80-c543-11f1-b4f1-2359026a88ee.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/prepare-for-the-unthinkable-warning-over-autumn-flooding-532401/",
+      "landing_url": "https://matchapp.tv/?news=532401ef#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-12",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "prepare",
+          "unthinkable",
+          "warning",
+          "over",
+          "autumn",
+          "flooding"
+        ],
+        "long_tail": [
+          "'Prepare for the unthinkable' warning over autumn flooding 2026-10-12",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "prepare",
+          "unthinkable",
+          "warning",
+          "over",
+          "autumn",
+          "flooding"
+        ],
+        "freshness_keywords": [
+          "2026-10-12"
+        ],
+        "source_keywords": [
+          "BBC Science"
+        ],
+        "meta_title": "'Prepare for the unthinkable' warning over autumn flooding…",
+        "meta_description": "World report published by BBC Science on 2026-10-12. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-12",
+          "world news",
+          "global headlines",
+          "prepare",
+          "unthinkable",
+          "warning",
+          "over",
+          "autumn",
+          "flooding",
+          "'Prepare for the unthinkable' warning over autumn flooding 2026-10-12",
+          "world news October 2026",
+          "2026-10-12",
+          "BBC Science"
+        ],
+        "seo_generated_at": "2026-10-12T06:27:20.586Z"
+      }
+    },
+    {
+      "id": "9260364d",
+      "title": "Documents falsified to evade tax on Abramovich's wealth",
+      "url": "https://www.bbc.co.uk/news/articles/c64g1l5389kvo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-12T05:00:52.000Z",
+      "discovered_at": "2026-10-12T06:27:20.586Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-12. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/6be9/live/bde30ef0-c600-11f1-bc2e-018d645d8d21.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/documents-falsified-to-evade-tax-on-abramovich-s-wealth-926036/",
+      "landing_url": "https://matchapp.tv/?news=9260364d#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-12",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "documents",
+          "falsified",
+          "evade",
+          "tax",
+          "abramovich",
+          "wealth"
+        ],
+        "long_tail": [
+          "Documents falsified to evade tax on Abramovich's wealth 2026-10-12",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "documents",
+          "falsified",
+          "evade",
+          "tax",
+          "abramovich",
+          "wealth"
+        ],
+        "freshness_keywords": [
+          "2026-10-12"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Documents falsified to evade tax on Abramovich's wealth |…",
+        "meta_description": "World report published by BBC World on 2026-10-12. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-12",
+          "world news",
+          "global headlines",
+          "documents",
+          "falsified",
+          "evade",
+          "tax",
+          "abramovich",
+          "wealth",
+          "Documents falsified to evade tax on Abramovich's wealth 2026-10-12",
+          "world news October 2026",
+          "2026-10-12",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-12T06:27:20.586Z"
+      }
+    },
+    {
+      "id": "4f2fccf5",
+      "title": "Detonautas lança no Dia das Crianças o segundo álbum para o público infantil",
+      "url": "https://g1.globo.com/pop-arte/musica/blog/mauro-ferreira/post/2026/10/12/detonautas-lanca-no-dia-das-criancas-o-segundo-album-para-o-publico-infantil.ghtml",
+      "source": "G1",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "BR",
+      "language": "pt",
+      "published_at": "2026-10-12T03:02:00.000Z",
+      "discovered_at": "2026-10-12T06:27:20.586Z",
+      "event_type": "Release",
+      "category": "entertainment",
+      "person": "",
+      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
+      "image": "https://s2-g1.glbimg.com/bhbPtyj-M_V5dPjwKwEpRqLDKOs=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/e/c/7StwBZRtaiRLfqxXRkvw/capa-detonautas-para-bebes-vol-2.jpg.jpeg",
+      "matchapp_url": "https://matchapp.tv/news/articles/detonautas-lanca-no-dia-das-criancas-o-segundo-album-para-o-publico-infantil-4f2fcc/",
+      "landing_url": "https://matchapp.tv/?news=4f2fccf5#latest-news",
+      "seo": {
+        "primary_keyword": "detonautas lanca dia criancas últimas notícias",
+        "short_tail": [
+          "detonautas lanca dia criancas",
+          "detonautas lanca dia criancas news",
+          "release",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje"
+        ],
+        "long_tail": [
+          "detonautas lanca dia criancas latest news October 2026",
+          "detonautas lanca dia criancas release update 2026",
+          "detonautas lanca dia criancas news 2026-10-12",
+          "latest release news about detonautas lanca dia criancas",
+          "detonautas lanca dia criancas segundo album latest update",
+          "G1 detonautas lanca dia criancas release",
+          "últimas notícias sobre detonautas lanca dia criancas outubro 2026",
+          "detonautas lanca dia criancas notícia de 2026-10-12",
+          "o que aconteceu com detonautas lanca dia criancas"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "detonautas",
+          "lanca",
+          "dia",
+          "criancas",
+          "segundo",
+          "album",
+          "publico",
+          "infantil"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-12",
+          "outubro 2026",
+          "detonautas lanca dia criancas 2026"
+        ],
+        "source_keywords": [
+          "G1 detonautas lanca dia criancas",
+          "g1.globo.com detonautas lanca dia criancas",
+          "G1 entertainment news"
+        ],
+        "meta_title": "Detonautas lança no Dia das Crianças o segundo álbum para…",
+        "meta_description": "Notícia publicada por G1 em 2026-10-12. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
+        "keywords": [
+          "detonautas lanca dia criancas últimas notícias",
+          "detonautas lanca dia criancas",
+          "detonautas lanca dia criancas news",
+          "release",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje",
+          "detonautas lanca dia criancas latest news October 2026",
+          "detonautas lanca dia criancas release update 2026",
+          "detonautas lanca dia criancas news 2026-10-12",
+          "latest release news about detonautas lanca dia criancas",
+          "detonautas lanca dia criancas segundo album latest update",
+          "G1 detonautas lanca dia criancas release",
+          "últimas notícias sobre detonautas lanca dia criancas outubro 2026",
+          "detonautas lanca dia criancas notícia de 2026-10-12",
+          "o que aconteceu com detonautas lanca dia criancas",
+          "detonautas",
+          "lanca",
+          "dia",
+          "criancas",
+          "segundo",
+          "album",
+          "publico",
+          "infantil",
+          "October 2026",
+          "2026-10-12",
+          "outubro 2026",
+          "detonautas lanca dia criancas 2026",
+          "G1 detonautas lanca dia criancas",
+          "g1.globo.com detonautas lanca dia criancas",
+          "G1 entertainment news"
+        ],
+        "seo_generated_at": "2026-10-12T06:27:20.586Z"
+      }
+    },
+    {
+      "id": "b4a8f0c3",
+      "title": "A nova onda de protestos de jovens do movimento das 'baratas' na Índia em imagens",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/12/a-nova-onda-de-protestos-de-jovens-do-movimento-das-baratas-na-india-em-imagens.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-12T03:00:01.000Z",
+      "discovered_at": "2026-10-12T06:27:20.586Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-12. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/JYB1c-KYXrN85p3oGoXrYAxoLMo=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/e/1/3QanO2TfW6nHFEtLCKnA/manifestante.png",
+      "matchapp_url": "https://matchapp.tv/news/articles/a-nova-onda-de-protestos-de-jovens-do-movimento-das-baratas-na-india-em-imagens-b4a8f0/",
+      "landing_url": "https://matchapp.tv/?news=b4a8f0c3#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-12",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "nova",
+          "onda",
+          "protestos",
+          "jovens",
+          "movimento",
+          "baratas"
+        ],
+        "long_tail": [
+          "A nova onda de protestos de jovens do movimento das 'baratas' na Índia em imagens 2026-10-12",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "nova",
+          "onda",
+          "protestos",
+          "jovens",
+          "movimento",
+          "baratas"
+        ],
+        "freshness_keywords": [
+          "2026-10-12"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "A nova onda de protestos de jovens do movimento das…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-12. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-12",
+          "notícias do mundo",
+          "notícias internacionais",
+          "nova",
+          "onda",
+          "protestos",
+          "jovens",
+          "movimento",
+          "baratas",
+          "A nova onda de protestos de jovens do movimento das 'baratas' na Índia em imagens 2026-10-12",
+          "notícias mundiais outubro 2026",
+          "2026-10-12",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-12T06:27:20.586Z"
+      }
+    },
+    {
+      "id": "1e0a4211",
+      "title": "'A Casa dos Segredos': a luxuosa mansão usada pelo Reino Unido para espionar generais nazistas e que mudou a história da 2ª Guerra Mundial",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/12/a-casa-dos-segredos-a-luxuosa-mansao-usada-pelo-reino-unido-para-espionar-generais-nazistas-e-que-mudou-a-historia-da-2a-guerra-mundial.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-12T03:00:00.000Z",
+      "discovered_at": "2026-10-12T06:27:20.586Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-12. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/kF0mA7qNrj-nNpxZtYgSv_hTX5c=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/A/y/xtwue0QA2xHJRxIilBnQ/foto-original-1200x800.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/a-casa-dos-segredos-a-luxuosa-mansao-usada-pelo-reino-unido-para-espionar-genera-1e0a42/",
+      "landing_url": "https://matchapp.tv/?news=1e0a4211#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-12",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "casa",
+          "segredos",
+          "luxuosa",
+          "mansao",
+          "usada",
+          "pelo"
+        ],
+        "long_tail": [
+          "'A Casa dos Segredos': a luxuosa mansão usada pelo Reino Unido para espionar generais nazistas e que mudou a história da 2ª Guerra Mundial 2026-10-12",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "casa",
+          "segredos",
+          "luxuosa",
+          "mansao",
+          "usada",
+          "pelo"
+        ],
+        "freshness_keywords": [
+          "2026-10-12"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "'A Casa dos Segredos': a luxuosa mansão usada pelo Reino…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-12. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-12",
+          "notícias do mundo",
+          "notícias internacionais",
+          "casa",
+          "segredos",
+          "luxuosa",
+          "mansao",
+          "usada",
+          "pelo",
+          "'A Casa dos Segredos': a luxuosa mansão usada pelo Reino Unido para espionar generais nazistas e que mudou a história da 2ª Guerra Mundial 2026-10-12",
+          "notícias mundiais outubro 2026",
+          "2026-10-12",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-12T06:27:20.586Z"
+      }
+    },
     {
       "id": "9d672f1a",
       "title": "Coreia do Sul e Japão detectam lançamento de mísseis da Coreia do Norte em direção ao mar",
@@ -71,14 +517,14 @@
           "2026-10-12",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-12T02:24:36.526Z"
+        "seo_generated_at": "2026-10-12T06:27:20.586Z"
       }
     },
     {
       "id": "9de3998d",
       "title": "Watch: Endangered orangutans released back into the wild after Borneo fires",
       "url": "https://www.bbc.co.uk/news/videos/c6073z5rvrk3o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC Science",
+      "source": "BBC World",
       "source_domain": "bbc.co.uk",
       "source_home": "https://www.bbc.co.uk",
       "country": "GLOBAL",
@@ -88,8 +534,8 @@
       "event_type": "Entertainment",
       "category": "world",
       "person": "",
-      "description": "World news reported by BBC Science on 2026-10-11. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/911a/live/4f78adc0-c5d9-11f1-8047-553502192765.jpg",
+      "description": "World news reported by BBC World on 2026-10-11. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/352a/live/d99810b0-c5ff-11f1-b084-2bd4636c4658.jpg",
       "matchapp_url": "https://matchapp.tv/news/articles/watch-endangered-orangutans-released-back-into-the-wild-after-borneo-fires-9de399/",
       "landing_url": "https://matchapp.tv/?news=9de3998d#latest-news",
       "seo": {
@@ -121,10 +567,10 @@
           "2026-10-11"
         ],
         "source_keywords": [
-          "BBC Science"
+          "BBC World"
         ],
         "meta_title": "Watch: Endangered orangutans released back into the wild…",
-        "meta_description": "World report published by BBC Science on 2026-10-11. Open the original report for full context.",
+        "meta_description": "World report published by BBC World on 2026-10-11. Open the original report for full context.",
         "keywords": [
           "world news 2026-10-11",
           "world news",
@@ -138,9 +584,174 @@
           "Watch: Endangered orangutans released back into the wild after Borneo fires 2026-10-11",
           "world news October 2026",
           "2026-10-11",
-          "BBC Science"
+          "BBC World"
         ],
-        "seo_generated_at": "2026-10-12T02:24:36.526Z"
+        "seo_generated_at": "2026-10-12T06:27:20.586Z"
+      }
+    },
+    {
+      "id": "3d387252",
+      "title": "Robert Pattinson on new film Primetime and how hunting predators became hit TV",
+      "url": "https://www.bbc.co.uk/news/articles/cmn5d92423vyo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GB",
+      "language": "en",
+      "published_at": "2026-10-11T23:39:12.000Z",
+      "discovered_at": "2026-10-12T06:27:20.586Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "Robert Pattinson",
+      "description": "Robert Pattinson: entertainment headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/8ac4/live/e680e510-c5b7-11f1-ad08-b9eb6b599088.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/robert-pattinson-on-new-film-primetime-and-how-hunting-predators-became-hit-tv-3d3872/",
+      "landing_url": "https://matchapp.tv/?news=3d387252#latest-news",
+      "seo": {
+        "primary_keyword": "Robert Pattinson latest news",
+        "short_tail": [
+          "Robert Pattinson",
+          "Robert Pattinson news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "Robert Pattinson latest news October 2026",
+          "Robert Pattinson entertainment update 2026",
+          "Robert Pattinson news 2026-10-11",
+          "latest entertainment news about Robert Pattinson",
+          "robert pattinson robert pattinson new film latest update",
+          "BBC Robert Pattinson entertainment",
+          "latest news about Robert Pattinson October 2026",
+          "Robert Pattinson entertainment news 2026-10-11",
+          "what happened with Robert Pattinson"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "Robert Pattinson",
+          "robert",
+          "pattinson",
+          "new",
+          "film",
+          "primetime",
+          "how"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-11",
+          "Robert Pattinson 2026"
+        ],
+        "source_keywords": [
+          "BBC Robert Pattinson",
+          "bbc.co.uk Robert Pattinson",
+          "BBC entertainment news"
+        ],
+        "meta_title": "Robert Pattinson on new film Primetime and how hunting…",
+        "meta_description": "Robert Pattinson: Entertainment update reported by BBC on 2026-10-11. See verified context, publication time and the original source via MatchApp Ai.",
+        "keywords": [
+          "Robert Pattinson latest news",
+          "Robert Pattinson",
+          "Robert Pattinson news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "Robert Pattinson latest news October 2026",
+          "Robert Pattinson entertainment update 2026",
+          "Robert Pattinson news 2026-10-11",
+          "latest entertainment news about Robert Pattinson",
+          "robert pattinson robert pattinson new film latest update",
+          "BBC Robert Pattinson entertainment",
+          "latest news about Robert Pattinson October 2026",
+          "Robert Pattinson entertainment news 2026-10-11",
+          "what happened with Robert Pattinson",
+          "robert",
+          "pattinson",
+          "new",
+          "film",
+          "primetime",
+          "how",
+          "October 2026",
+          "2026-10-11",
+          "Robert Pattinson 2026",
+          "BBC Robert Pattinson",
+          "bbc.co.uk Robert Pattinson",
+          "BBC entertainment news"
+        ],
+        "seo_generated_at": "2026-10-12T06:27:20.586Z"
+      }
+    },
+    {
+      "id": "623506d4",
+      "title": "Iconic Australian band Powderfinger announce first tour in 17 years",
+      "url": "https://www.bbc.co.uk/news/articles/c680zyx8gkkjo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-11T23:33:24.000Z",
+      "discovered_at": "2026-10-12T06:27:20.586Z",
+      "event_type": "Music",
+      "category": "world",
+      "person": "Iconic Australian",
+      "description": "World news reported by BBC World on 2026-10-11. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/7b81/live/4fbceb10-c5cb-11f1-80ee-03c5cf1148e2.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/iconic-australian-band-powderfinger-announce-first-tour-in-17-years-623506/",
+      "landing_url": "https://matchapp.tv/?news=623506d4#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-11",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "iconic",
+          "australian",
+          "band",
+          "powderfinger",
+          "announce",
+          "first"
+        ],
+        "long_tail": [
+          "Iconic Australian band Powderfinger announce first tour in 17 years 2026-10-11",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "iconic",
+          "australian",
+          "band",
+          "powderfinger",
+          "announce",
+          "first"
+        ],
+        "freshness_keywords": [
+          "2026-10-11"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Iconic Australian band Powderfinger announce first tour in…",
+        "meta_description": "World report published by BBC World on 2026-10-11. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-11",
+          "world news",
+          "global headlines",
+          "iconic",
+          "australian",
+          "band",
+          "powderfinger",
+          "announce",
+          "first",
+          "Iconic Australian band Powderfinger announce first tour in 17 years 2026-10-11",
+          "world news October 2026",
+          "2026-10-11",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-12T06:27:20.586Z"
       }
     },
     {
@@ -232,14 +843,83 @@
           "hollywoodreporter.com Jake Johnson Teases New",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T02:24:36.526Z"
+        "seo_generated_at": "2026-10-12T06:27:20.586Z"
+      }
+    },
+    {
+      "id": "c85d70cd",
+      "title": "Trump faces growing backlash over plans to import diesel from Russia",
+      "url": "https://www.bbc.co.uk/news/articles/cjn5v21py07vo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-11T23:18:45.000Z",
+      "discovered_at": "2026-10-12T06:27:20.586Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-11. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/c44f/live/e68c78a0-c5c9-11f1-9042-5f0794d5e895.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/trump-faces-growing-backlash-over-plans-to-import-diesel-from-russia-c85d70/",
+      "landing_url": "https://matchapp.tv/?news=c85d70cd#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-11",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "trump",
+          "faces",
+          "growing",
+          "backlash",
+          "over",
+          "plans"
+        ],
+        "long_tail": [
+          "Trump faces growing backlash over plans to import diesel from Russia 2026-10-11",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "trump",
+          "faces",
+          "growing",
+          "backlash",
+          "over",
+          "plans"
+        ],
+        "freshness_keywords": [
+          "2026-10-11"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Trump faces growing backlash over plans to import diesel…",
+        "meta_description": "World report published by BBC World on 2026-10-11. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-11",
+          "world news",
+          "global headlines",
+          "trump",
+          "faces",
+          "growing",
+          "backlash",
+          "over",
+          "plans",
+          "Trump faces growing backlash over plans to import diesel from Russia 2026-10-11",
+          "world news October 2026",
+          "2026-10-11",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-12T06:27:20.586Z"
       }
     },
     {
       "id": "d969e173",
       "title": "American ranchers wrestle with soaring costs - and their loyalty to Trump",
       "url": "https://www.bbc.co.uk/news/articles/c6d7q5z17gp5o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC Science",
+      "source": "BBC World",
       "source_domain": "bbc.co.uk",
       "source_home": "https://www.bbc.co.uk",
       "country": "GLOBAL",
@@ -249,7 +929,7 @@
       "event_type": "Entertainment",
       "category": "world",
       "person": "",
-      "description": "World news reported by BBC Science on 2026-10-11. MatchApp links to the original report for its complete context and ongoing updates.",
+      "description": "World news reported by BBC World on 2026-10-11. MatchApp links to the original report for its complete context and ongoing updates.",
       "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/ef78/live/3cd40f10-c34b-11f1-9ef0-9f3abff8feb9.jpg",
       "matchapp_url": "https://matchapp.tv/news/articles/american-ranchers-wrestle-with-soaring-costs-and-their-loyalty-to-trump-d969e1/",
       "landing_url": "https://matchapp.tv/?news=d969e173#latest-news",
@@ -282,10 +962,10 @@
           "2026-10-11"
         ],
         "source_keywords": [
-          "BBC Science"
+          "BBC World"
         ],
         "meta_title": "American ranchers wrestle with soaring costs - and their…",
-        "meta_description": "World report published by BBC Science on 2026-10-11. Open the original report for full context.",
+        "meta_description": "World report published by BBC World on 2026-10-11. Open the original report for full context.",
         "keywords": [
           "world news 2026-10-11",
           "world news",
@@ -299,9 +979,78 @@
           "American ranchers wrestle with soaring costs - and their loyalty to Trump 2026-10-11",
           "world news October 2026",
           "2026-10-11",
-          "BBC Science"
+          "BBC World"
         ],
-        "seo_generated_at": "2026-10-12T02:24:36.526Z"
+        "seo_generated_at": "2026-10-12T06:27:20.586Z"
+      }
+    },
+    {
+      "id": "0caeab95",
+      "title": "Mourners killed by Kenya police at ex-PM's national farewell not part of violence, BBC finds",
+      "url": "https://www.bbc.co.uk/news/articles/c962y4ld1d7do?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-11T23:13:20.000Z",
+      "discovered_at": "2026-10-12T06:27:20.586Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-11. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/a584/live/517b3620-c308-11f1-bc2e-018d645d8d21.png",
+      "matchapp_url": "https://matchapp.tv/news/articles/mourners-killed-by-kenya-police-at-ex-pm-s-national-farewell-not-part-of-violenc-0caeab/",
+      "landing_url": "https://matchapp.tv/?news=0caeab95#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-11",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "mourners",
+          "killed",
+          "kenya",
+          "police",
+          "national",
+          "farewell"
+        ],
+        "long_tail": [
+          "Mourners killed by Kenya police at ex-PM's national farewell not part of violence, BBC finds 2026-10-11",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "mourners",
+          "killed",
+          "kenya",
+          "police",
+          "national",
+          "farewell"
+        ],
+        "freshness_keywords": [
+          "2026-10-11"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Mourners killed by Kenya police at ex-PM's national…",
+        "meta_description": "World report published by BBC World on 2026-10-11. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-11",
+          "world news",
+          "global headlines",
+          "mourners",
+          "killed",
+          "kenya",
+          "police",
+          "national",
+          "farewell",
+          "Mourners killed by Kenya police at ex-PM's national farewell not part of violence, BBC finds 2026-10-11",
+          "world news October 2026",
+          "2026-10-11",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-12T06:27:20.586Z"
       }
     },
     {
@@ -395,7 +1144,7 @@
           "hollywoodreporter.com Sacha Baron Cohen",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T02:24:36.526Z"
+        "seo_generated_at": "2026-10-12T06:27:20.586Z"
       }
     },
     {
@@ -491,7 +1240,7 @@
           "g1.globo.com Morre Edson Silva",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T02:24:36.526Z"
+        "seo_generated_at": "2026-10-12T06:27:20.586Z"
       }
     },
     {
@@ -560,352 +1309,101 @@
           "2026-10-11",
           "BBC Technology"
         ],
-        "seo_generated_at": "2026-10-12T02:24:36.526Z"
+        "seo_generated_at": "2026-10-12T06:27:20.586Z"
       }
     },
     {
-      "id": "6563c1b8",
-      "title": "One killed, 11 injured in second Houthi strike on Riyadh airport in two days",
-      "url": "https://www.bbc.co.uk/news/articles/cr93znyk44e1o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
+      "id": "513fc531",
+      "title": "Sacha Baron Cohen to star in Quentin Tarantino's West End play",
+      "url": "https://www.bbc.co.uk/news/articles/cqj9k23rynnpo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC",
       "source_domain": "bbc.co.uk",
       "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
+      "country": "GB",
       "language": "en",
-      "published_at": "2026-10-11T22:45:58.000Z",
-      "discovered_at": "2026-10-11T20:31:58.413Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-11. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/01f0/live/59d06e70-c57a-11f1-a64c-550be9e3c66b.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/one-killed-11-injured-in-second-houthi-strike-on-riyadh-airport-in-two-days-6563c1/",
-      "landing_url": "https://matchapp.tv/?news=6563c1b8#latest-news",
+      "published_at": "2026-10-11T23:03:55.000Z",
+      "discovered_at": "2026-10-12T06:27:20.586Z",
+      "event_type": "Casting",
+      "category": "entertainment",
+      "person": "Sacha Baron Cohen",
+      "description": "Sacha Baron Cohen: casting headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/0b5f/live/069ce810-c583-11f1-a64c-550be9e3c66b.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/sacha-baron-cohen-to-star-in-quentin-tarantino-s-west-end-play-513fc5/",
+      "landing_url": "https://matchapp.tv/?news=513fc531#latest-news",
       "seo": {
-        "primary_keyword": "world news 2026-10-11",
+        "primary_keyword": "Sacha Baron Cohen latest news",
         "short_tail": [
-          "world news",
-          "global headlines",
-          "one",
-          "killed",
-          "injured",
-          "second",
-          "houthi",
-          "strike"
+          "Sacha Baron Cohen",
+          "Sacha Baron Cohen news",
+          "casting",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
         ],
         "long_tail": [
-          "One killed, 11 injured in second Houthi strike on Riyadh airport in two days 2026-10-11",
-          "world news October 2026"
+          "Sacha Baron Cohen latest news October 2026",
+          "Sacha Baron Cohen casting update 2026",
+          "Sacha Baron Cohen news 2026-10-11",
+          "latest casting news about Sacha Baron Cohen",
+          "sacha baron cohen sacha baron cohen latest update",
+          "BBC Sacha Baron Cohen casting",
+          "latest news about Sacha Baron Cohen October 2026",
+          "Sacha Baron Cohen entertainment news 2026-10-11",
+          "what happened with Sacha Baron Cohen"
         ],
         "trend_keywords": [],
         "entity_keywords": [
-          "one",
-          "killed",
-          "injured",
-          "second",
-          "houthi",
-          "strike"
+          "Sacha Baron Cohen",
+          "sacha",
+          "baron",
+          "cohen",
+          "star",
+          "quentin"
         ],
         "freshness_keywords": [
-          "2026-10-11"
+          "October 2026",
+          "2026-10-11",
+          "Sacha Baron Cohen 2026"
         ],
         "source_keywords": [
-          "BBC World"
+          "BBC Sacha Baron Cohen",
+          "bbc.co.uk Sacha Baron Cohen",
+          "BBC entertainment news"
         ],
-        "meta_title": "One killed, 11 injured in second Houthi strike on Riyadh…",
-        "meta_description": "World report published by BBC World on 2026-10-11. Open the original report for full context.",
+        "meta_title": "Sacha Baron Cohen to star in Quentin Tarantino's West End…",
+        "meta_description": "Sacha Baron Cohen: Casting update reported by BBC on 2026-10-11. See verified context, publication time and the original source via MatchApp Ai.",
         "keywords": [
-          "world news 2026-10-11",
-          "world news",
-          "global headlines",
-          "one",
-          "killed",
-          "injured",
-          "second",
-          "houthi",
-          "strike",
-          "One killed, 11 injured in second Houthi strike on Riyadh airport in two days 2026-10-11",
-          "world news October 2026",
+          "Sacha Baron Cohen latest news",
+          "Sacha Baron Cohen",
+          "Sacha Baron Cohen news",
+          "casting",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "Sacha Baron Cohen latest news October 2026",
+          "Sacha Baron Cohen casting update 2026",
+          "Sacha Baron Cohen news 2026-10-11",
+          "latest casting news about Sacha Baron Cohen",
+          "sacha baron cohen sacha baron cohen latest update",
+          "BBC Sacha Baron Cohen casting",
+          "latest news about Sacha Baron Cohen October 2026",
+          "Sacha Baron Cohen entertainment news 2026-10-11",
+          "what happened with Sacha Baron Cohen",
+          "sacha",
+          "baron",
+          "cohen",
+          "star",
+          "quentin",
+          "October 2026",
           "2026-10-11",
-          "BBC World"
+          "Sacha Baron Cohen 2026",
+          "BBC Sacha Baron Cohen",
+          "bbc.co.uk Sacha Baron Cohen",
+          "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T02:24:36.526Z"
-      }
-    },
-    {
-      "id": "9425c6a2",
-      "title": "Trump's 'energy ceasefire' claim welcomed by Zelensky but Russia silent",
-      "url": "https://www.bbc.co.uk/news/articles/c6pvg4jyz1m0o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-11T21:36:40.000Z",
-      "discovered_at": "2026-10-11T23:56:08.840Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-11. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/16d8/live/4817e400-c58a-11f1-bc2e-018d645d8d21.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/trump-s-energy-ceasefire-claim-welcomed-by-zelensky-but-russia-silent-9425c6/",
-      "landing_url": "https://matchapp.tv/?news=9425c6a2#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-11",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "trump",
-          "energy",
-          "ceasefire",
-          "claim",
-          "welcomed",
-          "zelensky"
-        ],
-        "long_tail": [
-          "Trump's 'energy ceasefire' claim welcomed by Zelensky but Russia silent 2026-10-11",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "trump",
-          "energy",
-          "ceasefire",
-          "claim",
-          "welcomed",
-          "zelensky"
-        ],
-        "freshness_keywords": [
-          "2026-10-11"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Trump's 'energy ceasefire' claim welcomed by Zelensky but…",
-        "meta_description": "World report published by BBC World on 2026-10-11. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-11",
-          "world news",
-          "global headlines",
-          "trump",
-          "energy",
-          "ceasefire",
-          "claim",
-          "welcomed",
-          "zelensky",
-          "Trump's 'energy ceasefire' claim welcomed by Zelensky but Russia silent 2026-10-11",
-          "world news October 2026",
-          "2026-10-11",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-12T02:24:36.526Z"
-      }
-    },
-    {
-      "id": "11186f3a",
-      "title": "Dozens of gold prospectors killed in strikes on Egypt-Sudan border, rights group says",
-      "url": "https://www.bbc.co.uk/news/articles/cqy43vrk8wv8o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-11T21:12:44.000Z",
-      "discovered_at": "2026-10-11T23:56:08.840Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-11. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/5ba0/live/1bc53450-c5b4-11f1-a838-01c3fd7e5e7d.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/dozens-of-gold-prospectors-killed-in-strikes-on-egypt-sudan-border-rights-group--11186f/",
-      "landing_url": "https://matchapp.tv/?news=11186f3a#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-11",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "dozens",
-          "gold",
-          "prospectors",
-          "killed",
-          "strikes",
-          "egypt"
-        ],
-        "long_tail": [
-          "Dozens of gold prospectors killed in strikes on Egypt-Sudan border, rights group says 2026-10-11",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "dozens",
-          "gold",
-          "prospectors",
-          "killed",
-          "strikes",
-          "egypt"
-        ],
-        "freshness_keywords": [
-          "2026-10-11"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Dozens of gold prospectors killed in strikes on…",
-        "meta_description": "World report published by BBC World on 2026-10-11. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-11",
-          "world news",
-          "global headlines",
-          "dozens",
-          "gold",
-          "prospectors",
-          "killed",
-          "strikes",
-          "egypt",
-          "Dozens of gold prospectors killed in strikes on Egypt-Sudan border, rights group says 2026-10-11",
-          "world news October 2026",
-          "2026-10-11",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-12T02:24:36.526Z"
-      }
-    },
-    {
-      "id": "24bf0be9",
-      "title": "Watch: What's behind Trump's energy ceasefire claim?",
-      "url": "https://www.bbc.co.uk/news/videos/cwvgde9vrdd9o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-11T20:55:02.000Z",
-      "discovered_at": "2026-10-11T23:56:08.840Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-11. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/a6d5/live/bfca61a0-c5b5-11f1-ad08-b9eb6b599088.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/watch-what-s-behind-trump-s-energy-ceasefire-claim-24bf0b/",
-      "landing_url": "https://matchapp.tv/?news=24bf0be9#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-11",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "watch",
-          "what",
-          "behind",
-          "trump",
-          "energy",
-          "ceasefire"
-        ],
-        "long_tail": [
-          "Watch: What's behind Trump's energy ceasefire claim? 2026-10-11",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "watch",
-          "what",
-          "behind",
-          "trump",
-          "energy",
-          "ceasefire"
-        ],
-        "freshness_keywords": [
-          "2026-10-11"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Watch: What's behind Trump's energy ceasefire claim? |…",
-        "meta_description": "World report published by BBC World on 2026-10-11. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-11",
-          "world news",
-          "global headlines",
-          "watch",
-          "what",
-          "behind",
-          "trump",
-          "energy",
-          "ceasefire",
-          "Watch: What's behind Trump's energy ceasefire claim? 2026-10-11",
-          "world news October 2026",
-          "2026-10-11",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-12T02:24:36.526Z"
-      }
-    },
-    {
-      "id": "532401ef",
-      "title": "'Prepare for the unthinkable' warning over autumn flooding",
-      "url": "https://www.bbc.co.uk/news/articles/cm4g1pqyqzqwo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC Science",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-11T20:51:30.000Z",
-      "discovered_at": "2026-10-11T23:56:08.840Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC Science on 2026-10-11. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/1025/live/7f85ec80-c543-11f1-b4f1-2359026a88ee.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/prepare-for-the-unthinkable-warning-over-autumn-flooding-532401/",
-      "landing_url": "https://matchapp.tv/?news=532401ef#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-11",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "prepare",
-          "unthinkable",
-          "warning",
-          "over",
-          "autumn",
-          "flooding"
-        ],
-        "long_tail": [
-          "'Prepare for the unthinkable' warning over autumn flooding 2026-10-11",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "prepare",
-          "unthinkable",
-          "warning",
-          "over",
-          "autumn",
-          "flooding"
-        ],
-        "freshness_keywords": [
-          "2026-10-11"
-        ],
-        "source_keywords": [
-          "BBC Science"
-        ],
-        "meta_title": "'Prepare for the unthinkable' warning over autumn flooding…",
-        "meta_description": "World report published by BBC Science on 2026-10-11. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-11",
-          "world news",
-          "global headlines",
-          "prepare",
-          "unthinkable",
-          "warning",
-          "over",
-          "autumn",
-          "flooding",
-          "'Prepare for the unthinkable' warning over autumn flooding 2026-10-11",
-          "world news October 2026",
-          "2026-10-11",
-          "BBC Science"
-        ],
-        "seo_generated_at": "2026-10-12T02:24:36.526Z"
+        "seo_generated_at": "2026-10-12T06:27:20.586Z"
       }
     },
     {
@@ -974,7 +1472,7 @@
           "2026-10-11",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-12T02:24:36.526Z"
+        "seo_generated_at": "2026-10-12T06:27:20.586Z"
       }
     },
     {
@@ -1043,7 +1541,7 @@
           "2026-10-11",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-12T02:24:36.526Z"
+        "seo_generated_at": "2026-10-12T06:27:20.586Z"
       }
     },
     {
@@ -1142,7 +1640,103 @@
           "hollywoodreporter.com carrie star samantha sloyan",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T02:24:36.526Z"
+        "seo_generated_at": "2026-10-12T06:27:20.586Z"
+      }
+    },
+    {
+      "id": "4a024af5",
+      "title": "Dolly Parton's niece wants to learn Welsh after singing with Bronwen Lewis",
+      "url": "https://www.bbc.co.uk/news/articles/ckeq3jgrv4dxo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GB",
+      "language": "en",
+      "published_at": "2026-10-11T18:14:00.000Z",
+      "discovered_at": "2026-10-12T06:27:20.586Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "Dolly Parton's",
+      "description": "Dolly Parton's: entertainment headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/f2ec/live/c224b400-c402-11f1-a64c-550be9e3c66b.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/dolly-parton-s-niece-wants-to-learn-welsh-after-singing-with-bronwen-lewis-4a024a/",
+      "landing_url": "https://matchapp.tv/?news=4a024af5#latest-news",
+      "seo": {
+        "primary_keyword": "Dolly Parton's latest news",
+        "short_tail": [
+          "Dolly Parton's",
+          "Dolly Parton's news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "Dolly Parton's latest news October 2026",
+          "Dolly Parton's entertainment update 2026",
+          "Dolly Parton's news 2026-10-11",
+          "latest entertainment news about Dolly Parton's",
+          "dolly parton dolly parton niece wants latest update",
+          "BBC Dolly Parton's entertainment",
+          "latest news about Dolly Parton's October 2026",
+          "Dolly Parton's entertainment news 2026-10-11",
+          "what happened with Dolly Parton's"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "Dolly Parton's",
+          "dolly",
+          "parton",
+          "niece",
+          "wants",
+          "learn",
+          "welsh"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-11",
+          "Dolly Parton's 2026"
+        ],
+        "source_keywords": [
+          "BBC Dolly Parton's",
+          "bbc.co.uk Dolly Parton's",
+          "BBC entertainment news"
+        ],
+        "meta_title": "Dolly Parton's niece wants to learn Welsh after singing…",
+        "meta_description": "Dolly Parton's: Entertainment update reported by BBC on 2026-10-11. See verified context, publication time and the original source via MatchApp Ai.",
+        "keywords": [
+          "Dolly Parton's latest news",
+          "Dolly Parton's",
+          "Dolly Parton's news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "Dolly Parton's latest news October 2026",
+          "Dolly Parton's entertainment update 2026",
+          "Dolly Parton's news 2026-10-11",
+          "latest entertainment news about Dolly Parton's",
+          "dolly parton dolly parton niece wants latest update",
+          "BBC Dolly Parton's entertainment",
+          "latest news about Dolly Parton's October 2026",
+          "Dolly Parton's entertainment news 2026-10-11",
+          "what happened with Dolly Parton's",
+          "dolly",
+          "parton",
+          "niece",
+          "wants",
+          "learn",
+          "welsh",
+          "October 2026",
+          "2026-10-11",
+          "Dolly Parton's 2026",
+          "BBC Dolly Parton's",
+          "bbc.co.uk Dolly Parton's",
+          "BBC entertainment news"
+        ],
+        "seo_generated_at": "2026-10-12T06:27:20.586Z"
       }
     },
     {
@@ -1211,7 +1805,7 @@
           "2026-10-11",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-12T02:24:36.526Z"
+        "seo_generated_at": "2026-10-12T06:27:20.586Z"
       }
     },
     {
@@ -1280,408 +1874,7 @@
           "2026-10-11",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-12T02:24:36.526Z"
-      }
-    },
-    {
-      "id": "88155fc3",
-      "title": "Trump anuncia trégua energética entre Rússia e Ucrânia; o que se sabe",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/11/trump-anuncia-tregua-energetica-entre-russia-e-ucrania-o-que-se-sabe.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-11T16:34:50.000Z",
-      "discovered_at": "2026-10-11T20:31:58.413Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-11. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/AQwHRQZJ1CQewd-j2S9mR4lf8PU=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/g/R/YUcIclScyn3leIA5yPEA/novo-projeto-4-.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/trump-anuncia-tregua-energetica-entre-russia-e-ucrania-o-que-se-sabe-88155f/",
-      "landing_url": "https://matchapp.tv/?news=88155fc3#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-11",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "trump",
-          "anuncia",
-          "tregua",
-          "energetica",
-          "entre",
-          "russia"
-        ],
-        "long_tail": [
-          "Trump anuncia trégua energética entre Rússia e Ucrânia; o que se sabe 2026-10-11",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "trump",
-          "anuncia",
-          "tregua",
-          "energetica",
-          "entre",
-          "russia"
-        ],
-        "freshness_keywords": [
-          "2026-10-11"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Trump anuncia trégua energética entre Rússia e Ucrânia; o…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-11. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-11",
-          "notícias do mundo",
-          "notícias internacionais",
-          "trump",
-          "anuncia",
-          "tregua",
-          "energetica",
-          "entre",
-          "russia",
-          "Trump anuncia trégua energética entre Rússia e Ucrânia; o que se sabe 2026-10-11",
-          "notícias mundiais outubro 2026",
-          "2026-10-11",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-12T02:24:36.526Z"
-      }
-    },
-    {
-      "id": "4b107539",
-      "title": "Barco vira, e 139 morrem ao tentar ir de Djibuti para o Iêmen, uma das principais rotas migratórias do Golfo",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/11/barco-vira-e-pessoas-morrem-ao-tentar-ir-de-djibuti-para-o-iemen.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-11T16:34:36.000Z",
-      "discovered_at": "2026-10-11T20:31:58.413Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-11. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/-uGno1jbAKsAtCmlW4kskYb2f3k=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/u/K/vpAfsdTXKZrMlmCSqyYQ/2026-10-11t151134z-30047978-rc221oank0rk-rtrmadp-3-yemen-crisis-migrants.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/barco-vira-e-139-morrem-ao-tentar-ir-de-djibuti-para-o-iemen-uma-das-principais--4b1075/",
-      "landing_url": "https://matchapp.tv/?news=4b107539#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-11",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "barco",
-          "vira",
-          "139",
-          "morrem",
-          "tentar",
-          "djibuti"
-        ],
-        "long_tail": [
-          "Barco vira, e 139 morrem ao tentar ir de Djibuti para o Iêmen, uma das principais rotas migratórias do Golfo 2026-10-11",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "barco",
-          "vira",
-          "139",
-          "morrem",
-          "tentar",
-          "djibuti"
-        ],
-        "freshness_keywords": [
-          "2026-10-11"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Barco vira, e 139 morrem ao tentar ir de Djibuti para o…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-11. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-11",
-          "notícias do mundo",
-          "notícias internacionais",
-          "barco",
-          "vira",
-          "139",
-          "morrem",
-          "tentar",
-          "djibuti",
-          "Barco vira, e 139 morrem ao tentar ir de Djibuti para o Iêmen, uma das principais rotas migratórias do Golfo 2026-10-11",
-          "notícias mundiais outubro 2026",
-          "2026-10-11",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-12T02:24:36.526Z"
-      }
-    },
-    {
-      "id": "8f88fb12",
-      "title": "R.L. Stine’s ‘The Babysitter’ Adaptation Coming to Tubi in 2027 (Exclusive)",
-      "url": "https://www.hollywoodreporter.com/movies/movie-news/tubi-the-babysitter-movie-r-l-stine-2027-1236727014/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-10-11T15:15:00.000Z",
-      "discovered_at": "2026-10-11T15:56:23.590Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "R.L. Stine’s",
-      "description": "R.L. Stine’s: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/the-babysitter.jpg?w=1440&h=810&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/r-l-stine-s-the-babysitter-adaptation-coming-to-tubi-in-2027-exclusive-8f88fb/",
-      "landing_url": "https://matchapp.tv/?news=8f88fb12#latest-news",
-      "seo": {
-        "primary_keyword": "R.L. Stine’s latest news",
-        "short_tail": [
-          "R.L. Stine’s",
-          "R.L. Stine’s news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "R.L. Stine’s latest news October 2026",
-          "R.L. Stine’s entertainment update 2026",
-          "R.L. Stine’s news 2026-10-11",
-          "latest entertainment news about R.L. Stine’s",
-          "stine stine babysitter adaptation coming tubi latest update",
-          "The Hollywood Reporter R.L. Stine’s entertainment",
-          "latest news about R.L. Stine’s October 2026",
-          "R.L. Stine’s entertainment news 2026-10-11",
-          "what happened with R.L. Stine’s"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "R.L. Stine’s",
-          "stine",
-          "babysitter",
-          "adaptation",
-          "coming",
-          "tubi",
-          "2027",
-          "exclusive"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-11",
-          "R.L. Stine’s 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter R.L. Stine’s",
-          "hollywoodreporter.com R.L. Stine’s",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "R.L. Stine’s ‘The Babysitter’ Adaptation Coming to Tubi in…",
-        "meta_description": "R.L. Stine’s: Entertainment update reported by The Hollywood Reporter on 2026-10-11. See verified context, publication time and the original source via…",
-        "keywords": [
-          "R.L. Stine’s latest news",
-          "R.L. Stine’s",
-          "R.L. Stine’s news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "R.L. Stine’s latest news October 2026",
-          "R.L. Stine’s entertainment update 2026",
-          "R.L. Stine’s news 2026-10-11",
-          "latest entertainment news about R.L. Stine’s",
-          "stine stine babysitter adaptation coming tubi latest update",
-          "The Hollywood Reporter R.L. Stine’s entertainment",
-          "latest news about R.L. Stine’s October 2026",
-          "R.L. Stine’s entertainment news 2026-10-11",
-          "what happened with R.L. Stine’s",
-          "stine",
-          "babysitter",
-          "adaptation",
-          "coming",
-          "tubi",
-          "2027",
-          "exclusive",
-          "October 2026",
-          "2026-10-11",
-          "R.L. Stine’s 2026",
-          "The Hollywood Reporter R.L. Stine’s",
-          "hollywoodreporter.com R.L. Stine’s",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-12T02:24:36.526Z"
-      }
-    },
-    {
-      "id": "8c0c3571",
-      "title": "Javier Bardem on Declining ‘Skyfall’ Role, Pitching to Sam Mendes: “What If He Wants to Have Sex With Mr. Bond?”",
-      "url": "https://www.hollywoodreporter.com/movies/movie-news/javier-bardem-skyfall-bond-bunker-bfi-london-film-festival-1236727169/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-10-11T14:27:21.000Z",
-      "discovered_at": "2026-10-11T15:56:23.590Z",
-      "event_type": "Casting",
-      "category": "entertainment",
-      "person": "Javier Bardem",
-      "description": "Javier Bardem: casting headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/FotoJet-2026-10-11T152106.448.jpg?w=1440&h=810&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/javier-bardem-on-declining-skyfall-role-pitching-to-sam-mendes-what-if-he-wants--8c0c35/",
-      "landing_url": "https://matchapp.tv/?news=8c0c3571#latest-news",
-      "seo": {
-        "primary_keyword": "Javier Bardem latest news",
-        "short_tail": [
-          "Javier Bardem",
-          "Javier Bardem news",
-          "casting",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "Javier Bardem latest news October 2026",
-          "Javier Bardem casting update 2026",
-          "Javier Bardem news 2026-10-11",
-          "latest casting news about Javier Bardem",
-          "javier bardem javier bardem declining skyfall latest update",
-          "The Hollywood Reporter Javier Bardem casting",
-          "latest news about Javier Bardem October 2026",
-          "Javier Bardem entertainment news 2026-10-11",
-          "what happened with Javier Bardem"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Javier Bardem",
-          "javier",
-          "bardem",
-          "declining",
-          "skyfall",
-          "role",
-          "pitching"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-11",
-          "Javier Bardem 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter Javier Bardem",
-          "hollywoodreporter.com Javier Bardem",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "Javier Bardem on Declining ‘Skyfall’ Role, Pitching to Sam…",
-        "meta_description": "Javier Bardem: Casting update reported by The Hollywood Reporter on 2026-10-11. See verified context, publication time and the original source via MatchApp…",
-        "keywords": [
-          "Javier Bardem latest news",
-          "Javier Bardem",
-          "Javier Bardem news",
-          "casting",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "Javier Bardem latest news October 2026",
-          "Javier Bardem casting update 2026",
-          "Javier Bardem news 2026-10-11",
-          "latest casting news about Javier Bardem",
-          "javier bardem javier bardem declining skyfall latest update",
-          "The Hollywood Reporter Javier Bardem casting",
-          "latest news about Javier Bardem October 2026",
-          "Javier Bardem entertainment news 2026-10-11",
-          "what happened with Javier Bardem",
-          "javier",
-          "bardem",
-          "declining",
-          "skyfall",
-          "role",
-          "pitching",
-          "October 2026",
-          "2026-10-11",
-          "Javier Bardem 2026",
-          "The Hollywood Reporter Javier Bardem",
-          "hollywoodreporter.com Javier Bardem",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-12T02:24:36.526Z"
-      }
-    },
-    {
-      "id": "ac45ba13",
-      "title": "Trump diz que Ucrânia e Rússia concordaram com 'cessar-fogo energético'",
-      "url": "https://g1.globo.com/mundo/ucrania-russia/noticia/2026/10/11/trump-diz-que-ucrania-e-russia-concordaram-com-cessar-fogo-energetico.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-11T14:21:53.000Z",
-      "discovered_at": "2026-10-11T15:56:23.590Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-11. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/CQEHtmwpqvxvMn3ZxMGYug7wAGk=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/3/l/YCknLDQ3CbYEQstRRZqA/2026-10-10t002837z-1091946746-rc200oa5olyz-rtrmadp-3-usa-trump.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/trump-diz-que-ucrania-e-russia-concordaram-com-cessar-fogo-energetico-ac45ba/",
-      "landing_url": "https://matchapp.tv/?news=ac45ba13#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-11",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "trump",
-          "diz",
-          "que",
-          "ucrania",
-          "russia",
-          "concordaram"
-        ],
-        "long_tail": [
-          "Trump diz que Ucrânia e Rússia concordaram com 'cessar-fogo energético' 2026-10-11",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "trump",
-          "diz",
-          "que",
-          "ucrania",
-          "russia",
-          "concordaram"
-        ],
-        "freshness_keywords": [
-          "2026-10-11"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Trump diz que Ucrânia e Rússia concordaram com…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-11. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-11",
-          "notícias do mundo",
-          "notícias internacionais",
-          "trump",
-          "diz",
-          "que",
-          "ucrania",
-          "russia",
-          "concordaram",
-          "Trump diz que Ucrânia e Rússia concordaram com 'cessar-fogo energético' 2026-10-11",
-          "notícias mundiais outubro 2026",
-          "2026-10-11",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-12T02:24:36.526Z"
+        "seo_generated_at": "2026-10-12T06:27:20.586Z"
       }
     },
     {
@@ -1779,7 +1972,7 @@
           "g1.globo.com Maria Rita",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T02:24:36.526Z"
+        "seo_generated_at": "2026-10-12T06:27:20.586Z"
       }
     },
     {
@@ -1880,7 +2073,7 @@
           "g1.globo.com tom chega hoje aos",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T02:24:36.526Z"
+        "seo_generated_at": "2026-10-12T06:27:20.586Z"
       }
     },
     {
@@ -1979,7 +2172,7 @@
           "bbc.co.uk inside room what like",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T02:24:36.526Z"
+        "seo_generated_at": "2026-10-12T06:27:20.586Z"
       }
     },
     {
@@ -2077,7 +2270,7 @@
           "g1.globo.com Wagner Moura",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T02:24:36.526Z"
+        "seo_generated_at": "2026-10-12T06:27:20.586Z"
       }
     },
     {
@@ -2175,7 +2368,7 @@
           "g1.globo.com Marisa Monte",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T02:24:36.526Z"
+        "seo_generated_at": "2026-10-12T06:27:20.586Z"
       }
     },
     {
@@ -2276,7 +2469,7 @@
           "g1.globo.com minha globinho viva web",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T02:24:36.526Z"
+        "seo_generated_at": "2026-10-12T06:27:20.586Z"
       }
     },
     {
@@ -2375,7 +2568,7 @@
           "bbc.co.uk screams haunting scenes deadly",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T02:24:36.526Z"
+        "seo_generated_at": "2026-10-12T06:27:20.586Z"
       }
     },
     {
@@ -2475,7 +2668,7 @@
           "g1.globo.com TV Globinho",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T02:24:36.526Z"
+        "seo_generated_at": "2026-10-12T06:27:20.586Z"
       }
     },
     {
@@ -2576,7 +2769,7 @@
           "g1.globo.com kbrum poe reggae album",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T02:24:36.526Z"
+        "seo_generated_at": "2026-10-12T06:27:20.586Z"
       }
     },
     {
@@ -2675,7 +2868,7 @@
           "g1.globo.com saiba como giulia conheceu",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T02:24:36.526Z"
+        "seo_generated_at": "2026-10-12T06:27:20.586Z"
       }
     },
     {
@@ -2773,7 +2966,7 @@
           "bbc.co.uk country music star ella",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T02:24:36.526Z"
+        "seo_generated_at": "2026-10-12T06:27:20.586Z"
       }
     },
     {
@@ -2872,7 +3065,7 @@
           "bbc.co.uk ashe too scared cancel",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T02:24:36.526Z"
+        "seo_generated_at": "2026-10-12T06:27:20.586Z"
       }
     },
     {
@@ -2971,7 +3164,7 @@
           "bbc.co.uk hollywood actor luke evans",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T02:24:36.526Z"
+        "seo_generated_at": "2026-10-12T06:27:20.586Z"
       }
     },
     {
@@ -3065,7 +3258,7 @@
           "g1.globo.com Coletivo Pra Gira Girar",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T02:24:36.526Z"
+        "seo_generated_at": "2026-10-12T06:27:20.586Z"
       }
     },
     {
@@ -3163,7 +3356,7 @@
           "g1.globo.com MC PH",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T02:24:36.526Z"
+        "seo_generated_at": "2026-10-12T06:27:20.586Z"
       }
     },
     {
@@ -3264,197 +3457,7 @@
           "g1.globo.com ator pretty little liars",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T02:24:36.526Z"
-      }
-    },
-    {
-      "id": "d49e7336",
-      "title": "Crazy Rich Asians to return as TV show with original film's stars",
-      "url": "https://www.bbc.co.uk/news/articles/cm5yne8k6zw8o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GB",
-      "language": "en",
-      "published_at": "2026-10-09T10:54:21.000Z",
-      "discovered_at": "2026-10-09T16:32:32.326Z",
-      "event_type": "Music",
-      "category": "entertainment",
-      "person": "Crazy Rich Asians",
-      "description": "Crazy Rich Asians: music headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/3b16/live/28721870-c3bc-11f1-9798-abffda1e61e7.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/crazy-rich-asians-to-return-as-tv-show-with-original-film-s-stars-d49e73/",
-      "landing_url": "https://matchapp.tv/?news=d49e7336#latest-news",
-      "seo": {
-        "primary_keyword": "Crazy Rich Asians latest news",
-        "short_tail": [
-          "Crazy Rich Asians",
-          "Crazy Rich Asians news",
-          "music",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "Crazy Rich Asians latest news October 2026",
-          "Crazy Rich Asians music update 2026",
-          "Crazy Rich Asians news 2026-10-09",
-          "latest music news about Crazy Rich Asians",
-          "crazy rich asians crazy rich asians latest update",
-          "BBC Crazy Rich Asians music",
-          "latest news about Crazy Rich Asians October 2026",
-          "Crazy Rich Asians entertainment news 2026-10-09",
-          "what happened with Crazy Rich Asians"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Crazy Rich Asians",
-          "crazy",
-          "rich",
-          "asians",
-          "return",
-          "show"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-09",
-          "Crazy Rich Asians 2026"
-        ],
-        "source_keywords": [
-          "BBC Crazy Rich Asians",
-          "bbc.co.uk Crazy Rich Asians",
-          "BBC entertainment news"
-        ],
-        "meta_title": "Crazy Rich Asians to return as TV show with original…",
-        "meta_description": "Crazy Rich Asians: Music update reported by BBC on 2026-10-09. See verified context, publication time and the original source via MatchApp Ai.",
-        "keywords": [
-          "Crazy Rich Asians latest news",
-          "Crazy Rich Asians",
-          "Crazy Rich Asians news",
-          "music",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "Crazy Rich Asians latest news October 2026",
-          "Crazy Rich Asians music update 2026",
-          "Crazy Rich Asians news 2026-10-09",
-          "latest music news about Crazy Rich Asians",
-          "crazy rich asians crazy rich asians latest update",
-          "BBC Crazy Rich Asians music",
-          "latest news about Crazy Rich Asians October 2026",
-          "Crazy Rich Asians entertainment news 2026-10-09",
-          "what happened with Crazy Rich Asians",
-          "crazy",
-          "rich",
-          "asians",
-          "return",
-          "show",
-          "October 2026",
-          "2026-10-09",
-          "Crazy Rich Asians 2026",
-          "BBC Crazy Rich Asians",
-          "bbc.co.uk Crazy Rich Asians",
-          "BBC entertainment news"
-        ],
-        "seo_generated_at": "2026-10-12T02:24:36.526Z"
-      }
-    },
-    {
-      "id": "e40be047",
-      "title": "Alison Hammond: 'I thought I was having heart attack on air'",
-      "url": "https://www.bbc.co.uk/news/articles/cq5yn75pgyjjo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GB",
-      "language": "en",
-      "published_at": "2026-10-09T10:52:34.000Z",
-      "discovered_at": "2026-10-09T16:32:32.326Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "Alison Hammond",
-      "description": "Alison Hammond: entertainment headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/d1d2/live/2852f9e0-c3cb-11f1-8fc5-335d62f6730b.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/alison-hammond-i-thought-i-was-having-heart-attack-on-air-e40be0/",
-      "landing_url": "https://matchapp.tv/?news=e40be047#latest-news",
-      "seo": {
-        "primary_keyword": "Alison Hammond latest news",
-        "short_tail": [
-          "Alison Hammond",
-          "Alison Hammond news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "Alison Hammond latest news October 2026",
-          "Alison Hammond entertainment update 2026",
-          "Alison Hammond news 2026-10-09",
-          "latest entertainment news about Alison Hammond",
-          "alison hammond alison hammond thought having latest update",
-          "BBC Alison Hammond entertainment",
-          "latest news about Alison Hammond October 2026",
-          "Alison Hammond entertainment news 2026-10-09",
-          "what happened with Alison Hammond"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Alison Hammond",
-          "alison",
-          "hammond",
-          "thought",
-          "having",
-          "heart",
-          "attack"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-09",
-          "Alison Hammond 2026"
-        ],
-        "source_keywords": [
-          "BBC Alison Hammond",
-          "bbc.co.uk Alison Hammond",
-          "BBC entertainment news"
-        ],
-        "meta_title": "Alison Hammond: 'I thought I was having heart attack on…",
-        "meta_description": "Alison Hammond: Entertainment update reported by BBC on 2026-10-09. See verified context, publication time and the original source via MatchApp Ai.",
-        "keywords": [
-          "Alison Hammond latest news",
-          "Alison Hammond",
-          "Alison Hammond news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "Alison Hammond latest news October 2026",
-          "Alison Hammond entertainment update 2026",
-          "Alison Hammond news 2026-10-09",
-          "latest entertainment news about Alison Hammond",
-          "alison hammond alison hammond thought having latest update",
-          "BBC Alison Hammond entertainment",
-          "latest news about Alison Hammond October 2026",
-          "Alison Hammond entertainment news 2026-10-09",
-          "what happened with Alison Hammond",
-          "alison",
-          "hammond",
-          "thought",
-          "having",
-          "heart",
-          "attack",
-          "October 2026",
-          "2026-10-09",
-          "Alison Hammond 2026",
-          "BBC Alison Hammond",
-          "bbc.co.uk Alison Hammond",
-          "BBC entertainment news"
-        ],
-        "seo_generated_at": "2026-10-12T02:24:36.526Z"
+        "seo_generated_at": "2026-10-12T06:27:20.586Z"
       }
     },
     {
@@ -3544,7 +3547,7 @@
           "2026-10-09",
           "October 2026"
         ],
-        "seo_generated_at": "2026-10-12T02:24:36.526Z"
+        "seo_generated_at": "2026-10-12T06:27:20.586Z"
       }
     },
     {
@@ -3634,7 +3637,7 @@
           "2026-10-08",
           "October 2026"
         ],
-        "seo_generated_at": "2026-10-12T02:24:36.526Z"
+        "seo_generated_at": "2026-10-12T06:27:20.586Z"
       }
     }
   ]
