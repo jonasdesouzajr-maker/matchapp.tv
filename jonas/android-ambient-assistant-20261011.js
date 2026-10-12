@@ -47,6 +47,30 @@
   return '';
  }
  function css(){
+  // Critical first-paint styling is deliberately inline. Synchronous head
+  // scripts may delay external CSS but the Jonas bubble cannot appear square
+  // or expand to full page width while that stylesheet is loading.
+  if(!document.querySelector('style[data-ma-ambient-critical]')){
+   var s=document.createElement('style');s.dataset.maAmbientCritical='1';
+   s.textContent=`
+html.matchapp-ai-android #ma-ai-entry,html.matchapp-ai-android #ma-jonas-inline-dock,
+html.matchapp-ai-android #ma-jonas-home,html.matchapp-ai-android #matchapp-android-avatar-launcher{display:none!important}
+#ma-ambient-jonas{position:fixed!important;z-index:2147483200!important;right:16px;bottom:90px;left:auto;top:auto;width:78px!important;height:78px!important;touch-action:none}
+#ma-ambient-jonas[hidden],#ma-ambient-panel[hidden]{display:none!important}
+#ma-ambient-jonas .ja-bubble{display:block;position:relative;width:76px;height:76px;padding:2px;border:2px solid #efcf88;border-radius:50%;background:#2b1940;box-shadow:0 6px 24px #0009,0 0 0 4px #efcf8838;touch-action:none}
+#ma-ambient-jonas .ja-bubble img{width:100%;height:100%;border-radius:50%;object-fit:cover;object-position:center 18%;pointer-events:none}
+#ma-ambient-jonas .ja-live{position:absolute;right:3px;bottom:3px;width:15px;height:15px;border:2px solid #2b1940;border-radius:50%;background:#65dfa5}
+#ma-ambient-panel{position:fixed!important;z-index:2147483300!important;left:12px;right:12px;bottom:12px;width:calc(100vw - 24px);height:min(73dvh,680px);max-height:calc(100dvh - 50px);margin:0 auto;display:flex;flex-direction:column;background:#21162f;color:#f9e7d7;border:1px solid #eac984b0;border-radius:23px;overflow:hidden;box-shadow:0 20px 60px #000b}
+#ma-ambient-panel .ja-panel-head{height:61px;flex:none;display:flex;align-items:center;gap:11px;padding:9px 12px;background:#3a244f}
+#ma-ambient-panel .ja-face{width:42px;height:42px;border:2px solid #eacf87;border-radius:50%;object-fit:cover}
+#ma-ambient-panel .ja-head-text{display:flex;flex:1;min-width:0;flex-direction:column;gap:2px;font:12px system-ui}
+#ma-ambient-panel .ja-head-text strong{font-size:16px;color:#f6d598}
+#ma-ambient-panel .ja-close{width:42px;height:42px;border:1px solid #c9ac81;border-radius:12px;background:#372548;color:#ffe8bc;font:800 28px system-ui}
+#ma-ambient-panel .ja-hello{margin:0;padding:9px 14px;font:13px system-ui;background:#2c1a3b}
+#ma-ambient-panel iframe{display:block;flex:1;min-height:0;width:100%;border:0;background:#140d23}
+`;
+   (document.head||document.documentElement).appendChild(s);
+  }
   if(document.querySelector('link[data-ma-ambient-style]'))return;
   var l=document.createElement('link');l.rel='stylesheet';l.href=asset;l.dataset.maAmbientStyle='1';(document.head||document.documentElement).appendChild(l);
  }
@@ -238,7 +262,10 @@
   bubble=root.firstElementChild;
   panel=document.createElement('section');panel.id='ma-ambient-panel';panel.hidden=true;panel.setAttribute('role','dialog');panel.setAttribute('aria-label','Jonas conversation');
   panel.innerHTML='<div class="ja-panel-head"><img class="ja-face" src="/jonas/faces/jonas/rest.jpg" alt=""><div class="ja-head-text"><strong>Jonas</strong><span></span></div><button type="button" class="ja-close" aria-label="Close Jonas conversation">×</button></div><p class="ja-hello"></p>';
-  document.body.append(root,panel);
+  (document.body||document.documentElement).append(root,panel);
+  if(!document.body)document.addEventListener('DOMContentLoaded',function(){
+    if(document.body){document.body.append(root,panel);removeLegacyJonas()}
+  },{once:true});
   bubble.setAttribute('aria-label',locale().open);
   bubble.addEventListener('pointerdown',function(e){
     if(e.button!==0&&e.pointerType==='mouse')return;
@@ -267,5 +294,8 @@
   // the single conversation frame initializes only when the user opens it.
   window.MatchAppAmbientJonas=Object.freeze({open:openPanel,close:closePanel,getContext:contextTitle,isOpen:()=>open});
  }
- if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',build,{once:true});else build();
+ // The app may still be parsing blocking head scripts. Jonas must not wait
+ // for DOMContentLoaded or onPageFinished; the HTML root is sufficient.
+ function boot(){if(document.documentElement)build();else setTimeout(boot,65)}
+ boot();
 })();

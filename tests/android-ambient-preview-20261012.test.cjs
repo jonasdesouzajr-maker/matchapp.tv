@@ -17,4 +17,11 @@ test('WebView serves the preview only to DEBUG builds at first party HTTPS URLs'
  assert.match(native,/assets\.open\("ambient-preview\/\$relative"\)/);
  assert.match(native,/debugAmbientPreview\(request\.url\.toString\(\)\) \?: AdBlocker\.intercept/);
  assert.match(native,/debugAmbientPreview\(url\) \?: AdBlocker\.intercept/);
+ assert.match(native,/onPageCommitVisible\(view: WebView/);
+ assert.match(native,/view\.postDelayed\(\{ injectAmbientJonas\(view\) \}, 400L\)/);
+ assert.match(native,/assets\.open\("ambient-preview\/jonas\/android-ambient-assistant-20261011\.js"\)/);
+ const script=fs.readFileSync(path.join(root,'jonas','android-ambient-assistant-20261011.js'),'utf8');
+ assert.match(script,/data-ma-ambient-critical/);
+ assert.match(script,/document\.body\|\|document\.documentElement/);
+ assert.match(script,/function boot\(\)\{if\(document\.documentElement\)build/);
 });

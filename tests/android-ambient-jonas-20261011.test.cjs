@@ -60,3 +60,18 @@ test('native wrapper loads remotely editable same-origin script and can cancel m
  assert.match(discover,/ambient\?audibleReply\.length:650/);
  assert.match(discover,/if \(ambient\) bubble\.textEl\.textContent = payload\.answer/);
 });
+
+test('first-paint bubble is mounted and styled before the main document has a body',()=>{
+ const dom=new JSDOM('<!doctype html><html lang="en"><head></head><body></body></html>',{url:'https://matchapp.tv/',runScripts:'outside-only'});
+ const w=dom.window;w.__MATCHAPP_AMBIENT_QA__=true;
+ Object.defineProperty(w.document,'body',{configurable:true,get:()=>null});
+ w.eval(src);
+ const root=w.document.getElementById('ma-ambient-jonas');
+ assert.ok(root,'Jonas must not wait for DOMContentLoaded or the full page');
+ assert.equal(root.parentElement,w.document.documentElement);
+ const critical=w.document.querySelector('style[data-ma-ambient-critical]');
+ assert.ok(critical,'critical styling must be available without fetching an external CSS file');
+ assert.match(critical.textContent,/#ma-ambient-jonas\{position:fixed!important/);
+ assert.match(critical.textContent,/#ma-ambient-panel\{position:fixed!important/);
+ dom.window.close();
+});

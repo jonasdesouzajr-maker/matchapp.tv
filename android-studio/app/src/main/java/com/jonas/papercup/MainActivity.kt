@@ -524,6 +524,18 @@ class MainActivity : AppCompatActivity() {
         // Future Jonas panel layout and conversational fixes do not require AAB updates.
         val url = runCatching { Uri.parse(view.url.orEmpty()) }.getOrNull() ?: return
         if ((!isMatchAppHost(url.host.orEmpty()) && !isDebugSmokeUrl(url.toString())) || isKidsUri(url)) return
+        if (BuildConfig.DEBUG) {
+            // Instant same-origin preview, even when the production page has
+            // parser-blocking scripts in its head. Never bundled in RELEASE.
+            val staged = runCatching {
+                assets.open("ambient-preview/jonas/android-ambient-assistant-20261011.js")
+                    .bufferedReader().use { it.readText() }
+            }.getOrNull()
+            if (staged != null) {
+                view.evaluateJavascript(staged, null)
+                return
+            }
+        }
         view.evaluateJavascript(
             """
             (function() {
@@ -584,6 +596,13 @@ class MainActivity : AppCompatActivity() {
             return debugAmbientPreview(url) ?: AdBlocker.intercept(url)
         }
 
+        override fun onPageCommitVisible(view: WebView, url: String?) {
+            // Home can spend seconds parsing head resources. The assistant's
+            // persistent bubble must be available before onPageFinished.
+            injectAppMode(view)
+            injectAmbientJonas(view)
+        }
+
         override fun onPageStarted(view: WebView, url: String?, favicon: Bitmap?) {
             val uri = url?.let { runCatching { Uri.parse(it) }.getOrNull() }
             if (uri != null && isKidsUri(uri)) {
@@ -595,6 +614,12 @@ class MainActivity : AppCompatActivity() {
             if (uri != null && isAdultAiDocument(uri)) view.settings.cacheMode = WebSettings.LOAD_NO_CACHE
             lastUrl = url ?: lastUrl
             injectAppMode(view)
+            if (uri != null && (isMatchAppHost(uri.host.orEmpty()) || isDebugSmokeUrl(url))) {
+                // Retry early injection while the document is being parsed;
+                // onPageCommitVisible and onPageFinished remain safe fallbacks.
+                view.postDelayed({ injectAmbientJonas(view) }, 400L)
+                view.postDelayed({ injectAmbientJonas(view) }, 1500L)
+            }
         }
 
         override fun onPageFinished(view: WebView, url: String?) {
