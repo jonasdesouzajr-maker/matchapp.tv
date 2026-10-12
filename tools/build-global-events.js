@@ -46,9 +46,25 @@ window.gtag('consent','default',{
 <\/script>
 `;}
 function tracker(){return `<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-M7J3NNBN');<\/script>`;}
+function trimSnippet(value,max=155){
+ const text=String(value||'').replace(/\s+/g,' ').trim();
+ if(text.length<=max)return text;
+ const clean=text.slice(0,max-1).replace(/\s+\S*$/,'').replace(/[\s,:;-]+$/,'');
+ return clean+'…';
+}
+function eventSearchTitle(e){
+ const max=60-' | MatchApp Ai'.length;
+ for(const option of [e.searchTitle,e.title+' — Guide',e.title]){
+  if(option && option.length<=max)return option;
+ }
+ return trimSnippet(e.title,max);
+}
+function eventSearchDescription(e){
+ return trimSnippet(e.searchDescription||e.synopsis,155);
+}
 function head({title,description,url,image,keywords,schema,ads=false}){
  return `${ads?consentDefaults():''}<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>${esc(title)} | MatchApp.tv</title><meta name="description" content="${esc(description)}"><meta name="keywords" content="${esc(keywords||'entertainment events, film festivals, Indian cinema, Mexico cultural events, comic cons, where to watch, MatchApp event guide')}">
+<title>${esc(title)} | MatchApp Ai</title><meta name="description" content="${esc(description)}"><meta name="keywords" content="${esc(keywords||'entertainment events, film festivals, Indian cinema, Mexico cultural events, comic cons, where to watch, MatchApp event guide')}">
 <link rel="canonical" href="${esc(url)}"><meta property="og:site_name" content="MatchApp Ai"><meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(description)}"><meta property="og:url" content="${esc(url)}"><meta property="og:type" content="website"><meta property="og:image" content="${esc(image)}"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="${esc(image)}">
 <link rel="icon" href="/logo.jpeg?v=2"><link rel="manifest" href="/manifest.json">
 <link rel="stylesheet" href="/style.css?v=187"><link rel="stylesheet" href="/themes.css?v=187"><link rel="stylesheet" href="/app-polish.css?v=187"><link rel="stylesheet" href="/app-updates.css?v=187"><link rel="stylesheet" href="/app-install-state.css?v=187"><link rel="stylesheet" href="/brand.css?v=192"><link rel="stylesheet" href="/event-guide.css?v=20260924-event2">
@@ -79,11 +95,11 @@ for(const e of events){
 <section id="where-to-watch" class="premium-card event-info-card"><h2>Official programme & viewing information</h2><p>${esc(e.watchInfo)}</p><div class="global-event-links"><a href="${esc(e.watch)}" target="_blank" rel="noopener noreferrer">Official programme / tickets</a><a href="${esc(e.recorded)}" target="_blank" rel="noopener noreferrer">Official media / highlights</a><a href="${esc(e.official)}" target="_blank" rel="noopener noreferrer">Official event</a><a href="${esc(e.source)}" target="_blank" rel="noopener noreferrer">Verified source</a></div></section>
 ${visitorNotes}${related}<section class="premium-card event-source-card"><h2>Why it is on MatchApp</h2><p>MatchApp includes this event because it can help people discover films, series, games or screen culture through verified official sources. Dates and event status are date-aware; expired events leave the Home events rail automatically while their public guide remains available for search and reference.</p></section></article>`;
  const dir=path.join(ROOT,'events',e.slug);fs.mkdirSync(dir,{recursive:true});
- fs.writeFileSync(path.join(dir,'index.html'),shell({headHtml:head({title:e.searchTitle||e.title+' — event guide, programme & highlights',description:e.searchDescription||e.synopsis+' '+e.watchInfo,url,image,keywords:e.keywords,schema}),body}));
+ fs.writeFileSync(path.join(dir,'index.html'),shell({headHtml:head({title:eventSearchTitle(e),description:eventSearchDescription(e),url,image,keywords:e.keywords,schema}),body}));
 }
-const archiveSchema={'@context':'https://schema.org','@type':'CollectionPage',name:'Upcoming global entertainment events',url:SITE+'/events-archive.html',mainEntity:{'@type':'ItemList',itemListElement:events.map((e,i)=>({'@type':'ListItem',position:i+1,name:e.title,url:urls[i]}))}};
-const archiveBody=`<section class="event-archive-hero"><p class="event-eyebrow">MATCHAPP VERIFIED EVENTS</p><h1>Upcoming global entertainment events</h1><p>Film festivals, pop-culture conventions, gaming, sports and esports across the United States, United Kingdom, Canada, Brazil, Australia, Japan and beyond — with date-aware status, official sources and MatchApp Ai handoff.</p></section><div class="global-event-grid event-archive-grid">${cards}</div>`;
-fs.writeFileSync(path.join(ROOT,'events-archive.html'),shell({headHtml:head({title:'Upcoming entertainment events — India, Mexico, US, UK, Canada, Brazil, Australia & Japan',description:'Verified MatchApp guides to current and upcoming entertainment events in India, Mexico, the United States, United Kingdom, Canada, Brazil, Australia, Japan and beyond, with dates, official programmes and title discovery.',url:SITE+'/events-archive.html',image:absolutePoster(events.find(e=>e.slug==='new-york-film-festival-2026')||events[0]),keywords:events.map(e=>e.keywords).join(', '),schema:archiveSchema,ads:true}),body:archiveBody,archive:true}));
+const archiveSchema={'@context':'https://schema.org','@type':'CollectionPage',name:'Recent and upcoming global entertainment events',url:SITE+'/events-archive.html',mainEntity:{'@type':'ItemList',itemListElement:events.map((e,i)=>({'@type':'ListItem',position:i+1,name:e.title,url:urls[i]}))}};
+const archiveBody=`<section class="event-archive-hero"><p class="event-eyebrow">MATCHAPP VERIFIED EVENTS</p><h1>Recent and upcoming global entertainment events</h1><p>Explore recent event archives and upcoming festivals, conventions, gaming, sports and esports around the world. Each guide provides date-aware status and official sources; an event listing does not guarantee tickets or a livestream.</p></section><div class="global-event-grid event-archive-grid">${cards}</div>`;
+fs.writeFileSync(path.join(ROOT,'events-archive.html'),shell({headHtml:head({title:'Recent & Upcoming Entertainment Events',description:'Explore official schedules, recent event archives and upcoming film, gaming, sports and pop-culture events worldwide, with verified source links.',url:SITE+'/events-archive.html',image:absolutePoster(events.find(e=>e.slug==='new-york-film-festival-2026')||events[0]),keywords:events.map(e=>e.keywords).join(', '),schema:archiveSchema,ads:true}),body:archiveBody,archive:true}));
 
 const homeSection=`<section id="global-events" class="events-wrapper"><details class="global-events-fold" open><summary class="global-events-summary"><span class="ge-sum-label"><span data-i18n="global.heading">Upcoming global events</span></span><span class="ge-sum-count">${homeEvents.length}</span><span class="ge-sum-chev" aria-hidden="true">⌄</span></summary><div class="global-events-body"><p class="ge-help">Tap a poster for a MatchApp Ai event guide, official programme links and title discovery.</p><div class="events-rail-shell"><button type="button" class="marquee-arrow events-prev" data-rail-dir="-1" aria-label="Scroll global events left" aria-controls="events-viewport">‹</button><button type="button" class="marquee-arrow events-next" data-rail-dir="1" aria-label="Scroll global events right" aria-controls="events-viewport">›</button><div class="global-event-grid events-viewport" id="events-viewport" role="region" aria-label="Upcoming global event posters" tabindex="0">${homeCards}</div></div><a class="ge-archive gold-btn" href="/events-archive.html">All event guides</a></div></details></section>`;
 let index=fs.readFileSync(path.join(ROOT,'index.html'),'utf8');
