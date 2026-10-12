@@ -256,6 +256,12 @@
     requestAnimationFrame(updateArrows);
     wrap.startAuto=()=>scheduleAuto(AUTO_FIRST_MS);
     wrap.stopAuto=stopAuto;
+    wrap.setItems=nextItems=>{
+      items=nextItems;
+      trackEl.replaceChildren(...items.map(({item,scope})=>{const c=card(item,scope);c.setAttribute('role','listitem');return c;}));
+      updateArrows();
+      scheduleAuto(AUTO_FIRST_MS);
+    };
     wrap.reveal=id=>{
       if(!id)return false;
       const target=[...trackEl.querySelectorAll('.ma-news-card')].find(el=>el.dataset.newsId===id);
@@ -413,6 +419,12 @@
       section.dataset.newsDetectedCountry=country;
       section.dataset.newsSelectedLanguage=language;
       const staticChoice=chooseItems(items,country,language,deep.requestedNewsId);
+      // Render the already verified locale snapshot before optional network enrichment.
+      // A slow regional source must never hold these crawlable publisher links hostage.
+      if(staticChoice.combined.length){
+        carousel=rail(staticChoice.combined);
+        panel.replaceChildren(carousel);
+      }
       const regional=await fetchRegional(country,language);
       const regionalTrusted=regional.items.filter(item=>trustedRegionalItem(item,country,language));
       section.dataset.newsRegionalRaw=String(regional.items.length);
@@ -424,8 +436,10 @@
       let seen='';try{seen=localStorage.getItem(SEEN_KEY)||'';}catch(_){}
       if(currentVersion&&currentVersion!==seen){section.dataset.hasNew='true';track('latest_news_new_available',{news_feed_version:currentVersion});}
       const chosen=mergeRegionalItems(regional.items,staticChoice,country,language,deep.requestedNewsId);
-      panel.replaceChildren();
-      if(chosen.combined.length){carousel=rail(chosen.combined);panel.append(carousel);}else{const e=document.createElement('div');e.className='ma-news-empty';e.textContent='Fresh verified headlines are being prepared. Check back shortly.';panel.append(e);}
+      if(chosen.combined.length){
+        if(carousel)carousel.setItems(chosen.combined);
+        else{carousel=rail(chosen.combined);panel.replaceChildren(carousel);}
+      }else{panel.replaceChildren();const e=document.createElement('div');e.className='ma-news-empty';e.textContent='Fresh verified headlines are being prepared. Check back shortly.';panel.append(e);}
 
       const meta=document.createElement('div');meta.className='ma-news-meta';
       const sportStatus=chosen.sports.length?` · Sports ${esc(formatDate(payload.sports_updated_at||payload.generated_at))}`:'';
