@@ -1,0 +1,74 @@
+/* MatchApp Ai — Android-only premium Ask Jonas composer.
+   Visual-only: existing textarea, submit, microphone and quota handlers remain intact. */
+html:is(.matchapp-ai-android,.matchapp-ambient-frame) body.ai-chat-page.ma-ia-discover main.wrap section.premium-card.discover-head .newsearch-row{
+ display:flex!important;flex-direction:column!important;align-items:stretch!important;
+ flex:0 0 auto!important;justify-content:flex-start!important;
+ width:100%!important;min-height:0!important;max-height:36dvh!important;
+ gap:4px!important;margin:9px 0 0!important;padding:0 0 max(4px,env(safe-area-inset-bottom,0px))!important;
+ border:0!important;border-radius:0!important;background:transparent!important;
+ box-shadow:none!important;overflow:visible!important;
+}
+html:is(.matchapp-ai-android,.matchapp-ambient-frame) body.ai-chat-page.ma-ia-discover main.wrap section.premium-card.discover-head .newsearch-row div.composer{
+ display:grid!important;grid-template-areas:"input mic send"!important;
+ grid-template-columns:minmax(0,1fr) 44px 44px!important;grid-template-rows:minmax(44px,auto)!important;
+ align-items:center!important;justify-items:stretch!important;gap:6px!important;
+ width:100%!important;max-width:100%!important;min-width:0!important;
+ height:auto!important;min-height:58px!important;max-height:144px!important;
+ padding:6px 7px 6px 14px!important;margin:0!important;
+ border:1px solid rgba(222,184,114,.50)!important;border-radius:19px!important;
+ background:linear-gradient(130deg,rgba(48,30,68,.99),rgba(30,22,49,.99))!important;
+ box-shadow:0 6px 18px rgba(7,4,18,.25),inset 0 1px rgba(255,248,221,.08)!important;
+ box-sizing:border-box!important;overflow:hidden!important;
+}
+html:is(.matchapp-ai-android,.matchapp-ambient-frame) body.ai-chat-page.ma-ia-discover main.wrap section.premium-card.discover-head .newsearch-row div.composer:focus-within{
+ border-color:rgba(248,211,151,.89)!important;
+ box-shadow:0 0 0 2px rgba(239,204,129,.12),0 9px 24px rgba(7,4,18,.24)!important;
+}
+html:is(.matchapp-ai-android,.matchapp-ambient-frame) body.ai-chat-page.ma-ia-discover main.wrap section.premium-card.discover-head .newsearch-row .composer textarea#discover-new-input{
+ grid-area:input!important;min-width:0!important;width:100%!important;
+ height:auto!important;min-height:42px!important;max-height:122px!important;
+ margin:0!important;padding:10px 2px!important;
+ color:#f9f2ff!important;font:500 14px/1.46 system-ui,sans-serif!important;
+ border:0!important;border-radius:0!important;background:none!important;
+ box-shadow:none!important;resize:none!important;overflow-x:hidden!important;
+ overflow-y:auto!important;align-self:center!important;
+}
+html:is(.matchapp-ai-android,.matchapp-ambient-frame) body.ai-chat-page.ma-ia-discover main.wrap section.premium-card.discover-head .newsearch-row .composer textarea#discover-new-input::placeholder{
+ color:#bfb1d0!important;opacity:1!important;font-size:14px!important;
+}
+html:is(.matchapp-ai-android,.matchapp-ambient-frame) body.ai-chat-page.ma-ia-discover main.wrap section.premium-card.discover-head .newsearch-row .composer button#mic-btn-discover,
+html:is(.matchapp-ai-android,.matchapp-ambient-frame) body.ai-chat-page.ma-ia-discover main.wrap section.premium-card.discover-head .newsearch-row .composer button.composer-send{
+ position:relative!important;inset:auto!important;
+ display:grid!important;place-items:center!important;
+ width:44px!important;min-width:44px!important;max-width:44px!important;
+ height:44px!important;min-height:44px!important;max-height:44px!important;
+ padding:9px!important;margin:0!important;border-radius:14px!important;
+ transform:none!important;box-sizing:border-box!important;flex:none!important;
+}
+html:is(.matchapp-ai-android,.matchapp-ambient-frame) body.ai-chat-page.ma-ia-discover main.wrap section.premium-card.discover-head .newsearch-row .composer button#mic-btn-discover{
+ grid-area:mic!important;border:1px solid rgba(200,153,232,.28)!important;
+ background:linear-gradient(145deg,#51356d,#3b2853)!important;
+ color:#f9e4ff!important;box-shadow:inset 0 1px rgba(255,255,255,.08)!important;
+}
+html:is(.matchapp-ai-android,.matchapp-ambient-frame) body.ai-chat-page.ma-ia-discover main.wrap section.premium-card.discover-head .newsearch-row .composer button.composer-send{
+ grid-area:send!important;border:1px solid #e3ba77!important;
+ background:linear-gradient(145deg,#f7dfa2,#d8aa5e)!important;color:#271630!important;
+ box-shadow:0 3px 8px #0003,inset 0 1px #fff6!important;
+}
+html:is(.matchapp-ai-android,.matchapp-ambient-frame) body.ai-chat-page.ma-ia-discover main.wrap section.premium-card.discover-head .newsearch-row .composer button svg{
+ width:21px!important;height:21px!important;max-width:100%!important;max-height:100%!important;
+}
+html:is(.matchapp-ai-android,.matchapp-ambient-frame) body.ai-chat-page.ma-ia-discover main.wrap section.premium-card.discover-head .newsearch-row #ai-send-cost{
+ order:1!important;width:100%!important;min-height:0!important;
+ padding:2px 2px 0!important;margin:0!important;
+ color:#bcaecb!important;font:500 10px/1.3 system-ui,sans-serif!important;
+ letter-spacing:0!important;text-align:center!important;
+}
+@media(max-width:360px){
+ html:is(.matchapp-ai-android,.matchapp-ambient-frame) body.ai-chat-page.ma-ia-discover main.wrap section.premium-card.discover-head .newsearch-row div.composer{
+  grid-template-columns:minmax(0,1fr) 42px 42px!important;gap:5px!important;padding-left:10px!important
+ }
+ html:is(.matchapp-ai-android,.matchapp-ambient-frame) body.ai-chat-page.ma-ia-discover main.wrap section.premium-card.discover-head .newsearch-row .composer button:is(#mic-btn-discover,.composer-send){
+  width:42px!important;min-width:42px!important;max-width:42px!important;height:42px!important;min-height:42px!important;max-height:42px!important
+ }
+}
