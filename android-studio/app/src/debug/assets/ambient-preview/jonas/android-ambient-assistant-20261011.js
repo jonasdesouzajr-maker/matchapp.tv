@@ -10,7 +10,7 @@
  if(!/MatchAppAiAndroid\//.test(navigator.userAgent)&&!window.__MATCHAPP_AMBIENT_QA__)return;
  window.__matchappAmbientJonas=true;
  var asset='/jonas/android-ambient-assistant-20261011.css?live='+Date.now(),frame=null,panel=null,root=null,bubble=null;
- var open=false,epoch=0,ready=false,drag=null,skipClick=false,activeTitle='',helloTimer=0;
+ var open=false,epoch=0,ready=false,drag=null,dragRaf=0,skipClick=false,activeTitle='',helloTimer=0;
  var greetStarted=0,greetingFinished=0,pendingListen=0,pendingCloud=0,restoreNativeState=null;
  var key='matchapp_jonas_ambient_position_v1';
  var labels={
@@ -33,6 +33,8 @@
  function clamp(x,low,high){return Math.max(low,Math.min(high,x))}
  function viewport(){return {width:Math.max(1,window.innerWidth),height:Math.max(1,window.visualViewport?.height||window.innerHeight)}}
  function setPosition(x,y){var v=viewport(),sz=76;root.style.left=clamp(x,8,Math.max(8,v.width-sz-8))+'px';root.style.top=clamp(y,8,Math.max(8,v.height-sz-8))+'px';root.style.right='auto';root.style.bottom='auto'}
+ function flushDrag(){dragRaf=0;if(!drag||!drag.moved)return;var v=viewport();var nx=clamp(drag.x+drag.dx,8,Math.max(8,v.width-84)),ny=clamp(drag.y+drag.dy,8,Math.max(8,v.height-84));root.style.transform='translate3d('+(nx-drag.x)+'px,'+(ny-drag.y)+'px,0)';}
+ function stopDragFrame(){if(dragRaf){cancelAnimationFrame(dragRaf);dragRaf=0;}}
  function store(){try{var r=root.getBoundingClientRect(),v=viewport();localStorage.setItem(key,JSON.stringify({x:r.left/Math.max(1,v.width-76),y:r.top/Math.max(1,v.height-76)}))}catch(_){}}
  function restore(){try{var p=JSON.parse(localStorage.getItem(key)||'null');if(Number.isFinite(p?.x)&&Number.isFinite(p?.y)){var v=viewport();setPosition(p.x*(v.width-76),p.y*(v.height-76))}}catch(_){}}
  function visibleResult(){
@@ -214,13 +216,14 @@ html.matchapp-ai-android #ma-jonas-home,html.matchapp-ai-android #matchapp-andro
   panel.querySelector('.ja-close').ariaLabel=locale().close;
   panel.querySelector('.ja-close').focus({preventScroll:true});
   root.hidden=true;
+  // Start the local TTS immediately on the actual click. Iframe parsing/network
+  // must not sit on the critical path to the spoken greeting.
+  spokenGreeting(epoch);
   // A fresh title selection starts its own source-backed information card.
   // Otherwise the existing iframe remains alive, retaining conversation state.
   if(!frame||frame.dataset.title!==activeTitle){
     createFrame(activeTitle);frame.dataset.title=activeTitle;
   }
-  // Speech starts on the tap, not after loading the chat iframe.
-  spokenGreeting(epoch);
   document.addEventListener('keydown',escapeKey);
  }
  function closePanel(){
@@ -269,18 +272,35 @@ html.matchapp-ai-android #ma-jonas-home,html.matchapp-ai-android #matchapp-andro
   bubble.setAttribute('aria-label',locale().open);
   bubble.addEventListener('pointerdown',function(e){
     if(e.button!==0&&e.pointerType==='mouse')return;
-    var r=root.getBoundingClientRect();drag={id:e.pointerId,startX:e.clientX,startY:e.clientY,x:r.left,y:r.top,moved:false};
+    stopDragFrame();
+    var r=root.getBoundingClientRect();
+    drag={id:e.pointerId,startX:e.clientX,startY:e.clientY,x:r.left,y:r.top,dx:0,dy:0,moved:false};
     bubble.setPointerCapture?.(e.pointerId);
   });
   bubble.addEventListener('pointermove',function(e){
     if(!drag||drag.id!==e.pointerId)return;
-    var dx=e.clientX-drag.startX,dy=e.clientY-drag.startY;
-    if(!drag.moved&&Math.hypot(dx,dy)<9)return;
-    drag.moved=true;setPosition(drag.x+dx,drag.y+dy);
+    drag.dx=e.clientX-drag.startX;drag.dy=e.clientY-drag.startY;
+    if(!drag.moved&&Math.hypot(drag.dx,drag.dy)<6)return;
+    drag.moved=true;
+    // GPU compositing follows the finger without changing layout or forcing
+    // getBoundingClientRect on every touch sample.
+    if(!dragRaf)dragRaf=requestAnimationFrame(flushDrag);
   });
   function end(e){
     if(!drag||drag.id!==e.pointerId)return;
-    if(drag.moved){skipClick=true;store();setTimeout(function(){skipClick=false},240);}
+    if(e.type==='pointerup'){
+      drag.dx=e.clientX-drag.startX;drag.dy=e.clientY-drag.startY;
+    }
+    stopDragFrame();
+    if(drag.moved){
+      var v=viewport();
+      var x=clamp(drag.x+drag.dx,8,Math.max(8,v.width-84));
+      var y=clamp(drag.y+drag.dy,8,Math.max(8,v.height-84));
+      // Clear the transient transform before committing one final layout position.
+      root.style.transform='';setPosition(x,y);
+      skipClick=true;store();
+      setTimeout(function(){skipClick=false},240);
+    }else root.style.transform='';
     drag=null;
   }
   bubble.addEventListener('pointerup',end);bubble.addEventListener('pointercancel',end);
